@@ -5,10 +5,12 @@
  *   historyTurns  the chat window, rebuilt for a signed-in student's device
  *   groupConversations / conversationJsonl  the dashboard and the export
  *   unreadFollowups  late answers (0160) the student has not opened yet
+ *   toolCallsForStorage  what V searched, fitted to its column (0167)
  *
  * Pure. Spec: tests/chat-conversation.test.ts.
  */
 import { PREDEFINED_QUESTIONS } from "./faq";
+import type { ToolCallLog } from "./anthropic";
 
 export type ConversationRow = {
   id: string;
@@ -27,6 +29,8 @@ export type ConversationRow = {
   userId?: string | null;
   /** A late answer's first opening (0160); null = unread. */
   seenAt?: string | null;
+  /** What V searched for this reply (0167); null when it made no call. */
+  toolCalls?: ToolCallLog[] | null;
 };
 
 const PAGE_PATH_RE = /^\/[A-Za-z0-9/_.~-]*$/;
@@ -118,6 +122,7 @@ export type ConversationTurn = {
   feedback: number | null;
   page: string | null;
   at: string;
+  toolCalls: ToolCallLog[] | null;
 };
 
 export type Conversation = {
@@ -154,6 +159,7 @@ export function groupConversations(rows: readonly ConversationRow[]): Conversati
         feedback: r.feedback,
         page: r.pagePath,
         at: r.createdAt,
+        toolCalls: r.toolCalls ?? null,
       })),
     });
   }
@@ -174,6 +180,7 @@ export function conversationJsonl(c: Conversation): string {
         content: t.reply,
         ...(t.source ? { source: t.source } : {}),
         ...(t.feedback ? { feedback: t.feedback } : {}),
+        ...(t.toolCalls && t.toolCalls.length > 0 ? { tool_calls: t.toolCalls } : {}),
       },
     ]),
   });
@@ -182,4 +189,23 @@ export function conversationJsonl(c: Conversation): string {
 /** Late answers (0160) in these rows that the student has not opened yet. */
 export function unreadFollowups(rows: readonly ConversationRow[]): number {
   return rows.filter((r) => r.eventType === "v_followup" && !r.seenAt).length;
+}
+
+// Under the column's 8,000-byte CHECK with room to spare: Postgres prints jsonb with a space after
+// every colon and comma, so its text runs longer than JSON.stringify's.
+const TOOL_CALLS_MAX_CALLS = 10;
+const TOOL_CALLS_MAX_BYTES = 7000;
+
+/**
+ * The tool calls as stored (migration 0167). A value the CHECK refuses would
+ * lose the whole row, question and all, so an oversized log drops the results
+ * first and then itself.
+ */
+export function toolCallsForStorage(calls: readonly ToolCallLog[] | undefined): ToolCallLog[] | null {
+  if (!calls || calls.length === 0) return null;
+  const bytes = (v: unknown) => new TextEncoder().encode(JSON.stringify(v)).length;
+  const kept = calls.slice(0, TOOL_CALLS_MAX_CALLS);
+  if (bytes(kept) <= TOOL_CALLS_MAX_BYTES) return kept;
+  const bare = kept.map(({ name, input }) => ({ name, input }));
+  return bytes(bare) <= TOOL_CALLS_MAX_BYTES ? bare : null;
 }

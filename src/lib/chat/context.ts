@@ -21,7 +21,7 @@ import {
   NAV_FACTS,
   type ChatExamFact,
 } from "./facts";
-import { chapterPath, formatChapterHits, searchChapters, type ChapterSearchRow } from "./chapterSearch";
+import { chapterPath, findChapters, formatChapterHits, type ChapterSearchRow } from "./chapterSearch";
 import { pathsInReply } from "./replyLinks";
 import type { VTool } from "./anthropic";
 import type { Performance } from "@/lib/performance/compute";
@@ -30,6 +30,7 @@ import { progressTool } from "./progress";
 
 function toExamFact(e: (typeof EXAM_REGISTRY)[number], pyqBySlug: Map<string, number> | null): ChatExamFact {
   return {
+    slug: e.slug,
     displayName: e.displayName,
     tier: e.tier,
     hasMocks: e.hasMocks === true,
@@ -89,8 +90,10 @@ export async function loadVContext(
   const allowedPaths = new Set(pathsInReply([...NAV_FACTS, ...exams].join("\n")));
   if (opts.page) allowedPaths.add(opts.page);
 
-  const findChapters: VTool = {
+  const findChaptersTool: VTool = {
     name: "find_chapters",
+    // What the search found is kept with the reply (migration 0167), so a "not found" can be explained.
+    logResult: true,
     description:
       "Find chapter pages on PYQ Vault. Give the chapter or subject in full words (query) and, if the student named one, the exam (exam). Returns up to 20 chapters, each with its question count and page path.",
     input_schema: {
@@ -105,12 +108,12 @@ export async function loadVContext(
       const i = (input ?? {}) as { query?: unknown; exam?: unknown };
       const query = typeof i.query === "string" ? i.query : "";
       const exam = typeof i.exam === "string" ? i.exam : undefined;
-      const hits = searchChapters(await loadChapters(), { query, exam });
+      const { hits, missedExam } = findChapters(await loadChapters(), { query, exam });
       for (const h of hits) allowedPaths.add(chapterPath(h));
-      return formatChapterHits(hits);
+      return formatChapterHits(hits, { missedExam });
     },
   };
 
   // Always offered, signed in or not: the tool list is part of the cached prefix.
-  return { system, systemTail, tools: [findChapters, progressTool(opts.loadOwnProgress, opts.loadOwnPractice)], allowedPaths };
+  return { system, systemTail, tools: [findChaptersTool, progressTool(opts.loadOwnProgress, opts.loadOwnPractice)], allowedPaths };
 }

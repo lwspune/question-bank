@@ -11,6 +11,7 @@ import {
   groupConversations,
   conversationJsonl,
   unreadFollowups,
+  toolCallsForStorage,
   type ConversationRow,
 } from "@/lib/chat/conversation";
 
@@ -223,5 +224,40 @@ describe("conversationJsonl", () => {
         { role: "assistant", content: "Atoms: /questions/cbse-12/physics/atoms", source: "ai", feedback: -1 },
       ],
     });
+  });
+});
+
+// 2026-10-18: what V searched, kept with the reply (migration 0167), so a "not found" can be explained.
+describe("tool calls in the export", () => {
+  it("puts V's searches on its reply, and leaves them off a reply that made none", () => {
+    const calls = [{ name: "find_chapters", input: { query: "rotational dynamics", exam: "CBSE Class 12" }, result: "No chapter matched." }];
+    const [conv] = groupConversations([
+      typed("2026-10-18T06:13:00Z", "rotational dynamics", "Not found, try /browse", { toolCalls: calls }),
+      typed("2026-10-18T06:14:00Z", "ok", "Bye"),
+    ]);
+    const line = JSON.parse(conversationJsonl(conv));
+    expect(line.messages[1]).toMatchObject({ role: "assistant", tool_calls: calls });
+    expect(line.messages[3]).not.toHaveProperty("tool_calls");
+  });
+});
+
+describe("toolCallsForStorage", () => {
+  const call = (i: number) => ({ name: "find_chapters", input: { query: `q${i}` }, result: "x" });
+
+  it("is null when V made no call", () => {
+    expect(toolCallsForStorage([])).toBeNull();
+    expect(toolCallsForStorage(undefined)).toBeNull();
+  });
+
+  it("keeps at most ten calls, as the column allows", () => {
+    expect(toolCallsForStorage(Array.from({ length: 12 }, (_, i) => call(i)))).toHaveLength(10);
+  });
+
+  // An oversized value would fail the CHECK and lose the whole row, question and all.
+  it("drops the results, then gives up, rather than exceed the column's 8,000 bytes", () => {
+    const big = [{ name: "find_chapters", input: { query: "a" }, result: "अ".repeat(2900) }];
+    expect(toolCallsForStorage(big)).toEqual([{ name: "find_chapters", input: { query: "a" } }]);
+    const huge = [{ name: "find_chapters", input: { query: "अ".repeat(3000) } }];
+    expect(toolCallsForStorage(huge)).toBeNull();
   });
 });
