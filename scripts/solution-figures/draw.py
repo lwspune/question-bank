@@ -36,6 +36,10 @@ KINDS (each spec is {"kind": ..., ...}):
               l, label, label_loc, at: "<saved name>", to: "<saved name>", save: "<name>", reverse}]}
   structure  {molecules: [{smiles, name, full}], per_row} (at most 2 a row, so names read on a phone);
              full: true draws EVERY atom (C and H too) on a grid, NCERT's Class 10 structural formula
+  field      {xlim, ylim, charges: [{q, at, label}] | loop: {a, current}, equipotentials: [V...], lines, labels, marks}
+             field lines COMPUTED (Coulomb 1/r^2; a current loop's diametral section by Biot-Savart,
+             current > 0 anticlockwise seen from above); equipotentials dashed at the V values given
+  curve3d    {x, y, z: "expr in t", t: [a, b], arrows: [{from, to, label}], view: [elev, azim], aspect}
   stack      {panels: [spec, ...], captions: ["(i) ...", ...]}   panels one above another, any kind
              but stack; for two graphs with different axes or two separate circuits
 """
@@ -442,6 +446,38 @@ def draw_circuit(s, out):
         d.save(out, dpi=DPI)
 
 
+def charge_field(charges, X, Y):
+    """E (as 1/r^2 point charges) and V (as 1/r) on a grid, in units where k = 1."""
+    ex, ey, v = np.zeros_like(X, dtype=float), np.zeros_like(X, dtype=float), np.zeros_like(X, dtype=float)
+    for c in charges:
+        dx, dy = X - c["at"][0], Y - c["at"][1]
+        r = np.sqrt(dx * dx + dy * dy)
+        with np.errstate(all="ignore"):
+            ex += c["q"] * dx / r ** 3
+            ey += c["q"] * dy / r ** 3
+            v += c["q"] / r
+    return ex, ey, v
+
+
+def loop_field(a, current, X, Z, n=400):
+    """B of a circular loop of radius a in the plane z = 0, centred on the origin,
+    on its diametral section y = 0 (Biot-Savart summed over n elements).
+    current > 0 runs anticlockwise seen from above (+z)."""
+    phi = np.linspace(0, 2 * np.pi, n, endpoint=False)
+    dphi = 2 * np.pi / n
+    bx, bz = np.zeros_like(X, dtype=float), np.zeros_like(X, dtype=float)
+    for p in phi:
+        sx, sy = a * np.cos(p), a * np.sin(p)            # source point
+        lx, ly = -a * np.sin(p) * dphi, a * np.cos(p) * dphi  # dl
+        rx, ry, rz = X - sx, -sy, Z                     # field point (X, 0, Z) minus source
+        r3 = (rx * rx + ry * ry + rz * rz) ** 1.5
+        with np.errstate(all="ignore"):
+            # dl x r with dl = (lx, ly, 0)
+            bx += current * (ly * rz) / r3
+            bz += current * (lx * ry - ly * rx) / r3
+    return bx, bz
+
+
 GRID = {"R": (1, 0), "L": (-1, 0), "U": (0, 1), "D": (0, -1)}
 
 
@@ -592,7 +628,86 @@ def draw_stack(s, out):
     return {"panels": len(panels)}
 
 
-KINDS = {"stack": draw_stack, "plot": draw_plot, "histogram": draw_histogram, "bar": draw_bar, "pie": draw_pie, "geometry": draw_geometry, "ray": draw_ray, "circuit": draw_circuit, "structure": draw_structure}
+def draw_field(s, out):
+    """Field lines COMPUTED from the sources (Coulomb point charges, or a current
+    loop's diametral section by Biot-Savart), with dashed equipotentials."""
+    fig, ax = plt.subplots(figsize=s.get("size", [5.6, 5]))
+    (x0, x1), (y0, y1) = s["xlim"], s["ylim"]
+    X, Y = np.meshgrid(np.linspace(x0, x1, 300), np.linspace(y0, y1, 300))
+    span = min(x1 - x0, y1 - y0)
+    seeds = []
+    if "charges" in s:
+        ex, ey, v = charge_field(s["charges"], X, Y)
+        sources = [c for c in s["charges"] if c["q"] > 0] or s["charges"]
+        for c in sources:
+            n = s.get("lines", 16)
+            for k in range(n):
+                th = 2 * np.pi * (k + 0.5) / n
+                seeds.append([c["at"][0] + 0.04 * span * np.cos(th), c["at"][1] + 0.04 * span * np.sin(th)])
+        u, w = ex, ey
+        if s.get("equipotentials"):
+            ax.contour(X, Y, v, levels=sorted(s["equipotentials"]), colors="#6b7280", linestyles="--", linewidths=1)
+    else:
+        lp = s["loop"]
+        u, w = loop_field(lp["a"], lp.get("current", 1), X, Y)
+        a = lp["a"]
+        for xs in np.linspace(-0.6 * a, 0.6 * a, 5):
+            seeds.append([xs, 0.0])
+        for xs in (1.45 * a, 1.9 * a, 2.5 * a):
+            seeds += [[xs, 0.0], [-xs, 0.0]]
+    with np.errstate(all="ignore"):
+        mag = np.hypot(u, w)
+        u, w = u / mag, w / mag  # direction only: spacing, not speed, shows strength
+    ax.streamplot(X, Y, np.nan_to_num(u), np.nan_to_num(w), start_points=np.array(seeds), broken_streamlines=False,
+                  color=RAY, linewidth=1.3, arrowsize=1.3, integration_direction="both" if "loop" in s else "forward")
+    if "charges" in s:
+        for c in s["charges"]:
+            ax.plot(*c["at"], "o", ms=16, color="#c2410c" if c["q"] > 0 else "#1d4ed8", zorder=5)
+            ax.text(*c["at"], "+" if c["q"] > 0 else "−", color="white", ha="center", va="center", fontsize=14, fontweight="bold", zorder=6)
+            if c.get("label"):
+                ax.annotate(c["label"], c["at"], xytext=(0, -20), textcoords="offset points", ha="center", va="top", fontsize=12)
+    else:
+        a, cur = s["loop"]["a"], s["loop"].get("current", 1)
+        # anticlockwise from above: at x = +a the current runs away from the viewer (into the page)
+        for x, into in ((a, cur > 0), (-a, cur <= 0)):
+            ax.plot(x, 0, "o", ms=16, mfc="white", mec=INK, mew=1.5, zorder=5)
+            ax.plot(x, 0, "x" if into else ".", ms=10 if into else 8, color=INK, mew=2, zorder=6)
+        ax.plot([-1.0 * a, a], [0, 0], color="#9ca3af", lw=1, ls=":", zorder=1)
+    box = {"boxstyle": "round,pad=0.2", "fc": "white", "ec": "none", "alpha": 0.9}
+    for lb in s.get("labels", []):
+        ax.text(*lb["at"], lb["text"], fontsize=lb.get("size", 11), ha=lb.get("ha", "center"), va=lb.get("va", "center"), color=lb.get("color", INK), bbox=box, zorder=8)
+    for m in s.get("marks", []):
+        ax.plot(*m["at"], "o", ms=5, color=ACCENT, zorder=7)
+        ax.annotate(m["label"], m["at"], xytext=m.get("offset", [6, 6]), textcoords="offset points", fontsize=11, bbox=box, zorder=8,
+                    arrowprops={"arrowstyle": "-", "color": ACCENT, "lw": 1} if m.get("leader") else None)
+    ax.set_xlim(x0, x1)
+    ax.set_ylim(y0, y1)
+    ax.set_aspect("equal")
+    ax.axis("off")
+    finish(fig, out)
+
+
+def draw_curve3d(s, out):
+    """A parametric space curve (a helix, a spiral) with labelled direction arrows."""
+    from mpl_toolkits.mplot3d import Axes3D  # noqa: F401
+
+    fig = plt.figure(figsize=s.get("size", [5, 5.5]))
+    ax = fig.add_subplot(111, projection="3d")
+    a, b = s["t"]
+    t = np.linspace(a, b, 2000)
+    ax.plot(ev(s["x"], t=t) * np.ones_like(t), ev(s["y"], t=t) * np.ones_like(t), ev(s["z"], t=t) * np.ones_like(t), color=RAY, lw=1.8)
+    for ar in s.get("arrows", []):
+        (fx, fy, fz), (tx, ty, tz) = ar["from"], ar["to"]
+        ax.quiver(fx, fy, fz, tx - fx, ty - fy, tz - fz, color=ar.get("color", INK), arrow_length_ratio=0.08, lw=1.5)
+        if ar.get("label"):
+            ax.text(tx, ty, tz, "  " + ar["label"], fontsize=13, color=ar.get("color", INK))
+    ax.view_init(*s.get("view", [18, -60]))
+    ax.set_box_aspect(s.get("aspect", [1, 1, 1.6]))
+    ax.set_axis_off()
+    finish(fig, out)
+
+
+KINDS = {"field": draw_field, "curve3d": draw_curve3d, "stack": draw_stack, "plot": draw_plot, "histogram": draw_histogram, "bar": draw_bar, "pie": draw_pie, "geometry": draw_geometry, "ray": draw_ray, "circuit": draw_circuit, "structure": draw_structure}
 
 
 def draw(spec, out):
@@ -662,6 +777,15 @@ def selftest():
             assert (x1 == x2 or y1 == y2) and abs(x1 - x2) + abs(y1 - y2) in (1, 2), f"{smi}: bond {b.GetIdx()} is not straight"
             if abs(x1 - x2) + abs(y1 - y2) == 2:
                 assert ((x1 + x2) // 2, (y1 + y2) // 2) not in xy.values(), f"{smi}: a long bond runs through an atom"
+
+    # Field kind: the physics it draws from, checked at three textbook points.
+    gx, gy = np.meshgrid(np.array([0.0]), np.array([0.0]))
+    ex, ey, _ = charge_field([{"q": 1, "at": [-1, 0]}, {"q": 1, "at": [1, 0]}], gx, gy)
+    assert abs(ex[0, 0]) < 1e-9 and abs(ey[0, 0]) < 1e-9, "two equal charges: no field at the midpoint"
+    _, _, v = charge_field([{"q": 1, "at": [-1, 0]}, {"q": -1, "at": [1, 0]}], np.array([[0.0, 0.0]]), np.array([[0.5, 3.0]]))
+    assert np.all(np.abs(v) < 1e-9), "dipole: zero potential on the perpendicular bisector"
+    bx, bz = loop_field(1.0, 1.0, np.array([[0.0]]), np.array([[0.0]]))
+    assert abs(bx[0, 0]) < 1e-9 and bz[0, 0] > 0, "anticlockwise loop (seen from above): field at the centre points up"
 
     # Structure grids stay two to a row at most, so names stay legible on a phone.
     assert structure_per_row(8, 4) == 2 and structure_per_row(8, None) == 2, "8 molecules: two per row"
