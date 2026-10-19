@@ -10,7 +10,7 @@
  */
 import { istDayKey } from "@/lib/email/dueNudge";
 import type { ActivityEvent } from "./events";
-import { isSurface, viewDedupeKey } from "./views";
+import { isReadingSurface, isSurface, readingViewFor, viewDedupeKey } from "./views";
 
 /**
  * Which kind of browser recorded a view. Only the handout sends it: in-app
@@ -119,12 +119,24 @@ export function parseClientEvent(raw: unknown, userId: string, now: Date): Parse
       if (!CHAPTER_SURFACES.has(raw.surface)) return { ok: false, error: "No chapter on this surface." };
       if (typeof chapter !== "string" || !CHAPTER_RE.test(chapter)) return { ok: false, error: "Invalid chapter." };
     }
+    // A reading page carries its address, checked against the surface it claims (2026-10-19).
+    let path: string | undefined;
+    if (isReadingSurface(raw.surface)) {
+      const view = typeof raw.path === "string" ? readingViewFor(raw.path) : null;
+      if (!view || view.surface !== raw.surface) return { ok: false, error: "Invalid page address." };
+      path = view.path;
+    } else if (raw.path !== undefined) {
+      return { ok: false, error: "No page address on this surface." };
+    }
     const metadata: Record<string, string> = { surface: raw.surface };
     if (raw.browser) metadata.browser = raw.browser;
     if (chapter) metadata.chapter = chapter;
+    if (path) metadata.path = path;
     const dedupeKey = chapter
       ? `view:${raw.surface}:${chapter}:${userId}:${istDayKey(now)}`
-      : viewDedupeKey(userId, raw.surface, now);
+      : path
+        ? `view:${raw.surface}:${path}:${userId}:${istDayKey(now)}`
+        : viewDedupeKey(userId, raw.surface, now);
     return { ok: true, value: { kind: "surface_viewed", metadata, dedupeKey } };
   }
 

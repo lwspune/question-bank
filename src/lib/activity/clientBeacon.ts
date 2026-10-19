@@ -22,6 +22,8 @@ type ClientEvent =
       browser?: (typeof VIEW_BROWSERS)[number];
       /** "subjectRoute/chapterSlug", handout surfaces only. */
       chapter?: string;
+      /** The page address, reading surfaces only (lib/activity/views readingViewFor). */
+      path?: string;
     }
   | {
       kind: "paywall_event";

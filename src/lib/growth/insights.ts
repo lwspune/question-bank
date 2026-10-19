@@ -215,6 +215,20 @@ export const INSIGHTS: readonly Insight[] = [
     status: "open",
   },
   {
+    id: "notes-reading-before-scores",
+    title: "Does reading a chapter's notes come before doing better on it?",
+    finding:
+      "Not measured yet: until 19 Oct nothing recorded a signed-in student reading a page, only answering. From 19 Oct every notes, /board, /questions, guide, formula and past-paper page a signed-in student opens is a surface_viewed row with metadata.path.",
+    source: "user_activity surface_viewed with metadata.path, from 2026-10-19",
+    confidence: "low",
+    firstSeen: "2026-10-19",
+    recheckDays: 14,
+    howToCheck:
+      "Database, staff excluded: (1) reach first: students and distinct pages per surface (notes, board, questions, guide, formula, question_papers, past_paper) since 19 Oct, beside question_practiced students. (2) Then per notes chapter (metadata.path /notes/<subjectRoute>/<chapterSlug>/..., mapped to the DB chapter through the NOTES_CHAPTERS registry): question_practiced rows with metadata.correct on that chapter in the 7 days after a read, against the same students' rows before the read and against students who practised the chapter without reading. A correlation at best: readers choose to read.",
+    checks: [],
+    status: "open",
+  },
+  {
     id: "homework-demand",
     title: "Homework downloads and answer-sheet checks are both near zero so far",
     finding:

@@ -33,6 +33,15 @@ export const SURFACES = [
   // the 200-question cap stopped.
   "download_box",
   "download_box_over_cap",
+  // Reading pages (2026-10-19), with metadata.path: answers there were
+  // recorded, a read was not. Sent by the header for signed-in students only.
+  "notes",
+  "board",
+  "questions",
+  "guide",
+  "formula",
+  "question_papers",
+  "past_paper",
 ] as const;
 
 export type Surface = (typeof SURFACES)[number];
@@ -40,6 +49,42 @@ const SURFACE_SET: ReadonlySet<string> = new Set(SURFACES);
 
 export function isSurface(v: unknown): v is Surface {
   return typeof v === "string" && SURFACE_SET.has(v);
+}
+
+export type ReadingSurface = "notes" | "board" | "questions" | "guide" | "formula" | "question_papers" | "past_paper";
+
+/** A section's first path segment -> its reading surface. */
+const READING_SECTIONS: Record<string, ReadingSurface> = {
+  notes: "notes",
+  board: "board",
+  questions: "questions",
+  guide: "guide",
+  formula: "formula",
+  "question-papers": "question_papers",
+};
+const READING_SET: ReadonlySet<string> = new Set(Object.values(READING_SECTIONS).concat("past_paper"));
+const PATH_RE = /^\/[a-z0-9-]+(\/[a-z0-9-]+)*$/;
+const MAX_PATH = 200;
+
+export function isReadingSurface(v: unknown): v is ReadingSurface {
+  return typeof v === "string" && READING_SET.has(v);
+}
+
+/**
+ * The reading surface a page address belongs to, and the address cleaned
+ * (query, fragment and trailing slash dropped), or null when it is not a
+ * reading page or not safe to store. A mock's own reading page is
+ * /mock/<paper>/paper; its start page and attempts are not reading.
+ */
+export function readingViewFor(pathname: string): { surface: ReadingSurface; path: string } | null {
+  let path = pathname.split(/[?#]/)[0];
+  if (path.length > 1 && path.endsWith("/")) path = path.slice(0, -1);
+  if (path.length > MAX_PATH || !PATH_RE.test(path)) return null;
+  const segments = path.split("/").slice(1);
+  const section = READING_SECTIONS[segments[0]];
+  if (section) return { surface: section, path };
+  if (segments.length === 3 && segments[0] === "mock" && segments[2] === "paper") return { surface: "past_paper", path };
+  return null;
 }
 
 export function viewDedupeKey(userId: string, surface: Surface, now: Date): string {
