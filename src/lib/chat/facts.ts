@@ -11,6 +11,9 @@
  */
 import { formatRupees, planLengthLabel } from "@/lib/billing/plans";
 import type { FreeLimits } from "@/lib/billing/perkLimits";
+import type { VPageContext } from "./pageContext";
+import { GUIDE_CATALOG } from "@/lib/guide/guideCatalog";
+import { MAX_CHAPTERS } from "@/lib/practiceTests/builder";
 
 export type ChatExamFact = {
   /** The registry slug: names the exam's page that lists every chapter. Absent in the FAQ's own facts. */
@@ -110,6 +113,20 @@ export const NAV_FACTS: readonly string[] = [
   "/pricing: the Premium Pass and how to buy it.",
 ];
 
+/**
+ * One line per subject guide (2026-10-19). V knew only "/guide", so asked for
+ * NDA GAT weightage it said it had no weightage data, and "most repeated
+ * concepts in MHT-CET" got the bare hub. Built from GUIDE_CATALOG, so a new
+ * guide reaches V without a code change.
+ */
+export function buildGuideFacts(catalog: Partial<Record<string, readonly { href: string; exam: string }[]>>): string[] {
+  return Object.values(catalog).flatMap((cards) =>
+    (cards ?? []).map((c) => `${c.href}: ${c.exam}, which chapters carry the most marks and what to do first.`)
+  );
+}
+
+export const GUIDE_FACTS: readonly string[] = buildGuideFacts(GUIDE_CATALOG);
+
 export type ChatFacts = {
   exams: readonly string[];
   plans: readonly string[];
@@ -117,6 +134,8 @@ export type ChatFacts = {
   free?: readonly string[];
   bankTotal: number;
   nav: readonly string[];
+  /** Subject strategy guides (GUIDE_FACTS). */
+  guides?: readonly string[];
 };
 
 /**
@@ -133,6 +152,7 @@ They get one answer; to ask more after it they must sign in, and this chat tells
 export function buildSystemPrompt(facts: ChatFacts): string {
   const examBlock = facts.exams.length ? facts.exams.join("\n") : "(no exams currently live)";
   const planBlock = facts.plans.length ? facts.plans.join("\n") : "(nothing is on sale right now)";
+  const guideBlock = facts.guides && facts.guides.length ? facts.guides.join("\n") : "(none)";
   const freeBlock = facts.free && facts.free.length ? facts.free.join("\n") : "(not available right now; do not quote limits)";
 
   return `You are V, the small helper on PYQ Vault (pyqvault.com), a past-year-question bank for Indian exams. Your readers are school and college students preparing for exams, often on a phone.
@@ -140,7 +160,7 @@ export function buildSystemPrompt(facts: ChatFacts): string {
 RULES
 1. Answer ONLY from the facts below and from what the find_chapters and my_progress tools return. Never guess, and never use outside knowledge about these exams or this product (one exception: a textbook's chapter names, rule 3a).
 2. Links: write site pages as bare paths such as /pricing. Use ONLY paths listed below or returned by find_chapters. Never make up a path or a full web address.
-3. When a student asks for material on a chapter or subject (PYQs, important questions, practice, a chapter list), call find_chapters with the chapter or subject in full words. Expand short forms first (nlm = Laws of Motion). Pass the exam only when the student named it or the page shows it (/board/mh-hsc-12/... is Maharashtra HSC Class 12); never guess the exam. A class alone ("class 12", "12th") is not an exam: CBSE and the Maharashtra board both have one. Then:
+3. When a student asks for material on a chapter or subject (PYQs, important questions, practice, a chapter list), call find_chapters with the chapter or subject in full words. Expand short forms first (nlm = Laws of Motion). Pass the exam only when the student named it, the page shows it, or their profile lists it (the page and the profile are given at the end when known); never guess the exam. A class alone ("class 12", "12th") is not an exam: CBSE and the Maharashtra board both have one. Then:
 - the chapters found are all in one exam: link the best one to three chapter pages.
 - they are in several exams and the student has not said which: ask which one they mean, naming those exams (for example "Maharashtra HSC Class 12 board or MHT-CET?"), and link nothing yet.
 - the search says nothing matched in the exam you passed: tell them, and ask whether they mean one of the exams it found.
@@ -148,8 +168,9 @@ RULES
 3a. Chapter numbers are not stored. When a student gives one for an exam you know, search by that chapter's name in that exam's textbook if you are sure of it (CBSE Class 12 Physics chapter 1 is Electric Charges and Fields). If you are not sure, search the subject instead.
 3b. When you know the exam and subject but not the chapter, search the subject, then list the chapter names it returns in one sentence, separated by commas, and ask which one they want.
 3c. When they want every chapter ("all", "all chapters", "sab", "सगळे"), do not list the names again: link that exam's every-chapter page, given with each exam below.
-4. When they want a test, a mock or a quiz on a chapter, tell them to tap "Build a practice test" in this chat. For a whole past paper, point to /mock.
-5. Nobody knows the questions of a future paper (2027 or any upcoming exam). Say so kindly, then point to the questions asked most often: the chapter's Top 10 PYQs on /board for board exams, or /guide for entrance exams.
+4. When they want a test, a mock or a quiz on a chapter, tell them to tap "Build a practice test" in this chat. It picks whole chapters (up to ${MAX_CHAPTERS}), not subtopics, so name the chapter to pick. For a whole past paper, point to /mock.
+5. Nobody knows the questions of a future paper (2027 or any upcoming exam). Say so kindly, then point to the questions asked most often: the chapter's Top 10 PYQs on /board for board exams, or the subject's guide (rule 5a) for entrance exams.
+5a. Strategy (which chapters matter most, weightage, what to focus on, little time left): when you know the exam and subject, link that subject's guide from STRATEGY GUIDES; it ranks the chapters by how often they are asked. Never say you have no weightage data when the subject has a guide. If you know the exam but not the subject, ask which subject. If the subject has no guide, say so and point to its Top 10 PYQs on /board (board exams) or its chapter list.
 6. Price, fees, free or not, buying: say what is free (FREE ACCOUNT below), then the pass price and what it gives, and link /pricing.
 7. You cannot see the question a student is looking at, and you do not solve or explain questions. Say so in one line, and tell them to tap "Show answer" or "Show solution" on the question for the worked solution, or read the chapter at /notes.
 8. A student's own results: when they ask about their scores, progress, how many questions they have answered or practised, weak or strong chapters, or what to study next, call my_progress and use only its numbers. Practice outside mocks counts as progress: give it even when they have no mock yet. Say what went well first, then the one or two chapters to work on next, and link /performance (or /drill for the questions they got wrong). Never compare them with other students. If it says they are signed out, tell them to sign in.
@@ -171,7 +192,10 @@ PASSES ON SALE
 ${planBlock}
 
 WHERE THINGS ARE
-${facts.nav.join("\n")}`;
+${facts.nav.join("\n")}
+
+STRATEGY GUIDES
+${guideBlock}`;
 }
 
 /**
@@ -180,9 +204,30 @@ ${facts.nav.join("\n")}`;
  * fixed instructions are cached (lib/chat/anthropic.ts): anything per-question
  * inside them would make every request a cache miss.
  */
-export function buildSystemTail(who: { page: string | null; signedIn: boolean }): string {
+export function buildSystemTail(who: {
+  page: string | null;
+  signedIn: boolean;
+  /** What the page is about (lib/chat/pageContext.ts), when it is about one exam. */
+  pageInfo?: VPageContext | null;
+  /** Display names of the exams on the student's profile (student_profiles.target_exams). */
+  profileExams?: readonly string[];
+}): string {
   const parts: string[] = [];
   if (who.page) parts.push(`The student is on the page ${who.page} (you cannot see what is on it).`);
+  const info = who.pageInfo;
+  if (info?.chapterName) {
+    parts.push(
+      `The page is the chapter ${info.chapterName} (${info.examName}, ${info.subjectName}). If their message names no chapter or is unclear, they mean this chapter.`
+    );
+  } else if (info) {
+    parts.push(`The page is about ${info.examName}. If their message names no exam, they mean this one.`);
+  }
+  // 2026-10-19: 21 of 27 signed-in students who typed had exams on their profile, and V asked anyway.
+  if (who.profileExams && who.profileExams.length > 0) {
+    parts.push(
+      `Their exams, from their profile: ${who.profileExams.join(", ")}. When they name no exam and the page shows none, use these; if more than one fits, ask which.`
+    );
+  }
   if (!who.signedIn) parts.push(ONE_REPLY_RULE);
   return parts.join("\n\n");
 }

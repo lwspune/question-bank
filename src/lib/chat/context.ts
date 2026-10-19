@@ -11,7 +11,7 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import { EXAM_REGISTRY } from "@/lib/exam/examContext";
 import { listActivePlans, readFreeLimits } from "@/lib/billing/plansQuery";
 import { getCachedExamCatalog } from "@/lib/exam/allExamStats";
-import { listChapterLandings } from "@/lib/questions/landing";
+import { listChapterSearchRows } from "./subtopicIndex";
 import {
   buildExamFacts,
   buildFreeFacts,
@@ -19,6 +19,7 @@ import {
   buildSystemPrompt,
   buildSystemTail,
   NAV_FACTS,
+  GUIDE_FACTS,
   type ChatExamFact,
 } from "./facts";
 import { chapterPath, findChapters, formatChapterHits, type ChapterSearchRow } from "./chapterSearch";
@@ -27,6 +28,15 @@ import type { VTool } from "./anthropic";
 import type { Performance } from "@/lib/performance/compute";
 import type { PracticeCounts } from "@/lib/activity/practiceCounts";
 import { progressTool } from "./progress";
+import { pageContext } from "./pageContext";
+
+/** Profile slugs as the exam names V's facts use; a retired or unknown slug is dropped. */
+export function profileExamNames(slugs: readonly string[]): string[] {
+  return slugs.flatMap((s) => {
+    const e = EXAM_REGISTRY.find((x) => x.slug === s);
+    return e && e.noPublicContent !== true ? [e.displayName] : [];
+  });
+}
 
 function toExamFact(e: (typeof EXAM_REGISTRY)[number], pyqBySlug: Map<string, number> | null): ChatExamFact {
   return {
@@ -47,7 +57,7 @@ export type VContext = { system: string; systemTail: string; tools: VTool[]; all
 
 /**
  * `anon` reads only what the public may read: active plans, free limits, PUBLIC
- * count. `loadChapters` defaults to the cached landing list; a script outside
+ * count. `loadChapters` defaults to the cached chapter list with its subtopics; a script outside
  * Next passes the uncached one (scripts/chat/replay-typed.ts). `page` is the
  * (already cleaned) path the student asked from; V is told it and may link it.
  */
@@ -62,9 +72,11 @@ export async function loadVContext(
     loadOwnProgress?: () => Promise<Performance | null>;
     /** The student's practice outside mocks, for the same tool (lib/activity/practiceCounts.ts). */
     loadOwnPractice?: () => Promise<PracticeCounts>;
+    /** student_profiles.target_exams: V uses them when the student names no exam. */
+    profileExamSlugs?: readonly string[];
   } = {}
 ): Promise<VContext> {
-  const loadChapters = opts.loadChapters ?? listChapterLandings;
+  const loadChapters = opts.loadChapters ?? listChapterSearchRows;
   const [plans, limits, bankCount, pyqBySlug] = await Promise.all([
     listActivePlans(anon),
     readFreeLimits(anon),
@@ -84,10 +96,26 @@ export async function loadVContext(
     free: buildFreeFacts(limits),
     bankTotal: bankCount.count ?? 0,
     nav: NAV_FACTS,
+    guides: GUIDE_FACTS,
   });
-  const systemTail = buildSystemTail({ page: opts.page ?? null, signedIn: opts.signedIn ?? true });
+  // The search list is cached, so reading it for the page costs no database read.
+  const pageInfo = opts.page
+    ? pageContext(
+        opts.page,
+        await loadChapters().catch((err) => {
+          console.error("V: chapter list unavailable for the page", err);
+          return [];
+        })
+      )
+    : null;
+  const systemTail = buildSystemTail({
+    page: opts.page ?? null,
+    signedIn: opts.signedIn ?? true,
+    pageInfo,
+    profileExams: profileExamNames(opts.profileExamSlugs ?? []),
+  });
 
-  const allowedPaths = new Set(pathsInReply([...NAV_FACTS, ...exams].join("\n")));
+  const allowedPaths = new Set(pathsInReply([...NAV_FACTS, ...GUIDE_FACTS, ...exams].join("\n")));
   if (opts.page) allowedPaths.add(opts.page);
 
   const findChaptersTool: VTool = {

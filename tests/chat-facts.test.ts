@@ -9,9 +9,12 @@ import {
   NAV_FACTS,
   buildSystemPrompt,
   buildSystemTail,
+  buildGuideFacts,
+  GUIDE_FACTS,
   type ChatExamFact,
   type ChatPlanFact,
 } from "@/lib/chat/facts";
+import { GUIDE_CATALOG } from "@/lib/guide/guideCatalog";
 
 const EM_DASH = String.fromCharCode(0x2014);
 
@@ -166,6 +169,31 @@ describe("NAV_FACTS", () => {
   });
 });
 
+// 2026-10-19: asked for NDA GAT weightage, V said "I don't have weightage data"; the guides have it.
+describe("buildGuideFacts", () => {
+  const catalog = {
+    nda: [{ href: "/guide/nda-physics", exam: "NDA PART B Physics" }],
+    "mht-cet": [{ href: "/guide/mht-cet-physics", exam: "MHT-CET Physics" }],
+  };
+
+  it("gives each subject guide one line, its page first", () => {
+    expect(buildGuideFacts(catalog)).toEqual([
+      "/guide/nda-physics: NDA PART B Physics, which chapters carry the most marks and what to do first.",
+      "/guide/mht-cet-physics: MHT-CET Physics, which chapters carry the most marks and what to do first.",
+    ]);
+  });
+
+  it("covers every guide in the catalogue, so a new guide reaches V without a code change", () => {
+    const hrefs = Object.values(GUIDE_CATALOG).flatMap((cards) => (cards ?? []).map((c) => c.href));
+    expect(hrefs.length).toBeGreaterThan(0);
+    for (const href of hrefs) expect(GUIDE_FACTS.some((line) => line.startsWith(`${href}: `))).toBe(true);
+  });
+
+  it("uses no em dashes, since V copies the style it is shown", () => {
+    expect(GUIDE_FACTS.join(" ")).not.toContain(EM_DASH);
+  });
+});
+
 describe("buildSystemPrompt", () => {
   const base = {
     exams: ["NDA: senior stage, has mocks."],
@@ -229,6 +257,22 @@ describe("buildSystemPrompt", () => {
     const p = buildSystemPrompt(base);
     expect(p).toMatch(/chapter numbers? (are|is) not stored/i);
     expect(p).toContain("Electric Charges and Fields");
+  });
+
+  it("lists the subject guides and has V link the subject's own guide for strategy questions", () => {
+    const p = buildSystemPrompt({ ...base, guides: ["/guide/nda-physics: NDA PART B Physics, which chapters carry the most marks and what to do first."] });
+    expect(p).toMatch(/STRATEGY GUIDES\n\/guide\/nda-physics: NDA PART B Physics/);
+    expect(p).toMatch(/link that subject's guide from STRATEGY GUIDES/);
+    expect(p).toMatch(/never say you have no weightage/i);
+  });
+
+  // 2026-10-19 check: V told a student to pick two subtopics in the builder, which picks whole chapters.
+  it("tells V the practice-test builder picks whole chapters, not subtopics", () => {
+    expect(buildSystemPrompt(base)).toMatch(/whole chapters \(up to 5\), not subtopics/);
+  });
+
+  it("lets V take the exam from the student's profile, which is not a guess", () => {
+    expect(buildSystemPrompt(base)).toMatch(/named it, the page shows it, or their profile lists it/);
   });
 
   // 2026-10-18: V guessed CBSE for "class 12th physics rotational dynamics" (a Maharashtra chapter) and said "not found".
@@ -301,6 +345,31 @@ describe("buildSystemTail", () => {
 
   it("is empty for a signed-in student on no known page", () => {
     expect(buildSystemTail({ page: null, signedIn: true })).toBe("");
+  });
+
+  // 2026-10-19: "pe pyqs 2022 to 2026" on the Solid State page was searched as Physical Education.
+  it("tells V the page's chapter and to assume it when the message names none", () => {
+    const t = buildSystemTail({
+      page: "/board/mh-hsc-12/chemistry/solid-state",
+      signedIn: true,
+      pageInfo: { examName: "MH HSC 12", subjectName: "Chemistry", chapterName: "Solid State" },
+    });
+    expect(t).toContain("Solid State (MH HSC 12, Chemistry)");
+    expect(t).toMatch(/names no chapter or is unclear, they mean this chapter/i);
+  });
+
+  it("tells V the page's exam when the page is about one exam only", () => {
+    const t = buildSystemTail({ page: "/exams/mh-ssc-10", signedIn: true, pageInfo: { examName: "MH SSC 10" } });
+    expect(t).toMatch(/page is about MH SSC 10/);
+    expect(t).not.toMatch(/they mean this chapter/i);
+  });
+
+  // 21 of the 27 signed-in students who typed to V had exams on their profile, and V asked anyway.
+  it("tells V the student's exams from their profile, page first, asking when more than one fits", () => {
+    const t = buildSystemTail({ page: null, signedIn: true, profileExams: ["MHT-CET", "MH HSC 12"] });
+    expect(t).toContain("Their exams, from their profile: MHT-CET, MH HSC 12.");
+    expect(t).toMatch(/if more than one fits, ask which/i);
+    expect(buildSystemTail({ page: null, signedIn: true, profileExams: [] })).toBe("");
   });
 
   it("has no em dashes of its own", () => {

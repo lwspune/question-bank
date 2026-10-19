@@ -160,6 +160,13 @@ export const MOCK_TOGETHER_SENDS_KEEP = 10;
 /** ...and at least this many friends start a paper they were sent. */
 export const MOCK_TOGETHER_STARTS_KEEP = 3;
 
+/**
+ * "v-finder" (study-partner Phase 0): V's page-finding is reliable enough to
+ * build the explain-a-question step on top of it when, of the chapter asks in
+ * the window, at most this share got a false "not found" (baseline 4 of 17).
+ */
+export const V_FINDER_NOT_FOUND_MAX_PCT = 10;
+
 /** The ISO date `days` (by default `EXPERIMENT_WINDOW_DAYS`) after `liveSince`. */
 export function checkOn(liveSince: string, days: number = EXPERIMENT_WINDOW_DAYS): string {
   const d = new Date(`${liveSince}T00:00:00Z`);
@@ -185,7 +192,8 @@ export type Readout =
   | "practice-tests"
   | "practice-friends"
   | "mock-together"
-  | "pyq-wording";
+  | "pyq-wording"
+  | "v-finder";
 
 export type Experiment = {
   id: string;
@@ -434,6 +442,20 @@ export const EXPERIMENTS: readonly Experiment[] = [
     readout: "pyq-wording",
     status: "running",
   },
+  {
+    id: "v-finder",
+    title: "V finds what we have (study partner, Phase 0)",
+    change:
+      "V is told the page's chapter or exam and the exams on the student's profile, its chapter search reads subtopic names and finds a chapter named inside a sentence, and it links the subject's strategy guide for weightage questions.",
+    why: "Reading every conversation (2026-10-19): 4 of 17 chapter asks got a false \"not found\", about 7 conversations spent turns on \"which exam?\" though 21 of 27 signed-in typers had exams on their profile, and weightage asks got \"I don't have that data\". Explaining questions (Phase 1) needs the finder to be right first.",
+    metric:
+      "False \"not found\" share of chapter asks (read from chat_interactions.tool_calls); conversations with a \"which exam?\" turn V could have skipped; signed-in V replies followed by practice within 30 minutes",
+    rule: `Start Phase 1 (Ask V about this question) if at most ${V_FINDER_NOT_FOUND_MAX_PCT}% of chapter asks get a false "not found"; above that, fix the misses the saved searches show first.`,
+    liveSince: "2026-10-19",
+    windowDays: 14,
+    readout: "v-finder",
+    status: "running",
+  },
 ];
 
 export type DecidedAgainst = { title: string; decision: string; on: string; why: string };
@@ -502,7 +524,10 @@ export type ReadingMetric =
   | "mock-together-sends"
   | "mock-together-starts"
   | "mock-together-signups"
-  | "pyq-wording-impressions";
+  | "pyq-wording-impressions"
+  | "v-false-not-found"
+  | "v-clarify-turns"
+  | "v-practice-after";
 
 export type Reading = { on: string; value: number; note?: string };
 
@@ -650,6 +675,23 @@ export const READINGS: Record<ReadingMetric, { label: string; source: string; en
         note: "Baseline before the change, inferred from each student's free paper (no box was recorded yet): 3 of 5. /browse: 2 of 21",
       },
     ],
+  },
+  "v-false-not-found": {
+    label: "V: chapter asks answered \"not found\" for a chapter we have (%)",
+    source:
+      "chat_interactions typed_question with reply_source 'ai' whose message asks for chapter material: read each reply and its tool_calls, and check the bank for the chapter",
+    entries: [{ on: "2026-10-19", value: 24, note: "Baseline: 4 of 17 chapter asks, 2026-10-09 to 10-19" }],
+  },
+  "v-clarify-turns": {
+    label: "V: conversations with a \"which exam?\" turn the profile or page could have answered",
+    source: "chat_interactions grouped by conversation_id: read each conversation",
+    entries: [{ on: "2026-10-19", value: 7, note: "Baseline over every AI conversation, 2026-10-15 to 10-19" }],
+  },
+  "v-practice-after": {
+    label: "V: signed-in replies followed by practice within 30 minutes (%)",
+    source:
+      "chat_interactions typed_question 'ai' with user_id (staff excluded) → any user_activity question_practiced, mock_started or drill_started by the same user in the next 30 minutes",
+    entries: [{ on: "2026-10-19", value: 46, note: "Baseline: 18 of 39 replies; students were often mid-session, so read it as a trend" }],
   },
   "pyq-wording-impressions": {
     label: "Search impressions for \"previous year\" queries, after ÷ before",
