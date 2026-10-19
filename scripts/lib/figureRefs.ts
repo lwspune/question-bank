@@ -290,6 +290,36 @@ const SOLUTION_PLACEHOLDER = /\[(?:circuit\s+)?(?:diagram|figure|graph)\]/i;
 const AT_END_OF_ANSWER = /\b(?:figure|diagram|graph|circuit|drawing|structure)s?\b[^.]{0,40}\bat\s+the\s+end\s+of\s+this\s+answer\b/i;
 
 export function solutionCitesFigure(solution: string | null): boolean {
-  const s = solution ?? "";
+  // A citation that names the textbook as the figure's home is honest (citeTextbookFigures).
+  const s = (solution ?? "").replace(TEXTBOOK_QUALIFIED, "").replace(FIGURE_NOT_A_DRAWING, "");
   return referencesFigure(s, null) || SOLUTION_PLACEHOLDER.test(s) || AT_END_OF_ANSWER.test(s);
+}
+
+/**
+ * Make a board answer's bare figure number honest: "(Fig. 14.15)" becomes
+ * "(the textbook's Fig. 14.15)". A board student has the book, so a citation
+ * that says whose figure it is points at something real; a bare one reads as
+ * a figure the answer should carry. Idempotent. Used by
+ * scripts/solution-figures/cite-textbook.ts on answers no figure was attached to.
+ */
+// A figure NUMBER is dotted and starts 1-9 ("5.3", "11.4"): "figure 314", "figures
+// 0.8" and "significant figures. 3." are numbers, not figures. A possessive in
+// front ("the chapter's", "its own") is replaced, not stacked.
+const BARE_FIG_NUMBER = /(^|[^\w'])((?:the\s+)?(?:chapter's\s+(?:own\s+)?|its\s+(?:own\s+)?)?)(fig(?:ure)?s?\.?\s*[1-9]\d*\.\d+(?:\s*\([a-z]\))?)(?![\d-])/gi;
+const TEXTBOOK_QUALIFIED = /\b(?:as\s+shown\s+in\s+|in\s+)?(?:the\s+)?textbook'?s?\s+fig(?:ure)?s?\.?\s*\d/gi;
+// In an ANSWER, "figure" is often a number or a cheque's box, not a drawing:
+// "significant figures (20.17 u)", "the figure 338", "figures 0.8", "figure
+// 2-10 per cent", "the figure box", "the fig (Ficus)". A drawing's number is
+// dotted ("5.3") or a single option letter ("(B)"); these are stripped first.
+// "figures." spelled out and ending a sentence is a word, whatever follows it
+// ("2019 figures.  1. At the other end"); the abbreviation "Fig." is not.
+const FIGURE_NOT_A_DRAWING = /\bfig(?:ure)?s?\.?\s*(?:\((?![a-z]\))|0\.\d|\d+(?![.\d])|\d+-)|\bfigure\s+box\b|\bfigures?\.\s/gi;
+
+export function citeTextbookFigures(solution: string): string {
+  return solution.replace(BARE_FIG_NUMBER, (m, pre: string, the: string, fig: string, offset: number, all: string) => {
+    const start = offset + pre.length;
+    if (/textbook'?s?\s+$/i.test(all.slice(Math.max(0, start - 12), start))) return m;
+    const sentenceStart = /(^|[.!?:]\s+|\n\s*)$/.test(all.slice(0, start));
+    return `${pre}${sentenceStart ? "The" : "the"} textbook's ${fig}`;
+  });
 }
