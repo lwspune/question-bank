@@ -86,6 +86,12 @@ export default function FlemingsLeftHandRule() {
   const raBI = corner(FLEMING_AXES.field, FLEMING_AXES.current);
   const raIF = corner(FLEMING_AXES.current, FLEMING_AXES.force);
   const raBF = corner(FLEMING_AXES.field, FLEMING_AXES.force);
+  // A label sits beyond its arrow tip: to the right of a tip that points right,
+  // to the left (end-anchored) of one that points left, so it never covers the arrowhead.
+  const labelAt = (tip: [number, number]) =>
+    tip[0] >= O[0]
+      ? { x: tip[0] + 6, y: tip[1] + 4, textAnchor: "start" as const }
+      : { x: tip[0] - 6, y: tip[1] + 4, textAnchor: "end" as const };
   const path = (pts: [number, number][]) =>
     pts.map((q, i) => `${i === 0 ? "M" : "L"}${q[0]},${q[1]}`).join(" ");
 
@@ -144,9 +150,9 @@ export default function FlemingsLeftHandRule() {
         {/* Force (F) — thumb */}
         <line x1={O[0]} y1={O[1]} x2={Fz[0]} y2={Fz[1]} stroke="currentColor" className="text-rose-600 dark:text-rose-400" strokeWidth={2.5} markerEnd="url(#flh-f)" />
 
-        <text x={Bx[0] + 6} y={Bx[1] + 4} className="fill-indigo-700 dark:fill-indigo-300 text-[12px] font-semibold">B (field)</text>
-        <text x={Iy[0] + 6} y={Iy[1] + 4} className="fill-emerald-700 dark:fill-emerald-300 text-[12px] font-semibold">I (current)</text>
-        <text x={Fz[0] + 6} y={Fz[1] + 2} className="fill-rose-700 dark:fill-rose-300 text-[12px] font-semibold">F (force)</text>
+        <text {...labelAt(Bx)} className="fill-indigo-700 dark:fill-indigo-300 text-[12px] font-semibold">B (field)</text>
+        <text {...labelAt(Iy)} className="fill-emerald-700 dark:fill-emerald-300 text-[12px] font-semibold">I (current)</text>
+        <text {...labelAt(Fz)} className="fill-rose-700 dark:fill-rose-300 text-[12px] font-semibold">F (force)</text>
 
         <circle cx={O[0]} cy={O[1]} r={3} className="fill-foreground" />
       </svg>
