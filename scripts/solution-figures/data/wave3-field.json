@@ -1,0 +1,204 @@
+{
+  "figures": [
+    {
+      "key": "field-two-equal-positive-charges",
+      "draw": {
+        "kind": "field",
+        "xlim": [
+          -3,
+          3
+        ],
+        "ylim": [
+          -2.6,
+          2.6
+        ],
+        "charges": [
+          {
+            "q": 1,
+            "at": [
+              -1,
+              0
+            ],
+            "label": "+q"
+          },
+          {
+            "q": 1,
+            "at": [
+              1,
+              0
+            ],
+            "label": "+q"
+          }
+        ],
+        "equipotentials": [
+          1.2,
+          1.6,
+          2.2,
+          3.5
+        ],
+        "marks": [
+          {
+            "at": [
+              0,
+              0
+            ],
+            "label": "neutral point, E = 0",
+            "offset": [
+              -40,
+              -80
+            ],
+            "leader": true
+          }
+        ]
+      },
+      "ids": [
+        "463f473e-5770-4239-ba49-c26fed61166f"
+      ]
+    },
+    {
+      "key": "field-dipole-equipotentials",
+      "draw": {
+        "kind": "field",
+        "xlim": [
+          -3,
+          3
+        ],
+        "ylim": [
+          -2.6,
+          2.6
+        ],
+        "charges": [
+          {
+            "q": 1,
+            "at": [
+              -1,
+              0
+            ],
+            "label": "+q"
+          },
+          {
+            "q": -1,
+            "at": [
+              1,
+              0
+            ],
+            "label": "−q"
+          }
+        ],
+        "equipotentials": [
+          -2.5,
+          -1,
+          -0.4,
+          0,
+          0.4,
+          1,
+          2.5
+        ],
+        "labels": [
+          {
+            "text": "V = 0",
+            "at": [
+              0.08,
+              2.3
+            ],
+            "ha": "left"
+          }
+        ]
+      },
+      "ids": [
+        "9e932c96-a74d-4745-8cc5-0d2241232497"
+      ]
+    },
+    {
+      "key": "field-current-loop-section",
+      "draw": {
+        "kind": "field",
+        "xlim": [
+          -3,
+          3
+        ],
+        "ylim": [
+          -2.6,
+          2.6
+        ],
+        "loop": {
+          "a": 1,
+          "current": 1
+        },
+        "labels": [
+          {
+            "text": "towards you",
+            "at": [
+              -1,
+              -0.5
+            ],
+            "va": "top",
+            "size": 10
+          },
+          {
+            "text": "away from you",
+            "at": [
+              1,
+              -0.5
+            ],
+            "va": "top",
+            "size": 10
+          },
+          {
+            "text": "loop on the table (dotted)",
+            "at": [
+              0,
+              -2.35
+            ],
+            "size": 10,
+            "color": "#6b7280"
+          }
+        ]
+      },
+      "ids": [
+        "078fc508-ac8b-4081-9b05-7848b927af78"
+      ]
+    },
+    {
+      "key": "helix-increasing-pitch-along-b-e",
+      "draw": {
+        "kind": "curve3d",
+        "x": "cos(t)",
+        "y": "sin(t)",
+        "z": "0.012*t**2",
+        "t": [
+          0,
+          37.7
+        ],
+        "arrows": [
+          {
+            "from": [
+              0,
+              0,
+              -0.6
+            ],
+            "to": [
+              0,
+              0,
+              18.5
+            ],
+            "label": "B, E"
+          }
+        ],
+        "view": [
+          14,
+          -60
+        ],
+        "aspect": [
+          1,
+          1,
+          1.8
+        ]
+      },
+      "ids": [
+        "b99fe328-5769-434c-b6b1-56bf60ab0224"
+      ]
+    }
+  ],
+  "edits": []
+}
