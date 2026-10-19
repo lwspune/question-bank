@@ -4,14 +4,22 @@
  * sit on cached pages that carry nothing per visitor, so they ask once per
  * page load. Public and cached at the edge for a minute: a switch reaches
  * every page within about a minute, and most loads never reach a function.
+ *
+ * READ LIVE, NEVER FROM THE BUILD (2026-10-19). The first deploy kept answering
+ * {explain:false} after the switch was saved, while /api/chat/question (which
+ * reads its request) saw it on: a GET that ignores its request can be built as
+ * static and its database read cached. So it takes the request and opts out of
+ * Next's caches explicitly; the minute at the edge is the only cache.
  */
-import { NextResponse } from "next/server";
+import { NextResponse, type NextRequest } from "next/server";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { readChatSettings } from "@/lib/chat/settingsAdmin";
 
 export const dynamic = "force-dynamic";
+export const revalidate = 0;
+export const fetchCache = "force-no-store";
 
-export async function GET() {
+export async function GET(_request: NextRequest) {
   const s = await readChatSettings(createSupabaseAdminClient());
   return NextResponse.json(
     { explain: s.aiEnabled && s.explainEnabled },
