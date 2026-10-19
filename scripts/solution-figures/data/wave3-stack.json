@@ -1,0 +1,867 @@
+{
+  "figures": [
+    {
+      "key": "resistors-2-3-6-series-and-parallel",
+      "draw": {
+        "kind": "stack",
+        "captions": [
+          "(i) In series: 2 + 3 + 6 = 11 Ω",
+          "(ii) In parallel: 1/Rp = 1/2 + 1/3 + 1/6, so Rp = 1 Ω"
+        ],
+        "panels": [
+          {
+            "kind": "circuit",
+            "elements": [
+              {
+                "el": "Dot"
+              },
+              {
+                "el": "Line",
+                "d": "right",
+                "l": 1
+              },
+              {
+                "el": "Resistor",
+                "d": "right",
+                "label": "2 Ω"
+              },
+              {
+                "el": "Resistor",
+                "d": "right",
+                "label": "3 Ω"
+              },
+              {
+                "el": "Resistor",
+                "d": "right",
+                "label": "6 Ω"
+              },
+              {
+                "el": "Line",
+                "d": "right",
+                "l": 1
+              },
+              {
+                "el": "Dot"
+              }
+            ]
+          },
+          {
+            "kind": "circuit",
+            "elements": [
+              {
+                "el": "Dot"
+              },
+              {
+                "el": "Line",
+                "d": "right",
+                "l": 1,
+                "save": "n"
+              },
+              {
+                "el": "Line",
+                "d": "up",
+                "l": 1.5
+              },
+              {
+                "el": "Resistor",
+                "d": "right",
+                "l": 3,
+                "label": "2 Ω"
+              },
+              {
+                "el": "Line",
+                "d": "down",
+                "l": 1.5,
+                "save": "m"
+              },
+              {
+                "el": "Resistor",
+                "at": "n",
+                "d": "right",
+                "l": 3,
+                "label": "3 Ω"
+              },
+              {
+                "el": "Line",
+                "at": "n",
+                "d": "down",
+                "l": 1.5
+              },
+              {
+                "el": "Resistor",
+                "d": "right",
+                "l": 3,
+                "label": "6 Ω",
+                "label_loc": "bottom"
+              },
+              {
+                "el": "Line",
+                "d": "up",
+                "l": 1.5
+              },
+              {
+                "el": "Line",
+                "at": "m",
+                "d": "right",
+                "l": 1
+              },
+              {
+                "el": "Dot"
+              }
+            ]
+          }
+        ]
+      },
+      "ids": [
+        "f4721a9a-464b-4e6c-8bba-eb9290cd0c0d"
+      ]
+    },
+    {
+      "key": "power-against-r-i-v",
+      "draw": {
+        "kind": "stack",
+        "captions": [
+          "(a) P against R, V constant: P = V²/R",
+          "(b) P against I, R constant: P = I²R",
+          "(c) P against V, R constant: P = V²/R"
+        ],
+        "panels": [
+          {
+            "kind": "plot",
+            "xlim": [
+              0,
+              5.3
+            ],
+            "ylim": [
+              0,
+              8.5
+            ],
+            "xlabel": "R",
+            "ylabel": "P",
+            "xticks": [],
+            "yticks": [],
+            "series": [
+              {
+                "type": "function",
+                "expr": "1/x",
+                "domain": [
+                  0.12,
+                  5
+                ]
+              }
+            ],
+            "labels": [],
+            "marks": [],
+            "size": [
+              5,
+              3.2
+            ]
+          },
+          {
+            "kind": "plot",
+            "xlim": [
+              0,
+              3
+            ],
+            "ylim": [
+              0,
+              8.5
+            ],
+            "xlabel": "I",
+            "ylabel": "P",
+            "xticks": [],
+            "yticks": [],
+            "series": [
+              {
+                "type": "function",
+                "expr": "x**2",
+                "domain": [
+                  0,
+                  2.8
+                ]
+              }
+            ],
+            "labels": [],
+            "marks": [],
+            "size": [
+              5,
+              3.2
+            ]
+          },
+          {
+            "kind": "plot",
+            "xlim": [
+              0,
+              3
+            ],
+            "ylim": [
+              0,
+              8.5
+            ],
+            "xlabel": "V",
+            "ylabel": "P",
+            "xticks": [],
+            "yticks": [],
+            "series": [
+              {
+                "type": "function",
+                "expr": "x**2",
+                "domain": [
+                  0,
+                  2.8
+                ]
+              }
+            ],
+            "labels": [],
+            "marks": [],
+            "size": [
+              5,
+              3.2
+            ]
+          }
+        ]
+      },
+      "ids": [
+        "2d0ca415-1966-4897-8682-2b7309ca158a"
+      ]
+    },
+    {
+      "key": "terminal-voltage-against-r-and-i",
+      "draw": {
+        "kind": "stack",
+        "captions": [
+          "(a) V against R: V = ER/(R + r)",
+          "(b) V against I: V = E − Ir"
+        ],
+        "panels": [
+          {
+            "kind": "plot",
+            "xlim": [
+              0,
+              9.5
+            ],
+            "ylim": [
+              0,
+              1.25
+            ],
+            "xlabel": "R",
+            "ylabel": "V",
+            "xticks": [],
+            "yticks": [],
+            "series": [
+              {
+                "type": "function",
+                "expr": "x/(x+1)",
+                "domain": [
+                  0,
+                  9
+                ]
+              },
+              {
+                "type": "hline",
+                "y": 1,
+                "style": "--",
+                "color": "#6b7280"
+              },
+              {
+                "type": "segment",
+                "from": [
+                  1,
+                  0
+                ],
+                "to": [
+                  1,
+                  0.5
+                ],
+                "style": ":",
+                "color": "#6b7280"
+              }
+            ],
+            "labels": [
+              {
+                "text": "E",
+                "at": [
+                  -0.15,
+                  1
+                ],
+                "ha": "right",
+                "va": "center",
+                "size": 12
+              },
+              {
+                "text": "E/2",
+                "at": [
+                  -0.15,
+                  0.5
+                ],
+                "ha": "right",
+                "va": "center",
+                "size": 12
+              },
+              {
+                "text": "r",
+                "at": [
+                  1,
+                  -0.04
+                ],
+                "ha": "center",
+                "va": "top",
+                "size": 12
+              }
+            ],
+            "marks": [
+              {
+                "at": [
+                  1,
+                  0.5
+                ],
+                "label": ""
+              }
+            ],
+            "size": [
+              5,
+              3.2
+            ]
+          },
+          {
+            "kind": "plot",
+            "xlim": [
+              0,
+              1.25
+            ],
+            "ylim": [
+              0,
+              1.25
+            ],
+            "xlabel": "I",
+            "ylabel": "V",
+            "xticks": [],
+            "yticks": [],
+            "series": [
+              {
+                "type": "function",
+                "expr": "1 - x",
+                "domain": [
+                  0,
+                  1
+                ]
+              }
+            ],
+            "labels": [
+              {
+                "text": "E",
+                "at": [
+                  -0.03,
+                  1
+                ],
+                "ha": "right",
+                "va": "center",
+                "size": 12
+              },
+              {
+                "text": "E/r",
+                "at": [
+                  1,
+                  -0.04
+                ],
+                "ha": "center",
+                "va": "top",
+                "size": 12
+              },
+              {
+                "text": "slope = −r",
+                "at": [
+                  0.52,
+                  0.55
+                ],
+                "ha": "left",
+                "va": "bottom",
+                "size": 12
+              }
+            ],
+            "marks": [],
+            "size": [
+              5,
+              3.2
+            ]
+          }
+        ]
+      },
+      "ids": [
+        "a55109e6-fbcc-4b71-ba74-04315c3593fe",
+        "a77b33e5-b90f-4c10-9e3f-650bb5a254bd"
+      ]
+    },
+    {
+      "key": "loop-l-by-2-flux-and-emf",
+      "draw": {
+        "kind": "stack",
+        "captions": [
+          "Flux φ against t",
+          "Induced emf E against t"
+        ],
+        "panels": [
+          {
+            "kind": "plot",
+            "xlim": [
+              0,
+              3.2
+            ],
+            "ylim": [
+              0,
+              1.3
+            ],
+            "xlabel": "t",
+            "ylabel": "φ",
+            "xticks": [],
+            "yticks": [],
+            "series": [
+              {
+                "type": "points",
+                "x": [
+                  0,
+                  1,
+                  1.5,
+                  2,
+                  2.5,
+                  3
+                ],
+                "y": [
+                  0,
+                  0,
+                  1,
+                  1,
+                  0,
+                  0
+                ],
+                "marker": ""
+              },
+              {
+                "type": "segment",
+                "from": [
+                  0,
+                  1
+                ],
+                "to": [
+                  1.5,
+                  1
+                ],
+                "style": ":",
+                "color": "#6b7280"
+              }
+            ],
+            "labels": [
+              {
+                "text": "Bl²/4",
+                "at": [
+                  -0.05,
+                  1
+                ],
+                "ha": "right",
+                "va": "center",
+                "size": 12
+              },
+              {
+                "text": "l/v",
+                "at": [
+                  1,
+                  -0.05
+                ],
+                "ha": "center",
+                "va": "top",
+                "size": 12
+              },
+              {
+                "text": "3l/2v",
+                "at": [
+                  1.5,
+                  -0.05
+                ],
+                "ha": "center",
+                "va": "top",
+                "size": 12
+              },
+              {
+                "text": "2l/v",
+                "at": [
+                  2,
+                  -0.05
+                ],
+                "ha": "center",
+                "va": "top",
+                "size": 12
+              },
+              {
+                "text": "5l/2v",
+                "at": [
+                  2.5,
+                  -0.05
+                ],
+                "ha": "center",
+                "va": "top",
+                "size": 12
+              }
+            ],
+            "marks": [],
+            "size": [
+              5,
+              3.2
+            ]
+          },
+          {
+            "kind": "plot",
+            "xlim": [
+              0,
+              3.2
+            ],
+            "ylim": [
+              -0.8,
+              0.8
+            ],
+            "xlabel": "t",
+            "ylabel": "E",
+            "xticks": [],
+            "yticks": [],
+            "series": [
+              {
+                "type": "points",
+                "x": [
+                  0,
+                  1,
+                  1,
+                  1.5,
+                  1.5,
+                  2,
+                  2,
+                  2.5,
+                  2.5,
+                  3
+                ],
+                "y": [
+                  0,
+                  0,
+                  -0.5,
+                  -0.5,
+                  0,
+                  0,
+                  0.5,
+                  0.5,
+                  0,
+                  0
+                ],
+                "marker": ""
+              },
+              {
+                "type": "hline",
+                "y": 0,
+                "color": "#111111",
+                "width": 1
+              }
+            ],
+            "labels": [
+              {
+                "text": "−Blv/2",
+                "at": [
+                  1.25,
+                  -0.55
+                ],
+                "ha": "center",
+                "va": "top",
+                "size": 12
+              },
+              {
+                "text": "+Blv/2",
+                "at": [
+                  2.25,
+                  0.55
+                ],
+                "ha": "center",
+                "va": "bottom",
+                "size": 12
+              },
+              {
+                "text": "l/v",
+                "at": [
+                  1,
+                  0.04
+                ],
+                "ha": "center",
+                "va": "bottom",
+                "size": 12
+              },
+              {
+                "text": "3l/2v",
+                "at": [
+                  1.5,
+                  0.04
+                ],
+                "ha": "center",
+                "va": "bottom",
+                "size": 12
+              },
+              {
+                "text": "2l/v",
+                "at": [
+                  2,
+                  -0.04
+                ],
+                "ha": "center",
+                "va": "top",
+                "size": 12
+              },
+              {
+                "text": "5l/2v",
+                "at": [
+                  2.5,
+                  -0.04
+                ],
+                "ha": "center",
+                "va": "top",
+                "size": 12
+              }
+            ],
+            "marks": [],
+            "size": [
+              5,
+              3.2
+            ]
+          }
+        ]
+      },
+      "ids": [
+        "7b2d1c6f-bc8e-44c7-b61f-837c668152be"
+      ]
+    },
+    {
+      "key": "square-loop-leaving-field-flux-and-emf",
+      "draw": {
+        "kind": "stack",
+        "captions": [
+          "Flux against t",
+          "|emf| against t"
+        ],
+        "panels": [
+          {
+            "kind": "plot",
+            "xlim": [
+              0,
+              5.3
+            ],
+            "ylim": [
+              0,
+              1.3
+            ],
+            "xlabel": "t (s)",
+            "ylabel": "φ",
+            "yticks": [],
+            "xticks": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "size": [
+              5,
+              3.2
+            ],
+            "series": [
+              {
+                "type": "points",
+                "x": [
+                  0,
+                  3,
+                  4,
+                  5
+                ],
+                "y": [
+                  1,
+                  1,
+                  0,
+                  0
+                ],
+                "marker": ""
+              }
+            ],
+            "labels": [
+              {
+                "text": "BA",
+                "at": [
+                  -0.1,
+                  1
+                ],
+                "ha": "right",
+                "va": "center",
+                "size": 12
+              }
+            ]
+          },
+          {
+            "kind": "plot",
+            "xlim": [
+              0,
+              5.3
+            ],
+            "ylim": [
+              0,
+              1.3
+            ],
+            "xlabel": "t (s)",
+            "ylabel": "|emf|",
+            "yticks": [],
+            "xticks": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5
+            ],
+            "size": [
+              5,
+              3.2
+            ],
+            "series": [
+              {
+                "type": "points",
+                "x": [
+                  0,
+                  3,
+                  3,
+                  4,
+                  4,
+                  5
+                ],
+                "y": [
+                  0,
+                  0,
+                  1,
+                  1,
+                  0,
+                  0
+                ],
+                "marker": ""
+              }
+            ],
+            "labels": [
+              {
+                "text": "Blv",
+                "at": [
+                  -0.1,
+                  1
+                ],
+                "ha": "right",
+                "va": "center",
+                "size": 12
+              }
+            ]
+          }
+        ]
+      },
+      "ids": [
+        "b18b9e35-2f16-41fa-b1a9-5688181be5fd"
+      ]
+    },
+    {
+      "key": "inductors-10-20-mh-emf-and-energy",
+      "draw": {
+        "kind": "stack",
+        "captions": [
+          "(I) |emf| against dI/dt: |emf| = L dI/dt",
+          "(II) Energy against I: U = LI²/2"
+        ],
+        "panels": [
+          {
+            "kind": "plot",
+            "xlim": [
+              0,
+              2.2
+            ],
+            "ylim": [
+              0,
+              4.4
+            ],
+            "xlabel": "dI/dt",
+            "ylabel": "|emf|",
+            "xticks": [],
+            "yticks": [],
+            "series": [
+              {
+                "type": "function",
+                "expr": "2*x",
+                "domain": [
+                  0,
+                  2
+                ],
+                "label": "20 mH"
+              },
+              {
+                "type": "function",
+                "expr": "x",
+                "domain": [
+                  0,
+                  2
+                ],
+                "label": "10 mH",
+                "color": "#c2410c"
+              }
+            ],
+            "labels": [],
+            "marks": [],
+            "size": [
+              5,
+              3.2
+            ]
+          },
+          {
+            "kind": "plot",
+            "xlim": [
+              0,
+              2.2
+            ],
+            "ylim": [
+              0,
+              4.4
+            ],
+            "xlabel": "I",
+            "ylabel": "U",
+            "xticks": [],
+            "yticks": [],
+            "series": [
+              {
+                "type": "function",
+                "expr": "x**2",
+                "domain": [
+                  0,
+                  2
+                ],
+                "label": "20 mH"
+              },
+              {
+                "type": "function",
+                "expr": "0.5*x**2",
+                "domain": [
+                  0,
+                  2
+                ],
+                "label": "10 mH",
+                "color": "#c2410c"
+              }
+            ],
+            "labels": [],
+            "marks": [],
+            "size": [
+              5,
+              3.2
+            ]
+          }
+        ]
+      },
+      "ids": [
+        "cf9f2f50-8ee4-4f58-b910-40e9bdbcbabb"
+      ]
+    }
+  ],
+  "edits": []
+}
