@@ -81,6 +81,11 @@ describe("planBatch", () => {
     expect(stray.errors.join("\n")).toMatch(/no figure in this batch/);
   });
 
+  it("refuses an edit carrying a control character, the mark of a backslash a shell ate (\\a in \\angle became BELL)", () => {
+    const errs = planBatch(batch({ edits: [{ id: A, find: "x", replace: "\\(\u0007ngle APB\\)" }, { id: B, find: "y\u0009", replace: "z" }] })).errors;
+    expect(errs.filter((e) => /control character/.test(e))).toHaveLength(2);
+  });
+
   it("refuses an empty or no-op edit", () => {
     const errs = planBatch(batch({ edits: [{ id: A, find: "", replace: "y" }, { id: B, find: "same", replace: "same" }] })).errors;
     expect(errs).toHaveLength(2);

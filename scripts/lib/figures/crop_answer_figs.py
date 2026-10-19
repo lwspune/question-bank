@@ -23,12 +23,73 @@ ZOOM = 3.0
 GAP = 36
 QUANTIZE_OVER = 900_000
 
+# PAGE FURNITURE. Every NCERT page carries its own copy of a 1894x1894 greyscale
+# image, the diagonal "(c) NCERT not to be republished" watermark, plus a full
+# page greyscale image; both showed through every crop (2026-10-19). A figure is
+# never repeated on most pages of a book, so an image whose size and colourspace
+# recur on at least FURNITURE_SHARE of the pages is furniture and is blanked
+# before rendering. Below FURNITURE_MIN_PAGES the rule is off: in a short file
+# every image is "on most pages".
+FURNITURE_SHARE = 0.8
+FURNITURE_MIN_PAGES = 5
+_furniture = {}
 
-def render(pdf, page_no, bbox, mask=()):
+
+def furniture_signatures(pages, share=FURNITURE_SHARE, min_pages=FURNITURE_MIN_PAGES):
+    """pages: one set of (width, height, colourspace) per page -> the signatures
+    present on at least `share` of the pages (none for a short document)."""
+    if len(pages) < min_pages:
+        return set()
+    counts = {}
+    for sigs in pages:
+        for s in sigs:
+            counts[s] = counts.get(s, 0) + 1
+    return {s for s, n in counts.items() if n >= share * len(pages)}
+
+
+FULL_PAGE_SHARE = 0.7
+
+
+def _signatures(pdf):
+    """Furniture of one book. An image covering most of its page is never
+    furniture: on a SCANNED book (some NCERT chapters are) the repeated
+    full-page image is the page itself, and blanking it would erase the figure.
+    The NCERT watermark covers about 41% of its page."""
+    if pdf not in _furniture:
+        doc = fitz.open(pdf)
+        sigs = furniture_signatures([{(i[2], i[3], i[5]) for i in p.get_images(full=True)} for p in doc])
+        keep = set()
+        for s in sigs:
+            for p in doc:
+                hit = next((i for i in p.get_images(full=True) if (i[2], i[3], i[5]) == s), None)
+                if hit is None:
+                    continue
+                rects = p.get_image_rects(hit[0])
+                area = max((r.width * r.height for r in rects), default=0)
+                if area < FULL_PAGE_SHARE * p.rect.width * p.rect.height:
+                    keep.add(s)
+                break
+        _furniture[pdf] = keep
+    return _furniture[pdf]
+
+
+def render(pdf, page_no, bbox, mask=(), keep_furniture=False):
     # A fresh document per part: a mask painted on the page must not reach
-    # another part cropped from the same page.
+    # another part cropped from the same page. keep_furniture reproduces a crop
+    # made before the watermark was removed (the backfill compares against it).
     page = fitz.open(pdf)[page_no]
+    furniture = set() if keep_furniture else _signatures(pdf)
+    for i in page.get_images(full=True):
+        if (i[2], i[3], i[5]) in furniture:
+            page.delete_image(i[0])
     w, h = page.rect.width, page.rect.height
+    # The crop's clip rounds outward by a pixel, so a mask that stops exactly on
+    # the crop's edge leaves a one-pixel strip of what it hid (the top of an
+    # NCERT "(d)" sub-label showed as a row of dots, 2026-10-19). A mask edge
+    # at or past the crop's edge is pushed 2 pt further out.
+    pad_x, pad_y = 2 / w, 2 / h
+    mask = [[m[0] - pad_x if m[0] <= bbox[0] else m[0], m[1] - pad_y if m[1] <= bbox[1] else m[1],
+             m[2] + pad_x if m[2] >= bbox[2] else m[2], m[3] + pad_y if m[3] >= bbox[3] else m[3]] for m in mask]
     for m in mask:
         # Fill with the page colour just right of the mask, so a mask on a
         # tinted panel does not leave a white notch.
@@ -66,7 +127,19 @@ def encode(im):
     return buf.getvalue()
 
 
+def selftest():
+    wm, page_img, fig = (1894, 1894, "DeviceGray"), (2480, 3508, "DeviceGray"), (446, 502, "DeviceCMYK")
+    book = [{wm, page_img}] * 9 + [{wm, page_img, fig}]
+    assert furniture_signatures(book) == {wm, page_img}, "repeated page images are furniture, a figure is not"
+    assert furniture_signatures([{wm}] * 7 + [set()] * 3) == set(), "70% of pages is below the share"
+    assert furniture_signatures([{fig}] * 3) == set(), "a short file has no furniture"
+    print("selftest ok")
+
+
 def main():
+    if sys.argv[1:] == ["--selftest"]:
+        selftest()
+        return
     spec = json.load(open(sys.argv[1], encoding="utf-8"))
     os.makedirs(spec["outdir"], exist_ok=True)
     out = {}
