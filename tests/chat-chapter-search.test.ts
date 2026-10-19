@@ -231,3 +231,71 @@ describe("findChapters: when the exam V passed has no such chapter", () => {
     expect(text).toContain("/questions/mh-hsc-12/physics/rotational-dynamics");
   });
 });
+
+// 2026-10-19 study-partner Phase 0: four of seventeen chapter asks got a false "not found".
+describe("searchChapters: subtopic names", () => {
+  const withSubs = (r: ChapterSearchRow, subtopicNames: string[]): ChapterSearchRow => ({ ...r, subtopicNames });
+  const ROWS_19: ChapterSearchRow[] = [
+    withSubs(row("ssc-cgl", "SSC CGL", "General Awareness: Economy", "Money, Banking and Public Finance", 72), [
+      "Union Budget and Fiscal Policy",
+      "Taxation and Public Finance",
+      "Inflation and Monetary Policy",
+    ]),
+    withSubs(row("ssc-cgl", "SSC CGL", "General Awareness: Economy", "Basic Concepts of Economics", 40), ["Demand and Supply"]),
+    withSubs(row("mh-hsc-12", "Maharashtra HSC Class 12", "Physics", "Rotational Dynamics", 56), [
+      "Moment of Inertia and Radius of Gyration",
+      "Rolling Motion",
+    ]),
+    withSubs(row("mht-cet", "MHT-CET", "Physics", "Rotational Dynamics", 204), ["Moment of Inertia and Radius of Gyration"]),
+    withSubs(row("neet", "NEET", "Physics", "Laws of Motion", 200), ["Newton's Second Law"]),
+    withSubs(row("neet", "NEET", "Physics", "Work, Energy and Power", 300), ["Work Done by the Laws of Motion"]),
+  ];
+
+  // "I want to attempt only budget and taxation pyqs test which was asked in ssc exams"
+  it("finds a chapter by the subtopics inside it", () => {
+    const hits = searchChapters(ROWS_19, { query: "budget and taxation", exam: "SSC" });
+    expect(hits.map((h) => h.chapterName)).toEqual(["Money, Banking and Public Finance"]);
+  });
+
+  it("tells V which subtopics matched, on the chapter's line", () => {
+    const text = formatChapterHits(searchChapters(ROWS_19, { query: "budget and taxation", exam: "SSC" }));
+    expect(text).toContain(
+      "- Money, Banking and Public Finance (72 q) /questions/ssc-cgl/general-awareness-economy/money-banking-and-public-finance [has: Union Budget and Fiscal Policy, Taxation and Public Finance]"
+    );
+  });
+
+  // "Chapter number first rotational dynamics class 12th subject physics ... moment of insertia and radius of gyration"
+  it("lets a chapter word and a subtopic phrase find the chapter together", () => {
+    const hits = searchChapters(ROWS_19, { query: "rotational dynamics moment of inertia" });
+    expect(hits.map((h) => h.examSlug)).toEqual(["mht-cet", "mh-hsc-12"]);
+  });
+
+  it("ranks a chapter named for the words above one that only has them in a subtopic", () => {
+    const hits = searchChapters(ROWS_19, { query: "laws of motion" });
+    expect(hits.map((h) => h.chapterName)).toEqual(["Laws of Motion", "Work, Energy and Power"]);
+  });
+
+  it("marks no subtopic when the chapter's own name matched", () => {
+    expect(formatChapterHits(searchChapters(ROWS_19, { query: "rotational dynamics", exam: "MHT-CET" }))).not.toContain("[has:");
+  });
+});
+
+describe("searchChapters: a whole sentence", () => {
+  // 2026-10-16, after V was told "MH SSC 10". Every word had to match, and "semester" never would.
+  it("finds a chapter whose whole name is in the sentence when no chapter has every word", () => {
+    const hits = searchChapters(REAL, {
+      query: "I want imp question for my 1st semester exam related to chapter 7 introduction to microbiology science 2",
+      exam: "MH SSC 10",
+    });
+    expect(hits.map((h) => h.chapterName)).toEqual(["Introduction to Microbiology"]);
+  });
+
+  it("still finds nothing in a sentence that names no chapter", () => {
+    expect(searchChapters(REAL, { query: "how do I study for the exam in less time" })).toEqual([]);
+  });
+
+  it("does not fall back when the words already found chapters", () => {
+    const hits = searchChapters(REAL, { query: "atoms", exam: "CBSE Class 12" });
+    expect(hits.map((h) => h.chapterName)).toEqual(["Atoms"]);
+  });
+});

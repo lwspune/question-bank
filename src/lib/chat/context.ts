@@ -11,7 +11,7 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import { EXAM_REGISTRY } from "@/lib/exam/examContext";
 import { listActivePlans, readFreeLimits } from "@/lib/billing/plansQuery";
 import { getCachedExamCatalog } from "@/lib/exam/allExamStats";
-import { listChapterLandings } from "@/lib/questions/landing";
+import { listChapterSearchRows } from "./subtopicIndex";
 import {
   buildExamFacts,
   buildFreeFacts,
@@ -56,7 +56,7 @@ export type VContext = { system: string; systemTail: string; tools: VTool[]; all
 
 /**
  * `anon` reads only what the public may read: active plans, free limits, PUBLIC
- * count. `loadChapters` defaults to the cached landing list; a script outside
+ * count. `loadChapters` defaults to the cached chapter list with its subtopics; a script outside
  * Next passes the uncached one (scripts/chat/replay-typed.ts). `page` is the
  * (already cleaned) path the student asked from; V is told it and may link it.
  */
@@ -75,7 +75,7 @@ export async function loadVContext(
     profileExamSlugs?: readonly string[];
   } = {}
 ): Promise<VContext> {
-  const loadChapters = opts.loadChapters ?? listChapterLandings;
+  const loadChapters = opts.loadChapters ?? listChapterSearchRows;
   const [plans, limits, bankCount, pyqBySlug] = await Promise.all([
     listActivePlans(anon),
     readFreeLimits(anon),

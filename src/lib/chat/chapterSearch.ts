@@ -16,7 +16,12 @@ export type ChapterSearchRow = {
   chapterName: string;
   questionCount: number;
   practiceOnly: boolean;
+  /** The chapter's subtopic names (lib/chat/subtopicIndex.ts), so "budget" finds the chapter holding "Union Budget". */
+  subtopicNames?: readonly string[];
 };
+
+/** A found chapter, with the subtopics that matched when its own name did not. */
+export type ChapterHit = ChapterSearchRow & { matchedSubtopics?: string[] };
 
 export type ChapterSearchInput = {
   /** Chapter or subject words, e.g. "laws of motion" or "science 2". Chapter numbers are ignored. */
@@ -27,6 +32,14 @@ export type ChapterSearchInput = {
 
 // A whole subject fits, so V can pick "chapter 1" from the list by name.
 const MAX_HITS = 20;
+// A chapter's own name outranks a subtopic inside it, which outranks the subject.
+const CHAPTER_SCORE = 3;
+const SUBTOPIC_SCORE = 2;
+const SUBJECT_SCORE = 1;
+// Subtopics named on a hit's line: enough to show why it matched.
+const MAX_MATCHED_SUBTOPICS = 2;
+// Words a name is made of that say nothing about the topic.
+const NAME_STOPWORDS = new Set(["and", "of", "the", "in", "to", "a", "an", "for", "with", "on", "by", "part"]);
 
 // Science and Technology II, Part I: students type the number.
 const ROMAN: Record<string, string> = { i: "1", ii: "2", iii: "3", iv: "4" };
@@ -92,30 +105,49 @@ function matchesExam(row: ChapterSearchRow, examWords: readonly string[]): boole
   return examWords.every((w) => hasWord(examText, w));
 }
 
-export function searchChapters(rows: readonly ChapterSearchRow[], input: ChapterSearchInput): ChapterSearchRow[] {
-  const queryWords = queryWordsOf(input.query);
-  if (queryWords.length === 0) return [];
+/** The subtopics holding the most query words, best first. */
+function bestSubtopics(subtopics: readonly { name: string; words: string[] }[], queryWords: readonly string[]): string[] {
+  return subtopics
+    .map((st) => ({ name: st.name, n: queryWords.filter((q) => hasWord(st.words, q)).length }))
+    .filter((st) => st.n > 0)
+    .sort((a, b) => b.n - a.n)
+    .slice(0, MAX_MATCHED_SUBTOPICS)
+    .map((st) => st.name);
+}
 
-  let pool: readonly ChapterSearchRow[] = rows;
-  const examWords = words(input.exam ?? "");
-  if (examWords.length > 0) {
-    const inExam = rows.filter((r) => matchesExam(r, examWords));
-    if (inExam.length > 0) pool = inExam;
-  }
+function poolFor(rows: readonly ChapterSearchRow[], exam: string | undefined): readonly ChapterSearchRow[] {
+  const examWords = words(exam ?? "");
+  if (examWords.length === 0) return rows;
+  const inExam = rows.filter((r) => matchesExam(r, examWords));
+  return inExam.length > 0 ? inExam : rows;
+}
 
-  const scored: { row: ChapterSearchRow; score: number }[] = [];
+function rank(scored: { hit: ChapterHit; score: number }[]): ChapterHit[] {
+  scored.sort((a, b) => b.score - a.score || b.hit.questionCount - a.hit.questionCount);
+  return scored.slice(0, MAX_HITS).map((s) => s.hit);
+}
+
+/** Every query word must land in the chapter, a subtopic, the subject or the exam. */
+function strictSearch(pool: readonly ChapterSearchRow[], queryWords: readonly string[]): ChapterHit[] {
+  const scored: { hit: ChapterHit; score: number }[] = [];
   for (const row of pool) {
     const chapterWords = words(row.chapterName);
     const subjectWords = words(row.subjectName);
     const examText = examWordsOf(row);
+    const subtopics = (row.subtopicNames ?? []).map((name) => ({ name, words: words(name) }));
     let score = 0;
     let matched = 0;
+    const viaSubtopic: string[] = [];
     for (const q of queryWords) {
       if (hasWord(chapterWords, q)) {
-        score += 2;
+        score += CHAPTER_SCORE;
         matched += 1;
+      } else if (subtopics.some((st) => hasWord(st.words, q))) {
+        score += SUBTOPIC_SCORE;
+        matched += 1;
+        viaSubtopic.push(q);
       } else if (hasWord(subjectWords, q)) {
-        score += 1;
+        score += SUBJECT_SCORE;
         matched += 1;
       } else if (hasWord(examText, q)) {
         // "class 12 physics": the exam's words may ride in the query, but find nothing alone.
@@ -123,11 +155,55 @@ export function searchChapters(rows: readonly ChapterSearchRow[], input: Chapter
       }
     }
     // Every query word must land somewhere, or "atoms" would drag in all of Physics.
-    if (matched === queryWords.length && score > 0) scored.push({ row, score });
+    if (matched !== queryWords.length || score === 0) continue;
+    const hit: ChapterHit = { ...row };
+    // Words like "and" land in the chapter name too, so name the subtopics only for a real topic word.
+    if (viaSubtopic.some((q) => !NAME_STOPWORDS.has(q))) hit.matchedSubtopics = bestSubtopics(subtopics, viaSubtopic);
+    scored.push({ hit, score });
   }
+  return rank(scored);
+}
 
-  scored.sort((a, b) => b.score - a.score || b.row.questionCount - a.row.questionCount);
-  return scored.slice(0, MAX_HITS).map((s) => s.row);
+function topicWords(name: string): string[] {
+  return words(name).filter((w) => !NAME_STOPWORDS.has(w));
+}
+
+/**
+ * A sentence ("my 1st semester exam related to chapter 7 introduction to
+ * microbiology") never has every word in one chapter. When the strict search
+ * finds nothing, a chapter or subtopic whose whole name is in the sentence is
+ * the answer, longest name first.
+ */
+function nameInSentenceSearch(pool: readonly ChapterSearchRow[], queryWords: readonly string[]): ChapterHit[] {
+  const inQuery = new Set(queryWords);
+  const covered = (name: string) => {
+    const t = topicWords(name);
+    return t.length > 0 && t.every((w) => inQuery.has(w)) ? t.length : 0;
+  };
+  const scored: { hit: ChapterHit; score: number }[] = [];
+  for (const row of pool) {
+    const own = covered(row.chapterName);
+    if (own > 0) {
+      scored.push({ hit: { ...row }, score: own * CHAPTER_SCORE });
+      continue;
+    }
+    const subs = (row.subtopicNames ?? []).map((name) => ({ name, n: covered(name) })).filter((s) => s.n > 0);
+    if (subs.length === 0) continue;
+    subs.sort((a, b) => b.n - a.n);
+    scored.push({
+      hit: { ...row, matchedSubtopics: subs.slice(0, MAX_MATCHED_SUBTOPICS).map((s) => s.name) },
+      score: subs[0].n * SUBTOPIC_SCORE,
+    });
+  }
+  return rank(scored);
+}
+
+export function searchChapters(rows: readonly ChapterSearchRow[], input: ChapterSearchInput): ChapterHit[] {
+  const queryWords = queryWordsOf(input.query);
+  if (queryWords.length === 0) return [];
+  const pool = poolFor(rows, input.exam);
+  const strict = strictSearch(pool, queryWords);
+  return strict.length > 0 ? strict : nameInSentenceSearch(pool, queryWords);
 }
 
 /**
@@ -140,7 +216,7 @@ export function searchChapters(rows: readonly ChapterSearchRow[], input: Chapter
 export function findChapters(
   rows: readonly ChapterSearchRow[],
   input: ChapterSearchInput
-): { hits: ChapterSearchRow[]; missedExam: string | null } {
+): { hits: ChapterHit[]; missedExam: string | null } {
   const hits = searchChapters(rows, input);
   const exam = input.exam?.trim();
   if (hits.length > 0 || !exam) return { hits, missedExam: null };
@@ -162,7 +238,7 @@ export function chapterPath(row: ChapterSearchRow): string {
  * keep the ranking: they appear in the order of their best chapter.
  */
 export function formatChapterHits(
-  hits: readonly ChapterSearchRow[],
+  hits: readonly ChapterHit[],
   opts: { missedExam?: string | null } = {}
 ): string {
   if (hits.length === 0) return "No chapter matched. Suggest /browse to search, or ask which exam they mean.";
@@ -171,7 +247,8 @@ export function formatChapterHits(
     const header = `${h.examName} | ${h.subjectName}`;
     const lines = groups.get(header) ?? [];
     const count = `${h.questionCount} q${h.practiceOnly ? ", textbook practice" : ""}`;
-    lines.push(`- ${h.chapterName} (${count}) ${chapterPath(h)}`);
+    const has = h.matchedSubtopics?.length ? ` [has: ${h.matchedSubtopics.join(", ")}]` : "";
+    lines.push(`- ${h.chapterName} (${count}) ${chapterPath(h)}${has}`);
     groups.set(header, lines);
   }
   const list = [...groups.entries()].flatMap(([header, lines]) => [header, ...lines]);

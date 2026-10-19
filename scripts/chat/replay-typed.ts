@@ -17,6 +17,7 @@ import { loadVContext } from "../../src/lib/chat/context";
 import { askV } from "../../src/lib/chat/anthropic";
 import { allowedReplyLinks } from "../../src/lib/chat/replyLinks";
 import { readChapterLandingsUncached } from "../../src/lib/questions/landing";
+import { readSubtopicIndexUncached, withSubtopics } from "../../src/lib/chat/subtopicIndex";
 import { aiAnswerCostUsd } from "../../src/lib/chat/interactions";
 
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -48,7 +49,7 @@ async function main() {
     .slice(0, limit);
 
   // The chapter list is the slow read; load it once for the whole run.
-  const chapters = await readChapterLandingsUncached();
+  const chapters = withSubtopics(await readChapterLandingsUncached(), await readSubtopicIndexUncached());
   console.log(`${questions.length} questions, ${chapters.length} chapter pages`);
 
   const rows: string[] = [];
