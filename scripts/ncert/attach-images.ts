@@ -74,9 +74,14 @@ function cropFigures(pdf: string, figs: Record<string, FigSpec>, dir: string): R
 import fitz, json, sys, re, io
 from PIL import Image
 pdf, figs, outdir, budget = sys.argv[1], json.loads(sys.argv[2]), sys.argv[3], int(sys.argv[4])
+sys.path.insert(0, sys.argv[5])
+from crop_answer_figs import _signatures
+furniture = _signatures(pdf)  # the NCERT watermark, blanked before cropping
 d = fitz.open(pdf); out = {}
 for ref, spec in figs.items():
     pg = d[spec["page"]]; w, h = pg.rect.width, pg.rect.height
+    for i in pg.get_images(full=True):
+        if (i[2], i[3], i[5]) in furniture: pg.delete_image(i[0])
     fx0, fy0, fx1, fy1 = spec["bbox"]
     clip = fitz.Rect(fx0*w, fy0*h, fx1*w, fy1*h)
     slug = re.sub(r'[^A-Za-z0-9]+', '_', ref).strip('_')
@@ -101,7 +106,7 @@ for ref, spec in figs.items():
 print(json.dumps(out))
 `;
   const budget = Math.floor(MAX_SIZE_BYTES * 0.95); // headroom under the hard cap
-  const res = spawnSync("python", ["-c", py, pdf, JSON.stringify(figs), dir, String(budget)], {
+  const res = spawnSync("python", ["-c", py, pdf, JSON.stringify(figs), dir, String(budget), join(__dirname, "..", "lib", "figures")], {
     encoding: "utf8",
     maxBuffer: 128 * 1024 * 1024,
   });

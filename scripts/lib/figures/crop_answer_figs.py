@@ -47,18 +47,38 @@ def furniture_signatures(pages, share=FURNITURE_SHARE, min_pages=FURNITURE_MIN_P
     return {s for s, n in counts.items() if n >= share * len(pages)}
 
 
+FULL_PAGE_SHARE = 0.7
+
+
 def _signatures(pdf):
+    """Furniture of one book. An image covering most of its page is never
+    furniture: on a SCANNED book (some NCERT chapters are) the repeated
+    full-page image is the page itself, and blanking it would erase the figure.
+    The NCERT watermark covers about 41% of its page."""
     if pdf not in _furniture:
         doc = fitz.open(pdf)
-        _furniture[pdf] = furniture_signatures([{(i[2], i[3], i[5]) for i in p.get_images(full=True)} for p in doc])
+        sigs = furniture_signatures([{(i[2], i[3], i[5]) for i in p.get_images(full=True)} for p in doc])
+        keep = set()
+        for s in sigs:
+            for p in doc:
+                hit = next((i for i in p.get_images(full=True) if (i[2], i[3], i[5]) == s), None)
+                if hit is None:
+                    continue
+                rects = p.get_image_rects(hit[0])
+                area = max((r.width * r.height for r in rects), default=0)
+                if area < FULL_PAGE_SHARE * p.rect.width * p.rect.height:
+                    keep.add(s)
+                break
+        _furniture[pdf] = keep
     return _furniture[pdf]
 
 
-def render(pdf, page_no, bbox, mask=()):
+def render(pdf, page_no, bbox, mask=(), keep_furniture=False):
     # A fresh document per part: a mask painted on the page must not reach
-    # another part cropped from the same page.
+    # another part cropped from the same page. keep_furniture reproduces a crop
+    # made before the watermark was removed (the backfill compares against it).
     page = fitz.open(pdf)[page_no]
-    furniture = _signatures(pdf)
+    furniture = set() if keep_furniture else _signatures(pdf)
     for i in page.get_images(full=True):
         if (i[2], i[3], i[5]) in furniture:
             page.delete_image(i[0])

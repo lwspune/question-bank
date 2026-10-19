@@ -17,8 +17,13 @@ import io
 import json
 import os
 
+import sys
+
 import fitz
 from PIL import Image
+
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "lib", "figures"))
+from crop_answer_figs import _signatures  # noqa: E402
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 DATA = os.path.join(HERE, "data")
@@ -35,8 +40,15 @@ def main():
     for e in manifest:
         if e.get("none"):
             continue  # a recorded decision that no book figure fits
-        doc = fitz.open(os.path.join(MARKING_SCHEMES, e["ms"]) if e.get("ms") else os.path.join(BOOKS, e["book"]))
+        src = os.path.join(MARKING_SCHEMES, e["ms"]) if e.get("ms") else os.path.join(BOOKS, e["book"])
+        doc = fitz.open(src)
         page = doc[e["page"]]
+        # NCERT's "(c) NCERT not to be republished" watermark is a page image
+        # repeated on every page; blank it (crop_answer_figs.furniture_signatures).
+        furniture = _signatures(src)
+        for i in page.get_images(full=True):
+            if (i[2], i[3], i[5]) in furniture:
+                page.delete_image(i[0])
         w, h = page.rect.width, page.rect.height
         x0, y0, x1, y1 = e["bbox"]
         clip = fitz.Rect(x0 * w, y0 * h, x1 * w, y1 * h)
