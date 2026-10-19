@@ -75,7 +75,7 @@ function pct(part: number, whole: number): string {
 }
 
 /** Subjects by how many past-year questions they hold, most first. */
-function subjectsOf(chapters: readonly StrategyChapter[]): string[] {
+export function subjectsOf(chapters: readonly StrategyChapter[]): string[] {
   const totals = new Map<string, number>();
   for (const c of chapters) totals.set(c.subject, (totals.get(c.subject) ?? 0) + Object.values(c.byYear).reduce((a, b) => a + b, 0));
   return [...totals].sort((a, b) => b[1] - a[1]).map(([s]) => s);
@@ -130,6 +130,37 @@ function chapterBreakdown(
   if (data.board) lines.push("Each chapter's Top 10 most-repeated PYQs are on /board.");
   lines.push(NOT_OFFICIAL);
   return { text: lines.join("\n"), paths };
+}
+
+/**
+ * Chapters by their share of the latest 3 years, biggest first, within one
+ * subject, a few subjects together, or (null) the whole exam: what the week
+ * plan (weekPlan.ts) picks from after the student's weak chapters. Share is a
+ * whole percent of the chosen subjects' questions.
+ */
+export function rankChapters(
+  data: StrategyData,
+  subject: string | readonly string[] | null
+): { id: string; name: string; subject: string; share: number }[] {
+  const chosen = subject === null ? null : typeof subject === "string" ? [subject] : subject;
+  const chapters = chosen ? data.chapters.filter((c) => chosen.includes(c.subject)) : data.chapters;
+  const recent = latestYears(chapters, RECENT_YEARS);
+  const total = chapters.reduce((n, c) => n + count(c, recent), 0);
+  if (total === 0) return [];
+  return chapters
+    .map((c) => ({ c, n: count(c, recent) }))
+    .filter((r) => r.n > 0)
+    .sort((a, b) => b.n - a.n)
+    .map((r) => ({ id: r.c.id, name: r.c.name, subject: r.c.subject, share: Math.round((r.n / total) * 100) }));
+}
+
+/** The exam's subject named by the student's words, when exactly one fits. */
+export function subjectNamed(data: StrategyData, asked: string): string | null {
+  const subjects = subjectsOf(data.chapters);
+  const matched = subjects.filter((s) => nameHasWords(s, asked));
+  if (matched.length === 1) return matched[0];
+  const exact = matched.filter((s) => nameHasWords(asked, s));
+  return exact.length === 1 ? exact[0] : null;
 }
 
 export function strategyText(
