@@ -18,7 +18,7 @@ import { join, relative } from "node:path";
 import { tmpdir } from "node:os";
 import { spawnSync } from "node:child_process";
 import { createClient } from "@supabase/supabase-js";
-import { uploadImage } from "../../src/lib/storage/images";
+import { uploadImage, deleteImage } from "../../src/lib/storage/images";
 import { planBatch, applyEdit, type Batch } from "./plan";
 
 const LWS_ORG = "5d528776-1263-4d77-bc12-f2836fd6073f"; // the storage folder every other attach script writes to
@@ -58,10 +58,20 @@ async function main() {
   const name = process.argv[2];
   const apply = process.argv.includes("--apply");
   const force = process.argv.includes("--force");
-  if (!name || name.startsWith("--")) throw new Error("usage: run.ts <batch> [--apply] [--force]");
+  const only = process.argv.find((a) => a.startsWith("--only="))?.slice(7);
+  if (!name || name.startsWith("--")) throw new Error("usage: run.ts <batch> [--apply] [--force] [--only=<figure key>]");
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 
-  const batch = JSON.parse(readFileSync(join(__dirname, "data", `${name}.json`), "utf8")) as Batch;
+  const whole = JSON.parse(readFileSync(join(__dirname, "data", `${name}.json`), "utf8")) as Batch;
+  // --only narrows the run to one figure (and the edits of its questions), so a
+  // single re-cropped figure can be replaced with --force without re-uploading
+  // the rest of the batch.
+  const batch: Batch = only ? { figures: whole.figures.filter((f) => f.key === only), edits: whole.edits } : whole;
+  if (only) {
+    if (!batch.figures.length) throw new Error(`no figure "${only}" in ${name}`);
+    const ids = new Set(batch.figures[0].ids);
+    batch.edits = (whole.edits ?? []).filter((e) => ids.has(e.id));
+  }
   const plan = planBatch(batch);
   if (plan.errors.length) {
     for (const e of plan.errors) console.log(`  !! ${e}`);
@@ -159,6 +169,7 @@ async function main() {
     writeFileSync(ledger, JSON.stringify(Object.fromEntries(uploaded), null, 2) + "\n");
     console.log(`  uploaded ${key} -> ${uploaded.get(key)}`);
   }
+  const replaced = new Set(toAttach.map((a) => rows.get(a.id)?.solution_image_url).filter((u): u is string => !!u));
   for (const a of toAttach) {
     await retry(`${a.id} set solution_image_url`, () => {
       let q = client.from("questions").update({ solution_image_url: uploaded.get(a.key)! }).eq("id", a.id);
@@ -168,6 +179,17 @@ async function main() {
   }
   for (const e of editsToWrite) {
     await retry(`${e.id} edit`, () => client.from("questions").update({ solution: e.next }).eq("id", e.id));
+  }
+  // An image --force replaced is deleted once no question points at it, so a
+  // re-crop does not leave its first version orphaned in storage.
+  for (const old of replaced) {
+    if ([...uploaded.values()].includes(old)) continue;
+    const { count, error } = await client.from("questions").select("id", { count: "exact", head: true }).or(`image_url.eq.${old},solution_image_url.eq.${old}`);
+    if (error) throw new Error(`orphan check ${old}: ${error.message}`);
+    if (count === 0) {
+      await deleteImage(client, old);
+      console.log(`  deleted replaced image ${old}`);
+    }
   }
   console.log(`done: ${toAttach.length} attached, ${editsToWrite.length} solutions edited.`);
 }
