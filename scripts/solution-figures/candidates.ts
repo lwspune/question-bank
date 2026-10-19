@@ -4,14 +4,9 @@
  *   npx tsx scripts/solution-figures/candidates.ts <wave> "<Exam>:<Subject>" [...]
  *     -> out/<wave>/<exam-subject>.candidates.json, one file per pair
  *
- * A candidate is a PUBLIC row with no solution_image_url that trips any of four
- * signals, measured on 2026-10-18 before this was written:
- *   asks      the stem asks for a drawing ("draw", "sketch", "plot", "construct")
- *   worded    the solution draws a figure in words ("Ray diagram: draw a ...")
- *   explains  an explain/derive stem whose solution names a set-up the reader
- *             cannot see (a circuit, "Let P be in AB", jockey, wavefront...).
- *             This is the class the student who asked for this was reading.
- *   dangling  the solution cites "Fig. 13.15" and the row carries no figure
+ * A candidate is a PUBLIC row with no solution_image_url that trips any of the
+ * signals in signals.ts (asks / worded / explains / dangling; tested in
+ * tests/solution-figures-signals.test.ts).
  * The signals over-report on purpose (the 2026-09 figure probe measured 26%
  * precision); a person or an agent reads every candidate.
  *
@@ -23,13 +18,7 @@ import { writeFileSync, mkdirSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { resolveSource } from "../lib/figures/sources";
-
-const ASKS = /\b(draw|sketch|plot|construct)\b/i;
-const ASKS_NOT = /draws? (from|a current|current|conclusions?)|current (will|does|would)[^.]{0,40}\bdraw/i;
-const WORDED = /((ray|phasor|band|energy[- ]band|circuit|labelled|neat|vector|free[- ]body|wavefront|field[- ]line|block|apparatus)\s*)?diagram\s*:\**\s*(draw|show|a labelled|a neat|the|two|an?)\b|to draw the [a-z ]*diagram|labels to be shown|figure\s*:\s*a labelled/i;
-const EXPLAINS = /\b(explain|describe|derive|obtain|prove|show that|deduce|with the help of|working|principle|construction)\b/i;
-const FIGVOCAB = /\*\*circuit\.?\*\*|\*the circuit\.?\*|circuit diagram|ray diagram|phasor diagram|to draw (it|the)|the diagram|labelled diagram|\blet [^.]{0,40}\b(in|be|along) [A-Z]{2}\b|points? [A-Z] and [A-Z]\b|jockey|wavefront|field lines|apparatus|set-?up|arrangement|cross[- ]section|as shown/;
-const DANGLING = /(as shown in|see|refer to|from) fig(ure)?\.?\s*\d/i;
+import { candidateSignals } from "./signals";
 
 type Row = {
   id: string; question_number: string | null; question_kind: string; question_format: string; pyq_year: number | null;
@@ -77,12 +66,7 @@ async function main() {
     const out = [];
     for (const r of rows) {
       const sol = r.solution ?? "";
-      const signals = [
-        ASKS.test(r.text) && !ASKS_NOT.test(r.text) ? "asks" : "",
-        WORDED.test(sol) ? "worded" : "",
-        EXPLAINS.test(r.text) && FIGVOCAB.test(sol) ? "explains" : "",
-        DANGLING.test(sol) && !r.image_url ? "dangling" : "",
-      ].filter(Boolean);
+      const signals = candidateSignals(r);
       if (!signals.length) continue;
       out.push({
         id: r.id, chapter: r.chapters?.name ?? null, kind: r.question_kind, format: r.question_format,
