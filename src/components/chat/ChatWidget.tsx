@@ -57,6 +57,9 @@ function noteAccountChecked(): void {
 }
 import { useCart } from "@/lib/cart/CartProvider";
 import VSays from "./VSays";
+import MathText from "./MathText";
+import VQuestionCard from "./VQuestionCard";
+import { ASK_V_EVENT, type AskVDetail } from "@/lib/chat/askVEvent";
 import { MESSAGE_IN, USER_BUBBLE, V_BUBBLE } from "./chatStyles";
 import PracticeBuilder, { PENDING_BUILD_KEY, logBuilderStep } from "./PracticeBuilder";
 import type { BuilderAnswers } from "@/lib/practiceTests/builder";
@@ -84,7 +87,12 @@ function VFace({ avatar, className }: { avatar: VAvatar; className?: string }) {
  * row `id`, `source` and the student's `feedback`. `transient` turns (errors)
  * are shown but never kept.
  */
-type ChatTurn = HistoryTurn & { avatar?: VAvatar; transient?: boolean };
+type ChatTurn = HistoryTurn & {
+  avatar?: VAvatar;
+  transient?: boolean;
+  /** A question card under V's reply (2026-10-19): a similar one to try, or a pasted one to confirm. */
+  card?: { id: string; kind: "try" | "confirm" };
+};
 
 /** What the device keeps of a turn: no face, no errors. */
 function keepable(turns: readonly ChatTurn[]): HistoryTurn[] {
@@ -98,12 +106,14 @@ function keepable(turns: readonly ChatTurn[]): HistoryTurn[] {
 
 /** V's reply with its allowed paths as links; everything else stays text. */
 function ReplyText({ text, links, onNavigate }: { text: string; links?: string[]; onNavigate?: () => void }) {
-  if (!links || links.length === 0) return <>{text}</>;
+  if (!links || links.length === 0) return <MathText text={text} />;
   return (
     <>
       {splitReplyLinks(text, links).map((seg, i) =>
         seg.kind === "text" ? (
-          <span key={i}>{seg.text}</span>
+          <span key={i}>
+            <MathText text={seg.text} />
+          </span>
         ) : (
           <Link
             key={i}
@@ -172,6 +182,20 @@ export default function ChatWidget() {
   const [draft, setDraft] = useState("");
   // Signed out with the one typed question used (lib/chat/anonLimit.ts).
   const [signInNeeded, setSignInNeeded] = useState(false);
+  // "Ask V about this question" (2026-10-19): the question this conversation is about, sent with each message.
+  const [asked, setAsked] = useState<AskVDetail | null>(null);
+  // After an Ask V on a question not yet tried, V asks "hint or full solution?": offer both as buttons.
+  const [offerHint, setOfferHint] = useState(false);
+  // A question card's Ask V reaches the window through a window event; the handler sees this render's state.
+  const onAskRef = useRef<(d: AskVDetail) => void>(() => {});
+  useEffect(() => {
+    function onAsk(e: Event) {
+      const d = (e as CustomEvent<AskVDetail>).detail;
+      if (d && typeof d.questionId === "string") onAskRef.current(d);
+    }
+    window.addEventListener(ASK_V_EVENT, onAsk);
+    return () => window.removeEventListener(ASK_V_EVENT, onAsk);
+  }, []);
   // Phones only: tuck the launcher away while the student scrolls down a page
   // and bring it back on any scroll up (UX_ACTION_PLAN.md A7). It used to sit
   // over card content on every page. Never while the chat is open.
@@ -403,6 +427,8 @@ export default function ChatWidget() {
     setConversationId(newConversationId());
     setTurns([]);
     setUnread(0);
+    setAsked(null);
+    setOfferHint(false);
     toast.success("Chat cleared");
   }
 
@@ -460,17 +486,35 @@ export default function ChatWidget() {
     }
   }
 
-  async function askTyped() {
-    const text = draft.trim();
+  onAskRef.current = (d: AskVDetail) => {
+    setMode("chat");
+    openChat();
+    setAsked(d);
+    setOfferHint(!d.chose);
+    void askTyped(d.chose ? `I picked (${d.chose}). Explain this question.` : "Explain this question.", d);
+  };
+
+  /** Send the draft, or `override` (an Ask V or a hint button). `about` is the question it is about. */
+  async function askTyped(override?: string, about?: AskVDetail | null) {
+    const text = (override ?? draft).trim();
     if (sending || !text) return;
     addTurn({ role: "user", text });
-    setDraft("");
+    if (override === undefined) {
+      setDraft("");
+      setOfferHint(false);
+    }
+    const question = about ?? asked;
     setSending(true);
     try {
       const res = await fetch("/api/chat/typed", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: text, conversationId, pagePath: pathname }),
+        body: JSON.stringify({
+          message: text,
+          conversationId,
+          pagePath: pathname,
+          ...(question ? { question: { id: question.questionId, chose: question.chose } } : {}),
+        }),
       });
       const data = (await res.json().catch(() => ({}))) as {
         ok?: boolean;
@@ -480,6 +524,8 @@ export default function ChatWidget() {
         source?: "ai" | "fallback";
         signInToContinue?: boolean;
         signInRequired?: boolean;
+        similarQuestionId?: string;
+        matchQuestionId?: string;
         error?: string;
       };
       if (data.signInToContinue || data.signInRequired) setSignInNeeded(true);
@@ -490,10 +536,15 @@ export default function ChatWidget() {
         return;
       }
       const links = Array.isArray(data.links) ? data.links.filter((l): l is string => typeof l === "string") : [];
+      const card: ChatTurn["card"] = data.similarQuestionId
+        ? { id: data.similarQuestionId, kind: "try" }
+        : data.matchQuestionId
+          ? { id: data.matchQuestionId, kind: "confirm" }
+          : undefined;
       addTurn(
         data.source === "ai" && data.id
-          ? { role: "assistant", avatar: "laugh", text: data.reply as string, links, id: data.id, source: "ai", feedback: null }
-          : { role: "assistant", avatar: "laugh", text: data.reply as string, links }
+          ? { role: "assistant", avatar: "laugh", text: data.reply as string, links, id: data.id, source: "ai", feedback: null, card }
+          : { role: "assistant", avatar: "laugh", text: data.reply as string, links, card }
       );
     } catch {
       const errorText = "V is unavailable right now. Please try again.";
@@ -614,9 +665,27 @@ export default function ChatWidget() {
                       </button>
                     </div>
                   )}
+                  {t.card && <VQuestionCard id={t.card.id} kind={t.card.kind} />}
                 </div>
               );
             })}
+            {offerHint && !sending && turns.length > 0 && turns[turns.length - 1].role === "assistant" && (
+              <div className="ml-9 flex flex-wrap gap-2" role="group" aria-label="Hint or full solution">
+                {["Give me a hint", "Show the full solution"].map((label) => (
+                  <button
+                    key={label}
+                    type="button"
+                    onClick={() => {
+                      setOfferHint(false);
+                      void askTyped(label);
+                    }}
+                    className="rounded-full border border-brand-accent/25 bg-brand-accent/[0.06] px-3.5 py-1.5 text-xs font-medium text-foreground transition-colors hover:border-brand-accent/45 hover:bg-brand-accent/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                  >
+                    {label}
+                  </button>
+                ))}
+              </div>
+            )}
             {sending && (
               <div className={`flex max-w-[90%] items-end gap-2 ${MESSAGE_IN}`}>
                 <VFace avatar="think" className="h-7 w-7 shrink-0 object-contain" />

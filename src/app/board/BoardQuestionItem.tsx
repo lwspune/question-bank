@@ -18,6 +18,7 @@ import { cn } from "@/lib/utils";
 import { optionMark } from "@/lib/questions/optionMark";
 import { dailyRevealLimit } from "@/components/reveal/useRevealMeter";
 import RevealSignInPrompt from "@/components/reveal/RevealSignInPrompt";
+import AskVButton from "@/components/chat/AskVButton";
 import { RevealDailyPrompt } from "@/components/reveal/RevealDailyLimit";
 import { asBilingual, type BoardQuestion } from "@/lib/board/query";
 import { hasMarathi } from "@/lib/i18n/bilingual";
@@ -182,6 +183,7 @@ export default function BoardQuestionItem({
               {revealed ? "Hide answer" : q.format === "subjective" ? "Show model answer" : "Show answer"}
             </button>
           )}
+          <AskVButton questionId={q.id} chose={pick} className="ml-3 align-middle" />
           {blocked &&
             !revealed &&
             // A daily quota is loaded only for a signed-in free student.

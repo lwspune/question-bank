@@ -24,6 +24,7 @@ import { readChatSettings } from "@/lib/chat/settingsAdmin";
 import { parseAskedQuestion, revealCheck, toVQuestion } from "@/lib/chat/questionTools";
 import { cardView, gradeCard } from "@/lib/chat/questionCard";
 import { revealedToday } from "@/lib/chat/questionReveal";
+import { publicImageUrl } from "@/lib/storage/imageUrl";
 
 export const dynamic = "force-dynamic";
 
@@ -41,8 +42,10 @@ export async function GET(request: NextRequest) {
     if (!asked) return NextResponse.json({ error: "Not found" }, { status: 404 });
     const row = (await queryQuestionsByIds(createSupabaseAnonClient(), [asked.id]))[0];
     if (!row) return NextResponse.json({ error: "Not found" }, { status: 404 });
+    // Stored as a bucket path (sometimes a full address): the card needs a URL it can load.
+    const image = row.imageUrl ? publicImageUrl(process.env.NEXT_PUBLIC_SUPABASE_URL ?? "", row.imageUrl) : null;
     return NextResponse.json(
-      { question: cardView(toVQuestion(row), row.imageUrl) },
+      { question: cardView(toVQuestion(row), image) },
       { headers: { "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400" } }
     );
   } catch (err) {

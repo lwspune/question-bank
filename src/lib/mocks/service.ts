@@ -513,6 +513,8 @@ export type RunnerState = {
 };
 
 export type ReviewItem = {
+  /** The bank question, for "Ask V about this question" on the review (2026-10-19). */
+  questionId: string;
   position: number;
   sectionKey: string;
   text: string;
@@ -599,6 +601,7 @@ export async function getAttemptReview(
         grace
       );
       return {
+        questionId: s.questionId,
         position: s.position,
         sectionKey: s.sectionKey,
         text: c?.text ?? "",

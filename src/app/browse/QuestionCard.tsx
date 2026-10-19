@@ -48,6 +48,7 @@ import { fromQuestionRow } from "@/lib/present/viewModel";
 import BookmarkButton from "./BookmarkButton";
 import { buildBreadcrumb, type BreadcrumbFixed } from "./breadcrumb";
 import ReportQuestionDialog from "./ReportQuestionDialog";
+import AskVButton from "@/components/chat/AskVButton";
 import { ItemStatChip, ItemStatDetail } from "./ItemStats";
 import CancelledNotice from "@/components/question/CancelledNotice";
 import { optionVersions, solutionVersions, stemVersions } from "@/lib/i18n/bilingual";
@@ -609,7 +610,7 @@ export default function QuestionCard({
                 Edit, for staff) on the right. The source line that used to sit
                 here moved into the tag at the top. */}
             <div className="flex flex-wrap items-center justify-between gap-2 border-t pt-3 font-sans">
-              <div className="flex items-center">
+              <div className="flex flex-wrap items-center gap-2">
                 {hasToggle &&
                   (locked ? (
                     lockedLink
@@ -624,6 +625,7 @@ export default function QuestionCard({
                       {showSolution ? <ChevronUp className="h-4 w-4" aria-hidden /> : <ChevronDown className="h-4 w-4" aria-hidden />}
                     </button>
                   ))}
+                <AskVButton questionId={question.id} chose={picked} />
               </div>
               <div className="flex items-center gap-3">
                 {canEdit && (

@@ -90,6 +90,7 @@ function makeBoardQuestion(partial: Partial<BoardQuestion> = {}): BoardQuestion 
 
 function makeReviewItem(partial: Partial<ReviewItem> = {}): ReviewItem {
   return {
+    questionId: "q-7",
     position: 7,
     sectionKey: "maths",
     text: "Evaluate the integral.",
