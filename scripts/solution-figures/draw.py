@@ -36,6 +36,10 @@ KINDS (each spec is {"kind": ..., ...}):
               l, label, label_loc, at: "<saved name>", to: "<saved name>", save: "<name>", reverse}]}
   structure  {molecules: [{smiles, name, full}], per_row} (at most 2 a row, so names read on a phone);
              full: true draws EVERY atom (C and H too) on a grid, NCERT's Class 10 structural formula
+  map        {region: "brazil", states: {name: colour}, areas: [{name, color, hatch}], rivers: [{name}],
+              places: [{name | at: [lon, lat], marker}], parallels: [{lat}], labels: [{text, at}],
+              index: [{symbol: "fill"|"line"|"point", text, color}]}   real Natural Earth boundaries
+             (geo/brazil.json); India is NOT available until an official outline is supplied
   complex    {items: [{geometry: "oct"|"sq", metal, ligands: {pos: label}, chelates: [[pos, pos, "en"]], label, group}],
               mirror_pairs: [[i, j]], per_row}   octahedron positions 1 top, 6 bottom, 2 left, 4 right,
              3 front, 5 back; square corners 1-4 (1-3, 2-4 trans). Refuses an empty or doubled position, a
@@ -838,7 +842,112 @@ def draw_complex(s, out):
     return {"items": len(items)}
 
 
-KINDS = {"complex": draw_complex, "field": draw_field, "curve3d": draw_curve3d, "stack": draw_stack, "plot": draw_plot, "histogram": draw_histogram, "bar": draw_bar, "pie": draw_pie, "geometry": draw_geometry, "ray": draw_ray, "circuit": draw_circuit, "structure": draw_structure}
+GEO_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "geo")
+_GEO = {}
+
+
+def load_geo(region):
+    """Map data cut from Natural Earth by geo/build_<region>.py. Only Brazil
+    exists: India waits for an official Survey of India outline (owner, 2026-10-19)."""
+    if region not in _GEO:
+        _GEO[region] = json.load(open(os.path.join(GEO_DIR, region + ".json"), encoding="utf-8"))
+    return _GEO[region]
+
+
+def in_ring(pt, ring):
+    x, y = pt
+    inside = False
+    for (x1, y1), (x2, y2) in zip(ring, ring[1:] + ring[:1]):
+        if (y1 > y) != (y2 > y) and x < x1 + (y - y1) * (x2 - x1) / (y2 - y1):
+            inside = not inside
+    return inside
+
+
+def in_any(pt, rings):
+    return any(in_ring(pt, r) for r in rings)
+
+
+MAP_EXTENT = {"brazil": (-74.5, -34.5, -33.5, 6.0)}
+
+
+def draw_map(s, out):
+    """An outline map drawn from real boundaries (geo/<region>.json): states,
+    highlighted states and natural regions shaded, rivers, places, parallels,
+    and the INDEX (legend) a board answer is asked to give."""
+    from matplotlib.patches import Polygon as Poly, PathPatch
+    from matplotlib.path import Path
+
+    region = s.get("region", "brazil")
+    geo = load_geo(region)
+    x0, y0, x1, y1 = MAP_EXTENT[region]
+    fig, ax = plt.subplots(figsize=s.get("size", [5.6, 5.8]))
+    ax.set_facecolor("#e0f2fe")  # sea
+    home = geo["countries"]["BRA"] if region == "brazil" else []
+    for code, rings in geo["countries"].items():
+        if code == "BRA":
+            continue
+        for r in rings:
+            ax.add_patch(Poly(r, closed=True, fc="#f1f5f9", ec="#94a3b8", lw=0.6, zorder=1))
+    handles = []
+    hl = s.get("states", {})
+    for name, rings in geo["states"].items():
+        for r in rings:
+            ax.add_patch(Poly(r, closed=True, fc=hl.get(name, "white"), ec="#94a3b8", lw=0.5, zorder=2))
+    clip_verts, clip_codes = [], []
+    for r in home:
+        clip_verts += r + [r[0]]
+        clip_codes += [Path.MOVETO] + [Path.LINETO] * (len(r) - 1) + [Path.CLOSEPOLY]
+    clip = PathPatch(Path(clip_verts, clip_codes), transform=ax.transData, fc="none", ec=INK, lw=1.4, zorder=6)
+    ax.add_patch(clip)
+    from matplotlib.patches import Rectangle
+    for a in s.get("areas", []):
+        if "state" in a:  # part of a state south of a parallel (the Pampas of Rio Grande do Sul)
+            band = Rectangle((x0 - 5, y0 - 5), x1 - x0 + 10, a["south_of"] - y0 + 5, transform=ax.transData)
+            for r in geo["states"][a["state"]]:
+                p = Poly(r, closed=True, fc=a.get("color", "#fde68a"), ec="none", alpha=0.85, hatch=a.get("hatch"), zorder=3)
+                ax.add_patch(p)
+                p.set_clip_path(band)
+            continue
+        for r in geo["areas"][a["name"]]:
+            p = Poly(r, closed=True, fc=a.get("color", "#fde68a"), ec="none", alpha=0.85, hatch=a.get("hatch"), zorder=3)
+            ax.add_patch(p)
+            p.set_clip_path(clip)
+    for rv in s.get("rivers", []):
+        for ln in geo["rivers"][rv["name"]]:
+            xs, ys = zip(*ln)
+            ax.plot(xs, ys, color="#1d4ed8", lw=rv.get("width", 1.6), zorder=4, solid_capstyle="round")
+    for ln in s.get("parallels", []):
+        ax.plot([x0, x1], [ln["lat"], ln["lat"]], color=ACCENT, lw=1.2, ls="--", zorder=5)
+    for pl in s.get("places", []):
+        at = pl.get("at") or geo["places"][pl["name"]]
+        ax.plot(*at, pl.get("marker", "o"), ms=pl.get("ms", 7), color=pl.get("color", "#b91c1c"), mec="white", mew=0.8, zorder=7)
+    box = {"boxstyle": "round,pad=0.2", "fc": "white", "ec": "none", "alpha": 0.85}
+    for lb in s.get("labels", []):
+        ax.text(*lb["at"], lb["text"], fontsize=lb.get("size", 10), ha=lb.get("ha", "center"), va=lb.get("va", "center"),
+                color=lb.get("color", INK), style=lb.get("style", "normal"), bbox=box, zorder=8)
+    from matplotlib.lines import Line2D
+    from matplotlib.patches import Patch
+    for it in s.get("index", []):
+        if it["symbol"] == "fill":
+            handles.append(Patch(fc=it["color"], ec="#94a3b8", hatch=it.get("hatch"), label=it["text"]))
+        elif it["symbol"] == "line":
+            handles.append(Line2D([], [], color=it.get("color", "#1d4ed8"), lw=2, ls=it.get("ls", "-"), label=it["text"]))
+        else:
+            handles.append(Line2D([], [], marker=it.get("marker", "o"), color="none", mfc=it.get("color", "#b91c1c"), mec="white", ms=it.get("ms", 8), label=it["text"]))
+    if handles:
+        # Below the map, never over it: an index box once hid the very marker it explained.
+        ax.legend(handles=handles, title="Index", loc="upper center", bbox_to_anchor=(0.5, -0.01), fontsize=10, title_fontsize=10, frameon=True)
+    ax.set_xlim(x0, x1)
+    ax.set_ylim(y0, y1)
+    ax.set_aspect(1.03)
+    ax.set_xticks([])
+    ax.set_yticks([])
+    for sp in ax.spines.values():
+        sp.set_color("#94a3b8")
+    finish(fig, out)
+
+
+KINDS = {"map": draw_map, "complex": draw_complex, "field": draw_field, "curve3d": draw_curve3d, "stack": draw_stack, "plot": draw_plot, "histogram": draw_histogram, "bar": draw_bar, "pie": draw_pie, "geometry": draw_geometry, "ray": draw_ray, "circuit": draw_circuit, "structure": draw_structure}
 
 
 def draw(spec, out):
@@ -937,6 +1046,14 @@ def selftest():
         raise AssertionError("a chelate across trans positions must be refused")
     except ValueError:
         pass
+
+    # Map data: each named place falls inside the state it belongs to.
+    geo = load_geo("brazil")
+    for place, state in (("Manaus", "Amazonas"), ("Brasília", "Distrito Federal"), ("Rio Grande", "Rio Grande do Sul"), ("Rio de Janeiro", "Rio de Janeiro")):
+        assert in_any(geo["places"][place], geo["states"][state]), f"{place} must fall inside {state}"
+    par = geo["rivers"]["Paraguay"][0]
+    assert max(par[0][1], par[-1][1]) > -16 and min(par[0][1], par[-1][1]) < -26, "the Paraguay runs from Mato Grosso to the Parana confluence"
+    assert in_any([-49.5, -0.9], geo["areas"]["Ilha de Marajó"]), "Marajo lies at the Amazon mouth"
 
     # Structure grids stay two to a row at most, so names stay legible on a phone.
     assert structure_per_row(8, 4) == 2 and structure_per_row(8, None) == 2, "8 molecules: two per row"
