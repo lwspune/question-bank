@@ -360,12 +360,24 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
 
     it("tells the cards whether explanations are on, needing the AI on too", async () => {
       const { GET } = await import("@/app/api/chat/features/route");
+      const req = () => get("/api/chat/features");
       await setSettings({ ai_enabled: true, explain_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });
-      expect(await (await GET()).json()).toEqual({ explain: true });
+      expect(await (await GET(req())).json()).toEqual({ explain: true });
       await setSettings({ ai_enabled: false, explain_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });
-      expect(await (await GET()).json()).toEqual({ explain: false });
+      expect(await (await GET(req())).json()).toEqual({ explain: false });
       await setSettings({ ai_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });
-      expect(await (await GET()).json()).toEqual({ explain: false });
+      expect(await (await GET(req())).json()).toEqual({ explain: false });
+    });
+
+    // 2026-10-19, live: the deployed route kept answering {explain:false} after the switch was saved,
+    // while /api/chat/question (which reads its request) saw it on. A GET that ignores its request can
+    // be built as static, and its database read cached, so this one opts out of both explicitly.
+    it("reads the switch on every request in a production build, never from a build-time copy", async () => {
+      const mod = await import("@/app/api/chat/features/route");
+      expect(mod.dynamic).toBe("force-dynamic");
+      expect(mod.revalidate).toBe(0);
+      expect(mod.fetchCache).toBe("force-no-store");
+      expect(mod.GET.length).toBe(1);
     });
 
     it("serves a card without its answer while explanations are on, and nothing while off", async () => {
