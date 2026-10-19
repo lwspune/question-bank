@@ -41,6 +41,8 @@ import {
   V_EXPLAIN_STUDENTS_KEEP,
   V_EXPLAIN_SIMILAR_RIGHT_KEEP_PCT,
   V_STRATEGY_ANSWERS_KEEP,
+  V_PLAN_STUDENTS_KEEP,
+  V_PLAN_DAYS_DONE_KEEP_PCT,
   SPECIFIC_OFFER_CHECKOUT_PCT,
   checkOn,
   type Experiment,
@@ -489,6 +491,17 @@ export default async function GrowthPage() {
             </p>
             <ReadingsList metric="v-explain-students" />
             <ReadingsList metric="v-explain-similar-right" />
+          </div>
+        );
+      case "v-plan":
+        return (
+          <div className="space-y-3">
+            <p className="text-sm text-muted-foreground">
+              Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))}: keep it if {V_PLAN_STUDENTS_KEEP}+ students make a
+              plan and {V_PLAN_DAYS_DONE_KEEP_PCT}%+ of planned days are done.
+            </p>
+            <ReadingsList metric="v-plan-students" />
+            <ReadingsList metric="v-plan-days-done" />
           </div>
         );
       case "v-strategy":
