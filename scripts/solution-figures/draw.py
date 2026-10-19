@@ -159,13 +159,14 @@ def draw_plot(s, out):
     finish(fig, out)
 
 
-def draw_histogram(s, out):
+def histogram_axes(s):
     fig, ax = plt.subplots(figsize=s.get("size", [6, 4.2]))
     classes, freq = s["classes"], s["freq"]
     if len(classes) != len(freq):
         raise ValueError("histogram: classes and freq differ in length")
     for (lo, hi), f in zip(classes, freq):
         ax.bar(lo, f, width=hi - lo, align="edge", color="#bfdbfe", edgecolor=INK, lw=1.2)
+        ax.annotate(f"{f:g}", ((lo + hi) / 2, f), xytext=(0, 4), textcoords="offset points", ha="center", va="bottom", fontsize=11)
     if s.get("polygon"):
         mids = [(lo + hi) / 2 for lo, hi in classes]
         w0, w1 = classes[0][1] - classes[0][0], classes[-1][1] - classes[-1][0]
@@ -178,6 +179,12 @@ def draw_histogram(s, out):
     ax.set_axisbelow(True)
     for side in ("top", "right"):
         ax.spines[side].set_visible(False)
+    ax.margins(y=0.12)
+    return fig, ax
+
+
+def draw_histogram(s, out):
+    fig, _ = histogram_axes(s)
     finish(fig, out)
 
 
@@ -488,6 +495,11 @@ def selftest():
     assert ax.lines[-1].get_linestyle() == "None", "points with line: false must not be joined"
     plot_points(ax, {"x": [1, 2, 3], "y": [1, 4, 9]}, RAY, "-", None)
     assert ax.lines[-1].get_linestyle() == "-", "points are joined by default"
+    plt.close(fig)
+
+    # Every histogram bar carries its frequency, so a height between gridlines can still be read.
+    fig, ax = histogram_axes({"classes": [[0, 30], [30, 60]], "freq": [54, 68]})
+    assert {t.get_text() for t in ax.texts} >= {"54", "68"}, "histogram bars are labelled with their frequencies"
     plt.close(fig)
 
     # Structure grids stay two to a row at most, so names stay legible on a phone.
