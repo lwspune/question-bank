@@ -204,3 +204,37 @@ describe("parseClientEvent - handout chapter", () => {
     expect(parseClientEvent({ kind: "surface_viewed", surface: "drill", chapter: "nda-maths/vectors" }, "u1", NOW).ok).toBe(false);
   });
 });
+
+// Reading pages (2026-10-19): one row per student, page and IST day, the address checked against its surface.
+describe("parseClientEvent — reading pages", () => {
+  it("accepts a reading view with its page address, deduped per page per day", () => {
+    const r = parseClientEvent(
+      { kind: "surface_viewed", surface: "notes", path: "/notes/nda-maths/statistics/central-tendency" },
+      "u1",
+      NOW
+    );
+    expect(r).toEqual({
+      ok: true,
+      value: {
+        kind: "surface_viewed",
+        metadata: { surface: "notes", path: "/notes/nda-maths/statistics/central-tendency" },
+        dedupeKey: "view:notes:/notes/nda-maths/statistics/central-tendency:u1:2026-09-27",
+      },
+    });
+  });
+
+  it("refuses a reading view without an address, or with one from another surface", () => {
+    expect(parseClientEvent({ kind: "surface_viewed", surface: "notes" }, "u1", NOW).ok).toBe(false);
+    expect(parseClientEvent({ kind: "surface_viewed", surface: "notes", path: "/board/mh-hsc-12" }, "u1", NOW).ok).toBe(false);
+    expect(parseClientEvent({ kind: "surface_viewed", surface: "guide", path: "/guide/<script>" }, "u1", NOW).ok).toBe(false);
+  });
+
+  it("refuses an address on a surface that is not a reading page", () => {
+    expect(parseClientEvent({ kind: "surface_viewed", surface: "drill", path: "/drill" }, "u1", NOW).ok).toBe(false);
+  });
+
+  it("stores the cleaned address, so a query string cannot split one page into many rows", () => {
+    const r = parseClientEvent({ kind: "surface_viewed", surface: "guide", path: "/guide/nda-physics/?utm=x" }, "u1", NOW);
+    expect(r.ok && r.value.metadata).toEqual({ surface: "guide", path: "/guide/nda-physics" });
+  });
+});

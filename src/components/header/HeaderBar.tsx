@@ -18,6 +18,7 @@ import { resolveHomeHref } from "@/lib/header-session";
 import { useViewerSession } from "@/lib/viewer/useViewerSession";
 import { usePulse } from "@/lib/viewer/usePulse";
 import { fifthTabFor } from "@/lib/nav/fifthTab";
+import ReadingBeacon from "./ReadingBeacon";
 
 /**
  * The whole per-visitor half of the site header, resolved in the BROWSER.
@@ -79,6 +80,7 @@ export default function HeaderBar({
 
   return (
     <>
+      <ReadingBeacon signedIn={!!session} />
       <header className="sticky top-0 z-40 w-full border-b bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="mx-auto flex h-14 max-w-7xl items-center gap-2 px-3 sm:gap-3 sm:px-6">
           <Link
