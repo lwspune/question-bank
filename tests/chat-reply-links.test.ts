@@ -4,7 +4,7 @@
  * made-up address is never a link.
  */
 import { describe, it, expect } from "vitest";
-import { pathsInReply, allowedReplyLinks, splitReplyLinks } from "@/lib/chat/replyLinks";
+import { pathsInReply, allowedReplyLinks, splitReplyLinks, plainLinks } from "@/lib/chat/replyLinks";
 
 describe("pathsInReply", () => {
   it("finds site paths written in the reply", () => {
@@ -50,5 +50,30 @@ describe("splitReplyLinks", () => {
 
   it("does not link the start of a longer path", () => {
     expect(splitReplyLinks("see /notes/nda", ["/notes"])).toEqual([{ kind: "text", text: "see /notes/nda" }]);
+  });
+});
+
+// 2026-10-19 replay: given several chapter pages, V sometimes wrote markdown links, which the
+// chat shows as raw brackets. The reply is cleaned before it is stored or shown.
+describe("plainLinks", () => {
+  it("turns a markdown link to a site page into its text and the bare path", () => {
+    expect(plainLinks("Start with [Ray Optics](/questions/cbse-12/physics/ray-optics).")).toBe(
+      "Start with Ray Optics (/questions/cbse-12/physics/ray-optics)."
+    );
+  });
+
+  it("keeps just the path when the link text is the path itself", () => {
+    expect(plainLinks("Start with [/questions/neet/botany/cell](/questions/neet/botany/cell), then")).toBe(
+      "Start with /questions/neet/botany/cell, then"
+    );
+  });
+
+  it("leaves the path tappable once cleaned", () => {
+    const reply = plainLinks("See [Atoms](/questions/cbse-12/physics/atoms)");
+    expect(allowedReplyLinks(reply, new Set(["/questions/cbse-12/physics/atoms"]))).toEqual(["/questions/cbse-12/physics/atoms"]);
+  });
+
+  it("leaves brackets that are not a link, and outside addresses, alone", () => {
+    expect(plainLinks("Option [A] (x) and [site](https://example.com)")).toBe("Option [A] (x) and [site](https://example.com)");
   });
 });

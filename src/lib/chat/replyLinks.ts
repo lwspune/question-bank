@@ -24,7 +24,23 @@ export function allowedReplyLinks(reply: string, allowed: ReadonlySet<string>): 
   return out;
 }
 
-export type ReplySegment = { kind: "text"; text: string } | { kind: "link"; href: string };
+// A markdown link to a site page: [text](/path).
+const MARKDOWN_LINK_RE = /\[([^\]\n]*)\]\((\/[^)\s]*)\)/g;
+
+/**
+ * V is told to write bare paths, but given several pages it sometimes writes
+ * "[Ray Optics](/questions/...)" (2026-10-19 replay), which the chat shows as
+ * raw brackets. The route cleans the reply to "Ray Optics (/questions/...)",
+ * or the bare path when the text is the path, before storing or showing it.
+ */
+export function plainLinks(reply: string): string {
+  return reply.replace(MARKDOWN_LINK_RE, (_, text: string, path: string) => {
+    const t = text.trim();
+    return !t || t === path ? path : `${t} (${path})`;
+  });
+}
+
+export type ReplySegment ={ kind: "text"; text: string } | { kind: "link"; href: string };
 
 /** Split a reply for display; only paths in `links` become links. */
 export function splitReplyLinks(reply: string, links: readonly string[]): ReplySegment[] {
