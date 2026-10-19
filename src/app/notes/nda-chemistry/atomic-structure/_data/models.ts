@@ -128,24 +128,28 @@ export const MODELS_NOTE: SubtopicNote = {
       name: "Dalton's pictorial element symbols",
       intuition:
         "Before letter symbols (H, O, P), Dalton drew each element as a small circle with a mark inside. The NDA has shown the actual pictures and asked which one is phosphorus. " +
-        "You only need the handful the bank reuses — phosphorus is a circle with a cross (+) inside it.",
+        "You only need the handful the bank reuses. Phosphorus is a circle with three spokes meeting at the centre; the circle with a cross (+) is SULPHUR, the classic wrong option.",
       definition:
         "Dalton represented elements as circles with distinguishing marks:\n" +
-        "- **Phosphorus** — a circle with a **cross (+)** inscribed inside (a circled cross).\n" +
-        "- **Oxygen** — a plain open circle.\n" +
-        "- **Hydrogen** — a circle with a central dot.\n" +
-        "- **Sulphur** — a circle with a letter mark inside.\n" +
+        "- **Phosphorus**: a circle with **three spokes** from the centre to the rim.\n" +
+        "- **Sulphur**: a circle with a **cross (+)** inside (a circled cross).\n" +
+        "- **Oxygen**: a plain open circle.\n" +
+        "- **Hydrogen**: a circle with a central dot.\n" +
+        "- **Carbon**: a solid black circle.\n" +
+        "- **Metals** carry the first letter of their name inside the circle: **L** for lead, **P** for platinum, **G** for gold, **S** for silver, **C** for copper. So a circled P is platinum, not phosphorus.\n" +
         "These are pictorial conventions; the bank's question shows the drawings and asks you to match phosphorus.",
       table: {
         columns: ["Element", "Dalton's symbol"],
         rows: [
           {
-            cells: ["Phosphorus", "Circle with a cross (+) inside (circled cross)"],
-            noteAmber: "NDA 2023 — Dalton's phosphorus is the circle with the + sign inside.",
+            cells: ["Phosphorus", "Circle with three spokes from the centre"],
+            noteAmber: "NDA 2023: Dalton's phosphorus is the three-spoke circle. The circled cross beside it is sulphur.",
           },
+          { cells: ["Sulphur", "Circle with a cross (+) inside (circled cross)"] },
           { cells: ["Oxygen", "A plain open circle"] },
           { cells: ["Hydrogen", "A circle with a central dot"] },
-          { cells: ["Sulphur", "A circle with a letter mark inside"] },
+          { cells: ["Carbon", "A solid black circle"] },
+          { cells: ["Lead / Platinum", "A circle with the letter L / P inside"] },
         ],
       },
       pyqExampleId: "9d0f9315-635e-459f-b8f5-f0371a943159", // Dalton symbol phosphorus

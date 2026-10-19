@@ -107,9 +107,10 @@ export const ANGLE_BETWEEN_CURVES_NOTE: SubtopicNote = {
         steps: [
           "Both pass through \\((0,1)\\): set \\(3^x = 7^x\\Rightarrow x = 0\\).",
           "Slopes there: \\(\\dfrac{d}{dx}3^x = 3^x\\log 3 \\to \\log 3\\) and \\(\\dfrac{d}{dx}7^x \\to \\log 7\\). So \\(m_1 = \\log 3,\\ m_2 = \\log 7\\).",
-          "\\(\\tan\\theta = \\left|\\dfrac{\\log 3 - \\log 7}{1 + (\\log 3)(\\log 7)}\\right| = \\dfrac{\\log(3/7)}{1 + (\\log 3)(\\log 7)}\\).",
+          "\\(\\tan\\theta = \\left|\\dfrac{\\log 3 - \\log 7}{1 + (\\log 3)(\\log 7)}\\right|\\). The numerator \\(\\log 3 - \\log 7\\) is negative and the denominator positive, so the modulus flips the sign: \\(\\tan\\theta = \\dfrac{\\log 7 - \\log 3}{1 + (\\log 3)(\\log 7)} = \\dfrac{\\log(7/3)}{1 + (\\log 3)(\\log 7)}\\).",
+          "Keeping \\(\\log(3/7)\\) on top would give a negative tangent, which is the obtuse angle between the curves, not the acute one.",
         ],
-        answer: "\\(\\tan\\theta = \\dfrac{\\log(3/7)}{1 + (\\log 3)(\\log 7)}\\)",
+        answer: "\\(\\tan\\theta = \\dfrac{\\log(7/3)}{1 + (\\log 3)(\\log 7)}\\)",
       },
       practiceSet: [
         { prompt: "\\(m_1 = 4,\\ m_2 = \\tfrac14\\): find \\(\\tan\\theta\\).", answer: "\\(\\tfrac{15}{8}\\)", method: "\\(\\left|\\dfrac{4 - 1/4}{1 + 1}\\right| = \\dfrac{15/4}{2}\\)" },

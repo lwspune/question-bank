@@ -10,8 +10,17 @@ import { useRef, useState } from "react";
  *
  * Pedagogical aim: a flat projection can't show that F, B and I are mutually
  * perpendicular; orbiting the scene makes the right angles unambiguous from
- * every viewpoint. (Field along +x, Current along +y, Force along +z.)
+ * every viewpoint.
+ *
+ * The axes must obey F = I L x B, so Current x Field = Force. Field along +x
+ * with Current along +y (the first version) made the force point DOWN, and a
+ * student reported the diagram as wrong.
  */
+export const FLEMING_AXES = {
+  current: [1, 0, 0],
+  field: [0, 1, 0],
+  force: [0, 0, 1],
+} as const;
 
 const W = 360;
 const H = 320;
@@ -59,18 +68,30 @@ export default function FlemingsLeftHandRule() {
   };
 
   const p = makeProject(az, el);
+  const at = (v: readonly number[], k: number) => p(v[0] * k, v[1] * k, v[2] * k);
   const O = p(0, 0, 0);
-  const Bx = p(L, 0, 0); // Field
-  const Iy = p(0, L, 0); // Current
-  const Fz = p(0, 0, L); // Force
+  const Bx = at(FLEMING_AXES.field, L);
+  const Iy = at(FLEMING_AXES.current, L);
+  const Fz = at(FLEMING_AXES.force, L);
   // wire segment lies along the current axis
-  const wireA = p(0, -1.2, 0);
-  const wireB = p(0, L + 0.3, 0);
+  const wireA = at(FLEMING_AXES.current, -1.2);
+  const wireB = at(FLEMING_AXES.current, L + 0.3);
 
-  // small right-angle markers in each coordinate plane at the origin
-  const raBI = [p(0.55, 0, 0), p(0.55, 0.55, 0), p(0, 0.55, 0)]; // B–I (xy)
-  const raIF = [p(0, 0.55, 0), p(0, 0.55, 0.55), p(0, 0, 0.55)]; // I–F (yz)
-  const raBF = [p(0.55, 0, 0), p(0.55, 0, 0.55), p(0, 0, 0.55)]; // B–F (xz)
+  // small right-angle markers in each plane at the origin
+  const corner = (u: readonly number[], v: readonly number[]) => [
+    at(u, 0.55),
+    p((u[0] + v[0]) * 0.55, (u[1] + v[1]) * 0.55, (u[2] + v[2]) * 0.55),
+    at(v, 0.55),
+  ];
+  const raBI = corner(FLEMING_AXES.field, FLEMING_AXES.current);
+  const raIF = corner(FLEMING_AXES.current, FLEMING_AXES.force);
+  const raBF = corner(FLEMING_AXES.field, FLEMING_AXES.force);
+  // A label sits beyond its arrow tip: to the right of a tip that points right,
+  // to the left (end-anchored) of one that points left, so it never covers the arrowhead.
+  const labelAt = (tip: [number, number]) =>
+    tip[0] >= O[0]
+      ? { x: tip[0] + 6, y: tip[1] + 4, textAnchor: "start" as const }
+      : { x: tip[0] - 6, y: tip[1] + 4, textAnchor: "end" as const };
   const path = (pts: [number, number][]) =>
     pts.map((q, i) => `${i === 0 ? "M" : "L"}${q[0]},${q[1]}`).join(" ");
 
@@ -129,9 +150,9 @@ export default function FlemingsLeftHandRule() {
         {/* Force (F) — thumb */}
         <line x1={O[0]} y1={O[1]} x2={Fz[0]} y2={Fz[1]} stroke="currentColor" className="text-rose-600 dark:text-rose-400" strokeWidth={2.5} markerEnd="url(#flh-f)" />
 
-        <text x={Bx[0] + 6} y={Bx[1] + 4} className="fill-indigo-700 dark:fill-indigo-300 text-[12px] font-semibold">B (field)</text>
-        <text x={Iy[0] + 6} y={Iy[1] + 4} className="fill-emerald-700 dark:fill-emerald-300 text-[12px] font-semibold">I (current)</text>
-        <text x={Fz[0] + 6} y={Fz[1] + 2} className="fill-rose-700 dark:fill-rose-300 text-[12px] font-semibold">F (force)</text>
+        <text {...labelAt(Bx)} className="fill-indigo-700 dark:fill-indigo-300 text-[12px] font-semibold">B (field)</text>
+        <text {...labelAt(Iy)} className="fill-emerald-700 dark:fill-emerald-300 text-[12px] font-semibold">I (current)</text>
+        <text {...labelAt(Fz)} className="fill-rose-700 dark:fill-rose-300 text-[12px] font-semibold">F (force)</text>
 
         <circle cx={O[0]} cy={O[1]} r={3} className="fill-foreground" />
       </svg>

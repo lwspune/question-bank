@@ -137,12 +137,18 @@ export const SPECIAL_DETERMINANTS_NOTE: SubtopicNote = {
       slug: "polynomial-progression-determinants",
       name: "Polynomial and progression determinants",
       intuition:
-        "If the rows are terms of an AP or GP (or shifted copies), they're linearly dependent and the " +
-        "determinant is 0. When a determinant is set equal to a polynomial \\(ax^4 + \\dots\\), match " +
-        "powers of \\(x\\) (or use the degree) to read off a coefficient.",
+        "When the rows (or columns) are in AP, one is a combination of the others and the determinant " +
+        "is 0. A GP is different: rows that are multiples of one another give 0, but rows like " +
+        "\\(1, k, k^2\\) give a Vandermonde determinant, which is usually NOT 0. When a determinant is " +
+        "set equal to a polynomial \\(ax^4 + \\dots\\), match powers of \\(x\\) (or use the degree) to read off a coefficient.",
       definition:
-        "**AP/GP rows:** three rows in arithmetic progression satisfy \\(R_1 + R_3 = 2R_2\\) " +
-        "(dependent) → determinant 0; GP rows are proportional after a log/ratio step → 0. " +
+        "**AP rows or columns:** if the three rows are in AP, \\(R_1 + R_3 = 2R_2\\), so the rows are " +
+        "dependent and the determinant is 0. The same holds when every row's entries form an AP across " +
+        "the columns: then \\(C_1 + C_3 = 2C_2\\).\n" +
+        "**GP: check which kind.** If the rows are in GP as whole rows (\\(R_2 = rR_1\\), \\(R_3 = r^2R_1\\)), " +
+        "they are proportional and the determinant is 0. If instead each row reads \\(1, k, k^2\\) for different " +
+        "\\(k\\) (\\(a\\), \\(b\\), \\(c\\)), it is the Vandermonde determinant, equal to \\((b-a)(c-b)(c-a)\\), " +
+        "which is 0 only when two of \\(a, b, c\\) are equal.\n" +
         "**Determinant as polynomial:** expand to a polynomial in \\(x\\) and equate coefficients, " +
         "or argue the degree to find a specific coefficient.\n" +
         "**The zero-polynomial argument:** a polynomial of degree at most 2 that vanishes at THREE distinct values of \\(x\\) is identically zero — every coefficient is 0. So if a determinant that is quadratic in \\(x\\) is zero at three given points, it is zero for ALL \\(x\\), and any \"find the coefficient\" question about it answers 0.",
@@ -166,7 +172,7 @@ export const SPECIAL_DETERMINANTS_NOTE: SubtopicNote = {
       },
       practiceSet: [
         { prompt: "Three rows in AP ⇒ determinant?", answer: "\\(0\\)" },
-        { prompt: "Rows of a GP (after ratio) are?", answer: "Proportional ⇒ determinant 0" },
+        { prompt: "Rows \\(1, a, a^2\\); \\(1, b, b^2\\); \\(1, c, c^2\\) with \\(a, b, c\\) distinct: is the determinant 0?", answer: "No: it is \\((b-a)(c-b)(c-a) \\ne 0\\)" },
         { prompt: "To find a coefficient of \\(x^k\\) in a determinant-polynomial?", answer: "Equate coefficients / use the degree" },
         { prompt: "\\(R_1 + R_3 = 2R_2\\) implies the rows are?", answer: "Dependent (det 0)" },
       ],
