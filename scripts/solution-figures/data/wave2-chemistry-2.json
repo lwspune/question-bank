@@ -1,0 +1,1032 @@
+{
+  "figures": [
+    {
+      "key": "nacl-lambda-vs-root-c",
+      "draw": {
+        "kind": "plot",
+        "axes": "box",
+        "grid": true,
+        "xlim": [
+          0,
+          0.35
+        ],
+        "ylim": [
+          104,
+          127
+        ],
+        "xlabel": "$c^{1/2}$ / (mol L$^{-1}$)$^{1/2}$",
+        "ylabel": "$\\Lambda_m$ / S cm$^2$ mol$^{-1}$",
+        "series": [
+          {
+            "type": "function",
+            "expr": "124.7 - 59.0*x",
+            "domain": [
+              0,
+              0.33
+            ],
+            "label": "least-squares line"
+          },
+          {
+            "type": "points",
+            "x": [
+              0.0316,
+              0.1,
+              0.1414,
+              0.2236,
+              0.3162
+            ],
+            "y": [
+              123.7,
+              118.5,
+              115.75,
+              111.06,
+              106.74
+            ],
+            "line": false,
+            "color": "#111111",
+            "label": "NaCl data"
+          }
+        ],
+        "marks": [
+          {
+            "at": [
+              0,
+              124.7
+            ],
+            "label": "$\\Lambda_m^\\circ \\approx 124.7$",
+            "offset": [
+              8,
+              4
+            ]
+          }
+        ]
+      },
+      "ids": [
+        "1b72414d-af40-4dac-a330-4c20c6fcc3db"
+      ]
+    },
+    {
+      "key": "lambda-strong-weak",
+      "pdf": "C:/Vilas/LWS_Pune/NDA_Subjects_Content/Subjects/NCERT/Books/12th/Chemistry/Part_1/02. Electrochemistry.pdf",
+      "parts": [
+        {
+          "page": 16,
+          "bbox": [
+            0.06,
+            0.298,
+            0.5,
+            0.595
+          ]
+        }
+      ],
+      "ids": [
+        "9af12601-9243-414e-9a95-2078acb24ff3",
+        "b659d248-0fc1-494a-a66f-68964afd2b9d"
+      ],
+      "note": "Fig. 2.6 Molar conductivity versus c^1/2 for acetic acid (weak) and KCl (strong)"
+    },
+    {
+      "key": "kcl-lambda-vs-root-c",
+      "draw": {
+        "kind": "plot",
+        "axes": "box",
+        "grid": true,
+        "xlim": [
+          0,
+          0.035
+        ],
+        "ylim": [
+          146.8,
+          150.3
+        ],
+        "xlabel": "$c^{1/2}$ / (mol L$^{-1}$)$^{1/2}$",
+        "ylabel": "$\\Lambda_m$ / S cm$^2$ mol$^{-1}$",
+        "series": [
+          {
+            "type": "function",
+            "expr": "149.841 + (-87.457)*x",
+            "domain": [
+              0,
+              0.034
+            ],
+            "legend": false
+          },
+          {
+            "type": "points",
+            "x": [
+              0.01407,
+              0.01758,
+              0.02283,
+              0.03145
+            ],
+            "y": [
+              148.61,
+              148.29,
+              147.81,
+              147.09
+            ],
+            "line": false,
+            "color": "#111111"
+          }
+        ],
+        "marks": [
+          {
+            "at": [
+              0,
+              149.841
+            ],
+            "label": "intercept $\\Lambda_m^\\circ \\approx 150$",
+            "offset": [
+              8,
+              -14
+            ]
+          }
+        ]
+      },
+      "ids": [
+        "fd01e023-621e-411e-b1f1-b97c1de1d7f4"
+      ]
+    },
+    {
+      "key": "she",
+      "pdf": "C:/Vilas/LWS_Pune/NDA_Subjects_Content/Subjects/Chem/State_Board/Book/12th/05. Electrochemistry.pdf",
+      "parts": [
+        {
+          "page": 19,
+          "bbox": [
+            0.13,
+            0.072,
+            0.488,
+            0.2405
+          ]
+        }
+      ],
+      "ids": [
+        "309752d4-9065-4792-a153-25d3d1d15699",
+        "d8fa6a87-7dac-43e2-95e1-503289d2056f"
+      ],
+      "note": "Fig. 5.6 Standard hydrogen electrode"
+    },
+    {
+      "key": "lead-storage-cell",
+      "pdf": "C:/Vilas/LWS_Pune/NDA_Subjects_Content/Subjects/Chem/State_Board/Book/12th/05. Electrochemistry.pdf",
+      "parts": [
+        {
+          "page": 21,
+          "bbox": [
+            0.129,
+            0.638,
+            0.4886,
+            0.8065
+          ]
+        }
+      ],
+      "ids": [
+        "3931e9a2-1fba-4610-8bc8-9cf64b81a325",
+        "6dcee09d-dbaa-4ddd-8e7c-7fb4e196e789",
+        "d918481f-3dd2-4d75-a02a-ea354f990f90"
+      ],
+      "note": "Fig. 5.9 Lead storage cell"
+    },
+    {
+      "key": "zn-she-cell",
+      "pdf": "C:/Vilas/LWS_Pune/NDA_Subjects_Content/Subjects/Chem/State_Board/Book/12th/05. Electrochemistry.pdf",
+      "parts": [
+        {
+          "page": 19,
+          "bbox": [
+            0.5115,
+            0.072,
+            0.8705,
+            0.2405
+          ]
+        }
+      ],
+      "ids": [
+        "dc00caae-0c7f-454a-8ea1-cbd56281eea3"
+      ],
+      "note": "Fig. 5.7 Determination of standard potential using SHE"
+    },
+    {
+      "key": "h2-o2-fuel-cell",
+      "pdf": "C:/Vilas/LWS_Pune/NDA_Subjects_Content/Subjects/Chem/State_Board/Book/12th/05. Electrochemistry.pdf",
+      "parts": [
+        {
+          "page": 23,
+          "bbox": [
+            0.129,
+            0.6025,
+            0.4886,
+            0.7685
+          ]
+        }
+      ],
+      "ids": [
+        "e386a2a4-2d02-40ac-b532-8935fc67229d"
+      ],
+      "note": "Fig. 5.10 H2-O2 fuel cell"
+    },
+    {
+      "key": "perchloric-acid",
+      "pdf": "C:/Vilas/LWS_Pune/NDA_Subjects_Content/Subjects/Chem/State_Board/Book/12th/07. Elements of Groups 16, 17 and 18.pdf",
+      "parts": [
+        {
+          "page": 10,
+          "bbox": [
+            0.6,
+            0.3405,
+            0.762,
+            0.4155
+          ]
+        }
+      ],
+      "ids": [
+        "0e32c892-1db9-4a85-a7a4-11ec520ce5ab"
+      ],
+      "note": "Structure of perchloric acid, HClO4 (Structures of oxoacids of chlorine, iv)"
+    },
+    {
+      "key": "chloric-and-peroxydisulphuric-acid",
+      "pdf": "C:/Vilas/LWS_Pune/NDA_Subjects_Content/Subjects/Chem/State_Board/Book/12th/07. Elements of Groups 16, 17 and 18.pdf",
+      "parts": [
+        {
+          "page": 10,
+          "bbox": [
+            0.606,
+            0.2575,
+            0.768,
+            0.3175
+          ]
+        },
+        {
+          "page": 10,
+          "bbox": [
+            0.172,
+            0.2035,
+            0.405,
+            0.2875
+          ]
+        }
+      ],
+      "ids": [
+        "278d4beb-4408-423b-9a33-e19f28ec9d9b"
+      ],
+      "note": "Structures of chloric acid (oxoacids of chlorine, iii) and peroxydisulfuric acid (oxoacids of sulfur, v)"
+    },
+    {
+      "key": "peroxymonosulphuric-acid",
+      "draw": {
+        "kind": "structure",
+        "molecules": [
+          {
+            "name": "Peroxymonosulphuric acid",
+            "smiles": "OOS(=O)(=O)O"
+          }
+        ]
+      },
+      "ids": [
+        "73fd1f85-7954-4844-80c1-26fdee55673c"
+      ]
+    },
+    {
+      "key": "sulphuric-and-thiosulphuric-acid",
+      "draw": {
+        "kind": "structure",
+        "molecules": [
+          {
+            "name": "i. Sulphuric acid",
+            "smiles": "OS(=O)(=O)O"
+          },
+          {
+            "name": "ii. Thiosulphuric acid",
+            "smiles": "OS(=O)(=S)O"
+          }
+        ],
+        "per_row": 2
+      },
+      "ids": [
+        "90ccd471-52d1-4a4f-820d-36aa296a0b3b"
+      ]
+    },
+    {
+      "key": "sol-gel",
+      "pdf": "C:/Vilas/LWS_Pune/NDA_Subjects_Content/Subjects/Chem/State_Board/Book/12th/16. Green Chemistry and Nanochemistry.pdf",
+      "parts": [
+        {
+          "page": 8,
+          "bbox": [
+            0.13,
+            0.246,
+            0.487,
+            0.4355
+          ]
+        }
+      ],
+      "ids": [
+        "0809590a-2269-4716-9d17-cc2c39ce11b8"
+      ],
+      "note": "Fig. 16.7 Schematic representation of sol-gel process"
+    },
+    {
+      "key": "products-hydroxymethylphenol-socl2-phenylpropene-hbr",
+      "draw": {
+        "kind": "structure",
+        "molecules": [
+          {
+            "name": "(a) 4-(Chloromethyl)phenol",
+            "smiles": "Oc1ccc(CCl)cc1"
+          },
+          {
+            "name": "(b) 1-Bromo-3-phenylpropane",
+            "smiles": "BrCCCc1ccccc1"
+          }
+        ],
+        "per_row": 2
+      },
+      "ids": [
+        "160bd9ca-db2c-40bf-a928-a7a445908a4e"
+      ]
+    },
+    {
+      "key": "products-methylcyclohexene-hi-cyclohexene-br2",
+      "draw": {
+        "kind": "structure",
+        "molecules": [
+          {
+            "name": "(a) 1-Iodo-1-methylcyclohexane",
+            "smiles": "CC1(I)CCCCC1"
+          },
+          {
+            "name": "(b) 3-Bromocyclohexene",
+            "smiles": "BrC1CCCC=C1"
+          }
+        ],
+        "per_row": 2
+      },
+      "ids": [
+        "3be06416-8659-4692-b572-c2742006ee3b"
+      ]
+    },
+    {
+      "key": "products-ethylnitrobenzene-br2-chlorobenzene-acylation",
+      "draw": {
+        "kind": "structure",
+        "molecules": [
+          {
+            "name": "(a) 1-(1-Bromoethyl)-2-nitrobenzene",
+            "smiles": "CC(Br)c1ccccc1[N+](=O)[O-]"
+          },
+          {
+            "name": "(b) 1-(2-Chlorophenyl)ethanone",
+            "smiles": "CC(=O)c1ccccc1Cl"
+          },
+          {
+            "name": "(b) 1-(4-Chlorophenyl)ethanone (major)",
+            "smiles": "CC(=O)c1ccc(Cl)cc1"
+          }
+        ],
+        "per_row": 2
+      },
+      "ids": [
+        "3d43d4f9-0471-451b-8822-0091e3d932a0"
+      ]
+    },
+    {
+      "key": "products-dinitrophenol-bromomethylbutane",
+      "draw": {
+        "kind": "structure",
+        "molecules": [
+          {
+            "name": "(a) 2,4-Dinitrophenol",
+            "smiles": "Oc1ccc(cc1[N+](=O)[O-])[N+](=O)[O-]"
+          },
+          {
+            "name": "(b) 2-Bromo-2-methylbutane",
+            "smiles": "CCC(C)(C)Br"
+          }
+        ],
+        "per_row": 2
+      },
+      "ids": [
+        "45918cc2-9eb7-4ecf-9812-b1f6cc68adc1"
+      ]
+    },
+    {
+      "key": "c5h11br-isomers",
+      "draw": {
+        "kind": "structure",
+        "molecules": [
+          {
+            "name": "1-Bromopentane (primary)",
+            "smiles": "CCCCCBr"
+          },
+          {
+            "name": "2-Bromopentane (secondary)",
+            "smiles": "CCCC(C)Br"
+          },
+          {
+            "name": "3-Bromopentane (secondary)",
+            "smiles": "CCC(Br)CC"
+          },
+          {
+            "name": "1-Bromo-3-methylbutane (primary)",
+            "smiles": "CC(C)CCBr"
+          },
+          {
+            "name": "2-Bromo-3-methylbutane (secondary)",
+            "smiles": "CC(C)C(C)Br"
+          },
+          {
+            "name": "2-Bromo-2-methylbutane (tertiary)",
+            "smiles": "CCC(C)(C)Br"
+          },
+          {
+            "name": "1-Bromo-2-methylbutane (primary)",
+            "smiles": "CCC(C)CBr"
+          },
+          {
+            "name": "1-Bromo-2,2-dimethylpropane (primary)",
+            "smiles": "CC(C)(C)CBr"
+          }
+        ],
+        "per_row": 2
+      },
+      "ids": [
+        "666ce0c7-c0ef-4b35-b499-0fd3a5b97c10"
+      ]
+    },
+    {
+      "key": "products-tbutylbromide-koh-nitrocumene-br2",
+      "draw": {
+        "kind": "structure",
+        "molecules": [
+          {
+            "name": "(a) 2-Methylpropene",
+            "smiles": "C=C(C)C"
+          },
+          {
+            "name": "(b) 2-Bromo-2-(4-nitrophenyl)propane",
+            "smiles": "CC(C)(Br)c1ccc(cc1)[N+](=O)[O-]"
+          }
+        ],
+        "per_row": 2
+      },
+      "ids": [
+        "a2fbe8e4-c9e3-40fb-b1da-6e240bce29dd"
+      ]
+    },
+    {
+      "key": "products-styrene-hbr-cyclohexene-br2",
+      "draw": {
+        "kind": "structure",
+        "molecules": [
+          {
+            "name": "(i) 1-Bromo-1-phenylethane",
+            "smiles": "CC(Br)c1ccccc1"
+          },
+          {
+            "name": "(ii) 3-Bromocyclohexene",
+            "smiles": "BrC1CCCC=C1"
+          }
+        ],
+        "per_row": 2
+      },
+      "ids": [
+        "aa8714e7-b14a-430a-a150-3be56ab8bf77"
+      ]
+    },
+    {
+      "key": "4-bromo-3-methylpent-2-ene",
+      "draw": {
+        "kind": "structure",
+        "molecules": [
+          {
+            "name": "(a) 4-Bromo-3-methylpent-2-ene",
+            "smiles": "CC=C(C)C(C)Br"
+          }
+        ]
+      },
+      "ids": [
+        "c3932212-648a-410c-b894-e15233555146"
+      ]
+    },
+    {
+      "key": "products-chloroethylbenzene-methylcyclohexene-hydroxymethylphenol",
+      "draw": {
+        "kind": "structure",
+        "molecules": [
+          {
+            "name": "(a) 1-Chloro-4-(1-bromoethyl)benzene",
+            "smiles": "CC(Br)c1ccc(Cl)cc1"
+          },
+          {
+            "name": "(b) 1-Bromo-1-methylcyclohexane",
+            "smiles": "CC1(Br)CCCCC1"
+          },
+          {
+            "name": "(c) 4-(Chloromethyl)phenol",
+            "smiles": "Oc1ccc(CCl)cc1"
+          }
+        ],
+        "per_row": 2
+      },
+      "ids": [
+        "de10a38b-56b5-41ee-b24f-f8a07d6b020a"
+      ]
+    },
+    {
+      "key": "products-wurtz-fittig-hydroxyethylphenol-hbr",
+      "draw": {
+        "kind": "structure",
+        "molecules": [
+          {
+            "name": "(a) Toluene",
+            "smiles": "Cc1ccccc1"
+          },
+          {
+            "name": "(b) 4-(2-Bromoethyl)phenol",
+            "smiles": "Oc1ccc(CCBr)cc1"
+          }
+        ],
+        "per_row": 2
+      },
+      "ids": [
+        "e9657297-6fd2-4d65-8fbb-32c3d0df63e8"
+      ]
+    },
+    {
+      "key": "products-ncert-intext-6-5",
+      "draw": {
+        "kind": "structure",
+        "molecules": [
+          {
+            "name": "(i) Chlorocyclohexane",
+            "smiles": "ClC1CCCCC1"
+          },
+          {
+            "name": "(ii) 1-(1-Bromoethyl)-4-nitrobenzene",
+            "smiles": "CC(Br)c1ccc(cc1)[N+](=O)[O-]"
+          },
+          {
+            "name": "(iii) 4-(Chloromethyl)phenol",
+            "smiles": "Oc1ccc(CCl)cc1"
+          },
+          {
+            "name": "(iv) 1-Iodo-1-methylcyclohexane",
+            "smiles": "CC1(I)CCCCC1"
+          },
+          {
+            "name": "(v) Iodoethane",
+            "smiles": "CCI"
+          },
+          {
+            "name": "(vi) 3-Bromocyclohexene",
+            "smiles": "BrC1CCCC=C1"
+          }
+        ],
+        "per_row": 2
+      },
+      "ids": [
+        "f0995a65-8aa4-4d50-938d-4ad8ac3548d9"
+      ]
+    },
+    {
+      "key": "ddt",
+      "draw": {
+        "kind": "structure",
+        "molecules": [
+          {
+            "name": "DDT, p,p'-dichlorodiphenyltrichloroethane",
+            "smiles": "Clc1ccc(cc1)C(c1ccc(Cl)cc1)C(Cl)(Cl)Cl"
+          }
+        ]
+      },
+      "ids": [
+        "195a3098-aa47-46e1-81c0-91f19e0237d4"
+      ]
+    },
+    {
+      "key": "hex-2-ene-cis-trans",
+      "draw": {
+        "kind": "structure",
+        "molecules": [
+          {
+            "name": "cis-Hex-2-ene",
+            "smiles": "C/C=C\\CCC"
+          },
+          {
+            "name": "trans-Hex-2-ene",
+            "smiles": "C/C=C/CCC"
+          }
+        ],
+        "per_row": 2
+      },
+      "ids": [
+        "53ef9026-dd89-4524-9b4c-1e2f68741806"
+      ]
+    },
+    {
+      "key": "dichloroethene-dimethylhexene-cis-trans",
+      "draw": {
+        "kind": "structure",
+        "molecules": [
+          {
+            "name": "(i) cis-1,2-Dichloroethene",
+            "smiles": "Cl/C=C\\Cl"
+          },
+          {
+            "name": "(i) trans-1,2-Dichloroethene",
+            "smiles": "Cl/C=C/Cl"
+          },
+          {
+            "name": "(ii) cis-3,4-Dimethylhex-3-ene",
+            "smiles": "CC/C(C)=C(C)\\CC"
+          },
+          {
+            "name": "(ii) trans-3,4-Dimethylhex-3-ene",
+            "smiles": "CC/C(C)=C(C)/CC"
+          }
+        ],
+        "per_row": 2
+      },
+      "ids": [
+        "615f08a5-2bc0-4874-aa32-2cd4af99cfbf"
+      ]
+    },
+    {
+      "key": "monochlorination-products",
+      "draw": {
+        "kind": "structure",
+        "molecules": [
+          {
+            "name": "a. 1-Chloro-2-methylpropane",
+            "smiles": "ClCC(C)C"
+          },
+          {
+            "name": "a. 2-Chloro-2-methylpropane",
+            "smiles": "CC(C)(C)Cl"
+          },
+          {
+            "name": "b. 1-Chloro-2-methylbutane",
+            "smiles": "ClCC(C)CC"
+          },
+          {
+            "name": "b. 2-Chloro-2-methylbutane",
+            "smiles": "CCC(C)(C)Cl"
+          },
+          {
+            "name": "b. 2-Chloro-3-methylbutane",
+            "smiles": "CC(Cl)C(C)C"
+          },
+          {
+            "name": "b. 1-Chloro-3-methylbutane",
+            "smiles": "ClCCC(C)C"
+          }
+        ],
+        "per_row": 2
+      },
+      "ids": [
+        "85336b3c-c954-4805-90b9-2e368b00b26d"
+      ]
+    },
+    {
+      "key": "natural-rubber-unit",
+      "draw": {
+        "kind": "structure",
+        "molecules": [
+          {
+            "name": "cis-isoprene unit of natural rubber",
+            "smiles": "*C/C(C)=C\\C*"
+          }
+        ]
+      },
+      "ids": [
+        "1b949adb-97dc-4086-ac85-cbea4b3a1202"
+      ]
+    },
+    {
+      "key": "polymer-mode-flowchart",
+      "pdf": "C:/Vilas/LWS_Pune/NDA_Subjects_Content/Subjects/Chem/State_Board/Book/12th/15. Introduction to Polymer Chemistry.pdf",
+      "parts": [
+        {
+          "page": 5,
+          "bbox": [
+            0.545,
+            0.1298,
+            0.688,
+            0.2685
+          ]
+        }
+      ],
+      "ids": [
+        "2e279e6f-ef48-4d16-80ef-96434ba40d0a"
+      ],
+      "note": "Fig. 15.2 (branch) Classification of polymers based on mode of polymerization"
+    },
+    {
+      "key": "isoprene-and-rubber-unit",
+      "draw": {
+        "kind": "structure",
+        "molecules": [
+          {
+            "name": "Isoprene, 2-methylbuta-1,3-diene",
+            "smiles": "C=C(C)C=C"
+          },
+          {
+            "name": "cis-isoprene unit in natural rubber",
+            "smiles": "*C/C(C)=C\\C*"
+          }
+        ],
+        "per_row": 2
+      },
+      "ids": [
+        "c38c587a-a7af-4d94-9456-f43a07845247"
+      ]
+    },
+    {
+      "key": "linear-branched-chains",
+      "pdf": "C:/Vilas/LWS_Pune/NDA_Subjects_Content/Subjects/Chem/State_Board/Book/12th/15. Introduction to Polymer Chemistry.pdf",
+      "parts": [
+        {
+          "page": 1,
+          "bbox": [
+            0.54,
+            0.3856,
+            0.852,
+            0.475
+          ]
+        }
+      ],
+      "ids": [
+        "de7961c2-c58b-452b-9b31-8a3f0bcb67be"
+      ],
+      "note": "Fig. 15.1 (a) linear and (b) branched chain configurations"
+    },
+    {
+      "key": "n-z-stability-belt",
+      "pdf": "C:/Vilas/LWS_Pune/NDA_Subjects_Content/Subjects/Chem/State_Board/Book/11th/13. Nuclear Chemistry and Radioactivity.pdf",
+      "parts": [
+        {
+          "page": 2,
+          "bbox": [
+            0.144,
+            0.421,
+            0.465,
+            0.7608
+          ]
+        }
+      ],
+      "ids": [
+        "2cb76ecf-ca8f-4c48-b251-871d7bdd3a95"
+      ],
+      "note": "Fig. 13.1 Neutron to proton (N/Z) ratio"
+    },
+    {
+      "key": "acetone-chloroform-vapour-pressure",
+      "draw": {
+        "kind": "plot",
+        "axes": "box",
+        "grid": true,
+        "xlim": [
+          0,
+          1
+        ],
+        "ylim": [
+          0,
+          1150
+        ],
+        "size": [
+          7,
+          5.6
+        ],
+        "yticks": [
+          0,
+          100,
+          200,
+          300,
+          400,
+          500,
+          600,
+          700,
+          800
+        ],
+        "xlabel": "$x_{\\mathrm{acetone}}$",
+        "ylabel": "vapour pressure / mm Hg",
+        "series": [
+          {
+            "type": "function",
+            "expr": "632.8 + 109.0*x",
+            "domain": [
+              0,
+              1
+            ],
+            "style": "--",
+            "color": "#15803d",
+            "label": "$p_{\\mathrm{total}}$ ideal"
+          },
+          {
+            "type": "function",
+            "expr": "741.8*x",
+            "domain": [
+              0,
+              1
+            ],
+            "style": "--",
+            "color": "#1d4ed8",
+            "label": "$p_{\\mathrm{acetone}}$ ideal"
+          },
+          {
+            "type": "function",
+            "expr": "632.8*(1 - x)",
+            "domain": [
+              0,
+              1
+            ],
+            "style": "--",
+            "color": "#c2410c",
+            "label": "$p_{\\mathrm{chloroform}}$ ideal"
+          },
+          {
+            "type": "points",
+            "x": [
+              0,
+              0.118,
+              0.234,
+              0.36,
+              0.508,
+              0.582,
+              0.645,
+              0.721
+            ],
+            "y": [
+              632.8,
+              603,
+              579.5,
+              562.1,
+              580.4,
+              599.5,
+              615.3,
+              641.8
+            ],
+            "color": "#15803d",
+            "label": "$p_{\\mathrm{total}}$ observed"
+          },
+          {
+            "type": "points",
+            "x": [
+              0,
+              0.118,
+              0.234,
+              0.36,
+              0.508,
+              0.582,
+              0.645,
+              0.721
+            ],
+            "y": [
+              0,
+              54.9,
+              110.1,
+              202.4,
+              322.7,
+              405.9,
+              454.1,
+              521.1
+            ],
+            "color": "#1d4ed8",
+            "label": "$p_{\\mathrm{acetone}}$ observed"
+          },
+          {
+            "type": "points",
+            "x": [
+              0,
+              0.118,
+              0.234,
+              0.36,
+              0.508,
+              0.582,
+              0.645,
+              0.721
+            ],
+            "y": [
+              632.8,
+              548.1,
+              469.4,
+              359.7,
+              257.7,
+              193.6,
+              161.2,
+              120.7
+            ],
+            "color": "#c2410c",
+            "label": "$p_{\\mathrm{chloroform}}$ observed"
+          }
+        ]
+      },
+      "ids": [
+        "f890bff0-dbce-4440-af68-3939648e6857"
+      ]
+    },
+    {
+      "key": "solubility-curves",
+      "pdf": "C:/Vilas/LWS_Pune/NDA_Subjects_Content/Subjects/Chem/State_Board/Book/12th/02. Solutions.pdf",
+      "parts": [
+        {
+          "page": 2,
+          "bbox": [
+            0.13,
+            0.272,
+            0.489,
+            0.4575
+          ]
+        }
+      ],
+      "ids": [
+        "c9a1039c-95d6-4011-b396-6b400a962615"
+      ],
+      "note": "Fig. 2.1 Variation of solubilities of some ionic solids with temperature"
+    }
+  ],
+  "edits": [
+    {
+      "id": "1b72414d-af40-4dac-a330-4c20c6fcc3db",
+      "find": "so the intercept at \\(c^{1/2} = 0\\) is \\(\\Lambda_m^{\\circ}\\) and the slope is \\(-A\\).",
+      "replace": "so the intercept at \\(c^{1/2} = 0\\) is \\(\\Lambda_m^{\\circ}\\) and the slope is \\(-A\\). The figure at the end of this answer shows the five points with the least-squares line through all of them."
+    },
+    {
+      "id": "9af12601-9243-414e-9a95-2078acb24ff3",
+      "find": "There is no straight portion to extrapolate and no intercept to read.",
+      "replace": "There is no straight portion to extrapolate and no intercept to read. The figure at the end of this answer shows both curves: \\(\\mathrm{KCl}\\), a strong electrolyte, falls along a nearly straight line, while acetic acid, \\(\\mathrm{CH_3COOH}\\), a weak electrolyte, shoots up towards the vertical axis."
+    },
+    {
+      "id": "b659d248-0fc1-494a-a66f-68964afd2b9d",
+      "find": "so there is nothing to extrapolate.",
+      "replace": "so there is nothing to extrapolate. The figure at the end of this answer shows the two cases: \\(\\mathrm{KCl}\\) (strong) and acetic acid, \\(\\mathrm{CH_3COOH}\\) (weak)."
+    },
+    {
+      "id": "fd01e023-621e-411e-b1f1-b97c1de1d7f4",
+      "find": "is shown in (Fig. 3.7).",
+      "replace": "is shown in the figure at the end of this answer."
+    },
+    {
+      "id": "309752d4-9065-4792-a153-25d3d1d15699",
+      "find": "The labelled diagram is drawn as follows.",
+      "replace": "The labelled diagram is drawn as follows (the book's drawing is at the end of this answer; it shows the electrode alone, without the salt bridge, with the platinum wire connected through mercury to a copper lead)."
+    },
+    {
+      "id": "d8fa6a87-7dac-43e2-95e1-503289d2056f",
+      "find": "**hydrogen gas at 1 bar pressure**",
+      "replace": "**hydrogen gas at 1 bar pressure** (the book's figure at the end of this answer labels it 1 atm, the older standard)"
+    },
+    {
+      "id": "dc00caae-0c7f-454a-8ea1-cbd56281eea3",
+      "find": "\\(\\mathrm{Zn_{(s)} \\mid Zn^{2+}_{(aq)} \\parallel H^{+}_{(aq)}\\,(1\\ M) \\mid H_{2(g)}\\,(1\\ bar) \\mid Pt}\\)",
+      "replace": "\\(\\mathrm{Zn_{(s)} \\mid Zn^{2+}_{(aq)} \\parallel H^{+}_{(aq)}\\,(1\\ M) \\mid H_{2(g)}\\,(1\\ bar) \\mid Pt}\\)\n\nThe figure at the end of this answer shows this cell as the book draws it, with the zinc electrode in 1 M \\(\\mathrm{ZnSO_4}\\)."
+    },
+    {
+      "id": "278d4beb-4408-423b-9a33-e19f28ec9d9b",
+      "find": "where a single oxygen does the bridging.",
+      "replace": "where a single oxygen does the bridging.\n\nIn the figure at the end of this answer, the upper structure is chloric acid and the lower one peroxydisulphuric acid."
+    },
+    {
+      "id": "0809590a-2269-4716-9d17-cc2c39ce11b8",
+      "find": "as shown in Fig. 16.7.",
+      "replace": "as shown in the figure at the end of this answer."
+    },
+    {
+      "id": "2e279e6f-ef48-4d16-80ef-96434ba40d0a",
+      "find": "this branch of the tree diagram of Fig. 15.2 is :",
+      "replace": "this branch of the tree diagram of Fig. 15.2 (drawn at the end of this answer) is :"
+    },
+    {
+      "id": "de7961c2-c58b-452b-9b31-8a3f0bcb67be",
+      "find": "introduces branches (LDP).",
+      "replace": "introduces branches (LDP).\n\nIn the figure at the end of this answer, (a) is a linear chain and (b) a branched chain."
+    },
+    {
+      "id": "2cb76ecf-ca8f-4c48-b251-871d7bdd3a95",
+      "find": "develops it from **Fig. 13.1**.",
+      "replace": "develops it from **Fig. 13.1**, reproduced at the end of this answer."
+    },
+    {
+      "id": "f890bff0-dbce-4440-af68-3939648e6857",
+      "find": "The acetone-chloroform mixture shows NEGATIVE deviation from ideal behaviour.",
+      "replace": "The acetone-chloroform mixture shows NEGATIVE deviation from ideal behaviour.\n\nIn the figure at the end of this answer the dashed lines are the ideal (Raoult's law) pressures and the points joined by solid lines are the experimental ones."
+    },
+    {
+      "id": "c9a1039c-95d6-4011-b396-6b400a962615",
+      "find": "and from Fig. 2.1 the solubilities of",
+      "replace": "and from the figure at the end of this answer the solubilities of"
+    },
+    {
+      "id": "c9a1039c-95d6-4011-b396-6b400a962615",
+      "find": "and from Fig. 2.1 the solubility of",
+      "replace": "and the chapter notes that the solubility of"
+    },
+    {
+      "id": "c9a1039c-95d6-4011-b396-6b400a962615",
+      "find": "change only slightly with temperature (Fig. 2.1).",
+      "replace": "change only slightly with temperature (see the same figure)."
+    }
+  ]
+}
