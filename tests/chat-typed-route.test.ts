@@ -256,7 +256,10 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
     const { POST } = await import("@/app/api/chat/typed/route");
     await POST(post({ message: `route-${RUN}-cache1 atoms`, pagePath: "/notes" }));
     await POST(post({ message: `route-${RUN}-cache2 nuclei`, pagePath: "/mock" }));
-    expect(askV.mock.calls[0][0].system).toBe(askV.mock.calls[1][0].system);
+    // The bank size is read live, and a neighbouring test file can add a question between the two
+    // calls (177 -> 178 failed a push, 2026-10-19). The page is what must not change the prompt.
+    const withoutBankSize = (s: string) => s.replace(/\d+ public questions/, "N public questions");
+    expect(withoutBankSize(askV.mock.calls[0][0].system)).toBe(withoutBankSize(askV.mock.calls[1][0].system));
     expect(askV.mock.calls[0][0].systemTail).not.toBe(askV.mock.calls[1][0].systemTail);
     const { data } = await admin
       .from("chat_interactions")
