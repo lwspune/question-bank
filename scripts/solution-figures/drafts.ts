@@ -12,7 +12,7 @@
  * A label edit on anything but a book-figure is reported, not applied: an edit
  * exists to make a solution agree with a figure that will sit under it.
  */
-import type { Batch, Figure, Part } from "./plan";
+import type { Batch, DrawSpec, Figure, Part } from "./plan";
 
 export const VERDICTS = ["book-figure", "text-enough", "has-stem-figure", "computed", "structure", "no-book-figure", "false-hit"] as const;
 export type Verdict = (typeof VERDICTS)[number];
@@ -21,7 +21,7 @@ export type Draft = {
   id: string;
   verdict: Verdict;
   reason: string;
-  figure?: { key: string; caption?: string; pdf: string; parts: Part[] };
+  figure?: { key: string; caption?: string; pdf?: string; parts?: Part[]; draw?: DrawSpec };
   edits?: { find: string; replace: string }[];
   spec?: string;
 };
@@ -35,8 +35,16 @@ export type DraftResult = {
 
 const LATER = new Set<Verdict>(["computed", "structure", "no-book-figure"]);
 
-function identity(pdf: string, parts: Part[]) {
-  return JSON.stringify([pdf, parts.map((p) => [p.page, p.bbox, p.mask ?? []])]);
+function sorted(v: unknown): unknown {
+  if (Array.isArray(v)) return v.map(sorted);
+  if (v && typeof v === "object") return Object.fromEntries(Object.keys(v as object).sort().map((k) => [k, sorted((v as Record<string, unknown>)[k])]));
+  return v;
+}
+
+/** A crop is its book, pages and boxes; a drawing is its spec (keys sorted). */
+function identity(fig: NonNullable<Draft["figure"]>) {
+  if (fig.draw) return "draw:" + JSON.stringify(sorted(fig.draw));
+  return JSON.stringify([fig.pdf, (fig.parts ?? []).map((p) => [p.page, p.bbox, p.mask ?? []])]);
 }
 
 export function draftsToBatch(slices: Draft[][]): DraftResult {
@@ -61,7 +69,9 @@ export function draftsToBatch(slices: Draft[][]): DraftResult {
     seen.set(d.id, d.verdict);
     tally[d.verdict] = (tally[d.verdict] ?? 0) + 1;
 
-    if (d.verdict !== "book-figure") {
+    // A computed or structure verdict that carries its drawing spec is a figure now.
+    const drawnNow = (d.verdict === "computed" || d.verdict === "structure") && !!d.figure?.draw;
+    if (d.verdict !== "book-figure" && !drawnNow) {
       if (d.edits?.length) errors.push(`${d.id}: edits on a ${d.verdict} verdict are not applied`);
       if (LATER.has(d.verdict)) later.push({ id: d.id, verdict: d.verdict, spec: d.spec, reason: d.reason });
       continue;
@@ -71,13 +81,18 @@ export function draftsToBatch(slices: Draft[][]): DraftResult {
       continue;
     }
 
-    const ident = identity(d.figure.pdf, d.figure.parts);
+    if (d.verdict === "book-figure" && (!d.figure.pdf || !d.figure.parts?.length)) {
+      errors.push(`${d.id}: book-figure with no book crop`);
+      continue;
+    }
+    const ident = identity(d.figure);
     let f = byIdentity.get(ident);
     if (!f) {
       let key = d.figure.key;
       for (let n = 2; keysTaken.has(key); n++) key = `${d.figure.key}-${n}`;
       keysTaken.add(key);
-      f = { key, pdf: d.figure.pdf, parts: d.figure.parts, ids: [], ...(d.figure.caption ? { note: d.figure.caption } : {}) };
+      const source = d.figure.draw ? { draw: d.figure.draw } : { pdf: d.figure.pdf, parts: d.figure.parts };
+      f = { key, ...source, ids: [], ...(d.figure.caption ? { note: d.figure.caption } : {}) };
       byIdentity.set(ident, f);
     }
     f.ids.push(d.id);

@@ -50,6 +50,21 @@ describe("draftsToBatch", () => {
     expect(out.errors.join("\n")).toMatch(new RegExp(`${B}.*edits`));
   });
 
+  it("turns a computed or structure verdict that carries a drawing spec into a figure, merging identical specs", () => {
+    const spec = { kind: "ray", element: "concave-mirror", f: 15, u: -10, h: 2 };
+    const out = draftsToBatch([
+      [{ id: A, verdict: "computed", reason: "r", figure: { key: "mirror-u10", draw: spec } }],
+      [
+        { id: B, verdict: "computed", reason: "r", figure: { key: "mirror-object-inside-f", draw: { ...spec } } },
+        { id: C, verdict: "structure", reason: "r", figure: { key: "ethanol", draw: { kind: "structure", molecules: [{ smiles: "CCO" }] } } },
+        { id: D, verdict: "computed", reason: "r", spec: "no drawing yet" },
+      ],
+    ]);
+    expect(out.errors).toEqual([]);
+    expect(out.batch.figures.map((f) => [f.key, f.ids])).toEqual([["mirror-u10", [A, B]], ["ethanol", [C]]]);
+    expect(out.later.map((l) => l.id)).toEqual([D]);
+  });
+
   it("refuses a book-figure with no figure, an unknown verdict, and one id given two verdicts", () => {
     const errs = draftsToBatch([
       [
