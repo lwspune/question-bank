@@ -16,6 +16,8 @@ export type ChapterSearchRow = {
   chapterName: string;
   questionCount: number;
   practiceOnly: boolean;
+  /** The chapter's id, where the list carries it (the landing list does): pasted questions are matched within it. */
+  chapterId?: string;
   /** The chapter's subtopic names (lib/chat/subtopicIndex.ts), so "budget" finds the chapter holding "Union Budget". */
   subtopicNames?: readonly string[];
 };

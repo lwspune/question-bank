@@ -10,6 +10,7 @@ import { describe, it, expect } from "vitest";
 import {
   answerText,
   parseAskedQuestion,
+  matchPasted,
   explainView,
   firstStep,
   hintView,
@@ -182,5 +183,31 @@ describe("parseAskedQuestion", () => {
     expect(parseAskedQuestion(null)).toBeNull();
     expect(parseAskedQuestion("q1")).toBeNull();
     expect(parseAskedQuestion({ id: ID, chose: "E" })).toEqual({ id: ID, chose: null });
+  });
+});
+
+// 2026-10-19 check: a pasted, maths-heavy stem found nothing, and word search attached a DIFFERENT question.
+describe("matchPasted", () => {
+  const stems = [
+    { id: "a", text: "The value of \\(\\int x^{x}(1+\\log x)\\,dx\\) is equal to" },
+    { id: "b", text: "\\(\\int \\cos^{-\\frac{3}{7}}x\\,\\sin^{-\\frac{11}{7}}x\\,dx =\\)" },
+    { id: "c", text: "Find \\(\\int \\frac{\\cot x}{\\sin x \\cos x}\\,dx\\)" },
+    { id: "d", text: "Evaluate \\(\\int e^{x}(\\sin x + \\cos x)\\,dx\\)" },
+  ];
+
+  it("finds a stem pasted from the rendered page, maths debris and all", () => {
+    expect(matchPasted("The value of ( int x x (1 + logx)dx ) is equal to . give me pure ans", stems)[0]).toBe("a");
+    expect(matchPasted("8 · Integration by Substitution Find : ∫ cot ⁡ x sin ⁡ x cos ⁡ x d x give me pure ans", stems)[0]).toBe("c");
+  });
+
+  it("returns nothing for text that is no stem in the chapter", () => {
+    expect(matchPasted("how do I study for the board exam in less time", stems)).toEqual([]);
+  });
+
+  // A copy of a rendered fraction can come out denominator first (3/7 as "73"), and a short stem
+  // such as \int\cos^7 x\,dx is "mostly contained" in any long paste: the bigger overlap wins.
+  it("ranks by how much is shared, so a short stem inside a long paste does not win, and reads digits in any order", () => {
+    const withDecoy = [...stems, { id: "short", text: "\\(\\int \\cos^7 x\\, dx\\)" }];
+    expect(matchPasted("∫cos−73​xsin−711​xdx give answer", withDecoy)[0]).toBe("b");
   });
 });

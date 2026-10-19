@@ -62,7 +62,8 @@ import {
 import type { ToolCallLog } from "@/lib/chat/anthropic";
 import { parseAskedQuestion } from "@/lib/chat/questionTools";
 import type { QuestionToolDeps } from "@/lib/chat/questionToolSet";
-import { loadSimilarId, loadVQuestion, revealedToday, searchVQuestions, spendVReveal } from "@/lib/chat/questionToolsServer";
+import { loadSimilarId, loadVQuestion, searchVQuestions } from "@/lib/chat/questionToolsServer";
+import { revealedToday, spendVReveal } from "@/lib/chat/questionReveal";
 
 // One AI answer can take two model calls (a chapter search, then the reply).
 export const maxDuration = 30;
@@ -81,7 +82,7 @@ const progressMemo = createProgressMemo(200);
  */
 function buildQuestionToolDeps(
   userId: string | null,
-  out: { onSimilar: (id: string) => void; onAttach: (id: string) => void }
+  out: { onSimilar: (id: string) => void; onMatch: (id: string) => void }
 ): QuestionToolDeps {
   const anon = createSupabaseAnonClient();
   return {
@@ -89,9 +90,9 @@ function buildQuestionToolDeps(
     spendReveal: userId ? (id) => spendVReveal(createSupabaseServerClient(), userId, id) : null,
     loadSimilar: async (q) =>
       loadSimilarId(anon, q, userId ? await revealedToday(createSupabaseServerClient(), userId, new Date()) : []),
-    searchQuestions: (text) => searchVQuestions(anon, text),
+    searchQuestions: (text, chapterId) => searchVQuestions(anon, text, chapterId),
     onSimilar: out.onSimilar,
-    onAttach: out.onAttach,
+    onMatch: out.onMatch,
     onExplained: () => {},
   };
 }
@@ -168,9 +169,9 @@ export async function POST(request: NextRequest) {
 
     let reply = TYPED_QUESTION_REPLY;
     let links: string[] = [];
-    // Set by V's question tools during the answer, for the chat window: a card to try, a question now in hand.
+    // Set by V's question tools during the answer, for the chat window: a question to try, a pasted one to confirm.
     let similarQuestionId: string | null = null;
-    let attachedQuestionId: string | null = null;
+    let matchQuestionId: string | null = null;
     let recorded: {
       text: string;
       source: "ai" | "ai_failed" | "fallback";
@@ -198,7 +199,7 @@ export async function POST(request: NextRequest) {
             questionTools: settings.explainEnabled
               ? buildQuestionToolDeps(ownId, {
                   onSimilar: (id) => (similarQuestionId = id),
-                  onAttach: (id) => (attachedQuestionId = id),
+                  onMatch: (id) => (matchQuestionId = id),
                 })
               : null,
             // The student's own login does the reading (get_own_performance): no id is passed to the database.
@@ -267,7 +268,7 @@ export async function POST(request: NextRequest) {
     // Only on an AI answer: a fallback reply never ran the tools.
     const questionFields =
       recorded.source === "ai"
-        ? { ...(similarQuestionId ? { similarQuestionId } : {}), ...(attachedQuestionId ? { questionId: attachedQuestionId } : {}) }
+        ? { ...(similarQuestionId ? { similarQuestionId } : {}), ...(matchQuestionId ? { matchQuestionId } : {}) }
         : {};
     if (userId !== null) {
       return NextResponse.json(

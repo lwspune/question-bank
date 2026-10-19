@@ -151,6 +151,6 @@ export async function loadVContext(
 
   // Always offered, signed in or not: the tool list is part of the cached prefix.
   const tools = [findChaptersTool, progressTool(opts.loadOwnProgress, opts.loadOwnPractice)];
-  if (opts.questionTools) tools.push(...questionTools(opts.questionTools));
+  if (opts.questionTools) tools.push(...questionTools({ ...opts.questionTools, pageChapterId: pageInfo?.chapterId ?? null }));
   return { system, systemTail, tools, allowedPaths };
 }

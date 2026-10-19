@@ -32,14 +32,14 @@ const Q: VQuestion = {
 };
 
 function deps(over: Partial<QuestionToolDeps> = {}) {
-  const seen = { similar: [] as string[], attached: [] as string[], explained: [] as string[] };
+  const seen = { similar: [] as string[], matched: [] as string[], explained: [] as string[] };
   const d: QuestionToolDeps = {
     loadQuestion: async (id) => (id === ID ? Q : null),
     spendReveal: async (): Promise<RevealCheck> => ({ kind: "ok", counts: true }),
     loadSimilar: async () => OTHER,
     searchQuestions: async () => [{ id: ID, snippet: "What is 2 + 2?", where: "NDA, Arithmetic" }],
     onSimilar: (id) => seen.similar.push(id),
-    onAttach: (id) => seen.attached.push(id),
+    onMatch: (id) => seen.matched.push(id),
     onExplained: (id) => seen.explained.push(id),
     ...over,
   };
@@ -109,17 +109,18 @@ describe("similar_question", () => {
 });
 
 describe("find_question (pasted text)", () => {
-  it("makes the best match the question this conversation is about, and shows it to V to confirm", async () => {
+  // 2026-10-19 check: a silent pick explained the WRONG question. The student confirms on a card instead.
+  it("offers the best match as a card to confirm, and does not explain it yet", async () => {
     const { tools, seen } = deps();
     const out = await tools.find_question.run({ text: "what is 2+2" });
-    expect(out).toContain("What is 2 + 2?");
-    expect(out).toContain(ID);
-    expect(seen.attached).toEqual([ID]);
+    expect(seen.matched).toEqual([ID]);
+    expect(out).toMatch(/shown to the student as a card/i);
+    expect(out).toMatch(/do not explain it yet/i);
   });
 
-  it("says when nothing in the bank matches", async () => {
+  it("says when nothing in the bank matches, and offers no card", async () => {
     const { tools, seen } = deps({ searchQuestions: async () => [] });
     expect(await tools.find_question.run({ text: "zzz" })).toMatch(/no question in the bank matched/i);
-    expect(seen.attached).toEqual([]);
+    expect(seen.matched).toEqual([]);
   });
 });

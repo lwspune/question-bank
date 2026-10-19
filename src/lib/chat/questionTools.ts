@@ -141,3 +141,51 @@ export function parseAskedQuestion(raw: unknown): { id: string; chose: string | 
   const pick = typeof chose === "string" ? chose.toUpperCase() : null;
   return { id, chose: pick && PICKS.has(pick) ? pick : null };
 }
+
+// LaTeX commands that only lay maths out; their names are not in a pasted copy.
+const LAYOUT_COMMANDS = /\\(?:d?frac|tfrac|left|right|mathrm|mathbf|text|textbf|displaystyle|quad|qquad|big|bigg|Big|limits|operatorname)\b/g;
+const SYMBOLS: Record<string, string> = { "∫": "int", "√": "sqrt", "π": "pi", "θ": "theta", "α": "alpha", "β": "beta", "∞": "infty" };
+const MATCH_MIN = 0.6;
+const MATCH_MAX = 3;
+
+/** A stem as letters and digits only: what survives both LaTeX and a copy from the rendered page. */
+function squash(s: string): string {
+  return s
+    .replace(LAYOUT_COMMANDS, " ")
+    .replace(/[∫√πθαβ∞]/g, (c) => SYMBOLS[c] ?? c)
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "")
+    // A copied fraction can come out denominator first ("73" for 3/7): compare each digit run in sorted order.
+    .replace(/\d+/g, (run) => [...run].sort().join(""));
+}
+
+function trigrams(s: string): Set<string> {
+  const out = new Set<string>();
+  for (let i = 0; i + 3 <= s.length; i++) out.add(s.slice(i, i + 3));
+  return out;
+}
+
+/**
+ * The stems a pasted question most likely is, best first. A copy from the
+ * page keeps the letters and digits of the stored LaTeX in order ("int x x 1
+ * log x dx") but not its spacing, so both are squashed to letters and digits
+ * and compared as runs of three; a stem counts when most of its runs are in
+ * the paste, which also carries the student's own words ("give me pure ans").
+ */
+export function matchPasted(text: string, stems: readonly { id: string; text: string }[]): string[] {
+  const pasted = trigrams(squash(text));
+  if (pasted.size === 0) return [];
+  return stems
+    .map((s) => {
+      const own = trigrams(squash(s.text));
+      let hit = 0;
+      for (const t of own) if (pasted.has(t)) hit += 1;
+      return { id: s.id, hit, score: own.size === 0 ? 0 : hit / own.size };
+    })
+    .filter((s) => s.score >= MATCH_MIN)
+    // Most of a stem must be in the paste, and then the bigger overlap wins: a short stem
+    // (\int\cos^7 x\,dx) is "mostly contained" in any long paste and must not beat the real one.
+    .sort((a, b) => b.hit - a.hit || b.score - a.score)
+    .slice(0, MATCH_MAX)
+    .map((s) => s.id);
+}

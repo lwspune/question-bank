@@ -11,7 +11,7 @@ import { EXAM_REGISTRY } from "@/lib/exam/examContext";
 import { GUIDE_CATALOG } from "@/lib/guide/guideCatalog";
 import type { ChapterSearchRow } from "./chapterSearch";
 
-export type VPageContext = { examName: string; subjectName?: string; chapterName?: string };
+export type VPageContext = { examName: string; subjectName?: string; chapterName?: string; chapterId?: string };
 
 // Pages whose first segment after the prefix is an exam slug.
 const EXAM_PREFIXES = new Set(["questions", "board", "exams", "notes", "guide", "formula", "question-papers"]);
@@ -42,7 +42,11 @@ export function pageContext(path: string | null, rows: readonly ChapterSearchRow
 
   if (CHAPTER_PREFIXES.has(prefix) && subject && chapter) {
     const row = rows.find((r) => r.examSlug === examSlug && r.subjectSlug === subject && r.chapterSlug === chapter);
-    if (row) return { examName, subjectName: row.subjectName, chapterName: row.chapterName };
+    if (row) {
+      const info: VPageContext = { examName, subjectName: row.subjectName, chapterName: row.chapterName };
+      if (row.chapterId) info.chapterId = row.chapterId;
+      return info;
+    }
   }
   return { examName };
 }

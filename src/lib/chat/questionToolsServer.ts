@@ -1,19 +1,12 @@
 /**
- * The real data sources behind V's question tools (lib/chat/questionToolSet.ts).
- *
+ * The read-only data sources behind V's question tools (lib/chat/questionToolSet.ts).
  * Questions are read with the anon client, so V can only ever see PUBLIC
- * questions. The free-answer check and its record go through the student's
- * own login: user_activity is own-row under RLS, and the count is the same
- * one every reveal on the site uses (lib/questions/revealQuota.ts, which
- * counts the "v" surface since 2026-10-19).
+ * questions. The free-answer check and its record are lib/chat/questionReveal.ts,
+ * apart because they write (server only), so scripts can still use these.
  */
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { queryQuestionsByIds } from "@/lib/questions/query";
-import { loadRevealedToday } from "@/lib/questions/revealQuota";
-import { getPremiumLimits } from "@/lib/billing/premiumLimits";
-import { logActivityOnce } from "@/lib/activity/service";
-import { istDayKey, istDayStartIso } from "@/lib/email/dueNudge";
-import { pickSimilar, revealCheck, toVQuestion, type RevealCheck, type VQuestion } from "./questionTools";
+import { matchPasted, pickSimilar, toVQuestion, type VQuestion } from "./questionTools";
 import type { QuestionMatch } from "./questionToolSet";
 
 const SIMILAR_POOL = 40;
@@ -25,37 +18,6 @@ const SEARCH_WORDS = [6, 4] as const;
 export async function loadVQuestion(anon: SupabaseClient, id: string): Promise<VQuestion | null> {
   const rows = await queryQuestionsByIds(anon, [id]);
   return rows[0] ? toVQuestion(rows[0]) : null;
-}
-
-/** The day's opened questions for this student, or none when it cannot be read. */
-export async function revealedToday(db: SupabaseClient, userId: string, now: Date): Promise<string[]> {
-  try {
-    return await loadRevealedToday(db, userId, istDayStartIso(now));
-  } catch (e) {
-    console.error("V: revealed-today read failed", e);
-    return [];
-  }
-}
-
-/**
- * Check the free answers and record the explanation as a reveal ("v" surface),
- * once per question per IST day. Limits that cannot be read mean no limit,
- * as GET /api/me/reveals treats them.
- */
-export async function spendVReveal(db: SupabaseClient, userId: string, questionId: string, now = new Date()): Promise<RevealCheck> {
-  const limits = await getPremiumLimits(db);
-  const limit = !limits || limits.hasPass ? null : limits.revealsPerDay;
-  const check = revealCheck({ limit, todayIds: limit === null ? [] : await revealedToday(db, userId, now), questionId });
-  if (check.kind === "ok") {
-    await logActivityOnce(db, userId, {
-      kind: "question_practiced",
-      refId: questionId,
-      refKind: "question",
-      metadata: { surface: "v" },
-      dedupeKey: `v_explain:${questionId}:${userId}:${istDayKey(now)}`,
-    });
-  }
-  return check;
 }
 
 /** A PUBLIC single-answer question from the same subtopic, not this one and not one opened today. */
@@ -83,28 +45,55 @@ export function searchWordsOf(text: string, n: number): string[] {
   return words.sort((a, b) => b.length - a.length).slice(0, n);
 }
 
-export async function searchVQuestions(anon: SupabaseClient, text: string): Promise<QuestionMatch[]> {
-  for (const n of SEARCH_WORDS) {
-    const words = searchWordsOf(text, n);
-    if (words.length < 2) return [];
+const CHAPTER_POOL = 1000;
+const FTS_POOL = 30;
+
+function snippetOf(text: string): string {
+  return text.length > SNIPPET_CHARS ? `${text.slice(0, SNIPPET_CHARS)}...` : text;
+}
+
+/**
+ * The bank questions a pasted text most likely is, best first. Within the
+ * page's chapter when there is one: a paste usually comes from the page the
+ * student is on, and a chapter is a few hundred stems, few enough to compare
+ * every one (matchPasted). Elsewhere a word search narrows the bank first, and
+ * its hits must still pass matchPasted, so a stray word match is never offered.
+ */
+export async function searchVQuestions(anon: SupabaseClient, text: string, chapterId: string | null = null): Promise<QuestionMatch[]> {
+  type Row = { id: string; text: string; chapter: { name: string } | null; exam: { name: string } | null };
+  const columns = "id, text, chapter:chapters(name), exam:exams(name)";
+  let rows: Row[] = [];
+  if (chapterId) {
     const { data, error } = await anon
       .from("questions")
-      .select("id, text, chapter:chapters(name), exam:exams(name)")
+      .select(columns)
+      .eq("chapter_id", chapterId)
       .eq("visibility", "PUBLIC")
-      .textSearch("search_vector", words.join(" "), { type: "plain", config: "english" })
-      .limit(3);
-    if (error) {
-      console.error("V: question search failed", error.message);
-      return [];
-    }
-    const rows = (data ?? []) as unknown as { id: string; text: string; chapter: { name: string } | null; exam: { name: string } | null }[];
-    if (rows.length > 0) {
-      return rows.map((r) => ({
-        id: r.id,
-        snippet: r.text.length > SNIPPET_CHARS ? `${r.text.slice(0, SNIPPET_CHARS)}...` : r.text,
-        where: [r.exam?.name, r.chapter?.name].filter(Boolean).join(", "),
-      }));
+      .limit(CHAPTER_POOL);
+    if (error) console.error("V: chapter question read failed", error.message);
+    rows = (data ?? []) as unknown as Row[];
+  }
+  if (rows.length === 0) {
+    for (const n of SEARCH_WORDS) {
+      const words = searchWordsOf(text, n);
+      if (words.length < 2) break;
+      const { data, error } = await anon
+        .from("questions")
+        .select(columns)
+        .eq("visibility", "PUBLIC")
+        .textSearch("search_vector", words.join(" "), { type: "plain", config: "english" })
+        .limit(FTS_POOL);
+      if (error) {
+        console.error("V: question search failed", error.message);
+        break;
+      }
+      rows = (data ?? []) as unknown as Row[];
+      if (rows.length > 0) break;
     }
   }
-  return [];
+  const byId = new Map(rows.map((r) => [r.id, r]));
+  return matchPasted(text, rows).map((id) => {
+    const r = byId.get(id)!;
+    return { id, snippet: snippetOf(r.text), where: [r.exam?.name, r.chapter?.name].filter(Boolean).join(", ") };
+  });
 }

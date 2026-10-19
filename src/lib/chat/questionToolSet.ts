@@ -9,8 +9,9 @@
  *   answers or to a signed-out visitor.
  * - similar_question: another question from the same subtopic, handed to the
  *   chat window as a card the student answers there. V never sees its answer.
- * - find_question: pasted text matched to the bank. The best match becomes the
- *   question this conversation is about, so the next message can explain it.
+ * - find_question: pasted text matched to the bank. The best match is offered
+ *   to the student as a card to confirm. On 2026-10-19 a silent pick would have
+ *   explained the WRONG question, so V never explains a match on its own.
  *
  * Spec: tests/chat-question-toolset.test.ts.
  */
@@ -24,10 +25,14 @@ export type QuestionToolDeps = {
   /** null: signed out, so no explanation. */
   spendReveal: ((id: string) => Promise<RevealCheck>) | null;
   loadSimilar: (q: VQuestion) => Promise<string | null>;
-  searchQuestions: (text: string) => Promise<QuestionMatch[]>;
+  /** Matched within the page's chapter when there is one (a paste usually comes from the page it is on). */
+  searchQuestions: (text: string, chapterId: string | null) => Promise<QuestionMatch[]>;
+  /** The chapter of the page the student asked from, set by loadVContext. */
+  pageChapterId?: string | null;
   /** The route collects these for the chat window. */
   onSimilar: (id: string) => void;
-  onAttach: (id: string) => void;
+  /** A pasted question's best match, offered as a card to confirm. */
+  onMatch: (id: string) => void;
   onExplained: (id: string) => void;
 };
 
@@ -109,7 +114,7 @@ export function questionTools(d: QuestionToolDeps): VTool[] {
       name: "find_question",
       logResult: true,
       description:
-        "Find a question in the bank from text the student pasted or typed out. Returns the closest matches; the first becomes the question this chat is about.",
+        "Find a question in the bank from text the student pasted or typed out. The best match is shown to the student as a card to confirm.",
       input_schema: {
         type: "object",
         properties: { text: { type: "string", description: "The question text as the student wrote it." } },
@@ -117,13 +122,12 @@ export function questionTools(d: QuestionToolDeps): VTool[] {
       },
       run: async (input) => {
         const text = (input as { text?: unknown } | null)?.text;
-        const matches = typeof text === "string" && text.trim() ? await d.searchQuestions(text) : [];
+        const matches = typeof text === "string" && text.trim() ? await d.searchQuestions(text, d.pageChapterId ?? null) : [];
         if (matches.length === 0) {
           return "No question in the bank matched. Ask them to open the question on the site and tap Ask V on it.";
         }
-        d.onAttach(matches[0].id);
-        const lines = matches.map((m, i) => `${i + 1}. ${m.id} (${m.where}): ${m.snippet}`);
-        return `Closest matches, best first. Ask the student whether the first is their question before explaining it.\n${lines.join("\n")}`;
+        d.onMatch(matches[0].id);
+        return `The closest match is shown to the student as a card asking whether it is their question; they tap it to have it explained. Do not explain it yet: ask them to check the card. It reads: ${matches[0].snippet} (${matches[0].where})`;
       },
     },
   ];
