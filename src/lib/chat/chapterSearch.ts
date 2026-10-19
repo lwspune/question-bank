@@ -229,6 +229,35 @@ export function findChapters(
   return { hits: elsewhere, missedExam: elsewhere.length > 0 ? exam : null };
 }
 
+/**
+ * The exams a name the student typed points at, for exam_strategy (2026-10-19).
+ * An exam named exactly wins over a longer one holding the same words, so
+ * "SSC CGL" is Tier I, not also Tier II; a class alone ("class 12") fits
+ * several and returns them all, so V asks.
+ */
+export function examsNamed(rows: readonly ChapterSearchRow[], exam: string): { slug: string; name: string }[] {
+  const examWords = words(exam);
+  if (examWords.length === 0) return [];
+  const found = new Map<string, string>();
+  for (const r of rows) if (!found.has(r.examSlug) && matchesExam(r, examWords)) found.set(r.examSlug, r.examName);
+  const all = [...found].map(([slug, name]) => ({ slug, name }));
+  const exact = all.filter((e) => words(e.name).every((w) => examWords.includes(w)));
+  return exact.length > 0 ? exact : all;
+}
+
+/**
+ * Every query word lands in the name: a word equal to it or starting with it,
+ * or (4+ letters) a name word it starts with, so "mathematics" finds "Maths".
+ */
+export function nameHasWords(name: string, query: string): boolean {
+  const nameWords = words(name);
+  const queryWords = words(query);
+  return (
+    queryWords.length > 0 &&
+    queryWords.every((q) => hasWord(nameWords, q) || nameWords.some((w) => w.length >= 4 && q.startsWith(w)))
+  );
+}
+
 export function chapterPath(row: ChapterSearchRow): string {
   return `/questions/${row.examSlug}/${row.subjectSlug}/${row.chapterSlug}`;
 }
