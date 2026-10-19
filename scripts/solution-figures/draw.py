@@ -36,6 +36,10 @@ KINDS (each spec is {"kind": ..., ...}):
               l, label, label_loc, at: "<saved name>", to: "<saved name>", save: "<name>", reverse}]}
   structure  {molecules: [{smiles, name, full}], per_row} (at most 2 a row, so names read on a phone);
              full: true draws EVERY atom (C and H too) on a grid, NCERT's Class 10 structural formula
+  complex    {items: [{geometry: "oct"|"sq", metal, ligands: {pos: label}, chelates: [[pos, pos, "en"]], label, group}],
+              mirror_pairs: [[i, j]], per_row}   octahedron positions 1 top, 6 bottom, 2 left, 4 right,
+             3 front, 5 back; square corners 1-4 (1-3, 2-4 trans). Refuses an empty or doubled position, a
+             chelate across trans positions, two drawings of one molecule in a group, a fake mirror pair
   field      {xlim, ylim, charges: [{q, at, label}] | loop: {a, current}, equipotentials: [V...], lines, labels, marks}
              field lines COMPUTED (Coulomb 1/r^2; a current loop's diametral section by Biot-Savart,
              current > 0 anticlockwise seen from above); equipotentials dashed at the V values given
@@ -478,6 +482,63 @@ def loop_field(a, current, X, Z, n=400):
     return bx, bz
 
 
+# Octahedron: 1 top, 6 bottom; 2 left, 4 right; 3 front, 5 back (x right, y back, z up).
+OCT_POS = {"1": (0, 0, 1), "6": (0, 0, -1), "2": (-1, 0, 0), "4": (1, 0, 0), "3": (0, -1, 0), "5": (0, 1, 0)}
+SQ_POS = {"1": (-1, 1), "2": (1, 1), "3": (1, -1), "4": (-1, -1)}  # corners; 1-3 and 2-4 are trans
+
+
+def _oct_rotations():
+    rz = lambda v: (-v[1], v[0], v[2])
+    rx = lambda v: (v[0], -v[2], v[1])
+    key = {v: k for k, v in OCT_POS.items()}
+    perms, frontier = {tuple(sorted(OCT_POS))}, [{k: k for k in OCT_POS}]
+    seen = {tuple(sorted(frontier[0].items()))}
+    out = []
+    while frontier:
+        p = frontier.pop()
+        out.append(p)
+        for r in (rz, rx):
+            q = {k: key[r(OCT_POS[v])] for k, v in p.items()}
+            t = tuple(sorted(q.items()))
+            if t not in seen:
+                seen.add(t)
+                frontier.append(q)
+    return out
+
+
+OCT_ROTATIONS = _oct_rotations()
+
+
+def check_complex(c, geometry="oct"):
+    """Refuse an impossible arrangement: every position filled once, chelates on cis edges only."""
+    pos = OCT_POS if geometry == "oct" else SQ_POS
+    used = list(c.get("ligands", {})) + [p for ch in c.get("chelates", []) for p in ch[:2]]
+    if sorted(used) != sorted(pos):
+        raise ValueError(f"complex: positions {sorted(used)} do not fill {sorted(pos)} exactly once")
+    for a, b, *_ in c.get("chelates", []):
+        if sum(x * y for x, y in zip(pos[a], pos[b])) != 0:
+            raise ValueError(f"complex: a chelate cannot span trans positions {a} and {b}")
+
+
+def _signature(c, perm):
+    lig = tuple(sorted((perm[p], l) for p, l in c.get("ligands", {}).items()))
+    ch = tuple(sorted((tuple(sorted((perm[a], perm[b]))), name) for a, b, name in c.get("chelates", [])))
+    return lig, ch
+
+
+def same_complex(a, b):
+    """Are two octahedral arrangements one molecule (some rotation maps a onto b)?"""
+    target = _signature(b, {k: k for k in OCT_POS})
+    return any(_signature(a, r) == target for r in OCT_ROTATIONS)
+
+
+def mirror_complex(c):
+    """Reflection through the plane x = 0: left and right swap."""
+    m = {"2": "4", "4": "2", "1": "1", "6": "6", "3": "3", "5": "5"}
+    return {**c, "ligands": {m[p]: l for p, l in c.get("ligands", {}).items()},
+            "chelates": [[m[a], m[b], n] for a, b, n in c.get("chelates", [])]}
+
+
 GRID = {"R": (1, 0), "L": (-1, 0), "U": (0, 1), "D": (0, -1)}
 
 
@@ -707,7 +768,77 @@ def draw_curve3d(s, out):
     finish(fig, out)
 
 
-KINDS = {"field": draw_field, "curve3d": draw_curve3d, "stack": draw_stack, "plot": draw_plot, "histogram": draw_histogram, "bar": draw_bar, "pie": draw_pie, "geometry": draw_geometry, "ray": draw_ray, "circuit": draw_circuit, "structure": draw_structure}
+def _draw_one_complex(ax, c):
+    geo = c.get("geometry", "oct")
+    if geo == "oct":
+        proj = {k: (x + 0.62 * y, z + 0.40 * y) for k, (x, y, z) in OCT_POS.items()}
+        back = {"5"}
+        for a in OCT_POS:  # octahedron edges: every cis pair
+            for b in OCT_POS:
+                if a < b and sum(u * v for u, v in zip(OCT_POS[a], OCT_POS[b])) == 0:
+                    (x1, y1), (x2, y2) = proj[a], proj[b]
+                    ax.plot([x1, x2], [y1, y2], color="#cbd5e1", lw=1, ls="--" if back & {a, b} else "-", zorder=1)
+    else:
+        proj = {k: (0.8 * x, 0.8 * y) for k, (x, y) in SQ_POS.items()}
+        back = set()
+        ring = ["1", "2", "3", "4", "1"]
+        ax.plot([proj[k][0] for k in ring], [proj[k][1] for k in ring], color="#cbd5e1", lw=1, zorder=1)
+    for k, (x, y) in proj.items():
+        ax.plot([0, x], [0, y], color=INK, lw=1.6, ls="--" if k in back else "-", zorder=2)
+    box = {"boxstyle": "round,pad=0.15", "fc": "white", "ec": "none"}
+    ax.text(0, 0, c.get("metal", "M"), ha="center", va="center", fontsize=13, fontweight="bold", bbox=box, zorder=4)
+    for k, lab in c.get("ligands", {}).items():
+        x, y = proj[k]
+        ax.text(1.32 * x, 1.32 * y, lab, ha="center", va="center", fontsize=12, bbox=box, zorder=4)
+    for a, b, name in c.get("chelates", []):
+        (x1, y1), (x2, y2) = proj[a], proj[b]
+        mx, my = (x1 + x2) / 2, (y1 + y2) / 2
+        n = math.hypot(mx, my) or 1
+        cx, cy = mx + 0.55 * mx / n, my + 0.55 * my / n  # bulge away from the metal
+        t = np.linspace(0, 1, 60)
+        bx = (1 - t) ** 2 * x1 + 2 * (1 - t) * t * cx + t ** 2 * x2
+        by = (1 - t) ** 2 * y1 + 2 * (1 - t) * t * cy + t ** 2 * y2
+        ax.plot(bx, by, color=RAY, lw=2.2, zorder=3)
+        for x, y in ((x1, y1), (x2, y2)):
+            ax.plot(x, y, "o", ms=5, color=RAY, zorder=3)
+        ax.text(mx + 0.82 * mx / n, my + 0.82 * my / n, name, ha="center", va="center", fontsize=11, color=RAY, bbox=box, zorder=4)
+    if c.get("label"):
+        ax.text(0, -1.9, c["label"], ha="center", va="top", fontsize=12)
+    ax.set_xlim(-1.9, 1.9)
+    ax.set_ylim(-2.35, 1.75)
+    ax.set_aspect("equal")
+    ax.axis("off")
+
+
+def draw_complex(s, out):
+    """Isomers of coordination complexes on an octahedron (positions 1 top, 6
+    bottom, 2 left, 4 right, 3 front, 5 back) or a square (corners 1-4), with
+    chelates as arcs on cis edges. Refuses two drawings of one molecule, and a
+    declared mirror pair that a rotation would superimpose."""
+    items = s["items"]
+    for c in items:
+        check_complex(c, c.get("geometry", "oct"))
+    octs = [i for i, c in enumerate(items) if c.get("geometry", "oct") == "oct"]
+    for i in octs:
+        for j in octs:
+            if i < j and items[i].get("group") == items[j].get("group") and same_complex(items[i], items[j]):
+                raise ValueError(f"complex: drawings {i} and {j} are the same molecule")
+    for i, j in s.get("mirror_pairs", []):
+        if same_complex(items[i], items[j]) or not same_complex(mirror_complex(items[i]), items[j]):
+            raise ValueError(f"complex: drawings {i} and {j} are not a pair of non-superimposable mirror images")
+    per_row = min(s.get("per_row", 2), 2, len(items))
+    rows = math.ceil(len(items) / per_row)
+    fig, axes = plt.subplots(rows, per_row, figsize=(2.9 * per_row, 3.1 * rows), squeeze=False)
+    for k, ax in enumerate(axes.flat):
+        if k < len(items):
+            _draw_one_complex(ax, items[k])
+        else:
+            ax.axis("off")
+    finish(fig, out)
+    return {"items": len(items)}
+
+
+KINDS = {"complex": draw_complex, "field": draw_field, "curve3d": draw_curve3d, "stack": draw_stack, "plot": draw_plot, "histogram": draw_histogram, "bar": draw_bar, "pie": draw_pie, "geometry": draw_geometry, "ray": draw_ray, "circuit": draw_circuit, "structure": draw_structure}
 
 
 def draw(spec, out):
@@ -786,6 +917,26 @@ def selftest():
     assert np.all(np.abs(v) < 1e-9), "dipole: zero potential on the perpendicular bisector"
     bx, bz = loop_field(1.0, 1.0, np.array([[0.0]]), np.array([[0.0]]))
     assert abs(bx[0, 0]) < 1e-9 and bz[0, 0] > 0, "anticlockwise loop (seen from above): field at the centre points up"
+
+    # Complex isomers: the rotation group decides what is the same molecule.
+    assert len(OCT_ROTATIONS) == 24, "the octahedron has 24 rotations"
+    cis_en = {"ligands": {"1": "Cl", "2": "Cl"}, "chelates": [["3", "6", "en"], ["4", "5", "en"]]}
+    trans_en = {"ligands": {"1": "Cl", "6": "Cl"}, "chelates": [["2", "3", "en"], ["4", "5", "en"]]}
+    tris = {"chelates": [["1", "2", "en"], ["3", "6", "en"], ["4", "5", "en"]]}
+    assert not same_complex(cis_en, mirror_complex(cis_en)), "cis-[M(en)2Cl2]: mirror image is a different molecule (chiral)"
+    assert same_complex(trans_en, mirror_complex(trans_en)), "trans-[M(en)2Cl2]: mirror image is the same molecule"
+    assert not same_complex(tris, mirror_complex(tris)), "[M(en)3]: chiral"
+    assert not same_complex(cis_en, trans_en), "cis and trans are different"
+    try:
+        check_complex({"ligands": {"1": "Cl", "2": "Cl", "3": "Cl"}, "chelates": [["4", "6", "en"]]})
+        raise AssertionError("an octahedron with a position left empty must be refused")
+    except ValueError:
+        pass
+    try:
+        check_complex({"ligands": {"1": "Cl"}, "chelates": [["2", "4", "en"], ["3", "5", "en"]]})
+        raise AssertionError("a chelate across trans positions must be refused")
+    except ValueError:
+        pass
 
     # Structure grids stay two to a row at most, so names stay legible on a phone.
     assert structure_per_row(8, 4) == 2 and structure_per_row(8, None) == 2, "8 molecules: two per row"
