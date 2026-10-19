@@ -28,6 +28,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { createSupabaseAnonClient, createSupabaseServerClient } from "@/lib/supabase/server";
 import { getOwnPracticeCounts } from "@/lib/activity/practiceCounts";
+import { profileFieldsFromRow } from "@/lib/header-session";
 import { checkAndIncrement } from "@/lib/rate-limit";
 import { getClientIp } from "@/lib/http";
 import { getSessionUser } from "@/lib/auth";
@@ -68,6 +69,17 @@ const HOUR_MS = 60 * 60 * 1000;
 // A few minutes' memory of each student's results for V's my_progress tool,
 // so a follow-up does not repeat the heaviest per-student read (lib/chat/progress.ts).
 const progressMemo = createProgressMemo(200);
+
+/** The student's exams, read with their own login (RLS own row, migration 0045). A failed read is no exams. */
+async function readProfileExams(userId: string): Promise<string[]> {
+  const { data, error } = await createSupabaseServerClient()
+    .from("student_profiles")
+    .select("stage, target_exams")
+    .eq("user_id", userId)
+    .maybeSingle();
+  if (error) console.error("V: profile read failed", error.message);
+  return profileFieldsFromRow(data).targetExams;
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -150,6 +162,7 @@ export async function POST(request: NextRequest) {
           const ctx = await loadVContext(createSupabaseAnonClient(), {
             page: pagePath,
             signedIn: ownId !== null,
+            profileExamSlugs: ownId ? await readProfileExams(ownId) : [],
             // The student's own login does the reading (get_own_performance): no id is passed to the database.
             loadOwnProgress: ownId
               ? () =>

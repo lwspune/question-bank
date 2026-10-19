@@ -27,6 +27,15 @@ import type { VTool } from "./anthropic";
 import type { Performance } from "@/lib/performance/compute";
 import type { PracticeCounts } from "@/lib/activity/practiceCounts";
 import { progressTool } from "./progress";
+import { pageContext } from "./pageContext";
+
+/** Profile slugs as the exam names V's facts use; a retired or unknown slug is dropped. */
+export function profileExamNames(slugs: readonly string[]): string[] {
+  return slugs.flatMap((s) => {
+    const e = EXAM_REGISTRY.find((x) => x.slug === s);
+    return e && e.noPublicContent !== true ? [e.displayName] : [];
+  });
+}
 
 function toExamFact(e: (typeof EXAM_REGISTRY)[number], pyqBySlug: Map<string, number> | null): ChatExamFact {
   return {
@@ -62,6 +71,8 @@ export async function loadVContext(
     loadOwnProgress?: () => Promise<Performance | null>;
     /** The student's practice outside mocks, for the same tool (lib/activity/practiceCounts.ts). */
     loadOwnPractice?: () => Promise<PracticeCounts>;
+    /** student_profiles.target_exams: V uses them when the student names no exam. */
+    profileExamSlugs?: readonly string[];
   } = {}
 ): Promise<VContext> {
   const loadChapters = opts.loadChapters ?? listChapterLandings;
@@ -85,7 +96,22 @@ export async function loadVContext(
     bankTotal: bankCount.count ?? 0,
     nav: NAV_FACTS,
   });
-  const systemTail = buildSystemTail({ page: opts.page ?? null, signedIn: opts.signedIn ?? true });
+  // The search list is cached, so reading it for the page costs no database read.
+  const pageInfo = opts.page
+    ? pageContext(
+        opts.page,
+        await loadChapters().catch((err) => {
+          console.error("V: chapter list unavailable for the page", err);
+          return [];
+        })
+      )
+    : null;
+  const systemTail = buildSystemTail({
+    page: opts.page ?? null,
+    signedIn: opts.signedIn ?? true,
+    pageInfo,
+    profileExams: profileExamNames(opts.profileExamSlugs ?? []),
+  });
 
   const allowedPaths = new Set(pathsInReply([...NAV_FACTS, ...exams].join("\n")));
   if (opts.page) allowedPaths.add(opts.page);

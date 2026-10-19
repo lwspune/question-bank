@@ -231,6 +231,10 @@ describe("buildSystemPrompt", () => {
     expect(p).toContain("Electric Charges and Fields");
   });
 
+  it("lets V take the exam from the student's profile, which is not a guess", () => {
+    expect(buildSystemPrompt(base)).toMatch(/named it, the page shows it, or their profile lists it/);
+  });
+
   // 2026-10-18: V guessed CBSE for "class 12th physics rotational dynamics" (a Maharashtra chapter) and said "not found".
   it("has V never guess the exam, and treat a class alone as no exam", () => {
     const p = buildSystemPrompt(base);
@@ -301,6 +305,31 @@ describe("buildSystemTail", () => {
 
   it("is empty for a signed-in student on no known page", () => {
     expect(buildSystemTail({ page: null, signedIn: true })).toBe("");
+  });
+
+  // 2026-10-19: "pe pyqs 2022 to 2026" on the Solid State page was searched as Physical Education.
+  it("tells V the page's chapter and to assume it when the message names none", () => {
+    const t = buildSystemTail({
+      page: "/board/mh-hsc-12/chemistry/solid-state",
+      signedIn: true,
+      pageInfo: { examName: "MH HSC 12", subjectName: "Chemistry", chapterName: "Solid State" },
+    });
+    expect(t).toContain("Solid State (MH HSC 12, Chemistry)");
+    expect(t).toMatch(/names no chapter or is unclear, they mean this chapter/i);
+  });
+
+  it("tells V the page's exam when the page is about one exam only", () => {
+    const t = buildSystemTail({ page: "/exams/mh-ssc-10", signedIn: true, pageInfo: { examName: "MH SSC 10" } });
+    expect(t).toMatch(/page is about MH SSC 10/);
+    expect(t).not.toMatch(/they mean this chapter/i);
+  });
+
+  // 21 of the 27 signed-in students who typed to V had exams on their profile, and V asked anyway.
+  it("tells V the student's exams from their profile, page first, asking when more than one fits", () => {
+    const t = buildSystemTail({ page: null, signedIn: true, profileExams: ["MHT-CET", "MH HSC 12"] });
+    expect(t).toContain("Their exams, from their profile: MHT-CET, MH HSC 12.");
+    expect(t).toMatch(/if more than one fits, ask which/i);
+    expect(buildSystemTail({ page: null, signedIn: true, profileExams: [] })).toBe("");
   });
 
   it("has no em dashes of its own", () => {

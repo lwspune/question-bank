@@ -11,6 +11,7 @@
  */
 import { formatRupees, planLengthLabel } from "@/lib/billing/plans";
 import type { FreeLimits } from "@/lib/billing/perkLimits";
+import type { VPageContext } from "./pageContext";
 
 export type ChatExamFact = {
   /** The registry slug: names the exam's page that lists every chapter. Absent in the FAQ's own facts. */
@@ -140,7 +141,7 @@ export function buildSystemPrompt(facts: ChatFacts): string {
 RULES
 1. Answer ONLY from the facts below and from what the find_chapters and my_progress tools return. Never guess, and never use outside knowledge about these exams or this product (one exception: a textbook's chapter names, rule 3a).
 2. Links: write site pages as bare paths such as /pricing. Use ONLY paths listed below or returned by find_chapters. Never make up a path or a full web address.
-3. When a student asks for material on a chapter or subject (PYQs, important questions, practice, a chapter list), call find_chapters with the chapter or subject in full words. Expand short forms first (nlm = Laws of Motion). Pass the exam only when the student named it or the page shows it (/board/mh-hsc-12/... is Maharashtra HSC Class 12); never guess the exam. A class alone ("class 12", "12th") is not an exam: CBSE and the Maharashtra board both have one. Then:
+3. When a student asks for material on a chapter or subject (PYQs, important questions, practice, a chapter list), call find_chapters with the chapter or subject in full words. Expand short forms first (nlm = Laws of Motion). Pass the exam only when the student named it, the page shows it, or their profile lists it (the page and the profile are given at the end when known); never guess the exam. A class alone ("class 12", "12th") is not an exam: CBSE and the Maharashtra board both have one. Then:
 - the chapters found are all in one exam: link the best one to three chapter pages.
 - they are in several exams and the student has not said which: ask which one they mean, naming those exams (for example "Maharashtra HSC Class 12 board or MHT-CET?"), and link nothing yet.
 - the search says nothing matched in the exam you passed: tell them, and ask whether they mean one of the exams it found.
@@ -180,9 +181,30 @@ ${facts.nav.join("\n")}`;
  * fixed instructions are cached (lib/chat/anthropic.ts): anything per-question
  * inside them would make every request a cache miss.
  */
-export function buildSystemTail(who: { page: string | null; signedIn: boolean }): string {
+export function buildSystemTail(who: {
+  page: string | null;
+  signedIn: boolean;
+  /** What the page is about (lib/chat/pageContext.ts), when it is about one exam. */
+  pageInfo?: VPageContext | null;
+  /** Display names of the exams on the student's profile (student_profiles.target_exams). */
+  profileExams?: readonly string[];
+}): string {
   const parts: string[] = [];
   if (who.page) parts.push(`The student is on the page ${who.page} (you cannot see what is on it).`);
+  const info = who.pageInfo;
+  if (info?.chapterName) {
+    parts.push(
+      `The page is the chapter ${info.chapterName} (${info.examName}, ${info.subjectName}). If their message names no chapter or is unclear, they mean this chapter.`
+    );
+  } else if (info) {
+    parts.push(`The page is about ${info.examName}. If their message names no exam, they mean this one.`);
+  }
+  // 2026-10-19: 21 of 27 signed-in students who typed had exams on their profile, and V asked anyway.
+  if (who.profileExams && who.profileExams.length > 0) {
+    parts.push(
+      `Their exams, from their profile: ${who.profileExams.join(", ")}. When they name no exam and the page shows none, use these; if more than one fits, ask which.`
+    );
+  }
   if (!who.signedIn) parts.push(ONE_REPLY_RULE);
   return parts.join("\n\n");
 }
