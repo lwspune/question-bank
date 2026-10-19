@@ -90,6 +90,14 @@ async function main() {
     const crops = JSON.parse(res.stdout.trim().split("\n").pop()!) as Record<string, string>;
     for (const [key, path] of Object.entries(crops)) png.set(key, path);
   }
+  if (plan.drawn.length) {
+    const spec = join(mkdtempSync(join(tmpdir(), "solfig-")), "draw.json");
+    writeFileSync(spec, JSON.stringify({ outdir, jobs: plan.drawn }));
+    const res = spawnSync("python", [join(__dirname, "draw.py"), "--batch", spec], { encoding: "utf8", maxBuffer: 64 * 1024 * 1024 });
+    if (res.status !== 0) throw new Error(`draw failed: ${res.stderr}`);
+    const drawnPngs = JSON.parse(res.stdout.trim().split("\n").pop()!) as Record<string, string>;
+    for (const [key, path] of Object.entries(drawnPngs)) png.set(key, path);
+  }
 
   // ── check every row ──
   const client = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!, { auth: { persistSession: false } });

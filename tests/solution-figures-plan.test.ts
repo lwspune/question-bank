@@ -73,6 +73,19 @@ describe("planBatch", () => {
     expect(errs.join("\n")).toMatch(/mask/);
   });
 
+  it("plans a DRAWN figure (a spec) apart from the book crops, and refuses a figure with both sources or neither", () => {
+    const drawn = planBatch(batch({ figures: [{ key: "lpp-region", draw: { kind: "plot" }, ids: [A] }] }));
+    expect(drawn.errors).toEqual([]);
+    expect(drawn.drawn).toEqual([{ ref: "lpp-region", spec: { kind: "plot" } }]);
+    expect(drawn.cropsByPdf.size).toBe(0);
+    const both = planBatch(batch({ figures: [{ key: "x", pdf: PDF1, parts: [{ page: 1, bbox: [0.1, 0.1, 0.5, 0.5] }], draw: { kind: "plot" }, ids: [A] }] }));
+    expect(both.errors.join("\n")).toMatch(/x: .*both/);
+    const neither = planBatch(batch({ figures: [{ key: "y", ids: [A] }] }));
+    expect(neither.errors.join("\n")).toMatch(/y: .*no source/);
+    const kindless = planBatch(batch({ figures: [{ key: "z", draw: {} as never, ids: [A] }] }));
+    expect(kindless.errors.join("\n")).toMatch(/z: .*kind/);
+  });
+
   it("accepts a label edit only for a question this batch attaches a figure to", () => {
     const ok = planBatch(batch({ edits: [{ id: A, find: "R in AD", replace: "S in AD" }] }));
     expect(ok.errors).toEqual([]);

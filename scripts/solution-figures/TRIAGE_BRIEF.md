@@ -63,6 +63,36 @@ appears, e.g. `"\\(R\\)"`) and occurs **exactly once** in it. Change letters onl
 never the physics. If the mismatch is too deep to fix by relabelling, choose a
 different verdict and say why.
 
+## Wave 2: DRAWN figures (`computed` and `structure`)
+
+From wave 2 a `computed` or `structure` verdict carries the drawing itself, as a
+spec that `scripts/solution-figures/draw.py` renders. **Read draw.py's header for
+every kind and field.** Kinds: `plot` (functions, data, lines, fills, LPP
+regions), `histogram`, `bar`, `pie`, `geometry` (constructions: points,
+segments, circles, arcs, angle marks, measures), `ray` (lens or mirror ray
+diagram COMPUTED from f and u: give magnitudes, the object on the left),
+`circuit` (schemdraw elements, incl. `Switch` for switching circuits),
+`structure` (SMILES via RDKit).
+
+- **Every number comes from the question or its own worked solution.** A
+  construction uses the given lengths and angles, computed to coordinates (show
+  your arithmetic in `reason` if it is not obvious); a graph uses the given data.
+  If a figure needs a number nobody gave, choose `text-enough`.
+- **The ray kind computes the image for you**, so give the question's real f and
+  u. Check its printed `v` and `m` against the solution's own answer: if they
+  disagree, the solution or your reading is wrong. Say which in `reason`; never
+  ship a drawing that contradicts the answer above it.
+- **Structures**: give SMILES you are sure of, with the name the question uses.
+  Electron-dot (Lewis) structures cannot be drawn this way: those stay
+  `no-book-figure` unless the book prints them.
+- **Preview every spec** and look at it:
+  `python scripts/solution-figures/draw.py --preview <spec.json> <scratch png>`.
+  Labels must match the solution's letters exactly (or edit the solution, as for
+  book figures). No title on the figure: the question is right above it.
+- **Phone width.** The figure shows about 350 px wide on a phone. Keep `size` no wider than about 6 (inches) and put two panels (two triangles, cases (i) and (ii)) one ABOVE the other, never side by side, so labels stay readable.
+- Output: `"figure": { "key": "...", "draw": { "kind": "...", ... } }` on the
+  `computed` / `structure` entry, plus any `edits`.
+
 ## Output: `out/<wave>/<slice>.draft.json`
 
 ```json
@@ -77,7 +107,7 @@ different verdict and say why.
 ```
 
 - Every candidate in the slice gets exactly one entry. `reason` is one short line.
-- `key` is a lowercase slug, unique in your slice; **reuse the same key** (and the
+- `key` is a lowercase slug (only `a-z`, `0-9` and `-`: write 3.5 as 3-5), unique in your slice; **reuse the same key** (and the
   same box) when one figure serves several questions.
 - Keep tool output small: print only what you need, never dump whole pages of text.
 - Your final message: counts per verdict, and anything you were unsure about.

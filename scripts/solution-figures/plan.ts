@@ -14,13 +14,18 @@
 
 export type Bbox = [number, number, number, number];
 export type Part = { page: number; bbox: Bbox; mask?: Bbox[] };
-export type Figure = { key: string; pdf: string; parts: Part[]; ids: string[]; note?: string };
+/** A figure is either CROPPED from a book (pdf + parts) or DRAWN from a spec
+ *  (draw.py renders it from the question's own data). Never both. */
+export type DrawSpec = { kind: string; [k: string]: unknown };
+export type Figure = { key: string; pdf?: string; parts?: Part[]; draw?: DrawSpec; ids: string[]; note?: string };
 export type Edit = { id: string; find: string; replace: string };
 export type Batch = { figures: Figure[]; edits?: Edit[] };
 
 export type CropJob = { ref: string; parts: Part[] };
+export type DrawJob = { ref: string; spec: DrawSpec };
 export type BatchPlan = {
   cropsByPdf: Map<string, CropJob[]>;
+  drawn: DrawJob[];
   attach: { id: string; key: string }[];
   edits: Edit[];
   errors: string[];
@@ -39,6 +44,7 @@ function boxOk(b: unknown): b is Bbox {
 export function planBatch(batch: Batch): BatchPlan {
   const errors: string[] = [];
   const cropsByPdf = new Map<string, CropJob[]>();
+  const drawn: DrawJob[] = [];
   const attach: { id: string; key: string }[] = [];
   const keys = new Set<string>();
   const owner = new Map<string, string>();
@@ -47,9 +53,13 @@ export function planBatch(batch: Batch): BatchPlan {
     if (!SLUG.test(f.key)) errors.push(`"${f.key}": key must be a lowercase slug (it names the PNG)`);
     if (keys.has(f.key)) errors.push(`"${f.key}": key used twice`);
     keys.add(f.key);
-    if (!f.parts.length) errors.push(`${f.key}: no parts`);
+    const cropped = f.pdf !== undefined || f.parts !== undefined;
+    if (cropped && f.draw) errors.push(`${f.key}: has both a book crop and a drawing spec`);
+    else if (!cropped && !f.draw) errors.push(`${f.key}: no source (neither pdf + parts nor draw)`);
+    else if (f.draw && typeof f.draw.kind !== "string") errors.push(`${f.key}: drawing spec has no kind`);
+    else if (cropped && (!f.pdf || !f.parts?.length)) errors.push(`${f.key}: no parts`);
     if (!f.ids.length) errors.push(`${f.key}: no questions`);
-    f.parts.forEach((p, i) => {
+    (f.parts ?? []).forEach((p, i) => {
       const at = `${f.key} part ${i + 1}`;
       if (!Number.isInteger(p.page) || p.page < 0) errors.push(`${at}: page ${p.page} is not a 0-based page number`);
       if (!boxOk(p.bbox)) errors.push(`${at}: box ${JSON.stringify(p.bbox)} is not a box inside the page`);
@@ -68,7 +78,8 @@ export function planBatch(batch: Batch): BatchPlan {
       owner.set(id, f.key);
       attach.push({ id, key: f.key });
     }
-    cropsByPdf.set(f.pdf, [...(cropsByPdf.get(f.pdf) ?? []), { ref: f.key, parts: f.parts }]);
+    if (f.draw) drawn.push({ ref: f.key, spec: f.draw });
+    else if (f.pdf && f.parts) cropsByPdf.set(f.pdf, [...(cropsByPdf.get(f.pdf) ?? []), { ref: f.key, parts: f.parts }]);
   }
 
   const edits = batch.edits ?? [];
@@ -82,7 +93,7 @@ export function planBatch(batch: Batch): BatchPlan {
     if (CONTROL.test(e.find) || CONTROL.test(e.replace)) errors.push(`edit ${e.id}: control character in the edit text (a lost backslash?)`);
   }
 
-  return { cropsByPdf, attach, edits, errors };
+  return { cropsByPdf, drawn, attach, edits, errors };
 }
 
 export type EditResult = { status: "apply" | "done" | "missing" | "ambiguous"; next: string };
