@@ -63,6 +63,13 @@ def render(pdf, page_no, bbox, mask=()):
         if (i[2], i[3], i[5]) in furniture:
             page.delete_image(i[0])
     w, h = page.rect.width, page.rect.height
+    # The crop's clip rounds outward by a pixel, so a mask that stops exactly on
+    # the crop's edge leaves a one-pixel strip of what it hid (the top of an
+    # NCERT "(d)" sub-label showed as a row of dots, 2026-10-19). A mask edge
+    # at or past the crop's edge is pushed 2 pt further out.
+    pad_x, pad_y = 2 / w, 2 / h
+    mask = [[m[0] - pad_x if m[0] <= bbox[0] else m[0], m[1] - pad_y if m[1] <= bbox[1] else m[1],
+             m[2] + pad_x if m[2] >= bbox[2] else m[2], m[3] + pad_y if m[3] >= bbox[3] else m[3]] for m in mask]
     for m in mask:
         # Fill with the page colour just right of the mask, so a mask on a
         # tinted panel does not leave a white notch.
