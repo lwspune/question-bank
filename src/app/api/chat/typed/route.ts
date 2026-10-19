@@ -60,6 +60,10 @@ import {
   anonReplyUsesQuestion,
 } from "@/lib/chat/anonLimit";
 import type { ToolCallLog } from "@/lib/chat/anthropic";
+import { parseAskedQuestion } from "@/lib/chat/questionTools";
+import type { QuestionToolDeps } from "@/lib/chat/questionToolSet";
+import { loadSimilarId, loadVQuestion, searchVQuestions } from "@/lib/chat/questionToolsServer";
+import { revealedToday, spendVReveal } from "@/lib/chat/questionReveal";
 
 // One AI answer can take two model calls (a chapter search, then the reply).
 export const maxDuration = 30;
@@ -69,6 +73,29 @@ const HOUR_MS = 60 * 60 * 1000;
 // A few minutes' memory of each student's results for V's my_progress tool,
 // so a follow-up does not repeat the heaviest per-student read (lib/chat/progress.ts).
 const progressMemo = createProgressMemo(200);
+
+/**
+ * The data sources of V's question tools (lib/chat/questionToolsServer.ts).
+ * Questions through the anon client, so only PUBLIC ones; the free-answer
+ * check and its record through the student's own login. Signed out: no
+ * explanation (the tool says so), and no exclusion of the day's questions.
+ */
+function buildQuestionToolDeps(
+  userId: string | null,
+  out: { onSimilar: (id: string) => void; onMatch: (id: string) => void }
+): QuestionToolDeps {
+  const anon = createSupabaseAnonClient();
+  return {
+    loadQuestion: (id) => loadVQuestion(anon, id),
+    spendReveal: userId ? (id) => spendVReveal(createSupabaseServerClient(), userId, id) : null,
+    loadSimilar: async (q) =>
+      loadSimilarId(anon, q, userId ? await revealedToday(createSupabaseServerClient(), userId, new Date()) : []),
+    searchQuestions: (text, chapterId) => searchVQuestions(anon, text, chapterId),
+    onSimilar: out.onSimilar,
+    onMatch: out.onMatch,
+    onExplained: () => {},
+  };
+}
 
 /** The student's exams, read with their own login (RLS own row, migration 0045). A failed read is no exams. */
 async function readProfileExams(userId: string): Promise<string[]> {
@@ -105,7 +132,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    let raw: { message?: unknown; conversationId?: unknown; pagePath?: unknown };
+    let raw: { message?: unknown; conversationId?: unknown; pagePath?: unknown; question?: unknown };
     try {
       raw = (await request.json()) as typeof raw;
     } catch {
@@ -120,6 +147,8 @@ export async function POST(request: NextRequest) {
     // A bad id or page is dropped, not refused: the question still deserves an answer.
     const conversationId = isConversationId(raw.conversationId) ? raw.conversationId : null;
     const pagePath = cleanPagePath(raw.pagePath);
+    // "Ask V about this question" (0168): the question the student tapped Ask V on, while it is switched on.
+    const asked = settings.explainEnabled ? parseAskedQuestion(raw.question) : null;
 
     // A signed-out visitor's second question: kept (it shows what visitors want), answered with sign-in.
     const askedBefore = anonAskedFromCookieHeader(request.headers.get("cookie"));
@@ -140,6 +169,9 @@ export async function POST(request: NextRequest) {
 
     let reply = TYPED_QUESTION_REPLY;
     let links: string[] = [];
+    // Set by V's question tools during the answer, for the chat window: a question to try, a pasted one to confirm.
+    let similarQuestionId: string | null = null;
+    let matchQuestionId: string | null = null;
     let recorded: {
       text: string;
       source: "ai" | "ai_failed" | "fallback";
@@ -163,6 +195,13 @@ export async function POST(request: NextRequest) {
             page: pagePath,
             signedIn: ownId !== null,
             profileExamSlugs: ownId ? await readProfileExams(ownId) : [],
+            question: asked,
+            questionTools: settings.explainEnabled
+              ? buildQuestionToolDeps(ownId, {
+                  onSimilar: (id) => (similarQuestionId = id),
+                  onMatch: (id) => (matchQuestionId = id),
+                })
+              : null,
             // The student's own login does the reading (get_own_performance): no id is passed to the database.
             loadOwnProgress: ownId
               ? () =>
@@ -226,8 +265,16 @@ export async function POST(request: NextRequest) {
       pagePath,
     });
 
+    // Only on an AI answer: a fallback reply never ran the tools.
+    const questionFields =
+      recorded.source === "ai"
+        ? { ...(similarQuestionId ? { similarQuestionId } : {}), ...(matchQuestionId ? { matchQuestionId } : {}) }
+        : {};
     if (userId !== null) {
-      return NextResponse.json({ ok: true, reply, links, id, source: recorded.source === "ai" ? "ai" : "fallback" }, { status: 200 });
+      return NextResponse.json(
+        { ok: true, reply, links, id, source: recorded.source === "ai" ? "ai" : "fallback", ...questionFields },
+        { status: 200 }
+      );
     }
     const source = recorded.source === "ai" ? "ai" : "fallback";
     const cookieOpts = {
@@ -239,13 +286,13 @@ export async function POST(request: NextRequest) {
     // Signed out, and V only asked back: the question is still theirs. Count the free reply.
     const freeSoFar = anonFreeRepliesFromCookieHeader(request.headers.get("cookie"));
     if (!anonReplyUsesQuestion({ source: recorded.source, reply, links, freeSoFar })) {
-      const res = NextResponse.json({ ok: true, reply, links, id, source }, { status: 200 });
+      const res = NextResponse.json({ ok: true, reply, links, id, source, ...questionFields }, { status: 200 });
       res.cookies.set(ANON_FREE_COOKIE, String(freeSoFar + 1), cookieOpts);
       return res;
     }
     // Signed out: that was their one question. Mark the browser; the window shows the sign-in button.
     const res = NextResponse.json(
-      { ok: true, reply, links, id, source, signInToContinue: true },
+      { ok: true, reply, links, id, source, signInToContinue: true, ...questionFields },
       { status: 200 }
     );
     res.cookies.set(ANON_ASKED_COOKIE, "1", cookieOpts);

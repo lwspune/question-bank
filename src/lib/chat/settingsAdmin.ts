@@ -5,17 +5,23 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { DEFAULT_CHAT_SETTINGS, istDayStart, type ChatSettings } from "./settings";
 
-type Row = { ai_enabled: boolean; per_person_per_hour: number; ai_answers_per_day: number };
+type Row = { ai_enabled: boolean; explain_enabled: boolean; per_person_per_hour: number; ai_answers_per_day: number };
+const COLUMNS = "ai_enabled, explain_enabled, per_person_per_hour, ai_answers_per_day";
 
 function fromRow(r: Row): ChatSettings {
-  return { aiEnabled: r.ai_enabled, perPersonPerHour: r.per_person_per_hour, aiAnswersPerDay: r.ai_answers_per_day };
+  return {
+    aiEnabled: r.ai_enabled,
+    explainEnabled: r.explain_enabled,
+    perPersonPerHour: r.per_person_per_hour,
+    aiAnswersPerDay: r.ai_answers_per_day,
+  };
 }
 
 /** The live settings. On a failed read: the defaults, which keep the AI OFF. */
 export async function readChatSettings(db: SupabaseClient): Promise<ChatSettings> {
   const { data, error } = await db
     .from("chat_settings")
-    .select("ai_enabled, per_person_per_hour, ai_answers_per_day")
+    .select(COLUMNS)
     .eq("id", true)
     .maybeSingle();
   if (error || !data) {
@@ -33,12 +39,13 @@ export async function saveChatSettings(
     .from("chat_settings")
     .update({
       ai_enabled: s.aiEnabled,
+      explain_enabled: s.explainEnabled,
       per_person_per_hour: s.perPersonPerHour,
       ai_answers_per_day: s.aiAnswersPerDay,
       updated_at: new Date().toISOString(),
     })
     .eq("id", true)
-    .select("ai_enabled, per_person_per_hour, ai_answers_per_day")
+    .select(COLUMNS)
     .single();
   if (error || !data) return { kind: "error", message: error?.message ?? "no settings row" };
   return { kind: "ok", settings: fromRow(data as Row) };

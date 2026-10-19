@@ -6,6 +6,7 @@ import PresentButton from "@/components/present/PresentButton";
 import { PresentRegistry } from "@/components/present/PresentRegistry";
 import { fromReviewItem } from "@/lib/present/viewModel";
 import type { ReviewItem } from "@/lib/mocks/service";
+import AskVButton from "@/components/chat/AskVButton";
 import { BilingualOption, BilingualSolution, BilingualStem, QuestionLangSwitch } from "@/components/i18n/BilingualText";
 import { hasMarathi } from "@/lib/i18n/bilingual";
 import CancelledNotice from "@/components/question/CancelledNotice";
@@ -182,6 +183,8 @@ function ReviewCard({ item, supabaseUrl }: { item: ReviewItem; supabaseUrl: stri
           </div>
         </details>
       )}
+      {/* Not on a grace question: it has no valid key to explain. */}
+      {!item.grace && <AskVButton questionId={item.questionId} chose={item.selectedLabel} className="mt-3" />}
     </li>
   );
 }

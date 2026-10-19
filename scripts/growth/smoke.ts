@@ -150,6 +150,9 @@ async function main() {
       case "pyq-wording":
         line = handRead(e.liveSince, ["pyq-wording-impressions"]);
         break;
+      case "v-explain":
+        line = handRead(e.liveSince, ["v-explain-students", "v-explain-similar-right"]);
+        break;
       case "v-finder":
         line = handRead(e.liveSince, ["v-false-not-found", "v-clarify-turns", "v-practice-after"]);
         break;

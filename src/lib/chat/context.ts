@@ -29,6 +29,7 @@ import type { Performance } from "@/lib/performance/compute";
 import type { PracticeCounts } from "@/lib/activity/practiceCounts";
 import { progressTool } from "./progress";
 import { pageContext } from "./pageContext";
+import { questionTools, type QuestionToolDeps } from "./questionToolSet";
 
 /** Profile slugs as the exam names V's facts use; a retired or unknown slug is dropped. */
 export function profileExamNames(slugs: readonly string[]): string[] {
@@ -74,6 +75,10 @@ export async function loadVContext(
     loadOwnPractice?: () => Promise<PracticeCounts>;
     /** student_profiles.target_exams: V uses them when the student names no exam. */
     profileExamSlugs?: readonly string[];
+    /** "Ask V about this question" (0168): its tools' data sources, present only while it is switched on. */
+    questionTools?: QuestionToolDeps | null;
+    /** The question the student tapped Ask V on, and the option they picked. */
+    question?: { id: string; chose: string | null } | null;
   } = {}
 ): Promise<VContext> {
   const loadChapters = opts.loadChapters ?? listChapterSearchRows;
@@ -97,6 +102,7 @@ export async function loadVContext(
     bankTotal: bankCount.count ?? 0,
     nav: NAV_FACTS,
     guides: GUIDE_FACTS,
+    explainEnabled: Boolean(opts.questionTools),
   });
   // The search list is cached, so reading it for the page costs no database read.
   const pageInfo = opts.page
@@ -113,6 +119,7 @@ export async function loadVContext(
     signedIn: opts.signedIn ?? true,
     pageInfo,
     profileExams: profileExamNames(opts.profileExamSlugs ?? []),
+    question: opts.questionTools ? (opts.question ?? null) : null,
   });
 
   const allowedPaths = new Set(pathsInReply([...NAV_FACTS, ...GUIDE_FACTS, ...exams].join("\n")));
@@ -143,5 +150,7 @@ export async function loadVContext(
   };
 
   // Always offered, signed in or not: the tool list is part of the cached prefix.
-  return { system, systemTail, tools: [findChaptersTool, progressTool(opts.loadOwnProgress, opts.loadOwnPractice)], allowedPaths };
+  const tools = [findChaptersTool, progressTool(opts.loadOwnProgress, opts.loadOwnPractice)];
+  if (opts.questionTools) tools.push(...questionTools({ ...opts.questionTools, pageChapterId: pageInfo?.chapterId ?? null }));
+  return { system, systemTail, tools, allowedPaths };
 }

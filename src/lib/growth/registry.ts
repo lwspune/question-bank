@@ -167,6 +167,14 @@ export const MOCK_TOGETHER_STARTS_KEEP = 3;
  */
 export const V_FINDER_NOT_FOUND_MAX_PCT = 10;
 
+/**
+ * "v-explain" (study-partner Phase 1): keep "Ask V about this question" if at
+ * least this many students get an explanation in the two weeks...
+ */
+export const V_EXPLAIN_STUDENTS_KEEP = 20;
+/** ...and the similar question V offers is answered right at least this often (%). */
+export const V_EXPLAIN_SIMILAR_RIGHT_KEEP_PCT = 50;
+
 /** The ISO date `days` (by default `EXPERIMENT_WINDOW_DAYS`) after `liveSince`. */
 export function checkOn(liveSince: string, days: number = EXPERIMENT_WINDOW_DAYS): string {
   const d = new Date(`${liveSince}T00:00:00Z`);
@@ -193,7 +201,8 @@ export type Readout =
   | "practice-friends"
   | "mock-together"
   | "pyq-wording"
-  | "v-finder";
+  | "v-finder"
+  | "v-explain";
 
 export type Experiment = {
   id: string;
@@ -456,6 +465,20 @@ export const EXPERIMENTS: readonly Experiment[] = [
     readout: "v-finder",
     status: "running",
   },
+  {
+    id: "v-explain",
+    title: "Ask V about this question (study partner, Phase 1)",
+    change:
+      "An Ask V button on question cards (/browse, /questions, /board, the mock review) opens V with the question attached. V offers a hint or the full solution, explains only from the stored solution and key, and offers a similar question as a card to answer in the chat. A full explanation is one of the day's free answers.",
+    why: "Reading every conversation (2026-10-19): about 1 in 5 students who typed wanted the question on their screen explained, and V could only say \"tap Show solution\". The similar question after an explanation is the learning check: answering one right after an explanation is the evidence it worked.",
+    metric:
+      "Students with an explanation (question_practiced surface 'v' with no chose); similar-question cards answered (surface 'v' with chose) and the share answered right; whether students who used Ask V come back within 7 days",
+    rule: `Keep it if ${V_EXPLAIN_STUDENTS_KEEP}+ students get an explanation in two weeks and the similar question is answered right ${V_EXPLAIN_SIMILAR_RIGHT_KEEP_PCT}%+ of the time; under the student count, check whether the button is found before changing V; under the right-answer share, read the explanations before anything else.`,
+    liveSince: "2026-10-19",
+    windowDays: 14,
+    readout: "v-explain",
+    status: "running",
+  },
 ];
 
 export type DecidedAgainst = { title: string; decision: string; on: string; why: string };
@@ -527,7 +550,9 @@ export type ReadingMetric =
   | "pyq-wording-impressions"
   | "v-false-not-found"
   | "v-clarify-turns"
-  | "v-practice-after";
+  | "v-practice-after"
+  | "v-explain-students"
+  | "v-explain-similar-right";
 
 export type Reading = { on: string; value: number; note?: string };
 
@@ -675,6 +700,17 @@ export const READINGS: Record<ReadingMetric, { label: string; source: string; en
         note: "Baseline before the change, inferred from each student's free paper (no box was recorded yet): 3 of 5. /browse: 2 of 21",
       },
     ],
+  },
+  "v-explain-students": {
+    label: "Ask V: students who got an explanation",
+    source:
+      "user_activity question_practiced with metadata.surface 'v' and no metadata.chose (an explanation), staff excluded, distinct students in the window",
+    entries: [],
+  },
+  "v-explain-similar-right": {
+    label: "Ask V: similar questions answered right (%)",
+    source: "user_activity question_practiced with metadata.surface 'v' and metadata.chose set (the card in V): share with metadata.correct = true",
+    entries: [],
   },
   "v-false-not-found": {
     label: "V: chapter asks answered \"not found\" for a chapter we have (%)",

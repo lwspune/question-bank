@@ -271,6 +271,29 @@ describe("buildSystemPrompt", () => {
     expect(buildSystemPrompt(base)).toMatch(/whole chapters \(up to 5\), not subtopics/);
   });
 
+  // 2026-10-19 study-partner Phase 1: with explanations on, V explains from the stored solution only.
+  it("keeps the no-solving rule while explanations are off", () => {
+    const p = buildSystemPrompt(base);
+    expect(p).toMatch(/you do not solve or explain questions/);
+    expect(p).not.toContain("explain_question");
+  });
+
+  it("with explanations on, has V offer a hint or the full solution, explain only from the stored one, and never doubt the key", () => {
+    const p = buildSystemPrompt({ ...base, explainEnabled: true });
+    expect(p).not.toMatch(/you do not solve or explain questions/);
+    expect(p).toMatch(/Want a hint or the full solution\?/);
+    expect(p).toMatch(/get_question/);
+    expect(p).toMatch(/explain_question/);
+    expect(p).toMatch(/Explain only from the stored solution/);
+    expect(p).toMatch(/Never work out your own answer/);
+    expect(p).toMatch(/tap Report on the question/);
+    expect(p).toMatch(/similar_question/);
+    expect(p).toMatch(/find_question/);
+    expect(p).toMatch(/up to 8 short lines/);
+    // The chat window draws \( ... \) as maths; a template string eats a single backslash.
+    expect(p).toContain("Write maths inside \\( \\).");
+  });
+
   it("lets V take the exam from the student's profile, which is not a guess", () => {
     expect(buildSystemPrompt(base)).toMatch(/named it, the page shows it, or their profile lists it/);
   });
@@ -365,6 +388,14 @@ describe("buildSystemTail", () => {
   });
 
   // 21 of the 27 signed-in students who typed to V had exams on their profile, and V asked anyway.
+  it("tells V which question the student tapped Ask V on, and whether they answered it", () => {
+    const id = "11111111-1111-4111-8111-111111111111";
+    const fresh = buildSystemTail({ page: null, signedIn: true, question: { id, chose: null } });
+    expect(fresh).toContain(`The student tapped Ask V on question ${id}.`);
+    expect(fresh).toContain("They have not answered it yet.");
+    expect(buildSystemTail({ page: null, signedIn: true, question: { id, chose: "C" } })).toContain("They picked (C).");
+  });
+
   it("tells V the student's exams from their profile, page first, asking when more than one fits", () => {
     const t = buildSystemTail({ page: null, signedIn: true, profileExams: ["MHT-CET", "MH HSC 12"] });
     expect(t).toContain("Their exams, from their profile: MHT-CET, MH HSC 12.");
