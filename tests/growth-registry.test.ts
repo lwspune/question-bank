@@ -84,6 +84,7 @@ describe("EXPERIMENTS", () => {
       "resource-chips",
       "second-page",
       "specific-offer",
+      "v-explain",
       "v-finder",
     ]);
   });

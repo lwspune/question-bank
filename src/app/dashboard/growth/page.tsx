@@ -38,6 +38,8 @@ import {
   PAPER_PAGES_SIGNUPS_KEEP,
   PYQ_WORDING_IMPRESSIONS_KEEP_RATIO,
   V_FINDER_NOT_FOUND_MAX_PCT,
+  V_EXPLAIN_STUDENTS_KEEP,
+  V_EXPLAIN_SIMILAR_RIGHT_KEEP_PCT,
   SPECIFIC_OFFER_CHECKOUT_PCT,
   checkOn,
   type Experiment,
@@ -475,6 +477,17 @@ export default async function GrowthPage() {
               window before.
             </p>
             <ReadingsList metric="pyq-wording-impressions" />
+          </div>
+        );
+      case "v-explain":
+        return (
+          <div className="space-y-3">
+            <p className="text-sm text-muted-foreground">
+              Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))}: keep it if {V_EXPLAIN_STUDENTS_KEEP}+ students
+              get an explanation and the similar question is answered right {V_EXPLAIN_SIMILAR_RIGHT_KEEP_PCT}%+ of the time.
+            </p>
+            <ReadingsList metric="v-explain-students" />
+            <ReadingsList metric="v-explain-similar-right" />
           </div>
         );
       case "v-finder":
