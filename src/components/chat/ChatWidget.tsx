@@ -59,6 +59,7 @@ import { useCart } from "@/lib/cart/CartProvider";
 import VSays from "./VSays";
 import MathText from "./MathText";
 import VQuestionCard from "./VQuestionCard";
+import VPlanCard from "./VPlanCard";
 import { ASK_V_EVENT, type AskVDetail } from "@/lib/chat/askVEvent";
 import { MESSAGE_IN, USER_BUBBLE, V_BUBBLE } from "./chatStyles";
 import PracticeBuilder, { PENDING_BUILD_KEY, logBuilderStep } from "./PracticeBuilder";
@@ -92,6 +93,8 @@ type ChatTurn = HistoryTurn & {
   transient?: boolean;
   /** A question card under V's reply (2026-10-19): a similar one to try, or a pasted one to confirm. */
   card?: { id: string; kind: "try" | "confirm" };
+  /** The week plan under V's reply (2026-10-19): it made or read the student's plan. */
+  plan?: boolean;
 };
 
 /** What the device keeps of a turn: no face, no errors. */
@@ -526,6 +529,7 @@ export default function ChatWidget() {
         signInRequired?: boolean;
         similarQuestionId?: string;
         matchQuestionId?: string;
+        planShown?: boolean;
         error?: string;
       };
       if (data.signInToContinue || data.signInRequired) setSignInNeeded(true);
@@ -541,10 +545,11 @@ export default function ChatWidget() {
         : data.matchQuestionId
           ? { id: data.matchQuestionId, kind: "confirm" }
           : undefined;
+      const plan = data.planShown === true ? true : undefined;
       addTurn(
         data.source === "ai" && data.id
-          ? { role: "assistant", avatar: "laugh", text: data.reply as string, links, id: data.id, source: "ai", feedback: null, card }
-          : { role: "assistant", avatar: "laugh", text: data.reply as string, links, card }
+          ? { role: "assistant", avatar: "laugh", text: data.reply as string, links, id: data.id, source: "ai", feedback: null, card, plan }
+          : { role: "assistant", avatar: "laugh", text: data.reply as string, links, card, plan }
       );
     } catch {
       const errorText = "V is unavailable right now. Please try again.";
@@ -666,6 +671,7 @@ export default function ChatWidget() {
                     </div>
                   )}
                   {t.card && <VQuestionCard id={t.card.id} kind={t.card.kind} />}
+                  {t.plan && <VPlanCard onNavigate={close} />}
                 </div>
               );
             })}
