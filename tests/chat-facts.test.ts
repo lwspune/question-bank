@@ -9,9 +9,12 @@ import {
   NAV_FACTS,
   buildSystemPrompt,
   buildSystemTail,
+  buildGuideFacts,
+  GUIDE_FACTS,
   type ChatExamFact,
   type ChatPlanFact,
 } from "@/lib/chat/facts";
+import { GUIDE_CATALOG } from "@/lib/guide/guideCatalog";
 
 const EM_DASH = String.fromCharCode(0x2014);
 
@@ -166,6 +169,31 @@ describe("NAV_FACTS", () => {
   });
 });
 
+// 2026-10-19: asked for NDA GAT weightage, V said "I don't have weightage data"; the guides have it.
+describe("buildGuideFacts", () => {
+  const catalog = {
+    nda: [{ href: "/guide/nda-physics", exam: "NDA PART B Physics" }],
+    "mht-cet": [{ href: "/guide/mht-cet-physics", exam: "MHT-CET Physics" }],
+  };
+
+  it("gives each subject guide one line, its page first", () => {
+    expect(buildGuideFacts(catalog)).toEqual([
+      "/guide/nda-physics: NDA PART B Physics, which chapters carry the most marks and what to do first.",
+      "/guide/mht-cet-physics: MHT-CET Physics, which chapters carry the most marks and what to do first.",
+    ]);
+  });
+
+  it("covers every guide in the catalogue, so a new guide reaches V without a code change", () => {
+    const hrefs = Object.values(GUIDE_CATALOG).flatMap((cards) => (cards ?? []).map((c) => c.href));
+    expect(hrefs.length).toBeGreaterThan(0);
+    for (const href of hrefs) expect(GUIDE_FACTS.some((line) => line.startsWith(`${href}: `))).toBe(true);
+  });
+
+  it("uses no em dashes, since V copies the style it is shown", () => {
+    expect(GUIDE_FACTS.join(" ")).not.toContain(EM_DASH);
+  });
+});
+
 describe("buildSystemPrompt", () => {
   const base = {
     exams: ["NDA: senior stage, has mocks."],
@@ -229,6 +257,13 @@ describe("buildSystemPrompt", () => {
     const p = buildSystemPrompt(base);
     expect(p).toMatch(/chapter numbers? (are|is) not stored/i);
     expect(p).toContain("Electric Charges and Fields");
+  });
+
+  it("lists the subject guides and has V link the subject's own guide for strategy questions", () => {
+    const p = buildSystemPrompt({ ...base, guides: ["/guide/nda-physics: NDA PART B Physics, which chapters carry the most marks and what to do first."] });
+    expect(p).toMatch(/STRATEGY GUIDES\n\/guide\/nda-physics: NDA PART B Physics/);
+    expect(p).toMatch(/link that subject's guide from STRATEGY GUIDES/);
+    expect(p).toMatch(/never say you have no weightage/i);
   });
 
   it("lets V take the exam from the student's profile, which is not a guess", () => {

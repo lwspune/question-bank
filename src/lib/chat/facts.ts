@@ -12,6 +12,7 @@
 import { formatRupees, planLengthLabel } from "@/lib/billing/plans";
 import type { FreeLimits } from "@/lib/billing/perkLimits";
 import type { VPageContext } from "./pageContext";
+import { GUIDE_CATALOG } from "@/lib/guide/guideCatalog";
 
 export type ChatExamFact = {
   /** The registry slug: names the exam's page that lists every chapter. Absent in the FAQ's own facts. */
@@ -111,6 +112,20 @@ export const NAV_FACTS: readonly string[] = [
   "/pricing: the Premium Pass and how to buy it.",
 ];
 
+/**
+ * One line per subject guide (2026-10-19). V knew only "/guide", so asked for
+ * NDA GAT weightage it said it had no weightage data, and "most repeated
+ * concepts in MHT-CET" got the bare hub. Built from GUIDE_CATALOG, so a new
+ * guide reaches V without a code change.
+ */
+export function buildGuideFacts(catalog: Partial<Record<string, readonly { href: string; exam: string }[]>>): string[] {
+  return Object.values(catalog).flatMap((cards) =>
+    (cards ?? []).map((c) => `${c.href}: ${c.exam}, which chapters carry the most marks and what to do first.`)
+  );
+}
+
+export const GUIDE_FACTS: readonly string[] = buildGuideFacts(GUIDE_CATALOG);
+
 export type ChatFacts = {
   exams: readonly string[];
   plans: readonly string[];
@@ -118,6 +133,8 @@ export type ChatFacts = {
   free?: readonly string[];
   bankTotal: number;
   nav: readonly string[];
+  /** Subject strategy guides (GUIDE_FACTS). */
+  guides?: readonly string[];
 };
 
 /**
@@ -134,6 +151,7 @@ They get one answer; to ask more after it they must sign in, and this chat tells
 export function buildSystemPrompt(facts: ChatFacts): string {
   const examBlock = facts.exams.length ? facts.exams.join("\n") : "(no exams currently live)";
   const planBlock = facts.plans.length ? facts.plans.join("\n") : "(nothing is on sale right now)";
+  const guideBlock = facts.guides && facts.guides.length ? facts.guides.join("\n") : "(none)";
   const freeBlock = facts.free && facts.free.length ? facts.free.join("\n") : "(not available right now; do not quote limits)";
 
   return `You are V, the small helper on PYQ Vault (pyqvault.com), a past-year-question bank for Indian exams. Your readers are school and college students preparing for exams, often on a phone.
@@ -150,7 +168,8 @@ RULES
 3b. When you know the exam and subject but not the chapter, search the subject, then list the chapter names it returns in one sentence, separated by commas, and ask which one they want.
 3c. When they want every chapter ("all", "all chapters", "sab", "सगळे"), do not list the names again: link that exam's every-chapter page, given with each exam below.
 4. When they want a test, a mock or a quiz on a chapter, tell them to tap "Build a practice test" in this chat. For a whole past paper, point to /mock.
-5. Nobody knows the questions of a future paper (2027 or any upcoming exam). Say so kindly, then point to the questions asked most often: the chapter's Top 10 PYQs on /board for board exams, or /guide for entrance exams.
+5. Nobody knows the questions of a future paper (2027 or any upcoming exam). Say so kindly, then point to the questions asked most often: the chapter's Top 10 PYQs on /board for board exams, or the subject's guide (rule 5a) for entrance exams.
+5a. Strategy (which chapters matter most, weightage, what to focus on, little time left): when you know the exam and subject, link that subject's guide from STRATEGY GUIDES; it ranks the chapters by how often they are asked. Never say you have no weightage data when the subject has a guide. If you know the exam but not the subject, ask which subject. If the subject has no guide, say so and point to its Top 10 PYQs on /board (board exams) or its chapter list.
 6. Price, fees, free or not, buying: say what is free (FREE ACCOUNT below), then the pass price and what it gives, and link /pricing.
 7. You cannot see the question a student is looking at, and you do not solve or explain questions. Say so in one line, and tell them to tap "Show answer" or "Show solution" on the question for the worked solution, or read the chapter at /notes.
 8. A student's own results: when they ask about their scores, progress, how many questions they have answered or practised, weak or strong chapters, or what to study next, call my_progress and use only its numbers. Practice outside mocks counts as progress: give it even when they have no mock yet. Say what went well first, then the one or two chapters to work on next, and link /performance (or /drill for the questions they got wrong). Never compare them with other students. If it says they are signed out, tell them to sign in.
@@ -172,7 +191,10 @@ PASSES ON SALE
 ${planBlock}
 
 WHERE THINGS ARE
-${facts.nav.join("\n")}`;
+${facts.nav.join("\n")}
+
+STRATEGY GUIDES
+${guideBlock}`;
 }
 
 /**

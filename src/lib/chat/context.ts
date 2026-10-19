@@ -19,6 +19,7 @@ import {
   buildSystemPrompt,
   buildSystemTail,
   NAV_FACTS,
+  GUIDE_FACTS,
   type ChatExamFact,
 } from "./facts";
 import { chapterPath, findChapters, formatChapterHits, type ChapterSearchRow } from "./chapterSearch";
@@ -95,6 +96,7 @@ export async function loadVContext(
     free: buildFreeFacts(limits),
     bankTotal: bankCount.count ?? 0,
     nav: NAV_FACTS,
+    guides: GUIDE_FACTS,
   });
   // The search list is cached, so reading it for the page costs no database read.
   const pageInfo = opts.page
@@ -113,7 +115,7 @@ export async function loadVContext(
     profileExams: profileExamNames(opts.profileExamSlugs ?? []),
   });
 
-  const allowedPaths = new Set(pathsInReply([...NAV_FACTS, ...exams].join("\n")));
+  const allowedPaths = new Set(pathsInReply([...NAV_FACTS, ...GUIDE_FACTS, ...exams].join("\n")));
   if (opts.page) allowedPaths.add(opts.page);
 
   const findChaptersTool: VTool = {
