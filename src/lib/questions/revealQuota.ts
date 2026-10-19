@@ -4,13 +4,14 @@
  * (practiceBeacon → /api/activity/practice), since midnight IST.
  *
  * Counted surfaces: the bank, the board reader and guide/notes worked examples
- * (owner, 2026-10-05). NOT the drill or the question of the day: those are
- * their own features. A row with no surface predates 0107 and is the bank.
+ * (owner, 2026-10-05), and since 2026-10-19 V's explanations ("v", owner: an
+ * explanation is one free answer). NOT the drill or the question of the day:
+ * those are their own features. A row with no surface predates 0107 and is the bank.
  * A free day is capped near the limit, far under the 1000-row page.
  */
 import type { SupabaseClient } from "@supabase/supabase-js";
 
-export const DAILY_REVEAL_SURFACES = ["bank", "board", "guide"] as const;
+export const DAILY_REVEAL_SURFACES = ["bank", "board", "guide", "v"] as const;
 
 export async function loadRevealedToday(
   db: SupabaseClient,

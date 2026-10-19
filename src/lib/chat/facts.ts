@@ -136,6 +136,8 @@ export type ChatFacts = {
   nav: readonly string[];
   /** Subject strategy guides (GUIDE_FACTS). */
   guides?: readonly string[];
+  /** "Ask V about this question" is switched on (chat_settings.explain_enabled, 0168). */
+  explainEnabled?: boolean;
 };
 
 /**
@@ -146,12 +148,30 @@ export type ChatFacts = {
 const ONE_REPLY_RULE = `THIS VISITOR IS SIGNED OUT
 They get one answer; to ask more after it they must sign in, and this chat tells them so. If you can tell what they want, give your best answer now and link the pages. If they asked for a subject but no chapter, link that exam's every-chapter page rather than picking chapters for them. If you cannot (a greeting, or the exam or chapter is unclear), ask one short question back and link nothing: their reply to it does not use up their answer.`;
 
+/** Rule 7 while "Ask V about this question" is off (/dashboard/chat, migration 0168). */
+const NO_EXPLAIN_RULE = `7. You cannot see the question a student is looking at, and you do not solve or explain questions. Say so in one line, and tell them to tap "Show answer" or "Show solution" on the question for the worked solution, or read the chapter at /notes.`;
+
+/**
+ * Rule 7 with explanations on (2026-10-19, study-partner Phase 1). The scope
+ * agreed with the owner: V explains from the stored solution and key, never
+ * its own working, and never doubts the key (a disputed key is a report).
+ * Hint first when the student has not tried, which is retrieval practice.
+ */
+const EXPLAIN_RULE = `7. Questions. You can explain a question from its stored solution. When the student tapped Ask V, the question is named at the end. When they paste or type out a question, call find_question and ask whether the first match is theirs before explaining it.
+- If they have not answered it and did not ask for the answer, ask: "Want a hint or the full solution?"
+- Hint: call get_question and give the first idea in one or two lines. Never give the answer or say which option is right.
+- Full solution: call explain_question. Explain only from the stored solution it returns, in short steps, each on its own line, in their language. If they picked an option, start with why their pick is right or where it goes wrong. Write maths inside \\( \\).
+- Never work out your own answer, and never say the stored answer is wrong. If they think it is wrong, tell them to tap Report on the question.
+- After a full solution, offer one similar question to try; when they want it, call similar_question.
+- If explain_question says they are signed out or out of free answers, say only that, kindly, with the link it gives.`;
+
 /** V's fixed instructions, the same for every question (cached; the per-question
  *  part is buildSystemTail). Answer-only-from-facts and the no-solving rule
  *  are the scope contract agreed with the owner (2026-10-15 plan). */
 export function buildSystemPrompt(facts: ChatFacts): string {
   const examBlock = facts.exams.length ? facts.exams.join("\n") : "(no exams currently live)";
   const planBlock = facts.plans.length ? facts.plans.join("\n") : "(nothing is on sale right now)";
+  const questionRule = facts.explainEnabled ? EXPLAIN_RULE : NO_EXPLAIN_RULE;
   const guideBlock = facts.guides && facts.guides.length ? facts.guides.join("\n") : "(none)";
   const freeBlock = facts.free && facts.free.length ? facts.free.join("\n") : "(not available right now; do not quote limits)";
 
@@ -172,11 +192,11 @@ RULES
 5. Nobody knows the questions of a future paper (2027 or any upcoming exam). Say so kindly, then point to the questions asked most often: the chapter's Top 10 PYQs on /board for board exams, or the subject's guide (rule 5a) for entrance exams.
 5a. Strategy (which chapters matter most, weightage, what to focus on, little time left): when you know the exam and subject, link that subject's guide from STRATEGY GUIDES; it ranks the chapters by how often they are asked. Never say you have no weightage data when the subject has a guide. If you know the exam but not the subject, ask which subject. If the subject has no guide, say so and point to its Top 10 PYQs on /board (board exams) or its chapter list.
 6. Price, fees, free or not, buying: say what is free (FREE ACCOUNT below), then the pass price and what it gives, and link /pricing.
-7. You cannot see the question a student is looking at, and you do not solve or explain questions. Say so in one line, and tell them to tap "Show answer" or "Show solution" on the question for the worked solution, or read the chapter at /notes.
+${questionRule}
 8. A student's own results: when they ask about their scores, progress, how many questions they have answered or practised, weak or strong chapters, or what to study next, call my_progress and use only its numbers. Practice outside mocks counts as progress: give it even when they have no mock yet. Say what went well first, then the one or two chapters to work on next, and link /performance (or /drill for the questions they got wrong). Never compare them with other students. If it says they are signed out, tell them to sign in.
 9. For greetings, single words or text you cannot read, reply in one friendly line asking what exam or chapter they are studying.
 10. Reply in the student's language: English, Hinglish, Hindi or Marathi, matching how they wrote.
-11. Keep it short: 1 to 3 sentences. Plain text only, no markdown, no lists, no em dashes.
+11. Keep it short: 1 to 3 sentences${facts.explainEnabled ? ", except an explanation (rule 7), which may take up to 8 short lines" : ""}. Plain text only, no markdown, no lists, no em dashes.
 12. You can see the earlier messages of this chat. Use them to understand short follow-ups ("other chapter", "yes?", "1,2,3 lessons"), and do not repeat what you already said.
 
 EXAMS
@@ -211,8 +231,15 @@ export function buildSystemTail(who: {
   pageInfo?: VPageContext | null;
   /** Display names of the exams on the student's profile (student_profiles.target_exams). */
   profileExams?: readonly string[];
+  /** The question the student tapped Ask V on, and the option they picked, if any. */
+  question?: { id: string; chose: string | null } | null;
 }): string {
   const parts: string[] = [];
+  if (who.question) {
+    parts.push(
+      `The student tapped Ask V on question ${who.question.id}. ${who.question.chose ? `They picked (${who.question.chose}).` : "They have not answered it yet."}`
+    );
+  }
   if (who.page) parts.push(`The student is on the page ${who.page} (you cannot see what is on it).`);
   const info = who.pageInfo;
   if (info?.chapterName) {

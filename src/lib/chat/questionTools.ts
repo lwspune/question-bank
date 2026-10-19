@@ -29,6 +29,8 @@ export type VQuestion = {
   subject: string;
   chapter: string;
   subtopic: string | null;
+  /** For a similar question from the same subtopic. */
+  subtopicId: string | null;
 };
 
 export function toVQuestion(row: QuestionRow): VQuestion {
@@ -45,6 +47,7 @@ export function toVQuestion(row: QuestionRow): VQuestion {
     subject: row.subject.name,
     chapter: row.chapter.name,
     subtopic: row.subtopic?.name ?? null,
+    subtopicId: row.subtopic?.id ?? null,
   };
 }
 
@@ -125,4 +128,16 @@ export function pickSimilar(candidates: readonly string[], exclude: ReadonlySet<
   const left = candidates.filter((id) => !exclude.has(id));
   if (left.length === 0) return null;
   return left[Math.min(left.length - 1, Math.floor(random() * left.length))];
+}
+
+const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+const PICKS = new Set(["A", "B", "C", "D"]);
+
+/** The question a chat request says the student tapped Ask V on. Anything malformed is no question. */
+export function parseAskedQuestion(raw: unknown): { id: string; chose: string | null } | null {
+  if (!raw || typeof raw !== "object") return null;
+  const { id, chose } = raw as { id?: unknown; chose?: unknown };
+  if (typeof id !== "string" || !UUID_RE.test(id)) return null;
+  const pick = typeof chose === "string" ? chose.toUpperCase() : null;
+  return { id, chose: pick && PICKS.has(pick) ? pick : null };
 }

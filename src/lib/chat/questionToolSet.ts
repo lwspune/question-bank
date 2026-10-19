@@ -1,0 +1,130 @@
+/**
+ * V's question tools (2026-10-19, study-partner Phase 1), over injected data
+ * sources so the rules are tested without a database (lib/chat/questionToolsServer.ts
+ * wires the real ones):
+ *
+ * - get_question: a hint. The question and its solution's first step, no key.
+ * - explain_question: the key and the whole stored solution, after the
+ *   free-answer check. Refused, with nothing given away, past the day's free
+ *   answers or to a signed-out visitor.
+ * - similar_question: another question from the same subtopic, handed to the
+ *   chat window as a card the student answers there. V never sees its answer.
+ * - find_question: pasted text matched to the bank. The best match becomes the
+ *   question this conversation is about, so the next message can explain it.
+ *
+ * Spec: tests/chat-question-toolset.test.ts.
+ */
+import type { VTool } from "./anthropic";
+import { explainView, hintView, type RevealCheck, type VQuestion } from "./questionTools";
+
+export type QuestionMatch = { id: string; snippet: string; where: string };
+
+export type QuestionToolDeps = {
+  loadQuestion: (id: string) => Promise<VQuestion | null>;
+  /** null: signed out, so no explanation. */
+  spendReveal: ((id: string) => Promise<RevealCheck>) | null;
+  loadSimilar: (q: VQuestion) => Promise<string | null>;
+  searchQuestions: (text: string) => Promise<QuestionMatch[]>;
+  /** The route collects these for the chat window. */
+  onSimilar: (id: string) => void;
+  onAttach: (id: string) => void;
+  onExplained: (id: string) => void;
+};
+
+const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+const NOT_FOUND = "Question not found. Ask the student to tap Ask V on the question again.";
+const LETTERS = new Set(["A", "B", "C", "D"]);
+
+function idOf(input: unknown): string | null {
+  const id = (input as { question_id?: unknown } | null)?.question_id;
+  return typeof id === "string" && UUID_RE.test(id) ? id : null;
+}
+
+const ID_SCHEMA = {
+  type: "object",
+  properties: { question_id: { type: "string", description: "The question's id, as given at the end of the instructions or by find_question." } },
+  required: ["question_id"],
+};
+
+export function questionTools(d: QuestionToolDeps): VTool[] {
+  async function load(input: unknown): Promise<VQuestion | null> {
+    const id = idOf(input);
+    return id ? d.loadQuestion(id) : null;
+  }
+
+  return [
+    {
+      name: "get_question",
+      logResult: true,
+      description:
+        "Read the question for a HINT: its text, options and the first step of its stored solution, without the answer. Use when the student wants a hint, or to see the question before asking hint or full solution.",
+      input_schema: ID_SCHEMA,
+      run: async (input) => {
+        const q = await load(input);
+        return q ? hintView(q) : NOT_FOUND;
+      },
+    },
+    {
+      name: "explain_question",
+      logResult: true,
+      description:
+        "Read the question's correct answer and whole stored solution, to explain it. Uses one of the student's free answers for the day. Use only when the student wants the full solution or the answer.",
+      input_schema: {
+        type: "object",
+        properties: {
+          ...ID_SCHEMA.properties,
+          chose: { type: "string", description: "The option letter the student picked, if they said or it is given at the end." },
+        },
+        required: ["question_id"],
+      },
+      run: async (input) => {
+        const q = await load(input);
+        if (!q) return NOT_FOUND;
+        if (!d.spendReveal) return "The student is signed out: tell them to sign in (free) to get explanations, and give no answer.";
+        const check = await d.spendReveal(q.id);
+        if (check.kind === "limit") {
+          return `The student has used today's ${check.limit} free answers. Tell them kindly, give no answer or hint, and say the Premium Pass at /pricing gives unlimited answers.`;
+        }
+        d.onExplained(q.id);
+        const raw = (input as { chose?: unknown }).chose;
+        const chose = typeof raw === "string" && LETTERS.has(raw.toUpperCase()) ? raw.toUpperCase() : null;
+        return explainView(q, chose);
+      },
+    },
+    {
+      name: "similar_question",
+      description:
+        "Give the student another question from the same subtopic to try. It is shown to them as a card below your reply, which they answer there.",
+      input_schema: ID_SCHEMA,
+      run: async (input) => {
+        const q = await load(input);
+        if (!q) return NOT_FOUND;
+        const id = await d.loadSimilar(q);
+        if (!id) return "There is no other question to try from this subtopic right now. Suggest the chapter's questions page instead.";
+        d.onSimilar(id);
+        return `A similar question from ${q.subtopic ?? q.chapter} is shown to the student as a card below your reply. Tell them to try it there. You do not know its answer, so give none.`;
+      },
+    },
+    {
+      name: "find_question",
+      logResult: true,
+      description:
+        "Find a question in the bank from text the student pasted or typed out. Returns the closest matches; the first becomes the question this chat is about.",
+      input_schema: {
+        type: "object",
+        properties: { text: { type: "string", description: "The question text as the student wrote it." } },
+        required: ["text"],
+      },
+      run: async (input) => {
+        const text = (input as { text?: unknown } | null)?.text;
+        const matches = typeof text === "string" && text.trim() ? await d.searchQuestions(text) : [];
+        if (matches.length === 0) {
+          return "No question in the bank matched. Ask them to open the question on the site and tap Ask V on it.";
+        }
+        d.onAttach(matches[0].id);
+        const lines = matches.map((m, i) => `${i + 1}. ${m.id} (${m.where}): ${m.snippet}`);
+        return `Closest matches, best first. Ask the student whether the first is their question before explaining it.\n${lines.join("\n")}`;
+      },
+    },
+  ];
+}

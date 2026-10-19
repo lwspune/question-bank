@@ -34,9 +34,17 @@ function post(body: unknown, ip = `typed-${RUN}-${Math.random().toString(36).sli
 describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
   let admin: SupabaseClient;
   let saved: Record<string, unknown> | null = null;
+  let askedId = "";
+  let siblingId = "";
 
-  async function setSettings(s: { ai_enabled: boolean; per_person_per_hour: number; ai_answers_per_day: number }) {
-    const { error } = await admin.from("chat_settings").update(s).eq("id", true);
+  async function setSettings(s: {
+    ai_enabled: boolean;
+    per_person_per_hour: number;
+    ai_answers_per_day: number;
+    explain_enabled?: boolean;
+  }) {
+    // Explanations off unless a test turns them on (0168), so one test's switch cannot leak into the next.
+    const { error } = await admin.from("chat_settings").update({ explain_enabled: false, ...s }).eq("id", true);
     if (error) throw new Error(error.message);
   }
 
@@ -46,10 +54,26 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
     });
     const { data } = await admin
       .from("chat_settings")
-      .select("ai_enabled, per_person_per_hour, ai_answers_per_day")
+      .select("ai_enabled, explain_enabled, per_person_per_hour, ai_answers_per_day")
       .eq("id", true)
       .single();
     saved = data;
+    // A PUBLIC single-answer question whose subtopic has another one, for the explanation tests.
+    const { data: rows } = await admin
+      .from("questions")
+      .select("id, subtopic_id")
+      .eq("visibility", "PUBLIC")
+      .eq("question_format", "mcq")
+      .is("set_id", null)
+      .not("subtopic_id", "is", null)
+      .limit(500);
+    const bySubtopic = new Map<string, string[]>();
+    for (const r of (rows ?? []) as { id: string; subtopic_id: string }[]) {
+      bySubtopic.set(r.subtopic_id, [...(bySubtopic.get(r.subtopic_id) ?? []), r.id]);
+    }
+    const pair = [...bySubtopic.values()].find((ids) => ids.length >= 2);
+    if (!pair) throw new Error("test DB has no subtopic with two PUBLIC questions (npm run testdb:seed)");
+    [askedId, siblingId] = pair;
   });
 
   afterAll(async () => {
@@ -273,6 +297,69 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
       .select("cache_read_tokens, cache_write_tokens")
       .like("message", `route-${RUN}-cache1%`);
     expect(data).toEqual([{ cache_read_tokens: 2800, cache_write_tokens: 0 }]);
+  });
+
+  // "Ask V about this question" (2026-10-19, migration 0168).
+  describe("with explanations switched on", () => {
+    const ok = { ok: true, tokensIn: 1, tokensOut: 1, cacheReadTokens: 0, cacheWriteTokens: 0 } as const;
+
+    it("gives V the question tools and names the tapped question and the pick", async () => {
+      await setSettings({ ai_enabled: true, explain_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });
+      askV.mockReset();
+      askV.mockResolvedValue({ ...ok, reply: "Want a hint or the full solution?" });
+      const { POST } = await import("@/app/api/chat/typed/route");
+      await POST(post({ message: `route-${RUN}-ask1 explain`, question: { id: askedId, chose: "b" } }));
+      const call = askV.mock.calls[0][0] as { tools: { name: string }[]; systemTail: string; system: string };
+      expect(call.tools.map((t) => t.name)).toEqual([
+        "find_chapters",
+        "my_progress",
+        "get_question",
+        "explain_question",
+        "similar_question",
+        "find_question",
+      ]);
+      expect(call.systemTail).toContain(`The student tapped Ask V on question ${askedId}. They picked (B).`);
+      expect(call.system).toContain("explain_question");
+    });
+
+    it("refuses a signed-out visitor an explanation, giving nothing away", async () => {
+      await setSettings({ ai_enabled: true, explain_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });
+      askV.mockReset();
+      let toolSaid = "";
+      askV.mockImplementation(async (input: { tools: { name: string; run: (i: unknown) => Promise<string> }[] }) => {
+        toolSaid = await input.tools.find((t) => t.name === "explain_question")!.run({ question_id: askedId });
+        return { ...ok, reply: "Please sign in." };
+      });
+      const { POST } = await import("@/app/api/chat/typed/route");
+      await POST(post({ message: `route-${RUN}-ask2 full solution`, question: { id: askedId } }));
+      expect(toolSaid).toMatch(/signed out/i);
+      expect(toolSaid).not.toContain("Correct answer");
+    });
+
+    it("hands the chat window the similar question V offered, never the one asked about", async () => {
+      await setSettings({ ai_enabled: true, explain_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });
+      askV.mockReset();
+      askV.mockImplementation(async (input: { tools: { name: string; run: (i: unknown) => Promise<string> }[] }) => {
+        await input.tools.find((t) => t.name === "similar_question")!.run({ question_id: askedId });
+        return { ...ok, reply: "Try this one below." };
+      });
+      const { POST } = await import("@/app/api/chat/typed/route");
+      const res = await POST(post({ message: `route-${RUN}-ask3 similar`, question: { id: askedId } }));
+      const json = (await res.json()) as { similarQuestionId?: string };
+      expect(json.similarQuestionId).toBeTruthy();
+      expect(json.similarQuestionId).not.toBe(askedId);
+    });
+  });
+
+  it("with explanations off, ignores a tapped question and offers no question tools", async () => {
+    await setSettings({ ai_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });
+    askV.mockReset();
+    askV.mockResolvedValue({ ok: true, reply: "See /notes.", tokensIn: 1, tokensOut: 1, cacheReadTokens: 0, cacheWriteTokens: 0 });
+    const { POST } = await import("@/app/api/chat/typed/route");
+    await POST(post({ message: `route-${RUN}-ask4 explain`, question: { id: askedId } }));
+    const call = askV.mock.calls[0][0] as { tools: { name: string }[]; systemTail: string };
+    expect(call.tools.map((t) => t.name)).toEqual(["find_chapters", "my_progress"]);
+    expect(call.systemTail).not.toContain("tapped Ask V");
   });
 
   it("gives V the my_progress tool, which reads nothing for a signed-out visitor", async () => {

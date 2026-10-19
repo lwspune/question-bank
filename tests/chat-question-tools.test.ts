@@ -9,6 +9,7 @@
 import { describe, it, expect } from "vitest";
 import {
   answerText,
+  parseAskedQuestion,
   explainView,
   firstStep,
   hintView,
@@ -16,6 +17,8 @@ import {
   revealCheck,
   type VQuestion,
 } from "@/lib/chat/questionTools";
+import { searchWordsOf } from "@/lib/chat/questionToolsServer";
+import { DAILY_REVEAL_SURFACES } from "@/lib/questions/revealQuota";
 
 function q(over: Partial<VQuestion> = {}): VQuestion {
   return {
@@ -36,6 +39,7 @@ function q(over: Partial<VQuestion> = {}): VQuestion {
     subject: "Mathematics",
     chapter: "Quadratic Equations",
     subtopic: "Nature of Roots",
+    subtopicId: "s1",
     ...over,
   };
 }
@@ -143,5 +147,40 @@ describe("pickSimilar", () => {
   it("varies the pick, so a second ask is a different question", () => {
     expect(pickSimilar(["a", "b", "c"], new Set(), () => 0)).toBe("a");
     expect(pickSimilar(["a", "b", "c"], new Set(), () => 0.99)).toBe("c");
+  });
+});
+
+// A V explanation is one of the day's free answers (owner, 2026-10-19): the count must include it.
+describe("the day's free answers", () => {
+  it("count V's explanations with the bank, board and guide reveals", () => {
+    expect(DAILY_REVEAL_SURFACES).toContain("v");
+    for (const s of ["bank", "board", "guide"]) expect(DAILY_REVEAL_SURFACES).toContain(s);
+  });
+});
+
+// Text pasted from a rendered page: "8 · Integration by Substitution Find : ∫ cot ⁡ x sin ⁡ x cos ⁡ x d x ... give me pure ans".
+describe("searchWordsOf", () => {
+  it("keeps the longest real words and drops the maths debris", () => {
+    const words = searchWordsOf("Find the combined equation of pair of lines passing through (2, 3) and perpendicular to 3x+2y−1=0", 4);
+    expect(words).toEqual(["perpendicular", "combined", "equation", "passing"]);
+  });
+
+  it("ignores short tokens such as cot, sin and d x", () => {
+    expect(searchWordsOf("∫ cot ⁡ x sin ⁡ x cos ⁡ x d x integration substitution", 6)).toEqual(["substitution", "integration"]);
+  });
+});
+
+describe("parseAskedQuestion", () => {
+  const ID = "11111111-1111-4111-8111-111111111111";
+  it("reads the tapped question and the student's pick", () => {
+    expect(parseAskedQuestion({ id: ID, chose: "b" })).toEqual({ id: ID, chose: "B" });
+    expect(parseAskedQuestion({ id: ID })).toEqual({ id: ID, chose: null });
+  });
+
+  it("drops anything that is not a question id, and a pick that is not an option letter", () => {
+    expect(parseAskedQuestion({ id: "x" })).toBeNull();
+    expect(parseAskedQuestion(null)).toBeNull();
+    expect(parseAskedQuestion("q1")).toBeNull();
+    expect(parseAskedQuestion({ id: ID, chose: "E" })).toEqual({ id: ID, chose: null });
   });
 });
