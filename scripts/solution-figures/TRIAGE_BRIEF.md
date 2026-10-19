@@ -89,6 +89,7 @@ diagram COMPUTED from f and u: give magnitudes, the object on the left),
   `python scripts/solution-figures/draw.py --preview <spec.json> <scratch png>`.
   Labels must match the solution's letters exactly (or edit the solution, as for
   book figures). No title on the figure: the question is right above it.
+- **Phone width.** The figure shows about 350 px wide on a phone. Keep `size` no wider than about 6 (inches) and put two panels (two triangles, cases (i) and (ii)) one ABOVE the other, never side by side, so labels stay readable.
 - Output: `"figure": { "key": "...", "draw": { "kind": "...", ... } }` on the
   `computed` / `structure` entry, plus any `edits`.
 
@@ -106,7 +107,7 @@ diagram COMPUTED from f and u: give magnitudes, the object on the left),
 ```
 
 - Every candidate in the slice gets exactly one entry. `reason` is one short line.
-- `key` is a lowercase slug, unique in your slice; **reuse the same key** (and the
+- `key` is a lowercase slug (only `a-z`, `0-9` and `-`: write 3.5 as 3-5), unique in your slice; **reuse the same key** (and the
   same box) when one figure serves several questions.
 - Keep tool output small: print only what you need, never dump whole pages of text.
 - Your final message: counts per verdict, and anything you were unsure about.
