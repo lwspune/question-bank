@@ -32,6 +32,7 @@ import { pageContext } from "./pageContext";
 import { questionTools, type QuestionToolDeps } from "./questionToolSet";
 import { examStrategyTool, type StrategyData } from "./examStrategy";
 import { loadExamStrategy } from "./examStrategyServer";
+import { planTools, type PlanDeps } from "./weekPlan";
 import { GUIDE_CATALOG } from "@/lib/guide/guideCatalog";
 import type { ExamSlug } from "@/lib/exam/examContext";
 
@@ -56,6 +57,19 @@ function toExamFact(e: (typeof EXAM_REGISTRY)[number], pyqBySlug: Map<string, nu
     noPublicContent: e.noPublicContent === true,
   };
 }
+
+/** Signed out the plan tools answer "sign in" before reading anything, so these are never called. */
+const SIGNED_OUT_PLAN: Omit<PlanDeps, "signedIn" | "loadChapters" | "loadStrategy"> = {
+  now: () => new Date(),
+  loadProfile: async () => ({ targetExams: [], examDate: null, weeklyGoal: null }),
+  saveExamDate: async () => {},
+  loadWeak: async () => [],
+  loadDue: async () => 0,
+  savePlan: async () => {},
+  loadPlan: async () => null,
+  loadPlanActivity: async () => ({ drills: 0, mocks: 0, chapterQuestions: {} }),
+  onPlan: () => {},
+};
 
 /** `system` is the same for every question (cached); `systemTail` is this question's page and account state. */
 export type VContext = { system: string; systemTail: string; tools: VTool[]; allowedPaths: Set<string> };
@@ -83,6 +97,8 @@ export async function loadVContext(
     profileExamSlugs?: readonly string[];
     /** "Ask V about this question" (0168): its tools' data sources, present only while it is switched on. */
     questionTools?: QuestionToolDeps | null;
+    /** The signed-in student's week-plan reads and writes (lib/chat/weekPlan.ts); absent when signed out. */
+    plan?: Omit<PlanDeps, "signedIn" | "loadChapters" | "loadStrategy"> | null;
     /** The question the student tapped Ask V on, and the option they picked. */
     question?: { id: string; chose: string | null } | null;
   } = {}
@@ -162,7 +178,9 @@ export async function loadVContext(
     guidesFor: (slug) => (GUIDE_CATALOG[slug as ExamSlug] ?? []).map((g) => ({ href: g.href, label: g.exam })),
     onPaths: (paths) => paths.forEach((p) => allowedPaths.add(p)),
   });
-  const tools = [findChaptersTool, progressTool(opts.loadOwnProgress, opts.loadOwnPractice), strategyTool];
+  const loadStrategy = opts.loadStrategy ?? loadExamStrategy;
+  const plan = planTools({ ...(opts.plan ?? SIGNED_OUT_PLAN), signedIn: Boolean(opts.plan), loadChapters, loadStrategy });
+  const tools = [findChaptersTool, progressTool(opts.loadOwnProgress, opts.loadOwnPractice), strategyTool, ...plan];
   if (opts.questionTools) tools.push(...questionTools({ ...opts.questionTools, pageChapterId: pageInfo?.chapterId ?? null }));
   return { system, systemTail, tools, allowedPaths };
 }

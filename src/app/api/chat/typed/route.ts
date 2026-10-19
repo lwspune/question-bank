@@ -64,6 +64,11 @@ import { parseAskedQuestion } from "@/lib/chat/questionTools";
 import type { QuestionToolDeps } from "@/lib/chat/questionToolSet";
 import { loadSimilarId, loadVQuestion, searchVQuestions } from "@/lib/chat/questionToolsServer";
 import { revealedToday, spendVReveal } from "@/lib/chat/questionReveal";
+import { weakFromPerformance, type PlanDeps } from "@/lib/chat/weekPlan";
+import { loadCurrentPlan, loadPlanActivity, saveStudyPlan } from "@/lib/chat/weekPlanServer";
+import { getOwnProfile, updateOwnProfile } from "@/lib/profile/service";
+import { getOwnLadder } from "@/lib/drill/service";
+import type { Performance } from "@/lib/performance/compute";
 
 // One AI answer can take two model calls (a chapter search, then the reply).
 export const maxDuration = 30;
@@ -73,6 +78,13 @@ const HOUR_MS = 60 * 60 * 1000;
 // A few minutes' memory of each student's results for V's my_progress tool,
 // so a follow-up does not repeat the heaviest per-student read (lib/chat/progress.ts).
 const progressMemo = createProgressMemo(200);
+
+function ownProgress(userId: string): Promise<Performance | null> {
+  return progressMemo.get(userId, async () => {
+    const payload = await getOwnPerformance();
+    return payload ? buildPerformance(payload, new Date()) : null;
+  });
+}
 
 /**
  * The data sources of V's question tools (lib/chat/questionToolsServer.ts).
@@ -94,6 +106,37 @@ function buildQuestionToolDeps(
     onSimilar: out.onSimilar,
     onMatch: out.onMatch,
     onExplained: () => {},
+  };
+}
+
+/**
+ * The data sources of V's week plan (lib/chat/weekPlan.ts), all through the
+ * student's own login: study_plans, student_profiles and user_activity are
+ * own-row under RLS. Weak chapters come from the same remembered results as
+ * my_progress, so planning after "how am I doing?" reads them once.
+ */
+function buildPlanDeps(
+  userId: string,
+  loadProgress: () => Promise<Performance | null>,
+  onPlan: () => void
+): Omit<PlanDeps, "signedIn" | "loadChapters" | "loadStrategy"> {
+  const db = createSupabaseServerClient();
+  return {
+    now: () => new Date(),
+    loadProfile: async () => {
+      const p = await getOwnProfile(db, userId);
+      return { targetExams: p.targetExams, examDate: p.examDate, weeklyGoal: p.weeklyGoal };
+    },
+    saveExamDate: (date) => updateOwnProfile(db, userId, { examDate: date }),
+    loadWeak: async (examName) => {
+      const perf = await loadProgress();
+      return perf ? weakFromPerformance(perf, examName) : [];
+    },
+    loadDue: async () => (await getOwnLadder(db, userId)).due.length,
+    savePlan: (plan) => saveStudyPlan(db, userId, plan),
+    loadPlan: () => loadCurrentPlan(db, userId),
+    loadPlanActivity: (plan) => loadPlanActivity(db, userId, plan),
+    onPlan,
   };
 }
 
@@ -172,6 +215,8 @@ export async function POST(request: NextRequest) {
     // Set by V's question tools during the answer, for the chat window: a question to try, a pasted one to confirm.
     let similarQuestionId: string | null = null;
     let matchQuestionId: string | null = null;
+    // Set when plan_week or my_plan ran: the chat window shows the plan under the reply.
+    let planShown = false;
     let recorded: {
       text: string;
       source: "ai" | "ai_failed" | "fallback";
@@ -203,13 +248,8 @@ export async function POST(request: NextRequest) {
                 })
               : null,
             // The student's own login does the reading (get_own_performance): no id is passed to the database.
-            loadOwnProgress: ownId
-              ? () =>
-                  progressMemo.get(ownId, async () => {
-                    const payload = await getOwnPerformance();
-                    return payload ? buildPerformance(payload, new Date()) : null;
-                  })
-              : undefined,
+            loadOwnProgress: ownId ? () => ownProgress(ownId) : undefined,
+            plan: ownId ? buildPlanDeps(ownId, () => ownProgress(ownId), () => (planShown = true)) : null,
             // Same login, not remembered: "today" should move between two questions.
             loadOwnPractice: ownId ? () => getOwnPracticeCounts(createSupabaseServerClient()) : undefined,
           });
@@ -268,7 +308,11 @@ export async function POST(request: NextRequest) {
     // Only on an AI answer: a fallback reply never ran the tools.
     const questionFields =
       recorded.source === "ai"
-        ? { ...(similarQuestionId ? { similarQuestionId } : {}), ...(matchQuestionId ? { matchQuestionId } : {}) }
+        ? {
+            ...(similarQuestionId ? { similarQuestionId } : {}),
+            ...(matchQuestionId ? { matchQuestionId } : {}),
+            ...(planShown ? { planShown: true } : {}),
+          }
         : {};
     if (userId !== null) {
       return NextResponse.json(

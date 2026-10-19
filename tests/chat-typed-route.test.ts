@@ -314,6 +314,8 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
         "find_chapters",
         "my_progress",
         "exam_strategy",
+        "plan_week",
+        "my_plan",
         "get_question",
         "explain_question",
         "similar_question",
@@ -402,7 +404,7 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
     const { POST } = await import("@/app/api/chat/typed/route");
     await POST(post({ message: `route-${RUN}-ask4 explain`, question: { id: askedId } }));
     const call = askV.mock.calls[0][0] as { tools: { name: string }[]; systemTail: string };
-    expect(call.tools.map((t) => t.name)).toEqual(["find_chapters", "my_progress", "exam_strategy"]);
+    expect(call.tools.map((t) => t.name)).toEqual(["find_chapters", "my_progress", "exam_strategy", "plan_week", "my_plan"]);
     expect(call.systemTail).not.toContain("tapped Ask V");
   });
 
@@ -413,8 +415,23 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
     const { POST } = await import("@/app/api/chat/typed/route");
     await POST(post({ message: `route-${RUN}-prog how am I doing` }));
     const tools = askV.mock.calls[0][0].tools as { name: string; run: (i: unknown) => Promise<string> }[];
-    expect(tools.map((t) => t.name)).toEqual(["find_chapters", "my_progress", "exam_strategy"]);
+    expect(tools.map((t) => t.name)).toEqual(["find_chapters", "my_progress", "exam_strategy", "plan_week", "my_plan"]);
     expect(await tools[1].run({})).toMatch(/signed out/i);
+  });
+
+  // 2026-10-19 study-partner Phase 3: the plan tools are always offered (the tool list is cached), and read nothing signed out.
+  it("asks a signed-out visitor to sign in for a week plan, and shows no plan card", async () => {
+    await setSettings({ ai_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });
+    askV.mockReset();
+    let said = "";
+    askV.mockImplementation(async (input: { tools: { name: string; run: (i: unknown) => Promise<string> }[] }) => {
+      said = await input.tools.find((t) => t.name === "plan_week")!.run({ exam: "NDA" });
+      return { ok: true, reply: "Sign in first.", tokensIn: 1, tokensOut: 1, cacheReadTokens: 0, cacheWriteTokens: 0, toolCalls: [] };
+    });
+    const { POST } = await import("@/app/api/chat/typed/route");
+    const res = await POST(post({ message: `route-${RUN}-plan plan my week` }));
+    expect(said).toMatch(/sign in/i);
+    expect(((await res.json()) as { planShown?: boolean }).planShown).toBeUndefined();
   });
 
   it("holds one person to the hourly limit set on the dashboard", async () => {
