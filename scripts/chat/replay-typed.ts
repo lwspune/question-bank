@@ -14,6 +14,7 @@ import { join } from "node:path";
 import { mkdirSync, writeFileSync } from "node:fs";
 import { createClient } from "@supabase/supabase-js";
 import { loadVContext } from "../../src/lib/chat/context";
+import { readExamStrategyUncached } from "../../src/lib/chat/examStrategyServer";
 import { askV } from "../../src/lib/chat/anthropic";
 import { allowedReplyLinks } from "../../src/lib/chat/replyLinks";
 import { readChapterLandingsUncached } from "../../src/lib/questions/landing";
@@ -58,7 +59,7 @@ async function main() {
   let cost = 0;
   let failed = 0;
   for (const [i, q] of questions.entries()) {
-    const ctx = await loadVContext(anon, { loadChapters: async () => chapters });
+    const ctx = await loadVContext(anon, { loadChapters: async () => chapters, loadStrategy: readExamStrategyUncached });
     const r = await askV({ system: ctx.system, systemTail: ctx.systemTail, message: q, tools: ctx.tools });
     if (!r.ok) {
       failed++;

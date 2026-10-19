@@ -313,6 +313,7 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
       expect(call.tools.map((t) => t.name)).toEqual([
         "find_chapters",
         "my_progress",
+        "exam_strategy",
         "get_question",
         "explain_question",
         "similar_question",
@@ -401,7 +402,7 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
     const { POST } = await import("@/app/api/chat/typed/route");
     await POST(post({ message: `route-${RUN}-ask4 explain`, question: { id: askedId } }));
     const call = askV.mock.calls[0][0] as { tools: { name: string }[]; systemTail: string };
-    expect(call.tools.map((t) => t.name)).toEqual(["find_chapters", "my_progress"]);
+    expect(call.tools.map((t) => t.name)).toEqual(["find_chapters", "my_progress", "exam_strategy"]);
     expect(call.systemTail).not.toContain("tapped Ask V");
   });
 
@@ -412,7 +413,7 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
     const { POST } = await import("@/app/api/chat/typed/route");
     await POST(post({ message: `route-${RUN}-prog how am I doing` }));
     const tools = askV.mock.calls[0][0].tools as { name: string; run: (i: unknown) => Promise<string> }[];
-    expect(tools.map((t) => t.name)).toEqual(["find_chapters", "my_progress"]);
+    expect(tools.map((t) => t.name)).toEqual(["find_chapters", "my_progress", "exam_strategy"]);
     expect(await tools[1].run({})).toMatch(/signed out/i);
   });
 
