@@ -351,6 +351,49 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
     });
   });
 
+  // The card inside V and the switch the Ask V buttons read (2026-10-19). Kept in this file: both
+  // change chat_settings, and two files doing that at once in the shared test DB would race.
+  describe("the question card and the feature switch", () => {
+    const get = (url: string) => new NextRequest(`http://localhost:3000${url}`);
+
+    it("tells the cards whether explanations are on, needing the AI on too", async () => {
+      const { GET } = await import("@/app/api/chat/features/route");
+      await setSettings({ ai_enabled: true, explain_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });
+      expect(await (await GET()).json()).toEqual({ explain: true });
+      await setSettings({ ai_enabled: false, explain_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });
+      expect(await (await GET()).json()).toEqual({ explain: false });
+      await setSettings({ ai_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });
+      expect(await (await GET()).json()).toEqual({ explain: false });
+    });
+
+    it("serves a card without its answer while explanations are on, and nothing while off", async () => {
+      const { GET } = await import("@/app/api/chat/question/route");
+      await setSettings({ ai_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });
+      expect((await GET(get(`/api/chat/question?id=${askedId}`))).status).toBe(404);
+      await setSettings({ ai_enabled: true, explain_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });
+      const res = await GET(get(`/api/chat/question?id=${askedId}`));
+      expect(res.status).toBe(200);
+      const body = (await res.json()) as { question: { id: string; options: unknown[] } };
+      expect(body.question.id).toBe(askedId);
+      expect(body.question.options.length).toBeGreaterThan(0);
+      expect(JSON.stringify(body)).not.toMatch(/isCorrect|is_correct|solution/);
+      expect((await GET(get("/api/chat/question?id=nope"))).status).toBe(404);
+    });
+
+    it("checks a pick only for a signed-in student", async () => {
+      const { POST } = await import("@/app/api/chat/question/route");
+      await setSettings({ ai_enabled: true, explain_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });
+      const res = await POST(
+        new NextRequest("http://localhost:3000/api/chat/question", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ id: askedId, chose: "A" }),
+        })
+      );
+      expect(res.status).toBe(401);
+    });
+  });
+
   it("with explanations off, ignores a tapped question and offers no question tools", async () => {
     await setSettings({ ai_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });
     askV.mockReset();
