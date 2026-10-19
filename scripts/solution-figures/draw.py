@@ -34,7 +34,8 @@ KINDS (each spec is {"kind": ..., ...}):
   circuit    {elements: [{el: "Battery"|"Resistor"|"Line"|"Lamp"|"Switch"|"Ammeter"|"Voltmeter"|
               "Capacitor"|"Inductor"|"Diode"|"Dot"|"Ground"|"Source", d: "up"|"down"|"left"|"right",
               l, label, label_loc, at: "<saved name>", to: "<saved name>", save: "<name>", reverse}]}
-  structure  {molecules: [{smiles, name}], per_row} (at most 2 a row, so names read on a phone)
+  structure  {molecules: [{smiles, name, full}], per_row} (at most 2 a row, so names read on a phone);
+             full: true draws EVERY atom (C and H too) on a grid, NCERT's Class 10 structural formula
   stack      {panels: [spec, ...], captions: ["(i) ...", ...]}   panels one above another, any kind
              but stack; for two graphs with different axes or two separate circuits
 """
@@ -441,6 +442,93 @@ def draw_circuit(s, out):
         d.save(out, dpi=DPI)
 
 
+GRID = {"R": (1, 0), "L": (-1, 0), "U": (0, 1), "D": (0, -1)}
+
+
+def full_layout(smiles):
+    """Every atom of an acyclic molecule on a square grid, the way NCERT draws a
+    full structural formula: the longest heavy-atom chain across, hydrogens and
+    short groups above, below and at the ends, a branch two units out."""
+    from rdkit import Chem
+
+    mol = Chem.AddHs(Chem.MolFromSmiles(smiles))
+    if mol.GetRingInfo().NumRings():
+        raise ValueError(f"full structure: {smiles} has a ring")
+    heavy = [a.GetIdx() for a in mol.GetAtoms() if a.GetAtomicNum() > 1]
+    nbr = {a.GetIdx(): [n.GetIdx() for n in a.GetNeighbors()] for a in mol.GetAtoms()}
+
+    def farthest_to(start, end):
+        """The heavy-atom path from start to end (a tree, so it is unique)."""
+        seen, order = {start: None}, [start]
+        for a in order:
+            for n in nbr[a]:
+                if n not in seen and mol.GetAtomWithIdx(n).GetAtomicNum() > 1:
+                    seen[n] = a
+                    order.append(n)
+        path = []
+        while end is not None:
+            path.append(end)
+            end = seen[end]
+        return path
+
+    # Longest heavy-atom path; on a tie the one with more carbons, so propanone's
+    # chain is C-C-C with the oxygen above, not C-C-O with a methyl branch.
+    paths = [farthest_to(h, t) for h in heavy for t in heavy]
+    # Then the one whose ends carry more atoms (the acid's O-H, not its =O), and
+    # read left to right from a carbon.
+    chain = max(paths, key=lambda p: (len(p), sum(mol.GetAtomWithIdx(a).GetAtomicNum() == 6 for a in p),
+                                      sum(mol.GetAtomWithIdx(a).GetDegree() for a in p)))
+    if mol.GetAtomWithIdx(chain[0]).GetAtomicNum() != 6 and mol.GetAtomWithIdx(chain[-1]).GetAtomicNum() == 6:
+        chain = chain[::-1]
+    xy = {a: (i, 0) for i, a in enumerate(chain)}
+    taken = set(xy.values())
+
+    def put(atom, pos):
+        if pos in taken:
+            raise ValueError(f"full structure: {smiles} crowds at {pos}")
+        xy[atom] = pos
+        taken.add(pos)
+
+    def grow(atom, dirs, came_from):
+        rest = [n for n in nbr[atom] if n not in xy]
+        rest.sort(key=lambda n: mol.GetAtomWithIdx(n).GetAtomicNum() == 1)  # heavy first
+        if len(rest) > len(dirs):
+            raise ValueError(f"full structure: {smiles} atom {atom} has too many groups")
+        x, y = xy[atom]
+        for n, d in zip(rest, dirs):
+            dx, dy = GRID[d]
+            far = mol.GetAtomWithIdx(n).GetAtomicNum() > 1 and mol.GetAtomWithIdx(n).GetDegree() > 1 and came_from is None
+            put(n, (x + dx * (2 if far else 1), y + dy * (2 if far else 1)))
+            back = {"R": "L", "L": "R", "U": "D", "D": "U"}[d]
+            grow(n, [d] + [e for e in ("U", "D", "L", "R") if e not in (d, back)], atom)
+
+    for i, a in enumerate(chain):
+        ends = (["L"] if i == 0 else []) + (["R"] if i == len(chain) - 1 else [])
+        # An end oxygen or nitrogen carries its hydrogen straight on (C-O-H);
+        # an end carbon fills above and below first, as NCERT draws CH3.
+        hetero = mol.GetAtomWithIdx(a).GetAtomicNum() != 6
+        grow(a, ends + ["U", "D"] if hetero else ["U", "D"] + ends, None)
+    return mol, xy
+
+
+def full_structure_mol(smiles):
+    """The molecule with its grid coordinates as the conformer and every carbon
+    labelled, ready for RDKit to draw."""
+    from rdkit import Chem
+    from rdkit.Geometry import Point3D
+
+    mol, xy = full_layout(smiles)
+    conf = Chem.Conformer(mol.GetNumAtoms())
+    for i, (x, y) in xy.items():
+        conf.SetAtomPosition(i, Point3D(float(x), float(y), 0.0))
+    mol.RemoveAllConformers()
+    mol.AddConformer(conf, assignId=True)
+    for a in mol.GetAtoms():
+        if a.GetAtomicNum() == 6:
+            a.SetProp("atomLabel", "C")
+    return mol
+
+
 def structure_per_row(n, asked):
     """At most two molecules a row: the figure shows ~350 px wide on a phone."""
     return max(1, min(asked or 2, 2, n))
@@ -452,7 +540,7 @@ def draw_structure(s, out):
 
     mols, legends = [], []
     for m in s["molecules"]:
-        mol = Chem.MolFromSmiles(m["smiles"])
+        mol = full_structure_mol(m["smiles"]) if m.get("full") else Chem.MolFromSmiles(m["smiles"])
         if mol is None:
             raise ValueError(f"structure: RDKit cannot parse SMILES {m['smiles']!r}")
         mols.append(mol)
@@ -460,7 +548,12 @@ def draw_structure(s, out):
     opts = Draw.MolDrawOptions()
     opts.legendFontSize = 22
     opts.addStereoAnnotation = False
-    img = Draw.MolsToGridImage(mols, molsPerRow=structure_per_row(len(mols), s.get("per_row")), subImgSize=(400, 320), legends=legends, drawOptions=opts)
+    full = any(m.get("full") for m in s["molecules"])
+    if full:
+        opts.baseFontSize = 0.9
+    # A full structural formula is wide and every letter must read: one a row.
+    per_row = 1 if full else structure_per_row(len(mols), s.get("per_row"))
+    img = Draw.MolsToGridImage(mols, molsPerRow=per_row, subImgSize=(560, 300) if full else (400, 320), legends=legends, drawOptions=opts)
     img.save(out)
 
 
@@ -552,6 +645,23 @@ def selftest():
         assert info["panels"] == 2, "stack reports its panel count"
         assert st[0] == max(a[0], b[0]), "stack is as wide as its widest panel"
         assert st[1] > a[1] + b[1], "stack is taller than its panels together (captions)"
+
+    # Full structural formulas (Class 10): every atom on a square grid, every
+    # bond straight across or up (a branch reaches out two units, as NCERT draws
+    # it, so its hydrogens clear the chain's), no two atoms on one point.
+    mol, xy = full_layout("CCCC(=O)O")
+    oh = [a for a in mol.GetAtoms() if a.GetAtomicNum() == 8 and a.GetTotalNumHs(includeNeighbors=True) == 1][0]
+    assert xy[oh.GetIdx()][1] == 0, "butanoic acid: the O-H oxygen ends the chain"
+    mol, xy = full_layout("CC(C)=O")
+    assert sorted(xy[a.GetIdx()][1] for a in mol.GetAtoms() if a.GetAtomicNum() == 6) == [0, 0, 0], "propanone: the three carbons form the chain"
+    for smi in ("CCCC", "CC(C)CC", "CC(C)(C)C", "CC(C)=O", "C=O", "CCO", "CC(=O)O", "C=CCC", "CC=CC", "CCCCCCl", "CCCC(=O)O"):
+        mol, xy = full_layout(smi)
+        assert len(set(xy.values())) == mol.GetNumAtoms(), f"{smi}: two atoms share a point"
+        for b in mol.GetBonds():
+            (x1, y1), (x2, y2) = xy[b.GetBeginAtomIdx()], xy[b.GetEndAtomIdx()]
+            assert (x1 == x2 or y1 == y2) and abs(x1 - x2) + abs(y1 - y2) in (1, 2), f"{smi}: bond {b.GetIdx()} is not straight"
+            if abs(x1 - x2) + abs(y1 - y2) == 2:
+                assert ((x1 + x2) // 2, (y1 + y2) // 2) not in xy.values(), f"{smi}: a long bond runs through an atom"
 
     # Structure grids stay two to a row at most, so names stay legible on a phone.
     assert structure_per_row(8, 4) == 2 and structure_per_row(8, None) == 2, "8 molecules: two per row"
