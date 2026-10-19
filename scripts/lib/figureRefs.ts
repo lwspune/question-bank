@@ -277,3 +277,19 @@ const STUDENT_DRAWS = /\b(?:draw|sketch|plot|construct)\b/i;
 export function studentDraws(text: string | null): boolean {
   return STUDENT_DRAWS.test(text ?? "");
 }
+
+/**
+ * Does a SOLUTION lean on a figure? The answer-side twin of `referencesFigure`:
+ * read against `solution_image_url`, a hit is an answer that points at a
+ * drawing it does not carry ("We see from Fig. 3.2", "[circuit diagram]", or
+ * our own "the figure at the end of this answer" with nothing attached).
+ * Found 2026-10-19 while adding solution figures: such answers read as complete
+ * and no probe looked at the solution column at all.
+ */
+const SOLUTION_PLACEHOLDER = /\[(?:circuit\s+)?(?:diagram|figure|graph)\]/i;
+const AT_END_OF_ANSWER = /\b(?:figure|diagram|graph|circuit|drawing|structure)s?\b[^.]{0,40}\bat\s+the\s+end\s+of\s+this\s+answer\b/i;
+
+export function solutionCitesFigure(solution: string | null): boolean {
+  const s = solution ?? "";
+  return referencesFigure(s, null) || SOLUTION_PLACEHOLDER.test(s) || AT_END_OF_ANSWER.test(s);
+}

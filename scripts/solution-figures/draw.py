@@ -34,7 +34,22 @@ KINDS (each spec is {"kind": ..., ...}):
   circuit    {elements: [{el: "Battery"|"Resistor"|"Line"|"Lamp"|"Switch"|"Ammeter"|"Voltmeter"|
               "Capacitor"|"Inductor"|"Diode"|"Dot"|"Ground"|"Source", d: "up"|"down"|"left"|"right",
               l, label, label_loc, at: "<saved name>", to: "<saved name>", save: "<name>", reverse}]}
-  structure  {molecules: [{smiles, name}], per_row} (at most 2 a row, so names read on a phone)
+  structure  {molecules: [{smiles, name, full}], per_row} (at most 2 a row, so names read on a phone);
+             full: true draws EVERY atom (C and H too) on a grid, NCERT's Class 10 structural formula
+  map        {region: "brazil", states: {name: colour}, areas: [{name, color, hatch}], rivers: [{name}],
+              places: [{name | at: [lon, lat], marker}], parallels: [{lat}], labels: [{text, at}],
+              index: [{symbol: "fill"|"line"|"point", text, color}]}   real Natural Earth boundaries
+             (geo/brazil.json); India is NOT available until an official outline is supplied
+  complex    {items: [{geometry: "oct"|"sq", metal, ligands: {pos: label}, chelates: [[pos, pos, "en"]], label, group}],
+              mirror_pairs: [[i, j]], per_row}   octahedron positions 1 top, 6 bottom, 2 left, 4 right,
+             3 front, 5 back; square corners 1-4 (1-3, 2-4 trans). Refuses an empty or doubled position, a
+             chelate across trans positions, two drawings of one molecule in a group, a fake mirror pair
+  field      {xlim, ylim, charges: [{q, at, label}] | loop: {a, current}, equipotentials: [V...], lines, labels, marks}
+             field lines COMPUTED (Coulomb 1/r^2; a current loop's diametral section by Biot-Savart,
+             current > 0 anticlockwise seen from above); equipotentials dashed at the V values given
+  curve3d    {x, y, z: "expr in t", t: [a, b], arrows: [{from, to, label}], view: [elev, azim], aspect}
+  stack      {panels: [spec, ...], captions: ["(i) ...", ...]}   panels one above another, any kind
+             but stack; for two graphs with different axes or two separate circuits
 """
 import json
 import math
@@ -439,6 +454,182 @@ def draw_circuit(s, out):
         d.save(out, dpi=DPI)
 
 
+def charge_field(charges, X, Y):
+    """E (as 1/r^2 point charges) and V (as 1/r) on a grid, in units where k = 1."""
+    ex, ey, v = np.zeros_like(X, dtype=float), np.zeros_like(X, dtype=float), np.zeros_like(X, dtype=float)
+    for c in charges:
+        dx, dy = X - c["at"][0], Y - c["at"][1]
+        r = np.sqrt(dx * dx + dy * dy)
+        with np.errstate(all="ignore"):
+            ex += c["q"] * dx / r ** 3
+            ey += c["q"] * dy / r ** 3
+            v += c["q"] / r
+    return ex, ey, v
+
+
+def loop_field(a, current, X, Z, n=400):
+    """B of a circular loop of radius a in the plane z = 0, centred on the origin,
+    on its diametral section y = 0 (Biot-Savart summed over n elements).
+    current > 0 runs anticlockwise seen from above (+z)."""
+    phi = np.linspace(0, 2 * np.pi, n, endpoint=False)
+    dphi = 2 * np.pi / n
+    bx, bz = np.zeros_like(X, dtype=float), np.zeros_like(X, dtype=float)
+    for p in phi:
+        sx, sy = a * np.cos(p), a * np.sin(p)            # source point
+        lx, ly = -a * np.sin(p) * dphi, a * np.cos(p) * dphi  # dl
+        rx, ry, rz = X - sx, -sy, Z                     # field point (X, 0, Z) minus source
+        r3 = (rx * rx + ry * ry + rz * rz) ** 1.5
+        with np.errstate(all="ignore"):
+            # dl x r with dl = (lx, ly, 0)
+            bx += current * (ly * rz) / r3
+            bz += current * (lx * ry - ly * rx) / r3
+    return bx, bz
+
+
+# Octahedron: 1 top, 6 bottom; 2 left, 4 right; 3 front, 5 back (x right, y back, z up).
+OCT_POS = {"1": (0, 0, 1), "6": (0, 0, -1), "2": (-1, 0, 0), "4": (1, 0, 0), "3": (0, -1, 0), "5": (0, 1, 0)}
+SQ_POS = {"1": (-1, 1), "2": (1, 1), "3": (1, -1), "4": (-1, -1)}  # corners; 1-3 and 2-4 are trans
+
+
+def _oct_rotations():
+    rz = lambda v: (-v[1], v[0], v[2])
+    rx = lambda v: (v[0], -v[2], v[1])
+    key = {v: k for k, v in OCT_POS.items()}
+    perms, frontier = {tuple(sorted(OCT_POS))}, [{k: k for k in OCT_POS}]
+    seen = {tuple(sorted(frontier[0].items()))}
+    out = []
+    while frontier:
+        p = frontier.pop()
+        out.append(p)
+        for r in (rz, rx):
+            q = {k: key[r(OCT_POS[v])] for k, v in p.items()}
+            t = tuple(sorted(q.items()))
+            if t not in seen:
+                seen.add(t)
+                frontier.append(q)
+    return out
+
+
+OCT_ROTATIONS = _oct_rotations()
+
+
+def check_complex(c, geometry="oct"):
+    """Refuse an impossible arrangement: every position filled once, chelates on cis edges only."""
+    pos = OCT_POS if geometry == "oct" else SQ_POS
+    used = list(c.get("ligands", {})) + [p for ch in c.get("chelates", []) for p in ch[:2]]
+    if sorted(used) != sorted(pos):
+        raise ValueError(f"complex: positions {sorted(used)} do not fill {sorted(pos)} exactly once")
+    for a, b, *_ in c.get("chelates", []):
+        if sum(x * y for x, y in zip(pos[a], pos[b])) != 0:
+            raise ValueError(f"complex: a chelate cannot span trans positions {a} and {b}")
+
+
+def _signature(c, perm):
+    lig = tuple(sorted((perm[p], l) for p, l in c.get("ligands", {}).items()))
+    ch = tuple(sorted((tuple(sorted((perm[a], perm[b]))), name) for a, b, name in c.get("chelates", [])))
+    return lig, ch
+
+
+def same_complex(a, b):
+    """Are two octahedral arrangements one molecule (some rotation maps a onto b)?"""
+    target = _signature(b, {k: k for k in OCT_POS})
+    return any(_signature(a, r) == target for r in OCT_ROTATIONS)
+
+
+def mirror_complex(c):
+    """Reflection through the plane x = 0: left and right swap."""
+    m = {"2": "4", "4": "2", "1": "1", "6": "6", "3": "3", "5": "5"}
+    return {**c, "ligands": {m[p]: l for p, l in c.get("ligands", {}).items()},
+            "chelates": [[m[a], m[b], n] for a, b, n in c.get("chelates", [])]}
+
+
+GRID = {"R": (1, 0), "L": (-1, 0), "U": (0, 1), "D": (0, -1)}
+
+
+def full_layout(smiles):
+    """Every atom of an acyclic molecule on a square grid, the way NCERT draws a
+    full structural formula: the longest heavy-atom chain across, hydrogens and
+    short groups above, below and at the ends, a branch two units out."""
+    from rdkit import Chem
+
+    mol = Chem.AddHs(Chem.MolFromSmiles(smiles))
+    if mol.GetRingInfo().NumRings():
+        raise ValueError(f"full structure: {smiles} has a ring")
+    heavy = [a.GetIdx() for a in mol.GetAtoms() if a.GetAtomicNum() > 1]
+    nbr = {a.GetIdx(): [n.GetIdx() for n in a.GetNeighbors()] for a in mol.GetAtoms()}
+
+    def farthest_to(start, end):
+        """The heavy-atom path from start to end (a tree, so it is unique)."""
+        seen, order = {start: None}, [start]
+        for a in order:
+            for n in nbr[a]:
+                if n not in seen and mol.GetAtomWithIdx(n).GetAtomicNum() > 1:
+                    seen[n] = a
+                    order.append(n)
+        path = []
+        while end is not None:
+            path.append(end)
+            end = seen[end]
+        return path
+
+    # Longest heavy-atom path; on a tie the one with more carbons, so propanone's
+    # chain is C-C-C with the oxygen above, not C-C-O with a methyl branch.
+    paths = [farthest_to(h, t) for h in heavy for t in heavy]
+    # Then the one whose ends carry more atoms (the acid's O-H, not its =O), and
+    # read left to right from a carbon.
+    chain = max(paths, key=lambda p: (len(p), sum(mol.GetAtomWithIdx(a).GetAtomicNum() == 6 for a in p),
+                                      sum(mol.GetAtomWithIdx(a).GetDegree() for a in p)))
+    if mol.GetAtomWithIdx(chain[0]).GetAtomicNum() != 6 and mol.GetAtomWithIdx(chain[-1]).GetAtomicNum() == 6:
+        chain = chain[::-1]
+    xy = {a: (i, 0) for i, a in enumerate(chain)}
+    taken = set(xy.values())
+
+    def put(atom, pos):
+        if pos in taken:
+            raise ValueError(f"full structure: {smiles} crowds at {pos}")
+        xy[atom] = pos
+        taken.add(pos)
+
+    def grow(atom, dirs, came_from):
+        rest = [n for n in nbr[atom] if n not in xy]
+        rest.sort(key=lambda n: mol.GetAtomWithIdx(n).GetAtomicNum() == 1)  # heavy first
+        if len(rest) > len(dirs):
+            raise ValueError(f"full structure: {smiles} atom {atom} has too many groups")
+        x, y = xy[atom]
+        for n, d in zip(rest, dirs):
+            dx, dy = GRID[d]
+            far = mol.GetAtomWithIdx(n).GetAtomicNum() > 1 and mol.GetAtomWithIdx(n).GetDegree() > 1 and came_from is None
+            put(n, (x + dx * (2 if far else 1), y + dy * (2 if far else 1)))
+            back = {"R": "L", "L": "R", "U": "D", "D": "U"}[d]
+            grow(n, [d] + [e for e in ("U", "D", "L", "R") if e not in (d, back)], atom)
+
+    for i, a in enumerate(chain):
+        ends = (["L"] if i == 0 else []) + (["R"] if i == len(chain) - 1 else [])
+        # An end oxygen or nitrogen carries its hydrogen straight on (C-O-H);
+        # an end carbon fills above and below first, as NCERT draws CH3.
+        hetero = mol.GetAtomWithIdx(a).GetAtomicNum() != 6
+        grow(a, ends + ["U", "D"] if hetero else ["U", "D"] + ends, None)
+    return mol, xy
+
+
+def full_structure_mol(smiles):
+    """The molecule with its grid coordinates as the conformer and every carbon
+    labelled, ready for RDKit to draw."""
+    from rdkit import Chem
+    from rdkit.Geometry import Point3D
+
+    mol, xy = full_layout(smiles)
+    conf = Chem.Conformer(mol.GetNumAtoms())
+    for i, (x, y) in xy.items():
+        conf.SetAtomPosition(i, Point3D(float(x), float(y), 0.0))
+    mol.RemoveAllConformers()
+    mol.AddConformer(conf, assignId=True)
+    for a in mol.GetAtoms():
+        if a.GetAtomicNum() == 6:
+            a.SetProp("atomLabel", "C")
+    return mol
+
+
 def structure_per_row(n, asked):
     """At most two molecules a row: the figure shows ~350 px wide on a phone."""
     return max(1, min(asked or 2, 2, n))
@@ -450,7 +641,7 @@ def draw_structure(s, out):
 
     mols, legends = [], []
     for m in s["molecules"]:
-        mol = Chem.MolFromSmiles(m["smiles"])
+        mol = full_structure_mol(m["smiles"]) if m.get("full") else Chem.MolFromSmiles(m["smiles"])
         if mol is None:
             raise ValueError(f"structure: RDKit cannot parse SMILES {m['smiles']!r}")
         mols.append(mol)
@@ -458,11 +649,305 @@ def draw_structure(s, out):
     opts = Draw.MolDrawOptions()
     opts.legendFontSize = 22
     opts.addStereoAnnotation = False
-    img = Draw.MolsToGridImage(mols, molsPerRow=structure_per_row(len(mols), s.get("per_row")), subImgSize=(400, 320), legends=legends, drawOptions=opts)
+    full = any(m.get("full") for m in s["molecules"])
+    if full:
+        opts.baseFontSize = 0.9
+    # A full structural formula is wide and every letter must read: one a row.
+    per_row = 1 if full else structure_per_row(len(mols), s.get("per_row"))
+    img = Draw.MolsToGridImage(mols, molsPerRow=per_row, subImgSize=(560, 300) if full else (400, 320), legends=legends, drawOptions=opts)
     img.save(out)
 
 
-KINDS = {"plot": draw_plot, "histogram": draw_histogram, "bar": draw_bar, "pie": draw_pie, "geometry": draw_geometry, "ray": draw_ray, "circuit": draw_circuit, "structure": draw_structure}
+def draw_stack(s, out):
+    """Panels one above another, each under an optional caption: two graphs with
+    different axes, or a series and a parallel circuit, read at phone width."""
+    import tempfile
+    from PIL import Image
+
+    panels, caps = s["panels"], s.get("captions", [])
+    imgs = []
+    with tempfile.TemporaryDirectory() as tmp:
+        for i, p in enumerate(panels):
+            if p.get("kind") == "stack":
+                raise ValueError("stack: panels cannot themselves be stacks")
+            if i < len(caps) and caps[i]:
+                fig = plt.figure(figsize=(0.1, 0.1))
+                fig.text(0, 0, caps[i], fontsize=13, color=INK)
+                cp = os.path.join(tmp, f"c{i}.png")
+                fig.savefig(cp, dpi=DPI, bbox_inches="tight", pad_inches=0.08, facecolor="white")
+                plt.close(fig)
+                imgs.append(Image.open(cp).convert("RGB"))
+            pp = os.path.join(tmp, f"p{i}.png")
+            draw(p, pp)
+            imgs.append(Image.open(pp).convert("RGB"))
+        gap = 24
+        w = max(im.width for im in imgs)
+        h = sum(im.height for im in imgs) + gap * (len(panels) - 1)
+        sheet = Image.new("RGB", (w, h), "white")
+        y, k = 0, 0
+        for i in range(len(panels)):
+            if i < len(caps) and caps[i]:
+                sheet.paste(imgs[k], (0, y)); y += imgs[k].height; k += 1
+            sheet.paste(imgs[k], ((w - imgs[k].width) // 2, y)); y += imgs[k].height + gap; k += 1
+        sheet.save(out)
+    return {"panels": len(panels)}
+
+
+def draw_field(s, out):
+    """Field lines COMPUTED from the sources (Coulomb point charges, or a current
+    loop's diametral section by Biot-Savart), with dashed equipotentials."""
+    fig, ax = plt.subplots(figsize=s.get("size", [5.6, 5]))
+    (x0, x1), (y0, y1) = s["xlim"], s["ylim"]
+    X, Y = np.meshgrid(np.linspace(x0, x1, 300), np.linspace(y0, y1, 300))
+    span = min(x1 - x0, y1 - y0)
+    seeds = []
+    if "charges" in s:
+        ex, ey, v = charge_field(s["charges"], X, Y)
+        sources = [c for c in s["charges"] if c["q"] > 0] or s["charges"]
+        for c in sources:
+            n = s.get("lines", 16)
+            for k in range(n):
+                th = 2 * np.pi * (k + 0.5) / n
+                seeds.append([c["at"][0] + 0.04 * span * np.cos(th), c["at"][1] + 0.04 * span * np.sin(th)])
+        u, w = ex, ey
+        if s.get("equipotentials"):
+            ax.contour(X, Y, v, levels=sorted(s["equipotentials"]), colors="#6b7280", linestyles="--", linewidths=1)
+    else:
+        lp = s["loop"]
+        u, w = loop_field(lp["a"], lp.get("current", 1), X, Y)
+        a = lp["a"]
+        for xs in np.linspace(-0.6 * a, 0.6 * a, 5):
+            seeds.append([xs, 0.0])
+        for xs in (1.45 * a, 1.9 * a, 2.5 * a):
+            seeds += [[xs, 0.0], [-xs, 0.0]]
+    with np.errstate(all="ignore"):
+        mag = np.hypot(u, w)
+        u, w = u / mag, w / mag  # direction only: spacing, not speed, shows strength
+    ax.streamplot(X, Y, np.nan_to_num(u), np.nan_to_num(w), start_points=np.array(seeds), broken_streamlines=False,
+                  color=RAY, linewidth=1.3, arrowsize=1.3, integration_direction="both" if "loop" in s else "forward")
+    if "charges" in s:
+        for c in s["charges"]:
+            ax.plot(*c["at"], "o", ms=16, color="#c2410c" if c["q"] > 0 else "#1d4ed8", zorder=5)
+            ax.text(*c["at"], "+" if c["q"] > 0 else "−", color="white", ha="center", va="center", fontsize=14, fontweight="bold", zorder=6)
+            if c.get("label"):
+                ax.annotate(c["label"], c["at"], xytext=(0, -20), textcoords="offset points", ha="center", va="top", fontsize=12)
+    else:
+        a, cur = s["loop"]["a"], s["loop"].get("current", 1)
+        # anticlockwise from above: at x = +a the current runs away from the viewer (into the page)
+        for x, into in ((a, cur > 0), (-a, cur <= 0)):
+            ax.plot(x, 0, "o", ms=16, mfc="white", mec=INK, mew=1.5, zorder=5)
+            ax.plot(x, 0, "x" if into else ".", ms=10 if into else 8, color=INK, mew=2, zorder=6)
+        ax.plot([-1.0 * a, a], [0, 0], color="#9ca3af", lw=1, ls=":", zorder=1)
+    box = {"boxstyle": "round,pad=0.2", "fc": "white", "ec": "none", "alpha": 0.9}
+    for lb in s.get("labels", []):
+        ax.text(*lb["at"], lb["text"], fontsize=lb.get("size", 11), ha=lb.get("ha", "center"), va=lb.get("va", "center"), color=lb.get("color", INK), bbox=box, zorder=8)
+    for m in s.get("marks", []):
+        ax.plot(*m["at"], "o", ms=5, color=ACCENT, zorder=7)
+        ax.annotate(m["label"], m["at"], xytext=m.get("offset", [6, 6]), textcoords="offset points", fontsize=11, bbox=box, zorder=8,
+                    arrowprops={"arrowstyle": "-", "color": ACCENT, "lw": 1} if m.get("leader") else None)
+    ax.set_xlim(x0, x1)
+    ax.set_ylim(y0, y1)
+    ax.set_aspect("equal")
+    ax.axis("off")
+    finish(fig, out)
+
+
+def draw_curve3d(s, out):
+    """A parametric space curve (a helix, a spiral) with labelled direction arrows."""
+    from mpl_toolkits.mplot3d import Axes3D  # noqa: F401
+
+    fig = plt.figure(figsize=s.get("size", [5, 5.5]))
+    ax = fig.add_subplot(111, projection="3d")
+    a, b = s["t"]
+    t = np.linspace(a, b, 2000)
+    ax.plot(ev(s["x"], t=t) * np.ones_like(t), ev(s["y"], t=t) * np.ones_like(t), ev(s["z"], t=t) * np.ones_like(t), color=RAY, lw=1.8)
+    for ar in s.get("arrows", []):
+        (fx, fy, fz), (tx, ty, tz) = ar["from"], ar["to"]
+        ax.quiver(fx, fy, fz, tx - fx, ty - fy, tz - fz, color=ar.get("color", INK), arrow_length_ratio=0.08, lw=1.5)
+        if ar.get("label"):
+            ax.text(tx, ty, tz, "  " + ar["label"], fontsize=13, color=ar.get("color", INK))
+    ax.view_init(*s.get("view", [18, -60]))
+    ax.set_box_aspect(s.get("aspect", [1, 1, 1.6]))
+    ax.set_axis_off()
+    finish(fig, out)
+
+
+def _draw_one_complex(ax, c):
+    geo = c.get("geometry", "oct")
+    if geo == "oct":
+        proj = {k: (x + 0.62 * y, z + 0.40 * y) for k, (x, y, z) in OCT_POS.items()}
+        back = {"5"}
+        for a in OCT_POS:  # octahedron edges: every cis pair
+            for b in OCT_POS:
+                if a < b and sum(u * v for u, v in zip(OCT_POS[a], OCT_POS[b])) == 0:
+                    (x1, y1), (x2, y2) = proj[a], proj[b]
+                    ax.plot([x1, x2], [y1, y2], color="#cbd5e1", lw=1, ls="--" if back & {a, b} else "-", zorder=1)
+    else:
+        proj = {k: (0.8 * x, 0.8 * y) for k, (x, y) in SQ_POS.items()}
+        back = set()
+        ring = ["1", "2", "3", "4", "1"]
+        ax.plot([proj[k][0] for k in ring], [proj[k][1] for k in ring], color="#cbd5e1", lw=1, zorder=1)
+    for k, (x, y) in proj.items():
+        ax.plot([0, x], [0, y], color=INK, lw=1.6, ls="--" if k in back else "-", zorder=2)
+    box = {"boxstyle": "round,pad=0.15", "fc": "white", "ec": "none"}
+    ax.text(0, 0, c.get("metal", "M"), ha="center", va="center", fontsize=13, fontweight="bold", bbox=box, zorder=4)
+    for k, lab in c.get("ligands", {}).items():
+        x, y = proj[k]
+        ax.text(1.32 * x, 1.32 * y, lab, ha="center", va="center", fontsize=12, bbox=box, zorder=4)
+    for a, b, name in c.get("chelates", []):
+        (x1, y1), (x2, y2) = proj[a], proj[b]
+        mx, my = (x1 + x2) / 2, (y1 + y2) / 2
+        n = math.hypot(mx, my) or 1
+        cx, cy = mx + 0.55 * mx / n, my + 0.55 * my / n  # bulge away from the metal
+        t = np.linspace(0, 1, 60)
+        bx = (1 - t) ** 2 * x1 + 2 * (1 - t) * t * cx + t ** 2 * x2
+        by = (1 - t) ** 2 * y1 + 2 * (1 - t) * t * cy + t ** 2 * y2
+        ax.plot(bx, by, color=RAY, lw=2.2, zorder=3)
+        for x, y in ((x1, y1), (x2, y2)):
+            ax.plot(x, y, "o", ms=5, color=RAY, zorder=3)
+        ax.text(mx + 0.82 * mx / n, my + 0.82 * my / n, name, ha="center", va="center", fontsize=11, color=RAY, bbox=box, zorder=4)
+    if c.get("label"):
+        ax.text(0, -1.9, c["label"], ha="center", va="top", fontsize=12)
+    ax.set_xlim(-1.9, 1.9)
+    ax.set_ylim(-2.35, 1.75)
+    ax.set_aspect("equal")
+    ax.axis("off")
+
+
+def draw_complex(s, out):
+    """Isomers of coordination complexes on an octahedron (positions 1 top, 6
+    bottom, 2 left, 4 right, 3 front, 5 back) or a square (corners 1-4), with
+    chelates as arcs on cis edges. Refuses two drawings of one molecule, and a
+    declared mirror pair that a rotation would superimpose."""
+    items = s["items"]
+    for c in items:
+        check_complex(c, c.get("geometry", "oct"))
+    octs = [i for i, c in enumerate(items) if c.get("geometry", "oct") == "oct"]
+    for i in octs:
+        for j in octs:
+            if i < j and items[i].get("group") == items[j].get("group") and same_complex(items[i], items[j]):
+                raise ValueError(f"complex: drawings {i} and {j} are the same molecule")
+    for i, j in s.get("mirror_pairs", []):
+        if same_complex(items[i], items[j]) or not same_complex(mirror_complex(items[i]), items[j]):
+            raise ValueError(f"complex: drawings {i} and {j} are not a pair of non-superimposable mirror images")
+    per_row = min(s.get("per_row", 2), 2, len(items))
+    rows = math.ceil(len(items) / per_row)
+    fig, axes = plt.subplots(rows, per_row, figsize=(2.9 * per_row, 3.1 * rows), squeeze=False)
+    for k, ax in enumerate(axes.flat):
+        if k < len(items):
+            _draw_one_complex(ax, items[k])
+        else:
+            ax.axis("off")
+    finish(fig, out)
+    return {"items": len(items)}
+
+
+GEO_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "geo")
+_GEO = {}
+
+
+def load_geo(region):
+    """Map data cut from Natural Earth by geo/build_<region>.py. Only Brazil
+    exists: India waits for an official Survey of India outline (owner, 2026-10-19)."""
+    if region not in _GEO:
+        _GEO[region] = json.load(open(os.path.join(GEO_DIR, region + ".json"), encoding="utf-8"))
+    return _GEO[region]
+
+
+def in_ring(pt, ring):
+    x, y = pt
+    inside = False
+    for (x1, y1), (x2, y2) in zip(ring, ring[1:] + ring[:1]):
+        if (y1 > y) != (y2 > y) and x < x1 + (y - y1) * (x2 - x1) / (y2 - y1):
+            inside = not inside
+    return inside
+
+
+def in_any(pt, rings):
+    return any(in_ring(pt, r) for r in rings)
+
+
+MAP_EXTENT = {"brazil": (-74.5, -34.5, -33.5, 6.0)}
+
+
+def draw_map(s, out):
+    """An outline map drawn from real boundaries (geo/<region>.json): states,
+    highlighted states and natural regions shaded, rivers, places, parallels,
+    and the INDEX (legend) a board answer is asked to give."""
+    from matplotlib.patches import Polygon as Poly, PathPatch
+    from matplotlib.path import Path
+
+    region = s.get("region", "brazil")
+    geo = load_geo(region)
+    x0, y0, x1, y1 = MAP_EXTENT[region]
+    fig, ax = plt.subplots(figsize=s.get("size", [5.6, 5.8]))
+    ax.set_facecolor("#e0f2fe")  # sea
+    home = geo["countries"]["BRA"] if region == "brazil" else []
+    for code, rings in geo["countries"].items():
+        if code == "BRA":
+            continue
+        for r in rings:
+            ax.add_patch(Poly(r, closed=True, fc="#f1f5f9", ec="#94a3b8", lw=0.6, zorder=1))
+    handles = []
+    hl = s.get("states", {})
+    for name, rings in geo["states"].items():
+        for r in rings:
+            ax.add_patch(Poly(r, closed=True, fc=hl.get(name, "white"), ec="#94a3b8", lw=0.5, zorder=2))
+    clip_verts, clip_codes = [], []
+    for r in home:
+        clip_verts += r + [r[0]]
+        clip_codes += [Path.MOVETO] + [Path.LINETO] * (len(r) - 1) + [Path.CLOSEPOLY]
+    clip = PathPatch(Path(clip_verts, clip_codes), transform=ax.transData, fc="none", ec=INK, lw=1.4, zorder=6)
+    ax.add_patch(clip)
+    from matplotlib.patches import Rectangle
+    for a in s.get("areas", []):
+        if "state" in a:  # part of a state south of a parallel (the Pampas of Rio Grande do Sul)
+            band = Rectangle((x0 - 5, y0 - 5), x1 - x0 + 10, a["south_of"] - y0 + 5, transform=ax.transData)
+            for r in geo["states"][a["state"]]:
+                p = Poly(r, closed=True, fc=a.get("color", "#fde68a"), ec="none", alpha=0.85, hatch=a.get("hatch"), zorder=3)
+                ax.add_patch(p)
+                p.set_clip_path(band)
+            continue
+        for r in geo["areas"][a["name"]]:
+            p = Poly(r, closed=True, fc=a.get("color", "#fde68a"), ec="none", alpha=0.85, hatch=a.get("hatch"), zorder=3)
+            ax.add_patch(p)
+            p.set_clip_path(clip)
+    for rv in s.get("rivers", []):
+        for ln in geo["rivers"][rv["name"]]:
+            xs, ys = zip(*ln)
+            ax.plot(xs, ys, color="#1d4ed8", lw=rv.get("width", 1.6), zorder=4, solid_capstyle="round")
+    for ln in s.get("parallels", []):
+        ax.plot([x0, x1], [ln["lat"], ln["lat"]], color=ACCENT, lw=1.2, ls="--", zorder=5)
+    for pl in s.get("places", []):
+        at = pl.get("at") or geo["places"][pl["name"]]
+        ax.plot(*at, pl.get("marker", "o"), ms=pl.get("ms", 7), color=pl.get("color", "#b91c1c"), mec="white", mew=0.8, zorder=7)
+    box = {"boxstyle": "round,pad=0.2", "fc": "white", "ec": "none", "alpha": 0.85}
+    for lb in s.get("labels", []):
+        ax.text(*lb["at"], lb["text"], fontsize=lb.get("size", 10), ha=lb.get("ha", "center"), va=lb.get("va", "center"),
+                color=lb.get("color", INK), style=lb.get("style", "normal"), bbox=box, zorder=8)
+    from matplotlib.lines import Line2D
+    from matplotlib.patches import Patch
+    for it in s.get("index", []):
+        if it["symbol"] == "fill":
+            handles.append(Patch(fc=it["color"], ec="#94a3b8", hatch=it.get("hatch"), label=it["text"]))
+        elif it["symbol"] == "line":
+            handles.append(Line2D([], [], color=it.get("color", "#1d4ed8"), lw=2, ls=it.get("ls", "-"), label=it["text"]))
+        else:
+            handles.append(Line2D([], [], marker=it.get("marker", "o"), color="none", mfc=it.get("color", "#b91c1c"), mec="white", ms=it.get("ms", 8), label=it["text"]))
+    if handles:
+        # Below the map, never over it: an index box once hid the very marker it explained.
+        ax.legend(handles=handles, title="Index", loc="upper center", bbox_to_anchor=(0.5, -0.01), fontsize=10, title_fontsize=10, frameon=True)
+    ax.set_xlim(x0, x1)
+    ax.set_ylim(y0, y1)
+    ax.set_aspect(1.03)
+    ax.set_xticks([])
+    ax.set_yticks([])
+    for sp in ax.spines.values():
+        sp.set_color("#94a3b8")
+    finish(fig, out)
+
+
+KINDS = {"map": draw_map, "complex": draw_complex, "field": draw_field, "curve3d": draw_curve3d, "stack": draw_stack, "plot": draw_plot, "histogram": draw_histogram, "bar": draw_bar, "pie": draw_pie, "geometry": draw_geometry, "ray": draw_ray, "circuit": draw_circuit, "structure": draw_structure}
 
 
 def draw(spec, out):
@@ -501,6 +986,74 @@ def selftest():
     fig, ax = histogram_axes({"classes": [[0, 30], [30, 60]], "freq": [54, 68]})
     assert {t.get_text() for t in ax.texts} >= {"54", "68"}, "histogram bars are labelled with their frequencies"
     plt.close(fig)
+
+    # A stack puts its panels one above another (phone width), each under its caption.
+    import tempfile
+    from PIL import Image
+    with tempfile.TemporaryDirectory() as tmp:
+        p1, p2, ps = (os.path.join(tmp, n) for n in ("a.png", "b.png", "s.png"))
+        line = {"kind": "plot", "series": [{"type": "line", "through": [[0, 0], [1, 1]]}]}
+        draw(line, p1)
+        draw(dict(line, size=[4, 3]), p2)
+        info = draw({"kind": "stack", "panels": [line, dict(line, size=[4, 3])], "captions": ["(i) first", "(ii) second"]}, ps)
+        a, b, st = (Image.open(x).size for x in (p1, p2, ps))
+        assert info["panels"] == 2, "stack reports its panel count"
+        assert st[0] == max(a[0], b[0]), "stack is as wide as its widest panel"
+        assert st[1] > a[1] + b[1], "stack is taller than its panels together (captions)"
+
+    # Full structural formulas (Class 10): every atom on a square grid, every
+    # bond straight across or up (a branch reaches out two units, as NCERT draws
+    # it, so its hydrogens clear the chain's), no two atoms on one point.
+    mol, xy = full_layout("CCCC(=O)O")
+    oh = [a for a in mol.GetAtoms() if a.GetAtomicNum() == 8 and a.GetTotalNumHs(includeNeighbors=True) == 1][0]
+    assert xy[oh.GetIdx()][1] == 0, "butanoic acid: the O-H oxygen ends the chain"
+    mol, xy = full_layout("CC(C)=O")
+    assert sorted(xy[a.GetIdx()][1] for a in mol.GetAtoms() if a.GetAtomicNum() == 6) == [0, 0, 0], "propanone: the three carbons form the chain"
+    for smi in ("CCCC", "CC(C)CC", "CC(C)(C)C", "CC(C)=O", "C=O", "CCO", "CC(=O)O", "C=CCC", "CC=CC", "CCCCCCl", "CCCC(=O)O"):
+        mol, xy = full_layout(smi)
+        assert len(set(xy.values())) == mol.GetNumAtoms(), f"{smi}: two atoms share a point"
+        for b in mol.GetBonds():
+            (x1, y1), (x2, y2) = xy[b.GetBeginAtomIdx()], xy[b.GetEndAtomIdx()]
+            assert (x1 == x2 or y1 == y2) and abs(x1 - x2) + abs(y1 - y2) in (1, 2), f"{smi}: bond {b.GetIdx()} is not straight"
+            if abs(x1 - x2) + abs(y1 - y2) == 2:
+                assert ((x1 + x2) // 2, (y1 + y2) // 2) not in xy.values(), f"{smi}: a long bond runs through an atom"
+
+    # Field kind: the physics it draws from, checked at three textbook points.
+    gx, gy = np.meshgrid(np.array([0.0]), np.array([0.0]))
+    ex, ey, _ = charge_field([{"q": 1, "at": [-1, 0]}, {"q": 1, "at": [1, 0]}], gx, gy)
+    assert abs(ex[0, 0]) < 1e-9 and abs(ey[0, 0]) < 1e-9, "two equal charges: no field at the midpoint"
+    _, _, v = charge_field([{"q": 1, "at": [-1, 0]}, {"q": -1, "at": [1, 0]}], np.array([[0.0, 0.0]]), np.array([[0.5, 3.0]]))
+    assert np.all(np.abs(v) < 1e-9), "dipole: zero potential on the perpendicular bisector"
+    bx, bz = loop_field(1.0, 1.0, np.array([[0.0]]), np.array([[0.0]]))
+    assert abs(bx[0, 0]) < 1e-9 and bz[0, 0] > 0, "anticlockwise loop (seen from above): field at the centre points up"
+
+    # Complex isomers: the rotation group decides what is the same molecule.
+    assert len(OCT_ROTATIONS) == 24, "the octahedron has 24 rotations"
+    cis_en = {"ligands": {"1": "Cl", "2": "Cl"}, "chelates": [["3", "6", "en"], ["4", "5", "en"]]}
+    trans_en = {"ligands": {"1": "Cl", "6": "Cl"}, "chelates": [["2", "3", "en"], ["4", "5", "en"]]}
+    tris = {"chelates": [["1", "2", "en"], ["3", "6", "en"], ["4", "5", "en"]]}
+    assert not same_complex(cis_en, mirror_complex(cis_en)), "cis-[M(en)2Cl2]: mirror image is a different molecule (chiral)"
+    assert same_complex(trans_en, mirror_complex(trans_en)), "trans-[M(en)2Cl2]: mirror image is the same molecule"
+    assert not same_complex(tris, mirror_complex(tris)), "[M(en)3]: chiral"
+    assert not same_complex(cis_en, trans_en), "cis and trans are different"
+    try:
+        check_complex({"ligands": {"1": "Cl", "2": "Cl", "3": "Cl"}, "chelates": [["4", "6", "en"]]})
+        raise AssertionError("an octahedron with a position left empty must be refused")
+    except ValueError:
+        pass
+    try:
+        check_complex({"ligands": {"1": "Cl"}, "chelates": [["2", "4", "en"], ["3", "5", "en"]]})
+        raise AssertionError("a chelate across trans positions must be refused")
+    except ValueError:
+        pass
+
+    # Map data: each named place falls inside the state it belongs to.
+    geo = load_geo("brazil")
+    for place, state in (("Manaus", "Amazonas"), ("Brasília", "Distrito Federal"), ("Rio Grande", "Rio Grande do Sul"), ("Rio de Janeiro", "Rio de Janeiro")):
+        assert in_any(geo["places"][place], geo["states"][state]), f"{place} must fall inside {state}"
+    par = geo["rivers"]["Paraguay"][0]
+    assert max(par[0][1], par[-1][1]) > -16 and min(par[0][1], par[-1][1]) < -26, "the Paraguay runs from Mato Grosso to the Parana confluence"
+    assert in_any([-49.5, -0.9], geo["areas"]["Ilha de Marajó"]), "Marajo lies at the Amazon mouth"
 
     # Structure grids stay two to a row at most, so names stay legible on a phone.
     assert structure_per_row(8, 4) == 2 and structure_per_row(8, None) == 2, "8 molecules: two per row"

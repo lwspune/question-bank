@@ -37,6 +37,9 @@
  *   • IMAGE-NO-REFERENCE      — a figure on a row that never mentions one.
  *                               Usually fine, but it is also what a mis-keyed
  *                               attach looks like.
+ *   • SOLUTION-CITES-NO-IMAGE — the ANSWER leans on a figure ("from Fig. 3.2",
+ *                               "[circuit diagram]") and neither the question
+ *                               nor the solution carries one (2026-10-19).
  *
  * TRIAGE, NOT A GATE — exits 0 even when it finds things. "Draw a labelled
  * diagram" asks the STUDENT for one and is annotated `[student draws]` rather
@@ -51,6 +54,7 @@ import {
   optionsStandInForFigure,
   type OptionFigureCase,
   studentDraws,
+  solutionCitesFigure,
 } from "./lib/figureRefs";
 
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -146,6 +150,32 @@ async function optionFigureCases(c: ReturnType<typeof client>, rows: Row[]): Pro
     if (kase) cases.set(id, kase);
   }
   return cases;
+}
+
+/** Answers that lean on a figure neither the question nor the solution
+ *  carries. Reading every solution would pull the whole bank's longest column,
+ *  so Postgres narrows to the few that mention a figure at all and the shared
+ *  rule (`solutionCitesFigure`) decides. */
+type SolRow = Pick<Row, "id" | "question_number" | "source_file" | "visibility" | "exams"> & { solution: string | null };
+
+async function solutionCitations(c: ReturnType<typeof client>, filter?: string): Promise<SolRow[]> {
+  const hits: SolRow[] = [];
+  for (let from = 0; ; from += PAGE) {
+    let q = c
+      .from("questions")
+      .select("id,question_number,source_file,visibility,solution,exams(name)")
+      .is("solution_image_url", null)
+      .is("image_url", null)
+      .or("solution.ilike.*fig*,solution.ilike.*diagram]*,solution.ilike.*graph]*,solution.ilike.*end of this answer*")
+      .order("id")
+      .range(from, from + PAGE - 1);
+    if (filter) q = q.ilike("source_file", `%${filter}%`);
+    const { data, error } = await q;
+    if (error) throw new Error(error.message);
+    for (const r of (data ?? []) as unknown as SolRow[]) if (solutionCitesFigure(r.solution)) hits.push(r);
+    if (!data || data.length < PAGE) break;
+  }
+  return hits;
 }
 
 const oneLine = (s: string | null, n = 120) => (s ?? "").replace(/\s+/g, " ").trim().slice(0, n);
@@ -296,6 +326,21 @@ async function main() {
       console.log(`  ${pad(optCases.get(r.id) ?? "", 10)}${r.visibility === "PUBLIC" ? "" : "(private) "}${r.exams?.name} | ${r.source_file} ${r.question_number ?? ""}${img} | ${r.id}`);
       if (listAll) console.log(`              ${oneLine(r.text, 110)}`);
     }
+  }
+
+  const solHits = await solutionCitations(c, filter);
+  if (solHits.length) {
+    const perExam = new Map<string, number>();
+    for (const r of solHits) perExam.set(r.exams?.name ?? "(no exam)", (perExam.get(r.exams?.name ?? "(no exam)") ?? 0) + 1);
+    console.log(`\nSOLUTION-CITES-NO-IMAGE (the answer leans on a figure nobody attached): ${solHits.length}`);
+    console.log(`  ${[...perExam.entries()].sort((a, z) => z[1] - a[1]).map(([e, n]) => `${e} ${n}`).join(" · ")}`);
+    for (const r of listAll ? solHits : solHits.slice(0, 20)) {
+      const sol = r.solution ?? "";
+      const at = sol.search(/\bfig(?:ure)?s?\.?\s*[\d(]|\[[a-z ]*\]|end of this answer/i);
+      console.log(`  ${r.visibility === "PUBLIC" ? "" : "(private) "}${r.exams?.name} | ${r.source_file} ${r.question_number ?? ""} | ${r.id}`);
+      console.log(`      …${oneLine(sol.slice(Math.max(0, at - 60), at + 40), 100)}…`);
+    }
+    if (!listAll && solHits.length > 20) console.log(`  … ${solHits.length - 20} more (--all)`);
   }
 
   console.log(
