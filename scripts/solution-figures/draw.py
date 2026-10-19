@@ -35,6 +35,8 @@ KINDS (each spec is {"kind": ..., ...}):
               "Capacitor"|"Inductor"|"Diode"|"Dot"|"Ground"|"Source", d: "up"|"down"|"left"|"right",
               l, label, label_loc, at: "<saved name>", to: "<saved name>", save: "<name>", reverse}]}
   structure  {molecules: [{smiles, name}], per_row} (at most 2 a row, so names read on a phone)
+  stack      {panels: [spec, ...], captions: ["(i) ...", ...]}   panels one above another, any kind
+             but stack; for two graphs with different axes or two separate circuits
 """
 import json
 import math
@@ -462,7 +464,42 @@ def draw_structure(s, out):
     img.save(out)
 
 
-KINDS = {"plot": draw_plot, "histogram": draw_histogram, "bar": draw_bar, "pie": draw_pie, "geometry": draw_geometry, "ray": draw_ray, "circuit": draw_circuit, "structure": draw_structure}
+def draw_stack(s, out):
+    """Panels one above another, each under an optional caption: two graphs with
+    different axes, or a series and a parallel circuit, read at phone width."""
+    import tempfile
+    from PIL import Image
+
+    panels, caps = s["panels"], s.get("captions", [])
+    imgs = []
+    with tempfile.TemporaryDirectory() as tmp:
+        for i, p in enumerate(panels):
+            if p.get("kind") == "stack":
+                raise ValueError("stack: panels cannot themselves be stacks")
+            if i < len(caps) and caps[i]:
+                fig = plt.figure(figsize=(0.1, 0.1))
+                fig.text(0, 0, caps[i], fontsize=13, color=INK)
+                cp = os.path.join(tmp, f"c{i}.png")
+                fig.savefig(cp, dpi=DPI, bbox_inches="tight", pad_inches=0.08, facecolor="white")
+                plt.close(fig)
+                imgs.append(Image.open(cp).convert("RGB"))
+            pp = os.path.join(tmp, f"p{i}.png")
+            draw(p, pp)
+            imgs.append(Image.open(pp).convert("RGB"))
+        gap = 24
+        w = max(im.width for im in imgs)
+        h = sum(im.height for im in imgs) + gap * (len(panels) - 1)
+        sheet = Image.new("RGB", (w, h), "white")
+        y, k = 0, 0
+        for i in range(len(panels)):
+            if i < len(caps) and caps[i]:
+                sheet.paste(imgs[k], (0, y)); y += imgs[k].height; k += 1
+            sheet.paste(imgs[k], ((w - imgs[k].width) // 2, y)); y += imgs[k].height + gap; k += 1
+        sheet.save(out)
+    return {"panels": len(panels)}
+
+
+KINDS = {"stack": draw_stack, "plot": draw_plot, "histogram": draw_histogram, "bar": draw_bar, "pie": draw_pie, "geometry": draw_geometry, "ray": draw_ray, "circuit": draw_circuit, "structure": draw_structure}
 
 
 def draw(spec, out):
@@ -501,6 +538,20 @@ def selftest():
     fig, ax = histogram_axes({"classes": [[0, 30], [30, 60]], "freq": [54, 68]})
     assert {t.get_text() for t in ax.texts} >= {"54", "68"}, "histogram bars are labelled with their frequencies"
     plt.close(fig)
+
+    # A stack puts its panels one above another (phone width), each under its caption.
+    import tempfile
+    from PIL import Image
+    with tempfile.TemporaryDirectory() as tmp:
+        p1, p2, ps = (os.path.join(tmp, n) for n in ("a.png", "b.png", "s.png"))
+        line = {"kind": "plot", "series": [{"type": "line", "through": [[0, 0], [1, 1]]}]}
+        draw(line, p1)
+        draw(dict(line, size=[4, 3]), p2)
+        info = draw({"kind": "stack", "panels": [line, dict(line, size=[4, 3])], "captions": ["(i) first", "(ii) second"]}, ps)
+        a, b, st = (Image.open(x).size for x in (p1, p2, ps))
+        assert info["panels"] == 2, "stack reports its panel count"
+        assert st[0] == max(a[0], b[0]), "stack is as wide as its widest panel"
+        assert st[1] > a[1] + b[1], "stack is taller than its panels together (captions)"
 
     # Structure grids stay two to a row at most, so names stay legible on a phone.
     assert structure_per_row(8, 4) == 2 and structure_per_row(8, None) == 2, "8 molecules: two per row"
