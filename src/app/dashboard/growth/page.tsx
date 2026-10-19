@@ -37,6 +37,7 @@ import {
   PRACTICE_TESTS_STARTED_KEEP,
   PAPER_PAGES_SIGNUPS_KEEP,
   PYQ_WORDING_IMPRESSIONS_KEEP_RATIO,
+  V_FINDER_NOT_FOUND_MAX_PCT,
   SPECIFIC_OFFER_CHECKOUT_PCT,
   checkOn,
   type Experiment,
@@ -474,6 +475,18 @@ export default async function GrowthPage() {
               window before.
             </p>
             <ReadingsList metric="pyq-wording-impressions" />
+          </div>
+        );
+      case "v-finder":
+        return (
+          <div className="space-y-3">
+            <p className="text-sm text-muted-foreground">
+              Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))}: start Phase 1 (Ask V about this question)
+              if at most {V_FINDER_NOT_FOUND_MAX_PCT}% of chapter asks get a false &quot;not found&quot;.
+            </p>
+            <ReadingsList metric="v-false-not-found" />
+            <ReadingsList metric="v-clarify-turns" />
+            <ReadingsList metric="v-practice-after" />
           </div>
         );
       case "paper-pages":
