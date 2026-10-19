@@ -145,6 +145,16 @@ async function main() {
   const html = `<!doctype html><meta charset="utf-8"><title>${esc(name)}</title><style>body{font:14px system-ui;margin:24px;max-width:1200px}section{border-top:1px solid #ccc;padding:12px 0}.row{display:flex;gap:24px;align-items:flex-start}img{max-width:460px;border:1px solid #ddd}ol{margin:0}li{margin-bottom:8px}.note{color:#555}.bad{color:#b00}</style><h1>${esc(name)}: ${batch.figures.length} figures, ${plan.attach.length} questions, ${plan.edits.length} label edits</h1>${sections.join("")}`;
   const review = join(outdir, "review.html");
   writeFileSync(review, html);
+  // The same pairing as data, for sheet.py's contact sheets.
+  const pairing = batch.figures.map((f) => ({
+    key: f.key,
+    png: png.get(f.key) ?? null,
+    questions: (byKey.get(f.key) ?? []).map((id) => {
+      const r = rows.get(id);
+      return { id, tag: r ? `${r.exams?.name ?? "?"} · ${r.chapters?.name ?? "?"} · ${r.question_number ?? "?"}` : "missing", stem: r?.text.replace(/\s+/g, " ").slice(0, 160) ?? "", edited: edited.has(id) };
+    }),
+  }));
+  writeFileSync(join(outdir, "pairing.json"), JSON.stringify(pairing, null, 1));
 
   console.log(`${name}: ${batch.figures.length} figures, ${plan.attach.length} questions (${toAttach.length} to attach, ${already} already have one), ${plan.edits.length} edits (${editsToWrite.length} to write, ${editsDone} done)`);
   console.log(`review: ${review}`);
