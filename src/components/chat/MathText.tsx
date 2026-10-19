@@ -13,7 +13,9 @@ let loaded: Renderer | null = null;
  */
 export default function MathText({ text }: { text: string }) {
   const hasMath = text.includes("\\(") || text.includes("\\[");
-  const [Katex, setKatex] = useState<Renderer | null>(loaded);
+  // An initialiser: a component handed to useState directly would be CALLED as one (it crashed the
+  // second maths reply on a page, 2026-10-19 browser check).
+  const [Katex, setKatex] = useState<Renderer | null>(() => loaded);
   useEffect(() => {
     if (!hasMath || Katex) return;
     let live = true;
