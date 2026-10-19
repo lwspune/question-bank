@@ -12,10 +12,16 @@ import {
 
 describe("parseChatSettingsInput", () => {
   it("accepts a valid set", () => {
-    expect(parseChatSettingsInput({ aiEnabled: true, perPersonPerHour: 20, aiAnswersPerDay: 500 })).toEqual({
+    expect(parseChatSettingsInput({ aiEnabled: true, explainEnabled: false, perPersonPerHour: 20, aiAnswersPerDay: 500 })).toEqual({
       ok: true,
-      settings: { aiEnabled: true, perPersonPerHour: 20, aiAnswersPerDay: 500 },
+      settings: { aiEnabled: true, explainEnabled: false, perPersonPerHour: 20, aiAnswersPerDay: 500 },
     });
+  });
+
+  // 2026-10-19 (migration 0168): "Ask V about this question" has its own switch, off until the owner turns it on.
+  it("refuses a missing explanations switch, and starts with explanations off", () => {
+    expect(parseChatSettingsInput({ aiEnabled: true, perPersonPerHour: 20, aiAnswersPerDay: 500 }).ok).toBe(false);
+    expect(DEFAULT_CHAT_SETTINGS.explainEnabled).toBe(false);
   });
 
   it("refuses a missing switch", () => {
@@ -34,13 +40,13 @@ describe("parseChatSettingsInput", () => {
   });
 
   it("accepts a daily cap of 0 (AI on, but no answers today)", () => {
-    expect(parseChatSettingsInput({ aiEnabled: true, perPersonPerHour: 15, aiAnswersPerDay: 0 }).ok).toBe(true);
+    expect(parseChatSettingsInput({ aiEnabled: true, explainEnabled: true, perPersonPerHour: 15, aiAnswersPerDay: 0 }).ok).toBe(true);
   });
 });
 
 describe("defaults", () => {
-  it("ship with the AI off, 15 an hour, 300 a day", () => {
-    expect(DEFAULT_CHAT_SETTINGS).toEqual({ aiEnabled: false, perPersonPerHour: 15, aiAnswersPerDay: 300 });
+  it("ship with the AI and explanations off, 15 an hour, 300 a day", () => {
+    expect(DEFAULT_CHAT_SETTINGS).toEqual({ aiEnabled: false, explainEnabled: false, perPersonPerHour: 15, aiAnswersPerDay: 300 });
   });
 });
 
