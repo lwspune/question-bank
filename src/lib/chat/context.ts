@@ -97,6 +97,8 @@ export async function loadVContext(
     profileExamSlugs?: readonly string[];
     /** "Ask V about this question" (0168): its tools' data sources, present only while it is switched on. */
     questionTools?: QuestionToolDeps | null;
+    /** V plans the week (chat_settings.plan_enabled, 0170): the plan tools and rule 8a, signed in or not. */
+    planEnabled?: boolean;
     /** The signed-in student's week-plan reads and writes (lib/chat/weekPlan.ts); absent when signed out. */
     plan?: Omit<PlanDeps, "signedIn" | "loadChapters" | "loadStrategy"> | null;
     /** The question the student tapped Ask V on, and the option they picked. */
@@ -125,6 +127,7 @@ export async function loadVContext(
     nav: NAV_FACTS,
     guides: GUIDE_FACTS,
     explainEnabled: Boolean(opts.questionTools),
+    planEnabled: opts.planEnabled === true,
   });
   // The search list is cached, so reading it for the page costs no database read.
   const pageInfo = opts.page
@@ -179,7 +182,8 @@ export async function loadVContext(
     onPaths: (paths) => paths.forEach((p) => allowedPaths.add(p)),
   });
   const loadStrategy = opts.loadStrategy ?? loadExamStrategy;
-  const plan = planTools({ ...(opts.plan ?? SIGNED_OUT_PLAN), signedIn: Boolean(opts.plan), loadChapters, loadStrategy });
+  // Signed out the plan tools are still offered (they say "sign in"), so the cached tool list depends on the switch alone.
+  const plan = opts.planEnabled ? planTools({ ...(opts.plan ?? SIGNED_OUT_PLAN), signedIn: Boolean(opts.plan), loadChapters, loadStrategy }) : [];
   const tools = [findChaptersTool, progressTool(opts.loadOwnProgress, opts.loadOwnPractice), strategyTool, ...plan];
   if (opts.questionTools) tools.push(...questionTools({ ...opts.questionTools, pageChapterId: pageInfo?.chapterId ?? null }));
   return { system, systemTail, tools, allowedPaths };

@@ -249,7 +249,8 @@ export async function POST(request: NextRequest) {
               : null,
             // The student's own login does the reading (get_own_performance): no id is passed to the database.
             loadOwnProgress: ownId ? () => ownProgress(ownId) : undefined,
-            plan: ownId ? buildPlanDeps(ownId, () => ownProgress(ownId), () => (planShown = true)) : null,
+            planEnabled: settings.planEnabled,
+            plan: ownId && settings.planEnabled ? buildPlanDeps(ownId, () => ownProgress(ownId), () => (planShown = true)) : null,
             // Same login, not remembered: "today" should move between two questions.
             loadOwnPractice: ownId ? () => getOwnPracticeCounts(createSupabaseServerClient()) : undefined,
           });
