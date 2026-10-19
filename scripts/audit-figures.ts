@@ -175,7 +175,18 @@ async function solutionCitations(c: ReturnType<typeof client>, filter?: string):
     for (const r of (data ?? []) as unknown as SolRow[]) if (solutionCitesFigure(r.solution)) hits.push(r);
     if (!data || data.length < PAGE) break;
   }
-  return hits;
+  // "Figure (B) is correct" is fine when the OPTIONS are the figures.
+  const withOptionImages = new Set<string>();
+  for (let i = 0; i < hits.length; i += IN_CHUNK) {
+    const { data, error } = await c
+      .from("options")
+      .select("question_id")
+      .not("image_url", "is", null)
+      .in("question_id", hits.slice(i, i + IN_CHUNK).map((h) => h.id));
+    if (error) throw new Error(error.message);
+    for (const o of (data ?? []) as { question_id: string }[]) withOptionImages.add(o.question_id);
+  }
+  return hits.filter((h) => !withOptionImages.has(h.id));
 }
 
 const oneLine = (s: string | null, n = 120) => (s ?? "").replace(/\s+/g, " ").trim().slice(0, n);

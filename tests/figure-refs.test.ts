@@ -6,6 +6,7 @@ import {
   optionsStandInForFigure,
   studentDraws,
   solutionCitesFigure,
+  citeTextbookFigures,
 } from "../scripts/lib/figureRefs";
 
 /**
@@ -342,10 +343,61 @@ describe("solutionCitesFigure", () => {
     expect(solutionCitesFigure("In the figure at the end of this answer, the upper structure is chloric acid")).toBe(true);
   });
 
+  it("stays silent on numbers and phrases that only contain the word (first bank-wide run, 2026-10-19)", () => {
+    for (const s of [
+      "the answer to four significant figures (20.17 u) is unaffected",
+      "(The figure 338 is the vertebrate count, not the invertebrate one.)",
+      "The figures 0.8, 0.5 and 0.3 are the probabilities",
+      "The figure 2-10 per cent is the share of the PAR",
+      "In the figure box write **Rs 20,000/-**.",
+      "The fig (Ficus) and the fig wasp form an obligate mutualism.",
+      "lies on the plate boundary, as shown in the textbook's fig 2.18.",
+      "taking 2019 figures.  1. At the other end, countries",
+      "120.007 m contains six significant figures.  3. Zeroes on the left",
+      "Count significant figures.  (A) \(0.00253\): leading zeros",
+    ]) expect(solutionCitesFigure(s)).toBe(false);
+  });
+
   it("stays silent on an answer that describes or asks for a drawing in words", () => {
     expect(solutionCitesFigure("Draw a circle with centre O and a line \(\ell\) somewhere on the page. Now draw two lines parallel to it")).toBe(false);
     expect(solutionCitesFigure("The graph is a straight line through the origin, showing that V is proportional to I.")).toBe(false);
     expect(solutionCitesFigure("The fig wasp completes its life cycle inside the fig.")).toBe(false);
     expect(solutionCitesFigure(null)).toBe(false);
+  });
+});
+
+describe("citeTextbookFigures", () => {
+  // A board answer that cites the book's figure by number is honest once it
+  // says the figure is the TEXTBOOK's: board students have the book.
+  it("qualifies a bare figure number as the textbook's", () => {
+    expect(citeTextbookFigures("as shown in the figure 6.7. Thus, we see")).toBe("as shown in the textbook's figure 6.7. Thus, we see");
+    expect(citeTextbookFigures("zwitter ion (Fig. 14.15). In the solid")).toBe("zwitter ion (the textbook's Fig. 14.15). In the solid");
+    expect(citeTextbookFigures("Figure 6.1(a) is a dot map")).toBe("The textbook's Figure 6.1(a) is a dot map");
+    expect(citeTextbookFigures("is given in Fig 5.4.")).toBe("is given in the textbook's Fig 5.4.");
+  });
+
+  it("is idempotent and leaves a qualified citation alone", () => {
+    const once = citeTextbookFigures("see Fig. 3.2 and Fig. 3.3");
+    expect(once).toBe("see the textbook's Fig. 3.2 and the textbook's Fig. 3.3");
+    expect(citeTextbookFigures(once)).toBe(once);
+  });
+
+  it("does not touch maths or prose that only looks like a citation", () => {
+    expect(citeTextbookFigures("rounded to 3 significant figures")).toBe("rounded to 3 significant figures");
+    expect(citeTextbookFigures("The fig wasp lives in the fig.")).toBe("The fig wasp lives in the fig.");
+    // Found by the first dry run (2026-10-19): numbers that follow "figure" but are no figure number.
+    for (const s of ["six significant figures.  3. Zeroes on the left", "(the figure 314 is chosen so that", "The figures 0.8, 0.5 and 0.3 are", "The figure 20 counts chromosomes", "taking 2019 figures.  1. At the other end", "The figure 2-10 per cent is the share"]) {
+      expect(citeTextbookFigures(s)).toBe(s);
+    }
+  });
+
+  it("replaces the possessive in front instead of stacking a second one", () => {
+    expect(citeTextbookFigures("drawn is the chapter's figure 3.21, a chart")).toBe("drawn is the textbook's figure 3.21, a chart");
+    expect(citeTextbookFigures("pathway; its own Fig. 6.3 lists")).toBe("pathway; the textbook's Fig. 6.3 lists");
+    expect(citeTextbookFigures("follow. Its figure 10.4 also shows")).toBe("follow. The textbook's figure 10.4 also shows");
+  });
+
+  it("is what solutionCitesFigure treats as honest", () => {
+    expect(solutionCitesFigure(citeTextbookFigures("We see from Fig. 3.2, that element"))).toBe(false);
   });
 });
