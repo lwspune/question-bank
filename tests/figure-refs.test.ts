@@ -5,6 +5,7 @@ import {
   optionsDeferToFigure,
   optionsStandInForFigure,
   studentDraws,
+  solutionCitesFigure,
 } from "../scripts/lib/figureRefs";
 
 /**
@@ -319,5 +320,32 @@ describe("studentDraws", () => {
 
   it("does not mark a stem that only reads a figure", () => {
     expect(studentDraws("In figure 3.37, points G, D, E, F are concyclic.")).toBe(false);
+  });
+});
+
+describe("solutionCitesFigure", () => {
+  // A SOLUTION that leans on a figure the answer does not carry. Real solution
+  // texts, all found while adding solution figures on 2026-10-19: each read as
+  // a complete answer and each pointed at nothing.
+  it("flags a printed figure number the answer does not carry", () => {
+    expect(solutionCitesFigure("We see from Fig. 3.2, that element with \(Z = 117\), would belong to the halogen family")).toBe(true);
+    expect(solutionCitesFigure("Let the coordinate axis be chosen as shown in Fig 10.32. The equation of the parabola takes the form")).toBe(true);
+  });
+
+  it("flags a transcriber's placeholder where a drawing was", () => {
+    expect(solutionCitesFigure("Let \(p\) : The switch \(S_1\). The circuit is as follows: [circuit diagram]")).toBe(true);
+    expect(solutionCitesFigure("The required graph is: [graph]")).toBe(true);
+  });
+
+  it("flags our own pointer when the figure it promises is missing", () => {
+    expect(solutionCitesFigure("The circuit is drawn at the end of this answer.")).toBe(true);
+    expect(solutionCitesFigure("In the figure at the end of this answer, the upper structure is chloric acid")).toBe(true);
+  });
+
+  it("stays silent on an answer that describes or asks for a drawing in words", () => {
+    expect(solutionCitesFigure("Draw a circle with centre O and a line \(\ell\) somewhere on the page. Now draw two lines parallel to it")).toBe(false);
+    expect(solutionCitesFigure("The graph is a straight line through the origin, showing that V is proportional to I.")).toBe(false);
+    expect(solutionCitesFigure("The fig wasp completes its life cycle inside the fig.")).toBe(false);
+    expect(solutionCitesFigure(null)).toBe(false);
   });
 });
