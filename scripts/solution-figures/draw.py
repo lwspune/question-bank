@@ -34,7 +34,7 @@ KINDS (each spec is {"kind": ..., ...}):
   circuit    {elements: [{el: "Battery"|"Resistor"|"Line"|"Lamp"|"Switch"|"Ammeter"|"Voltmeter"|
               "Capacitor"|"Inductor"|"Diode"|"Dot"|"Ground"|"Source", d: "up"|"down"|"left"|"right",
               l, label, label_loc, at: "<saved name>", to: "<saved name>", save: "<name>", reverse}]}
-  structure  {molecules: [{smiles, name}], per_row}
+  structure  {molecules: [{smiles, name}], per_row} (at most 2 a row, so names read on a phone)
 """
 import json
 import math
@@ -83,6 +83,13 @@ def origin_axes(ax, xlabel, ylabel):
         ax.annotate(ylabel, xy=(0, 1), xycoords=("data", "axes fraction"), xytext=(6, 2), textcoords="offset points", ha="left", va="bottom", fontsize=12)
 
 
+def plot_points(ax, sr, color, ls, lab):
+    ax.plot(sr["x"], sr["y"], linestyle=ls if sr.get("line", True) else "None", marker=sr.get("marker", "o"), color=color, lw=2, ms=5, label=lab)
+    for x, y, txt in zip(sr["x"], sr["y"], sr.get("labels", [])):
+        if txt:
+            ax.annotate(txt, (x, y), xytext=(5, 5), textcoords="offset points", fontsize=11)
+
+
 def draw_plot(s, out):
     fig, ax = plt.subplots(figsize=s.get("size", [6, 4.2]))
     xlim, ylim = s.get("xlim"), s.get("ylim")
@@ -99,10 +106,7 @@ def draw_plot(s, out):
             tt = np.linspace(a, b, 800)
             ax.plot(ev(sr["x"], t=tt) * np.ones_like(tt), ev(sr["y"], t=tt) * np.ones_like(tt), ls, color=color, lw=2, label=lab)
         elif t == "points":
-            ax.plot(sr["x"], sr["y"], ls if sr.get("line", True) else "none", marker=sr.get("marker", "o"), color=color, lw=2, ms=5, label=lab)
-            for x, y, txt in zip(sr["x"], sr["y"], sr.get("labels", [])):
-                if txt:
-                    ax.annotate(txt, (x, y), xytext=(5, 5), textcoords="offset points", fontsize=11)
+            plot_points(ax, sr, color, ls, lab)
         elif t == "line":
             (x1, y1), (x2, y2) = sr["through"]
             ax.axline((x1, y1), (x2, y2), linestyle=ls, color=color, lw=1.8, label=lab)
@@ -428,6 +432,11 @@ def draw_circuit(s, out):
         d.save(out, dpi=DPI)
 
 
+def structure_per_row(n, asked):
+    """At most two molecules a row: the figure shows ~350 px wide on a phone."""
+    return max(1, min(asked or 2, 2, n))
+
+
 def draw_structure(s, out):
     from rdkit import Chem
     from rdkit.Chem import Draw
@@ -442,7 +451,7 @@ def draw_structure(s, out):
     opts = Draw.MolDrawOptions()
     opts.legendFontSize = 22
     opts.addStereoAnnotation = False
-    img = Draw.MolsToGridImage(mols, molsPerRow=s.get("per_row", min(3, len(mols))), subImgSize=tuple(s.get("cell", [360, 300])), legends=legends, drawOptions=opts)
+    img = Draw.MolsToGridImage(mols, molsPerRow=structure_per_row(len(mols), s.get("per_row")), subImgSize=(400, 320), legends=legends, drawOptions=opts)
     img.save(out)
 
 
@@ -472,6 +481,18 @@ def selftest():
     v = mirror_image(20, -30)
     assert close(v, 12) and close(-v / -30, 0.4), "convex mirror f=20, u=30: v=+12, m=0.4"
     assert lens_image(10, -10) is None and mirror_image(-10, -10) is None, "object at F: image at infinity"
+
+    # Data points with "line": false stay unjoined (a fitted line is drawn separately).
+    fig, ax = plt.subplots()
+    plot_points(ax, {"x": [1, 2, 3], "y": [1, 4, 9], "line": False}, RAY, "-", None)
+    assert ax.lines[-1].get_linestyle() == "None", "points with line: false must not be joined"
+    plot_points(ax, {"x": [1, 2, 3], "y": [1, 4, 9]}, RAY, "-", None)
+    assert ax.lines[-1].get_linestyle() == "-", "points are joined by default"
+    plt.close(fig)
+
+    # Structure grids stay two to a row at most, so names stay legible on a phone.
+    assert structure_per_row(8, 4) == 2 and structure_per_row(8, None) == 2, "8 molecules: two per row"
+    assert structure_per_row(1, None) == 1 and structure_per_row(3, 1) == 1, "one molecule, or one asked: one per row"
     print("selftest ok")
 
 
