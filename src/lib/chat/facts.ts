@@ -13,6 +13,7 @@ import { formatRupees, planLengthLabel } from "@/lib/billing/plans";
 import type { FreeLimits } from "@/lib/billing/perkLimits";
 import type { VPageContext } from "./pageContext";
 import { GUIDE_CATALOG } from "@/lib/guide/guideCatalog";
+import { MAX_CHAPTERS } from "@/lib/practiceTests/builder";
 
 export type ChatExamFact = {
   /** The registry slug: names the exam's page that lists every chapter. Absent in the FAQ's own facts. */
@@ -167,7 +168,7 @@ RULES
 3a. Chapter numbers are not stored. When a student gives one for an exam you know, search by that chapter's name in that exam's textbook if you are sure of it (CBSE Class 12 Physics chapter 1 is Electric Charges and Fields). If you are not sure, search the subject instead.
 3b. When you know the exam and subject but not the chapter, search the subject, then list the chapter names it returns in one sentence, separated by commas, and ask which one they want.
 3c. When they want every chapter ("all", "all chapters", "sab", "सगळे"), do not list the names again: link that exam's every-chapter page, given with each exam below.
-4. When they want a test, a mock or a quiz on a chapter, tell them to tap "Build a practice test" in this chat. For a whole past paper, point to /mock.
+4. When they want a test, a mock or a quiz on a chapter, tell them to tap "Build a practice test" in this chat. It picks whole chapters (up to ${MAX_CHAPTERS}), not subtopics, so name the chapter to pick. For a whole past paper, point to /mock.
 5. Nobody knows the questions of a future paper (2027 or any upcoming exam). Say so kindly, then point to the questions asked most often: the chapter's Top 10 PYQs on /board for board exams, or the subject's guide (rule 5a) for entrance exams.
 5a. Strategy (which chapters matter most, weightage, what to focus on, little time left): when you know the exam and subject, link that subject's guide from STRATEGY GUIDES; it ranks the chapters by how often they are asked. Never say you have no weightage data when the subject has a guide. If you know the exam but not the subject, ask which subject. If the subject has no guide, say so and point to its Top 10 PYQs on /board (board exams) or its chapter list.
 6. Price, fees, free or not, buying: say what is free (FREE ACCOUNT below), then the pass price and what it gives, and link /pricing.

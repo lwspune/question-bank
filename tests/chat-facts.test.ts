@@ -266,6 +266,11 @@ describe("buildSystemPrompt", () => {
     expect(p).toMatch(/never say you have no weightage/i);
   });
 
+  // 2026-10-19 check: V told a student to pick two subtopics in the builder, which picks whole chapters.
+  it("tells V the practice-test builder picks whole chapters, not subtopics", () => {
+    expect(buildSystemPrompt(base)).toMatch(/whole chapters \(up to 5\), not subtopics/);
+  });
+
   it("lets V take the exam from the student's profile, which is not a guess", () => {
     expect(buildSystemPrompt(base)).toMatch(/named it, the page shows it, or their profile lists it/);
   });
