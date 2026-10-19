@@ -15,13 +15,22 @@ export const RELATIONS_NOTE: SubtopicNote = {
       slug: "cartesian-product-and-relations",
       name: "Cartesian product, domain and range",
       intuition:
-        "The Cartesian product \\(A\\times B\\) is the set of all ordered pairs \\((a,b)\\) with \\(a\\in A, b\\in B\\) — picture a grid of points. A relation is just a chosen subset of that grid; its domain is the first-coordinates used, its range the second-coordinates.",
+        "Build it in four steps: an ordered pair, then the set of all such pairs (the Cartesian product, a grid of points), then a relation (some of those pairs), then its domain and range (the first and second entries it actually uses).",
       definition:
-        "The product and the counts:\n" +
+        "**1. Ordered pair.** \\((a, b)\\) is a pair in which ORDER matters: \\(a\\) is the first entry and \\(b\\) the second. " +
+        "So \\((1, 2) \\ne (2, 1)\\), unlike the sets \\(\\{1, 2\\} = \\{2, 1\\}\\). Two ordered pairs are equal only when both entries match: " +
+        "\\((x, y) = (3, 5)\\) means \\(x = 3\\) and \\(y = 5\\).\n" +
+        "**2. Cartesian product.** \\(A\\times B\\) is the set of ALL ordered pairs with first entry from A and second from B. " +
+        "For \\(A = \\{1, 2\\}\\) and \\(B = \\{x, y, z\\}\\): \\(A\\times B = \\{(1,x), (1,y), (1,z), (2,x), (2,y), (2,z)\\}\\), " +
+        "which has \\(2 \\times 3 = 6\\) pairs. \\(B\\times A\\) holds the reversed pairs such as \\((x, 1)\\), so \\(A\\times B \\ne B\\times A\\) in general.\n" +
+        "**3. Relation.** A relation R from A to B is any subset of \\(A\\times B\\), chosen by a rule or simply listed. " +
+        "From the product above, \\(R = \\{(1, x), (1, z), (2, x)\\}\\) is one relation.\n" +
+        "**4. Domain, range and codomain.** The **domain** is the set of first entries that occur in R, here \\(\\{1, 2\\}\\). " +
+        "The **range** is the set of second entries that occur, here \\(\\{x, z\\}\\). The **codomain** is all of B, \\(\\{x, y, z\\}\\), so the range can be smaller than the codomain.\n" +
+        "The counts:\n" +
         "- \\(A\\times B = \\{(a,b): a\\in A, b\\in B\\}\\); \\(|A\\times B| = |A|\\cdot|B|\\). So \\(|A\\times A| = 16 \\Rightarrow |A| = 4\\).\n" +
         "- A **relation** from A to B is any subset of \\(A\\times B\\); the number of relations is \\(2^{|A||B|}\\).\n" +
         "- The number of **functions** (mappings) from A to B is \\(|B|^{|A|}\\) — each of the \\(|A|\\) inputs picks one of \\(|B|\\) outputs. The base is the CODOMAIN size and the exponent the DOMAIN size: from a 3-set to a 4-set there are \\(4^3=64\\) functions, not \\(3^4=81\\); and \\(2^{12}=4096\\) relations, of which only 64 are functions.\n" +
-        "- **Domain** = set of first coordinates that occur; **range** = set of second coordinates; **codomain** = B (range may be smaller).\n" +
         "- Useful identity: \\((A\\times B)\\cap(B\\times A) = (A\\cap B)\\times(A\\cap B)\\).",
       formula: {
         label: "Cartesian product and relation counts",

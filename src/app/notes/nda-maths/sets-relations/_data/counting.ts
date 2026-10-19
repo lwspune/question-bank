@@ -15,10 +15,14 @@ export const COUNTING_NOTE: SubtopicNote = {
       slug: "power-set-and-subsets",
       name: "Power set and counting subsets",
       intuition:
-        "Each element of a set is either in or out of a subset, so an n-element set has \\(2^n\\) subsets — the power set. From that one fact flow proper-subset counts, superset counts, and a slick symmetry trick for 'at most half' the elements.",
+        "The power set of A is the set whose members are ALL the subsets of A. Each element of A is either in or out of a subset, so an n-element set has \\(2^n\\) subsets. From that one fact flow proper-subset counts, superset counts, and a slick symmetry trick for 'at most half' the elements.",
       definition:
+        "The **power set** \\(P(A)\\) is the set of all subsets of A, and it always contains the empty set \\(\\varnothing\\) and A itself. " +
+        "For \\(A = \\{a, b\\}\\) the subsets are \\(\\varnothing\\), \\(\\{a\\}\\), \\(\\{b\\}\\) and \\(\\{a, b\\}\\), so " +
+        "\\(P(A) = \\{\\varnothing, \\{a\\}, \\{b\\}, \\{a, b\\}\\}\\): its members are sets, and there are \\(4 = 2^2\\) of them. " +
+        "Each element gives two choices (in or out), and \\(2 \\times 2 = 4\\).\n" +
         "The counting rules:\n" +
-        "- A set with \\(n\\) elements has \\(2^n\\) **subsets** (the power set \\(P(A)\\)), of which \\(2^n - 1\\) are **proper subsets** (all except the set itself).\n" +
+        "- A set with \\(n\\) elements has \\(2^n\\) **subsets**, so \\(|P(A)| = 2^n\\). Of these, \\(2^n - 1\\) are **proper subsets** (all except the set itself).\n" +
         "- **Supersets of a fixed set** \\(\\{x\\}\\): fix x as 'in', let the other \\(n-1\\) elements vary \\(\\Rightarrow 2^{n-1}\\) subsets contain x.\n" +
         "- **Count carefully when elements are themselves sets**: \\(A=\\{\\{1,2,3\\}\\}\\) has ONE element, so \\(|P(A)|=2\\).\n" +
         "- **Symmetry trick**: in a \\((2n+1)\\)-element set, the subsets of size \\(\\le n\\) are exactly half of all subsets \\(= \\tfrac{1}{2}\\cdot 2^{2n+1} = 2^{2n}\\).\n" +
