@@ -26,7 +26,7 @@ import fitz
 from PIL import Image, ImageDraw, ImageFont
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "lib", "figures"))
-from crop_answer_figs import render  # noqa: E402  the same crop run.ts makes
+from crop_answer_figs import render, _signatures  # noqa: E402  the same crop run.ts makes
 
 
 def frac(r, page):
@@ -80,10 +80,15 @@ def cmd_ink(pdf, page_no, box):
         if r.is_empty or not region.contains(r):
             continue
         ink = r if ink is None else ink | r
-    for info in page.get_image_info():
-        r = fitz.Rect(info["bbox"])
-        if region.contains(r):
-            ink = r if ink is None else ink | r
+    # Page furniture (NCERT's watermark and full-page grey image, the crop step
+    # blanks them) would otherwise make the ink fill the whole region.
+    furniture = _signatures(pdf)
+    skip = {i[0] for i in page.get_images(full=True) if (i[2], i[3], i[5]) in furniture}
+    for info in page.get_image_info(xrefs=True):
+        r = fitz.Rect(info["bbox"]) & region
+        if info.get("xref") in skip or r.is_empty:
+            continue
+        ink = r if ink is None else ink | r
     print("ink", frac(ink, page) if ink else None)
     for b in page.get_text("dict")["blocks"]:
         for line in b.get("lines", []):

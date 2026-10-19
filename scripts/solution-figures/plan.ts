@@ -28,6 +28,8 @@ export type BatchPlan = {
 
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const SLUG = /^[a-z0-9]+(-[a-z0-9]+)*$/;
+// eslint-disable-next-line no-control-regex
+const CONTROL = /[\u0000-\u0009\u000b-\u001f\u007f]/;
 
 function boxOk(b: unknown): b is Bbox {
   if (!Array.isArray(b) || b.length !== 4 || !b.every((v) => typeof v === "number" && v >= 0 && v <= 1)) return false;
@@ -74,6 +76,10 @@ export function planBatch(batch: Batch): BatchPlan {
     if (!owner.has(e.id)) errors.push(`edit ${e.id}: no figure in this batch for that question`);
     if (!e.find) errors.push(`edit ${e.id}: empty find`);
     else if (e.find === e.replace) errors.push(`edit ${e.id}: find and replace are the same`);
+    // A control character in an edit is a backslash some shell ate on the way:
+    // "\angle" written through a heredoc arrived as BELL + "ngle" and shipped
+    // (2026-10-19). Newlines are the one control character an edit may carry.
+    if (CONTROL.test(e.find) || CONTROL.test(e.replace)) errors.push(`edit ${e.id}: control character in the edit text (a lost backslash?)`);
   }
 
   return { cropsByPdf, attach, edits, errors };
