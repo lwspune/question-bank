@@ -6,7 +6,7 @@
  */
 import { describe, it, expect, vi } from "vitest";
 import { examsNamed, type ChapterSearchRow } from "@/lib/chat/chapterSearch";
-import { examStrategyTool, strategyText, type StrategyData } from "@/lib/chat/examStrategy";
+import { examStrategyTool, rankChapters, strategyText, subjectNamed, type StrategyData } from "@/lib/chat/examStrategy";
 
 function ch(id: string, name: string, subject: string, byYear: Record<string, number>) {
   return { id, name, subject, byYear };
@@ -259,5 +259,25 @@ describe("examStrategyTool", () => {
   it("points to /guide when the numbers cannot be read", async () => {
     const { t } = tool(null);
     expect(await t.run({ exam: "NDA" })).toMatch(/unavailable/i);
+  });
+});
+
+describe("rankChapters and subjectNamed", () => {
+  it("ranks chapters by their share of the latest 3 years, within a subject or the whole exam", () => {
+    expect(rankChapters(NDA, "Mathematics").map((c) => [c.name, c.share])).toEqual([
+      ["Trigonometry", 57],
+      ["Matrices", 29],
+      ["Probability", 14],
+    ]);
+    expect(rankChapters(NDA, null).map((c) => c.name)).toEqual(["Trigonometry", "Matrices", "Reading Comprehension", "Probability"]);
+  });
+
+  it("ranks within several subjects together", () => {
+    expect(rankChapters(NDA, ["English"]).map((c) => [c.name, c.share])).toEqual([["Reading Comprehension", 100]]);
+  });
+
+  it("names one subject from the student's words, or none when they fit several or nothing", () => {
+    expect(subjectNamed(NDA, "maths")).toBe("Mathematics");
+    expect(subjectNamed(NDA, "biology")).toBeNull();
   });
 });

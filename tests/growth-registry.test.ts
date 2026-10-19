@@ -86,6 +86,7 @@ describe("EXPERIMENTS", () => {
       "specific-offer",
       "v-explain",
       "v-finder",
+      "v-plan",
       "v-strategy",
     ]);
   });

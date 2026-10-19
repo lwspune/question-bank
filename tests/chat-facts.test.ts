@@ -278,7 +278,25 @@ describe("buildSystemPrompt", () => {
 
   // 2026-10-19 replay: V wrote "[Ray Optics](/questions/...)" once the tool gave it several pages.
   it("tells V to write a page as the bare path, never as a markdown link", () => {
-    expect(buildSystemPrompt(base)).toMatch(/2\. [^\n]*never \[text\]\(path\)/);
+    expect(buildSystemPrompt(base)).toMatch(/2\. [^\n]*never \[text\]\(path\)\. Use ONLY/);
+  });
+
+  // 2026-10-19 study-partner Phase 3: "plan my week" / "give a timetable" get a saved plan inside V.
+  it("has V plan the week with plan_week and read it back with my_plan, while plans are switched on", () => {
+    const p = buildSystemPrompt({ ...base, planEnabled: true });
+    expect(p).toMatch(/8a\. [^\n]*(timetable|plan)[^\n]*call plan_week/);
+    expect(p).toMatch(/8a\. [^\n]*exam date[^\n]*once/);
+    expect(p).toMatch(/8a\. [^\n]*call my_plan/);
+    expect(p).toMatch(/1\. Answer ONLY from the facts below and from what the find_chapters, my_progress, exam_strategy, plan_week and my_plan tools return/);
+    expect(p).toMatch(/2\. [^\n]*returned by find_chapters, exam_strategy, plan_week or my_plan/);
+  });
+
+  // 2026-10-19 (migration 0170): the owner's switch. Off, V is told nothing about plans.
+  it("says nothing of plans while they are switched off", () => {
+    const p = buildSystemPrompt(base);
+    expect(p).not.toContain("plan_week");
+    expect(p).not.toContain("my_plan");
+    expect(p).not.toMatch(/^8a\./m);
   });
 
   it("answers 'what comes in 2027' with the chapters asked every year", () => {

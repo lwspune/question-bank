@@ -15,6 +15,7 @@ import { PER_DAY_RANGE, PER_HOUR_RANGE, type ChatSettings } from "@/lib/chat/set
 export default function ChatSettingsForm({ initial }: { initial: ChatSettings }) {
   const [aiEnabled, setAiEnabled] = useState(initial.aiEnabled);
   const [explainEnabled, setExplainEnabled] = useState(initial.explainEnabled);
+  const [planEnabled, setPlanEnabled] = useState(initial.planEnabled);
   const [perHour, setPerHour] = useState(String(initial.perPersonPerHour));
   const [perDay, setPerDay] = useState(String(initial.aiAnswersPerDay));
   const [saving, setSaving] = useState(false);
@@ -28,7 +29,7 @@ export default function ChatSettingsForm({ initial }: { initial: ChatSettings })
       const res = await fetch("/api/admin/chat-settings", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ aiEnabled, explainEnabled, perPersonPerHour: Number(perHour), aiAnswersPerDay: Number(perDay) }),
+        body: JSON.stringify({ aiEnabled, explainEnabled, planEnabled, perPersonPerHour: Number(perHour), aiAnswersPerDay: Number(perDay) }),
       });
       const json = (await res.json().catch(() => ({}))) as { error?: string; settings?: ChatSettings };
       if (!res.ok || json.error || !json.settings) {
@@ -39,6 +40,7 @@ export default function ChatSettingsForm({ initial }: { initial: ChatSettings })
       }
       setAiEnabled(json.settings.aiEnabled);
       setExplainEnabled(json.settings.explainEnabled);
+      setPlanEnabled(json.settings.planEnabled);
       setPerHour(String(json.settings.perPersonPerHour));
       setPerDay(String(json.settings.aiAnswersPerDay));
       toast.success("V's settings saved");
@@ -79,6 +81,22 @@ export default function ChatSettingsForm({ initial }: { initial: ChatSettings })
           <span className="block text-xs text-muted-foreground">
             V explains a question from its stored solution, and each explanation counts as one free answer. Needs the
             AI switch on. Off: the Ask V buttons are hidden.
+          </span>
+        </span>
+      </label>
+
+      <label className="flex items-start gap-2 text-sm">
+        <input
+          type="checkbox"
+          checked={planEnabled}
+          onChange={(e) => setPlanEnabled(e.target.checked)}
+          className="mt-0.5 h-4 w-4 rounded border-input focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+        />
+        <span>
+          Plan the week (&ldquo;plan my week&rdquo; in V)
+          <span className="block text-xs text-muted-foreground">
+            V saves a 7-day plan from the student&apos;s weak chapters, due drill and the exam&apos;s biggest chapters, shown
+            as a card inside V that ticks itself. Needs the AI switch on. Off: V does not make plans.
           </span>
         </span>
       </label>

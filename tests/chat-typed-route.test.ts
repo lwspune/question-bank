@@ -42,9 +42,10 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
     per_person_per_hour: number;
     ai_answers_per_day: number;
     explain_enabled?: boolean;
+    plan_enabled?: boolean;
   }) {
-    // Explanations off unless a test turns them on (0168), so one test's switch cannot leak into the next.
-    const { error } = await admin.from("chat_settings").update({ explain_enabled: false, ...s }).eq("id", true);
+    // Explanations (0168) and plans (0170) off unless a test turns them on, so one test's switch cannot leak into the next.
+    const { error } = await admin.from("chat_settings").update({ explain_enabled: false, plan_enabled: false, ...s }).eq("id", true);
     if (error) throw new Error(error.message);
   }
 
@@ -54,7 +55,7 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
     });
     const { data } = await admin
       .from("chat_settings")
-      .select("ai_enabled, explain_enabled, per_person_per_hour, ai_answers_per_day")
+      .select("ai_enabled, explain_enabled, plan_enabled, per_person_per_hour, ai_answers_per_day")
       .eq("id", true)
       .single();
     saved = data;
@@ -415,6 +416,22 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
     const tools = askV.mock.calls[0][0].tools as { name: string; run: (i: unknown) => Promise<string> }[];
     expect(tools.map((t) => t.name)).toEqual(["find_chapters", "my_progress", "exam_strategy"]);
     expect(await tools[1].run({})).toMatch(/signed out/i);
+  });
+
+  // 2026-10-19 study-partner Phase 3: the plan tools are always offered (the tool list is cached), and read nothing signed out.
+  it("asks a signed-out visitor to sign in for a week plan, and shows no plan card", async () => {
+    await setSettings({ ai_enabled: true, plan_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });
+    askV.mockReset();
+    let said = "";
+    askV.mockImplementation(async (input: { tools: { name: string; run: (i: unknown) => Promise<string> }[] }) => {
+      expect(input.tools.map((t) => t.name)).toEqual(["find_chapters", "my_progress", "exam_strategy", "plan_week", "my_plan"]);
+      said = await input.tools.find((t) => t.name === "plan_week")!.run({ exam: "NDA" });
+      return { ok: true, reply: "Sign in first.", tokensIn: 1, tokensOut: 1, cacheReadTokens: 0, cacheWriteTokens: 0, toolCalls: [] };
+    });
+    const { POST } = await import("@/app/api/chat/typed/route");
+    const res = await POST(post({ message: `route-${RUN}-plan plan my week` }));
+    expect(said).toMatch(/sign in/i);
+    expect(((await res.json()) as { planShown?: boolean }).planShown).toBeUndefined();
   });
 
   it("holds one person to the hourly limit set on the dashboard", async () => {

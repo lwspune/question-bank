@@ -182,6 +182,14 @@ export const V_EXPLAIN_SIMILAR_RIGHT_KEEP_PCT = 50;
  */
 export const V_STRATEGY_ANSWERS_KEEP = 10;
 
+/**
+ * "v-plan" (study-partner Phase 3): keep V's week plan if at least this many
+ * students make one in two weeks...
+ */
+export const V_PLAN_STUDENTS_KEEP = 10;
+/** ...and at least this share of the planned days is done (%), read from the same log the ticks use. */
+export const V_PLAN_DAYS_DONE_KEEP_PCT = 30;
+
 /** The ISO date `days` (by default `EXPERIMENT_WINDOW_DAYS`) after `liveSince`. */
 export function checkOn(liveSince: string, days: number = EXPERIMENT_WINDOW_DAYS): string {
   const d = new Date(`${liveSince}T00:00:00Z`);
@@ -210,7 +218,8 @@ export type Readout =
   | "pyq-wording"
   | "v-finder"
   | "v-explain"
-  | "v-strategy";
+  | "v-strategy"
+  | "v-plan";
 
 export type Experiment = {
   id: string;
@@ -500,6 +509,19 @@ export const EXPERIMENTS: readonly Experiment[] = [
     readout: "v-strategy",
     status: "running",
   },
+  {
+    id: "v-plan",
+    title: "V plans the week (study partner, Phase 3)",
+    change:
+      "Asked for a plan or a timetable, V saves one task a day for the next seven days (weak chapters first, then the exam's biggest chapters, the due drill and a timed mock), asking for the exam date once, and shows it as a card inside V that ticks itself from what the student does; \"my plan\" shows it again.",
+    why: "Reading every conversation (2026-10-19): students asked for timetables and \"how to prepare\", and V could only link pages. A plan made from their own weak chapters is deliberate practice, and ticks read from the log are feedback without a streak.",
+    metric: "Students with a study_plans row; share of planned days done (the card's own ticks); whether planners come back within 7 days",
+    rule: `Keep it if ${V_PLAN_STUDENTS_KEEP}+ students make a plan in two weeks and ${V_PLAN_DAYS_DONE_KEEP_PCT}%+ of planned days are done; under the day share, read which kind of day is skipped (chapter, drill or mock) before changing the plan.`,
+    liveSince: "2026-10-19",
+    windowDays: 14,
+    readout: "v-plan",
+    status: "running",
+  },
 ];
 
 export type DecidedAgainst = { title: string; decision: string; on: string; why: string };
@@ -575,7 +597,9 @@ export type ReadingMetric =
   | "v-explain-students"
   | "v-explain-similar-right"
   | "v-strategy-answers"
-  | "v-strategy-no-data";
+  | "v-strategy-no-data"
+  | "v-plan-students"
+  | "v-plan-days-done";
 
 export type Reading = { on: string; value: number; note?: string };
 
@@ -743,6 +767,16 @@ export const READINGS: Record<ReadingMetric, { label: string; source: string; en
   "v-strategy-no-data": {
     label: "V: weightage asks answered \"no data\"",
     source: "chat_interactions: weightage, important-chapter or next-year asks whose reply says V has no such data",
+    entries: [],
+  },
+  "v-plan-students": {
+    label: "V: students who made a week plan",
+    source: "study_plans: distinct user_id since liveSince",
+    entries: [],
+  },
+  "v-plan-days-done": {
+    label: "V: planned days done (%)",
+    source: "study_plans items ticked by lib/chat/weekPlan.ts tickPlan over each plan's week (loadPlanActivity), for plans whose week has ended",
     entries: [],
   },
   "v-false-not-found": {
