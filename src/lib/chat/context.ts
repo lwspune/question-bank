@@ -1,6 +1,6 @@
 /**
  * Everything one AI answer from V needs, read live: the system prompt (exams,
- * passes, free limits, bank size, pages), the find_chapters tool, and the set
+ * passes, free limits, bank size, pages), the find_chapters and exam_strategy tools, and the set
  * of paths a reply may link. Moved here from the dormant /api/chat route
  * (2026-10-15) when the typing box started answering.
  *
@@ -30,6 +30,10 @@ import type { PracticeCounts } from "@/lib/activity/practiceCounts";
 import { progressTool } from "./progress";
 import { pageContext } from "./pageContext";
 import { questionTools, type QuestionToolDeps } from "./questionToolSet";
+import { examStrategyTool, type StrategyData } from "./examStrategy";
+import { loadExamStrategy } from "./examStrategyServer";
+import { GUIDE_CATALOG } from "@/lib/guide/guideCatalog";
+import type { ExamSlug } from "@/lib/exam/examContext";
 
 /** Profile slugs as the exam names V's facts use; a retired or unknown slug is dropped. */
 export function profileExamNames(slugs: readonly string[]): string[] {
@@ -66,6 +70,8 @@ export async function loadVContext(
   anon: SupabaseClient,
   opts: {
     loadChapters?: () => Promise<readonly ChapterSearchRow[]>;
+    /** Per-chapter past-paper counts for exam_strategy; defaults to the day-cached read (a script passes the uncached one). */
+    loadStrategy?: (examSlug: string) => Promise<StrategyData | null>;
     page?: string | null;
     /** False: a signed-out visitor, whose question is their only one (lib/chat/anonLimit.ts). */
     signedIn?: boolean;
@@ -150,7 +156,13 @@ export async function loadVContext(
   };
 
   // Always offered, signed in or not: the tool list is part of the cached prefix.
-  const tools = [findChaptersTool, progressTool(opts.loadOwnProgress, opts.loadOwnPractice)];
+  const strategyTool = examStrategyTool({
+    loadChapters,
+    loadStrategy: opts.loadStrategy ?? loadExamStrategy,
+    guidesFor: (slug) => (GUIDE_CATALOG[slug as ExamSlug] ?? []).map((g) => ({ href: g.href, label: g.exam })),
+    onPaths: (paths) => paths.forEach((p) => allowedPaths.add(p)),
+  });
+  const tools = [findChaptersTool, progressTool(opts.loadOwnProgress, opts.loadOwnPractice), strategyTool];
   if (opts.questionTools) tools.push(...questionTools({ ...opts.questionTools, pageChapterId: pageInfo?.chapterId ?? null }));
   return { system, systemTail, tools, allowedPaths };
 }

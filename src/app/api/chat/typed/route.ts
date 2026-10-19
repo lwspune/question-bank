@@ -44,7 +44,7 @@ import { personBucket } from "@/lib/chat/settings";
 import { readChatSettings, countAiAnswersToday } from "@/lib/chat/settingsAdmin";
 import { loadVContext } from "@/lib/chat/context";
 import { askV } from "@/lib/chat/anthropic";
-import { allowedReplyLinks } from "@/lib/chat/replyLinks";
+import { allowedReplyLinks, plainLinks } from "@/lib/chat/replyLinks";
 import { cleanPagePath, isConversationId, modelHistory } from "@/lib/chat/conversation";
 import { createProgressMemo } from "@/lib/chat/progress";
 import { getOwnPerformance } from "@/lib/performance/service";
@@ -221,7 +221,7 @@ export async function POST(request: NextRequest) {
             history,
           });
           if (result.ok) {
-            reply = result.reply;
+            reply = plainLinks(result.reply);
             links = allowedReplyLinks(reply, ctx.allowedPaths);
             recorded = {
               text: reply,

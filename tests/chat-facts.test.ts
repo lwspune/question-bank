@@ -262,8 +262,27 @@ describe("buildSystemPrompt", () => {
   it("lists the subject guides and has V link the subject's own guide for strategy questions", () => {
     const p = buildSystemPrompt({ ...base, guides: ["/guide/nda-physics: NDA PART B Physics, which chapters carry the most marks and what to do first."] });
     expect(p).toMatch(/STRATEGY GUIDES\n\/guide\/nda-physics: NDA PART B Physics/);
-    expect(p).toMatch(/link that subject's guide from STRATEGY GUIDES/);
+    expect(p).toMatch(/subject's guide from STRATEGY GUIDES/);
     expect(p).toMatch(/never say you have no weightage/i);
+  });
+
+  // 2026-10-19 study-partner Phase 2: weightage comes from the bank's past papers, quoted not invented.
+  it("has V read weightage from exam_strategy and quote only its numbers", () => {
+    const p = buildSystemPrompt(base);
+    expect(p).toMatch(/1\. Answer ONLY from the facts below and from what the find_chapters, my_progress and exam_strategy tools return/);
+    expect(p).toMatch(/2\. [^\n]*returned by find_chapters or exam_strategy/);
+    expect(p).toMatch(/5a\. [^\n]*call exam_strategy/);
+    expect(p).toMatch(/5a\. [^\n]*only the percentages it returns/);
+    expect(p).toMatch(/5a\. [^\n]*past papers in our bank/);
+  });
+
+  // 2026-10-19 replay: V wrote "[Ray Optics](/questions/...)" once the tool gave it several pages.
+  it("tells V to write a page as the bare path, never as a markdown link", () => {
+    expect(buildSystemPrompt(base)).toMatch(/2\. [^\n]*never \[text\]\(path\)/);
+  });
+
+  it("answers 'what comes in 2027' with the chapters asked every year", () => {
+    expect(buildSystemPrompt(base)).toMatch(/5\. Nobody knows[^\n]*call exam_strategy[^\n]*asked in every one/);
   });
 
   // 2026-10-19 check: V told a student to pick two subtopics in the builder, which picks whole chapters.

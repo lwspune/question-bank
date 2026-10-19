@@ -175,6 +175,13 @@ export const V_EXPLAIN_STUDENTS_KEEP = 20;
 /** ...and the similar question V offers is answered right at least this often (%). */
 export const V_EXPLAIN_SIMILAR_RIGHT_KEEP_PCT = 50;
 
+/**
+ * "v-strategy" (study-partner Phase 2): keep exam_strategy if at least this many
+ * weightage or "what comes next year" asks are answered from it in two weeks,
+ * and none of them gets "I don't have that data".
+ */
+export const V_STRATEGY_ANSWERS_KEEP = 10;
+
 /** The ISO date `days` (by default `EXPERIMENT_WINDOW_DAYS`) after `liveSince`. */
 export function checkOn(liveSince: string, days: number = EXPERIMENT_WINDOW_DAYS): string {
   const d = new Date(`${liveSince}T00:00:00Z`);
@@ -202,7 +209,8 @@ export type Readout =
   | "mock-together"
   | "pyq-wording"
   | "v-finder"
-  | "v-explain";
+  | "v-explain"
+  | "v-strategy";
 
 export type Experiment = {
   id: string;
@@ -479,6 +487,19 @@ export const EXPERIMENTS: readonly Experiment[] = [
     readout: "v-explain",
     status: "running",
   },
+  {
+    id: "v-strategy",
+    title: "V quotes real weightage (study partner, Phase 2)",
+    change:
+      "V has an exam_strategy tool: each chapter's share of the subject's past-year questions over the last 3 years in the bank, in how many of the last 5 years it was asked, its page, and the subject's guide; without a subject, each subject's share. V quotes only those numbers, and answers \"what will come in 2027\" with the chapters asked every year.",
+    why: "Reading every conversation (2026-10-19): weightage and \"important chapters\" asks were common, and V could only link a guide, which exists for 17 subjects; for the rest it said it had no weightage data.",
+    metric: "V replies whose saved tool calls include exam_strategy; weightage asks answered \"no data\" (read from chat_interactions)",
+    rule: `Keep it if ${V_STRATEGY_ANSWERS_KEEP}+ asks are answered from it in two weeks and none gets "no data"; if a reply quotes a number the tool did not return, tighten rule 5a before anything else.`,
+    liveSince: "2026-10-19",
+    windowDays: 14,
+    readout: "v-strategy",
+    status: "running",
+  },
 ];
 
 export type DecidedAgainst = { title: string; decision: string; on: string; why: string };
@@ -552,7 +573,9 @@ export type ReadingMetric =
   | "v-clarify-turns"
   | "v-practice-after"
   | "v-explain-students"
-  | "v-explain-similar-right";
+  | "v-explain-similar-right"
+  | "v-strategy-answers"
+  | "v-strategy-no-data";
 
 export type Reading = { on: string; value: number; note?: string };
 
@@ -710,6 +733,16 @@ export const READINGS: Record<ReadingMetric, { label: string; source: string; en
   "v-explain-similar-right": {
     label: "Ask V: similar questions answered right (%)",
     source: "user_activity question_practiced with metadata.surface 'v' and metadata.chose set (the card in V): share with metadata.correct = true",
+    entries: [],
+  },
+  "v-strategy-answers": {
+    label: "V: replies answered from exam_strategy",
+    source: "chat_interactions where tool_calls has a call named exam_strategy, since liveSince",
+    entries: [],
+  },
+  "v-strategy-no-data": {
+    label: "V: weightage asks answered \"no data\"",
+    source: "chat_interactions: weightage, important-chapter or next-year asks whose reply says V has no such data",
     entries: [],
   },
   "v-false-not-found": {

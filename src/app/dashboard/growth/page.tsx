@@ -40,6 +40,7 @@ import {
   V_FINDER_NOT_FOUND_MAX_PCT,
   V_EXPLAIN_STUDENTS_KEEP,
   V_EXPLAIN_SIMILAR_RIGHT_KEEP_PCT,
+  V_STRATEGY_ANSWERS_KEEP,
   SPECIFIC_OFFER_CHECKOUT_PCT,
   checkOn,
   type Experiment,
@@ -488,6 +489,17 @@ export default async function GrowthPage() {
             </p>
             <ReadingsList metric="v-explain-students" />
             <ReadingsList metric="v-explain-similar-right" />
+          </div>
+        );
+      case "v-strategy":
+        return (
+          <div className="space-y-3">
+            <p className="text-sm text-muted-foreground">
+              Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))}: keep it if {V_STRATEGY_ANSWERS_KEEP}+ asks are
+              answered from it and none gets &quot;no data&quot;.
+            </p>
+            <ReadingsList metric="v-strategy-answers" />
+            <ReadingsList metric="v-strategy-no-data" />
           </div>
         );
       case "v-finder":

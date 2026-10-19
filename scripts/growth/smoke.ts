@@ -153,6 +153,9 @@ async function main() {
       case "v-explain":
         line = handRead(e.liveSince, ["v-explain-students", "v-explain-similar-right"]);
         break;
+      case "v-strategy":
+        line = handRead(e.liveSince, ["v-strategy-answers", "v-strategy-no-data"]);
+        break;
       case "v-finder":
         line = handRead(e.liveSince, ["v-false-not-found", "v-clarify-turns", "v-practice-after"]);
         break;
