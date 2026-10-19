@@ -1,0 +1,128 @@
+/**
+ * What V is shown of a question, for "Ask V about this question" (2026-10-19,
+ * study-partner Phase 1), and the two rules the server keeps for it.
+ *
+ * The scope agreed with the owner: V explains FROM the question's stored
+ * solution and key. It never works out its own answer and never disagrees
+ * with the key, so the views below hand it those two things and nothing it
+ * would have to solve. A hint gets the question and the solution's first step
+ * only, with no key, so V cannot give the answer away by accident.
+ *
+ * A full explanation is one of the day's free answers, counted the way every
+ * other reveal is (question_practiced rows since midnight IST): `revealCheck`.
+ *
+ * Pure. Spec: tests/chat-question-tools.test.ts.
+ */
+import type { QuestionRow } from "@/lib/questions/query";
+
+export type VQuestion = {
+  id: string;
+  text: string;
+  context: string | null;
+  /** A figure goes with the stem; V cannot see it. */
+  hasFigure: boolean;
+  solution: string | null;
+  format: "mcq" | "subjective" | "numeric";
+  numericAnswer: number | null;
+  options: { label: string; text: string; isCorrect: boolean }[];
+  exam: string;
+  subject: string;
+  chapter: string;
+  subtopic: string | null;
+};
+
+export function toVQuestion(row: QuestionRow): VQuestion {
+  return {
+    id: row.id,
+    text: row.text,
+    context: row.context,
+    hasFigure: Boolean(row.imageUrl),
+    solution: row.solution,
+    format: row.questionFormat ?? "mcq",
+    numericAnswer: row.numericAnswer ?? null,
+    options: row.options.map((o) => ({ label: o.label, text: o.text, isCorrect: o.isCorrect })),
+    exam: row.exam.name,
+    subject: row.subject.name,
+    chapter: row.chapter.name,
+    subtopic: row.subtopic?.name ?? null,
+  };
+}
+
+const FIRST_STEP_MAX = 300;
+
+/** The stored solution's first line, cut at a sentence end when long. A hint is built from it. */
+export function firstStep(solution: string | null): string | null {
+  const line = (solution ?? "")
+    .split(/\r?\n/)
+    .map((l) => l.trim())
+    .find((l) => l.length > 0);
+  if (!line) return null;
+  if (line.length <= FIRST_STEP_MAX) return line;
+  const cut = line.slice(0, FIRST_STEP_MAX);
+  const end = cut.lastIndexOf(". ");
+  return end > 0 ? cut.slice(0, end + 1) : cut;
+}
+
+/** The key as V should quote it. Never guessed: an MCQ with no option marked says so. */
+export function answerText(q: VQuestion): string {
+  if (q.format === "numeric") return q.numericAnswer === null ? "not recorded" : String(q.numericAnswer);
+  if (q.format === "subjective") return "the model answer in the solution";
+  const right = q.options.find((o) => o.isCorrect);
+  return right ? `(${right.label}) ${right.text}` : "not recorded";
+}
+
+function header(q: VQuestion): string[] {
+  const where = `${q.exam}, ${q.subject}, ${q.chapter}${q.subtopic ? ` (${q.subtopic})` : ""}`;
+  const lines = [`Question ${q.id} from ${where}:`];
+  if (q.context) lines.push(`Passage: ${q.context}`);
+  lines.push(q.text);
+  if (q.options.length > 0) lines.push(`Options: ${q.options.map((o) => `(${o.label}) ${o.text}`).join(" | ")}`);
+  if (q.hasFigure) lines.push("This question has a figure you cannot see: explain only from the text and the solution.");
+  return lines;
+}
+
+/** For a hint: the question and the solution's first step. No key, no rest of the solution. */
+export function hintView(q: VQuestion): string {
+  const step = firstStep(q.solution);
+  return [
+    ...header(q),
+    step ? `First step of the stored solution: ${step}` : "No worked solution is stored for this question.",
+    "Give a hint from that first step only. Do not say which option is right.",
+  ].join("\n");
+}
+
+/** For a full explanation: the key and the whole stored solution, and what the student picked. */
+export function explainView(q: VQuestion, chose: string | null): string {
+  const lines = [...header(q), `Correct answer: ${answerText(q)}`];
+  const picked = chose ? q.options.find((o) => o.label === chose) : undefined;
+  if (picked) {
+    lines.push(`The student chose (${picked.label}) ${picked.text}, which is ${picked.isCorrect ? "right" : "wrong"}.`);
+  }
+  lines.push(
+    q.solution && q.solution.trim()
+      ? `Stored solution:\n${q.solution}`
+      : "No worked solution is stored for this question: give the correct answer and say no worked solution is stored."
+  );
+  return lines.join("\n");
+}
+
+export type RevealCheck = { kind: "ok"; counts: boolean } | { kind: "limit"; limit: number };
+
+/**
+ * May V explain this question, and does it use up a free answer? `limit` null
+ * means no limit (switched off, or a pass). A question already opened today is
+ * free: the day's list counts distinct questions.
+ */
+export function revealCheck(input: { limit: number | null; todayIds: readonly string[]; questionId: string }): RevealCheck {
+  if (input.limit === null) return { kind: "ok", counts: false };
+  if (input.todayIds.includes(input.questionId)) return { kind: "ok", counts: false };
+  if (input.todayIds.length >= input.limit) return { kind: "limit", limit: input.limit };
+  return { kind: "ok", counts: true };
+}
+
+/** One of the candidates, never the question itself or one opened today. `random` in [0, 1). */
+export function pickSimilar(candidates: readonly string[], exclude: ReadonlySet<string>, random: () => number = Math.random): string | null {
+  const left = candidates.filter((id) => !exclude.has(id));
+  if (left.length === 0) return null;
+  return left[Math.min(left.length - 1, Math.floor(random() * left.length))];
+}
