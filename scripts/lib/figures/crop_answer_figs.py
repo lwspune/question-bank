@@ -4,7 +4,7 @@
 
 jobs.json = {"pdf": <path>, "outdir": <dir>, "jobs": [{"ref", "parts": [{"page", "bbox"}]}]}
 (the plan from answerFigures.ts; a part may carry `mask`, page boxes painted
-white first). Each part is rendered at 3x; parts are stacked
+white first, and `rotate`, clockwise degrees for a figure printed sideways). Each part is rendered at 3x; parts are stacked
 top to bottom with a thin rule between them. A PNG over 900 KB is quantized to
 256 colours, because storage rejects PNGs over about 1.5 MB and a textbook
 figure loses nothing visible at 256 colours (crop_draw_figures.py's rule).
@@ -101,6 +101,13 @@ def render(pdf, page_no, bbox, mask=(), keep_furniture=False):
     return Image.open(io.BytesIO(pix.tobytes("png"))).convert("RGB")
 
 
+def turn(im, degrees):
+    """A part printed sideways, turned clockwise by `rotate` degrees (90/180/270)."""
+    if not degrees:
+        return im
+    return im.rotate(-degrees, expand=True)
+
+
 def stack(images):
     if len(images) == 1:
         return images[0]
@@ -133,6 +140,11 @@ def selftest():
     assert furniture_signatures(book) == {wm, page_img}, "repeated page images are furniture, a figure is not"
     assert furniture_signatures([{wm}] * 7 + [set()] * 3) == set(), "70% of pages is below the share"
     assert furniture_signatures([{fig}] * 3) == set(), "a short file has no furniture"
+    sideways = Image.new("RGB", (40, 10), "white")
+    sideways.putpixel((0, 0), (255, 0, 0))  # top-left of a page printed with north on the left
+    up = turn(sideways, 90)
+    assert up.size == (10, 40) and up.getpixel((9, 0)) == (255, 0, 0), "rotate 90 turns the part clockwise"
+    assert turn(sideways, None) is sideways, "no rotation leaves the part alone"
     print("selftest ok")
 
 
@@ -144,7 +156,7 @@ def main():
     os.makedirs(spec["outdir"], exist_ok=True)
     out = {}
     for job in spec["jobs"]:
-        png = encode(stack([render(spec["pdf"], p["page"], p["bbox"], p.get("mask", ())) for p in job["parts"]]))
+        png = encode(stack([turn(render(spec["pdf"], p["page"], p["bbox"], p.get("mask", ())), p.get("rotate")) for p in job["parts"]]))
         slug = re.sub(r"[^A-Za-z0-9]+", "_", job["ref"]).strip("_")
         path = os.path.join(spec["outdir"], "ans-" + slug + ".png")
         open(path, "wb").write(png)

@@ -36,10 +36,13 @@ KINDS (each spec is {"kind": ..., ...}):
               l, label, label_loc, at: "<saved name>", to: "<saved name>", save: "<name>", reverse}]}
   structure  {molecules: [{smiles, name, full}], per_row} (at most 2 a row, so names read on a phone);
              full: true draws EVERY atom (C and H too) on a grid, NCERT's Class 10 structural formula
-  map        {region: "brazil", states: {name: colour}, areas: [{name, color, hatch}], rivers: [{name}],
+  map        {region: "brazil" | "world" (+ extent [lon0, lat0, lon1, lat1], home: ISO3), lakes: [name], areas_at: [{at, w, h}], states: {name: colour}, areas: [{name, color, hatch}], rivers: [{name}],
               places: [{name | at: [lon, lat], marker}], parallels: [{lat}], labels: [{text, at}],
               index: [{symbol: "fill"|"line"|"point", text, color}]}   real Natural Earth boundaries
-             (geo/brazil.json); India is NOT available until an official outline is supplied
+             (geo/brazil.json, geo/world.json); a frame that would show India is REFUSED until an official outline is supplied
+  bookmap    {base: "india_balbharati", places: [{name | at, text, marker, ring}], parallels: [{lat, text}],
+              features: [{name, text, color, hatch}]}   the answer marked on the BOOK's own map
+             (geo/india_balbharati.json: the page + a fitted lon/lat->pixel map); India's outline is never drawn
   complex    {items: [{geometry: "oct"|"sq", metal, ligands: {pos: label}, chelates: [[pos, pos, "en"]], label, group}],
               mirror_pairs: [[i, j]], per_row}   octahedron positions 1 top, 6 bottom, 2 left, 4 right,
              3 front, 5 back; square corners 1-4 (1-3, 2-4 trans). Refuses an empty or doubled position, a
@@ -868,37 +871,56 @@ def in_any(pt, rings):
 
 
 MAP_EXTENT = {"brazil": (-74.5, -34.5, -33.5, 6.0)}
+# India and its claimed northern territory, with a margin: no frame may touch it.
+INDIA_BOX = (66.0, 5.0, 99.0, 38.0)
+
+
+def extent_shows_india(extent):
+    x0, y0, x1, y1 = extent
+    a0, b0, a1, b1 = INDIA_BOX
+    return x0 < a1 and x1 > a0 and y0 < b1 and y1 > b0
 
 
 def draw_map(s, out):
     """An outline map drawn from real boundaries (geo/<region>.json): states,
     highlighted states and natural regions shaded, rivers, places, parallels,
     and the INDEX (legend) a board answer is asked to give."""
-    from matplotlib.patches import Polygon as Poly, PathPatch
+    from matplotlib.patches import Polygon as Poly, PathPatch, Rectangle
     from matplotlib.path import Path
 
     region = s.get("region", "brazil")
+    x0, y0, x1, y1 = s["extent"] if "extent" in s else MAP_EXTENT[region]
+    if extent_shows_india((x0, y0, x1, y1)):
+        raise ValueError("map: this frame would show India, whose official outline is not yet supplied")
     geo = load_geo(region)
-    x0, y0, x1, y1 = MAP_EXTENT[region]
     fig, ax = plt.subplots(figsize=s.get("size", [5.6, 5.8]))
     ax.set_facecolor("#e0f2fe")  # sea
-    home = geo["countries"]["BRA"] if region == "brazil" else []
+    home_code = s.get("home", "BRA" if region == "brazil" else None)
+    home = geo["countries"].get(home_code, []) if home_code else []
     for code, rings in geo["countries"].items():
-        if code == "BRA":
+        if code == home_code:
             continue
         for r in rings:
-            ax.add_patch(Poly(r, closed=True, fc="#f1f5f9", ec="#94a3b8", lw=0.6, zorder=1))
+            ax.add_patch(Poly(r, closed=True, fc="#f1f5f9", ec="#94a3b8", lw=0.6, zorder=1.5))
     handles = []
     hl = s.get("states", {})
-    for name, rings in geo["states"].items():
+    if region != "brazil":
+        # Under the neighbours (zorder 1 < 1.5) so an enclave such as Lesotho shows through.
+        for r in home:
+            ax.add_patch(Poly(r, closed=True, fc="white", ec="#94a3b8", lw=0.5, zorder=1))
+    for name, rings in geo.get("states", {}).items():
         for r in rings:
             ax.add_patch(Poly(r, closed=True, fc=hl.get(name, "white"), ec="#94a3b8", lw=0.5, zorder=2))
     clip_verts, clip_codes = [], []
     for r in home:
         clip_verts += r + [r[0]]
         clip_codes += [Path.MOVETO] + [Path.LINETO] * (len(r) - 1) + [Path.CLOSEPOLY]
-    clip = PathPatch(Path(clip_verts, clip_codes), transform=ax.transData, fc="none", ec=INK, lw=1.4, zorder=6)
-    ax.add_patch(clip)
+    if clip_verts:
+        clip = PathPatch(Path(clip_verts, clip_codes), transform=ax.transData, fc="none", ec=INK, lw=1.4, zorder=6)
+        ax.add_patch(clip)
+    else:  # no home country: nothing to clip regions to
+        clip = Rectangle((x0, y0), x1 - x0, y1 - y0, transform=ax.transData, fill=False, lw=0)
+        ax.add_patch(clip)
     from matplotlib.patches import Rectangle
     for a in s.get("areas", []):
         if "state" in a:  # part of a state south of a parallel (the Pampas of Rio Grande do Sul)
@@ -912,6 +934,9 @@ def draw_map(s, out):
             p = Poly(r, closed=True, fc=a.get("color", "#fde68a"), ec="none", alpha=0.85, hatch=a.get("hatch"), zorder=3)
             ax.add_patch(p)
             p.set_clip_path(clip)
+    for lk in s.get("lakes", []):
+        for r in geo["lakes"][lk]:
+            ax.add_patch(Poly(r, closed=True, fc="#bae6fd", ec="#0369a1", lw=0.6, zorder=4))
     for rv in s.get("rivers", []):
         for ln in geo["rivers"][rv["name"]]:
             xs, ys = zip(*ln)
@@ -921,6 +946,11 @@ def draw_map(s, out):
     for pl in s.get("places", []):
         at = pl.get("at") or geo["places"][pl["name"]]
         ax.plot(*at, pl.get("marker", "o"), ms=pl.get("ms", 7), color=pl.get("color", "#b91c1c"), mec="white", mew=0.8, zorder=7)
+    for ar in s.get("areas_at", []):  # a shaded patch around named places (an industrial region)
+        from matplotlib.patches import Ellipse
+        cx, cy = ar["at"]
+        ax.add_patch(Ellipse((cx, cy), ar["w"], ar["h"], angle=ar.get("angle", 0), fc=ar.get("color", "#f97316"), ec=ar.get("edge", "#9a3412"),
+                             alpha=0.55, hatch=ar.get("hatch"), lw=1, zorder=6))
     box = {"boxstyle": "round,pad=0.2", "fc": "white", "ec": "none", "alpha": 0.85}
     for lb in s.get("labels", []):
         ax.text(*lb["at"], lb["text"], fontsize=lb.get("size", 10), ha=lb.get("ha", "center"), va=lb.get("va", "center"),
@@ -947,7 +977,65 @@ def draw_map(s, out):
     finish(fig, out)
 
 
-KINDS = {"map": draw_map, "complex": draw_complex, "field": draw_field, "curve3d": draw_curve3d, "stack": draw_stack, "plot": draw_plot, "histogram": draw_histogram, "bar": draw_bar, "pie": draw_pie, "geometry": draw_geometry, "ray": draw_ray, "circuit": draw_circuit, "structure": draw_structure}
+def bookmap_xy(bm, lon, lat):
+    """lon/lat -> pixel on the book's map, by the fitted quadratic (geo/build_india_balbharati.py)."""
+    f = np.array([1.0, lon, lat, lon * lon, lon * lat, lat * lat])
+    return float(f @ np.array(bm["cx"])), float(f @ np.array(bm["cy"]))
+
+
+def draw_bookmap(s, out):
+    """The answer marked on a book's own map (India: Balbharati's political map,
+    so India's outline is the official one). Nothing of the outline is drawn:
+    only places, a parallel, a river or a range, from their real coordinates."""
+    sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "lib", "figures"))
+    from crop_answer_figs import render
+    from matplotlib.patches import Polygon as Poly, Circle
+    from matplotlib.lines import Line2D
+    from matplotlib.patches import Patch
+
+    bm = load_geo(s.get("base", "india_balbharati"))
+    img = render(bm["pdf"], bm["page"], bm["bbox"])
+    w, h = img.size
+    fig, ax = plt.subplots(figsize=s.get("size", [5.6, 6.3]))
+    ax.imshow(img, extent=(0, w, h, 0), zorder=0)
+    xy = lambda lon, lat: bookmap_xy(bm, lon, lat)
+    handles = []
+    for it in s.get("features", []):
+        f = bm["features"][it["name"]]
+        col = it.get("color", "#dc2626")
+        if f["type"] == "line":
+            for ln in f["coords"]:
+                pts = [xy(lo, la) for lo, la in ln]
+                ax.plot(*zip(*pts), color=col, lw=it.get("width", 3.2), solid_capstyle="round", zorder=5)
+            handles.append(Line2D([], [], color=col, lw=3, label=it["text"]))
+        else:
+            for r in f["coords"]:
+                ax.add_patch(Poly([xy(lo, la) for lo, la in r], closed=True, fc=col, ec=it.get("edge", "#7f1d1d"), alpha=0.6,
+                                  hatch=it.get("hatch"), lw=1.2, zorder=5))
+            handles.append(Patch(fc=col, ec=it.get("edge", "#7f1d1d"), alpha=0.6, hatch=it.get("hatch"), label=it["text"]))
+    for pa in s.get("parallels", []):
+        lons = np.linspace(66, 100, 120)
+        pts = [xy(lo, pa["lat"]) for lo in lons]
+        ax.plot(*zip(*pts), color=pa.get("color", "#dc2626"), lw=2.6, ls="--", zorder=5)
+        handles.append(Line2D([], [], color=pa.get("color", "#dc2626"), lw=2.6, ls="--", label=pa["text"]))
+    for pl in s.get("places", []):
+        lon, lat = pl.get("at") or bm["places"][pl["name"]]
+        x, y = xy(lon, lat)
+        if pl.get("ring"):
+            ax.add_patch(Circle((x, y), pl["ring"], fill=False, ec=pl.get("color", "#dc2626"), lw=3, zorder=6))
+        else:
+            ax.plot(x, y, pl.get("marker", "o"), ms=pl.get("ms", 11), color=pl.get("color", "#dc2626"), mec="white", mew=1.5, zorder=6)
+        handles.append(Line2D([], [], marker="o" if pl.get("ring") else pl.get("marker", "o"), color="none",
+                              mfc="none" if pl.get("ring") else pl.get("color", "#dc2626"), mec=pl.get("color", "#dc2626"),
+                              mew=2 if pl.get("ring") else 1, ms=10, label=pl["text"]))
+    ax.legend(handles=handles, title="Index", loc="upper center", bbox_to_anchor=(0.5, -0.01), fontsize=10, title_fontsize=10, frameon=True)
+    ax.set_xlim(0, w)
+    ax.set_ylim(h, 0)
+    ax.axis("off")
+    finish(fig, out)
+
+
+KINDS = {"bookmap": draw_bookmap, "map": draw_map, "complex": draw_complex, "field": draw_field, "curve3d": draw_curve3d, "stack": draw_stack, "plot": draw_plot, "histogram": draw_histogram, "bar": draw_bar, "pie": draw_pie, "geometry": draw_geometry, "ray": draw_ray, "circuit": draw_circuit, "structure": draw_structure}
 
 
 def draw(spec, out):
@@ -1054,6 +1142,28 @@ def selftest():
     par = geo["rivers"]["Paraguay"][0]
     assert max(par[0][1], par[-1][1]) > -16 and min(par[0][1], par[-1][1]) < -26, "the Paraguay runs from Mato Grosso to the Parana confluence"
     assert in_any([-49.5, -0.9], geo["areas"]["Ilha de Marajó"]), "Marajo lies at the Amazon mouth"
+
+    # World regional maps: never a frame that shows India (owner, 2026-10-19:
+    # India waits for an official Survey of India outline), and every named
+    # city falls inside its own country.
+    assert not extent_shows_india((125, 28, 148, 46)), "Japan frame shows no India"
+    assert extent_shows_india((60, 0, 100, 40)) and extent_shows_india((40, -10, 80, 30)), "frames touching India are caught"
+    try:
+        draw_map({"kind": "map", "region": "world", "extent": [50, 0, 90, 30]}, os.devnull)
+        raise AssertionError("a world map framing India must be refused")
+    except ValueError:
+        pass
+    world = load_geo("world")
+    for place, iso in (("Tokyo", "JPN"), ("Osaka", "JPN"), ("Sydney", "AUS"), ("Johannesburg", "ZAF"), ("Essen", "DEU")):
+        assert in_any(world["places"][place], world["countries"][iso]), f"{place} must fall inside {iso}"
+
+    # Book map (Balbharati's India political map): the fitted lon/lat -> pixel
+    # map lands on the places the book itself prints, and stays honest about it.
+    bm = load_geo("india_balbharati")
+    assert bm["rms_px"] < 4, "the book's graticule fit is tight"
+    for name, (lon, lat, px, py) in bm["controls"].items():
+        x, y = bookmap_xy(bm, lon, lat)
+        assert abs(x - px) < 12 and abs(y - py) < 12, f"{name} lands on the book's own mark"
 
     # Structure grids stay two to a row at most, so names stay legible on a phone.
     assert structure_per_row(8, 4) == 2 and structure_per_row(8, None) == 2, "8 molecules: two per row"

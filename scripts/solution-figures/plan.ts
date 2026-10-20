@@ -13,7 +13,8 @@
  */
 
 export type Bbox = [number, number, number, number];
-export type Part = { page: number; bbox: Bbox; mask?: Bbox[] };
+/** `rotate`: a figure printed sideways is turned clockwise by this many degrees. */
+export type Part = { page: number; bbox: Bbox; mask?: Bbox[]; rotate?: 90 | 180 | 270 };
 /** A figure is either CROPPED from a book (pdf + parts) or DRAWN from a spec
  *  (draw.py renders it from the question's own data). Never both. */
 export type DrawSpec = { kind: string; [k: string]: unknown };
@@ -64,6 +65,7 @@ export function planBatch(batch: Batch): BatchPlan {
       if (!Number.isInteger(p.page) || p.page < 0) errors.push(`${at}: page ${p.page} is not a 0-based page number`);
       if (!boxOk(p.bbox)) errors.push(`${at}: box ${JSON.stringify(p.bbox)} is not a box inside the page`);
       if (p.mask !== undefined && !(Array.isArray(p.mask) && p.mask.every(boxOk))) errors.push(`${at}: mask ${JSON.stringify(p.mask)} is not a list of boxes inside the page`);
+      if (p.rotate !== undefined && ![90, 180, 270].includes(p.rotate)) errors.push(`${at}: rotate ${p.rotate} is not 90, 180 or 270`);
     });
     for (const id of f.ids) {
       if (!UUID.test(id)) {
