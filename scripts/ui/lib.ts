@@ -167,6 +167,8 @@ export function clickScript(text: string): string {
   const el = els.find((e) => e.offsetParent !== null && (e.textContent || "").trim().startsWith(want))
     || els.find((e) => e.offsetParent !== null && (e.getAttribute("aria-label") || "").startsWith(want));
   if (!el) return false;
+  // A button far down a long page would be tapped off screen and the shot would show the top.
+  el.scrollIntoView({ block: "center" });
   el.click();
   return true;
 })()`;
