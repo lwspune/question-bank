@@ -336,6 +336,10 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 
 ### 2026-10
 
+- **2026-10-20 — "Learn on Concept Ladder" chip: a PYQ links to the Concept Ladder lesson that teaches it (conceptladder.in, the sister app), piloted on MHT-CET Circle; Concept Ladder's Circle page links back here. Branch `feat/concept-ladder-link`.**
+  - **Practice here, teaching there (owner):** CET practice inside Concept Ladder would have copied /browse, /drill and /mock, so the two sites link instead.
+  - **Tag first, then subtopic, then the chapter map:** a wrong lesson is worse than a general one, so a subtopic spanning lessons links to the chapter. Pure data in `lib/links/conceptLadder.ts`.
+  - **Its status code proves nothing:** Concept Ladder returns 200 for a missing page, so the prod-contract check reads the page (404 marker, title). Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-10-18 — MH SSC 10 Marathi medium: the board's 35 Marathi prints (2024-2026) read and stored as translations of the English rows, with Marathi solutions; `mh-ssc-10` is `bilingual`, and the switch also shows on `/board`, `/question-papers`, homework and `/mock/<slug>/paper`.**
   - **Same paper, so 0118 (MPSC's pattern):** codes pair (N 919 / N 920); rows found by CONTENT HASH, as 20 repeats live under an earlier sitting.
   - **Read, never translated:** agents got only the numbering skeleton; `mr-check.ts` refuses a mostly-Latin stem, unrenderable maths, an MCQ solution off the English key.
