@@ -385,11 +385,21 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
       const { GET } = await import("@/app/api/chat/features/route");
       const req = () => get("/api/chat/features");
       await setSettings({ ai_enabled: true, explain_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });
-      expect(await (await GET(req())).json()).toEqual({ explain: true });
+      expect(await (await GET(req())).json()).toEqual({ explain: true, plan: false });
       await setSettings({ ai_enabled: false, explain_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });
-      expect(await (await GET(req())).json()).toEqual({ explain: false });
+      expect(await (await GET(req())).json()).toEqual({ explain: false, plan: false });
       await setSettings({ ai_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });
-      expect(await (await GET(req())).json()).toEqual({ explain: false });
+      expect(await (await GET(req())).json()).toEqual({ explain: false, plan: false });
+    });
+
+    // 2026-10-20: "Plan my week" sits beside "Build a practice test" while V's week plan is on.
+    it("tells the window whether the week plan is on, needing the AI on too", async () => {
+      const { GET } = await import("@/app/api/chat/features/route");
+      const req = () => get("/api/chat/features");
+      await setSettings({ ai_enabled: true, plan_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });
+      expect(await (await GET(req())).json()).toEqual({ explain: false, plan: true });
+      await setSettings({ ai_enabled: false, plan_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });
+      expect(await (await GET(req())).json()).toEqual({ explain: false, plan: false });
     });
 
     // 2026-10-19, live: the deployed route kept answering {explain:false} after the switch was saved,
@@ -559,25 +569,6 @@ it("keeps the conversation: stores its id and page, returns the row id, and give
       );
     expect((await seen({ conversationId: "x" })).status).toBe(400);
     expect((await seen({ conversationId: randomUUID() })).status).toBe(401);
-  });
-
-  it("stores a button's answer in the conversation (0159)", async () => {
-    const { POST: FAQ } = await import("@/app/api/chat/faq/route");
-    const conversationId = randomUUID();
-    const res = await FAQ(
-      new NextRequest("http://localhost:3000/api/chat/faq", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "x-forwarded-for": `faq-${RUN}` },
-        body: JSON.stringify({ questionId: "notes", conversationId, pagePath: "/notes" }),
-      })
-    );
-    const { reply } = await res.json();
-    const { data } = await admin
-      .from("chat_interactions")
-      .select("reply, reply_source, page_path")
-      .eq("conversation_id", conversationId);
-    expect(data).toEqual([{ reply, reply_source: "template", page_path: "/notes" }]);
-    await admin.from("chat_interactions").delete().eq("conversation_id", conversationId);
   });
 });
 

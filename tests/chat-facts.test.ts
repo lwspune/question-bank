@@ -278,6 +278,16 @@ describe("buildSystemPrompt", () => {
     expect(p.toLowerCase()).toMatch(/never (make up|invent)/);
   });
 
+  // 2026-10-20 (owner): "20+" is right however exams are counted; the old button's "28" counted
+  // every registry row, and the AI then told a student that number "was off".
+  it("says 20+ exams, never an exact count", () => {
+    expect(buildSystemPrompt(base)).toMatch(/20\+ exams/);
+  });
+
+  it("names the Plan my week button beside the test builder", () => {
+    expect(NAV_FACTS.join("\n")).toContain("Plan my week");
+  });
+
   it("gives abuse the same calm line the route uses, never an answer back (owner, 2026-10-20)", () => {
     const p = buildSystemPrompt(base);
     expect(p).toContain(ABUSE_REPLY);

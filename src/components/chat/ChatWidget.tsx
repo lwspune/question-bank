@@ -3,10 +3,10 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ListChecks, RotateCcw, SendHorizontal, ThumbsDown, ThumbsUp, X } from "lucide-react";
+import { CalendarDays, ListChecks, RotateCcw, SendHorizontal, ThumbsDown, ThumbsUp, X } from "lucide-react";
 import { toast } from "sonner";
-import { trackFunnel, trackFunnelOnce } from "@/lib/analytics/trackFunnel";
-import { PREDEFINED_QUESTIONS, type ChatFaqId } from "@/lib/chat/faq";
+import { trackFunnelOnce } from "@/lib/analytics/trackFunnel";
+import { useVFeatures } from "@/lib/chat/useVExplain";
 import { CHAT_MESSAGE_MAX } from "@/lib/chat/validate";
 import { vPlacement } from "@/lib/chat/placement";
 import { launcherHiddenAfterScroll } from "@/lib/chat/launcherScroll";
@@ -135,7 +135,7 @@ function ReplyText({ text, links, onNavigate }: { text: string; links?: string[]
 const GREETING: ChatTurn = {
   role: "assistant",
   avatar: "laugh",
-  text: "Hi, I'm V. Pick a question below, or type your own.",
+  text: "Hi, I'm V. Ask me about any chapter or exam, or tap a button below.",
 };
 
 /**
@@ -159,7 +159,11 @@ const GREETING: ChatTurn = {
  * this device, raises the badge and V's bubble, and is marked read when the
  * window opens.
  *
- * PHASE 2 — predefined questions, plus (2026-10-09) a typing box. Since
+ * BUTTONS (2026-10-20, owner): "Build a practice test" and, while V's week plan
+ * is switched on, "Plan my week". The six default questions they sat beside
+ * were retired: V's AI answers them (lib/chat/faq.ts keeps their labels).
+ *
+ * TYPING (2026-10-09). Since
  * 2026-10-15 POST /api/chat/typed answers typed questions with AI when
  * /dashboard/chat switches it on (the owner's fixed line otherwise), and a
  * reply's site paths come back as `links` the window renders as links.
@@ -185,6 +189,9 @@ export default function ChatWidget() {
   const [draft, setDraft] = useState("");
   // Signed out with the one typed question used (lib/chat/anonLimit.ts).
   const [signInNeeded, setSignInNeeded] = useState(false);
+  // From the one session read below; "Plan my week" needs an account.
+  const [signedIn, setSignedIn] = useState(false);
+  const features = useVFeatures();
   // "Ask V about this question" (2026-10-19): the question this conversation is about, sent with each message.
   const [asked, setAsked] = useState<AskVDetail | null>(null);
   // After an Ask V on a question not yet tried, V asks "hint or full solution?": offer both as buttons.
@@ -294,6 +301,7 @@ export default function ChatWidget() {
     let active = true;
     void fetchViewerSession().then((session) => {
       if (!active) return;
+      setSignedIn(!!session);
       if (!session && anonAskedFromCookieHeader(document.cookie)) setSignInNeeded(true);
       if (session && accountCheckDue()) void loadAccountConversation();
     });
@@ -457,36 +465,21 @@ export default function ChatWidget() {
     }
   }
 
-  async function ask(id: ChatFaqId, label: string) {
+  /** "Plan my week": V's plan_week, asked like a typed message. Signed out, it asks for an account first. */
+  function planWeek() {
     if (sending) return;
-    addTurn({ role: "user", text: label });
-    trackFunnel("chat_faq_click", { questionId: id });
-    setSending(true);
-    try {
-      const res = await fetch("/api/chat/faq", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ questionId: id, conversationId, pagePath: pathname }),
+    if (!signedIn) {
+      addTurn({ role: "user", text: "Plan my week", transient: true });
+      addTurn({
+        role: "assistant",
+        avatar: "idle",
+        text: "Sign in (it's free) and I'll plan your week: /login",
+        links: ["/login"],
+        transient: true,
       });
-      const data = (await res.json().catch(() => ({}))) as {
-        ok?: boolean;
-        reply?: string;
-        error?: string;
-      };
-      if (!res.ok || !data.ok || !data.reply) {
-        const errorText = data.error || "V couldn't answer that. Please try again.";
-        addTurn({ role: "assistant", avatar: "idle", text: errorText, transient: true });
-        toast.error(errorText);
-        return;
-      }
-      addTurn({ role: "assistant", avatar: "idle", text: data.reply as string });
-    } catch {
-      const errorText = "V is unavailable right now. Please try again.";
-      addTurn({ role: "assistant", avatar: "idle", text: errorText, transient: true });
-      toast.error(errorText);
-    } finally {
-      setSending(false);
+      return;
     }
+    void askTyped("Plan my week");
   }
 
   onAskRef.current = (d: AskVDetail) => {
@@ -710,7 +703,7 @@ export default function ChatWidget() {
 
           <div className="shrink-0 border-t border-border/70 bg-card shadow-[0_-12px_28px_-20px_rgb(15_29_74/0.35)]">
           <div className="relative">
-            <div className="flex gap-2 overflow-x-auto px-3 pb-1 pt-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            <div className="flex flex-wrap gap-2 px-3 pb-1 pt-3">
               <button
                 type="button"
                 onClick={openBuilder}
@@ -720,24 +713,18 @@ export default function ChatWidget() {
                 <ListChecks className="h-3.5 w-3.5" aria-hidden />
                 Build a practice test
               </button>
-              {PREDEFINED_QUESTIONS.map((q) => (
+              {features.plan && (
                 <button
-                  key={q.id}
                   type="button"
-                  onClick={() => void ask(q.id, q.label)}
+                  onClick={planWeek}
                   disabled={sending}
-                  className="shrink-0 whitespace-nowrap rounded-full border border-brand-accent/25 bg-brand-accent/[0.06] px-3.5 py-1.5 text-xs font-medium text-foreground transition-colors hover:border-brand-accent/45 hover:bg-brand-accent/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+                  className="inline-flex shrink-0 items-center gap-1 whitespace-nowrap rounded-full border border-brand-accent/25 bg-brand-accent/[0.06] px-3.5 py-1.5 text-xs font-semibold text-foreground transition-colors hover:border-brand-accent/45 hover:bg-brand-accent/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
                 >
-                  {q.label}
+                  <CalendarDays className="h-3.5 w-3.5" aria-hidden />
+                  Plan my week
                 </button>
-              ))}
+              )}
             </div>
-            {/* Fade hint that more chips are scrollable — the discoverability
-                tradeoff of a single row vs. the old full-height wrapped list. */}
-            <div
-              aria-hidden
-              className="pointer-events-none absolute right-0 top-0 h-full w-10 bg-gradient-to-l from-card to-transparent"
-            />
           </div>
 
           {signInNeeded ? (
