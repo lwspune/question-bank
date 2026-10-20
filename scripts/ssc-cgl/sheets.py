@@ -1,6 +1,7 @@
 """Reading sheets for one shift: what the transcriber reads, and all they read.
 
     python scripts/ssc-cgl/sheets.py <shiftId> [first] [last]
+    python scripts/ssc-cgl/sheets.py <shiftId> --hindi     # Hindi halves only -> hi-sheets/
 
 For each question, stacks SSC's own images (stem, then options A-D) on a white page
 and writes out/<shiftId>/sheets/qNNN.png (both languages), plus batches of consecutive
@@ -35,9 +36,21 @@ def english_half(q):
     return q["stemImages"][: len(q["stemImages"]) // 2], [o[:1] for o in q["options"]]
 
 
-def layout(q, img_dir, en_only=False):
+def hindi_half(q):
+    """The second half of each cell of a bilingual question, the Hindi print. A
+    question printed in one language only (the English section, a Hindi-only GA
+    item) has no half to take: None, and the caller decides."""
+    if not all(len(o) == 2 for o in q["options"]) or len(q["stemImages"]) % 2:
+        return None
+    return q["stemImages"][len(q["stemImages"]) // 2 :], [o[1:] for o in q["options"]]
+
+
+def layout(q, img_dir, en_only=False, halves=None):
     """[(kind, payload, height)] rows for one question."""
-    stem, options = english_half(q) if en_only else (q["stemImages"], q["options"])
+    if halves is not None:
+        stem, options = halves
+    else:
+        stem, options = english_half(q) if en_only else (q["stemImages"], q["options"])
     rows = [("title", f"Q{q['number']}  (PART-{q['part']})", 26)]
     for name in stem:
         w, h = image_size(os.path.join(img_dir, name))
@@ -74,14 +87,50 @@ def draw(rows, img_dir, out_path):
     page.get_pixmap(dpi=72).save(out_path)
 
 
+def out_root():
+    """config.ts OUT: SSC_CGL_OUT when set, else out/ beside this script."""
+    return os.environ.get("SSC_CGL_OUT") or os.path.join(os.path.dirname(os.path.abspath(__file__)), "out")
+
+
+def hindi_sheets(shift, data):
+    """Batches of Hindi halves for the Hindi lane (2026-10-20). The English section
+    (PART-D) prints no Hindi and is skipped. A non-English question with no halves
+    is printed whole and listed, so the reader takes its Hindi from the full cell."""
+    img_dir = data["imgDir"]
+    out = os.path.join(out_root(), shift, "hi-sheets")
+    os.makedirs(out, exist_ok=True)
+    for f in os.listdir(out):
+        os.remove(os.path.join(out, f))
+    whole = []
+    batch, bh = [], 0
+    for q in data["questions"]:
+        if q["part"] == "D":
+            continue
+        halves = hindi_half(q)
+        if halves is None:
+            whole.append(q["number"])
+        rows = layout(q, img_dir, halves=halves)
+        h = sum(r[2] for r in rows)
+        if batch and bh + h > BATCH_HEIGHT:
+            draw([r for b in batch for r in b[1]], img_dir, os.path.join(out, f"batch-{batch[0][0]:03d}-{batch[-1][0]:03d}.png"))
+            batch, bh = [], 0
+        batch.append((q["number"], rows))
+        bh += h
+    if batch:
+        draw([r for b in batch for r in b[1]], img_dir, os.path.join(out, f"batch-{batch[0][0]:03d}-{batch[-1][0]:03d}.png"))
+    print(f"{shift}: Hindi sheets -> {out}; printed whole (no pair): {whole or 'none'}")
+
+
 def main():
     shift = sys.argv[1]
-    here = os.path.dirname(os.path.abspath(__file__))
-    data = json.load(open(os.path.join(here, "out", shift, "questions.json"), encoding="utf8"))
+    data = json.load(open(os.path.join(out_root(), shift, "questions.json"), encoding="utf8"))
+    if "--hindi" in sys.argv:
+        hindi_sheets(shift, data)
+        return
     img_dir = data["imgDir"]
     first = int(sys.argv[2]) if len(sys.argv) > 2 else 1
     last = int(sys.argv[3]) if len(sys.argv) > 3 else 100
-    out = os.path.join(here, "out", shift, "sheets")
+    out = os.path.join(out_root(), shift, "sheets")
     os.makedirs(out, exist_ok=True)
     for f in os.listdir(out):  # batch boundaries move between runs; never mix two runs' batches
         if f.startswith("batch-"):
