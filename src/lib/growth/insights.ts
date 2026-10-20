@@ -155,7 +155,14 @@ export const INSIGHTS: readonly Insight[] = [
     recheckDays: 7,
     howToCheck:
       "Database, last 14 days, accounts whose signup_source is download_box: share never onboarded, share that practised, share back on a later day, and how many have an export_events row. For those with none, count surface_viewed rows with surface download_box vs download_box_over_cap (recorded since 12 Oct): over_cap means the 200-question limit stopped them.",
-    checks: [],
+    checks: [
+      {
+        on: "2026-10-20",
+        verdict: "holds",
+        numbers:
+          "14 days to 20 Oct IST, staff excluded: 197 download-box signups (about 15 a day, up from about 4), 195 never saw /welcome, 194 picked no exam. 30% practised (question, mock, drill or notes checkpoint) vs 78% of the 471 other signups; 37 of 168 old enough came back on a later day (22%, vs 44%). 158 downloaded (149 within 2 minutes); of the 39 who did not, 11 saw the download box and none saw download_box_over_cap, so the 200-question limit is not what stops them.",
+      },
+    ],
     status: "open",
     actedOn:
       "12 Oct: the box now says a selection over 200 is too big before asking anyone to sign in or pay, and records which download view a signed-in student meets. Not built yet: asking the exam right after a download-box signup.",
