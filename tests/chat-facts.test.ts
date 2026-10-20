@@ -387,10 +387,15 @@ describe("buildSystemPrompt", () => {
     expect(p).not.toContain("explain_question");
   });
 
-  it("with explanations on, has V offer a hint or the full solution, explain only from the stored one, and never doubt the key", () => {
+  // Owner, 2026-10-20: a tap on Ask V already says what they want, so V explains without asking
+  // "Want a hint or the full solution?", gives a hint only when asked, and shows the similar question
+  // as a card rather than asking whether they want one.
+  it("with explanations on, has V explain straight away from the stored solution, and never doubt the key", () => {
     const p = buildSystemPrompt({ ...base, explainEnabled: true });
     expect(p).not.toMatch(/you do not solve or explain questions/);
-    expect(p).toMatch(/Want a hint or the full solution\?/);
+    expect(p).not.toMatch(/Want a hint or the full solution/);
+    expect(p).toMatch(/hint only when they ask/i);
+    expect(p).toMatch(/do not ask whether they want/i);
     expect(p).toMatch(/get_question/);
     expect(p).toMatch(/explain_question/);
     expect(p).toMatch(/Explain only from the stored solution/);

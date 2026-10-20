@@ -486,7 +486,7 @@ export const EXPERIMENTS: readonly Experiment[] = [
     id: "v-explain",
     title: "Ask V about this question (study partner, Phase 1)",
     change:
-      "An Ask V button on question cards (/browse, /questions, /board, the mock review) opens V with the question attached. V offers a hint or the full solution, explains only from the stored solution and key, and offers a similar question as a card to answer in the chat. A full explanation is one of the day's free answers.",
+      "An Ask V button on question cards (/browse, /questions, /board, the mock review) opens V with the question attached. V explains straight away (a hint only when asked, since 2026-10-20), only from the stored solution and key, then shows a similar question as a card to answer in the chat. A full explanation is one of the day's free answers.",
     why: "Reading every conversation (2026-10-19): about 1 in 5 students who typed wanted the question on their screen explained, and V could only say \"tap Show solution\". The similar question after an explanation is the learning check: answering one right after an explanation is the evidence it worked.",
     metric:
       "Students with an explanation (question_practiced surface 'v' with no chose); similar-question cards answered (surface 'v' with chose) and the share answered right; whether students who used Ask V come back within 7 days",

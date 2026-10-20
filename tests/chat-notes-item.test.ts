@@ -100,6 +100,8 @@ describe("notesItemBrief", () => {
     const b = notesItemBrief(note, { concept: "benzylic", item: "self" })!;
     expect(b).toMatch(/do not call get_question/i);
     expect(b).toMatch(/never work out your own answer/i);
+    // Owner, 2026-10-20: no "hint or full solution?" question when they tapped Ask V.
+    expect(b).not.toMatch(/Want a hint or the full solution/);
   });
 
   it("is null when the item is not there", () => {

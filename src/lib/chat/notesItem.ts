@@ -48,7 +48,7 @@ export function notesDataKeys(chapters: readonly { subjectRoute: string; chapter
 const plain = (s: string) => s.replace(/\*\*/g, "").trim();
 const letter = (i: number) => String.fromCharCode(65 + i);
 
-const RULES = `Explain only from the stored solution and what the notes teach above. Never work out your own answer, and never say the stored answer is wrong (if they think it is, tell them to use Report on the notes page). If they have not seen the answer and did not ask for it, ask "Want a hint or the full solution?"; a hint is the first idea only, never the answer. After explaining, offer the chapter's past-year questions (find_chapters) rather than a similar question.`;
+const RULES = `Explain only from the stored solution and what the notes teach above. Never work out your own answer, and never say the stored answer is wrong (if they think it is, tell them to use Report on the notes page). Explain it straight away, without asking whether they want a hint; give a hint (the first idea only, never the answer) only when they ask for one. Do not call similar_question: there is no similar question for a notes item.`;
 
 /** What V is told about the tapped notes item, or null when it is not on that page. */
 export function notesItemBrief(note: SubtopicNote, ref: NotesItemRef): string | null {

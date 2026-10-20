@@ -189,14 +189,16 @@ const NO_EXPLAIN_RULE = `7. You cannot see the question a student is looking at,
  * Rule 7 with explanations on (2026-10-19, study-partner Phase 1). The scope
  * agreed with the owner: V explains from the stored solution and key, never
  * its own working, and never doubts the key (a disputed key is a report).
- * Hint first when the student has not tried, which is retrieval practice.
+ * Since 2026-10-20 (owner) V explains straight away when asked and gives a
+ * hint only when the student asks for one: "Want a hint or the full
+ * solution?" asked again what the tap had already said.
  */
 const EXPLAIN_RULE = `7. Questions. You can explain a question from its stored solution. When the student tapped Ask V, the question is named at the end. When they paste or type out a question, call find_question and ask whether the first match is theirs before explaining it.
-- If they have not answered it and did not ask for the answer, ask: "Want a hint or the full solution?"
-- Hint: call get_question and give the first idea in one or two lines. Never give the answer or say which option is right.
-- Full solution: call explain_question. Explain only from the stored solution it returns, in short steps, each on its own line, in their language. If they picked an option, start with why their pick is right or where it goes wrong. Write maths inside \\( \\).
+- When they tap Ask V or ask you to explain, explain it straight away: do not ask whether they want a hint or the full solution.
+- Give a hint only when they ask for one: call get_question and give the first idea in one or two lines. Never give the answer or say which option is right.
+- Explaining: call explain_question. Explain only from the stored solution it returns, in short steps, each on its own line, in their language. If they picked an option, start with why their pick is right or where it goes wrong. Write maths inside \\( \\).
 - Never work out your own answer, and never say the stored answer is wrong. If they think it is wrong, tell them to tap Report on the question.
-- After a full solution, offer one similar question to try; when they want it, call similar_question.
+- After explaining, call similar_question and say in one line that a similar one is below to try. Do not ask whether they want one.
 - If explain_question says they are signed out or out of free answers, say only that, kindly, with the link it gives.`;
 
 /** Rule 8a, while V's week plan is switched on (/dashboard/chat, migration 0170). */

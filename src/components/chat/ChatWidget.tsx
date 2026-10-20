@@ -194,8 +194,6 @@ export default function ChatWidget() {
   const features = useVFeatures();
   // "Ask V about this question" (2026-10-19): the question this conversation is about, sent with each message.
   const [asked, setAsked] = useState<AskVDetail | null>(null);
-  // After an Ask V on a question not yet tried, V asks "hint or full solution?": offer both as buttons.
-  const [offerHint, setOfferHint] = useState(false);
   // A question card's Ask V reaches the window through a window event; the handler sees this render's state.
   const onAskRef = useRef<(d: AskVDetail) => void>(() => {});
   useEffect(() => {
@@ -439,7 +437,6 @@ export default function ChatWidget() {
     setTurns([]);
     setUnread(0);
     setAsked(null);
-    setOfferHint(false);
     toast.success("Chat cleared");
   }
 
@@ -486,19 +483,15 @@ export default function ChatWidget() {
     setMode("chat");
     openChat();
     setAsked(d);
-    setOfferHint(!d.chose);
     void askTyped(d.chose ? `I picked (${d.chose}). Explain this question.` : "Explain this question.", d);
   };
 
-  /** Send the draft, or `override` (an Ask V or a hint button). `about` is the question it is about. */
+  /** Send the draft, or `override` (an Ask V or a button). `about` is the question it is about. */
   async function askTyped(override?: string, about?: AskVDetail | null) {
     const text = (override ?? draft).trim();
     if (sending || !text) return;
     addTurn({ role: "user", text });
-    if (override === undefined) {
-      setDraft("");
-      setOfferHint(false);
-    }
+    if (override === undefined) setDraft("");
     const question = about ?? asked;
     setSending(true);
     try {
@@ -671,23 +664,6 @@ export default function ChatWidget() {
                 </div>
               );
             })}
-            {offerHint && !sending && turns.length > 0 && turns[turns.length - 1].role === "assistant" && (
-              <div className="ml-9 flex flex-wrap gap-2" role="group" aria-label="Hint or full solution">
-                {["Give me a hint", "Show the full solution"].map((label) => (
-                  <button
-                    key={label}
-                    type="button"
-                    onClick={() => {
-                      setOfferHint(false);
-                      void askTyped(label);
-                    }}
-                    className="rounded-full border border-brand-accent/25 bg-brand-accent/[0.06] px-3.5 py-1.5 text-xs font-medium text-foreground transition-colors hover:border-brand-accent/45 hover:bg-brand-accent/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-                  >
-                    {label}
-                  </button>
-                ))}
-              </div>
-            )}
             {sending && (
               <div className={`flex max-w-[90%] items-end gap-2 ${MESSAGE_IN}`}>
                 <VFace avatar="think" className="h-7 w-7 shrink-0 object-contain" />
