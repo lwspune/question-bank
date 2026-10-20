@@ -271,8 +271,11 @@ export function buildSystemTail(who: {
   profileExams?: readonly string[];
   /** The question the student tapped Ask V on, and the option they picked, if any. */
   question?: { id: string; chose: string | null } | null;
+  /** Or a practice question in the notes, with its stored solution (lib/chat/notesItem.ts notesItemBrief). */
+  notesBrief?: string | null;
 }): string {
   const parts: string[] = [];
+  if (who.notesBrief) parts.push(who.notesBrief);
   if (who.question) {
     parts.push(
       `The student tapped Ask V on question ${who.question.id}. ${who.question.chose ? `They picked (${who.question.chose}).` : "They have not answered it yet."}`

@@ -89,6 +89,8 @@ export async function loadVContext(
     plan?: Omit<PlanDeps, "signedIn" | "loadChapters" | "loadStrategy"> | null;
     /** The question the student tapped Ask V on, and the option they picked. */
     question?: { id: string; chose: string | null } | null;
+    /** A notes practice question the student tapped Ask V on, as V is told it (lib/chat/notesItem.ts). */
+    notesBrief?: string | null;
   } = {}
 ): Promise<VContext> {
   const loadChapters = opts.loadChapters ?? listChapterSearchRows;
@@ -131,6 +133,7 @@ export async function loadVContext(
     pageInfo,
     profileExams: profileExamNames(opts.profileExamSlugs ?? []),
     question: opts.questionTools ? (opts.question ?? null) : null,
+    notesBrief: opts.questionTools ? (opts.notesBrief ?? null) : null,
   });
 
   const allowedPaths = new Set(pathsInReply([...NAV_FACTS, ...GUIDE_FACTS, ...exams].join("\n")));

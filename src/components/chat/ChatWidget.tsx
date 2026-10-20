@@ -60,7 +60,7 @@ import VSays from "./VSays";
 import MathText from "./MathText";
 import VQuestionCard from "./VQuestionCard";
 import VPlanCard from "./VPlanCard";
-import { ASK_V_EVENT, type AskVDetail } from "@/lib/chat/askVEvent";
+import { ASK_V_EVENT, isAskVDetail, questionForRequest, type AskVDetail } from "@/lib/chat/askVEvent";
 import { MESSAGE_IN, USER_BUBBLE, V_BUBBLE } from "./chatStyles";
 import PracticeBuilder, { PENDING_BUILD_KEY, logBuilderStep } from "./PracticeBuilder";
 import type { BuilderAnswers } from "@/lib/practiceTests/builder";
@@ -200,8 +200,8 @@ export default function ChatWidget() {
   const onAskRef = useRef<(d: AskVDetail) => void>(() => {});
   useEffect(() => {
     function onAsk(e: Event) {
-      const d = (e as CustomEvent<AskVDetail>).detail;
-      if (d && typeof d.questionId === "string") onAskRef.current(d);
+      const d = (e as CustomEvent<unknown>).detail;
+      if (isAskVDetail(d)) onAskRef.current(d);
     }
     window.addEventListener(ASK_V_EVENT, onAsk);
     return () => window.removeEventListener(ASK_V_EVENT, onAsk);
@@ -509,7 +509,7 @@ export default function ChatWidget() {
           message: text,
           conversationId,
           pagePath: pathname,
-          ...(question ? { question: { id: question.questionId, chose: question.chose } } : {}),
+          ...(question ? { question: questionForRequest(question) } : {}),
         }),
       });
       const data = (await res.json().catch(() => ({}))) as {
