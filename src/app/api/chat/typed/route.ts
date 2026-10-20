@@ -64,6 +64,7 @@ import type { ToolCallLog } from "@/lib/chat/anthropic";
 import { parseAskedQuestion } from "@/lib/chat/questionTools";
 import { parseNotesItemRef } from "@/lib/chat/notesItem";
 import { loadNotesItemBrief } from "@/lib/chat/notesItemServer";
+import { buildMyQuestionDeps } from "@/lib/chat/myQuestionsServer";
 import type { QuestionToolDeps } from "@/lib/chat/questionToolSet";
 import { loadSimilarId, loadVQuestion, searchVQuestions } from "@/lib/chat/questionToolsServer";
 import { revealedToday, spendVReveal } from "@/lib/chat/questionReveal";
@@ -269,6 +270,7 @@ export async function POST(request: NextRequest) {
             profileExamSlugs: ownId ? await readProfileExams(ownId) : [],
             question: asked,
             notesBrief,
+            myQuestions: ownId ? buildMyQuestionDeps(createSupabaseServerClient(), createSupabaseAnonClient(), ownId) : null,
             questionTools: settings.explainEnabled
               ? buildQuestionToolDeps(ownId, {
                   onSimilar: (id) => (similarQuestionId = id),

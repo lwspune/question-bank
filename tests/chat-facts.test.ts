@@ -284,6 +284,14 @@ describe("buildSystemPrompt", () => {
     expect(buildSystemPrompt(base)).toMatch(/20\+ exams/);
   });
 
+  // 2026-10-20: "REMIND OF DOING Q 44 RETRY". V can name the question just opened and save it.
+  it("sends 'this question', 'Q 44' and 'remind me' to the student's own recent questions and /saved", () => {
+    const p = buildSystemPrompt(base);
+    expect(p).toContain("recent_questions");
+    expect(p).toContain("save_question");
+    expect(NAV_FACTS.join(" ")).toContain("/saved");
+  });
+
   it("names the Plan my week button beside the test builder", () => {
     expect(NAV_FACTS.join("\n")).toContain("Plan my week");
   });
@@ -333,7 +341,7 @@ describe("buildSystemPrompt", () => {
   // 2026-10-19 study-partner Phase 2: weightage comes from the bank's past papers, quoted not invented.
   it("has V read weightage from exam_strategy and quote only its numbers", () => {
     const p = buildSystemPrompt(base);
-    expect(p).toMatch(/1\. Answer ONLY from the facts below and from what the find_chapters, my_progress and exam_strategy tools return/);
+    expect(p).toMatch(/1\. Answer ONLY from the facts below and from what the find_chapters, my_progress, exam_strategy and recent_questions tools return/);
     expect(p).toMatch(/2\. [^\n]*returned by find_chapters or exam_strategy/);
     expect(p).toMatch(/5a\. [^\n]*call exam_strategy/);
     expect(p).toMatch(/5a\. [^\n]*only the percentages it returns/);
@@ -351,7 +359,7 @@ describe("buildSystemPrompt", () => {
     expect(p).toMatch(/8a\. [^\n]*(timetable|plan)[^\n]*call plan_week/);
     expect(p).toMatch(/8a\. [^\n]*exam date[^\n]*once/);
     expect(p).toMatch(/8a\. [^\n]*call my_plan/);
-    expect(p).toMatch(/1\. Answer ONLY from the facts below and from what the find_chapters, my_progress, exam_strategy, plan_week and my_plan tools return/);
+    expect(p).toMatch(/1\. Answer ONLY from the facts below and from what the find_chapters, my_progress, exam_strategy, recent_questions, plan_week and my_plan tools return/);
     expect(p).toMatch(/2\. [^\n]*returned by find_chapters, exam_strategy, plan_week or my_plan/);
   });
 

@@ -33,6 +33,7 @@ import { questionTools, type QuestionToolDeps } from "./questionToolSet";
 import { examStrategyTool, type StrategyData } from "./examStrategy";
 import { loadExamStrategy } from "./examStrategyServer";
 import { planTools, type PlanDeps } from "./weekPlan";
+import { myQuestionTools, type MyQuestionDeps } from "./myQuestions";
 import { GUIDE_CATALOG } from "@/lib/guide/guideCatalog";
 import type { ExamSlug } from "@/lib/exam/examContext";
 
@@ -55,6 +56,12 @@ const SIGNED_OUT_PLAN: Omit<PlanDeps, "signedIn" | "loadChapters" | "loadStrateg
   loadPlan: async () => null,
   loadPlanActivity: async () => ({ drills: 0, mocks: 0, chapterQuestions: {} }),
   onPlan: () => {},
+};
+
+const SIGNED_OUT_QUESTIONS: Omit<MyQuestionDeps, "signedIn"> = {
+  now: () => new Date(),
+  loadRecent: async () => [],
+  save: async () => ({ kind: "missing" }),
 };
 
 /** `system` is the same for every question (cached); `systemTail` is this question's page and account state. */
@@ -91,6 +98,8 @@ export async function loadVContext(
     question?: { id: string; chose: string | null } | null;
     /** A notes practice question the student tapped Ask V on, as V is told it (lib/chat/notesItem.ts). */
     notesBrief?: string | null;
+    /** The signed-in student's recent questions and saves (lib/chat/myQuestions.ts); absent when signed out. */
+    myQuestions?: Omit<MyQuestionDeps, "signedIn"> | null;
   } = {}
 ): Promise<VContext> {
   const loadChapters = opts.loadChapters ?? listChapterSearchRows;
@@ -173,7 +182,9 @@ export async function loadVContext(
   const loadStrategy = opts.loadStrategy ?? loadExamStrategy;
   // Signed out the plan tools are still offered (they say "sign in"), so the cached tool list depends on the switch alone.
   const plan = opts.planEnabled ? planTools({ ...(opts.plan ?? SIGNED_OUT_PLAN), signedIn: Boolean(opts.plan), loadChapters, loadStrategy }) : [];
-  const tools = [findChaptersTool, progressTool(opts.loadOwnProgress, opts.loadOwnPractice), strategyTool, ...plan];
+  // Always offered (the tool list is cached); signed out they say "sign in" and touch nothing.
+  const mine = myQuestionTools({ ...(opts.myQuestions ?? SIGNED_OUT_QUESTIONS), signedIn: Boolean(opts.myQuestions) });
+  const tools = [findChaptersTool, progressTool(opts.loadOwnProgress, opts.loadOwnPractice), strategyTool, ...mine, ...plan];
   if (opts.questionTools) tools.push(...questionTools({ ...opts.questionTools, pageChapterId: pageInfo?.chapterId ?? null }));
   return { system, systemTail, tools, allowedPaths };
 }
