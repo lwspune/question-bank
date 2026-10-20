@@ -7,6 +7,8 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { logActivity } from "@/lib/activity/service";
 import { paywallEvent } from "@/lib/activity/clientEvents";
 import { readCountry, withCountry } from "@/lib/acquisition/country";
+import { ebookForPaidOrder, isEbookOrder } from "@/lib/ebooks/order";
+import { grantEbookPurchase } from "@/lib/ebooks/grant";
 
 export const maxDuration = 30;
 
@@ -61,6 +63,28 @@ export async function POST(request: NextRequest) {
       { status: 502 }
     );
   }
+  if (isEbookOrder(fetched.order.notes)) {
+    const book = ebookForPaidOrder(fetched.order, user.id);
+    if (!book.ok && book.reason === "order not paid") {
+      return NextResponse.json({ error: "Payment received. Your book will be ready shortly." }, { status: 202 });
+    }
+    if (!book.ok) {
+      console.error("verify: ebook order refused", book.reason);
+      return NextResponse.json({ error: "Payment verification failed" }, { status: 400 });
+    }
+    const granted = await grantEbookPurchase({
+      userId: user.id,
+      paymentId: body.razorpay_payment_id,
+      ebookSlug: book.grant.ebookSlug,
+      amountPaise: book.grant.amountPaise,
+    });
+    if (granted.kind === "error") {
+      console.error("ebook grant after verify failed:", granted.message);
+      return NextResponse.json({ error: "Could not activate your book" }, { status: 500 });
+    }
+    return NextResponse.json({ ok: true });
+  }
+
   const decided = planForPaidOrder(fetched.order, user.id);
   if (!decided.ok && decided.reason === "order not paid") {
     // Captured a moment later; the order.paid webhook grants it then.

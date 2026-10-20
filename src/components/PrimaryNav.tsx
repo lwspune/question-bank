@@ -75,7 +75,8 @@ export default function PrimaryNav({
       ? [
           {
             id: "books" as const,
-            label: "Books",
+            // "Book editor", not "Books": the public store's button is "Ebooks".
+            label: "Book editor",
             href: "/books",
             Icon: BookMarked,
           },

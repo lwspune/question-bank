@@ -34,9 +34,10 @@ declare global {
 /**
  * Where a checkout started. The download box buys in place since 2026-10-04;
  * "paper_download" is the past-paper box on /mock pages (2026-10-07);
- * "formula_sheet" the chapter formula-sheet box on /notes (2026-10-10).
+ * "formula_sheet" the chapter formula-sheet box on /notes (2026-10-10);
+ * "ebook" the buy box on a /store book page (2026-10-20).
  */
-export type CheckoutSurface = "download_box" | "paper_download" | "formula_sheet" | "pricing";
+export type CheckoutSurface = "download_box" | "paper_download" | "formula_sheet" | "pricing" | "ebook";
 
 /** The paywall gate the server logs for each surface (see checkoutGate). */
 const GATE: Record<CheckoutSurface, "teacher" | "pricing"> = {
@@ -44,6 +45,7 @@ const GATE: Record<CheckoutSurface, "teacher" | "pricing"> = {
   paper_download: "teacher",
   formula_sheet: "teacher",
   pricing: "pricing",
+  ebook: "pricing",
 };
 
 const SCRIPT_SRC = "https://checkout.razorpay.com/v1/checkout.js";
@@ -80,11 +82,15 @@ export type CheckoutOutcome = "paid" | "pending";
  */
 export function useCheckout({
   planId,
+  ebookSlug,
   surface,
   box,
   onDone,
 }: {
-  planId: string;
+  /** A pass. */
+  planId?: string;
+  /** Or an ebook (2026-10-20); the server prices it for this buyer. */
+  ebookSlug?: string;
   surface: CheckoutSurface;
   /** Which download box the checkout started from, for the paywall_event rows. */
   box?: DownloadBox;
@@ -99,15 +105,17 @@ export function useCheckout({
 
   const start = useCallback(async () => {
     setBusy(true);
+    // An ebook's checkout events name the book (2026-10-20), so a drop-off can be placed per book.
+    const funnelProps: Record<string, string> = ebookSlug ? { surface, slug: ebookSlug } : { surface };
     const fail = (message: string) => {
-      trackFunnel("checkout_failed", { surface });
+      trackFunnel("checkout_failed", funnelProps);
       toast.error(message);
       setBusy(false);
     };
     // Money was taken but verify refused or broke: the webhook still grants
     // from the order notes, so send the buyer to their account, as before.
     const paidButUnverified = (message?: string) => {
-      trackFunnel("checkout_failed", { surface });
+      trackFunnel("checkout_failed", funnelProps);
       toast.error(message || "Payment received. Access will activate shortly. Check your account.");
       setBusy(false);
       onDone("pending");
@@ -120,7 +128,7 @@ export function useCheckout({
       const orderRes = await fetch("/api/billing/order", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ planId, gate: GATE[surface], box }),
+        body: JSON.stringify(ebookSlug ? { ebookSlug } : { planId, gate: GATE[surface], box }),
       });
       const order = (await orderRes.json()) as {
         orderId?: string;
@@ -153,13 +161,13 @@ export function useCheckout({
             });
             const verify = (await verifyRes.json()) as { ok?: boolean; error?: string };
             if (verifyRes.ok && verify.ok) {
-              trackFunnel("checkout_paid", { surface });
-              toast.success("Payment successful. Access unlocked!");
+              trackFunnel("checkout_paid", funnelProps);
+              toast.success(ebookSlug ? "Payment successful. Your book is ready to download." : "Payment successful. Access unlocked!");
               setBusy(false);
               onDone("paid");
             } else if (verifyRes.status === 202) {
               // Paid, not yet captured: the order.paid webhook grants it shortly.
-              trackFunnel("checkout_paid", { surface });
+              trackFunnel("checkout_paid", funnelProps);
               toast.info(verify.error || "Payment received. Access will activate shortly.");
               setBusy(false);
               onDone("pending");
@@ -173,17 +181,18 @@ export function useCheckout({
         modal: {
           ondismiss: () => {
             setBusy(false);
-            trackFunnel("checkout_dismissed", { surface });
-            sendActivity({ kind: "paywall_event", step: "checkout_dismissed", gate: GATE[surface], planId, box });
+            trackFunnel("checkout_dismissed", funnelProps);
+            // The paywall funnel is the pass's; an ebook's dismissals are the Vercel event alone.
+            if (planId) sendActivity({ kind: "paywall_event", step: "checkout_dismissed", gate: GATE[surface], planId, box });
           },
         },
       });
-      trackFunnel("checkout_opened", { surface });
+      trackFunnel("checkout_opened", funnelProps);
       rzp.open();
     } catch (err) {
       fail(err instanceof Error ? err.message : "Checkout failed");
     }
-  }, [planId, surface, onDone]);
+  }, [planId, ebookSlug, surface, onDone]);
 
   return { start, busy };
 }

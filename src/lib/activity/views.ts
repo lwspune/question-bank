@@ -42,6 +42,11 @@ export const SURFACES = [
   "formula",
   "question_papers",
   "past_paper",
+  // The ebook store and each book's page (2026-10-20), with metadata.path, so
+  // the book a student opened is in the address; and a signed-in student's
+  // tap on a book's free sample, written by the sample route (ebookSampleEvent).
+  "store",
+  "ebook_sample",
 ] as const;
 
 export type Surface = (typeof SURFACES)[number];
@@ -51,7 +56,7 @@ export function isSurface(v: unknown): v is Surface {
   return typeof v === "string" && SURFACE_SET.has(v);
 }
 
-export type ReadingSurface = "notes" | "board" | "questions" | "guide" | "formula" | "question_papers" | "past_paper";
+export type ReadingSurface = "notes" | "board" | "questions" | "guide" | "formula" | "question_papers" | "past_paper" | "store";
 
 /** A section's first path segment -> its reading surface. */
 const READING_SECTIONS: Record<string, ReadingSurface> = {
@@ -61,6 +66,7 @@ const READING_SECTIONS: Record<string, ReadingSurface> = {
   guide: "guide",
   formula: "formula",
   "question-papers": "question_papers",
+  store: "store",
 };
 const READING_SET: ReadonlySet<string> = new Set(Object.values(READING_SECTIONS).concat("past_paper"));
 const PATH_RE = /^\/[a-z0-9-]+(\/[a-z0-9-]+)*$/;
@@ -107,4 +113,18 @@ export function surfaceViewedEvent(
     event.refKind = surface;
   }
   return event;
+}
+
+/**
+ * A signed-in student took a book's free sample (2026-10-20): the step between
+ * opening a book and buying it. Written by the sample route, which knows who
+ * is asking; one row per book per student per IST day.
+ */
+export function ebookSampleEvent(userId: string, slug: string, now: Date): ActivityEvent {
+  const path = `/store/${slug}`;
+  return {
+    kind: "surface_viewed",
+    metadata: { surface: "ebook_sample", path },
+    dedupeKey: `view:ebook_sample:${path}:${userId}:${istDayKey(now)}`,
+  };
 }

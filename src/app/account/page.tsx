@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { ShieldCheck, Clock, Sparkles } from "lucide-react";
+import { ShieldCheck, Clock, Sparkles, BookOpen } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import { getSessionMember, getSessionUser } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
@@ -40,19 +40,28 @@ function formatDate(iso: string | null): string {
     : d.toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" });
 }
 
+/** A to-one embed arrives as an object but may be typed as an array. */
+function ebookTitle(embed: unknown, slug: string): string {
+  const row = Array.isArray(embed) ? embed[0] : embed;
+  const title = (row as { title?: unknown } | null)?.title;
+  return typeof title === "string" ? title : slug;
+}
+
 export default async function AccountPage() {
   const [member, user] = await Promise.all([getSessionMember(), getSessionUser()]);
   if (!user) redirect("/login?next=/account");
 
   const db = createSupabaseServerClient();
   const freeMocks = await readFreeMockLimit(db);
-  const [rows, profile, invites, myBatches] = await Promise.all([
+  const [rows, profile, invites, myBatches, { data: books }] = await Promise.all([
     loadEntitlements(db, user.id),
     getOwnProfile(db, user.id),
     // Resolved by VERIFIED email on read — there is no binding step at signup,
     // so an invite sent before this account existed shows up here too.
     user.email ? listPendingInvitesForEmail(user.email) : Promise.resolve([]),
     listMyBatches(user.id),
+    // Bought ebooks (migration 0172): own rows only, by RLS.
+    db.from("ebook_purchases").select("ebook_slug, created_at, ebook:ebooks(title)").eq("user_id", user.id).eq("status", "active").order("created_at"),
   ]);
   const now = Date.now();
   // One line per pass held — a teacher who also bought the Mock Pass sees both.
@@ -157,6 +166,27 @@ export default async function AccountPage() {
             </div>
           )}
         </div>
+
+        {books && books.length > 0 ? (
+          <section className="mt-6 rounded-xl border bg-card p-6" aria-labelledby="your-books">
+            <h2 id="your-books" className="flex items-center gap-2 font-semibold">
+              <BookOpen className="h-4 w-4 text-brand-accent" aria-hidden /> Your books
+            </h2>
+            <ul className="mt-3 space-y-2">
+              {books.map((b) => (
+                <li key={b.ebook_slug as string} className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1 text-sm">
+                  <span>
+                    <span className="font-medium">{ebookTitle(b.ebook, b.ebook_slug as string)}</span>
+                    <span className="text-muted-foreground"> · bought {formatDate(b.created_at as string)}</span>
+                  </span>
+                  <Link href={`/store/${b.ebook_slug as string}`} className="font-medium text-primary hover:underline">
+                    Open and download →
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ) : null}
       </main>
     </>
   );
