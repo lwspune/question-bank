@@ -56,7 +56,7 @@ export const listExams = unstable_cache(
       .from("exams")
       .select("id, name")
       .order("name");
-    // Niche-site exams (IMAT) are never listed on PYQ Vault.
+    // Niche-site exams are never listed on PYQ Vault (none since 2026-10-20).
     return withoutNicheExams(data ?? []);
   },
   ["browse-taxonomy", "exams"],

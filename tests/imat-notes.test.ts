@@ -1,20 +1,20 @@
 /**
- * IMAT notes: the contract for the niche site's teaching notes.
+ * IMAT notes: the contract for IMAT's teaching notes.
  *
- * The notes reuse the /notes data shapes (SubtopicNote, ConceptUnit) so the
- * shared renderer draws them, but they live in their own registry,
- * IMAT_NOTES_CHAPTERS, because PYQ Vault must show nothing of IMAT
- * (NICHE_SITES_SPEC.md). Everything NOTES_CHAPTERS feeds (nav, sitemap,
- * /notes index, notes-lint) never sees them.
+ * The notes reuse the /notes data shapes (SubtopicNote, ConceptUnit) and are
+ * authored in their own registry, IMAT_NOTES_CHAPTERS, which NOTES_CHAPTERS
+ * takes in whole: IMAT is on PYQ Vault since 2026-10-20
+ * (NICHE_SITES_SPEC.md, top note).
  *
  * Two differences from PYQ Vault notes, both pinned by checkImatChapter:
- *   1. No featured past question (`pyqExampleId`). Every IMAT row is PRIVATE,
- *      and 2011-2022 can never be published, so the notes are fully authored.
+ *   1. No featured past question (`pyqExampleId`). The ministry papers wait on
+ *      a copyright opinion and 2011-2022 can never be published, so the notes
+ *      are fully authored.
  *   2. The exam-transfer rung is the self-check, written as an IMAT item:
  *      five options, one correct, the correct letter varying across a chapter.
  */
 import { describe, it, expect } from "vitest";
-import { readFileSync, readdirSync, statSync } from "node:fs";
+import { statSync } from "node:fs";
 import { join, relative } from "node:path";
 import { NOTES_CHAPTERS } from "@/lib/notes/chapters";
 import { IMAT_NOTES_CHAPTERS, IMAT_NOTES_SUBJECTS } from "@/lib/sites/imat/notes/registry";
@@ -25,28 +25,24 @@ import { loadBankChapters, loadPastQuestions, loadReviews } from "../scripts/ima
 const ROOT = process.cwd();
 const BANK = loadBankChapters(join(ROOT, "scripts", "imat", "data"));
 
-function listFiles(dir: string): string[] {
-  return readdirSync(dir).flatMap((name) => {
-    const p = join(dir, name);
-    return statSync(p).isDirectory() ? listFiles(p) : [p];
-  });
-}
-
-describe("IMAT notes stay off PYQ Vault", () => {
-  it("NOTES_CHAPTERS carries no IMAT chapter", () => {
-    expect(
-      NOTES_CHAPTERS.filter((c) => c.examName === "IMAT" || c.subjectRoute.startsWith("imat"))
-    ).toEqual([]);
+describe("IMAT notes are part of PYQ Vault's notes", () => {
+  it("NOTES_CHAPTERS carries every IMAT chapter exactly once", () => {
+    const imat = NOTES_CHAPTERS.filter((c) => c.examName === "IMAT");
+    expect(imat).toEqual([...IMAT_NOTES_CHAPTERS]);
   });
 
-  it("only the IMAT tree and its staff preview import the IMAT notes", () => {
-    const allowed = [join("src", "lib", "sites", "imat"), join("src", "app", "dashboard", "imat-notes")];
-    const offenders = listFiles(join(ROOT, "src"))
-      .filter((f) => /\.(ts|tsx)$/.test(f))
-      .filter((f) => readFileSync(f, "utf8").includes("sites/imat/notes"))
-      .map((f) => relative(ROOT, f))
-      .filter((f) => !allowed.some((a) => f.startsWith(a)));
-    expect(offenders).toEqual([]);
+  it("has a subject page for every IMAT subject", () => {
+    for (const s of IMAT_NOTES_SUBJECTS) {
+      expect(statSync(join(ROOT, "src", "app", "notes", s.subjectRoute, "page.tsx")).isFile(), s.subjectRoute).toBe(true);
+    }
+  });
+
+  it("has a chapter page and a subtopic page for every IMAT chapter", () => {
+    for (const c of IMAT_NOTES_CHAPTERS) {
+      const dir = join(ROOT, "src", "app", "notes", c.subjectRoute, c.chapterSlug);
+      expect(statSync(join(dir, "page.tsx")).isFile(), relative(ROOT, dir)).toBe(true);
+      expect(statSync(join(dir, "[subtopicSlug]", "page.tsx")).isFile(), relative(ROOT, dir)).toBe(true);
+    }
   });
 });
 
@@ -71,10 +67,11 @@ describe("IMAT notes registry", () => {
     expect(new Set(keys).size).toBe(keys.length);
   });
 
-  it("keeps page and concept slugs globally unique, apart from PYQ Vault's", () => {
-    const pyqvSub = new Set(NOTES_CHAPTERS.flatMap((c) => Object.keys(c.notes)));
+  it("keeps page and concept slugs globally unique, apart from every other exam's", () => {
+    const others = NOTES_CHAPTERS.filter((c) => c.examName !== "IMAT");
+    const pyqvSub = new Set(others.flatMap((c) => Object.keys(c.notes)));
     const pyqvConcept = new Set(
-      NOTES_CHAPTERS.flatMap((c) => Object.values(c.notes).flatMap((n) => n.concepts.map((k) => k.slug)))
+      others.flatMap((c) => Object.values(c.notes).flatMap((n) => n.concepts.map((k) => k.slug)))
     );
     const sub = IMAT_NOTES_CHAPTERS.flatMap((c) => Object.keys(c.notes));
     const concept = IMAT_NOTES_CHAPTERS.flatMap((c) =>

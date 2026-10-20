@@ -98,6 +98,7 @@ describe("needsNotesLint", () => {
   it("exports the roots so the import-graph guard can pin them", () => {
     expect(NOTES_LINT_ROOTS).toContain("src/app/notes/");
     expect(NOTES_LINT_ROOTS).toContain("src/lib/notes/");
+    expect(NOTES_LINT_ROOTS).toContain("src/lib/sites/imat/notes/");
     expect(NOTES_LINT_ROOTS).toContain("scripts/notes-lint.ts");
   });
 });

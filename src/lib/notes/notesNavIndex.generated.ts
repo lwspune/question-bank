@@ -1865,5 +1865,327 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "CDS English",
     "chapterSlug": "reading-comprehension",
     "subtopicCount": 11
+  },
+  {
+    "examName": "IMAT",
+    "subjectRoute": "imat-biology",
+    "subjectDisplay": "IMAT Biology",
+    "chapterSlug": "cell-structure-membranes",
+    "subtopicCount": 6
+  },
+  {
+    "examName": "IMAT",
+    "subjectRoute": "imat-biology",
+    "subjectDisplay": "IMAT Biology",
+    "chapterSlug": "biomolecules-enzymes",
+    "subtopicCount": 6
+  },
+  {
+    "examName": "IMAT",
+    "subjectRoute": "imat-biology",
+    "subjectDisplay": "IMAT Biology",
+    "chapterSlug": "bioenergetics-metabolism",
+    "subtopicCount": 6
+  },
+  {
+    "examName": "IMAT",
+    "subjectRoute": "imat-biology",
+    "subjectDisplay": "IMAT Biology",
+    "chapterSlug": "molecular-biology",
+    "subtopicCount": 6
+  },
+  {
+    "examName": "IMAT",
+    "subjectRoute": "imat-biology",
+    "subjectDisplay": "IMAT Biology",
+    "chapterSlug": "genetics",
+    "subtopicCount": 6
+  },
+  {
+    "examName": "IMAT",
+    "subjectRoute": "imat-biology",
+    "subjectDisplay": "IMAT Biology",
+    "chapterSlug": "cell-division-reproduction",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "IMAT",
+    "subjectRoute": "imat-biology",
+    "subjectDisplay": "IMAT Biology",
+    "chapterSlug": "evolution-ecology",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "IMAT",
+    "subjectRoute": "imat-biology",
+    "subjectDisplay": "IMAT Biology",
+    "chapterSlug": "microorganisms-biotechnology",
+    "subtopicCount": 6
+  },
+  {
+    "examName": "IMAT",
+    "subjectRoute": "imat-biology",
+    "subjectDisplay": "IMAT Biology",
+    "chapterSlug": "human-anatomy-physiology",
+    "subtopicCount": 8
+  },
+  {
+    "examName": "IMAT",
+    "subjectRoute": "imat-chemistry",
+    "subjectDisplay": "IMAT Chemistry",
+    "chapterSlug": "organic-chemistry",
+    "subtopicCount": 6
+  },
+  {
+    "examName": "IMAT",
+    "subjectRoute": "imat-chemistry",
+    "subjectDisplay": "IMAT Chemistry",
+    "chapterSlug": "atomic-structure",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "IMAT",
+    "subjectRoute": "imat-chemistry",
+    "subjectDisplay": "IMAT Chemistry",
+    "chapterSlug": "periodic-table",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "IMAT",
+    "subjectRoute": "imat-chemistry",
+    "subjectDisplay": "IMAT Chemistry",
+    "chapterSlug": "chemical-bonding",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "IMAT",
+    "subjectRoute": "imat-chemistry",
+    "subjectDisplay": "IMAT Chemistry",
+    "chapterSlug": "inorganic-nomenclature",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "IMAT",
+    "subjectRoute": "imat-chemistry",
+    "subjectDisplay": "IMAT Chemistry",
+    "chapterSlug": "stoichiometry-reactions",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "IMAT",
+    "subjectRoute": "imat-chemistry",
+    "subjectDisplay": "IMAT Chemistry",
+    "chapterSlug": "solutions-concentration",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "IMAT",
+    "subjectRoute": "imat-chemistry",
+    "subjectDisplay": "IMAT Chemistry",
+    "chapterSlug": "states-of-matter-gas-laws",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "IMAT",
+    "subjectRoute": "imat-chemistry",
+    "subjectDisplay": "IMAT Chemistry",
+    "chapterSlug": "equilibrium-kinetics-energetics",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "IMAT",
+    "subjectRoute": "imat-chemistry",
+    "subjectDisplay": "IMAT Chemistry",
+    "chapterSlug": "acids-bases-ph",
+    "subtopicCount": 6
+  },
+  {
+    "examName": "IMAT",
+    "subjectRoute": "imat-chemistry",
+    "subjectDisplay": "IMAT Chemistry",
+    "chapterSlug": "redox",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "IMAT",
+    "subjectRoute": "imat-physics",
+    "subjectDisplay": "IMAT Physics",
+    "chapterSlug": "fluids",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "IMAT",
+    "subjectRoute": "imat-physics",
+    "subjectDisplay": "IMAT Physics",
+    "chapterSlug": "electricity",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "IMAT",
+    "subjectRoute": "imat-physics",
+    "subjectDisplay": "IMAT Physics",
+    "chapterSlug": "magnetism",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "IMAT",
+    "subjectRoute": "imat-physics",
+    "subjectDisplay": "IMAT Physics",
+    "chapterSlug": "heat-thermodynamics",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "IMAT",
+    "subjectRoute": "imat-physics",
+    "subjectDisplay": "IMAT Physics",
+    "chapterSlug": "oscillations-waves",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "IMAT",
+    "subjectRoute": "imat-physics",
+    "subjectDisplay": "IMAT Physics",
+    "chapterSlug": "optics",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "IMAT",
+    "subjectRoute": "imat-physics",
+    "subjectDisplay": "IMAT Physics",
+    "chapterSlug": "measurement-units",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "IMAT",
+    "subjectRoute": "imat-physics",
+    "subjectDisplay": "IMAT Physics",
+    "chapterSlug": "kinematics",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "IMAT",
+    "subjectRoute": "imat-physics",
+    "subjectDisplay": "IMAT Physics",
+    "chapterSlug": "dynamics-work-energy",
+    "subtopicCount": 6
+  },
+  {
+    "examName": "IMAT",
+    "subjectRoute": "imat-maths",
+    "subjectDisplay": "IMAT Mathematics",
+    "chapterSlug": "functions",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "IMAT",
+    "subjectRoute": "imat-maths",
+    "subjectDisplay": "IMAT Mathematics",
+    "chapterSlug": "trigonometry",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "IMAT",
+    "subjectRoute": "imat-maths",
+    "subjectDisplay": "IMAT Mathematics",
+    "chapterSlug": "geometry",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "IMAT",
+    "subjectRoute": "imat-maths",
+    "subjectDisplay": "IMAT Mathematics",
+    "chapterSlug": "probability-statistics",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "IMAT",
+    "subjectRoute": "imat-maths",
+    "subjectDisplay": "IMAT Mathematics",
+    "chapterSlug": "numbers-powers-logarithms",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "IMAT",
+    "subjectRoute": "imat-maths",
+    "subjectDisplay": "IMAT Mathematics",
+    "chapterSlug": "sets-logic",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "IMAT",
+    "subjectRoute": "imat-maths",
+    "subjectDisplay": "IMAT Mathematics",
+    "chapterSlug": "equations-inequalities",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "IMAT",
+    "subjectRoute": "imat-logic",
+    "subjectDisplay": "IMAT Logical Reasoning",
+    "chapterSlug": "critical-thinking",
+    "subtopicCount": 6
+  },
+  {
+    "examName": "IMAT",
+    "subjectRoute": "imat-logic",
+    "subjectDisplay": "IMAT Logical Reasoning",
+    "chapterSlug": "numerical-reasoning",
+    "subtopicCount": 6
+  },
+  {
+    "examName": "IMAT",
+    "subjectRoute": "imat-logic",
+    "subjectDisplay": "IMAT Logical Reasoning",
+    "chapterSlug": "data-interpretation",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "IMAT",
+    "subjectRoute": "imat-logic",
+    "subjectDisplay": "IMAT Logical Reasoning",
+    "chapterSlug": "deductive-logic",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "IMAT",
+    "subjectRoute": "imat-logic",
+    "subjectDisplay": "IMAT Logical Reasoning",
+    "chapterSlug": "spatial-sequence-reasoning",
+    "subtopicCount": 6
+  },
+  {
+    "examName": "IMAT",
+    "subjectRoute": "imat-reading",
+    "subjectDisplay": "IMAT Reading Skills and General Knowledge",
+    "chapterSlug": "reading-comprehension",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "IMAT",
+    "subjectRoute": "imat-reading",
+    "subjectDisplay": "IMAT Reading Skills and General Knowledge",
+    "chapterSlug": "english-language-grammar",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "IMAT",
+    "subjectRoute": "imat-reading",
+    "subjectDisplay": "IMAT Reading Skills and General Knowledge",
+    "chapterSlug": "history",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "IMAT",
+    "subjectRoute": "imat-reading",
+    "subjectDisplay": "IMAT Reading Skills and General Knowledge",
+    "chapterSlug": "literature-philosophy",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "IMAT",
+    "subjectRoute": "imat-reading",
+    "subjectDisplay": "IMAT Reading Skills and General Knowledge",
+    "chapterSlug": "politics-economics-society",
+    "subtopicCount": 5
   }
 ];

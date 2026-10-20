@@ -247,7 +247,7 @@ describe.skipIf(!HAS_ENV)("POST /api/activity/practice — bank verdicts", () =>
   it("rejects a malformed pick (400) and writes nothing", async () => {
     const q = qs[0];
     const before = (await rows(q.id)).length;
-    const res = await post({ questionIds: [q.id], surface: "bank", picks: { [q.id]: "E" } });
+    const res = await post({ questionIds: [q.id], surface: "bank", picks: { [q.id]: "F" } }); // E is a real option since IMAT
     expect(res.status).toBe(400);
     expect(await rows(q.id)).toHaveLength(before);
   });

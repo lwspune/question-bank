@@ -32,6 +32,7 @@
 export const NOTES_LINT_ROOTS = [
   "src/app/notes/", // the editorial modules (every chapter's _data) + their types
   "src/lib/notes/", // NOTES_CHAPTERS registry + the helpers the lint imports
+  "src/lib/sites/imat/notes/", // IMAT's chapters, authored there and taken in whole by NOTES_CHAPTERS
   "scripts/notes-lint.ts", // the lint itself
   "supabase/", // the schema it reads (taxonomy, question_concept_tags)
   "package.json",
