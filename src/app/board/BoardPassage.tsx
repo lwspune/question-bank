@@ -8,11 +8,11 @@
  */
 import BlockText from "@/components/math/BlockText";
 import { BilingualStem } from "@/components/i18n/BilingualText";
-import { hasMarathi } from "@/lib/i18n/bilingual";
+import { hasTranslation } from "@/lib/i18n/bilingual";
 import { asBilingual, type BoardQuestion } from "@/lib/board/query";
 
 export default function BoardPassage({ q }: { q: BoardQuestion }) {
   if (!q.context) return null;
-  if (!hasMarathi(q)) return <BlockText text={q.context} />;
+  if (!hasTranslation(q)) return <BlockText text={q.context} />;
   return <BilingualStem q={asBilingual(q)} field="context" />;
 }

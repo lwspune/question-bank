@@ -3,7 +3,7 @@
 import KatexRenderer from "@/components/math/KatexRenderer";
 import BlockText from "@/components/math/BlockText";
 import { cn } from "@/lib/utils";
-import { optionVersions, solutionVersions, stemVersions, type Bilingual } from "@/lib/i18n/bilingual";
+import { optionVersions, solutionVersions, stemVersions, type AltLang, type Bilingual } from "@/lib/i18n/bilingual";
 import { useQuestionLang } from "@/lib/i18n/useQuestionLang";
 import LanguageSwitch from "./LanguageSwitch";
 
@@ -73,7 +73,7 @@ export function BilingualOption({ q, opt }: { q: Bilingual; opt: Bilingual["opti
 }
 
 /** The switch, wired to the shared preference — drop it anywhere. */
-export function QuestionLangSwitch({ className }: { className?: string }) {
+export function QuestionLangSwitch({ className, alt }: { className?: string; alt?: AltLang }) {
   const [lang, setLang] = useQuestionLang();
-  return <LanguageSwitch value={lang} onChange={setLang} className={className} />;
+  return <LanguageSwitch value={lang} onChange={setLang} alt={alt} className={className} />;
 }

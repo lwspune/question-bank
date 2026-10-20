@@ -22,7 +22,7 @@ import RevealSignInPrompt from "@/components/reveal/RevealSignInPrompt";
 import AskVButton from "@/components/chat/AskVButton";
 import { RevealDailyPrompt } from "@/components/reveal/RevealDailyLimit";
 import { asBilingual, type BoardQuestion } from "@/lib/board/query";
-import { hasMarathi } from "@/lib/i18n/bilingual";
+import { hasTranslation } from "@/lib/i18n/bilingual";
 import { BilingualOption, BilingualSolution, BilingualStem } from "@/components/i18n/BilingualText";
 import SolutionViews from "@/components/visuals/SolutionViews";
 import SelfMarkButtons from "@/components/reveal/SelfMarkButtons";
@@ -81,7 +81,7 @@ export default function BoardQuestionItem({
   const pending = useRevealPending(q.id);
   // The board's Marathi-medium print of the same question, when there is one
   // (MH SSC 10). An English-only question takes the plain path, unchanged.
-  const bi = hasMarathi(q) ? asBilingual(q) : null;
+  const bi = hasTranslation(q) ? asBilingual(q) : null;
 
   return (
     <div className="rounded-lg border bg-card p-3 sm:p-4">

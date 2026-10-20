@@ -7,6 +7,7 @@ import { Play, Loader2, Lock } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import LanguageSwitch from "@/components/i18n/LanguageSwitch";
+import { altLangName, langHeading, type AltLang } from "@/lib/i18n/bilingual";
 import { useQuestionLang } from "@/lib/i18n/useQuestionLang";
 import type { MockStartState, TestUnit } from "@/lib/mocks/quota";
 import type { PassCta } from "@/lib/billing/plans";
@@ -19,7 +20,7 @@ import { formatTimeLeft } from "@/lib/mocks/startPage";
 /**
  * Starts (or resumes) an attempt, then routes into the runner.
  *
- * On a bilingual paper (MPSC prints Marathi + English) the student picks the
+ * On a bilingual paper (MPSC prints Marathi + English, SSC Hindi + English) the student picks the
  * language to sit it in first. The choice is the shared page-wide preference,
  * so the runner opens in it — and can still switch mid-test, as the printed
  * booklet lets a candidate read either version at any time.
@@ -33,7 +34,7 @@ import { formatTimeLeft } from "@/lib/mocks/startPage";
  */
 export default function StartMock({
   slug,
-  bilingual = false,
+  altLang = null,
   startState = { kind: "open" },
   mockPass = null,
   unit = "mock",
@@ -53,7 +54,8 @@ export default function StartMock({
   isPastPaper?: boolean;
   /** A chapter test or a full mock: which free count this paper uses. */
   unit?: TestUnit;
-  bilingual?: boolean;
+  /** The paper's second print language, or null when it prints English only. */
+  altLang?: AltLang | null;
   startState?: MockStartState;
   /** The pass on sale for unlimited mocks; null = none (the card links to /pricing). */
   mockPass?: PassCta | null;
@@ -124,7 +126,7 @@ export default function StartMock({
           : `You have ${state.left} of ${state.limit} free ${testNoun(state.unit, 2)} left.`}
       </p>
     ) : null;
-  if (!bilingual) {
+  if (!altLang) {
     return (
       <div>
         {button}
@@ -136,12 +138,13 @@ export default function StartMock({
     <div className="space-y-4">
       <div className="rounded-lg border bg-card p-4">
         <p className="text-sm font-medium">
-          Question language <span lang="mr" className="text-muted-foreground">/ प्रश्नाची भाषा</span>
+          Question language <span lang={altLang} className="text-muted-foreground">/ {langHeading(altLang)}</span>
         </p>
         <p className="mt-1 text-xs text-muted-foreground">
-          The paper prints every question in Marathi and English. You can switch at any time during the test.
+          The paper prints its questions in {altLangName(altLang)} and English. You can switch at any time during the
+          test.
         </p>
-        <LanguageSwitch value={lang} onChange={setLang} size="md" className="mt-3" />
+        <LanguageSwitch value={lang} onChange={setLang} alt={altLang} size="md" className="mt-3" />
       </div>
       {button}
       {resume ? resumeNote : freeNote}

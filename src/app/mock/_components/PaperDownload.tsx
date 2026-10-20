@@ -15,6 +15,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import LanguageSwitch from "@/components/i18n/LanguageSwitch";
+import { altLangName, type AltLang } from "@/lib/i18n/bilingual";
 import { useQuestionLang } from "@/lib/i18n/useQuestionLang";
 import { resolveExportAccess } from "@/lib/export/access";
 import { filenameFromDisposition } from "@/lib/export/fileType";
@@ -44,7 +45,7 @@ type Kind = "paper" | "key";
 export default function PaperDownload({
   slug,
   paperTitle,
-  bilingual = false,
+  altLang = null,
   variant = "button",
   boardPaper,
   topPyqs,
@@ -62,8 +63,8 @@ export default function PaperDownload({
    * chapter name the paper, and `slug` only names the file.
    */
   topPyqs?: { plan: string; chapterId: string };
-  /** The exam prints Marathi + English (MPSC): offer a print language. */
-  bilingual?: boolean;
+  /** The exam's second print language (MPSC Marathi, SSC Hindi): offer a print language. */
+  altLang?: AltLang | null;
   /**
    * "button": full width, under Start test. "row": compact, in a list.
    * "inline": beside another button (the past paper page, 2026-10-15): full
@@ -153,7 +154,7 @@ export default function PaperDownload({
             : boardExam
               ? { boardPaper: { exam: boardExam, slug } }
               : { mockSlug: slug }),
-          options: { includeSolutions: true, ...(bilingual ? { lang } : {}) },
+          options: { includeSolutions: true, ...(altLang ? { lang } : {}) },
         }),
       });
       if (!res.ok) {
@@ -274,10 +275,10 @@ export default function PaperDownload({
                   </p>
                 </div>
               )}
-              {bilingual && (
+              {altLang && (
                 <div className="space-y-2">
                   <p className="font-medium">Print language</p>
-                  <LanguageSwitch value={lang} onChange={setLang} size="md" />
+                  <LanguageSwitch value={lang} onChange={setLang} alt={altLang} size="md" />
                 </div>
               )}
             </div>

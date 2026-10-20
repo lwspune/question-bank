@@ -11,7 +11,7 @@ import type { ReviewItem } from "@/lib/mocks/service";
 import AskVButton from "@/components/chat/AskVButton";
 import { askedFromReview } from "@/lib/chat/askVEvent";
 import { BilingualOption, BilingualSolution, BilingualStem, QuestionLangSwitch } from "@/components/i18n/BilingualText";
-import { hasMarathi } from "@/lib/i18n/bilingual";
+import { altLangOfAny } from "@/lib/i18n/bilingual";
 import CancelledNotice from "@/components/question/CancelledNotice";
 import SolutionViews from "@/components/visuals/SolutionViews";
 import RepeatLineView from "@/components/question/RepeatLineView";
@@ -48,13 +48,14 @@ export default function AttemptReviewList({
   /** "none" on a staff view of a student's attempt, so staff taps are not counted as the student's. */
   recordRepeat?: "tap" | "none";
 }) {
+  const reviewAlt = altLangOfAny(items);
   return (
     // Registry so a teacher walking the class through a paper can step from one
     // question to the next inside the projection overlay.
     <PresentRegistry>
-      {items.some((i) => hasMarathi(i)) && (
+      {reviewAlt && (
         <div className="mt-4 flex justify-end">
-          <QuestionLangSwitch />
+          <QuestionLangSwitch alt={reviewAlt} />
         </div>
       )}
       <ol className="mt-4 space-y-4">

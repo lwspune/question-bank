@@ -10,6 +10,7 @@
  * notes subject for that exam (or an honest "coming soon" when none have
  * shipped) — derived from NOTES_CHAPTERS, so a new exam needs no new page.
  */
+import type { AltLang } from "@/lib/i18n/bilingual";
 
 export type ExamSlug =
   | "nda"
@@ -168,6 +169,11 @@ export type ExamEntry = {
    * they show the switch wherever a question actually carries a translation.
    */
   bilingual?: boolean;
+  /**
+   * Which second language a `bilingual` exam prints: Marathi when absent (MPSC,
+   * MH SSC), Hindi for SSC (2026-10-20). Read through `examAltLang`.
+   */
+  secondLang?: AltLang;
   /**
    * The exam's PAST PAPERS (published `pyq` + `full` mocks) carry worked
    * solutions, not just answers: nine in ten questions or more. Decides whether
@@ -1199,6 +1205,11 @@ export function getExamBySlug(slug: string | null | undefined): ExamEntry | null
  * Null for a DB exam with no registry entry, which callers must treat as
  * "ungrouped", never as "drop it" — see groupExamFamilies.
  */
+/** The second language a bilingual exam prints, or null when it prints English only. */
+export function examAltLang(entry: ExamEntry | null | undefined): AltLang | null {
+  return entry?.bilingual ? (entry.secondLang ?? "mr") : null;
+}
+
 export function getExamByName(examName: string | null | undefined): ExamEntry | null {
   if (!examName) return null;
   return EXAM_REGISTRY.find((e) => e.examName === examName) ?? null;
