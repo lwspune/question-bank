@@ -597,7 +597,8 @@ export default function QuestionCard({
             {hasChips && (
               // The `hidden` CLASS, not the attribute: a `flex` class outranks the
               // [hidden] browser style, so the attribute left the chips showing.
-              <div className={cn("min-w-0 flex-nowrap items-center gap-1.5 font-sans text-xs", showSolution ? "flex" : "hidden")}>
+              // Wraps: three chips on one phone line cut every label to "Conc…".
+              <div className={cn("min-w-0 flex-wrap items-center gap-1.5 font-sans text-xs", showSolution ? "flex" : "hidden")}>
                 {resources?.guide && (
                   <ResourceChip href={resources.guide.href} label="Strategy" title={resources.guide.label} Icon={BookOpen} chip="guide" page={chipPage(pathname)} fixed />
                 )}
