@@ -458,10 +458,10 @@ export const EXPERIMENTS: readonly Experiment[] = [
   },
   {
     id: "ebook-store",
-    title: "Book store: whole-subject PYQ books as paid PDFs",
+    title: "Book store: formula, notes and PYQ books as paid PDFs",
     change:
-      "A Books button in the header opens /store. The first book, MHT-CET Mathematics (formulas, every past question 2021-2026 chapter by chapter, full solutions; ~880 pages), sells for Rs 149 apart from the pass (20% off for pass holders). Each buyer's copy carries their email on every page, five downloads. After buying, \"Want this as a printed book?\" takes a free tap and an optional pincode.",
-    why: "The owner wants to sell printed books. This tests the cheap half first: will students pay for a whole book, and how many of those who do want it printed (and where)?",
+      "A Books button in the header opens /store. Three kinds of book, sold apart from the pass (20% off for pass holders): Formula Books and Notes Books (Rs 49 each) for MHT-CET Maths, Physics and Chemistry, and the MHT-CET Maths PYQ Book (Rs 149, every past question 2021-2026 with full solutions). Each buyer's copy carries their email on every page, five downloads. After buying, \"Want this as a printed book?\" takes a free tap and an optional pincode.",
+    why: "The owner wants to sell printed books. This tests the cheap half first: which kind of book students pay for, at what price, and how many buyers want it printed (and where).",
     metric:
       "Per book: buyers and revenue (ebook_purchases), refunds, printed-copy taps and pincodes (ebook_print_interest), downloads; free-sample taps (Vercel event ebook_sample_click) and /store visits (Vercel, read by hand)",
     rule: "No decision rule yet: we have no data on what students pay for a book (owner, 2026-10-20). Watch the numbers; once 30-50 buyers have asked for a printed copy, consider a paid pre-order window.",

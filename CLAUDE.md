@@ -337,9 +337,9 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 
 ### 2026-10
 
-- **2026-10-20 — The book store: whole-subject PYQ books as paid PDFs at `/store` (header Books button), apart from the pass; first MHT-CET Mathematics (884 pages, Rs 149, 20% off with a pass). Migration 0172.**
-  - **Not a pass scope (owner):** the test is what a book is worth and whether buyers want it printed (a free "want it printed?" tap + pincode); bundling hides both.
-  - **Built once offline, stamped per buyer:** `npm run ebooks:build` prints from the BANK (the stored `/books` order lagged 1,160 rows); a licence page + email on every page takes 2.3 s; a signed link beats Vercel's 4.5 MB cap.
+- **2026-10-20 — The book store: Formula + Notes Books (Rs 49, MHT-CET Maths, Physics, Chemistry) and the Maths PYQ Book (Rs 149) as paid PDFs at `/store` (header Books button), apart from the pass, 20% off with one. Migrations 0172-0173.**
+  - **Not a pass scope; three kinds (owner):** the test is which book sells and whether buyers want it printed (a free "want it printed?" tap + pincode). Look approved from the marketing reels' palette (`lib/ebooks/theme`).
+  - **Built once offline, stamped per buyer:** `npm run ebooks:build -- --all`; the PYQ book reads the BANK (stored `/books` lagged 1,160 rows); a licence page + email on every page takes 2.3 s; a signed link beats Vercel's 4.5 MB cap.
   - **Rules in the DB:** one active purchase per book, payment id unique, a trigger caps downloads at 5. `kind: "ebook"` notes keep pass and book grants apart. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-10-18 — MH SSC 10 Marathi medium: the board's 35 Marathi prints (2024-2026) read and stored as translations of the English rows, with Marathi solutions; `mh-ssc-10` is `bilingual`, and the switch also shows on `/board`, `/question-papers`, homework and `/mock/<slug>/paper`.**
   - **Same paper, so 0118 (MPSC's pattern):** codes pair (N 919 / N 920); rows found by CONTENT HASH, as 20 repeats live under an earlier sitting.
