@@ -341,6 +341,10 @@ The load-bearing choices made during the initial scaffold. Every later phase res
   - **Not a pass scope; three kinds (owner):** the test is which book sells and whether buyers want it printed (a free "want it printed?" tap + pincode). Website colours (owner), so the Notes Books carry the notes diagrams as the site draws them (`lib/ebooks/theme`).
   - **Built once offline, stamped per buyer:** `npm run ebooks:build -- --all`; the PYQ book reads the BANK (stored `/books` lagged 1,160 rows); a licence page + email on every page takes 2.3 s; a signed link beats Vercel's 4.5 MB cap.
   - **Rules in the DB:** one active purchase per book, payment id unique, a trigger caps downloads at 5. `kind: "ebook"` notes keep pass and book grants apart. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
+- **2026-10-20 — "Learn on Concept Ladder" chip: a PYQ links to the Concept Ladder lesson that teaches it (conceptladder.in, the sister app), piloted on MHT-CET Circle; Concept Ladder's Circle page links back here. Branch `feat/concept-ladder-link`.**
+  - **Practice here, teaching there (owner):** CET practice inside Concept Ladder would have copied /browse, /drill and /mock, so the two sites link instead.
+  - **Tag first, then subtopic, then the chapter map:** a wrong lesson is worse than a general one, so a subtopic spanning lessons links to the chapter. Pure data in `lib/links/conceptLadder.ts`.
+  - **Its status code proves nothing:** Concept Ladder returns 200 for a missing page, so the prod-contract check reads the page (404 marker, title). Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-10-18 — MH SSC 10 Marathi medium: the board's 35 Marathi prints (2024-2026) read and stored as translations of the English rows, with Marathi solutions; `mh-ssc-10` is `bilingual`, and the switch also shows on `/board`, `/question-papers`, homework and `/mock/<slug>/paper`.**
   - **Same paper, so 0118 (MPSC's pattern):** codes pair (N 919 / N 920); rows found by CONTENT HASH, as 20 repeats live under an earlier sitting.
   - **Read, never translated:** agents got only the numbering skeleton; `mr-check.ts` refuses a mostly-Latin stem, unrenderable maths, an MCQ solution off the English key.
@@ -405,12 +409,6 @@ The load-bearing choices made during the initial scaffold. Every later phase res
   - **Short chapters are topped up with asked-once questions** (19 of 84 lack ten repeats), each with its own "Asked once" line (owner's call).
   - **A case study belongs to the chapter of its FIRST part:** seven CBSE case studies span two chapters, and a plain filter left gaps the download refuses.
   - **Reuses** `PaperDownload` (`topPyqs` target), `HomeworkSlotList` and the board reader's one reveal state. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
-
-- **2026-10-11 — Checked answer sheets: students upload a board paper written on paper (photos or PDF) from `/question-papers`; marks per question with what earned and what was missing, within 48 hours. Free, one a day (migration 0153; `scripts/grading/`, playbook `scripts/grading/GRADING.md`).**
-  - **Hand-graded in chat, one sheet per fresh session,** against the playbook that collects every learning; the API route was deferred by the owner, so measure cost per paper through the API before pricing.
-  - **The grade copies the question's number and max** (paper items are rebuilt, 0146); the DB sums the total itself and refuses one above the paper's maximum. The checker's template starts with empty outcomes it refuses.
-  - **Signed upload links into a private bucket with no storage policies** (the 4.5 MB body limit); a rejected sheet frees the student's day.
-  - **The owner learns of uploads by a daily 18:00 IST email** (`grading-queue.yml`, only when something waits; flags >36 h) and `/dashboard/answer-sheets`. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 
 ### 2026-09
 
