@@ -9,7 +9,7 @@ import { readPaywallSettings } from "@/lib/billing/admin";
 import type { BrandingParts } from "@/lib/export/branding";
 import { formulaSheetKey, parseFormulaSheetTarget } from "@/lib/export/formulaSheet";
 import { claimFreeFormulaSheet, isFormulaSheetFree } from "@/lib/export/freeFormulaSheet";
-import { buildFormulaSheetHtml, formulaSheetFilename } from "@/lib/export/pdf/formulaSheetHtml";
+import { buildFormulaSheetHtml, formulaSheetFilename, hasFormulaSheet } from "@/lib/export/pdf/formulaSheetHtml";
 import { pdfHead } from "@/lib/export/pdf/assets";
 import { printPdf } from "@/lib/export/pdf/printPdf";
 import { PDF_CONTENT_TYPE } from "@/lib/export/fileType";
@@ -84,7 +84,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Send the chapter: subjectRoute and chapterSlug." }, { status: 400 });
     }
     const chapter = getNotesChapterBySlug(target.subjectRoute, target.chapterSlug);
-    if (!chapter) {
+    if (!chapter || !hasFormulaSheet(chapter)) {
       return NextResponse.json({ error: "That chapter has no formula sheet." }, { status: 404 });
     }
 

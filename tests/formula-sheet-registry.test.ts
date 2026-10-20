@@ -9,7 +9,12 @@
  */
 import { describe, it, expect } from "vitest";
 import { NOTES_CHAPTERS } from "@/lib/notes/chapters";
-import { buildFormulaSheetHtml, formulaSheetStats } from "@/lib/export/pdf/formulaSheetHtml";
+import { buildFormulaSheetHtml, formulaSheetStats, hasFormulaSheet } from "@/lib/export/pdf/formulaSheetHtml";
+
+// Chapters taught in prose alone (IMAT critical thinking, reading
+// comprehension): no formula, no table, so no sheet is offered. Listed so a
+// chapter cannot drop out of the sheet by accident.
+const NO_SHEET = ["imat-logic/critical-thinking", "imat-reading/reading-comprehension"];
 
 describe("formula sheet: every registered chapter", () => {
   it("has something to print and renders without a KaTeX error", () => {
@@ -18,12 +23,16 @@ describe("formula sheet: every registered chapter", () => {
     for (const c of NOTES_CHAPTERS) {
       const id = `${c.subjectRoute}/${c.chapterSlug}`;
       const stats = formulaSheetStats(c);
-      if (stats.formulas + stats.references === 0) empty.push(id);
+      expect(hasFormulaSheet(c)).toBe(stats.formulas + stats.references > 0);
+      if (!hasFormulaSheet(c)) {
+        empty.push(id);
+        continue;
+      }
       const html = buildFormulaSheetHtml({ chapter: c, head: "", branded: true });
       if (html.includes("katex-error")) broken.push(id);
       if (/premium pass/i.test(html)) broken.push(`${id} (sells)`);
     }
-    expect(empty).toEqual([]);
+    expect(empty.sort()).toEqual([...NO_SHEET].sort());
     expect(broken).toEqual([]);
   });
 });

@@ -83,6 +83,13 @@ export function formulaSheetStats(chapter: FormulaSheetChapter): {
   return { formulas, references, traps };
 }
 
+/** Whether a chapter has a sheet to sell: a chapter taught in prose alone
+ *  (no formula, no reference table) would print traps on an empty page. */
+export function hasFormulaSheet(chapter: FormulaSheetChapter): boolean {
+  const s = formulaSheetStats(chapter);
+  return s.formulas + s.references > 0;
+}
+
 export function formulaSheetFilename(subjectDisplay: string, chapterName: string): string {
   const part = (s: string) =>
     s

@@ -36,6 +36,7 @@ import { notesBreadcrumbs } from "@/lib/notes/breadcrumbs";
 import NotesHandoutLink from "./NotesHandoutLink";
 import FormulaSheetDownload from "./FormulaSheetDownload";
 import { formulaSheetSummaryLine } from "@/lib/notes/formulaSheetSummary";
+import { hasFormulaSheet } from "@/lib/export/pdf/formulaSheetHtml";
 import { printHandoutHref } from "@/lib/notes/printDoc";
 import ConceptWeightTable from "./ConceptWeightTable";
 import { listChapterLandings, landingHref } from "@/lib/questions/landing";
@@ -231,17 +232,20 @@ export default async function NotesChapterLanding({ chapter }: Props) {
             chapterName={meta.chapterName}
             chapter={`${chapter.subjectRoute}/${chapter.chapterSlug}`}
           />
-          <FormulaSheetDownload
-            subjectRoute={chapter.subjectRoute}
-            chapterSlug={chapter.chapterSlug}
-            chapterName={meta.chapterName}
-            summary={formulaSheetSummaryLine(revisionGroups.map((g) => g.summary))}
-          />
+          {hasFormulaSheet(chapter) && (
+            <FormulaSheetDownload
+              subjectRoute={chapter.subjectRoute}
+              chapterSlug={chapter.chapterSlug}
+              chapterName={meta.chapterName}
+              summary={formulaSheetSummaryLine(revisionGroups.map((g) => g.summary))}
+            />
+          )}
         </div>
         <p className="mt-1.5 text-xs text-muted-foreground">
           The handout has every subtopic, worked example, formula and trap with
-          answers shown. The formula sheet is the chapter&apos;s formulas and traps
-          alone, on one page.
+          answers shown.
+          {hasFormulaSheet(chapter) &&
+            " The formula sheet is the chapter’s formulas and traps alone, on one page."}
         </p>
       </div>
 
