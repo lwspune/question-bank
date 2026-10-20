@@ -102,7 +102,7 @@ export function formulaSheetFilename(subjectDisplay: string, chapterName: string
 
 const PALETTE = ["#1D4ED8", "#0E7490", "#7C3AED", "#B45309", "#047857", "#BE123C", "#4338CA", "#C2410C"];
 
-const CSS = `
+const PAGE_CSS = `
 @page { size: A4; margin: 12mm 12mm 16mm; }
 * { box-sizing: border-box; }
 html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
@@ -115,6 +115,15 @@ body { margin: 0; font-family: "PV Serif", "PV Devanagari", "PV Math", "PV Sans"
 .brandline { font-size: 8pt; letter-spacing: .14em; text-transform: uppercase; color: #1D4ED8; font-weight: 600; }
 .eyebrow { font-size: 8pt; letter-spacing: .1em; text-transform: uppercase; color: #1D4ED8; font-weight: 600; text-align: right; }
 h1 { font-size: 15pt; line-height: 1.2; margin: 2pt 0 0; color: #0F1D4A; font-weight: 700; text-align: right; }
+`;
+
+/**
+ * The formula blocks' own rules, apart from the page: the ebook
+ * (lib/ebooks/bookHtml) prints the same blocks inside its chapters. `.cols`
+ * is the sheet's content width (A4 less 12 mm a side); a page with other
+ * margins overrides it.
+ */
+export const FORMULA_BLOCK_CSS = `
 .cols { column-count: 2; column-gap: 7mm; width: 186mm; }
 .cols + .full { margin-top: 9pt; }
 .block { border-left: 2.5pt solid var(--c); padding: 0 0 0 7pt; margin: 0 0 9pt; }
@@ -215,19 +224,13 @@ function fitFormulaSheet(root) {
   shrinkWide(wide);
 }`;
 
-export function buildFormulaSheetHtml(input: {
-  chapter: FormulaSheetChapter;
-  /** Font faces + KaTeX stylesheet (lib/export/pdf/assets pdfHead). */
-  head: string;
-  branded: boolean;
-  brandingParts?: Partial<BrandingParts>;
-}): string {
-  const { chapter } = input;
-  const brand = brandingParts(input.branded, input.brandingParts);
-  const chapterName = chapter.chapter.chapterName;
-  const title = `${esc(chapterName)} · Formula Sheet`;
-
-  const blocks = chapter.slugs.map((slug, i) => {
+/**
+ * One block per subtopic: its formula boxes, reference tables and traps, in
+ * the chapter's subtopic order. Shared with the ebook, so a formula prints
+ * the same on the sheet and in the book.
+ */
+export function formulaBlocksHtml(chapter: FormulaSheetChapter): string[] {
+  return chapter.slugs.map((slug, i) => {
     const note = chapter.notes[slug];
     const s = deriveSummary(note);
     const color = PALETTE[i % PALETTE.length];
@@ -261,6 +264,21 @@ export function buildFormulaSheetHtml(input: {
             .join("")}</ul></div>`;
     return `<div class="block" style="--c:${color}"><h2>${esc(note.title)}</h2>${formulas}${references}${traps}</div>`;
   });
+}
+
+export function buildFormulaSheetHtml(input: {
+  chapter: FormulaSheetChapter;
+  /** Font faces + KaTeX stylesheet (lib/export/pdf/assets pdfHead). */
+  head: string;
+  branded: boolean;
+  brandingParts?: Partial<BrandingParts>;
+}): string {
+  const { chapter } = input;
+  const brand = brandingParts(input.branded, input.brandingParts);
+  const chapterName = chapter.chapter.chapterName;
+  const title = `${esc(chapterName)} · Formula Sheet`;
+
+  const blocks = formulaBlocksHtml(chapter);
 
   const watermark = brand.watermark
     ? `<img class="watermark" src="data:image/png;base64,${WATERMARK_PNG_BASE64}" alt="">`
@@ -269,7 +287,7 @@ export function buildFormulaSheetHtml(input: {
 
   return (
     `<!doctype html><html lang="en"><head><meta charset="utf-8"><title>${title}</title>` +
-    `${input.head}<style>${CSS}${footerCss(brand.siteUrl)}</style></head><body>${watermark}` +
+    `${input.head}<style>${PAGE_CSS}${FORMULA_BLOCK_CSS}${footerCss(brand.siteUrl)}</style></head><body>${watermark}` +
     `<header class="masthead">${brandline}<div><div class="eyebrow">${esc(chapter.subjectDisplay)} · ${esc(chapterName)}</div>` +
     `<h1>Formula Sheet</h1></div></header>` +
     `<main class="cols">${blocks.join("")}</main>` +

@@ -231,7 +231,8 @@ export type Readout =
   | "v-finder"
   | "v-explain"
   | "v-strategy"
-  | "v-plan";
+  | "v-plan"
+  | "ebook-store";
 
 export type Experiment = {
   id: string;
@@ -479,6 +480,19 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-10-20",
     windowDays: 42,
     readout: "imat",
+    status: "running",
+  },
+  {
+    id: "ebook-store",
+    title: "Book store: formula, notes and PYQ books as paid PDFs",
+    change:
+      "A Books button in the header opens /store. Three kinds of book, sold apart from the pass (20% off for pass holders): Formula Books and Notes Books (Rs 49 each) for MHT-CET Maths, Physics and Chemistry, and the MHT-CET Maths PYQ Book (Rs 149, every past question 2021-2026 with full solutions). Each buyer's copy carries their email on every page, five downloads. After buying, \"Want this as a printed book?\" takes a free tap and an optional pincode.",
+    why: "The owner wants to sell printed books. This tests the cheap half first: which kind of book students pay for, at what price, and how many buyers want it printed (and where).",
+    metric:
+      "Per book, signed-in students: opened its page and took its sample (user_activity surface_viewed, store / ebook_sample), bought and revenue (ebook_purchases), refunds, printed-copy taps and pincodes (ebook_print_interest), downloads. Signed-out visits, header Ebooks taps (ebook_store_link_click) and checkout steps per book (checkout_* with slug) in Vercel, read by hand",
+    rule: "No decision rule yet: we have no data on what students pay for a book (owner, 2026-10-20). Watch the numbers; once 30-50 buyers have asked for a printed copy, consider a paid pre-order window.",
+    liveSince: "2026-10-20",
+    readout: "ebook-store",
     status: "running",
   },
   {

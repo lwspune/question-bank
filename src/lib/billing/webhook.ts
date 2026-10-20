@@ -9,9 +9,11 @@
  * says the pass ends when the refund is made, and a partial refund is a discount.
  */
 import { planForPaidOrder, type OrderGrant, type PaidOrder } from "./plans";
+import { ebookForPaidOrder, isEbookOrder, type EbookGrant } from "@/lib/ebooks/order";
 
 export type WebhookDecision =
   | { action: "grant"; userId: string; paymentId: string; grant: OrderGrant }
+  | { action: "grant_ebook"; userId: string; paymentId: string; grant: EbookGrant }
   | { action: "revoke"; paymentId: string }
   | { action: "skip"; reason: string }
   | { action: "ignore"; event: string | undefined };
@@ -41,6 +43,12 @@ export function decideWebhook(body: WebhookBody): WebhookDecision {
     const paymentId = payload.payment?.entity?.id;
     if (!userId) return { action: "skip", reason: "no buyer in order notes" };
     if (!paymentId) return { action: "skip", reason: "no payment id" };
+    // An ebook (2026-10-20) is bought once and kept: it never reaches the pass grant.
+    if (isEbookOrder(order.notes)) {
+      const book = ebookForPaidOrder(order, userId);
+      if (!book.ok) return { action: "skip", reason: book.reason };
+      return { action: "grant_ebook", userId, paymentId, grant: book.grant };
+    }
     const decided = planForPaidOrder(order, userId);
     if (!decided.ok) return { action: "skip", reason: decided.reason };
     return { action: "grant", userId, paymentId, grant: decided.grant };

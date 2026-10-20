@@ -23,6 +23,11 @@ vi.mock("@/lib/billing/grant", () => ({
   grantRazorpayEntitlement: vi.fn(async () => ({ kind: "ok" })),
   revokeRazorpayEntitlement: vi.fn(async () => ({ kind: "ok", revoked: 1 })),
 }));
+// A refund also revokes any ebook bought with the payment (none here).
+vi.mock("@/lib/ebooks/grant", () => ({
+  grantEbookPurchase: vi.fn(async () => ({ kind: "ok" })),
+  revokeEbookPurchase: vi.fn(async () => ({ kind: "ok", revoked: 0 })),
+}));
 
 import { grantRazorpayEntitlement, revokeRazorpayEntitlement } from "@/lib/billing/grant";
 import { stampOrderNotes, type Plan } from "@/lib/billing/plans";

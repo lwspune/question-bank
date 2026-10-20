@@ -165,6 +165,10 @@ async function main() {
       case "v-finder":
         line = handRead(e.liveSince, ["v-false-not-found", "v-clarify-turns", "v-practice-after"]);
         break;
+      case "ebook-store":
+        // Live counts from the ebook tables, rendered on the page (lib/ebooks/readout).
+        line = "live table on the page (ebook_purchases, ebook_print_interest, ebook_downloads)";
+        break;
       default: {
         // A new readout must be added here; this fails the typecheck until it is.
         const unhandled: never = e.readout;

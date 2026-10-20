@@ -32,4 +32,5 @@ export const PROD_CONTRACT_FILES: string[] = [
   "tests/blog-mhtcet-2027-stats.test.ts", // MHT-CET 2027 dates post: Std XI/XII split vs the live CET corpus
   "tests/performance-concept-graph-taxonomy.test.ts", // prereq-graph nodes vs live NDA Maths chapters
   "tests/mh-hsc-12-paper-catalog-prod.test.ts", // board-paper lane's generated catalog vs live HSC Maths taxonomy
+  "tests/concept-ladder-urls.test.ts", // Concept Ladder chip: subtopic names vs live taxonomy, lesson URLs vs conceptladder.in
 ];

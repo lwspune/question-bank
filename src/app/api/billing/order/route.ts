@@ -7,6 +7,8 @@ import { getActivePlan } from "@/lib/billing/plansQuery";
 import { logActivity } from "@/lib/activity/service";
 import { checkoutBox, checkoutGate, paywallEvent } from "@/lib/activity/clientEvents";
 import { readCountry, withCountry } from "@/lib/acquisition/country";
+import { ebookOrderTerms } from "@/lib/ebooks/checkout";
+import { stampEbookOrderNotes } from "@/lib/ebooks/order";
 
 export const maxDuration = 30;
 
@@ -26,8 +28,38 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Payments are not configured yet" }, { status: 503 });
   }
 
-  const body = (await request.json().catch(() => null)) as { planId?: string; gate?: unknown; box?: unknown } | null;
+  const body = (await request.json().catch(() => null)) as {
+    planId?: string;
+    ebookSlug?: string;
+    gate?: unknown;
+    box?: unknown;
+  } | null;
   const db = createSupabaseServerClient();
+
+  // An ebook (2026-10-20): the price is this buyer's, decided here.
+  if (typeof body?.ebookSlug === "string" && body.ebookSlug) {
+    const terms = await ebookOrderTerms(db, user.id, body.ebookSlug);
+    if (!terms.ok) return NextResponse.json({ error: terms.error }, { status: terms.status });
+    const result = await createOrder({
+      amountPaise: terms.amountPaise,
+      currency: "INR",
+      receipt: `qb_ebook_${user.id.slice(0, 8)}`,
+      notes: stampEbookOrderNotes({ slug: terms.slug, listPaise: terms.listPaise, amountPaise: terms.amountPaise }, user.id),
+    });
+    if (!result.ok) {
+      console.error("razorpay createOrder (ebook) failed:", result.error);
+      return NextResponse.json({ error: "Could not start checkout" }, { status: 502 });
+    }
+    return NextResponse.json({
+      orderId: result.orderId,
+      amount: result.amount,
+      currency: result.currency,
+      keyId,
+      planLabel: terms.title,
+      email: user.email,
+    });
+  }
+
   const plan = body?.planId ? await getActivePlan(db, body.planId) : null;
   if (!plan) {
     return NextResponse.json({ error: "Unknown plan" }, { status: 400 });

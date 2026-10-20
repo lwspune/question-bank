@@ -9,7 +9,7 @@ import {
 } from "@/lib/analytics/funnelEvents";
 
 describe("FUNNEL_EVENTS", () => {
-  it("is a closed allowlist of the twenty-nine funnel moments", () => {
+  it("is a closed allowlist of the funnel moments", () => {
     expect([...FUNNEL_EVENTS]).toEqual([
       "reveal_wall_hit",
       "reveal_wall_signin_click",
@@ -39,6 +39,8 @@ describe("FUNNEL_EVENTS", () => {
       "resource_chips_click",
       "performance_starter_click",
       "results_congratulate_click",
+      "ebook_sample_click",
+      "ebook_store_link_click",
     ]);
   });
 
