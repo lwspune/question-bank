@@ -5,9 +5,12 @@ import { ChevronDown, ClipboardCheck, Lightbulb } from "lucide-react";
 import KatexRenderer from "@/components/math/KatexRenderer";
 import BlockText from "@/components/math/BlockText";
 import type { AuthoredExample } from "@/app/notes/_types";
+import AskVButton from "@/components/chat/AskVButton";
 
 type Props = {
   example: AuthoredExample;
+  /** The concept it belongs to: Ask V finds the question by it (lib/chat/notesItem.ts). */
+  conceptSlug: string;
 };
 
 /**
@@ -17,8 +20,10 @@ type Props = {
  * full independent attempt before checking. Sky/cyan accent to read as
  * "checkpoint" and stay distinct from the neutral worked card above it.
  */
-export default function SelfCheckCard({ example }: Props) {
+export default function SelfCheckCard({ example, conceptSlug }: Props) {
   const [showSolution, setShowSolution] = useState(false);
+  // Before the solution (V offers a hint first) and after it (for "I still don't get step 2").
+  const askV = <AskVButton notes={{ concept: conceptSlug, item: "self" }} ariaLabel="Ask V about this self-check" />;
 
   return (
     <div className="rounded-lg border border-sky-200 bg-sky-50/40 dark:border-sky-900/60 dark:bg-sky-950/20 p-5">
@@ -45,14 +50,17 @@ export default function SelfCheckCard({ example }: Props) {
       )}
 
       {!showSolution ? (
-        <button
-          type="button"
-          onClick={() => setShowSolution(true)}
-          className="mt-4 inline-flex items-center gap-1.5 rounded-md border border-sky-300 dark:border-sky-800 bg-background px-3 py-1.5 text-sm font-medium text-sky-700 dark:text-sky-300 hover:bg-sky-100 dark:hover:bg-sky-950/40 transition-colors"
-        >
-          <ChevronDown className="h-3.5 w-3.5" aria-hidden />
-          Show solution
-        </button>
+        <div className="mt-4 flex flex-wrap items-center gap-2">
+          <button
+            type="button"
+            onClick={() => setShowSolution(true)}
+            className="inline-flex items-center gap-1.5 rounded-md border border-sky-300 dark:border-sky-800 bg-background px-3 py-1.5 text-sm font-medium text-sky-700 dark:text-sky-300 hover:bg-sky-100 dark:hover:bg-sky-950/40 transition-colors"
+          >
+            <ChevronDown className="h-3.5 w-3.5" aria-hidden />
+            Show solution
+          </button>
+          {askV}
+        </div>
       ) : (
         <div className="solution-math mt-4 space-y-3">
           <ol className="list-decimal space-y-2 pl-6 font-serif text-sm text-muted-foreground">
@@ -74,6 +82,7 @@ export default function SelfCheckCard({ example }: Props) {
               <KatexRenderer text={example.answer} />
             </span>
           </div>
+          <div>{askV}</div>
         </div>
       )}
     </div>

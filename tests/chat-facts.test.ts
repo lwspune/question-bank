@@ -11,10 +11,15 @@ import {
   buildSystemTail,
   buildGuideFacts,
   GUIDE_FACTS,
+  examFactFromEntry,
+  buildNotesFacts,
   type ChatExamFact,
   type ChatPlanFact,
 } from "@/lib/chat/facts";
 import { GUIDE_CATALOG } from "@/lib/guide/guideCatalog";
+import { ABUSE_REPLY } from "@/lib/chat/abuse";
+import { EXAM_REGISTRY } from "@/lib/exam/examContext";
+import { getNotesExamGroups } from "@/lib/notes/notesNav";
 
 const EM_DASH = String.fromCharCode(0x2014);
 
@@ -74,6 +79,51 @@ describe("buildExamFacts", () => {
   it("EXCLUDES an exam with no public content — it must never be recommended", () => {
     const facts = buildExamFacts(exams);
     expect(facts.some((f) => f.includes("Not Yet Live"))).toBe(false);
+  });
+
+  // 2026-10-20: four students in five days asked for Hindi or Marathi questions and V said it was not sure.
+  it("names the second language an exam's questions are printed in", () => {
+    const facts = buildExamFacts([
+      { displayName: "MPSC Group B & C", tier: "graduate", hasMocks: true, boardExam: false, practiceOnly: false, noPublicContent: false, secondLang: "mr" },
+      { displayName: "SSC CGL", tier: "graduate", hasMocks: true, boardExam: false, practiceOnly: false, noPublicContent: false, secondLang: "hi" },
+      { displayName: "NEET", tier: "senior", hasMocks: true, boardExam: false, practiceOnly: false, noPublicContent: false },
+    ]);
+    expect(facts[0]).toContain("questions in English and Marathi");
+    expect(facts[1]).toContain("questions in English and Hindi");
+    expect(facts[2]).not.toMatch(/Marathi|Hindi/);
+  });
+});
+
+/**
+ * V's exam facts come from EXAM_REGISTRY, so they follow every exam added or
+ * changed, on every push (owner, 2026-10-20: "keep updating V's fact list as
+ * exams get added"). This pins the derivation to the registry itself.
+ */
+describe("V's facts follow the exam registry", () => {
+  const facts = buildExamFacts(EXAM_REGISTRY.map((e) => examFactFromEntry(e, null)));
+
+  it("has one line for every exam with public content, and none for the rest", () => {
+    for (const e of EXAM_REGISTRY) {
+      const line = facts.find((f) => f.startsWith(`${e.displayName}:`));
+      if (e.noPublicContent) expect(line, e.slug).toBeUndefined();
+      else expect(line, e.slug).toBeDefined();
+    }
+  });
+
+  it("names Marathi or Hindi exactly where the site prints a second language", () => {
+    for (const e of EXAM_REGISTRY) {
+      if (e.noPublicContent) continue;
+      const line = facts.find((f) => f.startsWith(`${e.displayName}:`))!;
+      const lang = examFactFromEntry(e, null).secondLang;
+      expect(Boolean(lang), e.slug).toBe(e.bilingual === true);
+      if (lang) expect(line, e.slug).toContain(`English and ${lang === "hi" ? "Hindi" : "Marathi"}`);
+      else expect(line, e.slug).not.toMatch(/questions in English and/);
+    }
+  });
+
+  it("tells V that other exams are English only, so it can say so plainly", () => {
+    const p = buildSystemPrompt({ exams: facts, plans: [], bankTotal: 1, nav: NAV_FACTS });
+    expect(p).toMatch(/English only/);
   });
 });
 
@@ -170,6 +220,41 @@ describe("NAV_FACTS", () => {
 });
 
 // 2026-10-19: asked for NDA GAT weightage, V said "I don't have weightage data"; the guides have it.
+/**
+ * "where are NDA maths notes?" (owner, 2026-10-15; raised again 2026-10-20): V knew only /notes and
+ * told the owner it could not find NDA Maths. One line per exam's notes hub, naming each subject's
+ * page, built from the notes nav so a new notes subject reaches V without a code change.
+ */
+describe("buildNotesFacts", () => {
+  const groups = getNotesExamGroups();
+  const facts = buildNotesFacts(groups);
+
+  it("gives each exam's notes hub and every subject's notes page", () => {
+    const nda = facts.find((f) => f.startsWith("/notes/nda:"));
+    expect(nda).toContain("NDA Maths at /notes/nda-maths");
+    for (const g of groups) {
+      const line = facts.find((f) => f.startsWith(`/notes/${g.slug}:`));
+      expect(line, g.slug).toBeDefined();
+      for (const s of g.subjects) expect(line, s.subjectRoute).toContain(`/notes/${s.subjectRoute}`);
+    }
+  });
+
+  it("names only notes pages that exist", () => {
+    // A subject's page is hand-written; an exam hub is the shared /notes/[examSlug] route.
+    const hubs = new Set(groups.map((g) => `/notes/${g.slug}`));
+    for (const path of pathsInReply(facts.join(" "))) {
+      const page = hubs.has(path) ? "src/app/notes/[examSlug]/page.tsx" : join("src/app", path, "page.tsx");
+      expect(existsSync(join(process.cwd(), page)), path).toBe(true);
+    }
+  });
+
+  it("reaches the prompt with a rule to link them", () => {
+    const p = buildSystemPrompt({ exams: [], plans: [], bankTotal: 1, nav: NAV_FACTS, notes: facts });
+    expect(p).toContain("/notes/nda-maths");
+    expect(p).toMatch(/notes.*NOTES below/i);
+  });
+});
+
 describe("buildGuideFacts", () => {
   const catalog = {
     nda: [{ href: "/guide/nda-physics", exam: "NDA PART B Physics" }],
@@ -230,6 +315,30 @@ describe("buildSystemPrompt", () => {
     expect(p.toLowerCase()).toMatch(/never (make up|invent)/);
   });
 
+  // 2026-10-20 (owner): "20+" is right however exams are counted; the old button's "28" counted
+  // every registry row, and the AI then told a student that number "was off".
+  it("says 20+ exams, never an exact count", () => {
+    expect(buildSystemPrompt(base)).toMatch(/20\+ exams/);
+  });
+
+  // 2026-10-20: "REMIND OF DOING Q 44 RETRY". V can name the question just opened and save it.
+  it("sends 'this question', 'Q 44' and 'remind me' to the student's own recent questions and /saved", () => {
+    const p = buildSystemPrompt(base);
+    expect(p).toContain("recent_questions");
+    expect(p).toContain("save_question");
+    expect(NAV_FACTS.join(" ")).toContain("/saved");
+  });
+
+  it("names the Plan my week button beside the test builder", () => {
+    expect(NAV_FACTS.join("\n")).toContain("Plan my week");
+  });
+
+  it("gives abuse the same calm line the route uses, never an answer back (owner, 2026-10-20)", () => {
+    const p = buildSystemPrompt(base);
+    expect(p).toContain(ABUSE_REPLY);
+    expect(p).toMatch(/abus/i);
+  });
+
   it("covers what students actually typed: tests, future papers, buying, language", () => {
     const p = buildSystemPrompt(base);
     expect(p).toContain("Build a practice test");
@@ -269,7 +378,7 @@ describe("buildSystemPrompt", () => {
   // 2026-10-19 study-partner Phase 2: weightage comes from the bank's past papers, quoted not invented.
   it("has V read weightage from exam_strategy and quote only its numbers", () => {
     const p = buildSystemPrompt(base);
-    expect(p).toMatch(/1\. Answer ONLY from the facts below and from what the find_chapters, my_progress and exam_strategy tools return/);
+    expect(p).toMatch(/1\. Answer ONLY from the facts below and from what the find_chapters, my_progress, exam_strategy and recent_questions tools return/);
     expect(p).toMatch(/2\. [^\n]*returned by find_chapters or exam_strategy/);
     expect(p).toMatch(/5a\. [^\n]*call exam_strategy/);
     expect(p).toMatch(/5a\. [^\n]*only the percentages it returns/);
@@ -287,7 +396,7 @@ describe("buildSystemPrompt", () => {
     expect(p).toMatch(/8a\. [^\n]*(timetable|plan)[^\n]*call plan_week/);
     expect(p).toMatch(/8a\. [^\n]*exam date[^\n]*once/);
     expect(p).toMatch(/8a\. [^\n]*call my_plan/);
-    expect(p).toMatch(/1\. Answer ONLY from the facts below and from what the find_chapters, my_progress, exam_strategy, plan_week and my_plan tools return/);
+    expect(p).toMatch(/1\. Answer ONLY from the facts below and from what the find_chapters, my_progress, exam_strategy, recent_questions, plan_week and my_plan tools return/);
     expect(p).toMatch(/2\. [^\n]*returned by find_chapters, exam_strategy, plan_week or my_plan/);
   });
 
@@ -315,10 +424,15 @@ describe("buildSystemPrompt", () => {
     expect(p).not.toContain("explain_question");
   });
 
-  it("with explanations on, has V offer a hint or the full solution, explain only from the stored one, and never doubt the key", () => {
+  // Owner, 2026-10-20: a tap on Ask V already says what they want, so V explains without asking
+  // "Want a hint or the full solution?", gives a hint only when asked, and shows the similar question
+  // as a card rather than asking whether they want one.
+  it("with explanations on, has V explain straight away from the stored solution, and never doubt the key", () => {
     const p = buildSystemPrompt({ ...base, explainEnabled: true });
     expect(p).not.toMatch(/you do not solve or explain questions/);
-    expect(p).toMatch(/Want a hint or the full solution\?/);
+    expect(p).not.toMatch(/Want a hint or the full solution/);
+    expect(p).toMatch(/hint only when they ask/i);
+    expect(p).toMatch(/do not ask whether they want/i);
     expect(p).toMatch(/get_question/);
     expect(p).toMatch(/explain_question/);
     expect(p).toMatch(/Explain only from the stored solution/);

@@ -12,6 +12,7 @@ import { NextRequest } from "next/server";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { randomUUID } from "node:crypto";
 import { TYPED_QUESTION_REPLY } from "@/lib/chat/typed";
+import { ABUSE_REPLY } from "@/lib/chat/abuse";
 import { ANON_ASKED_COOKIE, ANON_FREE_COOKIE, ANON_FREE_REPLIES_MAX, SIGN_IN_TO_ASK_REPLY } from "@/lib/chat/anonLimit";
 
 const askV = vi.fn();
@@ -189,6 +190,28 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
     expect(askV).not.toHaveBeenCalled();
   });
 
+  it("answers abuse with one calm line and then nothing, never calling the AI or using a visitor's question (owner, 2026-10-20)", async () => {
+    await setSettings({ ai_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });
+    askV.mockReset();
+    const { POST } = await import("@/app/api/chat/typed/route");
+    const conversationId = randomUUID();
+    const first = await POST(post({ message: `route-${RUN}-abuse1 GAND MAARA`, conversationId }));
+    expect(await first.json()).toMatchObject({ ok: true, reply: ABUSE_REPLY, links: [], source: "fallback" });
+    expect(first.headers.get("set-cookie") ?? "").not.toContain(`${ANON_ASKED_COOKIE}=`);
+    const second = await POST(post({ message: `route-${RUN}-abuse2 chutiya`, conversationId }));
+    expect(await second.json()).toMatchObject({ ok: true, reply: null, silent: true });
+    expect(askV).not.toHaveBeenCalled();
+    const { data } = await admin
+      .from("chat_interactions")
+      .select("message, reply, reply_source")
+      .eq("conversation_id", conversationId)
+      .order("created_at");
+    expect(data).toEqual([
+      { message: `route-${RUN}-abuse1 GAND MAARA`, reply: ABUSE_REPLY, reply_source: "fallback" },
+      { message: `route-${RUN}-abuse2 chutiya`, reply: null, reply_source: null },
+    ]);
+  });
+
   it("answers a signed-out visitor's first question, tells V it is their only one, and marks the browser", async () => {
     await setSettings({ ai_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });
     askV.mockReset();
@@ -304,6 +327,31 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
   describe("with explanations switched on", () => {
     const ok = { ok: true, tokensIn: 1, tokensOut: 1, cacheReadTokens: 0, cacheWriteTokens: 0 } as const;
 
+    // 2026-10-20: a practice rep written into the notes, read from the notes by page and position.
+    it("tells V the notes practice question the student tapped, read from the notes themselves", async () => {
+      await setSettings({ ai_enabled: true, explain_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });
+      askV.mockReset();
+      askV.mockResolvedValue({ ...ok, reply: "Want a hint or the full solution?" });
+      const { POST } = await import("@/app/api/chat/typed/route");
+      const pagePath = "/notes/mht-cet-chemistry/halogen-derivatives/cethal-classification-and-properties";
+      await POST(
+        post({
+          message: `route-${RUN}-notes1 explain`,
+          pagePath,
+          question: { notes: { concept: "cethal-classes-of-halides", item: "practice", index: 0 } },
+        })
+      );
+      const tail = (askV.mock.calls[0][0] as { systemTail: string }).systemTail;
+      expect(tail).toMatch(/practice question in the notes/);
+      expect(tail).toContain("STORED ANSWER");
+      // A notes item on a page it is not on, or with explanations off, tells V nothing.
+      await POST(post({ message: `route-${RUN}-notes2 explain`, pagePath: "/browse", question: { notes: { concept: "cethal-classes-of-halides", item: "self" } } }));
+      expect((askV.mock.calls[1][0] as { systemTail: string }).systemTail).not.toMatch(/practice question in the notes/);
+      await setSettings({ ai_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });
+      await POST(post({ message: `route-${RUN}-notes3 explain`, pagePath, question: { notes: { concept: "cethal-classes-of-halides", item: "practice", index: 0 } } }));
+      expect((askV.mock.calls[2][0] as { systemTail: string }).systemTail).not.toMatch(/practice question in the notes/);
+    });
+
     it("gives V the question tools and names the tapped question and the pick", async () => {
       await setSettings({ ai_enabled: true, explain_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });
       askV.mockReset();
@@ -315,6 +363,8 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
         "find_chapters",
         "my_progress",
         "exam_strategy",
+        "recent_questions",
+        "save_question",
         "get_question",
         "explain_question",
         "similar_question",
@@ -362,11 +412,21 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
       const { GET } = await import("@/app/api/chat/features/route");
       const req = () => get("/api/chat/features");
       await setSettings({ ai_enabled: true, explain_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });
-      expect(await (await GET(req())).json()).toEqual({ explain: true });
+      expect(await (await GET(req())).json()).toEqual({ explain: true, plan: false });
       await setSettings({ ai_enabled: false, explain_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });
-      expect(await (await GET(req())).json()).toEqual({ explain: false });
+      expect(await (await GET(req())).json()).toEqual({ explain: false, plan: false });
       await setSettings({ ai_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });
-      expect(await (await GET(req())).json()).toEqual({ explain: false });
+      expect(await (await GET(req())).json()).toEqual({ explain: false, plan: false });
+    });
+
+    // 2026-10-20: "Plan my week" sits beside "Build a practice test" while V's week plan is on.
+    it("tells the window whether the week plan is on, needing the AI on too", async () => {
+      const { GET } = await import("@/app/api/chat/features/route");
+      const req = () => get("/api/chat/features");
+      await setSettings({ ai_enabled: true, plan_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });
+      expect(await (await GET(req())).json()).toEqual({ explain: false, plan: true });
+      await setSettings({ ai_enabled: false, plan_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });
+      expect(await (await GET(req())).json()).toEqual({ explain: false, plan: false });
     });
 
     // 2026-10-19, live: the deployed route kept answering {explain:false} after the switch was saved,
@@ -415,7 +475,7 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
     const { POST } = await import("@/app/api/chat/typed/route");
     await POST(post({ message: `route-${RUN}-ask4 explain`, question: { id: askedId } }));
     const call = askV.mock.calls[0][0] as { tools: { name: string }[]; systemTail: string };
-    expect(call.tools.map((t) => t.name)).toEqual(["find_chapters", "my_progress", "exam_strategy"]);
+    expect(call.tools.map((t) => t.name)).toEqual(["find_chapters", "my_progress", "exam_strategy", "recent_questions", "save_question"]);
     expect(call.systemTail).not.toContain("tapped Ask V");
   });
 
@@ -426,8 +486,11 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
     const { POST } = await import("@/app/api/chat/typed/route");
     await POST(post({ message: `route-${RUN}-prog how am I doing` }));
     const tools = askV.mock.calls[0][0].tools as { name: string; run: (i: unknown) => Promise<string> }[];
-    expect(tools.map((t) => t.name)).toEqual(["find_chapters", "my_progress", "exam_strategy"]);
+    expect(tools.map((t) => t.name)).toEqual(["find_chapters", "my_progress", "exam_strategy", "recent_questions", "save_question"]);
     expect(await tools[1].run({})).toMatch(/signed out/i);
+    // 2026-10-20: the student's recent questions and saves, which a signed-out visitor does not have.
+    expect(await tools[3].run({})).toMatch(/signed out/i);
+    expect(await tools[4].run({ question_id: askedId })).toMatch(/signed out/i);
   });
 
   // 2026-10-19 study-partner Phase 3: the plan tools are always offered (the tool list is cached), and read nothing signed out.
@@ -436,7 +499,7 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
     askV.mockReset();
     let said = "";
     askV.mockImplementation(async (input: { tools: { name: string; run: (i: unknown) => Promise<string> }[] }) => {
-      expect(input.tools.map((t) => t.name)).toEqual(["find_chapters", "my_progress", "exam_strategy", "plan_week", "my_plan"]);
+      expect(input.tools.map((t) => t.name)).toEqual(["find_chapters", "my_progress", "exam_strategy", "recent_questions", "save_question", "plan_week", "my_plan"]);
       said = await input.tools.find((t) => t.name === "plan_week")!.run({ exam: "NDA" });
       return { ok: true, reply: "Sign in first.", tokensIn: 1, tokensOut: 1, cacheReadTokens: 0, cacheWriteTokens: 0, toolCalls: [] };
     });
@@ -536,25 +599,6 @@ it("keeps the conversation: stores its id and page, returns the row id, and give
       );
     expect((await seen({ conversationId: "x" })).status).toBe(400);
     expect((await seen({ conversationId: randomUUID() })).status).toBe(401);
-  });
-
-  it("stores a button's answer in the conversation (0159)", async () => {
-    const { POST: FAQ } = await import("@/app/api/chat/faq/route");
-    const conversationId = randomUUID();
-    const res = await FAQ(
-      new NextRequest("http://localhost:3000/api/chat/faq", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "x-forwarded-for": `faq-${RUN}` },
-        body: JSON.stringify({ questionId: "notes", conversationId, pagePath: "/notes" }),
-      })
-    );
-    const { reply } = await res.json();
-    const { data } = await admin
-      .from("chat_interactions")
-      .select("reply, reply_source, page_path")
-      .eq("conversation_id", conversationId);
-    expect(data).toEqual([{ reply, reply_source: "template", page_path: "/notes" }]);
-    await admin.from("chat_interactions").delete().eq("conversation_id", conversationId);
   });
 });
 

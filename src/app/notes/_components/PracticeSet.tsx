@@ -5,9 +5,12 @@ import { Dumbbell, Eye } from "lucide-react";
 import KatexRenderer from "@/components/math/KatexRenderer";
 import BlockText from "@/components/math/BlockText";
 import type { PracticeProblem } from "@/app/notes/_types";
+import AskVButton from "@/components/chat/AskVButton";
 
 type Props = {
   problems: PracticeProblem[];
+  /** The concept they belong to: Ask V finds a rep by it and its number (lib/chat/notesItem.ts). */
+  conceptSlug: string;
 };
 
 /**
@@ -20,7 +23,7 @@ type Props = {
  * Violet accent keeps it distinct from the worked (neutral) and
  * self-check (sky) cards above it.
  */
-export default function PracticeSet({ problems }: Props) {
+export default function PracticeSet({ problems, conceptSlug }: Props) {
   const [revealed, setRevealed] = useState<Set<number>>(new Set());
 
   const reveal = (i: number) =>
@@ -80,6 +83,13 @@ export default function PracticeSet({ problems }: Props) {
                       (<KatexRenderer text={p.method} />)
                     </span>
                   )}
+                  {/* After the check only (2026-10-20): "why is that the answer?" is the question V answers here. */}
+                  <AskVButton
+                    notes={{ concept: conceptSlug, item: "practice", index: i }}
+                    compact
+                    ariaLabel={`Ask V about practice rep ${i + 1}`}
+                    className="ml-auto"
+                  />
                 </div>
               )}
             </li>

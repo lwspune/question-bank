@@ -20,8 +20,10 @@ import {
   buildSystemTail,
   NAV_FACTS,
   GUIDE_FACTS,
-  type ChatExamFact,
+  examFactFromEntry,
+  buildNotesFacts,
 } from "./facts";
+import { getNotesExamGroups } from "@/lib/notes/notesNav";
 import { chapterPath, findChapters, formatChapterHits, type ChapterSearchRow } from "./chapterSearch";
 import { pathsInReply } from "./replyLinks";
 import type { VTool } from "./anthropic";
@@ -33,6 +35,7 @@ import { questionTools, type QuestionToolDeps } from "./questionToolSet";
 import { examStrategyTool, type StrategyData } from "./examStrategy";
 import { loadExamStrategy } from "./examStrategyServer";
 import { planTools, type PlanDeps } from "./weekPlan";
+import { myQuestionTools, type MyQuestionDeps } from "./myQuestions";
 import { GUIDE_CATALOG } from "@/lib/guide/guideCatalog";
 import type { ExamSlug } from "@/lib/exam/examContext";
 
@@ -42,20 +45,6 @@ export function profileExamNames(slugs: readonly string[]): string[] {
     const e = EXAM_REGISTRY.find((x) => x.slug === s);
     return e && e.noPublicContent !== true ? [e.displayName] : [];
   });
-}
-
-function toExamFact(e: (typeof EXAM_REGISTRY)[number], pyqBySlug: Map<string, number> | null): ChatExamFact {
-  return {
-    slug: e.slug,
-    displayName: e.displayName,
-    tier: e.tier,
-    hasMocks: e.hasMocks === true,
-    boardExam: e.boardExam === true,
-    practiceOnly: e.practiceOnly === true,
-    // null = the count could not be read: claim nothing about past-year papers.
-    hasPastYearQuestions: pyqBySlug ? (pyqBySlug.get(e.slug) ?? 0) > 0 : undefined,
-    noPublicContent: e.noPublicContent === true,
-  };
 }
 
 /** Signed out the plan tools answer "sign in" before reading anything, so these are never called. */
@@ -69,6 +58,12 @@ const SIGNED_OUT_PLAN: Omit<PlanDeps, "signedIn" | "loadChapters" | "loadStrateg
   loadPlan: async () => null,
   loadPlanActivity: async () => ({ drills: 0, mocks: 0, chapterQuestions: {} }),
   onPlan: () => {},
+};
+
+const SIGNED_OUT_QUESTIONS: Omit<MyQuestionDeps, "signedIn"> = {
+  now: () => new Date(),
+  loadRecent: async () => [],
+  save: async () => ({ kind: "missing" }),
 };
 
 /** `system` is the same for every question (cached); `systemTail` is this question's page and account state. */
@@ -103,6 +98,10 @@ export async function loadVContext(
     plan?: Omit<PlanDeps, "signedIn" | "loadChapters" | "loadStrategy"> | null;
     /** The question the student tapped Ask V on, and the option they picked. */
     question?: { id: string; chose: string | null } | null;
+    /** A notes practice question the student tapped Ask V on, as V is told it (lib/chat/notesItem.ts). */
+    notesBrief?: string | null;
+    /** The signed-in student's recent questions and saves (lib/chat/myQuestions.ts); absent when signed out. */
+    myQuestions?: Omit<MyQuestionDeps, "signedIn"> | null;
   } = {}
 ): Promise<VContext> {
   const loadChapters = opts.loadChapters ?? listChapterSearchRows;
@@ -118,7 +117,11 @@ export async function loadVContext(
       }),
   ]);
 
-  const exams = buildExamFacts(EXAM_REGISTRY.map((e) => toExamFact(e, pyqBySlug)));
+  const exams = buildExamFacts(EXAM_REGISTRY.map((e) => examFactFromEntry(e, pyqBySlug)));
+  // Never an exam with nothing public: its notes would point a student at an exam we do not show.
+  const notes = buildNotesFacts(
+    getNotesExamGroups().filter((g) => EXAM_REGISTRY.find((e) => e.slug === g.slug)?.noPublicContent !== true)
+  );
   const system = buildSystemPrompt({
     exams,
     plans: buildPlanFacts(plans),
@@ -126,6 +129,7 @@ export async function loadVContext(
     bankTotal: bankCount.count ?? 0,
     nav: NAV_FACTS,
     guides: GUIDE_FACTS,
+    notes,
     explainEnabled: Boolean(opts.questionTools),
     planEnabled: opts.planEnabled === true,
   });
@@ -145,9 +149,10 @@ export async function loadVContext(
     pageInfo,
     profileExams: profileExamNames(opts.profileExamSlugs ?? []),
     question: opts.questionTools ? (opts.question ?? null) : null,
+    notesBrief: opts.questionTools ? (opts.notesBrief ?? null) : null,
   });
 
-  const allowedPaths = new Set(pathsInReply([...NAV_FACTS, ...GUIDE_FACTS, ...exams].join("\n")));
+  const allowedPaths = new Set(pathsInReply([...NAV_FACTS, ...GUIDE_FACTS, ...exams, ...notes].join("\n")));
   if (opts.page) allowedPaths.add(opts.page);
 
   const findChaptersTool: VTool = {
@@ -184,7 +189,9 @@ export async function loadVContext(
   const loadStrategy = opts.loadStrategy ?? loadExamStrategy;
   // Signed out the plan tools are still offered (they say "sign in"), so the cached tool list depends on the switch alone.
   const plan = opts.planEnabled ? planTools({ ...(opts.plan ?? SIGNED_OUT_PLAN), signedIn: Boolean(opts.plan), loadChapters, loadStrategy }) : [];
-  const tools = [findChaptersTool, progressTool(opts.loadOwnProgress, opts.loadOwnPractice), strategyTool, ...plan];
+  // Always offered (the tool list is cached); signed out they say "sign in" and touch nothing.
+  const mine = myQuestionTools({ ...(opts.myQuestions ?? SIGNED_OUT_QUESTIONS), signedIn: Boolean(opts.myQuestions) });
+  const tools = [findChaptersTool, progressTool(opts.loadOwnProgress, opts.loadOwnPractice), strategyTool, ...mine, ...plan];
   if (opts.questionTools) tools.push(...questionTools({ ...opts.questionTools, pageChapterId: pageInfo?.chapterId ?? null }));
   return { system, systemTail, tools, allowedPaths };
 }

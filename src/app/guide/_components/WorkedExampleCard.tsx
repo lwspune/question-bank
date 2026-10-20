@@ -14,6 +14,7 @@ import PresentButton from "@/components/present/PresentButton";
 import { fromWorkedExample } from "@/lib/present/viewModel";
 import { optionMark } from "@/lib/questions/optionMark";
 import { DIFFICULTY_LABEL, DIFFICULTY_PILL } from "@/lib/questions/difficultyPill";
+import AskVButton from "@/components/chat/AskVButton";
 import type { WorkedExample } from "@/lib/guide/loadWorkedExamples";
 
 type Props = {
@@ -209,6 +210,8 @@ export default function WorkedExampleCard({ rank, example }: Props) {
               </button>
             )
           )}
+          {/* 2026-10-20: the same Ask V as the bank card; hidden while explanations are off. */}
+          <AskVButton questionId={example.id} chose={picked} />
         </div>
       </div>
     </article>

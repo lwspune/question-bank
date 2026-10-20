@@ -718,12 +718,12 @@ export default function ConceptUnitCard({
     <>
       {concept.selfCheckExample && (
         <div className="mt-4">
-          <SelfCheckCard example={concept.selfCheckExample} />
+          <SelfCheckCard example={concept.selfCheckExample} conceptSlug={concept.slug} />
         </div>
       )}
       {concept.practiceSet && concept.practiceSet.length > 0 && (
         <div className="mt-4">
-          <PracticeSet problems={concept.practiceSet} />
+          <PracticeSet problems={concept.practiceSet} conceptSlug={concept.slug} />
         </div>
       )}
     </>

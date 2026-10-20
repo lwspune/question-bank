@@ -193,6 +193,18 @@ describe("--click", () => {
   it("also finds an icon-only button by its aria-label", () => {
     expect(clickScript("Chat with V")).toContain("aria-label");
   });
+
+  // 2026-10-20: a button far down a long page (a notes practice rep) was clicked off screen, so the
+  // shot showed the page top. It is scrolled to the middle of the screen first.
+  it("can open a collapsed <details> section by its summary (notes 'Practice this concept')", () => {
+    expect(clickScript("Practice this concept")).toContain("summary");
+  });
+
+  it("scrolls the button into view before tapping it", () => {
+    const js = clickScript("Reveal answer");
+    expect(js.indexOf("scrollIntoView")).toBeGreaterThan(-1);
+    expect(js.indexOf("scrollIntoView")).toBeLessThan(js.indexOf("el.click()"));
+  });
 });
 
 describe("--storage: seed localStorage before every page load", () => {

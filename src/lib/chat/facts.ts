@@ -14,6 +14,8 @@ import type { FreeLimits } from "@/lib/billing/perkLimits";
 import type { VPageContext } from "./pageContext";
 import { GUIDE_CATALOG } from "@/lib/guide/guideCatalog";
 import { MAX_CHAPTERS } from "@/lib/practiceTests/builder";
+import { ABUSE_REPLY } from "./abuse";
+import type { ExamEntry } from "@/lib/exam/examContext";
 
 export type ChatExamFact = {
   /** The registry slug: names the exam's page that lists every chapter. Absent in the FAQ's own facts. */
@@ -28,7 +30,34 @@ export type ChatExamFact = {
   hasPastYearQuestions?: boolean;
   /** Exam is ingested-but-private: must never be surfaced or recommended. */
   noPublicContent: boolean;
+  /** The second language its questions are printed in, beside English (a `bilingual` exam). */
+  secondLang?: "mr" | "hi";
 };
+
+const LANG_NAME: Record<NonNullable<ChatExamFact["secondLang"]>, string> = { mr: "Marathi", hi: "Hindi" };
+
+/**
+ * One registry entry as V's fact. A `bilingual` exam prints Marathi unless it
+ * declares `secondLang` (Hindi for SSC, on the feat/ssc-cgl-hindi branch as of
+ * 2026-10-20); read through `in` so this holds before and after that field lands.
+ * Once `examAltLang` is on main, call it here instead.
+ */
+export function examFactFromEntry(e: ExamEntry, pyqBySlug: Map<string, number> | null): ChatExamFact {
+  const declared = "secondLang" in e ? (e as { secondLang?: unknown }).secondLang : undefined;
+  const secondLang = e.bilingual ? (declared === "hi" ? "hi" : "mr") : undefined;
+  return {
+    slug: e.slug,
+    displayName: e.displayName,
+    tier: e.tier,
+    hasMocks: e.hasMocks === true,
+    boardExam: e.boardExam === true,
+    practiceOnly: e.practiceOnly === true,
+    // null = the count could not be read: claim nothing about past-year papers.
+    hasPastYearQuestions: pyqBySlug ? (pyqBySlug.get(e.slug) ?? 0) > 0 : undefined,
+    noPublicContent: e.noPublicContent === true,
+    ...(secondLang ? { secondLang } : {}),
+  };
+}
 
 export type ChatPlanFact = {
   label: string;
@@ -66,6 +95,7 @@ export function buildExamFacts(exams: readonly ChatExamFact[]): string[] {
         else bits.push("practice questions");
       }
       if (e.hasMocks) bits.push("has timed mock tests at /mock");
+      if (e.secondLang) bits.push(`questions in English and ${LANG_NAME[e.secondLang]} (a language switch on each question and mock)`);
       // For "all chapters" (2026-10-18): V listed names five times and never linked.
       if (e.slug) bits.push(`every chapter listed at ${chapterListHref(e.slug)}`);
       return `${e.displayName}: ${bits.join("; ")}.`;
@@ -106,9 +136,11 @@ export const NAV_FACTS: readonly string[] = [
   "/notes: teaching notes per chapter, free to read.",
   "/guide: exam strategy guides (which chapters to prioritise, how to spend your time).",
   "/drill: practise the questions you got wrong (needs a free account).",
+  "/saved: the questions a student saved to come back to (needs a free account).",
   "/performance: a student's own results after their mocks: scores, trend, and what to work on (needs a free account).",
   "/me/map: a student's mastery map, chapter by chapter (needs a free account).",
   "Build a practice test: a button in this chat window; V builds a test from the chapters, length and difficulty the student picks.",
+  "Plan my week: a button beside it in this chat window (when V's week plan is on); V plans the student's study week.",
   "/signup: create a free account (Google or email).",
   "/pricing: the Premium Pass and how to buy it.",
 ];
@@ -127,6 +159,30 @@ export function buildGuideFacts(catalog: Partial<Record<string, readonly { href:
 
 export const GUIDE_FACTS: readonly string[] = buildGuideFacts(GUIDE_CATALOG);
 
+/**
+ * One line per exam with notes (2026-10-20): its notes hub and each subject's
+ * notes page. V knew only "/notes", so "where are NDA maths notes?" got "I
+ * couldn't find a Maths chapter for NDA". Built from the notes nav
+ * (lib/notes/notesNav.ts getNotesExamGroups), so a new notes subject reaches V
+ * without a code change.
+ */
+export function buildNotesFacts(
+  groups: readonly {
+    slug: string;
+    displayName: string;
+    subjects: readonly { subjectRoute: string; subjectDisplay: string; chapterCount: number }[];
+  }[]
+): string[] {
+  return groups
+    .filter((g) => g.subjects.length > 0)
+    .map((g) => {
+      const subjects = g.subjects.map(
+        (s) => `${s.subjectDisplay} at /notes/${s.subjectRoute} (${s.chapterCount} chapter${s.chapterCount === 1 ? "" : "s"})`
+      );
+      return `/notes/${g.slug}: ${g.displayName} notes, free to read: ${subjects.join(", ")}.`;
+    });
+}
+
 export type ChatFacts = {
   exams: readonly string[];
   plans: readonly string[];
@@ -136,6 +192,8 @@ export type ChatFacts = {
   nav: readonly string[];
   /** Subject strategy guides (GUIDE_FACTS). */
   guides?: readonly string[];
+  /** Each exam's notes hub and subject notes pages (buildNotesFacts). */
+  notes?: readonly string[];
   /** "Ask V about this question" is switched on (chat_settings.explain_enabled, 0168). */
   explainEnabled?: boolean;
   /** V plans the week (chat_settings.plan_enabled, 0170). */
@@ -157,14 +215,16 @@ const NO_EXPLAIN_RULE = `7. You cannot see the question a student is looking at,
  * Rule 7 with explanations on (2026-10-19, study-partner Phase 1). The scope
  * agreed with the owner: V explains from the stored solution and key, never
  * its own working, and never doubts the key (a disputed key is a report).
- * Hint first when the student has not tried, which is retrieval practice.
+ * Since 2026-10-20 (owner) V explains straight away when asked and gives a
+ * hint only when the student asks for one: "Want a hint or the full
+ * solution?" asked again what the tap had already said.
  */
 const EXPLAIN_RULE = `7. Questions. You can explain a question from its stored solution. When the student tapped Ask V, the question is named at the end. When they paste or type out a question, call find_question and ask whether the first match is theirs before explaining it.
-- If they have not answered it and did not ask for the answer, ask: "Want a hint or the full solution?"
-- Hint: call get_question and give the first idea in one or two lines. Never give the answer or say which option is right.
-- Full solution: call explain_question. Explain only from the stored solution it returns, in short steps, each on its own line, in their language. If they picked an option, start with why their pick is right or where it goes wrong. Write maths inside \\( \\).
+- When they tap Ask V or ask you to explain, explain it straight away: do not ask whether they want a hint or the full solution.
+- Give a hint only when they ask for one: call get_question and give the first idea in one or two lines. Never give the answer or say which option is right.
+- Explaining: call explain_question. Explain only from the stored solution it returns, in short steps, each on its own line, in their language. If they picked an option, start with why their pick is right or where it goes wrong. Write maths inside \\( \\).
 - Never work out your own answer, and never say the stored answer is wrong. If they think it is wrong, tell them to tap Report on the question.
-- After a full solution, offer one similar question to try; when they want it, call similar_question.
+- After explaining, call similar_question and say in one line that a similar one is below to try. Do not ask whether they want one.
 - If explain_question says they are signed out or out of free answers, say only that, kindly, with the link it gives.`;
 
 /** Rule 8a, while V's week plan is switched on (/dashboard/chat, migration 0170). */
@@ -178,12 +238,13 @@ export function buildSystemPrompt(facts: ChatFacts): string {
   const planBlock = facts.plans.length ? facts.plans.join("\n") : "(nothing is on sale right now)";
   const questionRule = facts.explainEnabled ? EXPLAIN_RULE : NO_EXPLAIN_RULE;
   const guideBlock = facts.guides && facts.guides.length ? facts.guides.join("\n") : "(none)";
+  const notesBlock = facts.notes && facts.notes.length ? facts.notes.join("\n") : "(none)";
   const freeBlock = facts.free && facts.free.length ? facts.free.join("\n") : "(not available right now; do not quote limits)";
 
   return `You are V, the small helper on PYQ Vault (pyqvault.com), a past-year-question bank for Indian exams. Your readers are school and college students preparing for exams, often on a phone.
 
 RULES
-1. Answer ONLY from the facts below and from what the ${facts.planEnabled ? "find_chapters, my_progress, exam_strategy, plan_week and my_plan" : "find_chapters, my_progress and exam_strategy"} tools return. Never guess, and never use outside knowledge about these exams or this product (one exception: a textbook's chapter names, rule 3a).
+1. Answer ONLY from the facts below and from what the ${facts.planEnabled ? "find_chapters, my_progress, exam_strategy, recent_questions, plan_week and my_plan" : "find_chapters, my_progress, exam_strategy and recent_questions"} tools return. Never guess, and never use outside knowledge about these exams or this product (one exception: a textbook's chapter names, rule 3a).
 2. Links: write site pages as bare paths such as /pricing, never [text](path). Use ONLY paths listed below or returned by ${facts.planEnabled ? "find_chapters, exam_strategy, plan_week or my_plan" : "find_chapters or exam_strategy"}. Never make up a path or a full web address.
 3. When a student asks for material on a chapter or subject (PYQs, important questions, practice, a chapter list), call find_chapters with the chapter or subject in full words. Expand short forms first (nlm = Laws of Motion). Pass the exam only when the student named it, the page shows it, or their profile lists it (the page and the profile are given at the end when known); never guess the exam. A class alone ("class 12", "12th") is not an exam: CBSE and the Maharashtra board both have one. Then:
 - the chapters found are all in one exam: link the best one to three chapter pages.
@@ -193,22 +254,26 @@ RULES
 3a. Chapter numbers are not stored. When a student gives one for an exam you know, search by that chapter's name in that exam's textbook if you are sure of it (CBSE Class 12 Physics chapter 1 is Electric Charges and Fields). If you are not sure, search the subject instead.
 3b. When you know the exam and subject but not the chapter, search the subject, then list the chapter names it returns in one sentence, separated by commas, and ask which one they want.
 3c. When they want every chapter ("all", "all chapters", "sab", "सगळे"), do not list the names again: link that exam's every-chapter page, given with each exam below.
+3d. When they ask for notes for an exam or subject, link its notes page from NOTES below. If their exam has no notes there yet, say so and link its chapter pages instead.
 4. When they want a test, a mock or a quiz on a chapter, tell them to tap "Build a practice test" in this chat. It picks whole chapters (up to ${MAX_CHAPTERS}), not subtopics, so name the chapter to pick. For a whole past paper, point to /mock.
 5. Nobody knows the questions of a future paper (2027 or any upcoming exam). Say so kindly, then call exam_strategy and name the chapters it says were asked in every one of the recent years, with the biggest shares; for board exams also point to each chapter's Top 10 PYQs on /board.
 5a. Strategy (which chapters matter most, weightage, what to focus on, little time left): call exam_strategy with the exam, and the subject if they named one. Quote only the percentages it returns and say they are shares of the past papers in our bank. Name the top two or three chapters, link their pages, and link the subject's guide from STRATEGY GUIDES when it gives one. If it asks which subject or which exam, ask the student. Never say you have no weightage data.
 6. Price, fees, free or not, buying: say what is free (FREE ACCOUNT below), then the pass price and what it gives, and link /pricing.
 ${questionRule}
 8. A student's own results: when they ask about their scores, progress, how many questions they have answered or practised, weak or strong chapters, or what to study next, call my_progress and use only its numbers. Practice outside mocks counts as progress: give it even when they have no mock yet. Say what went well first, then the one or two chapters to work on next, and link /performance (or /drill for the questions they got wrong). Never compare them with other students. If it says they are signed out, tell them to sign in.${facts.planEnabled ? `\n${PLAN_RULE}` : ""}
+8b. The question on their screen ("this question", "Q 44", "the one I just did"): you cannot see their screen, so call recent_questions and ask whether they mean the first one, quoting its start; once they say which, you can explain it by its id. To remind them, retry later or keep a question, call save_question (after recent_questions if you need the id) and tell them it is in /saved. You cannot send reminders.
 9. For greetings, single words or text you cannot read, reply in one friendly line asking what exam or chapter they are studying.
 10. Reply in the student's language: English, Hinglish, Hindi or Marathi, matching how they wrote.
+10a. The language of the QUESTIONS is a different thing: each exam below says when its questions are also printed in Marathi or Hindi. Every other exam's questions are in English only for now; say so plainly, and name the exams that do have their language.
 11. Keep it short: 1 to 3 sentences${facts.explainEnabled ? ", except an explanation (rule 7), which may take up to 8 short lines" : ""}. Plain text only, no markdown, no lists, no em dashes.
 12. You can see the earlier messages of this chat. Use them to understand short follow-ups ("other chapter", "yes?", "1,2,3 lessons"), and do not repeat what you already said.
+13. If a message is abusive, rude or vulgar in any language, reply with exactly this line and nothing else: ${ABUSE_REPLY} Never answer back, joke about it or repeat their words.
 
 EXAMS
 ${examBlock}
 
 BANK SIZE
-${facts.bankTotal} public questions across the live exams above.
+${facts.bankTotal} public questions across the live exams above. Asked how many exams we cover, say 20+ exams and name a few; never give an exact count.
 
 FREE ACCOUNT
 ${freeBlock}
@@ -220,7 +285,10 @@ WHERE THINGS ARE
 ${facts.nav.join("\n")}
 
 STRATEGY GUIDES
-${guideBlock}`;
+${guideBlock}
+
+NOTES
+${notesBlock}`;
 }
 
 /**
@@ -238,8 +306,11 @@ export function buildSystemTail(who: {
   profileExams?: readonly string[];
   /** The question the student tapped Ask V on, and the option they picked, if any. */
   question?: { id: string; chose: string | null } | null;
+  /** Or a practice question in the notes, with its stored solution (lib/chat/notesItem.ts notesItemBrief). */
+  notesBrief?: string | null;
 }): string {
   const parts: string[] = [];
+  if (who.notesBrief) parts.push(who.notesBrief);
   if (who.question) {
     parts.push(
       `The student tapped Ask V on question ${who.question.id}. ${who.question.chose ? `They picked (${who.question.chose}).` : "They have not answered it yet."}`

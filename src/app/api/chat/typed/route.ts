@@ -39,6 +39,7 @@ import {
 } from "@/lib/chat/interactionsAdmin";
 import { validateChatMessage } from "@/lib/chat/validate";
 import { maskPersonal } from "@/lib/chat/maskPersonal";
+import { abuseReply, isAbusive } from "@/lib/chat/abuse";
 import { TYPED_QUESTION_REPLY } from "@/lib/chat/typed";
 import { personBucket } from "@/lib/chat/settings";
 import { readChatSettings, countAiAnswersToday } from "@/lib/chat/settingsAdmin";
@@ -61,6 +62,9 @@ import {
 } from "@/lib/chat/anonLimit";
 import type { ToolCallLog } from "@/lib/chat/anthropic";
 import { parseAskedQuestion } from "@/lib/chat/questionTools";
+import { parseNotesItemRef } from "@/lib/chat/notesItem";
+import { loadNotesItemBrief } from "@/lib/chat/notesItemServer";
+import { buildMyQuestionDeps } from "@/lib/chat/myQuestionsServer";
 import type { QuestionToolDeps } from "@/lib/chat/questionToolSet";
 import { loadSimilarId, loadVQuestion, searchVQuestions } from "@/lib/chat/questionToolsServer";
 import { revealedToday, spendVReveal } from "@/lib/chat/questionReveal";
@@ -192,6 +196,29 @@ export async function POST(request: NextRequest) {
     const pagePath = cleanPagePath(raw.pagePath);
     // "Ask V about this question" (0168): the question the student tapped Ask V on, while it is switched on.
     const asked = settings.explainEnabled ? parseAskedQuestion(raw.question) : null;
+    // Ask V on a practice question written into the notes (2026-10-20): read from the notes, by page and position.
+    const askedNotes = settings.explainEnabled ? parseNotesItemRef((raw.question as { notes?: unknown } | null)?.notes) : null;
+
+    // Abuse (owner, 2026-10-20): one calm line, then no reply at all. No AI call, and a
+    // signed-out visitor's question is not used up. Kept, so the dashboard shows it.
+    if (isAbusive(message)) {
+      const earlier = conversationId ? await readConversation(admin, conversationId) : [];
+      const calm = abuseReply(conversationBelongsTo(earlier, userId) ? earlier.map((r) => r.reply) : []);
+      const id = await recordChatInteraction(admin, {
+        eventType: "typed_question",
+        message,
+        userId,
+        ...(calm ? { reply: { text: calm, source: "fallback" as const } } : {}),
+        conversationId,
+        pagePath,
+      });
+      return NextResponse.json(
+        calm
+          ? { ok: true, reply: calm, links: [], id, source: "fallback" }
+          : { ok: true, reply: null, links: [], id, source: "fallback", silent: true },
+        { status: 200 }
+      );
+    }
 
     // A signed-out visitor's second question: kept (it shows what visitors want), answered with sign-in.
     const askedBefore = anonAskedFromCookieHeader(request.headers.get("cookie"));
@@ -236,11 +263,14 @@ export async function POST(request: NextRequest) {
           const earlier = conversationId ? await readConversation(admin, conversationId) : [];
           const history = conversationBelongsTo(earlier, userId) ? modelHistory(earlier) : [];
           const ownId = userId;
+          const notesBrief = askedNotes ? await loadNotesItemBrief(pagePath, askedNotes) : null;
           const ctx = await loadVContext(createSupabaseAnonClient(), {
             page: pagePath,
             signedIn: ownId !== null,
             profileExamSlugs: ownId ? await readProfileExams(ownId) : [],
             question: asked,
+            notesBrief,
+            myQuestions: ownId ? buildMyQuestionDeps(createSupabaseServerClient(), createSupabaseAnonClient(), ownId) : null,
             questionTools: settings.explainEnabled
               ? buildQuestionToolDeps(ownId, {
                   onSimilar: (id) => (similarQuestionId = id),
