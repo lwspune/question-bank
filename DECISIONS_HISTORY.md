@@ -1705,6 +1705,8 @@ The drill's rule since 2026-09-18 was: a miss makes a question due; the first ri
 
 19. **The 2026-09-30 (second) digest (JEE Maths batch 2) EVICTED from CLAUDE.md on 2026-10-04** under the CEILING rule, when the board-options digest landed beside the build-load one and took the active log 57 bytes past its 36,000-byte ceiling. Verified present here as a long form before eviction, so nothing was lost.
 
+20. **The 2026-10-10 (sixth) digest (chapter formula pages) EVICTED from CLAUDE.md on 2026-10-20** under the CEILING rule, when the Concept Ladder chip digest took the active log 265 bytes past its 36,000-byte ceiling. Verified present here as a long form before eviction (`**2026-10-10 (sixth)` in the 2026-10 batch).
+
 For all other entries (the consolidated 2026-05-27 milestone, 2026-05-26 infrastructure entries, anything **2026-09-15 onwards**), see `CLAUDE.md` "Decisions log" section. For **2026-09-01 to 2026-09-14** both exist: the DIGEST in `CLAUDE.md`, the full narrative here. The Foundations (M1-M3, 2026-05-08) sub-section also stays in CLAUDE.md.
 
 Within-month convention: newest entries closest to top (matches CLAUDE.md ordering).

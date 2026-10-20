@@ -411,11 +411,6 @@ The load-bearing choices made during the initial scaffold. Every later phase res
   - **Signed upload links into a private bucket with no storage policies** (the 4.5 MB body limit); a rejected sheet frees the student's day.
   - **The owner learns of uploads by a daily 18:00 IST email** (`grading-queue.yml`, only when something waits; flags >36 h) and `/dashboard/answer-sheets`. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 
-- **2026-10-10 (sixth) — Chapter formula pages: 222 static pages at `/formula/<exam>/<subject>/<chapter>` plus 4 exam hubs at `/formula/<exam>`, for search and ChatGPT, built from the notes registry alone (no database read at build or request).**
-  - **Linked through notes, not `/questions` (owner):** notes and `/questions` already link both ways, so a notes chip makes every questions page two hops away without the notes registry entering `/questions`. No PYQ counts per formula yet: per-page DB reads at build are what took production down.
-  - **The exam hubs are forced by Next:** the chapter route lives under the identity route's `[slug]`, and Next pre-builds a child for the slugs the PARENT returns, so the parent lists the exam slugs and renders a hub for them; a test keeps exam and identity slugs apart.
-  - **Floor:** 5+ formulas, or 1+ formula and 2+ tables (tables alone never qualify). Growth experiment `formula-pages`. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
-
 ### 2026-09
 
 > **September entries below are DIGESTS**, each keeping its headline and the findings that answer
