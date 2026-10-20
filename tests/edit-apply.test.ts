@@ -197,6 +197,42 @@ describe.skipIf(!HAS_ENV)("applyEdit", () => {
     return v;
   }
 
+  it("REFUSES a five-option question: the editor writes A-D only, so a save would orphan E", async () => {
+    // IMAT rows carry an E (migration 0140). The form shows A-D, so saving
+    // would mark one of A-D correct beside a correct E and rehash without E.
+    const { data: five, error: fiveErr } = await admin
+      .from("questions")
+      .insert({
+        org_id: orgId,
+        exam_id: examId,
+        subject_id: subjectAId,
+        chapter_id: chapterUnderAId,
+        text: "Five?",
+        difficulty: "EASY",
+        content_hash: contentHash(`Five ${RUN_ID}?`, ["a", "b", "c", "d", "e"], "E"),
+        created_by: adminUserId,
+      })
+      .select("id")
+      .single();
+    expect(fiveErr).toBeNull();
+    await admin.from("options").insert(
+      (["A", "B", "C", "D", "E"] as const).map((label) => ({
+        question_id: five!.id,
+        label,
+        text: label.toLowerCase(),
+        is_correct: label === "E",
+      }))
+    );
+
+    const v = validate({ text: "Five?" });
+    const result = await applyEdit(admin, five!.id, orgId, v.payload, v.contentHash, adminUserId);
+    expect(result.kind).toBe("error");
+    if (result.kind === "error") expect(result.message).toMatch(/five options/);
+
+    const { data: opts } = await admin.from("options").select("label, is_correct").eq("question_id", five!.id);
+    expect(opts!.filter((o) => o.is_correct).map((o) => o.label)).toEqual(["E"]);
+  });
+
   it("returns not_found when the question id does not exist", async () => {
     const v = validate();
     const result = await applyEdit(

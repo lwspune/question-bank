@@ -79,9 +79,19 @@ export function optionText(q: QuestionRow, label: "A" | "B" | "C" | "D"): string
   return q.options.find((o) => o.label === label)?.text ?? "";
 }
 
+/** nda-tracker stores options A-D. A five-option question (IMAT) is refused
+ *  outright rather than sent without its E. */
+function fourOptionsOnly(q: QuestionRow): void {
+  if (q.options.some((o) => o.label === "E")) {
+    throw new Error(`Question ${q.id} has five options; nda-tracker stores four.`);
+  }
+}
+
 /** The correct option's label, or null when none is flagged. */
 export function answerLabel(q: QuestionRow): "A" | "B" | "C" | "D" | null {
-  return q.options.find((o) => o.isCorrect)?.label ?? null;
+  fourOptionsOnly(q);
+  const label = q.options.find((o) => o.isCorrect)?.label ?? null;
+  return label === "E" ? null : label;
 }
 
 /** Subtopic name, defaulting the same way both transports need. */
@@ -119,8 +129,9 @@ export function buildQuestionPayload(
     "A" | "B" | "C" | "D",
     string | null
   >;
+  fourOptionsOnly(q);
   for (const o of q.options) {
-    optionImages[o.label] = absoluteImage(supabaseUrl, o.imageUrl);
+    if (o.label !== "E") optionImages[o.label] = absoluteImage(supabaseUrl, o.imageUrl);
   }
 
   return {

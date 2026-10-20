@@ -60,6 +60,11 @@ describe("buildQuestionPayload — the shape nda-tracker stores", () => {
     expect(buildQuestionPayload(q({ options: opts }), { supabaseUrl: SB }).answer).toBeNull();
   });
 
+  it("REFUSES a five-option question: the tracker stores A-D, so E would be lost", () => {
+    const five = [...q().options, { label: "E" as const, text: "E-text", isCorrect: false, imageUrl: null }];
+    expect(() => buildQuestionPayload(q({ options: five }), { supabaseUrl: SB })).toThrow(/five options/);
+  });
+
   it("defaults a missing subtopic to General, like the sheet does", () => {
     expect(buildQuestionPayload(q({ subtopic: null }), { supabaseUrl: SB }).subtopic).toBe("General");
   });

@@ -34,6 +34,8 @@ import {
   NOTES_TITLES_SHARE_KEEP_PCT,
   MOCK_TOGETHER_SENDS_KEEP,
   MOCK_TOGETHER_STARTS_KEEP,
+  IMAT_STUDENTS_KEEP,
+  IMAT_FOREIGN_SHARE_PCT,
   PRACTICE_FRIEND_SENDS_KEEP,
   PRACTICE_FRIEND_STARTS_KEEP,
   PRACTICE_TESTS_ANSWERED_KEEP_PCT,
@@ -518,6 +520,19 @@ export default async function GrowthPage() {
             <ReadingsList metric="mock-together-sends" />
             <ReadingsList metric="mock-together-starts" />
             <ReadingsList metric="mock-together-signups" />
+          </div>
+        );
+      case "imat":
+        return (
+          <div className="space-y-3">
+            <p className="text-sm text-muted-foreground">
+              Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))}: keep investing in IMAT if{" "}
+              {IMAT_STUDENTS_KEEP}+ students choose it; build intl.pyqvault.com once visitors from outside India are{" "}
+              {IMAT_FOREIGN_SHARE_PCT}%+ of IMAT page views.
+            </p>
+            <ReadingsList metric="imat-students" />
+            <ReadingsList metric="imat-page-views" />
+            <ReadingsList metric="imat-foreign-share" />
           </div>
         );
       case "pyq-wording":

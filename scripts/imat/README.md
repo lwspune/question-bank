@@ -1,7 +1,10 @@
 # IMAT pipeline
 
-IMAT (the Italian ministry's medicine-in-English admission test) for a future
-niche site. Plan and decisions: [NICHE_SITES_SPEC.md](../../NICHE_SITES_SPEC.md).
+IMAT (the Italian ministry's medicine-in-English admission test), on PYQ Vault
+for every visitor since 2026-10-20: the 681 original twins and the notes are
+PUBLIC. Plan and decisions: [NICHE_SITES_SPEC.md](../../NICHE_SITES_SPEC.md).
+Each twin's subtopic is in `practice/subtopics.json`, written by
+`subtopics.ts --assign --apply` (subtopics come from the notes registry).
 
 ## Source
 
@@ -17,7 +20,7 @@ site sits behind a bot check, so they are downloaded in a browser, not by script
 - 60 questions: Reading 4 · Logic 5 · Biology 23 · Chemistry 15 · Physics and
   Maths 13 (split by question into the Physics and Mathematics subjects).
   +1.5 right, −0.4 wrong, 0 blank.
-- PRIVATE until copyright decision D1 and the niche site are done.
+- PRIVATE until copyright decision D1.
 
 **2011-2022, set by Cambridge (UCLES)**: `IMAT_<year>.pdf`. **Internal use
 only, never published**: `commit.ts` writes them PRIVATE with `publish_blocked`
@@ -62,9 +65,8 @@ set (migration 0141), and the database refuses PUBLIC while it is set.
    options or a table are drawn too, the crop takes them in and is redone by
    hand (existing files are kept unless `--force`). A provider's logo is
    blanked where it is a separate image; 2021's is flattened into its figures.
-6. `npx tsx scripts/imat/seed.ts --apply` once: the exam row and six subjects.
-   **Only after the deploy containing `src/lib/sites/nicheExams.ts` is live**,
-   or "IMAT" appears in the /browse exam dropdown.
+6. `npx tsx scripts/imat/seed.ts --apply` once: the exam row and six subjects
+   (done 2026-10-08).
 7. `npx tsx scripts/imat/commit.ts <year> --apply`: writes PRIVATE at insert,
    then attaches figures. Rollback by `source_file`.
 

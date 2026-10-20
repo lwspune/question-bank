@@ -136,6 +136,17 @@ describe("buildPaperHtml", () => {
     expect(html).not.toContain("(A)");
   });
 
+  it("prints a fifth option (IMAT) on paper and key", () => {
+    const five = q({
+      options: [
+        ...q().options.map((o) => ({ ...o, isCorrect: false })),
+        { label: "E", text: "7", isCorrect: true, imageUrl: null },
+      ],
+    });
+    expect(buildPaperHtml({ ...base, questions: [five] })).toContain("(e)");
+    expect(buildKeyHtml({ ...base, questions: [five], includeSolutions: false })).toMatch(/class="ka">\(e\)</);
+  });
+
   it("never prints which option is correct", () => {
     const html = buildPaperHtml({ ...base, questions: [q()] });
     expect(html).not.toMatch(/correct/i);

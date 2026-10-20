@@ -19,7 +19,7 @@
 
 export type QuestionLang = "en" | "mr" | "both";
 export type PrintedLang = "en" | "mr";
-type Label = "A" | "B" | "C" | "D";
+type Label = "A" | "B" | "C" | "D" | "E";
 
 export type Translation = {
   text: string;

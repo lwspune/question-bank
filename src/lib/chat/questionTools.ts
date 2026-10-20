@@ -131,7 +131,7 @@ export function pickSimilar(candidates: readonly string[], exclude: ReadonlySet<
 }
 
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
-const PICKS = new Set(["A", "B", "C", "D"]);
+const PICKS = new Set(["A", "B", "C", "D", "E"]);
 
 /** The question a chat request says the student tapped Ask V on. Anything malformed is no question. */
 export function parseAskedQuestion(raw: unknown): { id: string; chose: string | null } | null {

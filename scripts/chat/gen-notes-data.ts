@@ -16,20 +16,29 @@ import { NOTES_CHAPTERS } from "@/lib/notes/chapters";
 import { notesDataKeys } from "@/lib/chat/notesItem";
 
 const OUT = path.resolve(__dirname, "../../src/lib/chat/notesData.generated.ts");
-const NOTES_DIR = path.resolve(__dirname, "../../src/app/notes");
+const SRC = path.resolve(__dirname, "../../src");
+
+/** A chapter's data module: under src/app/notes, or for IMAT (authored in its
+ *  own tree) src/lib/sites/imat/notes/<subject>/<chapter>. */
+function dataModule(key: string): string {
+  const [route, chapter] = key.split("/");
+  const candidates = [`app/notes/${key}/_data`];
+  if (route.startsWith("imat-")) candidates.push(`lib/sites/imat/notes/${route.slice("imat-".length)}/${chapter}`);
+  const found = candidates.find((c) => existsSync(path.join(SRC, c, "index.ts")));
+  if (!found) throw new Error(`${key}: no data module at ${candidates.map((c) => `src/${c}/index.ts`).join(" or ")}`);
+  return `@/${found}`;
+}
 
 async function main() {
   const keys = notesDataKeys(NOTES_CHAPTERS);
   const loaders: string[] = [];
   for (const key of keys) {
     const reg = NOTES_CHAPTERS.find((c) => `${c.subjectRoute}/${c.chapterSlug}` === key)!;
-    if (!existsSync(path.join(NOTES_DIR, key, "_data", "index.ts"))) {
-      throw new Error(`${key}: no src/app/notes/${key}/_data/index.ts`);
-    }
-    const mod = (await import(`@/app/notes/${key}/_data`)) as Record<string, unknown>;
+    const spec = dataModule(key);
+    const mod = (await import(spec)) as Record<string, unknown>;
     const name = Object.keys(mod).find((k) => mod[k] === reg.notes);
-    if (!name) throw new Error(`${key}: its _data/index.ts exports no object that is the registry's notes map`);
-    loaders.push(`  ${JSON.stringify(key)}: () => import("@/app/notes/${key}/_data").then((m) => m.${name}),`);
+    if (!name) throw new Error(`${key}: ${spec} exports no object that is the registry's notes map`);
+    loaders.push(`  ${JSON.stringify(key)}: () => import("${spec}").then((m) => m.${name}),`);
   }
 
   const body =

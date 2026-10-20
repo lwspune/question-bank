@@ -416,6 +416,7 @@ describe("exam tiers", () => {
       "ipmat-indore",
       "ipmat-rohtak",
       "jipmat",
+      "imat",
     ],
     graduate: [
       "cds",

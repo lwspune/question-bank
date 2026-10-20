@@ -40,7 +40,8 @@ export type ExamSlug =
   | "upsc-cse"
   | "afcat"
   | "ssc-cgl"
-  | "ssc-cgl-tier-2";
+  | "ssc-cgl-tier-2"
+  | "imat";
 
 /**
  * School boards the bank carries content for. NOT every exam has one — a
@@ -297,6 +298,24 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     notesPath: "/notes/neet", // exam hub: "coming soon" until NEET notes ship
     hasMocks: true, // 8 NEET (UG) mocks (2021-2026 + 2 Re-NEET) published at /mock
     pastPaperSolutions: true,
+  },
+  {
+    // Italy's English-medium medical admission test, on PYQ Vault since
+    // 2026-10-20 for every visitor (NICHE_SITES_SPEC.md, top note). Five
+    // options a question (migration 0140).
+    slug: "imat",
+    tier: "senior", // sat after Class 12, like NEET
+    displayName: "IMAT",
+    examName: "IMAT", // must match the `exams` DB row exactly
+    guidesPath: null,
+    notesPath: "/notes/imat", // 46 chapters, its own registry (lib/sites/imat/notes)
+    // What is PUBLIC is the 681 original twins alone: the 240 ministry papers
+    // (2023-2026) wait on the copyright opinion (NICHE_SITES_SPEC.md D1) and
+    // 2011-2022 are publish_blocked forever. Drop the flag when the ministry
+    // papers go PUBLIC.
+    practiceOnly: true,
+    // Until the twins are flipped PUBLIC after this deploy; then remove it.
+    noPublicContent: true,
   },
   {
     slug: "mh-hsc-12",

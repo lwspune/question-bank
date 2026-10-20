@@ -34,11 +34,15 @@ describe("parseDrillAnswer", () => {
     expect(parseDrillAnswer({ questionId: "1; drop table", label: "A" }).ok).toBe(false);
   });
 
-  it("rejects a label outside A-D", () => {
+  it("accepts E, the fifth option IMAT prints", () => {
+    expect(parseDrillAnswer({ questionId: ID, label: "e" })).toEqual({ ok: true, questionId: ID, label: "E" });
+  });
+
+  it("rejects a label outside A-E", () => {
     // Not a hypothetical: an option row could be relabelled, and the grader
     // compares labels. A free-text label would simply never match and record a
     // WRONG answer the student did not give.
-    for (const label of ["E", "", "AB", "1"]) {
+    for (const label of ["F", "", "AB", "1"]) {
       expect(parseDrillAnswer({ questionId: ID, label }).ok, label).toBe(false);
     }
   });

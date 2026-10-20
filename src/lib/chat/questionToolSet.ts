@@ -38,7 +38,7 @@ export type QuestionToolDeps = {
 
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const NOT_FOUND = "Question not found. Ask the student to tap Ask V on the question again.";
-const LETTERS = new Set(["A", "B", "C", "D"]);
+const LETTERS = new Set(["A", "B", "C", "D", "E"]);
 
 function idOf(input: unknown): string | null {
   const id = (input as { question_id?: unknown } | null)?.question_id;

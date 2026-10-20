@@ -7,8 +7,11 @@
  *
  * Names are the `exams.name` values in the database. This list becomes part
  * of the niche-site registry (`lib/sites/registry.ts`) when that is built.
+ *
+ * EMPTY since 2026-10-20: IMAT went on PYQ Vault as an ordinary exam, and
+ * the niche-site build waits for demand (NICHE_SITES_SPEC.md, top note).
  */
-export const NICHE_EXAM_NAMES: ReadonlySet<string> = new Set(["IMAT"]);
+export const NICHE_EXAM_NAMES: ReadonlySet<string> = new Set<string>();
 
 export function isNicheExam(examName: string): boolean {
   return NICHE_EXAM_NAMES.has(examName);

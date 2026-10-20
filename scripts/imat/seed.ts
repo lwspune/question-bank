@@ -6,19 +6,12 @@
  *
  * Idempotent. Subjects are never created by commitStaged (a typo would
  * corrupt the top-level taxonomy), so they must exist before the first commit.
- *
- * DO NOT RUN --apply UNTIL THE /browse FILTER IS LIVE. `listExams` lists
- * every row of `exams`; src/lib/sites/nicheExams.ts drops "IMAT" from it.
- * Until that code is deployed, creating the row puts an empty "IMAT" in the
- * /browse exam dropdown for every visitor. The script checks the live site
- * for the filter's effect only indirectly, so the check is on the person
- * running it: confirm the deploy that contains nicheExams.ts first.
+ * Already applied (2026-10-08); IMAT is on PYQ Vault since 2026-10-20.
  */
 import { createClient } from "@supabase/supabase-js";
 import { join } from "node:path";
 import { EXAM_NAME } from "./config";
 import { SUBJECTS } from "./lib";
-import { isNicheExam } from "../../src/lib/sites/nicheExams";
 
 function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -27,9 +20,6 @@ function loadEnv() {
 async function main() {
   loadEnv();
   const apply = process.argv.includes("--apply");
-  if (!isNicheExam(EXAM_NAME)) {
-    throw new Error(`"${EXAM_NAME}" is not in NICHE_EXAM_NAMES; it would show on PYQ Vault. Refusing.`);
-  }
   const client = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!, {
     auth: { persistSession: false },
   });

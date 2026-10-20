@@ -1,17 +1,14 @@
 /**
- * IMAT teaching notes: the niche site's own registry.
+ * IMAT teaching notes: authored here, served by PYQ Vault since 2026-10-20.
  *
  * The chapters use the /notes data shapes, so the shared notes components
- * render them, but they are registered HERE and never in NOTES_CHAPTERS:
- * everything NOTES_CHAPTERS feeds (the PYQ Vault nav, sitemap, /notes index,
- * notes-lint) must never show IMAT (NICHE_SITES_SPEC.md). Today only the
- * superadmin preview at /dashboard/imat-notes reads this; the IMAT site's
- * /notes pages will read it once that site exists.
+ * render them. NOTES_CHAPTERS takes this list in whole; the pages live under
+ * src/app/notes/imat-<subject>/ like every other exam's.
  *
- * Differences from PYQ Vault notes (pinned by tests/imat-notes.test.ts):
- * no featured past question (every IMAT row is PRIVATE, and 2011-2022 can
- * never be published), and every concept ends in a five-option self-check
- * written the way IMAT asks.
+ * Differences from other notes (pinned by tests/imat-notes.test.ts): no
+ * featured past question (the ministry papers wait on a copyright opinion,
+ * and 2011-2022 can never be published), and every concept ends in a
+ * five-option self-check written the way IMAT asks.
  *
  * Adding a chapter: write `<subject>/<chapter>/` (chapter.ts, one file per
  * page, index.ts), then append one entry below.

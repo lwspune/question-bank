@@ -67,6 +67,16 @@ export async function applyEdit(
   if (!existing) return { kind: "not_found" };
   if (existing.org_id !== callerOrgId) return { kind: "forbidden" };
 
+  // The edit form writes A-D only. On a five-option question (IMAT, migration
+  // 0140) a save would mark one of A-D correct beside a correct E and rehash
+  // without E, so it is refused; fix those rows by script.
+  if (existing.options.some((o) => o.label === "E")) {
+    return {
+      kind: "error",
+      message: "This question has five options, which the editor cannot save. Fix it by script.",
+    };
+  }
+
   // Teachers can edit content but not the publishing decision.
   if (
     callerRole === "TEACHER" &&

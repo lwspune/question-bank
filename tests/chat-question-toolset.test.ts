@@ -87,6 +87,12 @@ describe("explain_question", () => {
     expect(out).not.toContain("Correct answer");
   });
 
+  it("names an E pick, the fifth option IMAT prints", async () => {
+    const five: VQuestion = { ...Q, options: [...Q.options, { label: "E", text: "5", isCorrect: false }] };
+    const out = await deps({ loadQuestion: async () => five }).tools.explain_question.run({ question_id: ID, chose: "e" });
+    expect(out).toContain("The student chose (E) 5, which is wrong.");
+  });
+
   it("ignores a pick that is not an option letter", async () => {
     expect(await deps().tools.explain_question.run({ question_id: ID, chose: "Z" })).not.toContain("The student chose");
   });

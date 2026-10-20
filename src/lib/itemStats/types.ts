@@ -12,6 +12,16 @@ import type { Exposure } from "./exposure";
 export const OPTION_LABELS = ["A", "B", "C", "D"] as const;
 export type OptionLabel = (typeof OPTION_LABELS)[number];
 
+/** The one correct option's label, or null when there is not exactly one.
+ *  Item stats come from mock sittings, which are A-D only; a five-option
+ *  question (IMAT) has no sittings, so an E key has no stats to point at. */
+export function singleItemStatKey(options: readonly { label: string; isCorrect: boolean }[]): OptionLabel | null {
+  const correct = options.filter((o) => o.isCorrect);
+  if (correct.length !== 1) return null;
+  const label = correct[0].label;
+  return (OPTION_LABELS as readonly string[]).includes(label) ? (label as OptionLabel) : null;
+}
+
 export type ItemStatSource = "tracker" | "vault_mock";
 
 /** One sitting's response evidence for one question — a `question_item_stats` row. */

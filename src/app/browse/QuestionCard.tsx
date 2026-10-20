@@ -54,7 +54,7 @@ import { ItemStatChip, ItemStatDetail } from "./ItemStats";
 import CancelledNotice from "@/components/question/CancelledNotice";
 import { optionVersions, solutionVersions, stemVersions } from "@/lib/i18n/bilingual";
 import { useQuestionLang } from "@/lib/i18n/useQuestionLang";
-import type { ItemStatAggregate } from "@/lib/itemStats/types";
+import { singleItemStatKey, type ItemStatAggregate } from "@/lib/itemStats/types";
 
 type OptionLabel = OptionRow["label"];
 
@@ -412,11 +412,7 @@ export default function QuestionCard({
               <div className="pt-1">
                 <ItemStatDetail
                   agg={itemStats}
-                  keyLabel={
-                    question.options.filter((o) => o.isCorrect).length === 1
-                      ? (question.options.find((o) => o.isCorrect)?.label ?? null)
-                      : null
-                  }
+                  keyLabel={singleItemStatKey(question.options)}
                 />
               </div>
             )}

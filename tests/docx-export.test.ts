@@ -85,6 +85,20 @@ describe("buildQuestionPaper", () => {
     expect(xml).not.toContain("(B)");
   });
 
+  it("renders a fifth option (IMAT) on paper and key", async () => {
+    const five: QuestionRow = {
+      ...Q1,
+      options: [
+        ...Q1.options.map((o) => ({ ...o, isCorrect: false })),
+        { label: "E", text: "3", isCorrect: true, imageUrl: null },
+      ],
+    };
+    const paper = await readDocXml(await buildQuestionPaper({ title: "T", questions: [five] }));
+    expect(paper).toContain("(e)");
+    const key = await readDocXml(await buildAnswerKey({ title: "T", questions: [five], includeSolutions: false }));
+    expect(key).toContain("(e)");
+  });
+
   it("includes the document title", async () => {
     const buf = await buildQuestionPaper({
       title: "Optics Practice",

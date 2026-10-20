@@ -4,7 +4,7 @@
  */
 import { join } from "node:path";
 
-/** The `exams.name`. Listed in src/lib/sites/nicheExams.ts, so PYQ Vault never lists it. */
+/** The `exams.name`; `EXAM_REGISTRY` slug `imat` (on PYQ Vault since 2026-10-20). */
 export const EXAM_NAME = "IMAT";
 
 /** LWS Pune, the org that owns the bank (same as every other pipeline here). */
@@ -21,8 +21,9 @@ export function figurePath(year: number, n: number): string {
 }
 
 /**
- * IMAT stays PRIVATE until the niche site exists AND the copyright question
- * is answered (NICHE_SITES_SPEC.md D1). The commit writes this at insert.
+ * Past papers land PRIVATE: the ministry's wait on the copyright question
+ * (NICHE_SITES_SPEC.md D1) and 2011-2022 are publish_blocked. The commit
+ * writes this at insert.
  */
 export const VISIBILITY = "PRIVATE" as const;
 

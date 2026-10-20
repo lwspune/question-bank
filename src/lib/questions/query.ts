@@ -5,7 +5,7 @@ import { publicPyqNote, type PublicQuestionKind } from "./publicPyqNote";
 import { translationsFromRows, type Translation } from "@/lib/i18n/bilingual";
 
 export type OptionRow = {
-  label: "A" | "B" | "C" | "D";
+  label: "A" | "B" | "C" | "D" | "E";
   text: string;
   isCorrect: boolean;
   imageUrl: string | null;

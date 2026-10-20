@@ -1345,6 +1345,7 @@ import {
   CDSEN_RC_NOTES,
   CDSEN_RC_SLUGS,
 } from "@/app/notes/cds-english/reading-comprehension/_data";
+import { IMAT_NOTES_CHAPTERS } from "@/lib/sites/imat/notes/registry";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -4311,6 +4312,9 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     notes: CDSEN_RC_NOTES,
     slugs: CDSEN_RC_SLUGS,
   },
+  // IMAT: 46 chapters authored in their own registry (lib/sites/imat/notes),
+  // on PYQ Vault since 2026-10-20.
+  ...IMAT_NOTES_CHAPTERS,
 ];
 
 /**
