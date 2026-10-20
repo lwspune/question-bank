@@ -1,5 +1,18 @@
 # Niche sites — spec (2026-10-08)
 
+> **Superseded for IMAT (owner, 2026-10-20): IMAT goes on pyqvault.com as an
+> ordinary exam, the same for every visitor.** The 681 original twins and the
+> 46 notes chapters go PUBLIC; the 240 ministry questions still wait on D1 and
+> 2011-2022 stay `publish_blocked`. Why: 97% of traffic is Indian and Indian
+> students sit IMAT too, so the cheapest demand test is the site that already
+> ranks. Showing different pages by visitor country was rejected: Google
+> crawls mostly from the US and renders JavaScript, so a country-dependent
+> homepage risks the Indian rankings. **The niche-site build below is
+> deferred, not cancelled:** when IMAT pages draw steady traffic from outside
+> India, or SAT/ACT work starts, the next step is ONE international site
+> (`intl.pyqvault.com`) rather than one site per exam, with IMAT moved there
+> by 301 redirects. Until then `NICHE_EXAM_NAMES` is empty.
+
 What this document is: the plan for serving international exams (IMAT first)
 on their own small branded sites — one site per exam — from the PYQ Vault
 codebase, database and Vercel project. Nothing here is built yet. It is the
