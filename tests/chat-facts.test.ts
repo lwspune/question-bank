@@ -11,11 +11,13 @@ import {
   buildSystemTail,
   buildGuideFacts,
   GUIDE_FACTS,
+  examFactFromEntry,
   type ChatExamFact,
   type ChatPlanFact,
 } from "@/lib/chat/facts";
 import { GUIDE_CATALOG } from "@/lib/guide/guideCatalog";
 import { ABUSE_REPLY } from "@/lib/chat/abuse";
+import { EXAM_REGISTRY } from "@/lib/exam/examContext";
 
 const EM_DASH = String.fromCharCode(0x2014);
 
@@ -75,6 +77,51 @@ describe("buildExamFacts", () => {
   it("EXCLUDES an exam with no public content — it must never be recommended", () => {
     const facts = buildExamFacts(exams);
     expect(facts.some((f) => f.includes("Not Yet Live"))).toBe(false);
+  });
+
+  // 2026-10-20: four students in five days asked for Hindi or Marathi questions and V said it was not sure.
+  it("names the second language an exam's questions are printed in", () => {
+    const facts = buildExamFacts([
+      { displayName: "MPSC Group B & C", tier: "graduate", hasMocks: true, boardExam: false, practiceOnly: false, noPublicContent: false, secondLang: "mr" },
+      { displayName: "SSC CGL", tier: "graduate", hasMocks: true, boardExam: false, practiceOnly: false, noPublicContent: false, secondLang: "hi" },
+      { displayName: "NEET", tier: "senior", hasMocks: true, boardExam: false, practiceOnly: false, noPublicContent: false },
+    ]);
+    expect(facts[0]).toContain("questions in English and Marathi");
+    expect(facts[1]).toContain("questions in English and Hindi");
+    expect(facts[2]).not.toMatch(/Marathi|Hindi/);
+  });
+});
+
+/**
+ * V's exam facts come from EXAM_REGISTRY, so they follow every exam added or
+ * changed, on every push (owner, 2026-10-20: "keep updating V's fact list as
+ * exams get added"). This pins the derivation to the registry itself.
+ */
+describe("V's facts follow the exam registry", () => {
+  const facts = buildExamFacts(EXAM_REGISTRY.map((e) => examFactFromEntry(e, null)));
+
+  it("has one line for every exam with public content, and none for the rest", () => {
+    for (const e of EXAM_REGISTRY) {
+      const line = facts.find((f) => f.startsWith(`${e.displayName}:`));
+      if (e.noPublicContent) expect(line, e.slug).toBeUndefined();
+      else expect(line, e.slug).toBeDefined();
+    }
+  });
+
+  it("names Marathi or Hindi exactly where the site prints a second language", () => {
+    for (const e of EXAM_REGISTRY) {
+      if (e.noPublicContent) continue;
+      const line = facts.find((f) => f.startsWith(`${e.displayName}:`))!;
+      const lang = examFactFromEntry(e, null).secondLang;
+      expect(Boolean(lang), e.slug).toBe(e.bilingual === true);
+      if (lang) expect(line, e.slug).toContain(`English and ${lang === "hi" ? "Hindi" : "Marathi"}`);
+      else expect(line, e.slug).not.toMatch(/questions in English and/);
+    }
+  });
+
+  it("tells V that other exams are English only, so it can say so plainly", () => {
+    const p = buildSystemPrompt({ exams: facts, plans: [], bankTotal: 1, nav: NAV_FACTS });
+    expect(p).toMatch(/English only/);
   });
 });
 

@@ -15,6 +15,7 @@ import type { VPageContext } from "./pageContext";
 import { GUIDE_CATALOG } from "@/lib/guide/guideCatalog";
 import { MAX_CHAPTERS } from "@/lib/practiceTests/builder";
 import { ABUSE_REPLY } from "./abuse";
+import type { ExamEntry } from "@/lib/exam/examContext";
 
 export type ChatExamFact = {
   /** The registry slug: names the exam's page that lists every chapter. Absent in the FAQ's own facts. */
@@ -29,7 +30,34 @@ export type ChatExamFact = {
   hasPastYearQuestions?: boolean;
   /** Exam is ingested-but-private: must never be surfaced or recommended. */
   noPublicContent: boolean;
+  /** The second language its questions are printed in, beside English (a `bilingual` exam). */
+  secondLang?: "mr" | "hi";
 };
+
+const LANG_NAME: Record<NonNullable<ChatExamFact["secondLang"]>, string> = { mr: "Marathi", hi: "Hindi" };
+
+/**
+ * One registry entry as V's fact. A `bilingual` exam prints Marathi unless it
+ * declares `secondLang` (Hindi for SSC, on the feat/ssc-cgl-hindi branch as of
+ * 2026-10-20); read through `in` so this holds before and after that field lands.
+ * Once `examAltLang` is on main, call it here instead.
+ */
+export function examFactFromEntry(e: ExamEntry, pyqBySlug: Map<string, number> | null): ChatExamFact {
+  const declared = "secondLang" in e ? (e as { secondLang?: unknown }).secondLang : undefined;
+  const secondLang = e.bilingual ? (declared === "hi" ? "hi" : "mr") : undefined;
+  return {
+    slug: e.slug,
+    displayName: e.displayName,
+    tier: e.tier,
+    hasMocks: e.hasMocks === true,
+    boardExam: e.boardExam === true,
+    practiceOnly: e.practiceOnly === true,
+    // null = the count could not be read: claim nothing about past-year papers.
+    hasPastYearQuestions: pyqBySlug ? (pyqBySlug.get(e.slug) ?? 0) > 0 : undefined,
+    noPublicContent: e.noPublicContent === true,
+    ...(secondLang ? { secondLang } : {}),
+  };
+}
 
 export type ChatPlanFact = {
   label: string;
@@ -67,6 +95,7 @@ export function buildExamFacts(exams: readonly ChatExamFact[]): string[] {
         else bits.push("practice questions");
       }
       if (e.hasMocks) bits.push("has timed mock tests at /mock");
+      if (e.secondLang) bits.push(`questions in English and ${LANG_NAME[e.secondLang]} (a language switch on each question and mock)`);
       // For "all chapters" (2026-10-18): V listed names five times and never linked.
       if (e.slug) bits.push(`every chapter listed at ${chapterListHref(e.slug)}`);
       return `${e.displayName}: ${bits.join("; ")}.`;
@@ -202,6 +231,7 @@ ${questionRule}
 8. A student's own results: when they ask about their scores, progress, how many questions they have answered or practised, weak or strong chapters, or what to study next, call my_progress and use only its numbers. Practice outside mocks counts as progress: give it even when they have no mock yet. Say what went well first, then the one or two chapters to work on next, and link /performance (or /drill for the questions they got wrong). Never compare them with other students. If it says they are signed out, tell them to sign in.${facts.planEnabled ? `\n${PLAN_RULE}` : ""}
 9. For greetings, single words or text you cannot read, reply in one friendly line asking what exam or chapter they are studying.
 10. Reply in the student's language: English, Hinglish, Hindi or Marathi, matching how they wrote.
+10a. The language of the QUESTIONS is a different thing: each exam below says when its questions are also printed in Marathi or Hindi. Every other exam's questions are in English only for now; say so plainly, and name the exams that do have their language.
 11. Keep it short: 1 to 3 sentences${facts.explainEnabled ? ", except an explanation (rule 7), which may take up to 8 short lines" : ""}. Plain text only, no markdown, no lists, no em dashes.
 12. You can see the earlier messages of this chat. Use them to understand short follow-ups ("other chapter", "yes?", "1,2,3 lessons"), and do not repeat what you already said.
 13. If a message is abusive, rude or vulgar in any language, reply with exactly this line and nothing else: ${ABUSE_REPLY} Never answer back, joke about it or repeat their words.

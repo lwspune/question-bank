@@ -20,7 +20,7 @@ import {
   buildSystemTail,
   NAV_FACTS,
   GUIDE_FACTS,
-  type ChatExamFact,
+  examFactFromEntry,
 } from "./facts";
 import { chapterPath, findChapters, formatChapterHits, type ChapterSearchRow } from "./chapterSearch";
 import { pathsInReply } from "./replyLinks";
@@ -42,20 +42,6 @@ export function profileExamNames(slugs: readonly string[]): string[] {
     const e = EXAM_REGISTRY.find((x) => x.slug === s);
     return e && e.noPublicContent !== true ? [e.displayName] : [];
   });
-}
-
-function toExamFact(e: (typeof EXAM_REGISTRY)[number], pyqBySlug: Map<string, number> | null): ChatExamFact {
-  return {
-    slug: e.slug,
-    displayName: e.displayName,
-    tier: e.tier,
-    hasMocks: e.hasMocks === true,
-    boardExam: e.boardExam === true,
-    practiceOnly: e.practiceOnly === true,
-    // null = the count could not be read: claim nothing about past-year papers.
-    hasPastYearQuestions: pyqBySlug ? (pyqBySlug.get(e.slug) ?? 0) > 0 : undefined,
-    noPublicContent: e.noPublicContent === true,
-  };
 }
 
 /** Signed out the plan tools answer "sign in" before reading anything, so these are never called. */
@@ -118,7 +104,7 @@ export async function loadVContext(
       }),
   ]);
 
-  const exams = buildExamFacts(EXAM_REGISTRY.map((e) => toExamFact(e, pyqBySlug)));
+  const exams = buildExamFacts(EXAM_REGISTRY.map((e) => examFactFromEntry(e, pyqBySlug)));
   const system = buildSystemPrompt({
     exams,
     plans: buildPlanFacts(plans),
