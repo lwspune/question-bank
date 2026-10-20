@@ -7,10 +7,56 @@
  * print), so the printer's own counter would restart at 1 in every chapter.
  * The cover carries no number.
  */
-import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
+import {
+  PDFArray,
+  PDFDocument,
+  PDFName,
+  PDFRef,
+  StandardFonts,
+  closePath,
+  fill,
+  popGraphicsState,
+  pushGraphicsState,
+  rectangle,
+  rgb,
+  setFillingRgbColor,
+  type PDFPage,
+} from "pdf-lib";
 import { safePdfText } from "./stamp";
 
-export async function assembleMaster(parts: Uint8Array[], opts: { footer: string }): Promise<Uint8Array> {
+/** "#faf8f3" -> [r, g, b] in 0..1. */
+export function hexToRgb(hex: string): [number, number, number] {
+  return [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16) / 255) as [number, number, number];
+}
+
+/**
+ * Paint a colour under everything already on the page: a filled rectangle in
+ * a content stream placed FIRST. Chrome leaves @page margins white, so the
+ * book's paper is laid here instead (lib/ebooks/theme).
+ */
+export function paintPaper(page: PDFPage, hex: string): void {
+  const { width, height } = page.getSize();
+  const [r, g, b] = hexToRgb(hex);
+  const ctx = page.doc.context;
+  const stream = ctx.contentStream([
+    pushGraphicsState(),
+    setFillingRgbColor(r, g, b),
+    rectangle(0, 0, width, height),
+    closePath(),
+    fill(),
+    popGraphicsState(),
+  ]);
+  const ref = ctx.register(stream);
+  const existing = page.node.get(PDFName.of("Contents"));
+  const arr = PDFArray.withContext(ctx);
+  arr.push(ref);
+  if (existing instanceof PDFArray) for (const item of existing.asArray()) arr.push(item);
+  else if (existing instanceof PDFRef) arr.push(existing);
+  else if (existing) arr.push(ctx.register(existing as never));
+  page.node.set(PDFName.of("Contents"), arr);
+}
+
+export async function assembleMaster(parts: Uint8Array[], opts: { footer: string; paper?: string }): Promise<Uint8Array> {
   const out = await PDFDocument.create();
   for (const part of parts) {
     const src = await PDFDocument.load(part);
@@ -32,6 +78,8 @@ export async function assembleMaster(parts: Uint8Array[], opts: { footer: string
       color: rgb(0.42, 0.45, 0.5),
     });
   });
+  // Last, so the paper goes under everything, the footer's own wrapping included.
+  if (opts.paper) for (const page of out.getPages()) paintPaper(page, opts.paper);
   out.setProducer("PYQ Vault");
   return out.save();
 }

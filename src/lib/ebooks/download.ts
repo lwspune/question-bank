@@ -15,6 +15,7 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { stampEbook } from "./stamp";
 import { ebookDownloadsLeft, recordEbookDownload } from "./downloads";
+import { PAPER } from "./theme";
 
 const BUCKET = "ebooks";
 /** Long enough to start a slow phone download, short enough not to be worth sharing. */
@@ -71,6 +72,7 @@ export async function prepareEbookDownload(args: {
       orderRef: purchase.payment_id as string,
       date: licenceDate(purchase.created_at as string),
       title: book.title as string,
+      paper: PAPER,
     });
     path = `stamped/${purchase.id}/v${book.version}.pdf`;
     const up = await admin.storage.from(BUCKET).upload(path, stamped, { contentType: "application/pdf", upsert: true });

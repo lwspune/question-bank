@@ -26,6 +26,8 @@ export type Licence = {
   date: string;
   /** The book's title, for the licence page. */
   title: string;
+  /** The book's paper colour, so the licence page matches its pages. */
+  paper?: string;
 };
 
 const NAVY = rgb(0.059, 0.114, 0.29);
@@ -70,6 +72,10 @@ function wrap(text: string, font: PDFFont, size: number, width: number): string[
 
 function drawLicencePage(page: PDFPage, l: Licence, regular: PDFFont, bold: PDFFont): void {
   const { width, height } = page.getSize();
+  if (l.paper) {
+    const [r, g, b] = [1, 3, 5].map((i) => parseInt(l.paper!.slice(i, i + 2), 16) / 255);
+    page.drawRectangle({ x: 0, y: 0, width, height, color: rgb(r, g, b) });
+  }
   const left = 64;
   const textWidth = width - left * 2;
   let y = height - 120;

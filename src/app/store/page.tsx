@@ -1,73 +1,85 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { ArrowRight, BookOpen } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import Footer from "@/components/Footer";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
-import { listStoreEbooks } from "@/lib/ebooks/query";
+import { listStoreEbooks, type StoreEbook } from "@/lib/ebooks/query";
 import { formatRupees } from "@/lib/billing/plans";
+import { KIND_LABEL } from "@/lib/ebooks/theme";
+import BookCover, { subjectOf } from "./_components/BookCover";
 
 /**
- * The book store (2026-10-20): whole-subject PYQ books, sold one at a time as
- * PDFs, apart from the Premium Pass. An experiment for printed books, so it
- * stays simple: one card per book, the book's own page does the selling.
- * The catalogue is the `ebooks` table (active rows only); an hour's cache.
+ * The book store (2026-10-20): three kinds of book per subject, sold one at a
+ * time as PDFs, apart from the Premium Pass. Grouped by subject, each book
+ * shown by its cover. The catalogue is the `ebooks` table (active rows only);
+ * an hour's cache.
  */
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "Books: complete PYQ books with solutions",
+  title: "Books: formula, notes and PYQ books",
   description:
-    "Whole-subject past question books as PDFs: formulas, then every past question chapter by chapter, with full solutions. Pay once, keep it.",
+    "Formula books, notes books and chapter-wise previous year question books with full solutions, as PDFs. Pay once, keep it.",
   alternates: { canonical: "/store" },
 };
 
+const KIND_LINE: Record<StoreEbook["kind"], string> = {
+  formula: "Formulas, tables and traps",
+  notes: "Every chapter taught",
+  pyq: "Previous year questions, solved",
+};
+
+const idOf = (subject: string) => `s-${subject.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
+
 export default async function StorePage() {
   const books = await listStoreEbooks(createSupabaseAnonClient());
+  const subjects = Array.from(new Set(books.map((b) => subjectOf(b.title))));
 
   return (
     <>
       <AppHeader />
-      <main className="mx-auto max-w-3xl px-4 py-8 sm:px-6">
+      <main className="mx-auto max-w-5xl px-4 py-8 sm:px-6">
         <header className="hero-soft rounded-2xl px-5 py-8 text-center">
           <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">Books</h1>
           <p className="mx-auto mt-2 max-w-lg text-sm leading-relaxed text-muted-foreground">
-            Complete books you keep: the formulas, then every past question chapter by chapter, with a full solution to
-            each. Pay once and download the PDF.
+            Formula books, notes books and previous year question (PYQ) books you keep. Pay once and download the PDF.
           </p>
         </header>
 
         {books.length === 0 ? (
-          <p className="mt-10 text-center text-sm text-muted-foreground">The first book is on its way. Check back soon.</p>
+          <p className="mt-10 text-center text-sm text-muted-foreground">The first books are on their way. Check back soon.</p>
         ) : (
-          <ul className="mt-8 grid gap-4">
-            {books.map((book) => (
-              <li key={book.slug}>
-                <Link
-                  href={`/store/${book.slug}`}
-                  className="group flex gap-4 rounded-2xl border bg-card p-5 transition-colors hover:border-brand-accent/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-                >
-                  <span className="icon-tile flex h-12 w-12 shrink-0 items-center justify-center rounded-xl text-brand-accent" aria-hidden>
-                    <BookOpen className="h-5 w-5" />
-                  </span>
-                  <span className="min-w-0 flex-1">
-                    <span className="block text-lg font-semibold leading-snug">{book.title}</span>
-                    <span className="mt-1 block font-serif text-sm leading-relaxed text-muted-foreground">{book.subtitle}</span>
-                    <span className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm">
-                      <span className="font-semibold">{formatRupees(book.pricePaise)}</span>
-                      {book.questionCount ? (
-                        <span className="text-muted-foreground">{book.questionCount.toLocaleString("en-IN")} questions</span>
-                      ) : null}
-                      {book.pageCount ? <span className="text-muted-foreground">{book.pageCount} pages</span> : null}
-                      <span className="ml-auto inline-flex items-center gap-1 font-medium text-brand-accent">
-                        See the book <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" aria-hidden />
-                      </span>
-                    </span>
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </ul>
+          subjects.map((subject) => (
+            <section key={subject} className="mt-10" aria-labelledby={idOf(subject)}>
+              <h2 id={idOf(subject)} className="section-title text-lg font-semibold">
+                {subject}
+              </h2>
+              <ul className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6">
+                {books
+                  .filter((b) => subjectOf(b.title) === subject)
+                  .map((book) => (
+                    <li key={book.slug}>
+                      <Link
+                        href={`/store/${book.slug}`}
+                        className="group block rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                      >
+                        <div className="transition-transform group-hover:-translate-y-1 motion-reduce:transition-none motion-reduce:group-hover:translate-y-0">
+                          <BookCover kind={book.kind} subject={subject} />
+                        </div>
+                        <div className="mt-3">
+                          <span className="block text-sm font-semibold">{KIND_LABEL[book.kind]}</span>
+                          <span className="block text-xs text-muted-foreground">{KIND_LINE[book.kind]}</span>
+                          <span className="mt-1 flex items-baseline gap-2 text-sm">
+                            <span className="font-semibold">{formatRupees(book.pricePaise)}</span>
+                            {book.pageCount ? <span className="text-xs text-muted-foreground">{book.pageCount} pages</span> : null}
+                          </span>
+                        </div>
+                      </Link>
+                    </li>
+                  ))}
+              </ul>
+            </section>
+          ))
         )}
       </main>
       <Footer />

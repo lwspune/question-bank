@@ -19,6 +19,13 @@ async function blankPdf(pages: number): Promise<Uint8Array> {
   return doc.save();
 }
 
+/** Each content stream of a page, decoded, in drawing order. */
+function pageStreams(page: PDFPage): string[] {
+  const contents = page.node.Contents();
+  const streams = contents instanceof PDFArray ? contents.asArray().map((r) => page.doc.context.lookup(r)) : [contents];
+  return streams.map((s) => (s instanceof PDFRawStream ? Buffer.from(decodePDFRawStream(s).decode()).toString("latin1") : ""));
+}
+
 /** All content-stream bytes of a page, decoded, as latin1 text. */
 function pageContent(page: PDFPage): string {
   const contents = page.node.Contents();
@@ -50,6 +57,12 @@ describe("safePdfText", () => {
 });
 
 describe("stampEbook", () => {
+  it("paints the licence page with the book's paper too", async () => {
+    const out = await stampEbook(await blankPdf(1), { ...LICENCE, paper: "#faf8f3" });
+    const doc = await PDFDocument.load(out);
+    expect(pageStreams(doc.getPage(0)).join(" ")).toMatch(/0\.98\d* 0\.97\d* 0\.95\d* rg/);
+  });
+
   it("adds a licence page in front and marks every page with the email", async () => {
     const out = await stampEbook(await blankPdf(3), LICENCE);
     const doc = await PDFDocument.load(out);
@@ -62,6 +75,16 @@ describe("stampEbook", () => {
 });
 
 describe("assembleMaster", () => {
+  it("paints the paper colour under every page, before anything else is drawn", async () => {
+    const out = await assembleMaster([await blankPdf(1), await blankPdf(2)], { footer: "PYQ Vault", paper: "#faf8f3" });
+    const doc = await PDFDocument.load(out);
+    for (const page of doc.getPages()) {
+      const first = pageStreams(page)[0];
+      expect(first).toMatch(/0\.98\d* 0\.97\d* 0\.95\d* rg/);
+      expect(first).toMatch(/ re\n/);
+    }
+  });
+
   it("joins the parts in order and numbers every page after the cover", async () => {
     const out = await assembleMaster([await blankPdf(1), await blankPdf(2), await blankPdf(3)], {
       footer: "PYQ Vault · MHT-CET Mathematics",

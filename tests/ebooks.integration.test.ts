@@ -56,8 +56,8 @@ describe.skipIf(!HAS_ENV)("ebook store tables", () => {
     admin = createClient(url, process.env.SUPABASE_SERVICE_ROLE_KEY!, { auth: { persistSession: false } });
     anon = createClient(url, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!, { auth: { persistSession: false } });
     const ins = await admin.from("ebooks").insert([
-      { slug: BOOK, title: "Test Book", subtitle: "s", price_paise: 14900, active: true, file_path: "test/none.pdf" },
-      { slug: HIDDEN, title: "Hidden Book", subtitle: "s", price_paise: 14900, active: false },
+      { slug: BOOK, title: "Test Book", subtitle: "s", price_paise: 14900, active: true, file_path: "test/none.pdf", kind: "formula" },
+      { slug: HIDDEN, title: "Hidden Book", subtitle: "s", price_paise: 14900, active: false, kind: "notes" },
     ]);
     if (ins.error) throw new Error(ins.error.message);
     ({ id: buyerId, client: buyer } = await makeStudent("buyer"));
@@ -89,10 +89,28 @@ describe.skipIf(!HAS_ENV)("ebook store tables", () => {
   it("the store lists active books only, shaped for the page", async () => {
     const list = await listStoreEbooks(anon);
     const mine = list.find((b) => b.slug === BOOK);
-    expect(mine).toMatchObject({ title: "Test Book", pricePaise: 14900, hasSample: false, contents: [] });
+    expect(mine).toMatchObject({ title: "Test Book", kind: "formula", pricePaise: 14900, hasSample: false, contents: [], stats: [] });
     expect(list.some((b) => b.slug === HIDDEN)).toBe(false);
     expect(await getStoreEbook(anon, HIDDEN)).toBeNull();
     expect((await getStoreEbook(anon, BOOK))?.slug).toBe(BOOK);
+  });
+
+  it("rejects a book kind outside formula, notes and pyq", async () => {
+    const { error } = await admin.from("ebooks").insert({ slug: `${BOOK}-odd`, title: "x", price_paise: 100, kind: "poster" });
+    expect(error).not.toBeNull();
+  });
+
+  it("seeds the seven books, priced by kind, all off sale", async () => {
+    const { data } = await admin.from("ebooks").select("slug, kind, price_paise, active").like("slug", "mht-cet-%").order("slug");
+    expect((data ?? []).map((r) => `${r.slug}:${r.kind}:${r.price_paise}:${r.active}`)).toEqual([
+      "mht-cet-chemistry-formulas:formula:4900:false",
+      "mht-cet-chemistry-notes:notes:4900:false",
+      "mht-cet-maths-formulas:formula:4900:false",
+      "mht-cet-maths-notes:notes:4900:false",
+      "mht-cet-maths-pyq:pyq:14900:false",
+      "mht-cet-physics-formulas:formula:4900:false",
+      "mht-cet-physics-notes:notes:4900:false",
+    ]);
   });
 
   it("rejects a non-positive price", async () => {

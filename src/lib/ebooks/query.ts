@@ -4,11 +4,15 @@
  * per-visitor part separately, lib/ebooks/status).
  */
 import type { SupabaseClient } from "@supabase/supabase-js";
+import type { EbookKind } from "./catalog";
 
-export type StoreContentsEntry = { number: number; name: string; questions: number; page: number };
+/** A contents line as the build records it: `detail` is "60 q", "24 formulas" or "6 topics". */
+export type StoreContentsEntry = { number: number; name: string; detail: string; page: number };
+export type StoreStat = { value: string; label: string };
 
 export type StoreEbook = {
   slug: string;
+  kind: EbookKind;
   title: string;
   subtitle: string;
   description: string;
@@ -16,15 +20,21 @@ export type StoreEbook = {
   pageCount: number | null;
   questionCount: number | null;
   contents: StoreContentsEntry[];
+  /** The cover's four numbers, as the build recorded them. */
+  stats: StoreStat[];
   hasSample: boolean;
 };
 
-const COLUMNS = "slug, title, subtitle, description, price_paise, page_count, question_count, contents, sample_path, sort_order";
+const COLUMNS =
+  "slug, kind, title, subtitle, description, price_paise, page_count, question_count, contents, stats, sample_path, sort_order";
+const KINDS: readonly EbookKind[] = ["formula", "notes", "pyq"];
 
 function toStoreEbook(row: Record<string, unknown>): StoreEbook {
   const contents = Array.isArray(row.contents) ? (row.contents as StoreContentsEntry[]) : [];
+  const kind = KINDS.includes(row.kind as EbookKind) ? (row.kind as EbookKind) : "pyq";
   return {
     slug: row.slug as string,
+    kind,
     title: row.title as string,
     subtitle: (row.subtitle as string) ?? "",
     description: (row.description as string) ?? "",
@@ -32,6 +42,7 @@ function toStoreEbook(row: Record<string, unknown>): StoreEbook {
     pageCount: (row.page_count as number | null) ?? null,
     questionCount: (row.question_count as number | null) ?? null,
     contents,
+    stats: Array.isArray(row.stats) ? (row.stats as StoreStat[]) : [],
     hasSample: !!row.sample_path,
   };
 }

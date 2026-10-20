@@ -1,42 +1,81 @@
 /**
- * What each ebook prints (2026-10-20). The store copy and the price live in
- * `public.ebooks` (migration 0172) and can change without a deploy; what is
- * here is structural and checked by tests/ebook-catalog.test.ts:
+ * What each ebook prints (2026-10-20). Three kinds, sold separately (owner):
  *
- * - `bookSlug`: the compiled PYQ book (lib/books/registry) whose chapters,
- *   subtopic grouping and sitting order the ebook reuses. The ebook reads the
- *   BANK through that definition at build time, not the stored `/books`
- *   curation, which lags the bank between syncs.
- * - `chapterOrder`: the textbook's order (Class XI, then XII), the order the
- *   CET notes already use (lib/notes/bookOrder). Every chapter of the book
- *   appears exactly once: a missing one would vanish from a book someone paid
- *   for, with no error.
- * - `notesRoute`: the /notes subject whose chapters supply the formulas.
+ * - **Formula Book** (Rs 49): every notes chapter's formulas with their symbol
+ *   legends, reference tables and traps with explanations.
+ * - **Notes Book** (Rs 49): every notes chapter taught in full: idea,
+ *   definition, formula, worked example, try-it, traps.
+ * - **PYQ Book** (Rs 149): every past question of a compiled `/books`
+ *   definition, chapter by chapter, with full solutions.
+ *
+ * The store copy and the price live in `public.ebooks` (migrations 0172/0173)
+ * and change without a deploy; what is here is structural and pinned by
+ * tests/ebook-catalog.test.ts. Formula and Notes books take their chapters
+ * from the notes registry in textbook order (lib/notes/bookOrder), so a new
+ * notes chapter joins them on the next build; the PYQ book pins its order,
+ * since its chapters come from a book definition, not from notes.
  */
-import { getBookBySlug, type BookChapter, type BookDefinition } from "@/lib/books/registry";
-import { getNotesChapterBySlug, type NotesChapterRegistration } from "@/lib/notes/chapters";
+import { getBookBySlug, type BookChapter } from "@/lib/books/registry";
+import { getNotesChapterBySlug, getNotesChaptersForSubject, type NotesChapterRegistration } from "@/lib/notes/chapters";
+import { BOOK_POSITION } from "@/lib/notes/bookOrder";
+import { formulaPageCounts } from "@/lib/formula/chapterPages";
 
-export type EbookDefinition = {
+export type EbookKind = "formula" | "notes" | "pyq";
+
+type Common = {
   slug: string;
-  bookSlug: string;
-  notesRoute: string | null;
-  /** The book's printed title and cover line. The store copy is the `ebooks` row's. */
+  /** Printed on the cover: "MHT-CET Mathematics". */
   title: string;
+  /** The cover's one line about what is inside. */
   subtitle: string;
-  /** Printed on the cover, e.g. "2021-2026". */
-  years: string;
-  chapterOrder: readonly string[];
   /** The chapter the free sample carries. */
   sampleChapter: string;
 };
 
+export type NotesEbook = Common & { kind: "formula" | "notes"; notesRoute: string };
+export type PyqEbook = Common & {
+  kind: "pyq";
+  bookSlug: string;
+  /** The /notes subject whose class labels (XI/XII) the chapters borrow. */
+  notesRoute: string | null;
+  /** Printed on the cover, e.g. "2021-2026". */
+  years: string;
+  chapterOrder: readonly string[];
+};
+export type EbookDefinition = NotesEbook | PyqEbook;
+
+const CET_SUBJECTS = [
+  { route: "mht-cet-maths", title: "MHT-CET Mathematics", sample: "circle" },
+  { route: "mht-cet-physics", title: "MHT-CET Physics", sample: "current-electricity" },
+  { route: "mht-cet-chemistry", title: "MHT-CET Chemistry", sample: "chemical-kinetics" },
+] as const;
+
 export const EBOOKS: readonly EbookDefinition[] = [
+  ...CET_SUBJECTS.flatMap((s): NotesEbook[] => [
+    {
+      kind: "formula",
+      slug: `${s.route}-formulas`,
+      notesRoute: s.route,
+      title: s.title,
+      subtitle: "Every formula, table and common trap, chapter by chapter, with what each symbol means.",
+      sampleChapter: s.sample,
+    },
+    {
+      kind: "notes",
+      slug: `${s.route}-notes`,
+      notesRoute: s.route,
+      title: s.title,
+      subtitle: "Every chapter taught from the start: the idea, the definition, the formula, a worked example and the traps.",
+      sampleChapter: s.sample,
+    },
+  ]),
   {
-    slug: "mht-cet-maths",
+    kind: "pyq",
+    slug: "mht-cet-maths-pyq",
     bookSlug: "mht-cet-maths",
     notesRoute: "mht-cet-maths",
     title: "MHT-CET Mathematics",
-    subtitle: "Formula Book + Chapter-wise Past Questions with Full Solutions",
+    subtitle: "Every past question 2021-2026, chapter by chapter, with a worked solution to each.",
     years: "2021-2026",
     chapterOrder: [
       // Class XI (Balbharati chapter numbers in lib/notes/bookOrder). Quadratic
@@ -74,27 +113,63 @@ export const EBOOKS: readonly EbookDefinition[] = [
   },
 ];
 
+/** PYQ chapters with no notes, so no BOOK_POSITION entry: their class, by hand. */
+const EXTRA_CLASS: Record<string, Record<string, 11 | 12>> = {
+  "mht-cet-maths": { "quadratic-equations": 11, "sequences-and-series": 11 },
+};
+
+/** "Class XI" / "Class XII" for a chapter, or null when the book position is unknown. */
+export function chapterClassLabel(notesRoute: string, chapterSlug: string): string | null {
+  const cls = BOOK_POSITION[notesRoute]?.[chapterSlug]?.cls ?? EXTRA_CLASS[notesRoute]?.[chapterSlug];
+  return cls === 11 ? "Class XI" : cls === 12 ? "Class XII" : null;
+}
+
 export function getEbook(slug: string): EbookDefinition | null {
   return EBOOKS.find((e) => e.slug === slug) ?? null;
 }
 
 export type EbookChapter = {
   number: number;
-  chapter: BookChapter;
-  formulas: NotesChapterRegistration | null;
+  slug: string;
+  name: string;
+  /** "Class XI" etc., for the chapter opener. */
+  classLabel: string | null;
+  /** The /notes chapter, when there is one. */
+  notes: NotesChapterRegistration | null;
+  /** The compiled book's chapter (PYQ books only). */
+  bookChapter: BookChapter | null;
 };
 
-/** The ebook's chapters in print order, each with its notes chapter where one exists. */
+function hasFormulaContent(c: NotesChapterRegistration): boolean {
+  const n = formulaPageCounts(c);
+  return n.formulas + n.tables + n.traps > 0;
+}
+
+/** The ebook's chapters in print order. */
 export function ebookChapters(ebook: EbookDefinition): EbookChapter[] {
-  const book: BookDefinition | null = getBookBySlug(ebook.bookSlug);
-  if (!book) throw new Error(`ebook ${ebook.slug}: no book "${ebook.bookSlug}"`);
-  return ebook.chapterOrder.map((slug, i) => {
-    const chapter = book.chapters.find((c) => c.slug === slug);
-    if (!chapter) throw new Error(`ebook ${ebook.slug}: book has no chapter "${slug}"`);
-    return {
-      number: i + 1,
-      chapter,
-      formulas: ebook.notesRoute ? getNotesChapterBySlug(ebook.notesRoute, slug) : null,
-    };
-  });
+  if (ebook.kind === "pyq") {
+    const book = getBookBySlug(ebook.bookSlug);
+    if (!book) throw new Error(`ebook ${ebook.slug}: no book "${ebook.bookSlug}"`);
+    return ebook.chapterOrder.map((slug, i) => {
+      const chapter = book.chapters.find((c) => c.slug === slug);
+      if (!chapter) throw new Error(`ebook ${ebook.slug}: book has no chapter "${slug}"`);
+      return {
+        number: i + 1,
+        slug,
+        name: chapter.name,
+        classLabel: ebook.notesRoute ? chapterClassLabel(ebook.notesRoute, slug) : null,
+        notes: ebook.notesRoute ? getNotesChapterBySlug(ebook.notesRoute, slug) : null,
+        bookChapter: chapter,
+      };
+    });
+  }
+  const chapters = getNotesChaptersForSubject(ebook.notesRoute).filter((c) => ebook.kind === "notes" || hasFormulaContent(c));
+  return chapters.map((c, i) => ({
+    number: i + 1,
+    slug: c.chapterSlug,
+    name: c.chapter.chapterName,
+    classLabel: chapterClassLabel(ebook.notesRoute, c.chapterSlug),
+    notes: c,
+    bookChapter: null,
+  }));
 }
