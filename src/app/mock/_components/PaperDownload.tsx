@@ -87,7 +87,7 @@ export default function PaperDownload({
   const [justBought, setJustBought] = useState(false);
   const [busyKind, setBusyKind] = useState<Kind | null>(null);
   const [here, setHere] = useState<string | undefined>(undefined);
-  const [lang, setLang] = useQuestionLang();
+  const [lang, setLang] = useQuestionLang(altLang);
   const mobilePrompt = useMobilePrompt();
 
   const loadAccess = useCallback(async () => {

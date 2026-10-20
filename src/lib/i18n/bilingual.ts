@@ -46,6 +46,16 @@ export type Bilingual = {
 
 const ALT_LANGS: readonly AltLang[] = ["mr", "hi"];
 
+/**
+ * The choice before a reader has made one. Marathi readers are the MPSC and MH
+ * SSC audience, so "both" (the booklet's order). Most SSC readers here read
+ * English, so a Hindi page opens in English with Hindi one tap away (owner,
+ * 2026-10-20). A choice the reader makes is stored and wins everywhere.
+ */
+export function defaultLangFor(alt: AltLang | null | undefined): QuestionLang {
+  return alt === "hi" ? "en" : "both";
+}
+
 /** The switch's three buttons for a page whose second language is `alt`. */
 export function switchLangs(alt: AltLang): QuestionLang[] {
   return ["en", alt, "both"];

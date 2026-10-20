@@ -62,7 +62,7 @@ export default function StartMock({
 }) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
-  const [lang, setLang] = useQuestionLang();
+  const [lang, setLang] = useQuestionLang(altLang);
   const [state, setState] = useState<MockStartState>(startState);
   const resume = resumeSecsLeft !== null;
 

@@ -125,8 +125,8 @@ export default function MockRunner({
   // A bilingual paper (MPSC prints Marathi + English) offers the same language
   // choice the student made on the instructions screen, switchable any time —
   // the printed booklet lets them read either version whenever they like.
-  const [langPref, setLangPref] = useQuestionLang();
   const paperAlt = useMemo(() => altLangOfAny(questions), [questions]);
+  const [langPref, setLangPref] = useQuestionLang(paperAlt);
   const [current, setCurrent] = useState(0);
   const [remaining, setRemaining] = useState(() => remainingSecs(attempt.expiresAt, Date.now()));
   const [paletteOpen, setPaletteOpen] = useState(false);

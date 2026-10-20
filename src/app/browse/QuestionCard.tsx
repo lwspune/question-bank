@@ -306,7 +306,7 @@ export default function QuestionCard({
   // Printed-language choice (MPSC papers carry Marathi). Shared page-wide; an
   // English-only question ignores it and renders exactly as before.
   // The switch itself lives once in the /browse header (QuestionLangSwitch).
-  const [langPref] = useQuestionLang();
+  const [langPref] = useQuestionLang(altLangOf(question));
   const stems = stemVersions(question, langPref);
   const solutions = solutionVersions(question, langPref);
   // Officially cancelled (migration 0119): no option is correct, so a pick is

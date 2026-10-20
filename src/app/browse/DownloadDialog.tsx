@@ -135,7 +135,7 @@ export default function DownloadDialog({
   const [groupBySubtopic, setGroupBySubtopic] = useState(false);
   const [includeSourceTag, setIncludeSourceTag] = useState(false);
   // Shared with the cards: a teacher reading in Marathi prints in Marathi.
-  const [lang, setLang] = useQuestionLang();
+  const [lang, setLang] = useQuestionLang(altLang);
   const [busyKind, setBusyKind] = useState<Kind | null>(null);
   // Bought in this box: the refreshed page grants the pass, and the download
   // view says so once, so the buyer knows the next tap is a file.

@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   altLangOf,
   cancelledLine,
+  defaultLangFor,
   effectiveLang,
   hasTranslation,
   isLangChecked,
@@ -271,6 +272,12 @@ describe("Hindi translations", () => {
     expect(langLabel("both", "hi")).toBe("Both / दोनों");
     expect(langLabel("both", "mr")).toBe("Both / दोन्ही");
     expect(langLabel("mr", "mr")).toBe("मराठी");
+  });
+
+  it("defaults SSC (Hindi) readers to English and MPSC (Marathi) readers to both (owner, 2026-10-20)", () => {
+    expect(defaultLangFor("hi")).toBe("en");
+    expect(defaultLangFor("mr")).toBe("both");
+    expect(defaultLangFor(null)).toBe("both");
   });
 
   it("marks the middle button checked for either translated preference", () => {

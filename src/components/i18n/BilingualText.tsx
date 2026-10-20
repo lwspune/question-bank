@@ -3,7 +3,7 @@
 import KatexRenderer from "@/components/math/KatexRenderer";
 import BlockText from "@/components/math/BlockText";
 import { cn } from "@/lib/utils";
-import { optionVersions, solutionVersions, stemVersions, type AltLang, type Bilingual } from "@/lib/i18n/bilingual";
+import { altLangOf, optionVersions, solutionVersions, stemVersions, type AltLang, type Bilingual } from "@/lib/i18n/bilingual";
 import { useQuestionLang } from "@/lib/i18n/useQuestionLang";
 import LanguageSwitch from "./LanguageSwitch";
 
@@ -21,7 +21,7 @@ export function BilingualStem({
   field: "text" | "context";
   className?: string;
 }) {
-  const [lang] = useQuestionLang();
+  const [lang] = useQuestionLang(altLangOf(q));
   const versions = stemVersions(q, lang).filter((v) => (field === "text" ? v.text : v.context));
   if (!versions.length) return null;
   return (
@@ -45,7 +45,7 @@ export function BilingualSolution({
   q: Pick<Bilingual, "translations"> & { solution: string | null };
   format?: (text: string) => string;
 }) {
-  const [lang] = useQuestionLang();
+  const [lang] = useQuestionLang(altLangOf(q));
   const versions = solutionVersions(q, lang).map((v) => (format ? { ...v, text: format(v.text) } : v));
   if (!versions.length) return null;
   return (
@@ -60,7 +60,7 @@ export function BilingualSolution({
 }
 
 export function BilingualOption({ q, opt }: { q: Bilingual; opt: Bilingual["options"][number] }) {
-  const [lang] = useQuestionLang();
+  const [lang] = useQuestionLang(altLangOf(q));
   return (
     <>
       {optionVersions(q, opt, lang).map((v, i) => (
@@ -74,6 +74,6 @@ export function BilingualOption({ q, opt }: { q: Bilingual; opt: Bilingual["opti
 
 /** The switch, wired to the shared preference — drop it anywhere. */
 export function QuestionLangSwitch({ className, alt }: { className?: string; alt?: AltLang }) {
-  const [lang, setLang] = useQuestionLang();
+  const [lang, setLang] = useQuestionLang(alt);
   return <LanguageSwitch value={lang} onChange={setLang} alt={alt} className={className} />;
 }
