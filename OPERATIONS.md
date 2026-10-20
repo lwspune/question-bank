@@ -90,6 +90,17 @@ Students upload a board paper they wrote on paper from its `/question-papers` pa
 - **Weekly:** `npm run grading:purge -- --apply` deletes scans 30 days after checking (the promise made at upload) and abandoned uploads. Grades stay.
 - `grading-inbox/` holds students' scans: gitignored, never copied elsewhere.
 
+### The book store (migration 0172, 2026-10-20)
+
+Whole-subject books sold one at a time as PDFs at `/store`, apart from the pass (pass holders pay 20% less). The catalogue and prices are rows of `public.ebooks`.
+
+- **Build or rebuild a book:** `npm run ebooks:build -- --book=<slug>` prints it locally (Edge) into `generated-papers/ebooks/<slug>/` (master, free sample, `contents.json`); `--only=<chapter>` for a quick look. Read the PDF, then `--apply` uploads both to the private `ebooks` bucket under a new version and records it. Buyers get the new version on their next download (re-stamped; their five-download count is unchanged).
+- **Put a book on sale (the owner's call):** `update public.ebooks set active = true where slug = '<slug>';` The database refuses it until a master exists. Off sale: `active = false` (buyers can still download, and their purchases stay).
+- **Price:** `update public.ebooks set price_paise = <paise> where slug = '<slug>';` Open checkouts keep the price they were opened with (the order is the contract).
+- **A buyer out of downloads:** `delete from ebook_downloads where purchase_id = '<id>'` gives them five more (find the id in `ebook_purchases`).
+- **Numbers:** the **Book store** experiment on `/dashboard/growth` (buyers, revenue, refunds, printed-copy taps with pincodes, downloads per book); free-sample taps are the Vercel event `ebook_sample_click`.
+- **Refunds** go through Razorpay as for the pass; the `refund.processed` webhook revokes the book.
+
 ### V's AI answers (migration 0158, 2026-10-15)
 
 Questions typed to V get an answer from Claude Haiku 5.5 when switched on; otherwise the fixed "Let me get back to your question later" reply.
