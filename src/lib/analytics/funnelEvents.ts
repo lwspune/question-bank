@@ -71,8 +71,6 @@ export const FUNNEL_EVENTS = [
   "notes_mock_card_click",
   /** V's launcher was opened (fires once per page session). */
   "chat_launcher_click",
-  /** A predefined V question was clicked; questionId names which one. */
-  "chat_faq_click",
   /**
    * A chapter share button was tapped (2026-10-01); props: channel, surface
    * ("questions" | "notes"). Intent only — the arrival half is the

@@ -23,7 +23,6 @@ describe("FUNNEL_EVENTS", () => {
       "notes_test_bar_click",
       "notes_mock_card_click",
       "chat_launcher_click",
-      "chat_faq_click",
       "chapter_share_click",
       "v_hello_shown",
       "v_hello_click",
