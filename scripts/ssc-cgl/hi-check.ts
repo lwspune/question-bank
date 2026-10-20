@@ -15,7 +15,7 @@ import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { checkMarathiPaper } from "../mh-ssc-10/marathi";
 import { requireShift } from "./config";
-import { parseHindiDraft } from "./hindi";
+import { parseHindiDraft, relaxScriptFindings } from "./hindi";
 import { hindiPath, loadEnglishRows } from "./hi-rows";
 
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -33,7 +33,7 @@ async function main() {
   const english = (await loadEnglishRows(client, shift))
     .map((r) => r.paper)
     .filter((p) => !partial || refs.has(p.ref));
-  const findings = checkMarathiPaper(english, hindi, { requireSolution: false });
+  const findings = relaxScriptFindings(checkMarathiPaper(english, hindi, { requireSolution: false }), hindi);
   for (const f of findings) console.log(`${f.level.toUpperCase().padEnd(5)} Q${f.ref}: ${f.reason}`);
   const errors = findings.filter((f) => f.level === "error").length;
   console.log(`${shift.id}: ${hindi.length} read, ${errors} error(s), ${findings.length - errors} warning(s)`);

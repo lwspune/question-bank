@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { isLanguageNeutral, mathZones, parseHindiDraft } from "../scripts/ssc-cgl/hindi";
+import { isLanguageNeutral, mathZones, parseHindiDraft, relaxScriptFindings } from "../scripts/ssc-cgl/hindi";
 
 describe("parseHindiDraft", () => {
   it("reads blocks of stem and four options, keyed by question number", () => {
@@ -82,5 +82,21 @@ describe("skeleton helpers (no English wording leaves them)", () => {
     expect(isLanguageNeutral("1 : 2")).toBe(true);
     expect(isLanguageNeutral("Only 1")).toBe(false);
     expect(isLanguageNeutral("FEAL")).toBe(false);
+  });
+});
+
+describe("relaxScriptFindings", () => {
+  const latin = { ref: "4", level: "error" as const, reason: "stem is mostly Latin letters (Devanagari 33%): read the Marathi print" };
+  it("keeps the error when the stem carries no Devanagari at all (an English stem copied)", () => {
+    const out = relaxScriptFindings([latin], [{ ref: "4", stem: "Solve: LEAF : ? :: TIME : EMIT" }]);
+    expect(out).toEqual([latin]);
+  });
+  it("turns it into a warning when SSC printed a Hindi instruction over English words", () => {
+    const out = relaxScriptFindings([latin], [{ ref: "4", stem: "हल करें :\n\nLEAF : ? :: TIME : EMIT" }]);
+    expect(out).toEqual([{ ...latin, level: "warn" }]);
+  });
+  it("leaves every other finding alone", () => {
+    const other = { ref: "5", level: "error" as const, reason: "empty stem" };
+    expect(relaxScriptFindings([other], [{ ref: "5", stem: "" }])).toEqual([other]);
   });
 });

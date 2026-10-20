@@ -16,7 +16,7 @@ import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { checkMarathiPaper, planTranslations } from "../mh-ssc-10/marathi";
 import { requireShift } from "./config";
-import { parseHindiDraft } from "./hindi";
+import { parseHindiDraft, relaxScriptFindings } from "./hindi";
 import { hindiPath, loadEnglishRows, type EnglishRow } from "./hi-rows";
 
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -37,7 +37,7 @@ async function main() {
   for (const shift of shifts) {
     const hindi = parseHindiDraft(readFileSync(hindiPath(shift.id), "utf8"));
     const rows = await loadEnglishRows(client, shift);
-    const errors = checkMarathiPaper(rows.map((r) => r.paper), hindi, { requireSolution: false }).filter(
+    const errors = relaxScriptFindings(checkMarathiPaper(rows.map((r) => r.paper), hindi, { requireSolution: false }), hindi).filter(
       (f) => f.level === "error"
     );
     if (errors.length) throw new Error(`${shift.id}: ${errors.length} check error(s); run hi-check.ts`);

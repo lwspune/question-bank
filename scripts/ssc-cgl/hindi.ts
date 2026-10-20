@@ -9,7 +9,26 @@
 // are the Marathi lane's `checkMarathiPaper` (scripts/mh-ssc-10/marathi.ts):
 // they say nothing Marathi-specific, so they are reused, not copied.
 import { maskMathZones } from "../../src/components/math/parseLatex";
-import type { MarathiQuestion } from "../mh-ssc-10/marathi";
+import type { Finding, MarathiQuestion } from "../mh-ssc-10/marathi";
+
+/** Fewer Devanagari letters than this in a stem means no Hindi was read at all. */
+const MIN_HINDI_LETTERS = 3;
+
+/**
+ * The Marathi lane refuses a stem under 50% Devanagari. SSC's Reasoning items
+ * print a short Hindi instruction over English words (18 Sep S1 Q4: हल करें :
+ * then LEAF : ? :: TIME : EMIT), so here that is a WARNING to read against
+ * the sheet. A stem with no Devanagari at all stays an error: that is an
+ * English stem copied, the failure the rule exists for.
+ */
+export function relaxScriptFindings(findings: Finding[], hindi: Pick<MarathiQuestion, "ref" | "stem">[]): Finding[] {
+  const stems = new Map(hindi.map((q) => [q.ref, q.stem]));
+  return findings.map((f) => {
+    if (f.level !== "error" || !f.reason.startsWith("stem is mostly Latin letters")) return f;
+    const letters = stems.get(f.ref)?.match(/[ऀ-ॣ॰-ॿ]/g)?.length ?? 0;
+    return letters >= MIN_HINDI_LETTERS ? { ...f, level: "warn" } : f;
+  });
+}
 
 /**
  * The skeleton a reader gets carries NO English wording (the Marathi lane's
