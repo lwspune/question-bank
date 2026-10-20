@@ -73,6 +73,15 @@ describe("planBatch", () => {
     expect(errs.join("\n")).toMatch(/mask/);
   });
 
+  it("takes a part printed sideways with a quarter-turn rotation, and refuses any other angle", () => {
+    const ok = batch();
+    ok.figures[1].parts = [{ page: 10, bbox: [0.1, 0.1, 0.5, 0.5], rotate: 90 }];
+    expect(planBatch(ok).errors).toEqual([]);
+    const bad = batch();
+    bad.figures[1].parts = [{ page: 10, bbox: [0.1, 0.1, 0.5, 0.5], rotate: 45 as never }];
+    expect(planBatch(bad).errors.join(" | ")).toMatch(/rotate 45/);
+  });
+
   it("plans a DRAWN figure (a spec) apart from the book crops, and refuses a figure with both sources or neither", () => {
     const drawn = planBatch(batch({ figures: [{ key: "lpp-region", draw: { kind: "plot" }, ids: [A] }] }));
     expect(drawn.errors).toEqual([]);

@@ -36,10 +36,10 @@ KINDS (each spec is {"kind": ..., ...}):
               l, label, label_loc, at: "<saved name>", to: "<saved name>", save: "<name>", reverse}]}
   structure  {molecules: [{smiles, name, full}], per_row} (at most 2 a row, so names read on a phone);
              full: true draws EVERY atom (C and H too) on a grid, NCERT's Class 10 structural formula
-  map        {region: "brazil", states: {name: colour}, areas: [{name, color, hatch}], rivers: [{name}],
+  map        {region: "brazil" | "world" (+ extent [lon0, lat0, lon1, lat1], home: ISO3), lakes: [name], areas_at: [{at, w, h}], states: {name: colour}, areas: [{name, color, hatch}], rivers: [{name}],
               places: [{name | at: [lon, lat], marker}], parallels: [{lat}], labels: [{text, at}],
               index: [{symbol: "fill"|"line"|"point", text, color}]}   real Natural Earth boundaries
-             (geo/brazil.json); India is NOT available until an official outline is supplied
+             (geo/brazil.json, geo/world.json); a frame that would show India is REFUSED until an official outline is supplied
   complex    {items: [{geometry: "oct"|"sq", metal, ligands: {pos: label}, chelates: [[pos, pos, "en"]], label, group}],
               mirror_pairs: [[i, j]], per_row}   octahedron positions 1 top, 6 bottom, 2 left, 4 right,
              3 front, 5 back; square corners 1-4 (1-3, 2-4 trans). Refuses an empty or doubled position, a
@@ -868,37 +868,56 @@ def in_any(pt, rings):
 
 
 MAP_EXTENT = {"brazil": (-74.5, -34.5, -33.5, 6.0)}
+# India and its claimed northern territory, with a margin: no frame may touch it.
+INDIA_BOX = (66.0, 5.0, 99.0, 38.0)
+
+
+def extent_shows_india(extent):
+    x0, y0, x1, y1 = extent
+    a0, b0, a1, b1 = INDIA_BOX
+    return x0 < a1 and x1 > a0 and y0 < b1 and y1 > b0
 
 
 def draw_map(s, out):
     """An outline map drawn from real boundaries (geo/<region>.json): states,
     highlighted states and natural regions shaded, rivers, places, parallels,
     and the INDEX (legend) a board answer is asked to give."""
-    from matplotlib.patches import Polygon as Poly, PathPatch
+    from matplotlib.patches import Polygon as Poly, PathPatch, Rectangle
     from matplotlib.path import Path
 
     region = s.get("region", "brazil")
+    x0, y0, x1, y1 = s["extent"] if "extent" in s else MAP_EXTENT[region]
+    if extent_shows_india((x0, y0, x1, y1)):
+        raise ValueError("map: this frame would show India, whose official outline is not yet supplied")
     geo = load_geo(region)
-    x0, y0, x1, y1 = MAP_EXTENT[region]
     fig, ax = plt.subplots(figsize=s.get("size", [5.6, 5.8]))
     ax.set_facecolor("#e0f2fe")  # sea
-    home = geo["countries"]["BRA"] if region == "brazil" else []
+    home_code = s.get("home", "BRA" if region == "brazil" else None)
+    home = geo["countries"].get(home_code, []) if home_code else []
     for code, rings in geo["countries"].items():
-        if code == "BRA":
+        if code == home_code:
             continue
         for r in rings:
-            ax.add_patch(Poly(r, closed=True, fc="#f1f5f9", ec="#94a3b8", lw=0.6, zorder=1))
+            ax.add_patch(Poly(r, closed=True, fc="#f1f5f9", ec="#94a3b8", lw=0.6, zorder=1.5))
     handles = []
     hl = s.get("states", {})
-    for name, rings in geo["states"].items():
+    if region != "brazil":
+        # Under the neighbours (zorder 1 < 1.5) so an enclave such as Lesotho shows through.
+        for r in home:
+            ax.add_patch(Poly(r, closed=True, fc="white", ec="#94a3b8", lw=0.5, zorder=1))
+    for name, rings in geo.get("states", {}).items():
         for r in rings:
             ax.add_patch(Poly(r, closed=True, fc=hl.get(name, "white"), ec="#94a3b8", lw=0.5, zorder=2))
     clip_verts, clip_codes = [], []
     for r in home:
         clip_verts += r + [r[0]]
         clip_codes += [Path.MOVETO] + [Path.LINETO] * (len(r) - 1) + [Path.CLOSEPOLY]
-    clip = PathPatch(Path(clip_verts, clip_codes), transform=ax.transData, fc="none", ec=INK, lw=1.4, zorder=6)
-    ax.add_patch(clip)
+    if clip_verts:
+        clip = PathPatch(Path(clip_verts, clip_codes), transform=ax.transData, fc="none", ec=INK, lw=1.4, zorder=6)
+        ax.add_patch(clip)
+    else:  # no home country: nothing to clip regions to
+        clip = Rectangle((x0, y0), x1 - x0, y1 - y0, transform=ax.transData, fill=False, lw=0)
+        ax.add_patch(clip)
     from matplotlib.patches import Rectangle
     for a in s.get("areas", []):
         if "state" in a:  # part of a state south of a parallel (the Pampas of Rio Grande do Sul)
@@ -912,6 +931,9 @@ def draw_map(s, out):
             p = Poly(r, closed=True, fc=a.get("color", "#fde68a"), ec="none", alpha=0.85, hatch=a.get("hatch"), zorder=3)
             ax.add_patch(p)
             p.set_clip_path(clip)
+    for lk in s.get("lakes", []):
+        for r in geo["lakes"][lk]:
+            ax.add_patch(Poly(r, closed=True, fc="#bae6fd", ec="#0369a1", lw=0.6, zorder=4))
     for rv in s.get("rivers", []):
         for ln in geo["rivers"][rv["name"]]:
             xs, ys = zip(*ln)
@@ -921,6 +943,11 @@ def draw_map(s, out):
     for pl in s.get("places", []):
         at = pl.get("at") or geo["places"][pl["name"]]
         ax.plot(*at, pl.get("marker", "o"), ms=pl.get("ms", 7), color=pl.get("color", "#b91c1c"), mec="white", mew=0.8, zorder=7)
+    for ar in s.get("areas_at", []):  # a shaded patch around named places (an industrial region)
+        from matplotlib.patches import Ellipse
+        cx, cy = ar["at"]
+        ax.add_patch(Ellipse((cx, cy), ar["w"], ar["h"], angle=ar.get("angle", 0), fc=ar.get("color", "#f97316"), ec=ar.get("edge", "#9a3412"),
+                             alpha=0.55, hatch=ar.get("hatch"), lw=1, zorder=6))
     box = {"boxstyle": "round,pad=0.2", "fc": "white", "ec": "none", "alpha": 0.85}
     for lb in s.get("labels", []):
         ax.text(*lb["at"], lb["text"], fontsize=lb.get("size", 10), ha=lb.get("ha", "center"), va=lb.get("va", "center"),
@@ -1054,6 +1081,20 @@ def selftest():
     par = geo["rivers"]["Paraguay"][0]
     assert max(par[0][1], par[-1][1]) > -16 and min(par[0][1], par[-1][1]) < -26, "the Paraguay runs from Mato Grosso to the Parana confluence"
     assert in_any([-49.5, -0.9], geo["areas"]["Ilha de Marajó"]), "Marajo lies at the Amazon mouth"
+
+    # World regional maps: never a frame that shows India (owner, 2026-10-19:
+    # India waits for an official Survey of India outline), and every named
+    # city falls inside its own country.
+    assert not extent_shows_india((125, 28, 148, 46)), "Japan frame shows no India"
+    assert extent_shows_india((60, 0, 100, 40)) and extent_shows_india((40, -10, 80, 30)), "frames touching India are caught"
+    try:
+        draw_map({"kind": "map", "region": "world", "extent": [50, 0, 90, 30]}, os.devnull)
+        raise AssertionError("a world map framing India must be refused")
+    except ValueError:
+        pass
+    world = load_geo("world")
+    for place, iso in (("Tokyo", "JPN"), ("Osaka", "JPN"), ("Sydney", "AUS"), ("Johannesburg", "ZAF"), ("Essen", "DEU")):
+        assert in_any(world["places"][place], world["countries"][iso]), f"{place} must fall inside {iso}"
 
     # Structure grids stay two to a row at most, so names stay legible on a phone.
     assert structure_per_row(8, 4) == 2 and structure_per_row(8, None) == 2, "8 molecules: two per row"
