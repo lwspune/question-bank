@@ -64,7 +64,7 @@ export default async function StorePage() {
                         className="group block rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                       >
                         <div className="transition-transform group-hover:-translate-y-1 motion-reduce:transition-none motion-reduce:group-hover:translate-y-0">
-                          <BookCover kind={book.kind} subject={subject} />
+                          <BookCover kind={book.kind} subject={subject} stats={book.stats} />
                         </div>
                         <div className="mt-3">
                           <span className="block text-sm font-semibold">{KIND_LABEL[book.kind]}</span>
