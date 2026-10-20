@@ -21,7 +21,9 @@ import {
   NAV_FACTS,
   GUIDE_FACTS,
   examFactFromEntry,
+  buildNotesFacts,
 } from "./facts";
+import { getNotesExamGroups } from "@/lib/notes/notesNav";
 import { chapterPath, findChapters, formatChapterHits, type ChapterSearchRow } from "./chapterSearch";
 import { pathsInReply } from "./replyLinks";
 import type { VTool } from "./anthropic";
@@ -116,6 +118,10 @@ export async function loadVContext(
   ]);
 
   const exams = buildExamFacts(EXAM_REGISTRY.map((e) => examFactFromEntry(e, pyqBySlug)));
+  // Never an exam with nothing public: its notes would point a student at an exam we do not show.
+  const notes = buildNotesFacts(
+    getNotesExamGroups().filter((g) => EXAM_REGISTRY.find((e) => e.slug === g.slug)?.noPublicContent !== true)
+  );
   const system = buildSystemPrompt({
     exams,
     plans: buildPlanFacts(plans),
@@ -123,6 +129,7 @@ export async function loadVContext(
     bankTotal: bankCount.count ?? 0,
     nav: NAV_FACTS,
     guides: GUIDE_FACTS,
+    notes,
     explainEnabled: Boolean(opts.questionTools),
     planEnabled: opts.planEnabled === true,
   });
@@ -145,7 +152,7 @@ export async function loadVContext(
     notesBrief: opts.questionTools ? (opts.notesBrief ?? null) : null,
   });
 
-  const allowedPaths = new Set(pathsInReply([...NAV_FACTS, ...GUIDE_FACTS, ...exams].join("\n")));
+  const allowedPaths = new Set(pathsInReply([...NAV_FACTS, ...GUIDE_FACTS, ...exams, ...notes].join("\n")));
   if (opts.page) allowedPaths.add(opts.page);
 
   const findChaptersTool: VTool = {

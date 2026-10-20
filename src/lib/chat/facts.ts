@@ -159,6 +159,30 @@ export function buildGuideFacts(catalog: Partial<Record<string, readonly { href:
 
 export const GUIDE_FACTS: readonly string[] = buildGuideFacts(GUIDE_CATALOG);
 
+/**
+ * One line per exam with notes (2026-10-20): its notes hub and each subject's
+ * notes page. V knew only "/notes", so "where are NDA maths notes?" got "I
+ * couldn't find a Maths chapter for NDA". Built from the notes nav
+ * (lib/notes/notesNav.ts getNotesExamGroups), so a new notes subject reaches V
+ * without a code change.
+ */
+export function buildNotesFacts(
+  groups: readonly {
+    slug: string;
+    displayName: string;
+    subjects: readonly { subjectRoute: string; subjectDisplay: string; chapterCount: number }[];
+  }[]
+): string[] {
+  return groups
+    .filter((g) => g.subjects.length > 0)
+    .map((g) => {
+      const subjects = g.subjects.map(
+        (s) => `${s.subjectDisplay} at /notes/${s.subjectRoute} (${s.chapterCount} chapter${s.chapterCount === 1 ? "" : "s"})`
+      );
+      return `/notes/${g.slug}: ${g.displayName} notes, free to read: ${subjects.join(", ")}.`;
+    });
+}
+
 export type ChatFacts = {
   exams: readonly string[];
   plans: readonly string[];
@@ -168,6 +192,8 @@ export type ChatFacts = {
   nav: readonly string[];
   /** Subject strategy guides (GUIDE_FACTS). */
   guides?: readonly string[];
+  /** Each exam's notes hub and subject notes pages (buildNotesFacts). */
+  notes?: readonly string[];
   /** "Ask V about this question" is switched on (chat_settings.explain_enabled, 0168). */
   explainEnabled?: boolean;
   /** V plans the week (chat_settings.plan_enabled, 0170). */
@@ -212,6 +238,7 @@ export function buildSystemPrompt(facts: ChatFacts): string {
   const planBlock = facts.plans.length ? facts.plans.join("\n") : "(nothing is on sale right now)";
   const questionRule = facts.explainEnabled ? EXPLAIN_RULE : NO_EXPLAIN_RULE;
   const guideBlock = facts.guides && facts.guides.length ? facts.guides.join("\n") : "(none)";
+  const notesBlock = facts.notes && facts.notes.length ? facts.notes.join("\n") : "(none)";
   const freeBlock = facts.free && facts.free.length ? facts.free.join("\n") : "(not available right now; do not quote limits)";
 
   return `You are V, the small helper on PYQ Vault (pyqvault.com), a past-year-question bank for Indian exams. Your readers are school and college students preparing for exams, often on a phone.
@@ -227,6 +254,7 @@ RULES
 3a. Chapter numbers are not stored. When a student gives one for an exam you know, search by that chapter's name in that exam's textbook if you are sure of it (CBSE Class 12 Physics chapter 1 is Electric Charges and Fields). If you are not sure, search the subject instead.
 3b. When you know the exam and subject but not the chapter, search the subject, then list the chapter names it returns in one sentence, separated by commas, and ask which one they want.
 3c. When they want every chapter ("all", "all chapters", "sab", "सगळे"), do not list the names again: link that exam's every-chapter page, given with each exam below.
+3d. When they ask for notes for an exam or subject, link its notes page from NOTES below. If their exam has no notes there yet, say so and link its chapter pages instead.
 4. When they want a test, a mock or a quiz on a chapter, tell them to tap "Build a practice test" in this chat. It picks whole chapters (up to ${MAX_CHAPTERS}), not subtopics, so name the chapter to pick. For a whole past paper, point to /mock.
 5. Nobody knows the questions of a future paper (2027 or any upcoming exam). Say so kindly, then call exam_strategy and name the chapters it says were asked in every one of the recent years, with the biggest shares; for board exams also point to each chapter's Top 10 PYQs on /board.
 5a. Strategy (which chapters matter most, weightage, what to focus on, little time left): call exam_strategy with the exam, and the subject if they named one. Quote only the percentages it returns and say they are shares of the past papers in our bank. Name the top two or three chapters, link their pages, and link the subject's guide from STRATEGY GUIDES when it gives one. If it asks which subject or which exam, ask the student. Never say you have no weightage data.
@@ -257,7 +285,10 @@ WHERE THINGS ARE
 ${facts.nav.join("\n")}
 
 STRATEGY GUIDES
-${guideBlock}`;
+${guideBlock}
+
+NOTES
+${notesBlock}`;
 }
 
 /**

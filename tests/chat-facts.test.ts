@@ -12,12 +12,14 @@ import {
   buildGuideFacts,
   GUIDE_FACTS,
   examFactFromEntry,
+  buildNotesFacts,
   type ChatExamFact,
   type ChatPlanFact,
 } from "@/lib/chat/facts";
 import { GUIDE_CATALOG } from "@/lib/guide/guideCatalog";
 import { ABUSE_REPLY } from "@/lib/chat/abuse";
 import { EXAM_REGISTRY } from "@/lib/exam/examContext";
+import { getNotesExamGroups } from "@/lib/notes/notesNav";
 
 const EM_DASH = String.fromCharCode(0x2014);
 
@@ -218,6 +220,41 @@ describe("NAV_FACTS", () => {
 });
 
 // 2026-10-19: asked for NDA GAT weightage, V said "I don't have weightage data"; the guides have it.
+/**
+ * "where are NDA maths notes?" (owner, 2026-10-15; raised again 2026-10-20): V knew only /notes and
+ * told the owner it could not find NDA Maths. One line per exam's notes hub, naming each subject's
+ * page, built from the notes nav so a new notes subject reaches V without a code change.
+ */
+describe("buildNotesFacts", () => {
+  const groups = getNotesExamGroups();
+  const facts = buildNotesFacts(groups);
+
+  it("gives each exam's notes hub and every subject's notes page", () => {
+    const nda = facts.find((f) => f.startsWith("/notes/nda:"));
+    expect(nda).toContain("NDA Maths at /notes/nda-maths");
+    for (const g of groups) {
+      const line = facts.find((f) => f.startsWith(`/notes/${g.slug}:`));
+      expect(line, g.slug).toBeDefined();
+      for (const s of g.subjects) expect(line, s.subjectRoute).toContain(`/notes/${s.subjectRoute}`);
+    }
+  });
+
+  it("names only notes pages that exist", () => {
+    // A subject's page is hand-written; an exam hub is the shared /notes/[examSlug] route.
+    const hubs = new Set(groups.map((g) => `/notes/${g.slug}`));
+    for (const path of pathsInReply(facts.join(" "))) {
+      const page = hubs.has(path) ? "src/app/notes/[examSlug]/page.tsx" : join("src/app", path, "page.tsx");
+      expect(existsSync(join(process.cwd(), page)), path).toBe(true);
+    }
+  });
+
+  it("reaches the prompt with a rule to link them", () => {
+    const p = buildSystemPrompt({ exams: [], plans: [], bankTotal: 1, nav: NAV_FACTS, notes: facts });
+    expect(p).toContain("/notes/nda-maths");
+    expect(p).toMatch(/notes.*NOTES below/i);
+  });
+});
+
 describe("buildGuideFacts", () => {
   const catalog = {
     nda: [{ href: "/guide/nda-physics", exam: "NDA PART B Physics" }],
