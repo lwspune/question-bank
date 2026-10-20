@@ -40,6 +40,9 @@ KINDS (each spec is {"kind": ..., ...}):
               places: [{name | at: [lon, lat], marker}], parallels: [{lat}], labels: [{text, at}],
               index: [{symbol: "fill"|"line"|"point", text, color}]}   real Natural Earth boundaries
              (geo/brazil.json, geo/world.json); a frame that would show India is REFUSED until an official outline is supplied
+  bookmap    {base: "india_balbharati", places: [{name | at, text, marker, ring}], parallels: [{lat, text}],
+              features: [{name, text, color, hatch}]}   the answer marked on the BOOK's own map
+             (geo/india_balbharati.json: the page + a fitted lon/lat->pixel map); India's outline is never drawn
   complex    {items: [{geometry: "oct"|"sq", metal, ligands: {pos: label}, chelates: [[pos, pos, "en"]], label, group}],
               mirror_pairs: [[i, j]], per_row}   octahedron positions 1 top, 6 bottom, 2 left, 4 right,
              3 front, 5 back; square corners 1-4 (1-3, 2-4 trans). Refuses an empty or doubled position, a
@@ -974,7 +977,65 @@ def draw_map(s, out):
     finish(fig, out)
 
 
-KINDS = {"map": draw_map, "complex": draw_complex, "field": draw_field, "curve3d": draw_curve3d, "stack": draw_stack, "plot": draw_plot, "histogram": draw_histogram, "bar": draw_bar, "pie": draw_pie, "geometry": draw_geometry, "ray": draw_ray, "circuit": draw_circuit, "structure": draw_structure}
+def bookmap_xy(bm, lon, lat):
+    """lon/lat -> pixel on the book's map, by the fitted quadratic (geo/build_india_balbharati.py)."""
+    f = np.array([1.0, lon, lat, lon * lon, lon * lat, lat * lat])
+    return float(f @ np.array(bm["cx"])), float(f @ np.array(bm["cy"]))
+
+
+def draw_bookmap(s, out):
+    """The answer marked on a book's own map (India: Balbharati's political map,
+    so India's outline is the official one). Nothing of the outline is drawn:
+    only places, a parallel, a river or a range, from their real coordinates."""
+    sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "lib", "figures"))
+    from crop_answer_figs import render
+    from matplotlib.patches import Polygon as Poly, Circle
+    from matplotlib.lines import Line2D
+    from matplotlib.patches import Patch
+
+    bm = load_geo(s.get("base", "india_balbharati"))
+    img = render(bm["pdf"], bm["page"], bm["bbox"])
+    w, h = img.size
+    fig, ax = plt.subplots(figsize=s.get("size", [5.6, 6.3]))
+    ax.imshow(img, extent=(0, w, h, 0), zorder=0)
+    xy = lambda lon, lat: bookmap_xy(bm, lon, lat)
+    handles = []
+    for it in s.get("features", []):
+        f = bm["features"][it["name"]]
+        col = it.get("color", "#dc2626")
+        if f["type"] == "line":
+            for ln in f["coords"]:
+                pts = [xy(lo, la) for lo, la in ln]
+                ax.plot(*zip(*pts), color=col, lw=it.get("width", 3.2), solid_capstyle="round", zorder=5)
+            handles.append(Line2D([], [], color=col, lw=3, label=it["text"]))
+        else:
+            for r in f["coords"]:
+                ax.add_patch(Poly([xy(lo, la) for lo, la in r], closed=True, fc=col, ec=it.get("edge", "#7f1d1d"), alpha=0.6,
+                                  hatch=it.get("hatch"), lw=1.2, zorder=5))
+            handles.append(Patch(fc=col, ec=it.get("edge", "#7f1d1d"), alpha=0.6, hatch=it.get("hatch"), label=it["text"]))
+    for pa in s.get("parallels", []):
+        lons = np.linspace(66, 100, 120)
+        pts = [xy(lo, pa["lat"]) for lo in lons]
+        ax.plot(*zip(*pts), color=pa.get("color", "#dc2626"), lw=2.6, ls="--", zorder=5)
+        handles.append(Line2D([], [], color=pa.get("color", "#dc2626"), lw=2.6, ls="--", label=pa["text"]))
+    for pl in s.get("places", []):
+        lon, lat = pl.get("at") or bm["places"][pl["name"]]
+        x, y = xy(lon, lat)
+        if pl.get("ring"):
+            ax.add_patch(Circle((x, y), pl["ring"], fill=False, ec=pl.get("color", "#dc2626"), lw=3, zorder=6))
+        else:
+            ax.plot(x, y, pl.get("marker", "o"), ms=pl.get("ms", 11), color=pl.get("color", "#dc2626"), mec="white", mew=1.5, zorder=6)
+        handles.append(Line2D([], [], marker="o" if pl.get("ring") else pl.get("marker", "o"), color="none",
+                              mfc="none" if pl.get("ring") else pl.get("color", "#dc2626"), mec=pl.get("color", "#dc2626"),
+                              mew=2 if pl.get("ring") else 1, ms=10, label=pl["text"]))
+    ax.legend(handles=handles, title="Index", loc="upper center", bbox_to_anchor=(0.5, -0.01), fontsize=10, title_fontsize=10, frameon=True)
+    ax.set_xlim(0, w)
+    ax.set_ylim(h, 0)
+    ax.axis("off")
+    finish(fig, out)
+
+
+KINDS = {"bookmap": draw_bookmap, "map": draw_map, "complex": draw_complex, "field": draw_field, "curve3d": draw_curve3d, "stack": draw_stack, "plot": draw_plot, "histogram": draw_histogram, "bar": draw_bar, "pie": draw_pie, "geometry": draw_geometry, "ray": draw_ray, "circuit": draw_circuit, "structure": draw_structure}
 
 
 def draw(spec, out):
@@ -1095,6 +1156,14 @@ def selftest():
     world = load_geo("world")
     for place, iso in (("Tokyo", "JPN"), ("Osaka", "JPN"), ("Sydney", "AUS"), ("Johannesburg", "ZAF"), ("Essen", "DEU")):
         assert in_any(world["places"][place], world["countries"][iso]), f"{place} must fall inside {iso}"
+
+    # Book map (Balbharati's India political map): the fitted lon/lat -> pixel
+    # map lands on the places the book itself prints, and stays honest about it.
+    bm = load_geo("india_balbharati")
+    assert bm["rms_px"] < 4, "the book's graticule fit is tight"
+    for name, (lon, lat, px, py) in bm["controls"].items():
+        x, y = bookmap_xy(bm, lon, lat)
+        assert abs(x - px) < 12 and abs(y - py) < 12, f"{name} lands on the book's own mark"
 
     # Structure grids stay two to a row at most, so names stay legible on a phone.
     assert structure_per_row(8, 4) == 2 and structure_per_row(8, None) == 2, "8 molecules: two per row"
