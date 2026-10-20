@@ -3,6 +3,7 @@ import { verifyWebhookSignature } from "@/lib/billing/razorpay";
 import { computeExpiry } from "@/lib/billing/plans";
 import { grantRazorpayEntitlement, revokeRazorpayEntitlement } from "@/lib/billing/grant";
 import { decideWebhook, type WebhookBody } from "@/lib/billing/webhook";
+import { grantEbookPurchase, revokeEbookPurchase } from "@/lib/ebooks/grant";
 
 export const maxDuration = 30;
 
@@ -47,12 +48,31 @@ export async function POST(request: NextRequest) {
   }
 
   if (decision.action === "revoke") {
-    const result = await revokeRazorpayEntitlement(decision.paymentId);
-    if (result.kind === "error") {
-      console.error("billing webhook: revoke failed", result.message);
+    // A payment buys either a pass or an ebook; revoking both by payment id
+    // ends whichever it was, and the other finds nothing.
+    const [pass, book] = await Promise.all([
+      revokeRazorpayEntitlement(decision.paymentId),
+      revokeEbookPurchase(decision.paymentId),
+    ]);
+    if (pass.kind === "error" || book.kind === "error") {
+      console.error("billing webhook: revoke failed", pass.kind === "error" ? pass.message : "", book.kind === "error" ? book.message : "");
       return NextResponse.json({ error: "revoke failed" }, { status: 500 });
     }
-    return NextResponse.json({ received: true, revoked: result.revoked });
+    return NextResponse.json({ received: true, revoked: pass.revoked + book.revoked });
+  }
+
+  if (decision.action === "grant_ebook") {
+    const result = await grantEbookPurchase({
+      userId: decision.userId,
+      paymentId: decision.paymentId,
+      ebookSlug: decision.grant.ebookSlug,
+      amountPaise: decision.grant.amountPaise,
+    });
+    if (result.kind === "error") {
+      console.error("billing webhook: ebook grant failed", result.message);
+      return NextResponse.json({ error: "grant failed" }, { status: 500 });
+    }
+    return NextResponse.json({ received: true, granted: result.kind });
   }
 
   const result = await grantRazorpayEntitlement({
