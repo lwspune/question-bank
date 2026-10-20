@@ -314,8 +314,6 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     // 2011-2022 are publish_blocked forever. Drop the flag when the ministry
     // papers go PUBLIC.
     practiceOnly: true,
-    // Until the twins are flipped PUBLIC after this deploy; then remove it.
-    noPublicContent: true,
   },
   {
     slug: "mh-hsc-12",
