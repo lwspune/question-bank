@@ -9,7 +9,8 @@
 #
 # HOW IT RUNS (live since 2026-10-07). Every push to main builds here and goes
 # live. Vercel's own Git builds are off (vercel.json `git.deploymentEnabled`),
-# so nothing is built twice. To go back to Vercel building, delete vercel.json.
+# so nothing is built twice. To go back to Vercel building, remove the `git`
+# block from vercel.json (keep `regions`: functions run in Mumbai, bom1).
 #
 # By hand (Actions tab -> Run workflow): `staged` builds with the production
 # settings and uploads WITHOUT going live (`--skip-domain`); check its URL, then
