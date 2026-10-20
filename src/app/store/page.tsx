@@ -42,7 +42,7 @@ export default async function StorePage() {
         <header className="hero-soft rounded-2xl px-5 py-8 text-center">
           <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">Ebooks</h1>
           <p className="mx-auto mt-2 max-w-lg text-sm leading-relaxed text-muted-foreground">
-            Formula, notes and previous year question (PYQ) ebooks to download. Pay once and keep the PDF.
+            Formula, notes and previous year question (PYQ) ebooks to download.
           </p>
         </header>
 
