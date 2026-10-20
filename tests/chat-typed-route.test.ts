@@ -12,6 +12,7 @@ import { NextRequest } from "next/server";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { randomUUID } from "node:crypto";
 import { TYPED_QUESTION_REPLY } from "@/lib/chat/typed";
+import { ABUSE_REPLY } from "@/lib/chat/abuse";
 import { ANON_ASKED_COOKIE, ANON_FREE_COOKIE, ANON_FREE_REPLIES_MAX, SIGN_IN_TO_ASK_REPLY } from "@/lib/chat/anonLimit";
 
 const askV = vi.fn();
@@ -187,6 +188,28 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
     const res = await POST(post({ message: `route-${RUN}-cap hello` }));
     expect((await res.json()).reply).toBe(TYPED_QUESTION_REPLY);
     expect(askV).not.toHaveBeenCalled();
+  });
+
+  it("answers abuse with one calm line and then nothing, never calling the AI or using a visitor's question (owner, 2026-10-20)", async () => {
+    await setSettings({ ai_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });
+    askV.mockReset();
+    const { POST } = await import("@/app/api/chat/typed/route");
+    const conversationId = randomUUID();
+    const first = await POST(post({ message: `route-${RUN}-abuse1 GAND MAARA`, conversationId }));
+    expect(await first.json()).toMatchObject({ ok: true, reply: ABUSE_REPLY, links: [], source: "fallback" });
+    expect(first.headers.get("set-cookie") ?? "").not.toContain(`${ANON_ASKED_COOKIE}=`);
+    const second = await POST(post({ message: `route-${RUN}-abuse2 chutiya`, conversationId }));
+    expect(await second.json()).toMatchObject({ ok: true, reply: null, silent: true });
+    expect(askV).not.toHaveBeenCalled();
+    const { data } = await admin
+      .from("chat_interactions")
+      .select("message, reply, reply_source")
+      .eq("conversation_id", conversationId)
+      .order("created_at");
+    expect(data).toEqual([
+      { message: `route-${RUN}-abuse1 GAND MAARA`, reply: ABUSE_REPLY, reply_source: "fallback" },
+      { message: `route-${RUN}-abuse2 chutiya`, reply: null, reply_source: null },
+    ]);
   });
 
   it("answers a signed-out visitor's first question, tells V it is their only one, and marks the browser", async () => {

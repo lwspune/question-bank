@@ -530,8 +530,11 @@ export default function ChatWidget() {
         similarQuestionId?: string;
         matchQuestionId?: string;
         planShown?: boolean;
+        /** Abuse after the calm line (lib/chat/abuse.ts): V says nothing. */
+        silent?: boolean;
         error?: string;
       };
+      if (res.ok && data.ok && data.silent) return;
       if (data.signInToContinue || data.signInRequired) setSignInNeeded(true);
       if (!res.ok || !data.ok || !data.reply) {
         const errorText = data.error || "V couldn't take that question. Please try again.";

@@ -10,6 +10,7 @@
  * Pure. Spec: tests/chat-conversation.test.ts.
  */
 import { PREDEFINED_QUESTIONS } from "./faq";
+import { ABUSE_REPLY } from "./abuse";
 import type { ToolCallLog } from "./anthropic";
 
 export type ConversationRow = {
@@ -74,7 +75,9 @@ function exchanges(rows: readonly ConversationRow[]): ConversationRow[] {
 export type ModelTurn = { role: "user" | "assistant"; content: string };
 
 export function modelHistory(rows: readonly ConversationRow[], keep = MEMORY_EXCHANGES): ModelTurn[] {
+  // Abuse and V's calm line (lib/chat/abuse.ts) are never part of what V remembers.
   return exchanges(rows)
+    .filter((r) => r.reply !== ABUSE_REPLY)
     .slice(-keep)
     .flatMap((r) => [
       { role: "user" as const, content: questionOf(r)! },

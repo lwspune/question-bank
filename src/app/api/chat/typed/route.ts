@@ -39,6 +39,7 @@ import {
 } from "@/lib/chat/interactionsAdmin";
 import { validateChatMessage } from "@/lib/chat/validate";
 import { maskPersonal } from "@/lib/chat/maskPersonal";
+import { abuseReply, isAbusive } from "@/lib/chat/abuse";
 import { TYPED_QUESTION_REPLY } from "@/lib/chat/typed";
 import { personBucket } from "@/lib/chat/settings";
 import { readChatSettings, countAiAnswersToday } from "@/lib/chat/settingsAdmin";
@@ -192,6 +193,27 @@ export async function POST(request: NextRequest) {
     const pagePath = cleanPagePath(raw.pagePath);
     // "Ask V about this question" (0168): the question the student tapped Ask V on, while it is switched on.
     const asked = settings.explainEnabled ? parseAskedQuestion(raw.question) : null;
+
+    // Abuse (owner, 2026-10-20): one calm line, then no reply at all. No AI call, and a
+    // signed-out visitor's question is not used up. Kept, so the dashboard shows it.
+    if (isAbusive(message)) {
+      const earlier = conversationId ? await readConversation(admin, conversationId) : [];
+      const calm = abuseReply(conversationBelongsTo(earlier, userId) ? earlier.map((r) => r.reply) : []);
+      const id = await recordChatInteraction(admin, {
+        eventType: "typed_question",
+        message,
+        userId,
+        ...(calm ? { reply: { text: calm, source: "fallback" as const } } : {}),
+        conversationId,
+        pagePath,
+      });
+      return NextResponse.json(
+        calm
+          ? { ok: true, reply: calm, links: [], id, source: "fallback" }
+          : { ok: true, reply: null, links: [], id, source: "fallback", silent: true },
+        { status: 200 }
+      );
+    }
 
     // A signed-out visitor's second question: kept (it shows what visitors want), answered with sign-in.
     const askedBefore = anonAskedFromCookieHeader(request.headers.get("cookie"));

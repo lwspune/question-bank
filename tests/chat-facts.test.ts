@@ -15,6 +15,7 @@ import {
   type ChatPlanFact,
 } from "@/lib/chat/facts";
 import { GUIDE_CATALOG } from "@/lib/guide/guideCatalog";
+import { ABUSE_REPLY } from "@/lib/chat/abuse";
 
 const EM_DASH = String.fromCharCode(0x2014);
 
@@ -228,6 +229,12 @@ describe("buildSystemPrompt", () => {
     const p = buildSystemPrompt(base);
     expect(p).toContain("find_chapters");
     expect(p.toLowerCase()).toMatch(/never (make up|invent)/);
+  });
+
+  it("gives abuse the same calm line the route uses, never an answer back (owner, 2026-10-20)", () => {
+    const p = buildSystemPrompt(base);
+    expect(p).toContain(ABUSE_REPLY);
+    expect(p).toMatch(/abus/i);
   });
 
   it("covers what students actually typed: tests, future papers, buying, language", () => {
