@@ -119,13 +119,13 @@ async function evaluate(cdp: Cdp, expression: string): Promise<unknown> {
  */
 let queue: Promise<unknown> = Promise.resolve();
 
-export function printPdf(html: string): Promise<Buffer> {
-  const job = queue.then(() => printOnce(html));
+export function printPdf(html: string, opts: { timeoutMs?: number } = {}): Promise<Buffer> {
+  const job = queue.then(() => printOnce(html, opts.timeoutMs ?? TIMEOUT_MS));
   queue = job.catch(() => undefined);
   return job;
 }
 
-async function printOnce(html: string): Promise<Buffer> {
+async function printOnce(html: string, timeoutMs: number): Promise<Buffer> {
   const dir = mkdtempSync(join(tmpdir(), "pv-pdf-"));
   const profile = join(dir, "profile");
   const file = join(dir, "page.html");
@@ -154,7 +154,7 @@ async function printOnce(html: string): Promise<Buffer> {
     const work = (async () => {
       cdp = await connect(profile, proc, () => output);
       await cdp.send("Page.navigate", { url: pathToFileURL(file).href });
-      for (let i = 0; i < 300 && (await evaluate(cdp, "document.readyState")) !== "complete"; i++) await sleep(50);
+      for (let i = 0; i < timeoutMs / 50 && (await evaluate(cdp, "document.readyState")) !== "complete"; i++) await sleep(50);
       await evaluate(cdp, "document.fonts.ready.then(() => true)");
       const res = (await cdp.send("Page.printToPDF", {
         printBackground: true,
@@ -164,7 +164,7 @@ async function printOnce(html: string): Promise<Buffer> {
       return Buffer.from(res.result.data, "base64");
     })();
     const timeout = new Promise<never>((_, reject) => {
-      timer = setTimeout(() => reject(new Error("PDF printing timed out")), TIMEOUT_MS);
+      timer = setTimeout(() => reject(new Error("PDF printing timed out")), timeoutMs);
     });
     return await Promise.race([work, timeout]);
   } finally {

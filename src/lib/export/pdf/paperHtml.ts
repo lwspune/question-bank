@@ -111,7 +111,7 @@ export function richHtml(text: string): string {
  * tables. `tail` rides on the end of the LAST prose block (the source tag),
  * or gets its own line when the field ends in a table.
  */
-function blocksHtml(text: string, tail = ""): string {
+export function blocksHtml(text: string, tail = ""): string {
   const blocks = parseTableBlocks(text);
   const lastText = blocks.reduce((acc, b, i) => (b.kind === "text" ? i : acc), -1);
   const out = blocks.map((b, i) => {
@@ -148,7 +148,7 @@ export function optionLayout(options: OptionRow[]): "row" | "grid" | "stack" {
   return "stack";
 }
 
-function optionsHtml(options: OptionRow[], images: Map<string, string> | undefined): string {
+export function optionsHtml(options: OptionRow[], images: Map<string, string> | undefined): string {
   if (options.length === 0) return "";
   const items = options
     .map((o) => {
@@ -164,7 +164,8 @@ function optionsHtml(options: OptionRow[], images: Map<string, string> | undefin
 
 // ── Page ────────────────────────────────────────────────────────────────────
 
-const CSS = `
+/** The paper's stylesheet; the ebook (lib/ebooks/bookHtml) builds on it. */
+export const PAPER_CSS = `
 @page { size: A4; margin: 16mm 16mm 18mm; }
 * { box-sizing: border-box; }
 html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
@@ -245,7 +246,7 @@ function page(
   const brandline = brand.nameLine ? `<div class="brandline">PYQ Vault</div>` : "";
   return (
     `<!doctype html><html lang="en"><head><meta charset="utf-8"><title>${esc(title)}</title>` +
-    `${input.head}<style>${CSS}${footerCss(brand.siteUrl)}</style></head><body>${watermark}` +
+    `${input.head}<style>${PAPER_CSS}${footerCss(brand.siteUrl)}</style></head><body>${watermark}` +
     `<header class="masthead">${brandline}<h1>${esc(title)}</h1>` +
     `<div class="meta">${kindLabel} · ${count} question${count === 1 ? "" : "s"}</div></header>` +
     `<main>${body}</main></body></html>`
@@ -322,7 +323,7 @@ export function buildPaperHtml(input: PaperHtmlInput): string {
 
 // ── Answer key ──────────────────────────────────────────────────────────────
 
-function answerOf(q: QuestionRow): string {
+export function answerOf(q: QuestionRow): string {
   if (q.cancelledNote) return "Cancelled";
   if (q.questionFormat === "subjective") return "Written";
   if (q.questionFormat === "numeric") return q.numericAnswer != null ? String(q.numericAnswer) : "Pending";
