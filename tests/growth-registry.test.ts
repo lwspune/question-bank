@@ -69,6 +69,7 @@ describe("EXPERIMENTS", () => {
       "box-buy",
       "chapter-share",
       "chapter-tests",
+      "ebook-store",
       "email-cap",
       "formula-pages",
       "indexing",
