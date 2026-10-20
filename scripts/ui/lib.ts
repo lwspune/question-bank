@@ -161,7 +161,7 @@ export function clickScript(text: string): string {
   // homepage lists the same exams V's builder offers).
   const dialogs = [...document.querySelectorAll('[role="dialog"]')];
   const scope = dialogs.length ? dialogs[dialogs.length - 1] : document;
-  const pick = (root) => [...root.querySelectorAll("button, a, [role=button]")];
+  const pick = (root) => [...root.querySelectorAll("button, a, [role=button], summary")];
   const els = [...pick(scope), ...(scope === document ? [] : pick(document))];
   // Visible text first, then aria-label, which is all an icon-only button has.
   const el = els.find((e) => e.offsetParent !== null && (e.textContent || "").trim().startsWith(want))
