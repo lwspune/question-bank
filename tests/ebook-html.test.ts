@@ -228,6 +228,31 @@ describe("buildNotesChapterHtml", () => {
     expect(html).toMatch(/Sign of the centre[\s\S]*The signs flip/);
   });
 
+  it("draws a concept's diagram in its card, after the idea, and none where a concept has none", () => {
+    const withDiagram = {
+      ...NOTES,
+      notes: {
+        ...NOTES.notes,
+        eq: {
+          ...NOTES.notes.eq,
+          concepts: [{ ...NOTES.notes.eq.concepts[0], visualizationSlug: "circle-standard-form" }],
+        },
+      },
+    } as unknown as NotesChapterRegistration;
+    const html = buildNotesChapterHtml({
+      number: 4,
+      classLabel: "Class XI",
+      bookTitle: "MHT-CET Mathematics",
+      chapter: withDiagram,
+      head: "",
+      renderDiagram: (slug) => `<svg data-slug="${slug}"></svg>`,
+    });
+    expect(html).toMatch(/class="intu">Every point sits[\s\S]*<figure class="viz"><svg data-slug="circle-standard-form"><\/svg><\/figure>[\s\S]*Standard form/);
+    expect(html.match(/class="viz"/g)?.length).toBe(1);
+    // No renderer given, no diagram: the build passes one, tests of the rest need not.
+    expect(buildNotesChapterHtml({ number: 4, classLabel: null, bookTitle: "x", chapter: withDiagram, head: "" })).not.toContain('class="viz"');
+  });
+
   it("asks the Try it problem in the concept and keeps its answer for the end of the chapter", () => {
     const body = between(html, 'id="concepts"', 'id="answers"');
     expect(body).toContain("Radius of x^2+y^2=16?");
@@ -256,15 +281,15 @@ describe("buildEbookFrontHtml", () => {
   it("names the kind of book and its subject on the cover, in the kind's colour", () => {
     expect(front).toContain("PYQ Book");
     expect(front).toContain("MHT-CET Mathematics");
-    expect(front).toContain("--acc:#2a736e");
+    expect(front).toContain("--acc:#047857");
     expect(front).toContain("3,362");
     expect(front).toContain("<p>preview</p>");
   });
 
-  it("colours a Formula Book blue and a Notes Book amber", () => {
+  it("colours a Formula Book the site's royal blue and a Notes Book violet", () => {
     const base = { title: "T", subtitle: "S", stats: [], preview: "", chapters: [], head: "" };
-    expect(buildEbookFrontHtml({ ...base, kind: "formula" })).toContain("--acc:#3f56a0");
-    expect(buildEbookFrontHtml({ ...base, kind: "notes" })).toContain("--acc:#a94f28");
+    expect(buildEbookFrontHtml({ ...base, kind: "formula" })).toContain("--acc:#1d4ed8");
+    expect(buildEbookFrontHtml({ ...base, kind: "notes" })).toContain("--acc:#6d28d9");
   });
 
   it("lists every chapter with its page", () => {
@@ -274,6 +299,15 @@ describe("buildEbookFrontHtml", () => {
 });
 
 describe("THEME_CSS", () => {
+  // The books wear the website's colours (owner, 2026-10-20), so the notes
+  // diagrams, drawn in the site's own classes, sit in them without clashing.
+  it("uses the website's page tint, navy text and royal-blue formula boxes", async () => {
+    const { THEME_CSS, PAPER } = await import("@/lib/ebooks/theme");
+    expect(PAPER.toLowerCase()).toBe("#f5f7fb");
+    expect(THEME_CSS).toContain("--ink:#0f1d4a");
+    expect(THEME_CSS).toMatch(/\.f \{[^}]*border-left: 3pt solid #1d4ed8/);
+  });
+
   // Measured 2026-10-20: a box-shadow on a card that breaks across pages sent
   // Chrome's print layout into a near-endless loop (the Maths Notes Book's
   // Limits chapter: 6 s without the shadow, over 15 minutes with it). Cards

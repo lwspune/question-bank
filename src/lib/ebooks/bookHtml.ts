@@ -25,7 +25,7 @@ import { numberChapter } from "@/lib/books/print";
 import type { BookSection, BookSet } from "@/lib/books/order";
 import type { QuestionRow } from "@/lib/questions/query";
 import type { NotesChapterRegistration } from "@/lib/notes/chapters";
-import type { AuthoredExample, ConceptUnit, ReferenceTable, TrapCallout } from "@/app/notes/_types";
+import type { AuthoredExample, ConceptUnit, ReferenceTable, TrapCallout, VisualizationSlug } from "@/app/notes/_types";
 import { PAPER_CSS, answerOf, blocksHtml, optionsHtml, richHtml } from "@/lib/export/pdf/paperHtml";
 import { splitFormulaLines } from "@/lib/export/pdf/formulaSheetHtml";
 import type { EbookKind } from "./catalog";
@@ -125,6 +125,12 @@ export type NotesChapterInput = {
   bookTitle: string;
   chapter: Pick<NotesChapterRegistration, "chapter" | "notes" | "slugs">;
   head: string;
+  /**
+   * Draws a concept's diagram as markup (the build passes lib/ebooks/diagrams
+   * renderDiagramMarkup; the page's head must then carry the diagram styles).
+   * Absent, no diagram is drawn: kept out of this module so it stays pure.
+   */
+  renderDiagram?: (slug: VisualizationSlug) => string;
 };
 
 export function buildFormulaChapterHtml(input: NotesChapterInput): string {
@@ -152,7 +158,7 @@ export function buildFormulaChapterHtml(input: NotesChapterInput): string {
 
 // ── Notes chapter ───────────────────────────────────────────────────────────
 
-function conceptHtml(c: ConceptUnit, tryNumber: number | null): string {
+function conceptHtml(c: ConceptUnit, tryNumber: number | null, renderDiagram?: (slug: VisualizationSlug) => string): string {
   const core =
     c.kind === "formula"
       ? (c.formula ? formulaHtml(c.formula) : "") +
@@ -165,6 +171,8 @@ function conceptHtml(c: ConceptUnit, tryNumber: number | null): string {
       : "";
   return (
     `<section class="card ncard"><h3>${esc(c.name)}</h3><p class="intu">${richHtml(c.intuition)}</p>` +
+    // The diagram sits after the idea, where the notes page draws it.
+    (c.visualizationSlug && renderDiagram ? `<figure class="viz">${renderDiagram(c.visualizationSlug)}</figure>` : "") +
     definitionHtml(c.definition) +
     core +
     tryIt +
@@ -186,7 +194,7 @@ export function buildNotesChapterHtml(input: NotesChapterInput): string {
           `<section class="q sol"><div class="qn">${num}</div><div class="qb">${stepsHtml(c.selfCheckExample, true)}</div></section>`
         );
       }
-      return conceptHtml(c, num);
+      return conceptHtml(c, num, input.renderDiagram);
     });
     return `<h2 class="subh">${esc(note.title)}</h2>${concepts.join("")}`;
   });

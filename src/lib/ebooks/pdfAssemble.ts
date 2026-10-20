@@ -75,7 +75,7 @@ export async function assembleMaster(parts: Uint8Array[], opts: { footer: string
       y: 24,
       size,
       font,
-      color: rgb(0.42, 0.45, 0.5),
+      color: rgb(0.333, 0.396, 0.498), // the site's muted text, #55657F
     });
   });
   // Last, so the paper goes under everything, the footer's own wrapping included.

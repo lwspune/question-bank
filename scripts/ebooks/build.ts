@@ -46,10 +46,26 @@ import {
   pyqPreview,
 } from "../../src/lib/ebooks/bookHtml";
 import { EBOOKS, ebookChapters, getEbook, type EbookChapter, type EbookDefinition } from "../../src/lib/ebooks/catalog";
+import type { VisualizationSlug } from "../../src/app/notes/_types";
 import { assembleMaster, pageCounts } from "../../src/lib/ebooks/pdfAssemble";
 import { KIND_LABEL, PAPER } from "../../src/lib/ebooks/theme";
+import { buildDiagramCss } from "../lib/ebookDiagramCss";
 
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
+
+/**
+ * The diagram components come through the notes card module, which also
+ * imports KaTeX's stylesheet; Node cannot load a .css file. A diagram needs no
+ * stylesheet at render (the book carries its own), so .css imports are skipped
+ * here, then the renderer is loaded.
+ */
+async function loadDiagramRenderer(): Promise<(slug: VisualizationSlug) => string> {
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const extensions = require.extensions as Record<string, (m: unknown, f: string) => void>;
+  extensions[".css"] = () => undefined;
+  const { renderDiagramMarkup } = await import("../../src/lib/ebooks/diagrams");
+  return renderDiagramMarkup;
+}
 
 const APPLY = process.argv.includes("--apply");
 const ID_CHUNK = 200;
@@ -145,7 +161,14 @@ async function buildPyqChapter(
   return { chapter: c, pdf, detail: `${printed.length} q` };
 }
 
-async function buildNotesChapter(ebook: EbookDefinition, c: EbookChapter, totals: Totals, head: string): Promise<Built> {
+async function buildNotesChapter(
+  ebook: EbookDefinition,
+  c: EbookChapter,
+  totals: Totals,
+  head: string,
+  diagramHead: string,
+  renderDiagram: ((slug: VisualizationSlug) => string) | undefined
+): Promise<Built> {
   const notes = c.notes!;
   const counts = formulaPageCounts(notes);
   totals.formulas += counts.formulas;
@@ -156,7 +179,11 @@ async function buildNotesChapter(ebook: EbookDefinition, c: EbookChapter, totals
     .flatMap((s) => notes.notes[s].concepts)
     .filter((k) => k.kind === "formula").length;
   const input = { number: c.number, classLabel: c.classLabel, bookTitle: ebook.title, chapter: notes, head };
-  const html = ebook.kind === "formula" ? buildFormulaChapterHtml(input) : buildNotesChapterHtml(input);
+  // Notes chapters carry each concept's diagram, styled by the site's own classes.
+  const html =
+    ebook.kind === "formula"
+      ? buildFormulaChapterHtml(input)
+      : buildNotesChapterHtml({ ...input, head: head + diagramHead, renderDiagram });
   const pdf = await printPdf(html, { timeoutMs: PRINT_TIMEOUT_MS });
   const detail = ebook.kind === "formula" ? `${counts.formulas} formulas` : `${notes.slugs.length} topics`;
   console.log(`  ${String(c.number).padStart(2)}. ${c.name.padEnd(40)} ${detail}`);
@@ -192,6 +219,8 @@ function coverStats(ebook: EbookDefinition, chapters: number, t: Totals): { valu
 async function buildBook(client: SupabaseClient, ebook: EbookDefinition, only: string[] | undefined): Promise<void> {
   const started = Date.now();
   const head = pdfHead();
+  const diagramHead = ebook.kind === "notes" ? `<style>${await buildDiagramCss()}</style>` : "";
+  const renderDiagram = ebook.kind === "notes" ? await loadDiagramRenderer() : undefined;
   console.log(`\n${KIND_LABEL[ebook.kind]} · ${ebook.title}  (${ebook.slug})`);
   const { data: row, error: rowErr } = await client.from("ebooks").select("version, active").eq("slug", ebook.slug).maybeSingle();
   if (APPLY && (rowErr || !row)) throw new Error(`no ebooks row "${ebook.slug}": ${rowErr?.message ?? "apply migration 0173 first"}`);
@@ -209,7 +238,7 @@ async function buildBook(client: SupabaseClient, ebook: EbookDefinition, only: s
 
   const built: Built[] = [];
   for (const c of chapters) {
-    const b = ebook.kind === "pyq" ? await buildPyqChapter(client, ebook, c, pyqCtx, totals, head) : await buildNotesChapter(ebook, c, totals, head);
+    const b = ebook.kind === "pyq" ? await buildPyqChapter(client, ebook, c, pyqCtx, totals, head) : await buildNotesChapter(ebook, c, totals, head, diagramHead, renderDiagram);
     writeFileSync(join(outDir, "parts", `${String(c.number).padStart(2, "0")}-${c.slug}.pdf`), b.pdf);
     built.push(b);
   }

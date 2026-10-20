@@ -1,4 +1,4 @@
-import { ACCENT, KIND_LABEL, PAPER } from "@/lib/ebooks/theme";
+import { ACCENT, INK, KIND_LABEL, MUTED, PAPER } from "@/lib/ebooks/theme";
 import type { EbookKind } from "@/lib/ebooks/catalog";
 
 /**
@@ -26,8 +26,8 @@ export default function BookCover({
   return (
     <div
       aria-hidden
-      className={`relative flex aspect-[1/1.414] w-full flex-col overflow-hidden rounded-lg font-serif shadow-[0_10px_30px_rgba(35,48,74,0.18)] ring-1 ring-black/5 ${pad}`}
-      style={{ background: PAPER, color: "#23304a" }}
+      className={`relative flex aspect-[1/1.414] w-full flex-col overflow-hidden rounded-lg font-serif shadow-[0_10px_30px_rgba(15,29,74,0.18)] ring-1 ring-black/5 ${pad}`}
+      style={{ background: PAPER, color: INK }}
     >
       <div className="flex items-center gap-1.5 text-[0.55rem] font-bold tracking-[0.2em]">
         <span className="h-1.5 w-1.5 rounded-full" style={{ background: accent }} />
@@ -51,7 +51,7 @@ export default function BookCover({
                 <div className="truncate text-[0.7rem] font-bold leading-tight sm:text-sm" style={{ color: accent }}>
                   {t.value}
                 </div>
-                <div className="truncate text-[0.5rem] leading-tight text-[#5f6880] sm:text-[0.6rem]">{t.label}</div>
+                <div className="truncate text-[0.5rem] leading-tight sm:text-[0.6rem]" style={{ color: MUTED }}>{t.label}</div>
               </div>
             ))
           : [0, 1, 2].map((i) => <div key={i} className="h-3 rounded bg-white shadow-sm" />)}
