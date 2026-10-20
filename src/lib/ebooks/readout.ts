@@ -11,6 +11,10 @@ export type EbookStoreRow = {
   slug: string;
   title: string;
   active: boolean;
+  /** Signed-in students who opened the book's page (header reading views, path /store/<slug>). */
+  openedBy: number;
+  /** Signed-in students who took its free sample (the sample route's ebookSampleEvent). */
+  sampledBy: number;
   /** Accounts holding the book now (active purchases). */
   buyers: number;
   /** Sum of what active purchases paid. */
@@ -26,6 +30,24 @@ const PAGE = 1000;
 
 async function count(q: PromiseLike<{ count: number | null }>): Promise<number> {
   return (await q).count ?? 0;
+}
+
+/** Distinct students with a view of `surface` on the book's page, paged past the 1,000-row cap. */
+async function distinctViewers(admin: SupabaseClient, surface: string, path: string): Promise<number> {
+  const users = new Set<string>();
+  for (let from = 0; ; from += PAGE) {
+    const { data } = await admin
+      .from("user_activity")
+      .select("id, user_id")
+      .eq("kind", "surface_viewed")
+      .eq("metadata->>surface", surface)
+      .eq("metadata->>path", path)
+      .order("id")
+      .range(from, from + PAGE - 1);
+    for (const r of data ?? []) users.add(r.user_id as string);
+    if (!data || data.length < PAGE) break;
+  }
+  return users.size;
 }
 
 export async function loadEbookStoreReadout(admin: SupabaseClient): Promise<EbookStoreRow[]> {
@@ -56,6 +78,10 @@ export async function loadEbookStoreReadout(admin: SupabaseClient): Promise<Eboo
       }
       if (!data || data.length < PAGE) break;
     }
+    const [openedBy, sampledBy] = await Promise.all([
+      distinctViewers(admin, "store", `/store/${slug}`),
+      distinctViewers(admin, "ebook_sample", `/store/${slug}`),
+    ]);
     const [printInterest, withPincode] = await Promise.all([
       count(admin.from("ebook_print_interest").select("user_id", { count: "exact", head: true }).eq("ebook_slug", slug)),
       count(
@@ -78,6 +104,8 @@ export async function loadEbookStoreReadout(admin: SupabaseClient): Promise<Eboo
       slug,
       title: book.title as string,
       active: book.active as boolean,
+      openedBy,
+      sampledBy,
       buyers,
       revenuePaise,
       refunds,

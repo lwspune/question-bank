@@ -249,6 +249,22 @@ describe.skipIf(!HAS_ENV)("ebook store tables", () => {
     expect(again).toEqual({ kind: "ok" });
   });
 
+  it("the growth readout counts the signed-in students who opened a book and took its sample", async () => {
+    const rows = [
+      { user_id: buyerId, kind: "surface_viewed", metadata: { surface: "store", path: `/store/${BOOK}` }, dedupe_key: `t:${STAMP}:1` },
+      { user_id: buyerId, kind: "surface_viewed", metadata: { surface: "store", path: `/store/${BOOK}` }, dedupe_key: `t:${STAMP}:2` },
+      { user_id: otherId, kind: "surface_viewed", metadata: { surface: "store", path: `/store/${BOOK}` }, dedupe_key: `t:${STAMP}:3` },
+      { user_id: otherId, kind: "surface_viewed", metadata: { surface: "ebook_sample", path: `/store/${BOOK}` }, dedupe_key: `t:${STAMP}:4` },
+      { user_id: otherId, kind: "surface_viewed", metadata: { surface: "store", path: "/store" }, dedupe_key: `t:${STAMP}:5` },
+    ];
+    const ins = await admin.from("user_activity").insert(rows);
+    if (ins.error) throw new Error(ins.error.message);
+    const mine = (await loadEbookStoreReadout(admin)).find((r) => r.slug === BOOK);
+    // Two students opened the book (one of them twice), one took the sample; a view of /store itself is no book.
+    expect(mine).toMatchObject({ openedBy: 2, sampledBy: 1 });
+    await admin.from("user_activity").delete().like("dedupe_key", `t:${STAMP}:%`);
+  });
+
   it("the growth readout counts sales, refunds, printed-copy taps and downloads per book", async () => {
     const rows = await loadEbookStoreReadout(admin);
     const mine = rows.find((r) => r.slug === BOOK);

@@ -149,6 +149,12 @@ export const FUNNEL_EVENTS = [
    * (ebook_purchases) is the store experiment's first ratio.
    */
   "ebook_sample_click",
+  /**
+   * The header's Ebooks button was tapped (2026-10-20); prop: from (the
+   * section the visitor was in). The store's way in, so this against /store
+   * visits says how much of its traffic the button brings.
+   */
+  "ebook_store_link_click",
 ] as const;
 
 export type FunnelEvent = (typeof FUNNEL_EVENTS)[number];

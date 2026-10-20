@@ -465,13 +465,17 @@ export default async function GrowthPage() {
         return (
           <div className="space-y-3">
             <p className="text-sm text-muted-foreground">
-              No decision rule yet: watch. Free-sample taps and /store visits are in Vercel Analytics.
+              No decision rule yet: watch. Each row reads left to right as a funnel of signed-in students: opened
+              the book&apos;s page, took the free sample, bought, asked for a printed copy. Signed-out visits, header
+              Ebooks taps and checkout drop-offs per book are in Vercel Analytics.
             </p>
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead className="text-left text-xs text-muted-foreground">
                   <tr>
                     <th scope="col" className="py-1 pr-3 font-medium">Book</th>
+                    <th scope="col" className="py-1 pr-3 text-right font-medium">Opened</th>
+                    <th scope="col" className="py-1 pr-3 text-right font-medium">Took sample</th>
                     <th scope="col" className="py-1 pr-3 text-right font-medium">Buyers</th>
                     <th scope="col" className="py-1 pr-3 text-right font-medium">Revenue</th>
                     <th scope="col" className="py-1 pr-3 text-right font-medium">Refunds</th>
@@ -486,6 +490,8 @@ export default async function GrowthPage() {
                         {b.title}
                         {!b.active && <span className="ml-1 text-xs text-muted-foreground">(not on sale)</span>}
                       </td>
+                      <td className="py-1.5 pr-3 text-right">{b.openedBy}</td>
+                      <td className="py-1.5 pr-3 text-right">{b.sampledBy}</td>
                       <td className="py-1.5 pr-3 text-right">{b.buyers}</td>
                       <td className="py-1.5 pr-3 text-right">{formatRupees(b.revenuePaise)}</td>
                       <td className="py-1.5 pr-3 text-right">{b.refunds}</td>

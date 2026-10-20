@@ -7,7 +7,7 @@
  * also the day's heartbeat and a refresh cannot inflate anything.
  */
 import { describe, it, expect } from "vitest";
-import { SURFACES, viewDedupeKey, surfaceViewedEvent, isSurface, readingViewFor } from "@/lib/activity/views";
+import { SURFACES, viewDedupeKey, surfaceViewedEvent, isSurface, readingViewFor, ebookSampleEvent } from "@/lib/activity/views";
 
 describe("surface_viewed", () => {
   it("names the surfaces the engagement spec needs to see", () => {
@@ -58,6 +58,11 @@ describe("readingViewFor", () => {
     expect(readingViewFor("/mock/nda-2025-i-maths/paper")?.surface).toBe("past_paper");
   });
 
+  it("counts the ebook store and each book's page, the book in the address (2026-10-20)", () => {
+    expect(readingViewFor("/store")).toEqual({ surface: "store", path: "/store" });
+    expect(readingViewFor("/store/mht-cet-maths-pyq")).toEqual({ surface: "store", path: "/store/mht-cet-maths-pyq" });
+  });
+
   it("counts a section's index page too", () => {
     expect(readingViewFor("/notes")?.surface).toBe("notes");
     expect(readingViewFor("/guide/nda")?.surface).toBe("guide");
@@ -78,5 +83,21 @@ describe("readingViewFor", () => {
     expect(readingViewFor(`/notes/${"a".repeat(300)}`)).toBeNull();
     expect(readingViewFor("notes/no-leading-slash")).toBeNull();
     expect(readingViewFor("")).toBeNull();
+  });
+});
+
+describe("ebookSampleEvent", () => {
+  // A signed-in student taking a book's free sample (2026-10-20): the step
+  // between opening a book and buying it. One row per book per student per day.
+  it("records the book's page address, once per book per student per IST day", () => {
+    const now = new Date("2026-10-20T05:00:00Z");
+    expect(ebookSampleEvent("u1", "mht-cet-maths-pyq", now)).toEqual({
+      kind: "surface_viewed",
+      metadata: { surface: "ebook_sample", path: "/store/mht-cet-maths-pyq" },
+      dedupeKey: "view:ebook_sample:/store/mht-cet-maths-pyq:u1:2026-10-20",
+    });
+    expect(ebookSampleEvent("u1", "mht-cet-physics-notes", now).dedupeKey).not.toBe(
+      ebookSampleEvent("u1", "mht-cet-maths-pyq", now).dedupeKey
+    );
   });
 });

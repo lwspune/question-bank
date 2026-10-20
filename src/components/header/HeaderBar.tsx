@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ShoppingBag } from "lucide-react";
+import { trackFunnel } from "@/lib/analytics/trackFunnel";
 import SignInLink from "@/components/reveal/SignInLink";
 import { Button } from "@/components/ui/button";
 import UserMenu from "@/components/UserMenu";
@@ -160,10 +161,12 @@ export default function HeaderBar({
 }
 
 function StoreLink() {
-  const active = (usePathname() ?? "").startsWith("/store");
+  const pathname = usePathname() ?? "";
+  const active = pathname.startsWith("/store");
   return (
     <Link
       href="/store"
+      onClick={() => trackFunnel("ebook_store_link_click", { from: pathname.split("/")[1] || "home" })}
       aria-current={active ? "page" : undefined}
       className={
         "inline-flex h-9 shrink-0 items-center gap-1.5 rounded-md border px-2.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 " +

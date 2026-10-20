@@ -40,6 +40,7 @@ describe("FUNNEL_EVENTS", () => {
       "performance_starter_click",
       "results_congratulate_click",
       "ebook_sample_click",
+      "ebook_store_link_click",
     ]);
   });
 
