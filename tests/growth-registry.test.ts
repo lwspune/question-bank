@@ -71,6 +71,7 @@ describe("EXPERIMENTS", () => {
       "chapter-tests",
       "email-cap",
       "formula-pages",
+      "imat",
       "indexing",
       "mock-together",
       "notes-titles",

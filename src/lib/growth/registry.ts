@@ -161,6 +161,17 @@ export const MOCK_TOGETHER_SENDS_KEEP = 10;
 export const MOCK_TOGETHER_STARTS_KEEP = 3;
 
 /**
+ * IMAT on PYQ Vault (2026-10-20): keep investing in IMAT (the ministry papers
+ * once cleared, then mocks) if at least this many students choose it...
+ */
+export const IMAT_STUDENTS_KEEP = 20;
+/**
+ * ...and build the international site (intl.pyqvault.com) once visitors from
+ * outside India make up at least this share of IMAT page views.
+ */
+export const IMAT_FOREIGN_SHARE_PCT = 25;
+
+/**
  * "v-finder" (study-partner Phase 0): V's page-finding is reliable enough to
  * build the explain-a-question step on top of it when, of the chapter asks in
  * the window, at most this share got a false "not found" (baseline 4 of 17).
@@ -216,6 +227,7 @@ export type Readout =
   | "practice-friends"
   | "mock-together"
   | "pyq-wording"
+  | "imat"
   | "v-finder"
   | "v-explain"
   | "v-strategy"
@@ -456,6 +468,20 @@ export const EXPERIMENTS: readonly Experiment[] = [
     status: "running",
   },
   {
+    id: "imat-on-pyqvault",
+    title: "IMAT on PYQ Vault, the same for every visitor",
+    change:
+      "IMAT is an ordinary exam on pyqvault.com: 681 original practice questions (five options, filed under 206 subtopics) and 46 chapters of notes. The ministry papers wait on the copyright opinion.",
+    why: "We have no foreign traffic because we have no foreign content, Indian students sit IMAT too, and the site that already ranks is the cheapest place to test demand. A country-dependent site was rejected: Google crawls from the US (owner, 2026-10-20).",
+    metric:
+      "Students with IMAT among their exams; IMAT page views and the share from outside India (Clarity)",
+    rule: `Keep investing in IMAT if ${IMAT_STUDENTS_KEEP}+ students choose it in six weeks; build intl.pyqvault.com once visitors from outside India are ${IMAT_FOREIGN_SHARE_PCT}%+ of IMAT page views; if neither moves, leave IMAT as it is and spend nothing more on it.`,
+    liveSince: "2026-10-20",
+    windowDays: 42,
+    readout: "imat",
+    status: "running",
+  },
+  {
     id: "pyq-wording",
     title: "\"Previous year questions\", the words students search",
     change:
@@ -591,6 +617,9 @@ export type ReadingMetric =
   | "mock-together-starts"
   | "mock-together-signups"
   | "pyq-wording-impressions"
+  | "imat-students"
+  | "imat-page-views"
+  | "imat-foreign-share"
   | "v-false-not-found"
   | "v-clarify-turns"
   | "v-practice-after"
@@ -795,6 +824,21 @@ export const READINGS: Record<ReadingMetric, { label: string; source: string; en
     source:
       "chat_interactions typed_question 'ai' with user_id (staff excluded) → any user_activity question_practiced, mock_started or drill_started by the same user in the next 30 minutes",
     entries: [{ on: "2026-10-19", value: 46, note: "Baseline: 18 of 39 replies; students were often mid-session, so read it as a trend" }],
+  },
+  "imat-students": {
+    label: "Students with IMAT among their exams",
+    source: "student_profiles where 'imat' = any(target_exams), staff excluded",
+    entries: [],
+  },
+  "imat-page-views": {
+    label: "IMAT page views",
+    source: "Clarity → URLs containing /notes/imat, /questions/imat, /exams/imat or /browse?exam=IMAT, the window since 2026-10-20",
+    entries: [],
+  },
+  "imat-foreign-share": {
+    label: "Share of IMAT page views from outside India (%)",
+    source: "Clarity → the same URLs → Country, everything but India as a share of the total",
+    entries: [],
   },
   "pyq-wording-impressions": {
     label: "Search impressions for \"previous year\" queries, after ÷ before",
