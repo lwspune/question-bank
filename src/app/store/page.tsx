@@ -17,9 +17,9 @@ import BookCover, { subjectOf } from "./_components/BookCover";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: "Books: formula, notes and PYQ books",
+  title: "Ebooks: formula, notes and PYQ ebooks to download",
   description:
-    "Formula books, notes books and chapter-wise previous year question books with full solutions, as PDFs. Pay once, keep it.",
+    "Formula, notes and chapter-wise previous year question (PYQ) ebooks with full solutions, as PDFs to download. Pay once, keep it.",
   alternates: { canonical: "/store" },
 };
 
@@ -40,14 +40,14 @@ export default async function StorePage() {
       <AppHeader />
       <main className="mx-auto max-w-5xl px-4 py-8 sm:px-6">
         <header className="hero-soft rounded-2xl px-5 py-8 text-center">
-          <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">Books</h1>
+          <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">Ebooks</h1>
           <p className="mx-auto mt-2 max-w-lg text-sm leading-relaxed text-muted-foreground">
-            Formula books, notes books and previous year question (PYQ) books you keep. Pay once and download the PDF.
+            Formula, notes and previous year question (PYQ) ebooks to download. Pay once and keep the PDF.
           </p>
         </header>
 
         {books.length === 0 ? (
-          <p className="mt-10 text-center text-sm text-muted-foreground">The first books are on their way. Check back soon.</p>
+          <p className="mt-10 text-center text-sm text-muted-foreground">The first ebooks are on their way. Check back soon.</p>
         ) : (
           subjects.map((subject) => (
             <section key={subject} className="mt-10" aria-labelledby={idOf(subject)}>

@@ -63,7 +63,7 @@ export default async function StoreBookPage({ params }: { params: { slug: string
     <>
       <AppHeader />
       <main className="mx-auto max-w-5xl px-4 py-8 sm:px-6">
-        <Breadcrumbs items={[{ href: "/store", label: "Books" }, { label: book.title }]} />
+        <Breadcrumbs items={[{ href: "/store", label: "Ebooks" }, { label: book.title }]} />
 
         {/* One buy box: after the title on a phone, in the side column on a laptop. */}
         <div className="mt-6 grid lg:grid-cols-[1fr_20rem] lg:gap-x-8">

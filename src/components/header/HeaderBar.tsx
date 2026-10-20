@@ -112,7 +112,7 @@ export default function HeaderBar({
           />
 
           <div className="ml-auto flex min-w-0 items-center gap-1.5 sm:gap-2">
-            {/* The book store (2026-10-20): its own button, apart from the study
+            {/* The ebook store (2026-10-20): its own button, apart from the study
                 tabs, at every width (owner: "a separate buy section on top"). */}
             <StoreLink />
             {/* Theme toggle is visible to everyone, anon included. */}
@@ -173,7 +173,7 @@ function StoreLink() {
       }
     >
       <ShoppingBag className="h-4 w-4 shrink-0" aria-hidden />
-      <span>Books</span>
+      <span>Ebooks</span>
     </Link>
   );
 }
