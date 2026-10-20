@@ -154,7 +154,7 @@ export default function UserMenu({
               className="flex w-full items-center gap-2 rounded-sm px-3 py-2 text-left text-sm transition-colors hover:bg-accent focus-visible:bg-accent focus-visible:outline-none sm:hidden"
             >
               <BookMarked className="h-4 w-4" aria-hidden />
-              Books
+              Book editor
             </Link>
           )}
           {/* Not role-gated — public surfaces, unlike the two above. */}

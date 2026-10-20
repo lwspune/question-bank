@@ -143,6 +143,12 @@ export const FUNNEL_EVENTS = [
    * are its scale. Decides whether a public count (option B) is worth building.
    */
   "results_congratulate_click",
+  /**
+   * "Read a free chapter" on a /store book page was tapped (2026-10-20); prop:
+   * slug. The sample is the store's free taste, so this against purchases
+   * (ebook_purchases) is the store experiment's first ratio.
+   */
+  "ebook_sample_click",
 ] as const;
 
 export type FunnelEvent = (typeof FUNNEL_EVENTS)[number];

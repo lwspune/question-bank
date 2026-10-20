@@ -780,6 +780,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.5,
     },
     {
+      // The book store (migration 0172). Each book's own page joins once it is
+      // on sale; the store page lists them.
+      url: `${SITE_URL}/store`,
+      lastModified: buildDate,
+      changeFrequency: "weekly",
+      priority: 0.6,
+    },
+    {
       // Students' published results (migration 0149).
       url: `${SITE_URL}/results`,
       lastModified: buildDate,

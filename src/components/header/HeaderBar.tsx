@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { ShoppingBag } from "lucide-react";
 import SignInLink from "@/components/reveal/SignInLink";
 import { Button } from "@/components/ui/button";
 import UserMenu from "@/components/UserMenu";
@@ -110,6 +112,9 @@ export default function HeaderBar({
           />
 
           <div className="ml-auto flex min-w-0 items-center gap-1.5 sm:gap-2">
+            {/* The book store (2026-10-20): its own button, apart from the study
+                tabs, at every width (owner: "a separate buy section on top"). */}
+            <StoreLink />
             {/* Theme toggle is visible to everyone, anon included. */}
             <ThemeToggle />
             {sessionLoading ? (
@@ -151,5 +156,24 @@ export default function HeaderBar({
           the exam cookie and the session — see MobileTabBar. */}
       <MobileTabBar nav={nav} fifth={fifth} />
     </>
+  );
+}
+
+function StoreLink() {
+  const active = (usePathname() ?? "").startsWith("/store");
+  return (
+    <Link
+      href="/store"
+      aria-current={active ? "page" : undefined}
+      className={
+        "inline-flex h-9 shrink-0 items-center gap-1.5 rounded-md border px-2.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 " +
+        (active
+          ? "border-brand bg-brand text-brand-foreground"
+          : "border-brand/40 text-brand-accent hover:bg-brand/10")
+      }
+    >
+      <ShoppingBag className="h-4 w-4 shrink-0" aria-hidden />
+      <span>Books</span>
+    </Link>
   );
 }
