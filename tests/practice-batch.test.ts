@@ -180,9 +180,9 @@ describe("parsePracticeBatch — which OPTION was tapped (bank verdicts, 2026-10
     expect(r.ok).toBe(false);
   });
 
-  it("REJECTS a label outside A–D rather than guessing what was meant", () => {
-    // The bank carries exactly four options on every MCQ (A–D, measured 2026-10-02).
-    for (const bad of ["E", "", "AB", 1, null, {}]) {
+  it("REJECTS a label outside A–E rather than guessing what was meant", () => {
+    // The bank stores A–E (E since migration 0140: IMAT prints five options).
+    for (const bad of ["F", "", "AB", 1, null, {}]) {
       const r = parsePracticeBatch({ questionIds: [uuid(1)], picks: { [uuid(1)]: bad } });
       expect(r.ok, JSON.stringify(bad)).toBe(false);
     }
@@ -221,13 +221,15 @@ describe("parsePracticeBatch — asking for a milestone check (2026-10-04)", () 
 });
 
 describe("toPickLabel — a label the server will accept, or nothing", () => {
-  // The server rejects a WHOLE batch on a label outside A-D, so a caller that
+  // The server rejects a WHOLE batch on a label outside A-E, so a caller that
   // sent one would lose every reveal in that flush. Checked before sending.
-  it("accepts A-D in either case", () => {
+  it("accepts A-E in either case", () => {
     expect(toPickLabel("a")).toBe("A");
     expect(toPickLabel("D")).toBe("D");
+    // IMAT prints five options; an E pick dropped here was a lost reveal.
+    expect(toPickLabel("e")).toBe("E");
   });
   it("returns null for anything else", () => {
-    for (const bad of ["E", "", "(a)", "AB"]) expect(toPickLabel(bad), bad).toBeNull();
+    for (const bad of ["F", "", "(a)", "AB"]) expect(toPickLabel(bad), bad).toBeNull();
   });
 });

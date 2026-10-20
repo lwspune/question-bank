@@ -182,7 +182,9 @@ describe("parseAskedQuestion", () => {
     expect(parseAskedQuestion({ id: "x" })).toBeNull();
     expect(parseAskedQuestion(null)).toBeNull();
     expect(parseAskedQuestion("q1")).toBeNull();
-    expect(parseAskedQuestion({ id: ID, chose: "E" })).toEqual({ id: ID, chose: null });
+    expect(parseAskedQuestion({ id: ID, chose: "F" })).toEqual({ id: ID, chose: null });
+    // IMAT prints five options, so E is a real pick.
+    expect(parseAskedQuestion({ id: ID, chose: "e" })).toEqual({ id: ID, chose: "E" });
   });
 });
 

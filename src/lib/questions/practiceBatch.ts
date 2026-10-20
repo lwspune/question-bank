@@ -81,14 +81,14 @@ export function addToBatch(batch: readonly string[], questionId: string): string
   return next.length > PRACTICE_BATCH_MAX ? next.slice(next.length - PRACTICE_BATCH_MAX) : next;
 }
 
-/** The four option labels every bank MCQ carries (A–D on every row, measured
- *  2026-10-02 — no question has an E). */
-export const PICK_LABELS = ["A", "B", "C", "D"] as const;
+/** Every option label the bank stores: A–D, plus E since migration 0140
+ *  (IMAT prints five options). */
+export const PICK_LABELS = ["A", "B", "C", "D", "E"] as const;
 
 export type PickLabel = (typeof PICK_LABELS)[number];
 
 /** A stored option label as a pick the server will accept, or null. Checked
- *  before sending because a label outside A-D rejects the WHOLE batch. */
+ *  before sending because a label outside A-E rejects the WHOLE batch. */
 export function toPickLabel(label: string): PickLabel | null {
   const upper = label.toUpperCase();
   return (PICK_LABELS as readonly string[]).includes(upper) ? (upper as PickLabel) : null;
@@ -169,7 +169,7 @@ export function parsePracticeBatch(raw: unknown): ParsedBatch {
       if (!out.includes(norm)) return { ok: false, error: "A pick must name a question in the batch." };
       const upper = typeof label === "string" ? label.toUpperCase() : null;
       if (upper === null || !(PICK_LABELS as readonly string[]).includes(upper)) {
-        return { ok: false, error: "A pick must be an option label A-D." };
+        return { ok: false, error: "A pick must be an option label A-E." };
       }
       picks[norm] = upper as PickLabel;
     }

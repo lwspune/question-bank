@@ -10,8 +10,8 @@ import { DRILL_SIZE } from "./select";
 
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
 
-/** The bank stores MCQ option labels as A-D uppercase. */
-const LABELS = new Set(["A", "B", "C", "D"]);
+/** The bank stores MCQ option labels as A-E uppercase (E: IMAT's fifth option). */
+const LABELS = new Set(["A", "B", "C", "D", "E"]);
 
 export type ParsedAnswer =
   | { ok: true; questionId: string; label: string }
@@ -35,7 +35,7 @@ export function parseDrillAnswer(raw: unknown): ParsedAnswer {
   // Checked against the real label set rather than merely non-empty: the grader
   // compares labels, so an unrecognised one would not match the key and would
   // quietly record a WRONG answer the student never gave.
-  if (!LABELS.has(label)) return { ok: false, error: "label must be one of A-D." };
+  if (!LABELS.has(label)) return { ok: false, error: "label must be one of A-E." };
 
   return { ok: true, questionId: id.trim().toLowerCase(), label };
 }
