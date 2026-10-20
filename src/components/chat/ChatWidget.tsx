@@ -712,7 +712,7 @@ export default function ChatWidget() {
             </div>
           ) : (
           <form
-            className="px-3 pb-[max(0.5rem,env(safe-area-inset-bottom))] pt-2 sm:pb-2"
+            className="px-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] pt-2 sm:pb-3"
             onSubmit={(e) => {
               e.preventDefault();
               void askTyped();
@@ -737,9 +737,6 @@ export default function ChatWidget() {
                 <SendHorizontal className="h-4 w-4" aria-hidden />
               </button>
             </div>
-            <p className="mt-1.5 px-1 text-[11px] leading-snug text-muted-foreground">
-              Chats are saved to help improve V. Please don&apos;t share your phone number or email.
-            </p>
           </form>
           )}
           </div>
