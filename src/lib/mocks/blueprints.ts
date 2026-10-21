@@ -668,6 +668,29 @@ export const SSC_CGL_T2_PAPER: MockPaperBlueprint = {
   ],
 };
 
+/**
+ * SPI (Services Preparatory Institute) entrance examination, as printed in 2022: 150
+ * questions in one booklet, 3 hours, +1 a right answer and 0.5 off a wrong one. Part 1
+ * Mathematical Ability (its puzzles are filed under Reasoning) and Part 2 General Ability.
+ */
+export const SPI_PAPER: MockPaperBlueprint = {
+  code: "paper",
+  examName: "SPI",
+  examSlug: "spi",
+  paperLabel: "Entrance Examination",
+  durationSecs: 180 * 60,
+  marking: { correct: 1, wrong: -0.5 },
+  sections: [
+    { key: "mathematical-ability", label: "Part 1: Mathematical Ability", subjects: ["Mathematics", "Reasoning"], count: 75 },
+    {
+      key: "general-ability",
+      label: "Part 2: General Ability Test",
+      subjects: ["English", "Physics", "Chemistry", "Biology", "Geography", "History", "Polity", "Economics", "General Knowledge"],
+      count: 75,
+    },
+  ],
+};
+
 /** Tier II Paper 1, Section III Module I: Computer Knowledge, 15 minutes, qualifying only. */
 export const SSC_CGL_T2_COMPUTER_PAPER: MockPaperBlueprint = {
   code: "tier-2-computer",
@@ -816,6 +839,7 @@ const ALL_BLUEPRINTS: readonly MockPaperBlueprint[] = [
   SSC_CGL_T2_PAPER,
   SSC_CGL_T2_COMPUTER_PAPER,
   SSC_CGL_T2_QUANT_PAPER,
+  SPI_PAPER,
   CBSE_10_CHAPTER_MCQ_PAPER,
   CBSE_12_CHAPTER_MCQ_PAPER,
   MH_HSC_12_CHAPTER_MCQ_PAPER,
