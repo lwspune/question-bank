@@ -142,10 +142,19 @@ describe("--as-student: a signed-in view without signing in", () => {
         orgName: null,
         isStaff: false,
         isSuperadmin: false,
+        hasPass: false,
         stage: null,
         targetExams: ["mpsc-group-b-c"],
       },
     });
+  });
+  it("--with-pass makes that student a Premium Pass holder", () => {
+    expect(parseShotArgs(["--pages=/", "--as-student=nda", "--with-pass"]).withPass).toBe(true);
+    expect(parseShotArgs(["--pages=/", "--as-student=nda"]).withPass).toBe(false);
+    expect(stubHeaderSession(["nda"], { hasPass: true }).session.hasPass).toBe(true);
+  });
+  it("refuses --with-pass without --as-student, which has no one to give the pass to", () => {
+    expect(() => parseShotArgs(["--pages=/", "--with-pass"])).toThrow(/with-pass/);
   });
 });
 

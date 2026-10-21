@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ShoppingBag } from "lucide-react";
+import { Gem, ShoppingBag } from "lucide-react";
 import { trackFunnel } from "@/lib/analytics/trackFunnel";
 import SignInLink from "@/components/reveal/SignInLink";
 import { Button } from "@/components/ui/button";
@@ -99,6 +99,15 @@ export default function HeaderBar({
             {/* The wordmark used to hide below sm so the icon row could fit; the nav
                 has moved to MobileTabBar, so there is room for it again. */}
             <span>PYQ Vault</span>
+            {/* The Premium Pass mark (2026-10-21). Drawn only once the session
+                lands, so the cached HTML stays the same for everyone. Part of
+                the brand link, not a link of its own; /account shows the pass. */}
+            {session?.hasPass && (
+              <span className="inline-flex shrink-0 items-center" title="Premium Pass">
+                <Gem className="h-4 w-4 text-brand-accent" aria-hidden />
+                <span className="sr-only">Premium Pass</span>
+              </span>
+            )}
           </Link>
 
           <PrimaryNav
