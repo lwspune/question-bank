@@ -10,10 +10,12 @@ Source folder: `C:\Vilas\LWS_Pune\Online Courses\SPI\QustionPaper`.
 
 | Folder | What | Kind | Key | Status |
 |---|---|---|---|---|
-| `03. QP_3` | **SPI Entrance Examination 2022**, a scanned candidate copy (16 pages, no text layer) | `pyq` | none published | **PRIVATE, 150 rows, 2026-10-21** |
-| `02. QP_2` | "Sample Paper SPI" watermark, Maths 75 + GAT 75 | `practice` | none | not started |
-| `01. QP_1` | "SPI GAT PAPER 2" + Maths, provenance unknown | `practice` | GAT key (image), Maths key (text) | not started |
-| `04-09` | LWS Pune "SPI and GSPI" Mock Tests 1-6, 150 each | `practice` | Mock 1 only (`SPI_Mock_Test_Answer_Key.xlsx`, with a Gemini column) | not started |
+| `03. QP_3` | **SPI Entrance Examination 2022**, a scanned candidate copy (16 pages, no text layer) | `pyq` | none published | PUBLIC, 150 rows |
+| `02. QP_2` | "Sample Paper SPI" watermark, Maths 75 + GAT 75 (papers `sample-maths`, `sample-gat`) | `practice` | none | PUBLIC, 75 + 75 |
+| `01. QP_1` | "SPI GAT PAPER 2" + Maths, provenance unknown (`qp1-maths`, `qp1-gat`) | `practice` | GAT key (image), Maths key (text) | PUBLIC, 74 + 75 (Maths Q27 repeats Q12) |
+| `04-09` | LWS Pune "SPI and GSPI" Mock Tests 1-6, 150 each (`mock-1` ... `mock-6`) | `practice` | Mock 1 only (`SPI_Mock_Test_Answer_Key.xlsx`, with a Gemini column) | PUBLIC; each mock repeats some questions of the earlier ones, kept once |
+
+All papers went PUBLIC on 2026-10-21. The 2022 paper is also a timed mock (`scripts/mocks/build.ts --paper=spi`, blueprint `SPI_PAPER`: +1 / -0.5, 3 hours, flawed questions as grace).
 
 Only the 2022 paper is a real sitting, so only it is `pyq` (owner, 2026-10-21). The text layer
 of the typed papers flattens powers and fractions (`52x - 1` is \(5^{2x-1}\)), so every paper is
@@ -31,6 +33,9 @@ read from page images, never from its text.
 - `figures/<paperId>/`: the booklet's own pictures, `qNNN.png` and `qNNN-A.png`..., plus
   `jobs.json`, the crop boxes in PDF points (committed; re-crop with `scripts/afcat/crop-figures.py`).
 - `TRANSCRIBE_BRIEF.md` (pass 1) and `VERIFY_BRIEF.md` (pass 2): one brief per agent lane.
+- CLIs: `render-pages.py` (`--columns` for the two-column mocks), `build.ts`, `merge.ts`,
+  `packet.ts`, `compare.ts` (`--key`), `crop-figures.py`, `seed.ts`, `commit.ts`, `sync.ts`,
+  `publish.ts`.
 
 ## The loop, per paper
 
@@ -41,7 +46,8 @@ read from page images, never from its text.
 3. **Pass 1, transcribe** (agents, at most 3 at once, one slice each, `TRANSCRIBE_BRIEF.md`):
    drafts to `out/<id>/drafts/<from>-<to>.txt`, each checked with
    `npx tsx scripts/spi/build.ts <id> --file=<draft> --from=<a> --to=<b>`.
-4. **Merge** the drafts into `transcripts/<id>.txt` and fix the seams: a direction block that
+4. **Merge** the drafts with `npx tsx scripts/spi/merge.ts <id> <draft> ...` (drops each draft's
+   preamble) into `transcripts/<id>.txt` and fix the seams: a direction block that
    spans two slices (2022: Q38's passage also governs Q39-40), and any stem an agent invented.
 5. **Pass 2, verify** (agents, `VERIFY_BRIEF.md`): `npx tsx scripts/spi/packet.ts <id> --from=a --to=b`
    writes a packet with no answers; the agent checks option fidelity against the page FIRST,
@@ -58,6 +64,8 @@ read from page images, never from its text.
    run, with every solution ending in the disclosure line. Run `scripts/spi/seed.ts --apply`
    once before the first commit.
 10. Probes: `npm run audit:text -- "<sourceFile>"`, `audit:omml`, `audit:figures`.
+11. **Publish** `npx tsx scripts/spi/publish.ts <id> [--apply]`: refuses unless every row has one
+    correct option and a derived paper's rows carry `derived_model`.
 
 ## What the 2022 pilot taught (folded into the briefs and checks)
 
@@ -69,6 +77,16 @@ read from page images, never from its text.
 - **A long literary passage can trip the output filter.** The agent for Q113-150 was stopped
   copying the Jim Corbett passage (Q126-135); the main session transcribed it in pieces and
   the agent did the rest.
+- **Source keys are often wrong.** QP_1 Maths 4 of 75, QP_1 GAT 4 of 75, Mock 1's "Final"
+  column 8 of 150 (its original or Gemini column usually had the right letter). Compare with
+  `compare.ts <id> --key`, settle every disagreement against the page, and say in the `note:`
+  when the source key is overruled.
+- **Figures differ by paper.** The 2022 scan: crop page regions (`jobs.json` boxes, PDF points).
+  The sample papers: vector drawings under a tiled watermark image, cropped with `noImages`.
+  QP_1 and the LWS mocks: each figure is an embedded image, saved as is with an `xref` job.
+  Map images to questions with PyMuPDF `get_images` + `get_image_rects` and LOOK at every crop.
+- **Review fixes after commit** go through `sync.ts` (solution/difficulty; `--content` for a
+  stem fix with options and key unchanged), never a re-commit.
 - **Result:** 150 blind answers against pass 1, 0 fidelity issues, 143 agreed before review.
   Of the 7 disagreements (Q4, Q5, Q26, Q59, Q104, Q126, Q145) the blind answer was adopted on 6
   and pass 1 kept on Q59; each is settled in its `note:`. 9 questions are flawed as printed and
