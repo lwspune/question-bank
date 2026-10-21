@@ -9,6 +9,11 @@
  * maximum. The database enforces the per-question bounds again (0153); this
  * names every problem at once so a whole file can be fixed in one pass.
  *
+ * Every scored question that lost marks names ONE cause (and, for a concept
+ * or steps left out, the topic to work on): the report adds the lost marks up
+ * by cause, so the choice must be the same in every session (GRADING.md, "Why
+ * marks were lost"; migration 0175).
+ *
  * "Attempt any N" is NOT checked per section: the paper prints it only as a
  * note, and a wrong parse would refuse an honest grade. The total-within-
  * maximum rule catches a grade that counted too many; GRADING.md says how to
@@ -19,9 +24,16 @@ import type { PaperItemRow } from "@/lib/questionPapers/listing";
 export const OUTCOMES = ["scored", "not_attempted", "not_counted"] as const;
 export type GradeOutcome = (typeof OUTCOMES)[number];
 
-/** Mirrors the database CHECKs in 0153. */
+/** Why a scored question lost marks (migration 0175). */
+export const CAUSES = ["concept", "incomplete", "careless", "misread", "mcq"] as const;
+export type GradeCause = (typeof CAUSES)[number];
+/** Causes whose report line needs a topic: the idea to relearn, the step to show. */
+export const TOPIC_CAUSES: readonly GradeCause[] = ["concept", "incomplete"];
+
+/** Mirrors the database CHECKs in 0153 and 0175. */
 export const MAX_FEEDBACK_CHARS = 1000;
 export const MAX_SUMMARY_CHARS = 1500;
+export const MAX_TOPIC_CHARS = 60;
 
 export type GradeEntry = {
   position: number;
@@ -31,6 +43,9 @@ export type GradeEntry = {
   awarded: number | null;
   earned: string;
   missing: string;
+  /** Absent in a file written before 0175; read as empty. */
+  cause?: string;
+  topic?: string;
 };
 
 export type GradeFile = {
@@ -38,6 +53,8 @@ export type GradeFile = {
   wentWell: string;
   nextSteps: string;
   grades: GradeEntry[];
+  /** Marks on the pages, checked by pageMarks.ts once the grades pass. */
+  marks?: unknown[];
 };
 
 /** One row of answer_grades, as the commit RPC takes it. */
@@ -50,6 +67,8 @@ export type GradeRow = {
   awarded: number | null;
   earned: string | null;
   missing: string | null;
+  cause: GradeCause | null;
+  topic: string | null;
 };
 
 export type GradeCheck =
@@ -128,6 +147,8 @@ export function validateGrade(input: { items: PaperItemRow[]; totalMarks: number
     }
     const earned = text(raw.earned);
     const missing = text(raw.missing);
+    const cause = text(raw.cause);
+    const topic = text(raw.topic);
     if (earned.length > MAX_FEEDBACK_CHARS || missing.length > MAX_FEEDBACK_CHARS) {
       errors.push(`${label(pos)}: feedback is over ${MAX_FEEDBACK_CHARS} characters.`);
     }
@@ -143,9 +164,23 @@ export function validateGrade(input: { items: PaperItemRow[]; totalMarks: number
       if (a > max) errors.push(`${label(pos)}: ${a} is more than its ${max} mark${max === 1 ? "" : "s"}.`);
       if (Math.round(a * 2) !== a * 2) errors.push(`${label(pos)}: marks go in halves (${a}).`);
       if (a < max && !missing) errors.push(`${label(pos)}: marks were lost, so say what was missing.`);
+      if (a === max && missing) {
+        errors.push(`${label(pos)}: full marks, so leave \`missing\` empty (a note beside full marks reads as lost marks; put advice in nextSteps).`);
+      }
       if (a > 0 && !earned) errors.push(`${label(pos)}: marks were given, so say what earned them.`);
+      if (a < max) {
+        if (!cause) errors.push(`${label(pos)}: marks were lost, so name the cause (${CAUSES.join(", ")}).`);
+        else if (!CAUSES.includes(cause as GradeCause)) errors.push(`${label(pos)}: cause must be one of ${CAUSES.join(", ")}.`);
+        else if (TOPIC_CAUSES.includes(cause as GradeCause) && !topic) {
+          errors.push(`${label(pos)}: a ${cause} cause needs a \`topic\`: what to ${cause === "concept" ? "relearn" : "show"}.`);
+        }
+        if (topic.length > MAX_TOPIC_CHARS) errors.push(`${label(pos)}: the topic is over ${MAX_TOPIC_CHARS} characters.`);
+      } else if (cause || topic) {
+        errors.push(`${label(pos)}: full marks, so no cause or topic.`);
+      }
       awarded = a;
     } else {
+      if (cause || topic) errors.push(`${label(pos)}: no cause or topic on a question that is ${outcome}.`);
       if (raw.awarded !== null && raw.awarded !== undefined) {
         errors.push(`${label(pos)}: \`awarded\` must be null when the question is ${outcome}.`);
       }
@@ -163,6 +198,8 @@ export function validateGrade(input: { items: PaperItemRow[]; totalMarks: number
       awarded,
       earned: earned || null,
       missing: missing || null,
+      cause: cause && awarded !== null && awarded < max ? (cause as GradeCause) : null,
+      topic: topic && awarded !== null && awarded < max ? topic : null,
     });
   }
 
