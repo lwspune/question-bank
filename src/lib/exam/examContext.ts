@@ -813,9 +813,11 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     tier: "school",
     displayName: "SPI",
     examName: "SPI", // must match the `exams` DB row exactly
-    // PUBLIC since 2026-10-21: the 2022 paper (pyq) and the sample papers and Practice
-    // Paper 1 (practice). The 2022 mock is built by scripts/mocks/build.ts --paper=spi;
-    // set hasMocks: true once it is published.
+    // PUBLIC since 2026-10-21: the 2022 paper (pyq), the sample papers, Practice Paper 1
+    // and LWS Mock Tests 1-6 (practice). The 2022 paper is a published timed mock
+    // (scripts/mocks/build.ts --paper=spi), every question with a worked solution.
+    hasMocks: true,
+    pastPaperSolutions: true,
     guidesPath: null,
     notesPath: null,
   },
