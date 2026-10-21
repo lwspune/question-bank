@@ -100,6 +100,22 @@ export function toRawRows(qs: TranscriptQuestion[], paper: Paper): RawRow[] {
 }
 
 /**
+ * Join pass-1 drafts (in number order) into one transcript under `header`. Anything a draft
+ * carries before its first "=== n" line is dropped: the parser reads a block's solution to
+ * the next "===", so a draft's own preamble would otherwise land at the end of the previous
+ * draft's last solution (it did, once, in SPI 2022 Q38).
+ */
+export function mergeDrafts(drafts: string[], header: string): string {
+  const bodies = drafts.map((d, i) => {
+    const text = d.replace(/\r\n/g, "\n");
+    const at = text.search(/^=== \d+\s*$/m);
+    if (at === -1) throw new Error(`draft ${i + 1} has no "=== n" block`);
+    return text.slice(at).trimEnd();
+  });
+  return `${header.trimEnd()}\n\n${bodies.join("\n\n")}\n`;
+}
+
+/**
  * Where a figure block's crops live (committed under figures/<paperId>/): one stem picture,
  * and one picture per option when the options are pictures. The shape is SSC CGL's
  * CommitRow `figures`, so its parseCommitRows hashes and stores them.

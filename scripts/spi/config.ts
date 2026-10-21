@@ -36,6 +36,8 @@ export type Paper = {
    * paper's solutions say so (DERIVED_DISCLOSURE) and commit.ts stamps derived_model.
    */
   answerSource: "key" | "derived";
+  /** The source's key (relative to SOURCE_ROOT), for a keyed paper. Agents never open it. */
+  keyFile?: string;
   /** Printed page numbers that hold questions (cover and rough-work pages left out). */
   pages: number[];
   parts: PartSpec[];
@@ -212,7 +214,62 @@ export const PAPERS: Paper[] = [
     pages: [2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14, 15, 16],
     parts: TWO_PARTS,
   },
+  // Practice papers (owner, 2026-10-21): only the 2022 paper is a real sitting. A paper printed
+  // as two files (Maths, GAT) is two papers of 75, each its own source_file.
+  ...practicePair("sample", "SPI Sample Paper", "02. QP_2\\Sample-Paper-Maths_watermark.pdf", "02. QP_2\\Sample-Paper-GAT_watermark.pdf", 7, 7),
+  ...practicePair("qp1", "SPI Practice Paper 1", "01. QP_1\\01. Math_QP.pdf", "01. QP_1\\01. GAT_QP.pdf", 20, 11, {
+    maths: "01. QP_1\\01. Math_QP_ak.pdf",
+    gat: "01. QP_1\\01. GAT_QP_ak.pdf",
+  }),
+  // LWS Pune's own SPI/GSPI mocks: 75 Maths then 75 General Ability. Only Mock 1 has a key
+  // (a spreadsheet whose "Final" column was reconciled against a Gemini pass).
+  ...[1, 2, 3, 4, 5, 6].map(
+    (n): Paper => ({
+      id: `mock-${n}`,
+      pdf: `0${n + 3}. QP_${n + 3}\\SPI MOCK TEST ${n}.pdf`,
+      sourceFile: `LWS SPI Mock Test ${n}`,
+      kind: "practice",
+      pyqYear: null,
+      pyqNote: null,
+      ...(n === 1 ? { answerSource: "key" as const, keyFile: "04. QP_4\\SPI_Mock_Test_Answer_Key.xlsx" } : { answerSource: "derived" as const }),
+      pages: [1, 2, 3, 4, 5, 6, 7, 8, ...(n === 2 || n === 5 ? [] : [9])],
+      parts: TWO_PARTS,
+    })
+  ),
 ];
+
+function practicePair(
+  id: string,
+  title: string,
+  mathsPdf: string,
+  gatPdf: string,
+  mathsPages: number,
+  gatPages: number,
+  keys?: { maths: string; gat: string }
+): Paper[] {
+  const range = (n: number) => Array.from({ length: n }, (_, i) => i + 1);
+  const common = { kind: "practice" as const, pyqYear: null, pyqNote: null };
+  return [
+    {
+      ...common,
+      id: `${id}-maths`,
+      pdf: mathsPdf,
+      sourceFile: `${title}, Mathematics`,
+      ...(keys ? { answerSource: "key" as const, keyFile: keys.maths } : { answerSource: "derived" as const }),
+      pages: range(mathsPages),
+      parts: [TWO_PARTS[0]],
+    },
+    {
+      ...common,
+      id: `${id}-gat`,
+      pdf: gatPdf,
+      sourceFile: `${title}, General Ability`,
+      ...(keys ? { answerSource: "key" as const, keyFile: keys.gat } : { answerSource: "derived" as const }),
+      pages: range(gatPages),
+      parts: [{ ...TWO_PARTS[1], from: 1, to: 75 }],
+    },
+  ];
+}
 
 /** The last line of every solution on a derived-key paper: students see how the answer was reached. */
 export const DERIVED_DISCLOSURE =

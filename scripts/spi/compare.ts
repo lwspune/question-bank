@@ -19,10 +19,15 @@ const file = args.find((a) => a.startsWith("--file="))?.slice("--file=".length);
 const paper = requirePaper(args.find((a) => !a.startsWith("--")));
 const qs = parseTranscript(readFileSync(file ?? join(TRANSCRIPTS, `${paper.id}.txt`), "utf8"));
 
-const dir = join(OUT, paper.id, "verify");
+// --key compares with the source's own key instead (out/<id>/key/key.txt, the same line
+// format, extracted by the main session from the paper's key file; no agent ever opens it).
+const useKey = args.includes("--key");
+if (useKey && paper.answerSource !== "key") throw new Error(`${paper.id} has no source key (answerSource: ${paper.answerSource})`);
+const dir = join(OUT, paper.id, useKey ? "key" : "verify");
 const verify: VerifyRow[] = readdirSync(dir)
-  .filter((f) => /^answers-\d+-\d+\.txt$/.test(f))
+  .filter((f) => (useKey ? f === "key.txt" : /^answers-\d+-\d+\.txt$/.test(f)))
   .flatMap((f) => parseVerify(readFileSync(join(dir, f), "utf8")));
+if (useKey) console.log("comparing with the SOURCE KEY (blind = the key's letter)");
 
 const r = compareVerify(qs, verify);
 console.log(`${paper.id}: ${qs.length} questions, ${verify.length} verify answers`);

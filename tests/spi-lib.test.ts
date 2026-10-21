@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { CATALOG, PAPERS, SUBJECTS, requirePaper, type Paper } from "../scripts/spi/config";
-import { checkPaper, compareVerify, figurePaths, parseVerify, toRawRows, verifyPacket } from "../scripts/spi/lib";
+import { checkPaper, compareVerify, figurePaths, mergeDrafts, parseVerify, toRawRows, verifyPacket } from "../scripts/spi/lib";
 import { parseTranscript } from "../scripts/ssc-cgl/lib";
 
 // A two-part paper of 4 questions: Q1-2 maths, Q3-4 general ability.
@@ -48,6 +48,17 @@ describe("SPI config", () => {
       }
       for (const part of p.parts) for (const s of part.subjects) expect(SUBJECTS).toContain(s);
     }
+  });
+
+  it("every practice paper carries no pyq year or note, and a keyed paper names its key", () => {
+    for (const p of PAPERS) {
+      if (p.kind === "practice") expect([p.pyqYear, p.pyqNote], p.id).toEqual([null, null]);
+      expect(Boolean(p.keyFile), p.id).toBe(p.answerSource === "key");
+    }
+    expect(new Set(PAPERS.map((p) => p.sourceFile)).size).toBe(PAPERS.length);
+    expect(PAPERS.map((p) => p.id)).toEqual(
+      expect.arrayContaining(["sample-maths", "sample-gat", "qp1-maths", "qp1-gat", "mock-1", "mock-2", "mock-3", "mock-4", "mock-5", "mock-6"])
+    );
   });
 
   it("the 2022 paper is the only pyq paper, 150 questions, with derived answers", () => {
@@ -163,6 +174,24 @@ describe("toRawRows", () => {
     const text = GOOD.replace("answer: B\nstem:\nQuestion 1?", "answer: B\nflawed: yes\nnote: two options are right\nnotice: Options B and C are both correct as printed.\nstem:\nQuestion 1?");
     const rows = toRawRows(parseTranscript(text), MINI);
     expect(rows[0].solution).toMatch(/^\*\*Note:\*\* Options B and C/);
+  });
+});
+
+describe("mergeDrafts", () => {
+  it("joins drafts under one header and drops each draft's own preamble, so it cannot land in a solution", () => {
+    const a = block(1, "chapter: Number System\nsubtopic: x");
+    const b = "SPI 2022, Q2. Pass-1 draft, no key.\nA second preamble line.\n\n" + block(2, "chapter: Number System\nsubtopic: x");
+    const merged = mergeDrafts([a, b], "HEADER");
+    expect(merged.startsWith("HEADER\n\n=== 1\n")).toBe(true);
+    expect(merged).not.toMatch(/Pass-1 draft|second preamble/);
+    expect(parseTranscript(merged).map((q) => [q.number, q.solution])).toEqual([
+      [1, "Because it is so."],
+      [2, "Because it is so."],
+    ]);
+  });
+
+  it("refuses a draft with no question block", () => {
+    expect(() => mergeDrafts(["just notes"], "H")).toThrow(/draft 1 has no "=== n" block/);
   });
 });
 

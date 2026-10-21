@@ -13,12 +13,24 @@ your transcript, and the main session settles every disagreement. Repo:
 halves; use the whole page to see where a question or passage starts and ends. Your prompt
 names your pages and your number range.
 
+**Two-column papers (the LWS mocks)** are cut per column instead: `pNN-L-top.png`,
+`pNN-L-bottom.png`, `pNN-R-top.png`, `pNN-R-bottom.png`. Questions run down the left column,
+then the right. **Typed papers** also have `text.txt` (the PDF's text layer): copy wording from
+it to save typing, but the page image is the source. The text layer flattens powers, fractions
+and roots (`52x - 1` is \(5^{2x-1}\)) and interleaves the two columns, so check every line
+against the image.
+
 **Read the paper's instructions page first** (`p01-bottom.png` for 2022). It fixes the values to
 calculate with for the whole paper (2022: 1 inch = 2.5 cm, 1 mile = 1.6 km, \(\pi\) = 3.14 or
 22/7, g = 9.8, every square root rounded to two decimals, every decimal ratio taken to two
 decimals). Solve with those values, not textbook ones, and where one decides the answer say so in
 the solution ("using the paper's value 1 inch = 2.5 cm"). A question that only works with the
-paper's value is NOT flawed.
+paper's value is NOT flawed. A paper with no instructions page (the sample papers, QP_1, the
+mocks) uses the same SPI conventions; say in the solution which value you used.
+
+**Numbering.** The 2022 booklet prints `001.`; the other papers print `Q1.`, `Q. 1:`, `1.` or
+`1)`. Write `=== <n>` with the printed number. A paper printed as two files (Maths, GAT) numbers
+each 1-75: the GAT file is its own paper, all General Ability, so every block needs `subject:`.
 
 The 2022 booklet prints numbers as `001.` to `150.`: write `=== 1` to `=== 150`. Options print
 inline as `(a) ... (b) ... (c) ... (d) ...`: write them as `A:` to `D:` in that order, one per line,
