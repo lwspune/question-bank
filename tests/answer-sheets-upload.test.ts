@@ -8,6 +8,9 @@ import {
   MAX_FILES,
   MAX_FILE_BYTES,
   MAX_TOTAL_BYTES,
+  isScanFile,
+  markedPagePath,
+  reportPdfPath,
   scanPath,
   validateStartRequest,
 } from "@/lib/answerSheets/upload";
@@ -72,5 +75,20 @@ describe("scanPath", () => {
   it("files every scan under the student's own folder, numbered in upload order", () => {
     expect(scanPath("u-1", "s-1", 0, "jpg")).toBe("u-1/s-1/01.jpg");
     expect(scanPath("u-1", "s-1", 11, "pdf")).toBe("u-1/s-1/12.pdf");
+  });
+});
+
+describe("marked pages (migration 0175)", () => {
+  it("keeps the marked pages and the report beside the scans, in their own folder", () => {
+    expect(markedPagePath("u-1", "s-1", 0)).toBe("u-1/s-1/marked/01.jpg");
+    expect(markedPagePath("u-1", "s-1", 9)).toBe("u-1/s-1/marked/10.jpg");
+    expect(reportPdfPath("u-1", "s-1")).toBe("u-1/s-1/marked/report.pdf");
+  });
+
+  it("tells a scan from the marked folder when the student's folder is listed", () => {
+    expect(isScanFile("01.jpg")).toBe(true);
+    expect(isScanFile("12.PDF")).toBe(true);
+    expect(isScanFile("marked")).toBe(false);
+    expect(isScanFile("report.pdf")).toBe(false);
   });
 });

@@ -7,9 +7,13 @@
  *   npm run grading:commit -- <id> --no-email       # save without the email
  *   npm run grading:commit -- <id> --reject="Pages 3 to 6 are too dark to read. Retake them in daylight."
  *
- * The check (lib/answerSheets/grade.ts) runs first and prints EVERY problem;
- * nothing is saved unless it passes. answer_grade_commit then saves the rows,
- * sums the total itself and refuses a total over the paper's maximum (0153).
+ * The check (lib/answerSheets/marking.ts: the grades, then the page marks)
+ * runs first and prints EVERY problem; nothing is saved unless it passes AND
+ * the marks were previewed as they stand (grading:preview's stamp). Then the
+ * pages AS DRAWN in the preview and the report PDF are uploaded to
+ * <user>/<submission>/marked/ (the student sees exactly what the grader looked
+ * at), and answer_grade_commit saves the grade and its marks together, sums
+ * the total itself and refuses a total over the paper's maximum (0153, 0175).
  *
  * A REGRADE (after a student questioned a grade) is the same command: pull the
  * sheet with --id, fix grade.json, write grading-inbox/<id>/answers.json as
@@ -21,8 +25,9 @@ config({ path: ".env.local", override: true });
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
-import { validateGrade } from "../../src/lib/answerSheets/grade";
 import { loadGradingPaper, readSheet, readSheetMeta } from "../../src/lib/answerSheets/grader";
+import { checkSheet } from "../../src/lib/answerSheets/marking";
+import { ANSWER_SHEETS_BUCKET, markedPagePath, reportPdfPath } from "../../src/lib/answerSheets/upload";
 import {
   ANSWER_REPORT_KIND,
   answerReportDedupeKey,
@@ -32,7 +37,7 @@ import {
 import { sendEmail } from "../../src/lib/email/resend";
 import type { BuiltEmail } from "../../src/lib/email/templates";
 
-const INBOX = join(process.cwd(), "grading-inbox");
+import { INBOX, fail, preparedPageCount, preparedTurns, previewStamp } from "./inbox";
 
 function arg(name: string): string | undefined {
   const hit = process.argv.find((a) => a.startsWith(`--${name}=`));
@@ -105,20 +110,49 @@ async function main() {
   const file = JSON.parse(readFileSync(join(dir, "grade.json"), "utf8")) as { submissionId?: string };
   if (file.submissionId !== id) throw new Error(`grade.json is for ${file.submissionId}, not ${id}.`);
   const { paper, items } = await loadGradingPaper(admin, sheet.paperId);
-  const check = validateGrade({ items, totalMarks: paper.totalMarks, file });
+  const check = checkSheet({ items, totalMarks: paper.totalMarks, file, pageCount: preparedPageCount(dir, id) });
   if (!check.ok) {
     console.error(`grade.json has ${check.errors.length} problem(s):`);
     for (const e of check.errors) console.error(`  - ${e}`);
     process.exit(1);
   }
-  console.log(`Check passed: ${check.totalAwarded} / ${paper.totalMarks} over ${check.rows.length} questions.`);
+  // The marks as they stand must be the ones last drawn and looked at.
+  if (previewStamp(dir) !== check.stamp) {
+    console.error(`The marks have not been previewed as they stand. Run npm run grading:preview -- ${id} and look at every page first.`);
+    process.exit(1);
+  }
+  const { grade } = check;
+  console.log(
+    `Check passed: ${grade.totalAwarded} / ${paper.totalMarks} over ${grade.rows.length} questions, ${check.marks.length} mark(s) on ${check.pageCount} page(s).`
+  );
   if (dry) return;
+
+  // The marked pages as previewed, then the report. Upserted, so a regrade or
+  // a retry after a failed save overwrites rather than duplicates.
+  const uploads = [
+    ...Array.from({ length: check.pageCount }, (_, i) => ({
+      from: join(dir, "preview", `${String(i + 1).padStart(2, "0")}.jpg`),
+      to: markedPagePath(sheet.userId, id, i),
+      type: "image/jpeg",
+    })),
+    { from: join(dir, "preview", "report.pdf"), to: reportPdfPath(sheet.userId, id), type: "application/pdf" },
+  ];
+  for (const u of uploads) {
+    if (!existsSync(u.from)) throw new Error(`${u.from} is missing. Run npm run grading:preview -- ${id} again.`);
+    const { error: upErr } = await admin.storage
+      .from(ANSWER_SHEETS_BUCKET)
+      .upload(u.to, readFileSync(u.from), { contentType: u.type, upsert: true });
+    if (upErr) throw new Error(`upload ${u.to}: ${upErr.message}`);
+  }
 
   const { data: total, error } = await admin.rpc("answer_grade_commit", {
     p_submission: id,
-    p_grades: check.rows,
-    p_went_well: check.wentWell,
-    p_next_steps: check.nextSteps,
+    p_grades: grade.rows,
+    p_went_well: grade.wentWell,
+    p_next_steps: grade.nextSteps,
+    p_marks: check.marks,
+    p_marked_pages: check.pageCount,
+    p_page_turns: preparedTurns(dir, id),
   });
   if (error) throw new Error(`save: ${error.message}`);
   console.log(`Saved: ${Number(total)} / ${paper.totalMarks}${meta.status === "graded" ? " (regrade)" : ""}.`);
@@ -151,7 +185,4 @@ async function main() {
   }
 }
 
-main().catch((e) => {
-  console.error(e instanceof Error ? e.message : e);
-  process.exit(1);
-});
+main().catch(fail);

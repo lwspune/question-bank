@@ -26,7 +26,8 @@ export function gradeTemplate(submissionId: string, items: PaperItemRow[]): Grad
     grades: [...items]
       .sort((a, b) => a.position - b.position)
       .filter((i) => (i.partOf ?? null) === null && i.marks !== null)
-      .map((i) => ({ position: i.position, max: i.marks!, outcome: "", awarded: null, earned: "", missing: "" })),
+      .map((i) => ({ position: i.position, max: i.marks!, outcome: "", awarded: null, earned: "", missing: "", cause: "", topic: "" })),
+    marks: [],
   };
 }
 
@@ -40,8 +41,10 @@ export function buildBrief(input: {
   items: PaperItemRow[];
   questions: BoardQuestion[];
   fileCount: number;
+  /** Prepared pages in pages/ (PDFs split into pages): what the grader reads and marks. */
+  pageCount: number;
 }): string {
-  const { submissionId, paper, items, questions, fileCount } = input;
+  const { submissionId, paper, items, questions, fileCount, pageCount } = input;
   const byId = new Map(questions.map((q) => [q.id, q]));
   const byPos = new Map(items.map((i) => [i.position, i]));
   const sections = new Map(paper.sections.map((s) => [s.key, s]));
@@ -50,9 +53,9 @@ export function buildBrief(input: {
     "",
     `Submission: ${submissionId}`,
     `Maximum marks: ${paper.totalMarks}${paper.durationMinutes ? ` · Time: ${paper.durationMinutes} minutes` : ""}`,
-    `Answer sheet: ${fileCount} files in this folder (read them in order).`,
+    `Answer sheet: ${fileCount} files, prepared as ${pageCount} pages in pages/ (read them in order; place marks off grid/).`,
     "",
-    "Grade by scripts/grading/GRADING.md. Fill grade.json; position numbers are the paper's, not the printed ones.",
+    "Grade by scripts/grading/GRADING.md. Fill grade.json (grades, then marks); position numbers are the paper's, not the printed ones.",
     "",
   ];
 
