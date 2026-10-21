@@ -1346,6 +1346,11 @@ import {
   CDSEN_RC_SLUGS,
 } from "@/app/notes/cds-english/reading-comprehension/_data";
 import { IMAT_NOTES_CHAPTERS } from "@/lib/sites/imat/notes/registry";
+import {
+  SPI_PROBABILITY_CHAPTER,
+  SPI_PROBABILITY_NOTES,
+  SPI_PROBABILITY_SLUGS,
+} from "@/app/notes/spi-maths/probability/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -4315,6 +4320,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
   // IMAT: 46 chapters authored in their own registry (lib/sites/imat/notes),
   // on PYQ Vault since 2026-10-20.
   ...IMAT_NOTES_CHAPTERS,
+  {
+    examName: "SPI",
+    subjectName: "Mathematics",
+    subjectRoute: "spi-maths",
+    subjectDisplay: "SPI Mathematics",
+    chapterSlug: "probability",
+    chipLabel: "Probability notes",
+    chapter: SPI_PROBABILITY_CHAPTER,
+    notes: SPI_PROBABILITY_NOTES,
+    slugs: SPI_PROBABILITY_SLUGS,
+  },
 ];
 
 /**

@@ -315,7 +315,8 @@ export const NOTES_DATA_KEYS: readonly string[] = [
   "imat-reading/english-language-grammar",
   "imat-reading/history",
   "imat-reading/literature-philosophy",
-  "imat-reading/politics-economics-society"
+  "imat-reading/politics-economics-society",
+  "spi-maths/probability"
 ];
 
 export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, SubtopicNote>>> = {
@@ -631,4 +632,5 @@ export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, Sub
   "imat-reading/history": () => import("@/lib/sites/imat/notes/reading/history").then((m) => m.IMAT_REA_HIS_NOTES),
   "imat-reading/literature-philosophy": () => import("@/lib/sites/imat/notes/reading/literature-philosophy").then((m) => m.IMAT_REA_LIT_NOTES),
   "imat-reading/politics-economics-society": () => import("@/lib/sites/imat/notes/reading/politics-economics-society").then((m) => m.IMAT_REA_PES_NOTES),
+  "spi-maths/probability": () => import("@/app/notes/spi-maths/probability/_data").then((m) => m.SPI_PROBABILITY_NOTES),
 };

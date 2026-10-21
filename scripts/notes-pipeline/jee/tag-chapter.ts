@@ -1,17 +1,18 @@
 /**
  * Spec-driven concept tagging for one /notes chapter (CET programme).
  *   npx tsx scripts/notes-pipeline/jee/tag-chapter.ts <spec.json> [--dry]
- * spec: { dump, prefix, expect, subtopics: {slug: DB subtopic name},
+ * spec: { dump, prefix, expect, exam?, subtopics: {slug: DB subtopic name},
  *         concepts: [[subtopicSlug, conceptSlug, "8hex 8hex ..."]] }
- * Guards: every id PUBLIC + pyq, count == expect, every id's DB subtopic matches its page,
+ * Guards: every id PUBLIC + pyq (practice too when `exam`'s notes count both kinds, lib/notes/countKind.ts), count == expect, every id's DB subtopic matches its page,
  * no id tagged twice. Upsert is idempotent.
  */
 import * as fs from "node:fs";
 import * as path from "node:path";
 import { createClient } from "@supabase/supabase-js";
+import { notesCountKind } from "../../../src/lib/notes/countKind";
 require("dotenv").config({ path: path.join(process.cwd(), ".env.local"), override: true });
 
-type Spec = { dump: string; prefix: string; expect: number; subtopics: Record<string, string>; concepts: [string, string, string][] };
+type Spec = { dump: string; prefix: string; expect: number; exam?: string; subtopics: Record<string, string>; concepts: [string, string, string][] };
 const spec: Spec = JSON.parse(fs.readFileSync(process.argv[2], "utf8"));
 const dump = JSON.parse(fs.readFileSync(path.join("generated-papers", spec.dump), "utf8"));
 const ids: Record<string, string> = Object.fromEntries(dump.questions.map((q: { id: string }) => [q.id.slice(0, 8), q.id]));
@@ -37,7 +38,8 @@ async function main() {
   }
   console.log("rows:", rows.length, "PUBLIC:", pub!.length, `(expect ${spec.expect})`);
   if (pub!.length !== rows.length || rows.length !== spec.expect) throw new Error("count mismatch");
-  if (pub!.some((q: any) => q.question_kind !== "pyq")) throw new Error("a non-PYQ row is in the map");
+  const kinds = spec.exam && notesCountKind(spec.exam) === "all" ? ["pyq", "practice"] : ["pyq"];
+  if (pub!.some((q: any) => !kinds.includes(q.question_kind))) throw new Error(`a row outside ${kinds.join("/")} is in the map`);
   const subOf = new Map(pub!.map((q: any) => [q.id, q.subtopics?.name]));
   for (const r of rows) if (subOf.get(r.question_id) !== spec.subtopics[r.subtopic_slug]) throw new Error(`subtopic mismatch ${r.question_id} ${subOf.get(r.question_id)} vs ${r.subtopic_slug}`);
   if (process.argv.includes("--dry")) return console.log("dry run OK");

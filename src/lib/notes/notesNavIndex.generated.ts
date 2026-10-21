@@ -2187,5 +2187,12 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "IMAT Reading Skills and General Knowledge",
     "chapterSlug": "politics-economics-society",
     "subtopicCount": 5
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-maths",
+    "subjectDisplay": "SPI Mathematics",
+    "chapterSlug": "probability",
+    "subtopicCount": 5
   }
 ];

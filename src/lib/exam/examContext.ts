@@ -819,7 +819,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     hasMocks: true,
     pastPaperSolutions: true,
     guidesPath: null,
-    notesPath: null,
+    notesPath: "/notes/spi", // exam hub: live since 2026-10-21 (Mathematics, Probability)
   },
 ] as const;
 
