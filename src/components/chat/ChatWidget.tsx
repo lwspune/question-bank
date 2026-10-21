@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { CalendarDays, ListChecks, RotateCcw, SendHorizontal, ThumbsDown, ThumbsUp, X } from "lucide-react";
+import { CalendarDays, ListChecks, Reply, RotateCcw, SendHorizontal, ThumbsDown, ThumbsUp, X } from "lucide-react";
 import { toast } from "sonner";
 import { trackFunnelOnce } from "@/lib/analytics/trackFunnel";
 import { useVFeatures } from "@/lib/chat/useVExplain";
@@ -12,7 +12,7 @@ import { vPlacement } from "@/lib/chat/placement";
 import { launcherHiddenAfterScroll } from "@/lib/chat/launcherScroll";
 import { splitReplyLinks } from "@/lib/chat/replyLinks";
 import { panelBox, type PanelBox } from "@/lib/chat/panelBox";
-import type { HistoryTurn } from "@/lib/chat/conversation";
+import { SESSION_IDLE_MS, quoteSnippet, type HistoryTurn } from "@/lib/chat/conversation";
 import {
   LOCAL_CHAT_KEY,
   newConversationId,
@@ -60,7 +60,7 @@ import VSays from "./VSays";
 import MathText from "./MathText";
 import VQuestionCard from "./VQuestionCard";
 import VPlanCard from "./VPlanCard";
-import { ASK_V_EVENT, isAskVDetail, questionForRequest, type AskVDetail } from "@/lib/chat/askVEvent";
+import { ASK_V_EVENT, askVMessage, isAskVDetail, questionForRequest, type AskVDetail } from "@/lib/chat/askVEvent";
 import { MESSAGE_IN, USER_BUBBLE, V_BUBBLE } from "./chatStyles";
 import PracticeBuilder, { PENDING_BUILD_KEY, logBuilderStep } from "./PracticeBuilder";
 import type { BuilderAnswers } from "@/lib/practiceTests/builder";
@@ -143,9 +143,13 @@ const GREETING: ChatTurn = {
  * (same audience as ThemeToggle).
  *
  * CONVERSATIONS (2026-10-15, migration 0159): the window keeps one conversation
- * id and its messages on the device (lib/chat/localChat: 30 messages, gone
- * after 7 quiet days) and sends the id and the page with every request, so the
- * server stores whole conversations and V remembers the last exchanges. On the
+ * id and its messages on the device (lib/chat/localChat: 30 messages) and sends
+ * the id and the page with every request, so the server stores whole
+ * conversations and V remembers the last exchanges. SESSIONS (owner,
+ * 2026-10-21): an hour with no messages ends one, and the next open or message
+ * starts a new conversation with the old messages, the tapped question and any
+ * reply cleared; the old one stays stored. REPLY (migration 0174): a V reply
+ * can be replied to, WhatsApp style, and V is told which one. On the
  * first open, a signed-in student's newer conversation from another device
  * replaces the device's copy. A reply that lands while the window is closed
  * raises a badge on the launcher and V says so in its bubble. AI replies take
@@ -194,6 +198,9 @@ export default function ChatWidget() {
   const features = useVFeatures();
   // "Ask V about this question" (2026-10-19): the question this conversation is about, sent with each message.
   const [asked, setAsked] = useState<AskVDetail | null>(null);
+  // "Reply" on one of V's replies (0174): the message the next typed message answers.
+  const [replyingTo, setReplyingTo] = useState<{ id: string; text: string } | null>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
   // A question card's Ask V reaches the window through a window event; the handler sees this render's state.
   const onAskRef = useRef<(d: AskVDetail) => void>(() => {});
   useEffect(() => {
@@ -362,7 +369,29 @@ export default function ChatWidget() {
 
   const building = mode === "builder";
 
+  /**
+   * An hour with no messages ends a session (owner, 2026-10-21): start a new
+   * conversation, clearing the old messages, the tapped question and any reply.
+   * Returns the conversation id to send with, and whether it is new.
+   */
+  function currentSessionId(): { id: string | null; fresh: boolean } {
+    if (turnsRef.current.length === 0 || Date.now() - lastAtRef.current <= SESSION_IDLE_MS) {
+      return { id: conversationIdRef.current, fresh: false };
+    }
+    const id = newConversationId();
+    conversationIdRef.current = id;
+    turnsRef.current = [];
+    lastAtRef.current = Date.now();
+    setConversationId(id);
+    setTurns([]);
+    setUnread(0);
+    setAsked(null);
+    setReplyingTo(null);
+    return { id, fresh: true };
+  }
+
   function openChat() {
+    const { id: sessionId } = currentSessionId();
     // Once per mount, so reopening the panel doesn't inflate /dashboard/chat's open count.
     if (!openRecordedRef.current) {
       openRecordedRef.current = true;
@@ -370,7 +399,7 @@ export default function ChatWidget() {
       void fetch("/api/chat/open", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ conversationId, pagePath: pathname }),
+        body: JSON.stringify({ conversationId: sessionId, pagePath: pathname }),
       }).catch(() => {});
     }
     void loadAccountConversation();
@@ -398,7 +427,8 @@ export default function ChatWidget() {
       const lateAnswer = account.unread > 0;
       // An unread late answer is shown even over a newer chat here, or it would never be read.
       if (!lateAnswer && preferNewer(device, account) !== account) return;
-      lastAtRef.current = Math.max(account.lastAt, lastAtRef.current);
+      // Opening a late answer counts as a message, so the session does not end under the student.
+      lastAtRef.current = lateAnswer ? Date.now() : Math.max(account.lastAt, lastAtRef.current);
       setConversationId(account.conversationId);
       setTurns(account.turns);
       if (!lateAnswer) return;
@@ -437,6 +467,7 @@ export default function ChatWidget() {
     setTurns([]);
     setUnread(0);
     setAsked(null);
+    setReplyingTo(null);
     toast.success("Chat cleared");
   }
 
@@ -483,16 +514,26 @@ export default function ChatWidget() {
     setMode("chat");
     openChat();
     setAsked(d);
-    void askTyped(d.chose ? `I picked (${d.chose}). Explain this question.` : "Explain this question.", d);
+    setReplyingTo(null);
+    void askTyped(askVMessage(d.chose), d);
   };
+
+  function startReply(id: string, text: string) {
+    setReplyingTo({ id, text });
+    inputRef.current?.focus();
+  }
 
   /** Send the draft, or `override` (an Ask V or a button). `about` is the question it is about. */
   async function askTyped(override?: string, about?: AskVDetail | null) {
     const text = (override ?? draft).trim();
     if (sending || !text) return;
-    addTurn({ role: "user", text });
+    const { id: sessionId, fresh } = currentSessionId();
+    // A new session drops the old tapped question and reply; a button send never carries a reply.
+    const question = about ?? (fresh ? null : asked);
+    const replyTo = override === undefined && !fresh ? replyingTo : null;
+    addTurn(replyTo ? { role: "user", text, quote: quoteSnippet(replyTo.text) } : { role: "user", text });
     if (override === undefined) setDraft("");
-    const question = about ?? asked;
+    setReplyingTo(null);
     setSending(true);
     try {
       const res = await fetch("/api/chat/typed", {
@@ -500,9 +541,10 @@ export default function ChatWidget() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           message: text,
-          conversationId,
+          conversationId: sessionId,
           pagePath: pathname,
           ...(question ? { question: questionForRequest(question) } : {}),
+          ...(replyTo ? { replyTo: replyTo.id } : {}),
         }),
       });
       const data = (await res.json().catch(() => ({}))) as {
@@ -620,6 +662,11 @@ export default function ChatWidget() {
               if (t.role === "user") {
                 return (
                   <div key={n} className={`${USER_BUBBLE} ${MESSAGE_IN}`}>
+                    {typeof t.quote === "string" && t.quote && (
+                      <span className="mb-1 line-clamp-2 block border-l-2 border-white/70 pl-2 text-xs text-white/90">
+                        <MathText text={t.quote} />
+                      </span>
+                    )}
                     {t.text}
                   </div>
                 );
@@ -657,6 +704,17 @@ export default function ChatWidget() {
                       >
                         <ThumbsDown className="h-3.5 w-3.5" aria-hidden fill={t.feedback === -1 ? "currentColor" : "none"} />
                       </button>
+                      {!signInNeeded && (
+                        <button
+                          type="button"
+                          onClick={() => startReply(t.id!, t.text)}
+                          aria-label="Reply to this message"
+                          title="Reply"
+                          className="inline-flex h-7 w-7 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-accent hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                        >
+                          <Reply className="h-3.5 w-3.5" aria-hidden />
+                        </button>
+                      )}
                     </div>
                   )}
                   {t.card && <VQuestionCard id={t.card.id} kind={t.card.kind} />}
@@ -718,14 +776,40 @@ export default function ChatWidget() {
               void askTyped();
             }}
           >
+            {replyingTo && (
+              <div className="mb-2 flex items-start gap-2 rounded-xl border-l-2 border-brand-accent bg-brand-accent/[0.06] py-1.5 pl-3 pr-1">
+                <div className="min-w-0 flex-1">
+                  <p className="text-[11px] font-semibold text-brand-accent">Replying to V</p>
+                  <p className="line-clamp-1 text-xs text-foreground">
+                    <MathText text={quoteSnippet(replyingTo.text)} />
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setReplyingTo(null)}
+                  aria-label="Cancel reply"
+                  className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-accent hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                >
+                  <X className="h-3.5 w-3.5" aria-hidden />
+                </button>
+              </div>
+            )}
             <div className="flex items-center gap-2 rounded-full border border-input bg-background py-1 pl-4 pr-1 transition-shadow focus-within:border-brand-accent/60 focus-within:ring-2 focus-within:ring-ring">
               <input
+                ref={inputRef}
                 type="text"
                 value={draft}
                 onChange={(e) => setDraft(e.target.value)}
+                onKeyDown={(e) => {
+                  // Escape cancels a reply first; the next one closes the window.
+                  if (e.key === "Escape" && replyingTo) {
+                    e.stopPropagation();
+                    setReplyingTo(null);
+                  }
+                }}
                 maxLength={CHAT_MESSAGE_MAX}
-                placeholder="Type your question"
-                aria-label="Type your question for V"
+                placeholder={replyingTo ? "Type your reply" : "Type your question"}
+                aria-label={replyingTo ? "Type your reply to V" : "Type your question for V"}
                 className="h-9 min-w-0 flex-1 bg-transparent text-sm placeholder:text-muted-foreground focus-visible:outline-none"
               />
               <button

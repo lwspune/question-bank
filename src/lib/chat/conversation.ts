@@ -1,7 +1,10 @@
 /**
  * V's conversations (migration 0159). One conversation = the chat_interactions
  * rows sharing a conversation_id. This turns them into:
- *   modelHistory  V's memory: the last exchanges, sent with a new question
+ *   currentSession  the exchanges since the last hour with no messages (2026-10-21)
+ *   modelHistory  V's memory: the last exchanges, sent with a new question, each
+ *                 marked with the question it was about (migration 0174)
+ *   findReplyTarget / replyContext / quoteSnippet  a reply to an earlier message (0174)
  *   historyTurns  the chat window, rebuilt for a signed-in student's device
  *   groupConversations / conversationJsonl  the dashboard and the export
  *   unreadFollowups  late answers (0160) the student has not opened yet
@@ -32,6 +35,10 @@ export type ConversationRow = {
   seenAt?: string | null;
   /** What V searched for this reply (0167); null when it made no call. */
   toolCalls?: ToolCallLog[] | null;
+  /** The question the student had tapped Ask V on when they sent it (0174). */
+  askedQuestionId?: string | null;
+  /** The earlier message this one replies to (0174). */
+  replyToId?: string | null;
 };
 
 const PAGE_PATH_RE = /^\/[A-Za-z0-9/_.~-]*$/;
@@ -40,6 +47,11 @@ const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-
 
 /** Exchanges V remembers (two = the last four messages). */
 export const MEMORY_EXCHANGES = 2;
+/**
+ * An hour with no messages ends a session (owner, 2026-10-21): the window shows
+ * only the current one and V remembers only it. The rows stay stored.
+ */
+export const SESSION_IDLE_MS = 60 * 60 * 1000;
 /** Messages the chat window shows. */
 export const HISTORY_MESSAGES = 30;
 
@@ -66,13 +78,34 @@ function questionOf(r: ConversationRow): string | null {
 }
 
 /** Rows that are an exchange (a question and V's reply), oldest first. */
-function exchanges(rows: readonly ConversationRow[]): ConversationRow[] {
+function exchanges<T extends ConversationRow>(rows: readonly T[]): T[] {
   return rows
     .filter((r) => questionOf(r) && r.reply)
     .sort((a, b) => a.createdAt.localeCompare(b.createdAt));
 }
 
+/**
+ * The exchanges of the current session, oldest first: those after the last gap
+ * of more than SESSION_IDLE_MS. With `now`, none when the newest is older than
+ * that. A late answer (0160) is read without `now`: the student may open it days later.
+ */
+export function currentSession<T extends ConversationRow>(rows: readonly T[], now?: number): T[] {
+  const ex = exchanges(rows);
+  if (ex.length === 0) return [];
+  const at = ex.map((r) => Date.parse(r.createdAt));
+  if (now !== undefined && now - at[at.length - 1] > SESSION_IDLE_MS) return [];
+  let start = at.length - 1;
+  while (start > 0 && at[start] - at[start - 1] <= SESSION_IDLE_MS) start--;
+  return ex.slice(start);
+}
+
 export type ModelTurn = { role: "user" | "assistant"; content: string };
+
+/** A message about a question starts with its id, so V can tell two questions' exchanges apart. */
+function labelled(r: ConversationRow): string {
+  const q = questionOf(r)!;
+  return r.askedQuestionId ? `[About question ${r.askedQuestionId}]\n${q}` : q;
+}
 
 export function modelHistory(rows: readonly ConversationRow[], keep = MEMORY_EXCHANGES): ModelTurn[] {
   // Abuse and V's calm line (lib/chat/abuse.ts) are never part of what V remembers.
@@ -80,13 +113,44 @@ export function modelHistory(rows: readonly ConversationRow[], keep = MEMORY_EXC
     .filter((r) => r.reply !== ABUSE_REPLY)
     .slice(-keep)
     .flatMap((r) => [
-      { role: "user" as const, content: questionOf(r)! },
+      { role: "user" as const, content: labelled(r) },
       { role: "assistant" as const, content: r.reply! },
     ]);
 }
 
+/** The exchange a message replies to, if it is among `rows` (the caller passes this person's session). */
+export function findReplyTarget<T extends ConversationRow>(rows: readonly T[], id: string | null | undefined): T | null {
+  if (!id) return null;
+  return exchanges(rows).find((r) => r.id === id) ?? null;
+}
+
+const REPLY_QUESTION_MAX = 300;
+const REPLY_ANSWER_MAX = 1200;
+
+/** What V is told before a message that replies to an earlier one. The stored message stays as typed. */
+export function replyContext(target: ConversationRow): string {
+  const about = target.askedQuestionId ? ` about question ${target.askedQuestionId}` : "";
+  return [
+    `[The student is replying to an earlier exchange${about}.`,
+    `They had asked: ${questionOf(target)!.slice(0, REPLY_QUESTION_MAX)}`,
+    `You replied: ${target.reply!.slice(0, REPLY_ANSWER_MAX)}]`,
+  ].join("\n");
+}
+
+const QUOTE_MAX = 140;
+
+/** The start of a message, for the quote above a reply: its first line, never cut inside maths. */
+export function quoteSnippet(text: string): string {
+  const line = text.split("\n").map((l) => l.trim()).find((l) => l.length > 0) ?? "";
+  if (line.length <= QUOTE_MAX) return line;
+  let cut = line.slice(0, QUOTE_MAX);
+  const open = cut.lastIndexOf("\\(");
+  if (open !== -1 && cut.indexOf("\\)", open) === -1) cut = cut.slice(0, open);
+  return `${cut.trimEnd()}…`;
+}
+
 export type HistoryTurn =
-  | { role: "user"; text: string }
+  | { role: "user"; text: string; /** The start of the message it replies to (0174). */ quote?: string }
   | {
       role: "assistant";
       text: string;
@@ -99,7 +163,10 @@ export type HistoryTurn =
 export function historyTurns(rows: readonly ConversationRow[]): HistoryTurn[] {
   const turns: HistoryTurn[] = [];
   for (const r of exchanges(rows)) {
-    turns.push({ role: "user", text: questionOf(r)! });
+    const target = findReplyTarget(rows, r.replyToId);
+    turns.push(
+      target ? { role: "user", text: questionOf(r)!, quote: quoteSnippet(target.reply!) } : { role: "user", text: questionOf(r)! }
+    );
     if (r.replySource === "ai") {
       turns.push({
         role: "assistant",

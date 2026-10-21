@@ -481,9 +481,24 @@ describe("buildSystemPrompt", () => {
     expect(p).toMatch(/tap Report on the question/);
     expect(p).toMatch(/similar_question/);
     expect(p).toMatch(/find_question/);
+    // 2026-10-21 (owner): "A similar question is below to try" was said after every explanation.
+    expect(p).not.toMatch(/similar one is below to try/);
+    expect(p).toMatch(/shown under your reply by itself: never mention it/);
     expect(p).toMatch(/up to 8 short lines/);
     // The chat window draws \( ... \) as maths; a template string eats a single backslash.
     expect(p).toContain("Write maths inside \\( \\).");
+  });
+
+  // 2026-10-21 (owner): V said "I need to correct my earlier replies" about answers on ANOTHER question.
+  it("tells V a remembered message may be about another question, and never to apologise for it", () => {
+    const p = buildSystemPrompt(base);
+    expect(p).toMatch(/\[About question <id>\]/);
+    expect(p).toMatch(/answer about the one named at the end unless they point back/i);
+    expect(p).toMatch(/Never correct, take back or apologise for an earlier reply about another question/);
+  });
+
+  it("tells V a reply to an earlier message is about that message", () => {
+    expect(buildSystemPrompt(base)).toMatch(/replying to an earlier exchange[^\n]*is about that exchange/i);
   });
 
   it("lets V take the exam from the student's profile, which is not a guess", () => {

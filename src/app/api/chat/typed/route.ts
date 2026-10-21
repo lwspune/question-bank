@@ -12,7 +12,10 @@
  * Conversations (0159): the body may carry the conversation id the chat window
  * keeps and the page it is on. V remembers the last exchanges of that
  * conversation, read from the TABLE (so a device cannot plant a reply V never
- * gave), and only when the conversation is this person's.
+ * gave), and only when the conversation is this person's. Since 2026-10-21
+ * (migration 0174) only the current session (an hour with no messages ends
+ * one), each message marked with the question it was about, and `replyTo`
+ * names an earlier message of that session the student is replying to.
  *
  * `links` lists the paths in the reply the widget may make tappable: only
  * pages V was given (lib/chat/replyLinks.ts). `id` is the stored row, for the
@@ -46,7 +49,15 @@ import { readChatSettings, countAiAnswersToday } from "@/lib/chat/settingsAdmin"
 import { loadVContext } from "@/lib/chat/context";
 import { askV } from "@/lib/chat/anthropic";
 import { allowedReplyLinks, plainLinks } from "@/lib/chat/replyLinks";
-import { cleanPagePath, isConversationId, modelHistory } from "@/lib/chat/conversation";
+import {
+  cleanPagePath,
+  currentSession,
+  findReplyTarget,
+  isConversationId,
+  modelHistory,
+  replyContext,
+} from "@/lib/chat/conversation";
+import { isAskVMessage } from "@/lib/chat/askVEvent";
 import { createProgressMemo } from "@/lib/chat/progress";
 import { getOwnPerformance } from "@/lib/performance/service";
 import { buildPerformance } from "@/lib/performance/compute";
@@ -98,7 +109,7 @@ function ownProgress(userId: string): Promise<Performance | null> {
  */
 function buildQuestionToolDeps(
   userId: string | null,
-  out: { onSimilar: (id: string) => void; onMatch: (id: string) => void }
+  out: { onSimilar: (id: string) => void; onMatch: (id: string) => void; similarAfterExplain: boolean }
 ): QuestionToolDeps {
   const anon = createSupabaseAnonClient();
   return {
@@ -110,6 +121,7 @@ function buildQuestionToolDeps(
     onSimilar: out.onSimilar,
     onMatch: out.onMatch,
     onExplained: () => {},
+    similarAfterExplain: out.similarAfterExplain,
   };
 }
 
@@ -179,7 +191,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    let raw: { message?: unknown; conversationId?: unknown; pagePath?: unknown; question?: unknown };
+    let raw: { message?: unknown; conversationId?: unknown; pagePath?: unknown; question?: unknown; replyTo?: unknown };
     try {
       raw = (await request.json()) as typeof raw;
     } catch {
@@ -199,11 +211,18 @@ export async function POST(request: NextRequest) {
     // Ask V on a practice question written into the notes (2026-10-20): read from the notes, by page and position.
     const askedNotes = settings.explainEnabled ? parseNotesItemRef((raw.question as { notes?: unknown } | null)?.notes) : null;
 
+    // Read from the TABLE, never the device, and only when the conversation is this person's.
+    const earlier = conversationId ? await readConversation(admin, conversationId) : [];
+    const ownConversation = conversationBelongsTo(earlier, userId);
+    // V remembers only the current session (owner, 2026-10-21): an hour with no messages ends one.
+    const session = ownConversation ? currentSession(earlier, Date.now()) : [];
+    // "Reply" on an earlier message (0174): honoured only for one in this session, so a stale or foreign id is dropped.
+    const replyTarget = findReplyTarget(session, isConversationId(raw.replyTo) ? raw.replyTo : null);
+
     // Abuse (owner, 2026-10-20): one calm line, then no reply at all. No AI call, and a
     // signed-out visitor's question is not used up. Kept, so the dashboard shows it.
     if (isAbusive(message)) {
-      const earlier = conversationId ? await readConversation(admin, conversationId) : [];
-      const calm = abuseReply(conversationBelongsTo(earlier, userId) ? earlier.map((r) => r.reply) : []);
+      const calm = abuseReply(ownConversation ? earlier.map((r) => r.reply) : []);
       const id = await recordChatInteraction(admin, {
         eventType: "typed_question",
         message,
@@ -260,8 +279,7 @@ export async function POST(request: NextRequest) {
       // An unreadable count is treated as the cap reached: the cap is a cost guard.
       if (usedToday !== null && usedToday < settings.aiAnswersPerDay) {
         try {
-          const earlier = conversationId ? await readConversation(admin, conversationId) : [];
-          const history = conversationBelongsTo(earlier, userId) ? modelHistory(earlier) : [];
+          const history = modelHistory(session);
           const ownId = userId;
           const notesBrief = askedNotes ? await loadNotesItemBrief(pagePath, askedNotes) : null;
           const ctx = await loadVContext(createSupabaseAnonClient(), {
@@ -275,6 +293,8 @@ export async function POST(request: NextRequest) {
               ? buildQuestionToolDeps(ownId, {
                   onSimilar: (id) => (similarQuestionId = id),
                   onMatch: (id) => (matchQuestionId = id),
+                  // Only a tap brings a similar-question card, so a follow-up does not add another.
+                  similarAfterExplain: asked !== null && isAskVMessage(message),
                 })
               : null,
             // The student's own login does the reading (get_own_performance): no id is passed to the database.
@@ -287,7 +307,8 @@ export async function POST(request: NextRequest) {
           const result = await askV({
             system: ctx.system,
             systemTail: ctx.systemTail,
-            message,
+            // The message is stored as typed; V alone is told what it replies to.
+            message: replyTarget ? `${replyContext(replyTarget)}\n\n${message}` : message,
             tools: ctx.tools,
             history,
           });
@@ -334,6 +355,8 @@ export async function POST(request: NextRequest) {
       reply: recorded,
       conversationId,
       pagePath,
+      askedQuestionId: asked?.id ?? null,
+      replyToId: replyTarget?.id ?? null,
     });
 
     // Only on an AI answer: a fallback reply never ran the tools.

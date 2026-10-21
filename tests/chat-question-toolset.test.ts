@@ -96,6 +96,39 @@ describe("explain_question", () => {
   it("ignores a pick that is not an option letter", async () => {
     expect(await deps().tools.explain_question.run({ question_id: ID, chose: "Z" })).not.toContain("The student chose");
   });
+
+  // 2026-10-21 (owner): V was told to call similar_question and say "a similar one is below to try". The
+  // explanation sat in the round that called it and was dropped, so one student got that line alone.
+  // On an Ask V tap the card now comes with the explanation, and V is told not to mention it.
+  it("on an Ask V tap, attaches a similar question with the explanation and tells V not to mention it", async () => {
+    const { tools, seen } = deps({ similarAfterExplain: true });
+    const out = await tools.explain_question.run({ question_id: ID });
+    expect(out).toContain("Correct answer: (B) 4");
+    expect(seen.similar).toEqual([OTHER]);
+    expect(out).toMatch(/do not mention it/i);
+    expect(out).not.toMatch(/below/i);
+  });
+
+  it("attaches no similar question on a follow-up, so each tap gets one card", async () => {
+    const { tools, seen } = deps();
+    const out = await tools.explain_question.run({ question_id: ID });
+    expect(seen.similar).toEqual([]);
+    expect(out).not.toMatch(/similar/i);
+  });
+
+  it("attaches no similar question when the explanation is refused", async () => {
+    const { tools, seen } = deps({ similarAfterExplain: true, spendReveal: async () => ({ kind: "limit", limit: 30 }) });
+    await tools.explain_question.run({ question_id: ID });
+    expect(seen.similar).toEqual([]);
+  });
+
+  it("explains without a card when there is no other question in the subtopic", async () => {
+    const { tools, seen } = deps({ similarAfterExplain: true, loadSimilar: async () => null });
+    const out = await tools.explain_question.run({ question_id: ID });
+    expect(out).toContain("Correct answer: (B) 4");
+    expect(seen.similar).toEqual([]);
+    expect(out).not.toMatch(/similar/i);
+  });
 });
 
 describe("similar_question", () => {
@@ -105,6 +138,8 @@ describe("similar_question", () => {
     expect(seen.similar).toEqual([OTHER]);
     expect(out).toMatch(/shown to the student as a card/i);
     expect(out).not.toMatch(/answer is/i);
+    expect(out).toMatch(/do not describe it/i);
+    expect(out).not.toMatch(/below/i);
   });
 
   it("says so when there is no other question to try", async () => {

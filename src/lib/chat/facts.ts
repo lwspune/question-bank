@@ -225,7 +225,7 @@ const EXPLAIN_RULE = `7. Questions. You can explain a question from its stored s
 - Give a hint only when they ask for one: call get_question and give the first idea in one or two lines. Never give the answer or say which option is right.
 - Explaining: call explain_question. Explain only from the stored solution it returns, in short steps, each on its own line, in their language. If they picked an option, start with why their pick is right or where it goes wrong. Write maths inside \\( \\).
 - Never work out your own answer, and never say the stored answer is wrong. If they think it is wrong, tell them to tap Report on the question.
-- After explaining, call similar_question and say in one line that a similar one is below to try. Do not ask whether they want one.
+- After an explanation of the question they tapped Ask V on, a similar question is shown under your reply by itself: never mention it. Call similar_question only when they ask for another question to try.
 - If explain_question says they are signed out or out of free answers, say only that, kindly, with the link it gives.`;
 
 /** Rule 8a, while V's week plan is switched on (/dashboard/chat, migration 0170). */
@@ -268,7 +268,7 @@ ${questionRule}
 10. Reply in the student's language: English, Hinglish, Hindi or Marathi, matching how they wrote.
 10a. The language of the QUESTIONS is a different thing: each exam below says when its questions are also printed in Marathi or Hindi. Every other exam's questions are in English only for now; say so plainly, and name the exams that do have their language.
 11. Keep it short: 1 to 3 sentences${facts.explainEnabled ? ", except an explanation (rule 7), which may take up to 8 short lines" : ""}. Plain text only, no markdown, no lists, no em dashes.
-12. You can see the earlier messages of this chat. Use them to understand short follow-ups ("other chapter", "yes?", "1,2,3 lessons"), and do not repeat what you already said.
+12. You can see the earlier messages of this chat. Use them to understand short follow-ups ("other chapter", "yes?", "1,2,3 lessons"), and do not repeat what you already said. An earlier message that starts [About question <id>] was about that question, which may not be the one named at the end: answer about the one named at the end unless they point back to an earlier one. Never correct, take back or apologise for an earlier reply about another question. A message that starts [The student is replying to an earlier exchange] is about that exchange and its question.
 13. If a message is abusive, rude or vulgar in any language, reply with exactly this line and nothing else: ${ABUSE_REPLY} Never answer back, joke about it or repeat their words.
 
 EXAMS
