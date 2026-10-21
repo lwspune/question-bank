@@ -8,6 +8,8 @@ type Props = {
   groups: ConceptWeightGroup[];
   /** Chapter's distinct PUBLIC PYQ count — the % denominator + summary figure. */
   chapterTotalPyqs: number;
+  /** What the counts are: "PYQs" (default) or "questions" (lib/notes/countKind.ts). */
+  noun?: "PYQs" | "questions";
 };
 
 /**
@@ -21,7 +23,7 @@ type Props = {
  * keyboard-accessible, collapsed by default to keep the landing lean). Concept
  * names are plain-text fields — no KatexRenderer needed.
  */
-export default function ConceptWeightTable({ groups, chapterTotalPyqs }: Props) {
+export default function ConceptWeightTable({ groups, chapterTotalPyqs, noun = "PYQs" }: Props) {
   const totalConcepts = groups.reduce((a, g) => a + g.concepts.length, 0);
   if (totalConcepts === 0) return null;
 
@@ -48,10 +50,10 @@ export default function ConceptWeightTable({ groups, chapterTotalPyqs }: Props) 
         </span>
         <div className="flex-1">
           <h2 className="text-lg font-semibold tracking-tight">
-            PYQ weightage by concept
+            {noun === "PYQs" ? "PYQ" : "Question"} weightage by concept
           </h2>
           <p className="mt-0.5 text-xs text-muted-foreground">
-            {totalConcepts} concepts · {chapterTotalPyqs} PYQs — where the marks
+            {totalConcepts} concepts · {chapterTotalPyqs} {noun} — where the marks
             actually sit, so you know what to drill first
           </p>
         </div>
@@ -72,14 +74,14 @@ export default function ConceptWeightTable({ groups, chapterTotalPyqs }: Props) 
               <ChevronRight className="h-3.5 w-3.5 opacity-60" aria-hidden />
             </a>
             <span className="ml-2 text-[11px] text-muted-foreground tabular-nums">
-              {g.count} PYQs · {g.pct}%
+              {g.count} {noun} · {g.pct}%
             </span>
 
             <table className="mt-2 w-full border-collapse text-sm">
               <thead>
                 <tr className="border-b text-[11px] font-semibold uppercase tracking-wide text-muted-foreground">
                   <th className="py-1.5 pr-2 text-left font-semibold">Concept</th>
-                  <th className="w-16 py-1.5 px-2 text-right font-semibold">PYQs</th>
+                  <th className="w-16 py-1.5 px-2 text-right font-semibold">{noun === "PYQs" ? "PYQs" : "Qs"}</th>
                   <th className="w-40 py-1.5 pl-2 text-left font-semibold">Share</th>
                 </tr>
               </thead>

@@ -228,6 +228,7 @@ import CdsRationalIrrationalLine from "./visualizations/CdsRationalIrrationalLin
 import LogicSwitchSeriesParallel from "./visualizations/LogicSwitchSeriesParallel";
 import LogicCircuitSimplification from "./visualizations/LogicCircuitSimplification";
 import type { VisualizationSlug } from "@/app/notes/_types";
+import { featuredLeadIn } from "@/lib/notes/countKind";
 
 export function renderVisualization(slug: VisualizationSlug) {
   switch (slug) {
@@ -823,7 +824,7 @@ export default function ConceptUnitCard({
       {pyqExample && (
         <div className="mt-6">
           <p className="mb-2 text-sm text-muted-foreground">
-            The same idea in a real exam question:
+            {featuredLeadIn(pyqExample.source.kind)}
           </p>
           <WorkedExampleCard rank={index} example={pyqExample} />
         </div>
