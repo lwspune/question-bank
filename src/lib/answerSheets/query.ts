@@ -6,7 +6,7 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { slugify } from "@/lib/board/query";
 import { getExamByName } from "@/lib/exam/examContext";
-import type { GradeOutcome } from "./grade";
+import type { GradeCause, GradeOutcome } from "./grade";
 import type { ReportGrade } from "./report";
 
 export type SubmissionStatus = "uploading" | "submitted" | "graded" | "rejected";
@@ -22,6 +22,10 @@ export type OwnSubmission = {
   wentWell: string | null;
   nextSteps: string | null;
   rejectedReason: string | null;
+  /** Pages with our marks on them (0175); null on a sheet graded before. */
+  markedPages: number | null;
+  /** The scans and marked pages were deleted 30 days after checking. */
+  scansDeleted: boolean;
   paper: {
     title: string;
     examId: string;
@@ -51,11 +55,13 @@ type RawSubmission = {
   went_well: string | null;
   next_steps: string | null;
   rejected_reason: string | null;
+  marked_pages: number | null;
+  scans_deleted_at: string | null;
   board_papers: RawPaper | RawPaper[] | null;
 };
 
 const COLUMNS =
-  "id, status, submitted_at, graded_at, regraded_at, total_awarded, total_max, went_well, next_steps, rejected_reason, board_papers(title, exam_id, subject_id, group_slug, exams(name), subjects(name))";
+  "id, status, submitted_at, graded_at, regraded_at, total_awarded, total_max, went_well, next_steps, rejected_reason, marked_pages, scans_deleted_at, board_papers(title, exam_id, subject_id, group_slug, exams(name), subjects(name))";
 
 function one<T>(v: T | T[] | null): T | null {
   return Array.isArray(v) ? v[0] ?? null : v;
@@ -77,6 +83,8 @@ function toSubmission(r: RawSubmission): OwnSubmission {
     wentWell: r.went_well,
     nextSteps: r.next_steps,
     rejectedReason: r.rejected_reason,
+    markedPages: r.marked_pages,
+    scansDeleted: r.scans_deleted_at !== null,
     paper: p
       ? {
           title: p.title,
@@ -117,7 +125,7 @@ export async function getOwnReport(db: SupabaseClient, id: string): Promise<OwnR
   const [{ data: grades, error: gErr }, { data: disputes, error: dErr }] = await Promise.all([
     db
       .from("answer_grades")
-      .select("position, printed_number, question_id, max_marks, outcome, awarded, earned, missing")
+      .select("position, printed_number, question_id, max_marks, outcome, awarded, earned, missing, cause, topic")
       .eq("submission_id", id)
       .order("position"),
     db.from("answer_grade_disputes").select("position, message, resolution").eq("submission_id", id),
@@ -134,6 +142,8 @@ export async function getOwnReport(db: SupabaseClient, id: string): Promise<OwnR
     awarded: g.awarded === null ? null : Number(g.awarded),
     earned: (g.earned as string | null) ?? null,
     missing: (g.missing as string | null) ?? null,
+    cause: (g.cause as GradeCause | null) ?? null,
+    topic: (g.topic as string | null) ?? null,
   }));
 
   const chapters = new Map<string, { id: string; name: string }>();

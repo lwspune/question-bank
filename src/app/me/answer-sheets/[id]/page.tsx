@@ -1,21 +1,27 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
-import { ArrowRight, Clock, Sparkles, Target, XCircle } from "lucide-react";
+import { ArrowRight, Clock, Download, Sparkles, Target, XCircle } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import Breadcrumbs from "@/components/nav/Breadcrumbs";
 import KatexRenderer from "@/components/math/KatexRenderer";
 import { getSessionUser } from "@/lib/auth";
+import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { getOwnReport, type OwnReport } from "@/lib/answerSheets/query";
-import { biggestLosses, type ReportGrade } from "@/lib/answerSheets/report";
+import type { ReportGrade } from "@/lib/answerSheets/report";
+import { buildPaperReport } from "@/lib/answerSheets/paperReport";
+import { signMarkedFiles, type MarkedFiles } from "@/lib/answerSheets/service";
 import QuestionGrade from "./QuestionGrade";
+import { MarkedPages, PaperSummaryCard, SummaryHeadline } from "./PaperSummary";
 
 /**
  * `/me/answer-sheets/<id>`: one checked answer sheet (migration 0153). What
- * went well first, then what to work on, then every question with what earned
- * marks and what was missing. Read with the student's own session, so another
- * student's id finds nothing. Never cached, never indexed.
+ * went well first, then where the marks went and what to focus on (0175),
+ * then every question with what earned marks and what was missing, then the
+ * student's own pages with our marks on them. Read with the student's own
+ * session, so another student's id finds nothing; the marked pages are signed
+ * for the session user's own folder only. Never cached, never indexed.
  */
 export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
@@ -41,6 +47,11 @@ function practiseHref(r: OwnReport, chapterId: string): string {
   return `/browse?${sp.toString()}`;
 }
 
+/** "Q.7" -> its card's anchor on this page, for the summary's question links. */
+function anchorsOf(grades: ReportGrade[]): Record<string, string> {
+  return Object.fromEntries(grades.map((g) => [`Q.${g.printedNumber}`, `#q-${g.position}`]));
+}
+
 function marksText(g: ReportGrade): string {
   if (g.outcome === "not_attempted") return `Not attempted · ${g.maxMarks}`;
   if (g.outcome === "not_counted") return `Not counted · ${g.maxMarks}`;
@@ -55,7 +66,12 @@ export default async function AnswerSheetReportPage({ params }: { params: { id: 
   if (!report || report.status === "uploading") notFound();
 
   const title = report.paper?.title ?? "Board paper";
-  const losses = biggestLosses(report.grades);
+  const graded = report.status === "graded";
+  const summary = graded ? buildPaperReport({ grades: report.grades, totalMax: report.totalMax ?? 0 }) : null;
+  const marked: MarkedFiles | null =
+    graded && report.markedPages && !report.scansDeleted
+      ? await signMarkedFiles(createSupabaseAdminClient(), user.id, report.id, report.markedPages)
+      : null;
 
   return (
     <>
@@ -97,6 +113,23 @@ export default async function AnswerSheetReportPage({ params }: { params: { id: 
               <p className="stat-gradient mt-1 text-4xl font-bold tracking-tight">
                 {report.totalAwarded} <span className="text-xl font-semibold text-muted-foreground">/ {report.totalMax}</span>
               </p>
+              {summary && <SummaryHeadline summary={summary} />}
+              {marked && (
+                <div className="mt-3 flex flex-wrap gap-x-4 gap-y-2 text-sm">
+                  <a href="#marked-pages" className="font-medium text-brand-accent hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+                    See your marked pages
+                  </a>
+                  {marked.pdf && (
+                    <a
+                      href={marked.pdf}
+                      className="inline-flex items-center gap-1 font-medium text-brand-accent hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    >
+                      <Download className="h-3.5 w-3.5" aria-hidden />
+                      Download marked paper (PDF)
+                    </a>
+                  )}
+                </div>
+              )}
               {report.regradedAt && (
                 <p className="mt-2 text-xs text-muted-foreground">Updated after you asked us to look again.</p>
               )}
@@ -119,23 +152,7 @@ export default async function AnswerSheetReportPage({ params }: { params: { id: 
               </div>
             </section>
 
-            {losses.length > 0 && (
-              <section className="mt-4 rounded-lg border bg-card p-4">
-                <h2 className="text-sm font-semibold text-foreground">Where the most marks went</h2>
-                <ul className="mt-2 space-y-1 text-sm">
-                  {losses.map((l) => (
-                    <li key={l.position}>
-                      <a href={`#q-${l.position}`} className="text-brand-accent hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
-                        Q.{l.printedNumber}
-                      </a>
-                      <span className="text-muted-foreground">
-                        : {l.lost} mark{l.lost === 1 ? "" : "s"} lost
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </section>
-            )}
+            {summary && <PaperSummaryCard summary={summary} anchors={anchorsOf(report.grades)} />}
 
             <h2 className="section-title mt-8">Question by question</h2>
             <ol className="mt-3 space-y-3">
@@ -182,6 +199,10 @@ export default async function AnswerSheetReportPage({ params }: { params: { id: 
                 );
               })}
             </ol>
+
+            {graded && report.markedPages && (
+              <MarkedPages pages={marked?.pages ?? []} pdf={marked?.pdf ?? null} removed={report.scansDeleted} />
+            )}
 
             {report.paper?.href && (
               <p className="mt-6 text-sm text-muted-foreground">
