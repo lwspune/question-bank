@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { CATALOG, PAPERS, SUBJECTS, requirePaper, type Paper } from "../scripts/spi/config";
-import { checkPaper, compareVerify, figurePaths, mergeDrafts, parseVerify, toRawRows, verifyPacket } from "../scripts/spi/lib";
+import { checkPaper, compareVerify, figurePaths, mergeDrafts, parseVerify, retagSubtopics, toRawRows, verifyPacket } from "../scripts/spi/lib";
 import { parseTranscript } from "../scripts/ssc-cgl/lib";
 
 // A two-part paper of 4 questions: Q1-2 maths, Q3-4 general ability.
@@ -237,5 +237,46 @@ describe("verify lane", () => {
   it("refuses a malformed verify line", () => {
     expect(() => parseVerify("7 | E | ok")).toThrow(/line 1/);
     expect(() => parseVerify("seven | A | ok")).toThrow(/line 1/);
+  });
+});
+
+describe("retagSubtopics", () => {
+  const T = [
+    block(1, "chapter: Probability\nsubtopic: Playing Cards"),
+    block(2, "chapter: Number System\nsubtopic: Place Value"),
+    block(3, "chapter: Probability\nsubtopic: Two Dice"),
+    block(4, "chapter: Probability\nsubtopic: Coins and a Single Die"),
+  ].join("\n");
+  const order = ["Coins and a Single Die", "Two Dice and Calendar Pairs", "Cards, Bags and Numbered Cards"];
+
+  it("rewrites only the chapter's subtopic lines, by question number, and leaves every other byte alone", () => {
+    const targets = new Map([[1, "Cards, Bags and Numbered Cards"], [3, "Two Dice and Calendar Pairs"]]);
+    const r = retagSubtopics(T, "Probability", targets, order);
+    expect(r.problems).toEqual([]);
+    expect(r.changes).toBe(2);
+    expect(r.text).toBe(
+      T.replace("subtopic: Playing Cards", "subtopic: Cards, Bags and Numbered Cards").replace(
+        "subtopic: Two Dice\n",
+        "subtopic: Two Dice and Calendar Pairs\n",
+      ),
+    );
+  });
+
+  it("keeps a block already in a teaching subtopic, and reports one with no target", () => {
+    const r = retagSubtopics(T, "Probability", new Map([[1, "Cards, Bags and Numbered Cards"]]), order);
+    expect(r.changes).toBe(1);
+    expect(r.problems).toEqual(['Q3: no target for subtopic "Two Dice"']);
+  });
+
+  it("keeps CRLF line endings", () => {
+    const crlf = T.replace(/\n/g, "\r\n");
+    const r = retagSubtopics(crlf, "Probability", new Map([[1, order[2]], [3, order[1]]]), order);
+    expect(r.text).toContain("subtopic: Cards, Bags and Numbered Cards\r\n");
+    expect(r.text.replace(/\r\n/g, "")).not.toMatch(/\n/);
+  });
+
+  it("refuses a target that is not in the teaching order", () => {
+    const r = retagSubtopics(T, "Probability", new Map([[1, "Cards"], [3, order[1]]]), order);
+    expect(r.problems).toEqual(['Q1: target "Cards" is not in the teaching order']);
   });
 });
