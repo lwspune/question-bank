@@ -29,6 +29,11 @@ export type QuestionToolDeps = {
   searchQuestions: (text: string, chapterId: string | null) => Promise<QuestionMatch[]>;
   /** The chapter of the page the student asked from, set by loadVContext. */
   pageChapterId?: string | null;
+  /**
+   * An Ask V tap (2026-10-21): an explanation brings a similar question as a
+   * card, and V is told not to mention it. A follow-up brings none.
+   */
+  similarAfterExplain?: boolean;
   /** The route collects these for the chat window. */
   onSimilar: (id: string) => void;
   /** A pasted question's best match, offered as a card to confirm. */
@@ -93,13 +98,17 @@ export function questionTools(d: QuestionToolDeps): VTool[] {
         d.onExplained(q.id);
         const raw = (input as { chose?: unknown }).chose;
         const chose = typeof raw === "string" && LETTERS.has(raw.toUpperCase()) ? raw.toUpperCase() : null;
-        return explainView(q, chose);
+        const view = explainView(q, chose);
+        const similarId = d.similarAfterExplain ? await d.loadSimilar(q) : null;
+        if (!similarId) return view;
+        d.onSimilar(similarId);
+        return `${view}\n\nA similar question is shown to the student as a card by itself: do not mention it or call similar_question.`;
       },
     },
     {
       name: "similar_question",
       description:
-        "Give the student another question from the same subtopic to try. It is shown to them as a card below your reply, which they answer there.",
+        "Give the student another question from the same subtopic to try, when they ask for one. It is shown to them as a card, which they answer there.",
       input_schema: ID_SCHEMA,
       run: async (input) => {
         const q = await load(input);
@@ -107,7 +116,7 @@ export function questionTools(d: QuestionToolDeps): VTool[] {
         const id = await d.loadSimilar(q);
         if (!id) return "There is no other question to try from this subtopic right now. Suggest the chapter's questions page instead.";
         d.onSimilar(id);
-        return `A similar question from ${q.subtopic ?? q.chapter} is shown to the student as a card below your reply. Tell them to try it there. You do not know its answer, so give none.`;
+        return `A similar question from ${q.subtopic ?? q.chapter} is shown to the student as a card. Do not describe it: a few words such as "Here is one to try." are enough. You do not know its answer, so give none.`;
       },
     },
     {

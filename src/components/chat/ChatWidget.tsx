@@ -60,7 +60,7 @@ import VSays from "./VSays";
 import MathText from "./MathText";
 import VQuestionCard from "./VQuestionCard";
 import VPlanCard from "./VPlanCard";
-import { ASK_V_EVENT, isAskVDetail, questionForRequest, type AskVDetail } from "@/lib/chat/askVEvent";
+import { ASK_V_EVENT, askVMessage, isAskVDetail, questionForRequest, type AskVDetail } from "@/lib/chat/askVEvent";
 import { MESSAGE_IN, USER_BUBBLE, V_BUBBLE } from "./chatStyles";
 import PracticeBuilder, { PENDING_BUILD_KEY, logBuilderStep } from "./PracticeBuilder";
 import type { BuilderAnswers } from "@/lib/practiceTests/builder";
@@ -483,7 +483,7 @@ export default function ChatWidget() {
     setMode("chat");
     openChat();
     setAsked(d);
-    void askTyped(d.chose ? `I picked (${d.chose}). Explain this question.` : "Explain this question.", d);
+    void askTyped(askVMessage(d.chose), d);
   };
 
   /** Send the draft, or `override` (an Ask V or a button). `about` is the question it is about. */

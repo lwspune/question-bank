@@ -47,6 +47,7 @@ import { loadVContext } from "@/lib/chat/context";
 import { askV } from "@/lib/chat/anthropic";
 import { allowedReplyLinks, plainLinks } from "@/lib/chat/replyLinks";
 import { cleanPagePath, isConversationId, modelHistory } from "@/lib/chat/conversation";
+import { isAskVMessage } from "@/lib/chat/askVEvent";
 import { createProgressMemo } from "@/lib/chat/progress";
 import { getOwnPerformance } from "@/lib/performance/service";
 import { buildPerformance } from "@/lib/performance/compute";
@@ -98,7 +99,7 @@ function ownProgress(userId: string): Promise<Performance | null> {
  */
 function buildQuestionToolDeps(
   userId: string | null,
-  out: { onSimilar: (id: string) => void; onMatch: (id: string) => void }
+  out: { onSimilar: (id: string) => void; onMatch: (id: string) => void; similarAfterExplain: boolean }
 ): QuestionToolDeps {
   const anon = createSupabaseAnonClient();
   return {
@@ -110,6 +111,7 @@ function buildQuestionToolDeps(
     onSimilar: out.onSimilar,
     onMatch: out.onMatch,
     onExplained: () => {},
+    similarAfterExplain: out.similarAfterExplain,
   };
 }
 
@@ -275,6 +277,8 @@ export async function POST(request: NextRequest) {
               ? buildQuestionToolDeps(ownId, {
                   onSimilar: (id) => (similarQuestionId = id),
                   onMatch: (id) => (matchQuestionId = id),
+                  // Only a tap brings a similar-question card, so a follow-up does not add another.
+                  similarAfterExplain: asked !== null && isAskVMessage(message),
                 })
               : null,
             // The student's own login does the reading (get_own_performance): no id is passed to the database.
