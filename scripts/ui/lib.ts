@@ -39,6 +39,9 @@ export type ShotArgs = {
    *  student who chose these exams, so a signed-in view can be captured on
    *  both sides without signing in. Null = anonymous, as before. */
   asStudent: string[] | null;
+  /** `--with-pass`: that student also holds the Premium Pass (the header's
+   *  diamond). Needs --as-student. */
+  withPass: boolean;
   /** `--click="<text>"`: tap the first visible button or link whose text (or
    *  aria-label) starts with this before the shot, so a dialog or sheet can be
    *  captured. `A >> B` taps A, waits, then taps B. */
@@ -118,6 +121,8 @@ export function parseShotArgs(argv: string[]): ShotArgs {
   if (!pages.length) throw new Error("--pages=/,/mock,... is required: an empty sheet proves nothing");
   const phase = value("phase") ?? "both";
   if (phase !== "before" && phase !== "after" && phase !== "both") throw new Error(`--phase must be before, after or both, not "${phase}"`);
+  const asStudent = asStudentArg(value("as-student"));
+  if (flag("with-pass") && !asStudent) throw new Error("--with-pass needs --as-student=<exam,...>: there is no signed-in student to hold the pass");
   const viewports: Viewport[] = flag("phone") && !flag("desktop") ? ["phone"] : flag("desktop") && !flag("phone") ? ["desktop"] : ["phone", "desktop"];
   return {
     pages,
@@ -132,7 +137,8 @@ export function parseShotArgs(argv: string[]): ShotArgs {
     out: value("out") ?? null,
     title: value("title") ?? "Before / after",
     phase,
-    asStudent: asStudentArg(value("as-student")),
+    asStudent,
+    withPass: flag("with-pass"),
     click: clickArg(value("click")),
     storage: value("storage") ?? null,
   };
@@ -182,7 +188,7 @@ function asStudentArg(raw: string | undefined): string[] | null {
 }
 
 /** The /api/me/header body for `--as-student`: a self-serve student, never staff. */
-export function stubHeaderSession(exams: string[]) {
+export function stubHeaderSession(exams: string[], opts: { hasPass?: boolean } = {}) {
   return {
     session: {
       email: "student@example.invalid",
@@ -190,6 +196,7 @@ export function stubHeaderSession(exams: string[]) {
       orgName: null,
       isStaff: false,
       isSuperadmin: false,
+      hasPass: opts.hasPass ?? false,
       stage: null,
       targetExams: exams,
     },

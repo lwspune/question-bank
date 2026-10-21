@@ -21,6 +21,7 @@ const admin: HeaderSession = {
   orgName: "LWS Pune",
   isStaff: true,
   isSuperadmin: false,
+  hasPass: false,
   stage: null,
   targetExams: [],
 };
@@ -30,6 +31,7 @@ const teacher: HeaderSession = {
   orgName: "LWS Pune",
   isStaff: true,
   isSuperadmin: false,
+  hasPass: false,
   stage: null,
   targetExams: [],
 };
@@ -39,6 +41,7 @@ const student: HeaderSession = {
   orgName: null,
   isStaff: false,
   isSuperadmin: false,
+  hasPass: false,
   stage: null,
   targetExams: [],
 };
@@ -98,5 +101,51 @@ describe("profileFieldsFromRow", () => {
     expect(resolveHomeHref({ ...student, stage: "class-11", targetExams: ["nda"] })).toBe(
       "/me"
     );
+  });
+});
+
+import { hasPassFromEntitlements } from "@/lib/header-session";
+import type { Entitlement } from "@/lib/entitlements/access";
+
+// The header's diamond (2026-10-21): shown to an account holding the Premium
+// Pass. It must agree with the paywall, so it reads the same rule — an active
+// grant covering the mocks scope — rather than any check of its own.
+describe("hasPassFromEntitlements", () => {
+  const now = Date.parse("2026-10-21T12:00:00Z");
+  const grant = (over: Partial<Entitlement>): Entitlement => ({
+    id: "e1",
+    userId: "u1",
+    scope: "mocks",
+    source: "razorpay",
+    status: "active",
+    grantedAt: "2026-10-01T00:00:00Z",
+    expiresAt: "2027-04-01T00:00:00Z",
+    providerRef: null,
+    note: null,
+    grantedBy: null,
+    ...over,
+  });
+
+  it("is false with no grants", () => {
+    expect(hasPassFromEntitlements([], now)).toBe(false);
+  });
+  it("is true for an active Premium Pass", () => {
+    expect(hasPassFromEntitlements([grant({})], now)).toBe(true);
+  });
+  it("counts a comp grant: the gate is source-agnostic", () => {
+    expect(hasPassFromEntitlements([grant({ source: "comp" })], now)).toBe(true);
+  });
+  it("counts the retired Teacher Pass and the full-premium scope, which both cover mocks", () => {
+    expect(hasPassFromEntitlements([grant({ scope: "teacher" })], now)).toBe(true);
+    expect(hasPassFromEntitlements([grant({ scope: "all" })], now)).toBe(true);
+  });
+  it("is false once the pass has expired", () => {
+    expect(hasPassFromEntitlements([grant({ expiresAt: "2026-10-20T00:00:00Z" })], now)).toBe(false);
+  });
+  it("is false for a revoked (refunded) pass", () => {
+    expect(hasPassFromEntitlements([grant({ status: "revoked" })], now)).toBe(false);
+  });
+  it("is false for a grant of some other scope", () => {
+    expect(hasPassFromEntitlements([grant({ scope: "notes:nda-maths/lines" })], now)).toBe(false);
   });
 });
