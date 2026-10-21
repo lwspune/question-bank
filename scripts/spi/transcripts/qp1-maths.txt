@@ -1,0 +1,1256 @@
+SPI Practice Paper 1, Mathematics (practice). Transcribed from page images of 01. QP_1\01. Math_QP.pdf.
+Answers derived blind, then compared with the source's key; every disagreement is settled against the page.
+Format: scripts/ssc-cgl/lib.ts.
+
+=== 1
+chapter: Number System
+subtopic: Rational and Irrational Numbers
+difficulty: EASY
+answer: B
+stem:
+The product of a rational and irrational number is
+A: Rational
+B: irrational
+C: both of above
+D: none of above
+solution:
+If \(r\) is a non-zero rational and \(s\) is irrational, suppose \(rs = q\) were rational. Then \(s = \frac{q}{r}\) would be rational, which is false.
+
+So the product of a (non-zero) rational and an irrational number is irrational, for example \(2 \times \sqrt{3} = 2\sqrt{3}\).
+
+=== 2
+chapter: Linear Equations
+subtopic: Consistency of a Pair of Equations
+difficulty: EASY
+answer: A
+note: The source key marks two solutions; that is wrong: x = 0 and x = 5 are parallel lines and never meet (settled 2026-10-21).
+stem:
+The pair of equations x = 0 and x = 5 has
+A: no solution
+B: unique/one solution
+C: two solutions
+D: infinitely many solutions
+solution:
+\(x = 0\) is the y-axis and \(x = 5\) is a line parallel to it, 5 units away.
+
+Parallel lines never meet, and no number is both 0 and 5, so the pair has no solution.
+
+=== 3
+chapter: Polynomials
+subtopic: Polynomials from Given Zeroes
+difficulty: EASY
+answer: D
+stem:
+The number of polynomials having zeroes as -2 and 5 is
+A: 1
+B: 2
+C: 3
+D: more than 3
+solution:
+Every polynomial \(k(x + 2)(x - 5) = k(x^2 - 3x - 10)\), with \(k\) any non-zero constant, has zeroes \(-2\) and 5.
+
+Since \(k\) can be any non-zero number, there are infinitely many such polynomials, that is more than 3.
+
+=== 4
+chapter: Quadratic Equations
+subtopic: Degree of an Equation
+difficulty: EASY
+answer: C
+stem:
+The quadratic equation hasdegree
+A: 0
+B: 1
+C: 2
+D: 3
+solution:
+A quadratic equation has the form \(ax^2 + bx + c = 0\) with \(a \ne 0\), so its highest power of \(x\) is 2. Its degree is 2.
+
+=== 5
+chapter: Triangles
+subtopic: Similar Triangles
+difficulty: EASY
+answer: D
+figure: stem
+stem:
+In the given figure \(\Delta ABC \sim \Delta PQR\). The value of x is
+A: 2.5 cm
+B: 3.5 cm
+C: 2.75 cm
+D: 3 cm
+solution:
+The figure shows AB = 6 cm, AC = 5 cm, BC = 4 cm, and PQ = 4.5 cm, PR = 3.75 cm, QR = x.
+
+Since \(\Delta ABC \sim \Delta PQR\), \(\frac{PQ}{AB} = \frac{PR}{AC} = \frac{QR}{BC}\).
+
+\(\frac{4.5}{6} = 0.75\) and \(\frac{3.75}{5} = 0.75\), so \(x = 0.75 \times 4 = 3\) cm.
+
+=== 6
+chapter: Sequence and Series
+subtopic: Terms from the General Term
+difficulty: EASY
+answer: B
+stem:
+First four terms of the sequence an= 2n + 3 are
+A: 3, 5, 7, 9
+B: 5, 7, 9, 11
+C: 5, 8, 11, 14
+D: 1, 3, 5, 7
+solution:
+\(a_1 = 2(1) + 3 = 5\), \(a_2 = 7\), \(a_3 = 9\), \(a_4 = 11\).
+
+So the first four terms are 5, 7, 9, 11.
+
+=== 7
+chapter: Coordinate Geometry
+subtopic: Distance Formula
+difficulty: EASY
+answer: B
+stem:
+The distance between the point P(1, 4) and Q(4, 0) is
+A: 4
+B: 5
+C: 6
+D: \(3\sqrt{3}\)
+solution:
+\(PQ = \sqrt{(4 - 1)^2 + (0 - 4)^2} = \sqrt{9 + 16} = \sqrt{25} = 5\).
+
+=== 8
+chapter: Trigonometric Ratios and Identities
+subtopic: Complementary Angles
+difficulty: EASY
+answer: D
+stem:
+Ifx and y are complementary angles, then
+A: sin x = sin y
+B: tan x = tan y
+C: cosx = cosy
+D: secx = cosecy
+solution:
+Complementary means \(x + y = 90^\circ\), so \(y = 90^\circ - x\).
+
+\(\text{cosec}\, y = \text{cosec}(90^\circ - x) = \sec x\).
+
+The others need \(x = y = 45^\circ\); in general \(\sin x = \cos y\), not \(\sin y\).
+
+=== 9
+chapter: Heights and Distances
+subtopic: Right Triangle in a Rectangle
+difficulty: MODERATE
+answer: D
+notice: As printed no option can be right: with BC = 8 cm and a 60 degree angle at C, CE is 16 cm, and the figure does not fit its own lengths. The key marks 4 cm, as the paper's own key does.
+flawed: yes
+note: As printed (BC = 8 cm, angle ECB = 60 degrees) CE = 16 cm, and CE as a hypotenuse can never be less than BC = 8 cm, so no option (1 to 4 cm) can be right; the figure is also inconsistent (EB would be 13.86 cm, more than AB = 12 cm). Keyed the last option only as a placeholder.
+figure: stem
+stem:
+In figure given ABCD is a rectangle, the value of CE is
+A: 1 cm
+B: 2 cm
+C: 3 cm
+D: 4 cm
+solution:
+The figure shows a rectangle with AD = 8 cm and DC = 12 cm, E on AB, and the angle between CE and CB marked \(60^\circ\).
+
+BC = AD = 8 cm and angle B = \(90^\circ\), so in triangle EBC, \(\cos 60^\circ = \frac{BC}{CE}\), giving \(CE = \frac{8}{0.5} = 16\) cm.
+
+CE is the hypotenuse of triangle EBC, so it must be longer than BC = 8 cm. None of the printed values 1, 2, 3 or 4 cm can be right, and the figure itself does not fit (EB = \(8\sqrt{3} = 13.86\) cm would exceed AB = 12 cm).
+
+=== 10
+chapter: Circles
+subtopic: Parallel Tangents
+difficulty: EASY
+answer: D
+stem:
+The distance between two parallel tangents of a circle of radius 4 cm is
+A: 2 cm
+B: 4 cm
+C: 6 cm
+D: 8 cm
+solution:
+Two parallel tangents touch the circle at the ends of a diameter, so the distance between them is the diameter: \(2 \times 4 = 8\) cm.
+
+=== 11
+chapter: Lines, Angles and Polygons
+subtopic: Dividing a Line Segment (Construction)
+difficulty: EASY
+answer: C
+stem:
+To divide a line segment PQ in the ratio 5:7, first a ray PX is drawn so that QPX is an acute angle and then at equal distances points are marked on the ray PX such that the minimum number of these points is
+A: 5
+B: 7
+C: 12
+D: 10
+solution:
+To divide a segment in the ratio \(m : n\), mark \(m + n\) equal steps on the ray.
+
+Here \(5 + 7 = 12\) points.
+
+=== 12
+chapter: Mensuration 2D
+subtopic: Area of a Circle
+difficulty: EASY
+answer: A
+stem:
+The area of the circle whose diameter is 21 cm is
+A: 346.5 \(\text{cm}^2\)
+B: 37.68 \(\text{cm}^2\)
+C: 18.84 \(\text{cm}^2\)
+D: 19.84 \(\text{cm}^2\)
+solution:
+Radius \(= \frac{21}{2} = 10.5\) cm. Using \(\pi = \frac{22}{7}\):
+
+Area \(= \frac{22}{7} \times 10.5 \times 10.5 = 22 \times 1.5 \times 10.5 = 346.5\ \text{cm}^2\).
+
+=== 13
+chapter: Mensuration 3D
+subtopic: Solids of Revolution
+difficulty: EASY
+answer: C
+stem:
+A solid formed on revolving a right angled triangle about its height is
+A: cylinder
+B: sphere
+C: right circular cone
+D: two cones
+solution:
+Turning a right-angled triangle about its height (one of the sides containing the right angle) sweeps the base into a circle and the hypotenuse into a slant surface, giving a right circular cone.
+
+=== 14
+chapter: Statistics
+subtopic: Cumulative Frequency and Median
+difficulty: EASY
+answer: B
+note: The source key marks mode; that is wrong: the median is read from the cumulative frequencies (settled 2026-10-21).
+stem:
+Construction of a cumulative frequency table is useful in determining the
+A: mean
+B: median
+C: mode
+D: none of these
+solution:
+The median class is the class whose cumulative frequency first reaches \(\frac{n}{2}\), so a cumulative frequency table is needed to find the median.
+
+=== 15
+chapter: Probability
+subtopic: Coin Tosses
+difficulty: EASY
+answer: D
+stem:
+The probability of getting exactly one head in tossing a pair of coins is
+A: 0
+B: 1
+C: 1/3
+D: 1/2
+solution:
+Outcomes: HH, HT, TH, TT (4 equally likely).
+
+Exactly one head: HT and TH, 2 outcomes. Probability \(= \frac{2}{4} = \frac{1}{2}\).
+
+=== 16
+chapter: Number System
+subtopic: Rational and Irrational Numbers
+difficulty: EASY
+answer: C
+note: The source key marks irrational; that is wrong: two irrationals can add to a rational number, as the solution shows (settled 2026-10-21).
+stem:
+The sum of two irrational numbers is always
+A: irrational
+B: rational
+C: rational or irrational
+D: one
+solution:
+\(\sqrt{2} + \sqrt{3}\) is irrational, but \((2 + \sqrt{3}) + (2 - \sqrt{3}) = 4\) is rational.
+
+So the sum can be rational or irrational.
+
+=== 17
+chapter: Coordinate Geometry
+subtopic: Lines Parallel to the Axes
+difficulty: EASY
+answer: A
+note: The source key marks both axis; that is wrong: y = 5 is a horizontal line, parallel to the x-axis only (settled 2026-10-21).
+stem:
+The graph of y = 5 is a line parallel to the
+A: x-axis
+B: y-axis
+C: both axis
+D: none of these
+solution:
+Every point of \(y = 5\) has the same height 5 whatever \(x\) is, so the line is horizontal, parallel to the x-axis, 5 units above it.
+
+=== 18
+chapter: Linear Equations
+subtopic: Condition for Parallel Lines
+difficulty: EASY
+answer: A
+stem:
+If the lines given by 2x + ky= 1 and 3x \(-\)5y = 7 are parallel, then the value of k is
+A: \(\frac{-10}{3}\)
+B: \(\frac{10}{3}\)
+C: \(-13\)
+D: \(-7\)
+solution:
+Parallel lines need \(\frac{a_1}{a_2} = \frac{b_1}{b_2} \ne \frac{c_1}{c_2}\).
+
+\(\frac{2}{3} = \frac{k}{-5}\), so \(k = -\frac{10}{3}\).
+
+Check: \(\frac{c_1}{c_2} = \frac{1}{7} \ne \frac{2}{3}\), so the lines are parallel, not coincident.
+
+=== 19
+chapter: Polynomials
+subtopic: Degree of a Polynomial
+difficulty: EASY
+answer: C
+stem:
+The cubic equation has degree......
+A: 1
+B: 2
+C: 3
+D: 4
+solution:
+A cubic equation has the form \(ax^3 + bx^2 + cx + d = 0\) with \(a \ne 0\), so its degree is 3.
+
+=== 20
+chapter: Sequence and Series
+subtopic: Arithmetic Mean Condition
+difficulty: EASY
+answer: B
+stem:
+if a, b, c are in AP then
+A: b = a + c
+B: 2b = a + c
+C: \(b^2\) = a + c
+D: \(2b^2\) = a + c
+solution:
+In an AP the common difference is constant: \(b - a = c - b\).
+
+So \(2b = a + c\).
+
+=== 21
+chapter: Triangles
+subtopic: Similar Triangles
+difficulty: EASY
+answer: C
+stem:
+If \(\Delta ABC\) is similar to \(\Delta DEF\) such that 2 AB = DE and BC = 8 cm then EF is equal to.
+A: 12 cm
+B: 4 cm
+C: 16 cm
+D: 8 cm
+solution:
+Similar triangles have proportional sides: \(\frac{DE}{AB} = \frac{EF}{BC}\).
+
+\(\frac{DE}{AB} = 2\), so \(EF = 2 \times 8 = 16\) cm.
+
+=== 22
+chapter: Coordinate Geometry
+subtopic: Collinearity and Type of Triangle
+difficulty: MODERATE
+answer: D
+stem:
+The points (2, 5), (4, \(-\) 1) and (6, \(-\) 7) are vertices of an/a
+A: isosceles triangle
+B: equilateral triangle
+C: right-angled triangle
+D: none of these
+solution:
+Slope from (2, 5) to (4, \(-1\)) \(= \frac{-1 - 5}{4 - 2} = -3\). Slope from (4, \(-1\)) to (6, \(-7\)) \(= \frac{-7 + 1}{6 - 4} = -3\).
+
+Equal slopes through a common point: the three points are collinear and form no triangle.
+
+Check with distances: \(\sqrt{40} + \sqrt{40} = 2\sqrt{40} = \sqrt{160}\), the third side, so the points lie on one line. The answer is none of these.
+
+=== 23
+chapter: Trigonometric Ratios and Identities
+subtopic: Definition of Trigonometric Ratios
+difficulty: EASY
+answer: C
+stem:
+Ratios of sides of a right triangle with respect to its acute angles are known as
+A: trigonometric identities
+B: trigonometry
+C: trigonometric ratios of the angles
+D: none of these
+solution:
+The ratios of the sides of a right triangle taken with respect to an acute angle (sine, cosine, tangent and so on) are called the trigonometric ratios of that angle. Identities are equations true for every angle, and trigonometry is the whole subject.
+
+=== 24
+chapter: Heights and Distances
+subtopic: Right Triangle in a Rectangle
+difficulty: MODERATE
+answer: D
+notice: As printed no option can be right: with BC = 8 cm and a 60 degree angle at C, CE is 16 cm, and the figure does not fit its own lengths. The key marks 4 cm, as the paper's own key does.
+flawed: yes
+note: Same question and figure as Q9. As printed (BC = 8 cm, angle ECB = 60 degrees) CE = 16 cm, more than BC, so no option (1 to 4 cm) can be right; the figure is also inconsistent (EB = 13.86 cm exceeds AB = 12 cm). Keyed the last option only as a placeholder.
+figure: stem
+stem:
+In figure given ABCD is a rectangle, the value of CE is
+A: 1 cm
+B: 2 cm
+C: 3 cm
+D: 4 cm
+solution:
+The figure shows a rectangle with AD = 8 cm and DC = 12 cm, E on AB, and the angle between CE and CB marked \(60^\circ\).
+
+BC = AD = 8 cm and angle B = \(90^\circ\), so \(\cos 60^\circ = \frac{BC}{CE}\), giving \(CE = \frac{8}{0.5} = 16\) cm.
+
+CE is the hypotenuse of triangle EBC, so it must exceed BC = 8 cm; none of the printed values 1, 2, 3 or 4 cm can be right.
+
+=== 25
+chapter: Circles
+subtopic: Tangents from an External Point
+difficulty: MODERATE
+answer: B
+figure: stem
+stem:
+In given figure, CP and CQ are tangents to a circle with centre O. ARB is another tangent touching the circle at R. If CP = 11 cm and BC = 6 cm then the length of BR is
+A: 6 cm
+B: 5 cm
+C: 4 cm
+D: 3 cm
+solution:
+Tangents from an external point are equal: CQ = CP = 11 cm.
+
+B lies on CQ, so BQ = CQ \(-\) BC = 11 \(-\) 6 = 5 cm.
+
+BR and BQ are tangents from B, so BR = BQ = 5 cm.
+
+=== 26
+chapter: Lines, Angles and Polygons
+subtopic: Dividing a Line Segment (Construction)
+difficulty: EASY
+answer: D
+stem:
+When a line segment is divided in the ratio 2 : 3, how many parts is it divided into?
+A: 2/3
+B: 2
+C: 3
+D: 5
+solution:
+A ratio \(2 : 3\) means the segment is cut into \(2 + 3 = 5\) equal parts, 2 on one side of the point and 3 on the other.
+
+=== 27
+chapter: Mensuration 2D
+subtopic: Area of a Circle
+difficulty: EASY
+answer: A
+stem:
+The area of the circle whose diameter is 21 cm is
+A: 346.5 \(\text{cm}^2\)
+B: 37.68 \(\text{cm}^2\)
+C: 18.84 \(\text{cm}^2\)
+D: 19.84 \(\text{cm}^2\)
+solution:
+Radius \(= 10.5\) cm. Using \(\pi = \frac{22}{7}\):
+
+Area \(= \frac{22}{7} \times 10.5^2 = \frac{22}{7} \times 110.25 = 346.5\ \text{cm}^2\).
+
+=== 28
+chapter: Mensuration 3D
+subtopic: Surface Area of a Hemisphere
+difficulty: EASY
+answer: A
+stem:
+The total surface area of a hemispherical solid having radius 7 cm is
+A: 462 \(\text{cm}^2\)
+B: 294 \(\text{cm}^2\)
+C: 588 \(\text{cm}^2\)
+D: 154 \(\text{cm}^2\)
+solution:
+A solid hemisphere has a curved surface \(2\pi r^2\) plus a flat circular base \(\pi r^2\), total \(3\pi r^2\).
+
+Using \(\pi = \frac{22}{7}\): \(3 \times \frac{22}{7} \times 49 = 3 \times 154 = 462\ \text{cm}^2\).
+
+=== 29
+chapter: Statistics
+subtopic: Empirical Relation of Mean, Median and Mode
+difficulty: EASY
+answer: B
+stem:
+One of the methods for determining mode is
+A: Mode = 2 Median -3 Mean
+B: Mode = 3 Median \(-\)2 Mean
+C: Mode = 2 Mean \(-\)3 Median
+D: Mode = 3 Mean \(-\)2 Median
+solution:
+The empirical relation for a moderately skewed distribution is Mode = 3 Median \(-\) 2 Mean.
+
+It comes from Mean \(-\) Mode = 3(Mean \(-\) Median): rearranging gives Mode = 3 Median \(-\) 2 Mean.
+
+=== 30
+chapter: Probability
+subtopic: Sample Space of Dice
+difficulty: EASY
+answer: D
+stem:
+the total events to throw three dice simultaneously is
+A: 6
+B: 18
+C: 81
+D: 216
+solution:
+Each die has 6 faces, so three dice give \(6 \times 6 \times 6 = 216\) outcomes.
+
+=== 31
+chapter: Number System
+subtopic: Types of Numbers
+difficulty: EASY
+answer: A
+stem:
+The set A = {0,1, 2, 3, 4, ...} represents the set of
+A: whole numbers
+B: integers
+C: natural numbers
+D: even numbers
+solution:
+The natural numbers start at 1; adding 0 gives the whole numbers {0, 1, 2, 3, ...}. Integers would also include negatives, and the set contains odd numbers too.
+
+=== 32
+chapter: Polynomials
+subtopic: Graphs of Polynomials
+difficulty: EASY
+answer: D
+figure: options
+stem:
+Which of the following is not the graph of quadratic polynomial?
+A: [figure]
+B: [figure]
+C: [figure]
+D: [figure]
+solution:
+The graph of a quadratic polynomial is a parabola: one U shape opening up or down, with at most two x-intercepts.
+
+The first three pictures are parabolas (one opening up above the x-axis, two opening down). The last picture rises, falls and rises again, crossing the x-axis three times, which is the shape of a cubic, so it is not the graph of a quadratic polynomial.
+
+=== 33
+chapter: Linear Equations
+subtopic: Dependent (Coincident) Equations
+difficulty: MODERATE
+answer: C
+notice: Two of the printed options are correct: both are the given equation multiplied by 5. The key marks the one the paper's own key gives.
+flawed: yes
+note: Two options are dependent on 2x + 5y = 3: -10x - 25y + 15 = 0 is the same line as 10x + 25y = 15. Both blind passes keyed 10x + 25y = 15; the source key marks -10x - 25y + 15 = 0, and with both correct the paper's own key is kept (settled 2026-10-21).
+stem:
+One equation of a pair of dependent linear equations is 2x + 5y = 3. The second equation will be
+A: 2x + 5y = 6
+B: 3x + 5y = 3
+C: -10x \(-\)25y + 15 = 0
+D: 10x + 25y = 15
+solution:
+Dependent (coincident) equations are multiples of each other: \(\frac{a_1}{a_2} = \frac{b_1}{b_2} = \frac{c_1}{c_2}\).
+
+Multiplying \(2x + 5y = 3\) by 5 gives \(10x + 25y = 15\).
+
+\(2x + 5y = 6\) is parallel (no solution) and \(3x + 5y = 3\) meets it at one point. But \(-10x - 25y + 15 = 0\) rearranges to \(10x + 25y = 15\) as well, so it is also dependent: two options are correct as printed.
+
+=== 34
+chapter: Quadratic Equations
+subtopic: Identifying the Type of Equation
+difficulty: EASY
+answer: A
+stem:
+The polynomial equation x(x=1) +8 = (x+2) (x-2) is
+A: Linear equation
+B: Quadratic equation
+C: Cubic equation
+D: none
+solution:
+The printed "x(x=1)" is a typo for \(x(x + 1)\).
+
+\(x^2 + x + 8 = x^2 - 4\), so the \(x^2\) terms cancel and \(x + 12 = 0\), which is a linear equation.
+
+Reading it as \(x(x - 1)\) instead gives \(-x + 12 = 0\), still linear.
+
+=== 35
+chapter: Sequence and Series
+subtopic: Sum of Natural Numbers
+difficulty: EASY
+answer: A
+stem:
+The sum of first ten natural number is
+A: 55
+B: 155
+C: 65
+D: 110
+solution:
+\(1 + 2 + \dots + 10 = \frac{10 \times 11}{2} = 55\).
+
+=== 36
+chapter: Triangles
+subtopic: Similar Triangles
+difficulty: MODERATE
+answer: C
+figure: stem
+stem:
+In the given figure, \(\Delta ACB \sim \Delta APQ\). If AB = 6 cm, BC = 8 cm, and PQ = 4 cm then AQ is equal to
+A: 2 cm
+B: 2.5 cm
+C: 3 cm
+D: 3.5 cm
+solution:
+From \(\Delta ACB \sim \Delta APQ\) the vertices correspond A to A, C to P, B to Q, so \(\frac{AB}{AQ} = \frac{CB}{PQ}\).
+
+\(\frac{6}{AQ} = \frac{8}{4} = 2\), so \(AQ = 3\) cm.
+
+=== 37
+chapter: Coordinate Geometry
+subtopic: Circumcentre of a Right Triangle
+difficulty: MODERATE
+answer: A
+figure: stem
+stem:
+The coordinates of the point which is equidistant from the three vertices of the \(\Delta AOB\) as shown in the figure is
+A: (x, y)
+B: (y, x)
+C: \(\left(\frac{x}{2}, \frac{y}{2}\right)\)
+D: \(\left(\frac{y}{2}, \frac{x}{2}\right)\)
+solution:
+The figure shows O at the origin, A(0, 2y) on the y-axis and B(2x, 0) on the x-axis, so the triangle is right-angled at O.
+
+The point equidistant from all three vertices of a right triangle is the midpoint of the hypotenuse AB: \(\left(\frac{0 + 2x}{2}, \frac{2y + 0}{2}\right) = (x, y)\).
+
+Check: its distance to O is \(\sqrt{x^2 + y^2}\), and to A is \(\sqrt{x^2 + (y - 2y)^2} = \sqrt{x^2 + y^2}\), the same.
+
+=== 38
+chapter: Trigonometric Ratios and Identities
+subtopic: Complementary Angle Pairs in Sums
+difficulty: MODERATE
+answer: D
+stem:
+The value of \(\sin^2 5^\circ + \sin^2 10^\circ + \sin^2 15^\circ + \dots + \sin^2 90^\circ\) is equal to
+A: 8
+B: 8.5
+C: 9
+D: 9.5
+solution:
+The terms run from \(5^\circ\) to \(90^\circ\) in steps of \(5^\circ\): 18 terms.
+
+Pair \(\theta\) with \(90^\circ - \theta\): \(\sin^2\theta + \sin^2(90^\circ - \theta) = \sin^2\theta + \cos^2\theta = 1\). The pairs \(5^\circ\) and \(85^\circ\), ..., \(40^\circ\) and \(50^\circ\) make 8 pairs, total 8.
+
+Left over: \(\sin^2 45^\circ = \frac{1}{2}\) and \(\sin^2 90^\circ = 1\).
+
+Sum \(= 8 + 0.5 + 1 = 9.5\).
+
+=== 39
+chapter: Quadrilaterals
+subtopic: Height of a Parallelogram
+difficulty: MODERATE
+answer: C
+figure: stem
+stem:
+In given figure, ABCD is a || gm. The length of AP is
+A: 2 cm
+B: 4 cm
+C: 6 cm
+D: 8 cm
+solution:
+The figure shows parallelogram ABCD with DC = 10 cm, BC = \(4\sqrt{3}\) cm, angle ADC = \(60^\circ\) and AP perpendicular to DC.
+
+Opposite sides of a parallelogram are equal, so AD = BC = \(4\sqrt{3}\) cm.
+
+In right triangle APD, \(AP = AD \sin 60^\circ = 4\sqrt{3} \times \frac{\sqrt{3}}{2} = 6\) cm.
+
+Check: DP = \(AD \cos 60^\circ = 2\sqrt{3}\), and \(AP^2 + DP^2 = 36 + 12 = 48 = AD^2\).
+
+=== 40
+chapter: Circles
+subtopic: Length of Tangent
+difficulty: EASY
+answer: C
+stem:
+A tangent is drawn from a point at a distance of 17 cm of circle C(0, r) of radius 8 cm. The length of its tangent is
+A: 5 cm
+B: 9 cm
+C: 15 cm
+D: 23 cm
+solution:
+The radius meets the tangent at a right angle, so the tangent length is \(\sqrt{17^2 - 8^2} = \sqrt{289 - 64} = \sqrt{225} = 15\) cm.
+
+=== 41
+chapter: Circles
+subtopic: Angle Between Tangents
+difficulty: EASY
+answer: A
+stem:
+To draw a pair of tangents to a circle which are inclined to each other at an angle of \(35^\circ\), it is required to draw tangents at the end-points of those two radii of the circle, the angle between which is
+A: \(145^\circ\)
+B: \(130^\circ\)
+C: \(135^\circ\)
+D: \(90^\circ\)
+solution:
+The two radii, the two tangents and the external point form a quadrilateral with two right angles (radius perpendicular to tangent).
+
+So the angle between the radii is \(360^\circ - 90^\circ - 90^\circ - 35^\circ = 145^\circ\), that is, \(180^\circ - 35^\circ\).
+
+=== 42
+chapter: Mensuration 2D
+subtopic: Area of a Sector
+difficulty: MODERATE
+answer: C
+stem:
+The length of the minute hand of a clock is 14 cm. The area swept by the minute hand in 5 minutes is
+A: 153.9 \(\text{cm}^2\)
+B: 102.6 \(\text{cm}^2\)
+C: 51.3 \(\text{cm}^2\)
+D: 205.2 \(\text{cm}^2\)
+solution:
+The minute hand turns \(360^\circ\) in 60 minutes, so in 5 minutes it turns \(30^\circ\).
+
+Using \(\pi = \frac{22}{7}\): area \(= \frac{30}{360} \times \frac{22}{7} \times 14 \times 14 = \frac{616}{12} = 51.33 \text{ cm}^2\), about 51.3 \(\text{cm}^2\).
+
+With \(\pi = 3.14\) it is \(\frac{3.14 \times 196}{12} = 51.29\), still about 51.3 \(\text{cm}^2\).
+
+=== 43
+chapter: Mensuration 3D
+subtopic: Cylinder and Cone Volume Ratio
+difficulty: EASY
+answer: B
+stem:
+A cylinder and a cone are of same base radius and of same height. The ratio of the volume of the cylinder to that of the cone is
+A: 2 : 1
+B: 3 : 1
+C: 2 : 3
+D: 3 : 2
+solution:
+Cylinder volume \(= \pi r^2 h\), cone volume \(= \frac{1}{3}\pi r^2 h\).
+
+Ratio \(= \pi r^2 h : \frac{1}{3}\pi r^2 h = 3 : 1\).
+
+=== 44
+chapter: Statistics
+subtopic: Deviations from Mean
+difficulty: EASY
+answer: C
+stem:
+The algebraic sum of the deviations of a frequency distribution from its mean is always,
+A: greater than zero
+B: less than zero
+C: zero
+D: a non-zero number
+solution:
+\(\sum f_i(x_i - \bar{x}) = \sum f_i x_i - \bar{x}\sum f_i = N\bar{x} - N\bar{x} = 0\).
+
+So the sum of deviations from the mean is always zero.
+
+=== 45
+chapter: Probability
+subtopic: Probability and Number of Outcomes
+difficulty: EASY
+answer: C
+stem:
+A girl calculates that the probability of her winning the first prize in a lottery is 8/100. If 6,000 tickets are sold, how many tickets has she bought?
+A: 400
+B: 750
+C: 480
+D: 240
+solution:
+Probability = tickets she holds / tickets sold, so tickets she holds \(= \frac{8}{100} \times 6000 = 480\).
+
+Check: \(\frac{480}{6000} = 0.08 = \frac{8}{100}\).
+
+=== 46
+chapter: Number System
+subtopic: Divisibility by 11
+difficulty: EASY
+answer: B
+stem:
+Which number is divisible by 11?
+A: 1516
+B: 1452
+C: 1011
+D: 1121
+solution:
+A number is divisible by 11 when the alternating sum of its digits is 0 or a multiple of 11.
+
+1452: \(1 - 4 + 5 - 2 = 0\), so it is divisible (\(1452 = 11 \times 132\)).
+
+1516: \(1 - 5 + 1 - 6 = -9\); 1011: \(1 - 0 + 1 - 1 = 1\); 1121: \(1 - 1 + 2 - 1 = 1\). None of these is divisible.
+
+=== 47
+chapter: Polynomials
+subtopic: Polynomial from Zeroes
+difficulty: EASY
+answer: B
+stem:
+A quadratic polynomial, whose zeros are -4 and -5, is
+A: \(x^2 - 9x + 20\)
+B: \(x^2 + 9x + 20\)
+C: \(x^2 - 9x - 20\)
+D: \(x^2 + 9x - 20\)
+solution:
+Sum of zeroes \(= -9\), product \(= 20\).
+
+Polynomial \(= x^2 - (\text{sum})x + \text{product} = x^2 + 9x + 20\).
+
+Check: \((x + 4)(x + 5) = x^2 + 9x + 20\).
+
+=== 48
+chapter: Linear Equations
+subtopic: Graph of a Linear Equation
+difficulty: EASY
+answer: B
+stem:
+The graph of x = -2 is a line parallel to the
+A: x-axis
+B: y-axis
+C: both x-and y-axis
+D: none of these
+solution:
+Every point on the graph has x = -2 whatever y is, so it is a vertical line 2 units left of the y-axis, parallel to the y-axis.
+
+=== 49
+chapter: Surds, Indices and Simplification
+subtopic: Infinite Nested Radicals
+difficulty: MODERATE
+answer: C
+stem:
+The value of \(\sqrt{6 + \sqrt{6 + \sqrt{6........}}}\)
+A: 3.5
+B: 4
+C: 3
+D: -3
+solution:
+Let \(x = \sqrt{6 + \sqrt{6 + \sqrt{6 + \dots}}}\). Then \(x = \sqrt{6 + x}\), so \(x^2 = 6 + x\).
+
+\(x^2 - x - 6 = 0\) gives \((x - 3)(x + 2) = 0\), so x = 3 or x = -2.
+
+A square root is never negative, so x = 3 (which also rules out -3).
+
+=== 50
+chapter: Sequence and Series
+subtopic: Sum of an AP
+difficulty: EASY
+answer: C
+stem:
+The sum of first n terms of the series a, 3a, 5a, ........ Is
+A: Na
+B: (2n -1) a
+C: \(n^2a\)
+D: \(n^2a^2\)
+solution:
+This is an AP with first term a and common difference 2a.
+
+\(S_n = \frac{n}{2}[2a + (n - 1)2a] = \frac{n}{2} \times 2na = n^2 a\).
+
+Check with n = 2: a + 3a = 4a = \(2^2 a\). (2n - 1)a is the nth term, not the sum.
+
+=== 51
+chapter: Triangles
+subtopic: Areas of Similar Triangles
+difficulty: MODERATE
+answer: C
+figure: stem
+stem:
+In the given figure \(\Delta\)ABC ~ \(\Delta\)PQR, PM is median of \(\Delta\)PQR. If ar\(\Delta\)ABC = 289 \(\text{cm}^2\), BC = 17 cm, MR = 6.5 cm then the area of \(\Delta\)PQM is
+A: 169 \(\text{cm}^2\)
+B: 13 \(\text{cm}^2\)
+C: 84.5 \(\text{cm}^2\)
+D: 144.5 \(\text{cm}^2\)
+solution:
+M is the midpoint of QR, so QR = \(2 \times 6.5 = 13\) cm.
+
+Areas of similar triangles are in the ratio of the squares of corresponding sides: ar\(\Delta\)PQR \(= 289 \times \left(\frac{13}{17}\right)^2 = 289 \times \frac{169}{289} = 169 \text{ cm}^2\).
+
+A median divides a triangle into two triangles of equal area, so ar\(\Delta\)PQM \(= \frac{169}{2} = 84.5 \text{ cm}^2\).
+
+169 \(\text{cm}^2\) is the whole of triangle PQR, not half of it.
+
+=== 52
+chapter: Coordinate Geometry
+subtopic: Fourth Vertex of a Parallelogram
+difficulty: EASY
+answer: C
+stem:
+If P(l, 2), Q(4, 6), R(5, 7) and S(a, b) are the vertices of a parallelogram PQRS, then
+A: a = 2,b = A
+B: a = 3,b = 4
+C: a = 2, b = 3
+D: a = 3, b = 5
+solution:
+Reading P as (1, 2). The diagonals PR and QS of a parallelogram bisect each other, so P + R = Q + S.
+
+\(1 + 5 = 4 + a\) gives a = 2; \(2 + 7 = 6 + b\) gives b = 3.
+
+Check: PQ goes (+3, +4) and SR goes from (2, 3) to (5, 7), also (+3, +4).
+
+=== 53
+chapter: Trigonometric Ratios and Identities
+subtopic: Complementary Angles
+difficulty: EASY
+answer: C
+stem:
+\(\sin(90^\circ - A) =\)
+A: sin A
+B: tan A
+C: cosA
+D: cosecA
+solution:
+For complementary angles, \(\sin(90^\circ - A) = \cos A\).
+
+Check with A = \(30^\circ\): \(\sin 60^\circ = \frac{\sqrt{3}}{2} = \cos 30^\circ\).
+
+=== 54
+chapter: Heights and Distances
+subtopic: Wire Between Two Poles
+difficulty: MODERATE
+answer: C
+stem:
+The tops of two poles of height 20 m and 14 m are connected by a wire. If the wire makes an angle of \(30^\circ\) with horizontal, the length of the wire is
+A: 6 m
+B: 10 m
+C: 12 m
+D: 20 m
+solution:
+The difference in heights is \(20 - 14 = 6\) m, which is the side opposite the \(30^\circ\) angle, with the wire as hypotenuse.
+
+\(\sin 30^\circ = \frac{6}{L}\), so \(L = \frac{6}{1/2} = 12\) m.
+
+=== 55
+chapter: Circles
+subtopic: Tangents from an External Point
+difficulty: MODERATE
+answer: B
+figure: stem
+stem:
+In given figure, CP and CQ are tangents to a circle with centre O. ARB is another tangent touching the circle at R. If CP = 11 cm and BC = 6 cm then the length of BR is
+A: 6 cm
+B: 5 cm
+C: 4 cm
+D: 3 cm
+solution:
+The figure shows A on CP and B on CQ. Tangents from an external point are equal.
+
+From C: CQ = CP = 11 cm, so BQ = CQ - BC = 11 - 6 = 5 cm.
+
+From B: BR = BQ = 5 cm.
+
+=== 56
+chapter: Mensuration 2D
+subtopic: Circumference of Circles
+difficulty: EASY
+answer: D
+stem:
+he radii of two circles are 19 cm and 9 cm respectively. The radius of the circle which has circumference equal to the sum of the circumference of two circles is
+A: 35 cm
+B: 10 cm
+C: 21 cm
+D: 28 cm
+solution:
+\(2\pi R = 2\pi(19) + 2\pi(9)\), so \(R = 19 + 9 = 28\) cm.
+
+=== 57
+chapter: Mensuration 3D
+subtopic: Volume of a Sphere
+difficulty: MODERATE
+answer: D
+stem:
+The volume of a sphere is 4851 cm3. Its diameter is
+A: 3.5 cm
+B: 7 cm
+C: 14 cm
+D: 21 cm
+solution:
+Using \(\pi = \frac{22}{7}\): \(\frac{4}{3} \times \frac{22}{7} \times r^3 = 4851\).
+
+\(r^3 = \frac{4851 \times 21}{88} = 1157.625 = \left(\frac{21}{2}\right)^3\), so r = 10.5 cm.
+
+Diameter \(= 2 \times 10.5 = 21\) cm.
+
+Check: \(\frac{4}{3} \times \frac{22}{7} \times 10.5^3 = \frac{88}{21} \times 1157.625 = 4851\).
+
+=== 58
+chapter: Statistics
+subtopic: Mode
+difficulty: EASY
+answer: C
+stem:
+Mode is the
+A: middle most frequent value
+B: least frequent value
+C: maximum frequent value
+D: none of these
+solution:
+The mode is the value that occurs most often, the maximum frequent value. The middle-most value is the median.
+
+=== 59
+chapter: Probability
+subtopic: Playing Cards
+difficulty: EASY
+answer: B
+stem:
+A card is drawn from a well shuffled deck of 52 cards. The probability of a seven of spade is
+A: \(\frac{1}{26}\)
+B: \(\frac{1}{52}\)
+C: \(\frac{3}{52}\)
+D: \(\frac{1}{13}\)
+solution:
+There is exactly one seven of spades among 52 cards, so the probability is \(\frac{1}{52}\).
+
+=== 60
+chapter: Number System
+subtopic: LCM
+difficulty: EASY
+answer: B
+stem:
+LCM of the given number 'x' and 'y' where y is a multiple of 'x' is given by
+A: X
+B: y
+C: Xy
+D: x/y
+solution:
+If y is a multiple of x, then y is itself a common multiple of x and y, and no common multiple can be smaller than y. So the LCM is y.
+
+Check: x = 4, y = 12 gives LCM 12 = y.
+
+=== 61
+chapter: Polynomials
+subtopic: Nature of Zeroes
+difficulty: HARD
+answer: B
+stem:
+The zeroes of the quadratic polynomial \(x^2 + px + p\), \(p \ne 0\) are
+A: both equal
+B: both cannot be positive
+C: both unequal
+D: both cannot be negative
+solution:
+Sum of zeroes \(= -p\), product \(= p\).
+
+If both zeroes were positive, the sum would be positive (p < 0) and the product positive (p > 0) at the same time, which is impossible. So both cannot be positive.
+
+The others need not hold: p = 4 gives \((x + 2)^2\), equal zeroes, so "both unequal" fails; p = 5 gives two negative zeroes, so "both cannot be negative" fails; p = -1 gives unequal zeroes, so "both equal" fails.
+
+=== 62
+chapter: Linear Equations
+subtopic: Graph of a Linear Equation
+difficulty: EASY
+answer: B
+stem:
+The graph of the equation 2x + 3y = 5 is a
+A: vertical line
+B: straight line
+C: horizontal line
+D: none of these
+solution:
+Any equation of the form ax + by = c is linear, so its graph is a straight line.
+
+It has both x and y terms, so it is neither vertical (x = constant) nor horizontal (y = constant).
+
+=== 63
+chapter: Polynomials
+subtopic: Degree of a Polynomial
+difficulty: EASY
+answer: B
+stem:
+Bi-quadratic equation has degree.....
+A: 1
+B: 4
+C: 3
+D: 2
+solution:
+A bi-quadratic equation is a quadratic in \(x^2\), such as \(ax^4 + bx^2 + c = 0\), so its degree is 4.
+
+=== 64
+chapter: Triangles
+subtopic: Areas of Similar Triangles
+difficulty: EASY
+answer: A
+stem:
+If the ratio of the perimeters of two similar triangles is 4 : 25, then the ratio of the areas of the similar triangles is
+A: 16 : 625
+B: 2 : 5
+C: 5 : 2
+D: 625 : 16
+solution:
+The ratio of perimeters equals the ratio of corresponding sides, 4 : 25.
+
+Areas are in the ratio of squares of sides: \(4^2 : 25^2 = 16 : 625\).
+
+=== 65
+chapter: Coordinate Geometry
+subtopic: Area of a Triangle
+difficulty: EASY
+answer: B
+stem:
+The area (in square units) of the triangle formed by the points A(a, 0), 0(0, 0) and B(0, b) is
+A: ab
+B: \(\frac{1}{2}ab\)
+C: \(\frac{1}{2}a^2b^2\)
+D: \(\frac{1}{2}b^2\)
+solution:
+The triangle has a right angle at the origin, with legs a along the x-axis and b along the y-axis.
+
+Area \(= \frac{1}{2} \times a \times b = \frac{1}{2}ab\) (taking a, b positive).
+
+=== 66
+chapter: Trigonometric Ratios and Identities
+subtopic: Identity cosec and cot
+difficulty: MODERATE
+answer: D
+stem:
+If cosec A -cot A = 4/5, then cosec A =
+A: \(\frac{47}{40}\)
+B: \(\frac{59}{40}\)
+C: \(\frac{51}{40}\)
+D: \(\frac{41}{40}\)
+solution:
+\(\text{cosec}^2 A - \cot^2 A = 1\), so \((\text{cosec} A - \cot A)(\text{cosec} A + \cot A) = 1\) and \(\text{cosec} A + \cot A = \frac{5}{4}\).
+
+Adding: \(2\,\text{cosec} A = \frac{4}{5} + \frac{5}{4} = \frac{41}{20}\), so \(\text{cosec} A = \frac{41}{40}\).
+
+Check: \(\cot A = \frac{5}{4} - \frac{41}{40} = \frac{9}{40}\), and \(\left(\frac{41}{40}\right)^2 - \left(\frac{9}{40}\right)^2 = \frac{1681 - 81}{1600} = 1\).
+
+=== 67
+chapter: Trigonometric Ratios and Identities
+subtopic: Trigonometric Ratios in a Right Triangle
+difficulty: MODERATE
+answer: C
+figure: stem
+stem:
+In given figure, AD = 4 cm, BD = 3 cm and CB = 12 cm. The value of \(\tan\theta\) is
+A: \(\frac{5}{13}\)
+B: \(\frac{12}{13}\)
+C: \(\frac{5}{12}\)
+D: \(\frac{12}{5}\)
+solution:
+The figure shows a right angle at D in triangle ADB and a right angle at B in triangle ABC, with \(\theta\) at C.
+
+In triangle ADB: \(AB = \sqrt{4^2 + 3^2} = 5\) cm.
+
+In triangle ABC: \(\tan\theta = \frac{AB}{CB} = \frac{5}{12}\).
+
+\(\frac{5}{13}\) is \(\sin\theta\) (AC = 13 cm), not \(\tan\theta\).
+
+=== 68
+chapter: Circles
+subtopic: Tangents from an External Point
+difficulty: EASY
+answer: A
+stem:
+The length of tangents drawn from an external point to the circle
+A: are equal
+B: are not equal
+C: sometimes are equal
+D: are not defined
+solution:
+The two tangents from an external point to a circle are always equal in length (the two right triangles formed with the radii are congruent).
+
+=== 69
+chapter: Mensuration 2D
+subtopic: Circle Inscribed in a Square
+difficulty: EASY
+answer: C
+stem:
+The area of the circle that can be inscribed in a square of side 6 cm, is
+A: \(18\pi\ \text{cm}^2\)
+B: \(12\pi\ \text{cm}^2\)
+C: \(9\pi\ \text{cm}^2\)
+D: \(14\pi\ \text{cm}^2\)
+solution:
+The diameter of the inscribed circle equals the side, 6 cm, so the radius is 3 cm.
+
+Area \(= \pi \times 3^2 = 9\pi\ \text{cm}^2\).
+
+=== 70
+chapter: Mensuration 3D
+subtopic: Curved Surface Area of a Frustum
+difficulty: MODERATE
+answer: C
+stem:
+The curved surface area of glass having radii 3 cm and 4 cm respectively and slant height 10 cm is
+A: 55 \(\text{cm}^2\)
+B: 110 \(\text{cm}^2\)
+C: 220 \(\text{cm}^2\)
+D: 440 \(\text{cm}^2\)
+solution:
+The glass is a frustum of a cone. Its curved surface area is \(\pi(r_1 + r_2)l\).
+
+Using \(\pi = \frac{22}{7}\): \(\frac{22}{7} \times (3 + 4) \times 10 = 22 \times 10 = 220\ \text{cm}^2\).
+
+=== 71
+chapter: Probability
+subtopic: Simple Events
+difficulty: EASY
+answer: D
+stem:
+A child has a die whose six faces show the letters as given below:
+
+A B C D E F
+
+The die is thrown once. The probability of getting a 'D' is
+A: \(\frac{1}{2}\)
+B: \(\frac{1}{3}\)
+C: \(\frac{1}{4}\)
+D: \(\frac{1}{6}\)
+solution:
+Six equally likely faces, and only one shows D, so the probability is \(\frac{1}{6}\).
+
+=== 72
+chapter: Statistics
+subtopic: Graphical Representation of Data
+difficulty: MODERATE
+answer: A
+stem:
+Which of the following can not be determined graphically?
+A: Mean
+B: Median
+C: Mode
+D: None of these
+solution:
+The median can be read from an ogive (or the intersection of the less-than and more-than ogives), and the mode from a histogram. The mean has no such graphical construction, so it cannot be determined graphically.
+
+=== 73
+chapter: Polynomials
+subtopic: Zeroes and Coefficients
+difficulty: MODERATE
+answer: A
+notice: As printed the question leaves out the value of the zero, so it cannot be solved. The key takes the standard version, where the zero is -3.
+flawed: yes
+note: The stem as printed never states the value of the zero, so k cannot be found. With the zero -3 (the NCERT Exemplar version of this question) k = 4/3; the source key marks 2/3, which needs the zero to be 3. Kept 4/3 (settled 2026-10-21).
+stem:
+If one of the zeroes of the quadratic polynomial \((k -1)x^2 + kx + 1\) the value of k is
+A: \(\frac{4}{3}\)
+B: \(\frac{-4}{3}\)
+C: \(\frac{2}{3}\)
+D: \(\frac{-2}{3}\)
+solution:
+The printed question leaves out the value of the zero. If the zero is -3, put x = -3:
+
+\((k - 1)(9) + k(-3) + 1 = 0\), so \(9k - 9 - 3k + 1 = 0\), \(6k = 8\), \(k = \frac{4}{3}\).
+
+Check: with \(k = \frac{4}{3}\) the polynomial is \(\frac{1}{3}x^2 + \frac{4}{3}x + 1 = \frac{1}{3}(x + 1)(x + 3)\), which has -3 as a zero.
+
+=== 74
+chapter: Linear Equations
+subtopic: Word Problems on Two Variables
+difficulty: EASY
+answer: D
+stem:
+Asha has only ₹1 and ₹2 coins with her. If the total number of coins that she has is 50 and the amount of money with her is ₹75, then the number of ₹1 and ₹2 coins are, respectively
+A: 35 and 15
+B: 15 and 35
+C: 35 and 20
+D: 25 and 25
+solution:
+Let x be the ₹1 coins and y the ₹2 coins: x + y = 50 and x + 2y = 75.
+
+Subtracting gives y = 25, so x = 25.
+
+Check: 25 + 50 = ₹75. 35 and 15 gives only ₹65, and 15 and 35 gives ₹85.
+
+=== 75
+chapter: Sequence and Series
+subtopic: Sum of an AP
+difficulty: HARD
+answer: B
+stem:
+If the sum of the first m terms of an AP is n and the sum of its n terms is m, then the sum of its (m + n) terms will be
+A: m + n
+B: -(m + n)
+C: m -n
+D: 0
+solution:
+\(\frac{m}{2}[2a + (m - 1)d] = n\) and \(\frac{n}{2}[2a + (n - 1)d] = m\), so \(2am + m(m - 1)d = 2n\) and \(2an + n(n - 1)d = 2m\).
+
+Subtract: \(2a(m - n) + d(m^2 - n^2 - m + n) = 2(n - m)\). Divide by \(m - n\) (taking m and n different): \(2a + (m + n - 1)d = -2\).
+
+\(S_{m+n} = \frac{m + n}{2}[2a + (m + n - 1)d] = \frac{m + n}{2} \times (-2) = -(m + n)\).

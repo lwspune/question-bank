@@ -813,8 +813,9 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     tier: "school",
     displayName: "SPI",
     examName: "SPI", // must match the `exams` DB row exactly
-    // The pilot paper is PRIVATE until reviewed. Remove at the first PUBLIC row.
-    noPublicContent: true,
+    // PUBLIC since 2026-10-21: the 2022 paper (pyq) and the sample papers and Practice
+    // Paper 1 (practice). The 2022 mock is built by scripts/mocks/build.ts --paper=spi;
+    // set hasMocks: true once it is published.
     guidesPath: null,
     notesPath: null,
   },

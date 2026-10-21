@@ -206,7 +206,9 @@ const loadCachedExamCatalogPayload = unstable_cache(
   // cached in the old number shape would deserialize as a number here.
   // v3 (2026-10-09): drops the all-zero entry cached on 2026-10-08, before
   // loadExamCatalogPayload learned to throw on a failed read.
-  ["exam-catalog-payload-v3"],
+  // v4 (2026-10-21): SPI went live; an entry cached before carries no SPI count
+  // and survives the deploy, so the new exam would read "0 questions" for a day.
+  ["exam-catalog-payload-v4"],
   { revalidate: 86400 }
 );
 
