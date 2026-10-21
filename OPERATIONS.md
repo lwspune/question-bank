@@ -80,14 +80,14 @@ npm run results:announce -- --exam=nda --sitting="NDA 2 2026" --stage=ssb --appl
 
 `--stage` is `written`, `ssb` or `final`; `--announced=YYYY-MM-DD` (default today, IST); `--ask-days=21` (1 to 90). Answers and names waiting to be shown are at **/dashboard/results** (superadmin): Publish puts a name on /results, the homepage and exam-page strips at once; Take down and Decline remove it. Nothing publishes itself. A shown name may not carry a digit, `_` or `@` (a DB CHECK), so an account handle cannot go up by mistake. **When you already know a student cleared and have their consent:** open them in Registered Students (/dashboard/students → the student) → **Exam results → Mark result**: pick the result (or **+ New result**: exam, sitting, stage), check the name, tick consent, Publish. It is live at once on /results, the homepage, Pricing and that exam's mocks, notes and guides pages; **Take down** is on the same page. A new result made there also starts the three-week "Did you clear it?" card for that exam's students, the same as `results:announce`.
 
-### Checked answer sheets (migration 0153, 2026-10-11)
+### Checked answer sheets (migrations 0153 and 0175, 2026-10-11)
 
-Students upload a board paper they wrote on paper from its `/question-papers` page; they are promised a report within 48 hours. Free, one sheet per student per IST day.
+Students upload a board paper they wrote on paper from its `/question-papers` page; they are promised a report within 48 hours: marks with a cause for every loss, and their own pages back with our marks on them plus a report PDF (0175, brought over from nda-tracker's homework grading). Free, one sheet per student per IST day.
 
 - **Knowing something is waiting:** an email to every superadmin at 18:00 IST when a sheet or a grade question is waiting (`.github/workflows/grading-queue.yml`, needs the `RESEND_API_KEY` + `EMAIL_FROM` secrets the other email jobs use), the **Answer sheets** card on `/dashboard` (with the count) and `/dashboard/answer-sheets`.
-- **Grading:** `npm run grading:pull`, then one fresh Claude session per sheet: "Grade grading-inbox/<id> by scripts/grading/GRADING.md". `npm run grading:commit -- <id> --dry` until it passes, then without `--dry` (saves, emails the student). Unreadable or wrong paper: `npm run grading:commit -- <id> --reject="what to fix"` (frees the student's day, emails them).
+- **Grading:** `npm run grading:pull`, then in a Claude session (several sheets in turn is fine): "Grade grading-inbox/<id> by scripts/grading/GRADING.md". Fill the grades and the page marks, `npm run grading:preview -- <id>` and look at every drawn page, then `npm run grading:commit -- <id> --dry` until it passes, then without `--dry` (uploads the marked pages and PDF, saves, emails the student). Needs Python with PyMuPDF and Pillow, and Windows (the marks use Segoe fonts). Unreadable or wrong paper: `npm run grading:commit -- <id> --reject="what to fix"` (frees the student's day, emails them).
 - **A student questions a grade:** listed in `grading-inbox/questions.md`; the routine is in GRADING.md.
-- **Weekly:** `npm run grading:purge -- --apply` deletes scans 30 days after checking (the promise made at upload) and abandoned uploads. Grades stay.
+- **Weekly:** `npm run grading:purge -- --apply` deletes scans, marked pages and the report PDF 30 days after checking (the promise made at upload) and abandoned uploads. Grades and their marks stay.
 - `grading-inbox/` holds students' scans: gitignored, never copied elsewhere.
 
 ### The book store (migrations 0172-0173, 2026-10-20)

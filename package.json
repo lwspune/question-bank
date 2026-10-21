@@ -114,6 +114,8 @@
     "push:friend-finished": "tsx scripts/push/send-friend-finished.ts",
     "email:welcome": "tsx scripts/email/send-welcome.ts",
     "grading:pull": "tsx scripts/grading/pull.ts",
+    "grading:rotate": "python -E -P scripts/grading/pages.py rotate",
+    "grading:preview": "tsx scripts/grading/preview.ts",
     "grading:commit": "tsx scripts/grading/commit.ts",
     "grading:purge": "tsx scripts/grading/purge.ts",
     "grading:notify": "tsx scripts/grading/notify.ts",

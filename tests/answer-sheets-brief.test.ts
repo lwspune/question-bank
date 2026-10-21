@@ -67,6 +67,12 @@ describe("gradeTemplate", () => {
     expect(t.submissionId).toBe("s-1");
   });
 
+  it("starts every row with an empty cause and topic, and an empty marks list", () => {
+    const t = gradeTemplate("s-1", ITEMS);
+    expect(t.grades.every((g) => g.cause === "" && g.topic === "")).toBe(true);
+    expect(t.marks).toEqual([]);
+  });
+
   it("does not pass the checker until it is filled in", () => {
     const r = validateGrade({ items: ITEMS, totalMarks: 70, file: gradeTemplate("s-1", ITEMS) });
     expect(r.ok).toBe(false);
@@ -74,12 +80,14 @@ describe("gradeTemplate", () => {
 });
 
 describe("buildBrief", () => {
-  const brief = buildBrief({ submissionId: "s-1", paper: PAPER, items: ITEMS, questions: QUESTIONS, fileCount: 12 });
+  const brief = buildBrief({ submissionId: "s-1", paper: PAPER, items: ITEMS, questions: QUESTIONS, fileCount: 12, pageCount: 14 });
 
   it("heads with the paper, its maximum and how many pages to read", () => {
     expect(brief).toContain("CBSE Class 12 Physics 2025 (55/1/1)");
     expect(brief).toMatch(/Maximum marks: 70/);
     expect(brief).toMatch(/12 files/);
+    expect(brief).toMatch(/14 pages in pages\//);
+    expect(brief).toMatch(/grid\//);
   });
 
   it("prints every question with its marks, its model answer, and its section note", () => {
@@ -101,6 +109,7 @@ describe("buildBrief", () => {
       items: [item(1, 2)],
       questions: [q("q-1", "Define current.", null)],
       fileCount: 1,
+      pageCount: 1,
     });
     expect(b).toMatch(/no model answer/i);
   });
