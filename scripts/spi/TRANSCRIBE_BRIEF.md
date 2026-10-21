@@ -86,7 +86,9 @@ solution:
   ½ ⅓ ¼ ¾, ∈ ∪ ∩. Write `\(\times\)`, `\(\ge\)`, `\(30^\circ\)`, `\(\sqrt{3}\)`,
   `\(\frac{a}{b}\)`, `\(\pi\)`, `\(\text{cm}^3\)`. The booklet writes powers as `x^n` and
   `10^3`, and units like `m/s^2`: typeset them, `\(x^n\)`, `\(10^3\)`, `\(\text{m/s}^2\)`. The
-  rupee sign ₹ is fine. Write a literal dollar sign as `\$`.
+  rupee sign ₹ is fine. Write a literal dollar sign as `\$`. A raised dot between digits
+  ("7·5 m") is a printed decimal point: write `7.5 m`, never `\(7 \cdot 5\)`, which reads as
+  multiplication.
 - **Shared directions and passages:** when a direction line or passage governs several
   questions ("Given below are pairs of districts...", "Read the passage..."), write it once,
   in the set's first block, as a `context:` section before `stem:`; the other blocks get
