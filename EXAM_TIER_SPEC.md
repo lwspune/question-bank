@@ -74,7 +74,7 @@ Assignments for the 18 entries:
 
 | Tier | Slugs |
 |---|---|
-| school | `foundation-course`, `mh-sb-9`, `mh-ssc-10`, `cbse-10` |
+| school | `foundation-course`, `mh-sb-9`, `mh-ssc-10`, `cbse-10`, `spi` (SPI entrance, sat in Class 10) |
 | senior | `nda`, `mht-cet`, `jee-mains`, `neet`, `worksheets-11-12`, `cbse-11`, `cbse-12`, `isc-12`, `mh-sb-11`, `mh-hsc-12`, `ipmat-indore`, `ipmat-rohtak`, `jipmat`, `imat` |
 | graduate | `cds`, `mpsc-group-b-c`, `mpsc-state-services-prelims`, the five MPSC Mains exams (`mpsc-state-services-mains`, `mpsc-group-b-combined-mains`, `mpsc-sti-mains`, `mpsc-aso-mains`, `mpsc-psi-mains`), `upsc-cse`, `afcat`, `ssc-cgl` |
 

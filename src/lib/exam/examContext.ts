@@ -41,7 +41,8 @@ export type ExamSlug =
   | "afcat"
   | "ssc-cgl"
   | "ssc-cgl-tier-2"
-  | "imat";
+  | "imat"
+  | "spi";
 
 /**
  * School boards the bank carries content for. NOT every exam has one — a
@@ -798,6 +799,22 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     // +3/-1) and Computer Knowledge, qualifying only, on its own 15 minutes.
     hasMocks: true,
     pastPaperSolutions: true,
+    guidesPath: null,
+    notesPath: null,
+  },
+  {
+    slug: "spi",
+    // Services Preparatory Institute entrance (Chhatrapati Sambhajinagar), sat in
+    // Class 10 by students aiming at NDA. GSPI, the girls' institute, sits a paper
+    // of the same shape, so one exam covers both. Part 1 Mathematical Ability and
+    // Part 2 General Ability, 75 each. The 2022 paper is the past paper (no key is
+    // published: answers derived twice, blind); the sample papers and LWS mocks are
+    // practice. scripts/spi/.
+    tier: "school",
+    displayName: "SPI",
+    examName: "SPI", // must match the `exams` DB row exactly
+    // The pilot paper is PRIVATE until reviewed. Remove at the first PUBLIC row.
+    noPublicContent: true,
     guidesPath: null,
     notesPath: null,
   },
