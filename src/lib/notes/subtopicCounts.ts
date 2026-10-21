@@ -1,4 +1,5 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
+import type { NotesCountKind } from "./countKind";
 
 /** A row as returned by the `get_subtopic_facets` RPC. */
 export type SubtopicFacetRow = { subtopic_id: string; q_count: number };
@@ -46,6 +47,8 @@ export async function loadSubtopicPyqCounts(
     examId: string;
     subjectId: string;
     subtopicIds: string[];
+    /** lib/notes/countKind.ts: PYQ-only (migration 0036) unless the exam counts both. */
+    kind?: NotesCountKind;
   }
 ): Promise<Map<string, number>> {
   if (args.subtopicIds.length === 0) return new Map();
@@ -54,7 +57,7 @@ export async function loadSubtopicPyqCounts(
     p_chapter_ids: [args.chapterId],
     p_exam_id: args.examId,
     p_subject_id: args.subjectId,
-    p_kind: "pyq", // PYQ-only weightage counts (migration 0036)
+    p_kind: args.kind ?? "pyq",
   });
 
   // Never fail an ISR-prerendered notes page on a counts hiccup — the page
