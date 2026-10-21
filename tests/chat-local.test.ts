@@ -6,7 +6,7 @@ import { describe, it, expect } from "vitest";
 import { parseStoredChat, trimForStorage, isStale, preferNewer, type StoredChat } from "@/lib/chat/localChat";
 
 const CID = "6f1c2a52-8a3e-4c5b-9d7e-1f2a3b4c5d6e";
-const DAY = 24 * 60 * 60 * 1000;
+const HOUR = 60 * 60 * 1000;
 
 function chat(lastAt: number, n = 2): StoredChat {
   return {
@@ -46,9 +46,10 @@ describe("trimForStorage", () => {
 });
 
 describe("isStale", () => {
-  it("is stale after 7 days without use", () => {
-    expect(isStale(chat(0), 7 * DAY + 1)).toBe(true);
-    expect(isStale(chat(0), 7 * DAY - 1)).toBe(false);
+  // 2026-10-21 (owner): a chat is a session that ends after an hour with no messages (it was 7 days).
+  it("is stale after an hour without a message", () => {
+    expect(isStale(chat(0), HOUR + 1)).toBe(true);
+    expect(isStale(chat(0), HOUR - 1)).toBe(false);
   });
 });
 

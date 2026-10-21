@@ -448,6 +448,18 @@ describe("buildSystemPrompt", () => {
     expect(p).toContain("Write maths inside \\( \\).");
   });
 
+  // 2026-10-21 (owner): V said "I need to correct my earlier replies" about answers on ANOTHER question.
+  it("tells V a remembered message may be about another question, and never to apologise for it", () => {
+    const p = buildSystemPrompt(base);
+    expect(p).toMatch(/\[About question <id>\]/);
+    expect(p).toMatch(/answer about the one named at the end unless they point back/i);
+    expect(p).toMatch(/Never correct, take back or apologise for an earlier reply about another question/);
+  });
+
+  it("tells V a reply to an earlier message is about that message", () => {
+    expect(buildSystemPrompt(base)).toMatch(/replying to an earlier exchange[^\n]*is about that exchange/i);
+  });
+
   it("lets V take the exam from the student's profile, which is not a guess", () => {
     expect(buildSystemPrompt(base)).toMatch(/named it, the page shows it, or their profile lists it/);
   });
