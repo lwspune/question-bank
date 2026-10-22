@@ -32,13 +32,13 @@ export const CDS_PH_LI_LENSES_NOTE: SubtopicNote = {
         ],
       },
       authoredExample: {
-        prompt: "The refractive index of water is 4/3. Light travels at \\(3 \\times 10^{8}\\) m/s in air. How fast does it travel in water?",
+        prompt: "The refractive index of water is 4/3 and of a glass is 1.6. In which does light travel faster, and how many times faster?",
         steps: [
-          "From \\(n = c/v\\), \\(v = c/n\\).",
-          "\\(v = (3 \\times 10^{8}) \\div \\tfrac{4}{3} = 3 \\times 10^{8} \\times \\tfrac{3}{4}\\).",
-          "\\(v = 2.25 \\times 10^{8}\\) m/s.",
+          "From \\(n = c/v\\), \\(v = c/n\\): the larger the refractive index, the slower the light.",
+          "\\(\\dfrac{v_{\\text{water}}}{v_{\\text{glass}}} = \\dfrac{c/n_{\\text{water}}}{c/n_{\\text{glass}}} = \\dfrac{n_{\\text{glass}}}{n_{\\text{water}}}\\).",
+          "\\(\\dfrac{1.6}{4/3} = 1.6 \\times \\dfrac{3}{4} = 1.2\\).",
         ],
-        answer: "\\(2.25 \\times 10^{8}\\) m/s.",
+        answer: "In water, 1.2 times as fast as in the glass.",
       },
       selfCheckExample: {
         prompt: "Light travels at \\(1.25 \\times 10^{8}\\) m/s in diamond. Taking its speed in air as \\(3 \\times 10^{8}\\) m/s, find the refractive index of diamond.",
