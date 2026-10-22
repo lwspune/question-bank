@@ -980,11 +980,12 @@ export function applyRecutPlan<D extends { id: string; subtopic: string }, O ext
  */
 export function rewriteChapterSubtopics(src: string, chapterId: string, subtopics: string[], renames: Record<string, string>): string {
   const nl = src.includes("\r\n") ? "\r\n" : "\n";
-  const head = `  "${chapterId}": {`;
+  // A one-word id is written unquoted (`  average: {`), a hyphenated one quoted.
+  const head = [`  "${chapterId}": {`, `  ${chapterId}: {`].find((h) => src.includes(h));
+  if (!head) throw new Error(`config.ts: no chapter block "${chapterId}"`);
   const start = src.indexOf(head);
-  if (start < 0) throw new Error(`config.ts: no chapter block "${chapterId}"`);
   const rest = src.slice(start + head.length);
-  const next = rest.search(/\r?\n {2}"[^"]+": \{|\r?\n\};/);
+  const next = rest.search(/\r?\n {2}"?[\w-]+"?: \{|\r?\n\};/);
   const end = start + head.length + (next < 0 ? rest.length : next);
   let block = src.slice(start, end);
   const open = block.indexOf("subtopics: [");

@@ -78,6 +78,13 @@ describe("rewriteChapterSubtopics", () => {
     expect(out).toContain('subtopics: ["Income, Expenditure and Savings"]');
   });
 
+  it("finds a chapter whose key is unquoted (a one-word id such as average)", () => {
+    const unquoted = src.replace('  "ratio": {', "  ratio: {");
+    const out = rewriteChapterSubtopics(unquoted, "ratio", ["Combining Ratios"], {});
+    expect(out).toContain('    subtopics: [\n      "Combining Ratios",\n    ],');
+    expect(out).toContain('subtopics: ["Income, Expenditure and Savings"]');
+  });
+
   it("throws when the chapter block is missing", () => {
     expect(() => rewriteChapterSubtopics(src, "nope", [], {})).toThrow(/nope/);
   });
