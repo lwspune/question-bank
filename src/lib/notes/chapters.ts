@@ -1491,6 +1491,26 @@ import {
   SPI_ORDER_RANKING_NOTES,
   SPI_ORDER_RANKING_SLUGS,
 } from "@/app/notes/spi-reasoning/order-ranking/_data";
+import {
+  SPI_ELECTRICITY_MAGNETISM_CHAPTER,
+  SPI_ELECTRICITY_MAGNETISM_NOTES,
+  SPI_ELECTRICITY_MAGNETISM_SLUGS,
+} from "@/app/notes/spi-physics/electricity-magnetism/_data";
+import {
+  SPI_LIGHT_OPTICS_CHAPTER,
+  SPI_LIGHT_OPTICS_NOTES,
+  SPI_LIGHT_OPTICS_SLUGS,
+} from "@/app/notes/spi-physics/light-optics/_data";
+import {
+  SPI_SOUND_CHAPTER,
+  SPI_SOUND_NOTES,
+  SPI_SOUND_SLUGS,
+} from "@/app/notes/spi-physics/sound/_data";
+import {
+  SPI_UNITS_MEASUREMENT_CHAPTER,
+  SPI_UNITS_MEASUREMENT_NOTES,
+  SPI_UNITS_MEASUREMENT_SLUGS,
+} from "@/app/notes/spi-physics/units-measurement/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -4778,6 +4798,50 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SPI_ORDER_RANKING_CHAPTER,
     notes: SPI_ORDER_RANKING_NOTES,
     slugs: SPI_ORDER_RANKING_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Physics",
+    subjectRoute: "spi-physics",
+    subjectDisplay: "SPI Physics",
+    chapterSlug: "electricity-magnetism",
+    chipLabel: "Electricity and Magnetism notes",
+    chapter: SPI_ELECTRICITY_MAGNETISM_CHAPTER,
+    notes: SPI_ELECTRICITY_MAGNETISM_NOTES,
+    slugs: SPI_ELECTRICITY_MAGNETISM_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Physics",
+    subjectRoute: "spi-physics",
+    subjectDisplay: "SPI Physics",
+    chapterSlug: "light-optics",
+    chipLabel: "Light and Optics notes",
+    chapter: SPI_LIGHT_OPTICS_CHAPTER,
+    notes: SPI_LIGHT_OPTICS_NOTES,
+    slugs: SPI_LIGHT_OPTICS_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Physics",
+    subjectRoute: "spi-physics",
+    subjectDisplay: "SPI Physics",
+    chapterSlug: "sound",
+    chipLabel: "Sound notes",
+    chapter: SPI_SOUND_CHAPTER,
+    notes: SPI_SOUND_NOTES,
+    slugs: SPI_SOUND_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Physics",
+    subjectRoute: "spi-physics",
+    subjectDisplay: "SPI Physics",
+    chapterSlug: "units-measurement",
+    chipLabel: "Units, Measurement and Dimensions notes",
+    chapter: SPI_UNITS_MEASUREMENT_CHAPTER,
+    notes: SPI_UNITS_MEASUREMENT_NOTES,
+    slugs: SPI_UNITS_MEASUREMENT_SLUGS,
   },
 ];
 
