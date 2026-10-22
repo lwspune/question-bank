@@ -1676,6 +1676,21 @@ import {
   CDS_HI_MODERN_NOTES,
   CDS_HI_MODERN_SLUGS,
 } from "@/app/notes/cds-history/modern-india/_data";
+import {
+  CDS_GE_PHYSICAL_CHAPTER,
+  CDS_GE_PHYSICAL_NOTES,
+  CDS_GE_PHYSICAL_SLUGS,
+} from "@/app/notes/cds-geography/indian-physical-geography/_data";
+import {
+  CDS_GE_EARTH_CHAPTER,
+  CDS_GE_EARTH_NOTES,
+  CDS_GE_EARTH_SLUGS,
+} from "@/app/notes/cds-geography/earth-structure-landforms/_data";
+import {
+  CDS_GE_ECONOMIC_CHAPTER,
+  CDS_GE_ECONOMIC_NOTES,
+  CDS_GE_ECONOMIC_SLUGS,
+} from "@/app/notes/cds-geography/indian-economic-geography/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -5376,6 +5391,39 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: CDS_HI_WORLD_CHAPTER,
     notes: CDS_HI_WORLD_NOTES,
     slugs: CDS_HI_WORLD_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Geography",
+    subjectRoute: "cds-geography",
+    subjectDisplay: "CDS Geography",
+    chapterSlug: "indian-physical-geography",
+    chipLabel: "Indian Physical Geography notes",
+    chapter: CDS_GE_PHYSICAL_CHAPTER,
+    notes: CDS_GE_PHYSICAL_NOTES,
+    slugs: CDS_GE_PHYSICAL_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Geography",
+    subjectRoute: "cds-geography",
+    subjectDisplay: "CDS Geography",
+    chapterSlug: "earth-structure-landforms",
+    chipLabel: "Earth's Structure and Landforms notes",
+    chapter: CDS_GE_EARTH_CHAPTER,
+    notes: CDS_GE_EARTH_NOTES,
+    slugs: CDS_GE_EARTH_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Geography",
+    subjectRoute: "cds-geography",
+    subjectDisplay: "CDS Geography",
+    chapterSlug: "indian-economic-geography",
+    chipLabel: "Indian Economic Geography notes",
+    chapter: CDS_GE_ECONOMIC_CHAPTER,
+    notes: CDS_GE_ECONOMIC_NOTES,
+    slugs: CDS_GE_ECONOMIC_SLUGS,
   },
 ];
 
