@@ -53,7 +53,7 @@ export function notesSubtopicTitle(c: NotesChapterRegistration, subtopicSlug: st
  * of the same name (those join with fitTitle's dash).
  */
 export function notesChapterTitle(c: NotesChapterRegistration): string {
-  const name = plainName(c.chapter.chapterName);
+  const name = plainName(c.titleName ?? c.chapter.chapterName);
   const subject = c.subjectDisplay;
   return firstThatFits([
     `${name}: ${subject} Notes (Free PDF) · ${BRAND}`,

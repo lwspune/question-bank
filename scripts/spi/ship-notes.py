@@ -42,6 +42,8 @@ spec = {
     "blurb": f"Pages cut by reading every question (scripts/spi/reshape/{row['slug']}.ts). Order matches `subtopicOrder`.",
     "pages": pages,
 }
+if row.get("titleName"):  # a shorter page-title name when the DB chapter name is long or shared
+    spec["titleName"] = row["titleName"]
 spec_path = os.path.join(ROOT, "generated-papers", f"_spi_reg_{abbr}.json")
 io.open(spec_path, "w", encoding="utf-8").write(json.dumps(spec, indent=1, ensure_ascii=False))
 print(f"{row['chapter']}: {len(pages)} pages, const {const}")

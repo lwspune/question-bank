@@ -1670,6 +1670,9 @@ export type NotesChapterRegistration = {
   chapterSlug: string;
   /** Short chip label, e.g. "Statistics notes". */
   chipLabel: string;
+  /** A shorter name for the page title when the DB chapter name is too long to fit, or is shared
+   *  with another exam's chapter ("Indian Geography — Economy, Resources and Transport"). */
+  titleName?: string;
   /** The ChapterNote (carries chapterName matching DB taxonomy). */
   chapter: ChapterNote;
   /** subtopicSlug → SubtopicNote record. */
@@ -5204,6 +5207,7 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     subjectDisplay: "SPI Geography",
     chapterSlug: "indian-economic-geography",
     chipLabel: "Indian Economic Geography notes",
+    titleName: "Indian Economic Geography",
     chapter: SPI_INDIAN_ECONOMIC_GEOGRAPHY_CHAPTER,
     notes: SPI_INDIAN_ECONOMIC_GEOGRAPHY_NOTES,
     slugs: SPI_INDIAN_ECONOMIC_GEOGRAPHY_SLUGS,
@@ -5215,6 +5219,7 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     subjectDisplay: "SPI Geography",
     chapterSlug: "indian-physical-geography",
     chipLabel: "Indian Physical Geography notes",
+    titleName: "Indian Physical Geography",
     chapter: SPI_INDIAN_PHYSICAL_GEOGRAPHY_CHAPTER,
     notes: SPI_INDIAN_PHYSICAL_GEOGRAPHY_NOTES,
     slugs: SPI_INDIAN_PHYSICAL_GEOGRAPHY_SLUGS,
@@ -5292,6 +5297,7 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     subjectDisplay: "SPI Polity",
     chapterSlug: "government-structure",
     chipLabel: "Government Structure notes",
+    titleName: "Government Structure",
     chapter: SPI_GOVERNMENT_STRUCTURE_CHAPTER,
     notes: SPI_GOVERNMENT_STRUCTURE_NOTES,
     slugs: SPI_GOVERNMENT_STRUCTURE_SLUGS,
