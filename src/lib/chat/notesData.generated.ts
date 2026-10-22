@@ -418,7 +418,8 @@ export const NOTES_DATA_KEYS: readonly string[] = [
   "cds-biology/reproduction",
   "cds-biology/genetics-evolution",
   "cds-biology/microbiology-disease",
-  "cds-biology/ecology-environment"
+  "cds-biology/ecology-environment",
+  "ssc-cgl-maths/averages"
 ];
 
 export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, SubtopicNote>>> = {
@@ -837,4 +838,5 @@ export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, Sub
   "cds-biology/genetics-evolution": () => import("@/app/notes/cds-biology/genetics-evolution/_data").then((m) => m.CDS_BI_GENETICS_NOTES),
   "cds-biology/microbiology-disease": () => import("@/app/notes/cds-biology/microbiology-disease/_data").then((m) => m.CDS_BI_MICROBES_NOTES),
   "cds-biology/ecology-environment": () => import("@/app/notes/cds-biology/ecology-environment/_data").then((m) => m.CDS_BI_ECOLOGY_NOTES),
+  "ssc-cgl-maths/averages": () => import("@/app/notes/ssc-cgl-maths/averages/_data").then((m) => m.SSC_AVERAGES_NOTES),
 };

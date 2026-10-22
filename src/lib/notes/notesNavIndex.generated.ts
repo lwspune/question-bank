@@ -2908,5 +2908,12 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "CDS Biology",
     "chapterSlug": "ecology-environment",
     "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-maths",
+    "subjectDisplay": "SSC CGL Maths",
+    "chapterSlug": "averages",
+    "subtopicCount": 6
   }
 ];

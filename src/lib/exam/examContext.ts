@@ -781,7 +781,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     hasMocks: true, // one mock per shift
     pastPaperSolutions: true,
     guidesPath: null,
-    notesPath: null,
+    notesPath: "/notes/ssc-cgl", // exam hub: live since 2026-10-23 (Maths, Averages)
   },
   {
     slug: "ssc-cgl-tier-2",

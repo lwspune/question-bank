@@ -1861,6 +1861,11 @@ import {
   CDS_BI_ECOLOGY_NOTES,
   CDS_BI_ECOLOGY_SLUGS,
 } from "@/app/notes/cds-biology/ecology-environment/_data";
+import {
+  SSC_AVERAGES_CHAPTER,
+  SSC_AVERAGES_NOTES,
+  SSC_AVERAGES_SLUGS,
+} from "@/app/notes/ssc-cgl-maths/averages/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -5971,6 +5976,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: CDS_BI_ECOLOGY_CHAPTER,
     notes: CDS_BI_ECOLOGY_NOTES,
     slugs: CDS_BI_ECOLOGY_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Quantitative Aptitude",
+    subjectRoute: "ssc-cgl-maths",
+    subjectDisplay: "SSC CGL Maths",
+    chapterSlug: "averages",
+    chipLabel: "Averages notes",
+    chapter: SSC_AVERAGES_CHAPTER,
+    notes: SSC_AVERAGES_NOTES,
+    slugs: SSC_AVERAGES_SLUGS,
   },
 ];
 
