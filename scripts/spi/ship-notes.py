@@ -38,7 +38,7 @@ for slug in slugs:
 
 spec = {
     "route": route, "exam": "SPI", "subject": row["subject"], "display": display, "slug": row["slug"],
-    "const": const, "chip": f'{row["chapter"].split(" — ")[0]} notes', "prefix": f"spi-{abbr}", "cprefix": f"spi{abbr}",
+    "const": const, "chip": row.get("chip", f'{row["chapter"]} notes'), "prefix": f"spi-{abbr}", "cprefix": f"spi{abbr}",
     "blurb": f"Pages cut by reading every question (scripts/spi/reshape/{row['slug']}.ts). Order matches `subtopicOrder`.",
     "pages": pages,
 }
