@@ -1806,6 +1806,16 @@ import {
   CDS_EC_INDIAN_ECONOMY_NOTES,
   CDS_EC_INDIAN_ECONOMY_SLUGS,
 } from "@/app/notes/cds-economics/indian-economy/_data";
+import {
+  CDS_EC_MICRO_CHAPTER,
+  CDS_EC_MICRO_NOTES,
+  CDS_EC_MICRO_SLUGS,
+} from "@/app/notes/cds-economics/microeconomics/_data";
+import {
+  CDS_EC_MONEY_CHAPTER,
+  CDS_EC_MONEY_NOTES,
+  CDS_EC_MONEY_SLUGS,
+} from "@/app/notes/cds-economics/money-banking-finance/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -5776,11 +5786,33 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     subjectName: "Economics",
     subjectRoute: "cds-economics",
     subjectDisplay: "CDS Economics",
+    chapterSlug: "microeconomics",
+    chipLabel: "Microeconomics notes",
+    chapter: CDS_EC_MICRO_CHAPTER,
+    notes: CDS_EC_MICRO_NOTES,
+    slugs: CDS_EC_MICRO_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Economics",
+    subjectRoute: "cds-economics",
+    subjectDisplay: "CDS Economics",
     chapterSlug: "national-income-growth",
     chipLabel: "National Income and Growth notes",
     chapter: CDS_EC_NATIONAL_INCOME_CHAPTER,
     notes: CDS_EC_NATIONAL_INCOME_NOTES,
     slugs: CDS_EC_NATIONAL_INCOME_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Economics",
+    subjectRoute: "cds-economics",
+    subjectDisplay: "CDS Economics",
+    chapterSlug: "money-banking-finance",
+    chipLabel: "Money, Banking and Finance notes",
+    chapter: CDS_EC_MONEY_CHAPTER,
+    notes: CDS_EC_MONEY_NOTES,
+    slugs: CDS_EC_MONEY_SLUGS,
   },
   {
     examName: "CDS",
