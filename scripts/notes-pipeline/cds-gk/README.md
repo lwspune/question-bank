@@ -9,6 +9,10 @@ each tool does. Run from the repo root. Working files (`_cdsk_<code>.*`, `_reg-*
 and `scripts/cds-gs/catalog.json`; its solution reasoning in `data/<paper>.answers.json`. Every
 tool below writes those AND the bank, so a rebuild cannot undo a change.
 
+**Many chapters at once (2026-10-22):** one agent per chapter prepares AND drafts it under the
+contract in `NOTES_BRIEF.md` (read-only on data; at most 3 agents at a time). The main session
+re-derives every disputed key, then runs steps 2-7 below with the agent's plan, tag map and fixes.
+
 ## Per chapter, in order
 
 1. `npx tsx scripts/notes-pipeline/cds-gk/dump.ts <Subject> "<Chapter>" <code>` and read every
@@ -17,6 +21,9 @@ tool below writes those AND the bank, so a rebuild cannot undo a change.
    in `scripts/cds-gs/reshape/<chapter>.ts`; dry-run `scripts/cds-gs/reshape.ts`, then `--apply`.
    A row that belongs to ANOTHER chapter goes through `scripts/cds-gs/refile.ts <paper> --map=<file>`.
 3. Solution repairs: `scripts/cds-gs/fix-solutions.ts <spec.json>` (dry run, then `--apply`).
+   A KEY change, once you have re-derived it yourself: `scripts/cds-gs/fix-keys.ts <spec.json>`
+   (same shape plus `answer`). It keeps the row's id, recomputes content_hash, stamps the
+   corrected-on-review tail and records `corrected` in answers.json; it refuses a stale hash and 2026-2.
 4. Re-dump, author `src/app/notes/<route>/<chapter>/_data/` (pages + `chapter.ts`): plain-text
    fields without LaTeX, intro opens on a bank fact, ≥12 traps per chapter, every table cell filled.
    **Count every number from the dump with a one-line script before writing it** ("three of them
@@ -41,5 +48,6 @@ tool below writes those AND the bank, so a rebuild cannot undo a change.
 | `../../cds-gs/reshape.ts` | Re-cut one chapter's subtopics: bank, catalog.json, questions.json | With `--apply` |
 | `../../cds-gs/refile.ts` | Move rows to another chapter; `--map` reads a one-off map | With `--apply` |
 | `../../cds-gs/fix-solutions.ts` | Rewrite a solution's reasoning, keeping its provenance bracket | With `--apply` |
+| `../../cds-gs/fix-keys.ts` | Change a derived key in place (new hash, corrected tail, backup) | With `--apply` |
 | `register.py` | Register a chapter (index.ts, routes, landing, registry) | Files only |
 | `probe.sh` | Every step-4 probe for one chapter | No |
