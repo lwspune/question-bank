@@ -18,7 +18,7 @@ job it improves, and is tested on that job's cases (section 4).
 |---|---|---|---|---|
 | `find` | "SSC vocab PYQs", "notes for MH SSC linear equations" | `find_chapters`, exam and notes facts | the right page is linked, or V asks the ONE thing it needs (usually the exam) | mostly works; false "not found" about 1 in 4 (`v-finder`, check 2026-11-02) |
 | `explain_question` | Ask V on a question, "why F = nmv?" | `explain_question` / `get_question`: the stored solution | correct, from our solution, never against the key | works well |
-| `explain_concept` | "derive the potential due to a point charge", "what is active transport" | **missing** (section 2) | a correct, grounded explanation | V can only say it does not know |
+| `explain_concept` | "derive the potential due to a point charge", "what is active transport" | `explain_concept` (section 2) | a correct, grounded explanation | built 2026-10-22 (step 2) |
 | `practise` | "test me on NLM", "mini test" | the practice-test builder, `similar_question` | the student starts practising | works |
 | `plan` | "plan my week", "4 months left" | `plan_week`, `my_plan`, `exam_strategy` | a plan is made and shown | works; follow-through not measured |
 | `reflect` | "how am I doing?", "good at Maths, bad at GAT" | `my_progress` | answers the question they asked | no per-subject split |
@@ -33,16 +33,23 @@ is the last one.
 1. **Our questions and their solutions.** The bank holds board model answers
    for most classic derivations and definitions (the trigger case, "Derive an
    expression for electric potential due to a point charge", is in MH HSC 12
-   Electrostatics word for word). Today V can open a question only when Ask V
-   was tapped or a pasted question matches; it cannot search question text.
-   `questions.search_vector` (full-text) exists; the `embeddings` table is empty.
-2. **Our /notes:** concept units, formulas, worked examples (`NOTES_CHAPTERS`).
-3. **The model's own knowledge**, for concepts and derivations only, labelled
-   as a general explanation (owner, 2026-10-22). Never to override an answer
-   key, and never for site facts, prices, exam dates or what a future paper
-   will ask.
+   Electrostatics word for word). Searched by `v_search_answers` (migrations
+   0177-0178) over `questions.search_vector`, PUBLIC rows only, the student's
+   exam and the page's subject ranked first, written answers above MCQs.
+2. **Our /notes:** the concept cards of every notes chapter, searched by name
+   in `notesConcepts.generated.ts` (written by `npm run chat:notes-data`, loaded
+   only on a concept question), each card read from its chapter alone.
+3. **The model's own knowledge**, for concepts and derivations only, starting
+   "General explanation (not from our question bank):" (owner, 2026-10-22).
+   Never to override an answer key, never a new numeric problem, and never for
+   site facts, prices, exam dates or what a future paper will ask. Only when
+   rungs 1 and 2 found NOTHING: a failed search is not "nothing", and V says
+   to try again instead.
 
-Rungs 1 to 3 for `explain_concept` are step 2 of the build (section 6).
+All three are the `explain_concept` tool (`lib/chat/conceptSearch.ts`, rule 7a
+in `facts.ts`), on the same switch as Ask V's explanations. A concept answer
+does not use a free answer (owner, 2026-10-22): it answers a topic, not the
+question on the student's screen.
 
 ## 3. Standing decisions
 
@@ -150,3 +157,13 @@ reads everything else from the stored row.
   or the wrong exam for a Maharashtra student; the app ("add to home screen")
   and homework facts; V pointing at "Build a practice test" for a test;
   withdrawn UPSC questions (parked); a made-up apology after "??".
+- 2026-10-22, step 2 built: `explain_concept` (bank model answers, then notes
+  concept cards, then a labelled general explanation), rule 7a, and rules 7
+  and 9 adjusted (a written question without options and a word to define
+  are concepts; a topic name alone is still a chapter search). **Run ad54f6ec:
+  167 of 185 pass (90%), was 153 (83%).** explain_concept 12/12 (was 5/12);
+  no job below its baseline. The search first read ~80,000 buffers per call
+  (2 s): 0178 made it GIN-first, ~3,500 buffers. Open for the owner: questions
+  with no stored solution (rule 7 forbids V's own working, so V cannot explain
+  them); and explain_concept once answered a "how do I study X" ask with a
+  lecture (watch it in the weekly review).
