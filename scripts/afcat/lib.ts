@@ -8,6 +8,7 @@
 // One tolerant parser covers them all, because a per-file parser would be
 // eight parsers that each only one file ever exercises.
 import { normalizeDifficulty, planShuffles } from "../worksheets/lib";
+import type { AfcatOverride } from "./overrides";
 
 /**
  * One question as committed to data/<chapter>/<file>.source.json — the
@@ -899,7 +900,7 @@ export function planSubtopicMoves(
  * answer" under a stem that had been fixed. So a stem override carries a rewritten
  * `solution`, or `solutionStands` saying why the old one still fits.
  */
-export function staleSolutionOverride(ov: { stem?: string; solution?: string; solutionStands?: string; exclude?: boolean }): boolean {
+export function staleSolutionOverride(ov: AfcatOverride): boolean {
   return Boolean(ov.stem && !ov.exclude && !ov.solution && !ov.solutionStands);
 }
 
