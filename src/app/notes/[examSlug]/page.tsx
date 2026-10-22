@@ -16,6 +16,7 @@ import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { getNotesTaxonomy } from "@/lib/notes/taxonomyCache";
 import { getNotesChaptersForSubject } from "@/lib/notes/chapters";
 import { loadChapterPyqCounts } from "@/lib/notes/chapterCounts";
+import { notesCountKind, notesHubCountLabel } from "@/lib/notes/countKind";
 import { buildHubSubject, chapterKey, type HubSubject } from "@/lib/notes/examHub";
 import NotesHubChapters from "@/app/notes/_components/NotesHubChapters";
 import ContinueReadingCard from "@/app/notes/_components/ContinueReadingCard";
@@ -43,9 +44,10 @@ export function generateStaticParams(): Params[] {
  */
 function examIntro(examName: string, subjects: number, chapters: number): string {
   const s = (n: number, word: string) => `${n} ${word}${n === 1 ? "" : "s"}`;
+  const what = notesCountKind(examName) === "pyq" ? "the past questions" : "the questions";
   return (
     `${examName} notes cover ${s(subjects, "subject")} and ${s(chapters, "chapter")}. ` +
-    "Every subtopic ends with the past questions on it."
+    `Every subtopic ends with ${what} on it.`
   );
 }
 
@@ -80,6 +82,7 @@ async function loadHubSubjects(group: NotesExamGroup): Promise<HubSubject[]> {
         examId: taxonomy.examId,
         subjectId: taxonomy.subjectId,
         chapterIds: [...ids.values()].filter((id): id is string => Boolean(id)),
+        kind: notesCountKind(group.examName),
       });
       return buildHubSubject(
         s.subjectRoute,
@@ -158,7 +161,11 @@ export default async function NotesExamHub({ params }: { params: Params }) {
       ) : (
         <>
           <ContinueReadingCard totals={totals} subjectLabels={subjectLabels} />
-          <NotesHubChapters examSlug={group.slug} subjects={subjects} />
+          <NotesHubChapters
+            examSlug={group.slug}
+            subjects={subjects}
+            countLabel={notesHubCountLabel(notesCountKind(group.examName))}
+          />
         </>
       )}
     </GuideShell>

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { featuredLeadIn, notesCountKind, notesCountNoun } from "../src/lib/notes/countKind";
+import { featuredLeadIn, notesCountKind, notesCountNoun, notesHubCountLabel } from "../src/lib/notes/countKind";
 
 describe("notesCountKind", () => {
   it("keeps every exam's notes past-year-only by default (migration 0036)", () => {
@@ -17,6 +17,13 @@ describe("notesCountKind", () => {
   it("names what it counts, so a card never calls a practice question a PYQ", () => {
     expect(notesCountNoun("pyq")).toBe("PYQs");
     expect(notesCountNoun("all")).toBe("questions");
+  });
+});
+
+describe("notesHubCountLabel", () => {
+  it("calls a past-year-only count past questions, and an all-kinds count just questions", () => {
+    expect(notesHubCountLabel("pyq")).toBe("past questions");
+    expect(notesHubCountLabel("all")).toBe("questions");
   });
 });
 

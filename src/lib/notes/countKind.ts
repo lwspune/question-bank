@@ -22,6 +22,11 @@ export function notesCountNoun(kind: NotesCountKind): "PYQs" | "questions" {
   return kind === "pyq" ? "PYQs" : "questions";
 }
 
+/** The /notes/<exam> hub's chapter-card count: "24 past questions" or, for an all-kinds exam, "542 questions". */
+export function notesHubCountLabel(kind: NotesCountKind): "past questions" | "questions" {
+  return kind === "pyq" ? "past questions" : "questions";
+}
+
 /** The line above a concept's featured question: only a past-paper row is "a real exam question". */
 export function featuredLeadIn(kind: SourceKind): string {
   if (kind === "pyq") return "The same idea in a real exam question:";
