@@ -51,7 +51,7 @@ const BY_NAME: Map<string, SubtopicLocation> = new Map();
 // pages; JEE reuses MHT-CET and NDA names the same way ("Conic Sections"). The
 // older NDA/MHT-CET name collisions keep their existing last-write-wins winner.
 const BY_CHAPTER: Map<string, ChapterLocation> = new Map();
-const YIELDING_EXAMS = new Set(["CDS", "JEE Mains"]);
+const YIELDING_EXAMS = new Set(["CDS", "JEE Mains", "SPI"]);
 const yieldsName = (examName: string, taken: boolean) => YIELDING_EXAMS.has(examName) && taken;
 const nameKey = (chapterName: string, subtopicName: string) =>
   `${chapterName}\u0000${subtopicName}`;
