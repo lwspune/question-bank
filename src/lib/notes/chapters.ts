@@ -1511,6 +1511,36 @@ import {
   SPI_UNITS_MEASUREMENT_NOTES,
   SPI_UNITS_MEASUREMENT_SLUGS,
 } from "@/app/notes/spi-physics/units-measurement/_data";
+import {
+  SPI_ENERGY_SOURCES_CHAPTER,
+  SPI_ENERGY_SOURCES_NOTES,
+  SPI_ENERGY_SOURCES_SLUGS,
+} from "@/app/notes/spi-physics/energy-sources/_data";
+import {
+  SPI_KINEMATICS_CHAPTER,
+  SPI_KINEMATICS_NOTES,
+  SPI_KINEMATICS_SLUGS,
+} from "@/app/notes/spi-physics/kinematics/_data";
+import {
+  SPI_FLUIDS_MATTER_CHAPTER,
+  SPI_FLUIDS_MATTER_NOTES,
+  SPI_FLUIDS_MATTER_SLUGS,
+} from "@/app/notes/spi-physics/fluids-matter/_data";
+import {
+  SPI_GRAVITATION_CHAPTER,
+  SPI_GRAVITATION_NOTES,
+  SPI_GRAVITATION_SLUGS,
+} from "@/app/notes/spi-physics/gravitation/_data";
+import {
+  SPI_LAWS_OF_MOTION_CHAPTER,
+  SPI_LAWS_OF_MOTION_NOTES,
+  SPI_LAWS_OF_MOTION_SLUGS,
+} from "@/app/notes/spi-physics/laws-of-motion/_data";
+import {
+  SPI_MOLE_CONCEPT_CHAPTER,
+  SPI_MOLE_CONCEPT_NOTES,
+  SPI_MOLE_CONCEPT_SLUGS,
+} from "@/app/notes/spi-chemistry/mole-concept/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -4842,6 +4872,72 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SPI_UNITS_MEASUREMENT_CHAPTER,
     notes: SPI_UNITS_MEASUREMENT_NOTES,
     slugs: SPI_UNITS_MEASUREMENT_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Physics",
+    subjectRoute: "spi-physics",
+    subjectDisplay: "SPI Physics",
+    chapterSlug: "energy-sources",
+    chipLabel: "Energy Sources notes",
+    chapter: SPI_ENERGY_SOURCES_CHAPTER,
+    notes: SPI_ENERGY_SOURCES_NOTES,
+    slugs: SPI_ENERGY_SOURCES_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Physics",
+    subjectRoute: "spi-physics",
+    subjectDisplay: "SPI Physics",
+    chapterSlug: "kinematics",
+    chipLabel: "Kinematics and Motion notes",
+    chapter: SPI_KINEMATICS_CHAPTER,
+    notes: SPI_KINEMATICS_NOTES,
+    slugs: SPI_KINEMATICS_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Physics",
+    subjectRoute: "spi-physics",
+    subjectDisplay: "SPI Physics",
+    chapterSlug: "fluids-matter",
+    chipLabel: "Fluid Mechanics and Properties of Matter notes",
+    chapter: SPI_FLUIDS_MATTER_CHAPTER,
+    notes: SPI_FLUIDS_MATTER_NOTES,
+    slugs: SPI_FLUIDS_MATTER_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Physics",
+    subjectRoute: "spi-physics",
+    subjectDisplay: "SPI Physics",
+    chapterSlug: "gravitation",
+    chipLabel: "Gravitation notes",
+    chapter: SPI_GRAVITATION_CHAPTER,
+    notes: SPI_GRAVITATION_NOTES,
+    slugs: SPI_GRAVITATION_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Physics",
+    subjectRoute: "spi-physics",
+    subjectDisplay: "SPI Physics",
+    chapterSlug: "laws-of-motion",
+    chipLabel: "Laws of Motion and Forces notes",
+    chapter: SPI_LAWS_OF_MOTION_CHAPTER,
+    notes: SPI_LAWS_OF_MOTION_NOTES,
+    slugs: SPI_LAWS_OF_MOTION_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Chemistry",
+    subjectRoute: "spi-chemistry",
+    subjectDisplay: "SPI Chemistry",
+    chapterSlug: "mole-concept",
+    chipLabel: "Mole Concept and Stoichiometry notes",
+    chapter: SPI_MOLE_CONCEPT_CHAPTER,
+    notes: SPI_MOLE_CONCEPT_NOTES,
+    slugs: SPI_MOLE_CONCEPT_SLUGS,
   },
 ];
 
