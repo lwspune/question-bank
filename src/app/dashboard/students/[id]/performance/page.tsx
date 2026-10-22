@@ -10,6 +10,7 @@ import { getTaxonomyLinks } from "@/lib/performance/taxonomy";
 import { EMPTY_TAXONOMY_LINKS, type TaxonomyLinks } from "@/lib/performance/links";
 import { buildPerformance } from "@/lib/performance/compute";
 import { buildLaneNav } from "@/lib/performance/laneNav";
+import StaffAnswerSheets from "./StaffAnswerSheets";
 
 // Reads another student's own-row data behind a staff gate, so it must never be
 // cached or indexed.
@@ -67,6 +68,8 @@ export default async function StudentPerformancePage({
           basePath={`/dashboard/students/${params.id}/performance`}
           viewer="staff"
         />
+        {/* Superadmin only; renders nothing for a teacher or admin. */}
+        <StaffAnswerSheets studentId={params.id} />
       </main>
     </>
   );

@@ -22,6 +22,9 @@ import { pickStarter } from "@/lib/performance/starter";
 import { loadLastPractisedChapter, loadStarterCatalogue } from "@/lib/performance/starterQuery";
 import { profileFieldsFromRow } from "@/lib/header-session";
 import { getExamBySlug, isBoardExam, resolveBoardHref } from "@/lib/exam/examContext";
+import AnswerSheetsCard from "@/components/answerSheets/AnswerSheetsCard";
+import { listOwnSubmissions } from "@/lib/answerSheets/query";
+import { cardSheetRows } from "@/lib/answerSheets/sheetRows";
 
 /**
  * A student's own performance diagnosis — the same readout staff have had since
@@ -93,6 +96,10 @@ export default async function OwnPerformancePage({ searchParams }: { searchParam
   // the page offers one short test instead of a blank box. Read only then.
   const starter = built.summary.graded === 0 ? await loadStarterCard(db, user.id) : undefined;
 
+  // Board papers written on paper and checked by hand (migration 0153). Read
+  // with the student's own session: the tables only return their own sheets.
+  const sheets = cardSheetRows(await listOwnSubmissions(db), { kind: "self" });
+
   return (
     <>
       <AppHeader />
@@ -118,6 +125,7 @@ export default async function OwnPerformancePage({ searchParams }: { searchParam
           starter={starter}
           headerAction={allPapers("bg-white/10 text-white ring-1 ring-white/25 hover:bg-white/20")}
         />
+        <AnswerSheetsCard rows={sheets.rows} more={sheets.more} />
       </main>
     </>
   );
