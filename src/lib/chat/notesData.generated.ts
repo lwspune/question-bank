@@ -322,7 +322,20 @@ export const NOTES_DATA_KEYS: readonly string[] = [
   "afcat-maths/speed-time-distance",
   "afcat-maths/average",
   "afcat-maths/percentage",
-  "afcat-maths/decimals-fractions"
+  "afcat-maths/decimals-fractions",
+  "afcat-maths/time-work",
+  "afcat-maths/mixture-alligation",
+  "afcat-maths/probability",
+  "afcat-maths/clock",
+  "afcat-maths/squares-roots",
+  "afcat-maths/lcm-hcf",
+  "afcat-maths/indices-surds",
+  "afcat-maths/statistics",
+  "afcat-maths/sequence-series",
+  "afcat-maths/number-system",
+  "afcat-maths/heights-distances",
+  "afcat-maths/area-perimeter",
+  "afcat-maths/surface-area-volume"
 ];
 
 export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, SubtopicNote>>> = {
@@ -645,4 +658,17 @@ export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, Sub
   "afcat-maths/average": () => import("@/app/notes/afcat-maths/average/_data").then((m) => m.AF_AV_NOTES),
   "afcat-maths/percentage": () => import("@/app/notes/afcat-maths/percentage/_data").then((m) => m.AF_PC_NOTES),
   "afcat-maths/decimals-fractions": () => import("@/app/notes/afcat-maths/decimals-fractions/_data").then((m) => m.AF_DF_NOTES),
+  "afcat-maths/time-work": () => import("@/app/notes/afcat-maths/time-work/_data").then((m) => m.AF_TW_NOTES),
+  "afcat-maths/mixture-alligation": () => import("@/app/notes/afcat-maths/mixture-alligation/_data").then((m) => m.AF_MA_NOTES),
+  "afcat-maths/probability": () => import("@/app/notes/afcat-maths/probability/_data").then((m) => m.AF_PR_NOTES),
+  "afcat-maths/clock": () => import("@/app/notes/afcat-maths/clock/_data").then((m) => m.AF_CL_NOTES),
+  "afcat-maths/squares-roots": () => import("@/app/notes/afcat-maths/squares-roots/_data").then((m) => m.AF_SQ_NOTES),
+  "afcat-maths/lcm-hcf": () => import("@/app/notes/afcat-maths/lcm-hcf/_data").then((m) => m.AF_LH_NOTES),
+  "afcat-maths/indices-surds": () => import("@/app/notes/afcat-maths/indices-surds/_data").then((m) => m.AF_IS_NOTES),
+  "afcat-maths/statistics": () => import("@/app/notes/afcat-maths/statistics/_data").then((m) => m.AF_ST_NOTES),
+  "afcat-maths/sequence-series": () => import("@/app/notes/afcat-maths/sequence-series/_data").then((m) => m.AF_SS_NOTES),
+  "afcat-maths/number-system": () => import("@/app/notes/afcat-maths/number-system/_data").then((m) => m.AF_NS_NOTES),
+  "afcat-maths/heights-distances": () => import("@/app/notes/afcat-maths/heights-distances/_data").then((m) => m.AF_HD_NOTES),
+  "afcat-maths/area-perimeter": () => import("@/app/notes/afcat-maths/area-perimeter/_data").then((m) => m.AF_AP_NOTES),
+  "afcat-maths/surface-area-volume": () => import("@/app/notes/afcat-maths/surface-area-volume/_data").then((m) => m.AF_SV_NOTES),
 };

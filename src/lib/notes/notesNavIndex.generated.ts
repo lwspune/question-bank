@@ -2236,5 +2236,96 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "AFCAT Numerical Ability",
     "chapterSlug": "decimals-fractions",
     "subtopicCount": 7
+  },
+  {
+    "examName": "AFCAT",
+    "subjectRoute": "afcat-maths",
+    "subjectDisplay": "AFCAT Numerical Ability",
+    "chapterSlug": "time-work",
+    "subtopicCount": 7
+  },
+  {
+    "examName": "AFCAT",
+    "subjectRoute": "afcat-maths",
+    "subjectDisplay": "AFCAT Numerical Ability",
+    "chapterSlug": "mixture-alligation",
+    "subtopicCount": 6
+  },
+  {
+    "examName": "AFCAT",
+    "subjectRoute": "afcat-maths",
+    "subjectDisplay": "AFCAT Numerical Ability",
+    "chapterSlug": "probability",
+    "subtopicCount": 6
+  },
+  {
+    "examName": "AFCAT",
+    "subjectRoute": "afcat-maths",
+    "subjectDisplay": "AFCAT Numerical Ability",
+    "chapterSlug": "clock",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "AFCAT",
+    "subjectRoute": "afcat-maths",
+    "subjectDisplay": "AFCAT Numerical Ability",
+    "chapterSlug": "squares-roots",
+    "subtopicCount": 6
+  },
+  {
+    "examName": "AFCAT",
+    "subjectRoute": "afcat-maths",
+    "subjectDisplay": "AFCAT Numerical Ability",
+    "chapterSlug": "lcm-hcf",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "AFCAT",
+    "subjectRoute": "afcat-maths",
+    "subjectDisplay": "AFCAT Numerical Ability",
+    "chapterSlug": "indices-surds",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "AFCAT",
+    "subjectRoute": "afcat-maths",
+    "subjectDisplay": "AFCAT Numerical Ability",
+    "chapterSlug": "statistics",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "AFCAT",
+    "subjectRoute": "afcat-maths",
+    "subjectDisplay": "AFCAT Numerical Ability",
+    "chapterSlug": "sequence-series",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "AFCAT",
+    "subjectRoute": "afcat-maths",
+    "subjectDisplay": "AFCAT Numerical Ability",
+    "chapterSlug": "number-system",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "AFCAT",
+    "subjectRoute": "afcat-maths",
+    "subjectDisplay": "AFCAT Numerical Ability",
+    "chapterSlug": "heights-distances",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "AFCAT",
+    "subjectRoute": "afcat-maths",
+    "subjectDisplay": "AFCAT Numerical Ability",
+    "chapterSlug": "area-perimeter",
+    "subtopicCount": 6
+  },
+  {
+    "examName": "AFCAT",
+    "subjectRoute": "afcat-maths",
+    "subjectDisplay": "AFCAT Numerical Ability",
+    "chapterSlug": "surface-area-volume",
+    "subtopicCount": 6
   }
 ];

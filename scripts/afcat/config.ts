@@ -75,10 +75,10 @@ export const CHAPTERS: Record<string, Chapter> = {
       "Work and Efficiency",
       "Combined Work",
       "Partial Work, Joining and Leaving",
-      "Man-Days and Group Work",
-      "Wages and Share of Work",
-      "Pipes and Cisterns",
       "Working on Alternate Days",
+      "Man-Days and Group Work",
+      "Workforce Changes Mid-Job",
+      "Pipes and Cisterns",
     ],
     files: [
       {
@@ -175,11 +175,12 @@ export const CHAPTERS: Record<string, Chapter> = {
     id: "mixture-and-alligation",
     chapterName: "Mixture and Alligation",
     subtopics: [
+      "Adding to a Mixture",
+      "Percentage Strength of a Mixture",
       "Mean Price and Mean Concentration",
       "Rule of Alligation",
-      "Adding to a Mixture",
-      "Removal and Replacement",
       "Profit and Loss on Mixtures",
+      "Removal and Replacement",
     ],
     files: [
       {
@@ -297,12 +298,12 @@ export const CHAPTERS: Record<string, Chapter> = {
     id: "probability",
     chapterName: "Probability",
     subtopics: [
+      "Probability Basics and Rules",
       "Coin Tosses",
       "Dice",
       "Playing Cards",
       "Drawing from a Bag",
-      "Numbers and Spinners",
-      "Probability Rules",
+      "Selecting Balls with Combinations",
     ],
     files: [
       {
@@ -459,7 +460,11 @@ export const CHAPTERS: Record<string, Chapter> = {
   "lcm-and-hcf": {
     id: "lcm-and-hcf",
     chapterName: "LCM and HCF",
-    subtopics: ["HCF", "LCM", "HCF and LCM Together"],
+    subtopics: [
+      "Finding HCF and LCM",
+      "HCF and LCM Together",
+      "Greatest and Least Number Problems",
+    ],
     files: [
       {
         key: "book",
@@ -473,17 +478,28 @@ export const CHAPTERS: Record<string, Chapter> = {
   "indices-and-surds": {
     id: "indices-and-surds",
     chapterName: "Indices and Surds",
-    subtopics: ["Laws of Exponents", "Radicals and Surds", "Applications of Indices"],
+    subtopics: [
+      "Laws of Exponents",
+      "Fractional Powers and Roots",
+      "Radicals and Surds",
+      "Rationalising and Surd Identities",
+    ],
     files: [
       { key: "cp-laws", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Laws of Exponents", path: "13. Exponents, Radicals, Surds\\01. Laws of Exponents.xlsx", subtopic: "Laws of Exponents", note: "AFCAT practice — Cadetprep AFCAT sheet, Indices and Surds. Every key blind re-derived." },
       { key: "cp-surds", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Radicals and Surds", path: "13. Exponents, Radicals, Surds\\02. Radicals and Surds.xlsx", subtopic: "Radicals and Surds", note: "AFCAT practice — Cadetprep AFCAT sheet, Indices and Surds. Every key blind re-derived." },
-      { key: "cp-apps", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Applications of Indices", path: "13. Exponents, Radicals, Surds\\03. Applications.xlsx", subtopic: "Applications of Indices", note: "AFCAT practice — Cadetprep AFCAT sheet, Indices and Surds. Every key blind re-derived." },
+      { key: "cp-apps", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Applications of Indices", path: "13. Exponents, Radicals, Surds\\03. Applications.xlsx", subtopic: "Fractional Powers and Roots", note: "AFCAT practice — Cadetprep AFCAT sheet, Indices and Surds. Every key blind re-derived." },
     ],
   },
   "number-system": {
     id: "number-system",
     chapterName: "Number System",
-    subtopics: ["Types of Numbers", "Factors and Multiples", "Divisibility Rules", "Prime Factorization", "Remainders and Quotients"],
+    subtopics: [
+      "Types of Numbers",
+      "Divisibility Rules",
+      "Prime Factorization",
+      "Factors and Multiples",
+      "Remainders and Quotients",
+    ],
     files: [
       { key: "cp-types", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Types of Numbers", path: "15. Number System\\01. Types of Numbers.xlsx", subtopic: "Types of Numbers", note: "AFCAT practice — Cadetprep AFCAT sheet, Number System. Every key blind re-derived." },
       { key: "cp-factors", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Factors and Multiples", path: "15. Number System\\02. Factors and Multiples.xlsx", subtopic: "Factors and Multiples", note: "AFCAT practice — Cadetprep AFCAT sheet, Number System. Every key blind re-derived." },
@@ -495,7 +511,12 @@ export const CHAPTERS: Record<string, Chapter> = {
   "sequence-and-series": {
     id: "sequence-and-series",
     chapterName: "Sequence and Series",
-    subtopics: ["Arithmetic Progression", "Geometric Progression", "Harmonic Progression and Means", "Special Series"],
+    subtopics: [
+      "Arithmetic Progression",
+      "Geometric Progression",
+      "Harmonic Progression and Means",
+      "Special Series and Standard Sums",
+    ],
     files: [
       {
         // CDS Pathfinder chapter; the same file sits in 14. Number_System and
@@ -515,7 +536,14 @@ export const CHAPTERS: Record<string, Chapter> = {
   "squares-and-roots": {
     id: "squares-and-roots",
     chapterName: "Squares, Cubes and Roots",
-    subtopics: ["Squares and Square Roots", "Cubes and Cube Roots", "Surds and Indices", "Mixed Operations"],
+    subtopics: [
+      "Squares and Perfect Squares",
+      "Square Roots",
+      "Cubes and Cube Roots",
+      "Making a Perfect Square or Cube",
+      "Simplifying and Rationalising Surds",
+      "Fractional Powers and Indices",
+    ],
     files: [
       {
         // CDS Pathfinder chapter; practice exercise only (its CDS past-year
@@ -527,17 +555,22 @@ export const CHAPTERS: Record<string, Chapter> = {
         path: "16. Square_Square_Roots_Cube_Cube_Roots\\05_Square_roots_cube_roots.pdf",
         note: "AFCAT practice — CDS Pathfinder (book chapter), Squares, Cubes and Roots. Every key blind re-derived.",
       },
-      { key: "cp-squares", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Squares and Square Roots", path: "14. Square, Square Roots, Cube, Cube Roots\\01. Squares and Square Roots.xlsx", subtopic: "Squares and Square Roots", note: "AFCAT practice — Cadetprep AFCAT sheet, Squares, Cubes and Roots. Every key blind re-derived." },
-      { key: "cp-sqprops", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Properties of Squares", path: "14. Square, Square Roots, Cube, Cube Roots\\02. Squares and Square Roots - Properties.xlsx", subtopic: "Squares and Square Roots", note: "AFCAT practice — Cadetprep AFCAT sheet, Squares, Cubes and Roots. Every key blind re-derived." },
+      { key: "cp-squares", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Squares and Square Roots", path: "14. Square, Square Roots, Cube, Cube Roots\\01. Squares and Square Roots.xlsx", subtopic: "Square Roots", note: "AFCAT practice — Cadetprep AFCAT sheet, Squares, Cubes and Roots. Every key blind re-derived." },
+      { key: "cp-sqprops", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Properties of Squares", path: "14. Square, Square Roots, Cube, Cube Roots\\02. Squares and Square Roots - Properties.xlsx", subtopic: "Square Roots", note: "AFCAT practice — Cadetprep AFCAT sheet, Squares, Cubes and Roots. Every key blind re-derived." },
       { key: "cp-cubes", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Cubes and Cube Roots", path: "14. Square, Square Roots, Cube, Cube Roots\\03. Cubes and Cube Roots.xlsx", subtopic: "Cubes and Cube Roots", note: "AFCAT practice — Cadetprep AFCAT sheet, Squares, Cubes and Roots. Every key blind re-derived." },
       { key: "cp-cuprops", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Properties of Cubes", path: "14. Square, Square Roots, Cube, Cube Roots\\04. Cubes and Cube Roots - Properties.xlsx", subtopic: "Cubes and Cube Roots", note: "AFCAT practice — Cadetprep AFCAT sheet, Squares, Cubes and Roots. Every key blind re-derived." },
-      { key: "cp-mixed", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Mixed Operations", path: "14. Square, Square Roots, Cube, Cube Roots\\05. Mixed Operations.xlsx", subtopic: "Mixed Operations", note: "AFCAT practice — Cadetprep AFCAT sheet, Squares, Cubes and Roots. Every key blind re-derived." },
+      { key: "cp-mixed", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Mixed Operations", path: "14. Square, Square Roots, Cube, Cube Roots\\05. Mixed Operations.xlsx", subtopic: "Simplifying and Rationalising Surds", note: "AFCAT practice — Cadetprep AFCAT sheet, Squares, Cubes and Roots. Every key blind re-derived." },
     ],
   },
   "heights-and-distances": {
     id: "heights-and-distances",
     chapterName: "Heights and Distances",
-    subtopics: ["Angle of Elevation", "Angle of Depression", "Moving Objects and Speed", "Trigonometric Ratios"],
+    subtopics: [
+      "Trigonometric Ratios",
+      "One Angle of Elevation or Depression",
+      "Two Angles from Two Points",
+      "Two Buildings, Flagstaffs and Reflections",
+    ],
     files: [
       {
         key: "book",
@@ -547,13 +580,18 @@ export const CHAPTERS: Record<string, Chapter> = {
         note: "AFCAT practice — CDS Pathfinder (book chapter), Heights and Distances. Every key blind re-derived.",
       },
       { key: "cp-ratios", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Trigonometric Ratios", path: "18. Height and Distance\\01. Trigonometric Ratios.xlsx", subtopic: "Trigonometric Ratios", note: "AFCAT practice — Cadetprep AFCAT sheet, Heights and Distances. Every key blind re-derived." },
-      { key: "cp-problems", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Heights and Distances Problems", path: "18. Height and Distance\\02. Problems.xlsx", subtopic: "Angle of Elevation", note: "AFCAT practice — Cadetprep AFCAT sheet, Heights and Distances. Every key blind re-derived." },
+      { key: "cp-problems", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Heights and Distances Problems", path: "18. Height and Distance\\02. Problems.xlsx", subtopic: "One Angle of Elevation or Depression", note: "AFCAT practice — Cadetprep AFCAT sheet, Heights and Distances. Every key blind re-derived." },
     ],
   },
   statistics: {
     id: "statistics",
     chapterName: "Statistics",
-    subtopics: ["Data and Classification", "Graphs and Diagrams", "Mean", "Median and Mode", "Standard Deviation"],
+    subtopics: [
+      "Data, Classes and Pie Charts",
+      "Mean and Standard Deviation",
+      "Median, Mode and Comparing Averages",
+      "Histograms, Polygons and Ogives",
+    ],
     files: [
       {
         key: "book",
@@ -567,7 +605,14 @@ export const CHAPTERS: Record<string, Chapter> = {
   "area-and-perimeter": {
     id: "area-and-perimeter",
     chapterName: "Area and Perimeter",
-    subtopics: ["Triangles and Quadrilaterals", "Circles and Sectors", "Combined Figures", "Change in Dimensions", "Regular Polygons"],
+    subtopics: [
+      "Rectangles and Squares",
+      "Triangles",
+      "Quadrilaterals and Regular Polygons",
+      "Circles and Sectors",
+      "Combined Figures",
+      "Change in Dimensions",
+    ],
     files: [
       {
         key: "book",
@@ -576,13 +621,20 @@ export const CHAPTERS: Record<string, Chapter> = {
         path: "20. Mensuration\\26_Area_&_Perimeter_of_Plane_Figure.pdf",
         note: "AFCAT practice — CDS Pathfinder (book chapter), Area and Perimeter. Every key blind re-derived.",
       },
-      { key: "cp-2d", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Mensuration 2D", path: "12. Mensuration\\01. Mensuration 2D.xlsx", subtopic: "Triangles and Quadrilaterals", note: "AFCAT practice — Cadetprep AFCAT sheet, Mensuration. Every key blind re-derived." },
+      { key: "cp-2d", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Mensuration 2D", path: "12. Mensuration\\01. Mensuration 2D.xlsx", subtopic: "Triangles", note: "AFCAT practice — Cadetprep AFCAT sheet, Mensuration. Every key blind re-derived." },
     ],
   },
   "surface-area-and-volume": {
     id: "surface-area-and-volume",
     chapterName: "Surface Area and Volume",
-    subtopics: ["Cube and Cuboid", "Cylinder", "Cone and Frustum", "Sphere and Hemisphere", "Combined Solids and Recasting", "Prisms and Pyramids"],
+    subtopics: [
+      "Cube, Cuboid, Prism and Pyramid",
+      "Cylinder",
+      "Cone and Frustum",
+      "Sphere and Hemisphere",
+      "Combined and Inscribed Solids",
+      "Melting, Recasting and Displacement",
+    ],
     files: [
       {
         key: "book",
@@ -591,7 +643,7 @@ export const CHAPTERS: Record<string, Chapter> = {
         path: "20. Mensuration\\27_Surface_Area_&_Volume_of_Solids.pdf",
         note: "AFCAT practice — CDS Pathfinder (book chapter), Surface Area and Volume. Every key blind re-derived.",
       },
-      { key: "cp-3d", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Mensuration 3D", path: "12. Mensuration\\02. Mensuration 3D.xlsx", subtopic: "Cube and Cuboid", note: "AFCAT practice — Cadetprep AFCAT sheet, Mensuration. Every key blind re-derived." },
+      { key: "cp-3d", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Mensuration 3D", path: "12. Mensuration\\02. Mensuration 3D.xlsx", subtopic: "Cube, Cuboid, Prism and Pyramid", note: "AFCAT practice — Cadetprep AFCAT sheet, Mensuration. Every key blind re-derived." },
     ],
   },
   average: {
@@ -643,7 +695,13 @@ export const CHAPTERS: Record<string, Chapter> = {
   clock: {
     id: "clock",
     chapterName: "Clock",
-    subtopics: ["Angle Between the Hands", "Faulty Clocks", "Gain and Loss of Time", "Angle Covered by the Hands", "Time Reasoning", "Coinciding and Opposite Hands", "Mirror Images"],
+    subtopics: [
+      "Angle Covered by the Hands",
+      "Angle Between the Hands",
+      "Hands Coinciding, Opposite or at an Angle",
+      "Mirror Images",
+      "Faulty Clocks",
+    ],
     files: [
       {
         key: "errorless",
@@ -664,7 +722,7 @@ export const CHAPTERS: Record<string, Chapter> = {
         note: "AFCAT practice — Conquer the Sky AFCAT (book chapter), Clock. Every key blind re-derived.",
       },
       { key: "cp-angle", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Angle Between the Hands", path: "11. Clock\\01. Angle_Based_Problems.xlsx", subtopic: "Angle Between the Hands", note: "AFCAT practice — Cadetprep AFCAT sheet, Clock. Every key blind re-derived." },
-      { key: "cp-coincide", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Hands Coinciding", path: "11. Clock\\02. HAND COINCIDENCE AND FREQUENCY PROBLEMS.xlsx", subtopic: "Coinciding and Opposite Hands", note: "AFCAT practice — Cadetprep AFCAT sheet, Clock. Every key blind re-derived." },
+      { key: "cp-coincide", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Hands Coinciding", path: "11. Clock\\02. HAND COINCIDENCE AND FREQUENCY PROBLEMS.xlsx", subtopic: "Hands Coinciding, Opposite or at an Angle", note: "AFCAT practice — Cadetprep AFCAT sheet, Clock. Every key blind re-derived." },
       { key: "cp-faulty", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Faulty Clocks", path: "11. Clock\\03. FAULTY_DEFECTIVE CLOCK PROBLEMS.xlsx", subtopic: "Faulty Clocks", note: "AFCAT practice — Cadetprep AFCAT sheet, Clock. Every key blind re-derived." },
       { key: "cp-mirror", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Mirror Images", path: "11. Clock\\04. MIRROR IMAGE_REFLECTION PROBLEMS.xlsx", subtopic: "Mirror Images", note: "AFCAT practice — Cadetprep AFCAT sheet, Clock. Every key blind re-derived." },
       { key: "cp-speed", group: "D", root: "cadetprep", label: "Cadetprep AFCAT: Speed of the Hands", path: "11. Clock\\05. HAND SPEED AND RELATIVE MOTION PROBLEMS.xlsx", subtopic: "Angle Covered by the Hands", note: "AFCAT practice — Cadetprep AFCAT sheet, Clock. Every key blind re-derived." },

@@ -65,8 +65,10 @@ page exporting `AF_<P>_<PAGE>_NOTE: SubtopicNote`, plus `chapter.ts` exporting
 registers the chapter; an unregistered route page breaks the build).
 
 **E. Report** `generated-papers/_af<code>-report.md` (under ~150 lines): problems from A, each with
-id, question id, class, derivation and the proposed fix as override JSON (`{"answer": "B"}`,
-`{"options": {"C": "..."}}`, `{"solution": "..."}`); the page plan with row counts; featured row
+id, question id, class, derivation and the proposed fix as override JSON (`{"stem": "..."}` (the
+field is `stem`, never `text`), `{"solution": "..."}`); give an option fix as OLD option text → NEW
+option text, never by letter: the dump's letters come after the chapter's shuffle plan, while
+override letters are the source's, so a letter can point at the wrong option (Clock 04-17, 05-18); the page plan with row counts; featured row
 per concept; any concept under 4 rows and why; uncertainties.
 
 ## Hard rules for the pages (each one broke a shipped chapter)

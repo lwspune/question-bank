@@ -60,6 +60,17 @@ export type PracticeProblem = {
  * visualization requires landing the component AND extending this union.
  */
 export type VisualizationSlug =
+  | "af-cone-cut"
+  | "af-cuboid-diagonal"
+  | "af-square-in-circle"
+  | "af-path-around-lawn"
+  | "af-two-sightings"
+  | "af-angle-of-depression"
+  | "af-ogive-median"
+  | "af-dice-sum-grid"
+  | "af-clock-mirror"
+  | "af-clock-angle"
+  | "af-alligation-cross"
   | "regression-line-fit"
   | "variance-squared-deviations"
   | "histogram-bin-slider"
