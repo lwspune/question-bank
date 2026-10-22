@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { featuredLeadIn, notesBrowseKind, notesCountKind, notesCountNoun } from "../src/lib/notes/countKind";
+import { featuredLeadIn, notesBrowseKind, notesCountKind, notesCountNoun, notesHubCountLabel } from "../src/lib/notes/countKind";
 import { buildBrowseUrl } from "../src/lib/guide/buildBrowseUrl";
 
 describe("notesCountKind", () => {
@@ -14,6 +14,13 @@ describe("notesCountKind", () => {
   it("names what it counts, so a card never calls a practice question a PYQ", () => {
     expect(notesCountNoun("pyq")).toBe("PYQs");
     expect(notesCountNoun("all")).toBe("questions");
+  });
+});
+
+describe("notesHubCountLabel", () => {
+  it("calls a past-year-only count past questions, and an all-kinds count just questions", () => {
+    expect(notesHubCountLabel("pyq")).toBe("past questions");
+    expect(notesHubCountLabel("all")).toBe("questions");
   });
 });
 

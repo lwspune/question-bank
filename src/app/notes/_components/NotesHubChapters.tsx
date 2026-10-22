@@ -20,9 +20,12 @@ const storageKey = (examSlug: string) => `qb_notes_hub_tab:${examSlug}`;
 export default function NotesHubChapters({
   examSlug,
   subjects,
+  countLabel = "past questions",
 }: {
   examSlug: string;
   subjects: HubSubject[];
+  /** "past questions", or "questions" for an exam whose notes count practice too (lib/notes/countKind.ts). */
+  countLabel?: string;
 }) {
   const [active, setActive] = useState(0);
   const [expanded, setExpanded] = useState<Record<string, boolean>>({});
@@ -134,7 +137,7 @@ export default function NotesHubChapters({
                   </span>
                   <span className="mt-0.5 block text-base font-semibold tracking-tight">{start.name}</span>
                   <span className="block text-sm text-muted-foreground">
-                    {start.count} past questions · {start.subtopicCount} subtopics
+                    {start.count} {countLabel} · {start.subtopicCount} subtopics
                   </span>
                 </span>
                 <ArrowRight className="h-4 w-4 shrink-0 text-brand-accent" aria-hidden />
@@ -156,7 +159,7 @@ export default function NotesHubChapters({
                     <span className="min-w-0">
                       <span className="block text-[15px] font-medium">{c.name}</span>
                       {c.count > 0 && (
-                        <span className="block text-xs text-muted-foreground">{c.count} past questions</span>
+                        <span className="block text-xs text-muted-foreground">{c.count} {countLabel}</span>
                       )}
                     </span>
                     <ArrowRight className="h-4 w-4 shrink-0 text-brand-accent" aria-hidden />
