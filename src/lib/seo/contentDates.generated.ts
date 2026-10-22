@@ -6,7 +6,7 @@
  * committed rather than computed at build time, and src/lib/seo/lastmod.ts for
  * how a route with no entry here inherits from its nearest recorded ancestor.
  *
- * Entries: 356
+ * Entries: 386
  */
 import type { ContentDateMap } from "@/lib/seo/lastmod";
 
@@ -28,6 +28,15 @@ export const CONTENT_DATES: ContentDateMap = {
   "/guide/nda-maths": "2026-09-19T14:48:07+05:30",
   "/guide/nda-physics": "2026-09-14T14:45:43+05:30",
   "/guide/nda-polity": "2026-09-14T14:45:43+05:30",
+  "/notes/cds-biology/biochemistry": "2026-10-23T01:30:18+05:30",
+  "/notes/cds-biology/biodiversity-classification": "2026-10-23T01:39:13+05:30",
+  "/notes/cds-biology/cell-biology": "2026-10-23T01:30:18+05:30",
+  "/notes/cds-biology/ecology-environment": "2026-10-23T01:39:13+05:30",
+  "/notes/cds-biology/genetics-evolution": "2026-10-23T01:39:13+05:30",
+  "/notes/cds-biology/human-physiology": "2026-10-23T01:30:18+05:30",
+  "/notes/cds-biology/microbiology-disease": "2026-10-23T01:39:13+05:30",
+  "/notes/cds-biology/plant-biology": "2026-10-23T01:39:13+05:30",
+  "/notes/cds-biology/reproduction": "2026-10-23T01:30:18+05:30",
   "/notes/cds-chemistry/acids-bases-salts": "2026-10-02T01:09:44+05:30",
   "/notes/cds-chemistry/atomic-structure": "2026-10-02T01:09:44+05:30",
   "/notes/cds-chemistry/carbon-compounds": "2026-10-02T01:09:44+05:30",
@@ -39,6 +48,10 @@ export const CONTENT_DATES: ContentDateMap = {
   "/notes/cds-chemistry/matter-states": "2026-10-02T01:09:44+05:30",
   "/notes/cds-chemistry/metals-non-metals": "2026-10-02T01:09:44+05:30",
   "/notes/cds-chemistry/mole-concept": "2026-10-02T00:58:01+05:30",
+  "/notes/cds-economics/indian-economy": "2026-10-23T01:13:57+05:30",
+  "/notes/cds-economics/microeconomics": "2026-10-23T01:24:19+05:30",
+  "/notes/cds-economics/money-banking-finance": "2026-10-23T01:24:19+05:30",
+  "/notes/cds-economics/national-income-growth": "2026-10-23T01:13:57+05:30",
   "/notes/cds-english/cloze-test": "2026-10-02T07:57:02+05:30",
   "/notes/cds-english/fill-in-the-blanks": "2026-10-02T07:57:02+05:30",
   "/notes/cds-english/grammar": "2026-10-02T07:57:02+05:30",
@@ -84,6 +97,23 @@ export const CONTENT_DATES: ContentDateMap = {
   "/notes/cds-maths/triangles": "2026-09-29T08:59:50+05:30",
   "/notes/cds-maths/trigonometry": "2026-09-28T21:33:03+05:30",
   "/notes/cds-maths/tsd": "2026-09-29T13:41:18+05:30",
+  "/notes/cds-physics/electricity-magnetism": "2026-10-23T01:10:12+05:30",
+  "/notes/cds-physics/electronics-computers": "2026-10-23T01:10:12+05:30",
+  "/notes/cds-physics/energy-sources": "2026-10-23T01:06:44+05:30",
+  "/notes/cds-physics/fluids-properties-of-matter": "2026-10-23T00:56:17+05:30",
+  "/notes/cds-physics/gravitation": "2026-10-23T00:56:17+05:30",
+  "/notes/cds-physics/heat-thermodynamics": "2026-10-23T01:06:44+05:30",
+  "/notes/cds-physics/kinematics": "2026-10-23T00:56:17+05:30",
+  "/notes/cds-physics/laws-of-motion": "2026-10-23T00:56:17+05:30",
+  "/notes/cds-physics/light-optics": "2026-10-23T01:06:44+05:30",
+  "/notes/cds-physics/modern-physics": "2026-10-23T01:10:12+05:30",
+  "/notes/cds-physics/sound": "2026-10-23T01:06:44+05:30",
+  "/notes/cds-physics/units-measurement": "2026-10-23T00:56:17+05:30",
+  "/notes/cds-physics/work-energy-power": "2026-10-23T00:56:17+05:30",
+  "/notes/cds-polity/government-structure": "2026-10-23T00:42:52+05:30",
+  "/notes/cds-polity/indian-constitution": "2026-10-23T00:36:08+05:30",
+  "/notes/cds-polity/rights-dpsp-local-government": "2026-10-23T00:36:08+05:30",
+  "/notes/cds-polity/world-polity": "2026-10-23T00:47:01+05:30",
   "/notes/jee-mains-chemistry/alcohols-phenols-and-ethers": "2026-09-30T23:20:11+05:30",
   "/notes/jee-mains-chemistry/aldehydes-ketones-and-carboxylic-acids": "2026-09-30T23:37:30+05:30",
   "/notes/jee-mains-chemistry/amines": "2026-09-30T23:54:03+05:30",

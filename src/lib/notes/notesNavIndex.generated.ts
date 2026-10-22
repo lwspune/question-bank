@@ -2698,5 +2698,215 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "CDS Geography",
     "chapterSlug": "indian-economic-geography",
     "subtopicCount": 8
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-polity",
+    "subjectDisplay": "CDS Polity",
+    "chapterSlug": "indian-constitution",
+    "subtopicCount": 7
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-polity",
+    "subjectDisplay": "CDS Polity",
+    "chapterSlug": "rights-dpsp-local-government",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-polity",
+    "subjectDisplay": "CDS Polity",
+    "chapterSlug": "government-structure",
+    "subtopicCount": 10
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-polity",
+    "subjectDisplay": "CDS Polity",
+    "chapterSlug": "world-polity",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-physics",
+    "subjectDisplay": "CDS Physics",
+    "chapterSlug": "units-measurement",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-physics",
+    "subjectDisplay": "CDS Physics",
+    "chapterSlug": "kinematics",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-physics",
+    "subjectDisplay": "CDS Physics",
+    "chapterSlug": "laws-of-motion",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-physics",
+    "subjectDisplay": "CDS Physics",
+    "chapterSlug": "work-energy-power",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-physics",
+    "subjectDisplay": "CDS Physics",
+    "chapterSlug": "gravitation",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-physics",
+    "subjectDisplay": "CDS Physics",
+    "chapterSlug": "fluids-properties-of-matter",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-physics",
+    "subjectDisplay": "CDS Physics",
+    "chapterSlug": "heat-thermodynamics",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-physics",
+    "subjectDisplay": "CDS Physics",
+    "chapterSlug": "sound",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-physics",
+    "subjectDisplay": "CDS Physics",
+    "chapterSlug": "light-optics",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-physics",
+    "subjectDisplay": "CDS Physics",
+    "chapterSlug": "electricity-magnetism",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-physics",
+    "subjectDisplay": "CDS Physics",
+    "chapterSlug": "electronics-computers",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-physics",
+    "subjectDisplay": "CDS Physics",
+    "chapterSlug": "modern-physics",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-physics",
+    "subjectDisplay": "CDS Physics",
+    "chapterSlug": "energy-sources",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-economics",
+    "subjectDisplay": "CDS Economics",
+    "chapterSlug": "microeconomics",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-economics",
+    "subjectDisplay": "CDS Economics",
+    "chapterSlug": "national-income-growth",
+    "subtopicCount": 6
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-economics",
+    "subjectDisplay": "CDS Economics",
+    "chapterSlug": "money-banking-finance",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-economics",
+    "subjectDisplay": "CDS Economics",
+    "chapterSlug": "indian-economy",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-biology",
+    "subjectDisplay": "CDS Biology",
+    "chapterSlug": "biochemistry",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-biology",
+    "subjectDisplay": "CDS Biology",
+    "chapterSlug": "cell-biology",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-biology",
+    "subjectDisplay": "CDS Biology",
+    "chapterSlug": "biodiversity-classification",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-biology",
+    "subjectDisplay": "CDS Biology",
+    "chapterSlug": "plant-biology",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-biology",
+    "subjectDisplay": "CDS Biology",
+    "chapterSlug": "human-physiology",
+    "subtopicCount": 6
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-biology",
+    "subjectDisplay": "CDS Biology",
+    "chapterSlug": "reproduction",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-biology",
+    "subjectDisplay": "CDS Biology",
+    "chapterSlug": "genetics-evolution",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-biology",
+    "subjectDisplay": "CDS Biology",
+    "chapterSlug": "microbiology-disease",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-biology",
+    "subjectDisplay": "CDS Biology",
+    "chapterSlug": "ecology-environment",
+    "subtopicCount": 2
   }
 ];
