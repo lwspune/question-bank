@@ -35,6 +35,7 @@ import { getNotesExamGroups } from "../../../src/lib/notes/notesNav";
 import { readChapterLandingsUncached } from "../../../src/lib/questions/landing";
 import { readSubtopicIndexUncached, withSubtopics } from "../../../src/lib/chat/subtopicIndex";
 import { loadSimilarId, loadVQuestion, searchVQuestions } from "../../../src/lib/chat/questionToolsServer";
+import { conceptSources } from "../../../src/lib/chat/conceptSearchServer";
 import { aiAnswerCostUsd } from "../../../src/lib/chat/interactions";
 import type { ModelTurn } from "../../../src/lib/chat/conversation";
 import type { SavedPlan } from "../../../src/lib/chat/weekPlan";
@@ -148,6 +149,7 @@ async function main() {
           }
         : null,
       // A signed-in student with no mock results yet, as getOwnPerformance returns one (null means signed out).
+      concepts: settings.explainEnabled ? conceptSources(anon) : null,
       loadOwnProgress: c.signed_in
         ? async () => buildPerformance({ userId: "v-eval", ...EMPTY_PERFORMANCE }, new Date())
         : undefined,

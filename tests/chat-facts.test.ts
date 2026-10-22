@@ -18,6 +18,7 @@ import {
 } from "@/lib/chat/facts";
 import { GUIDE_CATALOG } from "@/lib/guide/guideCatalog";
 import { ABUSE_REPLY } from "@/lib/chat/abuse";
+import { GENERAL_LABEL } from "@/lib/chat/conceptSearch";
 import { EXAM_REGISTRY } from "@/lib/exam/examContext";
 import { getNotesExamGroups } from "@/lib/notes/notesNav";
 
@@ -489,6 +490,33 @@ describe("buildSystemPrompt", () => {
     expect(p).toMatch(/up to 8 short lines/);
     // The chat window draws \( ... \) as maths; a template string eats a single backslash.
     expect(p).toContain("Write maths inside \\( \\).");
+  });
+
+  // V_SPEC.md step 2 (owner, 2026-10-22): concepts are explained from our bank's model answers, then
+  // our notes, and only then from V's own knowledge under a fixed label.
+  it("with explanations on, has V explain a concept from explain_concept, its own knowledge only labelled", () => {
+    const p = buildSystemPrompt({ ...base, explainEnabled: true });
+    expect(p).toMatch(/7a\. Concepts/);
+    expect(p).toMatch(/call explain_concept/);
+    expect(p).toContain(GENERAL_LABEL);
+    expect(p).toMatch(/never solve a new numeric problem/i);
+    expect(p).toMatch(/search failed/i);
+    // Links and the facts-only rule name the tool, so its pages are usable.
+    expect(p).toMatch(/returned by [^.]*explain_concept/);
+    expect(p).toMatch(/rules 7 and 7a/);
+    // Baseline run, 2026-10-22: a pasted written question went to find_question and found nothing;
+    // "Coruscate" alone was answered as a greeting.
+    expect(p).toMatch(/a written question without options/i);
+    expect(p).toMatch(/If find_question finds nothing, call explain_concept/);
+    // ... but "atoms" alone is a chapter to find, not a concept: the step 2 run listed three unrelated atom facts.
+    expect(p).toMatch(/A single English word to define \("coruscate"\) is a concept \(rule 7a\)/);
+    expect(p).toMatch(/a chapter or topic name alone \("atoms", "vectors"\) is a request for that chapter \(rule 3\)/);
+  });
+
+  it("with explanations off, has no concept rule and no own-knowledge permission", () => {
+    const p = buildSystemPrompt(base);
+    expect(p).not.toMatch(/explain_concept/);
+    expect(p).not.toContain(GENERAL_LABEL);
   });
 
   // 2026-10-21 (owner): V said "I need to correct my earlier replies" about answers on ANOTHER question.

@@ -38,6 +38,7 @@ import { planTools, type PlanDeps } from "./weekPlan";
 import { myQuestionTools, type MyQuestionDeps } from "./myQuestions";
 import { GUIDE_CATALOG } from "@/lib/guide/guideCatalog";
 import type { ExamSlug } from "@/lib/exam/examContext";
+import { conceptTool, type ConceptToolDeps } from "./conceptSearch";
 
 /** Profile slugs as the exam names V's facts use; a retired or unknown slug is dropped. */
 export function profileExamNames(slugs: readonly string[]): string[] {
@@ -102,6 +103,8 @@ export async function loadVContext(
     question?: { id: string; chose: string | null } | null;
     /** A notes practice question the student tapped Ask V on, as V is told it (lib/chat/notesItem.ts). */
     notesBrief?: string | null;
+    /** explain_concept's data sources (lib/chat/conceptSearchServer.ts conceptSources); offered with the question tools. */
+    concepts?: Pick<ConceptToolDeps, "searchBank" | "loadNotesIndex" | "loadNotesConcept"> | null;
     /** The signed-in student's recent questions and saves (lib/chat/myQuestions.ts); absent when signed out. */
     myQuestions?: Omit<MyQuestionDeps, "signedIn"> | null;
   } = {}
@@ -195,5 +198,16 @@ export async function loadVContext(
   const mine = myQuestionTools({ ...(opts.myQuestions ?? SIGNED_OUT_QUESTIONS), signedIn: Boolean(opts.myQuestions) });
   const tools = [findChaptersTool, progressTool(opts.loadOwnProgress, opts.loadOwnPractice), strategyTool, ...mine, ...plan];
   if (opts.questionTools) tools.push(...questionTools({ ...opts.questionTools, pageChapterId: pageInfo?.chapterId ?? null }));
+  // V_SPEC.md step 2: concepts, with the question tools (the same switch), so the cached tool list depends on it alone.
+  if (opts.questionTools && opts.concepts) {
+    tools.push(
+      conceptTool({
+        ...opts.concepts,
+        loadChapters,
+        page: pageInfo ? { examName: pageInfo.examName, subjectName: pageInfo.subjectName } : null,
+        onPaths: (paths) => paths.forEach((p) => allowedPaths.add(p)),
+      })
+    );
+  }
   return { system, systemTail, tools, allowedPaths };
 }
