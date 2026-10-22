@@ -369,9 +369,12 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
         "explain_question",
         "similar_question",
         "find_question",
+        // V_SPEC.md step 2 (2026-10-22): concepts, under the same switch.
+        "explain_concept",
       ]);
       expect(call.systemTail).toContain(`The student tapped Ask V on question ${askedId}. They picked (B).`);
       expect(call.system).toContain("explain_question");
+      expect(call.system).toContain("explain_concept");
     });
 
     it("refuses a signed-out visitor an explanation, giving nothing away", async () => {

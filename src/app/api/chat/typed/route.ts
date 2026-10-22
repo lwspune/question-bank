@@ -75,6 +75,7 @@ import { loadNotesItemBrief } from "@/lib/chat/notesItemServer";
 import { buildMyQuestionDeps } from "@/lib/chat/myQuestionsServer";
 import type { QuestionToolDeps } from "@/lib/chat/questionToolSet";
 import { loadSimilarId, loadVQuestion, searchVQuestions } from "@/lib/chat/questionToolsServer";
+import { conceptSources } from "@/lib/chat/conceptSearchServer";
 import { revealedToday, spendVReveal } from "@/lib/chat/questionReveal";
 import { weakFromPerformance, type PlanDeps } from "@/lib/chat/weekPlan";
 import { loadCurrentPlan, loadPlanActivity, saveStudyPlan } from "@/lib/chat/weekPlanServer";
@@ -291,6 +292,8 @@ export async function POST(request: NextRequest) {
                   onMatch: (id) => (matchQuestionId = id),
                 })
               : null,
+            // Concepts read PUBLIC model answers with the anon client, and the notes (V_SPEC.md step 2).
+            concepts: settings.explainEnabled ? conceptSources(createSupabaseAnonClient()) : null,
             // The student's own login does the reading (get_own_performance): no id is passed to the database.
             loadOwnProgress: ownId ? () => ownProgress(ownId) : undefined,
             planEnabled: settings.planEnabled,
