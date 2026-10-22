@@ -1696,6 +1696,11 @@ import {
   CDS_GE_CLIMATE_NOTES,
   CDS_GE_CLIMATE_SLUGS,
 } from "@/app/notes/cds-geography/climatology/_data";
+import {
+  CDS_GE_WORLD_CHAPTER,
+  CDS_GE_WORLD_NOTES,
+  CDS_GE_WORLD_SLUGS,
+} from "@/app/notes/cds-geography/world-human-geography/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -5440,6 +5445,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: CDS_GE_CLIMATE_CHAPTER,
     notes: CDS_GE_CLIMATE_NOTES,
     slugs: CDS_GE_CLIMATE_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Geography",
+    subjectRoute: "cds-geography",
+    subjectDisplay: "CDS Geography",
+    chapterSlug: "world-human-geography",
+    chipLabel: "World and Human Geography notes",
+    chapter: CDS_GE_WORLD_CHAPTER,
+    notes: CDS_GE_WORLD_NOTES,
+    slugs: CDS_GE_WORLD_SLUGS,
   },
 ];
 
