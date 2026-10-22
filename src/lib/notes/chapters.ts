@@ -1796,6 +1796,16 @@ import {
   CDS_PH_MODERN_NOTES,
   CDS_PH_MODERN_SLUGS,
 } from "@/app/notes/cds-physics/modern-physics/_data";
+import {
+  CDS_EC_NATIONAL_INCOME_CHAPTER,
+  CDS_EC_NATIONAL_INCOME_NOTES,
+  CDS_EC_NATIONAL_INCOME_SLUGS,
+} from "@/app/notes/cds-economics/national-income-growth/_data";
+import {
+  CDS_EC_INDIAN_ECONOMY_CHAPTER,
+  CDS_EC_INDIAN_ECONOMY_NOTES,
+  CDS_EC_INDIAN_ECONOMY_SLUGS,
+} from "@/app/notes/cds-economics/indian-economy/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -5760,6 +5770,28 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: CDS_PH_ENERGY_CHAPTER,
     notes: CDS_PH_ENERGY_NOTES,
     slugs: CDS_PH_ENERGY_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Economics",
+    subjectRoute: "cds-economics",
+    subjectDisplay: "CDS Economics",
+    chapterSlug: "national-income-growth",
+    chipLabel: "National Income and Growth notes",
+    chapter: CDS_EC_NATIONAL_INCOME_CHAPTER,
+    notes: CDS_EC_NATIONAL_INCOME_NOTES,
+    slugs: CDS_EC_NATIONAL_INCOME_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Economics",
+    subjectRoute: "cds-economics",
+    subjectDisplay: "CDS Economics",
+    chapterSlug: "indian-economy",
+    chipLabel: "Indian Economy notes",
+    chapter: CDS_EC_INDIAN_ECONOMY_CHAPTER,
+    notes: CDS_EC_INDIAN_ECONOMY_NOTES,
+    slugs: CDS_EC_INDIAN_ECONOMY_SLUGS,
   },
 ];
 
