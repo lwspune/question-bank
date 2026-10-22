@@ -46,9 +46,7 @@ import { abuseReply, isAbusive } from "@/lib/chat/abuse";
 import { TYPED_QUESTION_REPLY } from "@/lib/chat/typed";
 import { personBucket } from "@/lib/chat/settings";
 import { readChatSettings, countAiAnswersToday } from "@/lib/chat/settingsAdmin";
-import { loadVContext } from "@/lib/chat/context";
-import { askV } from "@/lib/chat/anthropic";
-import { allowedReplyLinks, plainLinks } from "@/lib/chat/replyLinks";
+import { answerWithV, type VContextOptions } from "@/lib/chat/answer";
 import {
   cleanPagePath,
   currentSession,
@@ -280,7 +278,7 @@ export async function POST(request: NextRequest) {
           const history = modelHistory(session);
           const ownId = userId;
           const notesBrief = askedNotes ? await loadNotesItemBrief(pagePath, askedNotes) : null;
-          const ctx = await loadVContext(createSupabaseAnonClient(), {
+          const context: VContextOptions = {
             page: pagePath,
             signedIn: ownId !== null,
             profileExamSlugs: ownId ? await readProfileExams(ownId) : [],
@@ -299,18 +297,18 @@ export async function POST(request: NextRequest) {
             plan: ownId && settings.planEnabled ? buildPlanDeps(ownId, () => ownProgress(ownId), () => (planShown = true)) : null,
             // Same login, not remembered: "today" should move between two questions.
             loadOwnPractice: ownId ? () => getOwnPracticeCounts(createSupabaseServerClient()) : undefined,
-          });
-          const result = await askV({
-            system: ctx.system,
-            systemTail: ctx.systemTail,
+          };
+          const result = await answerWithV({
+            anon: createSupabaseAnonClient(),
+            context,
             // The message is stored as typed; V alone is told what it replies to.
-            message: replyTarget ? `${replyContext(replyTarget)}\n\n${message}` : message,
-            tools: ctx.tools,
+            message,
+            replyTo: replyTarget ? replyContext(replyTarget) : null,
             history,
           });
           if (result.ok) {
-            reply = plainLinks(result.reply);
-            links = allowedReplyLinks(reply, ctx.allowedPaths);
+            reply = result.reply;
+            links = result.links;
             recorded = {
               text: reply,
               source: "ai",
