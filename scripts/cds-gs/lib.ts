@@ -55,6 +55,8 @@ export type Derivation = {
   value: string; // the answer's content in plain terms
   confidence: string; // HIGH|MED|LOW
   reasoning: string;
+  /** Set by fix-keys.ts when a review changed the key the blind passes agreed on. */
+  corrected?: { from: string; why: string; on: string };
 };
 
 export type Verdict = "AGREE" | "TWIN" | "DISPUTE" | "MISSING";
@@ -304,6 +306,7 @@ export function buildRecords(
         hasAnswerKey: !!opts.answerKey,
         confidence: d.confidence.toUpperCase(),
         agreed,
+        corrected: !!d.corrected,
       })}`.trim(),
     });
   }
