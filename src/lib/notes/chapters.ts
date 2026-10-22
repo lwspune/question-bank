@@ -1781,6 +1781,21 @@ import {
   CDS_PH_ENERGY_NOTES,
   CDS_PH_ENERGY_SLUGS,
 } from "@/app/notes/cds-physics/energy-sources/_data";
+import {
+  CDS_PH_ELECTRICITY_CHAPTER,
+  CDS_PH_ELECTRICITY_NOTES,
+  CDS_PH_ELECTRICITY_SLUGS,
+} from "@/app/notes/cds-physics/electricity-magnetism/_data";
+import {
+  CDS_PH_ELECTRONICS_CHAPTER,
+  CDS_PH_ELECTRONICS_NOTES,
+  CDS_PH_ELECTRONICS_SLUGS,
+} from "@/app/notes/cds-physics/electronics-computers/_data";
+import {
+  CDS_PH_MODERN_CHAPTER,
+  CDS_PH_MODERN_NOTES,
+  CDS_PH_MODERN_SLUGS,
+} from "@/app/notes/cds-physics/modern-physics/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -5701,6 +5716,39 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: CDS_PH_LIGHT_CHAPTER,
     notes: CDS_PH_LIGHT_NOTES,
     slugs: CDS_PH_LIGHT_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Physics",
+    subjectRoute: "cds-physics",
+    subjectDisplay: "CDS Physics",
+    chapterSlug: "electricity-magnetism",
+    chipLabel: "Electricity and Magnetism notes",
+    chapter: CDS_PH_ELECTRICITY_CHAPTER,
+    notes: CDS_PH_ELECTRICITY_NOTES,
+    slugs: CDS_PH_ELECTRICITY_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Physics",
+    subjectRoute: "cds-physics",
+    subjectDisplay: "CDS Physics",
+    chapterSlug: "electronics-computers",
+    chipLabel: "Electronics and Computers notes",
+    chapter: CDS_PH_ELECTRONICS_CHAPTER,
+    notes: CDS_PH_ELECTRONICS_NOTES,
+    slugs: CDS_PH_ELECTRONICS_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Physics",
+    subjectRoute: "cds-physics",
+    subjectDisplay: "CDS Physics",
+    chapterSlug: "modern-physics",
+    chipLabel: "Modern Physics notes",
+    chapter: CDS_PH_MODERN_CHAPTER,
+    notes: CDS_PH_MODERN_NOTES,
+    slugs: CDS_PH_MODERN_SLUGS,
   },
   {
     examName: "CDS",
