@@ -1816,6 +1816,51 @@ import {
   CDS_EC_MONEY_NOTES,
   CDS_EC_MONEY_SLUGS,
 } from "@/app/notes/cds-economics/money-banking-finance/_data";
+import {
+  CDS_BI_BIOCHEMISTRY_CHAPTER,
+  CDS_BI_BIOCHEMISTRY_NOTES,
+  CDS_BI_BIOCHEMISTRY_SLUGS,
+} from "@/app/notes/cds-biology/biochemistry/_data";
+import {
+  CDS_BI_CELL_CHAPTER,
+  CDS_BI_CELL_NOTES,
+  CDS_BI_CELL_SLUGS,
+} from "@/app/notes/cds-biology/cell-biology/_data";
+import {
+  CDS_BI_PHYSIOLOGY_CHAPTER,
+  CDS_BI_PHYSIOLOGY_NOTES,
+  CDS_BI_PHYSIOLOGY_SLUGS,
+} from "@/app/notes/cds-biology/human-physiology/_data";
+import {
+  CDS_BI_REPRODUCTION_CHAPTER,
+  CDS_BI_REPRODUCTION_NOTES,
+  CDS_BI_REPRODUCTION_SLUGS,
+} from "@/app/notes/cds-biology/reproduction/_data";
+import {
+  CDS_BI_BIODIVERSITY_CHAPTER,
+  CDS_BI_BIODIVERSITY_NOTES,
+  CDS_BI_BIODIVERSITY_SLUGS,
+} from "@/app/notes/cds-biology/biodiversity-classification/_data";
+import {
+  CDS_BI_PLANT_CHAPTER,
+  CDS_BI_PLANT_NOTES,
+  CDS_BI_PLANT_SLUGS,
+} from "@/app/notes/cds-biology/plant-biology/_data";
+import {
+  CDS_BI_MICROBES_CHAPTER,
+  CDS_BI_MICROBES_NOTES,
+  CDS_BI_MICROBES_SLUGS,
+} from "@/app/notes/cds-biology/microbiology-disease/_data";
+import {
+  CDS_BI_GENETICS_CHAPTER,
+  CDS_BI_GENETICS_NOTES,
+  CDS_BI_GENETICS_SLUGS,
+} from "@/app/notes/cds-biology/genetics-evolution/_data";
+import {
+  CDS_BI_ECOLOGY_CHAPTER,
+  CDS_BI_ECOLOGY_NOTES,
+  CDS_BI_ECOLOGY_SLUGS,
+} from "@/app/notes/cds-biology/ecology-environment/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -5579,6 +5624,7 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     subjectDisplay: "CDS Geography",
     chapterSlug: "indian-physical-geography",
     chipLabel: "Indian Physical Geography notes",
+    titleName: "Indian Physical Geography",
     chapter: CDS_GE_PHYSICAL_CHAPTER,
     notes: CDS_GE_PHYSICAL_NOTES,
     slugs: CDS_GE_PHYSICAL_SLUGS,
@@ -5590,6 +5636,7 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     subjectDisplay: "CDS Geography",
     chapterSlug: "indian-economic-geography",
     chipLabel: "Indian Economic Geography notes",
+    titleName: "Indian Economic Geography",
     chapter: CDS_GE_ECONOMIC_CHAPTER,
     notes: CDS_GE_ECONOMIC_NOTES,
     slugs: CDS_GE_ECONOMIC_SLUGS,
@@ -5623,6 +5670,7 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     subjectDisplay: "CDS Polity",
     chapterSlug: "government-structure",
     chipLabel: "Government Structure notes",
+    titleName: "Government Structure",
     chapter: CDS_PO_GOVERNMENT_CHAPTER,
     notes: CDS_PO_GOVERNMENT_NOTES,
     slugs: CDS_PO_GOVERNMENT_SLUGS,
@@ -5824,6 +5872,105 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: CDS_EC_INDIAN_ECONOMY_CHAPTER,
     notes: CDS_EC_INDIAN_ECONOMY_NOTES,
     slugs: CDS_EC_INDIAN_ECONOMY_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Biology",
+    subjectRoute: "cds-biology",
+    subjectDisplay: "CDS Biology",
+    chapterSlug: "biochemistry",
+    chipLabel: "Biochemistry notes",
+    chapter: CDS_BI_BIOCHEMISTRY_CHAPTER,
+    notes: CDS_BI_BIOCHEMISTRY_NOTES,
+    slugs: CDS_BI_BIOCHEMISTRY_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Biology",
+    subjectRoute: "cds-biology",
+    subjectDisplay: "CDS Biology",
+    chapterSlug: "cell-biology",
+    chipLabel: "Cell Biology notes",
+    chapter: CDS_BI_CELL_CHAPTER,
+    notes: CDS_BI_CELL_NOTES,
+    slugs: CDS_BI_CELL_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Biology",
+    subjectRoute: "cds-biology",
+    subjectDisplay: "CDS Biology",
+    chapterSlug: "biodiversity-classification",
+    chipLabel: "Biodiversity and Classification notes",
+    chapter: CDS_BI_BIODIVERSITY_CHAPTER,
+    notes: CDS_BI_BIODIVERSITY_NOTES,
+    slugs: CDS_BI_BIODIVERSITY_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Biology",
+    subjectRoute: "cds-biology",
+    subjectDisplay: "CDS Biology",
+    chapterSlug: "plant-biology",
+    chipLabel: "Plant Biology notes",
+    chapter: CDS_BI_PLANT_CHAPTER,
+    notes: CDS_BI_PLANT_NOTES,
+    slugs: CDS_BI_PLANT_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Biology",
+    subjectRoute: "cds-biology",
+    subjectDisplay: "CDS Biology",
+    chapterSlug: "human-physiology",
+    chipLabel: "Human Physiology notes",
+    chapter: CDS_BI_PHYSIOLOGY_CHAPTER,
+    notes: CDS_BI_PHYSIOLOGY_NOTES,
+    slugs: CDS_BI_PHYSIOLOGY_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Biology",
+    subjectRoute: "cds-biology",
+    subjectDisplay: "CDS Biology",
+    chapterSlug: "reproduction",
+    chipLabel: "Reproduction notes",
+    chapter: CDS_BI_REPRODUCTION_CHAPTER,
+    notes: CDS_BI_REPRODUCTION_NOTES,
+    slugs: CDS_BI_REPRODUCTION_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Biology",
+    subjectRoute: "cds-biology",
+    subjectDisplay: "CDS Biology",
+    chapterSlug: "genetics-evolution",
+    chipLabel: "Genetics and Evolution notes",
+    chapter: CDS_BI_GENETICS_CHAPTER,
+    notes: CDS_BI_GENETICS_NOTES,
+    slugs: CDS_BI_GENETICS_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Biology",
+    subjectRoute: "cds-biology",
+    subjectDisplay: "CDS Biology",
+    chapterSlug: "microbiology-disease",
+    chipLabel: "Microbes and Disease notes",
+    chapter: CDS_BI_MICROBES_CHAPTER,
+    notes: CDS_BI_MICROBES_NOTES,
+    slugs: CDS_BI_MICROBES_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Biology",
+    subjectRoute: "cds-biology",
+    subjectDisplay: "CDS Biology",
+    chapterSlug: "ecology-environment",
+    chipLabel: "Ecology and Environment notes",
+    chapter: CDS_BI_ECOLOGY_CHAPTER,
+    notes: CDS_BI_ECOLOGY_NOTES,
+    slugs: CDS_BI_ECOLOGY_SLUGS,
   },
 ];
 

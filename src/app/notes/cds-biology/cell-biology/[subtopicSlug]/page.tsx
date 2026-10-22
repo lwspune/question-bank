@@ -1,0 +1,24 @@
+import type { Metadata } from "next";
+import { getNotesChapterBySlug } from "@/lib/notes/chapters";
+import { notesPrerenderParams } from "@/lib/notes/prerender";
+import NotesSubtopicPage, {
+  buildSubtopicMetadata,
+} from "@/app/notes/_components/NotesSubtopicPage";
+
+const CHAPTER = getNotesChapterBySlug("cds-biology", "cell-biology")!;
+
+export const revalidate = 86400;
+
+type Params = { subtopicSlug: string };
+
+export function generateStaticParams(): Params[] {
+  return notesPrerenderParams(CHAPTER.slugs);
+}
+
+export function generateMetadata({ params }: { params: Params }): Metadata {
+  return buildSubtopicMetadata(CHAPTER, params.subtopicSlug);
+}
+
+export default function Page({ params }: { params: Params }) {
+  return <NotesSubtopicPage chapter={CHAPTER} subtopicSlug={params.subtopicSlug} />;
+}
