@@ -102,6 +102,8 @@ main session has decided.
 - Plain-text fields take NO LaTeX and no `**`: `title`, `oneLineDefinition`, `whyItMatters`,
   `concept.name`, `formula.label`, table `columns`. Use words or Unicode there.
 - Maths elsewhere is `\\(...\\)` inside TS strings (double backslashes). Never `\\iff`.
+- A `formula.symbols` legend entry is either plain words ("Size of the image") or wrapped maths
+  (`\\(m\\)`); a bare `\\text{...}` there fails notes:latex (Cell Biology, 2026-10-23).
 - **No em dashes, en dashes, " - " or " -- " used as dashes anywhere you write.** Use a full stop,
   colon, comma or brackets. (A range like "1757 to 1764" is fine; DB chapter names that contain a
   dash are copied as they are.)

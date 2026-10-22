@@ -25,8 +25,8 @@ export const CDS_BI_CE_KINDS_NOTE: SubtopicNote = {
         label: "Magnification",
         latex: "\\text{Magnification} = \\dfrac{\\text{size of the image}}{\\text{actual size of the object}}",
         symbols: [
-          { symbol: "\\text{size of the image}", meaning: "how big the specimen looks through the microscope" },
-          { symbol: "\\text{actual size of the object}", meaning: "the real size of the specimen" },
+          { symbol: "Size of the image", meaning: "how big the specimen looks through the microscope" },
+          { symbol: "Actual size of the object", meaning: "the real size of the specimen" },
         ],
       },
       authoredExample: {
