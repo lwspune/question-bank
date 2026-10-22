@@ -333,6 +333,7 @@ export type VisualizationSlug =
   | "cds-cone-anatomy"
   | "cds-altitude-hypotenuse"
   | "cds-rational-irrational-line"
+  | "ratio-bar-model"
   // MHT-CET Maths — Mathematical Logic chapter
   | "logic-switch-series-parallel"
   | "logic-circuit-simplification";

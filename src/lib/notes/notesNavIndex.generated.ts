@@ -2187,5 +2187,12 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "IMAT Reading Skills and General Knowledge",
     "chapterSlug": "politics-economics-society",
     "subtopicCount": 5
+  },
+  {
+    "examName": "AFCAT",
+    "subjectRoute": "afcat-maths",
+    "subjectDisplay": "AFCAT Numerical Ability",
+    "chapterSlug": "ratio",
+    "subtopicCount": 8
   }
 ];

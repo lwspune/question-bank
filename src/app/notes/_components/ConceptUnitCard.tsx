@@ -225,6 +225,7 @@ import CdsTouchingCircles from "./visualizations/CdsTouchingCircles";
 import CdsConeAnatomy from "./visualizations/CdsConeAnatomy";
 import CdsAltitudeHypotenuse from "./visualizations/CdsAltitudeHypotenuse";
 import CdsRationalIrrationalLine from "./visualizations/CdsRationalIrrationalLine";
+import RatioBarModel from "./visualizations/RatioBarModel";
 import LogicSwitchSeriesParallel from "./visualizations/LogicSwitchSeriesParallel";
 import LogicCircuitSimplification from "./visualizations/LogicCircuitSimplification";
 import type { VisualizationSlug } from "@/app/notes/_types";
@@ -654,6 +655,8 @@ export function renderVisualization(slug: VisualizationSlug) {
       return <CdsUnitDigitCycleWheel />;
     case "cds-rational-irrational-line":
       return <CdsRationalIrrationalLine />;
+    case "ratio-bar-model":
+      return <RatioBarModel />;
     case "logic-switch-series-parallel":
       return <LogicSwitchSeriesParallel />;
     case "logic-circuit-simplification":

@@ -1346,6 +1346,11 @@ import {
   CDSEN_RC_SLUGS,
 } from "@/app/notes/cds-english/reading-comprehension/_data";
 import { IMAT_NOTES_CHAPTERS } from "@/lib/sites/imat/notes/registry";
+import {
+  AF_RATIO_CHAPTER,
+  AF_RATIO_NOTES,
+  AF_RATIO_SLUGS,
+} from "@/app/notes/afcat-maths/ratio/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -4315,6 +4320,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
   // IMAT: 46 chapters authored in their own registry (lib/sites/imat/notes),
   // on PYQ Vault since 2026-10-20.
   ...IMAT_NOTES_CHAPTERS,
+  {
+    examName: "AFCAT",
+    subjectName: "Numerical Ability",
+    subjectRoute: "afcat-maths",
+    subjectDisplay: "AFCAT Numerical Ability",
+    chapterSlug: "ratio",
+    chipLabel: "Ratio and Proportion notes",
+    chapter: AF_RATIO_CHAPTER,
+    notes: AF_RATIO_NOTES,
+    slugs: AF_RATIO_SLUGS,
+  },
 ];
 
 /**
