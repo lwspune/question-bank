@@ -1711,6 +1711,16 @@ import {
   CDS_GE_SPACE_NOTES,
   CDS_GE_SPACE_SLUGS,
 } from "@/app/notes/cds-geography/earth-in-space/_data";
+import {
+  CDS_PO_RIGHTS_CHAPTER,
+  CDS_PO_RIGHTS_NOTES,
+  CDS_PO_RIGHTS_SLUGS,
+} from "@/app/notes/cds-polity/rights-dpsp-local-government/_data";
+import {
+  CDS_PO_CONSTITUTION_CHAPTER,
+  CDS_PO_CONSTITUTION_NOTES,
+  CDS_PO_CONSTITUTION_SLUGS,
+} from "@/app/notes/cds-polity/indian-constitution/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -5488,6 +5498,28 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: CDS_GE_ECONOMIC_CHAPTER,
     notes: CDS_GE_ECONOMIC_NOTES,
     slugs: CDS_GE_ECONOMIC_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Polity",
+    subjectRoute: "cds-polity",
+    subjectDisplay: "CDS Polity",
+    chapterSlug: "rights-dpsp-local-government",
+    chipLabel: "Rights, DPSP and Local Government notes",
+    chapter: CDS_PO_RIGHTS_CHAPTER,
+    notes: CDS_PO_RIGHTS_NOTES,
+    slugs: CDS_PO_RIGHTS_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Polity",
+    subjectRoute: "cds-polity",
+    subjectDisplay: "CDS Polity",
+    chapterSlug: "indian-constitution",
+    chipLabel: "The Indian Constitution notes",
+    chapter: CDS_PO_CONSTITUTION_CHAPTER,
+    notes: CDS_PO_CONSTITUTION_NOTES,
+    slugs: CDS_PO_CONSTITUTION_SLUGS,
   },
 ];
 
