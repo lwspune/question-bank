@@ -32,15 +32,9 @@ export function questionForRequest(d: AskVDetail): { id: string; chose: string |
   return d.notes ? { notes: d.notes } : { id: d.questionId, chose: d.chose };
 }
 
-const ASK_V_MESSAGE_RE = /^(?:I picked \([A-E]\)\. )?Explain this question\.$/;
-
-/** What the window sends for an Ask V tap. Only a tap brings a similar-question card (2026-10-21). */
+/** What the window sends for an Ask V tap. */
 export function askVMessage(chose: string | null): string {
   return chose ? `I picked (${chose}). Explain this question.` : "Explain this question.";
-}
-
-export function isAskVMessage(message: string): boolean {
-  return ASK_V_MESSAGE_RE.test(message);
 }
 
 export function askVAbout(detail: AskVDetail): void {

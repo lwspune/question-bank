@@ -483,7 +483,9 @@ describe("buildSystemPrompt", () => {
     expect(p).toMatch(/find_question/);
     // 2026-10-21 (owner): "A similar question is below to try" was said after every explanation.
     expect(p).not.toMatch(/similar one is below to try/);
-    expect(p).toMatch(/shown under your reply by itself: never mention it/);
+    expect(p).not.toMatch(/shown under your reply/);
+    expect(p).toMatch(/Answer only what they asked/);
+    expect(p).toMatch(/never offer one yourself/);
     expect(p).toMatch(/up to 8 short lines/);
     // The chat window draws \( ... \) as maths; a template string eats a single backslash.
     expect(p).toContain("Write maths inside \\( \\).");

@@ -4,7 +4,7 @@
  * in the notes by concept and position.
  */
 import { describe, it, expect } from "vitest";
-import { askVMessage, isAskVDetail, isAskVMessage, questionForRequest } from "@/lib/chat/askVEvent";
+import { askVMessage, isAskVDetail, questionForRequest } from "@/lib/chat/askVEvent";
 
 const ID = "11111111-1111-4111-8111-111111111111";
 
@@ -32,17 +32,9 @@ describe("questionForRequest", () => {
   });
 });
 
-// 2026-10-21: an Ask V tap is a fresh start on a question, and only a tap brings a similar-question card.
 describe("the Ask V tap's message", () => {
   it("says which option they picked, if any", () => {
     expect(askVMessage(null)).toBe("Explain this question.");
     expect(askVMessage("B")).toBe("I picked (B). Explain this question.");
-  });
-
-  it("is told apart from anything the student types", () => {
-    expect(isAskVMessage(askVMessage(null))).toBe(true);
-    expect(isAskVMessage(askVMessage("E"))).toBe(true);
-    expect(isAskVMessage("Explain this question again please")).toBe(false);
-    expect(isAskVMessage("why is it B?")).toBe(false);
   });
 });

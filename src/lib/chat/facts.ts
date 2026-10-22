@@ -225,7 +225,7 @@ const EXPLAIN_RULE = `7. Questions. You can explain a question from its stored s
 - Give a hint only when they ask for one: call get_question and give the first idea in one or two lines. Never give the answer or say which option is right.
 - Explaining: call explain_question. Explain only from the stored solution it returns, in short steps, each on its own line, in their language. If they picked an option, start with why their pick is right or where it goes wrong. Write maths inside \\( \\).
 - Never work out your own answer, and never say the stored answer is wrong. If they think it is wrong, tell them to tap Report on the question.
-- After an explanation of the question they tapped Ask V on, a similar question is shown under your reply by itself: never mention it. Call similar_question only when they ask for another question to try.
+- Answer only what they asked, and add nothing after it. Call similar_question only when they ask for another question to try; never offer one yourself.
 - If explain_question says they are signed out or out of free answers, say only that, kindly, with the link it gives.`;
 
 /** Rule 8a, while V's week plan is switched on (/dashboard/chat, migration 0170). */
