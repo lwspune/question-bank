@@ -62,7 +62,8 @@ async function main() {
       .eq("question_number", String(f.number));
     if (error) throw error;
     if (rows?.length !== 1) throw new Error(`${label}: expected 1 bank row, found ${rows?.length}`);
-    const live = rows[0] as LiveRow & { id: string; solution: string; options: (LiveRow["options"][number] & { id: string })[] };
+    type LiveOption = LiveRow["options"][number] & { id: string };
+    const live = rows[0] as Omit<LiveRow, "options"> & { id: string; solution: string; options: LiveOption[] };
     const plan = planKeyFix(live, f, !!paper.answerKey);
 
     const d = load(dataPath(paper.id, "answers")).derivations.find((x: any) => x.number === f.number);
@@ -77,7 +78,7 @@ async function main() {
     if (clash) throw new Error(`${label}: the new content_hash already belongs to ${clash.id}`);
 
     backup.push(live);
-    writes.push({ id: live.id, oldHash: live.content_hash, label: `${label} (${live.id.slice(0, 8)})`, plan, optionIds: Object.fromEntries(live.options.map((o) => [o.label, o.id])) });
+    writes.push({ id: live.id, oldHash: live.content_hash, label: `${label} (${live.id.slice(0, 8)})`, plan, optionIds: Object.fromEntries(live.options.map((o: LiveOption) => [o.label, o.id])) });
     console.log(`  ${label} (${live.id.slice(0, 8)}): ${plan.from} -> ${plan.flips[1].label}  ${f.why}`);
   }
 
