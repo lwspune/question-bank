@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { ArrowRight, Clock, FileCheck2, PenLine, XCircle } from "lucide-react";
+import { ArrowRight, PenLine } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import { getSessionUser } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { listOwnSubmissions, type OwnSubmission } from "@/lib/answerSheets/query";
+import { listOwnSubmissions } from "@/lib/answerSheets/query";
+import { buildSheetRows } from "@/lib/answerSheets/sheetRows";
+import SheetList from "@/components/answerSheets/SheetList";
 
 /**
  * `/me/answer-sheets`: the student's checked answer sheets (migration 0153).
@@ -16,36 +18,6 @@ export const metadata: Metadata = {
   title: "My answer sheets",
   robots: { index: false },
 };
-
-function day(iso: string | null): string {
-  if (!iso) return "";
-  return new Date(iso).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric", timeZone: "Asia/Kolkata" });
-}
-
-function StatusLine({ s }: { s: OwnSubmission }) {
-  if (s.status === "graded") {
-    return (
-      <span className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground">
-        <FileCheck2 className="h-3.5 w-3.5 text-brand-accent" aria-hidden />
-        {s.totalAwarded} / {s.totalMax}
-      </span>
-    );
-  }
-  if (s.status === "rejected") {
-    return (
-      <span className="inline-flex items-center gap-1.5 text-sm text-muted-foreground">
-        <XCircle className="h-3.5 w-3.5" aria-hidden />
-        Could not be checked
-      </span>
-    );
-  }
-  return (
-    <span className="inline-flex items-center gap-1.5 text-sm text-muted-foreground">
-      <Clock className="h-3.5 w-3.5" aria-hidden />
-      Being checked
-    </span>
-  );
-}
 
 export default async function AnswerSheetsPage() {
   const user = await getSessionUser();
@@ -76,23 +48,7 @@ export default async function AnswerSheetsPage() {
             </Link>
           </div>
         ) : (
-          <ul className="mt-6 space-y-3">
-            {sheets.map((s) => (
-              <li key={s.id}>
-                <Link
-                  href={`/me/answer-sheets/${s.id}`}
-                  className="flex items-center gap-3 rounded-lg border bg-card p-4 transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                >
-                  <div className="min-w-0 flex-1">
-                    <p className="truncate font-medium text-foreground">{s.paper?.title ?? "Board paper"}</p>
-                    <p className="mt-0.5 text-xs text-muted-foreground">Sent {day(s.submittedAt)}</p>
-                  </div>
-                  <StatusLine s={s} />
-                  <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground" aria-hidden />
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <SheetList rows={buildSheetRows(sheets, { kind: "self" })} className="mt-6 space-y-3" />
         )}
       </main>
     </>
