@@ -2,8 +2,9 @@
  * Which questions a /notes chapter counts and drills.
  *
  * Past-year only by default (migration 0036): practice questions must never inflate an exam's
- * past-year weightage. SPI is the exception. Its bank is one past paper (2022) and ten practice
- * papers, so a past-year count would print "0 PYQs" on most of its pages. Its notes count both
+ * past-year weightage. SPI and AFCAT are the exceptions. SPI's bank is one past paper (2022) and
+ * ten practice papers; AFCAT's Numerical Ability is ~97% practice around a few PYQs printed in a
+ * book. A past-year count would print "0 PYQs" on most of their pages, so their notes count both
  * kinds and call them "questions". The cards, the drill count and link, and the intro-count gate
  * all read this one rule.
  */
@@ -11,7 +12,7 @@ import type { SourceKind } from "@/lib/questions/sourceTag";
 
 export type NotesCountKind = "pyq" | "all";
 
-const ALL_KINDS: ReadonlySet<string> = new Set(["SPI"]);
+const ALL_KINDS: ReadonlySet<string> = new Set(["SPI", "AFCAT"]);
 
 export function notesCountKind(examName: string): NotesCountKind {
   return ALL_KINDS.has(examName) ? "all" : "pyq";

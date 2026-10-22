@@ -39,6 +39,7 @@ import * as fs from "node:fs";
 import * as path from "node:path";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { NOTES_CHAPTERS } from "../src/lib/notes/chapters";
+import { notesCountKind } from "../src/lib/notes/countKind";
 import {
   extractCountClaims,
   allowedCounts,
@@ -75,9 +76,8 @@ async function loadLive(db: SupabaseClient) {
   for (let from = 0; ; from += 1000) {
     const { data, error } = await db
       .from("questions")
-      .select("subtopics(name), chapters(name, subjects(name, exams(name)))")
+      .select("question_kind, subtopics(name), chapters(name, subjects(name, exams(name)))")
       .eq("visibility", "PUBLIC")
-      .eq("question_kind", "pyq")
       // ORDER BY is NOT optional here. Without a stable sort, PostgREST's
       // 1000-row windows overlap and drop rows, so the same scan returns
       // different totals run to run — two consecutive runs of this loader
@@ -88,6 +88,8 @@ async function loadLive(db: SupabaseClient) {
     if (error) throw new Error(error.message);
     const rows = (data ?? []) as any[];
     for (const r of rows) {
+      // Past-year only, except the exams whose notes count practice too (countKind.ts).
+      if (r.question_kind !== "pyq" && notesCountKind(r.chapters?.subjects?.exams?.name) !== "all") continue;
       const k = key(
         r.chapters?.subjects?.exams?.name,
         r.chapters?.subjects?.name,
