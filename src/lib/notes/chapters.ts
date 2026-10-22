@@ -1656,6 +1656,26 @@ import {
   SPI_DEFENCE_NOTES,
   SPI_DEFENCE_SLUGS,
 } from "@/app/notes/spi-gk/defence/_data";
+import {
+  CDS_HI_WORLD_CHAPTER,
+  CDS_HI_WORLD_NOTES,
+  CDS_HI_WORLD_SLUGS,
+} from "@/app/notes/cds-history/world-history/_data";
+import {
+  CDS_HI_ANCIENT_CHAPTER,
+  CDS_HI_ANCIENT_NOTES,
+  CDS_HI_ANCIENT_SLUGS,
+} from "@/app/notes/cds-history/ancient-india/_data";
+import {
+  CDS_HI_MEDIEVAL_CHAPTER,
+  CDS_HI_MEDIEVAL_NOTES,
+  CDS_HI_MEDIEVAL_SLUGS,
+} from "@/app/notes/cds-history/medieval-india/_data";
+import {
+  CDS_HI_MODERN_CHAPTER,
+  CDS_HI_MODERN_NOTES,
+  CDS_HI_MODERN_SLUGS,
+} from "@/app/notes/cds-history/modern-india/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -5312,6 +5332,50 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SPI_DEFENCE_CHAPTER,
     notes: SPI_DEFENCE_NOTES,
     slugs: SPI_DEFENCE_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "History",
+    subjectRoute: "cds-history",
+    subjectDisplay: "CDS History",
+    chapterSlug: "ancient-india",
+    chipLabel: "Ancient India notes",
+    chapter: CDS_HI_ANCIENT_CHAPTER,
+    notes: CDS_HI_ANCIENT_NOTES,
+    slugs: CDS_HI_ANCIENT_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "History",
+    subjectRoute: "cds-history",
+    subjectDisplay: "CDS History",
+    chapterSlug: "medieval-india",
+    chipLabel: "Medieval India notes",
+    chapter: CDS_HI_MEDIEVAL_CHAPTER,
+    notes: CDS_HI_MEDIEVAL_NOTES,
+    slugs: CDS_HI_MEDIEVAL_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "History",
+    subjectRoute: "cds-history",
+    subjectDisplay: "CDS History",
+    chapterSlug: "modern-india",
+    chipLabel: "Modern India notes",
+    chapter: CDS_HI_MODERN_CHAPTER,
+    notes: CDS_HI_MODERN_NOTES,
+    slugs: CDS_HI_MODERN_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "History",
+    subjectRoute: "cds-history",
+    subjectDisplay: "CDS History",
+    chapterSlug: "world-history",
+    chipLabel: "World History notes",
+    chapter: CDS_HI_WORLD_CHAPTER,
+    notes: CDS_HI_WORLD_NOTES,
+    slugs: CDS_HI_WORLD_SLUGS,
   },
 ];
 
