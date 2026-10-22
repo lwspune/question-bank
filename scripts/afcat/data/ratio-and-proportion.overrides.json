@@ -6,7 +6,8 @@
   "01-23": {
     "stem": "A bag contains coins of ₹1, ₹2, and ₹5 in the ratio 3:4:5. If the total value is ₹216, how many ₹5 coins are there?",
     "answer": "C",
-    "reason": "As printed (₹210) there was no answer: one set of 3, 4, 5 coins is worth ₹36 and 210 is not a multiple of 36. Total changed to ₹216 (6 sets), which makes the keyed 30 coins exactly right. Key C stands."
+    "reason": "As printed (₹210) there was no answer: one set of 3, 4, 5 coins is worth ₹36 and 210 is not a multiple of 36. Total changed to ₹216 (6 sets), which makes the keyed 30 coins exactly right. Key C stands.",
+    "solution": "In the ratio \\(3 : 4 : 5\\), one set of coins is worth \\(3 \\times 1 + 4 \\times 2 + 5 \\times 5 = 36\\) rupees. ₹216 is \\(\\frac{216}{36} = 6\\) sets, so there are \\(5 \\times 6 = 30\\) coins of ₹5."
   },
   "01-24": {
     "options": {
@@ -18,7 +19,8 @@
   "01-26": {
     "stem": "Two numbers are in the ratio 3:5. If each number is decreased by 5, they are in the ratio 1:2. The original numbers are:",
     "answer": "A",
-    "reason": "As printed ('ratio 2:3') there was no positive solution (k = -5) and no option worked. With the new ratio 1:2, the keyed 15, 25 becomes 10:20 = 1:2 and no other option fits. Key A stands."
+    "reason": "As printed ('ratio 2:3') there was no positive solution (k = -5) and no option worked. With the new ratio 1:2, the keyed 15, 25 becomes 10:20 = 1:2 and no other option fits. Key A stands.",
+    "solution": "Let the numbers be \\(3k\\) and \\(5k\\). Then \\(\\frac{3k - 5}{5k - 5} = \\frac{1}{2}\\) gives \\(6k - 10 = 5k - 5\\), so \\(k = 5\\). The numbers are 15 and 25 (and 10 : 20 is indeed 1 : 2)."
   },
   "01-34": {
     "options": {
@@ -30,7 +32,8 @@
   "01-37": {
     "stem": "60 liters of a mixture contains milk and water in the ratio 7:3. How much water must be added to make the ratio 3:2?",
     "answer": "B",
-    "reason": "As printed (40 litres) the answer was 20/3 = 6.67 litres, not an option. With 60 litres (milk 42, water 18) the water must reach 28, so add 10 litres, the keyed value. Key B stands."
+    "reason": "As printed (40 litres) the answer was 20/3 = 6.67 litres, not an option. With 60 litres (milk 42, water 18) the water must reach 28, so add 10 litres, the keyed value. Key B stands.",
+    "solution": "The 60 litres hold \\(\\frac{7}{10} \\times 60 = 42\\) of milk and 18 of water. Adding water leaves the milk at 42, so for \\(3 : 2\\) the water must reach \\(42 \\times \\frac{2}{3} = 28\\) litres. Add \\(28 - 18 = 10\\) litres of water."
   },
   "01-40": {
     "options": {
@@ -79,7 +82,8 @@
     "options": {
       "A": "8:15"
     },
-    "reason": "TWIN: A '16:35' equalled the keyed B '48:105'. Key stands (blind pass 48:105). A replaced with 8:15, compounding only the first two ratios."
+    "reason": "TWIN: A '16:35' equalled the keyed B '48:105'. Key stands (blind pass 48:105). A replaced with 8:15, compounding only the first two ratios. Notes re-cut (2026-10-22): compounded ratio: multiply the ratios",
+    "subtopic": "Combining Ratios"
   },
   "01-38": {
     "options": {
@@ -284,7 +288,8 @@
   },
   "04-225": {
     "stem": "Find the third proportional to 3 and 6.",
-    "reason": "Printed 'the fourth proportion of 3 and 6'; a fourth proportional needs three numbers. The key B (12) is the third proportional, \\(\\frac{6^2}{3}\\), so the stem says that."
+    "reason": "Printed 'the fourth proportion of 3 and 6'; a fourth proportional needs three numbers. The key B (12) is the third proportional, \\(\\frac{6^2}{3}\\), so the stem says that.",
+    "solutionStands": "The blind pass already solved the repaired stem: it computes the third proportional 36/3 = 12."
   },
   "04-302": {
     "exclude": true,
@@ -461,5 +466,57 @@
       "D": "\\(1:6\\)"
     },
     "reason": "Two wrong options were the same value (3:6 and 2:4, both 1:2); the second is replaced with a wrong value a student could produce. Found by the LaTeX-aware equal-value check, 2026-10-14. The key is unchanged."
+  },
+  "03-149": {
+    "subtopic": "Ratio Basics and Types of Ratio",
+    "reason": "Notes re-cut (2026-10-22): reads a ratio off a table; no combining"
+  },
+  "04-103": {
+    "subtopic": "Ratio Basics and Types of Ratio",
+    "reason": "Notes re-cut (2026-10-22): simplifies a ratio of times (same units first)"
+  },
+  "04-102": {
+    "subtopic": "Ratio Basics and Types of Ratio",
+    "reason": "Notes re-cut (2026-10-22): simplifies a ratio of mixed numbers"
+  },
+  "03-108": {
+    "subtopic": "Ratio Basics and Types of Ratio",
+    "reason": "Notes re-cut (2026-10-22): finds a missing term from one ratio"
+  },
+  "07-35": {
+    "subtopic": "Combining Ratios",
+    "reason": "Notes re-cut (2026-10-22): compound ratio with an unknown"
+  },
+  "07-36": {
+    "subtopic": "Combining Ratios",
+    "reason": "Notes re-cut (2026-10-22): compound ratio in letters"
+  },
+  "07-38": {
+    "subtopic": "Combining Ratios",
+    "reason": "Notes re-cut (2026-10-22): compound ratio in letters"
+  },
+  "07-12": {
+    "subtopic": "Combining Ratios",
+    "reason": "Notes re-cut (2026-10-22): compound ratio with unknowns"
+  },
+  "07-26": {
+    "subtopic": "Combining Ratios",
+    "reason": "Notes re-cut (2026-10-22): compound ratio in letters"
+  },
+  "07-16": {
+    "subtopic": "Combining Ratios",
+    "reason": "Notes re-cut (2026-10-22): compound ratio in letters"
+  },
+  "07-23": {
+    "subtopic": "Combining Ratios",
+    "reason": "Notes re-cut (2026-10-22): compound ratio with an unknown"
+  },
+  "06-28": {
+    "subtopic": "Algebraic Ratio Expressions",
+    "reason": "Notes re-cut (2026-10-22): componendo and dividendo"
+  },
+  "06-47": {
+    "subtopic": "Algebraic Ratio Expressions",
+    "reason": "Notes re-cut (2026-10-22): sum of equal ratios"
   }
 }

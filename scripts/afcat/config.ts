@@ -661,18 +661,17 @@ export const CHAPTERS: Record<string, Chapter> = {
   "ratio-and-proportion": {
     id: "ratio-and-proportion",
     chapterName: "Ratio and Proportion",
+    // Re-cut into the eight /notes teaching pages (2026-10-22): Duplicate/Triplicate
+    // into Basics, Partnership into Dividing, Income/Expenditure into Change in Ratio.
     subtopics: [
-      "Dividing in a Given Ratio",
-      "Duplicate, Triplicate and Other Ratios",
+      "Ratio Basics and Types of Ratio",
       "Combining Ratios",
       "Proportionals",
       "Algebraic Ratio Expressions",
-      "Change in Ratio and Ages",
-      "Partnership",
-      "Variation and Work",
+      "Dividing in a Ratio and Partnership",
+      "Change in Ratio, Ages and Income",
       "Mixtures and Coins",
-      "Income, Expenditure and Savings",
-      "Ratio Basics and Simplification",
+      "Variation and Work",
     ],
     files: [
       {
@@ -714,7 +713,7 @@ export const CHAPTERS: Record<string, Chapter> = {
         root: "cadetprep",
         label: "Cadetprep AFCAT: Ratio Basics",
         path: "01. Ratio and Proportion\\01. Basics.xlsx",
-        subtopic: "Ratio Basics and Simplification",
+        subtopic: "Ratio Basics and Types of Ratio",
         note: "AFCAT practice — Cadetprep AFCAT sheet, Ratio and Proportion. Every key blind re-derived.",
       },
       {

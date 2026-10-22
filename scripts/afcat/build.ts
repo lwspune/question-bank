@@ -19,7 +19,7 @@ import { buildWorksheetRows, type Flag, type ShufflePlan, type WorksheetQuestion
 import type { ParsedRowPayload } from "../../src/lib/upload/validate";
 import { DATA, SUBJECT_NAME, type Chapter, type FileEntry } from "./config";
 import { loadChapter, qid } from "./read";
-import { equalValueOptions } from "./lib";
+import { equalValueOptions, staleSolutionOverride } from "./lib";
 import type { AfcatOverride, Pass1Verdict } from "./overrides";
 
 export type FileRows = { file: FileEntry; rows: ParsedRowPayload[]; flags: Flag[]; excluded: string[] };
@@ -59,6 +59,7 @@ export function buildChapter(chapter: Chapter, opts: { shuffles?: ShufflePlan; o
         blockers.push(`${id}: source key ${r.key ?? "none"} vs blind ${v.derived} — adjudicate with an override`);
         continue;
       }
+      if (ov && staleSolutionOverride(ov)) blockers.push(`${id}: stem repaired but the solution was written for the old stem; add "solution" or "solutionStands"`);
       const subtopic = ov?.subtopic ?? v.subtopic;
       if (!chapter.subtopics.includes(subtopic)) blockers.push(`${id}: subtopic "${subtopic}" not in chapter list`);
       questions.push({

@@ -871,3 +871,59 @@ export function proposeEqualValueRepair(
   }
   return equalValueOptions(current).length ? null : out;
 }
+
+/**
+ * Rows whose built subtopic differs from the live one (sync-subtopics.ts). A notes
+ * re-cut changes subtopics after commit, and commit.ts skips the row because
+ * subtopic_id is not in content_hash. A built row with no live row is reported, not
+ * skipped silently.
+ */
+export function planSubtopicMoves(
+  built: { questionNumber: string; subtopic: string }[],
+  live: { id: string; questionNumber: string; subtopic: string | null }[]
+): { moves: { id: string; questionNumber: string; from: string | null; to: string }[]; missing: string[] } {
+  const byNumber = new Map(live.map((l) => [l.questionNumber, l]));
+  const moves: { id: string; questionNumber: string; from: string | null; to: string }[] = [];
+  const missing: string[] = [];
+  for (const b of built) {
+    const l = byNumber.get(b.questionNumber);
+    if (!l) missing.push(b.questionNumber);
+    else if (l.subtopic !== b.subtopic) moves.push({ id: l.id, questionNumber: b.questionNumber, from: l.subtopic, to: b.subtopic });
+  }
+  return { moves, missing };
+}
+
+/**
+ * A stem repair keeps the blind pass's solution, which was written for the misprinted
+ * stem. Three Ratio rows shipped that way (2026-10-22): "the question as printed has no
+ * answer" under a stem that had been fixed. So a stem override carries a rewritten
+ * `solution`, or `solutionStands` saying why the old one still fits.
+ */
+export function staleSolutionOverride(ov: { stem?: string; solution?: string; solutionStands?: string; exclude?: boolean }): boolean {
+  return Boolean(ov.stem && !ov.exclude && !ov.solution && !ov.solutionStands);
+}
+
+/**
+ * Which retired subtopic to rename into each new name (sync-subtopics.ts), so a merge
+ * keeps the biggest source's id and every /browse link that carries it. A name that
+ * already exists, or a subtopic the chapter keeps, is never renamed.
+ */
+export function pickRenames(
+  moves: { from: string | null; to: string }[],
+  keep: string[],
+  existing: Set<string>
+): Record<string, string> {
+  const counts = new Map<string, Map<string, number>>();
+  for (const m of moves) {
+    if (!m.from || keep.includes(m.from) || existing.has(m.to)) continue;
+    const c = counts.get(m.to) ?? new Map<string, number>();
+    c.set(m.from, (c.get(m.from) ?? 0) + 1);
+    counts.set(m.to, c);
+  }
+  const renames: Record<string, string> = {};
+  for (const [to, c] of counts) {
+    const [from] = [...c].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))[0];
+    if (!(from in renames)) renames[from] = to;
+  }
+  return renames;
+}
