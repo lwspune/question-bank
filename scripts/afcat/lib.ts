@@ -928,3 +928,71 @@ export function pickRenames(
   }
   return renames;
 }
+
+export type RecutPlan = {
+  /** The chapter's new closed subtopic list, in teaching order. */
+  subtopics: string[];
+  /** Whole-subtopic merges and renames: old name -> new name. */
+  renames: Record<string, string>;
+  /** Single rows: question id -> new subtopic, with the reason recorded in overrides.json. */
+  moves: Record<string, { to: string; reason: string }>;
+};
+
+/**
+ * Apply a /notes re-cut to a chapter's pass-1 values and overrides (recut.ts). Renames
+ * rewrite derived.json and any override that names the old subtopic; moves become
+ * `subtopic` overrides with a reason. Returns problems instead of a half-applied plan:
+ * a row left outside the new list, a move of an unknown row, a listed subtopic with no row.
+ */
+export function applyRecutPlan<D extends { id: string; subtopic: string }, O extends { reason?: string; subtopic?: string }>(
+  plan: RecutPlan,
+  input: { derived: D[]; overrides: Record<string, O> }
+): { derived: D[]; overrides: Record<string, O>; problems: string[] } {
+  const rename = (s: string) => plan.renames[s] ?? s;
+  const problems: string[] = [];
+  const derived = input.derived.map((r) => ({ ...r, subtopic: rename(r.subtopic) }));
+  const overrides: Record<string, O> = {};
+  for (const [id, o] of Object.entries(input.overrides)) overrides[id] = o.subtopic ? { ...o, subtopic: rename(o.subtopic) } : { ...o };
+  const ids = new Set(derived.map((r) => r.id));
+  for (const [id, m] of Object.entries(plan.moves)) {
+    if (!ids.has(id)) {
+      problems.push(`move ${id}: no such row`);
+      continue;
+    }
+    const prev = overrides[id];
+    const why = `Notes re-cut: ${m.reason}`;
+    overrides[id] = { ...(prev ?? {}), subtopic: m.to, reason: prev?.reason ? `${prev.reason} ${why}` : why } as O;
+  }
+  const held = new Set<string>();
+  for (const r of derived) {
+    const s = overrides[r.id]?.subtopic ?? r.subtopic;
+    held.add(s);
+    if (!plan.subtopics.includes(s)) problems.push(`${r.id}: subtopic "${s}" not in the new list`);
+  }
+  for (const s of plan.subtopics) if (!held.has(s)) problems.push(`subtopic "${s}" would hold no row`);
+  return { derived, overrides, problems };
+}
+
+/**
+ * Rewrite one chapter's `subtopics: [...]` in config.ts source and rename the file-level
+ * `subtopic:` defaults inside that chapter's block only (another chapter may use the same
+ * names). Throws if the block or its list is not found.
+ */
+export function rewriteChapterSubtopics(src: string, chapterId: string, subtopics: string[], renames: Record<string, string>): string {
+  const nl = src.includes("\r\n") ? "\r\n" : "\n";
+  const head = `  "${chapterId}": {`;
+  const start = src.indexOf(head);
+  if (start < 0) throw new Error(`config.ts: no chapter block "${chapterId}"`);
+  const rest = src.slice(start + head.length);
+  const next = rest.search(/\r?\n {2}"[^"]+": \{|\r?\n\};/);
+  const end = start + head.length + (next < 0 ? rest.length : next);
+  let block = src.slice(start, end);
+  const open = block.indexOf("subtopics: [");
+  if (open < 0) throw new Error(`config.ts: chapter "${chapterId}" has no subtopics list`);
+  const close = block.indexOf("]", open);
+  const indent = block.slice(block.lastIndexOf("\n", open) + 1, open);
+  const list = ["subtopics: [", ...subtopics.map((s) => `${indent}  ${JSON.stringify(s)},`), `${indent}]`].join(nl);
+  block = block.slice(0, open) + list + block.slice(close + 1);
+  for (const [from, to] of Object.entries(renames)) block = block.split(`subtopic: ${JSON.stringify(from)}`).join(`subtopic: ${JSON.stringify(to)}`);
+  return src.slice(0, start) + block + src.slice(end);
+}
