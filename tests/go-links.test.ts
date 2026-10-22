@@ -162,6 +162,18 @@ describe("chapter names shared with CDS", () => {
   });
 });
 
+describe("chapter names shared with AFCAT", () => {
+  // AFCAT's 20 chapters (2026-10-22) reuse NDA and CDS names and register last;
+  // they yield like CDS so /go/learn links keep their existing targets.
+  it.each(["Statistics", "Probability"])("%s still resolves to NDA", (name) => {
+    expect(getChapterByName(name)?.examName).toBe("NDA");
+  });
+
+  it("an AFCAT-only chapter name still resolves to AFCAT", () => {
+    expect(getChapterByName("Clock")?.examName).toBe("AFCAT");
+  });
+});
+
 describe("chapter names shared with JEE Mains", () => {
   // JEE chapters ship after the NDA and MHT-CET ones and reuse their names, so
   // they yield the same way CDS does rather than re-pointing existing links.
