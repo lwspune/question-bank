@@ -31,7 +31,7 @@ const USD_PER_OUTPUT_TOKEN = 0.5 / 1_000_000;
 const USD_PER_CACHE_READ_TOKEN = USD_PER_INPUT_TOKEN * 0.1;
 const USD_PER_CACHE_WRITE_TOKEN = USD_PER_INPUT_TOKEN * 1.25;
 
-/** One AI answer's cost at list price. Shared with scripts/chat/replay-typed.ts. */
+/** One AI answer's cost at list price. Shared with V's test runner (scripts/chat/eval/run.ts). */
 export function aiAnswerCostUsd(t: {
   tokensIn?: number | null;
   tokensOut?: number | null;
