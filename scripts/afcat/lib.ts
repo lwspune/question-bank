@@ -944,7 +944,7 @@ export type RecutPlan = {
  * `subtopic` overrides with a reason. Returns problems instead of a half-applied plan:
  * a row left outside the new list, a move of an unknown row, a listed subtopic with no row.
  */
-export function applyRecutPlan<D extends { id: string; subtopic: string }, O extends { reason?: string; subtopic?: string }>(
+export function applyRecutPlan<D extends { id: string; subtopic: string }, O extends { reason?: string; subtopic?: string; exclude?: boolean }>(
   plan: RecutPlan,
   input: { derived: D[]; overrides: Record<string, O> }
 ): { derived: D[]; overrides: Record<string, O>; problems: string[] } {
@@ -961,10 +961,13 @@ export function applyRecutPlan<D extends { id: string; subtopic: string }, O ext
     }
     const prev = overrides[id];
     const why = `Notes re-cut: ${m.reason}`;
-    overrides[id] = { ...(prev ?? {}), subtopic: m.to, reason: prev?.reason ? `${prev.reason} ${why}` : why } as O;
+    // Re-applying a plan must not record the same reason twice.
+    const reason = !prev?.reason ? why : prev.reason.includes(why) ? prev.reason : `${prev.reason} ${why}`;
+    overrides[id] = { ...(prev ?? {}), subtopic: m.to, reason } as O;
   }
   const held = new Set<string>();
   for (const r of derived) {
+    if (overrides[r.id]?.exclude) continue; // excluded at ingest: never built, never shipped
     const s = overrides[r.id]?.subtopic ?? r.subtopic;
     held.add(s);
     if (!plan.subtopics.includes(s)) problems.push(`${r.id}: subtopic "${s}" not in the new list`);

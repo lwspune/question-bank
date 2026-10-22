@@ -32,9 +32,24 @@ describe("applyRecutPlan", () => {
     expect(out.overrides["01-3"]).toEqual({ subtopic: "Dividing and Partnership", reason: "Notes re-cut: a share of a total" });
   });
 
+  it("is idempotent: applying the same plan twice records each move's reason once", () => {
+    const once = applyRecutPlan(plan, { derived, overrides });
+    const twice = applyRecutPlan(plan, { derived: once.derived, overrides: once.overrides });
+    expect(twice.overrides).toEqual(once.overrides);
+    expect(twice.derived).toEqual(once.derived);
+  });
+
   it("appends to an existing reason instead of replacing it", () => {
     const out = applyRecutPlan({ ...plan, moves: { "01-2": { to: "Combining Ratios", reason: "joins two ratios" } } }, { derived, overrides });
     expect(out.overrides["01-2"].reason).toBe("key stands Notes re-cut: joins two ratios");
+  });
+
+  it("ignores rows excluded at ingest: they never ship, so they need no place in the new list", () => {
+    const out = applyRecutPlan(
+      { subtopics: ["Combining Ratios"], renames: {}, moves: {} },
+      { derived: [{ id: "02-1", subtopic: "Combining Ratios" }, { id: "02-2", subtopic: "Old Catch-all" }], overrides: { "02-2": { reason: "dup", exclude: true } } }
+    );
+    expect(out.problems).toEqual([]);
   });
 
   it("refuses a plan that leaves a row outside the list, moves an unknown row, or lists an empty subtopic", () => {
