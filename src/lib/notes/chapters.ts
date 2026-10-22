@@ -1726,6 +1726,11 @@ import {
   CDS_PO_GOVERNMENT_NOTES,
   CDS_PO_GOVERNMENT_SLUGS,
 } from "@/app/notes/cds-polity/government-structure/_data";
+import {
+  CDS_PO_WORLD_CHAPTER,
+  CDS_PO_WORLD_NOTES,
+  CDS_PO_WORLD_SLUGS,
+} from "@/app/notes/cds-polity/world-polity/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -5509,17 +5514,6 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     subjectName: "Polity",
     subjectRoute: "cds-polity",
     subjectDisplay: "CDS Polity",
-    chapterSlug: "rights-dpsp-local-government",
-    chipLabel: "Rights, DPSP and Local Government notes",
-    chapter: CDS_PO_RIGHTS_CHAPTER,
-    notes: CDS_PO_RIGHTS_NOTES,
-    slugs: CDS_PO_RIGHTS_SLUGS,
-  },
-  {
-    examName: "CDS",
-    subjectName: "Polity",
-    subjectRoute: "cds-polity",
-    subjectDisplay: "CDS Polity",
     chapterSlug: "indian-constitution",
     chipLabel: "The Indian Constitution notes",
     chapter: CDS_PO_CONSTITUTION_CHAPTER,
@@ -5531,11 +5525,33 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     subjectName: "Polity",
     subjectRoute: "cds-polity",
     subjectDisplay: "CDS Polity",
+    chapterSlug: "rights-dpsp-local-government",
+    chipLabel: "Rights, DPSP and Local Government notes",
+    chapter: CDS_PO_RIGHTS_CHAPTER,
+    notes: CDS_PO_RIGHTS_NOTES,
+    slugs: CDS_PO_RIGHTS_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Polity",
+    subjectRoute: "cds-polity",
+    subjectDisplay: "CDS Polity",
     chapterSlug: "government-structure",
     chipLabel: "Government Structure notes",
     chapter: CDS_PO_GOVERNMENT_CHAPTER,
     notes: CDS_PO_GOVERNMENT_NOTES,
     slugs: CDS_PO_GOVERNMENT_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Polity",
+    subjectRoute: "cds-polity",
+    subjectDisplay: "CDS Polity",
+    chapterSlug: "world-polity",
+    chipLabel: "World Polity notes",
+    chapter: CDS_PO_WORLD_CHAPTER,
+    notes: CDS_PO_WORLD_NOTES,
+    slugs: CDS_PO_WORLD_SLUGS,
   },
 ];
 
