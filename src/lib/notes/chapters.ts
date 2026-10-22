@@ -1441,6 +1441,21 @@ import {
   SPI_HEIGHTS_DISTANCES_NOTES,
   SPI_HEIGHTS_DISTANCES_SLUGS,
 } from "@/app/notes/spi-maths/heights-distances/_data";
+import {
+  SPI_QUADRATIC_EQUATIONS_CHAPTER,
+  SPI_QUADRATIC_EQUATIONS_NOTES,
+  SPI_QUADRATIC_EQUATIONS_SLUGS,
+} from "@/app/notes/spi-maths/quadratic-equations/_data";
+import {
+  SPI_POLYNOMIALS_CHAPTER,
+  SPI_POLYNOMIALS_NOTES,
+  SPI_POLYNOMIALS_SLUGS,
+} from "@/app/notes/spi-maths/polynomials/_data";
+import {
+  SPI_ALGEBRAIC_IDENTITIES_CHAPTER,
+  SPI_ALGEBRAIC_IDENTITIES_NOTES,
+  SPI_ALGEBRAIC_IDENTITIES_SLUGS,
+} from "@/app/notes/spi-maths/algebraic-identities/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -4585,6 +4600,39 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SPI_HEIGHTS_DISTANCES_CHAPTER,
     notes: SPI_HEIGHTS_DISTANCES_NOTES,
     slugs: SPI_HEIGHTS_DISTANCES_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Mathematics",
+    subjectRoute: "spi-maths",
+    subjectDisplay: "SPI Mathematics",
+    chapterSlug: "quadratic-equations",
+    chipLabel: "Quadratic Equations notes",
+    chapter: SPI_QUADRATIC_EQUATIONS_CHAPTER,
+    notes: SPI_QUADRATIC_EQUATIONS_NOTES,
+    slugs: SPI_QUADRATIC_EQUATIONS_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Mathematics",
+    subjectRoute: "spi-maths",
+    subjectDisplay: "SPI Mathematics",
+    chapterSlug: "polynomials",
+    chipLabel: "Polynomials notes",
+    chapter: SPI_POLYNOMIALS_CHAPTER,
+    notes: SPI_POLYNOMIALS_NOTES,
+    slugs: SPI_POLYNOMIALS_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Mathematics",
+    subjectRoute: "spi-maths",
+    subjectDisplay: "SPI Mathematics",
+    chapterSlug: "algebraic-identities",
+    chipLabel: "Algebraic Identities and Simplification notes",
+    chapter: SPI_ALGEBRAIC_IDENTITIES_CHAPTER,
+    notes: SPI_ALGEBRAIC_IDENTITIES_NOTES,
+    slugs: SPI_ALGEBRAIC_IDENTITIES_SLUGS,
   },
   {
     examName: "SPI",
