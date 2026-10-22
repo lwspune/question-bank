@@ -1761,6 +1761,26 @@ import {
   CDS_PH_FLUIDS_NOTES,
   CDS_PH_FLUIDS_SLUGS,
 } from "@/app/notes/cds-physics/fluids-properties-of-matter/_data";
+import {
+  CDS_PH_HEAT_CHAPTER,
+  CDS_PH_HEAT_NOTES,
+  CDS_PH_HEAT_SLUGS,
+} from "@/app/notes/cds-physics/heat-thermodynamics/_data";
+import {
+  CDS_PH_SOUND_CHAPTER,
+  CDS_PH_SOUND_NOTES,
+  CDS_PH_SOUND_SLUGS,
+} from "@/app/notes/cds-physics/sound/_data";
+import {
+  CDS_PH_LIGHT_CHAPTER,
+  CDS_PH_LIGHT_NOTES,
+  CDS_PH_LIGHT_SLUGS,
+} from "@/app/notes/cds-physics/light-optics/_data";
+import {
+  CDS_PH_ENERGY_CHAPTER,
+  CDS_PH_ENERGY_NOTES,
+  CDS_PH_ENERGY_SLUGS,
+} from "@/app/notes/cds-physics/energy-sources/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -5648,6 +5668,50 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: CDS_PH_FLUIDS_CHAPTER,
     notes: CDS_PH_FLUIDS_NOTES,
     slugs: CDS_PH_FLUIDS_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Physics",
+    subjectRoute: "cds-physics",
+    subjectDisplay: "CDS Physics",
+    chapterSlug: "heat-thermodynamics",
+    chipLabel: "Heat and Thermodynamics notes",
+    chapter: CDS_PH_HEAT_CHAPTER,
+    notes: CDS_PH_HEAT_NOTES,
+    slugs: CDS_PH_HEAT_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Physics",
+    subjectRoute: "cds-physics",
+    subjectDisplay: "CDS Physics",
+    chapterSlug: "sound",
+    chipLabel: "Sound notes",
+    chapter: CDS_PH_SOUND_CHAPTER,
+    notes: CDS_PH_SOUND_NOTES,
+    slugs: CDS_PH_SOUND_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Physics",
+    subjectRoute: "cds-physics",
+    subjectDisplay: "CDS Physics",
+    chapterSlug: "light-optics",
+    chipLabel: "Light and Optics notes",
+    chapter: CDS_PH_LIGHT_CHAPTER,
+    notes: CDS_PH_LIGHT_NOTES,
+    slugs: CDS_PH_LIGHT_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Physics",
+    subjectRoute: "cds-physics",
+    subjectDisplay: "CDS Physics",
+    chapterSlug: "energy-sources",
+    chipLabel: "Sources of Energy notes",
+    chapter: CDS_PH_ENERGY_CHAPTER,
+    notes: CDS_PH_ENERGY_NOTES,
+    slugs: CDS_PH_ENERGY_SLUGS,
   },
 ];
 
