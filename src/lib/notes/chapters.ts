@@ -1816,6 +1816,26 @@ import {
   CDS_EC_MONEY_NOTES,
   CDS_EC_MONEY_SLUGS,
 } from "@/app/notes/cds-economics/money-banking-finance/_data";
+import {
+  CDS_BI_BIOCHEMISTRY_CHAPTER,
+  CDS_BI_BIOCHEMISTRY_NOTES,
+  CDS_BI_BIOCHEMISTRY_SLUGS,
+} from "@/app/notes/cds-biology/biochemistry/_data";
+import {
+  CDS_BI_CELL_CHAPTER,
+  CDS_BI_CELL_NOTES,
+  CDS_BI_CELL_SLUGS,
+} from "@/app/notes/cds-biology/cell-biology/_data";
+import {
+  CDS_BI_PHYSIOLOGY_CHAPTER,
+  CDS_BI_PHYSIOLOGY_NOTES,
+  CDS_BI_PHYSIOLOGY_SLUGS,
+} from "@/app/notes/cds-biology/human-physiology/_data";
+import {
+  CDS_BI_REPRODUCTION_CHAPTER,
+  CDS_BI_REPRODUCTION_NOTES,
+  CDS_BI_REPRODUCTION_SLUGS,
+} from "@/app/notes/cds-biology/reproduction/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -5824,6 +5844,50 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: CDS_EC_INDIAN_ECONOMY_CHAPTER,
     notes: CDS_EC_INDIAN_ECONOMY_NOTES,
     slugs: CDS_EC_INDIAN_ECONOMY_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Biology",
+    subjectRoute: "cds-biology",
+    subjectDisplay: "CDS Biology",
+    chapterSlug: "biochemistry",
+    chipLabel: "Biochemistry notes",
+    chapter: CDS_BI_BIOCHEMISTRY_CHAPTER,
+    notes: CDS_BI_BIOCHEMISTRY_NOTES,
+    slugs: CDS_BI_BIOCHEMISTRY_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Biology",
+    subjectRoute: "cds-biology",
+    subjectDisplay: "CDS Biology",
+    chapterSlug: "cell-biology",
+    chipLabel: "Cell Biology notes",
+    chapter: CDS_BI_CELL_CHAPTER,
+    notes: CDS_BI_CELL_NOTES,
+    slugs: CDS_BI_CELL_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Biology",
+    subjectRoute: "cds-biology",
+    subjectDisplay: "CDS Biology",
+    chapterSlug: "human-physiology",
+    chipLabel: "Human Physiology notes",
+    chapter: CDS_BI_PHYSIOLOGY_CHAPTER,
+    notes: CDS_BI_PHYSIOLOGY_NOTES,
+    slugs: CDS_BI_PHYSIOLOGY_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Biology",
+    subjectRoute: "cds-biology",
+    subjectDisplay: "CDS Biology",
+    chapterSlug: "reproduction",
+    chipLabel: "Reproduction notes",
+    chapter: CDS_BI_REPRODUCTION_CHAPTER,
+    notes: CDS_BI_REPRODUCTION_NOTES,
+    slugs: CDS_BI_REPRODUCTION_SLUGS,
   },
 ];
 
