@@ -1421,6 +1421,26 @@ import {
   SPI_COORDINATE_GEOMETRY_NOTES,
   SPI_COORDINATE_GEOMETRY_SLUGS,
 } from "@/app/notes/spi-maths/coordinate-geometry/_data";
+import {
+  SPI_GRAMMAR_CHAPTER,
+  SPI_GRAMMAR_NOTES,
+  SPI_GRAMMAR_SLUGS,
+} from "@/app/notes/spi-english/grammar/_data";
+import {
+  SPI_MENSURATION_2D_CHAPTER,
+  SPI_MENSURATION_2D_NOTES,
+  SPI_MENSURATION_2D_SLUGS,
+} from "@/app/notes/spi-maths/mensuration-2d/_data";
+import {
+  SPI_SURDS_INDICES_CHAPTER,
+  SPI_SURDS_INDICES_NOTES,
+  SPI_SURDS_INDICES_SLUGS,
+} from "@/app/notes/spi-maths/surds-indices/_data";
+import {
+  SPI_HEIGHTS_DISTANCES_CHAPTER,
+  SPI_HEIGHTS_DISTANCES_NOTES,
+  SPI_HEIGHTS_DISTANCES_SLUGS,
+} from "@/app/notes/spi-maths/heights-distances/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -4535,6 +4555,39 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
   },
   {
     examName: "SPI",
+    subjectName: "Mathematics",
+    subjectRoute: "spi-maths",
+    subjectDisplay: "SPI Mathematics",
+    chapterSlug: "mensuration-2d",
+    chipLabel: "Mensuration 2D notes",
+    chapter: SPI_MENSURATION_2D_CHAPTER,
+    notes: SPI_MENSURATION_2D_NOTES,
+    slugs: SPI_MENSURATION_2D_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Mathematics",
+    subjectRoute: "spi-maths",
+    subjectDisplay: "SPI Mathematics",
+    chapterSlug: "surds-indices",
+    chipLabel: "Surds, Indices and Simplification notes",
+    chapter: SPI_SURDS_INDICES_CHAPTER,
+    notes: SPI_SURDS_INDICES_NOTES,
+    slugs: SPI_SURDS_INDICES_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Mathematics",
+    subjectRoute: "spi-maths",
+    subjectDisplay: "SPI Mathematics",
+    chapterSlug: "heights-distances",
+    chipLabel: "Heights and Distances notes",
+    chapter: SPI_HEIGHTS_DISTANCES_CHAPTER,
+    notes: SPI_HEIGHTS_DISTANCES_NOTES,
+    slugs: SPI_HEIGHTS_DISTANCES_SLUGS,
+  },
+  {
+    examName: "SPI",
     subjectName: "English",
     subjectRoute: "spi-english",
     subjectDisplay: "SPI English",
@@ -4554,6 +4607,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SPI_IDIOMS_PHRASES_CHAPTER,
     notes: SPI_IDIOMS_PHRASES_NOTES,
     slugs: SPI_IDIOMS_PHRASES_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "English",
+    subjectRoute: "spi-english",
+    subjectDisplay: "SPI English",
+    chapterSlug: "grammar",
+    chipLabel: "Grammar notes",
+    chapter: SPI_GRAMMAR_CHAPTER,
+    notes: SPI_GRAMMAR_NOTES,
+    slugs: SPI_GRAMMAR_SLUGS,
   },
 ];
 
