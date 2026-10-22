@@ -1701,6 +1701,16 @@ import {
   CDS_GE_WORLD_NOTES,
   CDS_GE_WORLD_SLUGS,
 } from "@/app/notes/cds-geography/world-human-geography/_data";
+import {
+  CDS_GE_OCEAN_CHAPTER,
+  CDS_GE_OCEAN_NOTES,
+  CDS_GE_OCEAN_SLUGS,
+} from "@/app/notes/cds-geography/oceanography/_data";
+import {
+  CDS_GE_SPACE_CHAPTER,
+  CDS_GE_SPACE_NOTES,
+  CDS_GE_SPACE_SLUGS,
+} from "@/app/notes/cds-geography/earth-in-space/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -5407,11 +5417,11 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     subjectName: "Geography",
     subjectRoute: "cds-geography",
     subjectDisplay: "CDS Geography",
-    chapterSlug: "indian-physical-geography",
-    chipLabel: "Indian Physical Geography notes",
-    chapter: CDS_GE_PHYSICAL_CHAPTER,
-    notes: CDS_GE_PHYSICAL_NOTES,
-    slugs: CDS_GE_PHYSICAL_SLUGS,
+    chapterSlug: "earth-in-space",
+    chipLabel: "Earth in Space and Maps notes",
+    chapter: CDS_GE_SPACE_CHAPTER,
+    notes: CDS_GE_SPACE_NOTES,
+    slugs: CDS_GE_SPACE_SLUGS,
   },
   {
     examName: "CDS",
@@ -5429,17 +5439,6 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     subjectName: "Geography",
     subjectRoute: "cds-geography",
     subjectDisplay: "CDS Geography",
-    chapterSlug: "indian-economic-geography",
-    chipLabel: "Indian Economic Geography notes",
-    chapter: CDS_GE_ECONOMIC_CHAPTER,
-    notes: CDS_GE_ECONOMIC_NOTES,
-    slugs: CDS_GE_ECONOMIC_SLUGS,
-  },
-  {
-    examName: "CDS",
-    subjectName: "Geography",
-    subjectRoute: "cds-geography",
-    subjectDisplay: "CDS Geography",
     chapterSlug: "climatology",
     chipLabel: "Climatology notes",
     chapter: CDS_GE_CLIMATE_CHAPTER,
@@ -5451,11 +5450,44 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     subjectName: "Geography",
     subjectRoute: "cds-geography",
     subjectDisplay: "CDS Geography",
+    chapterSlug: "oceanography",
+    chipLabel: "Oceanography notes",
+    chapter: CDS_GE_OCEAN_CHAPTER,
+    notes: CDS_GE_OCEAN_NOTES,
+    slugs: CDS_GE_OCEAN_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Geography",
+    subjectRoute: "cds-geography",
+    subjectDisplay: "CDS Geography",
     chapterSlug: "world-human-geography",
     chipLabel: "World and Human Geography notes",
     chapter: CDS_GE_WORLD_CHAPTER,
     notes: CDS_GE_WORLD_NOTES,
     slugs: CDS_GE_WORLD_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Geography",
+    subjectRoute: "cds-geography",
+    subjectDisplay: "CDS Geography",
+    chapterSlug: "indian-physical-geography",
+    chipLabel: "Indian Physical Geography notes",
+    chapter: CDS_GE_PHYSICAL_CHAPTER,
+    notes: CDS_GE_PHYSICAL_NOTES,
+    slugs: CDS_GE_PHYSICAL_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Geography",
+    subjectRoute: "cds-geography",
+    subjectDisplay: "CDS Geography",
+    chapterSlug: "indian-economic-geography",
+    chipLabel: "Indian Economic Geography notes",
+    chapter: CDS_GE_ECONOMIC_CHAPTER,
+    notes: CDS_GE_ECONOMIC_NOTES,
+    slugs: CDS_GE_ECONOMIC_SLUGS,
   },
 ];
 
