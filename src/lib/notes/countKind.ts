@@ -26,3 +26,12 @@ export function featuredLeadIn(kind: SourceKind): string {
   if (kind === "pyq") return "The same idea in a real exam question:";
   return `The same idea in a ${kind === "practice" ? "practice" : "textbook"} question:`;
 }
+
+/**
+ * The `kind` a notes drill link passes to /browse. /browse filters to past-year rows by default,
+ * and that filter applies to an explicit list of ids too, so without this an SPI drill would drop
+ * its practice rows. Undefined for PYQ-only exams keeps their URLs byte-identical.
+ */
+export function notesBrowseKind(kind: NotesCountKind): "all" | undefined {
+  return kind === "all" ? "all" : undefined;
+}

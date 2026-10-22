@@ -684,6 +684,9 @@ type Props = {
   backHref?: string;
   /** Human label for the back pill, e.g. "Vectors notes". */
   backLabel?: string;
+  /** The drill link's /browse kind (lib/notes/countKind.ts `notesBrowseKind`): "all" for an exam
+   *  whose notes count practice too, else omitted so the URL stays PYQ-only. */
+  browseKind?: "all";
   /**
    * False hides the "report a problem" button. The IMAT preview sets it: the
    * report API only knows PYQ Vault's subtopic slugs. Default true.
@@ -707,6 +710,7 @@ export default function ConceptUnitCard({
   drillQuestionIds,
   backHref,
   backLabel,
+  browseKind,
   showReport = true,
 }: Props) {
   const practiceParts: string[] = [];
@@ -855,6 +859,7 @@ export default function ConceptUnitCard({
           <Link
             href={buildBrowseUrl({
               extraIds: drillQuestionIds,
+              kind: browseKind,
               from: backHref,
               fromLabel: backLabel,
             })}

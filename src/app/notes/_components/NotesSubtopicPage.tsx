@@ -19,7 +19,7 @@ import { userHasAccess } from "@/lib/entitlements/query";
 import { isNotesGated, splitPreview } from "@/lib/notes/access";
 import { loadWorkedExamples } from "@/lib/guide/loadWorkedExamples";
 import { getNotesTaxonomy } from "@/lib/notes/taxonomyCache";
-import { notesCountKind } from "@/lib/notes/countKind";
+import { notesBrowseKind, notesCountKind } from "@/lib/notes/countKind";
 import { loadResolvedDrills } from "@/lib/notes/loadResolvedDrills";
 import { pickInterleavedCheckpoint } from "@/lib/notes/pickInterleavedCheckpoint";
 import type { NotesChapterRegistration } from "@/lib/notes/chapters";
@@ -208,11 +208,6 @@ export default async function NotesSubtopicPage({
     .map((id) => pyqById.get(id))
     .filter((r): r is NonNullable<typeof r> => Boolean(r));
 
-  const drillHref = subtopicId
-    ? `/browse?examId=${taxonomy.examId}&subjectId=${taxonomy.subjectId}&subtopicIds=${subtopicId}${countKind === "all" ? "&kind=all" : ""}`
-    : "/browse";
-
-
   // Return target for the /browse "← Back to notes" pill: this subtopic's URL
   // (per-concept drills append the concept anchor) + a human label.
   const subtopicUrl = `${base}/${subtopicSlug}`;
@@ -223,6 +218,7 @@ export default async function NotesSubtopicPage({
       examId={taxonomy.examId}
       subjectId={taxonomy.subjectId}
       subtopicIds={subtopicId ? [subtopicId] : []}
+      kind={notesBrowseKind(countKind)}
       from={subtopicUrl}
       fromLabel={backLabel}
       variant="outline"
@@ -366,6 +362,7 @@ export default async function NotesSubtopicPage({
             drillQuestionIds={drillsByConcept.get(c.slug) ?? []}
             backHref={`${subtopicUrl}#${c.slug}`}
             backLabel={backLabel}
+            browseKind={notesBrowseKind(countKind)}
           />
         ))}
       </div>

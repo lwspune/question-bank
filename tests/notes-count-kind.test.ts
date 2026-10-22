@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { featuredLeadIn, notesCountKind, notesCountNoun } from "../src/lib/notes/countKind";
+import { featuredLeadIn, notesBrowseKind, notesCountKind, notesCountNoun } from "../src/lib/notes/countKind";
+import { buildBrowseUrl } from "../src/lib/guide/buildBrowseUrl";
 
 describe("notesCountKind", () => {
   it("keeps every exam's notes past-year-only by default (migration 0036)", () => {
@@ -21,5 +22,18 @@ describe("featuredLeadIn", () => {
     expect(featuredLeadIn("pyq")).toBe("The same idea in a real exam question:");
     expect(featuredLeadIn("practice")).toBe("The same idea in a practice question:");
     expect(featuredLeadIn("textbook")).toBe("The same idea in a textbook question:");
+  });
+});
+
+describe("notesBrowseKind", () => {
+  it("opens /browse on both kinds only for an exam whose notes count both", () => {
+    expect(notesBrowseKind("all")).toBe("all");
+    // undefined keeps every other exam's drill URL byte-identical (no kind param)
+    expect(notesBrowseKind("pyq")).toBeUndefined();
+  });
+
+  it("puts kind=all on an SPI drill URL, so practice rows are not filtered out", () => {
+    expect(buildBrowseUrl({ extraIds: ["a"], kind: notesBrowseKind(notesCountKind("SPI")) })).toContain("kind=all");
+    expect(buildBrowseUrl({ extraIds: ["a"], kind: notesBrowseKind(notesCountKind("CDS")) })).not.toContain("kind=");
   });
 });
