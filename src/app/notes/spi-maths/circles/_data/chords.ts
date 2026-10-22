@@ -6,7 +6,7 @@ export const SPI_CI_CHORDS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "The perpendicular from the centre cuts a chord in half, the angle at the centre is twice the angle at the circle, and opposite angles of a cyclic quadrilateral add to 180 degrees.",
   whyItMatters:
-    "Ten questions in the bank, including both 2022 questions on circles and the chapter's only two HARD ones. Chord lengths are one right triangle again; the angle questions need the right theorem picked from a figure, which is why they run harder.",
+    "Ten questions in the bank, including both circle questions from the 2022 paper and the chapter's only two HARD ones. Chord lengths are one right triangle again; the angle questions need the right theorem picked from a figure, which is why they run harder.",
   concepts: [
     {
       kind: "formula" as const,

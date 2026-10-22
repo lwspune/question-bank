@@ -19,6 +19,10 @@ export const SPI_LE_SOLVING_NOTE: SubtopicNote = {
         "- Multiplying or dividing both sides by the same **non-zero** number does not change the solution.\n" +
         "- **Fractions:** multiply every term by the LCM of the denominators first. Put brackets round each numerator, because a minus sign in front of a fraction applies to the whole numerator.\n" +
         "- Check the answer by putting it back into both sides.",
+      formula: {
+        label: "One unknown on each side",
+        latex: "ax + b = c \\;\\Rightarrow\\; x = \\dfrac{c - b}{a} \\qquad ax + b = cx + d \\;\\Rightarrow\\; x = \\dfrac{d - b}{a - c} \\quad (a \\ne c)",
+      },
       authoredExample: {
         prompt: "Solve \\(7x - 4 = 3x + 12\\).",
         steps: [
@@ -124,7 +128,13 @@ export const SPI_LE_SOLVING_NOTE: SubtopicNote = {
         "- **Elimination:** multiply the equations so that one unknown has equal or opposite coefficients, then subtract or add.\n" +
         "- **Substitution:** write one unknown in terms of the other from one equation and put it into the other.\n" +
         "- With fractions, clear the denominators in each equation first.\n" +
-        "- Check the answer in **both** equations. In a multiple-choice question you can also test each option.",
+        "- Check the answer in **both** equations. In a multiple-choice question you can also test each option.\n" +
+        "- **Shortcut formula:** for \\(a_1x + b_1y = c_1\\) and \\(a_2x + b_2y = c_2\\) with \\(a_1b_2 - a_2b_1 \\ne 0\\), \\(x = \\dfrac{c_1b_2 - c_2b_1}{a_1b_2 - a_2b_1}\\) and \\(y = \\dfrac{a_1c_2 - a_2c_1}{a_1b_2 - a_2b_1}\\).",
+      formula: {
+        label: "Solution of a pair, and the solution check",
+        latex:
+          "x = \\dfrac{c_1b_2 - c_2b_1}{a_1b_2 - a_2b_1}, \\quad y = \\dfrac{a_1c_2 - a_2c_1}{a_1b_2 - a_2b_1} \\qquad (x_0, y_0) \\text{ solves } ax + by = c \\text{ when } ax_0 + by_0 = c",
+      },
       authoredExample: {
         prompt: "Solve \\(3x + 2y = 16\\) and \\(x - y = 2\\).",
         steps: [

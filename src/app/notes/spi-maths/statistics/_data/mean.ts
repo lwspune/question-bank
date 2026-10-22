@@ -23,8 +23,8 @@ export const SPI_ST_MEAN_NOTE: SubtopicNote = {
         label: "Mean of n values",
         latex: "\\bar{x} = \\frac{x_1 + x_2 + \\dots + x_n}{n} \\qquad \\sum x = n\\bar{x}",
         symbols: [
-          { symbol: "\\bar{x}", meaning: "the mean" },
-          { symbol: "n", meaning: "how many values there are" },
+          { symbol: "\\(\\bar{x}\\)", meaning: "the mean" },
+          { symbol: "\\(n\\)", meaning: "how many values there are" },
         ],
       },
       authoredExample: {

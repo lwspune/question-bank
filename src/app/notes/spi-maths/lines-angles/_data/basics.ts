@@ -6,7 +6,7 @@ export const SPI_LA_BASICS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "A line has no endpoints, a ray has one and a segment has two; two angles are complementary when they add to 90 degrees and supplementary when they add to 180 degrees.",
   whyItMatters:
-    "Nine questions in the bank, seven of them EASY, and all three 2022 questions on this chapter are here. Most are one definition: what a line is, what congruent means, the complement of 30 degrees. The two harder 2022 questions are counting questions, and they are lost by counting too few.",
+    "Nine questions in the bank, seven of them EASY, and all three of this chapter's questions from the 2022 paper are here. Most are one definition: what a line is, what congruent means, the complement of 30 degrees. The two harder ones from the 2022 paper are counting questions, and they are lost by counting too few.",
   concepts: [
     {
       kind: "reference" as const,

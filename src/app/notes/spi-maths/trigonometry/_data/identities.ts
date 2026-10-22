@@ -123,6 +123,11 @@ export const SPI_TG_IDENTITIES_NOTE: SubtopicNote = {
         "- The bottom becomes a squared ratio by the identities: \\(\\sin^2 A\\), \\(\\cos^2 A\\), \\(\\tan^2 A\\).\n" +
         "- For an acute angle every ratio is positive, so \\(\\sqrt{\\sin^2 A} = \\sin A\\).\n" +
         "- **Check by numbers:** put \\(A = 60^\\circ\\) into the question and each option, and keep the one that matches.",
+      formula: {
+        label: "Roots that clear for an acute angle A",
+        latex:
+          "\\sqrt{\\dfrac{1 + \\cos A}{1 - \\cos A}} = \\operatorname{cosec} A + \\cot A \\qquad \\sqrt{\\dfrac{1 - \\cos A}{1 + \\cos A}} = \\operatorname{cosec} A - \\cot A \\qquad \\sqrt{1 - \\sin^2 A} = \\cos A \\qquad \\sqrt{\\sec^2 A - 1} = \\tan A",
+      },
       authoredExample: {
         prompt: "Simplify \\(\\sqrt{\\dfrac{1 + \\cos A}{1 - \\cos A}}\\) for an acute angle A.",
         steps: [

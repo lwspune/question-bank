@@ -16,52 +16,24 @@ export const SPI_TG_VALUES_NOTE: SubtopicNote = {
         "Learn the sine row as \\(\\dfrac{\\sqrt{0}}{2}, \\dfrac{\\sqrt{1}}{2}, \\dfrac{\\sqrt{2}}{2}, \\dfrac{\\sqrt{3}}{2}, \\dfrac{\\sqrt{4}}{2}\\) for \\(0^\\circ, 30^\\circ, 45^\\circ, 60^\\circ, 90^\\circ\\). Cosine is the same list backwards. Tangent is sine divided by cosine, and the last three ratios are reciprocals.",
       definition:
         "- \\(\\sin 0^\\circ = 0\\) and \\(\\cos 0^\\circ = 1\\); \\(\\sin 90^\\circ = 1\\) and \\(\\cos 90^\\circ = 0\\).\n" +
+        "- At \\(90^\\circ\\): \\(\\operatorname{cosec} 90^\\circ = 1\\) and \\(\\cot 90^\\circ = 0\\), while \\(\\tan 90^\\circ\\) and \\(\\sec 90^\\circ\\) are not defined.\n" +
         "- \\(\\tan 45^\\circ = 1\\), and \\(\\sin 45^\\circ = \\cos 45^\\circ = \\frac{1}{\\sqrt{2}}\\).\n" +
         "- **Not defined:** \\(\\tan 90^\\circ\\), \\(\\sec 90^\\circ\\), \\(\\cot 0^\\circ\\) and \\(\\operatorname{cosec} 0^\\circ\\), because each divides by zero.\n" +
         "- \\(\\sin^2 30^\\circ\\) means \\((\\sin 30^\\circ)^2 = \\frac{1}{4}\\).",
       table: {
-        columns: ["Angle", "sin", "cos", "tan", "cosec", "sec", "cot"],
+        columns: ["Ratio", "0°", "30°", "45°", "60°"],
         rows: [
-          { cells: ["\\(0^\\circ\\)", "\\(0\\)", "\\(1\\)", "\\(0\\)", "not defined", "\\(1\\)", "not defined"] },
+          { cells: ["sin", "\\(0\\)", "\\(\\frac{1}{2}\\)", "\\(\\frac{1}{\\sqrt{2}}\\)", "\\(\\frac{\\sqrt{3}}{2}\\)"] },
+          { cells: ["cos", "\\(1\\)", "\\(\\frac{\\sqrt{3}}{2}\\)", "\\(\\frac{1}{\\sqrt{2}}\\)", "\\(\\frac{1}{2}\\)"] },
+          { cells: ["tan", "\\(0\\)", "\\(\\frac{1}{\\sqrt{3}}\\)", "\\(1\\)", "\\(\\sqrt{3}\\)"] },
+          { cells: ["cosec", "not defined", "\\(2\\)", "\\(\\sqrt{2}\\)", "\\(\\frac{2}{\\sqrt{3}}\\)"] },
+          { cells: ["sec", "\\(1\\)", "\\(\\frac{2}{\\sqrt{3}}\\)", "\\(\\sqrt{2}\\)", "\\(2\\)"] },
           {
-            cells: [
-              "\\(30^\\circ\\)",
-              "\\(\\frac{1}{2}\\)",
-              "\\(\\frac{\\sqrt{3}}{2}\\)",
-              "\\(\\frac{1}{\\sqrt{3}}\\)",
-              "\\(2\\)",
-              "\\(\\frac{2}{\\sqrt{3}}\\)",
-              "\\(\\sqrt{3}\\)",
-            ],
-          },
-          {
-            cells: [
-              "\\(45^\\circ\\)",
-              "\\(\\frac{1}{\\sqrt{2}}\\)",
-              "\\(\\frac{1}{\\sqrt{2}}\\)",
-              "\\(1\\)",
-              "\\(\\sqrt{2}\\)",
-              "\\(\\sqrt{2}\\)",
-              "\\(1\\)",
-            ],
-          },
-          {
-            cells: [
-              "\\(60^\\circ\\)",
-              "\\(\\frac{\\sqrt{3}}{2}\\)",
-              "\\(\\frac{1}{2}\\)",
-              "\\(\\sqrt{3}\\)",
-              "\\(\\frac{2}{\\sqrt{3}}\\)",
-              "\\(2\\)",
-              "\\(\\frac{1}{\\sqrt{3}}\\)",
-            ],
-          },
-          {
-            cells: ["\\(90^\\circ\\)", "\\(1\\)", "\\(0\\)", "not defined", "\\(1\\)", "not defined", "\\(0\\)"],
-            noteAmber: "\\(\\tan 90^\\circ\\) is not defined. It is not 0 and not 1.",
+            cells: ["cot", "not defined", "\\(\\sqrt{3}\\)", "\\(1\\)", "\\(\\frac{1}{\\sqrt{3}}\\)"],
+            noteAmber: "At \\(90^\\circ\\), \\(\\tan 90^\\circ\\) and \\(\\sec 90^\\circ\\) are not defined. They are not 0 and not 1.",
           },
         ],
-        caption: "Sine rises from 0 to 1, cosine falls from 1 to 0, and tangent is their quotient.",
+        caption: "At 90°: sin 90° = 1, cos 90° = 0, cosec 90° = 1, cot 90° = 0, and tan 90° and sec 90° are not defined. Sine rises from 0 to 1, cosine falls from 1 to 0, and tangent is their quotient.",
       },
       selfCheckExample: {
         prompt: "Evaluate \\(2\\tan^2 45^\\circ + \\cos^2 30^\\circ - \\sin^2 60^\\circ\\).",
@@ -102,6 +74,11 @@ export const SPI_TG_VALUES_NOTE: SubtopicNote = {
         "- If the bracket holds \\(2\\theta\\) or \\(3\\theta\\), solve for that first, then divide.\n" +
         "- The angles here are taken from \\(0^\\circ\\) to \\(90^\\circ\\), so each value gives one angle: \\(\\tan\\theta = 0\\) means \\(\\theta = 0^\\circ\\).\n" +
         "- Once the angle is known, any other ratio of it comes from the table.",
+      formula: {
+        label: "Values that give the angle at once (0° to 90°)",
+        latex:
+          "\\sin x = \\tfrac{1}{2} \\Rightarrow x = 30^\\circ \\qquad \\cos x = \\tfrac{1}{2} \\Rightarrow x = 60^\\circ \\qquad \\tan x = 1 \\Rightarrow x = 45^\\circ \\qquad \\tan x = \\sqrt{3} \\Rightarrow x = 60^\\circ \\qquad \\tan x = \\tfrac{1}{\\sqrt{3}} \\Rightarrow x = 30^\\circ",
+      },
       authoredExample: {
         prompt: "If \\(2\\cos 2\\theta = 1\\), find \\(\\theta\\) and then \\(\\sin\\theta\\).",
         steps: [

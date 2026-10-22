@@ -6,7 +6,7 @@ export const SPI_AI_VALUES_NOTE: SubtopicNote = {
   oneLineDefinition:
     "An identity turns a given sum and product, or a condition such as a + b + c = 0, straight into the value asked for, without finding the letters themselves.",
   whyItMatters:
-    "Five questions in the bank, two EASY and three MODERATE, and both 2022 questions in this chapter are here. None needs the values of the letters: each is one identity, or a chain of brackets that cancels, and the work is choosing which.",
+    "Five questions in the bank, two EASY and three MODERATE, and both of this chapter's questions from the 2022 paper are here. None needs the values of the letters: each is one identity, or a chain of brackets that cancels, and the work is choosing which.",
   concepts: [
     {
       kind: "formula" as const,

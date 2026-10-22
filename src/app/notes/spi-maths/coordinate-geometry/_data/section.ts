@@ -24,8 +24,8 @@ export const SPI_CG_SECTION_NOTE: SubtopicNote = {
         latex: "P = \\left(\\frac{mx_2 + nx_1}{m + n},\\ \\frac{my_2 + ny_1}{m + n}\\right)",
         symbols: [
           { symbol: "m : n", meaning: "the ratio AP : PB" },
-          { symbol: "(x_1, y_1)", meaning: "the first end, A" },
-          { symbol: "(x_2, y_2)", meaning: "the second end, B" },
+          { symbol: "\\((x_1, y_1)\\)", meaning: "the first end, A" },
+          { symbol: "\\((x_2, y_2)\\)", meaning: "the second end, B" },
         ],
       },
       authoredExample: {

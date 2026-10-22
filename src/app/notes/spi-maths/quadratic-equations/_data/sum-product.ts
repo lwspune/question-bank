@@ -119,6 +119,11 @@ export const SPI_QE_SUM_PRODUCT_NOTE: SubtopicNote = {
         "- Constant term copied **wrongly**: trust that student's **sum** of roots.\n" +
         "- Coefficient of x copied **wrongly**: trust that student's **product** of roots.\n" +
         "- Put the trusted sum and product together: \\(x^2 - (\\text{sum})x + \\text{product} = 0\\), then factorise if the roots are asked.",
+      formula: {
+        label: "Correct equation from the two students' trusted values",
+        latex:
+          "x^2 - (\\text{sum from the student with the right } x \\text{ term})\\,x + (\\text{product from the student with the right constant}) = 0",
+      },
       authoredExample: {
         prompt: "In solving \\(x^2 + bx + c = 0\\), one student copies the constant term wrongly and gets the roots 1 and 7. Another copies the coefficient of x wrongly and gets the roots 2 and 5. Find the correct equation.",
         steps: [

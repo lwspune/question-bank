@@ -24,8 +24,8 @@ export const SPI_ST_GROUPED_MEAN_NOTE: SubtopicNote = {
         label: "Direct method",
         latex: "\\text{class mark} = \\frac{\\text{lower} + \\text{upper}}{2} \\qquad \\bar{x} = \\frac{\\sum f_i x_i}{\\sum f_i}",
         symbols: [
-          { symbol: "f_i", meaning: "frequency of a class" },
-          { symbol: "x_i", meaning: "class mark of that class" },
+          { symbol: "\\(f_i\\)", meaning: "frequency of a class" },
+          { symbol: "\\(x_i\\)", meaning: "class mark of that class" },
         ],
       },
       authoredExample: {
@@ -90,7 +90,7 @@ export const SPI_ST_GROUPED_MEAN_NOTE: SubtopicNote = {
         latex: "d_i = x_i - a \\qquad \\bar{x} = a + \\frac{\\sum f_i d_i}{\\sum f_i}",
         symbols: [
           { symbol: "a", meaning: "assumed mean" },
-          { symbol: "d_i", meaning: "deviation of a class mark from a" },
+          { symbol: "\\(d_i\\)", meaning: "deviation of a class mark from a" },
         ],
       },
       authoredExample: {

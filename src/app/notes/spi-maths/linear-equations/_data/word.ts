@@ -18,6 +18,10 @@ export const SPI_LE_WORD_NOTE: SubtopicNote = {
         "- '3 more than x' is \\(x + 3\\), '2 less than x' is \\(x - 2\\), 'twice x' is \\(2x\\), 'half of x' is \\(\\frac{x}{2}\\).\n" +
         "- A fixed part plus a rate gives a linear rule: a fixed charge of ₹50 plus ₹8 per km is \\(y = 50 + 8x\\).\n" +
         "- Answer the quantity asked for, which may not be x itself.",
+      formula: {
+        label: "Fixed part plus a rate",
+        latex: "y = a + bx \\quad (a = \\text{fixed part},\\ b = \\text{rate per unit}) \\qquad x + (x + 1) + (x + 2) = 3x + 3",
+      },
       authoredExample: {
         prompt:
           "A rope 46 m long is cut into three pieces. The second piece is 4 m longer than the first, and the third is 2 m longer than the second. Find the longest piece.",
@@ -64,6 +68,11 @@ export const SPI_LE_WORD_NOTE: SubtopicNote = {
         "- 'Taller than M by the same amount as shorter than T' puts the height halfway between: \\(s - m = t - s\\), so \\(m + t = 2s\\).\n" +
         "- Keep one unit: change metres to centimetres before adding a length in centimetres.\n" +
         "- Check the answer against every statement, not just the last one.",
+      formula: {
+        label: "Comparison sentences as equations",
+        latex:
+          "A = \\tfrac{1}{2}B \\;\\Rightarrow\\; B = 2A \\qquad A = B + k \\ (A \\text{ is } k \\text{ older}) \\qquad s - m = t - s \\;\\Rightarrow\\; m + t = 2s \\ (s \\text{ halfway})",
+      },
       authoredExample: {
         prompt:
           "Ravi is twice as old as Meena. Meena is 4 years older than Joy. Ravi is 26 years older than Joy. How old is Joy?",

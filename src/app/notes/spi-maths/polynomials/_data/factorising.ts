@@ -96,6 +96,10 @@ export const SPI_PO_FACTORISING_NOTE: SubtopicNote = {
         "- **Grouping:** pair the terms, take a common factor out of each pair, and the same bracket appears twice: \\(x^2(x - 2) + 5(x - 2) = (x - 2)(x^2 + 5)\\).\n" +
         "- If the second pair starts with a minus, take out a negative factor so the brackets match.\n" +
         "- **Substitution:** let t stand for the repeated bracket, factorise the quadratic in t, then put the bracket back in place of t.",
+      formula: {
+        label: "Grouping pattern",
+        latex: "ax + ay + bx + by = a(x + y) + b(x + y) = (a + b)(x + y)",
+      },
       authoredExample: {
         prompt: "Factorise \\(3(x - 1)^2 - 5(x - 1) - 2\\).",
         steps: [

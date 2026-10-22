@@ -130,9 +130,9 @@ export const SPI_ST_GROUPED_MEDIAN_NOTE: SubtopicNote = {
         latex: "\\text{Mode} = l + \\frac{f_1 - f_0}{2f_1 - f_0 - f_2} \\times h",
         symbols: [
           { symbol: "l", meaning: "lower limit of the modal class" },
-          { symbol: "f_1", meaning: "frequency of the modal class" },
-          { symbol: "f_0", meaning: "frequency of the class before it" },
-          { symbol: "f_2", meaning: "frequency of the class after it" },
+          { symbol: "\\(f_1\\)", meaning: "frequency of the modal class" },
+          { symbol: "\\(f_0\\)", meaning: "frequency of the class before it" },
+          { symbol: "\\(f_2\\)", meaning: "frequency of the class after it" },
           { symbol: "h", meaning: "class size" },
         ],
       },
