@@ -1371,6 +1371,56 @@ import {
   SPI_DATA_INTERPRETATION_NOTES,
   SPI_DATA_INTERPRETATION_SLUGS,
 } from "@/app/notes/spi-maths/data-interpretation/_data";
+import {
+  SPI_MENSURATION_3D_CHAPTER,
+  SPI_MENSURATION_3D_NOTES,
+  SPI_MENSURATION_3D_SLUGS,
+} from "@/app/notes/spi-maths/mensuration-3d/_data";
+import {
+  SPI_NUMBER_SYSTEM_CHAPTER,
+  SPI_NUMBER_SYSTEM_NOTES,
+  SPI_NUMBER_SYSTEM_SLUGS,
+} from "@/app/notes/spi-maths/number-system/_data";
+import {
+  SPI_TRIGONOMETRY_CHAPTER,
+  SPI_TRIGONOMETRY_NOTES,
+  SPI_TRIGONOMETRY_SLUGS,
+} from "@/app/notes/spi-maths/trigonometry/_data";
+import {
+  SPI_SEQUENCES_CHAPTER,
+  SPI_SEQUENCES_NOTES,
+  SPI_SEQUENCES_SLUGS,
+} from "@/app/notes/spi-maths/sequences/_data";
+import {
+  SPI_LINEAR_EQUATIONS_CHAPTER,
+  SPI_LINEAR_EQUATIONS_NOTES,
+  SPI_LINEAR_EQUATIONS_SLUGS,
+} from "@/app/notes/spi-maths/linear-equations/_data";
+import {
+  SPI_CIRCLES_CHAPTER,
+  SPI_CIRCLES_NOTES,
+  SPI_CIRCLES_SLUGS,
+} from "@/app/notes/spi-maths/circles/_data";
+import {
+  SPI_LINES_ANGLES_CHAPTER,
+  SPI_LINES_ANGLES_NOTES,
+  SPI_LINES_ANGLES_SLUGS,
+} from "@/app/notes/spi-maths/lines-angles/_data";
+import {
+  SPI_QUADRILATERALS_CHAPTER,
+  SPI_QUADRILATERALS_NOTES,
+  SPI_QUADRILATERALS_SLUGS,
+} from "@/app/notes/spi-maths/quadrilaterals/_data";
+import {
+  SPI_TRIANGLES_CHAPTER,
+  SPI_TRIANGLES_NOTES,
+  SPI_TRIANGLES_SLUGS,
+} from "@/app/notes/spi-maths/triangles/_data";
+import {
+  SPI_COORDINATE_GEOMETRY_CHAPTER,
+  SPI_COORDINATE_GEOMETRY_NOTES,
+  SPI_COORDINATE_GEOMETRY_SLUGS,
+} from "@/app/notes/spi-maths/coordinate-geometry/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -4372,6 +4422,116 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SPI_DATA_INTERPRETATION_CHAPTER,
     notes: SPI_DATA_INTERPRETATION_NOTES,
     slugs: SPI_DATA_INTERPRETATION_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Mathematics",
+    subjectRoute: "spi-maths",
+    subjectDisplay: "SPI Mathematics",
+    chapterSlug: "mensuration-3d",
+    chipLabel: "Mensuration 3D notes",
+    chapter: SPI_MENSURATION_3D_CHAPTER,
+    notes: SPI_MENSURATION_3D_NOTES,
+    slugs: SPI_MENSURATION_3D_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Mathematics",
+    subjectRoute: "spi-maths",
+    subjectDisplay: "SPI Mathematics",
+    chapterSlug: "number-system",
+    chipLabel: "Number System notes",
+    chapter: SPI_NUMBER_SYSTEM_CHAPTER,
+    notes: SPI_NUMBER_SYSTEM_NOTES,
+    slugs: SPI_NUMBER_SYSTEM_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Mathematics",
+    subjectRoute: "spi-maths",
+    subjectDisplay: "SPI Mathematics",
+    chapterSlug: "trigonometry",
+    chipLabel: "Trigonometric Ratios and Identities notes",
+    chapter: SPI_TRIGONOMETRY_CHAPTER,
+    notes: SPI_TRIGONOMETRY_NOTES,
+    slugs: SPI_TRIGONOMETRY_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Mathematics",
+    subjectRoute: "spi-maths",
+    subjectDisplay: "SPI Mathematics",
+    chapterSlug: "sequences",
+    chipLabel: "Sequence and Series notes",
+    chapter: SPI_SEQUENCES_CHAPTER,
+    notes: SPI_SEQUENCES_NOTES,
+    slugs: SPI_SEQUENCES_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Mathematics",
+    subjectRoute: "spi-maths",
+    subjectDisplay: "SPI Mathematics",
+    chapterSlug: "linear-equations",
+    chipLabel: "Linear Equations notes",
+    chapter: SPI_LINEAR_EQUATIONS_CHAPTER,
+    notes: SPI_LINEAR_EQUATIONS_NOTES,
+    slugs: SPI_LINEAR_EQUATIONS_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Mathematics",
+    subjectRoute: "spi-maths",
+    subjectDisplay: "SPI Mathematics",
+    chapterSlug: "circles",
+    chipLabel: "Circles notes",
+    chapter: SPI_CIRCLES_CHAPTER,
+    notes: SPI_CIRCLES_NOTES,
+    slugs: SPI_CIRCLES_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Mathematics",
+    subjectRoute: "spi-maths",
+    subjectDisplay: "SPI Mathematics",
+    chapterSlug: "lines-angles",
+    chipLabel: "Lines, Angles and Polygons notes",
+    chapter: SPI_LINES_ANGLES_CHAPTER,
+    notes: SPI_LINES_ANGLES_NOTES,
+    slugs: SPI_LINES_ANGLES_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Mathematics",
+    subjectRoute: "spi-maths",
+    subjectDisplay: "SPI Mathematics",
+    chapterSlug: "quadrilaterals",
+    chipLabel: "Quadrilaterals notes",
+    chapter: SPI_QUADRILATERALS_CHAPTER,
+    notes: SPI_QUADRILATERALS_NOTES,
+    slugs: SPI_QUADRILATERALS_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Mathematics",
+    subjectRoute: "spi-maths",
+    subjectDisplay: "SPI Mathematics",
+    chapterSlug: "triangles",
+    chipLabel: "Triangles notes",
+    chapter: SPI_TRIANGLES_CHAPTER,
+    notes: SPI_TRIANGLES_NOTES,
+    slugs: SPI_TRIANGLES_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Mathematics",
+    subjectRoute: "spi-maths",
+    subjectDisplay: "SPI Mathematics",
+    chapterSlug: "coordinate-geometry",
+    chipLabel: "Coordinate Geometry notes",
+    chapter: SPI_COORDINATE_GEOMETRY_CHAPTER,
+    notes: SPI_COORDINATE_GEOMETRY_NOTES,
+    slugs: SPI_COORDINATE_GEOMETRY_SLUGS,
   },
   {
     examName: "SPI",
