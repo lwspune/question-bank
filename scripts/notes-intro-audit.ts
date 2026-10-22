@@ -39,6 +39,7 @@ import * as fs from "node:fs";
 import * as path from "node:path";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { NOTES_CHAPTERS } from "../src/lib/notes/chapters";
+import { notesCountKind } from "../src/lib/notes/countKind";
 import {
   extractCountClaims,
   allowedCounts,
@@ -72,12 +73,25 @@ async function loadLive(db: SupabaseClient) {
   const perSub = new Map<string, Map<string, number>>();
   // Paged in 1000-row windows — PostgREST silently truncates a raw select at
   // 1000 and this derives counts FROM THE PAYLOAD, the documented trap.
+  // Past-year rows for every exam, plus the practice rows of an exam whose
+  // notes count both kinds (lib/notes/countKind.ts), as the gate test does.
+  const allKindExams = [...new Set(NOTES_CHAPTERS.map((c) => c.examName))].filter(
+    (e) => notesCountKind(e) === "all"
+  );
+  const { data: examRows, error: examError } = await db.from("exams").select("id").in("name", allKindExams);
+  if (examError) throw new Error(examError.message);
+  const allKindExamIds = (examRows ?? []).map((r: any) => r.id as string);
+  const scans: { kind: "pyq" | "practice"; examIds?: string[] }[] = [{ kind: "pyq" }];
+  if (allKindExamIds.length) scans.push({ kind: "practice", examIds: allKindExamIds });
+  for (const scan of scans)
   for (let from = 0; ; from += 1000) {
-    const { data, error } = await db
+    let q = db
       .from("questions")
       .select("subtopics(name), chapters(name, subjects(name, exams(name)))")
       .eq("visibility", "PUBLIC")
-      .eq("question_kind", "pyq")
+      .eq("question_kind", scan.kind);
+    if (scan.examIds) q = q.in("exam_id", scan.examIds);
+    const { data, error } = await q
       // ORDER BY is NOT optional here. Without a stable sort, PostgREST's
       // 1000-row windows overlap and drop rows, so the same scan returns
       // different totals run to run — two consecutive runs of this loader
