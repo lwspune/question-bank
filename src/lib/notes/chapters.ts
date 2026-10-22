@@ -1456,6 +1456,16 @@ import {
   SPI_ALGEBRAIC_IDENTITIES_NOTES,
   SPI_ALGEBRAIC_IDENTITIES_SLUGS,
 } from "@/app/notes/spi-maths/algebraic-identities/_data";
+import {
+  SPI_SPOTTING_ERRORS_CHAPTER,
+  SPI_SPOTTING_ERRORS_NOTES,
+  SPI_SPOTTING_ERRORS_SLUGS,
+} from "@/app/notes/spi-english/spotting-errors/_data";
+import {
+  SPI_FILL_IN_THE_BLANKS_CHAPTER,
+  SPI_FILL_IN_THE_BLANKS_NOTES,
+  SPI_FILL_IN_THE_BLANKS_SLUGS,
+} from "@/app/notes/spi-english/fill-in-the-blanks/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -4666,6 +4676,28 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SPI_GRAMMAR_CHAPTER,
     notes: SPI_GRAMMAR_NOTES,
     slugs: SPI_GRAMMAR_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "English",
+    subjectRoute: "spi-english",
+    subjectDisplay: "SPI English",
+    chapterSlug: "spotting-errors",
+    chipLabel: "Spotting Errors notes",
+    chapter: SPI_SPOTTING_ERRORS_CHAPTER,
+    notes: SPI_SPOTTING_ERRORS_NOTES,
+    slugs: SPI_SPOTTING_ERRORS_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "English",
+    subjectRoute: "spi-english",
+    subjectDisplay: "SPI English",
+    chapterSlug: "fill-in-the-blanks",
+    chipLabel: "Fill in the Blanks notes",
+    chapter: SPI_FILL_IN_THE_BLANKS_CHAPTER,
+    notes: SPI_FILL_IN_THE_BLANKS_NOTES,
+    slugs: SPI_FILL_IN_THE_BLANKS_SLUGS,
   },
 ];
 
