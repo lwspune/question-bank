@@ -56,9 +56,11 @@ if f"{const}_CHAPTER," not in s:
     imp = f'import {{\n  {const}_CHAPTER,\n  {const}_NOTES,\n  {const}_SLUGS,\n}} from "@/app/notes/{route}/{slug}/_data";'
     i = s.index(anchor)
     s = s[:i] + "\n" + imp + s[i:]
-    entry = (f'\n  {{\n    examName: "CDS",\n    subjectName: "{subject}",\n    subjectRoute: "{route}",\n'
+    exam = spec.get("exam", "CDS")  # "exam": "SPI" registers another exam's chapter
+    entry = (f'\n  {{\n    examName: "{exam}",\n    subjectName: "{subject}",\n    subjectRoute: "{route}",\n'
              f'    subjectDisplay: "{display}",\n    chapterSlug: "{slug}",\n    chipLabel: "{spec["chip"]}",\n'
-             f'    chapter: {const}_CHAPTER,\n    notes: {const}_NOTES,\n    slugs: {const}_SLUGS,\n  }},')
+             + (f'    titleName: "{spec["titleName"]}",\n' if spec.get("titleName") else "")
+             + f'    chapter: {const}_CHAPTER,\n    notes: {const}_NOTES,\n    slugs: {const}_SLUGS,\n  }},')
     reg_end = s.rindex("\n];\n", 0, s.index("export function getNotesChapterBySlug"))
     marker = f'subjectRoute: "{route}",'
     last = s.rfind(marker, 0, reg_end)

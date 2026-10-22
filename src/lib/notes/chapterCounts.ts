@@ -1,4 +1,5 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
+import type { NotesCountKind } from "./countKind";
 
 /** A row as returned by the `get_chapter_facets` RPC. */
 export type ChapterFacetRow = { chapter_id: string; q_count: number };
@@ -31,14 +32,20 @@ export function chapterCountsFromFacets(
  */
 export async function loadChapterPyqCounts(
   client: SupabaseClient,
-  args: { examId: string; subjectId: string; chapterIds: string[] }
+  args: {
+    examId: string;
+    subjectId: string;
+    chapterIds: string[];
+    /** lib/notes/countKind.ts: PYQ-only (migration 0036) unless the exam counts both. */
+    kind?: NotesCountKind;
+  }
 ): Promise<Map<string, number>> {
   if (args.chapterIds.length === 0) return new Map();
 
   const { data, error } = await client.rpc("get_chapter_facets", {
     p_exam_id: args.examId,
     p_subject_id: args.subjectId,
-    p_kind: "pyq", // PYQ-only counts (migration 0036)
+    p_kind: args.kind ?? "pyq",
   });
 
   // Never fail an ISR-prerendered notes page on a counts hiccup: the cards

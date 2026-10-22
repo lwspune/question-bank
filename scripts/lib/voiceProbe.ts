@@ -43,6 +43,8 @@ const SKIP_ATTRS = new Set([
 const SKIP_KEYS = new Set([
   "slug", "href", "id", "latex", "className", "route", "subjectRoute", "chapterSlug",
   "examSlug", "pyqExampleId", "questionId", "icon", "key", "path", "url", "src", "pattern",
+  // Must equal the database's names exactly (a few carry a dash), so they cannot be reworded.
+  "chapterName", "subtopicName",
 ]);
 
 export type VisibleString = { text: string; line: number; jsxText?: true };

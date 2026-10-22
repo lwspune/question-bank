@@ -1,7 +1,7 @@
 /**
  * Dump one CDS General Knowledge chapter for a /notes pass.
  *
- *   npx tsx scripts/notes-pipeline/cds-gk/dump.ts <Subject> "<Chapter>" <code>
+ *   npx tsx scripts/notes-pipeline/cds-gk/dump.ts <Subject> "<Chapter>" <code> [--exam=SPI]
  *
  * Writes generated-papers/_cdsk_<code>.json ({ questions: [...] }, the shape
  * scripts/notes-pipeline/jee/tag-chapter.ts reads) and _cdsk_<code>.md, one
@@ -16,7 +16,10 @@ import { createClient } from "@supabase/supabase-js";
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 
 async function main() {
-  const [subject, chapter, code] = process.argv.slice(2);
+  const args = process.argv.slice(2);
+  // --exam=SPI reuses this dump for another exam's notes (default CDS).
+  const exam = args.find((a) => a.startsWith("--exam="))?.slice(7) ?? "CDS";
+  const [subject, chapter, code] = args.filter((a) => !a.startsWith("--"));
   if (!subject || !chapter || !code) throw new Error('usage: dump.ts <Subject> "<Chapter>" <code>');
   const sb = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!);
 
@@ -25,8 +28,8 @@ async function main() {
     .select("id, subjects!inner(name, exams!inner(name))")
     .eq("name", chapter);
   if (ce) throw ce;
-  const hit = (chs ?? []).filter((c: any) => c.subjects?.name === subject && c.subjects?.exams?.name === "CDS");
-  if (hit.length !== 1) throw new Error(`expected 1 CDS ${subject} chapter "${chapter}", found ${hit.length}`);
+  const hit = (chs ?? []).filter((c: any) => c.subjects?.name === subject && c.subjects?.exams?.name === exam);
+  if (hit.length !== 1) throw new Error(`expected 1 ${exam} ${subject} chapter "${chapter}", found ${hit.length}`);
   const chapterId = (hit[0] as any).id as string;
 
   const { data, error } = await sb

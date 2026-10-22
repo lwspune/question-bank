@@ -27,6 +27,7 @@ import { getNotesTaxonomy } from "@/lib/notes/taxonomyCache";
 import { deriveSummary } from "@/lib/notes/deriveSummary";
 import { buildConceptWeightTable } from "@/lib/notes/conceptWeight";
 import { loadSubtopicPyqCounts } from "@/lib/notes/subtopicCounts";
+import { notesCountKind, notesCountNoun } from "@/lib/notes/countKind";
 import { chapterCardBlurb } from "@/lib/notes/cardBlurb";
 import type { NotesChapterRegistration } from "@/lib/notes/chapters";
 import { FORMULA_CHAPTERS } from "@/lib/formula";
@@ -122,6 +123,8 @@ export default async function NotesChapterLanding({ chapter }: Props) {
   // NDA Maths "Matrices & Determinants" to render five integers, re-run for all
   // 83 chapter landings on every build. It also carried the PostgREST 1000-row
   // cap: past 1000 PYQs in a chapter the counts would silently under-report.
+  const countKind = notesCountKind(chapter.examName);
+  const countNoun = notesCountNoun(countKind);
   const countsBySubtopic =
     chapterTax && subtopicIds.length > 0
       ? await loadSubtopicPyqCounts(supabase, {
@@ -129,6 +132,7 @@ export default async function NotesChapterLanding({ chapter }: Props) {
           examId: taxonomy.examId,
           subjectId: taxonomy.subjectId,
           subtopicIds,
+          kind: countKind,
         })
       : new Map<string, number>();
 
@@ -372,7 +376,7 @@ export default async function NotesChapterLanding({ chapter }: Props) {
                         {note.title}
                       </h3>
                       <span className="text-xs tabular-nums text-muted-foreground">
-                        <span className="font-semibold text-foreground">{count}</span> PYQs
+                        <span className="font-semibold text-foreground">{count}</span> {countNoun}
                       </span>
                     </div>
                     <p className="mt-1.5 font-serif text-sm leading-relaxed text-muted-foreground">
@@ -397,6 +401,7 @@ export default async function NotesChapterLanding({ chapter }: Props) {
         <ConceptWeightTable
           groups={conceptWeightGroups}
           chapterTotalPyqs={chapterTotalPyqs}
+          noun={countNoun}
         />
       </div>
 

@@ -11,6 +11,7 @@ import { getNotesTaxonomy } from "@/lib/notes/taxonomyCache";
 import { getNotesChaptersForSubject } from "@/lib/notes/chapters";
 import { chapterCardBlurb } from "@/lib/notes/cardBlurb";
 import { loadChapterPyqCounts } from "@/lib/notes/chapterCounts";
+import { notesCountKind, notesCountNoun } from "@/lib/notes/countKind";
 import { notesExamCrumbs } from "@/lib/notes/breadcrumbs";
 
 /**
@@ -83,10 +84,12 @@ export default async function NotesSubjectLanding({
     .map((c) => taxonomy.chapters.get(c.chapterName)?.id)
     .filter((id): id is string => Boolean(id));
 
+  const countKind = notesCountKind(first.examName);
   const countsByChapter = await loadChapterPyqCounts(supabase, {
     examId: taxonomy.examId,
     subjectId: taxonomy.subjectId,
     chapterIds,
+    kind: countKind,
   });
 
   const maxCount = Math.max(0, ...countsByChapter.values());
@@ -144,7 +147,7 @@ export default async function NotesSubjectLanding({
                   <div className="mt-4 flex items-center gap-3 text-xs">
                     <span className="tabular-nums">
                       <span className="font-semibold text-foreground">{count}</span>{" "}
-                      <span className="text-muted-foreground">PYQs · {c.subtopicCount} subtopics</span>
+                      <span className="text-muted-foreground">{notesCountNoun(countKind)} · {c.subtopicCount} subtopics</span>
                     </span>
                     <span aria-hidden className="h-1.5 max-w-32 flex-1 overflow-hidden rounded-full bg-muted">
                       <span className="block h-full rounded-full bg-brand" style={{ width: `${pct}%` }} />

@@ -1346,6 +1346,316 @@ import {
   CDSEN_RC_SLUGS,
 } from "@/app/notes/cds-english/reading-comprehension/_data";
 import { IMAT_NOTES_CHAPTERS } from "@/lib/sites/imat/notes/registry";
+import {
+  SPI_PROBABILITY_CHAPTER,
+  SPI_PROBABILITY_NOTES,
+  SPI_PROBABILITY_SLUGS,
+} from "@/app/notes/spi-maths/probability/_data";
+import {
+  SPI_VOCABULARY_CHAPTER,
+  SPI_VOCABULARY_NOTES,
+  SPI_VOCABULARY_SLUGS,
+} from "@/app/notes/spi-english/vocabulary/_data";
+import {
+  SPI_IDIOMS_PHRASES_CHAPTER,
+  SPI_IDIOMS_PHRASES_NOTES,
+  SPI_IDIOMS_PHRASES_SLUGS,
+} from "@/app/notes/spi-english/idioms-phrases/_data";
+import {
+  SPI_STATISTICS_CHAPTER,
+  SPI_STATISTICS_NOTES,
+  SPI_STATISTICS_SLUGS,
+} from "@/app/notes/spi-maths/statistics/_data";
+import {
+  SPI_DATA_INTERPRETATION_CHAPTER,
+  SPI_DATA_INTERPRETATION_NOTES,
+  SPI_DATA_INTERPRETATION_SLUGS,
+} from "@/app/notes/spi-maths/data-interpretation/_data";
+import {
+  SPI_MENSURATION_3D_CHAPTER,
+  SPI_MENSURATION_3D_NOTES,
+  SPI_MENSURATION_3D_SLUGS,
+} from "@/app/notes/spi-maths/mensuration-3d/_data";
+import {
+  SPI_NUMBER_SYSTEM_CHAPTER,
+  SPI_NUMBER_SYSTEM_NOTES,
+  SPI_NUMBER_SYSTEM_SLUGS,
+} from "@/app/notes/spi-maths/number-system/_data";
+import {
+  SPI_TRIGONOMETRY_CHAPTER,
+  SPI_TRIGONOMETRY_NOTES,
+  SPI_TRIGONOMETRY_SLUGS,
+} from "@/app/notes/spi-maths/trigonometry/_data";
+import {
+  SPI_SEQUENCES_CHAPTER,
+  SPI_SEQUENCES_NOTES,
+  SPI_SEQUENCES_SLUGS,
+} from "@/app/notes/spi-maths/sequences/_data";
+import {
+  SPI_LINEAR_EQUATIONS_CHAPTER,
+  SPI_LINEAR_EQUATIONS_NOTES,
+  SPI_LINEAR_EQUATIONS_SLUGS,
+} from "@/app/notes/spi-maths/linear-equations/_data";
+import {
+  SPI_CIRCLES_CHAPTER,
+  SPI_CIRCLES_NOTES,
+  SPI_CIRCLES_SLUGS,
+} from "@/app/notes/spi-maths/circles/_data";
+import {
+  SPI_LINES_ANGLES_CHAPTER,
+  SPI_LINES_ANGLES_NOTES,
+  SPI_LINES_ANGLES_SLUGS,
+} from "@/app/notes/spi-maths/lines-angles/_data";
+import {
+  SPI_QUADRILATERALS_CHAPTER,
+  SPI_QUADRILATERALS_NOTES,
+  SPI_QUADRILATERALS_SLUGS,
+} from "@/app/notes/spi-maths/quadrilaterals/_data";
+import {
+  SPI_TRIANGLES_CHAPTER,
+  SPI_TRIANGLES_NOTES,
+  SPI_TRIANGLES_SLUGS,
+} from "@/app/notes/spi-maths/triangles/_data";
+import {
+  SPI_COORDINATE_GEOMETRY_CHAPTER,
+  SPI_COORDINATE_GEOMETRY_NOTES,
+  SPI_COORDINATE_GEOMETRY_SLUGS,
+} from "@/app/notes/spi-maths/coordinate-geometry/_data";
+import {
+  SPI_GRAMMAR_CHAPTER,
+  SPI_GRAMMAR_NOTES,
+  SPI_GRAMMAR_SLUGS,
+} from "@/app/notes/spi-english/grammar/_data";
+import {
+  SPI_MENSURATION_2D_CHAPTER,
+  SPI_MENSURATION_2D_NOTES,
+  SPI_MENSURATION_2D_SLUGS,
+} from "@/app/notes/spi-maths/mensuration-2d/_data";
+import {
+  SPI_SURDS_INDICES_CHAPTER,
+  SPI_SURDS_INDICES_NOTES,
+  SPI_SURDS_INDICES_SLUGS,
+} from "@/app/notes/spi-maths/surds-indices/_data";
+import {
+  SPI_HEIGHTS_DISTANCES_CHAPTER,
+  SPI_HEIGHTS_DISTANCES_NOTES,
+  SPI_HEIGHTS_DISTANCES_SLUGS,
+} from "@/app/notes/spi-maths/heights-distances/_data";
+import {
+  SPI_QUADRATIC_EQUATIONS_CHAPTER,
+  SPI_QUADRATIC_EQUATIONS_NOTES,
+  SPI_QUADRATIC_EQUATIONS_SLUGS,
+} from "@/app/notes/spi-maths/quadratic-equations/_data";
+import {
+  SPI_POLYNOMIALS_CHAPTER,
+  SPI_POLYNOMIALS_NOTES,
+  SPI_POLYNOMIALS_SLUGS,
+} from "@/app/notes/spi-maths/polynomials/_data";
+import {
+  SPI_ALGEBRAIC_IDENTITIES_CHAPTER,
+  SPI_ALGEBRAIC_IDENTITIES_NOTES,
+  SPI_ALGEBRAIC_IDENTITIES_SLUGS,
+} from "@/app/notes/spi-maths/algebraic-identities/_data";
+import {
+  SPI_SPOTTING_ERRORS_CHAPTER,
+  SPI_SPOTTING_ERRORS_NOTES,
+  SPI_SPOTTING_ERRORS_SLUGS,
+} from "@/app/notes/spi-english/spotting-errors/_data";
+import {
+  SPI_FILL_IN_THE_BLANKS_CHAPTER,
+  SPI_FILL_IN_THE_BLANKS_NOTES,
+  SPI_FILL_IN_THE_BLANKS_SLUGS,
+} from "@/app/notes/spi-english/fill-in-the-blanks/_data";
+import {
+  SPI_READING_COMPREHENSION_CHAPTER,
+  SPI_READING_COMPREHENSION_NOTES,
+  SPI_READING_COMPREHENSION_SLUGS,
+} from "@/app/notes/spi-english/reading-comprehension/_data";
+import {
+  SPI_SENTENCE_REARRANGEMENT_CHAPTER,
+  SPI_SENTENCE_REARRANGEMENT_NOTES,
+  SPI_SENTENCE_REARRANGEMENT_SLUGS,
+} from "@/app/notes/spi-english/sentence-rearrangement/_data";
+import {
+  SPI_CLASSIFICATION_CHAPTER,
+  SPI_CLASSIFICATION_NOTES,
+  SPI_CLASSIFICATION_SLUGS,
+} from "@/app/notes/spi-reasoning/classification/_data";
+import {
+  SPI_SERIES_CHAPTER,
+  SPI_SERIES_NOTES,
+  SPI_SERIES_SLUGS,
+} from "@/app/notes/spi-reasoning/series/_data";
+import {
+  SPI_ORDER_RANKING_CHAPTER,
+  SPI_ORDER_RANKING_NOTES,
+  SPI_ORDER_RANKING_SLUGS,
+} from "@/app/notes/spi-reasoning/order-ranking/_data";
+import {
+  SPI_ELECTRICITY_MAGNETISM_CHAPTER,
+  SPI_ELECTRICITY_MAGNETISM_NOTES,
+  SPI_ELECTRICITY_MAGNETISM_SLUGS,
+} from "@/app/notes/spi-physics/electricity-magnetism/_data";
+import {
+  SPI_LIGHT_OPTICS_CHAPTER,
+  SPI_LIGHT_OPTICS_NOTES,
+  SPI_LIGHT_OPTICS_SLUGS,
+} from "@/app/notes/spi-physics/light-optics/_data";
+import {
+  SPI_SOUND_CHAPTER,
+  SPI_SOUND_NOTES,
+  SPI_SOUND_SLUGS,
+} from "@/app/notes/spi-physics/sound/_data";
+import {
+  SPI_UNITS_MEASUREMENT_CHAPTER,
+  SPI_UNITS_MEASUREMENT_NOTES,
+  SPI_UNITS_MEASUREMENT_SLUGS,
+} from "@/app/notes/spi-physics/units-measurement/_data";
+import {
+  SPI_ENERGY_SOURCES_CHAPTER,
+  SPI_ENERGY_SOURCES_NOTES,
+  SPI_ENERGY_SOURCES_SLUGS,
+} from "@/app/notes/spi-physics/energy-sources/_data";
+import {
+  SPI_KINEMATICS_CHAPTER,
+  SPI_KINEMATICS_NOTES,
+  SPI_KINEMATICS_SLUGS,
+} from "@/app/notes/spi-physics/kinematics/_data";
+import {
+  SPI_FLUIDS_MATTER_CHAPTER,
+  SPI_FLUIDS_MATTER_NOTES,
+  SPI_FLUIDS_MATTER_SLUGS,
+} from "@/app/notes/spi-physics/fluids-matter/_data";
+import {
+  SPI_GRAVITATION_CHAPTER,
+  SPI_GRAVITATION_NOTES,
+  SPI_GRAVITATION_SLUGS,
+} from "@/app/notes/spi-physics/gravitation/_data";
+import {
+  SPI_LAWS_OF_MOTION_CHAPTER,
+  SPI_LAWS_OF_MOTION_NOTES,
+  SPI_LAWS_OF_MOTION_SLUGS,
+} from "@/app/notes/spi-physics/laws-of-motion/_data";
+import {
+  SPI_MOLE_CONCEPT_CHAPTER,
+  SPI_MOLE_CONCEPT_NOTES,
+  SPI_MOLE_CONCEPT_SLUGS,
+} from "@/app/notes/spi-chemistry/mole-concept/_data";
+import {
+  SPI_ATOMIC_STRUCTURE_CHAPTER,
+  SPI_ATOMIC_STRUCTURE_NOTES,
+  SPI_ATOMIC_STRUCTURE_SLUGS,
+} from "@/app/notes/spi-chemistry/atomic-structure/_data";
+import {
+  SPI_CARBON_COMPOUNDS_CHAPTER,
+  SPI_CARBON_COMPOUNDS_NOTES,
+  SPI_CARBON_COMPOUNDS_SLUGS,
+} from "@/app/notes/spi-chemistry/carbon-compounds/_data";
+import {
+  SPI_ACIDS_BASES_SALTS_CHAPTER,
+  SPI_ACIDS_BASES_SALTS_NOTES,
+  SPI_ACIDS_BASES_SALTS_SLUGS,
+} from "@/app/notes/spi-chemistry/acids-bases-salts/_data";
+import {
+  SPI_CHEMICAL_REACTIONS_CHAPTER,
+  SPI_CHEMICAL_REACTIONS_NOTES,
+  SPI_CHEMICAL_REACTIONS_SLUGS,
+} from "@/app/notes/spi-chemistry/chemical-reactions/_data";
+import {
+  SPI_METALS_NON_METALS_CHAPTER,
+  SPI_METALS_NON_METALS_NOTES,
+  SPI_METALS_NON_METALS_SLUGS,
+} from "@/app/notes/spi-chemistry/metals-non-metals/_data";
+import {
+  SPI_HUMAN_PHYSIOLOGY_CHAPTER,
+  SPI_HUMAN_PHYSIOLOGY_NOTES,
+  SPI_HUMAN_PHYSIOLOGY_SLUGS,
+} from "@/app/notes/spi-biology/human-physiology/_data";
+import {
+  SPI_CELL_BIOLOGY_CHAPTER,
+  SPI_CELL_BIOLOGY_NOTES,
+  SPI_CELL_BIOLOGY_SLUGS,
+} from "@/app/notes/spi-biology/cell-biology/_data";
+import {
+  SPI_PLANT_BIOLOGY_CHAPTER,
+  SPI_PLANT_BIOLOGY_NOTES,
+  SPI_PLANT_BIOLOGY_SLUGS,
+} from "@/app/notes/spi-biology/plant-biology/_data";
+import {
+  SPI_REPRODUCTION_CHAPTER,
+  SPI_REPRODUCTION_NOTES,
+  SPI_REPRODUCTION_SLUGS,
+} from "@/app/notes/spi-biology/reproduction/_data";
+import {
+  SPI_MICROBIOLOGY_DISEASE_CHAPTER,
+  SPI_MICROBIOLOGY_DISEASE_NOTES,
+  SPI_MICROBIOLOGY_DISEASE_SLUGS,
+} from "@/app/notes/spi-biology/microbiology-disease/_data";
+import {
+  SPI_ECOLOGY_ENVIRONMENT_CHAPTER,
+  SPI_ECOLOGY_ENVIRONMENT_NOTES,
+  SPI_ECOLOGY_ENVIRONMENT_SLUGS,
+} from "@/app/notes/spi-biology/ecology-environment/_data";
+import {
+  SPI_GENETICS_EVOLUTION_CHAPTER,
+  SPI_GENETICS_EVOLUTION_NOTES,
+  SPI_GENETICS_EVOLUTION_SLUGS,
+} from "@/app/notes/spi-biology/genetics-evolution/_data";
+import {
+  SPI_BIODIVERSITY_CLASSIFICATION_CHAPTER,
+  SPI_BIODIVERSITY_CLASSIFICATION_NOTES,
+  SPI_BIODIVERSITY_CLASSIFICATION_SLUGS,
+} from "@/app/notes/spi-biology/biodiversity-classification/_data";
+import {
+  SPI_INDIAN_ECONOMIC_GEOGRAPHY_CHAPTER,
+  SPI_INDIAN_ECONOMIC_GEOGRAPHY_NOTES,
+  SPI_INDIAN_ECONOMIC_GEOGRAPHY_SLUGS,
+} from "@/app/notes/spi-geography/indian-economic-geography/_data";
+import {
+  SPI_INDIAN_PHYSICAL_GEOGRAPHY_CHAPTER,
+  SPI_INDIAN_PHYSICAL_GEOGRAPHY_NOTES,
+  SPI_INDIAN_PHYSICAL_GEOGRAPHY_SLUGS,
+} from "@/app/notes/spi-geography/indian-physical-geography/_data";
+import {
+  SPI_WORLD_HUMAN_GEOGRAPHY_CHAPTER,
+  SPI_WORLD_HUMAN_GEOGRAPHY_NOTES,
+  SPI_WORLD_HUMAN_GEOGRAPHY_SLUGS,
+} from "@/app/notes/spi-geography/world-human-geography/_data";
+import {
+  SPI_MAHARASHTRA_GEOGRAPHY_CHAPTER,
+  SPI_MAHARASHTRA_GEOGRAPHY_NOTES,
+  SPI_MAHARASHTRA_GEOGRAPHY_SLUGS,
+} from "@/app/notes/spi-geography/maharashtra-geography/_data";
+import {
+  SPI_MODERN_INDIA_CHAPTER,
+  SPI_MODERN_INDIA_NOTES,
+  SPI_MODERN_INDIA_SLUGS,
+} from "@/app/notes/spi-history/modern-india/_data";
+import {
+  SPI_WORLD_HISTORY_CHAPTER,
+  SPI_WORLD_HISTORY_NOTES,
+  SPI_WORLD_HISTORY_SLUGS,
+} from "@/app/notes/spi-history/world-history/_data";
+import {
+  SPI_RIGHTS_DPSP_LOCAL_CHAPTER,
+  SPI_RIGHTS_DPSP_LOCAL_NOTES,
+  SPI_RIGHTS_DPSP_LOCAL_SLUGS,
+} from "@/app/notes/spi-polity/rights-dpsp-local/_data";
+import {
+  SPI_WORLD_POLITY_CHAPTER,
+  SPI_WORLD_POLITY_NOTES,
+  SPI_WORLD_POLITY_SLUGS,
+} from "@/app/notes/spi-polity/world-polity/_data";
+import {
+  SPI_GOVERNMENT_STRUCTURE_CHAPTER,
+  SPI_GOVERNMENT_STRUCTURE_NOTES,
+  SPI_GOVERNMENT_STRUCTURE_SLUGS,
+} from "@/app/notes/spi-polity/government-structure/_data";
+import {
+  SPI_DEFENCE_CHAPTER,
+  SPI_DEFENCE_NOTES,
+  SPI_DEFENCE_SLUGS,
+} from "@/app/notes/spi-gk/defence/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -1360,6 +1670,9 @@ export type NotesChapterRegistration = {
   chapterSlug: string;
   /** Short chip label, e.g. "Statistics notes". */
   chipLabel: string;
+  /** A shorter name for the page title when the DB chapter name is too long to fit, or is shared
+   *  with another exam's chapter ("Indian Geography — Economy, Resources and Transport"). */
+  titleName?: string;
   /** The ChapterNote (carries chapterName matching DB taxonomy). */
   chapter: ChapterNote;
   /** subtopicSlug → SubtopicNote record. */
@@ -4315,6 +4628,691 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
   // IMAT: 46 chapters authored in their own registry (lib/sites/imat/notes),
   // on PYQ Vault since 2026-10-20.
   ...IMAT_NOTES_CHAPTERS,
+  {
+    examName: "SPI",
+    subjectName: "Mathematics",
+    subjectRoute: "spi-maths",
+    subjectDisplay: "SPI Mathematics",
+    chapterSlug: "probability",
+    chipLabel: "Probability notes",
+    chapter: SPI_PROBABILITY_CHAPTER,
+    notes: SPI_PROBABILITY_NOTES,
+    slugs: SPI_PROBABILITY_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Mathematics",
+    subjectRoute: "spi-maths",
+    subjectDisplay: "SPI Mathematics",
+    chapterSlug: "statistics",
+    chipLabel: "Statistics notes",
+    chapter: SPI_STATISTICS_CHAPTER,
+    notes: SPI_STATISTICS_NOTES,
+    slugs: SPI_STATISTICS_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Mathematics",
+    subjectRoute: "spi-maths",
+    subjectDisplay: "SPI Mathematics",
+    chapterSlug: "data-interpretation",
+    chipLabel: "Data Interpretation notes",
+    chapter: SPI_DATA_INTERPRETATION_CHAPTER,
+    notes: SPI_DATA_INTERPRETATION_NOTES,
+    slugs: SPI_DATA_INTERPRETATION_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Mathematics",
+    subjectRoute: "spi-maths",
+    subjectDisplay: "SPI Mathematics",
+    chapterSlug: "mensuration-3d",
+    chipLabel: "Mensuration 3D notes",
+    chapter: SPI_MENSURATION_3D_CHAPTER,
+    notes: SPI_MENSURATION_3D_NOTES,
+    slugs: SPI_MENSURATION_3D_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Mathematics",
+    subjectRoute: "spi-maths",
+    subjectDisplay: "SPI Mathematics",
+    chapterSlug: "number-system",
+    chipLabel: "Number System notes",
+    chapter: SPI_NUMBER_SYSTEM_CHAPTER,
+    notes: SPI_NUMBER_SYSTEM_NOTES,
+    slugs: SPI_NUMBER_SYSTEM_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Mathematics",
+    subjectRoute: "spi-maths",
+    subjectDisplay: "SPI Mathematics",
+    chapterSlug: "trigonometry",
+    chipLabel: "Trigonometric Ratios and Identities notes",
+    chapter: SPI_TRIGONOMETRY_CHAPTER,
+    notes: SPI_TRIGONOMETRY_NOTES,
+    slugs: SPI_TRIGONOMETRY_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Mathematics",
+    subjectRoute: "spi-maths",
+    subjectDisplay: "SPI Mathematics",
+    chapterSlug: "sequences",
+    chipLabel: "Sequence and Series notes",
+    chapter: SPI_SEQUENCES_CHAPTER,
+    notes: SPI_SEQUENCES_NOTES,
+    slugs: SPI_SEQUENCES_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Mathematics",
+    subjectRoute: "spi-maths",
+    subjectDisplay: "SPI Mathematics",
+    chapterSlug: "linear-equations",
+    chipLabel: "Linear Equations notes",
+    chapter: SPI_LINEAR_EQUATIONS_CHAPTER,
+    notes: SPI_LINEAR_EQUATIONS_NOTES,
+    slugs: SPI_LINEAR_EQUATIONS_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Mathematics",
+    subjectRoute: "spi-maths",
+    subjectDisplay: "SPI Mathematics",
+    chapterSlug: "circles",
+    chipLabel: "Circles notes",
+    chapter: SPI_CIRCLES_CHAPTER,
+    notes: SPI_CIRCLES_NOTES,
+    slugs: SPI_CIRCLES_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Mathematics",
+    subjectRoute: "spi-maths",
+    subjectDisplay: "SPI Mathematics",
+    chapterSlug: "lines-angles",
+    chipLabel: "Lines, Angles and Polygons notes",
+    chapter: SPI_LINES_ANGLES_CHAPTER,
+    notes: SPI_LINES_ANGLES_NOTES,
+    slugs: SPI_LINES_ANGLES_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Mathematics",
+    subjectRoute: "spi-maths",
+    subjectDisplay: "SPI Mathematics",
+    chapterSlug: "quadrilaterals",
+    chipLabel: "Quadrilaterals notes",
+    chapter: SPI_QUADRILATERALS_CHAPTER,
+    notes: SPI_QUADRILATERALS_NOTES,
+    slugs: SPI_QUADRILATERALS_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Mathematics",
+    subjectRoute: "spi-maths",
+    subjectDisplay: "SPI Mathematics",
+    chapterSlug: "triangles",
+    chipLabel: "Triangles notes",
+    chapter: SPI_TRIANGLES_CHAPTER,
+    notes: SPI_TRIANGLES_NOTES,
+    slugs: SPI_TRIANGLES_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Mathematics",
+    subjectRoute: "spi-maths",
+    subjectDisplay: "SPI Mathematics",
+    chapterSlug: "coordinate-geometry",
+    chipLabel: "Coordinate Geometry notes",
+    chapter: SPI_COORDINATE_GEOMETRY_CHAPTER,
+    notes: SPI_COORDINATE_GEOMETRY_NOTES,
+    slugs: SPI_COORDINATE_GEOMETRY_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Mathematics",
+    subjectRoute: "spi-maths",
+    subjectDisplay: "SPI Mathematics",
+    chapterSlug: "mensuration-2d",
+    chipLabel: "Mensuration 2D notes",
+    chapter: SPI_MENSURATION_2D_CHAPTER,
+    notes: SPI_MENSURATION_2D_NOTES,
+    slugs: SPI_MENSURATION_2D_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Mathematics",
+    subjectRoute: "spi-maths",
+    subjectDisplay: "SPI Mathematics",
+    chapterSlug: "surds-indices",
+    chipLabel: "Surds, Indices and Simplification notes",
+    chapter: SPI_SURDS_INDICES_CHAPTER,
+    notes: SPI_SURDS_INDICES_NOTES,
+    slugs: SPI_SURDS_INDICES_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Mathematics",
+    subjectRoute: "spi-maths",
+    subjectDisplay: "SPI Mathematics",
+    chapterSlug: "heights-distances",
+    chipLabel: "Heights and Distances notes",
+    chapter: SPI_HEIGHTS_DISTANCES_CHAPTER,
+    notes: SPI_HEIGHTS_DISTANCES_NOTES,
+    slugs: SPI_HEIGHTS_DISTANCES_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Mathematics",
+    subjectRoute: "spi-maths",
+    subjectDisplay: "SPI Mathematics",
+    chapterSlug: "quadratic-equations",
+    chipLabel: "Quadratic Equations notes",
+    chapter: SPI_QUADRATIC_EQUATIONS_CHAPTER,
+    notes: SPI_QUADRATIC_EQUATIONS_NOTES,
+    slugs: SPI_QUADRATIC_EQUATIONS_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Mathematics",
+    subjectRoute: "spi-maths",
+    subjectDisplay: "SPI Mathematics",
+    chapterSlug: "polynomials",
+    chipLabel: "Polynomials notes",
+    chapter: SPI_POLYNOMIALS_CHAPTER,
+    notes: SPI_POLYNOMIALS_NOTES,
+    slugs: SPI_POLYNOMIALS_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Mathematics",
+    subjectRoute: "spi-maths",
+    subjectDisplay: "SPI Mathematics",
+    chapterSlug: "algebraic-identities",
+    chipLabel: "Algebraic Identities and Simplification notes",
+    chapter: SPI_ALGEBRAIC_IDENTITIES_CHAPTER,
+    notes: SPI_ALGEBRAIC_IDENTITIES_NOTES,
+    slugs: SPI_ALGEBRAIC_IDENTITIES_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "English",
+    subjectRoute: "spi-english",
+    subjectDisplay: "SPI English",
+    chapterSlug: "vocabulary",
+    chipLabel: "Vocabulary notes",
+    chapter: SPI_VOCABULARY_CHAPTER,
+    notes: SPI_VOCABULARY_NOTES,
+    slugs: SPI_VOCABULARY_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "English",
+    subjectRoute: "spi-english",
+    subjectDisplay: "SPI English",
+    chapterSlug: "idioms-phrases",
+    chipLabel: "Idioms and Phrases notes",
+    chapter: SPI_IDIOMS_PHRASES_CHAPTER,
+    notes: SPI_IDIOMS_PHRASES_NOTES,
+    slugs: SPI_IDIOMS_PHRASES_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "English",
+    subjectRoute: "spi-english",
+    subjectDisplay: "SPI English",
+    chapterSlug: "grammar",
+    chipLabel: "Grammar notes",
+    chapter: SPI_GRAMMAR_CHAPTER,
+    notes: SPI_GRAMMAR_NOTES,
+    slugs: SPI_GRAMMAR_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "English",
+    subjectRoute: "spi-english",
+    subjectDisplay: "SPI English",
+    chapterSlug: "spotting-errors",
+    chipLabel: "Spotting Errors notes",
+    chapter: SPI_SPOTTING_ERRORS_CHAPTER,
+    notes: SPI_SPOTTING_ERRORS_NOTES,
+    slugs: SPI_SPOTTING_ERRORS_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "English",
+    subjectRoute: "spi-english",
+    subjectDisplay: "SPI English",
+    chapterSlug: "fill-in-the-blanks",
+    chipLabel: "Fill in the Blanks notes",
+    chapter: SPI_FILL_IN_THE_BLANKS_CHAPTER,
+    notes: SPI_FILL_IN_THE_BLANKS_NOTES,
+    slugs: SPI_FILL_IN_THE_BLANKS_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "English",
+    subjectRoute: "spi-english",
+    subjectDisplay: "SPI English",
+    chapterSlug: "reading-comprehension",
+    chipLabel: "Reading Comprehension notes",
+    chapter: SPI_READING_COMPREHENSION_CHAPTER,
+    notes: SPI_READING_COMPREHENSION_NOTES,
+    slugs: SPI_READING_COMPREHENSION_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "English",
+    subjectRoute: "spi-english",
+    subjectDisplay: "SPI English",
+    chapterSlug: "sentence-rearrangement",
+    chipLabel: "Sentence Rearrangement notes",
+    chapter: SPI_SENTENCE_REARRANGEMENT_CHAPTER,
+    notes: SPI_SENTENCE_REARRANGEMENT_NOTES,
+    slugs: SPI_SENTENCE_REARRANGEMENT_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Reasoning",
+    subjectRoute: "spi-reasoning",
+    subjectDisplay: "SPI Reasoning",
+    chapterSlug: "classification",
+    chipLabel: "Classification notes",
+    chapter: SPI_CLASSIFICATION_CHAPTER,
+    notes: SPI_CLASSIFICATION_NOTES,
+    slugs: SPI_CLASSIFICATION_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Reasoning",
+    subjectRoute: "spi-reasoning",
+    subjectDisplay: "SPI Reasoning",
+    chapterSlug: "series",
+    chipLabel: "Series notes",
+    chapter: SPI_SERIES_CHAPTER,
+    notes: SPI_SERIES_NOTES,
+    slugs: SPI_SERIES_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Reasoning",
+    subjectRoute: "spi-reasoning",
+    subjectDisplay: "SPI Reasoning",
+    chapterSlug: "order-ranking",
+    chipLabel: "Order, Ranking and Arrangement notes",
+    chapter: SPI_ORDER_RANKING_CHAPTER,
+    notes: SPI_ORDER_RANKING_NOTES,
+    slugs: SPI_ORDER_RANKING_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Physics",
+    subjectRoute: "spi-physics",
+    subjectDisplay: "SPI Physics",
+    chapterSlug: "electricity-magnetism",
+    chipLabel: "Electricity and Magnetism notes",
+    chapter: SPI_ELECTRICITY_MAGNETISM_CHAPTER,
+    notes: SPI_ELECTRICITY_MAGNETISM_NOTES,
+    slugs: SPI_ELECTRICITY_MAGNETISM_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Physics",
+    subjectRoute: "spi-physics",
+    subjectDisplay: "SPI Physics",
+    chapterSlug: "light-optics",
+    chipLabel: "Light and Optics notes",
+    chapter: SPI_LIGHT_OPTICS_CHAPTER,
+    notes: SPI_LIGHT_OPTICS_NOTES,
+    slugs: SPI_LIGHT_OPTICS_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Physics",
+    subjectRoute: "spi-physics",
+    subjectDisplay: "SPI Physics",
+    chapterSlug: "sound",
+    chipLabel: "Sound notes",
+    chapter: SPI_SOUND_CHAPTER,
+    notes: SPI_SOUND_NOTES,
+    slugs: SPI_SOUND_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Physics",
+    subjectRoute: "spi-physics",
+    subjectDisplay: "SPI Physics",
+    chapterSlug: "units-measurement",
+    chipLabel: "Units, Measurement and Dimensions notes",
+    chapter: SPI_UNITS_MEASUREMENT_CHAPTER,
+    notes: SPI_UNITS_MEASUREMENT_NOTES,
+    slugs: SPI_UNITS_MEASUREMENT_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Physics",
+    subjectRoute: "spi-physics",
+    subjectDisplay: "SPI Physics",
+    chapterSlug: "energy-sources",
+    chipLabel: "Energy Sources notes",
+    chapter: SPI_ENERGY_SOURCES_CHAPTER,
+    notes: SPI_ENERGY_SOURCES_NOTES,
+    slugs: SPI_ENERGY_SOURCES_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Physics",
+    subjectRoute: "spi-physics",
+    subjectDisplay: "SPI Physics",
+    chapterSlug: "kinematics",
+    chipLabel: "Kinematics and Motion notes",
+    chapter: SPI_KINEMATICS_CHAPTER,
+    notes: SPI_KINEMATICS_NOTES,
+    slugs: SPI_KINEMATICS_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Physics",
+    subjectRoute: "spi-physics",
+    subjectDisplay: "SPI Physics",
+    chapterSlug: "fluids-matter",
+    chipLabel: "Fluid Mechanics and Properties of Matter notes",
+    chapter: SPI_FLUIDS_MATTER_CHAPTER,
+    notes: SPI_FLUIDS_MATTER_NOTES,
+    slugs: SPI_FLUIDS_MATTER_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Physics",
+    subjectRoute: "spi-physics",
+    subjectDisplay: "SPI Physics",
+    chapterSlug: "gravitation",
+    chipLabel: "Gravitation notes",
+    chapter: SPI_GRAVITATION_CHAPTER,
+    notes: SPI_GRAVITATION_NOTES,
+    slugs: SPI_GRAVITATION_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Physics",
+    subjectRoute: "spi-physics",
+    subjectDisplay: "SPI Physics",
+    chapterSlug: "laws-of-motion",
+    chipLabel: "Laws of Motion and Forces notes",
+    chapter: SPI_LAWS_OF_MOTION_CHAPTER,
+    notes: SPI_LAWS_OF_MOTION_NOTES,
+    slugs: SPI_LAWS_OF_MOTION_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Chemistry",
+    subjectRoute: "spi-chemistry",
+    subjectDisplay: "SPI Chemistry",
+    chapterSlug: "mole-concept",
+    chipLabel: "Mole Concept and Stoichiometry notes",
+    chapter: SPI_MOLE_CONCEPT_CHAPTER,
+    notes: SPI_MOLE_CONCEPT_NOTES,
+    slugs: SPI_MOLE_CONCEPT_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Chemistry",
+    subjectRoute: "spi-chemistry",
+    subjectDisplay: "SPI Chemistry",
+    chapterSlug: "atomic-structure",
+    chipLabel: "Atomic Structure and Periodic Classification notes",
+    chapter: SPI_ATOMIC_STRUCTURE_CHAPTER,
+    notes: SPI_ATOMIC_STRUCTURE_NOTES,
+    slugs: SPI_ATOMIC_STRUCTURE_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Chemistry",
+    subjectRoute: "spi-chemistry",
+    subjectDisplay: "SPI Chemistry",
+    chapterSlug: "carbon-compounds",
+    chipLabel: "Carbon and Its Compounds notes",
+    chapter: SPI_CARBON_COMPOUNDS_CHAPTER,
+    notes: SPI_CARBON_COMPOUNDS_NOTES,
+    slugs: SPI_CARBON_COMPOUNDS_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Chemistry",
+    subjectRoute: "spi-chemistry",
+    subjectDisplay: "SPI Chemistry",
+    chapterSlug: "acids-bases-salts",
+    chipLabel: "Acids, Bases and Salts notes",
+    chapter: SPI_ACIDS_BASES_SALTS_CHAPTER,
+    notes: SPI_ACIDS_BASES_SALTS_NOTES,
+    slugs: SPI_ACIDS_BASES_SALTS_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Chemistry",
+    subjectRoute: "spi-chemistry",
+    subjectDisplay: "SPI Chemistry",
+    chapterSlug: "chemical-reactions",
+    chipLabel: "Chemical Reactions notes",
+    chapter: SPI_CHEMICAL_REACTIONS_CHAPTER,
+    notes: SPI_CHEMICAL_REACTIONS_NOTES,
+    slugs: SPI_CHEMICAL_REACTIONS_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Chemistry",
+    subjectRoute: "spi-chemistry",
+    subjectDisplay: "SPI Chemistry",
+    chapterSlug: "metals-non-metals",
+    chipLabel: "Metals and Non-Metals notes",
+    chapter: SPI_METALS_NON_METALS_CHAPTER,
+    notes: SPI_METALS_NON_METALS_NOTES,
+    slugs: SPI_METALS_NON_METALS_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Biology",
+    subjectRoute: "spi-biology",
+    subjectDisplay: "SPI Biology",
+    chapterSlug: "human-physiology",
+    chipLabel: "Human Physiology notes",
+    chapter: SPI_HUMAN_PHYSIOLOGY_CHAPTER,
+    notes: SPI_HUMAN_PHYSIOLOGY_NOTES,
+    slugs: SPI_HUMAN_PHYSIOLOGY_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Biology",
+    subjectRoute: "spi-biology",
+    subjectDisplay: "SPI Biology",
+    chapterSlug: "cell-biology",
+    chipLabel: "Cell Biology notes",
+    chapter: SPI_CELL_BIOLOGY_CHAPTER,
+    notes: SPI_CELL_BIOLOGY_NOTES,
+    slugs: SPI_CELL_BIOLOGY_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Biology",
+    subjectRoute: "spi-biology",
+    subjectDisplay: "SPI Biology",
+    chapterSlug: "plant-biology",
+    chipLabel: "Plant Biology notes",
+    chapter: SPI_PLANT_BIOLOGY_CHAPTER,
+    notes: SPI_PLANT_BIOLOGY_NOTES,
+    slugs: SPI_PLANT_BIOLOGY_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Biology",
+    subjectRoute: "spi-biology",
+    subjectDisplay: "SPI Biology",
+    chapterSlug: "reproduction",
+    chipLabel: "Reproduction notes",
+    chapter: SPI_REPRODUCTION_CHAPTER,
+    notes: SPI_REPRODUCTION_NOTES,
+    slugs: SPI_REPRODUCTION_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Biology",
+    subjectRoute: "spi-biology",
+    subjectDisplay: "SPI Biology",
+    chapterSlug: "microbiology-disease",
+    chipLabel: "Microbiology and Disease notes",
+    chapter: SPI_MICROBIOLOGY_DISEASE_CHAPTER,
+    notes: SPI_MICROBIOLOGY_DISEASE_NOTES,
+    slugs: SPI_MICROBIOLOGY_DISEASE_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Biology",
+    subjectRoute: "spi-biology",
+    subjectDisplay: "SPI Biology",
+    chapterSlug: "ecology-environment",
+    chipLabel: "Ecology and Environment notes",
+    chapter: SPI_ECOLOGY_ENVIRONMENT_CHAPTER,
+    notes: SPI_ECOLOGY_ENVIRONMENT_NOTES,
+    slugs: SPI_ECOLOGY_ENVIRONMENT_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Biology",
+    subjectRoute: "spi-biology",
+    subjectDisplay: "SPI Biology",
+    chapterSlug: "genetics-evolution",
+    chipLabel: "Genetics and Evolution notes",
+    chapter: SPI_GENETICS_EVOLUTION_CHAPTER,
+    notes: SPI_GENETICS_EVOLUTION_NOTES,
+    slugs: SPI_GENETICS_EVOLUTION_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Biology",
+    subjectRoute: "spi-biology",
+    subjectDisplay: "SPI Biology",
+    chapterSlug: "biodiversity-classification",
+    chipLabel: "Biodiversity and Classification notes",
+    chapter: SPI_BIODIVERSITY_CLASSIFICATION_CHAPTER,
+    notes: SPI_BIODIVERSITY_CLASSIFICATION_NOTES,
+    slugs: SPI_BIODIVERSITY_CLASSIFICATION_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Geography",
+    subjectRoute: "spi-geography",
+    subjectDisplay: "SPI Geography",
+    chapterSlug: "indian-economic-geography",
+    chipLabel: "Indian Economic Geography notes",
+    titleName: "Indian Economic Geography",
+    chapter: SPI_INDIAN_ECONOMIC_GEOGRAPHY_CHAPTER,
+    notes: SPI_INDIAN_ECONOMIC_GEOGRAPHY_NOTES,
+    slugs: SPI_INDIAN_ECONOMIC_GEOGRAPHY_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Geography",
+    subjectRoute: "spi-geography",
+    subjectDisplay: "SPI Geography",
+    chapterSlug: "indian-physical-geography",
+    chipLabel: "Indian Physical Geography notes",
+    titleName: "Indian Physical Geography",
+    chapter: SPI_INDIAN_PHYSICAL_GEOGRAPHY_CHAPTER,
+    notes: SPI_INDIAN_PHYSICAL_GEOGRAPHY_NOTES,
+    slugs: SPI_INDIAN_PHYSICAL_GEOGRAPHY_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Geography",
+    subjectRoute: "spi-geography",
+    subjectDisplay: "SPI Geography",
+    chapterSlug: "world-human-geography",
+    chipLabel: "World and Human Geography notes",
+    chapter: SPI_WORLD_HUMAN_GEOGRAPHY_CHAPTER,
+    notes: SPI_WORLD_HUMAN_GEOGRAPHY_NOTES,
+    slugs: SPI_WORLD_HUMAN_GEOGRAPHY_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Geography",
+    subjectRoute: "spi-geography",
+    subjectDisplay: "SPI Geography",
+    chapterSlug: "maharashtra-geography",
+    chipLabel: "Maharashtra Geography notes",
+    chapter: SPI_MAHARASHTRA_GEOGRAPHY_CHAPTER,
+    notes: SPI_MAHARASHTRA_GEOGRAPHY_NOTES,
+    slugs: SPI_MAHARASHTRA_GEOGRAPHY_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "History",
+    subjectRoute: "spi-history",
+    subjectDisplay: "SPI History",
+    chapterSlug: "modern-india",
+    chipLabel: "Modern India notes",
+    chapter: SPI_MODERN_INDIA_CHAPTER,
+    notes: SPI_MODERN_INDIA_NOTES,
+    slugs: SPI_MODERN_INDIA_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "History",
+    subjectRoute: "spi-history",
+    subjectDisplay: "SPI History",
+    chapterSlug: "world-history",
+    chipLabel: "World History notes",
+    chapter: SPI_WORLD_HISTORY_CHAPTER,
+    notes: SPI_WORLD_HISTORY_NOTES,
+    slugs: SPI_WORLD_HISTORY_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Polity",
+    subjectRoute: "spi-polity",
+    subjectDisplay: "SPI Polity",
+    chapterSlug: "rights-dpsp-local",
+    chipLabel: "Fundamental Rights, DPSP and Local Governance notes",
+    chapter: SPI_RIGHTS_DPSP_LOCAL_CHAPTER,
+    notes: SPI_RIGHTS_DPSP_LOCAL_NOTES,
+    slugs: SPI_RIGHTS_DPSP_LOCAL_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Polity",
+    subjectRoute: "spi-polity",
+    subjectDisplay: "SPI Polity",
+    chapterSlug: "world-polity",
+    chipLabel: "World Polity, Democracy and International Relations notes",
+    chapter: SPI_WORLD_POLITY_CHAPTER,
+    notes: SPI_WORLD_POLITY_NOTES,
+    slugs: SPI_WORLD_POLITY_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Polity",
+    subjectRoute: "spi-polity",
+    subjectDisplay: "SPI Polity",
+    chapterSlug: "government-structure",
+    chipLabel: "Government Structure notes",
+    titleName: "Government Structure",
+    chapter: SPI_GOVERNMENT_STRUCTURE_CHAPTER,
+    notes: SPI_GOVERNMENT_STRUCTURE_NOTES,
+    slugs: SPI_GOVERNMENT_STRUCTURE_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "General Knowledge",
+    subjectRoute: "spi-gk",
+    subjectDisplay: "SPI General Knowledge",
+    chapterSlug: "defence",
+    chipLabel: "Defence and Armed Forces notes",
+    chapter: SPI_DEFENCE_CHAPTER,
+    notes: SPI_DEFENCE_NOTES,
+    slugs: SPI_DEFENCE_SLUGS,
+  },
 ];
 
 /**

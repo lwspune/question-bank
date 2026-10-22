@@ -19,6 +19,7 @@ import { userHasAccess } from "@/lib/entitlements/query";
 import { isNotesGated, splitPreview } from "@/lib/notes/access";
 import { loadWorkedExamples } from "@/lib/guide/loadWorkedExamples";
 import { getNotesTaxonomy } from "@/lib/notes/taxonomyCache";
+import { notesBrowseKind, notesCountKind } from "@/lib/notes/countKind";
 import { loadResolvedDrills } from "@/lib/notes/loadResolvedDrills";
 import { pickInterleavedCheckpoint } from "@/lib/notes/pickInterleavedCheckpoint";
 import type { NotesChapterRegistration } from "@/lib/notes/chapters";
@@ -178,6 +179,8 @@ export default async function NotesSubtopicPage({
     slug: c.slug,
     pyqExampleId: c.pyqExampleId,
   }));
+  // PYQ-only (migration 0036) unless the exam's notes count both kinds.
+  const countKind = notesCountKind(chapter.examName);
   const [drillsByConcept, countRes] = await Promise.all([
     loadResolvedDrills(supabase, subtopicSlug, conceptsForResolver),
     subtopicId
@@ -185,7 +188,7 @@ export default async function NotesSubtopicPage({
           .from("questions")
           .select("id", { count: "exact", head: true })
           .eq("subtopic_id", subtopicId)
-          .eq("question_kind", "pyq") // drill count is PYQ-only (migration 0036)
+          .in("question_kind", countKind === "pyq" ? ["pyq"] : ["pyq", "practice"])
       : Promise.resolve({ count: 0 as number | null }),
   ]);
   const drillCount = countRes.count ?? 0;
@@ -205,11 +208,6 @@ export default async function NotesSubtopicPage({
     .map((id) => pyqById.get(id))
     .filter((r): r is NonNullable<typeof r> => Boolean(r));
 
-  const drillHref = subtopicId
-    ? `/browse?examId=${taxonomy.examId}&subjectId=${taxonomy.subjectId}&subtopicIds=${subtopicId}`
-    : "/browse";
-
-
   // Return target for the /browse "← Back to notes" pill: this subtopic's URL
   // (per-concept drills append the concept anchor) + a human label.
   const subtopicUrl = `${base}/${subtopicSlug}`;
@@ -220,6 +218,7 @@ export default async function NotesSubtopicPage({
       examId={taxonomy.examId}
       subjectId={taxonomy.subjectId}
       subtopicIds={subtopicId ? [subtopicId] : []}
+      kind={notesBrowseKind(countKind)}
       from={subtopicUrl}
       fromLabel={backLabel}
       variant="outline"
@@ -363,6 +362,7 @@ export default async function NotesSubtopicPage({
             drillQuestionIds={drillsByConcept.get(c.slug) ?? []}
             backHref={`${subtopicUrl}#${c.slug}`}
             backLabel={backLabel}
+            browseKind={notesBrowseKind(countKind)}
           />
         ))}
       </div>
@@ -415,7 +415,7 @@ export default async function NotesSubtopicPage({
       ) : (
         <section className="mt-6 rounded-2xl border bg-card p-6 shadow-sm">
           <h2 className="text-lg font-semibold tracking-tight">
-            Drill the past-year questions on this topic
+            {countKind === "pyq" ? "Drill the past-year questions on this topic" : "Drill the questions on this topic"}
           </h2>
           <p className="mt-1 font-serif text-sm leading-relaxed text-muted-foreground">
             {drillCount > 0

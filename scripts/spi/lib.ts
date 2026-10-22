@@ -198,3 +198,33 @@ export function compareVerify(qs: TranscriptQuestion[], verify: VerifyRow[]): Ve
   }
   return r;
 }
+
+export type Retag = { text: string; changes: number; problems: string[] };
+
+/**
+ * The transcript side of a notes re-cut (scripts/spi/reshape.ts): rewrite the `subtopic:` line of
+ * every block in `chapter`. A block takes `targets.get(n)`, else keeps a subtopic already in the
+ * teaching order; anything else is a problem, never a silent skip. Only those lines change, so the
+ * transcript stays byte-identical elsewhere (CRLF included).
+ */
+export function retagSubtopics(text: string, chapter: string, targets: Map<number, string>, order: string[]): Retag {
+  const problems: string[] = [];
+  let changes = 0;
+  let n: number | null = null;
+  let inChapter = false;
+  const lines = text.split(/(?<=\n)/);
+  for (let i = 0; i < lines.length; i++) {
+    const body = lines[i].replace(/\r?\n$/, "");
+    const head = /^=== (\d+)\s*$/.exec(body);
+    if (head) { n = Number(head[1]); inChapter = false; continue; }
+    if (n === null) continue;
+    if (body.startsWith("chapter:")) { inChapter = body.slice(8).trim() === chapter; continue; }
+    if (!inChapter || !body.startsWith("subtopic:")) continue;
+    const from = body.slice(9).trim();
+    const to = targets.get(n) ?? (order.includes(from) ? from : undefined);
+    if (!to) { problems.push(`Q${n}: no target for subtopic "${from}"`); continue; }
+    if (!order.includes(to)) { problems.push(`Q${n}: target "${to}" is not in the teaching order`); continue; }
+    if (to !== from) { lines[i] = `subtopic: ${to}` + lines[i].slice(body.length); changes++; }
+  }
+  return { text: lines.join(""), changes, problems };
+}
