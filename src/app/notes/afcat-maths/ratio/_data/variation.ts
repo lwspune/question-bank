@@ -21,7 +21,7 @@ export const AF_RP_VARIATION_NOTE: SubtopicNote = {
         "- A value that varies as the square of the weight: break the object, and each piece is valued by its own square, so the total value falls.",
       formula: {
         label: "Direct variation",
-        latex: "x \\propto y \\iff x = ky \\iff \\dfrac{x_1}{y_1} = \\dfrac{x_2}{y_2}",
+        latex: "x \\propto y \\;\\text{means}\\; x = ky, \\text{ so } \\dfrac{x_1}{y_1} = \\dfrac{x_2}{y_2}",
       },
       authoredExample: {
         prompt: "\\(x\\) varies as \\(y^2\\), and \\(x = 27\\) when \\(y = 3\\). Find \\(x\\) when \\(y = 5\\).",
@@ -57,7 +57,7 @@ export const AF_RP_VARIATION_NOTE: SubtopicNote = {
         "- With a power: \\(x \\propto \\dfrac{1}{y^2}\\) means \\(xy^2 = k\\).",
       formula: {
         label: "Inverse variation",
-        latex: "x \\propto \\dfrac 1y \\iff xy = k \\iff x_1 y_1 = x_2 y_2",
+        latex: "x \\propto \\dfrac 1y \\;\\text{means}\\; xy = k, \\text{ so } x_1 y_1 = x_2 y_2",
       },
       authoredExample: {
         prompt: "\\(a\\) varies inversely as \\(b^2\\), and \\(a = 18\\) when \\(b = 2\\). Find \\(a\\) when \\(b = 3\\).",
@@ -94,7 +94,7 @@ export const AF_RP_VARIATION_NOTE: SubtopicNote = {
         "- '\\(y\\) is the sum of two parts, one varying as \\(x\\) and one inversely as \\(x\\)': \\(y = ax + \\dfrac bx\\). That has two constants, so it needs two pairs of values.",
       formula: {
         label: "Combined variation",
-        latex: "x \\propto \\dfrac{y}{z^2} \\iff x = \\dfrac{ky}{z^2}",
+        latex: "x \\propto \\dfrac{y}{z^2} \\;\\text{means}\\; x = \\dfrac{ky}{z^2}",
       },
       authoredExample: {
         prompt: "\\(p\\) varies directly as \\(q\\) and inversely as \\(r\\). \\(p = 6\\) when \\(q = 4\\) and \\(r = 2\\). Find \\(p\\) when \\(q = 9\\) and \\(r = 3\\).",

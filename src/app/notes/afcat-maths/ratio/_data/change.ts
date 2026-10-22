@@ -156,7 +156,7 @@ export const AF_RP_CHANGE_NOTE: SubtopicNote = {
       slug: "afrp-income-savings",
       name: "Income, expenditure and savings",
       intuition:
-        "Savings are income minus expenditure. When incomes are given as one ratio and expenditures as another, write the incomes as \\(5x, 3x\\) and the expenditures as \\(9y, 5y\\). The two savings give two equations in \\(x\\) and \\(y\\).",
+        "Savings are income minus expenditure. When incomes are given as one ratio and expenditures as another, write the incomes as \\(4x, 3x\\) and the expenditures as \\(5y, 4y\\). The two savings give two equations in \\(x\\) and \\(y\\).",
       definition:
         "- Incomes \\(ax\\) and \\(bx\\), expenditures \\(cy\\) and \\(dy\\): the savings are \\(ax - cy\\) and \\(bx - dy\\).\n" +
         "- Two savings figures give two equations. Multiply so that one letter has the same coefficient, then subtract.\n" +
@@ -196,7 +196,7 @@ export const AF_RP_CHANGE_NOTE: SubtopicNote = {
       traps: [
         {
           title: "Two ratios need two letters",
-          body: "Incomes \\(5 : 3\\) and expenditures \\(9 : 5\\) need \\(5x, 3x\\) and \\(9y, 5y\\). Using one \\(k\\) for both makes spending a fixed share of income, which the question never says.",
+          body: "Incomes \\(4 : 3\\) and expenditures \\(5 : 4\\) need \\(4x, 3x\\) and \\(5y, 4y\\). Using one \\(k\\) for both makes spending a fixed share of income, which the question never says.",
         },
       ],
     },

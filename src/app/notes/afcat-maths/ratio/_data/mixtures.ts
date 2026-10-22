@@ -53,7 +53,7 @@ export const AF_RP_MIXTURES_NOTE: SubtopicNote = {
       definition:
         "- Adding water: the milk stays at \\(m\\). For a new ratio \\(r : s\\), the water must become \\(\\dfrac sr m\\). Subtract the water already there.\n" +
         "- Adding milk: the water stays fixed, and the milk must become \\(\\dfrac rs\\) times the water.\n" +
-        "- With unknown amounts \\(5k\\) and \\(3k\\), keep the fixed one unchanged in the new ratio: \\(\\dfrac{5k}{3k + 16} = \\dfrac 54\\).\n" +
+        "- With unknown amounts \\(3k\\) and \\(2k\\), keep the fixed one unchanged in the new ratio: adding 10 litres of water gives \\(\\dfrac{3k}{2k + 10} = \\dfrac 34\\).\n" +
         "- Drying works the same way: only water leaves, so the dry matter is the fixed quantity.",
       formula: {
         label: "Water to add",
@@ -164,12 +164,12 @@ export const AF_RP_MIXTURES_NOTE: SubtopicNote = {
         answer: "₹88.",
       },
       selfCheckExample: {
-        prompt: "A box has ₹2, ₹5 and ₹10 coins in the ratio \\(4 : 3 : 1\\), with 24 coins of ₹2. How many ₹10 coins are there, and what is the total value?",
+        prompt: "A box has ₹1 and ₹2 coins in the ratio \\(7 : 4\\), with 28 coins of ₹1. How many ₹2 coins are there, and what is the total value?",
         steps: [
-          "4 parts are 24 coins, so one part is 6: there are 18 coins of ₹5 and 6 of ₹10.",
-          "Value: \\(24 \\times 2 + 18 \\times 5 + 6 \\times 10 = 48 + 90 + 60\\).",
+          "7 parts are 28 coins, so one part is 4: there are 16 coins of ₹2.",
+          "Value: \\(28 \\times 1 + 16 \\times 2 = 28 + 32\\).",
         ],
-        answer: "6 coins of ₹10; ₹198.",
+        answer: "16 coins of ₹2; ₹60.",
       },
       practiceSet: [
         { prompt: "₹5 and ₹10 coins are in the ratio \\(1 : 1\\), 30 coins in all. Find the total value.", answer: "₹225" },

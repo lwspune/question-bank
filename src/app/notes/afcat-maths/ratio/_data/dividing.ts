@@ -117,7 +117,7 @@ export const AF_RP_DIVIDING_NOTE: SubtopicNote = {
       definition:
         "- For numbers \\(pk, qk, rk\\): the sum is \\((p + q + r)k\\), the sum of squares \\((p^2 + q^2 + r^2)k^2\\), and the product \\(pqr\\,k^3\\).\n" +
         "- Shares described by differences ('A gets ₹7 more than B'): name the smallest share and build the others from it.\n" +
-        "- 'Boys exceed girls by 12% of the total' is an equation: \\(B - G = 0.12(B + G)\\). Solve it for \\(B : G\\).",
+        "- 'Boys exceed girls by 20% of the total' is an equation: \\(B - G = 0.2(B + G)\\). Solve it for \\(B : G\\) (here \\(3 : 2\\)).",
       formula: {
         label: "Numbers from a ratio",
         latex: "x : y : z = p : q : r \\;\\Rightarrow\\; x = pk,\\ y = qk,\\ z = rk",
@@ -164,7 +164,7 @@ export const AF_RP_DIVIDING_NOTE: SubtopicNote = {
       definition:
         "- Same total, two ratios: the share under one minus the share under the other.\n" +
         "- If one person's loss is given, write it as \\(\\left(\\dfrac{q}{p + q} - \\dfrac{s}{r + s}\\right)T\\) and solve for \\(T\\).\n" +
-        "- 'If each had received ₹25 less, the shares would be \\(1 : 3 : 2\\)': take ₹25 from each first, split what is left, then add the ₹25 back.",
+        "- 'If each had received ₹10 less, the shares would be \\(2 : 3 : 4\\)': take ₹10 from each first, split what is left, then add the ₹10 back.",
       formula: {
         label: "Gain or loss from a changed ratio",
         latex: "\\text{change} = \\left(\\dfrac{q}{p + q} - \\dfrac{s}{r + s}\\right) T",
@@ -208,7 +208,7 @@ export const AF_RP_DIVIDING_NOTE: SubtopicNote = {
       traps: [
         {
           title: "Add the deduction back",
-          body: "When shares less ₹25 each are in a given ratio, the ratio describes the reduced shares. Solve for those, then add the ₹25 back before you answer.",
+          body: "When shares less ₹10 each are in a given ratio, the ratio describes the reduced shares. Solve for those, then add the ₹10 back before you answer.",
         },
       ],
     },

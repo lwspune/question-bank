@@ -216,7 +216,7 @@ export const AF_RP_COMBINING_NOTE: SubtopicNote = {
         "- Or give them a common second term: \\(3 : 4 = 15 : 20\\) and \\(4 : 5 = 16 : 20\\), so \\(4 : 5\\) is larger.",
       formula: {
         label: "Cross-multiplication test",
-        latex: "\\dfrac ab > \\dfrac cd \\iff ad > bc \\quad (b, d > 0)",
+        latex: "\\dfrac ab > \\dfrac cd \\;\\text{exactly when}\\; ad > bc \\quad (b, d > 0)",
       },
       authoredExample: {
         prompt: "Which is greater, \\(5 : 7\\) or \\(7 : 10\\)?",

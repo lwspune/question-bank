@@ -21,7 +21,7 @@ export const AF_RP_BASICS_NOTE: SubtopicNote = {
         "- A ratio is also a percentage: \\(a : b = 2 : 5\\) means \\(a\\) is \\(\\dfrac 25 = 40\\%\\) of \\(b\\).",
       formula: {
         label: "A ratio as parts",
-        latex: "a : b = p : q \\iff a = pk,\\ b = qk",
+        latex: "a : b = p : q \\;\\text{means}\\; a = pk,\\ b = qk",
       },
       authoredExample: {
         prompt:
@@ -111,7 +111,7 @@ export const AF_RP_BASICS_NOTE: SubtopicNote = {
       intuition:
         "AFCAT names the ratios you get from \\(a : b\\) by flipping it, squaring it, cubing it or taking roots. Each name is one operation applied to both terms.",
       definition:
-        "Apply the operation to both terms, then simplify. A ratio 'compounded with itself' or 'taken twice' is multiplied by itself, which is the duplicate ratio.",
+        "Apply the operation to both terms, then simplify. A ratio 'compounded with itself' or 'taken twice' is multiplied by itself, which is the duplicate ratio. (Compounding two different ratios comes on the next page.)",
       table: {
         columns: ["Name", "Of a : b", "Example"],
         rows: [

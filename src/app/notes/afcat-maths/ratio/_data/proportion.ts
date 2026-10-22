@@ -21,7 +21,7 @@ export const AF_RP_PROPORTION_NOTE: SubtopicNote = {
         "- Letters work the same way: the fourth proportional to \\(p, q, r\\) is \\(\\dfrac{qr}{p}\\).",
       formula: {
         label: "Product of extremes equals product of means",
-        latex: "a : b :: c : d \\iff ad = bc, \\qquad d = \\dfrac{bc}{a}",
+        latex: "a : b :: c : d \\;\\text{means}\\; ad = bc, \\qquad d = \\dfrac{bc}{a}",
       },
       authoredExample: {
         prompt: "Find the fourth proportional to 5, 12 and 20.",
@@ -141,7 +141,7 @@ export const AF_RP_PROPORTION_NOTE: SubtopicNote = {
         "- In an expression in \\(a, b, c\\), replace \\(b^2\\) by \\(ac\\). To check an answer quickly, try a G.P. such as 1, 2, 4.",
       formula: {
         label: "Continued proportion",
-        latex: "a : b = b : c \\iff b^2 = ac",
+        latex: "a : b = b : c \\;\\text{means}\\; b^2 = ac",
       },
       authoredExample: {
         prompt: "\\(x, y, z\\) are in continued proportion and \\(x : z = 9 : 49\\). Find \\(x : y : z\\).",
