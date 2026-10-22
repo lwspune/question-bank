@@ -10,7 +10,7 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { EXAM_REGISTRY } from "@/lib/exam/examContext";
 import { listActivePlans, readFreeLimits } from "@/lib/billing/plansQuery";
-import { getCachedExamCatalog } from "@/lib/exam/allExamStats";
+import { getCachedExamCatalog, type ExamCatalog } from "@/lib/exam/allExamStats";
 import { listChapterSearchRows } from "./subtopicIndex";
 import {
   buildExamFacts,
@@ -72,7 +72,7 @@ export type VContext = { system: string; systemTail: string; tools: VTool[]; all
 /**
  * `anon` reads only what the public may read: active plans, free limits, PUBLIC
  * count. `loadChapters` defaults to the cached chapter list with its subtopics; a script outside
- * Next passes the uncached one (scripts/chat/replay-typed.ts). `page` is the
+ * Next passes the uncached one (scripts/chat/eval/run.ts). `page` is the
  * (already cleaned) path the student asked from; V is told it and may link it.
  */
 export async function loadVContext(
@@ -81,6 +81,8 @@ export async function loadVContext(
     loadChapters?: () => Promise<readonly ChapterSearchRow[]>;
     /** Per-chapter past-paper counts for exam_strategy; defaults to the day-cached read (a script passes the uncached one). */
     loadStrategy?: (examSlug: string) => Promise<StrategyData | null>;
+    /** Each exam's past-year count for its fact; defaults to the day-cached catalogue (a script, outside Next, passes an uncached one). */
+    loadExamCatalog?: () => Promise<ExamCatalog>;
     page?: string | null;
     /** False: a signed-out visitor, whose question is their only one (lib/chat/anonLimit.ts). */
     signedIn?: boolean;
@@ -109,7 +111,7 @@ export async function loadVContext(
     listActivePlans(anon),
     readFreeLimits(anon),
     anon.from("questions").select("*", { count: "exact", head: true }).eq("visibility", "PUBLIC"),
-    getCachedExamCatalog()
+    (opts.loadExamCatalog ?? getCachedExamCatalog)()
       .then((c) => new Map(c.exams.map((e) => [e.slug, e.counts.pyq] as const)))
       .catch((err) => {
         console.error("V: exam catalogue unavailable", err);
