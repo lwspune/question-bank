@@ -1541,6 +1541,91 @@ import {
   SPI_MOLE_CONCEPT_NOTES,
   SPI_MOLE_CONCEPT_SLUGS,
 } from "@/app/notes/spi-chemistry/mole-concept/_data";
+import {
+  SPI_ATOMIC_STRUCTURE_CHAPTER,
+  SPI_ATOMIC_STRUCTURE_NOTES,
+  SPI_ATOMIC_STRUCTURE_SLUGS,
+} from "@/app/notes/spi-chemistry/atomic-structure/_data";
+import {
+  SPI_CARBON_COMPOUNDS_CHAPTER,
+  SPI_CARBON_COMPOUNDS_NOTES,
+  SPI_CARBON_COMPOUNDS_SLUGS,
+} from "@/app/notes/spi-chemistry/carbon-compounds/_data";
+import {
+  SPI_ACIDS_BASES_SALTS_CHAPTER,
+  SPI_ACIDS_BASES_SALTS_NOTES,
+  SPI_ACIDS_BASES_SALTS_SLUGS,
+} from "@/app/notes/spi-chemistry/acids-bases-salts/_data";
+import {
+  SPI_CHEMICAL_REACTIONS_CHAPTER,
+  SPI_CHEMICAL_REACTIONS_NOTES,
+  SPI_CHEMICAL_REACTIONS_SLUGS,
+} from "@/app/notes/spi-chemistry/chemical-reactions/_data";
+import {
+  SPI_METALS_NON_METALS_CHAPTER,
+  SPI_METALS_NON_METALS_NOTES,
+  SPI_METALS_NON_METALS_SLUGS,
+} from "@/app/notes/spi-chemistry/metals-non-metals/_data";
+import {
+  SPI_HUMAN_PHYSIOLOGY_CHAPTER,
+  SPI_HUMAN_PHYSIOLOGY_NOTES,
+  SPI_HUMAN_PHYSIOLOGY_SLUGS,
+} from "@/app/notes/spi-biology/human-physiology/_data";
+import {
+  SPI_CELL_BIOLOGY_CHAPTER,
+  SPI_CELL_BIOLOGY_NOTES,
+  SPI_CELL_BIOLOGY_SLUGS,
+} from "@/app/notes/spi-biology/cell-biology/_data";
+import {
+  SPI_PLANT_BIOLOGY_CHAPTER,
+  SPI_PLANT_BIOLOGY_NOTES,
+  SPI_PLANT_BIOLOGY_SLUGS,
+} from "@/app/notes/spi-biology/plant-biology/_data";
+import {
+  SPI_REPRODUCTION_CHAPTER,
+  SPI_REPRODUCTION_NOTES,
+  SPI_REPRODUCTION_SLUGS,
+} from "@/app/notes/spi-biology/reproduction/_data";
+import {
+  SPI_MICROBIOLOGY_DISEASE_CHAPTER,
+  SPI_MICROBIOLOGY_DISEASE_NOTES,
+  SPI_MICROBIOLOGY_DISEASE_SLUGS,
+} from "@/app/notes/spi-biology/microbiology-disease/_data";
+import {
+  SPI_ECOLOGY_ENVIRONMENT_CHAPTER,
+  SPI_ECOLOGY_ENVIRONMENT_NOTES,
+  SPI_ECOLOGY_ENVIRONMENT_SLUGS,
+} from "@/app/notes/spi-biology/ecology-environment/_data";
+import {
+  SPI_GENETICS_EVOLUTION_CHAPTER,
+  SPI_GENETICS_EVOLUTION_NOTES,
+  SPI_GENETICS_EVOLUTION_SLUGS,
+} from "@/app/notes/spi-biology/genetics-evolution/_data";
+import {
+  SPI_BIODIVERSITY_CLASSIFICATION_CHAPTER,
+  SPI_BIODIVERSITY_CLASSIFICATION_NOTES,
+  SPI_BIODIVERSITY_CLASSIFICATION_SLUGS,
+} from "@/app/notes/spi-biology/biodiversity-classification/_data";
+import {
+  SPI_INDIAN_ECONOMIC_GEOGRAPHY_CHAPTER,
+  SPI_INDIAN_ECONOMIC_GEOGRAPHY_NOTES,
+  SPI_INDIAN_ECONOMIC_GEOGRAPHY_SLUGS,
+} from "@/app/notes/spi-geography/indian-economic-geography/_data";
+import {
+  SPI_INDIAN_PHYSICAL_GEOGRAPHY_CHAPTER,
+  SPI_INDIAN_PHYSICAL_GEOGRAPHY_NOTES,
+  SPI_INDIAN_PHYSICAL_GEOGRAPHY_SLUGS,
+} from "@/app/notes/spi-geography/indian-physical-geography/_data";
+import {
+  SPI_WORLD_HUMAN_GEOGRAPHY_CHAPTER,
+  SPI_WORLD_HUMAN_GEOGRAPHY_NOTES,
+  SPI_WORLD_HUMAN_GEOGRAPHY_SLUGS,
+} from "@/app/notes/spi-geography/world-human-geography/_data";
+import {
+  SPI_MAHARASHTRA_GEOGRAPHY_CHAPTER,
+  SPI_MAHARASHTRA_GEOGRAPHY_NOTES,
+  SPI_MAHARASHTRA_GEOGRAPHY_SLUGS,
+} from "@/app/notes/spi-geography/maharashtra-geography/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -4938,6 +5023,193 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SPI_MOLE_CONCEPT_CHAPTER,
     notes: SPI_MOLE_CONCEPT_NOTES,
     slugs: SPI_MOLE_CONCEPT_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Chemistry",
+    subjectRoute: "spi-chemistry",
+    subjectDisplay: "SPI Chemistry",
+    chapterSlug: "atomic-structure",
+    chipLabel: "Atomic Structure and Periodic Classification notes",
+    chapter: SPI_ATOMIC_STRUCTURE_CHAPTER,
+    notes: SPI_ATOMIC_STRUCTURE_NOTES,
+    slugs: SPI_ATOMIC_STRUCTURE_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Chemistry",
+    subjectRoute: "spi-chemistry",
+    subjectDisplay: "SPI Chemistry",
+    chapterSlug: "carbon-compounds",
+    chipLabel: "Carbon and Its Compounds notes",
+    chapter: SPI_CARBON_COMPOUNDS_CHAPTER,
+    notes: SPI_CARBON_COMPOUNDS_NOTES,
+    slugs: SPI_CARBON_COMPOUNDS_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Chemistry",
+    subjectRoute: "spi-chemistry",
+    subjectDisplay: "SPI Chemistry",
+    chapterSlug: "acids-bases-salts",
+    chipLabel: "Acids, Bases and Salts notes",
+    chapter: SPI_ACIDS_BASES_SALTS_CHAPTER,
+    notes: SPI_ACIDS_BASES_SALTS_NOTES,
+    slugs: SPI_ACIDS_BASES_SALTS_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Chemistry",
+    subjectRoute: "spi-chemistry",
+    subjectDisplay: "SPI Chemistry",
+    chapterSlug: "chemical-reactions",
+    chipLabel: "Chemical Reactions notes",
+    chapter: SPI_CHEMICAL_REACTIONS_CHAPTER,
+    notes: SPI_CHEMICAL_REACTIONS_NOTES,
+    slugs: SPI_CHEMICAL_REACTIONS_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Chemistry",
+    subjectRoute: "spi-chemistry",
+    subjectDisplay: "SPI Chemistry",
+    chapterSlug: "metals-non-metals",
+    chipLabel: "Metals and Non-Metals notes",
+    chapter: SPI_METALS_NON_METALS_CHAPTER,
+    notes: SPI_METALS_NON_METALS_NOTES,
+    slugs: SPI_METALS_NON_METALS_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Biology",
+    subjectRoute: "spi-biology",
+    subjectDisplay: "SPI Biology",
+    chapterSlug: "human-physiology",
+    chipLabel: "Human Physiology notes",
+    chapter: SPI_HUMAN_PHYSIOLOGY_CHAPTER,
+    notes: SPI_HUMAN_PHYSIOLOGY_NOTES,
+    slugs: SPI_HUMAN_PHYSIOLOGY_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Biology",
+    subjectRoute: "spi-biology",
+    subjectDisplay: "SPI Biology",
+    chapterSlug: "cell-biology",
+    chipLabel: "Cell Biology notes",
+    chapter: SPI_CELL_BIOLOGY_CHAPTER,
+    notes: SPI_CELL_BIOLOGY_NOTES,
+    slugs: SPI_CELL_BIOLOGY_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Biology",
+    subjectRoute: "spi-biology",
+    subjectDisplay: "SPI Biology",
+    chapterSlug: "plant-biology",
+    chipLabel: "Plant Biology notes",
+    chapter: SPI_PLANT_BIOLOGY_CHAPTER,
+    notes: SPI_PLANT_BIOLOGY_NOTES,
+    slugs: SPI_PLANT_BIOLOGY_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Biology",
+    subjectRoute: "spi-biology",
+    subjectDisplay: "SPI Biology",
+    chapterSlug: "reproduction",
+    chipLabel: "Reproduction notes",
+    chapter: SPI_REPRODUCTION_CHAPTER,
+    notes: SPI_REPRODUCTION_NOTES,
+    slugs: SPI_REPRODUCTION_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Biology",
+    subjectRoute: "spi-biology",
+    subjectDisplay: "SPI Biology",
+    chapterSlug: "microbiology-disease",
+    chipLabel: "Microbiology and Disease notes",
+    chapter: SPI_MICROBIOLOGY_DISEASE_CHAPTER,
+    notes: SPI_MICROBIOLOGY_DISEASE_NOTES,
+    slugs: SPI_MICROBIOLOGY_DISEASE_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Biology",
+    subjectRoute: "spi-biology",
+    subjectDisplay: "SPI Biology",
+    chapterSlug: "ecology-environment",
+    chipLabel: "Ecology and Environment notes",
+    chapter: SPI_ECOLOGY_ENVIRONMENT_CHAPTER,
+    notes: SPI_ECOLOGY_ENVIRONMENT_NOTES,
+    slugs: SPI_ECOLOGY_ENVIRONMENT_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Biology",
+    subjectRoute: "spi-biology",
+    subjectDisplay: "SPI Biology",
+    chapterSlug: "genetics-evolution",
+    chipLabel: "Genetics and Evolution notes",
+    chapter: SPI_GENETICS_EVOLUTION_CHAPTER,
+    notes: SPI_GENETICS_EVOLUTION_NOTES,
+    slugs: SPI_GENETICS_EVOLUTION_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Biology",
+    subjectRoute: "spi-biology",
+    subjectDisplay: "SPI Biology",
+    chapterSlug: "biodiversity-classification",
+    chipLabel: "Biodiversity and Classification notes",
+    chapter: SPI_BIODIVERSITY_CLASSIFICATION_CHAPTER,
+    notes: SPI_BIODIVERSITY_CLASSIFICATION_NOTES,
+    slugs: SPI_BIODIVERSITY_CLASSIFICATION_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Geography",
+    subjectRoute: "spi-geography",
+    subjectDisplay: "SPI Geography",
+    chapterSlug: "indian-economic-geography",
+    chipLabel: "Indian Geography notes",
+    chapter: SPI_INDIAN_ECONOMIC_GEOGRAPHY_CHAPTER,
+    notes: SPI_INDIAN_ECONOMIC_GEOGRAPHY_NOTES,
+    slugs: SPI_INDIAN_ECONOMIC_GEOGRAPHY_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Geography",
+    subjectRoute: "spi-geography",
+    subjectDisplay: "SPI Geography",
+    chapterSlug: "indian-physical-geography",
+    chipLabel: "Indian Geography notes",
+    chapter: SPI_INDIAN_PHYSICAL_GEOGRAPHY_CHAPTER,
+    notes: SPI_INDIAN_PHYSICAL_GEOGRAPHY_NOTES,
+    slugs: SPI_INDIAN_PHYSICAL_GEOGRAPHY_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Geography",
+    subjectRoute: "spi-geography",
+    subjectDisplay: "SPI Geography",
+    chapterSlug: "world-human-geography",
+    chipLabel: "World and Human Geography notes",
+    chapter: SPI_WORLD_HUMAN_GEOGRAPHY_CHAPTER,
+    notes: SPI_WORLD_HUMAN_GEOGRAPHY_NOTES,
+    slugs: SPI_WORLD_HUMAN_GEOGRAPHY_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Geography",
+    subjectRoute: "spi-geography",
+    subjectDisplay: "SPI Geography",
+    chapterSlug: "maharashtra-geography",
+    chipLabel: "Maharashtra Geography notes",
+    chapter: SPI_MAHARASHTRA_GEOGRAPHY_CHAPTER,
+    notes: SPI_MAHARASHTRA_GEOGRAPHY_NOTES,
+    slugs: SPI_MAHARASHTRA_GEOGRAPHY_SLUGS,
   },
 ];
 
