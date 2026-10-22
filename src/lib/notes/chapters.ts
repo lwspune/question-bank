@@ -1626,6 +1626,36 @@ import {
   SPI_MAHARASHTRA_GEOGRAPHY_NOTES,
   SPI_MAHARASHTRA_GEOGRAPHY_SLUGS,
 } from "@/app/notes/spi-geography/maharashtra-geography/_data";
+import {
+  SPI_MODERN_INDIA_CHAPTER,
+  SPI_MODERN_INDIA_NOTES,
+  SPI_MODERN_INDIA_SLUGS,
+} from "@/app/notes/spi-history/modern-india/_data";
+import {
+  SPI_WORLD_HISTORY_CHAPTER,
+  SPI_WORLD_HISTORY_NOTES,
+  SPI_WORLD_HISTORY_SLUGS,
+} from "@/app/notes/spi-history/world-history/_data";
+import {
+  SPI_RIGHTS_DPSP_LOCAL_CHAPTER,
+  SPI_RIGHTS_DPSP_LOCAL_NOTES,
+  SPI_RIGHTS_DPSP_LOCAL_SLUGS,
+} from "@/app/notes/spi-polity/rights-dpsp-local/_data";
+import {
+  SPI_WORLD_POLITY_CHAPTER,
+  SPI_WORLD_POLITY_NOTES,
+  SPI_WORLD_POLITY_SLUGS,
+} from "@/app/notes/spi-polity/world-polity/_data";
+import {
+  SPI_GOVERNMENT_STRUCTURE_CHAPTER,
+  SPI_GOVERNMENT_STRUCTURE_NOTES,
+  SPI_GOVERNMENT_STRUCTURE_SLUGS,
+} from "@/app/notes/spi-polity/government-structure/_data";
+import {
+  SPI_DEFENCE_CHAPTER,
+  SPI_DEFENCE_NOTES,
+  SPI_DEFENCE_SLUGS,
+} from "@/app/notes/spi-gk/defence/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -5210,6 +5240,72 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SPI_MAHARASHTRA_GEOGRAPHY_CHAPTER,
     notes: SPI_MAHARASHTRA_GEOGRAPHY_NOTES,
     slugs: SPI_MAHARASHTRA_GEOGRAPHY_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "History",
+    subjectRoute: "spi-history",
+    subjectDisplay: "SPI History",
+    chapterSlug: "modern-india",
+    chipLabel: "Modern India notes",
+    chapter: SPI_MODERN_INDIA_CHAPTER,
+    notes: SPI_MODERN_INDIA_NOTES,
+    slugs: SPI_MODERN_INDIA_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "History",
+    subjectRoute: "spi-history",
+    subjectDisplay: "SPI History",
+    chapterSlug: "world-history",
+    chipLabel: "World History notes",
+    chapter: SPI_WORLD_HISTORY_CHAPTER,
+    notes: SPI_WORLD_HISTORY_NOTES,
+    slugs: SPI_WORLD_HISTORY_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Polity",
+    subjectRoute: "spi-polity",
+    subjectDisplay: "SPI Polity",
+    chapterSlug: "rights-dpsp-local",
+    chipLabel: "Fundamental Rights, DPSP and Local Governance notes",
+    chapter: SPI_RIGHTS_DPSP_LOCAL_CHAPTER,
+    notes: SPI_RIGHTS_DPSP_LOCAL_NOTES,
+    slugs: SPI_RIGHTS_DPSP_LOCAL_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Polity",
+    subjectRoute: "spi-polity",
+    subjectDisplay: "SPI Polity",
+    chapterSlug: "world-polity",
+    chipLabel: "World Polity, Democracy and International Relations notes",
+    chapter: SPI_WORLD_POLITY_CHAPTER,
+    notes: SPI_WORLD_POLITY_NOTES,
+    slugs: SPI_WORLD_POLITY_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Polity",
+    subjectRoute: "spi-polity",
+    subjectDisplay: "SPI Polity",
+    chapterSlug: "government-structure",
+    chipLabel: "Government Structure notes",
+    chapter: SPI_GOVERNMENT_STRUCTURE_CHAPTER,
+    notes: SPI_GOVERNMENT_STRUCTURE_NOTES,
+    slugs: SPI_GOVERNMENT_STRUCTURE_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "General Knowledge",
+    subjectRoute: "spi-gk",
+    subjectDisplay: "SPI General Knowledge",
+    chapterSlug: "defence",
+    chipLabel: "Defence and Armed Forces notes",
+    chapter: SPI_DEFENCE_CHAPTER,
+    notes: SPI_DEFENCE_NOTES,
+    slugs: SPI_DEFENCE_SLUGS,
   },
 ];
 
