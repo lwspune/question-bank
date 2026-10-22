@@ -1466,6 +1466,31 @@ import {
   SPI_FILL_IN_THE_BLANKS_NOTES,
   SPI_FILL_IN_THE_BLANKS_SLUGS,
 } from "@/app/notes/spi-english/fill-in-the-blanks/_data";
+import {
+  SPI_READING_COMPREHENSION_CHAPTER,
+  SPI_READING_COMPREHENSION_NOTES,
+  SPI_READING_COMPREHENSION_SLUGS,
+} from "@/app/notes/spi-english/reading-comprehension/_data";
+import {
+  SPI_SENTENCE_REARRANGEMENT_CHAPTER,
+  SPI_SENTENCE_REARRANGEMENT_NOTES,
+  SPI_SENTENCE_REARRANGEMENT_SLUGS,
+} from "@/app/notes/spi-english/sentence-rearrangement/_data";
+import {
+  SPI_CLASSIFICATION_CHAPTER,
+  SPI_CLASSIFICATION_NOTES,
+  SPI_CLASSIFICATION_SLUGS,
+} from "@/app/notes/spi-reasoning/classification/_data";
+import {
+  SPI_SERIES_CHAPTER,
+  SPI_SERIES_NOTES,
+  SPI_SERIES_SLUGS,
+} from "@/app/notes/spi-reasoning/series/_data";
+import {
+  SPI_ORDER_RANKING_CHAPTER,
+  SPI_ORDER_RANKING_NOTES,
+  SPI_ORDER_RANKING_SLUGS,
+} from "@/app/notes/spi-reasoning/order-ranking/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -4698,6 +4723,61 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SPI_FILL_IN_THE_BLANKS_CHAPTER,
     notes: SPI_FILL_IN_THE_BLANKS_NOTES,
     slugs: SPI_FILL_IN_THE_BLANKS_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "English",
+    subjectRoute: "spi-english",
+    subjectDisplay: "SPI English",
+    chapterSlug: "reading-comprehension",
+    chipLabel: "Reading Comprehension notes",
+    chapter: SPI_READING_COMPREHENSION_CHAPTER,
+    notes: SPI_READING_COMPREHENSION_NOTES,
+    slugs: SPI_READING_COMPREHENSION_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "English",
+    subjectRoute: "spi-english",
+    subjectDisplay: "SPI English",
+    chapterSlug: "sentence-rearrangement",
+    chipLabel: "Sentence Rearrangement notes",
+    chapter: SPI_SENTENCE_REARRANGEMENT_CHAPTER,
+    notes: SPI_SENTENCE_REARRANGEMENT_NOTES,
+    slugs: SPI_SENTENCE_REARRANGEMENT_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Reasoning",
+    subjectRoute: "spi-reasoning",
+    subjectDisplay: "SPI Reasoning",
+    chapterSlug: "classification",
+    chipLabel: "Classification notes",
+    chapter: SPI_CLASSIFICATION_CHAPTER,
+    notes: SPI_CLASSIFICATION_NOTES,
+    slugs: SPI_CLASSIFICATION_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Reasoning",
+    subjectRoute: "spi-reasoning",
+    subjectDisplay: "SPI Reasoning",
+    chapterSlug: "series",
+    chipLabel: "Series notes",
+    chapter: SPI_SERIES_CHAPTER,
+    notes: SPI_SERIES_NOTES,
+    slugs: SPI_SERIES_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Reasoning",
+    subjectRoute: "spi-reasoning",
+    subjectDisplay: "SPI Reasoning",
+    chapterSlug: "order-ranking",
+    chipLabel: "Order, Ranking and Arrangement notes",
+    chapter: SPI_ORDER_RANKING_CHAPTER,
+    notes: SPI_ORDER_RANKING_NOTES,
+    slugs: SPI_ORDER_RANKING_SLUGS,
   },
 ];
 
