@@ -1721,6 +1721,11 @@ import {
   CDS_PO_CONSTITUTION_NOTES,
   CDS_PO_CONSTITUTION_SLUGS,
 } from "@/app/notes/cds-polity/indian-constitution/_data";
+import {
+  CDS_PO_GOVERNMENT_CHAPTER,
+  CDS_PO_GOVERNMENT_NOTES,
+  CDS_PO_GOVERNMENT_SLUGS,
+} from "@/app/notes/cds-polity/government-structure/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -5520,6 +5525,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: CDS_PO_CONSTITUTION_CHAPTER,
     notes: CDS_PO_CONSTITUTION_NOTES,
     slugs: CDS_PO_CONSTITUTION_SLUGS,
+  },
+  {
+    examName: "CDS",
+    subjectName: "Polity",
+    subjectRoute: "cds-polity",
+    subjectDisplay: "CDS Polity",
+    chapterSlug: "government-structure",
+    chipLabel: "Government Structure notes",
+    chapter: CDS_PO_GOVERNMENT_CHAPTER,
+    notes: CDS_PO_GOVERNMENT_NOTES,
+    slugs: CDS_PO_GOVERNMENT_SLUGS,
   },
 ];
 
