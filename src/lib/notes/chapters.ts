@@ -1351,6 +1351,26 @@ import {
   SPI_PROBABILITY_NOTES,
   SPI_PROBABILITY_SLUGS,
 } from "@/app/notes/spi-maths/probability/_data";
+import {
+  SPI_VOCABULARY_CHAPTER,
+  SPI_VOCABULARY_NOTES,
+  SPI_VOCABULARY_SLUGS,
+} from "@/app/notes/spi-english/vocabulary/_data";
+import {
+  SPI_IDIOMS_PHRASES_CHAPTER,
+  SPI_IDIOMS_PHRASES_NOTES,
+  SPI_IDIOMS_PHRASES_SLUGS,
+} from "@/app/notes/spi-english/idioms-phrases/_data";
+import {
+  SPI_STATISTICS_CHAPTER,
+  SPI_STATISTICS_NOTES,
+  SPI_STATISTICS_SLUGS,
+} from "@/app/notes/spi-maths/statistics/_data";
+import {
+  SPI_DATA_INTERPRETATION_CHAPTER,
+  SPI_DATA_INTERPRETATION_NOTES,
+  SPI_DATA_INTERPRETATION_SLUGS,
+} from "@/app/notes/spi-maths/data-interpretation/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -4330,6 +4350,50 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SPI_PROBABILITY_CHAPTER,
     notes: SPI_PROBABILITY_NOTES,
     slugs: SPI_PROBABILITY_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Mathematics",
+    subjectRoute: "spi-maths",
+    subjectDisplay: "SPI Mathematics",
+    chapterSlug: "statistics",
+    chipLabel: "Statistics notes",
+    chapter: SPI_STATISTICS_CHAPTER,
+    notes: SPI_STATISTICS_NOTES,
+    slugs: SPI_STATISTICS_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "Mathematics",
+    subjectRoute: "spi-maths",
+    subjectDisplay: "SPI Mathematics",
+    chapterSlug: "data-interpretation",
+    chipLabel: "Data Interpretation notes",
+    chapter: SPI_DATA_INTERPRETATION_CHAPTER,
+    notes: SPI_DATA_INTERPRETATION_NOTES,
+    slugs: SPI_DATA_INTERPRETATION_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "English",
+    subjectRoute: "spi-english",
+    subjectDisplay: "SPI English",
+    chapterSlug: "vocabulary",
+    chipLabel: "Vocabulary notes",
+    chapter: SPI_VOCABULARY_CHAPTER,
+    notes: SPI_VOCABULARY_NOTES,
+    slugs: SPI_VOCABULARY_SLUGS,
+  },
+  {
+    examName: "SPI",
+    subjectName: "English",
+    subjectRoute: "spi-english",
+    subjectDisplay: "SPI English",
+    chapterSlug: "idioms-phrases",
+    chipLabel: "Idioms and Phrases notes",
+    chapter: SPI_IDIOMS_PHRASES_CHAPTER,
+    notes: SPI_IDIOMS_PHRASES_NOTES,
+    slugs: SPI_IDIOMS_PHRASES_SLUGS,
   },
 ];
 
