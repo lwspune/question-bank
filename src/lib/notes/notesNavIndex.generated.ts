@@ -2194,5 +2194,432 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "SPI Mathematics",
     "chapterSlug": "probability",
     "subtopicCount": 5
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-maths",
+    "subjectDisplay": "SPI Mathematics",
+    "chapterSlug": "statistics",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-maths",
+    "subjectDisplay": "SPI Mathematics",
+    "chapterSlug": "data-interpretation",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-maths",
+    "subjectDisplay": "SPI Mathematics",
+    "chapterSlug": "mensuration-3d",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-maths",
+    "subjectDisplay": "SPI Mathematics",
+    "chapterSlug": "number-system",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-maths",
+    "subjectDisplay": "SPI Mathematics",
+    "chapterSlug": "trigonometry",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-maths",
+    "subjectDisplay": "SPI Mathematics",
+    "chapterSlug": "sequences",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-maths",
+    "subjectDisplay": "SPI Mathematics",
+    "chapterSlug": "linear-equations",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-maths",
+    "subjectDisplay": "SPI Mathematics",
+    "chapterSlug": "circles",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-maths",
+    "subjectDisplay": "SPI Mathematics",
+    "chapterSlug": "lines-angles",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-maths",
+    "subjectDisplay": "SPI Mathematics",
+    "chapterSlug": "quadrilaterals",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-maths",
+    "subjectDisplay": "SPI Mathematics",
+    "chapterSlug": "triangles",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-maths",
+    "subjectDisplay": "SPI Mathematics",
+    "chapterSlug": "coordinate-geometry",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-maths",
+    "subjectDisplay": "SPI Mathematics",
+    "chapterSlug": "mensuration-2d",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-maths",
+    "subjectDisplay": "SPI Mathematics",
+    "chapterSlug": "surds-indices",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-maths",
+    "subjectDisplay": "SPI Mathematics",
+    "chapterSlug": "heights-distances",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-maths",
+    "subjectDisplay": "SPI Mathematics",
+    "chapterSlug": "quadratic-equations",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-maths",
+    "subjectDisplay": "SPI Mathematics",
+    "chapterSlug": "polynomials",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-maths",
+    "subjectDisplay": "SPI Mathematics",
+    "chapterSlug": "algebraic-identities",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-english",
+    "subjectDisplay": "SPI English",
+    "chapterSlug": "vocabulary",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-english",
+    "subjectDisplay": "SPI English",
+    "chapterSlug": "idioms-phrases",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-english",
+    "subjectDisplay": "SPI English",
+    "chapterSlug": "grammar",
+    "subtopicCount": 8
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-english",
+    "subjectDisplay": "SPI English",
+    "chapterSlug": "spotting-errors",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-english",
+    "subjectDisplay": "SPI English",
+    "chapterSlug": "fill-in-the-blanks",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-english",
+    "subjectDisplay": "SPI English",
+    "chapterSlug": "reading-comprehension",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-english",
+    "subjectDisplay": "SPI English",
+    "chapterSlug": "sentence-rearrangement",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-reasoning",
+    "subjectDisplay": "SPI Reasoning",
+    "chapterSlug": "classification",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-reasoning",
+    "subjectDisplay": "SPI Reasoning",
+    "chapterSlug": "series",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-reasoning",
+    "subjectDisplay": "SPI Reasoning",
+    "chapterSlug": "order-ranking",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-physics",
+    "subjectDisplay": "SPI Physics",
+    "chapterSlug": "electricity-magnetism",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-physics",
+    "subjectDisplay": "SPI Physics",
+    "chapterSlug": "light-optics",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-physics",
+    "subjectDisplay": "SPI Physics",
+    "chapterSlug": "sound",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-physics",
+    "subjectDisplay": "SPI Physics",
+    "chapterSlug": "units-measurement",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-physics",
+    "subjectDisplay": "SPI Physics",
+    "chapterSlug": "energy-sources",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-physics",
+    "subjectDisplay": "SPI Physics",
+    "chapterSlug": "kinematics",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-physics",
+    "subjectDisplay": "SPI Physics",
+    "chapterSlug": "fluids-matter",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-physics",
+    "subjectDisplay": "SPI Physics",
+    "chapterSlug": "gravitation",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-physics",
+    "subjectDisplay": "SPI Physics",
+    "chapterSlug": "laws-of-motion",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-chemistry",
+    "subjectDisplay": "SPI Chemistry",
+    "chapterSlug": "mole-concept",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-chemistry",
+    "subjectDisplay": "SPI Chemistry",
+    "chapterSlug": "atomic-structure",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-chemistry",
+    "subjectDisplay": "SPI Chemistry",
+    "chapterSlug": "carbon-compounds",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-chemistry",
+    "subjectDisplay": "SPI Chemistry",
+    "chapterSlug": "acids-bases-salts",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-chemistry",
+    "subjectDisplay": "SPI Chemistry",
+    "chapterSlug": "chemical-reactions",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-chemistry",
+    "subjectDisplay": "SPI Chemistry",
+    "chapterSlug": "metals-non-metals",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-biology",
+    "subjectDisplay": "SPI Biology",
+    "chapterSlug": "human-physiology",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-biology",
+    "subjectDisplay": "SPI Biology",
+    "chapterSlug": "cell-biology",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-biology",
+    "subjectDisplay": "SPI Biology",
+    "chapterSlug": "plant-biology",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-biology",
+    "subjectDisplay": "SPI Biology",
+    "chapterSlug": "reproduction",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-biology",
+    "subjectDisplay": "SPI Biology",
+    "chapterSlug": "microbiology-disease",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-biology",
+    "subjectDisplay": "SPI Biology",
+    "chapterSlug": "ecology-environment",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-biology",
+    "subjectDisplay": "SPI Biology",
+    "chapterSlug": "genetics-evolution",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-biology",
+    "subjectDisplay": "SPI Biology",
+    "chapterSlug": "biodiversity-classification",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-geography",
+    "subjectDisplay": "SPI Geography",
+    "chapterSlug": "indian-economic-geography",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-geography",
+    "subjectDisplay": "SPI Geography",
+    "chapterSlug": "indian-physical-geography",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-geography",
+    "subjectDisplay": "SPI Geography",
+    "chapterSlug": "world-human-geography",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-geography",
+    "subjectDisplay": "SPI Geography",
+    "chapterSlug": "maharashtra-geography",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-history",
+    "subjectDisplay": "SPI History",
+    "chapterSlug": "modern-india",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-history",
+    "subjectDisplay": "SPI History",
+    "chapterSlug": "world-history",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-polity",
+    "subjectDisplay": "SPI Polity",
+    "chapterSlug": "rights-dpsp-local",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-polity",
+    "subjectDisplay": "SPI Polity",
+    "chapterSlug": "world-polity",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-polity",
+    "subjectDisplay": "SPI Polity",
+    "chapterSlug": "government-structure",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-gk",
+    "subjectDisplay": "SPI General Knowledge",
+    "chapterSlug": "defence",
+    "subtopicCount": 3
   }
 ];
