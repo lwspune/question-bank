@@ -200,6 +200,15 @@ describe("NAV_FACTS", () => {
     expect(all).toContain("Build a practice test");
   });
 
+  // 2026-10-21: a student whose ₹99 payment failed asked V how to contact us, and V said it had
+  // no contact to share, then sent her to /pricing, which has none. /about has the contact form.
+  it("names /about as the way to reach the team about payment or account problems", () => {
+    const line = NAV_FACTS.find((f) => f.startsWith("/about:"));
+    expect(line).toBeDefined();
+    expect(line).toMatch(/contact/i);
+    expect(line).toMatch(/payment/i);
+  });
+
   it("names the student's own progress pages, so V can link them (2026-10-16)", () => {
     const all = NAV_FACTS.join(" ");
     expect(all).toContain("/performance");
@@ -347,6 +356,38 @@ describe("buildSystemPrompt", () => {
     expect(p).toMatch(/Hindi|Hinglish/);
   });
 
+  // 2026-10-21: "My 99 rupees for premium pass already gone". V took three replies to say anything
+  // useful and never gave a way to reach us. Its first reply now gives the contact page and what to send.
+  describe("payment problems", () => {
+    const p = buildSystemPrompt(base);
+    const rule = p.split("\n").find((l) => /paid|payment/i.test(l) && l.includes("/about")) ?? "";
+
+    it("has a rule sending payment trouble to /about", () => {
+      expect(rule).not.toBe("");
+    });
+
+    it("asks for the payment ID or UPI reference and the email they paid with", () => {
+      expect(rule).toMatch(/payment ID/i);
+      expect(rule).toMatch(/UPI/);
+      expect(rule).toMatch(/email/i);
+    });
+
+    it("says a failed payment comes back from the bank on its own", () => {
+      expect(rule).toMatch(/bank/i);
+      expect(rule).toMatch(/working days/i);
+    });
+
+    it("does not ask which exam they study first", () => {
+      expect(rule).toMatch(/not ask (which|what) exam/i);
+    });
+
+    it("treats a greeting on /pricing as about the pass, not as 'which exam?'", () => {
+      const greeting = p.split("\n").find((l) => /greetings/i.test(l)) ?? "";
+      expect(greeting).toContain("/pricing");
+      expect(greeting).toMatch(/pass/i);
+    });
+  });
+
   it("states the free limits when given", () => {
     const p = buildSystemPrompt({ ...base, free: ["Answers: 30 a day free when signed in."] });
     expect(p).toContain("Answers: 30 a day free when signed in.");
@@ -440,9 +481,26 @@ describe("buildSystemPrompt", () => {
     expect(p).toMatch(/tap Report on the question/);
     expect(p).toMatch(/similar_question/);
     expect(p).toMatch(/find_question/);
+    // 2026-10-21 (owner): "A similar question is below to try" was said after every explanation.
+    expect(p).not.toMatch(/similar one is below to try/);
+    expect(p).not.toMatch(/shown under your reply/);
+    expect(p).toMatch(/Answer only what they asked/);
+    expect(p).toMatch(/never offer one yourself/);
     expect(p).toMatch(/up to 8 short lines/);
     // The chat window draws \( ... \) as maths; a template string eats a single backslash.
     expect(p).toContain("Write maths inside \\( \\).");
+  });
+
+  // 2026-10-21 (owner): V said "I need to correct my earlier replies" about answers on ANOTHER question.
+  it("tells V a remembered message may be about another question, and never to apologise for it", () => {
+    const p = buildSystemPrompt(base);
+    expect(p).toMatch(/\[About question <id>\]/);
+    expect(p).toMatch(/answer about the one named at the end unless they point back/i);
+    expect(p).toMatch(/Never correct, take back or apologise for an earlier reply about another question/);
+  });
+
+  it("tells V a reply to an earlier message is about that message", () => {
+    expect(buildSystemPrompt(base)).toMatch(/replying to an earlier exchange[^\n]*is about that exchange/i);
   });
 
   it("lets V take the exam from the student's profile, which is not a guess", () => {

@@ -6,6 +6,9 @@
  * whatever writes it: marks above a question's maximum, a total above the
  * paper's, a second free submission on one day. A student reads only their
  * own sheets and grades, and can question a grade but never answer it.
+ *
+ * Migration 0175 adds a cause to every question that lost marks, and the marks
+ * drawn on the student's pages, saved with the grade in the same commit.
  */
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
@@ -48,13 +51,25 @@ describe.skipIf(!HAS_ENV)("answer sheets (migration 0153)", () => {
   }
 
   const grades = (over: Record<string, unknown>[] = []) => [
-    { position: 1, printedNumber: "1", questionId: null, maxMarks: 2, outcome: "scored", awarded: 1.5, earned: "Method.", missing: "Units." },
-    { position: 2, printedNumber: "1 OR", questionId: null, maxMarks: 2, outcome: "not_attempted", awarded: null, earned: null, missing: null },
-    { position: 3, printedNumber: "2", questionId: null, maxMarks: 3, outcome: "scored", awarded: 3, earned: "All steps.", missing: null },
+    { position: 1, printedNumber: "1", questionId: null, maxMarks: 2, outcome: "scored", awarded: 1.5, earned: "Method.", missing: "Units.", cause: "careless", topic: null },
+    { position: 2, printedNumber: "1 OR", questionId: null, maxMarks: 2, outcome: "not_attempted", awarded: null, earned: null, missing: null, cause: null, topic: null },
+    { position: 3, printedNumber: "2", questionId: null, maxMarks: 3, outcome: "scored", awarded: 3, earned: "All steps.", missing: null, cause: null, topic: null },
     ...over,
   ];
-  const commit = (id: string, g = grades()) =>
-    admin.rpc("answer_grade_commit", { p_submission: id, p_grades: g, p_went_well: "Neat working.", p_next_steps: "Units." });
+  const mark = (position: number, kind: string, over: Record<string, unknown> = {}) => ({
+    page: 1, position, kind, x: 50, y: 50, w: null, h: null, text: null, toX: null, toY: null, ...over,
+  });
+  const marks = () => [mark(1, "cross"), mark(1, "score"), mark(3, "tick", { page: 2 }), mark(3, "score", { page: 2 })];
+  const commit = (id: string, g = grades(), m: unknown[] = marks(), pages = 2, turns: number[] = Array(pages).fill(0)) =>
+    admin.rpc("answer_grade_commit", {
+      p_submission: id,
+      p_grades: g,
+      p_went_well: "Neat working.",
+      p_next_steps: "Units.",
+      p_marks: m.map((x, i) => ({ seq: i + 1, ...(x as object) })),
+      p_marked_pages: pages,
+      p_page_turns: turns,
+    });
 
   beforeAll(async () => {
     const url = process.env.NEXT_PUBLIC_SUPABASE_URL!;
@@ -165,6 +180,35 @@ describe.skipIf(!HAS_ENV)("answer sheets (migration 0153)", () => {
     await admin.from("answer_submissions").delete().eq("id", id);
   });
 
+  it("names a cause on every question that lost marks, and only there", async () => {
+    const [a] = students;
+    const id = await submitted(a.id);
+    const row = (over: Record<string, unknown>) => ({
+      submission_id: id,
+      position: 1,
+      printed_number: "1",
+      max_marks: 2,
+      outcome: "scored",
+      awarded: 1,
+      cause: "careless",
+      ...over,
+    });
+    const code = async (over: Record<string, unknown>) => {
+      const r = await admin.from("answer_grades").insert(row(over));
+      if (!r.error) await admin.from("answer_grades").delete().eq("submission_id", id);
+      return r.error?.code ?? null;
+    };
+    expect(await code({})).toBeNull();
+    expect(await code({ cause: null })).toBe("23514");
+    expect(await code({ cause: "lazy" })).toBe("23514");
+    expect(await code({ awarded: 2 })).toBe("23514"); // full marks, yet a cause
+    expect(await code({ outcome: "not_attempted", awarded: null })).toBe("23514");
+    expect(await code({ cause: "concept" })).toBe("23514"); // needs its topic
+    expect(await code({ cause: "concept", topic: "Ohm's law" })).toBeNull();
+    expect(await code({ cause: "careless", topic: "x".repeat(61) })).toBe("23514");
+    await admin.from("answer_submissions").delete().eq("id", id);
+  });
+
   it("commits a grade in one step: rows, total from the rows, status graded", async () => {
     const [a, b] = students;
     const id = await submitted(a.id);
@@ -179,12 +223,53 @@ describe.skipIf(!HAS_ENV)("answer sheets (migration 0153)", () => {
     expect((await a.client.from("answer_grades").select("position").eq("submission_id", id)).data).toHaveLength(3);
     expect((await b.client.from("answer_grades").select("position").eq("submission_id", id)).data).toHaveLength(0);
 
-    // A regrade (after a question raised) replaces the rows.
+    // The marks on the pages, saved with the grade; the student reads their own.
+    const { data: saved } = await admin.from("answer_submissions").select("marked_pages, page_turns").eq("id", id).single();
+    expect(saved!.marked_pages).toBe(2);
+    expect(saved!.page_turns).toEqual([0, 0]);
+    expect((await a.client.from("answer_page_marks").select("seq").eq("submission_id", id)).data).toHaveLength(4);
+    expect((await b.client.from("answer_page_marks").select("seq").eq("submission_id", id)).data).toHaveLength(0);
+
+    // A regrade (after a question raised) replaces the rows and the marks.
     const regrade = grades();
-    regrade[0] = { ...regrade[0], awarded: 2, missing: null };
-    expect((await commit(id, regrade)).error).toBeNull();
+    regrade[0] = { ...regrade[0], awarded: 2, missing: null, cause: null };
+    const remarks = [mark(1, "tick"), mark(1, "score"), mark(3, "score", { page: 2 })];
+    // Page 2 was turned a quarter clockwise this time: a later pull turns it again.
+    expect((await commit(id, regrade, remarks, 2, [0, 1])).error).toBeNull();
+    const { data: turned } = await admin.from("answer_submissions").select("page_turns").eq("id", id).single();
+    expect(turned!.page_turns).toEqual([0, 1]);
     const { data: after } = await admin.from("answer_submissions").select("total_awarded").eq("id", id).single();
     expect(Number(after!.total_awarded)).toBe(5);
+    expect((await admin.from("answer_page_marks").select("kind").eq("submission_id", id).order("seq")).data?.map((r) => r.kind)).toEqual([
+      "tick",
+      "score",
+      "score",
+    ]);
+    await admin.from("answer_submissions").delete().eq("id", id);
+  });
+
+  it("refuses marks that disagree with the grade or the pages", async () => {
+    const [a] = students;
+    const id = await submitted(a.id);
+    const refused = async (m: unknown[], pages = 2) => (await commit(id, grades(), m, pages)).error !== null;
+    // A scored question with no score mark, or two; a score on one not attempted.
+    expect(await refused(marks().filter((_m, i) => i !== 1))).toBe(true);
+    expect(await refused([...marks(), mark(1, "score")])).toBe(true);
+    expect(await refused([...marks(), mark(2, "score")])).toBe(true);
+    // A mark on a page past the prepared pages, or for a question not graded.
+    expect(await refused(marks(), 1)).toBe(true);
+    expect(await refused([...marks(), mark(9, "tick")])).toBe(true);
+    // One quarter-turn count (0 to 3) per marked page.
+    expect((await commit(id, grades(), marks(), 2, [0])).error).not.toBeNull();
+    expect((await commit(id, grades(), marks(), 2, [0, 4])).error).not.toBeNull();
+    // Each kind carries only its own fields.
+    expect(await refused([...marks(), mark(1, "circle")])).toBe(true);
+    expect(await refused([...marks(), mark(1, "note")])).toBe(true);
+    expect(await refused([...marks(), mark(1, "cross", { text: "x" })])).toBe(true);
+    const { data: still } = await admin.from("answer_submissions").select("status").eq("id", id).single();
+    expect(still!.status).toBe("submitted");
+    // And a sound set passes.
+    expect(await refused([...marks(), mark(1, "circle", { w: 10, h: 4 }), mark(1, "note", { text: "Unit", toX: 40, toY: 52 })])).toBe(false);
     await admin.from("answer_submissions").delete().eq("id", id);
   });
 
@@ -193,7 +278,8 @@ describe.skipIf(!HAS_ENV)("answer sheets (migration 0153)", () => {
     const id = await submitted(a.id);
     const over = grades();
     over[1] = { ...over[1], outcome: "scored", awarded: 2, earned: "x", missing: null };
-    const { error } = await commit(id, over);
+    const { error } = await commit(id, over, [...marks(), mark(2, "score")]);
+    expect(error?.message).toMatch(/over the paper's maximum/);
     expect(error).not.toBeNull();
     const { data: still } = await admin.from("answer_submissions").select("status").eq("id", id).single();
     expect(still!.status).toBe("submitted");

@@ -11,7 +11,7 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { getExamBySlug } from "@/lib/exam/examContext";
 import { istDayKey } from "@/lib/email/dueNudge";
-import { ANSWER_SHEETS_BUCKET, scanPath, type StartRequest } from "./upload";
+import { ANSWER_SHEETS_BUCKET, markedPagePath, reportPdfPath, scanPath, type StartRequest } from "./upload";
 
 export type PublishedPaperRef = { id: string; title: string };
 
@@ -129,4 +129,36 @@ export async function finishSubmission(admin: SupabaseClient, userId: string, su
   if (upErr?.code === "23505") return "limit";
   if (upErr) throw new Error(`answer sheet submit: ${upErr.message}`);
   return "ok";
+}
+
+/** How long a marked page or report link works: the report page is rendered per request. */
+const MARKED_LINK_SECONDS = 60 * 60;
+
+export type MarkedFiles = { pages: string[]; pdf: string | null };
+
+/**
+ * Short-lived links to a checked sheet's marked pages and report PDF
+ * (migration 0175). The bucket has no read policies, so the student cannot
+ * read their own folder: the caller has already found the sheet with the
+ * STUDENT'S session (row-level security) and passes the session user's id,
+ * so a path can only ever be that student's.
+ */
+export async function signMarkedFiles(
+  admin: SupabaseClient,
+  userId: string,
+  submissionId: string,
+  pageCount: number
+): Promise<MarkedFiles> {
+  const bucket = admin.storage.from(ANSWER_SHEETS_BUCKET);
+  const paths = Array.from({ length: pageCount }, (_, i) => markedPagePath(userId, submissionId, i));
+  const [pages, pdf] = await Promise.all([
+    bucket.createSignedUrls(paths, MARKED_LINK_SECONDS),
+    bucket.createSignedUrl(reportPdfPath(userId, submissionId), MARKED_LINK_SECONDS, { download: "marked-answer-sheet.pdf" }),
+  ]);
+  if (pages.error) console.error(`marked pages ${submissionId}: ${pages.error.message}`);
+  if (pdf.error) console.error(`marked report ${submissionId}: ${pdf.error.message}`);
+  return {
+    pages: (pages.data ?? []).map((p) => p.signedUrl).filter((u): u is string => !!u),
+    pdf: pdf.data?.signedUrl ?? null,
+  };
 }

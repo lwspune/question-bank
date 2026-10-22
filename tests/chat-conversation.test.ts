@@ -12,6 +12,11 @@ import {
   conversationJsonl,
   unreadFollowups,
   toolCallsForStorage,
+  currentSession,
+  findReplyTarget,
+  replyContext,
+  quoteSnippet,
+  SESSION_IDLE_MS,
   type ConversationRow,
 } from "@/lib/chat/conversation";
 
@@ -110,6 +115,108 @@ describe("modelHistory", () => {
   it("sorts by time whatever order the rows arrive in", () => {
     const rows = [typed("2026-10-15T10:02:00Z", "b", "B"), typed("2026-10-15T10:01:00Z", "a", "A")];
     expect(modelHistory(rows).map((m) => m.content)).toEqual(["a", "A", "b", "B"]);
+  });
+});
+
+// 2026-10-21 (owner): V apologised for replies about a DIFFERENT question, because nothing told it the
+// remembered exchanges were about another one. A chat is a session that ends after an hour with no
+// messages; V remembers only that session, and each remembered message names the question it was about.
+describe("sessions (an hour with no messages ends one)", () => {
+  const T = Date.parse("2026-10-21T10:00:00Z");
+  const at = (min: number) => new Date(T + min * 60_000).toISOString();
+
+  it("is an hour", () => {
+    expect(SESSION_IDLE_MS).toBe(60 * 60 * 1000);
+  });
+
+  it("keeps the exchanges after the last gap of more than an hour", () => {
+    const rows = [typed(at(0), "old", "O"), typed(at(61), "a", "A"), typed(at(100), "b", "B")];
+    expect(currentSession(rows).map((r) => r.message)).toEqual(["a", "b"]);
+  });
+
+  it("keeps a gap of exactly an hour inside the session", () => {
+    const rows = [typed(at(0), "a", "A"), typed(at(60), "b", "B")];
+    expect(currentSession(rows).map((r) => r.message)).toEqual(["a", "b"]);
+  });
+
+  it("is over when the newest message is more than an hour before now", () => {
+    const rows = [typed(at(0), "a", "A")];
+    expect(currentSession(rows, T + 61 * 60_000)).toEqual([]);
+    expect(currentSession(rows, T + 59 * 60_000).map((r) => r.message)).toEqual(["a"]);
+  });
+
+  it("ignores opens and rows with no reply when finding the gaps", () => {
+    const open: ConversationRow = { ...faq(at(30), "x", "x"), eventType: "launcher_open", questionId: null, reply: null, replySource: null };
+    const rows = [typed(at(0), "a", "A"), open, typed(at(90), "b", "B")];
+    expect(currentSession(rows).map((r) => r.message)).toEqual(["b"]);
+  });
+});
+
+describe("modelHistory labels each message with its question", () => {
+  const Q1 = "11111111-1111-4111-8111-111111111111";
+
+  it("starts a message about a question with that question's id", () => {
+    const rows = [typed("2026-10-21T10:00:00Z", "Explain this question.", "Add them.", { askedQuestionId: Q1 })];
+    expect(modelHistory(rows)[0]).toEqual({ role: "user", content: `[About question ${Q1}]\nExplain this question.` });
+  });
+
+  it("leaves a message about no question as it was", () => {
+    expect(modelHistory([typed("2026-10-21T10:00:00Z", "hi", "Hi!")])[0]).toEqual({ role: "user", content: "hi" });
+  });
+});
+
+describe("replies to an earlier message", () => {
+  const Q1 = "11111111-1111-4111-8111-111111111111";
+  const rows = [
+    typed("2026-10-21T10:00:00Z", "Explain this question.", "Use the direction cosine rule.", { id: "r1", askedQuestionId: Q1 }),
+    typed("2026-10-21T10:05:00Z", "hi", "Hi!", { id: "r2" }),
+  ];
+
+  it("finds the exchange replied to among the rows given, and nothing else", () => {
+    expect(findReplyTarget(rows, "r1")?.reply).toBe("Use the direction cosine rule.");
+    expect(findReplyTarget(rows, "nope")).toBeNull();
+    expect(findReplyTarget(rows, null)).toBeNull();
+  });
+
+  it("does not take a row with no reply as a target", () => {
+    const noReply = typed("2026-10-21T10:06:00Z", "x", "", { id: "r3", reply: null, replySource: null });
+    expect(findReplyTarget([noReply], "r3")).toBeNull();
+  });
+
+  it("tells V what was asked, what it replied and which question it was about", () => {
+    const c = replyContext(rows[0]);
+    expect(c).toContain("replying to an earlier exchange");
+    expect(c).toContain(`about question ${Q1}`);
+    expect(c).toContain("Explain this question.");
+    expect(c).toContain("Use the direction cosine rule.");
+  });
+
+  it("shows the quote above the student's message when the chat is rebuilt", () => {
+    const reply = typed("2026-10-21T10:07:00Z", "why 60?", "Because cos is 1/2.", { id: "r4", replyToId: "r1" });
+    const turns = historyTurns([...rows, reply]);
+    expect(turns.at(-2)).toEqual({ role: "user", text: "why 60?", quote: "Use the direction cosine rule." });
+  });
+
+  it("drops the quote when the message replied to is not in the rows", () => {
+    const reply = typed("2026-10-21T10:07:00Z", "why 60?", "Because.", { id: "r4", replyToId: "gone" });
+    expect(historyTurns([reply])[0]).toEqual({ role: "user", text: "why 60?" });
+  });
+});
+
+describe("quoteSnippet", () => {
+  it("takes the first line", () => {
+    expect(quoteSnippet("\nFirst line.\nSecond line.")).toBe("First line.");
+  });
+
+  it("cuts a long line with an ellipsis", () => {
+    const s = quoteSnippet("x".repeat(300));
+    expect(s.length).toBeLessThanOrEqual(141);
+    expect(s.endsWith("…")).toBe(true);
+  });
+
+  it("never cuts inside maths", () => {
+    const s = quoteSnippet("a".repeat(120) + " \\(\\log_7 x + \\log_7 y\\) and more text after it");
+    expect(s).not.toContain("\\(");
   });
 });
 

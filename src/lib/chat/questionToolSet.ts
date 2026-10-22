@@ -99,7 +99,7 @@ export function questionTools(d: QuestionToolDeps): VTool[] {
     {
       name: "similar_question",
       description:
-        "Give the student another question from the same subtopic to try. It is shown to them as a card below your reply, which they answer there.",
+        "Give the student another question from the same subtopic to try, when they ask for one. It is shown to them as a card, which they answer there.",
       input_schema: ID_SCHEMA,
       run: async (input) => {
         const q = await load(input);
@@ -107,7 +107,7 @@ export function questionTools(d: QuestionToolDeps): VTool[] {
         const id = await d.loadSimilar(q);
         if (!id) return "There is no other question to try from this subtopic right now. Suggest the chapter's questions page instead.";
         d.onSimilar(id);
-        return `A similar question from ${q.subtopic ?? q.chapter} is shown to the student as a card below your reply. Tell them to try it there. You do not know its answer, so give none.`;
+        return `A similar question from ${q.subtopic ?? q.chapter} is shown to the student as a card. Do not describe it: a few words such as "Here is one to try." are enough. You do not know its answer, so give none.`;
       },
     },
     {

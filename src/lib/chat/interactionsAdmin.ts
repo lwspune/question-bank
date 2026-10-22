@@ -24,6 +24,9 @@ export type RecordChatInteraction = InConversation &
         eventType: "typed_question";
         message: string;
         userId: string | null;
+        /** Migration 0174: the question the student had tapped Ask V on, and the earlier message this replies to. */
+        askedQuestionId?: string | null;
+        replyToId?: string | null;
         reply?: {
           text: string;
           /** ai_failed (migration 0162): the fixed reply, after an AI answer failed part-way; carries what it spent. */
@@ -73,6 +76,8 @@ export async function recordChatInteraction(
               ? input.step
               : null,
         message: input.eventType === "typed_question" ? input.message : null,
+        asked_question_id: input.eventType === "typed_question" ? (input.askedQuestionId ?? null) : null,
+        reply_to_id: input.eventType === "typed_question" ? (input.replyToId ?? null) : null,
         user_id: input.userId,
         conversation_id: input.conversationId ?? null,
         page_path: input.pagePath ?? null,
@@ -129,7 +134,7 @@ export async function listChatInteractions(limit = 5000): Promise<ChatInteractio
 }
 
 const CONVERSATION_COLUMNS =
-  "id, event_type, question_id, created_at, message, reply, reply_source, reply_links, feedback, conversation_id, page_path, user_id, seen_at, tool_calls";
+  "id, event_type, question_id, created_at, message, reply, reply_source, reply_links, feedback, conversation_id, page_path, user_id, seen_at, tool_calls, asked_question_id, reply_to_id";
 
 type RawConversationRow = {
   id: string;
@@ -146,6 +151,8 @@ type RawConversationRow = {
   user_id: string | null;
   seen_at: string | null;
   tool_calls: ToolCallLog[] | null;
+  asked_question_id: string | null;
+  reply_to_id: string | null;
 };
 
 function toConversationRow(r: RawConversationRow): ConversationRow & { userId: string | null } {
@@ -164,6 +171,8 @@ function toConversationRow(r: RawConversationRow): ConversationRow & { userId: s
     signedIn: r.user_id != null,
     seenAt: r.seen_at,
     toolCalls: r.tool_calls,
+    askedQuestionId: r.asked_question_id,
+    replyToId: r.reply_to_id,
     userId: r.user_id,
   };
 }

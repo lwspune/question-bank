@@ -25,6 +25,7 @@
  * What it cannot show: a REAL student's data. A screen behind ONE tap (a dialog,
  * a sheet) can be shown with `--click="<button text>"`, and a few taps deep with
  * `--click="A >> B"` (each matched by its text or its aria-label).
+ * `--with-pass` (with --as-student) makes that student a Premium Pass holder.
  * `--as-student=<exam,...>` renders the signed-in view of a cached page (the
  * header and any island that reads /api/me/header) for a stand-in student;
  * pages that read the student's own rows still render anonymously. Say so
@@ -129,11 +130,11 @@ async function capture(cdp: Cdp, c: Capture, waitMs: number, fullPage: boolean, 
  * student: the one identity request never leaves the browser, and the stand-in
  * cookie fails any server-side check, which then treats the page as anonymous.
  */
-async function actAsStudent(cdp: Cdp, exams: string[], origins: string[]) {
+async function actAsStudent(cdp: Cdp, exams: string[], origins: string[], hasPass: boolean) {
   for (const url of origins) {
     await cdp.send("Network.setCookie", { name: "sb-stub-auth-token", value: "stub", url, path: "/" });
   }
-  const body = Buffer.from(JSON.stringify(stubHeaderSession(exams))).toString("base64");
+  const body = Buffer.from(JSON.stringify(stubHeaderSession(exams, { hasPass }))).toString("base64");
   cdp.on("Fetch.requestPaused", (p) => {
     void cdp.send("Fetch.fulfillRequest", {
       requestId: p.requestId,
@@ -154,7 +155,7 @@ async function main() {
   const profile = mkdtempSync(join(tmpdir(), "ui-shots-"));
   const { proc, cdp } = await launch(profile);
   try {
-    if (args.asStudent) await actAsStudent(cdp, args.asStudent, Object.values(args.targets));
+    if (args.asStudent) await actAsStudent(cdp, args.asStudent, Object.values(args.targets), args.withPass);
     if (args.storage) {
       const entries = JSON.parse(readFileSync(args.storage, "utf8")) as Record<string, unknown>;
       // Without Page.enable the script is accepted but never runs (found 2026-10-18).

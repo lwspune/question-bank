@@ -545,6 +545,110 @@ it("keeps the conversation: stores its id and page, returns the row id, and give
     expect(data).toEqual([{ conversation_id: conversationId, page_path: "/browse", reply_links: ["/mock"] }]);
   });
 
+  // 2026-10-21 (owner): V apologised for answers about ANOTHER question. V now remembers only the current
+  // session (an hour with no messages ends one), each message names its question, and a student can reply
+  // to an earlier message.
+  describe("sessions, question labels and replies (0174)", () => {
+    const ASKED = "33333333-3333-4333-8333-333333333333";
+
+    async function seed(conversationId: string, message: string, minutesAgo: number, extra: Record<string, unknown> = {}) {
+      const { data, error } = await admin
+        .from("chat_interactions")
+        .insert({
+          event_type: "typed_question",
+          message,
+          reply: `reply to ${message}`,
+          reply_source: "ai",
+          conversation_id: conversationId,
+          created_at: new Date(Date.now() - minutesAgo * 60_000).toISOString(),
+          ...extra,
+        })
+        .select("id")
+        .single();
+      if (error) throw new Error(error.message);
+      return data.id as string;
+    }
+
+    it("remembers only the current session, each message labelled with its question, and stores the question", async () => {
+      await setSettings({ ai_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });
+      askV.mockReset();
+      askV.mockResolvedValue({ ok: true, reply: "ok", tokensIn: 1, tokensOut: 1 });
+      const conversationId = randomUUID();
+      await seed(conversationId, `route-${RUN}-ses old`, 150);
+      await seed(conversationId, `route-${RUN}-ses recent`, 20, { asked_question_id: ASKED });
+      const { POST } = await import("@/app/api/chat/typed/route");
+      await POST(post({ message: `route-${RUN}-ses now`, conversationId, question: { id: ASKED } }));
+      expect(askV.mock.calls[0][0].history).toEqual([
+        { role: "user", content: `[About question ${ASKED}]\nroute-${RUN}-ses recent` },
+        { role: "assistant", content: `reply to route-${RUN}-ses recent` },
+      ]);
+      const { data } = await admin
+        .from("chat_interactions")
+        .select("asked_question_id")
+        .eq("message", `route-${RUN}-ses now`);
+      // Explanations are off here, so the tapped question is dropped and nothing is labelled.
+      expect(data).toEqual([{ asked_question_id: null }]);
+    });
+
+    it("remembers nothing once the session has been quiet for over an hour", async () => {
+      await setSettings({ ai_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });
+      askV.mockReset();
+      askV.mockResolvedValue({ ok: true, reply: "ok", tokensIn: 1, tokensOut: 1 });
+      const conversationId = randomUUID();
+      await seed(conversationId, `route-${RUN}-quiet a`, 70);
+      const { POST } = await import("@/app/api/chat/typed/route");
+      await POST(post({ message: `route-${RUN}-quiet b`, conversationId }));
+      expect(askV.mock.calls[0][0].history).toEqual([]);
+    });
+
+    it("stores the tapped question while explanations are on", async () => {
+      await setSettings({ ai_enabled: true, explain_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });
+      askV.mockReset();
+      askV.mockResolvedValue({ ok: true, reply: "ok", tokensIn: 1, tokensOut: 1 });
+      const { POST } = await import("@/app/api/chat/typed/route");
+      await POST(post({ message: `route-${RUN}-lbl tap`, conversationId: randomUUID(), question: { id: askedId } }));
+      const { data } = await admin.from("chat_interactions").select("asked_question_id").eq("message", `route-${RUN}-lbl tap`);
+      expect(data).toEqual([{ asked_question_id: askedId }]);
+    });
+
+    it("tells V which earlier exchange a reply is about, and stores the link", async () => {
+      await setSettings({ ai_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });
+      askV.mockReset();
+      askV.mockResolvedValue({ ok: true, reply: "ok", tokensIn: 1, tokensOut: 1 });
+      const conversationId = randomUUID();
+      const target = await seed(conversationId, `route-${RUN}-rep first`, 30, { asked_question_id: ASKED });
+      await seed(conversationId, `route-${RUN}-rep second`, 20);
+      await seed(conversationId, `route-${RUN}-rep third`, 10);
+      const { POST } = await import("@/app/api/chat/typed/route");
+      await POST(post({ message: `route-${RUN}-rep why`, conversationId, replyTo: target }));
+      const sent = askV.mock.calls[0][0].message as string;
+      expect(sent).toContain(`replying to an earlier exchange about question ${ASKED}`);
+      expect(sent).toContain(`reply to route-${RUN}-rep first`);
+      expect(sent.endsWith(`route-${RUN}-rep why`)).toBe(true);
+      const { data } = await admin.from("chat_interactions").select("message, reply_to_id").eq("message", `route-${RUN}-rep why`);
+      expect(data).toEqual([{ message: `route-${RUN}-rep why`, reply_to_id: target }]);
+    });
+
+    it("ignores a reply to a message from another conversation or an earlier session", async () => {
+      await setSettings({ ai_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });
+      askV.mockReset();
+      askV.mockResolvedValue({ ok: true, reply: "ok", tokensIn: 1, tokensOut: 1 });
+      const conversationId = randomUUID();
+      const elsewhere = await seed(randomUUID(), `route-${RUN}-xrep other`, 5);
+      const stale = await seed(conversationId, `route-${RUN}-xrep stale`, 200);
+      await seed(conversationId, `route-${RUN}-xrep recent`, 5);
+      const { POST } = await import("@/app/api/chat/typed/route");
+      await POST(post({ message: `route-${RUN}-xrep a`, conversationId, replyTo: elsewhere }));
+      await POST(post({ message: `route-${RUN}-xrep b`, conversationId, replyTo: stale }));
+      for (const call of askV.mock.calls) expect(call[0].message).not.toContain("replying to an earlier exchange");
+      const { data } = await admin
+        .from("chat_interactions")
+        .select("reply_to_id")
+        .in("message", [`route-${RUN}-xrep a`, `route-${RUN}-xrep b`]);
+      expect(data).toEqual([{ reply_to_id: null }, { reply_to_id: null }]);
+    });
+  });
+
   it("ignores a conversation id that is not a uuid, and a page that is not a site path", async () => {
     await setSettings({ ai_enabled: false, per_person_per_hour: 15, ai_answers_per_day: 300 });
     const { POST } = await import("@/app/api/chat/typed/route");

@@ -58,7 +58,7 @@ export function buildGradingQueueEmail(s: QueueSummary): BuiltEmail {
     s.overdue > 0 ? `${plural(s.overdue, "sheet is", "sheets are")} past ${OVERDUE_HOURS} hours: grade those first.` : null,
     s.openQuestions > 0 ? `${plural(s.openQuestions, "student has", "students have")} questioned a grade.` : null,
     "",
-    "To grade: npm run grading:pull, then open a fresh session per sheet (scripts/grading/GRADING.md).",
+    "To grade: npm run grading:pull, then grade by scripts/grading/GRADING.md (preview the marks, then commit).",
   ].filter((l): l is string => l !== null);
   const text = lines.join("\n");
   const html = `<div style="font-family:-apple-system,Segoe UI,Arial,sans-serif;max-width:520px;margin:0 auto;color:${INK};line-height:1.55">
@@ -112,7 +112,7 @@ export function buildAnswerReportEmail(input: AnswerReportEmailInput): BuiltEmai
   const subject = `Your answer sheet is checked: ${input.paperTitle}`;
   const lead = `Your answers to ${input.paperTitle} are checked. You scored ${marks}.`;
   const body =
-    "The report shows what went well, what to work on next, and for every question what earned marks and what was missing.";
+    "The report shows what went well, what to work on next, where your marks went, and for every question what earned marks and what was missing. It also has your pages with our marks on them, to look at or download.";
   const text = [
     who ? `Hi ${who},` : "Hi,",
     "",

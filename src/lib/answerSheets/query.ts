@@ -1,12 +1,18 @@
 /**
- * Loaders for /me/answer-sheets (migration 0153). They take the STUDENT'S
- * client: row-level security is what limits them to the student's own sheets,
- * so a wrong id simply finds nothing.
+ * Loaders for /me/answer-sheets (migration 0153). The `Own` loaders take the
+ * STUDENT'S client: row-level security is what limits them to the student's
+ * own sheets, so a wrong id simply finds nothing.
+ *
+ * The `Student` loaders are for a superadmin reading one student's sheets
+ * (the performance page and its report, 2026-10-22). The tables only let a
+ * student read their own rows, so these take the SERVICE-ROLE client and
+ * filter by the student's id themselves; the caller must have checked for a
+ * superadmin first.
  */
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { slugify } from "@/lib/board/query";
 import { getExamByName } from "@/lib/exam/examContext";
-import type { GradeOutcome } from "./grade";
+import type { GradeCause, GradeOutcome } from "./grade";
 import type { ReportGrade } from "./report";
 
 export type SubmissionStatus = "uploading" | "submitted" | "graded" | "rejected";
@@ -22,6 +28,10 @@ export type OwnSubmission = {
   wentWell: string | null;
   nextSteps: string | null;
   rejectedReason: string | null;
+  /** Pages with our marks on them (0175); null on a sheet graded before. */
+  markedPages: number | null;
+  /** The scans and marked pages were deleted 30 days after checking. */
+  scansDeleted: boolean;
   paper: {
     title: string;
     examId: string;
@@ -51,11 +61,13 @@ type RawSubmission = {
   went_well: string | null;
   next_steps: string | null;
   rejected_reason: string | null;
+  marked_pages: number | null;
+  scans_deleted_at: string | null;
   board_papers: RawPaper | RawPaper[] | null;
 };
 
 const COLUMNS =
-  "id, status, submitted_at, graded_at, regraded_at, total_awarded, total_max, went_well, next_steps, rejected_reason, board_papers(title, exam_id, subject_id, group_slug, exams(name), subjects(name))";
+  "id, status, submitted_at, graded_at, regraded_at, total_awarded, total_max, went_well, next_steps, rejected_reason, marked_pages, scans_deleted_at, board_papers(title, exam_id, subject_id, group_slug, exams(name), subjects(name))";
 
 function one<T>(v: T | T[] | null): T | null {
   return Array.isArray(v) ? v[0] ?? null : v;
@@ -77,6 +89,8 @@ function toSubmission(r: RawSubmission): OwnSubmission {
     wentWell: r.went_well,
     nextSteps: r.next_steps,
     rejectedReason: r.rejected_reason,
+    markedPages: r.marked_pages,
+    scansDeleted: r.scans_deleted_at !== null,
     paper: p
       ? {
           title: p.title,
@@ -90,12 +104,18 @@ function toSubmission(r: RawSubmission): OwnSubmission {
 
 /** The student's sent sheets, newest first (an unfinished upload is not listed). */
 export async function listOwnSubmissions(db: SupabaseClient): Promise<OwnSubmission[]> {
-  const { data, error } = await db
-    .from("answer_submissions")
-    .select(COLUMNS)
-    .neq("status", "uploading")
-    .order("created_at", { ascending: false })
-    .limit(200);
+  return listSubmissions(db, null);
+}
+
+/** One student's sent sheets, for a superadmin. `admin` is the service-role client. */
+export async function listStudentSubmissions(admin: SupabaseClient, userId: string): Promise<OwnSubmission[]> {
+  return listSubmissions(admin, userId);
+}
+
+async function listSubmissions(db: SupabaseClient, userId: string | null): Promise<OwnSubmission[]> {
+  let q = db.from("answer_submissions").select(COLUMNS).neq("status", "uploading");
+  if (userId) q = q.eq("user_id", userId);
+  const { data, error } = await q.order("created_at", { ascending: false }).limit(200);
   if (error) throw new Error(`answer sheets: ${error.message}`);
   return ((data ?? []) as unknown as RawSubmission[]).map(toSubmission);
 }
@@ -109,7 +129,21 @@ export type OwnReport = OwnSubmission & {
 };
 
 export async function getOwnReport(db: SupabaseClient, id: string): Promise<OwnReport | null> {
-  const { data, error } = await db.from("answer_submissions").select(COLUMNS).eq("id", id).maybeSingle();
+  return loadReport(db, id, null);
+}
+
+/**
+ * One student's sheet, for a superadmin. Found by the sheet id AND the
+ * student's id, so a sheet id under the wrong student's URL finds nothing.
+ */
+export async function getStudentReport(admin: SupabaseClient, userId: string, id: string): Promise<OwnReport | null> {
+  return loadReport(admin, id, userId);
+}
+
+async function loadReport(db: SupabaseClient, id: string, userId: string | null): Promise<OwnReport | null> {
+  let q = db.from("answer_submissions").select(COLUMNS).eq("id", id);
+  if (userId) q = q.eq("user_id", userId);
+  const { data, error } = await q.maybeSingle();
   if (error) throw new Error(`answer sheet: ${error.message}`);
   if (!data) return null;
   const sub = toSubmission(data as unknown as RawSubmission);
@@ -117,7 +151,7 @@ export async function getOwnReport(db: SupabaseClient, id: string): Promise<OwnR
   const [{ data: grades, error: gErr }, { data: disputes, error: dErr }] = await Promise.all([
     db
       .from("answer_grades")
-      .select("position, printed_number, question_id, max_marks, outcome, awarded, earned, missing")
+      .select("position, printed_number, question_id, max_marks, outcome, awarded, earned, missing, cause, topic")
       .eq("submission_id", id)
       .order("position"),
     db.from("answer_grade_disputes").select("position, message, resolution").eq("submission_id", id),
@@ -134,6 +168,8 @@ export async function getOwnReport(db: SupabaseClient, id: string): Promise<OwnR
     awarded: g.awarded === null ? null : Number(g.awarded),
     earned: (g.earned as string | null) ?? null,
     missing: (g.missing as string | null) ?? null,
+    cause: (g.cause as GradeCause | null) ?? null,
+    topic: (g.topic as string | null) ?? null,
   }));
 
   const chapters = new Map<string, { id: string; name: string }>();

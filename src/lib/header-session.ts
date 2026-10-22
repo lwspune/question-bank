@@ -5,6 +5,7 @@
  */
 import type { ExamSlug } from "@/lib/exam/examContext";
 import { isStage, sanitizeTargetExams, type Stage } from "@/lib/profile/onboarding";
+import { hasActiveScope, SCOPE_MOCKS, type Entitlement } from "@/lib/entitlements/access";
 
 /** Everything the header renders about the viewer, resolved in one pass. */
 export type HeaderSession = {
@@ -17,6 +18,8 @@ export type HeaderSession = {
   isStaff: boolean;
   /** Platform superadmin (`platform_admins`, migration 0056). */
   isSuperadmin: boolean;
+  /** Holds an active Premium Pass. Drives the diamond beside the logo. */
+  hasPass: boolean;
   /** Self-reported stage — drives the exam feed (EXAM_TIER_SPEC.md §3.5). */
   stage: Stage | null;
   /** Target exams in stored order, sanitised. */
@@ -36,6 +39,16 @@ export function profileFieldsFromRow(
     stage: isStage(stage) ? stage : null,
     targetExams: sanitizeTargetExams(row?.target_exams),
   };
+}
+
+/**
+ * Whether the header shows the Premium Pass diamond. The same rule the paywall
+ * applies (an active grant covering the mocks scope, any source), so the mark
+ * can never claim a pass the paywall would refuse. Staff are not marked: they
+ * download through their institute, not a pass, and already carry the org chip.
+ */
+export function hasPassFromEntitlements(rows: Entitlement[], nowMs: number): boolean {
+  return hasActiveScope(rows, SCOPE_MOCKS, nowMs);
 }
 
 /**

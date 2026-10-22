@@ -82,3 +82,21 @@ export function validateStartRequest(body: unknown): { ok: true; value: StartReq
 export function scanPath(userId: string, submissionId: string, index: number, ext: string): string {
   return `${userId}/${submissionId}/${String(index + 1).padStart(2, "0")}.${ext}`;
 }
+
+/** A scan's file name, as listing the student's folder returns it; not the `marked` folder. */
+export function isScanFile(name: string): boolean {
+  return /^\d{2}\.(jpg|jpeg|png|webp|pdf)$/i.test(name);
+}
+
+/**
+ * `<user>/<submission>/marked/01.jpg`: a page with the grader's marks drawn on
+ * it, exactly as previewed (migration 0175). Purged with the scans.
+ */
+export function markedPagePath(userId: string, submissionId: string, index: number): string {
+  return `${userId}/${submissionId}/marked/${String(index + 1).padStart(2, "0")}.jpg`;
+}
+
+/** The report PDF the student downloads, beside the marked pages. */
+export function reportPdfPath(userId: string, submissionId: string): string {
+  return `${userId}/${submissionId}/marked/report.pdf`;
+}

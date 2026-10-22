@@ -8,7 +8,8 @@ import {
   type PageIdentity,
 } from "@/lib/auth-identity";
 
-import { profileFieldsFromRow, type HeaderSession } from "@/lib/header-session";
+import { hasPassFromEntitlements, profileFieldsFromRow, type HeaderSession } from "@/lib/header-session";
+import { loadEntitlements } from "@/lib/entitlements/query";
 
 export type { PageIdentity, HeaderSession };
 
@@ -125,7 +126,7 @@ export async function getHeaderSession(): Promise<HeaderSession | null> {
   } = await supabase.auth.getUser();
   if (!user || !user.email) return null;
 
-  const [{ data: membership }, superadmin, { data: profile }] = await Promise.all([
+  const [{ data: membership }, superadmin, { data: profile }, entitlements] = await Promise.all([
     supabase
       .from("org_members")
       .select("role, org:organizations(id, name)")
@@ -139,6 +140,9 @@ export async function getHeaderSession(): Promise<HeaderSession | null> {
       .select("stage, target_exams")
       .eq("user_id", user.id)
       .maybeSingle(),
+    // Own-row read (entitlements RLS, migration 0026) for the Premium diamond.
+    // Returns [] on any error, so a failed read hides the mark, never the header.
+    loadEntitlements(supabase, user.id),
   ]);
 
   const rawOrg = membership?.org;
@@ -153,6 +157,7 @@ export async function getHeaderSession(): Promise<HeaderSession | null> {
     orgName: org?.name ?? null,
     isStaff,
     isSuperadmin: superadmin,
+    hasPass: hasPassFromEntitlements(entitlements, Date.now()),
     ...profileFieldsFromRow(profile),
   };
 }

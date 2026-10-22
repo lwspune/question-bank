@@ -32,6 +32,11 @@ export function questionForRequest(d: AskVDetail): { id: string; chose: string |
   return d.notes ? { notes: d.notes } : { id: d.questionId, chose: d.chose };
 }
 
+/** What the window sends for an Ask V tap. */
+export function askVMessage(chose: string | null): string {
+  return chose ? `I picked (${chose}). Explain this question.` : "Explain this question.";
+}
+
 export function askVAbout(detail: AskVDetail): void {
   if (typeof window === "undefined") return;
   window.dispatchEvent(new CustomEvent<AskVDetail>(ASK_V_EVENT, { detail }));

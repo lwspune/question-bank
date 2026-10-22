@@ -8,7 +8,7 @@ import { loadBoardQuestions } from "@/lib/questionPapers/query";
 import type { BoardQuestion } from "@/lib/board/query";
 import type { PaperItemRow } from "@/lib/questionPapers/listing";
 import type { BriefPaper } from "./brief";
-import { ANSWER_SHEETS_BUCKET } from "./upload";
+import { ANSWER_SHEETS_BUCKET, isScanFile } from "./upload";
 import type { GradeFile, GradeOutcome } from "./grade";
 import { getExamByName } from "@/lib/exam/examContext";
 import { slugify } from "@/lib/board/query";
@@ -58,7 +58,11 @@ export async function readSheet(admin: SupabaseClient, id: string): Promise<Queu
   };
 }
 
-/** A graded sheet's saved grade, in grade.json form, or null if it has none. */
+/**
+ * A graded sheet's saved grade, in grade.json form, or null if it has none.
+ * Its page marks come back as they were placed (migration 0175), so a regrade
+ * moves or fixes marks rather than placing them all again.
+ */
 export async function readSavedGrade(admin: SupabaseClient, id: string): Promise<GradeFile | null> {
   const { data: sub, error } = await admin
     .from("answer_submissions")
@@ -67,12 +71,20 @@ export async function readSavedGrade(admin: SupabaseClient, id: string): Promise
     .single();
   if (error) throw new Error(`saved grade ${id}: ${error.message}`);
   if (sub.status !== "graded") return null;
-  const { data: rows, error: gErr } = await admin
-    .from("answer_grades")
-    .select("position, max_marks, outcome, awarded, earned, missing")
-    .eq("submission_id", id)
-    .order("position");
+  const [{ data: rows, error: gErr }, { data: marks, error: mErr }] = await Promise.all([
+    admin
+      .from("answer_grades")
+      .select("position, max_marks, outcome, awarded, earned, missing, cause, topic")
+      .eq("submission_id", id)
+      .order("position"),
+    admin
+      .from("answer_page_marks")
+      .select("position, page, kind, x, y, w, h, text, to_x, to_y")
+      .eq("submission_id", id)
+      .order("seq"),
+  ]);
   if (gErr) throw new Error(`saved grade rows ${id}: ${gErr.message}`);
+  if (mErr) throw new Error(`saved page marks ${id}: ${mErr.message}`);
   return {
     submissionId: id,
     wentWell: (sub.went_well as string) ?? "",
@@ -84,6 +96,18 @@ export async function readSavedGrade(admin: SupabaseClient, id: string): Promise
       awarded: g.awarded === null ? null : Number(g.awarded),
       earned: (g.earned as string | null) ?? "",
       missing: (g.missing as string | null) ?? "",
+      cause: (g.cause as string | null) ?? "",
+      topic: (g.topic as string | null) ?? "",
+    })),
+    marks: (marks ?? []).map((m) => ({
+      page: m.page as number,
+      position: m.position as number,
+      kind: m.kind as string,
+      x: Number(m.x),
+      y: Number(m.y),
+      ...(m.kind === "circle" ? { w: Number(m.w), h: Number(m.h) } : {}),
+      ...(m.kind === "note" ? { text: m.text as string } : {}),
+      ...(m.to_x !== null ? { to: { x: Number(m.to_x), y: Number(m.to_y) } } : {}),
     })),
   };
 }
@@ -96,12 +120,16 @@ export type SheetMeta = {
   paperUrl: string | null;
   totalAwarded: number | null;
   totalMax: number | null;
+  /** The scans (and marked pages) were purged 30 days after checking. */
+  scansDeleted: boolean;
+  /** Each page's quarter-turns at the last commit (0175), for a regrade pull; null before. */
+  pageTurns: number[] | null;
 };
 
 export async function readSheetMeta(admin: SupabaseClient, id: string): Promise<SheetMeta> {
   const { data, error } = await admin
     .from("answer_submissions")
-    .select("status, user_id, total_awarded, total_max, board_papers(title, group_slug, exams(name), subjects(name))")
+    .select("status, user_id, total_awarded, total_max, scans_deleted_at, page_turns, board_papers(title, group_slug, exams(name), subjects(name))")
     .eq("id", id)
     .single();
   if (error) throw new Error(`answer sheet ${id}: ${error.message}`);
@@ -117,6 +145,8 @@ export async function readSheetMeta(admin: SupabaseClient, id: string): Promise<
       p && examSlug ? `${SITE_URL}/question-papers/${examSlug}/${slugify(one(p.subjects)?.name ?? "")}/${p.group_slug}` : null,
     totalAwarded: data.total_awarded === null ? null : Number(data.total_awarded),
     totalMax: data.total_max === null ? null : Number(data.total_max),
+    scansDeleted: data.scans_deleted_at !== null,
+    pageTurns: (data.page_turns as number[] | null) ?? null,
   };
 }
 
@@ -194,7 +224,8 @@ export async function downloadScans(
   });
   if (error) throw new Error(`scans list: ${error.message}`);
   const out: { name: string; bytes: Buffer }[] = [];
-  for (const f of files ?? []) {
+  // The listing also returns the `marked` folder once a sheet is graded.
+  for (const f of (files ?? []).filter((x) => isScanFile(x.name))) {
     const { data, error: dlErr } = await admin.storage.from(ANSWER_SHEETS_BUCKET).download(`${folder}/${f.name}`);
     if (dlErr || !data) throw new Error(`scan ${f.name}: ${dlErr?.message ?? "empty"}`);
     out.push({ name: f.name, bytes: Buffer.from(await data.arrayBuffer()) });
@@ -202,13 +233,26 @@ export async function downloadScans(
   return out;
 }
 
-/** Delete a sheet's scans from storage (the grade stays). */
+/**
+ * Delete a sheet's scans and its marked pages and report from storage (the
+ * grade and its marks stay). Storage has no recursive delete: the `marked`
+ * folder is listed and emptied on its own.
+ */
 export async function removeScans(admin: SupabaseClient, userId: string, submissionId: string): Promise<number> {
   const folder = `${userId}/${submissionId}`;
-  const { data } = await admin.storage.from(ANSWER_SHEETS_BUCKET).list(folder, { limit: 100 });
-  const paths = (data ?? []).map((f) => `${folder}/${f.name}`);
+  const bucket = admin.storage.from(ANSWER_SHEETS_BUCKET);
+  const [{ data: top, error: tErr }, { data: marked, error: mErr }] = await Promise.all([
+    bucket.list(folder, { limit: 100 }),
+    bucket.list(`${folder}/marked`, { limit: 100 }),
+  ]);
+  if (tErr) throw new Error(`scans list: ${tErr.message}`);
+  if (mErr) throw new Error(`marked pages list: ${mErr.message}`);
+  const paths = [
+    ...(top ?? []).filter((f) => isScanFile(f.name)).map((f) => `${folder}/${f.name}`),
+    ...(marked ?? []).filter((f) => f.id !== null).map((f) => `${folder}/marked/${f.name}`),
+  ];
   if (paths.length > 0) {
-    const { error } = await admin.storage.from(ANSWER_SHEETS_BUCKET).remove(paths);
+    const { error } = await bucket.remove(paths);
     if (error) throw new Error(`scans remove: ${error.message}`);
   }
   return paths.length;

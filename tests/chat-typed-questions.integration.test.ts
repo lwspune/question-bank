@@ -199,6 +199,72 @@ describe.skipIf(!HAS_ENV)("chat_interactions: typed questions", () => {
     expect(ok.error).toBeNull();
   });
 
+  // 0174 (2026-10-21): which question a message was about, and the earlier message it replies to.
+  it("stores the question a message was about and the message it replies to, through the writer", async () => {
+    const conversationId = randomUUID();
+    const asked = randomUUID();
+    const first = await recordChatInteraction(admin, {
+      eventType: "typed_question",
+      message: `${tag} r-first`,
+      userId: null,
+      conversationId,
+      askedQuestionId: asked,
+      reply: { text: "Use the rule.", source: "ai" },
+    });
+    const second = await recordChatInteraction(admin, {
+      eventType: "typed_question",
+      message: `${tag} r-second`,
+      userId: null,
+      conversationId,
+      replyToId: first,
+      reply: { text: "Because.", source: "ai" },
+    });
+    expect(second).not.toBeNull();
+    const { data } = await admin
+      .from("chat_interactions")
+      .select("message, asked_question_id, reply_to_id")
+      .like("message", `${tag} r-%`)
+      .order("created_at");
+    expect(data).toEqual([
+      { message: `${tag} r-first`, asked_question_id: asked, reply_to_id: null },
+      { message: `${tag} r-second`, asked_question_id: null, reply_to_id: first },
+    ]);
+  });
+
+  it("refuses a reply to a message in another conversation, or to one V never answered (0174)", async () => {
+    const conversationId = randomUUID();
+    const { data: answered } = await admin
+      .from("chat_interactions")
+      .insert({ event_type: "typed_question", message: `${tag} t1`, conversation_id: conversationId, reply: "Hi", reply_source: "ai" })
+      .select("id")
+      .single();
+    const { data: unanswered } = await admin
+      .from("chat_interactions")
+      .insert({ event_type: "typed_question", message: `${tag} t2`, conversation_id: conversationId })
+      .select("id")
+      .single();
+    const base = { event_type: "typed_question", message: `${tag} t3` };
+    const otherConversation = await admin
+      .from("chat_interactions")
+      .insert({ ...base, conversation_id: randomUUID(), reply_to_id: answered!.id });
+    const noConversation = await admin.from("chat_interactions").insert({ ...base, reply_to_id: answered!.id });
+    const notAnswered = await admin
+      .from("chat_interactions")
+      .insert({ ...base, conversation_id: conversationId, reply_to_id: unanswered!.id });
+    const ok = await admin
+      .from("chat_interactions")
+      .insert({ ...base, conversation_id: conversationId, reply_to_id: answered!.id });
+    expect(otherConversation.error).not.toBeNull();
+    expect(noConversation.error).not.toBeNull();
+    expect(notAnswered.error).not.toBeNull();
+    expect(ok.error).toBeNull();
+  });
+
+  it("keeps the question and the reply link to typed questions (0174)", async () => {
+    const open = await admin.from("chat_interactions").insert({ event_type: "launcher_open", asked_question_id: randomUUID() });
+    expect(open.error).not.toBeNull();
+  });
+
   it("keeps 'seen' for late answers only (0160)", async () => {
     const { error } = await admin
       .from("chat_interactions")

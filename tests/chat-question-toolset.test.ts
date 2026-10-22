@@ -96,6 +96,16 @@ describe("explain_question", () => {
   it("ignores a pick that is not an option letter", async () => {
     expect(await deps().tools.explain_question.run({ question_id: ID, chose: "Z" })).not.toContain("The student chose");
   });
+
+  // 2026-10-22 (owner): "lets not give 2nd qs ... just answer the asked qs and nothing else".
+  // An explanation never brings a similar question; one comes only from similar_question, when asked.
+  it("explains without attaching a similar question", async () => {
+    const { tools, seen } = deps();
+    const out = await tools.explain_question.run({ question_id: ID });
+    expect(out).toContain("Correct answer: (B) 4");
+    expect(seen.similar).toEqual([]);
+    expect(out).not.toMatch(/similar/i);
+  });
 });
 
 describe("similar_question", () => {
@@ -105,6 +115,8 @@ describe("similar_question", () => {
     expect(seen.similar).toEqual([OTHER]);
     expect(out).toMatch(/shown to the student as a card/i);
     expect(out).not.toMatch(/answer is/i);
+    expect(out).toMatch(/do not describe it/i);
+    expect(out).not.toMatch(/below/i);
   });
 
   it("says so when there is no other question to try", async () => {

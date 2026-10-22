@@ -170,3 +170,43 @@ describe("the projection renders on exactly the sanctioned routes", () => {
     expect(importers.sort()).toEqual([OWN_PERF, STAFF_PERF].sort());
   });
 });
+
+/**
+ * Answer sheets on the performance pages (2026-10-22). The staff performance
+ * route stays ungated in the PAGE (teachers open it, the database decides
+ * which students), but answer sheets are superadmin-only and the tables only
+ * let a student read their own rows. So the staff card reads with the service
+ * role, and its gate lives in the card itself, right above that read: a
+ * teacher gets nothing rendered and nothing read.
+ */
+const STAFF_SHEETS = join(ROOT, "[id]", "performance", "StaffAnswerSheets.tsx");
+const STAFF_REPORT = join(ROOT, "[id]", "answer-sheets", "[sheetId]", "page.tsx");
+
+describe("answer sheets on the performance pages", () => {
+  it("the staff card checks for a superadmin BEFORE it reads with the service role", () => {
+    const src = code(STAFF_SHEETS);
+    const guard = src.indexOf("getSessionSuperadmin(");
+    const read = src.indexOf("createSupabaseAdminClient(");
+    expect(guard).toBeGreaterThan(-1);
+    expect(read).toBeGreaterThan(guard);
+  });
+
+  it("the staff performance route renders that card and reads nothing with the service role itself", () => {
+    const src = code(STAFF_PERF);
+    expect(src).toContain("StaffAnswerSheets");
+    expect(src).not.toContain("createSupabaseAdminClient");
+  });
+
+  it("the staff report finds the sheet as THAT student's, by the student id in the URL", () => {
+    const src = code(STAFF_REPORT);
+    expect(src).toMatch(/getStudentReport\([^)]*params\.id/);
+    expect(src).toMatch(/signMarkedFiles\([^)]*params\.id/);
+  });
+
+  it("the student's own page reads only their own sheets, through their own session", () => {
+    const src = code(OWN_PERF);
+    expect(src).toContain("listOwnSubmissions");
+    expect(src).not.toContain("listStudentSubmissions");
+    expect(src).not.toContain("createSupabaseAdminClient");
+  });
+});

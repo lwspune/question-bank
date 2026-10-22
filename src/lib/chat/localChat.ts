@@ -1,7 +1,8 @@
 /**
  * The chat window's copy of the conversation on this device (2026-10-15). It
- * survives a reload or a later visit, keeps the newest 30 messages and goes
- * after 7 days without use. The conversation itself is stored server-side
+ * survives a reload or a later visit within the session, keeps the newest 30
+ * messages and goes after an hour with no messages (SESSION_IDLE_MS, owner
+ * 2026-10-21; it was 7 days). The conversation itself is stored server-side
  * (migration 0159); this copy only saves re-fetching it, and for a signed-in
  * student the account's newer conversation wins (preferNewer).
  *
@@ -9,10 +10,9 @@
  * can be blocked (private mode, full disk) and V must work without it.
  * Spec: tests/chat-local.test.ts.
  */
-import { HISTORY_MESSAGES, isConversationId, type HistoryTurn } from "./conversation";
+import { HISTORY_MESSAGES, SESSION_IDLE_MS, isConversationId, type HistoryTurn } from "./conversation";
 
 export const LOCAL_CHAT_KEY = "v-chat";
-const STALE_MS = 7 * 24 * 60 * 60 * 1000;
 
 export type StoredChat = {
   v: 1;
@@ -52,7 +52,7 @@ export function trimForStorage(c: StoredChat): StoredChat {
 }
 
 export function isStale(c: StoredChat, now: number): boolean {
-  return now - c.lastAt > STALE_MS;
+  return now - c.lastAt > SESSION_IDLE_MS;
 }
 
 /** The newer of the device's copy and the account's latest conversation. */

@@ -77,6 +77,11 @@ describe("buildAnswerReportEmail", () => {
     expect(e.text).toContain("https://www.pyqvault.com/me/answer-sheets/abc");
   });
 
+  it("says the marked pages are on the report", () => {
+    expect(e.text).toMatch(/your pages with our marks on them/);
+    expect(e.html).toMatch(/your pages with our marks on them/);
+  });
+
   it("escapes the paper title in HTML", () => {
     expect(e.html).toContain("Physics &lt;2025&gt;");
     expect(e.html).not.toContain("<2025>");

@@ -36,7 +36,7 @@ export default async function AnswerSheetsQueuePage() {
           <h1 className="text-2xl font-semibold tracking-tight">Answer sheets</h1>
           <p className="mt-1 text-sm text-muted-foreground">
             Board papers students wrote and sent for checking. Students were promised a report within 48 hours. To
-            grade: <code>npm run grading:pull</code>, then one fresh session per sheet (scripts/grading/GRADING.md).
+            grade: <code>npm run grading:pull</code>, then grade by scripts/grading/GRADING.md (preview the marks, then commit).
           </p>
         </header>
         {loadError || !data ? (

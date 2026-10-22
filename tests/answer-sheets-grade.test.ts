@@ -34,10 +34,10 @@ const good = (over: Partial<GradeFile> = {}): GradeFile => ({
   wentWell: "Clear working in Q2.",
   nextSteps: "Write the formula before substituting.",
   grades: [
-    { position: 1, max: 1, outcome: "scored", awarded: 1, earned: "Correct answer.", missing: "" },
-    { position: 2, max: 3, outcome: "scored", awarded: 2, earned: "Method right.", missing: "Units missing." },
-    { position: 3, max: 3, outcome: "not_attempted", awarded: null, earned: "", missing: "" },
-    { position: 4, max: 5, outcome: "scored", awarded: 0, earned: "", missing: "Wrong law applied." },
+    { position: 1, max: 1, outcome: "scored", awarded: 1, earned: "Correct answer.", missing: "", cause: "", topic: "" },
+    { position: 2, max: 3, outcome: "scored", awarded: 2, earned: "Method right.", missing: "Units missing.", cause: "careless", topic: "" },
+    { position: 3, max: 3, outcome: "not_attempted", awarded: null, earned: "", missing: "", cause: "", topic: "" },
+    { position: 4, max: 5, outcome: "scored", awarded: 0, earned: "", missing: "Wrong law applied.", cause: "concept", topic: "Ohm's law" },
   ],
   ...over,
 });
@@ -57,6 +57,49 @@ describe("validateGrade", () => {
     expect(r.totalAwarded).toBe(3);
     expect(r.rows.map((x) => x.position)).toEqual([1, 2, 3, 4]);
     expect(r.rows[1]).toMatchObject({ printedNumber: "2", questionId: "q-2", maxMarks: 3, awarded: 2 });
+    expect(r.rows.map((x) => [x.cause, x.topic])).toEqual([
+      [null, null],
+      ["careless", null],
+      [null, null],
+      ["concept", "Ohm's law"],
+    ]);
+  });
+
+  it("requires one cause from the list on every question that lost marks", () => {
+    const none = check(withGrade(2, { cause: "" }));
+    expect(none.ok).toBe(false);
+    if (!none.ok) expect(none.errors.join("\n")).toMatch(/Q\.2.*cause/);
+    expect(check(withGrade(2, { cause: "lazy" })).ok).toBe(false);
+    for (const cause of ["careless", "misread", "mcq"]) expect(check(withGrade(2, { cause })).ok).toBe(true);
+  });
+
+  it("requires a topic for a concept or incomplete cause, at most 60 characters", () => {
+    expect(check(withGrade(4, { topic: "" })).ok).toBe(false);
+    expect(check(withGrade(4, { cause: "incomplete", topic: "" })).ok).toBe(false);
+    expect(check(withGrade(4, { cause: "incomplete", topic: "Steps of the derivation" })).ok).toBe(true);
+    expect(check(withGrade(4, { topic: "x".repeat(61) })).ok).toBe(false);
+    // Optional for the others.
+    expect(check(withGrade(2, { topic: "Units" })).ok).toBe(true);
+  });
+
+  it("refuses a cause or topic where no marks were lost", () => {
+    expect(check(withGrade(1, { cause: "careless" })).ok).toBe(false);
+    expect(check(withGrade(1, { topic: "Units" })).ok).toBe(false);
+    expect(check(withGrade(3, { cause: "concept", topic: "Ohm's law" })).ok).toBe(false);
+  });
+
+  it("refuses `missing` on full marks: a red line beside full marks reads as lost marks", () => {
+    const r = check(withGrade(1, { missing: "Could be neater." }));
+    expect(r.ok).toBe(false);
+    if (!r.ok) expect(r.errors.join("\n")).toMatch(/Q\.1.*full marks/);
+  });
+
+  it("reads a file written before causes existed as having none", () => {
+    const f = good();
+    const old = { ...f, grades: f.grades.map(({ cause: _c, topic: _t, ...g }) => g) };
+    const r = check(old);
+    expect(r.ok).toBe(false);
+    if (!r.ok) expect(r.errors.join("\n")).toMatch(/cause/);
   });
 
   it("refuses marks above the question's maximum", () => {
@@ -114,7 +157,7 @@ describe("validateGrade", () => {
   it("requires feedback: what was missing when marks were lost, what earned marks when any were given", () => {
     expect(check(withGrade(2, { missing: "" })).ok).toBe(false);
     expect(check(withGrade(2, { earned: "  " })).ok).toBe(false);
-    // Full marks need no "missing"; zero needs no "earned".
+    // Full marks need no "missing" (and refuse one); zero needs no "earned".
     expect(check(withGrade(1, { missing: "" })).ok).toBe(true);
     expect(check(withGrade(4, { earned: "" })).ok).toBe(true);
   });
