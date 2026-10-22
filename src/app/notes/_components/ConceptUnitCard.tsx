@@ -226,6 +226,9 @@ import CdsConeAnatomy from "./visualizations/CdsConeAnatomy";
 import CdsAltitudeHypotenuse from "./visualizations/CdsAltitudeHypotenuse";
 import CdsRationalIrrationalLine from "./visualizations/CdsRationalIrrationalLine";
 import RatioBarModel from "./visualizations/RatioBarModel";
+import AfCircularTrack from "./visualizations/AfCircularTrack";
+import AfTrainPlatform from "./visualizations/AfTrainPlatform";
+import AfAreaChange from "./visualizations/AfAreaChange";
 import LogicSwitchSeriesParallel from "./visualizations/LogicSwitchSeriesParallel";
 import LogicCircuitSimplification from "./visualizations/LogicCircuitSimplification";
 import type { VisualizationSlug } from "@/app/notes/_types";
@@ -657,6 +660,12 @@ export function renderVisualization(slug: VisualizationSlug) {
       return <CdsRationalIrrationalLine />;
     case "ratio-bar-model":
       return <RatioBarModel />;
+    case "af-circular-track":
+      return <AfCircularTrack />;
+    case "af-train-platform":
+      return <AfTrainPlatform />;
+    case "af-area-change":
+      return <AfAreaChange />;
     case "logic-switch-series-parallel":
       return <LogicSwitchSeriesParallel />;
     case "logic-circuit-simplification":

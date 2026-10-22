@@ -316,7 +316,13 @@ export const NOTES_DATA_KEYS: readonly string[] = [
   "imat-reading/history",
   "imat-reading/literature-philosophy",
   "imat-reading/politics-economics-society",
-  "afcat-maths/ratio"
+  "afcat-maths/ratio",
+  "afcat-maths/profit-loss",
+  "afcat-maths/interest",
+  "afcat-maths/speed-time-distance",
+  "afcat-maths/average",
+  "afcat-maths/percentage",
+  "afcat-maths/decimals-fractions"
 ];
 
 export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, SubtopicNote>>> = {
@@ -633,4 +639,10 @@ export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, Sub
   "imat-reading/literature-philosophy": () => import("@/lib/sites/imat/notes/reading/literature-philosophy").then((m) => m.IMAT_REA_LIT_NOTES),
   "imat-reading/politics-economics-society": () => import("@/lib/sites/imat/notes/reading/politics-economics-society").then((m) => m.IMAT_REA_PES_NOTES),
   "afcat-maths/ratio": () => import("@/app/notes/afcat-maths/ratio/_data").then((m) => m.AF_RATIO_NOTES),
+  "afcat-maths/profit-loss": () => import("@/app/notes/afcat-maths/profit-loss/_data").then((m) => m.AF_PL_NOTES),
+  "afcat-maths/interest": () => import("@/app/notes/afcat-maths/interest/_data").then((m) => m.AF_CI_NOTES),
+  "afcat-maths/speed-time-distance": () => import("@/app/notes/afcat-maths/speed-time-distance/_data").then((m) => m.AF_STD_NOTES),
+  "afcat-maths/average": () => import("@/app/notes/afcat-maths/average/_data").then((m) => m.AF_AV_NOTES),
+  "afcat-maths/percentage": () => import("@/app/notes/afcat-maths/percentage/_data").then((m) => m.AF_PC_NOTES),
+  "afcat-maths/decimals-fractions": () => import("@/app/notes/afcat-maths/decimals-fractions/_data").then((m) => m.AF_DF_NOTES),
 };

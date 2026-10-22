@@ -1351,6 +1351,36 @@ import {
   AF_RATIO_NOTES,
   AF_RATIO_SLUGS,
 } from "@/app/notes/afcat-maths/ratio/_data";
+import {
+  AF_PL_CHAPTER,
+  AF_PL_NOTES,
+  AF_PL_SLUGS,
+} from "@/app/notes/afcat-maths/profit-loss/_data";
+import {
+  AF_CI_CHAPTER,
+  AF_CI_NOTES,
+  AF_CI_SLUGS,
+} from "@/app/notes/afcat-maths/interest/_data";
+import {
+  AF_STD_CHAPTER,
+  AF_STD_NOTES,
+  AF_STD_SLUGS,
+} from "@/app/notes/afcat-maths/speed-time-distance/_data";
+import {
+  AF_AV_CHAPTER,
+  AF_AV_NOTES,
+  AF_AV_SLUGS,
+} from "@/app/notes/afcat-maths/average/_data";
+import {
+  AF_PC_CHAPTER,
+  AF_PC_NOTES,
+  AF_PC_SLUGS,
+} from "@/app/notes/afcat-maths/percentage/_data";
+import {
+  AF_DF_CHAPTER,
+  AF_DF_NOTES,
+  AF_DF_SLUGS,
+} from "@/app/notes/afcat-maths/decimals-fractions/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -4330,6 +4360,72 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: AF_RATIO_CHAPTER,
     notes: AF_RATIO_NOTES,
     slugs: AF_RATIO_SLUGS,
+  },
+  {
+    examName: "AFCAT",
+    subjectName: "Numerical Ability",
+    subjectRoute: "afcat-maths",
+    subjectDisplay: "AFCAT Numerical Ability",
+    chapterSlug: "profit-loss",
+    chipLabel: "Profit and Loss notes",
+    chapter: AF_PL_CHAPTER,
+    notes: AF_PL_NOTES,
+    slugs: AF_PL_SLUGS,
+  },
+  {
+    examName: "AFCAT",
+    subjectName: "Numerical Ability",
+    subjectRoute: "afcat-maths",
+    subjectDisplay: "AFCAT Numerical Ability",
+    chapterSlug: "interest",
+    chipLabel: "Simple and Compound Interest notes",
+    chapter: AF_CI_CHAPTER,
+    notes: AF_CI_NOTES,
+    slugs: AF_CI_SLUGS,
+  },
+  {
+    examName: "AFCAT",
+    subjectName: "Numerical Ability",
+    subjectRoute: "afcat-maths",
+    subjectDisplay: "AFCAT Numerical Ability",
+    chapterSlug: "speed-time-distance",
+    chipLabel: "Speed, Time and Distance notes",
+    chapter: AF_STD_CHAPTER,
+    notes: AF_STD_NOTES,
+    slugs: AF_STD_SLUGS,
+  },
+  {
+    examName: "AFCAT",
+    subjectName: "Numerical Ability",
+    subjectRoute: "afcat-maths",
+    subjectDisplay: "AFCAT Numerical Ability",
+    chapterSlug: "average",
+    chipLabel: "Average notes",
+    chapter: AF_AV_CHAPTER,
+    notes: AF_AV_NOTES,
+    slugs: AF_AV_SLUGS,
+  },
+  {
+    examName: "AFCAT",
+    subjectName: "Numerical Ability",
+    subjectRoute: "afcat-maths",
+    subjectDisplay: "AFCAT Numerical Ability",
+    chapterSlug: "percentage",
+    chipLabel: "Percentage notes",
+    chapter: AF_PC_CHAPTER,
+    notes: AF_PC_NOTES,
+    slugs: AF_PC_SLUGS,
+  },
+  {
+    examName: "AFCAT",
+    subjectName: "Numerical Ability",
+    subjectRoute: "afcat-maths",
+    subjectDisplay: "AFCAT Numerical Ability",
+    chapterSlug: "decimals-fractions",
+    chipLabel: "Decimals and Fractions notes",
+    chapter: AF_DF_CHAPTER,
+    notes: AF_DF_NOTES,
+    slugs: AF_DF_SLUGS,
   },
 ];
 

@@ -2194,5 +2194,47 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "AFCAT Numerical Ability",
     "chapterSlug": "ratio",
     "subtopicCount": 8
+  },
+  {
+    "examName": "AFCAT",
+    "subjectRoute": "afcat-maths",
+    "subjectDisplay": "AFCAT Numerical Ability",
+    "chapterSlug": "profit-loss",
+    "subtopicCount": 9
+  },
+  {
+    "examName": "AFCAT",
+    "subjectRoute": "afcat-maths",
+    "subjectDisplay": "AFCAT Numerical Ability",
+    "chapterSlug": "interest",
+    "subtopicCount": 9
+  },
+  {
+    "examName": "AFCAT",
+    "subjectRoute": "afcat-maths",
+    "subjectDisplay": "AFCAT Numerical Ability",
+    "chapterSlug": "speed-time-distance",
+    "subtopicCount": 9
+  },
+  {
+    "examName": "AFCAT",
+    "subjectRoute": "afcat-maths",
+    "subjectDisplay": "AFCAT Numerical Ability",
+    "chapterSlug": "average",
+    "subtopicCount": 9
+  },
+  {
+    "examName": "AFCAT",
+    "subjectRoute": "afcat-maths",
+    "subjectDisplay": "AFCAT Numerical Ability",
+    "chapterSlug": "percentage",
+    "subtopicCount": 9
+  },
+  {
+    "examName": "AFCAT",
+    "subjectRoute": "afcat-maths",
+    "subjectDisplay": "AFCAT Numerical Ability",
+    "chapterSlug": "decimals-fractions",
+    "subtopicCount": 7
   }
 ];

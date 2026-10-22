@@ -334,6 +334,9 @@ export type VisualizationSlug =
   | "cds-altitude-hypotenuse"
   | "cds-rational-irrational-line"
   | "ratio-bar-model"
+  | "af-circular-track"
+  | "af-train-platform"
+  | "af-area-change"
   // MHT-CET Maths — Mathematical Logic chapter
   | "logic-switch-series-parallel"
   | "logic-circuit-simplification";

@@ -2,7 +2,8 @@
   "01-7": {
     "stem": "A thief is noticed by a policeman from a distance of 200 m. The thief starts running and the policeman chases him. The thief and the policeman run at the rate of 10 km/hr and 11 km/hr respectively. How far will the policeman have run when he catches the thief?",
     "answer": "D",
-    "reason": "'At what distance will the policeman catch the thief' was ambiguous: 2.2 km from the policeman's start (D, the key) or 2 km run by the thief (B, also an option). Reworded to ask the policeman's distance; 2 km stays as the trap. Key D stands."
+    "reason": "'At what distance will the policeman catch the thief' was ambiguous: 2.2 km from the policeman's start (D, the key) or 2 km run by the thief (B, also an option). Reworded to ask the policeman's distance; 2 km stays as the trap. Key D stands. Notes review (2026-10-22): solution checked against the repaired stem.",
+    "solutionStands": "Read against the repaired stem (2026-10-22): 200 m closed at 1 km/h takes 0.2 h, and 11 x 0.2 = 2.2 km, the key."
   },
   "01-40": {
     "exclude": true,
@@ -366,7 +367,8 @@
   },
   "03-313": {
     "answer": "B",
-    "reason": "Source key is wrong: at 0.75 times the speed, 3 hours become 3 / 0.75 = 4 hours (key D 4.5). Blind pass agrees."
+    "reason": "Source key is wrong: at 0.75 times the speed, 3 hours become 3 / 0.75 = 4 hours (key D 4.5). Blind pass agrees. Notes re-cut: A new time, a percent change in time or a time ratio from a changed speed; no late or early equation",
+    "subtopic": "Speed and Time in Inverse Proportion"
   },
   "03-608": {
     "answer": "B",
@@ -418,7 +420,8 @@
   },
   "06-26": {
     "answer": "A",
-    "reason": "Key C (6) is wrong: they cross every 25 s, so 4 times in 120 s; the source adds the start and rounds 4.8 up."
+    "reason": "Key C (6) is wrong: they cross every 25 s, so 4 times in 120 s; the source adds the start and rounds 4.8 up. Notes re-cut: A meeting, lapping or start-point question on a circular track",
+    "subtopic": "Circular Tracks"
   },
   "06-28": {
     "answer": "A",
@@ -499,7 +502,8 @@
   },
   "07-35": {
     "answer": "C",
-    "reason": "Key A (150 m) is wrong: the faster runner covers 250 m before they meet; 150 m is the slower runner's distance."
+    "reason": "Key A (150 m) is wrong: the faster runner covers 250 m before they meet; 150 m is the slower runner's distance. Notes re-cut: A meeting, lapping or start-point question on a circular track",
+    "subtopic": "Circular Tracks"
   },
   "08-10": {
     "exclude": true,
@@ -603,7 +607,8 @@
   },
   "09-44": {
     "answer": "C",
-    "reason": "Key B (40/9) is wrong: d = 3 km and t = 2/3 hour give 3 / (2/3) = 4.5 km/h; the source divides wrongly."
+    "reason": "Key B (40/9) is wrong: d = 3 km and t = 2/3 hour give 3 / (2/3) = 4.5 km/h; the source divides wrongly. Notes re-cut: Late at one speed, early at another: the two-speed gap equation",
+    "subtopic": "Late, Early and Changed Speed"
   },
   "10-2": {
     "exclude": true,
@@ -755,7 +760,8 @@
   },
   "13-13": {
     "answer": "B",
-    "reason": "Key D (7.5 times) is wrong: they cannot meet half a time; 300/40 = 7.5 means 7 meetings."
+    "reason": "Key D (7.5 times) is wrong: they cannot meet half a time; 300/40 = 7.5 means 7 meetings. Notes re-cut: A meeting, lapping or start-point question on a circular track",
+    "subtopic": "Circular Tracks"
   },
   "13-26": {
     "answer": "B",
@@ -900,5 +906,402 @@
   "11-46": {
     "exclude": true,
     "reason": "Off-topic for this chapter: an averages, work or pipes question in the Chasing sheet."
+  },
+  "06-24": {
+    "solution": "Let the speeds be \\(v_1\\) and \\(v_2\\) and each length \\(L\\). Opposite: \\(v_1 + v_2 = \\frac{2L}{10} = \\frac{L}{5}\\). Same direction: \\(v_1 - v_2 = \\frac{2L}{50} = \\frac{L}{25}\\). Adding and halving, \\(v_1 = \\frac{3L}{25}\\) and \\(v_2 = \\frac{2L}{25}\\), so \\(v_1 : v_2 = 3 : 2\\).",
+    "reason": "Notes review (2026-10-22): the solution's speeds 3L/50 and L/50 gave 3 : 1, not its stated 3 : 2; rewritten. Key stands."
+  },
+  "06-29": {
+    "solution": "Let \\(x = \\frac{1}{b - s}\\) and \\(y = \\frac{1}{b + s}\\). Then \\(24x + 28y = 6\\) and \\(30x + 21y = 6.5\\). Multiply the first by 3 and the second by 4 and subtract: \\(48x = 8\\), so \\(x = \\frac16\\) and then \\(y = \\frac{1}{14}\\). So \\(b - s = 6\\), \\(b + s = 14\\) and \\(b = 10\\) km/h.",
+    "reason": "Notes review (2026-10-22): the solution's x = 0.1, y = 0.15 do not satisfy its equations; rewritten. Key stands."
+  },
+  "14-6": {
+    "solution": "Let \\(u = \\frac{1}{b + c}\\) and \\(v = \\frac{1}{b - c}\\). Then \\(36u + 24v = 6\\) and \\(24u + 36v = 6.5\\). Adding, \\(u + v = \\frac{5}{24}\\); subtracting, \\(u - v = -\\frac{1}{24}\\). So \\(u = \\frac{1}{12}\\) and \\(v = \\frac18\\): \\(b + c = 12\\), \\(b - c = 8\\), and the current is \\(c = 2\\) km/hr.",
+    "reason": "Notes review (2026-10-22): the solution gave b = 11; b is 10 and c = 2, the key. Rewritten. Key stands."
+  },
+  "09-41": {
+    "solution": "The diagonal is \\(\\sqrt{100^2 + 80^2} = \\sqrt{16400} \\approx 128\\) m. They close at \\(2 + 3 = 5\\) m/s, so they meet after about \\(\\frac{128}{5} = 25.6\\) seconds, when A has walked about \\(2 \\times 25.6 = 51.2\\) m.",
+    "reason": "Notes review (2026-10-22): the diagonal is 128.06 m, not exactly 128; the solution now says about. Key stands (nearest option)."
+  },
+  "04-211": {
+    "stem": "A train takes 18 s to cross a man running at a speed of 6 km/h in the same direction as the train. How much time does it take to cross a person running at 9 km/h in the same direction as the train?",
+    "solutionStands": "The solution argues from the unknown length and speed only; the unit fix does not touch it.",
+    "reason": "Notes review (2026-10-22): the printed 'km/s' for a running man is km/h; corrected. Key D (cannot be determined) is unchanged."
+  },
+  "04-208": {
+    "subtopic": "Speed and Time in Inverse Proportion",
+    "reason": "Notes re-cut: A new time, a percent change in time or a time ratio from a changed speed; no late or early equation"
+  },
+  "06-10": {
+    "subtopic": "Circular Tracks",
+    "reason": "Notes re-cut: A meeting, lapping or start-point question on a circular track"
+  },
+  "07-3": {
+    "subtopic": "Circular Tracks",
+    "reason": "Notes re-cut: A meeting, lapping or start-point question on a circular track"
+  },
+  "07-7": {
+    "subtopic": "Circular Tracks",
+    "reason": "Notes re-cut: A meeting, lapping or start-point question on a circular track"
+  },
+  "07-10": {
+    "subtopic": "Circular Tracks",
+    "reason": "Notes re-cut: A meeting, lapping or start-point question on a circular track"
+  },
+  "07-13": {
+    "subtopic": "Circular Tracks",
+    "reason": "Notes re-cut: A meeting, lapping or start-point question on a circular track"
+  },
+  "07-16": {
+    "subtopic": "Circular Tracks",
+    "reason": "Notes re-cut: A meeting, lapping or start-point question on a circular track"
+  },
+  "07-18": {
+    "subtopic": "Circular Tracks",
+    "reason": "Notes re-cut: A meeting, lapping or start-point question on a circular track"
+  },
+  "07-26": {
+    "subtopic": "Circular Tracks",
+    "reason": "Notes re-cut: A meeting, lapping or start-point question on a circular track"
+  },
+  "07-31": {
+    "subtopic": "Circular Tracks",
+    "reason": "Notes re-cut: A meeting, lapping or start-point question on a circular track"
+  },
+  "07-33": {
+    "subtopic": "Circular Tracks",
+    "reason": "Notes re-cut: A meeting, lapping or start-point question on a circular track"
+  },
+  "07-38": {
+    "subtopic": "Circular Tracks",
+    "reason": "Notes re-cut: A meeting, lapping or start-point question on a circular track"
+  },
+  "07-40": {
+    "subtopic": "Circular Tracks",
+    "reason": "Notes re-cut: A meeting, lapping or start-point question on a circular track"
+  },
+  "07-43": {
+    "subtopic": "Circular Tracks",
+    "reason": "Notes re-cut: A meeting, lapping or start-point question on a circular track"
+  },
+  "07-45": {
+    "subtopic": "Circular Tracks",
+    "reason": "Notes re-cut: A meeting, lapping or start-point question on a circular track"
+  },
+  "08-2": {
+    "subtopic": "Speed, Distance, Units and Journeys in Parts",
+    "reason": "Notes re-cut: Total time for a journey in two halves at two speeds"
+  },
+  "08-3": {
+    "subtopic": "Speed and Time in Inverse Proportion",
+    "reason": "Notes re-cut: A new time, a percent change in time or a time ratio from a changed speed; no late or early equation"
+  },
+  "08-7": {
+    "subtopic": "Speed and Time in Inverse Proportion",
+    "reason": "Notes re-cut: A new time, a percent change in time or a time ratio from a changed speed; no late or early equation"
+  },
+  "08-8": {
+    "subtopic": "Speed and Time in Inverse Proportion",
+    "reason": "Notes re-cut: A new time, a percent change in time or a time ratio from a changed speed; no late or early equation"
+  },
+  "08-17": {
+    "subtopic": "Speed and Time in Inverse Proportion",
+    "reason": "Notes re-cut: A new time, a percent change in time or a time ratio from a changed speed; no late or early equation"
+  },
+  "08-18": {
+    "subtopic": "Average Speed",
+    "reason": "Notes re-cut: Asks for average speed over two stretches"
+  },
+  "08-19": {
+    "subtopic": "Speed and Time in Inverse Proportion",
+    "reason": "Notes re-cut: A new time, a percent change in time or a time ratio from a changed speed; no late or early equation"
+  },
+  "08-25": {
+    "subtopic": "Speed and Time in Inverse Proportion",
+    "reason": "Notes re-cut: A new time, a percent change in time or a time ratio from a changed speed; no late or early equation"
+  },
+  "08-27": {
+    "subtopic": "Speed and Time in Inverse Proportion",
+    "reason": "Notes re-cut: A new time, a percent change in time or a time ratio from a changed speed; no late or early equation"
+  },
+  "08-34": {
+    "subtopic": "Speed and Time in Inverse Proportion",
+    "reason": "Notes re-cut: A new time, a percent change in time or a time ratio from a changed speed; no late or early equation"
+  },
+  "08-36": {
+    "subtopic": "Speed and Time in Inverse Proportion",
+    "reason": "Notes re-cut: A new time, a percent change in time or a time ratio from a changed speed; no late or early equation"
+  },
+  "08-39": {
+    "subtopic": "Speed and Time in Inverse Proportion",
+    "reason": "Notes re-cut: A new time, a percent change in time or a time ratio from a changed speed; no late or early equation"
+  },
+  "08-41": {
+    "subtopic": "Speed and Time in Inverse Proportion",
+    "reason": "Notes re-cut: A new time, a percent change in time or a time ratio from a changed speed; no late or early equation"
+  },
+  "08-46": {
+    "subtopic": "Speed and Time in Inverse Proportion",
+    "reason": "Notes re-cut: A new time, a percent change in time or a time ratio from a changed speed; no late or early equation"
+  },
+  "09-17": {
+    "subtopic": "Circular Tracks",
+    "reason": "Notes re-cut: A meeting, lapping or start-point question on a circular track"
+  },
+  "09-32": {
+    "subtopic": "Average Speed",
+    "reason": "Notes re-cut: Constant speed for the same round trip time is the equal-distance average speed"
+  },
+  "10-14": {
+    "subtopic": "Speed and Time in Inverse Proportion",
+    "reason": "Notes re-cut: A new time, a percent change in time or a time ratio from a changed speed; no late or early equation"
+  },
+  "10-16": {
+    "subtopic": "Speed and Time in Inverse Proportion",
+    "reason": "Notes re-cut: A new time, a percent change in time or a time ratio from a changed speed; no late or early equation"
+  },
+  "10-21": {
+    "subtopic": "Speed and Time in Inverse Proportion",
+    "reason": "Notes re-cut: A new time, a percent change in time or a time ratio from a changed speed; no late or early equation"
+  },
+  "10-28": {
+    "subtopic": "Speed and Time in Inverse Proportion",
+    "reason": "Notes re-cut: A new time, a percent change in time or a time ratio from a changed speed; no late or early equation"
+  },
+  "10-52": {
+    "subtopic": "Speed and Time in Inverse Proportion",
+    "reason": "Notes re-cut: A new time, a percent change in time or a time ratio from a changed speed; no late or early equation"
+  },
+  "11-22": {
+    "subtopic": "Circular Tracks",
+    "reason": "Notes re-cut: A meeting, lapping or start-point question on a circular track"
+  },
+  "11-29": {
+    "subtopic": "Circular Tracks",
+    "reason": "Notes re-cut: A meeting, lapping or start-point question on a circular track"
+  },
+  "12-31": {
+    "subtopic": "Average Speed",
+    "reason": "Notes re-cut: Minutes stopped per hour from speeds with and without stoppages"
+  },
+  "12-35": {
+    "subtopic": "Relative Speed and Meeting",
+    "reason": "Notes re-cut: Speed ratio from the times after two trains meet (square-root rule taught on the relative page)"
+  },
+  "13-2": {
+    "subtopic": "Circular Tracks",
+    "reason": "Notes re-cut: A meeting, lapping or start-point question on a circular track"
+  },
+  "13-3": {
+    "subtopic": "Circular Tracks",
+    "reason": "Notes re-cut: A meeting, lapping or start-point question on a circular track"
+  },
+  "13-4": {
+    "subtopic": "Circular Tracks",
+    "reason": "Notes re-cut: A meeting, lapping or start-point question on a circular track"
+  },
+  "13-5": {
+    "subtopic": "Circular Tracks",
+    "reason": "Notes re-cut: A meeting, lapping or start-point question on a circular track"
+  },
+  "13-6": {
+    "subtopic": "Circular Tracks",
+    "reason": "Notes re-cut: A meeting, lapping or start-point question on a circular track"
+  },
+  "13-7": {
+    "subtopic": "Circular Tracks",
+    "reason": "Notes re-cut: A meeting, lapping or start-point question on a circular track"
+  },
+  "13-8": {
+    "subtopic": "Circular Tracks",
+    "reason": "Notes re-cut: A meeting, lapping or start-point question on a circular track"
+  },
+  "13-11": {
+    "subtopic": "Circular Tracks",
+    "reason": "Notes re-cut: A meeting, lapping or start-point question on a circular track"
+  },
+  "13-14": {
+    "subtopic": "Circular Tracks",
+    "reason": "Notes re-cut: A meeting, lapping or start-point question on a circular track"
+  },
+  "13-15": {
+    "subtopic": "Circular Tracks",
+    "reason": "Notes re-cut: A meeting, lapping or start-point question on a circular track"
+  },
+  "13-18": {
+    "subtopic": "Circular Tracks",
+    "reason": "Notes re-cut: A meeting, lapping or start-point question on a circular track"
+  },
+  "13-19": {
+    "subtopic": "Circular Tracks",
+    "reason": "Notes re-cut: A meeting, lapping or start-point question on a circular track"
+  },
+  "13-20": {
+    "subtopic": "Circular Tracks",
+    "reason": "Notes re-cut: A meeting, lapping or start-point question on a circular track"
+  },
+  "13-21": {
+    "subtopic": "Circular Tracks",
+    "reason": "Notes re-cut: A meeting, lapping or start-point question on a circular track"
+  },
+  "13-22": {
+    "subtopic": "Circular Tracks",
+    "reason": "Notes re-cut: A meeting, lapping or start-point question on a circular track"
+  },
+  "13-23": {
+    "subtopic": "Circular Tracks",
+    "reason": "Notes re-cut: A meeting, lapping or start-point question on a circular track"
+  },
+  "13-24": {
+    "subtopic": "Circular Tracks",
+    "reason": "Notes re-cut: A meeting, lapping or start-point question on a circular track"
+  },
+  "13-25": {
+    "subtopic": "Circular Tracks",
+    "reason": "Notes re-cut: A meeting, lapping or start-point question on a circular track"
+  },
+  "13-27": {
+    "subtopic": "Circular Tracks",
+    "reason": "Notes re-cut: A meeting, lapping or start-point question on a circular track"
+  },
+  "13-29": {
+    "subtopic": "Circular Tracks",
+    "reason": "Notes re-cut: A meeting, lapping or start-point question on a circular track"
+  },
+  "13-30": {
+    "subtopic": "Circular Tracks",
+    "reason": "Notes re-cut: A meeting, lapping or start-point question on a circular track"
+  },
+  "13-34": {
+    "subtopic": "Circular Tracks",
+    "reason": "Notes re-cut: A meeting, lapping or start-point question on a circular track"
+  },
+  "13-35": {
+    "subtopic": "Circular Tracks",
+    "reason": "Notes re-cut: A meeting, lapping or start-point question on a circular track"
+  },
+  "13-37": {
+    "subtopic": "Circular Tracks",
+    "reason": "Notes re-cut: A meeting, lapping or start-point question on a circular track"
+  },
+  "13-38": {
+    "subtopic": "Circular Tracks",
+    "reason": "Notes re-cut: A meeting, lapping or start-point question on a circular track"
+  },
+  "13-39": {
+    "subtopic": "Circular Tracks",
+    "reason": "Notes re-cut: A meeting, lapping or start-point question on a circular track"
+  },
+  "13-40": {
+    "subtopic": "Circular Tracks",
+    "reason": "Notes re-cut: A meeting, lapping or start-point question on a circular track"
+  },
+  "13-43": {
+    "subtopic": "Circular Tracks",
+    "reason": "Notes re-cut: A meeting, lapping or start-point question on a circular track"
+  },
+  "13-44": {
+    "subtopic": "Circular Tracks",
+    "reason": "Notes re-cut: A meeting, lapping or start-point question on a circular track"
+  },
+  "13-45": {
+    "subtopic": "Circular Tracks",
+    "reason": "Notes re-cut: A meeting, lapping or start-point question on a circular track"
+  },
+  "13-47": {
+    "subtopic": "Circular Tracks",
+    "reason": "Notes re-cut: A meeting, lapping or start-point question on a circular track"
+  },
+  "13-48": {
+    "subtopic": "Circular Tracks",
+    "reason": "Notes re-cut: A meeting, lapping or start-point question on a circular track"
+  },
+  "04-102": {
+    "subtopic": "Speed and Time in Inverse Proportion",
+    "reason": "Notes re-cut: Speed ratio to time ratio, or a new speed for a new time over the same distance"
+  },
+  "01-10": {
+    "subtopic": "Average Speed",
+    "reason": "Notes re-cut: Minutes stopped per hour from speeds with and without stoppages"
+  },
+  "01-13": {
+    "subtopic": "Speed and Time in Inverse Proportion",
+    "reason": "Notes re-cut: Speed ratio to time ratio, or a new speed for a new time over the same distance"
+  },
+  "01-23": {
+    "subtopic": "Circular Tracks",
+    "reason": "Notes re-cut: First meeting on a circular track"
+  },
+  "01-36": {
+    "subtopic": "Speed and Time in Inverse Proportion",
+    "reason": "Notes re-cut: Speed ratio to time ratio, or a new speed for a new time over the same distance"
+  },
+  "01-38": {
+    "subtopic": "Speed, Distance, Units and Journeys in Parts",
+    "reason": "Notes re-cut: Finds the distance from a round trip time, not an average speed"
+  },
+  "01-46": {
+    "subtopic": "Speed and Time in Inverse Proportion",
+    "reason": "Notes re-cut: A new time, a percent change in time or a time ratio from a changed speed; no late or early equation"
+  },
+  "03-201": {
+    "subtopic": "Speed and Time in Inverse Proportion",
+    "reason": "Notes re-cut: A new time, a percent change in time or a time ratio from a changed speed; no late or early equation"
+  },
+  "03-204": {
+    "subtopic": "Speed and Time in Inverse Proportion",
+    "reason": "Notes re-cut: A new time, a percent change in time or a time ratio from a changed speed; no late or early equation"
+  },
+  "03-212": {
+    "subtopic": "Speed and Time in Inverse Proportion",
+    "reason": "Notes re-cut: A new time, a percent change in time or a time ratio from a changed speed; no late or early equation"
+  },
+  "03-301": {
+    "subtopic": "Speed and Time in Inverse Proportion",
+    "reason": "Notes re-cut: A new time, a percent change in time or a time ratio from a changed speed; no late or early equation"
+  },
+  "03-302": {
+    "subtopic": "Speed and Time in Inverse Proportion",
+    "reason": "Notes re-cut: Speed ratio to time ratio, or a new speed for a new time over the same distance"
+  },
+  "03-314": {
+    "subtopic": "Speed and Time in Inverse Proportion",
+    "reason": "Notes re-cut: A new time, a percent change in time or a time ratio from a changed speed; no late or early equation"
+  },
+  "03-315": {
+    "subtopic": "Speed and Time in Inverse Proportion",
+    "reason": "Notes re-cut: A new time, a percent change in time or a time ratio from a changed speed; no late or early equation"
+  },
+  "03-316": {
+    "subtopic": "Speed and Time in Inverse Proportion",
+    "reason": "Notes re-cut: A new time, a percent change in time or a time ratio from a changed speed; no late or early equation"
+  },
+  "03-318": {
+    "subtopic": "Speed and Time in Inverse Proportion",
+    "reason": "Notes re-cut: A new time, a percent change in time or a time ratio from a changed speed; no late or early equation"
+  },
+  "03-320": {
+    "subtopic": "Speed and Time in Inverse Proportion",
+    "reason": "Notes re-cut: A new time, a percent change in time or a time ratio from a changed speed; no late or early equation"
+  },
+  "04-106": {
+    "subtopic": "Speed and Time in Inverse Proportion",
+    "reason": "Notes re-cut: Speed ratio to time ratio, or a new speed for a new time over the same distance"
+  },
+  "04-123": {
+    "subtopic": "Average Speed",
+    "reason": "Notes re-cut: Minutes stopped per hour from speeds with and without stoppages"
+  },
+  "04-125": {
+    "subtopic": "Speed and Time in Inverse Proportion",
+    "reason": "Notes re-cut: A new time, a percent change in time or a time ratio from a changed speed; no late or early equation"
+  },
+  "06-46": {
+    "subtopic": "Circular Tracks",
+    "reason": "Notes re-cut: A meeting, lapping or start-point question on a circular track"
+  },
+  "08-48": {
+    "subtopic": "Speed and Time in Inverse Proportion",
+    "reason": "Notes re-cut: A new time, a percent change in time or a time ratio from a changed speed; no late or early equation"
   }
 }
