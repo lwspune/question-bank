@@ -2621,5 +2621,82 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "SPI General Knowledge",
     "chapterSlug": "defence",
     "subtopicCount": 3
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-history",
+    "subjectDisplay": "CDS History",
+    "chapterSlug": "ancient-india",
+    "subtopicCount": 10
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-history",
+    "subjectDisplay": "CDS History",
+    "chapterSlug": "medieval-india",
+    "subtopicCount": 8
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-history",
+    "subjectDisplay": "CDS History",
+    "chapterSlug": "modern-india",
+    "subtopicCount": 11
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-history",
+    "subjectDisplay": "CDS History",
+    "chapterSlug": "world-history",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-geography",
+    "subjectDisplay": "CDS Geography",
+    "chapterSlug": "earth-in-space",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-geography",
+    "subjectDisplay": "CDS Geography",
+    "chapterSlug": "earth-structure-landforms",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-geography",
+    "subjectDisplay": "CDS Geography",
+    "chapterSlug": "climatology",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-geography",
+    "subjectDisplay": "CDS Geography",
+    "chapterSlug": "oceanography",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-geography",
+    "subjectDisplay": "CDS Geography",
+    "chapterSlug": "world-human-geography",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-geography",
+    "subjectDisplay": "CDS Geography",
+    "chapterSlug": "indian-physical-geography",
+    "subtopicCount": 8
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-geography",
+    "subjectDisplay": "CDS Geography",
+    "chapterSlug": "indian-economic-geography",
+    "subtopicCount": 8
   }
 ];

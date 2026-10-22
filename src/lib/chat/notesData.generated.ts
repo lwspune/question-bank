@@ -377,7 +377,18 @@ export const NOTES_DATA_KEYS: readonly string[] = [
   "spi-polity/rights-dpsp-local",
   "spi-polity/world-polity",
   "spi-polity/government-structure",
-  "spi-gk/defence"
+  "spi-gk/defence",
+  "cds-history/ancient-india",
+  "cds-history/medieval-india",
+  "cds-history/modern-india",
+  "cds-history/world-history",
+  "cds-geography/earth-in-space",
+  "cds-geography/earth-structure-landforms",
+  "cds-geography/climatology",
+  "cds-geography/oceanography",
+  "cds-geography/world-human-geography",
+  "cds-geography/indian-physical-geography",
+  "cds-geography/indian-economic-geography"
 ];
 
 export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, SubtopicNote>>> = {
@@ -755,4 +766,15 @@ export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, Sub
   "spi-polity/world-polity": () => import("@/app/notes/spi-polity/world-polity/_data").then((m) => m.SPI_WORLD_POLITY_NOTES),
   "spi-polity/government-structure": () => import("@/app/notes/spi-polity/government-structure/_data").then((m) => m.SPI_GOVERNMENT_STRUCTURE_NOTES),
   "spi-gk/defence": () => import("@/app/notes/spi-gk/defence/_data").then((m) => m.SPI_DEFENCE_NOTES),
+  "cds-history/ancient-india": () => import("@/app/notes/cds-history/ancient-india/_data").then((m) => m.CDS_HI_ANCIENT_NOTES),
+  "cds-history/medieval-india": () => import("@/app/notes/cds-history/medieval-india/_data").then((m) => m.CDS_HI_MEDIEVAL_NOTES),
+  "cds-history/modern-india": () => import("@/app/notes/cds-history/modern-india/_data").then((m) => m.CDS_HI_MODERN_NOTES),
+  "cds-history/world-history": () => import("@/app/notes/cds-history/world-history/_data").then((m) => m.CDS_HI_WORLD_NOTES),
+  "cds-geography/earth-in-space": () => import("@/app/notes/cds-geography/earth-in-space/_data").then((m) => m.CDS_GE_SPACE_NOTES),
+  "cds-geography/earth-structure-landforms": () => import("@/app/notes/cds-geography/earth-structure-landforms/_data").then((m) => m.CDS_GE_EARTH_NOTES),
+  "cds-geography/climatology": () => import("@/app/notes/cds-geography/climatology/_data").then((m) => m.CDS_GE_CLIMATE_NOTES),
+  "cds-geography/oceanography": () => import("@/app/notes/cds-geography/oceanography/_data").then((m) => m.CDS_GE_OCEAN_NOTES),
+  "cds-geography/world-human-geography": () => import("@/app/notes/cds-geography/world-human-geography/_data").then((m) => m.CDS_GE_WORLD_NOTES),
+  "cds-geography/indian-physical-geography": () => import("@/app/notes/cds-geography/indian-physical-geography/_data").then((m) => m.CDS_GE_PHYSICAL_NOTES),
+  "cds-geography/indian-economic-geography": () => import("@/app/notes/cds-geography/indian-economic-geography/_data").then((m) => m.CDS_GE_ECONOMIC_NOTES),
 };
