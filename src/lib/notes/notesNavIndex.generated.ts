@@ -2957,5 +2957,12 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "SSC CGL Maths",
     "chapterSlug": "algebraic-identities",
     "subtopicCount": 7
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-maths",
+    "subjectDisplay": "SSC CGL Maths",
+    "chapterSlug": "circles",
+    "subtopicCount": 6
   }
 ];

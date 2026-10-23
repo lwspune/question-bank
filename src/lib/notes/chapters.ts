@@ -1896,6 +1896,11 @@ import {
   SSC_ALGEBRAIC_IDENTITIES_NOTES,
   SSC_ALGEBRAIC_IDENTITIES_SLUGS,
 } from "@/app/notes/ssc-cgl-maths/algebraic-identities/_data";
+import {
+  SSC_CIRCLES_CHAPTER,
+  SSC_CIRCLES_NOTES,
+  SSC_CIRCLES_SLUGS,
+} from "@/app/notes/ssc-cgl-maths/circles/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -6083,6 +6088,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SSC_ALGEBRAIC_IDENTITIES_CHAPTER,
     notes: SSC_ALGEBRAIC_IDENTITIES_NOTES,
     slugs: SSC_ALGEBRAIC_IDENTITIES_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Quantitative Aptitude",
+    subjectRoute: "ssc-cgl-maths",
+    subjectDisplay: "SSC CGL Maths",
+    chapterSlug: "circles",
+    chipLabel: "Circles notes",
+    chapter: SSC_CIRCLES_CHAPTER,
+    notes: SSC_CIRCLES_NOTES,
+    slugs: SSC_CIRCLES_SLUGS,
   },
 ];
 

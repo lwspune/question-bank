@@ -425,7 +425,8 @@ export const NOTES_DATA_KEYS: readonly string[] = [
   "ssc-cgl-maths/data-interpretation",
   "ssc-cgl-maths/ratio",
   "ssc-cgl-maths/time-work",
-  "ssc-cgl-maths/algebraic-identities"
+  "ssc-cgl-maths/algebraic-identities",
+  "ssc-cgl-maths/circles"
 ];
 
 export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, SubtopicNote>>> = {
@@ -851,4 +852,5 @@ export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, Sub
   "ssc-cgl-maths/ratio": () => import("@/app/notes/ssc-cgl-maths/ratio/_data").then((m) => m.SSC_RATIO_NOTES),
   "ssc-cgl-maths/time-work": () => import("@/app/notes/ssc-cgl-maths/time-work/_data").then((m) => m.SSC_TIME_WORK_NOTES),
   "ssc-cgl-maths/algebraic-identities": () => import("@/app/notes/ssc-cgl-maths/algebraic-identities/_data").then((m) => m.SSC_ALGEBRAIC_IDENTITIES_NOTES),
+  "ssc-cgl-maths/circles": () => import("@/app/notes/ssc-cgl-maths/circles/_data").then((m) => m.SSC_CIRCLES_NOTES),
 };
