@@ -310,11 +310,17 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     examName: "IMAT", // must match the `exams` DB row exactly
     guidesPath: null,
     notesPath: "/notes/imat", // 46 chapters, its own registry (lib/sites/imat/notes)
-    // What is PUBLIC is the 681 original twins alone: the 240 ministry papers
-    // (2023-2026) wait on the copyright opinion (NICHE_SITES_SPEC.md D1) and
-    // 2011-2022 are publish_blocked forever. Drop the flag when the ministry
-    // papers go PUBLIC.
+    // PUBLIC: the 681 original twins and, since the owner settled D1
+    // (2026-10-23), the 240 ministry questions of 2023-2026; 2011-2022 are
+    // publish_blocked forever. `practiceOnly` is KEPT although PYQs now exist,
+    // the cbse-10 call: landing pages count the default kind, a chapter needs 15
+    // (MIN_QUESTIONS_FOR_LANDING), and 240 PYQs over 45 chapters clear it in 3,
+    // so dropping the flag would remove 17 of 20 live chapter landing pages
+    // (measured 2026-10-23). The PYQs are reached through the mocks and the
+    // /browse PYQ toggle. Revisit when chapters hold 15+ PYQs.
     practiceOnly: true,
+    hasMocks: true, // 4 past papers (2023-2026) + 7 practice papers, 2026-10-23
+    // No pastPaperSolutions: the ministry publishes answers only.
   },
   {
     slug: "mh-hsc-12",
