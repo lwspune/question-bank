@@ -2041,6 +2041,11 @@ import {
   SSC_PAPER_FOLDING_NOTES,
   SSC_PAPER_FOLDING_SLUGS,
 } from "@/app/notes/ssc-cgl-reasoning/paper-folding/_data";
+import {
+  SSC_SYLLOGISM_CHAPTER,
+  SSC_SYLLOGISM_NOTES,
+  SSC_SYLLOGISM_SLUGS,
+} from "@/app/notes/ssc-cgl-reasoning/syllogism/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -6547,6 +6552,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SSC_PAPER_FOLDING_CHAPTER,
     notes: SSC_PAPER_FOLDING_NOTES,
     slugs: SSC_PAPER_FOLDING_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Reasoning",
+    subjectRoute: "ssc-cgl-reasoning",
+    subjectDisplay: "SSC CGL Reasoning",
+    chapterSlug: "syllogism",
+    chipLabel: "Syllogism notes",
+    chapter: SSC_SYLLOGISM_CHAPTER,
+    notes: SSC_SYLLOGISM_NOTES,
+    slugs: SSC_SYLLOGISM_SLUGS,
   },
 ];
 

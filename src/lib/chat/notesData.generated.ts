@@ -454,7 +454,8 @@ export const NOTES_DATA_KEYS: readonly string[] = [
   "ssc-cgl-reasoning/non-verbal",
   "ssc-cgl-reasoning/figure-counting",
   "ssc-cgl-reasoning/mirror-images",
-  "ssc-cgl-reasoning/paper-folding"
+  "ssc-cgl-reasoning/paper-folding",
+  "ssc-cgl-reasoning/syllogism"
 ];
 
 export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, SubtopicNote>>> = {
@@ -909,4 +910,5 @@ export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, Sub
   "ssc-cgl-reasoning/figure-counting": () => import("@/app/notes/ssc-cgl-reasoning/figure-counting/_data").then((m) => m.SSC_FIGURE_COUNTING_NOTES),
   "ssc-cgl-reasoning/mirror-images": () => import("@/app/notes/ssc-cgl-reasoning/mirror-images/_data").then((m) => m.SSC_MIRROR_IMAGES_NOTES),
   "ssc-cgl-reasoning/paper-folding": () => import("@/app/notes/ssc-cgl-reasoning/paper-folding/_data").then((m) => m.SSC_PAPER_FOLDING_NOTES),
+  "ssc-cgl-reasoning/syllogism": () => import("@/app/notes/ssc-cgl-reasoning/syllogism/_data").then((m) => m.SSC_SYLLOGISM_NOTES),
 };
