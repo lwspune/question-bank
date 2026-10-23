@@ -207,6 +207,10 @@ export type ConversationTurn = {
   page: string | null;
   at: string;
   toolCalls: ToolCallLog[] | null;
+  /** What the student's window showed (2026-10-23), so /dashboard/chat draws it the same way. Not exported. */
+  links: string[];
+  asked: AskedCard | null;
+  quote: string | null;
 };
 
 export type Conversation = {
@@ -236,15 +240,23 @@ export function groupConversations(rows: readonly ConversationRow[]): Conversati
       startedAt: ex[0].createdAt,
       signedIn: list.some((r) => r.signedIn),
       userId: list.find((r) => r.userId)?.userId ?? null,
-      turns: ex.map((r) => ({
-        question: questionOf(r)!,
-        reply: r.reply!,
-        source: r.replySource,
-        feedback: r.feedback,
-        page: r.pagePath,
-        at: r.createdAt,
-        toolCalls: r.toolCalls ?? null,
-      })),
+      turns: ex.map((r) => {
+        const question = questionOf(r)!;
+        const target = findReplyTarget(list, r.replyToId);
+        return {
+          question,
+          reply: r.reply!,
+          source: r.replySource,
+          feedback: r.feedback,
+          page: r.pagePath,
+          at: r.createdAt,
+          toolCalls: r.toolCalls ?? null,
+          links: r.replyLinks ?? [],
+          // As historyTurns: the card goes on the tap itself, not on every follow-up.
+          asked: r.askedQuestionId && isAskVMessage(question) ? { questionId: r.askedQuestionId, chose: chosenIn(question) } : null,
+          quote: target ? quoteSnippet(target.reply!) : null,
+        };
+      }),
     });
   }
   const last = (c: Conversation) => c.turns[c.turns.length - 1].at;

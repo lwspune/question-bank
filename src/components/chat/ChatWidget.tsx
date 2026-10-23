@@ -10,7 +10,6 @@ import { useVFeatures } from "@/lib/chat/useVExplain";
 import { CHAT_MESSAGE_MAX } from "@/lib/chat/validate";
 import { vPlacement } from "@/lib/chat/placement";
 import { launcherHiddenAfterScroll } from "@/lib/chat/launcherScroll";
-import { splitReplyLinks } from "@/lib/chat/replyLinks";
 import { panelBox, type PanelBox } from "@/lib/chat/panelBox";
 import { SESSION_IDLE_MS, quoteSnippet, type HistoryTurn } from "@/lib/chat/conversation";
 import {
@@ -60,6 +59,8 @@ import VSays from "./VSays";
 import MathText from "./MathText";
 import VQuestionCard from "./VQuestionCard";
 import VAskedCard from "./VAskedCard";
+import VFace, { type VAvatar } from "./VFace";
+import ReplyText from "./VReplyText";
 import VPlanCard from "./VPlanCard";
 import {
   ASK_V_EVENT,
@@ -73,23 +74,6 @@ import {
 import { MESSAGE_IN, USER_BUBBLE, V_BUBBLE } from "./chatStyles";
 import PracticeBuilder, { PENDING_BUILD_KEY, logBuilderStep } from "./PracticeBuilder";
 import type { BuilderAnswers } from "@/lib/practiceTests/builder";
-
-type VAvatar = "idle" | "laugh" | "think" | "talk";
-
-// Plain <img>, deliberately not next/image — this codebase keeps image
-// optimization off Vercel's bill on purpose (see the Decisions log); these
-// are already pre-sized+optimized static assets in /public/chat.
-function VFace({ avatar, className }: { avatar: VAvatar; className?: string }) {
-  return (
-    <img
-      src={`/chat/v-${avatar}.png`}
-      alt=""
-      aria-hidden
-      className={className}
-      loading="lazy"
-    />
-  );
-}
 
 /**
  * One message in the window. An assistant turn may carry `links` (the paths
@@ -114,31 +98,6 @@ function keepable(turns: readonly ChatTurn[]): HistoryTurn[] {
       const { avatar: _avatar, transient: _transient, ...rest } = t;
       return rest as HistoryTurn;
     });
-}
-
-/** V's reply with its allowed paths as links; everything else stays text. */
-function ReplyText({ text, links, onNavigate }: { text: string; links?: string[]; onNavigate?: () => void }) {
-  if (!links || links.length === 0) return <MathText text={text} />;
-  return (
-    <>
-      {splitReplyLinks(text, links).map((seg, i) =>
-        seg.kind === "text" ? (
-          <span key={i}>
-            <MathText text={seg.text} />
-          </span>
-        ) : (
-          <Link
-            key={i}
-            href={seg.href}
-            onClick={onNavigate}
-            className="break-words font-medium text-brand-accent underline underline-offset-2 hover:no-underline focus-visible:rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-          >
-            {seg.href}
-          </Link>
-        )
-      )}
-    </>
-  );
 }
 
 const GREETING: ChatTurn = {

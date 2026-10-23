@@ -306,6 +306,26 @@ describe("groupConversations", () => {
     expect(g.find((c) => c.conversationId === other)?.userId).toBeNull();
   });
 
+  // 2026-10-23 (owner): the dashboard draws a conversation the way the student saw it.
+  it("gives each turn what the student's window showed: the reply's links, the question card and the quote", () => {
+    const Q1 = "11111111-1111-4111-8111-111111111111";
+    const [conv] = groupConversations([
+      typed("2026-10-21T10:00:00Z", "I picked (B). Explain this question.", "Use the direction cosine rule.", {
+        id: "r1",
+        askedQuestionId: Q1,
+        replyLinks: ["/questions/cbse-12/maths/three-dimensional-geometry"],
+      }),
+      // A follow-up about the same question: the card stays on the tap, as in the window.
+      typed("2026-10-21T10:07:00Z", "why 60?", "Because cos is 1/2.", { id: "r2", askedQuestionId: Q1, replyToId: "r1" }),
+    ]);
+    expect(conv.turns[0]).toMatchObject({
+      links: ["/questions/cbse-12/maths/three-dimensional-geometry"],
+      asked: { questionId: Q1, chose: "B" },
+      quote: null,
+    });
+    expect(conv.turns[1]).toMatchObject({ links: [], asked: null, quote: "Use the direction cosine rule." });
+  });
+
   it("leaves out conversations with nothing asked (a bare open)", () => {
     const open: ConversationRow = { ...faq("2026-10-15T09:00:00Z", "x", "x"), eventType: "launcher_open", questionId: null, reply: null, replySource: null };
     expect(groupConversations([open])).toEqual([]);
