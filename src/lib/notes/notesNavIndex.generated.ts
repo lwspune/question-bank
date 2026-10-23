@@ -3237,5 +3237,12 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "SSC CGL English",
     "chapterSlug": "spotting-errors",
     "subtopicCount": 5
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-english",
+    "subjectDisplay": "SSC CGL English",
+    "chapterSlug": "cloze-test",
+    "subtopicCount": 3
   }
 ];

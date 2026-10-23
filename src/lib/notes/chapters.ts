@@ -2096,6 +2096,11 @@ import {
   SSC_SPOTTING_ERRORS_NOTES,
   SSC_SPOTTING_ERRORS_SLUGS,
 } from "@/app/notes/ssc-cgl-english/spotting-errors/_data";
+import {
+  SSC_CLOZE_TEST_CHAPTER,
+  SSC_CLOZE_TEST_NOTES,
+  SSC_CLOZE_TEST_SLUGS,
+} from "@/app/notes/ssc-cgl-english/cloze-test/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -6723,6 +6728,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SSC_SPOTTING_ERRORS_CHAPTER,
     notes: SSC_SPOTTING_ERRORS_NOTES,
     slugs: SSC_SPOTTING_ERRORS_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "English",
+    subjectRoute: "ssc-cgl-english",
+    subjectDisplay: "SSC CGL English",
+    chapterSlug: "cloze-test",
+    chipLabel: "Cloze Test notes",
+    chapter: SSC_CLOZE_TEST_CHAPTER,
+    notes: SSC_CLOZE_TEST_NOTES,
+    slugs: SSC_CLOZE_TEST_SLUGS,
   },
 ];
 
