@@ -146,13 +146,13 @@ export const SSC_TG_TRIANGLE_NOTE: SubtopicNote = {
         latex: "\\frac{a\\sin\\theta + b\\cos\\theta}{c\\sin\\theta + d\\cos\\theta} = \\frac{a\\tan\\theta + b}{c\\tan\\theta + d}",
       },
       authoredExample: {
-        prompt: "If \\(4\\tan\\theta = 5\\), find \\(\\frac{8\\sin\\theta - 3\\cos\\theta}{2\\sin\\theta + 5\\cos\\theta}\\).",
+        prompt: "If \\(4\\tan\\theta = 9\\), find \\(\\frac{8\\sin\\theta - 6\\cos\\theta}{4\\sin\\theta + 6\\cos\\theta}\\).",
         steps: [
-          "Divide top and bottom by \\(\\cos\\theta\\): \\(\\frac{8\\tan\\theta - 3}{2\\tan\\theta + 5}\\).",
-          "With \\(\\tan\\theta = \\frac{5}{4}\\): numerator \\(10 - 3 = 7\\), denominator \\(\\frac{5}{2} + 5 = \\frac{15}{2}\\).",
-          "Value \\(= 7 \\times \\frac{2}{15} = \\frac{14}{15}\\). Fast check with sin = 5, cos = 4: \\(\\frac{40 - 12}{10 + 20} = \\frac{28}{30}\\).",
+          "Divide top and bottom by \\(\\cos\\theta\\): \\(\\frac{8\\tan\\theta - 6}{4\\tan\\theta + 6}\\).",
+          "With \\(\\tan\\theta = \\frac{9}{4}\\): numerator \\(18 - 6 = 12\\), denominator \\(9 + 6 = 15\\).",
+          "Value \\(= \\frac{12}{15} = \\frac{4}{5}\\). Fast check with sin = 9, cos = 4: \\(\\frac{72 - 24}{36 + 24} = \\frac{48}{60}\\).",
         ],
-        answer: "\\(\\frac{14}{15}\\)",
+        answer: "\\(\\frac{4}{5}\\)",
       },
       selfCheckExample: {
         prompt: "If \\(\\frac{2\\sin\\theta + 3\\cos\\theta}{\\sin\\theta - \\cos\\theta} = 7\\), find \\(\\tan\\theta\\).",

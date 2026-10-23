@@ -78,19 +78,18 @@ export const SSC_TG_VALUES_NOTE: SubtopicNote = {
         "- From 0° to 90° sine rises and cosine falls. They are equal only at 45°, so \\(\\sin\\theta < \\cos\\theta\\) below 45° and \\(\\sin\\theta > \\cos\\theta\\) above it.\n" +
         "- \\(\\sin^2 60^\\circ\\) means \\((\\sin 60^\\circ)^2 = \\frac{3}{4}\\): square the value, never the angle.",
       table: {
-        columns: ["Ratio", "0°", "30°", "45°", "60°", "90°"],
+        columns: ["Angle", "sin", "cos", "tan"],
         rows: [
-          { cells: ["sin", "\\(0\\)", "\\(\\frac{1}{2}\\)", "\\(\\frac{1}{\\sqrt{2}}\\)", "\\(\\frac{\\sqrt{3}}{2}\\)", "\\(1\\)"] },
-          { cells: ["cos", "\\(1\\)", "\\(\\frac{\\sqrt{3}}{2}\\)", "\\(\\frac{1}{\\sqrt{2}}\\)", "\\(\\frac{1}{2}\\)", "\\(0\\)"] },
+          { cells: ["0°", "\\(0\\)", "\\(1\\)", "\\(0\\)"] },
+          { cells: ["30°", "\\(\\frac{1}{2}\\)", "\\(\\frac{\\sqrt{3}}{2}\\)", "\\(\\frac{1}{\\sqrt{3}}\\)"] },
+          { cells: ["45°", "\\(\\frac{1}{\\sqrt{2}}\\)", "\\(\\frac{1}{\\sqrt{2}}\\)", "\\(1\\)"] },
+          { cells: ["60°", "\\(\\frac{\\sqrt{3}}{2}\\)", "\\(\\frac{1}{2}\\)", "\\(\\sqrt{3}\\)"] },
           {
-            cells: ["tan", "\\(0\\)", "\\(\\frac{1}{\\sqrt{3}}\\)", "\\(1\\)", "\\(\\sqrt{3}\\)", "Not defined"],
+            cells: ["90°", "\\(1\\)", "\\(0\\)", "Not defined"],
             noteAmber: "tan 90° has no value, because cos 90° = 0 sits in the denominator.",
           },
-          { cells: ["cosec", "Not defined", "\\(2\\)", "\\(\\sqrt{2}\\)", "\\(\\frac{2}{\\sqrt{3}}\\)", "\\(1\\)"] },
-          { cells: ["sec", "\\(1\\)", "\\(\\frac{2}{\\sqrt{3}}\\)", "\\(\\sqrt{2}\\)", "\\(2\\)", "Not defined"] },
-          { cells: ["cot", "Not defined", "\\(\\sqrt{3}\\)", "\\(1\\)", "\\(\\frac{1}{\\sqrt{3}}\\)", "\\(0\\)"] },
         ],
-        caption: "Squares are friendlier: \\(\\sin^2\\) runs \\(0, \\frac{1}{4}, \\frac{1}{2}, \\frac{3}{4}, 1\\) and \\(\\tan^2\\) runs \\(0, \\frac{1}{3}, 1, 3\\).",
+        caption: "cosec, sec and cot are the same entries flipped: \\(\\text{cosec}\\,30^\\circ = 2\\), \\(\\sec 60^\\circ = 2\\), \\(\\cot 30^\\circ = \\sqrt{3}\\). A 0 flips to not defined, so cosec 0°, sec 90° and cot 0° have no value, and cot 90° = 0. Squares are friendlier: \\(\\sin^2\\) runs \\(0, \\frac{1}{4}, \\frac{1}{2}, \\frac{3}{4}, 1\\) and \\(\\tan^2\\) runs \\(0, \\frac{1}{3}, 1, 3\\).",
       },
       selfCheckExample: {
         prompt: "Find the value of \\(4\\sin^2 60^\\circ - 2\\tan^2 45^\\circ + \\sec 60^\\circ\\).",

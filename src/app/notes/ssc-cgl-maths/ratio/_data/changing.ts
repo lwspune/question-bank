@@ -37,12 +37,12 @@ export const SSC_RA_CHANGING_NOTE: SubtopicNote = {
         answer: "12 : 15 : 35",
       },
       selfCheckExample: {
-        prompt: "If A : B = 2 : 3, B : C = 4 : 5 and C : D = 6 : 7, find A : D.",
+        prompt: "If A : B = 9 : 8, B : C = 6 : 11 and C : D = 11 : 12, find A : D.",
         steps: [
-          "\\(\\frac{A}{D} = \\frac{2}{3} \\times \\frac{4}{5} \\times \\frac{6}{7} = \\frac{48}{105} = \\frac{16}{35}\\).",
-          "Check by joining: A : B : C = 8 : 12 : 15, then times 2 and C : D times 5 give A : B : C : D = 16 : 24 : 30 : 35.",
+          "\\(\\frac{A}{D} = \\frac{9}{8} \\times \\frac{6}{11} \\times \\frac{11}{12} = \\frac{594}{1056} = \\frac{9}{16}\\).",
+          "Check by joining: make B = 24, so A : B : C = 27 : 24 : 44; then C = 44 makes D = 48, giving A : B : C : D = 27 : 24 : 44 : 48.",
         ],
-        answer: "16 : 35",
+        answer: "9 : 16",
       },
       practiceSet: [
         { prompt: "If x : y = 5 : 2 and y : z = 3 : 4, find x : y : z.", answer: "15 : 6 : 8" },
