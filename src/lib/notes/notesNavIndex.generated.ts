@@ -2992,5 +2992,12 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "SSC CGL Maths",
     "chapterSlug": "tsd",
     "subtopicCount": 8
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-maths",
+    "subjectDisplay": "SSC CGL Maths",
+    "chapterSlug": "interest",
+    "subtopicCount": 7
   }
 ];

@@ -1921,6 +1921,11 @@ import {
   SSC_TSD_NOTES,
   SSC_TSD_SLUGS,
 } from "@/app/notes/ssc-cgl-maths/tsd/_data";
+import {
+  SSC_INTEREST_CHAPTER,
+  SSC_INTEREST_NOTES,
+  SSC_INTEREST_SLUGS,
+} from "@/app/notes/ssc-cgl-maths/interest/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -6163,6 +6168,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SSC_TSD_CHAPTER,
     notes: SSC_TSD_NOTES,
     slugs: SSC_TSD_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Quantitative Aptitude",
+    subjectRoute: "ssc-cgl-maths",
+    subjectDisplay: "SSC CGL Maths",
+    chapterSlug: "interest",
+    chipLabel: "Simple and Compound Interest notes",
+    chapter: SSC_INTEREST_CHAPTER,
+    notes: SSC_INTEREST_NOTES,
+    slugs: SSC_INTEREST_SLUGS,
   },
 ];
 

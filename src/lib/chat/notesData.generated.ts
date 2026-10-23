@@ -430,7 +430,8 @@ export const NOTES_DATA_KEYS: readonly string[] = [
   "ssc-cgl-maths/surds-indices",
   "ssc-cgl-maths/mensuration-3d",
   "ssc-cgl-maths/mensuration-2d",
-  "ssc-cgl-maths/tsd"
+  "ssc-cgl-maths/tsd",
+  "ssc-cgl-maths/interest"
 ];
 
 export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, SubtopicNote>>> = {
@@ -861,4 +862,5 @@ export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, Sub
   "ssc-cgl-maths/mensuration-3d": () => import("@/app/notes/ssc-cgl-maths/mensuration-3d/_data").then((m) => m.SSC_MENSURATION_3D_NOTES),
   "ssc-cgl-maths/mensuration-2d": () => import("@/app/notes/ssc-cgl-maths/mensuration-2d/_data").then((m) => m.SSC_MENSURATION_2D_NOTES),
   "ssc-cgl-maths/tsd": () => import("@/app/notes/ssc-cgl-maths/tsd/_data").then((m) => m.SSC_TSD_NOTES),
+  "ssc-cgl-maths/interest": () => import("@/app/notes/ssc-cgl-maths/interest/_data").then((m) => m.SSC_INTEREST_NOTES),
 };
