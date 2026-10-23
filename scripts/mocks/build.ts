@@ -35,6 +35,7 @@
  *   npx tsx scripts/mocks/build.ts --paper=mht-cet          # both CET papers
  *   npx tsx scripts/mocks/build.ts --paper=jee              # JEE Mains 2025+
  *   npx tsx scripts/mocks/build.ts --paper=ipmat-indore    # IPMAT Indore 2022-2026
+ *   npx tsx scripts/mocks/build.ts --paper=imat            # IMAT ministry papers 2023+
  *   npx tsx scripts/mocks/build.ts --only=2026-jan-21-s1    # one JEE shift
  *   npx tsx scripts/mocks/build.ts --only=2024-Sep --apply --publish
  *   npx tsx scripts/mocks/build.ts --only=cds-2026-i-english
@@ -69,6 +70,7 @@ import {
   SSC_CGL_T2_COMPUTER_PAPER,
   SSC_CGL_T2_QUANT_PAPER,
   SPI_PAPER,
+  IMAT_PAPER,
   type MockPaperBlueprint,
 } from "../../src/lib/mocks/blueprints";
 import type { MockAnswerKey, OptionLabel } from "../../src/lib/mocks/answers";
@@ -101,6 +103,7 @@ import { deriveUpscSittings } from "./upscSittings";
 import { PAPERS as UPSC_PAPERS } from "../upsc/config";
 import { sscSittings, sscT2Sittings, t2Rows, withHeld } from "./sscSittings";
 import { spiSittings } from "./spiSittings";
+import { imatSittings } from "./imatSittings";
 import { mockTestRow } from "../../src/lib/mocks/row";
 
 function loadEnv() {
@@ -815,12 +818,13 @@ async function main() {
   const runSsc = !paperFilter || paperFilter === "ssc-cgl";
   const runSscT2 = !paperFilter || paperFilter === "ssc-cgl-tier-2";
   const runSpi = !paperFilter || paperFilter === "spi";
+  const runImat = !paperFilter || paperFilter === "imat";
   // Opt-in ONLY: the Mains rows are PRIVATE until those exams go public, and the
   // builder reads PUBLIC rows, so a default run would report every one as a failure.
   const runMpscMains = paperFilter === "mpsc-mains";
-  if (paperFilter && !runNda && !runNeet && !runCds && !runMhtCet && !runJee && !runIpmat && !runMpsc && !runJipmat && !runUpsc && !runSsc && !runSscT2 && !runSpi && !runMpscMains) {
+  if (paperFilter && !runNda && !runNeet && !runCds && !runMhtCet && !runJee && !runIpmat && !runMpsc && !runJipmat && !runUpsc && !runSsc && !runSscT2 && !runSpi && !runImat && !runMpscMains) {
     throw new Error(
-      `no paper matches --paper=${paperFilter} (known: maths, gat, neet, cds, mht-cet, jee, ipmat-indore, jipmat, mpsc, upsc, ssc-cgl, ssc-cgl-tier-2, spi, mpsc-mains)`
+      `no paper matches --paper=${paperFilter} (known: maths, gat, neet, cds, mht-cet, jee, ipmat-indore, jipmat, mpsc, upsc, ssc-cgl, ssc-cgl-tier-2, spi, imat, mpsc-mains)`
     );
   }
 
@@ -881,6 +885,7 @@ async function main() {
   if (runSsc) await buildFromSourceFiles(db, SSC_CGL_T1_PAPER, sscCglSittings(), run, "sscSittings.ts");
   if (runSscT2) await buildSscT2(db, run);
   if (runSpi) await buildFromSourceFiles(db, SPI_PAPER, spiMockSittings(), run, "spiSittings.ts");
+  if (runImat) await buildFromSourceFiles(db, IMAT_PAPER, imatSittings(), run, "imatSittings.ts");
   if (runMpscMains) await buildMpscMains(db, run);
 
   console.log(`\n${apply ? "Upserted" : "Would build"} ${run.built.n} mock(s)${publish ? " (published)" : apply ? " (draft)" : ""}.`);
