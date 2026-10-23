@@ -5,6 +5,7 @@ import Link from "next/link";
 import { CheckCircle2, XCircle } from "lucide-react";
 import { toast } from "sonner";
 import MathText from "./MathText";
+import MathBlockText from "./MathBlockText";
 import SignInLink from "@/components/reveal/SignInLink";
 import { askVAbout } from "@/lib/chat/askVEvent";
 import type { CardQuestion } from "@/lib/chat/questionCard";
@@ -74,13 +75,13 @@ export default function VQuestionCard({ id, kind }: { id: string; kind: "try" | 
     <div className="ml-9 mt-2 space-y-2 rounded-xl border bg-card p-3 text-sm shadow-sm" aria-label={kind === "try" ? "A question to try" : "Is this your question?"}>
       <p className="text-xs font-medium text-muted-foreground">{kind === "try" ? `Try this one · ${q.where}` : `Is this your question? · ${q.where}`}</p>
       {q.context && (
-        <p className="whitespace-pre-wrap font-serif text-muted-foreground">
-          <MathText text={q.context} />
-        </p>
+        <div className="whitespace-pre-wrap font-serif text-muted-foreground">
+          <MathBlockText text={q.context} />
+        </div>
       )}
-      <p className="whitespace-pre-wrap font-serif">
-        <MathText text={q.text} />
-      </p>
+      <div className="whitespace-pre-wrap font-serif">
+        <MathBlockText text={q.text} />
+      </div>
       {q.imageUrl && (
         // A question figure from our own storage, the same file the card on the site shows.
         // eslint-disable-next-line @next/next/no-img-element
