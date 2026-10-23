@@ -463,7 +463,8 @@ export const NOTES_DATA_KEYS: readonly string[] = [
   "ssc-cgl-reasoning/embedded-figures",
   "ssc-cgl-english/fill-in-the-blanks",
   "ssc-cgl-english/reading-comprehension",
-  "ssc-cgl-english/idioms-and-phrases"
+  "ssc-cgl-english/idioms-and-phrases",
+  "ssc-cgl-english/sentence-rearrangement"
 ];
 
 export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, SubtopicNote>>> = {
@@ -927,4 +928,5 @@ export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, Sub
   "ssc-cgl-english/fill-in-the-blanks": () => import("@/app/notes/ssc-cgl-english/fill-in-the-blanks/_data").then((m) => m.SSC_FILL_IN_THE_BLANKS_NOTES),
   "ssc-cgl-english/reading-comprehension": () => import("@/app/notes/ssc-cgl-english/reading-comprehension/_data").then((m) => m.SSC_READING_COMPREHENSION_NOTES),
   "ssc-cgl-english/idioms-and-phrases": () => import("@/app/notes/ssc-cgl-english/idioms-and-phrases/_data").then((m) => m.SSC_IDIOMS_AND_PHRASES_NOTES),
+  "ssc-cgl-english/sentence-rearrangement": () => import("@/app/notes/ssc-cgl-english/sentence-rearrangement/_data").then((m) => m.SSC_SENTENCE_REARRANGEMENT_NOTES),
 };

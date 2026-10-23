@@ -2086,6 +2086,11 @@ import {
   SSC_IDIOMS_AND_PHRASES_NOTES,
   SSC_IDIOMS_AND_PHRASES_SLUGS,
 } from "@/app/notes/ssc-cgl-english/idioms-and-phrases/_data";
+import {
+  SSC_SENTENCE_REARRANGEMENT_CHAPTER,
+  SSC_SENTENCE_REARRANGEMENT_NOTES,
+  SSC_SENTENCE_REARRANGEMENT_SLUGS,
+} from "@/app/notes/ssc-cgl-english/sentence-rearrangement/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -6691,6 +6696,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SSC_IDIOMS_AND_PHRASES_CHAPTER,
     notes: SSC_IDIOMS_AND_PHRASES_NOTES,
     slugs: SSC_IDIOMS_AND_PHRASES_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "English",
+    subjectRoute: "ssc-cgl-english",
+    subjectDisplay: "SSC CGL English",
+    chapterSlug: "sentence-rearrangement",
+    chipLabel: "Sentence Rearrangement notes",
+    chapter: SSC_SENTENCE_REARRANGEMENT_CHAPTER,
+    notes: SSC_SENTENCE_REARRANGEMENT_NOTES,
+    slugs: SSC_SENTENCE_REARRANGEMENT_SLUGS,
   },
 ];
 
