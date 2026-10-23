@@ -1901,6 +1901,16 @@ import {
   SSC_CIRCLES_NOTES,
   SSC_CIRCLES_SLUGS,
 } from "@/app/notes/ssc-cgl-maths/circles/_data";
+import {
+  SSC_SURDS_INDICES_CHAPTER,
+  SSC_SURDS_INDICES_NOTES,
+  SSC_SURDS_INDICES_SLUGS,
+} from "@/app/notes/ssc-cgl-maths/surds-indices/_data";
+import {
+  SSC_MENSURATION_3D_CHAPTER,
+  SSC_MENSURATION_3D_NOTES,
+  SSC_MENSURATION_3D_SLUGS,
+} from "@/app/notes/ssc-cgl-maths/mensuration-3d/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -6099,6 +6109,28 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SSC_CIRCLES_CHAPTER,
     notes: SSC_CIRCLES_NOTES,
     slugs: SSC_CIRCLES_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Quantitative Aptitude",
+    subjectRoute: "ssc-cgl-maths",
+    subjectDisplay: "SSC CGL Maths",
+    chapterSlug: "surds-indices",
+    chipLabel: "Surds, Indices and Simplification notes",
+    chapter: SSC_SURDS_INDICES_CHAPTER,
+    notes: SSC_SURDS_INDICES_NOTES,
+    slugs: SSC_SURDS_INDICES_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Quantitative Aptitude",
+    subjectRoute: "ssc-cgl-maths",
+    subjectDisplay: "SSC CGL Maths",
+    chapterSlug: "mensuration-3d",
+    chipLabel: "Mensuration 3D notes",
+    chapter: SSC_MENSURATION_3D_CHAPTER,
+    notes: SSC_MENSURATION_3D_NOTES,
+    slugs: SSC_MENSURATION_3D_SLUGS,
   },
 ];
 

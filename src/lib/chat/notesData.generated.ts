@@ -426,7 +426,9 @@ export const NOTES_DATA_KEYS: readonly string[] = [
   "ssc-cgl-maths/ratio",
   "ssc-cgl-maths/time-work",
   "ssc-cgl-maths/algebraic-identities",
-  "ssc-cgl-maths/circles"
+  "ssc-cgl-maths/circles",
+  "ssc-cgl-maths/surds-indices",
+  "ssc-cgl-maths/mensuration-3d"
 ];
 
 export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, SubtopicNote>>> = {
@@ -853,4 +855,6 @@ export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, Sub
   "ssc-cgl-maths/time-work": () => import("@/app/notes/ssc-cgl-maths/time-work/_data").then((m) => m.SSC_TIME_WORK_NOTES),
   "ssc-cgl-maths/algebraic-identities": () => import("@/app/notes/ssc-cgl-maths/algebraic-identities/_data").then((m) => m.SSC_ALGEBRAIC_IDENTITIES_NOTES),
   "ssc-cgl-maths/circles": () => import("@/app/notes/ssc-cgl-maths/circles/_data").then((m) => m.SSC_CIRCLES_NOTES),
+  "ssc-cgl-maths/surds-indices": () => import("@/app/notes/ssc-cgl-maths/surds-indices/_data").then((m) => m.SSC_SURDS_INDICES_NOTES),
+  "ssc-cgl-maths/mensuration-3d": () => import("@/app/notes/ssc-cgl-maths/mensuration-3d/_data").then((m) => m.SSC_MENSURATION_3D_NOTES),
 };
