@@ -8,7 +8,7 @@
  * notes (lib/chat/notesItem.ts): no bank id, so it travels as the concept and
  * its position, and the server reads it from the notes page it is on.
  */
-import type { NotesItemRef } from "./notesItem";
+import { notesPageOf, parseNotesItemRef, type NotesItemRef } from "./notesItem";
 
 export const ASK_V_EVENT = "v:ask";
 
@@ -35,6 +35,55 @@ export function questionForRequest(d: AskVDetail): { id: string; chose: string |
 /** What the window sends for an Ask V tap. */
 export function askVMessage(chose: string | null): string {
   return chose ? `I picked (${chose}). Explain this question.` : "Explain this question.";
+}
+
+const ASK_V_MESSAGE_RE = /^(?:I picked \(([A-E])\)\. )?Explain this question\.$/;
+
+/** A message the window sent for an Ask V tap (askVMessage), not one the student typed. */
+export function isAskVMessage(text: string): boolean {
+  return ASK_V_MESSAGE_RE.test(text);
+}
+
+/** The option an Ask V message says the student picked. */
+export function chosenIn(text: string): string | null {
+  return ASK_V_MESSAGE_RE.exec(text)?.[1] ?? null;
+}
+
+/**
+ * The question card above an Ask V message (owner, 2026-10-23): which question
+ * it was about. A bank question by id; a notes practice question by its
+ * position on the notes page it was tapped on. The card reads the question,
+ * WITHOUT its answer, from /api/chat/question (cardQuery).
+ */
+export type AskedCard = { questionId: string; chose: string | null } | { notes: NotesItemRef; page: string };
+
+const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+const PICK_RE = /^[A-E]$/;
+
+export function askedCardOf(d: AskVDetail, page: string | null): AskedCard | null {
+  if (d.notes) return page && notesPageOf(page) ? { notes: d.notes, page } : null;
+  return { questionId: d.questionId, chose: d.chose };
+}
+
+/** A card kept on the device (localStorage) is checked before it is used. */
+export function parseAskedCard(raw: unknown): AskedCard | null {
+  if (!raw || typeof raw !== "object") return null;
+  const o = raw as { questionId?: unknown; chose?: unknown; notes?: unknown; page?: unknown };
+  if (typeof o.questionId === "string") {
+    if (!UUID_RE.test(o.questionId)) return null;
+    if (o.chose !== null && !(typeof o.chose === "string" && PICK_RE.test(o.chose))) return null;
+    return { questionId: o.questionId, chose: o.chose };
+  }
+  const notes = parseNotesItemRef(o.notes);
+  if (!notes || typeof o.page !== "string" || !notesPageOf(o.page)) return null;
+  return { notes, page: o.page };
+}
+
+/** The query string /api/chat/question reads the card's question from. */
+export function cardQuery(c: AskedCard): string {
+  if ("questionId" in c) return `id=${c.questionId}`;
+  const index = c.notes.item === "practice" ? `&index=${c.notes.index}` : "";
+  return `page=${encodeURIComponent(c.page)}&concept=${c.notes.concept}&item=${c.notes.item}${index}`;
 }
 
 export function askVAbout(detail: AskVDetail): void {

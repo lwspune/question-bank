@@ -4,6 +4,9 @@
  * GET  /api/chat/question?id=<uuid>  the question for "Try a similar one" or
  *      "Is this your question?", WITHOUT its answer (lib/chat/questionCard.ts).
  *      PUBLIC questions only (anon client), so it may be cached publicly.
+ *      Also (2026-10-23) ?page=<notes page>&concept=&item=[&index=]: a notes
+ *      practice question for the card above an Ask V tap, prompt and options
+ *      only (lib/chat/notesItem.ts notesItemCard).
  * POST /api/chat/question  { id, chose }  a signed-in student's pick, checked
  *      here. It is one of the day's free answers like any other reveal, and
  *      it is recorded as practice on the "v" surface, with a miss as an
@@ -25,6 +28,8 @@ import { parseAskedQuestion, revealCheck, toVQuestion } from "@/lib/chat/questio
 import { cardView, gradeCard } from "@/lib/chat/questionCard";
 import { revealedToday } from "@/lib/chat/questionReveal";
 import { publicImageUrl } from "@/lib/storage/imageUrl";
+import { parseNotesItemRef } from "@/lib/chat/notesItem";
+import { loadNotesItemCard } from "@/lib/chat/notesItemServer";
 
 export const dynamic = "force-dynamic";
 
@@ -38,7 +43,19 @@ async function explainOn(): Promise<boolean> {
 export async function GET(request: NextRequest) {
   try {
     if (!(await explainOn())) return NextResponse.json({ error: "Not found" }, { status: 404 });
-    const asked = parseAskedQuestion({ id: request.nextUrl.searchParams.get("id") });
+    const params = request.nextUrl.searchParams;
+    const page = params.get("page");
+    if (page !== null) {
+      const index = params.get("index");
+      const ref = parseNotesItemRef({ concept: params.get("concept"), item: params.get("item"), index: index === null ? undefined : Number(index) });
+      const card = ref ? await loadNotesItemCard(page, ref) : null;
+      if (!card) return NextResponse.json({ error: "Not found" }, { status: 404 });
+      return NextResponse.json(
+        { question: card },
+        { headers: { "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400" } }
+      );
+    }
+    const asked = parseAskedQuestion({ id: params.get("id") });
     if (!asked) return NextResponse.json({ error: "Not found" }, { status: 404 });
     const row = (await queryQuestionsByIds(createSupabaseAnonClient(), [asked.id]))[0];
     if (!row) return NextResponse.json({ error: "Not found" }, { status: 404 });

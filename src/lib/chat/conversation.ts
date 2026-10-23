@@ -15,6 +15,7 @@
 import { PREDEFINED_QUESTIONS } from "./faq";
 import { ABUSE_REPLY } from "./abuse";
 import type { ToolCallLog } from "./anthropic";
+import { chosenIn, isAskVMessage, type AskedCard } from "./askVEvent";
 
 export type ConversationRow = {
   id: string;
@@ -150,7 +151,14 @@ export function quoteSnippet(text: string): string {
 }
 
 export type HistoryTurn =
-  | { role: "user"; text: string; /** The start of the message it replies to (0174). */ quote?: string }
+  | {
+      role: "user";
+      text: string;
+      /** The start of the message it replies to (0174). */
+      quote?: string;
+      /** The question an Ask V tap was about, shown as a card above it (2026-10-23). */
+      asked?: AskedCard;
+    }
   | {
       role: "assistant";
       text: string;
@@ -164,9 +172,15 @@ export function historyTurns(rows: readonly ConversationRow[]): HistoryTurn[] {
   const turns: HistoryTurn[] = [];
   for (const r of exchanges(rows)) {
     const target = findReplyTarget(rows, r.replyToId);
-    turns.push(
-      target ? { role: "user", text: questionOf(r)!, quote: quoteSnippet(target.reply!) } : { role: "user", text: questionOf(r)! }
-    );
+    const text = questionOf(r)!;
+    // The card goes on the tap itself, not on every follow-up about the same question.
+    const asked = r.askedQuestionId && isAskVMessage(text) ? { questionId: r.askedQuestionId, chose: chosenIn(text) } : null;
+    turns.push({
+      role: "user",
+      text,
+      ...(target ? { quote: quoteSnippet(target.reply!) } : {}),
+      ...(asked ? { asked } : {}),
+    });
     if (r.replySource === "ai") {
       turns.push({
         role: "assistant",

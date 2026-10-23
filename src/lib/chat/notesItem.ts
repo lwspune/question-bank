@@ -14,6 +14,7 @@
  * Pure. Spec: tests/chat-notes-item.test.ts.
  */
 import type { SubtopicNote } from "@/app/notes/_types";
+import type { CardQuestion } from "./questionCard";
 
 export type NotesItemRef = { concept: string; item: "self" } | { concept: string; item: "practice"; index: number };
 
@@ -49,6 +50,26 @@ const plain = (s: string) => s.replace(/\*\*/g, "").trim();
 const letter = (i: number) => String.fromCharCode(65 + i);
 
 const RULES = `Explain only from the stored solution and what the notes teach above. Never work out your own answer, and never say the stored answer is wrong (if they think it is, tell them to use Report on the notes page). Explain it straight away, without asking whether they want a hint; give a hint (the first idea only, never the answer) only when they ask for one. Do not call similar_question: there is no similar question for a notes item.`;
+
+/**
+ * The card shown above an Ask V tap on a notes item (2026-10-23): the prompt
+ * and, for a self-check written as an exam item, its options. NEVER its
+ * answer, steps or method: the student has not revealed them.
+ */
+export function notesItemCard(note: SubtopicNote, ref: NotesItemRef, page: string): CardQuestion | null {
+  const concept = note.concepts.find((c) => c.slug === ref.concept);
+  if (!concept) return null;
+  const id = `notes:${page}#${ref.concept}:${ref.item === "practice" ? ref.index : "self"}`;
+  const where = `Notes · ${note.title}`;
+  if (ref.item === "self") {
+    const ex = concept.selfCheckExample;
+    if (!ex) return null;
+    const options = (ex.options ?? []).map((text, i) => ({ label: letter(i), text }));
+    return { id, text: ex.prompt, context: null, imageUrl: null, where, options };
+  }
+  const rep = concept.practiceSet?.[ref.index];
+  return rep ? { id, text: rep.prompt, context: null, imageUrl: null, where, options: [] } : null;
+}
 
 /** What V is told about the tapped notes item, or null when it is not on that page. */
 export function notesItemBrief(note: SubtopicNote, ref: NotesItemRef): string | null {
