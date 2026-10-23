@@ -434,7 +434,12 @@ export const NOTES_DATA_KEYS: readonly string[] = [
   "ssc-cgl-maths/interest",
   "ssc-cgl-maths/triangles",
   "ssc-cgl-maths/linear-equations",
-  "ssc-cgl-maths/number-system"
+  "ssc-cgl-maths/number-system",
+  "ssc-cgl-maths/coordinate-geometry",
+  "ssc-cgl-maths/heights-distances",
+  "ssc-cgl-maths/lines-angles",
+  "ssc-cgl-maths/quadrilaterals",
+  "ssc-cgl-maths/polynomials"
 ];
 
 export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, SubtopicNote>>> = {
@@ -869,4 +874,9 @@ export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, Sub
   "ssc-cgl-maths/triangles": () => import("@/app/notes/ssc-cgl-maths/triangles/_data").then((m) => m.SSC_TRIANGLES_NOTES),
   "ssc-cgl-maths/linear-equations": () => import("@/app/notes/ssc-cgl-maths/linear-equations/_data").then((m) => m.SSC_LINEAR_EQUATIONS_NOTES),
   "ssc-cgl-maths/number-system": () => import("@/app/notes/ssc-cgl-maths/number-system/_data").then((m) => m.SSC_NUMBER_SYSTEM_NOTES),
+  "ssc-cgl-maths/coordinate-geometry": () => import("@/app/notes/ssc-cgl-maths/coordinate-geometry/_data").then((m) => m.SSC_COORDINATE_GEOMETRY_NOTES),
+  "ssc-cgl-maths/heights-distances": () => import("@/app/notes/ssc-cgl-maths/heights-distances/_data").then((m) => m.SSC_HEIGHTS_DISTANCES_NOTES),
+  "ssc-cgl-maths/lines-angles": () => import("@/app/notes/ssc-cgl-maths/lines-angles/_data").then((m) => m.SSC_LINES_ANGLES_NOTES),
+  "ssc-cgl-maths/quadrilaterals": () => import("@/app/notes/ssc-cgl-maths/quadrilaterals/_data").then((m) => m.SSC_QUADRILATERALS_NOTES),
+  "ssc-cgl-maths/polynomials": () => import("@/app/notes/ssc-cgl-maths/polynomials/_data").then((m) => m.SSC_POLYNOMIALS_NOTES),
 };

@@ -1941,6 +1941,31 @@ import {
   SSC_NUMBER_SYSTEM_NOTES,
   SSC_NUMBER_SYSTEM_SLUGS,
 } from "@/app/notes/ssc-cgl-maths/number-system/_data";
+import {
+  SSC_COORDINATE_GEOMETRY_CHAPTER,
+  SSC_COORDINATE_GEOMETRY_NOTES,
+  SSC_COORDINATE_GEOMETRY_SLUGS,
+} from "@/app/notes/ssc-cgl-maths/coordinate-geometry/_data";
+import {
+  SSC_HEIGHTS_DISTANCES_CHAPTER,
+  SSC_HEIGHTS_DISTANCES_NOTES,
+  SSC_HEIGHTS_DISTANCES_SLUGS,
+} from "@/app/notes/ssc-cgl-maths/heights-distances/_data";
+import {
+  SSC_LINES_ANGLES_CHAPTER,
+  SSC_LINES_ANGLES_NOTES,
+  SSC_LINES_ANGLES_SLUGS,
+} from "@/app/notes/ssc-cgl-maths/lines-angles/_data";
+import {
+  SSC_QUADRILATERALS_CHAPTER,
+  SSC_QUADRILATERALS_NOTES,
+  SSC_QUADRILATERALS_SLUGS,
+} from "@/app/notes/ssc-cgl-maths/quadrilaterals/_data";
+import {
+  SSC_POLYNOMIALS_CHAPTER,
+  SSC_POLYNOMIALS_NOTES,
+  SSC_POLYNOMIALS_SLUGS,
+} from "@/app/notes/ssc-cgl-maths/polynomials/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -6227,6 +6252,61 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SSC_NUMBER_SYSTEM_CHAPTER,
     notes: SSC_NUMBER_SYSTEM_NOTES,
     slugs: SSC_NUMBER_SYSTEM_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Quantitative Aptitude",
+    subjectRoute: "ssc-cgl-maths",
+    subjectDisplay: "SSC CGL Maths",
+    chapterSlug: "coordinate-geometry",
+    chipLabel: "Coordinate Geometry notes",
+    chapter: SSC_COORDINATE_GEOMETRY_CHAPTER,
+    notes: SSC_COORDINATE_GEOMETRY_NOTES,
+    slugs: SSC_COORDINATE_GEOMETRY_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Quantitative Aptitude",
+    subjectRoute: "ssc-cgl-maths",
+    subjectDisplay: "SSC CGL Maths",
+    chapterSlug: "heights-distances",
+    chipLabel: "Heights and Distances notes",
+    chapter: SSC_HEIGHTS_DISTANCES_CHAPTER,
+    notes: SSC_HEIGHTS_DISTANCES_NOTES,
+    slugs: SSC_HEIGHTS_DISTANCES_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Quantitative Aptitude",
+    subjectRoute: "ssc-cgl-maths",
+    subjectDisplay: "SSC CGL Maths",
+    chapterSlug: "lines-angles",
+    chipLabel: "Lines, Angles and Polygons notes",
+    chapter: SSC_LINES_ANGLES_CHAPTER,
+    notes: SSC_LINES_ANGLES_NOTES,
+    slugs: SSC_LINES_ANGLES_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Quantitative Aptitude",
+    subjectRoute: "ssc-cgl-maths",
+    subjectDisplay: "SSC CGL Maths",
+    chapterSlug: "quadrilaterals",
+    chipLabel: "Quadrilaterals notes",
+    chapter: SSC_QUADRILATERALS_CHAPTER,
+    notes: SSC_QUADRILATERALS_NOTES,
+    slugs: SSC_QUADRILATERALS_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Quantitative Aptitude",
+    subjectRoute: "ssc-cgl-maths",
+    subjectDisplay: "SSC CGL Maths",
+    chapterSlug: "polynomials",
+    chipLabel: "Polynomials notes",
+    chapter: SSC_POLYNOMIALS_CHAPTER,
+    notes: SSC_POLYNOMIALS_NOTES,
+    slugs: SSC_POLYNOMIALS_SLUGS,
   },
 ];
 
