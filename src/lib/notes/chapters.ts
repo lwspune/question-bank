@@ -2031,6 +2031,11 @@ import {
   SSC_FIGURE_COUNTING_NOTES,
   SSC_FIGURE_COUNTING_SLUGS,
 } from "@/app/notes/ssc-cgl-reasoning/figure-counting/_data";
+import {
+  SSC_MIRROR_IMAGES_CHAPTER,
+  SSC_MIRROR_IMAGES_NOTES,
+  SSC_MIRROR_IMAGES_SLUGS,
+} from "@/app/notes/ssc-cgl-reasoning/mirror-images/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -6515,6 +6520,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SSC_FIGURE_COUNTING_CHAPTER,
     notes: SSC_FIGURE_COUNTING_NOTES,
     slugs: SSC_FIGURE_COUNTING_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Reasoning",
+    subjectRoute: "ssc-cgl-reasoning",
+    subjectDisplay: "SSC CGL Reasoning",
+    chapterSlug: "mirror-images",
+    chipLabel: "Mirror and Water Images notes",
+    chapter: SSC_MIRROR_IMAGES_CHAPTER,
+    notes: SSC_MIRROR_IMAGES_NOTES,
+    slugs: SSC_MIRROR_IMAGES_SLUGS,
   },
 ];
 

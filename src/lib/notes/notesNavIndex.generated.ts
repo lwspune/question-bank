@@ -3146,5 +3146,12 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "SSC CGL Reasoning",
     "chapterSlug": "figure-counting",
     "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-reasoning",
+    "subjectDisplay": "SSC CGL Reasoning",
+    "chapterSlug": "mirror-images",
+    "subtopicCount": 2
   }
 ];
