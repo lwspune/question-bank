@@ -433,7 +433,8 @@ export const NOTES_DATA_KEYS: readonly string[] = [
   "ssc-cgl-maths/tsd",
   "ssc-cgl-maths/interest",
   "ssc-cgl-maths/triangles",
-  "ssc-cgl-maths/linear-equations"
+  "ssc-cgl-maths/linear-equations",
+  "ssc-cgl-maths/number-system"
 ];
 
 export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, SubtopicNote>>> = {
@@ -867,4 +868,5 @@ export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, Sub
   "ssc-cgl-maths/interest": () => import("@/app/notes/ssc-cgl-maths/interest/_data").then((m) => m.SSC_INTEREST_NOTES),
   "ssc-cgl-maths/triangles": () => import("@/app/notes/ssc-cgl-maths/triangles/_data").then((m) => m.SSC_TRIANGLES_NOTES),
   "ssc-cgl-maths/linear-equations": () => import("@/app/notes/ssc-cgl-maths/linear-equations/_data").then((m) => m.SSC_LINEAR_EQUATIONS_NOTES),
+  "ssc-cgl-maths/number-system": () => import("@/app/notes/ssc-cgl-maths/number-system/_data").then((m) => m.SSC_NUMBER_SYSTEM_NOTES),
 };

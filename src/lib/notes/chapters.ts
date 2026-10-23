@@ -1936,6 +1936,11 @@ import {
   SSC_LINEAR_EQUATIONS_NOTES,
   SSC_LINEAR_EQUATIONS_SLUGS,
 } from "@/app/notes/ssc-cgl-maths/linear-equations/_data";
+import {
+  SSC_NUMBER_SYSTEM_CHAPTER,
+  SSC_NUMBER_SYSTEM_NOTES,
+  SSC_NUMBER_SYSTEM_SLUGS,
+} from "@/app/notes/ssc-cgl-maths/number-system/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -6211,6 +6216,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SSC_LINEAR_EQUATIONS_CHAPTER,
     notes: SSC_LINEAR_EQUATIONS_NOTES,
     slugs: SSC_LINEAR_EQUATIONS_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Quantitative Aptitude",
+    subjectRoute: "ssc-cgl-maths",
+    subjectDisplay: "SSC CGL Maths",
+    chapterSlug: "number-system",
+    chipLabel: "Number System notes",
+    chapter: SSC_NUMBER_SYSTEM_CHAPTER,
+    notes: SSC_NUMBER_SYSTEM_NOTES,
+    slugs: SSC_NUMBER_SYSTEM_SLUGS,
   },
 ];
 
