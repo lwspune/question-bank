@@ -11,7 +11,6 @@ import {
   rankNotesConcepts,
   formatConceptResult,
   conceptTool,
-  GENERAL_LABEL,
   type BankAnswer,
   type NotesConceptEntry,
 } from "@/lib/chat/conceptSearch";
@@ -99,7 +98,7 @@ describe("formatConceptResult", () => {
     expect(out).toContain("Maharashtra HSC Class 12, Electrostatics (/questions/mh-hsc-12/physics/electrostatics)");
     expect(out).toContain("Question: Derive an expression");
     expect(out).toContain("Model answer: Consider a point charge");
-    expect(out).not.toContain(GENERAL_LABEL);
+    expect(out).not.toMatch(/general explanation/i);
   });
 
   it("trims a long model answer", () => {
@@ -116,9 +115,12 @@ describe("formatConceptResult", () => {
     expect(out).toContain("negative susceptibility");
   });
 
-  it("with nothing found, allows a general explanation only under the fixed label", () => {
+  it("with nothing found, allows a short general explanation, with no fixed opening line", () => {
+    // Owner, 2026-10-23: "General explanation (not from our question bank):" adds no value to the student.
     const out = formatConceptResult({ bank: [], notes: [] });
-    expect(out).toContain(GENERAL_LABEL);
+    expect(out).toMatch(/short general explanation/i);
+    expect(out).not.toMatch(/not from our question bank/i);
+    expect(out).not.toMatch(/starts? exactly with/i);
     expect(out).toMatch(/never .*numeric/i);
   });
 });
@@ -181,7 +183,7 @@ describe("conceptTool", () => {
 
   it("with nothing in the bank or the notes, returns the general-explanation permission", async () => {
     const { tool } = setup([]);
-    expect(await tool.run({ topic: "coriolis effect" })).toContain(GENERAL_LABEL);
+    expect(await tool.run({ topic: "coriolis effect" })).toMatch(/short general explanation/i);
   });
 
   it("a failed bank search is not 'nothing found': V must not fall back to its own knowledge on an outage", async () => {
@@ -197,7 +199,7 @@ describe("conceptTool", () => {
       onPaths: (p) => paths.push(...p),
     });
     const out = await tool.run({ topic: "electric potential" });
-    expect(out).not.toContain(GENERAL_LABEL);
+    expect(out).not.toMatch(/general explanation/i);
     expect(out).toMatch(/could not search/i);
   });
 });

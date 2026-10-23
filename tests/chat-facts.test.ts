@@ -18,7 +18,6 @@ import {
 } from "@/lib/chat/facts";
 import { GUIDE_CATALOG } from "@/lib/guide/guideCatalog";
 import { ABUSE_REPLY } from "@/lib/chat/abuse";
-import { GENERAL_LABEL } from "@/lib/chat/conceptSearch";
 import { EXAM_REGISTRY } from "@/lib/exam/examContext";
 import { getNotesExamGroups } from "@/lib/notes/notesNav";
 
@@ -493,12 +492,14 @@ describe("buildSystemPrompt", () => {
   });
 
   // V_SPEC.md step 2 (owner, 2026-10-22): concepts are explained from our bank's model answers, then
-  // our notes, and only then from V's own knowledge under a fixed label.
-  it("with explanations on, has V explain a concept from explain_concept, its own knowledge only labelled", () => {
+  // our notes, and only then from V's own knowledge. No fixed opening line since 2026-10-23 (owner: it adds no value).
+  it("with explanations on, has V explain a concept from explain_concept, its own knowledge only when that finds nothing", () => {
     const p = buildSystemPrompt({ ...base, explainEnabled: true });
     expect(p).toMatch(/7a\. Concepts/);
     expect(p).toMatch(/call explain_concept/);
-    expect(p).toContain(GENERAL_LABEL);
+    expect(p).toMatch(/If it says nothing matched, you may give a short general explanation/);
+    expect(p).not.toMatch(/not from our question bank/i);
+    expect(p).not.toMatch(/Start it exactly with/);
     expect(p).toMatch(/never solve a new numeric problem/i);
     expect(p).toMatch(/search failed/i);
     // Links and the facts-only rule name the tool, so its pages are usable.
@@ -516,7 +517,7 @@ describe("buildSystemPrompt", () => {
   it("with explanations off, has no concept rule and no own-knowledge permission", () => {
     const p = buildSystemPrompt(base);
     expect(p).not.toMatch(/explain_concept/);
-    expect(p).not.toContain(GENERAL_LABEL);
+    expect(p).not.toMatch(/general explanation/i);
   });
 
   // 2026-10-21 (owner): V said "I need to correct my earlier replies" about answers on ANOTHER question.
