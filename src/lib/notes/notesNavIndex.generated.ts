@@ -3195,5 +3195,12 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "SSC CGL Reasoning",
     "chapterSlug": "dice-cubes",
     "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-reasoning",
+    "subjectDisplay": "SSC CGL Reasoning",
+    "chapterSlug": "embedded-figures",
+    "subtopicCount": 2
   }
 ];

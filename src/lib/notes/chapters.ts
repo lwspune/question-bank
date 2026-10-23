@@ -2066,6 +2066,11 @@ import {
   SSC_DICE_CUBES_NOTES,
   SSC_DICE_CUBES_SLUGS,
 } from "@/app/notes/ssc-cgl-reasoning/dice-cubes/_data";
+import {
+  SSC_EMBEDDED_FIGURES_CHAPTER,
+  SSC_EMBEDDED_FIGURES_NOTES,
+  SSC_EMBEDDED_FIGURES_SLUGS,
+} from "@/app/notes/ssc-cgl-reasoning/embedded-figures/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -6627,6 +6632,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SSC_DICE_CUBES_CHAPTER,
     notes: SSC_DICE_CUBES_NOTES,
     slugs: SSC_DICE_CUBES_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Reasoning",
+    subjectRoute: "ssc-cgl-reasoning",
+    subjectDisplay: "SSC CGL Reasoning",
+    chapterSlug: "embedded-figures",
+    chipLabel: "Embedded Figures and Pattern Completion notes",
+    chapter: SSC_EMBEDDED_FIGURES_CHAPTER,
+    notes: SSC_EMBEDDED_FIGURES_NOTES,
+    slugs: SSC_EMBEDDED_FIGURES_SLUGS,
   },
 ];
 
