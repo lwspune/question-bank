@@ -205,9 +205,10 @@ export type Retag = { text: string; changes: number; problems: string[] };
  * The transcript side of a notes re-cut (scripts/spi/reshape.ts): rewrite the `subtopic:` line of
  * every block in `chapter`. A block takes `targets.get(n)`, else keeps a subtopic already in the
  * teaching order; anything else is a problem, never a silent skip. Only those lines change, so the
- * transcript stays byte-identical elsewhere (CRLF included).
+ * transcript stays byte-identical elsewhere (CRLF included). `owns`, when given, limits the re-cut to
+ * the blocks it accepts: a chapter name two subjects share (SSC's Inequalities) is otherwise ambiguous.
  */
-export function retagSubtopics(text: string, chapter: string, targets: Map<number, string>, order: string[]): Retag {
+export function retagSubtopics(text: string, chapter: string, targets: Map<number, string>, order: string[], owns?: (n: number) => boolean): Retag {
   const problems: string[] = [];
   let changes = 0;
   let n: number | null = null;
@@ -218,7 +219,7 @@ export function retagSubtopics(text: string, chapter: string, targets: Map<numbe
     const head = /^=== (\d+)\s*$/.exec(body);
     if (head) { n = Number(head[1]); inChapter = false; continue; }
     if (n === null) continue;
-    if (body.startsWith("chapter:")) { inChapter = body.slice(8).trim() === chapter; continue; }
+    if (body.startsWith("chapter:")) { inChapter = body.slice(8).trim() === chapter && (!owns || owns(n)); continue; }
     if (!inChapter || !body.startsWith("subtopic:")) continue;
     const from = body.slice(9).trim();
     const to = targets.get(n) ?? (order.includes(from) ? from : undefined);

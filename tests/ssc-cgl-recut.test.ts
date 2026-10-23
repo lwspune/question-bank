@@ -93,4 +93,14 @@ describe("an SSC transcript re-cut by the SPI retagger", () => {
     expect(r.text).toContain("subtopic: Factors and Primes");
     expect(r.text).toContain("subtopic: Sum and Mean");
   });
+
+  it("leaves another subject's block of the same chapter name alone when told which blocks it owns", () => {
+    // "Inequalities" is a chapter of both Reasoning and Quantitative Aptitude; the transcript names only the chapter.
+    const text = [block(12, "Inequalities", "Coded Inequalities"), block(60, "Inequalities", "Linear Inequalities")].join("\n");
+    const owns = (n: number) => n === 12;
+    const r = retagSubtopics(text, "Inequalities", new Map([[12, "Reading a Chain"]]), ["Reading a Chain"], owns);
+    expect(r.problems).toEqual([]);
+    expect(r.changes).toBe(1);
+    expect(r.text).toContain("subtopic: Linear Inequalities");
+  });
 });

@@ -26,6 +26,8 @@ import { retagSubtopics } from "../spi/lib";
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 
 export type ReshapePlan = {
+  /** The chapter's subject; Quantitative Aptitude when absent (the Maths plans predate it). */
+  subject?: string;
   chapter: string;
   /** Teaching order. */
   order: string[];
@@ -39,7 +41,6 @@ export type ReshapePlan = {
   total: number;
 };
 
-const SUBJECT = "Quantitative Aptitude";
 const APPLY = process.argv.includes("--apply");
 const AUTHORED_PATH = join(__dirname, "catalog-authored.json");
 const CATALOG_PATH = join(__dirname, "catalog.json");
@@ -51,7 +52,7 @@ function die(msg: string, detail: string[] = []): never {
   process.exit(1);
 }
 
-async function resolveChapter(db: SupabaseClient, chapter: string): Promise<string> {
+async function resolveChapter(db: SupabaseClient, SUBJECT: string, chapter: string): Promise<string> {
   const { data, error } = await db.from("chapters").select("id, subjects!inner(name, exams!inner(name))").eq("name", chapter);
   if (error) throw error;
   const hits = (data ?? []).filter((c: any) => c.subjects?.exams?.name === EXAM_NAME && c.subjects?.name === SUBJECT);
@@ -64,6 +65,7 @@ async function main() {
   if (!planPath || planPath.startsWith("--")) die("usage: reshape.ts <plan-module> [--apply]");
   const plan = (await import(pathToFileURL(resolve(planPath)).href)).default as ReshapePlan;
   const { chapter, order, byPrefix, expected, total } = plan;
+  const SUBJECT = plan.subject ?? "Quantitative Aptitude";
   const extra = plan.extra ?? {};
   console.log(`${APPLY ? "=== APPLY ===" : "=== DRY RUN (pass --apply to write) ==="}  ${chapter}\n`);
 
@@ -79,7 +81,7 @@ async function main() {
   }
 
   const db = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!, { auth: { persistSession: false } });
-  const chapterId = await resolveChapter(db, chapter);
+  const chapterId = await resolveChapter(db, SUBJECT, chapter);
 
   // Any visibility: a source subtopic is only safe to drop when NOTHING points at it.
   const { data: rows, error } = await db.from("questions").select("id, visibility, source_file, source_row, subtopics(name)").eq("chapter_id", chapterId);
@@ -133,12 +135,15 @@ async function main() {
   console.log(`rows to move: ${moves.length}; repeat blocks resolved via repeats.json: ${fromRepeats.length}`);
 
   // Resolve every transcript and the catalog BEFORE writing anything.
+  const shared = Object.entries(CATALOG).filter(([, cs]) => cs.some((c) => c.chapter === chapter)).length > 1;
   const filePlans: { path: string; text: string; changes: number }[] = [];
   const fileProblems: string[] = [];
   for (const [sid] of tier1) {
     const path = join(TRANSCRIPTS, `${sid}.txt`);
     if (!existsSync(path)) continue;
-    const r = retagSubtopics(readFileSync(path, "utf8"), chapter, targetsByShift.get(sid) ?? new Map(), order);
+    const targets = targetsByShift.get(sid) ?? new Map<number, string>();
+    // A chapter name another subject also uses: re-cut only the blocks this chapter's rows name.
+    const r = retagSubtopics(readFileSync(path, "utf8"), chapter, targets, order, shared ? (n) => targets.has(n) : undefined);
     fileProblems.push(...r.problems.map((x) => `${sid} ${x}`));
     if (r.changes) filePlans.push({ path, text: r.text, changes: r.changes });
   }
