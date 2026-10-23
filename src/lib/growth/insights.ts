@@ -416,4 +416,34 @@ export const INSIGHTS: readonly Insight[] = [
     checks: [],
     status: "open",
   },
+  {
+    id: "signups-rarely-meet-an-offer",
+    title: "Most signups never meet a pass offer; those who open checkout buy 1 in 3",
+    finding:
+      "Since sales opened (27 Sep to 23 Oct, all at Rs 99): 1,012 signups, 231 saw any paywall or offer (23%), 33 opened checkout (14% of those), 11 paid (33% of those), plus 1 who bought before tracking began. 19 closed checkout and 4 of them bought later. About 12 to 15% of visitors sign up (Clarity, 21 to 23 Oct: 207 signups, 1,375 visitors; a rough figure), so about 1 visitor in 700 buys. Sales came by two routes only: the daily answer limit, then /pricing (5), and a download box, mostly /browse (6). By gate, students who saw it and later paid: answer limit 104 and 5; /browse download box 44 and 3; older untagged download gate 66 and 3; board papers 8 and 1; Top PYQs 5 and 1; mock download box 15, formula sheet 9, drill 6, free-mock limit 4, homework and chapter tests 4, all 0. Of the free limits only the answer limit is met often (14 days: 87 of 478 practising students reached 30 answers on a day, 63 more reached 20 to 29); the mock limit of 3: 5 of 102 (81 sat only one), chapter tests of 5: 1 of 148, saves of 100: 2 of 93. 218 of the 478 never answered 10 in a day, so no limit reaches them.",
+    source:
+      "auth.users signups and user_activity paywall_event (metadata.gate, box, step), staff excluded; entitlements source razorpay; mock_attempts by mock_tests.scope since paywall_settings counts_from; question_bookmarks; question_practiced on surfaces bank and board, 14 days to 23 Oct; Clarity distinct users 21 to 23 Oct. Read 2026-10-23",
+    confidence: "medium",
+    firstSeen: "2026-10-23",
+    howToCheck:
+      "Database, staff excluded (org_members, platform_admins), since 2026-09-27: signups (auth.users); distinct students with paywall_event step 'shown', then 'checkout_opened', then a razorpay entitlement granted after it. Per metadata.gate and metadata.box: students shown, and of them those paid later. Limit reach, paying students also excluded: per student the most bank plus board question_practiced rows on one IST day in the last 14 days (bucket at the answer limit and 5 below it), full and sectional mocks first started since counts_from, question_bookmarks count. One Clarity call (ask first) for distinct users over 3 days, divided into signups over the same days. The price (Rs 199) and the answer limit (25) both changed on 2026-10-23, so compare like with like.",
+    checks: [],
+    status: "open",
+    actedOn: "Owner raised the pass to Rs 199 and lowered the answer limit from 30 to 25 on 2026-10-23.",
+    experimentId: "answer-limit",
+  },
+  {
+    id: "mock-limit-met-at-exam-time",
+    title: "The free-mock limit is measured off-season; students sit mocks in the weeks before their exam",
+    finding:
+      "On 23 Oct only 5 of 102 students who started a full mock since the limit went on had reached 3; 81 had sat one. The owner's point: students use mocks around their exam, so this says little about the limit in exam season. NDA showed the shape: mocks a week climbed 51, 86, 116, then 254 in the week of NDA 2 (13 Sep), then fell to 1 to 3 (see heavy-users-leave-at-the-exam). Judge the mock limit, and a mock-led offer, in the weeks before the next big sittings, not now.",
+    source: "mock_attempts joined to mock_tests (scope full), first start per student and paper since paywall_settings.counts_from (27 Sep), staff and paying students excluded; read 2026-10-23",
+    confidence: "low",
+    firstSeen: "2026-10-23",
+    recheckDays: 150,
+    howToCheck:
+      "Database, staff and paying students excluded: per IST week, full mocks started and students reaching the free-mock limit (paywall_event gate mock_limit, step shown), and of them checkout opens and passes. Run it from about 6 weeks before NDA 1 2027 and MHT-CET 2027 (March to May) and compare with the off-season weeks of Oct to Dec 2026.",
+    checks: [],
+    status: "open",
+  },
 ];
