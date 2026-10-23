@@ -3209,5 +3209,12 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "SSC CGL English",
     "chapterSlug": "fill-in-the-blanks",
     "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-english",
+    "subjectDisplay": "SSC CGL English",
+    "chapterSlug": "reading-comprehension",
+    "subtopicCount": 3
   }
 ];

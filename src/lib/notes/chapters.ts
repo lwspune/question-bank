@@ -2076,6 +2076,11 @@ import {
   SSC_FILL_IN_THE_BLANKS_NOTES,
   SSC_FILL_IN_THE_BLANKS_SLUGS,
 } from "@/app/notes/ssc-cgl-english/fill-in-the-blanks/_data";
+import {
+  SSC_READING_COMPREHENSION_CHAPTER,
+  SSC_READING_COMPREHENSION_NOTES,
+  SSC_READING_COMPREHENSION_SLUGS,
+} from "@/app/notes/ssc-cgl-english/reading-comprehension/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -6659,6 +6664,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SSC_FILL_IN_THE_BLANKS_CHAPTER,
     notes: SSC_FILL_IN_THE_BLANKS_NOTES,
     slugs: SSC_FILL_IN_THE_BLANKS_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "English",
+    subjectRoute: "ssc-cgl-english",
+    subjectDisplay: "SSC CGL English",
+    chapterSlug: "reading-comprehension",
+    chipLabel: "Reading Comprehension notes",
+    chapter: SSC_READING_COMPREHENSION_CHAPTER,
+    notes: SSC_READING_COMPREHENSION_NOTES,
+    slugs: SSC_READING_COMPREHENSION_SLUGS,
   },
 ];
 
