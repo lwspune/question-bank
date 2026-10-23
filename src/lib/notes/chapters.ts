@@ -2091,6 +2091,11 @@ import {
   SSC_SENTENCE_REARRANGEMENT_NOTES,
   SSC_SENTENCE_REARRANGEMENT_SLUGS,
 } from "@/app/notes/ssc-cgl-english/sentence-rearrangement/_data";
+import {
+  SSC_SPOTTING_ERRORS_CHAPTER,
+  SSC_SPOTTING_ERRORS_NOTES,
+  SSC_SPOTTING_ERRORS_SLUGS,
+} from "@/app/notes/ssc-cgl-english/spotting-errors/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -6707,6 +6712,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SSC_SENTENCE_REARRANGEMENT_CHAPTER,
     notes: SSC_SENTENCE_REARRANGEMENT_NOTES,
     slugs: SSC_SENTENCE_REARRANGEMENT_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "English",
+    subjectRoute: "ssc-cgl-english",
+    subjectDisplay: "SSC CGL English",
+    chapterSlug: "spotting-errors",
+    chipLabel: "Spotting Errors notes",
+    chapter: SSC_SPOTTING_ERRORS_CHAPTER,
+    notes: SSC_SPOTTING_ERRORS_NOTES,
+    slugs: SSC_SPOTTING_ERRORS_SLUGS,
   },
 ];
 

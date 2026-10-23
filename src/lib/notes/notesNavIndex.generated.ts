@@ -3230,5 +3230,12 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "SSC CGL English",
     "chapterSlug": "sentence-rearrangement",
     "subtopicCount": 3
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-english",
+    "subjectDisplay": "SSC CGL English",
+    "chapterSlug": "spotting-errors",
+    "subtopicCount": 5
   }
 ];
