@@ -1,3 +1,4 @@
+import { readAllPages } from "@/lib/supabase/readAllPages";
 import type { MetadataRoute } from "next";
 import { ROUTES } from "@/app/guide/nda-maths/_data/nda-maths";
 import { DETAIL_SLUGS } from "@/app/guide/nda-maths/_data/principle-details";
@@ -170,13 +171,17 @@ async function publicQuizEntries(buildDate: Date): Promise<MetadataRoute.Sitemap
 async function mockEntries(buildDate: Date): Promise<MetadataRoute.Sitemap> {
   try {
     const db = createSupabaseAdminClient();
-    const { data } = await db
-      .from("mock_tests")
-      .select("slug, updated_at, source, scope, exam:exams(name)")
-      .eq("status", "published")
-      .limit(1000); // 192 today; explicit so this can never silently truncate
+    // Paged: 1,027 published on 2026-10-23, past the 1000 a single read returns.
+    const data = await readAllPages<Record<string, unknown>>((from, to) =>
+      db
+        .from("mock_tests")
+        .select("slug, updated_at, source, scope, exam:exams(name)")
+        .eq("status", "published")
+        .order("id", { ascending: true })
+        .range(from, to)
+    );
 
-    const rows: MockSitemapRow[] = (data ?? []).map((m) => {
+    const rows: MockSitemapRow[] = data.map((m) => {
       const exam = (Array.isArray(m.exam) ? m.exam[0] : m.exam) as { name: string } | null;
       return {
         slug: m.slug as string,

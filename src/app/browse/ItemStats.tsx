@@ -1,4 +1,4 @@
-import { OPTION_LABELS, type ItemStatAggregate, type OptionLabel } from "@/lib/itemStats/types";
+import { distributionLabels, type ItemStatAggregate, type OptionLabel } from "@/lib/itemStats/types";
 import { itemStatChip } from "@/lib/itemStats/leads";
 import { cn } from "@/lib/utils";
 
@@ -51,14 +51,18 @@ export function ItemStatChip({ agg }: { agg: ItemStatAggregate | undefined }) {
 export function ItemStatDetail({
   agg,
   keyLabel,
+  optionLabels,
 }: {
   agg: ItemStatAggregate | undefined;
   keyLabel: OptionLabel | null;
+  /** The question's printed letters, so a five-option question gets an E bar. */
+  optionLabels: readonly string[];
 }) {
   if (!agg) return null;
+  const labels = distributionLabels(optionLabels);
 
-  const chosen = OPTION_LABELS.reduce((sum, l) => sum + agg.choiceCounts[l], 0);
-  const topDistractor = OPTION_LABELS.filter((l) => l !== keyLabel).reduce<number>(
+  const chosen = labels.reduce((sum, l) => sum + agg.choiceCounts[l], 0);
+  const topDistractor = labels.filter((l) => l !== keyLabel).reduce<number>(
     (max, l) => Math.max(max, agg.choiceCounts[l]),
     0
   );
@@ -84,7 +88,7 @@ export function ItemStatDetail({
 
       {chosen > 0 ? (
         <ul className="space-y-1">
-          {OPTION_LABELS.map((label) => {
+          {labels.map((label) => {
             const n = agg.choiceCounts[label];
             const pct = chosen > 0 ? (n / chosen) * 100 : 0;
             const isKey = label === keyLabel;

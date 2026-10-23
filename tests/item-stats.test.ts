@@ -26,7 +26,7 @@ import {
   MIN_N_HEADLINE,
   MIN_N_LEAD,
 } from "@/lib/itemStats/leads";
-import type { ItemStatRow } from "@/lib/itemStats/types";
+import { distributionLabels, singleItemStatKey, type ItemStatRow } from "@/lib/itemStats/types";
 
 const HASH = "hash-current";
 
@@ -111,7 +111,18 @@ describe("aggregateItemStats", () => {
       ],
       HASH
     );
-    expect(agg?.choiceCounts).toEqual({ A: 5, B: 1, C: 4, D: 0 });
+    expect(agg?.choiceCounts).toEqual({ A: 5, B: 1, C: 4, D: 0, E: 0 });
+  });
+
+  it("pools an E choice from a five-option (IMAT) sitting", () => {
+    const agg = aggregateItemStats(
+      [
+        row({ sourceRef: "s1", choiceCounts: { A: 1, E: 3 } }),
+        row({ sourceRef: "s2", choiceCounts: { E: 2 } }),
+      ],
+      HASH
+    );
+    expect(agg?.choiceCounts).toEqual({ A: 1, B: 0, C: 0, D: 0, E: 5 });
   });
 
   it("pools discrimination as COUNTS, not as a mean of per-sitting rates", () => {
@@ -238,6 +249,12 @@ describe("computeLead", () => {
     expect(lead?.topDistractor).toEqual({ label: "B", count: 12 });
     expect(lead?.keyCount).toBe(4);
     expect(lead?.ratio).toBeCloseTo(3, 10);
+  });
+
+  it("flags option E outpulling the key on a five-option question", () => {
+    const agg = many({ A: 4, B: 2, E: 14 }, 4);
+    const lead = computeLead("q1", agg, "A");
+    expect(lead?.topDistractor).toEqual({ label: "E", count: 14 });
   });
 
   it("does not divide by zero when the key was chosen by nobody", () => {
@@ -421,5 +438,20 @@ describe("exposure — which cohorts have already sat this", () => {
     // NOT an empty list: "nobody has sat it in a class" and "we do not record
     // who sat it" are different claims.
     expect(aggregateItemStats([row()], HASH)?.exposure).toBeNull();
+  });
+});
+
+describe("five-option questions (IMAT)", () => {
+  const opts = (labels: string[], key: string) => labels.map((label) => ({ label, isCorrect: label === key }));
+
+  it("keys an E-keyed question as E", () => {
+    expect(singleItemStatKey(opts(["A", "B", "C", "D", "E"], "E"))).toBe("E");
+  });
+
+  it("draws an E bar only for a question that prints option E", () => {
+    expect(distributionLabels(["A", "B", "C", "D"])).toEqual(["A", "B", "C", "D"]);
+    expect(distributionLabels(["E", "A", "C", "B", "D"])).toEqual(["A", "B", "C", "D", "E"]);
+    // No options (a numeric item) keeps the old A-D list rather than none.
+    expect(distributionLabels([])).toEqual(["A", "B", "C", "D"]);
   });
 });

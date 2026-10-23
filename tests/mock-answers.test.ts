@@ -9,9 +9,9 @@ import {
   type SavedResponse,
 } from "@/lib/mocks/answers";
 
-const mcq = (label: "A" | "B" | "C" | "D"): MockAnswerKey => ({ kind: "mcq", label });
+const mcq = (label: "A" | "B" | "C" | "D" | "E"): MockAnswerKey => ({ kind: "mcq", label });
 const nat = (value: number): MockAnswerKey => ({ kind: "numeric", value });
-const pick = (label: "A" | "B" | "C" | "D"): SavedResponse => ({
+const pick = (label: "A" | "B" | "C" | "D" | "E"): SavedResponse => ({
   selectedLabel: label,
   numericResponse: null,
 });
@@ -138,6 +138,12 @@ describe("verdictFor", () => {
     expect(verdictFor(mcq("A"), pick("B"), false)).toBe(-1);
     expect(verdictFor(nat(9), typed(9), false)).toBe(1);
     expect(verdictFor(nat(9), typed(8), false)).toBe(-1);
+  });
+
+  it("grades option E like any other letter (IMAT prints five)", () => {
+    expect(verdictFor(mcq("E"), pick("E"), false)).toBe(1);
+    expect(verdictFor(mcq("E"), pick("A"), false)).toBe(-1);
+    expect(verdictFor(mcq("B"), pick("E"), false)).toBe(-1);
   });
 
   /**
