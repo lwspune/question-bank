@@ -444,7 +444,8 @@ export const NOTES_DATA_KEYS: readonly string[] = [
   "ssc-cgl-reasoning/missing-number",
   "ssc-cgl-reasoning/calendar-clock",
   "ssc-cgl-reasoning/blood-relations",
-  "ssc-cgl-reasoning/order-ranking"
+  "ssc-cgl-reasoning/order-ranking",
+  "ssc-cgl-reasoning/mathematical-operations"
 ];
 
 export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, SubtopicNote>>> = {
@@ -889,4 +890,5 @@ export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, Sub
   "ssc-cgl-reasoning/calendar-clock": () => import("@/app/notes/ssc-cgl-reasoning/calendar-clock/_data").then((m) => m.SSC_CALENDAR_CLOCK_NOTES),
   "ssc-cgl-reasoning/blood-relations": () => import("@/app/notes/ssc-cgl-reasoning/blood-relations/_data").then((m) => m.SSC_BLOOD_RELATIONS_NOTES),
   "ssc-cgl-reasoning/order-ranking": () => import("@/app/notes/ssc-cgl-reasoning/order-ranking/_data").then((m) => m.SSC_ORDER_RANKING_NOTES),
+  "ssc-cgl-reasoning/mathematical-operations": () => import("@/app/notes/ssc-cgl-reasoning/mathematical-operations/_data").then((m) => m.SSC_MATHEMATICAL_OPERATIONS_NOTES),
 };

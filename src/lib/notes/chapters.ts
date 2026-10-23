@@ -1991,6 +1991,11 @@ import {
   SSC_ORDER_RANKING_NOTES,
   SSC_ORDER_RANKING_SLUGS,
 } from "@/app/notes/ssc-cgl-reasoning/order-ranking/_data";
+import {
+  SSC_MATHEMATICAL_OPERATIONS_CHAPTER,
+  SSC_MATHEMATICAL_OPERATIONS_NOTES,
+  SSC_MATHEMATICAL_OPERATIONS_SLUGS,
+} from "@/app/notes/ssc-cgl-reasoning/mathematical-operations/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -6387,6 +6392,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SSC_ORDER_RANKING_CHAPTER,
     notes: SSC_ORDER_RANKING_NOTES,
     slugs: SSC_ORDER_RANKING_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Reasoning",
+    subjectRoute: "ssc-cgl-reasoning",
+    subjectDisplay: "SSC CGL Reasoning",
+    chapterSlug: "mathematical-operations",
+    chipLabel: "Mathematical Operations notes",
+    chapter: SSC_MATHEMATICAL_OPERATIONS_CHAPTER,
+    notes: SSC_MATHEMATICAL_OPERATIONS_NOTES,
+    slugs: SSC_MATHEMATICAL_OPERATIONS_SLUGS,
   },
 ];
 
