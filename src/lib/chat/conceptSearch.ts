@@ -10,7 +10,9 @@
  *      and the page's subject ranked first;
  *   2. the notes' concept cards (the generated index, notesConcepts.generated.ts);
  *   3. only when both have nothing: a short general explanation from the
- *      model's own knowledge, starting with GENERAL_LABEL (owner, 2026-10-22).
+ *      model's own knowledge (owner, 2026-10-22). It opened with a fixed
+ *      "General explanation (not from our question bank):" line until
+ *      2026-10-23, when the owner dropped it: it told the student nothing.
  *      A FAILED search is not "nothing": V must not fall back to its own
  *      knowledge because the database was slow.
  *
@@ -23,8 +25,6 @@
 import type { VTool } from "./anthropic";
 import { chapterPath, examsNamed, type ChapterSearchRow } from "./chapterSearch";
 
-/** The label a general explanation starts with (owner, 2026-10-22). */
-export const GENERAL_LABEL = "General explanation (not from our question bank):";
 
 const MAX_WORDS = 6;
 const QUESTION_CHARS = 300;
@@ -167,7 +167,7 @@ function trimTo(s: string, n: number): string {
 
 export const NOTHING_FOUND =
   `Nothing in our question bank or notes matches this. If it is a concept, definition or derivation from the syllabus, ` +
-  `give a short general explanation that starts exactly with "${GENERAL_LABEL}" (translated if they write in another language). ` +
+  `give a short general explanation from what you know. ` +
   `Never solve a new numeric problem this way, never give an answer to a question from a paper, and never use it for PYQ Vault, prices or exam dates.`;
 
 const SEARCH_FAILED =

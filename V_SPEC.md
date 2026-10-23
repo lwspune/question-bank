@@ -39,8 +39,10 @@ is the last one.
 2. **Our /notes:** the concept cards of every notes chapter, searched by name
    in `notesConcepts.generated.ts` (written by `npm run chat:notes-data`, loaded
    only on a concept question), each card read from its chapter alone.
-3. **The model's own knowledge**, for concepts and derivations only, starting
-   "General explanation (not from our question bank):" (owner, 2026-10-22).
+3. **The model's own knowledge**, for concepts and derivations only (owner,
+   2026-10-22), with no fixed opening line: "General explanation (not from our
+   question bank):" was dropped on 2026-10-23 (owner: it adds no value to the
+   student).
    Never to override an answer key, never a new numeric problem, and never for
    site facts, prices, exam dates or what a future paper will ask. Only when
    rungs 1 and 2 found NOTHING: a failed search is not "nothing", and V says
@@ -182,3 +184,10 @@ reads everything else from the stored row.
   with no stored solution (rule 7 forbids V's own working, so V cannot explain
   them); and explain_concept once answered a "how do I study X" ask with a
   lecture (watch it in the weekly review).
+- 2026-10-23: the "General explanation (not from our question bank):" opening
+  line dropped (owner: it adds no value to the student); the permission to
+  explain a concept from V's own knowledge when the bank and notes have nothing
+  is unchanged. Run 21b31d5a: explain_concept 12/12, every reply read; new case
+  711820ea (Hemant's "why cos c is 0", a follow-up that had opened with the
+  label) passes. Same day: the 1-hour prompt cache, `--case`, and the cost line
+  (`npm run v:cost`); Message Batches tried for test runs and dropped (dearer).

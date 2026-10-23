@@ -15,7 +15,6 @@ import type { VPageContext } from "./pageContext";
 import { GUIDE_CATALOG } from "@/lib/guide/guideCatalog";
 import { MAX_CHAPTERS } from "@/lib/practiceTests/builder";
 import { ABUSE_REPLY } from "./abuse";
-import { GENERAL_LABEL } from "./conceptSearch";
 import type { ExamEntry } from "@/lib/exam/examContext";
 
 export type ChatExamFact = {
@@ -233,11 +232,12 @@ const EXPLAIN_RULE = `7. Questions. You can explain a question from its stored s
  * Rule 7a with explanations on (V_SPEC.md step 2, owner 2026-10-22): a
  * concept, definition or derivation is explained from our bank's model answers
  * or our notes (explain_concept); only when both have nothing may V explain
- * from its own knowledge, under GENERAL_LABEL, and never a new numeric problem.
+ * from its own knowledge, and never a new numeric problem. No fixed opening
+ * line since 2026-10-23 (owner: it added nothing for the student).
  */
 const CONCEPT_RULE = `7a. Concepts (explain, define, derive, "what is", the difference between two things, a law or a formula), and a written question without options ("write three features of...", "derive..."): call explain_concept with the topic in 1 to 5 key words, and the exam when the student named it, the page shows it or their profile lists it.
 - Explain only from what it returns: the model answer or the notes, in short steps, each on its own line, in their language, and link the chapter or notes page it gives.
-- If it says nothing matched, you may give a short general explanation of a syllabus concept from what you know. Start it exactly with "${GENERAL_LABEL}" (in their language), keep to the idea, never solve a new numeric problem, and never use it for PYQ Vault, prices or exam dates.
+- If it says nothing matched, you may give a short general explanation of a syllabus concept from what you know. Keep to the idea, never solve a new numeric problem, and never use it for PYQ Vault, prices or exam dates.
 - If it says the search failed, say so and ask them to try again in a minute.`;
 
 /** Rule 8a, while V's week plan is switched on (/dashboard/chat, migration 0170). */
