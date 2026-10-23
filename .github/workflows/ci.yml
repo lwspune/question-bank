@@ -92,6 +92,15 @@ jobs:
       - name: Notes integrity (DB — taxonomy + tag + chapter-name resolution)
         if: steps.notescheck.outputs.needed == 'true'
         run: npm run notes:lint
+      # Every DB test file skips without these settings and the run still
+      # passes (2026-10-23: a worktree skipped 126 files that way), so a
+      # missing secret must fail here, as it does in the pre-push gate.
+      - name: Test database settings present
+        env:
+          TEST_SUPABASE_URL: ${{ secrets.TEST_SUPABASE_URL }}
+          TEST_SUPABASE_ANON_KEY: ${{ secrets.TEST_SUPABASE_ANON_KEY }}
+          TEST_SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.TEST_SUPABASE_SERVICE_ROLE_KEY }}
+        run: npm run testdb:require-env
       # Fixture-writing tests run against the DEDICATED TEST project only —
       # the TEST_* env vars override the prod names inside tests/setup.ts.
       - name: Tests (fixture-writing — dedicated test project)
