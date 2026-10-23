@@ -56,7 +56,7 @@ async function main() {
   for (let i = 0; i < ids.length; i += 100) {
     const { data, error } = await db
       .from("chat_interactions")
-      .select("id, created_at, user_id, conversation_id, page_path, message, reply, tool_calls, asked_question_id, reply_to_id")
+      .select("id, created_at, user_id, conversation_id, page_path, message, reply, tool_calls, asked_question_id, asked_notes_item, reply_to_id")
       .in("id", ids.slice(i, i + 100));
     if (error) throw new Error(error.message);
     rows.push(...(data ?? []));
@@ -111,6 +111,8 @@ async function main() {
       profile_exams: profileExams,
       asked_question_id: asked?.id ?? null,
       asked_chose: asked?.chose ?? null,
+      // A notes question (0181): replayed from its page, as the route reads it.
+      asked_notes_item: asked ? null : ((r.asked_notes_item as string | null) ?? null),
       history,
       reply_to: replyTo,
       expect: l.expect,

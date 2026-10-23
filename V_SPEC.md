@@ -197,3 +197,10 @@ reads everything else from the stored row.
   replies from history show whole. Judged on follow-up questions (growth
   experiment `v-reveal`): 48% of AI replies followed up within 30 minutes
   before it (111 of 233, 15 to 23 Oct). Thumbs are too few to read.
+- 2026-10-23: an Ask V tap on a notes question stores which one it was
+  (`asked_notes_item`, migration 0181), and V's memory labels it like a bank
+  question's id. Two taps on two notes questions had sent the identical
+  "Explain this question." unlabelled, and V apologised that its first reply
+  "explained a different problem". The same key rebuilds the card above the
+  tap and lets the runner replay notes taps. Case cd661fa2 (Mx Amit's second
+  tap, its memory labelled as V now sees it): no apology in 2 runs.

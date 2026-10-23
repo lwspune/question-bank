@@ -33,6 +33,23 @@ export function parseNotesItemRef(raw: unknown): NotesItemRef | null {
   return null;
 }
 
+/**
+ * The stored form of a notes question (migration 0181, 2026-10-23): "concept#3"
+ * for practice question 3, "concept#self" for the self-check. With the row's
+ * page it names the question, as asked_question_id names a bank one.
+ */
+export function notesRefKey(ref: NotesItemRef): string {
+  return `${ref.concept}#${ref.item === "practice" ? ref.index : "self"}`;
+}
+
+const REF_KEY_RE = /^([a-z0-9-]{1,100})#(self|\d{1,2})$/;
+
+export function parseNotesRefKey(key: string | null | undefined): NotesItemRef | null {
+  const m = key ? REF_KEY_RE.exec(key) : null;
+  if (!m) return null;
+  return parseNotesItemRef(m[2] === "self" ? { concept: m[1], item: "self" } : { concept: m[1], item: "practice", index: Number(m[2]) });
+}
+
 /** A notes subtopic page (/notes/<subject>/<chapter>/<subtopic>): its chapter key and subtopic slug. */
 export function notesPageOf(pagePath: string | null): { key: string; subtopic: string } | null {
   if (!pagePath) return null;

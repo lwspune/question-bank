@@ -137,6 +137,27 @@ describe.skipIf(!HAS_ENV)("chat_interactions: typed questions", () => {
     ]);
   });
 
+  it("takes a notes question's key only well formed, with its page, and never beside a bank question (migration 0181)", async () => {
+    const row = (over: Record<string, unknown>) => ({
+      event_type: "typed_question",
+      message: `${tag} notes ${JSON.stringify(over)}`,
+      page_path: "/notes/nda-maths/sequence-series/seq-arithmetic-progressions",
+      ...over,
+    });
+    const ok = await admin.from("chat_interactions").insert(row({ asked_notes_item: "seq-sigma#0" }));
+    const self = await admin.from("chat_interactions").insert(row({ asked_notes_item: "seq-sigma#self" }));
+    const malformed = await admin.from("chat_interactions").insert(row({ asked_notes_item: "Seq Sigma" }));
+    const both = await admin
+      .from("chat_interactions")
+      .insert(row({ asked_notes_item: "seq-sigma#0", asked_question_id: "11111111-1111-4111-8111-111111111111" }));
+    const noPage = await admin.from("chat_interactions").insert(row({ asked_notes_item: "seq-sigma#0", page_path: null }));
+    expect(ok.error).toBeNull();
+    expect(self.error).toBeNull();
+    expect(malformed.error).not.toBeNull();
+    expect(both.error).not.toBeNull();
+    expect(noPage.error).not.toBeNull();
+  });
+
   it("keeps 1-hour cache writes within the writes, and on AI answers only (migration 0180)", async () => {
     const row = (over: Record<string, unknown>) => ({
       event_type: "typed_question",

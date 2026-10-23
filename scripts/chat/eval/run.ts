@@ -43,6 +43,8 @@ import { readChapterLandingsUncached } from "../../../src/lib/questions/landing"
 import { readSubtopicIndexUncached, withSubtopics } from "../../../src/lib/chat/subtopicIndex";
 import { loadSimilarId, loadVQuestion, searchVQuestions } from "../../../src/lib/chat/questionToolsServer";
 import { conceptSources } from "../../../src/lib/chat/conceptSearchServer";
+import { parseNotesRefKey } from "../../../src/lib/chat/notesItem";
+import { loadNotesItemBrief } from "../../../src/lib/chat/notesItemServer";
 import { aiAnswerCostUsd } from "../../../src/lib/chat/interactions";
 import type { ModelTurn } from "../../../src/lib/chat/conversation";
 import type { SavedPlan } from "../../../src/lib/chat/weekPlan";
@@ -60,6 +62,8 @@ type Case = {
   signed_in: boolean;
   profile_exams: string[];
   asked_question_id: string | null;
+  /** A notes question instead (0181), on page_path. */
+  asked_notes_item: string | null;
   asked_chose: string | null;
   history: ModelTurn[];
   reply_to: string | null;
@@ -130,7 +134,7 @@ async function main() {
     new Set(getNotesExamGroups().map((g) => g.slug))
   );
 
-  function contextFor(c: Case): VContextOptions {
+  function contextFor(c: Case, notesBrief: string | null): VContextOptions {
     let plan: SavedPlan | null = null;
     return {
       loadChapters: async () => chapters,
@@ -140,7 +144,7 @@ async function main() {
       signedIn: c.signed_in,
       profileExamSlugs: c.profile_exams,
       question: c.asked_question_id ? { id: c.asked_question_id, chose: c.asked_chose } : null,
-      notesBrief: null,
+      notesBrief,
       myQuestions: c.signed_in
         ? { now: () => new Date(), loadRecent: async () => [], save: async () => ({ kind: "saved" as const }) }
         : null,
@@ -184,7 +188,10 @@ async function main() {
   async function runOne(c: Case): Promise<Result> {
     const parsed = parseExpect(c.expect);
     const expect = parsed.ok ? parsed.value : {};
-    const r = await answerWithV({ anon, context: contextFor(c), message: c.message, replyTo: c.reply_to, history: c.history });
+    // A notes question is read from its page, as the route does (0181).
+    const notesRef = parseNotesRefKey(c.asked_notes_item);
+    const notesBrief = notesRef ? await loadNotesItemBrief(c.page_path, notesRef) : null;
+    const r = await answerWithV({ anon, context: contextFor(c, notesBrief), message: c.message, replyTo: c.reply_to, history: c.history });
     const tools = r.toolCalls.map((t) => t.name);
     const reply = r.ok ? r.reply : "";
     const check = checkReply(expect, { reply, links: r.links, tools });

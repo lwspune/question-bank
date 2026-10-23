@@ -26,6 +26,8 @@ export type RecordChatInteraction = InConversation &
         userId: string | null;
         /** Migration 0174: the question the student had tapped Ask V on, and the earlier message this replies to. */
         askedQuestionId?: string | null;
+        /** Migration 0181: a notes question instead, as notesRefKey (its page is pagePath). */
+        askedNotesItem?: string | null;
         replyToId?: string | null;
         reply?: {
           text: string;
@@ -80,6 +82,7 @@ export async function recordChatInteraction(
               : null,
         message: input.eventType === "typed_question" ? input.message : null,
         asked_question_id: input.eventType === "typed_question" ? (input.askedQuestionId ?? null) : null,
+        asked_notes_item: input.eventType === "typed_question" ? (input.askedNotesItem ?? null) : null,
         reply_to_id: input.eventType === "typed_question" ? (input.replyToId ?? null) : null,
         user_id: input.userId,
         conversation_id: input.conversationId ?? null,
@@ -137,7 +140,7 @@ export async function listChatInteractions(limit = 5000): Promise<ChatInteractio
 }
 
 const CONVERSATION_COLUMNS =
-  "id, event_type, question_id, created_at, message, reply, reply_source, reply_links, feedback, conversation_id, page_path, user_id, seen_at, tool_calls, asked_question_id, reply_to_id";
+  "id, event_type, question_id, created_at, message, reply, reply_source, reply_links, feedback, conversation_id, page_path, user_id, seen_at, tool_calls, asked_question_id, asked_notes_item, reply_to_id";
 
 type RawConversationRow = {
   id: string;
@@ -155,6 +158,7 @@ type RawConversationRow = {
   seen_at: string | null;
   tool_calls: ToolCallLog[] | null;
   asked_question_id: string | null;
+  asked_notes_item: string | null;
   reply_to_id: string | null;
 };
 
@@ -175,6 +179,7 @@ function toConversationRow(r: RawConversationRow): ConversationRow & { userId: s
     seenAt: r.seen_at,
     toolCalls: r.tool_calls,
     askedQuestionId: r.asked_question_id,
+    askedNotesItem: r.asked_notes_item,
     replyToId: r.reply_to_id,
     userId: r.user_id,
   };
