@@ -2051,6 +2051,11 @@ import {
   SSC_VENN_DIAGRAMS_NOTES,
   SSC_VENN_DIAGRAMS_SLUGS,
 } from "@/app/notes/ssc-cgl-reasoning/venn-diagrams/_data";
+import {
+  SSC_STATEMENTS_CHAPTER,
+  SSC_STATEMENTS_NOTES,
+  SSC_STATEMENTS_SLUGS,
+} from "@/app/notes/ssc-cgl-reasoning/statements/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -6579,6 +6584,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SSC_VENN_DIAGRAMS_CHAPTER,
     notes: SSC_VENN_DIAGRAMS_NOTES,
     slugs: SSC_VENN_DIAGRAMS_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Reasoning",
+    subjectRoute: "ssc-cgl-reasoning",
+    subjectDisplay: "SSC CGL Reasoning",
+    chapterSlug: "statements",
+    chipLabel: "Statement-Based Reasoning notes",
+    chapter: SSC_STATEMENTS_CHAPTER,
+    notes: SSC_STATEMENTS_NOTES,
+    slugs: SSC_STATEMENTS_SLUGS,
   },
 ];
 
