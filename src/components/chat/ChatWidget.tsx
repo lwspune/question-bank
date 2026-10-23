@@ -59,8 +59,17 @@ import { useCart } from "@/lib/cart/CartProvider";
 import VSays from "./VSays";
 import MathText from "./MathText";
 import VQuestionCard from "./VQuestionCard";
+import VAskedCard from "./VAskedCard";
 import VPlanCard from "./VPlanCard";
-import { ASK_V_EVENT, askVMessage, isAskVDetail, questionForRequest, type AskVDetail } from "@/lib/chat/askVEvent";
+import {
+  ASK_V_EVENT,
+  askedCardOf,
+  askVMessage,
+  isAskVDetail,
+  parseAskedCard,
+  questionForRequest,
+  type AskVDetail,
+} from "@/lib/chat/askVEvent";
 import { MESSAGE_IN, USER_BUBBLE, V_BUBBLE } from "./chatStyles";
 import PracticeBuilder, { PENDING_BUILD_KEY, logBuilderStep } from "./PracticeBuilder";
 import type { BuilderAnswers } from "@/lib/practiceTests/builder";
@@ -531,7 +540,14 @@ export default function ChatWidget() {
     // A new session drops the old tapped question and reply; a button send never carries a reply.
     const question = about ?? (fresh ? null : asked);
     const replyTo = override === undefined && !fresh ? replyingTo : null;
-    addTurn(replyTo ? { role: "user", text, quote: quoteSnippet(replyTo.text) } : { role: "user", text });
+    // An Ask V tap shows its question above the message (owner, 2026-10-23).
+    const askedCard = about ? askedCardOf(about, pathname) : null;
+    addTurn({
+      role: "user",
+      text,
+      ...(replyTo ? { quote: quoteSnippet(replyTo.text) } : {}),
+      ...(askedCard ? { asked: askedCard } : {}),
+    });
     if (override === undefined) setDraft("");
     setReplyingTo(null);
     setSending(true);
@@ -660,14 +676,19 @@ export default function ChatWidget() {
               // n - 1 indexes `turns`; the greeting is never stored.
               const i = n - 1;
               if (t.role === "user") {
+                // A turn may come from the device's saved chat, so its card is checked first.
+                const asked = parseAskedCard(t.asked);
                 return (
-                  <div key={n} className={`${USER_BUBBLE} ${MESSAGE_IN}`}>
-                    {typeof t.quote === "string" && t.quote && (
-                      <span className="mb-1 line-clamp-2 block border-l-2 border-white/70 pl-2 text-xs text-white/90">
-                        <MathText text={t.quote} />
-                      </span>
-                    )}
-                    {t.text}
+                  <div key={n} className={`flex flex-col ${MESSAGE_IN}`}>
+                    {asked && <VAskedCard asked={asked} />}
+                    <div className={USER_BUBBLE}>
+                      {typeof t.quote === "string" && t.quote && (
+                        <span className="mb-1 line-clamp-2 block border-l-2 border-white/70 pl-2 text-xs text-white/90">
+                          <MathText text={t.quote} />
+                        </span>
+                      )}
+                      {t.text}
+                    </div>
                   </div>
                 );
               }
