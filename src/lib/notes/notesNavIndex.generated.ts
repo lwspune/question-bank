@@ -2929,5 +2929,33 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "SSC CGL Maths",
     "chapterSlug": "trigonometry",
     "subtopicCount": 7
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-maths",
+    "subjectDisplay": "SSC CGL Maths",
+    "chapterSlug": "data-interpretation",
+    "subtopicCount": 7
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-maths",
+    "subjectDisplay": "SSC CGL Maths",
+    "chapterSlug": "ratio",
+    "subtopicCount": 8
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-maths",
+    "subjectDisplay": "SSC CGL Maths",
+    "chapterSlug": "time-work",
+    "subtopicCount": 7
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-maths",
+    "subjectDisplay": "SSC CGL Maths",
+    "chapterSlug": "algebraic-identities",
+    "subtopicCount": 7
   }
 ];

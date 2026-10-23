@@ -421,7 +421,11 @@ export const NOTES_DATA_KEYS: readonly string[] = [
   "cds-biology/ecology-environment",
   "ssc-cgl-maths/averages",
   "ssc-cgl-maths/percentage",
-  "ssc-cgl-maths/trigonometry"
+  "ssc-cgl-maths/trigonometry",
+  "ssc-cgl-maths/data-interpretation",
+  "ssc-cgl-maths/ratio",
+  "ssc-cgl-maths/time-work",
+  "ssc-cgl-maths/algebraic-identities"
 ];
 
 export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, SubtopicNote>>> = {
@@ -843,4 +847,8 @@ export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, Sub
   "ssc-cgl-maths/averages": () => import("@/app/notes/ssc-cgl-maths/averages/_data").then((m) => m.SSC_AVERAGES_NOTES),
   "ssc-cgl-maths/percentage": () => import("@/app/notes/ssc-cgl-maths/percentage/_data").then((m) => m.SSC_PERCENTAGE_NOTES),
   "ssc-cgl-maths/trigonometry": () => import("@/app/notes/ssc-cgl-maths/trigonometry/_data").then((m) => m.SSC_TRIGONOMETRY_NOTES),
+  "ssc-cgl-maths/data-interpretation": () => import("@/app/notes/ssc-cgl-maths/data-interpretation/_data").then((m) => m.SSC_DATA_INTERPRETATION_NOTES),
+  "ssc-cgl-maths/ratio": () => import("@/app/notes/ssc-cgl-maths/ratio/_data").then((m) => m.SSC_RATIO_NOTES),
+  "ssc-cgl-maths/time-work": () => import("@/app/notes/ssc-cgl-maths/time-work/_data").then((m) => m.SSC_TIME_WORK_NOTES),
+  "ssc-cgl-maths/algebraic-identities": () => import("@/app/notes/ssc-cgl-maths/algebraic-identities/_data").then((m) => m.SSC_ALGEBRAIC_IDENTITIES_NOTES),
 };

@@ -1876,6 +1876,26 @@ import {
   SSC_TRIGONOMETRY_NOTES,
   SSC_TRIGONOMETRY_SLUGS,
 } from "@/app/notes/ssc-cgl-maths/trigonometry/_data";
+import {
+  SSC_DATA_INTERPRETATION_CHAPTER,
+  SSC_DATA_INTERPRETATION_NOTES,
+  SSC_DATA_INTERPRETATION_SLUGS,
+} from "@/app/notes/ssc-cgl-maths/data-interpretation/_data";
+import {
+  SSC_RATIO_CHAPTER,
+  SSC_RATIO_NOTES,
+  SSC_RATIO_SLUGS,
+} from "@/app/notes/ssc-cgl-maths/ratio/_data";
+import {
+  SSC_TIME_WORK_CHAPTER,
+  SSC_TIME_WORK_NOTES,
+  SSC_TIME_WORK_SLUGS,
+} from "@/app/notes/ssc-cgl-maths/time-work/_data";
+import {
+  SSC_ALGEBRAIC_IDENTITIES_CHAPTER,
+  SSC_ALGEBRAIC_IDENTITIES_NOTES,
+  SSC_ALGEBRAIC_IDENTITIES_SLUGS,
+} from "@/app/notes/ssc-cgl-maths/algebraic-identities/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -6019,6 +6039,50 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SSC_TRIGONOMETRY_CHAPTER,
     notes: SSC_TRIGONOMETRY_NOTES,
     slugs: SSC_TRIGONOMETRY_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Quantitative Aptitude",
+    subjectRoute: "ssc-cgl-maths",
+    subjectDisplay: "SSC CGL Maths",
+    chapterSlug: "data-interpretation",
+    chipLabel: "Data Interpretation notes",
+    chapter: SSC_DATA_INTERPRETATION_CHAPTER,
+    notes: SSC_DATA_INTERPRETATION_NOTES,
+    slugs: SSC_DATA_INTERPRETATION_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Quantitative Aptitude",
+    subjectRoute: "ssc-cgl-maths",
+    subjectDisplay: "SSC CGL Maths",
+    chapterSlug: "ratio",
+    chipLabel: "Ratio, Proportion and Variation notes",
+    chapter: SSC_RATIO_CHAPTER,
+    notes: SSC_RATIO_NOTES,
+    slugs: SSC_RATIO_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Quantitative Aptitude",
+    subjectRoute: "ssc-cgl-maths",
+    subjectDisplay: "SSC CGL Maths",
+    chapterSlug: "time-work",
+    chipLabel: "Time and Work notes",
+    chapter: SSC_TIME_WORK_CHAPTER,
+    notes: SSC_TIME_WORK_NOTES,
+    slugs: SSC_TIME_WORK_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Quantitative Aptitude",
+    subjectRoute: "ssc-cgl-maths",
+    subjectDisplay: "SSC CGL Maths",
+    chapterSlug: "algebraic-identities",
+    chipLabel: "Algebraic Identities and Simplification notes",
+    chapter: SSC_ALGEBRAIC_IDENTITIES_CHAPTER,
+    notes: SSC_ALGEBRAIC_IDENTITIES_NOTES,
+    slugs: SSC_ALGEBRAIC_IDENTITIES_SLUGS,
   },
 ];
 
