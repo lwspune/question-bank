@@ -2915,5 +2915,19 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "SSC CGL Maths",
     "chapterSlug": "averages",
     "subtopicCount": 6
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-maths",
+    "subjectDisplay": "SSC CGL Maths",
+    "chapterSlug": "percentage",
+    "subtopicCount": 7
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-maths",
+    "subjectDisplay": "SSC CGL Maths",
+    "chapterSlug": "trigonometry",
+    "subtopicCount": 7
   }
 ];

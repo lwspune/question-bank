@@ -1866,6 +1866,16 @@ import {
   SSC_AVERAGES_NOTES,
   SSC_AVERAGES_SLUGS,
 } from "@/app/notes/ssc-cgl-maths/averages/_data";
+import {
+  SSC_PERCENTAGE_CHAPTER,
+  SSC_PERCENTAGE_NOTES,
+  SSC_PERCENTAGE_SLUGS,
+} from "@/app/notes/ssc-cgl-maths/percentage/_data";
+import {
+  SSC_TRIGONOMETRY_CHAPTER,
+  SSC_TRIGONOMETRY_NOTES,
+  SSC_TRIGONOMETRY_SLUGS,
+} from "@/app/notes/ssc-cgl-maths/trigonometry/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -5987,6 +5997,28 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SSC_AVERAGES_CHAPTER,
     notes: SSC_AVERAGES_NOTES,
     slugs: SSC_AVERAGES_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Quantitative Aptitude",
+    subjectRoute: "ssc-cgl-maths",
+    subjectDisplay: "SSC CGL Maths",
+    chapterSlug: "percentage",
+    chipLabel: "Percentage, Profit and Loss notes",
+    chapter: SSC_PERCENTAGE_CHAPTER,
+    notes: SSC_PERCENTAGE_NOTES,
+    slugs: SSC_PERCENTAGE_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Quantitative Aptitude",
+    subjectRoute: "ssc-cgl-maths",
+    subjectDisplay: "SSC CGL Maths",
+    chapterSlug: "trigonometry",
+    chipLabel: "Trigonometric Ratios and Identities notes",
+    chapter: SSC_TRIGONOMETRY_CHAPTER,
+    notes: SSC_TRIGONOMETRY_NOTES,
+    slugs: SSC_TRIGONOMETRY_SLUGS,
   },
 ];
 
