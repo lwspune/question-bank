@@ -18,6 +18,7 @@ import {
 } from "@/lib/chat/facts";
 import { GUIDE_CATALOG } from "@/lib/guide/guideCatalog";
 import { ABUSE_REPLY } from "@/lib/chat/abuse";
+import { NOT_UNDERSTOOD } from "@/lib/chat/understood";
 import { EXAM_REGISTRY } from "@/lib/exam/examContext";
 import { getNotesExamGroups } from "@/lib/notes/notesNav";
 
@@ -486,6 +487,9 @@ describe("buildSystemPrompt", () => {
     expect(p).not.toMatch(/shown under your reply/);
     expect(p).toMatch(/Answer only what they asked/);
     expect(p).toMatch(/never offer one yourself/);
+    // 2026-10-23: "Did you understand?" No sends NOT_UNDERSTOOD; the next explanation must be simpler, not the same.
+    expect(p).toContain(`"${NOT_UNDERSTOOD}"`);
+    expect(p).toMatch(/explain it again more simply/);
     expect(p).toMatch(/up to 8 short lines/);
     // The chat window draws \( ... \) as maths; a template string eats a single backslash.
     expect(p).toContain("Write maths inside \\( \\).");

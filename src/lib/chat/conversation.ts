@@ -17,6 +17,7 @@ import { ABUSE_REPLY } from "./abuse";
 import type { ToolCallLog } from "./anthropic";
 import { chosenIn, isAskVMessage, type AskedCard } from "./askVEvent";
 import { parseNotesRefKey } from "./notesItem";
+import { isExplanation } from "./understood";
 
 export type ConversationRow = {
   id: string;
@@ -41,6 +42,8 @@ export type ConversationRow = {
   askedQuestionId?: string | null;
   /** The notes question tapped instead, as lib/chat/notesItem notesRefKey; the row's page says where (0181). */
   askedNotesItem?: string | null;
+  /** The student's answer to "Did you understand?" under this reply; null = not answered (0182). */
+  understood?: boolean | null;
   /** The earlier message this one replies to (0174). */
   replyToId?: string | null;
 };
@@ -189,6 +192,9 @@ export type HistoryTurn =
       links?: string[];
       source?: "ai" | "fallback" | "template" | "followup";
       feedback?: number | null;
+      /** An explanation: asks "Did you understand?" instead of the thumbs (2026-10-23). */
+      explained?: boolean;
+      understood?: boolean | null;
     };
 
 export function historyTurns(rows: readonly ConversationRow[]): HistoryTurn[] {
@@ -211,6 +217,8 @@ export function historyTurns(rows: readonly ConversationRow[]): HistoryTurn[] {
         links: r.replyLinks ?? [],
         source: "ai",
         feedback: r.feedback,
+        explained: isExplanation(r.toolCalls, text),
+        understood: r.understood ?? null,
       });
     } else if (r.replySource === "followup") {
       turns.push({ role: "assistant", text: r.reply!, links: r.replyLinks ?? [], source: "followup" });
@@ -233,6 +241,8 @@ export type ConversationTurn = {
   links: string[];
   asked: AskedCard | null;
   quote: string | null;
+  /** The answer to "Did you understand?"; null when not asked or not answered (0182). */
+  understood: boolean | null;
 };
 
 export type Conversation = {
@@ -276,6 +286,7 @@ export function groupConversations(rows: readonly ConversationRow[]): Conversati
           links: r.replyLinks ?? [],
           asked: askedCardOfRow(r, question),
           quote: target ? quoteSnippet(target.reply!) : null,
+          understood: r.understood ?? null,
         };
       }),
     });

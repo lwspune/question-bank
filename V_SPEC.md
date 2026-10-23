@@ -204,3 +204,11 @@ reads everything else from the stored row.
   "explained a different problem". The same key rebuilds the card above the
   tap and lets the runner replay notes taps. Case cd661fa2 (Mx Amit's second
   tap, its memory labelled as V now sees it): no apology in 2 runs.
+- 2026-10-23: "Did you understand? Yes / No" replaces the thumbs under
+  explanations (a reply that used explain_question or explain_concept, or
+  answered a No); other replies keep the thumbs. Yes shows "Great!"; No sends
+  "I didn't understand. Please explain it more simply." and V explains again
+  in smaller steps (rule 7), then asks again. Kept per reply (migration 0182).
+  Read weekly: the share of explanations understood, and of No turned into
+  Yes. Case 76a45899 (a No after a real explanation): simpler and the same
+  answer in 2 runs.

@@ -10,7 +10,7 @@ import { USER_BUBBLE, V_BUBBLE } from "@/components/chat/chatStyles";
 
 export type ThreadTurn = Pick<
   ConversationTurn,
-  "question" | "reply" | "source" | "feedback" | "page" | "at" | "links" | "asked" | "quote"
+  "question" | "reply" | "source" | "feedback" | "page" | "at" | "links" | "asked" | "quote" | "understood"
 >;
 
 const SOURCE_LABEL: Record<NonNullable<ThreadTurn["source"]>, string> = {
@@ -61,6 +61,8 @@ export default function ConversationThread({ summary, turns }: { summary: ReactN
                   {t.source ? SOURCE_LABEL[t.source] : "fixed reply"}
                   {t.feedback === 1 && " · marked helpful"}
                   {t.feedback === -1 && " · marked not helpful"}
+                  {t.understood === true && " · understood"}
+                  {t.understood === false && " · did not understand"}
                   {t.page && ` · on ${t.page}`}
                   {" · "}
                   {new Date(t.at).toLocaleString("en-IN", { timeZone: "Asia/Kolkata", dateStyle: "medium", timeStyle: "short" })}
