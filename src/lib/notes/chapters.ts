@@ -1996,6 +1996,21 @@ import {
   SSC_MATHEMATICAL_OPERATIONS_NOTES,
   SSC_MATHEMATICAL_OPERATIONS_SLUGS,
 } from "@/app/notes/ssc-cgl-reasoning/mathematical-operations/_data";
+import {
+  SSC_CODING_DECODING_CHAPTER,
+  SSC_CODING_DECODING_NOTES,
+  SSC_CODING_DECODING_SLUGS,
+} from "@/app/notes/ssc-cgl-reasoning/coding-decoding/_data";
+import {
+  SSC_ANALOGY_CHAPTER,
+  SSC_ANALOGY_NOTES,
+  SSC_ANALOGY_SLUGS,
+} from "@/app/notes/ssc-cgl-reasoning/analogy/_data";
+import {
+  SSC_SERIES_CHAPTER,
+  SSC_SERIES_NOTES,
+  SSC_SERIES_SLUGS,
+} from "@/app/notes/ssc-cgl-reasoning/series/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -6403,6 +6418,39 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SSC_MATHEMATICAL_OPERATIONS_CHAPTER,
     notes: SSC_MATHEMATICAL_OPERATIONS_NOTES,
     slugs: SSC_MATHEMATICAL_OPERATIONS_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Reasoning",
+    subjectRoute: "ssc-cgl-reasoning",
+    subjectDisplay: "SSC CGL Reasoning",
+    chapterSlug: "coding-decoding",
+    chipLabel: "Coding-Decoding notes",
+    chapter: SSC_CODING_DECODING_CHAPTER,
+    notes: SSC_CODING_DECODING_NOTES,
+    slugs: SSC_CODING_DECODING_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Reasoning",
+    subjectRoute: "ssc-cgl-reasoning",
+    subjectDisplay: "SSC CGL Reasoning",
+    chapterSlug: "analogy",
+    chipLabel: "Analogy notes",
+    chapter: SSC_ANALOGY_CHAPTER,
+    notes: SSC_ANALOGY_NOTES,
+    slugs: SSC_ANALOGY_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Reasoning",
+    subjectRoute: "ssc-cgl-reasoning",
+    subjectDisplay: "SSC CGL Reasoning",
+    chapterSlug: "series",
+    chipLabel: "Series notes",
+    chapter: SSC_SERIES_CHAPTER,
+    notes: SSC_SERIES_NOTES,
+    slugs: SSC_SERIES_SLUGS,
   },
 ];
 

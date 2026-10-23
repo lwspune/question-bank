@@ -445,7 +445,10 @@ export const NOTES_DATA_KEYS: readonly string[] = [
   "ssc-cgl-reasoning/calendar-clock",
   "ssc-cgl-reasoning/blood-relations",
   "ssc-cgl-reasoning/order-ranking",
-  "ssc-cgl-reasoning/mathematical-operations"
+  "ssc-cgl-reasoning/mathematical-operations",
+  "ssc-cgl-reasoning/coding-decoding",
+  "ssc-cgl-reasoning/analogy",
+  "ssc-cgl-reasoning/series"
 ];
 
 export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, SubtopicNote>>> = {
@@ -891,4 +894,7 @@ export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, Sub
   "ssc-cgl-reasoning/blood-relations": () => import("@/app/notes/ssc-cgl-reasoning/blood-relations/_data").then((m) => m.SSC_BLOOD_RELATIONS_NOTES),
   "ssc-cgl-reasoning/order-ranking": () => import("@/app/notes/ssc-cgl-reasoning/order-ranking/_data").then((m) => m.SSC_ORDER_RANKING_NOTES),
   "ssc-cgl-reasoning/mathematical-operations": () => import("@/app/notes/ssc-cgl-reasoning/mathematical-operations/_data").then((m) => m.SSC_MATHEMATICAL_OPERATIONS_NOTES),
+  "ssc-cgl-reasoning/coding-decoding": () => import("@/app/notes/ssc-cgl-reasoning/coding-decoding/_data").then((m) => m.SSC_CODING_DECODING_NOTES),
+  "ssc-cgl-reasoning/analogy": () => import("@/app/notes/ssc-cgl-reasoning/analogy/_data").then((m) => m.SSC_ANALOGY_NOTES),
+  "ssc-cgl-reasoning/series": () => import("@/app/notes/ssc-cgl-reasoning/series/_data").then((m) => m.SSC_SERIES_NOTES),
 };
