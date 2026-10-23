@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import MathText from "./MathText";
+import MathBlockText from "./MathBlockText";
 import { cardQuery, type AskedCard } from "@/lib/chat/askVEvent";
 import type { CardQuestion } from "@/lib/chat/questionCard";
 
@@ -45,13 +46,13 @@ export default function VAskedCard({ asked }: { asked: AskedCard }) {
       <p className="text-xs font-medium text-muted-foreground">Your question · {q.where}</p>
       <div className={folded ? "line-clamp-4" : "space-y-2"}>
         {q.context && (
-          <p className="whitespace-pre-wrap font-serif text-muted-foreground">
-            <MathText text={q.context} />
-          </p>
+          <div className="whitespace-pre-wrap font-serif text-muted-foreground">
+            <MathBlockText text={q.context} />
+          </div>
         )}
-        <p className="whitespace-pre-wrap font-serif">
-          <MathText text={q.text} />
-        </p>
+        <div className="whitespace-pre-wrap font-serif">
+          <MathBlockText text={q.text} />
+        </div>
       </div>
       {q.imageUrl && !folded && (
         // A question figure from our own storage, the same file the card on the site shows.
