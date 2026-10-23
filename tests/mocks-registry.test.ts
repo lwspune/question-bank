@@ -21,6 +21,7 @@
  * card and the per-exam page has a "coming soon" state — which is why this is
  * a correctness gate rather than a runtime guard.
  */
+import { readAllPages } from "@/lib/supabase/readAllPages";
 import { describe, it, expect, beforeAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { EXAM_REGISTRY } from "@/lib/exam/examContext";
@@ -46,16 +47,13 @@ describe.skipIf(!HAS_ENV)("EXAM_REGISTRY.hasMocks vs the live mock_tests table",
       (exams ?? []).map((e) => [e.id as string, e.name as string])
     );
 
-    // 63 rows today, far under the PostgREST 1000-row cap, and this is the
-    // whole population rather than a count derived from a truncated page.
-    const { data: mocks, error: mockErr } = await client
-      .from("mock_tests")
-      .select("exam_id")
-      .eq("status", "published");
-    if (mockErr) throw new Error(`mock_tests: ${mockErr.message}`);
-    expect((mocks ?? []).length).toBeLessThan(1000);
+    // The whole population, paged: 1,027 published on 2026-10-23, past the
+    // PostgREST 1000-row cap that an unpaged read stops at without a word.
+    const mocks = await readAllPages<Record<string, unknown>>((from, to) =>
+      client.from("mock_tests").select("exam_id").eq("status", "published").order("id").range(from, to)
+    );
 
-    for (const m of mocks ?? []) {
+    for (const m of mocks) {
       const name = nameById.get(m.exam_id as string);
       if (!name) continue;
       published.set(name, (published.get(name) ?? 0) + 1);

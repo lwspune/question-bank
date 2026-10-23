@@ -14,6 +14,7 @@
  *   - flag missing, solutions there -> the title under-sells (and the exam
  *     loses the word students search for). Safe, but still wrong.
  */
+import { readAllPages } from "@/lib/supabase/readAllPages";
 import { describe, it, expect, beforeAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { EXAM_REGISTRY } from "@/lib/exam/examContext";
@@ -34,17 +35,20 @@ describe.skipIf(!HAS_ENV)("EXAM_REGISTRY.pastPaperSolutions vs the live past pap
       auth: { persistSession: false },
     });
 
-    const { data: mocks, error } = await client
-      .from("mock_tests")
-      .select("questions, exam:exams(name)")
-      .eq("status", "published")
-      .eq("source", "pyq")
-      .eq("scope", "full");
-    if (error) throw new Error(`mock_tests: ${error.message}`);
-    expect((mocks ?? []).length).toBeLessThan(1000);
+    // Paged: 921 past papers on 2026-10-23, close to the 1000 an unpaged read returns.
+    const mocks = await readAllPages<Record<string, unknown>>((from, to) =>
+      client
+        .from("mock_tests")
+        .select("questions, exam:exams(name)")
+        .eq("status", "published")
+        .eq("source", "pyq")
+        .eq("scope", "full")
+        .order("id")
+        .range(from, to)
+    );
 
     const examOf = new Map<string, string>();
-    for (const m of mocks ?? []) {
+    for (const m of mocks) {
       const exam = (Array.isArray(m.exam) ? m.exam[0] : m.exam) as { name: string } | null;
       if (!exam) continue;
       for (const q of (m.questions as { questionId: string }[]) ?? []) examOf.set(q.questionId, exam.name);
