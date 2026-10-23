@@ -16,6 +16,11 @@ solution) and `.json` (full ids).
 
 - **Shape** (copy it exactly): SPI Probability, `src/app/notes/spi-maths/probability/_data/*`, and
   its plan `scripts/spi/reshape/probability.ts`. The tag map's shape is `generated-papers/_tag-cds-av.json`.
+- **SSC conventions** (slugs, intro, tag map): the shipped SSC chapters, e.g.
+  `src/app/notes/ssc-cgl-maths/averages/_data/*`, `scripts/ssc-cgl/reshape/averages.ts` and
+  `generated-papers/_tag-ssc-av.json`. Read them; do not copy their prose.
+- **Scratch files** go in a folder of your own, `generated-papers/_work-ssc-<abbr>/`, never a shared
+  scratchpad: agents running at once have overwritten each other's helper scripts.
 - **Topic checklist**: the CDS Maths chapter of the same name, `src/app/notes/cds-maths/<slug>/_data/*`
   (same syllabus, often the same subtopic names). Use it to see what the chapter must cover. **Do not
   copy its sentences, examples, tables or traps.** These are separate pages that search engines compare;
@@ -39,8 +44,10 @@ is safe and when it breaks: a shortcut with no limit stated is a trap, not a met
 
 - Write ONLY: `scripts/ssc-cgl/reshape/<slug>.ts`, `src/app/notes/ssc-cgl-maths/<slug>/_data/<page>.ts`
   and `chapter.ts` (no `index.ts`, no route pages: the main session's register step writes those),
-  `generated-papers/_tag-ssc-<abbr>.json`, `generated-papers/_prep-ssc-<abbr>.md`.
-- Never: `--apply`, any DB write, `tag-chapter.ts`, git, `src/lib/notes/chapters.ts`, any other folder,
+  `generated-papers/_tag-ssc-<abbr>.json`, `generated-papers/_prep-ssc-<abbr>.md`, and anything under
+  `generated-papers/_work-ssc-<abbr>/`.
+- Never: `--apply`, any DB write, `tag-chapter.ts`, git (not even `git status`), the transcripts,
+  `build.ts` or `repair.ts`, `src/lib/notes/chapters.ts`, any other folder,
   any other chapter's files.
 - Read-only commands are fine: the dry run `npx tsx scripts/ssc-cgl/reshape.ts scripts/ssc-cgl/reshape/<slug>.ts`
   and, once at the end, `npx tsc --noEmit -p .` (only errors in YOUR files matter).
@@ -50,7 +57,10 @@ is safe and when it breaks: a shortcut with no limit stated is a trap, not a met
 1. **Read every row and its solution.** Solve every key yourself, as printed. List in the report any
    row whose key you dispute (with the full derivation), any row flawed as printed, and any solution
    with a real error. A row whose solution opens with a bold `**Note:**` is flawed as printed (SSC's
-   print was unclear or wrong): never feature it, never build a rep on it. A row marked `IMG` carries a
+   print was unclear or wrong): never feature it, never build a rep on it. Also report, by id: a row
+   that is impossible or ambiguous as printed but has NO Note (two readings that land on two printed
+   options, a premise no value satisfies, a cut-off stem), and a solution whose working reaches a
+   different option from its key. The first seven chapters turned up eight such rows. A row marked `IMG` carries a
    figure: view it at `scripts/ssc-cgl/figures/<shift id>/q<NNN>.png` (option pictures `q<NNN>-A.png`),
    where `SSC_CGL_T1_2025-09-18_S1` is shift id `t1-2025-09-18-s1` and NNN is the 3-digit question number.
 2. **Re-cut into teaching pages** (NOTES_WORKFLOW step 0). Cut by TECHNIQUE into about 3-7 pages, in
@@ -96,6 +106,12 @@ is safe and when it breaks: a shortcut with no limit stated is a trap, not a met
 
 - Plain-text fields take NO LaTeX and no `**`: `title`, `oneLineDefinition`, `whyItMatters`,
   `concept.name`, `formula.label`, table `columns`. Use words or Unicode there.
+- A `formula.symbols` entry's `symbol` is plain words or wrapped maths (`"\\(\\bar{x}\\)"`), never a
+  bare macro (`"\\bar{x}"` fails notes:latex).
+- Never put a year directly before a count noun: "Eight 2024 questions" reads to the count gate as a
+  claim of 2024 questions. Write "eight questions from the 2024 shifts".
+- A table inside a prompt (worked example, self-check, practice rep) is a GFM pipe table with its
+  `|---|` separator row; the page and the print view both render it.
 - Maths elsewhere is `\\(...\\)` inside TS strings (double backslashes). Never `\\iff`. Money is `₹` or
   `Rs`; a literal dollar sign is `\\$`.
 - **No em dashes, en dashes, " - " or " -- " used as dashes anywhere in the text.** Use a full stop, colon,
