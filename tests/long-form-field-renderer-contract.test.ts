@@ -40,8 +40,14 @@ import { join, relative } from "node:path";
 
 const ROOT = join(process.cwd(), "src");
 
-/** Long-form fields that may carry a pipe-table (see CLAUDE.md). */
-const LONG_FORM_FIELDS = ["context", "passage", "solution"] as const;
+/**
+ * Long-form fields that may carry a pipe-table (see CLAUDE.md). `prompt` joined
+ * 2026-10-23: a /notes worked example, self-check or practice rep is rendered by
+ * BlockText on the page, and SSC CGL Data Interpretation's prompts carry the
+ * data table they need; the chapter PRINT view still drew them with
+ * StaticKatexRenderer, so the printed chapter would have shown raw pipes.
+ */
+const LONG_FORM_FIELDS = ["context", "passage", "solution", "prompt"] as const;
 
 function tsxUnder(dir: string, out: string[] = []): string[] {
   for (const entry of readdirSync(dir)) {

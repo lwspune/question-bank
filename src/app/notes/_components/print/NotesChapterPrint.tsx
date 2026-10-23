@@ -45,7 +45,7 @@ function ExampleBlock({
     <div className={`pbox pbox--${variant}`}>
       <h4>{heading}</h4>
       <div className="pbody">
-        <StaticKatexRenderer text={example.prompt} />
+        <StaticBlockText text={example.prompt} />
       </div>
       <ol className="psteps">
         {example.steps.map((s, i) => (
@@ -167,7 +167,7 @@ function ConceptBlock({
               <li key={i}>
                 <span className="n">{i + 1}.</span>
                 <span className="q">
-                  <StaticKatexRenderer text={p.prompt} />
+                  <StaticBlockText text={p.prompt} />
                 </span>
                 <span className="a">
                   <b>Ans</b>
