@@ -50,6 +50,8 @@ import {
   V_EXPLAIN_SIMILAR_RIGHT_KEEP_PCT,
   V_STRATEGY_ANSWERS_KEEP,
   V_PLAN_STUDENTS_KEEP,
+  V_REVEAL_FOLLOWUP_BASELINE_PCT,
+  V_REVEAL_FOLLOWUP_MAX_DROP,
   V_PLAN_DAYS_DONE_KEEP_PCT,
   SPECIFIC_OFFER_CHECKOUT_PCT,
   checkOn,
@@ -558,6 +560,17 @@ export default async function GrowthPage() {
             </p>
             <ReadingsList metric="v-explain-students" />
             <ReadingsList metric="v-explain-similar-right" />
+          </div>
+        );
+      case "v-reveal":
+        return (
+          <div className="space-y-3">
+            <p className="text-sm text-muted-foreground">
+              Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))}: keep it if the follow-up share holds at{" "}
+              {V_REVEAL_FOLLOWUP_BASELINE_PCT}% or rises; if it falls {V_REVEAL_FOLLOWUP_MAX_DROP}+ points, read the
+              conversations first.
+            </p>
+            <ReadingsList metric="v-follow-up" />
           </div>
         );
       case "v-plan":

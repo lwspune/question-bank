@@ -61,6 +61,7 @@ import VQuestionCard from "./VQuestionCard";
 import VAskedCard from "./VAskedCard";
 import VFace, { type VAvatar } from "./VFace";
 import ReplyText from "./VReplyText";
+import VRevealReply from "./VRevealReply";
 import VPlanCard from "./VPlanCard";
 import {
   ASK_V_EVENT,
@@ -88,6 +89,8 @@ type ChatTurn = HistoryTurn & {
   card?: { id: string; kind: "try" | "confirm" };
   /** The week plan under V's reply (2026-10-19): it made or read the student's plan. */
   plan?: boolean;
+  /** A fresh reply, shown a line at a time (2026-10-23). Never kept: a reply from history shows whole. */
+  reveal?: boolean;
 };
 
 /** What the device keeps of a turn: no face, no errors. */
@@ -95,7 +98,7 @@ function keepable(turns: readonly ChatTurn[]): HistoryTurn[] {
   return turns
     .filter((t) => !t.transient)
     .map((t) => {
-      const { avatar: _avatar, transient: _transient, ...rest } = t;
+      const { avatar: _avatar, transient: _transient, reveal: _reveal, ...rest } = t;
       return rest as HistoryTurn;
     });
 }
@@ -413,6 +416,11 @@ export default function ChatWidget() {
     }
   }
 
+  /** A fresh reply has shown its last line: what goes under it may show. */
+  function endReveal(index: number) {
+    setTurns((all) => all.map((t, i) => (i === index && t.role === "assistant" ? { ...t, reveal: false } : t)));
+  }
+
   /** A message from the student or V. A reply that lands with the window shut is announced. */
   function addTurn(turn: ChatTurn) {
     if (!turn.transient) lastAtRef.current = Date.now();
@@ -554,8 +562,8 @@ export default function ChatWidget() {
       const plan = data.planShown === true ? true : undefined;
       addTurn(
         data.source === "ai" && data.id
-          ? { role: "assistant", avatar: "laugh", text: data.reply as string, links, id: data.id, source: "ai", feedback: null, card, plan }
-          : { role: "assistant", avatar: "laugh", text: data.reply as string, links, card, plan }
+          ? { role: "assistant", avatar: "laugh", text: data.reply as string, links, id: data.id, source: "ai", feedback: null, card, plan, reveal: true }
+          : { role: "assistant", avatar: "laugh", text: data.reply as string, links, card, plan, reveal: true }
       );
     } catch {
       const errorText = "V is unavailable right now. Please try again.";
@@ -651,13 +659,24 @@ export default function ChatWidget() {
                   </div>
                 );
               }
-              const rateable = t.source === "ai" && !!t.id;
+              // What goes under the reply waits until its last line is out.
+              const rateable = t.source === "ai" && !!t.id && !t.reveal;
               return (
                 <div key={n} className={`max-w-[90%] ${MESSAGE_IN}`}>
                   <div className="flex items-end gap-2">
-                    <VFace avatar={t.avatar ?? "idle"} className="h-7 w-7 shrink-0 object-contain" />
+                    <VFace avatar={t.reveal ? "talk" : (t.avatar ?? "idle")} className="h-7 w-7 shrink-0 object-contain" />
                     <div className={V_BUBBLE}>
-                      <ReplyText text={t.text} links={t.links} onNavigate={close} />
+                      {t.reveal ? (
+                        <VRevealReply
+                          text={t.text}
+                          links={t.links}
+                          onNavigate={close}
+                          onGrow={() => listRef.current?.scrollTo({ top: listRef.current.scrollHeight })}
+                          onDone={() => endReveal(i)}
+                        />
+                      ) : (
+                        <ReplyText text={t.text} links={t.links} onNavigate={close} />
+                      )}
                     </div>
                   </div>
                   {rateable && (
@@ -697,8 +716,8 @@ export default function ChatWidget() {
                       )}
                     </div>
                   )}
-                  {t.card && <VQuestionCard id={t.card.id} kind={t.card.kind} />}
-                  {t.plan && <VPlanCard onNavigate={close} />}
+                  {t.card && !t.reveal && <VQuestionCard id={t.card.id} kind={t.card.kind} />}
+                  {t.plan && !t.reveal && <VPlanCard onNavigate={close} />}
                 </div>
               );
             })}

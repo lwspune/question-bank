@@ -91,6 +91,7 @@ describe("EXPERIMENTS", () => {
       "v-explain",
       "v-finder",
       "v-plan",
+      "v-reveal",
       "v-strategy",
     ]);
   });
@@ -117,6 +118,11 @@ describe("READINGS", () => {
     ] as const) {
       expect(READINGS[metric].entries[0]?.on).toBe("2026-10-23");
     }
+  });
+
+  it("starts the line-by-line reply experiment with the follow-up share from before it", () => {
+    // V's replies shown a line at a time (2026-10-23): judged on follow-up questions, the owner's measure.
+    expect(READINGS["v-follow-up"].entries[0]).toMatchObject({ on: "2026-10-23", value: 48 });
   });
 
   it("keeps each metric's entries dated and oldest first", () => {
