@@ -4,7 +4,7 @@
  * scripts/lib/vEval.ts; the runner is scripts/chat/eval/run.ts.
  */
 import { describe, it, expect } from "vitest";
-import { parseExpect, checkReply, scoreByJob, compareRuns, askedOf, V_JOBS } from "../scripts/lib/vEval";
+import { parseExpect, checkReply, scoreByJob, compareRuns, askedOf, pickCases, V_JOBS } from "../scripts/lib/vEval";
 
 describe("askedOf", () => {
   const Q = "3bb486cc-61fa-47b6-ae1e-4e0d1cf009fa";
@@ -182,5 +182,22 @@ describe("compareRuns", () => {
       newlyPassing: [],
       newCases: ["a"],
     });
+  });
+});
+
+describe("pickCases: --case runs only the cases named, by the start of their id", () => {
+  const cases = [{ id: "a1b2c3d4-0000" }, { id: "a1ff0000-0000" }, { id: "9e9e9e9e-0000" }];
+
+  it("keeps every case whose id starts with one of the given prefixes, in their order", () => {
+    expect(pickCases(cases, "9e9e,a1b2").map((c) => c.id)).toEqual(["a1b2c3d4-0000", "9e9e9e9e-0000"]);
+  });
+
+  it("refuses a prefix that matches nothing or more than one case, so a typo cannot run the wrong set", () => {
+    expect(() => pickCases(cases, "ffff")).toThrow(/ffff/);
+    expect(() => pickCases(cases, "a1")).toThrow(/a1/);
+  });
+
+  it("keeps every case when no prefix is given", () => {
+    expect(pickCases(cases, null)).toHaveLength(3);
   });
 });

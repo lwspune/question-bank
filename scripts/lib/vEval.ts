@@ -183,3 +183,22 @@ export function compareRuns(
   }
   return out;
 }
+
+/**
+ * --case=<prefix,prefix>: the cases whose id starts with one of the prefixes,
+ * in their order (2026-10-23, so a change is re-tested on the cases it touches
+ * instead of all of them). A prefix matching no case, or several, is refused:
+ * a typo must not quietly run the wrong set.
+ */
+export function pickCases<T extends { id: string }>(cases: readonly T[], prefixes: string | null): T[] {
+  if (!prefixes) return [...cases];
+  const wanted = prefixes
+    .split(",")
+    .map((p) => p.trim())
+    .filter(Boolean);
+  for (const p of wanted) {
+    const n = cases.filter((c) => c.id.startsWith(p)).length;
+    if (n !== 1) throw new Error(`--case=${p} matches ${n} cases; give enough of the id to name one`);
+  }
+  return cases.filter((c) => wanted.some((p) => c.id.startsWith(p)));
+}
