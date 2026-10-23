@@ -36,7 +36,7 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
-import { getBlueprint } from "../../src/lib/mocks/blueprints";
+import { getBlueprint, optionCountOf } from "../../src/lib/mocks/blueprints";
 import type { MockAnswerKey, OptionLabel } from "../../src/lib/mocks/answers";
 import {
   buildMockPaper,
@@ -61,7 +61,7 @@ type SittingFile = {
 };
 
 const DATA = join(__dirname, "data");
-const SOURCES = ["nda2-2026-practice.json"];
+const SOURCES = ["nda2-2026-practice.json", "imat-practice.json"];
 
 /** `.in()` puts its filter in the URL — chunk it or PostgREST 400s past ~200 ids. */
 const CHUNK = 200;
@@ -112,13 +112,14 @@ function answerOf(r: Row): MockAnswerKey | null {
   return label ? { kind: "mcq", label: label as OptionLabel } : null;
 }
 
-/** Every reason a row cannot back a mock question. Empty = usable. */
-function rowProblems(r: Row): string[] {
+/** Every reason a row cannot back a mock question. Empty = usable. `options` is
+ *  how many the paper prints per MCQ (optionCountOf: four, five for IMAT). */
+function rowProblems(r: Row, options: number): string[] {
   const p: string[] = [];
   if (r.visibility !== "PUBLIC") p.push(`${r.visibility} (would render BLANK to a student)`);
   if (r.question_format !== "numeric") {
     const correct = (r.options ?? []).filter((o) => o.is_correct).length;
-    if ((r.options ?? []).length !== 4) p.push(`${(r.options ?? []).length} options`);
+    if ((r.options ?? []).length !== options) p.push(`${(r.options ?? []).length} options`);
     if (correct !== 1) p.push(`${correct} correct options`);
   }
   if (!answerOf(r)) p.push("no answer key");
@@ -141,22 +142,27 @@ async function main() {
   ).filter((s) => !only || s.slug === only || s.key === only);
   if (sittings.length === 0) throw new Error(`no sittings matched ${only ?? "(all)"}`);
 
-  // Chapter -> subject name, so assignSection can map each row to a section.
-  const { data: chapters, error: cErr } = await db
-    .from("chapters").select("id, subject:subjects(name)");
-  if (cErr) throw new Error(`chapters: ${cErr.message}`);
-  const subjectOf = new Map<string, string>();
-  for (const c of (chapters ?? []) as unknown as { id: string; subject: { name: string } | { name: string }[] }[]) {
-    const s = Array.isArray(c.subject) ? c.subject[0] : c.subject;
-    if (s?.name) subjectOf.set(c.id, s.name);
-  }
-
   const bankIds = [...new Set(sittings.flatMap((s) => s.questions.flatMap((q) => (q.kind === "bank" ? [q.questionId] : []))))];
   const newFiles = [...new Set(sittings.flatMap((s) => s.questions.flatMap((q) => (q.kind === "new" ? [q.sourceFile] : []))))];
   const byId = new Map((await fetchByIds(db, bankIds)).map((r) => [r.id, r]));
   const byNew = new Map(
     (await fetchBySourceFile(db, newFiles)).map((r) => [`${r.source_file}#${r.question_number}`, r])
   );
+
+  // Chapter -> subject name, so assignSection can map each row to a section. Only the
+  // chapters these rows use, chunked: the whole chapters table is past PostgREST's
+  // 1000-row cap, and reading it unpaged silently dropped the newest chapters (IMAT's).
+  const chapterIds = [...new Set([...byId.values(), ...byNew.values()].map((r) => r.chapter_id))];
+  const subjectOf = new Map<string, string>();
+  for (let i = 0; i < chapterIds.length; i += CHUNK) {
+    const { data: chapters, error: cErr } = await db
+      .from("chapters").select("id, subject:subjects(name)").in("id", chapterIds.slice(i, i + CHUNK));
+    if (cErr) throw new Error(`chapters: ${cErr.message}`);
+    for (const c of (chapters ?? []) as unknown as { id: string; subject: { name: string } | { name: string }[] }[]) {
+      const sub = Array.isArray(c.subject) ? c.subject[0] : c.subject;
+      if (sub?.name) subjectOf.set(c.id, sub.name);
+    }
+  }
 
   let built = 0, held = 0;
   const failures: string[] = [];
@@ -173,7 +179,7 @@ async function main() {
         issues.push(`n=${q.n}: ${q.kind === "bank" ? q.questionId : `${q.sourceFile}#${q.questionNumber}`} NOT FOUND`);
         continue;
       }
-      const probs = rowProblems(r);
+      const probs = rowProblems(r, optionCountOf(bp));
       if (probs.length) { issues.push(`n=${q.n}: ${r.id} — ${probs.join("; ")}`); continue; }
       rows.push({
         id: r.id,

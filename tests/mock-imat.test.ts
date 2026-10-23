@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { IMAT_PAPER, getBlueprint, totalMarks, totalQuestions } from "../src/lib/mocks/blueprints";
+import { IMAT_PAPER, SPI_PAPER, getBlueprint, optionCountOf, totalMarks, totalQuestions } from "../src/lib/mocks/blueprints";
 import { buildMockPaper, type PaperQuestionRow } from "../src/lib/mocks/reconstruct";
 import { gradeMock } from "../src/lib/mocks/attempt";
 import type { OptionLabel, SavedResponse } from "../src/lib/mocks/answers";
@@ -23,6 +23,12 @@ describe("IMAT_PAPER", () => {
     const all = IMAT_PAPER.sections.flatMap((s) => s.subjects);
     expect(new Set(all).size).toBe(all.length);
     expect([...all].sort()).toEqual([...SUBJECTS].sort());
+  });
+
+  it("prints five options per question; every other paper keeps four", () => {
+    expect(IMAT_PAPER.optionCount).toBe(5);
+    expect(optionCountOf(IMAT_PAPER)).toBe(5);
+    expect(optionCountOf(SPI_PAPER)).toBe(4);
   });
 
   it("is registered", () => {

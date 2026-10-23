@@ -77,7 +77,14 @@ export type MockPaperBlueprint = {
   durationSecs: number;
   marking: { correct: number; wrong: number };
   sections: MockSectionBlueprint[];
+  /** Options printed per MCQ, when not four: IMAT prints five (A-E). */
+  optionCount?: number;
 };
+
+/** Options each MCQ on this paper must carry: its own count, else four. */
+export function optionCountOf(bp: MockPaperBlueprint): number {
+  return bp.optionCount ?? 4;
+}
 
 /**
  * NDA Paper I — Mathematics. 120 questions, 300 marks, 2.5 hours.
@@ -682,6 +689,7 @@ export const IMAT_PAPER: MockPaperBlueprint = {
   paperLabel: "Admission Test",
   durationSecs: 100 * 60,
   marking: { correct: 1.5, wrong: -0.4 },
+  optionCount: 5,
   sections: [
     { key: "reading", label: "Reading skills and knowledge acquired during studies", subjects: ["Reading Skills and General Knowledge"], count: 4 },
     { key: "logic", label: "Logical reasoning and problem-solving", subjects: ["Logical Reasoning and Problem Solving"], count: 5 },
