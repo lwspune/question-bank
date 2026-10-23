@@ -2036,6 +2036,11 @@ import {
   SSC_MIRROR_IMAGES_NOTES,
   SSC_MIRROR_IMAGES_SLUGS,
 } from "@/app/notes/ssc-cgl-reasoning/mirror-images/_data";
+import {
+  SSC_PAPER_FOLDING_CHAPTER,
+  SSC_PAPER_FOLDING_NOTES,
+  SSC_PAPER_FOLDING_SLUGS,
+} from "@/app/notes/ssc-cgl-reasoning/paper-folding/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -6531,6 +6536,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SSC_MIRROR_IMAGES_CHAPTER,
     notes: SSC_MIRROR_IMAGES_NOTES,
     slugs: SSC_MIRROR_IMAGES_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Reasoning",
+    subjectRoute: "ssc-cgl-reasoning",
+    subjectDisplay: "SSC CGL Reasoning",
+    chapterSlug: "paper-folding",
+    chipLabel: "Paper Folding and Cutting notes",
+    chapter: SSC_PAPER_FOLDING_CHAPTER,
+    notes: SSC_PAPER_FOLDING_NOTES,
+    slugs: SSC_PAPER_FOLDING_SLUGS,
   },
 ];
 
