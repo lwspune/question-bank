@@ -66,6 +66,7 @@ describe("EXPERIMENTS", () => {
   it("carries each readout the page knows how to compute exactly once", () => {
     const readouts = EXPERIMENTS.map((e) => e.readout).sort();
     expect(readouts).toEqual([
+      "answer-limit",
       "box-buy",
       "chapter-share",
       "chapter-tests",
@@ -78,6 +79,7 @@ describe("EXPERIMENTS", () => {
       "notes-titles",
       "onboarding-arms",
       "paper-pages",
+      "pass-price",
       "performance-starter",
       "practice-friends",
       "practice-tests",
@@ -105,6 +107,18 @@ describe("DECIDED_AGAINST", () => {
 });
 
 describe("READINGS", () => {
+  it("starts the price and answer-limit experiments with a reading from before the change", () => {
+    // Both changed on 2026-10-23, so a reading after it is only readable beside one from before.
+    for (const metric of [
+      "answer-limit-students",
+      "answer-limit-return",
+      "price-checkout-paid",
+      "price-weekly-revenue",
+    ] as const) {
+      expect(READINGS[metric].entries[0]?.on).toBe("2026-10-23");
+    }
+  });
+
   it("keeps each metric's entries dated and oldest first", () => {
     for (const metric of Object.values(READINGS)) {
       const dates = metric.entries.map((e) => e.on);

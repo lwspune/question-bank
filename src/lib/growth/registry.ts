@@ -201,6 +201,18 @@ export const V_PLAN_STUDENTS_KEEP = 10;
 /** ...and at least this share of the planned days is done (%), read from the same log the ticks use. */
 export const V_PLAN_DAYS_DONE_KEEP_PCT = 30;
 
+/**
+ * "pass-price": keep Rs 199 if a week's pass revenue is at least the week
+ * before the change (6 sales at Rs 99)...
+ */
+export const PRICE_BASELINE_WEEKLY_REVENUE = 594;
+/**
+ * "answer-limit": keep 25 a day unless the share of limit-meeters back on a
+ * later day within 7 days falls more than this many points below the 65% before.
+ */
+export const ANSWER_LIMIT_RETURN_BASELINE_PCT = 65;
+export const ANSWER_LIMIT_RETURN_MAX_DROP = 10;
+
 /** The ISO date `days` (by default `EXPERIMENT_WINDOW_DAYS`) after `liveSince`. */
 export function checkOn(liveSince: string, days: number = EXPERIMENT_WINDOW_DAYS): string {
   const d = new Date(`${liveSince}T00:00:00Z`);
@@ -232,7 +244,9 @@ export type Readout =
   | "v-explain"
   | "v-strategy"
   | "v-plan"
-  | "ebook-store";
+  | "ebook-store"
+  | "pass-price"
+  | "answer-limit";
 
 export type Experiment = {
   id: string;
@@ -562,6 +576,32 @@ export const EXPERIMENTS: readonly Experiment[] = [
     readout: "v-plan",
     status: "running",
   },
+  {
+    id: "pass-price",
+    title: "Premium Pass at Rs 199",
+    change:
+      "The Premium Pass went from Rs 99 to Rs 199 (6 months, same perks) at 07:30 IST on 2026-10-23, at /dashboard/pricing. All 12 passes sold before it were at Rs 99.",
+    why: "Of students who open checkout, 1 in 3 buys (11 of 33), so the people who reach checkout want the pass; at Rs 199 sales can fall by almost half and revenue still rises. The owner's call.",
+    metric:
+      "Pass revenue per week (entitlements source razorpay, granted_at in the week, times the price), against Rs 594 (6 sales) in the week before; checkout opened then paid (user_activity paywall_event step checkout_opened, then a razorpay entitlement), against 33%. The answer limit changed the same day, so checkout-to-paid is the cleaner read on price; revenue carries both changes",
+    rule: `Keep Rs 199 if a week's revenue holds at Rs ${PRICE_BASELINE_WEEKLY_REVENUE}+ over the window (read first at 14 days); if it falls below that, go back to Rs 99 or try a price between.`,
+    liveSince: "2026-10-23",
+    readout: "pass-price",
+    status: "running",
+  },
+  {
+    id: "answer-limit",
+    title: "25 free answers a day, down from 30",
+    change:
+      "Signed-in students now get 25 free answers a day in the bank and the book reader, down from 30, from 18:15 IST on 2026-10-23, at /dashboard/pricing.",
+    why: "The answer limit is the only free limit students meet often (87 of 478 in the 14 days to 23 Oct; the mock limit 5 of 102, chapter tests 1 of 148, saves 2 of 93), and it brought 5 of the 11 tracked sales. 63 more students reached 20 to 29 answers on their best day, so a lower limit shows the pass to more of them. 77% of signups never meet any offer.",
+    metric:
+      "Students meeting the limit per day (paywall_event gate reveals, step shown, distinct students per IST day), against 10.7; of those, the share back on a later IST day within 7 days (question_practiced, mock_started or drill_started), against 65%; their checkout opens and passes. Read from 24 Oct, as 23 Oct straddles the change",
+    rule: `Keep 25 if the students who meet it still come back (within ${ANSWER_LIMIT_RETURN_MAX_DROP} points of ${ANSWER_LIMIT_RETURN_BASELINE_PCT}%) and more of them open checkout; if the return share falls further, go back to 30.`,
+    liveSince: "2026-10-23",
+    readout: "answer-limit",
+    status: "running",
+  },
 ];
 
 export type DecidedAgainst = { title: string; decision: string; on: string; why: string };
@@ -642,7 +682,11 @@ export type ReadingMetric =
   | "v-strategy-answers"
   | "v-strategy-no-data"
   | "v-plan-students"
-  | "v-plan-days-done";
+  | "v-plan-days-done"
+  | "price-weekly-revenue"
+  | "price-checkout-paid"
+  | "answer-limit-students"
+  | "answer-limit-return";
 
 export type Reading = { on: string; value: number; note?: string };
 
@@ -859,5 +903,27 @@ export const READINGS: Record<ReadingMetric, { label: string; source: string; en
     source:
       "Search Console → Performance → Search results → Query contains \"previous year\" → Compare the 28 days from 2026-10-16 with the 28 days before",
     entries: [],
+  },
+  "price-weekly-revenue": {
+    label: "Pass revenue per week (Rs)",
+    source: "entitlements where source = 'razorpay', granted_at in the 7 days to the reading, times the price then (Rs 99 before 07:30 IST on 2026-10-23, Rs 199 after); staff excluded",
+    entries: [{ on: "2026-10-23", value: 594, note: "Baseline at Rs 99: 6 sales in the 7 days to 23 Oct (6 more in the 3.5 weeks before)" }],
+  },
+  "price-checkout-paid": {
+    label: "Opened checkout, then paid (%)",
+    source:
+      "user_activity paywall_event step 'checkout_opened' (distinct students, staff excluded), and of them those with a razorpay entitlement granted after it",
+    entries: [{ on: "2026-10-23", value: 33, note: "Baseline at Rs 99: 11 of 33 since sales opened on 27 Sep; 4 of the 19 who closed checkout bought later" }],
+  },
+  "answer-limit-students": {
+    label: "Students meeting the daily answer limit, per day",
+    source: "user_activity paywall_event with metadata.gate 'reveals' and step 'shown': distinct students per IST day, averaged over the week, staff excluded",
+    entries: [{ on: "2026-10-23", value: 10.7, note: "Baseline at 30 a day: 75 student-days in 16 to 22 Oct" }],
+  },
+  "answer-limit-return": {
+    label: "Met the answer limit, back on a later day within 7 days (%)",
+    source:
+      "Students whose first 'reveals' shown row is 8 to 21 days before the reading (paying students and staff excluded): share with question_practiced, mock_started or drill_started on a later IST day within 7 days",
+    entries: [{ on: "2026-10-23", value: 65, note: "Baseline at 30 a day: 22 of 34 who met it 2 to 16 Oct; none of the 34 opened checkout within 7 days" }],
   },
 };

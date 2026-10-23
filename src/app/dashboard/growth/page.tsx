@@ -25,6 +25,9 @@ import {
   SECOND_PAGE_KEEP_PCT,
   BOX_BUY_MIN_SALES,
   PREMIUM_LIMITS_MIN_SALES,
+  PRICE_BASELINE_WEEKLY_REVENUE,
+  ANSWER_LIMIT_RETURN_BASELINE_PCT,
+  ANSWER_LIMIT_RETURN_MAX_DROP,
   STARTER_KEEP_PCT,
   CHIPS_KEEP_PCT,
   FORMULA_PAGES_INDEXED_KEEP,
@@ -622,6 +625,30 @@ export default async function GrowthPage() {
               {fmtDate(checkOn(e.liveSince))} and the students who meet the answer limit keep coming back.
             </p>
             <ReadingsList metric="limit-sales" />
+          </div>
+        );
+      case "pass-price":
+        return (
+          <div className="space-y-3">
+            <p className="text-sm text-muted-foreground">
+              Judged by hand, first at 14 days, then on {fmtDate(checkOn(e.liveSince))}: keep Rs 199 if a week&apos;s
+              revenue holds at Rs {PRICE_BASELINE_WEEKLY_REVENUE}+. The answer limit changed the same day, so
+              checkout-to-paid is the cleaner read on price.
+            </p>
+            <ReadingsList metric="price-weekly-revenue" />
+            <ReadingsList metric="price-checkout-paid" />
+          </div>
+        );
+      case "answer-limit":
+        return (
+          <div className="space-y-3">
+            <p className="text-sm text-muted-foreground">
+              Judged by hand, first at 14 days, then on {fmtDate(checkOn(e.liveSince))}: keep 25 a day if students who
+              meet it stay within {ANSWER_LIMIT_RETURN_MAX_DROP} points of {ANSWER_LIMIT_RETURN_BASELINE_PCT}% coming
+              back within a week.
+            </p>
+            <ReadingsList metric="answer-limit-students" />
+            <ReadingsList metric="answer-limit-return" />
           </div>
         );
       case "indexing": {
