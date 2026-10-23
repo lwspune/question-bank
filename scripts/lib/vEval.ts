@@ -94,12 +94,16 @@ export function parseExpect(raw: unknown): { ok: true; value: VExpect } | { ok: 
   return { ok: true, value: obj as VExpect };
 }
 
-/** Checks every case gets: V's own rule 11 (plain text, no em dashes) and a reply at all. */
+/**
+ * Checks every case gets: V's own rule 11 (plain text, no em dashes), a reply at all, and never our word
+ * "stored" (owner, 2026-10-23: "why not just soln?"; 39 of 218 replies had said it).
+ */
 function globalFailures(reply: string): string[] {
   if (reply.trim() === "") return ["empty reply"];
   const out: string[] = [];
   if (/\]\(\//.test(reply)) out.push("markdown link");
   if (reply.includes("—")) out.push("em dash");
+  if (/\bstored\b/i.test(reply)) out.push('says "stored"');
   return out;
 }
 

@@ -352,7 +352,8 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
       );
       const tail = (askV.mock.calls[0][0] as { systemTail: string }).systemTail;
       expect(tail).toMatch(/practice question in the notes/);
-      expect(tail).toContain("STORED ANSWER");
+      expect(tail).toContain("ANSWER:");
+      expect(tail).not.toMatch(/stored/i);
       // A notes item on a page it is not on, or with explanations off, tells V nothing.
       await POST(post({ message: `route-${RUN}-notes2 explain`, pagePath: "/browse", question: { notes: { concept: "cethal-classes-of-halides", item: "self" } } }));
       expect((askV.mock.calls[1][0] as { systemTail: string }).systemTail).not.toMatch(/practice question in the notes/);

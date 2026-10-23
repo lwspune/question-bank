@@ -137,6 +137,10 @@ describe("checkReply", () => {
     expect(checkReply({}, run({ reply: "" })).failures).toEqual(["empty reply"]);
     expect(checkReply({}, run({ reply: "See [the page](/board)." })).failures).toEqual(["markdown link"]);
     expect(checkReply({}, run({ reply: "Yes — it is." })).failures).toEqual(["em dash"]);
+    // 2026-10-23 (owner): "stored" is our word, not the student's: 39 of 218 replies said it.
+    expect(checkReply({}, run({ reply: "The stored answer is 5." })).failures).toEqual(['says "stored"']);
+    expect(checkReply({}, run({ reply: "Stored solution, step by step:" })).failures).toEqual(['says "stored"']);
+    expect(checkReply({}, run({ reply: "Your access is restored." })).failures).toEqual([]);
   });
 
   it("a judge flag never fails on its own: it asks for a person to read the reply", () => {

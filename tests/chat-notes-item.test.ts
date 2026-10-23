@@ -95,6 +95,8 @@ describe("notesItemBrief", () => {
   it("gives V a self-check with its options, stored steps and answer", () => {
     const b = notesItemBrief(note, { concept: "benzylic", item: "self" })!;
     expect(b).toContain("Which is benzylic?");
+    // V repeats the labels it reads: "ANSWER", never our word "stored" (2026-10-23).
+    expect(b).not.toMatch(/stored/i);
     expect(b).toContain("(A) Bromobenzene");
     expect(b).toContain("(B) Benzyl bromide");
     expect(b).toContain("1. Find the carbon carrying Br.");

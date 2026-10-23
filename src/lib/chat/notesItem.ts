@@ -66,7 +66,7 @@ export function notesDataKeys(chapters: readonly { subjectRoute: string; chapter
 const plain = (s: string) => s.replace(/\*\*/g, "").trim();
 const letter = (i: number) => String.fromCharCode(65 + i);
 
-const RULES = `Explain only from the stored solution and what the notes teach above. Never work out your own answer, and never say the stored answer is wrong (if they think it is, tell them to use Report on the notes page). Explain it straight away, without asking whether they want a hint; give a hint (the first idea only, never the answer) only when they ask for one. Do not call similar_question: there is no similar question for a notes item.`;
+const RULES = `Explain only from the solution and what the notes teach above. Never work out your own answer, and never say the answer is wrong (if they think it is, tell them to use Report on the notes page). Explain it straight away, without asking whether they want a hint; give a hint (the first idea only, never the answer) only when they ask for one. Do not call similar_question: there is no similar question for a notes item.`;
 
 /**
  * The card shown above an Ask V tap on a notes item (2026-10-23): the prompt
@@ -101,12 +101,12 @@ export function notesItemBrief(note: SubtopicNote, ref: NotesItemRef): string | 
     lines.push("QUESTION", plain(ex.prompt));
     if (ex.options && ex.options.length > 0) lines.push(ex.options.map((o, i) => `(${letter(i)}) ${plain(o)}`).join("\n"));
     // The answer before the steps, so a cut for length (BRIEF_MAX) never loses it.
-    lines.push(`STORED ANSWER: ${plain(ex.answer)}`);
-    lines.push("STORED SOLUTION", ex.steps.map((s, i) => `${i + 1}. ${plain(s)}`).join("\n"));
+    lines.push(`ANSWER: ${plain(ex.answer)}`);
+    lines.push("SOLUTION", ex.steps.map((s, i) => `${i + 1}. ${plain(s)}`).join("\n"));
   } else {
     const rep = concept.practiceSet?.[ref.index];
     if (!rep) return null;
-    lines.push("QUESTION", plain(rep.prompt), `STORED ANSWER: ${plain(rep.answer)}`);
+    lines.push("QUESTION", plain(rep.prompt), `ANSWER: ${plain(rep.answer)}`);
     if (rep.method) lines.push(`METHOD: ${plain(rep.method)}`);
   }
   lines.push("WHAT THE NOTES TEACH FOR THIS CONCEPT", plain(concept.intuition), plain(concept.definition));
