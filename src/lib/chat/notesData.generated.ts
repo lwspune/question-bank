@@ -428,7 +428,9 @@ export const NOTES_DATA_KEYS: readonly string[] = [
   "ssc-cgl-maths/algebraic-identities",
   "ssc-cgl-maths/circles",
   "ssc-cgl-maths/surds-indices",
-  "ssc-cgl-maths/mensuration-3d"
+  "ssc-cgl-maths/mensuration-3d",
+  "ssc-cgl-maths/mensuration-2d",
+  "ssc-cgl-maths/tsd"
 ];
 
 export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, SubtopicNote>>> = {
@@ -857,4 +859,6 @@ export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, Sub
   "ssc-cgl-maths/circles": () => import("@/app/notes/ssc-cgl-maths/circles/_data").then((m) => m.SSC_CIRCLES_NOTES),
   "ssc-cgl-maths/surds-indices": () => import("@/app/notes/ssc-cgl-maths/surds-indices/_data").then((m) => m.SSC_SURDS_INDICES_NOTES),
   "ssc-cgl-maths/mensuration-3d": () => import("@/app/notes/ssc-cgl-maths/mensuration-3d/_data").then((m) => m.SSC_MENSURATION_3D_NOTES),
+  "ssc-cgl-maths/mensuration-2d": () => import("@/app/notes/ssc-cgl-maths/mensuration-2d/_data").then((m) => m.SSC_MENSURATION_2D_NOTES),
+  "ssc-cgl-maths/tsd": () => import("@/app/notes/ssc-cgl-maths/tsd/_data").then((m) => m.SSC_TSD_NOTES),
 };

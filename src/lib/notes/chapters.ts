@@ -1911,6 +1911,16 @@ import {
   SSC_MENSURATION_3D_NOTES,
   SSC_MENSURATION_3D_SLUGS,
 } from "@/app/notes/ssc-cgl-maths/mensuration-3d/_data";
+import {
+  SSC_MENSURATION_2D_CHAPTER,
+  SSC_MENSURATION_2D_NOTES,
+  SSC_MENSURATION_2D_SLUGS,
+} from "@/app/notes/ssc-cgl-maths/mensuration-2d/_data";
+import {
+  SSC_TSD_CHAPTER,
+  SSC_TSD_NOTES,
+  SSC_TSD_SLUGS,
+} from "@/app/notes/ssc-cgl-maths/tsd/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -6131,6 +6141,28 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SSC_MENSURATION_3D_CHAPTER,
     notes: SSC_MENSURATION_3D_NOTES,
     slugs: SSC_MENSURATION_3D_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Quantitative Aptitude",
+    subjectRoute: "ssc-cgl-maths",
+    subjectDisplay: "SSC CGL Maths",
+    chapterSlug: "mensuration-2d",
+    chipLabel: "Mensuration 2D notes",
+    chapter: SSC_MENSURATION_2D_CHAPTER,
+    notes: SSC_MENSURATION_2D_NOTES,
+    slugs: SSC_MENSURATION_2D_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Quantitative Aptitude",
+    subjectRoute: "ssc-cgl-maths",
+    subjectDisplay: "SSC CGL Maths",
+    chapterSlug: "tsd",
+    chipLabel: "Time, Speed and Distance notes",
+    chapter: SSC_TSD_CHAPTER,
+    notes: SSC_TSD_NOTES,
+    slugs: SSC_TSD_SLUGS,
   },
 ];
 
