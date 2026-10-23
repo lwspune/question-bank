@@ -191,3 +191,9 @@ reads everything else from the stored row.
   711820ea (Hemant's "why cos c is 0", a follow-up that had opened with the
   label) passes. Same day: the 1-hour prompt cache, `--case`, and the cost line
   (`npm run v:cost`); Message Batches tried for test runs and dropped (dearer).
+- 2026-10-23: a new reply grows in its bubble a line at a time (owner: one
+  block is heavy to take in; it is how students read chats). Pure core
+  `lib/chat/reveal.ts`; a tap shows the rest; reduced motion shows it whole;
+  replies from history show whole. Judged on follow-up questions (growth
+  experiment `v-reveal`): 48% of AI replies followed up within 30 minutes
+  before it (111 of 233, 15 to 23 Oct). Thumbs are too few to read.

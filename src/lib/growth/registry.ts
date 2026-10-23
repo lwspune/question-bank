@@ -211,6 +211,10 @@ export const PRICE_BASELINE_WEEKLY_REVENUE = 594;
  * later day within 7 days falls more than this many points below the 65% before.
  */
 export const ANSWER_LIMIT_RETURN_BASELINE_PCT = 65;
+/** V's AI replies followed by another typed message within 30 minutes, before the line-by-line reveal (%). */
+export const V_REVEAL_FOLLOWUP_BASELINE_PCT = 48;
+/** A fall of this many points in that share is looked into before anything else changes in V. */
+export const V_REVEAL_FOLLOWUP_MAX_DROP = 5;
 export const ANSWER_LIMIT_RETURN_MAX_DROP = 10;
 
 /** The ISO date `days` (by default `EXPERIMENT_WINDOW_DAYS`) after `liveSince`. */
@@ -246,7 +250,8 @@ export type Readout =
   | "v-plan"
   | "ebook-store"
   | "pass-price"
-  | "answer-limit";
+  | "answer-limit"
+  | "v-reveal";
 
 export type Experiment = {
   id: string;
@@ -602,6 +607,20 @@ export const EXPERIMENTS: readonly Experiment[] = [
     readout: "answer-limit",
     status: "running",
   },
+  {
+    id: "v-reveal",
+    title: "V's replies shown a line at a time",
+    change:
+      "A new reply from V grows in its bubble one line at a time (the first at once, then a pause long enough to read each line, about 5 seconds for 8 lines), instead of landing as one block; a tap shows the rest. Replies from history show whole.",
+    why: "The owner, 2026-10-23: one block is heavy to take in, one line after another helps students digest it, and it is how they are used to reading chats.",
+    metric:
+      "Share of V's AI replies followed by another typed message in the same conversation within 30 minutes (chat_interactions), against 48% (111 of 233, 15 to 23 Oct). Thumbs are too few to read",
+    rule: `Keep it if the follow-up share holds at ${V_REVEAL_FOLLOWUP_BASELINE_PCT}% or rises over two weeks; if it falls ${V_REVEAL_FOLLOWUP_MAX_DROP}+ points, read the conversations for replies left unread before changing the pace.`,
+    liveSince: "2026-10-23",
+    windowDays: 14,
+    readout: "v-reveal",
+    status: "running",
+  },
 ];
 
 export type DecidedAgainst = { title: string; decision: string; on: string; why: string };
@@ -686,7 +705,8 @@ export type ReadingMetric =
   | "price-weekly-revenue"
   | "price-checkout-paid"
   | "answer-limit-students"
-  | "answer-limit-return";
+  | "answer-limit-return"
+  | "v-follow-up";
 
 export type Reading = { on: string; value: number; note?: string };
 
@@ -925,5 +945,11 @@ export const READINGS: Record<ReadingMetric, { label: string; source: string; en
     source:
       "Students whose first 'reveals' shown row is 8 to 21 days before the reading (paying students and staff excluded): share with question_practiced, mock_started or drill_started on a later IST day within 7 days",
     entries: [{ on: "2026-10-23", value: 65, note: "Baseline at 30 a day: 22 of 34 who met it 2 to 16 Oct; none of the 34 opened checkout within 7 days" }],
+  },
+  "v-follow-up": {
+    label: "V's AI replies followed up within 30 minutes (%)",
+    source:
+      "chat_interactions: typed_question rows with reply_source 'ai' in the window, and the share with another typed_question in the same conversation_id within 30 minutes after",
+    entries: [{ on: "2026-10-23", value: 48, note: "Before the line-by-line reveal: 111 of 233 AI replies, 15 to 23 Oct" }],
   },
 };
