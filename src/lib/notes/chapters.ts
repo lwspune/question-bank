@@ -2021,6 +2021,11 @@ import {
   SSC_CLASSIFICATION_NOTES,
   SSC_CLASSIFICATION_SLUGS,
 } from "@/app/notes/ssc-cgl-reasoning/classification/_data";
+import {
+  SSC_NON_VERBAL_CHAPTER,
+  SSC_NON_VERBAL_NOTES,
+  SSC_NON_VERBAL_SLUGS,
+} from "@/app/notes/ssc-cgl-reasoning/non-verbal/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -6483,6 +6488,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SSC_CLASSIFICATION_CHAPTER,
     notes: SSC_CLASSIFICATION_NOTES,
     slugs: SSC_CLASSIFICATION_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Reasoning",
+    subjectRoute: "ssc-cgl-reasoning",
+    subjectDisplay: "SSC CGL Reasoning",
+    chapterSlug: "non-verbal",
+    chipLabel: "Non-Verbal Series and Analogy notes",
+    chapter: SSC_NON_VERBAL_CHAPTER,
+    notes: SSC_NON_VERBAL_NOTES,
+    slugs: SSC_NON_VERBAL_SLUGS,
   },
 ];
 
