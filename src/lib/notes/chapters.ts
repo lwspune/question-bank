@@ -2016,6 +2016,11 @@ import {
   SSC_ALPHABET_NUMBER_NOTES,
   SSC_ALPHABET_NUMBER_SLUGS,
 } from "@/app/notes/ssc-cgl-reasoning/alphabet-number/_data";
+import {
+  SSC_CLASSIFICATION_CHAPTER,
+  SSC_CLASSIFICATION_NOTES,
+  SSC_CLASSIFICATION_SLUGS,
+} from "@/app/notes/ssc-cgl-reasoning/classification/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -6467,6 +6472,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SSC_ALPHABET_NUMBER_CHAPTER,
     notes: SSC_ALPHABET_NUMBER_NOTES,
     slugs: SSC_ALPHABET_NUMBER_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Reasoning",
+    subjectRoute: "ssc-cgl-reasoning",
+    subjectDisplay: "SSC CGL Reasoning",
+    chapterSlug: "classification",
+    chipLabel: "Classification notes",
+    chapter: SSC_CLASSIFICATION_CHAPTER,
+    notes: SSC_CLASSIFICATION_NOTES,
+    slugs: SSC_CLASSIFICATION_SLUGS,
   },
 ];
 
