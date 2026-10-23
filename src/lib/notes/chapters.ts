@@ -2056,6 +2056,11 @@ import {
   SSC_STATEMENTS_NOTES,
   SSC_STATEMENTS_SLUGS,
 } from "@/app/notes/ssc-cgl-reasoning/statements/_data";
+import {
+  SSC_INEQUALITIES_CHAPTER,
+  SSC_INEQUALITIES_NOTES,
+  SSC_INEQUALITIES_SLUGS,
+} from "@/app/notes/ssc-cgl-reasoning/inequalities/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -6595,6 +6600,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SSC_STATEMENTS_CHAPTER,
     notes: SSC_STATEMENTS_NOTES,
     slugs: SSC_STATEMENTS_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Reasoning",
+    subjectRoute: "ssc-cgl-reasoning",
+    subjectDisplay: "SSC CGL Reasoning",
+    chapterSlug: "inequalities",
+    chipLabel: "Inequalities notes",
+    chapter: SSC_INEQUALITIES_CHAPTER,
+    notes: SSC_INEQUALITIES_NOTES,
+    slugs: SSC_INEQUALITIES_SLUGS,
   },
 ];
 
