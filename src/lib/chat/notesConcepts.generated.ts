@@ -462,4 +462,5 @@ export const NOTES_CONCEPT_TREE: NotesConceptTree = [
   ["ssc-cgl-reasoning/inequalities","SSC CGL",[["ssc-rin-chains","Inequality Chains",[["sscrinch-read","Reading the signs between two letters"],["sscrinch-either","Either one or the other"],["sscrinch-coded","Coded signs"]]]]],
   ["ssc-cgl-reasoning/dice-cubes","SSC CGL",[["ssc-rdc-opposite","Opposite Faces of a Dice",[["sscrdcop-neighbours","The face that never appears beside it"],["sscrdcop-nets","Opposite faces in a net"]]],["ssc-rdc-turning","Turning About a Common Face",[["sscrdctu-common","Faces in matching places are opposite"]]]]],
   ["ssc-cgl-reasoning/embedded-figures","SSC CGL",[["ssc-ref-embedded","Embedded Figures",[["sscrefem-find","Finding the figure inside an option"],["sscrefem-part","Finding the option hidden in the figure"]]],["ssc-ref-pattern","Pattern Completion",[["sscrefpc-symmetry","Completing a symmetric pattern"]]]]],
+  ["ssc-cgl-english/fill-in-the-blanks","SSC CGL",[["ssc-efb-blanks","Sentence Fill-in-Blanks",[["sscefbbl-meaning","Reading the clue in the sentence"],["sscefbbl-pairs","Words that go together"],["sscefbbl-grammar","The grammar of the blank"]]]]],
 ];

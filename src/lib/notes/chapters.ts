@@ -2071,6 +2071,11 @@ import {
   SSC_EMBEDDED_FIGURES_NOTES,
   SSC_EMBEDDED_FIGURES_SLUGS,
 } from "@/app/notes/ssc-cgl-reasoning/embedded-figures/_data";
+import {
+  SSC_FILL_IN_THE_BLANKS_CHAPTER,
+  SSC_FILL_IN_THE_BLANKS_NOTES,
+  SSC_FILL_IN_THE_BLANKS_SLUGS,
+} from "@/app/notes/ssc-cgl-english/fill-in-the-blanks/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -6643,6 +6648,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SSC_EMBEDDED_FIGURES_CHAPTER,
     notes: SSC_EMBEDDED_FIGURES_NOTES,
     slugs: SSC_EMBEDDED_FIGURES_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "English",
+    subjectRoute: "ssc-cgl-english",
+    subjectDisplay: "SSC CGL English",
+    chapterSlug: "fill-in-the-blanks",
+    chipLabel: "Fill in the Blanks notes",
+    chapter: SSC_FILL_IN_THE_BLANKS_CHAPTER,
+    notes: SSC_FILL_IN_THE_BLANKS_NOTES,
+    slugs: SSC_FILL_IN_THE_BLANKS_SLUGS,
   },
 ];
 

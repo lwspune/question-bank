@@ -460,7 +460,8 @@ export const NOTES_DATA_KEYS: readonly string[] = [
   "ssc-cgl-reasoning/statements",
   "ssc-cgl-reasoning/inequalities",
   "ssc-cgl-reasoning/dice-cubes",
-  "ssc-cgl-reasoning/embedded-figures"
+  "ssc-cgl-reasoning/embedded-figures",
+  "ssc-cgl-english/fill-in-the-blanks"
 ];
 
 export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, SubtopicNote>>> = {
@@ -921,4 +922,5 @@ export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, Sub
   "ssc-cgl-reasoning/inequalities": () => import("@/app/notes/ssc-cgl-reasoning/inequalities/_data").then((m) => m.SSC_INEQUALITIES_NOTES),
   "ssc-cgl-reasoning/dice-cubes": () => import("@/app/notes/ssc-cgl-reasoning/dice-cubes/_data").then((m) => m.SSC_DICE_CUBES_NOTES),
   "ssc-cgl-reasoning/embedded-figures": () => import("@/app/notes/ssc-cgl-reasoning/embedded-figures/_data").then((m) => m.SSC_EMBEDDED_FIGURES_NOTES),
+  "ssc-cgl-english/fill-in-the-blanks": () => import("@/app/notes/ssc-cgl-english/fill-in-the-blanks/_data").then((m) => m.SSC_FILL_IN_THE_BLANKS_NOTES),
 };
