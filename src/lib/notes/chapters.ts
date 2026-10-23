@@ -2026,6 +2026,11 @@ import {
   SSC_NON_VERBAL_NOTES,
   SSC_NON_VERBAL_SLUGS,
 } from "@/app/notes/ssc-cgl-reasoning/non-verbal/_data";
+import {
+  SSC_FIGURE_COUNTING_CHAPTER,
+  SSC_FIGURE_COUNTING_NOTES,
+  SSC_FIGURE_COUNTING_SLUGS,
+} from "@/app/notes/ssc-cgl-reasoning/figure-counting/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -6499,6 +6504,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SSC_NON_VERBAL_CHAPTER,
     notes: SSC_NON_VERBAL_NOTES,
     slugs: SSC_NON_VERBAL_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Reasoning",
+    subjectRoute: "ssc-cgl-reasoning",
+    subjectDisplay: "SSC CGL Reasoning",
+    chapterSlug: "figure-counting",
+    chipLabel: "Figure Counting notes",
+    chapter: SSC_FIGURE_COUNTING_CHAPTER,
+    notes: SSC_FIGURE_COUNTING_NOTES,
+    slugs: SSC_FIGURE_COUNTING_SLUGS,
   },
 ];
 

@@ -451,7 +451,8 @@ export const NOTES_DATA_KEYS: readonly string[] = [
   "ssc-cgl-reasoning/series",
   "ssc-cgl-reasoning/alphabet-number",
   "ssc-cgl-reasoning/classification",
-  "ssc-cgl-reasoning/non-verbal"
+  "ssc-cgl-reasoning/non-verbal",
+  "ssc-cgl-reasoning/figure-counting"
 ];
 
 export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, SubtopicNote>>> = {
@@ -903,4 +904,5 @@ export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, Sub
   "ssc-cgl-reasoning/alphabet-number": () => import("@/app/notes/ssc-cgl-reasoning/alphabet-number/_data").then((m) => m.SSC_ALPHABET_NUMBER_NOTES),
   "ssc-cgl-reasoning/classification": () => import("@/app/notes/ssc-cgl-reasoning/classification/_data").then((m) => m.SSC_CLASSIFICATION_NOTES),
   "ssc-cgl-reasoning/non-verbal": () => import("@/app/notes/ssc-cgl-reasoning/non-verbal/_data").then((m) => m.SSC_NON_VERBAL_NOTES),
+  "ssc-cgl-reasoning/figure-counting": () => import("@/app/notes/ssc-cgl-reasoning/figure-counting/_data").then((m) => m.SSC_FIGURE_COUNTING_NOTES),
 };
