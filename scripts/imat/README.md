@@ -20,7 +20,8 @@ site sits behind a bot check, so they are downloaded in a browser, not by script
 - 60 questions: Reading 4 · Logic 5 · Biology 23 · Chemistry 15 · Physics and
   Maths 13 (split by question into the Physics and Mathematics subjects).
   +1.5 right, −0.4 wrong, 0 blank.
-- PRIVATE until copyright decision D1.
+- PUBLIC since the owner settled copyright decision D1 (2026-10-23;
+  NICHE_SITES_SPEC.md section 7). 2011-2022 stay `publish_blocked`.
 
 **2011-2022, set by Cambridge (UCLES)**: `IMAT_<year>.pdf`. **Internal use
 only, never published**: `commit.ts` writes them PRIVATE with `publish_blocked`
