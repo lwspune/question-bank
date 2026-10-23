@@ -359,6 +359,15 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
       await setSettings({ ai_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });
       await POST(post({ message: `route-${RUN}-notes3 explain`, pagePath, question: { notes: { concept: "cethal-classes-of-halides", item: "practice", index: 0 } } }));
       expect((askV.mock.calls[2][0] as { systemTail: string }).systemTail).not.toMatch(/practice question in the notes/);
+      // 2026-10-23 (migration 0181): the tap stores which notes question it was, so V's memory can label it.
+      const stored = await admin
+        .from("chat_interactions")
+        .select("message, asked_notes_item")
+        .in("message", [`route-${RUN}-notes1 explain`, `route-${RUN}-notes2 explain`]);
+      expect(Object.fromEntries((stored.data ?? []).map((r) => [r.message, r.asked_notes_item]))).toEqual({
+        [`route-${RUN}-notes1 explain`]: "cethal-classes-of-halides#0",
+        [`route-${RUN}-notes2 explain`]: null,
+      });
     });
 
     it("gives V the question tools and names the tapped question and the pick", async () => {

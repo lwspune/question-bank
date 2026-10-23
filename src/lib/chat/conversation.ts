@@ -16,6 +16,7 @@ import { PREDEFINED_QUESTIONS } from "./faq";
 import { ABUSE_REPLY } from "./abuse";
 import type { ToolCallLog } from "./anthropic";
 import { chosenIn, isAskVMessage, type AskedCard } from "./askVEvent";
+import { parseNotesRefKey } from "./notesItem";
 
 export type ConversationRow = {
   id: string;
@@ -38,6 +39,8 @@ export type ConversationRow = {
   toolCalls?: ToolCallLog[] | null;
   /** The question the student had tapped Ask V on when they sent it (0174). */
   askedQuestionId?: string | null;
+  /** The notes question tapped instead, as lib/chat/notesItem notesRefKey; the row's page says where (0181). */
+  askedNotesItem?: string | null;
   /** The earlier message this one replies to (0174). */
   replyToId?: string | null;
 };
@@ -102,10 +105,29 @@ export function currentSession<T extends ConversationRow>(rows: readonly T[], no
 
 export type ModelTurn = { role: "user" | "assistant"; content: string };
 
-/** A message about a question starts with its id, so V can tell two questions' exchanges apart. */
+/**
+ * What a message was about: a bank question by id, a notes question by its page and key (0181, 2026-10-23:
+ * two notes taps had sent the identical "Explain this question." with nothing to tell them apart).
+ */
+function aboutOf(r: ConversationRow): string | null {
+  if (r.askedQuestionId) return `question ${r.askedQuestionId}`;
+  if (r.askedNotesItem && r.pagePath) return `notes question ${r.pagePath}#${r.askedNotesItem}`;
+  return null;
+}
+
+/** A message about a question starts with what it was about, so V can tell two questions' exchanges apart. */
 function labelled(r: ConversationRow): string {
   const q = questionOf(r)!;
-  return r.askedQuestionId ? `[About question ${r.askedQuestionId}]\n${q}` : q;
+  const about = aboutOf(r);
+  return about ? `[About ${about}]\n${q}` : q;
+}
+
+/** The card above an Ask V tap; only on the tap itself, never on a follow-up about the same question. */
+function askedCardOfRow(r: ConversationRow, text: string): AskedCard | null {
+  if (!isAskVMessage(text)) return null;
+  if (r.askedQuestionId) return { questionId: r.askedQuestionId, chose: chosenIn(text) };
+  const notes = parseNotesRefKey(r.askedNotesItem);
+  return notes && r.pagePath ? { notes, page: r.pagePath } : null;
 }
 
 export function modelHistory(rows: readonly ConversationRow[], keep = MEMORY_EXCHANGES): ModelTurn[] {
@@ -130,7 +152,8 @@ const REPLY_ANSWER_MAX = 1200;
 
 /** What V is told before a message that replies to an earlier one. The stored message stays as typed. */
 export function replyContext(target: ConversationRow): string {
-  const about = target.askedQuestionId ? ` about question ${target.askedQuestionId}` : "";
+  const what = aboutOf(target);
+  const about = what ? ` about ${what}` : "";
   return [
     `[The student is replying to an earlier exchange${about}.`,
     `They had asked: ${questionOf(target)!.slice(0, REPLY_QUESTION_MAX)}`,
@@ -173,8 +196,7 @@ export function historyTurns(rows: readonly ConversationRow[]): HistoryTurn[] {
   for (const r of exchanges(rows)) {
     const target = findReplyTarget(rows, r.replyToId);
     const text = questionOf(r)!;
-    // The card goes on the tap itself, not on every follow-up about the same question.
-    const asked = r.askedQuestionId && isAskVMessage(text) ? { questionId: r.askedQuestionId, chose: chosenIn(text) } : null;
+    const asked = askedCardOfRow(r, text);
     turns.push({
       role: "user",
       text,
@@ -252,8 +274,7 @@ export function groupConversations(rows: readonly ConversationRow[]): Conversati
           at: r.createdAt,
           toolCalls: r.toolCalls ?? null,
           links: r.replyLinks ?? [],
-          // As historyTurns: the card goes on the tap itself, not on every follow-up.
-          asked: r.askedQuestionId && isAskVMessage(question) ? { questionId: r.askedQuestionId, chose: chosenIn(question) } : null,
+          asked: askedCardOfRow(r, question),
           quote: target ? quoteSnippet(target.reply!) : null,
         };
       }),

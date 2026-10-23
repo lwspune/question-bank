@@ -70,7 +70,7 @@ import {
 } from "@/lib/chat/anonLimit";
 import type { ToolCallLog } from "@/lib/chat/anthropic";
 import { parseAskedQuestion } from "@/lib/chat/questionTools";
-import { parseNotesItemRef } from "@/lib/chat/notesItem";
+import { notesPageOf, notesRefKey, parseNotesItemRef } from "@/lib/chat/notesItem";
 import { loadNotesItemBrief } from "@/lib/chat/notesItemServer";
 import { buildMyQuestionDeps } from "@/lib/chat/myQuestionsServer";
 import type { QuestionToolDeps } from "@/lib/chat/questionToolSet";
@@ -356,6 +356,8 @@ export async function POST(request: NextRequest) {
       conversationId,
       pagePath,
       askedQuestionId: asked?.id ?? null,
+      // A notes question has no id: its key on its own page (0181), so V's memory can label the tap.
+      askedNotesItem: !asked && askedNotes && notesPageOf(pagePath) ? notesRefKey(askedNotes) : null,
       replyToId: replyTarget?.id ?? null,
     });
 
