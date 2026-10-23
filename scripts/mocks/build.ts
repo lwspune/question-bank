@@ -748,6 +748,21 @@ function spiMockSittings(): SourceFileSitting[] {
   }));
 }
 
+/** IMAT ministry papers (imatSittings.ts); a question that cannot be solved as printed rides as grace. */
+function imatMockSittings(): SourceFileSitting[] {
+  return imatSittings().map((s) => ({
+    key: s.key,
+    sourceFile: s.sourceFile,
+    year: s.year,
+    slug: s.slug,
+    title: s.title,
+    prepare: (rows) => {
+      const grace = new Set(s.graceNumbers);
+      return rows.map((r) => (grace.has(Number(r.questionNumber)) ? { ...r, grace: true } : r));
+    },
+  }));
+}
+
 /**
  * SSC CGL Tier II Paper 1 (sscSittings.ts): a five-module sitting gets two mocks, the ranked
  * Sections I and II and the qualifying Computer Knowledge module; a Quant-only sitting (CGL
@@ -885,7 +900,7 @@ async function main() {
   if (runSsc) await buildFromSourceFiles(db, SSC_CGL_T1_PAPER, sscCglSittings(), run, "sscSittings.ts");
   if (runSscT2) await buildSscT2(db, run);
   if (runSpi) await buildFromSourceFiles(db, SPI_PAPER, spiMockSittings(), run, "spiSittings.ts");
-  if (runImat) await buildFromSourceFiles(db, IMAT_PAPER, imatSittings(), run, "imatSittings.ts");
+  if (runImat) await buildFromSourceFiles(db, IMAT_PAPER, imatMockSittings(), run, "imatSittings.ts");
   if (runMpscMains) await buildMpscMains(db, run);
 
   console.log(`\n${apply ? "Upserted" : "Would build"} ${run.built.n} mock(s)${publish ? " (published)" : apply ? " (draft)" : ""}.`);

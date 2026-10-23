@@ -46,7 +46,14 @@ describe("deriveImatSittings", () => {
       year: 2023,
       slug: "imat-2023",
       title: "IMAT 2023",
+      graceNumbers: [],
     });
+  });
+
+  it("makes 2024 Q55 grace: the braking-power question cannot be solved as printed", () => {
+    const sittings = deriveImatSittings(Object.keys(PAPER_SHAPES).map(Number));
+    expect(sittings.find((s) => s.year === 2024)?.graceNumbers).toEqual([55]);
+    expect(sittings.filter((s) => s.year !== 2024).every((s) => s.graceNumbers.length === 0)).toBe(true);
   });
 });
 

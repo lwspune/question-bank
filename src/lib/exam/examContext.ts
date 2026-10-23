@@ -320,7 +320,9 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     // /browse PYQ toggle. Revisit when chapters hold 15+ PYQs.
     practiceOnly: true,
     hasMocks: true, // 4 past papers (2023-2026) + 7 practice papers, 2026-10-23
-    // No pastPaperSolutions: the ministry publishes answers only.
+    // Worked solutions on all 240 ministry questions since 2026-10-23 (the ministry
+    // publishes answers only; ours were written blind and checked against its key).
+    pastPaperSolutions: true,
   },
   {
     slug: "mh-hsc-12",

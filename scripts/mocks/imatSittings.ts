@@ -5,8 +5,10 @@
  * can never be sittings. The source file is the ministry's own PDF name, which the
  * IMAT commit wrote as `source_file`.
  *
- * No grace: the ministry publishes the key (option A as printed, before our shuffle)
- * and has cancelled no question.
+ * Grace: the ministry publishes the key (option A as printed, before our shuffle) and
+ * has cancelled no question, so grace is our call, made where a question cannot be
+ * solved as printed (GRACE below). Its solution opens with a **Note:** saying so
+ * (scripts/imat/mur-solutions.json), and in a mock everyone gets its marks.
  *
  * Unit-tested in tests/mock-imat.test.ts.
  */
@@ -18,7 +20,16 @@ export type ImatSitting = {
   year: number;
   slug: string;
   title: string;
+  graceNumbers: number[];
 };
+
+/**
+ * Printed question numbers that are grace, by year. 2024 Q55 asks for the power of a
+ * braking force given only the force and a distance; power needs a time or a speed.
+ * The ministry's 210 W assumes 5 s (1050 J / 5 s). Found 2026-10-23: the blind
+ * solution pass disagreed with the key on this question alone.
+ */
+const GRACE: Readonly<Record<number, readonly number[]>> = { 2024: [55] };
 
 export function deriveImatSittings(years: readonly number[]): ImatSitting[] {
   return years
@@ -30,6 +41,7 @@ export function deriveImatSittings(years: readonly number[]): ImatSitting[] {
       year,
       slug: `imat-${year}`,
       title: `IMAT ${year}`,
+      graceNumbers: [...(GRACE[year] ?? [])],
     }));
 }
 
