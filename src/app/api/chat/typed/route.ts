@@ -71,6 +71,7 @@ import {
 import type { ToolCallLog } from "@/lib/chat/anthropic";
 import { parseAskedQuestion } from "@/lib/chat/questionTools";
 import { notesPageOf, notesRefKey, parseNotesItemRef } from "@/lib/chat/notesItem";
+import { isExplanation } from "@/lib/chat/understood";
 import { loadNotesItemBrief } from "@/lib/chat/notesItemServer";
 import { buildMyQuestionDeps } from "@/lib/chat/myQuestionsServer";
 import type { QuestionToolDeps } from "@/lib/chat/questionToolSet";
@@ -368,6 +369,8 @@ export async function POST(request: NextRequest) {
             ...(similarQuestionId ? { similarQuestionId } : {}),
             ...(matchQuestionId ? { matchQuestionId } : {}),
             ...(planShown ? { planShown: true } : {}),
+            // An explanation asks "Did you understand?" under it (0182).
+            explained: isExplanation(recorded.toolCalls, message),
           }
         : {};
     if (userId !== null) {

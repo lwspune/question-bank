@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { CalendarDays, ListChecks, Reply, RotateCcw, SendHorizontal, ThumbsDown, ThumbsUp, X } from "lucide-react";
+import { CalendarDays, Check, ListChecks, Reply, RotateCcw, SendHorizontal, ThumbsDown, ThumbsUp, X } from "lucide-react";
 import { toast } from "sonner";
 import { trackFunnelOnce } from "@/lib/analytics/trackFunnel";
 import { useVFeatures } from "@/lib/chat/useVExplain";
@@ -11,6 +11,7 @@ import { CHAT_MESSAGE_MAX } from "@/lib/chat/validate";
 import { vPlacement } from "@/lib/chat/placement";
 import { launcherHiddenAfterScroll } from "@/lib/chat/launcherScroll";
 import { panelBox, type PanelBox } from "@/lib/chat/panelBox";
+import { NOT_UNDERSTOOD } from "@/lib/chat/understood";
 import { SESSION_IDLE_MS, quoteSnippet, type HistoryTurn } from "@/lib/chat/conversation";
 import {
   LOCAL_CHAT_KEY,
@@ -469,6 +470,31 @@ export default function ChatWidget() {
     }
   }
 
+  /**
+   * Yes or No to "Did you understand?" under an explanation (migration 0182).
+   * A No also asks V, as the student, to explain it more simply.
+   */
+  async function answerUnderstood(index: number, value: boolean) {
+    const turn = turns[index];
+    if (!turn || turn.role !== "assistant" || !turn.id || !conversationId) return;
+    const setAt = (understood: boolean | null) =>
+      setTurns((all) => all.map((t, i) => (i === index && t.role === "assistant" ? { ...t, understood } : t)));
+    setAt(value);
+    try {
+      const res = await fetch("/api/chat/understood", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: turn.id, conversationId, value }),
+      });
+      if (!res.ok) throw new Error(String(res.status));
+    } catch {
+      setAt(null);
+      toast.error("Couldn't save that. Please try again.");
+      return;
+    }
+    if (!value) void askTyped(NOT_UNDERSTOOD);
+  }
+
   /** "Plan my week": V's plan_week, asked like a typed message. Signed out, it asks for an account first. */
   function planWeek() {
     if (sending) return;
@@ -541,6 +567,8 @@ export default function ChatWidget() {
         similarQuestionId?: string;
         matchQuestionId?: string;
         planShown?: boolean;
+        /** V explained something: "Did you understand?" goes under the reply (0182). */
+        explained?: boolean;
         /** Abuse after the calm line (lib/chat/abuse.ts): V says nothing. */
         silent?: boolean;
         error?: string;
@@ -562,7 +590,20 @@ export default function ChatWidget() {
       const plan = data.planShown === true ? true : undefined;
       addTurn(
         data.source === "ai" && data.id
-          ? { role: "assistant", avatar: "laugh", text: data.reply as string, links, id: data.id, source: "ai", feedback: null, card, plan, reveal: true }
+          ? {
+              role: "assistant",
+              avatar: "laugh",
+              text: data.reply as string,
+              links,
+              id: data.id,
+              source: "ai",
+              feedback: null,
+              card,
+              plan,
+              reveal: true,
+              explained: data.explained === true,
+              understood: null,
+            }
           : { role: "assistant", avatar: "laugh", text: data.reply as string, links, card, plan, reveal: true }
       );
     } catch {
@@ -680,7 +721,34 @@ export default function ChatWidget() {
                     </div>
                   </div>
                   {rateable && (
-                    <div className="ml-9 mt-1 flex gap-1">
+                    <div className="ml-9 mt-1 flex flex-wrap items-center gap-1">
+                      {t.explained ? (
+                        // "Did you understand?" replaces the thumbs under an explanation (owner, 2026-10-23).
+                        t.understood === true ? (
+                          <span className="inline-flex items-center gap-1 px-1 text-xs text-muted-foreground">
+                            <Check className="h-3.5 w-3.5" aria-hidden />
+                            Great!
+                          </span>
+                        ) : t.understood === false ? (
+                          <span className="px-1 text-xs text-muted-foreground">Let me explain it more simply.</span>
+                        ) : (
+                          <>
+                            <span className="px-1 text-xs text-muted-foreground">Did you understand?</span>
+                            {([true, false] as const).map((yes) => (
+                              <button
+                                key={String(yes)}
+                                type="button"
+                                disabled={sending}
+                                onClick={() => void answerUnderstood(i, yes)}
+                                className="inline-flex h-7 items-center rounded-full border border-border bg-card px-3 text-xs font-medium text-foreground transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50"
+                              >
+                                {yes ? "Yes" : "No"}
+                              </button>
+                            ))}
+                          </>
+                        )
+                      ) : (
+                        <>
                       <button
                         type="button"
                         onClick={() => void giveFeedback(i, 1)}
@@ -703,6 +771,8 @@ export default function ChatWidget() {
                       >
                         <ThumbsDown className="h-3.5 w-3.5" aria-hidden fill={t.feedback === -1 ? "currentColor" : "none"} />
                       </button>
+                        </>
+                      )}
                       {!signInNeeded && (
                         <button
                           type="button"

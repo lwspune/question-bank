@@ -292,7 +292,7 @@ describe("historyTurns", () => {
     ];
     expect(historyTurns(rows)).toEqual([
       { role: "user", text: "buy premium" },
-      { role: "assistant", text: "Buy at /pricing.", id: "id-2026-10-15T10:00:00Z", links: ["/pricing"], source: "ai", feedback: 1 },
+      { role: "assistant", text: "Buy at /pricing.", id: "id-2026-10-15T10:00:00Z", links: ["/pricing"], source: "ai", feedback: 1, explained: false, understood: null },
     ]);
   });
 

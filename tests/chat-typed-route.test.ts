@@ -707,6 +707,37 @@ it("keeps the conversation: stores its id and page, returns the row id, and give
     expect((await fb({ id, conversationId, value: null })).status).toBe(200);
   });
 
+  // 2026-10-23: "Did you understand?" Yes / No under V's explanations (migration 0182).
+  it("says which replies are explanations, and keeps the student's Yes or No on their own reply", async () => {
+    await setSettings({ ai_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });
+    askV.mockReset();
+    askV
+      .mockResolvedValueOnce({ ok: true, reply: "Step 1 ...", tokensIn: 1, tokensOut: 1, toolCalls: [{ name: "explain_concept", input: { topic: "x" } }] })
+      .mockResolvedValueOnce({ ok: true, reply: "Atoms: /notes", tokensIn: 1, tokensOut: 1, toolCalls: [{ name: "find_chapters", input: { query: "atoms" } }] });
+    const { POST } = await import("@/app/api/chat/typed/route");
+    const { POST: UNDERSTOOD } = await import("@/app/api/chat/understood/route");
+    const conversationId = randomUUID();
+    const explained = await (await POST(post({ message: `route-${RUN}-und explain`, conversationId }))).json();
+    const found = await (await POST(post({ message: `route-${RUN}-und atoms`, conversationId }))).json();
+    expect(explained.explained).toBe(true);
+    expect(found.explained).toBe(false);
+
+    const und = (body: unknown) =>
+      UNDERSTOOD(
+        new NextRequest("http://localhost:3000/api/chat/understood", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "x-forwarded-for": `und-${RUN}` },
+          body: JSON.stringify(body),
+        })
+      );
+    expect((await und({ id: explained.id, conversationId: randomUUID(), value: true })).status).toBe(404);
+    expect((await und({ id: explained.id, conversationId, value: "yes" })).status).toBe(400);
+    expect((await und({ id: explained.id, conversationId, value: false })).status).toBe(200);
+    const { data } = await admin.from("chat_interactions").select("understood, understood_at").eq("id", explained.id).single();
+    expect(data?.understood).toBe(false);
+    expect(data?.understood_at).not.toBeNull();
+  });
+
   it("gives a signed-out visitor no history from the server", async () => {
     const { GET } = await import("@/app/api/chat/history/route");
     expect(await (await GET()).json()).toEqual({ ok: true, conversation: null });

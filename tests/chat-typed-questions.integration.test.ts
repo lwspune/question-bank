@@ -137,6 +137,27 @@ describe.skipIf(!HAS_ENV)("chat_interactions: typed questions", () => {
     ]);
   });
 
+  it("keeps 'Did you understand?' only on an AI reply, and always with when it was answered (migration 0182)", async () => {
+    const row = (over: Record<string, unknown>) => ({
+      event_type: "typed_question",
+      message: `${tag} und ${JSON.stringify(over)}`,
+      reply: "x",
+      reply_source: "ai",
+      tokens_in: 1,
+      tokens_out: 1,
+      ...over,
+    });
+    const at = new Date().toISOString();
+    const ok = await admin.from("chat_interactions").insert(row({ understood: true, understood_at: at }));
+    const noTime = await admin.from("chat_interactions").insert(row({ understood: false }));
+    const onFallback = await admin
+      .from("chat_interactions")
+      .insert(row({ reply_source: "fallback", tokens_in: null, tokens_out: null, understood: true, understood_at: at }));
+    expect(ok.error).toBeNull();
+    expect(noTime.error).not.toBeNull();
+    expect(onFallback.error).not.toBeNull();
+  });
+
   it("takes a notes question's key only well formed, with its page, and never beside a bank question (migration 0181)", async () => {
     const row = (over: Record<string, unknown>) => ({
       event_type: "typed_question",
