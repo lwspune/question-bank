@@ -19,6 +19,17 @@ const NO_SHEET = [
   "imat-reading/reading-comprehension",
   "spi-english/reading-comprehension",
   "spi-english/sentence-rearrangement",
+  "ssc-cgl-english/fill-in-the-blanks",
+  "ssc-cgl-english/reading-comprehension",
+  "ssc-cgl-english/sentence-rearrangement",
+  "ssc-cgl-reasoning/dice-cubes",
+  "ssc-cgl-reasoning/embedded-figures",
+  "ssc-cgl-reasoning/inequalities",
+  "ssc-cgl-reasoning/mirror-images",
+  "ssc-cgl-reasoning/missing-number",
+  "ssc-cgl-reasoning/non-verbal",
+  "ssc-cgl-reasoning/statements",
+  "ssc-cgl-reasoning/syllogism",
 ];
 
 describe("formula sheet: every registered chapter", () => {
