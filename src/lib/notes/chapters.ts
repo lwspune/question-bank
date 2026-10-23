@@ -2101,6 +2101,11 @@ import {
   SSC_CLOZE_TEST_NOTES,
   SSC_CLOZE_TEST_SLUGS,
 } from "@/app/notes/ssc-cgl-english/cloze-test/_data";
+import {
+  SSC_GRAMMAR_CHAPTER,
+  SSC_GRAMMAR_NOTES,
+  SSC_GRAMMAR_SLUGS,
+} from "@/app/notes/ssc-cgl-english/grammar/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -6739,6 +6744,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SSC_CLOZE_TEST_CHAPTER,
     notes: SSC_CLOZE_TEST_NOTES,
     slugs: SSC_CLOZE_TEST_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "English",
+    subjectRoute: "ssc-cgl-english",
+    subjectDisplay: "SSC CGL English",
+    chapterSlug: "grammar",
+    chipLabel: "Grammar notes",
+    chapter: SSC_GRAMMAR_CHAPTER,
+    notes: SSC_GRAMMAR_NOTES,
+    slugs: SSC_GRAMMAR_SLUGS,
   },
 ];
 

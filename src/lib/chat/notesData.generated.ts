@@ -466,7 +466,8 @@ export const NOTES_DATA_KEYS: readonly string[] = [
   "ssc-cgl-english/idioms-and-phrases",
   "ssc-cgl-english/sentence-rearrangement",
   "ssc-cgl-english/spotting-errors",
-  "ssc-cgl-english/cloze-test"
+  "ssc-cgl-english/cloze-test",
+  "ssc-cgl-english/grammar"
 ];
 
 export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, SubtopicNote>>> = {
@@ -933,4 +934,5 @@ export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, Sub
   "ssc-cgl-english/sentence-rearrangement": () => import("@/app/notes/ssc-cgl-english/sentence-rearrangement/_data").then((m) => m.SSC_SENTENCE_REARRANGEMENT_NOTES),
   "ssc-cgl-english/spotting-errors": () => import("@/app/notes/ssc-cgl-english/spotting-errors/_data").then((m) => m.SSC_SPOTTING_ERRORS_NOTES),
   "ssc-cgl-english/cloze-test": () => import("@/app/notes/ssc-cgl-english/cloze-test/_data").then((m) => m.SSC_CLOZE_TEST_NOTES),
+  "ssc-cgl-english/grammar": () => import("@/app/notes/ssc-cgl-english/grammar/_data").then((m) => m.SSC_GRAMMAR_NOTES),
 };
