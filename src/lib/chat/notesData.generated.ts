@@ -439,7 +439,12 @@ export const NOTES_DATA_KEYS: readonly string[] = [
   "ssc-cgl-maths/heights-distances",
   "ssc-cgl-maths/lines-angles",
   "ssc-cgl-maths/quadrilaterals",
-  "ssc-cgl-maths/polynomials"
+  "ssc-cgl-maths/polynomials",
+  "ssc-cgl-reasoning/arithmetic-reasoning",
+  "ssc-cgl-reasoning/missing-number",
+  "ssc-cgl-reasoning/calendar-clock",
+  "ssc-cgl-reasoning/blood-relations",
+  "ssc-cgl-reasoning/order-ranking"
 ];
 
 export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, SubtopicNote>>> = {
@@ -879,4 +884,9 @@ export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, Sub
   "ssc-cgl-maths/lines-angles": () => import("@/app/notes/ssc-cgl-maths/lines-angles/_data").then((m) => m.SSC_LINES_ANGLES_NOTES),
   "ssc-cgl-maths/quadrilaterals": () => import("@/app/notes/ssc-cgl-maths/quadrilaterals/_data").then((m) => m.SSC_QUADRILATERALS_NOTES),
   "ssc-cgl-maths/polynomials": () => import("@/app/notes/ssc-cgl-maths/polynomials/_data").then((m) => m.SSC_POLYNOMIALS_NOTES),
+  "ssc-cgl-reasoning/arithmetic-reasoning": () => import("@/app/notes/ssc-cgl-reasoning/arithmetic-reasoning/_data").then((m) => m.SSC_ARITHMETIC_REASONING_NOTES),
+  "ssc-cgl-reasoning/missing-number": () => import("@/app/notes/ssc-cgl-reasoning/missing-number/_data").then((m) => m.SSC_MISSING_NUMBER_NOTES),
+  "ssc-cgl-reasoning/calendar-clock": () => import("@/app/notes/ssc-cgl-reasoning/calendar-clock/_data").then((m) => m.SSC_CALENDAR_CLOCK_NOTES),
+  "ssc-cgl-reasoning/blood-relations": () => import("@/app/notes/ssc-cgl-reasoning/blood-relations/_data").then((m) => m.SSC_BLOOD_RELATIONS_NOTES),
+  "ssc-cgl-reasoning/order-ranking": () => import("@/app/notes/ssc-cgl-reasoning/order-ranking/_data").then((m) => m.SSC_ORDER_RANKING_NOTES),
 };

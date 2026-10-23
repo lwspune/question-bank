@@ -3055,5 +3055,40 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "SSC CGL Maths",
     "chapterSlug": "polynomials",
     "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-reasoning",
+    "subjectDisplay": "SSC CGL Reasoning",
+    "chapterSlug": "arithmetic-reasoning",
+    "subtopicCount": 6
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-reasoning",
+    "subjectDisplay": "SSC CGL Reasoning",
+    "chapterSlug": "missing-number",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-reasoning",
+    "subjectDisplay": "SSC CGL Reasoning",
+    "chapterSlug": "calendar-clock",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-reasoning",
+    "subjectDisplay": "SSC CGL Reasoning",
+    "chapterSlug": "blood-relations",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-reasoning",
+    "subjectDisplay": "SSC CGL Reasoning",
+    "chapterSlug": "order-ranking",
+    "subtopicCount": 2
   }
 ];

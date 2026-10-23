@@ -1966,6 +1966,31 @@ import {
   SSC_POLYNOMIALS_NOTES,
   SSC_POLYNOMIALS_SLUGS,
 } from "@/app/notes/ssc-cgl-maths/polynomials/_data";
+import {
+  SSC_ARITHMETIC_REASONING_CHAPTER,
+  SSC_ARITHMETIC_REASONING_NOTES,
+  SSC_ARITHMETIC_REASONING_SLUGS,
+} from "@/app/notes/ssc-cgl-reasoning/arithmetic-reasoning/_data";
+import {
+  SSC_MISSING_NUMBER_CHAPTER,
+  SSC_MISSING_NUMBER_NOTES,
+  SSC_MISSING_NUMBER_SLUGS,
+} from "@/app/notes/ssc-cgl-reasoning/missing-number/_data";
+import {
+  SSC_CALENDAR_CLOCK_CHAPTER,
+  SSC_CALENDAR_CLOCK_NOTES,
+  SSC_CALENDAR_CLOCK_SLUGS,
+} from "@/app/notes/ssc-cgl-reasoning/calendar-clock/_data";
+import {
+  SSC_BLOOD_RELATIONS_CHAPTER,
+  SSC_BLOOD_RELATIONS_NOTES,
+  SSC_BLOOD_RELATIONS_SLUGS,
+} from "@/app/notes/ssc-cgl-reasoning/blood-relations/_data";
+import {
+  SSC_ORDER_RANKING_CHAPTER,
+  SSC_ORDER_RANKING_NOTES,
+  SSC_ORDER_RANKING_SLUGS,
+} from "@/app/notes/ssc-cgl-reasoning/order-ranking/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -6307,6 +6332,61 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SSC_POLYNOMIALS_CHAPTER,
     notes: SSC_POLYNOMIALS_NOTES,
     slugs: SSC_POLYNOMIALS_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Reasoning",
+    subjectRoute: "ssc-cgl-reasoning",
+    subjectDisplay: "SSC CGL Reasoning",
+    chapterSlug: "arithmetic-reasoning",
+    chipLabel: "Arithmetic Reasoning notes",
+    chapter: SSC_ARITHMETIC_REASONING_CHAPTER,
+    notes: SSC_ARITHMETIC_REASONING_NOTES,
+    slugs: SSC_ARITHMETIC_REASONING_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Reasoning",
+    subjectRoute: "ssc-cgl-reasoning",
+    subjectDisplay: "SSC CGL Reasoning",
+    chapterSlug: "missing-number",
+    chipLabel: "Missing Number notes",
+    chapter: SSC_MISSING_NUMBER_CHAPTER,
+    notes: SSC_MISSING_NUMBER_NOTES,
+    slugs: SSC_MISSING_NUMBER_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Reasoning",
+    subjectRoute: "ssc-cgl-reasoning",
+    subjectDisplay: "SSC CGL Reasoning",
+    chapterSlug: "calendar-clock",
+    chipLabel: "Calendar and Clock notes",
+    chapter: SSC_CALENDAR_CLOCK_CHAPTER,
+    notes: SSC_CALENDAR_CLOCK_NOTES,
+    slugs: SSC_CALENDAR_CLOCK_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Reasoning",
+    subjectRoute: "ssc-cgl-reasoning",
+    subjectDisplay: "SSC CGL Reasoning",
+    chapterSlug: "blood-relations",
+    chipLabel: "Blood Relations notes",
+    chapter: SSC_BLOOD_RELATIONS_CHAPTER,
+    notes: SSC_BLOOD_RELATIONS_NOTES,
+    slugs: SSC_BLOOD_RELATIONS_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Reasoning",
+    subjectRoute: "ssc-cgl-reasoning",
+    subjectDisplay: "SSC CGL Reasoning",
+    chapterSlug: "order-ranking",
+    chipLabel: "Order, Ranking and Arrangement notes",
+    chapter: SSC_ORDER_RANKING_CHAPTER,
+    notes: SSC_ORDER_RANKING_NOTES,
+    slugs: SSC_ORDER_RANKING_SLUGS,
   },
 ];
 
