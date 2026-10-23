@@ -5,7 +5,7 @@ import AppHeader from "@/components/AppHeader";
 import StatCard from "@/app/dashboard/StatCard";
 import { listAiUsageByDay, listChatInteractions, listConversationRows } from "@/lib/chat/interactionsAdmin";
 import { groupConversations } from "@/lib/chat/conversation";
-import { summarizeAiUsage, summarizeChatInteractions } from "@/lib/chat/interactions";
+import { summarizeAiUsage, summarizeChatInteractions, type AiUsageSummary } from "@/lib/chat/interactions";
 import { readChatSettings } from "@/lib/chat/settingsAdmin";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { namesForUsers } from "@/lib/supabase/authUsers";
@@ -16,6 +16,21 @@ export const dynamic = "force-dynamic";
 /** Dollars, with a third decimal while V's bill is still cents. */
 function usd(v: number): string {
   return `$${v.toFixed(v < 1 ? 3 : 2)}`;
+}
+
+/** One answer's cost is a few hundredths of a cent: five decimals. */
+function usdPerAnswer(v: number): string {
+  return `$${v.toFixed(5)}`;
+}
+
+/** "$0.00045, 12% up on the week before", flagged past COST_RISE_FLAG (lib/chat/interactions compareCostWeeks). */
+function weekLine(usage: AiUsageSummary | null): string {
+  if (!usage || usage.weeks.thisWeek.perAnswerUsd === null) return "—";
+  const { thisWeek, change, flagged } = usage.weeks;
+  const amount = usdPerAnswer(thisWeek.perAnswerUsd!);
+  if (change === null) return amount;
+  const pct = Math.round(Math.abs(change) * 100);
+  return `${amount}, ${pct}% ${change >= 0 ? "up" : "down"} on the week before${flagged ? " (look into it)" : ""}`;
 }
 
 export default async function ChatUsagePage() {
@@ -69,6 +84,7 @@ export default async function ChatUsagePage() {
           <StatCard kind="numeric" value={summary.totalTyped} label="Typed questions" />
           <StatCard kind="text" value={usage ? String(usage.total.answers) : "—"} label="AI answers" />
           <StatCard kind="text" value={usage ? usd(usage.total.costUsd) : "—"} label="AI cost so far" />
+          <StatCard kind="text" value={weekLine(usage)} label="Cost per answer, last 7 days" />
           <StatCard kind="numeric" value={conversations.length} label="Conversations" />
           <StatCard kind="numeric" value={helpful} label="Replies marked helpful" />
           <StatCard kind="numeric" value={notHelpful} label="Replies marked not helpful" />
@@ -92,7 +108,9 @@ export default async function ChatUsagePage() {
                     <th className="px-3 py-2 text-right font-medium">Input</th>
                     <th className="px-3 py-2 text-right font-medium">From cache</th>
                     <th className="px-3 py-2 text-right font-medium">Output</th>
+                    <th className="px-3 py-2 text-right font-medium">Cache writes</th>
                     <th className="px-3 py-2 text-right font-medium">Cost</th>
+                    <th className="px-3 py-2 text-right font-medium">Per answer</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y tabular-nums">
@@ -108,7 +126,11 @@ export default async function ChatUsagePage() {
                         {d.cachedShare === null ? "—" : `${Math.round(d.cachedShare * 100)}%`}
                       </td>
                       <td className="px-3 py-2 text-right">{d.tokensOut.toLocaleString("en-IN")}</td>
+                      <td className="px-3 py-2 text-right">
+                        {d.writeShare === null ? "—" : `${Math.round(d.writeShare * 100)}%`}
+                      </td>
                       <td className="px-3 py-2 text-right">{usd(d.costUsd)}</td>
+                      <td className="px-3 py-2 text-right">{d.costPerAnswer === null ? "—" : usdPerAnswer(d.costPerAnswer)}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -117,7 +139,9 @@ export default async function ChatUsagePage() {
           )}
           <p className="border-t px-4 py-2 text-xs text-muted-foreground">
             Failed = the student got the fixed reply after an AI answer broke part-way; its tokens still cost.
-            &ldquo;From cache&rdquo; is the share of input read from the prompt cache at a tenth of the price.
+            &ldquo;From cache&rdquo; is the share of input read from the prompt cache at a tenth of the price;
+            &ldquo;Cache writes&rdquo; the share written to it, the dear part (twice the price for the 1-hour cache, since
+            2026-10-23). Per answer counts failed answers too.
             Calls made outside the site (tests, scripts) are not here: the Anthropic Console is the bill.
           </p>
         </section>

@@ -81,6 +81,7 @@ describe("askV", () => {
       tokensOut: 30,
       cacheReadTokens: 0,
       cacheWriteTokens: 0,
+      cacheWrite1hTokens: 0,
       toolCalls: [],
     });
   });
@@ -103,6 +104,7 @@ describe("askV", () => {
       tokensOut: 30,
       cacheReadTokens: 0,
       cacheWriteTokens: 0,
+      cacheWrite1hTokens: 0,
       toolCalls: [{ name: "find_chapters", input: { query: "atoms" } }],
     });
   });
@@ -161,11 +163,12 @@ describe("askV", () => {
     ]);
   });
 
-  it("marks the fixed instructions for caching and sends the per-question part after them", async () => {
+  it("marks the fixed instructions for the 1-hour cache and sends the per-question part after them", async () => {
+    // 1 hour, not 5 minutes (2026-10-23): 39 of 58 cache writes came 5-60 minutes after the previous answer.
     stubTurns(textTurn("Hi"));
     await askV({ system: "fixed facts", systemTail: "The student is on /notes.", message: "hi", tools: [tool] });
     expect(sent[0].system).toEqual([
-      { type: "text", text: "fixed facts", cache_control: { type: "ephemeral" } },
+      { type: "text", text: "fixed facts", cache_control: { type: "ephemeral", ttl: "1h" } },
       { type: "text", text: "The student is on /notes." },
     ]);
   });
@@ -173,7 +176,25 @@ describe("askV", () => {
   it("sends only the cached block when there is no per-question part", async () => {
     stubTurns(textTurn("Hi"));
     await askV({ system: "fixed facts", message: "hi", tools: [tool] });
-    expect(sent[0].system).toEqual([{ type: "text", text: "fixed facts", cache_control: { type: "ephemeral" } }]);
+    expect(sent[0].system).toEqual([{ type: "text", text: "fixed facts", cache_control: { type: "ephemeral", ttl: "1h" } }]);
+  });
+
+  it("counts 1-hour cache writes apart, since they cost 2x the input price instead of 1.25x", async () => {
+    stubTurns(
+      {
+        ...toolTurn("t1", { query: "atoms" }),
+        usage: {
+          input_tokens: 40,
+          output_tokens: 10,
+          cache_creation_input_tokens: 2800,
+          cache_read_input_tokens: 0,
+          cache_creation: { ephemeral_5m_input_tokens: 0, ephemeral_1h_input_tokens: 2800 },
+        },
+      },
+      { ...textTurn("Atoms"), usage: { input_tokens: 300, output_tokens: 20, cache_read_input_tokens: 2800 } }
+    );
+    const r = await askV({ system: "facts", message: "atoms", tools: [tool] });
+    expect(r).toMatchObject({ ok: true, cacheWriteTokens: 2800, cacheWrite1hTokens: 2800, cacheReadTokens: 2800 });
   });
 
   it("adds up cached reads and writes across tool rounds, apart from full-price input", async () => {

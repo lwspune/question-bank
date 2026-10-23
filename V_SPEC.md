@@ -76,6 +76,13 @@ is enforced in `facts.ts` or the tools; the date is when it was made.
   ("20+ exams") (2026-10-20).
 - **Model and cost:** Claude Haiku 5.5. No pre-written "why your pick is wrong"
   notes until V's AI spend nears $1 a day (2026-10-20).
+- **Cost is tracked, and cut only where quality cannot move (owner, 2026-10-23):**
+  the fixed instructions sit in the 1-hour prompt cache (most cache writes
+  came 5-60 minutes apart, after the 5-minute one had lapsed); a change is
+  tested on its own cases first (`--case`), the whole set once before merging.
+  Test runs are NOT batched: tried 2026-10-23, a batch's requests did not read
+  the cache and the find cases cost 2.5x as much. Cost per answer is on
+  `/dashboard/chat` and in `npm run v:cost`.
 - **Parked:** withdrawn UPSC questions (V says the pick "is marked wrong"; 10
   such questions; re-raise only when the owner does); the mock result page
   being wider than a phone.
@@ -98,8 +105,11 @@ the next fix from undoing this one.
 settings and the real model. What it cannot replay it stands in for, writing
 nothing: a reveal is always allowed, a plan or a save stays in memory, the
 student has no results yet. So a `reflect` case tests that V reads the
-results, not what it says about them. `-- --job=find`, `-- --limit=N`,
-`-- --label="..."`, `-- --dry`. About $0.0005 a case, roughly $0.10 a run.
+results, not what it says about them. `-- --case=<id start,...>`,
+`-- --job=find`, `-- --limit=N`, `-- --label="..."`, `-- --dry`. About
+$0.0005 a case, roughly $0.10 a run. In the week to 2026-10-22, test runs cost
+$0.31 and students' answers $0.16, so test spend is watched too: re-test a
+change on its own cases (`--case`), and run the whole set once, before merging.
 
 **Checks** (`scripts/lib/vEval.ts`, spec `tests/v-eval.test.ts`): tools called
 or not, tappable links, wording that must or must not appear, length, plus
@@ -119,7 +129,8 @@ reads everything else from the stored row.
 
 1. Name the job and the cases that show the problem (add them if missing).
 2. Change `facts.ts` or a tool.
-3. `npm run v:eval -- --job=<job>` while working, then the whole set before merging.
+3. `npm run v:eval -- --case=<ids>` (or `--job=<job>`) while working, then the
+   whole set once before merging.
 4. Read the report: no case that passed before may now fail without a reason
    written down; mark the `judge` cases.
 5. Ship, and say in the commit which job and cases it moved.
@@ -140,9 +151,13 @@ reads everything else from the stored row.
    answerable, made-up apology), thumbs, and practice within 30 minutes of a
    reply. Read-only, free.
 2. **New failures become cases** (`v:eval:seed`).
-3. **Pick at most one or two changes** for the week, by job.
-4. **Test and ship** as in section 5.
-5. **Note the outcome here** in the log below, one line.
+3. **Cost line:** `npm run v:cost`: cost per answer over the last 7 days
+   against the 7 before (flagged above a 20% rise, once both weeks have 20+
+   answers), and what the week's test runs cost. A flagged rise is looked into
+   before any new change.
+4. **Pick at most one or two changes** for the week, by job.
+5. **Test and ship** as in section 5.
+6. **Note the outcome here** in the log below, one line.
 
 ### Log
 
