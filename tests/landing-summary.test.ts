@@ -38,6 +38,12 @@ const base = {
 };
 
 describe("landingLead", () => {
+  it("promises answers alone for an exam whose questions carry no worked solutions", () => {
+    expect(landingLead({ ...base, examName: "IPMAT Indore", profile })).toBe(
+      "176 IPMAT Indore Mathematics previous year questions (PYQs) from 19 papers, 2017 to 2026, with answers."
+    );
+  });
+
   it("states count, papers and the year range for a pyq chapter", () => {
     expect(landingLead({ ...base, profile })).toBe(
       "176 NDA Mathematics previous year questions (PYQs) from 19 papers, 2017 to 2026, with answers and worked solutions."
