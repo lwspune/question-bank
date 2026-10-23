@@ -9,12 +9,23 @@
 
 import type { Exposure } from "./exposure";
 
-export const OPTION_LABELS = ["A", "B", "C", "D"] as const;
+/** Every letter a sitting can record. E since IMAT mocks (migration 0179). */
+export const OPTION_LABELS = ["A", "B", "C", "D", "E"] as const;
 export type OptionLabel = (typeof OPTION_LABELS)[number];
 
-/** The one correct option's label, or null when there is not exactly one.
- *  Item stats come from mock sittings, which are A-D only; a five-option
- *  question (IMAT) has no sittings, so an E key has no stats to point at. */
+const FOUR_OPTIONS: readonly OptionLabel[] = ["A", "B", "C", "D"];
+
+/**
+ * The letters a question's distribution draws a bar for: the ones it prints.
+ * A four-option question keeps its A-D bars and gets no empty E bar; a
+ * question with no options (numeric) falls back to A-D, as before.
+ */
+export function distributionLabels(optionLabels: readonly string[]): OptionLabel[] {
+  const printed = OPTION_LABELS.filter((l) => optionLabels.includes(l));
+  return printed.length > 0 ? printed : [...FOUR_OPTIONS];
+}
+
+/** The one correct option's label, or null when there is not exactly one. */
 export function singleItemStatKey(options: readonly { label: string; isCorrect: boolean }[]): OptionLabel | null {
   const correct = options.filter((o) => o.isCorrect);
   if (correct.length !== 1) return null;

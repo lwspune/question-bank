@@ -12,6 +12,7 @@
 import { resolveBankHref, type ExamEntry } from "./examContext";
 import { landingHref, type ChapterLanding } from "@/lib/questions/landing";
 import { examKindPhrase } from "./questionCounts";
+import { answersPhrase, solutionCoverageOf, type SolutionCoverage } from "./solutionClaim";
 
 /** NDA keeps its richer hand-built home; every other exam lives under /exams. */
 export function examHomeHref(slug: string): string {
@@ -37,6 +38,8 @@ export type ExamHomeModel = {
   /** A practice-only exam's PUBLIC past-year questions (CBSE Class 10 since
    *  2026-10-15), named beside the practice count; 0 for every other exam. */
   pastYearQuestions: number;
+  /** How many of its questions carry worked solutions: what the description may promise. */
+  solutionCoverage: SolutionCoverage;
   /** Chapters with a landing page (≥15 PUBLIC questions). */
   chapterCount: number;
   /** Rolled up from the chapter profiles; null for practice-only or unknown. */
@@ -91,6 +94,7 @@ export function buildExamHome(
     practiceOnly: entry.practiceOnly === true,
     totalQuestions: opts.totalPublicQuestions,
     pastYearQuestions: entry.practiceOnly ? (opts.pastYearQuestions ?? 0) : 0,
+    solutionCoverage: solutionCoverageOf(entry),
     chapterCount: mine.length,
     years,
     subjects,
@@ -124,5 +128,5 @@ export function examHomeDescription(m: ExamHomeModel): string {
       : extras.length === 1
         ? ` and ${extras[0]}`
         : `, ${extras.slice(0, -1).join(", ")}, and ${extras[extras.length - 1]}`;
-  return `${m.displayName} on PYQ Vault: ${examKindPhrase(counts, m.practiceOnly)}${span}${shape}, with answers and worked solutions${tail}. Free to browse.`;
+  return `${m.displayName} on PYQ Vault: ${examKindPhrase(counts, m.practiceOnly)}${span}${shape}, ${answersPhrase(m.solutionCoverage)}${tail}. Free to browse.`;
 }

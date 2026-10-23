@@ -116,6 +116,16 @@ describe("buildExamHome", () => {
 });
 
 describe("examHomeDescription", () => {
+  it("promises answers alone where the questions carry no worked solutions", () => {
+    const m = buildExamHome(getExamBySlug("ipmat-indore")!, [], {
+      examId: null,
+      totalPublicQuestions: 670,
+      hasShippedNotes: false,
+    });
+    expect(examHomeDescription(m)).toContain(", with answers and timed mocks of real papers. Free to browse.");
+    expect(examHomeDescription(m)).not.toContain("worked solutions");
+  });
+
   it("states count, years, subjects and chapters in one quotable sentence", () => {
     const model = buildExamHome(jee, landings, {
       examId: "exam-uuid",

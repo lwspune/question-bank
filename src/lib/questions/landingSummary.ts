@@ -10,6 +10,9 @@
  * a practice-only chapter never claims papers or years.
  */
 
+import { getExamByName } from "@/lib/exam/examContext";
+import { answersPhrase, solutionCoverageOf } from "@/lib/exam/solutionClaim";
+
 /** One chapter's profile from `get_chapter_profile` (migration 0126). */
 export type ChapterProfile = {
   minYear: number | null;
@@ -39,7 +42,7 @@ export function landingLead(input: {
   const { questionCount, examName, subjectName, practiceOnly, profile } = input;
   const kind = practiceOnly ? "practice questions" : "previous year questions (PYQs)";
   const head = `${fmt(questionCount)} ${examName} ${subjectName} ${kind}`;
-  const tail = "with answers and worked solutions.";
+  const tail = `${answersPhrase(solutionCoverageOf(getExamByName(examName)))}.`;
 
   if (practiceOnly || !profile || profile.minYear === null || profile.maxYear === null) {
     return `${head} ${tail}`;

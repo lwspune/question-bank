@@ -40,7 +40,7 @@ export function aggregateItemStats(
 
   let attempted = 0;
   let correct = 0;
-  const choiceCounts = { A: 0, B: 0, C: 0, D: 0 } as Record<OptionLabel, number>;
+  const choiceCounts = { A: 0, B: 0, C: 0, D: 0, E: 0 } as Record<OptionLabel, number>;
 
   let topCorrect = 0;
   let topN = 0;

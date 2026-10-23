@@ -2,8 +2,8 @@
 
 > **Superseded for IMAT (owner, 2026-10-20): IMAT goes on pyqvault.com as an
 > ordinary exam, the same for every visitor.** The 681 original twins and the
-> 46 notes chapters go PUBLIC; the 240 ministry questions still wait on D1 and
-> 2011-2022 stay `publish_blocked`. Why: 97% of traffic is Indian and Indian
+> 46 notes chapters go PUBLIC; the 240 ministry questions followed once D1
+> was settled (2026-10-23, below) and 2011-2022 stay `publish_blocked`. Why: 97% of traffic is Indian and Indian
 > students sit IMAT too, so the cheapest demand test is the site that already
 > ranks. Showing different pages by visitor country was rejected: Google
 > crawls mostly from the US and renders JavaScript, so a country-dependent
@@ -290,11 +290,14 @@ No new route code should be needed for a site that only needs the P3 pages.
 
 ## 7. Open decisions (owner)
 
-- **D1 — Copyright before going live.** The trial URL is public even when
-  noindexed and unshared. Get the one-line Italian legal opinion on MUR IMAT
-  papers before IMAT rows are flipped PUBLIC? (Default in this plan: yes;
-  rows stay PRIVATE until then. Pages can be built and checked against the
-  test database meanwhile.)
+- **D1 — Copyright before going live. SETTLED by the owner, 2026-10-23,
+  without a legal opinion:** the 2023-2026 MUR papers go PUBLIC. The owner's
+  reasons: the ministry publishes the papers itself, free
+  (`accessoprogrammato.mur.gov.it/compiti/CompitoInglese<year>.pdf`), and the
+  leading prep sites host them openly, including inside paid timed
+  simulators. Each row keeps its MUR source file as provenance. **The
+  2011-2022 Cambridge papers stay `publish_blocked`:** Cambridge Assessment
+  set them, so their copyright is not the ministry's.
 - **D2 — Trial limits.** Google-only sign-in, no payments, noindex. OK?
 - **D3 — Brand name.** "IMAT Vault" to match the trial domain, or another
   name? Colours for the site?

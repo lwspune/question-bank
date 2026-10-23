@@ -41,6 +41,8 @@ export async function readPublishedMocks(db: SupabaseClient): Promise<MockLite[]
       .eq("source", "pyq")
       .eq("scope", "full")
       .order("pyq_year", { ascending: false })
+      // Unique tie-break: paging over a sort with ties can repeat or skip rows.
+      .order("id", { ascending: true })
       .range(from, from + PAGE - 1);
     if (error) throw new Error(`readPublishedMocks: ${error.message}`);
     const rows = data ?? [];
