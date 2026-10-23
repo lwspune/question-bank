@@ -10,6 +10,8 @@ import { readChatSettings } from "@/lib/chat/settingsAdmin";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { namesForUsers } from "@/lib/supabase/authUsers";
 import ChatSettingsForm from "./ChatSettingsForm";
+import ConversationThread from "./ConversationThread";
+import MathText from "@/components/chat/MathText";
 
 export const dynamic = "force-dynamic";
 
@@ -159,37 +161,22 @@ export default async function ChatUsagePage() {
             <ul>
               {shownConversations.map((c) => (
                 <li key={c.conversationId} className="border-t first:border-t-0">
-                  <details className="group px-4 py-2">
-                    <summary className="cursor-pointer list-none rounded-sm text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
-                      <span className="font-medium">{c.turns[0].question}</span>
-                      <span className="mt-0.5 block text-xs text-muted-foreground">
-                        {new Date(c.startedAt).toLocaleString("en-IN", { timeZone: "Asia/Kolkata", dateStyle: "medium", timeStyle: "short" })}
-                        {" · "}
-                        {c.turns.length} {c.turns.length === 1 ? "question" : "questions"}
-                        {" · "}
-                        <Who userId={c.userId} signedIn={c.signedIn} names={names} />
-                      </span>
-                    </summary>
-                    <ol className="mt-2 space-y-2">
-                      {c.turns.map((t, i) => (
-                        <li key={i} className="text-sm">
-                          <p className="whitespace-pre-wrap break-words">
-                            <span className="font-medium">Student: </span>
-                            {t.question}
-                            {t.page && <span className="ml-1 text-xs text-muted-foreground">(on {t.page})</span>}
-                          </p>
-                          <p className="mt-0.5 whitespace-pre-wrap break-words border-l-2 border-input pl-2 text-muted-foreground">
-                            <span className="font-medium text-foreground">
-                              {t.source === "ai" ? "V (AI): " : t.source === "template" ? "V (button): " : t.source === "followup" ? "V (late answer): " : "V (fixed reply): "}
-                            </span>
-                            {t.reply}
-                            {t.feedback === 1 && <span className="ml-1 text-xs font-medium text-foreground">[helpful]</span>}
-                            {t.feedback === -1 && <span className="ml-1 text-xs font-medium text-foreground">[not helpful]</span>}
-                          </p>
-                        </li>
-                      ))}
-                    </ol>
-                  </details>
+                  <ConversationThread
+                    summary={
+                      <>
+                        <span className="font-medium">{c.turns[0].question}</span>
+                        <span className="mt-0.5 block text-xs text-muted-foreground">
+                          {new Date(c.startedAt).toLocaleString("en-IN", { timeZone: "Asia/Kolkata", dateStyle: "medium", timeStyle: "short" })}
+                          {" · "}
+                          {c.turns.length} {c.turns.length === 1 ? "question" : "questions"}
+                          {" · "}
+                          <Who userId={c.userId} signedIn={c.signedIn} names={names} />
+                        </span>
+                      </>
+                    }
+                    // Only what the thread draws: the tool calls stay on the server.
+                    turns={c.turns.map(({ toolCalls: _toolCalls, ...t }) => t)}
+                  />
                 </li>
               ))}
             </ul>
@@ -258,7 +245,7 @@ export default async function ChatUsagePage() {
                       <span className="font-medium text-foreground">
                         {q.replySource === "ai" ? "V (AI): " : q.replySource === "ai_failed" ? "V (fixed reply, AI failed): " : "V (fixed reply): "}
                       </span>
-                      {q.reply}
+                      <MathText text={q.reply} />
                     </p>
                   )}
                   <p className="mt-0.5 text-xs text-muted-foreground">
