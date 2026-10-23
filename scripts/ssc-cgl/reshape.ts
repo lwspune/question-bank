@@ -84,9 +84,14 @@ async function main() {
   const chapterId = await resolveChapter(db, SUBJECT, chapter);
 
   // Any visibility: a source subtopic is only safe to drop when NOTHING points at it.
-  const { data: rows, error } = await db.from("questions").select("id, visibility, source_file, source_row, subtopics(name)").eq("chapter_id", chapterId);
-  if (error) throw error;
-  const all = (rows ?? []) as any[];
+  // Paged: PostgREST caps a response at 1000 rows, and Vocabulary has more.
+  const all: any[] = [];
+  for (let from = 0; ; from += 1000) {
+    const { data: rows, error } = await db.from("questions").select("id, visibility, source_file, source_row, subtopics(name)").eq("chapter_id", chapterId).order("id").range(from, from + 999);
+    if (error) throw error;
+    all.push(...(rows ?? []));
+    if ((rows ?? []).length < 1000) break;
+  }
   const pub = all.filter((r) => r.visibility === "PUBLIC");
   console.log(`chapter rows: ${all.length} (${pub.length} PUBLIC)`);
   if (pub.length !== total) die(`expected ${total} PUBLIC rows, got ${pub.length}`);

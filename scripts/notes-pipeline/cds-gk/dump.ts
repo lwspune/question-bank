@@ -32,16 +32,22 @@ async function main() {
   if (hit.length !== 1) throw new Error(`expected 1 ${exam} ${subject} chapter "${chapter}", found ${hit.length}`);
   const chapterId = (hit[0] as any).id as string;
 
-  const { data, error } = await sb
-    .from("questions")
-    .select(
-      "id, visibility, question_kind, pyq_year, pyq_note, question_number, source_file, difficulty, set_id, image_url, text, context, solution, subtopics(name), options(label, text, is_correct, image_url)"
-    )
-    .eq("chapter_id", chapterId)
-    .order("pyq_year")
-    .limit(1000);
-  if (error) throw error;
-  const all = (data ?? []) as any[];
+  // Paged: PostgREST caps a response at 1000 rows (SSC Vocabulary has more), so order by id as a tie-break.
+  const all: any[] = [];
+  for (let from = 0; ; from += 1000) {
+    const { data, error } = await sb
+      .from("questions")
+      .select(
+        "id, visibility, question_kind, pyq_year, pyq_note, question_number, source_file, difficulty, set_id, image_url, text, context, solution, subtopics(name), options(label, text, is_correct, image_url)"
+      )
+      .eq("chapter_id", chapterId)
+      .order("pyq_year")
+      .order("id")
+      .range(from, from + 999);
+    if (error) throw error;
+    all.push(...(data ?? []));
+    if ((data ?? []).length < 1000) break;
+  }
   const pub = all.filter((r) => r.visibility === "PUBLIC");
 
   const questions = pub.map((r) => {
