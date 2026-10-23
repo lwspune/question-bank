@@ -3,6 +3,8 @@
  * store the run and write a report to read and mark (V_SPEC.md, migration 0176).
  *
  *   npm run v:eval                       every active case (SPENDS money: ~$0.0005 a case)
+ *   npm run v:eval -- --case=a1b2,9e9e   only the cases whose id starts so: re-test a change on
+ *                                        the cases it touches before running them all
  *   npm run v:eval -- --job=find         one job
  *   npm run v:eval -- --limit=10         the first N cases
  *   npm run v:eval -- --label="rule 7"   names the run in the report and the table
@@ -21,6 +23,11 @@
  * messages). It lists the score per job, what changed since the last run, the
  * automatic failures, and the replies a person must read (`judge`). Marks go
  * back with scripts/chat/eval/mark.ts. Needs ANTHROPIC_API_KEY in .env.local.
+ *
+ * NOT batched (tried 2026-10-23): Message Batches are half price, but a
+ * batch's requests did not read the prompt cache, so each wrote V's 8,400-token
+ * instructions afresh. The 41 find cases cost $0.053 batched against $0.021
+ * here, where 4 cases at a time share the cache.
  */
 import "../../lib/serverOnly";
 import { join } from "node:path";
@@ -41,7 +48,7 @@ import type { ModelTurn } from "../../../src/lib/chat/conversation";
 import type { SavedPlan } from "../../../src/lib/chat/weekPlan";
 import { buildPerformance } from "../../../src/lib/performance/compute";
 import { EMPTY_PERFORMANCE } from "../../../src/lib/performance/types";
-import { checkReply, compareRuns, parseExpect, scoreByJob, V_JOBS, type VJob } from "../../lib/vEval";
+import { checkReply, compareRuns, parseExpect, pickCases, scoreByJob, V_JOBS, type VJob } from "../../lib/vEval";
 
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 
@@ -105,7 +112,7 @@ async function main() {
   if (job) q = q.eq("job", job);
   const { data, error } = await q;
   if (error) throw new Error(error.message);
-  const cases = ((data ?? []) as Case[]).slice(0, limit);
+  const cases = pickCases((data ?? []) as Case[], arg("case")).slice(0, limit);
   if (dry) {
     for (const c of cases) console.log(`${c.id.slice(0, 8)} ${c.job.padEnd(16)} ${short(c.message, 80)}`);
     console.log(`${cases.length} cases (dry run, nothing called).`);
@@ -272,6 +279,7 @@ function writeReport(r: {
   changes: ReturnType<typeof compareRuns>;
 }) {
   const { runId, label, sha, cost, results, changes } = r;
+  const perCase = results.length ? cost / results.length : 0;
   const score = scoreByJob(results.map((x) => ({ job: x.c.job, autoPass: x.autoPass, mark: null })));
   const id8 = (id: string) => id.slice(0, 8);
   const block = (x: Result) =>
@@ -290,7 +298,7 @@ function writeReport(r: {
   const md = [
     `# V test run ${id8(runId)}${label ? `: ${label}` : ""}`,
     "",
-    `${new Date().toISOString().slice(0, 16).replace("T", " ")} UTC · commit ${sha ?? "?"} · ${results.length} cases · $${cost.toFixed(4)}`,
+    `${new Date().toISOString().slice(0, 16).replace("T", " ")} UTC · commit ${sha ?? "?"} · ${results.length} cases · $${cost.toFixed(4)}, $${perCase.toFixed(5)} a case`,
     "",
     "| Job | Cases | Automatic pass |",
     "|---|---|---|",

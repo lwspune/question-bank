@@ -36,6 +36,8 @@ export type RecordChatInteraction = InConversation &
           /** Migration 0161: input read from / written to the prompt cache. */
           cacheReadTokens?: number;
           cacheWriteTokens?: number;
+          /** Migration 0180: the part of the writes kept for an hour. */
+          cacheWrite1hTokens?: number;
           links?: string[];
           /** Migration 0167: what V searched for this reply. */
           toolCalls?: ToolCallLog[];
@@ -66,6 +68,7 @@ export async function recordChatInteraction(
         tokens_out: spentTokens ? (spentTokens.tokensOut ?? null) : null,
         cache_read_tokens: spentTokens ? (spentTokens.cacheReadTokens ?? null) : null,
         cache_write_tokens: spentTokens ? (spentTokens.cacheWriteTokens ?? null) : null,
+        cache_write_1h_tokens: spentTokens ? (spentTokens.cacheWrite1hTokens ?? null) : null,
         reply_links: reply && reply.links && reply.links.length > 0 ? reply.links.slice(0, 10) : null,
         tool_calls: toolCallsForStorage(reply?.toolCalls),
         event_type: input.eventType,
@@ -326,6 +329,8 @@ type AiUsageRow = {
   tokens_out: number;
   cache_read_tokens: number;
   cache_write_tokens: number;
+  // Absent until migration 0180 is applied: 0, as no 1-hour write was stored before it.
+  cache_write_1h_tokens?: number;
 };
 
 /** V's AI use per India-time day, summed in the database (migration 0162): one row a day, no row limit. Null when unreadable. */
@@ -343,5 +348,6 @@ export async function listAiUsageByDay(): Promise<AiUsageDay[] | null> {
     tokensOut: Number(r.tokens_out),
     cacheReadTokens: Number(r.cache_read_tokens),
     cacheWriteTokens: Number(r.cache_write_tokens),
+    cacheWrite1hTokens: Number(r.cache_write_1h_tokens ?? 0),
   }));
 }

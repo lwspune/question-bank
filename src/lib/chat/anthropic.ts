@@ -17,6 +17,12 @@
  * of a chapter search always hits it, and students' follow-ups come in bursts.
  * Anything that changes per question goes in `systemTail`, AFTER the mark,
  * or it would make every request a miss.
+ *
+ * 2026-10-23 the 1-hour cache: the 5-minute one was written afresh for 58 of
+ * 127 answers in a day, 39 of them 5-60 minutes after the previous answer. An
+ * hour-long write costs 2x the input price instead of 1.25x, but those 39 turn
+ * into reads at a tenth. 1-hour writes are counted apart (`cacheWrite1hTokens`,
+ * migration 0180) because they are priced apart.
  * Spec: tests/chat-ask-v.test.ts.
  */
 const ENDPOINT = "https://api.anthropic.com/v1/messages";
@@ -57,6 +63,8 @@ export type AskVResult =
       /** Input read from the cache (a tenth of the price) and written to it (a quarter extra). */
       cacheReadTokens: number;
       cacheWriteTokens: number;
+      /** The part of `cacheWriteTokens` written for an hour: twice the input price. */
+      cacheWrite1hTokens: number;
       toolCalls: ToolCallLog[];
     }
   /** Failed after `tokensIn`... were already spent (and billed) on earlier rounds: 0 when nothing came back. */
@@ -67,6 +75,7 @@ export type AskVResult =
       tokensOut: number;
       cacheReadTokens: number;
       cacheWriteTokens: number;
+      cacheWrite1hTokens: number;
       toolCalls: ToolCallLog[];
     };
 
@@ -83,6 +92,7 @@ type ApiResponse = {
     output_tokens?: number;
     cache_read_input_tokens?: number;
     cache_creation_input_tokens?: number;
+    cache_creation?: { ephemeral_5m_input_tokens?: number; ephemeral_1h_input_tokens?: number };
   };
 };
 
@@ -107,6 +117,7 @@ export async function askV(input: {
   let tokensOut = 0;
   let cacheReadTokens = 0;
   let cacheWriteTokens = 0;
+  let cacheWrite1hTokens = 0;
   const toolCalls: ToolCallLog[] = [];
   // Every failure carries what was already spent: a failed second round still billed the first.
   const fail = (error: string): AskVResult => ({
@@ -116,6 +127,7 @@ export async function askV(input: {
     tokensOut,
     cacheReadTokens,
     cacheWriteTokens,
+    cacheWrite1hTokens,
     toolCalls,
   });
 
@@ -129,7 +141,7 @@ export async function askV(input: {
   const toolDefs = input.tools.map(({ name, description, input_schema }) => ({ name, description, input_schema }));
   const messages: Message[] = [...(input.history ?? []), { role: "user", content: input.message }];
   const system = [
-    { type: "text", text: input.system, cache_control: { type: "ephemeral" } },
+    { type: "text", text: input.system, cache_control: { type: "ephemeral", ttl: "1h" } },
     ...(input.systemTail ? [{ type: "text", text: input.systemTail }] : []),
   ];
 
@@ -162,6 +174,7 @@ export async function askV(input: {
       tokensOut += data.usage?.output_tokens ?? 0;
       cacheReadTokens += data.usage?.cache_read_input_tokens ?? 0;
       cacheWriteTokens += data.usage?.cache_creation_input_tokens ?? 0;
+      cacheWrite1hTokens += data.usage?.cache_creation?.ephemeral_1h_input_tokens ?? 0;
       const content = data.content ?? [];
 
       if (data.stop_reason === "tool_use") {
@@ -196,7 +209,7 @@ export async function askV(input: {
         .join("")
         .trim();
       if (!reply) return fail(`no text (stop_reason ${data.stop_reason ?? "none"})`);
-      return { ok: true, reply, tokensIn, tokensOut, cacheReadTokens, cacheWriteTokens, toolCalls };
+      return { ok: true, reply, tokensIn, tokensOut, cacheReadTokens, cacheWriteTokens, cacheWrite1hTokens, toolCalls };
     }
     return fail(`still calling tools after ${MAX_TOOL_ROUNDS} rounds`);
   } catch (e) {

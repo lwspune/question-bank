@@ -166,6 +166,7 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
       tokensOut: 10,
       cacheReadTokens: 0,
       cacheWriteTokens: 2800,
+      cacheWrite1hTokens: 2800,
     });
     const spy = vi.spyOn(console, "error").mockImplementation(() => {});
     const { POST } = await import("@/app/api/chat/typed/route");
@@ -174,10 +175,17 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
     expect(await res.json()).toMatchObject({ reply: TYPED_QUESTION_REPLY, source: "fallback" });
     const { data } = await admin
       .from("chat_interactions")
-      .select("reply_source, tokens_in, tokens_out, cache_read_tokens, cache_write_tokens")
+      .select("reply_source, tokens_in, tokens_out, cache_read_tokens, cache_write_tokens, cache_write_1h_tokens")
       .like("message", `route-${RUN}-partial%`);
     expect(data).toEqual([
-      { reply_source: "ai_failed", tokens_in: 80, tokens_out: 10, cache_read_tokens: 0, cache_write_tokens: 2800 },
+      {
+        reply_source: "ai_failed",
+        tokens_in: 80,
+        tokens_out: 10,
+        cache_read_tokens: 0,
+        cache_write_tokens: 2800,
+        cache_write_1h_tokens: 2800,
+      },
     ]);
   });
 
@@ -299,7 +307,8 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
       tokensIn: 40,
       tokensOut: 5,
       cacheReadTokens: 2800,
-      cacheWriteTokens: 0,
+      cacheWriteTokens: 1200,
+      cacheWrite1hTokens: 1200,
     });
     const { POST } = await import("@/app/api/chat/typed/route");
     // Two chapter pages, so the page carries a chapter line too (2026-10-19), and neither path is a nav fact.
@@ -318,9 +327,9 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
     expect(askV.mock.calls[0][0].systemTail).not.toBe(askV.mock.calls[1][0].systemTail);
     const { data } = await admin
       .from("chat_interactions")
-      .select("cache_read_tokens, cache_write_tokens")
+      .select("cache_read_tokens, cache_write_tokens, cache_write_1h_tokens")
       .like("message", `route-${RUN}-cache1%`);
-    expect(data).toEqual([{ cache_read_tokens: 2800, cache_write_tokens: 0 }]);
+    expect(data).toEqual([{ cache_read_tokens: 2800, cache_write_tokens: 1200, cache_write_1h_tokens: 1200 }]);
   });
 
   // "Ask V about this question" (2026-10-19, migration 0168).

@@ -1,6 +1,7 @@
 import { describe, it, expect } from "vitest";
 import {
   aiAnswerCostUsd,
+  compareCostWeeks,
   summarizeAiUsage,
   summarizeChatInteractions,
   type AiUsageDay,
@@ -113,6 +114,56 @@ describe("aiAnswerCostUsd", () => {
     // $0.01 per million read + $0.125 per million written.
     expect(aiAnswerCostUsd({ cacheReadTokens: 1_000_000, cacheWriteTokens: 1_000_000 })).toBeCloseTo(0.135, 6);
   });
+
+  it("prices a 1-hour cache write at twice the input price; it is part of the writes, not added to them (migration 0180)", () => {
+    // 1M written: 0.4M for 5 minutes at $0.125/M + 0.6M for an hour at $0.20/M.
+    expect(aiAnswerCostUsd({ cacheWriteTokens: 1_000_000, cacheWrite1hTokens: 600_000 })).toBeCloseTo(0.05 + 0.12, 6);
+  });
+});
+
+describe("compareCostWeeks: the Thursday cost line", () => {
+  const d = (day: string, answers: number, tokensOut: number): AiUsageDay => ({
+    day,
+    answers,
+    failed: 0,
+    tokensIn: 0,
+    tokensOut,
+    cacheReadTokens: 0,
+    cacheWriteTokens: 0,
+  });
+  // 2026-10-23 12:00 UTC is 17:30 in India: the last full week is 10-16 to 10-22, the one before 10-09 to 10-15.
+  const now = new Date("2026-10-23T12:00:00Z");
+
+  it("compares cost per answer over the last 7 full India days with the 7 before, leaving today out", () => {
+    const w = compareCostWeeks(
+      [d("2026-10-09", 20, 2_000_000), d("2026-10-22", 20, 2_200_000), d("2026-10-23", 99, 9_000_000)],
+      now
+    );
+    expect(w.thisWeek).toMatchObject({ from: "2026-10-16", to: "2026-10-22", answers: 20 });
+    expect(w.lastWeek).toMatchObject({ from: "2026-10-09", to: "2026-10-15", answers: 20 });
+    expect(w.thisWeek.perAnswerUsd).toBeCloseTo(0.055, 6);
+    expect(w.change).toBeCloseTo(0.1, 6);
+    expect(w.flagged).toBe(false);
+  });
+
+  it("flags a rise of more than 20% in cost per answer, not in the total (more students is not a problem)", () => {
+    expect(compareCostWeeks([d("2026-10-10", 20, 1_000_000), d("2026-10-20", 20, 1_250_000)], now).flagged).toBe(true);
+    expect(compareCostWeeks([d("2026-10-10", 20, 1_000_000), d("2026-10-20", 80, 4_000_000)], now).flagged).toBe(false);
+  });
+
+  it("does not compare a week of fewer than 20 answers: two answers say nothing about cost", () => {
+    const w = compareCostWeeks([d("2026-10-10", 2, 1_000), d("2026-10-20", 200, 9_000_000)], now);
+    expect(w.lastWeek.perAnswerUsd).not.toBeNull();
+    expect(w.change).toBeNull();
+    expect(w.flagged).toBe(false);
+  });
+
+  it("has no change to report when either week had no answers", () => {
+    const w = compareCostWeeks([d("2026-10-20", 5, 1_000)], now);
+    expect(w.lastWeek.perAnswerUsd).toBeNull();
+    expect(w.change).toBeNull();
+    expect(w.flagged).toBe(false);
+  });
 });
 
 describe("summarizeAiUsage: V's AI use per day (migration 0162)", () => {
@@ -160,11 +211,26 @@ describe("summarizeAiUsage: V's AI use per day (migration 0162)", () => {
     expect(s.days.find((d) => d.day === "2026-10-16")!.cachedShare).toBeNull();
   });
 
-  it("is empty and zero with no AI use yet", () => {
-    expect(summarizeAiUsage([], new Date())).toEqual({
-      total: { answers: 0, failed: 0, costUsd: 0 },
-      days: [],
+  it("shows each day's cost per answer and the share of input written to the cache (the expensive part)", () => {
+    const s = summarizeAiUsage(
+      [day("2026-10-15", { answers: 3, failed: 1, tokensIn: 100, cacheWriteTokens: 300, cacheReadTokens: 600, tokensOut: 1_000_000 })],
+      new Date("2026-10-16T12:00:00Z")
+    );
+    const d = s.days[0];
+    // A failed answer cost money too, so it counts.
+    expect(d.costPerAnswer).toBeCloseTo(d.costUsd / 4, 9);
+    expect(d.writeShare).toBeCloseTo(0.3, 6);
+    expect(summarizeAiUsage([day("2026-10-16")], new Date("2026-10-16T12:00:00Z")).days[0]).toMatchObject({
+      costPerAnswer: null,
+      writeShare: null,
     });
+  });
+
+  it("is empty and zero with no AI use yet", () => {
+    const s = summarizeAiUsage([], new Date());
+    expect(s.total).toEqual({ answers: 0, failed: 0, costUsd: 0 });
+    expect(s.days).toEqual([]);
+    expect(s.weeks.change).toBeNull();
   });
 });
 
