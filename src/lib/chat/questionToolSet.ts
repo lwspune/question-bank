@@ -62,7 +62,7 @@ export function questionTools(d: QuestionToolDeps): VTool[] {
       name: "get_question",
       logResult: true,
       description:
-        "Read the question for a HINT: its text, options and the first step of its stored solution, without the answer. Use when the student wants a hint, or to see the question before asking hint or full solution.",
+        "Read the question for a HINT: its text, options and the first step of its solution, without the answer. Use when the student wants a hint, or to see the question before asking hint or full solution.",
       input_schema: ID_SCHEMA,
       run: async (input) => {
         const q = await load(input);
@@ -73,7 +73,7 @@ export function questionTools(d: QuestionToolDeps): VTool[] {
       name: "explain_question",
       logResult: true,
       description:
-        "Read the question's correct answer and whole stored solution, to explain it. Uses one of the student's free answers for the day. Use only when the student wants the full solution or the answer.",
+        "Read the question's correct answer and whole solution, to explain it. Uses one of the student's free answers for the day. Use only when the student wants the full solution or the answer.",
       input_schema: {
         type: "object",
         properties: {

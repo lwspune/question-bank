@@ -89,12 +89,15 @@ export function hintView(q: VQuestion): string {
   const step = firstStep(q.solution);
   return [
     ...header(q),
-    step ? `First step of the stored solution: ${step}` : "No worked solution is stored for this question.",
+    step ? `First step of the solution: ${step}` : "No worked solution for this question.",
     "Give a hint from that first step only. Do not say which option is right.",
   ].join("\n");
 }
 
-/** For a full explanation: the key and the whole stored solution, and what the student picked. */
+/**
+ * For a full explanation: the key and the whole solution, and what the student picked. Labelled in the
+ * student's words, never "stored": V repeats what it reads (2026-10-23, 39 of 218 replies said "stored").
+ */
 export function explainView(q: VQuestion, chose: string | null): string {
   const lines = [...header(q), `Correct answer: ${answerText(q)}`];
   const picked = chose ? q.options.find((o) => o.label === chose) : undefined;
@@ -103,8 +106,8 @@ export function explainView(q: VQuestion, chose: string | null): string {
   }
   lines.push(
     q.solution && q.solution.trim()
-      ? `Stored solution:\n${q.solution}`
-      : "No worked solution is stored for this question: give the correct answer and say no worked solution is stored."
+      ? `Solution:\n${q.solution}`
+      : "No worked solution for this question: give the correct answer and say there is no worked solution for it yet."
   );
   return lines.join("\n");
 }

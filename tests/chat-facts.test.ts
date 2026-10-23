@@ -404,9 +404,10 @@ describe("buildSystemPrompt", () => {
     expect(buildSystemPrompt(base).toLowerCase()).toContain("earlier messages");
   });
 
-  it("tells V chapter numbers are not stored, so it searches by the chapter's name", () => {
+  it("tells V we keep no chapter numbers, so it searches by the chapter's name", () => {
     const p = buildSystemPrompt(base);
-    expect(p).toMatch(/chapter numbers? (are|is) not stored/i);
+    // Worded without "stored" since 2026-10-23: V repeats our words to students.
+    expect(p).toMatch(/We do not keep chapter numbers/);
     expect(p).toContain("Electric Charges and Fields");
   });
 
@@ -477,7 +478,10 @@ describe("buildSystemPrompt", () => {
     expect(p).toMatch(/do not ask whether they want/i);
     expect(p).toMatch(/get_question/);
     expect(p).toMatch(/explain_question/);
-    expect(p).toMatch(/Explain only from the stored solution/);
+    expect(p).toMatch(/Explain only from the solution it returns/);
+    // 2026-10-23 (owner: "why not just soln?"): V repeated our word "stored" in 39 of 218 replies.
+    expect(p).toMatch(/Call it "the solution" or "the answer", never "stored"/);
+    expect(p).not.toMatch(/stored (solution|answer)/i);
     expect(p).toMatch(/Never work out your own answer/);
     expect(p).toMatch(/tap Report on the question/);
     expect(p).toMatch(/similar_question/);

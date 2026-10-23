@@ -212,3 +212,8 @@ reads everything else from the stored row.
   Read weekly: the share of explanations understood, and of No turned into
   Yes. Case 76a45899 (a No after a real explanation): simpler and the same
   answer in 2 runs.
+- 2026-10-23: V says "the solution" and "the answer", never "stored" (owner:
+  "why not just soln?"). The word was ours, in rule 7 and the tools' labels,
+  and V repeated it in 39 of 218 replies. Every case now fails a reply that
+  says it. Run da51bf83 (explain_question): 55 of 57 clean; the 2 that said it
+  copied it from V's older replies in their memory.

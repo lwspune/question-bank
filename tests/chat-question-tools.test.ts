@@ -83,9 +83,12 @@ describe("hintView", () => {
 });
 
 describe("explainView", () => {
-  it("gives the key and the whole stored solution", () => {
+  it("gives the key and the whole solution, labelled in the student's words", () => {
     const v = explainView(q(), null);
     expect(v).toContain("Correct answer: (B) 3");
+    // The student hears what V reads: "Solution", not our word "stored" (2026-10-23).
+    expect(v).toContain("Solution:");
+    expect(v).not.toMatch(/stored/i);
     expect(v).toContain("Since \\(x > 0\\), \\(x = 3\\).");
   });
 
@@ -96,7 +99,8 @@ describe("explainView", () => {
 
   it("says plainly when no worked solution is stored", () => {
     const v = explainView(q({ solution: null }), null);
-    expect(v).toContain("No worked solution is stored");
+    expect(v).toContain("No worked solution for this question");
+    expect(v).not.toMatch(/stored/i);
     expect(v).toContain("Correct answer: (B) 3");
   });
 
