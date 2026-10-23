@@ -267,6 +267,7 @@ export async function POST(request: NextRequest) {
       tokensOut?: number;
       cacheReadTokens?: number;
       cacheWriteTokens?: number;
+      cacheWrite1hTokens?: number;
       links?: string[];
       toolCalls?: ToolCallLog[];
     } = { text: TYPED_QUESTION_REPLY, source: "fallback" };
@@ -319,6 +320,7 @@ export async function POST(request: NextRequest) {
               tokensOut: result.tokensOut,
               cacheReadTokens: result.cacheReadTokens,
               cacheWriteTokens: result.cacheWriteTokens,
+              cacheWrite1hTokens: result.cacheWrite1hTokens,
               links,
               toolCalls: result.toolCalls,
             };
@@ -334,6 +336,7 @@ export async function POST(request: NextRequest) {
                 tokensOut: result.tokensOut,
                 cacheReadTokens: result.cacheReadTokens,
                 cacheWriteTokens: result.cacheWriteTokens,
+                cacheWrite1hTokens: result.cacheWrite1hTokens,
                 toolCalls: result.toolCalls,
               };
             }

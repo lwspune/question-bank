@@ -111,6 +111,7 @@ describe.skipIf(!HAS_ENV)("chat_interactions: typed questions", () => {
       tokens_out: n,
       cache_read_tokens: n,
       cache_write_tokens: n,
+      cache_write_1h_tokens: n,
       created_at: iso,
     });
     const { error } = await admin
@@ -122,9 +123,44 @@ describe.skipIf(!HAS_ENV)("chat_interactions: typed questions", () => {
     expect(rpcError).toBeNull();
     const days = (data as { day: string }[]).filter((d) => d.day.startsWith("2001-03-0"));
     expect(days).toEqual([
-      { day: "2001-03-04", answers: 1, failed: 0, tokens_in: 1, tokens_out: 1, cache_read_tokens: 1, cache_write_tokens: 1 },
-      { day: "2001-03-05", answers: 1, failed: 1, tokens_in: 110, tokens_out: 110, cache_read_tokens: 110, cache_write_tokens: 110 },
+      { day: "2001-03-04", answers: 1, failed: 0, tokens_in: 1, tokens_out: 1, cache_read_tokens: 1, cache_write_tokens: 1, cache_write_1h_tokens: 1 },
+      {
+        day: "2001-03-05",
+        answers: 1,
+        failed: 1,
+        tokens_in: 110,
+        tokens_out: 110,
+        cache_read_tokens: 110,
+        cache_write_tokens: 110,
+        cache_write_1h_tokens: 110,
+      },
     ]);
+  });
+
+  it("keeps 1-hour cache writes within the writes, and on AI answers only (migration 0180)", async () => {
+    const row = (over: Record<string, unknown>) => ({
+      event_type: "typed_question",
+      message: `${tag} 1h ${JSON.stringify(over)}`,
+      reply: "x",
+      reply_source: "ai",
+      tokens_in: 1,
+      tokens_out: 1,
+      ...over,
+    });
+    const ok = await admin.from("chat_interactions").insert(row({ cache_write_tokens: 2800, cache_write_1h_tokens: 2800 }));
+    const more = await admin.from("chat_interactions").insert(row({ cache_write_tokens: 100, cache_write_1h_tokens: 2800 }));
+    const noWrites = await admin.from("chat_interactions").insert(row({ cache_write_1h_tokens: 5 }));
+    const fallback = await admin.from("chat_interactions").insert({
+      event_type: "typed_question",
+      message: `${tag} 1h fallback`,
+      reply: "x",
+      reply_source: "fallback",
+      cache_write_1h_tokens: 5,
+    });
+    expect(ok.error).toBeNull();
+    expect(more.error).not.toBeNull();
+    expect(noWrites.error).not.toBeNull();
+    expect(fallback.error).not.toBeNull();
   });
 
   it("does not let the public read V's AI usage", async () => {
