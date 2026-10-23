@@ -1926,6 +1926,16 @@ import {
   SSC_INTEREST_NOTES,
   SSC_INTEREST_SLUGS,
 } from "@/app/notes/ssc-cgl-maths/interest/_data";
+import {
+  SSC_TRIANGLES_CHAPTER,
+  SSC_TRIANGLES_NOTES,
+  SSC_TRIANGLES_SLUGS,
+} from "@/app/notes/ssc-cgl-maths/triangles/_data";
+import {
+  SSC_LINEAR_EQUATIONS_CHAPTER,
+  SSC_LINEAR_EQUATIONS_NOTES,
+  SSC_LINEAR_EQUATIONS_SLUGS,
+} from "@/app/notes/ssc-cgl-maths/linear-equations/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -6179,6 +6189,28 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SSC_INTEREST_CHAPTER,
     notes: SSC_INTEREST_NOTES,
     slugs: SSC_INTEREST_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Quantitative Aptitude",
+    subjectRoute: "ssc-cgl-maths",
+    subjectDisplay: "SSC CGL Maths",
+    chapterSlug: "triangles",
+    chipLabel: "Triangles notes",
+    chapter: SSC_TRIANGLES_CHAPTER,
+    notes: SSC_TRIANGLES_NOTES,
+    slugs: SSC_TRIANGLES_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Quantitative Aptitude",
+    subjectRoute: "ssc-cgl-maths",
+    subjectDisplay: "SSC CGL Maths",
+    chapterSlug: "linear-equations",
+    chipLabel: "Linear Equations notes",
+    chapter: SSC_LINEAR_EQUATIONS_CHAPTER,
+    notes: SSC_LINEAR_EQUATIONS_NOTES,
+    slugs: SSC_LINEAR_EQUATIONS_SLUGS,
   },
 ];
 

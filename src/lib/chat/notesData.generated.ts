@@ -431,7 +431,9 @@ export const NOTES_DATA_KEYS: readonly string[] = [
   "ssc-cgl-maths/mensuration-3d",
   "ssc-cgl-maths/mensuration-2d",
   "ssc-cgl-maths/tsd",
-  "ssc-cgl-maths/interest"
+  "ssc-cgl-maths/interest",
+  "ssc-cgl-maths/triangles",
+  "ssc-cgl-maths/linear-equations"
 ];
 
 export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, SubtopicNote>>> = {
@@ -863,4 +865,6 @@ export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, Sub
   "ssc-cgl-maths/mensuration-2d": () => import("@/app/notes/ssc-cgl-maths/mensuration-2d/_data").then((m) => m.SSC_MENSURATION_2D_NOTES),
   "ssc-cgl-maths/tsd": () => import("@/app/notes/ssc-cgl-maths/tsd/_data").then((m) => m.SSC_TSD_NOTES),
   "ssc-cgl-maths/interest": () => import("@/app/notes/ssc-cgl-maths/interest/_data").then((m) => m.SSC_INTEREST_NOTES),
+  "ssc-cgl-maths/triangles": () => import("@/app/notes/ssc-cgl-maths/triangles/_data").then((m) => m.SSC_TRIANGLES_NOTES),
+  "ssc-cgl-maths/linear-equations": () => import("@/app/notes/ssc-cgl-maths/linear-equations/_data").then((m) => m.SSC_LINEAR_EQUATIONS_NOTES),
 };
