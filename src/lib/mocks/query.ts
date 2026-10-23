@@ -9,6 +9,7 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import { translationsFromRows, type Translation } from "@/lib/i18n/bilingual";
 import type { MockAnswerKey, OptionLabel } from "./answers";
 import { getExamByName } from "@/lib/exam/examContext";
+import { readAllPages } from "@/lib/supabase/readAllPages";
 
 export type MockSnapshotQuestion = {
   position: number;
@@ -111,19 +112,32 @@ function mapMock(r: Record<string, unknown>): MockRow {
   };
 }
 
-/** Published mocks for the catalogue, newest sitting first. */
+/**
+ * Published mocks for the catalogue, newest sitting first. Paged: the published
+ * list passed 1000 (1,027 on 2026-10-23) and an unpaged read silently dropped the
+ * last 27, the undated chapter tests and practice papers that sort to the end.
+ */
 export async function getPublishedMocks(db: SupabaseClient): Promise<MockListItem[]> {
-  const { data, error } = await db
-    .from("mock_tests")
-    .select(MOCK_LIST_SELECT)
-    .eq("status", "published")
-    // nullsFirst: false — Postgres puts NULLs FIRST on a DESC order, so
-    // without it every undated row (practice / sectional, migration 0088)
-    // would lead the list ahead of the newest real sitting.
-    .order("pyq_year", { ascending: false, nullsFirst: false })
-    .order("pyq_month", { ascending: true });
-  if (error) throw new Error(`getPublishedMocks: ${error.message}`);
-  return (data ?? []).map((r) => mapMockListItem(r as Record<string, unknown>));
+  let rows: Record<string, unknown>[];
+  try {
+    rows = await readAllPages<Record<string, unknown>>((from, to) =>
+      db
+        .from("mock_tests")
+        .select(MOCK_LIST_SELECT)
+        .eq("status", "published")
+        // nullsFirst: false — Postgres puts NULLs FIRST on a DESC order, so
+        // without it every undated row (practice / sectional, migration 0088)
+        // would lead the list ahead of the newest real sitting.
+        .order("pyq_year", { ascending: false, nullsFirst: false })
+        .order("pyq_month", { ascending: true })
+        // Unique tie-break: paging over a sort with ties can repeat or skip rows.
+        .order("id", { ascending: true })
+        .range(from, to)
+    );
+  } catch (e) {
+    throw new Error(`getPublishedMocks: ${e instanceof Error ? e.message : String(e)}`);
+  }
+  return rows.map((r) => mapMockListItem(r));
 }
 
 /** One published mock by slug (includes the ordered snapshot). Null when absent. */
