@@ -458,7 +458,8 @@ export const NOTES_DATA_KEYS: readonly string[] = [
   "ssc-cgl-reasoning/syllogism",
   "ssc-cgl-reasoning/venn-diagrams",
   "ssc-cgl-reasoning/statements",
-  "ssc-cgl-reasoning/inequalities"
+  "ssc-cgl-reasoning/inequalities",
+  "ssc-cgl-reasoning/dice-cubes"
 ];
 
 export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, SubtopicNote>>> = {
@@ -917,4 +918,5 @@ export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, Sub
   "ssc-cgl-reasoning/venn-diagrams": () => import("@/app/notes/ssc-cgl-reasoning/venn-diagrams/_data").then((m) => m.SSC_VENN_DIAGRAMS_NOTES),
   "ssc-cgl-reasoning/statements": () => import("@/app/notes/ssc-cgl-reasoning/statements/_data").then((m) => m.SSC_STATEMENTS_NOTES),
   "ssc-cgl-reasoning/inequalities": () => import("@/app/notes/ssc-cgl-reasoning/inequalities/_data").then((m) => m.SSC_INEQUALITIES_NOTES),
+  "ssc-cgl-reasoning/dice-cubes": () => import("@/app/notes/ssc-cgl-reasoning/dice-cubes/_data").then((m) => m.SSC_DICE_CUBES_NOTES),
 };

@@ -2061,6 +2061,11 @@ import {
   SSC_INEQUALITIES_NOTES,
   SSC_INEQUALITIES_SLUGS,
 } from "@/app/notes/ssc-cgl-reasoning/inequalities/_data";
+import {
+  SSC_DICE_CUBES_CHAPTER,
+  SSC_DICE_CUBES_NOTES,
+  SSC_DICE_CUBES_SLUGS,
+} from "@/app/notes/ssc-cgl-reasoning/dice-cubes/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -6611,6 +6616,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SSC_INEQUALITIES_CHAPTER,
     notes: SSC_INEQUALITIES_NOTES,
     slugs: SSC_INEQUALITIES_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Reasoning",
+    subjectRoute: "ssc-cgl-reasoning",
+    subjectDisplay: "SSC CGL Reasoning",
+    chapterSlug: "dice-cubes",
+    chipLabel: "Dice and Cubes notes",
+    chapter: SSC_DICE_CUBES_CHAPTER,
+    notes: SSC_DICE_CUBES_NOTES,
+    slugs: SSC_DICE_CUBES_SLUGS,
   },
 ];
 
