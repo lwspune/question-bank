@@ -14,7 +14,12 @@
  * Pure — no I/O. Unit-tested in tests/mock-answers.test.ts.
  */
 
-export type OptionLabel = "A" | "B" | "C" | "D";
+/**
+ * Every letter a mock answer can carry. E since IMAT (five options per
+ * question, migration 0179); a four-option paper simply never offers it.
+ */
+export const MOCK_OPTION_LABELS = ["A", "B", "C", "D", "E"] as const;
+export type OptionLabel = (typeof MOCK_OPTION_LABELS)[number];
 
 /** The correct answer for one question, as stored in the bank. */
 export type MockAnswerKey =

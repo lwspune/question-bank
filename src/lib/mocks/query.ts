@@ -206,7 +206,7 @@ export async function getMockById(db: SupabaseClient, id: string): Promise<MockR
 }
 
 export type MockOptionView = {
-  label: "A" | "B" | "C" | "D";
+  label: OptionLabel;
   text: string;
   imageUrl: string | null;
 };
@@ -267,7 +267,7 @@ export async function loadMockQuestionViews(
     for (const row of (data ?? []) as Record<string, unknown>[]) {
       const opts = ((row.options as Record<string, unknown>[]) ?? [])
         .map((o) => ({
-          label: o.label as "A" | "B" | "C" | "D",
+          label: o.label as OptionLabel,
           text: (o.text as string) ?? "",
           imageUrl: (o.image_url as string | null) ?? null,
         }))
@@ -426,7 +426,7 @@ export async function loadReviewQuestions(
     for (const row of (data ?? []) as Record<string, unknown>[]) {
       const opts = ((row.options as Record<string, unknown>[]) ?? [])
         .map((o) => ({
-          label: o.label as "A" | "B" | "C" | "D",
+          label: o.label as OptionLabel,
           text: (o.text as string) ?? "",
           imageUrl: (o.image_url as string | null) ?? null,
           isCorrect: Boolean(o.is_correct),
