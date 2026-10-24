@@ -271,3 +271,8 @@ One line per batch: date, exam, written, disputed, skipped.
   sentence-order items, the drafting model's weakest kind). Skipped 20.
   Read 35 of 287, rejected 0. The doubled-backslash check raised one false
   alarm on a matrix row break; the check was fixed (environments skipped).
+- 2026-10-24, b09 JIPMAT (324, in-mock first) + NDA (17): written 302.
+  Disputed 8 (key right 5, judgement 3). Skipped 31. Read 35 of 302 and the
+  six the solvers flagged; one triangle count held back (asserted, not
+  shown). Four content defects listed for the owner. In-mock questions now
+  done everywhere except MPSC Mains (Marathi, last by the spec).
