@@ -9,6 +9,9 @@ background is `SOLUTIONS_BACKFILL_SPEC.md`; this file is all you need.
   plus that folder's `style.json` (solutions the bank already has, for the
   house style). A question with `image` set has its picture at that path:
   open it with the Read tool.
+- For a question with `image` set, open the picture BEFORE solving and add
+  `"imageSeen": true` to its draft. A draft for a picture question without
+  it is rejected. If you cannot or did not open it, skip the question.
 - **Never open** `key.json` or any `disputes-*.md` in that folder. The work
   is blind: you solve each question yourself and say what answer you reached.
   A script compares your answer with the key afterwards.

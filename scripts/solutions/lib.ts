@@ -30,7 +30,7 @@ export type BankRow = {
 };
 
 /** One question's draft: a solution and the answer the solver reached, or a skip. */
-export type Draft = { solution?: string; solvedAnswer?: string; skip?: string };
+export type Draft = { solution?: string; solvedAnswer?: string; skip?: string; imageSeen?: boolean };
 
 export type Verdict =
   | { kind: "write"; solution: string }
@@ -87,6 +87,9 @@ export function judge(draft: Draft, row: BankRow): Verdict {
   }
   const problems = solutionProblems(solution);
   if (!row.image_url && solutionCitesFigure(solution)) problems.push("leans on a figure the row does not carry");
+  // One solver answered every picture question from the text alone (b10,
+  // 2026-10-24). The solver must say it opened the picture.
+  if (row.image_url && draft.imageSeen !== true) problems.push('the question has a picture and the draft does not say "imageSeen": true');
   if (row.question_format === "mcq") {
     const last = solution.trim().split("\n").pop() ?? "";
     if (!new RegExp(`\\(${key}\\)`, "i").test(last)) problems.push(`last line does not name option (${key})`);
