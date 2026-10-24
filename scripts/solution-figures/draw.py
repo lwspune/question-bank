@@ -96,16 +96,20 @@ def style_of(s):
 
 
 def origin_axes(ax, xlabel, ylabel):
+    """Axes through the origin; an axis whose zero is off the frame sits at the frame's edge."""
     for side in ("top", "right"):
         ax.spines[side].set_visible(False)
-    ax.spines["left"].set_position("zero")
-    ax.spines["bottom"].set_position("zero")
-    ax.plot(1, 0, ">", color=INK, transform=ax.get_yaxis_transform(), clip_on=False, ms=6)
-    ax.plot(0, 1, "^", color=INK, transform=ax.get_xaxis_transform(), clip_on=False, ms=6)
+    (x0, x1), (y0, y1) = ax.get_xlim(), ax.get_ylim()
+    xpos = 0.0 if min(x0, x1) <= 0 <= max(x0, x1) else min(x0, x1)
+    ypos = 0.0 if min(y0, y1) <= 0 <= max(y0, y1) else min(y0, y1)
+    ax.spines["left"].set_position(("data", xpos))
+    ax.spines["bottom"].set_position(("data", ypos))
+    ax.plot(1, ypos, ">", color=INK, transform=ax.get_yaxis_transform(), clip_on=False, ms=6)
+    ax.plot(xpos, 1, "^", color=INK, transform=ax.get_xaxis_transform(), clip_on=False, ms=6)
     if xlabel:
-        ax.annotate(xlabel, xy=(1, 0), xycoords=("axes fraction", "data"), xytext=(4, -4), textcoords="offset points", ha="left", va="top", fontsize=12)
+        ax.annotate(xlabel, xy=(1, ypos), xycoords=("axes fraction", "data"), xytext=(4, -4), textcoords="offset points", ha="left", va="top", fontsize=12)
     if ylabel:
-        ax.annotate(ylabel, xy=(0, 1), xycoords=("data", "axes fraction"), xytext=(6, 2), textcoords="offset points", ha="left", va="bottom", fontsize=12)
+        ax.annotate(ylabel, xy=(xpos, 1), xycoords=("data", "axes fraction"), xytext=(6, 2), textcoords="offset points", ha="left", va="bottom", fontsize=12)
 
 
 def plot_points(ax, sr, color, ls, lab):
@@ -1265,6 +1269,15 @@ def selftest():
         assert clean_tick(20.0, None) == "20" and clean_tick(2.5, None) == "2.5" and clean_tick(0.0, None) == "", "clean ticks"
         assert clean_tick(-2.0, None) == "−2", "a negative tick carries a real minus sign"
         draw(dict(spec, legend="below", ticks="clean"), out)
+        # A frame that does not include x = 0 (|x - 4| on [3, 5]) keeps its y-axis at the frame's
+        # edge; at "zero" it floated off the plot, and the drawing shrank to make room for it.
+        fig, ax = plt.subplots()
+        ax.set_xlim(2, 6)
+        ax.set_ylim(-0.5, 2)
+        origin_axes(ax, "x", "y")
+        assert ax.spines["left"].get_position() == ("data", 2), "y-axis at the left edge when 0 is off the frame"
+        assert ax.spines["bottom"].get_position() == ("data", 0.0), "x-axis stays at y = 0 when 0 is in the frame"
+        plt.close(fig)
         # Two regions (R1 and R2): each fill can carry its own area, checked on its own.
         two = {"kind": "plot", "fills": [
             {"type": "between", "upper": "sqrt(x)", "lower": "2*x", "domain": [0, 0.25], "area": "1/48"},
