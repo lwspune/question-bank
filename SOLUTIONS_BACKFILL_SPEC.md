@@ -225,3 +225,10 @@ steps (owner considered it 2026-10-24 and chose this backfill instead).
 One line per batch: date, exam, written, disputed, skipped.
 
 - 2026-10-24: spec written; nothing filled yet.
+- 2026-10-24, pilot (3 Haiku agents, 104 exported): written 92 (NEET 34,
+  Foundation 37, IPMAT Indore 21). Disputed 2, both with the key right and the
+  draft wrong (fungi class, reading passage). Settled by the main session 2
+  (one letter mislabelled under correct working, one "stored" reworded).
+  Skipped 10 by the solvers, 1 at export (no key). Main session read 15 of 92
+  before writing and rejected none; one loose wording seen after ("morels and
+  truffles are edible mushrooms": they are sac fungi).
