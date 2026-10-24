@@ -19,20 +19,9 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { EXAM_NAME } from "./config";
-import { literalNewlineFields } from "../../src/lib/upload/textGuard";
+import { solutionTextProblems as problems } from "../lib/solutionText";
 
 const FILE = join(__dirname, "mur-solutions.json");
-
-/** Every reason a solution cannot be published as it stands. */
-function problems(text: string): string[] {
-  const out: string[] = [];
-  if (!text.trim()) out.push("empty");
-  if (/[\t\f\r\x08\x0b]/.test(text)) out.push("control character (an escape eaten on the way)");
-  if (/[–—]/.test(text)) out.push("en or em dash");
-  if ((text.match(/\\\(/g) ?? []).length !== (text.match(/\\\)/g) ?? []).length) out.push("unbalanced \\( \\)");
-  if (literalNewlineFields({ solution: text }).length) out.push("literal \\n");
-  return out;
-}
 
 async function main() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });

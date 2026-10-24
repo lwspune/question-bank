@@ -1,8 +1,11 @@
 # Missing solutions backfill: spec
 
 Owner decision, 2026-10-24: write a worked solution for every question that
-has only an answer. This file is the brief for the session doing the work
-(Claude Sonnet 5.5). Read the repo's `CLAUDE.md` first: its rules apply here
+has only an answer. This file is the brief for the work: an orchestrating
+session (Claude Opus 5.5) builds the pipeline, exports batches, checks drafts
+and alone writes; drafting agents (Claude Haiku 5.5, at most 3 at once) solve
+the questions (owner, 2026-10-24; first written for one Sonnet 5.5 session).
+Read the repo's `CLAUDE.md` first: its rules apply here
 (plan first, test first, one branch per change, `npm run gate`, no push unless
 the owner asks).
 
@@ -21,7 +24,9 @@ on the site, and V's rule ("never do your own working") stays as it is.
 ## 2. What is missing (measured 2026-10-24; re-measure before you start)
 
 **Part A, bank questions** (`questions.solution` empty, `visibility = 'PUBLIC'`):
-10,854 of 116,525. The biggest groups:
+10,854 of 116,525. About 117 of those can never be filled: 116 carry a
+`cancelled_note` (102 MPSC, 4 JIPMAT, 10 UPSC) and one IPMAT Indore MCQ has no
+correct option. So roughly 10,737 are fillable. The biggest groups:
 
 | Exam | Kind | Missing | With a figure |
 |---|---|---|---|
@@ -63,10 +68,18 @@ and self-check examples, 5,410, already have full steps: leave them alone.)
 2. **Never overwrite.** Only fill an empty `solution` (or a rep with no
    steps). A solution someone already wrote stays.
 3. **Skip, and list, these:** questions with a `cancelled_note` (cancelled or
-   withdrawn, no key: the 10 UPSC rows are these), `publish_blocked` rows,
-   PRIVATE rows, and questions whose figure you cannot see. A question with an
-   `image_url` that needs the figure: open the image; if you still cannot read
-   what you need, skip it. Never describe a figure you have not seen.
+   withdrawn, no key: 116 rows), questions with no key at all (an MCQ with no
+   correct option, a numeric row with no `numeric_answer`), `publish_blocked`
+   rows, PRIVATE rows, and questions whose figure you cannot see. A question
+   with an `image_url` that needs the figure: open the image; if you still
+   cannot read what you need, skip it. A question whose text points at a
+   figure it does not carry (about 368 rows mention a figure, diagram or graph
+   and have no image) is exported with `pointsAtFigure: true`: the solver
+   skips it unless the text alone gives everything needed. (Only about a
+   quarter of such hits really depend on the figure, `npm run audit:figures`,
+   so skipping all of them would drop solvable rows.) `apply.ts` rejects any
+   solution that leans on a figure its row does not carry. Never describe a
+   figure you have not seen.
 4. **The solution is not part of a question's identity.** `content_hash`
    (`src/lib/upload/hash.ts`) is built from the text, the options and the key
    (MCQ) or excludes the solution by design (subjective, numeric). Filling it
@@ -75,7 +88,9 @@ and self-check examples, 5,410, already have full steps: leave them alone.)
    solutions. MPSC Mains rows are Marathi language papers stored in Marathi:
    their solutions are written in Marathi. MPSC Prelims rows are English with
    a Marathi translation (`question_translations`, migration 0118): write the
-   English solution only; the translation's solution is out of scope.
+   English solution only; the translation's solution is out of scope. A
+   Marathi reader still sees it: `solutionVersions`
+   (`src/lib/i18n/bilingual.ts`) falls back to the English solution.
 6. **Back up before any bulk write:** `npm run db:backup`.
 
 ## 4. How a solution is written
@@ -97,6 +112,8 @@ exam first).
 - Factual (GK, polity, history) questions: give the fact and why the other
   options are wrong in one line each, no essay.
 - Numeric (IPMAT `numeric`) questions: end with the number the key holds.
+  "Reaches the key" means `matchesNumericAnswer` (`src/lib/mocks/answers.ts`),
+  the rule mocks grade by, so 0.5 and 1/2 are the same answer.
 
 ## 5. Build first (a small pipeline, tested)
 
@@ -107,16 +124,21 @@ pipeline under `scripts/solutions/`, test first:
 1. **`scripts/lib/solutionText.ts`**: the pure checks every solution must pass
    before it is written: empty, control characters (an escape eaten on the
    way), en or em dash, unbalanced `\( \)` / `\[ \]`, literal `\n`
-   (`literalNewlineFields`), the word "stored". Lift these from
-   `scripts/imat/apply-solutions.ts` `problems()` rather than retyping them,
-   and have the IMAT script use the shared one. Spec:
-   `tests/solution-text.test.ts`.
+   (`literalNewlineFields`), the word "stored", and a line break inside a
+   `\( ... \)` zone. That last one is how an escape eaten by JSON shows:
+   `"\neq"` in a JSON string is a line break followed by "eq", and `\nu`,
+   `\nabla`, `\not` the same, none of which is a control character the other
+   check sees. Lift the rest from `scripts/imat/apply-solutions.ts`
+   `problems()` rather than retyping them, and have the IMAT script use the
+   shared one. Spec: `tests/solution-text.test.ts`.
 2. **`scripts/solutions/export.ts`**: writes a batch of questions to solve
    (gitignored, under `generated-papers/solutions/`): id, exam, subject,
    chapter, text, context, options with labels, the key, format,
    `numeric_answer`, `image_url`. The key goes in a SEPARATE file from the
    questions, so the solving step stays blind. Selection by `--exam`,
-   `--limit`, and the priority order of section 7. Read-only.
+   `--limit`, and the priority order of section 7. Questions sharing a passage
+   (`context`) stay in the same slice, so one solver reads them together. The
+   skips of rule 3 are left out and listed. Read-only.
 3. **The drafts**: one JSON per batch,
    `{ "<questionId>": { "solution": "...", "solvedAnswer": "B" } }`, written
    by solving from the questions file alone.
@@ -124,7 +146,9 @@ pipeline under `scripts/solutions/`, test first:
    For each draft: the checks of step 1 pass, `solvedAnswer` equals the key,
    the row is still PUBLIC, not blocked, not cancelled, and its solution is
    still empty (re-read at write time). Anything else is listed and not
-   written. Prints counts: written, disputed, skipped and why.
+   written. An update whose filter matches no row returns no error, so the
+   update selects the row back and only a returned row counts as written.
+   Prints counts: written, disputed, skipped and why.
 
 Part B is a code change, so it needs the owner's OK on a before/after sheet
 (`CLAUDE.md`, UI changes):
@@ -134,7 +158,10 @@ Part B is a code change, so it needs the owner's OK on a before/after sheet
    theirs), and `src/lib/chat/notesItem.ts` gives them to V as the SOLUTION
    of a practice rep. Tests first, then fill the steps chapter by chapter,
    editing the `_data` files with the Edit tool (shell heredocs eat
-   backslashes in LaTeX). Keep `method` where it exists. After each chapter:
+   backslashes in LaTeX). Keep `method` where it exists. Rule 1 applies here
+   too: a rep's `answer` is one we wrote, not an official key, so it can be
+   wrong. Solve blind; a rep whose working does not reach its answer gets no
+   steps and goes on the disputes list. After each chapter:
    `npm run notes:lint`, `npm run notes:latex`, typecheck.
 
 ## 6. Disputes and skips
@@ -157,23 +184,34 @@ on it yourself.
    (`chat_interactions.asked_question_id`), questions in published mocks
    (the JSON list `mock_tests.questions`, where `status = 'published'`; read
    `src/lib/mocks/` for its shape), then the rest of each exam, biggest groups
-   first. For
-   notes, chapters in order of traffic.
+   first. (Measured 2026-10-24: only 2 Ask V questions lack a solution, so for
+   the bank this step is small.) For notes, the items students ask V about
+   first (`chat_interactions.asked_notes_item`), then chapters in order of
+   traffic.
 4. **MPSC Mains (Marathi) last,** as its own batch, after the owner has seen
    five Marathi solutions.
 
-Agents: drafting may be split across at most 3 agents at once (owner's
-standing rule for ingestion work). Agents only draft from the questions file;
-they never see the key file, never write to the database and never touch git.
-The main session checks every batch and alone runs `apply.ts`, commits and
-merges.
+Agents: drafting is done by Haiku 5.5 agents, at most 3 at once (owner's
+standing rule for ingestion work). Drafting by agents is what makes it blind:
+a session that exports both files and drafts itself has the key file in reach.
+Agents only draft from the questions file; they never see the key file, never
+write to the database and never touch git. Only `apply.ts` compares a draft to
+the key. The main session checks every batch and alone runs `apply.ts`,
+commits and merges.
+
+On a four-option MCQ, flawed working can still land on the right letter, so
+"reaches the key" does not prove the working sound. The main session's read
+(section 8) is the check on that; record in the progress log how many read
+solutions it rejected, so the pilot shows how often it happens.
 
 ## 8. Done, per batch
 
 - `apply.ts` dry run clean, then `--apply`; counts recorded in the batch's
   commit message (or the progress log below for DB-only batches).
 - 10% of the batch read by the main session before applying.
-- `npm run audit:text -- <exam>` shows no new hits.
+- `npm run audit:text -- <source substring>` shows no new hits. Its argument
+  is a `source_file` substring, not an exam name: an exam name scans nothing,
+  prints "NOTHING SCANNED" and still exits 0.
 - The SQL of section 2 shows the gap shrinking by what was written.
 
 ## 9. Out of scope
