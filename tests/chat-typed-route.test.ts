@@ -388,6 +388,8 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
         "explain_question",
         "similar_question",
         "find_question",
+        // 2026-10-23: a slip in our solution reaches the team's report queue (migration 0183).
+        "report_solution_issue",
         // V_SPEC.md step 2 (2026-10-22): concepts, under the same switch.
         "explain_concept",
       ]);
