@@ -41,6 +41,8 @@ describe("solutionProblems", () => {
   it("allows a matrix row break, even before the next command", () => {
     expect(solutionProblems("\\[ \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix} \\]")).toEqual([]);
     expect(solutionProblems("\\[ \\begin{array}{c} a \\\\\\hline b \\end{array} \\]")).toEqual([]);
+    // A row break straight before a variable (a real IPMAT draft, 2026-10-24).
+    expect(solutionProblems("\\(A=\\begin{bmatrix}4&q\\\\p&r\\end{bmatrix}\\)")).toEqual([]);
   });
 
   it("flags unbalanced inline and display delimiters", () => {
