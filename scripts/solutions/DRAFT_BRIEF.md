@@ -77,6 +77,9 @@ background is `SOLUTIONS_BACKFILL_SPEC.md`; this file is all you need.
   letter for a wrong reason still teaches the wrong thing (b18: "the base
   joins the 1'C, not its OH" when the slip was "nucleotide" for
   nucleoside). If you are not sure why a statement is wrong, skip.
+- When two options are close enough that you would have to argue for one
+  over the other, skip. Do not pick "the closer one" or "the most
+  appropriate" (b29, b30).
 - Never settle a match or pairing by elimination alone ("item 3 is the one
   left over"). Each pair you state must be true; if one is not, skip.
 - Add no fact the question does not need. Every extra claim is one more
