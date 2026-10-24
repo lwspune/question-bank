@@ -409,3 +409,10 @@ One line per batch: date, exam, written, disputed, skipped.
   rule, द्वितीया and चतुर्थी sharing स, ला, ते), 2 held back. One slice
   file came back missing 4 of 35 ids after a check "by eye"; the brief now
   requires a parser check. Running total 8,202.
+- 2026-10-24, b33 MPSC STI (4) + PSI (236) + State Services (90) Mains,
+  Marathi booklets (330): written 166. Skipped 156. Disputed 8 (key right
+  2, युवती plural and धनुः + वात; defensible 1, क्वचित; doubtful 5,
+  including two keys that call क्रियाविशेषण विकारी). The main session read
+  all 166 matched: 17 fixed before writing (adjective examples for a noun
+  rule, option labels written in Marathi letters, wrong options left
+  unexplained), none held back. Running total 8,368.
