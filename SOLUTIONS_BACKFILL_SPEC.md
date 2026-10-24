@@ -364,3 +364,63 @@ One line per batch: date, exam, written, disputed, skipped.
   written 204. Disputed 0, rejected 0, skipped 4. Read 35 of 204, all
   clean. Every fillable row outside MPSC Mains is now drafted. Running
   total 6,964.
+- 2026-10-24, owner cleared the MPSC Mains ENGLISH booklets (the Marathi
+  half still waits for 5 samples). export.ts gained --subject.
+- 2026-10-24, b27 MPSC ASO Mains, English booklet (338): written 259.
+  Skipped 70 (grammar and vocabulary items where two answers are
+  acceptable English). Disputed 9 (key looks wrong 1: musomania for
+  melomania; doubtful 6; ambiguous 1; key right 1). One solution's false
+  rule ("career has one r") rewritten. Read 40 of 259. Running total 7,223.
+- 2026-10-24, b28 MPSC STI (215) + PSI (110) Mains, English booklets:
+  written 241. Skipped 67. Disputed 17 (key looks wrong 1: "have seen ...
+  a few minutes ago"; doubtful 4; ambiguous 5; Indian-textbook convention
+  2; key right 5, mostly rhetorical-question transformations). Read 40 of
+  241. Running total 7,464.
+- 2026-10-24, b29 MPSC PSI (79) + State Services (100) + Group B Combined
+  (30) Mains, English booklets: written 159. The English half of MPSC
+  Mains is done. Skipped 45. Disputed 5 (key doubtful 1; Indian-textbook
+  convention 3; key right 1). Read 35 of 159. Running total 7,623. Next:
+  the Marathi half, after the owner reviews 9 Marathi sample drafts.
+- 2026-10-24, owner reviewed the Marathi samples and approved the Marathi
+  half, with a Marathi last line ("म्हणून उत्तर (X) ..."). The 7 samples
+  that matched the key were written (7,630).
+- 2026-10-24, b30 MPSC ASO Mains, Marathi booklet (324): written 214.
+  Skipped 99 (the brief now says skip when two options are close).
+  Disputed 11 (keys look wrong 2: पूर्ण भविष्यकाळ, मिश्रवाक्य; unsettled
+  2; key right 7, all technical grammar: प्रयोग, संधी, उच्चारस्थान). The
+  agents are weak on technical Marathi grammar, so the main session read
+  every matched प्रयोग/संधी/विभक्ती/उच्चार solution (25): one wrong
+  mechanism rewritten (नीरव), one held back (misprinted option). Running
+  total 7,844.
+- 2026-10-24, b31 MPSC ASO (220) + STI (104) Mains, Marathi booklets
+  (324): written 178. Skipped 144 (word origins, शब्दसिद्धी and विशेषण
+  sub-types the agents would not settle). Disputed 2 (key right 1, Marathi
+  prefixes on अजाण; doubtful 1, शब्दशक्ती for the clock sentence). The
+  main session read all 179 matched solutions: 22 fixed before writing
+  (wrong glosses such as जलद, loose rules such as द्विगु "first word
+  stressed" and विसर्ग to ओ, a last line off the option text), 1 held
+  back ('आपण'). Running total 8,022.
+- 2026-10-24, b32 MPSC STI (259) + PSI (70) Mains, Marathi booklets
+  (329): written 180. Skipped 137. Disputed 8 (key right 5, the drafts
+  wrong on बाईलखाद्या, उपसर्ग, इत्थंभूत, लक्षणा and a ने-subject भावे
+  sentence; defensible 2; doubtful 1, a जे ... ते sentence keyed "none of
+  these"). The main session read all 182 matched: 15 fixed before writing
+  (वड्याचे तेल glossed wrongly, a सामान्यरूप example that broke its own
+  rule, द्वितीया and चतुर्थी sharing स, ला, ते), 2 held back. One slice
+  file came back missing 4 of 35 ids after a check "by eye"; the brief now
+  requires a parser check. Running total 8,202.
+- 2026-10-24, b33 MPSC STI (4) + PSI (236) + State Services (90) Mains,
+  Marathi booklets (330): written 166. Skipped 156. Disputed 8 (key right
+  2, युवती plural and धनुः + वात; defensible 1, क्वचित; doubtful 5,
+  including two keys that call क्रियाविशेषण विकारी). The main session read
+  all 166 matched: 17 fixed before writing (adjective examples for a noun
+  rule, option labels written in Marathi letters, wrong options left
+  unexplained), none held back. Running total 8,368.
+- 2026-10-24, b34 MPSC State Services (7) + Group B Combined (43) Mains,
+  Marathi booklets (50): written 19. Skipped 30. Disputed 1 (key
+  defensible, शोभणे as सकर्मक). Read all 19 matched: 6 fixed (two called a
+  'झाल्यावर' sentence मिश्र when it is केवल; a word origin; the old
+  धर्मिवाचक/धर्मवाचक division; unexplained misspellings). This ends the
+  new questions in the MPSC Mains Marathi booklets: what is left there is
+  only questions the agents skipped (a second pass is the owner's call).
+  Running total 8,387.
