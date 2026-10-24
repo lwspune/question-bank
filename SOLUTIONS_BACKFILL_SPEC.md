@@ -295,3 +295,11 @@ One line per batch: date, exam, written, disputed, skipped.
 - 2026-10-24, b14 Foundation Course (324, 31 with pictures): written 272.
   Disputed 6 (one key looks wrong: the solutions matching; key right 1;
   judgement 4). Skipped 46. Read 30 of 272, rejected 0. Running total 3,576.
+- 2026-10-24, b15 Foundation Course (324, atoms, electricity, motion):
+  written 282. Disputed 11 (keys look wrong 4, key or figure wrong 1,
+  question defect or ambiguous 4, key right 2). Skipped 31. Read 30 of 282:
+  one `\times` outside maths delimiters, which prints as text; fixed, and
+  `solutionProblems` now refuses it. The same scan found 3 b04 rows already
+  live with it (SUGGESTIONS.md ledger). From slice 07, agents read numbered
+  statements 1 to 4 as options (a) to (d) in order, saying so. Running
+  total 3,858.
