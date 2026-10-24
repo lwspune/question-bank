@@ -17,6 +17,7 @@ import { ABUSE_REPLY } from "./abuse";
 import type { ToolCallLog } from "./anthropic";
 import { chosenIn, isAskVMessage, type AskedCard } from "./askVEvent";
 import { parseNotesRefKey } from "./notesItem";
+import { explainedQuestionId } from "./solutionFigure";
 import { isExplanation } from "./understood";
 
 export type ConversationRow = {
@@ -195,9 +196,12 @@ export type HistoryTurn =
       /** An explanation: asks "Did you understand?" instead of the thumbs (2026-10-23). */
       explained?: boolean;
       understood?: boolean | null;
+      /** The explained question's solution figure, as stored (lib/chat/solutionFigure.ts). */
+      figure?: string;
     };
 
-export function historyTurns(rows: readonly ConversationRow[]): HistoryTurn[] {
+/** `figures`: each explained question's stored solution figure, read by the caller (one query). */
+export function historyTurns(rows: readonly ConversationRow[], figures?: ReadonlyMap<string, string>): HistoryTurn[] {
   const turns: HistoryTurn[] = [];
   for (const r of exchanges(rows)) {
     const target = findReplyTarget(rows, r.replyToId);
@@ -210,6 +214,8 @@ export function historyTurns(rows: readonly ConversationRow[]): HistoryTurn[] {
       ...(asked ? { asked } : {}),
     });
     if (r.replySource === "ai") {
+      const explainedId = figures ? explainedQuestionId(r.toolCalls) : null;
+      const figure = explainedId ? figures?.get(explainedId) : undefined;
       turns.push({
         role: "assistant",
         text: r.reply!,
@@ -219,6 +225,7 @@ export function historyTurns(rows: readonly ConversationRow[]): HistoryTurn[] {
         feedback: r.feedback,
         explained: isExplanation(r.toolCalls, text),
         understood: r.understood ?? null,
+        ...(figure ? { figure } : {}),
       });
     } else if (r.replySource === "followup") {
       turns.push({ role: "assistant", text: r.reply!, links: r.replyLinks ?? [], source: "followup" });
