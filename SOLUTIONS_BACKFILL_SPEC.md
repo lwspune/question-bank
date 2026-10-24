@@ -325,3 +325,9 @@ One line per batch: date, exam, written, disputed, skipped.
   picture opened by the main session). Skipped 37. Read 45 of 279: one
   unbalanced equation rewritten, one figure-to-option mapping line added.
   Running total 4,974.
+- 2026-10-24, b20 NEET (324, physics and physical chemistry, 66 pictures):
+  written 298. Disputed 5 (key looks wrong 1, doubtful 1, key right 2, and
+  one letter slip under right working, relabelled and written). Skipped 20;
+  2 never drafted (a late solver edit dropped them; the brief now asks for a
+  re-check after any late edit). Read 45 of 298, all clean. Running total
+  5,272.
