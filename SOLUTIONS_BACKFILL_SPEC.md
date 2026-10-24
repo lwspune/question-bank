@@ -253,3 +253,7 @@ One line per batch: date, exam, written, disputed, skipped.
   Read 35 of 307: one calendar solution rewritten to work from the
   question's clue, one quoted symbol put in LaTeX. Group B & C first pass
   done: 905 written of 1,351 fillable; the rest are skips and disputes.
+- 2026-10-24, b05 MPSC State Services Prelims (324 exported): written 190.
+  Disputed 12 (key looks wrong 1: Krebs hydration; key doubtful 1; key right
+  4; judgement 6). Skipped 108, 14 undrafted. Read 30 of 190, rejected 0. A
+  solver flagged one duplicated question and one garbled one (disputes file).
