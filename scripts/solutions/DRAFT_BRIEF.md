@@ -35,6 +35,9 @@ background is `SOLUTIONS_BACKFILL_SPEC.md`; this file is all you need.
 - Keep tool output small. Do not print whole files back.
 - After writing, check the file parses and holds every id. If you change it
   after that check, check again: a late edit has dropped ids (b20).
+- Check with a parser, never by eye: `node -e` that JSON.parses your file
+  and the questions file and prints only the count present and missing. A
+  check "by eye" passed a file missing 4 of 35 ids (b32).
 
 ## How to solve
 
