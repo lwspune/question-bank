@@ -17,6 +17,10 @@ export type AskVDetail =
       questionId: string;
       /** The option the student picked on the card, if they answered it. */
       chose: string | null;
+      /** The number they entered on a numeric question (a mock review). 0 is an answer. */
+      entered?: number | null;
+      /** They skipped it in a test (a mock review): V must not ask what they picked. */
+      skipped?: boolean;
       notes?: undefined;
     }
   | { notes: NotesItemRef; chose: null; questionId?: undefined };
@@ -28,16 +32,31 @@ export function isAskVDetail(d: unknown): d is AskVDetail {
 }
 
 /** The `question` field of a /api/chat/typed request for this tap. */
-export function questionForRequest(d: AskVDetail): { id: string; chose: string | null } | { notes: NotesItemRef } {
-  return d.notes ? { notes: d.notes } : { id: d.questionId, chose: d.chose };
+export function questionForRequest(
+  d: AskVDetail
+): { id: string; chose: string | null; entered?: number; skipped?: true } | { notes: NotesItemRef } {
+  if (d.notes) return { notes: d.notes };
+  return {
+    id: d.questionId,
+    chose: d.chose,
+    ...(typeof d.entered === "number" ? { entered: d.entered } : {}),
+    ...(d.skipped ? { skipped: true as const } : {}),
+  };
 }
 
-/** What the window sends for an Ask V tap. */
-export function askVMessage(chose: string | null): string {
-  return chose ? `I picked (${chose}). Explain this question.` : "Explain this question.";
+/**
+ * What the window sends for an Ask V tap. A pick wins over a skip; the
+ * message is the student's own line in the chat, so it says what they did.
+ */
+export function askVMessage(chose: string | null, how: { entered?: number | null; skipped?: boolean } = {}): string {
+  if (chose) return `I picked (${chose}). Explain this question.`;
+  if (typeof how.entered === "number") return `I entered ${how.entered}. Explain this question.`;
+  if (how.skipped) return "I skipped this one. Explain this question.";
+  return "Explain this question.";
 }
 
-const ASK_V_MESSAGE_RE = /^(?:I picked \(([A-E])\)\. )?Explain this question\.$/;
+const ASK_V_MESSAGE_RE =
+  /^(?:I picked \(([A-E])\)\. |I entered (-?\d+(?:\.\d+)?(?:e[+-]?\d+)?)\. |(I skipped this one)\. )?Explain this question\.$/;
 
 /** A message the window sent for an Ask V tap (askVMessage), not one the student typed. */
 export function isAskVMessage(text: string): boolean {
@@ -47,6 +66,12 @@ export function isAskVMessage(text: string): boolean {
 /** The option an Ask V message says the student picked. */
 export function chosenIn(text: string): string | null {
   return ASK_V_MESSAGE_RE.exec(text)?.[1] ?? null;
+}
+
+/** The number an Ask V message says the student entered, and whether it says they skipped. */
+export function answerIn(text: string): { entered: number | null; skipped: boolean } {
+  const m = ASK_V_MESSAGE_RE.exec(text);
+  return { entered: m?.[2] !== undefined ? Number(m[2]) : null, skipped: m?.[3] !== undefined };
 }
 
 /**
@@ -84,6 +109,22 @@ export function cardQuery(c: AskedCard): string {
   if ("questionId" in c) return `id=${c.questionId}`;
   const index = c.notes.item === "practice" ? `&index=${c.notes.index}` : "";
   return `page=${encodeURIComponent(c.page)}&concept=${c.notes.concept}&item=${c.notes.item}${index}`;
+}
+
+/**
+ * What a mock review card tells V about the student's answer: the pick, the
+ * number entered, or that they skipped it. Null is tested explicitly, since a
+ * numeric answer of 0 is an answer.
+ */
+export function askedFromReview(item: {
+  format: "mcq" | "numeric";
+  selectedLabel: string | null;
+  numericResponse: number | null;
+}): { chose: string | null; entered: number | null; skipped: boolean } {
+  if (item.format === "numeric") {
+    return { chose: null, entered: item.numericResponse, skipped: item.numericResponse === null };
+  }
+  return { chose: item.selectedLabel, entered: null, skipped: item.selectedLabel === null };
 }
 
 export function askVAbout(detail: AskVDetail): void {

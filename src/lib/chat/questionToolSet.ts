@@ -88,6 +88,7 @@ export function questionTools(d: QuestionToolDeps): VTool[] {
         properties: {
           ...ID_SCHEMA.properties,
           chose: { type: "string", description: "The option letter the student picked, if they said or it is given at the end." },
+          entered: { type: "number", description: "The number the student entered on a numeric question, if they said or it is given at the end." },
         },
         required: ["question_id"],
       },
@@ -102,7 +103,9 @@ export function questionTools(d: QuestionToolDeps): VTool[] {
         d.onExplained(q.id);
         const raw = (input as { chose?: unknown }).chose;
         const chose = typeof raw === "string" && LETTERS.has(raw.toUpperCase()) ? raw.toUpperCase() : null;
-        return explainView(q, chose);
+        const typed = (input as { entered?: unknown }).entered;
+        const entered = typeof typed === "number" && Number.isFinite(typed) ? typed : null;
+        return explainView(q, chose, entered);
       },
     },
     {

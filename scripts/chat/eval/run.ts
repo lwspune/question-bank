@@ -42,6 +42,7 @@ import { getNotesExamGroups } from "../../../src/lib/notes/notesNav";
 import { readChapterLandingsUncached } from "../../../src/lib/questions/landing";
 import { readSubtopicIndexUncached, withSubtopics } from "../../../src/lib/chat/subtopicIndex";
 import { loadSimilarId, loadVQuestion, searchVQuestions } from "../../../src/lib/chat/questionToolsServer";
+import { answerIn } from "../../../src/lib/chat/askVEvent";
 import { conceptSources } from "../../../src/lib/chat/conceptSearchServer";
 import { parseNotesRefKey } from "../../../src/lib/chat/notesItem";
 import { loadNotesItemBrief } from "../../../src/lib/chat/notesItemServer";
@@ -143,7 +144,7 @@ async function main() {
       page: c.page_path,
       signedIn: c.signed_in,
       profileExamSlugs: c.profile_exams,
-      question: c.asked_question_id ? { id: c.asked_question_id, chose: c.asked_chose } : null,
+      question: c.asked_question_id ? { id: c.asked_question_id, chose: c.asked_chose, ...answerIn(c.message) } : null,
       notesBrief,
       myQuestions: c.signed_in
         ? { now: () => new Date(), loadRecent: async () => [], save: async () => ({ kind: "saved" as const }) }

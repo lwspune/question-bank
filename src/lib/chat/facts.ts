@@ -333,6 +333,18 @@ ${notesBlock}`;
  * fixed instructions are cached (lib/chat/anthropic.ts): anything per-question
  * inside them would make every request a cache miss.
  */
+/**
+ * What the student did with the question they tapped Ask V on. 2026-10-24: a
+ * mock question they had skipped reached V as "not answered yet", and V asked
+ * which option they picked.
+ */
+function answeredLine(q: { chose: string | null; entered?: number | null; skipped?: boolean }): string {
+  if (q.chose) return `They picked (${q.chose}).`;
+  if (typeof q.entered === "number") return `They entered ${q.entered} as their answer.`;
+  if (q.skipped) return "They skipped it in a test, so do not ask which option they picked or what they entered: teach it from the first step.";
+  return "They have not answered it yet.";
+}
+
 export function buildSystemTail(who: {
   page: string | null;
   signedIn: boolean;
@@ -340,8 +352,8 @@ export function buildSystemTail(who: {
   pageInfo?: VPageContext | null;
   /** Display names of the exams on the student's profile (student_profiles.target_exams). */
   profileExams?: readonly string[];
-  /** The question the student tapped Ask V on, and the option they picked, if any. */
-  question?: { id: string; chose: string | null } | null;
+  /** The question the student tapped Ask V on, and what they did with it (picked, entered, skipped). */
+  question?: { id: string; chose: string | null; entered?: number | null; skipped?: boolean } | null;
   /** Or a practice question in the notes, with its stored solution (lib/chat/notesItem.ts notesItemBrief). */
   notesBrief?: string | null;
 }): string {
@@ -349,7 +361,7 @@ export function buildSystemTail(who: {
   if (who.notesBrief) parts.push(who.notesBrief);
   if (who.question) {
     parts.push(
-      `The student tapped Ask V on question ${who.question.id}. ${who.question.chose ? `They picked (${who.question.chose}).` : "They have not answered it yet."}`
+      `The student tapped Ask V on question ${who.question.id}. ${answeredLine(who.question)}`
     );
   }
   if (who.page) parts.push(`The student is on the page ${who.page} (you cannot see what is on it).`);

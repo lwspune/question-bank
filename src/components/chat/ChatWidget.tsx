@@ -12,6 +12,7 @@ import { vPlacement } from "@/lib/chat/placement";
 import { launcherHiddenAfterScroll } from "@/lib/chat/launcherScroll";
 import { panelBox, type PanelBox } from "@/lib/chat/panelBox";
 import { NOT_UNDERSTOOD } from "@/lib/chat/understood";
+import { figureSrc } from "@/lib/chat/solutionFigure";
 import { SESSION_IDLE_MS, quoteSnippet, type HistoryTurn } from "@/lib/chat/conversation";
 import {
   LOCAL_CHAT_KEY,
@@ -103,6 +104,9 @@ function keepable(turns: readonly ChatTurn[]): HistoryTurn[] {
       return rest as HistoryTurn;
     });
 }
+
+/** Builds a stored solution figure's link (lib/chat/solutionFigure.ts figureSrc). */
+const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL ?? "";
 
 const GREETING: ChatTurn = {
   role: "assistant",
@@ -517,7 +521,7 @@ export default function ChatWidget() {
     openChat();
     setAsked(d);
     setReplyingTo(null);
-    void askTyped(askVMessage(d.chose), d);
+    void askTyped(d.notes ? askVMessage(null) : askVMessage(d.chose, d), d);
   };
 
   function startReply(id: string, text: string) {
@@ -569,6 +573,8 @@ export default function ChatWidget() {
         planShown?: boolean;
         /** V explained something: "Did you understand?" goes under the reply (0182). */
         explained?: boolean;
+        /** The explained question's stored solution figure, shown under the reply (2026-10-24). */
+        solutionFigure?: string;
         /** Abuse after the calm line (lib/chat/abuse.ts): V says nothing. */
         silent?: boolean;
         error?: string;
@@ -603,6 +609,7 @@ export default function ChatWidget() {
               reveal: true,
               explained: data.explained === true,
               understood: null,
+              ...(typeof data.solutionFigure === "string" ? { figure: data.solutionFigure } : {}),
             }
           : { role: "assistant", avatar: "laugh", text: data.reply as string, links, card, plan, reveal: true }
       );
@@ -702,6 +709,8 @@ export default function ChatWidget() {
               }
               // What goes under the reply waits until its last line is out.
               const rateable = t.source === "ai" && !!t.id && !t.reveal;
+              // The solution's figure, when the question V explained has one. A saved turn is checked first.
+              const figure = t.reveal ? null : figureSrc(t.figure, SUPABASE_URL);
               return (
                 <div key={n} className={`max-w-[90%] ${MESSAGE_IN}`}>
                   <div className="flex items-end gap-2">
@@ -720,6 +729,19 @@ export default function ChatWidget() {
                       )}
                     </div>
                   </div>
+                  {figure && (
+                    <a
+                      href={figure}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Open the solution's figure full size"
+                      className="ml-9 mt-2 block w-fit max-w-[calc(100%-2.25rem)] rounded-lg border bg-white p-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                    >
+                      {/* A solution figure from our own storage, the same file the solution on the site shows. */}
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={figure} alt="Figure from the solution" loading="lazy" className="max-h-72 max-w-full object-contain" />
+                    </a>
+                  )}
                   {rateable && (
                     <div className="ml-9 mt-1 flex flex-wrap items-center gap-1">
                       {t.explained ? (
