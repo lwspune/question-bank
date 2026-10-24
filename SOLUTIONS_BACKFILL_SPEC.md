@@ -284,3 +284,7 @@ One line per batch: date, exam, written, disputed, skipped.
 - 2026-10-24, b11 Foundation Course (324, 39 with pictures): written 279.
   Disputed 11 (key doubtful 3, judgement 8). Skipped 34. Every picture
   draft carried imageSeen. Read 35 of 279: one misleading line fixed.
+- 2026-10-24, b12 Foundation Course (324, 37 with pictures): written 281.
+  Disputed 6 (key right 2, key doubtful 1, judgement 3). Skipped 37, several
+  for malformed questions (duplicate or empty options) now listed for the
+  owner. Read 30 of 281, rejected 0. Running total: 3,028 written.
