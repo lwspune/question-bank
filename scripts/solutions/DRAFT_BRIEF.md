@@ -29,6 +29,8 @@ background is `SOLUTIONS_BACKFILL_SPEC.md`; this file is all you need.
   `{ "skip": "<why>" }`. A question left out is lost from the count.
 - Nothing else: no database, no git, no other files, no scripts.
 - Keep tool output small. Do not print whole files back.
+- After writing, check the file parses and holds every id. If you change it
+  after that check, check again: a late edit has dropped ids (b20).
 
 ## How to solve
 
