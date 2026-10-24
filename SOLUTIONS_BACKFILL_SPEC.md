@@ -392,3 +392,11 @@ One line per batch: date, exam, written, disputed, skipped.
   every matched प्रयोग/संधी/विभक्ती/उच्चार solution (25): one wrong
   mechanism rewritten (नीरव), one held back (misprinted option). Running
   total 7,844.
+- 2026-10-24, b31 MPSC ASO (220) + STI (104) Mains, Marathi booklets
+  (324): written 178. Skipped 144 (word origins, शब्दसिद्धी and विशेषण
+  sub-types the agents would not settle). Disputed 2 (key right 1, Marathi
+  prefixes on अजाण; doubtful 1, शब्दशक्ती for the clock sentence). The
+  main session read all 179 matched solutions: 22 fixed before writing
+  (wrong glosses such as जलद, loose rules such as द्विगु "first word
+  stressed" and विसर्ग to ओ, a last line off the option text), 1 held
+  back ('आपण'). Running total 8,022.
