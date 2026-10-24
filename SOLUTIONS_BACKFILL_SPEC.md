@@ -331,3 +331,10 @@ One line per batch: date, exam, written, disputed, skipped.
   2 never drafted (a late solver edit dropped them; the brief now asks for a
   re-check after any late edit). Read 45 of 298, all clean. Running total
   5,272.
+- 2026-10-24, b21 NEET (324, kinematics, optics, properties of matter, 73
+  pictures): written 294. Disputed 8 (key looks wrong 1, doubtful 1,
+  question defect or ambiguous 3, key right 3; three pictures opened by the
+  main session, which found one solver had read each of two graphs from the
+  other's question). Rejected 3 (a degree sign in the last line), fixed.
+  One held back (a key pairing x^2 y = c with a rectangular hyperbola).
+  Skipped 21, 1 never drafted. Read 45 of 294. Running total 5,566.
