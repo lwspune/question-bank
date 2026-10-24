@@ -338,3 +338,8 @@ One line per batch: date, exam, written, disputed, skipped.
   other's question). Rejected 3 (a degree sign in the last line), fixed.
   One held back (a key pairing x^2 y = c with a rectangular hyperbola).
   Skipped 21, 1 never drafted. Read 45 of 294. Running total 5,566.
+- 2026-10-24, b22 NEET (324, rotation, work-energy, biotechnology, 40
+  pictures): written 300. Disputed 8 (key looks wrong 1, doubtful 1, text
+  and figure disagree 1, key acceptable 2, key right 3; four pictures
+  opened by the main session). Skipped 16. Read 45 of 300, all clean; the
+  brief now forbids reading a figure to fit an option. Running total 5,866.
