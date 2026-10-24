@@ -92,6 +92,13 @@ background is `SOLUTIONS_BACKFILL_SPEC.md`; this file is all you need.
   in place of "So the answer is (X) ..." (owner, 2026-10-24). Name the
   concept (अभिधा, लक्षणा, व्यंजना; उपमा, रूपक ...), define it in one line,
   show how the line fits, and say why each other option does not.
+- Marathi grammar the drafts have got wrong (b30), to apply exactly:
+  प्रयोग follows what the verb agrees with (कर्ता: कर्तरी; कर्म: कर्मणी, as in
+  'त्याने अभ्यास केला'; neither, neuter default: भावे, as in 'आईवडिलांनी
+  मुलांना वाढविले'). संधी splits use the original form (अंतर् + करण,
+  विपद् + काल; before र a विसर्ग drops and the vowel lengthens: निः + रव =
+  नीरव). ज, च before अ, आ, उ, ओ are the दंततालव्य variants (जमाव); before
+  इ, ए they are तालव्य. 'लिहिला असेल' is पूर्ण भविष्यकाळ.
 
 ## JSON and backslashes (the one trap)
 
