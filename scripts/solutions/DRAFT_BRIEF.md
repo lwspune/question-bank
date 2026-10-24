@@ -99,6 +99,13 @@ background is `SOLUTIONS_BACKFILL_SPEC.md`; this file is all you need.
   विपद् + काल; before र a विसर्ग drops and the vowel lengthens: निः + रव =
   नीरव). ज, च before अ, आ, उ, ओ are the दंततालव्य variants (जमाव); before
   इ, ए they are तालव्य. 'लिहिला असेल' is पूर्ण भविष्यकाळ.
+- More from b31: द्विगु has a number for its first word and its SECOND
+  word is the main one. अः becomes ओ only before a मृदू व्यंजन (मनः + रथ =
+  मनोरथ). In each वर्ग the 1st, 3rd and 5th letters are अल्पप्राण. A म्हण
+  is not a वाक्प्रचार: call it by the name the question uses. सत्यासत्य is
+  "सत्य किंवा असत्य". Never gloss a wrong option's word you are not sure
+  of (b31 called जलद "fast" and अभावित "unavoidable"): say only that it
+  does not mean what the question asks.
 
 ## JSON and backslashes (the one trap)
 
