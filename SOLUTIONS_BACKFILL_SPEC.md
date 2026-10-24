@@ -243,3 +243,8 @@ One line per batch: date, exam, written, disputed, skipped.
   of 252: 2 wording slips (a fund's name, "one more triple bond") fixed before
   writing, plus 3 option symbols put in LaTeX. Paused here at the owner's
   word; b03 is exported (324 questions) but not drafted.
+- 2026-10-24, b03 MPSC Group B & C Prelims (324 exported, resumed after the
+  pause): written 164. Disputed 10 (key right 3, key doubtful 2, judgement 5).
+  Skipped 150 (geography and history of Maharashtra Haiku does not know).
+  One solver left out solvedAnswer: read from its own last lines, all 22
+  matched. Read 30 of 164, rejected 0.
