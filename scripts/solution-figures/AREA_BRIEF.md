@@ -80,6 +80,23 @@ field of the `plot` kind.
   parts of curves that add nothing.
 - **No clutter**: no curve the solution does not use, no explanatory text
   beyond a short region label (`$A_1$`, `$R_2$`) when the question names regions.
+- **Every line drawn carries a label**, including a chord or a boundary
+  `segment` the question names (`chord $AB$`, `$\frac{x}{3}+\frac{y}{2}=1$`).
+- A mark label near the x-axis collides with the tick labels at the default
+  offset: move it with `offset`.
+- Two questions with the same stem but **different** keys (one asks for `a`,
+  the other for `a - b`) get separate figures. A question that is not about an
+  area (nothing to shade) goes in `skipped`.
+- Write files with the Write tool, not shell heredocs: heredocs mangle backslashes.
+- When two named regions **overlap** (one inside the other: S₁ and triangle OPQ,
+  f(0) and f(1)), draw a `stack` of two captioned panels, each fill with its own
+  `area`, rather than overlapping fills.
+- A key of "None of these" gives no area to check: record a dispute.
+- `sqrt(maximum(..., 0))` keeps a curve that ends on its own edge from turning
+  into NaN (and the area check failing). Draw a curve only where it exists:
+  `|y| = 1 - x^2` has no points past `|x| = 1`.
+- A frame need not include the origin: an axis whose zero is off the frame
+  sits at the frame's edge.
 
 ## The area check (mandatory)
 
