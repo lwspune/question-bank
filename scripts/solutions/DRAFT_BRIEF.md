@@ -12,7 +12,9 @@ background is `SOLUTIONS_BACKFILL_SPEC.md`; this file is all you need.
 - For a question with `image` set, open ITS OWN picture (the path in its
   `image` field) BEFORE solving and add `"imageSeen": true` to its draft.
   Neighbouring questions often look alike; reading the next one's graph has
-  happened (b21). A draft for a picture question without
+  happened (b21). Read every value from the figure itself; never pick the
+  reading that makes an option fit. If the figure does not settle a value,
+  skip. A draft for a picture question without
   it is rejected. If you cannot or did not open it, skip the question.
 - **Never open** `key.json` or any `disputes-*.md` in that folder. The work
   is blind: you solve each question yourself and say what answer you reached.
