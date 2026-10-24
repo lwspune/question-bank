@@ -10,6 +10,7 @@
 import { solutionProblems } from "../lib/solutionText";
 import { solutionCitesFigure } from "../lib/figureRefs";
 import { matchesNumericAnswer } from "../../src/lib/mocks/answers";
+import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
 
 export type Format = "mcq" | "numeric" | "subjective";
 
@@ -91,6 +92,32 @@ export function judge(draft: Draft, row: BankRow): Verdict {
     if (!new RegExp(`\\(${key}\\)`, "i").test(last)) problems.push(`last line does not name option (${key})`);
   }
   return problems.length ? { kind: "reject", problems } : { kind: "write", solution };
+}
+
+/**
+ * Mend the two format slips drafting agents keep making, without touching what
+ * they concluded: line breaks escaped twice (a literal backslash-n, restored by
+ * the project's own normalizeNewlines, which leaves LaTeX like \neq alone), and
+ * a missing solvedAnswer (read from the solver's own last line, which it wrote
+ * blind, so the key check stays blind). Anything else is left for `judge`.
+ */
+export function repairDraft(draft: Draft): { draft: Draft; changes: string[] } {
+  if (!draft.solution) return { draft, changes: [] };
+  const out: Draft = { ...draft };
+  const changes: string[] = [];
+  const mended = normalizeNewlines(out.solution as string);
+  if (mended !== out.solution) {
+    out.solution = mended;
+    changes.push("line breaks escaped twice");
+  }
+  if (!out.solvedAnswer?.trim()) {
+    const letter = (out.solution as string).trim().split("\n").pop()?.match(/answer is \(([A-E])\)/i)?.[1];
+    if (letter) {
+      out.solvedAnswer = letter.toUpperCase();
+      changes.push("solvedAnswer from the last line");
+    }
+  }
+  return { draft: out, changes };
 }
 
 /**
