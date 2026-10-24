@@ -49,6 +49,12 @@ async function main() {
     }
   }
 
+  // Exported but never drafted: a solver that left a question out of its file.
+  const exported = readdirSync(dir)
+    .filter((f) => /^questions-.*\.json$/.test(f))
+    .flatMap((f) => (JSON.parse(readFileSync(join(dir, f), "utf8")) as { id: string }[]).map((q) => q.id));
+  const undrafted = exported.filter((id) => !(id in drafts));
+
   const ids = Object.keys(drafts);
   const rows = new Map<string, Row>();
   for (let i = 0; i < ids.length; i += 200) {
@@ -77,6 +83,7 @@ async function main() {
   }
   lines.push("", "## Skipped", "", "| id | exam | why |", "|---|---|---|");
   for (const id of of("skip")) lines.push(`| ${id} | ${exam(id)} | ${(verdicts.get(id) as Extract<Verdict, { kind: "skip" }>).reason} |`);
+  lines.push("", "## Exported, never drafted", "", ...undrafted.map((id) => `- ${id}`));
   lines.push("", "## Disputed working", "");
   for (const id of of("dispute")) lines.push(`### ${id}`, "", rows.get(id)!.text, "", drafts[id].solution ?? "", "");
   writeFileSync(join(dir, `disputes-${batch}.md`), lines.join("\n"));
@@ -85,6 +92,7 @@ async function main() {
   console.log(
     `drafts ${ids.length} · to write ${toWrite.length} · disputed ${of("dispute").length} · rejected ${of("reject").length} · skipped ${of("skip").length}`
   );
+  if (undrafted.length) console.log(`  exported but never drafted: ${undrafted.length}`);
   const skipWhy = new Map<string, number>();
   for (const id of of("skip")) {
     const r = (verdicts.get(id) as Extract<Verdict, { kind: "skip" }>).reason.replace(/^solver: .*/, "solver skipped");
