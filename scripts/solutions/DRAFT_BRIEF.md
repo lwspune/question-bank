@@ -85,7 +85,10 @@ background is `SOLUTIONS_BACKFILL_SPEC.md`; this file is all you need.
 - For a reading passage, point to the sentence of the passage that decides
   it. If no sentence decides it, skip the question.
 - Language follows the question: an English question gets English; a
-  Marathi question gets Marathi.
+  Marathi question gets Marathi, and its last line is "म्हणून उत्तर (X) ..."
+  in place of "So the answer is (X) ..." (owner, 2026-10-24). Name the
+  concept (अभिधा, लक्षणा, व्यंजना; उपमा, रूपक ...), define it in one line,
+  show how the line fits, and say why each other option does not.
 
 ## JSON and backslashes (the one trap)
 
