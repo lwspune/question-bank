@@ -314,3 +314,9 @@ One line per batch: date, exam, written, disputed, skipped.
   the key matched (a misprinted item; a key pairing Nm with erg). One
   solution reworded to agree with its option. Read 30 of 286, rejected 0.
   Running total 4,420.
+- 2026-10-24, b18 Foundation Course (last 29) + NEET (295): written 275.
+  Disputed 17 (keys look wrong 4, doubtful 3, question cut off or
+  incomplete 3, key right 7). NEET carries duplicate questions, some with
+  different keys. Skipped 32. Read 45 of 275 (a larger sample for NEET
+  biology): one right letter on a wrong reason, rewritten, and the brief now
+  asks for the true reason on statements questions. Running total 4,695.
