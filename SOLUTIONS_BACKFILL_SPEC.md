@@ -303,3 +303,7 @@ One line per batch: date, exam, written, disputed, skipped.
   live with it (SUGGESTIONS.md ledger). From slice 07, agents read numbered
   statements 1 to 4 as options (a) to (d) in order, saying so. Running
   total 3,858.
+- 2026-10-24, b16 Foundation Course (324, light, magnetism, gravitation):
+  written 276. Disputed 12 (keys look wrong 2: refraction-angle and fuse
+  wire; key doubtful or question cut off, garbled or ambiguous 7; key right
+  3). Skipped 36. Read 30 of 276, rejected 0. Running total 4,134.
