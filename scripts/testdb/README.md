@@ -50,3 +50,7 @@ Decisions log).
 - **taxonomy.json seeds MHT-CET only** (it derives from the MHT-CET reference
   Excel; other exams were auto-created by uploads in prod). Tests needing
   other real taxonomy belong in the prod-contract list.
+
+## A new worktree needs `.env.test.local`
+
+`.env.test.local` is not in git, so a fresh `git worktree add` has none. Without it every DB test file is `describe.skipIf(!HAS_ENV)` and SKIPS, and the run still passes (2026-10-23: 126 files skipped, gate PASS). The gate (`prepush:quick*`) and CI now run `npm run testdb:require-env` first, which fails with the missing names. Copy `.env.test.local` (and `.env.local`) in from the main checkout.

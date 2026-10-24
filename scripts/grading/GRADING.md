@@ -269,6 +269,13 @@ identifying into the repo, this file or a commit. Ledger entries are general
 
 Newest first. One line each: date, rule or learning, and why.
 
+- 2026-10-22: Where answers are listed one per line (an MCQ column), leave out
+  the ticks and give each row only its score, kept beside the answer it belongs
+  to. On the first sheet graded this way, ticks there sat closer to the next row
+  and read as marks on the wrong answer. A note's `x` is its LEFT edge, and it
+  wraps at the page edge, so a long note placed near the right margin breaks
+  mid-value ("C\n= 75°"): place it further left or shorten it.
+
 - 2026-10-21: Brought over from nda-tracker's homework grading (it was copied
   from this file on 2026-10-12 and then shaped on 60+ hand-ins): marks on the
   pages with a preview the commit refuses to skip, a `cause` and `topic` on

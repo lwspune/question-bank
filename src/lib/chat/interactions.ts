@@ -22,27 +22,34 @@ export type ChatInteractionRow = {
   /** Input read from / written to the prompt cache (migration 0161). */
   cacheReadTokens?: number | null;
   cacheWriteTokens?: number | null;
+  /** The part of the writes kept for an hour (migration 0180). */
+  cacheWrite1hTokens?: number | null;
 };
 
 /** Claude Haiku 5.5 list prices, USD per token (lib/chat/anthropic.ts V_MODEL). */
 const USD_PER_INPUT_TOKEN = 0.1 / 1_000_000;
 const USD_PER_OUTPUT_TOKEN = 0.5 / 1_000_000;
-// Prompt cache (5-minute): a read is a tenth of the input price, a write a quarter extra.
+// Prompt cache: a read is a tenth of the input price; a write a quarter extra for 5 minutes, double for an hour.
 const USD_PER_CACHE_READ_TOKEN = USD_PER_INPUT_TOKEN * 0.1;
 const USD_PER_CACHE_WRITE_TOKEN = USD_PER_INPUT_TOKEN * 1.25;
+const USD_PER_CACHE_WRITE_1H_TOKEN = USD_PER_INPUT_TOKEN * 2;
 
-/** One AI answer's cost at list price. Shared with scripts/chat/replay-typed.ts. */
+/** One AI answer's cost at list price. Shared with V's test runner (scripts/chat/eval/run.ts). */
 export function aiAnswerCostUsd(t: {
   tokensIn?: number | null;
   tokensOut?: number | null;
   cacheReadTokens?: number | null;
   cacheWriteTokens?: number | null;
+  /** Part of `cacheWriteTokens`, not added to it. Rows before migration 0180 have none. */
+  cacheWrite1hTokens?: number | null;
 }): number {
+  const writes1h = t.cacheWrite1hTokens ?? 0;
   return (
     (t.tokensIn ?? 0) * USD_PER_INPUT_TOKEN +
     (t.tokensOut ?? 0) * USD_PER_OUTPUT_TOKEN +
     (t.cacheReadTokens ?? 0) * USD_PER_CACHE_READ_TOKEN +
-    (t.cacheWriteTokens ?? 0) * USD_PER_CACHE_WRITE_TOKEN
+    ((t.cacheWriteTokens ?? 0) - writes1h) * USD_PER_CACHE_WRITE_TOKEN +
+    writes1h * USD_PER_CACHE_WRITE_1H_TOKEN
   );
 }
 
@@ -120,14 +127,39 @@ export type AiUsageDay = {
   tokensOut: number;
   cacheReadTokens: number;
   cacheWriteTokens: number;
+  cacheWrite1hTokens?: number;
 };
 
 export type AiUsageSummary = {
   /** Every day ever: the "AI cost so far" figure. */
   total: { answers: number; failed: number; costUsd: number };
   /** The last DAYS_SHOWN India-time days with any AI use, newest first. */
-  days: (AiUsageDay & { costUsd: number; cachedShare: number | null })[];
+  days: (AiUsageDay & {
+    costUsd: number;
+    cachedShare: number | null;
+    /** Cost over answers, failed ones included (they were billed too). */
+    costPerAnswer: number | null;
+    /** Share of input WRITTEN to the cache: the dear part, which the 1-hour cache exists to shrink. */
+    writeShare: number | null;
+  })[];
+  weeks: CostWeeks;
 };
+
+export type CostWeek = { from: string; to: string; answers: number; costUsd: number; perAnswerUsd: number | null };
+
+export type CostWeeks = {
+  thisWeek: CostWeek;
+  lastWeek: CostWeek;
+  /** Change in cost per answer, 0.1 = 10% dearer; null when a week had too few answers to compare. */
+  change: number | null;
+  /** Cost per answer rose more than COST_RISE_FLAG. */
+  flagged: boolean;
+};
+
+/** A rise in cost per answer above this gets flagged in the weekly review (V_SPEC.md). */
+export const COST_RISE_FLAG = 0.2;
+/** Fewer answers than this in either week and the change is noise (the first AI week had 2). */
+export const MIN_ANSWERS_TO_COMPARE = 20;
 
 const DAYS_SHOWN = 30;
 const IST_OFFSET_MS = 330 * 60 * 1000;
@@ -153,7 +185,43 @@ export function summarizeAiUsage(rows: readonly AiUsageDay[], now: Date): AiUsag
     .sort((a, b) => b.day.localeCompare(a.day))
     .map((r) => {
       const input = r.tokensIn + r.cacheReadTokens + r.cacheWriteTokens;
-      return { ...r, costUsd: aiAnswerCostUsd(r), cachedShare: input > 0 ? r.cacheReadTokens / input : null };
+      const costUsd = aiAnswerCostUsd(r);
+      const billed = r.answers + r.failed;
+      return {
+        ...r,
+        costUsd,
+        cachedShare: input > 0 ? r.cacheReadTokens / input : null,
+        costPerAnswer: billed > 0 ? costUsd / billed : null,
+        writeShare: input > 0 ? r.cacheWriteTokens / input : null,
+      };
     });
-  return { total, days };
+  return { total, days, weeks: compareCostWeeks(rows, now) };
+}
+
+/**
+ * The Thursday cost line: cost per answer over the last 7 full India-time days
+ * against the 7 before. Per answer, not the total: more students asking more
+ * is the point, a dearer answer is what to look into. Today is left out, half done.
+ */
+export function compareCostWeeks(rows: readonly AiUsageDay[], now: Date): CostWeeks {
+  const today = new Date(now.getTime() + IST_OFFSET_MS);
+  const dayAgo = (n: number) => new Date(today.getTime() - n * DAY_MS).toISOString().slice(0, 10);
+  const week = (from: string, to: string): CostWeek => {
+    let answers = 0;
+    let costUsd = 0;
+    for (const r of rows) {
+      if (r.day < from || r.day > to) continue;
+      answers += r.answers + r.failed;
+      costUsd += aiAnswerCostUsd(r);
+    }
+    return { from, to, answers, costUsd, perAnswerUsd: answers > 0 ? costUsd / answers : null };
+  };
+  const thisWeek = week(dayAgo(7), dayAgo(1));
+  const lastWeek = week(dayAgo(14), dayAgo(8));
+  const comparable = thisWeek.answers >= MIN_ANSWERS_TO_COMPARE && lastWeek.answers >= MIN_ANSWERS_TO_COMPARE;
+  const change =
+    comparable && thisWeek.perAnswerUsd !== null && lastWeek.perAnswerUsd
+      ? thisWeek.perAnswerUsd / lastWeek.perAnswerUsd - 1
+      : null;
+  return { thisWeek, lastWeek, change, flagged: change !== null && change > COST_RISE_FLAG };
 }

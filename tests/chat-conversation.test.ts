@@ -165,6 +165,34 @@ describe("modelHistory labels each message with its question", () => {
   });
 });
 
+// 2026-10-23: two Ask V taps on two notes questions sent the identical "Explain this question." with no
+// label (notes questions had no stored id), and V apologised that its first reply "explained a different
+// problem". A notes tap now carries its key (migration 0181), labelled like a bank question's id.
+describe("notes questions in V's memory, the chat history and the dashboard", () => {
+  const PAGE = "/notes/nda-maths/sequence-series/seq-arithmetic-progressions";
+  const rows = [
+    typed("2026-10-23T14:48:33Z", "Explain this question.", "a3 = S3 - S2 = 5.", { id: "n1", pagePath: PAGE, askedNotesItem: "seq-sn-to-an#2" }),
+    typed("2026-10-23T14:50:08Z", "Explain this question.", "Each term is 2k.", { id: "n2", pagePath: PAGE, askedNotesItem: "seq-sigma#0" }),
+  ];
+
+  it("labels each notes tap in V's memory, so two identical messages are two different questions", () => {
+    const h = modelHistory(rows);
+    expect(h[0].content).toBe(`[About notes question ${PAGE}#seq-sn-to-an#2]
+Explain this question.`);
+    expect(h[2].content).toBe(`[About notes question ${PAGE}#seq-sigma#0]
+Explain this question.`);
+  });
+
+  it("rebuilds the notes card above the tap, in the window's history and on the dashboard", () => {
+    expect(historyTurns(rows)[0]).toMatchObject({ asked: { notes: { concept: "seq-sn-to-an", item: "practice", index: 2 }, page: PAGE } });
+    expect(groupConversations(rows)[0].turns[1].asked).toEqual({ notes: { concept: "seq-sigma", item: "practice", index: 0 }, page: PAGE });
+  });
+
+  it("names the notes question in a Reply's context", () => {
+    expect(replyContext(rows[0])).toContain(`about notes question ${PAGE}#seq-sn-to-an#2`);
+  });
+});
+
 describe("replies to an earlier message", () => {
   const Q1 = "11111111-1111-4111-8111-111111111111";
   const rows = [
@@ -264,7 +292,7 @@ describe("historyTurns", () => {
     ];
     expect(historyTurns(rows)).toEqual([
       { role: "user", text: "buy premium" },
-      { role: "assistant", text: "Buy at /pricing.", id: "id-2026-10-15T10:00:00Z", links: ["/pricing"], source: "ai", feedback: 1 },
+      { role: "assistant", text: "Buy at /pricing.", id: "id-2026-10-15T10:00:00Z", links: ["/pricing"], source: "ai", feedback: 1, explained: false, understood: null },
     ]);
   });
 
@@ -304,6 +332,26 @@ describe("groupConversations", () => {
     ]);
     expect(g.find((c) => c.conversationId === CID)?.userId).toBe(UID);
     expect(g.find((c) => c.conversationId === other)?.userId).toBeNull();
+  });
+
+  // 2026-10-23 (owner): the dashboard draws a conversation the way the student saw it.
+  it("gives each turn what the student's window showed: the reply's links, the question card and the quote", () => {
+    const Q1 = "11111111-1111-4111-8111-111111111111";
+    const [conv] = groupConversations([
+      typed("2026-10-21T10:00:00Z", "I picked (B). Explain this question.", "Use the direction cosine rule.", {
+        id: "r1",
+        askedQuestionId: Q1,
+        replyLinks: ["/questions/cbse-12/maths/three-dimensional-geometry"],
+      }),
+      // A follow-up about the same question: the card stays on the tap, as in the window.
+      typed("2026-10-21T10:07:00Z", "why 60?", "Because cos is 1/2.", { id: "r2", askedQuestionId: Q1, replyToId: "r1" }),
+    ]);
+    expect(conv.turns[0]).toMatchObject({
+      links: ["/questions/cbse-12/maths/three-dimensional-geometry"],
+      asked: { questionId: Q1, chose: "B" },
+      quote: null,
+    });
+    expect(conv.turns[1]).toMatchObject({ links: [], asked: null, quote: "Use the direction cosine rule." });
   });
 
   it("leaves out conversations with nothing asked (a bare open)", () => {

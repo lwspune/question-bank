@@ -8,6 +8,9 @@
  *   npx tsx scripts/imat/subtopics.ts --assign               # check scripts/imat/practice/subtopics.json against the DB
  *   npx tsx scripts/imat/subtopics.ts --assign --apply       # write questions.subtopic_id from it
  *
+ * Add `--mur` to --dump / --assign to work on the ministry's papers (2023 on, the
+ * rows not publish_blocked) instead of the twins; their file is mur-subtopics.json.
+ *
  * Idempotent. The assignment file ({ questionId: subtopicSlug }) is the source
  * of record; a re-run rewrites the same values. Pure core: subtopicsLib.ts.
  */
@@ -18,7 +21,14 @@ import { EXAM_NAME } from "./config";
 import { checkAssignments, subtopicPlan, type PlannedSubtopic, type TwinRef } from "./subtopicsLib";
 import { IMAT_NOTES_CHAPTERS } from "../../src/lib/sites/imat/notes/registry";
 
-const ASSIGNMENTS = join(__dirname, "practice", "subtopics.json");
+/** `--mur`: the ministry's papers (2023 on) rather than the twins. */
+const MUR = process.argv.includes("--mur");
+const ASSIGNMENTS = MUR ? join(__dirname, "mur-subtopics.json") : join(__dirname, "practice", "subtopics.json");
+const SET_NAME = MUR ? "IMAT ministry questions" : "IMAT twins";
+
+/** The rows this run files: the twins (practice), or the ministry papers (pyq). Either
+ *  way never a publish_blocked row: the twins are ours and the Cambridge papers are out. */
+const KIND = MUR ? "pyq" : "practice";
 
 type Twin = TwinRef & { text: string; context: string | null; options: { label: string; text: string }[] };
 
@@ -61,7 +71,8 @@ async function loadTwins(client: SupabaseClient): Promise<Twin[]> {
       .from("questions")
       .select("id, text, context, subjects(name), chapters(name), exams!inner(name), options(label, text)")
       .eq("exams.name", EXAM_NAME)
-      .eq("question_kind", "practice")
+      .eq("question_kind", KIND)
+      .is("publish_blocked", null)
       .order("id")
       .range(from, from + 999);
     if (error) throw new Error(`twin read failed: ${error.message}`);
@@ -157,7 +168,7 @@ async function main() {
     if (!sid) throw new Error(`subtopic "${p.name}" is not in the DB yet; run --apply without --assign first`);
     bySubtopic.set(sid, [...(bySubtopic.get(sid) ?? []), t.id]);
   }
-  console.log(`assignments sound: ${twins.length} twins across ${bySubtopic.size} subtopics.`);
+  console.log(`assignments sound: ${twins.length} ${SET_NAME} across ${bySubtopic.size} subtopics.`);
   if (!apply) {
     console.log("[dry run] pass --apply to write them.");
     return;
@@ -172,10 +183,11 @@ async function main() {
     .from("questions")
     .select("id, exams!inner(name)", { count: "exact", head: true })
     .eq("exams.name", EXAM_NAME)
-    .eq("question_kind", "practice")
+    .eq("question_kind", KIND)
+    .is("publish_blocked", null)
     .is("subtopic_id", null);
-  if (count) throw new Error(`${count} IMAT twins still have no subtopic`);
-  console.log(`wrote ${twins.length}; verified no IMAT twin is without a subtopic.`);
+  if (count) throw new Error(`${count} ${SET_NAME} still have no subtopic`);
+  console.log(`wrote ${twins.length}; verified none of the ${SET_NAME} is without a subtopic.`);
 }
 
 main().catch((e) => {

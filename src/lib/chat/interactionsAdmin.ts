@@ -26,6 +26,8 @@ export type RecordChatInteraction = InConversation &
         userId: string | null;
         /** Migration 0174: the question the student had tapped Ask V on, and the earlier message this replies to. */
         askedQuestionId?: string | null;
+        /** Migration 0181: a notes question instead, as notesRefKey (its page is pagePath). */
+        askedNotesItem?: string | null;
         replyToId?: string | null;
         reply?: {
           text: string;
@@ -36,6 +38,8 @@ export type RecordChatInteraction = InConversation &
           /** Migration 0161: input read from / written to the prompt cache. */
           cacheReadTokens?: number;
           cacheWriteTokens?: number;
+          /** Migration 0180: the part of the writes kept for an hour. */
+          cacheWrite1hTokens?: number;
           links?: string[];
           /** Migration 0167: what V searched for this reply. */
           toolCalls?: ToolCallLog[];
@@ -66,6 +70,7 @@ export async function recordChatInteraction(
         tokens_out: spentTokens ? (spentTokens.tokensOut ?? null) : null,
         cache_read_tokens: spentTokens ? (spentTokens.cacheReadTokens ?? null) : null,
         cache_write_tokens: spentTokens ? (spentTokens.cacheWriteTokens ?? null) : null,
+        cache_write_1h_tokens: spentTokens ? (spentTokens.cacheWrite1hTokens ?? null) : null,
         reply_links: reply && reply.links && reply.links.length > 0 ? reply.links.slice(0, 10) : null,
         tool_calls: toolCallsForStorage(reply?.toolCalls),
         event_type: input.eventType,
@@ -77,6 +82,7 @@ export async function recordChatInteraction(
               : null,
         message: input.eventType === "typed_question" ? input.message : null,
         asked_question_id: input.eventType === "typed_question" ? (input.askedQuestionId ?? null) : null,
+        asked_notes_item: input.eventType === "typed_question" ? (input.askedNotesItem ?? null) : null,
         reply_to_id: input.eventType === "typed_question" ? (input.replyToId ?? null) : null,
         user_id: input.userId,
         conversation_id: input.conversationId ?? null,
@@ -134,7 +140,7 @@ export async function listChatInteractions(limit = 5000): Promise<ChatInteractio
 }
 
 const CONVERSATION_COLUMNS =
-  "id, event_type, question_id, created_at, message, reply, reply_source, reply_links, feedback, conversation_id, page_path, user_id, seen_at, tool_calls, asked_question_id, reply_to_id";
+  "id, event_type, question_id, created_at, message, reply, reply_source, reply_links, feedback, conversation_id, page_path, user_id, seen_at, tool_calls, asked_question_id, asked_notes_item, reply_to_id, understood";
 
 type RawConversationRow = {
   id: string;
@@ -152,7 +158,9 @@ type RawConversationRow = {
   seen_at: string | null;
   tool_calls: ToolCallLog[] | null;
   asked_question_id: string | null;
+  asked_notes_item: string | null;
   reply_to_id: string | null;
+  understood: boolean | null;
 };
 
 function toConversationRow(r: RawConversationRow): ConversationRow & { userId: string | null } {
@@ -172,7 +180,9 @@ function toConversationRow(r: RawConversationRow): ConversationRow & { userId: s
     seenAt: r.seen_at,
     toolCalls: r.tool_calls,
     askedQuestionId: r.asked_question_id,
+    askedNotesItem: r.asked_notes_item,
     replyToId: r.reply_to_id,
+    understood: r.understood,
     userId: r.user_id,
   };
 }
@@ -226,6 +236,29 @@ export async function readLatestConversation(
     return [];
   }
   return readConversation(db, data.conversation_id as string);
+}
+
+/**
+ * The student's Yes or No to "Did you understand?" under one AI reply
+ * (migration 0182). Ownership as for the thumbs below. False when no row matched.
+ */
+export async function setReplyUnderstood(
+  db: SupabaseClient,
+  input: { id: string; conversationId: string; userId: string | null; value: boolean }
+): Promise<boolean> {
+  let q = db
+    .from("chat_interactions")
+    .update({ understood: input.value, understood_at: new Date().toISOString() })
+    .eq("id", input.id)
+    .eq("conversation_id", input.conversationId)
+    .eq("reply_source", "ai");
+  q = input.userId ? q.or(`user_id.is.null,user_id.eq.${input.userId}`) : q.is("user_id", null);
+  const { data, error } = await q.select("id");
+  if (error) {
+    console.error("setReplyUnderstood:", error.message);
+    return false;
+  }
+  return (data ?? []).length === 1;
 }
 
 /**
@@ -326,6 +359,8 @@ type AiUsageRow = {
   tokens_out: number;
   cache_read_tokens: number;
   cache_write_tokens: number;
+  // Absent until migration 0180 is applied: 0, as no 1-hour write was stored before it.
+  cache_write_1h_tokens?: number;
 };
 
 /** V's AI use per India-time day, summed in the database (migration 0162): one row a day, no row limit. Null when unreadable. */
@@ -343,5 +378,6 @@ export async function listAiUsageByDay(): Promise<AiUsageDay[] | null> {
     tokensOut: Number(r.tokens_out),
     cacheReadTokens: Number(r.cache_read_tokens),
     cacheWriteTokens: Number(r.cache_write_tokens),
+    cacheWrite1hTokens: Number(r.cache_write_1h_tokens ?? 0),
   }));
 }

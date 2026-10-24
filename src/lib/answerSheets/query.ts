@@ -1,7 +1,13 @@
 /**
- * Loaders for /me/answer-sheets (migration 0153). They take the STUDENT'S
- * client: row-level security is what limits them to the student's own sheets,
- * so a wrong id simply finds nothing.
+ * Loaders for /me/answer-sheets (migration 0153). The `Own` loaders take the
+ * STUDENT'S client: row-level security is what limits them to the student's
+ * own sheets, so a wrong id simply finds nothing.
+ *
+ * The `Student` loaders are for a superadmin reading one student's sheets
+ * (the performance page and its report, 2026-10-22). The tables only let a
+ * student read their own rows, so these take the SERVICE-ROLE client and
+ * filter by the student's id themselves; the caller must have checked for a
+ * superadmin first.
  */
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { slugify } from "@/lib/board/query";
@@ -98,12 +104,18 @@ function toSubmission(r: RawSubmission): OwnSubmission {
 
 /** The student's sent sheets, newest first (an unfinished upload is not listed). */
 export async function listOwnSubmissions(db: SupabaseClient): Promise<OwnSubmission[]> {
-  const { data, error } = await db
-    .from("answer_submissions")
-    .select(COLUMNS)
-    .neq("status", "uploading")
-    .order("created_at", { ascending: false })
-    .limit(200);
+  return listSubmissions(db, null);
+}
+
+/** One student's sent sheets, for a superadmin. `admin` is the service-role client. */
+export async function listStudentSubmissions(admin: SupabaseClient, userId: string): Promise<OwnSubmission[]> {
+  return listSubmissions(admin, userId);
+}
+
+async function listSubmissions(db: SupabaseClient, userId: string | null): Promise<OwnSubmission[]> {
+  let q = db.from("answer_submissions").select(COLUMNS).neq("status", "uploading");
+  if (userId) q = q.eq("user_id", userId);
+  const { data, error } = await q.order("created_at", { ascending: false }).limit(200);
   if (error) throw new Error(`answer sheets: ${error.message}`);
   return ((data ?? []) as unknown as RawSubmission[]).map(toSubmission);
 }
@@ -117,7 +129,21 @@ export type OwnReport = OwnSubmission & {
 };
 
 export async function getOwnReport(db: SupabaseClient, id: string): Promise<OwnReport | null> {
-  const { data, error } = await db.from("answer_submissions").select(COLUMNS).eq("id", id).maybeSingle();
+  return loadReport(db, id, null);
+}
+
+/**
+ * One student's sheet, for a superadmin. Found by the sheet id AND the
+ * student's id, so a sheet id under the wrong student's URL finds nothing.
+ */
+export async function getStudentReport(admin: SupabaseClient, userId: string, id: string): Promise<OwnReport | null> {
+  return loadReport(admin, id, userId);
+}
+
+async function loadReport(db: SupabaseClient, id: string, userId: string | null): Promise<OwnReport | null> {
+  let q = db.from("answer_submissions").select(COLUMNS).eq("id", id);
+  if (userId) q = q.eq("user_id", userId);
+  const { data, error } = await q.maybeSingle();
   if (error) throw new Error(`answer sheet: ${error.message}`);
   if (!data) return null;
   const sub = toSubmission(data as unknown as RawSubmission);

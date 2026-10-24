@@ -72,11 +72,20 @@ export function stampNote(existing: string | null, hasAnswerKey: boolean): strin
  * paper's blindness was ordering only, and the key, not a confidence, is what
  * the answer rests on.
  */
-export function solutionTail(o: { hasAnswerKey: boolean; confidence: string; agreed: boolean }): string {
+export function solutionTail(o: { hasAnswerKey: boolean; confidence: string; agreed: boolean; corrected?: boolean }): string {
   if (o.hasAnswerKey) {
     return (
       "[Answer from the official UPSC provisional answer key for this sitting. " +
       "The explanation was written blind before the key was opened and checked against it.]"
+    );
+  }
+  // A key changed on review (keyFix.ts): the two passes agreed on the OLD key, so
+  // naming their agreement or confidence would vouch for an answer they rejected.
+  if (o.corrected) {
+    return (
+      `[Derived answer — this booklet carries no official key. ` +
+      `The blind derivations chose another option; this answer was corrected on review. ` +
+      `Verify before relying on it.]`
     );
   }
   return (

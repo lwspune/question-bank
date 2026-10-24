@@ -51,8 +51,10 @@ const BY_NAME: Map<string, SubtopicLocation> = new Map();
 // pages; JEE reuses MHT-CET and NDA names the same way ("Conic Sections"), and
 // AFCAT (2026-10-22) reuses NDA and CDS names (Statistics, Probability, ...). The
 // older NDA/MHT-CET name collisions keep their existing last-write-wins winner.
+// SSC CGL's Maths chapters carry CDS's names (its catalog is copied from CDS),
+// so SSC yields too.
 const BY_CHAPTER: Map<string, ChapterLocation> = new Map();
-const YIELDING_EXAMS = new Set(["CDS", "JEE Mains", "AFCAT"]);
+const YIELDING_EXAMS = new Set(["CDS", "JEE Mains", "SPI", "SSC CGL", "AFCAT"]);
 const yieldsName = (examName: string, taken: boolean) => YIELDING_EXAMS.has(examName) && taken;
 const nameKey = (chapterName: string, subtopicName: string) =>
   `${chapterName}\u0000${subtopicName}`;

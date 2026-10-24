@@ -111,6 +111,7 @@ describe.skipIf(!HAS_ENV)("chat_interactions: typed questions", () => {
       tokens_out: n,
       cache_read_tokens: n,
       cache_write_tokens: n,
+      cache_write_1h_tokens: n,
       created_at: iso,
     });
     const { error } = await admin
@@ -122,9 +123,86 @@ describe.skipIf(!HAS_ENV)("chat_interactions: typed questions", () => {
     expect(rpcError).toBeNull();
     const days = (data as { day: string }[]).filter((d) => d.day.startsWith("2001-03-0"));
     expect(days).toEqual([
-      { day: "2001-03-04", answers: 1, failed: 0, tokens_in: 1, tokens_out: 1, cache_read_tokens: 1, cache_write_tokens: 1 },
-      { day: "2001-03-05", answers: 1, failed: 1, tokens_in: 110, tokens_out: 110, cache_read_tokens: 110, cache_write_tokens: 110 },
+      { day: "2001-03-04", answers: 1, failed: 0, tokens_in: 1, tokens_out: 1, cache_read_tokens: 1, cache_write_tokens: 1, cache_write_1h_tokens: 1 },
+      {
+        day: "2001-03-05",
+        answers: 1,
+        failed: 1,
+        tokens_in: 110,
+        tokens_out: 110,
+        cache_read_tokens: 110,
+        cache_write_tokens: 110,
+        cache_write_1h_tokens: 110,
+      },
     ]);
+  });
+
+  it("keeps 'Did you understand?' only on an AI reply, and always with when it was answered (migration 0182)", async () => {
+    const row = (over: Record<string, unknown>) => ({
+      event_type: "typed_question",
+      message: `${tag} und ${JSON.stringify(over)}`,
+      reply: "x",
+      reply_source: "ai",
+      tokens_in: 1,
+      tokens_out: 1,
+      ...over,
+    });
+    const at = new Date().toISOString();
+    const ok = await admin.from("chat_interactions").insert(row({ understood: true, understood_at: at }));
+    const noTime = await admin.from("chat_interactions").insert(row({ understood: false }));
+    const onFallback = await admin
+      .from("chat_interactions")
+      .insert(row({ reply_source: "fallback", tokens_in: null, tokens_out: null, understood: true, understood_at: at }));
+    expect(ok.error).toBeNull();
+    expect(noTime.error).not.toBeNull();
+    expect(onFallback.error).not.toBeNull();
+  });
+
+  it("takes a notes question's key only well formed, with its page, and never beside a bank question (migration 0181)", async () => {
+    const row = (over: Record<string, unknown>) => ({
+      event_type: "typed_question",
+      message: `${tag} notes ${JSON.stringify(over)}`,
+      page_path: "/notes/nda-maths/sequence-series/seq-arithmetic-progressions",
+      ...over,
+    });
+    const ok = await admin.from("chat_interactions").insert(row({ asked_notes_item: "seq-sigma#0" }));
+    const self = await admin.from("chat_interactions").insert(row({ asked_notes_item: "seq-sigma#self" }));
+    const malformed = await admin.from("chat_interactions").insert(row({ asked_notes_item: "Seq Sigma" }));
+    const both = await admin
+      .from("chat_interactions")
+      .insert(row({ asked_notes_item: "seq-sigma#0", asked_question_id: "11111111-1111-4111-8111-111111111111" }));
+    const noPage = await admin.from("chat_interactions").insert(row({ asked_notes_item: "seq-sigma#0", page_path: null }));
+    expect(ok.error).toBeNull();
+    expect(self.error).toBeNull();
+    expect(malformed.error).not.toBeNull();
+    expect(both.error).not.toBeNull();
+    expect(noPage.error).not.toBeNull();
+  });
+
+  it("keeps 1-hour cache writes within the writes, and on AI answers only (migration 0180)", async () => {
+    const row = (over: Record<string, unknown>) => ({
+      event_type: "typed_question",
+      message: `${tag} 1h ${JSON.stringify(over)}`,
+      reply: "x",
+      reply_source: "ai",
+      tokens_in: 1,
+      tokens_out: 1,
+      ...over,
+    });
+    const ok = await admin.from("chat_interactions").insert(row({ cache_write_tokens: 2800, cache_write_1h_tokens: 2800 }));
+    const more = await admin.from("chat_interactions").insert(row({ cache_write_tokens: 100, cache_write_1h_tokens: 2800 }));
+    const noWrites = await admin.from("chat_interactions").insert(row({ cache_write_1h_tokens: 5 }));
+    const fallback = await admin.from("chat_interactions").insert({
+      event_type: "typed_question",
+      message: `${tag} 1h fallback`,
+      reply: "x",
+      reply_source: "fallback",
+      cache_write_1h_tokens: 5,
+    });
+    expect(ok.error).toBeNull();
+    expect(more.error).not.toBeNull();
+    expect(noWrites.error).not.toBeNull();
+    expect(fallback.error).not.toBeNull();
   });
 
   it("does not let the public read V's AI usage", async () => {

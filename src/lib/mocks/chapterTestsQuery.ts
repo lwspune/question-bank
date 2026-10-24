@@ -19,6 +19,7 @@
  * the next deploy. A failed read returns no tests, so the pages fall back to
  * the past-paper link instead of failing to render.
  */
+import { readAllPages } from "@/lib/supabase/readAllPages";
 import { unstable_cache } from "next/cache";
 import { singleFlight } from "@/lib/cache/singleFlight";
 import { buildFailureMemoMs } from "@/lib/cache/buildPhase";
@@ -39,13 +40,20 @@ const ID_CHUNK = 200;
 export async function readChapterTestEntries(
   db: SupabaseClient
 ): Promise<[string, ChapterTest][]> {
-  const { data: mocks, error } = await db
-    .from("mock_tests")
-    .select("slug, title, total_questions, duration_secs, questions")
-    .eq("status", "published")
-    .eq("scope", "sectional");
-  if (error) {
-    console.error("listChapterTests: mock_tests", error.message);
+  // Paged: 573 chapter tests on 2026-10-23, and the cap is silent at 1000.
+  let mocks: Record<string, unknown>[];
+  try {
+    mocks = await readAllPages<Record<string, unknown>>((from, to) =>
+      db
+        .from("mock_tests")
+        .select("slug, title, total_questions, duration_secs, questions")
+        .eq("status", "published")
+        .eq("scope", "sectional")
+        .order("id", { ascending: true })
+        .range(from, to)
+    );
+  } catch (e) {
+    console.error("listChapterTests: mock_tests", e instanceof Error ? e.message : e);
     return [];
   }
 

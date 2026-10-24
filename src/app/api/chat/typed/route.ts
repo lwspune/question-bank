@@ -46,9 +46,7 @@ import { abuseReply, isAbusive } from "@/lib/chat/abuse";
 import { TYPED_QUESTION_REPLY } from "@/lib/chat/typed";
 import { personBucket } from "@/lib/chat/settings";
 import { readChatSettings, countAiAnswersToday } from "@/lib/chat/settingsAdmin";
-import { loadVContext } from "@/lib/chat/context";
-import { askV } from "@/lib/chat/anthropic";
-import { allowedReplyLinks, plainLinks } from "@/lib/chat/replyLinks";
+import { answerWithV, type VContextOptions } from "@/lib/chat/answer";
 import {
   cleanPagePath,
   currentSession,
@@ -57,7 +55,6 @@ import {
   modelHistory,
   replyContext,
 } from "@/lib/chat/conversation";
-import { isAskVMessage } from "@/lib/chat/askVEvent";
 import { createProgressMemo } from "@/lib/chat/progress";
 import { getOwnPerformance } from "@/lib/performance/service";
 import { buildPerformance } from "@/lib/performance/compute";
@@ -73,11 +70,14 @@ import {
 } from "@/lib/chat/anonLimit";
 import type { ToolCallLog } from "@/lib/chat/anthropic";
 import { parseAskedQuestion } from "@/lib/chat/questionTools";
-import { parseNotesItemRef } from "@/lib/chat/notesItem";
+import { notesPageOf, notesRefKey, parseNotesItemRef } from "@/lib/chat/notesItem";
+import { isExplanation } from "@/lib/chat/understood";
+import { fileVSolutionReport } from "@/lib/reports/fileVReport";
 import { loadNotesItemBrief } from "@/lib/chat/notesItemServer";
 import { buildMyQuestionDeps } from "@/lib/chat/myQuestionsServer";
 import type { QuestionToolDeps } from "@/lib/chat/questionToolSet";
 import { loadSimilarId, loadVQuestion, searchVQuestions } from "@/lib/chat/questionToolsServer";
+import { conceptSources } from "@/lib/chat/conceptSearchServer";
 import { revealedToday, spendVReveal } from "@/lib/chat/questionReveal";
 import { weakFromPerformance, type PlanDeps } from "@/lib/chat/weekPlan";
 import { loadCurrentPlan, loadPlanActivity, saveStudyPlan } from "@/lib/chat/weekPlanServer";
@@ -109,7 +109,7 @@ function ownProgress(userId: string): Promise<Performance | null> {
  */
 function buildQuestionToolDeps(
   userId: string | null,
-  out: { onSimilar: (id: string) => void; onMatch: (id: string) => void; similarAfterExplain: boolean }
+  out: { onSimilar: (id: string) => void; onMatch: (id: string) => void }
 ): QuestionToolDeps {
   const anon = createSupabaseAnonClient();
   return {
@@ -121,7 +121,8 @@ function buildQuestionToolDeps(
     onSimilar: out.onSimilar,
     onMatch: out.onMatch,
     onExplained: () => {},
-    similarAfterExplain: out.similarAfterExplain,
+    // A slip V spots in our solution reaches the team's report queue (migration 0183, 2026-10-23).
+    reportSolution: (id, issue) => fileVSolutionReport(createSupabaseAdminClient(), id, issue),
   };
 }
 
@@ -270,6 +271,7 @@ export async function POST(request: NextRequest) {
       tokensOut?: number;
       cacheReadTokens?: number;
       cacheWriteTokens?: number;
+      cacheWrite1hTokens?: number;
       links?: string[];
       toolCalls?: ToolCallLog[];
     } = { text: TYPED_QUESTION_REPLY, source: "fallback" };
@@ -282,7 +284,7 @@ export async function POST(request: NextRequest) {
           const history = modelHistory(session);
           const ownId = userId;
           const notesBrief = askedNotes ? await loadNotesItemBrief(pagePath, askedNotes) : null;
-          const ctx = await loadVContext(createSupabaseAnonClient(), {
+          const context: VContextOptions = {
             page: pagePath,
             signedIn: ownId !== null,
             profileExamSlugs: ownId ? await readProfileExams(ownId) : [],
@@ -293,28 +295,28 @@ export async function POST(request: NextRequest) {
               ? buildQuestionToolDeps(ownId, {
                   onSimilar: (id) => (similarQuestionId = id),
                   onMatch: (id) => (matchQuestionId = id),
-                  // Only a tap brings a similar-question card, so a follow-up does not add another.
-                  similarAfterExplain: asked !== null && isAskVMessage(message),
                 })
               : null,
+            // Concepts read PUBLIC model answers with the anon client, and the notes (V_SPEC.md step 2).
+            concepts: settings.explainEnabled ? conceptSources(createSupabaseAnonClient()) : null,
             // The student's own login does the reading (get_own_performance): no id is passed to the database.
             loadOwnProgress: ownId ? () => ownProgress(ownId) : undefined,
             planEnabled: settings.planEnabled,
             plan: ownId && settings.planEnabled ? buildPlanDeps(ownId, () => ownProgress(ownId), () => (planShown = true)) : null,
             // Same login, not remembered: "today" should move between two questions.
             loadOwnPractice: ownId ? () => getOwnPracticeCounts(createSupabaseServerClient()) : undefined,
-          });
-          const result = await askV({
-            system: ctx.system,
-            systemTail: ctx.systemTail,
+          };
+          const result = await answerWithV({
+            anon: createSupabaseAnonClient(),
+            context,
             // The message is stored as typed; V alone is told what it replies to.
-            message: replyTarget ? `${replyContext(replyTarget)}\n\n${message}` : message,
-            tools: ctx.tools,
+            message,
+            replyTo: replyTarget ? replyContext(replyTarget) : null,
             history,
           });
           if (result.ok) {
-            reply = plainLinks(result.reply);
-            links = allowedReplyLinks(reply, ctx.allowedPaths);
+            reply = result.reply;
+            links = result.links;
             recorded = {
               text: reply,
               source: "ai",
@@ -322,6 +324,7 @@ export async function POST(request: NextRequest) {
               tokensOut: result.tokensOut,
               cacheReadTokens: result.cacheReadTokens,
               cacheWriteTokens: result.cacheWriteTokens,
+              cacheWrite1hTokens: result.cacheWrite1hTokens,
               links,
               toolCalls: result.toolCalls,
             };
@@ -337,6 +340,7 @@ export async function POST(request: NextRequest) {
                 tokensOut: result.tokensOut,
                 cacheReadTokens: result.cacheReadTokens,
                 cacheWriteTokens: result.cacheWriteTokens,
+                cacheWrite1hTokens: result.cacheWrite1hTokens,
                 toolCalls: result.toolCalls,
               };
             }
@@ -356,6 +360,8 @@ export async function POST(request: NextRequest) {
       conversationId,
       pagePath,
       askedQuestionId: asked?.id ?? null,
+      // A notes question has no id: its key on its own page (0181), so V's memory can label the tap.
+      askedNotesItem: !asked && askedNotes && notesPageOf(pagePath) ? notesRefKey(askedNotes) : null,
       replyToId: replyTarget?.id ?? null,
     });
 
@@ -366,6 +372,8 @@ export async function POST(request: NextRequest) {
             ...(similarQuestionId ? { similarQuestionId } : {}),
             ...(matchQuestionId ? { matchQuestionId } : {}),
             ...(planShown ? { planShown: true } : {}),
+            // An explanation asks "Did you understand?" under it (0182).
+            explained: isExplanation(recorded.toolCalls, message),
           }
         : {};
     if (userId !== null) {

@@ -86,6 +86,11 @@ describe("extractVisibleStrings", () => {
     expect(texts(src, "a.ts")).toEqual(["Shown name"]);
   });
 
+  it("skips chapterName and subtopicName, which must equal the database's names", () => {
+    const src = 'const c = { chapterName: "Indian Geography — Physical Features", subtopicName: "A — B", title: "Shown" };';
+    expect(texts(src, "a.ts")).toEqual(["Shown"]);
+  });
+
   it("skips console calls and string literal TYPES", () => {
     const src = ['console.error("boom — failed");', 'type K = "a — b" | "c";', 'const a = "kept";'].join("\n");
     expect(texts(src, "a.ts")).toEqual(["kept"]);

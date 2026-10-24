@@ -146,6 +146,15 @@ export type ExamEntry = {
    */
   pastPaperSolutions?: boolean;
   /**
+   * How many of the exam's PUBLIC questions carry a worked solution, when not
+   * nearly all: "some" (25-90%) or "none" (under 25%). Absent means "all" (90%+).
+   * Decides whether its exam page and chapter landing pages promise "worked
+   * solutions" (lib/exam/solutionClaim.ts). Declared, because counting means
+   * reading the whole bank per request; tests/solution-coverage-registry.test.ts
+   * re-measures it daily in both directions. Measured 2026-10-23.
+   */
+  solutionCoverage?: "some" | "none";
+  /**
    * This exam has NO PUBLIC questions — it is ingested-but-private, or not yet
    * ingested at all. It is kept in the registry (so its routes, flags and
    * grouping are declared in one place and the launch is a one-line edit), but
@@ -285,6 +294,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     tier: "school",
     displayName: "Foundation",
     examName: "Foundation Course", // must match the `exams` DB row exactly
+    solutionCoverage: "none", // 7% solved (2026-10-23)
     guidesPath: null, // no /guide subtree — falls back to the index
     notesPath: "/notes/foundation-course", // exam hub: "coming soon" until notes ship
     practiceOnly: true, // worksheet-only corpus → /browse defaults to the Practice view
@@ -295,6 +305,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     tier: "senior",
     displayName: "NEET",
     examName: "NEET", // must match the `exams` DB row exactly
+    solutionCoverage: "some", // 47% solved (2026-10-23)
     guidesPath: null, // no /guide subtree yet — falls back to the index
     notesPath: "/notes/neet", // exam hub: "coming soon" until NEET notes ship
     hasMocks: true, // 8 NEET (UG) mocks (2021-2026 + 2 Re-NEET) published at /mock
@@ -310,11 +321,19 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     examName: "IMAT", // must match the `exams` DB row exactly
     guidesPath: null,
     notesPath: "/notes/imat", // 46 chapters, its own registry (lib/sites/imat/notes)
-    // What is PUBLIC is the 681 original twins alone: the 240 ministry papers
-    // (2023-2026) wait on the copyright opinion (NICHE_SITES_SPEC.md D1) and
-    // 2011-2022 are publish_blocked forever. Drop the flag when the ministry
-    // papers go PUBLIC.
+    // PUBLIC: the 681 original twins and, since the owner settled D1
+    // (2026-10-23), the 240 ministry questions of 2023-2026; 2011-2022 are
+    // publish_blocked forever. `practiceOnly` is KEPT although PYQs now exist,
+    // the cbse-10 call: landing pages count the default kind, a chapter needs 15
+    // (MIN_QUESTIONS_FOR_LANDING), and 240 PYQs over 45 chapters clear it in 3,
+    // so dropping the flag would remove 17 of 20 live chapter landing pages
+    // (measured 2026-10-23). The PYQs are reached through the mocks and the
+    // /browse PYQ toggle. Revisit when chapters hold 15+ PYQs.
     practiceOnly: true,
+    hasMocks: true, // 4 past papers (2023-2026) + 7 practice papers, 2026-10-23
+    // Worked solutions on all 240 ministry questions since 2026-10-23 (the ministry
+    // publishes answers only; ours were written blind and checked against its key).
+    pastPaperSolutions: true,
   },
   {
     slug: "mh-hsc-12",
@@ -584,6 +603,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     tier: "senior",
     displayName: "IPMAT Indore",
     examName: "IPMAT Indore", // must match the `exams` DB row exactly
+    solutionCoverage: "none", // answers only (2026-10-23)
     family: "IPMAT",
     familyLabel: "Indore",
     familyAxis: "Institute", // the picker chooses between IIMs, not classes
@@ -603,6 +623,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     tier: "senior",
     displayName: "IPMAT Rohtak",
     examName: "IPMAT Rohtak", // must match the `exams` DB row exactly
+    solutionCoverage: "none", // answers only (2026-10-23)
     family: "IPMAT",
     familyLabel: "Rohtak",
     familyAxis: "Institute", // the picker chooses between IIMs, not classes
@@ -618,6 +639,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     // has its own name, and the `exams` row uses it. Only its label INSIDE the
     // family is "Jammu", so the picker reads Indore / Rohtak / Jammu.
     examName: "JIPMAT", // must match the `exams` DB row exactly
+    solutionCoverage: "none", // answers only (2026-10-23)
     family: "IPMAT",
     familyLabel: "Jammu",
     familyAxis: "Institute", // the picker chooses between IIMs, not classes
@@ -638,6 +660,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     tier: "graduate",
     displayName: "MPSC Group B & C",
     examName: "MPSC Group B & C Prelims", // must match the `exams` DB row exactly
+    solutionCoverage: "none", // 1% solved (2026-10-23)
     family: "MPSC",
     familyStage: "Prelims",
     familyLabel: "Group B & C",
@@ -656,6 +679,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     tier: "graduate",
     displayName: "MPSC State Services Prelims",
     examName: "MPSC State Services Prelims", // must match the `exams` DB row exactly
+    solutionCoverage: "none", // 2% solved (2026-10-23)
     family: "MPSC",
     familyStage: "Prelims",
     familyLabel: "State Services",
@@ -672,6 +696,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     tier: "graduate",
     displayName: "MPSC State Services Mains",
     examName: "MPSC State Services Mains", // must match the `exams` DB row exactly
+    solutionCoverage: "some", // 33% solved (2026-10-23)
     family: "MPSC",
     familyStage: "Mains",
     familyLabel: "State Services",
@@ -686,6 +711,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     tier: "graduate",
     displayName: "MPSC Group B Combined Mains",
     examName: "MPSC Group B Combined Mains", // must match the `exams` DB row exactly
+    solutionCoverage: "none", // answers only (2026-10-23)
     family: "MPSC",
     familyStage: "Mains",
     familyLabel: "Group B Combined",
@@ -700,6 +726,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     tier: "graduate",
     displayName: "MPSC STI Mains",
     examName: "MPSC STI Mains", // must match the `exams` DB row exactly
+    solutionCoverage: "none", // 14% solved (2026-10-23)
     family: "MPSC",
     familyStage: "Mains",
     familyLabel: "STI",
@@ -714,6 +741,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     tier: "graduate",
     displayName: "MPSC ASO Mains",
     examName: "MPSC ASO Mains", // must match the `exams` DB row exactly
+    solutionCoverage: "none", // answers only (2026-10-23)
     family: "MPSC",
     familyStage: "Mains",
     familyLabel: "ASO",
@@ -728,6 +756,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     tier: "graduate",
     displayName: "MPSC PSI Mains",
     examName: "MPSC PSI Mains", // must match the `exams` DB row exactly
+    solutionCoverage: "none", // answers only (2026-10-23)
     family: "MPSC",
     familyStage: "Mains",
     familyLabel: "PSI",
@@ -781,7 +810,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     hasMocks: true, // one mock per shift
     pastPaperSolutions: true,
     guidesPath: null,
-    notesPath: null,
+    notesPath: "/notes/ssc-cgl", // exam hub: live since 2026-10-23 (Maths, Averages)
   },
   {
     slug: "ssc-cgl-tier-2",
@@ -819,7 +848,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     hasMocks: true,
     pastPaperSolutions: true,
     guidesPath: null,
-    notesPath: null,
+    notesPath: "/notes/spi", // exam hub: live since 2026-10-21 (Mathematics, Probability)
   },
 ] as const;
 

@@ -97,33 +97,10 @@ describe("explain_question", () => {
     expect(await deps().tools.explain_question.run({ question_id: ID, chose: "Z" })).not.toContain("The student chose");
   });
 
-  // 2026-10-21 (owner): V was told to call similar_question and say "a similar one is below to try". The
-  // explanation sat in the round that called it and was dropped, so one student got that line alone.
-  // On an Ask V tap the card now comes with the explanation, and V is told not to mention it.
-  it("on an Ask V tap, attaches a similar question with the explanation and tells V not to mention it", async () => {
-    const { tools, seen } = deps({ similarAfterExplain: true });
-    const out = await tools.explain_question.run({ question_id: ID });
-    expect(out).toContain("Correct answer: (B) 4");
-    expect(seen.similar).toEqual([OTHER]);
-    expect(out).toMatch(/do not mention it/i);
-    expect(out).not.toMatch(/below/i);
-  });
-
-  it("attaches no similar question on a follow-up, so each tap gets one card", async () => {
+  // 2026-10-22 (owner): "lets not give 2nd qs ... just answer the asked qs and nothing else".
+  // An explanation never brings a similar question; one comes only from similar_question, when asked.
+  it("explains without attaching a similar question", async () => {
     const { tools, seen } = deps();
-    const out = await tools.explain_question.run({ question_id: ID });
-    expect(seen.similar).toEqual([]);
-    expect(out).not.toMatch(/similar/i);
-  });
-
-  it("attaches no similar question when the explanation is refused", async () => {
-    const { tools, seen } = deps({ similarAfterExplain: true, spendReveal: async () => ({ kind: "limit", limit: 30 }) });
-    await tools.explain_question.run({ question_id: ID });
-    expect(seen.similar).toEqual([]);
-  });
-
-  it("explains without a card when there is no other question in the subtopic", async () => {
-    const { tools, seen } = deps({ similarAfterExplain: true, loadSimilar: async () => null });
     const out = await tools.explain_question.run({ question_id: ID });
     expect(out).toContain("Correct answer: (B) 4");
     expect(seen.similar).toEqual([]);
@@ -163,5 +140,48 @@ describe("find_question (pasted text)", () => {
     const { tools, seen } = deps({ searchQuestions: async () => [] });
     expect(await tools.find_question.run({ text: "zzz" })).toMatch(/no question in the bank matched/i);
     expect(seen.matched).toEqual([]);
+  });
+});
+
+// 2026-10-23 (owner): V spotted "-1 listed twice" in a JEE solution and told only that student. A slip in
+// OUR solution now reaches the team as a report; the student gets the correct working and one short line.
+describe("report_solution_issue (a slip in our solution)", () => {
+  function withReports(result: "filed" | "already" | "failed" = "filed") {
+    const filed: { id: string; issue: string }[] = [];
+    const { tools } = deps({
+      reportSolution: async (id, issue) => {
+        filed.push({ id, issue });
+        return result;
+      },
+    });
+    return { tools, filed };
+  }
+
+  it("files the slip for the team and tells V to explain with the correct working, never doubting the answer", async () => {
+    const { tools, filed } = withReports();
+    const out = await tools.report_solution_issue.run({ question_id: ID, issue: "  The list has -1 twice; the second should be 1.  " });
+    expect(filed).toEqual([{ id: ID, issue: "The list has -1 twice; the second should be 1." }]);
+    expect(out).toMatch(/correct working/i);
+    expect(out).toMatch(/at most one short line/i);
+    expect(out).toMatch(/never say the answer is wrong/i);
+  });
+
+  it("gives V the same guidance when the slip was already reported or could not be saved", async () => {
+    for (const r of ["already", "failed"] as const) {
+      const out = await withReports(r).tools.report_solution_issue.run({ question_id: ID, issue: "Step 2 has a sign slip." });
+      expect(out).toMatch(/at most one short line/i);
+    }
+  });
+
+  it("files nothing for an unknown question or a missing description", async () => {
+    const { tools, filed } = withReports();
+    expect(await tools.report_solution_issue.run({ question_id: OTHER, issue: "x" })).toMatch(/not found/i);
+    expect(await tools.report_solution_issue.run({ question_id: ID, issue: "   " })).toMatch(/say what is wrong/i);
+    expect(await tools.report_solution_issue.run({ question_id: ID, issue: "y".repeat(501) })).toMatch(/say what is wrong/i);
+    expect(filed).toEqual([]);
+  });
+
+  it("is not offered when reports cannot be filed", () => {
+    expect(deps().tools.report_solution_issue).toBeUndefined();
   });
 });

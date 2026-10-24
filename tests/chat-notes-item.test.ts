@@ -9,7 +9,7 @@ import { describe, it, expect } from "vitest";
 import fs from "node:fs";
 import path from "node:path";
 import type { SubtopicNote } from "@/app/notes/_types";
-import { notesItemBrief, notesPageOf, parseNotesItemRef } from "@/lib/chat/notesItem";
+import { notesItemBrief, notesPageOf, notesRefKey, parseNotesItemRef, parseNotesRefKey } from "@/lib/chat/notesItem";
 import { NOTES_CHAPTERS } from "@/lib/notes/chapters";
 import { NOTES_DATA_KEYS } from "@/lib/chat/notesData.generated";
 import { notesDataKeys } from "@/lib/chat/notesItem";
@@ -34,6 +34,21 @@ describe("parseNotesItemRef", () => {
     expect(parseNotesItemRef({ concept: "x", item: "practice" })).toBeNull();
     expect(parseNotesItemRef({ concept: "x", item: "practice", index: -1 })).toBeNull();
     expect(parseNotesItemRef({ concept: "x", item: "practice", index: 1.5 })).toBeNull();
+  });
+});
+
+// 2026-10-23: an Ask V tap on a notes question is stored with this key (migration 0181), so V's memory can
+// label it and the card can be rebuilt. Two taps had sent the identical "Explain this question." unlabelled.
+describe("notesRefKey / parseNotesRefKey: the stored form of a notes question", () => {
+  it("writes a practice question as concept#index and the worked example as concept#self, and reads them back", () => {
+    expect(notesRefKey({ concept: "ap-sum-terms", item: "practice", index: 3 })).toBe("ap-sum-terms#3");
+    expect(notesRefKey({ concept: "ap-sum-terms", item: "self" })).toBe("ap-sum-terms#self");
+    expect(parseNotesRefKey("ap-sum-terms#3")).toEqual({ concept: "ap-sum-terms", item: "practice", index: 3 });
+    expect(parseNotesRefKey("ap-sum-terms#self")).toEqual({ concept: "ap-sum-terms", item: "self" });
+  });
+
+  it("reads nothing from a malformed key", () => {
+    for (const bad of [null, "", "ap-sum-terms", "AP#3", "ap#-1", "ap#99", "ap#3#4", "ap#x"]) expect(parseNotesRefKey(bad)).toBeNull();
   });
 });
 
@@ -80,6 +95,8 @@ describe("notesItemBrief", () => {
   it("gives V a self-check with its options, stored steps and answer", () => {
     const b = notesItemBrief(note, { concept: "benzylic", item: "self" })!;
     expect(b).toContain("Which is benzylic?");
+    // V repeats the labels it reads: "ANSWER", never our word "stored" (2026-10-23).
+    expect(b).not.toMatch(/stored/i);
     expect(b).toContain("(A) Bromobenzene");
     expect(b).toContain("(B) Benzyl bromide");
     expect(b).toContain("1. Find the carbon carrying Br.");
@@ -102,6 +119,16 @@ describe("notesItemBrief", () => {
     expect(b).toMatch(/never work out your own answer/i);
     // Owner, 2026-10-20: no "hint or full solution?" question when they tapped Ask V.
     expect(b).not.toMatch(/Want a hint or the full solution/);
+  });
+
+  // 2026-10-24: V told a student "This is a notes item, so I can't use the solution steps", then
+  // "If you think that value is wrong, please tap Report" unasked. Neither is for the student.
+  it("tells V to just explain: nothing about where the question comes from, and Report only when asked", () => {
+    const rules = notesItemBrief(note, { concept: "benzylic", item: "practice", index: 0 })!;
+    expect(rules).toMatch(/do not tell the student where the question comes from or what it lacks/i);
+    expect(rules).toMatch(/mention Report only if they say the answer is wrong/i);
+    expect(rules).toMatch(/only the answer is given, explain the idea from the notes and how it leads to that answer/i);
+    expect(rules).not.toMatch(/notes item/i);
   });
 
   it("is null when the item is not there", () => {

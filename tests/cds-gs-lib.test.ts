@@ -230,6 +230,12 @@ describe("buildRecords", () => {
     expect(row.solution).not.toMatch(/no official key/);
   });
 
+  it("stamps the corrected-on-review tail when the derivation records a key change", () => {
+    const [row] = buildRecords([q()], [der({ corrected: { from: "A", why: "w", on: "2026-10-22" } })]);
+    expect(row.solution).toMatch(/corrected on review/i);
+    expect(row.solution).not.toMatch(/agreed/);
+  });
+
   it("carries NO context — a GK paper has no shared directions or passage", () => {
     const [row] = buildRecords([q()], [der()]);
     expect(row.context).toBeUndefined();

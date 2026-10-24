@@ -15,6 +15,9 @@
 import { PREDEFINED_QUESTIONS } from "./faq";
 import { ABUSE_REPLY } from "./abuse";
 import type { ToolCallLog } from "./anthropic";
+import { chosenIn, isAskVMessage, type AskedCard } from "./askVEvent";
+import { parseNotesRefKey } from "./notesItem";
+import { isExplanation } from "./understood";
 
 export type ConversationRow = {
   id: string;
@@ -37,6 +40,10 @@ export type ConversationRow = {
   toolCalls?: ToolCallLog[] | null;
   /** The question the student had tapped Ask V on when they sent it (0174). */
   askedQuestionId?: string | null;
+  /** The notes question tapped instead, as lib/chat/notesItem notesRefKey; the row's page says where (0181). */
+  askedNotesItem?: string | null;
+  /** The student's answer to "Did you understand?" under this reply; null = not answered (0182). */
+  understood?: boolean | null;
   /** The earlier message this one replies to (0174). */
   replyToId?: string | null;
 };
@@ -101,10 +108,29 @@ export function currentSession<T extends ConversationRow>(rows: readonly T[], no
 
 export type ModelTurn = { role: "user" | "assistant"; content: string };
 
-/** A message about a question starts with its id, so V can tell two questions' exchanges apart. */
+/**
+ * What a message was about: a bank question by id, a notes question by its page and key (0181, 2026-10-23:
+ * two notes taps had sent the identical "Explain this question." with nothing to tell them apart).
+ */
+function aboutOf(r: ConversationRow): string | null {
+  if (r.askedQuestionId) return `question ${r.askedQuestionId}`;
+  if (r.askedNotesItem && r.pagePath) return `notes question ${r.pagePath}#${r.askedNotesItem}`;
+  return null;
+}
+
+/** A message about a question starts with what it was about, so V can tell two questions' exchanges apart. */
 function labelled(r: ConversationRow): string {
   const q = questionOf(r)!;
-  return r.askedQuestionId ? `[About question ${r.askedQuestionId}]\n${q}` : q;
+  const about = aboutOf(r);
+  return about ? `[About ${about}]\n${q}` : q;
+}
+
+/** The card above an Ask V tap; only on the tap itself, never on a follow-up about the same question. */
+function askedCardOfRow(r: ConversationRow, text: string): AskedCard | null {
+  if (!isAskVMessage(text)) return null;
+  if (r.askedQuestionId) return { questionId: r.askedQuestionId, chose: chosenIn(text) };
+  const notes = parseNotesRefKey(r.askedNotesItem);
+  return notes && r.pagePath ? { notes, page: r.pagePath } : null;
 }
 
 export function modelHistory(rows: readonly ConversationRow[], keep = MEMORY_EXCHANGES): ModelTurn[] {
@@ -129,7 +155,8 @@ const REPLY_ANSWER_MAX = 1200;
 
 /** What V is told before a message that replies to an earlier one. The stored message stays as typed. */
 export function replyContext(target: ConversationRow): string {
-  const about = target.askedQuestionId ? ` about question ${target.askedQuestionId}` : "";
+  const what = aboutOf(target);
+  const about = what ? ` about ${what}` : "";
   return [
     `[The student is replying to an earlier exchange${about}.`,
     `They had asked: ${questionOf(target)!.slice(0, REPLY_QUESTION_MAX)}`,
@@ -150,7 +177,14 @@ export function quoteSnippet(text: string): string {
 }
 
 export type HistoryTurn =
-  | { role: "user"; text: string; /** The start of the message it replies to (0174). */ quote?: string }
+  | {
+      role: "user";
+      text: string;
+      /** The start of the message it replies to (0174). */
+      quote?: string;
+      /** The question an Ask V tap was about, shown as a card above it (2026-10-23). */
+      asked?: AskedCard;
+    }
   | {
       role: "assistant";
       text: string;
@@ -158,15 +192,23 @@ export type HistoryTurn =
       links?: string[];
       source?: "ai" | "fallback" | "template" | "followup";
       feedback?: number | null;
+      /** An explanation: asks "Did you understand?" instead of the thumbs (2026-10-23). */
+      explained?: boolean;
+      understood?: boolean | null;
     };
 
 export function historyTurns(rows: readonly ConversationRow[]): HistoryTurn[] {
   const turns: HistoryTurn[] = [];
   for (const r of exchanges(rows)) {
     const target = findReplyTarget(rows, r.replyToId);
-    turns.push(
-      target ? { role: "user", text: questionOf(r)!, quote: quoteSnippet(target.reply!) } : { role: "user", text: questionOf(r)! }
-    );
+    const text = questionOf(r)!;
+    const asked = askedCardOfRow(r, text);
+    turns.push({
+      role: "user",
+      text,
+      ...(target ? { quote: quoteSnippet(target.reply!) } : {}),
+      ...(asked ? { asked } : {}),
+    });
     if (r.replySource === "ai") {
       turns.push({
         role: "assistant",
@@ -175,6 +217,8 @@ export function historyTurns(rows: readonly ConversationRow[]): HistoryTurn[] {
         links: r.replyLinks ?? [],
         source: "ai",
         feedback: r.feedback,
+        explained: isExplanation(r.toolCalls, text),
+        understood: r.understood ?? null,
       });
     } else if (r.replySource === "followup") {
       turns.push({ role: "assistant", text: r.reply!, links: r.replyLinks ?? [], source: "followup" });
@@ -193,6 +237,12 @@ export type ConversationTurn = {
   page: string | null;
   at: string;
   toolCalls: ToolCallLog[] | null;
+  /** What the student's window showed (2026-10-23), so /dashboard/chat draws it the same way. Not exported. */
+  links: string[];
+  asked: AskedCard | null;
+  quote: string | null;
+  /** The answer to "Did you understand?"; null when not asked or not answered (0182). */
+  understood: boolean | null;
 };
 
 export type Conversation = {
@@ -222,15 +272,23 @@ export function groupConversations(rows: readonly ConversationRow[]): Conversati
       startedAt: ex[0].createdAt,
       signedIn: list.some((r) => r.signedIn),
       userId: list.find((r) => r.userId)?.userId ?? null,
-      turns: ex.map((r) => ({
-        question: questionOf(r)!,
-        reply: r.reply!,
-        source: r.replySource,
-        feedback: r.feedback,
-        page: r.pagePath,
-        at: r.createdAt,
-        toolCalls: r.toolCalls ?? null,
-      })),
+      turns: ex.map((r) => {
+        const question = questionOf(r)!;
+        const target = findReplyTarget(list, r.replyToId);
+        return {
+          question,
+          reply: r.reply!,
+          source: r.replySource,
+          feedback: r.feedback,
+          page: r.pagePath,
+          at: r.createdAt,
+          toolCalls: r.toolCalls ?? null,
+          links: r.replyLinks ?? [],
+          asked: askedCardOfRow(r, question),
+          quote: target ? quoteSnippet(target.reply!) : null,
+          understood: r.understood ?? null,
+        };
+      }),
     });
   }
   const last = (c: Conversation) => c.turns[c.turns.length - 1].at;

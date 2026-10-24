@@ -18,6 +18,7 @@ import {
 } from "@/lib/chat/facts";
 import { GUIDE_CATALOG } from "@/lib/guide/guideCatalog";
 import { ABUSE_REPLY } from "@/lib/chat/abuse";
+import { NOT_UNDERSTOOD } from "@/lib/chat/understood";
 import { EXAM_REGISTRY } from "@/lib/exam/examContext";
 import { getNotesExamGroups } from "@/lib/notes/notesNav";
 
@@ -403,9 +404,10 @@ describe("buildSystemPrompt", () => {
     expect(buildSystemPrompt(base).toLowerCase()).toContain("earlier messages");
   });
 
-  it("tells V chapter numbers are not stored, so it searches by the chapter's name", () => {
+  it("tells V we keep no chapter numbers, so it searches by the chapter's name", () => {
     const p = buildSystemPrompt(base);
-    expect(p).toMatch(/chapter numbers? (are|is) not stored/i);
+    // Worded without "stored" since 2026-10-23: V repeats our words to students.
+    expect(p).toMatch(/We do not keep chapter numbers/);
     expect(p).toContain("Electric Charges and Fields");
   });
 
@@ -476,17 +478,57 @@ describe("buildSystemPrompt", () => {
     expect(p).toMatch(/do not ask whether they want/i);
     expect(p).toMatch(/get_question/);
     expect(p).toMatch(/explain_question/);
-    expect(p).toMatch(/Explain only from the stored solution/);
+    expect(p).toMatch(/Explain only from the solution it returns/);
+    // 2026-10-23 (owner: "why not just soln?"): V repeated our word "stored" in 39 of 218 replies.
+    expect(p).toMatch(/Call it "the solution" or "the answer", never "stored"/);
+    expect(p).not.toMatch(/stored (solution|answer)/i);
     expect(p).toMatch(/Never work out your own answer/);
     expect(p).toMatch(/tap Report on the question/);
     expect(p).toMatch(/similar_question/);
     expect(p).toMatch(/find_question/);
     // 2026-10-21 (owner): "A similar question is below to try" was said after every explanation.
     expect(p).not.toMatch(/similar one is below to try/);
-    expect(p).toMatch(/shown under your reply by itself: never mention it/);
+    expect(p).not.toMatch(/shown under your reply/);
+    expect(p).toMatch(/Answer only what they asked/);
+    expect(p).toMatch(/never offer one yourself/);
+    // 2026-10-23: "Did you understand?" No sends NOT_UNDERSTOOD; the next explanation must be simpler, not the same.
+    expect(p).toContain(`"${NOT_UNDERSTOOD}"`);
+    expect(p).toMatch(/explain it again more simply/);
+    // 2026-10-23: a slip in our solution is reported, not just told to one student.
+    expect(p).toMatch(/call report_solution_issue once/);
+    expect(p).toMatch(/at most one short line/);
     expect(p).toMatch(/up to 8 short lines/);
     // The chat window draws \( ... \) as maths; a template string eats a single backslash.
     expect(p).toContain("Write maths inside \\( \\).");
+  });
+
+  // V_SPEC.md step 2 (owner, 2026-10-22): concepts are explained from our bank's model answers, then
+  // our notes, and only then from V's own knowledge. No fixed opening line since 2026-10-23 (owner: it adds no value).
+  it("with explanations on, has V explain a concept from explain_concept, its own knowledge only when that finds nothing", () => {
+    const p = buildSystemPrompt({ ...base, explainEnabled: true });
+    expect(p).toMatch(/7a\. Concepts/);
+    expect(p).toMatch(/call explain_concept/);
+    expect(p).toMatch(/If it says nothing matched, you may give a short general explanation/);
+    expect(p).not.toMatch(/not from our question bank/i);
+    expect(p).not.toMatch(/Start it exactly with/);
+    expect(p).toMatch(/never solve a new numeric problem/i);
+    expect(p).toMatch(/search failed/i);
+    // Links and the facts-only rule name the tool, so its pages are usable.
+    expect(p).toMatch(/returned by [^.]*explain_concept/);
+    expect(p).toMatch(/rules 7 and 7a/);
+    // Baseline run, 2026-10-22: a pasted written question went to find_question and found nothing;
+    // "Coruscate" alone was answered as a greeting.
+    expect(p).toMatch(/a written question without options/i);
+    expect(p).toMatch(/If find_question finds nothing, call explain_concept/);
+    // ... but "atoms" alone is a chapter to find, not a concept: the step 2 run listed three unrelated atom facts.
+    expect(p).toMatch(/A single English word to define \("coruscate"\) is a concept \(rule 7a\)/);
+    expect(p).toMatch(/a chapter or topic name alone \("atoms", "vectors"\) is a request for that chapter \(rule 3\)/);
+  });
+
+  it("with explanations off, has no concept rule and no own-knowledge permission", () => {
+    const p = buildSystemPrompt(base);
+    expect(p).not.toMatch(/explain_concept/);
+    expect(p).not.toMatch(/general explanation/i);
   });
 
   // 2026-10-21 (owner): V said "I need to correct my earlier replies" about answers on ANOTHER question.

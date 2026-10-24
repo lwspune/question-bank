@@ -25,6 +25,9 @@ import {
   SECOND_PAGE_KEEP_PCT,
   BOX_BUY_MIN_SALES,
   PREMIUM_LIMITS_MIN_SALES,
+  PRICE_BASELINE_WEEKLY_REVENUE,
+  ANSWER_LIMIT_RETURN_BASELINE_PCT,
+  ANSWER_LIMIT_RETURN_MAX_DROP,
   STARTER_KEEP_PCT,
   CHIPS_KEEP_PCT,
   FORMULA_PAGES_INDEXED_KEEP,
@@ -47,6 +50,8 @@ import {
   V_EXPLAIN_SIMILAR_RIGHT_KEEP_PCT,
   V_STRATEGY_ANSWERS_KEEP,
   V_PLAN_STUDENTS_KEEP,
+  V_REVEAL_FOLLOWUP_BASELINE_PCT,
+  V_REVEAL_FOLLOWUP_MAX_DROP,
   V_PLAN_DAYS_DONE_KEEP_PCT,
   SPECIFIC_OFFER_CHECKOUT_PCT,
   checkOn,
@@ -557,6 +562,17 @@ export default async function GrowthPage() {
             <ReadingsList metric="v-explain-similar-right" />
           </div>
         );
+      case "v-reveal":
+        return (
+          <div className="space-y-3">
+            <p className="text-sm text-muted-foreground">
+              Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))}: keep it if the follow-up share holds at{" "}
+              {V_REVEAL_FOLLOWUP_BASELINE_PCT}% or rises; if it falls {V_REVEAL_FOLLOWUP_MAX_DROP}+ points, read the
+              conversations first.
+            </p>
+            <ReadingsList metric="v-follow-up" />
+          </div>
+        );
       case "v-plan":
         return (
           <div className="space-y-3">
@@ -622,6 +638,30 @@ export default async function GrowthPage() {
               {fmtDate(checkOn(e.liveSince))} and the students who meet the answer limit keep coming back.
             </p>
             <ReadingsList metric="limit-sales" />
+          </div>
+        );
+      case "pass-price":
+        return (
+          <div className="space-y-3">
+            <p className="text-sm text-muted-foreground">
+              Judged by hand, first at 14 days, then on {fmtDate(checkOn(e.liveSince))}: keep Rs 199 if a week&apos;s
+              revenue holds at Rs {PRICE_BASELINE_WEEKLY_REVENUE}+. The answer limit changed the same day, so
+              checkout-to-paid is the cleaner read on price.
+            </p>
+            <ReadingsList metric="price-weekly-revenue" />
+            <ReadingsList metric="price-checkout-paid" />
+          </div>
+        );
+      case "answer-limit":
+        return (
+          <div className="space-y-3">
+            <p className="text-sm text-muted-foreground">
+              Judged by hand, first at 14 days, then on {fmtDate(checkOn(e.liveSince))}: keep 25 a day if students who
+              meet it stay within {ANSWER_LIMIT_RETURN_MAX_DROP} points of {ANSWER_LIMIT_RETURN_BASELINE_PCT}% coming
+              back within a week.
+            </p>
+            <ReadingsList metric="answer-limit-students" />
+            <ReadingsList metric="answer-limit-return" />
           </div>
         );
       case "indexing": {

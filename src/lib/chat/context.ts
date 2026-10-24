@@ -10,7 +10,7 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { EXAM_REGISTRY } from "@/lib/exam/examContext";
 import { listActivePlans, readFreeLimits } from "@/lib/billing/plansQuery";
-import { getCachedExamCatalog } from "@/lib/exam/allExamStats";
+import { getCachedExamCatalog, type ExamCatalog } from "@/lib/exam/allExamStats";
 import { listChapterSearchRows } from "./subtopicIndex";
 import {
   buildExamFacts,
@@ -38,6 +38,7 @@ import { planTools, type PlanDeps } from "./weekPlan";
 import { myQuestionTools, type MyQuestionDeps } from "./myQuestions";
 import { GUIDE_CATALOG } from "@/lib/guide/guideCatalog";
 import type { ExamSlug } from "@/lib/exam/examContext";
+import { conceptTool, type ConceptToolDeps } from "./conceptSearch";
 
 /** Profile slugs as the exam names V's facts use; a retired or unknown slug is dropped. */
 export function profileExamNames(slugs: readonly string[]): string[] {
@@ -72,7 +73,7 @@ export type VContext = { system: string; systemTail: string; tools: VTool[]; all
 /**
  * `anon` reads only what the public may read: active plans, free limits, PUBLIC
  * count. `loadChapters` defaults to the cached chapter list with its subtopics; a script outside
- * Next passes the uncached one (scripts/chat/replay-typed.ts). `page` is the
+ * Next passes the uncached one (scripts/chat/eval/run.ts). `page` is the
  * (already cleaned) path the student asked from; V is told it and may link it.
  */
 export async function loadVContext(
@@ -81,6 +82,8 @@ export async function loadVContext(
     loadChapters?: () => Promise<readonly ChapterSearchRow[]>;
     /** Per-chapter past-paper counts for exam_strategy; defaults to the day-cached read (a script passes the uncached one). */
     loadStrategy?: (examSlug: string) => Promise<StrategyData | null>;
+    /** Each exam's past-year count for its fact; defaults to the day-cached catalogue (a script, outside Next, passes an uncached one). */
+    loadExamCatalog?: () => Promise<ExamCatalog>;
     page?: string | null;
     /** False: a signed-out visitor, whose question is their only one (lib/chat/anonLimit.ts). */
     signedIn?: boolean;
@@ -100,6 +103,8 @@ export async function loadVContext(
     question?: { id: string; chose: string | null } | null;
     /** A notes practice question the student tapped Ask V on, as V is told it (lib/chat/notesItem.ts). */
     notesBrief?: string | null;
+    /** explain_concept's data sources (lib/chat/conceptSearchServer.ts conceptSources); offered with the question tools. */
+    concepts?: Pick<ConceptToolDeps, "searchBank" | "loadNotesIndex" | "loadNotesConcept"> | null;
     /** The signed-in student's recent questions and saves (lib/chat/myQuestions.ts); absent when signed out. */
     myQuestions?: Omit<MyQuestionDeps, "signedIn"> | null;
   } = {}
@@ -109,7 +114,7 @@ export async function loadVContext(
     listActivePlans(anon),
     readFreeLimits(anon),
     anon.from("questions").select("*", { count: "exact", head: true }).eq("visibility", "PUBLIC"),
-    getCachedExamCatalog()
+    (opts.loadExamCatalog ?? getCachedExamCatalog)()
       .then((c) => new Map(c.exams.map((e) => [e.slug, e.counts.pyq] as const)))
       .catch((err) => {
         console.error("V: exam catalogue unavailable", err);
@@ -193,5 +198,16 @@ export async function loadVContext(
   const mine = myQuestionTools({ ...(opts.myQuestions ?? SIGNED_OUT_QUESTIONS), signedIn: Boolean(opts.myQuestions) });
   const tools = [findChaptersTool, progressTool(opts.loadOwnProgress, opts.loadOwnPractice), strategyTool, ...mine, ...plan];
   if (opts.questionTools) tools.push(...questionTools({ ...opts.questionTools, pageChapterId: pageInfo?.chapterId ?? null }));
+  // V_SPEC.md step 2: concepts, with the question tools (the same switch), so the cached tool list depends on it alone.
+  if (opts.questionTools && opts.concepts) {
+    tools.push(
+      conceptTool({
+        ...opts.concepts,
+        loadChapters,
+        page: pageInfo ? { examName: pageInfo.examName, subjectName: pageInfo.subjectName } : null,
+        onPaths: (paths) => paths.forEach((p) => allowedPaths.add(p)),
+      })
+    );
+  }
   return { system, systemTail, tools, allowedPaths };
 }

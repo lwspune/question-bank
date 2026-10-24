@@ -93,6 +93,26 @@ describe("solutionTail — the bracket that ends every solution", () => {
   });
 });
 
+describe("solutionTail — a key corrected on review", () => {
+  // The two blind passes AGREED on the old key, so after a review changes it the
+  // ordinary tail ("two derivations agreed") would be a false claim about the new one.
+  const tail = solutionTail({ hasAnswerKey: false, confidence: "HIGH", agreed: true, corrected: true });
+
+  it("still says the booklet has no official key", () => {
+    expect(tail).toMatch(/^\[Derived answer — this booklet carries no official key\./);
+  });
+
+  it("says the answer was corrected on review, and claims no agreement or confidence", () => {
+    expect(tail).toMatch(/corrected on review/i);
+    expect(tail).not.toMatch(/agreed/i);
+    expect(tail).not.toMatch(/confidence/i);
+  });
+
+  it("is still recognised by restampSolution, so a keyed paper could replace it", () => {
+    expect(restampSolution(`Reasoning. ${tail}`, true)).toMatch(/official UPSC provisional/);
+  });
+});
+
 describe("restampSolution — repairing rows already in the bank", () => {
   const body = "Hydrogen sulphide is the gas released by decay.";
   const derived = `${body} ${solutionTail({ hasAnswerKey: false, confidence: "HIGH", agreed: true })}`;

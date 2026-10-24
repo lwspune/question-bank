@@ -8,6 +8,7 @@
  * grows, so every full-table scan pages in 1000-row windows (see the "1000-row
  * cap" pitfall in CLAUDE.md).
  */
+import { readAllPages } from "@/lib/supabase/readAllPages";
 import "server-only";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
@@ -65,14 +66,20 @@ export type MockPerfRow = MockSummary & {
 /** Per published-mock performance summary, newest sitting first. */
 export async function getMockPerformance(): Promise<MockPerfRow[]> {
   const db = createSupabaseAdminClient();
-  const { data: mocks, error } = await db
-    .from("mock_tests")
-    .select("id, slug, title, pyq_year, total_marks")
-    .eq("status", "published")
-    // nullsFirst: false — see query.ts: a DESC order puts NULLs first in
-    // Postgres, which would float every undated mock above the real sittings.
-    .order("pyq_year", { ascending: false, nullsFirst: false });
-  if (error) throw new Error(`getMockPerformance mocks: ${error.message}`);
+  // Paged: over 1000 published mocks since 2026-10-23 (readAllPages).
+  const mocks = await readAllPages<Record<string, unknown>>((from, to) =>
+    db
+      .from("mock_tests")
+      .select("id, slug, title, pyq_year, total_marks")
+      .eq("status", "published")
+      // nullsFirst: false — see query.ts: a DESC order puts NULLs first in
+      // Postgres, which would float every undated mock above the real sittings.
+      .order("pyq_year", { ascending: false, nullsFirst: false })
+      .order("id", { ascending: true })
+      .range(from, to)
+  ).catch((e: Error) => {
+    throw new Error(`getMockPerformance mocks: ${e.message}`);
+  });
 
   const attempts = await readAllAttempts(db, "mock_id, user_id, score");
   const byMock = new Map<string, { userId: string; score: number | null }[]>();

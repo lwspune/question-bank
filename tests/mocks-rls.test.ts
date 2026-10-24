@@ -190,6 +190,21 @@ describe.skipIf(!HAS_ENV)("Mock attempt RLS", () => {
     expect(data ?? []).toHaveLength(0);
   });
 
+  it("an answer may be option E (IMAT prints five options, migration 0179)", async () => {
+    const { error } = await aliceClient
+      .from("attempt_answers")
+      .update({ selected_label: "E" })
+      .eq("attempt_id", aliceAttemptId)
+      .eq("question_id", questionId);
+    expect(error).toBeNull();
+    const { error: bad } = await aliceClient
+      .from("attempt_answers")
+      .update({ selected_label: "F" })
+      .eq("attempt_id", aliceAttemptId)
+      .eq("question_id", questionId);
+    expect(bad).not.toBeNull(); // still a CHECK, just A-E
+  });
+
   it("the rating CHECK rejects an unknown value", async () => {
     const { error } = await aliceClient
       .from("mock_feedback")

@@ -413,6 +413,7 @@ export default function QuestionCard({
                 <ItemStatDetail
                   agg={itemStats}
                   keyLabel={singleItemStatKey(question.options)}
+                  optionLabels={question.options.map((o) => o.label)}
                 />
               </div>
             )}

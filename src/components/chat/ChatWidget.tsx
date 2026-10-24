@@ -3,15 +3,15 @@
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { CalendarDays, ListChecks, Reply, RotateCcw, SendHorizontal, ThumbsDown, ThumbsUp, X } from "lucide-react";
+import { CalendarDays, Check, ListChecks, Reply, RotateCcw, SendHorizontal, ThumbsDown, ThumbsUp, X } from "lucide-react";
 import { toast } from "sonner";
 import { trackFunnelOnce } from "@/lib/analytics/trackFunnel";
 import { useVFeatures } from "@/lib/chat/useVExplain";
 import { CHAT_MESSAGE_MAX } from "@/lib/chat/validate";
 import { vPlacement } from "@/lib/chat/placement";
 import { launcherHiddenAfterScroll } from "@/lib/chat/launcherScroll";
-import { splitReplyLinks } from "@/lib/chat/replyLinks";
 import { panelBox, type PanelBox } from "@/lib/chat/panelBox";
+import { NOT_UNDERSTOOD } from "@/lib/chat/understood";
 import { SESSION_IDLE_MS, quoteSnippet, type HistoryTurn } from "@/lib/chat/conversation";
 import {
   LOCAL_CHAT_KEY,
@@ -59,28 +59,23 @@ import { useCart } from "@/lib/cart/CartProvider";
 import VSays from "./VSays";
 import MathText from "./MathText";
 import VQuestionCard from "./VQuestionCard";
+import VAskedCard from "./VAskedCard";
+import VFace, { type VAvatar } from "./VFace";
+import ReplyText from "./VReplyText";
+import VRevealReply from "./VRevealReply";
 import VPlanCard from "./VPlanCard";
-import { ASK_V_EVENT, askVMessage, isAskVDetail, questionForRequest, type AskVDetail } from "@/lib/chat/askVEvent";
+import {
+  ASK_V_EVENT,
+  askedCardOf,
+  askVMessage,
+  isAskVDetail,
+  parseAskedCard,
+  questionForRequest,
+  type AskVDetail,
+} from "@/lib/chat/askVEvent";
 import { MESSAGE_IN, USER_BUBBLE, V_BUBBLE } from "./chatStyles";
 import PracticeBuilder, { PENDING_BUILD_KEY, logBuilderStep } from "./PracticeBuilder";
 import type { BuilderAnswers } from "@/lib/practiceTests/builder";
-
-type VAvatar = "idle" | "laugh" | "think" | "talk";
-
-// Plain <img>, deliberately not next/image — this codebase keeps image
-// optimization off Vercel's bill on purpose (see the Decisions log); these
-// are already pre-sized+optimized static assets in /public/chat.
-function VFace({ avatar, className }: { avatar: VAvatar; className?: string }) {
-  return (
-    <img
-      src={`/chat/v-${avatar}.png`}
-      alt=""
-      aria-hidden
-      className={className}
-      loading="lazy"
-    />
-  );
-}
 
 /**
  * One message in the window. An assistant turn may carry `links` (the paths
@@ -95,6 +90,8 @@ type ChatTurn = HistoryTurn & {
   card?: { id: string; kind: "try" | "confirm" };
   /** The week plan under V's reply (2026-10-19): it made or read the student's plan. */
   plan?: boolean;
+  /** A fresh reply, shown a line at a time (2026-10-23). Never kept: a reply from history shows whole. */
+  reveal?: boolean;
 };
 
 /** What the device keeps of a turn: no face, no errors. */
@@ -102,34 +99,9 @@ function keepable(turns: readonly ChatTurn[]): HistoryTurn[] {
   return turns
     .filter((t) => !t.transient)
     .map((t) => {
-      const { avatar: _avatar, transient: _transient, ...rest } = t;
+      const { avatar: _avatar, transient: _transient, reveal: _reveal, ...rest } = t;
       return rest as HistoryTurn;
     });
-}
-
-/** V's reply with its allowed paths as links; everything else stays text. */
-function ReplyText({ text, links, onNavigate }: { text: string; links?: string[]; onNavigate?: () => void }) {
-  if (!links || links.length === 0) return <MathText text={text} />;
-  return (
-    <>
-      {splitReplyLinks(text, links).map((seg, i) =>
-        seg.kind === "text" ? (
-          <span key={i}>
-            <MathText text={seg.text} />
-          </span>
-        ) : (
-          <Link
-            key={i}
-            href={seg.href}
-            onClick={onNavigate}
-            className="break-words font-medium text-brand-accent underline underline-offset-2 hover:no-underline focus-visible:rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-          >
-            {seg.href}
-          </Link>
-        )
-      )}
-    </>
-  );
 }
 
 const GREETING: ChatTurn = {
@@ -445,6 +417,11 @@ export default function ChatWidget() {
     }
   }
 
+  /** A fresh reply has shown its last line: what goes under it may show. */
+  function endReveal(index: number) {
+    setTurns((all) => all.map((t, i) => (i === index && t.role === "assistant" ? { ...t, reveal: false } : t)));
+  }
+
   /** A message from the student or V. A reply that lands with the window shut is announced. */
   function addTurn(turn: ChatTurn) {
     if (!turn.transient) lastAtRef.current = Date.now();
@@ -493,6 +470,31 @@ export default function ChatWidget() {
     }
   }
 
+  /**
+   * Yes or No to "Did you understand?" under an explanation (migration 0182).
+   * A No also asks V, as the student, to explain it more simply.
+   */
+  async function answerUnderstood(index: number, value: boolean) {
+    const turn = turns[index];
+    if (!turn || turn.role !== "assistant" || !turn.id || !conversationId) return;
+    const setAt = (understood: boolean | null) =>
+      setTurns((all) => all.map((t, i) => (i === index && t.role === "assistant" ? { ...t, understood } : t)));
+    setAt(value);
+    try {
+      const res = await fetch("/api/chat/understood", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: turn.id, conversationId, value }),
+      });
+      if (!res.ok) throw new Error(String(res.status));
+    } catch {
+      setAt(null);
+      toast.error("Couldn't save that. Please try again.");
+      return;
+    }
+    if (!value) void askTyped(NOT_UNDERSTOOD);
+  }
+
   /** "Plan my week": V's plan_week, asked like a typed message. Signed out, it asks for an account first. */
   function planWeek() {
     if (sending) return;
@@ -531,7 +533,14 @@ export default function ChatWidget() {
     // A new session drops the old tapped question and reply; a button send never carries a reply.
     const question = about ?? (fresh ? null : asked);
     const replyTo = override === undefined && !fresh ? replyingTo : null;
-    addTurn(replyTo ? { role: "user", text, quote: quoteSnippet(replyTo.text) } : { role: "user", text });
+    // An Ask V tap shows its question above the message (owner, 2026-10-23).
+    const askedCard = about ? askedCardOf(about, pathname) : null;
+    addTurn({
+      role: "user",
+      text,
+      ...(replyTo ? { quote: quoteSnippet(replyTo.text) } : {}),
+      ...(askedCard ? { asked: askedCard } : {}),
+    });
     if (override === undefined) setDraft("");
     setReplyingTo(null);
     setSending(true);
@@ -558,6 +567,8 @@ export default function ChatWidget() {
         similarQuestionId?: string;
         matchQuestionId?: string;
         planShown?: boolean;
+        /** V explained something: "Did you understand?" goes under the reply (0182). */
+        explained?: boolean;
         /** Abuse after the calm line (lib/chat/abuse.ts): V says nothing. */
         silent?: boolean;
         error?: string;
@@ -579,8 +590,21 @@ export default function ChatWidget() {
       const plan = data.planShown === true ? true : undefined;
       addTurn(
         data.source === "ai" && data.id
-          ? { role: "assistant", avatar: "laugh", text: data.reply as string, links, id: data.id, source: "ai", feedback: null, card, plan }
-          : { role: "assistant", avatar: "laugh", text: data.reply as string, links, card, plan }
+          ? {
+              role: "assistant",
+              avatar: "laugh",
+              text: data.reply as string,
+              links,
+              id: data.id,
+              source: "ai",
+              feedback: null,
+              card,
+              plan,
+              reveal: true,
+              explained: data.explained === true,
+              understood: null,
+            }
+          : { role: "assistant", avatar: "laugh", text: data.reply as string, links, card, plan, reveal: true }
       );
     } catch {
       const errorText = "V is unavailable right now. Please try again.";
@@ -660,28 +684,71 @@ export default function ChatWidget() {
               // n - 1 indexes `turns`; the greeting is never stored.
               const i = n - 1;
               if (t.role === "user") {
+                // A turn may come from the device's saved chat, so its card is checked first.
+                const asked = parseAskedCard(t.asked);
                 return (
-                  <div key={n} className={`${USER_BUBBLE} ${MESSAGE_IN}`}>
-                    {typeof t.quote === "string" && t.quote && (
-                      <span className="mb-1 line-clamp-2 block border-l-2 border-white/70 pl-2 text-xs text-white/90">
-                        <MathText text={t.quote} />
-                      </span>
-                    )}
-                    {t.text}
+                  <div key={n} className={`flex flex-col ${MESSAGE_IN}`}>
+                    {asked && <VAskedCard asked={asked} />}
+                    <div className={USER_BUBBLE}>
+                      {typeof t.quote === "string" && t.quote && (
+                        <span className="mb-1 line-clamp-2 block border-l-2 border-white/70 pl-2 text-xs text-white/90">
+                          <MathText text={t.quote} />
+                        </span>
+                      )}
+                      {t.text}
+                    </div>
                   </div>
                 );
               }
-              const rateable = t.source === "ai" && !!t.id;
+              // What goes under the reply waits until its last line is out.
+              const rateable = t.source === "ai" && !!t.id && !t.reveal;
               return (
                 <div key={n} className={`max-w-[90%] ${MESSAGE_IN}`}>
                   <div className="flex items-end gap-2">
-                    <VFace avatar={t.avatar ?? "idle"} className="h-7 w-7 shrink-0 object-contain" />
+                    <VFace avatar={t.reveal ? "talk" : (t.avatar ?? "idle")} className="h-7 w-7 shrink-0 object-contain" />
                     <div className={V_BUBBLE}>
-                      <ReplyText text={t.text} links={t.links} onNavigate={close} />
+                      {t.reveal ? (
+                        <VRevealReply
+                          text={t.text}
+                          links={t.links}
+                          onNavigate={close}
+                          onGrow={() => listRef.current?.scrollTo({ top: listRef.current.scrollHeight })}
+                          onDone={() => endReveal(i)}
+                        />
+                      ) : (
+                        <ReplyText text={t.text} links={t.links} onNavigate={close} />
+                      )}
                     </div>
                   </div>
                   {rateable && (
-                    <div className="ml-9 mt-1 flex gap-1">
+                    <div className="ml-9 mt-1 flex flex-wrap items-center gap-1">
+                      {t.explained ? (
+                        // "Did you understand?" replaces the thumbs under an explanation (owner, 2026-10-23).
+                        t.understood === true ? (
+                          <span className="inline-flex items-center gap-1 px-1 text-xs text-muted-foreground">
+                            <Check className="h-3.5 w-3.5" aria-hidden />
+                            Great!
+                          </span>
+                        ) : t.understood === false ? (
+                          <span className="px-1 text-xs text-muted-foreground">Let me explain it more simply.</span>
+                        ) : (
+                          <>
+                            <span className="px-1 text-xs text-muted-foreground">Did you understand?</span>
+                            {([true, false] as const).map((yes) => (
+                              <button
+                                key={String(yes)}
+                                type="button"
+                                disabled={sending}
+                                onClick={() => void answerUnderstood(i, yes)}
+                                className="inline-flex h-7 items-center rounded-full border border-border bg-card px-3 text-xs font-medium text-foreground transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50"
+                              >
+                                {yes ? "Yes" : "No"}
+                              </button>
+                            ))}
+                          </>
+                        )
+                      ) : (
+                        <>
                       <button
                         type="button"
                         onClick={() => void giveFeedback(i, 1)}
@@ -704,6 +771,8 @@ export default function ChatWidget() {
                       >
                         <ThumbsDown className="h-3.5 w-3.5" aria-hidden fill={t.feedback === -1 ? "currentColor" : "none"} />
                       </button>
+                        </>
+                      )}
                       {!signInNeeded && (
                         <button
                           type="button"
@@ -717,8 +786,8 @@ export default function ChatWidget() {
                       )}
                     </div>
                   )}
-                  {t.card && <VQuestionCard id={t.card.id} kind={t.card.kind} />}
-                  {t.plan && <VPlanCard onNavigate={close} />}
+                  {t.card && !t.reveal && <VQuestionCard id={t.card.id} kind={t.card.kind} />}
+                  {t.plan && !t.reveal && <VPlanCard onNavigate={close} />}
                 </div>
               );
             })}

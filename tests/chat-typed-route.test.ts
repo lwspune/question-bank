@@ -166,6 +166,7 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
       tokensOut: 10,
       cacheReadTokens: 0,
       cacheWriteTokens: 2800,
+      cacheWrite1hTokens: 2800,
     });
     const spy = vi.spyOn(console, "error").mockImplementation(() => {});
     const { POST } = await import("@/app/api/chat/typed/route");
@@ -174,10 +175,17 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
     expect(await res.json()).toMatchObject({ reply: TYPED_QUESTION_REPLY, source: "fallback" });
     const { data } = await admin
       .from("chat_interactions")
-      .select("reply_source, tokens_in, tokens_out, cache_read_tokens, cache_write_tokens")
+      .select("reply_source, tokens_in, tokens_out, cache_read_tokens, cache_write_tokens, cache_write_1h_tokens")
       .like("message", `route-${RUN}-partial%`);
     expect(data).toEqual([
-      { reply_source: "ai_failed", tokens_in: 80, tokens_out: 10, cache_read_tokens: 0, cache_write_tokens: 2800 },
+      {
+        reply_source: "ai_failed",
+        tokens_in: 80,
+        tokens_out: 10,
+        cache_read_tokens: 0,
+        cache_write_tokens: 2800,
+        cache_write_1h_tokens: 2800,
+      },
     ]);
   });
 
@@ -299,7 +307,8 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
       tokensIn: 40,
       tokensOut: 5,
       cacheReadTokens: 2800,
-      cacheWriteTokens: 0,
+      cacheWriteTokens: 1200,
+      cacheWrite1hTokens: 1200,
     });
     const { POST } = await import("@/app/api/chat/typed/route");
     // Two chapter pages, so the page carries a chapter line too (2026-10-19), and neither path is a nav fact.
@@ -318,9 +327,9 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
     expect(askV.mock.calls[0][0].systemTail).not.toBe(askV.mock.calls[1][0].systemTail);
     const { data } = await admin
       .from("chat_interactions")
-      .select("cache_read_tokens, cache_write_tokens")
+      .select("cache_read_tokens, cache_write_tokens, cache_write_1h_tokens")
       .like("message", `route-${RUN}-cache1%`);
-    expect(data).toEqual([{ cache_read_tokens: 2800, cache_write_tokens: 0 }]);
+    expect(data).toEqual([{ cache_read_tokens: 2800, cache_write_tokens: 1200, cache_write_1h_tokens: 1200 }]);
   });
 
   // "Ask V about this question" (2026-10-19, migration 0168).
@@ -343,13 +352,23 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
       );
       const tail = (askV.mock.calls[0][0] as { systemTail: string }).systemTail;
       expect(tail).toMatch(/practice question in the notes/);
-      expect(tail).toContain("STORED ANSWER");
+      expect(tail).toContain("ANSWER:");
+      expect(tail).not.toMatch(/stored/i);
       // A notes item on a page it is not on, or with explanations off, tells V nothing.
       await POST(post({ message: `route-${RUN}-notes2 explain`, pagePath: "/browse", question: { notes: { concept: "cethal-classes-of-halides", item: "self" } } }));
       expect((askV.mock.calls[1][0] as { systemTail: string }).systemTail).not.toMatch(/practice question in the notes/);
       await setSettings({ ai_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });
       await POST(post({ message: `route-${RUN}-notes3 explain`, pagePath, question: { notes: { concept: "cethal-classes-of-halides", item: "practice", index: 0 } } }));
       expect((askV.mock.calls[2][0] as { systemTail: string }).systemTail).not.toMatch(/practice question in the notes/);
+      // 2026-10-23 (migration 0181): the tap stores which notes question it was, so V's memory can label it.
+      const stored = await admin
+        .from("chat_interactions")
+        .select("message, asked_notes_item")
+        .in("message", [`route-${RUN}-notes1 explain`, `route-${RUN}-notes2 explain`]);
+      expect(Object.fromEntries((stored.data ?? []).map((r) => [r.message, r.asked_notes_item]))).toEqual({
+        [`route-${RUN}-notes1 explain`]: "cethal-classes-of-halides#0",
+        [`route-${RUN}-notes2 explain`]: null,
+      });
     });
 
     it("gives V the question tools and names the tapped question and the pick", async () => {
@@ -369,9 +388,14 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
         "explain_question",
         "similar_question",
         "find_question",
+        // 2026-10-23: a slip in our solution reaches the team's report queue (migration 0183).
+        "report_solution_issue",
+        // V_SPEC.md step 2 (2026-10-22): concepts, under the same switch.
+        "explain_concept",
       ]);
       expect(call.systemTail).toContain(`The student tapped Ask V on question ${askedId}. They picked (B).`);
       expect(call.system).toContain("explain_question");
+      expect(call.system).toContain("explain_concept");
     });
 
     it("refuses a signed-out visitor an explanation, giving nothing away", async () => {
@@ -684,6 +708,37 @@ it("keeps the conversation: stores its id and page, returns the row id, and give
     const { data } = await admin.from("chat_interactions").select("feedback").eq("id", id).single();
     expect(data).toEqual({ feedback: -1 });
     expect((await fb({ id, conversationId, value: null })).status).toBe(200);
+  });
+
+  // 2026-10-23: "Did you understand?" Yes / No under V's explanations (migration 0182).
+  it("says which replies are explanations, and keeps the student's Yes or No on their own reply", async () => {
+    await setSettings({ ai_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });
+    askV.mockReset();
+    askV
+      .mockResolvedValueOnce({ ok: true, reply: "Step 1 ...", tokensIn: 1, tokensOut: 1, toolCalls: [{ name: "explain_concept", input: { topic: "x" } }] })
+      .mockResolvedValueOnce({ ok: true, reply: "Atoms: /notes", tokensIn: 1, tokensOut: 1, toolCalls: [{ name: "find_chapters", input: { query: "atoms" } }] });
+    const { POST } = await import("@/app/api/chat/typed/route");
+    const { POST: UNDERSTOOD } = await import("@/app/api/chat/understood/route");
+    const conversationId = randomUUID();
+    const explained = await (await POST(post({ message: `route-${RUN}-und explain`, conversationId }))).json();
+    const found = await (await POST(post({ message: `route-${RUN}-und atoms`, conversationId }))).json();
+    expect(explained.explained).toBe(true);
+    expect(found.explained).toBe(false);
+
+    const und = (body: unknown) =>
+      UNDERSTOOD(
+        new NextRequest("http://localhost:3000/api/chat/understood", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "x-forwarded-for": `und-${RUN}` },
+          body: JSON.stringify(body),
+        })
+      );
+    expect((await und({ id: explained.id, conversationId: randomUUID(), value: true })).status).toBe(404);
+    expect((await und({ id: explained.id, conversationId, value: "yes" })).status).toBe(400);
+    expect((await und({ id: explained.id, conversationId, value: false })).status).toBe(200);
+    const { data } = await admin.from("chat_interactions").select("understood, understood_at").eq("id", explained.id).single();
+    expect(data?.understood).toBe(false);
+    expect(data?.understood_at).not.toBeNull();
   });
 
   it("gives a signed-out visitor no history from the server", async () => {

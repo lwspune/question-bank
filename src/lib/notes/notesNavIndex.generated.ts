@@ -2327,5 +2327,1069 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "AFCAT Numerical Ability",
     "chapterSlug": "surface-area-volume",
     "subtopicCount": 6
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-maths",
+    "subjectDisplay": "SPI Mathematics",
+    "chapterSlug": "probability",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-maths",
+    "subjectDisplay": "SPI Mathematics",
+    "chapterSlug": "statistics",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-maths",
+    "subjectDisplay": "SPI Mathematics",
+    "chapterSlug": "data-interpretation",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-maths",
+    "subjectDisplay": "SPI Mathematics",
+    "chapterSlug": "mensuration-3d",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-maths",
+    "subjectDisplay": "SPI Mathematics",
+    "chapterSlug": "number-system",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-maths",
+    "subjectDisplay": "SPI Mathematics",
+    "chapterSlug": "trigonometry",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-maths",
+    "subjectDisplay": "SPI Mathematics",
+    "chapterSlug": "sequences",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-maths",
+    "subjectDisplay": "SPI Mathematics",
+    "chapterSlug": "linear-equations",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-maths",
+    "subjectDisplay": "SPI Mathematics",
+    "chapterSlug": "circles",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-maths",
+    "subjectDisplay": "SPI Mathematics",
+    "chapterSlug": "lines-angles",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-maths",
+    "subjectDisplay": "SPI Mathematics",
+    "chapterSlug": "quadrilaterals",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-maths",
+    "subjectDisplay": "SPI Mathematics",
+    "chapterSlug": "triangles",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-maths",
+    "subjectDisplay": "SPI Mathematics",
+    "chapterSlug": "coordinate-geometry",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-maths",
+    "subjectDisplay": "SPI Mathematics",
+    "chapterSlug": "mensuration-2d",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-maths",
+    "subjectDisplay": "SPI Mathematics",
+    "chapterSlug": "surds-indices",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-maths",
+    "subjectDisplay": "SPI Mathematics",
+    "chapterSlug": "heights-distances",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-maths",
+    "subjectDisplay": "SPI Mathematics",
+    "chapterSlug": "quadratic-equations",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-maths",
+    "subjectDisplay": "SPI Mathematics",
+    "chapterSlug": "polynomials",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-maths",
+    "subjectDisplay": "SPI Mathematics",
+    "chapterSlug": "algebraic-identities",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-english",
+    "subjectDisplay": "SPI English",
+    "chapterSlug": "vocabulary",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-english",
+    "subjectDisplay": "SPI English",
+    "chapterSlug": "idioms-phrases",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-english",
+    "subjectDisplay": "SPI English",
+    "chapterSlug": "grammar",
+    "subtopicCount": 8
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-english",
+    "subjectDisplay": "SPI English",
+    "chapterSlug": "spotting-errors",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-english",
+    "subjectDisplay": "SPI English",
+    "chapterSlug": "fill-in-the-blanks",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-english",
+    "subjectDisplay": "SPI English",
+    "chapterSlug": "reading-comprehension",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-english",
+    "subjectDisplay": "SPI English",
+    "chapterSlug": "sentence-rearrangement",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-reasoning",
+    "subjectDisplay": "SPI Reasoning",
+    "chapterSlug": "classification",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-reasoning",
+    "subjectDisplay": "SPI Reasoning",
+    "chapterSlug": "series",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-reasoning",
+    "subjectDisplay": "SPI Reasoning",
+    "chapterSlug": "order-ranking",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-physics",
+    "subjectDisplay": "SPI Physics",
+    "chapterSlug": "electricity-magnetism",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-physics",
+    "subjectDisplay": "SPI Physics",
+    "chapterSlug": "light-optics",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-physics",
+    "subjectDisplay": "SPI Physics",
+    "chapterSlug": "sound",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-physics",
+    "subjectDisplay": "SPI Physics",
+    "chapterSlug": "units-measurement",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-physics",
+    "subjectDisplay": "SPI Physics",
+    "chapterSlug": "energy-sources",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-physics",
+    "subjectDisplay": "SPI Physics",
+    "chapterSlug": "kinematics",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-physics",
+    "subjectDisplay": "SPI Physics",
+    "chapterSlug": "fluids-matter",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-physics",
+    "subjectDisplay": "SPI Physics",
+    "chapterSlug": "gravitation",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-physics",
+    "subjectDisplay": "SPI Physics",
+    "chapterSlug": "laws-of-motion",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-chemistry",
+    "subjectDisplay": "SPI Chemistry",
+    "chapterSlug": "mole-concept",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-chemistry",
+    "subjectDisplay": "SPI Chemistry",
+    "chapterSlug": "atomic-structure",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-chemistry",
+    "subjectDisplay": "SPI Chemistry",
+    "chapterSlug": "carbon-compounds",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-chemistry",
+    "subjectDisplay": "SPI Chemistry",
+    "chapterSlug": "acids-bases-salts",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-chemistry",
+    "subjectDisplay": "SPI Chemistry",
+    "chapterSlug": "chemical-reactions",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-chemistry",
+    "subjectDisplay": "SPI Chemistry",
+    "chapterSlug": "metals-non-metals",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-biology",
+    "subjectDisplay": "SPI Biology",
+    "chapterSlug": "human-physiology",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-biology",
+    "subjectDisplay": "SPI Biology",
+    "chapterSlug": "cell-biology",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-biology",
+    "subjectDisplay": "SPI Biology",
+    "chapterSlug": "plant-biology",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-biology",
+    "subjectDisplay": "SPI Biology",
+    "chapterSlug": "reproduction",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-biology",
+    "subjectDisplay": "SPI Biology",
+    "chapterSlug": "microbiology-disease",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-biology",
+    "subjectDisplay": "SPI Biology",
+    "chapterSlug": "ecology-environment",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-biology",
+    "subjectDisplay": "SPI Biology",
+    "chapterSlug": "genetics-evolution",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-biology",
+    "subjectDisplay": "SPI Biology",
+    "chapterSlug": "biodiversity-classification",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-geography",
+    "subjectDisplay": "SPI Geography",
+    "chapterSlug": "indian-economic-geography",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-geography",
+    "subjectDisplay": "SPI Geography",
+    "chapterSlug": "indian-physical-geography",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-geography",
+    "subjectDisplay": "SPI Geography",
+    "chapterSlug": "world-human-geography",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-geography",
+    "subjectDisplay": "SPI Geography",
+    "chapterSlug": "maharashtra-geography",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-history",
+    "subjectDisplay": "SPI History",
+    "chapterSlug": "modern-india",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-history",
+    "subjectDisplay": "SPI History",
+    "chapterSlug": "world-history",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-polity",
+    "subjectDisplay": "SPI Polity",
+    "chapterSlug": "rights-dpsp-local",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-polity",
+    "subjectDisplay": "SPI Polity",
+    "chapterSlug": "world-polity",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-polity",
+    "subjectDisplay": "SPI Polity",
+    "chapterSlug": "government-structure",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SPI",
+    "subjectRoute": "spi-gk",
+    "subjectDisplay": "SPI General Knowledge",
+    "chapterSlug": "defence",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-history",
+    "subjectDisplay": "CDS History",
+    "chapterSlug": "ancient-india",
+    "subtopicCount": 10
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-history",
+    "subjectDisplay": "CDS History",
+    "chapterSlug": "medieval-india",
+    "subtopicCount": 8
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-history",
+    "subjectDisplay": "CDS History",
+    "chapterSlug": "modern-india",
+    "subtopicCount": 11
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-history",
+    "subjectDisplay": "CDS History",
+    "chapterSlug": "world-history",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-geography",
+    "subjectDisplay": "CDS Geography",
+    "chapterSlug": "earth-in-space",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-geography",
+    "subjectDisplay": "CDS Geography",
+    "chapterSlug": "earth-structure-landforms",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-geography",
+    "subjectDisplay": "CDS Geography",
+    "chapterSlug": "climatology",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-geography",
+    "subjectDisplay": "CDS Geography",
+    "chapterSlug": "oceanography",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-geography",
+    "subjectDisplay": "CDS Geography",
+    "chapterSlug": "world-human-geography",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-geography",
+    "subjectDisplay": "CDS Geography",
+    "chapterSlug": "indian-physical-geography",
+    "subtopicCount": 8
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-geography",
+    "subjectDisplay": "CDS Geography",
+    "chapterSlug": "indian-economic-geography",
+    "subtopicCount": 8
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-polity",
+    "subjectDisplay": "CDS Polity",
+    "chapterSlug": "indian-constitution",
+    "subtopicCount": 7
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-polity",
+    "subjectDisplay": "CDS Polity",
+    "chapterSlug": "rights-dpsp-local-government",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-polity",
+    "subjectDisplay": "CDS Polity",
+    "chapterSlug": "government-structure",
+    "subtopicCount": 10
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-polity",
+    "subjectDisplay": "CDS Polity",
+    "chapterSlug": "world-polity",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-physics",
+    "subjectDisplay": "CDS Physics",
+    "chapterSlug": "units-measurement",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-physics",
+    "subjectDisplay": "CDS Physics",
+    "chapterSlug": "kinematics",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-physics",
+    "subjectDisplay": "CDS Physics",
+    "chapterSlug": "laws-of-motion",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-physics",
+    "subjectDisplay": "CDS Physics",
+    "chapterSlug": "work-energy-power",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-physics",
+    "subjectDisplay": "CDS Physics",
+    "chapterSlug": "gravitation",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-physics",
+    "subjectDisplay": "CDS Physics",
+    "chapterSlug": "fluids-properties-of-matter",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-physics",
+    "subjectDisplay": "CDS Physics",
+    "chapterSlug": "heat-thermodynamics",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-physics",
+    "subjectDisplay": "CDS Physics",
+    "chapterSlug": "sound",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-physics",
+    "subjectDisplay": "CDS Physics",
+    "chapterSlug": "light-optics",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-physics",
+    "subjectDisplay": "CDS Physics",
+    "chapterSlug": "electricity-magnetism",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-physics",
+    "subjectDisplay": "CDS Physics",
+    "chapterSlug": "electronics-computers",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-physics",
+    "subjectDisplay": "CDS Physics",
+    "chapterSlug": "modern-physics",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-physics",
+    "subjectDisplay": "CDS Physics",
+    "chapterSlug": "energy-sources",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-economics",
+    "subjectDisplay": "CDS Economics",
+    "chapterSlug": "microeconomics",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-economics",
+    "subjectDisplay": "CDS Economics",
+    "chapterSlug": "national-income-growth",
+    "subtopicCount": 6
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-economics",
+    "subjectDisplay": "CDS Economics",
+    "chapterSlug": "money-banking-finance",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-economics",
+    "subjectDisplay": "CDS Economics",
+    "chapterSlug": "indian-economy",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-biology",
+    "subjectDisplay": "CDS Biology",
+    "chapterSlug": "biochemistry",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-biology",
+    "subjectDisplay": "CDS Biology",
+    "chapterSlug": "cell-biology",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-biology",
+    "subjectDisplay": "CDS Biology",
+    "chapterSlug": "biodiversity-classification",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-biology",
+    "subjectDisplay": "CDS Biology",
+    "chapterSlug": "plant-biology",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-biology",
+    "subjectDisplay": "CDS Biology",
+    "chapterSlug": "human-physiology",
+    "subtopicCount": 6
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-biology",
+    "subjectDisplay": "CDS Biology",
+    "chapterSlug": "reproduction",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-biology",
+    "subjectDisplay": "CDS Biology",
+    "chapterSlug": "genetics-evolution",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-biology",
+    "subjectDisplay": "CDS Biology",
+    "chapterSlug": "microbiology-disease",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "CDS",
+    "subjectRoute": "cds-biology",
+    "subjectDisplay": "CDS Biology",
+    "chapterSlug": "ecology-environment",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-maths",
+    "subjectDisplay": "SSC CGL Maths",
+    "chapterSlug": "averages",
+    "subtopicCount": 6
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-maths",
+    "subjectDisplay": "SSC CGL Maths",
+    "chapterSlug": "percentage",
+    "subtopicCount": 7
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-maths",
+    "subjectDisplay": "SSC CGL Maths",
+    "chapterSlug": "trigonometry",
+    "subtopicCount": 7
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-maths",
+    "subjectDisplay": "SSC CGL Maths",
+    "chapterSlug": "data-interpretation",
+    "subtopicCount": 7
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-maths",
+    "subjectDisplay": "SSC CGL Maths",
+    "chapterSlug": "ratio",
+    "subtopicCount": 8
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-maths",
+    "subjectDisplay": "SSC CGL Maths",
+    "chapterSlug": "time-work",
+    "subtopicCount": 7
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-maths",
+    "subjectDisplay": "SSC CGL Maths",
+    "chapterSlug": "algebraic-identities",
+    "subtopicCount": 7
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-maths",
+    "subjectDisplay": "SSC CGL Maths",
+    "chapterSlug": "circles",
+    "subtopicCount": 6
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-maths",
+    "subjectDisplay": "SSC CGL Maths",
+    "chapterSlug": "surds-indices",
+    "subtopicCount": 7
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-maths",
+    "subjectDisplay": "SSC CGL Maths",
+    "chapterSlug": "mensuration-3d",
+    "subtopicCount": 7
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-maths",
+    "subjectDisplay": "SSC CGL Maths",
+    "chapterSlug": "mensuration-2d",
+    "subtopicCount": 6
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-maths",
+    "subjectDisplay": "SSC CGL Maths",
+    "chapterSlug": "tsd",
+    "subtopicCount": 8
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-maths",
+    "subjectDisplay": "SSC CGL Maths",
+    "chapterSlug": "interest",
+    "subtopicCount": 7
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-maths",
+    "subjectDisplay": "SSC CGL Maths",
+    "chapterSlug": "triangles",
+    "subtopicCount": 7
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-maths",
+    "subjectDisplay": "SSC CGL Maths",
+    "chapterSlug": "linear-equations",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-maths",
+    "subjectDisplay": "SSC CGL Maths",
+    "chapterSlug": "number-system",
+    "subtopicCount": 6
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-maths",
+    "subjectDisplay": "SSC CGL Maths",
+    "chapterSlug": "coordinate-geometry",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-maths",
+    "subjectDisplay": "SSC CGL Maths",
+    "chapterSlug": "heights-distances",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-maths",
+    "subjectDisplay": "SSC CGL Maths",
+    "chapterSlug": "lines-angles",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-maths",
+    "subjectDisplay": "SSC CGL Maths",
+    "chapterSlug": "quadrilaterals",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-maths",
+    "subjectDisplay": "SSC CGL Maths",
+    "chapterSlug": "polynomials",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-reasoning",
+    "subjectDisplay": "SSC CGL Reasoning",
+    "chapterSlug": "arithmetic-reasoning",
+    "subtopicCount": 6
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-reasoning",
+    "subjectDisplay": "SSC CGL Reasoning",
+    "chapterSlug": "missing-number",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-reasoning",
+    "subjectDisplay": "SSC CGL Reasoning",
+    "chapterSlug": "calendar-clock",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-reasoning",
+    "subjectDisplay": "SSC CGL Reasoning",
+    "chapterSlug": "blood-relations",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-reasoning",
+    "subjectDisplay": "SSC CGL Reasoning",
+    "chapterSlug": "order-ranking",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-reasoning",
+    "subjectDisplay": "SSC CGL Reasoning",
+    "chapterSlug": "mathematical-operations",
+    "subtopicCount": 6
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-reasoning",
+    "subjectDisplay": "SSC CGL Reasoning",
+    "chapterSlug": "coding-decoding",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-reasoning",
+    "subjectDisplay": "SSC CGL Reasoning",
+    "chapterSlug": "analogy",
+    "subtopicCount": 6
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-reasoning",
+    "subjectDisplay": "SSC CGL Reasoning",
+    "chapterSlug": "series",
+    "subtopicCount": 8
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-reasoning",
+    "subjectDisplay": "SSC CGL Reasoning",
+    "chapterSlug": "alphabet-number",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-reasoning",
+    "subjectDisplay": "SSC CGL Reasoning",
+    "chapterSlug": "classification",
+    "subtopicCount": 7
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-reasoning",
+    "subjectDisplay": "SSC CGL Reasoning",
+    "chapterSlug": "non-verbal",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-reasoning",
+    "subjectDisplay": "SSC CGL Reasoning",
+    "chapterSlug": "figure-counting",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-reasoning",
+    "subjectDisplay": "SSC CGL Reasoning",
+    "chapterSlug": "mirror-images",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-reasoning",
+    "subjectDisplay": "SSC CGL Reasoning",
+    "chapterSlug": "paper-folding",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-reasoning",
+    "subjectDisplay": "SSC CGL Reasoning",
+    "chapterSlug": "syllogism",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-reasoning",
+    "subjectDisplay": "SSC CGL Reasoning",
+    "chapterSlug": "venn-diagrams",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-reasoning",
+    "subjectDisplay": "SSC CGL Reasoning",
+    "chapterSlug": "statements",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-reasoning",
+    "subjectDisplay": "SSC CGL Reasoning",
+    "chapterSlug": "inequalities",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-reasoning",
+    "subjectDisplay": "SSC CGL Reasoning",
+    "chapterSlug": "dice-cubes",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-reasoning",
+    "subjectDisplay": "SSC CGL Reasoning",
+    "chapterSlug": "embedded-figures",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-english",
+    "subjectDisplay": "SSC CGL English",
+    "chapterSlug": "fill-in-the-blanks",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-english",
+    "subjectDisplay": "SSC CGL English",
+    "chapterSlug": "reading-comprehension",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-english",
+    "subjectDisplay": "SSC CGL English",
+    "chapterSlug": "idioms-and-phrases",
+    "subtopicCount": 6
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-english",
+    "subjectDisplay": "SSC CGL English",
+    "chapterSlug": "sentence-rearrangement",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-english",
+    "subjectDisplay": "SSC CGL English",
+    "chapterSlug": "spotting-errors",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-english",
+    "subjectDisplay": "SSC CGL English",
+    "chapterSlug": "cloze-test",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-english",
+    "subjectDisplay": "SSC CGL English",
+    "chapterSlug": "grammar",
+    "subtopicCount": 3
   }
 ];

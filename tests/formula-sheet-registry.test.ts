@@ -14,7 +14,23 @@ import { buildFormulaSheetHtml, formulaSheetStats, hasFormulaSheet } from "@/lib
 // Chapters taught in prose alone (IMAT critical thinking, reading
 // comprehension): no formula, no table, so no sheet is offered. Listed so a
 // chapter cannot drop out of the sheet by accident.
-const NO_SHEET = ["imat-logic/critical-thinking", "imat-reading/reading-comprehension"];
+const NO_SHEET = [
+  "imat-logic/critical-thinking",
+  "imat-reading/reading-comprehension",
+  "spi-english/reading-comprehension",
+  "spi-english/sentence-rearrangement",
+  "ssc-cgl-english/fill-in-the-blanks",
+  "ssc-cgl-english/reading-comprehension",
+  "ssc-cgl-english/sentence-rearrangement",
+  "ssc-cgl-reasoning/dice-cubes",
+  "ssc-cgl-reasoning/embedded-figures",
+  "ssc-cgl-reasoning/inequalities",
+  "ssc-cgl-reasoning/mirror-images",
+  "ssc-cgl-reasoning/missing-number",
+  "ssc-cgl-reasoning/non-verbal",
+  "ssc-cgl-reasoning/statements",
+  "ssc-cgl-reasoning/syllogism",
+];
 
 describe("formula sheet: every registered chapter", () => {
   it("has something to print and renders without a KaTeX error", () => {

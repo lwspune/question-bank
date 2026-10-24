@@ -169,6 +169,15 @@ async function main() {
         // Live counts from the ebook tables, rendered on the page (lib/ebooks/readout).
         line = "live table on the page (ebook_purchases, ebook_print_interest, ebook_downloads)";
         break;
+      case "pass-price":
+        line = handRead(e.liveSince, ["price-weekly-revenue", "price-checkout-paid"]);
+        break;
+      case "answer-limit":
+        line = handRead(e.liveSince, ["answer-limit-students", "answer-limit-return"]);
+        break;
+      case "v-reveal":
+        line = handRead(e.liveSince, ["v-follow-up"]);
+        break;
       default: {
         // A new readout must be added here; this fails the typecheck until it is.
         const unhandled: never = e.readout;

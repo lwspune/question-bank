@@ -6,7 +6,7 @@
  * committed rather than computed at build time, and src/lib/seo/lastmod.ts for
  * how a route with no entry here inherits from its nearest recorded ancestor.
  *
- * Entries: 283
+ * Entries: 303
  */
 import type { ContentDateMap } from "@/lib/seo/lastmod";
 
@@ -28,6 +28,26 @@ export const CONTENT_DATES: ContentDateMap = {
   "/guide/nda-maths": "2026-09-19T14:48:07+05:30",
   "/guide/nda-physics": "2026-09-14T14:45:43+05:30",
   "/guide/nda-polity": "2026-09-14T14:45:43+05:30",
+  "/notes/afcat-maths/area-perimeter": "2026-10-22T13:49:14+05:30",
+  "/notes/afcat-maths/average": "2026-10-22T13:13:43+05:30",
+  "/notes/afcat-maths/clock": "2026-10-22T13:49:14+05:30",
+  "/notes/afcat-maths/decimals-fractions": "2026-10-22T13:13:43+05:30",
+  "/notes/afcat-maths/heights-distances": "2026-10-22T13:49:14+05:30",
+  "/notes/afcat-maths/indices-surds": "2026-10-22T13:49:14+05:30",
+  "/notes/afcat-maths/interest": "2026-10-22T13:13:43+05:30",
+  "/notes/afcat-maths/lcm-hcf": "2026-10-22T13:49:14+05:30",
+  "/notes/afcat-maths/mixture-alligation": "2026-10-22T13:49:14+05:30",
+  "/notes/afcat-maths/number-system": "2026-10-22T13:49:14+05:30",
+  "/notes/afcat-maths/percentage": "2026-10-22T13:13:43+05:30",
+  "/notes/afcat-maths/probability": "2026-10-22T13:49:14+05:30",
+  "/notes/afcat-maths/profit-loss": "2026-10-22T13:13:43+05:30",
+  "/notes/afcat-maths/ratio": "2026-10-22T12:18:16+05:30",
+  "/notes/afcat-maths/sequence-series": "2026-10-22T13:49:14+05:30",
+  "/notes/afcat-maths/speed-time-distance": "2026-10-22T13:13:43+05:30",
+  "/notes/afcat-maths/squares-roots": "2026-10-22T13:49:14+05:30",
+  "/notes/afcat-maths/statistics": "2026-10-22T14:10:35+05:30",
+  "/notes/afcat-maths/surface-area-volume": "2026-10-22T13:49:14+05:30",
+  "/notes/afcat-maths/time-work": "2026-10-22T13:49:14+05:30",
   "/notes/cds-chemistry/acids-bases-salts": "2026-10-02T01:09:44+05:30",
   "/notes/cds-chemistry/atomic-structure": "2026-10-02T01:09:44+05:30",
   "/notes/cds-chemistry/carbon-compounds": "2026-10-02T01:09:44+05:30",

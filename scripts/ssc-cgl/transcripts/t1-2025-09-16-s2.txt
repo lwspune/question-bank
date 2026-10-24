@@ -8,6 +8,8 @@ chapter: Alphabet and Number Tests
 subtopic: Letter Position and Alphabet Test
 difficulty: EASY
 answer: B
+flawed: yes
+notice: As printed, 'between the 2nd and 7th letter' reads two ways: leaving both ends out gives 3 consonants, counting them in gives 4. The answer shown follows SSC's answer key, which counts the ends in.
 blind: A
 note: judgement item. SSC's key counts 'between the 2nd and 7th letter' inclusively (E, C, H, N, O, L: 4 consonants); our blind reading excluded both ends (C, H, N, O: 3). The bank carries SSC's answer
 stem:
@@ -39,7 +41,7 @@ A drops the slash in 56/A and writes "Salt Lake" for "Salt Lake City". B has "Vi
 
 === 3
 chapter: Series
-subtopic: Letter Series
+subtopic: Letter Clusters
 difficulty: EASY
 answer: A
 stem:
@@ -88,7 +90,7 @@ A, B and C are siblings, and C is D's daughter, so all three are D's children. B
 
 === 6
 chapter: Series
-subtopic: Number Series
+subtopic: Squares, Cubes and Primes
 difficulty: MODERATE
 answer: A
 stem:
@@ -120,7 +122,7 @@ solution:
 
 === 8
 chapter: Series
-subtopic: Number Series
+subtopic: Multiplication Series
 difficulty: EASY
 answer: A
 stem:
@@ -182,7 +184,7 @@ Making something compulsory does not mean no school offered it before; some may 
 
 === 11
 chapter: Order, Ranking and Arrangement
-subtopic: Ranking and Position
+subtopic: Scheduling and Puzzles
 difficulty: EASY
 answer: A
 stem:
@@ -248,7 +250,7 @@ Kelvin, Celsius, Fahrenheit and Rankine are temperature scales. The joule is the
 
 === 15
 chapter: Coding-Decoding
-subtopic: Letter Coding
+subtopic: Reversal and Opposite Letters
 difficulty: EASY
 answer: C
 stem:
@@ -264,7 +266,7 @@ NORMAL splits into NO, RM, AL. Reversing each pair gives ON, MR, LA: ONMRLA.
 
 === 16
 chapter: Coding-Decoding
-subtopic: Letter Coding
+subtopic: Letter Shifts
 difficulty: MODERATE
 answer: A
 stem:
@@ -277,7 +279,7 @@ D: K52E
 solution:
 The first and last letters each move one place forward: B to C and T to U. For JUMP this gives J to K and P to Q, so the code is K _ _ Q. Only K58Q has that form.
 
-The middle number fits too: the middle letters O and A have positions 15 and 1, sum 16, and \(16 + 24 = 40\); U and M have positions 21 and 13, sum 34, and \(34 + 24 = 58\).
+One example is not enough to fix a rule for the middle number, so the letters decide: the other three options do not have the K _ _ Q form.
 
 === 17
 chapter: Alphabet and Number Tests
@@ -295,7 +297,7 @@ All four start with BEN. The fourth letters are C (bench), D (bend), E (beneath)
 
 === 18
 chapter: Coding-Decoding
-subtopic: Number and Symbol Coding
+subtopic: Position Values and Sums
 difficulty: MODERATE
 answer: D
 stem:
@@ -336,7 +338,7 @@ Saturn, Venus and Jupiter are planets. The Sun is a star, so it is the odd one o
 
 === 20
 chapter: Coding-Decoding
-subtopic: Letter Coding
+subtopic: Letter Shifts
 difficulty: EASY
 answer: A
 flawed: yes
@@ -355,7 +357,7 @@ VAPOR: V to X, A to C, P to R, O to Q, R to T, giving XCRQT.
 
 === 21
 chapter: Arithmetic Reasoning
-subtopic: Arithmetic Word Problems
+subtopic: Percentages and Interest
 difficulty: EASY
 answer: B
 stem:
@@ -410,7 +412,7 @@ Replacing the symbols: \(60 \div 5 \times 4 - 10 + 2\).
 
 === 24
 chapter: Mathematical Operations
-subtopic: Interchanging Signs and Numbers
+subtopic: Symbol Substitution
 difficulty: MODERATE
 answer: B
 stem:
@@ -432,7 +434,7 @@ D: \(20 + 2 - 3 \div 4 = 21.25\), not 18.
 
 === 25
 chapter: Arithmetic Reasoning
-subtopic: Arithmetic Word Problems
+subtopic: Equations from Word Problems
 difficulty: EASY
 answer: A
 stem:
@@ -853,7 +855,7 @@ Both Parliament and State legislatures can make laws on Concurrent List subjects
 
 === 51
 chapter: Ratio, Proportion and Variation
-subtopic: Ratio and Proportion
+subtopic: Ratio Basics
 difficulty: EASY
 answer: A
 stem:
@@ -929,7 +931,7 @@ Check: A gets the same, C gets \(\frac{5}{17} \times 50000 = 14705.88\), and \(2
 
 === 55
 chapter: Averages
-subtopic: Sum and Mean
+subtopic: Replacements and Corrections
 difficulty: EASY
 answer: C
 stem:
@@ -968,7 +970,7 @@ Check: the 6 integers sum to \(36\), the 5 integers average \(8\) and sum to \(4
 
 === 57
 chapter: Percentage, Profit and Loss
-subtopic: Percentage
+subtopic: Percentage Basics
 difficulty: EASY
 answer: C
 stem:
@@ -984,7 +986,7 @@ Check: \(75\%\) of \(180 = 135\) and \(\frac{2}{3}\) of \(180 = 120\); \(135 - 1
 
 === 58
 chapter: Simple and Compound Interest
-subtopic: Instalments and Difference of SI and CI
+subtopic: Doubling, Part Years and Instalments
 difficulty: MODERATE
 answer: C
 stem:
@@ -1004,7 +1006,7 @@ Check by running the balance: \(16550 \times 1.1 = 18205\), minus \(6655\) is \(
 
 === 59
 chapter: Percentage, Profit and Loss
-subtopic: Successive Discount and Marked Price
+subtopic: Marked Price and Discount
 difficulty: MODERATE
 answer: C
 stem:
@@ -1024,7 +1026,7 @@ Check with \(P = 120\): cost \(100\), offer price \(180 \times 0.9 = 162\), prof
 
 === 60
 chapter: Percentage, Profit and Loss
-subtopic: Successive Discount and Marked Price
+subtopic: Marked Price and Discount
 difficulty: MODERATE
 answer: D
 stem:
@@ -1044,7 +1046,7 @@ Check: \(2700 \times \frac{75}{85} = \frac{2700 \times 15}{17} = 2382.35\).
 
 === 61
 chapter: Time and Work
-subtopic: Work Rates
+subtopic: Working on Alternate Days
 difficulty: MODERATE
 answer: A
 stem:
@@ -1082,7 +1084,7 @@ Check: \(\frac{1 \times 80 + 3 \times 120}{4} = \frac{440}{4} = 110\).
 
 === 63
 chapter: Time, Speed and Distance
-subtopic: Average Speed and Speed–Time Ratios
+subtopic: Speed, Time and Distance Basics
 difficulty: EASY
 answer: A
 stem:
@@ -1098,7 +1100,7 @@ Car speed \(= \frac{3}{4} \times 80 = 60\) km/h.
 
 === 64
 chapter: Simple and Compound Interest
-subtopic: Simple Interest
+subtopic: Sums Lent at Two Rates
 difficulty: MODERATE
 answer: C
 stem:
@@ -1118,7 +1120,7 @@ Check: P \(= 6000\), Q \(= 5000\), R \(= 15000\); interest \(420 + 450 + 1650 = 
 
 === 65
 chapter: Heights and Distances
-subtopic: Observer Above the Ground
+subtopic: Two Angles of Elevation or Depression
 difficulty: MODERATE
 answer: A
 stem:
@@ -1138,7 +1140,7 @@ Check: only option A has distance 50 m, which the \(45^\circ\) angle forces.
 
 === 66
 chapter: Mensuration 3D
-subtopic: Melting and Recasting
+subtopic: Melting, Recasting and Water
 difficulty: MODERATE
 answer: A
 stem:
@@ -1156,7 +1158,7 @@ Check: \(4.16^3 \approx 71.99\).
 
 === 67
 chapter: Lines, Angles and Polygons
-subtopic: Interior and Exterior Angles of Polygons
+subtopic: Regular Polygons
 difficulty: EASY
 answer: D
 stem:
@@ -1202,7 +1204,7 @@ Volume of a prism \(=\) base area \(\times\) height \(= 20 \times 6 = 120\) \(\t
 
 === 70
 chapter: Coordinate Geometry
-subtopic: Lines, Distance and Area
+subtopic: Slope and Equation of a Line
 difficulty: EASY
 answer: A
 stem:
@@ -1273,7 +1275,7 @@ Check with \(k^2 = 5\), \(m^2 = 3\): \(x^2 = 125\), \(y^2 = 147\), and \(AE \tim
 
 === 74
 chapter: Mensuration 2D
-subtopic: Arcs, Sectors and Segments
+subtopic: Combined and Shaded Regions
 difficulty: EASY
 answer: A
 stem:
@@ -1291,7 +1293,7 @@ Minor segment \(= 25\pi - 50\) sq. cm (about \(28.5\), a sensible part of the \(
 
 === 75
 chapter: Surds, Indices and Simplification
-subtopic: Fractions and Decimals
+subtopic: Simplification Shortcuts
 difficulty: MODERATE
 answer: A
 stem:
@@ -1437,7 +1439,7 @@ An abyss is a deep, seemingly bottomless chasm. A crevasse is a crack in a glaci
 
 === 85
 chapter: Grammar
-subtopic: Phrasal Verbs with Prepositions and Particles
+subtopic: Sentence Grammar
 difficulty: EASY
 answer: D
 stem:
@@ -1452,7 +1454,7 @@ One arrives at a conclusion (reaches it). Draw out means prolong or elicit, brin
 
 === 86
 chapter: Grammar
-subtopic: Parts of Speech: Adverbs
+subtopic: Sentence Grammar
 difficulty: EASY
 answer: B
 stem:
@@ -1467,7 +1469,7 @@ The blank modifies the verb spoke, so an adverb is needed: spoke so lucidly. Luc
 
 === 87
 chapter: Spotting Errors
-subtopic: Verb Forms and Voice
+subtopic: Tenses and Verb Forms
 difficulty: MODERATE
 answer: D
 stem:
@@ -1482,7 +1484,7 @@ The verb underlie is conjugated like lie: underlie, underlay, underlain. The pas
 
 === 88
 chapter: Grammar
-subtopic: Voice and Reported Speech
+subtopic: Active and Passive Voice
 difficulty: EASY
 answer: A
 stem:
@@ -1512,7 +1514,7 @@ In the given sentence cartouche is the Egyptian oval frame enclosing a royal nam
 
 === 90
 chapter: Grammar
-subtopic: Voice and Reported Speech
+subtopic: Active and Passive Voice
 difficulty: EASY
 answer: D
 stem:
@@ -1527,7 +1529,7 @@ solution:
 
 === 91
 chapter: Spotting Errors
-subtopic: Sentence Improvement
+subtopic: Prepositions, Word Choice and Idioms
 difficulty: EASY
 answer: A
 stem:
@@ -1542,7 +1544,7 @@ Tell takes a direct personal object with no preposition: she told me the news. S
 
 === 92
 chapter: Spotting Errors
-subtopic: Sentence Improvement
+subtopic: Agreement and Pronouns
 difficulty: EASY
 answer: B
 stem:
@@ -1557,7 +1559,7 @@ Neither of takes a singular verb, so are becomes is. The adjective suitable take
 
 === 93
 chapter: Reading Comprehension
-subtopic: Locating the Answer Line
+subtopic: Finding Facts in the Passage
 difficulty: EASY
 answer: C
 context:
@@ -1574,7 +1576,7 @@ The passage says such freedoms "can degenerate into chaos, polarization, or auth
 
 === 94
 chapter: Reading Comprehension
-subtopic: Why Questions: The Passage's Reason
+subtopic: Finding Facts in the Passage
 difficulty: EASY
 answer: B
 context_from: 93
@@ -1589,7 +1591,7 @@ Both examples follow "responsibility demands more than legal compliance": the ri
 
 === 95
 chapter: Reading Comprehension
-subtopic: Inference: What Must Be True
+subtopic: Main Idea and Inference
 difficulty: EASY
 answer: C
 context_from: 93
@@ -1604,7 +1606,7 @@ solution:
 
 === 96
 chapter: Reading Comprehension
-subtopic: Paraphrase and Option Traps
+subtopic: Main Idea and Inference
 difficulty: EASY
 answer: C
 context_from: 93
@@ -1619,7 +1621,7 @@ The tension is "most visible during moments of crisis", when prioritizing person
 
 === 97
 chapter: Reading Comprehension
-subtopic: Main Idea, Author's View and Tone
+subtopic: Main Idea and Inference
 difficulty: EASY
 answer: B
 context_from: 93
@@ -1634,7 +1636,7 @@ The author values freedom ("foundational") while warning of its dangers without 
 
 === 98
 chapter: Grammar
-subtopic: Voice and Reported Speech
+subtopic: Direct and Indirect Speech
 difficulty: MODERATE
 answer: B
 stem:
@@ -1649,7 +1651,7 @@ A third conditional (had + past participle, would have + past participle) does n
 
 === 99
 chapter: Grammar
-subtopic: Voice and Reported Speech
+subtopic: Direct and Indirect Speech
 difficulty: EASY
 answer: B
 stem:
@@ -1664,7 +1666,7 @@ The reporting verb said is past, so present continuous am reading backshifts to 
 
 === 100
 chapter: Sentence Rearrangement
-subtopic: Shape of a Paragraph Argument
+subtopic: Ordering Sentences in a Paragraph
 difficulty: MODERATE
 answer: B
 stem:

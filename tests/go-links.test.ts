@@ -174,6 +174,19 @@ describe("chapter names shared with AFCAT", () => {
   });
 });
 
+describe("chapter names shared with SSC CGL", () => {
+  // SSC CGL's Maths catalog is copied from CDS, so every SSC chapter name is
+  // already a CDS chapter name; SSC must never take over CDS's links.
+  it("no SSC CGL chapter takes a name another exam's chapter holds", () => {
+    const ssc = NOTES_CHAPTERS.filter((c) => c.examName === "SSC CGL");
+    expect(ssc.length).toBeGreaterThan(0);
+    for (const c of ssc) {
+      const other = NOTES_CHAPTERS.some((o) => o.examName !== "SSC CGL" && o.chapter.chapterName === c.chapter.chapterName);
+      if (other) expect(getChapterByName(c.chapter.chapterName)?.examName).not.toBe("SSC CGL");
+    }
+  });
+});
+
 describe("chapter names shared with JEE Mains", () => {
   // JEE chapters ship after the NDA and MHT-CET ones and reuse their names, so
   // they yield the same way CDS does rather than re-pointing existing links.
