@@ -38,6 +38,9 @@ export function solutionProblems(text: string): string[] {
     out.push('"stored" for the answer or key');
   }
   if (UNICODE_MATHS.test(text)) out.push("Unicode maths symbol (write it in LaTeX)");
+  // "3 \times 15" with no \( \) around it renders the backslash as text.
+  const prose = text.replace(/\\\([\s\S]*?\\\)/g, "").replace(/\\\[[\s\S]*?\\\]/g, "");
+  if (/\\[a-zA-Z]+/.test(prose)) out.push("LaTeX command outside maths delimiters");
   return out;
 }
 

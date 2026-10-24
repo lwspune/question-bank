@@ -49,7 +49,7 @@ function args() {
       return m ? { name: m[1], limit: Number(m[2]) } : { name: v, limit: Infinity };
     });
   if (!exams.length) throw new Error('--exam="<exam name>[:limit]" is required (repeatable)');
-  return { batch, exams, slice: Number(get("slice") ?? 35), kind: get("kind") };
+  return { batch, exams, slice: Number(get("slice") ?? 35), kind: get("kind"), subject: get("subject") };
 }
 
 async function priorityIds(db: SupabaseClient) {
@@ -67,7 +67,7 @@ async function priorityIds(db: SupabaseClient) {
 
 async function main() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
-  const { batch, exams, slice, kind } = args();
+  const { batch, exams, slice, kind, subject } = args();
   const db = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!, {
     auth: { persistSession: false },
   });
@@ -115,7 +115,8 @@ async function main() {
     });
     const fillable: Row[] = [];
     let seen = 0;
-    for (const r of rows) {
+    // MPSC Mains mixes English and Marathi booklets: --subject takes one of them.
+    for (const r of subject ? rows.filter((x) => x.subject?.name === subject) : rows) {
       const why = skipReason(r);
       if (why) skipped.push(`| ${r.id} | ${exam.name} | ${why} |`);
       else if (tried.has(r.id)) seen++;

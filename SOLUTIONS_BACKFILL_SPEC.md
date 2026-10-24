@@ -295,3 +295,72 @@ One line per batch: date, exam, written, disputed, skipped.
 - 2026-10-24, b14 Foundation Course (324, 31 with pictures): written 272.
   Disputed 6 (one key looks wrong: the solutions matching; key right 1;
   judgement 4). Skipped 46. Read 30 of 272, rejected 0. Running total 3,576.
+- 2026-10-24, b15 Foundation Course (324, atoms, electricity, motion):
+  written 282. Disputed 11 (keys look wrong 4, key or figure wrong 1,
+  question defect or ambiguous 4, key right 2). Skipped 31. Read 30 of 282:
+  one `\times` outside maths delimiters, which prints as text; fixed, and
+  `solutionProblems` now refuses it. The same scan found 3 b04 rows already
+  live with it (SUGGESTIONS.md ledger). From slice 07, agents read numbered
+  statements 1 to 4 as options (a) to (d) in order, saying so. Running
+  total 3,858.
+- 2026-10-24, b16 Foundation Course (324, light, magnetism, gravitation):
+  written 276. Disputed 12 (keys look wrong 2: refraction-angle and fuse
+  wire; key doubtful or question cut off, garbled or ambiguous 7; key right
+  3). Skipped 36. Read 30 of 276, rejected 0. Running total 4,134.
+- 2026-10-24, b17 Foundation Course (324, sound, energy, pressure, light):
+  written 286. Disputed 16 (keys look wrong 4, doubtful 3, question
+  ambiguous 6, key acceptable 1, key right 3; one picture opened by the main
+  session). Skipped 22, two of them held back by the main session although
+  the key matched (a misprinted item; a key pairing Nm with erg). One
+  solution reworded to agree with its option. Read 30 of 286, rejected 0.
+  Running total 4,420.
+- 2026-10-24, b18 Foundation Course (last 29) + NEET (295): written 275.
+  Disputed 17 (keys look wrong 4, doubtful 3, question cut off or
+  incomplete 3, key right 7). NEET carries duplicate questions, some with
+  different keys. Skipped 32. Read 45 of 275 (a larger sample for NEET
+  biology): one right letter on a wrong reason, rewritten, and the brief now
+  asks for the true reason on statements questions. Running total 4,695.
+- 2026-10-24, b19 NEET (324, respiration, chemistry): written 279.
+  Disputed 8 (question ambiguous 3, key acceptable 1, key right 4; one
+  picture opened by the main session). Skipped 37. Read 45 of 279: one
+  unbalanced equation rewritten, one figure-to-option mapping line added.
+  Running total 4,974.
+- 2026-10-24, b20 NEET (324, physics and physical chemistry, 66 pictures):
+  written 298. Disputed 5 (key looks wrong 1, doubtful 1, key right 2, and
+  one letter slip under right working, relabelled and written). Skipped 20;
+  2 never drafted (a late solver edit dropped them; the brief now asks for a
+  re-check after any late edit). Read 45 of 298, all clean. Running total
+  5,272.
+- 2026-10-24, b21 NEET (324, kinematics, optics, properties of matter, 73
+  pictures): written 294. Disputed 8 (key looks wrong 1, doubtful 1,
+  question defect or ambiguous 3, key right 3; three pictures opened by the
+  main session, which found one solver had read each of two graphs from the
+  other's question). Rejected 3 (a degree sign in the last line), fixed.
+  One held back (a key pairing x^2 y = c with a rectangular hyperbola).
+  Skipped 21, 1 never drafted. Read 45 of 294. Running total 5,566.
+- 2026-10-24, b22 NEET (324, rotation, work-energy, biotechnology, 40
+  pictures): written 300. Disputed 8 (key looks wrong 1, doubtful 1, text
+  and figure disagree 1, key acceptable 2, key right 3; four pictures
+  opened by the main session). Skipped 16. Read 45 of 300, all clean; the
+  brief now forbids reading a figure to fit an option. Running total 5,866.
+- 2026-10-24, b23 NEET (last 141) + IPMAT Indore (200): written 298. NEET
+  done. Disputed 10 (key doubtful 1, key acceptable 6 incl. four sentence
+  orderings, key right 3). Rejected 1 (answer line not last), fixed.
+  Skipped 33, many IPMAT English items with two defensible options. Read 45
+  of 298, all clean. Running total 6,164.
+- 2026-10-24, b24 IPMAT Indore (last 122) + JIPMAT (202): written 300.
+  IPMAT Indore done. Disputed 1 (solver arithmetic slip, key right).
+  Skipped 23, mostly JIPMAT reasoning items whose options are pictures the
+  row does not carry. 30 drafts lacked solvedAnswer and were read from
+  their own last line. Two matrices given brackets. The main session
+  checked the bar chart behind five data questions. Read 40 of 300.
+  Running total 6,464.
+- 2026-10-24, b25 JIPMAT (last 51) + IPMAT Rohtak (172) + MH SB 11 (100):
+  written 296. JIPMAT and IPMAT Rohtak done. Disputed 9 (keys doubtful 3:
+  two roots truncated rather than rounded, one passage reading; ambiguous
+  or unsettleable 3; key right 3; one picture opened by the main session).
+  Skipped 18. Read 40 of 296, all clean. Running total 6,760.
+- 2026-10-24, b26 MH SB 11 (last 32) + JEE Mains (117) + MH SB 9 (59):
+  written 204. Disputed 0, rejected 0, skipped 4. Read 35 of 204, all
+  clean. Every fillable row outside MPSC Mains is now drafted. Running
+  total 6,964.
