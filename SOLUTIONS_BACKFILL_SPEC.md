@@ -238,3 +238,8 @@ One line per batch: date, exam, written, disputed, skipped.
   Disputed 9 (key right 5, question ambiguous 1, key doubtful 3: in the
   batch's disputes file). Skipped 114 by the solvers, nearly all current
   affairs Haiku does not know; 19 left undrafted. Read 25 of 182, rejected 0.
+- 2026-10-24, b02 MPSC Group B & C Prelims (324 exported): written 252.
+  Disputed 8 (key right 5, key doubtful 2, judgement 1). Skipped 64. Read 30
+  of 252: 2 wording slips (a fund's name, "one more triple bond") fixed before
+  writing, plus 3 option symbols put in LaTeX. Paused here at the owner's
+  word; b03 is exported (324 questions) but not drafted.
