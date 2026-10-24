@@ -248,3 +248,8 @@ One line per batch: date, exam, written, disputed, skipped.
   Skipped 150 (geography and history of Maharashtra Haiku does not know).
   One solver left out solvedAnswer: read from its own last lines, all 22
   matched. Read 30 of 164, rejected 0.
+- 2026-10-24, b04 MPSC Group B & C Prelims (398 exported, the rest of the
+  exam): written 307. Disputed 7 (key right 3, judgement 4). Skipped 84.
+  Read 35 of 307: one calendar solution rewritten to work from the
+  question's clue, one quoted symbol put in LaTeX. Group B & C first pass
+  done: 905 written of 1,351 fillable; the rest are skips and disputes.
