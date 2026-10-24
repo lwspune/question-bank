@@ -66,6 +66,11 @@ background is `SOLUTIONS_BACKFILL_SPEC.md`; this file is all you need.
 - Fact questions (biology, GK, polity, history, reading passages): give the
   fact, then say why EVERY other option is wrong, one short line each or one
   line naming them all. Never leave a wrong option unexplained. No essay.
+- Statements questions ("which are incorrect?"): give the TRUE reason each
+  statement is right or wrong, not just which ones. Reaching the right
+  letter for a wrong reason still teaches the wrong thing (b18: "the base
+  joins the 1'C, not its OH" when the slip was "nucleotide" for
+  nucleoside). If you are not sure why a statement is wrong, skip.
 - Add no fact the question does not need. Every extra claim is one more
   chance to be wrong. Use the textbook's own term (morels are "edible
   fungi", not "mushrooms"); if you are unsure of a term, leave it out.
