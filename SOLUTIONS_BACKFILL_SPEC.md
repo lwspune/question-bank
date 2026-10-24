@@ -381,3 +381,14 @@ One line per batch: date, exam, written, disputed, skipped.
   Mains is done. Skipped 45. Disputed 5 (key doubtful 1; Indian-textbook
   convention 3; key right 1). Read 35 of 159. Running total 7,623. Next:
   the Marathi half, after the owner reviews 9 Marathi sample drafts.
+- 2026-10-24, owner reviewed the Marathi samples and approved the Marathi
+  half, with a Marathi last line ("म्हणून उत्तर (X) ..."). The 7 samples
+  that matched the key were written (7,630).
+- 2026-10-24, b30 MPSC ASO Mains, Marathi booklet (324): written 214.
+  Skipped 99 (the brief now says skip when two options are close).
+  Disputed 11 (keys look wrong 2: पूर्ण भविष्यकाळ, मिश्रवाक्य; unsettled
+  2; key right 7, all technical grammar: प्रयोग, संधी, उच्चारस्थान). The
+  agents are weak on technical Marathi grammar, so the main session read
+  every matched प्रयोग/संधी/विभक्ती/उच्चार solution (25): one wrong
+  mechanism rewritten (नीरव), one held back (misprinted option). Running
+  total 7,844.
