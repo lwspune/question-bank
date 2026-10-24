@@ -128,6 +128,10 @@ async function main() {
     if (data?.length === 1) written++;
     else lost.push(id);
   }
+  // The ids actually written, so a batch can be undone (set solution back to
+  // null for exactly these) without restoring a whole backup.
+  const done = toWrite.filter((id) => !lost.includes(id));
+  writeFileSync(join(dir, `written-${new Date().toISOString().replace(/[:.]/g, "-")}.json`), JSON.stringify(done, null, 2));
   console.log(`wrote ${written} of ${toWrite.length}`);
   if (lost.length) console.log(`not written (the row changed since the dry run): ${lost.join(", ")}`);
 }
