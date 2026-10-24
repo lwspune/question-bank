@@ -41,8 +41,15 @@ describe("solutionProblems", () => {
     expect(solutionProblems("Step one.\\nStep two.")).toContain("literal \\n");
   });
 
-  it("flags the word stored", () => {
+  it("flags stored when it speaks of the answer or key", () => {
     expect(solutionProblems("The stored answer is (C).").join()).toMatch(/stored/);
+    expect(solutionProblems("This matches the stored key.").join()).toMatch(/stored/);
+    expect(solutionProblems("The option stored as correct is (B).").join()).toMatch(/stored/);
+  });
+
+  it("allows stored as ordinary science", () => {
+    expect(solutionProblems("Bile is made by the liver and stored in the gall bladder.")).toEqual([]);
+    expect(solutionProblems("Food is stored as starch.")).toEqual([]);
     expect(solutionProblems("Energy is restored to the system.")).toEqual([]);
   });
 
