@@ -400,3 +400,12 @@ One line per batch: date, exam, written, disputed, skipped.
   (wrong glosses such as जलद, loose rules such as द्विगु "first word
   stressed" and विसर्ग to ओ, a last line off the option text), 1 held
   back ('आपण'). Running total 8,022.
+- 2026-10-24, b32 MPSC STI (259) + PSI (70) Mains, Marathi booklets
+  (329): written 180. Skipped 137. Disputed 8 (key right 5, the drafts
+  wrong on बाईलखाद्या, उपसर्ग, इत्थंभूत, लक्षणा and a ने-subject भावे
+  sentence; defensible 2; doubtful 1, a जे ... ते sentence keyed "none of
+  these"). The main session read all 182 matched: 15 fixed before writing
+  (वड्याचे तेल glossed wrongly, a सामान्यरूप example that broke its own
+  rule, द्वितीया and चतुर्थी sharing स, ला, ते), 2 held back. One slice
+  file came back missing 4 of 35 ids after a check "by eye"; the brief now
+  requires a parser check. Running total 8,202.
