@@ -225,6 +225,21 @@ import CdsTouchingCircles from "./visualizations/CdsTouchingCircles";
 import CdsConeAnatomy from "./visualizations/CdsConeAnatomy";
 import CdsAltitudeHypotenuse from "./visualizations/CdsAltitudeHypotenuse";
 import CdsRationalIrrationalLine from "./visualizations/CdsRationalIrrationalLine";
+import RatioBarModel from "./visualizations/RatioBarModel";
+import AfConeCut from "./visualizations/AfConeCut";
+import AfCuboidDiagonal from "./visualizations/AfCuboidDiagonal";
+import AfSquareInCircle from "./visualizations/AfSquareInCircle";
+import AfPathAroundLawn from "./visualizations/AfPathAroundLawn";
+import AfTwoSightings from "./visualizations/AfTwoSightings";
+import AfAngleOfDepression from "./visualizations/AfAngleOfDepression";
+import AfOgiveMedian from "./visualizations/AfOgiveMedian";
+import AfDiceSumGrid from "./visualizations/AfDiceSumGrid";
+import AfClockMirror from "./visualizations/AfClockMirror";
+import AfClockAngle from "./visualizations/AfClockAngle";
+import AfAlligationCross from "./visualizations/AfAlligationCross";
+import AfCircularTrack from "./visualizations/AfCircularTrack";
+import AfTrainPlatform from "./visualizations/AfTrainPlatform";
+import AfAreaChange from "./visualizations/AfAreaChange";
 import LogicSwitchSeriesParallel from "./visualizations/LogicSwitchSeriesParallel";
 import LogicCircuitSimplification from "./visualizations/LogicCircuitSimplification";
 import type { VisualizationSlug } from "@/app/notes/_types";
@@ -654,6 +669,36 @@ export function renderVisualization(slug: VisualizationSlug) {
       return <CdsUnitDigitCycleWheel />;
     case "cds-rational-irrational-line":
       return <CdsRationalIrrationalLine />;
+    case "ratio-bar-model":
+      return <RatioBarModel />;
+    case "af-cone-cut":
+      return <AfConeCut />;
+    case "af-cuboid-diagonal":
+      return <AfCuboidDiagonal />;
+    case "af-square-in-circle":
+      return <AfSquareInCircle />;
+    case "af-path-around-lawn":
+      return <AfPathAroundLawn />;
+    case "af-two-sightings":
+      return <AfTwoSightings />;
+    case "af-angle-of-depression":
+      return <AfAngleOfDepression />;
+    case "af-ogive-median":
+      return <AfOgiveMedian />;
+    case "af-dice-sum-grid":
+      return <AfDiceSumGrid />;
+    case "af-clock-mirror":
+      return <AfClockMirror />;
+    case "af-clock-angle":
+      return <AfClockAngle />;
+    case "af-alligation-cross":
+      return <AfAlligationCross />;
+    case "af-circular-track":
+      return <AfCircularTrack />;
+    case "af-train-platform":
+      return <AfTrainPlatform />;
+    case "af-area-change":
+      return <AfAreaChange />;
     case "logic-switch-series-parallel":
       return <LogicSwitchSeriesParallel />;
     case "logic-circuit-simplification":

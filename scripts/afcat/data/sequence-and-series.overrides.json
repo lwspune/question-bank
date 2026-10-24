@@ -32,5 +32,40 @@
       "C": "\\(\\frac{25}{4}\\)"
     },
     "reason": "Options equal in value; each duplicate is replaced with a near miss (fix-equal-values). The keyed value is unchanged."
+  },
+  "01-110": {
+    "stem": "If \\(b \\neq a + c\\) and \\(\\frac{1}{b - a} + \\frac{1}{b - c} = \\frac{1}{a} + \\frac{1}{c}\\), then \\(a, b, c\\) are in",
+    "solution": "Rearranging, \\(\\frac{1}{b - a} - \\frac{1}{c} = \\frac{1}{a} - \\frac{1}{b - c}\\) gives \\(\\frac{a + c - b}{c(b - a)} = -\\frac{a + c - b}{a(b - c)}\\). Since \\(b \\neq a + c\\), cancel \\(a + c - b\\): \\(a(b - c) = -c(b - a)\\), so \\(ab + bc = 2ac\\), that is \\(b = \\frac{2ac}{a + c}\\). So \\(a, b, c\\) are in HP.",
+    "reason": "Notes review (2026-10-22): the condition also holds whenever b = a + c (1, 4, 3 is no HP); the stem now excludes that case and the solution cancels the factor. Key C stands."
+  },
+  "03-14": {
+    "stem": "Find the (4^{th}) term of the GP: (5, 10, 20, ...)",
+    "solution": "Here (a = 5) and (r = 2), so the 4th term is (5 \times 2^{3} = 40).",
+    "reason": "Notes review (2026-10-22): the stem printed the asked 4th term; it now stops at the third. Key stands."
+  },
+  "04-2": {
+    "stem": "Find the (4^{th}) term of the HP: (1, \frac{1}{2}, \frac{1}{3}, ...)",
+    "solution": "The reciprocals (1, 2, 3, dots) form an AP, whose 4th term is 4, so the 4th term of the HP is (\frac{1}{4}).",
+    "reason": "Notes review (2026-10-22): the stem printed the asked 4th term; it now stops at the third. Key stands."
+  },
+  "02-10": {
+    "subtopic": "Special Series and Standard Sums",
+    "reason": "Notes re-cut: Sum of the first 20 odd numbers: the n squared shortcut for odd numbers is taught with the other standard sums."
+  },
+  "02-15": {
+    "subtopic": "Special Series and Standard Sums",
+    "reason": "Notes re-cut: Sum of the natural numbers 1 to 100: the n(n+1)/2 standard sum."
+  },
+  "02-18": {
+    "subtopic": "Special Series and Standard Sums",
+    "reason": "Notes re-cut: Sum of the first 30 even numbers: the n(n+1) standard sum."
+  },
+  "02-27": {
+    "subtopic": "Special Series and Standard Sums",
+    "reason": "Notes re-cut: Sum of the odd numbers 1 to 99: the n squared standard sum."
+  },
+  "01-109": {
+    "subtopic": "Harmonic Progression and Means",
+    "reason": "Notes re-cut: Needs both middle-term tests (2b = a + c and b squared = ac), which the chapter only has side by side on the means page."
   }
 }

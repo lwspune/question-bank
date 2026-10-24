@@ -1347,6 +1347,106 @@ import {
 } from "@/app/notes/cds-english/reading-comprehension/_data";
 import { IMAT_NOTES_CHAPTERS } from "@/lib/sites/imat/notes/registry";
 import {
+  AF_RATIO_CHAPTER,
+  AF_RATIO_NOTES,
+  AF_RATIO_SLUGS,
+} from "@/app/notes/afcat-maths/ratio/_data";
+import {
+  AF_PL_CHAPTER,
+  AF_PL_NOTES,
+  AF_PL_SLUGS,
+} from "@/app/notes/afcat-maths/profit-loss/_data";
+import {
+  AF_CI_CHAPTER,
+  AF_CI_NOTES,
+  AF_CI_SLUGS,
+} from "@/app/notes/afcat-maths/interest/_data";
+import {
+  AF_STD_CHAPTER,
+  AF_STD_NOTES,
+  AF_STD_SLUGS,
+} from "@/app/notes/afcat-maths/speed-time-distance/_data";
+import {
+  AF_AV_CHAPTER,
+  AF_AV_NOTES,
+  AF_AV_SLUGS,
+} from "@/app/notes/afcat-maths/average/_data";
+import {
+  AF_PC_CHAPTER,
+  AF_PC_NOTES,
+  AF_PC_SLUGS,
+} from "@/app/notes/afcat-maths/percentage/_data";
+import {
+  AF_DF_CHAPTER,
+  AF_DF_NOTES,
+  AF_DF_SLUGS,
+} from "@/app/notes/afcat-maths/decimals-fractions/_data";
+import {
+  AF_TW_CHAPTER,
+  AF_TW_NOTES,
+  AF_TW_SLUGS,
+} from "@/app/notes/afcat-maths/time-work/_data";
+import {
+  AF_MA_CHAPTER,
+  AF_MA_NOTES,
+  AF_MA_SLUGS,
+} from "@/app/notes/afcat-maths/mixture-alligation/_data";
+import {
+  AF_PR_CHAPTER,
+  AF_PR_NOTES,
+  AF_PR_SLUGS,
+} from "@/app/notes/afcat-maths/probability/_data";
+import {
+  AF_CL_CHAPTER,
+  AF_CL_NOTES,
+  AF_CL_SLUGS,
+} from "@/app/notes/afcat-maths/clock/_data";
+import {
+  AF_SQ_CHAPTER,
+  AF_SQ_NOTES,
+  AF_SQ_SLUGS,
+} from "@/app/notes/afcat-maths/squares-roots/_data";
+import {
+  AF_LH_CHAPTER,
+  AF_LH_NOTES,
+  AF_LH_SLUGS,
+} from "@/app/notes/afcat-maths/lcm-hcf/_data";
+import {
+  AF_IS_CHAPTER,
+  AF_IS_NOTES,
+  AF_IS_SLUGS,
+} from "@/app/notes/afcat-maths/indices-surds/_data";
+import {
+  AF_ST_CHAPTER,
+  AF_ST_NOTES,
+  AF_ST_SLUGS,
+} from "@/app/notes/afcat-maths/statistics/_data";
+import {
+  AF_SS_CHAPTER,
+  AF_SS_NOTES,
+  AF_SS_SLUGS,
+} from "@/app/notes/afcat-maths/sequence-series/_data";
+import {
+  AF_NS_CHAPTER,
+  AF_NS_NOTES,
+  AF_NS_SLUGS,
+} from "@/app/notes/afcat-maths/number-system/_data";
+import {
+  AF_HD_CHAPTER,
+  AF_HD_NOTES,
+  AF_HD_SLUGS,
+} from "@/app/notes/afcat-maths/heights-distances/_data";
+import {
+  AF_AP_CHAPTER,
+  AF_AP_NOTES,
+  AF_AP_SLUGS,
+} from "@/app/notes/afcat-maths/area-perimeter/_data";
+import {
+  AF_SV_CHAPTER,
+  AF_SV_NOTES,
+  AF_SV_SLUGS,
+} from "@/app/notes/afcat-maths/surface-area-volume/_data";
+import {
   SPI_PROBABILITY_CHAPTER,
   SPI_PROBABILITY_NOTES,
   SPI_PROBABILITY_SLUGS,
@@ -5078,6 +5178,226 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
   // IMAT: 46 chapters authored in their own registry (lib/sites/imat/notes),
   // on PYQ Vault since 2026-10-20.
   ...IMAT_NOTES_CHAPTERS,
+  {
+    examName: "AFCAT",
+    subjectName: "Numerical Ability",
+    subjectRoute: "afcat-maths",
+    subjectDisplay: "AFCAT Numerical Ability",
+    chapterSlug: "ratio",
+    chipLabel: "Ratio and Proportion notes",
+    chapter: AF_RATIO_CHAPTER,
+    notes: AF_RATIO_NOTES,
+    slugs: AF_RATIO_SLUGS,
+  },
+  {
+    examName: "AFCAT",
+    subjectName: "Numerical Ability",
+    subjectRoute: "afcat-maths",
+    subjectDisplay: "AFCAT Numerical Ability",
+    chapterSlug: "profit-loss",
+    chipLabel: "Profit and Loss notes",
+    chapter: AF_PL_CHAPTER,
+    notes: AF_PL_NOTES,
+    slugs: AF_PL_SLUGS,
+  },
+  {
+    examName: "AFCAT",
+    subjectName: "Numerical Ability",
+    subjectRoute: "afcat-maths",
+    subjectDisplay: "AFCAT Numerical Ability",
+    chapterSlug: "interest",
+    chipLabel: "Simple and Compound Interest notes",
+    chapter: AF_CI_CHAPTER,
+    notes: AF_CI_NOTES,
+    slugs: AF_CI_SLUGS,
+  },
+  {
+    examName: "AFCAT",
+    subjectName: "Numerical Ability",
+    subjectRoute: "afcat-maths",
+    subjectDisplay: "AFCAT Numerical Ability",
+    chapterSlug: "speed-time-distance",
+    chipLabel: "Speed, Time and Distance notes",
+    chapter: AF_STD_CHAPTER,
+    notes: AF_STD_NOTES,
+    slugs: AF_STD_SLUGS,
+  },
+  {
+    examName: "AFCAT",
+    subjectName: "Numerical Ability",
+    subjectRoute: "afcat-maths",
+    subjectDisplay: "AFCAT Numerical Ability",
+    chapterSlug: "average",
+    chipLabel: "Average notes",
+    chapter: AF_AV_CHAPTER,
+    notes: AF_AV_NOTES,
+    slugs: AF_AV_SLUGS,
+  },
+  {
+    examName: "AFCAT",
+    subjectName: "Numerical Ability",
+    subjectRoute: "afcat-maths",
+    subjectDisplay: "AFCAT Numerical Ability",
+    chapterSlug: "percentage",
+    chipLabel: "Percentage notes",
+    chapter: AF_PC_CHAPTER,
+    notes: AF_PC_NOTES,
+    slugs: AF_PC_SLUGS,
+  },
+  {
+    examName: "AFCAT",
+    subjectName: "Numerical Ability",
+    subjectRoute: "afcat-maths",
+    subjectDisplay: "AFCAT Numerical Ability",
+    chapterSlug: "decimals-fractions",
+    chipLabel: "Decimals and Fractions notes",
+    chapter: AF_DF_CHAPTER,
+    notes: AF_DF_NOTES,
+    slugs: AF_DF_SLUGS,
+  },
+  {
+    examName: "AFCAT",
+    subjectName: "Numerical Ability",
+    subjectRoute: "afcat-maths",
+    subjectDisplay: "AFCAT Numerical Ability",
+    chapterSlug: "time-work",
+    chipLabel: "Time and Work notes",
+    chapter: AF_TW_CHAPTER,
+    notes: AF_TW_NOTES,
+    slugs: AF_TW_SLUGS,
+  },
+  {
+    examName: "AFCAT",
+    subjectName: "Numerical Ability",
+    subjectRoute: "afcat-maths",
+    subjectDisplay: "AFCAT Numerical Ability",
+    chapterSlug: "mixture-alligation",
+    chipLabel: "Mixture and Alligation notes",
+    chapter: AF_MA_CHAPTER,
+    notes: AF_MA_NOTES,
+    slugs: AF_MA_SLUGS,
+  },
+  {
+    examName: "AFCAT",
+    subjectName: "Numerical Ability",
+    subjectRoute: "afcat-maths",
+    subjectDisplay: "AFCAT Numerical Ability",
+    chapterSlug: "probability",
+    chipLabel: "Probability notes",
+    chapter: AF_PR_CHAPTER,
+    notes: AF_PR_NOTES,
+    slugs: AF_PR_SLUGS,
+  },
+  {
+    examName: "AFCAT",
+    subjectName: "Numerical Ability",
+    subjectRoute: "afcat-maths",
+    subjectDisplay: "AFCAT Numerical Ability",
+    chapterSlug: "clock",
+    chipLabel: "Clock notes",
+    chapter: AF_CL_CHAPTER,
+    notes: AF_CL_NOTES,
+    slugs: AF_CL_SLUGS,
+  },
+  {
+    examName: "AFCAT",
+    subjectName: "Numerical Ability",
+    subjectRoute: "afcat-maths",
+    subjectDisplay: "AFCAT Numerical Ability",
+    chapterSlug: "squares-roots",
+    chipLabel: "Squares, Cubes and Roots notes",
+    chapter: AF_SQ_CHAPTER,
+    notes: AF_SQ_NOTES,
+    slugs: AF_SQ_SLUGS,
+  },
+  {
+    examName: "AFCAT",
+    subjectName: "Numerical Ability",
+    subjectRoute: "afcat-maths",
+    subjectDisplay: "AFCAT Numerical Ability",
+    chapterSlug: "lcm-hcf",
+    chipLabel: "LCM and HCF notes",
+    chapter: AF_LH_CHAPTER,
+    notes: AF_LH_NOTES,
+    slugs: AF_LH_SLUGS,
+  },
+  {
+    examName: "AFCAT",
+    subjectName: "Numerical Ability",
+    subjectRoute: "afcat-maths",
+    subjectDisplay: "AFCAT Numerical Ability",
+    chapterSlug: "indices-surds",
+    chipLabel: "Indices and Surds notes",
+    chapter: AF_IS_CHAPTER,
+    notes: AF_IS_NOTES,
+    slugs: AF_IS_SLUGS,
+  },
+  {
+    examName: "AFCAT",
+    subjectName: "Numerical Ability",
+    subjectRoute: "afcat-maths",
+    subjectDisplay: "AFCAT Numerical Ability",
+    chapterSlug: "statistics",
+    chipLabel: "Statistics notes",
+    chapter: AF_ST_CHAPTER,
+    notes: AF_ST_NOTES,
+    slugs: AF_ST_SLUGS,
+  },
+  {
+    examName: "AFCAT",
+    subjectName: "Numerical Ability",
+    subjectRoute: "afcat-maths",
+    subjectDisplay: "AFCAT Numerical Ability",
+    chapterSlug: "sequence-series",
+    chipLabel: "Sequence and Series notes",
+    chapter: AF_SS_CHAPTER,
+    notes: AF_SS_NOTES,
+    slugs: AF_SS_SLUGS,
+  },
+  {
+    examName: "AFCAT",
+    subjectName: "Numerical Ability",
+    subjectRoute: "afcat-maths",
+    subjectDisplay: "AFCAT Numerical Ability",
+    chapterSlug: "number-system",
+    chipLabel: "Number System notes",
+    chapter: AF_NS_CHAPTER,
+    notes: AF_NS_NOTES,
+    slugs: AF_NS_SLUGS,
+  },
+  {
+    examName: "AFCAT",
+    subjectName: "Numerical Ability",
+    subjectRoute: "afcat-maths",
+    subjectDisplay: "AFCAT Numerical Ability",
+    chapterSlug: "heights-distances",
+    chipLabel: "Heights and Distances notes",
+    chapter: AF_HD_CHAPTER,
+    notes: AF_HD_NOTES,
+    slugs: AF_HD_SLUGS,
+  },
+  {
+    examName: "AFCAT",
+    subjectName: "Numerical Ability",
+    subjectRoute: "afcat-maths",
+    subjectDisplay: "AFCAT Numerical Ability",
+    chapterSlug: "area-perimeter",
+    chipLabel: "Area and Perimeter notes",
+    chapter: AF_AP_CHAPTER,
+    notes: AF_AP_NOTES,
+    slugs: AF_AP_SLUGS,
+  },
+  {
+    examName: "AFCAT",
+    subjectName: "Numerical Ability",
+    subjectRoute: "afcat-maths",
+    subjectDisplay: "AFCAT Numerical Ability",
+    chapterSlug: "surface-area-volume",
+    chipLabel: "Surface Area and Volume notes",
+    chapter: AF_SV_CHAPTER,
+    notes: AF_SV_NOTES,
+    slugs: AF_SV_SLUGS,
+  },
   {
     examName: "SPI",
     subjectName: "Mathematics",

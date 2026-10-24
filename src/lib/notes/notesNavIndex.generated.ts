@@ -2189,6 +2189,146 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subtopicCount": 5
   },
   {
+    "examName": "AFCAT",
+    "subjectRoute": "afcat-maths",
+    "subjectDisplay": "AFCAT Numerical Ability",
+    "chapterSlug": "ratio",
+    "subtopicCount": 8
+  },
+  {
+    "examName": "AFCAT",
+    "subjectRoute": "afcat-maths",
+    "subjectDisplay": "AFCAT Numerical Ability",
+    "chapterSlug": "profit-loss",
+    "subtopicCount": 9
+  },
+  {
+    "examName": "AFCAT",
+    "subjectRoute": "afcat-maths",
+    "subjectDisplay": "AFCAT Numerical Ability",
+    "chapterSlug": "interest",
+    "subtopicCount": 9
+  },
+  {
+    "examName": "AFCAT",
+    "subjectRoute": "afcat-maths",
+    "subjectDisplay": "AFCAT Numerical Ability",
+    "chapterSlug": "speed-time-distance",
+    "subtopicCount": 9
+  },
+  {
+    "examName": "AFCAT",
+    "subjectRoute": "afcat-maths",
+    "subjectDisplay": "AFCAT Numerical Ability",
+    "chapterSlug": "average",
+    "subtopicCount": 9
+  },
+  {
+    "examName": "AFCAT",
+    "subjectRoute": "afcat-maths",
+    "subjectDisplay": "AFCAT Numerical Ability",
+    "chapterSlug": "percentage",
+    "subtopicCount": 9
+  },
+  {
+    "examName": "AFCAT",
+    "subjectRoute": "afcat-maths",
+    "subjectDisplay": "AFCAT Numerical Ability",
+    "chapterSlug": "decimals-fractions",
+    "subtopicCount": 7
+  },
+  {
+    "examName": "AFCAT",
+    "subjectRoute": "afcat-maths",
+    "subjectDisplay": "AFCAT Numerical Ability",
+    "chapterSlug": "time-work",
+    "subtopicCount": 7
+  },
+  {
+    "examName": "AFCAT",
+    "subjectRoute": "afcat-maths",
+    "subjectDisplay": "AFCAT Numerical Ability",
+    "chapterSlug": "mixture-alligation",
+    "subtopicCount": 6
+  },
+  {
+    "examName": "AFCAT",
+    "subjectRoute": "afcat-maths",
+    "subjectDisplay": "AFCAT Numerical Ability",
+    "chapterSlug": "probability",
+    "subtopicCount": 6
+  },
+  {
+    "examName": "AFCAT",
+    "subjectRoute": "afcat-maths",
+    "subjectDisplay": "AFCAT Numerical Ability",
+    "chapterSlug": "clock",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "AFCAT",
+    "subjectRoute": "afcat-maths",
+    "subjectDisplay": "AFCAT Numerical Ability",
+    "chapterSlug": "squares-roots",
+    "subtopicCount": 6
+  },
+  {
+    "examName": "AFCAT",
+    "subjectRoute": "afcat-maths",
+    "subjectDisplay": "AFCAT Numerical Ability",
+    "chapterSlug": "lcm-hcf",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "AFCAT",
+    "subjectRoute": "afcat-maths",
+    "subjectDisplay": "AFCAT Numerical Ability",
+    "chapterSlug": "indices-surds",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "AFCAT",
+    "subjectRoute": "afcat-maths",
+    "subjectDisplay": "AFCAT Numerical Ability",
+    "chapterSlug": "statistics",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "AFCAT",
+    "subjectRoute": "afcat-maths",
+    "subjectDisplay": "AFCAT Numerical Ability",
+    "chapterSlug": "sequence-series",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "AFCAT",
+    "subjectRoute": "afcat-maths",
+    "subjectDisplay": "AFCAT Numerical Ability",
+    "chapterSlug": "number-system",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "AFCAT",
+    "subjectRoute": "afcat-maths",
+    "subjectDisplay": "AFCAT Numerical Ability",
+    "chapterSlug": "heights-distances",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "AFCAT",
+    "subjectRoute": "afcat-maths",
+    "subjectDisplay": "AFCAT Numerical Ability",
+    "chapterSlug": "area-perimeter",
+    "subtopicCount": 6
+  },
+  {
+    "examName": "AFCAT",
+    "subjectRoute": "afcat-maths",
+    "subjectDisplay": "AFCAT Numerical Ability",
+    "chapterSlug": "surface-area-volume",
+    "subtopicCount": 6
+  },
+  {
     "examName": "SPI",
     "subjectRoute": "spi-maths",
     "subjectDisplay": "SPI Mathematics",

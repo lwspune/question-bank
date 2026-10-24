@@ -11,6 +11,8 @@ export type AfcatOverride = WorksheetOverride & {
   /** The question tests FORM, not value ("in simplest form": 5/10 beside 1/2),
    *  so options equal in value are deliberate. Lifts build.ts's equal-value refusal. */
   equalValuesIntended?: true;
+  /** A stem repair whose blind-pass solution still fits the repaired stem: why. */
+  solutionStands?: string;
 };
 
 /** One pass-1 verdict, as the agent returns it (see AGENT_BRIEF.md). */

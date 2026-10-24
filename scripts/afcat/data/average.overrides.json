@@ -449,7 +449,8 @@
   },
   "01-214": {
     "answer": "B",
-    "reason": "Source key is wrong: seven consecutive odd numbers averaging 71 are 65 to 77, so the largest is 77 (key C 79). Blind pass agrees."
+    "reason": "Source key is wrong: seven consecutive odd numbers averaging 71 are 65 to 77, so the largest is 77 (key C 79). Blind pass agrees. Notes re-cut: The question turns on an equally spaced run of numbers.",
+    "subtopic": "Consecutive Numbers"
   },
   "01-702": {
     "answer": "A",
@@ -1017,7 +1018,8 @@
   },
   "04-28": {
     "answer": "B",
-    "reason": "Key A (62.5) is wrong: the source's own working reaches 260 / 4 = 65."
+    "reason": "Key A (62.5) is wrong: the source's own working reaches 260 / 4 = 65. Notes re-cut: The question turns on groups combined or split into parts.",
+    "subtopic": "Combined and Group Averages"
   },
   "06-34": {
     "answer": "A",
@@ -1076,7 +1078,8 @@
     "options": {
       "B": "\\(42.73\\)"
     },
-    "reason": "470 / 11 = 42.727. Option B printed 42.72; it now prints 42.73. Key B stands."
+    "reason": "470 / 11 = 42.727. Option B printed 42.72; it now prints 42.73. Key B stands. Notes re-cut: The question turns on runs, innings or run rate.",
+    "subtopic": "Cricket Scores"
   },
   "06-15": {
     "answer": "D",
@@ -1088,9 +1091,11 @@
   "13-3": {
     "answer": "B",
     "options": {
-      "B": "\\(98.5\\)"
+      "B": "\\(99\\)"
     },
-    "reason": "H + L = 495 - 378 = 117 and H - L = 80, so H = 98.5. Option B printed 98; it now prints 98.5. Key B stands."
+    "reason": "H + L = 495 - 378 = 117 and H - L = 80, so H = 98.5. Option B printed 98; it now prints 98.5. Key B stands. Notes review (2026-10-22): a difference of 80 gave a score of 98.5 runs; changed to 81, which gives 99 (option B reprinted, key letter kept).",
+    "stem": "In a cricket team, the average score of \\(11\\) players is \\(45\\) runs. If the difference between the highest and lowest scores is \\(81\\) runs, and after removing these two scores, the average becomes \\(42\\) runs for the remaining \\(9\\) players. Find the highest score.",
+    "solution": "The total is \\(11 \\times 45 = 495\\) and the other nine make \\(9 \\times 42 = 378\\), so highest + lowest \\(= 117\\). With a difference of 81, the highest is \\(\\frac{117 + 81}{2} = 99\\)."
   },
   "13-9": {
     "answer": "C",
@@ -1140,5 +1145,919 @@
       "D": "Rs. \\(12500\\)"
     },
     "reason": "Options A and D both printed Rs. 12000, the answer. D now prints Rs. 12500."
+  },
+  "16-18": {
+    "options": {
+      "A": "\\(44.34\\) kg"
+    },
+    "solution": "Let the girls' average be \\(g\\); the boys' is \\(1.15g\\). Then \\(0.55 \\times 1.15g + 0.45g = 1.0825g = 48\\), so \\(g = \\frac{48}{1.0825} \\approx 44.34\\) kg.",
+    "reason": "Notes review (2026-10-22): 48/1.0825 = 44.342, so the keyed 44.33 was a rounding slip; option A reprinted, key letter kept."
+  },
+  "16-35": {
+    "options": {
+      "C": "\\(74.26\\)"
+    },
+    "solution": "Highest group 88, middle \\(0.8 \\times 88 = 70.4\\), lowest \\(\\frac{70.4}{1.15} \\approx 61.22\\). Overall \\(= 0.35 \\times 88 + 0.40 \\times 70.4 + 0.25 \\times 61.22 = 30.8 + 28.16 + 15.30 \\approx 74.26\\).",
+    "reason": "Notes review (2026-10-22): the exact overall average is 74.264, so the keyed 74.27 was a rounding slip; option C reprinted, key letter kept."
+  },
+  "02-123": {
+    "options": {
+      "C": "7.67"
+    },
+    "solution": "The total was \\(15 \\times 8 = 120\\). Correcting 15 to 10 makes it 115, so the average is \\(\\frac{115}{15} \\approx 7.67\\).",
+    "reason": "Notes review (2026-10-22): 115/15 = 7.667, so the keyed 7.66 was truncated; option C reprinted, key letter kept."
+  },
+  "08-21": {
+    "stem": "If \\(6\\) consecutive odd numbers have a sum of \\(120\\), what is the difference between the largest and the average?",
+    "solution": "Write the numbers as \\(a, a + 2, \\dots, a + 10\\). Their sum \\(6a + 30 = 120\\) gives \\(a = 15\\): the numbers run 15 to 25. The average is 20, so the difference is \\(25 - 20 = 5\\).",
+    "reason": "Notes review (2026-10-22): six consecutive odd numbers cannot sum to 126 (6a + 30 = 126 gives a = 16, even); sum changed to 120, which makes the keyed 5 exact."
+  },
+  "09-23": {
+    "stem": "In a set of \\(7\\) numbers, the median is \\(40\\) and mean is \\(45\\). If the largest number is \\(70\\), what is the smallest number?",
+    "solution": "The seven numbers add up to \\(7 \\times 45 = 315\\). The median and the largest fix only two of them; the other five can share the rest in many ways, so the smallest number is not fixed.",
+    "reason": "Notes review (2026-10-22): 'what could be the smallest' made A, B and C all possible; the stem now asks for the smallest, so 'Cannot be determined' is the one answer."
+  },
+  "09-43": {
+    "stem": "Among \\(8\\) positive integers, the average is \\(25\\). If the largest number is \\(40\\) and the second largest is \\(35\\), what is the maximum possible value of the smallest number?",
+    "solution": "The eight integers add up to 200, so the other six add up to \\(200 - 75 = 125\\). The smallest is largest when the six are as equal as possible: \\(125 = 6 \\times 20 + 5\\), so it is at most 20 (for example 20, 21, 21, 21, 21, 21).",
+    "reason": "Notes review (2026-10-22): without 'integers' the smallest could be 125/6 = 20.83; the stem now says integers, which makes the keyed 20 exact."
+  },
+  "11-9": {
+    "stem": "The strike rate of a batsman for \\(12\\) innings is \\(125\\). He faced the same number of balls in every innings. If his strike rate in the first \\(7\\) innings is \\(120\\) and in the next \\(4\\) innings is \\(135\\), what is his strike rate in the last innings?",
+    "solution": "With the same number of balls in each innings, strike rates average like scores: \\(12 \\times 125 - (7 \\times 120 + 4 \\times 135) = 1500 - 1380 = 120\\).",
+    "reason": "Notes review (2026-10-22): averaging strike rates needs equal balls faced; the stem now says so, which makes the keyed 120 exact."
+  },
+  "14-37": {
+    "stem": "The average of \\(28\\) observations is \\(56\\). The average of the first \\(14\\) observations is \\(52\\) and the average of the last \\(14\\) observations is \\(60\\). Is there an error in the calculation, and if so, how large is it?",
+    "solution": "\\(14 \\times 52 + 14 \\times 60 = 728 + 840 = 1568 = 28 \\times 56\\), so the figures agree: there is no error.",
+    "reason": "Notes review (2026-10-22): the stem asserted an error while the keyed answer is 'No error'; it now asks whether there is one. Notes re-cut: The question turns on groups combined or split into parts.",
+    "subtopic": "Combined and Group Averages"
+  },
+  "12-30": {
+    "stem": "The average age of \\(4\\) siblings is \\(12\\) years. When their youngest brother is counted too, the average becomes \\(10\\) years. What is the youngest brother's age?",
+    "solution": "\\(5 \\times 10 - 4 \\times 12 = 50 - 48 = 2\\) years.",
+    "reason": "Notes review (2026-10-22): a brother 'born' cannot be 2 years old; reworded so the keyed 2 years makes sense."
+  },
+  "12-11": {
+    "stem": "The average age of \\(3\\) brothers is \\(15\\) years. When their youngest sister is counted too, the average age becomes \\(12\\) years. What is the age of the sister?",
+    "solution": "\\(4 \\times 12 - 3 \\times 15 = 48 - 45 = 3\\) years.",
+    "reason": "Notes review (2026-10-22): a sister 'born' cannot be 3 years old; reworded so the keyed 3 years makes sense."
+  },
+  "12-18": {
+    "stem": "The average age of \\(6\\) people in a family is \\(22\\) years. When the youngest child is counted too, the average becomes \\(20\\) years. How old is the child?",
+    "solution": "\\(7 \\times 20 - 6 \\times 22 = 140 - 132 = 8\\) years.",
+    "reason": "Notes review (2026-10-22): a 'new baby born' cannot be 8 years old; reworded so the keyed 8 years makes sense."
+  },
+  "12-22": {
+    "stem": "The average age of \\(9\\) family members is \\(26\\) years. A child joins and the average drops to \\(24\\) years. What is the child's age?",
+    "solution": "\\(10 \\times 24 - 9 \\times 26 = 240 - 234 = 6\\) years.",
+    "reason": "Notes review (2026-10-22): a 'baby' aged 6 years; reworded as a child so the keyed 6 years reads right."
+  },
+  "12-7": {
+    "stem": "The average age of a couple is \\(24\\) years. With their twins counted too, the average age of the family is \\(13.5\\) years. What is the age of each twin?",
+    "solution": "The family's total age is \\(4 \\times 13.5 = 54\\) and the couple's \\(2 \\times 24 = 48\\), so the twins together are 6: each is 3 years.",
+    "reason": "Notes review (2026-10-22): twins 'born' cannot be 3 years old; reworded so the keyed 3 years makes sense."
+  },
+  "12-13": {
+    "stem": "The average age of a family of \\(5\\) members is \\(32\\) years. With twins counted too, the average age is \\(24\\) years. What is the age of each twin?",
+    "solution": "\\(7 \\times 24 - 5 \\times 32 = 168 - 160 = 8\\), so each twin is 4 years.",
+    "reason": "Notes review (2026-10-22): twins 'born' cannot be 4 years old; reworded so the keyed 4 years makes sense."
+  },
+  "12-35": {
+    "stem": "\\(3\\) years ago, the average age of \\(7\\) members was \\(23\\) years. Now two children, aged \\(2\\) and \\(4\\) years, join them. What is the current average age?",
+    "solution": "Three years ago the seven totalled \\(7 \\times 23 = 161\\); now they total \\(161 + 21 = 182\\). With the children, \\(182 + 6 = 188\\) over 9 people: \\(\\frac{188}{9} \\approx 20.89\\) years.",
+    "reason": "Notes review (2026-10-22): 'twins' aged 2 and 4; reworded as two children. Key B is unchanged."
+  },
+  "14-11": {
+    "subtopic": "Weighted Averages",
+    "reason": "Notes re-cut: The question turns on weights or percentages decide the average."
+  },
+  "17-32": {
+    "subtopic": "Members Joining or Leaving",
+    "reason": "Notes re-cut: The question turns on a group joins or leaves."
+  },
+  "17-47": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "03-7": {
+    "subtopic": "Consecutive Numbers",
+    "reason": "Notes re-cut: The question turns on an equally spaced run of numbers."
+  },
+  "03-13": {
+    "subtopic": "Consecutive Numbers",
+    "reason": "Notes re-cut: The question turns on an equally spaced run of numbers."
+  },
+  "03-19": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "03-24": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "03-26": {
+    "subtopic": "Consecutive Numbers",
+    "reason": "Notes re-cut: The question turns on an equally spaced run of numbers."
+  },
+  "03-30": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "03-33": {
+    "subtopic": "Combined and Group Averages",
+    "reason": "Notes re-cut: The question turns on groups combined or split into parts."
+  },
+  "03-35": {
+    "subtopic": "Consecutive Numbers",
+    "reason": "Notes re-cut: The question turns on an equally spaced run of numbers."
+  },
+  "03-44": {
+    "subtopic": "Consecutive Numbers",
+    "reason": "Notes re-cut: The question turns on an equally spaced run of numbers."
+  },
+  "03-46": {
+    "subtopic": "Members Joining or Leaving",
+    "reason": "Notes re-cut: The question turns on a group joins or leaves."
+  },
+  "04-2": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "04-3": {
+    "subtopic": "Members Joining or Leaving",
+    "reason": "Notes re-cut: The question turns on a group joins or leaves."
+  },
+  "04-4": {
+    "subtopic": "Combined and Group Averages",
+    "reason": "Notes re-cut: The question turns on groups combined or split into parts."
+  },
+  "04-5": {
+    "subtopic": "Cricket Scores",
+    "reason": "Notes re-cut: The question turns on runs, innings or run rate."
+  },
+  "04-7": {
+    "subtopic": "Members Joining or Leaving",
+    "reason": "Notes re-cut: The question turns on a group joins or leaves."
+  },
+  "04-8": {
+    "subtopic": "Consecutive Numbers",
+    "reason": "Notes re-cut: The question turns on an equally spaced run of numbers."
+  },
+  "04-9": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "04-11": {
+    "subtopic": "Members Joining or Leaving",
+    "reason": "Notes re-cut: The question turns on a group joins or leaves."
+  },
+  "04-12": {
+    "subtopic": "Cricket Scores",
+    "reason": "Notes re-cut: The question turns on runs, innings or run rate."
+  },
+  "04-13": {
+    "subtopic": "Consecutive Numbers",
+    "reason": "Notes re-cut: The question turns on an equally spaced run of numbers."
+  },
+  "04-15": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "04-20": {
+    "subtopic": "Ages",
+    "reason": "Notes re-cut: The question turns on ages that move with time or a baby."
+  },
+  "04-22": {
+    "subtopic": "Consecutive Numbers",
+    "reason": "Notes re-cut: The question turns on an equally spaced run of numbers."
+  },
+  "04-23": {
+    "subtopic": "Members Joining or Leaving",
+    "reason": "Notes re-cut: The question turns on a group joins or leaves."
+  },
+  "04-24": {
+    "subtopic": "Combined and Group Averages",
+    "reason": "Notes re-cut: The question turns on groups combined or split into parts."
+  },
+  "04-25": {
+    "subtopic": "Combined and Group Averages",
+    "reason": "Notes re-cut: The question turns on groups combined or split into parts."
+  },
+  "04-26": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "04-27": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "04-31": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "04-32": {
+    "subtopic": "Cricket Scores",
+    "reason": "Notes re-cut: The question turns on runs, innings or run rate."
+  },
+  "04-34": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "04-36": {
+    "subtopic": "Members Joining or Leaving",
+    "reason": "Notes re-cut: The question turns on a group joins or leaves."
+  },
+  "04-38": {
+    "subtopic": "Members Joining or Leaving",
+    "reason": "Notes re-cut: The question turns on a group joins or leaves."
+  },
+  "04-39": {
+    "subtopic": "Combined and Group Averages",
+    "reason": "Notes re-cut: The question turns on groups combined or split into parts."
+  },
+  "04-41": {
+    "subtopic": "Weighted Averages",
+    "reason": "Notes re-cut: The question turns on weights or percentages decide the average."
+  },
+  "04-42": {
+    "subtopic": "Consecutive Numbers",
+    "reason": "Notes re-cut: The question turns on an equally spaced run of numbers."
+  },
+  "04-43": {
+    "subtopic": "Highest and Lowest Values",
+    "reason": "Notes re-cut: The question turns on the largest or smallest value is the unknown."
+  },
+  "04-44": {
+    "subtopic": "Combined and Group Averages",
+    "reason": "Notes re-cut: The question turns on groups combined or split into parts."
+  },
+  "04-45": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "04-47": {
+    "subtopic": "Combined and Group Averages",
+    "reason": "Notes re-cut: The question turns on groups combined or split into parts."
+  },
+  "04-48": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "05-5": {
+    "subtopic": "Members Joining or Leaving",
+    "reason": "Notes re-cut: The question turns on a group joins or leaves."
+  },
+  "05-6": {
+    "subtopic": "Combined and Group Averages",
+    "reason": "Notes re-cut: The question turns on groups combined or split into parts."
+  },
+  "05-8": {
+    "subtopic": "Cricket Scores",
+    "reason": "Notes re-cut: The question turns on runs, innings or run rate."
+  },
+  "05-9": {
+    "subtopic": "Consecutive Numbers",
+    "reason": "Notes re-cut: The question turns on an equally spaced run of numbers."
+  },
+  "05-10": {
+    "subtopic": "Members Joining or Leaving",
+    "reason": "Notes re-cut: The question turns on a group joins or leaves."
+  },
+  "05-13": {
+    "subtopic": "Combined and Group Averages",
+    "reason": "Notes re-cut: The question turns on groups combined or split into parts."
+  },
+  "05-15": {
+    "subtopic": "Consecutive Numbers",
+    "reason": "Notes re-cut: The question turns on an equally spaced run of numbers."
+  },
+  "05-16": {
+    "subtopic": "Members Joining or Leaving",
+    "reason": "Notes re-cut: The question turns on a group joins or leaves."
+  },
+  "05-19": {
+    "subtopic": "Combined and Group Averages",
+    "reason": "Notes re-cut: The question turns on groups combined or split into parts."
+  },
+  "05-20": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "05-21": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "05-22": {
+    "subtopic": "Members Joining or Leaving",
+    "reason": "Notes re-cut: The question turns on a group joins or leaves."
+  },
+  "05-23": {
+    "subtopic": "Combined and Group Averages",
+    "reason": "Notes re-cut: The question turns on groups combined or split into parts."
+  },
+  "05-24": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "05-26": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "05-27": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "05-29": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "05-30": {
+    "subtopic": "Combined and Group Averages",
+    "reason": "Notes re-cut: The question turns on groups combined or split into parts."
+  },
+  "05-31": {
+    "subtopic": "Combined and Group Averages",
+    "reason": "Notes re-cut: The question turns on groups combined or split into parts."
+  },
+  "05-33": {
+    "subtopic": "Combined and Group Averages",
+    "reason": "Notes re-cut: The question turns on groups combined or split into parts."
+  },
+  "05-36": {
+    "subtopic": "Members Joining or Leaving",
+    "reason": "Notes re-cut: The question turns on a group joins or leaves."
+  },
+  "05-39": {
+    "subtopic": "Members Joining or Leaving",
+    "reason": "Notes re-cut: The question turns on a group joins or leaves."
+  },
+  "05-40": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "05-41": {
+    "subtopic": "Members Joining or Leaving",
+    "reason": "Notes re-cut: The question turns on a group joins or leaves."
+  },
+  "05-44": {
+    "subtopic": "Consecutive Numbers",
+    "reason": "Notes re-cut: The question turns on an equally spaced run of numbers."
+  },
+  "05-45": {
+    "subtopic": "Members Joining or Leaving",
+    "reason": "Notes re-cut: The question turns on a group joins or leaves."
+  },
+  "05-46": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "05-47": {
+    "subtopic": "Combined and Group Averages",
+    "reason": "Notes re-cut: The question turns on groups combined or split into parts."
+  },
+  "06-8": {
+    "subtopic": "Members Joining or Leaving",
+    "reason": "Notes re-cut: The question turns on a group joins or leaves."
+  },
+  "07-2": {
+    "subtopic": "Members Joining or Leaving",
+    "reason": "Notes re-cut: The question turns on a group joins or leaves."
+  },
+  "07-3": {
+    "subtopic": "Members Joining or Leaving",
+    "reason": "Notes re-cut: The question turns on a group joins or leaves."
+  },
+  "07-6": {
+    "subtopic": "Members Joining or Leaving",
+    "reason": "Notes re-cut: The question turns on a group joins or leaves."
+  },
+  "07-7": {
+    "subtopic": "Members Joining or Leaving",
+    "reason": "Notes re-cut: The question turns on a group joins or leaves."
+  },
+  "07-12": {
+    "subtopic": "Members Joining or Leaving",
+    "reason": "Notes re-cut: The question turns on a group joins or leaves."
+  },
+  "07-13": {
+    "subtopic": "Members Joining or Leaving",
+    "reason": "Notes re-cut: The question turns on a group joins or leaves."
+  },
+  "07-14": {
+    "subtopic": "Members Joining or Leaving",
+    "reason": "Notes re-cut: The question turns on a group joins or leaves."
+  },
+  "07-16": {
+    "subtopic": "Ages",
+    "reason": "Notes re-cut: The question turns on ages that move with time or a baby."
+  },
+  "07-19": {
+    "subtopic": "Members Joining or Leaving",
+    "reason": "Notes re-cut: The question turns on a group joins or leaves."
+  },
+  "07-21": {
+    "subtopic": "Members Joining or Leaving",
+    "reason": "Notes re-cut: The question turns on a group joins or leaves."
+  },
+  "07-22": {
+    "subtopic": "Members Joining or Leaving",
+    "reason": "Notes re-cut: The question turns on a group joins or leaves."
+  },
+  "07-24": {
+    "subtopic": "Members Joining or Leaving",
+    "reason": "Notes re-cut: The question turns on a group joins or leaves."
+  },
+  "07-25": {
+    "subtopic": "Members Joining or Leaving",
+    "reason": "Notes re-cut: The question turns on a group joins or leaves."
+  },
+  "07-26": {
+    "subtopic": "Members Joining or Leaving",
+    "reason": "Notes re-cut: The question turns on a group joins or leaves."
+  },
+  "07-27": {
+    "subtopic": "Members Joining or Leaving",
+    "reason": "Notes re-cut: The question turns on a group joins or leaves."
+  },
+  "07-30": {
+    "subtopic": "Members Joining or Leaving",
+    "reason": "Notes re-cut: The question turns on a group joins or leaves."
+  },
+  "07-31": {
+    "subtopic": "Members Joining or Leaving",
+    "reason": "Notes re-cut: The question turns on a group joins or leaves."
+  },
+  "07-33": {
+    "subtopic": "Members Joining or Leaving",
+    "reason": "Notes re-cut: The question turns on a group joins or leaves."
+  },
+  "07-34": {
+    "subtopic": "Members Joining or Leaving",
+    "reason": "Notes re-cut: The question turns on a group joins or leaves."
+  },
+  "07-35": {
+    "subtopic": "Members Joining or Leaving",
+    "reason": "Notes re-cut: The question turns on a group joins or leaves."
+  },
+  "07-37": {
+    "subtopic": "Members Joining or Leaving",
+    "reason": "Notes re-cut: The question turns on a group joins or leaves."
+  },
+  "07-38": {
+    "subtopic": "Members Joining or Leaving",
+    "reason": "Notes re-cut: The question turns on a group joins or leaves."
+  },
+  "07-41": {
+    "subtopic": "Members Joining or Leaving",
+    "reason": "Notes re-cut: The question turns on a group joins or leaves."
+  },
+  "07-42": {
+    "subtopic": "Members Joining or Leaving",
+    "reason": "Notes re-cut: The question turns on a group joins or leaves."
+  },
+  "07-44": {
+    "subtopic": "Members Joining or Leaving",
+    "reason": "Notes re-cut: The question turns on a group joins or leaves."
+  },
+  "07-45": {
+    "subtopic": "Members Joining or Leaving",
+    "reason": "Notes re-cut: The question turns on a group joins or leaves."
+  },
+  "08-11": {
+    "subtopic": "Basic and Simple Averages",
+    "reason": "Notes re-cut: The question turns on a plain average, a missing value or a first-n formula."
+  },
+  "08-31": {
+    "subtopic": "Basic and Simple Averages",
+    "reason": "Notes re-cut: The question turns on a plain average, a missing value or a first-n formula."
+  },
+  "09-5": {
+    "subtopic": "Consecutive Numbers",
+    "reason": "Notes re-cut: The question turns on an equally spaced run of numbers."
+  },
+  "09-7": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "09-11": {
+    "subtopic": "Combined and Group Averages",
+    "reason": "Notes re-cut: The question turns on groups combined or split into parts."
+  },
+  "09-12": {
+    "subtopic": "Consecutive Numbers",
+    "reason": "Notes re-cut: The question turns on an equally spaced run of numbers."
+  },
+  "09-17": {
+    "subtopic": "Basic and Simple Averages",
+    "reason": "Notes re-cut: The question turns on a plain average, a missing value or a first-n formula."
+  },
+  "09-18": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "09-20": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "09-21": {
+    "subtopic": "Consecutive Numbers",
+    "reason": "Notes re-cut: The question turns on an equally spaced run of numbers."
+  },
+  "09-28": {
+    "subtopic": "Combined and Group Averages",
+    "reason": "Notes re-cut: The question turns on groups combined or split into parts."
+  },
+  "09-30": {
+    "subtopic": "Basic and Simple Averages",
+    "reason": "Notes re-cut: The question turns on a plain average, a missing value or a first-n formula."
+  },
+  "09-34": {
+    "subtopic": "Consecutive Numbers",
+    "reason": "Notes re-cut: The question turns on an equally spaced run of numbers."
+  },
+  "09-37": {
+    "subtopic": "Combined and Group Averages",
+    "reason": "Notes re-cut: The question turns on groups combined or split into parts."
+  },
+  "09-39": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "09-41": {
+    "subtopic": "Consecutive Numbers",
+    "reason": "Notes re-cut: The question turns on an equally spaced run of numbers."
+  },
+  "09-45": {
+    "subtopic": "Combined and Group Averages",
+    "reason": "Notes re-cut: The question turns on groups combined or split into parts."
+  },
+  "10-6": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "10-10": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "10-18": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "10-21": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "10-27": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "10-34": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "10-44": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "11-14": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "14-19": {
+    "subtopic": "Basic and Simple Averages",
+    "reason": "Notes re-cut: The question turns on a plain average, a missing value or a first-n formula."
+  },
+  "14-22": {
+    "subtopic": "Members Joining or Leaving",
+    "reason": "Notes re-cut: The question turns on a group joins or leaves."
+  },
+  "14-24": {
+    "subtopic": "Members Joining or Leaving",
+    "reason": "Notes re-cut: The question turns on a group joins or leaves."
+  },
+  "14-32": {
+    "subtopic": "Cricket Scores",
+    "reason": "Notes re-cut: The question turns on runs, innings or run rate."
+  },
+  "14-33": {
+    "subtopic": "Combined and Group Averages",
+    "reason": "Notes re-cut: The question turns on groups combined or split into parts."
+  },
+  "14-42": {
+    "subtopic": "Ages",
+    "reason": "Notes re-cut: The question turns on ages that move with time or a baby."
+  },
+  "14-44": {
+    "subtopic": "Cricket Scores",
+    "reason": "Notes re-cut: The question turns on runs, innings or run rate."
+  },
+  "14-45": {
+    "subtopic": "Basic and Simple Averages",
+    "reason": "Notes re-cut: The question turns on a plain average, a missing value or a first-n formula."
+  },
+  "14-46": {
+    "subtopic": "Basic and Simple Averages",
+    "reason": "Notes re-cut: The question turns on a plain average, a missing value or a first-n formula."
+  },
+  "15-6": {
+    "subtopic": "Combined and Group Averages",
+    "reason": "Notes re-cut: The question turns on groups combined or split into parts."
+  },
+  "15-8": {
+    "subtopic": "Combined and Group Averages",
+    "reason": "Notes re-cut: The question turns on groups combined or split into parts."
+  },
+  "15-12": {
+    "subtopic": "Combined and Group Averages",
+    "reason": "Notes re-cut: The question turns on groups combined or split into parts."
+  },
+  "15-16": {
+    "subtopic": "Combined and Group Averages",
+    "reason": "Notes re-cut: The question turns on groups combined or split into parts."
+  },
+  "15-20": {
+    "subtopic": "Combined and Group Averages",
+    "reason": "Notes re-cut: The question turns on groups combined or split into parts."
+  },
+  "15-23": {
+    "subtopic": "Combined and Group Averages",
+    "reason": "Notes re-cut: The question turns on groups combined or split into parts."
+  },
+  "15-28": {
+    "subtopic": "Combined and Group Averages",
+    "reason": "Notes re-cut: The question turns on groups combined or split into parts."
+  },
+  "15-31": {
+    "subtopic": "Combined and Group Averages",
+    "reason": "Notes re-cut: The question turns on groups combined or split into parts."
+  },
+  "15-39": {
+    "subtopic": "Combined and Group Averages",
+    "reason": "Notes re-cut: The question turns on groups combined or split into parts."
+  },
+  "15-44": {
+    "subtopic": "Combined and Group Averages",
+    "reason": "Notes re-cut: The question turns on groups combined or split into parts."
+  },
+  "16-29": {
+    "subtopic": "Members Joining or Leaving",
+    "reason": "Notes re-cut: The question turns on a group joins or leaves."
+  },
+  "16-46": {
+    "subtopic": "Members Joining or Leaving",
+    "reason": "Notes re-cut: The question turns on a group joins or leaves."
+  },
+  "17-2": {
+    "subtopic": "Members Joining or Leaving",
+    "reason": "Notes re-cut: The question turns on a group joins or leaves."
+  },
+  "17-3": {
+    "subtopic": "Cricket Scores",
+    "reason": "Notes re-cut: The question turns on runs, innings or run rate."
+  },
+  "17-4": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "17-5": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "17-6": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "17-8": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "17-10": {
+    "subtopic": "Members Joining or Leaving",
+    "reason": "Notes re-cut: The question turns on a group joins or leaves."
+  },
+  "17-11": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "17-12": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "17-13": {
+    "subtopic": "Cricket Scores",
+    "reason": "Notes re-cut: The question turns on runs, innings or run rate."
+  },
+  "17-14": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "17-15": {
+    "subtopic": "Members Joining or Leaving",
+    "reason": "Notes re-cut: The question turns on a group joins or leaves."
+  },
+  "17-16": {
+    "subtopic": "Members Joining or Leaving",
+    "reason": "Notes re-cut: The question turns on a group joins or leaves."
+  },
+  "17-18": {
+    "subtopic": "Members Joining or Leaving",
+    "reason": "Notes re-cut: The question turns on a group joins or leaves."
+  },
+  "17-19": {
+    "subtopic": "Weighted Averages",
+    "reason": "Notes re-cut: The question turns on weights or percentages decide the average."
+  },
+  "17-20": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "17-21": {
+    "subtopic": "Cricket Scores",
+    "reason": "Notes re-cut: The question turns on runs, innings or run rate."
+  },
+  "17-22": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "17-23": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "17-24": {
+    "subtopic": "Members Joining or Leaving",
+    "reason": "Notes re-cut: The question turns on a group joins or leaves."
+  },
+  "17-26": {
+    "subtopic": "Weighted Averages",
+    "reason": "Notes re-cut: The question turns on weights or percentages decide the average."
+  },
+  "17-27": {
+    "subtopic": "Combined and Group Averages",
+    "reason": "Notes re-cut: The question turns on groups combined or split into parts."
+  },
+  "17-28": {
+    "subtopic": "Highest and Lowest Values",
+    "reason": "Notes re-cut: The question turns on the largest or smallest value is the unknown."
+  },
+  "17-29": {
+    "subtopic": "Combined and Group Averages",
+    "reason": "Notes re-cut: The question turns on groups combined or split into parts."
+  },
+  "17-30": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "17-33": {
+    "subtopic": "Cricket Scores",
+    "reason": "Notes re-cut: The question turns on runs, innings or run rate."
+  },
+  "17-34": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "17-35": {
+    "subtopic": "Weighted Averages",
+    "reason": "Notes re-cut: The question turns on weights or percentages decide the average."
+  },
+  "17-36": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "17-38": {
+    "subtopic": "Highest and Lowest Values",
+    "reason": "Notes re-cut: The question turns on the largest or smallest value is the unknown."
+  },
+  "17-39": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "17-40": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "17-41": {
+    "subtopic": "Members Joining or Leaving",
+    "reason": "Notes re-cut: The question turns on a group joins or leaves."
+  },
+  "17-43": {
+    "subtopic": "Members Joining or Leaving",
+    "reason": "Notes re-cut: The question turns on a group joins or leaves."
+  },
+  "17-44": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "17-45": {
+    "subtopic": "Weighted Averages",
+    "reason": "Notes re-cut: The question turns on weights or percentages decide the average."
+  },
+  "17-46": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "17-48": {
+    "subtopic": "Combined and Group Averages",
+    "reason": "Notes re-cut: The question turns on groups combined or split into parts."
+  },
+  "17-49": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "01-204": {
+    "subtopic": "Consecutive Numbers",
+    "reason": "Notes re-cut: The question turns on an equally spaced run of numbers."
+  },
+  "01-201": {
+    "subtopic": "Consecutive Numbers",
+    "reason": "Notes re-cut: The question turns on an equally spaced run of numbers."
+  },
+  "01-203": {
+    "subtopic": "Consecutive Numbers",
+    "reason": "Notes re-cut: The question turns on an equally spaced run of numbers."
+  },
+  "01-206": {
+    "subtopic": "Consecutive Numbers",
+    "reason": "Notes re-cut: The question turns on an equally spaced run of numbers."
+  },
+  "01-208": {
+    "subtopic": "Consecutive Numbers",
+    "reason": "Notes re-cut: The question turns on an equally spaced run of numbers."
+  },
+  "01-212": {
+    "subtopic": "Consecutive Numbers",
+    "reason": "Notes re-cut: The question turns on an equally spaced run of numbers."
+  },
+  "01-213": {
+    "subtopic": "Consecutive Numbers",
+    "reason": "Notes re-cut: The question turns on an equally spaced run of numbers."
+  },
+  "01-218": {
+    "subtopic": "Consecutive Numbers",
+    "reason": "Notes re-cut: The question turns on an equally spaced run of numbers."
+  },
+  "01-312": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "01-503": {
+    "subtopic": "Ages",
+    "reason": "Notes re-cut: The question turns on ages that move with time or a baby."
+  },
+  "01-504": {
+    "subtopic": "Ages",
+    "reason": "Notes re-cut: The question turns on ages that move with time or a baby."
+  },
+  "01-505": {
+    "subtopic": "Ages",
+    "reason": "Notes re-cut: The question turns on ages that move with time or a baby."
+  },
+  "02-116": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "02-118": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "02-119": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "02-107": {
+    "subtopic": "Basic and Simple Averages",
+    "reason": "Notes re-cut: The question turns on a plain average, a missing value or a first-n formula."
+  },
+  "03-49": {
+    "subtopic": "Members Joining or Leaving",
+    "reason": "Notes re-cut: The question turns on a group joins or leaves."
+  },
+  "05-2": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "05-3": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "04-14": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "05-37": {
+    "subtopic": "Highest and Lowest Values",
+    "reason": "Notes re-cut: The question turns on the largest or smallest value is the unknown."
+  },
+  "10-2": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
+  },
+  "07-5": {
+    "subtopic": "Members Joining or Leaving",
+    "reason": "Notes re-cut: The question turns on a group joins or leaves."
+  },
+  "07-20": {
+    "subtopic": "Adding, Removing or Replacing a Value",
+    "reason": "Notes re-cut: The question turns on one value added, removed, replaced or misread."
   }
 }

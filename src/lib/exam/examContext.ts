@@ -790,7 +790,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     // the AFCAT past-year questions printed in Conquer the Sky. NOT practiceOnly:
     // those PYQs are real. scripts/afcat/.
     guidesPath: null,
-    notesPath: null,
+    notesPath: "/notes/afcat", // exam hub: Numerical Ability notes (Ratio and Proportion first, 2026-10-22)
   },
   {
     slug: "ssc-cgl",

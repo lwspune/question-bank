@@ -162,6 +162,18 @@ describe("chapter names shared with CDS", () => {
   });
 });
 
+describe("chapter names shared with AFCAT", () => {
+  // AFCAT's 20 chapters (2026-10-22) reuse NDA and CDS names and register last;
+  // they yield like CDS so /go/learn links keep their existing targets.
+  it.each(["Statistics", "Probability"])("%s still resolves to NDA", (name) => {
+    expect(getChapterByName(name)?.examName).toBe("NDA");
+  });
+
+  it("an AFCAT-only chapter name still resolves to AFCAT", () => {
+    expect(getChapterByName("Clock")?.examName).toBe("AFCAT");
+  });
+});
+
 describe("chapter names shared with SSC CGL", () => {
   // SSC CGL's Maths catalog is copied from CDS, so every SSC chapter name is
   // already a CDS chapter name; SSC must never take over CDS's links.

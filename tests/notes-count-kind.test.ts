@@ -11,6 +11,10 @@ describe("notesCountKind", () => {
     expect(notesCountKind("SPI")).toBe("all");
   });
 
+  it("counts both kinds for AFCAT, whose Numerical Ability bank is 97% practice", () => {
+    expect(notesCountKind("AFCAT")).toBe("all");
+  });
+
   it("names what it counts, so a card never calls a practice question a PYQ", () => {
     expect(notesCountNoun("pyq")).toBe("PYQs");
     expect(notesCountNoun("all")).toBe("questions");

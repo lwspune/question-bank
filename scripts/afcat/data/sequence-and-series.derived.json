@@ -25,7 +25,7 @@
     "value": "n + 2^-n - 1",
     "confidence": "high",
     "note": "key seen before solving; checked: n - (1 - 2^-n)",
-    "subtopic": "Special Series",
+    "subtopic": "Special Series and Standard Sums",
     "difficulty": "MODERATE",
     "solution": "Each term is \\(1 - \\frac{1}{2^k}\\), so the sum is \\(n - \\left(\\frac{1}{2} + \\frac{1}{4} + \\cdots + \\frac{1}{2^n}\\right) = n - (1 - 2^{-n}) = n + 2^{-n} - 1\\)."
   },
@@ -45,7 +45,7 @@
     "value": "2a^2/3 n(n-1)(2n-1)",
     "confidence": "high",
     "note": "checked: T_k = 2a(k-1)",
-    "subtopic": "Special Series",
+    "subtopic": "Special Series and Standard Sums",
     "difficulty": "HARD",
     "solution": "The \\(k\\)th term is \\(S_k - S_{k-1} = a[k(k-1) - (k-1)(k-2)] = 2a(k-1)\\). The sum of squares is \\(4a^2 \\sum_{k=1}^{n} (k-1)^2 = 4a^2 \\cdot \\frac{(n-1)n(2n-1)}{6} = \\frac{2a^2}{3} n(n-1)(2n-1)\\)."
   },
@@ -115,7 +115,7 @@
     "value": "Only III",
     "confidence": "high",
     "note": "checked: pairs sum to -(2k-1) - 2k",
-    "subtopic": "Special Series",
+    "subtopic": "Special Series and Standard Sums",
     "difficulty": "HARD",
     "solution": "Pair the terms: \\((1^2 - 2^2) + (3^2 - 4^2) + \\cdots = -(1 + 2) - (3 + 4) - \\cdots = -(1 + 2 + \\cdots + n) = -\\frac{n(n + 1)}{2}\\). Only statement III is correct."
   },

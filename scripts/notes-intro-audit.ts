@@ -87,7 +87,7 @@ async function loadLive(db: SupabaseClient) {
   for (let from = 0; ; from += 1000) {
     let q = db
       .from("questions")
-      .select("subtopics(name), chapters(name, subjects(name, exams(name)))")
+      .select("question_kind, subtopics(name), chapters(name, subjects(name, exams(name)))")
       .eq("visibility", "PUBLIC")
       .eq("question_kind", scan.kind);
     if (scan.examIds) q = q.in("exam_id", scan.examIds);
@@ -102,6 +102,8 @@ async function loadLive(db: SupabaseClient) {
     if (error) throw new Error(error.message);
     const rows = (data ?? []) as any[];
     for (const r of rows) {
+      // Past-year only, except the exams whose notes count practice too (countKind.ts).
+      if (r.question_kind !== "pyq" && notesCountKind(r.chapters?.subjects?.exams?.name) !== "all") continue;
       const k = key(
         r.chapters?.subjects?.exams?.name,
         r.chapters?.subjects?.name,
