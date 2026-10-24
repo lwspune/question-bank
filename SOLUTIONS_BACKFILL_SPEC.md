@@ -288,3 +288,7 @@ One line per batch: date, exam, written, disputed, skipped.
   Disputed 6 (key right 2, key doubtful 1, judgement 3). Skipped 37, several
   for malformed questions (duplicate or empty options) now listed for the
   owner. Read 30 of 281, rejected 0. Running total: 3,028 written.
+- 2026-10-24, b13 Foundation Course (324, mostly chemistry): written 276.
+  Disputed 2 (one key looks wrong: Fe2O3 + CO redox). Skipped 44, many for
+  malformed items (blank or duplicate options). Read 30 of 276, rejected 0.
+  Running total: 3,304 written.
