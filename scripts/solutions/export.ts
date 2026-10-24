@@ -5,6 +5,7 @@
  *   npx tsx scripts/solutions/export.ts --batch=pilot --exam="NEET:40" --exam="IPMAT Indore:20"
  *   npx tsx scripts/solutions/export.ts --batch=neet-1 --exam=NEET --slice=35
  *   ... --replace    re-export an existing batch (refused once it holds drafts)
+ *   ... --retry      include questions an earlier batch drafted but did not fill
  *
  * Writes generated-papers/solutions/<batch>/ (gitignored):
  *   questions-NN.json  one slice each, what a solver reads. NO key in it.
@@ -18,7 +19,7 @@
  * published mock, then by subject and chapter so a slice reads as one topic.
  * Questions of one passage stay in one slice (`slices`).
  */
-import { existsSync, mkdirSync, readdirSync, rmSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { readAllPages } from "../../src/lib/supabase/readAllPages";
@@ -81,6 +82,19 @@ async function main() {
   }
   mkdirSync(join(dir, "images"), { recursive: true });
   const { asked, inMock } = await priorityIds(db);
+  // A question drafted in an earlier batch and still empty was skipped or
+  // disputed there: leave it out, or every batch would start with the same
+  // misses. --retry brings them back on purpose.
+  const tried = new Set<string>();
+  if (!process.argv.includes("--retry")) {
+    const root = join(process.cwd(), "generated-papers", "solutions");
+    for (const b of readdirSync(root)) {
+      if (b === batch || !existsSync(join(root, b)) || !statSync(join(root, b)).isDirectory()) continue;
+      for (const f of readdirSync(join(root, b)).filter((x) => /^drafts-.*\.json$/.test(x))) {
+        for (const id of Object.keys(JSON.parse(readFileSync(join(root, b, f), "utf8")))) tried.add(id);
+      }
+    }
+  }
   const rank = (id: string) => (asked.has(id) ? 0 : inMock.has(id) ? 1 : 2);
 
   const picked: (Row & { exam: string })[] = [];
@@ -100,11 +114,14 @@ async function main() {
       return q.order("id").range(f, t) as unknown as PromiseLike<{ data: Row[] | null; error: { message: string } | null }>;
     });
     const fillable: Row[] = [];
+    let seen = 0;
     for (const r of rows) {
       const why = skipReason(r);
       if (why) skipped.push(`| ${r.id} | ${exam.name} | ${why} |`);
+      else if (tried.has(r.id)) seen++;
       else fillable.push(r);
     }
+    if (seen) console.log(`${exam.name}: ${seen} left out, drafted in an earlier batch (--retry to include)`);
     fillable.sort(
       (a, b) =>
         rank(a.id) - rank(b.id) ||
