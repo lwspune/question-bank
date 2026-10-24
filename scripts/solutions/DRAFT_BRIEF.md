@@ -48,11 +48,14 @@ background is `SOLUTIONS_BACKFILL_SPEC.md`; this file is all you need.
 - For an MCQ the LAST line names the option, exactly as:
   `So the answer is (B) 5.` For a numeric question the last line ends with
   the number.
-- Plain words, for a student. Never the word "stored". Never doubt the
+- Plain words, for a student. Never say "stored" about the answer or key
+  ("the stored answer"); as science it is fine. Never doubt the
   question or the key in the solution.
 - Maths in LaTeX: `\(...\)` inline, `\[...\]` on its own line. Use `\pi`,
   `\times`, `\leq`, `^\circ`, `^2`, never Unicode symbols (π × ≤ ° ²).
-  Balanced delimiters. Never a line break inside `\( \)`.
+  Balanced delimiters. Never a line break inside `\( \)`. When you quote an
+  option that prints a symbol (°, Ω, →), write the symbol in LaTeX:
+  `\(^\circ\)C`, `\(\Omega\)`, `\(\rightarrow\)`.
 - No em dash or en dash anywhere. Use a full stop, colon, comma or brackets.
 - A table is a GFM pipe-table with its `|---|` separator line.
 - Fact questions (biology, GK, polity, history, reading passages): give the

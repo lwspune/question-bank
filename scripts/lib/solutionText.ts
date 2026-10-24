@@ -32,7 +32,11 @@ function count(text: string, re: RegExp): number {
 export function solutionProblems(text: string): string[] {
   const out = solutionTextProblems(text);
   if (!text.trim()) return out;
-  if (/\bstored\b/i.test(text)) out.push('the word "stored"');
+  // "stored" as the voice of the database ("the stored answer"), not as science
+  // ("bile is stored in the gall bladder"): the rule is about the first.
+  if (/\bstored\s+(?:answer|key|option|solution|value)|\b(?:answer|key|option|solution|value)\s+stored\b/i.test(text)) {
+    out.push('"stored" for the answer or key');
+  }
   if (UNICODE_MATHS.test(text)) out.push("Unicode maths symbol (write it in LaTeX)");
   return out;
 }
@@ -41,7 +45,7 @@ export function solutionProblems(text: string): string[] {
  * The checks that say the text was damaged or will not render: an eaten
  * escape, a dash, an unbalanced delimiter, a literal \n. The IMAT script uses
  * these alone, because its file was applied before the style checks existed
- * (7 of its 240 fail them; SUGGESTIONS.md backfill ledger).
+ * (6 of its 240 fail them; SUGGESTIONS.md backfill ledger).
  */
 export function solutionTextProblems(text: string): string[] {
   const out: string[] = [];

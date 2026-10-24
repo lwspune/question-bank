@@ -101,7 +101,9 @@ exam first).
 - Short steps, one idea per line, usually 3 to 8 lines. Start from what the
   question gives, end with the answer it asks for. For an MCQ, the last line
   names the option, as "So the answer is (B) 3."
-- Plain words. Never "stored". Never doubt the key.
+- Plain words. Never "stored" for the answer or key ("the stored answer");
+  as science it is fine ("bile is stored in the gall bladder"). Never doubt
+  the key.
 - Maths inside `\( ... \)` inline and `\[ ... \]` on its own line. Use LaTeX,
   not Unicode symbols, for maths (`\pi`, `\times`, `\leq`, not π × ≤). Balanced
   delimiters.
@@ -124,7 +126,7 @@ pipeline under `scripts/solutions/`, test first:
 1. **`scripts/lib/solutionText.ts`**: the pure checks every solution must pass
    before it is written: empty, control characters (an escape eaten on the
    way), en or em dash, unbalanced `\( \)` / `\[ \]`, literal `\n`
-   (`literalNewlineFields`), the word "stored", and a line break inside a
+   (`literalNewlineFields`), "stored" for the answer or key, and a line break inside a
    `\( ... \)` zone. That last one is how an escape eaten by JSON shows:
    `"\neq"` in a JSON string is a line break followed by "eq", and `\nu`,
    `\nabla`, `\not` the same, none of which is a control character the other
