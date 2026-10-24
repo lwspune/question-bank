@@ -74,8 +74,12 @@ and self-check examples, 5,410, already have full steps: leave them alone.)
    with an `image_url` that needs the figure: open the image; if you still
    cannot read what you need, skip it. A question whose text points at a
    figure it does not carry (about 368 rows mention a figure, diagram or graph
-   and have no image; `npm run audit:figures` names them) is skipped too.
-   Never describe a figure you have not seen.
+   and have no image) is exported with `pointsAtFigure: true`: the solver
+   skips it unless the text alone gives everything needed. (Only about a
+   quarter of such hits really depend on the figure, `npm run audit:figures`,
+   so skipping all of them would drop solvable rows.) `apply.ts` rejects any
+   solution that leans on a figure its row does not carry. Never describe a
+   figure you have not seen.
 4. **The solution is not part of a question's identity.** `content_hash`
    (`src/lib/upload/hash.ts`) is built from the text, the options and the key
    (MCQ) or excludes the solution by design (subjective, numeric). Filling it
