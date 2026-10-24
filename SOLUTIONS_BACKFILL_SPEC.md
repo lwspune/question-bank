@@ -281,3 +281,6 @@ One line per batch: date, exam, written, disputed, skipped.
   Skipped 44. One solver answered its 7 picture questions without opening
   them: held back, and apply.ts now rejects a picture question's draft
   without "imageSeen": true. Read 35 of 266: one wording slip fixed.
+- 2026-10-24, b11 Foundation Course (324, 39 with pictures): written 279.
+  Disputed 11 (key doubtful 3, judgement 8). Skipped 34. Every picture
+  draft carried imageSeen. Read 35 of 279: one misleading line fixed.
