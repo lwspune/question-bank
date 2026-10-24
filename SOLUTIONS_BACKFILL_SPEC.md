@@ -231,4 +231,8 @@ One line per batch: date, exam, written, disputed, skipped.
   (one letter mislabelled under correct working, one "stored" reworded).
   Skipped 10 by the solvers, 1 at export (no key). Main session read 15 of 92
   before writing and rejected none; one loose wording seen after ("morels and
-  truffles are edible mushrooms": they are sac fungi).
+  truffles are edible mushrooms": they are sac fungi; fixed to "fungi").
+- 2026-10-24, b01 MPSC Group B & C Prelims (324 exported): written 182.
+  Disputed 9 (key right 5, question ambiguous 1, key doubtful 3: in the
+  batch's disputes file). Skipped 114 by the solvers, nearly all current
+  affairs Haiku does not know; 19 left undrafted. Read 25 of 182, rejected 0.
