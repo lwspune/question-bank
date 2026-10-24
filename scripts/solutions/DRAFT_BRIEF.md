@@ -114,6 +114,9 @@ background is `SOLUTIONS_BACKFILL_SPEC.md`; this file is all you need.
   definitions "शब्दाच्या मागे" means BEFORE the word (उपसर्ग), and पुढे
   means after (प्रत्यय). 'आम्ही गहू खातो' and 'पानावर बसा' are the
   textbook लक्षणा examples.
+- From b34: a sentence joined by a धातुसाधित ('आरती सुरु झाल्यावर ...',
+  'मोजून पाहिल्यावर ...', '-ताना', '-ऊन') has one विधेय, so it is केवल,
+  not मिश्र. मिश्र needs a गौण clause (जेव्हा ... तेव्हा, जर ... तर, जो ... तो).
 
 ## JSON and backslashes (the one trap)
 

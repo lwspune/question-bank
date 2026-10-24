@@ -416,3 +416,11 @@ One line per batch: date, exam, written, disputed, skipped.
   all 166 matched: 17 fixed before writing (adjective examples for a noun
   rule, option labels written in Marathi letters, wrong options left
   unexplained), none held back. Running total 8,368.
+- 2026-10-24, b34 MPSC State Services (7) + Group B Combined (43) Mains,
+  Marathi booklets (50): written 19. Skipped 30. Disputed 1 (key
+  defensible, शोभणे as सकर्मक). Read all 19 matched: 6 fixed (two called a
+  'झाल्यावर' sentence मिश्र when it is केवल; a word origin; the old
+  धर्मिवाचक/धर्मवाचक division; unexplained misspellings). This ends the
+  new questions in the MPSC Mains Marathi booklets: what is left there is
+  only questions the agents skipped (a second pass is the owner's call).
+  Running total 8,387.
