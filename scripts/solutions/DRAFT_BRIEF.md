@@ -53,8 +53,14 @@ background is `SOLUTIONS_BACKFILL_SPEC.md`; this file is all you need.
   Balanced delimiters. Never a line break inside `\( \)`.
 - No em dash or en dash anywhere. Use a full stop, colon, comma or brackets.
 - A table is a GFM pipe-table with its `|---|` separator line.
-- Fact questions (biology, GK, polity, history): give the fact, then one
-  short line on why each other option is wrong. No essay.
+- Fact questions (biology, GK, polity, history, reading passages): give the
+  fact, then say why EVERY other option is wrong, one short line each or one
+  line naming them all. Never leave a wrong option unexplained. No essay.
+- Add no fact the question does not need. Every extra claim is one more
+  chance to be wrong. Use the textbook's own term (morels are "edible
+  fungi", not "mushrooms"); if you are unsure of a term, leave it out.
+- For a reading passage, point to the sentence of the passage that decides
+  it. If no sentence decides it, skip the question.
 - Language follows the question: an English question gets English; a
   Marathi question gets Marathi.
 
