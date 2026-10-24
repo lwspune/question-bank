@@ -55,6 +55,10 @@ export function solutionTextProblems(text: string): string[] {
   if (count(text, /\\\(/g) !== count(text, /\\\)/g)) out.push("unbalanced \\( \\)");
   if (count(text, /\\\[/g) !== count(text, /\\\]/g)) out.push("unbalanced \\[ \\]");
   if (literalNewlineFields({ solution: text }).length) out.push("literal \\n");
+  // Escaped twice: "\\(" or "\\frac" reads as a LaTeX line break and then plain
+  // text. A matrix row break "\\" stands before a space, a digit or another
+  // command ("\\\hline"), so it is not caught.
+  if (/(?<!\\)\\\\(?=[()[\]]|[a-zA-Z])/.test(text)) out.push("doubled backslash (escaped twice)");
   for (const m of text.matchAll(/\\\(([\s\S]*?)\\\)/g)) {
     if (m[1].includes("\n")) {
       out.push("line break inside \\( \\) (an eaten \\neq, \\nu, \\nabla?)");

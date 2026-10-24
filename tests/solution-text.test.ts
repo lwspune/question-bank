@@ -32,6 +32,17 @@ describe("solutionProblems", () => {
     expect(solutionProblems("Pages 3\u20135.")).toContain("en or em dash");
   });
 
+  it("flags a backslash doubled by escaping twice", () => {
+    // JSON "\\\\(x\\\\)" decodes to "\\(x\\)": LaTeX reads \\ as a line break, then "(x".
+    expect(solutionProblems("Area is \\\\(x^2\\\\).").join()).toMatch(/doubled backslash/);
+    expect(solutionProblems("So \\\\frac{1}{2}.").join()).toMatch(/doubled backslash/);
+  });
+
+  it("allows a matrix row break, even before the next command", () => {
+    expect(solutionProblems("\\[ \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix} \\]")).toEqual([]);
+    expect(solutionProblems("\\[ \\begin{array}{c} a \\\\\\hline b \\end{array} \\]")).toEqual([]);
+  });
+
   it("flags unbalanced inline and display delimiters", () => {
     expect(solutionProblems("\\(x + 1 = 2")).toContain("unbalanced \\( \\)");
     expect(solutionProblems("\\[x + 1 = 2")).toContain("unbalanced \\[ \\]");
