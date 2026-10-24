@@ -109,6 +109,11 @@ background is `SOLUTIONS_BACKFILL_SPEC.md`; this file is all you need.
   "सत्य किंवा असत्य". Never gloss a wrong option's word you are not sure
   of (b31 called जलद "fast" and अभावित "unavoidable"): say only that it
   does not mean what the question asks.
+- From b32: a ने subject whose verb agrees with nothing is भावे even
+  with no object ('त्याने आता घरी जावे' is अकर्मक भावे). In grammar
+  definitions "शब्दाच्या मागे" means BEFORE the word (उपसर्ग), and पुढे
+  means after (प्रत्यय). 'आम्ही गहू खातो' and 'पानावर बसा' are the
+  textbook लक्षणा examples.
 
 ## JSON and backslashes (the one trap)
 
