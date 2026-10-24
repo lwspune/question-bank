@@ -266,3 +266,8 @@ One line per batch: date, exam, written, disputed, skipped.
   exam): written 195. Disputed 15 (key doubtful 1, key right 5, judgement 9).
   Skipped 117 (mostly Maharashtra history). Read 30 of 195: one wording slip
   fixed before writing. State Services first pass done: 616 written of 961.
+- 2026-10-24, b08 IPMAT Indore (324 exported, in-mock first; 64 numeric):
+  written 287. Disputed 16 (two maths ones re-derived: key right; nine
+  sentence-order items, the drafting model's weakest kind). Skipped 20.
+  Read 35 of 287, rejected 0. The doubled-backslash check raised one false
+  alarm on a matrix row break; the check was fixed (environments skipped).
