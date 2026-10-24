@@ -343,3 +343,8 @@ One line per batch: date, exam, written, disputed, skipped.
   and figure disagree 1, key acceptable 2, key right 3; four pictures
   opened by the main session). Skipped 16. Read 45 of 300, all clean; the
   brief now forbids reading a figure to fit an option. Running total 5,866.
+- 2026-10-24, b23 NEET (last 141) + IPMAT Indore (200): written 298. NEET
+  done. Disputed 10 (key doubtful 1, key acceptable 6 incl. four sentence
+  orderings, key right 3). Rejected 1 (answer line not last), fixed.
+  Skipped 33, many IPMAT English items with two defensible options. Read 45
+  of 298, all clean. Running total 6,164.
