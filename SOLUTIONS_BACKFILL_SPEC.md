@@ -348,3 +348,10 @@ One line per batch: date, exam, written, disputed, skipped.
   orderings, key right 3). Rejected 1 (answer line not last), fixed.
   Skipped 33, many IPMAT English items with two defensible options. Read 45
   of 298, all clean. Running total 6,164.
+- 2026-10-24, b24 IPMAT Indore (last 122) + JIPMAT (202): written 300.
+  IPMAT Indore done. Disputed 1 (solver arithmetic slip, key right).
+  Skipped 23, mostly JIPMAT reasoning items whose options are pictures the
+  row does not carry. 30 drafts lacked solvedAnswer and were read from
+  their own last line. Two matrices given brackets. The main session
+  checked the bar chart behind five data questions. Read 40 of 300.
+  Running total 6,464.
