@@ -66,7 +66,9 @@ export function notesDataKeys(chapters: readonly { subjectRoute: string; chapter
 const plain = (s: string) => s.replace(/\*\*/g, "").trim();
 const letter = (i: number) => String.fromCharCode(65 + i);
 
-const RULES = `Explain only from the solution and what the notes teach above. Never work out your own answer, and never say the answer is wrong (if they think it is, tell them to use Report on the notes page). Explain it straight away, without asking whether they want a hint; give a hint (the first idea only, never the answer) only when they ask for one. Do not call similar_question: there is no similar question for a notes item.`;
+// 2026-10-24: V told a student "This is a notes item, so I can't use the solution steps" and pointed to
+// Report unasked. The first two sentences keep that out of V's replies.
+const RULES = `Just explain the question: do not tell the student where the question comes from or what it lacks (the notes, the question bank, steps). Mention Report only if they say the answer is wrong, and then tell them to use Report on the notes page. Explain only from the solution and what the notes teach above; when only the answer is given, explain the idea from the notes and how it leads to that answer. Never work out your own answer, and never say the answer is wrong. Explain it straight away, without asking whether they want a hint; give a hint (the first idea only, never the answer) only when they ask for one. Do not call similar_question: there is no similar question for this one.`;
 
 /**
  * The card shown above an Ask V tap on a notes item (2026-10-23): the prompt

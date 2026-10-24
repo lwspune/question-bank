@@ -121,6 +121,16 @@ describe("notesItemBrief", () => {
     expect(b).not.toMatch(/Want a hint or the full solution/);
   });
 
+  // 2026-10-24: V told a student "This is a notes item, so I can't use the solution steps", then
+  // "If you think that value is wrong, please tap Report" unasked. Neither is for the student.
+  it("tells V to just explain: nothing about where the question comes from, and Report only when asked", () => {
+    const rules = notesItemBrief(note, { concept: "benzylic", item: "practice", index: 0 })!;
+    expect(rules).toMatch(/do not tell the student where the question comes from or what it lacks/i);
+    expect(rules).toMatch(/mention Report only if they say the answer is wrong/i);
+    expect(rules).toMatch(/only the answer is given, explain the idea from the notes and how it leads to that answer/i);
+    expect(rules).not.toMatch(/notes item/i);
+  });
+
   it("is null when the item is not there", () => {
     expect(notesItemBrief(note, { concept: "nope", item: "self" })).toBeNull();
     expect(notesItemBrief(note, { concept: "benzylic", item: "practice", index: 5 })).toBeNull();
