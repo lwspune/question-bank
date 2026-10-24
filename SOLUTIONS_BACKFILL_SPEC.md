@@ -276,3 +276,8 @@ One line per batch: date, exam, written, disputed, skipped.
   six the solvers flagged; one triangle count held back (asserted, not
   shown). Four content defects listed for the owner. In-mock questions now
   done everywhere except MPSC Mains (Marathi, last by the spec).
+- 2026-10-24, b10 Foundation Course (324 exported, 35 with pictures):
+  written 266. Disputed 13 (key doubtful 2, key right 4, judgement 7).
+  Skipped 44. One solver answered its 7 picture questions without opening
+  them: held back, and apply.ts now rejects a picture question's draft
+  without "imageSeen": true. Read 35 of 266: one wording slip fixed.
