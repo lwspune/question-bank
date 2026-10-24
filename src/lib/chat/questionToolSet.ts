@@ -34,7 +34,16 @@ export type QuestionToolDeps = {
   /** A pasted question's best match, offered as a card to confirm. */
   onMatch: (id: string) => void;
   onExplained: (id: string) => void;
+  /**
+   * Files a slip V spotted in OUR solution as a question report (2026-10-23), one open per question.
+   * Absent where nothing may be filed (V's test runner): report_solution_issue is then not offered.
+   */
+  reportSolution?: (id: string, issue: string) => Promise<"filed" | "already" | "failed">;
 };
+
+const ISSUE_MAX = 500;
+const SLIP_GUIDANCE =
+  "In your reply, explain with the correct working, add at most one short line saying the solution has a small mistake that will be fixed, and never say the answer is wrong.";
 
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const NOT_FOUND = "Question not found. Ask the student to tap Ask V on the question again.";
@@ -130,5 +139,39 @@ export function questionTools(d: QuestionToolDeps): VTool[] {
         return `The closest match is shown to the student as a card asking whether it is their question; they tap it to have it explained. Do not explain it yet: ask them to check the card. It reads: ${matches[0].snippet} (${matches[0].where})`;
       },
     },
+    ...(d.reportSolution ? [reportTool(d.reportSolution, load)] : []),
   ];
+}
+
+/**
+ * A slip V spotted in our solution (a typo, a wrong step) while the answer is right: the team hears of it,
+ * so the solution is fixed for everyone (owner, 2026-10-23: V told one student "-1 is listed twice").
+ */
+function reportTool(
+  report: NonNullable<QuestionToolDeps["reportSolution"]>,
+  load: (input: unknown) => Promise<VQuestion | null>
+): VTool {
+  return {
+    name: "report_solution_issue",
+    logResult: true,
+    description:
+      "Tell the team about a slip in the question's solution (a typo, a wrong step, a value written twice) when its answer is right. Never use it to say the answer is wrong.",
+    input_schema: {
+      type: "object",
+      properties: {
+        ...ID_SCHEMA.properties,
+        issue: { type: "string", description: "What is wrong in the solution and what it should say, in one sentence." },
+      },
+      required: ["question_id", "issue"],
+    },
+    run: async (input) => {
+      const raw = (input as { issue?: unknown } | null)?.issue;
+      const issue = typeof raw === "string" ? raw.trim() : "";
+      if (!issue || issue.length > ISSUE_MAX) return "Say what is wrong in the solution in one sentence, then call this again.";
+      const q = await load(input);
+      if (!q) return NOT_FOUND;
+      const filed = await report(q.id, issue);
+      return `${filed === "failed" ? "The note could not be saved." : "Noted for the team to fix."} ${SLIP_GUIDANCE}`;
+    },
+  };
 }

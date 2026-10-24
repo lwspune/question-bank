@@ -217,3 +217,11 @@ reads everything else from the stored row.
   and V repeated it in 39 of 218 replies. Every case now fails a reply that
   says it. Run da51bf83 (explain_question): 55 of 57 clean; the 2 that said it
   copied it from V's older replies in their memory.
+- 2026-10-23: V reports a slip in OUR solution (`report_solution_issue`):
+  a typo or a wrong step while the answer is right becomes a question report
+  ("V, while explaining: ...", category incorrect-solution, one open per
+  question, migration 0183) for /dashboard/reports, and the student gets the
+  correct working plus at most one short line. Trigger: a JEE solution listed
+  -1 twice and V told only that student. Run 1757d4e4 (57 explanations): one
+  report, and it was right (q2 written as +4, not -4, with the direction also
+  flipped; the answer stands); none on a correct solution.

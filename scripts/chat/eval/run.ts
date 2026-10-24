@@ -157,6 +157,8 @@ async function main() {
             onSimilar: () => {},
             onMatch: () => {},
             onExplained: () => {},
+            // Writes nothing: the tool is offered, as live, so a case can see V use it.
+            reportSolution: async () => "filed" as const,
           }
         : null,
       // A signed-in student with no mock results yet, as getOwnPerformance returns one (null means signed out).

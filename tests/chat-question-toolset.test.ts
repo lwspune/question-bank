@@ -142,3 +142,46 @@ describe("find_question (pasted text)", () => {
     expect(seen.matched).toEqual([]);
   });
 });
+
+// 2026-10-23 (owner): V spotted "-1 listed twice" in a JEE solution and told only that student. A slip in
+// OUR solution now reaches the team as a report; the student gets the correct working and one short line.
+describe("report_solution_issue (a slip in our solution)", () => {
+  function withReports(result: "filed" | "already" | "failed" = "filed") {
+    const filed: { id: string; issue: string }[] = [];
+    const { tools } = deps({
+      reportSolution: async (id, issue) => {
+        filed.push({ id, issue });
+        return result;
+      },
+    });
+    return { tools, filed };
+  }
+
+  it("files the slip for the team and tells V to explain with the correct working, never doubting the answer", async () => {
+    const { tools, filed } = withReports();
+    const out = await tools.report_solution_issue.run({ question_id: ID, issue: "  The list has -1 twice; the second should be 1.  " });
+    expect(filed).toEqual([{ id: ID, issue: "The list has -1 twice; the second should be 1." }]);
+    expect(out).toMatch(/correct working/i);
+    expect(out).toMatch(/at most one short line/i);
+    expect(out).toMatch(/never say the answer is wrong/i);
+  });
+
+  it("gives V the same guidance when the slip was already reported or could not be saved", async () => {
+    for (const r of ["already", "failed"] as const) {
+      const out = await withReports(r).tools.report_solution_issue.run({ question_id: ID, issue: "Step 2 has a sign slip." });
+      expect(out).toMatch(/at most one short line/i);
+    }
+  });
+
+  it("files nothing for an unknown question or a missing description", async () => {
+    const { tools, filed } = withReports();
+    expect(await tools.report_solution_issue.run({ question_id: OTHER, issue: "x" })).toMatch(/not found/i);
+    expect(await tools.report_solution_issue.run({ question_id: ID, issue: "   " })).toMatch(/say what is wrong/i);
+    expect(await tools.report_solution_issue.run({ question_id: ID, issue: "y".repeat(501) })).toMatch(/say what is wrong/i);
+    expect(filed).toEqual([]);
+  });
+
+  it("is not offered when reports cannot be filed", () => {
+    expect(deps().tools.report_solution_issue).toBeUndefined();
+  });
+});

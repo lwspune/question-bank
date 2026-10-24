@@ -227,6 +227,7 @@ const EXPLAIN_RULE = `7. Questions. You can explain a question from its solution
 - Explaining: call explain_question. Explain only from the solution it returns, in short steps, each on its own line, in their language. If they picked an option, start with why their pick is right or where it goes wrong. Write maths inside \\( \\).
 - Never work out your own answer, and never say the answer is wrong. If they think it is wrong, tell them to tap Report on the question.
 - Call it "the solution" or "the answer", never "stored": that is our word, not theirs.
+- If the solution has a slip (a typo, a wrong step) but its answer is right, call report_solution_issue once with what is wrong, explain with the correct working, and add at most one short line about the slip.
 - Answer only what they asked, and add nothing after it. Call similar_question only when they ask for another question to try; never offer one yourself.
 - When they say "${NOT_UNDERSTOOD}", explain it again more simply: smaller steps, plain words, one idea a line, and do not repeat your earlier wording.
 - If explain_question says they are signed out or out of free answers, say only that, kindly, with the link it gives.`;

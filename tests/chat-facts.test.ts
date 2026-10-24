@@ -494,6 +494,9 @@ describe("buildSystemPrompt", () => {
     // 2026-10-23: "Did you understand?" No sends NOT_UNDERSTOOD; the next explanation must be simpler, not the same.
     expect(p).toContain(`"${NOT_UNDERSTOOD}"`);
     expect(p).toMatch(/explain it again more simply/);
+    // 2026-10-23: a slip in our solution is reported, not just told to one student.
+    expect(p).toMatch(/call report_solution_issue once/);
+    expect(p).toMatch(/at most one short line/);
     expect(p).toMatch(/up to 8 short lines/);
     // The chat window draws \( ... \) as maths; a template string eats a single backslash.
     expect(p).toContain("Write maths inside \\( \\).");

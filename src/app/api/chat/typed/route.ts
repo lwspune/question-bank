@@ -72,6 +72,7 @@ import type { ToolCallLog } from "@/lib/chat/anthropic";
 import { parseAskedQuestion } from "@/lib/chat/questionTools";
 import { notesPageOf, notesRefKey, parseNotesItemRef } from "@/lib/chat/notesItem";
 import { isExplanation } from "@/lib/chat/understood";
+import { fileVSolutionReport } from "@/lib/reports/fileVReport";
 import { loadNotesItemBrief } from "@/lib/chat/notesItemServer";
 import { buildMyQuestionDeps } from "@/lib/chat/myQuestionsServer";
 import type { QuestionToolDeps } from "@/lib/chat/questionToolSet";
@@ -120,6 +121,8 @@ function buildQuestionToolDeps(
     onSimilar: out.onSimilar,
     onMatch: out.onMatch,
     onExplained: () => {},
+    // A slip V spots in our solution reaches the team's report queue (migration 0183, 2026-10-23).
+    reportSolution: (id, issue) => fileVSolutionReport(createSupabaseAdminClient(), id, issue),
   };
 }
 
