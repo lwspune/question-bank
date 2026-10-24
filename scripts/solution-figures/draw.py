@@ -16,9 +16,16 @@ KINDS (each spec is {"kind": ..., ...}):
                        {type: points, x: [...], y: [...], line, marker, labels: [...]} |
                        {type: line, through: [[x1, y1], [x2, y2]]} | {type: vline, x} | {type: hline, y} |
                        {type: segment, from: [x, y], to: [x, y], arrow} |
-                       {type: parametric, x: "cos(t)", y: "sin(t)", t: [a, b]}
+                       {type: parametric, x: "cos(t)", y: "sin(t)", t: [a, b]} |
+                       {type: function_y, expr: "y**2/4", range: [c, d]} (a sideways curve x = f(y))
                        ... each may carry label, style ("-", "--", ":"), color],
-              fills: [{type: between, upper: expr, lower: expr, domain: [a, b]} | {type: polygon, points: [[x, y], ...]}],
+              fills: [{type: between, upper: expr, lower: expr, domain: [a, b]} |
+                      {type: betweenx, left: expr in y, right: expr in y, range: [c, d]} | {type: polygon, points: [[x, y], ...]}],
+              a fill may carry its own area (expr), checked alone: two regions R1 and R2 each get theirs
+              legend: "below" puts the legend under the plot; ticks: "clean" = fewer ticks, "20" not "20.0", no "0"
+              check: {area: number or expr ("2/3*(4*pi-3*sqrt(3))"), tol}: the shaded area is measured
+                     and the figure REFUSED unless it matches (relative tol, default 0.005). Fills must
+                     not overlap, or the overlap counts twice. Expressions may use minimum, maximum, sign, abs.
               labels: [{text, at: [x, y], ha, va}], marks: [{at: [x, y], label}]}
   histogram  {classes: [[lo, hi], ...], freq: [...], xlabel, ylabel, polygon}
   bar        {labels: [...], values: [...], xlabel, ylabel}
@@ -70,7 +77,7 @@ INK = "#111111"
 RAY = "#1d4ed8"
 ACCENT = "#c2410c"
 SAFE = {k: getattr(np, k) for k in ("sin", "cos", "tan", "exp", "log", "log10", "sqrt", "abs", "arcsin", "arccos", "arctan", "sinh", "cosh", "tanh", "floor", "ceil")}
-SAFE.update({"pi": math.pi, "e": math.e, "ln": np.log})
+SAFE.update({"pi": math.pi, "e": math.e, "ln": np.log, "minimum": np.minimum, "maximum": np.maximum, "sign": np.sign})
 DPI = 200
 
 
@@ -123,6 +130,12 @@ def draw_plot(s, out):
             a, b = sr["t"]
             tt = np.linspace(a, b, 800)
             ax.plot(ev(sr["x"], t=tt) * np.ones_like(tt), ev(sr["y"], t=tt) * np.ones_like(tt), ls, color=color, lw=2, label=lab)
+        elif t == "function_y":
+            c, d = sr["range"]
+            y = np.linspace(c, d, 800)
+            with np.errstate(all="ignore"):
+                x = ev(sr["expr"], y=y) * np.ones_like(y)
+            ax.plot(x, y, ls, color=color, lw=sr.get("width", 2), label=lab)
         elif t == "points":
             plot_points(ax, sr, color, ls, lab)
         elif t == "line":
@@ -145,10 +158,29 @@ def draw_plot(s, out):
             a, b = fl["domain"]
             x = np.linspace(a, b, 800)
             ax.fill_between(x, ev(fl["lower"], x=x) * np.ones_like(x), ev(fl["upper"], x=x) * np.ones_like(x), color=fl.get("color", RAY), alpha=fl.get("alpha", 0.2), lw=0)
+        elif fl.get("type") == "betweenx":
+            c, d = fl["range"]
+            y = np.linspace(c, d, 800)
+            ax.fill_betweenx(y, ev(fl["left"], y=y) * np.ones_like(y), ev(fl["right"], y=y) * np.ones_like(y), color=fl.get("color", RAY), alpha=fl.get("alpha", 0.2), lw=0)
         elif fl.get("type") == "polygon":
             ax.fill(*zip(*fl["points"]), color=fl.get("color", RAY), alpha=fl.get("alpha", 0.2), lw=0)
         else:
             raise ValueError(f"plot: unknown fill type {fl.get('type')!r}")
+    info = None
+    tol = s.get("check", {}).get("tol", 0.005)
+    for i, fl in enumerate(s.get("fills", [])):
+        if "area" in fl:
+            got, want = fill_area(fl), float(ev(str(fl["area"])))
+            if not math.isfinite(got) or abs(got - want) > tol * max(abs(want), 1e-9):
+                plt.close(fig)
+                raise ValueError(f"plot: fill {i + 1} shades area {got:.6g}, not the answer's {want:.6g}")
+    if "check" in s:
+        area = shaded_area(s)
+        want = float(ev(str(s["check"]["area"])))
+        if not math.isfinite(area) or abs(area - want) > tol * max(abs(want), 1e-9):
+            plt.close(fig)
+            raise ValueError(f"plot: shaded area {area:.6g} does not match the answer's {want:.6g}")
+        info = {"area": area}
     for m in s.get("marks", []):
         ax.plot(*m["at"], "o", color=ACCENT, ms=5, zorder=5)
         if m.get("label"):
@@ -172,9 +204,51 @@ def draw_plot(s, out):
         ax.set_xticks(s["xticks"])
     if "yticks" in s:
         ax.set_yticks(s["yticks"])
+    if s.get("ticks") == "clean":
+        for axis in (ax.xaxis, ax.yaxis):
+            axis.set_major_locator(matplotlib.ticker.MaxNLocator(nbins=6, steps=[1, 2, 2.5, 5, 10]))
+            axis.set_major_formatter(matplotlib.ticker.FuncFormatter(clean_tick))
     if any(sr.get("label") for sr in s.get("series", [])) and s.get("legend", True):
-        ax.legend(frameon=False, fontsize=10)
+        if s.get("legend") == "below":
+            ax.legend(frameon=False, fontsize=10, loc="upper center", bbox_to_anchor=(0.5, -0.07), ncol=2)
+        else:
+            ax.legend(frameon=False, fontsize=10)
     finish(fig, out)
+    return info
+
+
+def clean_tick(v, _pos):
+    """A tick label without a trailing .0, and none at 0 (the axes cross there and labels crowd it)."""
+    return "" if abs(v) < 1e-12 else f"{v:g}".replace("-", "−")
+
+
+AREA_SAMPLES = 200001
+
+
+def fill_area(fl):
+    """The area one fill shades: |upper - lower| integrated finely (trapezoids), a polygon by the shoelace rule."""
+    t = fl.get("type")
+    if t == "between":
+        a, b = fl["domain"]
+        x = np.linspace(a, b, AREA_SAMPLES)
+        with np.errstate(all="ignore"):
+            h = np.abs(ev(fl["upper"], x=x) * np.ones_like(x) - ev(fl["lower"], x=x) * np.ones_like(x))
+        return float(np.trapezoid(h, x))
+    if t == "betweenx":
+        c, d = fl["range"]
+        y = np.linspace(c, d, AREA_SAMPLES)
+        with np.errstate(all="ignore"):
+            w = np.abs(ev(fl["right"], y=y) * np.ones_like(y) - ev(fl["left"], y=y) * np.ones_like(y))
+        return float(np.trapezoid(w, y))
+    if t == "polygon":
+        pts = fl["points"]
+        return abs(sum(x1 * y2 - x2 * y1 for (x1, y1), (x2, y2) in zip(pts, pts[1:] + pts[:1]))) / 2
+    raise ValueError(f"plot: unknown fill type {t!r}")
+
+
+def shaded_area(s):
+    """The area a plot spec shades, all fills together. Overlapping fills count twice."""
+    return sum(fill_area(fl) for fl in s.get("fills", []))
 
 
 def histogram_axes(s):
@@ -1164,6 +1238,43 @@ def selftest():
     for name, (lon, lat, px, py) in bm["controls"].items():
         x, y = bookmap_xy(bm, lon, lat)
         assert abs(x - px) < 12 and abs(y - py) < 12, f"{name} lands on the book's own mark"
+
+    # Region-between-curves figures (2026-10-24): the shaded area is measured and
+    # checked against the answer, so a wrong region cannot ship. Hand-worked cases.
+    def area_of(fills):
+        return shaded_area({"kind": "plot", "fills": fills})
+    assert abs(area_of([{"type": "between", "upper": "x", "lower": "x**2", "domain": [0, 1]}]) - 1 / 6) < 1e-6, "between y=x and y=x^2: 1/6"
+    assert abs(area_of([{"type": "between", "upper": "minimum(8-x**2, 7)", "lower": "x**2", "domain": [-2, 2]}]) - 20) < 1e-4, "x^2 <= y <= 8-x^2, y <= 7: 20 (JEE 8 Apr 2023)"
+    lens = [{"type": "between", "upper": "sqrt(4-x**2)", "lower": "2-sqrt(4-x**2)", "domain": [-math.sqrt(3), math.sqrt(3)]}]
+    assert abs(area_of(lens) - 2 / 3 * (4 * math.pi - 3 * math.sqrt(3))) < 1e-4, "two circles of radius 2, centres 2 apart: (2/3)(4pi - 3sqrt3)"
+    assert abs(area_of([{"type": "betweenx", "left": "y**2", "right": "1", "range": [-1, 1]}]) - 4 / 3) < 1e-6, "between x=y^2 and x=1: 4/3"
+    assert abs(area_of([{"type": "polygon", "points": [[0, 0], [2, 0], [0, 3]]}]) - 3) < 1e-9, "triangle (0,0),(2,0),(0,3): 3"
+    assert abs(area_of([{"type": "between", "upper": "abs(x)", "lower": "0", "domain": [-1, 1]}]) - 1) < 1e-6, "under |x| on [-1, 1]: 1"
+    with tempfile.TemporaryDirectory() as tmp:
+        out = os.path.join(tmp, "a.png")
+        spec = {"kind": "plot", "series": [{"type": "function_y", "expr": "y**2", "range": [-1, 1]}, {"type": "vline", "x": 1}],
+                "fills": [{"type": "betweenx", "left": "y**2", "right": "1", "range": [-1, 1]}], "check": {"area": "4/3"}}
+        assert abs(draw(spec, out)["area"] - 4 / 3) < 1e-6, "a checked figure reports its shaded area"
+        try:
+            draw(dict(spec, check={"area": 2}), out)
+            raise AssertionError("a shaded area that misses the answer must be refused")
+        except ValueError as e:
+            assert "area" in str(e)
+        # Phone-width layout (owner review, 2026-10-24): ticks read "20", not "20.0", and the
+        # origin's "0" is left off, where it sat on the point labels; the legend goes below.
+        assert clean_tick(20.0, None) == "20" and clean_tick(2.5, None) == "2.5" and clean_tick(0.0, None) == "", "clean ticks"
+        assert clean_tick(-2.0, None) == "−2", "a negative tick carries a real minus sign"
+        draw(dict(spec, legend="below", ticks="clean"), out)
+        # Two regions (R1 and R2): each fill can carry its own area, checked on its own.
+        two = {"kind": "plot", "fills": [
+            {"type": "between", "upper": "sqrt(x)", "lower": "2*x", "domain": [0, 0.25], "area": "1/48"},
+            {"type": "between", "upper": "minimum(sqrt(x), 2*x)", "lower": "x**3", "domain": [0, 1], "area": "19/48"}]}
+        draw(two, out)
+        try:
+            draw({"kind": "plot", "fills": [dict(two["fills"][0], area="1/24"), two["fills"][1]]}, out)
+            raise AssertionError("one region whose area misses must be refused")
+        except ValueError as e:
+            assert "area" in str(e)
 
     # Structure grids stay two to a row at most, so names stay legible on a phone.
     assert structure_per_row(8, 4) == 2 and structure_per_row(8, None) == 2, "8 molecules: two per row"
