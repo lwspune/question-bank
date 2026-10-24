@@ -364,3 +364,10 @@ One line per batch: date, exam, written, disputed, skipped.
   written 204. Disputed 0, rejected 0, skipped 4. Read 35 of 204, all
   clean. Every fillable row outside MPSC Mains is now drafted. Running
   total 6,964.
+- 2026-10-24, owner cleared the MPSC Mains ENGLISH booklets (the Marathi
+  half still waits for 5 samples). export.ts gained --subject.
+- 2026-10-24, b27 MPSC ASO Mains, English booklet (338): written 259.
+  Skipped 70 (grammar and vocabulary items where two answers are
+  acceptable English). Disputed 9 (key looks wrong 1: musomania for
+  melomania; doubtful 6; ambiguous 1; key right 1). One solution's false
+  rule ("career has one r") rewritten. Read 40 of 259. Running total 7,223.
