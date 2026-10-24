@@ -320,3 +320,8 @@ One line per batch: date, exam, written, disputed, skipped.
   different keys. Skipped 32. Read 45 of 275 (a larger sample for NEET
   biology): one right letter on a wrong reason, rewritten, and the brief now
   asks for the true reason on statements questions. Running total 4,695.
+- 2026-10-24, b19 NEET (324, respiration, chemistry): written 279.
+  Disputed 8 (question ambiguous 3, key acceptable 1, key right 4; one
+  picture opened by the main session). Skipped 37. Read 45 of 279: one
+  unbalanced equation rewritten, one figure-to-option mapping line added.
+  Running total 4,974.
