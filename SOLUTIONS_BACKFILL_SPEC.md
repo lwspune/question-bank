@@ -292,3 +292,6 @@ One line per batch: date, exam, written, disputed, skipped.
   Disputed 2 (one key looks wrong: Fe2O3 + CO redox). Skipped 44, many for
   malformed items (blank or duplicate options). Read 30 of 276, rejected 0.
   Running total: 3,304 written.
+- 2026-10-24, b14 Foundation Course (324, 31 with pictures): written 272.
+  Disputed 6 (one key looks wrong: the solutions matching; key right 1;
+  judgement 4). Skipped 46. Read 30 of 272, rejected 0. Running total 3,576.
