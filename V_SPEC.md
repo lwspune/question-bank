@@ -225,3 +225,9 @@ reads everything else from the stored row.
   -1 twice and V told only that student. Run 1757d4e4 (57 explanations): one
   report, and it was right (q2 written as +4, not -4, with the direction also
   flipped; the answer stands); none on a correct solution.
+- 2026-10-24: on notes questions V just explains: nothing about where the
+  question comes from or what it lacks, and Report only when the student says
+  the answer is wrong (Soham: "This is a notes item, so I can't use the stored
+  solution steps", then Report unasked). Case 3417df59: clean in 2 runs. The
+  root cause, questions with only an answer, goes to the solutions backfill
+  (`SOLUTIONS_BACKFILL_SPEC.md`).
