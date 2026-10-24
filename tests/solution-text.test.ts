@@ -32,6 +32,19 @@ describe("solutionProblems", () => {
     expect(solutionProblems("Pages 3\u20135.")).toContain("en or em dash");
   });
 
+  it("flags a backslash doubled by escaping twice", () => {
+    // JSON "\\\\(x\\\\)" decodes to "\\(x\\)": LaTeX reads \\ as a line break, then "(x".
+    expect(solutionProblems("Area is \\\\(x^2\\\\).").join()).toMatch(/doubled backslash/);
+    expect(solutionProblems("So \\\\frac{1}{2}.").join()).toMatch(/doubled backslash/);
+  });
+
+  it("allows a matrix row break, even before the next command", () => {
+    expect(solutionProblems("\\[ \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix} \\]")).toEqual([]);
+    expect(solutionProblems("\\[ \\begin{array}{c} a \\\\\\hline b \\end{array} \\]")).toEqual([]);
+    // A row break straight before a variable (a real IPMAT draft, 2026-10-24).
+    expect(solutionProblems("\\(A=\\begin{bmatrix}4&q\\\\p&r\\end{bmatrix}\\)")).toEqual([]);
+  });
+
   it("flags unbalanced inline and display delimiters", () => {
     expect(solutionProblems("\\(x + 1 = 2")).toContain("unbalanced \\( \\)");
     expect(solutionProblems("\\[x + 1 = 2")).toContain("unbalanced \\[ \\]");
@@ -70,6 +83,16 @@ describe("solutionProblems", () => {
   it("flags Unicode maths symbols the style rule writes in LaTeX", () => {
     expect(solutionProblems("Area is \u03c0r\u00b2.").join()).toMatch(/Unicode maths/);
     expect(solutionProblems("x \u2264 3").join()).toMatch(/Unicode maths/);
+  });
+
+  it("flags a LaTeX command outside maths delimiters, which prints as text", () => {
+    // A real b04 draft, live by the time it was seen (2026-10-24).
+    expect(solutionProblems("3 \\times 15 = 45.\nSo the answer is (A) 45.").join()).toMatch(/outside maths/);
+    expect(solutionProblems("Energy = power \\times time.").join()).toMatch(/outside maths/);
+  });
+
+  it("allows LaTeX commands inside inline and display maths", () => {
+    expect(solutionProblems("Energy = power \\(\\times\\) time.\n\\[ E = 100 \\times 60 \\]")).toEqual([]);
   });
 
   it("does not flag Devanagari (Marathi solutions)", () => {

@@ -3,6 +3,7 @@ import {
   answersMatch,
   judge,
   keyOf,
+  repairDraft,
   skipReason,
   slices,
   type BankRow,
@@ -116,11 +117,43 @@ describe("judge", () => {
     const s = "From the figure, the two angles are equal.\nSo the answer is (B) 5.";
     const r = judge({ solution: s, solvedAnswer: "B" }, mcq());
     expect(r.kind).toBe("reject");
-    expect(judge({ solution: s, solvedAnswer: "B" }, mcq({ image_url: "x/y.png" })).kind).toBe("write");
+    expect(judge({ solution: s, solvedAnswer: "B", imageSeen: true }, mcq({ image_url: "x/y.png" })).kind).toBe("write");
+  });
+  it("rejects a draft for a question with a picture unless the solver says it opened it", () => {
+    const r = judge({ solution: GOOD, solvedAnswer: "B" }, mcq({ image_url: "x/y.png" }));
+    expect(r.kind).toBe("reject");
+    if (r.kind === "reject") expect(r.problems.join()).toMatch(/picture/);
+    expect(judge({ solution: GOOD, solvedAnswer: "B", imageSeen: true }, mcq({ image_url: "x/y.png" })).kind).toBe("write");
   });
   it("writes a numeric draft whose working ends on the key", () => {
     const s = "\\(\\frac{1}{2}\\) of 25 is \\(12.5\\).\nSo the answer is 12.5.";
     expect(judge({ solution: s, solvedAnswer: "25/2" }, numeric(12.5)).kind).toBe("write");
+  });
+});
+
+describe("repairDraft", () => {
+  it("reads a missing solvedAnswer from the solver's own last line", () => {
+    const r = repairDraft({ solution: "Two plus three is five.\nSo the answer is (B) 5." });
+    expect(r.draft.solvedAnswer).toBe("B");
+    expect(r.changes).toEqual(["solvedAnswer from the last line"]);
+  });
+  it("leaves a draft with no letter in its last line alone, for apply to reject", () => {
+    const r = repairDraft({ solution: "Five." });
+    expect(r.draft.solvedAnswer).toBeUndefined();
+    expect(r.changes).toEqual([]);
+  });
+  it("never overrides a solvedAnswer the solver gave", () => {
+    const r = repairDraft({ solution: "So the answer is (B) 5.", solvedAnswer: "C" });
+    expect(r.draft.solvedAnswer).toBe("C");
+  });
+  it("restores line breaks escaped twice, leaving LaTeX commands alone", () => {
+    const r = repairDraft({ solution: "Step one.\\nSo \\(x \\neq 2\\).\\nSo the answer is (A) 1.", solvedAnswer: "A" });
+    expect(r.draft.solution).toBe("Step one.\nSo \\(x \\neq 2\\).\nSo the answer is (A) 1.");
+    expect(r.changes).toEqual(["line breaks escaped twice"]);
+  });
+  it("does not touch skips or clean drafts", () => {
+    expect(repairDraft({ skip: "not sure" }).changes).toEqual([]);
+    expect(repairDraft({ solution: "So the answer is (A) 1.", solvedAnswer: "A" }).changes).toEqual([]);
   });
 });
 

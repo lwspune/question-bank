@@ -77,6 +77,8 @@ import { loadNotesItemBrief } from "@/lib/chat/notesItemServer";
 import { buildMyQuestionDeps } from "@/lib/chat/myQuestionsServer";
 import type { QuestionToolDeps } from "@/lib/chat/questionToolSet";
 import { loadSimilarId, loadVQuestion, searchVQuestions } from "@/lib/chat/questionToolsServer";
+import { explainedQuestionId } from "@/lib/chat/solutionFigure";
+import { loadSolutionFigures } from "@/lib/chat/solutionFigureServer";
 import { conceptSources } from "@/lib/chat/conceptSearchServer";
 import { revealedToday, spendVReveal } from "@/lib/chat/questionReveal";
 import { weakFromPerformance, type PlanDeps } from "@/lib/chat/weekPlan";
@@ -365,6 +367,12 @@ export async function POST(request: NextRequest) {
       replyToId: replyTarget?.id ?? null,
     });
 
+    // The explained question's solution figure, shown under the reply; V is never told (owner, 2026-10-24).
+    const explainedId = recorded.source === "ai" ? explainedQuestionId(recorded.toolCalls) : null;
+    const solutionFigure = explainedId
+      ? (await loadSolutionFigures(createSupabaseAnonClient(), [explainedId])).get(explainedId)
+      : undefined;
+
     // Only on an AI answer: a fallback reply never ran the tools.
     const questionFields =
       recorded.source === "ai"
@@ -374,6 +382,7 @@ export async function POST(request: NextRequest) {
             ...(planShown ? { planShown: true } : {}),
             // An explanation asks "Did you understand?" under it (0182).
             explained: isExplanation(recorded.toolCalls, message),
+            ...(solutionFigure ? { solutionFigure } : {}),
           }
         : {};
     if (userId !== null) {

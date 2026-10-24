@@ -38,6 +38,9 @@ export function solutionProblems(text: string): string[] {
     out.push('"stored" for the answer or key');
   }
   if (UNICODE_MATHS.test(text)) out.push("Unicode maths symbol (write it in LaTeX)");
+  // "3 \times 15" with no \( \) around it renders the backslash as text.
+  const prose = text.replace(/\\\([\s\S]*?\\\)/g, "").replace(/\\\[[\s\S]*?\\\]/g, "");
+  if (/\\[a-zA-Z]+/.test(prose)) out.push("LaTeX command outside maths delimiters");
   return out;
 }
 
@@ -55,6 +58,12 @@ export function solutionTextProblems(text: string): string[] {
   if (count(text, /\\\(/g) !== count(text, /\\\)/g)) out.push("unbalanced \\( \\)");
   if (count(text, /\\\[/g) !== count(text, /\\\]/g)) out.push("unbalanced \\[ \\]");
   if (literalNewlineFields({ solution: text }).length) out.push("literal \\n");
+  // Escaped twice: "\\(" or "\\frac" reads as a LaTeX line break and then plain
+  // text. Inside a \begin{...}...\end{...} environment (a matrix, an aligned
+  // block) "\\" is a real row break and may stand before anything, a variable
+  // included ("q\\p"), so environments are left out of this check.
+  const outsideEnvironments = text.replace(/\\begin\{([a-zA-Z*]+)\}[\s\S]*?\\end\{\1\}/g, "");
+  if (/(?<!\\)\\\\(?=[()[\]]|[a-zA-Z])/.test(outsideEnvironments)) out.push("doubled backslash (escaped twice)");
   for (const m of text.matchAll(/\\\(([\s\S]*?)\\\)/g)) {
     if (m[1].includes("\n")) {
       out.push("line break inside \\( \\) (an eaten \\neq, \\nu, \\nabla?)");

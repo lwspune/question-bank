@@ -20,7 +20,7 @@
 import { readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
-import { judge, keyOf, type BankRow, type Draft, type Verdict } from "./lib";
+import { judge, keyOf, repairDraft, type BankRow, type Draft, type Verdict } from "./lib";
 
 const SELECT =
   "id, question_format, visibility, publish_blocked, cancelled_note, solution, numeric_answer, " +
@@ -63,6 +63,14 @@ async function main() {
     for (const r of (data ?? []) as unknown as Row[]) rows.set(r.id, r);
   }
 
+  // Mend the agents' format slips first (repairDraft), so they need no hand fix.
+  const repaired = new Map<string, number>();
+  for (const id of ids) {
+    const r = repairDraft(drafts[id]);
+    drafts[id] = r.draft;
+    for (const c of r.changes) repaired.set(c, (repaired.get(c) ?? 0) + 1);
+  }
+
   const verdicts = new Map<string, Verdict>();
   for (const id of ids) {
     const row = rows.get(id);
@@ -93,6 +101,7 @@ async function main() {
     `drafts ${ids.length} · to write ${toWrite.length} · disputed ${of("dispute").length} · rejected ${of("reject").length} · skipped ${of("skip").length}`
   );
   if (undrafted.length) console.log(`  exported but never drafted: ${undrafted.length}`);
+  for (const [c, n] of repaired) console.log(`  repaired, ${c}: ${n}`);
   const skipWhy = new Map<string, number>();
   for (const id of of("skip")) {
     const r = (verdicts.get(id) as Extract<Verdict, { kind: "skip" }>).reason.replace(/^solver: .*/, "solver skipped");

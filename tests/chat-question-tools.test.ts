@@ -14,6 +14,7 @@ import {
   explainView,
   firstStep,
   hintView,
+  originLine,
   pickSimilar,
   revealCheck,
   type VQuestion,
@@ -41,6 +42,7 @@ function q(over: Partial<VQuestion> = {}): VQuestion {
     chapter: "Quadratic Equations",
     subtopic: "Nature of Roots",
     subtopicId: "s1",
+    origin: null,
     ...over,
   };
 }
@@ -82,6 +84,52 @@ describe("hintView", () => {
   });
 });
 
+// 2026-10-24: a student asked "Which yrs ques is this" and V said it could not tell, though the bank knew (8 Apr 2023).
+describe("originLine", () => {
+  const base = { examName: "JEE Mains", questionNumber: null, pyqYear: 2023, pyqMonth: null, pyqNote: "8 Apr 2023" };
+
+  it("names a past-year question's paper with the card's own label", () => {
+    expect(originLine({ ...base, kind: "pyq" })).toBe("From the past paper: 8 Apr 2023 · 2023.");
+    expect(originLine({ ...base, kind: "pyq", questionNumber: "12" })).toBe("From the past paper: Q12 · 8 Apr 2023 · 2023.");
+  });
+
+  it("uses the month for NDA, as the card does", () => {
+    expect(originLine({ ...base, examName: "NDA", pyqMonth: "Apr", pyqNote: null, kind: "pyq" })).toBe(
+      "From the past paper: Apr · 2023."
+    );
+  });
+
+  it("says when a past-year question's year is not recorded", () => {
+    expect(originLine({ ...base, kind: "pyq", pyqYear: null, pyqNote: null })).toBe(
+      "A past-year question; its paper and year are not recorded."
+    );
+    expect(originLine({ ...base, kind: "pyq", pyqYear: null, questionNumber: "4" })).toBe(
+      "From the past paper: Q4 · 8 Apr 2023 (its year is not recorded)."
+    );
+  });
+
+  it("calls a practice question a practice question, and never prints its source note", () => {
+    const line = originLine({ ...base, kind: "practice", pyqNote: "Oswaal sample paper" });
+    expect(line).toBe("A practice question, not from a past paper.");
+  });
+
+  it("says nothing when the kind is unknown", () => {
+    expect(originLine({ ...base, kind: null })).toBeNull();
+  });
+});
+
+describe("what V is shown of a question's paper", () => {
+  it("is in the hint and the explanation, so 'which year?' needs no free answer", () => {
+    const origin = "From the past paper: 8 Apr 2023 · 2023.";
+    expect(hintView(q({ origin }))).toContain(origin);
+    expect(explainView(q({ origin }), null)).toContain(origin);
+  });
+
+  it("adds no line when there is none", () => {
+    expect(hintView(q())).not.toMatch(/past paper|practice question/i);
+  });
+});
+
 describe("explainView", () => {
   it("gives the key and the whole solution, labelled in the student's words", () => {
     const v = explainView(q(), null);
@@ -95,6 +143,16 @@ describe("explainView", () => {
   it("names the student's wrong pick, so V can start from it", () => {
     expect(explainView(q(), "A")).toContain("The student chose (A) -3, which is wrong.");
     expect(explainView(q(), "B")).toContain("The student chose (B) 3, which is right.");
+  });
+
+  it("names a numeric answer the student entered, right or wrong, within the mock's tolerance", () => {
+    const nat = q({ format: "numeric", options: [], numericAnswer: 20 });
+    expect(explainView(nat, null, 18)).toContain("The student entered 18, which is wrong.");
+    expect(explainView(nat, null, 20)).toContain("The student entered 20, which is right.");
+    expect(explainView(nat, null, 20.001)).toContain("which is right.");
+    // 0 is a real answer, not "nothing entered".
+    expect(explainView(q({ format: "numeric", options: [], numericAnswer: 0 }), null, 0)).toContain("The student entered 0, which is right.");
+    expect(explainView(nat, null, null)).not.toContain("entered");
   });
 
   it("says plainly when no worked solution is stored", () => {
@@ -178,17 +236,33 @@ describe("searchWordsOf", () => {
 describe("parseAskedQuestion", () => {
   const ID = "11111111-1111-4111-8111-111111111111";
   it("reads the tapped question and the student's pick", () => {
-    expect(parseAskedQuestion({ id: ID, chose: "b" })).toEqual({ id: ID, chose: "B" });
-    expect(parseAskedQuestion({ id: ID })).toEqual({ id: ID, chose: null });
+    expect(parseAskedQuestion({ id: ID, chose: "b" })).toEqual({ id: ID, chose: "B", entered: null, skipped: false });
+    expect(parseAskedQuestion({ id: ID })).toEqual({ id: ID, chose: null, entered: null, skipped: false });
+  });
+
+  // 2026-10-24: on a mock result, V asked a student who had skipped the question "which option did you pick?".
+  it("reads a numeric answer the student entered, and a question they skipped in a test", () => {
+    expect(parseAskedQuestion({ id: ID, chose: null, entered: 12.5 })).toEqual({ id: ID, chose: null, entered: 12.5, skipped: false });
+    expect(parseAskedQuestion({ id: ID, chose: null, entered: 0 })).toEqual({ id: ID, chose: null, entered: 0, skipped: false });
+    expect(parseAskedQuestion({ id: ID, chose: null, skipped: true })).toEqual({ id: ID, chose: null, entered: null, skipped: true });
+  });
+
+  it("drops an entered value that is not a finite number, and a skip that contradicts an answer", () => {
+    expect(parseAskedQuestion({ id: ID, entered: "12" })?.entered).toBeNull();
+    expect(parseAskedQuestion({ id: ID, entered: Number.NaN })?.entered).toBeNull();
+    expect(parseAskedQuestion({ id: ID, entered: 1e12 })?.entered).toBeNull();
+    expect(parseAskedQuestion({ id: ID, chose: "B", skipped: true })?.skipped).toBe(false);
+    expect(parseAskedQuestion({ id: ID, entered: 3, skipped: true })?.skipped).toBe(false);
+    expect(parseAskedQuestion({ id: ID, skipped: "yes" })?.skipped).toBe(false);
   });
 
   it("drops anything that is not a question id, and a pick that is not an option letter", () => {
     expect(parseAskedQuestion({ id: "x" })).toBeNull();
     expect(parseAskedQuestion(null)).toBeNull();
     expect(parseAskedQuestion("q1")).toBeNull();
-    expect(parseAskedQuestion({ id: ID, chose: "F" })).toEqual({ id: ID, chose: null });
+    expect(parseAskedQuestion({ id: ID, chose: "F" })?.chose).toBeNull();
     // IMAT prints five options, so E is a real pick.
-    expect(parseAskedQuestion({ id: ID, chose: "e" })).toEqual({ id: ID, chose: "E" });
+    expect(parseAskedQuestion({ id: ID, chose: "e" })?.chose).toBe("E");
   });
 });
 

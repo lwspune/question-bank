@@ -13,6 +13,8 @@
  *
  * Pure. Spec: tests/chat-question-tools.test.ts.
  */
+import { matchesNumericAnswer } from "@/lib/mocks/answers";
+import { formatProvenance } from "@/lib/questions/formatProvenance";
 import type { QuestionRow } from "@/lib/questions/query";
 
 export type VQuestion = {
@@ -31,6 +33,8 @@ export type VQuestion = {
   subtopic: string | null;
   /** For a similar question from the same subtopic. */
   subtopicId: string | null;
+  /** Which past paper it is from, or that it is practice (originLine); null when unknown. */
+  origin: string | null;
 };
 
 export function toVQuestion(row: QuestionRow): VQuestion {
@@ -48,7 +52,37 @@ export function toVQuestion(row: QuestionRow): VQuestion {
     chapter: row.chapter.name,
     subtopic: row.subtopic?.name ?? null,
     subtopicId: row.subtopic?.id ?? null,
+    origin: originLine({
+      kind: row.questionKind ?? null,
+      examName: row.exam.name,
+      questionNumber: row.questionNumber,
+      pyqYear: row.pyqYear,
+      pyqMonth: row.pyqMonth,
+      // Already through publicPyqNote: a sitting label, or null when the note names a source.
+      pyqNote: row.pyqNote,
+    }),
   };
+}
+
+/**
+ * The question's paper, as V is told it: the label the question card shows
+ * (formatProvenance). 2026-10-24: a student asked "Which yrs ques is this" and
+ * V said it could not tell, though the bank held 8 Apr 2023. A practice row's
+ * note names a source, so it is never printed, only "a practice question".
+ */
+export function originLine(p: {
+  kind: "pyq" | "practice" | null;
+  examName: string;
+  questionNumber: string | null;
+  pyqYear: number | null;
+  pyqMonth: string | null;
+  pyqNote: string | null;
+}): string | null {
+  if (p.kind === "practice") return "A practice question, not from a past paper.";
+  if (p.kind !== "pyq") return null;
+  const label = formatProvenance(p);
+  if (!label) return "A past-year question; its paper and year are not recorded.";
+  return p.pyqYear === null ? `From the past paper: ${label} (its year is not recorded).` : `From the past paper: ${label}.`;
 }
 
 const FIRST_STEP_MAX = 300;
@@ -81,6 +115,7 @@ function header(q: VQuestion): string[] {
   lines.push(q.text);
   if (q.options.length > 0) lines.push(`Options: ${q.options.map((o) => `(${o.label}) ${o.text}`).join(" | ")}`);
   if (q.hasFigure) lines.push("This question has a figure you cannot see: explain only from the text and the solution.");
+  if (q.origin) lines.push(q.origin);
   return lines;
 }
 
@@ -98,11 +133,15 @@ export function hintView(q: VQuestion): string {
  * For a full explanation: the key and the whole solution, and what the student picked. Labelled in the
  * student's words, never "stored": V repeats what it reads (2026-10-23, 39 of 218 replies said "stored").
  */
-export function explainView(q: VQuestion, chose: string | null): string {
+export function explainView(q: VQuestion, chose: string | null, entered: number | null = null): string {
   const lines = [...header(q), `Correct answer: ${answerText(q)}`];
   const picked = chose ? q.options.find((o) => o.label === chose) : undefined;
   if (picked) {
     lines.push(`The student chose (${picked.label}) ${picked.text}, which is ${picked.isCorrect ? "right" : "wrong"}.`);
+  }
+  // A numeric (NAT) answer, graded with the mock's own tolerance. 0 is an answer, so test for null.
+  if (q.format === "numeric" && entered !== null && q.numericAnswer !== null) {
+    lines.push(`The student entered ${entered}, which is ${matchesNumericAnswer(entered, q.numericAnswer) ? "right" : "wrong"}.`);
   }
   lines.push(
     q.solution && q.solution.trim()
@@ -136,13 +175,27 @@ export function pickSimilar(candidates: readonly string[], exclude: ReadonlySet<
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const PICKS = new Set(["A", "B", "C", "D", "E"]);
 
+/** No real numeric answer is this large; anything bigger is junk, not an answer. */
+const ENTERED_MAX = 1e9;
+
+/**
+ * The question the student tapped Ask V on, and what they did with it: the
+ * option they picked, the number they entered (a numeric question), or that
+ * they skipped it in a test. 2026-10-24: V asked a student who had skipped a
+ * mock question "which option did you pick?".
+ */
+export type AskedQuestion = { id: string; chose: string | null; entered: number | null; skipped: boolean };
+
 /** The question a chat request says the student tapped Ask V on. Anything malformed is no question. */
-export function parseAskedQuestion(raw: unknown): { id: string; chose: string | null } | null {
+export function parseAskedQuestion(raw: unknown): AskedQuestion | null {
   if (!raw || typeof raw !== "object") return null;
-  const { id, chose } = raw as { id?: unknown; chose?: unknown };
+  const { id, chose, entered, skipped } = raw as { id?: unknown; chose?: unknown; entered?: unknown; skipped?: unknown };
   if (typeof id !== "string" || !UUID_RE.test(id)) return null;
   const pick = typeof chose === "string" ? chose.toUpperCase() : null;
-  return { id, chose: pick && PICKS.has(pick) ? pick : null };
+  const picked = pick && PICKS.has(pick) ? pick : null;
+  const number = typeof entered === "number" && Number.isFinite(entered) && Math.abs(entered) < ENTERED_MAX ? entered : null;
+  // A skip that contradicts an answer is dropped: the answer is what V needs.
+  return { id, chose: picked, entered: number, skipped: skipped === true && picked === null && number === null };
 }
 
 // LaTeX commands that only lay maths out; their names are not in a pasted copy.

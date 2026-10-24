@@ -1,0 +1,5012 @@
+{
+ "figures": [
+  {
+   "key": "jeea-loop-4y2-x2-4-x-x-2",
+   "ids": [
+    "b31712a4-4961-4ad2-8fc8-55716cae5483"
+   ],
+   "draw": {
+    "kind": "plot",
+    "size": [
+     5,
+     3.8
+    ],
+    "xlim": [
+     -0.4,
+     4.7
+    ],
+    "ylim": [
+     -2.0,
+     2.0
+    ],
+    "xlabel": "x",
+    "ylabel": "y",
+    "series": [
+     {
+      "type": "parametric",
+      "x": "3+cos(t)",
+      "y": "(3+cos(t))/2*sin(t)",
+      "t": [
+       0,
+       6.2832
+      ],
+      "color": "#c2410c",
+      "style": "-",
+      "label": "$4y^2=x^2(4-x)(x-2)$"
+     }
+    ],
+    "fills": [
+     {
+      "type": "between",
+      "upper": "x/2*sqrt(maximum((4-x)*(x-2),0))",
+      "lower": "-x/2*sqrt(maximum((4-x)*(x-2),0))",
+      "domain": [
+       2,
+       4
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     }
+    ],
+    "marks": [
+     {
+      "at": [
+       2,
+       0
+      ],
+      "label": "$(2,0)$",
+      "offset": [
+       -46,
+       6
+      ]
+     },
+     {
+      "at": [
+       4,
+       0
+      ],
+      "label": "$(4,0)$",
+      "offset": [
+       4,
+       6
+      ]
+     }
+    ],
+    "labels": [],
+    "legend": "below",
+    "ticks": "clean",
+    "check": {
+     "area": "3*pi/2"
+    },
+    "equal": true
+   },
+   "note": "A = 3pi/2 (option C)"
+  },
+  {
+   "key": "jeea-half-disc-a-b-2x",
+   "ids": [
+    "5dbab399-9734-4042-81a6-87eeb8f2b10a"
+   ],
+   "draw": {
+    "kind": "plot",
+    "size": [
+     5,
+     3.6
+    ],
+    "xlim": [
+     -1.4,
+     3.4
+    ],
+    "ylim": [
+     -0.4,
+     2.6
+    ],
+    "xlabel": "x",
+    "ylabel": "y",
+    "series": [
+     {
+      "type": "function",
+      "expr": "sqrt(maximum(4-(x-1)**2,0))",
+      "domain": [
+       -1,
+       3
+      ],
+      "color": "#c2410c",
+      "style": "-",
+      "label": "$y=\\sqrt{4-(x-1)^2}$"
+     },
+     {
+      "type": "function",
+      "expr": "2*x",
+      "domain": [
+       -0.2,
+       1.3
+      ],
+      "color": "#1d4ed8",
+      "style": "-",
+      "label": "$y=2x$"
+     }
+    ],
+    "fills": [
+     {
+      "type": "between",
+      "upper": "sqrt(maximum(4-(x-1)**2,0))",
+      "lower": "maximum(2*x,0)",
+      "domain": [
+       -1,
+       1
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25,
+      "area": "pi-1"
+     },
+     {
+      "type": "between",
+      "upper": "minimum(2*x,sqrt(maximum(4-(x-1)**2,0)))",
+      "lower": "0",
+      "domain": [
+       0,
+       3
+      ],
+      "color": "#c2410c",
+      "alpha": 0.25,
+      "area": "pi+1"
+     }
+    ],
+    "marks": [
+     {
+      "at": [
+       1,
+       2
+      ],
+      "label": "$(1,2)$",
+      "offset": [
+       6,
+       4
+      ]
+     }
+    ],
+    "labels": [
+     {
+      "text": "$A$",
+      "at": [
+       -0.4,
+       0.7
+      ],
+      "size": 13,
+      "color": "#1d4ed8"
+     },
+     {
+      "text": "$B$",
+      "at": [
+       1.6,
+       0.6
+      ],
+      "size": 13,
+      "color": "#c2410c"
+     }
+    ],
+    "legend": "below",
+    "ticks": "clean",
+    "equal": true
+   },
+   "note": "A = pi-1, B = pi+1, A/B = (pi-1)/(pi+1) (option C)"
+  },
+  {
+   "key": "jeea-min-2absx1-x21",
+   "ids": [
+    "553cee3c-8d33-45b6-bb97-9e6eaa0bcc2c"
+   ],
+   "draw": {
+    "kind": "plot",
+    "size": [
+     5,
+     4
+    ],
+    "xlim": [
+     -3.6,
+     3.6
+    ],
+    "ylim": [
+     -0.8,
+     9.8
+    ],
+    "xlabel": "x",
+    "ylabel": "y",
+    "series": [
+     {
+      "type": "function",
+      "expr": "2*abs(x)+1",
+      "domain": [
+       -3.3,
+       3.3
+      ],
+      "color": "#c2410c",
+      "style": "-",
+      "label": "$y=2|x|+1$"
+     },
+     {
+      "type": "function",
+      "expr": "x**2+1",
+      "domain": [
+       -3.0,
+       3.0
+      ],
+      "color": "#1d4ed8",
+      "style": "-",
+      "label": "$y=x^2+1$"
+     },
+     {
+      "type": "vline",
+      "x": -3,
+      "style": "--",
+      "color": "#6b7280",
+      "label": "$|x|=3$"
+     },
+     {
+      "type": "vline",
+      "x": 3,
+      "style": "--",
+      "color": "#6b7280"
+     }
+    ],
+    "fills": [
+     {
+      "type": "between",
+      "upper": "minimum(2*abs(x)+1,x**2+1)",
+      "lower": "0",
+      "domain": [
+       -3,
+       3
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     }
+    ],
+    "marks": [
+     {
+      "at": [
+       -2,
+       5
+      ],
+      "label": "$(-2,5)$",
+      "offset": [
+       -50,
+       4
+      ]
+     },
+     {
+      "at": [
+       2,
+       5
+      ],
+      "label": "$(2,5)$",
+      "offset": [
+       6,
+       -10
+      ]
+     }
+    ],
+    "labels": [],
+    "legend": "below",
+    "ticks": "clean",
+    "check": {
+     "area": "64/3"
+    }
+   },
+   "note": "A = 64/3 (option B)"
+  },
+  {
+   "key": "jeea-sideways-2y-y2-x-y-0",
+   "ids": [
+    "72fbbf08-62df-43f1-a35f-106c69a1c634"
+   ],
+   "draw": {
+    "kind": "plot",
+    "size": [
+     5,
+     4
+    ],
+    "xlim": [
+     -3.8,
+     1.8
+    ],
+    "ylim": [
+     -0.9,
+     3.8
+    ],
+    "xlabel": "x",
+    "ylabel": "y",
+    "series": [
+     {
+      "type": "function_y",
+      "expr": "2*y-y**2",
+      "range": [
+       -0.6,
+       3.5
+      ],
+      "color": "#c2410c",
+      "style": "-",
+      "label": "$y^2-2y=-x$"
+     },
+     {
+      "type": "function",
+      "expr": "-x",
+      "domain": [
+       -3.6,
+       0.8
+      ],
+      "color": "#1d4ed8",
+      "style": "-",
+      "label": "$x+y=0$"
+     }
+    ],
+    "fills": [
+     {
+      "type": "betweenx",
+      "left": "-y",
+      "right": "2*y-y**2",
+      "range": [
+       0,
+       3
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     }
+    ],
+    "marks": [
+     {
+      "at": [
+       -3,
+       3
+      ],
+      "label": "$(-3,3)$",
+      "offset": [
+       8,
+       2
+      ]
+     },
+     {
+      "at": [
+       0,
+       0
+      ],
+      "label": "$(0,0)$",
+      "offset": [
+       28,
+       3
+      ]
+     }
+    ],
+    "labels": [],
+    "legend": "below",
+    "ticks": "clean",
+    "check": {
+     "area": "9/2"
+    }
+   },
+   "note": "A = 9/2 from 8A = 36"
+  },
+  {
+   "key": "jeea-split-root2x-circle-i",
+   "ids": [
+    "68c64330-fb2d-43ee-80fa-c699ae06c259"
+   ],
+   "draw": {
+    "kind": "plot",
+    "size": [
+     5,
+     4.2
+    ],
+    "xlim": [
+     -0.3,
+     2.6
+    ],
+    "ylim": [
+     -0.3,
+     2.4
+    ],
+    "xlabel": "x",
+    "ylabel": "y",
+    "series": [
+     {
+      "type": "function_y",
+      "expr": "y**2/2",
+      "range": [
+       0,
+       2.15
+      ],
+      "color": "#c2410c",
+      "style": "-",
+      "label": "$y=\\sqrt{2x}$"
+     },
+     {
+      "type": "function",
+      "expr": "sqrt(maximum(2*x-x**2,0))",
+      "domain": [
+       0,
+       2
+      ],
+      "color": "#1d4ed8",
+      "style": "-",
+      "label": "$y=\\sqrt{2x-x^2}$"
+     },
+     {
+      "type": "vline",
+      "x": 2,
+      "style": "--",
+      "color": "#6b7280",
+      "label": "$x=2$"
+     },
+     {
+      "type": "segment",
+      "from": [
+       0.5,
+       1
+      ],
+      "to": [
+       2,
+       1
+      ],
+      "style": "--",
+      "color": "#6b7280"
+     }
+    ],
+    "fills": [
+     {
+      "type": "betweenx",
+      "left": "y**2/2",
+      "right": "1-sqrt(maximum(1-y**2,0))",
+      "range": [
+       0,
+       1
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25,
+      "area": "5/6-pi/4"
+     },
+     {
+      "type": "betweenx",
+      "left": "y**2/2",
+      "right": "2",
+      "range": [
+       1,
+       2
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25,
+      "area": "5/6"
+     },
+     {
+      "type": "betweenx",
+      "left": "1+sqrt(maximum(1-y**2,0))",
+      "right": "2",
+      "range": [
+       0,
+       1
+      ],
+      "color": "#c2410c",
+      "alpha": 0.25,
+      "area": "1-pi/4"
+     }
+    ],
+    "marks": [
+     {
+      "at": [
+       2,
+       2
+      ],
+      "label": "$(2,2)$",
+      "offset": [
+       -40,
+       4
+      ]
+     },
+     {
+      "at": [
+       1,
+       1
+      ],
+      "label": "$(1,1)$",
+      "offset": [
+       -14,
+       6
+      ]
+     }
+    ],
+    "labels": [
+     {
+      "text": "$I$",
+      "at": [
+       1.8,
+       0.76
+      ],
+      "size": 13,
+      "color": "#c2410c"
+     }
+    ],
+    "legend": "below",
+    "ticks": "clean",
+    "equal": true
+   },
+   "note": "LHS region (8/3 - pi/2) split along y = 1; I = 1 - pi/4 is the orange piece (option C)"
+  },
+  {
+   "key": "jeea-y2-4x-sign-bands",
+   "ids": [
+    "76ec078c-0c10-454f-92e6-eaa6ce5c3321"
+   ],
+   "draw": {
+    "kind": "plot",
+    "size": [
+     5,
+     4.4
+    ],
+    "xlim": [
+     -0.4,
+     4.6
+    ],
+    "ylim": [
+     -4.6,
+     4.6
+    ],
+    "xlabel": "x",
+    "ylabel": "y",
+    "series": [
+     {
+      "type": "function_y",
+      "expr": "y**2/4",
+      "range": [
+       -4.3,
+       4.3
+      ],
+      "color": "#c2410c",
+      "style": "-",
+      "label": "$y^2=4x$"
+     },
+     {
+      "type": "vline",
+      "x": 4,
+      "style": "--",
+      "color": "#6b7280",
+      "label": "$x=4$"
+     }
+    ],
+    "fills": [
+     {
+      "type": "between",
+      "upper": "2*sqrt(x)",
+      "lower": "0",
+      "domain": [
+       0,
+       1
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     },
+     {
+      "type": "between",
+      "upper": "0",
+      "lower": "-2*sqrt(x)",
+      "domain": [
+       1,
+       2
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     },
+     {
+      "type": "between",
+      "upper": "2*sqrt(x)",
+      "lower": "0",
+      "domain": [
+       2,
+       3
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     },
+     {
+      "type": "between",
+      "upper": "0",
+      "lower": "-2*sqrt(x)",
+      "domain": [
+       3,
+       4
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     }
+    ],
+    "marks": [],
+    "labels": [],
+    "legend": "below",
+    "ticks": "clean",
+    "check": {
+     "area": "32/3"
+    }
+   },
+   "note": "A = 32/3 (option D); one half-band of y^2<=4x on each of (0,1),(1,2),(2,3),(3,4)"
+  },
+  {
+   "key": "jeea-ellipse-4x2-y2-8-y2-4x",
+   "ids": [
+    "5c2c0077-7689-449c-b6da-733b0d48d0c9"
+   ],
+   "draw": {
+    "kind": "plot",
+    "size": [
+     5,
+     5
+    ],
+    "xlim": [
+     -1.8,
+     2.2
+    ],
+    "ylim": [
+     -3.2,
+     3.2
+    ],
+    "xlabel": "x",
+    "ylabel": "y",
+    "series": [
+     {
+      "type": "parametric",
+      "x": "sqrt(2)*cos(t)",
+      "y": "2*sqrt(2)*sin(t)",
+      "t": [
+       0,
+       6.2832
+      ],
+      "color": "#c2410c",
+      "style": "-",
+      "label": "$4x^2+y^2=8$"
+     },
+     {
+      "type": "function_y",
+      "expr": "y**2/4",
+      "range": [
+       -3.0,
+       3.0
+      ],
+      "color": "#1d4ed8",
+      "style": "-",
+      "label": "$y^2=4x$"
+     }
+    ],
+    "fills": [
+     {
+      "type": "betweenx",
+      "left": "y**2/4",
+      "right": "sqrt(maximum(8-y**2,0))/2",
+      "range": [
+       -2,
+       2
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     }
+    ],
+    "marks": [
+     {
+      "at": [
+       1,
+       2
+      ],
+      "label": "$(1,2)$",
+      "offset": [
+       14,
+       -18
+      ]
+     },
+     {
+      "at": [
+       1,
+       -2
+      ],
+      "label": "$(1,-2)$",
+      "offset": [
+       14,
+       6
+      ]
+     }
+    ],
+    "labels": [],
+    "legend": "below",
+    "ticks": "clean",
+    "check": {
+     "area": "pi+2/3"
+    },
+    "equal": true
+   },
+   "note": "A = pi + 2/3 (option B)"
+  },
+  {
+   "key": "jeea-astroid-x-y-ge-0",
+   "ids": [
+    "5bf6c06d-624e-41ad-b27d-2a2d9c717b43"
+   ],
+   "draw": {
+    "kind": "plot",
+    "size": [
+     5,
+     5
+    ],
+    "xlim": [
+     -1.25,
+     1.25
+    ],
+    "ylim": [
+     -1.2,
+     1.25
+    ],
+    "xlabel": "x",
+    "ylabel": "y",
+    "series": [
+     {
+      "type": "parametric",
+      "x": "cos(t)**3",
+      "y": "sin(t)**3",
+      "t": [
+       0,
+       6.2832
+      ],
+      "color": "#c2410c",
+      "style": "-",
+      "label": "$x^{2/3}+y^{2/3}=1$"
+     },
+     {
+      "type": "function",
+      "expr": "-x",
+      "domain": [
+       -1.0,
+       1.0
+      ],
+      "color": "#1d4ed8",
+      "style": "-",
+      "label": "$x+y=0$"
+     }
+    ],
+    "fills": [
+     {
+      "type": "between",
+      "upper": "(1-abs(x)**(2/3))**1.5",
+      "lower": "0",
+      "domain": [
+       0,
+       1
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     },
+     {
+      "type": "between",
+      "upper": "(1-abs(x)**(2/3))**1.5",
+      "lower": "-x",
+      "domain": [
+       -0.35355339059327373,
+       0
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     }
+    ],
+    "marks": [
+     {
+      "at": [
+       -0.35355339059327373,
+       0.35355339059327373
+      ],
+      "label": "$(-\\frac{1}{2\\sqrt{2}},\\frac{1}{2\\sqrt{2}})$",
+      "offset": [
+       -104,
+       4
+      ]
+     }
+    ],
+    "labels": [],
+    "legend": "below",
+    "ticks": "clean",
+    "check": {
+     "area": "9*pi/64"
+    },
+    "equal": true
+   },
+   "note": "A = 9pi/64 from 256A/pi = 36"
+  },
+  {
+   "key": "jeea-4x2-x2-9y-y4",
+   "ids": [
+    "67e2c415-2653-42c3-bfbd-536ad532fd71"
+   ],
+   "draw": {
+    "kind": "plot",
+    "size": [
+     5,
+     4
+    ],
+    "xlim": [
+     -7.2,
+     7.2
+    ],
+    "ylim": [
+     -0.6,
+     5.2
+    ],
+    "xlabel": "x",
+    "ylabel": "y",
+    "series": [
+     {
+      "type": "function",
+      "expr": "4*x**2",
+      "domain": [
+       -1.15,
+       1.15
+      ],
+      "color": "#c2410c",
+      "style": "-",
+      "label": "$y=4x^2$"
+     },
+     {
+      "type": "function",
+      "expr": "x**2/9",
+      "domain": [
+       -6.8,
+       6.8
+      ],
+      "color": "#1d4ed8",
+      "style": "-",
+      "label": "$x^2=9y$"
+     },
+     {
+      "type": "hline",
+      "y": 4,
+      "style": "--",
+      "color": "#6b7280",
+      "label": "$y=4$"
+     }
+    ],
+    "fills": [
+     {
+      "type": "betweenx",
+      "left": "sqrt(y)/2",
+      "right": "3*sqrt(y)",
+      "range": [
+       0,
+       4
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     },
+     {
+      "type": "betweenx",
+      "left": "-3*sqrt(y)",
+      "right": "-sqrt(y)/2",
+      "range": [
+       0,
+       4
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     }
+    ],
+    "marks": [
+     {
+      "at": [
+       -6,
+       4
+      ],
+      "label": "$(-6,4)$",
+      "offset": [
+       -8,
+       8
+      ]
+     },
+     {
+      "at": [
+       6,
+       4
+      ],
+      "label": "$(6,4)$",
+      "offset": [
+       -30,
+       8
+      ]
+     },
+     {
+      "at": [
+       1,
+       4
+      ],
+      "label": "$(1,4)$",
+      "offset": [
+       8,
+       8
+      ]
+     },
+     {
+      "at": [
+       -1,
+       4
+      ],
+      "label": "$(-1,4)$",
+      "offset": [
+       -58,
+       8
+      ]
+     }
+    ],
+    "labels": [],
+    "legend": "below",
+    "ticks": "clean",
+    "check": {
+     "area": "80/3"
+    }
+   },
+   "note": "A = 80/3 (option D)"
+  },
+  {
+   "key": "jeea-parabola-tangent-ord3",
+   "ids": [
+    "7203e883-01b4-482d-9bbb-48a2a46ca784"
+   ],
+   "draw": {
+    "kind": "plot",
+    "size": [
+     5,
+     4
+    ],
+    "xlim": [
+     -6.4,
+     6.2
+    ],
+    "ylim": [
+     -0.8,
+     4.4
+    ],
+    "xlabel": "x",
+    "ylabel": "y",
+    "series": [
+     {
+      "type": "function_y",
+      "expr": "(y-2)**2+1",
+      "range": [
+       -0.4,
+       4.3
+      ],
+      "color": "#c2410c",
+      "style": "-",
+      "label": "$(y-2)^2=x-1$"
+     },
+     {
+      "type": "function",
+      "expr": "(x+4)/2",
+      "domain": [
+       -4.5,
+       4.5
+      ],
+      "color": "#1d4ed8",
+      "style": "-",
+      "label": "tangent $x=2y-4$"
+     }
+    ],
+    "fills": [
+     {
+      "type": "betweenx",
+      "left": "2*y-4",
+      "right": "(y-2)**2+1",
+      "range": [
+       0,
+       3
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     }
+    ],
+    "marks": [
+     {
+      "at": [
+       2,
+       3
+      ],
+      "label": "$(2,3)$",
+      "offset": [
+       10,
+       -16
+      ]
+     },
+     {
+      "at": [
+       -4,
+       0
+      ],
+      "label": "$(-4,0)$",
+      "offset": [
+       -60,
+       6
+      ]
+     },
+     {
+      "at": [
+       5,
+       0
+      ],
+      "label": "$(5,0)$",
+      "offset": [
+       6,
+       6
+      ]
+     }
+    ],
+    "labels": [],
+    "legend": "below",
+    "ticks": "clean",
+    "check": {
+     "area": "9"
+    }
+   },
+   "note": "A = 9 (option A)"
+  },
+  {
+   "key": "jeea-y2-2x-1-y2-4x-3",
+   "ids": [
+    "d9e7564d-50fa-4052-9828-52d8cac43d2e"
+   ],
+   "draw": {
+    "kind": "plot",
+    "size": [
+     5,
+     4
+    ],
+    "xlim": [
+     -0.15,
+     1.9
+    ],
+    "ylim": [
+     -1.7,
+     1.7
+    ],
+    "xlabel": "x",
+    "ylabel": "y",
+    "series": [
+     {
+      "type": "function_y",
+      "expr": "(y**2+1)/2",
+      "range": [
+       -1.6,
+       1.6
+      ],
+      "color": "#c2410c",
+      "style": "-",
+      "label": "$y^2=2x-1$"
+     },
+     {
+      "type": "function_y",
+      "expr": "(y**2+3)/4",
+      "range": [
+       -1.6,
+       1.6
+      ],
+      "color": "#1d4ed8",
+      "style": "-",
+      "label": "$y^2=4x-3$"
+     }
+    ],
+    "fills": [
+     {
+      "type": "betweenx",
+      "left": "(y**2+1)/2",
+      "right": "(y**2+3)/4",
+      "range": [
+       -1,
+       1
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     }
+    ],
+    "marks": [
+     {
+      "at": [
+       1,
+       1
+      ],
+      "label": "$(1,1)$",
+      "offset": [
+       12,
+       -12
+      ]
+     },
+     {
+      "at": [
+       1,
+       -1
+      ],
+      "label": "$(1,-1)$",
+      "offset": [
+       12,
+       3
+      ]
+     }
+    ],
+    "labels": [],
+    "legend": "below",
+    "ticks": "clean",
+    "check": {
+     "area": "1/3"
+    }
+   },
+   "note": "A = 1/3 (option A)"
+  },
+  {
+   "key": "jeea-ellipse-x2-3y2-18-below-yx",
+   "ids": [
+    "6140fd80-4d75-4ba8-bb9a-88bd408fc142"
+   ],
+   "draw": {
+    "kind": "plot",
+    "size": [
+     5,
+     3.8
+    ],
+    "xlim": [
+     -0.5,
+     4.9
+    ],
+    "ylim": [
+     -0.5,
+     3.3
+    ],
+    "xlabel": "x",
+    "ylabel": "y",
+    "series": [
+     {
+      "type": "parametric",
+      "x": "3*sqrt(2)*cos(t)",
+      "y": "sqrt(6)*sin(t)",
+      "t": [
+       0,
+       6.2832
+      ],
+      "color": "#c2410c",
+      "style": "-",
+      "label": "$x^2+3y^2=18$"
+     },
+     {
+      "type": "function",
+      "expr": "x",
+      "domain": [
+       -0.3,
+       3.1
+      ],
+      "color": "#1d4ed8",
+      "style": "-",
+      "label": "$y=x$"
+     }
+    ],
+    "fills": [
+     {
+      "type": "between",
+      "upper": "minimum(x,sqrt(maximum((18-x**2)/3,0)))",
+      "lower": "0",
+      "domain": [
+       0,
+       4.242640687119286
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     }
+    ],
+    "marks": [
+     {
+      "at": [
+       2.1213203435596424,
+       2.1213203435596424
+      ],
+      "label": "$(\\frac{3}{\\sqrt{2}},\\frac{3}{\\sqrt{2}})$",
+      "offset": [
+       26,
+       6
+      ]
+     }
+    ],
+    "labels": [],
+    "legend": "below",
+    "ticks": "clean",
+    "check": {
+     "area": "sqrt(3)*pi"
+    },
+    "equal": true
+   },
+   "note": "A = sqrt3 pi (option B)"
+  },
+  {
+   "key": "jeea-circle-ellipse-30pi-18pi",
+   "ids": [
+    "fdd960d1-86b7-4a47-b9f7-d706ade26a16"
+   ],
+   "draw": {
+    "kind": "plot",
+    "size": [
+     5,
+     5.4
+    ],
+    "xlim": [
+     -9.6,
+     9.6
+    ],
+    "ylim": [
+     -9.6,
+     9.6
+    ],
+    "xlabel": "x",
+    "ylabel": "y",
+    "series": [
+     {
+      "type": "parametric",
+      "x": "8.66025403784*cos(t)",
+      "y": "8.66025403784*sin(t)",
+      "t": [
+       0,
+       6.2832
+      ],
+      "color": "#c2410c",
+      "style": "-",
+      "label": "$x^2+y^2=a^2,\\ a=5\\sqrt{3}$"
+     },
+     {
+      "type": "parametric",
+      "x": "8.66025403784*cos(t)",
+      "y": "5.19615242271*sin(t)",
+      "t": [
+       0,
+       6.2832
+      ],
+      "color": "#111111",
+      "style": "-",
+      "label": "$\\frac{x^2}{a^2}+\\frac{y^2}{b^2}=1$"
+     },
+     {
+      "type": "parametric",
+      "x": "5.19615242271*cos(t)",
+      "y": "5.19615242271*sin(t)",
+      "t": [
+       0,
+       6.2832
+      ],
+      "color": "#15803d",
+      "style": "-",
+      "label": "$x^2+y^2=b^2,\\ b=3\\sqrt{3}$"
+     }
+    ],
+    "fills": [
+     {
+      "type": "between",
+      "upper": "sqrt(maximum(75-x**2,0))",
+      "lower": "5.19615242271*sqrt(maximum(1-x**2/75,0))",
+      "domain": [
+       -8.660254037844386,
+       8.660254037844386
+      ],
+      "color": "#c2410c",
+      "alpha": 0.25,
+      "area": "15*pi"
+     },
+     {
+      "type": "between",
+      "upper": "-5.19615242271*sqrt(maximum(1-x**2/75,0))",
+      "lower": "-sqrt(maximum(75-x**2,0))",
+      "domain": [
+       -8.660254037844386,
+       8.660254037844386
+      ],
+      "color": "#c2410c",
+      "alpha": 0.25,
+      "area": "15*pi"
+     },
+     {
+      "type": "between",
+      "upper": "5.19615242271*sqrt(maximum(1-x**2/75,0))",
+      "lower": "sqrt(maximum(27-x**2,0))",
+      "domain": [
+       -8.660254037844386,
+       8.660254037844386
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25,
+      "area": "9*pi"
+     },
+     {
+      "type": "between",
+      "upper": "-sqrt(maximum(27-x**2,0))",
+      "lower": "-5.19615242271*sqrt(maximum(1-x**2/75,0))",
+      "domain": [
+       -8.660254037844386,
+       8.660254037844386
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25,
+      "area": "9*pi"
+     }
+    ],
+    "marks": [],
+    "labels": [
+     {
+      "text": "$30\\pi$",
+      "at": [
+       -1.3,
+       6.6
+      ],
+      "size": 12,
+      "color": "#c2410c"
+     },
+     {
+      "text": "$18\\pi$",
+      "at": [
+       5.7,
+       0.6
+      ],
+      "size": 12,
+      "color": "#1d4ed8"
+     }
+    ],
+    "legend": "below",
+    "ticks": "clean",
+    "equal": true
+   },
+   "note": "30pi = 2 x 15pi (orange), 18pi = 2 x 9pi (blue) with a = 5 sqrt3, b = 3 sqrt3 from (a-b)^2 = 12"
+  },
+  {
+   "key": "jeea-fog-x2-line-2y-x-15",
+   "ids": [
+    "b837ccb6-1017-4f6e-bc09-568ee3fcca7e"
+   ],
+   "draw": {
+    "kind": "plot",
+    "size": [
+     5,
+     4
+    ],
+    "xlim": [
+     -20,
+     4.8
+    ],
+    "ylim": [
+     -1.2,
+     11.5
+    ],
+    "xlabel": "x",
+    "ylabel": "y",
+    "series": [
+     {
+      "type": "function",
+      "expr": "((x+abs(x))/2)**2",
+      "domain": [
+       -16,
+       3.4
+      ],
+      "color": "#c2410c",
+      "style": "-",
+      "label": "$y=(f\\circ g)(x)$"
+     },
+     {
+      "type": "function",
+      "expr": "(x+15)/2",
+      "domain": [
+       -16,
+       4.5
+      ],
+      "color": "#1d4ed8",
+      "style": "-",
+      "label": "$2y-x=15$"
+     }
+    ],
+    "fills": [
+     {
+      "type": "between",
+      "upper": "(x+15)/2",
+      "lower": "((x+abs(x))/2)**2",
+      "domain": [
+       -15,
+       3
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     }
+    ],
+    "marks": [
+     {
+      "at": [
+       3,
+       9
+      ],
+      "label": "$(3,9)$",
+      "offset": [
+       6,
+       -8
+      ]
+     },
+     {
+      "at": [
+       -15,
+       0
+      ],
+      "label": "$(-15,0)$",
+      "offset": [
+       -64,
+       6
+      ]
+     }
+    ],
+    "labels": [],
+    "legend": "below",
+    "ticks": "clean",
+    "check": {
+     "area": "72"
+    }
+   },
+   "note": "A = 72 (numeric key)"
+  },
+  {
+   "key": "jeea-tangent-a-b-y2-x-2",
+   "ids": [
+    "2c00f8cd-a5b2-4fe9-b31d-089ac216f053"
+   ],
+   "draw": {
+    "kind": "plot",
+    "size": [
+     5,
+     4
+    ],
+    "xlim": [
+     -5.0,
+     7.0
+    ],
+    "ylim": [
+     -0.8,
+     2.6
+    ],
+    "xlabel": "x",
+    "ylabel": "y",
+    "series": [
+     {
+      "type": "function_y",
+      "expr": "y**2+2",
+      "range": [
+       -0.8,
+       2.2
+      ],
+      "color": "#c2410c",
+      "style": "-",
+      "label": "$P:y^2=x-2$"
+     },
+     {
+      "type": "function",
+      "expr": "(x+2)/4",
+      "domain": [
+       -2.8,
+       6.9
+      ],
+      "color": "#1d4ed8",
+      "style": "-",
+      "label": "$AB: x=4y-2$"
+     }
+    ],
+    "fills": [
+     {
+      "type": "betweenx",
+      "left": "4*y-2",
+      "right": "y**2+2",
+      "range": [
+       0,
+       2
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     }
+    ],
+    "marks": [
+     {
+      "at": [
+       -2,
+       0
+      ],
+      "label": "$A(-2,0)$",
+      "offset": [
+       -68,
+       6
+      ]
+     },
+     {
+      "at": [
+       6,
+       2
+      ],
+      "label": "$B(6,2)$",
+      "offset": [
+       -62,
+       6
+      ]
+     }
+    ],
+    "labels": [],
+    "legend": "below",
+    "ticks": "clean",
+    "check": {
+     "area": "8/3"
+    }
+   },
+   "note": "A = 8/3 (option C)"
+  },
+  {
+   "key": "jeea-min-x2-2-2x-2",
+   "ids": [
+    "24395da6-4667-4e91-9a3a-10a721d4a895"
+   ],
+   "draw": {
+    "kind": "plot",
+    "size": [
+     5,
+     4
+    ],
+    "xlim": [
+     -0.6,
+     3.6
+    ],
+    "ylim": [
+     -0.6,
+     11.4
+    ],
+    "xlabel": "x",
+    "ylabel": "y",
+    "series": [
+     {
+      "type": "function",
+      "expr": "x**2+2",
+      "domain": [
+       -0.4,
+       3.1
+      ],
+      "color": "#c2410c",
+      "style": "-",
+      "label": "$y=x^2+2$"
+     },
+     {
+      "type": "function",
+      "expr": "2*x+2",
+      "domain": [
+       -0.4,
+       3.3
+      ],
+      "color": "#1d4ed8",
+      "style": "-",
+      "label": "$y=2x+2$"
+     },
+     {
+      "type": "vline",
+      "x": 3,
+      "style": "--",
+      "color": "#6b7280",
+      "label": "$x=3$"
+     }
+    ],
+    "fills": [
+     {
+      "type": "between",
+      "upper": "minimum(x**2+2,2*x+2)",
+      "lower": "0",
+      "domain": [
+       0,
+       3
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     }
+    ],
+    "marks": [
+     {
+      "at": [
+       2,
+       6
+      ],
+      "label": "$(2,6)$",
+      "offset": [
+       -42,
+       4
+      ]
+     },
+     {
+      "at": [
+       0,
+       2
+      ],
+      "label": "$(0,2)$",
+      "offset": [
+       6,
+       -14
+      ]
+     }
+    ],
+    "labels": [],
+    "legend": "below",
+    "ticks": "clean",
+    "check": {
+     "area": "41/3"
+    }
+   },
+   "note": "A = 41/3 from 12A = 164"
+  },
+  {
+   "key": "jeea-x-2y4-x2y2-x4y2-8",
+   "ids": [
+    "74b67bfa-f5f0-4ac9-ba94-498f0beb7e92"
+   ],
+   "draw": {
+    "kind": "plot",
+    "size": [
+     5,
+     4
+    ],
+    "xlim": [
+     -4.8,
+     9.0
+    ],
+    "ylim": [
+     -0.7,
+     2.6
+    ],
+    "xlabel": "x",
+    "ylabel": "y",
+    "series": [
+     {
+      "type": "function_y",
+      "expr": "-2*y**2",
+      "range": [
+       -0.3,
+       1.6
+      ],
+      "color": "#c2410c",
+      "style": "-",
+      "label": "$x+2y^2=0$"
+     },
+     {
+      "type": "function_y",
+      "expr": "8-4*y**2",
+      "range": [
+       -0.3,
+       1.55
+      ],
+      "color": "#1d4ed8",
+      "style": "-",
+      "label": "$x+4y^2=8$"
+     },
+     {
+      "type": "function",
+      "expr": "(x+4)/2",
+      "domain": [
+       -4.6,
+       0.8
+      ],
+      "color": "#15803d",
+      "style": "-",
+      "label": "$x-2y+4=0$"
+     }
+    ],
+    "fills": [
+     {
+      "type": "betweenx",
+      "left": "maximum(2*y-4,-2*y**2)",
+      "right": "8-4*y**2",
+      "range": [
+       0,
+       1.5
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     }
+    ],
+    "marks": [
+     {
+      "at": [
+       -2,
+       1
+      ],
+      "label": "$(-2,1)$",
+      "offset": [
+       -14,
+       -40
+      ]
+     },
+     {
+      "at": [
+       -1,
+       1.5
+      ],
+      "label": "$(-1,\\frac{3}{2})$",
+      "offset": [
+       -62,
+       8
+      ]
+     },
+     {
+      "at": [
+       8,
+       0
+      ],
+      "label": "$(8,0)$",
+      "offset": [
+       -14,
+       8
+      ]
+     }
+    ],
+    "labels": [],
+    "legend": "below",
+    "ticks": "clean",
+    "check": {
+     "area": "107/12"
+    }
+   },
+   "note": "A = 107/12 from m + n = 119"
+  },
+  {
+   "key": "jeea-parabola-line-axes-5",
+   "ids": [
+    "7da572d0-8d43-42e8-adc3-f583deb5d257"
+   ],
+   "draw": {
+    "kind": "plot",
+    "size": [
+     5,
+     4
+    ],
+    "xlim": [
+     -0.8,
+     6.2
+    ],
+    "ylim": [
+     -0.8,
+     4.4
+    ],
+    "xlabel": "x",
+    "ylabel": "y",
+    "series": [
+     {
+      "type": "function_y",
+      "expr": "(y-2)**2+1",
+      "range": [
+       -0.4,
+       4.3
+      ],
+      "color": "#c2410c",
+      "style": "-",
+      "label": "$(y-2)^2=x-1$"
+     },
+     {
+      "type": "function",
+      "expr": "(x+4)/2",
+      "domain": [
+       -0.6,
+       4.5
+      ],
+      "color": "#1d4ed8",
+      "style": "-",
+      "label": "$x-2y+4=0$"
+     }
+    ],
+    "fills": [
+     {
+      "type": "betweenx",
+      "left": "maximum(2*y-4,0)",
+      "right": "(y-2)**2+1",
+      "range": [
+       0,
+       3
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     }
+    ],
+    "marks": [
+     {
+      "at": [
+       2,
+       3
+      ],
+      "label": "$(2,3)$",
+      "offset": [
+       -44,
+       4
+      ]
+     },
+     {
+      "at": [
+       0,
+       2
+      ],
+      "label": "$(0,2)$",
+      "offset": [
+       6,
+       -14
+      ]
+     },
+     {
+      "at": [
+       5,
+       0
+      ],
+      "label": "$(5,0)$",
+      "offset": [
+       6,
+       6
+      ]
+     }
+    ],
+    "labels": [],
+    "legend": "below",
+    "ticks": "clean",
+    "check": {
+     "area": "5"
+    }
+   },
+   "note": "A = 5 (numeric key)"
+  },
+  {
+   "key": "jeea-circle-below-1-x2",
+   "ids": [
+    "038cb9bf-5f85-4ebd-95de-6b89b30d5545"
+   ],
+   "draw": {
+    "kind": "plot",
+    "size": [
+     5,
+     4.2
+    ],
+    "xlim": [
+     -2.3,
+     1.3
+    ],
+    "ylim": [
+     -0.5,
+     2.3
+    ],
+    "xlabel": "x",
+    "ylabel": "y",
+    "series": [
+     {
+      "type": "function",
+      "expr": "1-x**2",
+      "domain": [
+       -1.4,
+       1.2
+      ],
+      "color": "#c2410c",
+      "style": "-",
+      "label": "$y=1-x^2$"
+     },
+     {
+      "type": "parametric",
+      "x": "-1+cos(t)",
+      "y": "1+sin(t)",
+      "t": [
+       0,
+       6.2832
+      ],
+      "color": "#1d4ed8",
+      "style": "-",
+      "label": "$(x+1)^2+(y-1)^2=1$"
+     }
+    ],
+    "fills": [
+     {
+      "type": "between",
+      "upper": "1-x**2",
+      "lower": "1-sqrt(maximum(1-(x+1)**2,0))",
+      "domain": [
+       -1,
+       0
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     }
+    ],
+    "marks": [
+     {
+      "at": [
+       -1,
+       0
+      ],
+      "label": "$(-1,0)$",
+      "offset": [
+       10,
+       -22
+      ]
+     },
+     {
+      "at": [
+       0,
+       1
+      ],
+      "label": "$(0,1)$",
+      "offset": [
+       6,
+       4
+      ]
+     }
+    ],
+    "labels": [],
+    "legend": "below",
+    "ticks": "clean",
+    "check": {
+     "area": "pi/4-1/3"
+    },
+    "equal": true
+   },
+   "note": "A = pi/4 - 1/3 from 12(pi - 4A) = 16"
+  },
+  {
+   "key": "jeea-ellipse-minus-square",
+   "ids": [
+    "d60ff93a-057a-4072-b91d-7cae538bf49c"
+   ],
+   "draw": {
+    "kind": "plot",
+    "size": [
+     5.4,
+     3.6
+    ],
+    "xlim": [
+     -2.4,
+     2.4
+    ],
+    "ylim": [
+     -1.4,
+     1.4
+    ],
+    "xlabel": "x",
+    "ylabel": "y",
+    "series": [
+     {
+      "type": "parametric",
+      "x": "2*cos(t)",
+      "y": "sin(t)",
+      "t": [
+       0,
+       6.2832
+      ],
+      "color": "#c2410c",
+      "style": "-",
+      "label": "$x^2+4y^2=4$"
+     },
+     {
+      "type": "function",
+      "expr": "abs(x)-1",
+      "domain": [
+       -1.15,
+       1.15
+      ],
+      "color": "#1d4ed8",
+      "style": "-",
+      "label": "$y=|x|-1$"
+     },
+     {
+      "type": "function",
+      "expr": "1-abs(x)",
+      "domain": [
+       -1.15,
+       1.15
+      ],
+      "color": "#15803d",
+      "style": "-",
+      "label": "$y=1-|x|$"
+     }
+    ],
+    "fills": [
+     {
+      "type": "between",
+      "upper": "sqrt(maximum(4-x**2,0))/2",
+      "lower": "maximum(1-abs(x),0)",
+      "domain": [
+       -2,
+       2
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     },
+     {
+      "type": "between",
+      "upper": "-maximum(1-abs(x),0)",
+      "lower": "-sqrt(maximum(4-x**2,0))/2",
+      "domain": [
+       -2,
+       2
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     }
+    ],
+    "marks": [],
+    "labels": [],
+    "legend": "below",
+    "ticks": "clean",
+    "check": {
+     "area": "2*(pi-1)"
+    },
+    "equal": true
+   },
+   "note": "A = 2(pi - 1) (option A)"
+  },
+  {
+   "key": "jeea-circle-y2-below-x2-2y",
+   "ids": [
+    "1b80f4c9-d3ef-43fe-a61d-c8e3941b9af7"
+   ],
+   "draw": {
+    "kind": "plot",
+    "size": [
+     5,
+     4.4
+    ],
+    "xlim": [
+     -2.8,
+     2.8
+    ],
+    "ylim": [
+     -0.6,
+     4.6
+    ],
+    "xlabel": "x",
+    "ylabel": "y",
+    "series": [
+     {
+      "type": "parametric",
+      "x": "2*cos(t)",
+      "y": "2+2*sin(t)",
+      "t": [
+       0,
+       6.2832
+      ],
+      "color": "#c2410c",
+      "style": "-",
+      "label": "$x^2+(y-2)^2=4$"
+     },
+     {
+      "type": "function",
+      "expr": "x**2/2",
+      "domain": [
+       -2.7,
+       2.7
+      ],
+      "color": "#1d4ed8",
+      "style": "-",
+      "label": "$x^2=2y$"
+     }
+    ],
+    "fills": [
+     {
+      "type": "between",
+      "upper": "x**2/2",
+      "lower": "2-sqrt(maximum(4-x**2,0))",
+      "domain": [
+       -2,
+       2
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     }
+    ],
+    "marks": [
+     {
+      "at": [
+       -2,
+       2
+      ],
+      "label": "$(-2,2)$",
+      "offset": [
+       -54,
+       -16
+      ]
+     },
+     {
+      "at": [
+       2,
+       2
+      ],
+      "label": "$(2,2)$",
+      "offset": [
+       8,
+       -16
+      ]
+     }
+    ],
+    "labels": [],
+    "legend": "below",
+    "ticks": "clean",
+    "check": {
+     "area": "2*pi-16/3"
+    },
+    "equal": true
+   },
+   "note": "A = 2pi - 16/3 (option A)"
+  },
+  {
+   "key": "jeea-x3y2-0-x4y2-1",
+   "ids": [
+    "13ad7477-7107-437e-80d3-cf8ecb560c9f"
+   ],
+   "draw": {
+    "kind": "plot",
+    "size": [
+     5,
+     4
+    ],
+    "xlim": [
+     -3.8,
+     1.6
+    ],
+    "ylim": [
+     -1.5,
+     1.5
+    ],
+    "xlabel": "x",
+    "ylabel": "y",
+    "series": [
+     {
+      "type": "function_y",
+      "expr": "-3*y**2",
+      "range": [
+       -1.12,
+       1.12
+      ],
+      "color": "#c2410c",
+      "style": "-",
+      "label": "$x+3y^2=0$"
+     },
+     {
+      "type": "function_y",
+      "expr": "1-4*y**2",
+      "range": [
+       -1.12,
+       1.12
+      ],
+      "color": "#1d4ed8",
+      "style": "-",
+      "label": "$x+4y^2=1$"
+     }
+    ],
+    "fills": [
+     {
+      "type": "betweenx",
+      "left": "-3*y**2",
+      "right": "1-4*y**2",
+      "range": [
+       -1,
+       1
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     }
+    ],
+    "marks": [
+     {
+      "at": [
+       -3,
+       1
+      ],
+      "label": "$(-3,1)$",
+      "offset": [
+       6,
+       2
+      ]
+     },
+     {
+      "at": [
+       -3,
+       -1
+      ],
+      "label": "$(-3,-1)$",
+      "offset": [
+       6,
+       -12
+      ]
+     }
+    ],
+    "labels": [],
+    "legend": "below",
+    "ticks": "clean",
+    "check": {
+     "area": "4/3"
+    }
+   },
+   "note": "A = 4/3 (option C)"
+  },
+  {
+   "key": "jeea-x2-min-x2-4-3x",
+   "ids": [
+    "5c63a027-20de-40af-b610-cb41ccacc5e9"
+   ],
+   "draw": {
+    "kind": "plot",
+    "size": [
+     5,
+     4
+    ],
+    "xlim": [
+     -1.7,
+     1.7
+    ],
+    "ylim": [
+     -0.4,
+     3.6
+    ],
+    "xlabel": "x",
+    "ylabel": "y",
+    "series": [
+     {
+      "type": "function",
+      "expr": "x**2",
+      "domain": [
+       -1.6,
+       1.6
+      ],
+      "color": "#c2410c",
+      "style": "-",
+      "label": "$y=x^2$"
+     },
+     {
+      "type": "function",
+      "expr": "x+2",
+      "domain": [
+       -1.6,
+       1.0
+      ],
+      "color": "#1d4ed8",
+      "style": "-",
+      "label": "$y=x+2$"
+     },
+     {
+      "type": "function",
+      "expr": "4-3*x",
+      "domain": [
+       0.15,
+       1.45
+      ],
+      "color": "#15803d",
+      "style": "-",
+      "label": "$y=4-3x$"
+     }
+    ],
+    "fills": [
+     {
+      "type": "between",
+      "upper": "minimum(x+2,4-3*x)",
+      "lower": "x**2",
+      "domain": [
+       -1,
+       1
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     }
+    ],
+    "marks": [
+     {
+      "at": [
+       -1,
+       1
+      ],
+      "label": "$(-1,1)$",
+      "offset": [
+       -48,
+       4
+      ]
+     },
+     {
+      "at": [
+       1,
+       1
+      ],
+      "label": "$(1,1)$",
+      "offset": [
+       12,
+       -20
+      ]
+     },
+     {
+      "at": [
+       0.5,
+       2.5
+      ],
+      "label": "$(\\frac{1}{2},\\frac{5}{2})$",
+      "offset": [
+       6,
+       4
+      ]
+     }
+    ],
+    "labels": [],
+    "legend": "below",
+    "ticks": "clean",
+    "check": {
+     "area": "17/6"
+    }
+   },
+   "note": "A = 17/6 (option B)"
+  },
+  {
+   "key": "jeea-y2-8x-y2-16-3-x",
+   "ids": [
+    "2d39f192-f64d-4922-8153-5925759713ca"
+   ],
+   "draw": {
+    "kind": "plot",
+    "size": [
+     5,
+     4.4
+    ],
+    "xlim": [
+     -0.6,
+     3.6
+    ],
+    "ylim": [
+     -5.2,
+     5.2
+    ],
+    "xlabel": "x",
+    "ylabel": "y",
+    "series": [
+     {
+      "type": "function_y",
+      "expr": "y**2/8",
+      "range": [
+       -5,
+       5
+      ],
+      "color": "#c2410c",
+      "style": "-",
+      "label": "$y^2=8x$"
+     },
+     {
+      "type": "function_y",
+      "expr": "3-y**2/16",
+      "range": [
+       -4.3,
+       4.3
+      ],
+      "color": "#1d4ed8",
+      "style": "-",
+      "label": "$y^2=16(3-x)$"
+     }
+    ],
+    "fills": [
+     {
+      "type": "betweenx",
+      "left": "y**2/8",
+      "right": "3-y**2/16",
+      "range": [
+       -4,
+       4
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     }
+    ],
+    "marks": [
+     {
+      "at": [
+       2,
+       4
+      ],
+      "label": "$(2,4)$",
+      "offset": [
+       -52,
+       6
+      ]
+     },
+     {
+      "at": [
+       2,
+       -4
+      ],
+      "label": "$(2,-4)$",
+      "offset": [
+       -66,
+       -18
+      ]
+     }
+    ],
+    "labels": [],
+    "legend": "below",
+    "ticks": "clean",
+    "check": {
+     "area": "16"
+    }
+   },
+   "note": "A = 16 (option C)"
+  },
+  {
+   "key": "jeea-circle-5-y2-4x-smaller",
+   "ids": [
+    "cbdf0ac9-e060-46e9-aeb7-7bd9e53a821c"
+   ],
+   "draw": {
+    "kind": "plot",
+    "size": [
+     5,
+     5
+    ],
+    "xlim": [
+     -2.7,
+     2.7
+    ],
+    "ylim": [
+     -2.7,
+     2.7
+    ],
+    "xlabel": "x",
+    "ylabel": "y",
+    "series": [
+     {
+      "type": "parametric",
+      "x": "sqrt(5)*cos(t)",
+      "y": "sqrt(5)*sin(t)",
+      "t": [
+       0,
+       6.2832
+      ],
+      "color": "#c2410c",
+      "style": "-",
+      "label": "$x^2+y^2=5$"
+     },
+     {
+      "type": "function_y",
+      "expr": "y**2/4",
+      "range": [
+       -2.6,
+       2.6
+      ],
+      "color": "#1d4ed8",
+      "style": "-",
+      "label": "$y^2=4x$"
+     }
+    ],
+    "fills": [
+     {
+      "type": "betweenx",
+      "left": "y**2/4",
+      "right": "sqrt(maximum(5-y**2,0))",
+      "range": [
+       -2,
+       2
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     }
+    ],
+    "marks": [
+     {
+      "at": [
+       1,
+       2
+      ],
+      "label": "$(1,2)$",
+      "offset": [
+       30,
+       -2
+      ]
+     },
+     {
+      "at": [
+       1,
+       -2
+      ],
+      "label": "$(1,-2)$",
+      "offset": [
+       30,
+       -10
+      ]
+     }
+    ],
+    "labels": [],
+    "legend": "below",
+    "ticks": "clean",
+    "check": {
+     "area": "2/3+5*arcsin(2/sqrt(5))"
+    },
+    "equal": true
+   },
+   "note": "A = 2/3 + 5 sin^-1(2/sqrt5) (option A)"
+  },
+  {
+   "key": "jeea-circle-36-outside-y2-9x",
+   "ids": [
+    "620fa781-89b9-4bda-b864-47b3e1d86120"
+   ],
+   "draw": {
+    "kind": "plot",
+    "size": [
+     5,
+     5
+    ],
+    "xlim": [
+     -6.8,
+     6.8
+    ],
+    "ylim": [
+     -6.8,
+     6.8
+    ],
+    "xlabel": "x",
+    "ylabel": "y",
+    "series": [
+     {
+      "type": "parametric",
+      "x": "6*cos(t)",
+      "y": "6*sin(t)",
+      "t": [
+       0,
+       6.2832
+      ],
+      "color": "#c2410c",
+      "style": "-",
+      "label": "$x^2+y^2=36$"
+     },
+     {
+      "type": "function_y",
+      "expr": "y**2/9",
+      "range": [
+       -6.6,
+       6.6
+      ],
+      "color": "#1d4ed8",
+      "style": "-",
+      "label": "$y^2=9x$"
+     }
+    ],
+    "fills": [
+     {
+      "type": "between",
+      "upper": "sqrt(maximum(36-x**2,0))",
+      "lower": "-sqrt(maximum(36-x**2,0))",
+      "domain": [
+       -6,
+       0
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     },
+     {
+      "type": "between",
+      "upper": "sqrt(maximum(36-x**2,0))",
+      "lower": "sqrt(9*x)",
+      "domain": [
+       0,
+       3
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     },
+     {
+      "type": "between",
+      "upper": "-sqrt(9*x)",
+      "lower": "-sqrt(maximum(36-x**2,0))",
+      "domain": [
+       0,
+       3
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     }
+    ],
+    "marks": [
+     {
+      "at": [
+       3,
+       5.196152422706632
+      ],
+      "label": "$(3,3\\sqrt{3})$",
+      "offset": [
+       16,
+       -7
+      ]
+     },
+     {
+      "at": [
+       3,
+       -5.196152422706632
+      ],
+      "label": "$(3,-3\\sqrt{3})$",
+      "offset": [
+       14,
+       0
+      ]
+     }
+    ],
+    "labels": [],
+    "legend": "below",
+    "ticks": "clean",
+    "check": {
+     "area": "24*pi-3*sqrt(3)"
+    },
+    "equal": true
+   },
+   "note": "A = 24pi - 3 sqrt3 (option D)"
+  },
+  {
+   "key": "jeea-circle-12-outside-y2-2r3x",
+   "ids": [
+    "0d3834c6-1b8e-4dab-acae-429f0be7c791"
+   ],
+   "draw": {
+    "kind": "plot",
+    "size": [
+     5,
+     4.6
+    ],
+    "xlim": [
+     -0.8,
+     7.6
+    ],
+    "ylim": [
+     -4.2,
+     4.2
+    ],
+    "xlabel": "x",
+    "ylabel": "y",
+    "series": [
+     {
+      "type": "parametric",
+      "x": "3.46410161514+3.46410161514*cos(t)",
+      "y": "3.46410161514*sin(t)",
+      "t": [
+       0,
+       6.2832
+      ],
+      "color": "#c2410c",
+      "style": "-",
+      "label": "$(x-2\\sqrt{3})^2+y^2=12$"
+     },
+     {
+      "type": "function_y",
+      "expr": "y**2/3.46410161514",
+      "range": [
+       -4.0,
+       4.0
+      ],
+      "color": "#1d4ed8",
+      "style": "-",
+      "label": "$y^2=2\\sqrt{3}x$"
+     }
+    ],
+    "fills": [
+     {
+      "type": "between",
+      "upper": "sqrt(maximum(12-(x-3.46410161514)**2,0))",
+      "lower": "sqrt(maximum(3.46410161514*x,0))",
+      "domain": [
+       0,
+       3.4641016151377544
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     },
+     {
+      "type": "between",
+      "upper": "-sqrt(maximum(3.46410161514*x,0))",
+      "lower": "-sqrt(maximum(12-(x-3.46410161514)**2,0))",
+      "domain": [
+       0,
+       3.4641016151377544
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     }
+    ],
+    "marks": [
+     {
+      "at": [
+       3.4641016151377544,
+       3.4641016151377544
+      ],
+      "label": "$(2\\sqrt{3},2\\sqrt{3})$",
+      "offset": [
+       -68,
+       8
+      ]
+     },
+     {
+      "at": [
+       3.4641016151377544,
+       -3.4641016151377544
+      ],
+      "label": "$(2\\sqrt{3},-2\\sqrt{3})$",
+      "offset": [
+       -76,
+       -22
+      ]
+     }
+    ],
+    "labels": [],
+    "legend": "below",
+    "ticks": "clean",
+    "check": {
+     "area": "6*pi-16"
+    },
+    "equal": true
+   },
+   "note": "A = 6pi - 16 (option C)"
+  },
+  {
+   "key": "jeea-piecewise-f-y-20",
+   "ids": [
+    "9b025c51-f678-4774-9ae6-d8446cb72727"
+   ],
+   "draw": {
+    "kind": "plot",
+    "size": [
+     5,
+     4.2
+    ],
+    "xlim": [
+     -2.4,
+     2.8
+    ],
+    "ylim": [
+     -23.5,
+     1.5
+    ],
+    "xlabel": "x",
+    "ylabel": "y",
+    "series": [
+     {
+      "type": "function",
+      "expr": "-6*x**2-2",
+      "domain": [
+       -2.0,
+       1
+      ],
+      "color": "#c2410c",
+      "style": "-",
+      "label": "$y=-6x^2-2\\ (x<1)$"
+     },
+     {
+      "type": "function",
+      "expr": "4-12*x",
+      "domain": [
+       1,
+       2.3
+      ],
+      "color": "#1d4ed8",
+      "style": "-",
+      "label": "$y=4-12x\\ (x\\geq 1)$"
+     },
+     {
+      "type": "hline",
+      "y": -20,
+      "style": "--",
+      "color": "#6b7280",
+      "label": "$y=-20$"
+     }
+    ],
+    "fills": [
+     {
+      "type": "between",
+      "upper": "-6*x**2-2+3*(1+sign(x-1))*(x-1)**2",
+      "lower": "-20",
+      "domain": [
+       -1.7320508075688772,
+       2
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     }
+    ],
+    "marks": [
+     {
+      "at": [
+       -1.7320508075688772,
+       -20
+      ],
+      "label": "$(-\\sqrt{3},-20)$",
+      "offset": [
+       10,
+       -18
+      ]
+     },
+     {
+      "at": [
+       2,
+       -20
+      ],
+      "label": "$(2,-20)$",
+      "offset": [
+       -66,
+       -18
+      ]
+     },
+     {
+      "at": [
+       1,
+       -8
+      ],
+      "label": "$(1,-8)$",
+      "offset": [
+       6,
+       2
+      ]
+     }
+    ],
+    "labels": [],
+    "legend": "below",
+    "ticks": "clean",
+    "check": {
+     "area": "22+12*sqrt(3)"
+    }
+   },
+   "note": "A = 22 + 12 sqrt3 from alpha + beta = 34 (a = 2, b = -12)"
+  },
+  {
+   "key": "jeea-circle-1-absy-1-x2",
+   "ids": [
+    "4f6241bf-b584-4822-a640-a871cddc4241"
+   ],
+   "draw": {
+    "kind": "plot",
+    "size": [
+     5,
+     5
+    ],
+    "xlim": [
+     -1.4,
+     1.4
+    ],
+    "ylim": [
+     -1.4,
+     1.4
+    ],
+    "xlabel": "x",
+    "ylabel": "y",
+    "series": [
+     {
+      "type": "parametric",
+      "x": "cos(t)",
+      "y": "sin(t)",
+      "t": [
+       0,
+       6.2832
+      ],
+      "color": "#c2410c",
+      "style": "-",
+      "label": "$x^2+y^2=1$"
+     },
+     {
+      "type": "function",
+      "expr": "1-x**2",
+      "domain": [
+       -1,
+       1
+      ],
+      "color": "#1d4ed8",
+      "style": "-",
+      "label": "$|y|=1-x^2$"
+     },
+     {
+      "type": "function",
+      "expr": "x**2-1",
+      "domain": [
+       -1,
+       1
+      ],
+      "color": "#1d4ed8",
+      "style": "-"
+     }
+    ],
+    "fills": [
+     {
+      "type": "between",
+      "upper": "sqrt(maximum(1-x**2,0))",
+      "lower": "1-x**2",
+      "domain": [
+       -1,
+       1
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     },
+     {
+      "type": "between",
+      "upper": "x**2-1",
+      "lower": "-sqrt(maximum(1-x**2,0))",
+      "domain": [
+       -1,
+       1
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     }
+    ],
+    "marks": [
+     {
+      "at": [
+       1,
+       0
+      ],
+      "label": "$(1,0)$",
+      "offset": [
+       6,
+       4
+      ]
+     },
+     {
+      "at": [
+       -1,
+       0
+      ],
+      "label": "$(-1,0)$",
+      "offset": [
+       -46,
+       4
+      ]
+     }
+    ],
+    "labels": [],
+    "legend": "below",
+    "ticks": "clean",
+    "check": {
+     "area": "pi-8/3"
+    },
+    "equal": true
+   },
+   "note": "alpha = pi - 8/3, 9 alpha = 9pi - 24, |beta - gamma| = 33 (option D)"
+  },
+  {
+   "key": "jeea-x2-4x4-y2-16-8x",
+   "ids": [
+    "8a219409-2c29-49ee-bfe0-bf6d1e80c7f6"
+   ],
+   "draw": {
+    "kind": "plot",
+    "size": [
+     5,
+     4.4
+    ],
+    "xlim": [
+     -0.7,
+     3.4
+    ],
+    "ylim": [
+     -1.9,
+     4.9
+    ],
+    "xlabel": "x",
+    "ylabel": "y",
+    "series": [
+     {
+      "type": "function",
+      "expr": "(x-2)**2",
+      "domain": [
+       -0.3,
+       3.3
+      ],
+      "color": "#c2410c",
+      "style": "-",
+      "label": "$y=x^2-4x+4$"
+     },
+     {
+      "type": "function_y",
+      "expr": "(16-y**2)/8",
+      "range": [
+       -1.7,
+       4.5
+      ],
+      "color": "#1d4ed8",
+      "style": "-",
+      "label": "$y^2=16-8x$"
+     }
+    ],
+    "fills": [
+     {
+      "type": "between",
+      "upper": "sqrt(maximum(16-8*x,0))",
+      "lower": "(x-2)**2",
+      "domain": [
+       0,
+       2
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     }
+    ],
+    "marks": [
+     {
+      "at": [
+       0,
+       4
+      ],
+      "label": "$(0,4)$",
+      "offset": [
+       6,
+       4
+      ]
+     },
+     {
+      "at": [
+       2,
+       0
+      ],
+      "label": "$(2,0)$",
+      "offset": [
+       12,
+       -22
+      ]
+     }
+    ],
+    "labels": [],
+    "legend": "below",
+    "ticks": "clean",
+    "check": {
+     "area": "8/3"
+    }
+   },
+   "note": "A = 8/3 (option A)"
+  },
+  {
+   "key": "jeea-parabola-line-minus-sector",
+   "ids": [
+    "89fc6c99-3868-474c-b09a-98d4d618a132"
+   ],
+   "draw": {
+    "kind": "plot",
+    "size": [
+     5,
+     3.6
+    ],
+    "xlim": [
+     -0.4,
+     4.8
+    ],
+    "ylim": [
+     -0.7,
+     2.4
+    ],
+    "xlabel": "x",
+    "ylabel": "y",
+    "series": [
+     {
+      "type": "function_y",
+      "expr": "2*y**2/3",
+      "range": [
+       -0.4,
+       2.2
+      ],
+      "color": "#c2410c",
+      "style": "-",
+      "label": "$2y^2=3x$"
+     },
+     {
+      "type": "function",
+      "expr": "3-x",
+      "domain": [
+       0.7,
+       3.6
+      ],
+      "color": "#1d4ed8",
+      "style": "-",
+      "label": "$x+y=3$"
+     },
+     {
+      "type": "parametric",
+      "x": "3+sqrt(2)*cos(t)",
+      "y": "sqrt(2)*sin(t)",
+      "t": [
+       0,
+       6.2832
+      ],
+      "color": "#15803d",
+      "style": "-",
+      "label": "$(x-3)^2+y^2=2$"
+     }
+    ],
+    "fills": [
+     {
+      "type": "betweenx",
+      "left": "2*y**2/3",
+      "right": "minimum(3-y,3-sqrt(maximum(2-y**2,0)))",
+      "range": [
+       0,
+       1.5
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     }
+    ],
+    "marks": [
+     {
+      "at": [
+       1.5,
+       1.5
+      ],
+      "label": "$(\\frac{3}{2},\\frac{3}{2})$",
+      "offset": [
+       -50,
+       6
+      ]
+     },
+     {
+      "at": [
+       2,
+       1
+      ],
+      "label": "$(2,1)$",
+      "offset": [
+       6,
+       4
+      ]
+     },
+     {
+      "at": [
+       3,
+       0
+      ],
+      "label": "$(3,0)$",
+      "offset": [
+       4,
+       6
+      ]
+     }
+    ],
+    "labels": [],
+    "legend": "below",
+    "ticks": "clean",
+    "check": {
+     "area": "21/8-pi/4"
+    },
+    "equal": true
+   },
+   "note": "A = 21/8 - pi/4 from 4(pi + 4A) = 42"
+  },
+  {
+   "key": "jeea-y2-2x-x-y-4",
+   "ids": [
+    "804deec8-ee4e-4b86-be3d-3eac4938074b"
+   ],
+   "draw": {
+    "kind": "plot",
+    "size": [
+     5,
+     4
+    ],
+    "xlim": [
+     -0.8,
+     9.2
+    ],
+    "ylim": [
+     -4.8,
+     3.2
+    ],
+    "xlabel": "x",
+    "ylabel": "y",
+    "series": [
+     {
+      "type": "function_y",
+      "expr": "y**2/2",
+      "range": [
+       -4.3,
+       2.12
+      ],
+      "color": "#c2410c",
+      "style": "-",
+      "label": "$y^2=2x$"
+     },
+     {
+      "type": "function",
+      "expr": "4-x",
+      "domain": [
+       0.5,
+       9
+      ],
+      "color": "#1d4ed8",
+      "style": "-",
+      "label": "$x+y=4$"
+     }
+    ],
+    "fills": [
+     {
+      "type": "betweenx",
+      "left": "y**2/2",
+      "right": "4-y",
+      "range": [
+       -4,
+       2
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     }
+    ],
+    "marks": [
+     {
+      "at": [
+       2,
+       2
+      ],
+      "label": "$(2,2)$",
+      "offset": [
+       14,
+       2
+      ]
+     },
+     {
+      "at": [
+       8,
+       -4
+      ],
+      "label": "$(8,-4)$",
+      "offset": [
+       -62,
+       -18
+      ]
+     }
+    ],
+    "labels": [],
+    "legend": "below",
+    "ticks": "clean",
+    "check": {
+     "area": "18"
+    }
+   },
+   "note": "A = 18 (numeric key)"
+  },
+  {
+   "key": "jeea-x1-y2-1-y2-2x",
+   "ids": [
+    "d55911a9-7a16-415d-be9b-2303e9b2ee70"
+   ],
+   "draw": {
+    "kind": "plot",
+    "size": [
+     5,
+     4
+    ],
+    "xlim": [
+     -0.3,
+     1.6
+    ],
+    "ylim": [
+     -1.9,
+     1.9
+    ],
+    "xlabel": "x",
+    "ylabel": "y",
+    "series": [
+     {
+      "type": "function_y",
+      "expr": "1/(1+y**2)",
+      "range": [
+       -1.8,
+       1.8
+      ],
+      "color": "#c2410c",
+      "style": "-",
+      "label": "$x(1+y^2)=1$"
+     },
+     {
+      "type": "function_y",
+      "expr": "y**2/2",
+      "range": [
+       -1.6,
+       1.6
+      ],
+      "color": "#1d4ed8",
+      "style": "-",
+      "label": "$y^2=2x$"
+     }
+    ],
+    "fills": [
+     {
+      "type": "betweenx",
+      "left": "y**2/2",
+      "right": "1/(1+y**2)",
+      "range": [
+       -1,
+       1
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     }
+    ],
+    "marks": [
+     {
+      "at": [
+       0.5,
+       1
+      ],
+      "label": "$(\\frac{1}{2},1)$",
+      "offset": [
+       26,
+       -6
+      ]
+     },
+     {
+      "at": [
+       0.5,
+       -1
+      ],
+      "label": "$(\\frac{1}{2},-1)$",
+      "offset": [
+       26,
+       -5
+      ]
+     }
+    ],
+    "labels": [],
+    "legend": "below",
+    "ticks": "clean",
+    "check": {
+     "area": "pi/2-1/3"
+    }
+   },
+   "note": "A = pi/2 - 1/3 (option C)"
+  },
+  {
+   "key": "jeea-circle-21-y2-4x-x1",
+   "ids": [
+    "b4831ba3-ec73-43da-aea1-439c964ee1ff"
+   ],
+   "draw": {
+    "kind": "plot",
+    "size": [
+     5,
+     5
+    ],
+    "xlim": [
+     -0.8,
+     6.8
+    ],
+    "ylim": [
+     -5.0,
+     5.0
+    ],
+    "xlabel": "x",
+    "ylabel": "y",
+    "series": [
+     {
+      "type": "parametric",
+      "x": "sqrt(21)*cos(t)",
+      "y": "sqrt(21)*sin(t)",
+      "t": [
+       0,
+       6.2832
+      ],
+      "color": "#c2410c",
+      "style": "-",
+      "label": "$x^2+y^2=21$"
+     },
+     {
+      "type": "function_y",
+      "expr": "y**2/4",
+      "range": [
+       -4.6,
+       4.6
+      ],
+      "color": "#1d4ed8",
+      "style": "-",
+      "label": "$y^2=4x$"
+     },
+     {
+      "type": "vline",
+      "x": 1,
+      "style": "--",
+      "color": "#6b7280",
+      "label": "$x=1$"
+     }
+    ],
+    "fills": [
+     {
+      "type": "between",
+      "upper": "minimum(2*sqrt(x),sqrt(maximum(21-x**2,0)))",
+      "lower": "-minimum(2*sqrt(x),sqrt(maximum(21-x**2,0)))",
+      "domain": [
+       1,
+       4.58257569495584
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     }
+    ],
+    "marks": [
+     {
+      "at": [
+       3,
+       3.4641016151377544
+      ],
+      "label": "$(3,2\\sqrt{3})$",
+      "offset": [
+       34,
+       -3
+      ]
+     },
+     {
+      "at": [
+       3,
+       -3.4641016151377544
+      ],
+      "label": "$(3,-2\\sqrt{3})$",
+      "offset": [
+       34,
+       -14
+      ]
+     }
+    ],
+    "labels": [],
+    "legend": "below",
+    "ticks": "clean",
+    "check": {
+     "area": "2*sqrt(3)-8/3+21*arcsin(2/sqrt(7))"
+    },
+    "equal": true
+   },
+   "note": "Delta = 2 sqrt3 - 8/3 + 21 sin^-1(2/sqrt7) from (Delta - 21 sin^-1(2/sqrt7))/2 = sqrt3 - 4/3 (option B)"
+  },
+  {
+   "key": "jeea-y2-8x4-circle-smaller",
+   "ids": [
+    "98230cda-7eff-443a-8652-efa410c44b65"
+   ],
+   "draw": {
+    "kind": "plot",
+    "size": [
+     5,
+     4.6
+    ],
+    "xlim": [
+     -2.2,
+     1.6
+    ],
+    "ylim": [
+     -2.9,
+     2.9
+    ],
+    "xlabel": "x",
+    "ylabel": "y",
+    "series": [
+     {
+      "type": "parametric",
+      "x": "-3.46410161514+4*cos(t)",
+      "y": "4*sin(t)",
+      "t": [
+       0,
+       6.2832
+      ],
+      "color": "#c2410c",
+      "style": "-",
+      "label": "$x^2+y^2+4\\sqrt{3}x-4=0$"
+     },
+     {
+      "type": "function_y",
+      "expr": "(y**2-4)/8",
+      "range": [
+       -2.8,
+       2.8
+      ],
+      "color": "#1d4ed8",
+      "style": "-",
+      "label": "$y^2=8x+4$"
+     }
+    ],
+    "fills": [
+     {
+      "type": "betweenx",
+      "left": "(y**2-4)/8",
+      "right": "-3.46410161514+sqrt(maximum(16-y**2,0))",
+      "range": [
+       -2,
+       2
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     }
+    ],
+    "marks": [
+     {
+      "at": [
+       0,
+       2
+      ],
+      "label": "$(0,2)$",
+      "offset": [
+       14,
+       -12
+      ]
+     },
+     {
+      "at": [
+       0,
+       -2
+      ],
+      "label": "$(0,-2)$",
+      "offset": [
+       14,
+       -2
+      ]
+     }
+    ],
+    "labels": [],
+    "legend": "below",
+    "ticks": "clean",
+    "check": {
+     "area": "(4-12*sqrt(3)+8*pi)/3"
+    },
+    "equal": true
+   },
+   "note": "A = (4 - 12 sqrt3 + 8pi)/3 (option C)"
+  },
+  {
+   "key": "jeea-1x2-min-x7-11-3x",
+   "ids": [
+    "e888a68e-ebb3-438f-a481-f9086da02225"
+   ],
+   "draw": {
+    "kind": "plot",
+    "size": [
+     5,
+     4
+    ],
+    "xlim": [
+     -2.7,
+     2.7
+    ],
+    "ylim": [
+     -0.6,
+     9.6
+    ],
+    "xlabel": "x",
+    "ylabel": "y",
+    "series": [
+     {
+      "type": "function",
+      "expr": "1+x**2",
+      "domain": [
+       -2.6,
+       2.6
+      ],
+      "color": "#c2410c",
+      "style": "-",
+      "label": "$y=1+x^2$"
+     },
+     {
+      "type": "function",
+      "expr": "x+7",
+      "domain": [
+       -2.6,
+       1.7
+      ],
+      "color": "#1d4ed8",
+      "style": "-",
+      "label": "$y=x+7$"
+     },
+     {
+      "type": "function",
+      "expr": "11-3*x",
+      "domain": [
+       0.4,
+       2.6
+      ],
+      "color": "#15803d",
+      "style": "-",
+      "label": "$y=11-3x$"
+     }
+    ],
+    "fills": [
+     {
+      "type": "between",
+      "upper": "minimum(x+7,11-3*x)",
+      "lower": "1+x**2",
+      "domain": [
+       -2,
+       2
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     }
+    ],
+    "marks": [
+     {
+      "at": [
+       -2,
+       5
+      ],
+      "label": "$(-2,5)$",
+      "offset": [
+       -48,
+       4
+      ]
+     },
+     {
+      "at": [
+       2,
+       5
+      ],
+      "label": "$(2,5)$",
+      "offset": [
+       16,
+       -14
+      ]
+     },
+     {
+      "at": [
+       1,
+       8
+      ],
+      "label": "$(1,8)$",
+      "offset": [
+       14,
+       -14
+      ]
+     }
+    ],
+    "labels": [],
+    "legend": "below",
+    "ticks": "clean",
+    "check": {
+     "area": "50/3"
+    }
+   },
+   "note": "A = 50/3 from 3A = 50 (option A)"
+  },
+  {
+   "key": "jeea-y2-4-x-2-y-2x-8",
+   "ids": [
+    "36ef548a-8018-4b76-b32f-8d588e9205c0"
+   ],
+   "draw": {
+    "kind": "plot",
+    "size": [
+     5,
+     4
+    ],
+    "xlim": [
+     -0.6,
+     7.2
+    ],
+    "ylim": [
+     -3.0,
+     5.0
+    ],
+    "xlabel": "x",
+    "ylabel": "y",
+    "series": [
+     {
+      "type": "function_y",
+      "expr": "2+y**2/4",
+      "range": [
+       -2.8,
+       4.6
+      ],
+      "color": "#c2410c",
+      "style": "-",
+      "label": "$y^2=4(x-2)$"
+     },
+     {
+      "type": "function",
+      "expr": "2*x-8",
+      "domain": [
+       2.6,
+       6.5
+      ],
+      "color": "#1d4ed8",
+      "style": "-",
+      "label": "$y=2x-8$"
+     }
+    ],
+    "fills": [
+     {
+      "type": "betweenx",
+      "left": "2+y**2/4",
+      "right": "(y+8)/2",
+      "range": [
+       -2,
+       4
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     }
+    ],
+    "marks": [
+     {
+      "at": [
+       6,
+       4
+      ],
+      "label": "$(6,4)$",
+      "offset": [
+       6,
+       -8
+      ]
+     },
+     {
+      "at": [
+       3,
+       -2
+      ],
+      "label": "$(3,-2)$",
+      "offset": [
+       -72,
+       -4
+      ]
+     }
+    ],
+    "labels": [],
+    "legend": "below",
+    "ticks": "clean",
+    "check": {
+     "area": "9"
+    }
+   },
+   "note": "A = 9 (option B)"
+  },
+  {
+   "key": "jeea-min-2x-6x-x2",
+   "ids": [
+    "caf6f816-135d-4dc4-b3cb-e8abc476c60d"
+   ],
+   "draw": {
+    "kind": "plot",
+    "size": [
+     5,
+     4
+    ],
+    "xlim": [
+     -0.6,
+     6.8
+    ],
+    "ylim": [
+     -0.8,
+     10.2
+    ],
+    "xlabel": "x",
+    "ylabel": "y",
+    "series": [
+     {
+      "type": "function",
+      "expr": "2*x",
+      "domain": [
+       -0.3,
+       5
+      ],
+      "color": "#c2410c",
+      "style": "-",
+      "label": "$y=2x$"
+     },
+     {
+      "type": "function",
+      "expr": "6*x-x**2",
+      "domain": [
+       -0.15,
+       6.3
+      ],
+      "color": "#1d4ed8",
+      "style": "-",
+      "label": "$y=6x-x^2$"
+     }
+    ],
+    "fills": [
+     {
+      "type": "between",
+      "upper": "minimum(2*x,6*x-x**2)",
+      "lower": "0",
+      "domain": [
+       0,
+       6
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     }
+    ],
+    "marks": [
+     {
+      "at": [
+       4,
+       8
+      ],
+      "label": "$(4,8)$",
+      "offset": [
+       18,
+       -2
+      ]
+     },
+     {
+      "at": [
+       6,
+       0
+      ],
+      "label": "$(6,0)$",
+      "offset": [
+       4,
+       6
+      ]
+     }
+    ],
+    "labels": [],
+    "legend": "below",
+    "ticks": "clean",
+    "check": {
+     "area": "76/3"
+    }
+   },
+   "note": "A = 76/3 from 12A = 304"
+  },
+  {
+   "key": "jeea-y2-4x-4-y-2x-2",
+   "ids": [
+    "13f4efd4-46cd-43a2-9819-608fce7a759f"
+   ],
+   "draw": {
+    "kind": "plot",
+    "size": [
+     5,
+     4.4
+    ],
+    "xlim": [
+     -3.6,
+     1.6
+    ],
+    "ylim": [
+     -4.8,
+     3.0
+    ],
+    "xlabel": "x",
+    "ylabel": "y",
+    "series": [
+     {
+      "type": "function_y",
+      "expr": "(4-y**2)/4",
+      "range": [
+       -4.6,
+       2.8
+      ],
+      "color": "#c2410c",
+      "style": "-",
+      "label": "$y^2+4x=4$"
+     },
+     {
+      "type": "function",
+      "expr": "2*x+2",
+      "domain": [
+       -3.3,
+       0.5
+      ],
+      "color": "#1d4ed8",
+      "style": "-",
+      "label": "$y-2x=2$"
+     }
+    ],
+    "fills": [
+     {
+      "type": "betweenx",
+      "left": "(y-2)/2",
+      "right": "(4-y**2)/4",
+      "range": [
+       -4,
+       2
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     }
+    ],
+    "marks": [
+     {
+      "at": [
+       0,
+       2
+      ],
+      "label": "$(0,2)$",
+      "offset": [
+       20,
+       -10
+      ]
+     },
+     {
+      "at": [
+       -3,
+       -4
+      ],
+      "label": "$(-3,-4)$",
+      "offset": [
+       12,
+       -14
+      ]
+     }
+    ],
+    "labels": [],
+    "legend": "below",
+    "ticks": "clean",
+    "check": {
+     "area": "9"
+    }
+   },
+   "note": "A = 9 (option A)"
+  },
+  {
+   "key": "jeea-y2-2x-y-4x-1",
+   "ids": [
+    "1cc43e2a-f92a-4a6a-b925-c3322364b054"
+   ],
+   "draw": {
+    "kind": "plot",
+    "size": [
+     5,
+     4.4
+    ],
+    "xlim": [
+     -0.25,
+     0.95
+    ],
+    "ylim": [
+     -0.8,
+     1.35
+    ],
+    "xlabel": "x",
+    "ylabel": "y",
+    "series": [
+     {
+      "type": "function_y",
+      "expr": "y**2/2",
+      "range": [
+       -0.75,
+       1.3
+      ],
+      "color": "#c2410c",
+      "style": "-",
+      "label": "$y^2=2x$"
+     },
+     {
+      "type": "function",
+      "expr": "4*x-1",
+      "domain": [
+       -0.05,
+       0.6
+      ],
+      "color": "#1d4ed8",
+      "style": "-",
+      "label": "$y=4x-1$"
+     }
+    ],
+    "fills": [
+     {
+      "type": "betweenx",
+      "left": "y**2/2",
+      "right": "(y+1)/4",
+      "range": [
+       -0.5,
+       1
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     }
+    ],
+    "marks": [
+     {
+      "at": [
+       0.5,
+       1
+      ],
+      "label": "$(\\frac{1}{2},1)$",
+      "offset": [
+       6,
+       -8
+      ]
+     },
+     {
+      "at": [
+       0.125,
+       -0.5
+      ],
+      "label": "$(\\frac{1}{8},-\\frac{1}{2})$",
+      "offset": [
+       16,
+       1
+      ]
+     }
+    ],
+    "labels": [],
+    "legend": "below",
+    "ticks": "clean",
+    "check": {
+     "area": "9/32"
+    }
+   },
+   "note": "A = 9/32 (option D)"
+  },
+  {
+   "key": "jeea-6-x-y2-4x-3",
+   "ids": [
+    "e57c1e8b-9903-496f-9454-5b3b00d181f3"
+   ],
+   "draw": {
+    "kind": "plot",
+    "size": [
+     5,
+     4
+    ],
+    "xlim": [
+     -0.6,
+     7.2
+    ],
+    "ylim": [
+     -0.8,
+     6.8
+    ],
+    "xlabel": "x",
+    "ylabel": "y",
+    "series": [
+     {
+      "type": "function_y",
+      "expr": "(y**2+3)/4",
+      "range": [
+       -1.2,
+       4.9
+      ],
+      "color": "#c2410c",
+      "style": "-",
+      "label": "$y^2=4x-3$"
+     },
+     {
+      "type": "function",
+      "expr": "6-x",
+      "domain": [
+       -0.3,
+       7
+      ],
+      "color": "#1d4ed8",
+      "style": "-",
+      "label": "$x+y=6$"
+     }
+    ],
+    "fills": [
+     {
+      "type": "betweenx",
+      "left": "0",
+      "right": "minimum(6-y,(y**2+3)/4)",
+      "range": [
+       0,
+       6
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     }
+    ],
+    "marks": [
+     {
+      "at": [
+       3,
+       3
+      ],
+      "label": "$(3,3)$",
+      "offset": [
+       22,
+       -11
+      ]
+     },
+     {
+      "at": [
+       0,
+       6
+      ],
+      "label": "$(0,6)$",
+      "offset": [
+       6,
+       2
+      ]
+     },
+     {
+      "at": [
+       0.75,
+       0
+      ],
+      "label": "$(\\frac{3}{4},0)$",
+      "offset": [
+       4,
+       6
+      ]
+     }
+    ],
+    "labels": [],
+    "legend": "below",
+    "ticks": "clean",
+    "check": {
+     "area": "9"
+    }
+   },
+   "note": "A = 9 (option B)"
+  },
+  {
+   "key": "jeea-max-absx-x-absx-2",
+   "ids": [
+    "6d36eb6b-1291-4812-a50c-96d022c1d1d2"
+   ],
+   "draw": {
+    "kind": "plot",
+    "size": [
+     5,
+     4
+    ],
+    "xlim": [
+     -2.7,
+     4.7
+    ],
+    "ylim": [
+     -0.7,
+     9.0
+    ],
+    "xlabel": "x",
+    "ylabel": "y",
+    "series": [
+     {
+      "type": "function",
+      "expr": "maximum(abs(x),x*abs(x-2))",
+      "domain": [
+       -2.4,
+       4.25
+      ],
+      "color": "#c2410c",
+      "style": "-",
+      "label": "$y=\\max\\{|x|,x|x-2|\\}$"
+     },
+     {
+      "type": "vline",
+      "x": -2,
+      "style": "--",
+      "color": "#6b7280",
+      "label": "$x=-2$"
+     },
+     {
+      "type": "vline",
+      "x": 4,
+      "style": "--",
+      "color": "#6b7280",
+      "label": "$x=4$"
+     }
+    ],
+    "fills": [
+     {
+      "type": "between",
+      "upper": "maximum(abs(x),x*abs(x-2))",
+      "lower": "0",
+      "domain": [
+       -2,
+       4
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     }
+    ],
+    "marks": [
+     {
+      "at": [
+       1,
+       1
+      ],
+      "label": "$(1,1)$",
+      "offset": [
+       6,
+       -20
+      ]
+     },
+     {
+      "at": [
+       3,
+       3
+      ],
+      "label": "$(3,3)$",
+      "offset": [
+       -44,
+       4
+      ]
+     },
+     {
+      "at": [
+       4,
+       8
+      ],
+      "label": "$(4,8)$",
+      "offset": [
+       -44,
+       -4
+      ]
+     }
+    ],
+    "labels": [],
+    "legend": "below",
+    "ticks": "clean",
+    "check": {
+     "area": "12"
+    }
+   },
+   "note": "A = 12 (numeric key)"
+  },
+  {
+   "key": "jeea-circle-8-outside-y2-2x-q1",
+   "ids": [
+    "353ddbe5-0088-4ba9-94e6-be9bbac8c2dd"
+   ],
+   "draw": {
+    "kind": "plot",
+    "size": [
+     5,
+     5
+    ],
+    "xlim": [
+     -0.4,
+     3.3
+    ],
+    "ylim": [
+     -0.4,
+     3.3
+    ],
+    "xlabel": "x",
+    "ylabel": "y",
+    "series": [
+     {
+      "type": "parametric",
+      "x": "2*sqrt(2)*cos(t)",
+      "y": "2*sqrt(2)*sin(t)",
+      "t": [
+       -0.3,
+       1.87
+      ],
+      "color": "#c2410c",
+      "style": "-",
+      "label": "$x^2+y^2=8$"
+     },
+     {
+      "type": "function_y",
+      "expr": "y**2/2",
+      "range": [
+       -0.3,
+       2.4
+      ],
+      "color": "#1d4ed8",
+      "style": "-",
+      "label": "$y^2=2x$"
+     }
+    ],
+    "fills": [
+     {
+      "type": "betweenx",
+      "left": "0",
+      "right": "minimum(y**2/2,sqrt(maximum(8-y**2,0)))",
+      "range": [
+       0,
+       2.8284271247461903
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     }
+    ],
+    "marks": [
+     {
+      "at": [
+       2,
+       2
+      ],
+      "label": "$(2,2)$",
+      "offset": [
+       26,
+       -14
+      ]
+     }
+    ],
+    "labels": [],
+    "legend": "below",
+    "ticks": "clean",
+    "check": {
+     "area": "pi-2/3"
+    },
+    "equal": true
+   },
+   "note": "A = pi - 2/3 (option B)"
+  },
+  {
+   "key": "jeea-circle-169-below-5x-y-13",
+   "ids": [
+    "26d45ef3-7d80-4bba-8a66-c01dc175bda8"
+   ],
+   "draw": {
+    "kind": "plot",
+    "size": [
+     5,
+     5
+    ],
+    "xlim": [
+     -14.5,
+     14.5
+    ],
+    "ylim": [
+     -16.5,
+     14.5
+    ],
+    "xlabel": "x",
+    "ylabel": "y",
+    "series": [
+     {
+      "type": "parametric",
+      "x": "13*cos(t)",
+      "y": "13*sin(t)",
+      "t": [
+       0,
+       6.2832
+      ],
+      "color": "#c2410c",
+      "style": "-",
+      "label": "$x^2+y^2=169$"
+     },
+     {
+      "type": "function",
+      "expr": "5*x-13",
+      "domain": [
+       -0.6,
+       5.6
+      ],
+      "color": "#1d4ed8",
+      "style": "-",
+      "label": "$5x-y=13$"
+     }
+    ],
+    "fills": [
+     {
+      "type": "between",
+      "upper": "minimum(5*x-13,sqrt(maximum(169-x**2,0)))",
+      "lower": "-sqrt(maximum(169-x**2,0))",
+      "domain": [
+       0,
+       13
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     }
+    ],
+    "marks": [
+     {
+      "at": [
+       0,
+       -13
+      ],
+      "label": "$(0,-13)$",
+      "offset": [
+       8,
+       -18
+      ]
+     },
+     {
+      "at": [
+       5,
+       12
+      ],
+      "label": "$(5,12)$",
+      "offset": [
+       6,
+       4
+      ]
+     }
+    ],
+    "labels": [],
+    "legend": "below",
+    "ticks": "clean",
+    "check": {
+     "area": "169*pi/4-65/2+169/2*arcsin(12/13)"
+    },
+    "equal": true
+   },
+   "note": "A = 169pi/4 - 65/2 + (169/2) sin^-1(12/13), alpha = 169, beta = 2 from alpha + beta = 171"
+  },
+  {
+   "key": "jeea-x2-2y-outside-circle-x-ge-y",
+   "ids": [
+    "c25143dd-f067-4747-ba32-c20a15562aef"
+   ],
+   "draw": {
+    "kind": "plot",
+    "size": [
+     5,
+     4.2
+    ],
+    "xlim": [
+     -1.3,
+     2.7
+    ],
+    "ylim": [
+     -0.4,
+     2.6
+    ],
+    "xlabel": "x",
+    "ylabel": "y",
+    "series": [
+     {
+      "type": "function",
+      "expr": "x**2/2",
+      "domain": [
+       -1.2,
+       2.25
+      ],
+      "color": "#c2410c",
+      "style": "-",
+      "label": "$x^2=2y$"
+     },
+     {
+      "type": "parametric",
+      "x": "cos(t)",
+      "y": "1+sin(t)",
+      "t": [
+       0,
+       6.2832
+      ],
+      "color": "#1d4ed8",
+      "style": "-",
+      "label": "$x^2=2y-y^2$"
+     },
+     {
+      "type": "function",
+      "expr": "x",
+      "domain": [
+       -0.3,
+       2.5
+      ],
+      "color": "#15803d",
+      "style": "-",
+      "label": "$x=y$"
+     }
+    ],
+    "fills": [
+     {
+      "type": "betweenx",
+      "left": "maximum(y,sqrt(maximum(2*y-y**2,0)))",
+      "right": "sqrt(2*y)",
+      "range": [
+       0,
+       2
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     }
+    ],
+    "marks": [
+     {
+      "at": [
+       1,
+       1
+      ],
+      "label": "$(1,1)$",
+      "offset": [
+       -36,
+       4
+      ]
+     },
+     {
+      "at": [
+       2,
+       2
+      ],
+      "label": "$(2,2)$",
+      "offset": [
+       -40,
+       4
+      ]
+     }
+    ],
+    "labels": [],
+    "legend": "below",
+    "ticks": "clean",
+    "check": {
+     "area": "7/6-pi/4"
+    },
+    "equal": true
+   },
+   "note": "A = 7/6 - pi/4, matching (n+2)/(n+1) - pi/(n-1) with n = 5"
+  },
+  {
+   "key": "jeea-circle-25-absx-1-larger",
+   "ids": [
+    "25f4684c-ea49-419f-879f-401fa67e4621"
+   ],
+   "draw": {
+    "kind": "plot",
+    "size": [
+     5,
+     5
+    ],
+    "xlim": [
+     -5.8,
+     5.8
+    ],
+    "ylim": [
+     -5.8,
+     5.8
+    ],
+    "xlabel": "x",
+    "ylabel": "y",
+    "series": [
+     {
+      "type": "parametric",
+      "x": "5*cos(t)",
+      "y": "5*sin(t)",
+      "t": [
+       0,
+       6.2832
+      ],
+      "color": "#c2410c",
+      "style": "-",
+      "label": "$x^2+y^2=25$"
+     },
+     {
+      "type": "function",
+      "expr": "abs(x-1)",
+      "domain": [
+       -4.6,
+       5.6
+      ],
+      "color": "#1d4ed8",
+      "style": "-",
+      "label": "$y=|x-1|$"
+     }
+    ],
+    "fills": [
+     {
+      "type": "between",
+      "upper": "minimum(abs(x-1),sqrt(maximum(25-x**2,0)))",
+      "lower": "-sqrt(maximum(25-x**2,0))",
+      "domain": [
+       -5,
+       5
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     }
+    ],
+    "marks": [
+     {
+      "at": [
+       4,
+       3
+      ],
+      "label": "$(4,3)$",
+      "offset": [
+       22,
+       -10
+      ]
+     },
+     {
+      "at": [
+       -3,
+       4
+      ],
+      "label": "$(-3,4)$",
+      "offset": [
+       -60,
+       -5
+      ]
+     }
+    ],
+    "labels": [],
+    "legend": "below",
+    "ticks": "clean",
+    "check": {
+     "area": "(75*pi+2)/4"
+    },
+    "equal": true
+   },
+   "note": "A = (75pi + 2)/4, b = 75, c = 2 from b + c = 77"
+  },
+  {
+   "key": "jeea-absx-1-circle-5",
+   "ids": [
+    "4e027be3-67b2-415d-b447-44c47b31d366"
+   ],
+   "draw": {
+    "kind": "plot",
+    "size": [
+     5,
+     3.6
+    ],
+    "xlim": [
+     -2.6,
+     2.8
+    ],
+    "ylim": [
+     -0.5,
+     2.8
+    ],
+    "xlabel": "x",
+    "ylabel": "y",
+    "series": [
+     {
+      "type": "function",
+      "expr": "sqrt(maximum(5-x**2,0))",
+      "domain": [
+       -2.23606797749979,
+       2.23606797749979
+      ],
+      "color": "#c2410c",
+      "style": "-",
+      "label": "$y=\\sqrt{5-x^2}$"
+     },
+     {
+      "type": "function",
+      "expr": "abs(x-1)",
+      "domain": [
+       -1.6,
+       2.6
+      ],
+      "color": "#1d4ed8",
+      "style": "-",
+      "label": "$y=|x-1|$"
+     }
+    ],
+    "fills": [
+     {
+      "type": "between",
+      "upper": "sqrt(maximum(5-x**2,0))",
+      "lower": "abs(x-1)",
+      "domain": [
+       -1,
+       2
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     }
+    ],
+    "marks": [
+     {
+      "at": [
+       -1,
+       2
+      ],
+      "label": "$(-1,2)$",
+      "offset": [
+       -50,
+       4
+      ]
+     },
+     {
+      "at": [
+       2,
+       1
+      ],
+      "label": "$(2,1)$",
+      "offset": [
+       18,
+       -14
+      ]
+     }
+    ],
+    "labels": [],
+    "legend": "below",
+    "ticks": "clean",
+    "check": {
+     "area": "5*pi/4-1/2"
+    },
+    "equal": true
+   },
+   "note": "A = 5pi/4 - 1/2 (option D)"
+  },
+  {
+   "key": "jeea-hyperbola-16x2-9y2-line",
+   "ids": [
+    "4d578644-7d94-490a-9293-736adba80c65"
+   ],
+   "draw": {
+    "kind": "plot",
+    "size": [
+     5,
+     4.4
+    ],
+    "xlim": [
+     -0.5,
+     6.3
+    ],
+    "ylim": [
+     -3.2,
+     7.0
+    ],
+    "xlabel": "x",
+    "ylabel": "y",
+    "series": [
+     {
+      "type": "parametric",
+      "x": "3*cosh(t)",
+      "y": "4*sinh(t)",
+      "t": [
+       -0.75,
+       1.45
+      ],
+      "color": "#c2410c",
+      "style": "-",
+      "label": "$16x^2-9y^2=144$"
+     },
+     {
+      "type": "function",
+      "expr": "(8*x-24)/3",
+      "domain": [
+       2.0,
+       5.9
+      ],
+      "color": "#1d4ed8",
+      "style": "-",
+      "label": "$8x-3y=24$"
+     }
+    ],
+    "fills": [
+     {
+      "type": "between",
+      "upper": "4/3*sqrt(maximum(x**2-9,0))",
+      "lower": "(8*x-24)/3",
+      "domain": [
+       3,
+       5
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     }
+    ],
+    "marks": [
+     {
+      "at": [
+       3,
+       0
+      ],
+      "label": "$(3,0)$",
+      "offset": [
+       -34,
+       6
+      ]
+     },
+     {
+      "at": [
+       5,
+       5.333333333333333
+      ],
+      "label": "$(5,\\frac{16}{3})$",
+      "offset": [
+       -52,
+       4
+      ]
+     }
+    ],
+    "labels": [],
+    "legend": "below",
+    "ticks": "clean",
+    "check": {
+     "area": "8-6*log(3)"
+    }
+   },
+   "note": "A = 8 - 6 ln3 from 3(A + 6 ln3) = 24"
+  },
+  {
+   "key": "jeea-min-x6-x2-max-rootx",
+   "ids": [
+    "d0223f3e-b5cb-4a67-bfad-22ced98e08fa"
+   ],
+   "draw": {
+    "kind": "plot",
+    "size": [
+     5,
+     4
+    ],
+    "xlim": [
+     -3.6,
+     1.7
+    ],
+    "ylim": [
+     -0.6,
+     7.2
+    ],
+    "xlabel": "x",
+    "ylabel": "y",
+    "series": [
+     {
+      "type": "function",
+      "expr": "x+6",
+      "domain": [
+       -3.4,
+       -1.0
+      ],
+      "color": "#c2410c",
+      "style": "-",
+      "label": "$y=x+6$"
+     },
+     {
+      "type": "function",
+      "expr": "x**2",
+      "domain": [
+       -2.6,
+       1.25
+      ],
+      "color": "#1d4ed8",
+      "style": "-",
+      "label": "$y=x^2$"
+     },
+     {
+      "type": "function",
+      "expr": "sqrt(x)",
+      "domain": [
+       0,
+       1.6
+      ],
+      "color": "#15803d",
+      "style": "-",
+      "label": "$y=\\sqrt{x}$"
+     },
+     {
+      "type": "vline",
+      "x": -3,
+      "style": "--",
+      "color": "#6b7280",
+      "label": "$x=-3$"
+     },
+     {
+      "type": "vline",
+      "x": 1,
+      "style": "--",
+      "color": "#6b7280",
+      "label": "$x=1$"
+     }
+    ],
+    "fills": [
+     {
+      "type": "between",
+      "upper": "minimum(x+6,x**2)",
+      "lower": "0",
+      "domain": [
+       -3,
+       0
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     },
+     {
+      "type": "between",
+      "upper": "sqrt(x)",
+      "lower": "0",
+      "domain": [
+       0,
+       1
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     }
+    ],
+    "marks": [
+     {
+      "at": [
+       -2,
+       4
+      ],
+      "label": "$(-2,4)$",
+      "offset": [
+       -50,
+       4
+      ]
+     },
+     {
+      "at": [
+       1,
+       1
+      ],
+      "label": "$(1,1)$",
+      "offset": [
+       -44,
+       10
+      ]
+     }
+    ],
+    "labels": [],
+    "legend": "below",
+    "ticks": "clean",
+    "check": {
+     "area": "41/6"
+    }
+   },
+   "note": "A = 41/6 from 6A = 41"
+  },
+  {
+   "key": "jeea-min-x2-34-floor-x-y-2",
+   "ids": [
+    "035332f4-69ba-4e60-b28b-833367d5d70a"
+   ],
+   "draw": {
+    "kind": "plot",
+    "size": [
+     5,
+     4.2
+    ],
+    "xlim": [
+     -0.4,
+     2.35
+    ],
+    "ylim": [
+     -0.3,
+     2.4
+    ],
+    "xlabel": "x",
+    "ylabel": "y",
+    "series": [
+     {
+      "type": "function",
+      "expr": "minimum(x**2+0.75,1+floor(x))",
+      "domain": [
+       0,
+       0.9999
+      ],
+      "color": "#c2410c",
+      "style": "-",
+      "label": "$y=\\min\\{x^2+\\frac{3}{4},1+[x]\\}$"
+     },
+     {
+      "type": "function",
+      "expr": "minimum(x**2+0.75,1+floor(x))",
+      "domain": [
+       1,
+       1.9999
+      ],
+      "color": "#c2410c",
+      "style": "-"
+     },
+     {
+      "type": "function",
+      "expr": "2-x",
+      "domain": [
+       -0.2,
+       2.3
+      ],
+      "color": "#1d4ed8",
+      "style": "-",
+      "label": "$x+y=2$"
+     }
+    ],
+    "fills": [
+     {
+      "type": "between",
+      "upper": "minimum(minimum(x**2+0.75,1+floor(x)),2-x)",
+      "lower": "0",
+      "domain": [
+       0,
+       2
+      ],
+      "color": "#1d4ed8",
+      "alpha": 0.25
+     }
+    ],
+    "marks": [
+     {
+      "at": [
+       0.5,
+       1
+      ],
+      "label": "$(\\frac{1}{2},1)$",
+      "offset": [
+       -30,
+       8
+      ]
+     },
+     {
+      "at": [
+       1,
+       1
+      ],
+      "label": "$(1,1)$",
+      "offset": [
+       6,
+       4
+      ]
+     }
+    ],
+    "labels": [],
+    "legend": "below",
+    "ticks": "clean",
+    "check": {
+     "area": "17/12"
+    }
+   },
+   "note": "A = 17/12 from 12A = 17; region under min(f, 2-x) for 0 <= x <= 2"
+  }
+ ]
+}

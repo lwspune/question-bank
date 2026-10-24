@@ -9,6 +9,13 @@ background is `SOLUTIONS_BACKFILL_SPEC.md`; this file is all you need.
   plus that folder's `style.json` (solutions the bank already has, for the
   house style). A question with `image` set has its picture at that path:
   open it with the Read tool.
+- For a question with `image` set, open ITS OWN picture (the path in its
+  `image` field) BEFORE solving and add `"imageSeen": true` to its draft.
+  Neighbouring questions often look alike; reading the next one's graph has
+  happened (b21). Read every value from the figure itself; never pick the
+  reading that makes an option fit. If the figure does not settle a value,
+  skip. A draft for a picture question without
+  it is rejected. If you cannot or did not open it, skip the question.
 - **Never open** `key.json` or any `disputes-*.md` in that folder. The work
   is blind: you solve each question yourself and say what answer you reached.
   A script compares your answer with the key afterwards.
@@ -26,6 +33,11 @@ background is `SOLUTIONS_BACKFILL_SPEC.md`; this file is all you need.
   `{ "skip": "<why>" }`. A question left out is lost from the count.
 - Nothing else: no database, no git, no other files, no scripts.
 - Keep tool output small. Do not print whole files back.
+- After writing, check the file parses and holds every id. If you change it
+  after that check, check again: a late edit has dropped ids (b20).
+- Check with a parser, never by eye: `node -e` that JSON.parses your file
+  and the questions file and prints only the count present and missing. A
+  check "by eye" passed a file missing 4 of 35 ids (b32).
 
 ## How to solve
 
@@ -56,18 +68,55 @@ background is `SOLUTIONS_BACKFILL_SPEC.md`; this file is all you need.
   Balanced delimiters. Never a line break inside `\( \)`. When you quote an
   option that prints a symbol (°, Ω, →), write the symbol in LaTeX:
   `\(^\circ\)C`, `\(\Omega\)`, `\(\rightarrow\)`.
+- Every LaTeX command sits inside `\( \)` or `\[ \]`. Bare `3 \times 4` in
+  plain text prints the backslash: write `\(3 \times 4\)`.
 - No em dash or en dash anywhere. Use a full stop, colon, comma or brackets.
 - A table is a GFM pipe-table with its `|---|` separator line.
 - Fact questions (biology, GK, polity, history, reading passages): give the
   fact, then say why EVERY other option is wrong, one short line each or one
   line naming them all. Never leave a wrong option unexplained. No essay.
+- Statements questions ("which are incorrect?"): give the TRUE reason each
+  statement is right or wrong, not just which ones. Reaching the right
+  letter for a wrong reason still teaches the wrong thing (b18: "the base
+  joins the 1'C, not its OH" when the slip was "nucleotide" for
+  nucleoside). If you are not sure why a statement is wrong, skip.
+- When two options are close enough that you would have to argue for one
+  over the other, skip. Do not pick "the closer one" or "the most
+  appropriate" (b29, b30).
+- Never settle a match or pairing by elimination alone ("item 3 is the one
+  left over"). Each pair you state must be true; if one is not, skip.
 - Add no fact the question does not need. Every extra claim is one more
   chance to be wrong. Use the textbook's own term (morels are "edible
   fungi", not "mushrooms"); if you are unsure of a term, leave it out.
 - For a reading passage, point to the sentence of the passage that decides
   it. If no sentence decides it, skip the question.
 - Language follows the question: an English question gets English; a
-  Marathi question gets Marathi.
+  Marathi question gets Marathi, and its last line is "म्हणून उत्तर (X) ..."
+  in place of "So the answer is (X) ..." (owner, 2026-10-24). Name the
+  concept (अभिधा, लक्षणा, व्यंजना; उपमा, रूपक ...), define it in one line,
+  show how the line fits, and say why each other option does not.
+- Marathi grammar the drafts have got wrong (b30), to apply exactly:
+  प्रयोग follows what the verb agrees with (कर्ता: कर्तरी; कर्म: कर्मणी, as in
+  'त्याने अभ्यास केला'; neither, neuter default: भावे, as in 'आईवडिलांनी
+  मुलांना वाढविले'). संधी splits use the original form (अंतर् + करण,
+  विपद् + काल; before र a विसर्ग drops and the vowel lengthens: निः + रव =
+  नीरव). ज, च before अ, आ, उ, ओ are the दंततालव्य variants (जमाव); before
+  इ, ए they are तालव्य. 'लिहिला असेल' is पूर्ण भविष्यकाळ.
+- More from b31: द्विगु has a number for its first word and its SECOND
+  word is the main one. अः becomes ओ only before a मृदू व्यंजन (मनः + रथ =
+  मनोरथ). In each वर्ग the 1st, 3rd and 5th letters are अल्पप्राण. A म्हण
+  is not a वाक्प्रचार: call it by the name the question uses. सत्यासत्य is
+  "सत्य किंवा असत्य". Never gloss a wrong option's word you are not sure
+  of (b31 called जलद "fast" and अभावित "unavoidable"): say only that it
+  does not mean what the question asks.
+- From b32: a ने subject whose verb agrees with nothing is भावे even
+  with no object ('त्याने आता घरी जावे' is अकर्मक भावे). In grammar
+  definitions "शब्दाच्या मागे" means BEFORE the word (उपसर्ग), and पुढे
+  means after (प्रत्यय). 'आम्ही गहू खातो' and 'पानावर बसा' are the
+  textbook लक्षणा examples.
+- From b34: a sentence joined by a धातुसाधित ('आरती सुरु झाल्यावर ...',
+  'मोजून पाहिल्यावर ...', '-ताना', '-ऊन') has one विधेय, so it is केवल,
+  not मिश्र. मिश्र needs a गौण clause (जेव्हा ... तेव्हा, जर ... तर, जो ... तो).
 
 ## JSON and backslashes (the one trap)
 
