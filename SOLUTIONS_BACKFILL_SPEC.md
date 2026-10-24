@@ -371,3 +371,8 @@ One line per batch: date, exam, written, disputed, skipped.
   acceptable English). Disputed 9 (key looks wrong 1: musomania for
   melomania; doubtful 6; ambiguous 1; key right 1). One solution's false
   rule ("career has one r") rewritten. Read 40 of 259. Running total 7,223.
+- 2026-10-24, b28 MPSC STI (215) + PSI (110) Mains, English booklets:
+  written 241. Skipped 67. Disputed 17 (key looks wrong 1: "have seen ...
+  a few minutes ago"; doubtful 4; ambiguous 5; Indian-textbook convention
+  2; key right 5, mostly rhetorical-question transformations). Read 40 of
+  241. Running total 7,464.
