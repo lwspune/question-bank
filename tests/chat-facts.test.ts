@@ -645,6 +645,21 @@ describe("buildSystemTail", () => {
     expect(buildSystemTail({ page: null, signedIn: true, question: { id, chose: "C" } })).toContain("They picked (C).");
   });
 
+  // 2026-10-24: V asked a student who had skipped the question in a test "which option did you pick?".
+  it("tells V what the student entered, or that they skipped it in a test", () => {
+    const id = "11111111-1111-4111-8111-111111111111";
+    expect(buildSystemTail({ page: null, signedIn: true, question: { id, chose: null, entered: 12.5, skipped: false } })).toContain(
+      "They entered 12.5 as their answer."
+    );
+    expect(buildSystemTail({ page: null, signedIn: true, question: { id, chose: null, entered: 0, skipped: false } })).toContain(
+      "They entered 0 as their answer."
+    );
+    const skipped = buildSystemTail({ page: null, signedIn: true, question: { id, chose: null, entered: null, skipped: true } });
+    expect(skipped).toContain("They skipped it in a test");
+    expect(skipped).toMatch(/do not ask which option they picked/i);
+    expect(skipped).not.toContain("They have not answered it yet.");
+  });
+
   it("tells V the student's exams from their profile, page first, asking when more than one fits", () => {
     const t = buildSystemTail({ page: null, signedIn: true, profileExams: ["MHT-CET", "MH HSC 12"] });
     expect(t).toContain("Their exams, from their profile: MHT-CET, MH HSC 12.");

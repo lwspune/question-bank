@@ -25,6 +25,7 @@ const Q: VQuestion = {
   chapter: "Arithmetic",
   subtopic: "Addition",
   subtopicId: "s1",
+  origin: null,
 };
 
 describe("cardView", () => {
