@@ -355,3 +355,8 @@ One line per batch: date, exam, written, disputed, skipped.
   their own last line. Two matrices given brackets. The main session
   checked the bar chart behind five data questions. Read 40 of 300.
   Running total 6,464.
+- 2026-10-24, b25 JIPMAT (last 51) + IPMAT Rohtak (172) + MH SB 11 (100):
+  written 296. JIPMAT and IPMAT Rohtak done. Disputed 9 (keys doubtful 3:
+  two roots truncated rather than rounded, one passage reading; ambiguous
+  or unsettleable 3; key right 3; one picture opened by the main session).
+  Skipped 18. Read 40 of 296, all clean. Running total 6,760.
