@@ -14,6 +14,7 @@ import {
   explainView,
   firstStep,
   hintView,
+  originLine,
   pickSimilar,
   revealCheck,
   type VQuestion,
@@ -41,6 +42,7 @@ function q(over: Partial<VQuestion> = {}): VQuestion {
     chapter: "Quadratic Equations",
     subtopic: "Nature of Roots",
     subtopicId: "s1",
+    origin: null,
     ...over,
   };
 }
@@ -79,6 +81,52 @@ describe("hintView", () => {
 
   it("says when the question has a figure V cannot see", () => {
     expect(hintView(q({ hasFigure: true }))).toMatch(/has a figure you cannot see/);
+  });
+});
+
+// 2026-10-24: a student asked "Which yrs ques is this" and V said it could not tell, though the bank knew (8 Apr 2023).
+describe("originLine", () => {
+  const base = { examName: "JEE Mains", questionNumber: null, pyqYear: 2023, pyqMonth: null, pyqNote: "8 Apr 2023" };
+
+  it("names a past-year question's paper with the card's own label", () => {
+    expect(originLine({ ...base, kind: "pyq" })).toBe("From the past paper: 8 Apr 2023 · 2023.");
+    expect(originLine({ ...base, kind: "pyq", questionNumber: "12" })).toBe("From the past paper: Q12 · 8 Apr 2023 · 2023.");
+  });
+
+  it("uses the month for NDA, as the card does", () => {
+    expect(originLine({ ...base, examName: "NDA", pyqMonth: "Apr", pyqNote: null, kind: "pyq" })).toBe(
+      "From the past paper: Apr · 2023."
+    );
+  });
+
+  it("says when a past-year question's year is not recorded", () => {
+    expect(originLine({ ...base, kind: "pyq", pyqYear: null, pyqNote: null })).toBe(
+      "A past-year question; its paper and year are not recorded."
+    );
+    expect(originLine({ ...base, kind: "pyq", pyqYear: null, questionNumber: "4" })).toBe(
+      "From the past paper: Q4 · 8 Apr 2023 (its year is not recorded)."
+    );
+  });
+
+  it("calls a practice question a practice question, and never prints its source note", () => {
+    const line = originLine({ ...base, kind: "practice", pyqNote: "Oswaal sample paper" });
+    expect(line).toBe("A practice question, not from a past paper.");
+  });
+
+  it("says nothing when the kind is unknown", () => {
+    expect(originLine({ ...base, kind: null })).toBeNull();
+  });
+});
+
+describe("what V is shown of a question's paper", () => {
+  it("is in the hint and the explanation, so 'which year?' needs no free answer", () => {
+    const origin = "From the past paper: 8 Apr 2023 · 2023.";
+    expect(hintView(q({ origin }))).toContain(origin);
+    expect(explainView(q({ origin }), null)).toContain(origin);
+  });
+
+  it("adds no line when there is none", () => {
+    expect(hintView(q())).not.toMatch(/past paper|practice question/i);
   });
 });
 

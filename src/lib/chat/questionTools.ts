@@ -13,6 +13,7 @@
  *
  * Pure. Spec: tests/chat-question-tools.test.ts.
  */
+import { formatProvenance } from "@/lib/questions/formatProvenance";
 import type { QuestionRow } from "@/lib/questions/query";
 
 export type VQuestion = {
@@ -31,6 +32,8 @@ export type VQuestion = {
   subtopic: string | null;
   /** For a similar question from the same subtopic. */
   subtopicId: string | null;
+  /** Which past paper it is from, or that it is practice (originLine); null when unknown. */
+  origin: string | null;
 };
 
 export function toVQuestion(row: QuestionRow): VQuestion {
@@ -48,7 +51,37 @@ export function toVQuestion(row: QuestionRow): VQuestion {
     chapter: row.chapter.name,
     subtopic: row.subtopic?.name ?? null,
     subtopicId: row.subtopic?.id ?? null,
+    origin: originLine({
+      kind: row.questionKind ?? null,
+      examName: row.exam.name,
+      questionNumber: row.questionNumber,
+      pyqYear: row.pyqYear,
+      pyqMonth: row.pyqMonth,
+      // Already through publicPyqNote: a sitting label, or null when the note names a source.
+      pyqNote: row.pyqNote,
+    }),
   };
+}
+
+/**
+ * The question's paper, as V is told it: the label the question card shows
+ * (formatProvenance). 2026-10-24: a student asked "Which yrs ques is this" and
+ * V said it could not tell, though the bank held 8 Apr 2023. A practice row's
+ * note names a source, so it is never printed, only "a practice question".
+ */
+export function originLine(p: {
+  kind: "pyq" | "practice" | null;
+  examName: string;
+  questionNumber: string | null;
+  pyqYear: number | null;
+  pyqMonth: string | null;
+  pyqNote: string | null;
+}): string | null {
+  if (p.kind === "practice") return "A practice question, not from a past paper.";
+  if (p.kind !== "pyq") return null;
+  const label = formatProvenance(p);
+  if (!label) return "A past-year question; its paper and year are not recorded.";
+  return p.pyqYear === null ? `From the past paper: ${label} (its year is not recorded).` : `From the past paper: ${label}.`;
 }
 
 const FIRST_STEP_MAX = 300;
@@ -81,6 +114,7 @@ function header(q: VQuestion): string[] {
   lines.push(q.text);
   if (q.options.length > 0) lines.push(`Options: ${q.options.map((o) => `(${o.label}) ${o.text}`).join(" | ")}`);
   if (q.hasFigure) lines.push("This question has a figure you cannot see: explain only from the text and the solution.");
+  if (q.origin) lines.push(q.origin);
   return lines;
 }
 

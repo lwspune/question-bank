@@ -29,6 +29,7 @@ const Q: VQuestion = {
   chapter: "Arithmetic",
   subtopic: "Addition",
   subtopicId: "s1",
+  origin: null,
 };
 
 function deps(over: Partial<QuestionToolDeps> = {}) {
