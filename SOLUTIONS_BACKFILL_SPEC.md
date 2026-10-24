@@ -257,3 +257,12 @@ One line per batch: date, exam, written, disputed, skipped.
   Disputed 12 (key looks wrong 1: Krebs hydration; key doubtful 1; key right
   4; judgement 6). Skipped 108, 14 undrafted. Read 30 of 190, rejected 0. A
   solver flagged one duplicated question and one garbled one (disputes file).
+- 2026-10-24, b06 MPSC State Services Prelims (324 exported): written 231.
+  Disputed 13 (key doubtful 2, key right 4, judgement 7). Skipped 79. One
+  solver escaped its line breaks twice (33 drafts) and one left out
+  solvedAnswer (23); both mended, and apply.ts now does it itself
+  (repairDraft). Read 30 of 231, rejected 0.
+- 2026-10-24, b07 MPSC State Services Prelims (328 exported, the rest of the
+  exam): written 195. Disputed 15 (key doubtful 1, key right 5, judgement 9).
+  Skipped 117 (mostly Maharashtra history). Read 30 of 195: one wording slip
+  fixed before writing. State Services first pass done: 616 written of 961.
