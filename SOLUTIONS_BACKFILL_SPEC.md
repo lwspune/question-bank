@@ -360,3 +360,7 @@ One line per batch: date, exam, written, disputed, skipped.
   two roots truncated rather than rounded, one passage reading; ambiguous
   or unsettleable 3; key right 3; one picture opened by the main session).
   Skipped 18. Read 40 of 296, all clean. Running total 6,760.
+- 2026-10-24, b26 MH SB 11 (last 32) + JEE Mains (117) + MH SB 9 (59):
+  written 204. Disputed 0, rejected 0, skipped 4. Read 35 of 204, all
+  clean. Every fillable row outside MPSC Mains is now drafted. Running
+  total 6,964.
