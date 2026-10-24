@@ -85,6 +85,16 @@ describe("solutionProblems", () => {
     expect(solutionProblems("x \u2264 3").join()).toMatch(/Unicode maths/);
   });
 
+  it("flags a LaTeX command outside maths delimiters, which prints as text", () => {
+    // A real b04 draft, live by the time it was seen (2026-10-24).
+    expect(solutionProblems("3 \\times 15 = 45.\nSo the answer is (A) 45.").join()).toMatch(/outside maths/);
+    expect(solutionProblems("Energy = power \\times time.").join()).toMatch(/outside maths/);
+  });
+
+  it("allows LaTeX commands inside inline and display maths", () => {
+    expect(solutionProblems("Energy = power \\(\\times\\) time.\n\\[ E = 100 \\times 60 \\]")).toEqual([]);
+  });
+
   it("does not flag Devanagari (Marathi solutions)", () => {
     expect(solutionProblems("\u092f\u094b\u0917\u094d\u092f \u0909\u0924\u094d\u0924\u0930 (B) \u0906\u0939\u0947.")).toEqual([]);
   });

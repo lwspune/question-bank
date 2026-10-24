@@ -59,6 +59,8 @@ background is `SOLUTIONS_BACKFILL_SPEC.md`; this file is all you need.
   Balanced delimiters. Never a line break inside `\( \)`. When you quote an
   option that prints a symbol (°, Ω, →), write the symbol in LaTeX:
   `\(^\circ\)C`, `\(\Omega\)`, `\(\rightarrow\)`.
+- Every LaTeX command sits inside `\( \)` or `\[ \]`. Bare `3 \times 4` in
+  plain text prints the backslash: write `\(3 \times 4\)`.
 - No em dash or en dash anywhere. Use a full stop, colon, comma or brackets.
 - A table is a GFM pipe-table with its `|---|` separator line.
 - Fact questions (biology, GK, polity, history, reading passages): give the
