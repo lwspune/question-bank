@@ -7,10 +7,13 @@ import BrowseLink from "@/app/guide/_components/BrowseLink";
 import PrevNextNav from "@/app/guide/_components/PrevNextNav";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 import ReportProvenance from "@/app/guide/_components/ReportProvenance";
+import KeyInsights from "@/app/guide/_components/KeyInsights";
+import TrendsFaq from "@/app/guide/_components/TrendsFaq";
+import { keyInsights, trendsFaq, type InsightInput } from "@/lib/guide/trendsInsights";
 import { trendsReportFor } from "@/lib/guide/trendsReports";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { resolveTaxonomy } from "@/lib/guide/resolveTaxonomy";
-import { EARLY, OVERVIEW, PAPER, RECENT, chapterRow } from "../_data/jee-mains-physics";
+import { CHAPTER_TABLE, EARLY, OVERVIEW, PAPER, RECENT, chapterRow } from "../_data/jee-mains-physics";
 import { YEARS } from "../_data/matrix.generated";
 import { DRIFT_CALLOUTS, YEAR_RATES, lastSeen } from "../_data/trends";
 import { DROPPED_CHAPTERS } from "../_data/strategy";
@@ -19,6 +22,22 @@ import { GUIDE_BASE, jeeGuideSideNav } from "../_data/nav";
 export const revalidate = 86400;
 
 const ROUTE = `${GUIDE_BASE}/trends`;
+
+/**
+ * The Key numbers box and the FAQ, computed from the chapter table's two
+ * windows. The grid's columns are YEARS, not papers, so nothing here counts
+ * the papers a chapter appeared in.
+ */
+const INSIGHTS: InsightInput = {
+  exam: "JEE Mains",
+  subject: "Physics",
+  early: EARLY.label,
+  recent: RECENT.label,
+  questions: OVERVIEW.totalQ,
+  firstYear: OVERVIEW.firstYear,
+  lastYear: OVERVIEW.lastYear,
+  chapters: CHAPTER_TABLE.map((r) => ({ chapter: r.chapter, early: r.earlyPerPaper, recent: r.recentPerPaper })),
+};
 
 export const metadata: Metadata = {
   title: `JEE Mains Physics Trends — what moved, ${OVERVIEW.firstYear}–${OVERVIEW.lastYear}`,
@@ -78,6 +97,7 @@ export default async function Trends() {
         <StatBlock stats={stats} />
       </GuideHero>
       <ReportProvenance route={ROUTE} questions={stats[1].value} />
+      <KeyInsights lines={keyInsights(INSIGHTS)} />
 
       <section className="mt-10 rounded-lg border-l-4 border-primary bg-primary/5 p-5">
         <h2 className="text-base font-semibold tracking-tight">How to read this page</h2>
@@ -204,6 +224,8 @@ export default async function Trends() {
           </table>
         </div>
       </section>
+
+      <TrendsFaq faq={trendsFaq(INSIGHTS)} path={ROUTE} />
 
       <PrevNextNav
         prev={{ href: `${GUIDE_BASE}/formulas`, label: "Formulas" }}

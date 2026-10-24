@@ -24,6 +24,12 @@ type Props = {
    * paper's chapter mix is that paper, not the exam's shape.
    */
   noiseFloor?: number;
+  /**
+   * Papers each chapter appeared in, keyed by chapter, out of `of`. Pass it
+   * only where every column of the grid behind the rates is ONE paper, so the
+   * count means "came up in this many sittings".
+   */
+  appeared?: { byChapter: Record<string, number>; of: number };
 };
 
 /**
@@ -48,6 +54,7 @@ export default function ChapterRateTable({
   columns,
   rows,
   noiseFloor = 1,
+  appeared,
 }: Props) {
   return (
     <div className="relative">
@@ -81,6 +88,14 @@ export default function ChapterRateTable({
                   {c.year}
                 </th>
               ))}
+              {appeared && (
+                <th
+                  scope="col"
+                  className="border-l-2 px-3 py-1.5 text-center text-xs font-semibold text-muted-foreground"
+                >
+                  In papers
+                </th>
+              )}
             </tr>
             <tr className="border-b">
               {columns.map((c) => (
@@ -102,6 +117,14 @@ export default function ChapterRateTable({
                   {c.shifts <= noiseFloor ? `n=${c.shifts} ·` : `n=${c.shifts}`}
                 </th>
               ))}
+              {appeared && (
+                <th
+                  scope="col"
+                  className="border-l-2 px-3 py-1 text-center text-[11px] font-normal tabular-nums text-muted-foreground/80"
+                >
+                  of {appeared.of}
+                </th>
+              )}
             </tr>
           </thead>
           <tbody>
@@ -140,6 +163,17 @@ export default function ChapterRateTable({
                       </td>
                     );
                   })}
+                  {appeared && (
+                    <td
+                      title={`Came up in ${appeared.byChapter[row.chapter] ?? 0} of ${appeared.of} papers`}
+                      className={cn(
+                        "border-l-2 px-3 py-1.5 text-center tabular-nums",
+                        appeared.byChapter[row.chapter] === appeared.of && "font-semibold text-brand-accent"
+                      )}
+                    >
+                      {appeared.byChapter[row.chapter] ?? 0}
+                    </td>
+                  )}
                 </tr>
               );
             })}
@@ -162,6 +196,7 @@ export default function ChapterRateTable({
                     .toFixed(1)}
                 </td>
               ))}
+              {appeared && <td className="border-l-2 bg-muted/40" aria-hidden />}
             </tr>
           </tfoot>
         </table>
