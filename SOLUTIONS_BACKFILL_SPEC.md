@@ -307,3 +307,10 @@ One line per batch: date, exam, written, disputed, skipped.
   written 276. Disputed 12 (keys look wrong 2: refraction-angle and fuse
   wire; key doubtful or question cut off, garbled or ambiguous 7; key right
   3). Skipped 36. Read 30 of 276, rejected 0. Running total 4,134.
+- 2026-10-24, b17 Foundation Course (324, sound, energy, pressure, light):
+  written 286. Disputed 16 (keys look wrong 4, doubtful 3, question
+  ambiguous 6, key acceptable 1, key right 3; one picture opened by the main
+  session). Skipped 22, two of them held back by the main session although
+  the key matched (a misprinted item; a key pairing Nm with erg). One
+  solution reworded to agree with its option. Read 30 of 286, rejected 0.
+  Running total 4,420.
