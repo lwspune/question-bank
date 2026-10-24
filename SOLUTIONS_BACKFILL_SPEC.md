@@ -376,3 +376,8 @@ One line per batch: date, exam, written, disputed, skipped.
   a few minutes ago"; doubtful 4; ambiguous 5; Indian-textbook convention
   2; key right 5, mostly rhetorical-question transformations). Read 40 of
   241. Running total 7,464.
+- 2026-10-24, b29 MPSC PSI (79) + State Services (100) + Group B Combined
+  (30) Mains, English booklets: written 159. The English half of MPSC
+  Mains is done. Skipped 45. Disputed 5 (key doubtful 1; Indian-textbook
+  convention 3; key right 1). Read 35 of 159. Running total 7,623. Next:
+  the Marathi half, after the owner reviews 9 Marathi sample drafts.
