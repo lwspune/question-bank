@@ -1,0 +1,45 @@
+{
+ "figures": [
+  {
+   "key": "ndafix-sin-cos-y-axis",
+   "ids": ["0118607e-ac9c-4362-8934-3b9a0ce33e31"],
+   "note": "stem corrected to the y-axis (source Q2934 printed x-axis); A = sqrt2 - 1, key (A)",
+   "draw": {
+    "kind": "plot", "size": [5, 4], "xlim": [-0.1, 1.75], "ylim": [-0.15, 1.2], "xlabel": "x", "ylabel": "y",
+    "legend": "below", "ticks": "clean",
+    "series": [
+     {"type": "function", "expr": "cos(x)", "domain": [0, 1.6], "color": "#1d4ed8", "style": "-", "label": "$y=\\cos x$"},
+     {"type": "function", "expr": "sin(x)", "domain": [0, 1.6], "color": "#c2410c", "style": "-", "label": "$y=\\sin x$"}
+    ],
+    "fills": [{"type": "between", "upper": "cos(x)", "lower": "sin(x)", "domain": [0, 0.7853981633974483], "color": "#1d4ed8", "alpha": 0.25}],
+    "marks": [
+     {"at": [0.7853981633974483, 0.7071067811865476], "label": "$(\\frac{\\pi}{4},\\frac{1}{\\sqrt{2}})$", "offset": [-74, -22]},
+     {"at": [0, 1], "label": "$(0,1)$", "offset": [6, 6]}
+    ],
+    "labels": [],
+    "check": {"area": "sqrt(2)-1"}
+   }
+  },
+  {
+   "key": "ndafix-x3-1-over-x-x-axis",
+   "ids": ["0c64ad28-7d45-4650-8553-1f12a6a6299e"],
+   "note": "stem corrected to name the x-axis (source Q2939 omitted it); A = 1/4 + ln2, key (B)",
+   "draw": {
+    "kind": "plot", "size": [5, 4], "xlim": [-0.2, 2.4], "ylim": [-0.2, 2.6], "xlabel": "x", "ylabel": "y",
+    "legend": "below", "ticks": "clean",
+    "series": [
+     {"type": "function", "expr": "x**3", "domain": [0, 1.35], "color": "#c2410c", "style": "-", "label": "$y=x^3$"},
+     {"type": "function", "expr": "1/x", "domain": [0.42, 2.3], "color": "#1d4ed8", "style": "-", "label": "$y=\\frac{1}{x}$"},
+     {"type": "vline", "x": 2, "style": "--", "color": "#6b7280", "label": "$x=2$"}
+    ],
+    "fills": [{"type": "between", "upper": "minimum(x**3, 1/maximum(x, 1e-9))", "lower": "0", "domain": [0, 2], "color": "#1d4ed8", "alpha": 0.25}],
+    "marks": [
+     {"at": [1, 1], "label": "$(1,1)$", "offset": [6, 6]},
+     {"at": [2, 0.5], "label": "$(2,\\frac{1}{2})$", "offset": [6, 4]}
+    ],
+    "labels": [],
+    "check": {"area": "1/4+log(2)"}
+   }
+  }
+ ]
+}
