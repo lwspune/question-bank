@@ -517,7 +517,7 @@ export default function ChatWidget() {
     openChat();
     setAsked(d);
     setReplyingTo(null);
-    void askTyped(askVMessage(d.chose), d);
+    void askTyped(d.notes ? askVMessage(null) : askVMessage(d.chose, d), d);
   };
 
   function startReply(id: string, text: string) {

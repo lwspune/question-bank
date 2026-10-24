@@ -24,7 +24,16 @@ const COMPACT =
  * and position, lib/chat/notesItem.ts) instead.
  */
 export default function AskVButton(
-  props: ({ questionId: string; chose: string | null } | { notes: NotesItemRef }) & {
+  props: (
+    | {
+        questionId: string;
+        chose: string | null;
+        /** From a mock review: the number entered on a numeric question, or that it was skipped. */
+        entered?: number | null;
+        skipped?: boolean;
+      }
+    | { notes: NotesItemRef }
+  ) & {
     className?: string;
     compact?: boolean;
     /** Names the question when a page has many of them ("Ask V about practice rep 2"). */
@@ -33,7 +42,9 @@ export default function AskVButton(
 ) {
   const { className = "", compact = false, ariaLabel = "Ask V to explain this question" } = props;
   const detail: AskVDetail =
-    "notes" in props ? { notes: props.notes, chose: null } : { questionId: props.questionId, chose: props.chose };
+    "notes" in props
+      ? { notes: props.notes, chose: null }
+      : { questionId: props.questionId, chose: props.chose, entered: props.entered, skipped: props.skipped };
   const look = compact ? COMPACT : LOOK;
   const on = useVExplain();
   // One identity request per page load, shared with the header (lib/viewer/useViewerSession).

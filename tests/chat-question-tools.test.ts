@@ -145,6 +145,16 @@ describe("explainView", () => {
     expect(explainView(q(), "B")).toContain("The student chose (B) 3, which is right.");
   });
 
+  it("names a numeric answer the student entered, right or wrong, within the mock's tolerance", () => {
+    const nat = q({ format: "numeric", options: [], numericAnswer: 20 });
+    expect(explainView(nat, null, 18)).toContain("The student entered 18, which is wrong.");
+    expect(explainView(nat, null, 20)).toContain("The student entered 20, which is right.");
+    expect(explainView(nat, null, 20.001)).toContain("which is right.");
+    // 0 is a real answer, not "nothing entered".
+    expect(explainView(q({ format: "numeric", options: [], numericAnswer: 0 }), null, 0)).toContain("The student entered 0, which is right.");
+    expect(explainView(nat, null, null)).not.toContain("entered");
+  });
+
   it("says plainly when no worked solution is stored", () => {
     const v = explainView(q({ solution: null }), null);
     expect(v).toContain("No worked solution for this question");
@@ -226,17 +236,33 @@ describe("searchWordsOf", () => {
 describe("parseAskedQuestion", () => {
   const ID = "11111111-1111-4111-8111-111111111111";
   it("reads the tapped question and the student's pick", () => {
-    expect(parseAskedQuestion({ id: ID, chose: "b" })).toEqual({ id: ID, chose: "B" });
-    expect(parseAskedQuestion({ id: ID })).toEqual({ id: ID, chose: null });
+    expect(parseAskedQuestion({ id: ID, chose: "b" })).toEqual({ id: ID, chose: "B", entered: null, skipped: false });
+    expect(parseAskedQuestion({ id: ID })).toEqual({ id: ID, chose: null, entered: null, skipped: false });
+  });
+
+  // 2026-10-24: on a mock result, V asked a student who had skipped the question "which option did you pick?".
+  it("reads a numeric answer the student entered, and a question they skipped in a test", () => {
+    expect(parseAskedQuestion({ id: ID, chose: null, entered: 12.5 })).toEqual({ id: ID, chose: null, entered: 12.5, skipped: false });
+    expect(parseAskedQuestion({ id: ID, chose: null, entered: 0 })).toEqual({ id: ID, chose: null, entered: 0, skipped: false });
+    expect(parseAskedQuestion({ id: ID, chose: null, skipped: true })).toEqual({ id: ID, chose: null, entered: null, skipped: true });
+  });
+
+  it("drops an entered value that is not a finite number, and a skip that contradicts an answer", () => {
+    expect(parseAskedQuestion({ id: ID, entered: "12" })?.entered).toBeNull();
+    expect(parseAskedQuestion({ id: ID, entered: Number.NaN })?.entered).toBeNull();
+    expect(parseAskedQuestion({ id: ID, entered: 1e12 })?.entered).toBeNull();
+    expect(parseAskedQuestion({ id: ID, chose: "B", skipped: true })?.skipped).toBe(false);
+    expect(parseAskedQuestion({ id: ID, entered: 3, skipped: true })?.skipped).toBe(false);
+    expect(parseAskedQuestion({ id: ID, skipped: "yes" })?.skipped).toBe(false);
   });
 
   it("drops anything that is not a question id, and a pick that is not an option letter", () => {
     expect(parseAskedQuestion({ id: "x" })).toBeNull();
     expect(parseAskedQuestion(null)).toBeNull();
     expect(parseAskedQuestion("q1")).toBeNull();
-    expect(parseAskedQuestion({ id: ID, chose: "F" })).toEqual({ id: ID, chose: null });
+    expect(parseAskedQuestion({ id: ID, chose: "F" })?.chose).toBeNull();
     // IMAT prints five options, so E is a real pick.
-    expect(parseAskedQuestion({ id: ID, chose: "e" })).toEqual({ id: ID, chose: "E" });
+    expect(parseAskedQuestion({ id: ID, chose: "e" })?.chose).toBe("E");
   });
 });
 

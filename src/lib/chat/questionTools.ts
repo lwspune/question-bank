@@ -13,6 +13,7 @@
  *
  * Pure. Spec: tests/chat-question-tools.test.ts.
  */
+import { matchesNumericAnswer } from "@/lib/mocks/answers";
 import { formatProvenance } from "@/lib/questions/formatProvenance";
 import type { QuestionRow } from "@/lib/questions/query";
 
@@ -132,11 +133,15 @@ export function hintView(q: VQuestion): string {
  * For a full explanation: the key and the whole solution, and what the student picked. Labelled in the
  * student's words, never "stored": V repeats what it reads (2026-10-23, 39 of 218 replies said "stored").
  */
-export function explainView(q: VQuestion, chose: string | null): string {
+export function explainView(q: VQuestion, chose: string | null, entered: number | null = null): string {
   const lines = [...header(q), `Correct answer: ${answerText(q)}`];
   const picked = chose ? q.options.find((o) => o.label === chose) : undefined;
   if (picked) {
     lines.push(`The student chose (${picked.label}) ${picked.text}, which is ${picked.isCorrect ? "right" : "wrong"}.`);
+  }
+  // A numeric (NAT) answer, graded with the mock's own tolerance. 0 is an answer, so test for null.
+  if (q.format === "numeric" && entered !== null && q.numericAnswer !== null) {
+    lines.push(`The student entered ${entered}, which is ${matchesNumericAnswer(entered, q.numericAnswer) ? "right" : "wrong"}.`);
   }
   lines.push(
     q.solution && q.solution.trim()
@@ -170,13 +175,27 @@ export function pickSimilar(candidates: readonly string[], exclude: ReadonlySet<
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const PICKS = new Set(["A", "B", "C", "D", "E"]);
 
+/** No real numeric answer is this large; anything bigger is junk, not an answer. */
+const ENTERED_MAX = 1e9;
+
+/**
+ * The question the student tapped Ask V on, and what they did with it: the
+ * option they picked, the number they entered (a numeric question), or that
+ * they skipped it in a test. 2026-10-24: V asked a student who had skipped a
+ * mock question "which option did you pick?".
+ */
+export type AskedQuestion = { id: string; chose: string | null; entered: number | null; skipped: boolean };
+
 /** The question a chat request says the student tapped Ask V on. Anything malformed is no question. */
-export function parseAskedQuestion(raw: unknown): { id: string; chose: string | null } | null {
+export function parseAskedQuestion(raw: unknown): AskedQuestion | null {
   if (!raw || typeof raw !== "object") return null;
-  const { id, chose } = raw as { id?: unknown; chose?: unknown };
+  const { id, chose, entered, skipped } = raw as { id?: unknown; chose?: unknown; entered?: unknown; skipped?: unknown };
   if (typeof id !== "string" || !UUID_RE.test(id)) return null;
   const pick = typeof chose === "string" ? chose.toUpperCase() : null;
-  return { id, chose: pick && PICKS.has(pick) ? pick : null };
+  const picked = pick && PICKS.has(pick) ? pick : null;
+  const number = typeof entered === "number" && Number.isFinite(entered) && Math.abs(entered) < ENTERED_MAX ? entered : null;
+  // A skip that contradicts an answer is dropped: the answer is what V needs.
+  return { id, chose: picked, entered: number, skipped: skipped === true && picked === null && number === null };
 }
 
 // LaTeX commands that only lay maths out; their names are not in a pasted copy.

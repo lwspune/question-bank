@@ -7,6 +7,7 @@ import { PresentRegistry } from "@/components/present/PresentRegistry";
 import { fromReviewItem } from "@/lib/present/viewModel";
 import type { ReviewItem } from "@/lib/mocks/service";
 import AskVButton from "@/components/chat/AskVButton";
+import { askedFromReview } from "@/lib/chat/askVEvent";
 import { BilingualOption, BilingualSolution, BilingualStem, QuestionLangSwitch } from "@/components/i18n/BilingualText";
 import { hasMarathi } from "@/lib/i18n/bilingual";
 import CancelledNotice from "@/components/question/CancelledNotice";
@@ -184,7 +185,8 @@ function ReviewCard({ item, supabaseUrl }: { item: ReviewItem; supabaseUrl: stri
         </details>
       )}
       {/* Not on a grace question: it has no valid key to explain. */}
-      {!item.grace && <AskVButton questionId={item.questionId} chose={item.selectedLabel} className="mt-3" />}
+      {/* What they picked, entered or skipped, so V does not ask a skipper "which option did you pick?" (2026-10-24). */}
+      {!item.grace && <AskVButton questionId={item.questionId} {...askedFromReview(item)} className="mt-3" />}
     </li>
   );
 }

@@ -32,6 +32,7 @@ import type { PracticeCounts } from "@/lib/activity/practiceCounts";
 import { progressTool } from "./progress";
 import { pageContext } from "./pageContext";
 import { questionTools, type QuestionToolDeps } from "./questionToolSet";
+import type { AskedQuestion } from "./questionTools";
 import { examStrategyTool, type StrategyData } from "./examStrategy";
 import { loadExamStrategy } from "./examStrategyServer";
 import { planTools, type PlanDeps } from "./weekPlan";
@@ -99,8 +100,8 @@ export async function loadVContext(
     planEnabled?: boolean;
     /** The signed-in student's week-plan reads and writes (lib/chat/weekPlan.ts); absent when signed out. */
     plan?: Omit<PlanDeps, "signedIn" | "loadChapters" | "loadStrategy"> | null;
-    /** The question the student tapped Ask V on, and the option they picked. */
-    question?: { id: string; chose: string | null } | null;
+    /** The question the student tapped Ask V on, and what they did with it. */
+    question?: AskedQuestion | null;
     /** A notes practice question the student tapped Ask V on, as V is told it (lib/chat/notesItem.ts). */
     notesBrief?: string | null;
     /** explain_concept's data sources (lib/chat/conceptSearchServer.ts conceptSources); offered with the question tools. */
