@@ -9,8 +9,10 @@ background is `SOLUTIONS_BACKFILL_SPEC.md`; this file is all you need.
   plus that folder's `style.json` (solutions the bank already has, for the
   house style). A question with `image` set has its picture at that path:
   open it with the Read tool.
-- For a question with `image` set, open the picture BEFORE solving and add
-  `"imageSeen": true` to its draft. A draft for a picture question without
+- For a question with `image` set, open ITS OWN picture (the path in its
+  `image` field) BEFORE solving and add `"imageSeen": true` to its draft.
+  Neighbouring questions often look alike; reading the next one's graph has
+  happened (b21). A draft for a picture question without
   it is rejected. If you cannot or did not open it, skip the question.
 - **Never open** `key.json` or any `disputes-*.md` in that folder. The work
   is blind: you solve each question yourself and say what answer you reached.
@@ -73,6 +75,8 @@ background is `SOLUTIONS_BACKFILL_SPEC.md`; this file is all you need.
   letter for a wrong reason still teaches the wrong thing (b18: "the base
   joins the 1'C, not its OH" when the slip was "nucleotide" for
   nucleoside). If you are not sure why a statement is wrong, skip.
+- Never settle a match or pairing by elimination alone ("item 3 is the one
+  left over"). Each pair you state must be true; if one is not, skip.
 - Add no fact the question does not need. Every extra claim is one more
   chance to be wrong. Use the textbook's own term (morels are "edible
   fungi", not "mushrooms"); if you are unsure of a term, leave it out.
