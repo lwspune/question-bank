@@ -22,6 +22,8 @@ background is `SOLUTIONS_BACKFILL_SPEC.md`; this file is all you need.
 }
 ```
 
+- EVERY question id in your slice appears in the file, a skipped one as
+  `{ "skip": "<why>" }`. A question left out is lost from the count.
 - Nothing else: no database, no git, no other files, no scripts.
 - Keep tool output small. Do not print whole files back.
 
