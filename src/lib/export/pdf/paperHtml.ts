@@ -294,6 +294,11 @@ function questionHtml(q: QuestionRow, n: number, input: PaperHtmlInput, showCont
 }
 
 export function buildPaperHtml(input: PaperHtmlInput): string {
+  return page(input.title, "Question Paper", input.questions.length, paperBodyHtml(input), input);
+}
+
+/** The questions as a paper prints them, without the page around them (the Solved Papers ebook reuses it). */
+export function paperBodyHtml(input: PaperHtmlInput): string {
   const groups = groupBySet(input.questions);
   const labels = groups.map((g) => groupHeadingLabel(g, input.sectionOf));
   const headings = wantsHeadings(input)
@@ -318,7 +323,7 @@ export function buildPaperHtml(input: PaperHtmlInput): string {
     }
     for (const q of group.questions) parts.push(questionHtml(q, n++, input, false));
   });
-  return page(input.title, "Question Paper", input.questions.length, parts.join(""), input);
+  return parts.join("");
 }
 
 // ── Answer key ──────────────────────────────────────────────────────────────
@@ -337,7 +342,19 @@ export function buildKeyHtml(input: KeyHtmlInput): string {
     `<div class="keygrid">` +
     qs.map((q, i) => `<div class="kc"><span class="kn">${esc(numberOf(q, i + 1, input.printedOf))}</span><span class="ka">${esc(answerOf(q))}</span></div>`).join("") +
     `</div>`;
+  const details = keyDetailsHtml(input);
+  const detailTitle = input.includeSolutions ? "Solutions" : "Model answers and notes";
+  const body = grid + (details ? `<h2>${detailTitle}</h2>${details}` : "");
+  return page(input.title, "Answer Key", qs.length, body, input);
+}
 
+/**
+ * Each question's answer with its solution (or model answer, or cancellation
+ * notice), under its number and section heading; empty when there is none to
+ * print. The Solved Papers ebook reuses it.
+ */
+export function keyDetailsHtml(input: KeyHtmlInput): string {
+  const qs = input.questions;
   // Model answers and cancellation notices print whatever the setting:
   // without them the grid says "Written" or "Cancelled" and nothing else.
   const detailed = qs
@@ -362,8 +379,5 @@ export function buildKeyHtml(input: KeyHtmlInput): string {
     const pq = input.printedOf?.has(q.id) ? " pq" : "";
     return `${heading}<section class="q sol${pq}"><div class="qn">${esc(numberOf(q, n, input.printedOf))}.</div><div class="qb">${body}</div></section>`;
   });
-
-  const detailTitle = input.includeSolutions ? "Solutions" : "Model answers and notes";
-  const body = grid + (details.length ? `<h2>${detailTitle}</h2>${details.join("")}` : "");
-  return page(input.title, "Answer Key", qs.length, body, input);
+  return details.join("");
 }
