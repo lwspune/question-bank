@@ -75,11 +75,12 @@ function isPlainObject(v: unknown): v is Record<string, unknown> {
  */
 /**
  * The gate a checkout started from, as the client names it in the order
- * request. Only the download box ("teacher", the gate's name since 2026-07)
- * buys outside /pricing; anything else is "pricing", the old assumption.
+ * request. The download box ("teacher", the gate's name since 2026-07) and,
+ * since 2026-10-25, the reveal wall ("reveals") buy outside /pricing; anything
+ * else is "pricing", the old assumption.
  */
 export function checkoutGate(v: unknown): PaywallGate {
-  return v === "teacher" ? "teacher" : "pricing";
+  return v === "teacher" || v === "reveals" ? v : "pricing";
 }
 
 export function paywallEvent(

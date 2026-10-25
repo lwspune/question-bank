@@ -525,7 +525,8 @@ export default function QuestionCard({
             {/* No "tap an option" hint: the options read as buttons. The one
                 line that stays is the signed-out wall, because there a tap does
                 nothing and, unexplained, earns repeated angry taps. */}
-            {!isOpenFormat && !revealed && !cancelled && locked && (
+            {/* Signed in, the daily wall's box says "more tomorrow" itself once it shows. */}
+            {!isOpenFormat && !revealed && !cancelled && locked && !(meter.signedIn && revealBlocked) && (
               <p className="text-center font-sans text-xs text-muted-foreground">
                 {meter.signedIn
                   ? "You've opened today's free answers. More tomorrow."

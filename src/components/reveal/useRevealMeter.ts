@@ -9,6 +9,7 @@ import { recordPractice } from "./practiceBeacon";
 import { trackFunnelOnce } from "@/lib/analytics/trackFunnel";
 import { noteRevealForRun } from "@/components/celebrate/answerRun";
 import type { PickLabel, PracticeSurface } from "@/lib/questions/practiceBatch";
+import type { PassCta } from "@/lib/billing/plans";
 
 /**
  * A reveal that came from tapping an option. `correct` is the page's own
@@ -102,7 +103,7 @@ function getSnapshot(): string[] {
  * Same store and listeners as the signed-out list, so a card that subscribes
  * to "am I locked?" redraws when either changes.
  */
-type DailyQuota = { limit: number; todayIds: string[]; day: string };
+type DailyQuota = { limit: number; todayIds: string[]; day: string; pass: PassCta | null };
 let dailyQuota: DailyQuota | null = null;
 let dailyFetch: Promise<void> | null = null;
 
@@ -120,16 +121,21 @@ export function dailyRevealLimit(): number | null {
   return dailyQuota?.limit ?? null;
 }
 
+/** The pass the wall sells in place (2026-10-25); null = none on sale, so it links to /pricing. */
+export function dailyRevealPass(): PassCta | null {
+  return dailyQuota?.pass ?? null;
+}
+
 function ensureDailyQuota(): void {
   if (dailyFetch) return;
   dailyFetch = (async () => {
     try {
       const res = await fetch("/api/me/reveals", { cache: "no-store" });
       if (!res.ok) return;
-      const data = (await res.json()) as { limit: number | null; todayIds: string[] };
+      const data = (await res.json()) as { limit: number | null; todayIds: string[]; pass?: PassCta | null };
       // null = no limit (off, or a pass): stay unlimited for this page load.
       if (data.limit === null) return;
-      dailyQuota = { limit: data.limit, todayIds: data.todayIds, day: istDayKey(new Date()) };
+      dailyQuota = { limit: data.limit, todayIds: data.todayIds, day: istDayKey(new Date()), pass: data.pass ?? null };
       notify();
     } catch {
       /* offline or blocked: no limit is the safe direction */
