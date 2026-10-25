@@ -23,6 +23,7 @@ import { trackFunnel, trackFunnelOnce } from "@/lib/analytics/trackFunnel";
 import { sendActivityOnce } from "@/lib/activity/clientBeacon";
 import { pricingHref } from "@/lib/billing/checkoutReturn";
 import { gatePriceLine } from "@/lib/billing/gateCopy";
+import { offerLine, offerTitle } from "@/lib/billing/offerCopy";
 import type { ExportViewerAccess } from "@/lib/export/viewerAccess";
 import type { PassOfferLead } from "@/lib/billing/passOfferLead";
 import type { DownloadBox } from "@/lib/activity/clientEvents";
@@ -222,7 +223,9 @@ export default function PaperDownload({
               ? "Download this paper"
               : offer && signedIn && pass
                 ? offer.title
-                : "Download past papers"}
+                : signedIn && pass
+                  ? offerTitle(box)
+                  : "Download past papers"}
           </DialogTitle>
           <DialogDescription>
             {!access
@@ -232,13 +235,9 @@ export default function PaperDownload({
                 : pass
                   ? !signedIn
                     ? paperTitle
-                    : wantPass
-                      ? offer
-                        ? `With ${pass.label}:`
-                        : `${pass.label} includes:`
-                      : offer
-                        ? `You've had your free paper. With ${pass.label}:`
-                        : `You've had your free paper. ${pass.label} includes:`
+                    : offer
+                      ? `With ${pass.label}:`
+                      : offerLine(box)
                   : "Downloading past papers needs a pass."}
           </DialogDescription>
         </DialogHeader>

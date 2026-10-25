@@ -11,11 +11,6 @@ export function selectionTitle(count: number): string {
   return `Download these ${count.toLocaleString("en-IN")} questions`;
 }
 
-/** "Download these 48 questions with Premium Pass": once the free file is spent. */
-export function gateTitle(count: number, passLabel: string): string {
-  return `${selectionTitle(count)} with ${passLabel}`;
-}
-
 export function gatePriceLine(cta: { price: string; length: string }): string {
   return `${cta.price} · ${cta.length}`;
 }

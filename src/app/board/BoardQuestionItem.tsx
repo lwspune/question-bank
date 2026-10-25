@@ -155,7 +155,8 @@ export default function BoardQuestionItem({
               );
             })}
           </ol>
-          {hasAnswer && !revealed && (
+          {/* Signed in, the daily wall's box says "more tomorrow" itself once it shows. */}
+          {hasAnswer && !revealed && !(blocked && dailyRevealLimit() !== null) && (
             <p className="mt-1.5 text-center text-xs text-muted-foreground">
               {!lockedLink
                 ? "Tap an option to check your answer."

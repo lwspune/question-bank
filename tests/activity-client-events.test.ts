@@ -127,6 +127,10 @@ describe("checkoutGate", () => {
   it("accepts the download gate", () => {
     expect(checkoutGate("teacher")).toBe("teacher");
   });
+  // The reveal wall sells in place since 2026-10-25, so its sales are its own.
+  it("accepts the reveal wall", () => {
+    expect(checkoutGate("reveals")).toBe("reveals");
+  });
   it("defaults to pricing for a missing or unknown value", () => {
     expect(checkoutGate(undefined)).toBe("pricing");
     expect(checkoutGate("mock_limit")).toBe("pricing");
