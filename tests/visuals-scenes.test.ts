@@ -173,3 +173,20 @@ describe("functionGraph", () => {
     expect(s.parse({ ...base, ask: { kind: "crossings" } })).toHaveProperty("error"); // crossings needs a line or a second curve
   });
 });
+
+describe("functionGraph drawing details", () => {
+  it("labels negative pi ticks as fractions of pi, not decimals", () => {
+    const { scene, p } = parsedParams("functionGraph", { f: "sin(3*x)", xTicks: "pi", window: { x: [-Math.PI / 2, Math.PI / 2], y: [-1.2, 1.2] }, ask: { kind: "increasingOn", interval: [-Math.PI / 6, Math.PI / 6] } });
+    const texts = scene.frame(p, { played: ["curve"], t: 1, slider: undefined }).filter((s) => s.kind === "text").map((s) => (s as { text: string }).text);
+    expect(texts).toContain("−π/4");
+    // The x ticks at -pi/4 and -pi/2 used to read as decimals (y-axis numbers like -0.5 are fine).
+    expect(texts).not.toContain("−0.79");
+    expect(texts).not.toContain("−1.57");
+  });
+  it("draws the normal as a vertical line when the tangent is horizontal", () => {
+    const { scene, p } = parsedParams("functionGraph", { f: "sin(pi*x/2)", window: { x: [0, 2], y: [0, 1.2] }, ask: { kind: "slopePoint", slope: 0, normal: true } });
+    const shapes = scene.frame(p, { played: ["curve", "tangent", "mark"], t: 1, slider: undefined });
+    const vertical = shapes.filter((s) => s.kind === "line" && (s as { dash?: string }).dash && Math.abs((s as { x1: number }).x1 - (s as { x2: number }).x2) < 1e-9);
+    expect(vertical).toHaveLength(1);
+  });
+});

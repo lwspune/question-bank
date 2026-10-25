@@ -246,14 +246,18 @@ export const functionGraph: Scene<FunctionGraphParams> = {
     for (let k = Math.ceil(xa / xStep - 1e-9); k * xStep <= xb + 1e-9; k++) {
       const v = k * xStep;
       if (Math.abs(v) < 1e-12) continue;
-      const label = p.xTicks === "pi" ? (v > 0 ? piFraction(v) : null) ?? num(v) : num(v);
+      // A negative pi tick reads "−π/4", not "−0.79".
+      const frac = p.xTicks === "pi" ? piFraction(Math.abs(v)) : null;
+      const label = frac ? (v < 0 ? `−${frac}` : frac) : num(v);
       axes.push(line(X(v), axisY - 3, X(v), axisY + 3, { stroke: "muted", width: 1 }), text(X(v), Math.min(H - 4, axisY + 15), label, { tone: "muted", size: 10, anchor: "middle" }));
     }
     const yStep = niceStep(yb - ya, 5);
     for (let k = Math.ceil(ya / yStep - 1e-9); k * yStep <= yb + 1e-9; k++) {
       const v = k * yStep;
       if (Math.abs(v) < 1e-12) continue;
-      axes.push(line(axisX - 3, Y(v), axisX + 3, Y(v), { stroke: "muted", width: 1 }), text(Math.max(2, axisX - 5), Y(v) + 3, num(v), { tone: "muted", size: 10, anchor: "end" }));
+      axes.push(line(axisX - 3, Y(v), axisX + 3, Y(v), { stroke: "muted", width: 1 }));
+      // No number in the top row, where the curve's own label sits.
+      if (Y(v) > P.t + 14) axes.push(text(Math.max(2, axisX - 5), Y(v) + 3, num(v), { tone: "muted", size: 10, anchor: "end" }));
     }
 
     // A curve as polylines, broken where it leaves the domain or jumps (a pole).
@@ -304,11 +308,48 @@ export const functionGraph: Scene<FunctionGraphParams> = {
       }
       if (ps > 0.6) {
         const [lo, hi] = p.ask.interval;
-        over.push(
-          { kind: "rect", x: X(lo), y: axisY - 4, w: X(hi) - X(lo), h: 8, rx: 4, fill: "good" },
-          text(Math.min(P.r - 4, Math.max(P.l + 4, (X(lo) + X(hi)) / 2)), Math.max(P.t + 26, axisY - 10), p.ask.intervalLabel, { tone: "good", size: 11, weight: 700, anchor: "middle" }),
-          text(P.r - 2, P.t + 2, p.ask.kind === "increasingOn" ? "shaded: rising" : "shaded: falling", { tone: "good", size: 10.5, anchor: "end" }),
-        );
+        // The label goes just above or just below the band, whichever is farther
+        // from the curve over the label's width.
+        // Candidates: centred, or slid to either end of the band; above or below it.
+        const half = p.ask.intervalLabel.length * 3.2;
+        const fit = (x: number) => Math.min(P.r - half - 2, Math.max(P.l + half + 2, x));
+        const clearance = (cx: number, yy: number) => {
+          if (yy < P.t + 26 || yy > H - 4) return -1;
+          let d = Infinity;
+          for (let i = 0; i <= 40; i++) {
+            const px = cx - half + (2 * half * i) / 40;
+            const v = p.f(xa + ((px - P.l) / (P.r - P.l)) * (xb - xa));
+            if (Number.isFinite(v)) d = Math.min(d, Math.abs(Y(v) - (yy - 4)));
+          }
+          return d;
+        };
+        let lx = fit((X(lo) + X(hi)) / 2);
+        let ly = axisY - 10;
+        let best = -Infinity;
+        // ...or just past either end, for a band about as narrow as its label.
+        for (const cx of [fit((X(lo) + X(hi)) / 2), fit(X(lo) + half), fit(X(hi) - half), fit(X(hi) + half + 6), fit(X(lo) - half - 6)]) {
+          for (const yy of [axisY - 10, axisY + 28]) {
+            // Room decides, capped so a clear centred spot is not passed over for an end.
+            const score = Math.min(clearance(cx, yy), 14) - 0.01 * Math.abs(cx - (X(lo) + X(hi)) / 2);
+            if (score > best) {
+              best = score;
+              lx = cx;
+              ly = yy;
+            }
+          }
+        }
+        const word = p.ask.kind === "increasingOn" ? "rising" : "falling";
+        over.push({ kind: "rect", x: X(lo), y: axisY - 4, w: X(hi) - X(lo), h: 8, rx: 4, fill: "good" });
+        if (best >= 6) {
+          over.push(
+            text(lx, Math.max(P.t + 26, ly), p.ask.intervalLabel, { tone: "good", size: 11, weight: 700, anchor: "middle" }),
+            text(P.r - 2, P.t + 2, `shaded: ${word}`, { tone: "good", size: 10.5, anchor: "end" }),
+          );
+        } else {
+          // No clear spot near the band (a curve swinging both ways): the interval
+          // goes in the header row, which is always free.
+          over.push(text(P.r - 2, P.t + 2, `${word}: ${p.ask.intervalLabel}`, { tone: "good", size: 11, weight: 700, anchor: "end" }));
+        }
       }
     }
 
@@ -341,9 +382,14 @@ export const functionGraph: Scene<FunctionGraphParams> = {
       if (pm > 0) {
         const dx = (xb - xa) * 0.2;
         over.push(line(X(x0 - dx), clampY(Y(y0 - p.ask.slope * dx)), X(x0 + dx), clampY(Y(y0 + p.ask.slope * dx)), { stroke: "amber", width: 2, cap: "round" }));
-        if (p.ask.normal && p.ask.slope !== 0) {
-          const m = -1 / p.ask.slope;
-          over.push(line(X(x0 - dx), clampY(Y(y0 - m * dx)), X(x0 + dx), clampY(Y(y0 + m * dx)), { stroke: "fg", width: 1.8, dash: "5 4", opacity: pm }));
+        if (p.ask.normal) {
+          if (p.ask.slope === 0) {
+            // A horizontal tangent has a vertical normal.
+            over.push(line(X(x0), P.t + 20, X(x0), P.b, { stroke: "fg", width: 1.8, dash: "5 4", opacity: pm }));
+          } else {
+            const m = -1 / p.ask.slope;
+            over.push(line(X(x0 - dx), clampY(Y(y0 - m * dx)), X(x0 + dx), clampY(Y(y0 + m * dx)), { stroke: "fg", width: 1.8, dash: "5 4", opacity: pm }));
+          }
         }
         // The label goes in whichever of the four spots round the point is
         // farthest from the curve, the tangent and the normal, so it never sits
@@ -364,6 +410,9 @@ export const functionGraph: Scene<FunctionGraphParams> = {
           }
         }
         // Near and far spots on both sides; a far one gets a leader line back to the point.
+        if (p.ask.normal && p.ask.slope === 0) {
+          for (let yy = P.t + 20; yy <= P.b; yy += 4) obstacles.push([px, yy]);
+        }
         const spots: [number, number, "start" | "end"][] = [];
         for (const ox of [10, 30, 55]) {
           for (const oy of [-12, -32, -55, -80, 22, 42, 64]) spots.push([px + ox, py + oy, "start"], [px - ox, py + oy, "end"]);
