@@ -46,3 +46,11 @@ question cannot be FULLY answered without a picture it does not have (it says
 with no image; a needed graph or circuit is missing). Add `"figureNote"` (at
 most 12 words) saying what is missing. A question that merely could use a
 picture, but is complete as written, is `"none"`.
+
+## Also: is the stored solution wrong?
+
+Add `"solutionWrong"`: `"none"`, or at most 20 words saying what is wrong when
+a step of the solution is false (a wrong sign, a wrong value, a claim that
+does not hold), even if it still reaches the keyed answer. Do not report
+terse or badly worded solutions, only false ones. If the KEY itself looks
+wrong, or the question cannot be answered as printed, say so here too.
