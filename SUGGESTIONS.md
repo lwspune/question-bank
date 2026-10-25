@@ -153,6 +153,16 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ## 2026-10-25
 
+### Five questions whose KEY or STEM is the problem (owner to decide; found during animated-solution work)
+
+Solutions were corrected in place where only the working was wrong (fix batches `scripts/visuals/solution-fixes/2026-10-25-{a,b,c}.json`). These five were left untouched because the fault is in the key or the question text, which are the owner's call:
+
+- **JEE Conic `f62c1b5d` (key looks wrong):** normal at (8/sqrt5, 12/5) to the hyperbola with e = 5/4 is 8sqrt5 x + 15y = 100, so lambda - beta = 85; the stored key is 51 and the stored solution itself says 85.
+- **JEE Conic `daa77f89` (stem typo):** the stem prints L1 = 4x + 3y - 2, which gives 3511/325; with 4x + 3y + 2 (what the solution uses, openly) the keyed 11 follows. Fix the stem sign (content_hash changes; use a hash-safe repair).
+- **JEE Conic `f3eb2b0b` (stem inconsistent):** A(sec t, 2 tan t) is not on 2x^2 - y^2 = 2 for any t != 0; the solution uses the points blindly to reach the key 36. Needs the original paper's wording.
+- **JEE Conic `38cf6990` (stem underdetermined):** the two lines meet at a point that depends on k; the centre (1, 2) holds only for k = -1, which the stem never fixes. Key 18 matches k = -1.
+- **MHT-CET Circle `009b24ef` (key choice):** the official key 16 counts k with radius^2 <= 0; requiring a real circle gives 10, not offered. The solution already says so openly.
+
 ### A JEE Application of Derivatives solution states the wrong sign of f' for x < 0
 
 Found while drafting animated solutions (batch fg-jee-aod-1). Question `a751d0d5-2053-4658-bc26-85674960a9e3`: its stored solution says f'(x) <= 0 on (-inf, 1/2], which is false for x < 0; the keyed option (A) still holds. The drafter tried to hide it by starting the picture at x = 0, so the visual was dropped rather than paired with a wrong claim. **DONE 2026-10-25** (owner: fix wrong solutions as found): sign analysis re-derived and the solution corrected in place by `npm run visuals:fix-solutions -- 2026-10-25-a` (key A unchanged, content_hash unmoved, review recorded); the question then got its visual (batch fg-jee-fix-1), which shades both rising stretches, x < 0 and x >= 1/2.
