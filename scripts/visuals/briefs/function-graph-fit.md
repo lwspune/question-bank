@@ -1,14 +1,18 @@
 # Fit brief: can the function-graph scene show this solution?
 
 PYQ Vault draws animated solutions from a question's own numbers. The
-**function-graph** scene plots y = f(x) and can show exactly four things:
+**function-graph** scene plots y = f(x) and can show exactly five things:
 
 1. **crossings**: how many solutions an equation f(x) = g(x) has on an
    interval (the curve meets a line or another curve, the points are counted).
 2. **slopePoint**: the one point on a curve where the tangent (or the normal)
    has a given slope or is parallel to a given line.
-3. **increasingOn**: on which interval a function is increasing.
-4. **decreasingOn**: on which interval a function is decreasing.
+3. **increasingOn**: on which interval (or union of up to 3 intervals) a
+   function is increasing.
+4. **decreasingOn**: the same, decreasing.
+5. **slopePoints**: SEVERAL points on a curve with the same given tangent
+   slope (the key lists two points, or asks how many there are, or the sum of
+   their x or y).
 
 For each question decide which ONE of these the solution is really about, or
 `no` if none fits. Fit only when the whole question is answered by that
@@ -26,7 +30,7 @@ Write a JSON array to your output path, one object per question, input order:
 [{ "n": 3, "id": "<id>", "fit": "increasingOn", "note": "f'(x) = -sin4x; asks where f rises" }]
 ```
 
-- `fit`: crossings, slopePoint, increasingOn, decreasingOn or no.
+- `fit`: crossings, slopePoint, slopePoints, increasingOn, decreasingOn or no.
 - `note`: at most 12 words.
 
 Read only your input file, write only your output file, run nothing. When
