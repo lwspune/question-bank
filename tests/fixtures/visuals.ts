@@ -66,9 +66,78 @@ export const SLAB_VISUAL = {
   answer: { value: 2, label: "2 cm", tolerance: 0.1 },
 };
 
+
+/** MHT-CET 564f2302: number of solutions of 16^(sin^2 x) + 16^(cos^2 x) = 10 in [0, 2pi]. */
+export const FG_CROSS_SOLUTION = String.raw`Let \(m=16^{\sin^2 x}\); then \(m+\frac{16}{m}=10\Rightarrow m^2-10m+16=0\Rightarrow m=8\) or \(m=2\). Each gives \(\sin^2x=\frac{3}{4}\) or \(\sin^2x=\frac{1}{4}\), each with 4 solutions in \([0,2\pi]\). Total \(=8\). Matches option D.`;
+
+/** MHT-CET b03b5c01: point on y = x log x where the normal is parallel to 2x - 2y = 3. */
+export const FG_SLOPE_SOLUTION = String.raw`\(y' = 1 + \log x\). Slope of normal \(= -1/y' = 1\) (parallel to the line). So \(1 + \log x = -1 \Rightarrow x = e^{-2}\), \(y = e^{-2}\log(e^{-2}) = -2e^{-2}\). Matches option D: \((e^{-2}, -2e^{-2})\).`;
+
+/** MHT-CET 4fbc2dc5: where sin^4 x + cos^4 x is increasing. */
+export const FG_INC_SOLUTION = String.raw`\(f'(x)=-\sin4x\). \(f'(x)>0\) when \(\sin4x<0\), i.e., \(\pi<4x<2\pi\), giving \(\frac{\pi}{4}<x<\frac{\pi}{2}\). Matches option B.`;
+
+export const FG_CROSS_VISUAL = {
+  v: 1,
+  scene: "functionGraph",
+  params: {
+    f: "sin(x)^2",
+    fLabel: "y = sin²x",
+    g: ["3/4", "1/4"],
+    gLabels: ["3/4", "1/4"],
+    window: { x: [0, 2 * Math.PI], y: [-0.1, 1.15] },
+    xTicks: "pi",
+    ask: { kind: "crossings" },
+  },
+  steps: [
+    { from: 0, beats: ["curve", "compare"] },
+    { from: 1, beats: ["mark"] },
+  ],
+  fingerprint: solutionFingerprint(FG_CROSS_SOLUTION),
+  answer: { value: 8, label: "8" },
+};
+
+export const FG_SLOPE_VISUAL = {
+  v: 1,
+  scene: "functionGraph",
+  params: {
+    f: "x*log(x)",
+    fLabel: "y = x log x",
+    window: { x: [0, 1.4], y: [-0.6, 0.6] },
+    ask: { kind: "slopePoint", slope: -1, normal: true, pointLabel: "(e⁻², −2e⁻²)" },
+  },
+  steps: [
+    { from: 0, beats: ["curve"] },
+    { from: 1, beats: ["tangent"] },
+    { from: 2, beats: ["mark"] },
+  ],
+  fingerprint: solutionFingerprint(FG_SLOPE_SOLUTION),
+  answer: { value: Math.exp(-2), label: "x = e⁻²" },
+};
+
+export const FG_INC_VISUAL = {
+  v: 1,
+  scene: "functionGraph",
+  params: {
+    f: "sin(x)^4+cos(x)^4",
+    fLabel: "y = sin⁴x + cos⁴x",
+    window: { x: [0, Math.PI], y: [0.35, 1.1] },
+    xTicks: "pi",
+    ask: { kind: "increasingOn", interval: [Math.PI / 4, Math.PI / 2], intervalLabel: "π/4 < x < π/2" },
+  },
+  steps: [
+    { from: 0, beats: ["curve"] },
+    { from: 1, beats: ["shade"] },
+  ],
+  fingerprint: solutionFingerprint(FG_INC_SOLUTION),
+  answer: { value: 1, label: "rising on π/4 < x < π/2" },
+};
+
 export const FIXTURES = [
   { name: "rotation", visual: ROTATION_VISUAL, solution: ROTATION_SOLUTION },
   { name: "circleArc", visual: ARC_VISUAL, solution: ARC_SOLUTION },
   { name: "quadraticFamily", visual: QUAD_VISUAL, solution: QUAD_SOLUTION },
   { name: "slab", visual: SLAB_VISUAL, solution: SLAB_SOLUTION },
+  { name: "functionGraph", visual: FG_CROSS_VISUAL, solution: FG_CROSS_SOLUTION },
+  { name: "functionGraph", visual: FG_SLOPE_VISUAL, solution: FG_SLOPE_SOLUTION },
+  { name: "functionGraph", visual: FG_INC_VISUAL, solution: FG_INC_SOLUTION },
 ] as const;

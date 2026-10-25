@@ -3,6 +3,7 @@ import { SCENES, getScene } from "@/lib/visuals/registry";
 import type { Shape } from "@/lib/visuals/types";
 import { quadraticIntervals } from "@/lib/visuals/scenes/quadraticFamily";
 import { slabGeometry } from "@/lib/visuals/scenes/slab";
+import { functionGraphFacts } from "@/lib/visuals/scenes/functionGraph";
 import { FIXTURES } from "./fixtures/visuals";
 
 function parsedParams(name: string, raw: unknown) {
@@ -26,11 +27,11 @@ function coords(s: Shape): number[] {
 
 describe("scene registry", () => {
   it("has a fixture for every scene, so no scene ships untested", () => {
-    expect(Object.keys(SCENES).sort()).toEqual(FIXTURES.map((f) => f.name).sort());
+    expect(Object.keys(SCENES).sort()).toEqual([...new Set(FIXTURES.map((f) => f.name))].sort());
   });
 
-  for (const f of FIXTURES) {
-    describe(f.name, () => {
+  for (const [i, f] of FIXTURES.entries()) {
+    describe(`${f.name} (fixture ${i + 1})`, () => {
       const { scene, p } = parsedParams(f.name, f.visual.params);
       const { w, h } = scene.viewBox(p);
       const beats = f.visual.steps.flatMap((s) => s.beats);
@@ -137,5 +138,38 @@ describe("slab", () => {
     expect(s.parse({ ...raw, incidence: 60 })).not.toHaveProperty("error");
     expect(s.parse({ ...raw, mu: 0.9 })).toHaveProperty("error");
     expect(s.parse({ ...raw, incidence: 95 })).toHaveProperty("error");
+  });
+});
+
+describe("functionGraph", () => {
+  const base = { f: "sin(x)^2", window: { x: [0, 2 * Math.PI], y: [-0.1, 1.15] }, ask: { kind: "crossings" } };
+  it("counts where the curve meets each line: sin^2 x = 3/4 or 1/4 has 8 solutions in [0, 2pi]", () => {
+    const { scene, p } = parsedParams("functionGraph", { ...base, g: ["3/4", "1/4"] });
+    expect(scene.check(p)).toBe(8);
+    const one = parsedParams("functionGraph", { ...base, g: ["3/4"] });
+    expect(one.scene.check(one.p)).toBe(4);
+  });
+  it("finds the one point with a given tangent slope: y = x log x has slope -1 at x = e^-2", () => {
+    const { scene, p } = parsedParams("functionGraph", { f: "x*log(x)", window: { x: [0, 1.4], y: [-0.6, 0.6] }, ask: { kind: "slopePoint", slope: -1 } });
+    expect(scene.check(p)).toBeCloseTo(Math.exp(-2), 6);
+    expect(functionGraphFacts(p).point![1]).toBeCloseTo(-2 * Math.exp(-2), 6);
+  });
+  it("refuses to pick a slope point when the window holds two (the check gives NaN)", () => {
+    const { scene, p } = parsedParams("functionGraph", { f: "sin(x)", window: { x: [0, 7], y: [-1.2, 1.2] }, ask: { kind: "slopePoint", slope: 0 } });
+    expect(scene.check(p)).toBeNaN();
+  });
+  it("confirms a rising interval and rejects one that is not", () => {
+    const rising = parsedParams("functionGraph", { f: "sin(x)^4+cos(x)^4", window: { x: [0, Math.PI], y: [0.35, 1.1] }, ask: { kind: "increasingOn", interval: [Math.PI / 4, Math.PI / 2] } });
+    expect(rising.scene.check(rising.p)).toBe(1);
+    const not = parsedParams("functionGraph", { f: "sin(x)^4+cos(x)^4", window: { x: [0, Math.PI], y: [0.35, 1.1] }, ask: { kind: "increasingOn", interval: [0, Math.PI / 8] } });
+    expect(not.scene.check(not.p)).toBe(0);
+  });
+  it("refuses a bad formula, a backwards window, an unknown ask and an interval outside the window", () => {
+    const s = getScene("functionGraph")!;
+    expect(s.parse({ ...base, f: "alert(1)" })).toHaveProperty("error");
+    expect(s.parse({ ...base, window: { x: [5, 1], y: [0, 1] } })).toHaveProperty("error");
+    expect(s.parse({ ...base, ask: { kind: "magic" } })).toHaveProperty("error");
+    expect(s.parse({ ...base, ask: { kind: "increasingOn", interval: [1, 9] } })).toHaveProperty("error");
+    expect(s.parse({ ...base, ask: { kind: "crossings" } })).toHaveProperty("error"); // crossings needs a line or a second curve
   });
 });
