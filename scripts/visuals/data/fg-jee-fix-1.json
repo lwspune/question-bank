@@ -1,0 +1,61 @@
+{
+  "//": "Assembled from agent drafts (functionGraph).",
+  "visuals": [
+    {
+      "id": "a751d0d5-2053-4658-bc26-85674960a9e3",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "(4*x^3-3*x^2)/6 - 2*sin(x) + (2*x-1)*cos(x)",
+          "fLabel": "f(x)",
+          "window": {
+            "x": [
+              -1.5,
+              2.5
+            ],
+            "y": [
+              -2,
+              3.2
+            ]
+          },
+          "ask": {
+            "kind": "increasingOn",
+            "intervals": [
+              [
+                -1.5,
+                0
+              ],
+              [
+                0.5,
+                2.5
+              ]
+            ],
+            "intervalLabel": "x < 0 and x ≥ 1/2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "shade"
+            ]
+          }
+        ],
+        "fingerprint": "1e47868d",
+        "answer": {
+          "value": 1,
+          "label": "rises on [1/2, ∞): A"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

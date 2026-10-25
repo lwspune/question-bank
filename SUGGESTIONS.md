@@ -155,7 +155,7 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ### A JEE Application of Derivatives solution states the wrong sign of f' for x < 0
 
-Found while drafting animated solutions (batch fg-jee-aod-1). Question `a751d0d5-2053-4658-bc26-85674960a9e3`: its stored solution says f'(x) <= 0 on (-inf, 1/2], which is false for x < 0; the keyed option (A) still holds. The drafter tried to hide it by starting the picture at x = 0, so the visual was dropped rather than paired with a wrong claim. Solutions are the owner's to change: re-derive the sign analysis and correct the solution in place (owner OK needed), then the question can get its visual.
+Found while drafting animated solutions (batch fg-jee-aod-1). Question `a751d0d5-2053-4658-bc26-85674960a9e3`: its stored solution says f'(x) <= 0 on (-inf, 1/2], which is false for x < 0; the keyed option (A) still holds. The drafter tried to hide it by starting the picture at x = 0, so the visual was dropped rather than paired with a wrong claim. **DONE 2026-10-25** (owner: fix wrong solutions as found): sign analysis re-derived and the solution corrected in place by `npm run visuals:fix-solutions -- 2026-10-25-a` (key A unchanged, content_hash unmoved, review recorded); the question then got its visual (batch fg-jee-fix-1), which shades both rising stretches, x < 0 and x >= 1/2.
 
 ## 2026-10-23
 
