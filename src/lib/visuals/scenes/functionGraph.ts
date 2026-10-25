@@ -304,17 +304,34 @@ export const functionGraph: Scene<FunctionGraphParams> = {
         if (seg.length > 1) curves.push({ kind: "polyline", points: seg, stroke: tone, width });
         seg = [];
       };
+      // Off-frame stretches are not drawn: the line runs to the edge and stops,
+      // and picks up again at the edge when the curve comes back (an asymptote
+      // used to leave a flat stub running along the edge).
+      let wasOut = false;
+      let prev: [number, number] | null = null;
       for (let i = 0; i <= 240; i++) {
         const x = xa + ((xb - xa) * i) / 240;
         if (x > upto + 1e-12) break;
         const v = fn(x);
         if (!Number.isFinite(v)) {
           flush();
+          wasOut = false;
+          prev = null;
           continue;
         }
-        const py = clampY(Y(v));
-        if (seg.length && Math.abs(py - seg[seg.length - 1][1]) > P.b - P.t) flush();
-        seg.push([X(x), py]);
+        const raw = Y(v);
+        const point: [number, number] = [X(x), clampY(raw)];
+        const out = raw < P.t - 30 || raw > P.b + 30;
+        if (out) {
+          if (!wasOut && seg.length) seg.push(point);
+          flush();
+        } else {
+          if (seg.length && Math.abs(point[1] - seg[seg.length - 1][1]) > P.b - P.t) flush();
+          if (wasOut && prev) seg.push(prev);
+          seg.push(point);
+        }
+        wasOut = out;
+        prev = point;
       }
       flush();
     };
@@ -488,6 +505,16 @@ export const functionGraph: Scene<FunctionGraphParams> = {
         });
         const head = ask.kind === "slopePoints" ? `${marked.length} points with tangent slope ${num(ask.slope)}` : `tangent slope ${num(ask.slope)}`;
         over.push(text(P.r - 2, P.t + 2, ask.normal ? `${head}, normal dashed` : head, { tone: "amber", size: 11, weight: 600, anchor: "end" }));
+      }
+    }
+
+    // The header (top right) drops to a second row when it would run into the
+    // curve's name (top left). Widths are estimated from the font sizes used.
+    const nameEnd = P.l + 6 + p.fLabel.length * 6.4;
+    for (const s of over) {
+      if (s.kind === "text" && s.anchor === "end" && s.y === P.t + 2) {
+        const start = s.x - s.text.length * (s.size ?? 13) * 0.52;
+        if (start < nameEnd + 8) s.y = P.t + 17;
       }
     }
 

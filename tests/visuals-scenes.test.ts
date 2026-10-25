@@ -217,3 +217,24 @@ describe("functionGraph unions and several points", () => {
     expect(one.scene.check(one.p)).toBeCloseTo(2, 6);
   });
 });
+
+describe("functionGraph edges and headers", () => {
+  it("stops a curve where it leaves the frame instead of running along the edge (y = x - 4/x near x = 0)", () => {
+    const { scene, p } = parsedParams("functionGraph", { f: "x-4/x", window: { x: [-4, 4], y: [-8, 8] }, ask: { kind: "slopePoints", slope: 2, report: "count" } });
+    const lines = scene.frame(p, { played: ["curve"], t: 1, slider: undefined }).filter((s) => s.kind === "polyline") as { points: [number, number][] }[];
+    const ys = lines.flatMap((l) => l.points.map(([, y]) => y));
+    const edge = Math.max(...ys);
+    for (const l of lines) {
+      for (let i = 1; i < l.points.length; i++) {
+        expect(l.points[i][1] === edge && l.points[i - 1][1] === edge, "two neighbouring points on the clipping edge").toBe(false);
+      }
+    }
+  });
+  it("moves the header to a second row when it would run into the curve's name", () => {
+    const { scene, p } = parsedParams("functionGraph", { f: "x^3-6*x^2+x+3", fLabel: "y = x³ − 6x² + x + 3", window: { x: [-1, 5], y: [-30, 6] }, ask: { kind: "slopePoints", slope: 1, normal: true, report: "sumX" } });
+    const texts = scene.frame(p, { played: ["curve", "tangent", "mark"], t: 1, slider: undefined }).filter((s) => s.kind === "text") as { text: string; y: number }[];
+    const name = texts.find((t) => t.text.startsWith("y = x³"))!;
+    const head = texts.find((t) => t.text.includes("points with tangent slope"))!;
+    expect(head.y).toBeGreaterThan(name.y);
+  });
+});
