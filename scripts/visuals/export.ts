@@ -36,13 +36,14 @@ async function main() {
     numeric_answer: number | string | null;
     solution_visual: unknown;
     question_number: string | null;
-    options: { label: string; text: string; is_correct: boolean }[] | null;
+    image_url: string | null;
+    options: { label: string; text: string; is_correct: boolean; image_url: string | null }[] | null;
   };
   const rows: Row[] = [];
   for (let from = 0; ; from += 1000) {
     const { data, error } = await db
       .from("questions")
-      .select("id, text, context, solution, question_format, numeric_answer, solution_visual, question_number, options(label, text, is_correct), exams!inner(name), chapters!inner(name)")
+      .select("id, text, context, solution, question_format, numeric_answer, solution_visual, question_number, image_url, options(label, text, is_correct, image_url), exams!inner(name), chapters!inner(name)")
       .eq("visibility", "PUBLIC")
       .eq("exams.name", exam)
       .eq("chapters.name", chapter)
@@ -65,7 +66,9 @@ async function main() {
       format: r.question_format,
       text: r.text,
       context: r.context,
-      options: (r.options ?? []).sort((a, b) => a.label.localeCompare(b.label)).map((o) => `${o.label}) ${o.text}${o.is_correct ? "  [KEY]" : ""}`),
+      // Whether a picture is attached, so agents can flag a question that needs one it lacks.
+      stemImage: !!r.image_url,
+      options: (r.options ?? []).sort((a, b) => a.label.localeCompare(b.label)).map((o) => `${o.label}) ${o.text}${o.image_url ? "  [IMAGE]" : ""}${o.is_correct ? "  [KEY]" : ""}`),
       numericAnswer: r.numeric_answer === null ? null : Number(r.numeric_answer),
       sentences: starts.map((s, k) => `[${k}] ${sol.slice(s, starts[k + 1] ?? sol.length).trim()}`),
     };

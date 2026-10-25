@@ -118,3 +118,14 @@ slope 1, [2] so x = e⁻², [3] matches D:
 
 increasingOn: the example at the top of this brief (sin⁴x + cos⁴x, keyed
 option π/4 < x < π/2).
+
+## Also: does the question need a picture it does not have?
+
+Each question shows `stemImage` (true when a picture is attached to the
+question) and marks options that carry a picture with `[IMAGE]`. Add
+`"figureNeeded"` to every object: `"none"`, or `"stem"` / `"options"` when the
+question cannot be FULLY answered without a picture it does not have (it says
+"as shown in the figure" and there is no picture; the options are diagrams
+with no image; a needed graph or circuit is missing). Add `"figureNote"` (at
+most 12 words) saying what is missing. A question that merely could use a
+picture, but is complete as written, is `"none"`.

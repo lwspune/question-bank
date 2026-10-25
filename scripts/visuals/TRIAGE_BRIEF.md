@@ -75,3 +75,14 @@ in the input order:
 - Do not run commands, open other files, or search the web.
 - Keep your own messages short: when done, reply with one line saying how
   many questions you triaged and how many of each verdict.
+
+## Also: does the question need a picture it does not have?
+
+Each question shows `stemImage` (true when a picture is attached to the
+question) and marks options that carry a picture with `[IMAGE]`. Add
+`"figureNeeded"` to every object: `"none"`, or `"stem"` / `"options"` when the
+question cannot be FULLY answered without a picture it does not have (it says
+"as shown in the figure" and there is no picture; the options are diagrams
+with no image; a needed graph or circuit is missing). Add `"figureNote"` (at
+most 12 words) saying what is missing. A question that merely could use a
+picture, but is complete as written, is `"none"`.
