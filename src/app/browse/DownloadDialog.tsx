@@ -35,7 +35,8 @@ import { useMobilePrompt } from "@/lib/profile/MobilePromptProvider";
 import { trackFunnel, trackFunnelOnce } from "@/lib/analytics/trackFunnel";
 import { sendActivityOnce } from "@/lib/activity/clientBeacon";
 import { pricingHref } from "@/lib/billing/checkoutReturn";
-import { gatePriceLine, gateTitle, selectionTitle } from "@/lib/billing/gateCopy";
+import { gatePriceLine, selectionTitle } from "@/lib/billing/gateCopy";
+import { offerLine, offerTitle } from "@/lib/billing/offerCopy";
 import { downloadBoxStep, overCapCopy } from "@/lib/export/downloadBoxStep";
 import PassOffer from "./PassOffer";
 
@@ -263,7 +264,7 @@ export default function DownloadDialog({
               ? `Download ${activeCount} question${activeCount === 1 ? "" : "s"}`
               : downloadPass
               ? isSignedIn
-                ? gateTitle(activeCount, downloadPass.label)
+                ? offerTitle("browse", activeCount)
                 : selectionTitle(activeCount)
               : "Download papers with the pass"}
           </DialogTitle>
@@ -286,9 +287,7 @@ export default function DownloadDialog({
             ) : downloadPass ? (
               !isSignedIn
                 ? "The Question Paper and its Answer Key."
-                : wantPass
-                ? `${downloadPass.label} includes:`
-                : `You've had your free paper. ${downloadPass.label} includes:`
+                : offerLine("browse")
             ) : (
               "Downloading question papers needs a pass."
             )}

@@ -11,7 +11,7 @@ import GoogleSignInButton from "@/components/GoogleSignInButton";
 import { googleButtonAvailable, renderGoogleButton } from "@/components/auth/useGoogleOneTap";
 import { useCheckout, type CheckoutOutcome, type CheckoutSurface } from "@/components/billing/useCheckout";
 import { trackFunnel, trackFunnelOnce } from "@/lib/analytics/trackFunnel";
-import { downloadPerksFirst, gatePriceLine } from "@/lib/billing/gateCopy";
+import { offerPriceLine, perMonthLine, splitOfferPerks } from "@/lib/billing/offerCopy";
 import { alsoIncludedPerks, type PassOfferLead } from "@/lib/billing/passOfferLead";
 import type { PassCta } from "@/lib/billing/plans";
 import type { DownloadBox } from "@/lib/activity/clientEvents";
@@ -69,7 +69,11 @@ export default function PassOffer({
 }) {
   // Every box that renders this is a download gate: lead with downloads. With
   // a lead, the lead says what downloading gets you and the rest follow it.
-  const perks = lead ? alsoIncludedPerks(pass.perks) : downloadPerksFirst(pass.perks);
+  // Without one (2026-10-25), three perks and the rest on one line, without
+  // the free plan's limits, which read as what the student is losing.
+  const split = splitOfferPerks(pass.perks);
+  const perks = lead ? alsoIncludedPerks(pass.perks) : split.main;
+  const perMonth = perMonthLine(pass);
   const router = useRouter();
 
   const onDone = useCallback(
@@ -121,8 +125,10 @@ export default function PassOffer({
                 ))}
               </ul>
             )}
+            {!lead && split.also && <p className="text-muted-foreground">{split.also}</p>}
             <p>
-              <span className="text-lg font-semibold tracking-tight">{gatePriceLine(pass)}</span>
+              <span className="text-lg font-semibold tracking-tight">{offerPriceLine(pass)}</span>
+              {perMonth && <span className="text-muted-foreground"> ({perMonth})</span>}
               <span className="block text-xs text-muted-foreground">
                 One-time payment, no auto-renewal. Pay by UPI, card or netbanking.
               </span>

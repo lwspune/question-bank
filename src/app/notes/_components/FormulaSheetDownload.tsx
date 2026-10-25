@@ -21,6 +21,7 @@ import { trackFunnel, trackFunnelOnce } from "@/lib/analytics/trackFunnel";
 import { sendActivityOnce } from "@/lib/activity/clientBeacon";
 import { pricingHref } from "@/lib/billing/checkoutReturn";
 import { gatePriceLine } from "@/lib/billing/gateCopy";
+import { offerLine, offerTitle } from "@/lib/billing/offerCopy";
 import type { ExportViewerAccess } from "@/lib/export/viewerAccess";
 import PassOffer from "@/app/browse/PassOffer";
 
@@ -159,7 +160,11 @@ export default function FormulaSheetDownload({
       <DialogContent className="flex max-h-[90dvh] flex-col gap-0 p-0 sm:max-w-lg">
         <DialogHeader className="px-6 pt-6">
           <DialogTitle>
-            {showDownloadView || !access ? `${chapterName} formula sheet` : "Download formula sheets"}
+            {showDownloadView || !access
+              ? `${chapterName} formula sheet`
+              : signedIn && pass
+                ? offerTitle("formula")
+                : "Download formula sheets"}
           </DialogTitle>
           <DialogDescription>
             {!access
@@ -169,9 +174,7 @@ export default function FormulaSheetDownload({
                 : pass
                   ? !signedIn
                     ? summary
-                    : wantPass
-                      ? `${pass.label} includes:`
-                      : `You've had your free formula sheet. ${pass.label} includes:`
+                    : offerLine("formula")
                   : "Downloading formula sheets needs a pass."}
           </DialogDescription>
         </DialogHeader>
