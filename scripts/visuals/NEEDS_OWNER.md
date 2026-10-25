@@ -56,6 +56,10 @@ settled; settled rows move to the bottom with the date and what was done.
 | `f579f935` | MHT-CET · Vectors | **Answer not offered.** r = (5, 7, 9), |r| = √155; the key 1/√55 is wrong and no option matches. | Recover the original numbers, or mark flawed. |
 | `fc2969a9` | MHT-CET · Vectors | **Question underdetermined.** b × c = a fixes b only up to adding a multiple of c, so |b| is not determined (the least value is √3/√38); the key √114 is unsupported. | Recover the original wording (likely fixes b · c), or mark flawed. |
 | `652b7194` | MHT-CET · Vectors | **Two options true.** m = 0 also makes p · q = −12 < 0 for every y, so option B is true as well as the key D. | Accept both or reword. |
+| `4b6772a7` | JEE Mains · Vector Algebra | **Key wrong.** The sum is 2(b + d) − 2(a + c) = 4(f − e) = −4·FE, so k = −4 (option C); the stored solution itself reaches −4 but the key is D (4). | Change the key to C (check the paper). |
+| `6dcba703` | JEE Mains · Vector Algebra | **Question underdetermined.** (b − 1)(1 − a) = 0 and 4abc = 0 allow a family (e.g. a = 1, b = 0, any c), so 6(a + b + c) is not fixed; the solution picks a = b = 1, c = 0. | Recover the original wording, or mark flawed. |
+| `7a3ce012` | JEE Mains · Vector Algebra | **Question underdetermined.** A vector in the plane of a and b is λa + μb; the solution assumes λ = 1, which the stem never states, so |v| is not fixed. | Recover the original wording, or mark flawed. |
+| `aa590022` | JEE Mains · Vector Algebra | **Options B and C identical** (both 25); the key C is right but ambiguous. The solution notes it. | Correct one option. |
 
 ## Settled
 

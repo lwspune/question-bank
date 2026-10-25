@@ -1,0 +1,50 @@
+[
+  {
+    "id": "1c8027de-a2b6-4477-80bc-6cb01faec110",
+    "before": "a27f5f7a",
+    "solution": "\\(\\ \\overrightarrow{a} = \\widehat{i} + 2\\widehat{j} + \\widehat{k}\\) \\[\\overrightarrow{b} = (2 - \\lambda)\\widehat{i} + 6\\widehat{j} - 2\\widehat{k}\\] \\[\\frac{\\overrightarrow{a} \\cdot \\overrightarrow{b}}{|\\overrightarrow{b}|} = 1,\\overrightarrow{a} \\cdot \\overrightarrow{b} = 12 - \\lambda\\] \\[(\\overrightarrow{a} \\cdot \\overrightarrow{b})^{2} = |\\overrightarrow{b}|^{2}\\] \\[\\lambda^{2} - 24\\lambda + 144 = \\lambda^{2} - 4\\lambda + 4 + 40\\] \\(20\\lambda = 100 \\Rightarrow \\lambda = 5\\).",
+    "note": "wrote (a.b) = |b|^2; squaring a.b = |b| gives (a.b)^2 = |b|^2. Answer 5 unchanged."
+  },
+  {
+    "id": "1d28ac7e-9219-48be-8a0e-204a15b17eda",
+    "before": "c22858f7",
+    "solution": "Here \\(|\\vec a_k|^2=\\tan^2\\theta_k+1=\\sec^2\\theta_k\\) and \\(|\\vec b_k|^2=1+\\cot^2\\theta_k=\\csc^2\\theta_k\\). With \\(\\theta_k=\\dfrac{2^{k-1}\\pi}{2^n+1}\\), the doubling of angles satisfies \\(2^n\\theta=\\pi-\\theta\\), and telescoping the two sums under this symmetry gives \\(\\dfrac{\\sum_{k=1}^{n}|\\vec a_k|^2}{\\sum_{k=1}^{n}|\\vec b_k|^2}=3\\).",
+    "note": "|b_k|^2 written 1 + cos^2; it is 1 + cot^2 = cosec^2. Answer 3 unchanged."
+  },
+  {
+    "id": "276030b7-f463-4e5a-924b-e3781b47eb70",
+    "before": "54e5cb82",
+    "solution": "\\[\\left| \\begin{matrix} \\lambda & - 1 & 1 \\\\ 1 & 2 & \\mu \\\\ 3 & - 4 & 5 \\end{matrix} \\right| = 0\\ \\&\\lambda - \\mu = 5\\] \\[\\lambda(10 + 4\\mu) + (5 - 3\\mu) + ( - 10) = 0\\] \\[(\\mu + 5)(4\\mu + 10) + 5 - 3\\mu - 10 = 0\\] \\[\\mu = - 15/4;\\lambda = 5/4\\] \\[\\mu = - 3;\\lambda = 2\\] Hence \\(\\sum_{(\\lambda,\\mu) \\in S} 80\\left( \\lambda^{2} + \\mu^{2} \\right)\\) \\[= 80\\left( \\frac{250}{16} + 13 \\right)\\] \\[= 1250 + 1040\\] \\[= 2290\\]",
+    "note": "mu written -15; it is -15/4 (the sum uses 225/16). Key C unchanged."
+  },
+  {
+    "id": "5224c96e-07f8-4ab7-805a-eb37693f08fb",
+    "before": "bd3017cf",
+    "solution": "\\[\\begin{matrix} & \\text{~}\\ \\overrightarrow{a} = 2\\widehat{i} - \\widehat{j} + 2\\widehat{k} \\\\ & \\overrightarrow{b} = \\widehat{i} + 2\\widehat{j} - \\widehat{k} \\\\ & \\overrightarrow{c} = 3\\widehat{i} + 2\\widehat{j} - \\widehat{k} \\\\ & \\overrightarrow{v} = x\\overrightarrow{a} + y\\overrightarrow{b}\\ \\overrightarrow{v}(3\\widehat{i} + 2\\widehat{j} - k) = 0 \\\\ & \\overrightarrow{v} \\cdot \\widehat{a} = 19 \\\\ & \\overrightarrow{v} = \\lambda\\overrightarrow{c} \\times (\\overrightarrow{a} \\times \\overrightarrow{b}) \\\\ & \\overrightarrow{v} = \\lambda\\lbrack(\\overrightarrow{c} \\cdot \\overrightarrow{b})\\overrightarrow{a} - (\\overrightarrow{c} \\cdot \\overrightarrow{a})\\overrightarrow{b}\\rbrack \\\\ & \\ = \\lambda\\left\\lbrack (3 + 4 + 1)(2\\widehat{i} - \\widehat{j} + 2\\widehat{k}) - (6 - 2 - 2)(\\widehat{i} + 2\\widehat{j} - \\widehat{k}) \\right.\\ \\\\ & \\ = \\lambda\\lbrack 16\\widehat{i} - 8\\widehat{j} + 16\\widehat{k} - 2\\widehat{i} - 4\\widehat{j} + 2\\widehat{k}\\rbrack \\\\ & \\overrightarrow{v} = \\lambda\\lbrack 14\\widehat{i} - 12\\widehat{j} + 18\\widehat{k}\\rbrack \\\\ & \\lambda\\lbrack 14\\widehat{i} - 12\\widehat{j} + 18\\widehat{k}\\rbrack \\cdot \\frac{(2\\widehat{i} - \\widehat{j} + 2\\widehat{k})}{\\sqrt{4 + 1 + 4}} = 19 \\\\ & \\lambda\\frac{\\lbrack 28 + 12 + 36\\rbrack}{3} = 19 \\\\ & \\lambda\\left( \\frac{76}{3} \\right) = 19 \\\\ & 4\\lambda = 3 \\Rightarrow \\lambda = \\frac{3}{4} \\\\ & \\left| 2v^{2} \\right| = \\left| 2 \\times \\frac{3}{4}(14\\widehat{i} - 12\\widehat{j} + 18\\widehat{k}) \\right|^{2} \\\\ & \\frac{9}{4} \\times 4(7\\widehat{i} - 6\\widehat{j} + 9\\widehat{k})^{2} \\\\ & \\ = 9(49 + 36 + 81) \\\\ & \\ = 9(166) \\\\ & \\ = 1494 \\end{matrix}\\]",
+    "note": "c.a written (6 - 2 - 2)/2 and b written i + 2j + k; c.a = 2 and b = i + 2j - k (as the next line uses). Answer 1494 unchanged."
+  },
+  {
+    "id": "5a3f87f5-e740-477d-97b1-3ff9d68c560f",
+    "before": "feae171b",
+    "solution": "\\(P(3, - 1,2)\\) \\[Q(1,2, - 4)\\] \\[\\overrightarrow{PR} \\parallel 4\\widehat{i} - \\widehat{j} + 2\\widehat{k}\\] \\[\\overrightarrow{QS} \\parallel - 2\\widehat{i} + \\widehat{j} - 2\\widehat{k}\\] \\(dr\\) 's of normal to the plane containing \\(P,T\\& Q\\) will be proportional to : \\[\\left| \\begin{matrix} \\widehat{i} & \\widehat{j} & \\widehat{k} \\\\ 4 & - 1 & 2 \\\\ - 2 & 1 & - 2 \\end{matrix} \\right|\\] \\[\\therefore\\ \\frac{\\mathcal{l}}{0} = \\frac{m}{4} = \\frac{n}{2}\\] For point, \\(T:\\overrightarrow{PT} = \\frac{x - 3}{4} = \\frac{y + 1}{- 1} = \\frac{z - 2}{2} = \\lambda\\) \\[\\overrightarrow{QT} = \\frac{x - 1}{- 2} = \\frac{y - 1}{1} = \\frac{z + 4}{- 2} = \\mu\\] \\[T:(4\\lambda + 3, - \\lambda - 1,2\\lambda + 2)\\] \\[\\cong (2\\mu + 1,\\mu + 2, - 2\\mu - 4)\\] \\[4\\lambda + 3 = - 2\\mu + 1 \\Rightarrow 2\\lambda + \\mu = - 1\\] \\[\\lambda + \\mu = - 3 \\Rightarrow \\lambda = 2\\] & \\(\\mu = - 5\\ \\lambda + \\mu = - 3 \\Rightarrow \\lambda = 2\\) So point \\(T:(11, - 3,6)\\) \\[\\overrightarrow{OA} = (11\\widehat{i} - 3\\widehat{j} + 6\\widehat{k}) \\pm \\left( \\frac{2\\widehat{j} + \\widehat{k}}{\\sqrt{5}} \\right)\\sqrt{5}\\] \\[\\overrightarrow{OA} = (11\\widehat{i} - 3\\widehat{j} + 6\\widehat{k}) \\pm (2\\widehat{j} + \\widehat{k})\\] \\[\\overrightarrow{OA} = 11\\widehat{i} - \\widehat{j} + 7\\widehat{k}\\] or \\[11\\widehat{i} - 5\\widehat{j} + 5\\widehat{k}\\] \\[|\\overrightarrow{OA}| = \\sqrt{121 + 1 + 49} = \\sqrt{171}\\] or \\[\\sqrt{121 + 25 + 25} = \\sqrt{171}\\]",
+    "note": "the second A was written 9i - 5j + 5k (|OA| = sqrt131); T - (2j + k) = 11i - 5j + 5k, also sqrt171. Key B unchanged."
+  },
+  {
+    "id": "6e19a50c-c8b5-485c-8294-aabac9043ddf",
+    "before": "a0aa240b",
+    "solution": "\\[\\begin{matrix} & \\overrightarrow{b} = \\overrightarrow{a} \\times (\\widehat{i} - 2\\widehat{k}) \\\\ & \\ = \\left| \\begin{matrix} \\widehat{i} & \\widehat{j} & \\widehat{k} \\\\ 3 & - 1 & 2 \\\\ 1 & 0 & - 2 \\end{matrix} \\right| = 2\\widehat{i} + 8\\widehat{j} + \\widehat{k} \\\\ & \\overrightarrow{c} = \\overrightarrow{b} \\times \\widehat{k} = 8\\widehat{i} - 2\\widehat{j} \\\\ & \\overrightarrow{c} - 2\\widehat{j} = 8\\widehat{i} - 4\\widehat{j} \\end{matrix}\\] Projection of \\((\\overrightarrow{c} - 2\\widehat{j})\\) on \\(\\overrightarrow{a}\\) \\[\\begin{matrix} & (\\overrightarrow{c} - 2\\widehat{j}) \\cdot \\widehat{a} = \\frac{\\langle 8, - 4,0\\rangle \\cdot \\langle 3, - 1,2\\rangle}{\\sqrt{14}} \\\\ & \\ = \\frac{28}{\\sqrt{14}} = 2\\sqrt{14} \\end{matrix}\\]",
+    "note": "wrote i - 3k (stem: i - 2k, which the determinant uses) and 'projection of (i - 2j)'. Key C unchanged."
+  },
+  {
+    "id": "afcba5e7-14f3-49f3-859f-d3a4cdb7b492",
+    "before": "172fc7af",
+    "solution": "We know that \\[\\begin{matrix} & O\\text{~(orthocentre)~}\\frac{\\overrightarrow{p} + \\overrightarrow{q} + \\overrightarrow{r}}{4} \\\\ & C\\text{~(circum centre)~}\\alpha\\overrightarrow{p} + \\beta\\overrightarrow{q} + \\gamma\\overrightarrow{r} \\end{matrix}\\] \\[C(\\text{~centroid~}) = \\frac{\\overrightarrow{p} + \\overrightarrow{q} + \\overrightarrow{r}}{3}\\] by relation \\[\\begin{matrix} & \\Rightarrow 2(\\alpha\\overrightarrow{p} + \\beta\\overrightarrow{q} + \\gamma\\overrightarrow{r}) + \\frac{\\overrightarrow{p} + \\overrightarrow{q} + \\overrightarrow{r}}{4} = 3\\left( \\frac{\\overrightarrow{p} + \\overrightarrow{q} + \\overrightarrow{r}}{3} \\right) \\\\ & \\ \\Rightarrow 8(\\alpha\\overrightarrow{p} + \\beta\\overrightarrow{q} + \\gamma\\overrightarrow{r}) = 3(\\overrightarrow{p} + \\overrightarrow{q} + \\overrightarrow{r}) \\\\ & \\ \\Rightarrow 8\\alpha = 3,8\\beta = 3,8\\gamma = 3 \\\\ & \\alpha = \\frac{3}{8},\\beta = \\frac{3}{8},\\gamma = \\frac{3}{8} \\\\ & \\ \\therefore\\alpha + 2\\beta + 5\\gamma \\\\ & \\frac{3}{8} + \\frac{6}{8} + \\frac{15}{8} = \\frac{24}{8} = 3 \\end{matrix}\\]",
+    "note": "wrote alpha + 2 beta + 3 gamma; the question asks alpha + 2 beta + 5 gamma (the sum shown, 3/8 + 6/8 + 15/8, is the 5 gamma one). Key A unchanged."
+  },
+  {
+    "id": "e5af0af6-bee8-4c6e-b891-c4fdfb59d496",
+    "before": "861bdb33",
+    "solution": "\\({\\overrightarrow{a}}_{\\text{Old~}} = 3p\\widehat{i} + \\widehat{j}\\) \\[{\\overrightarrow{a}}_{\\text{New~}} = (p + 1)\\widehat{i} + \\sqrt{10}\\widehat{j}\\] \\[\\Rightarrow \\left| {\\overrightarrow{a}}_{\\text{Old~}} \\right| = \\left| {\\overrightarrow{a}}_{\\text{New~}} \\right|\\] \\[\\Rightarrow 9p^{2} + 1 = p^{2} + 2p + 1 + 10\\] \\[8p^{2} - 2p - 10 = 0\\] \\[4p^{2} - p - 5 = 0\\] \\[(4p - 5)(p + 1) = 0 \\rightarrow p = \\frac{5}{4}, - 1\\]",
+    "note": "wrote ap^2 for (3p)^2 = 9p^2. Key D unchanged."
+  }
+]
