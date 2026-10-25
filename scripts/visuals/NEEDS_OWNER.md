@@ -16,6 +16,20 @@ settled; settled rows move to the bottom with the date and what was done.
 | `009b24ef` | MHT-CET · Circle | **Key choice.** The official key 16 counts k with radius² ≤ 0; requiring a real circle gives 10, not offered. The solution already says so openly. | Decide: keep the official key (current) or mark the question flawed. |
 | `e6b79ce5` | JEE Mains · Conic Sections | **Stem typo.** A stray "+ x" in the stem; the solution reads the intended equation. | Remove the stray term (hash-safe repair). |
 | `fb0d6184` | JEE Mains · Conic Sections | **Stem typo.** "b²" printed where y² is meant; the solution reads it as y². | Correct the stem (hash-safe repair). |
+| `05d80da8` | MHT-CET · Line and Plane | **Key wrong, answer not offered.** The distance between the parallel lines is √(12/14) = √(6/7); the key is √6 and the stored solution says "Key answer √6" after deriving √(6/7). | Recover the original numbers (likely a misprint), or mark flawed. |
+| `37da8102` | MHT-CET · Line and Plane | **Key wrong, answer not offered.** (3, 2, 1) × (2, −3, 2) = (7, −4, −13), so the plane is 7x − 4y − 13z = 24; the keyed plane 8x + 14y + 13z + 19 = 0 is not parallel to either line, and no option is. | Recover the original lines/options, or mark flawed. |
+| `63b0923e` | MHT-CET · Line and Plane | **Key wrong.** The normal is ∝ (√2, 1, 1), not (2, 1, 1); the keyed plane 2x + y + z = 0 does not pass through (−2, 1, 1). The correct plane √2x + y + z + 2√2 − 2 = 0 is not offered. | Recover the original wording, or mark flawed. |
+| `6fb70707` | MHT-CET · Line and Plane | **Question flawed.** The line's direction (1, 1, 1) is not perpendicular to the normal (2, 1, 1), so the line meets the plane (distance 0); the key 1/√6 is the distance of the point (3, −2, 1) only. | Likely a sign misprint in the line or plane; recover the original. |
+| `42c20362` | MHT-CET · Line and Plane | **Question degenerate.** Both conditions give one direction (1, 1, −2), so the "angle between the lines" is 0° or 180°; the key 180° follows the official answer, which the solution cites. | Decide: keep the official key or mark flawed. |
+| `bb8bab42` | MHT-CET · Line and Plane | **Key wrong, answer not offered.** The plane is 2x + 2y + z = 2, so sin θ = 2/3; the keyed option is sin⁻¹√(2/3), and the stored solution calls sin⁻¹(2/3) a match for it. | Recover the original numbers/options, or mark flawed. |
+| `ca0e1fcb` | MHT-CET · Line and Plane | **Key is the obtuse angle.** Direction cosines (2, −1, −2) and (−1, −2, 2) give cos = −4/9; the angle between lines is cos⁻¹(4/9) (not offered); the key is cos⁻¹(−4/9). | Decide: keep the official key or mark flawed. |
+| `d11ba704` | MHT-CET · Line and Plane | **Options A and B identical** (both 11/√6); the key A is right but ambiguous. | Correct one option. |
+| `dbf13078` | MHT-CET · Line and Plane | **Options A and B identical** (both 2x − y + 3z + 8 = 0); the key A is right but ambiguous. | Correct one option. |
+| `ecc3cd53` | MHT-CET · Line and Plane | **Options B, C, D identical** (all √(341/61)); the key D is right but ambiguous. | Correct the options. |
+| `fc5bb329` | MHT-CET · Line and Plane | **Option D's signs are independent** (±, ±, ±), so it also admits directions not perpendicular to both lines; the intended answer is ±(4, 5, 7)/(3√10) with one sign. | Reword option D. |
+| `0521f658` | JEE Mains · Three Dimensional Geometry | **Stem incomplete.** The solution uses the plane passing through (1, 4, −3), which the question never states; without it α + β + γ is not determined. | Restore the missing point to the stem (hash-safe repair). |
+| `2007f0ed` | JEE Mains · Three Dimensional Geometry | **Two options correct.** b = ±a gives directions (1, −1, 0) and (1, 1, 0), both at 30° to the plane; options A and B both fit, the key is B. | Decide: accept both or mark flawed. |
+| `81a2c870` | JEE Mains · Three Dimensional Geometry | **Stem incomplete.** The foot on P₂ is (20/3, 13/3, −2/3), sum 31/3; the key 11 is the foot on the line of intersection of P₁ and P₂, which the stem has lost. | Restore "on the line of intersection of P₁ and P₂" (hash-safe repair). |
 
 ## Settled
 
