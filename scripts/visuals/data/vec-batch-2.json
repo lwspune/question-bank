@@ -1,0 +1,2116 @@
+{
+  "//": "Assembled from agent drafts (space3d).",
+  "visuals": [
+    {
+      "id": "e71a12a0-f00a-44ae-80ce-500a1f2a1102",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "points": [
+            {
+              "id": "O",
+              "at": [
+                0,
+                0,
+                0
+              ],
+              "label": "O"
+            },
+            {
+              "id": "A",
+              "at": [
+                1,
+                1,
+                1
+              ],
+              "label": "a tip"
+            },
+            {
+              "id": "B",
+              "at": [
+                2,
+                4,
+                -1
+              ],
+              "label": "b tip"
+            },
+            {
+              "id": "C",
+              "at": [
+                1,
+                1,
+                3
+              ],
+              "label": "c tip"
+            }
+          ],
+          "planes": [
+            {
+              "id": "P",
+              "eq": [
+                -5,
+                3,
+                2,
+                0
+              ],
+              "label": "base plane of a, b",
+              "beat": "derived"
+            }
+          ],
+          "ask": {
+            "kind": "distance",
+            "from": "C",
+            "to": "P",
+            "label": "altitude = 2√2/√19"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "derived"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "25d72b3c",
+        "answer": {
+          "value": 0.6488856845230503,
+          "label": "2√2/√19"
+        }
+      }
+    },
+    {
+      "id": "e928e4aa-a3af-4098-8f0a-4b2b54065395",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "vectors": [
+            {
+              "id": "a",
+              "v": [
+                1,
+                1,
+                1
+              ],
+              "label": "a",
+              "beat": "given"
+            },
+            {
+              "id": "b",
+              "v": [
+                1,
+                1,
+                2
+              ],
+              "label": "b",
+              "beat": "given"
+            },
+            {
+              "id": "c",
+              "v": [
+                1,
+                2,
+                1
+              ],
+              "label": "c",
+              "beat": "given"
+            },
+            {
+              "id": "r",
+              "v": [
+                0,
+                -4,
+                4
+              ],
+              "label": "4(b − c)",
+              "beat": "derived"
+            }
+          ],
+          "ask": {
+            "kind": "length",
+            "vector": "r",
+            "label": "magnitude = 4√2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "derived"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "fe3372b5",
+        "answer": {
+          "value": 5.656854249492381,
+          "label": "4√2"
+        }
+      }
+    },
+    {
+      "id": "e9d96a03-854c-4f28-95c7-2378e1eecf68",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "vectors": [
+            {
+              "id": "a",
+              "v": [
+                1,
+                -2,
+                3
+              ],
+              "label": "a",
+              "beat": "given"
+            },
+            {
+              "id": "b",
+              "v": [
+                2,
+                3,
+                -1
+              ],
+              "label": "b",
+              "beat": "given"
+            },
+            {
+              "id": "p",
+              "v": [
+                13,
+                9,
+                4
+              ],
+              "label": "3a + 5b",
+              "beat": "derived"
+            },
+            {
+              "id": "q",
+              "v": [
+                11,
+                -1,
+                12
+              ],
+              "label": "5a + 3b",
+              "beat": "derived"
+            }
+          ],
+          "ask": {
+            "kind": "angle",
+            "between": [
+              "p",
+              "q"
+            ],
+            "label": "cos θ = 13/19"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "derived"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "7e015aa4",
+        "answer": {
+          "value": 0.8172757101951849,
+          "label": "cos⁻¹(13/19)"
+        }
+      }
+    },
+    {
+      "id": "ed55b9a5-e1d1-4d45-8e93-dca85f8e854d",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "vectors": [
+            {
+              "id": "OD",
+              "v": [
+                1,
+                2,
+                6
+              ],
+              "label": "OD",
+              "beat": "given"
+            },
+            {
+              "id": "OA",
+              "v": [
+                1,
+                2,
+                3
+              ],
+              "label": "OA",
+              "beat": "given"
+            },
+            {
+              "id": "OB",
+              "v": [
+                -1,
+                1,
+                2
+              ],
+              "label": "OB",
+              "beat": "derived"
+            },
+            {
+              "id": "OC",
+              "v": [
+                2,
+                1,
+                4
+              ],
+              "label": "OC",
+              "beat": "derived"
+            }
+          ],
+          "ask": {
+            "kind": "volume",
+            "vectors": [
+              "OA",
+              "OB",
+              "OC"
+            ],
+            "label": "volume = 9"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given",
+              "derived"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "50b647d5",
+        "answer": {
+          "value": 9,
+          "label": "9"
+        }
+      }
+    },
+    {
+      "id": "eeee5e64-8f92-4cbe-9e27-dac6133c8c81",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "vectors": [
+            {
+              "id": "a",
+              "v": [
+                2,
+                1,
+                -1
+              ],
+              "label": "a",
+              "beat": "given"
+            },
+            {
+              "id": "b",
+              "v": [
+                1,
+                0,
+                3
+              ],
+              "label": "b",
+              "beat": "given"
+            }
+          ],
+          "ask": {
+            "kind": "area",
+            "vectors": [
+              "a",
+              "b"
+            ],
+            "shape": "parallelogram",
+            "label": "max triple product = |a × b|"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "8dfe887d",
+        "answer": {
+          "value": 7.681145747868608,
+          "label": "√59"
+        }
+      }
+    },
+    {
+      "id": "f7fdb29b-3ee6-434a-aeee-500db44182d8",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "vectors": [
+            {
+              "id": "a",
+              "v": [
+                2,
+                1,
+                -1
+              ],
+              "label": "a",
+              "beat": "given"
+            },
+            {
+              "id": "b",
+              "v": [
+                3,
+                -1,
+                -1
+              ],
+              "label": "b",
+              "beat": "given"
+            },
+            {
+              "id": "c",
+              "v": [
+                0,
+                1,
+                3
+              ],
+              "label": "c",
+              "beat": "given"
+            }
+          ],
+          "ask": {
+            "kind": "volume",
+            "vectors": [
+              "a",
+              "b",
+              "c"
+            ],
+            "label": "volume = 16"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "f0c572e0",
+        "answer": {
+          "value": 16,
+          "label": "16"
+        }
+      }
+    },
+    {
+      "id": "feb26228-37c6-4538-b759-17a8c72cdfe7",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "points": [
+            {
+              "id": "O",
+              "at": [
+                0,
+                0,
+                0
+              ],
+              "label": "O"
+            },
+            {
+              "id": "P",
+              "at": [
+                2,
+                1,
+                3
+              ],
+              "label": "P(2, 1, 3)"
+            },
+            {
+              "id": "Q",
+              "at": [
+                -1,
+                1,
+                2
+              ],
+              "label": "Q(−1, 1, 2)"
+            },
+            {
+              "id": "R",
+              "at": [
+                1,
+                2,
+                1
+              ],
+              "label": "R(1, 2, 1)"
+            }
+          ],
+          "planes": [
+            {
+              "id": "F1",
+              "eq": [
+                -1,
+                -7,
+                3,
+                0
+              ],
+              "label": "face OPQ",
+              "beat": "derived"
+            },
+            {
+              "id": "F2",
+              "eq": [
+                1,
+                -5,
+                -3,
+                -12
+              ],
+              "label": "face PQR",
+              "beat": "derived"
+            }
+          ],
+          "ask": {
+            "kind": "angle",
+            "between": [
+              "F1",
+              "F2"
+            ],
+            "label": "cos θ = 25/(√59·√35)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "derived"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "ab2d22dc",
+        "answer": {
+          "value": 0.9882541972109382,
+          "label": "cos⁻¹(25/(√59·√35))"
+        }
+      }
+    },
+    {
+      "id": "08c097ff-250a-4284-a001-1baf71ae918f",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "vectors": [
+            {
+              "id": "a",
+              "v": [
+                -1,
+                1,
+                3
+              ],
+              "label": "a",
+              "beat": "given"
+            },
+            {
+              "id": "b",
+              "v": [
+                1,
+                3,
+                1
+              ],
+              "label": "b",
+              "beat": "given"
+            },
+            {
+              "id": "c",
+              "v": [
+                -2,
+                -2,
+                2
+              ],
+              "label": "c = a − b",
+              "beat": "derived"
+            }
+          ],
+          "ask": {
+            "kind": "length",
+            "vector": "c",
+            "squared": true,
+            "label": "|c|² = 12"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "derived",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "05851c6f",
+        "answer": {
+          "value": 11.999999999999998,
+          "label": "12"
+        }
+      }
+    },
+    {
+      "id": "13ad5094-baa7-4fae-9fb2-b8592b8c1b30",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "vectors": [
+            {
+              "id": "a",
+              "v": [
+                8,
+                4,
+                2
+              ],
+              "label": "a (α = 8)",
+              "beat": "derived"
+            },
+            {
+              "id": "b",
+              "v": [
+                5,
+                3,
+                4
+              ],
+              "label": "b",
+              "beat": "given"
+            },
+            {
+              "id": "c",
+              "v": [
+                3,
+                1,
+                -2
+              ],
+              "label": "c = a − b",
+              "beat": "derived"
+            }
+          ],
+          "ask": {
+            "kind": "length",
+            "vector": "c",
+            "squared": true,
+            "label": "|c|² = 14"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "derived"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "9ab6ca1c",
+        "answer": {
+          "value": 14,
+          "label": "14"
+        }
+      }
+    },
+    {
+      "id": "1416246b-5a0b-41b0-8360-9d97619c4434",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "vectors": [
+            {
+              "id": "AC",
+              "v": [
+                7,
+                0,
+                0
+              ],
+              "label": "AC (7)",
+              "beat": "given"
+            },
+            {
+              "id": "AB",
+              "v": [
+                6.0714286,
+                7.945927,
+                0
+              ],
+              "label": "AB (10)",
+              "beat": "given"
+            }
+          ],
+          "ask": {
+            "kind": "projection",
+            "vector": "AB",
+            "on": "AC",
+            "label": "projection = 85/14"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "21a3816d",
+        "answer": {
+          "value": 6.0714286,
+          "label": "85/14"
+        }
+      }
+    },
+    {
+      "id": "1a3207a3-b9d8-4dc4-beb7-5dda7c60f280",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "vectors": [
+            {
+              "id": "a",
+              "v": [
+                2,
+                -7,
+                5
+              ],
+              "label": "a",
+              "beat": "given"
+            },
+            {
+              "id": "b",
+              "v": [
+                1,
+                0,
+                1
+              ],
+              "label": "b",
+              "beat": "given"
+            },
+            {
+              "id": "c",
+              "v": [
+                1,
+                2,
+                -3
+              ],
+              "label": "c",
+              "beat": "given"
+            },
+            {
+              "id": "r",
+              "v": [
+                1.5714286,
+                0,
+                -1.5714286
+              ],
+              "label": "r",
+              "beat": "derived"
+            }
+          ],
+          "ask": {
+            "kind": "length",
+            "vector": "r",
+            "label": "|r| = (11/7)√2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "derived"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "991d9dba",
+        "answer": {
+          "value": 2.222335638420965,
+          "label": "(11/7)√2"
+        }
+      }
+    },
+    {
+      "id": "235c3cea-c23c-4091-b950-73c73e44b7d6",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "vectors": [
+            {
+              "id": "a",
+              "v": [
+                -1,
+                2,
+                1
+              ],
+              "label": "a",
+              "beat": "given"
+            },
+            {
+              "id": "c",
+              "v": [
+                5,
+                4,
+                3
+              ],
+              "label": "c",
+              "beat": "given"
+            },
+            {
+              "id": "b",
+              "v": [
+                1.41421356,
+                1.41421356,
+                -1.41421356
+              ],
+              "label": "b",
+              "beat": "derived"
+            },
+            {
+              "id": "s",
+              "v": [
+                -1,
+                8,
+                1
+              ],
+              "label": "3a + √2 b",
+              "beat": "derived"
+            }
+          ],
+          "ask": {
+            "kind": "projection",
+            "vector": "s",
+            "on": "c",
+            "label": "projection = 3√2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given",
+              "derived",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "3f467de2",
+        "answer": {
+          "value": 4.242640687119285,
+          "label": "3√2"
+        }
+      }
+    },
+    {
+      "id": "316ab5c2-225f-482f-8232-e1fce5e2f96c",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "vectors": [
+            {
+              "id": "a",
+              "v": [
+                1,
+                4,
+                2
+              ],
+              "label": "a",
+              "beat": "given"
+            },
+            {
+              "id": "b",
+              "v": [
+                3,
+                -2,
+                7
+              ],
+              "label": "b",
+              "beat": "given"
+            },
+            {
+              "id": "c",
+              "v": [
+                2,
+                -1,
+                4
+              ],
+              "label": "c",
+              "beat": "given"
+            },
+            {
+              "id": "d",
+              "v": [
+                8,
+                -5,
+                18
+              ],
+              "label": "d",
+              "beat": "derived"
+            }
+          ],
+          "ask": {
+            "kind": "length",
+            "vector": "d",
+            "squared": true,
+            "label": "|d|² = 413"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "derived",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "1d46c8b2",
+        "answer": {
+          "value": 413,
+          "label": "413"
+        }
+      }
+    },
+    {
+      "id": "34898ec1-6f6c-48a1-9951-aaf0eda386c8",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "vectors": [
+            {
+              "id": "a",
+              "v": [
+                1,
+                1,
+                1
+              ],
+              "label": "a",
+              "beat": "given"
+            },
+            {
+              "id": "b",
+              "v": [
+                3,
+                2,
+                -1
+              ],
+              "label": "b",
+              "beat": "given"
+            },
+            {
+              "id": "d",
+              "v": [
+                0.6666667,
+                0.3333333,
+                -0.6666667
+              ],
+              "label": "d (unit)",
+              "beat": "derived"
+            },
+            {
+              "id": "c",
+              "v": [
+                0,
+                1,
+                -1
+              ],
+              "label": "c",
+              "beat": "derived"
+            },
+            {
+              "id": "w",
+              "v": [
+                2,
+                0,
+                -1
+              ],
+              "label": "3λd + μc",
+              "beat": "derived"
+            }
+          ],
+          "ask": {
+            "kind": "length",
+            "vector": "w",
+            "squared": true,
+            "label": "|3λd + μc|² = 5"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given",
+              "derived",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "bc29628b",
+        "answer": {
+          "value": 5.000000000000001,
+          "label": "5"
+        }
+      }
+    },
+    {
+      "id": "3c6f4079-b59f-4c0d-ba77-c4391f9f1939",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "vectors": [
+            {
+              "id": "a",
+              "v": [
+                1,
+                2,
+                1
+              ],
+              "label": "a",
+              "beat": "given"
+            },
+            {
+              "id": "b",
+              "v": [
+                3,
+                -3,
+                3
+              ],
+              "label": "b",
+              "beat": "given"
+            },
+            {
+              "id": "c",
+              "v": [
+                2,
+                -1,
+                2
+              ],
+              "label": "c",
+              "beat": "given"
+            },
+            {
+              "id": "d",
+              "v": [
+                -2,
+                4,
+                -2
+              ],
+              "label": "d",
+              "beat": "derived"
+            }
+          ],
+          "ask": {
+            "kind": "area",
+            "vectors": [
+              "a",
+              "d"
+            ],
+            "shape": "parallelogram",
+            "squared": true,
+            "label": "|a × d|² = 128"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given",
+              "derived"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "6302cb59",
+        "answer": {
+          "value": 128.00000000000003,
+          "label": "128"
+        }
+      }
+    },
+    {
+      "id": "43871cb8-568c-4b1d-9bea-20ab1b796a7e",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "vectors": [
+            {
+              "id": "b",
+              "v": [
+                3,
+                1,
+                -1
+              ],
+              "label": "b",
+              "beat": "given"
+            },
+            {
+              "id": "p",
+              "v": [
+                4.3636364,
+                1.4545455,
+                -1.4545455
+              ],
+              "label": "along b",
+              "beat": "given"
+            },
+            {
+              "id": "q",
+              "v": [
+                -0.3636364,
+                -0.4545455,
+                -1.5454545
+              ],
+              "from": [
+                4.3636364,
+                1.4545455,
+                -1.4545455
+              ],
+              "label": "perpendicular to b",
+              "beat": "given"
+            },
+            {
+              "id": "a",
+              "v": [
+                4,
+                1,
+                -3
+              ],
+              "label": "a",
+              "beat": "derived"
+            }
+          ],
+          "ask": {
+            "kind": "length",
+            "vector": "a",
+            "squared": true,
+            "label": "α² + β² + γ² = 26"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given",
+              "derived",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "c6cdd940",
+        "answer": {
+          "value": 25.999999999999996,
+          "label": "26"
+        }
+      }
+    },
+    {
+      "id": "43d81bee-4cc4-45d8-889f-600dc2b7d512",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "vectors": [
+            {
+              "id": "a",
+              "v": [
+                2,
+                -1,
+                5
+              ],
+              "label": "a",
+              "beat": "given"
+            },
+            {
+              "id": "j2",
+              "v": [
+                0,
+                2,
+                0
+              ],
+              "label": "2j",
+              "beat": "given"
+            },
+            {
+              "id": "w",
+              "v": [
+                -4,
+                0,
+                -3
+              ],
+              "label": "b × 2j",
+              "beat": "derived"
+            }
+          ],
+          "ask": {
+            "kind": "length",
+            "vector": "w",
+            "label": "|b × 2j| = 5"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "derived",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "9610125d",
+        "answer": {
+          "value": 5,
+          "label": "5"
+        }
+      }
+    },
+    {
+      "id": "5224c96e-07f8-4ab7-805a-eb37693f08fb",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "vectors": [
+            {
+              "id": "a",
+              "v": [
+                2,
+                -1,
+                2
+              ],
+              "label": "a",
+              "beat": "given"
+            },
+            {
+              "id": "b",
+              "v": [
+                1,
+                2,
+                -1
+              ],
+              "label": "b",
+              "beat": "given"
+            },
+            {
+              "id": "c",
+              "v": [
+                3,
+                2,
+                -1
+              ],
+              "label": "c",
+              "beat": "given"
+            },
+            {
+              "id": "w",
+              "v": [
+                21,
+                -18,
+                27
+              ],
+              "label": "2v",
+              "beat": "derived"
+            }
+          ],
+          "ask": {
+            "kind": "length",
+            "vector": "w",
+            "squared": true,
+            "label": "|2v|² = 1494"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given",
+              "derived",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "2bcd0a2c",
+        "answer": {
+          "value": 1494,
+          "label": "1494"
+        }
+      }
+    },
+    {
+      "id": "525c72c7-a687-4e80-b6e6-34c5085ca286",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "vectors": [
+            {
+              "id": "c",
+              "v": [
+                -1,
+                2,
+                -3
+              ],
+              "label": "c",
+              "beat": "given"
+            },
+            {
+              "id": "a",
+              "v": [
+                1,
+                5,
+                8
+              ],
+              "label": "a (α = 8)",
+              "beat": "derived"
+            },
+            {
+              "id": "b",
+              "v": [
+                1,
+                3,
+                -2
+              ],
+              "label": "b (β = −2)",
+              "beat": "derived"
+            }
+          ],
+          "ask": {
+            "kind": "length",
+            "vector": "a",
+            "squared": true,
+            "label": "greatest |a|² = 90"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given",
+              "derived",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "4178b478",
+        "answer": {
+          "value": 90,
+          "label": "90"
+        }
+      }
+    },
+    {
+      "id": "58108713-1d05-48f2-93a0-fe55edc0173d",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "vectors": [
+            {
+              "id": "a",
+              "v": [
+                1,
+                2,
+                2
+              ],
+              "label": "a",
+              "beat": "given"
+            },
+            {
+              "id": "b",
+              "v": [
+                4,
+                0,
+                4
+              ],
+              "label": "b (λ = 4)",
+              "beat": "derived"
+            },
+            {
+              "id": "c",
+              "v": [
+                1.3333333,
+                2.6666667,
+                2.6666667
+              ],
+              "label": "c = projection of b",
+              "beat": "derived"
+            }
+          ],
+          "ask": {
+            "kind": "area",
+            "vectors": [
+              "b",
+              "c"
+            ],
+            "shape": "parallelogram",
+            "label": "area = 16"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given",
+              "derived",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "d001f3a8",
+        "answer": {
+          "value": 16.000000266666667,
+          "label": "16"
+        }
+      }
+    },
+    {
+      "id": "5a3f87f5-e740-477d-97b1-3ff9d68c560f",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "points": [
+            {
+              "id": "O",
+              "at": [
+                0,
+                0,
+                0
+              ],
+              "label": "O"
+            },
+            {
+              "id": "P",
+              "at": [
+                3,
+                -1,
+                2
+              ],
+              "label": "P(3, −1, 2)"
+            },
+            {
+              "id": "Q",
+              "at": [
+                1,
+                2,
+                -4
+              ],
+              "label": "Q(1, 2, −4)"
+            },
+            {
+              "id": "A",
+              "at": [
+                11,
+                -1,
+                7
+              ],
+              "label": "A(11, −1, 7)",
+              "beat": "derived"
+            }
+          ],
+          "lines": [
+            {
+              "id": "L1",
+              "point": "P",
+              "dir": [
+                4,
+                -1,
+                2
+              ],
+              "label": "PR"
+            },
+            {
+              "id": "L2",
+              "point": "Q",
+              "dir": [
+                -2,
+                1,
+                -2
+              ],
+              "label": "QS"
+            }
+          ],
+          "derived": [
+            {
+              "id": "T",
+              "kind": "meet",
+              "lines": [
+                "L1",
+                "L2"
+              ],
+              "label": "T(11, −3, 6)"
+            }
+          ],
+          "segments": [
+            {
+              "from": "T",
+              "to": "A"
+            }
+          ],
+          "ask": {
+            "kind": "distance",
+            "from": "O",
+            "to": "A",
+            "label": "|OA| = √171"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given",
+              "derived",
+              "construct",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "a53834d7",
+        "answer": {
+          "value": 13.076696830622021,
+          "label": "√171"
+        }
+      }
+    },
+    {
+      "id": "610dbc28-bedf-491b-b801-53cf402269c2",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "vectors": [
+            {
+              "id": "v",
+              "v": [
+                0.70710678,
+                0.70710678,
+                0.70710678
+              ],
+              "label": "v",
+              "beat": "given"
+            },
+            {
+              "id": "u",
+              "v": [
+                -0.70710678,
+                0,
+                0.70710678
+              ],
+              "label": "u",
+              "beat": "derived"
+            },
+            {
+              "id": "w",
+              "v": [
+                -1.41421356,
+                -0.70710678,
+                0
+              ],
+              "label": "u − v",
+              "beat": "derived"
+            }
+          ],
+          "ask": {
+            "kind": "length",
+            "vector": "w",
+            "squared": true,
+            "label": "|u − v|² = 5/2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "derived",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "537a758a",
+        "answer": {
+          "value": 2.499999991609842,
+          "label": "5/2"
+        }
+      }
+    },
+    {
+      "id": "6ad9beb8-1c4f-40d5-b884-29f41613f79a",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "vectors": [
+            {
+              "id": "u",
+              "v": [
+                3,
+                -1,
+                0
+              ],
+              "label": "u",
+              "beat": "given"
+            },
+            {
+              "id": "v",
+              "v": [
+                2,
+                1,
+                -3
+              ],
+              "label": "v (λ = 3)",
+              "beat": "derived"
+            },
+            {
+              "id": "v1",
+              "v": [
+                1.5,
+                -0.5,
+                0
+              ],
+              "label": "v₁",
+              "beat": "construct"
+            },
+            {
+              "id": "v2",
+              "v": [
+                0.5,
+                1.5,
+                -3
+              ],
+              "from": [
+                1.5,
+                -0.5,
+                0
+              ],
+              "label": "v₂",
+              "beat": "construct"
+            }
+          ],
+          "ask": {
+            "kind": "length",
+            "vector": "v",
+            "squared": true,
+            "label": "|v₁|² + |v₂|² = |v|² = 14"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given",
+              "derived"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "construct",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "9ed82801",
+        "answer": {
+          "value": 14,
+          "label": "14"
+        }
+      }
+    },
+    {
+      "id": "6e19a50c-c8b5-485c-8294-aabac9043ddf",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "vectors": [
+            {
+              "id": "a",
+              "v": [
+                3,
+                -1,
+                2
+              ],
+              "label": "a",
+              "beat": "given"
+            },
+            {
+              "id": "e",
+              "v": [
+                1,
+                0,
+                -2
+              ],
+              "label": "i − 2k",
+              "beat": "given"
+            },
+            {
+              "id": "b",
+              "v": [
+                2,
+                8,
+                1
+              ],
+              "label": "b",
+              "beat": "derived"
+            },
+            {
+              "id": "c",
+              "v": [
+                8,
+                -2,
+                0
+              ],
+              "label": "c",
+              "beat": "derived"
+            },
+            {
+              "id": "w",
+              "v": [
+                8,
+                -4,
+                0
+              ],
+              "label": "c − 2j",
+              "beat": "derived"
+            }
+          ],
+          "ask": {
+            "kind": "projection",
+            "vector": "w",
+            "on": "a",
+            "label": "projection = 2√14"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given",
+              "derived",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "8240a771",
+        "answer": {
+          "value": 7.4833147735478835,
+          "label": "2√14"
+        }
+      }
+    },
+    {
+      "id": "70449a84-d529-4240-bd30-3cf3bb2439a1",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "points": [
+            {
+              "id": "A",
+              "at": [
+                2,
+                3,
+                5
+              ],
+              "label": "A(2, 3, 5)"
+            },
+            {
+              "id": "C",
+              "at": [
+                -3,
+                4,
+                -2
+              ],
+              "label": "C(−3, 4, −2)"
+            },
+            {
+              "id": "B",
+              "at": [
+                -1,
+                2.5,
+                0
+              ],
+              "label": "B",
+              "beat": "derived"
+            },
+            {
+              "id": "D",
+              "at": [
+                0,
+                4.5,
+                3
+              ],
+              "label": "D",
+              "beat": "derived"
+            }
+          ],
+          "segments": [
+            {
+              "from": "A",
+              "to": "C",
+              "beat": "given"
+            },
+            {
+              "from": "B",
+              "to": "D",
+              "beat": "given"
+            }
+          ],
+          "vectors": [
+            {
+              "id": "AB",
+              "v": [
+                -3,
+                -0.5,
+                -5
+              ],
+              "from": "A",
+              "label": "AB",
+              "beat": "derived"
+            },
+            {
+              "id": "AD",
+              "v": [
+                -2,
+                1.5,
+                -2
+              ],
+              "from": "A",
+              "label": "AD",
+              "beat": "derived"
+            }
+          ],
+          "ask": {
+            "kind": "area",
+            "vectors": [
+              "AB",
+              "AD"
+            ],
+            "shape": "parallelogram",
+            "label": "area = ½√474"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given",
+              "derived",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "458aad10",
+        "answer": {
+          "value": 10.88577052853862,
+          "label": "½√474"
+        }
+      }
+    },
+    {
+      "id": "75cf9ea6-895c-410e-80b7-c79d0879d19b",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "vectors": [
+            {
+              "id": "a",
+              "v": [
+                1,
+                -2,
+                3
+              ],
+              "label": "a",
+              "beat": "given"
+            },
+            {
+              "id": "b",
+              "v": [
+                2,
+                1,
+                -1
+              ],
+              "label": "b",
+              "beat": "given"
+            },
+            {
+              "id": "v",
+              "v": [
+                -1,
+                7,
+                5
+              ],
+              "label": "v = a × b",
+              "beat": "derived"
+            },
+            {
+              "id": "c",
+              "v": [
+                1,
+                1,
+                1
+              ],
+              "label": "c (λ = 1)",
+              "beat": "derived"
+            }
+          ],
+          "ask": {
+            "kind": "projection",
+            "vector": "b",
+            "on": "c",
+            "squared": true,
+            "times": 9,
+            "label": "9p² = 12"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "derived"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "a105e104",
+        "answer": {
+          "value": 12.000000000000007,
+          "label": "12"
+        }
+      }
+    },
+    {
+      "id": "8fded3ad-e63f-4a2e-9596-2a880f5ebbd5",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "vectors": [
+            {
+              "id": "b",
+              "v": [
+                3,
+                7,
+                -13
+              ],
+              "label": "b",
+              "beat": "given"
+            },
+            {
+              "id": "c",
+              "v": [
+                17,
+                -2,
+                1
+              ],
+              "label": "c",
+              "beat": "given"
+            },
+            {
+              "id": "s",
+              "v": [
+                20,
+                5,
+                -12
+              ],
+              "label": "b + c",
+              "beat": "derived"
+            }
+          ],
+          "ask": {
+            "kind": "length",
+            "vector": "s",
+            "squared": true,
+            "label": "|b + c|² = 569"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "derived",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "b463b122",
+        "answer": {
+          "value": 569,
+          "label": "569"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

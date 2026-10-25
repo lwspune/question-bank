@@ -400,7 +400,7 @@ export const space3d: Scene<SpaceParams> = {
 
       const segments: Seg[] = list(o, "segments", 6).map((q, i) => ({ from: pointAt(q.from, `segments[${i}]`), to: pointAt(q.to, `segments[${i}]`), label: optionalLabel(q, "label"), beat: beatOf(q, "construct") }));
 
-      const vectors: Vec[] = list(o, "vectors", 4).map((q, i) => {
+      const vectors: Vec[] = list(o, "vectors", 6).map((q, i) => {
         const id = claim(q.id, `vectors[${i}]`);
         const v = v3(q, "v");
         if (len(v) < 1e-12) throw new ParamError(`${id}: v must not be zero`);
