@@ -37,7 +37,7 @@ async function main() {
   const problems: string[] = [];
   const ready: { fix: Fix; hash: string }[] = [];
   for (const fix of fixes) {
-    const { data, error } = await db.from("questions").select("solution, content_hash").eq("id", fix.id).maybeSingle();
+    const { data, error } = await db.from("questions").select("solution, content_hash, solution_visual").eq("id", fix.id).maybeSingle();
     if (error) throw new Error(error.message);
     if (!data) {
       problems.push(`${fix.id}: no such question`);
@@ -62,6 +62,8 @@ async function main() {
     }
     ready.push({ fix, hash: data.content_hash as string });
     console.log(`${fix.id}: ready (${fix.note})`);
+    // Its visual is tied to the old text: rebuild it from the corrected sentences and apply with --replace.
+    if (data.solution_visual) console.log(`  ${fix.id} has a visual: rebuild it after this fix (visuals:assemble, then visuals:run --apply --replace)`);
   }
   if (problems.length) {
     for (const p of problems) console.log(`  !! ${p}`);
