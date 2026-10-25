@@ -1,0 +1,7 @@
+{
+  "//": "For scripts/visuals/run.ts, which draws scenes with the app's SceneSvg component for its review sheet. The root config sets jsx=preserve (Next compiles JSX itself); a plain tsx run would fall back to the classic runtime and fail with 'React is not defined'. Not used by the build, the gate, or typecheck.",
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "jsx": "react-jsx"
+  }
+}

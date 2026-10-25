@@ -10,6 +10,7 @@ import { translationsFromRows, type Translation } from "@/lib/i18n/bilingual";
 import type { MockAnswerKey, OptionLabel } from "./answers";
 import { getExamByName } from "@/lib/exam/examContext";
 import { readAllPages } from "@/lib/supabase/readAllPages";
+import { usableVisual } from "@/lib/visuals/visual";
 
 export type MockSnapshotQuestion = {
   position: number;
@@ -411,6 +412,8 @@ export type ReviewQuestionContent = {
   imageUrl: string | null;
   solution: string | null;
   solutionImageUrl: string | null;
+  /** Animated solution (0184), already through usableVisual(); null when there is none that checks. */
+  solutionVisual?: unknown | null;
   options: ReviewOption[];
   format: "mcq" | "numeric";
   /** The correct value for a numeric (JEE Section-B) question; null otherwise. */
@@ -434,7 +437,7 @@ export async function loadReviewQuestions(
     const chunk = ids.slice(i, i + PAGE);
     const { data, error } = await db
       .from("questions")
-      .select("id, text, context, image_url, solution, solution_image_url, question_format, numeric_answer, cancelled_note, options(label, text, image_url, is_correct, option_translations(lang, text)), question_translations(lang, text, context, solution)")
+      .select("id, text, context, image_url, solution, solution_image_url, solution_visual, question_format, numeric_answer, cancelled_note, options(label, text, image_url, is_correct, option_translations(lang, text)), question_translations(lang, text, context, solution)")
       .in("id", chunk);
     if (error) throw new Error(`loadReviewQuestions: ${error.message}`);
     for (const row of (data ?? []) as Record<string, unknown>[]) {
@@ -452,6 +455,7 @@ export async function loadReviewQuestions(
         imageUrl: (row.image_url as string | null) ?? null,
         solution: (row.solution as string | null) ?? null,
         solutionImageUrl: (row.solution_image_url as string | null) ?? null,
+        solutionVisual: usableVisual(row.solution_visual),
         options: opts,
         format: row.question_format === "numeric" ? "numeric" : "mcq",
         numericAnswer:

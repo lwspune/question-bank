@@ -3,6 +3,7 @@ import { AUDIENCE } from "@/lib/relevance/config";
 import type { Filters, Difficulty, QuestionFormat } from "./filters";
 import { publicPyqNote, type PublicQuestionKind } from "./publicPyqNote";
 import { translationsFromRows, type Translation } from "@/lib/i18n/bilingual";
+import { usableVisual } from "@/lib/visuals/visual";
 
 export type OptionRow = {
   label: "A" | "B" | "C" | "D" | "E";
@@ -21,6 +22,9 @@ export type QuestionRow = {
   /** Optional per-question SOLUTION diagram (migration 0042). Shown in the "model answer" reveal
    *  on /browse + the answer-key solution block only — never the question paper (would leak the answer). */
   solutionImageUrl?: string | null;
+  /** Animated solution (migration 0184), already through usableVisual(): null unless it parses and its
+   *  self-check agrees with its answer. Shown beside the solution, never instead of it. */
+  solutionVisual?: unknown | null;
   setId: string | null;
   /** MCQ (4 options, one correct) or subjective (no options, model answer in `solution`). Migration 0041.
    *  Optional on the view-model — absent means MCQ (real DB rows always carry it; hand-built fixtures default to MCQ). */
@@ -336,7 +340,7 @@ export async function queryQuestionsByIds(
     .from("questions")
     .select(
       `
-      id, text, context, difficulty, solution, image_url, solution_image_url, set_id, question_format, numeric_answer,
+      id, text, context, difficulty, solution, image_url, solution_image_url, solution_visual, set_id, question_format, numeric_answer,
       question_number, pyq_year, pyq_month, pyq_note, question_kind, cancelled_note,
       exam:exams!exam_id(id, name),
       subject:subjects!subject_id(id, name),
@@ -366,6 +370,7 @@ export async function queryQuestionsByIds(
     solution: string | null;
     image_url: string | null;
     solution_image_url: string | null;
+    solution_visual: unknown;
     set_id: string | null;
     question_format: QuestionFormat;
     numeric_answer: number | null;
@@ -396,6 +401,7 @@ export async function queryQuestionsByIds(
       solution: r.solution,
       imageUrl: r.image_url,
       solutionImageUrl: r.solution_image_url,
+      solutionVisual: usableVisual(r.solution_visual),
       setId: r.set_id,
       questionFormat: r.question_format,
       numericAnswer: r.numeric_answer,

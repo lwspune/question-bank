@@ -1,0 +1,125 @@
+{
+  "//": "Phase 0 pilot (2026-10-25): the three JEE Mains / MHT-CET questions behind the sample the owner approved. Visuals only; no solution text is changed.",
+  "visuals": [
+    {
+      "id": "d36a8bfc-503d-4778-81b3-2205546f54b8",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "rotation",
+        "params": {
+          "revolutions": 2
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "radiiRound",
+              "total"
+            ]
+          }
+        ],
+        "fingerprint": "673ae352",
+        "answer": {
+          "value": 12.566370614359172,
+          "label": "4π"
+        }
+      }
+    },
+    {
+      "id": "cd89fce7-42ab-400b-86ee-85956a619683",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "quadraticFamily",
+        "params": {
+          "a": [
+            2,
+            1
+          ],
+          "b": [
+            0,
+            -3
+          ],
+          "c": [
+            0,
+            4
+          ],
+          "range": [
+            -6,
+            2
+          ],
+          "start": -3,
+          "condition": "twoPositiveRoots"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "discriminant"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "signs"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "intersection"
+            ]
+          }
+        ],
+        "fingerprint": "b5b5d728",
+        "answer": {
+          "value": 2,
+          "label": "2"
+        }
+      }
+    },
+    {
+      "id": "9d9e0808-a144-418b-8d6f-089c881c9d29",
+      "visual": {
+        "v": 1,
+        "scene": "slab",
+        "params": {
+          "thickness": 6.928203230275509,
+          "thicknessLabel": "4√3 cm",
+          "mu": 1.4142135623730951,
+          "muLabel": "√2",
+          "incidence": "critical"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "incidence"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "refraction",
+              "emergence"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "shift"
+            ]
+          }
+        ],
+        "fingerprint": "a6db6796",
+        "answer": {
+          "value": 2,
+          "label": "2 cm",
+          "tolerance": 0.1
+        }
+      }
+    }
+  ],
+  "decided": []
+}

@@ -227,6 +227,31 @@ a[data-nav-pending] {
   .notes-figure > .max-w-sm,
   .notes-figure > .max-w-md { max-width: 32rem; }
   .notes-figure p.text-xs:not(.uppercase) { font-size: 0.8125rem; line-height: 1.55; }
+  /* Animated solutions (lib/visuals): a scene names TONES, never colours, and
+     these map them to the theme. Text tones (fg, muted, brand-text, amber,
+     good) clear AA on --viz-bg in both modes. */
+  .viz {
+    --viz-fg: hsl(var(--foreground));
+    --viz-muted: hsl(var(--muted-foreground));
+    --viz-line: hsl(var(--border));
+    --viz-brand: hsl(var(--brand));
+    --viz-brand-text: hsl(var(--brand-accent));
+    --viz-card: hsl(var(--card));
+    --viz-bg: hsl(var(--background));
+    --viz-soft: hsl(var(--accent));
+    --viz-amber: #b45309;
+    --viz-good: #047857;
+    --viz-good-soft: #e3f4ec;
+    --viz-bad: #b91c1c;
+    --viz-glass: #dcebfb;
+  }
+  .dark .viz {
+    --viz-amber: #f59e4b;
+    --viz-good: #34d399;
+    --viz-good-soft: #12342c;
+    --viz-bad: #f87171;
+    --viz-glass: #18325e;
+  }
   /* Section titles: a short blue-to-cyan bar before the text. */
   .section-title { display: flex; align-items: center; gap: 0.5rem; }
   .section-title::before {

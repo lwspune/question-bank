@@ -531,6 +531,8 @@ export type ReviewItem = {
   verdict: 1 | -1 | 0;
   solution: string | null;
   solutionImageUrl: string | null;
+  /** Animated solution (0184), already checked; null when there is none. */
+  solutionVisual?: unknown | null;
   /** Officially dropped/bonus: awarded to all. The correct-answer highlight is
    *  suppressed and a disclosure badge shown (see the result review UI). */
   grace: boolean;
@@ -616,6 +618,7 @@ export async function getAttemptReview(
         verdict,
         solution: c?.solution ?? null,
         solutionImageUrl: c?.solutionImageUrl ?? null,
+        solutionVisual: c?.solutionVisual ?? null,
         grace,
         cancelledNote: c?.cancelledNote ?? null,
         ...(c?.translations ? { translations: c.translations } : {}),

@@ -52,6 +52,7 @@ import ReportQuestionDialog from "./ReportQuestionDialog";
 import AskVButton from "@/components/chat/AskVButton";
 import { ItemStatChip, ItemStatDetail } from "./ItemStats";
 import CancelledNotice from "@/components/question/CancelledNotice";
+import SolutionViews from "@/components/visuals/SolutionViews";
 import { optionVersions, solutionVersions, stemVersions } from "@/lib/i18n/bilingual";
 import { useQuestionLang } from "@/lib/i18n/useQuestionLang";
 import { singleItemStatKey, type ItemStatAggregate } from "@/lib/itemStats/types";
@@ -550,39 +551,53 @@ export default function QuestionCard({
 
             {showSolution && (isNumeric || question.solution) && (
               <div className="rounded-xl border border-brand-accent/20 bg-brand-accent/5 p-3 text-sm motion-safe:animate-fade-in-up sm:p-4">
-                <p className="flex items-center gap-1.5 font-sans text-xs font-bold uppercase tracking-wide text-brand-accent">
-                  <Lightbulb className="h-3.5 w-3.5" aria-hidden />
-                  {isNumeric ? "Answer" : isSubjective ? "Model answer" : "Solution"}
-                </p>
-                {isNumeric && (
-                  <p className="mt-1.5 font-sans">
-                    <span className="text-lg font-semibold tabular-nums">{question.numericAnswer}</span>
-                  </p>
-                )}
-                {question.solution && (
-                  /* BlockText (not KatexRenderer) so a GFM pipe-table in a
-                     solution, e.g. a truth table, renders as a real <table>. */
-                  <div className="mt-1.5 space-y-2">
-                    {isNumeric ? (
-                      <BlockText text={question.solution} solution />
-                    ) : (
-                      solutions.map((v, i) => (
-                        <div key={v.lang} lang={v.lang} className={i > 0 ? "border-t border-dashed pt-2" : undefined}>
-                          <BlockText text={v.text} solution />
+                {/* Animated first where the question has a checked visual, with
+                    a switch to Still: the block below, exactly as before. */}
+                <SolutionViews
+                  visual={question.solutionVisual}
+                  solution={question.solution}
+                  header={
+                    <p className="flex items-center gap-1.5 font-sans text-xs font-bold uppercase tracking-wide text-brand-accent">
+                      <Lightbulb className="h-3.5 w-3.5" aria-hidden />
+                      {isNumeric ? "Answer" : isSubjective ? "Model answer" : "Solution"}
+                    </p>
+                  }
+                  lead={
+                    isNumeric && (
+                      <p className="mt-1.5 font-sans">
+                        <span className="text-lg font-semibold tabular-nums">{question.numericAnswer}</span>
+                      </p>
+                    )
+                  }
+                  still={
+                    <>
+                      {question.solution && (
+                        /* BlockText (not KatexRenderer) so a GFM pipe-table in a
+                           solution, e.g. a truth table, renders as a real <table>. */
+                        <div className="mt-1.5 space-y-2">
+                          {isNumeric ? (
+                            <BlockText text={question.solution} solution />
+                          ) : (
+                            solutions.map((v, i) => (
+                              <div key={v.lang} lang={v.lang} className={i > 0 ? "border-t border-dashed pt-2" : undefined}>
+                                <BlockText text={v.text} solution />
+                              </div>
+                            ))
+                          )}
                         </div>
-                      ))
-                    )}
-                  </div>
-                )}
-                {question.solutionImageUrl && (
-                  <div className="pt-3">
-                    <ZoomableImage
-                      src={publicImageUrl(supabaseUrl, question.solutionImageUrl)}
-                      alt="Solution diagram"
-                      className="max-h-64 w-auto rounded border"
-                    />
-                  </div>
-                )}
+                      )}
+                      {question.solutionImageUrl && (
+                        <div className="pt-3">
+                          <ZoomableImage
+                            src={publicImageUrl(supabaseUrl, question.solutionImageUrl)}
+                            alt="Solution diagram"
+                            className="max-h-64 w-auto rounded border"
+                          />
+                        </div>
+                      )}
+                    </>
+                  }
+                />
               </div>
             )}
 

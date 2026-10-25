@@ -13,6 +13,7 @@
  */
 import type { SupabaseClient } from "@supabase/supabase-js";
 import type { DrillEvent, QuestionRef } from "./select";
+import { usableVisual } from "@/lib/visuals/visual";
 
 /** PostgREST truncates a raw select at 1000 rows with no error. The heaviest
  *  student holds 629 answer events today and nobody is over the cap — but the
@@ -214,6 +215,8 @@ export type DrillVerdict = {
   correctLabel: string | null;
   solution: string | null;
   solutionImageUrl: string | null;
+  /** Animated solution (0184), already through usableVisual(); null when there is none that checks. */
+  solutionVisual: unknown | null;
 };
 
 /**
@@ -235,7 +238,7 @@ export async function gradeDrillAnswer(
 ): Promise<DrillVerdict | null> {
   const { data, error } = await db
     .from("questions")
-    .select("solution, solution_image_url, options(label, is_correct)")
+    .select("solution, solution_image_url, solution_visual, options(label, is_correct)")
     .eq("id", questionId)
     .eq("visibility", "PUBLIC")
     .maybeSingle();
@@ -245,6 +248,7 @@ export async function gradeDrillAnswer(
   const row = data as unknown as {
     solution: string | null;
     solution_image_url: string | null;
+    solution_visual: unknown;
     options: { label: string; is_correct: boolean }[];
   };
   const correctLabel = row.options.find((o) => o.is_correct)?.label ?? null;
@@ -255,6 +259,7 @@ export async function gradeDrillAnswer(
     correctLabel,
     solution: row.solution,
     solutionImageUrl: row.solution_image_url,
+    solutionVisual: usableVisual(row.solution_visual),
   };
 }
 

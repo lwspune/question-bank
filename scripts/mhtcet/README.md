@@ -129,6 +129,11 @@ npx tsx scripts/mhtcet/validate-db.ts <shiftId>
 
 # 9. flip PUBLIC (everything except `flawed` rows)
 npx tsx scripts/mhtcet/flip-public.ts <shiftId> --apply
+
+# 10. animated solutions, once MHT-CET is in VISUAL_INGESTION_FROM (src/lib/visuals/launch.ts):
+#     the agents drafted each question's verdict + visual with its solution (scripts/visuals/README.md)
+npm run visuals:run -- <batch>            # check + review sheet; LOOK at it
+npm run visuals:run -- <batch> --apply    # writes solution_visual only
 ```
 
 ## Figure-as-option questions ("which structure/graph is X")

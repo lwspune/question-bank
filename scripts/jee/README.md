@@ -104,6 +104,14 @@ hypothesis; confirm it against the printed options before flipping a key. Expect
 roughly 1-2% wrong source keys — that is a prior, never a quota. Papers with zero
 are normal; do not manufacture a flip.
 
+**Animated solutions are part of this loop** (owner, 2026-10-25), once JEE
+Mains is in `VISUAL_INGESTION_FROM` (`src/lib/visuals/launch.ts`): the agent
+drafts each question's verdict (animate / still / none / noFit), and the
+visual where it is "animate", in the same pass as the solution. Before the
+paper goes PUBLIC, run `npm run visuals:run -- <batch>`, look at the sheet,
+then `--apply`. The daily prod-contract check fails on a new PUBLIC question
+with no verdict. Runbook: `scripts/visuals/README.md`.
+
 ## Files
 - `config.ts` — shared IDs + `PaperData` type + `loadPaper` + path helpers + `isCommittable`.
 - `lib.ts` — pure helpers (segmentation, parsing, `sanitizeLatex`, `normalizeMathFunctions`, `gridTableToPipe`); unit-tested in `tests/jee-extract.test.ts`.

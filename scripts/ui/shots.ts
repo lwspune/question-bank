@@ -193,7 +193,13 @@ ${missing.length} capture(s) still to take (${missing[0].file} ...): run --phase
     cdp.close();
     proc.kill();
     await sleep(500);
-    rmSync(profile, { recursive: true, force: true, maxRetries: 5 });
+    // Edge can still hold the profile for a moment after kill. A failed cleanup
+    // must not throw: from inside `finally` it would replace the real error.
+    try {
+      rmSync(profile, { recursive: true, force: true, maxRetries: 5 });
+    } catch (e) {
+      console.warn(`could not remove the temporary profile ${profile}: ${e instanceof Error ? e.message : e}`);
+    }
   }
 }
 
