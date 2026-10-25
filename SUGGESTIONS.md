@@ -155,6 +155,8 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ### Five questions whose KEY or STEM is the problem (owner to decide; found during animated-solution work)
 
+**Now tracked in `scripts/visuals/NEEDS_OWNER.md`** (the standing report; this entry is the history).
+
 Solutions were corrected in place where only the working was wrong (fix batches `scripts/visuals/solution-fixes/2026-10-25-{a,b,c}.json`). These five were left untouched because the fault is in the key or the question text, which are the owner's call:
 
 - **JEE Conic `f62c1b5d` (key looks wrong):** normal at (8/sqrt5, 12/5) to the hyperbola with e = 5/4 is 8sqrt5 x + 15y = 100, so lambda - beta = 85; the stored key is 51 and the stored solution itself says 85.

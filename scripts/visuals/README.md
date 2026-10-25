@@ -38,6 +38,9 @@ are not the stored solution).
    `visuals:fix-solutions`, which writes only `solution`, refuses if the stored
    text changed since, keeps content_hash and records a review. Then draft the
    visual against the corrected text.
+   A wrong KEY or STEM is not fixed by the lane: it goes on
+   `NEEDS_OWNER.md` (owner, 2026-10-25: "if you are not able to fix a question
+   add it to the report"), and every progress report names the new rows.
 3. **The key is compared at apply time.** `visuals:run` refuses an MCQ visual
    whose named option is not the database key, and a numeric one whose answer
    is off the stored numeric answer.
