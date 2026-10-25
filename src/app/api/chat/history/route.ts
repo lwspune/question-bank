@@ -12,7 +12,7 @@ import { getSessionUser } from "@/lib/auth";
 import { readLatestConversation, readUnreadFollowupConversation } from "@/lib/chat/interactionsAdmin";
 import { currentSession, historyTurns, unreadFollowups } from "@/lib/chat/conversation";
 import { explainedQuestionId } from "@/lib/chat/solutionFigure";
-import { loadSolutionFigures } from "@/lib/chat/solutionFigureServer";
+import { loadSolutionFigures, loadSolutionVisuals } from "@/lib/chat/solutionFigureServer";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 10;
@@ -39,8 +39,9 @@ export async function GET() {
     const session = currentSession(rows, lateAnswer ? undefined : Date.now());
     // Read at load, never stored: a figure added to a solution later shows in this chat too.
     const explainedIds = session.map((r) => explainedQuestionId(r.toolCalls)).filter((id): id is string => id !== null);
-    const figures = await loadSolutionFigures(createSupabaseAnonClient(), explainedIds);
-    const turns = historyTurns(session, figures);
+    const anon = createSupabaseAnonClient();
+    const [figures, visuals] = await Promise.all([loadSolutionFigures(anon, explainedIds), loadSolutionVisuals(anon, explainedIds)]);
+    const turns = historyTurns(session, figures, visuals);
     if (session.length === 0 || turns.length === 0) {
       return NextResponse.json({ ok: true, conversation: null }, { headers: NO_STORE });
     }

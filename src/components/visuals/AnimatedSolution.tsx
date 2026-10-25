@@ -26,9 +26,14 @@ function prefersReducedMotion(): boolean {
 }
 
 export default function AnimatedSolution({ visual: raw, solution }: { visual: unknown; solution: string | null }) {
-  const parsed = useMemo(() => parseSolutionVisual(raw), [raw]);
-  if (!parsed.ok) return solution ? <BlockText text={solution} solution /> : null;
-  return <Player visual={parsed.visual} solution={solution} />;
+  // Parsed and checked again here: a chat turn kept on the device can be edited,
+  // so the player never trusts that the server's check still holds.
+  const parsed = useMemo(() => {
+    const r = parseSolutionVisual(raw);
+    return r.ok && checkVisual(r.visual).ok ? r.visual : null;
+  }, [raw]);
+  if (!parsed) return solution ? <BlockText text={solution} solution /> : null;
+  return <Player visual={parsed} solution={solution} />;
 }
 
 function Player({ visual, solution }: { visual: Extract<ReturnType<typeof parseSolutionVisual>, { ok: true }>["visual"]; solution: string | null }) {

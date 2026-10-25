@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
 import { CalendarDays, Check, ListChecks, Reply, RotateCcw, SendHorizontal, ThumbsDown, ThumbsUp, X } from "lucide-react";
 import { toast } from "sonner";
@@ -77,6 +78,9 @@ import {
 import { MESSAGE_IN, USER_BUBBLE, V_BUBBLE } from "./chatStyles";
 import PracticeBuilder, { PENDING_BUILD_KEY, logBuilderStep } from "./PracticeBuilder";
 import type { BuilderAnswers } from "@/lib/practiceTests/builder";
+
+// The animated-solution player loads only when a reply carries a visual.
+const VAnimatedSolution = dynamic(() => import("@/components/visuals/AnimatedSolution"));
 
 /**
  * One message in the window. An assistant turn may carry `links` (the paths
@@ -575,6 +579,8 @@ export default function ChatWidget() {
         explained?: boolean;
         /** The explained question's stored solution figure, shown under the reply (2026-10-24). */
         solutionFigure?: string;
+        /** The explained question's animated solution, played under the reply (2026-10-25). */
+        solutionVisual?: unknown;
         /** Abuse after the calm line (lib/chat/abuse.ts): V says nothing. */
         silent?: boolean;
         error?: string;
@@ -610,6 +616,7 @@ export default function ChatWidget() {
               explained: data.explained === true,
               understood: null,
               ...(typeof data.solutionFigure === "string" ? { figure: data.solutionFigure } : {}),
+              ...(data.solutionVisual && typeof data.solutionVisual === "object" ? { visual: data.solutionVisual } : {}),
             }
           : { role: "assistant", avatar: "laugh", text: data.reply as string, links, card, plan, reveal: true }
       );
@@ -742,6 +749,13 @@ export default function ChatWidget() {
                       <img src={figure} alt="Figure from the solution" loading="lazy" className="max-h-72 max-w-full object-contain" />
                     </a>
                   )}
+                  {/* The animated solution, when the question V explained has one. It plays on its own:
+                      V's words are not the stored solution, so there are no steps to sync. */}
+                  {t.role === "assistant" && !t.reveal && t.visual ? (
+                    <div className="ml-9 mt-2 max-w-[calc(100%-2.25rem)] rounded-lg border bg-card p-2">
+                      <VAnimatedSolution visual={t.visual} solution={null} />
+                    </div>
+                  ) : null}
                   {rateable && (
                     <div className="ml-9 mt-1 flex flex-wrap items-center gap-1">
                       {t.explained ? (

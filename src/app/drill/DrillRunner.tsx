@@ -5,6 +5,7 @@ import Link from "next/link";
 import { toast } from "sonner";
 import { ArrowRight, Check, Loader2, RotateCcw, X } from "lucide-react";
 import BlockText from "@/components/math/BlockText";
+import SolutionViews from "@/components/visuals/SolutionViews";
 import { publicImageUrl } from "@/lib/storage/imageUrl";
 import { cn } from "@/lib/utils";
 import type { AnswerOutcome, ServedQuestion } from "@/lib/drill/service";
@@ -297,19 +298,29 @@ export default function DrillRunner({
                   {progressLine(answered.progress)}
                 </p>
               )}
-              {answered.solution && (
-                <div className="mt-2 rounded-xl border bg-muted/40 p-3 font-serif text-sm leading-relaxed motion-safe:animate-fade-in-up [&_.katex]:max-w-full">
-                  <BlockText text={answered.solution} solution />
-                </div>
-              )}
-              {answered.solutionImageUrl && (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={publicImageUrl(supabaseUrl, answered.solutionImageUrl)}
-                  alt="Solution diagram"
-                  className="mt-2 max-h-60 w-auto rounded border"
-                />
-              )}
+              {/* Animated first where the question has a checked visual; Still is the block as before. */}
+              <SolutionViews
+                visual={answered.solution ? answered.solutionVisual : null}
+                solution={answered.solution}
+                header={null}
+                still={
+                  <>
+                    {answered.solution && (
+                      <div className="mt-2 rounded-xl border bg-muted/40 p-3 font-serif text-sm leading-relaxed motion-safe:animate-fade-in-up [&_.katex]:max-w-full">
+                        <BlockText text={answered.solution} solution />
+                      </div>
+                    )}
+                    {answered.solutionImageUrl && (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={publicImageUrl(supabaseUrl, answered.solutionImageUrl)}
+                        alt="Solution diagram"
+                        className="mt-2 max-h-60 w-auto rounded border"
+                      />
+                    )}
+                  </>
+                }
+              />
             </div>
           )}
         </div>

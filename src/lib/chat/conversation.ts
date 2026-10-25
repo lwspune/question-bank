@@ -198,10 +198,19 @@ export type HistoryTurn =
       understood?: boolean | null;
       /** The explained question's solution figure, as stored (lib/chat/solutionFigure.ts). */
       figure?: string;
+      /** The explained question's animated solution, already through usableVisual() (lib/visuals). */
+      visual?: unknown;
     };
 
-/** `figures`: each explained question's stored solution figure, read by the caller (one query). */
-export function historyTurns(rows: readonly ConversationRow[], figures?: ReadonlyMap<string, string>): HistoryTurn[] {
+/**
+ * `figures`: each explained question's stored solution figure; `visuals`: its
+ * checked animated solution. Both read by the caller (one query each).
+ */
+export function historyTurns(
+  rows: readonly ConversationRow[],
+  figures?: ReadonlyMap<string, string>,
+  visuals?: ReadonlyMap<string, unknown>,
+): HistoryTurn[] {
   const turns: HistoryTurn[] = [];
   for (const r of exchanges(rows)) {
     const target = findReplyTarget(rows, r.replyToId);
@@ -214,8 +223,9 @@ export function historyTurns(rows: readonly ConversationRow[], figures?: Readonl
       ...(asked ? { asked } : {}),
     });
     if (r.replySource === "ai") {
-      const explainedId = figures ? explainedQuestionId(r.toolCalls) : null;
+      const explainedId = figures || visuals ? explainedQuestionId(r.toolCalls) : null;
       const figure = explainedId ? figures?.get(explainedId) : undefined;
+      const visual = explainedId ? visuals?.get(explainedId) : undefined;
       turns.push({
         role: "assistant",
         text: r.reply!,
@@ -226,6 +236,7 @@ export function historyTurns(rows: readonly ConversationRow[], figures?: Readonl
         explained: isExplanation(r.toolCalls, text),
         understood: r.understood ?? null,
         ...(figure ? { figure } : {}),
+        ...(visual ? { visual } : {}),
       });
     } else if (r.replySource === "followup") {
       turns.push({ role: "assistant", text: r.reply!, links: r.replyLinks ?? [], source: "followup" });
