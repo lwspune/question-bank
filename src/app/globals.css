@@ -161,6 +161,18 @@ a[data-nav-pending] {
 .solution-math .katex-display > .katex {
   padding-left: 1em;
 }
+/*
+  A display equation wider than a phone scrolls sideways instead of being cut
+  off at the card edge (owner, 2026-10-25: the JEE slab solution lost the end
+  of its last line at 390 px). overflow-y must be set once overflow-x is, and
+  it clips at the padding edge, so a little vertical padding keeps tall
+  fractions and superscripts whole.
+*/
+.solution-math .katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-block: 0.2em;
+}
 
 /*
   Depth and brand moments (2026-10-04). Every rule here is zero-specificity
