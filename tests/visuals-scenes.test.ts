@@ -190,3 +190,30 @@ describe("functionGraph drawing details", () => {
     expect(vertical).toHaveLength(1);
   });
 });
+
+describe("functionGraph unions and several points", () => {
+  it("checks every interval of a union: x^3 - 3x rises on x < -1 and on x > 1", () => {
+    const ok = parsedParams("functionGraph", { f: "x^3-3*x", window: { x: [-3, 3], y: [-5, 5] }, ask: { kind: "increasingOn", intervals: [[-3, -1], [1, 3]], intervalLabel: "x < −1 or x > 1" } });
+    expect(ok.scene.check(ok.p)).toBe(1);
+    const bad = parsedParams("functionGraph", { f: "x^3-3*x", window: { x: [-3, 3], y: [-5, 5] }, ask: { kind: "increasingOn", intervals: [[-3, -1], [-1, 1]] } });
+    expect(bad.scene.check(bad.p)).toBe(0);
+  });
+  it("refuses a union that overlaps or leaves the window, and more than 3 pieces", () => {
+    const s = getScene("functionGraph")!;
+    const base = { f: "x^3-3*x", window: { x: [-3, 3], y: [-5, 5] } };
+    expect(s.parse({ ...base, ask: { kind: "increasingOn", intervals: [[-3, 0], [-1, 3]] } })).toHaveProperty("error");
+    expect(s.parse({ ...base, ask: { kind: "increasingOn", intervals: [[-4, -1]] } })).toHaveProperty("error");
+    expect(s.parse({ ...base, ask: { kind: "increasingOn", intervals: [[-3, -2], [-1.5, -1], [0, 0.5], [1, 3]] } })).toHaveProperty("error");
+    expect(s.parse({ ...base, ask: { kind: "increasingOn", interval: [1, 3], intervals: [[1, 3]] } })).toHaveProperty("error");
+  });
+  it("finds every point with the given slope and reports their count or the sum of x", () => {
+    // y = x^3/3 - 4x has slope 0 at x = -2 and x = 2.
+    const count = parsedParams("functionGraph", { f: "x^3/3-4*x", window: { x: [-4, 4], y: [-8, 8] }, ask: { kind: "slopePoints", slope: 0, report: "count" } });
+    expect(count.scene.check(count.p)).toBe(2);
+    const sum = parsedParams("functionGraph", { f: "x^3/3-4*x", window: { x: [-4, 4], y: [-8, 8] }, ask: { kind: "slopePoints", slope: 0, report: "sumX" } });
+    expect(sum.scene.check(sum.p)).toBeCloseTo(0, 6);
+    // y = x^2 has slope 4 only at x = 2.
+    const one = parsedParams("functionGraph", { f: "x^2", window: { x: [-1, 5], y: [-1, 20] }, ask: { kind: "slopePoints", slope: 4, report: "sumX" } });
+    expect(one.scene.check(one.p)).toBeCloseTo(2, 6);
+  });
+});

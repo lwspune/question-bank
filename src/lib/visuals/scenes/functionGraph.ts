@@ -8,9 +8,12 @@
  *   slopePoint    the one point where the tangent has a given slope: a tangent
  *                 slides along the curve until its slope matches, then the point
  *                 (and, with normal: true, the normal) appear
+ *   slopePoints   every point with a given tangent slope (two, say): their
+ *                 count, or the sum of their x, is the answer
  *   increasingOn / decreasingOn
- *                 is the curve rising (falling) on the keyed interval: the
- *                 rising stretches are shaded and the interval is checked
+ *                 is the curve rising (falling) on the keyed interval, or on
+ *                 each piece of a keyed union: the rising stretches are shaded
+ *                 and every piece is checked
  *
  * Formulas use lib/visuals/expr (never eval). Beats: curve, compare, mark,
  * tangent, shade.
@@ -26,7 +29,8 @@ type Fn = (x: number) => number;
 type Ask =
   | { kind: "crossings" }
   | { kind: "slopePoint"; slope: number; normal: boolean; pointLabel: string | undefined }
-  | { kind: "increasingOn" | "decreasingOn"; interval: [number, number]; intervalLabel: string };
+  | { kind: "slopePoints"; slope: number; normal: boolean; report: "count" | "sumX" | "sumY"; pointLabels: string[] }
+  | { kind: "increasingOn" | "decreasingOn"; intervals: [number, number][]; intervalLabel: string };
 
 export interface FunctionGraphParams {
   f: Fn;
@@ -101,6 +105,8 @@ function intervalsWhere(pred: (x: number) => boolean, a: number, b: number): [nu
 export interface FunctionGraphFacts {
   crossings: [number, number][];
   point: [number, number] | null;
+  /** Every point with the asked slope (slopePoint and slopePoints). */
+  points: [number, number][];
   rising: [number, number][];
 }
 
@@ -114,15 +120,16 @@ export function functionGraphFacts(p: FunctionGraphParams): FunctionGraphFacts {
   const crossings = p.g.flatMap((g) => rootsOf((x) => p.f(x) - g.fn(x), a, b).map((x): [number, number] => [x, p.f(x)]));
   crossings.sort((m, n) => m[0] - n[0]);
   let point: [number, number] | null = null;
-  if (p.ask.kind === "slopePoint") {
+  let points: [number, number][] = [];
+  if (p.ask.kind === "slopePoint" || p.ask.kind === "slopePoints") {
     const target = p.ask.slope;
     const eps = (b - a) * 1e-4;
-    const rs = rootsOf((x) => slopeAt(p.f, x) - target, a + eps, b - eps);
-    if (rs.length === 1) point = [rs[0], p.f(rs[0])];
+    points = rootsOf((x) => slopeAt(p.f, x) - target, a + eps, b - eps).map((x): [number, number] => [x, p.f(x)]);
+    if (points.length === 1) point = points[0];
   }
   const sign = p.ask.kind === "decreasingOn" ? -1 : 1;
   const rising = intervalsWhere((x) => sign * slopeAt(p.f, x) > 0, a, b);
-  const facts = { crossings, point, rising };
+  const facts = { crossings, point, points, rising };
   factCache.set(p, facts);
   return facts;
 }
@@ -177,15 +184,36 @@ export const functionGraph: Scene<FunctionGraphParams> = {
       if (a.kind === "crossings") {
         if (!g.length) throw new ParamError("crossings needs at least one line or curve in g");
         ask = { kind: "crossings" };
-      } else if (a.kind === "slopePoint") {
+      } else if (a.kind === "slopePoint" || a.kind === "slopePoints") {
         if (a.normal !== undefined && typeof a.normal !== "boolean") throw new ParamError("normal must be true or false");
-        ask = { kind: "slopePoint", slope: finite(a, "slope"), normal: a.normal === true, pointLabel: optionalLabel(a, "pointLabel") };
+        const slope = finite(a, "slope");
+        if (a.kind === "slopePoint") {
+          ask = { kind: "slopePoint", slope, normal: a.normal === true, pointLabel: optionalLabel(a, "pointLabel") };
+        } else {
+          const report = a.report;
+          if (report !== "count" && report !== "sumX" && report !== "sumY") throw new ParamError('report must be "count", "sumX" or "sumY"');
+          const labels = a.pointLabels === undefined ? [] : a.pointLabels;
+          if (!Array.isArray(labels) || labels.length > 4) throw new ParamError("pointLabels must be a list of at most 4");
+          ask = { kind: "slopePoints", slope, normal: a.normal === true, report, pointLabels: labels.map((l, i) => plainLabel(l, `pointLabels[${i}]`)) };
+        }
       } else if (a.kind === "increasingOn" || a.kind === "decreasingOn") {
-        const interval = pair(a, "interval");
-        if (!(interval[1] > interval[0]) || interval[0] < x[0] || interval[1] > x[1]) throw new ParamError("interval must run forward inside the window");
-        ask = { kind: a.kind, interval, intervalLabel: optionalLabel(a, "intervalLabel") ?? `${num(interval[0])} < x < ${num(interval[1])}` };
+        // One interval (`interval`, the original form, still stored on early visuals)
+        // or a union of up to 3 (`intervals`).
+        if (a.interval !== undefined && a.intervals !== undefined) throw new ParamError("give interval or intervals, not both");
+        const raw = a.intervals === undefined ? [pair(a, "interval")] : a.intervals;
+        if (!Array.isArray(raw) || raw.length < 1 || raw.length > 3) throw new ParamError("intervals must be a list of 1 to 3 pairs");
+        const intervals = raw.map((iv, i) => pair({ [`intervals[${i}]`]: iv }, `intervals[${i}]`));
+        intervals.forEach(([lo, hi], i) => {
+          if (!(hi > lo) || lo < x[0] || hi > x[1]) throw new ParamError(`interval ${i + 1} must run forward inside the window`);
+          if (i > 0 && lo < intervals[i - 1][1]) throw new ParamError("intervals must be in order and must not overlap");
+        });
+        ask = {
+          kind: a.kind,
+          intervals,
+          intervalLabel: optionalLabel(a, "intervalLabel", 32) ?? intervals.map(([lo, hi]) => `${num(lo)} < x < ${num(hi)}`).join(" or "),
+        };
       } else {
-        throw new ParamError("ask.kind must be crossings, slopePoint, increasingOn or decreasingOn");
+        throw new ParamError("ask.kind must be crossings, slopePoint, slopePoints, increasingOn or decreasingOn");
       }
       return { f, fLabel: optionalLabel(o, "fLabel", 32) ?? "y = f(x)", g, x, y, xTicks, ask };
     }),
@@ -197,10 +225,14 @@ export const functionGraph: Scene<FunctionGraphParams> = {
         return facts.crossings.length;
       case "slopePoint":
         return facts.point ? facts.point[0] : NaN;
+      case "slopePoints":
+        if (!facts.points.length) return NaN;
+        if (p.ask.report === "count") return facts.points.length;
+        return facts.points.reduce((sum, [px, py]) => sum + (p.ask.kind === "slopePoints" && p.ask.report === "sumY" ? py : px), 0);
       case "increasingOn":
-        return monotoneOn(p.f, p.ask.interval, 1) ? 1 : 0;
+        return p.ask.intervals.every((iv) => monotoneOn(p.f, iv, 1)) ? 1 : 0;
       case "decreasingOn":
-        return monotoneOn(p.f, p.ask.interval, -1) ? 1 : 0;
+        return p.ask.intervals.every((iv) => monotoneOn(p.f, iv, -1)) ? 1 : 0;
     }
   },
 
@@ -210,6 +242,11 @@ export const functionGraph: Scene<FunctionGraphParams> = {
         return `The curve meets the line${p.g.length > 1 ? "s" : ""} at ${value} points in the window.`;
       case "slopePoint":
         return Number.isFinite(value) ? `The tangent has slope ${num(p.ask.slope)} at x = ${value.toFixed(4)} on the drawing.` : "No single point has that slope in the window.";
+      case "slopePoints": {
+        const n = functionGraphFacts(p).points.length;
+        const what = p.ask.report === "count" ? `${n} point${n === 1 ? "" : "s"}` : `${n} point${n === 1 ? "" : "s"}, ${p.ask.report === "sumX" ? "x" : "y"} adding up to ${num(value, 4)}`;
+        return `The tangent has slope ${num(p.ask.slope)} at ${what} on the drawing.`;
+      }
       case "increasingOn":
       case "decreasingOn": {
         const verb = p.ask.kind === "increasingOn" ? "rises" : "falls";
@@ -306,8 +343,14 @@ export const functionGraph: Scene<FunctionGraphParams> = {
         if (s >= reach) continue;
         under.push({ kind: "rect", x: X(s), y: P.t, w: X(Math.min(e, reach)) - X(s), h: P.b - P.t, fill: "goodSoft" });
       }
-      if (ps > 0.6) {
-        const [lo, hi] = p.ask.interval;
+      if (ps > 0.6 && p.ask.intervals.length > 1) {
+        // A union: a band per piece, and the label in the header row, since one
+        // label cannot sit beside two bands.
+        const word = p.ask.kind === "increasingOn" ? "rising" : "falling";
+        for (const [lo, hi] of p.ask.intervals) over.push({ kind: "rect", x: X(lo), y: axisY - 4, w: X(hi) - X(lo), h: 8, rx: 4, fill: "good" });
+        over.push(text(P.r - 2, P.t + 2, `${word}: ${p.ask.intervalLabel}`, { tone: "good", size: 11, weight: 700, anchor: "end" }));
+      } else if (ps > 0.6) {
+        const [lo, hi] = p.ask.intervals[0];
         // The label goes just above or just below the band, whichever is farther
         // from the curve over the label's width.
         // Candidates: centred, or slid to either end of the band; above or below it.
@@ -361,81 +404,90 @@ export const functionGraph: Scene<FunctionGraphParams> = {
       over.push(text(P.r - 2, P.t + 2, `${shown} solution${shown === 1 ? "" : "s"}`, { tone: "good", size: 13, weight: 700, anchor: "end" }));
     }
 
-    // A tangent sliding along the curve to the point with the asked slope.
-    if (p.ask.kind === "slopePoint" && facts.point) {
-      const [x0, y0] = facts.point;
+    // A tangent sliding along the curve to the point(s) with the asked slope.
+    if (p.ask.kind === "slopePoint" || p.ask.kind === "slopePoints") {
+      const ask = p.ask;
+      const marked = ask.kind === "slopePoint" ? (facts.point ? [facts.point] : []) : facts.points;
+      const labels = marked.map(([x0, y0], i) => (ask.kind === "slopePoint" ? ask.pointLabel : ask.pointLabels[i]) ?? `(${num(x0, 3)}, ${num(y0, 3)})`);
+      const dx = (xb - xa) * (marked.length > 1 ? 0.12 : 0.2);
       const pt = prog("tangent");
-      if (pt > 0 && pm === 0) {
-        const start = xa + (xb - xa) * 0.6;
-        const xt = start + (x0 - start) * pt;
+      if (pt > 0 && pm === 0 && marked.length) {
+        // One point: slide to it from the right. Several: sweep across the window, left to right.
+        const from = marked.length > 1 ? xa + (xb - xa) * 0.04 : xa + (xb - xa) * 0.6;
+        const to = marked.length > 1 ? xb - (xb - xa) * 0.04 : marked[0][0];
+        const xt = from + (to - from) * pt;
         const yt = p.f(xt);
         const s = slopeAt(p.f, xt);
         if (Number.isFinite(yt) && Number.isFinite(s)) {
-          const dx = (xb - xa) * 0.18;
+          const d = (xb - xa) * 0.18;
           over.push(
-            line(X(xt - dx), clampY(Y(yt - s * dx)), X(xt + dx), clampY(Y(yt + s * dx)), { stroke: "amber", width: 2.2, cap: "round" }),
+            line(X(xt - d), clampY(Y(yt - s * d)), X(xt + d), clampY(Y(yt + s * d)), { stroke: "amber", width: 2.2, cap: "round" }),
             dot(X(xt), clampY(Y(yt)), 3.5, "amber"),
             text(P.r - 2, P.t + 2, `tangent slope ${num(s)}`, { tone: "amber", size: 12, weight: 700, anchor: "end" }),
           );
         }
+        // Points already passed by the sweep stay marked.
+        if (marked.length > 1) for (const [x0, y0] of marked) if (x0 <= xt) over.push(dot(X(x0), clampY(Y(y0)), 5, "good", { stroke: "card", width: 2 }));
       }
-      if (pm > 0) {
-        const dx = (xb - xa) * 0.2;
-        over.push(line(X(x0 - dx), clampY(Y(y0 - p.ask.slope * dx)), X(x0 + dx), clampY(Y(y0 + p.ask.slope * dx)), { stroke: "amber", width: 2, cap: "round" }));
-        if (p.ask.normal) {
-          if (p.ask.slope === 0) {
-            // A horizontal tangent has a vertical normal.
-            over.push(line(X(x0), P.t + 20, X(x0), P.b, { stroke: "fg", width: 1.8, dash: "5 4", opacity: pm }));
-          } else {
-            const m = -1 / p.ask.slope;
-            over.push(line(X(x0 - dx), clampY(Y(y0 - m * dx)), X(x0 + dx), clampY(Y(y0 + m * dx)), { stroke: "fg", width: 1.8, dash: "5 4", opacity: pm }));
-          }
-        }
-        // The label goes in whichever of the four spots round the point is
-        // farthest from the curve, the tangent and the normal, so it never sits
-        // on a line wherever the point falls.
-        const label = p.ask.pointLabel ?? `(${num(x0, 3)}, ${num(y0, 3)})`;
-        const halfW = label.length * 3.4;
-        const px = X(x0);
-        const py = clampY(Y(y0));
+      if (pm > 0 && marked.length) {
+        // Every line drawn round the points, so no label lands on one.
         const obstacles: [number, number][] = [];
         for (let i = 0; i <= 120; i++) {
           const xs = xa + ((xb - xa) * i) / 120;
           const v = p.f(xs);
           if (Number.isFinite(v)) obstacles.push([X(xs), Y(v)]);
-          const along = xs - x0;
-          if (Math.abs(along) <= dx) {
-            obstacles.push([X(xs), Y(y0 + p.ask.slope * along)]);
-            if (p.ask.normal && p.ask.slope !== 0) obstacles.push([X(xs), Y(y0 - along / p.ask.slope)]);
+        }
+        for (const [x0, y0] of marked) {
+          over.push(line(X(x0 - dx), clampY(Y(y0 - ask.slope * dx)), X(x0 + dx), clampY(Y(y0 + ask.slope * dx)), { stroke: "amber", width: 2, cap: "round" }));
+          for (let k = -10; k <= 10; k++) {
+            const along = (dx * k) / 10;
+            obstacles.push([X(x0 + along), Y(y0 + ask.slope * along)]);
+          }
+          if (ask.normal) {
+            if (ask.slope === 0) {
+              // A horizontal tangent has a vertical normal.
+              over.push(line(X(x0), P.t + 20, X(x0), P.b, { stroke: "fg", width: 1.8, dash: "5 4", opacity: pm }));
+              for (let yy = P.t + 20; yy <= P.b; yy += 4) obstacles.push([X(x0), yy]);
+            } else {
+              const m = -1 / ask.slope;
+              over.push(line(X(x0 - dx), clampY(Y(y0 - m * dx)), X(x0 + dx), clampY(Y(y0 + m * dx)), { stroke: "fg", width: 1.8, dash: "5 4", opacity: pm }));
+              for (let k = -10; k <= 10; k++) {
+                const along = (dx * k) / 10;
+                obstacles.push([X(x0 + along), Y(y0 + m * along)]);
+              }
+            }
           }
         }
-        // Near and far spots on both sides; a far one gets a leader line back to the point.
-        if (p.ask.normal && p.ask.slope === 0) {
-          for (let yy = P.t + 20; yy <= P.b; yy += 4) obstacles.push([px, yy]);
-        }
-        const spots: [number, number, "start" | "end"][] = [];
-        for (const ox of [10, 30, 55]) {
-          for (const oy of [-12, -32, -55, -80, 22, 42, 64]) spots.push([px + ox, py + oy, "start"], [px - ox, py + oy, "end"]);
-        }
-        const room = ([sx, sy, anchor]: [number, number, "start" | "end"]) => {
-          const cx = anchor === "start" ? sx + halfW : sx - halfW;
-          const cy = sy - 4;
-          if (cx - halfW < 2 || cx + halfW > W - 2 || cy < P.t + 14 || cy > P.b) return -1;
-          // Distance from each obstacle to the label's whole box (half-height 8): 0 means it touches the text.
-          return Math.min(...obstacles.map(([ox, oy]) => Math.max(Math.abs(ox - cx) - halfW, Math.abs(oy - cy) - 8, 0)));
-        };
-        // Clear room decides; nearness only breaks near-ties. Room is capped at 12 px, so once a
-        // spot is clear enough the nearest clear spot wins instead of the emptiest corner.
-        const score = (s: [number, number, "start" | "end"]) => Math.min(room(s), 12) - 0.02 * Math.hypot(s[0] - px, s[1] - py);
-        const [lx, ly, anchor] = spots.reduce((best, s) => (score(s) > score(best) ? s : best), spots[0]);
-        if (Math.hypot(lx - px, ly - py) > 30) {
-          over.push(line(px, py, lx + (anchor === "start" ? -3 : 3), ly - 4, { stroke: "good", width: 1, opacity: 0.7 }));
-        }
-        over.push(
-          dot(px, py, 5.5, "good", { stroke: "card", width: 2 }),
-          text(lx, ly, label, { tone: "good", size: 12, weight: 700, anchor }),
-          text(P.r - 2, P.t + 2, p.ask.normal ? "tangent slope " + num(p.ask.slope) + ", normal dashed" : "tangent slope " + num(p.ask.slope), { tone: "amber", size: 11, weight: 600, anchor: "end" }),
-        );
+        // Each label goes in the clearest of several spots round its point; a far one gets a leader line.
+        marked.forEach(([x0, y0], i) => {
+          const label = labels[i];
+          const halfW = label.length * 3.4;
+          const px = X(x0);
+          const py = clampY(Y(y0));
+          const spots: [number, number, "start" | "end"][] = [];
+          for (const ox of [10, 30, 55]) {
+            for (const oy of [-12, -32, -55, -80, 22, 42, 64]) spots.push([px + ox, py + oy, "start"], [px - ox, py + oy, "end"]);
+          }
+          const room = ([sx, sy, anchor]: [number, number, "start" | "end"]) => {
+            const cx = anchor === "start" ? sx + halfW : sx - halfW;
+            const cy = sy - 4;
+            if (cx - halfW < 2 || cx + halfW > W - 2 || cy < P.t + 14 || cy > P.b) return -1;
+            // Distance from each obstacle to the label's whole box (half-height 8): 0 means it touches the text.
+            return Math.min(...obstacles.map(([ox, oy]) => Math.max(Math.abs(ox - cx) - halfW, Math.abs(oy - cy) - 8, 0)));
+          };
+          // Clear room decides; nearness only breaks near-ties (room capped at 12 px).
+          const score = (s: [number, number, "start" | "end"]) => Math.min(room(s), 12) - 0.02 * Math.hypot(s[0] - px, s[1] - py);
+          const [lx, ly, anchor] = spots.reduce((best, s) => (score(s) > score(best) ? s : best), spots[0]);
+          if (Math.hypot(lx - px, ly - py) > 30) {
+            over.push(line(px, py, lx + (anchor === "start" ? -3 : 3), ly - 4, { stroke: "good", width: 1, opacity: 0.7 }));
+          }
+          over.push(dot(px, py, 5.5, "good", { stroke: "card", width: 2 }), text(lx, ly, label, { tone: "good", size: 12, weight: 700, anchor }));
+          // A placed label is an obstacle for the next one.
+          const cx = anchor === "start" ? lx + halfW : lx - halfW;
+          for (let k = -4; k <= 4; k++) obstacles.push([cx + (halfW * k) / 4, ly - 4]);
+        });
+        const head = ask.kind === "slopePoints" ? `${marked.length} points with tangent slope ${num(ask.slope)}` : `tangent slope ${num(ask.slope)}`;
+        over.push(text(P.r - 2, P.t + 2, ask.normal ? `${head}, normal dashed` : head, { tone: "amber", size: 11, weight: 600, anchor: "end" }));
       }
     }
 

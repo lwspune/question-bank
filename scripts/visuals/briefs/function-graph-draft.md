@@ -48,8 +48,19 @@ Or, when it does not fit cleanly: `{ "n": 7, "id": "<id>", "skip": true, "reason
     give the TANGENT's slope (if the question fixes the normal's slope m, the
     tangent's is −1/m) and `normal: true` when the question is about the
     normal. The window must contain exactly one such point. Answer = its x.
+  - `{ "kind": "slopePoints", "slope": <tangent slope>, "normal": true|false, "report": "count" | "sumX" | "sumY", "pointLabels": ["(2, −16/3)", "(−2, 16/3)"] }`:
+    when SEVERAL points have that slope (the key lists two points, or asks
+    for the sum of their x or y). The window must contain all of them and no
+    others. Answer = how many (`count`), or the sum of their x (`sumX`) or y
+    (`sumY`). `pointLabels` in left-to-right order.
   - `{ "kind": "increasingOn" | "decreasingOn", "interval": [a, b], "intervalLabel": "π/4 < x < π/2" }`:
     the KEYED option's interval. Answer value = 1.
+  - For a keyed UNION of intervals ("x < −1 or x > 2"), give `"intervals": [[a, b], [c, d]]`
+    instead of `interval` (at most 3 pieces, in order, not overlapping, each
+    inside the window; cut an infinite end at the window's edge) and an
+    `intervalLabel` for the whole union (at most 32 characters). Answer value = 1.
+    A key that gives BOTH an increasing and a decreasing interval: draft the
+    increasing part only, and say so in the answer label.
 
 ### steps
 
@@ -59,8 +70,9 @@ step starts at 0, later steps start later, every step has at least one beat,
 and each beat is used at most once. Beats:
 
 - `curve`: draw f. `compare`: draw g (crossings). `mark`: count the crossings
-  (crossings) or mark the point (slopePoint). `tangent`: slide a tangent along
-  the curve to the point (slopePoint). `shade`: shade where f rises or falls
+  (crossings) or mark the point(s) (slopePoint, slopePoints). `tangent`: slide a
+  tangent along the curve to the point, or sweep it across past every point
+  (slopePoint, slopePoints). `shade`: shade where f rises or falls
   (increasingOn / decreasingOn).
 
 Match the beats to what each sentence says. A trailing "Matches option X"
