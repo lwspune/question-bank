@@ -319,3 +319,117 @@ describe("THEME_CSS", () => {
     expect(rule).toMatch(/border: [^;]+solid/);
   });
 });
+
+// ── Solved Papers (board) ────────────────────────────────────────────────────
+// A board paper prints as it was set (its own numbers, marks, sections, the
+// OR between alternatives, a case study's passage once), then its solutions on
+// a fresh page under the SAME printed numbers. The paper body comes from the
+// paper download's own printer (lib/export/pdf/paperHtml), so the book and a
+// downloaded paper cannot disagree about a question.
+describe("buildSolvedPaperHtml", () => {
+  const written = (id: string, over: Partial<QuestionRow> = {}): QuestionRow =>
+    q(id, "A", { options: [], questionFormat: "subjective", solution: `Model answer of ${id}.`, ...over });
+  const questions: QuestionRow[] = [
+    q("m1", "C", { solution: "Because of m1." }),
+    written("w1"),
+    written("w2"),
+    written("c1", { setId: "case:1", context: "A passage about lenses." }),
+    written("c2", { setId: "case:1", context: "A passage about lenses." }),
+  ];
+  const input = {
+    number: 2,
+    bookTitle: "Maharashtra HSC Class 12 Physics",
+    paper: { label: "February 2026", paperCode: "J-137", totalMarks: 70, durationMinutes: 180 },
+    questions,
+    sectionOf: new Map([
+      ["m1", "Section A"],
+      ["w1", "Section B"],
+      ["w2", "Section B"],
+      ["c1", "Section C"],
+      ["c2", "Section C"],
+    ]),
+    printedOf: new Map([
+      ["m1", { number: "1 (i)", marks: 1, orBefore: false }],
+      ["w1", { number: "12", marks: 2, orBefore: false }],
+      ["w2", { number: "12", marks: 2, orBefore: true }],
+      ["c1", { number: "20 (a)", marks: 4, orBefore: false }],
+      ["c2", { number: "20 (b)", marks: null, orBefore: false }],
+    ]),
+    head: "",
+  };
+
+  it("heads the paper with its sitting, code, marks and time", async () => {
+    const { buildSolvedPaperHtml } = await import("@/lib/ebooks/bookHtml");
+    const headEnd = between(buildSolvedPaperHtml(input), 'class="chead', 'id="paper"');
+    expect(headEnd).toContain("February 2026");
+    expect(headEnd).toContain("J-137");
+    expect(headEnd).toContain("70 marks");
+    expect(headEnd).toContain("3 hours");
+  });
+
+  it("prints the paper as set: its numbers, marks, sections and the OR", async () => {
+    const { buildSolvedPaperHtml } = await import("@/lib/ebooks/bookHtml");
+    const paper = between(buildSolvedPaperHtml(input), 'id="paper"', 'id="solutions"');
+    expect(paper).toMatch(/1 \(i\)\.[\s\S]*Stem of m1[\s\S]*\[1\]/);
+    expect(paper).toMatch(/Section A[\s\S]*Section B[\s\S]*Section C/);
+    expect(paper).toMatch(/Stem of w1[\s\S]*class="or">OR<[\s\S]*Stem of w2/);
+    expect(paper).toMatch(/\(c\)<\/span><span class="ot">opt C/);
+  });
+
+  it("prints a case study's passage once", async () => {
+    const { buildSolvedPaperHtml } = await import("@/lib/ebooks/bookHtml");
+    const paper = between(buildSolvedPaperHtml(input), 'id="paper"', 'id="solutions"');
+    expect(paper.split("A passage about lenses.").length - 1).toBe(1);
+  });
+
+  it("never prints an answer or a solution inside the paper", async () => {
+    const { buildSolvedPaperHtml } = await import("@/lib/ebooks/bookHtml");
+    const paper = between(buildSolvedPaperHtml(input), 'id="paper"', 'id="solutions"');
+    expect(paper).not.toContain("Because of m1.");
+    expect(paper).not.toContain("Model answer of");
+  });
+
+  it("solves every question on a new page, under its printed number", async () => {
+    const { buildSolvedPaperHtml } = await import("@/lib/ebooks/bookHtml");
+    const html = buildSolvedPaperHtml(input);
+    expect(html).toMatch(/id="solutions" class="newpage[ "]/);
+    const sol = between(html, 'id="solutions"');
+    expect(sol).toMatch(/1 \(i\)\.[\s\S]*Answer: \(c\)[\s\S]*Because of m1\./);
+    for (const id of ["w1", "w2", "c1", "c2"]) expect(sol).toContain(`Model answer of ${id}.`);
+    expect(sol).toMatch(/20 \(b\)\.[\s\S]*Model answer of c2\./);
+  });
+});
+
+// The Solved Papers cover (2026-10-26, owner: "premium looking"): dark navy
+// with gold, the board line over the subject, the edition, and a sheet from
+// the newest paper. Only that kind wears it; the CET books keep their cover.
+describe("buildEbookFrontHtml premium cover", () => {
+  const input = {
+    kind: "papers" as const,
+    title: "Maharashtra HSC Class 12 Physics",
+    subtitle: "Every board paper, as it was set.",
+    stats: [{ value: "7", label: "board papers" }],
+    preview: "<p>sheet</p>",
+    chapters: [{ number: 1, name: "June 2026", detail: "70 marks", page: 3 }],
+    head: "",
+    cover: { over: "Maharashtra HSC Class 12", main: "Physics & <Optics>", edition: "2026 Edition" },
+  };
+
+  it("puts the board line over the subject, with the edition and the sheet", () => {
+    const html = buildEbookFrontHtml(input);
+    expect(html).toContain('class="pcover"');
+    expect(html).toMatch(/pc-over">Maharashtra HSC Class 12<[\s\S]*pc-main[^>]*>Physics &amp; &lt;Optics&gt;</);
+    expect(html).toContain("2026 Edition");
+    expect(html).toContain("<p>sheet</p>");
+    expect(html).toContain("Solved Papers");
+  });
+
+  it("keeps the contents page", () => {
+    expect(buildEbookFrontHtml(input)).toMatch(/class="toc"[\s\S]*June 2026[\s\S]*>3</);
+  });
+
+  it("leaves a book without cover lines on the standard cover", () => {
+    const { cover: _cover, ...plain } = input;
+    expect(buildEbookFrontHtml(plain)).not.toContain('class="pcover"');
+  });
+});

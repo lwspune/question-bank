@@ -27,6 +27,7 @@ const KIND_LINE: Record<StoreEbook["kind"], string> = {
   formula: "Formulas, tables and traps",
   notes: "Every chapter taught",
   pyq: "Previous year questions, solved",
+  papers: "Past board papers, solved",
 };
 
 const idOf = (subject: string) => `s-${subject.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;

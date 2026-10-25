@@ -9,7 +9,8 @@
  *
  * One accent per book kind, so the three are told apart at a glance: Formula
  * royal blue (the brand, and the colour of formula boxes), Notes violet (the
- * notes pages' practice colour), PYQ emerald (the colour of worked answers).
+ * notes pages' practice colour), PYQ emerald (the colour of worked answers),
+ * Solved Papers amber (2026-10-26, the board books).
  *
  * The page colour is painted under every page when the parts are joined
  * (lib/ebooks/pdfAssemble paintPaper): Chrome leaves @page margins white.
@@ -21,8 +22,13 @@ export const PAPER = "#f5f7fb";
 /** The site's navy (--foreground) and muted text (--muted-foreground). */
 export const INK = "#0f1d4a";
 export const MUTED = "#55657f";
-export const ACCENT: Record<EbookKind, string> = { formula: "#1d4ed8", notes: "#6d28d9", pyq: "#047857" };
-export const KIND_LABEL: Record<EbookKind, string> = { formula: "Formula Book", notes: "Notes Book", pyq: "PYQ Book" };
+export const ACCENT: Record<EbookKind, string> = { formula: "#1d4ed8", notes: "#6d28d9", pyq: "#047857", papers: "#b45309" };
+export const KIND_LABEL: Record<EbookKind, string> = {
+  formula: "Formula Book",
+  notes: "Notes Book",
+  pyq: "PYQ Book",
+  papers: "Solved Papers",
+};
 
 /** Shared by every part. Pages keep their margins; the page tint shows through them once painted. */
 export const THEME_CSS = `
@@ -127,4 +133,10 @@ table.ref { border-collapse: collapse; width: 100%; font-size: 9pt; }
 .topic:last-child { border-bottom: 0; }
 .topic .n { color: var(--muted); white-space: nowrap; }
 .opener .how { margin-top: 14pt; font-size: 9.5pt; color: var(--muted); }
+
+/* Solved Papers: a paper's own numbers ("20 (b).") are wider than a pill's one or two digits */
+.chead .pmeta { color: var(--muted); font-size: 10pt; margin-top: 2pt; }
+.bp .q.pq { grid-template-columns: max-content 1fr; }
+.bp .qn { border-radius: 6pt; }
+.bp .ans { font-weight: 700; color: var(--emerald); margin-bottom: 2pt; }
 `;

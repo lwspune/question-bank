@@ -7,13 +7,14 @@
  * textbook's order.
  */
 import { describe, it, expect } from "vitest";
-import { EBOOKS, getEbook, ebookChapters, chapterClassLabel } from "@/lib/ebooks/catalog";
+import { EBOOKS, PAPERS_EBOOKS, getEbook, ebookChapters, chapterClassLabel } from "@/lib/ebooks/catalog";
+import { getExamBySlug } from "@/lib/exam/examContext";
 import { getBookBySlug } from "@/lib/books/registry";
 import { getNotesChaptersForSubject } from "@/lib/notes/chapters";
 
 describe("ebook catalog", () => {
-  it("sells seven books: formulas and notes for three CET subjects, and the Maths PYQ book", () => {
-    expect(EBOOKS.map((e) => e.slug).sort()).toEqual([
+  it("sells seven CET books: formulas and notes for three subjects, and the Maths PYQ book", () => {
+    expect(EBOOKS.filter((e) => e.kind !== "papers").map((e) => e.slug).sort()).toEqual([
       "mht-cet-chemistry-formulas",
       "mht-cet-chemistry-notes",
       "mht-cet-maths-formulas",
@@ -34,7 +35,7 @@ describe("ebook catalog", () => {
     }
   );
 
-  it.each(EBOOKS.filter((e) => e.kind === "notes").map((e) => [e.slug, e] as const))(
+  it.each(EBOOKS.flatMap((e) => (e.kind === "notes" ? [[e.slug, e] as const] : [])))(
     "%s carries every notes chapter of its subject, in book order",
     (_slug, ebook) => {
       const expected = getNotesChaptersForSubject(ebook.notesRoute!).map((c) => c.chapterSlug);
@@ -42,7 +43,7 @@ describe("ebook catalog", () => {
     }
   );
 
-  it.each(EBOOKS.filter((e) => e.kind === "formula").map((e) => [e.slug, e] as const))(
+  it.each(EBOOKS.flatMap((e) => (e.kind === "formula" ? [[e.slug, e] as const] : [])))(
     "%s carries every notes chapter that has a formula, table or trap, in book order",
     (_slug, ebook) => {
       const chapters = ebookChapters(ebook);
@@ -54,12 +55,42 @@ describe("ebook catalog", () => {
     }
   );
 
-  it.each(EBOOKS.map((e) => [e.slug, e] as const))("%s has a sample chapter inside the book", (_slug, ebook) => {
-    expect(ebookChapters(ebook).map((c) => c.slug)).toContain(ebook.sampleChapter);
+  it.each(EBOOKS.flatMap((e) => (e.kind === "papers" ? [] : [[e.slug, e] as const])))(
+    "%s has a sample chapter inside the book",
+    (_slug, ebook) => {
+      expect(ebookChapters(ebook).map((c) => c.slug)).toContain(ebook.sampleChapter);
+    }
+  );
+
+  // Solved Papers (2026-10-26): one book per board subject with stored papers.
+  // Their papers come from the database at build time; what is pinned here is
+  // which subjects get a book and the rule each follows.
+  it("has a Solved Papers book for each of the 17 board subjects with stored papers", () => {
+    expect(PAPERS_EBOOKS).toHaveLength(17);
+    expect(new Set(EBOOKS.map((e) => e.slug)).size).toBe(EBOOKS.length);
+    for (const b of PAPERS_EBOOKS) expect(getExamBySlug(b.examSlug)?.boardExam, b.slug).toBe(true);
+  });
+
+  it("seeds a store row (0186) for exactly the Solved Papers books in the catalog", async () => {
+    const { readFileSync } = await import("node:fs");
+    const sql = readFileSync("supabase/migrations/0186_ebook_solved_papers.sql", "utf8");
+    const seeded = Array.from(sql.matchAll(/\('([a-z0-9-]+-solved-papers)'/g)).map((m) => m[1]);
+    expect(seeded.sort()).toEqual(PAPERS_EBOOKS.map((b) => b.slug).sort());
+  });
+
+  it("carries every Maharashtra paper, and one CBSE paper a year", () => {
+    for (const b of PAPERS_EBOOKS) expect(b.rule, b.slug).toBe(b.examSlug.startsWith("cbse") ? "first-set-per-year" : "every");
+  });
+
+  it("names the SSC History book for both parts of its paper", () => {
+    expect(getEbook("mh-ssc-10-history-solved-papers")?.title).toBe("Maharashtra SSC Class 10 History and Political Science");
+    expect(getEbook("mh-hsc-12-physics-solved-papers")?.title).toBe("Maharashtra HSC Class 12 Physics");
   });
 
   it("the PYQ book opens with Class XI and closes with Class XII", () => {
-    const chapters = ebookChapters(getEbook("mht-cet-maths-pyq")!);
+    const book = getEbook("mht-cet-maths-pyq");
+    if (!book || book.kind === "papers") throw new Error("the CET PYQ book is missing");
+    const chapters = ebookChapters(book);
     expect(chapters[0].slug).toBe("trigonometry-ii");
     expect(chapters[chapters.length - 1].slug).toBe("binomial-distribution");
     expect(chapters.filter((c) => !c.notes).map((c) => c.slug).sort()).toEqual(["quadratic-equations", "sequences-and-series"]);
