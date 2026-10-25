@@ -46,11 +46,43 @@ function Player({ visual, solution }: { visual: Extract<ReturnType<typeof parseS
   const slider = scene.slider?.(params);
 
   const [sliderValue, setSliderValue] = useState<number | undefined>(slider?.initial);
-  // At rest the first step is shown complete: no motion until the student asks.
-  const [pos, setPos] = useState<Pos>({ step: 0, beat: steps[0].beats.length - 1, t: 1 });
+  // Starts at the very beginning: the first run plays by itself once the picture
+  // is in view (owner, 2026-10-25), and the button only offers to play it again.
+  const [pos, setPos] = useState<Pos>({ step: 0, beat: 0, t: 0 });
   const raf = useRef(0);
   const run = useRef(0);
+  const frame = useRef<HTMLDivElement>(null);
+  // The latest playAll, for the mount effect below without re-running it per render.
+  const playAllRef = useRef<() => Promise<void>>(async () => {});
 
+  useEffect(() => {
+    // Reduced motion: show the finished picture, never animate unasked.
+    if (prefersReducedMotion()) {
+      const last = steps.length - 1;
+      setPos({ step: last, beat: steps[last].beats.length - 1, t: 1 });
+      return;
+    }
+    // Play when at least 40% of the picture is on screen, so a visual lower down
+    // (mock review, V's window) plays when the student reaches it, not unseen.
+    const el = frame.current;
+    if (!el || typeof IntersectionObserver === "undefined") {
+      void playAllRef.current();
+      return;
+    }
+    const seen = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          seen.disconnect();
+          void playAllRef.current();
+        }
+      },
+      { threshold: 0.4 },
+    );
+    seen.observe(el);
+    return () => seen.disconnect();
+  }, [steps]);
+
+  // Stop any animation in flight when the player goes away.
   useEffect(
     () => () => {
       run.current++;
@@ -96,7 +128,7 @@ function Player({ visual, solution }: { visual: Extract<ReturnType<typeof parseS
     void playStep(Math.max(0, Math.min(steps.length - 1, k)), token);
   }
 
-  async function playAll() {
+  async function playAll(): Promise<void> {
     const token = ++run.current;
     cancelAnimationFrame(raf.current);
     for (let k = 0; k < steps.length; k++) {
@@ -106,13 +138,15 @@ function Player({ visual, solution }: { visual: Extract<ReturnType<typeof parseS
     }
   }
 
+  playAllRef.current = playAll;
+
   const status = slider && sliderValue !== undefined ? scene.status?.(params, sliderValue) : undefined;
   const sliderId = `viz-slider-${visual.fingerprint}`;
 
   return (
     <div className="viz space-y-3">
       <div className={cn("grid gap-4", texts && "md:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]")}>
-        <div className="min-w-0 space-y-2">
+        <div ref={frame} className="min-w-0 space-y-2">
           <SceneSvg shapes={shapes} w={box.w} h={box.h} label={`Animated solution, step ${pos.step + 1} of ${steps.length}`} />
 
           {slider && sliderValue !== undefined && (
@@ -156,7 +190,7 @@ function Player({ visual, solution }: { visual: Extract<ReturnType<typeof parseS
               className="inline-flex items-center gap-1.5 rounded-md bg-brand px-3 py-1.5 text-sm font-semibold text-brand-foreground hover:bg-brand/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
               <Play className="h-4 w-4" aria-hidden />
-              Play
+              Play again
             </button>
             <button
               type="button"
