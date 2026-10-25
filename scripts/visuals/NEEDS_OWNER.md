@@ -64,6 +64,17 @@ settled; settled rows move to the bottom with the date and what was done.
 | `57ef00dc` | MHT-CET · Trigonometric Functions | **Data impossible.** sin B = b sin A / a = 2/√3 > 1, so no such triangle exists; the key 2/√3 is the formula's value. The solution notes it. | Recover the original numbers, or mark flawed. |
 | `69582b45` | MHT-CET · Trigonometric Functions | **Three options true.** sin β < 0, cos(α + β) > 0 and cos α < 0 all hold (B, C, D); the key is B. The solution notes it. | Mark flawed, or recover the original options. |
 | `696b46cf` | MHT-CET · Trigonometric Functions | **Stem typo.** As printed, sin x = sin²α/(1 + cos²α), not offered; the key tan²(α/2) holds for the original cot⁻¹(√cos α) − tan⁻¹(√cos α). | Restore √cos α in the stem (hash-safe repair). |
+| `8c15af00` | MHT-CET · Trigonometric Functions | **Key lists an invalid root.** Only x = −1/8 satisfies the equation (x = 1/8 gives +π/2); every option is written with ±, and the key is ±1/8. The solution notes it. | Reword the options, or accept the key as the intended answer. |
+| `8f1965ed` | MHT-CET · Trigonometric Functions | **No solution as printed.** At x = 2 the left side is π − tan⁻¹7, not tan⁻¹(−7) (principal values); no x satisfies it. The key 2 ignores the branch. | Recover the original wording, or mark flawed. |
+| `aafeb460` | MHT-CET · Trigonometric Functions | **Key true only for the sides.** (s − b)/s = 1/3 gives 2b = a + c, so the SIDES a, b, c are in A.P.; the angles (≈ 79.6°, 56.8°, 43.6°) are not. Option C reads A, B, C (angles). | Change option C to a, b, c (hash-safe repair). |
+| `ad8962a4` | MHT-CET · Trigonometric Functions | **Data impossible.** A side of √3 − 2 is negative, so no such triangle exists; the key √15 comes from the formula alone. | Recover the original numbers (likely 2 − √3), or mark flawed. |
+| `b1fe79a8` | MHT-CET · Trigonometric Functions | **Two answers.** a = 5 ± √6 both give a valid triangle with 10 and 9 as the larger sides; options B, C, D look garbled ("5 − 1", "√6 + 1", "5 + 1"). | Recover the original options. |
+| `b511bfa3` | MHT-CET · Trigonometric Functions | **Key incomplete.** Equating the sines also allows cot θ + tan θ = 2 + 8k and cot θ − tan θ = 2 + 8k, which give more solutions than nπ + π/4. | Accept the standard answer, or reword. |
+| `b64cb4fd` | MHT-CET · Trigonometric Functions | **No solution as printed.** sin⁻¹x = (8 + 3π)/10 ≈ 1.74 > π/2, so no x satisfies the equation; the key comes from the algebra alone. | Recover the original numbers, or mark flawed. |
+| `b8ac18fc` | MHT-CET · Trigonometric Functions | **Key not the only answer.** x = 1, y = 0, z = −1 is in A.P. and so are their tan⁻¹ values (π/4, 0, −π/4), but x ≠ y ≠ z; the solution divides by y and drops y = 0. | Accept the key, or mark flawed. |
+| `c375c734` | MHT-CET · Trigonometric Functions | **Key wrong, answer not offered.** 2ᵗ = t² − 1 has two roots for t = tan²θ ≥ 0 (t = 3 and t ≈ 3.4), giving 4 values of θ; the key is 2 and no option is 4. The solution notes the second root. | Mark flawed, or recover the original options. |
+| `eb258db8` | MHT-CET · Trigonometric Functions | **No solution as printed.** At x = −1 the left side is −π/4 − tan⁻¹2, not tan⁻¹3 (only their tangents agree); no x < 0 satisfies it, so 1767 rests on an invalid root. | Recover the original wording, or mark flawed. |
+| `122be589` | JEE Mains · Complex Numbers | **Option B blank** in the source; the key A (0) is right. | Restore option B from the paper. |
 
 ## Settled
 

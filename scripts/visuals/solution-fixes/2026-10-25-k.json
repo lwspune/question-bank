@@ -1,0 +1,26 @@
+[
+  {
+    "id": "8c37f60f-1204-4534-bfe0-e10f8c900b3c",
+    "before": "0de7ad16",
+    "solution": "Using cosine rule to get \\(\\cos A, \\cos B, \\cos C\\) and then cotangents, the expression evaluates to \\(\\frac{2b^2}{c^2+a^2-b^2} = \\frac{2(4)^2}{23+3^2-4^2} = \\frac{32}{16} = 2\\). Matches option B.",
+    "note": "denominator printed 2sqrt3^2 + 3^2 - 4^2; with c^2 = 23 it is 23 + 9 - 16 = 16. Key B unchanged."
+  },
+  {
+    "id": "9a9a44a9-d30f-4519-8453-773f06633372",
+    "before": "e625359a",
+    "solution": "Let the sides be \\(a\\) and \\(b=2a\\), so \\(B=A+60^\\circ\\). By the sine rule, \\(\\sin B=2\\sin A\\): \\(\\sin(A+60^\\circ)=2\\sin A\\Rightarrow\\frac{1}{2}\\sin A+\\frac{\\sqrt{3}}{2}\\cos A=2\\sin A\\Rightarrow\\tan A=\\frac{1}{\\sqrt{3}}\\), so \\(A=30^\\circ\\) and \\(B=90^\\circ\\). The triangle is right-angled. Matches option B.",
+    "note": "concluded cot A = 0, A = 90 degrees; in fact tan A = 1/sqrt3, A = 30 degrees and the right angle is B. Key B unchanged."
+  },
+  {
+    "id": "e0b2adab-d9d1-4152-b739-4ec2ad98f9b7",
+    "before": "0750049f",
+    "solution": "\\(\\tan(\\pi\\cos\\theta)=\\cot(\\pi\\sin\\theta)\\Rightarrow \\cos(\\pi\\cos\\theta+\\pi\\sin\\theta)=0\\), so \\(\\pi(\\cos\\theta+\\sin\\theta)=\\frac{\\pi}{2}+n\\pi\\). Since \\(|\\cos\\theta+\\sin\\theta|\\le\\sqrt{2}\\), \\(\\cos\\theta+\\sin\\theta=\\pm\\frac{1}{2}\\), i.e. \\(\\sqrt2\\sin\\left(\\frac{\\pi}{4}+\\theta\\right)=\\pm\\frac12\\) and \\(\\sin\\left(\\frac{\\pi}{4}+\\theta\\right)=\\pm\\frac{1}{2\\sqrt2}\\). Of these, the options offer \\(\\frac{1}{2\\sqrt{2}}\\): option D.",
+    "note": "took only n = 0; n = -1 also gives cos + sin = -1/2, so the value is +-1/(2 sqrt2), of which the options offer the positive one. Key D unchanged."
+  },
+  {
+    "id": "ab8615a7-6169-403d-939f-8c22aeb983a5",
+    "before": "fe030023",
+    "solution": "S1: with \\(|z|=1\\), \\(\\frac{z-i}{z+i}\\) is real when it equals its conjugate \\(\\frac{\\overline{z}+i}{\\overline{z}-i}\\), i.e. \\((z-i)(\\overline{z}-i)=(z+i)(\\overline{z}+i)\\), which gives \\(z+\\overline{z}=0\\): \\(z=\\pm i\\). As \\(z\\ne -i\\), only \\(z=i\\) remains, so the set has one element and S1 is false. S2: \\(\\frac{z-1}{z+1}\\) is purely imaginary when \\(\\frac{z-1}{z+1}+\\frac{\\overline{z}-1}{\\overline{z}+1}=0\\), i.e. \\(2|z|^{2}-2=0\\), which holds for every \\(z\\) with \\(|z|=1\\), \\(z\\ne-1\\): infinitely many, so S2 is true. Only (S2) is correct.",
+    "note": "said z + conj(z) = 0 gives z = 0 (so 'no element'); it gives z = +-i, and with -i excluded S1 has one element. Rewrote both parts cleanly. Key C unchanged."
+  }
+]
