@@ -221,7 +221,8 @@ function Player({ visual, solution }: { visual: Extract<ReturnType<typeof parseS
                   >
                     {k + 1}
                   </span>
-                  <div className="min-w-0">
+                  {/* A wide display equation scrolls sideways instead of being cut off on a phone. */}
+                  <div className="min-w-0 overflow-x-auto">
                     <BlockText text={t} solution />
                   </div>
                 </div>
@@ -230,7 +231,11 @@ function Player({ visual, solution }: { visual: Extract<ReturnType<typeof parseS
           </ol>
         )}
       </div>
-      {!texts && solution && <BlockText text={solution} solution />}
+      {!texts && solution && (
+        <div className="min-w-0 overflow-x-auto">
+          <BlockText text={solution} solution />
+        </div>
+      )}
     </div>
   );
 }
