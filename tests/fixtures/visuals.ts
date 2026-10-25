@@ -132,6 +132,75 @@ export const FG_INC_VISUAL = {
   answer: { value: 1, label: "rising on π/4 < x < π/2" },
 };
 
+/** JEE Mains a6b70415: the midpoint of (3, 2) and a point on x^2 + y^2 = 1 traces a circle; its radius. */
+export const CG_LOCUS_SOLUTION = String.raw`\(\therefore P \equiv (2\text{ }h - 3,2k - 2) \rightarrow\) on circle \[\therefore\left( h - \frac{3}{2} \right)^{2} + (k - 1)^{2} = \frac{1}{4}\] \(\Rightarrow\) radius \(= \frac{1}{2}\)`;
+
+/** JEE Mains db846893: the circle found from a differential equation, and the shortest distance to it from (11, 6). */
+export const CG_DIST_SOLUTION = String.raw`Cross-multiplying, \((bx+cy+a)dy=(ax-by+a)dx\); for a circle the \(xy\) term must vanish (\(b=0\)) and \(x^2,y^2\) coefficients equal (\(c=-a\)). Integrating gives \(x^2+y^2+2x-2y=\text{const}\); through \((2,5)\) the constant is \(23\), so the circle has centre \((-1,1)\), radius \(5\). Distance from \((11,6)\) to the centre is \(\sqrt{12^2+5^2}=13\), so the shortest distance to the circle is \(13-5=8\).`;
+
+/** JEE Mains 4ce522ce: the line through a circle's centre and a parabola's vertex; its y-intercept. */
+export const CG_LINE_SOLUTION = String.raw`\(\operatorname{Re}(z^2)+2(\operatorname{Im}z)^2+2\operatorname{Re}(z)=x^2-y^2+2y^2+2x=x^2+y^2+2x=0\): a circle with centre \((-1,0)\). The parabola \(x^2-6x+y+13=0\) has vertex \((3,-4)\). The line through \((-1,0)\) and \((3,-4)\) has slope \(-1\), i.e. \(y=-x-1\), giving \(y\)-intercept \(-1\).`;
+
+export const CG_LOCUS_VISUAL = {
+  v: 1,
+  scene: "coordGeometry",
+  params: {
+    window: { x: [-1.6, 3.6], y: [-1.4, 2.6] },
+    points: [{ id: "A", at: [3, 2], label: "A(3, 2)" }],
+    circles: [{ id: "S", center: [0, 0], r: 1, label: "x² + y² = 1" }],
+    locus: { fixed: "A", on: "S", ratio: 0.5 },
+    ask: { kind: "locusRadius", label: "radius = 1/2" },
+  },
+  steps: [{ from: 0, beats: ["given", "trace", "answer"] }],
+  fingerprint: solutionFingerprint(CG_LOCUS_SOLUTION),
+  answer: { value: 0.5, label: "1/2" },
+};
+
+export const CG_DIST_VISUAL = {
+  v: 1,
+  scene: "coordGeometry",
+  params: {
+    window: { x: [-7, 13], y: [-5, 8] },
+    points: [
+      { id: "Q", at: [11, 6], label: "(11, 6)" },
+      { id: "P", at: [2, 5], label: "(2, 5)" },
+      { id: "C", at: [-1, 1], label: "(−1, 1)", beat: "derived" },
+    ],
+    circles: [{ id: "S", center: "C", r: 5, label: "r = 5", beat: "derived" }],
+    ask: { kind: "distance", from: "Q", to: "S", label: "shortest distance = 8" },
+  },
+  steps: [
+    { from: 0, beats: ["given"] },
+    { from: 1, beats: ["derived"] },
+    { from: 2, beats: ["answer"] },
+  ],
+  fingerprint: solutionFingerprint(CG_DIST_SOLUTION),
+  answer: { value: 8, label: "8" },
+};
+
+export const CG_LINE_VISUAL = {
+  v: 1,
+  scene: "coordGeometry",
+  params: {
+    window: { x: [-4, 6], y: [-6, 2.5] },
+    points: [
+      { id: "C", at: [-1, 0], label: "(−1, 0)" },
+      { id: "V", at: [3, -4], label: "V(3, −4)", beat: "derived" },
+    ],
+    circles: [{ id: "S", center: "C", r: 1 }],
+    conics: [{ id: "K", type: "parabola", vertex: "V", a: -0.25, axis: "y", beat: "derived" }],
+    lines: [{ id: "L", through: ["C", "V"], label: "y = −x − 1" }],
+    ask: { kind: "yIntercept", line: "L", label: "y-intercept = −1" },
+  },
+  steps: [
+    { from: 0, beats: ["given"] },
+    { from: 1, beats: ["derived"] },
+    { from: 2, beats: ["construct", "answer"] },
+  ],
+  fingerprint: solutionFingerprint(CG_LINE_SOLUTION),
+  answer: { value: -1, label: "−1" },
+};
+
 export const FIXTURES = [
   { name: "rotation", visual: ROTATION_VISUAL, solution: ROTATION_SOLUTION },
   { name: "circleArc", visual: ARC_VISUAL, solution: ARC_SOLUTION },
@@ -140,4 +209,7 @@ export const FIXTURES = [
   { name: "functionGraph", visual: FG_CROSS_VISUAL, solution: FG_CROSS_SOLUTION },
   { name: "functionGraph", visual: FG_SLOPE_VISUAL, solution: FG_SLOPE_SOLUTION },
   { name: "functionGraph", visual: FG_INC_VISUAL, solution: FG_INC_SOLUTION },
+  { name: "coordGeometry", visual: CG_LOCUS_VISUAL, solution: CG_LOCUS_SOLUTION },
+  { name: "coordGeometry", visual: CG_DIST_VISUAL, solution: CG_DIST_SOLUTION },
+  { name: "coordGeometry", visual: CG_LINE_VISUAL, solution: CG_LINE_SOLUTION },
 ] as const;

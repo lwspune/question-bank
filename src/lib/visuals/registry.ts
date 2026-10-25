@@ -4,6 +4,7 @@
  * tests/fixtures/visuals.ts (the registry test fails until it has one).
  */
 import { circleArc } from "./scenes/circleArc";
+import { coordGeometry } from "./scenes/coordGeometry";
 import { functionGraph } from "./scenes/functionGraph";
 import { quadraticFamily } from "./scenes/quadraticFamily";
 import { rotation } from "./scenes/rotation";
@@ -17,6 +18,7 @@ export const SCENES: Record<string, Scene<any>> = {
   quadraticFamily,
   slab,
   functionGraph,
+  coordGeometry,
 };
 
 export function getScene(id: string): Scene<any> | undefined {
