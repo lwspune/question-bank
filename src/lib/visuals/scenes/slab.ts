@@ -117,7 +117,8 @@ export const slab: Scene<SlabParams> = {
     if (pR > 0) {
       s.push(...ray(g.entry, g.exit, pR, "brand"));
       s.push({ kind: "path", d: arcPath(g.entry[0], g.entry[1], 32, -Math.PI / 2, -Math.PI / 2 + g.r), stroke: "brand", width: 1.5 });
-      const [rx, ry] = onCircle(g.entry[0], g.entry[1], 48, (-Math.PI * 5) / 18);
+      // Right of the refracted ray: 40° below the face, 52 px out.
+      const [rx, ry] = onCircle(g.entry[0], g.entry[1], 52, (-Math.PI * 2) / 9);
       s.push(text(rx + 4, ry + 4, `r = ${deg(g.r)}°`, { tone: "brand", size: 12, weight: 600 }));
     }
 

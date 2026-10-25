@@ -223,11 +223,16 @@ export const quadraticFamily: Scene<QuadraticFamilyParams> = {
       out.push({ kind: "rect", x: G.x0, y: G.y0, w: X(0) - G.x0, h: G.y1 - G.y0, fill: "goodSoft" }, text(G.x0 + 4, G.y1 - 6, "x < 0", { tone: "good", size: 11.5, weight: 600 }));
     }
     out.push(line(G.x0, Y(0), G.x1, Y(0), { stroke: "muted", width: 1.2 }), line(X(0), G.y0, X(0), G.y1, { stroke: "muted", width: 1.2 }));
+    const { a, b, c } = abc(p, l);
+    const rootsNow = roots(p, l);
+    const rootXs = !("degenerate" in rootsNow) && !rootsNow.none ? [rootsNow.r1, rootsNow.r2] : [];
     const tickStep = Math.max(1, Math.ceil((xb - xa) / 7));
     for (let x = Math.ceil(xa / tickStep) * tickStep; x <= xb; x += tickStep) {
-      if (x !== 0) out.push(text(X(x), Math.min(G.y1 - 2, Y(0) + 14), num(x), { tone: "muted", size: 10, anchor: "middle" }));
+      // A tick label under a root dot would be hidden by it.
+      if (x !== 0 && rootXs.every((r) => Math.abs(X(r) - X(x)) > 10)) {
+        out.push(text(X(x), Math.min(G.y1 - 2, Y(0) + 14), num(x), { tone: "muted", size: 10, anchor: "middle" }));
+      }
     }
-    const { a, b, c } = abc(p, l);
     if (Math.abs(a) >= 1e-9) {
       const pts: [number, number][] = [];
       for (let i = 0; i <= 160; i++) {
@@ -242,7 +247,8 @@ export const quadraticFamily: Scene<QuadraticFamilyParams> = {
         for (const x of [r.r1, r.r2]) if (x > xa && x < xb) out.push(dot(X(x), Y(0), 5.5, tone, { stroke: "card", width: 2 }));
       }
     }
-    out.push(text(G.x0 + 4, G.y0 + 12, "same roots as the equation", { tone: "muted", size: 10.5 }));
+    // Under the graph, where the curve cannot run through it.
+    out.push(text(G.x0, G.y1 + 13, "the curve has the same roots as the equation", { tone: "muted", size: 10.5 }));
 
     // Number line: integer ticks, then the bands each beat adds.
     out.push(line(30, LINE_Y, 330, LINE_Y, { stroke: "fg", width: 1.5 }));

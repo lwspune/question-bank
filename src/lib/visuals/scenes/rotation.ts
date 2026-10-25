@@ -31,16 +31,22 @@ function wheel(phi: number): Shape[] {
   return out;
 }
 
+// Panel rows sit at the top and bottom of the box, leaving its middle band
+// (y 90-160) clear for the turn markers the spiral labels at angle 0.
 function panel(rows: [string, string][]): Shape[] {
   return rows.flatMap(([label, value], i) => [
-    text(PANEL, 70 + i * 52, label, { tone: "muted", size: 11.5 }),
-    text(PANEL, 92 + i * 52, value, { size: 19, weight: 700 }),
+    text(PANEL, 60 + i * 110, label, { tone: "muted", size: 11.5 }),
+    text(PANEL, 82 + i * 110, value, { size: 19, weight: 700 }),
   ]);
 }
+const NOTE_Y = 226;
 
-function spiral(theta: number): Shape {
+/** The spiral's radius at angle a: it widens by 24 px over the turns drawn, so each turn stands apart. */
+const spiralR = (a: number, turns: number) => R + 12 + (a / (turns * TAU)) * 24;
+
+function spiral(theta: number, turns: number): Shape {
   const pts: [number, number][] = [];
-  for (let a = 0; a <= theta + 1e-9; a += 0.05) pts.push(onCircle(CX, CY, R + 12 + (a / (MAX_DRAWN_TURNS * TAU)) * 24, a));
+  for (let a = 0; a <= theta + 1e-9; a += 0.05) pts.push(onCircle(CX, CY, spiralR(a, turns), a));
   return { kind: "polyline", points: pts, stroke: "amber", width: 4, cap: "round" };
 }
 
@@ -83,7 +89,7 @@ export const rotation: Scene<RotationParams> = {
         ? [["time", `${(p.timed.seconds * t).toFixed(2)} s`], ["revolutions", (p.revolutions * t).toFixed(2)]]
         : [["revolutions", (p.revolutions * t).toFixed(2)]];
       const out = [...wheel(drawnTurns * TAU * t), ...panel(rows)];
-      if (t === 1) out.push(text(PANEL, 186, `${num(p.revolutions)} in all`, { tone: "amber", weight: 700 }));
+      if (t === 1) out.push(text(PANEL, NOTE_Y, `${num(p.revolutions)} in all`, { tone: "amber", weight: 700 }));
       return out;
     }
 
@@ -101,7 +107,7 @@ export const rotation: Scene<RotationParams> = {
         }
       }
       out.push(...panel([["radii round the rim", n.toFixed(2)]]));
-      if (t === 1) out.push(text(PANEL, 128, "= 2π", { size: 19, weight: 700, tone: "amber" }));
+      if (t === 1) out.push(text(PANEL, 118, "= 2π", { size: 19, weight: 700, tone: "amber" }));
       return out;
     }
 
@@ -110,22 +116,24 @@ export const rotation: Scene<RotationParams> = {
       const out: Shape[] = [];
       if (phi > 1e-6) out.push({ kind: "path", d: arcPath(CX, CY, R + 12, 0, phi), stroke: "amber", width: 4, cap: "round" });
       out.push(...wheel(phi), ...panel([["revolutions", t.toFixed(2)], ["angle", t === 1 ? "2π rad" : `${piMultiple(phi)} rad`]]));
-      if (t === 1) out.push(text(PANEL, 186, "1 turn = 2π", { tone: "amber", weight: 700 }));
+      if (t === 1) out.push(text(PANEL, NOTE_Y, "1 turn = 2π", { tone: "amber", weight: 700 }));
       return out;
     }
 
     // total
     const progress = progressOf("total", played, t);
     const theta = drawnTurns * TAU * progress;
-    const out: Shape[] = [spiral(theta), ...wheel(theta)];
+    const out: Shape[] = [spiral(theta, drawnTurns), ...wheel(theta)];
+    // Turn markers sit on the spiral at angle 0; labels go just outside it,
+    // alternating above and below so neighbours never touch.
     for (let k = 1; k <= Math.floor(drawnTurns + 1e-9); k++) {
       if (theta + 1e-9 < k * TAU) break;
-      const [x, y] = onCircle(CX, CY, R + 12 + (k / MAX_DRAWN_TURNS) * 24, k * TAU);
-      out.push(dot(x, y, 4, "amber"), text(x, k % 2 ? y - 9 : y + 19, piMultiple(k * TAU), { size: 12, weight: 700, anchor: "middle" }));
+      const [x, y] = onCircle(CX, CY, spiralR(k * TAU, drawnTurns), k * TAU);
+      out.push(dot(x, y, 4, "amber"), text(x + 7, k % 2 ? y - 7 : y + 15, piMultiple(k * TAU), { size: 12, weight: 700 }));
     }
     const angle = p.revolutions * TAU * progress;
     out.push(...panel([["revolutions", (p.revolutions * progress).toFixed(2)], ["angle", `${piMultiple(angle)} rad`]]));
-    if (progress === 1) out.push(text(PANEL, 186, `answer ${piMultiple(angle)}`, { tone: "good", weight: 700 }));
+    if (progress === 1) out.push(text(PANEL, NOTE_Y, `answer ${piMultiple(angle)}`, { tone: "good", weight: 700 }));
     return out;
   },
 };
