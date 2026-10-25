@@ -107,6 +107,39 @@ describe("space3d meeting point of two lines", () => {
   });
 });
 
+describe("space3d vectors, areas and volumes", () => {
+  const O = { id: "O", at: [0, 0, 0] };
+  it("length of a vector, and the angle between two vectors", () => {
+    expect(value({ vectors: [{ id: "a", v: [2, -1, 2] }], ask: { kind: "length", vector: "a" } })).toBeCloseTo(3, 9);
+    expect(value({ vectors: [{ id: "a", v: [1, 0, 0] }, { id: "b", v: [-1, 1, 0] }], ask: { kind: "angle", between: ["a", "b"] } })).toBeCloseTo((3 * Math.PI) / 4, 9);
+  });
+  it("area of a triangle and of a parallelogram in space", () => {
+    const tri = { points: [{ id: "A", at: [1, -1, 2] }, { id: "B", at: [2, 1, -1] }, { id: "C", at: [3, -1, 2] }], ask: { kind: "area", points: ["A", "B", "C"] } };
+    expect(value(tri)).toBeCloseTo(Math.sqrt(13), 9);
+    const par = { points: [O, { id: "A", at: [3, 0, 0] }, { id: "C", at: [0, 4, 0] }], vectors: [], ask: { kind: "area", points: ["O", "A", "C"], shape: "parallelogram" } };
+    expect(value(par)).toBeCloseTo(12, 9);
+  });
+  it("volume of a parallelepiped on three vectors, and of a tetrahedron on four points", () => {
+    const pp = { vectors: [{ id: "a", v: [1, 0, 0] }, { id: "b", v: [0, 2, 0] }, { id: "c", v: [1, 1, 3] }], ask: { kind: "volume", vectors: ["a", "b", "c"] } };
+    expect(value(pp)).toBeCloseTo(6, 9);
+    const tet = { points: [O, { id: "A", at: [1, 0, 0] }, { id: "B", at: [0, 1, 0] }, { id: "C", at: [0, 0, 1] }], ask: { kind: "volume", points: ["O", "A", "B", "C"] } };
+    expect(value(tet)).toBeCloseTo(1 / 6, 9);
+  });
+  it("scalar projection of one vector on another", () => {
+    expect(value({ vectors: [{ id: "a", v: [2, 3, 6] }, { id: "b", v: [1, 0, 0] }], ask: { kind: "projection", vector: "a", on: "b" } })).toBeCloseTo(2, 9);
+  });
+  it("a vector may start at a point, and refuses a zero vector", () => {
+    const p = parse({ points: [{ id: "P", at: [1, 1, 1] }], vectors: [{ id: "a", from: "P", v: [0, 0, 2] }], ask: { kind: "length", vector: "a" } });
+    expect(scene().check(p)).toBeCloseTo(2, 9);
+    expect(parseError({ vectors: [{ id: "a", v: [0, 0, 0] }], ask: { kind: "length", vector: "a" } })).toMatch(/zero/);
+  });
+  it("draws each vector with an arrowhead", () => {
+    const p = parse({ vectors: [{ id: "a", v: [1, 2, 2], label: "a" }], ask: { kind: "length", vector: "a" } });
+    const heads = scene().frame(p, { played: ["given"], t: 1, slider: undefined }).filter((s) => s.kind === "path" && s.fill === "brand");
+    expect(heads.length).toBeGreaterThanOrEqual(1);
+  });
+});
+
 describe("space3d refuses what it cannot draw honestly", () => {
   it("names an unknown reference and a duplicated id", () => {
     expect(parseError({ points: [{ id: "A", at: [0, 0, 0] }], lines: [{ id: "L", through: ["A", "Z"] }], ask: { kind: "distance", from: "A", to: "L" } })).toMatch(/Z/);
@@ -119,7 +152,7 @@ describe("space3d refuses what it cannot draw honestly", () => {
   });
   it("refuses a line parallel to the plane it should meet, and asks on the wrong kind of object", () => {
     expect(parseError({ lines: [{ id: "L", point: [0, 0, 1], dir: [1, 0, 0] }], planes: [{ id: "P", eq: [0, 0, 1, 0] }], derived: [{ id: "M", kind: "meet", line: "L", plane: "P" }], ask: { kind: "coord", point: "M", axis: "x" } })).toMatch(/parallel/);
-    expect(parseError({ points: [{ id: "A", at: [0, 0, 0] }], lines: [{ id: "L", point: [0, 0, 0], dir: [1, 0, 0] }], ask: { kind: "angle", between: ["A", "L"] } })).toMatch(/line or plane/);
+    expect(parseError({ points: [{ id: "A", at: [0, 0, 0] }], lines: [{ id: "L", point: [0, 0, 0], dir: [1, 0, 0] }], ask: { kind: "angle", between: ["A", "L"] } })).toMatch(/line, plane or vector/);
     expect(parseError({ points: [{ id: "A", at: [0, 0, 0] }, { id: "B", at: [1, 0, 0] }], ask: { kind: "projection", from: "A", to: "B", onto: "B" } })).toMatch(/plane/);
   });
 });

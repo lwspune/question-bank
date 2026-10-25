@@ -22,7 +22,7 @@
  * A line passing behind a plane is drawn faint where the plane hides it.
  * Beats: given, derived, construct, answer.
  */
-import { dot as dotShape, line, num, text } from "../geometry";
+import { arrowHead, dot as dotShape, line, num, text } from "../geometry";
 import { finite, obj, optionalLabel, ParamError, safely } from "../params";
 import type { Scene, Shape } from "../types";
 
@@ -59,6 +59,14 @@ interface Pl {
   label: string | undefined;
   beat: Beat;
 }
+interface Vec {
+  id: string;
+  from: V3;
+  /** The vector itself, not normalised. */
+  v: V3;
+  label: string | undefined;
+  beat: Beat;
+}
 interface Seg {
   from: V3;
   to: V3;
@@ -70,13 +78,18 @@ type Ask =
   | { kind: "distance"; from: string; to: string }
   | { kind: "angle"; between: [string, string] }
   | { kind: "projection"; from: string; to: string; onto: string }
-  | { kind: "coord"; point: string; axis: 0 | 1 | 2 };
+  | { kind: "coord"; point: string; axis: 0 | 1 | 2 }
+  | { kind: "length"; vector: string }
+  | { kind: "vprojection"; vector: string; on: string }
+  | { kind: "area"; corners: string[]; byVectors: boolean; parallelogram: boolean }
+  | { kind: "volume"; corners: string[]; byVectors: boolean; tetrahedron: boolean };
 
 export interface SpaceParams {
   points: Pt[];
   lines: Ln[];
   planes: Pl[];
   segments: Seg[];
+  vectors: Vec[];
   ask: Ask;
   askLabel: string | undefined;
   report: { squared: boolean; times: number };
@@ -89,6 +102,8 @@ type Mark =
   | { kind: "angle"; at: V3; u: V3; v: V3; angle: number }
   | { kind: "projection"; a: V3; b: V3; a2: V3; b2: V3 }
   | { kind: "coord"; from: V3; to: V3 }
+  | { kind: "vprojection"; from: V3; tip: V3; foot: V3 }
+  | { kind: "faces"; faces: V3[][] }
   | { kind: "none" };
 
 export interface SpaceFacts {
@@ -117,6 +132,12 @@ function closest(l1: Ln, l2: Ln): [V3, V3] {
 
 function measure(p: SpaceParams, pts: Record<string, V3>): { value: number; mark: Mark } {
   const ln = (id: string) => p.lines.find((l) => l.id === id);
+  // A vector stands in for a line through its start where a line is wanted.
+  const asLine = (id: string): Ln => {
+    const w = p.vectors.find((x) => x.id === id);
+    return w ? { id: w.id, a: w.from, u: unit(w.v), label: w.label, beat: w.beat } : ln(id)!;
+  };
+  const vecNamed = (id: string) => p.vectors.find((w) => w.id === id)!;
   const pl = (id: string) => p.planes.find((q) => q.id === id);
   const ask = p.ask;
   switch (ask.kind) {
@@ -154,12 +175,22 @@ function measure(p: SpaceParams, pts: Record<string, V3>): { value: number; mark
     }
     case "angle": {
       const [x, y] = ask.between;
-      const dirOf = (id: string): { v: V3; plane: boolean } => (ln(id) ? { v: ln(id)!.u, plane: false } : { v: pl(id)!.n, plane: true });
+      const vec = (id: string) => p.vectors.find((w) => w.id === id);
+      const vx = vec(x);
+      const vy = vec(y);
+      if (vx && vy) {
+        // Two vectors: the angle between their directions, 0 to pi (not folded to acute).
+        const [u, v] = [unit(vx.v), unit(vy.v)];
+        const angle = Math.acos(Math.max(-1, Math.min(1, dt(u, v))));
+        return { value: angle, mark: { kind: "angle", at: vx.from, u, v, angle } };
+      }
+      const dirOf = (id: string): { v: V3; plane: boolean } =>
+        vec(id) ? { v: unit(vec(id)!.v), plane: false } : ln(id) ? { v: ln(id)!.u, plane: false } : { v: pl(id)!.n, plane: true };
       const [dx, dy] = [dirOf(x), dirOf(y)];
       const c = Math.min(1, Math.abs(dt(dx.v, dy.v)));
       if (dx.plane !== dy.plane) {
         // Line with plane: the angle between the line and its projection on the plane.
-        const L = ln(dx.plane ? y : x)!;
+        const L = asLine(dx.plane ? y : x);
         const S = pl(dx.plane ? x : y)!;
         const angle = Math.asin(c);
         const along = dt(L.u, S.n);
@@ -171,7 +202,7 @@ function measure(p: SpaceParams, pts: Record<string, V3>): { value: number; mark
       }
       const angle = Math.acos(c);
       if (!dx.plane) {
-        const [l1, l2] = [ln(x)!, ln(y)!];
+        const [l1, l2] = [asLine(x), asLine(y)];
         const [at] = closest(l1, l2);
         const v = dt(l1.u, l2.u) < 0 ? mul(l2.u, -1) : l2.u;
         return { value: angle, mark: { kind: "angle", at, u: l1.u, v, angle } };
@@ -200,7 +231,40 @@ function measure(p: SpaceParams, pts: Record<string, V3>): { value: number; mark
       base[ask.axis] = 0;
       return { value: P[ask.axis], mark: { kind: "coord", from: base, to: P } };
     }
+    case "length": {
+      const w = vecNamed(ask.vector);
+      return { value: len(w.v), mark: { kind: "segment", from: w.from, to: add(w.from, w.v) } };
+    }
+    case "vprojection": {
+      const [a, b] = [vecNamed(ask.vector), vecNamed(ask.on)];
+      const bh = unit(b.v);
+      const s = dt(a.v, bh);
+      return { value: Math.abs(s), mark: { kind: "vprojection", from: a.from, tip: add(a.from, a.v), foot: add(a.from, mul(bh, s)) } };
+    }
+    case "area": {
+      // Corners: three points (O, A, C) or a start and two vectors.
+      const [O, A, C] = cornersOf(p, pts, ask.corners, ask.byVectors);
+      const n = len(cross(sub(A, O), sub(C, O)));
+      if (ask.parallelogram) return { value: n, mark: { kind: "faces", faces: [[O, A, add(A, sub(C, O)), C]] } };
+      return { value: n / 2, mark: { kind: "faces", faces: [[O, A, C]] } };
+    }
+    case "volume": {
+      const [O, A, B, C] = cornersOf(p, pts, ask.corners, ask.byVectors);
+      const [a, b, c] = [sub(A, O), sub(B, O), sub(C, O)];
+      const box = Math.abs(dt(a, cross(b, c)));
+      if (ask.tetrahedron) return { value: box / 6, mark: { kind: "faces", faces: [[O, A, B], [O, B, C], [O, C, A], [A, B, C]] } };
+      const [AB, BC, CA, ABC] = [add(A, b), add(B, c), add(C, a), add(add(A, b), c)];
+      return { value: box, mark: { kind: "faces", faces: [[O, A, AB, B], [O, B, BC, C], [O, C, CA, A], [A, AB, ABC, CA], [B, BC, ABC, AB], [C, CA, ABC, BC]] } };
+    }
   }
+}
+
+/** The corners an area or volume ask names: points as given, or a start point followed by the tips of vectors from it. */
+function cornersOf(p: SpaceParams, pts: Record<string, V3>, ids: string[], byVectors: boolean): V3[] {
+  if (!byVectors) return ids.map((id) => pts[id]);
+  const vs = ids.map((id) => p.vectors.find((w) => w.id === id)!);
+  const O = vs[0].from;
+  return [O, ...vs.map((w) => add(O, w.v))];
 }
 
 /** Some unit vector perpendicular to v. */
@@ -336,6 +400,14 @@ export const space3d: Scene<SpaceParams> = {
 
       const segments: Seg[] = list(o, "segments", 6).map((q, i) => ({ from: pointAt(q.from, `segments[${i}]`), to: pointAt(q.to, `segments[${i}]`), label: optionalLabel(q, "label"), beat: beatOf(q, "construct") }));
 
+      const vectors: Vec[] = list(o, "vectors", 4).map((q, i) => {
+        const id = claim(q.id, `vectors[${i}]`);
+        const v = v3(q, "v");
+        if (len(v) < 1e-12) throw new ParamError(`${id}: v must not be zero`);
+        const from = q.from === undefined ? ([0, 0, 0] as V3) : typeof q.from === "string" ? pointAt(q.from, id) : v3(q, "from");
+        return { id, from, v, label: optionalLabel(q, "label"), beat: beatOf(q, "given") };
+      });
+      const isVector = (v: unknown) => vectors.some((q) => q.id === v);
       const isPoint = (v: unknown) => points.some((q) => q.id === v);
       const isLine = (v: unknown) => lines.some((q) => q.id === v);
       const isPlane = (v: unknown) => planes.some((q) => q.id === v);
@@ -345,8 +417,30 @@ export const space3d: Scene<SpaceParams> = {
         if (![a.from, a.to].every((v) => isPoint(v) || isLine(v) || isPlane(v))) throw new ParamError("ask: distance needs from and to naming a point, line or plane");
         ask = { kind: "distance", from: a.from as string, to: a.to as string };
       } else if (a.kind === "angle") {
-        if (!Array.isArray(a.between) || a.between.length !== 2 || !a.between.every((v) => isLine(v) || isPlane(v))) throw new ParamError("ask: angle needs between naming two, each a line or plane");
+        if (!Array.isArray(a.between) || a.between.length !== 2 || !a.between.every((v) => isLine(v) || isPlane(v) || isVector(v))) throw new ParamError("ask: angle needs between naming two, each a line, plane or vector");
         ask = { kind: "angle", between: [a.between[0], a.between[1]] as [string, string] };
+      } else if (a.kind === "projection" && a.vector !== undefined) {
+        if (!isVector(a.vector) || !isVector(a.on)) throw new ParamError("ask: projection of a vector needs vector and on naming vectors");
+        ask = { kind: "vprojection", vector: a.vector as string, on: a.on as string };
+      } else if (a.kind === "length") {
+        if (!isVector(a.vector)) throw new ParamError("ask: length needs a vector");
+        ask = { kind: "length", vector: a.vector as string };
+      } else if (a.kind === "area" || a.kind === "volume") {
+        const want = a.kind === "area" ? [3, 2] : [4, 3];
+        const byVectors = a.vectors !== undefined;
+        const ids = byVectors ? a.vectors : a.points;
+        if (!Array.isArray(ids) || ids.length !== want[byVectors ? 1 : 0] || !ids.every(byVectors ? isVector : isPoint))
+          throw new ParamError(`ask: ${a.kind} needs ${want[0]} points or ${want[1]} vectors`);
+        if (byVectors && new Set(ids.map((id) => JSON.stringify(vectors.find((w) => w.id === id)!.from))).size > 1)
+          throw new ParamError(`ask: the vectors of an ${a.kind} must start at one point`);
+        const shape = a.shape;
+        if (a.kind === "area") {
+          if (shape !== undefined && shape !== "triangle" && shape !== "parallelogram") throw new ParamError('ask: shape must be "triangle" or "parallelogram"');
+          ask = { kind: "area", corners: ids as string[], byVectors, parallelogram: shape === undefined ? byVectors : shape === "parallelogram" };
+        } else {
+          if (shape !== undefined && shape !== "tetrahedron" && shape !== "parallelepiped") throw new ParamError('ask: shape must be "tetrahedron" or "parallelepiped"');
+          ask = { kind: "volume", corners: ids as string[], byVectors, tetrahedron: shape === undefined ? !byVectors : shape === "tetrahedron" };
+        }
       } else if (a.kind === "projection") {
         if (!isPoint(a.from) || !isPoint(a.to)) throw new ParamError("ask: projection runs from a point to a point");
         if (!isPlane(a.onto)) throw new ParamError("ask: projection needs onto naming a plane");
@@ -357,7 +451,7 @@ export const space3d: Scene<SpaceParams> = {
         if (axis === undefined) throw new ParamError('ask: axis must be "x", "y" or "z"');
         ask = { kind: "coord", point: a.point as string, axis: axis as 0 | 1 | 2 };
       } else {
-        throw new ParamError("ask.kind must be distance, angle, projection or coord");
+        throw new ParamError("ask.kind must be distance, angle, projection, coord, length, area or volume");
       }
       if (a.squared !== undefined && typeof a.squared !== "boolean") throw new ParamError("ask: squared must be true or false");
       const times = a.times === undefined ? 1 : finite(a, "times");
@@ -368,7 +462,7 @@ export const space3d: Scene<SpaceParams> = {
         const vw = obj(o.view);
         view = { az: finite(vw, "az", { min: -180, max: 180 }), el: finite(vw, "el", { min: 5, max: 60 }) };
       }
-      return { points, lines, planes, segments, ask, askLabel: optionalLabel(a, "label", 32), report: { squared: a.squared === true, times }, view };
+      return { points, lines, planes, segments, vectors, ask, askLabel: optionalLabel(a, "label", 32), report: { squared: a.squared === true, times }, view };
     }),
 
   check: (p) => spaceFacts(p).value,
@@ -382,6 +476,10 @@ export const space3d: Scene<SpaceParams> = {
       angle: `The angle measured on the drawing is ${num((m * 180) / Math.PI, 2)}° (${v} rad).`,
       projection: `The projection measured on the plane is ${v} long.`,
       coord: `The point's coordinate is ${v}.`,
+      length: `The vector is ${v} long on the drawing.`,
+      vprojection: `The projection measured along the second vector is ${v}.`,
+      area: `The shaded figure has area ${v}.`,
+      volume: `The solid has volume ${v}.`,
     }[p.ask.kind];
     const how = [p.report.squared ? "squared" : "", p.report.times !== 1 ? `times ${num(p.report.times)}` : ""].filter(Boolean).join(" and ");
     return how ? `${base} ${how[0].toUpperCase()}${how.slice(1)}, that gives ${num(value, 4)}.` : base;
@@ -482,6 +580,9 @@ function layout(p: SpaceParams): Layout {
   if (mk.kind === "segment" || mk.kind === "coord") core.push(mk.from, mk.to);
   if (mk.kind === "projection") core.push(mk.a, mk.b, mk.a2, mk.b2);
   if (mk.kind === "angle") core.push(mk.at);
+  if (mk.kind === "vprojection") core.push(mk.from, mk.tip, mk.foot);
+  if (mk.kind === "faces") for (const f of mk.faces) core.push(...f);
+  for (const w of p.vectors) core.push(w.from, add(w.from, w.v));
   if (!core.length) {
     for (const l of p.lines) core.push(l.a);
     for (const s of p.planes) core.push(mul(s.n, s.d));
@@ -598,9 +699,15 @@ function drawFrame(p: SpaceParams, { played, t }: { played: readonly string[]; t
   for (const l of p.lines) sample(...L.lineEnds[l.id], 60);
   for (const s of p.planes) L.patches[s.id].forEach((q, i, cs) => sample(q, cs[(i + 1) % 4], 30));
   for (const sg of p.segments) sample(sg.from, sg.to, 20);
+  for (const w of p.vectors) sample(w.from, add(w.from, w.v), 30);
   for (const q of p.points) obstacles.push(L.px(q.at));
   const mk = facts.mark;
   if (mk.kind === "segment" || mk.kind === "coord") sample(mk.from, mk.to, 30);
+  if (mk.kind === "vprojection") {
+    sample(mk.from, mk.foot, 30);
+    sample(mk.tip, mk.foot, 15);
+  }
+  if (mk.kind === "faces") for (const f of mk.faces) f.forEach((q, i) => sample(q, f[(i + 1) % f.length], 12));
   if (mk.kind === "projection") {
     sample(mk.a2, mk.b2, 30);
     sample(mk.a, mk.a2, 15);
@@ -656,6 +763,8 @@ function drawFrame(p: SpaceParams, { played, t }: { played: readonly string[]; t
   }
   const pointLabel = new Map<string, Placed>();
   for (const q of p.points) if (q.label) pointLabel.set(q.id, place([L.px(q.at)], q.label, 11));
+  const vectorLabel = new Map<string, Placed>();
+  for (const w of p.vectors) if (w.label) vectorLabel.set(w.id, place([0.6, 0.85].map((f) => L.px(add(w.from, mul(w.v, f)))), w.label, 11));
 
   // Planes shown so far hide what is behind them.
   const shownPlanes = p.planes.filter((s) => prog(s.beat) > 0);
@@ -699,6 +808,19 @@ function drawFrame(p: SpaceParams, { played, t }: { played: readonly string[]; t
         flush(start, upto, state);
         const lab = lineLabel.get(l.id);
         if (lab && k > 0.6 && l.label) over.push(...labelShapes(lab, l.label, "amber", 11));
+      },
+    });
+  }
+  for (const w of p.vectors) {
+    items.push({
+      beat: w.beat,
+      draw: (k) => {
+        const [a, b] = [L.px(w.from), L.px(add(w.from, w.v))];
+        const tip: [number, number] = [a[0] + (b[0] - a[0]) * k, a[1] + (b[1] - a[1]) * k];
+        draw.push(line(a[0], a[1], tip[0], tip[1], { stroke: "brand", width: 2.4, cap: "round" }));
+        if (Math.hypot(b[0] - a[0], b[1] - a[1]) > 4) over.push(arrowHead(tip[0], tip[1], Math.atan2(b[1] - a[1], b[0] - a[0]), "brand", 8));
+        const lab = vectorLabel.get(w.id);
+        if (lab && k > 0.6 && w.label) over.push(...labelShapes(lab, w.label, "brand", 11));
       },
     });
   }
@@ -754,6 +876,14 @@ function drawFrame(p: SpaceParams, { played, t }: { played: readonly string[]; t
       seg(mk.b, mk.b2, "guide");
       seg(mk.a2, mk.b2, "strong");
       ends(mk.a2, mk.b2);
+    } else if (mk.kind === "vprojection") {
+      seg(mk.tip, mk.foot, "guide");
+      seg(mk.from, mk.foot, "strong");
+      ends(mk.from, mk.foot);
+    } else if (mk.kind === "faces") {
+      for (const f of mk.faces) {
+        under.push({ kind: "path", d: "M" + f.map((q) => L.px(q).map((v) => Math.round(v * 100) / 100).join(" ")).join(" L") + " Z", fill: "goodSoft", stroke: "good", width: 1.6, opacity: 0.55 * pa });
+      }
     } else if (mk.kind === "angle") {
       const r = L.size * 0.6;
       const w = sub(mk.v, mul(mk.u, dt(mk.v, mk.u)));
@@ -778,7 +908,7 @@ function drawFrame(p: SpaceParams, { played, t }: { played: readonly string[]; t
 
 function defaultLabel(p: SpaceParams, v: number): string {
   const n = Number.isFinite(v) ? num(v, 3) : "?";
-  const name = { distance: "shortest distance", angle: "angle (rad)", projection: "projection", coord: "coordinate" }[p.ask.kind];
+  const name = { distance: "shortest distance", angle: "angle (rad)", projection: "projection", coord: "coordinate", length: "length", vprojection: "projection", area: "area", volume: "volume" }[p.ask.kind];
   const what = `${p.report.times !== 1 ? `${num(p.report.times)} × ` : ""}${p.report.squared ? `(${name})²` : name}`;
   return `${what} = ${n}`;
 }

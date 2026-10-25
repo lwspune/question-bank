@@ -57,6 +57,9 @@ segments).
   Derived points can then be used anywhere a point can. Never add a helper
   plane or line the question does not have just to get a point: it is drawn.
 - `segments`: `{ "from": pointId, "to": pointId, "label"? }`, drawn dashed.
+- `vectors`: `{ "id", "v": [a, b, c], "from"?: pointId or [x, y, z], "label"? }`,
+  drawn as an arrow from `from` (default the origin) to `from + v`. Use vectors
+  for questions stated in vectors (a = 2i − j + 2k is `"v": [2, -1, 2]`).
 - `view` (optional): `{ "az": degrees, "el": degrees }`. Leave it out: the
   scene picks the view that shows the planes face-on and the answer clearly.
 - `ask`, one of (each may carry a plain `"label"` for the header, at most 32
@@ -66,6 +69,18 @@ segments).
     the acute angle in RADIANS (π/6 is 0.52359878).
   - `{ "kind": "projection", "from": pointId, "to": pointId, "onto": planeId }`
   - `{ "kind": "coord", "point": pointId, "axis": "x" | "y" | "z" }`
+  - `{ "kind": "length", "vector": vectorId }`: the vector's magnitude.
+  - `{ "kind": "projection", "vector": vectorId, "on": vectorId }`: the scalar
+    projection |a · b̂| of one vector on another.
+  - `{ "kind": "area", "points": [O, A, C] }` (a triangle) or
+    `{ "kind": "area", "vectors": [a, b] }` (the parallelogram on two vectors from
+    one start); add `"shape": "triangle"` or `"parallelogram"` to override.
+  - `{ "kind": "volume", "points": [O, A, B, C] }` (a tetrahedron) or
+    `{ "kind": "volume", "vectors": [a, b, c] }` (the parallelepiped on three
+    vectors from one start); add `"shape"` (`"tetrahedron"`, `"parallelepiped"`)
+    to override.
+  - `angle` also takes vectors: between two vectors it is the angle between their
+    directions, 0 to π (not folded to acute), as vector questions mean it.
   Any ask may also carry `"squared": true` and/or `"times": k` when the KEY is
   the measured value squared or multiplied ("d²" is `squared: true`).
 

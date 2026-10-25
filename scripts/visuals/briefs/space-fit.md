@@ -13,6 +13,16 @@ perpendicular of two lines itself, and can MEASURE exactly these answers:
 3. **projection**: the length of a segment's projection on a plane.
 4. **coord**: one coordinate (x, y or z) of a point, given or worked out
    (the foot of a perpendicular, an image in a plane, where a line meets a plane).
+5. **length**: the magnitude of a vector given by its components.
+6. **area**: of a triangle on three points in space, or a parallelogram on two
+   vectors (or two sides given as vectors).
+7. **volume**: of a tetrahedron on four points, or a parallelepiped on three
+   vectors.
+8. **angle** and **projection** also work between two VECTORS given by their
+   components (the angle between a and b; the projection of a on b).
+
+Vector questions about general vectors with no components (|a| = 2, a · b = 1,
+a × b = c), identities, or a value of λ or α are `no`.
 
 A key that is one of these SQUARED or MULTIPLIED by a number ("d²", "(PQ)²",
 "6 × distance") still fits: name the measured kind.
@@ -33,7 +43,7 @@ Write a JSON array to your output path, one object per question, input order:
 [{ "n": 3, "id": "<id>", "fit": "distance", "note": "skew lines, cross product method", "figureNeeded": "none", "solutionWrong": "none" }]
 ```
 
-- `fit`: distance, angle, projection, coord or no.
+- `fit`: distance, angle, projection, coord, length, area, volume or no.
 - `note`: at most 12 words.
 
 Read only your input file, write only your output file, run nothing. When
