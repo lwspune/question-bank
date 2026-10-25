@@ -140,6 +140,19 @@ export function stepTexts(visual: SolutionVisual, solution: string | null | unde
   });
 }
 
+/**
+ * The stored visual as it should reach a page, or null. The query layer runs
+ * this on the server, so a visual that no longer parses or whose self-check
+ * disagrees with its answer never reaches a student, and the client only loads
+ * the scene code for a question that really has one. Returns the RAW value:
+ * the client parses it again inside the (lazily loaded) player.
+ */
+export function usableVisual(raw: unknown): unknown | null {
+  if (raw === null || raw === undefined) return null;
+  const r = parseSolutionVisual(raw);
+  return r.ok && checkVisual(r.visual).ok ? raw : null;
+}
+
 /** Run the scene's own working and compare it with the stored answer. */
 export function checkVisual(visual: SolutionVisual): { ok: boolean; value: number } {
   const scene = getScene(visual.scene);
