@@ -343,6 +343,10 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 
 ### 2026-10
 
+- **2026-10-26 — Board Solved Papers books: 17 ebooks (MH HSC 12 x5, SSC 10 x6, CBSE 10 x2, CBSE 12 x4), each stored paper as set, then solved; migration 0186 (kind `papers`); uploaded OFF.**
+  - **One CBSE paper a year (owner):** all ~15 a year would run 1,300-3,500 pages; the lowest code, its set 1 (`lib/ebooks/boardPapers.ts`). Maharashtra: every paper.
+  - **Same printer as the download:** `paperBodyHtml`/`keyDetailsHtml` split from `paperHtml.ts`, read via the anon client, so only PUBLIC questions print and a short paper stops the build.
+  - **Chrome's print hung on some PNGs** near a page break (JPEG: 2 s), so the build JPEGs every picture (`sharp`, dev only); downloads share the risk (SUGGESTIONS.md). Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-10-25 (third) — Animated solutions, Wave 1: three scenes (function graph; coordinate geometry incl. complex loci; 3D lines, planes, vectors), 494 checked visuals in 13 JEE + CET chapters.**
   - **Lane:** Haiku fit -> Sonnet draft -> `visuals:assemble` (key from the DB) -> sheet, every picture looked at -> apply. Sheets caught what checks cannot: edge-on planes, invented helper planes, a right number on the wrong shape.
   - **Wrong solutions fixed as found** (`visuals:fix-solutions`); keys/stems the lane cannot fix go on `scripts/visuals/NEEDS_OWNER.md`, never flipped.
@@ -407,10 +411,6 @@ The load-bearing choices made during the initial scaffold. Every later phase res
   - **An invite, not a copy:** a copy of a public paper would split its stats, catalogue row and free count. `mock_invites` (one code per sender per paper) + `mock_invite_joins` (written at Start); the link is `/mock/<slug>?with=<code>`.
   - **Free, the owner's call (recommended against):** only a sitting started after the join is uncounted, 20 joins a day; two accounts swapping papers sit free (accepted).
   - **Friends on a paper** = everyone an invite links you to; "Pass this paper on" stays on the result page. Experiment `mock-together`. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
-- **2026-10-16 (second) — Send a V practice test to a friend: "Practise together" on the built-test card and practice result page; the friend opens `/practice/<slug>`, signs in and sits their OWN copy (migration 0163, `/api/practice-tests/join`).**
-  - **Cooperative, not a duel (owner; a duel comes later):** a known-peer contest is the harm the leaderboard ban covers, so no score is ever shared.
-  - **A copy, not access:** the original stays owner-only (0156); `shared_from` names the ROOT, unique per friend. The copy is free and outside the daily count (owner).
-  - **Step 2 same day (owner):** result page lists what each side missed (first attempts and names, no scores); an hourly GitHub job pushes "friend finished" (0164): Vercel lacks the VAPID key. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 ### 2026-09
 
 > **September entries below are DIGESTS**, each keeping its headline and the findings that answer
