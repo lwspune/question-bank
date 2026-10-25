@@ -1,0 +1,98 @@
+[
+  {
+    "id": "71f58b80-840b-40f5-993e-3c86318e78ad",
+    "before": "02438566",
+    "solution": "\\(P(-2\\sqrt{6},\\sqrt{3})\\) lies on the hyperbola, so \\(\\frac{24}{a^{2}} - \\frac{3}{b^{2}} = 1\\). Also \\(e = \\frac{\\sqrt{5}}{2}\\) gives \\(b^{2} = a^{2}\\left(\\frac{5}{4} - 1\\right)\\), i.e. \\(a^{2} = 4b^{2}\\). Then \\(\\frac{6}{b^{2}} - \\frac{3}{b^{2}} = 1\\), so \\(b^{2} = 3\\), \\(a^{2} = 12\\) and the hyperbola is \\(\\frac{x^{2}}{12} - \\frac{y^{2}}{3} = 1\\). The tangent at \\(P\\) is \\(-\\frac{x}{\\sqrt{6}} - \\frac{y}{\\sqrt{3}} = 1\\), which meets the conjugate axis \\(x = 0\\) at \\(Q(0,-\\sqrt{3})\\); its slope is \\(-\\frac{1}{\\sqrt{2}}\\). The normal at \\(P\\) is \\(y - \\sqrt{3} = \\sqrt{2}\\left(x + 2\\sqrt{6}\\right)\\), which meets \\(x = 0\\) at \\(R(0,5\\sqrt{3})\\). Hence \\(QR = 5\\sqrt{3} + \\sqrt{3} = 6\\sqrt{3}\\).",
+    "note": "tangent meets the conjugate axis at (0, -sqrt3), not (0, sqrt3); only that gives QR = 6sqrt3. Key C unchanged."
+  },
+  {
+    "id": "a9ab3639-b360-4177-92a1-cb3762e86e21",
+    "before": "5486169d",
+    "solution": "The tangent at \\(R(3,4)\\) is \\(3x + 4y = 25\\), so \\(P\\left(\\frac{25}{3},0\\right)\\) and \\(Q\\left(0,\\frac{25}{4}\\right)\\), and \\(PQ = \\frac{125}{12}\\). Then \\(OP + OQ + PQ = \\frac{25}{3} + \\frac{25}{4} + \\frac{125}{12} = 25\\). The triangle is right-angled at \\(O\\), so its incentre is \\(\\left(\\frac{OP\\cdot OQ}{OP + OQ + PQ}, \\frac{OP\\cdot OQ}{OP + OQ + PQ}\\right) = \\left(\\frac{25}{12},\\frac{25}{12}\\right)\\). The circle through \\(O\\) with this centre has \\(r^{2} = 2\\left(\\frac{25}{12}\\right)^{2} = \\frac{625}{72}\\).",
+    "note": "wrote OP + OQ + OR = 25; the perimeter is OP + OQ + PQ = 25. Key C unchanged."
+  },
+  {
+    "id": "64104e72-8e5e-40b4-8bcd-6879d1c22167",
+    "before": "b71d9055",
+    "solution": "\\(C_{1}\\) has diameter 10, passes through the origin and lies in the half-plane \\(x \\geq 0\\), so it touches the \\(y\\)-axis at the origin: its centre is \\((5,0)\\) and \\(C_{1}: x^{2} + y^{2} - 10x = 0\\). With \\(y = x\\) this gives \\(2x^{2} - 10x = 0\\), so the chord runs from the origin \\((0,0)\\) to \\((5,5)\\). \\(C_2\\) has this as diameter, so its centre is the midpoint \\(O_2=(\\tfrac52,\\tfrac52)\\). The chord of \\(C_2\\) through \\((2,3)\\) farthest from \\(O_2\\) is perpendicular to \\(O_2(2,3)\\); that segment has slope \\(\\frac{3-2.5}{2-2.5}=-1\\), so the chord has slope \\(1\\): \\(y-3=(x-2)\\Rightarrow x-y+1=0\\). Thus \\(a=-1,\\;b=1\\) and \\(a-b=-2\\).",
+    "note": "the endpoint (5, 5) was asserted; added why: C1 lies in x >= 0 through O, so its centre is (5, 0). Key C unchanged."
+  },
+  {
+    "id": "0070ba3d-79db-4c7d-9d7d-5759e51e2256",
+    "before": "e0faf504",
+    "solution": "The tangent at \\(P(2,-4)\\) to \\(y^{2} = 8x\\) is \\(-4y = 4(x + 2)\\), i.e. \\(x + y + 2 = 0\\). The normal at \\(P\\) is perpendicular to it: \\(x - y + \\lambda = 0\\) through \\((2,-4)\\) gives \\(\\lambda = -6\\), i.e. \\(x - y = 6\\). The directrix is \\(x = -2\\): the tangent meets it at \\(A(-2,0)\\) and the normal at \\(B(-2,-8)\\). For \\(AQBP\\) to be a square, \\(Q = A + B - P = (-6,-4)\\), so \\(a = -6\\), \\(b = -4\\) and \\(2a + b = -16\\).",
+    "note": "B was written A(-2, 8); the normal meets the directrix at B(-2, -8). Rewritten cleanly. Key A unchanged."
+  },
+  {
+    "id": "11cf8d23-c6c2-46ae-ba5d-2282a1824338",
+    "before": "b3e50c3a",
+    "solution": "Take \\(P(1 + \\cos\\theta, 1 + \\sin\\theta)\\) on the circle. Then \\(PA^{2} = \\cos^{2}\\theta + (\\sin\\theta - 3)^{2} = 10 - 6\\sin\\theta\\) and \\(PB^{2} = \\cos^{2}\\theta + (\\sin\\theta + 6)^{2} = 37 + 12\\sin\\theta\\), so \\(PA^{2} + PB^{2} = 47 + 6\\sin\\theta\\), which is greatest at \\(\\theta = \\frac{\\pi}{2}\\), i.e. \\(P(1,2)\\). Then \\(P\\), \\(A\\) and \\(B\\) all lie on the line \\(x = 1\\).",
+    "note": "PB^2 sign error (wrote 37 - 12 sin); it is 37 + 12 sin, so the maximum is at pi/2 (P(1,2)), not 3pi/2. Still collinear on x = 1; key B unchanged."
+  },
+  {
+    "id": "13098502-f04e-41b6-85bf-915f0d41c8a6",
+    "before": "10e19885",
+    "solution": "For \\(y^2=-\\tfrac{x}{2}\\), a line \\(y=m(x-2)\\) through \\((2,0)\\) gives \\(m^{2}x^{2} + \\left(\\tfrac12 - 4m^{2}\\right)x + 4m^{2} = 0\\), and it is tangent when the discriminant vanishes: \\(\\tfrac14-4m^2=0\\Rightarrow m=\\pm\\tfrac14\\). The tangents are \\(x\\mp4y-2=0\\); the distance from \\((5,0)\\) equals the circle radius \\(\\sqrt r=\\frac{|5-2|}{\\sqrt{17}}=\\frac{3}{\\sqrt{17}}\\). Hence \\(r=\\tfrac{9}{17}\\) and \\(17r=9\\).",
+    "note": "discriminant written -4m^2 + 1/2 = 0 (gives m^2 = 1/8); it is 1/4 - 4m^2 = 0, m = +-1/4. Answer 9 unchanged."
+  },
+  {
+    "id": "1cd7c9a7-e086-401a-94fe-10a2ee60ab16",
+    "before": "13025de8",
+    "solution": "\\((4,4\\sqrt{3})\\) lies on \\(y^{2} = 4ax\\), so \\(48 = 16a\\), \\(4a = 12\\) and the parabola is \\(y^{2} = 12x\\). The parameter of \\(P\\) is \\(t_{1} = \\frac{2}{\\sqrt{3}}\\), so for the focal chord \\(t_{2} = -\\frac{1}{t_1} = -\\frac{\\sqrt{3}}{2}\\) and \\(Q\\left(\\frac{9}{4}, -3\\sqrt{3}\\right)\\). The area of trapezium \\(PQNM\\) is \\(\\frac{1}{2}MN\\cdot(PM + QN) = \\frac{1}{2}MN\\cdot(PS + QS) = \\frac{1}{2}MN\\cdot PQ = \\frac{1}{2}\\cdot 7\\sqrt{3}\\cdot\\frac{49}{4} = \\frac{343\\sqrt{3}}{8}\\).",
+    "note": "a stray '= 3' ended the final line; removed. Key C unchanged."
+  },
+  {
+    "id": "25ed3187-ee3a-4808-816d-57ce474f82b2",
+    "before": "4f321c7c",
+    "solution": "From the circle, \\(y^{2} = 8x - x^{2}\\); the hyperbola is \\(4x^{2} - 9y^{2} = 36\\). Substituting, \\(4x^{2} - 9(8x - x^{2}) = 36\\), i.e. \\(13x^{2} - 72x - 36 = 0\\), so \\((13x + 6)(x - 6) = 0\\). For \\(x = -\\frac{6}{13}\\), \\(y^{2} < 0\\), so it is rejected; \\(x = 6\\) gives \\(y^{2} = 12\\). So \\(A(6,\\sqrt{12})\\) and \\(B(6,-\\sqrt{12})\\). Let \\(P\\left(\\alpha,\\frac{2\\alpha + 4}{3}\\right)\\) on the line and \\((h,k)\\) the centroid: \\(h = \\frac{12 + \\alpha}{3}\\), so \\(\\alpha = 3h - 12\\), and \\(k = \\frac{2\\alpha + 4}{9}\\), so \\(\\alpha = \\frac{9k - 4}{2}\\). Equating, \\(6h - 24 = 9k - 4\\), i.e. \\(6h - 9k = 20\\): the centroid lies on \\(6x - 9y = 20\\).",
+    "note": "'6h - 2y = 9k - 4' should be 6h - 24 = 9k - 4; also cleaned garbled lines ((x = 6), y = I sqrt12, 2x - 3y + y = 0). Key D unchanged."
+  },
+  {
+    "id": "3b4a977e-df36-4fab-ac69-d443a9b9ab82",
+    "before": "76c24793",
+    "solution": "For the ellipse, \\(e_{1}^{2} = 1 - \\frac{b^{2}}{25}\\) (since \\(b < 5\\)); for the hyperbola, \\(e_{2}^{2} = 1 + \\frac{b^{2}}{16}\\). From \\(e_{1}^{2}e_{2}^{2} = 1\\): \\(\\left(1 - \\frac{b^{2}}{25}\\right)\\left(1 + \\frac{b^{2}}{16}\\right) = 1\\), i.e. \\(\\frac{b^{2}}{16} - \\frac{b^{2}}{25} - \\frac{b^{4}}{400} = 0\\), so \\(\\frac{9b^{2}}{400} = \\frac{b^{4}}{400}\\) and \\(b^{2} = 9\\). The ellipse \\(\\frac{x^{2}}{9} + \\frac{y^{2}}{25} = 1\\) has foci \\((0,\\pm4)\\); the hyperbola \\(\\frac{x^{2}}{16} - \\frac{y^{2}}{9} = 1\\) has foci \\((\\pm5,0)\\). The ellipse through all four foci is \\(\\frac{x^{2}}{25} + \\frac{y^{2}}{16} = 1\\), with \\(e = \\sqrt{1 - \\frac{16}{25}} = \\frac{3}{5}\\).",
+    "note": "e2^2 was written 1 - b^2/16 (it is 1 + b^2/16), the expansion began '2 +' and had b^2/400 for b^4/400, and the hyperbola was written '= 0'. Key B unchanged."
+  },
+  {
+    "id": "4957b001-f33e-4cfa-8922-c2f9e597d096",
+    "before": "1178b6c4",
+    "solution": "The line joining the centres is perpendicular to the common tangent \\(4x + 3y = 10\\) (slope \\(-\\frac{4}{3}\\)), so its slope is \\(\\frac{3}{4} = \\tan\\theta\\), with \\(\\cos\\theta = \\frac{4}{5}\\), \\(\\sin\\theta = \\frac{3}{5}\\). The centres are 5 from \\((1,2)\\) along it: \\((1 \\pm 5\\cos\\theta, 2 \\pm 5\\sin\\theta)\\), i.e. \\(C_{1}(5,5)\\) and \\(C_{2}(-3,-1)\\). Hence \\(|(\\alpha + \\beta)(\\gamma + \\delta)| = |10 \\times (-4)| = 40\\).",
+    "note": "the line of centres was given slope 4/3; it is perpendicular to the tangent, slope 3/4, so the centres are (5,5) and (-3,-1), not (4,6) and (-2,-2) (the 40 was a coincidence). Answer 40 unchanged."
+  },
+  {
+    "id": "4b57f4dd-e5e3-4e82-b493-137b3dfdf4cf",
+    "before": "e79cd8f8",
+    "solution": "The normal to \\(y^{2} = 8x\\) is \\(y = mx - 4m - 2m^{3}\\). The shortest distance runs along the normal through the circle's centre \\((0,-6)\\): \\(-6 = -4m - 2m^{3}\\), i.e. \\(m^{3} + 2m - 3 = 0\\), so \\((m - 1)(m^{2} + m + 3) = 0\\) and \\(m = 1\\). Then \\(P = (am^{2}, -2am) = (2,-4)\\). The circle has centre \\(C(0,-6)\\) and radius 1, and \\(PC = \\sqrt{4 + 4} = 2\\sqrt{2}\\), so the shortest distance is \\(PC - r = 2\\sqrt{2} - 1\\).",
+    "note": "said m = -1; the factorisation gives m = 1 (P(2, -4) is for m = 1). Key D unchanged."
+  },
+  {
+    "id": "4dbd1e9b-b2ba-4039-ac44-79dbaac6d9d4",
+    "before": "d0ffb473",
+    "solution": "The latus rectum is \\(\\frac{2b^{2}}{a} = 10\\), so \\(b^{2} = 5a\\). For \\(f(t) = t^{2} + t + \\frac{11}{12}\\), \\(f'(t) = 2t + 1 = 0\\) at \\(t = -\\frac{1}{2}\\), and the minimum value is \\(\\frac{1}{4} - \\frac{1}{2} + \\frac{11}{12} = \\frac{2}{3}\\), so \\(e = \\frac{2}{3}\\). Then \\(e^{2} = 1 - \\frac{b^{2}}{a^{2}}\\) gives \\(\\frac{b^{2}}{a^{2}} = \\frac{5}{9}\\), i.e. \\(b^{2} = \\frac{5a^{2}}{9}\\). With \\(b^{2} = 5a\\): \\(5a = \\frac{5a^{2}}{9}\\), so \\(a = 9\\) and \\(b^{2} = 45\\). Hence \\(a^{2} + b^{2} = 81 + 45 = 126\\).",
+    "note": "e^2 was written (1 - b^2)/a^2 (it is 1 - b^2/a^2) with garbled steps after it; rewritten. Key B unchanged."
+  },
+  {
+    "id": "3666f52a-2e13-45fd-a55b-c12e73b46916",
+    "before": "c9462f27",
+    "solution": "Equation of circle is \\[(x + 3)(x - \\alpha) + (y - 2)(y - 4) = 0\\] \\(Q\\) lies on it \\[12(9 - \\alpha) + 8 \\times 6 = 0\\] \\[\\alpha = 13\\] \\[x^{2} + y^{2} - 10x - 6y - 31 = 0\\] Equation of Tangent at \\(Q\\) \\[x.9 + y.10 - 5(x + 9) - 3(y + 10) - 31 = 0\\] \\[4x + 7y = 106\\] Equation of Tangent at \\(R\\) \\[x.13 + y.4 - 5(x + 13) - 3(y + 4) - 31 = 0\\] \\[8x + y = 108\\] Solution (a) and (b) \\[s = \\left( \\frac{25}{2},8 \\right)\\] which lies on \\(2x - ky = 1\\) \\[k = 3\\]",
+    "note": "the solution carried another question's working (a 6860 counting answer) and a stray '178.'; removed. Answer 3 unchanged."
+  },
+  {
+    "id": "5b747525-5949-4f41-a931-07fa6eee8d24",
+    "before": "53e9e150",
+    "solution": "Centre of the circle \\(= \\left( \\frac{3}{2},1 \\right)\\), and \\(AB\\) is a diameter, so the centre lies on \\(2x + 3y - k = 0\\): \\[2\\left( \\frac{3}{2} \\right) + 3(1) - k = 0\\] \\[\\Rightarrow k = 6\\] Now, Equation of ellipse becomes \\[x^{2} + 9y^{2} = 36\\] \\[\\frac{x^{2}}{6^{2}} + \\frac{y^{2}}{2^{2}} = 1 \\]length of \\(LR = \\frac{2b^{2}}{a} = \\frac{2 \\cdot 2^{2}}{6} = \\frac{8}{6} = \\frac{4}{3} = \\frac{m}{n}\\) \\[\\therefore 2\\text{ }m + n = 2(4) + 3 = 11\\]",
+    "note": "the solution carried another question's working (complex-number statements) and a stray '74.', and wrote 3(a) for 3(1); fixed. Key B unchanged."
+  },
+  {
+    "id": "b6ab8997-5f37-4622-888b-452b4c1edb52",
+    "before": "f92e0e73",
+    "solution": "\\((x - 2)^{2} + (y - 1)^{2} + \\lambda(x - 2y) = 0\\) \\[C:x^{2} + y^{2} + x(\\lambda - 4) + y( - 2 - 2\\lambda) + 5 = 0\\] \\[C_{1}:x^{2} + y^{2} + 2y - 5 = 0\\] \\(S_{1} - S_{2} = 0\\) (Equation of \\(PQ\\) ) \\((\\lambda - 4)x - (2\\lambda + 4)y + 10 = 0\\) Passes through \\((0, - 1)\\) \\[\\Rightarrow \\lambda = - 7\\] \\[C:x^{2} + y^{2} - 11x + 12y + 5 = 0\\] Its radius is \\(\\sqrt{\\frac{121}{4} + 36 - 5} = \\frac{\\sqrt{245}}{2}\\), so the diameter \\(= \\sqrt{245} = 7\\sqrt{5}\\).",
+    "note": "the radius was written sqrt245/4; it is sqrt245/2 (diameter 7 sqrt5). Key A unchanged."
+  },
+  {
+    "id": "c876e7f6-4d40-4484-b481-e9bf664624de",
+    "before": "9f4afa8b",
+    "solution": "\\[\\frac{x^{2}}{9} - \\frac{y^{2}}{4} = 1\\] \\[a^{2} = 9,b^{2} = 4\\] \\[b^{2} = a^{2}\\left( e^{2} - 1 \\right) \\Rightarrow e^{2} = 1 + \\frac{b^{2}}{a^{2}}\\] \\[e^{2} = 1 + \\frac{4}{9} = \\frac{13}{9}\\] \\[e = \\frac{\\sqrt{13}}{3} \\Rightarrow S_{1}S_{2} = 2ae = 2 \\times 3 \\times \\frac{\\sqrt{13}}{3} = 2\\sqrt{13}\\] Area of \\(\\Delta{PS}_{1}{\\text{ }S}_{2} = \\frac{1}{2} \\times \\beta \\times S_{1}{\\text{ }S}_{2} = 2\\sqrt{13}\\) \\[\\Rightarrow \\frac{1}{2} \\times \\beta \\times (2\\sqrt{13}) = 2\\sqrt{13} \\Rightarrow \\beta = 2\\] \\[\\frac{\\alpha^{2}}{9} - \\frac{\\beta^{2}}{4} = 1 \\Rightarrow \\frac{\\alpha^{2}}{9} - 1 = 1 \\Rightarrow \\alpha^{2} = 18 \\Rightarrow \\alpha = 3\\sqrt{2}\\] Distance of \\(P\\) from origin \\(= \\sqrt{\\alpha^{2} + \\beta^{2}}\\) \\[= \\sqrt{18 + 4} = \\sqrt{22}\\]",
+    "note": "2ae was written 2 x 3 x sqrt(13/3); it is 2 x 3 x sqrt13/3 = 2 sqrt13. Key C unchanged."
+  }
+]
