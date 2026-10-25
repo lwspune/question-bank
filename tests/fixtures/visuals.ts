@@ -201,6 +201,91 @@ export const CG_LINE_VISUAL = {
   answer: { value: -1, label: "−1" },
 };
 
+/** MHT-CET 150c6ed0: distance of the origin from x - 3y + 4z = 6. */
+export const S3_PLANE_SOLUTION = String.raw`Distance \(=\frac{|0-0+0-6|}{\sqrt{1+9+16}}=\frac{6}{\sqrt{26}}\). Matches option B.`;
+
+/** MHT-CET fa974266: length of the projection of a segment on x + y + z = 7. */
+export const S3_PROJ_SOLUTION = String.raw`\(\vec{AB}=(4-5,\,-1+1,\,3-4)=(-1,0,-1)\), \(|\vec{AB}|=\sqrt{2}\). Plane normal \(\vec n=(1,1,1)\). Projection on the plane \(=\sqrt{|\vec{AB}|^2-\left(\frac{\vec{AB}\cdot\vec n}{|\vec n|}\right)^2}=\sqrt{2-\frac{4}{3}}=\sqrt{\frac{2}{3}}\).`;
+
+/** MHT-CET 9e235789: shortest distance between two skew lines. */
+export const S3_SKEW_SOLUTION = String.raw`\((3, -1, 1) \times (-3, 2, 4) = (-6, -15, 3)\), of length \(\sqrt{270} = 3\sqrt{30}\). The points differ by \((-6, -15, 3)\), whose dot product with it is 270. The distance is \(\dfrac{270}{3\sqrt{30}} = 3\sqrt{30}\).`;
+
+/** JEE Mains d3a9b6a0: foot of the perpendicular from R to a line, then the distance PQ. */
+export const S3_FOOT_SOLUTION = String.raw`Line: \((2-2t,-5+3t,11-4t)\), dir \((-2,3,-4)\). Foot from \(R(1,7,6)\): \(29t-58=0\Rightarrow t=2\), \(Q=(-2,1,3)\). \(\vec{PQ}=(-12,3,4)\), \(|PQ|=\sqrt{144+9+16}=13\).`;
+
+export const S3_PLANE_VISUAL = {
+  v: 1,
+  scene: "space3d",
+  params: {
+    points: [{ id: "O", at: [0, 0, 0], label: "O" }],
+    planes: [{ id: "P", eq: [1, -3, 4, 6], label: "x − 3y + 4z = 6" }],
+    ask: { kind: "distance", from: "O", to: "P", label: "distance = 6/√26" },
+  },
+  steps: [{ from: 0, beats: ["given", "answer"] }],
+  fingerprint: solutionFingerprint(S3_PLANE_SOLUTION),
+  answer: { value: 6 / Math.sqrt(26), label: "6/√26" },
+};
+
+export const S3_PROJ_VISUAL = {
+  v: 1,
+  scene: "space3d",
+  params: {
+    points: [{ id: "A", at: [5, -1, 4], label: "A(5, −1, 4)" }, { id: "B", at: [4, -1, 3], label: "B(4, −1, 3)" }],
+    planes: [{ id: "P", eq: [1, 1, 1, 7], label: "x + y + z = 7", beat: "derived" }],
+    segments: [{ from: "A", to: "B", beat: "given" }],
+    ask: { kind: "projection", from: "A", to: "B", onto: "P", label: "projection = √(2/3)" },
+  },
+  steps: [
+    { from: 0, beats: ["given"] },
+    { from: 1, beats: ["derived"] },
+    { from: 2, beats: ["answer"] },
+  ],
+  fingerprint: solutionFingerprint(S3_PROJ_SOLUTION),
+  answer: { value: Math.sqrt(2 / 3), label: "√(2/3)" },
+};
+
+export const S3_SKEW_VISUAL = {
+  v: 1,
+  scene: "space3d",
+  params: {
+    lines: [
+      { id: "L1", point: [3, 8, 3], dir: [3, -1, 1], label: "L₁" },
+      { id: "L2", point: [-3, -7, 6], dir: [-3, 2, 4], label: "L₂" },
+    ],
+    ask: { kind: "distance", from: "L1", to: "L2", label: "shortest distance = 3√30" },
+  },
+  steps: [
+    { from: 0, beats: ["given"] },
+    { from: 2, beats: ["answer"] },
+  ],
+  fingerprint: solutionFingerprint(S3_SKEW_SOLUTION),
+  answer: { value: 3 * Math.sqrt(30), label: "3√30" },
+};
+
+export const S3_FOOT_VISUAL = {
+  v: 1,
+  scene: "space3d",
+  params: {
+    points: [
+      { id: "P", at: [10, -2, -1], label: "P(10, −2, −1)" },
+      { id: "R", at: [1, 7, 6], label: "R(1, 7, 6)" },
+      { id: "A", at: [2, -5, 11], label: "" },
+      { id: "B", at: [-6, 7, -5], label: "" },
+    ],
+    lines: [{ id: "L", through: ["A", "B"] }],
+    derived: [{ id: "Q", kind: "foot", from: "R", to: "L", label: "Q(−2, 1, 3)" }],
+    segments: [{ from: "R", to: "Q", beat: "derived" }],
+    ask: { kind: "distance", from: "P", to: "Q", label: "PQ = 13" },
+  },
+  steps: [
+    { from: 0, beats: ["given"] },
+    { from: 1, beats: ["derived"] },
+    { from: 2, beats: ["answer"] },
+  ],
+  fingerprint: solutionFingerprint(S3_FOOT_SOLUTION),
+  answer: { value: 13, label: "13" },
+};
+
 export const FIXTURES = [
   { name: "rotation", visual: ROTATION_VISUAL, solution: ROTATION_SOLUTION },
   { name: "circleArc", visual: ARC_VISUAL, solution: ARC_SOLUTION },
@@ -212,4 +297,8 @@ export const FIXTURES = [
   { name: "coordGeometry", visual: CG_LOCUS_VISUAL, solution: CG_LOCUS_SOLUTION },
   { name: "coordGeometry", visual: CG_DIST_VISUAL, solution: CG_DIST_SOLUTION },
   { name: "coordGeometry", visual: CG_LINE_VISUAL, solution: CG_LINE_SOLUTION },
+  { name: "space3d", visual: S3_PLANE_VISUAL, solution: S3_PLANE_SOLUTION },
+  { name: "space3d", visual: S3_PROJ_VISUAL, solution: S3_PROJ_SOLUTION },
+  { name: "space3d", visual: S3_SKEW_VISUAL, solution: S3_SKEW_SOLUTION },
+  { name: "space3d", visual: S3_FOOT_VISUAL, solution: S3_FOOT_SOLUTION },
 ] as const;
