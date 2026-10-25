@@ -34,6 +34,7 @@ export const NOTES_LINT_ROOTS = [
   "src/lib/notes/", // NOTES_CHAPTERS registry + the helpers the lint imports
   "src/lib/sites/imat/notes/", // IMAT's chapters, authored there and taken in whole by NOTES_CHAPTERS
   "scripts/notes-lint.ts", // the lint itself
+  "src/lib/supabase/readAllPages.ts", // the paging helper its bulk reads go through
   "supabase/", // the schema it reads (taxonomy, question_concept_tags)
   "package.json",
   "package-lock.json",
