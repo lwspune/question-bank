@@ -60,6 +60,10 @@ settled; settled rows move to the bottom with the date and what was done.
 | `6dcba703` | JEE Mains · Vector Algebra | **Question underdetermined.** (b − 1)(1 − a) = 0 and 4abc = 0 allow a family (e.g. a = 1, b = 0, any c), so 6(a + b + c) is not fixed; the solution picks a = b = 1, c = 0. | Recover the original wording, or mark flawed. |
 | `7a3ce012` | JEE Mains · Vector Algebra | **Question underdetermined.** A vector in the plane of a and b is λa + μb; the solution assumes λ = 1, which the stem never states, so |v| is not fixed. | Recover the original wording, or mark flawed. |
 | `aa590022` | JEE Mains · Vector Algebra | **Options B and C identical** (both 25); the key C is right but ambiguous. The solution notes it. | Correct one option. |
+| `42453159` | MHT-CET · Trigonometric Functions | **Options A and D identical** (both 7); the key A is right but ambiguous. The solution notes it. | Correct one option. |
+| `57ef00dc` | MHT-CET · Trigonometric Functions | **Data impossible.** sin B = b sin A / a = 2/√3 > 1, so no such triangle exists; the key 2/√3 is the formula's value. The solution notes it. | Recover the original numbers, or mark flawed. |
+| `69582b45` | MHT-CET · Trigonometric Functions | **Three options true.** sin β < 0, cos(α + β) > 0 and cos α < 0 all hold (B, C, D); the key is B. The solution notes it. | Mark flawed, or recover the original options. |
+| `696b46cf` | MHT-CET · Trigonometric Functions | **Stem typo.** As printed, sin x = sin²α/(1 + cos²α), not offered; the key tan²(α/2) holds for the original cot⁻¹(√cos α) − tan⁻¹(√cos α). | Restore √cos α in the stem (hash-safe repair). |
 
 ## Settled
 
