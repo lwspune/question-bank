@@ -77,67 +77,81 @@ export const NDA_CDS_ENGLISH: BookDefinition = {
     {
       slug: "vocabulary",
       name: "Vocabulary",
-      // 0 of 91 sets span a subtopic. Synonyms and Antonyms carry an authored
-      // line because all 65 of their sets say the same thing in 22 different
-      // wordings; the other two mix task types (Word Definition alone spans
-      // Match-List, word-pair meaning and single-word meaning), so no single
-      // line would be true of them and they keep their per-set Directions.
+      // 0 of 92 sets span a block. Synonyms and Antonyms carry an authored
+      // line because all their sets say the same thing in many wordings; the
+      // other two mix task types (Word Definition alone spans Match-List,
+      // word-pair meaning and single-word meaning), so no single line would be
+      // true of them and they keep their per-set Directions.
+      //
+      // `members` since 2026-10-26: CDS Vocabulary was re-cut by skill for
+      // /notes on 2026-10-02 (scripts/cds/reshape.ts), so its sets now spread
+      // over themed subtopics. Each block takes back the subtopics its sets
+      // were cut into; every CDS set still lands in exactly one block
+      // (measured: `npx tsx scripts/books/subtopic-report.ts --chapter=vocabulary`).
       groupSubtopics: [
         {
           name: "Synonyms",
+          members: [
+            "Synonyms",
+            "Synonyms: Method",
+            "Synonyms: Character and Temperament",
+            "Synonyms: Feelings, Speech and Persuasion",
+            "Synonyms: Harm, Degree and the Senses",
+            "Synonyms: Law, Duty and Action",
+            "Synonyms: Phrases and Idioms",
+          ],
           directions:
             "Each item consists of a sentence with an underlined word or words, followed by four options. Select the option nearest in meaning to the underlined part.",
         },
         {
           name: "Antonyms",
+          members: [
+            "Antonyms",
+            "Antonyms: Method",
+            "Antonyms: People and Character",
+            "Antonyms: Feelings and Calm",
+            "Antonyms: Size, Worth and Law",
+            "Antonyms: Speech and Argument",
+            "Antonyms: Time, Change and Action",
+          ],
           directions:
             "Each item consists of a sentence with an underlined word or words, followed by four options. Select the option opposite in meaning to the underlined part.",
         },
-        { name: "Word Definition" },
-        { name: "Confusable Word Pairs" },
+        {
+          name: "Word Definition",
+          members: [
+            "Word Definition",
+            "Word Meaning: Single Words",
+            "Word Meaning: Borrowed Words and Word Families",
+            "Word Meaning: Themed Match Lists",
+          ],
+        },
+        {
+          // Spelling and homophone sections were filed here before the re-cut
+          // (scripts/cds/config.ts), and Word Forms prints NDA's own
+          // Confusable Word Pairs directions line.
+          name: "Confusable Word Pairs",
+          members: [
+            "Confusable Word Pairs",
+            "Homophones in Sentences",
+            "Spelling",
+            "Word Forms and Parts of Speech",
+          ],
+        },
       ],
     },
     {
       slug: "grammar",
       name: "Grammar",
-      // 18 of 75 sets span a subtopic, ALL of them in CDS — and every one mixes
-      // ONLY the three merged below, never any other subtopic (measured:
-      // `npx tsx scripts/books/subtopic-report.ts --chapter=grammar --spanning`).
-      //
-      // They interleave because they are ONE task. Those CDS papers print a
-      // single instruction — "fill the blank with the appropriate word" — over
-      // ten questions, and the three subtopics classify what the ANSWER turned
-      // out to be, not what the student was asked to do. CDS says so itself:
-      // three of its "Preposition Usage" sets are headed "select the most
-      // appropriate preposition OR DETERMINER". Merging them takes the chapter
-      // to 0 spanning sets and 0 questions printed under a wrong heading,
-      // without splitting a set or re-tagging the bank.
-      //
-      // NO authored `directions` on any block, deliberately. Parts of Speech
-      // and Sentence Completion would each take one (all their wordings are the
-      // same task), but writing that prose needs the full Directions text read
-      // rather than the measured claim that it exists. Correct Sentence
-      // Identification can never take one: its five CDS wordings are five
-      // different tasks — combining two sentences, choosing which of two uses a
-      // word correctly, a word used variously across S1/S2/S3. Per-set
-      // Directions are always correct, so they stay.
-      groupSubtopics: [
-        {
-          name: "Prepositions, Determiners and Connectors",
-          members: [
-            "Preposition Usage",
-            "Discourse Markers and Connectors",
-            "Articles, Determiners and Quantifiers",
-          ],
-        },
-        { name: "Parts of Speech" },
-        { name: "Sentence Completion" },
-        { name: "Correct Sentence Identification" },
-        { name: "Direct and Indirect Speech" },
-        { name: "Active and Passive Voice" },
-        // NDA only — CDS has never asked it, so it prints a blank CDS cell.
-        { name: "Subject-Verb Agreement" },
-      ],
+      // FLAT since 2026-10-26: prints set by set, each set under its own
+      // Directions. Until then it grouped NDA's seven subtopics (three merged
+      // into "Prepositions, Determiners and Connectors"), with 0 spanning sets.
+      // The 2026-10-02 /notes re-cut of CDS Grammar (scripts/cds/reshape.ts)
+      // spreads CDS's sets over 19 themed subtopics, and the sets chain 14 of
+      // them (blanks, prepositions, connectors and all five Parts of Speech
+      // pages) into one cluster: no grouping keeps every set in one block
+      // short of a single meaningless heading. Measure before re-grouping:
+      // `npx tsx scripts/books/subtopic-report.ts --chapter=grammar --spanning`.
     },
     {
       slug: "sentence-rearrangement",
@@ -147,11 +161,32 @@ export const NDA_CDS_ENGLISH: BookDefinition = {
       groupSubtopics: [
         {
           name: "Sentence Part Rearrangement (PQRS)",
+          // CDS's re-cut subtopics (2026-10-02), as for Vocabulary above.
+          members: [
+            "Sentence Part Rearrangement (PQRS)",
+            "Joining Words, Pairs and Pointers (PQRS)",
+            "Modifier Placement (PQRS)",
+            "Noun Phrases (PQRS)",
+            "Opening and Closing Parts (PQRS)",
+            "Prepositions and Their Objects (PQRS)",
+            "Subject and Verb (PQRS)",
+            "Verb Patterns (PQRS)",
+          ],
           directions:
             "Each item is a sentence whose parts have been jumbled and labelled P, Q, R and S. Select the sequence that produces the correct sentence.",
         },
         {
           name: "Paragraph Sequencing (S1–S6)",
+          members: [
+            "Paragraph Sequencing (S1–S6)",
+            "Paragraph Frame: S1 and S6",
+            "Linkers in Paragraphs",
+            "Paragraph Pairs and Elimination",
+            "Pronouns and Names in Paragraphs",
+            "Shape of a Paragraph Argument",
+            "This, These and Such",
+            "Time Order and Lists",
+          ],
           directions:
             "Each item is a passage of six sentences. The first and sixth are given as S1 and S6; the middle four have been jumbled and labelled P, Q, R and S. Select the correct order.",
         },
@@ -168,6 +203,9 @@ export const NDA_CDS_ENGLISH: BookDefinition = {
       groupSubtopics: [
         {
           name: "Contextual Fill-in-Blank",
+          // CDS files the same task as "Sentence Fill-in-Blanks" ("select word
+          // or group to fill the blank"), so its 4 sets print here too.
+          members: ["Contextual Fill-in-Blank", "Sentence Fill-in-Blanks"],
           directions:
             "Each sentence has a blank space followed by four options. Select the word or group of words most appropriate for the blank.",
         },
