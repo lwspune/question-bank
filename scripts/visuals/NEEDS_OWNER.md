@@ -75,6 +75,7 @@ settled; settled rows move to the bottom with the date and what was done.
 | `c375c734` | MHT-CET · Trigonometric Functions | **Key wrong, answer not offered.** 2ᵗ = t² − 1 has two roots for t = tan²θ ≥ 0 (t = 3 and t ≈ 3.4), giving 4 values of θ; the key is 2 and no option is 4. The solution notes the second root. | Mark flawed, or recover the original options. |
 | `eb258db8` | MHT-CET · Trigonometric Functions | **No solution as printed.** At x = −1 the left side is −π/4 − tan⁻¹2, not tan⁻¹3 (only their tangents agree); no x < 0 satisfies it, so 1767 rests on an invalid root. | Recover the original wording, or mark flawed. |
 | `122be589` | JEE Mains · Complex Numbers | **Option B blank** in the source; the key A (0) is right. | Restore option B from the paper. |
+| `c29946fc` | JEE Mains · Trigonometric Equations | **No valid answer as printed.** Both roots (π/6, π/3) make sec(π/2) undefined in the equation, so S is empty; the key π/2 (their sum) is not valid. The solution notes it. | Recover the original wording, or mark flawed. |
 
 ## Settled
 
