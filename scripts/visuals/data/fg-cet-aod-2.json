@@ -1,0 +1,474 @@
+{
+  "//": "Assembled from agent drafts (functionGraph).",
+  "visuals": [
+    {
+      "id": "09f9798e-8053-45b2-8ae9-3d0446cc85f5",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "x^3-3*x^2+4",
+          "fLabel": "y = x³ − 3x² + 4",
+          "window": {
+            "x": [
+              -1.5,
+              3.5
+            ],
+            "y": [
+              -8,
+              12
+            ]
+          },
+          "ask": {
+            "kind": "increasingOn",
+            "intervals": [
+              [
+                -1.5,
+                0
+              ],
+              [
+                2,
+                3.5
+              ]
+            ],
+            "intervalLabel": "x < 0 or x > 2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "shade"
+            ]
+          }
+        ],
+        "fingerprint": "a74b287c",
+        "answer": {
+          "value": 1,
+          "label": "rising: x < 0 or x > 2"
+        }
+      }
+    },
+    {
+      "id": "147da5e5-75c4-4dc2-a79f-e68a97adb9b2",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "x-4/x",
+          "fLabel": "y = x − 4/x",
+          "window": {
+            "x": [
+              -4,
+              4
+            ],
+            "y": [
+              -6,
+              6
+            ]
+          },
+          "ask": {
+            "kind": "slopePoints",
+            "slope": 2,
+            "normal": false,
+            "report": "count",
+            "pointLabels": [
+              "(−2, 0)",
+              "(2, 0)"
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "tangent",
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "10508695",
+        "answer": {
+          "value": 2,
+          "label": "2 points: (2,0), (−2,0)"
+        }
+      }
+    },
+    {
+      "id": "204cced0-97dd-4e2f-82f4-22eff11ebd5d",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "x^3-3*x^2+x-2",
+          "fLabel": "y = x³ − 3x² + x − 2",
+          "window": {
+            "x": [
+              -1,
+              3
+            ],
+            "y": [
+              -8,
+              2
+            ]
+          },
+          "ask": {
+            "kind": "slopePoints",
+            "slope": 1,
+            "normal": false,
+            "report": "sumX",
+            "pointLabels": [
+              "(0, −2)",
+              "(2, −4)"
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve",
+              "tangent",
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "9293a2be",
+        "answer": {
+          "value": 1.9999999999581288,
+          "label": "sum of x = 0 + 2 = 2"
+        }
+      }
+    },
+    {
+      "id": "25c6a989-2e32-40f8-b2b6-b90d7278ba27",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "(2*x^3-1)/3",
+          "fLabel": "y = (2x³ − 1)/3",
+          "window": {
+            "x": [
+              -4,
+              4
+            ],
+            "y": [
+              -46,
+              46
+            ]
+          },
+          "ask": {
+            "kind": "slopePoints",
+            "slope": 18,
+            "normal": false,
+            "report": "count",
+            "pointLabels": [
+              "(−3, −55/3)",
+              "(3, 53/3)"
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve",
+              "tangent"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "dbbd58d6",
+        "answer": {
+          "value": 2,
+          "label": "2 points, x = ±3"
+        }
+      }
+    },
+    {
+      "id": "29f2e96d-dafe-4503-9de3-ba941b06dfae",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "x^3+6*x^2-36*x+7",
+          "fLabel": "y = x³ + 6x² − 36x + 7",
+          "window": {
+            "x": [
+              -8,
+              4
+            ],
+            "y": [
+              -50,
+              240
+            ]
+          },
+          "ask": {
+            "kind": "increasingOn",
+            "intervals": [
+              [
+                -8,
+                -6
+              ],
+              [
+                2,
+                4
+              ]
+            ],
+            "intervalLabel": "x < −6 or x > 2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "shade"
+            ]
+          }
+        ],
+        "fingerprint": "ea310bf1",
+        "answer": {
+          "value": 1,
+          "label": "rising: x < −6 or x > 2"
+        }
+      }
+    },
+    {
+      "id": "8800f968-7abc-4275-8688-6869e514a3bf",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "exp(x^2-x)-(x^2-x)",
+          "fLabel": "h = e^(x²−x) − (x²−x)",
+          "window": {
+            "x": [
+              -0.6,
+              1.6
+            ],
+            "y": [
+              0.95,
+              1.75
+            ]
+          },
+          "ask": {
+            "kind": "increasingOn",
+            "intervals": [
+              [
+                0,
+                0.5
+              ],
+              [
+                1,
+                1.6
+              ]
+            ],
+            "intervalLabel": "0 ≤ x ≤ 1/2 or x ≥ 1"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "shade"
+            ]
+          }
+        ],
+        "fingerprint": "3ed6802a",
+        "answer": {
+          "value": 1,
+          "label": "rising: [0, 1/2] and [1, ∞)"
+        }
+      }
+    },
+    {
+      "id": "9072e82d-f9b9-4a50-8cdc-b6daa06947a2",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "x^3-6*x^2+x+3",
+          "fLabel": "y = x³ − 6x² + x + 3",
+          "window": {
+            "x": [
+              -1,
+              5
+            ],
+            "y": [
+              -30,
+              8
+            ]
+          },
+          "ask": {
+            "kind": "slopePoints",
+            "slope": 1,
+            "normal": true,
+            "report": "sumX",
+            "pointLabels": [
+              "(0, 3)",
+              "(4, −25)"
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve",
+              "tangent",
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "87ab39cd",
+        "answer": {
+          "value": 3.9999999998684697,
+          "label": "sum of x = 0 + 4 = 4"
+        }
+      }
+    },
+    {
+      "id": "f9d38b2b-7f9b-4906-926a-8a249360a8c7",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "(x*(x-2))^2",
+          "fLabel": "y = [x(x − 2)]²",
+          "window": {
+            "x": [
+              -0.5,
+              3
+            ],
+            "y": [
+              -0.5,
+              9
+            ]
+          },
+          "ask": {
+            "kind": "increasingOn",
+            "intervals": [
+              [
+                0,
+                1
+              ],
+              [
+                2,
+                3
+              ]
+            ],
+            "intervalLabel": "0 < x < 1 or x > 2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "shade"
+            ]
+          }
+        ],
+        "fingerprint": "dc2e5516",
+        "answer": {
+          "value": 1,
+          "label": "rising: (0,1) and (2,∞)"
+        }
+      }
+    },
+    {
+      "id": "fe5f4cd1-470b-40dc-a209-7750c816a774",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "2*x^3-6*x+5",
+          "fLabel": "y = 2x³ − 6x + 5",
+          "window": {
+            "x": [
+              -2.5,
+              2.5
+            ],
+            "y": [
+              -13,
+              23
+            ]
+          },
+          "ask": {
+            "kind": "increasingOn",
+            "intervals": [
+              [
+                -2.5,
+                -1
+              ],
+              [
+                1,
+                2.5
+              ]
+            ],
+            "intervalLabel": "x < −1 or x > 1"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve",
+              "shade"
+            ]
+          }
+        ],
+        "fingerprint": "dfaf1de6",
+        "answer": {
+          "value": 1,
+          "label": "rising: x < −1 or x > 1"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

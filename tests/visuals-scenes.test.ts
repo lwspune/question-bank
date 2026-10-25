@@ -3,6 +3,7 @@ import { SCENES, getScene } from "@/lib/visuals/registry";
 import type { Shape } from "@/lib/visuals/types";
 import { quadraticIntervals } from "@/lib/visuals/scenes/quadraticFamily";
 import { slabGeometry } from "@/lib/visuals/scenes/slab";
+import { functionGraphFacts } from "@/lib/visuals/scenes/functionGraph";
 import { FIXTURES } from "./fixtures/visuals";
 
 function parsedParams(name: string, raw: unknown) {
@@ -26,11 +27,11 @@ function coords(s: Shape): number[] {
 
 describe("scene registry", () => {
   it("has a fixture for every scene, so no scene ships untested", () => {
-    expect(Object.keys(SCENES).sort()).toEqual(FIXTURES.map((f) => f.name).sort());
+    expect(Object.keys(SCENES).sort()).toEqual([...new Set(FIXTURES.map((f) => f.name))].sort());
   });
 
-  for (const f of FIXTURES) {
-    describe(f.name, () => {
+  for (const [i, f] of FIXTURES.entries()) {
+    describe(`${f.name} (fixture ${i + 1})`, () => {
       const { scene, p } = parsedParams(f.name, f.visual.params);
       const { w, h } = scene.viewBox(p);
       const beats = f.visual.steps.flatMap((s) => s.beats);
@@ -137,5 +138,103 @@ describe("slab", () => {
     expect(s.parse({ ...raw, incidence: 60 })).not.toHaveProperty("error");
     expect(s.parse({ ...raw, mu: 0.9 })).toHaveProperty("error");
     expect(s.parse({ ...raw, incidence: 95 })).toHaveProperty("error");
+  });
+});
+
+describe("functionGraph", () => {
+  const base = { f: "sin(x)^2", window: { x: [0, 2 * Math.PI], y: [-0.1, 1.15] }, ask: { kind: "crossings" } };
+  it("counts where the curve meets each line: sin^2 x = 3/4 or 1/4 has 8 solutions in [0, 2pi]", () => {
+    const { scene, p } = parsedParams("functionGraph", { ...base, g: ["3/4", "1/4"] });
+    expect(scene.check(p)).toBe(8);
+    const one = parsedParams("functionGraph", { ...base, g: ["3/4"] });
+    expect(one.scene.check(one.p)).toBe(4);
+  });
+  it("finds the one point with a given tangent slope: y = x log x has slope -1 at x = e^-2", () => {
+    const { scene, p } = parsedParams("functionGraph", { f: "x*log(x)", window: { x: [0, 1.4], y: [-0.6, 0.6] }, ask: { kind: "slopePoint", slope: -1 } });
+    expect(scene.check(p)).toBeCloseTo(Math.exp(-2), 6);
+    expect(functionGraphFacts(p).point![1]).toBeCloseTo(-2 * Math.exp(-2), 6);
+  });
+  it("refuses to pick a slope point when the window holds two (the check gives NaN)", () => {
+    const { scene, p } = parsedParams("functionGraph", { f: "sin(x)", window: { x: [0, 7], y: [-1.2, 1.2] }, ask: { kind: "slopePoint", slope: 0 } });
+    expect(scene.check(p)).toBeNaN();
+  });
+  it("confirms a rising interval and rejects one that is not", () => {
+    const rising = parsedParams("functionGraph", { f: "sin(x)^4+cos(x)^4", window: { x: [0, Math.PI], y: [0.35, 1.1] }, ask: { kind: "increasingOn", interval: [Math.PI / 4, Math.PI / 2] } });
+    expect(rising.scene.check(rising.p)).toBe(1);
+    const not = parsedParams("functionGraph", { f: "sin(x)^4+cos(x)^4", window: { x: [0, Math.PI], y: [0.35, 1.1] }, ask: { kind: "increasingOn", interval: [0, Math.PI / 8] } });
+    expect(not.scene.check(not.p)).toBe(0);
+  });
+  it("refuses a bad formula, a backwards window, an unknown ask and an interval outside the window", () => {
+    const s = getScene("functionGraph")!;
+    expect(s.parse({ ...base, f: "alert(1)" })).toHaveProperty("error");
+    expect(s.parse({ ...base, window: { x: [5, 1], y: [0, 1] } })).toHaveProperty("error");
+    expect(s.parse({ ...base, ask: { kind: "magic" } })).toHaveProperty("error");
+    expect(s.parse({ ...base, ask: { kind: "increasingOn", interval: [1, 9] } })).toHaveProperty("error");
+    expect(s.parse({ ...base, ask: { kind: "crossings" } })).toHaveProperty("error"); // crossings needs a line or a second curve
+  });
+});
+
+describe("functionGraph drawing details", () => {
+  it("labels negative pi ticks as fractions of pi, not decimals", () => {
+    const { scene, p } = parsedParams("functionGraph", { f: "sin(3*x)", xTicks: "pi", window: { x: [-Math.PI / 2, Math.PI / 2], y: [-1.2, 1.2] }, ask: { kind: "increasingOn", interval: [-Math.PI / 6, Math.PI / 6] } });
+    const texts = scene.frame(p, { played: ["curve"], t: 1, slider: undefined }).filter((s) => s.kind === "text").map((s) => (s as { text: string }).text);
+    expect(texts).toContain("−π/4");
+    // The x ticks at -pi/4 and -pi/2 used to read as decimals (y-axis numbers like -0.5 are fine).
+    expect(texts).not.toContain("−0.79");
+    expect(texts).not.toContain("−1.57");
+  });
+  it("draws the normal as a vertical line when the tangent is horizontal", () => {
+    const { scene, p } = parsedParams("functionGraph", { f: "sin(pi*x/2)", window: { x: [0, 2], y: [0, 1.2] }, ask: { kind: "slopePoint", slope: 0, normal: true } });
+    const shapes = scene.frame(p, { played: ["curve", "tangent", "mark"], t: 1, slider: undefined });
+    const vertical = shapes.filter((s) => s.kind === "line" && (s as { dash?: string }).dash && Math.abs((s as { x1: number }).x1 - (s as { x2: number }).x2) < 1e-9);
+    expect(vertical).toHaveLength(1);
+  });
+});
+
+describe("functionGraph unions and several points", () => {
+  it("checks every interval of a union: x^3 - 3x rises on x < -1 and on x > 1", () => {
+    const ok = parsedParams("functionGraph", { f: "x^3-3*x", window: { x: [-3, 3], y: [-5, 5] }, ask: { kind: "increasingOn", intervals: [[-3, -1], [1, 3]], intervalLabel: "x < −1 or x > 1" } });
+    expect(ok.scene.check(ok.p)).toBe(1);
+    const bad = parsedParams("functionGraph", { f: "x^3-3*x", window: { x: [-3, 3], y: [-5, 5] }, ask: { kind: "increasingOn", intervals: [[-3, -1], [-1, 1]] } });
+    expect(bad.scene.check(bad.p)).toBe(0);
+  });
+  it("refuses a union that overlaps or leaves the window, and more than 3 pieces", () => {
+    const s = getScene("functionGraph")!;
+    const base = { f: "x^3-3*x", window: { x: [-3, 3], y: [-5, 5] } };
+    expect(s.parse({ ...base, ask: { kind: "increasingOn", intervals: [[-3, 0], [-1, 3]] } })).toHaveProperty("error");
+    expect(s.parse({ ...base, ask: { kind: "increasingOn", intervals: [[-4, -1]] } })).toHaveProperty("error");
+    expect(s.parse({ ...base, ask: { kind: "increasingOn", intervals: [[-3, -2], [-1.5, -1], [0, 0.5], [1, 3]] } })).toHaveProperty("error");
+    expect(s.parse({ ...base, ask: { kind: "increasingOn", interval: [1, 3], intervals: [[1, 3]] } })).toHaveProperty("error");
+  });
+  it("finds every point with the given slope and reports their count or the sum of x", () => {
+    // y = x^3/3 - 4x has slope 0 at x = -2 and x = 2.
+    const count = parsedParams("functionGraph", { f: "x^3/3-4*x", window: { x: [-4, 4], y: [-8, 8] }, ask: { kind: "slopePoints", slope: 0, report: "count" } });
+    expect(count.scene.check(count.p)).toBe(2);
+    const sum = parsedParams("functionGraph", { f: "x^3/3-4*x", window: { x: [-4, 4], y: [-8, 8] }, ask: { kind: "slopePoints", slope: 0, report: "sumX" } });
+    expect(sum.scene.check(sum.p)).toBeCloseTo(0, 6);
+    // y = x^2 has slope 4 only at x = 2.
+    const one = parsedParams("functionGraph", { f: "x^2", window: { x: [-1, 5], y: [-1, 20] }, ask: { kind: "slopePoints", slope: 4, report: "sumX" } });
+    expect(one.scene.check(one.p)).toBeCloseTo(2, 6);
+  });
+});
+
+describe("functionGraph edges and headers", () => {
+  it("stops a curve where it leaves the frame instead of running along the edge (y = x - 4/x near x = 0)", () => {
+    const { scene, p } = parsedParams("functionGraph", { f: "x-4/x", window: { x: [-4, 4], y: [-8, 8] }, ask: { kind: "slopePoints", slope: 2, report: "count" } });
+    const lines = scene.frame(p, { played: ["curve"], t: 1, slider: undefined }).filter((s) => s.kind === "polyline") as { points: [number, number][] }[];
+    const ys = lines.flatMap((l) => l.points.map(([, y]) => y));
+    const edge = Math.max(...ys);
+    for (const l of lines) {
+      for (let i = 1; i < l.points.length; i++) {
+        expect(l.points[i][1] === edge && l.points[i - 1][1] === edge, "two neighbouring points on the clipping edge").toBe(false);
+      }
+    }
+  });
+  it("moves the header to a second row when it would run into the curve's name", () => {
+    const { scene, p } = parsedParams("functionGraph", { f: "x^3-6*x^2+x+3", fLabel: "y = x³ − 6x² + x + 3", window: { x: [-1, 5], y: [-30, 6] }, ask: { kind: "slopePoints", slope: 1, normal: true, report: "sumX" } });
+    const texts = scene.frame(p, { played: ["curve", "tangent", "mark"], t: 1, slider: undefined }).filter((s) => s.kind === "text") as { text: string; y: number }[];
+    const name = texts.find((t) => t.text.startsWith("y = x³"))!;
+    const head = texts.find((t) => t.text.includes("points with tangent slope"))!;
+    expect(head.y).toBeGreaterThan(name.y);
   });
 });

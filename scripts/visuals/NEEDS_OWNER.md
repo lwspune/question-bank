@@ -1,0 +1,82 @@
+# Questions I could not fix (owner to decide)
+
+Found during the animated-solutions work. A wrong SOLUTION is corrected in place
+as found (`npm run visuals:fix-solutions`, batches in `solution-fixes/`). What
+lands here is what that tool cannot or should not do: a wrong KEY, a wrong or
+incomplete STEM, or a question that cannot be answered as printed. Keys and stems
+are the owner's call (keys: raise, never flip). Each row stays until it is
+settled; settled rows move to the bottom with the date and what was done.
+
+| Question | Exam · chapter | Problem | What would fix it |
+|---|---|---|---|
+| `f62c1b5d` | JEE Mains · Conic Sections | **Key looks wrong.** The normal at (8/√5, 12/5) to the hyperbola with e = 5/4 is 8√5x + 15y = 100, so λ − β = 85; the stored key is 51 and the stored solution itself works out to 85. | Change the numeric key 51 → 85 (check the official paper first). |
+| `daa77f89` | JEE Mains · Conic Sections | **Stem typo.** Prints L₁ = 4x + 3y − 2, which gives 3511/325; with 4x + 3y + 2 (what the solution openly uses) the keyed 11 follows. | Fix the stem sign. Changes content_hash: needs a hash-safe repair. |
+| `f3eb2b0b` | JEE Mains · Conic Sections | **Stem inconsistent.** A(sec θ, 2 tan θ) is not on 2x² − y² = 2 for any θ ≠ 0; the solution uses the points as given to reach the key 36. | Recover the original paper's wording. |
+| `38cf6990` | JEE Mains · Conic Sections | **Stem underdetermined.** The two lines meet at a point that depends on k; the centre (1, 2) holds only for k = −1, which the stem never fixes. Key 18 matches k = −1. | Recover the original wording (likely fixes k). |
+| `009b24ef` | MHT-CET · Circle | **Key choice.** The official key 16 counts k with radius² ≤ 0; requiring a real circle gives 10, not offered. The solution already says so openly. | Decide: keep the official key (current) or mark the question flawed. |
+| `e6b79ce5` | JEE Mains · Conic Sections | **Stem typo.** A stray "+ x" in the stem; the solution reads the intended equation. | Remove the stray term (hash-safe repair). |
+| `fb0d6184` | JEE Mains · Conic Sections | **Stem typo.** "b²" printed where y² is meant; the solution reads it as y². | Correct the stem (hash-safe repair). |
+| `05d80da8` | MHT-CET · Line and Plane | **Key wrong, answer not offered.** The distance between the parallel lines is √(12/14) = √(6/7); the key is √6 and the stored solution says "Key answer √6" after deriving √(6/7). | Recover the original numbers (likely a misprint), or mark flawed. |
+| `37da8102` | MHT-CET · Line and Plane | **Key wrong, answer not offered.** (3, 2, 1) × (2, −3, 2) = (7, −4, −13), so the plane is 7x − 4y − 13z = 24; the keyed plane 8x + 14y + 13z + 19 = 0 is not parallel to either line, and no option is. | Recover the original lines/options, or mark flawed. |
+| `63b0923e` | MHT-CET · Line and Plane | **Key wrong.** The normal is ∝ (√2, 1, 1), not (2, 1, 1); the keyed plane 2x + y + z = 0 does not pass through (−2, 1, 1). The correct plane √2x + y + z + 2√2 − 2 = 0 is not offered. | Recover the original wording, or mark flawed. |
+| `6fb70707` | MHT-CET · Line and Plane | **Question flawed.** The line's direction (1, 1, 1) is not perpendicular to the normal (2, 1, 1), so the line meets the plane (distance 0); the key 1/√6 is the distance of the point (3, −2, 1) only. | Likely a sign misprint in the line or plane; recover the original. |
+| `42c20362` | MHT-CET · Line and Plane | **Question degenerate.** Both conditions give one direction (1, 1, −2), so the "angle between the lines" is 0° or 180°; the key 180° follows the official answer, which the solution cites. | Decide: keep the official key or mark flawed. |
+| `bb8bab42` | MHT-CET · Line and Plane | **Key wrong, answer not offered.** The plane is 2x + 2y + z = 2, so sin θ = 2/3; the keyed option is sin⁻¹√(2/3), and the stored solution calls sin⁻¹(2/3) a match for it. | Recover the original numbers/options, or mark flawed. |
+| `ca0e1fcb` | MHT-CET · Line and Plane | **Key is the obtuse angle.** Direction cosines (2, −1, −2) and (−1, −2, 2) give cos = −4/9; the angle between lines is cos⁻¹(4/9) (not offered); the key is cos⁻¹(−4/9). | Decide: keep the official key or mark flawed. |
+| `d11ba704` | MHT-CET · Line and Plane | **Options A and B identical** (both 11/√6); the key A is right but ambiguous. | Correct one option. |
+| `dbf13078` | MHT-CET · Line and Plane | **Options A and B identical** (both 2x − y + 3z + 8 = 0); the key A is right but ambiguous. | Correct one option. |
+| `ecc3cd53` | MHT-CET · Line and Plane | **Options B, C, D identical** (all √(341/61)); the key D is right but ambiguous. | Correct the options. |
+| `fc5bb329` | MHT-CET · Line and Plane | **Option D's signs are independent** (±, ±, ±), so it also admits directions not perpendicular to both lines; the intended answer is ±(4, 5, 7)/(3√10) with one sign. | Reword option D. |
+| `0521f658` | JEE Mains · Three Dimensional Geometry | **Stem incomplete.** The solution uses the plane passing through (1, 4, −3), which the question never states; without it α + β + γ is not determined. | Restore the missing point to the stem (hash-safe repair). |
+| `2007f0ed` | JEE Mains · Three Dimensional Geometry | **Two options correct.** b = ±a gives directions (1, −1, 0) and (1, 1, 0), both at 30° to the plane; options A and B both fit, the key is B. | Decide: accept both or mark flawed. |
+| `81a2c870` | JEE Mains · Three Dimensional Geometry | **Stem incomplete.** The foot on P₂ is (20/3, 13/3, −2/3), sum 31/3; the key 11 is the foot on the line of intersection of P₁ and P₂, which the stem has lost. | Restore "on the line of intersection of P₁ and P₂" (hash-safe repair). |
+| `14ffb9b9` | MHT-CET · Vectors | **Key wrong.** b·c = 1 gives 16 + 4 − 4 = 4λ², so λ = 2 (option A); the key is 4 and the stored solution writes λ² = 16. | Change the key to A (check the paper). |
+| `17c10fd6` | MHT-CET · Vectors | **Two options correct.** The volume condition gives |22k − 88| = 66, so k = 7 or k = 1; both are offered (A and D). | Accept both or mark flawed. |
+| `27360110` | MHT-CET · Vectors | **Stem misprint.** The given â and b̂ are not unit vectors (|â|² = 2.6, |b̂|² = 1.8); the key −5 holds only for the original unit vectors (1/√10)(3î + k̂), (1/7)(2î + 3ĵ − 6k̂). | Restore the original vectors (hash-safe repair). |
+| `28a12562` | MHT-CET · Vectors | **Stem typo.** c = a × b is perpendicular to a, so a · c = 0, not 1; the original reads a · b = 1. The key 2 follows from the original. | Change "a · c = 1" to "a · b = 1" (hash-safe repair). |
+| `2ec9f983` | MHT-CET · Vectors | **Answer not offered.** |a × (b × c)| = 3 · 10√3 = 30√3 ≈ 52; the key 60 is wrong and no option matches. | Recover the original options, or mark flawed. |
+| `311da47d` | MHT-CET · Vectors | **Options C and D identical** (both −11/5); the key C is right but ambiguous. | Correct one option. |
+| `345a0bf5` | MHT-CET · Vectors | **No option correct.** The diagonal 3î − 6ĵ + 2k̂ has length 7, so the unit vector divides by 7; every option divides by √77. | Recover the original options, or mark flawed. |
+| `3e9531c0` | MHT-CET · Vectors | **No option correct.** a × b = (32, −1, −14) and c · d = 15 give d = (5/3)(32, −1, −14); the key (90, −3, −42) is not parallel to a × b. | Recover the original numbers, or mark flawed. |
+| `47869b02` | MHT-CET · Vectors | **Figure missing.** The stem says "in this question figure" and M is defined only by the figure (M = AQ ∩ BP); no image is attached. | Attach the source figure, or reword the stem to define M as the intersection of AQ and BP. |
+| `50b85207` | MHT-CET · Vectors | **Key wrong.** c = a + λb with c · a = 0 gives λ = −3/2, so c · b = 4 − 9/2 = −1/2 (option A); the key is −3/2. | Change the key to A (check the paper). |
+| `58aea16c` | MHT-CET · Vectors | **Answer not offered.** |(a · c)a − 9c| = 3 gives sin²θ = 1/36, sec²θ = 36/35; the stored cos²θ = 3/4 does not follow and no option is 36/35. | Recover the original numbers, or mark flawed. |
+| `59510167` | MHT-CET · Vectors | **Key misordered.** Linear dependence gives β = 1 and |c| = √3 gives α = ±1, i.e. (α, β) = (±1, 1); the key reads "1, ±1". | Correct the option text to "±1, 1". |
+| `5b35bb5b` | MHT-CET · Vectors | **Options A = B (√29) and C = D (√26).** The key B is right but ambiguous. | Correct the options. |
+| `5fcadb96` | MHT-CET · Vectors | **Options C and D identical.** The key C is right but ambiguous. | Correct one option. |
+| `7805b208` | MHT-CET · Vectors | **Answer not offered.** |a × (b × c)| = 30√3; the key is 30 and the stored solution itself notes 30√3 is not listed. | Recover the original options, or mark flawed. |
+| `7f7e292e` | MHT-CET · Vectors | **Stem typo.** As printed ([p − 3r q s]) the coefficients are (3, 5, 1), not offered; the key (3, 5, 2) needs [2p − 3r q s], which the solution silently uses. | Change p − 3r to 2p − 3r in the stem (hash-safe repair). |
+| `8c9ff4df` | MHT-CET · Vectors | **Key wrong.** a · c = 0 and b · c = 0 give p = −3, q = 2 (option C); the key (2, −3) fails a · c = 0. | Change the key to C (check the paper). |
+| `ab0ba49a` | MHT-CET · Vectors | **Key wrong.** Option C (4î + ĵ + 4k̂) lies in the plane of a and b and has projection 1/√3 on c; the key D (2î + 3ĵ − k̂) is not in that plane. | Change the key to C (check the paper). |
+| `b19d1bb7` | MHT-CET · Vectors | **Two options correct.** The family is (2s + 1)î − ĵ + (2s + 1)k̂; option C is the same family with t = s + 1, so A and C are both right. | Accept both or mark flawed. |
+| `c37bc97c` | MHT-CET · Vectors | **Options A and B identical** (both 35/2); the key C (7√2) is right. | Correct one option. |
+| `c5461617` | MHT-CET · Vectors | **No option correct.** The conditions give b = −î + ĵ − 2k̂, not offered; the stored solution already says so and keeps the printed key D. | Mark flawed, or recover the original options. |
+| `dfa3452c` | MHT-CET · Vectors | **Key wrong.** b · c = −7/8 gives a · c = −1/4, so |a × c| = √15/4 (option B); the key is √15/2. | Change the key to B (check the paper). |
+| `f5309b22` | MHT-CET · Vectors | **Stem typo.** With (b + c)/2 the angle is 2π/3 (not offered); the key 3π/4 needs (b + c)/√2, the original JEE wording. | Change /2 to /√2 in the stem (hash-safe repair). |
+| `f579f935` | MHT-CET · Vectors | **Answer not offered.** r = (5, 7, 9), |r| = √155; the key 1/√55 is wrong and no option matches. | Recover the original numbers, or mark flawed. |
+| `fc2969a9` | MHT-CET · Vectors | **Question underdetermined.** b × c = a fixes b only up to adding a multiple of c, so |b| is not determined (the least value is √3/√38); the key √114 is unsupported. | Recover the original wording (likely fixes b · c), or mark flawed. |
+| `652b7194` | MHT-CET · Vectors | **Two options true.** m = 0 also makes p · q = −12 < 0 for every y, so option B is true as well as the key D. | Accept both or reword. |
+| `4b6772a7` | JEE Mains · Vector Algebra | **Key wrong.** The sum is 2(b + d) − 2(a + c) = 4(f − e) = −4·FE, so k = −4 (option C); the stored solution itself reaches −4 but the key is D (4). | Change the key to C (check the paper). |
+| `6dcba703` | JEE Mains · Vector Algebra | **Question underdetermined.** (b − 1)(1 − a) = 0 and 4abc = 0 allow a family (e.g. a = 1, b = 0, any c), so 6(a + b + c) is not fixed; the solution picks a = b = 1, c = 0. | Recover the original wording, or mark flawed. |
+| `7a3ce012` | JEE Mains · Vector Algebra | **Question underdetermined.** A vector in the plane of a and b is λa + μb; the solution assumes λ = 1, which the stem never states, so |v| is not fixed. | Recover the original wording, or mark flawed. |
+| `aa590022` | JEE Mains · Vector Algebra | **Options B and C identical** (both 25); the key C is right but ambiguous. The solution notes it. | Correct one option. |
+| `42453159` | MHT-CET · Trigonometric Functions | **Options A and D identical** (both 7); the key A is right but ambiguous. The solution notes it. | Correct one option. |
+| `57ef00dc` | MHT-CET · Trigonometric Functions | **Data impossible.** sin B = b sin A / a = 2/√3 > 1, so no such triangle exists; the key 2/√3 is the formula's value. The solution notes it. | Recover the original numbers, or mark flawed. |
+| `69582b45` | MHT-CET · Trigonometric Functions | **Three options true.** sin β < 0, cos(α + β) > 0 and cos α < 0 all hold (B, C, D); the key is B. The solution notes it. | Mark flawed, or recover the original options. |
+| `696b46cf` | MHT-CET · Trigonometric Functions | **Stem typo.** As printed, sin x = sin²α/(1 + cos²α), not offered; the key tan²(α/2) holds for the original cot⁻¹(√cos α) − tan⁻¹(√cos α). | Restore √cos α in the stem (hash-safe repair). |
+| `8c15af00` | MHT-CET · Trigonometric Functions | **Key lists an invalid root.** Only x = −1/8 satisfies the equation (x = 1/8 gives +π/2); every option is written with ±, and the key is ±1/8. The solution notes it. | Reword the options, or accept the key as the intended answer. |
+| `8f1965ed` | MHT-CET · Trigonometric Functions | **No solution as printed.** At x = 2 the left side is π − tan⁻¹7, not tan⁻¹(−7) (principal values); no x satisfies it. The key 2 ignores the branch. | Recover the original wording, or mark flawed. |
+| `aafeb460` | MHT-CET · Trigonometric Functions | **Key true only for the sides.** (s − b)/s = 1/3 gives 2b = a + c, so the SIDES a, b, c are in A.P.; the angles (≈ 79.6°, 56.8°, 43.6°) are not. Option C reads A, B, C (angles). | Change option C to a, b, c (hash-safe repair). |
+| `ad8962a4` | MHT-CET · Trigonometric Functions | **Data impossible.** A side of √3 − 2 is negative, so no such triangle exists; the key √15 comes from the formula alone. | Recover the original numbers (likely 2 − √3), or mark flawed. |
+| `b1fe79a8` | MHT-CET · Trigonometric Functions | **Two answers.** a = 5 ± √6 both give a valid triangle with 10 and 9 as the larger sides; options B, C, D look garbled ("5 − 1", "√6 + 1", "5 + 1"). | Recover the original options. |
+| `b511bfa3` | MHT-CET · Trigonometric Functions | **Key incomplete.** Equating the sines also allows cot θ + tan θ = 2 + 8k and cot θ − tan θ = 2 + 8k, which give more solutions than nπ + π/4. | Accept the standard answer, or reword. |
+| `b64cb4fd` | MHT-CET · Trigonometric Functions | **No solution as printed.** sin⁻¹x = (8 + 3π)/10 ≈ 1.74 > π/2, so no x satisfies the equation; the key comes from the algebra alone. | Recover the original numbers, or mark flawed. |
+| `b8ac18fc` | MHT-CET · Trigonometric Functions | **Key not the only answer.** x = 1, y = 0, z = −1 is in A.P. and so are their tan⁻¹ values (π/4, 0, −π/4), but x ≠ y ≠ z; the solution divides by y and drops y = 0. | Accept the key, or mark flawed. |
+| `c375c734` | MHT-CET · Trigonometric Functions | **Key wrong, answer not offered.** 2ᵗ = t² − 1 has two roots for t = tan²θ ≥ 0 (t = 3 and t ≈ 3.4), giving 4 values of θ; the key is 2 and no option is 4. The solution notes the second root. | Mark flawed, or recover the original options. |
+| `eb258db8` | MHT-CET · Trigonometric Functions | **No solution as printed.** At x = −1 the left side is −π/4 − tan⁻¹2, not tan⁻¹3 (only their tangents agree); no x < 0 satisfies it, so 1767 rests on an invalid root. | Recover the original wording, or mark flawed. |
+| `122be589` | JEE Mains · Complex Numbers | **Option B blank** in the source; the key A (0) is right. | Restore option B from the paper. |
+| `c29946fc` | JEE Mains · Trigonometric Equations | **No valid answer as printed.** Both roots (π/6, π/3) make sec(π/2) undefined in the equation, so S is empty; the key π/2 (their sum) is not valid. The solution notes it. | Recover the original wording, or mark flawed. |
+
+## Settled
+
+(none yet)

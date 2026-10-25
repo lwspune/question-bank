@@ -1,0 +1,8 @@
+[
+  {
+    "id": "a751d0d5-2053-4658-bc26-85674960a9e3",
+    "before": "e48ee06f",
+    "solution": "\\(f'(x) = 2x^{2} - x - (2x - 1)\\sin x = (2x - 1)(x - \\sin x)\\). The factor \\(x - \\sin x\\) has the same sign as \\(x\\). For \\(x \\geq \\frac{1}{2}\\) both factors are non-negative, so \\(f'(x) \\geq 0\\) and \\(f\\) increases in \\(\\left[\\frac{1}{2}, \\infty\\right)\\), which is option A. For \\(0 < x < \\frac{1}{2}\\), \\(f'(x) < 0\\); but for \\(x < 0\\) both factors are negative, so \\(f'(x) > 0\\) and \\(f\\) does not decrease on all of \\(\\left(-\\infty, \\frac{1}{2}\\right]\\). That rules out B, and C and D fail by the same signs.",
+    "note": "said f'(x) <= 0 on all of (-inf, 1/2]; for x < 0 both factors are negative so f' > 0. Sign analysis corrected; key A unchanged."
+  }
+]

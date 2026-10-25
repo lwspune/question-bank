@@ -1,0 +1,254 @@
+{
+  "//": "Assembled from agent drafts (coordGeometry).",
+  "visuals": [
+    {
+      "id": "a6b70415-4a0e-4b8b-8a88-cfccb631ac9d",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -1.6,
+              3.6
+            ],
+            "y": [
+              -1.4,
+              2.6
+            ]
+          },
+          "points": [
+            {
+              "id": "A",
+              "at": [
+                3,
+                2
+              ],
+              "label": "A(3, 2)"
+            }
+          ],
+          "circles": [
+            {
+              "id": "S",
+              "center": [
+                0,
+                0
+              ],
+              "r": 1,
+              "label": "x² + y² = 1"
+            }
+          ],
+          "locus": {
+            "fixed": "A",
+            "on": "S",
+            "ratio": 0.5
+          },
+          "ask": {
+            "kind": "locusRadius",
+            "label": "radius = 1/2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given",
+              "trace",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "e9ec1fc2",
+        "answer": {
+          "value": 0.5,
+          "label": "1/2"
+        }
+      }
+    },
+    {
+      "id": "db846893-a4be-47bd-b751-c4b90c756c6e",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -7,
+              13
+            ],
+            "y": [
+              -5,
+              8
+            ]
+          },
+          "points": [
+            {
+              "id": "Q",
+              "at": [
+                11,
+                6
+              ],
+              "label": "(11, 6)"
+            },
+            {
+              "id": "P",
+              "at": [
+                2,
+                5
+              ],
+              "label": "(2, 5)"
+            },
+            {
+              "id": "C",
+              "at": [
+                -1,
+                1
+              ],
+              "label": "(−1, 1)",
+              "beat": "derived"
+            }
+          ],
+          "circles": [
+            {
+              "id": "S",
+              "center": "C",
+              "r": 5,
+              "label": "r = 5",
+              "beat": "derived"
+            }
+          ],
+          "ask": {
+            "kind": "distance",
+            "from": "Q",
+            "to": "S",
+            "label": "shortest distance = 8"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "derived"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "e5ac852e",
+        "answer": {
+          "value": 8,
+          "label": "8"
+        }
+      }
+    },
+    {
+      "id": "4ce522ce-14bf-4148-9f02-fba214861356",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -4,
+              6
+            ],
+            "y": [
+              -6,
+              2.5
+            ]
+          },
+          "points": [
+            {
+              "id": "C",
+              "at": [
+                -1,
+                0
+              ],
+              "label": "(−1, 0)"
+            },
+            {
+              "id": "V",
+              "at": [
+                3,
+                -4
+              ],
+              "label": "V(3, −4)",
+              "beat": "derived"
+            }
+          ],
+          "circles": [
+            {
+              "id": "S",
+              "center": "C",
+              "r": 1
+            }
+          ],
+          "conics": [
+            {
+              "id": "K",
+              "type": "parabola",
+              "vertex": "V",
+              "a": -0.25,
+              "axis": "y",
+              "beat": "derived"
+            }
+          ],
+          "lines": [
+            {
+              "id": "L",
+              "through": [
+                "C",
+                "V"
+              ],
+              "label": "y = −x − 1"
+            }
+          ],
+          "ask": {
+            "kind": "yIntercept",
+            "line": "L",
+            "label": "y-intercept = −1"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "derived"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "construct",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "ed455d41",
+        "answer": {
+          "value": -1,
+          "label": "−1"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

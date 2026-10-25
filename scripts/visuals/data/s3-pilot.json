@@ -1,0 +1,309 @@
+{
+  "//": "Assembled from agent drafts (space3d).",
+  "visuals": [
+    {
+      "id": "150c6ed0-0e82-48ae-8891-9a9ad025b1d9",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "points": [
+            {
+              "id": "O",
+              "at": [
+                0,
+                0,
+                0
+              ],
+              "label": "O"
+            }
+          ],
+          "planes": [
+            {
+              "id": "P",
+              "eq": [
+                1,
+                -3,
+                4,
+                6
+              ],
+              "label": "x − 3y + 4z = 6"
+            }
+          ],
+          "ask": {
+            "kind": "distance",
+            "from": "O",
+            "to": "P",
+            "label": "distance = 6/√26"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "3a8237c9",
+        "answer": {
+          "value": 1.1766968108291043,
+          "label": "6/√26"
+        }
+      }
+    },
+    {
+      "id": "fa974266-51f2-4b1e-92f1-a2ca78d26cd2",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "points": [
+            {
+              "id": "A",
+              "at": [
+                5,
+                -1,
+                4
+              ],
+              "label": "A(5, −1, 4)"
+            },
+            {
+              "id": "B",
+              "at": [
+                4,
+                -1,
+                3
+              ],
+              "label": "B(4, −1, 3)"
+            }
+          ],
+          "planes": [
+            {
+              "id": "P",
+              "eq": [
+                1,
+                1,
+                1,
+                7
+              ],
+              "label": "x + y + z = 7",
+              "beat": "derived"
+            }
+          ],
+          "segments": [
+            {
+              "from": "A",
+              "to": "B",
+              "beat": "given"
+            }
+          ],
+          "ask": {
+            "kind": "projection",
+            "from": "A",
+            "to": "B",
+            "onto": "P",
+            "label": "projection = √(2/3)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "derived"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "6481a544",
+        "answer": {
+          "value": 0.8164965809277258,
+          "label": "√(2/3)"
+        }
+      }
+    },
+    {
+      "id": "9e235789-0182-4cef-9033-ff5a8c5c121d",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "lines": [
+            {
+              "id": "L1",
+              "point": [
+                3,
+                8,
+                3
+              ],
+              "dir": [
+                3,
+                -1,
+                1
+              ],
+              "label": "L₁"
+            },
+            {
+              "id": "L2",
+              "point": [
+                -3,
+                -7,
+                6
+              ],
+              "dir": [
+                -3,
+                2,
+                4
+              ],
+              "label": "L₂"
+            }
+          ],
+          "ask": {
+            "kind": "distance",
+            "from": "L1",
+            "to": "L2",
+            "label": "shortest distance = 3√30"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "035728e6",
+        "answer": {
+          "value": 16.431676725154983,
+          "label": "3√30"
+        }
+      }
+    },
+    {
+      "id": "d3a9b6a0-e43c-472c-b6a7-2d1667f56abd",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "points": [
+            {
+              "id": "P",
+              "at": [
+                10,
+                -2,
+                -1
+              ],
+              "label": "P(10, −2, −1)"
+            },
+            {
+              "id": "R",
+              "at": [
+                1,
+                7,
+                6
+              ],
+              "label": "R(1, 7, 6)"
+            },
+            {
+              "id": "A",
+              "at": [
+                2,
+                -5,
+                11
+              ],
+              "label": ""
+            },
+            {
+              "id": "B",
+              "at": [
+                -6,
+                7,
+                -5
+              ],
+              "label": ""
+            }
+          ],
+          "lines": [
+            {
+              "id": "L",
+              "through": [
+                "A",
+                "B"
+              ]
+            }
+          ],
+          "derived": [
+            {
+              "id": "Q",
+              "kind": "foot",
+              "from": "R",
+              "to": "L",
+              "label": "Q(−2, 1, 3)"
+            }
+          ],
+          "segments": [
+            {
+              "from": "R",
+              "to": "Q",
+              "beat": "derived"
+            }
+          ],
+          "ask": {
+            "kind": "distance",
+            "from": "P",
+            "to": "Q",
+            "label": "PQ = 13"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "derived"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "67111ac5",
+        "answer": {
+          "value": 13,
+          "label": "13"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

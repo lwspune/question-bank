@@ -66,9 +66,239 @@ export const SLAB_VISUAL = {
   answer: { value: 2, label: "2 cm", tolerance: 0.1 },
 };
 
+
+/** MHT-CET 564f2302: number of solutions of 16^(sin^2 x) + 16^(cos^2 x) = 10 in [0, 2pi]. */
+export const FG_CROSS_SOLUTION = String.raw`Let \(m=16^{\sin^2 x}\); then \(m+\frac{16}{m}=10\Rightarrow m^2-10m+16=0\Rightarrow m=8\) or \(m=2\). Each gives \(\sin^2x=\frac{3}{4}\) or \(\sin^2x=\frac{1}{4}\), each with 4 solutions in \([0,2\pi]\). Total \(=8\). Matches option D.`;
+
+/** MHT-CET b03b5c01: point on y = x log x where the normal is parallel to 2x - 2y = 3. */
+export const FG_SLOPE_SOLUTION = String.raw`\(y' = 1 + \log x\). Slope of normal \(= -1/y' = 1\) (parallel to the line). So \(1 + \log x = -1 \Rightarrow x = e^{-2}\), \(y = e^{-2}\log(e^{-2}) = -2e^{-2}\). Matches option D: \((e^{-2}, -2e^{-2})\).`;
+
+/** MHT-CET 4fbc2dc5: where sin^4 x + cos^4 x is increasing. */
+export const FG_INC_SOLUTION = String.raw`\(f'(x)=-\sin4x\). \(f'(x)>0\) when \(\sin4x<0\), i.e., \(\pi<4x<2\pi\), giving \(\frac{\pi}{4}<x<\frac{\pi}{2}\). Matches option B.`;
+
+export const FG_CROSS_VISUAL = {
+  v: 1,
+  scene: "functionGraph",
+  params: {
+    f: "sin(x)^2",
+    fLabel: "y = sin²x",
+    g: ["3/4", "1/4"],
+    gLabels: ["3/4", "1/4"],
+    window: { x: [0, 2 * Math.PI], y: [-0.1, 1.15] },
+    xTicks: "pi",
+    ask: { kind: "crossings" },
+  },
+  steps: [
+    { from: 0, beats: ["curve", "compare"] },
+    { from: 1, beats: ["mark"] },
+  ],
+  fingerprint: solutionFingerprint(FG_CROSS_SOLUTION),
+  answer: { value: 8, label: "8" },
+};
+
+export const FG_SLOPE_VISUAL = {
+  v: 1,
+  scene: "functionGraph",
+  params: {
+    f: "x*log(x)",
+    fLabel: "y = x log x",
+    window: { x: [0, 1.4], y: [-0.6, 0.6] },
+    ask: { kind: "slopePoint", slope: -1, normal: true, pointLabel: "(e⁻², −2e⁻²)" },
+  },
+  steps: [
+    { from: 0, beats: ["curve"] },
+    { from: 1, beats: ["tangent"] },
+    { from: 2, beats: ["mark"] },
+  ],
+  fingerprint: solutionFingerprint(FG_SLOPE_SOLUTION),
+  answer: { value: Math.exp(-2), label: "x = e⁻²" },
+};
+
+export const FG_INC_VISUAL = {
+  v: 1,
+  scene: "functionGraph",
+  params: {
+    f: "sin(x)^4+cos(x)^4",
+    fLabel: "y = sin⁴x + cos⁴x",
+    window: { x: [0, Math.PI], y: [0.35, 1.1] },
+    xTicks: "pi",
+    ask: { kind: "increasingOn", interval: [Math.PI / 4, Math.PI / 2], intervalLabel: "π/4 < x < π/2" },
+  },
+  steps: [
+    { from: 0, beats: ["curve"] },
+    { from: 1, beats: ["shade"] },
+  ],
+  fingerprint: solutionFingerprint(FG_INC_SOLUTION),
+  answer: { value: 1, label: "rising on π/4 < x < π/2" },
+};
+
+/** JEE Mains a6b70415: the midpoint of (3, 2) and a point on x^2 + y^2 = 1 traces a circle; its radius. */
+export const CG_LOCUS_SOLUTION = String.raw`\(\therefore P \equiv (2\text{ }h - 3,2k - 2) \rightarrow\) on circle \[\therefore\left( h - \frac{3}{2} \right)^{2} + (k - 1)^{2} = \frac{1}{4}\] \(\Rightarrow\) radius \(= \frac{1}{2}\)`;
+
+/** JEE Mains db846893: the circle found from a differential equation, and the shortest distance to it from (11, 6). */
+export const CG_DIST_SOLUTION = String.raw`Cross-multiplying, \((bx+cy+a)dy=(ax-by+a)dx\); for a circle the \(xy\) term must vanish (\(b=0\)) and \(x^2,y^2\) coefficients equal (\(c=-a\)). Integrating gives \(x^2+y^2+2x-2y=\text{const}\); through \((2,5)\) the constant is \(23\), so the circle has centre \((-1,1)\), radius \(5\). Distance from \((11,6)\) to the centre is \(\sqrt{12^2+5^2}=13\), so the shortest distance to the circle is \(13-5=8\).`;
+
+/** JEE Mains 4ce522ce: the line through a circle's centre and a parabola's vertex; its y-intercept. */
+export const CG_LINE_SOLUTION = String.raw`\(\operatorname{Re}(z^2)+2(\operatorname{Im}z)^2+2\operatorname{Re}(z)=x^2-y^2+2y^2+2x=x^2+y^2+2x=0\): a circle with centre \((-1,0)\). The parabola \(x^2-6x+y+13=0\) has vertex \((3,-4)\). The line through \((-1,0)\) and \((3,-4)\) has slope \(-1\), i.e. \(y=-x-1\), giving \(y\)-intercept \(-1\).`;
+
+export const CG_LOCUS_VISUAL = {
+  v: 1,
+  scene: "coordGeometry",
+  params: {
+    window: { x: [-1.6, 3.6], y: [-1.4, 2.6] },
+    points: [{ id: "A", at: [3, 2], label: "A(3, 2)" }],
+    circles: [{ id: "S", center: [0, 0], r: 1, label: "x² + y² = 1" }],
+    locus: { fixed: "A", on: "S", ratio: 0.5 },
+    ask: { kind: "locusRadius", label: "radius = 1/2" },
+  },
+  steps: [{ from: 0, beats: ["given", "trace", "answer"] }],
+  fingerprint: solutionFingerprint(CG_LOCUS_SOLUTION),
+  answer: { value: 0.5, label: "1/2" },
+};
+
+export const CG_DIST_VISUAL = {
+  v: 1,
+  scene: "coordGeometry",
+  params: {
+    window: { x: [-7, 13], y: [-5, 8] },
+    points: [
+      { id: "Q", at: [11, 6], label: "(11, 6)" },
+      { id: "P", at: [2, 5], label: "(2, 5)" },
+      { id: "C", at: [-1, 1], label: "(−1, 1)", beat: "derived" },
+    ],
+    circles: [{ id: "S", center: "C", r: 5, label: "r = 5", beat: "derived" }],
+    ask: { kind: "distance", from: "Q", to: "S", label: "shortest distance = 8" },
+  },
+  steps: [
+    { from: 0, beats: ["given"] },
+    { from: 1, beats: ["derived"] },
+    { from: 2, beats: ["answer"] },
+  ],
+  fingerprint: solutionFingerprint(CG_DIST_SOLUTION),
+  answer: { value: 8, label: "8" },
+};
+
+export const CG_LINE_VISUAL = {
+  v: 1,
+  scene: "coordGeometry",
+  params: {
+    window: { x: [-4, 6], y: [-6, 2.5] },
+    points: [
+      { id: "C", at: [-1, 0], label: "(−1, 0)" },
+      { id: "V", at: [3, -4], label: "V(3, −4)", beat: "derived" },
+    ],
+    circles: [{ id: "S", center: "C", r: 1 }],
+    conics: [{ id: "K", type: "parabola", vertex: "V", a: -0.25, axis: "y", beat: "derived" }],
+    lines: [{ id: "L", through: ["C", "V"], label: "y = −x − 1" }],
+    ask: { kind: "yIntercept", line: "L", label: "y-intercept = −1" },
+  },
+  steps: [
+    { from: 0, beats: ["given"] },
+    { from: 1, beats: ["derived"] },
+    { from: 2, beats: ["construct", "answer"] },
+  ],
+  fingerprint: solutionFingerprint(CG_LINE_SOLUTION),
+  answer: { value: -1, label: "−1" },
+};
+
+/** MHT-CET 150c6ed0: distance of the origin from x - 3y + 4z = 6. */
+export const S3_PLANE_SOLUTION = String.raw`Distance \(=\frac{|0-0+0-6|}{\sqrt{1+9+16}}=\frac{6}{\sqrt{26}}\). Matches option B.`;
+
+/** MHT-CET fa974266: length of the projection of a segment on x + y + z = 7. */
+export const S3_PROJ_SOLUTION = String.raw`\(\vec{AB}=(4-5,\,-1+1,\,3-4)=(-1,0,-1)\), \(|\vec{AB}|=\sqrt{2}\). Plane normal \(\vec n=(1,1,1)\). Projection on the plane \(=\sqrt{|\vec{AB}|^2-\left(\frac{\vec{AB}\cdot\vec n}{|\vec n|}\right)^2}=\sqrt{2-\frac{4}{3}}=\sqrt{\frac{2}{3}}\).`;
+
+/** MHT-CET 9e235789: shortest distance between two skew lines. */
+export const S3_SKEW_SOLUTION = String.raw`\((3, -1, 1) \times (-3, 2, 4) = (-6, -15, 3)\), of length \(\sqrt{270} = 3\sqrt{30}\). The points differ by \((-6, -15, 3)\), whose dot product with it is 270. The distance is \(\dfrac{270}{3\sqrt{30}} = 3\sqrt{30}\).`;
+
+/** JEE Mains d3a9b6a0: foot of the perpendicular from R to a line, then the distance PQ. */
+export const S3_FOOT_SOLUTION = String.raw`Line: \((2-2t,-5+3t,11-4t)\), dir \((-2,3,-4)\). Foot from \(R(1,7,6)\): \(29t-58=0\Rightarrow t=2\), \(Q=(-2,1,3)\). \(\vec{PQ}=(-12,3,4)\), \(|PQ|=\sqrt{144+9+16}=13\).`;
+
+export const S3_PLANE_VISUAL = {
+  v: 1,
+  scene: "space3d",
+  params: {
+    points: [{ id: "O", at: [0, 0, 0], label: "O" }],
+    planes: [{ id: "P", eq: [1, -3, 4, 6], label: "x − 3y + 4z = 6" }],
+    ask: { kind: "distance", from: "O", to: "P", label: "distance = 6/√26" },
+  },
+  steps: [{ from: 0, beats: ["given", "answer"] }],
+  fingerprint: solutionFingerprint(S3_PLANE_SOLUTION),
+  answer: { value: 6 / Math.sqrt(26), label: "6/√26" },
+};
+
+export const S3_PROJ_VISUAL = {
+  v: 1,
+  scene: "space3d",
+  params: {
+    points: [{ id: "A", at: [5, -1, 4], label: "A(5, −1, 4)" }, { id: "B", at: [4, -1, 3], label: "B(4, −1, 3)" }],
+    planes: [{ id: "P", eq: [1, 1, 1, 7], label: "x + y + z = 7", beat: "derived" }],
+    segments: [{ from: "A", to: "B", beat: "given" }],
+    ask: { kind: "projection", from: "A", to: "B", onto: "P", label: "projection = √(2/3)" },
+  },
+  steps: [
+    { from: 0, beats: ["given"] },
+    { from: 1, beats: ["derived"] },
+    { from: 2, beats: ["answer"] },
+  ],
+  fingerprint: solutionFingerprint(S3_PROJ_SOLUTION),
+  answer: { value: Math.sqrt(2 / 3), label: "√(2/3)" },
+};
+
+export const S3_SKEW_VISUAL = {
+  v: 1,
+  scene: "space3d",
+  params: {
+    lines: [
+      { id: "L1", point: [3, 8, 3], dir: [3, -1, 1], label: "L₁" },
+      { id: "L2", point: [-3, -7, 6], dir: [-3, 2, 4], label: "L₂" },
+    ],
+    ask: { kind: "distance", from: "L1", to: "L2", label: "shortest distance = 3√30" },
+  },
+  steps: [
+    { from: 0, beats: ["given"] },
+    { from: 2, beats: ["answer"] },
+  ],
+  fingerprint: solutionFingerprint(S3_SKEW_SOLUTION),
+  answer: { value: 3 * Math.sqrt(30), label: "3√30" },
+};
+
+export const S3_FOOT_VISUAL = {
+  v: 1,
+  scene: "space3d",
+  params: {
+    points: [
+      { id: "P", at: [10, -2, -1], label: "P(10, −2, −1)" },
+      { id: "R", at: [1, 7, 6], label: "R(1, 7, 6)" },
+      { id: "A", at: [2, -5, 11], label: "" },
+      { id: "B", at: [-6, 7, -5], label: "" },
+    ],
+    lines: [{ id: "L", through: ["A", "B"] }],
+    derived: [{ id: "Q", kind: "foot", from: "R", to: "L", label: "Q(−2, 1, 3)" }],
+    segments: [{ from: "R", to: "Q", beat: "derived" }],
+    ask: { kind: "distance", from: "P", to: "Q", label: "PQ = 13" },
+  },
+  steps: [
+    { from: 0, beats: ["given"] },
+    { from: 1, beats: ["derived"] },
+    { from: 2, beats: ["answer"] },
+  ],
+  fingerprint: solutionFingerprint(S3_FOOT_SOLUTION),
+  answer: { value: 13, label: "13" },
+};
+
 export const FIXTURES = [
   { name: "rotation", visual: ROTATION_VISUAL, solution: ROTATION_SOLUTION },
   { name: "circleArc", visual: ARC_VISUAL, solution: ARC_SOLUTION },
   { name: "quadraticFamily", visual: QUAD_VISUAL, solution: QUAD_SOLUTION },
   { name: "slab", visual: SLAB_VISUAL, solution: SLAB_SOLUTION },
+  { name: "functionGraph", visual: FG_CROSS_VISUAL, solution: FG_CROSS_SOLUTION },
+  { name: "functionGraph", visual: FG_SLOPE_VISUAL, solution: FG_SLOPE_SOLUTION },
+  { name: "functionGraph", visual: FG_INC_VISUAL, solution: FG_INC_SOLUTION },
+  { name: "coordGeometry", visual: CG_LOCUS_VISUAL, solution: CG_LOCUS_SOLUTION },
+  { name: "coordGeometry", visual: CG_DIST_VISUAL, solution: CG_DIST_SOLUTION },
+  { name: "coordGeometry", visual: CG_LINE_VISUAL, solution: CG_LINE_SOLUTION },
+  { name: "space3d", visual: S3_PLANE_VISUAL, solution: S3_PLANE_SOLUTION },
+  { name: "space3d", visual: S3_PROJ_VISUAL, solution: S3_PROJ_SOLUTION },
+  { name: "space3d", visual: S3_SKEW_VISUAL, solution: S3_SKEW_SOLUTION },
+  { name: "space3d", visual: S3_FOOT_VISUAL, solution: S3_FOOT_SOLUTION },
 ] as const;

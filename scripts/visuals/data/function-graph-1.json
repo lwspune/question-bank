@@ -1,0 +1,163 @@
+{
+  "//": "Wave 1, function-graph scene: the three MHT-CET calibration questions it was built against.",
+  "visuals": [
+    {
+      "id": "564f2302-d826-49b1-947a-73fa7cb438f7",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "sin(x)^2",
+          "fLabel": "y = sin²x",
+          "g": [
+            "3/4",
+            "1/4"
+          ],
+          "gLabels": [
+            "3/4",
+            "1/4"
+          ],
+          "window": {
+            "x": [
+              0,
+              6.283185307179586
+            ],
+            "y": [
+              -0.1,
+              1.15
+            ]
+          },
+          "xTicks": "pi",
+          "ask": {
+            "kind": "crossings"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve",
+              "compare"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "0d299710",
+        "answer": {
+          "value": 8,
+          "label": "8"
+        }
+      }
+    },
+    {
+      "id": "b03b5c01-9ace-4b59-8a73-d80537a6992d",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "x*log(x)",
+          "fLabel": "y = x log x",
+          "window": {
+            "x": [
+              0,
+              1.4
+            ],
+            "y": [
+              -0.6,
+              0.6
+            ]
+          },
+          "ask": {
+            "kind": "slopePoint",
+            "slope": -1,
+            "normal": true,
+            "pointLabel": "(e⁻², −2e⁻²)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "tangent"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "13f5d790",
+        "answer": {
+          "value": 0.1353352832366127,
+          "label": "x = e⁻²"
+        }
+      }
+    },
+    {
+      "id": "4fbc2dc5-5ff5-4ea6-b426-1c8d8796333f",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "sin(x)^4+cos(x)^4",
+          "fLabel": "y = sin⁴x + cos⁴x",
+          "window": {
+            "x": [
+              0,
+              3.141592653589793
+            ],
+            "y": [
+              0.35,
+              1.1
+            ]
+          },
+          "xTicks": "pi",
+          "ask": {
+            "kind": "increasingOn",
+            "interval": [
+              0.7853981633974483,
+              1.5707963267948966
+            ],
+            "intervalLabel": "π/4 < x < π/2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "shade"
+            ]
+          }
+        ],
+        "fingerprint": "2d43d3d4",
+        "answer": {
+          "value": 1,
+          "label": "rising on π/4 < x < π/2"
+        }
+      }
+    }
+  ],
+  "decided": []
+}
