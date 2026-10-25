@@ -14,6 +14,10 @@
  *   tables, traps with their explanations.
  * - Notes: each concept taught in full; a "Try it" problem whose answer waits
  *   at the end of the chapter, so a student can attempt it first.
+ * - Solved Papers (board): each "chapter" is one past paper, printed as it was
+ *   set by the paper download's own printer (its numbers, marks, sections, the
+ *   OR, a case study's passage once), then solved on a fresh page under the
+ *   same numbers.
  *
  * Question text is rendered by the paper PDF's own helpers (lib/export/pdf/
  * paperHtml), so a stem, table, figure or option prints as it does in a
@@ -26,7 +30,8 @@ import type { BookSection, BookSet } from "@/lib/books/order";
 import type { QuestionRow } from "@/lib/questions/query";
 import type { NotesChapterRegistration } from "@/lib/notes/chapters";
 import type { AuthoredExample, ConceptUnit, ReferenceTable, TrapCallout, VisualizationSlug } from "@/app/notes/_types";
-import { PAPER_CSS, answerOf, blocksHtml, optionsHtml, richHtml } from "@/lib/export/pdf/paperHtml";
+import { PAPER_CSS, answerOf, blocksHtml, keyDetailsHtml, optionsHtml, paperBodyHtml, richHtml } from "@/lib/export/pdf/paperHtml";
+import type { PrintedLabel } from "@/lib/export/printedLabel";
 import { splitFormulaLines } from "@/lib/export/pdf/formulaSheetHtml";
 import type { EbookKind } from "./catalog";
 import { ACCENT, KIND_LABEL, THEME_CSS } from "./theme";
@@ -343,6 +348,58 @@ export function buildPyqChapterHtml(input: PyqChapterInput): string {
   );
 }
 
+// ── Solved Papers chapter (one board paper) ─────────────────────────────────
+
+export type SolvedPaperInput = {
+  /** The paper's place in the book. */
+  number: number;
+  bookTitle: string;
+  paper: { label: string; paperCode: string | null; totalMarks: number; durationMinutes: number | null };
+  /** Printed order, each carrying the paper's own grouping as its setId (lib/questionPapers/exportPlan). */
+  questions: QuestionRow[];
+  sectionOf: ReadonlyMap<string, string>;
+  printedOf: ReadonlyMap<string, PrintedLabel>;
+  /** Storage path -> data URI, question, option and solution pictures alike. */
+  images?: Map<string, string>;
+  head: string;
+};
+
+/** "3 hours", "2 hours 30 minutes", "90 minutes". */
+function durationText(minutes: number): string {
+  if (minutes < 120 && minutes % 60 !== 0) return `${minutes} minutes`;
+  const h = Math.floor(minutes / 60);
+  const m = minutes % 60;
+  return `${h} hour${h === 1 ? "" : "s"}${m ? ` ${m} minutes` : ""}`;
+}
+
+export function buildSolvedPaperHtml(input: SolvedPaperInput): string {
+  const { paper } = input;
+  const common = {
+    title: paper.label,
+    questions: input.questions,
+    images: input.images,
+    sectionOf: input.sectionOf,
+    printedOf: input.printedOf,
+    head: "",
+  };
+  const meta = [paper.paperCode, `${paper.totalMarks} marks`, paper.durationMinutes ? durationText(paper.durationMinutes) : null]
+    .filter(Boolean)
+    .join(" · ");
+  const header =
+    `<header class="chead"><div class="cn">${String(input.number).padStart(2, "0")}</div><div>` +
+    `<div class="eyebrow">Paper ${input.number} · ${esc(input.bookTitle)}</div><h1>${esc(paper.label)}</h1>` +
+    `<div class="pmeta">${esc(meta)}</div></div></header>`;
+  return doc(
+    paper.label,
+    "papers",
+    input.head,
+    header +
+      `<section id="paper" class="bp">${paperBodyHtml(common)}</section>` +
+      `<section id="solutions" class="newpage bp"><h2 class="part">Solutions · ${esc(paper.label)}</h2>` +
+      `${keyDetailsHtml({ ...common, includeSolutions: true })}</section>`
+  );
+}
+
 // ── Cover and contents ──────────────────────────────────────────────────────
 
 const FRONT_CSS = `
@@ -380,6 +437,8 @@ const HOW: Record<EbookKind, string> = {
     "Each chapter teaches its topics from the start: the idea, the definition, the formula and a worked example, then the traps. Try it problems have their answers at the end of the chapter.",
   pyq:
     "Each chapter opens with its topics, then every past question grouped by topic, oldest sitting first. The answer key and a worked solution to every question close the chapter, so you can attempt a topic before you check. A question asked in more than one sitting is printed once, with every sitting listed.",
+  papers:
+    "Each paper is printed as the board set it, newest first: its sections, its question numbers, the marks for each question and the OR choices. Its solutions start on a fresh page under the same numbers, so you can sit the paper against the clock before you check.",
 };
 
 export type EbookFrontInput = {
@@ -391,7 +450,79 @@ export type EbookFrontInput = {
   preview: string;
   chapters: { number: number; name: string; detail: string; page: number }[];
   head: string;
+  /**
+   * The premium cover (2026-10-26, Solved Papers books): the board line over
+   * the subject, and the edition. Absent, the standard cover prints. `preview`
+   * then fills the top sheet of the paper stack.
+   */
+  cover?: { over: string; main: string; edition: string };
 };
+
+/** Navy and gold, full bleed. Shadows are safe here: the cover is one page and never breaks. */
+const PREMIUM_CSS = `
+.pcover { position: relative; height: 297mm; overflow: hidden; break-after: page; color: #fff; padding: 21mm 20mm 17mm;
+  display: flex; flex-direction: column;
+  background: radial-gradient(120% 75% at 100% 0%, #2a4aa0 0%, #16296a 36%, #0f1d4a 62%, #0a1433 100%); }
+.pcover::before { content: ""; position: absolute; inset: 0;
+  background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.035) 0 .6pt, transparent .6pt 12pt); }
+.pcover::after { content: ""; position: absolute; inset: 8mm; border: .6pt solid rgba(240,196,110,.5); border-radius: 2.5mm; }
+.pcover > * { position: relative; z-index: 1; }
+.pc-top { display: flex; justify-content: space-between; align-items: center; font-size: 8.5pt; letter-spacing: .26em; font-weight: 700; }
+.pc-brand { display: flex; gap: 7pt; align-items: center; }
+.pc-brand i { width: 8pt; height: 8pt; border-radius: 50%; background: linear-gradient(135deg, #f7d58b, #d99a2b); }
+.pc-ed { color: #f0c46e; }
+.pc-kind { margin-top: 22mm; width: max-content; border: .8pt solid #f0c46e; color: #f0c46e; padding: 3.5pt 12pt; border-radius: 99pt;
+  font-size: 8.5pt; letter-spacing: .22em; font-weight: 700; text-transform: uppercase; }
+.pc-over { margin-top: 13pt; font-size: 12pt; letter-spacing: .17em; text-transform: uppercase; color: #b9c6ec; font-weight: 600; }
+.pc-main { font-size: 60pt; line-height: 1.02; margin: 3pt 0 0; font-weight: 700; letter-spacing: -.01em; max-width: 165mm; color: #fff; }
+.pc-main.long { font-size: 42pt; }
+.pc-rule { width: 64pt; height: 2.5pt; margin-top: 15pt; border-radius: 2pt; background: linear-gradient(90deg, #f7d58b, #d99a2b); }
+.pc-sub { margin-top: 11pt; font-size: 12.5pt; color: #c9d3f0; max-width: 125mm; line-height: 1.45; }
+.pc-stack { position: relative; margin-top: 20mm; height: 96mm; }
+.pc-sheet { position: absolute; width: 120mm; height: 76mm; border-radius: 2mm; box-shadow: 0 16pt 36pt -10pt rgba(0,0,0,.6); }
+.pc-sheet.s3 { left: 40mm; top: 9mm; transform: rotate(8deg); background: #dfe6f7; }
+.pc-sheet.s2 { left: 31mm; top: 4mm; transform: rotate(3.5deg); background: #eef2fb; }
+.pc-sheet.s1 { left: 20mm; top: 0; transform: rotate(-2.5deg); background: #fff; color: var(--ink); padding: 12pt 15pt; font-size: 10pt;
+  overflow: hidden; }
+.pc-sheet.s1 .sh-head { font-size: 7.5pt; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--muted); border-bottom: .8pt solid #0f1d4a; padding-bottom: 4pt; margin-bottom: 7pt; font-weight: 700; }
+.pc-sheet.s1 .sh-sec { font-size: 8.5pt; font-weight: 700; color: #b45309; margin-bottom: 5pt; }
+.pc-sheet.s1 .sh-q { display: flex; gap: 6pt; }
+.pc-sheet.s1 .sh-q > b { white-space: nowrap; }
+.pc-sheet.s1 .katex { font-size: 1em; }
+.pc-sheet.s1 .opts { margin-top: 5pt; }
+.pc-sheet.s1 .opts.row { grid-template-columns: 1fr 1fr; }
+.pc-sheet.s1 .sh-ans { margin-top: 10pt; padding-top: 7pt; border-top: .6pt dashed #c9d3e6; font-size: 8pt; font-weight: 700;
+  letter-spacing: .14em; text-transform: uppercase; color: #047857; }
+.pc-sheet.s1 .sh-line { height: 4pt; border-radius: 2pt; background: #e6ebf5; margin-top: 7pt; }
+.pc-sheet.s1 .sh-line.short { width: 62%; }
+.pc-seal { position: absolute; left: 133mm; top: -16mm; width: 31mm; height: 31mm; border-radius: 50%; transform: rotate(12deg);
+  background: radial-gradient(circle at 34% 28%, #fde9b4 0%, #eab452 48%, #b97f1f 100%); color: #3b2706;
+  box-shadow: 0 8pt 18pt -6pt rgba(0,0,0,.55), inset 0 0 0 2.2pt rgba(255,255,255,.35), inset 0 0 0 3.4pt rgba(59,39,6,.25);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; text-transform: uppercase; text-align: center; }
+.pc-seal small { font-size: 6.5pt; letter-spacing: .3em; font-weight: 700; }
+.pc-seal b { font-size: 15pt; letter-spacing: .06em; line-height: 1.05; }
+.pc-stats { margin-top: auto; display: grid; grid-template-columns: repeat(4, 1fr); border-top: .6pt solid rgba(240,196,110,.5); padding-top: 10pt; }
+.pc-stat { padding: 0 9pt; border-left: .6pt solid rgba(240,196,110,.3); }
+.pc-stat:first-child { padding-left: 0; border-left: 0; }
+.pc-stat b { display: block; font-size: 22pt; color: #f0c46e; line-height: 1.1; }
+.pc-stat span { font-size: 8.5pt; color: #b9c6ec; letter-spacing: .05em; }
+.pc-foot { margin-top: 9pt; display: flex; justify-content: space-between; font-size: 8.5pt; color: #93a3d1; letter-spacing: .04em; }
+`;
+
+function premiumCoverHtml(input: EbookFrontInput & { cover: NonNullable<EbookFrontInput["cover"]> }): string {
+  const { cover } = input;
+  const stats = input.stats.map((s) => `<div class="pc-stat"><b>${esc(s.value)}</b><span>${esc(s.label)}</span></div>`).join("");
+  return (
+    `<section class="pcover"><div class="pc-top"><span class="pc-brand"><i></i>PYQ VAULT</span><span class="pc-ed">${esc(cover.edition)}</span></div>` +
+    `<div class="pc-kind">${KIND_LABEL[input.kind]}</div>` +
+    `<div class="pc-over">${esc(cover.over)}</div><h1 class="pc-main${cover.main.length > 14 ? " long" : ""}">${esc(cover.main)}</h1>` +
+    `<div class="pc-rule"></div><div class="pc-sub">${esc(input.subtitle)}</div>` +
+    `<div class="pc-stack"><div class="pc-sheet s3"></div><div class="pc-sheet s2"></div><div class="pc-sheet s1">${input.preview}</div>` +
+    `<div class="pc-seal"><small>Fully</small><b>Solved</b><small>Every Q</small></div></div>` +
+    `<div class="pc-stats">${stats}</div><div class="pc-foot"><span>www.pyqvault.com</span><span>Worked solutions under the printed numbers</span></div></section>`
+  );
+}
 
 /** The cover and the contents page, printed after the chapters so the pages are known. */
 export function buildEbookFrontHtml(input: EbookFrontInput): string {
@@ -402,13 +533,16 @@ export function buildEbookFrontHtml(input: EbookFrontInput): string {
     )
     .join("");
   const stats = input.stats.map((s) => `<div class="stat card"><b>${esc(s.value)}</b><span>${esc(s.label)}</span></div>`).join("");
+  const coverHtml = input.cover
+    ? premiumCoverHtml({ ...input, cover: input.cover })
+    : `<section class="cover"><div class="brand"><span class="dot"></span>PYQ VAULT</div>` +
+      `<div class="kind">${KIND_LABEL[input.kind]}</div><h1>${esc(input.title)}</h1><div class="sub">${esc(input.subtitle)}</div>` +
+      `<div class="rule"></div><div class="preview">${input.preview}</div>` +
+      `<div class="stats">${stats}</div><div class="url">www.pyqvault.com</div></section>`;
   return (
     `<!doctype html><html lang="en"><head><meta charset="utf-8"><title>${esc(input.title)}</title>${input.head}` +
-    `<style>${PAPER_CSS}${THEME_CSS}${FRONT_CSS}</style></head><body style="--acc:${ACCENT[input.kind]}">` +
-    `<section class="cover"><div class="brand"><span class="dot"></span>PYQ VAULT</div>` +
-    `<div class="kind">${KIND_LABEL[input.kind]}</div><h1>${esc(input.title)}</h1><div class="sub">${esc(input.subtitle)}</div>` +
-    `<div class="rule"></div><div class="preview">${input.preview}</div>` +
-    `<div class="stats">${stats}</div><div class="url">www.pyqvault.com</div></section>` +
+    `<style>${PAPER_CSS}${THEME_CSS}${FRONT_CSS}${input.cover ? PREMIUM_CSS : ""}</style></head><body style="--acc:${ACCENT[input.kind]}">` +
+    coverHtml +
     `<section class="toc"><div class="eyebrow">${KIND_LABEL[input.kind]} · ${esc(input.title)}</div><h2>Contents</h2>` +
     `<p class="how">${HOW[input.kind]}</p><table><tbody>${rows}</tbody></table></section>` +
     `</body></html>`
@@ -439,5 +573,16 @@ export function pyqPreview(q: QuestionRow, sitting: string): string {
     `<span class="src" style="margin:0">${esc(sitting)}</span></div><div style="margin-top:5pt">${blocksHtml(q.text)}</div>` +
     `${optionsHtml(q.options, undefined)}</div>` +
     `<div class="card"><div class="chip">Answer ${esc(answerOf(q))}</div><div style="color:var(--muted)">Full solution at the end of the chapter</div></div>`
+  );
+}
+
+/** The top sheet of the Solved Papers cover: the newest paper's head, its section and a real question. */
+export function papersPreview(q: QuestionRow, sheet: { label: string; meta: string; section: string; number: string }): string {
+  return (
+    `<div class="sh-head">${esc([sheet.label, sheet.meta].filter(Boolean).join(" · "))}</div>` +
+    `<div class="sh-sec">${esc(sheet.section)}</div>` +
+    `<div class="sh-q"><b>${esc(sheet.number)}.</b><div>${blocksHtml(q.text)}${optionsHtml(q.options, undefined)}</div></div>` +
+    `<div class="sh-ans">Solution</div>` +
+    `<div class="sh-line"></div><div class="sh-line"></div><div class="sh-line"></div><div class="sh-line short"></div>`
   );
 }

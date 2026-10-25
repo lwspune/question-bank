@@ -47,6 +47,12 @@ const INSIDE: Record<StoreEbook["kind"], string[]> = {
     "An answer key and a worked solution to every question",
     "Questions asked more than once printed once, with every sitting listed",
   ],
+  papers: [
+    "Each board paper as it was set: its sections, marks and OR choices",
+    "Newest paper first, so you can sit the latest one against the clock",
+    "A worked solution to every question, under its printed number",
+    "Model answers for every written question",
+  ],
 };
 
 export default async function StoreBookPage({ params }: { params: { slug: string } }) {

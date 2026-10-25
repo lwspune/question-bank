@@ -6,8 +6,11 @@
  *   npm run ebooks:build -- --book=mht-cet-maths-notes --only=circle # one chapter, for a quick look
  *   npm run ebooks:build -- --all --apply                            # also upload + record each new version
  *
- * Three kinds (lib/ebooks/catalog): Formula and Notes books come from the
- * /notes registry alone (no database read); the PYQ book reads the BANK
+ * Four kinds (lib/ebooks/catalog): Formula and Notes books come from the
+ * /notes registry alone (no database read); a Solved Papers book reads the
+ * stored board papers (lib/ebooks/boardPapers picks which) through the ANON
+ * client, as the paper download does, so it can only print PUBLIC questions
+ * and refuses a paper with one missing; the PYQ book reads the BANK
  * through its /books definition, not the stored `/books` curation, which lags
  * the bank between syncs, and repeats the collapse with the same rule
  * (lib/books/recurrence: only groups with no review reason are collapsed).
@@ -41,11 +44,17 @@ import {
   buildFormulaChapterHtml,
   buildNotesChapterHtml,
   buildPyqChapterHtml,
+  buildSolvedPaperHtml,
   formulaPreview,
   notesPreview,
+  papersPreview,
   pyqPreview,
 } from "../../src/lib/ebooks/bookHtml";
-import { EBOOKS, ebookChapters, getEbook, type EbookChapter, type EbookDefinition } from "../../src/lib/ebooks/catalog";
+import { EBOOKS, ebookChapters, getEbook, type EbookChapter, type EbookDefinition, type PapersEbook } from "../../src/lib/ebooks/catalog";
+import { pickBookPapers } from "../../src/lib/ebooks/boardPapers";
+import { getExamBySlug } from "../../src/lib/exam/examContext";
+import { getBoardPaperForExport, listPublishedPapers } from "../../src/lib/questionPapers/query";
+import { boardPaperExport } from "../../src/lib/questionPapers/exportPlan";
 import type { VisualizationSlug } from "../../src/app/notes/_types";
 import { assembleMaster, pageCounts } from "../../src/lib/ebooks/pdfAssemble";
 import { KIND_LABEL, PAPER } from "../../src/lib/ebooks/theme";
@@ -85,7 +94,16 @@ async function loadQuestions(client: SupabaseClient, ids: string[]): Promise<Map
 }
 
 type Built = { chapter: EbookChapter; pdf: Uint8Array; detail: string };
-type Totals = { questions: number; formulas: number; tables: number; traps: number; topics: number; examples: number };
+type Totals = {
+  questions: number;
+  formulas: number;
+  tables: number;
+  traps: number;
+  topics: number;
+  examples: number;
+  /** Solved Papers: the year of each paper printed. */
+  years: number[];
+};
 
 /** Shared by every PYQ chapter of one book: the bank's ordering facts, read once. */
 type PyqContext = { metaByChapter: Map<string, BookMetaRow[]>; firstQuestion?: { q: QuestionRow; sitting: string } };
@@ -161,6 +179,100 @@ async function buildPyqChapter(
   return { chapter: c, pdf, detail: `${printed.length} q` };
 }
 
+/**
+ * Every picture as a JPEG on white. Chrome's PDF printer hung for good on some
+ * PNGs (measured 2026-10-26: an ordinary 803x650 RGB diagram in SSC Science
+ * and Technology II, July 2024, hung the print wherever it fell near a page
+ * break; the same picture as a JPEG printed in 2 s). Smaller files too.
+ */
+async function asJpegs(images: Map<string, string>): Promise<Map<string, string>> {
+  const sharp = (await import("sharp")).default;
+  const out = new Map<string, string>();
+  for (const [path, uri] of images) {
+    const comma = uri.indexOf(",");
+    if (!uri.startsWith("data:image/") || uri.startsWith("data:image/jpeg") || uri.startsWith("data:image/svg")) {
+      out.set(path, uri);
+      continue;
+    }
+    const jpeg = await sharp(Buffer.from(uri.slice(comma + 1), "base64"))
+      .flatten({ background: "#ffffff" })
+      .jpeg({ quality: 90 })
+      .toBuffer();
+    out.set(path, `data:image/jpeg;base64,${jpeg.toString("base64")}`);
+  }
+  return out;
+}
+
+/** "February 2026"; a CBSE paper, which has no sitting, is its year. */
+function paperLabel(p: { sitting: string | null; year: number }): string {
+  return `${p.sitting ?? ""} ${p.year}`.trim();
+}
+
+/** A Solved Papers book's chapters: its papers, each read whole and printed. */
+async function buildPaperChapters(
+  admin: SupabaseClient,
+  anon: SupabaseClient,
+  ebook: PapersEbook,
+  only: string[] | undefined,
+  totals: Totals,
+  head: string
+): Promise<{ built: Built[]; preview: string }> {
+  const exam = getExamBySlug(ebook.examSlug);
+  if (!exam) throw new Error(`ebook ${ebook.slug}: no exam "${ebook.examSlug}"`);
+  const all = (await listPublishedPapers(anon)).filter((p) => p.examName === exam.examName && p.subjectName === ebook.subject);
+  const picked = pickBookPapers(all, ebook.rule);
+  if (picked.length === 0) throw new Error(`ebook ${ebook.slug}: no published ${exam.examName} ${ebook.subject} papers`);
+  const papers = picked.filter((p) => !only || only.includes(p.slug));
+  if (papers.length === 0) throw new Error(`--only matched none of: ${picked.map((p) => p.slug).join(", ")}`);
+  const built: Built[] = [];
+  let preview = "";
+  for (const [i, p] of papers.entries()) {
+    const found = await getBoardPaperForExport(anon, exam.examName, p.slug);
+    if (!found) throw new Error(`${p.slug}: not readable`);
+    const ids = [...new Set(found.items.map((it) => it.questionId))];
+    const rows = await loadQuestions(anon, ids);
+    // A paper with a question missing would print the wrong numbers against the
+    // paper a student was set, so the book stops rather than print it short.
+    if (rows.size !== ids.length) throw new Error(`${p.slug}: only ${rows.size} of ${ids.length} questions are PUBLIC`);
+    const plan = boardPaperExport(found, found.items, new Map([...rows.values()].map((q) => [q.id, q.context])));
+    if (!plan.ok) throw new Error(`${p.slug}: ${plan.reason}`);
+    const questions = plan.questionIds.map((id) => ({ ...rows.get(id)!, setId: plan.setOf.get(id) ?? null }));
+    const [paperImages, keyImages] = await Promise.all([imageDataUris(admin, "paper", questions), imageDataUris(admin, "key", questions)]);
+    const label = paperLabel(p);
+    const pdf = await printPdf(
+      buildSolvedPaperHtml({
+        number: i + 1,
+        bookTitle: ebook.title,
+        paper: { label, paperCode: p.paperCode, totalMarks: p.totalMarks, durationMinutes: p.durationMinutes },
+        questions,
+        sectionOf: plan.sectionOf,
+        printedOf: plan.printedOf,
+        images: await asJpegs(new Map([...paperImages, ...keyImages])),
+        head,
+      }),
+      { timeoutMs: PRINT_TIMEOUT_MS }
+    );
+    totals.questions += questions.length;
+    totals.years.push(p.year);
+    if (!preview) {
+      // The cover's top sheet: a short, figure-free question from the newest paper.
+      const first = questions.find((q) => !q.imageUrl && !q.context && (q.text ?? "").length < 220);
+      if (first) {
+        preview = papersPreview(first, {
+          label,
+          meta: [p.paperCode, `${p.totalMarks} marks`].filter(Boolean).join(" · "),
+          section: plan.sectionOf.get(first.id) ?? "",
+          number: plan.printedOf.get(first.id)?.number ?? "1",
+        });
+      }
+    }
+    const detail = `${p.totalMarks} marks`;
+    console.log(`  ${String(i + 1).padStart(2)}. ${label.padEnd(16)} ${(p.paperCode ?? "").padEnd(9)} ${String(questions.length).padStart(3)} q`);
+    built.push({ chapter: { number: i + 1, slug: p.slug, name: label, classLabel: null, notes: null, bookChapter: null }, pdf, detail });
+  }
+  return { built, preview };
+}
+
 async function buildNotesChapter(
   ebook: EbookDefinition,
   c: EbookChapter,
@@ -192,6 +304,16 @@ async function buildNotesChapter(
 
 function coverStats(ebook: EbookDefinition, chapters: number, t: Totals): { value: string; label: string }[] {
   const n = (x: number) => x.toLocaleString("en-IN");
+  if (ebook.kind === "papers") {
+    const from = Math.min(...t.years);
+    const to = Math.max(...t.years);
+    return [
+      { value: String(chapters), label: "board papers" },
+      { value: from === to ? String(from) : `${from}-${String(to).slice(2)}`, label: "years" },
+      { value: n(t.questions), label: "questions" },
+      { value: "Full", label: "solutions" },
+    ];
+  }
   if (ebook.kind === "pyq") {
     return [
       { value: n(t.questions), label: "past questions" },
@@ -216,7 +338,12 @@ function coverStats(ebook: EbookDefinition, chapters: number, t: Totals): { valu
   ];
 }
 
-async function buildBook(client: SupabaseClient, ebook: EbookDefinition, only: string[] | undefined): Promise<void> {
+async function buildBook(
+  client: SupabaseClient,
+  anon: SupabaseClient,
+  ebook: EbookDefinition,
+  only: string[] | undefined
+): Promise<void> {
   const started = Date.now();
   const head = pdfHead();
   const diagramHead = ebook.kind === "notes" ? `<style>${await buildDiagramCss()}</style>` : "";
@@ -227,8 +354,7 @@ async function buildBook(client: SupabaseClient, ebook: EbookDefinition, only: s
 
   const outDir = join(process.cwd(), "generated-papers", "ebooks", ebook.slug);
   mkdirSync(join(outDir, "parts"), { recursive: true });
-  const chapters = ebookChapters(ebook).filter((c) => !only || only.includes(c.slug));
-  const totals: Totals = { questions: 0, formulas: 0, tables: 0, traps: 0, topics: 0, examples: 0 };
+  const totals: Totals = { questions: 0, formulas: 0, tables: 0, traps: 0, topics: 0, examples: 0, years: [] };
   const pyqCtx: PyqContext = { metaByChapter: new Map() };
   if (ebook.kind === "pyq") {
     for (const m of await loadBookMeta(client, getBookBySlug(ebook.bookSlug)!)) {
@@ -236,15 +362,25 @@ async function buildBook(client: SupabaseClient, ebook: EbookDefinition, only: s
     }
   }
 
-  const built: Built[] = [];
-  for (const c of chapters) {
-    const b = ebook.kind === "pyq" ? await buildPyqChapter(client, ebook, c, pyqCtx, totals, head) : await buildNotesChapter(ebook, c, totals, head, diagramHead, renderDiagram);
-    writeFileSync(join(outDir, "parts", `${String(c.number).padStart(2, "0")}-${c.slug}.pdf`), b.pdf);
-    built.push(b);
+  let built: Built[] = [];
+  let papersCover = "";
+  if (ebook.kind === "papers") {
+    ({ built, preview: papersCover } = await buildPaperChapters(client, anon, ebook, only, totals, head));
+  } else {
+    for (const c of ebookChapters(ebook).filter((c) => !only || only.includes(c.slug))) {
+      built.push(
+        ebook.kind === "pyq"
+          ? await buildPyqChapter(client, ebook, c, pyqCtx, totals, head)
+          : await buildNotesChapter(ebook, c, totals, head, diagramHead, renderDiagram)
+      );
+    }
   }
+  for (const b of built) writeFileSync(join(outDir, "parts", `${String(b.chapter.number).padStart(2, "0")}-${b.chapter.slug}.pdf`), b.pdf);
 
   const preview =
-    ebook.kind === "pyq"
+    ebook.kind === "papers"
+      ? papersCover
+      : ebook.kind === "pyq"
       ? pyqCtx.firstQuestion
         ? pyqPreview(pyqCtx.firstQuestion.q, pyqCtx.firstQuestion.sitting)
         : ""
@@ -267,6 +403,11 @@ async function buildBook(client: SupabaseClient, ebook: EbookDefinition, only: s
       subtitle: ebook.subtitle,
       stats: coverStats(ebook, built.length, totals),
       preview,
+      // The Solved Papers books wear the premium cover; its edition is the newest paper's year.
+      cover:
+        ebook.kind === "papers"
+          ? { over: ebook.board, main: ebook.subjectTitle, edition: `${Math.max(...totals.years)} Edition` }
+          : undefined,
       chapters: contents,
       head,
     });
@@ -274,24 +415,26 @@ async function buildBook(client: SupabaseClient, ebook: EbookDefinition, only: s
   };
   let frontPages = 2;
   let front = frontFor(frontPages);
-  let frontPdf = await printPdf(front.html);
+  // The chapters' long limit here too: a cold browser has taken over the default 45 s on a one-page cover.
+  let frontPdf = await printPdf(front.html, { timeoutMs: PRINT_TIMEOUT_MS });
   const actual = (await pageCounts([frontPdf]))[0];
   if (actual !== frontPages) {
     frontPages = actual;
     front = frontFor(frontPages);
-    frontPdf = await printPdf(front.html);
+    frontPdf = await printPdf(front.html, { timeoutMs: PRINT_TIMEOUT_MS });
   }
 
   const footer = `PYQ Vault  ·  ${ebook.title} ${KIND_LABEL[ebook.kind]}`;
   const master = await assembleMaster([frontPdf, ...built.map((b) => b.pdf)], { footer, paper: PAPER });
-  const sampleBuilt = built.find((b) => b.chapter.slug === ebook.sampleChapter);
+  // A Solved Papers book's sample is its newest paper, which it prints first.
+  const sampleBuilt = ebook.kind === "papers" ? built[0] : built.find((b) => b.chapter.slug === ebook.sampleChapter);
   const sample = sampleBuilt
     ? await assembleMaster([frontPdf, sampleBuilt.pdf], { footer: `${footer}  ·  Free sample`, paper: PAPER })
     : null;
   const masterPages = (await pageCounts([master]))[0];
   const summary = {
     pageCount: masterPages,
-    questionCount: ebook.kind === "pyq" ? totals.questions : null,
+    questionCount: ebook.kind === "pyq" || ebook.kind === "papers" ? totals.questions : null,
     stats: coverStats(ebook, built.length, totals),
     contents: front.contents,
   };
@@ -305,7 +448,7 @@ async function buildBook(client: SupabaseClient, ebook: EbookDefinition, only: s
 
   if (!APPLY) return;
   if (only) throw new Error("refusing --apply with --only: a partial book must never become the master");
-  if (!sample) throw new Error(`sample chapter "${ebook.sampleChapter}" was not built`);
+  if (!sample) throw new Error(`the sample chapter of ${ebook.slug} was not built`);
   const version = (row!.version as number) + 1;
   const masterPath = `${ebook.slug}/v${version}/master.pdf`;
   const samplePath = `${ebook.slug}/v${version}/sample.pdf`;
@@ -341,7 +484,10 @@ async function main() {
   const client = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!, {
     auth: { persistSession: false },
   });
-  for (const book of books) await buildBook(client, book, only);
+  const anon = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!, {
+    auth: { persistSession: false },
+  });
+  for (const book of books) await buildBook(client, anon, book, only);
   if (!APPLY) console.log("\nDRY RUN: nothing uploaded. Re-run with --apply to upload and record each version.\n");
 }
 

@@ -343,6 +343,10 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 
 ### 2026-10
 
+- **2026-10-26 — Board Solved Papers: 17 ebooks (HSC 12, SSC 10, CBSE 10/12), each stored paper as set, then solved; migration 0186 (kind `papers`); uploaded OFF.**
+  - **One CBSE paper a year (owner):** all ~15 would run 1,300-3,500 pages; lowest code, set 1 (`lib/ebooks/boardPapers.ts`). Maharashtra: every paper.
+  - **The download's printer** (`paperBodyHtml`/`keyDetailsHtml`), read via the anon client: only PUBLIC questions print; a short paper stops the build.
+  - **Chrome's print hung on some PNGs** near a page break (JPEG: 2 s), so the build JPEGs every picture (`sharp`, dev only); downloads share the risk (SUGGESTIONS.md). Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-10-25 (third) — Animated solutions, Wave 1: three scenes (function graph; coordinate geometry incl. complex loci; 3D lines, planes, vectors), 494 checked visuals in 13 JEE + CET chapters.**
   - **Lane:** Haiku fit -> Sonnet draft -> `visuals:assemble` (key from the DB) -> sheet, every picture looked at -> apply. Sheets caught what checks cannot: edge-on planes, invented helper planes, a right number on the wrong shape.
   - **Wrong solutions fixed as found** (`visuals:fix-solutions`); keys/stems the lane cannot fix go on `scripts/visuals/NEEDS_OWNER.md`, never flipped.
