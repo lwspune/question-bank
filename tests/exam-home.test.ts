@@ -116,14 +116,17 @@ describe("buildExamHome", () => {
 });
 
 describe("examHomeDescription", () => {
-  it("promises answers alone where the questions carry no worked solutions", () => {
+  // IPMAT Indore is "some" (89% solved, 2026-10-26); answersPhrase's own test
+  // covers "none", which no exam declares any more.
+  it("promises worked solutions for some where only some questions carry them", () => {
     const m = buildExamHome(getExamBySlug("ipmat-indore")!, [], {
       examId: null,
       totalPublicQuestions: 670,
       hasShippedNotes: false,
     });
-    expect(examHomeDescription(m)).toContain(", with answers and timed mocks of real papers. Free to browse.");
-    expect(examHomeDescription(m)).not.toContain("worked solutions");
+    expect(examHomeDescription(m)).toContain(
+      ", with answers, and worked solutions for some and timed mocks of real papers. Free to browse."
+    );
   });
 
   it("states count, years, subjects and chapters in one quotable sentence", () => {
