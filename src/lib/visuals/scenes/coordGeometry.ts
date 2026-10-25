@@ -633,14 +633,15 @@ export const coordGeometry: Scene<CoordParams> = {
       if (Math.abs(v) < 1e-12) continue;
       const ty = Math.min(H - 4, axisY + 14);
       axes.push(line(X(v), axisY - 3, X(v), axisY + 3, { stroke: "muted", width: 1 }), text(X(v), ty, num(v), { tone: "muted", size: 10, anchor: "middle" }));
-      obstacles.push([X(v), ty - 4]);
+      // The tick number as a box (about 16 x 9 px), not a point.
+      for (const dx of [-8, -4, 0, 4, 8]) for (const dy of [-9, -4, 1]) obstacles.push([X(v) + dx, ty + dy]);
     }
     const ys = step(yb - ya, Math.max(3, Math.round((PB - PT) / 45)));
     for (let k = Math.ceil(ya / ys - 1e-9); k * ys <= yb + 1e-9; k++) {
       const v = k * ys;
       if (Math.abs(v) < 1e-12) continue;
       axes.push(line(axisX - 3, Y(v), axisX + 3, Y(v), { stroke: "muted", width: 1 }), text(Math.max(2, axisX - 5), Y(v) + 3, num(v), { tone: "muted", size: 10, anchor: "end" }));
-      obstacles.push([axisX - 12, Y(v)]);
+      for (const dx of [-20, -14, -8, -4]) for (const dy of [-5, 0, 4]) obstacles.push([axisX + dx, Y(v) + dy]);
     }
 
     // Plane geometry as pixels, clipped to the plot.
@@ -697,6 +698,19 @@ export const coordGeometry: Scene<CoordParams> = {
       const end = px(lo.on.pieces[0].at(0));
       for (const dx of [0, 8, 14, -8, -14]) obstacles.push([end[0] + dx, end[1] - 8], [end[0] + dx, end[1]]);
     }
+    // And what the answer beat will draw, so no label ends up under it.
+    const along = (a: XY, b: XY) => {
+      for (let i = 0; i <= 30; i++) obstacles.push(px([a[0] + ((b[0] - a[0]) * i) / 30, a[1] + ((b[1] - a[1]) * i) / 30]));
+    };
+    const mk = facts.mark;
+    if (mk.kind === "segment") {
+      along(mk.from, mk.to);
+      if (mk.guide) along(mk.guide[0], mk.guide[1]);
+    } else if (mk.kind === "polygon") mk.points.forEach((q, i) => along(q, mk.points[(i + 1) % mk.points.length]));
+    else if (mk.kind === "slope") {
+      along(mk.from, [mk.from[0] + mk.run, mk.from[1]]);
+      along([mk.from[0] + mk.run, mk.from[1]], [mk.from[0] + mk.run, mk.from[1] + mk.rise]);
+    } else if (mk.kind === "point") obstacles.push(px(mk.at));
 
     // Labels: the clearest of several spots round an anchor; a far spot gets a leader line.
     const place = (anchors: XY[], label: string, size: number): { x: number; y: number; anchor: "start" | "end"; from: XY; far: boolean } => {
@@ -704,8 +718,9 @@ export const coordGeometry: Scene<CoordParams> = {
       let best: { x: number; y: number; anchor: "start" | "end"; from: XY; far: boolean } | null = null;
       let bestScore = -Infinity;
       for (const a of anchors) {
-        for (const ox of [8, 22, 42]) {
-          for (const oy of [-9, -24, -42, 18, 33, 50]) {
+        // Near spots first; the far ones (with a leader line) win only when nothing near is clear.
+        for (const ox of [8, 22, 42, 70]) {
+          for (const oy of [-9, -24, -42, -64, 18, 33, 50, 72]) {
             for (const anchor of ["start", "end"] as const) {
               const sx = anchor === "start" ? a[0] + ox : a[0] - ox;
               const sy = a[1] + oy;
@@ -713,7 +728,8 @@ export const coordGeometry: Scene<CoordParams> = {
               if (left < 2 || left + wdt > W - 2 || sy - size < PT - 2 || sy > H - 4) continue;
               let room = Infinity;
               for (const [qx, qy] of obstacles) room = Math.min(room, Math.max(left - qx, qx - (left + wdt), sy - size * 0.8 - qy, qy - (sy + 2), 0));
-              const score = Math.min(room, 10) - 0.03 * Math.hypot(sx - a[0], sy - a[1]);
+              // Room counts up to 7 px; past that nearness wins, so a short label stays by its point.
+              const score = Math.min(room, 7) - 0.03 * Math.hypot(sx - a[0], sy - a[1]);
               if (score > bestScore) {
                 bestScore = score;
                 best = { x: sx, y: sy, anchor, from: a, far: Math.hypot(ox, oy) > 34 };
@@ -724,7 +740,8 @@ export const coordGeometry: Scene<CoordParams> = {
       }
       const b = best ?? { x: Math.min(W - 2, anchors[0][0] + 8), y: Math.max(PT + 10, anchors[0][1] - 9), anchor: "start" as const, from: anchors[0], far: false };
       const left = b.anchor === "start" ? b.x : b.x - wdt;
-      for (let i = 0; i <= 6; i++) obstacles.push([left + (wdt * i) / 6, b.y - size * 0.35]);
+      // A placed label blocks its whole box for the labels after it.
+      for (let i = 0; i <= 6; i++) for (const dy of [-0.8, -0.35, 0.1]) obstacles.push([left + (wdt * i) / 6, b.y + size * dy]);
       return b;
     };
     const labelShapes = (pl: ReturnType<typeof place>, label: string, tone: "fg" | "brand" | "amber" | "good" | "muted", size: number, opacity = 1): Shape[] => [
@@ -861,8 +878,11 @@ export const coordGeometry: Scene<CoordParams> = {
         const [qx, qy] = px(m.at);
         if (inPlot([qx, qy])) {
           over.push(dot(qx, qy, 5.5 * Math.min(1, pa * 1.5), "good", { stroke: "card", width: 2 }));
-          if (pa > 0.5) {
-            const lab = `(${num(m.at[0], 3)}, ${num(m.at[1], 3)})`;
+          // Coordinates only when they read cleanly ("(0, −1)", not "(2.828, 0)"):
+          // the header already gives the exact value.
+          const short = (v: number) => Math.abs(v * 100 - Math.round(v * 100)) < 1e-6;
+          if (pa > 0.5 && short(m.at[0]) && short(m.at[1])) {
+            const lab = `(${num(m.at[0])}, ${num(m.at[1])})`;
             over.push(...labelShapes(place([[qx, qy]], lab, 12), lab, "good", 12));
           }
         }

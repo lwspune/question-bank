@@ -152,6 +152,16 @@ describe("coordGeometry drawing", () => {
     expect(say(["given", "trace", "answer"])).toBe(true);
   });
 
+  it("labels an intercept point with its coordinates only when they are short decimals; the header carries the rest", () => {
+    const at = (eq: number[]) => {
+      const p = parse({ window: win, lines: [{ id: "L", eq }], ask: { kind: "yIntercept", line: "L" } });
+      return scene().frame(p, { played: ["construct", "answer"], t: 1, slider: undefined }).filter((s) => s.kind === "text").map((s) => (s as { text: string }).text);
+    };
+    expect(at([1, 1, 1])).toContain("(0, −1)");
+    const irrational = at([1, 1, -2 * Math.SQRT2]);
+    expect(irrational.some((t) => t.startsWith("(0, 2.8"))).toBe(false);
+  });
+
   it("keeps an object hidden until its beat: a derived circle is absent while only the givens play", () => {
     const p = parse({ window: { x: [-7, 13], y: [-5, 8] }, points: [{ id: "Q", at: [11, 6] }, { id: "C", at: [-1, 1], beat: "derived" }], circles: [{ id: "S", center: "C", r: 5, beat: "derived" }], ask: { kind: "distance", from: "Q", to: "S" } });
     const { sx } = coordFacts(p).scale;
