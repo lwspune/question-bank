@@ -34,4 +34,5 @@ export const PROD_CONTRACT_FILES: string[] = [
   "tests/performance-concept-graph-taxonomy.test.ts", // prereq-graph nodes vs live NDA Maths chapters
   "tests/mh-hsc-12-paper-catalog-prod.test.ts", // board-paper lane's generated catalog vs live HSC Maths taxonomy
   "tests/concept-ladder-urls.test.ts", // Concept Ladder chip: subtopic names vs live taxonomy, lesson URLs vs conceptladder.in
+  "tests/visuals-ingestion-gate.test.ts", // new PUBLIC questions of a launched exam carry an animated-solution verdict
 ];

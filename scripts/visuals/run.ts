@@ -18,7 +18,7 @@ import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { join } from "node:path";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
-import { createClient } from "@supabase/supabase-js";
+import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import SceneSvg from "../../src/components/visuals/SceneSvg";
 import { planVisualBatch, type BatchRow, type VisualBatch } from "../../src/lib/visuals/batch";
 import { getScene } from "../../src/lib/visuals/registry";
@@ -43,17 +43,18 @@ const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replac
 // The light theme's scene colours (globals.css .viz), so the sheet matches the site.
 const SHEET_VARS = `.viz{--viz-fg:#0f1d4a;--viz-muted:#55657f;--viz-line:#dfe6f1;--viz-brand:#1d4ed8;--viz-brand-text:#1d4ed8;--viz-card:#fff;--viz-bg:#f5f7fb;--viz-soft:#e8f0ff;--viz-amber:#b45309;--viz-good:#047857;--viz-good-soft:#e3f4ec;--viz-bad:#b91c1c;--viz-glass:#dcebfb}`;
 
-async function fetchRows(client: ReturnType<typeof createClient>, ids: string[]): Promise<{ rows: Map<string, Row>; hasColumn: boolean }> {
+async function fetchRows(client: SupabaseClient, ids: string[]): Promise<{ rows: Map<string, Row>; hasColumn: boolean }> {
   const base = "id, question_number, visibility, text, solution, question_format, numeric_answer, exams(name), chapters(name), options(label, text, is_correct)";
   const rows = new Map<string, Row>();
   let hasColumn = true;
   for (let i = 0; i < ids.length; i += 150) {
     const chunk = ids.slice(i, i + 150);
-    let res = await client.from("questions").select(`${base}, solution_visual`).in("id", chunk);
+    const read = async (cols: string) => (await client.from("questions").select(cols).in("id", chunk)) as { data: unknown[] | null; error: { message: string } | null };
+    let res = await read(`${base}, solution_visual`);
     if (res.error && /solution_visual/.test(res.error.message)) {
       // Migration 0184 not applied here yet: a dry run can still check everything else.
       hasColumn = false;
-      res = await client.from("questions").select(base).in("id", chunk);
+      res = await read(base);
     }
     if (res.error) throw new Error(`lookup: ${res.error.message}`);
     for (const r of res.data as unknown as Row[]) rows.set(r.id, r);
