@@ -1,0 +1,56 @@
+[
+  {
+    "id": "49244a5c-ca9e-445d-8459-654afb984470",
+    "before": "0a19d277",
+    "solution": "The volume is \\(|D|\\), where \\(D=\\begin{vmatrix}1&a&1\\\\0&1&a\\\\a&0&1\\end{vmatrix}=1(1-0)-a(0-a^{2})+1(0-a)=a^{3}-a+1\\). Let \\(f(a)=a^{3}-a+1\\); \\(f'(a)=3a^{2}-1=0\\) gives \\(a=\\pm\\frac{1}{\\sqrt{3}}\\), and \\(f''(a)=6a>0\\) at \\(a=\\frac{1}{\\sqrt{3}}\\), a local minimum, where \\(f=1-\\frac{2}{3\\sqrt{3}}>0\\) is the volume itself. Matches option C.",
+    "note": "volume written |a^3 - a|; the determinant is a^3 - a + 1. Key C unchanged."
+  },
+  {
+    "id": "6236c0af-b412-4666-903e-b0f9a3604a3d",
+    "before": "f2bedc0a",
+    "solution": "\\(\\vec{a}\\times\\vec{b}=2\\hat{i}-2\\hat{j}+\\hat{k}\\), of magnitude 3. From \\(\\vec{a}\\cdot\\vec{c}=|\\vec{c}|\\) and \\(|\\vec{c}-\\vec{a}|^{2}=8\\): \\(|\\vec{c}|^{2}-2|\\vec{c}|+9=8\\), so \\(|\\vec{c}|=1\\). Then \\(|(\\vec{a}\\times\\vec{b})\\times\\vec{c}|=|\\vec{a}\\times\\vec{b}||\\vec{c}|\\sin30^{\\circ}=3\\cdot1\\cdot\\frac{1}{2}=\\frac{3}{2}\\). Matches option A.",
+    "note": "a x b written -2i + 2j + k; it is 2i - 2j + k (same magnitude); |c| = 1 now derived. Key A unchanged."
+  },
+  {
+    "id": "652b7194-2693-4792-8f08-179a8c5c9581",
+    "before": "4942f4b7",
+    "solution": "The angle is obtuse when \\(\\bar p\\cdot\\bar q<0\\) for every \\(y\\): \\(my^{2}+6my-12<0\\). For \\(m<0\\) this holds for all \\(y\\) exactly when the discriminant is negative: \\(36m^{2}+48m<0\\Rightarrow12m(3m+4)<0\\Rightarrow-\\dfrac{4}{3}<m<0\\). Matches option D.",
+    "note": "the discriminant condition was written > 0 (inverted); it must be < 0 for the quadratic to stay negative. Key D unchanged."
+  },
+  {
+    "id": "7588b75c-1a13-465e-be4e-ce023e00ef3e",
+    "before": "77bfd41c",
+    "solution": "\\(|\\vec{a}\\times\\vec{b}|^{2}=16-4=12\\). \\(\\vec{b}\\cdot\\vec{c}=2\\vec{b}\\cdot(\\vec{a}\\times\\vec{b})-3|\\vec{b}|^{2}=0-48=-48\\). Since \\(\\vec{a}\\times\\vec{b}\\perp\\vec{b}\\), \\(|\\vec{c}|^{2}=4\\cdot12+9\\cdot16=192\\), so \\(|\\vec{c}|=8\\sqrt{3}\\). \\(\\cos\\theta=\\dfrac{-48}{8\\sqrt{3}\\cdot4}=-\\dfrac{\\sqrt{3}}{2}\\), so \\(\\theta=\\dfrac{5\\pi}{6}\\). Matches option B.",
+    "note": "the denominator was written 2 sqrt12 x 4; |c| = 8 sqrt3. Key B unchanged."
+  },
+  {
+    "id": "acb65c28-920d-4f76-b566-fef43e41a76a",
+    "before": "23ca9eb4",
+    "solution": "\\((\\vec{u}-\\vec{v})\\times(\\vec{v}-\\vec{w})=\\vec{u}\\times\\vec{v}-\\vec{u}\\times\\vec{w}+\\vec{v}\\times\\vec{w}\\). Dotting with \\(\\vec{u}+\\vec{v}-\\vec{w}\\), every term with a repeated vector vanishes, leaving \\(\\vec{u}\\cdot(\\vec{v}\\times\\vec{w})-\\vec{v}\\cdot(\\vec{u}\\times\\vec{w})-\\vec{w}\\cdot(\\vec{u}\\times\\vec{v})=[\\vec{u}\\,\\vec{v}\\,\\vec{w}]+[\\vec{u}\\,\\vec{v}\\,\\vec{w}]-[\\vec{u}\\,\\vec{v}\\,\\vec{w}]=\\vec{u}\\cdot(\\vec{v}\\times\\vec{w})\\). Matches option A.",
+    "note": "claimed only one triple product survives; three survive and two cancel. Key A unchanged."
+  },
+  {
+    "id": "b146271f-c81e-4872-b9e5-bf0f068479dd",
+    "before": "435fcc45",
+    "solution": "Expanding the scalar triple product: \\(f(x)=x^{3}-27x+26\\). \\(f'(x)=0\\Rightarrow x=\\pm3\\); \\(f''(3)>0\\) so \\(x_{0}=3\\). \\(\\vec{a}\\cdot\\vec{b}=-2x-2x-3=-4(3)-3=-15\\). Matches option B: \\(-15\\).",
+    "note": "constant term written 28; it is 26 (no effect on x0). Key B unchanged."
+  },
+  {
+    "id": "b2bc0146-1251-41bf-9b0f-f09efce33e8b",
+    "before": "b2479efc",
+    "solution": "From \\(\\vec{b}\\times(\\vec{c}-\\vec{a})=\\vec{0}\\), \\(\\vec{c}-\\vec{a}=\\lambda\\vec{b}\\). Using \\(\\vec{c}\\cdot\\vec{a}=0\\): \\(|\\vec{a}|^{2}+\\lambda(\\vec{a}\\cdot\\vec{b})=0\\), i.e. \\(6+4\\lambda=0\\), so \\(\\lambda=-\\frac{3}{2}\\). Then \\(\\vec{c}\\cdot\\vec{b}=\\vec{a}\\cdot\\vec{b}+\\lambda|\\vec{b}|^{2}=4-\\frac{3}{2}\\cdot3=-\\frac{1}{2}\\). Matches option D: \\(-\\frac{1}{2}\\).",
+    "note": "lambda was given as -(a.b)/|b|^2; it is -|a|^2/(a.b) = -3/2. Key D unchanged."
+  },
+  {
+    "id": "b5c0400d-8e75-4eb0-8378-66ef116b4a08",
+    "before": "86168a0e",
+    "solution": "By BAC-CAB, \\(\\hat{i}\\times(\\vec{a}\\times\\hat{i})=\\vec{a}-(\\vec{a}\\cdot\\hat{i})\\hat{i}\\), and likewise for \\(\\hat{j}\\) and \\(\\hat{k}\\). Adding, \\(\\vec{b}=3\\vec{a}-\\vec{a}=2\\vec{a}=2\\hat{i}+4\\hat{j}+6\\hat{k}\\), so \\(|\\vec{b}|=\\sqrt{4+16+36}=\\sqrt{56}=2\\sqrt{14}\\). Matches option D.",
+    "note": "the sum was written 2a - (i + j + k); it is 3a - a = 2a. Key D unchanged."
+  },
+  {
+    "id": "e51f36ca-a2e9-478c-b481-aa2173c168b2",
+    "before": "59554c21",
+    "solution": "The bisector of \\(\\vec{b}\\) and \\(\\vec{c}\\) lies along \\(\\hat{b}+\\hat{c}=\\frac{\\hat{i}+\\hat{j}}{\\sqrt{2}}+\\frac{\\hat{j}+\\hat{k}}{\\sqrt{2}}=\\frac{\\hat{i}+2\\hat{j}+\\hat{k}}{\\sqrt{2}}\\), so \\(\\vec{a}=\\lambda(\\hat{i}+2\\hat{j}+\\hat{k})\\). Matching the \\(\\hat{j}\\) component, \\(2\\lambda=2\\Rightarrow\\lambda=1\\), so \\(\\alpha=1,\\beta=1\\). Matches option A.",
+    "note": "the bisector was written lambda(i + j + k) times a garbled root; it is along i + 2j + k. Key A unchanged."
+  }
+]

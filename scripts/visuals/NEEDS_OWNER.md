@@ -30,6 +30,32 @@ settled; settled rows move to the bottom with the date and what was done.
 | `0521f658` | JEE Mains · Three Dimensional Geometry | **Stem incomplete.** The solution uses the plane passing through (1, 4, −3), which the question never states; without it α + β + γ is not determined. | Restore the missing point to the stem (hash-safe repair). |
 | `2007f0ed` | JEE Mains · Three Dimensional Geometry | **Two options correct.** b = ±a gives directions (1, −1, 0) and (1, 1, 0), both at 30° to the plane; options A and B both fit, the key is B. | Decide: accept both or mark flawed. |
 | `81a2c870` | JEE Mains · Three Dimensional Geometry | **Stem incomplete.** The foot on P₂ is (20/3, 13/3, −2/3), sum 31/3; the key 11 is the foot on the line of intersection of P₁ and P₂, which the stem has lost. | Restore "on the line of intersection of P₁ and P₂" (hash-safe repair). |
+| `14ffb9b9` | MHT-CET · Vectors | **Key wrong.** b·c = 1 gives 16 + 4 − 4 = 4λ², so λ = 2 (option A); the key is 4 and the stored solution writes λ² = 16. | Change the key to A (check the paper). |
+| `17c10fd6` | MHT-CET · Vectors | **Two options correct.** The volume condition gives |22k − 88| = 66, so k = 7 or k = 1; both are offered (A and D). | Accept both or mark flawed. |
+| `27360110` | MHT-CET · Vectors | **Stem misprint.** The given â and b̂ are not unit vectors (|â|² = 2.6, |b̂|² = 1.8); the key −5 holds only for the original unit vectors (1/√10)(3î + k̂), (1/7)(2î + 3ĵ − 6k̂). | Restore the original vectors (hash-safe repair). |
+| `28a12562` | MHT-CET · Vectors | **Stem typo.** c = a × b is perpendicular to a, so a · c = 0, not 1; the original reads a · b = 1. The key 2 follows from the original. | Change "a · c = 1" to "a · b = 1" (hash-safe repair). |
+| `2ec9f983` | MHT-CET · Vectors | **Answer not offered.** |a × (b × c)| = 3 · 10√3 = 30√3 ≈ 52; the key 60 is wrong and no option matches. | Recover the original options, or mark flawed. |
+| `311da47d` | MHT-CET · Vectors | **Options C and D identical** (both −11/5); the key C is right but ambiguous. | Correct one option. |
+| `345a0bf5` | MHT-CET · Vectors | **No option correct.** The diagonal 3î − 6ĵ + 2k̂ has length 7, so the unit vector divides by 7; every option divides by √77. | Recover the original options, or mark flawed. |
+| `3e9531c0` | MHT-CET · Vectors | **No option correct.** a × b = (32, −1, −14) and c · d = 15 give d = (5/3)(32, −1, −14); the key (90, −3, −42) is not parallel to a × b. | Recover the original numbers, or mark flawed. |
+| `47869b02` | MHT-CET · Vectors | **Figure missing.** The stem says "in this question figure" and M is defined only by the figure (M = AQ ∩ BP); no image is attached. | Attach the source figure, or reword the stem to define M as the intersection of AQ and BP. |
+| `50b85207` | MHT-CET · Vectors | **Key wrong.** c = a + λb with c · a = 0 gives λ = −3/2, so c · b = 4 − 9/2 = −1/2 (option A); the key is −3/2. | Change the key to A (check the paper). |
+| `58aea16c` | MHT-CET · Vectors | **Answer not offered.** |(a · c)a − 9c| = 3 gives sin²θ = 1/36, sec²θ = 36/35; the stored cos²θ = 3/4 does not follow and no option is 36/35. | Recover the original numbers, or mark flawed. |
+| `59510167` | MHT-CET · Vectors | **Key misordered.** Linear dependence gives β = 1 and |c| = √3 gives α = ±1, i.e. (α, β) = (±1, 1); the key reads "1, ±1". | Correct the option text to "±1, 1". |
+| `5b35bb5b` | MHT-CET · Vectors | **Options A = B (√29) and C = D (√26).** The key B is right but ambiguous. | Correct the options. |
+| `5fcadb96` | MHT-CET · Vectors | **Options C and D identical.** The key C is right but ambiguous. | Correct one option. |
+| `7805b208` | MHT-CET · Vectors | **Answer not offered.** |a × (b × c)| = 30√3; the key is 30 and the stored solution itself notes 30√3 is not listed. | Recover the original options, or mark flawed. |
+| `7f7e292e` | MHT-CET · Vectors | **Stem typo.** As printed ([p − 3r q s]) the coefficients are (3, 5, 1), not offered; the key (3, 5, 2) needs [2p − 3r q s], which the solution silently uses. | Change p − 3r to 2p − 3r in the stem (hash-safe repair). |
+| `8c9ff4df` | MHT-CET · Vectors | **Key wrong.** a · c = 0 and b · c = 0 give p = −3, q = 2 (option C); the key (2, −3) fails a · c = 0. | Change the key to C (check the paper). |
+| `ab0ba49a` | MHT-CET · Vectors | **Key wrong.** Option C (4î + ĵ + 4k̂) lies in the plane of a and b and has projection 1/√3 on c; the key D (2î + 3ĵ − k̂) is not in that plane. | Change the key to C (check the paper). |
+| `b19d1bb7` | MHT-CET · Vectors | **Two options correct.** The family is (2s + 1)î − ĵ + (2s + 1)k̂; option C is the same family with t = s + 1, so A and C are both right. | Accept both or mark flawed. |
+| `c37bc97c` | MHT-CET · Vectors | **Options A and B identical** (both 35/2); the key C (7√2) is right. | Correct one option. |
+| `c5461617` | MHT-CET · Vectors | **No option correct.** The conditions give b = −î + ĵ − 2k̂, not offered; the stored solution already says so and keeps the printed key D. | Mark flawed, or recover the original options. |
+| `dfa3452c` | MHT-CET · Vectors | **Key wrong.** b · c = −7/8 gives a · c = −1/4, so |a × c| = √15/4 (option B); the key is √15/2. | Change the key to B (check the paper). |
+| `f5309b22` | MHT-CET · Vectors | **Stem typo.** With (b + c)/2 the angle is 2π/3 (not offered); the key 3π/4 needs (b + c)/√2, the original JEE wording. | Change /2 to /√2 in the stem (hash-safe repair). |
+| `f579f935` | MHT-CET · Vectors | **Answer not offered.** r = (5, 7, 9), |r| = √155; the key 1/√55 is wrong and no option matches. | Recover the original numbers, or mark flawed. |
+| `fc2969a9` | MHT-CET · Vectors | **Question underdetermined.** b × c = a fixes b only up to adding a multiple of c, so |b| is not determined (the least value is √3/√38); the key √114 is unsupported. | Recover the original wording (likely fixes b · c), or mark flawed. |
+| `652b7194` | MHT-CET · Vectors | **Two options true.** m = 0 also makes p · q = −12 < 0 for every y, so option B is true as well as the key D. | Accept both or reword. |
 
 ## Settled
 
