@@ -1,18 +1,19 @@
 /**
  * The student's choice between the Animated and the Still solution (owner,
  * 2026-10-25: animated first wherever a scene exists; still mostly helps board
- * exams). Remembered on the device, and every solution on the page follows a
- * change at once. localStorage can be missing or throw (private windows), so
- * every read falls back to "animated".
+ * exams). Each solution keeps its OWN choice (owner, 2026-10-26: a page-wide
+ * switch flipped every other open solution too). The device remembers the last
+ * choice only as the starting view of a solution opened later. localStorage
+ * can be missing or throw (private windows), so every read falls back to
+ * "animated".
  */
-import { useSyncExternalStore } from "react";
+import { useEffect, useState } from "react";
 
 export type SolutionView = "animated" | "still";
 
 const KEY = "qb_solution_view";
-const listeners = new Set<() => void>();
 
-function read(): SolutionView {
+export function readSolutionView(): SolutionView {
   try {
     return window.localStorage.getItem(KEY) === "still" ? "still" : "animated";
   } catch {
@@ -20,28 +21,22 @@ function read(): SolutionView {
   }
 }
 
-export function setSolutionView(view: SolutionView): void {
+export function rememberSolutionView(view: SolutionView): void {
   try {
     window.localStorage.setItem(KEY, view);
   } catch {
-    // Not stored; the choice still applies to this page.
+    // Not stored; the choice still applies to this solution.
   }
-  listeners.forEach((l) => l());
-}
-
-function subscribe(listener: () => void): () => void {
-  listeners.add(listener);
-  const onStorage = (e: StorageEvent) => {
-    if (e.key === KEY) listener();
-  };
-  window.addEventListener("storage", onStorage);
-  return () => {
-    listeners.delete(listener);
-    window.removeEventListener("storage", onStorage);
-  };
 }
 
 export function useSolutionView(): [SolutionView, (v: SolutionView) => void] {
-  const view = useSyncExternalStore(subscribe, read, () => "animated" as const);
-  return [view, setSolutionView];
+  // "animated" on the server and the first client render, so hydration matches;
+  // the remembered choice is applied once mounted.
+  const [view, setView] = useState<SolutionView>("animated");
+  useEffect(() => setView(readSolutionView()), []);
+  const choose = (v: SolutionView) => {
+    setView(v);
+    rememberSolutionView(v);
+  };
+  return [view, choose];
 }

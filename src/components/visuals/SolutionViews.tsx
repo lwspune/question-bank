@@ -3,8 +3,9 @@
 /**
  * Animated or Still (owner, 2026-10-25). Where a question has a visual that
  * passed its self-check, the solution opens Animated and a switch offers
- * Still, which is the solution exactly as it was. The choice is remembered on
- * the device. With no visual this renders header + lead + still unchanged, so
+ * Still, which is the solution exactly as it was. The switch moves this
+ * solution only; the device remembers it as the starting view of solutions
+ * opened later. With no visual this renders header + lead + still unchanged, so
  * every other question looks exactly as before.
  *
  * `visual` must already have been through usableVisual() on the server.
