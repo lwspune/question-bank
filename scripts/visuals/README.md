@@ -33,6 +33,11 @@ are not the stored solution).
    at; the text beside the picture is the stored solution cut there. The visual
    carries a fingerprint of that solution: if the solution is edited later, the
    steps drop away (the picture still plays) and coverage reports it `stale`.
+   A solution that is WRONG is corrected first, never drawn around (owner,
+   2026-10-25): write the fix into `solution-fixes/<batch>.json` and run
+   `visuals:fix-solutions`, which writes only `solution`, refuses if the stored
+   text changed since, keeps content_hash and records a review. Then draft the
+   visual against the corrected text.
 3. **The key is compared at apply time.** `visuals:run` refuses an MCQ visual
    whose named option is not the database key, and a numeric one whose answer
    is off the stored numeric answer.
@@ -65,6 +70,8 @@ are not the stored solution).
 npm run visuals:run -- <name>            # check + review sheet in generated-papers/visuals/<name>.html; writes nothing
 npm run visuals:run -- <name> --apply    # writes solution_visual only
 npm run visuals:coverage                 # JEE Mains + MHT-CET; --exam="..." / --all
+npm run visuals:figures -- --exam="..." --chapter="..."   # stems/options pointing at a picture they lack: add the figure, don't just note it
+npm run visuals:fix-solutions -- <batch> [--apply]        # correct wrong solutions found on the way (solution-fixes/<batch>.json)
 ```
 
 ## Part of ingestion
