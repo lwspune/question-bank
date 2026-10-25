@@ -27,8 +27,9 @@ export function optionalFinite(o: Record<string, unknown>, key: string, opts: { 
 export function plainLabel(v: unknown, field: string, max = 24): string {
   if (typeof v !== "string" || v.trim() === "") throw new ParamError(`${field} must be non-empty text`);
   if (v.length > max) throw new ParamError(`${field} is longer than ${max} characters`);
-  // A tag has no space after "<", so "π/4 < x" passes and "<b>" does not.
-  if (/\\/.test(v) || /<\/?[a-z!]/i.test(v)) throw new ParamError(`${field} must be plain text, no LaTeX or markup`);
+  // Only a whole tag is refused ("<b>", "<img …>"), so inequalities pass with or
+  // without spaces: "π/4 < x", "1<x<8".
+  if (/\\/.test(v) || /<\/?[a-z!][^<>]*>/i.test(v)) throw new ParamError(`${field} must be plain text, no LaTeX or markup`);
   return v;
 }
 

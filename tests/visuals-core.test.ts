@@ -139,3 +139,14 @@ describe("checkVisual", () => {
     expect(checkVisual(tight.visual).ok).toBe(false);
   });
 });
+
+describe("plain labels", () => {
+  it("accept inequalities written without spaces, and still refuse a real tag", async () => {
+    const { plainLabel } = await import("@/lib/visuals/params");
+    expect(plainLabel("1<x<8", "l")).toBe("1<x<8");
+    expect(plainLabel("x>2 or x<-1", "l")).toBe("x>2 or x<-1");
+    expect(() => plainLabel("<b>π/4</b>", "l")).toThrow();
+    expect(() => plainLabel("<img src=x>", "l")).toThrow();
+    expect(() => plainLabel("\\frac{1}{2}", "l")).toThrow();
+  });
+});

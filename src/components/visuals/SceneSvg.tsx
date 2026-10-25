@@ -51,6 +51,12 @@ export default function SceneSvg({ shapes, w, h, label }: { shapes: Shape[]; w: 
                 x={s.x}
                 y={s.y}
                 fill={TEXT_VAR[s.tone]}
+                // A halo in the background colour, painted under the letters, so a
+                // curve or line passing beneath a label never makes it hard to read.
+                stroke="var(--viz-bg)"
+                strokeWidth={3}
+                strokeLinejoin="round"
+                paintOrder="stroke"
                 fontSize={s.size ?? 13}
                 fontWeight={s.weight ?? 400}
                 fontStyle={s.italic ? "italic" : undefined}
