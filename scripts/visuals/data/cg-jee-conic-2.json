@@ -1,0 +1,4134 @@
+{
+  "//": "Assembled from agent drafts (coordGeometry).",
+  "visuals": [
+    {
+      "id": "6bd909aa-2d92-45c1-b932-463b9d87142f",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -1.6,
+              2.6
+            ],
+            "y": [
+              -1.6,
+              2.6
+            ]
+          },
+          "points": [
+            {
+              "id": "A",
+              "at": [
+                0,
+                0
+              ],
+              "label": "A",
+              "beat": "derived"
+            },
+            {
+              "id": "B",
+              "at": [
+                0,
+                1.41421356
+              ],
+              "label": "B",
+              "beat": "derived"
+            },
+            {
+              "id": "C",
+              "at": [
+                1.41421356,
+                0
+              ],
+              "label": "C",
+              "beat": "derived"
+            }
+          ],
+          "circles": [
+            {
+              "id": "S",
+              "center": [
+                0.70710678,
+                0.70710678
+              ],
+              "r": 1,
+              "label": "radius 1"
+            }
+          ],
+          "segments": [
+            {
+              "from": "A",
+              "to": "B",
+              "label": "√2"
+            },
+            {
+              "from": "A",
+              "to": "C",
+              "label": "√2"
+            },
+            {
+              "from": "B",
+              "to": "C",
+              "label": "2"
+            }
+          ],
+          "ask": {
+            "kind": "area",
+            "points": [
+              "A",
+              "B",
+              "C"
+            ],
+            "label": "area = 1"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given",
+              "derived"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "construct"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "30faf9f7",
+        "answer": {
+          "value": 0.9999999966439369,
+          "label": "1"
+        }
+      }
+    },
+    {
+      "id": "6d571f5a-5162-4995-8b00-d94b3da590f6",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -5.5,
+              5.5
+            ],
+            "y": [
+              -4.5,
+              4.5
+            ]
+          },
+          "points": [
+            {
+              "id": "O",
+              "at": [
+                0,
+                0
+              ],
+              "label": "O"
+            }
+          ],
+          "circles": [
+            {
+              "id": "S",
+              "center": [
+                0,
+                0
+              ],
+              "r": 4,
+              "label": "centre C, OC = 4"
+            }
+          ],
+          "locus": {
+            "fixed": "O",
+            "on": "S",
+            "ratio": 0.66666667,
+            "movingLabel": "C",
+            "pointLabel": "G"
+          },
+          "ask": {
+            "kind": "locusRadius",
+            "label": "radius = 8/3"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "trace"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "ad3b8aef",
+        "answer": {
+          "value": 2.66666668,
+          "label": "8/3"
+        }
+      }
+    },
+    {
+      "id": "71dfc0e4-65ea-4809-b01c-4ab3bd91af1a",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              2,
+              18
+            ],
+            "y": [
+              -8,
+              8
+            ]
+          },
+          "points": [
+            {
+              "id": "C",
+              "at": [
+                7,
+                4
+              ],
+              "label": "C(7, 4)",
+              "beat": "derived"
+            },
+            {
+              "id": "P",
+              "at": [
+                13,
+                -4
+              ],
+              "label": "P(13, −4)",
+              "beat": "derived"
+            }
+          ],
+          "circles": [
+            {
+              "id": "S",
+              "center": "C",
+              "r": 3,
+              "label": "r = 3"
+            }
+          ],
+          "conics": [
+            {
+              "id": "K",
+              "type": "parabola",
+              "vertex": [
+                9,
+                0
+              ],
+              "a": 1,
+              "axis": "x"
+            }
+          ],
+          "lines": [
+            {
+              "id": "T",
+              "tangentAt": "P",
+              "to": "K",
+              "label": "tangent"
+            }
+          ],
+          "segments": [
+            {
+              "from": "P",
+              "to": "C"
+            }
+          ],
+          "ask": {
+            "kind": "distance",
+            "from": "P",
+            "to": "C",
+            "label": "distance = 10"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given",
+              "derived",
+              "construct",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "2e07c19e",
+        "answer": {
+          "value": 10,
+          "label": "10"
+        }
+      }
+    },
+    {
+      "id": "71f58b80-840b-40f5-993e-3c86318e78ad",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -9,
+              6
+            ],
+            "y": [
+              -5,
+              10
+            ]
+          },
+          "points": [
+            {
+              "id": "P",
+              "at": [
+                -4.89897949,
+                1.73205081
+              ],
+              "label": "P"
+            },
+            {
+              "id": "Q",
+              "at": [
+                0,
+                -1.73205081
+              ],
+              "label": "Q(0, −√3)",
+              "beat": "derived"
+            },
+            {
+              "id": "R",
+              "at": [
+                0,
+                8.66025404
+              ],
+              "label": "R(0, 5√3)",
+              "beat": "derived"
+            }
+          ],
+          "conics": [
+            {
+              "id": "H",
+              "type": "hyperbola",
+              "center": [
+                0,
+                0
+              ],
+              "a": 3.46410162,
+              "b": 1.73205081,
+              "axis": "x",
+              "beat": "derived"
+            }
+          ],
+          "lines": [
+            {
+              "id": "T",
+              "tangentAt": "P",
+              "to": "H",
+              "label": "tangent"
+            },
+            {
+              "id": "N",
+              "eq": [
+                1.41421356,
+                -1,
+                8.66025404
+              ],
+              "label": "normal"
+            }
+          ],
+          "ask": {
+            "kind": "distance",
+            "from": "Q",
+            "to": "R",
+            "label": "QR = 6√3"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "derived"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "construct"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "96353c85",
+        "answer": {
+          "value": 10.39230485,
+          "label": "6√3"
+        }
+      }
+    },
+    {
+      "id": "7b02dcfc-06ae-4436-949b-0d59bccb60ba",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -5,
+              5
+            ],
+            "y": [
+              -5.5,
+              5.5
+            ]
+          },
+          "points": [
+            {
+              "id": "P",
+              "at": [
+                1.41421356,
+                2.95145915
+              ],
+              "label": "P"
+            },
+            {
+              "id": "F1",
+              "at": [
+                0,
+                4
+              ],
+              "label": "F1(0, 4)",
+              "beat": "derived"
+            },
+            {
+              "id": "F2",
+              "at": [
+                0,
+                -4
+              ],
+              "label": "F2(0, −4)",
+              "beat": "derived"
+            }
+          ],
+          "conics": [
+            {
+              "id": "E",
+              "type": "ellipse",
+              "center": [
+                0,
+                0
+              ],
+              "a": 3,
+              "b": 5
+            },
+            {
+              "id": "H",
+              "type": "hyperbola",
+              "center": [
+                0,
+                0
+              ],
+              "a": 2.66666667,
+              "b": 2.98142397,
+              "axis": "y",
+              "beat": "derived"
+            }
+          ],
+          "segments": [
+            {
+              "from": "P",
+              "to": "F1"
+            }
+          ],
+          "ask": {
+            "kind": "distance",
+            "from": "P",
+            "to": "F1",
+            "label": "smaller focal distance"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "derived"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "construct",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "338f41f0",
+        "answer": {
+          "value": 1.760522055359318,
+          "label": "7√(2/5) − 8/3"
+        }
+      }
+    },
+    {
+      "id": "7efd05a7-db3a-4f62-85d4-91a4caf59c2f",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -6,
+              6
+            ],
+            "y": [
+              -5,
+              5
+            ]
+          },
+          "points": [
+            {
+              "id": "F1",
+              "at": [
+                -4,
+                0
+              ],
+              "label": "(−4, 0)"
+            },
+            {
+              "id": "F2",
+              "at": [
+                4,
+                0
+              ],
+              "label": "(4, 0)"
+            },
+            {
+              "id": "G1",
+              "at": [
+                0,
+                3.2
+              ],
+              "label": "(0, 3.2)",
+              "beat": "derived"
+            },
+            {
+              "id": "G2",
+              "at": [
+                0,
+                -3.2
+              ],
+              "label": "(0, −3.2)",
+              "beat": "derived"
+            }
+          ],
+          "conics": [
+            {
+              "id": "E1",
+              "type": "ellipse",
+              "center": [
+                0,
+                0
+              ],
+              "a": 5,
+              "b": 3,
+              "label": "E1"
+            },
+            {
+              "id": "E2",
+              "type": "ellipse",
+              "center": [
+                0,
+                0
+              ],
+              "a": 2.4,
+              "b": 4,
+              "label": "E2",
+              "beat": "derived"
+            }
+          ],
+          "segments": [
+            {
+              "from": "G1",
+              "to": "G2"
+            }
+          ],
+          "ask": {
+            "kind": "distance",
+            "from": "G1",
+            "to": "G2",
+            "label": "foci of E2: 32/5"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "derived"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "construct",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "8619d5b9",
+        "answer": {
+          "value": 6.4,
+          "label": "32/5"
+        }
+      }
+    },
+    {
+      "id": "7f7f5850-b702-4811-911a-2abe69c36e8b",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -4,
+              10
+            ],
+            "y": [
+              -5,
+              9
+            ]
+          },
+          "points": [
+            {
+              "id": "O1",
+              "at": [
+                5,
+                -2
+              ],
+              "label": "(5, −2)"
+            },
+            {
+              "id": "C",
+              "at": [
+                3,
+                2
+              ],
+              "label": "C(3, 2)",
+              "beat": "derived"
+            },
+            {
+              "id": "E1",
+              "at": [
+                8.5777088,
+                -0.2111456
+              ],
+              "label": "",
+              "beat": "construct"
+            },
+            {
+              "id": "E2",
+              "at": [
+                1.4222912,
+                -3.7888544
+              ],
+              "label": "",
+              "beat": "construct"
+            }
+          ],
+          "circles": [
+            {
+              "id": "S1",
+              "center": "O1",
+              "r": 4,
+              "label": "r = 4"
+            },
+            {
+              "id": "D",
+              "center": "C",
+              "r": 6,
+              "label": "circle C",
+              "beat": "derived"
+            }
+          ],
+          "lines": [
+            {
+              "id": "L1",
+              "eq": [
+                2,
+                3,
+                -12
+              ],
+              "beat": "given"
+            },
+            {
+              "id": "L2",
+              "eq": [
+                3,
+                -2,
+                -5
+              ],
+              "beat": "given"
+            }
+          ],
+          "segments": [
+            {
+              "from": "E1",
+              "to": "E2"
+            }
+          ],
+          "ask": {
+            "kind": "distance",
+            "from": "C",
+            "to": "E1",
+            "label": "radius = 6"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "derived"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "construct"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "e34a215e",
+        "answer": {
+          "value": 6.000000026833066,
+          "label": "6"
+        }
+      }
+    },
+    {
+      "id": "84102533-0291-4208-8b4b-a7f038fd35de",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -4,
+              5
+            ],
+            "y": [
+              -3,
+              7
+            ]
+          },
+          "points": [
+            {
+              "id": "O",
+              "at": [
+                0,
+                0
+              ],
+              "label": "O"
+            },
+            {
+              "id": "C",
+              "at": [
+                1,
+                2
+              ],
+              "label": "C(1, 2)",
+              "beat": "derived"
+            }
+          ],
+          "circles": [
+            {
+              "id": "S",
+              "center": "C",
+              "r": 2.44948974,
+              "label": "r = √6",
+              "beat": "derived"
+            }
+          ],
+          "lines": [
+            {
+              "id": "T",
+              "eq": [
+                2,
+                -1,
+                5.47722558
+              ],
+              "label": "2x − y + √30 = 0"
+            }
+          ],
+          "ask": {
+            "kind": "distance",
+            "from": "O",
+            "to": "T",
+            "label": "distance = √6"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given",
+              "derived",
+              "construct",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "a8f73c0d",
+        "answer": {
+          "value": 2.4494897449961424,
+          "label": "√6"
+        }
+      }
+    },
+    {
+      "id": "86c9c3d9-44ac-4976-bd9a-4b6de023a005",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -3,
+              9
+            ],
+            "y": [
+              -4,
+              5
+            ]
+          },
+          "points": [
+            {
+              "id": "P",
+              "at": [
+                6,
+                -2.82842712
+              ],
+              "label": "(6, −2√2)"
+            }
+          ],
+          "conics": [
+            {
+              "id": "K1",
+              "type": "parabola",
+              "vertex": [
+                0,
+                0
+              ],
+              "a": 0.125,
+              "axis": "x",
+              "label": "x = 2y²"
+            },
+            {
+              "id": "K2",
+              "type": "parabola",
+              "vertex": [
+                1,
+                0
+              ],
+              "a": 0.25,
+              "axis": "x",
+              "label": "x = 1 + y²"
+            }
+          ],
+          "lines": [
+            {
+              "id": "L",
+              "eq": [
+                1,
+                -2.82842712,
+                1
+              ],
+              "label": "common tangent"
+            }
+          ],
+          "ask": {
+            "kind": "distance",
+            "from": "P",
+            "to": "L",
+            "label": "distance = 5"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given",
+              "construct",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "a9d3c597",
+        "answer": {
+          "value": 4.999999998508417,
+          "label": "5"
+        }
+      }
+    },
+    {
+      "id": "8b3e65d2-f2f7-45ea-8f05-737b5ed3d2f5",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -3.4,
+              3.4
+            ],
+            "y": [
+              -2,
+              2
+            ]
+          },
+          "points": [
+            {
+              "id": "F1",
+              "at": [
+                -0.57142857,
+                0
+              ],
+              "label": "F1",
+              "beat": "derived"
+            },
+            {
+              "id": "F2",
+              "at": [
+                0.57142857,
+                0
+              ],
+              "label": "F2",
+              "beat": "derived"
+            }
+          ],
+          "conics": [
+            {
+              "id": "E",
+              "type": "ellipse",
+              "center": [
+                0,
+                0
+              ],
+              "a": 2.82842712,
+              "b": 1.41421356,
+              "label": "ellipse E"
+            },
+            {
+              "id": "H",
+              "type": "hyperbola",
+              "center": [
+                0,
+                0
+              ],
+              "a": 0.20203051,
+              "b": 0.53452248,
+              "axis": "x",
+              "label": "H",
+              "beat": "derived"
+            }
+          ],
+          "segments": [
+            {
+              "from": "F1",
+              "to": "F2"
+            }
+          ],
+          "ask": {
+            "kind": "distance",
+            "from": "F1",
+            "to": "F2",
+            "label": "foci of H: 8/7"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "derived"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "construct",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "d0b8503b",
+        "answer": {
+          "value": 1.14285714,
+          "label": "8/7"
+        }
+      }
+    },
+    {
+      "id": "8eadd076-e351-4851-8777-ba5fc87c7669",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -4,
+              5
+            ],
+            "y": [
+              -4,
+              5
+            ]
+          },
+          "points": [
+            {
+              "id": "P",
+              "at": [
+                3,
+                -1
+              ],
+              "label": "P"
+            },
+            {
+              "id": "Q",
+              "at": [
+                -1,
+                3
+              ],
+              "label": "Q"
+            },
+            {
+              "id": "M",
+              "at": [
+                2.82842712,
+                1.41421356
+              ],
+              "label": "M",
+              "beat": "derived"
+            },
+            {
+              "id": "N",
+              "at": [
+                1.41421356,
+                2.82842712
+              ],
+              "label": "N",
+              "beat": "derived"
+            },
+            {
+              "id": "K",
+              "at": [
+                2.12132034,
+                2.12132034
+              ],
+              "label": "mid MN",
+              "beat": "derived"
+            }
+          ],
+          "circles": [
+            {
+              "id": "S",
+              "center": [
+                0,
+                0
+              ],
+              "r": 3.16227766,
+              "label": "r = √10"
+            }
+          ],
+          "lines": [
+            {
+              "id": "L1",
+              "through": [
+                "P",
+                "Q"
+              ],
+              "label": "x + y = 2"
+            },
+            {
+              "id": "L2",
+              "through": [
+                "M",
+                "N"
+              ],
+              "label": "chord MN",
+              "beat": "derived"
+            }
+          ],
+          "ask": {
+            "kind": "distance",
+            "from": "K",
+            "to": "L1",
+            "label": "gap = 3 − √2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given",
+              "construct"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "derived"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "28570ae0",
+        "answer": {
+          "value": 1.5857864325928102,
+          "label": "3 − √2"
+        }
+      }
+    },
+    {
+      "id": "97b7a87f-f1ba-4f4f-8ac3-aefce7930ab2",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -10,
+              10
+            ],
+            "y": [
+              -7,
+              7
+            ]
+          },
+          "points": [
+            {
+              "id": "F1",
+              "at": [
+                -6.5,
+                0
+              ],
+              "label": "F1",
+              "beat": "derived"
+            },
+            {
+              "id": "F2",
+              "at": [
+                6.5,
+                0
+              ],
+              "label": "F2",
+              "beat": "derived"
+            },
+            {
+              "id": "P",
+              "at": [
+                4.576922,
+                4.615385
+              ],
+              "label": "P",
+              "beat": "derived"
+            }
+          ],
+          "circles": [
+            {
+              "id": "S",
+              "center": [
+                0,
+                0
+              ],
+              "r": 6.5,
+              "label": "circle C",
+              "beat": "derived"
+            }
+          ],
+          "conics": [
+            {
+              "id": "E",
+              "type": "ellipse",
+              "center": [
+                0,
+                0
+              ],
+              "a": 8.5,
+              "b": 5.47722558,
+              "beat": "derived"
+            }
+          ],
+          "segments": [
+            {
+              "from": "P",
+              "to": "F1"
+            },
+            {
+              "from": "P",
+              "to": "F2"
+            }
+          ],
+          "ask": {
+            "kind": "distance",
+            "from": "F1",
+            "to": "F2",
+            "label": "foci distance = 13"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "derived"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "construct",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "49d53547",
+        "answer": {
+          "value": 13,
+          "label": "13"
+        }
+      }
+    },
+    {
+      "id": "9b2cda5c-3d14-49f6-ac55-b6e779155878",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -4.5,
+              2.5
+            ],
+            "y": [
+              -4.5,
+              2.5
+            ]
+          },
+          "points": [
+            {
+              "id": "C",
+              "at": [
+                -1,
+                -1
+              ],
+              "label": "C(−1, −1)"
+            },
+            {
+              "id": "P",
+              "at": [
+                1,
+                0
+              ],
+              "label": "P(1, 0)",
+              "beat": "derived"
+            },
+            {
+              "id": "Q",
+              "at": [
+                -3,
+                0
+              ],
+              "label": "Q(−3, 0)",
+              "beat": "derived"
+            },
+            {
+              "id": "R",
+              "at": [
+                0,
+                -3
+              ],
+              "label": "R(0, −3)",
+              "beat": "derived"
+            }
+          ],
+          "circles": [
+            {
+              "id": "S",
+              "center": "C",
+              "r": 2.23606798
+            }
+          ],
+          "conics": [
+            {
+              "id": "K",
+              "type": "parabola",
+              "vertex": [
+                -1,
+                -4
+              ],
+              "a": 0.25,
+              "axis": "y",
+              "beat": "derived"
+            }
+          ],
+          "ask": {
+            "kind": "area",
+            "points": [
+              "P",
+              "Q",
+              "R"
+            ],
+            "label": "area = 6"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "derived",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "0a85f03a",
+        "answer": {
+          "value": 6,
+          "label": "6"
+        }
+      }
+    },
+    {
+      "id": "9b8f668f-028c-4840-865e-8e2ffc97d560",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -3.5,
+              7
+            ],
+            "y": [
+              -3.5,
+              6.5
+            ]
+          },
+          "points": [
+            {
+              "id": "O",
+              "at": [
+                0,
+                0
+              ],
+              "label": "O"
+            },
+            {
+              "id": "F",
+              "at": [
+                2.82842712,
+                0
+              ],
+              "label": "F",
+              "beat": "derived"
+            },
+            {
+              "id": "M",
+              "at": [
+                4.79128785,
+                4.3778021
+              ],
+              "label": "M",
+              "beat": "derived"
+            },
+            {
+              "id": "N",
+              "at": [
+                0.20871215,
+                -0.9137005
+              ],
+              "label": "N",
+              "beat": "derived"
+            }
+          ],
+          "conics": [
+            {
+              "id": "K",
+              "type": "parabola",
+              "vertex": [
+                0,
+                0
+              ],
+              "a": 1,
+              "axis": "x",
+              "label": "y² = 4x"
+            },
+            {
+              "id": "H",
+              "type": "hyperbola",
+              "center": [
+                0,
+                0
+              ],
+              "a": 2,
+              "b": 2,
+              "axis": "x",
+              "label": "x² − y² = 4"
+            }
+          ],
+          "lines": [
+            {
+              "id": "L",
+              "eq": [
+                2,
+                -1.7320508,
+                -2
+              ],
+              "label": "L"
+            }
+          ],
+          "ask": {
+            "kind": "area",
+            "points": [
+              "O",
+              "M",
+              "F",
+              "N"
+            ],
+            "label": "area = 2√14"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "construct"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "derived",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "8aaa3a56",
+        "answer": {
+          "value": 7.483314729695257,
+          "label": "2√14"
+        }
+      }
+    },
+    {
+      "id": "9e64b0a2-c2e3-4503-8804-cce925349809",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -6.5,
+              6.5
+            ],
+            "y": [
+              -5,
+              5
+            ]
+          },
+          "points": [
+            {
+              "id": "M",
+              "at": [
+                1,
+                0.4
+              ],
+              "label": "(1, 2/5)"
+            }
+          ],
+          "conics": [
+            {
+              "id": "E",
+              "type": "ellipse",
+              "center": [
+                0,
+                0
+              ],
+              "a": 5,
+              "b": 4
+            }
+          ],
+          "lines": [
+            {
+              "id": "L",
+              "eq": [
+                8,
+                5,
+                -10
+              ],
+              "label": "8x + 5y = 10"
+            }
+          ],
+          "ask": {
+            "kind": "chordLength",
+            "line": "L",
+            "of": "E",
+            "label": "chord = √1691/5"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "construct",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "193a8876",
+        "answer": {
+          "value": 8.224354077980834,
+          "label": "√1691/5"
+        }
+      }
+    },
+    {
+      "id": "a0814eaa-f098-45b3-9977-c0e03812a24a",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -2,
+              5
+            ],
+            "y": [
+              -3,
+              5
+            ]
+          },
+          "points": [
+            {
+              "id": "O",
+              "at": [
+                0,
+                0
+              ],
+              "label": "O"
+            },
+            {
+              "id": "P",
+              "at": [
+                3.23606798,
+                2
+              ],
+              "label": "P"
+            },
+            {
+              "id": "Q",
+              "at": [
+                3.23606798,
+                -1.61803399
+              ],
+              "label": "Q",
+              "beat": "derived"
+            }
+          ],
+          "circles": [
+            {
+              "id": "S",
+              "center": [
+                1,
+                2
+              ],
+              "r": 2.23606798
+            }
+          ],
+          "lines": [
+            {
+              "id": "T1",
+              "eq": [
+                1,
+                2,
+                0
+              ],
+              "label": "x + 2y = 0"
+            },
+            {
+              "id": "T2",
+              "eq": [
+                1,
+                0,
+                -3.23606798
+              ],
+              "label": "x = 1 + √5"
+            }
+          ],
+          "ask": {
+            "kind": "area",
+            "points": [
+              "O",
+              "P",
+              "Q"
+            ],
+            "label": "area = (5 + 3√5)/2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given",
+              "construct"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "derived"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "68989132",
+        "answer": {
+          "value": 5.85410197279532,
+          "label": "(5 + 3√5)/2"
+        }
+      }
+    },
+    {
+      "id": "a3347c0c-aa19-4bc4-865a-01af61208c03",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -2.5,
+              15.5
+            ],
+            "y": [
+              -8,
+              8
+            ]
+          },
+          "points": [
+            {
+              "id": "O",
+              "at": [
+                0,
+                0
+              ],
+              "label": "O"
+            },
+            {
+              "id": "A",
+              "at": [
+                1,
+                0
+              ],
+              "label": "A"
+            },
+            {
+              "id": "B",
+              "at": [
+                13,
+                0
+              ],
+              "label": "B"
+            },
+            {
+              "id": "P",
+              "at": [
+                1,
+                3.46410162
+              ],
+              "label": "P",
+              "beat": "derived"
+            },
+            {
+              "id": "Q",
+              "at": [
+                1,
+                -3.46410162
+              ],
+              "label": "Q",
+              "beat": "derived"
+            }
+          ],
+          "circles": [
+            {
+              "id": "S",
+              "center": [
+                6.5,
+                0
+              ],
+              "r": 6.5,
+              "beat": "derived"
+            }
+          ],
+          "segments": [
+            {
+              "from": "O",
+              "to": "B"
+            },
+            {
+              "from": "P",
+              "to": "Q"
+            }
+          ],
+          "ask": {
+            "kind": "area",
+            "points": [
+              "P",
+              "Q",
+              "B"
+            ],
+            "label": "area = 24√3"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given",
+              "derived",
+              "construct",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "3a2805dc",
+        "answer": {
+          "value": 41.56921944,
+          "label": "24√3"
+        }
+      }
+    },
+    {
+      "id": "a519554e-50ef-4d75-bbd1-283feaf63154",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -3,
+              6.5
+            ],
+            "y": [
+              -4.5,
+              4.5
+            ]
+          },
+          "points": [
+            {
+              "id": "P",
+              "at": [
+                2,
+                2
+              ],
+              "label": "P(2, 2)"
+            },
+            {
+              "id": "Q",
+              "at": [
+                -2,
+                0
+              ],
+              "label": "Q(−2, 0)",
+              "beat": "construct"
+            },
+            {
+              "id": "R",
+              "at": [
+                4.5,
+                -3
+              ],
+              "label": "R(9/2, −3)",
+              "beat": "derived"
+            }
+          ],
+          "conics": [
+            {
+              "id": "K",
+              "type": "parabola",
+              "vertex": [
+                0,
+                0
+              ],
+              "a": 0.5,
+              "axis": "x",
+              "label": "y² = 2x"
+            }
+          ],
+          "lines": [
+            {
+              "id": "T",
+              "tangentAt": "P",
+              "to": "K",
+              "label": "tangent",
+              "beat": "construct"
+            },
+            {
+              "id": "N",
+              "eq": [
+                2,
+                1,
+                -6
+              ],
+              "label": "normal",
+              "beat": "derived"
+            }
+          ],
+          "ask": {
+            "kind": "area",
+            "points": [
+              "P",
+              "Q",
+              "R"
+            ],
+            "label": "area = 25/2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given",
+              "construct"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "derived"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "4fca5e1a",
+        "answer": {
+          "value": 12.5,
+          "label": "25/2"
+        }
+      }
+    },
+    {
+      "id": "a6365b4a-6d4b-4c55-8903-7f0580695e89",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -1.5,
+              2.5
+            ],
+            "y": [
+              -0.8,
+              2.5
+            ]
+          },
+          "points": [
+            {
+              "id": "O",
+              "at": [
+                0,
+                0
+              ],
+              "label": "O"
+            },
+            {
+              "id": "P",
+              "at": [
+                0,
+                1
+              ],
+              "label": "P",
+              "beat": "construct"
+            },
+            {
+              "id": "Q",
+              "at": [
+                0.5,
+                0.5
+              ],
+              "label": "Q",
+              "beat": "construct"
+            }
+          ],
+          "circles": [
+            {
+              "id": "S",
+              "center": [
+                0,
+                1
+              ],
+              "r": 1,
+              "label": "given circle"
+            },
+            {
+              "id": "LC",
+              "center": [
+                0,
+                0.5
+              ],
+              "r": 0.5,
+              "label": "locus",
+              "beat": "derived"
+            }
+          ],
+          "lines": [
+            {
+              "id": "Lx",
+              "eq": [
+                1,
+                1,
+                -1
+              ],
+              "label": "x + y = 1",
+              "beat": "given"
+            }
+          ],
+          "ask": {
+            "kind": "distance",
+            "from": "P",
+            "to": "Q",
+            "label": "PQ = 1/√2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "derived"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "construct"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "13d90188",
+        "answer": {
+          "value": 0.7071067811865476,
+          "label": "1/√2"
+        }
+      }
+    },
+    {
+      "id": "a92478ea-ce43-4ba5-bec7-f454d2737f88",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -3,
+              4.5
+            ],
+            "y": [
+              -4,
+              2.5
+            ]
+          },
+          "points": [
+            {
+              "id": "C",
+              "at": [
+                0.5,
+                -1
+              ],
+              "label": "C(½, −1)"
+            },
+            {
+              "id": "P",
+              "at": [
+                2.5,
+                -1
+              ],
+              "label": "P"
+            },
+            {
+              "id": "Q",
+              "at": [
+                1.91421356,
+                0.41421356
+              ],
+              "label": "Q",
+              "beat": "construct"
+            },
+            {
+              "id": "R",
+              "at": [
+                -0.91421356,
+                -2.41421356
+              ],
+              "label": "R",
+              "beat": "construct"
+            }
+          ],
+          "circles": [
+            {
+              "id": "S",
+              "center": "C",
+              "r": 2,
+              "label": "r = 2"
+            }
+          ],
+          "segments": [
+            {
+              "from": "C",
+              "to": "P",
+              "beat": "given"
+            },
+            {
+              "from": "Q",
+              "to": "R",
+              "beat": "construct"
+            }
+          ],
+          "ask": {
+            "kind": "area",
+            "points": [
+              "P",
+              "Q",
+              "R"
+            ],
+            "label": "area = 2√2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "construct"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "78a92b91",
+        "answer": {
+          "value": 2.82842712,
+          "label": "2√2"
+        }
+      }
+    },
+    {
+      "id": "abe88ea4-2fb4-49f8-a732-1dbd8ac69f9b",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -1,
+              7
+            ],
+            "y": [
+              -1,
+              7
+            ]
+          },
+          "points": [
+            {
+              "id": "T",
+              "at": [
+                3,
+                2
+              ],
+              "label": "(3, 2)"
+            },
+            {
+              "id": "Q",
+              "at": [
+                5,
+                5
+              ],
+              "label": "(5, 5)"
+            }
+          ],
+          "circles": [
+            {
+              "id": "S",
+              "center": [
+                2,
+                1
+              ],
+              "r": 1,
+              "label": "circle C",
+              "beat": "derived"
+            }
+          ],
+          "lines": [
+            {
+              "id": "Lx",
+              "eq": [
+                1,
+                0,
+                -3
+              ],
+              "beat": "given"
+            },
+            {
+              "id": "Ly",
+              "eq": [
+                0,
+                1,
+                -2
+              ],
+              "beat": "given"
+            }
+          ],
+          "ask": {
+            "kind": "distance",
+            "from": "Q",
+            "to": "S",
+            "label": "shortest distance = 4"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given",
+              "derived",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "226ce34a",
+        "answer": {
+          "value": 4,
+          "label": "4"
+        }
+      }
+    },
+    {
+      "id": "adeab630-c978-40de-8e42-51c805740b57",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -6,
+              12
+            ],
+            "y": [
+              -13,
+              3
+            ]
+          },
+          "points": [
+            {
+              "id": "A",
+              "at": [
+                4,
+                -11
+              ],
+              "label": "A(4, −11)"
+            },
+            {
+              "id": "B",
+              "at": [
+                8,
+                -5
+              ],
+              "label": "B(8, −5)"
+            },
+            {
+              "id": "C",
+              "at": [
+                8,
+                -9.33333333
+              ],
+              "label": "C",
+              "beat": "construct"
+            }
+          ],
+          "circles": [
+            {
+              "id": "S",
+              "center": [
+                1.5,
+                -5
+              ],
+              "r": 6.5
+            },
+            {
+              "id": "D",
+              "center": "C",
+              "r": 2.40370085,
+              "label": "radius 2√13/3",
+              "beat": "derived"
+            }
+          ],
+          "lines": [
+            {
+              "id": "TA",
+              "tangentAt": "A",
+              "to": "S"
+            },
+            {
+              "id": "TB",
+              "tangentAt": "B",
+              "to": "S"
+            },
+            {
+              "id": "AB",
+              "through": [
+                "A",
+                "B"
+              ],
+              "label": "AB",
+              "beat": "derived"
+            }
+          ],
+          "ask": {
+            "kind": "distance",
+            "from": "C",
+            "to": "AB",
+            "label": "radius = 2√13/3"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "construct"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "derived"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "02e03e27",
+        "answer": {
+          "value": 2.4037008484603266,
+          "label": "2√13/3"
+        }
+      }
+    },
+    {
+      "id": "b52e6d34-12ef-427b-82cf-a07b5e884119",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -4,
+              20
+            ],
+            "y": [
+              -4,
+              16
+            ]
+          },
+          "points": [
+            {
+              "id": "T",
+              "at": [
+                0,
+                6
+              ],
+              "label": "(0, 6)"
+            },
+            {
+              "id": "C",
+              "at": [
+                9,
+                6
+              ],
+              "label": "C(9, 6)",
+              "beat": "derived"
+            },
+            {
+              "id": "X1",
+              "at": [
+                2.29179607,
+                0
+              ],
+              "label": "",
+              "beat": "construct"
+            },
+            {
+              "id": "X2",
+              "at": [
+                15.70820393,
+                0
+              ],
+              "label": "",
+              "beat": "construct"
+            }
+          ],
+          "circles": [
+            {
+              "id": "S",
+              "center": "C",
+              "r": 9,
+              "label": "r = 9",
+              "beat": "derived"
+            }
+          ],
+          "segments": [
+            {
+              "from": "C",
+              "to": "T"
+            },
+            {
+              "from": "X1",
+              "to": "X2",
+              "label": "6√5"
+            }
+          ],
+          "ask": {
+            "kind": "radius",
+            "circle": "S",
+            "label": "radius = 9"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given",
+              "derived"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "construct"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "e12174bd",
+        "answer": {
+          "value": 9,
+          "label": "9"
+        }
+      }
+    },
+    {
+      "id": "be54c4fc-4e46-4226-a18a-f627dd19fcc8",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -2.5,
+              6
+            ],
+            "y": [
+              -1.5,
+              5
+            ]
+          },
+          "points": [
+            {
+              "id": "M",
+              "at": [
+                -1,
+                1
+              ],
+              "label": "M(−1, 1)"
+            },
+            {
+              "id": "A",
+              "at": [
+                1,
+                3
+              ],
+              "label": "A",
+              "beat": "construct"
+            },
+            {
+              "id": "B",
+              "at": [
+                2,
+                4
+              ],
+              "label": "B",
+              "beat": "construct"
+            },
+            {
+              "id": "N",
+              "at": [
+                1.33333333,
+                3.66666667
+              ],
+              "label": "N",
+              "beat": "derived"
+            }
+          ],
+          "circles": [
+            {
+              "id": "C1",
+              "center": [
+                0,
+                0
+              ],
+              "r": 1.41421356,
+              "label": "C1"
+            },
+            {
+              "id": "C2",
+              "center": [
+                3,
+                2
+              ],
+              "r": 2.23606798,
+              "label": "C2"
+            }
+          ],
+          "lines": [
+            {
+              "id": "T",
+              "tangentAt": "M",
+              "to": "C1",
+              "beat": "construct"
+            },
+            {
+              "id": "TA",
+              "tangentAt": "A",
+              "to": "C2",
+              "beat": "derived"
+            },
+            {
+              "id": "TB",
+              "tangentAt": "B",
+              "to": "C2",
+              "beat": "derived"
+            }
+          ],
+          "ask": {
+            "kind": "area",
+            "points": [
+              "A",
+              "N",
+              "B"
+            ],
+            "label": "area = 1/6"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given",
+              "construct"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "derived"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "f8d70181",
+        "answer": {
+          "value": 0.1666666699999999,
+          "label": "1/6"
+        }
+      }
+    },
+    {
+      "id": "bf75591b-ef29-45f3-93cd-1bcf02391517",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -4,
+              10
+            ],
+            "y": [
+              -2,
+              13
+            ]
+          },
+          "points": [
+            {
+              "id": "T",
+              "at": [
+                3,
+                0
+              ],
+              "label": "(3, 0)"
+            },
+            {
+              "id": "C",
+              "at": [
+                3,
+                6
+              ],
+              "label": "C(3, 6)",
+              "beat": "derived"
+            }
+          ],
+          "circles": [
+            {
+              "id": "S",
+              "center": "C",
+              "r": 6,
+              "label": "r = 6",
+              "beat": "derived"
+            }
+          ],
+          "lines": [
+            {
+              "id": "L",
+              "eq": [
+                1,
+                -1,
+                -3
+              ],
+              "label": "x − y = 3",
+              "beat": "given"
+            }
+          ],
+          "ask": {
+            "kind": "chordLength",
+            "line": "L",
+            "of": "S",
+            "label": "chord = 6√2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "derived"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "5bb18d84",
+        "answer": {
+          "value": 8.485281374238571,
+          "label": "6√2"
+        }
+      }
+    },
+    {
+      "id": "c5f2efa9-3d0f-4714-af43-685a4eb03625",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -0.8,
+              4
+            ],
+            "y": [
+              -2,
+              2
+            ]
+          },
+          "points": [
+            {
+              "id": "O",
+              "at": [
+                0,
+                0
+              ],
+              "label": "O"
+            },
+            {
+              "id": "A",
+              "at": [
+                1.5,
+                0.8660254
+              ],
+              "label": "A",
+              "beat": "derived"
+            },
+            {
+              "id": "B",
+              "at": [
+                1.5,
+                -0.8660254
+              ],
+              "label": "B",
+              "beat": "derived"
+            }
+          ],
+          "circles": [
+            {
+              "id": "S",
+              "center": [
+                2,
+                0
+              ],
+              "r": 1
+            }
+          ],
+          "lines": [
+            {
+              "id": "T",
+              "tangentsFrom": "O",
+              "to": "S",
+              "beat": "construct"
+            }
+          ],
+          "ask": {
+            "kind": "area",
+            "points": [
+              "O",
+              "A",
+              "B"
+            ],
+            "label": "area = 3√3/4"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given",
+              "construct"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "derived"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "4422331b",
+        "answer": {
+          "value": 1.2990381,
+          "label": "3√3/4"
+        }
+      }
+    },
+    {
+      "id": "c609ffea-e1a5-493a-baf3-0cab993ad885",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -3,
+              6
+            ],
+            "y": [
+              -4.5,
+              3
+            ]
+          },
+          "points": [
+            {
+              "id": "P",
+              "at": [
+                3,
+                -3
+              ],
+              "label": "P(3, −3)",
+              "beat": "construct"
+            },
+            {
+              "id": "Q",
+              "at": [
+                1.78885438,
+                0.4472136
+              ],
+              "label": "Q",
+              "beat": "derived"
+            },
+            {
+              "id": "R",
+              "at": [
+                -1.78885438,
+                -0.4472136
+              ],
+              "label": "R",
+              "beat": "derived"
+            }
+          ],
+          "conics": [
+            {
+              "id": "K",
+              "type": "parabola",
+              "vertex": [
+                0,
+                0
+              ],
+              "a": 0.75,
+              "axis": "x",
+              "label": "y² = 3x"
+            },
+            {
+              "id": "E",
+              "type": "ellipse",
+              "center": [
+                0,
+                0
+              ],
+              "a": 2,
+              "b": 1
+            }
+          ],
+          "lines": [
+            {
+              "id": "TP",
+              "tangentAt": "P",
+              "to": "K",
+              "beat": "construct"
+            },
+            {
+              "id": "TQ",
+              "tangentAt": "Q",
+              "to": "E",
+              "beat": "derived"
+            },
+            {
+              "id": "TR",
+              "tangentAt": "R",
+              "to": "E",
+              "beat": "derived"
+            }
+          ],
+          "ask": {
+            "kind": "area",
+            "points": [
+              "P",
+              "Q",
+              "R"
+            ],
+            "label": "area = 3√5"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given",
+              "construct"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "derived"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "d4c1ccc5",
+        "answer": {
+          "value": 6.708203940000001,
+          "label": "3√5"
+        }
+      }
+    },
+    {
+      "id": "c7dda5ef-fe6a-4027-a070-18e3fe3efa7a",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -3,
+              21
+            ],
+            "y": [
+              -9,
+              9
+            ]
+          },
+          "points": [
+            {
+              "id": "O",
+              "at": [
+                0,
+                0
+              ],
+              "label": "O"
+            },
+            {
+              "id": "A",
+              "at": [
+                12,
+                6.92820323
+              ],
+              "label": "A",
+              "beat": "derived"
+            },
+            {
+              "id": "B",
+              "at": [
+                12,
+                -6.92820323
+              ],
+              "label": "B",
+              "beat": "derived"
+            }
+          ],
+          "circles": [
+            {
+              "id": "S",
+              "center": [
+                12,
+                0
+              ],
+              "r": 6.92820323,
+              "label": "AB diameter",
+              "beat": "derived"
+            }
+          ],
+          "conics": [
+            {
+              "id": "K",
+              "type": "parabola",
+              "vertex": [
+                0,
+                0
+              ],
+              "a": 1,
+              "axis": "x",
+              "label": "y² = 4x"
+            }
+          ],
+          "segments": [
+            {
+              "from": "O",
+              "to": "A"
+            },
+            {
+              "from": "O",
+              "to": "B"
+            },
+            {
+              "from": "A",
+              "to": "B"
+            }
+          ],
+          "ask": {
+            "kind": "distance",
+            "from": "O",
+            "to": "S",
+            "label": "min distance = 4(3 − √3)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "derived"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "construct",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "4a87ca33",
+        "answer": {
+          "value": 5.07179677,
+          "label": "4(3 − √3)"
+        }
+      }
+    },
+    {
+      "id": "c8d7bbd5-93ee-45d3-a662-6fed3ec97cab",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -6,
+              6
+            ],
+            "y": [
+              -5,
+              8
+            ]
+          },
+          "points": [
+            {
+              "id": "C",
+              "at": [
+                1,
+                3
+              ],
+              "label": "C(1, 3)",
+              "beat": "derived"
+            },
+            {
+              "id": "Tp",
+              "at": [
+                -2,
+                -3
+              ],
+              "label": "(−2, −3)",
+              "beat": "construct"
+            }
+          ],
+          "circles": [
+            {
+              "id": "S",
+              "center": "C",
+              "r": 3,
+              "label": "circle",
+              "beat": "derived"
+            }
+          ],
+          "conics": [
+            {
+              "id": "K",
+              "type": "hyperbola",
+              "center": [
+                0,
+                0
+              ],
+              "a": 1,
+              "b": 1.73205081,
+              "axis": "x",
+              "label": "3x² − y² = 3"
+            }
+          ],
+          "lines": [
+            {
+              "id": "L",
+              "tangentAt": "Tp",
+              "to": "K",
+              "label": "tangent"
+            }
+          ],
+          "ask": {
+            "kind": "slope",
+            "line": "L",
+            "label": "slope = 2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "derived"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "construct",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "63bd074d",
+        "answer": {
+          "value": 2.0000000056144374,
+          "label": "2"
+        }
+      }
+    },
+    {
+      "id": "da5538a3-30d6-487e-9cd0-097887a8e9ee",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -3,
+              5.5
+            ],
+            "y": [
+              -1,
+              6
+            ]
+          },
+          "points": [
+            {
+              "id": "P",
+              "at": [
+                -1,
+                1
+              ],
+              "label": "P(−1, 1)"
+            },
+            {
+              "id": "A",
+              "at": [
+                1,
+                1
+              ],
+              "label": "A",
+              "beat": "derived"
+            },
+            {
+              "id": "B",
+              "at": [
+                -1,
+                3
+              ],
+              "label": "B",
+              "beat": "derived"
+            },
+            {
+              "id": "D",
+              "at": [
+                3,
+                3
+              ],
+              "label": "D",
+              "beat": "derived"
+            }
+          ],
+          "circles": [
+            {
+              "id": "S",
+              "center": [
+                1,
+                3
+              ],
+              "r": 2
+            }
+          ],
+          "lines": [
+            {
+              "id": "TA",
+              "tangentAt": "A",
+              "to": "S",
+              "beat": "construct"
+            },
+            {
+              "id": "TB",
+              "tangentAt": "B",
+              "to": "S",
+              "beat": "construct"
+            }
+          ],
+          "segments": [
+            {
+              "from": "A",
+              "to": "B",
+              "beat": "derived"
+            },
+            {
+              "from": "A",
+              "to": "D",
+              "beat": "derived"
+            }
+          ],
+          "ask": {
+            "kind": "area",
+            "points": [
+              "A",
+              "B",
+              "D"
+            ],
+            "label": "area = 4"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given",
+              "construct"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "derived",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "3437a0e6",
+        "answer": {
+          "value": 4,
+          "label": "4"
+        }
+      }
+    },
+    {
+      "id": "dc634a26-ca33-4495-96f9-0750cd9da490",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -5,
+              7
+            ],
+            "y": [
+              -6,
+              8
+            ]
+          },
+          "points": [
+            {
+              "id": "C",
+              "at": [
+                3,
+                4
+              ],
+              "label": "C(3, 4)"
+            },
+            {
+              "id": "V",
+              "at": [
+                -3,
+                -4
+              ],
+              "label": "V(−3, −4)",
+              "beat": "derived"
+            },
+            {
+              "id": "P",
+              "at": [
+                4.2,
+                5.6
+              ],
+              "label": "P",
+              "beat": "construct"
+            }
+          ],
+          "circles": [
+            {
+              "id": "S",
+              "center": "C",
+              "r": 2
+            }
+          ],
+          "conics": [
+            {
+              "id": "K",
+              "type": "parabola",
+              "vertex": "V",
+              "a": -0.25,
+              "axis": "y"
+            }
+          ],
+          "segments": [
+            {
+              "from": "V",
+              "to": "P"
+            }
+          ],
+          "ask": {
+            "kind": "distance",
+            "from": "V",
+            "to": "P",
+            "label": "max distance = 12"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "derived"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "construct",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "9a4e633b",
+        "answer": {
+          "value": 12,
+          "label": "12"
+        }
+      }
+    },
+    {
+      "id": "e270b566-8d27-43a0-8576-836dda9eb6f2",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -4.5,
+              4.5
+            ],
+            "y": [
+              -4,
+              4
+            ]
+          },
+          "points": [
+            {
+              "id": "P1",
+              "at": [
+                1.09544512,
+                2.68328157
+              ],
+              "label": "",
+              "beat": "construct"
+            },
+            {
+              "id": "P2",
+              "at": [
+                -1.09544512,
+                2.68328157
+              ],
+              "label": "",
+              "beat": "construct"
+            },
+            {
+              "id": "P3",
+              "at": [
+                -1.09544512,
+                -2.68328157
+              ],
+              "label": "",
+              "beat": "construct"
+            },
+            {
+              "id": "P4",
+              "at": [
+                1.09544512,
+                -2.68328157
+              ],
+              "label": "",
+              "beat": "construct"
+            }
+          ],
+          "conics": [
+            {
+              "id": "E1",
+              "type": "ellipse",
+              "center": [
+                0,
+                0
+              ],
+              "a": 3.46410162,
+              "b": 2.82842712,
+              "label": "E1"
+            },
+            {
+              "id": "E2",
+              "type": "ellipse",
+              "center": [
+                0,
+                0
+              ],
+              "a": 2.44948974,
+              "b": 3,
+              "label": "E2",
+              "beat": "derived"
+            }
+          ],
+          "ask": {
+            "kind": "area",
+            "points": [
+              "P1",
+              "P2",
+              "P3",
+              "P4"
+            ],
+            "label": "area = 24√6/5"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "derived"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "construct",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "308c5d78",
+        "answer": {
+          "value": 11.757550805769753,
+          "label": "24√6/5"
+        }
+      }
+    },
+    {
+      "id": "e3cf6765-0422-4941-8afb-6de1f3f54f7b",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -6,
+              10
+            ],
+            "y": [
+              -11,
+              4
+            ]
+          },
+          "points": [
+            {
+              "id": "A",
+              "at": [
+                4,
+                2
+              ],
+              "label": "(4, 2)"
+            },
+            {
+              "id": "B",
+              "at": [
+                0,
+                2
+              ],
+              "label": "(0, 2)"
+            },
+            {
+              "id": "N",
+              "at": [
+                1,
+                2
+              ],
+              "label": "N(1, 2)"
+            },
+            {
+              "id": "C",
+              "at": [
+                2,
+                -4
+              ],
+              "label": "C(2, −4)",
+              "beat": "derived"
+            }
+          ],
+          "circles": [
+            {
+              "id": "S",
+              "center": "C",
+              "r": 6.32455532,
+              "beat": "derived"
+            }
+          ],
+          "lines": [
+            {
+              "id": "CL",
+              "eq": [
+                3,
+                2,
+                2
+              ],
+              "label": "3x + 2y + 2 = 0"
+            },
+            {
+              "id": "K",
+              "eq": [
+                -1,
+                6,
+                -11
+              ],
+              "label": "chord",
+              "beat": "derived"
+            }
+          ],
+          "ask": {
+            "kind": "chordLength",
+            "line": "K",
+            "of": "S",
+            "label": "chord = 2√3"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given",
+              "construct",
+              "derived",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "f0ffee38",
+        "answer": {
+          "value": 3.4641016126784194,
+          "label": "2√3"
+        }
+      }
+    },
+    {
+      "id": "ec66565a-ca65-4fd4-bb02-dd5f37a5d06e",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -5,
+              6
+            ],
+            "y": [
+              -3,
+              5
+            ]
+          },
+          "points": [
+            {
+              "id": "A",
+              "at": [
+                1,
+                3
+              ],
+              "label": "A(1, 3)"
+            },
+            {
+              "id": "B",
+              "at": [
+                1,
+                -1
+              ],
+              "label": "B(1, −1)"
+            },
+            {
+              "id": "P",
+              "at": [
+                -3,
+                1
+              ],
+              "label": "P(−3, 1)",
+              "beat": "derived"
+            }
+          ],
+          "conics": [
+            {
+              "id": "K",
+              "type": "parabola",
+              "vertex": [
+                -1,
+                1
+              ],
+              "a": 0.5,
+              "axis": "x"
+            }
+          ],
+          "lines": [
+            {
+              "id": "TA",
+              "tangentAt": "A",
+              "to": "K"
+            },
+            {
+              "id": "TB",
+              "tangentAt": "B",
+              "to": "K"
+            }
+          ],
+          "ask": {
+            "kind": "area",
+            "points": [
+              "P",
+              "A",
+              "B"
+            ],
+            "label": "area = 8"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "construct"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "derived"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "92d764f3",
+        "answer": {
+          "value": 8,
+          "label": "8"
+        }
+      }
+    },
+    {
+      "id": "f089e60c-c9e2-486c-8602-a6ad1d2f5c26",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -6,
+              6
+            ],
+            "y": [
+              -4.5,
+              4.5
+            ]
+          },
+          "points": [
+            {
+              "id": "A",
+              "at": [
+                -3.2,
+                1.8
+              ],
+              "label": "A",
+              "beat": "derived"
+            },
+            {
+              "id": "B",
+              "at": [
+                3.2,
+                -1.8
+              ],
+              "label": "B",
+              "beat": "derived"
+            },
+            {
+              "id": "C",
+              "at": [
+                2.4,
+                2.4
+              ],
+              "label": "C",
+              "beat": "derived"
+            },
+            {
+              "id": "D",
+              "at": [
+                -2.4,
+                -2.4
+              ],
+              "label": "D",
+              "beat": "derived"
+            }
+          ],
+          "conics": [
+            {
+              "id": "E",
+              "type": "ellipse",
+              "center": [
+                0,
+                0
+              ],
+              "a": 4,
+              "b": 3
+            }
+          ],
+          "lines": [
+            {
+              "id": "TA",
+              "tangentAt": "A",
+              "to": "E",
+              "label": "y = x + 5"
+            },
+            {
+              "id": "TB",
+              "tangentAt": "B",
+              "to": "E",
+              "label": "y = x − 5"
+            },
+            {
+              "id": "LD",
+              "eq": [
+                1,
+                -1,
+                0
+              ],
+              "label": "y = x",
+              "beat": "derived"
+            }
+          ],
+          "ask": {
+            "kind": "area",
+            "points": [
+              "A",
+              "C",
+              "B",
+              "D"
+            ],
+            "label": "area = 24"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given",
+              "construct",
+              "derived"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "e047528b",
+        "answer": {
+          "value": 24,
+          "label": "24"
+        }
+      }
+    },
+    {
+      "id": "f3c22837-f6fb-4a3b-9577-68e4ffc8f4e2",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -2.5,
+              5
+            ],
+            "y": [
+              -3.5,
+              3.5
+            ]
+          },
+          "points": [
+            {
+              "id": "R",
+              "at": [
+                2.25,
+                2
+              ],
+              "label": "R(9/4, 2)"
+            },
+            {
+              "id": "P",
+              "at": [
+                1,
+                2
+              ],
+              "label": "P",
+              "beat": "derived"
+            },
+            {
+              "id": "Q",
+              "at": [
+                3,
+                1
+              ],
+              "label": "Q",
+              "beat": "derived"
+            }
+          ],
+          "circles": [
+            {
+              "id": "S",
+              "center": [
+                1,
+                -0.5
+              ],
+              "r": 2.5
+            }
+          ],
+          "lines": [
+            {
+              "id": "TP",
+              "tangentAt": "P",
+              "to": "S"
+            },
+            {
+              "id": "TQ",
+              "tangentAt": "Q",
+              "to": "S"
+            }
+          ],
+          "ask": {
+            "kind": "area",
+            "points": [
+              "P",
+              "Q",
+              "R"
+            ],
+            "label": "area = 5/8"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "derived",
+              "construct"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "198dc121",
+        "answer": {
+          "value": 0.625,
+          "label": "5/8"
+        }
+      }
+    },
+    {
+      "id": "f60d16c7-d67f-4c09-b262-5e0c8c6cb164",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -4,
+              3
+            ],
+            "y": [
+              -8,
+              2
+            ]
+          },
+          "points": [
+            {
+              "id": "P",
+              "at": [
+                -2,
+                -6
+              ],
+              "label": "P(−2, −6)",
+              "beat": "derived"
+            },
+            {
+              "id": "V",
+              "at": [
+                0.5,
+                0.25
+              ],
+              "label": "V(½, ¼)",
+              "beat": "derived"
+            }
+          ],
+          "conics": [
+            {
+              "id": "K",
+              "type": "parabola",
+              "vertex": [
+                0.5,
+                0.25
+              ],
+              "a": -0.25,
+              "axis": "y",
+              "label": "y = x − x²"
+            }
+          ],
+          "lines": [
+            {
+              "id": "Lt",
+              "tangentAt": "P",
+              "to": "K",
+              "label": "y = 5x + 4"
+            },
+            {
+              "id": "Lpv",
+              "through": [
+                "P",
+                "V"
+              ],
+              "label": "PV",
+              "beat": "derived"
+            }
+          ],
+          "ask": {
+            "kind": "slope",
+            "line": "Lpv",
+            "label": "slope = 5/2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given",
+              "construct",
+              "derived",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "2660eacf",
+        "answer": {
+          "value": 2.5,
+          "label": "5/2"
+        }
+      }
+    },
+    {
+      "id": "f83dea00-691c-4fc9-a305-d88ba15020e7",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -2,
+              6
+            ],
+            "y": [
+              -3,
+              5
+            ]
+          },
+          "points": [
+            {
+              "id": "O2",
+              "at": [
+                2,
+                1
+              ],
+              "label": "(2, 1)"
+            },
+            {
+              "id": "E1",
+              "at": [
+                2.78885438,
+                3.89442719
+              ],
+              "label": "",
+              "beat": "construct"
+            },
+            {
+              "id": "E2",
+              "at": [
+                -0.78885438,
+                2.10557281
+              ],
+              "label": "",
+              "beat": "construct"
+            }
+          ],
+          "circles": [
+            {
+              "id": "S1",
+              "center": [
+                1,
+                3
+              ],
+              "r": 2,
+              "label": "r = 2"
+            },
+            {
+              "id": "D",
+              "center": "O2",
+              "r": 3,
+              "label": "circle C",
+              "beat": "derived"
+            }
+          ],
+          "segments": [
+            {
+              "from": "E1",
+              "to": "E2"
+            }
+          ],
+          "ask": {
+            "kind": "distance",
+            "from": "O2",
+            "to": "E1",
+            "label": "radius = 3"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "construct"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "derived",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "f3b55c5f",
+        "answer": {
+          "value": 2.9999999985094137,
+          "label": "3"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

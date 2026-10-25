@@ -424,7 +424,8 @@ export const coordGeometry: Scene<CoordParams> = {
 
       const points: Pt[] = list(o, "points", 8).map((q, i) => {
         const at = pair(q, "at");
-        return { id: claim(q.id, `points[${i}]`), at, label: optionalLabel(q, "label") ?? `(${num(at[0])}, ${num(at[1])})`, beat: beatOf(q, "given") };
+        return { id: claim(q.id, `points[${i}]`), at, // An empty label is a bare dot (a helper point); no label shows the coordinates.
+        label: q.label === "" ? "" : optionalLabel(q, "label") ?? `(${num(at[0])}, ${num(at[1])})`, beat: beatOf(q, "given") };
       });
       const pointAt = (id: unknown, where: string): XY => {
         const q = points.find((pp) => pp.id === id);
@@ -765,7 +766,7 @@ export const coordGeometry: Scene<CoordParams> = {
       if (e && l.label) lineLabel.set(l.id, place([0.85, 0.15, 0.5].map((f) => px([e[0][0] + (e[1][0] - e[0][0]) * f, e[0][1] + (e[1][1] - e[0][1]) * f])), l.label, 11));
     }
     const pointLabel = new Map<string, ReturnType<typeof place>>();
-    for (const q of p.points) if (inPlot(px(q.at))) pointLabel.set(q.id, place([px(q.at)], q.label, 11));
+    for (const q of p.points) if (q.label && inPlot(px(q.at))) pointLabel.set(q.id, place([px(q.at)], q.label, 11));
 
     // Objects in beat order: curves, then lines, then segments, then points.
     type Item = { beat: ObjBeat; draw: (k: number) => void };

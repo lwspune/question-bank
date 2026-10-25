@@ -162,6 +162,14 @@ describe("coordGeometry drawing", () => {
     expect(irrational.some((t) => t.startsWith("(0, 2.8"))).toBe(false);
   });
 
+  it("draws a point with an empty label as a bare dot, so a helper point carries no text", () => {
+    const p = parse({ window: win, points: [{ id: "A", at: [1, 1], label: "" }, { id: "B", at: [3, 2] }], ask: { kind: "distance", from: "A", to: "B" } });
+    const texts = scene().frame(p, { played: ["given", "answer"], t: 1, slider: undefined }).filter((s) => s.kind === "text").map((s) => (s as { text: string }).text);
+    expect(texts).toContain("(3, 2)");
+    expect(texts).not.toContain("(1, 1)");
+    expect(texts).not.toContain("");
+  });
+
   it("keeps an object hidden until its beat: a derived circle is absent while only the givens play", () => {
     const p = parse({ window: { x: [-7, 13], y: [-5, 8] }, points: [{ id: "Q", at: [11, 6] }, { id: "C", at: [-1, 1], beat: "derived" }], circles: [{ id: "S", center: "C", r: 5, beat: "derived" }], ask: { kind: "distance", from: "Q", to: "S" } });
     const { sx } = coordFacts(p).scale;

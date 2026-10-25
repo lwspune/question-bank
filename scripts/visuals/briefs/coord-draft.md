@@ -31,7 +31,8 @@ Or, when it does not fit cleanly: `{ "n": 7, "id": "<id>", "skip": true, "reason
 
 Every object has an `id`: a short name of letters and digits (`A`, `C1`, `S`),
 each used once across the whole visual. Labels are plain text with Unicode
-(² ³ √ π − ·), no LaTeX, no backslashes, at most 24 characters. Every object
+(² ³ √ π − ·), no LaTeX, no backslashes, at most 24 characters. Write
+"parallel to" / "perpendicular to" in words: ∥ and ⊥ draw as a box in the picture's font. Every object
 may set `"beat"`: `"given"` (what the question gives; the default for points,
 circles and conics), `"derived"` (what the solution works out), or
 `"construct"` (the default for lines and segments).
@@ -40,7 +41,7 @@ circles and conics), `"derived"` (what the solution works out), or
   talks about is visible with a little room. The scene keeps one scale on both
   axes, widening the shorter side, so circles stay round.
 - `points`: `{ "id", "at": [x, y], "label"? }`. Without a label the point
-  shows its coordinates.
+  shows its coordinates; `"label": ""` draws a bare dot (a helper point).
 - `circles`: `{ "id", "center": [x, y] or a point id, "r", "label"? }`.
 - `conics`: one of
   - `{ "id", "type": "parabola", "vertex": [h, k] or point id, "a", "axis": "x" }` for (y − k)² = 4a(x − h);
