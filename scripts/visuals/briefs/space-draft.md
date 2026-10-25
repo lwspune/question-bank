@@ -51,9 +51,11 @@ segments).
   constant to the right: x − 3y + 4z − 6 = 0 is [1, −3, 4, 6]), plus `"label"?`.
 - `derived` (the scene computes these; never type their coordinates as points):
   - `{ "id", "kind": "foot", "from": pointId, "to": lineId or planeId }`
-  - `{ "id", "kind": "image", "of": pointId, "in": planeId }`
+  - `{ "id", "kind": "image", "of": pointId, "in": planeId or lineId }`
   - `{ "id", "kind": "meet", "line": lineId, "plane": planeId }`
-  Derived points can then be used anywhere a point can.
+  - `{ "id", "kind": "meet", "lines": [lineId, lineId] }` (two lines that intersect)
+  Derived points can then be used anywhere a point can. Never add a helper
+  plane or line the question does not have just to get a point: it is drawn.
 - `segments`: `{ "from": pointId, "to": pointId, "label"? }`, drawn dashed.
 - `view` (optional): `{ "az": degrees, "el": degrees }`. Leave it out: the
   scene picks the view that shows the planes face-on and the answer clearly.

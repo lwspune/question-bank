@@ -9,8 +9,8 @@
  *   lines     { id, through: [p, q] } | { id, point: [x, y, z] | p, dir: [a, b, c] }
  *   planes    { id, eq: [a, b, c, d] }   for ax + by + cz = d
  *   derived   { id, kind: "foot", from: p, to: line | plane }
- *             { id, kind: "image", of: p, in: plane }
- *             { id, kind: "meet", line, plane }
+ *             { id, kind: "image", of: p, in: plane | line }
+ *             { id, kind: "meet", line, plane } | { id, kind: "meet", lines: [l1, l2] }
  *   segments  { from, to, label? }
  *   view      { az, el } in degrees; without it the scene picks the view that
  *             shows the planes face-on and the answer least foreshortened
@@ -311,8 +311,17 @@ export const space3d: Scene<SpaceParams> = {
           if (!L && !S) throw new ParamError(`${id}: foot needs to naming a line or plane`);
           at = L ? footOnLine(P, L) : footOnPlane(P, S!);
         } else if (q.kind === "image") {
+          // The mirror is a plane or a line.
           const P = pointAt(q.of, id);
-          at = sub(mul(footOnPlane(P, planeNamed(q.in, id)), 2), P);
+          const Lm = lines.find((l) => l.id === q.in);
+          at = sub(mul(Lm ? footOnLine(P, Lm) : footOnPlane(P, planeNamed(q.in, id)), 2), P);
+        } else if (q.kind === "meet" && q.lines !== undefined) {
+          if (!Array.isArray(q.lines) || q.lines.length !== 2) throw new ParamError(`${id}: lines must name two lines`);
+          const [L1, L2] = [lineNamed(q.lines[0], id), lineNamed(q.lines[1], id)];
+          const [F1, F2] = closest(L1, L2);
+          const gap = len(sub(F1, F2));
+          if (len(cross(L1.u, L2.u)) < 1e-9 || gap > 1e-6 * Math.max(1, len(F1))) throw new ParamError(`${id}: ${L1.id} and ${L2.id} do not meet`);
+          at = mul(add(F1, F2), 0.5);
         } else if (q.kind === "meet") {
           const L = lineNamed(q.line, id);
           const S = planeNamed(q.plane, id);
@@ -484,9 +493,12 @@ function layout(p: SpaceParams): Layout {
 
   const lineEnds: Record<string, [V3, V3]> = {};
   for (const l of p.lines) {
+    // Centred on what the picture shows of this line, not on the point it was given by
+    // (a line given far from where it matters would otherwise stretch the frame).
     const ts = core.map((q) => dt(sub(q, l.a), l.u));
-    const t0 = Math.min(-E * 0.6, ...ts) - 0.35 * E;
-    const t1 = Math.max(E * 0.6, ...ts) + 0.35 * E;
+    const mid = (Math.min(...ts) + Math.max(...ts)) / 2;
+    const half = Math.max((Math.max(...ts) - Math.min(...ts)) / 2 + 0.35 * E, 0.95 * E);
+    const [t0, t1] = [mid - half, mid + half];
     lineEnds[l.id] = [add(l.a, mul(l.u, t0)), add(l.a, mul(l.u, t1))];
   }
   const patches: Record<string, V3[]> = {};
@@ -743,7 +755,7 @@ function drawFrame(p: SpaceParams, { played, t }: { played: readonly string[]; t
       seg(mk.a2, mk.b2, "strong");
       ends(mk.a2, mk.b2);
     } else if (mk.kind === "angle") {
-      const r = L.size * 0.45;
+      const r = L.size * 0.6;
       const w = sub(mk.v, mul(mk.u, dt(mk.v, mk.u)));
       const wn = len(w) > 1e-9 ? unit(w) : perpendicular(mk.u);
       const arc: [number, number][] = [];
@@ -751,9 +763,12 @@ function drawFrame(p: SpaceParams, { played, t }: { played: readonly string[]; t
         const th = (mk.angle * pa * i) / 24;
         arc.push(L.px(add(mk.at, add(mul(mk.u, r * Math.cos(th)), mul(wn, r * Math.sin(th))))));
       }
-      seg(mk.at, add(mk.at, mul(mk.u, r * 1.4)), "guide");
-      seg(mk.at, add(mk.at, mul(mk.v, r * 1.4)), "guide");
-      over.push({ kind: "polyline", points: arc, stroke: "good", width: 3 });
+      // The two arms in the answer's colour, the arc between them.
+      for (const dir of [mk.u, mk.v]) {
+        const [p0, p1] = [L.px(mk.at), L.px(add(mk.at, mul(dir, r * 1.5)))];
+        over.push(line(p0[0], p0[1], p0[0] + (p1[0] - p0[0]) * pa, p0[1] + (p1[1] - p0[1]) * pa, { stroke: "good", width: 2, opacity: 0.85, cap: "round" }));
+      }
+      over.push({ kind: "polyline", points: arc, stroke: "good", width: 3.5 });
     }
     if (pa > 0.6) over.push(text(W - 6, 17, p.askLabel ?? defaultLabel(p, facts.value), { tone: "good", size: 12.5, weight: 700, anchor: "end" }));
   }

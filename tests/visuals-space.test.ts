@@ -95,6 +95,18 @@ describe("space3d works out its own constructions", () => {
   });
 });
 
+describe("space3d meeting point of two lines", () => {
+  it("works out where two intersecting lines meet, and refuses skew lines", () => {
+    const p = parse({ lines: [{ id: "A", point: [1, 0, 0], dir: [1, 1, 0] }, { id: "B", point: [3, 0, 0], dir: [-1, 1, 0] }], derived: [{ id: "M", kind: "meet", lines: ["A", "B"] }], ask: { kind: "coord", point: "M", axis: "y" } });
+    near(spaceFacts(p).points.M, [2, 1, 0]);
+    expect(parseError({ lines: [{ id: "A", point: [0, 0, 0], dir: [1, 0, 0] }, { id: "B", point: [0, 0, 2], dir: [0, 1, 0] }], derived: [{ id: "M", kind: "meet", lines: ["A", "B"] }], ask: { kind: "coord", point: "M", axis: "x" } })).toMatch(/do not meet/);
+  });
+  it("reflects a point in a line, as well as in a plane", () => {
+    const p = parse({ points: [{ id: "P", at: [0, 2, 0] }], lines: [{ id: "L", point: [0, 0, 0], dir: [1, 0, 0] }], derived: [{ id: "Q", kind: "image", of: "P", in: "L" }], ask: { kind: "coord", point: "Q", axis: "y" } });
+    near(spaceFacts(p).points.Q, [0, -2, 0]);
+  });
+});
+
 describe("space3d refuses what it cannot draw honestly", () => {
   it("names an unknown reference and a duplicated id", () => {
     expect(parseError({ points: [{ id: "A", at: [0, 0, 0] }], lines: [{ id: "L", through: ["A", "Z"] }], ask: { kind: "distance", from: "A", to: "L" } })).toMatch(/Z/);
