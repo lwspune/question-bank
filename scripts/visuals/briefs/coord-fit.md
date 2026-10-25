@@ -19,6 +19,9 @@ these answers:
 6. **tangentLength**: length of the tangent from a point to a circle.
 7. **area** of a triangle or polygon from its vertices.
 
+A key that is one of these SQUARED or MULTIPLIED by a number ("(AB)² =",
+"6 × area", "(2β)²") still fits: name the measured kind.
+
 For each question decide which ONE of these the answer is, or `no`. Fit only
 when the KEYED answer is that one measured number. An equation as the answer
 (of a circle, a tangent, a locus) is `no` unless the key is a single measured

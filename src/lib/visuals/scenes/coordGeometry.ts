@@ -92,6 +92,8 @@ export interface CoordParams {
   locus: { fixed: XY; on: Curve; ratio: number; movingLabel: string; pointLabel: string } | null;
   ask: Ask;
   askLabel: string | undefined;
+  /** The key is the measured value squared and/or times a number ("(AB)^2 =", "6 x area"). */
+  report: { squared: boolean; times: number };
 }
 
 const W = 340;
@@ -182,7 +184,10 @@ function nearestOn(c: Curve, P: XY): XY {
 }
 
 export interface CoordFacts {
+  /** The answer: the measured value, squared and scaled as the key asks. */
   value: number;
+  /** What the drawing measures before squaring or scaling. */
+  measured: number;
   scale: { sx: number; sy: number };
   window: { x: [number, number]; y: [number, number] };
   h: number;
@@ -345,7 +350,9 @@ export function coordFacts(p: CoordParams): CoordFacts {
   const hit = factCache.get(p);
   if (hit) return hit;
   const lay = layout(p.x, p.y);
-  const facts: CoordFacts = { ...measure(p), scale: { sx: lay.s, sy: lay.s }, window: { x: lay.x, y: lay.y }, h: lay.h, touches: p.touches };
+  const m = measure(p);
+  const value = (p.report.squared ? m.value * m.value : m.value) * p.report.times;
+  const facts: CoordFacts = { ...m, value, measured: m.value, scale: { sx: lay.s, sy: lay.s }, window: { x: lay.x, y: lay.y }, h: lay.h, touches: p.touches };
   factCache.set(p, facts);
   return facts;
 }
@@ -561,34 +568,19 @@ export const coordGeometry: Scene<CoordParams> = {
         default:
           throw new ParamError("ask.kind must be distance, yIntercept, xIntercept, slope, radius, locusRadius, chordLength, tangentLength or area");
       }
-      return { x, y, points, curves, lines, segments, touches, locus, ask, askLabel: optionalLabel(a, "label", 32) };
+      if (a.squared !== undefined && typeof a.squared !== "boolean") throw new ParamError("ask: squared must be true or false");
+      const times = a.times === undefined ? 1 : finite(a, "times");
+      if (times === 0) throw new ParamError("ask: times must not be 0");
+      return { x, y, points, curves, lines, segments, touches, locus, ask, askLabel: optionalLabel(a, "label", 32), report: { squared: a.squared === true, times } };
     }),
 
   check: (p) => coordFacts(p).value,
 
   checkText(p, value) {
     if (!Number.isFinite(value)) return "The drawing has no single value for this.";
-    const v = num(value, 4);
-    switch (p.ask.kind) {
-      case "distance":
-        return `The shortest distance measured on the drawing is ${v}.`;
-      case "yIntercept":
-        return `The line crosses the y-axis at y = ${v}.`;
-      case "xIntercept":
-        return `The line crosses the x-axis at x = ${v}.`;
-      case "slope":
-        return `The line rises ${v} for every 1 across.`;
-      case "radius":
-        return `The circle's radius is ${v}.`;
-      case "locusRadius":
-        return `The traced point runs round a circle of radius ${v}.`;
-      case "chordLength":
-        return `The line cuts a chord of length ${v}.`;
-      case "tangentLength":
-        return `The tangent from the point is ${v} long.`;
-      case "area":
-        return `The shaded figure has area ${v}.`;
-    }
+    const base = measuredText(p, coordFacts(p).measured);
+    const how = [p.report.squared ? "squared" : "", p.report.times !== 1 ? `times ${num(p.report.times)}` : ""].filter(Boolean).join(" and ");
+    return how ? `${base} ${how[0].toUpperCase()}${how.slice(1)}, that gives ${num(value, 4)}.` : base;
   },
 
   viewBox: (p) => ({ w: W, h: coordFacts(p).h }),
@@ -904,24 +896,42 @@ export const coordGeometry: Scene<CoordParams> = {
 
 function defaultLabel(p: CoordParams, v: number): string {
   const n = Number.isFinite(v) ? num(v, 3) : "?";
+  const name = {
+    distance: "shortest distance",
+    yIntercept: "y-intercept",
+    xIntercept: "x-intercept",
+    slope: "slope",
+    radius: "radius",
+    locusRadius: "locus radius",
+    chordLength: "chord",
+    tangentLength: "tangent length",
+    area: "area",
+  }[p.ask.kind];
+  // A squared or scaled key reads as such: "distance² = 25", "6 × area = 36".
+  const what = `${p.report.times !== 1 ? `${num(p.report.times)} × ` : ""}${p.report.squared ? `(${name})²` : name}`;
+  return `${what} = ${n}`;
+}
+
+function measuredText(p: CoordParams, value: number): string {
+  const v = num(value, 4);
   switch (p.ask.kind) {
     case "distance":
-      return `shortest distance = ${n}`;
+      return `The shortest distance measured on the drawing is ${v}.`;
     case "yIntercept":
-      return `y-intercept = ${n}`;
+      return `The line crosses the y-axis at y = ${v}.`;
     case "xIntercept":
-      return `x-intercept = ${n}`;
+      return `The line crosses the x-axis at x = ${v}.`;
     case "slope":
-      return `slope = ${n}`;
+      return `The line rises ${v} for every 1 across.`;
     case "radius":
-      return `radius = ${n}`;
+      return `The circle's radius is ${v}.`;
     case "locusRadius":
-      return `locus radius = ${n}`;
+      return `The traced point runs round a circle of radius ${v}.`;
     case "chordLength":
-      return `chord = ${n}`;
+      return `The line cuts a chord of length ${v}.`;
     case "tangentLength":
-      return `tangent length = ${n}`;
+      return `The tangent from the point is ${v} long.`;
     case "area":
-      return `area = ${n}`;
+      return `The shaded figure has area ${v}.`;
   }
 }

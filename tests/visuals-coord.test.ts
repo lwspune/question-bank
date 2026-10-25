@@ -68,6 +68,26 @@ describe("coordGeometry answers", () => {
   });
 });
 
+describe("coordGeometry squared and scaled answers", () => {
+  const seg = { window: win, points: [{ id: "A", at: [0, 0] }, { id: "B", at: [3, 4] }] };
+  it("reports the square of the measured length when the key asks for it", () => {
+    expect(value({ ...seg, ask: { kind: "distance", from: "A", to: "B", squared: true } })).toBeCloseTo(25, 9);
+  });
+  it("reports a multiple of the measured value", () => {
+    const tri = { window: win, points: [{ id: "A", at: [0, 0] }, { id: "B", at: [4, 0] }, { id: "C", at: [0, 3] }] };
+    expect(value({ ...tri, ask: { kind: "area", points: ["A", "B", "C"], times: 6 } })).toBeCloseTo(36, 9);
+    expect(value({ ...seg, ask: { kind: "distance", from: "A", to: "B", squared: true, times: 2 } })).toBeCloseTo(50, 9);
+  });
+  it("refuses a zero multiplier and a non-boolean squared", () => {
+    expect(parseError({ ...seg, ask: { kind: "distance", from: "A", to: "B", times: 0 } })).toMatch(/times/);
+    expect(parseError({ ...seg, ask: { kind: "distance", from: "A", to: "B", squared: "yes" } })).toMatch(/squared/);
+  });
+  it("says in its check sentence that the value was squared or scaled", () => {
+    const p = parse({ ...seg, ask: { kind: "distance", from: "A", to: "B", squared: true } });
+    expect(scene().checkText(p, scene().check(p))).toMatch(/square/i);
+  });
+});
+
 describe("coordGeometry tangents", () => {
   it("finds both tangents from an outside point to a parabola, touching at the right points", () => {
     const raw = {

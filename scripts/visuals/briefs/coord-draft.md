@@ -73,6 +73,11 @@ circles and conics), `"derived"` (what the solution works out), or
   - `{ "kind": "chordLength", "line": lineId, "of": curveId }`
   - `{ "kind": "tangentLength", "from": pointId, "to": circleId }`
   - `{ "kind": "area", "points": [ids in order round the figure] }`
+  Any ask may also carry `"squared": true` and/or `"times": k` when the KEY is the
+  measured value squared or multiplied: "(AB)² =" is `squared: true`, "6 × area"
+  is `times: 6`, "(2β)²" for a length β is `squared: true, times: 4`. The picture
+  still draws the length or area itself; give a header label that says what is
+  reported ("(AB)² = 72").
 
 ### steps
 
