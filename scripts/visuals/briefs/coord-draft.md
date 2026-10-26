@@ -57,6 +57,13 @@ circles and conics), `"derived"` (what the solution works out), or
   - `{ "id", "tangentAt": pointId, "to": curveId }` (the point must lie on the curve)
   - `{ "id", "tangentsFrom": pointId, "to": curveId }`: every tangent from the
     point; they become lines `<id>1`, `<id>2` numbered by slope, lowest first.
+  - `{ "id", "pair": [A, B, C, D, E, F] }` for ONE equation
+    Ax² + Bxy + Cy² + Dx + Ey + F = 0 that is a pair of lines. Copy the six
+    coefficients from the question exactly (B is the whole xy coefficient, not
+    h: 2x² − 5xy + 2y² = 0 is `[2, -5, 2, 0, 0, 0]`); the scene factors it and
+    makes lines `<id>1`, `<id>2` by slope, lowest first (a vertical line comes
+    last). It refuses an equation that is not a real pair. Do NOT factor it
+    yourself.
   plus an optional `"label"`.
 - `segments`: `{ "from": pointId, "to": pointId, "label"? }`, drawn dashed (a
   radius, a chord the solution names).
@@ -73,6 +80,13 @@ circles and conics), `"derived"` (what the solution works out), or
   - `{ "kind": "chordLength", "line": lineId, "of": curveId }`
   - `{ "kind": "tangentLength", "from": pointId, "to": circleId }`
   - `{ "kind": "area", "points": [ids in order round the figure] }`
+  - `{ "kind": "angle", "lines": [lineId, lineId], "as": "angle" | "tan" | "cos" | "sin", "obtuse": false }`:
+    the angle between two lines, acute unless `"obtuse": true`. Pick `as` by
+    how the KEY is printed: an angle (60°, π/3, 2π/3) → `"angle"` with the
+    answer value in RADIANS (π/3 = 1.04719755); tan⁻¹(k) or "tan θ = k" →
+    `"tan"` with value k; cos⁻¹(k) → `"cos"` with value k; sin⁻¹(k) → `"sin"`.
+    The two lines must meet inside the window, so choose the window around
+    where they cross.
   Any ask may also carry `"squared": true` and/or `"times": k` when the KEY is the
   measured value squared or multiplied: "(AB)² =" is `squared: true`, "6 × area"
   is `times: 6`, "(2β)²" for a length β is `squared: true, times: 4`. The picture
@@ -104,7 +118,7 @@ solution can be one step with several beats.
   object per question, input order), run nothing. Keep messages short: when
   done, reply in one line with how many drafted and how many skipped.
 
-## Two more finished examples
+## More finished examples
 
 Locus, JEE "the midpoint of the segment from (3, 2) to a point on x² + y² = 1
 traces a circle of radius r", one solution sentence:
@@ -132,6 +146,17 @@ centre (−1, 0), [1] parabola vertex (3, −4), [2] slope −1 so y = −x − 
     "ask": { "kind": "yIntercept", "line": "L", "label": "y-intercept = −1" } },
   "steps": [{ "from": 0, "beats": ["given"] }, { "from": 1, "beats": ["derived"] }, { "from": 2, "beats": ["construct", "answer"] }],
   "answer": { "value": -1, "label": "−1" } }
+```
+
+Pair of lines, MHT-CET "the acute angle between the lines x² − 5xy + 6y² = 0
+is tan⁻¹(1/7)", sentences [0] m₁ + m₂ = 5/6, m₁m₂ = 1/6, [1] tan θ = |m₁ − m₂| / (1 + m₁m₂) = 1/7:
+
+```json
+{ "params": { "window": { "x": [-3, 3], "y": [-2, 2] },
+    "lines": [{ "id": "P", "pair": [1, -5, 6, 0, 0, 0], "label": "x² − 5xy + 6y² = 0" }],
+    "ask": { "kind": "angle", "lines": ["P1", "P2"], "as": "tan", "label": "tan θ = 1/7" } },
+  "steps": [{ "from": 0, "beats": ["construct"] }, { "from": 1, "beats": ["answer"] }],
+  "answer": { "value": 0.14285714, "label": "tan⁻¹(1/7)" } }
 ```
 
 ## Also: does the question need a picture it does not have?
