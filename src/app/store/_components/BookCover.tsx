@@ -97,7 +97,7 @@ function PremiumCover({
       </div>
       <div className="relative mt-[16%]">
         <span
-          className="inline-block rounded-full border px-2 py-0.5 text-[0.5rem] font-bold uppercase tracking-[0.14em]"
+          className="inline-block whitespace-nowrap rounded-full border px-1.5 py-0.5 text-[0.5rem] font-bold uppercase tracking-[0.06em] sm:px-2 sm:tracking-[0.14em]"
           style={{ color: GOLD, borderColor: GOLD }}
         >
           {KIND_LABEL.papers}
