@@ -16,7 +16,9 @@ only if, and brackets. `~` binds tightest, then `&`, `|`, `->`, `<->`; write
 brackets whenever in doubt. `->` groups to the right (p -> q -> r is
 p -> (q -> r)). The bank's own symbols ∼ ¬ ∧ ∨ → ↔ are also accepted.
 Examples: ∼[(p → ∼q) ∧ (∼q ∨ p)] is `~((p -> ~q) & (~q | p))`;
-p ∨ (q → ∼r) is `p | (q -> ~r)`.
+p ∨ (q → ∼r) is `p | (q -> ~r)`. The Maharashtra textbook writes the constants as
+t (tautology) and c (contradiction): write them `T` and `F`, since a lower-case
+`t` is read as a statement letter.
 
 ## What you write, per question
 
