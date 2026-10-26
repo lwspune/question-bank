@@ -8,6 +8,9 @@ import PrevNextNav from "@/app/guide/_components/PrevNextNav";
 import ExamPaperMatrix from "@/app/guide/_components/ExamPaperMatrix";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 import ReportProvenance from "@/app/guide/_components/ReportProvenance";
+import KeyInsights from "@/app/guide/_components/KeyInsights";
+import TrendsFaq from "@/app/guide/_components/TrendsFaq";
+import { appearedColumn, keyInsights, perPaperInsightInput, trendsFaq } from "@/lib/guide/trendsInsights";
 import { trendsReportFor } from "@/lib/guide/trendsReports";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { resolveTaxonomy } from "@/lib/guide/resolveTaxonomy";
@@ -32,6 +35,22 @@ function pooledHard(from: number, to: number) {
 }
 const HARD_BEFORE = pooledHard(FIRST_YEAR, 2022);
 const HARD_SINCE = pooledHard(2023, LAST_YEAR);
+
+/**
+ * The Key numbers box, the FAQ and the table's "In papers" column, all
+ * computed from the grid. The windows are the page's own earliest and latest.
+ */
+const windowById = (id: (typeof WINDOWS)[number]["id"]) => WINDOWS.find((w) => w.id === id)!;
+const INSIGHTS = perPaperInsightInput({
+  exam: "CDS",
+  subject: "Maths",
+  rows: CHAPTER_MATRIX,
+  years: PAPERS.map((p) => p.year),
+  questions: TOTAL_Q,
+  early: windowById("early"),
+  recent: windowById("recent"),
+});
+const APPEARED = appearedColumn(INSIGHTS);
 
 export const metadata: Metadata = {
   title: `CDS Maths Trends — what moved, ${FIRST_YEAR}–${LAST_YEAR}`,
@@ -89,6 +108,7 @@ export default async function Trends() {
         <StatBlock stats={stats} />
       </GuideHero>
       <ReportProvenance route={ROUTE} papers={stats[1].value} questions={stats[2].value} />
+      <KeyInsights lines={keyInsights(INSIGHTS)} />
 
       <section className="mt-10 rounded-lg border-l-4 border-primary bg-primary/5 p-5">
         <h2 className="text-base font-semibold tracking-tight">How to read this page</h2>
@@ -162,6 +182,11 @@ export default async function Trends() {
                     {w.label}
                   </th>
                 ))}
+                {APPEARED && (
+                  <th scope="col" className="px-3 py-2 text-right font-medium">
+                    In papers (of {APPEARED.of})
+                  </th>
+                )}
               </tr>
             </thead>
             <tbody className="tabular-nums">
@@ -172,6 +197,15 @@ export default async function Trends() {
                   <td className="px-3 py-2 text-right">{fmt(r.early)}</td>
                   <td className="px-3 py-2 text-right">{fmt(r.mid)}</td>
                   <td className="px-3 py-2 text-right">{fmt(r.recent)}</td>
+                  {APPEARED && (
+                    <td
+                      className={`px-3 py-2 text-right ${
+                        APPEARED.byChapter[r.chapter] === APPEARED.of ? "font-semibold text-brand-accent" : ""
+                      }`}
+                    >
+                      {APPEARED.byChapter[r.chapter] ?? 0}
+                    </td>
+                  )}
                 </tr>
               ))}
             </tbody>
@@ -233,6 +267,8 @@ export default async function Trends() {
           <ExamPaperMatrix papers={PAPERS} rows={CHAPTER_MATRIX} />
         </div>
       </section>
+
+      <TrendsFaq faq={trendsFaq(INSIGHTS)} path={ROUTE} />
 
       <PrevNextNav
         prev={{ href: "/guide/cds-maths/formulas", label: "Formulas" }}

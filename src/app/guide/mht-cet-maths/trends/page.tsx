@@ -9,6 +9,9 @@ import ExamPaperMatrix from "@/app/guide/_components/ExamPaperMatrix";
 import ChapterRateTable from "@/app/guide/_components/ChapterRateTable";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 import ReportProvenance from "@/app/guide/_components/ReportProvenance";
+import KeyInsights from "@/app/guide/_components/KeyInsights";
+import TrendsFaq from "@/app/guide/_components/TrendsFaq";
+import { appearedColumn, keyInsights, perPaperInsightInput, trendsFaq } from "@/lib/guide/trendsInsights";
 import { trendsReportFor } from "@/lib/guide/trendsReports";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { resolveTaxonomy } from "@/lib/guide/resolveTaxonomy";
@@ -31,6 +34,21 @@ import {
 } from "../_data/matrix.generated";
 
 export const revalidate = 86400;
+
+/**
+ * The Key numbers box, the FAQ and the rate table's "In papers" column, all
+ * computed from the matrix. The windows are the drift cards' own: the two
+ * years before the 2025 syllabus move against the years since.
+ */
+const INSIGHTS = perPaperInsightInput({
+  exam: "MHT-CET",
+  subject: "Maths",
+  rows: CHAPTER_MATRIX,
+  years: SHIFT_PAPERS.map((p) => p.year),
+  questions: MATRIX_META.questions,
+  early: { from: 2023, to: 2024, label: "2023-2024" },
+  recent: { from: 2025, to: 2026, label: "2025-2026" },
+});
 
 /** Totals derived from the data, never hard-coded. */
 const TOTAL_PAPERS = HARD_BY_YEAR.reduce((s, y) => s + y.papers, 0);
@@ -150,6 +168,7 @@ export default async function Trends() {
         <StatBlock stats={stats} />
       </GuideHero>
       <ReportProvenance route="/guide/mht-cet-maths/trends" papers={stats[1].value} questions={stats[2].value} />
+      <KeyInsights lines={keyInsights(INSIGHTS)} />
 
       {/* Read-this-first: why rates, not counts */}
       <section className="mt-10 rounded-lg border-l-4 border-primary bg-primary/5 p-5">
@@ -309,7 +328,7 @@ export default async function Trends() {
           row to confirm each year still adds up to a whole paper.
         </p>
         <div className="mt-6">
-          <ChapterRateTable columns={YEAR_COLUMNS} rows={YEAR_RATES} />
+          <ChapterRateTable columns={YEAR_COLUMNS} rows={YEAR_RATES} appeared={appearedColumn(INSIGHTS)} />
         </div>
         <p className="mt-4 font-serif text-sm leading-relaxed text-muted-foreground">
           The greyed columns are{" "}
@@ -553,6 +572,8 @@ export default async function Trends() {
           </BrowseLink>
         </div>
       </section>
+
+      <TrendsFaq faq={trendsFaq(INSIGHTS)} path="/guide/mht-cet-maths/trends" />
 
       <PrevNextNav
         prev={{
