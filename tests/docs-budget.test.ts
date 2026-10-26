@@ -41,6 +41,22 @@ describe("auditDocsBudget — parsing", () => {
     expect(r.entries[0].bytes).toBeGreaterThan(300);
   });
 
+  it("measures a Windows (CRLF) checkout the same as the committed LF text", () => {
+    // Git stores CLAUDE.md with LF; a Windows checkout adds a CR per line.
+    // Counting those CRs made the gate fail on Windows for a log that is under
+    // its ceiling as committed (2026-10-26: 35,914 committed, 36,022 on disk).
+    const lf = doc([entry("2026-09-16"), entry("2026-09-15 (third)")], "filler line\nanother");
+    const crlf = lf.replace(/\n/g, "\r\n");
+    const a = auditDocsBudget(lf, "2026-09-16", LOOSE);
+    const b = auditDocsBudget(crlf, "2026-09-16", LOOSE);
+    expect(b.fileBytes).toBe(a.fileBytes);
+    expect(b.decisionsBytes).toBe(a.decisionsBytes);
+    expect(b.entries.map((e) => [e.tag, e.bytes])).toEqual(a.entries.map((e) => [e.tag, e.bytes]));
+
+    const ceiling = { ...LOOSE, decisionsMaxBytes: a.decisionsBytes };
+    expect(auditDocsBudget(crlf, "2026-09-16", ceiling).ok).toBe(true);
+  });
+
   it("FAILS CLOSED when the Decisions log section is absent", () => {
     const r = auditDocsBudget("# PYQ Vault\n\n## Stack\n\nno decisions here", "2026-09-16", LOOSE);
     expect(r.ok).toBe(false);
