@@ -25,6 +25,20 @@ describe("shelfOf", () => {
     expect(shelfOf(book("cbse-12-biology-solved-papers"))).toEqual({ shelf: "cbse-12", subject: "Biology" });
   });
 
+  it("puts a Repeated PYQs book on its board's shelf, beside the same subject's Solved Papers", () => {
+    expect(shelfOf(book("cbse-12-physics-repeated-pyqs"))).toEqual({ shelf: "cbse-12", subject: "Physics" });
+    const shelf = storeShelves([
+      book("cbse-12-physics-solved-papers"),
+      book("cbse-12-chemistry-solved-papers"),
+      book("cbse-12-physics-repeated-pyqs"),
+    ])[0];
+    expect(shelf.books.map((b) => b.book.slug)).toEqual([
+      "cbse-12-physics-solved-papers",
+      "cbse-12-physics-repeated-pyqs",
+      "cbse-12-chemistry-solved-papers",
+    ]);
+  });
+
   it("sends a book the catalog does not know to More books, titled as stored", () => {
     expect(shelfOf(book("nda-maths-pyq", "NDA Mathematics PYQ Book"))).toEqual({ shelf: "more", subject: "NDA Mathematics PYQ Book" });
   });

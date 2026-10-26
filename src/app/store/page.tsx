@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { listStoreEbooks, type StoreEbook } from "@/lib/ebooks/query";
 import { formatRupees } from "@/lib/billing/plans";
-import { KIND_LABEL } from "@/lib/ebooks/theme";
+import { KIND_LABEL, PREMIUM_KINDS } from "@/lib/ebooks/theme";
 import { storeShelves } from "@/lib/ebooks/shelves";
 import BookCover from "./_components/BookCover";
 
@@ -29,6 +29,7 @@ const KIND_LINE: Record<StoreEbook["kind"], string> = {
   notes: "Every chapter taught",
   pyq: "Previous year questions, solved",
   papers: "Past board papers, solved",
+  repeats: "Questions the board asks again",
 };
 
 const shelfId = (key: string) => `shelf-${key}`;
@@ -82,7 +83,7 @@ export default async function StorePage() {
                         className="group block rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                       >
                         <div className="transition-transform group-hover:-translate-y-1 motion-reduce:transition-none motion-reduce:group-hover:translate-y-0">
-                          <BookCover kind={book.kind} subject={subject} over={book.kind === "papers" ? s.label : undefined} stats={book.stats} />
+                          <BookCover kind={book.kind} subject={subject} over={PREMIUM_KINDS.has(book.kind) ? s.label : undefined} stats={book.stats} />
                         </div>
                         <div className="mt-3">
                           <span className="block text-sm font-semibold">{subject}</span>

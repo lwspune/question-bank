@@ -44,14 +44,17 @@ import {
   buildFormulaChapterHtml,
   buildNotesChapterHtml,
   buildPyqChapterHtml,
+  buildRepeatsChapterHtml,
   buildSolvedPaperHtml,
   formulaPreview,
   notesPreview,
   papersPreview,
   pyqPreview,
 } from "../../src/lib/ebooks/bookHtml";
-import { EBOOKS, ebookChapters, getEbook, type EbookChapter, type EbookDefinition, type PapersEbook } from "../../src/lib/ebooks/catalog";
+import { EBOOKS, ebookChapters, getEbook, type EbookChapter, type EbookDefinition, type PapersEbook, type RepeatsEbook } from "../../src/lib/ebooks/catalog";
 import { pickBookPapers } from "../../src/lib/ebooks/boardPapers";
+import { repeatChapters, type RepeatPlanRow } from "../../src/lib/ebooks/repeats";
+import { homeworkQuestions } from "../../src/lib/homework/dayExport";
 import { getExamBySlug } from "../../src/lib/exam/examContext";
 import { getBoardPaperForExport, listPublishedPapers } from "../../src/lib/questionPapers/query";
 import { boardPaperExport } from "../../src/lib/questionPapers/exportPlan";
@@ -101,8 +104,11 @@ type Totals = {
   traps: number;
   topics: number;
   examples: number;
-  /** Solved Papers: the year of each paper printed. */
+  /** Solved Papers: the year of each paper printed; Repeated PYQs: every year its lines name. */
   years: number[];
+  /** Repeated PYQs: questions asked again, and recurring types. */
+  repeats: number;
+  types: number;
 };
 
 /** Shared by every PYQ chapter of one book: the bank's ordering facts, read once. */
@@ -203,6 +209,23 @@ async function asJpegs(images: Map<string, string>): Promise<Map<string, string>
   return out;
 }
 
+/**
+ * The cover and contents: a few seconds' print, which the local browser has
+ * now and then hung on for good (2026-10-26: HSC Physics' Repeated PYQs cover
+ * sat 15 minutes with plain-text content; the Solved Papers pilot's cover hung
+ * once and printed at once on a rerun). Two minutes, then a fresh browser, three tries.
+ */
+async function printFront(html: string): Promise<Uint8Array> {
+  for (let attempt = 1; ; attempt++) {
+    try {
+      return await printPdf(html, { timeoutMs: 120_000 });
+    } catch (err) {
+      if (attempt === 3) throw err;
+      console.log(`  cover print failed (${err instanceof Error ? err.message : err}); retrying with a fresh browser`);
+    }
+  }
+}
+
 /** "February 2026"; a CBSE paper, which has no sitting, is its year. */
 function paperLabel(p: { sitting: string | null; year: number }): string {
   return `${p.sitting ?? ""} ${p.year}`.trim();
@@ -273,6 +296,128 @@ async function buildPaperChapters(
   return { built, preview };
 }
 
+type PlanItemRow = {
+  day: number;
+  position: number;
+  sub: number;
+  note: string;
+  question_id: string;
+  question: { chapter: { id: string; name: string; order_index: number | null } | null } | null;
+};
+
+/** A subject's homework plan, every item with its question's chapter. Paged: a plan runs past 1,000 items. */
+async function loadPlanRows(anon: SupabaseClient, ebook: RepeatsEbook): Promise<{ slug: string; rows: RepeatPlanRow[] }> {
+  const exam = getExamBySlug(ebook.examSlug);
+  if (!exam) throw new Error(`ebook ${ebook.slug}: no exam "${ebook.examSlug}"`);
+  const { data: ex, error: exErr } = await anon.from("exams").select("id").eq("name", exam.examName).single();
+  if (exErr || !ex) throw new Error(`${ebook.slug}: exam ${exam.examName}: ${exErr?.message}`);
+  const { data: sub, error: subErr } = await anon.from("subjects").select("id").eq("exam_id", ex.id).eq("name", ebook.subject).single();
+  if (subErr || !sub) throw new Error(`${ebook.slug}: subject ${ebook.subject}: ${subErr?.message}`);
+  // One plan per subject; were there two, the first by slug, as the Top 10 tab reads it.
+  const { data: plans, error: planErr } = await anon
+    .from("homework_plans")
+    .select("id, slug")
+    .eq("exam_id", ex.id)
+    .eq("subject_id", sub.id)
+    .order("slug")
+    .limit(1);
+  if (planErr) throw new Error(`${ebook.slug}: plan: ${planErr.message}`);
+  const plan = (plans ?? [])[0] as { id: string; slug: string } | undefined;
+  if (!plan) throw new Error(`ebook ${ebook.slug}: no published homework plan for ${exam.examName} ${ebook.subject}`);
+  const rows: RepeatPlanRow[] = [];
+  for (let from = 0; ; from += 1000) {
+    const { data, error } = await anon
+      .from("homework_plan_items")
+      .select("day, position, sub, note, question_id, question:questions(chapter:chapters(id, name, order_index))")
+      .eq("plan_id", plan.id)
+      .order("day")
+      .order("position")
+      .order("sub")
+      .range(from, from + 999);
+    if (error) throw new Error(`${ebook.slug}: plan items: ${error.message}`);
+    for (const r of (data ?? []) as unknown as PlanItemRow[]) {
+      const ch = r.question?.chapter;
+      // A question no longer PUBLIC reads with no chapter: the book stops rather than print a slot short.
+      if (!ch) throw new Error(`${ebook.slug}: plan question ${r.question_id} is not readable (not PUBLIC?)`);
+      rows.push({
+        day: r.day,
+        position: r.position,
+        sub: r.sub,
+        note: r.note,
+        questionId: r.question_id,
+        chapterId: ch.id,
+        chapterName: ch.name,
+        chapterOrder: ch.order_index ?? 0,
+      });
+    }
+    if (!data || data.length < 1000) return { slug: plan.slug, rows };
+  }
+}
+
+const chapterSlug = (name: string) => name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
+/** A Repeated PYQs book's chapters: each chapter's repeats and recurring types, then its solutions. */
+async function buildRepeatChapters(
+  admin: SupabaseClient,
+  anon: SupabaseClient,
+  ebook: RepeatsEbook,
+  only: string[] | undefined,
+  totals: Totals,
+  head: string
+): Promise<{ built: Built[]; preview: string }> {
+  const plan = await loadPlanRows(anon, ebook);
+  const all = repeatChapters(plan.rows);
+  if (all.length === 0) throw new Error(`ebook ${ebook.slug}: plan ${plan.slug} has no repeats`);
+  const chapters = all.filter((c) => !only || only.includes(chapterSlug(c.chapterName)));
+  if (chapters.length === 0) throw new Error(`--only matched none of: ${all.map((c) => chapterSlug(c.chapterName)).join(", ")}`);
+  console.log(`  plan ${plan.slug}`);
+  const built: Built[] = [];
+  let preview = "";
+  for (const [i, c] of chapters.entries()) {
+    const parts = c.slots.flatMap((s) => s.parts.map((p) => ({ ...p, slot: s })));
+    const ids = [...new Set(parts.map((p) => p.questionId))];
+    const rows = await loadQuestions(anon, ids);
+    if (rows.size !== ids.length) throw new Error(`${c.chapterName}: only ${rows.size} of ${ids.length} questions are PUBLIC`);
+    const setOf = new Map<string, string>();
+    for (const s of c.slots) if (s.parts.length > 1) for (const p of s.parts) setOf.set(p.questionId, `repeats-${i + 1}-${s.number}`);
+    const questions = homeworkQuestions(parts.map((p) => rows.get(p.questionId)!), setOf);
+    const counts = { repeats: c.slots.filter((s) => s.kind === "repeat").length, types: c.slots.filter((s) => s.kind === "type").length };
+    const [paperImages, keyImages] = await Promise.all([imageDataUris(admin, "paper", questions), imageDataUris(admin, "key", questions)]);
+    const pdf = await printPdf(
+      buildRepeatsChapterHtml({
+        number: i + 1,
+        name: c.chapterName,
+        bookTitle: ebook.title,
+        questions,
+        noteOf: new Map(parts.map((p) => [p.questionId, p.slot.note])),
+        printedOf: new Map(parts.map((p) => [p.questionId, { number: p.label, marks: null, orBefore: false }])),
+        counts,
+        images: await asJpegs(new Map([...paperImages, ...keyImages])),
+        head,
+      }),
+      { timeoutMs: PRINT_TIMEOUT_MS }
+    );
+    totals.questions += c.slots.length;
+    totals.repeats += counts.repeats;
+    totals.types += counts.types;
+    for (const s of c.slots) for (const y of s.note.match(/\b20\d\d\b/g) ?? []) totals.years.push(Number(y));
+    if (!preview) {
+      const slot = c.slots.find((s) => s.kind === "repeat" && s.parts.length === 1);
+      const q = slot ? rows.get(slot.parts[0].questionId) : undefined;
+      if (slot && q && !q.imageUrl && !q.context && (q.text ?? "").length < 220) {
+        preview = papersPreview(q, { label: c.chapterName, meta: "", section: slot.note, number: "1" });
+      }
+    }
+    console.log(`  ${String(i + 1).padStart(2)}. ${c.chapterName.padEnd(40)} ${String(counts.repeats).padStart(3)} again ${String(counts.types).padStart(3)} types`);
+    built.push({
+      chapter: { number: i + 1, slug: chapterSlug(c.chapterName), name: c.chapterName, classLabel: null, notes: null, bookChapter: null },
+      pdf,
+      detail: `${c.slots.length} q`,
+    });
+  }
+  return { built, preview };
+}
+
 async function buildNotesChapter(
   ebook: EbookDefinition,
   c: EbookChapter,
@@ -311,6 +456,14 @@ function coverStats(ebook: EbookDefinition, chapters: number, t: Totals): { valu
       { value: String(chapters), label: "board papers" },
       { value: from === to ? String(from) : `${from}-${String(to).slice(2)}`, label: "years" },
       { value: n(t.questions), label: "questions" },
+      { value: "Full", label: "solutions" },
+    ];
+  }
+  if (ebook.kind === "repeats") {
+    return [
+      { value: String(chapters), label: "chapters" },
+      { value: n(t.repeats), label: "asked again" },
+      { value: n(t.types), label: "recurring types" },
       { value: "Full", label: "solutions" },
     ];
   }
@@ -354,7 +507,7 @@ async function buildBook(
 
   const outDir = join(process.cwd(), "generated-papers", "ebooks", ebook.slug);
   mkdirSync(join(outDir, "parts"), { recursive: true });
-  const totals: Totals = { questions: 0, formulas: 0, tables: 0, traps: 0, topics: 0, examples: 0, years: [] };
+  const totals: Totals = { questions: 0, formulas: 0, tables: 0, traps: 0, topics: 0, examples: 0, years: [], repeats: 0, types: 0 };
   const pyqCtx: PyqContext = { metaByChapter: new Map() };
   if (ebook.kind === "pyq") {
     for (const m of await loadBookMeta(client, getBookBySlug(ebook.bookSlug)!)) {
@@ -363,9 +516,11 @@ async function buildBook(
   }
 
   let built: Built[] = [];
-  let papersCover = "";
+  let boardCover = "";
   if (ebook.kind === "papers") {
-    ({ built, preview: papersCover } = await buildPaperChapters(client, anon, ebook, only, totals, head));
+    ({ built, preview: boardCover } = await buildPaperChapters(client, anon, ebook, only, totals, head));
+  } else if (ebook.kind === "repeats") {
+    ({ built, preview: boardCover } = await buildRepeatChapters(client, anon, ebook, only, totals, head));
   } else {
     for (const c of ebookChapters(ebook).filter((c) => !only || only.includes(c.slug))) {
       built.push(
@@ -378,8 +533,8 @@ async function buildBook(
   for (const b of built) writeFileSync(join(outDir, "parts", `${String(b.chapter.number).padStart(2, "0")}-${b.chapter.slug}.pdf`), b.pdf);
 
   const preview =
-    ebook.kind === "papers"
-      ? papersCover
+    ebook.kind === "papers" || ebook.kind === "repeats"
+      ? boardCover
       : ebook.kind === "pyq"
       ? pyqCtx.firstQuestion
         ? pyqPreview(pyqCtx.firstQuestion.q, pyqCtx.firstQuestion.sitting)
@@ -403,9 +558,9 @@ async function buildBook(
       subtitle: ebook.subtitle,
       stats: coverStats(ebook, built.length, totals),
       preview,
-      // The Solved Papers books wear the premium cover; its edition is the newest paper's year.
+      // The board books wear the premium cover; its edition is the newest year in the book.
       cover:
-        ebook.kind === "papers"
+        ebook.kind === "papers" || ebook.kind === "repeats"
           ? { over: ebook.board, main: ebook.subjectTitle, edition: `${Math.max(...totals.years)} Edition` }
           : undefined,
       chapters: contents,
@@ -415,26 +570,31 @@ async function buildBook(
   };
   let frontPages = 2;
   let front = frontFor(frontPages);
-  // The chapters' long limit here too: a cold browser has taken over the default 45 s on a one-page cover.
-  let frontPdf = await printPdf(front.html, { timeoutMs: PRINT_TIMEOUT_MS });
+  let frontPdf = await printFront(front.html);
   const actual = (await pageCounts([frontPdf]))[0];
   if (actual !== frontPages) {
     frontPages = actual;
     front = frontFor(frontPages);
-    frontPdf = await printPdf(front.html, { timeoutMs: PRINT_TIMEOUT_MS });
+    frontPdf = await printFront(front.html);
   }
 
   const footer = `PYQ Vault  ·  ${ebook.title} ${KIND_LABEL[ebook.kind]}`;
   const master = await assembleMaster([frontPdf, ...built.map((b) => b.pdf)], { footer, paper: PAPER });
-  // A Solved Papers book's sample is its newest paper, which it prints first.
-  const sampleBuilt = ebook.kind === "papers" ? built[0] : built.find((b) => b.chapter.slug === ebook.sampleChapter);
+  // A Solved Papers book's sample is its newest paper, which it prints first; a
+  // Repeated PYQs book's is its fullest chapter, the one that shows most of the book.
+  const sampleBuilt =
+    ebook.kind === "papers"
+      ? built[0]
+      : ebook.kind === "repeats"
+        ? [...built].sort((a, b) => parseInt(b.detail, 10) - parseInt(a.detail, 10))[0]
+        : built.find((b) => b.chapter.slug === ebook.sampleChapter);
   const sample = sampleBuilt
     ? await assembleMaster([frontPdf, sampleBuilt.pdf], { footer: `${footer}  ·  Free sample`, paper: PAPER })
     : null;
   const masterPages = (await pageCounts([master]))[0];
   const summary = {
     pageCount: masterPages,
-    questionCount: ebook.kind === "pyq" || ebook.kind === "papers" ? totals.questions : null,
+    questionCount: ebook.kind === "pyq" || ebook.kind === "papers" || ebook.kind === "repeats" ? totals.questions : null,
     stats: coverStats(ebook, built.length, totals),
     contents: front.contents,
   };

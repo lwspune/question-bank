@@ -7,7 +7,7 @@ import Breadcrumbs from "@/components/nav/Breadcrumbs";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { getStoreEbook, type StoreEbook } from "@/lib/ebooks/query";
 import { formatRupees } from "@/lib/billing/plans";
-import { KIND_LABEL } from "@/lib/ebooks/theme";
+import { KIND_LABEL, PREMIUM_KINDS } from "@/lib/ebooks/theme";
 import BookCover, { subjectOf } from "../_components/BookCover";
 import { SHELVES, shelfOf } from "@/lib/ebooks/shelves";
 import EbookBuyBox from "./EbookBuyBox";
@@ -54,6 +54,12 @@ const INSIDE: Record<StoreEbook["kind"], string[]> = {
     "A worked solution to every question, under its printed number",
     "Model answers for every written question",
   ],
+  repeats: [
+    "Every question the board has asked more than once, most-asked first",
+    "Then the types of question it keeps coming back to",
+    "When each was asked, on a line over the question",
+    "A worked solution to every question at the end of its chapter",
+  ],
 };
 
 export default async function StoreBookPage({ params }: { params: { slug: string } }) {
@@ -61,7 +67,7 @@ export default async function StoreBookPage({ params }: { params: { slug: string
   if (!book) notFound();
   // A Solved Papers book: the board line over the subject, as its cover prints it.
   const shelf = shelfOf(book);
-  const board = book.kind === "papers" ? SHELVES.find((s) => s.key === shelf.shelf)?.label : undefined;
+  const board = PREMIUM_KINDS.has(book.kind) ? SHELVES.find((s) => s.key === shelf.shelf)?.label : undefined;
   const subject = board ? shelf.subject : subjectOf(book.title);
   const heading = board ? `${board} ${subject}` : subject;
   const stats = book.stats.length

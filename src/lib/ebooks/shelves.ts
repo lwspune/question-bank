@@ -7,7 +7,7 @@
  * last "More books" shelf, so no book on sale can drop off the page. This file
  * does not import lib/ebooks/catalog, which loads the whole notes library.
  */
-import { PAPERS_EBOOKS } from "./paperBooks";
+import { PAPERS_EBOOKS, REPEATS_EBOOKS } from "./paperBooks";
 
 export const SHELVES = [
   { key: "mht-cet", label: "MHT-CET", short: "MHT-CET" },
@@ -21,12 +21,12 @@ export const SHELVES = [
 export type ShelfKey = (typeof SHELVES)[number]["key"];
 export type Shelf<B> = { key: ShelfKey; label: string; short: string; books: { book: B; subject: string }[] };
 
-const PAPER_BOOK = new Map(PAPERS_EBOOKS.map((b) => [b.slug, b]));
+const BOARD_BOOK = new Map([...PAPERS_EBOOKS, ...REPEATS_EBOOKS].map((b) => [b.slug, b]));
 
 /** A book's shelf and the subject it is shown under. */
 export function shelfOf(book: { slug: string; title: string }): { shelf: ShelfKey; subject: string } {
-  const paper = PAPER_BOOK.get(book.slug);
-  if (paper) return { shelf: paper.examSlug as ShelfKey, subject: paper.subjectTitle };
+  const board = BOARD_BOOK.get(book.slug);
+  if (board) return { shelf: board.examSlug as ShelfKey, subject: board.subjectTitle };
   if (book.slug.startsWith("mht-cet-")) {
     return { shelf: "mht-cet", subject: book.title.replace(/^MHT-CET\s+/, "").replace(/\s+(Formula|Notes|PYQ) Book$/i, "") };
   }
