@@ -11,6 +11,7 @@ import { rotation } from "./scenes/rotation";
 import { lpRegion } from "./scenes/lpRegion";
 import { slab } from "./scenes/slab";
 import { space3d } from "./scenes/space3d";
+import { truthTable } from "./scenes/truthTable";
 import type { Scene } from "./types";
 
 // Each scene owns its params type, so the registry holds them loosely.
@@ -23,6 +24,7 @@ export const SCENES: Record<string, Scene<any>> = {
   coordGeometry,
   space3d,
   lpRegion,
+  truthTable,
 };
 
 export function getScene(id: string): Scene<any> | undefined {

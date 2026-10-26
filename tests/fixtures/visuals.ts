@@ -309,6 +309,29 @@ export const LP_VISUAL = {
   answer: { value: 1, label: "(8, 4)" },
 };
 
+// MHT-CET Mathematical Logic 020a2a68: [(p ∧ q) → (∼p ∨ r)] ∨ [(∼p ∨ r) → (p ∧ q)] is a tautology (key B).
+export const TT_SOLUTION = String.raw`It has the form \((X \to Y) \vee (Y \to X) \equiv \sim X \vee Y \vee \sim Y \vee X\), which is always true. It is a tautology.`;
+
+export const TT_VISUAL = {
+  v: 1,
+  scene: "truthTable",
+  params: {
+    columns: [
+      { f: "p & q", label: "X = p ∧ q" },
+      { f: "~p | r", label: "Y = ∼p ∨ r" },
+      { f: "(p & q) -> (~p | r)", label: "X → Y" },
+      { f: "(~p | r) -> (p & q)", label: "Y → X" },
+    ],
+    ask: { kind: "classify", f: "((p & q) -> (~p | r)) | ((~p | r) -> (p & q))", expect: "tautology" },
+  },
+  steps: [
+    { from: 0, beats: ["vars", "columns"] },
+    { from: 1, beats: ["answer"] },
+  ],
+  fingerprint: solutionFingerprint(TT_SOLUTION),
+  answer: { value: 1, label: "a tautology" },
+};
+
 export const FIXTURES = [
   { name: "rotation", visual: ROTATION_VISUAL, solution: ROTATION_SOLUTION },
   { name: "circleArc", visual: ARC_VISUAL, solution: ARC_SOLUTION },
@@ -325,4 +348,5 @@ export const FIXTURES = [
   { name: "space3d", visual: S3_SKEW_VISUAL, solution: S3_SKEW_SOLUTION },
   { name: "space3d", visual: S3_FOOT_VISUAL, solution: S3_FOOT_SOLUTION },
   { name: "lpRegion", visual: LP_VISUAL, solution: LP_SOLUTION },
+  { name: "truthTable", visual: TT_VISUAL, solution: TT_SOLUTION },
 ] as const;

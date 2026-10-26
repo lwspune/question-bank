@@ -126,6 +126,7 @@ fit check, Sonnet for drafts.
 | `coordGeometry` | points, lines (one or a pair from one equation), circles, conics, tangents, a locus; distance, intercepts, slope, radius, chord, tangent length, area, angle between lines | CET Circle, Straight Line, Conic, Pair of Straight Lines (pair + angle); JEE Conics, Straight Lines; CET + JEE Complex Numbers (z = x + iy) |
 | `space3d` | 3D points, lines, planes, vectors; foot, image, meets; distance, angle, projection, length, area, volume | CET Line and Plane, Vectors; JEE 3D Geometry, Vector Algebra |
 | `lpRegion` | linear programming: constraint lines, the feasible region, corners, the objective line sliding to the optimum; max, min, range, optimum point(s), one corner vs a whole edge | CET Linear Programming |
+| `truthTable` | statement logic (`lib/visuals/logic.ts`): the truth table filled column by column; equivalent, tautology / contradiction / contingency, the letters a value forces, values at a row, negation / converse / inverse / contrapositive / dual | CET Mathematical Logic |
 | `circleArc`, `quadraticFamily`, `rotation`, `slab` | Phase 0 pilots | one question each |
 
 Every ask can report its value `squared` and/or `times` k (keys like d² or 6 × area).
