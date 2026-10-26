@@ -400,6 +400,49 @@ export function buildSolvedPaperHtml(input: SolvedPaperInput): string {
   );
 }
 
+// ── Repeated PYQs chapter (board) ───────────────────────────────────────────
+
+export type RepeatsChapterInput = {
+  number: number;
+  name: string;
+  bookTitle: string;
+  /** Print order; a case study's parts share a setId, so its passage prints once. */
+  questions: QuestionRow[];
+  /** Question id -> its plan line ("Asked 3 times: 2022, 2024, 2026"). */
+  noteOf: ReadonlyMap<string, string>;
+  /** Question id -> its number in the chapter ("4", "4 (a)"). */
+  printedOf: ReadonlyMap<string, PrintedLabel>;
+  counts: { repeats: number; types: number };
+  images?: Map<string, string>;
+  head: string;
+};
+
+const plural = (n: number, one: string, many: string) => `${n} ${n === 1 ? one : many}`;
+
+export function buildRepeatsChapterHtml(input: RepeatsChapterInput): string {
+  const common = { title: input.name, questions: input.questions, images: input.images, printedOf: input.printedOf, head: "" };
+  const meta = [
+    input.counts.repeats ? `${input.counts.repeats} asked again` : null,
+    input.counts.types ? plural(input.counts.types, "recurring type", "recurring types") : null,
+  ]
+    .filter(Boolean)
+    .join(" · ");
+  const header =
+    `<header class="chead"><div class="cn">${String(input.number).padStart(2, "0")}</div><div>` +
+    `<div class="eyebrow">Chapter ${input.number} · ${esc(input.bookTitle)}</div><h1>${esc(input.name)}</h1>` +
+    `<div class="pmeta">${esc(meta)}</div></div></header>`;
+  return doc(
+    input.name,
+    "repeats",
+    input.head,
+    header +
+      // Every question under its own line: how often the board asked it.
+      `<section id="questions" class="bp">${paperBodyHtml({ ...common, sectionOf: input.noteOf, headingEveryQuestion: true })}</section>` +
+      `<section id="solutions" class="newpage bp"><h2 class="part">Solutions · ${esc(input.name)}</h2>` +
+      `${keyDetailsHtml({ ...common, includeSolutions: true })}</section>`
+  );
+}
+
 // ── Cover and contents ──────────────────────────────────────────────────────
 
 const FRONT_CSS = `
@@ -439,6 +482,14 @@ const HOW: Record<EbookKind, string> = {
     "Each chapter opens with its topics, then every past question grouped by topic, oldest sitting first. The answer key and a worked solution to every question close the chapter, so you can attempt a topic before you check. A question asked in more than one sitting is printed once, with every sitting listed.",
   papers:
     "Each paper is printed as the board set it, newest first: its sections, its question numbers, the marks for each question and the OR choices. Its solutions start on a fresh page under the same numbers, so you can sit the paper against the clock before you check.",
+  repeats:
+    "Each chapter gathers the questions the board has asked more than once, most-asked first, then the types of question it keeps coming back to. A line over each says when it was asked. The solutions close the chapter under the same numbers, so you can try them all before you check.",
+};
+
+/** The gold seal on the premium cover, by kind. */
+const SEAL: Partial<Record<EbookKind, [string, string, string]>> = {
+  papers: ["Fully", "Solved", "Every Q"],
+  repeats: ["Asked", "Again", "& again"],
 };
 
 export type EbookFrontInput = {
@@ -512,6 +563,7 @@ const PREMIUM_CSS = `
 
 function premiumCoverHtml(input: EbookFrontInput & { cover: NonNullable<EbookFrontInput["cover"]> }): string {
   const { cover } = input;
+  const seal = SEAL[input.kind] ?? ["Fully", "Solved", "Every Q"];
   const stats = input.stats.map((s) => `<div class="pc-stat"><b>${esc(s.value)}</b><span>${esc(s.label)}</span></div>`).join("");
   return (
     `<section class="pcover"><div class="pc-top"><span class="pc-brand"><i></i>PYQ VAULT</span><span class="pc-ed">${esc(cover.edition)}</span></div>` +
@@ -519,7 +571,7 @@ function premiumCoverHtml(input: EbookFrontInput & { cover: NonNullable<EbookFro
     `<div class="pc-over">${esc(cover.over)}</div><h1 class="pc-main${cover.main.length > 14 ? " long" : ""}">${esc(cover.main)}</h1>` +
     `<div class="pc-rule"></div><div class="pc-sub">${esc(input.subtitle)}</div>` +
     `<div class="pc-stack"><div class="pc-sheet s3"></div><div class="pc-sheet s2"></div><div class="pc-sheet s1">${input.preview}</div>` +
-    `<div class="pc-seal"><small>Fully</small><b>Solved</b><small>Every Q</small></div></div>` +
+    `<div class="pc-seal"><small>${seal[0]}</small><b>${seal[1]}</b><small>${esc(seal[2])}</small></div></div>` +
     `<div class="pc-stats">${stats}</div><div class="pc-foot"><span>www.pyqvault.com</span><span>Worked solutions under the printed numbers</span></div></section>`
   );
 }

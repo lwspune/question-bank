@@ -19,11 +19,11 @@ import { getBookBySlug, type BookChapter } from "@/lib/books/registry";
 import { getNotesChapterBySlug, getNotesChaptersForSubject, type NotesChapterRegistration } from "@/lib/notes/chapters";
 import { BOOK_POSITION } from "@/lib/notes/bookOrder";
 import { formulaPageCounts } from "@/lib/formula/chapterPages";
-import { PAPERS_EBOOKS, type PapersEbook } from "./paperBooks";
+import { PAPERS_EBOOKS, REPEATS_EBOOKS, type PapersEbook, type RepeatsEbook } from "./paperBooks";
 
-export { PAPERS_EBOOKS, type PapersEbook };
+export { PAPERS_EBOOKS, REPEATS_EBOOKS, type PapersEbook, type RepeatsEbook };
 
-export type EbookKind = "formula" | "notes" | "pyq" | "papers";
+export type EbookKind = "formula" | "notes" | "pyq" | "papers" | "repeats";
 
 type Common = {
   slug: string;
@@ -46,7 +46,9 @@ export type PyqEbook = Common & {
   chapterOrder: readonly string[];
 };
 /** A Solved Papers book (lib/ebooks/paperBooks): its chapters are papers, read at build time. */
-export type EbookDefinition = NotesEbook | PyqEbook | PapersEbook;
+export type EbookDefinition = NotesEbook | PyqEbook | PapersEbook | RepeatsEbook;
+/** The board books: their chapters come from the database at build time, not from this catalog. */
+export type BoardEbook = PapersEbook | RepeatsEbook;
 
 const CET_SUBJECTS = [
   { route: "mht-cet-maths", title: "MHT-CET Mathematics", sample: "circle" },
@@ -116,6 +118,7 @@ export const EBOOKS: readonly EbookDefinition[] = [
     sampleChapter: "circle",
   },
   ...PAPERS_EBOOKS,
+  ...REPEATS_EBOOKS,
 ];
 
 /** PYQ chapters with no notes, so no BOOK_POSITION entry: their class, by hand. */
@@ -151,7 +154,7 @@ function hasFormulaContent(c: NotesChapterRegistration): boolean {
 }
 
 /** The ebook's chapters in print order. A Solved Papers book's come from the database (scripts/ebooks/build). */
-export function ebookChapters(ebook: Exclude<EbookDefinition, PapersEbook>): EbookChapter[] {
+export function ebookChapters(ebook: Exclude<EbookDefinition, BoardEbook>): EbookChapter[] {
   if (ebook.kind === "pyq") {
     const book = getBookBySlug(ebook.bookSlug);
     if (!book) throw new Error(`ebook ${ebook.slug}: no book "${ebook.bookSlug}"`);
