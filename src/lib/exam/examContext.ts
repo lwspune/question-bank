@@ -294,7 +294,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     tier: "school",
     displayName: "Foundation",
     examName: "Foundation Course", // must match the `exams` DB row exactly
-    solutionCoverage: "none", // 7% solved (2026-10-23)
+    solutionCoverage: "some", // 87% solved (2026-10-26)
     guidesPath: null, // no /guide subtree — falls back to the index
     notesPath: "/notes/foundation-course", // exam hub: "coming soon" until notes ship
     practiceOnly: true, // worksheet-only corpus → /browse defaults to the Practice view
@@ -305,7 +305,6 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     tier: "senior",
     displayName: "NEET",
     examName: "NEET", // must match the `exams` DB row exactly
-    solutionCoverage: "some", // 47% solved (2026-10-23)
     guidesPath: null, // no /guide subtree yet — falls back to the index
     notesPath: "/notes/neet", // exam hub: "coming soon" until NEET notes ship
     hasMocks: true, // 8 NEET (UG) mocks (2021-2026 + 2 Re-NEET) published at /mock
@@ -603,7 +602,8 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     tier: "senior",
     displayName: "IPMAT Indore",
     examName: "IPMAT Indore", // must match the `exams` DB row exactly
-    solutionCoverage: "none", // answers only (2026-10-23)
+    solutionCoverage: "some", // 89% solved (2026-10-26)
+    pastPaperSolutions: true, // 407/450 past-paper questions solved (2026-10-26)
     family: "IPMAT",
     familyLabel: "Indore",
     familyAxis: "Institute", // the picker chooses between IIMs, not classes
@@ -623,7 +623,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     tier: "senior",
     displayName: "IPMAT Rohtak",
     examName: "IPMAT Rohtak", // must match the `exams` DB row exactly
-    solutionCoverage: "none", // answers only (2026-10-23)
+    solutionCoverage: "some", // 84% solved (2026-10-26)
     family: "IPMAT",
     familyLabel: "Rohtak",
     familyAxis: "Institute", // the picker chooses between IIMs, not classes
@@ -639,7 +639,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     // has its own name, and the `exams` row uses it. Only its label INSIDE the
     // family is "Jammu", so the picker reads Indore / Rohtak / Jammu.
     examName: "JIPMAT", // must match the `exams` DB row exactly
-    solutionCoverage: "none", // answers only (2026-10-23)
+    solutionCoverage: "some", // 89% solved (2026-10-26)
     family: "IPMAT",
     familyLabel: "Jammu",
     familyAxis: "Institute", // the picker chooses between IIMs, not classes
@@ -660,7 +660,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     tier: "graduate",
     displayName: "MPSC Group B & C",
     examName: "MPSC Group B & C Prelims", // must match the `exams` DB row exactly
-    solutionCoverage: "none", // 1% solved (2026-10-23)
+    solutionCoverage: "some", // 66% solved (2026-10-26)
     family: "MPSC",
     familyStage: "Prelims",
     familyLabel: "Group B & C",
@@ -679,7 +679,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     tier: "graduate",
     displayName: "MPSC State Services Prelims",
     examName: "MPSC State Services Prelims", // must match the `exams` DB row exactly
-    solutionCoverage: "none", // 2% solved (2026-10-23)
+    solutionCoverage: "some", // 63% solved (2026-10-26)
     family: "MPSC",
     familyStage: "Prelims",
     familyLabel: "State Services",
@@ -711,7 +711,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     tier: "graduate",
     displayName: "MPSC Group B Combined Mains",
     examName: "MPSC Group B Combined Mains", // must match the `exams` DB row exactly
-    solutionCoverage: "none", // answers only (2026-10-23)
+    solutionCoverage: "some", // 46% solved (2026-10-26)
     family: "MPSC",
     familyStage: "Mains",
     familyLabel: "Group B Combined",
@@ -726,7 +726,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     tier: "graduate",
     displayName: "MPSC STI Mains",
     examName: "MPSC STI Mains", // must match the `exams` DB row exactly
-    solutionCoverage: "none", // 14% solved (2026-10-23)
+    solutionCoverage: "some", // 66% solved (2026-10-26)
     family: "MPSC",
     familyStage: "Mains",
     familyLabel: "STI",
@@ -741,7 +741,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     tier: "graduate",
     displayName: "MPSC ASO Mains",
     examName: "MPSC ASO Mains", // must match the `exams` DB row exactly
-    solutionCoverage: "none", // answers only (2026-10-23)
+    solutionCoverage: "some", // 65% solved (2026-10-26)
     family: "MPSC",
     familyStage: "Mains",
     familyLabel: "ASO",
@@ -756,7 +756,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     tier: "graduate",
     displayName: "MPSC PSI Mains",
     examName: "MPSC PSI Mains", // must match the `exams` DB row exactly
-    solutionCoverage: "none", // answers only (2026-10-23)
+    solutionCoverage: "some", // 63% solved (2026-10-26)
     family: "MPSC",
     familyStage: "Mains",
     familyLabel: "PSI",

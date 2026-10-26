@@ -38,9 +38,11 @@ const base = {
 };
 
 describe("landingLead", () => {
-  it("promises answers alone for an exam whose questions carry no worked solutions", () => {
+  // IPMAT Indore is "some" (89% solved, 2026-10-26); answersPhrase's own test
+  // covers "none", which no exam declares any more.
+  it("promises worked solutions for some for an exam where only some questions carry them", () => {
     expect(landingLead({ ...base, examName: "IPMAT Indore", profile })).toBe(
-      "176 IPMAT Indore Mathematics previous year questions (PYQs) from 19 papers, 2017 to 2026, with answers."
+      "176 IPMAT Indore Mathematics previous year questions (PYQs) from 19 papers, 2017 to 2026, with answers, and worked solutions for some."
     );
   });
 

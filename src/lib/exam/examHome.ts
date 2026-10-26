@@ -122,11 +122,17 @@ export function examHomeDescription(m: ExamHomeModel): string {
   if (m.links.mocks) extras.push("timed mocks of real papers");
   if (m.links.notes) extras.push("chapter notes");
   if (m.links.board) extras.push("a textbook-solutions reader");
+  // "Some" joins the list as an item, so the sentence reads "with answers,
+  // worked solutions for some, and timed mocks of real papers" rather than
+  // "with answers, and worked solutions for some and timed mocks".
+  const someInList = m.solutionCoverage === "some" && extras.length > 0;
+  const items = someInList ? ["worked solutions for some", ...extras] : extras;
+  const answers = someInList ? "with answers" : answersPhrase(m.solutionCoverage);
   const tail =
-    extras.length === 0
+    items.length === 0
       ? ""
-      : extras.length === 1
-        ? ` and ${extras[0]}`
-        : `, ${extras.slice(0, -1).join(", ")}, and ${extras[extras.length - 1]}`;
-  return `${m.displayName} on PYQ Vault: ${examKindPhrase(counts, m.practiceOnly)}${span}${shape}, ${answersPhrase(m.solutionCoverage)}${tail}. Free to browse.`;
+      : items.length === 1
+        ? ` and ${items[0]}`
+        : `, ${items.slice(0, -1).join(", ")}, and ${items[items.length - 1]}`;
+  return `${m.displayName} on PYQ Vault: ${examKindPhrase(counts, m.practiceOnly)}${span}${shape}, ${answers}${tail}. Free to browse.`;
 }
