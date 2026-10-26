@@ -80,6 +80,7 @@ export type BudgetReport = {
 };
 
 const bytes = (s: string): number => Buffer.byteLength(s, "utf8");
+const toLf = (s: string): string => s.replace(/\r\n/g, "\n");
 
 const ENTRY_RE = /^- \*\*(\d{4}-\d{2}-\d{2}(?: \([a-z]+\))?)/;
 
@@ -170,11 +171,16 @@ export function reconcileArchive(claudeMd: string, historyMd: string | null): st
 }
 
 export function auditDocsBudget(
-  claudeMd: string,
+  rawClaudeMd: string,
   today: string,
   limits: BudgetLimits = LIMITS,
-  memoryMd: string | null = null,
+  rawMemoryMd: string | null = null,
 ): BudgetReport {
+  // Measure the text as committed (LF). A Windows checkout carries a CR per
+  // line, which pushed a log that was under its ceiling over it locally while
+  // CI passed (2026-10-26).
+  const claudeMd = toLf(rawClaudeMd);
+  const memoryMd = rawMemoryMd === null ? null : toLf(rawMemoryMd);
   const errors: Finding[] = [];
   const warnings: Finding[] = [];
   const fileBytes = bytes(claudeMd);
