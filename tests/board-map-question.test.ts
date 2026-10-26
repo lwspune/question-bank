@@ -1,5 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { BOARD_QUESTION_COLUMNS, asBilingual, mapBoardQuestion, type RawBoardQuestion } from "@/lib/board/query";
+import { usableVisual } from "@/lib/visuals/visual";
+import { ROTATION_VISUAL } from "./fixtures/visuals";
 
 const raw = (over: Partial<RawBoardQuestion> = {}): RawBoardQuestion => ({
   id: "q1",
@@ -47,6 +49,18 @@ describe("mapBoardQuestion", () => {
     expect(q.translations?.mr?.solution).toBe("योग्य पर्याय: C.");
     expect(q.translations?.mr?.options).toEqual({ A: "5%", C: "0%" });
   });
+
+  it("attaches an animated solution that passes its check", () => {
+    const q = mapBoardQuestion(raw({ solution_visual: ROTATION_VISUAL }));
+    expect(q.solutionVisual).not.toBeNull();
+    expect(q.solutionVisual).toEqual(usableVisual(ROTATION_VISUAL));
+  });
+
+  it("adds no solutionVisual key when there is no visual, or one that fails its check", () => {
+    expect("solutionVisual" in mapBoardQuestion(raw())).toBe(false);
+    expect("solutionVisual" in mapBoardQuestion(raw({ solution_visual: null }))).toBe(false);
+    expect("solutionVisual" in mapBoardQuestion(raw({ solution_visual: { scene: "no-such-scene" } }))).toBe(false);
+  });
 });
 
 describe("asBilingual", () => {
@@ -74,5 +88,9 @@ describe("BOARD_QUESTION_COLUMNS", () => {
   it("selects the Marathi question and option rows, or the readers silently lose them", () => {
     expect(BOARD_QUESTION_COLUMNS).toMatch(/question_translations\(lang, text, context, solution\)/);
     expect(BOARD_QUESTION_COLUMNS).toMatch(/options\([^)]*option_translations\(lang, text\)/);
+  });
+
+  it("selects the animated solution, or past papers never show one", () => {
+    expect(BOARD_QUESTION_COLUMNS).toMatch(/\bsolution_visual\b/);
   });
 });

@@ -1,6 +1,7 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { paperKeyFor } from "./papers";
 import { translationsFromRows, type Bilingual, type Translation } from "@/lib/i18n/bilingual";
+import { usableVisual } from "@/lib/visuals/visual";
 
 /**
  * Data layer for the `/board` reader — the book-faithful, exercise-by-exercise
@@ -38,6 +39,9 @@ export type BoardQuestion = {
   /** The board's Marathi-medium print of the same question (migration 0118).
    *  Absent on an English-only question, so its view-model is unchanged. */
   translations?: { mr?: Translation };
+  /** Animated solution (migration 0184), already through usableVisual(). Absent
+   *  when there is none that checks, so those questions read exactly as before. */
+  solutionVisual?: unknown;
 };
 
 /** A block = one book sub-section (a run of Solved Examples, one Exercise, or a
@@ -145,6 +149,7 @@ export function groupBoardSections(items: SectionedQuestion[]): BoardSectionGrou
       format: q.format,
       setId: q.setId,
       options: q.options,
+      ...(q.solutionVisual ? { solutionVisual: q.solutionVisual } : {}),
     });
   }
   return groups;
@@ -162,7 +167,7 @@ type RawOption = {
  *  that drops the two translation embeds silently shows English only, so
  *  tests/board-map-question.test.ts pins them. */
 export const BOARD_QUESTION_COLUMNS =
-  "id, question_number, text, context, solution, image_url, solution_image_url, question_format, set_id, " +
+  "id, question_number, text, context, solution, image_url, solution_image_url, solution_visual, question_format, set_id, " +
   "options(label, text, is_correct, image_url, option_translations(lang, text)), " +
   "question_translations(lang, text, context, solution)";
 
@@ -174,6 +179,7 @@ export type RawBoardQuestion = {
   solution: string | null;
   image_url: string | null;
   solution_image_url: string | null;
+  solution_visual?: unknown;
   question_format: "mcq" | "subjective";
   set_id: string | null;
   options: RawOption[] | null;
@@ -193,6 +199,7 @@ export function asBilingual(q: BoardQuestion): Bilingual {
 /** One row → the reader's question, options in A-D order, Marathi attached when printed. */
 export function mapBoardQuestion(r: RawBoardQuestion): BoardQuestion {
   const translations = translationsFromRows(r.question_translations, r.options);
+  const visual = usableVisual(r.solution_visual);
   return {
     id: r.id,
     questionNumber: r.question_number,
@@ -207,6 +214,7 @@ export function mapBoardQuestion(r: RawBoardQuestion): BoardQuestion {
       .map((o) => ({ label: o.label, text: o.text, isCorrect: o.is_correct, imageUrl: o.image_url }))
       .sort((a, b) => a.label.localeCompare(b.label)),
     ...(translations ? { translations } : {}),
+    ...(visual ? { solutionVisual: visual } : {}),
   };
 }
 type RawRow = {
@@ -217,6 +225,7 @@ type RawRow = {
   solution: string | null;
   image_url: string | null;
   solution_image_url: string | null;
+  solution_visual?: unknown;
   question_format: "mcq" | "subjective";
   set_id: string | null;
   section_seq: number;
@@ -275,6 +284,12 @@ export async function resolveBoardChapter(
   };
 }
 
+/** The columns the chapter reader loads. Pinned by tests/board-solution-visual.test.ts:
+ *  dropping solution_visual here hides every animated solution on /board. */
+export const BOARD_CHAPTER_COLUMNS = `id, question_number, text, context, solution, image_url, solution_image_url, solution_visual,
+       question_format, set_id, section_seq, section_group, section_label, section_kind,
+       options(label, text, is_correct, image_url)`;
+
 /** Load one chapter's book-ordered sections for the reader. Returns null when
  *  the chapter has no backfilled (section_seq) PUBLIC rows. */
 export async function getBoardChapter(
@@ -283,11 +298,7 @@ export async function getBoardChapter(
 ): Promise<BoardChapter | null> {
   const { data, error } = await client
     .from("questions")
-    .select(
-      `id, question_number, text, context, solution, image_url, solution_image_url,
-       question_format, set_id, section_seq, section_group, section_label, section_kind,
-       options(label, text, is_correct, image_url)`
-    )
+    .select(BOARD_CHAPTER_COLUMNS)
     .eq("exam_id", opts.examId)
     .eq("chapter_id", opts.chapterId)
     .not("section_seq", "is", null)
