@@ -365,7 +365,12 @@ export const truthTable: Scene<TruthParams> = {
     }
     return [...under, ...grid, ...cells, ...over];
 
+    // A beat counts as done once any later beat has played, so a step list that skips one
+    // (straight from the letters to the answer) still shows the whole table.
     function prog(beat: string) {
+      const order = ["vars", "columns", "answer"];
+      const later = order.slice(order.indexOf(beat) + 1);
+      if (!played.includes(beat) && later.some((b) => played.includes(b))) return 1;
       return progressOf(beat, played, t);
     }
   },

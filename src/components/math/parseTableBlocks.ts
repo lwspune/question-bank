@@ -36,6 +36,31 @@ function splitCells(line: string): string[] {
 }
 
 /**
+ * Where the tables are, by line: [first, last] (0-based, inclusive) for each
+ * run parseTableBlocks reads as a table, and how many lines the masked text
+ * has. Same scan as parseTableBlocks, so the two cannot disagree. A caller
+ * mapping lines back to the original text must check `lines` against its own
+ * line count: a math zone spanning a line break makes them differ.
+ */
+export function tableLineRanges(input: string): { ranges: [number, number][]; lines: number } {
+  if (!input) return { ranges: [], lines: 0 };
+  const lines = maskMathZones(input).masked.replace(/\r\n?/g, "\n").split("\n");
+  const ranges: [number, number][] = [];
+  let i = 0;
+  while (i < lines.length) {
+    if (isRowLike(lines[i]) && lines[i + 1] !== undefined && isSeparatorRow(lines[i + 1])) {
+      let j = i + 2;
+      while (j < lines.length && isRowLike(lines[j]) && !isSeparatorRow(lines[j])) j++;
+      ranges.push([i, j - 1]);
+      i = j;
+    } else {
+      i++;
+    }
+  }
+  return { ranges, lines: lines.length };
+}
+
+/**
  * Split question/option text into an ordered list of prose and table blocks.
  * A run of lines is a table ONLY when a row-like line is immediately followed
  * by a separator row (`|---|---|`) — that requirement is what stops inline
