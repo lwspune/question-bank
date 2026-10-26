@@ -10,7 +10,7 @@ export default function KeyInsights({ lines }: { lines: string[] }) {
   if (lines.length === 0) return null;
   return (
     <section aria-labelledby="key-numbers" className="mt-10 rounded-lg border bg-card p-6">
-      <h2 id="key-numbers" className="flex items-center gap-2 text-lg font-semibold tracking-tight">
+      <h2 id="key-numbers" className="flex scroll-mt-24 items-center gap-2 text-lg font-semibold tracking-tight">
         <ListChecks className="h-5 w-5 text-brand-accent" aria-hidden />
         Key numbers
       </h2>

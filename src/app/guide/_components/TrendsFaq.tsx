@@ -19,7 +19,7 @@ export default function TrendsFaq({ faq, path }: { faq: FaqEntry[]; path: string
         // Server-rendered from numbers computed at build, no user input → safe.
         dangerouslySetInnerHTML={{ __html: JSON.stringify(payload) }}
       />
-      <h2 id="trends-faq" className="text-xl font-semibold tracking-tight sm:text-2xl">
+      <h2 id="trends-faq" className="scroll-mt-24 text-xl font-semibold tracking-tight sm:text-2xl">
         Questions students ask
       </h2>
       <dl className="mt-6 space-y-6">
