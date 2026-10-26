@@ -282,11 +282,11 @@ export const lpRegion: Scene<LpParams> = {
     const over: Shape[] = [];
     const taken: [number, number, number, number][] = [];
     const free = (x0: number, y0: number, w0: number) => !taken.some(([a, b, c, d]) => x0 < c && x0 + w0 > a && y0 - 11 < d && y0 + 2 > b);
-    const label = (x0: number, y0: number, s: string, tone: "amber" | "fg" | "brand" | "good", size = 10.5): Shape | null => {
+    const label = (x0: number, y0: number, s: string, tone: "amber" | "fg" | "brand" | "good", size = 10.5, force = false): Shape | null => {
       const w0 = s.length * size * 0.56;
       const left = Math.max(2, Math.min(W - 2 - w0, x0));
       const top = Math.max(PT - 14 + 11, Math.min(H - 4, y0));
-      if (!free(left, top, w0)) return null;
+      if (!force && !free(left, top, w0)) return null;
       taken.push([left, top - 11, left + w0, top + 2]);
       return text(left, top, s, { tone, size, weight: 600, anchor: "start" });
     };
@@ -295,6 +295,9 @@ export const lpRegion: Scene<LpParams> = {
     const axisY = ya <= 0 && yb >= 0 ? Y(0) : PB;
     const axisX = xa <= 0 && xb >= 0 ? X(0) : PL;
     axes.push(line(PL, axisY, PR, axisY, { stroke: "muted", width: 1.2 }), line(axisX, PT, axisX, PB, { stroke: "muted", width: 1.2 }));
+    // The axes are obstacles too, so no line label sits on one.
+    for (let qx = PL; qx <= PR; qx += 4) taken.push([qx - 1.5, axisY - 1.5, qx + 1.5, axisY + 1.5]);
+    for (let qy = PT; qy <= PB; qy += 4) taken.push([axisX - 1.5, qy - 1.5, axisX + 1.5, qy + 1.5]);
     const step = (s: number, ticks: number) => {
       const raw = s / ticks;
       const mag = Math.pow(10, Math.floor(Math.log10(raw)));
@@ -327,57 +330,79 @@ export const lpRegion: Scene<LpParams> = {
       return [inside[0], inside[inside.length - 1]];
     };
 
-    // Corner dots and labels first claim their room, so line labels go elsewhere.
-    const pc = prog("corners");
-    const cx = f.corners.reduce((s, q) => s + X(q[0]), 0) / Math.max(1, f.corners.length);
-    const cy = f.corners.reduce((s, q) => s + Y(q[1]), 0) / Math.max(1, f.corners.length);
-    const cornerLabels: Shape[] = [];
-    f.corners.forEach((q, i) => {
-      const share = Math.max(0, Math.min(1, pc * f.corners.length - i));
-      if (share <= 0) return;
-      const [qx, qy] = px(q);
-      over.push(dot(qx, qy, 4, "fg", { stroke: "card", width: 1.5, opacity: share }));
-      const s = pt(q);
-      const wl = s.length * 10.5 * 0.56;
-      // Outward from the region's centre first, then the other three sides.
-      const right = qx >= cx;
-      const below = qy >= cy;
-      const spots: [number, number][] = [
-        [right ? qx + 7 : qx - wl - 7, below ? qy + 14 : qy - 7],
-        [right ? qx + 7 : qx - wl - 7, below ? qy - 7 : qy + 14],
-        [right ? qx - wl - 7 : qx + 7, below ? qy + 14 : qy - 7],
-        [right ? qx - wl - 7 : qx + 7, below ? qy - 7 : qy + 14],
-      ];
-      for (const [lx, ly] of spots) {
-        const sh = label(lx, ly, s, "fg");
-        if (sh) {
-          cornerLabels.push(sh);
-          break;
-        }
-      }
-    });
-
-    // Constraint lines, one after another, each with its equation near its top end.
-    const pk = prog("constraints");
-    p.constraints.forEach((k, i) => {
-      const share = Math.max(0, Math.min(1, pk * p.constraints.length - i));
-      if (share <= 0) return;
+    // LAYOUT, independent of how far the solution has got, so no label moves
+    // once it has appeared. The lines and the corner dots are obstacles; corner
+    // labels go first (a corner always shows its coordinates), then each line's
+    // equation goes in the clearest spot along it.
+    const segs = p.constraints.map((k) => {
       const n = Math.hypot(k.half.a, k.half.b);
       const seg = clip(k.half.a / n, k.half.b / n, k.half.c / n);
-      if (!seg) return;
-      const [A, B] = [px(seg[0]), px(seg[1])];
-      draw.push(line(A[0], A[1], A[0] + (B[0] - A[0]) * share, A[1] + (B[1] - A[1]) * share, { stroke: "amber", width: 2 }));
-      if (share >= 1 && k.label) {
-        for (const tt of [0.88, 0.72, 0.56, 0.4, 0.24, 0.12]) {
-          const lx = A[0] + (B[0] - A[0]) * tt;
-          const ly = A[1] + (B[1] - A[1]) * tt;
-          const sh = label(lx + 6, ly - 6, k.label, "amber") ?? label(lx - k.label.length * 5.9 - 6, ly + 14, k.label, "amber");
-          if (sh) {
-            draw.push(sh);
-            break;
-          }
+      return seg ? ([px(seg[0]), px(seg[1])] as [XY, XY]) : null;
+    });
+    for (const sg of segs) {
+      if (!sg) continue;
+      const [A, B] = sg;
+      const steps = Math.max(2, Math.ceil(Math.hypot(B[0] - A[0], B[1] - A[1]) / 4));
+      for (let i = 0; i <= steps; i++) {
+        const qx = A[0] + ((B[0] - A[0]) * i) / steps;
+        const qy = A[1] + ((B[1] - A[1]) * i) / steps;
+        taken.push([qx - 1.5, qy - 1.5, qx + 1.5, qy + 1.5]);
+      }
+    }
+    for (const q of f.corners) {
+      const [qx, qy] = px(q);
+      taken.push([qx - 4, qy - 4, qx + 4, qy + 4]);
+    }
+    const cx = f.corners.reduce((s0, q) => s0 + X(q[0]), 0) / Math.max(1, f.corners.length);
+    const cy = f.corners.reduce((s0, q) => s0 + Y(q[1]), 0) / Math.max(1, f.corners.length);
+    const cornerLabels = f.corners.map((q) => {
+      const [qx, qy] = px(q);
+      const s0 = pt(q);
+      const wl = s0.length * 10.5 * 0.56;
+      // Outward from the region's centre first, then the other three sides, then farther out.
+      const right = qx >= cx;
+      const below = qy >= cy;
+      const spots: [number, number][] = [];
+      for (const d of [7, 14]) {
+        spots.push(
+          [right ? qx + d : qx - wl - d, below ? qy + 7 + d : qy - d],
+          [right ? qx + d : qx - wl - d, below ? qy - d : qy + 7 + d],
+          [right ? qx - wl - d : qx + d, below ? qy + 7 + d : qy - d],
+          [right ? qx - wl - d : qx + d, below ? qy - d : qy + 7 + d],
+        );
+      }
+      for (const [lx, ly] of spots) {
+        const sh = label(lx, ly, s0, "fg");
+        if (sh) return sh;
+      }
+      return label(spots[0][0], spots[0][1], s0, "fg", 10.5, true);
+    });
+    const lineLabels = p.constraints.map((k, i) => {
+      const sg = segs[i];
+      if (!sg || !k.label) return null;
+      const [A, B] = sg;
+      const wl = k.label.length * 10.5 * 0.56;
+      for (const tt of [0.88, 0.76, 0.64, 0.52, 0.4, 0.28, 0.16, 0.06]) {
+        const lx = A[0] + (B[0] - A[0]) * tt;
+        const ly = A[1] + (B[1] - A[1]) * tt;
+        for (const [ox, oy] of [[6, -6], [-wl - 6, 14], [-wl - 6, -6], [6, 14]] as [number, number][]) {
+          const sh = label(lx + ox, ly + oy, k.label, "amber");
+          if (sh) return sh;
         }
       }
+      return null;
+    });
+
+    // Constraint lines, one after another, each with its equation once drawn.
+    const pk = prog("constraints");
+    p.constraints.forEach((_, i) => {
+      const share = Math.max(0, Math.min(1, pk * p.constraints.length - i));
+      const sg = segs[i];
+      if (share <= 0 || !sg) return;
+      const [A, B] = sg;
+      draw.push(line(A[0], A[1], A[0] + (B[0] - A[0]) * share, A[1] + (B[1] - A[1]) * share, { stroke: "amber", width: 2 }));
+      const lab = lineLabels[i];
+      if (share >= 1 && lab) draw.push(lab);
     });
 
     // The feasible region.
@@ -385,7 +410,17 @@ export const lpRegion: Scene<LpParams> = {
     if (pr > 0 && f.poly.length >= 3) {
       under.push({ kind: "path", d: "M" + f.poly.map((q) => px(q).map((v) => Math.round(v * 100) / 100).join(" ")).join(" L") + " Z", fill: "goodSoft", stroke: "good", width: 1, opacity: pr });
     }
-    over.push(...cornerLabels);
+
+    // The corners, one after another.
+    const pc = prog("corners");
+    f.corners.forEach((q, i) => {
+      const share = Math.max(0, Math.min(1, pc * f.corners.length - i));
+      if (share <= 0) return;
+      const [qx, qy] = px(q);
+      over.push(dot(qx, qy, 4, "fg", { stroke: "card", width: 1.5, opacity: share }));
+      const lab = cornerLabels[i];
+      if (lab) over.push(share >= 1 ? lab : { ...lab, opacity: share } as Shape);
+    });
 
     // The objective line, sliding from the worst corner to the best.
     const goal = p.ask.kind.startsWith("min") ? f.min : f.max;
@@ -403,21 +438,24 @@ export const lpRegion: Scene<LpParams> = {
       }
     }
 
-    // The optimum: its corner(s), an optimal edge drawn thick.
-    if (pa > 0 && !goal.unbounded && goal.at.length) {
-      if (goal.at.length >= 2) {
-        const [A, B] = [px(goal.at[0]), px(goal.at[1])];
-        over.push(line(A[0], A[1], B[0], B[1], { stroke: "good", width: 5, cap: "round", opacity: pa }));
-      } else if (goal.ray) {
-        const A = goal.at[0];
-        const far = Math.max(xb - xa, yb - ya) * 3;
-        const end: XY = [A[0] + goal.ray[0] * far, A[1] + goal.ray[1] * far];
-        const [P, Q] = [px(A), px(end)];
-        over.push(line(P[0], P[1], P[0] + (Q[0] - P[0]) * pa, P[1] + (Q[1] - P[1]) * pa, { stroke: "good", width: 5, cap: "round" }));
-      }
-      for (const q of goal.at) {
-        const [qx, qy] = px(q);
-        over.push(dot(qx, qy, 6 * Math.min(1, pa * 1.5), "good", { stroke: "card", width: 2 }));
+    // The optimum: its corner(s), an optimal edge drawn thick. Max minus min marks both ends.
+    const marked = p.ask.kind === "range" ? [f.max, f.min] : [goal];
+    if (pa > 0 && marked.every((g) => !g.unbounded && g.at.length)) {
+      for (const g of marked) {
+        if (g.at.length >= 2) {
+          const [A, B] = [px(g.at[0]), px(g.at[1])];
+          over.push(line(A[0], A[1], B[0], B[1], { stroke: "good", width: 5, cap: "round", opacity: pa }));
+        } else if (g.ray) {
+          const A = g.at[0];
+          const far = Math.max(xb - xa, yb - ya) * 3;
+          const end: XY = [A[0] + g.ray[0] * far, A[1] + g.ray[1] * far];
+          const [P, Q] = [px(A), px(end)];
+          over.push(line(P[0], P[1], P[0] + (Q[0] - P[0]) * pa, P[1] + (Q[1] - P[1]) * pa, { stroke: "good", width: 5, cap: "round" }));
+        }
+        for (const q of g.at) {
+          const [qx, qy] = px(q);
+          over.push(dot(qx, qy, 6 * Math.min(1, pa * 1.5), "good", { stroke: "card", width: 2 }));
+        }
       }
       if (pa > 0.6) over.push(text(W - 6, 17, p.ask.label ?? header(p, f), { tone: "good", size: 12.5, weight: 700, anchor: "end" }));
     }

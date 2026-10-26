@@ -98,6 +98,58 @@ describe("lpRegion drawing", () => {
     expect(texts(["constraints", "region", "corners"]).some((t) => t.includes("104"))).toBe(false);
     expect(texts(["constraints", "region", "corners", "sweep", "answer"]).some((t) => t.includes("104"))).toBe(true);
   });
+  // MHT-CET 68d3ed44: x + y <= 20, y >= 5, x <= 10; the labels used to sit on the lines.
+  const crowded = {
+    window: { x: [0, 14], y: [0, 22] },
+    constraints: [
+      { a: 1, b: 1, op: "<=", c: 20 },
+      { a: 0, b: 1, op: ">=", c: 5 },
+      { a: 1, b: 0, op: "<=", c: 10 },
+    ],
+    objective: { a: 7, b: 8 },
+    ask: { kind: "max" },
+  };
+  const all = ["constraints", "region", "corners", "sweep", "answer"];
+  const texts = (raw: unknown, played: string[]) =>
+    scene().frame(parse(raw), { played, t: 1, slider: undefined }).filter((s): s is Extract<Shape, { kind: "text" }> => s.kind === "text");
+  it("keeps corner and line labels off the constraint lines", () => {
+    const shapes = scene().frame(parse(crowded), { played: all, t: 1, slider: undefined });
+    const amber = shapes.filter((s): s is Extract<Shape, { kind: "line" }> => s.kind === "line" && s.stroke === "amber");
+    const labels = texts(crowded, all).filter((s) => s.tone === "fg" || s.tone === "amber");
+    expect(labels.length).toBeGreaterThanOrEqual(7); // 4 corners + 3 lines
+    for (const lab of labels) {
+      const w = lab.text.length * (lab.size ?? 10.5) * 0.56;
+      const box = { l: lab.x, r: lab.x + w, t: lab.y - 9, b: lab.y };
+      for (const ln of amber) {
+        for (let i = 0; i <= 200; i++) {
+          const x = ln.x1 + ((ln.x2 - ln.x1) * i) / 200;
+          const y = ln.y1 + ((ln.y2 - ln.y1) * i) / 200;
+          expect(x > box.l && x < box.r && y > box.t && y < box.b, `"${lab.text}" crosses a line`).toBe(false);
+        }
+      }
+    }
+  });
+  it("shows every corner's coordinates, and keeps each label where it first appeared", () => {
+    const end = texts(crowded, all);
+    for (const c of ["(0, 5)", "(10, 5)", "(10, 10)", "(0, 20)"]) expect(end.map((s) => s.text)).toContain(c);
+    const early = texts(crowded, ["constraints"]).find((s) => s.text === "x + y = 20")!;
+    const late = end.find((s) => s.text === "x + y = 20")!;
+    expect([late.x, late.y]).toEqual([early.x, early.y]);
+  });
+  it("marks both the best and the worst corner for max minus min", () => {
+    // Z = 3x + 5y on the q1 region: max 60 at (0, 12), min 0 at (0, 0).
+    const shapes = scene().frame(parse({ ...q1, objective: { a: 3, b: 5 }, ask: { kind: "range" } }), { played: all, t: 1, slider: undefined });
+    const big = shapes.filter((s): s is Extract<Shape, { kind: "circle" }> => s.kind === "circle" && s.fill === "good" && s.r >= 5);
+    expect(big).toHaveLength(2);
+  });
+  it("keeps line labels off the axes", () => {
+    // MHT-CET f8f19210: x + y >= 1 meets the x-axis near the origin.
+    const raw = { window: { x: [0, 4], y: [0, 3] }, constraints: [{ a: 2, b: 3, op: "<=", c: 6 }, { a: 1, b: 1, op: ">=", c: 1 }], objective: { a: 3, b: 1 }, ask: { kind: "range" } };
+    const shapes = scene().frame(parse(raw), { played: all, t: 1, slider: undefined });
+    const axisY = shapes.find((s): s is Extract<Shape, { kind: "line" }> => s.kind === "line" && s.stroke === "muted" && s.y1 === s.y2)!.y1;
+    const lab = texts(raw, all).find((s) => s.text === "x + y = 1")!;
+    expect(lab.y - 9 > axisY || lab.y < axisY).toBe(true);
+  });
   it("slides the objective line during the sweep", () => {
     const dashed = (t: number) =>
       scene()
