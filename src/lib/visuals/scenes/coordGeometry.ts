@@ -12,17 +12,19 @@
  *               hyperbola center, a, b, axis "x": (x-h)^2/a^2 - (y-k)^2/b^2 = 1 (axis "y" swaps)
  *   lines     { id, through: [p, q] } | { id, eq: [a, b, c] } (ax + by + c = 0)
  *             | { id, tangentAt: p, to: curve } | { id, tangentsFrom: p, to: curve }
- *               (tangentsFrom makes lines id1, id2, ... numbered by slope, lowest first)
+ *             | { id, pair: [A, B, C, D, E, F] } (Ax² + Bxy + Cy² + Dx + Ey + F = 0, split by the scene)
+ *               (tangentsFrom and pair make lines id1, id2, ... numbered by slope, lowest first)
  *   segments  { from: p, to: q, label? }
  *   locus     { fixed: p, on: circle or ellipse, ratio }: the point dividing
  *             fixed -> moving in that ratio, traced as the moving point goes round
  *
  * The answer (params.ask) is measured on the scene's own model: distance (any
  * two of point, line, circle; point to a conic), yIntercept, xIntercept, slope,
- * radius, locusRadius, chordLength, tangentLength (point to circle), area.
+ * radius, locusRadius, chordLength, tangentLength (point to circle), area,
+ * angle (between two lines: acute unless obtuse, as the angle in radians or its tan, cos or sin).
  * Beats: given, derived, construct, trace, answer.
  */
-import { arcPath, dot, line, num, text } from "../geometry";
+import { arcPath, dot, line, num, onCircle, text } from "../geometry";
 import { finite, obj, optionalLabel, pair, ParamError, safely } from "../params";
 import type { Scene, Shape } from "../types";
 
@@ -79,7 +81,8 @@ type Ask =
   | { kind: "locusRadius" }
   | { kind: "chordLength"; line: string; of: string }
   | { kind: "tangentLength"; from: string; to: string }
-  | { kind: "area"; points: string[] };
+  | { kind: "area"; points: string[] }
+  | { kind: "angle"; lines: [string, string]; as: "angle" | "tan" | "cos" | "sin"; obtuse: boolean };
 
 export interface CoordParams {
   x: [number, number];
@@ -100,6 +103,8 @@ const W = 340;
 const PL = 36;
 const PR = 330;
 const PT = 28;
+/** Radius in px of the arc that marks an angle between two lines. */
+const ANGLE_R = 24;
 const BOTTOM = 36;
 
 const sub = (p: XY, q: XY): XY => [p[0] - q[0], p[1] - q[1]];
@@ -198,6 +203,8 @@ export interface CoordFacts {
     | { kind: "point"; at: XY }
     | { kind: "slope"; from: XY; run: number; rise: number }
     | { kind: "polygon"; points: XY[] }
+    /** An arc at the meeting point, anticlockwise from angle `from` through `span` (radians, plane coordinates). */
+    | { kind: "angle"; at: XY; from: number; span: number }
     | { kind: "none" };
 }
 
@@ -324,7 +331,62 @@ function measure(p: CoordParams): Pick<CoordFacts, "value" | "mark"> {
       });
       return { value: Math.abs(s) / 2, mark: { kind: "polygon", points: pts } };
     }
+    case "angle": {
+      const [L, M] = [ln(ask.lines[0]), ln(ask.lines[1])];
+      const at = meet(L, M)!;
+      // Direction angles of the two lines, and how far M turns past L (mod pi).
+      const t1 = Math.atan2(L.a, -L.b);
+      const t2 = Math.atan2(M.a, -M.b);
+      const d = (((t2 - t1) % Math.PI) + Math.PI) % Math.PI;
+      const acute = Math.min(d, Math.PI - d);
+      const want = ask.obtuse ? Math.PI - acute : acute;
+      const mark: CoordFacts["mark"] = Math.abs(want - d) < 1e-12 ? { kind: "angle", at, from: t1, span: d } : { kind: "angle", at, from: t2, span: Math.PI - d };
+      const c = Math.cos(want);
+      const value = ask.as === "angle" ? want : ask.as === "cos" ? c : ask.as === "sin" ? Math.sin(want) : Math.abs(c) < 1e-12 ? NaN : Math.tan(want);
+      return { value, mark };
+    }
   }
+}
+
+/** Where two lines meet, or null when they are parallel. */
+function meet(L: { a: number; b: number; c: number }, M: { a: number; b: number; c: number }): XY | null {
+  const det = L.a * M.b - L.b * M.a;
+  if (Math.abs(det) < 1e-9) return null;
+  return [(L.b * M.c - M.b * L.c) / det, (M.a * L.c - L.a * M.c) / det];
+}
+
+/**
+ * The two lines of a pair A x^2 + B xy + C y^2 + D x + E y + F = 0, each with
+ * a^2 + b^2 = 1, or a reason it is not a real pair of distinct lines.
+ */
+function splitPair(coef: number[]): { a: number; b: number; c: number }[] | string {
+  const k = Math.max(...coef.map(Math.abs));
+  if (k === 0) return "all six coefficients are 0";
+  const [a, h, b, g, f, c] = [coef[0] / k, coef[1] / (2 * k), coef[2] / k, coef[3] / (2 * k), coef[4] / (2 * k), coef[5] / k];
+  const disc = h * h - a * b;
+  const norm = (p: number, q: number, r: number) => {
+    const n = Math.hypot(p, q);
+    return { a: p / n, b: q / n, c: r / n };
+  };
+  if (disc < -1e-9) return "not a pair of lines (h^2 < ab)";
+  if (disc > 1e-9) {
+    const det = a * b - h * h;
+    const x0 = (h * f - b * g) / det;
+    const y0 = (g * h - a * f) / det;
+    if (Math.abs(g * x0 + f * y0 + c) > 1e-7 * (1 + x0 * x0 + y0 * y0)) return "not a pair of lines (the equation does not factor)";
+    const dirs: XY[] = Math.abs(b) > 1e-12 ? [1, -1].map((s): XY => [1, (-h + s * Math.sqrt(disc)) / b]) : [[0, 1], [2 * h, -a]];
+    return dirs.map(([dx, dy]) => norm(dy, -dx, dx * y0 - dy * x0));
+  }
+  // Parallel lines: the x^2, xy, y^2 part is u^2 / s with u = p x + q y.
+  if (Math.abs(a) < 1e-12 && Math.abs(b) < 1e-12) return "not a pair of lines (no second-degree term)";
+  const [p, q, s] = Math.abs(a) >= Math.abs(b) ? [a, h, a] : [h, b, b];
+  const lambda = Math.abs(p) >= Math.abs(q) ? (2 * g) / p : (2 * f) / q;
+  if (Math.abs(2 * g - lambda * p) > 1e-7 || Math.abs(2 * f - lambda * q) > 1e-7) return "not a pair of lines (the equation does not factor)";
+  // u^2 / s + lambda u + c = 0.
+  const D = (s * lambda) ** 2 - 4 * s * c;
+  if (D < -1e-9) return "not a pair of lines (no real line)";
+  if (D < 1e-9) return "the two lines coincide";
+  return [1, -1].map((sg) => norm(p, q, -(-s * lambda + sg * Math.sqrt(D)) / 2));
 }
 
 /** One scale on both axes: widen the shorter side of the window so the plot stays between 160 and 336 px tall. */
@@ -503,8 +565,14 @@ export const coordGeometry: Scene<CoordParams> = {
           if (lines.length + made.length > 6) throw new ParamError("at most 6 lines in all");
           made.forEach(({ l }, k) => lines.push({ id: claim(`${id}${k + 1}`, id), ...l, label: k === 0 ? label : undefined, beat }));
           touches[id] = made.map((m) => m.T);
+        } else if (q.pair !== undefined) {
+          if (!Array.isArray(q.pair) || q.pair.length !== 6 || !q.pair.every((v) => typeof v === "number" && Number.isFinite(v))) throw new ParamError(`${id}: pair must be six numbers [A, B, C, D, E, F] for Ax² + Bxy + Cy² + Dx + Ey + F = 0`);
+          const split = splitPair(q.pair as number[]);
+          if (typeof split === "string") throw new ParamError(`${id}: ${split}`);
+          if (lines.length + 2 > 6) throw new ParamError("at most 6 lines in all");
+          split.sort((m, n) => slopeOf(m) - slopeOf(n)).forEach((l, k) => lines.push({ id: claim(`${id}${k + 1}`, id), ...l, label: k === 0 ? label : undefined, beat }));
         } else {
-          throw new ParamError(`${id}: give through, eq, tangentAt or tangentsFrom`);
+          throw new ParamError(`${id}: give through, eq, pair, tangentAt or tangentsFrom`);
         }
       }
 
@@ -565,8 +633,20 @@ export const coordGeometry: Scene<CoordParams> = {
           if (!Array.isArray(a.points) || a.points.length < 3 || !a.points.every(isPoint)) throw new ParamError("ask: area needs 3 or more point names");
           ask = { kind: "area", points: a.points as string[] };
           break;
+        case "angle": {
+          if (!Array.isArray(a.lines) || a.lines.length !== 2 || a.lines[0] === a.lines[1]) throw new ParamError("ask: angle needs lines naming two lines");
+          const [l1, l2] = [needLine(a.lines[0]), needLine(a.lines[1])];
+          const as = a.as === undefined ? "angle" : a.as;
+          if (as !== "angle" && as !== "tan" && as !== "cos" && as !== "sin") throw new ParamError('ask: as must be "angle", "tan", "cos" or "sin"');
+          if (a.obtuse !== undefined && typeof a.obtuse !== "boolean") throw new ParamError("ask: obtuse must be true or false");
+          const at = meet(lines.find((l) => l.id === l1)!, lines.find((l) => l.id === l2)!);
+          if (!at) throw new ParamError(`ask: ${l1} and ${l2} are parallel (ask the distance between them instead)`);
+          if (at[0] < x[0] || at[0] > x[1] || at[1] < y[0] || at[1] > y[1]) throw new ParamError(`ask: ${l1} and ${l2} meet at (${num(at[0], 3)}, ${num(at[1], 3)}), outside the window`);
+          ask = { kind: "angle", lines: [l1, l2], as, obtuse: a.obtuse === true };
+          break;
+        }
         default:
-          throw new ParamError("ask.kind must be distance, yIntercept, xIntercept, slope, radius, locusRadius, chordLength, tangentLength or area");
+          throw new ParamError("ask.kind must be distance, yIntercept, xIntercept, slope, radius, locusRadius, chordLength, tangentLength, area or angle");
       }
       if (a.squared !== undefined && typeof a.squared !== "boolean") throw new ParamError("ask: squared must be true or false");
       const times = a.times === undefined ? 1 : finite(a, "times");
@@ -704,6 +784,10 @@ export const coordGeometry: Scene<CoordParams> = {
       along(mk.from, [mk.from[0] + mk.run, mk.from[1]]);
       along([mk.from[0] + mk.run, mk.from[1]], [mk.from[0] + mk.run, mk.from[1] + mk.rise]);
     } else if (mk.kind === "point") obstacles.push(px(mk.at));
+    else if (mk.kind === "angle") {
+      const [cx, cy] = px(mk.at);
+      for (let i = 0; i <= 12; i++) obstacles.push(onCircle(cx, cy, ANGLE_R, mk.from + (mk.span * i) / 12));
+    }
 
     // Labels: the clearest of several spots round an anchor; a far spot gets a leader line.
     const place = (anchors: XY[], label: string, size: number): { x: number; y: number; anchor: "start" | "end"; from: XY; far: boolean } => {
@@ -886,6 +970,11 @@ export const coordGeometry: Scene<CoordParams> = {
         over.push(line(a[0], a[1], b[0], b[1], { stroke: "good", width: 2, dash: "4 3", opacity: pa }), line(b[0], b[1], c[0], c[1], { stroke: "good", width: 2, dash: "4 3", opacity: pa }));
       } else if (m.kind === "polygon") {
         under.push({ kind: "path", d: "M" + m.points.map((q) => px(q).map((v) => Math.round(v * 100) / 100).join(" ")).join(" L") + " Z", fill: "goodSoft", stroke: "good", width: 2, opacity: pa });
+      } else if (m.kind === "angle") {
+        const [cx, cy] = px(m.at);
+        const d = arcPath(cx, cy, ANGLE_R, m.from, m.from + m.span * pa);
+        if (d) over.push({ kind: "path", d, stroke: "good", width: 3, cap: "round" });
+        if (pa >= 1) over.push(dot(cx, cy, 3.5, "good"));
       }
       if (pa > 0.6) over.push(text(W - 6, 17, p.askLabel ?? defaultLabel(p, facts.value), { tone: "good", size: 12.5, weight: 700, anchor: "end" }));
     }
@@ -894,8 +983,17 @@ export const coordGeometry: Scene<CoordParams> = {
   },
 };
 
+/** An angle in radians as whole degrees when it is one ("60°"), else in radians. */
+function angleText(v: number): string {
+  const deg = (v * 180) / Math.PI;
+  return Math.abs(deg - Math.round(deg)) < 1e-6 ? `${Math.round(deg)}°` : `${num(v, 3)} rad`;
+}
+
 function defaultLabel(p: CoordParams, v: number): string {
   const n = Number.isFinite(v) ? num(v, 3) : "?";
+  if (p.ask.kind === "angle" && p.report.times === 1 && !p.report.squared) {
+    return p.ask.as === "angle" ? `angle = ${Number.isFinite(v) ? angleText(v) : "?"}` : `${p.ask.as} θ = ${n}`;
+  }
   const name = {
     distance: "shortest distance",
     yIntercept: "y-intercept",
@@ -906,6 +1004,7 @@ function defaultLabel(p: CoordParams, v: number): string {
     chordLength: "chord",
     tangentLength: "tangent length",
     area: "area",
+    angle: p.ask.kind === "angle" && p.ask.as !== "angle" ? `${p.ask.as} θ` : "angle",
   }[p.ask.kind];
   // A squared or scaled key reads as such: "distance² = 25", "6 × area = 36".
   const what = `${p.report.times !== 1 ? `${num(p.report.times)} × ` : ""}${p.report.squared ? `(${name})²` : name}`;
@@ -933,5 +1032,9 @@ function measuredText(p: CoordParams, value: number): string {
       return `The tangent from the point is ${v} long.`;
     case "area":
       return `The shaded figure has area ${v}.`;
+    case "angle": {
+      const which = p.ask.obtuse ? "obtuse" : "acute";
+      return p.ask.as === "angle" ? `The lines meet at an ${which} angle of ${num(value, 4)} rad (${num((value * 180) / Math.PI, 4)}°).` : `The ${which} angle θ between the lines has ${p.ask.as} θ = ${v}.`;
+    }
   }
 }

@@ -198,3 +198,78 @@ describe("coordGeometry drawing", () => {
     expect(big(["given", "derived"])).toBe(true);
   });
 });
+
+describe("coordGeometry angle between two lines", () => {
+  const lines = (l1: number[], l2: number[]) => [{ id: "L", eq: l1 }, { id: "M", eq: l2 }];
+  it("measures the acute angle between two lines by default, in radians", () => {
+    // y = x and y = sqrt3 x: 60 deg and 45 deg directions, 15 deg apart.
+    expect(value({ window: win, lines: lines([1, -1, 0], [Math.sqrt(3), -1, 0]), ask: { kind: "angle", lines: ["L", "M"] } })).toBeCloseTo(Math.PI / 12, 9);
+    // y = 2x and y = -3x meet at 135 deg one way, 45 deg the other: acute is 45 deg.
+    expect(value({ window: win, lines: lines([2, -1, 0], [3, 1, 0]), ask: { kind: "angle", lines: ["L", "M"] } })).toBeCloseTo(Math.PI / 4, 9);
+  });
+  it("reports the obtuse angle when asked, and tan, cos or sin of the angle", () => {
+    const base = { window: win, lines: lines([2, -1, 0], [3, 1, 0]) };
+    expect(value({ ...base, ask: { kind: "angle", lines: ["L", "M"], obtuse: true } })).toBeCloseTo((3 * Math.PI) / 4, 9);
+    const steep = { window: win, lines: lines([1, -2, 0], [1, -3, 0]) };
+    expect(value({ ...steep, ask: { kind: "angle", lines: ["L", "M"], as: "tan" } })).toBeCloseTo(1 / 7, 9);
+    expect(value({ ...steep, ask: { kind: "angle", lines: ["L", "M"], as: "cos" } })).toBeCloseTo(7 / Math.sqrt(50), 9);
+    expect(value({ ...steep, ask: { kind: "angle", lines: ["L", "M"], as: "sin" } })).toBeCloseTo(1 / Math.sqrt(50), 9);
+  });
+  it("cannot report tan of a right angle", () => {
+    const p = parse({ window: win, lines: lines([1, 0, 0], [0, 1, 0]), ask: { kind: "angle", lines: ["L", "M"], as: "tan" } });
+    expect(Number.isFinite(scene().check(p))).toBe(false);
+  });
+  it("refuses parallel lines, lines meeting outside the window, and a bad as", () => {
+    expect(parseError({ window: win, lines: lines([1, -1, 0], [1, -1, 3]), ask: { kind: "angle", lines: ["L", "M"] } })).toMatch(/parallel/);
+    expect(parseError({ window: win, lines: lines([1, -1, 0], [1, -1.01, 1]), ask: { kind: "angle", lines: ["L", "M"] } })).toMatch(/window/);
+    expect(parseError({ window: win, lines: lines([1, -1, 0], [1, 1, 0]), ask: { kind: "angle", lines: ["L", "M"], as: "cot" } })).toMatch(/as/);
+    expect(parseError({ window: win, lines: lines([1, -1, 0], [1, 1, 0]), ask: { kind: "angle", lines: ["L"] } })).toMatch(/two lines/);
+  });
+  it("marks the angle with an arc at the meeting point once the answer beat plays, and says it in degrees", () => {
+    const p = parse({ window: win, lines: lines([1, 0, -1], [1, -Math.sqrt(3), 0]), ask: { kind: "angle", lines: ["L", "M"] } });
+    const frame = (played: string[]) => scene().frame(p, { played, t: 1, slider: undefined });
+    const arc = (played: string[]) => frame(played).some((s) => s.kind === "path" && / A/.test(s.d) && !/Z/.test(s.d));
+    expect(arc(["construct"])).toBe(false);
+    expect(arc(["construct", "answer"])).toBe(true);
+    const texts = frame(["construct", "answer"]).filter((s) => s.kind === "text").map((s) => (s as { text: string }).text);
+    expect(texts.some((t) => t.includes("60°"))).toBe(true);
+  });
+});
+
+describe("coordGeometry pair of lines from one second-degree equation", () => {
+  it("splits a homogeneous pair into its two lines through the origin, lowest slope first", () => {
+    // x^2 - 5xy + 6y^2 = 0: x = 2y and x = 3y (slopes 1/2 and 1/3).
+    const p = parse({ window: win, lines: [{ id: "P", pair: [1, -5, 6, 0, 0, 0] }], ask: { kind: "angle", lines: ["P1", "P2"], as: "tan" } });
+    expect(scene().check(p)).toBeCloseTo(1 / 7, 9);
+    const sl = (id: string) => {
+      const l = (p as { lines: { id: string; a: number; b: number }[] }).lines.find((q) => q.id === id)!;
+      return -l.a / l.b;
+    };
+    expect(sl("P1")).toBeCloseTo(1 / 3, 9);
+    expect(sl("P2")).toBeCloseTo(1 / 2, 9);
+  });
+  it("splits a pair with linear terms, meeting where both lines pass", () => {
+    // 2x^2 + 3xy - 2y^2 - x + 3y - 1 = (2x - y + 1)(x + 2y - 1): perpendicular, meeting at (-1/5, 3/5).
+    const p = parse({ window: win, points: [{ id: "O", at: [-0.2, 0.6] }], lines: [{ id: "P", pair: [2, 3, -2, -1, 3, -1] }], ask: { kind: "angle", lines: ["P1", "P2"] } });
+    expect(scene().check(p)).toBeCloseTo(Math.PI / 2, 9);
+    for (const id of ["P1", "P2"]) {
+      const l = (p as { lines: { id: string; a: number; b: number; c: number }[] }).lines.find((q) => q.id === id)!;
+      expect(l.a * -0.2 + l.b * 0.6 + l.c).toBeCloseTo(0, 9);
+    }
+  });
+  it("splits a vertical line out of a pair with no y^2 term", () => {
+    // xy - 2x = 0: x = 0 and y = 2.
+    const p = parse({ window: win, lines: [{ id: "P", pair: [0, 1, 0, -2, 0, 0] }], ask: { kind: "angle", lines: ["P1", "P2"] } });
+    expect(scene().check(p)).toBeCloseTo(Math.PI / 2, 9);
+  });
+  it("splits a pair of parallel lines, so the distance between them can be asked", () => {
+    // 9x^2 - 24xy + 16y^2 - 12x + 16y - 12 = 0: 3x - 4y - 6 = 0 and 3x - 4y + 2 = 0, 8/5 apart.
+    const p = parse({ window: win, lines: [{ id: "P", pair: [9, -24, 16, -12, 16, -12] }], ask: { kind: "distance", from: "P1", to: "P2" } });
+    expect(scene().check(p)).toBeCloseTo(1.6, 9);
+  });
+  it("refuses an equation that is not a real pair of lines", () => {
+    expect(parseError({ window: win, lines: [{ id: "P", pair: [1, 0, 1, 0, 0, -1] }], ask: { kind: "radius", circle: "P" } })).toMatch(/pair of lines/);
+    expect(parseError({ window: win, lines: [{ id: "P", pair: [1, -5, 6, 1, 0, 1] }], ask: { kind: "angle", lines: ["P1", "P2"] } })).toMatch(/pair of lines/);
+    expect(parseError({ window: win, lines: [{ id: "P", pair: [1, 2, 3] }], ask: { kind: "angle", lines: ["P1", "P2"] } })).toMatch(/six numbers/);
+  });
+});

@@ -43,7 +43,8 @@ Or, when it does not fit cleanly: `{ "n": 7, "id": "<id>", "skip": true, "reason
   gives, since the count is taken over the window.
 - `xTicks`: `"pi"` when x is an angle, else leave it out.
 - `ask`, one of:
-  - `{ "kind": "crossings" }`: answer = the number of solutions.
+  - `{ "kind": "crossings" }`: answer = the number of solutions. A repeated
+    root, where the curve only touches the line, counts once.
   - `{ "kind": "slopePoint", "slope": <tangent slope>, "normal": true|false, "pointLabel": "(e⁻², −2e⁻²)" }`:
     give the TANGENT's slope (if the question fixes the normal's slope m, the
     tangent's is −1/m) and `normal: true` when the question is about the

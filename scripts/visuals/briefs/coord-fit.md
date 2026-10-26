@@ -18,6 +18,14 @@ these answers:
 5. **chordLength**: the chord a line cuts on a circle or conic.
 6. **tangentLength**: length of the tangent from a point to a circle.
 7. **area** of a triangle or polygon from its vertices.
+8. **angle** between two lines (the acute one, or the obtuse one when the key
+   is obtuse), reported as the angle itself or its tan, cos or sin. The lines
+   may be given separately or as ONE pair equation (ax² + 2hxy + by² + ... = 0):
+   the scene splits a pair itself. The two lines must cross somewhere sensible
+   to draw (not parallel).
+
+A pair of PARALLEL lines from one equation (9x² − 24xy + 16y² ... = 0) fits
+**distance** when the key is the distance between them.
 
 A key that is one of these SQUARED or MULTIPLIED by a number ("(AB)² =",
 "6 × area", "(2β)²") still fits: name the measured kind.
@@ -25,8 +33,10 @@ A key that is one of these SQUARED or MULTIPLIED by a number ("(AB)² =",
 For each question decide which ONE of these the answer is, or `no`. Fit only
 when the KEYED answer is that one measured number. An equation as the answer
 (of a circle, a tangent, a locus) is `no` unless the key is a single measured
-number from the list. Counting things (how many common tangents), angles,
-eccentricity, a parameter value (find k) and anything else are `no`.
+number from the list. Counting things (how many common tangents), angles
+other than between two lines, eccentricity, a parameter value (find k), a
+joint equation as the answer, the point where two lines meet, and anything
+else are `no`.
 
 Lean towards fitting when unsure: a later step checks every fit in detail and
 drops the ones that do not work. But do not force it.
@@ -40,7 +50,7 @@ Write a JSON array to your output path, one object per question, input order:
 ```
 
 - `fit`: distance, yIntercept, xIntercept, slope, radius, locusRadius,
-  chordLength, tangentLength, area or no.
+  chordLength, tangentLength, area, angle or no.
 - `note`: at most 12 words.
 
 Read only your input file, write only your output file, run nothing. When

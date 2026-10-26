@@ -52,18 +52,31 @@ function slopeAt(f: Fn, x: number): number {
   return (f(x + h) - f(x - h)) / (2 * h);
 }
 
-/** Roots of d in [a, b] by sampling for sign changes, then bisection. Points where d is not finite are skipped. */
+/**
+ * Roots of d in [a, b] by sampling for sign changes, then bisection, plus the
+ * roots where d only touches zero (a double root: (x - 1)^2, sin x = 1), found
+ * as a local minimum of |d| that is zero to rounding. Points where d is not
+ * finite are skipped.
+ */
 function rootsOf(d: Fn, a: number, b: number): number[] {
   const out: number[] = [];
   const push = (r: number) => {
     if (!out.some((o) => Math.abs(o - r) < 1e-7 * Math.max(1, Math.abs(r)))) out.push(r);
   };
+  const step = (b - a) / SAMPLES;
+  const near: [number, number][] = [];
   let px = a;
   let pv = d(a);
+  let ppv = NaN;
   if (Number.isFinite(pv) && Math.abs(pv) < 1e-12) push(a);
+  let biggest = Number.isFinite(pv) ? Math.abs(pv) : 0;
   for (let i = 1; i <= SAMPLES; i++) {
     const x = a + ((b - a) * i) / SAMPLES;
     const v = d(x);
+    if (Number.isFinite(v)) biggest = Math.max(biggest, Math.abs(v));
+    // pv is a local minimum of |d| with d the same sign either side: a touch candidate round px.
+    if ([ppv, pv, v].every(Number.isFinite) && Math.abs(pv) <= Math.abs(ppv) && Math.abs(pv) < Math.abs(v) && Math.sign(ppv) === Math.sign(pv) && Math.sign(pv) === Math.sign(v)) near.push([px - step, x]);
+    ppv = pv;
     if (Number.isFinite(v) && Math.abs(v) < 1e-12) push(x);
     else if (Number.isFinite(v) && Number.isFinite(pv) && Math.abs(pv) >= 1e-12 && Math.sign(v) !== Math.sign(pv)) {
       let lo = px;
@@ -81,6 +94,22 @@ function rootsOf(d: Fn, a: number, b: number): number[] {
     }
     px = x;
     pv = v;
+  }
+  // Touches: narrow each candidate to the least |d| (golden section); it counts only when that is zero to
+  // rounding, and only where no root was already found within two samples (rounding near a double root can
+  // flip the sign and give the sign-change pass the same root).
+  const tiny = Math.max(1e-10, 1e-12 * biggest);
+  const found = [...out];
+  for (let [lo, hi] of near) {
+    const g = (Math.sqrt(5) - 1) / 2;
+    for (let k = 0; k < 120; k++) {
+      const m1 = hi - g * (hi - lo);
+      const m2 = lo + g * (hi - lo);
+      if (Math.abs(d(m1)) <= Math.abs(d(m2))) hi = m2;
+      else lo = m1;
+    }
+    const r = (lo + hi) / 2;
+    if (Math.abs(d(r)) < tiny && !found.some((o) => Math.abs(o - r) < 2 * step)) push(r);
   }
   return out.sort((p, q) => p - q);
 }

@@ -286,6 +286,29 @@ export const S3_FOOT_VISUAL = {
   answer: { value: 13, label: "13" },
 };
 
+// MHT-CET Linear Programming 00733e89: the point where 10x + 6y is greatest (key B, (8, 4)).
+export const LP_SOLUTION = String.raw`Corner points: O(0,0), B(10,0), C(8,4), D(0,12). Evaluating \(z=10x+6y\): at C(8,4), \(z=80+24=104\) (maximum). Matches option B: \((8,4)\).`;
+
+export const LP_VISUAL = {
+  v: 1,
+  scene: "lpRegion",
+  params: {
+    window: { x: [0, 14], y: [0, 14] },
+    constraints: [
+      { a: 1, b: 1, op: "<=", c: 12 },
+      { a: 2, b: 1, op: "<=", c: 20 },
+    ],
+    objective: { a: 10, b: 6, label: "z = 10x + 6y" },
+    ask: { kind: "maxAt", at: [8, 4], label: "max z = 104 at (8, 4)" },
+  },
+  steps: [
+    { from: 0, beats: ["constraints", "region", "corners"] },
+    { from: 1, beats: ["sweep", "answer"] },
+  ],
+  fingerprint: solutionFingerprint(LP_SOLUTION),
+  answer: { value: 1, label: "(8, 4)" },
+};
+
 export const FIXTURES = [
   { name: "rotation", visual: ROTATION_VISUAL, solution: ROTATION_SOLUTION },
   { name: "circleArc", visual: ARC_VISUAL, solution: ARC_SOLUTION },
@@ -301,4 +324,5 @@ export const FIXTURES = [
   { name: "space3d", visual: S3_PROJ_VISUAL, solution: S3_PROJ_SOLUTION },
   { name: "space3d", visual: S3_SKEW_VISUAL, solution: S3_SKEW_SOLUTION },
   { name: "space3d", visual: S3_FOOT_VISUAL, solution: S3_FOOT_SOLUTION },
+  { name: "lpRegion", visual: LP_VISUAL, solution: LP_SOLUTION },
 ] as const;
