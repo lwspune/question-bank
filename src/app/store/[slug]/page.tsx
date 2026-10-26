@@ -9,6 +9,7 @@ import { getStoreEbook, type StoreEbook } from "@/lib/ebooks/query";
 import { formatRupees } from "@/lib/billing/plans";
 import { KIND_LABEL } from "@/lib/ebooks/theme";
 import BookCover, { subjectOf } from "../_components/BookCover";
+import { SHELVES, shelfOf } from "@/lib/ebooks/shelves";
 import EbookBuyBox from "./EbookBuyBox";
 
 /**
@@ -58,7 +59,11 @@ const INSIDE: Record<StoreEbook["kind"], string[]> = {
 export default async function StoreBookPage({ params }: { params: { slug: string } }) {
   const book = await getStoreEbook(createSupabaseAnonClient(), params.slug);
   if (!book) notFound();
-  const subject = subjectOf(book.title);
+  // A Solved Papers book: the board line over the subject, as its cover prints it.
+  const shelf = shelfOf(book);
+  const board = book.kind === "papers" ? SHELVES.find((s) => s.key === shelf.shelf)?.label : undefined;
+  const subject = board ? shelf.subject : subjectOf(book.title);
+  const heading = board ? `${board} ${subject}` : subject;
   const stats = book.stats.length
     ? book.stats
     : book.pageCount
@@ -75,11 +80,11 @@ export default async function StoreBookPage({ params }: { params: { slug: string
         <div className="mt-6 grid lg:grid-cols-[1fr_20rem] lg:gap-x-8">
           <header className="flex min-w-0 gap-5 lg:col-start-1">
             <div className="w-28 shrink-0 sm:w-40">
-              <BookCover kind={book.kind} subject={subject} size="sm" />
+              <BookCover kind={book.kind} subject={subject} over={board} size="sm" />
             </div>
             <div className="min-w-0">
               <p className="text-xs font-semibold uppercase tracking-widest text-brand-accent">{KIND_LABEL[book.kind]}</p>
-              <h1 className="mt-1 text-2xl font-bold tracking-tight sm:text-4xl">{subject}</h1>
+              <h1 className="mt-1 text-2xl font-bold tracking-tight sm:text-4xl">{heading}</h1>
               <p className="mt-2 font-serif text-sm leading-relaxed text-muted-foreground sm:text-base">{book.subtitle}</p>
               {book.pageCount ? (
                 <p className="mt-2 text-xs text-muted-foreground">
