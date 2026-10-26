@@ -34,6 +34,14 @@ describe("sentenceStarts", () => {
     expect(sentenceStarts(ARC_SOLUTION)).toHaveLength(2);
     expect(sentenceStarts(SLAB_SOLUTION)).toHaveLength(3);
   });
+  it("keeps a table whole: one sentence from its header row to its last row", () => {
+    const sol = "Build the table.\n\n| p | q |\n|---|---|\n| T | F |\n\nSo it is false.";
+    const starts = sentenceStarts(sol);
+    expect(starts.map((s) => sol.slice(s, s + 5))).toEqual(["Build", "| p |", "So it"]);
+  });
+  it("leaves lines with pipes that are not a table (no separator row) as before", () => {
+    expect(sentenceStarts("One |x| here.\n| y | is two.")).toEqual([0, 14]);
+  });
 });
 
 describe("parseSolutionVisual", () => {
@@ -107,8 +115,16 @@ describe("stepTexts", () => {
     a.steps[1].from = 5;
     expect(stepTexts(parsed(a), ARC_SOLUTION)).toBeNull();
   });
-  it("returns null for a solution holding a table (a cut could split it)", () => {
+  it("cuts a solution holding a table only around the table, never through it", () => {
     const sol = "Build the table.\n\n| p | q |\n|---|---|\n| T | F |\n\nSo it is false.";
+    const v = { ...clone(ARC_VISUAL), fingerprint: solutionFingerprint(sol), steps: [{ from: 0, beats: ARC_VISUAL.steps[0].beats }, { from: 2, beats: ARC_VISUAL.steps[1].beats }] };
+    const parts = stepTexts(parsed(v), sol);
+    expect(parts).toHaveLength(2);
+    expect(parts![0]).toBe("Build the table.\n\n| p | q |\n|---|---|\n| T | F |");
+    expect(parts![1]).toBe("So it is false.");
+  });
+  it("still returns null when it cannot tell where a table runs (display math across lines)", () => {
+    const sol = "Build \\[x\n= 1\\] the table.\n\n| p | q |\n|---|---|\n| T | F |\n\nSo it is false.";
     const v = { ...clone(ARC_VISUAL), fingerprint: solutionFingerprint(sol) };
     expect(stepTexts(parsed(v), sol)).toBeNull();
   });

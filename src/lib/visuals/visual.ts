@@ -9,7 +9,7 @@
  * edited later the steps are dropped (stepTexts returns null) rather than
  * pointing at the wrong sentences, and the picture still plays on its own.
  */
-import { parseTableBlocks } from "@/components/math/parseTableBlocks";
+import { parseTableBlocks, tableLineRanges } from "@/components/math/parseTableBlocks";
 import { plainLabel } from "./params";
 import { getScene } from "./registry";
 import type { SolutionVisual, VisualStep } from "./types";
@@ -31,12 +31,37 @@ function isMathOpen(text: string, i: number): boolean {
 }
 
 /**
+ * The character ranges [start, end) of the tables in a text, or null when the
+ * table scan and the text disagree on the lines (a math zone across a line
+ * break), so a caller can refuse rather than guess.
+ */
+function tableSpans(text: string): [number, number][] | null {
+  const { ranges, lines } = tableLineRanges(text);
+  if (!ranges.length) return [];
+  const own = text.split("\n");
+  if (own.length !== lines) return null;
+  const at: number[] = [];
+  let pos = 0;
+  for (const l of own) {
+    at.push(pos);
+    pos += l.length + 1;
+  }
+  return ranges.map(([a, b]) => [at[a], at[b] + own[b].length]);
+}
+
+/**
  * Where each sentence starts, as offsets into the text. The same boundary rule
  * as the /board reader's breakSentences (lib/board/formatSolution): a . ? or !
  * followed by space and then a capital, "(" or a math zone, never inside math.
- * A line break is a boundary too.
+ * A line break is a boundary too, except inside a table, which is one sentence.
  */
 export function sentenceStarts(text: string): number[] {
+  // A table is one sentence, header row to last row: a step may start at a table, never inside one.
+  const spans = tableSpans(text) ?? [];
+  return rawSentenceStarts(text).filter((s) => !spans.some(([a, b]) => s > a && s < b));
+}
+
+function rawSentenceStarts(text: string): number[] {
   const starts = [0];
   const n = text.length;
   let i = 0;
@@ -131,7 +156,8 @@ export function parseSolutionVisual(raw: unknown): ParsedVisual {
 export function stepTexts(visual: SolutionVisual, solution: string | null | undefined): string[] | null {
   if (!solution) return null;
   if (solutionFingerprint(solution) !== visual.fingerprint) return null;
-  if (parseTableBlocks(solution).some((b) => b.kind === "table")) return null;
+  // A table is kept whole by sentenceStarts; refuse only when it cannot tell where a table runs.
+  if (parseTableBlocks(solution).some((b) => b.kind === "table") && tableSpans(solution) === null) return null;
   const starts = sentenceStarts(solution);
   if (visual.steps.some((s) => s.from >= starts.length)) return null;
   return visual.steps.map((s, k) => {

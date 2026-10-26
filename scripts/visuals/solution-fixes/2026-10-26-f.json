@@ -1,0 +1,8 @@
+[
+  {
+    "id": "81f4ef02-1b0d-4a29-87fe-782b3b88595e",
+    "before": "ff61b4ed",
+    "solution": "The dual interchanges \\(\\wedge\\) with \\(\\vee\\) and the constant \\(t\\) (tautology) with \\(c\\) (contradiction); \\(\\sim\\) is unchanged.\n\nGiven: \\(\\sim p \\vee (q \\wedge r) \\wedge t\\).\n\n**Dual: \\(\\sim p \\wedge [(q \\vee r) \\vee c]\\).**",
+    "note": "the given pattern groups as ~p v [(q ^ r) ^ t], so its dual is ~p ^ [(q v r) v c]; the printed ~p ^ (q v r) v c groups as (~p ^ (q v r)) v c. Brackets added."
+  }
+]

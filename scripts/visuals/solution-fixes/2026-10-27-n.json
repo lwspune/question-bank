@@ -1,0 +1,14 @@
+[
+  {
+    "id": "db64b5d1-4214-42ca-9556-77527cd82f56",
+    "before": "c2ead4ab",
+    "solution": "Let the two lines be \\(y = m_1x\\) and \\(y = m_2x\\). Putting \\(y = mx\\) in \\(ax^2 + 2hxy + by^2 = 0\\) gives \\(bm^2 + 2hm + a = 0\\), so \\(m_1m_2 = \\dfrac{a}{b}\\).\n\"Equal angles with the coordinate axes\" means the angle one line makes with the \\(x\\)-axis equals the angle the other line makes with the \\(y\\)-axis.\nIf the first line makes angle \\(\\theta\\) with the \\(x\\)-axis, then \\(m_1 = \\tan\\theta\\).\nThe second line makes angle \\(\\theta\\) with the \\(y\\)-axis, so it makes angle \\(90^\\circ - \\theta\\) or \\(90^\\circ + \\theta\\) with the \\(x\\)-axis, and \\(m_2 = \\cot\\theta\\) or \\(m_2 = -\\cot\\theta\\).\nHence \\(m_1m_2 = \\tan\\theta\\cot\\theta = 1\\) or \\(m_1m_2 = -1\\), that is \\(\\dfrac{a}{b} = \\pm 1\\).\n\\(\\therefore a = \\pm b\\). Hence proved.",
+    "note": "the proof never said what equal angles with the axes means and moved from slopes m, -m to m1 m2 = ±1 without a reason; rewritten as a clean proof (same conclusion a = ±b)."
+  },
+  {
+    "id": "aa272abf-98c9-41b6-a6a7-34e94d4c700c",
+    "before": "3a9f3f9e",
+    "solution": "For the pair \\(ax^2 + 2hxy + by^2 = 0\\) and the line \\(lx + my + n = 0\\), the area of the triangle they form is \\(\\dfrac{n^2\\sqrt{h^2 - ab}}{|am^2 - 2hlm + bl^2|}\\).\nHere \\(a = 1,\\ h = 2,\\ b = 1\\) and, for \\(x - y - 4 = 0\\), \\(l = 1,\\ m = -1,\\ n = -4\\).\nSo \\(h^2 - ab = 4 - 1 = 3\\) and \\(am^2 - 2hlm + bl^2 = 1 - 2(2)(1)(-1) + 1 = 6\\).\nArea \\(= \\dfrac{16\\sqrt{3}}{6} = \\dfrac{8\\sqrt{3}}{3} = \\dfrac{8}{\\sqrt{3}}\\) sq. units, which is option (B).",
+    "note": "the solution printed a garbled formula and a dash; rewritten with the area formula worked through (same answer, 8/√3, option B)."
+  }
+]

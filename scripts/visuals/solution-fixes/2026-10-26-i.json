@@ -1,0 +1,8 @@
+[
+  {
+    "id": "f635e63e-597b-4d69-ad7e-6d65a2bd640c",
+    "before": "9d56e790",
+    "solution": "Let point P divide AB in ratio m : 1 and CD in ratio n : 1.\nBy section formula,\n\\(P \\equiv \\left(\\dfrac{2}{m+1}, \\dfrac{5m-3}{m+1}, \\dfrac{2m+4}{m+1}\\right) \\equiv \\left(\\dfrac{2n-1}{n+1}, \\dfrac{5-n}{n+1}, \\dfrac{3n+3}{n+1}\\right)\\)\nEquating z-coordinates,\n\\(\\dfrac{2m+4}{m+1} = \\dfrac{3n+3}{n+1}\\)\n\\(\\therefore \\dfrac{2m+4}{m+1} = \\dfrac{3(n+1)}{(n+1)}\\)\n\\(\\therefore 2m+4 = 3(m+1)\\)\n\\(\\therefore 2m+4 = 3m+3\\)\n\\(\\therefore 1 = m\\)\nAlso, by equating x-coordinates,\n\\(\\dfrac{2}{m+1} = \\dfrac{2n-1}{n+1}\\)\n\\(\\dfrac{2}{1+1} = \\dfrac{2n-1}{n+1}\\quad (m=1)\\)\n\\(\\therefore n+1 = 2n-1\\)\n\\(\\therefore 2 = n\\)\nP divides AB in ratio m : 1 i.e. 1 : 1 and CD in the ratio n : 1 i.e. 2 : 1.\n\\(P \\equiv \\left(\\dfrac{2}{1+1}, \\dfrac{5-3}{1+1}, \\dfrac{2+4}{1+1}\\right) \\equiv (1, 1, 3)\\).",
+    "note": "the y-coordinate of the point dividing CD (C(-1,5,3), D(2,-1,3)) is (5 - n)/(n + 1), not (n + 5)/(n + 1). Answer (1, 1, 3) unchanged."
+  }
+]
