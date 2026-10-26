@@ -1,0 +1,303 @@
+{
+  "//": "Assembled from agent drafts (coordGeometry).",
+  "visuals": [
+    {
+      "id": "05381685-2cb8-4626-ba28-8db71f12b78b",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -4,
+              2
+            ],
+            "y": [
+              -3,
+              3
+            ]
+          },
+          "lines": [
+            {
+              "id": "P",
+              "pair": [
+                16,
+                -24,
+                9,
+                48,
+                -36,
+                35
+              ],
+              "label": "the pair of lines"
+            }
+          ],
+          "ask": {
+            "kind": "distance",
+            "from": "P1",
+            "to": "P2",
+            "label": "distance = 2/5"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "construct"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "34803870",
+        "answer": {
+          "value": 0.400000000000001,
+          "label": "2/5"
+        }
+      }
+    },
+    {
+      "id": "33edba0e-2880-410c-b2a3-deed2f1e78fa",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -7,
+              5
+            ],
+            "y": [
+              -4,
+              3
+            ]
+          },
+          "lines": [
+            {
+              "id": "P",
+              "pair": [
+                1,
+                4,
+                4,
+                3,
+                6,
+                -4
+              ],
+              "label": "p = 4, q = 6"
+            }
+          ],
+          "ask": {
+            "kind": "distance",
+            "from": "P1",
+            "to": "P2",
+            "squared": true,
+            "label": "λ² = 5"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "construct"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "4ae24f1a",
+        "answer": {
+          "value": 5.000000000000001,
+          "label": "5"
+        }
+      }
+    },
+    {
+      "id": "8375a780-8be7-48b9-887a-9e16ff26265f",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -3,
+              3
+            ],
+            "y": [
+              -2,
+              4
+            ]
+          },
+          "lines": [
+            {
+              "id": "P",
+              "pair": [
+                2,
+                1,
+                -1,
+                -1,
+                2,
+                -1
+              ],
+              "label": "the pair of lines"
+            }
+          ],
+          "ask": {
+            "kind": "angle",
+            "lines": [
+              "P1",
+              "P2"
+            ],
+            "as": "cos",
+            "label": "cos θ = 1/√10"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "construct"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "f047263e",
+        "answer": {
+          "value": 0.31622776601683794,
+          "label": "cos⁻¹(1/√10)"
+        }
+      }
+    },
+    {
+      "id": "84afd396-d34a-42b5-b3b5-8bc53dd937ac",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -3,
+              4
+            ],
+            "y": [
+              -4,
+              6
+            ]
+          },
+          "lines": [
+            {
+              "id": "P",
+              "pair": [
+                4,
+                4,
+                1,
+                -6,
+                -3,
+                -4
+              ],
+              "label": "the pair of lines"
+            }
+          ],
+          "ask": {
+            "kind": "distance",
+            "from": "P1",
+            "to": "P2",
+            "label": "distance = √5"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "construct"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "3d0960c5",
+        "answer": {
+          "value": 2.23606797749979,
+          "label": "√5"
+        }
+      }
+    },
+    {
+      "id": "ba852a30-07f9-4562-a340-51f27b6472b1",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -3,
+              3
+            ],
+            "y": [
+              -2,
+              2
+            ]
+          },
+          "lines": [
+            {
+              "id": "P",
+              "pair": [
+                1.7320508075688772,
+                -4,
+                1.7320508075688772,
+                0,
+                0,
+                0
+              ],
+              "label": "√3x² − 4xy + √3y² = 0"
+            }
+          ],
+          "ask": {
+            "kind": "angle",
+            "lines": [
+              "P1",
+              "P2"
+            ],
+            "as": "angle",
+            "label": "angle = 30°"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "construct",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "35427f71",
+        "answer": {
+          "value": 0.5235987755982991,
+          "label": "30°"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

@@ -1,0 +1,156 @@
+{
+  "//": "Assembled from agent drafts (functionGraph).",
+  "visuals": [
+    {
+      "id": "69cccf54-ec30-4b5f-9441-2a474aaa0dac",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "abs(x)*abs(x+2)-5*abs(x+1)-1",
+          "fLabel": "y = |x||x+2| − 5|x+1| − 1",
+          "g": [
+            "0"
+          ],
+          "gLabels": [
+            "0"
+          ],
+          "window": {
+            "x": [
+              -8,
+              6
+            ],
+            "y": [
+              -8,
+              14
+            ]
+          },
+          "ask": {
+            "kind": "crossings"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve",
+              "compare"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "36eaad42",
+        "answer": {
+          "value": 3,
+          "label": "3"
+        }
+      }
+    },
+    {
+      "id": "dac47a34-bd56-43ad-995b-a894679cab1c",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "abs(x+1)*abs(x+3)-4*abs(x+2)+5",
+          "fLabel": "y = |x+1||x+3| − 4|x+2| + 5",
+          "g": [
+            "0"
+          ],
+          "gLabels": [
+            "0"
+          ],
+          "window": {
+            "x": [
+              -6,
+              2
+            ],
+            "y": [
+              -1,
+              7
+            ]
+          },
+          "ask": {
+            "kind": "crossings"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve",
+              "compare"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "e754f710",
+        "answer": {
+          "value": 2,
+          "label": "2"
+        }
+      }
+    },
+    {
+      "id": "e9a364b0-ccb8-4f5c-8a84-ec028583e631",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "x^8-x^7-x^6+x^5+3*x^4-4*x^3-2*x^2+4*x-1",
+          "fLabel": "y = x⁸ − x⁷ − x⁶ + … − 1",
+          "g": [
+            "0"
+          ],
+          "gLabels": [
+            "0"
+          ],
+          "window": {
+            "x": [
+              -1.3,
+              1.3
+            ],
+            "y": [
+              -4,
+              14
+            ]
+          },
+          "ask": {
+            "kind": "crossings"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve",
+              "compare"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "3bc5fc03",
+        "answer": {
+          "value": 3,
+          "label": "3"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

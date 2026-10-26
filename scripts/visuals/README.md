@@ -122,8 +122,8 @@ fit check, Sonnet for drafts.
 
 | Scene | Draws | Chapters done (2026-10-25) |
 |---|---|---|
-| `functionGraph` | a curve from its formula (safe parser `expr.ts`), crossings, slopes, increasing/decreasing ranges | CET + JEE Applications of Derivative; CET Trig Functions; JEE Trig Equations, Quadratic Equations |
-| `coordGeometry` | points, lines, circles, conics, tangents, a locus; distance, intercepts, slope, radius, chord, tangent length, area | CET Circle, Straight Line, Conic; JEE Conics, Straight Lines; CET + JEE Complex Numbers (z = x + iy) |
+| `functionGraph` | a curve from its formula (safe parser `expr.ts`), crossings (touching roots count), slopes, increasing/decreasing ranges | CET + JEE Applications of Derivative; CET Trig Functions; JEE Trig Equations, Quadratic Equations |
+| `coordGeometry` | points, lines (one or a pair from one equation), circles, conics, tangents, a locus; distance, intercepts, slope, radius, chord, tangent length, area, angle between lines | CET Circle, Straight Line, Conic, Pair of Straight Lines (pair + angle); JEE Conics, Straight Lines; CET + JEE Complex Numbers (z = x + iy) |
 | `space3d` | 3D points, lines, planes, vectors; foot, image, meets; distance, angle, projection, length, area, volume | CET Line and Plane, Vectors; JEE 3D Geometry, Vector Algebra |
 | `circleArc`, `quadraticFamily`, `rotation`, `slab` | Phase 0 pilots | one question each |
 
