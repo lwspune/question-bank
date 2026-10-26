@@ -73,6 +73,8 @@ describe("logic formulas: what the questions ask", () => {
     // MHT-CET: ∼p → ∼(∼p → q) is p ∨ (∼p ∧ ∼q), so its dual is p ∧ (∼p ∨ ∼q), the key's p ∧ (p → ∼q).
     expect(equivalent(transform(parseLogic("~p -> ~(~p -> q)"), "dual"), parseLogic("p & (p -> ~q)"))).toBe(true);
     expect(equivalent(transform(parseLogic("p & T"), "dual"), parseLogic("p | F"))).toBe(true);
+    // No double negation in what is shown: ∼p → X becomes p ∨ X, not ∼∼p ∨ X.
+    expect(showLogic(transform(parseLogic("~p -> ~(~p -> q)"), "dual"))).toBe("p ∧ ∼(p ∧ q)");
   });
   it("refuses a converse of something that is not an implication or a disjunction", () => {
     expect(() => transform(parseLogic("p & q"), "converse")).toThrow();

@@ -76,6 +76,14 @@ describe("truthTable drawing", () => {
     // The asked statement is added as the last column.
     expect(f.columns.map((c) => c.label)).toEqual(["∼r", "p ∧ ∼r", "∼p ∨ q", "(p ∧ ∼r) → (∼p ∨ q)"]);
   });
+  it("wraps a long heading onto two lines at its main connective, so the table stays phone-width", () => {
+    const wide = { columns: [{ f: "(~p | q) -> (p | ~q)" }, { f: "(p & ~q) -> (~p & q)" }], ask: { kind: "equivalent", a: "(~p | q) -> (p | ~q)", b: "(p & ~q) -> (~p & q)" } };
+    const p = parse(wide);
+    const heads = scene().frame(p, { played: ["vars"], t: 1, slider: undefined }).filter((s): s is Extract<Shape, { kind: "text" }> => s.kind === "text" && s.tone === "amber").map((s) => s.text);
+    expect(heads).toContain("(∼p ∨ q) →");
+    expect(heads).toContain("(p ∨ ∼q)");
+    expect(scene().viewBox(p).w).toBeLessThanOrEqual(440);
+  });
   it("fills the letters first, then the statements column by column", () => {
     expect(cells(["vars"])).toHaveLength(24);
     expect(cells(["vars", "columns"], 0.5)).toHaveLength(24 + 16);

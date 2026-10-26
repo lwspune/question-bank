@@ -205,7 +205,8 @@ export function classify(f: Logic): "tautology" | "contradiction" | "contingency
   return vals.every(Boolean) ? "tautology" : vals.some(Boolean) ? "contingency" : "contradiction";
 }
 
-const not = (a: Logic): Logic => ({ k: "not", a });
+/** Negation, cancelling a double one, so a transformed statement reads p ∧ q, not ∼∼p ∧ q. */
+const not = (a: Logic): Logic => (a.k === "not" ? a.a : { k: "not", a });
 
 /** a | b read as ~a -> b, so a disjunction has a converse and a contrapositive the way the textbook forms them. */
 function asImplication(f: Logic): { a: Logic; b: Logic } {

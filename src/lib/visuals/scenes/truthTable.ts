@@ -58,11 +58,39 @@ const VAR_W = 26;
 const PAD = 10;
 const TOP = 30;
 const HEAD = 26;
+/** The header row when a heading wraps onto two lines. */
+const HEAD2 = 40;
 const ROW = 20;
-const MAX_W = 600;
+/** Wider than this and a phone shrinks the table's text below about 9 px. */
+const MAX_W = 440;
 const MIN_W = 340;
 
-const colWidth = (label: string) => Math.max(34, Math.ceil(label.length * 6.6) + 14);
+/**
+ * A heading longer than 12 characters goes on two lines, split after the main
+ * connective (the one outside every bracket) nearest the middle: "(∼p ∨ q) →" over
+ * "(p ∨ ∼q)". Failing that, at the space nearest the middle.
+ */
+export function headingLines(label: string): string[] {
+  if (label.length <= 12) return [label];
+  const spaces: { at: number; main: boolean }[] = [];
+  let depth = 0;
+  for (let i = 0; i < label.length; i++) {
+    const c = label[i];
+    if (c === "(" || c === "[") depth++;
+    else if (c === ")" || c === "]") depth--;
+    else if (c === " " && i > 0 && "→↔∧∨".includes(label[i - 1])) spaces.push({ at: i, main: depth === 0 });
+    else if (c === " " && depth === 0) spaces.push({ at: i, main: false });
+  }
+  if (!spaces.length) return [label];
+  const mid = label.length / 2;
+  const best = (xs: { at: number }[]) => xs.reduce((m, x) => (Math.abs(x.at - mid) < Math.abs(m.at - mid) ? x : m));
+  const mains = spaces.filter((x) => x.main);
+  const cut = best(mains.length ? mains : spaces).at;
+  return [label.slice(0, cut), label.slice(cut + 1)];
+}
+
+const colWidth = (label: string) => Math.max(34, Math.ceil(Math.max(...headingLines(label).map((l) => l.length)) * 6.6) + 14);
+const headOf = (p: { columns: Column[] }) => (p.columns.some((c) => headingLines(c.label).length > 1) ? HEAD2 : HEAD);
 
 function formula(v: unknown, field: string): Logic {
   if (typeof v !== "string") throw new ParamError(`${field} must be a formula`);
@@ -128,7 +156,7 @@ const tf = (v: boolean) => (v ? "T" : "F");
 
 function box(p: TruthParams): { w: number; h: number } {
   const table = PAD * 2 + p.vars.length * VAR_W + p.columns.reduce((s, c) => s + colWidth(c.label), 0);
-  return { w: Math.max(MIN_W, table), h: TOP + HEAD + (1 << p.vars.length) * ROW + 10 };
+  return { w: Math.max(MIN_W, table), h: TOP + headOf(p) + (1 << p.vars.length) * ROW + 10 };
 }
 
 function header(p: TruthParams, f: TruthFacts): string {
@@ -290,7 +318,8 @@ export const truthTable: Scene<TruthParams> = {
       x += colWidth(c.label);
     }
     const widths = [...p.vars.map(() => VAR_W), ...p.columns.map((c) => colWidth(c.label))];
-    const rowY = (r: number) => TOP + HEAD + r * ROW;
+    const head = headOf(p);
+    const rowY = (r: number) => TOP + head + r * ROW;
     const n = f.rows.length;
     const under: Shape[] = [];
     const grid: Shape[] = [];
@@ -298,11 +327,14 @@ export const truthTable: Scene<TruthParams> = {
     const over: Shape[] = [];
 
     // Grid and header.
-    grid.push(line(x0, TOP + HEAD, x0 + tableW, TOP + HEAD, { stroke: "muted", width: 1.2 }));
+    grid.push(line(x0, TOP + head, x0 + tableW, TOP + head, { stroke: "muted", width: 1.2 }));
     grid.push(line(varEnd, TOP + 4, varEnd, rowY(n), { stroke: "muted", width: 1.2 }));
     for (let r = 1; r < n; r++) grid.push(line(x0, rowY(r), x0 + tableW, rowY(r), { stroke: "line", width: 0.8 }));
-    p.vars.forEach((v, i) => cells.push(text(xs[i] + VAR_W / 2, TOP + 17, v, { tone: "fg", size: 12.5, weight: 700, anchor: "middle", italic: true })));
-    p.columns.forEach((c, j) => cells.push(text(xs[p.vars.length + j] + widths[p.vars.length + j] / 2, TOP + 17, c.label, { tone: "amber", size: 11, weight: 600, anchor: "middle" })));
+    p.vars.forEach((v, i) => cells.push(text(xs[i] + VAR_W / 2, TOP + head - 9, v, { tone: "fg", size: 12.5, weight: 700, anchor: "middle", italic: true })));
+    p.columns.forEach((c, j) => {
+      const ls = headingLines(c.label);
+      ls.forEach((l, k) => cells.push(text(xs[p.vars.length + j] + widths[p.vars.length + j] / 2, TOP + head - 9 - (ls.length - 1 - k) * 13, l, { tone: "amber", size: 11, weight: 600, anchor: "middle" })));
+    });
 
     const cell = (col: number, r: number, v: boolean, opacity = 1) =>
       text(xs[col] + widths[col] / 2, rowY(r) + 14, tf(v), { tone: v ? "good" : "muted", size: 12, weight: v ? 700 : 400, anchor: "middle", opacity });

@@ -64,8 +64,11 @@ Or, when it does not fit cleanly: `{ "n": 7, "id": "<id>", "skip": true, "reason
     A given statement of the form a ∨ b is read as ∼a → b for converse,
     inverse and contrapositive, as the textbook does.
 
-The table must not be wider than 600 px: about 6 columns of 20-character
-labels. Use short labels, or fewer in-between columns, if a draft is refused.
+The table must not be wider than 440 px, so it stays readable on a phone. A
+heading longer than 12 characters wraps onto two lines at its main connective,
+so a 20-character statement takes about 10 characters of width; still, keep to
+about 5 statement columns with 3 letters. Use short labels ("S", "∼S", "X → Y"),
+or fewer in-between columns, if a draft is refused.
 
 ### steps
 
