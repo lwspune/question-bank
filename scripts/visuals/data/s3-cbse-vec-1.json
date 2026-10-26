@@ -1,0 +1,2346 @@
+{
+  "//": "Assembled from agent drafts (space3d).",
+  "visuals": [
+    {
+      "id": "00d9ee46-d30c-4cb2-9cf6-e549ea720eed",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "vectors": [
+            {
+              "id": "a",
+              "v": [
+                2,
+                3,
+                2
+              ],
+              "label": "a"
+            },
+            {
+              "id": "b",
+              "v": [
+                1,
+                2,
+                1
+              ],
+              "label": "b"
+            }
+          ],
+          "ask": {
+            "kind": "projection",
+            "vector": "a",
+            "on": "b",
+            "label": "projection = 5√6/3"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "c99dd364",
+        "answer": {
+          "value": 4.08248290463863,
+          "label": "5√6/3"
+        }
+      }
+    },
+    {
+      "id": "120b3669-16e1-4933-9d4c-d469d52e541f",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "vectors": [
+            {
+              "id": "a",
+              "v": [
+                0.57735027,
+                0.57735027,
+                0.57735027
+              ],
+              "label": "unit a"
+            },
+            {
+              "id": "b",
+              "v": [
+                5,
+                7,
+                -1
+              ],
+              "label": "b"
+            }
+          ],
+          "ask": {
+            "kind": "projection",
+            "vector": "a",
+            "on": "b",
+            "label": "projection = 11/15"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "82d70835",
+        "answer": {
+          "value": 0.7333333343626468,
+          "label": "11/15"
+        }
+      }
+    },
+    {
+      "id": "130a16ac-f8a7-48a2-a39f-15a4c6822d80",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "vectors": [
+            {
+              "id": "a",
+              "v": [
+                1,
+                -1,
+                3
+              ],
+              "label": "a"
+            },
+            {
+              "id": "b",
+              "v": [
+                2,
+                -7,
+                1
+              ],
+              "label": "b"
+            }
+          ],
+          "ask": {
+            "kind": "area",
+            "vectors": [
+              "a",
+              "b"
+            ],
+            "shape": "parallelogram",
+            "label": "area = 15√2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "0c11091c",
+        "answer": {
+          "value": 21.213203435596427,
+          "label": "15√2"
+        }
+      }
+    },
+    {
+      "id": "19b75148-c28f-4112-8fa5-af1704cbe0f2",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "vectors": [
+            {
+              "id": "u",
+              "v": [
+                2,
+                3,
+                2
+              ],
+              "label": "b + c"
+            },
+            {
+              "id": "a",
+              "v": [
+                2,
+                2,
+                1
+              ],
+              "label": "a"
+            }
+          ],
+          "ask": {
+            "kind": "projection",
+            "vector": "u",
+            "on": "a",
+            "label": "projection = 4"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "077c14ca",
+        "answer": {
+          "value": 3.9999999999999996,
+          "label": "4"
+        }
+      }
+    },
+    {
+      "id": "1ae5420f-47a2-42a5-bd61-bcf9156a027d",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "vectors": [
+            {
+              "id": "a",
+              "v": [
+                1,
+                -1,
+                0
+              ],
+              "label": "i − j"
+            },
+            {
+              "id": "b",
+              "v": [
+                1,
+                1,
+                0
+              ],
+              "label": "i + j"
+            }
+          ],
+          "ask": {
+            "kind": "projection",
+            "vector": "a",
+            "on": "b",
+            "label": "projection = 0"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "6fca2db0",
+        "answer": {
+          "value": 0,
+          "label": "0"
+        }
+      }
+    },
+    {
+      "id": "23ff6ac8-02e4-4e45-8b6b-84fa9a0c616d",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "vectors": [
+            {
+              "id": "u",
+              "v": [
+                3,
+                1,
+                2
+              ],
+              "label": "b + c"
+            },
+            {
+              "id": "a",
+              "v": [
+                2,
+                -2,
+                1
+              ],
+              "label": "a"
+            }
+          ],
+          "ask": {
+            "kind": "projection",
+            "vector": "u",
+            "on": "a",
+            "label": "projection = 2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "ab15cb25",
+        "answer": {
+          "value": 2,
+          "label": "2"
+        }
+      }
+    },
+    {
+      "id": "3e12bc81-35a0-40e1-95a0-54558bf916eb",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "vectors": [
+            {
+              "id": "a",
+              "v": [
+                2,
+                3,
+                0
+              ],
+              "label": "2i + 3j"
+            },
+            {
+              "id": "b",
+              "v": [
+                3,
+                -2,
+                0
+              ],
+              "label": "3i − 2j"
+            }
+          ],
+          "ask": {
+            "kind": "projection",
+            "vector": "a",
+            "on": "b",
+            "label": "projection = 0"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "1bb88dd0",
+        "answer": {
+          "value": 0,
+          "label": "0"
+        }
+      }
+    },
+    {
+      "id": "5048b940-2dc1-4944-9ba2-89c13066a3fa",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "vectors": [
+            {
+              "id": "AB",
+              "v": [
+                0,
+                1,
+                1
+              ],
+              "label": "AB"
+            },
+            {
+              "id": "AC",
+              "v": [
+                3,
+                -1,
+                4
+              ],
+              "label": "AC"
+            },
+            {
+              "id": "AD",
+              "v": [
+                1.5,
+                0,
+                2.5
+              ],
+              "label": "AD",
+              "beat": "derived"
+            }
+          ],
+          "ask": {
+            "kind": "length",
+            "vector": "AD",
+            "label": "AD = √34/2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "derived"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "293e2e48",
+        "answer": {
+          "value": 2.9154759474226504,
+          "label": "√34/2"
+        }
+      }
+    },
+    {
+      "id": "6000ba7e-aae3-4d47-84fb-e7835c02d7e6",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "vectors": [
+            {
+              "id": "a",
+              "v": [
+                1,
+                1,
+                0
+              ],
+              "label": "a"
+            },
+            {
+              "id": "b",
+              "v": [
+                1,
+                -1,
+                0
+              ],
+              "label": "b"
+            },
+            {
+              "id": "c",
+              "v": [
+                1,
+                1,
+                1
+              ],
+              "label": "c"
+            },
+            {
+              "id": "n",
+              "v": [
+                0,
+                0,
+                1
+              ],
+              "label": "n",
+              "beat": "derived"
+            }
+          ],
+          "ask": {
+            "kind": "projection",
+            "vector": "c",
+            "on": "n",
+            "label": "|c · n| = 1"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "derived"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "4490f1c6",
+        "answer": {
+          "value": 1,
+          "label": "1"
+        }
+      }
+    },
+    {
+      "id": "730c0bfe-06d8-46c2-b7ed-0eedea7711bb",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "vectors": [
+            {
+              "id": "a",
+              "v": [
+                1,
+                1,
+                -1
+              ],
+              "label": "a"
+            },
+            {
+              "id": "b",
+              "v": [
+                1,
+                -1,
+                1
+              ],
+              "label": "b"
+            }
+          ],
+          "ask": {
+            "kind": "angle",
+            "between": [
+              "a",
+              "b"
+            ],
+            "label": "θ = cos⁻¹(−1/3)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "9f61a143",
+        "answer": {
+          "value": 1.9106332362490186,
+          "label": "cos⁻¹(−1/3)"
+        }
+      }
+    },
+    {
+      "id": "7f6f8cc4-a3d8-42c8-bef0-56819e83f068",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "vectors": [
+            {
+              "id": "a",
+              "v": [
+                2,
+                1,
+                3
+              ],
+              "label": "a"
+            },
+            {
+              "id": "b",
+              "v": [
+                3,
+                5,
+                -2
+              ],
+              "label": "b"
+            }
+          ],
+          "ask": {
+            "kind": "area",
+            "vectors": [
+              "a",
+              "b"
+            ],
+            "shape": "parallelogram",
+            "label": "|a × b| = √507"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "1a58fc1b",
+        "answer": {
+          "value": 22.516660498395403,
+          "label": "√507"
+        }
+      }
+    },
+    {
+      "id": "854f9247-d3e2-4ac0-a0d6-284c6d9e4852",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "vectors": [
+            {
+              "id": "a",
+              "v": [
+                1,
+                -1,
+                3
+              ],
+              "label": "a"
+            },
+            {
+              "id": "b",
+              "v": [
+                2,
+                -7,
+                1
+              ],
+              "label": "b"
+            }
+          ],
+          "ask": {
+            "kind": "area",
+            "vectors": [
+              "a",
+              "b"
+            ],
+            "shape": "parallelogram",
+            "label": "area = 15√2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "4244bce1",
+        "answer": {
+          "value": 21.213203435596427,
+          "label": "15√2"
+        }
+      }
+    },
+    {
+      "id": "85d7fcc9-2880-45c2-ad7e-7ac1fab5b68f",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "points": [
+            {
+              "id": "D",
+              "at": [
+                2,
+                3,
+                4
+              ],
+              "label": "D"
+            },
+            {
+              "id": "A",
+              "at": [
+                7,
+                5,
+                8
+              ],
+              "label": "A"
+            },
+            {
+              "id": "V",
+              "at": [
+                -3,
+                7,
+                11
+              ],
+              "label": "V"
+            }
+          ],
+          "vectors": [
+            {
+              "id": "DV",
+              "v": [
+                -5,
+                4,
+                7
+              ],
+              "label": "DV",
+              "from": "D"
+            },
+            {
+              "id": "DA",
+              "v": [
+                5,
+                2,
+                4
+              ],
+              "label": "DA",
+              "from": "D"
+            }
+          ],
+          "ask": {
+            "kind": "angle",
+            "between": [
+              "DV",
+              "DA"
+            ],
+            "label": "∠VDA = cos⁻¹(11√2/90)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "dfa36617",
+        "answer": {
+          "value": 1.3970755359399334,
+          "label": "cos⁻¹(11√2/90)"
+        }
+      }
+    },
+    {
+      "id": "876b7834-d2ec-4017-82a5-7fa276cc2f8c",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "vectors": [
+            {
+              "id": "a",
+              "v": [
+                3,
+                1,
+                4
+              ],
+              "label": "a"
+            },
+            {
+              "id": "b",
+              "v": [
+                1,
+                -1,
+                1
+              ],
+              "label": "b"
+            }
+          ],
+          "ask": {
+            "kind": "area",
+            "vectors": [
+              "a",
+              "b"
+            ],
+            "shape": "parallelogram",
+            "label": "area = √42"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "e083f24a",
+        "answer": {
+          "value": 6.48074069840786,
+          "label": "√42"
+        }
+      }
+    },
+    {
+      "id": "93cc3c7b-a46a-450e-999f-9d7ca1005768",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "points": [
+            {
+              "id": "A",
+              "at": [
+                7,
+                5,
+                8
+              ],
+              "label": "A"
+            },
+            {
+              "id": "V",
+              "at": [
+                -3,
+                7,
+                11
+              ],
+              "label": "V"
+            }
+          ],
+          "ask": {
+            "kind": "distance",
+            "from": "A",
+            "to": "V",
+            "label": "AV = √113"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "5cf9f71e",
+        "answer": {
+          "value": 10.63014581273465,
+          "label": "√113"
+        }
+      }
+    },
+    {
+      "id": "973b2567-c0a1-425f-a6f1-0dc0c6ddfcf7",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "points": [
+            {
+              "id": "D",
+              "at": [
+                2,
+                3,
+                4
+              ],
+              "label": "D(2, 3, 4)"
+            },
+            {
+              "id": "A",
+              "at": [
+                7,
+                5,
+                8
+              ],
+              "label": "A(7, 5, 8)"
+            },
+            {
+              "id": "V",
+              "at": [
+                -3,
+                7,
+                11
+              ],
+              "label": "V(−3, 7, 11)"
+            }
+          ],
+          "vectors": [
+            {
+              "id": "DV",
+              "v": [
+                -5,
+                4,
+                7
+              ],
+              "from": "D",
+              "label": "DV",
+              "beat": "derived"
+            },
+            {
+              "id": "DA",
+              "v": [
+                5,
+                2,
+                4
+              ],
+              "from": "D",
+              "label": "DA",
+              "beat": "derived"
+            }
+          ],
+          "ask": {
+            "kind": "projection",
+            "vector": "DV",
+            "on": "DA",
+            "label": "projection = 11√5/15"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "derived"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "ca03b2fe",
+        "answer": {
+          "value": 1.639783183499846,
+          "label": "11√5/15"
+        }
+      }
+    },
+    {
+      "id": "ab5e1e0a-e4a8-4a35-9f36-9ed04c780405",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "vectors": [
+            {
+              "id": "a",
+              "v": [
+                2,
+                -4,
+                -5
+              ],
+              "label": "AB"
+            },
+            {
+              "id": "b",
+              "v": [
+                2,
+                2,
+                3
+              ],
+              "label": "AD"
+            }
+          ],
+          "ask": {
+            "kind": "area",
+            "vectors": [
+              "a",
+              "b"
+            ],
+            "shape": "parallelogram",
+            "label": "area = 2√101"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "751888a2",
+        "answer": {
+          "value": 20.09975124224178,
+          "label": "2√101"
+        }
+      }
+    },
+    {
+      "id": "b01a62f5-26f0-4e03-b2ce-0d0cf9e1d411",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "points": [
+            {
+              "id": "A",
+              "at": [
+                0,
+                1,
+                1
+              ],
+              "label": "A(0, 1, 1)"
+            },
+            {
+              "id": "B",
+              "at": [
+                2,
+                0,
+                -1
+              ],
+              "label": "B(2, 0, −1)"
+            },
+            {
+              "id": "C",
+              "at": [
+                1,
+                0,
+                3
+              ],
+              "label": "C(1, 0, 3)"
+            }
+          ],
+          "ask": {
+            "kind": "area",
+            "points": [
+              "A",
+              "B",
+              "C"
+            ],
+            "shape": "triangle",
+            "label": "area = √53/2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "53a2a7cd",
+        "answer": {
+          "value": 3.640054944640259,
+          "label": "√53/2"
+        }
+      }
+    },
+    {
+      "id": "b19c2ee9-171f-496f-bdee-1de2dfcf4612",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "vectors": [
+            {
+              "id": "AB",
+              "v": [
+                2,
+                -4,
+                5
+              ],
+              "label": "AB"
+            },
+            {
+              "id": "DB",
+              "v": [
+                3,
+                -6,
+                2
+              ],
+              "label": "DB"
+            },
+            {
+              "id": "AD",
+              "v": [
+                -1,
+                2,
+                3
+              ],
+              "label": "AD",
+              "beat": "derived"
+            }
+          ],
+          "ask": {
+            "kind": "area",
+            "vectors": [
+              "AD",
+              "AB"
+            ],
+            "shape": "parallelogram",
+            "label": "area = 11√5"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "derived"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "e3626566",
+        "answer": {
+          "value": 24.596747752497688,
+          "label": "11√5"
+        }
+      }
+    },
+    {
+      "id": "b4d91ff6-664a-4304-a71a-fc3ca04d605f",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "vectors": [
+            {
+              "id": "a",
+              "v": [
+                3,
+                1,
+                2
+              ],
+              "label": "a"
+            },
+            {
+              "id": "b",
+              "v": [
+                2,
+                -2,
+                4
+              ],
+              "label": "b"
+            }
+          ],
+          "ask": {
+            "kind": "angle",
+            "between": [
+              "a",
+              "b"
+            ],
+            "label": "θ = cos⁻¹(3/√21)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "86c8c13d",
+        "answer": {
+          "value": 0.8570719478501307,
+          "label": "cos⁻¹(3/√21)"
+        }
+      }
+    },
+    {
+      "id": "ba16be10-da41-4394-bca7-4ffaf5c025be",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "points": [
+            {
+              "id": "A",
+              "at": [
+                1,
+                1,
+                2
+              ],
+              "label": "A(1, 1, 2)"
+            },
+            {
+              "id": "B",
+              "at": [
+                2,
+                3,
+                5
+              ],
+              "label": "B(2, 3, 5)"
+            },
+            {
+              "id": "C",
+              "at": [
+                1,
+                5,
+                5
+              ],
+              "label": "C(1, 5, 5)"
+            }
+          ],
+          "ask": {
+            "kind": "area",
+            "points": [
+              "A",
+              "B",
+              "C"
+            ],
+            "shape": "triangle",
+            "label": "area = √61/2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "6d9fd56e",
+        "answer": {
+          "value": 3.905124837953327,
+          "label": "√61/2"
+        }
+      }
+    },
+    {
+      "id": "c1d6129a-042d-4f9a-b119-d349caf2b177",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "vectors": [
+            {
+              "id": "AB",
+              "v": [
+                1,
+                2,
+                -1
+              ],
+              "label": "AB"
+            },
+            {
+              "id": "AC",
+              "v": [
+                2,
+                -3,
+                0
+              ],
+              "label": "AC"
+            }
+          ],
+          "ask": {
+            "kind": "area",
+            "vectors": [
+              "AB",
+              "AC"
+            ],
+            "shape": "triangle",
+            "label": "area = √62/2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "8be9bd19",
+        "answer": {
+          "value": 3.9370039370059056,
+          "label": "√62/2"
+        }
+      }
+    },
+    {
+      "id": "c65cc7e8-3b9f-4863-9173-402f783b4d80",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "points": [
+            {
+              "id": "A",
+              "at": [
+                -1,
+                0.5,
+                4
+              ],
+              "label": "A"
+            },
+            {
+              "id": "B",
+              "at": [
+                1,
+                0.5,
+                4
+              ],
+              "label": "B"
+            },
+            {
+              "id": "C",
+              "at": [
+                1,
+                -0.5,
+                4
+              ],
+              "label": "C"
+            },
+            {
+              "id": "D",
+              "at": [
+                -1,
+                -0.5,
+                4
+              ],
+              "label": "D"
+            }
+          ],
+          "vectors": [
+            {
+              "id": "AB",
+              "v": [
+                2,
+                0,
+                0
+              ],
+              "from": "A",
+              "label": "AB"
+            },
+            {
+              "id": "AD",
+              "v": [
+                0,
+                -1,
+                0
+              ],
+              "from": "A",
+              "label": "AD"
+            }
+          ],
+          "ask": {
+            "kind": "area",
+            "vectors": [
+              "AB",
+              "AD"
+            ],
+            "shape": "parallelogram",
+            "label": "area = 2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "01ae0f29",
+        "answer": {
+          "value": 2,
+          "label": "2"
+        }
+      }
+    },
+    {
+      "id": "d0df5e3b-5cf3-42b6-8e45-6a25dbd24183",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "vectors": [
+            {
+              "id": "AB",
+              "v": [
+                0,
+                1,
+                1
+              ],
+              "label": "AB"
+            },
+            {
+              "id": "AC",
+              "v": [
+                3,
+                -1,
+                4
+              ],
+              "label": "AC"
+            },
+            {
+              "id": "AD",
+              "v": [
+                1.5,
+                0,
+                2.5
+              ],
+              "label": "AD (median)",
+              "beat": "derived"
+            }
+          ],
+          "ask": {
+            "kind": "length",
+            "vector": "AD",
+            "label": "median = √34/2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "derived"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "56f0c3f4",
+        "answer": {
+          "value": 2.9154759474226504,
+          "label": "√34/2"
+        }
+      }
+    },
+    {
+      "id": "d2496203-bcd9-4319-9c84-bfc2a25e8f11",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "vectors": [
+            {
+              "id": "a",
+              "v": [
+                2,
+                -4,
+                5
+              ],
+              "label": "a"
+            },
+            {
+              "id": "b",
+              "v": [
+                1,
+                -2,
+                -3
+              ],
+              "label": "b"
+            },
+            {
+              "id": "dg",
+              "v": [
+                3,
+                -6,
+                2
+              ],
+              "label": "a + b",
+              "beat": "derived"
+            }
+          ],
+          "ask": {
+            "kind": "area",
+            "vectors": [
+              "a",
+              "b"
+            ],
+            "shape": "parallelogram",
+            "label": "area = 11√5"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "derived"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "7c384887",
+        "answer": {
+          "value": 24.596747752497688,
+          "label": "11√5"
+        }
+      }
+    },
+    {
+      "id": "d4197798-2738-4762-b0a1-162de4f45f9a",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "vectors": [
+            {
+              "id": "a",
+              "v": [
+                2,
+                -4,
+                5
+              ],
+              "label": "a"
+            },
+            {
+              "id": "b",
+              "v": [
+                1,
+                -2,
+                -3
+              ],
+              "label": "b"
+            },
+            {
+              "id": "dg",
+              "v": [
+                3,
+                -6,
+                2
+              ],
+              "label": "a + b",
+              "beat": "derived"
+            }
+          ],
+          "ask": {
+            "kind": "area",
+            "vectors": [
+              "a",
+              "b"
+            ],
+            "shape": "parallelogram",
+            "label": "area = 11√5"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "derived"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "b8122cee",
+        "answer": {
+          "value": 24.596747752497688,
+          "label": "11√5"
+        }
+      }
+    },
+    {
+      "id": "d4ff2ce4-98c9-4538-945d-4ca2edef598b",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "vectors": [
+            {
+              "id": "v",
+              "v": [
+                6,
+                -2,
+                3
+              ],
+              "label": "6i − 2j + 3k"
+            }
+          ],
+          "ask": {
+            "kind": "length",
+            "vector": "v",
+            "label": "magnitude = 7"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "2adfe9a7",
+        "answer": {
+          "value": 7,
+          "label": "7"
+        }
+      }
+    },
+    {
+      "id": "d56bedcd-9102-4b96-a755-7324786771d3",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "vectors": [
+            {
+              "id": "a",
+              "v": [
+                1,
+                -7,
+                7
+              ],
+              "label": "a"
+            },
+            {
+              "id": "b",
+              "v": [
+                3,
+                -2,
+                2
+              ],
+              "label": "b"
+            }
+          ],
+          "ask": {
+            "kind": "area",
+            "vectors": [
+              "a",
+              "b"
+            ],
+            "shape": "parallelogram",
+            "label": "|a × b| = 19√2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "339d35e4",
+        "answer": {
+          "value": 26.870057685088806,
+          "label": "19√2"
+        }
+      }
+    },
+    {
+      "id": "e5bdc099-3884-402f-ba6c-2f80fe76e15c",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "vectors": [
+            {
+              "id": "a",
+              "v": [
+                1,
+                3,
+                7
+              ],
+              "label": "a"
+            },
+            {
+              "id": "b",
+              "v": [
+                7,
+                -1,
+                8
+              ],
+              "label": "b"
+            }
+          ],
+          "ask": {
+            "kind": "projection",
+            "vector": "a",
+            "on": "b",
+            "label": "projection = 60/√114"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "3633129e",
+        "answer": {
+          "value": 5.619514869490164,
+          "label": "60/√114"
+        }
+      }
+    },
+    {
+      "id": "ecb5ef38-726f-4df8-9eca-a3869272ef65",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "vectors": [
+            {
+              "id": "a",
+              "v": [
+                1,
+                -2,
+                3
+              ],
+              "label": "a"
+            },
+            {
+              "id": "b",
+              "v": [
+                3,
+                -2,
+                1
+              ],
+              "label": "b"
+            }
+          ],
+          "ask": {
+            "kind": "angle",
+            "between": [
+              "a",
+              "b"
+            ],
+            "label": "θ = cos⁻¹(5/7)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "c171b209",
+        "answer": {
+          "value": 0.7751933733103613,
+          "label": "cos⁻¹(5/7)"
+        }
+      }
+    },
+    {
+      "id": "ee7994e2-9531-4e9e-aa75-9c4299a6132d",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "points": [
+            {
+              "id": "A",
+              "at": [
+                1,
+                2,
+                3
+              ],
+              "label": "A(1, 2, 3)"
+            },
+            {
+              "id": "B",
+              "at": [
+                -1,
+                0,
+                0
+              ],
+              "label": "B(−1, 0, 0)"
+            },
+            {
+              "id": "C",
+              "at": [
+                0,
+                1,
+                2
+              ],
+              "label": "C(0, 1, 2)"
+            }
+          ],
+          "vectors": [
+            {
+              "id": "BA",
+              "v": [
+                2,
+                2,
+                3
+              ],
+              "from": "B",
+              "label": "BA",
+              "beat": "derived"
+            },
+            {
+              "id": "BC",
+              "v": [
+                1,
+                1,
+                2
+              ],
+              "from": "B",
+              "label": "BC",
+              "beat": "derived"
+            }
+          ],
+          "ask": {
+            "kind": "angle",
+            "between": [
+              "BA",
+              "BC"
+            ],
+            "label": "∠ABC = cos⁻¹(10/√102)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "derived"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "263731f8",
+        "answer": {
+          "value": 0.1404897017535197,
+          "label": "cos⁻¹(10/√102)"
+        }
+      }
+    },
+    {
+      "id": "f19c7042-1d83-44d6-95a6-300df618eeca",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "points": [
+            {
+              "id": "A",
+              "at": [
+                1,
+                2,
+                3
+              ],
+              "label": "A(1, 2, 3)"
+            },
+            {
+              "id": "B",
+              "at": [
+                2,
+                -1,
+                4
+              ],
+              "label": "B(2, −1, 4)"
+            },
+            {
+              "id": "C",
+              "at": [
+                4,
+                5,
+                -1
+              ],
+              "label": "C(4, 5, −1)"
+            }
+          ],
+          "ask": {
+            "kind": "area",
+            "points": [
+              "A",
+              "B",
+              "C"
+            ],
+            "shape": "triangle",
+            "label": "area = √274/2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "276b0b1d",
+        "answer": {
+          "value": 8.276472678623424,
+          "label": "√274/2"
+        }
+      }
+    },
+    {
+      "id": "f93db7f6-5def-4c3e-8a08-86f734ba5209",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "points": [
+            {
+              "id": "A",
+              "at": [
+                1,
+                1,
+                1
+              ],
+              "label": "A(1, 1, 1)"
+            },
+            {
+              "id": "B",
+              "at": [
+                1,
+                2,
+                3
+              ],
+              "label": "B(1, 2, 3)"
+            },
+            {
+              "id": "C",
+              "at": [
+                2,
+                3,
+                1
+              ],
+              "label": "C(2, 3, 1)"
+            }
+          ],
+          "ask": {
+            "kind": "area",
+            "points": [
+              "A",
+              "B",
+              "C"
+            ],
+            "shape": "triangle",
+            "label": "area = √21/2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "3495a7cf",
+        "answer": {
+          "value": 2.29128784747792,
+          "label": "√21/2"
+        }
+      }
+    },
+    {
+      "id": "fb297e31-169b-4552-97ac-43dc44d0ab22",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "vectors": [
+            {
+              "id": "a",
+              "v": [
+                1,
+                0,
+                0
+              ],
+              "label": "a (unit)"
+            },
+            {
+              "id": "b",
+              "v": [
+                0.8660254,
+                0.5,
+                0
+              ],
+              "label": "b (unit, 30° from a)"
+            },
+            {
+              "id": "p",
+              "v": [
+                3.5980762,
+                1.5,
+                0
+              ],
+              "label": "a + 3b",
+              "beat": "derived"
+            },
+            {
+              "id": "q",
+              "v": [
+                3.8660254,
+                0.5,
+                0
+              ],
+              "label": "3a + b",
+              "beat": "derived"
+            }
+          ],
+          "ask": {
+            "kind": "area",
+            "vectors": [
+              "p",
+              "q"
+            ],
+            "shape": "parallelogram",
+            "label": "area = 4"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "derived"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "ba4e414c",
+        "answer": {
+          "value": 4,
+          "label": "4"
+        }
+      }
+    },
+    {
+      "id": "fcf0effa-f109-442c-a831-5b82ab57ada0",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "vectors": [
+            {
+              "id": "a",
+              "v": [
+                4,
+                6,
+                -12
+              ],
+              "label": "a (|a| = 14)",
+              "beat": "derived"
+            },
+            {
+              "id": "i",
+              "v": [
+                1,
+                0,
+                0
+              ],
+              "label": "i"
+            }
+          ],
+          "ask": {
+            "kind": "projection",
+            "vector": "a",
+            "on": "i",
+            "label": "projection = 4"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "derived"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "a7c1e23d",
+        "answer": {
+          "value": 4,
+          "label": "4"
+        }
+      }
+    },
+    {
+      "id": "ff52f3d1-128b-442c-af09-41a69f677d85",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "vectors": [
+            {
+              "id": "a",
+              "v": [
+                2,
+                -2,
+                2
+              ],
+              "label": "a"
+            },
+            {
+              "id": "s",
+              "v": [
+                1,
+                0,
+                0
+              ],
+              "label": "a + b = i"
+            },
+            {
+              "id": "b",
+              "v": [
+                -1,
+                2,
+                -2
+              ],
+              "label": "b",
+              "beat": "derived"
+            }
+          ],
+          "ask": {
+            "kind": "length",
+            "vector": "b",
+            "label": "|b| = 3"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given",
+              "derived"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "41a5a501",
+        "answer": {
+          "value": 3,
+          "label": "3"
+        }
+      }
+    }
+  ],
+  "decided": [
+    {
+      "id": "63f376e4-eecb-4a6d-b704-3a8388883c72",
+      "verdict": "noFit",
+      "reason": "space3d: a straight angle (pi) draws a half-circle arc that runs off the picture"
+    },
+    {
+      "id": "c396720c-2d33-487b-830b-5fb0d537f7d8",
+      "verdict": "noFit",
+      "reason": "space3d: a compass walk reads wrongly in a 3D view (west points up and right)"
+    }
+  ]
+}

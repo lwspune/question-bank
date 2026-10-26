@@ -89,6 +89,12 @@ describe("truthTable drawing", () => {
     expect(cells(["vars", "columns"], 0.5)).toHaveLength(24 + 16);
     expect(cells(["vars", "columns"])).toHaveLength(24 + 32);
   });
+  it("fills the whole table when a later beat plays without an earlier one", () => {
+    // A step list that goes straight from the letters (or nothing) to the answer still shows every value.
+    expect(cells(["vars", "answer"])).toHaveLength(24 + 32);
+    expect(cells(["answer"])).toHaveLength(24 + 32);
+    expect(cells(["columns"])).toHaveLength(24 + 32);
+  });
   it("highlights the answer row and names it once the answer plays", () => {
     const shapes = (played: string[]) => scene().frame(parse(raw), { played, t: 1, slider: undefined });
     const lit = (played: string[]) => shapes(played).filter((s) => s.kind === "rect" && s.fill === "goodSoft");

@@ -158,6 +158,13 @@ picture shows the right shape.
   the scene's own constructions (two-line meet, image in a line) or skip.
 - A right number on the wrong shape (a triangle drawn for a parallelogram) passes
   the check: only the sheet catches it.
+- LP: a corner label can still be crossed by a constraint line, and a stroke just
+  after the comma reads as a minus ("(50, 100)" looked like "(50, −100)"). Zoom in
+  on any corner label a line passes through; hold the draft (undecided) if the
+  crossing changes what it says. Held for this: `32cbeab1`, `f60ee6e9`.
+- Edge stops a sheet screenshot at 16,000 px: about 25 visuals of most scenes, but
+  only about 11 LP visuals (four frames each). Check the last part ends on a whole
+  visual before trusting a sheet.
 - A solution wrong by one slip gets a fix that swaps that fragment exactly once
   and keeps the rest of the text; rewrite only a solution that is wrong throughout.
 - Correct the solution BEFORE drafting its visual: the visual's steps carry the

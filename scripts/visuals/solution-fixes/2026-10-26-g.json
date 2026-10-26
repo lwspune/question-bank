@@ -1,0 +1,8 @@
+[
+  {
+    "id": "0d1cf29e-e33e-4000-91e2-d8a537cdda03",
+    "before": "5aedf473",
+    "solution": "Both sides are tautologies (all-T final columns), so they are equivalent.\n\n| \\(p\\) | \\(q\\) | \\(q \\to p\\) | \\(p \\to (q \\to p)\\) | \\(\\sim p\\) | \\(p \\to q\\) | \\(\\sim p \\to (p \\to q)\\) |\n|---|---|---|---|---|---|---|\n| T | T | T | T | F | T | T |\n| T | F | T | T | F | F | T |\n| F | T | F | T | T | T | T |\n| F | F | T | T | T | T | T |\n\nColumns 4 and 7 are identical (both all T), hence \\(p \\to (q \\to p) \\equiv \\sim p \\to (p \\to q)\\).",
+    "note": "the stored text had lost its backslashes (a \\t became a TAB, \\sim and \\equiv printed as words, \\( \\) as brackets); same table and conclusion, maths restored."
+  }
+]
