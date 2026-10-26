@@ -174,6 +174,28 @@ describe("functionGraph", () => {
   });
 });
 
+describe("functionGraph counts a root where the curve only touches the line", () => {
+  const count = (f: string, x: [number, number], g = "0") => {
+    const { scene, p } = parsedParams("functionGraph", { f, g: [g], window: { x, y: [-2, 2] }, ask: { kind: "crossings" } });
+    return scene.check(p);
+  };
+  it("counts a double root as one solution", () => {
+    expect(count("(x-1)^2", [-1, 3.3])).toBe(1);
+    expect(count("x^3-x^2", [-1, 2.2])).toBe(2); // touches at 0, crosses at 1
+  });
+  it("counts where a curve touches a horizontal line from below", () => {
+    expect(count("sin(x)", [0, 2 * Math.PI], "1")).toBe(1);
+  });
+  it("counts the touching root of JEE's octic: -1, about 0.33, and a touch at 1 make 3", () => {
+    expect(count("x^8-x^7-x^6+x^5+3*x^4-4*x^3-2*x^2+4*x-1", [-1.5, 1.5])).toBe(3);
+  });
+  it("does not count a near miss, and does not count a pole", () => {
+    expect(count("(x-1)^2+0.001", [-1, 3.3])).toBe(0);
+    expect(count("tan(x)", [0.1, 3.3])).toBe(1);
+    expect(count("1/(x-1)^2", [-1, 3.3], "0")).toBe(0);
+  });
+});
+
 describe("functionGraph drawing details", () => {
   it("labels negative pi ticks as fractions of pi, not decimals", () => {
     const { scene, p } = parsedParams("functionGraph", { f: "sin(3*x)", xTicks: "pi", window: { x: [-Math.PI / 2, Math.PI / 2], y: [-1.2, 1.2] }, ask: { kind: "increasingOn", interval: [-Math.PI / 6, Math.PI / 6] } });
