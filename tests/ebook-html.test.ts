@@ -433,3 +433,64 @@ describe("buildEbookFrontHtml premium cover", () => {
     expect(buildEbookFrontHtml(plain)).not.toContain('class="pcover"');
   });
 });
+
+// ── Repeated PYQs (board) ────────────────────────────────────────────────────
+// Each question sits under its own line saying how often the board asked it,
+// a case study's passage prints once, and the solutions follow on a fresh page
+// under the same numbers, without the lines repeated.
+describe("buildRepeatsChapterHtml", () => {
+  const written = (id: string, over: Partial<QuestionRow> = {}): QuestionRow =>
+    q(id, "A", { options: [], questionFormat: "subjective", solution: `Model answer of ${id}.`, ...over });
+  const input = {
+    number: 3,
+    name: "Ray Optics",
+    bookTitle: "CBSE Class 12 Physics",
+    questions: [
+      q("r1", "B", { solution: "Because of r1." }),
+      written("t1"),
+      written("c1", { setId: "repeats-3", context: "A passage about prisms." }),
+      written("c2", { setId: "repeats-3", context: "A passage about prisms." }),
+    ],
+    noteOf: new Map([
+      ["r1", "Asked 3 times: 2022, 2024, 2026"],
+      ["t1", "This type asked 2 times: 2023, 2025. This one: 2025"],
+      ["c1", "Asked 2 times: 2022, 2023"],
+      ["c2", "Asked 2 times: 2022, 2023"],
+    ]),
+    printedOf: new Map([
+      ["r1", { number: "1", marks: null, orBefore: false }],
+      ["t1", { number: "2", marks: null, orBefore: false }],
+      ["c1", { number: "3 (a)", marks: null, orBefore: false }],
+      ["c2", { number: "3 (b)", marks: null, orBefore: false }],
+    ]),
+    counts: { repeats: 2, types: 1 },
+    head: "",
+  };
+
+  it("heads the chapter with how many questions came back", async () => {
+    const { buildRepeatsChapterHtml } = await import("@/lib/ebooks/bookHtml");
+    const head = between(buildRepeatsChapterHtml(input), 'class="chead', 'id="questions"');
+    expect(head).toContain("Ray Optics");
+    expect(head).toContain("2 asked again");
+    expect(head).toContain("1 recurring type");
+  });
+
+  it("puts each question under its own line, in order", async () => {
+    const { buildRepeatsChapterHtml } = await import("@/lib/ebooks/bookHtml");
+    const qs = between(buildRepeatsChapterHtml(input), 'id="questions"', 'id="solutions"');
+    expect(qs).toMatch(/Asked 3 times: 2022, 2024, 2026[\s\S]*1\.[\s\S]*Stem of r1[\s\S]*This type asked 2 times[\s\S]*Stem of t1/);
+    expect(qs.split("A passage about prisms.").length - 1).toBe(1);
+    expect(qs).toMatch(/3 \(a\)\.[\s\S]*3 \(b\)\./);
+    expect(qs).not.toContain("Because of r1.");
+  });
+
+  it("solves every question on a new page under the same numbers, without the lines", async () => {
+    const { buildRepeatsChapterHtml } = await import("@/lib/ebooks/bookHtml");
+    const html = buildRepeatsChapterHtml(input);
+    expect(html).toMatch(/id="solutions" class="newpage[ "]/);
+    const sol = between(html, 'id="solutions"');
+    expect(sol).toMatch(/1\.[\s\S]*Answer: \(b\)[\s\S]*Because of r1\./);
+    expect(sol).toMatch(/3 \(b\)\.[\s\S]*Model answer of c2\./);
+    expect(sol).not.toContain("Asked 3 times");
+  });
+});

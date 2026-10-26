@@ -153,6 +153,10 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ## 2026-10-26
 
+### Seven board subjects list their chapters in load order, not textbook order
+
+Found while building the Repeated PYQs books (which print chapters in `chapters.order_index` order): CBSE 12 Physics and Chemistry, CBSE 10 Maths and Science, and Maharashtra HSC 12 Physics, Chemistry and Geography carry the order the chapters were ingested in (CBSE 12 Physics opens with Magnetism and Matter, chapter 5). `/board` sorts by the same column, so those seven subjects' board pages are out of order live. The other ten board subjects are right. The textbook order is in the data for NCERT (solved examples are numbered `Eg <chapter>.<n>`) and in the ingestion configs for Balbharati. **Status: DONE 2026-10-26 (owner chose to fix the column).** `scripts/fix-chapter-order.ts` reordered 80 of 94 chapters (pure core `scripts/lib/chapterOrder.ts`, refuses a list that misses or invents a chapter); old values and their restore SQL in `backups/chapter-order-2026-10-26T01-38-57-364Z.json` (local). Retired "[Outdated]" chapters stay last.
+
 ### The PDF download printer can hang on some PNG pictures, as the ebook builder did
 
 Found while building the board Solved Papers books: an ordinary 803x650 RGB PNG (the labelled female reproductive system, solution picture of SSC Science and Technology II, July 2024, Q.4 (i)(a), question `4ff6f203-bdfd-478a-b0f0-2a00b0ae046e`) hung Chrome's PDF print for good whenever it fell near a page break. Printed alone it took 1 s; dropping it, or the same picture as a JPEG, printed the whole run in about 2 s; capping its size or changing the page-break rules did not help. The ebook build now turns every picture into a JPEG first (`asJpegs` in `scripts/ebooks/build.ts`, `sharp`, dev-only).

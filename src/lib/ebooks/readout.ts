@@ -28,91 +28,83 @@ export type EbookStoreRow = {
 
 const PAGE = 1000;
 
-async function count(q: PromiseLike<{ count: number | null }>): Promise<number> {
-  return (await q).count ?? 0;
-}
+type Query = {
+  order: (col: string) => Query;
+  range: (from: number, to: number) => PromiseLike<{ data: unknown[] | null; error: { message: string } | null }>;
+};
 
-/** Distinct students with a view of `surface` on the book's page, paged past the 1,000-row cap. */
-async function distinctViewers(admin: SupabaseClient, surface: string, path: string): Promise<number> {
-  const users = new Set<string>();
+/** Every row a query returns, paged past PostgREST's 1,000-row cap; `order` must be unique, for a stable page. */
+async function allRows<T>(build: () => unknown, what: string, order: string[] = ["id"]): Promise<T[]> {
+  const out: T[] = [];
   for (let from = 0; ; from += PAGE) {
-    const { data } = await admin
-      .from("user_activity")
-      .select("id, user_id")
-      .eq("kind", "surface_viewed")
-      .eq("metadata->>surface", surface)
-      .eq("metadata->>path", path)
-      .order("id")
-      .range(from, from + PAGE - 1);
-    for (const r of data ?? []) users.add(r.user_id as string);
-    if (!data || data.length < PAGE) break;
+    const q = order.reduce((acc, col) => acc.order(col), build() as Query);
+    const { data, error } = await q.range(from, from + PAGE - 1);
+    if (error) throw new Error(`ebook readout ${what}: ${error.message}`);
+    out.push(...((data ?? []) as T[]));
+    if (!data || data.length < PAGE) return out;
   }
-  return users.size;
 }
 
+/**
+ * One read per table, grouped by book here (2026-10-26). It read about six
+ * times per book, one after another, which was fine at 7 books and timed out
+ * at 41 once the board books joined the store.
+ */
 export async function loadEbookStoreReadout(admin: SupabaseClient): Promise<EbookStoreRow[]> {
-  const { data: books } = await admin.from("ebooks").select("slug, title, active").order("sort_order");
-  const out: EbookStoreRow[] = [];
-  for (const book of books ?? []) {
-    const slug = book.slug as string;
-    // Every purchase of the book, paged: buyers, revenue and refunds from one read.
-    let revenuePaise = 0;
-    let buyers = 0;
-    let refunds = 0;
-    const ids: string[] = [];
-    for (let from = 0; ; from += PAGE) {
-      const { data } = await admin
-        .from("ebook_purchases")
-        .select("id, amount_paise, status")
-        .eq("ebook_slug", slug)
-        .order("id")
-        .range(from, from + PAGE - 1);
-      for (const r of data ?? []) {
-        ids.push(r.id as string);
-        if (r.status === "active") {
-          buyers += 1;
-          revenuePaise += r.amount_paise as number;
-        } else {
-          refunds += 1;
-        }
-      }
-      if (!data || data.length < PAGE) break;
-    }
-    const [openedBy, sampledBy] = await Promise.all([
-      distinctViewers(admin, "store", `/store/${slug}`),
-      distinctViewers(admin, "ebook_sample", `/store/${slug}`),
-    ]);
-    const [printInterest, withPincode] = await Promise.all([
-      count(admin.from("ebook_print_interest").select("user_id", { count: "exact", head: true }).eq("ebook_slug", slug)),
-      count(
+  const { data: books, error } = await admin.from("ebooks").select("slug, title, active").order("sort_order");
+  if (error) throw new Error(`ebook readout books: ${error.message}`);
+  const [purchases, views, interest, downloads] = await Promise.all([
+    allRows<{ id: string; ebook_slug: string; amount_paise: number; status: string }>(
+      () => admin.from("ebook_purchases").select("id, ebook_slug, amount_paise, status"),
+      "purchases"
+    ),
+    // A book page's views and sample taps: path /store/<slug>, never /store itself.
+    allRows<{ user_id: string; surface: string; path: string }>(
+      () =>
         admin
-          .from("ebook_print_interest")
-          .select("user_id", { count: "exact", head: true })
-          .eq("ebook_slug", slug)
-          .not("pincode", "is", null)
-      ),
-    ]);
-    // Downloads of every purchase, refunded ones included. The ids go in
-    // chunks: `.in()` is a URL, which breaks near 800 ids.
-    let downloads = 0;
-    for (let i = 0; i < ids.length; i += 200) {
-      downloads += await count(
-        admin.from("ebook_downloads").select("id", { count: "exact", head: true }).in("purchase_id", ids.slice(i, i + 200))
-      );
-    }
-    out.push({
+          .from("user_activity")
+          .select("id, user_id, surface:metadata->>surface, path:metadata->>path")
+          .eq("kind", "surface_viewed")
+          .in("metadata->>surface", ["store", "ebook_sample"])
+          .like("metadata->>path", "/store/%"),
+      "views"
+    ),
+    // Keyed by (user_id, ebook_slug): it has no id column.
+    allRows<{ ebook_slug: string; pincode: string | null }>(
+      () => admin.from("ebook_print_interest").select("user_id, ebook_slug, pincode"),
+      "print interest",
+      ["user_id", "ebook_slug"]
+    ),
+    // Downloads of every purchase, refunded ones included.
+    allRows<{ purchase_id: string }>(() => admin.from("ebook_downloads").select("id, purchase_id"), "downloads"),
+  ]);
+
+  const slugOfPurchase = new Map(purchases.map((p) => [p.id, p.ebook_slug]));
+  const downloadsBySlug = new Map<string, number>();
+  for (const d of downloads) {
+    const slug = slugOfPurchase.get(d.purchase_id);
+    if (slug) downloadsBySlug.set(slug, (downloadsBySlug.get(slug) ?? 0) + 1);
+  }
+  const viewers = (surface: string, slug: string) =>
+    new Set(views.filter((v) => v.surface === surface && v.path === `/store/${slug}`).map((v) => v.user_id)).size;
+
+  return (books ?? []).map((book) => {
+    const slug = book.slug as string;
+    const mine = purchases.filter((p) => p.ebook_slug === slug);
+    const active = mine.filter((p) => p.status === "active");
+    const taps = interest.filter((i) => i.ebook_slug === slug);
+    return {
       slug,
       title: book.title as string,
       active: book.active as boolean,
-      openedBy,
-      sampledBy,
-      buyers,
-      revenuePaise,
-      refunds,
-      printInterest,
-      withPincode,
-      downloads,
-    });
-  }
-  return out;
+      openedBy: viewers("store", slug),
+      sampledBy: viewers("ebook_sample", slug),
+      buyers: active.length,
+      revenuePaise: active.reduce((s, p) => s + p.amount_paise, 0),
+      refunds: mine.length - active.length,
+      printInterest: taps.length,
+      withPincode: taps.filter((i) => i.pincode !== null).length,
+      downloads: downloadsBySlug.get(slug) ?? 0,
+    };
+  });
 }

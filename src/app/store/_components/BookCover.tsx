@@ -1,4 +1,4 @@
-import { ACCENT, INK, KIND_LABEL, MUTED, PAPER } from "@/lib/ebooks/theme";
+import { ACCENT, INK, KIND_LABEL, MUTED, PAPER, PREMIUM_KINDS } from "@/lib/ebooks/theme";
 import type { EbookKind } from "@/lib/ebooks/catalog";
 
 /**
@@ -16,7 +16,7 @@ export default function BookCover({
 }: {
   kind: EbookKind;
   subject: string;
-  /** The line over the subject on a Solved Papers cover: "Maharashtra HSC Class 12". */
+  /** The line over the subject on a board book's cover: "Maharashtra HSC Class 12". */
   over?: string;
   size?: "sm" | "md" | "lg";
   /** The cover's numbers (`ebooks.stats`); the first three fill the tiles, as on the PDF cover. */
@@ -26,7 +26,7 @@ export default function BookCover({
   const pad = size === "sm" ? "p-3" : size === "md" ? "p-4" : "p-6";
   const title = size === "sm" ? "text-sm" : size === "md" ? "text-base sm:text-xl" : "text-2xl";
   const tiles = size === "sm" ? [] : stats.slice(0, 3);
-  if (kind === "papers") return <PremiumCover subject={subject} over={over} pad={pad} title={title} tiles={tiles} />;
+  if (PREMIUM_KINDS.has(kind)) return <PremiumCover kind={kind} subject={subject} over={over} pad={pad} title={title} tiles={tiles} />;
   return (
     <div
       aria-hidden
@@ -67,17 +67,19 @@ export default function BookCover({
 const GOLD = "#f0c46e";
 
 /**
- * The Solved Papers cover as the PDF prints it (lib/ebooks/bookHtml PREMIUM_CSS):
+ * A board book's cover as the PDF prints it (lib/ebooks/bookHtml PREMIUM_CSS):
  * navy with a soft blue glow, a gold frame, the board line over the subject, a
  * stack of paper sheets with a gold seal, gold numbers.
  */
 function PremiumCover({
+  kind,
   subject,
   over,
   pad,
   title,
   tiles,
 }: {
+  kind: EbookKind;
   subject: string;
   over?: string;
   pad: string;
@@ -100,7 +102,7 @@ function PremiumCover({
           className="inline-block whitespace-nowrap rounded-full border px-1.5 py-0.5 text-[0.5rem] font-bold uppercase tracking-[0.06em] sm:px-2 sm:tracking-[0.14em]"
           style={{ color: GOLD, borderColor: GOLD }}
         >
-          {KIND_LABEL.papers}
+          {KIND_LABEL[kind]}
         </span>
         {over ? (
           <div className="mt-2 text-[0.5rem] font-semibold uppercase leading-tight tracking-[0.12em] sm:text-[0.6rem]" style={{ color: "#b9c6ec" }}>
