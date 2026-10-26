@@ -125,7 +125,19 @@ describe("examHomeDescription", () => {
       hasShippedNotes: false,
     });
     expect(examHomeDescription(m)).toContain(
-      ", with answers, and worked solutions for some and timed mocks of real papers. Free to browse."
+      ", with answers, worked solutions for some, and timed mocks of real papers. Free to browse."
+    );
+  });
+
+  it("lists 'worked solutions for some' as one item when there are several extras", () => {
+    const withNotes = { ...getExamBySlug("ipmat-indore")!, notesPath: "/notes/ipmat-indore" };
+    const m = buildExamHome(withNotes, [], {
+      examId: null,
+      totalPublicQuestions: 670,
+      hasShippedNotes: true,
+    });
+    expect(examHomeDescription(m)).toContain(
+      ", with answers, worked solutions for some, timed mocks of real papers, and chapter notes. Free to browse."
     );
   });
 
