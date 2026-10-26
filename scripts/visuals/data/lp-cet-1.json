@@ -1,0 +1,2263 @@
+{
+  "//": "Assembled from agent drafts (lpRegion).",
+  "visuals": [
+    {
+      "id": "00733e89-2f52-4e55-874c-eb661d0049bc",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "lpRegion",
+        "params": {
+          "window": {
+            "x": [
+              0,
+              14
+            ],
+            "y": [
+              0,
+              14
+            ]
+          },
+          "constraints": [
+            {
+              "a": 1,
+              "b": 1,
+              "op": "<=",
+              "c": 12
+            },
+            {
+              "a": 2,
+              "b": 1,
+              "op": "<=",
+              "c": 20
+            }
+          ],
+          "objective": {
+            "a": 10,
+            "b": 6,
+            "label": "z = 10x + 6y"
+          },
+          "ask": {
+            "kind": "maxAt",
+            "at": [
+              8,
+              4
+            ],
+            "label": "max z = 104 at (8, 4)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "constraints",
+              "region",
+              "corners"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "sweep"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "36e3a1ab",
+        "answer": {
+          "value": 1,
+          "label": "(8, 4)"
+        }
+      }
+    },
+    {
+      "id": "06670e0a-4d28-46d6-b6c6-080b004f29ff",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "lpRegion",
+        "params": {
+          "window": {
+            "x": [
+              0,
+              12
+            ],
+            "y": [
+              0,
+              6
+            ]
+          },
+          "constraints": [
+            {
+              "a": 5,
+              "b": 10,
+              "op": "<=",
+              "c": 50
+            },
+            {
+              "a": 1,
+              "b": 1,
+              "op": ">=",
+              "c": 1
+            },
+            {
+              "a": 0,
+              "b": 1,
+              "op": "<=",
+              "c": 4
+            }
+          ],
+          "objective": {
+            "a": 3,
+            "b": 5,
+            "label": "z = 3x + 5y"
+          },
+          "ask": {
+            "kind": "range",
+            "label": "max 30 - min 3 = 27"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "constraints",
+              "region",
+              "corners"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "sweep",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "c9746359",
+        "answer": {
+          "value": 27,
+          "label": "27"
+        }
+      }
+    },
+    {
+      "id": "0fe36ad4-228f-4365-85ee-2685765cb493",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "lpRegion",
+        "params": {
+          "window": {
+            "x": [
+              0,
+              10
+            ],
+            "y": [
+              0,
+              10
+            ]
+          },
+          "constraints": [
+            {
+              "a": 1,
+              "b": 1,
+              "op": "<=",
+              "c": 8
+            },
+            {
+              "a": 1,
+              "b": 2,
+              "op": ">=",
+              "c": 4
+            },
+            {
+              "a": 6,
+              "b": 4,
+              "op": ">=",
+              "c": 12
+            }
+          ],
+          "objective": {
+            "a": 30,
+            "b": 20,
+            "label": "z = 30x + 20y"
+          },
+          "ask": {
+            "kind": "minCount",
+            "label": "min z = 60 along an edge"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "constraints",
+              "region",
+              "corners"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "sweep",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "6e94ef75",
+        "answer": {
+          "value": 2,
+          "label": "infinitely many"
+        }
+      }
+    },
+    {
+      "id": "136e3f79-1b08-40ca-9341-d924fe8edebc",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "lpRegion",
+        "params": {
+          "window": {
+            "x": [
+              0,
+              8
+            ],
+            "y": [
+              0,
+              12
+            ]
+          },
+          "constraints": [
+            {
+              "a": 1,
+              "b": 1,
+              "op": "<=",
+              "c": 10
+            },
+            {
+              "a": 5,
+              "b": 3,
+              "op": ">=",
+              "c": 15
+            },
+            {
+              "a": 1,
+              "b": 0,
+              "op": "<=",
+              "c": 6
+            }
+          ],
+          "objective": {
+            "a": 1,
+            "b": 1,
+            "label": "Z = x + y"
+          },
+          "ask": {
+            "kind": "maxCount",
+            "label": "max Z = 10 along an edge"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "constraints",
+              "region",
+              "corners"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "sweep"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "8de51993",
+        "answer": {
+          "value": 2,
+          "label": "infinitely many"
+        }
+      }
+    },
+    {
+      "id": "1a5c1a23-4a4b-4a5b-bd37-e4028f9f3fd0",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "lpRegion",
+        "params": {
+          "window": {
+            "x": [
+              0,
+              10
+            ],
+            "y": [
+              0,
+              5
+            ]
+          },
+          "constraints": [
+            {
+              "a": 1,
+              "b": 1,
+              "op": ">=",
+              "c": 2
+            },
+            {
+              "a": 1,
+              "b": 2,
+              "op": "<=",
+              "c": 8
+            },
+            {
+              "a": 0,
+              "b": 1,
+              "op": "<=",
+              "c": 3
+            }
+          ],
+          "objective": {
+            "a": 1,
+            "b": 1,
+            "label": "z = x + y"
+          },
+          "ask": {
+            "kind": "minCount",
+            "label": "min z = 2 along an edge"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "constraints",
+              "region",
+              "corners",
+              "sweep",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "83febf39",
+        "answer": {
+          "value": 2,
+          "label": "infinitely many"
+        }
+      }
+    },
+    {
+      "id": "1fad08de-9cc1-4f52-9127-20880acb3834",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "lpRegion",
+        "params": {
+          "window": {
+            "x": [
+              0,
+              20
+            ],
+            "y": [
+              0,
+              25
+            ]
+          },
+          "constraints": [
+            {
+              "a": 1,
+              "b": 3,
+              "op": "<=",
+              "c": 60
+            },
+            {
+              "a": 1,
+              "b": 1,
+              "op": ">=",
+              "c": 10
+            },
+            {
+              "a": 1,
+              "b": -1,
+              "op": "<=",
+              "c": 0
+            }
+          ],
+          "objective": {
+            "a": 3,
+            "b": 5,
+            "label": "Z = 3x + 5y"
+          },
+          "ask": {
+            "kind": "range",
+            "label": "max 120 - min 40 = 80"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "constraints",
+              "region",
+              "corners"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "sweep",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "def6db0b",
+        "answer": {
+          "value": 80.00000000000003,
+          "label": "80"
+        }
+      }
+    },
+    {
+      "id": "240ddc7d-767e-49f3-bb25-2b890ceac1e3",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "lpRegion",
+        "params": {
+          "window": {
+            "x": [
+              0,
+              170
+            ],
+            "y": [
+              0,
+              80
+            ]
+          },
+          "constraints": [
+            {
+              "a": 1,
+              "b": 2,
+              "op": "<=",
+              "c": 200
+            },
+            {
+              "a": 1,
+              "b": 1,
+              "op": "<=",
+              "c": 150
+            },
+            {
+              "a": 0,
+              "b": 1,
+              "op": "<=",
+              "c": 60
+            }
+          ],
+          "objective": {
+            "a": 1,
+            "b": 1,
+            "label": "Z = x + y"
+          },
+          "ask": {
+            "kind": "maxCount",
+            "label": "max Z = 150 along an edge"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "constraints",
+              "region",
+              "corners",
+              "sweep"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "5ff2ae12",
+        "answer": {
+          "value": 2,
+          "label": "infinitely many"
+        }
+      }
+    },
+    {
+      "id": "2b789c18-5500-45e0-bcc9-6f4cda349d74",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "lpRegion",
+        "params": {
+          "window": {
+            "x": [
+              0,
+              6
+            ],
+            "y": [
+              0,
+              7
+            ]
+          },
+          "constraints": [
+            {
+              "a": 1,
+              "b": 2,
+              "op": "<=",
+              "c": 10
+            },
+            {
+              "a": 3,
+              "b": 1,
+              "op": "<=",
+              "c": 12
+            }
+          ],
+          "objective": {
+            "a": 5,
+            "b": 10,
+            "label": "z = 5x + 10y"
+          },
+          "ask": {
+            "kind": "maxCount",
+            "label": "max z = 50 along an edge"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "constraints",
+              "region"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "corners"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "sweep",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "51362900",
+        "answer": {
+          "value": 2,
+          "label": "every point of the edge"
+        }
+      }
+    },
+    {
+      "id": "2ea5b7b4-0fb4-4642-b10f-87dd838204e5",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "lpRegion",
+        "params": {
+          "window": {
+            "x": [
+              0,
+              4
+            ],
+            "y": [
+              0,
+              3
+            ]
+          },
+          "constraints": [
+            {
+              "a": 2,
+              "b": 3,
+              "op": "<=",
+              "c": 6
+            },
+            {
+              "a": 1,
+              "b": 1,
+              "op": ">=",
+              "c": 1
+            }
+          ],
+          "objective": {
+            "a": 3,
+            "b": 1,
+            "label": "Z = 3x + y"
+          },
+          "ask": {
+            "kind": "min",
+            "label": "min Z = 1 at (0, 1)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "constraints",
+              "region"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "corners"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "sweep"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "10f2b226",
+        "answer": {
+          "value": 1,
+          "label": "1"
+        }
+      }
+    },
+    {
+      "id": "33977924-2150-4d25-9ff1-61a7a1df711b",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "lpRegion",
+        "params": {
+          "window": {
+            "x": [
+              0,
+              8
+            ],
+            "y": [
+              0,
+              4
+            ]
+          },
+          "constraints": [
+            {
+              "a": 1,
+              "b": 3,
+              "op": "<=",
+              "c": 6
+            },
+            {
+              "a": 2,
+              "b": 6,
+              "op": "<=",
+              "c": 18
+            }
+          ],
+          "objective": {
+            "a": 2,
+            "b": 5,
+            "label": "z = 2x + 5y"
+          },
+          "ask": {
+            "kind": "maxCount",
+            "label": "max z = 12 at (6, 0)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "constraints",
+              "region",
+              "corners"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "sweep",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "99aeae02",
+        "answer": {
+          "value": 1,
+          "label": "unique solution"
+        }
+      }
+    },
+    {
+      "id": "45a2ce23-0166-4794-bbd5-fcf9eacc087e",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "lpRegion",
+        "params": {
+          "window": {
+            "x": [
+              0,
+              8
+            ],
+            "y": [
+              0,
+              6
+            ]
+          },
+          "constraints": [
+            {
+              "a": 1,
+              "b": 1,
+              "op": ">=",
+              "c": 5
+            },
+            {
+              "a": 1,
+              "b": 0,
+              "op": ">=",
+              "c": 2
+            },
+            {
+              "a": 0,
+              "b": 1,
+              "op": "<=",
+              "c": 4
+            }
+          ],
+          "objective": {
+            "a": 8,
+            "b": 5,
+            "label": "cost = 8x + 5y"
+          },
+          "ask": {
+            "kind": "min",
+            "label": "min cost 31 at (2, 3)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "constraints"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "region",
+              "corners"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "sweep",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "0ff400ec",
+        "answer": {
+          "value": 31,
+          "label": "31"
+        }
+      }
+    },
+    {
+      "id": "4a995b10-4bab-4478-9a1d-69911ed6f6dc",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "lpRegion",
+        "params": {
+          "window": {
+            "x": [
+              0,
+              10
+            ],
+            "y": [
+              0,
+              6
+            ]
+          },
+          "constraints": [
+            {
+              "a": 2,
+              "b": -1,
+              "op": ">=",
+              "c": 2
+            },
+            {
+              "a": 1,
+              "b": 2,
+              "op": "<=",
+              "c": 8
+            }
+          ],
+          "objective": {
+            "a": 5,
+            "b": 2,
+            "label": "Z = 5x + 2y"
+          },
+          "ask": {
+            "kind": "max",
+            "label": "max Z = 40 at (8, 0)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "constraints",
+              "region"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "corners"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "sweep"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "21cba33a",
+        "answer": {
+          "value": 40,
+          "label": "40"
+        }
+      }
+    },
+    {
+      "id": "4f45a7ef-487f-41ed-8aee-9ac1de86cb78",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "lpRegion",
+        "params": {
+          "window": {
+            "x": [
+              0,
+              90
+            ],
+            "y": [
+              0,
+              85
+            ]
+          },
+          "constraints": [
+            {
+              "a": 1,
+              "b": 2,
+              "op": ">=",
+              "c": 80
+            },
+            {
+              "a": 3,
+              "b": 1,
+              "op": ">=",
+              "c": 75
+            }
+          ],
+          "objective": {
+            "a": 4,
+            "b": 6,
+            "label": "Z = 4x + 6y"
+          },
+          "ask": {
+            "kind": "min",
+            "label": "min Z = 254 at (14, 33)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "constraints",
+              "region",
+              "corners"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "sweep",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "8df1f31d",
+        "answer": {
+          "value": 254,
+          "label": "254"
+        }
+      }
+    },
+    {
+      "id": "532a3600-c456-4fac-92d2-cc5419a38892",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "lpRegion",
+        "params": {
+          "window": {
+            "x": [
+              0,
+              60
+            ],
+            "y": [
+              0,
+              45
+            ]
+          },
+          "constraints": [
+            {
+              "a": 1,
+              "b": 2,
+              "op": "<=",
+              "c": 70
+            },
+            {
+              "a": 2,
+              "b": 1,
+              "op": "<=",
+              "c": 95
+            }
+          ],
+          "objective": {
+            "a": 1,
+            "b": 1,
+            "label": "Z = x + y"
+          },
+          "ask": {
+            "kind": "maxAt",
+            "at": [
+              40,
+              15
+            ],
+            "label": "max Z = 55 at (40, 15)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "constraints",
+              "region",
+              "corners"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "sweep"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "5d3c9ea5",
+        "answer": {
+          "value": 1,
+          "label": "(40, 15)"
+        }
+      }
+    },
+    {
+      "id": "66d7503a-278b-406c-b7f3-cfc865abd312",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "lpRegion",
+        "params": {
+          "window": {
+            "x": [
+              0,
+              3
+            ],
+            "y": [
+              0,
+              2
+            ]
+          },
+          "constraints": [
+            {
+              "a": 3,
+              "b": 2,
+              "op": "<=",
+              "c": 6
+            },
+            {
+              "a": 1,
+              "b": 4,
+              "op": "<=",
+              "c": 4
+            }
+          ],
+          "objective": {
+            "a": 0.75,
+            "b": 0.5,
+            "label": "Z = 0.75x + 0.5y"
+          },
+          "ask": {
+            "kind": "maxCount",
+            "label": "max Z = 1.5 along an edge"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "constraints",
+              "region",
+              "corners",
+              "sweep",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "4c1f8bc2",
+        "answer": {
+          "value": 2,
+          "label": "infinitely many"
+        }
+      }
+    },
+    {
+      "id": "68d3ed44-8849-452a-8cfb-949590aa87a5",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "lpRegion",
+        "params": {
+          "window": {
+            "x": [
+              0,
+              14
+            ],
+            "y": [
+              0,
+              24
+            ]
+          },
+          "constraints": [
+            {
+              "a": 1,
+              "b": 1,
+              "op": "<=",
+              "c": 20
+            },
+            {
+              "a": 0,
+              "b": 1,
+              "op": ">=",
+              "c": 5
+            },
+            {
+              "a": 1,
+              "b": 0,
+              "op": "<=",
+              "c": 10
+            }
+          ],
+          "objective": {
+            "a": 7,
+            "b": 8,
+            "label": "Z = 7x + 8y"
+          },
+          "ask": {
+            "kind": "max",
+            "label": "max Z = 160 at (0, 20)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "constraints",
+              "region",
+              "corners"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "sweep"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "74aeabfc",
+        "answer": {
+          "value": 160,
+          "label": "160"
+        }
+      }
+    },
+    {
+      "id": "692a4841-68e9-4cd6-bb70-d77065f92b6c",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "lpRegion",
+        "params": {
+          "window": {
+            "x": [
+              0,
+              9
+            ],
+            "y": [
+              0,
+              4
+            ]
+          },
+          "constraints": [
+            {
+              "a": 1,
+              "b": 1,
+              "op": ">=",
+              "c": 2
+            },
+            {
+              "a": 1,
+              "b": 2,
+              "op": "<=",
+              "c": 8
+            },
+            {
+              "a": 0,
+              "b": 1,
+              "op": "<=",
+              "c": 3
+            }
+          ],
+          "objective": {
+            "a": 1,
+            "b": 1,
+            "label": "z = x + y"
+          },
+          "ask": {
+            "kind": "minCount",
+            "label": "min z = 2 along segment AE"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "constraints",
+              "region",
+              "corners",
+              "sweep"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "0fbb0abc",
+        "answer": {
+          "value": 2,
+          "label": "infinitely many points"
+        }
+      }
+    },
+    {
+      "id": "723591ae-c4e3-47cc-ad51-29dbf95d4f46",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "lpRegion",
+        "params": {
+          "window": {
+            "x": [
+              0,
+              6
+            ],
+            "y": [
+              0,
+              7
+            ]
+          },
+          "constraints": [
+            {
+              "a": 3,
+              "b": 2,
+              "op": "<=",
+              "c": 12
+            },
+            {
+              "a": 1,
+              "b": 1,
+              "op": ">=",
+              "c": 4
+            }
+          ],
+          "objective": {
+            "a": 4,
+            "b": 6,
+            "label": "z = 4x + 6y"
+          },
+          "ask": {
+            "kind": "max",
+            "label": "max z = 36 at (0, 6)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "constraints",
+              "region",
+              "corners"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "sweep"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "fdcafb84",
+        "answer": {
+          "value": 36,
+          "label": "36"
+        }
+      }
+    },
+    {
+      "id": "7ab90913-e07d-441c-a0b0-ac4ff5f086aa",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "lpRegion",
+        "params": {
+          "window": {
+            "x": [
+              0,
+              6
+            ],
+            "y": [
+              0,
+              8
+            ]
+          },
+          "constraints": [
+            {
+              "a": 3,
+              "b": 2,
+              "op": "<=",
+              "c": 18
+            },
+            {
+              "a": 1,
+              "b": 0,
+              "op": "<=",
+              "c": 4
+            },
+            {
+              "a": 0,
+              "b": 1,
+              "op": "<=",
+              "c": 6
+            }
+          ],
+          "objective": {
+            "a": 3,
+            "b": 5,
+            "label": "Z = 3x + 5y"
+          },
+          "ask": {
+            "kind": "max",
+            "label": "max Z = 36 at (2, 6)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "constraints",
+              "region",
+              "corners"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "sweep"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "27c75ee6",
+        "answer": {
+          "value": 36,
+          "label": "36"
+        }
+      }
+    },
+    {
+      "id": "8f150e10-b7d7-427f-b38a-13ea269699ca",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "lpRegion",
+        "params": {
+          "window": {
+            "x": [
+              0,
+              3
+            ],
+            "y": [
+              0,
+              3
+            ]
+          },
+          "constraints": [
+            {
+              "a": 1,
+              "b": 1,
+              "op": "<=",
+              "c": 2
+            }
+          ],
+          "objective": {
+            "a": 3,
+            "b": 2,
+            "label": "Z = 3x + 2y"
+          },
+          "ask": {
+            "kind": "maxAt",
+            "at": [
+              2,
+              0
+            ],
+            "label": "max 6 at (2, 0)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "constraints",
+              "region",
+              "corners"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "sweep",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "b8fee3b1",
+        "answer": {
+          "value": 1,
+          "label": "(2, 0)"
+        }
+      }
+    },
+    {
+      "id": "9255d6d8-a7e4-48ef-a1e0-79c3172dad59",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "lpRegion",
+        "params": {
+          "window": {
+            "x": [
+              0,
+              6
+            ],
+            "y": [
+              0,
+              6
+            ]
+          },
+          "constraints": [
+            {
+              "a": 1,
+              "b": 1,
+              "op": "<=",
+              "c": 5
+            },
+            {
+              "a": 1,
+              "b": 2,
+              "op": ">=",
+              "c": 4
+            },
+            {
+              "a": 4,
+              "b": 1,
+              "op": "<=",
+              "c": 12
+            }
+          ],
+          "objective": {
+            "a": 6,
+            "b": 3,
+            "label": "Z = 6x + 3y"
+          },
+          "ask": {
+            "kind": "max",
+            "label": "max Z = 22 at (7/3, 8/3)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "constraints",
+              "region",
+              "corners"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "sweep"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "a7b09ab9",
+        "answer": {
+          "value": 22,
+          "label": "22"
+        }
+      }
+    },
+    {
+      "id": "99dd47af-2ce2-43de-932f-5a4f43f0f232",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "lpRegion",
+        "params": {
+          "window": {
+            "x": [
+              0,
+              90
+            ],
+            "y": [
+              0,
+              210
+            ]
+          },
+          "constraints": [
+            {
+              "a": 1,
+              "b": 0,
+              "op": "<=",
+              "c": 80
+            },
+            {
+              "a": 0,
+              "b": 1,
+              "op": ">=",
+              "c": 60
+            },
+            {
+              "a": 1,
+              "b": 1,
+              "op": "<=",
+              "c": 200
+            }
+          ],
+          "objective": {
+            "a": 3,
+            "b": 5,
+            "label": "z = 3x + 5y"
+          },
+          "ask": {
+            "kind": "minAt",
+            "at": [
+              0,
+              60
+            ],
+            "label": "min z = 300 at (0, 60)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "constraints",
+              "region",
+              "corners"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "sweep",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "4f3ff5c5",
+        "answer": {
+          "value": 1,
+          "label": "(0, 60)"
+        }
+      }
+    },
+    {
+      "id": "a0a5d911-b1ac-4d7d-8ad6-eab5b68feb5a",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "lpRegion",
+        "params": {
+          "window": {
+            "x": [
+              0,
+              5
+            ],
+            "y": [
+              0,
+              3
+            ]
+          },
+          "constraints": [
+            {
+              "a": 1,
+              "b": 0,
+              "op": "<=",
+              "c": 4
+            },
+            {
+              "a": 0,
+              "b": 1,
+              "op": "<=",
+              "c": 2
+            },
+            {
+              "a": 1,
+              "b": 1,
+              "op": ">=",
+              "c": 5
+            }
+          ],
+          "objective": {
+            "a": 5,
+            "b": 8,
+            "label": "z = 5x + 8y"
+          },
+          "ask": {
+            "kind": "min",
+            "label": "min z = 28 at (4, 1)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "constraints",
+              "region",
+              "corners",
+              "sweep"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "f587fe99",
+        "answer": {
+          "value": 28,
+          "label": "28"
+        }
+      }
+    },
+    {
+      "id": "af08b3f4-e660-4d39-8566-d02bd298ca42",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "lpRegion",
+        "params": {
+          "window": {
+            "x": [
+              0,
+              6
+            ],
+            "y": [
+              0,
+              4
+            ]
+          },
+          "constraints": [
+            {
+              "a": 1,
+              "b": 0,
+              "op": "<=",
+              "c": 5
+            },
+            {
+              "a": 0,
+              "b": 1,
+              "op": "<=",
+              "c": 3
+            }
+          ],
+          "objective": {
+            "a": 7,
+            "b": -6,
+            "label": "Z = 7x - 6y"
+          },
+          "ask": {
+            "kind": "max",
+            "label": "max Z = 35 at (5, 0)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "constraints",
+              "region",
+              "corners",
+              "sweep",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "a1762dce",
+        "answer": {
+          "value": 35,
+          "label": "35"
+        }
+      }
+    },
+    {
+      "id": "b61fa3df-2e6d-40b2-93f1-1ee96ce9bdbf",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "lpRegion",
+        "params": {
+          "window": {
+            "x": [
+              0,
+              9
+            ],
+            "y": [
+              0,
+              4
+            ]
+          },
+          "constraints": [
+            {
+              "a": 2,
+              "b": 0,
+              "op": ">=",
+              "c": 4
+            },
+            {
+              "a": 0,
+              "b": 1,
+              "op": "<=",
+              "c": 3
+            },
+            {
+              "a": 1,
+              "b": 1,
+              "op": "<=",
+              "c": 8
+            }
+          ],
+          "objective": {
+            "a": 100,
+            "b": 70,
+            "label": "Z = 100x + 70y"
+          },
+          "ask": {
+            "kind": "max",
+            "label": "max Z = 800 at (8, 0)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "constraints",
+              "region",
+              "corners"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "sweep"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "0a735e45",
+        "answer": {
+          "value": 800,
+          "label": "800"
+        }
+      }
+    },
+    {
+      "id": "bff929b8-d8ac-4a63-b581-478d74ccac95",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "lpRegion",
+        "params": {
+          "window": {
+            "x": [
+              0,
+              7
+            ],
+            "y": [
+              0,
+              11
+            ]
+          },
+          "constraints": [
+            {
+              "a": 1,
+              "b": 1,
+              "op": "<=",
+              "c": 10
+            },
+            {
+              "a": 5,
+              "b": 3,
+              "op": ">=",
+              "c": 15
+            },
+            {
+              "a": 1,
+              "b": 0,
+              "op": "<=",
+              "c": 6
+            }
+          ],
+          "objective": {
+            "a": 1,
+            "b": 1,
+            "label": "z = x + y"
+          },
+          "ask": {
+            "kind": "maxCount",
+            "label": "max z = 10 along segment BC"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "constraints",
+              "region",
+              "corners",
+              "sweep"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "9ad04c18",
+        "answer": {
+          "value": 2,
+          "label": "infinitely many points"
+        }
+      }
+    },
+    {
+      "id": "c4bb2a72-36a6-4242-aa98-385f2f2193b9",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "lpRegion",
+        "params": {
+          "window": {
+            "x": [
+              0,
+              4
+            ],
+            "y": [
+              0,
+              6
+            ]
+          },
+          "constraints": [
+            {
+              "a": 1,
+              "b": 1,
+              "op": "<=",
+              "c": 5
+            },
+            {
+              "a": 2,
+              "b": 1,
+              "op": "<=",
+              "c": 7
+            },
+            {
+              "a": 3,
+              "b": 2,
+              "op": "<=",
+              "c": 11
+            }
+          ],
+          "objective": {
+            "a": 4,
+            "b": 1,
+            "label": "z = 4x + y"
+          },
+          "ask": {
+            "kind": "max",
+            "label": "max z = 14 at (3.5, 0)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "constraints",
+              "region",
+              "corners"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "sweep",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "2afbc8de",
+        "answer": {
+          "value": 14,
+          "label": "14"
+        }
+      }
+    },
+    {
+      "id": "c9e7b643-55c8-41bd-ad15-f3acc3dcf302",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "lpRegion",
+        "params": {
+          "window": {
+            "x": [
+              0,
+              6
+            ],
+            "y": [
+              0,
+              7
+            ]
+          },
+          "constraints": [
+            {
+              "a": 3,
+              "b": 1,
+              "op": "<=",
+              "c": 15
+            },
+            {
+              "a": 3,
+              "b": 4,
+              "op": "<=",
+              "c": 24
+            }
+          ],
+          "objective": {
+            "a": 4,
+            "b": 5,
+            "label": "Z = 4x + 5y"
+          },
+          "ask": {
+            "kind": "max",
+            "label": "max Z = 31 at (4, 3)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "constraints",
+              "region",
+              "corners"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "sweep",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "da1f9a35",
+        "answer": {
+          "value": 30.999999999999996,
+          "label": "31"
+        }
+      }
+    },
+    {
+      "id": "cdb37b36-1178-4514-b33f-223973a20860",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "lpRegion",
+        "params": {
+          "window": {
+            "x": [
+              0,
+              36
+            ],
+            "y": [
+              0,
+              32
+            ]
+          },
+          "constraints": [
+            {
+              "a": 3,
+              "b": 1,
+              "op": ">=",
+              "c": 27
+            },
+            {
+              "a": 1,
+              "b": 1,
+              "op": ">=",
+              "c": 21
+            },
+            {
+              "a": 1,
+              "b": 2,
+              "op": ">=",
+              "c": 30
+            }
+          ],
+          "objective": {
+            "a": 4,
+            "b": 2,
+            "label": "z = 4x + 2y"
+          },
+          "ask": {
+            "kind": "min",
+            "label": "min z = 48 at (3, 18)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "constraints",
+              "region",
+              "corners"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "sweep",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "5358ad18",
+        "answer": {
+          "value": 48,
+          "label": "48"
+        }
+      }
+    },
+    {
+      "id": "d00e5d80-2476-4e79-9c3e-1706ba87d985",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "lpRegion",
+        "params": {
+          "window": {
+            "x": [
+              0,
+              22
+            ],
+            "y": [
+              0,
+              22
+            ]
+          },
+          "constraints": [
+            {
+              "a": 1,
+              "b": 1,
+              "op": "<=",
+              "c": 20
+            },
+            {
+              "a": 0,
+              "b": 1,
+              "op": ">=",
+              "c": 5
+            }
+          ],
+          "objective": {
+            "a": 7,
+            "b": -8,
+            "label": "z = 7x - 8y"
+          },
+          "ask": {
+            "kind": "range",
+            "label": "max - min = 65 - (-160) = 225"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "constraints",
+              "region",
+              "corners"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "sweep"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "fbcd31ef",
+        "answer": {
+          "value": 225,
+          "label": "225, so k = 5"
+        }
+      }
+    },
+    {
+      "id": "f7aa2c58-b69b-42c6-ac7e-f4f4ba0471db",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "lpRegion",
+        "params": {
+          "window": {
+            "x": [
+              0,
+              6
+            ],
+            "y": [
+              0,
+              6
+            ]
+          },
+          "constraints": [
+            {
+              "a": 3,
+              "b": 4,
+              "op": ">=",
+              "c": 12
+            },
+            {
+              "a": 1,
+              "b": 1,
+              "op": "<=",
+              "c": 5
+            }
+          ],
+          "objective": {
+            "a": 4,
+            "b": 2,
+            "label": "z = 4x + 2y"
+          },
+          "ask": {
+            "kind": "max",
+            "label": "max z = 20 at (5, 0)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "constraints",
+              "region",
+              "corners"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "sweep"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "85af4895",
+        "answer": {
+          "value": 20,
+          "label": "20"
+        }
+      }
+    },
+    {
+      "id": "f8f19210-0d87-4926-b45a-cb7054b9cfbd",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "lpRegion",
+        "params": {
+          "window": {
+            "x": [
+              0,
+              4
+            ],
+            "y": [
+              0,
+              3
+            ]
+          },
+          "constraints": [
+            {
+              "a": 2,
+              "b": 3,
+              "op": "<=",
+              "c": 6
+            },
+            {
+              "a": 1,
+              "b": 1,
+              "op": ">=",
+              "c": 1
+            }
+          ],
+          "objective": {
+            "a": 3,
+            "b": 1,
+            "label": "z = 3x + y"
+          },
+          "ask": {
+            "kind": "range",
+            "label": "max - min = 9 - 1 = 8"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "constraints",
+              "region",
+              "corners",
+              "sweep"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "454448a2",
+        "answer": {
+          "value": 8,
+          "label": "8"
+        }
+      }
+    }
+  ],
+  "decided": []
+}
