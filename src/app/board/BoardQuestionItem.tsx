@@ -23,6 +23,7 @@ import { RevealDailyPrompt } from "@/components/reveal/RevealDailyLimit";
 import { asBilingual, type BoardQuestion } from "@/lib/board/query";
 import { hasMarathi } from "@/lib/i18n/bilingual";
 import { BilingualOption, BilingualSolution, BilingualStem } from "@/components/i18n/BilingualText";
+import SolutionViews from "@/components/visuals/SolutionViews";
 
 function questionHasAnswer(q: BoardQuestion): boolean {
   return !!q.solution || q.options.some((o) => o.isCorrect);
@@ -195,20 +196,38 @@ export default function BoardQuestionItem({
             ))}
           {revealed && q.solution && (
             <div className="mt-2 rounded-md border border-dashed bg-background p-3 font-serif text-[15px] leading-relaxed motion-safe:animate-fade-in-up [&_.katex]:max-w-full">
-              {/* BlockText (not KatexRenderer) so GFM pipe-tables in a solution —
-                  e.g. Mathematical Logic truth tables — render as real <table>s,
-                  not raw `| p | q |` text. Fast-paths to KatexRenderer when there's
-                  no table. breakSentences leaves tables untouched. */}
-              {bi ? (
-                <BilingualSolution q={{ translations: q.translations, solution: q.solution }} format={breakSentences} />
-              ) : (
-                <BlockText text={breakSentences(q.solution)} solution />
-              )}
-              {q.solutionImageUrl && (
-                <div className="pt-3">
-                  <ZoomableImage src={publicImageUrl(supabaseUrl, q.solutionImageUrl)} alt="Solution figure" />
-                </div>
-              )}
+              {/* Animated or Still where a visual exists. A Marathi-medium question
+                  stays on Still: the visual's steps are the English sentences. With
+                  no visual the header is null and this renders as it always did. */}
+              <SolutionViews
+                visual={bi ? null : q.solutionVisual}
+                solution={q.solution}
+                header={
+                  !bi && q.solutionVisual ? (
+                    <span className="font-sans text-xs font-semibold text-muted-foreground">
+                      {q.format === "subjective" ? "Model answer" : "Solution"}
+                    </span>
+                  ) : null
+                }
+                still={
+                  <>
+                    {/* BlockText (not KatexRenderer) so GFM pipe-tables in a solution —
+                        e.g. Mathematical Logic truth tables — render as real <table>s,
+                        not raw `| p | q |` text. Fast-paths to KatexRenderer when there's
+                        no table. breakSentences leaves tables untouched. */}
+                    {bi ? (
+                      <BilingualSolution q={{ translations: q.translations, solution: q.solution }} format={breakSentences} />
+                    ) : (
+                      <BlockText text={breakSentences(q.solution)} solution />
+                    )}
+                    {q.solutionImageUrl && (
+                      <div className="pt-3">
+                        <ZoomableImage src={publicImageUrl(supabaseUrl, q.solutionImageUrl)} alt="Solution figure" />
+                      </div>
+                    )}
+                  </>
+                }
+              />
             </div>
           )}
         </div>

@@ -63,6 +63,14 @@ describe("groupBoardSections", () => {
   it("returns [] for no rows", () => {
     expect(groupBoardSections([])).toEqual([]);
   });
+
+  it("keeps a question's animated solution, and adds no key where there is none", () => {
+    const visual = { scene: "truthTable", params: {} };
+    const groups = groupBoardSections([q({ solutionVisual: visual, questionNumber: "v" }), q({ questionNumber: "plain" })]);
+    const [withVisual, plain] = groups[0].blocks[0].questions;
+    expect(withVisual.solutionVisual).toBe(visual);
+    expect("solutionVisual" in plain).toBe(false);
+  });
 });
 
 describe("groupHasSubHeaders", () => {
