@@ -178,6 +178,10 @@ async function main() {
       case "v-reveal":
         line = handRead(e.liveSince, ["v-follow-up"]);
         break;
+      case "tutor-interest":
+        // Live counts from tutor_interest, rendered on the page (lib/tutor/readout).
+        line = "live table on the page (tutor_interest)";
+        break;
       default: {
         // A new readout must be added here; this fails the typecheck until it is.
         const unhandled: never = e.readout;
