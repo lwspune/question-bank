@@ -138,17 +138,27 @@ function chapterBreakdown(
  * plan (weekPlan.ts) picks from after the student's weak chapters. Share is a
  * whole percent of the chosen subjects' questions.
  */
+/**
+ * Each chapter's past-year questions over the subject set's last 3 years, by
+ * chapter id: the weight rankChapters shares out, unrounded. V's progress card
+ * (lib/chat/progressCard.ts) sums it, so its "exam covered" and these shares agree.
+ */
+export function recentChapterCounts(data: StrategyData, subjects: readonly string[] | null): Map<string, number> {
+  const chapters = subjects ? data.chapters.filter((c) => subjects.includes(c.subject)) : data.chapters;
+  const recent = latestYears(chapters, RECENT_YEARS);
+  return new Map(chapters.map((c) => [c.id, count(c, recent)]));
+}
+
 export function rankChapters(
   data: StrategyData,
   subject: string | readonly string[] | null
 ): { id: string; name: string; subject: string; share: number }[] {
   const chosen = subject === null ? null : typeof subject === "string" ? [subject] : subject;
-  const chapters = chosen ? data.chapters.filter((c) => chosen.includes(c.subject)) : data.chapters;
-  const recent = latestYears(chapters, RECENT_YEARS);
-  const total = chapters.reduce((n, c) => n + count(c, recent), 0);
+  const counts = recentChapterCounts(data, chosen);
+  const total = [...counts.values()].reduce((n, v) => n + v, 0);
   if (total === 0) return [];
-  return chapters
-    .map((c) => ({ c, n: count(c, recent) }))
+  return data.chapters
+    .map((c) => ({ c, n: counts.get(c.id) ?? 0 }))
     .filter((r) => r.n > 0)
     .sort((a, b) => b.n - a.n)
     .map((r) => ({ id: r.c.id, name: r.c.name, subject: r.c.subject, share: Math.round((r.n / total) * 100) }));
