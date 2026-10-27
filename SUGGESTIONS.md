@@ -158,8 +158,8 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 The review read all 751 picture questions by eye. Live: 331 stem pictures trimmed of the question sentence (`trim-stems.ts`), and 19 rows replaced with `refigure.ts` (log `scripts/ssc-cgl/refigure-log.json`): 2 Tier II scan figures enlarged (2026-01-18 Q48, Q49), 7 hand-cut where the sentence touched the figure, 5 charts redrawn from their printed numbers (`redraw_charts.py`), 5 small figures enlarged or re-laid out. Left, because the source itself is the problem:
 
 - `t1-2024-09-12-s3` Q65: SSC printed the chart and options but no question (already `flawed: yes`, the key a guess). The chart is now readable; the question still has no question.
-- `t1-2024-09-10-s3` Q59: the pie's legend (which slice is school) is washed out in SSC's print; the solution finds it by elimination. No crop can bring it back.
-- Not attempted: the 2024 Venn counting diagrams (about a dozen) have small but readable numbers; enlarge them with `refigure.ts` if students report them.
+- `t1-2024-09-10-s3` Q59: the pie's legend (which slice is school) is washed out in SSC's print; the solution finds it by elimination. No crop can bring it back: SSC's embedded JPEG holds only compression specks there (grey 240-255, checked 2026-10-27), so a redraw would have to invent the labels. Left as is.
+- **DONE 2026-10-27 (owner OK):** the 13 three-circle 2024 Venn counting diagrams redrawn from their printed numbers (`redraw_venns.py`, data `venns.json`, each question re-solved against SSC's key). SSC left the bottom circle unlabelled on four; "Maths" (09-19 S3 Q18) and "Car" (09-25 S3 Q25) were added because the question names them, 09-09 S3 Q9 and 09-25 S3 Q20 stay blank (so does 09-13 S3 Q23's). 09-17 S3 Q12 (four shapes) stays SSC's picture: its overlaps are the puzzle.
 
 ## 2026-10-27
 
