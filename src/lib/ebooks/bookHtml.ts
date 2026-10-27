@@ -443,6 +443,49 @@ export function buildRepeatsChapterHtml(input: RepeatsChapterInput): string {
   );
 }
 
+// ── Chapter-wise PYQs chapter (board) ───────────────────────────────────────
+
+export type ChapterwiseChapterInput = {
+  number: number;
+  name: string;
+  bookTitle: string;
+  /** In print order (lib/ebooks/chapterwise): "1 mark", ..., "Case studies and passages", "Earlier years". */
+  groups: { label: string; questions: QuestionRow[] }[];
+  /** Question id -> the line over it: its sitting, or "Asked 3 times: ...". */
+  noteOf: ReadonlyMap<string, string>;
+  /** Question id -> its number in the chapter ("4", "4 (a)") and, where the group does not say it, its marks. */
+  printedOf: ReadonlyMap<string, PrintedLabel>;
+  images?: Map<string, string>;
+  head: string;
+};
+
+export function buildChapterwiseChapterHtml(input: ChapterwiseChapterInput): string {
+  const common = { title: input.name, images: input.images, printedOf: input.printedOf, head: "" };
+  const all = input.groups.flatMap((g) => g.questions);
+  // A case study is one question however many parts it has.
+  const count = new Set(all.map((q) => q.setId ?? q.id)).size;
+  const header =
+    `<header class="chead"><div class="cn">${String(input.number).padStart(2, "0")}</div><div>` +
+    `<div class="eyebrow">Chapter ${input.number} · ${esc(input.bookTitle)}</div><h1>${esc(input.name)}</h1>` +
+    `<div class="pmeta">${plural(count, "question", "questions")}</div></div></header>`;
+  const body = input.groups
+    .map(
+      (g) =>
+        `<h3 class="mgroup">${esc(g.label)}</h3>` +
+        paperBodyHtml({ ...common, questions: g.questions, sectionOf: input.noteOf, headingEveryQuestion: true })
+    )
+    .join("");
+  return doc(
+    input.name,
+    "chapterwise",
+    input.head,
+    header +
+      `<section id="questions" class="bp">${body}</section>` +
+      `<section id="solutions" class="newpage bp"><h2 class="part">Solutions · ${esc(input.name)}</h2>` +
+      `${keyDetailsHtml({ ...common, questions: all, includeSolutions: true })}</section>`
+  );
+}
+
 // ── Cover and contents ──────────────────────────────────────────────────────
 
 const FRONT_CSS = `
@@ -484,12 +527,15 @@ const HOW: Record<EbookKind, string> = {
     "Each paper is printed as the board set it, newest first: its sections, its question numbers, the marks for each question and the OR choices. Its solutions start on a fresh page under the same numbers, so you can sit the paper against the clock before you check.",
   repeats:
     "Each chapter gathers the questions the board has asked more than once, most-asked first, then the types of question it keeps coming back to. A line over each says when it was asked. The solutions close the chapter under the same numbers, so you can try them all before you check.",
+  chapterwise:
+    "Each chapter gathers its board questions by marks: the 1-mark questions first, then 2, 3 and more, then the case studies and passages, then questions from earlier years. A line over each says when it was asked. The solutions close the chapter under the same numbers, so you can try them all before you check.",
 };
 
 /** The gold seal on the premium cover, by kind. */
 const SEAL: Partial<Record<EbookKind, [string, string, string]>> = {
   papers: ["Fully", "Solved", "Every Q"],
   repeats: ["Asked", "Again", "& again"],
+  chapterwise: ["Every", "Chapter", "By marks"],
 };
 
 export type EbookFrontInput = {

@@ -19,11 +19,11 @@ import { getBookBySlug, type BookChapter } from "@/lib/books/registry";
 import { getNotesChapterBySlug, getNotesChaptersForSubject, type NotesChapterRegistration } from "@/lib/notes/chapters";
 import { BOOK_POSITION } from "@/lib/notes/bookOrder";
 import { formulaPageCounts } from "@/lib/formula/chapterPages";
-import { PAPERS_EBOOKS, REPEATS_EBOOKS, type PapersEbook, type RepeatsEbook } from "./paperBooks";
+import { CHAPTERWISE_EBOOKS, PAPERS_EBOOKS, REPEATS_EBOOKS, type ChapterwiseEbook, type PapersEbook, type RepeatsEbook } from "./paperBooks";
 
-export { PAPERS_EBOOKS, REPEATS_EBOOKS, type PapersEbook, type RepeatsEbook };
+export { CHAPTERWISE_EBOOKS, PAPERS_EBOOKS, REPEATS_EBOOKS, type ChapterwiseEbook, type PapersEbook, type RepeatsEbook };
 
-export type EbookKind = "formula" | "notes" | "pyq" | "papers" | "repeats";
+export type EbookKind = "formula" | "notes" | "pyq" | "papers" | "repeats" | "chapterwise";
 
 type Common = {
   slug: string;
@@ -46,9 +46,14 @@ export type PyqEbook = Common & {
   chapterOrder: readonly string[];
 };
 /** A Solved Papers book (lib/ebooks/paperBooks): its chapters are papers, read at build time. */
-export type EbookDefinition = NotesEbook | PyqEbook | PapersEbook | RepeatsEbook;
+export type EbookDefinition = NotesEbook | PyqEbook | PapersEbook | RepeatsEbook | ChapterwiseEbook;
 /** The board books: their chapters come from the database at build time, not from this catalog. */
-export type BoardEbook = PapersEbook | RepeatsEbook;
+export type BoardEbook = PapersEbook | RepeatsEbook | ChapterwiseEbook;
+
+/** A board book (type guard): papers, repeats or chapter-wise. */
+export function isBoardEbook(e: EbookDefinition): e is BoardEbook {
+  return e.kind === "papers" || e.kind === "repeats" || e.kind === "chapterwise";
+}
 
 const CET_SUBJECTS = [
   { route: "mht-cet-maths", title: "MHT-CET Mathematics", sample: "circle" },
@@ -119,6 +124,7 @@ export const EBOOKS: readonly EbookDefinition[] = [
   },
   ...PAPERS_EBOOKS,
   ...REPEATS_EBOOKS,
+  ...CHAPTERWISE_EBOOKS,
 ];
 
 /** PYQ chapters with no notes, so no BOOK_POSITION entry: their class, by hand. */

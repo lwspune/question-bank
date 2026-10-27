@@ -161,6 +161,12 @@ The review read all 751 picture questions by eye. Live: 331 stem pictures trimme
 - `t1-2024-09-10-s3` Q59: the pie's legend (which slice is school) is washed out in SSC's print; the solution finds it by elimination. No crop can bring it back.
 - Not attempted: the 2024 Venn counting diagrams (about a dozen) have small but readable numbers; enlarge them with `refigure.ts` if students report them.
 
+## 2026-10-27
+
+### The Repeated PYQs books print empty section instructions on their questions
+
+Found building the Chapter-wise PYQs books: board papers store their section instruction on each question's `context` ("Answer the following questions :", "Select and write the correct answer for the following multiple choice type of questions :"), so a book that prints questions apart from their paper repeats it under every question. `lib/ebooks/contexts.ts` (`bookContext`) now drops instructions that say nothing and strips "(Any THREE)" from ones that set the task; the Chapter-wise and Repeated builders both use it. **The 17 Repeated PYQs books uploaded 2026-10-26 (v1, OFF, no buyers) predate it**: 13 carry such lines (HSC Chemistry about 50, HSC Physics 24, SSC History 15, SSC Algebra 12; an upper bound, phrase counts). Fix = rebuild and re-upload as v2 (about 25 minutes, nothing on sale). **Status: raised with the owner 2026-10-27.**
+
 ## 2026-10-26
 
 ### Seven board subjects list their chapters in load order, not textbook order

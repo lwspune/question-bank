@@ -44,6 +44,7 @@ import {
   buildFormulaChapterHtml,
   buildNotesChapterHtml,
   buildPyqChapterHtml,
+  buildChapterwiseChapterHtml,
   buildRepeatsChapterHtml,
   buildSolvedPaperHtml,
   formulaPreview,
@@ -51,9 +52,11 @@ import {
   papersPreview,
   pyqPreview,
 } from "../../src/lib/ebooks/bookHtml";
-import { EBOOKS, ebookChapters, getEbook, type EbookChapter, type EbookDefinition, type PapersEbook, type RepeatsEbook } from "../../src/lib/ebooks/catalog";
+import { EBOOKS, ebookChapters, getEbook, isBoardEbook, type EbookChapter, type ChapterwiseEbook, type EbookDefinition, type PapersEbook, type RepeatsEbook } from "../../src/lib/ebooks/catalog";
 import { pickBookPapers } from "../../src/lib/ebooks/boardPapers";
 import { repeatChapters, type RepeatPlanRow } from "../../src/lib/ebooks/repeats";
+import { chapterwiseChapters, groupLabel, type ChapterwiseSlot } from "../../src/lib/ebooks/chapterwise";
+import { bookContext } from "../../src/lib/ebooks/contexts";
 import { homeworkQuestions } from "../../src/lib/homework/dayExport";
 import { getExamBySlug } from "../../src/lib/exam/examContext";
 import { getBoardPaperForExport, listPublishedPapers } from "../../src/lib/questionPapers/query";
@@ -306,7 +309,10 @@ type PlanItemRow = {
 };
 
 /** A subject's homework plan, every item with its question's chapter. Paged: a plan runs past 1,000 items. */
-async function loadPlanRows(anon: SupabaseClient, ebook: RepeatsEbook): Promise<{ slug: string; rows: RepeatPlanRow[] }> {
+async function loadPlanRows(
+  anon: SupabaseClient,
+  ebook: Pick<RepeatsEbook, "slug" | "examSlug" | "subject">
+): Promise<{ slug: string; rows: RepeatPlanRow[] }> {
   const exam = getExamBySlug(ebook.examSlug);
   if (!exam) throw new Error(`ebook ${ebook.slug}: no exam "${ebook.examSlug}"`);
   const { data: ex, error: exErr } = await anon.from("exams").select("id").eq("name", exam.examName).single();
@@ -380,7 +386,7 @@ async function buildRepeatChapters(
     if (rows.size !== ids.length) throw new Error(`${c.chapterName}: only ${rows.size} of ${ids.length} questions are PUBLIC`);
     const setOf = new Map<string, string>();
     for (const s of c.slots) if (s.parts.length > 1) for (const p of s.parts) setOf.set(p.questionId, `repeats-${i + 1}-${s.number}`);
-    const questions = homeworkQuestions(parts.map((p) => rows.get(p.questionId)!), setOf);
+    const questions = standAlone(homeworkQuestions(parts.map((p) => rows.get(p.questionId)!), setOf));
     const counts = { repeats: c.slots.filter((s) => s.kind === "repeat").length, types: c.slots.filter((s) => s.kind === "type").length };
     const [paperImages, keyImages] = await Promise.all([imageDataUris(admin, "paper", questions), imageDataUris(admin, "key", questions)]);
     const pdf = await printPdf(
@@ -413,6 +419,163 @@ async function buildRepeatChapters(
       chapter: { number: i + 1, slug: chapterSlug(c.chapterName), name: c.chapterName, classLabel: null, notes: null, bookChapter: null },
       pdf,
       detail: `${c.slots.length} q`,
+    });
+  }
+  return { built, preview };
+}
+
+/** Each question's marks in the stored papers (a question in several papers carries the same marks). */
+async function marksOf(anon: SupabaseClient, ids: string[]): Promise<Map<string, number>> {
+  const out = new Map<string, number>();
+  for (let i = 0; i < ids.length; i += ID_CHUNK) {
+    const { data, error } = await anon
+      .from("board_paper_items")
+      .select("question_id, marks")
+      .in("question_id", ids.slice(i, i + ID_CHUNK))
+      .not("marks", "is", null);
+    if (error) throw new Error(`paper marks: ${error.message}`);
+    for (const r of data ?? []) if (!out.has(r.question_id as string)) out.set(r.question_id as string, Number(r.marks));
+  }
+  return out;
+}
+
+/** Questions printed apart from their paper: a section instruction that says nothing goes (lib/ebooks/contexts). */
+function standAlone(questions: QuestionRow[]): QuestionRow[] {
+  return questions.map((q) => ({ ...q, context: bookContext(q.context) }));
+}
+
+/** A Chapter-wise PYQs book's slots: from the homework plan (Maharashtra) or the one-paper-a-year selection (CBSE). */
+async function chapterwiseSlots(anon: SupabaseClient, ebook: ChapterwiseEbook): Promise<ChapterwiseSlot[]> {
+  if (ebook.source === "plan") {
+    const { rows } = await loadPlanRows(anon, ebook);
+    const bySlot = new Map<string, RepeatPlanRow[]>();
+    for (const r of [...rows].sort((a, b) => a.day - b.day || a.position - b.position || a.sub - b.sub)) {
+      const key = `${r.day}:${r.position}`;
+      bySlot.set(key, [...(bySlot.get(key) ?? []), r]);
+    }
+    const marks = await marksOf(anon, [...bySlot.values()].map((parts) => parts[0].questionId));
+    return [...bySlot.values()].map((parts, i) => ({
+      order: i,
+      marks: marks.get(parts[0].questionId) ?? null,
+      note: parts[0].note,
+      chapterId: parts[0].chapterId,
+      chapterName: parts[0].chapterName,
+      chapterOrder: parts[0].chapterOrder,
+      parts: parts.map((p) => p.questionId),
+    }));
+  }
+  // CBSE: the same papers as the Solved Papers book, newest first, each item a slot (a case study's parts one).
+  const exam = getExamBySlug(ebook.examSlug)!;
+  const papers = pickBookPapers(
+    (await listPublishedPapers(anon)).filter((p) => p.examName === exam.examName && p.subjectName === ebook.subject),
+    "first-set-per-year"
+  );
+  const slots: ChapterwiseSlot[] = [];
+  for (const p of papers) {
+    const found = await getBoardPaperForExport(anon, exam.examName, p.slug);
+    if (!found) throw new Error(`${p.slug}: not readable`);
+    const items = [...found.items].sort((a, b) => a.position - b.position);
+    const ids = [...new Set(items.map((it) => it.questionId))];
+    const rows = await loadQuestions(anon, ids);
+    if (rows.size !== ids.length) throw new Error(`${p.slug}: only ${rows.size} of ${ids.length} questions are PUBLIC`);
+    const chapterIds = [...new Set([...rows.values()].map((q) => q.chapter?.id).filter(Boolean))] as string[];
+    const { data: chs, error } = await anon.from("chapters").select("id, name, order_index").in("id", chapterIds);
+    if (error) throw new Error(`${p.slug}: chapters: ${error.message}`);
+    const chapter = new Map((chs ?? []).map((c) => [c.id as string, c as { id: string; name: string; order_index: number | null }]));
+    const note = [String(p.year), p.paperCode].filter(Boolean).join(" · ");
+    for (let i = 0; i < items.length; ) {
+      const first = items[i];
+      let j = i + 1;
+      while (first.caseKey && j < items.length && items[j].caseKey === first.caseKey) j++;
+      const ch = chapter.get(rows.get(first.questionId)!.chapter!.id)!;
+      slots.push({
+        order: slots.length,
+        marks: first.marks,
+        note,
+        chapterId: ch.id,
+        chapterName: ch.name,
+        chapterOrder: ch.order_index ?? 0,
+        parts: items.slice(i, j).map((it) => it.questionId),
+      });
+      i = j;
+    }
+  }
+  return slots;
+}
+
+/** A Chapter-wise PYQs book's chapters: every board question, grouped by marks, then its solutions. */
+async function buildChapterwiseChapters(
+  admin: SupabaseClient,
+  anon: SupabaseClient,
+  ebook: ChapterwiseEbook,
+  only: string[] | undefined,
+  totals: Totals,
+  head: string
+): Promise<{ built: Built[]; preview: string }> {
+  const all = chapterwiseChapters(await chapterwiseSlots(anon, ebook));
+  if (all.length === 0) throw new Error(`ebook ${ebook.slug}: no questions`);
+  const chapters = all.filter((c) => !only || only.includes(chapterSlug(c.chapterName)));
+  if (chapters.length === 0) throw new Error(`--only matched none of: ${all.map((c) => chapterSlug(c.chapterName)).join(", ")}`);
+  const built: Built[] = [];
+  let preview = "";
+  for (const [i, c] of chapters.entries()) {
+    const slots = c.groups.flatMap((g) => g.slots.map((s) => ({ ...s, group: g })));
+    const ids = [...new Set(slots.flatMap((s) => s.parts.map((p) => p.questionId)))];
+    const rows = await loadQuestions(anon, ids);
+    if (rows.size !== ids.length) throw new Error(`${c.chapterName}: only ${rows.size} of ${ids.length} questions are PUBLIC`);
+    const setOf = new Map<string, string>();
+    for (const [n, s] of slots.entries()) if (s.parts.length > 1) for (const p of s.parts) setOf.set(p.questionId, `cw-${i + 1}-${n}`);
+    const noteOf = new Map<string, string>();
+    const printedOf = new Map<string, { number: string; marks: number | null; orBefore: boolean }>();
+    for (const s of slots) {
+      for (const [j, p] of s.parts.entries()) {
+        noteOf.set(p.questionId, s.note);
+        // A marks group already says the marks; a case study says them once, on its first part.
+        printedOf.set(p.questionId, { number: p.label, marks: s.group.kind === "parts" && j === 0 ? s.marks : null, orBefore: false });
+      }
+    }
+    const groups = c.groups.map((g) => ({
+      label: groupLabel(g),
+      questions: standAlone(
+        homeworkQuestions(
+          g.slots.flatMap((s) => s.parts.map((p) => rows.get(p.questionId)!)),
+          setOf
+        )
+      ),
+    }));
+    const chapterQuestions = groups.flatMap((g) => g.questions);
+    const [paperImages, keyImages] = await Promise.all([
+      imageDataUris(admin, "paper", chapterQuestions),
+      imageDataUris(admin, "key", chapterQuestions),
+    ]);
+    const pdf = await printPdf(
+      buildChapterwiseChapterHtml({
+        number: i + 1,
+        name: c.chapterName,
+        bookTitle: ebook.title,
+        groups,
+        noteOf,
+        printedOf,
+        images: await asJpegs(new Map([...paperImages, ...keyImages])),
+        head,
+      }),
+      { timeoutMs: PRINT_TIMEOUT_MS }
+    );
+    totals.questions += slots.length;
+    for (const s of slots) for (const y of s.note.match(/\b20\d\d\b/g) ?? []) totals.years.push(Number(y));
+    if (!preview) {
+      const s = slots.find((x) => x.group.kind === "marks" && x.parts.length === 1);
+      const q = s ? rows.get(s.parts[0].questionId) : undefined;
+      if (s && q && !q.imageUrl && !q.context && (q.text ?? "").length < 220) {
+        preview = papersPreview(q, { label: c.chapterName, meta: groupLabel(s.group), section: s.note, number: s.parts[0].label });
+      }
+    }
+    const counts = c.groups.map((g) => `${groupLabel(g)} ${g.slots.length}`).join(", ");
+    console.log(`  ${String(i + 1).padStart(2)}. ${c.chapterName.padEnd(40)} ${String(slots.length).padStart(3)} q  (${counts})`);
+    built.push({
+      chapter: { number: i + 1, slug: chapterSlug(c.chapterName), name: c.chapterName, classLabel: null, notes: null, bookChapter: null },
+      pdf,
+      detail: `${slots.length} q`,
     });
   }
   return { built, preview };
@@ -464,6 +627,16 @@ function coverStats(ebook: EbookDefinition, chapters: number, t: Totals): { valu
       { value: String(chapters), label: "chapters" },
       { value: n(t.repeats), label: "asked again" },
       { value: n(t.types), label: "recurring types" },
+      { value: "Full", label: "solutions" },
+    ];
+  }
+  if (ebook.kind === "chapterwise") {
+    const from = Math.min(...t.years);
+    const to = Math.max(...t.years);
+    return [
+      { value: String(chapters), label: "chapters" },
+      { value: n(t.questions), label: "questions" },
+      { value: from === to ? String(from) : `${from}-${String(to).slice(2)}`, label: "years" },
       { value: "Full", label: "solutions" },
     ];
   }
@@ -521,6 +694,8 @@ async function buildBook(
     ({ built, preview: boardCover } = await buildPaperChapters(client, anon, ebook, only, totals, head));
   } else if (ebook.kind === "repeats") {
     ({ built, preview: boardCover } = await buildRepeatChapters(client, anon, ebook, only, totals, head));
+  } else if (ebook.kind === "chapterwise") {
+    ({ built, preview: boardCover } = await buildChapterwiseChapters(client, anon, ebook, only, totals, head));
   } else {
     for (const c of ebookChapters(ebook).filter((c) => !only || only.includes(c.slug))) {
       built.push(
@@ -532,9 +707,8 @@ async function buildBook(
   }
   for (const b of built) writeFileSync(join(outDir, "parts", `${String(b.chapter.number).padStart(2, "0")}-${b.chapter.slug}.pdf`), b.pdf);
 
-  const preview =
-    ebook.kind === "papers" || ebook.kind === "repeats"
-      ? boardCover
+  const preview = isBoardEbook(ebook)
+    ? boardCover
       : ebook.kind === "pyq"
       ? pyqCtx.firstQuestion
         ? pyqPreview(pyqCtx.firstQuestion.q, pyqCtx.firstQuestion.sitting)
@@ -559,10 +733,9 @@ async function buildBook(
       stats: coverStats(ebook, built.length, totals),
       preview,
       // The board books wear the premium cover; its edition is the newest year in the book.
-      cover:
-        ebook.kind === "papers" || ebook.kind === "repeats"
-          ? { over: ebook.board, main: ebook.subjectTitle, edition: `${Math.max(...totals.years)} Edition` }
-          : undefined,
+      cover: isBoardEbook(ebook)
+        ? { over: ebook.board, main: ebook.subjectTitle, edition: `${Math.max(...totals.years)} Edition` }
+        : undefined,
       chapters: contents,
       head,
     });
@@ -581,11 +754,11 @@ async function buildBook(
   const footer = `PYQ Vault  ·  ${ebook.title} ${KIND_LABEL[ebook.kind]}`;
   const master = await assembleMaster([frontPdf, ...built.map((b) => b.pdf)], { footer, paper: PAPER });
   // A Solved Papers book's sample is its newest paper, which it prints first; a
-  // Repeated PYQs book's is its fullest chapter, the one that shows most of the book.
+  // Repeated or Chapter-wise PYQs book's is its fullest chapter, the one that shows most of the book.
   const sampleBuilt =
     ebook.kind === "papers"
       ? built[0]
-      : ebook.kind === "repeats"
+      : isBoardEbook(ebook)
         ? [...built].sort((a, b) => parseInt(b.detail, 10) - parseInt(a.detail, 10))[0]
         : built.find((b) => b.chapter.slug === ebook.sampleChapter);
   const sample = sampleBuilt
@@ -594,7 +767,7 @@ async function buildBook(
   const masterPages = (await pageCounts([master]))[0];
   const summary = {
     pageCount: masterPages,
-    questionCount: ebook.kind === "pyq" || ebook.kind === "papers" || ebook.kind === "repeats" ? totals.questions : null,
+    questionCount: ebook.kind === "pyq" || isBoardEbook(ebook) ? totals.questions : null,
     stats: coverStats(ebook, built.length, totals),
     contents: front.contents,
   };

@@ -494,3 +494,71 @@ describe("buildRepeatsChapterHtml", () => {
     expect(sol).not.toContain("Asked 3 times");
   });
 });
+
+// ── Chapter-wise PYQs (board) ────────────────────────────────────────────────
+// Each marks group under its own heading, each question under the line saying
+// when it was asked, a case study's passage once; solutions on a fresh page
+// under the same numbers, without the group headings or the lines.
+describe("buildChapterwiseChapterHtml", () => {
+  const written = (id: string, over: Partial<QuestionRow> = {}): QuestionRow =>
+    q(id, "A", { options: [], questionFormat: "subjective", solution: `Model answer of ${id}.`, ...over });
+  const input = {
+    number: 4,
+    name: "Ray Optics",
+    bookTitle: "CBSE Class 12 Physics",
+    groups: [
+      { label: "1 mark", questions: [q("m1", "B", { solution: "Because of m1." })] },
+      { label: "3 marks", questions: [written("w1")] },
+      {
+        label: "Case studies and passages",
+        questions: [
+          written("c1", { setId: "cw-4-3", context: "A passage about lenses." }),
+          written("c2", { setId: "cw-4-3", context: "A passage about lenses." }),
+        ],
+      },
+      { label: "Earlier years", questions: [written("e1")] },
+    ],
+    noteOf: new Map([
+      ["m1", "2025 · 55/1/1"],
+      ["w1", "Asked 2 times: Feb 2024, Feb 2026"],
+      ["c1", "2024 · 55/1/1"],
+      ["c2", "2024 · 55/1/1"],
+      ["e1", "March 2017"],
+    ]),
+    printedOf: new Map([
+      ["m1", { number: "1", marks: null, orBefore: false }],
+      ["w1", { number: "2", marks: null, orBefore: false }],
+      ["c1", { number: "3 (a)", marks: 4, orBefore: false }],
+      ["c2", { number: "3 (b)", marks: null, orBefore: false }],
+      ["e1", { number: "4", marks: null, orBefore: false }],
+    ]),
+    head: "",
+  };
+
+  it("heads the chapter with how many questions it holds", async () => {
+    const { buildChapterwiseChapterHtml } = await import("@/lib/ebooks/bookHtml");
+    const head = between(buildChapterwiseChapterHtml(input), 'class="chead', 'id="questions"');
+    expect(head).toContain("Ray Optics");
+    expect(head).toContain("4 questions");
+  });
+
+  it("prints the marks groups in order, each question under its line", async () => {
+    const { buildChapterwiseChapterHtml } = await import("@/lib/ebooks/bookHtml");
+    const qs = between(buildChapterwiseChapterHtml(input), 'id="questions"', 'id="solutions"');
+    expect(qs).toMatch(/class="mgroup">1 mark[\s\S]*2025 · 55\/1\/1[\s\S]*Stem of m1[\s\S]*class="mgroup">3 marks[\s\S]*Asked 2 times[\s\S]*Stem of w1/);
+    expect(qs).toMatch(/Case studies and passages[\s\S]*Earlier years[\s\S]*March 2017[\s\S]*Stem of e1/);
+    expect(qs.split("A passage about lenses.").length - 1).toBe(1);
+    expect(qs).not.toContain("Because of m1.");
+  });
+
+  it("solves every question on a new page under the same numbers, without headings or lines", async () => {
+    const { buildChapterwiseChapterHtml } = await import("@/lib/ebooks/bookHtml");
+    const html = buildChapterwiseChapterHtml(input);
+    expect(html).toMatch(/id="solutions" class="newpage[ "]/);
+    const sol = between(html, 'id="solutions"');
+    expect(sol).toMatch(/1\.[\s\S]*Answer: \(b\)[\s\S]*Because of m1\./);
+    expect(sol).toMatch(/3 \(b\)\.[\s\S]*Model answer of c2\./);
+    expect(sol).not.toContain("mgroup");
+    expect(sol).not.toContain("Asked 2 times");
+  });
+});

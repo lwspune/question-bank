@@ -22,17 +22,18 @@ export const PAPER = "#f5f7fb";
 /** The site's navy (--foreground) and muted text (--muted-foreground). */
 export const INK = "#0f1d4a";
 export const MUTED = "#55657f";
-export const ACCENT: Record<EbookKind, string> = { formula: "#1d4ed8", notes: "#6d28d9", pyq: "#047857", papers: "#b45309", repeats: "#be123c" };
+export const ACCENT: Record<EbookKind, string> = { formula: "#1d4ed8", notes: "#6d28d9", pyq: "#047857", papers: "#b45309", repeats: "#be123c", chapterwise: "#0f766e" };
 export const KIND_LABEL: Record<EbookKind, string> = {
   formula: "Formula Book",
   notes: "Notes Book",
   pyq: "PYQ Book",
   papers: "Solved Papers",
   repeats: "Repeated PYQs",
+  chapterwise: "Chapter-wise PYQs",
 };
 
 /** The board books, which wear the navy and gold cover (2026-10-26). */
-export const PREMIUM_KINDS: ReadonlySet<EbookKind> = new Set<EbookKind>(["papers", "repeats"]);
+export const PREMIUM_KINDS: ReadonlySet<EbookKind> = new Set<EbookKind>(["papers", "repeats", "chapterwise"]);
 
 /** Shared by every part. Pages keep their margins; the page tint shows through them once painted. */
 export const THEME_CSS = `
@@ -143,4 +144,7 @@ table.ref { border-collapse: collapse; width: 100%; font-size: 9pt; }
 .bp .q.pq { grid-template-columns: max-content 1fr; }
 .bp .qn { border-radius: 6pt; }
 .bp .ans { font-weight: 700; color: var(--emerald); margin-bottom: 2pt; }
+/* Chapter-wise PYQs: a marks group heading, above the per-question lines */
+.mgroup { font-size: 13pt; margin: 14pt 0 8pt; padding: 4pt 10pt; border-radius: 6pt; background: var(--soft); color: var(--ink); break-after: avoid; }
+.mgroup:first-child { margin-top: 0; }
 `;
