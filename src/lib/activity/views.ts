@@ -47,6 +47,9 @@ export const SURFACES = [
   // tap on a book's free sample, written by the sample route (ebookSampleEvent).
   "store",
   "ebook_sample",
+  // V's "How's my progress" card was opened (2026-10-27, migration 0191),
+  // written by GET /api/chat/progress: how many look, and whether they drill after.
+  "v_progress",
 ] as const;
 
 export type Surface = (typeof SURFACES)[number];

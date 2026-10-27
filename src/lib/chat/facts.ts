@@ -141,7 +141,7 @@ export const NAV_FACTS: readonly string[] = [
   "/performance: a student's own results after their mocks: scores, trend, and what to work on (needs a free account).",
   "/me/map: a student's mastery map, chapter by chapter (needs a free account).",
   "Build a practice test: a button in this chat window; V builds a test from the chapters, length and difficulty the student picks.",
-  "Plan my week: a button beside it in this chat window (when V's week plan is on); V plans the student's study week.",
+  "How's my progress: a button beside it in this chat window for a signed-in student who has practised; it shows a card of their own numbers (this week's answers, mistakes fixed, exam covered, mocks, chapters, notes read) with Fix my mistakes (/drill) and View full performance (/performance).",
   "/signup: create a free account (Google or email).",
   "/pricing: the Premium Pass and how to buy it.",
   "/about: who runs PYQ Vault, and the contact form to write to the team about a payment, the pass or an account problem.",

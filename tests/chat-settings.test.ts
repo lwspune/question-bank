@@ -12,9 +12,9 @@ import {
 
 describe("parseChatSettingsInput", () => {
   it("accepts a valid set", () => {
-    expect(parseChatSettingsInput({ aiEnabled: true, explainEnabled: false, planEnabled: true, perPersonPerHour: 20, aiAnswersPerDay: 500 })).toEqual({
+    expect(parseChatSettingsInput({ aiEnabled: true, explainEnabled: false, planEnabled: true, progressEnabled: false, perPersonPerHour: 20, aiAnswersPerDay: 500 })).toEqual({
       ok: true,
-      settings: { aiEnabled: true, explainEnabled: false, planEnabled: true, perPersonPerHour: 20, aiAnswersPerDay: 500 },
+      settings: { aiEnabled: true, explainEnabled: false, planEnabled: true, progressEnabled: false, perPersonPerHour: 20, aiAnswersPerDay: 500 },
     });
   });
 
@@ -28,6 +28,12 @@ describe("parseChatSettingsInput", () => {
   it("refuses a missing week-plan switch, and starts with plans off", () => {
     expect(parseChatSettingsInput({ aiEnabled: true, explainEnabled: false, perPersonPerHour: 20, aiAnswersPerDay: 500 }).ok).toBe(false);
     expect(DEFAULT_CHAT_SETTINGS.planEnabled).toBe(false);
+  });
+
+  // 2026-10-27 (migration 0191): the progress card has its own switch, ON from the start: it makes no AI call.
+  it("refuses a missing progress switch, and starts with the progress card on", () => {
+    expect(parseChatSettingsInput({ aiEnabled: true, explainEnabled: false, planEnabled: false, perPersonPerHour: 20, aiAnswersPerDay: 500 }).ok).toBe(false);
+    expect(DEFAULT_CHAT_SETTINGS.progressEnabled).toBe(true);
   });
 
   it("refuses a missing switch", () => {
@@ -46,13 +52,13 @@ describe("parseChatSettingsInput", () => {
   });
 
   it("accepts a daily cap of 0 (AI on, but no answers today)", () => {
-    expect(parseChatSettingsInput({ aiEnabled: true, explainEnabled: true, planEnabled: false, perPersonPerHour: 15, aiAnswersPerDay: 0 }).ok).toBe(true);
+    expect(parseChatSettingsInput({ aiEnabled: true, explainEnabled: true, planEnabled: false, progressEnabled: true, perPersonPerHour: 15, aiAnswersPerDay: 0 }).ok).toBe(true);
   });
 });
 
 describe("defaults", () => {
-  it("ship with the AI, explanations and plans off, 15 an hour, 300 a day", () => {
-    expect(DEFAULT_CHAT_SETTINGS).toEqual({ aiEnabled: false, explainEnabled: false, planEnabled: false, perPersonPerHour: 15, aiAnswersPerDay: 300 });
+  it("ship with the AI, explanations and plans off, the progress card on, 15 an hour, 300 a day", () => {
+    expect(DEFAULT_CHAT_SETTINGS).toEqual({ aiEnabled: false, explainEnabled: false, planEnabled: false, progressEnabled: true, perPersonPerHour: 15, aiAnswersPerDay: 300 });
   });
 });
 

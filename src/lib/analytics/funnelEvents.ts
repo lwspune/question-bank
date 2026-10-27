@@ -161,6 +161,12 @@ export const FUNNEL_EVENTS = [
    * it says how many who looked went on to answer.
    */
   "tutor_link_click",
+  /**
+   * V's "How's my progress" card (2026-10-27, migration 0191); prop: action
+   * (open · drill · performance · exam). Opens are also logged server-side
+   * (surface_viewed 'v_progress'); this adds which button on the card was used.
+   */
+  "v_progress_tap",
 ] as const;
 
 export type FunnelEvent = (typeof FUNNEL_EVENTS)[number];

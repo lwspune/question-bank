@@ -16,6 +16,7 @@ export default function ChatSettingsForm({ initial }: { initial: ChatSettings })
   const [aiEnabled, setAiEnabled] = useState(initial.aiEnabled);
   const [explainEnabled, setExplainEnabled] = useState(initial.explainEnabled);
   const [planEnabled, setPlanEnabled] = useState(initial.planEnabled);
+  const [progressEnabled, setProgressEnabled] = useState(initial.progressEnabled);
   const [perHour, setPerHour] = useState(String(initial.perPersonPerHour));
   const [perDay, setPerDay] = useState(String(initial.aiAnswersPerDay));
   const [saving, setSaving] = useState(false);
@@ -29,7 +30,14 @@ export default function ChatSettingsForm({ initial }: { initial: ChatSettings })
       const res = await fetch("/api/admin/chat-settings", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ aiEnabled, explainEnabled, planEnabled, perPersonPerHour: Number(perHour), aiAnswersPerDay: Number(perDay) }),
+        body: JSON.stringify({
+          aiEnabled,
+          explainEnabled,
+          planEnabled,
+          progressEnabled,
+          perPersonPerHour: Number(perHour),
+          aiAnswersPerDay: Number(perDay),
+        }),
       });
       const json = (await res.json().catch(() => ({}))) as { error?: string; settings?: ChatSettings };
       if (!res.ok || json.error || !json.settings) {
@@ -41,6 +49,7 @@ export default function ChatSettingsForm({ initial }: { initial: ChatSettings })
       setAiEnabled(json.settings.aiEnabled);
       setExplainEnabled(json.settings.explainEnabled);
       setPlanEnabled(json.settings.planEnabled);
+      setProgressEnabled(json.settings.progressEnabled);
       setPerHour(String(json.settings.perPersonPerHour));
       setPerDay(String(json.settings.aiAnswersPerDay));
       toast.success("V's settings saved");
@@ -93,10 +102,26 @@ export default function ChatSettingsForm({ initial }: { initial: ChatSettings })
           className="mt-0.5 h-4 w-4 rounded border-input focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
         />
         <span>
-          Plan the week (&ldquo;plan my week&rdquo; in V)
+          Plan the week (when a student types &ldquo;plan my week&rdquo;)
           <span className="block text-xs text-muted-foreground">
             V saves a 7-day plan from the student&apos;s weak chapters, due drill and the exam&apos;s biggest chapters, shown
             as a card inside V that ticks itself. Needs the AI switch on. Off: V does not make plans.
+          </span>
+        </span>
+      </label>
+
+      <label className="flex items-start gap-2 text-sm">
+        <input
+          type="checkbox"
+          checked={progressEnabled}
+          onChange={(e) => setProgressEnabled(e.target.checked)}
+          className="mt-0.5 h-4 w-4 rounded border-input focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+        />
+        <span>
+          &ldquo;How&apos;s my progress&rdquo; button in V
+          <span className="block text-xs text-muted-foreground">
+            A card of the student&apos;s own numbers: this week&apos;s answers, mistakes fixed, exam covered, mocks, chapters
+            and notes read. Uses no AI, so it works with the AI switch off. Off: the button is hidden.
           </span>
         </span>
       </label>

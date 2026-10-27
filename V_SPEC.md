@@ -20,8 +20,8 @@ job it improves, and is tested on that job's cases (section 4).
 | `explain_question` | Ask V on a question, "why F = nmv?" | `explain_question` / `get_question`: the stored solution | correct, from our solution, never against the key | works well |
 | `explain_concept` | "derive the potential due to a point charge", "what is active transport" | `explain_concept` (section 2) | a correct, grounded explanation | built 2026-10-22 (step 2) |
 | `practise` | "test me on NLM", "mini test" | the practice-test builder, `similar_question` | the student starts practising | works |
-| `plan` | "plan my week", "4 months left" | `plan_week`, `my_plan`, `exam_strategy` | a plan is made and shown | works; follow-through not measured |
-| `reflect` | "how am I doing?", "good at Maths, bad at GAT" | `my_progress` | answers the question they asked | no per-subject split |
+| `plan` | "plan my week", "4 months left" | `plan_week`, `my_plan`, `exam_strategy` | a plan is made and shown | typed only since 2026-10-27; follow-through low (5 of 63 chapter days done) |
+| `reflect` | "how am I doing?", "good at Maths, bad at GAT" | `my_progress`; the "How's my progress" button opens a card built without AI (`lib/chat/progressCard.ts`, 2026-10-27) | answers the question they asked | typed: no per-subject split |
 | `help` | payment, app, homework, "is it free" | site facts | the right next step | gaps: app install, homework |
 | `chat` | greetings, role-play, gibberish, abuse | none | one friendly line back to studying; abuse gets the fixed line | works |
 
@@ -231,3 +231,10 @@ reads everything else from the stored row.
   solution steps", then Report unasked). Case 3417df59: clean in 2 runs. The
   root cause, questions with only an answer, goes to the solutions backfill
   (`SOLUTIONS_BACKFILL_SPEC.md`).
+- 2026-10-27: the "Plan my week" button became "How's my progress" (owner). 20
+  students tapped the plan button in a week, but 5 of the 63 chapter days in
+  their plans were done and one asked to see a plan again. The card is built
+  from the student's numbers by `lib/chat/progressCard.ts` with no model call
+  (so no v:eval case moves: V's text is not involved), its own switch at
+  /dashboard/chat (0191). Typed plan asks still reach `plan_week`. Growth
+  experiment `v-progress`.
