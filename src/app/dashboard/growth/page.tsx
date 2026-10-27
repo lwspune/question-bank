@@ -55,6 +55,8 @@ import {
   V_REVEAL_FOLLOWUP_BASELINE_PCT,
   V_REVEAL_FOLLOWUP_MAX_DROP,
   V_PLAN_DAYS_DONE_KEEP_PCT,
+  V_PROGRESS_NEXT_STEP_KEEP_PCT,
+  V_PROGRESS_STUDENTS_KEEP,
   SPECIFIC_OFFER_CHECKOUT_PCT,
   TUTOR_STUDENT_YES_KEEP,
   checkOn,
@@ -634,6 +636,17 @@ export default async function GrowthPage() {
             </p>
             <ReadingsList metric="v-plan-students" />
             <ReadingsList metric="v-plan-days-done" />
+          </div>
+        );
+      case "v-progress":
+        return (
+          <div className="space-y-3">
+            <p className="text-sm text-muted-foreground">
+              Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))}: keep it if {V_PROGRESS_STUDENTS_KEEP}+ students
+              open it and {V_PROGRESS_NEXT_STEP_KEEP_PCT}%+ of them drill or open /performance within 30 minutes.
+            </p>
+            <ReadingsList metric="v-progress-students" />
+            <ReadingsList metric="v-progress-next-step" />
           </div>
         );
       case "v-strategy":

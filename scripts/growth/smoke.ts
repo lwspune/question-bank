@@ -159,6 +159,9 @@ async function main() {
       case "v-plan":
         line = handRead(e.liveSince, ["v-plan-students", "v-plan-days-done"]);
         break;
+      case "v-progress":
+        line = handRead(e.liveSince, ["v-progress-students", "v-progress-next-step"]);
+        break;
       case "v-strategy":
         line = handRead(e.liveSince, ["v-strategy-answers", "v-strategy-no-data"]);
         break;

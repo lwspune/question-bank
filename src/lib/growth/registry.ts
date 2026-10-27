@@ -202,6 +202,15 @@ export const V_PLAN_STUDENTS_KEEP = 10;
 export const V_PLAN_DAYS_DONE_KEEP_PCT = 30;
 
 /**
+ * "v-progress": keep V's "How's my progress" card if at least this many
+ * students open it in two weeks (the Plan my week button it replaced was
+ * tapped by 20 in its first week)...
+ */
+export const V_PROGRESS_STUDENTS_KEEP = 30;
+/** ...and at least this share of them start a drill or open /performance within 30 minutes (%). */
+export const V_PROGRESS_NEXT_STEP_KEEP_PCT = 25;
+
+/**
  * "pass-price": keep Rs 199 if a week's pass revenue is at least the week
  * before the change (6 sales at Rs 99)...
  */
@@ -254,7 +263,8 @@ export type Readout =
   | "pass-price"
   | "answer-limit"
   | "v-reveal"
-  | "tutor-interest";
+  | "tutor-interest"
+  | "v-progress";
 
 export type Experiment = {
   id: string;
@@ -585,6 +595,20 @@ export const EXPERIMENTS: readonly Experiment[] = [
     status: "running",
   },
   {
+    id: "v-progress",
+    title: "V shows where you stand (\"How's my progress\")",
+    change:
+      "V's \"Plan my week\" button became \"How's my progress\": a card of the student's own numbers for one exam (this week's answers and the change on last week, mistakes fixed, the share of recent papers their practised chapters carry, mocks, chapter bands and what moved up, notes read), with Fix my mistakes (/drill) and View full performance. No AI call. Typed plan asks still get a plan.",
+    why: "The plan button got taps because it was in plain sight (20 students in its first week) but the plans were not followed: 5 of 63 chapter days done and one student ever asked to see a plan again (2026-10-27). Seeing their own numbers is metacognition, and the drill is the one next step.",
+    metric:
+      "Students who opened the card (surface_viewed 'v_progress', one a day); of them, the share who started a drill (drill_started) or opened /performance (surface_viewed 'performance') within 30 minutes of opening it",
+    rule: `Keep it if ${V_PROGRESS_STUDENTS_KEEP}+ students open it in two weeks and ${V_PROGRESS_NEXT_STEP_KEEP_PCT}%+ of them take a next step within 30 minutes; under the share, read which lines students see before changing the card.`,
+    liveSince: "2026-10-27",
+    windowDays: 14,
+    readout: "v-progress",
+    status: "running",
+  },
+  {
     id: "pass-price",
     title: "Premium Pass at Rs 199",
     change:
@@ -719,6 +743,8 @@ export type ReadingMetric =
   | "v-strategy-no-data"
   | "v-plan-students"
   | "v-plan-days-done"
+  | "v-progress-students"
+  | "v-progress-next-step"
   | "price-weekly-revenue"
   | "price-checkout-paid"
   | "answer-limit-students"
@@ -896,11 +922,28 @@ export const READINGS: Record<ReadingMetric, { label: string; source: string; en
   "v-plan-students": {
     label: "V: students who made a week plan",
     source: "study_plans: distinct user_id since liveSince",
-    entries: [],
+    entries: [{ on: "2026-10-27", value: 19, note: "19 plans saved; 20 students tapped the Plan my week button (24 taps), 18 more plan asks typed" }],
   },
   "v-plan-days-done": {
     label: "V: planned days done (%)",
     source: "study_plans items ticked by lib/chat/weekPlan.ts tickPlan over each plan's week (loadPlanActivity), for plans whose week has ended",
+    entries: [
+      {
+        on: "2026-10-27",
+        value: 15,
+        note: "Early: no plan's week had ended. 15 of 99 tasks: chapter days 5/63, drill 3/14, mock 7/19. One student asked to see a plan again. The button was replaced by How's my progress",
+      },
+    ],
+  },
+  "v-progress-students": {
+    label: "V: students who opened How's my progress",
+    source: "user_activity surface_viewed with metadata.surface 'v_progress' (one a day per student), distinct user_id since liveSince",
+    entries: [],
+  },
+  "v-progress-next-step": {
+    label: "V: progress-card openers who drilled or opened /performance within 30 minutes (%)",
+    source:
+      "user_activity: each 'v_progress' view followed within 30 minutes by drill_started, or by surface_viewed 'performance', for the same student",
     entries: [],
   },
   "v-false-not-found": {
