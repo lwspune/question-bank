@@ -339,8 +339,11 @@ describe("buildSystemPrompt", () => {
     expect(NAV_FACTS.join(" ")).toContain("/saved");
   });
 
-  it("names the Plan my week button beside the test builder", () => {
-    expect(NAV_FACTS.join("\n")).toContain("Plan my week");
+  // 2026-10-27 (owner): "How's my progress" replaced the Plan my week button, so V must not point at a button that is gone.
+  it("names the How's my progress button beside the test builder, and no Plan my week button", () => {
+    const nav = NAV_FACTS.join("\n");
+    expect(nav).toContain("How's my progress");
+    expect(nav).not.toMatch(/Plan my week: a button/);
   });
 
   it("gives abuse the same calm line the route uses, never an answer back (owner, 2026-10-20)", () => {

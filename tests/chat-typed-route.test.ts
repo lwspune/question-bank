@@ -44,9 +44,10 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
     ai_answers_per_day: number;
     explain_enabled?: boolean;
     plan_enabled?: boolean;
+    progress_enabled?: boolean;
   }) {
     // Explanations (0168) and plans (0170) off unless a test turns them on, so one test's switch cannot leak into the next.
-    const { error } = await admin.from("chat_settings").update({ explain_enabled: false, plan_enabled: false, ...s }).eq("id", true);
+    const { error } = await admin.from("chat_settings").update({ explain_enabled: false, plan_enabled: false, progress_enabled: true, ...s }).eq("id", true);
     if (error) throw new Error(error.message);
   }
 
@@ -56,7 +57,7 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
     });
     const { data } = await admin
       .from("chat_settings")
-      .select("ai_enabled, explain_enabled, plan_enabled, per_person_per_hour, ai_answers_per_day")
+      .select("ai_enabled, explain_enabled, plan_enabled, progress_enabled, per_person_per_hour, ai_answers_per_day")
       .eq("id", true)
       .single();
     saved = data;
@@ -436,21 +437,31 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
       const { GET } = await import("@/app/api/chat/features/route");
       const req = () => get("/api/chat/features");
       await setSettings({ ai_enabled: true, explain_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });
-      expect(await (await GET(req())).json()).toEqual({ explain: true, plan: false });
+      expect(await (await GET(req())).json()).toEqual({ explain: true, plan: false, progress: true });
       await setSettings({ ai_enabled: false, explain_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });
-      expect(await (await GET(req())).json()).toEqual({ explain: false, plan: false });
+      expect(await (await GET(req())).json()).toEqual({ explain: false, plan: false, progress: true });
       await setSettings({ ai_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });
-      expect(await (await GET(req())).json()).toEqual({ explain: false, plan: false });
+      expect(await (await GET(req())).json()).toEqual({ explain: false, plan: false, progress: true });
     });
 
-    // 2026-10-20: "Plan my week" sits beside "Build a practice test" while V's week plan is on.
+    // 2026-10-20: the week plan's switch. Its button was replaced by "How's my progress" on 2026-10-27; typed plans still read it.
     it("tells the window whether the week plan is on, needing the AI on too", async () => {
       const { GET } = await import("@/app/api/chat/features/route");
       const req = () => get("/api/chat/features");
       await setSettings({ ai_enabled: true, plan_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });
-      expect(await (await GET(req())).json()).toEqual({ explain: false, plan: true });
+      expect(await (await GET(req())).json()).toEqual({ explain: false, plan: true, progress: true });
       await setSettings({ ai_enabled: false, plan_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });
-      expect(await (await GET(req())).json()).toEqual({ explain: false, plan: false });
+      expect(await (await GET(req())).json()).toEqual({ explain: false, plan: false, progress: true });
+    });
+
+    // 2026-10-27 (migration 0191): "How's my progress" makes no AI call, so it needs only its own switch.
+    it("tells the window whether the progress card is on, with or without the AI", async () => {
+      const { GET } = await import("@/app/api/chat/features/route");
+      const req = () => get("/api/chat/features");
+      await setSettings({ ai_enabled: false, per_person_per_hour: 15, ai_answers_per_day: 300 });
+      expect(await (await GET(req())).json()).toEqual({ explain: false, plan: false, progress: true });
+      await setSettings({ ai_enabled: true, progress_enabled: false, per_person_per_hour: 15, ai_answers_per_day: 300 });
+      expect(await (await GET(req())).json()).toEqual({ explain: false, plan: false, progress: false });
     });
 
     // 2026-10-19, live: the deployed route kept answering {explain:false} after the switch was saved,

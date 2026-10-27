@@ -4,9 +4,9 @@ import { useEffect, useRef, useState, type CSSProperties } from "react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
-import { CalendarDays, Check, ListChecks, Reply, RotateCcw, SendHorizontal, ThumbsDown, ThumbsUp, X } from "lucide-react";
+import { Check, ListChecks, Reply, RotateCcw, SendHorizontal, ThumbsDown, ThumbsUp, TrendingUp, X } from "lucide-react";
 import { toast } from "sonner";
-import { trackFunnelOnce } from "@/lib/analytics/trackFunnel";
+import { trackFunnel, trackFunnelOnce } from "@/lib/analytics/trackFunnel";
 import { useVFeatures } from "@/lib/chat/useVExplain";
 import { CHAT_MESSAGE_MAX } from "@/lib/chat/validate";
 import { vPlacement } from "@/lib/chat/placement";
@@ -25,6 +25,7 @@ import {
 } from "@/lib/chat/localChat";
 import { celebrate } from "@/components/celebrate/celebrate";
 import { fetchViewerSession, hasAuthCookie } from "@/lib/viewer/useViewerSession";
+import { usePulse } from "@/lib/viewer/usePulse";
 import { anonAskedFromCookieHeader } from "@/lib/chat/anonLimit";
 import { Button } from "@/components/ui/button";
 
@@ -66,6 +67,7 @@ import VFace, { type VAvatar } from "./VFace";
 import ReplyText from "./VReplyText";
 import VRevealReply from "./VRevealReply";
 import VPlanCard from "./VPlanCard";
+import VProgressCard from "./VProgressCard";
 import {
   ASK_V_EVENT,
   askedCardOf,
@@ -95,6 +97,8 @@ type ChatTurn = HistoryTurn & {
   card?: { id: string; kind: "try" | "confirm" };
   /** The week plan under V's reply (2026-10-19): it made or read the student's plan. */
   plan?: boolean;
+  /** The "How's my progress" card (2026-10-27): the student's own numbers, read when shown. */
+  progress?: boolean;
   /** A fresh reply, shown a line at a time (2026-10-23). Never kept: a reply from history shows whole. */
   reveal?: boolean;
 };
@@ -143,9 +147,13 @@ const GREETING: ChatTurn = {
  * this device, raises the badge and V's bubble, and is marked read when the
  * window opens.
  *
- * BUTTONS (2026-10-20, owner): "Build a practice test" and, while V's week plan
- * is switched on, "Plan my week". The six default questions they sat beside
- * were retired: V's AI answers them (lib/chat/faq.ts keeps their labels).
+ * BUTTONS (2026-10-20, owner): "Build a practice test" and, since 2026-10-27,
+ * "How's my progress" (a signed-in student who has answered something, while
+ * the card is switched on, 0191). It replaced "Plan my week": 20 students
+ * tapped that in a week, and 5 of the 63 chapter days their plans held were
+ * done. Typed plan asks still get a plan. The six default questions the
+ * buttons first sat beside were retired: V's AI answers them (lib/chat/faq.ts
+ * keeps their labels).
  *
  * TYPING (2026-10-09). Since
  * 2026-10-15 POST /api/chat/typed answers typed questions with AI when
@@ -173,9 +181,12 @@ export default function ChatWidget() {
   const [draft, setDraft] = useState("");
   // Signed out with the one typed question used (lib/chat/anonLimit.ts).
   const [signInNeeded, setSignInNeeded] = useState(false);
-  // From the one session read below; "Plan my week" needs an account.
+  // From the one session read below; "How's my progress" needs an account.
   const [signedIn, setSignedIn] = useState(false);
   const features = useVFeatures();
+  // The header's shared read (no extra request): the button shows once there is something to show.
+  const pulse = usePulse(signedIn && features.progress);
+  const showProgress = !!pulse && ((pulse.totals?.answered ?? 0) > 0 || pulse.due > 0);
   // "Ask V about this question" (2026-10-19): the question this conversation is about, sent with each message.
   const [asked, setAsked] = useState<AskVDetail | null>(null);
   // "Reply" on one of V's replies (0174): the message the next typed message answers.
@@ -503,21 +514,15 @@ export default function ChatWidget() {
     if (!value) void askTyped(NOT_UNDERSTOOD);
   }
 
-  /** "Plan my week": V's plan_week, asked like a typed message. Signed out, it asks for an account first. */
-  function planWeek() {
+  /**
+   * "How's my progress" (2026-10-27): the card of the student's own numbers.
+   * No AI call and nothing stored, so it costs no message and stays on this screen only.
+   */
+  function showProgressCard() {
     if (sending) return;
-    if (!signedIn) {
-      addTurn({ role: "user", text: "Plan my week", transient: true });
-      addTurn({
-        role: "assistant",
-        avatar: "idle",
-        text: "Sign in (it's free) and I'll plan your week: /login",
-        links: ["/login"],
-        transient: true,
-      });
-      return;
-    }
-    void askTyped("Plan my week");
+    trackFunnel("v_progress_tap", { action: "open" });
+    addTurn({ role: "user", text: "How's my progress?", transient: true });
+    addTurn({ role: "assistant", avatar: "idle", text: "Here's where you stand.", progress: true, transient: true });
   }
 
   onAskRef.current = (d: AskVDetail) => {
@@ -824,6 +829,7 @@ export default function ChatWidget() {
                   )}
                   {t.card && !t.reveal && <VQuestionCard id={t.card.id} kind={t.card.kind} />}
                   {t.plan && !t.reveal && <VPlanCard onNavigate={close} />}
+                  {t.progress && <VProgressCard onNavigate={close} />}
                 </div>
               );
             })}
@@ -852,15 +858,15 @@ export default function ChatWidget() {
                 <ListChecks className="h-3.5 w-3.5" aria-hidden />
                 Build a practice test
               </button>
-              {features.plan && (
+              {showProgress && (
                 <button
                   type="button"
-                  onClick={planWeek}
+                  onClick={showProgressCard}
                   disabled={sending}
                   className="inline-flex shrink-0 items-center gap-1 whitespace-nowrap rounded-full border border-brand-accent/25 bg-brand-accent/[0.06] px-3.5 py-1.5 text-xs font-semibold text-foreground transition-colors hover:border-brand-accent/45 hover:bg-brand-accent/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
                 >
-                  <CalendarDays className="h-3.5 w-3.5" aria-hidden />
-                  Plan my week
+                  <TrendingUp className="h-3.5 w-3.5" aria-hidden />
+                  How&apos;s my progress
                 </button>
               )}
             </div>
