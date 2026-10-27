@@ -27,7 +27,8 @@ const HAS_ENV =
 const PASSWORD = "learn-db-test-1234";
 const RUN = randomUUID().slice(0, 8);
 const CHAPTER = `learn-test-${RUN}`;
-const COURSE = `learn-test-${RUN}-maths`;
+const EXAM = `learn-test-${RUN}`; // not a real exam: the test DB may hold the real courses
+const COURSE = `${EXAM}-maths`;
 
 const solution = { steps: ["First step.", "Second step."] };
 
@@ -328,7 +329,7 @@ describe.skipIf(!HAS_ENV)("Learn tables (0190)", () => {
     const course = {
       slug: COURSE,
       title: "Test Board",
-      exam: "mh-hsc-12",
+      exam: EXAM,
       subject: "maths",
       standard: 12,
       chapters: [
@@ -342,7 +343,7 @@ describe.skipIf(!HAS_ENV)("Learn tables (0190)", () => {
       expect(error).toBeNull();
       const { data, error: oe } = await anon.rpc("learn_course_outline", { p_course: COURSE });
       expect(oe).toBeNull();
-      expect(data).toMatchObject({ slug: COURSE, exam: "mh-hsc-12", subject: "maths", standard: 12 });
+      expect(data).toMatchObject({ slug: COURSE, exam: EXAM, subject: "maths", standard: 12 });
       expect(data.chapters).toEqual([
         { slug: "first", title: "First", standard: 12, pyqvault: "first-chapter", parts: [{ chapter: CHAPTER, concepts: ["C01", "C02"] }] },
         { slug: "second", title: "Second", standard: 12, pyqvault: null, parts: [{ chapter: CHAPTER, concepts: ["C03"] }] },
