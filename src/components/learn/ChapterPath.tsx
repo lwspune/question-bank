@@ -90,8 +90,12 @@ export function ChapterPath({
             </span>
           </ProgressRing>
           <div className="min-w-0 flex-1">
-            <p className="text-sm font-medium text-foreground">{student ? "concepts mastered" : `${view.concepts.length} concepts, a short lesson each`}</p>
-            <ul className="mt-2 space-y-1.5">
+            <p className="font-semibold text-foreground">
+              {student ? `${mastered} of ${view.concepts.length} concepts mastered` : `${view.concepts.length} concepts, a short lesson each`}
+            </p>
+            {!next && <p className="mt-1 text-sm text-muted-foreground">Every concept here is mastered.</p>}
+            {/* A bar per topic only when the chapter has more than one. */}
+            <ul className={groups.length > 1 ? "mt-2 space-y-1.5" : "hidden"}>
               {groups.map((g) => (
                 <li key={g.group} className="grid grid-cols-[minmax(0,1fr)_5rem_2.5rem] items-center gap-3 text-xs text-muted-foreground">
                   <span className="truncate">{g.group}</span>
@@ -129,13 +133,17 @@ export function ChapterPath({
       <div className="mt-8 space-y-8">
         {groups.map((g) => (
           <section key={g.group} aria-label={g.group}>
-            <h2 className="flex items-baseline justify-between gap-3 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+            <h2
+              className={
+                groups.length > 1 ? "flex items-baseline justify-between gap-3 text-sm font-semibold uppercase tracking-wider text-muted-foreground" : "sr-only"
+              }
+            >
               <span>{g.group}</span>
               <span className="font-medium normal-case tracking-normal tabular-nums">
                 {g.mastered} of {g.concepts.length}
               </span>
             </h2>
-            <ol className="ml-3 mt-3 space-y-3 border-l-2 border-border pl-6">
+            <ol className={`ml-3 space-y-3 border-l-2 border-border pl-6 ${groups.length > 1 ? "mt-3" : ""}`}>
               {g.concepts.map((c) => {
                 const locked = c.state === "locked";
                 return (
