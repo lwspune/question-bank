@@ -17,19 +17,30 @@ export function parseCommitRows(rows: CommitRow[]): { parsed: ParsedRowPayload[]
   const errs: string[] = [];
   const parsed: ParsedRowPayload[] = [];
   for (const r of rows) {
-    const { flawed: _f, figures: _g, ...raw } = r;
-    const v = validateRow(raw);
-    if (v.errors.length) {
-      errs.push(`Q${r.questionNumber}: ${v.errors.join("; ")}`);
-      continue;
+    try {
+      parsed.push(commitPayload(r, figureFiles(r).map((f) => readFileSync(f))));
+    } catch (e) {
+      errs.push((e as Error).message);
     }
-    const p = v.parsed!;
-    const files = figureFiles(r);
-    if (files.length) {
-      p.contentHash = figureAwareHash(p.contentHash, files.map((f) => readFileSync(f)));
-      p.options = p.options.map((o) => ({ ...o, text: optionTextForBank(o.text) }));
-    }
-    parsed.push(p);
   }
   return { parsed, errs };
+}
+
+/**
+ * One row's payload with its pictures given as BYTES, in figureFiles order (stem, then options A-D).
+ * parseCommitRows reads the files and calls this; a tool replacing a shipped row's picture passes
+ * the new bytes and gets the content_hash a fresh commit would.
+ */
+export function commitPayload(r: CommitRow, figures: Buffer[]): ParsedRowPayload {
+  const expected = figureFiles(r).length;
+  if (figures.length !== expected) throw new Error(`Q${r.questionNumber}: ${figures.length} picture(s) given, the row has ${expected}`);
+  const { flawed: _f, figures: _g, ...raw } = r;
+  const v = validateRow(raw);
+  if (v.errors.length) throw new Error(`Q${r.questionNumber}: ${v.errors.join("; ")}`);
+  const p = v.parsed!;
+  if (figures.length) {
+    p.contentHash = figureAwareHash(p.contentHash, figures);
+    p.options = p.options.map((o) => ({ ...o, text: optionTextForBank(o.text) }));
+  }
+  return p;
 }
