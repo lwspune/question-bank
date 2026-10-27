@@ -153,15 +153,13 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ## 2026-10-27
 
-### SSC CGL pictures still to fix after the sentence trim (all 751 picture questions reviewed by eye)
+### SSC CGL pictures: what the 2026-10-27 review could not fix
 
-The trim (`scripts/ssc-cgl/trim-stems.ts`, 331 rows) and the 24 Jul 2023 S1 Q2 re-crop are live. Left, each fixable with `refigure.ts <shift> <n> --from=<dir>`:
+The review read all 751 picture questions by eye. Live: 331 stem pictures trimmed of the question sentence (`trim-stems.ts`), and 19 rows replaced with `refigure.ts` (log `scripts/ssc-cgl/refigure-log.json`): 2 Tier II scan figures enlarged (2026-01-18 Q48, Q49), 7 hand-cut where the sentence touched the figure, 5 charts redrawn from their printed numbers (`redraw_charts.py`), 5 small figures enlarged or re-laid out. Left, because the source itself is the problem:
 
-- **Unreadable, PUBLIC:** Tier II `t2-2026-01-18-s1` Q48 and Q49 (the whole problem/answer figure is a few pixels high; crop larger from the scan).
-- **Sentence still in the picture** (it touches the figure, so the trim leaves it): `t1-2023-07-27-s2` Q23, `t1-2023-07-17-s4` Q64 (triangle also tiny), `t1-2024-09-09-s3` Q11, `t1-2024-09-12-s3` Q58, `t2-2022-08-08-s1` Q39 and Q47.
-- **Small chart labels** (redraw from the printed numbers, the allowed exception): `t1-2023-07-21-s3` Q69, `t1-2023-07-25-s1` Q58, `t1-2023-07-17-s2` Q53, `t1-2024-09-10-s3` Q59, `t1-2024-09-12-s1` Q66, `t1-2024-09-12-s2` Q56, `t1-2024-09-13-s1` Q25, `t1-2024-09-18-s2` Q61, `t1-2024-09-24-s3` Q59. Check each at real size first.
-- **Small lettering:** `t1-2023-07-24-s3` Q18, `t1-2023-07-19-s4` Q63, `t1-2023-07-24-s1` Q24.
-- Kept whole on purpose: `stem-trim-keep.json` (4 charts whose heading carries the Rs.10 lakh total the stored text lacks).
+- `t1-2024-09-12-s3` Q65: SSC printed the chart and options but no question (already `flawed: yes`, the key a guess). The chart is now readable; the question still has no question.
+- `t1-2024-09-10-s3` Q59: the pie's legend (which slice is school) is washed out in SSC's print; the solution finds it by elimination. No crop can bring it back.
+- Not attempted: the 2024 Venn counting diagrams (about a dozen) have small but readable numbers; enlarge them with `refigure.ts` if students report them.
 
 ## 2026-10-26
 

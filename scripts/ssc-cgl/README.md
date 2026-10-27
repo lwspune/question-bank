@@ -243,6 +243,11 @@ npx tsx scripts/ssc-cgl/commit.ts <shiftId> --apply        # uploads figure pict
   `refigure.ts <shift> <n> --from=<dir>`, same guards. The 2023 scan's option crops now cut at the
   white gaps between pictures (`option_bands`), not halfway between the option marks: a tall
   picture is not centred on its mark (24 Jul 2023 S1 Q2 had arcs of its neighbours).
+- **The site shows a stem picture at most 256 px tall** (options 112-128 px), and a smaller one at
+  its own size, so a 130 px figure renders tiny. Fix by enlarging SSC's own pixels (`refigure.ts`
+  with a LANCZOS-scaled copy). A chart whose labels stay unreadable is redrawn from the numbers
+  printed on it (`redraw_charts.py`: values as data, checked to sum to the whole, SSC's order and
+  colours), the owner's one exception to drawn figures. Never redraw a reasoning figure.
 - **Held for review** (beyond wrong keys): items SSC printed in Hindi only (our English is a
   translation), stems SSC's print cuts off or washes out, a chart whose legend is blank.
 - **Not readable yet:** 1 Dec 2022 Shift 3 (the file starts mid-paper); 5 Dec S4, 7 Dec S2,
