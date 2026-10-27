@@ -7,14 +7,18 @@
  * silent default for a missing field. Spec: tests/drill-parse.test.ts.
  */
 import { DRILL_SIZE } from "./select";
+import { isSelfMark, type SelfMark } from "@/lib/questions/selfMark";
 
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
 
 /** The bank stores MCQ option labels as A-E uppercase (E: IMAT's fifth option). */
 const LABELS = new Set(["A", "B", "C", "D", "E"]);
 
+/** An MCQ answer carries the tapped `label`; a WRITTEN question's carries the
+ *  student's own verdict, `selfMark` (lib/questions/selfMark, 2026-10-28). */
 export type ParsedAnswer =
-  | { ok: true; questionId: string; label: string }
+  | { ok: true; questionId: string; label: string; selfMark?: undefined }
+  | { ok: true; questionId: string; selfMark: SelfMark; label?: undefined }
   | { ok: false; error: string };
 
 function isObject(v: unknown): v is Record<string, unknown> {
@@ -29,6 +33,14 @@ export function parseDrillAnswer(raw: unknown): ParsedAnswer {
     return { ok: false, error: "questionId must be a uuid." };
   }
 
+  const questionId = id.trim().toLowerCase();
+  if (raw.selfMark !== undefined) {
+    // Both at once: which one would be recorded? Neither guess is safe.
+    if (raw.label !== undefined) return { ok: false, error: "Send label or selfMark, not both." };
+    if (!isSelfMark(raw.selfMark)) return { ok: false, error: "selfMark must be understood or review." };
+    return { ok: true, questionId, selfMark: raw.selfMark };
+  }
+
   const rawLabel = raw.label;
   if (typeof rawLabel !== "string") return { ok: false, error: "label is required." };
   const label = rawLabel.trim().toUpperCase();
@@ -37,7 +49,7 @@ export function parseDrillAnswer(raw: unknown): ParsedAnswer {
   // quietly record a WRONG answer the student never gave.
   if (!LABELS.has(label)) return { ok: false, error: "label must be one of A-E." };
 
-  return { ok: true, questionId: id.trim().toLowerCase(), label };
+  return { ok: true, questionId, label };
 }
 
 export type ParsedComplete =

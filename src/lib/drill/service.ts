@@ -8,7 +8,8 @@
  */
 import "server-only";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { logActivity } from "@/lib/activity/service";
+import { logActivity, logActivityOnce } from "@/lib/activity/service";
+import { selfMarkDedupeKey, type SelfMark } from "@/lib/questions/selfMark";
 import { regradeAttempt, MockError } from "@/lib/mocks/service";
 import { getOnboardingState } from "@/lib/profile/service";
 import { primaryExam, sanitizeTargetExams } from "@/lib/profile/onboarding";
@@ -29,6 +30,7 @@ import {
   loadDrillEvents,
   loadDrillQuestions,
   loadQuestionEvents,
+  loadWrittenAnswer,
   type DrillQuestion,
   type DrillVerdict,
 } from "./query";
@@ -203,7 +205,9 @@ export async function getOwnLadder(
 export async function recordDrillAnswer(
   userId: string,
   questionId: string,
-  chosenLabel: string,
+  /** The tapped option's label, or on a WRITTEN question the student's own
+   *  verdict (2026-10-28): Understood counts as right, Review later as wrong. */
+  answer: string | { selfMark: SelfMark },
   opts: { allowed?: Promise<boolean> } = {}
 ): Promise<AnswerOutcome | DrillLimitReached | DrillRateLimited | null> {
   const db = createSupabaseServerClient();
@@ -224,7 +228,9 @@ export async function recordDrillAnswer(
     // the key first reaches the browser in this answer's reply, so refusing
     // here is a real limit.
     readDrillAllowanceInput(db, userId, now),
-    gradeDrillAnswer(db, questionId, chosenLabel),
+    typeof answer === "string"
+      ? gradeDrillAnswer(db, questionId, answer)
+      : selfMarkVerdict(db, questionId, answer.selfMark),
     hasPriorWrong(db, userId, questionId).then(
       (yes) => ({ ok: true as const, yes }),
       (e: unknown) => ({ ok: false as const, e })
@@ -248,23 +254,64 @@ export async function recordDrillAnswer(
     kind = priorWrong.yes ? "answer_correct" : "question_practiced";
   }
 
-  // ROUND 2, the write.
-  await logActivity(db, userId, {
-    kind,
-    refId: questionId,
-    refKind: "question",
-    metadata: { surface: DRILL_SURFACE, chose: chosenLabel.toUpperCase(), ...(kind === "question_practiced" ? { correct: true } : {}) },
-  });
+  // ROUND 2, the write. A self-mark carries `selfMark` where a pick carries
+  // `chose`, so a read can always tell a self-judged answer from a graded one,
+  // and its tap is recorded beside it (kind self_mark, migration 0192).
+  const picked = typeof answer === "string";
+  await Promise.all([
+    logActivity(db, userId, {
+      kind,
+      refId: questionId,
+      refKind: "question",
+      metadata: {
+        surface: DRILL_SURFACE,
+        ...(picked ? { chose: answer.toUpperCase() } : { selfMark: answer.selfMark }),
+        ...(kind === "question_practiced" ? { correct: true } : {}),
+      },
+    }),
+    picked
+      ? Promise.resolve()
+      : logActivityOnce(db, userId, {
+          kind: "self_mark",
+          refId: questionId,
+          refKind: "question",
+          metadata: { surface: DRILL_SURFACE, mark: answer.selfMark },
+          dedupeKey: selfMarkDedupeKey(answer.selfMark, DRILL_SURFACE, userId, questionId, now),
+        }),
+  ]);
 
   // ROUND 3, everything that reads the log after the write, at once. The
-  // milestone counts THIS answer, so it cannot move before the write.
+  // milestone counts THIS answer, so it cannot move before the write. No crowd
+  // on a written question: nobody's written answer is graded, so there is none.
   const [readBack, milestone, tiers] = await Promise.all([
     readProgress(db, userId, questionId, kind, verdict.correct, now),
     awardAnsweredMilestone(db, userId),
-    verdict.correct ? crowdTiers([questionId]) : Promise.resolve(new Map<string, CrowdTier>()),
+    verdict.correct && picked ? crowdTiers([questionId]) : Promise.resolve(new Map<string, CrowdTier>()),
   ]);
 
   return { ...verdict, recorded: true, ...readBack, milestone, crowd: tiers.get(questionId) ?? null };
+}
+
+/**
+ * The verdict for a self-marked WRITTEN question, in the grader's shape: the
+ * student's tap decides right or wrong, and the model answer rides back as the
+ * solution. Null when the question is not a PUBLIC written one, the same "no
+ * key to grade against" null the grader returns.
+ */
+async function selfMarkVerdict(
+  db: ReturnType<typeof createSupabaseServerClient>,
+  questionId: string,
+  mark: SelfMark
+): Promise<DrillVerdict | null> {
+  const written = await loadWrittenAnswer(db, questionId);
+  if (!written) return null;
+  return {
+    correct: mark === "understood",
+    correctLabel: null,
+    solution: written.solution,
+    solutionImageUrl: written.solutionImageUrl,
+    solutionVisual: null,
+  };
 }
 
 /**

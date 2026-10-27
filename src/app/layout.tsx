@@ -8,6 +8,7 @@ import ClarityScript from "@/components/analytics/ClarityScript";
 import SlowTapReporter from "@/components/analytics/SlowTapReporter";
 import NavigationProgress from "@/components/NavigationProgress";
 import ChatWidget from "@/components/chat/ChatWidget";
+import PendingSelfMarkSaver from "@/components/reveal/PendingSelfMarkSaver";
 import { CartProvider } from "@/lib/cart/CartProvider";
 import { BookmarksProvider } from "@/lib/bookmarks/BookmarksProvider";
 import { MobilePromptProvider } from "@/lib/profile/MobilePromptProvider";
@@ -139,6 +140,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {/* V, the FAQ helper. No server read at mount — it only calls out when
               opened or a question is clicked — so prerendered routes stay cached. */}
           <ChatWidget />
+          {/* Saves a signed-out "Review later" tap once the visitor is back
+              signed in. One localStorage read per page; no server read at
+              render, so prerendered routes stay cached. */}
+          <PendingSelfMarkSaver />
           </MobilePromptProvider>
           </BookmarksProvider>
         </CartProvider>

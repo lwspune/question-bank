@@ -66,7 +66,10 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: parsed.error }, { status: 400 });
   }
 
-  const outcome = await recordDrillAnswer(user.id, parsed.questionId, parsed.label, { allowed });
+  // A written question carries the student's own verdict instead of a label
+  // (2026-10-28): there is no key to grade a written answer against.
+  const answer = parsed.selfMark !== undefined ? { selfMark: parsed.selfMark } : parsed.label;
+  const outcome = await recordDrillAnswer(user.id, parsed.questionId, answer, { allowed });
   if (outcome && "rateLimited" in outcome) {
     return NextResponse.json({ error: "Slow down a moment." }, { status: 429 });
   }

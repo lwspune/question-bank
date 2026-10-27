@@ -27,6 +27,12 @@ const PAGE = 1000;
  *  and only one of them is 1000. */
 const IN_CHUNK = 200;
 
+/** The formats a drill can serve: an MCQ, graded by the server, and a written
+ *  question, which the student marks themselves. `null` is a legacy MCQ row. */
+function isDrillFormat(format: string | null): boolean {
+  return format === null || format === "mcq" || format === "subjective";
+}
+
 /**
  * Every answer event this student has on record, for the fold in select.ts.
  *
@@ -98,8 +104,9 @@ export async function loadDrillAnsweredToday(
  * wide ordered query spilled 13.9 MB to disk per call.
  *
  * A question ABSENT from the returned map is not drillable — it was flipped
- * PRIVATE (RLS hides it), deleted, or is not an MCQ. Absence is the filter:
- * the caller drops it rather than serving a question it cannot grade.
+ * PRIVATE (RLS hides it), deleted, or is neither an MCQ nor a written
+ * question. Absence is the filter: the caller drops it rather than serving a
+ * question it cannot grade.
  */
 export async function loadQuestionRefs(
   db: SupabaseClient,
@@ -127,7 +134,10 @@ export async function loadQuestionRefs(
       }[];
       for (const r of rows) {
         // `null` means MCQ on legacy rows, the same convention QuestionRow uses.
-        if (r.question_format !== null && r.question_format !== "mcq") continue;
+        // Written (subjective) questions are drillable since 2026-10-28: the
+        // student marks them Understood / Review later (lib/questions/selfMark).
+        // Numeric ones still are not: no drill screen takes a typed value.
+        if (!isDrillFormat(r.question_format)) continue;
         out.set(r.id, {
           chapter: r.chapter?.name ?? "",
           subtopic: r.subtopic?.name ?? "",
@@ -164,7 +174,14 @@ export type DrillQuestion = {
   difficulty: string;
   chapter: string;
   subtopic: string;
+  /** `subjective`: a written question, marked by the student (no options). */
+  format: "mcq" | "subjective";
   options: DrillOption[];
+  /** A written question's model answer, shipped with the question because the
+   *  student reads it BEFORE marking (it is free on /board anyway). Always null
+   *  on an MCQ: there the solution arrives only with the server's verdict. */
+  modelAnswer: string | null;
+  modelAnswerImageUrl: string | null;
 };
 
 /**
@@ -182,7 +199,7 @@ export async function loadDrillQuestions(
   const { data, error } = await db
     .from("questions")
     .select(
-      `id, text, context, difficulty, image_url,
+      `id, text, context, difficulty, image_url, question_format, solution, solution_image_url,
        chapter:chapters!chapter_id(name), subtopic:subtopics!subtopic_id(name),
        options(label, text, image_url)`
     )
@@ -195,6 +212,9 @@ export async function loadDrillQuestions(
     const options = ((r.options ?? []) as { label: string; text: string; image_url: string | null }[])
       .map((o) => ({ label: o.label, text: o.text, imageUrl: o.image_url }))
       .sort((a, b) => (a.label < b.label ? -1 : a.label > b.label ? 1 : 0));
+    // Only a written question's model answer leaves the server here: an MCQ's
+    // solution names its key, so it waits for the verdict.
+    const written = r.question_format === "subjective";
     byId.set(r.id as string, {
       id: r.id as string,
       text: r.text as string,
@@ -203,7 +223,10 @@ export async function loadDrillQuestions(
       difficulty: (r.difficulty as string) ?? "MODERATE",
       chapter: ((r.chapter as { name: string } | null)?.name) ?? "",
       subtopic: ((r.subtopic as { name: string } | null)?.name) ?? "",
+      format: written ? "subjective" : "mcq",
       options,
+      modelAnswer: written ? ((r.solution as string | null) ?? null) : null,
+      modelAnswerImageUrl: written ? ((r.solution_image_url as string | null) ?? null) : null,
     });
   }
   return ids.map((id) => byId.get(id)).filter((q): q is DrillQuestion => q !== undefined);
@@ -261,6 +284,28 @@ export async function gradeDrillAnswer(
     solutionImageUrl: row.solution_image_url,
     solutionVisual: usableVisual(row.solution_visual),
   };
+}
+
+/**
+ * A PUBLIC written question's model answer, or null when the question is not
+ * one: PRIVATE, deleted, an MCQ or numeric, or with no model answer yet. Null
+ * means "cannot be self-marked": the buttons only ever show under a model
+ * answer, so a mark on anything else is not one a student made.
+ */
+export async function loadWrittenAnswer(
+  db: SupabaseClient,
+  questionId: string
+): Promise<{ solution: string; solutionImageUrl: string | null } | null> {
+  const { data, error } = await db
+    .from("questions")
+    .select("question_format, solution, solution_image_url")
+    .eq("id", questionId)
+    .eq("visibility", "PUBLIC")
+    .maybeSingle();
+  if (error) throw new Error(`loadWrittenAnswer: ${error.message}`);
+  const row = data as { question_format: string | null; solution: string | null; solution_image_url: string | null } | null;
+  if (!row || row.question_format !== "subjective" || !row.solution) return null;
+  return { solution: row.solution, solutionImageUrl: row.solution_image_url };
 }
 
 // ── the daily-set fill (ENGAGEMENT_SPEC.md B2) ──────────────────────────────

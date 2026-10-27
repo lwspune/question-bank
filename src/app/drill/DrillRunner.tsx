@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { toast } from "sonner";
-import { ArrowRight, Check, Loader2, RotateCcw, X } from "lucide-react";
+import { ArrowRight, Check, Clock, Loader2, RotateCcw, X } from "lucide-react";
 import BlockText from "@/components/math/BlockText";
 import SolutionViews from "@/components/visuals/SolutionViews";
 import { publicImageUrl } from "@/lib/storage/imageUrl";
@@ -69,6 +69,13 @@ export default function DrillRunner({
   const correctCount = Object.values(verdicts).filter((v) => v.correct).length;
   const vSays = answered ? drillVSays(answered) : null;
 
+  // A written question's model answer, opened by the student before they mark
+  // themselves (2026-10-28). Per question, so going back is not a thing.
+  const [shown, setShown] = useState<Record<string, boolean>>({});
+  const written = question?.format === "subjective";
+
+  // `label` is the tapped option on an MCQ, or the student's own verdict on a
+  // written question ("understood" / "review"), sent as `selfMark`.
   async function choose(label: string) {
     if (!question || answered || busy) return;
     setPending(label);
@@ -76,7 +83,7 @@ export default function DrillRunner({
       const res = await fetch("/api/drill/answer", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ questionId: question.id, label }),
+        body: JSON.stringify(written ? { questionId: question.id, selfMark: label } : { questionId: question.id, label }),
       });
       if (!res.ok) {
         const body = (await res.json().catch(() => ({}))) as { error?: string };
@@ -195,7 +202,83 @@ export default function DrillRunner({
           />
         )}
 
-        <ul className="mt-4 space-y-2">
+        {written && (
+          <div className="mt-4">
+            {!shown[question.id] ? (
+              <>
+                <p className="text-sm text-muted-foreground">
+                  Write your answer on paper first, then check it against the model answer.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => setShown((prev) => ({ ...prev, [question.id]: true }))}
+                  className="mt-3 inline-flex h-12 w-full items-center justify-center rounded-xl border px-6 text-base font-medium transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                >
+                  Show model answer
+                </button>
+              </>
+            ) : (
+              <>
+                <div className="rounded-xl border bg-muted/40 p-3 font-serif text-sm leading-relaxed motion-safe:animate-fade-in-up [&_.katex]:max-w-full">
+                  <p className="mb-1.5 font-sans text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                    Model answer
+                  </p>
+                  {question.modelAnswer ? (
+                    <BlockText text={question.modelAnswer} solution />
+                  ) : (
+                    <p className="font-sans text-xs italic text-muted-foreground">Model answer coming soon.</p>
+                  )}
+                  {question.modelAnswerImageUrl && (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={publicImageUrl(supabaseUrl, question.modelAnswerImageUrl)}
+                      alt="Model answer diagram"
+                      className="mt-2 max-h-60 w-auto rounded border"
+                    />
+                  )}
+                </div>
+                {!answered && (
+                  <div
+                    role="group"
+                    aria-label="How did your answer compare with the model answer?"
+                    className="mt-3 grid grid-cols-2 gap-2"
+                  >
+                    {(
+                      [
+                        ["understood", "Understood", Check, "text-emerald-600"],
+                        ["review", "Review later", Clock, "text-brand-accent"],
+                      ] as const
+                    ).map(([mark, text, Icon, tone]) => (
+                      <button
+                        key={mark}
+                        type="button"
+                        onClick={() => choose(mark)}
+                        disabled={busy}
+                        aria-busy={pending === mark || undefined}
+                        className={cn(
+                          "inline-flex min-h-[3.25rem] items-center justify-center gap-2 rounded-xl border px-3 text-base font-medium transition-colors",
+                          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+                          !busy && "hover:bg-accent/50 active:bg-accent",
+                          pending === mark && "border-brand bg-brand/5",
+                          busy && pending !== mark && "opacity-60"
+                        )}
+                      >
+                        {pending === mark ? (
+                          <Loader2 className="h-5 w-5 animate-spin text-brand-accent" aria-hidden />
+                        ) : (
+                          <Icon className={cn("h-5 w-5", tone)} aria-hidden />
+                        )}
+                        {text}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </>
+            )}
+          </div>
+        )}
+
+        <ul className={cn("mt-4 space-y-2", written && "hidden")}>
           {question.options.map((opt) => {
             const isChosen = answered?.chose === opt.label;
             const isPending = pending === opt.label;
@@ -288,6 +371,10 @@ export default function DrillRunner({
                     ))}
                   </div>
                 </div>
+              ) : written && !answered.correct ? (
+                // Review later is the student choosing to come back, not a
+                // miss: no red, no "Not this time".
+                <p className="text-sm font-semibold text-brand-accent">Kept for review. It comes back round.</p>
               ) : (
                 <p
                   className={cn(
@@ -298,29 +385,32 @@ export default function DrillRunner({
                   {progressLine(answered.progress)}
                 </p>
               )}
-              {/* Animated first where the question has a checked visual; Still is the block as before. */}
-              <SolutionViews
-                visual={answered.solution ? answered.solutionVisual : null}
-                solution={answered.solution}
-                header={null}
-                still={
-                  <>
-                    {answered.solution && (
-                      <div className="mt-2 rounded-xl border bg-muted/40 p-3 font-serif text-sm leading-relaxed motion-safe:animate-fade-in-up [&_.katex]:max-w-full">
-                        <BlockText text={answered.solution} solution />
-                      </div>
-                    )}
-                    {answered.solutionImageUrl && (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img
-                        src={publicImageUrl(supabaseUrl, answered.solutionImageUrl)}
-                        alt="Solution diagram"
-                        className="mt-2 max-h-60 w-auto rounded border"
-                      />
-                    )}
-                  </>
-                }
-              />
+              {/* Animated first where the question has a checked visual; Still is the block as before.
+                  A written question's model answer is already open above. */}
+              {!written && (
+                <SolutionViews
+                  visual={answered.solution ? answered.solutionVisual : null}
+                  solution={answered.solution}
+                  header={null}
+                  still={
+                    <>
+                      {answered.solution && (
+                        <div className="mt-2 rounded-xl border bg-muted/40 p-3 font-serif text-sm leading-relaxed motion-safe:animate-fade-in-up [&_.katex]:max-w-full">
+                          <BlockText text={answered.solution} solution />
+                        </div>
+                      )}
+                      {answered.solutionImageUrl && (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img
+                          src={publicImageUrl(supabaseUrl, answered.solutionImageUrl)}
+                          alt="Solution diagram"
+                          className="mt-2 max-h-60 w-auto rounded border"
+                        />
+                      )}
+                    </>
+                  }
+                />
+              )}
             </div>
           )}
         </div>
