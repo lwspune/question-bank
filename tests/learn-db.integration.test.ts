@@ -341,7 +341,41 @@ describe.skipIf(!HAS_ENV)("Learn tables (0190)", () => {
       expect(rows.every((r) => r.correct === false)).toBe(true);
     });
 
+    it("learn_my_progress says when each concept was last touched (0192)", async () => {
+      const { data } = await alice.rpc("learn_my_progress", { p_chapters: [CHAPTER] });
+      expect((data as unknown[]).length).toBeGreaterThan(0);
+      for (const r of data as { updated_at: string }[]) expect(Number.isNaN(Date.parse(r.updated_at))).toBe(false);
+    });
+
+    it("learn_my_misses counts the student's still-wrong questions by chapter of one exam (0192)", async () => {
+      type Q = { id: string; chapters: { name: string; subjects: { exams: { name: string } } } };
+      const pick = (exam?: string) => {
+        let query = admin.from("questions").select("id, chapters!inner(name, subjects!inner(exams!inner(name)))").eq("visibility", "PUBLIC");
+        if (exam) query = query.eq("chapters.subjects.exams.name", exam);
+        return query.limit(2);
+      };
+      const first = ((await pick()).data as unknown as Q[])[0];
+      const exam = first.chapters.subjects.exams.name;
+      const [q1, q2] = (await pick(exam)).data as unknown as Q[];
+      const log = (client: SupabaseClient, uid: string, kind: string, ref: string, at: string) =>
+        client.from("user_activity").insert({ user_id: uid, kind, ref_id: ref, created_at: at });
+      expect((await log(alice, aliceId, "answer_wrong", q1.id, "2026-10-01T10:00:00Z")).error).toBeNull();
+      await log(alice, aliceId, "answer_wrong", q2.id, "2026-10-01T10:00:00Z");
+      // q2 was fixed later: its latest answer is right, so it no longer counts.
+      await log(alice, aliceId, "answer_correct", q2.id, "2026-10-02T10:00:00Z");
+
+      const { data, error } = await alice.rpc("learn_my_misses", { p_exam: exam });
+      expect(error).toBeNull();
+      const rows = data as { chapter: string; misses: number }[];
+      expect(rows.find((r) => r.chapter === q1.chapters.name)?.misses).toBeGreaterThanOrEqual(1);
+      expect(rows.reduce((n, r) => n + r.misses, 0)).toBe(1);
+
+      const other = await bob.rpc("learn_my_misses", { p_exam: exam });
+      expect(other.data).toEqual([]);
+    });
+
     it("anon gets nothing from the own-progress reads", async () => {
+      expect((await anon.rpc("learn_my_misses", { p_exam: "x" })).error).not.toBeNull();
       expect((await anon.rpc("learn_my_progress", {})).error).not.toBeNull();
       expect((await anon.rpc("learn_my_attempts", { p_chapter: CHAPTER, p_concept: "concept-c01" })).error).not.toBeNull();
     });

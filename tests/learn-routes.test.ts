@@ -19,7 +19,11 @@ vi.mock("@/lib/supabase/server", () => ({
   createSupabaseAnonClient: vi.fn(() => ({ rpc: anonRpc })),
 }));
 
+const outline = { current: null as null | Record<string, unknown> };
+vi.mock("@/lib/learn/query", () => ({ getOutline: vi.fn(async () => outline.current) }));
+
 const { POST: answer } = await import("@/app/api/learn/answer/route");
+const { GET: misses } = await import("@/app/api/learn/misses/route");
 const { GET: progress } = await import("@/app/api/learn/progress/route");
 
 const ITEM = "11111111-2222-4333-8444-555555555555";
@@ -30,6 +34,7 @@ const graded = { correct: false, correct_key: "B", misconception_code: "C01-M1",
 beforeEach(() => {
   vi.clearAllMocks();
   user.current = null;
+  outline.current = null;
 });
 
 describe("POST /api/learn/answer", () => {
@@ -95,5 +100,49 @@ describe("GET /api/learn/progress", () => {
     expect(serverRpc).toHaveBeenCalledWith("learn_my_progress", { p_chapters: ["matrices", "vectors"] });
     expect(serverRpc).toHaveBeenCalledWith("learn_my_attempts", { p_chapter: "matrices", p_concept: "inverse" });
     expect(body).toEqual({ ok: true, data: { userId: "u1", progress: [{ code: "C01" }], attempts: [{ item_id: ITEM, correct: true }] } });
+  });
+});
+
+describe("GET /api/learn/misses", () => {
+  const get = (q: string) => misses(new NextRequest(`http://localhost/api/learn/misses${q}`));
+
+  it("is 401 for a guest and 400 for a course that is not a slug", async () => {
+    expect((await get("?course=mh-hsc-12-maths")).status).toBe(401);
+    user.current = { id: "u1", email: "a@example.com" };
+    expect((await get("?course=Bad Course")).status).toBe(400);
+    expect(serverRpc).not.toHaveBeenCalled();
+  });
+
+  it("is 404 for a course that does not exist", async () => {
+    user.current = { id: "u1", email: "a@example.com" };
+    expect((await get("?course=nope-maths")).status).toBe(404);
+  });
+
+  it("reads the student's misses in the course's exam and returns them by Learn chapter", async () => {
+    user.current = { id: "u1", email: "a@example.com" };
+    outline.current = {
+      slug: "mh-hsc-12-maths",
+      exam: "mh-hsc-12",
+      chapters: [
+        { slug: "matrices", title: "Matrices" },
+        { slug: "line-and-plane", title: "Line and Plane" },
+      ],
+    };
+    serverRpc.mockResolvedValueOnce({
+      data: [
+        { chapter: "Line and Planes", misses: 3, last_missed_at: "2026-10-20T00:00:00Z" },
+        { chapter: "Matrices", misses: 1, last_missed_at: "2026-10-19T00:00:00Z" },
+      ],
+      error: null,
+    });
+    const body = await (await get("?course=mh-hsc-12-maths")).json();
+    expect(serverRpc).toHaveBeenCalledWith("learn_my_misses", { p_exam: "Maharashtra HSC Class 12" });
+    expect(body).toEqual({
+      ok: true,
+      data: [
+        { slug: "line-and-plane", title: "Line and Plane", misses: 3 },
+        { slug: "matrices", title: "Matrices", misses: 1 },
+      ],
+    });
   });
 });
