@@ -13,6 +13,7 @@ import PresentButton from "@/components/present/PresentButton";
 import type { PresentableQuestion } from "@/lib/present/viewModel";
 import { publicImageUrl } from "@/lib/storage/imageUrl";
 import { breakSentences } from "@/lib/board/formatSolution";
+import { cleanRef } from "@/lib/board/cleanRef";
 import { Dialog, DialogClose, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 import { optionMark } from "@/lib/questions/optionMark";
@@ -236,17 +237,6 @@ export default function BoardQuestionItem({
       )}
     </div>
   );
-}
-
-/** Trim the transcription's redundant leading section prefix so the book's own
- *  number reads cleanly: "2.1 Ex 2.1 Q.3 (i)" → "Q.3 (i)". Leaves already-clean
- *  refs ("Misc I (11)", "Misc 2A Q.7") alone. */
-function cleanRef(ref: string): string {
-  const trimmed = ref.replace(
-    /^\d+\.\d+\s+(Solved\s+)?(Ex(ercise)?\.?\s*\d+(\.\d+)?|Feasible Ex\.?\d*|Graphical Example\s*\d*)\s+/i,
-    ""
-  );
-  return trimmed.trim() || ref;
 }
 
 function ZoomableImage({ src, alt }: { src: string; alt: string }) {
