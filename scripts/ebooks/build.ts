@@ -861,7 +861,7 @@ async function buildBook(
       cover: isBoardEbook(ebook)
         ? {
             over: ebook.board,
-            main: ebook.kind === "textbook" && ebook.part ? `${ebook.subjectTitle} ${ebook.part.label}` : ebook.subjectTitle,
+            main: ebook.subjectTitle,
             // The newest year in the book; a textbook book names no years, so the year it was built.
             edition: `${totals.years.length ? Math.max(...totals.years) : new Date().getFullYear()} Edition`,
           }

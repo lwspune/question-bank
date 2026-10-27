@@ -7,7 +7,17 @@
  * textbook's order.
  */
 import { describe, it, expect } from "vitest";
-import { CHAPTERWISE_EBOOKS, EBOOKS, PAPERS_EBOOKS, REPEATS_EBOOKS, getEbook, ebookChapters, chapterClassLabel, isBoardEbook } from "@/lib/ebooks/catalog";
+import {
+  CHAPTERWISE_EBOOKS,
+  EBOOKS,
+  PAPERS_EBOOKS,
+  REPEATS_EBOOKS,
+  TEXTBOOK_EBOOKS,
+  getEbook,
+  ebookChapters,
+  chapterClassLabel,
+  isBoardEbook,
+} from "@/lib/ebooks/catalog";
 import { getExamBySlug } from "@/lib/exam/examContext";
 import { getBookBySlug } from "@/lib/books/registry";
 import { getNotesChaptersForSubject } from "@/lib/notes/chapters";
@@ -109,6 +119,25 @@ describe("ebook catalog", () => {
     const sql = readFileSync("supabase/migrations/0188_ebook_chapterwise_pyqs.sql", "utf8");
     const seeded = Array.from(sql.matchAll(/\('([a-z0-9-]+-chapterwise-pyqs)'/g)).map((m) => m[1]);
     expect(seeded.sort()).toEqual(CHAPTERWISE_EBOOKS.map((b) => b.slug).sort());
+  });
+
+  // Textbook Solutions (2026-10-27): one per textbook on /board; a textbook
+  // over about 500 pages is split at its own Part I / Part II.
+  it("has a Textbook Solutions book per textbook, the two big Maths books in two parts", () => {
+    expect(TEXTBOOK_EBOOKS).toHaveLength(33);
+    for (const b of TEXTBOOK_EBOOKS) expect(getExamBySlug(b.examSlug)?.boardExam, b.slug).toBe(true);
+    for (const exam of ["mh-hsc-12", "mh-sb-11"]) {
+      const maths = TEXTBOOK_EBOOKS.filter((b) => b.examSlug === exam && b.subject === "Mathematics");
+      expect(maths.map((b) => b.part?.label)).toEqual(["Part I", "Part II"]);
+      expect(maths.map((b) => b.subjectTitle)).toEqual(["Mathematics Part I", "Mathematics Part II"]);
+    }
+  });
+
+  it("seeds a store row (0189) for exactly the Textbook Solutions books in the catalog", async () => {
+    const { readFileSync } = await import("node:fs");
+    const sql = readFileSync("supabase/migrations/0189_ebook_textbook_solutions.sql", "utf8");
+    const seeded = Array.from(sql.matchAll(/\('([a-z0-9-]+-textbook-solutions)'/g)).map((m) => m[1]);
+    expect(seeded.sort()).toEqual(TEXTBOOK_EBOOKS.map((b) => b.slug).sort());
   });
 
   it("names the SSC History book for both parts of its paper", () => {

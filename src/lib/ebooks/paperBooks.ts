@@ -148,17 +148,43 @@ const TEXTBOOK_SUBJECTS: { examSlug: string; board: string; subjects: string[] }
   { examSlug: "cbse-10", board: "CBSE Class 10", subjects: ["Mathematics", "Science", "Social Science"] },
 ];
 
+/**
+ * Textbooks split into two volumes (2026-10-27): a book over about 500 pages
+ * is cut at the textbook's own Part I / Part II, which Balbharati prints as two
+ * books. Measured: MH Class 11 Maths ran 835 pages whole; HSC 12 Maths is the
+ * biggest textbook here (about 2,500 questions). By chapter name, first and last.
+ */
+const PARTS: Record<string, { label: string; first: string; last: string }[]> = {
+  "mh-hsc-12:Mathematics": [
+    { label: "Part I", first: "Mathematical Logic", last: "Linear Programming" },
+    { label: "Part II", first: "Differentiation", last: "Binomial Distribution" },
+  ],
+  "mh-sb-11:Mathematics": [
+    { label: "Part I", first: "Angle and its Measurement", last: "Probability" },
+    { label: "Part II", first: "Complex Numbers", last: "Differentiation" },
+  ],
+};
+
 export const TEXTBOOK_EBOOKS: readonly TextbookEbook[] = TEXTBOOK_SUBJECTS.flatMap((b) =>
-  b.subjects.map((subject) => ({
-    kind: "textbook" as const,
-    slug: `${b.examSlug}-${slugPart(subject)}-textbook-solutions`,
-    examSlug: b.examSlug,
-    subject,
-    board: b.board,
-    subjectTitle: subject,
-    title: `${b.board} ${subject}`,
-    subtitle: "Every textbook exercise in the book's own order, with a worked solution right under each question.",
-  }))
+  b.subjects.flatMap((subject) => {
+    const base = {
+      kind: "textbook" as const,
+      examSlug: b.examSlug,
+      subject,
+      board: b.board,
+      subjectTitle: subject,
+      subtitle: "Every textbook exercise in the book's own order, with a worked solution right under each question.",
+    };
+    const parts = PARTS[`${b.examSlug}:${subject}`];
+    if (!parts) return [{ ...base, slug: `${b.examSlug}-${slugPart(subject)}-textbook-solutions`, title: `${b.board} ${subject}` }];
+    return parts.map((part, i) => ({
+      ...base,
+      part,
+      subjectTitle: `${subject} ${part.label}`,
+      slug: `${b.examSlug}-${slugPart(subject)}-part-${i + 1}-textbook-solutions`,
+      title: `${b.board} ${subject} ${part.label}`,
+    }));
+  })
 );
 
 export const PAPERS_EBOOKS: readonly PapersEbook[] = BOARD_PAPER_SUBJECTS.map((b) => ({
