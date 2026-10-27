@@ -6,7 +6,7 @@ export const SSC_EVO_SYNONYMS_NOTE: SubtopicNote = {
   oneLineDefinition:
     "Choosing the word closest in meaning to a given word, learnt in families: law and duty, character and temper, harm and size, and feelings and speech.",
   whyItMatters:
-    "Two hundred and ten questions in the bank, 80 from the 2023 shifts, 89 from the 2024 shifts and 41 from the 2025 shifts, and 168 of them EASY. All 41 questions from the 2025 shifts give the word alone, in capitals; the earlier shifts often set it inside a sentence, underlined or in brackets beside a blank.",
+    "Two hundred and ten questions in the bank, 80 from the 2023 shifts, 89 from the 2024 shifts and 41 from the 2025 shifts, and 168 of them EASY. Every question from the 2025 shifts gives the word alone, in capitals; the earlier shifts often set it inside a sentence, underlined or in brackets beside a blank.",
   concepts: [
     {
       kind: "reference" as const,

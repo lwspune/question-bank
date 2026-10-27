@@ -2206,6 +2206,11 @@ import {
   SSC_GRAMMAR_NOTES,
   SSC_GRAMMAR_SLUGS,
 } from "@/app/notes/ssc-cgl-english/grammar/_data";
+import {
+  SSC_VOCABULARY_CHAPTER,
+  SSC_VOCABULARY_NOTES,
+  SSC_VOCABULARY_SLUGS,
+} from "@/app/notes/ssc-cgl-english/vocabulary/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -7075,6 +7080,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SSC_GRAMMAR_CHAPTER,
     notes: SSC_GRAMMAR_NOTES,
     slugs: SSC_GRAMMAR_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "English",
+    subjectRoute: "ssc-cgl-english",
+    subjectDisplay: "SSC CGL English",
+    chapterSlug: "vocabulary",
+    chipLabel: "Vocabulary notes",
+    chapter: SSC_VOCABULARY_CHAPTER,
+    notes: SSC_VOCABULARY_NOTES,
+    slugs: SSC_VOCABULARY_SLUGS,
   },
 ];
 
