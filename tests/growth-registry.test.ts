@@ -87,6 +87,7 @@ describe("EXPERIMENTS", () => {
       "pyq-wording",
       "resource-chips",
       "second-page",
+      "self-mark",
       "specific-offer",
       "tutor-interest",
       "v-explain",

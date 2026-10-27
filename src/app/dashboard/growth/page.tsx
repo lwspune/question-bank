@@ -57,6 +57,8 @@ import {
   V_PLAN_DAYS_DONE_KEEP_PCT,
   V_PROGRESS_NEXT_STEP_KEEP_PCT,
   V_PROGRESS_STUDENTS_KEEP,
+  SELF_MARK_TAP_KEEP_PCT,
+  SELF_MARK_FIXED_KEEP_PCT,
   SPECIFIC_OFFER_CHECKOUT_PCT,
   TUTOR_STUDENT_YES_KEEP,
   checkOn,
@@ -647,6 +649,17 @@ export default async function GrowthPage() {
             </p>
             <ReadingsList metric="v-progress-students" />
             <ReadingsList metric="v-progress-next-step" />
+          </div>
+        );
+      case "self-mark":
+        return (
+          <div className="space-y-3">
+            <p className="text-sm text-muted-foreground">
+              Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))}: keep it if {SELF_MARK_TAP_KEEP_PCT}%+ of written
+              reveals get a tap and {SELF_MARK_FIXED_KEEP_PCT}%+ of saved questions are fixed.
+            </p>
+            <ReadingsList metric="self-mark-tap-share" />
+            <ReadingsList metric="self-mark-review-fixed" />
           </div>
         );
       case "v-strategy":
