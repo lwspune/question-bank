@@ -316,6 +316,37 @@ describe.skipIf(!HAS_ENV)("Learn tables (0190)", () => {
     });
   });
 
+  // Migration 0191: the reads the lesson page makes for a signed-in student.
+  describe("own progress reads (0191)", () => {
+    it("learn_my_progress gives the student's state by chapter and concept code", async () => {
+      const { data, error } = await alice.rpc("learn_my_progress", { p_chapters: [CHAPTER] });
+      expect(error).toBeNull();
+      const byCode = Object.fromEntries((data as { code: string }[]).map((r) => [r.code, r]));
+      expect(Object.keys(byCode).sort()).toEqual(["C01", "C02"]);
+      expect(byCode.C01).toMatchObject({ chapter: CHAPTER, slug: "concept-c01", title: "Concept C01", state: "mastered", review_box: 1 });
+      expect(byCode.C02).toMatchObject({ chapter: CHAPTER, state: "learning" });
+    });
+
+    it("learn_my_progress with no filter covers every chapter, and only the caller's rows", async () => {
+      const { data } = await bob.rpc("learn_my_progress", {});
+      const mine = (data as { chapter: string; code: string; state: string }[]).filter((r) => r.chapter === CHAPTER);
+      expect(mine.map((r) => [r.code, r.state])).toEqual([["C01", "learning"]]);
+    });
+
+    it("learn_my_attempts gives the student's answers on one concept, oldest first, by item", async () => {
+      const { data, error } = await alice.rpc("learn_my_attempts", { p_chapter: CHAPTER, p_concept: "concept-c02" });
+      expect(error).toBeNull();
+      const rows = data as { item_id: string; correct: boolean }[];
+      expect(rows.map((r) => r.item_id)).toEqual([items.get("C02-Q1"), items.get("C02-Q2"), items.get("C02-Q3"), items.get("C02-Q3")]);
+      expect(rows.every((r) => r.correct === false)).toBe(true);
+    });
+
+    it("anon gets nothing from the own-progress reads", async () => {
+      expect((await anon.rpc("learn_my_progress", {})).error).not.toBeNull();
+      expect((await anon.rpc("learn_my_attempts", { p_chapter: CHAPTER, p_concept: "concept-c01" })).error).not.toBeNull();
+    });
+  });
+
   describe("re-seeding after use", () => {
     it("refuses to delete an item a student answered", async () => {
       const p = payload();
@@ -355,6 +386,18 @@ describe.skipIf(!HAS_ENV)("Learn tables (0190)", () => {
         ["C02", ["C01"], true],
         ["C03", ["C02"], false],
       ]);
+    });
+
+    it("learn_course_list lists courses for anyone (0191)", async () => {
+      const { data, error } = await anon.rpc("learn_course_list");
+      expect(error).toBeNull();
+      expect((data as { slug: string }[]).find((c) => c.slug === COURSE)).toEqual({
+        slug: COURSE,
+        title: "Test Board",
+        exam: EXAM,
+        subject: "maths",
+        standard: 12,
+      });
     });
 
     it("re-seeding a course replaces its chapters", async () => {
