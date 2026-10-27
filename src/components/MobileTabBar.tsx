@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BookOpen, Compass, Library, NotebookPen, Target, Timer } from "lucide-react";
+import { BookOpen, Compass, GraduationCap, Library, NotebookPen, Target, Timer } from "lucide-react";
 import { getActiveTab } from "@/lib/exam/examContext";
 import {
   isMobileTabActive,
@@ -42,6 +42,7 @@ const ICONS: Record<MobileTabId, typeof BookOpen> = {
   mock: Timer,
   board: Library,
   fix: Target,
+  learn: GraduationCap,
 };
 
 export default function MobileTabBar({ nav, fifth }: { nav: ExamNav; fifth: FifthTab }) {

@@ -17,6 +17,7 @@
  * are built to ask the question properly.
  */
 import {
+  getExamBySlug,
   isExamSlug,
   resolveBankHref,
   resolveGuidesHref,
@@ -36,6 +37,8 @@ export type ExamNav = {
   notesHref: string;
   mockHref: string;
   boardHref: string;
+  /** The exam's Learn course, or null when it has none (no Learn tab). */
+  learnHref: string | null;
 };
 
 /**
@@ -67,6 +70,7 @@ export function resolveExamNav(
     notesHref: notesHubHref(slug, new Set(notesSlugs)),
     mockHref: mockCatalogueHref(slug),
     boardHref: resolveBoardHref(slug),
+    learnHref: (slug && getExamBySlug(slug)?.learnPath) || null,
   };
 }
 

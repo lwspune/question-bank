@@ -35,7 +35,7 @@ import { FIX_TAB_HREF, type FifthTab } from "@/lib/nav/fifthTab";
 /** The subset of primary-nav tabs that appears on a phone. */
 export type MobileTabId = Extract<
   ActiveTab,
-  "bank" | "guides" | "notes" | "mock" | "board" | "fix"
+  "bank" | "guides" | "notes" | "mock" | "board" | "fix" | "learn"
 >;
 
 export type MobileTab = {
@@ -65,7 +65,11 @@ export const MAX_MOBILE_TABS = 5;
 export function resolveMobileTabs(nav: ExamNav, fifth: FifthTab = "board"): MobileTab[] {
   return [
     { id: "bank", label: "PYQs", href: nav.bankHref },
-    { id: "guides", label: "Guides", href: nav.guidesHref },
+    // THE SECOND SWAP (2026-10-27): Learn takes Guides' slot for an exam with Learn lessons
+    // (its students have no guide), so the bar stays five.
+    nav.learnHref
+      ? { id: "learn", label: "Learn", href: nav.learnHref }
+      : { id: "guides", label: "Guides", href: nav.guidesHref },
     { id: "notes", label: "Notes", href: nav.notesHref },
     { id: "mock", label: "Mocks", href: nav.mockHref },
     fifth === "fix"
