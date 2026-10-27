@@ -5,6 +5,8 @@
  *   npx tsx scripts/ssc-cgl/figures.ts <shiftId>     # writes figures/<shiftId>/qNNN[-X].png
  *
  * Run it after the transcript is settled and before build.ts (which checks the files exist).
+ * A stem picture that also prints the question sentence is trimmed to its figure (stemTrim.ts);
+ * look at the result, and record a picture that must stay whole in stem-trim-keep.json.
  * A stem with several image objects is stacked into one picture (scripts/jee/compose_figures.py),
  * because a question carries a single image_url. The transcriber writes `[figure]` as the text
  * of a picture option; the bank stores it as empty text beside options.image_url.
@@ -13,7 +15,7 @@
  * (dice, mirror images, paper folding, a diagram the solution reads off).
  */
 import { createHash } from "node:crypto";
-import { copyFileSync, existsSync, mkdirSync, readFileSync } from "node:fs";
+import { copyFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { execFileSync } from "node:child_process";
 import type { FigureKind } from "./lib";
@@ -83,10 +85,23 @@ function writeFigure(out: string, sources: string[]) {
   else execFileSync("python", ["-P", join(__dirname, "..", "jee", "compose_figures.py"), out, ...sources], { stdio: "pipe" });
 }
 
-function main() {
+async function main() {
   // Imported lazily so the pure helpers above load without config's file reads.
   const { FIGURES, OUT, TRANSCRIPTS, requireShift } = require("./config") as typeof import("./config");
   const { parseTranscript } = require("./lib") as typeof import("./lib");
+  const { keepKey, loadKeep, trimStemPng } = require("./stemTrimImage") as typeof import("./stemTrimImage");
+  const keep = loadKeep();
+  let trimmed = 0;
+  // SSC often printed the question sentence inside the stem picture; the row stores it as text.
+  const trim = async (number: number, file: string) => {
+    const decision = keep[keepKey(shift.id, number)];
+    if (typeof decision === "string" || !existsSync(file)) return;
+    const t = await trimStemPng(readFileSync(file), decision ?? {});
+    if (t) {
+      writeFileSync(file, t.png);
+      trimmed++;
+    }
+  };
   const shift = requireShift(process.argv[2]);
   const sheetFile = JSON.parse(readFileSync(join(OUT, shift.id, "questions.json"), "utf8"));
   if (sheetFile.format !== "tcs") throw new Error(`${shift.id} is not a TCS shift; its figures are not built from image objects`);
@@ -103,15 +118,23 @@ function main() {
     const base = join(dir, `q${String(q.number).padStart(3, "0")}`);
     if (plan.crop) {
       execFileSync("python", ["-P", join(__dirname, "scan_figures.py"), shift.id, String(q.number), plan.crop, base], { stdio: "pipe" });
+      await trim(q.number, `${base}.png`);
       n++;
       continue;
     }
     const src = (names: string[]) => names.map((x) => join(sheetFile.imgDir, x));
-    if (plan.stem) writeFigure(`${base}.png`, src(plan.stem));
+    if (plan.stem) {
+      writeFigure(`${base}.png`, src(plan.stem));
+      await trim(q.number, `${base}.png`);
+    }
     plan.options?.forEach((imgs, i) => writeFigure(`${base}-${LABELS[i]}.png`, src(imgs)));
     n++;
   }
-  console.log(`${shift.id}: ${n} question(s) with figures -> ${dir}`);
+  console.log(`${shift.id}: ${n} question(s) with figures -> ${dir} (${trimmed} stem picture(s) trimmed of the question sentence)`);
 }
 
-if (require.main === module) main();
+if (require.main === module)
+  main().catch((e) => {
+    console.error(e);
+    process.exit(1);
+  });

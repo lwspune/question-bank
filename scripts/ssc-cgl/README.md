@@ -232,6 +232,22 @@ npx tsx scripts/ssc-cgl/commit.ts <shiftId> --apply        # uploads figure pict
   stacked into one picture. A figure row is hashed with its picture bytes (figureAwareHash), so
   two mirror-image items with the same stock wording and answer letter are not filed as repeats
   of each other; `[figure]` options are stored as empty text beside `options.image_url`.
+- **Stem pictures carry the question sentence** (found 2026-10-27): SSC often printed the whole
+  question as one picture, so the page showed the sentence twice. `figures.ts` now trims it
+  (`stemTrim.ts`: left-margin text lines in the sentence's type size, never a centred chart title,
+  never lines hugging the figure). LOOK at the result: a picture whose heading carries data the
+  stored text lacks, or whose bold title reads as a sentence, goes in `stem-trim-keep.json`.
+  Shipped rows: `trim-stems.ts` (dry run makes every check; `--apply` swaps the picture in place,
+  the row keeping its id, content_hash recomputed through rows.ts, logged to `stem-trim-log.json`).
+- **Replacing a shipped row's pictures** (a better crop, a chart redrawn from its numbers):
+  `refigure.ts <shift> <n> --from=<dir>`, same guards. The 2023 scan's option crops now cut at the
+  white gaps between pictures (`option_bands`), not halfway between the option marks: a tall
+  picture is not centred on its mark (24 Jul 2023 S1 Q2 had arcs of its neighbours).
+- **The site shows a stem picture at most 256 px tall** (options 112-128 px), and a smaller one at
+  its own size, so a 130 px figure renders tiny. Fix by enlarging SSC's own pixels (`refigure.ts`
+  with a LANCZOS-scaled copy). A chart whose labels stay unreadable is redrawn from the numbers
+  printed on it (`redraw_charts.py`: values as data, checked to sum to the whole, SSC's order and
+  colours), the owner's one exception to drawn figures. Never redraw a reasoning figure.
 - **Held for review** (beyond wrong keys): items SSC printed in Hindi only (our English is a
   translation), stems SSC's print cuts off or washes out, a chart whose legend is blank.
 - **Not readable yet:** 1 Dec 2022 Shift 3 (the file starts mid-paper); 5 Dec S4, 7 Dec S2,
