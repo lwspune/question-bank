@@ -6,7 +6,9 @@ import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/nav/Breadcrumbs";
 import { ChapterPath } from "@/components/learn/ChapterPath";
 import { MistakesCard } from "@/components/learn/MistakesCard";
-import { getExamBySlug } from "@/lib/exam/examContext";
+import { FileText, Library } from "lucide-react";
+import { bankChapterLinks } from "@/lib/learn/bankChapters";
+import { getChapterLanding } from "@/lib/questions/landing";
 import { courseName } from "@/lib/learn/courseName";
 import { courseHref, LEARN_HUB } from "@/lib/learn/links";
 import { getOutline } from "@/lib/learn/query";
@@ -37,7 +39,13 @@ export default async function LearnChapter({ params }: { params: Params }) {
   const ch = outline?.chapters.find((c) => c.slug === params.chapter);
   if (!outline || !ch) notFound();
   const name = courseName(outline);
-  const board = getExamBySlug(outline.exam)?.boardExam ? `/board/${outline.exam}` : null;
+  const practice = bankChapterLinks(outline.exam, outline.slug, ch);
+  // A chapter with too few past questions has no page of its own (MIN_QUESTIONS_FOR_LANDING).
+  const [, , exam, subject, chapterSlug] = practice.questions.split("/");
+  const landing = await getChapterLanding(exam, subject, chapterSlug).catch((e) => {
+    console.error("learn chapter: past-questions lookup failed", e);
+    return null;
+  });
   const oneLiners = Object.fromEntries(
     ch.parts.flatMap((p) =>
       (outline.pools[p.chapter]?.concepts ?? []).filter((c) => p.concepts.includes(c.code)).map((c) => [`${p.chapter}/${c.code}`, renderInlineText(c.one_liner)]),
@@ -61,15 +69,38 @@ export default async function LearnChapter({ params }: { params: Params }) {
           <MistakesCard course={outline.slug} chapter={ch.slug} />
         </header>
         <ChapterPath outline={outline} chapter={ch.slug} oneLiners={oneLiners} />
-        {board && (
-          <p className="mt-8 text-sm text-muted-foreground">
-            Done with the concepts?{" "}
-            <Link href={board} className="font-medium text-brand-accent underline underline-offset-2">
-              Practise the textbook exercises and board questions
+        <section aria-label="Practise this chapter" className="mt-10 rounded-2xl border bg-card p-5">
+          <h2 className="font-semibold text-foreground">Practise {ch.title}</h2>
+          <p className="mt-1 text-sm text-muted-foreground">Once the concepts click, try the questions your exam asks.</p>
+          <div className="mt-4 grid gap-3 sm:grid-cols-2">
+            <Link
+              href={practice.board}
+              className="flex items-center gap-3 rounded-xl border p-3 hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              <span className="icon-tile grid h-9 w-9 shrink-0 place-items-center rounded-lg">
+                <Library className="h-4 w-4 text-brand-accent" aria-hidden="true" />
+              </span>
+              <span>
+                <span className="block font-medium text-foreground">Textbook exercises</span>
+                <span className="block text-xs text-muted-foreground">Every exercise, with model answers</span>
+              </span>
             </Link>
-            .
-          </p>
-        )}
+            {landing && (
+              <Link
+                href={practice.questions}
+                className="flex items-center gap-3 rounded-xl border p-3 hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              >
+                <span className="icon-tile grid h-9 w-9 shrink-0 place-items-center rounded-lg">
+                  <FileText className="h-4 w-4 text-brand-accent" aria-hidden="true" />
+                </span>
+                <span>
+                  <span className="block font-medium text-foreground">Past board questions</span>
+                  <span className="block text-xs text-muted-foreground">Asked from this chapter, with solutions</span>
+                </span>
+              </Link>
+            )}
+          </div>
+        </section>
       </main>
       <Footer />
     </>

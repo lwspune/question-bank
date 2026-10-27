@@ -5,7 +5,7 @@
  * day); a Learn chapter added or renamed later fails here until it maps.
  */
 import { describe, expect, it } from "vitest";
-import { bankChapterName, missesByCourseChapter } from "@/lib/learn/bankChapters";
+import { bankChapterLinks, bankChapterName, learnChapterFor, missesByCourseChapter } from "@/lib/learn/bankChapters";
 
 const LEARN: Record<string, [string, string][]> = {
   "mh-hsc-12-maths": [
@@ -69,5 +69,41 @@ describe("missesByCourseChapter", () => {
 
   it("is empty with no misses", () => {
     expect(missesByCourseChapter("mh-hsc-12-maths", chapters, [])).toEqual([]);
+  });
+});
+
+describe("bankChapterLinks", () => {
+  it("links a Learn chapter to its textbook chapter and its past questions, by the bank chapter's name", () => {
+    expect(bankChapterLinks("mh-hsc-12", "mh-hsc-12-maths", { slug: "line-and-plane", title: "Line and Plane" })).toEqual({
+      board: "/board/mh-hsc-12/mathematics/line-and-planes",
+      questions: "/questions/mh-hsc-12/mathematics/line-and-planes",
+    });
+    expect(bankChapterLinks("cbse-12", "cbse-12-maths", { slug: "probability-12", title: "Probability" })).toEqual({
+      board: "/board/cbse-12/mathematics/probability",
+      questions: "/questions/cbse-12/mathematics/probability",
+    });
+  });
+
+  it("gives every chapter of both courses a board and a questions link", () => {
+    for (const [course, chapters] of Object.entries(LEARN)) {
+      const exam = course.replace(/-maths$/, "");
+      for (const [slug, title] of chapters) {
+        const l = bankChapterLinks(exam, course, { slug, title });
+        expect(l.board).toMatch(new RegExp(`^/board/${exam}/mathematics/[a-z0-9-]+$`));
+        expect(l.questions).toMatch(new RegExp(`^/questions/${exam}/mathematics/[a-z0-9-]+$`));
+      }
+    }
+  });
+});
+
+describe("learnChapterFor (the board reader's link back to Learn)", () => {
+  it("finds the Learn chapter for every bank chapter of both courses, and nothing for others", () => {
+    for (const [course, chapters] of Object.entries(LEARN)) {
+      const list = chapters.map(([slug, title]) => ({ slug, title }));
+      for (const name of BANK[course]) expect(learnChapterFor(course, list, name), `${course}: ${name}`).not.toBeNull();
+      expect(learnChapterFor(course, list, "Not A Chapter")).toBeNull();
+    }
+    const mh = LEARN["mh-hsc-12-maths"].map(([slug, title]) => ({ slug, title }));
+    expect(learnChapterFor("mh-hsc-12-maths", mh, "Line and Planes")).toEqual({ slug: "line-and-plane", title: "Line and Plane" });
   });
 });
