@@ -21,6 +21,7 @@ import { getSubjectChapterTop } from "@/lib/homework/query";
 import { homeworkDayView } from "@/lib/homework/dayView";
 import { topPyqsTitle } from "@/lib/homework/topPyqs";
 import { loadBoardQuestions } from "@/lib/questionPapers/query";
+import { LearnChapterLink } from "@/components/learn/LearnChapterLink";
 
 type Params = { examSlug: string; subjectRoute: string; chapterSlug: string };
 
@@ -190,6 +191,8 @@ export default async function BoardChapterPage({ params }: { params: Params }) {
             <span className="text-muted-foreground/70"> · {chapter.total} questions</span>
           </p>
         </header>
+
+        <LearnChapterLink examSlug={params.examSlug} subjectName={chapter.subjectName} chapterName={chapter.chapterName} />
 
         <BoardReader
           groups={chapter.groups}

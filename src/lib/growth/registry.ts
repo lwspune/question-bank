@@ -165,6 +165,10 @@ export const MOCK_TOGETHER_STARTS_KEEP = 3;
  * once cleared, then mocks) if at least this many students choose it...
  */
 export const IMAT_STUDENTS_KEEP = 20;
+/** The Learn tab (2026-10-27): keep building learning inside PYQ Vault at this many students who master a concept... */
+export const LEARN_MASTERED_KEEP = 25;
+/** ...and this many who come back to Learn on a second day. */
+export const LEARN_RETURNED_KEEP = 10;
 /**
  * ...and build the international site (intl.pyqvault.com) once visitors from
  * outside India make up at least this share of IMAT page views.
@@ -255,6 +259,7 @@ export type Readout =
   | "mock-together"
   | "pyq-wording"
   | "imat"
+  | "learn"
   | "v-finder"
   | "v-explain"
   | "v-strategy"
@@ -498,6 +503,19 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-10-17",
     windowDays: 14,
     readout: "mock-together",
+    status: "running",
+  },
+  {
+    id: "learn-class-12",
+    title: "Learn tab: Concept Ladder's lessons inside PYQ Vault (Class 12 Maths)",
+    change:
+      "Class 12 State Board and CBSE students get a Learn tab (in place of Guides on the phone bar, beside it on desktop): Concept Ladder's step-by-step Maths lessons, one concept at a time, with questions until three are right, spaced reviews, and the chapters their PYQ Vault mistakes point to. 28 chapters, 172 concepts. Concept Ladder keeps running.",
+    why: "Neither Class 12 exam had notes or a guide, and they are our 4th and 5th most picked exams. Concept Ladder had the lessons but no students; PYQ Vault has the students and knows their mistakes.",
+    metric:
+      "Students (not staff) who answered a Learn question, mastered at least one concept, and answered on two or more different days, since launch (learn_experiment_readout, migration 0195). Guest lesson views in Vercel, read by hand",
+    rule: `Keep building learning inside PYQ Vault if ${LEARN_MASTERED_KEEP}+ students master a concept and ${LEARN_RETURNED_KEEP}+ come back to Learn on a second day by the check date; otherwise keep building on Concept Ladder and leave the Learn tab as it is.`,
+    liveSince: "2026-10-28",
+    readout: "learn",
     status: "running",
   },
   {

@@ -48,6 +48,8 @@ import { examHomeHref } from "@/lib/exam/examHome";
 import { TRENDS_REPORTS, reportUpdatedIso } from "@/lib/guide/trendsReports";
 import { listBoardChapters } from "@/lib/board/query";
 import { getPublishedPapers } from "@/lib/questionPapers/query";
+import { getAllOutlines } from "@/lib/learn/query";
+import { learnSitemapPaths } from "@/lib/learn/lessonState";
 import { paperSitemapPaths } from "@/lib/questionPapers/listing";
 import {
   buildBoardSitemapEntries,
@@ -122,6 +124,22 @@ async function questionPaperEntries(buildDate: Date): Promise<MetadataRoute.Site
     }));
   } catch (err) {
     console.warn(`[sitemap/question-papers] entries omitted: ${(err as Error).message}`);
+    return [];
+  }
+}
+
+/** The Learn tab (migration 0192): the hub, courses, chapters and one URL per published lesson.
+ *  WARNED, not failed, so a missing table cannot drop the rest of the sitemap. */
+async function learnEntries(buildDate: Date): Promise<MetadataRoute.Sitemap> {
+  try {
+    return learnSitemapPaths(await getAllOutlines()).map((path) => ({
+      url: `${SITE_URL}${path}`,
+      lastModified: buildDate,
+      changeFrequency: "monthly" as const,
+      priority: path.startsWith("/learn/lesson/") ? 0.6 : 0.7,
+    }));
+  } catch (err) {
+    console.warn(`[sitemap/learn] entries omitted: ${(err as Error).message}`);
     return [];
   }
 }
@@ -646,6 +664,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const boardUrlEntries = await boardEntries(buildDate);
   const homeworkUrlEntries = await homeworkEntries(buildDate);
   const questionPaperUrlEntries = await questionPaperEntries(buildDate);
+  const learnUrlEntries = await learnEntries(buildDate);
 
   // Per-chapter question landing pages — the cacheable, indexable face of the
   // bank. Until these existed the sitemap offered Google exactly ONE URL
@@ -757,6 +776,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.8,
     },
     ...landingEntries,
+    ...learnUrlEntries,
     ...examHomeEntries,
     ...reportsIndexEntry,
     ...withContentDates(guideEntries, contentDates, buildDate),

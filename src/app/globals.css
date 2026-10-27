@@ -337,3 +337,67 @@ a[data-nav-pending] {
 [data-review-filter="right"] [data-verdict]:not([data-verdict="1"]) {
   display: none;
 }
+
+/* ── Learn (src/components/learn, Concept Ladder's figures) ─────────────────
+   FigureView draws with these colours. Concept Ladder's own names (--accent,
+   --muted, --border) are taken here by HSL components with other meanings, so
+   figures read their own --lf-* set, derived from the theme in both modes. */
+:root {
+  --lf-accent: hsl(var(--brand-accent));
+  --lf-muted: hsl(var(--muted-foreground));
+  --lf-border: hsl(var(--border));
+  --lf-fg: hsl(var(--foreground));
+  --lf-bg: hsl(var(--card));
+  --lf-good: #047857;
+  --lf-bad: #b91c1c;
+}
+.dark {
+  --lf-good: #34d399;
+  --lf-bad: #f87171;
+}
+
+/* Long display equations scroll inside a lesson, never the page. */
+[aria-roledescription="carousel"] .katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.25rem 0;
+}
+
+/* Figure parts fade or draw in as steps reveal them; with reduced motion they simply appear. */
+@media (prefers-reduced-motion: no-preference) {
+  .fig-in {
+    animation: fig-in 0.5s ease-out both;
+  }
+  .fig-draw {
+    stroke-dasharray: 1;
+    animation: fig-draw 0.8s ease-out both;
+  }
+  /* A turning arm: drawn at its terminal position, rotated back by --turn-from at the start. */
+  .fig-turn {
+    animation: fig-turn linear both;
+  }
+}
+
+@keyframes fig-turn {
+  from {
+    transform: rotate(var(--turn-from));
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes fig-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes fig-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}

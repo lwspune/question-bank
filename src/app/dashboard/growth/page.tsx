@@ -7,6 +7,7 @@ import { getSessionSuperadmin } from "@/lib/auth";
 import { getGrowthSnapshot } from "@/lib/growth/adminStats";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { loadEbookStoreReadout } from "@/lib/ebooks/readout";
+import { loadLearnReadout } from "@/lib/learn/readout";
 import { loadTutorInterestReadout } from "@/lib/tutor/readout";
 import { getExamBySlug } from "@/lib/exam/examContext";
 import { formatRupees } from "@/lib/billing/plans";
@@ -40,6 +41,8 @@ import {
   MOCK_TOGETHER_SENDS_KEEP,
   MOCK_TOGETHER_STARTS_KEEP,
   IMAT_STUDENTS_KEEP,
+  LEARN_MASTERED_KEEP,
+  LEARN_RETURNED_KEEP,
   IMAT_FOREIGN_SHARE_PCT,
   PRACTICE_FRIEND_SENDS_KEEP,
   PRACTICE_FRIEND_STARTS_KEEP,
@@ -353,10 +356,12 @@ export default async function GrowthPage() {
   if (!(await getSessionSuperadmin())) redirect("/browse");
 
   const admin = createSupabaseAdminClient();
-  const [raw, ebookRows, tutor] = await Promise.all([
+  const learnSince = EXPERIMENTS.find((e) => e.readout === "learn")?.liveSince ?? "2026-10-28";
+  const [raw, ebookRows, tutor, learn] = await Promise.all([
     getGrowthSnapshot(),
     loadEbookStoreReadout(admin),
     loadTutorInterestReadout(admin),
+    loadLearnReadout(admin, learnSince),
   ]);
   const today = todayIst();
   const north = viewNorthStar(raw.weeks, today);
@@ -535,6 +540,26 @@ export default async function GrowthPage() {
             <ReadingsList metric="mock-together-sends" />
             <ReadingsList metric="mock-together-starts" />
             <ReadingsList metric="mock-together-signups" />
+          </div>
+        );
+      case "learn":
+        return (
+          <div className="space-y-3">
+            <p className="text-sm text-muted-foreground">
+              Judged on {fmtDate(checkOn(e.liveSince, e.windowDays))}: keep building learning inside PYQ Vault if{" "}
+              {LEARN_MASTERED_KEEP}+ students master a concept and {LEARN_RETURNED_KEEP}+ come back on a second day;
+              otherwise keep building on Concept Ladder. Students only, since launch. Guest lesson views are in Vercel.
+            </p>
+            {learn ? (
+              <div className="grid gap-3 sm:grid-cols-4">
+                <StatCard kind="numeric" label="Students who answered" value={learn.students} />
+                <StatCard kind="numeric" label={`Mastered a concept (keep at ${LEARN_MASTERED_KEEP})`} value={learn.masteredOne} />
+                <StatCard kind="numeric" label={`Came back another day (keep at ${LEARN_RETURNED_KEEP})`} value={learn.returnedSecondDay} />
+                <StatCard kind="numeric" label="Concepts mastered" value={learn.conceptsMastered} />
+              </div>
+            ) : (
+              <p className="text-sm text-muted-foreground">The Learn numbers did not load.</p>
+            )}
           </div>
         );
       case "imat":

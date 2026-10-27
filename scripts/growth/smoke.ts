@@ -172,6 +172,10 @@ async function main() {
         // Live counts from the ebook tables, rendered on the page (lib/ebooks/readout).
         line = "live table on the page (ebook_purchases, ebook_print_interest, ebook_downloads)";
         break;
+      case "learn":
+        // Live counts from the Learn tables, rendered on the page (lib/learn/readout, migration 0193).
+        line = "live counts on the page (learn_experiment_readout)";
+        break;
       case "pass-price":
         line = handRead(e.liveSince, ["price-weekly-revenue", "price-checkout-paid"]);
         break;

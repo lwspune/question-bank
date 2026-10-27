@@ -94,6 +94,12 @@ export type ExamEntry = {
    */
   practiceOnly?: boolean;
   /**
+   * The exam's Learn course (`/learn/<course>`): Concept Ladder's step-by-step lessons, copied
+   * in (migration 0192, an experiment from 2026-10-27). Its students get a Learn tab: on a phone
+   * in place of Guides (none of these exams has a guide), on desktop beside it. Absent: no tab.
+   */
+  learnPath?: string;
+  /**
    * A school-board exam (Maharashtra State Board, later CBSE, …) whose corpus is
    * a textbook laid out in book sections (Solved Examples → Exercise → …). These
    * get the `/board` reader — a book-faithful, exercise-by-exercise view keyed on
@@ -356,6 +362,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     boardExam: true, // gets the /board reader + the "Board" nav tab
     board: "Maharashtra State Board",
     std: 12,
+    learnPath: "/learn/mh-hsc-12-maths", // Learn tab (2026-10-27 experiment)
   },
   {
     slug: "cbse-10",
@@ -467,6 +474,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     boardExam: true, // textbook content → keeps the /board reader + "Board" nav tab
     board: "CBSE",
     std: 12,
+    learnPath: "/learn/cbse-12-maths", // Learn tab (2026-10-27 experiment)
   },
   {
     slug: "isc-12",
@@ -972,7 +980,8 @@ export type ActiveTab =
   | "books"
   | "blog"
   | "about"
-  | "fix";
+  | "fix"
+  | "learn";
 
 /**
  * Maps a pathname to the primary-nav tab that owns it. Returns null for
@@ -1006,6 +1015,9 @@ export function getActiveTab(pathname: string): ActiveTab | null {
   // Fix — /drill. Its tab is drawn only for graduate students (in Board's
   // slot, see lib/nav/fifthTab); for everyone else the route lights nothing.
   if (matchesSegment(path, "/drill")) return "fix";
+  // Learn — Concept Ladder's lessons (2026-10-27). Its tab is drawn only for an
+  // exam with a `learnPath`; the mapping is unconditional, like Books.
+  if (matchesSegment(path, "/learn")) return "learn";
   return null;
 }
 

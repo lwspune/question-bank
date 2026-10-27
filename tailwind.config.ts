@@ -72,11 +72,27 @@ const config: Config = {
           "0%": { opacity: "0", transform: "translateY(6px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
+        // The Learn tab's slides (Concept Ladder's slide-in / rise / pop / spark).
+        "learn-slide-in": {
+          from: { opacity: "0", transform: "translateX(12px)" },
+          to: { opacity: "1", transform: "none" },
+        },
+        "learn-rise": { from: { opacity: "0", transform: "translateY(8px)" } },
+        "learn-pop": { from: { opacity: "0", transform: "scale(0.5)" } },
+        "learn-spark": {
+          from: { opacity: "0", transform: "scale(0.2) translateY(10px)" },
+          "40%": { opacity: "1" },
+          to: { opacity: "0", transform: "scale(1) translateY(-24px)" },
+        },
       },
       animation: {
         "pill-in": "pill-in 220ms ease-out",
         "count-pulse": "count-pulse 320ms ease-out",
         "fade-in-up": "fade-in-up 360ms ease-out both",
+        "learn-slide-in": "learn-slide-in 0.25s ease-out",
+        "learn-rise": "learn-rise 0.35s ease-out both",
+        "learn-pop": "learn-pop 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) both",
+        "learn-spark": "learn-spark 0.9s ease-out both",
       },
     },
   },

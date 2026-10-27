@@ -85,6 +85,13 @@ describe("resolveExamNav", () => {
     expect(resolveExamNav("cds", IDS).guidesHref).toBe("/guide/cds");
   });
 
+  it("gives a Learn tab only to an exam with Learn lessons", () => {
+    expect(resolveExamNav("mh-hsc-12", IDS).learnHref).toBe("/learn/mh-hsc-12-maths");
+    expect(resolveExamNav("cbse-12", IDS).learnHref).toBe("/learn/cbse-12-maths");
+    expect(resolveExamNav("nda", IDS).learnHref).toBeNull();
+    expect(resolveExamNav(null, IDS).learnHref).toBeNull();
+  });
+
   it("sends Mocks to the exam's catalogue only when it has mocks", () => {
     expect(resolveExamNav("nda", IDS).mockHref).toBe("/mock/exam/nda");
     expect(resolveExamNav("cbse-11", IDS).mockHref).toBe("/mock");

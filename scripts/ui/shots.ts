@@ -29,7 +29,8 @@
  * `--as-student=<exam,...>` renders the signed-in view of a cached page (the
  * header and any island that reads /api/me/header) for a stand-in student;
  * pages that read the student's own rows still render anonymously. Say so
- * when handing the sheet over. `--storage=<file.json>` seeds localStorage
+ * when handing the sheet over. `--cookie=qb_exam=cbse-12` sets cookies on both
+ * sites first (the nav reads the chosen exam from that one). `--storage=<file.json>` seeds localStorage
  * before every load (e.g. a V conversation under "v-chat", so the chat panel
  * shows bubbles without sending a question to production).
  */
@@ -156,6 +157,9 @@ async function main() {
   const { proc, cdp } = await launch(profile);
   try {
     if (args.asStudent) await actAsStudent(cdp, args.asStudent, Object.values(args.targets), args.withPass);
+    for (const cookie of args.cookies ?? []) {
+      for (const url of Object.values(args.targets)) await cdp.send("Network.setCookie", { ...cookie, url, path: "/" });
+    }
     if (args.storage) {
       const entries = JSON.parse(readFileSync(args.storage, "utf8")) as Record<string, unknown>;
       // Without Page.enable the script is accepted but never runs (found 2026-10-18).

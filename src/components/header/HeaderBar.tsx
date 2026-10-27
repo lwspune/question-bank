@@ -116,6 +116,7 @@ export default function HeaderBar({
             notesHref={nav.notesHref}
             mockHref={nav.mockHref}
             boardHref={nav.boardHref}
+            learnHref={nav.learnHref}
             fifth={fifth}
             showPapers={!!session?.isStaff}
             showBooks={!!session?.isSuperadmin}
