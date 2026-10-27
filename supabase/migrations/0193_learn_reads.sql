@@ -1,8 +1,8 @@
--- 0191_learn_reads.sql -- the reads the Learn pages make, beside 0190.
+-- 0193_learn_reads.sql -- the reads the Learn pages make, beside 0192.
 --
 -- Why: lesson pages are cached (one copy for everyone, so they rank in search), and each
 -- student's progress loads after the page opens. A student may read their own
--- learn_concept_state and learn_attempts rows (0190), but those carry concept and item ids,
+-- learn_concept_state and learn_attempts rows (0192), but those carry concept and item ids,
 -- and the content tables that turn an id into a chapter and concept code are server-only.
 -- These return the student's own rows already keyed by chapter slug + concept code, as
 -- auth.uid() (never a passed-in id), so no request path needs the service role.

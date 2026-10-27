@@ -9,7 +9,7 @@ import { lessonHref } from "@/lib/learn/links";
 
 type Row = { chapter: string; code: string; slug: string; title: string; state: string; next_review_at: string | null };
 
-/** A signed-in student's concepts due for spaced review (learn_my_progress, migration 0191). */
+/** A signed-in student's concepts due for spaced review (learn_my_progress, migration 0193). */
 export function ReviewList() {
   const [state, setState] = useState<{ kind: "loading" } | { kind: "guest" } | { kind: "error" } | { kind: "ready"; due: Row[]; mastered: number }>({
     kind: "loading",

@@ -1,5 +1,5 @@
 /**
- * A `learn_concept` reply (migration 0190) as the lesson page shows it: the slides built and every
+ * A `learn_concept` reply (migration 0192) as the lesson page shows it: the slides built and every
  * piece of maths rendered. No server-only guard, so `npm run learn:smoke` checks exactly what the
  * page renders; pages reach it through query.ts (server-only).
  */

@@ -1,4 +1,4 @@
--- 0190_learn.sql -- the Learn tab: Concept Ladder's lessons, copied into PYQ Vault.
+-- 0192_learn.sql -- the Learn tab: Concept Ladder's lessons, copied into PYQ Vault.
 --
 -- Why: an experiment (owner, 2026-10-27). Class 12 State Board and CBSE students get
 -- step-by-step Maths lessons inside PYQ Vault. Concept Ladder (www.conceptladder.in) keeps

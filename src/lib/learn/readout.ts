@@ -1,5 +1,5 @@
 /**
- * The Learn experiment's numbers for /dashboard/growth (migration 0193), counted in SQL so no
+ * The Learn experiment's numbers for /dashboard/growth (migration 0195), counted in SQL so no
  * PostgREST row cap applies. Service role: it reads every student's Learn answers. Null when the
  * read fails, so the growth page still renders.
  */

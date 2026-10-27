@@ -1,4 +1,4 @@
-// Copied from Concept Ladder (src/engine/review.ts, afca8bf); the schedule itself is learn_record_attempt (migration 0190).
+// Copied from Concept Ladder (src/engine/review.ts, afca8bf); the schedule itself is learn_record_attempt (migration 0192).
 const DAY_MS = 24 * 60 * 60 * 1000;
 
 /** A mastered concept is due for review once its scheduled time has arrived (rule set in record_attempt). */

@@ -1,5 +1,5 @@
 /**
- * POST /api/learn/answer — grade one answer in a Learn lesson (migration 0190).
+ * POST /api/learn/answer — grade one answer in a Learn lesson (migration 0192).
  *
  * A signed-in student's answer is RECORDED (learn_record_attempt, through their own JWT, as
  * auth.uid()): mastery, review and routing move. A guest's is CHECKED (learn_check_answer):

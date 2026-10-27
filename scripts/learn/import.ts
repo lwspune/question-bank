@@ -1,5 +1,5 @@
 /**
- * Imports Concept Ladder's lessons into the Learn tables (migration 0190).
+ * Imports Concept Ladder's lessons into the Learn tables (migration 0192).
  *
  * Concept Ladder writes the bundle (`npm run export:pyqvault -- <dir>` there: structure and
  * sympy checks first, clean tree, its commit in manifest.json). This reads it, checks it

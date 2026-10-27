@@ -1,6 +1,6 @@
 /**
  * A Learn lesson's content shapes, copied from Concept Ladder (src/content/types.ts, afca8bf).
- * The lesson body is stored as jsonb in learn_concepts.body (migration 0190).
+ * The lesson body is stored as jsonb in learn_concepts.body (migration 0192).
  *
  * Text fields are KaTeX-aware: `$…$` inline math, `$$…$$` display math, `**…**` bold.
  */

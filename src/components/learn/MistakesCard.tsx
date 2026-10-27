@@ -8,7 +8,7 @@ import { chapterHref } from "@/lib/learn/links";
 type Miss = { slug: string; title: string; misses: number };
 
 /**
- * "From your mistakes" (migration 0192): the course chapters where the signed-in student has
+ * "From your mistakes" (migration 0194): the course chapters where the signed-in student has
  * questions still wrong anywhere in PYQ Vault, most first, each leading to its lessons. The one
  * thing Learn can do only because it lives inside PYQ Vault. Renders nothing for a guest or a
  * student with no open mistakes in this course.

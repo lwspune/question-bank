@@ -220,6 +220,8 @@ export const V_REVEAL_FOLLOWUP_BASELINE_PCT = 48;
 /** A fall of this many points in that share is looked into before anything else changes in V. */
 export const V_REVEAL_FOLLOWUP_MAX_DROP = 5;
 export const ANSWER_LIMIT_RETURN_MAX_DROP = 10;
+/** "tutor-interest": student Yes answers (looking for 1:1 tutoring) that take tutoring further. */
+export const TUTOR_STUDENT_YES_KEEP = 20;
 
 /** The ISO date `days` (by default `EXPERIMENT_WINDOW_DAYS`) after `liveSince`. */
 export function checkOn(liveSince: string, days: number = EXPERIMENT_WINDOW_DAYS): string {
@@ -256,7 +258,8 @@ export type Readout =
   | "ebook-store"
   | "pass-price"
   | "answer-limit"
-  | "v-reveal";
+  | "v-reveal"
+  | "tutor-interest";
 
 export type Experiment = {
   id: string;
@@ -499,7 +502,7 @@ export const EXPERIMENTS: readonly Experiment[] = [
       "Class 12 State Board and CBSE students get a Learn tab (in place of Guides on the phone bar, beside it on desktop): Concept Ladder's step-by-step Maths lessons, one concept at a time, with questions until three are right, spaced reviews, and the chapters their PYQ Vault mistakes point to. 28 chapters, 172 concepts. Concept Ladder keeps running.",
     why: "Neither Class 12 exam had notes or a guide, and they are our 4th and 5th most picked exams. Concept Ladder had the lessons but no students; PYQ Vault has the students and knows their mistakes.",
     metric:
-      "Students (not staff) who answered a Learn question, mastered at least one concept, and answered on two or more different days, since launch (learn_experiment_readout, migration 0193). Guest lesson views in Vercel, read by hand",
+      "Students (not staff) who answered a Learn question, mastered at least one concept, and answered on two or more different days, since launch (learn_experiment_readout, migration 0195). Guest lesson views in Vercel, read by hand",
     rule: `Keep building learning inside PYQ Vault if ${LEARN_MASTERED_KEEP}+ students master a concept and ${LEARN_RETURNED_KEEP}+ come back to Learn on a second day by the check date; otherwise keep building on Concept Ladder and leave the Learn tab as it is.`,
     liveSince: "2026-10-28",
     readout: "learn",
@@ -637,6 +640,20 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-10-23",
     windowDays: 14,
     readout: "v-reveal",
+    status: "running",
+  },
+  {
+    id: "tutor-interest",
+    title: "1:1 tutoring: is there demand?",
+    change:
+      "A Tutor button in the header, beside Ebooks, opens /tutor: Student or Teacher, then \"Looking for 1:1 tutoring?\" (a teacher is asked \"Would you like to teach 1:1?\"), then Online, Offline or Either on a Yes. Nothing is sold or booked, and no contact details are asked; the page says tutoring will be announced there.",
+    why: "The owner is weighing 1:1 tutoring and wants demand measured before anything is built. One page counts both sides: students who want a tutor and teachers who would teach.",
+    metric:
+      "Student and teacher answers, Yes and No, by Online / Offline / Either, and student Yes by exam (tutor_interest, migration 0190). Header Tutor taps (tutor_link_click) in Vercel, read by hand. Signed-out answers are one row each, so they can count a person twice",
+    rule: `Take tutoring further (ask the Yes students for a price and a number) if ${TUTOR_STUDENT_YES_KEEP}+ students answer Yes in three weeks; below that, remove the button and record the result.`,
+    liveSince: "2026-10-27",
+    windowDays: 21,
+    readout: "tutor-interest",
     status: "running",
   },
 ];

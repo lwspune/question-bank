@@ -18,6 +18,6 @@ export function lessonHref(chapter: string, concept: string, opts: { course?: st
   return `${LEARN_HUB}/lesson/${chapter}/${concept}${query ? `?${query}` : ""}`;
 }
 
-/** The database's mastery and review rules (learn_mastery_needed / learn_review_needed, migration 0190), for a guest's page-only progress. */
+/** The database's mastery and review rules (learn_mastery_needed / learn_review_needed, migration 0192), for a guest's page-only progress. */
 export const MASTERY_NEEDED = 3;
 export const REVIEW_NEEDED = 2;

@@ -1,4 +1,4 @@
--- 0193_learn_readout.sql -- the Learn experiment's numbers for /dashboard/growth.
+-- 0195_learn_readout.sql -- the Learn experiment's numbers for /dashboard/growth.
 --
 -- Why: the Learn tab is an experiment (owner, 2026-10-27), checked 4 weeks after launch: keep
 -- building learning inside PYQ Vault if 25 students master a concept and 10 come back to Learn on

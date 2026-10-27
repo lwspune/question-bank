@@ -1,5 +1,5 @@
 /**
- * Learn course chapters ↔ question-bank chapters, for "From your mistakes" (migration 0192): a
+ * Learn course chapters ↔ question-bank chapters, for "From your mistakes" (migration 0194): a
  * student's misses are counted by BANK chapter, and the Learn page shows them by its own chapters.
  * Concept Ladder named its chapters after PYQ Vault's, so the title is the name; the rare exception
  * is listed here, and tests/learn-bank-chapters.test.ts fails on any Learn chapter that maps to no

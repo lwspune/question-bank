@@ -1,5 +1,5 @@
 /**
- * Checks every concept the Learn courses show, the way its lesson page builds it (migration 0190):
+ * Checks every concept the Learn courses show, the way its lesson page builds it (migration 0192):
  * slides to read, maths that renders, four options per question, and enough checked questions to
  * master it (src/lib/learn/lessonIssues.ts). Read-only, through the anon client like the pages.
  * Exits 1 on any issue. Run after every `learn:import`.

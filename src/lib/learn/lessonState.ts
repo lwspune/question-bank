@@ -32,7 +32,7 @@ export type OutlineChapter = {
   parts: { chapter: string; concepts: string[] }[];
 };
 
-/** `learn_course_outline` (migration 0190). */
+/** `learn_course_outline` (migration 0192). */
 export type Outline = {
   slug: string;
   title: string;
@@ -47,7 +47,7 @@ export type Home = { course: string; courseTitle: string; chapter: string; chapt
 
 export type LearnerState = "learning" | "mastered";
 
-/** A student's own progress on one concept (`learn_my_progress`, migration 0191). */
+/** A student's own progress on one concept (`learn_my_progress`, migration 0193). */
 export type ConceptProgress = { state: LearnerState; nextReviewAt: string | null; updatedAt?: string | null };
 
 const graphOf = (pool: Pool): GraphNode[] => pool.concepts.map((c) => ({ id: c.code, prereqs: c.prereqs }));
@@ -131,7 +131,7 @@ export type ChapterConcept = {
   /** Mastered and due for spaced review now. */
   due: boolean;
   buildsOn: { slug: string; title: string }[];
-  /** When the student last answered here (migration 0192); null for a guest or an untouched concept. */
+  /** When the student last answered here (migration 0194); null for a guest or an untouched concept. */
   updatedAt: string | null;
 };
 

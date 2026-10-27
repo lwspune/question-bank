@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Gem, ShoppingBag } from "lucide-react";
+import { Gem, GraduationCap, ShoppingBag } from "lucide-react";
 import { trackFunnel } from "@/lib/analytics/trackFunnel";
 import SignInLink from "@/components/reveal/SignInLink";
 import { Button } from "@/components/ui/button";
@@ -126,6 +126,8 @@ export default function HeaderBar({
             {/* The ebook store (2026-10-20): its own button, apart from the study
                 tabs, at every width (owner: "a separate buy section on top"). */}
             <StoreLink />
+            {/* 1:1 tutoring interest check (2026-10-27), beside the store. */}
+            <TutorLink />
             {/* Theme toggle is visible to everyone, anon included. */}
             <ThemeToggle />
             {sessionLoading ? (
@@ -170,6 +172,14 @@ export default function HeaderBar({
   );
 }
 
+/** The header's outlined buttons (Ebooks, Tutor); filled when you are on their page. */
+function headerButtonClass(active: boolean): string {
+  return (
+    "inline-flex h-9 shrink-0 items-center gap-1.5 rounded-md border px-2.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 " +
+    (active ? "border-brand bg-brand text-brand-foreground" : "border-brand/40 text-brand-accent hover:bg-brand/10")
+  );
+}
+
 function StoreLink() {
   const pathname = usePathname() ?? "";
   const active = pathname.startsWith("/store");
@@ -178,15 +188,28 @@ function StoreLink() {
       href="/store"
       onClick={() => trackFunnel("ebook_store_link_click", { from: pathname.split("/")[1] || "home" })}
       aria-current={active ? "page" : undefined}
-      className={
-        "inline-flex h-9 shrink-0 items-center gap-1.5 rounded-md border px-2.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 " +
-        (active
-          ? "border-brand bg-brand text-brand-foreground"
-          : "border-brand/40 text-brand-accent hover:bg-brand/10")
-      }
+      className={headerButtonClass(active)}
     >
       <ShoppingBag className="h-4 w-4 shrink-0" aria-hidden />
       <span>Ebooks</span>
+    </Link>
+  );
+}
+
+/** The 1:1 tutoring interest check (2026-10-27, migration 0190); `from` rides to the stored answer. */
+function TutorLink() {
+  const pathname = usePathname() ?? "";
+  const active = pathname.startsWith("/tutor");
+  const from = pathname.split("/")[1] || "home";
+  return (
+    <Link
+      href={active ? "/tutor" : `/tutor?from=${encodeURIComponent(from)}`}
+      onClick={() => trackFunnel("tutor_link_click", { from })}
+      aria-current={active ? "page" : undefined}
+      className={headerButtonClass(active)}
+    >
+      <GraduationCap className="h-4 w-4 shrink-0" aria-hidden />
+      <span>Tutor</span>
     </Link>
   );
 }

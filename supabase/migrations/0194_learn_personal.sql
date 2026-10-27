@@ -1,4 +1,4 @@
--- 0192_learn_personal.sql -- the reads that personalise the Learn pages, beside 0190/0191.
+-- 0194_learn_personal.sql -- the reads that personalise the Learn pages, beside 0192/0193.
 --
 -- Why (owner, 2026-10-27: "no personalisation currently"): Learn lives inside PYQ Vault, so it can
 -- use what PYQ Vault already knows about a student. Two reads, both for auth.uid() only:

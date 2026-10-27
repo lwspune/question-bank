@@ -6,7 +6,7 @@ import type { Outline } from "./lessonState";
 export type { Lesson, LessonItem } from "./lessonFromRaw";
 
 /**
- * The Learn pages' reads (migration 0190/0191), through the anon client: the pages are cached
+ * The Learn pages' reads (migration 0192/0193), through the anon client: the pages are cached
  * and the same for everyone. Content comes only from the learn_* functions, which never return
  * a key. Math is rendered here, so the browser gets HTML and never loads KaTeX for a lesson.
  * A failed read throws, so a cached page is never an empty one.

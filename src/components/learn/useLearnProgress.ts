@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import type { ConceptProgress, LearnerState } from "@/lib/learn/lessonState";
 
-/** One row of `learn_my_progress` (migration 0191). */
+/** One row of `learn_my_progress` (migration 0193). */
 export type ProgressRow = {
   chapter: string;
   code: string;

@@ -8,6 +8,8 @@ import { getGrowthSnapshot } from "@/lib/growth/adminStats";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { loadEbookStoreReadout } from "@/lib/ebooks/readout";
 import { loadLearnReadout } from "@/lib/learn/readout";
+import { loadTutorInterestReadout } from "@/lib/tutor/readout";
+import { getExamBySlug } from "@/lib/exam/examContext";
 import { formatRupees } from "@/lib/billing/plans";
 import {
   INSIGHTS,
@@ -57,6 +59,7 @@ import {
   V_REVEAL_FOLLOWUP_MAX_DROP,
   V_PLAN_DAYS_DONE_KEEP_PCT,
   SPECIFIC_OFFER_CHECKOUT_PCT,
+  TUTOR_STUDENT_YES_KEEP,
   checkOn,
   type Experiment,
 } from "@/lib/growth/registry";
@@ -350,11 +353,13 @@ function ReadingsList({ metric }: { metric: keyof typeof READINGS }) {
 export default async function GrowthPage() {
   if (!(await getSessionSuperadmin())) redirect("/browse");
 
+  const admin = createSupabaseAdminClient();
   const learnSince = EXPERIMENTS.find((e) => e.readout === "learn")?.liveSince ?? "2026-10-28";
-  const [raw, ebookRows, learn] = await Promise.all([
+  const [raw, ebookRows, tutor, learn] = await Promise.all([
     getGrowthSnapshot(),
-    loadEbookStoreReadout(createSupabaseAdminClient()),
-    loadLearnReadout(createSupabaseAdminClient(), learnSince),
+    loadEbookStoreReadout(admin),
+    loadTutorInterestReadout(admin),
+    loadLearnReadout(admin, learnSince),
   ]);
   const today = todayIst();
   const north = viewNorthStar(raw.weeks, today);
@@ -588,6 +593,50 @@ export default async function GrowthPage() {
             </p>
             <ReadingsList metric="v-explain-students" />
             <ReadingsList metric="v-explain-similar-right" />
+          </div>
+        );
+      case "tutor-interest":
+        return (
+          <div className="space-y-3">
+            <p className="text-sm text-muted-foreground">
+              Check on {fmtDate(checkOn(e.liveSince, e.windowDays))}: take tutoring further if{" "}
+              {TUTOR_STUDENT_YES_KEEP}+ students answer Yes. {tutor.total} answers so far, {tutor.signedIn} signed in
+              (a signed-out visitor who answers twice counts twice). Header Tutor taps are in Vercel Analytics.
+            </p>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead className="text-left text-xs text-muted-foreground">
+                  <tr>
+                    <th scope="col" className="py-1 pr-3 font-medium">Who</th>
+                    <th scope="col" className="py-1 pr-3 text-right font-medium">Yes</th>
+                    <th scope="col" className="py-1 pr-3 text-right font-medium">Online</th>
+                    <th scope="col" className="py-1 pr-3 text-right font-medium">Offline</th>
+                    <th scope="col" className="py-1 pr-3 text-right font-medium">Either</th>
+                    <th scope="col" className="py-1 text-right font-medium">No</th>
+                  </tr>
+                </thead>
+                <tbody className="tabular-nums">
+                  {(["student", "teacher"] as const).map((role) => (
+                    <tr key={role} className="border-t">
+                      <td className="py-1.5 pr-3">{role === "student" ? "Students wanting a tutor" : "Teachers willing to teach"}</td>
+                      <td className="py-1.5 pr-3 text-right font-semibold">{tutor[role].yes}</td>
+                      <td className="py-1.5 pr-3 text-right">{tutor[role].online}</td>
+                      <td className="py-1.5 pr-3 text-right">{tutor[role].offline}</td>
+                      <td className="py-1.5 pr-3 text-right">{tutor[role].either}</td>
+                      <td className="py-1.5 text-right">{tutor[role].no}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            {tutor.studentYesByExam.length > 0 && (
+              <p className="text-sm">
+                <span className="text-muted-foreground">Student Yes by exam: </span>
+                {tutor.studentYesByExam
+                  .map((x) => `${x.exam ? getExamBySlug(x.exam)?.displayName ?? x.exam : "no exam chosen"} ${x.count}`)
+                  .join(" · ")}
+              </p>
+            )}
           </div>
         );
       case "v-reveal":

@@ -9,7 +9,7 @@ import { listCourses } from "@/lib/learn/query";
 
 /**
  * /learn: the Learn courses (an experiment from 2026-10-27, Concept Ladder's lessons copied in;
- * migration 0190). Cached and the same for everyone, refreshed daily.
+ * migration 0192). Cached and the same for everyone, refreshed daily.
  */
 export const revalidate = 86400;
 

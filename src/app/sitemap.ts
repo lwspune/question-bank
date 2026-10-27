@@ -128,7 +128,7 @@ async function questionPaperEntries(buildDate: Date): Promise<MetadataRoute.Site
   }
 }
 
-/** The Learn tab (migration 0190): the hub, courses, chapters and one URL per published lesson.
+/** The Learn tab (migration 0192): the hub, courses, chapters and one URL per published lesson.
  *  WARNED, not failed, so a missing table cannot drop the rest of the sitemap. */
 async function learnEntries(buildDate: Date): Promise<MetadataRoute.Sitemap> {
   try {

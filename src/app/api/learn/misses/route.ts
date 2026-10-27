@@ -1,5 +1,5 @@
 /**
- * GET /api/learn/misses?course=<slug> — "From your mistakes" (migration 0192): the course's
+ * GET /api/learn/misses?course=<slug> — "From your mistakes" (migration 0194): the course's
  * chapters in which the signed-in student has questions still wrong anywhere in PYQ Vault (mocks,
  * chapter tests, the board reader, the drill), most first. Read through the student's own JWT;
  * the function answers for auth.uid() only. A guest gets 401.

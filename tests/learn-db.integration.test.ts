@@ -1,5 +1,5 @@
 /**
- * Integration test for the Learn tables (migration 0190): Concept Ladder's lessons, copied in.
+ * Integration test for the Learn tables (migration 0192): Concept Ladder's lessons, copied in.
  *
  * Load-bearing properties:
  *  - the seed writes a chapter in one transaction and is safe to repeat; the DB refuses a
@@ -103,7 +103,7 @@ function payload(slug = CHAPTER) {
   };
 }
 
-describe.skipIf(!HAS_ENV)("Learn tables (0190)", () => {
+describe.skipIf(!HAS_ENV)("Learn tables (0192)", () => {
   let admin: SupabaseClient;
   let anon: SupabaseClient;
   let alice: SupabaseClient;
@@ -316,8 +316,8 @@ describe.skipIf(!HAS_ENV)("Learn tables (0190)", () => {
     });
   });
 
-  // Migration 0191: the reads the lesson page makes for a signed-in student.
-  describe("own progress reads (0191)", () => {
+  // Migration 0193: the reads the lesson page makes for a signed-in student.
+  describe("own progress reads (0193)", () => {
     it("learn_my_progress gives the student's state by chapter and concept code", async () => {
       const { data, error } = await alice.rpc("learn_my_progress", { p_chapters: [CHAPTER] });
       expect(error).toBeNull();
@@ -341,13 +341,13 @@ describe.skipIf(!HAS_ENV)("Learn tables (0190)", () => {
       expect(rows.every((r) => r.correct === false)).toBe(true);
     });
 
-    it("learn_my_progress says when each concept was last touched (0192)", async () => {
+    it("learn_my_progress says when each concept was last touched (0194)", async () => {
       const { data } = await alice.rpc("learn_my_progress", { p_chapters: [CHAPTER] });
       expect((data as unknown[]).length).toBeGreaterThan(0);
       for (const r of data as { updated_at: string }[]) expect(Number.isNaN(Date.parse(r.updated_at))).toBe(false);
     });
 
-    it("learn_my_misses counts the student's still-wrong questions by chapter of one exam (0192)", async () => {
+    it("learn_my_misses counts the student's still-wrong questions by chapter of one exam (0194)", async () => {
       type Q = { id: string; chapters: { name: string; subjects: { exams: { name: string } } } };
       const pick = (exam?: string) => {
         let query = admin.from("questions").select("id, chapters!inner(name, subjects!inner(exams!inner(name)))").eq("visibility", "PUBLIC");
@@ -374,7 +374,7 @@ describe.skipIf(!HAS_ENV)("Learn tables (0190)", () => {
       expect(other.data).toEqual([]);
     });
 
-    it("learn_experiment_readout counts students who answered, mastered and came back on a second day (0193)", async () => {
+    it("learn_experiment_readout counts students who answered, mastered and came back on a second day (0195)", async () => {
       // Backdate one of Alice's answers by a day, so she has answered on two different days.
       const { data: one } = await admin.from("learn_attempts").select("id").eq("user_id", aliceId).order("id").limit(1).single();
       await admin.from("learn_attempts").update({ created_at: new Date(Date.now() - 26 * 3600_000).toISOString() }).eq("id", one!.id);
@@ -438,7 +438,7 @@ describe.skipIf(!HAS_ENV)("Learn tables (0190)", () => {
       ]);
     });
 
-    it("learn_course_list lists courses for anyone (0191)", async () => {
+    it("learn_course_list lists courses for anyone (0193)", async () => {
       const { data, error } = await anon.rpc("learn_course_list");
       expect(error).toBeNull();
       expect((data as { slug: string }[]).find((c) => c.slug === COURSE)).toEqual({

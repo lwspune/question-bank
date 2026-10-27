@@ -6,7 +6,7 @@ import type { Figure } from "./types";
 /**
  * A graded answer as the lesson screen shows it, with its math rendered on the server.
  * Built from `learn_record_attempt` (a signed-in student: saved, with progress) or
- * `learn_check_answer` (a guest: checked, nothing saved), migration 0190.
+ * `learn_check_answer` (a guest: checked, nothing saved), migration 0192.
  */
 
 export type Route =
