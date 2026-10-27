@@ -65,6 +65,7 @@ import { getExamBySlug } from "../../src/lib/exam/examContext";
 import { getBoardPaperForExport, listPublishedPapers } from "../../src/lib/questionPapers/query";
 import { boardPaperExport } from "../../src/lib/questionPapers/exportPlan";
 import type { VisualizationSlug } from "../../src/app/notes/_types";
+import { PDFDocument } from "pdf-lib";
 import { assembleMaster, pageCounts } from "../../src/lib/ebooks/pdfAssemble";
 import { KIND_LABEL, PAPER } from "../../src/lib/ebooks/theme";
 import { buildDiagramCss } from "../lib/ebookDiagramCss";
@@ -89,6 +90,18 @@ const APPLY = process.argv.includes("--apply");
 const ID_CHUNK = 200;
 /** A big chapter (300+ questions with solutions) takes minutes to lay out. */
 const PRINT_TIMEOUT_MS = 15 * 60_000;
+/** A Textbook Solutions chapter printed whole; past this it is printed section by section. */
+const WHOLE_CHAPTER_TIMEOUT_MS = 4 * 60_000;
+
+/** Pages of each PDF, one after another, nothing added. */
+async function joinPdfs(parts: Uint8Array[]): Promise<Uint8Array> {
+  const out = await PDFDocument.create();
+  for (const part of parts) {
+    const src = await PDFDocument.load(part);
+    for (const p of await out.copyPages(src, src.getPageIndices())) out.addPage(p);
+  }
+  return out.save();
+}
 
 function arg(name: string): string | undefined {
   return process.argv.find((a) => a.startsWith(`--${name}=`))?.slice(name.length + 3);
@@ -652,18 +665,21 @@ async function buildTextbookChapters(
       imageDataUris(admin, "paper", chapterQuestions),
       imageDataUris(admin, "key", chapterQuestions),
     ]);
-    const pdf = await printPdf(
-      buildTextbookChapterHtml({
-        number: i + 1,
-        name: link.name,
-        bookTitle: ebook.title,
-        groups,
-        printedOf,
-        images: await asJpegs(new Map([...paperImages, ...keyImages])),
-        head,
-      }),
-      { timeoutMs: PRINT_TIMEOUT_MS }
-    );
+    const images = await asJpegs(new Map([...paperImages, ...keyImages]));
+    const html = (gs: typeof groups, continued: boolean) =>
+      buildTextbookChapterHtml({ number: i + 1, name: link.name, bookTitle: ebook.title, groups: gs, printedOf, images, head, continued });
+    // Chrome hangs on some whole chapters that print in seconds section by
+    // section (HSC 12 Maths, Mathematical Logic), so a chapter gets a few
+    // minutes whole, then is printed per section and joined.
+    let pdf: Uint8Array;
+    try {
+      pdf = await printPdf(html(groups, false), { timeoutMs: WHOLE_CHAPTER_TIMEOUT_MS });
+    } catch {
+      console.log(`     ${link.name}: printing section by section`);
+      const parts: Uint8Array[] = [];
+      for (const [k, g] of groups.entries()) parts.push(await printPdf(html([g], k > 0), { timeoutMs: PRINT_TIMEOUT_MS }));
+      pdf = await joinPdfs(parts);
+    }
     totals.questions += ids.length;
     totals.topics += blocks;
     if (!preview) {

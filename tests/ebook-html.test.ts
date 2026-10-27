@@ -633,3 +633,21 @@ describe("buildTextbookChapterHtml", () => {
     expect(html).toMatch(/Stem of p1[\s\S]*Stem of p2[\s\S]*Worked answer of p1\.[\s\S]*Worked answer of p2\./);
   });
 });
+
+describe("buildTextbookChapterHtml continued", () => {
+  it("prints a later section of a chapter without the chapter heading", async () => {
+    const { buildTextbookChapterHtml } = await import("@/lib/ebooks/bookHtml");
+    const input = {
+      number: 1,
+      name: "Mathematical Logic",
+      bookTitle: "HSC",
+      groups: [{ title: "1.5 Switching Circuits", blocks: [{ label: null, units: [[q("x1", "A")]] }] }],
+      printedOf: new Map([["x1", { number: "Q.1", marks: null, orBefore: false }]]),
+      head: "",
+    };
+    expect(buildTextbookChapterHtml(input)).toContain('class="chead');
+    const continued = buildTextbookChapterHtml({ ...input, continued: true });
+    expect(continued).not.toContain('class="chead');
+    expect(continued).toContain("1.5 Switching Circuits");
+  });
+});

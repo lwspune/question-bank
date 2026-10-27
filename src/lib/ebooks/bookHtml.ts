@@ -498,6 +498,8 @@ export type TextbookChapterInput = {
   printedOf: ReadonlyMap<string, PrintedLabel>;
   images?: Map<string, string>;
   head: string;
+  /** A later section of a chapter printed on its own (scripts/ebooks/build): no chapter heading. */
+  continued?: boolean;
 };
 
 /** A question's worked solution, set right under it: an MCQ's answer first. */
@@ -531,7 +533,7 @@ export function buildTextbookChapterHtml(input: TextbookChapterInput): string {
           .join("")
     )
     .join("");
-  return doc(input.name, "textbook", input.head, header + `<section id="questions" class="bp">${body}</section>`);
+  return doc(input.name, "textbook", input.head, (input.continued ? "" : header) + `<section id="questions" class="bp">${body}</section>`);
 }
 
 // ── Cover and contents ──────────────────────────────────────────────────────
