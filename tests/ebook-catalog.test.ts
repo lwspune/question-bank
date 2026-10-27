@@ -7,14 +7,14 @@
  * textbook's order.
  */
 import { describe, it, expect } from "vitest";
-import { EBOOKS, PAPERS_EBOOKS, REPEATS_EBOOKS, getEbook, ebookChapters, chapterClassLabel } from "@/lib/ebooks/catalog";
+import { CHAPTERWISE_EBOOKS, EBOOKS, PAPERS_EBOOKS, REPEATS_EBOOKS, getEbook, ebookChapters, chapterClassLabel, isBoardEbook } from "@/lib/ebooks/catalog";
 import { getExamBySlug } from "@/lib/exam/examContext";
 import { getBookBySlug } from "@/lib/books/registry";
 import { getNotesChaptersForSubject } from "@/lib/notes/chapters";
 
 describe("ebook catalog", () => {
   it("sells seven CET books: formulas and notes for three subjects, and the Maths PYQ book", () => {
-    expect(EBOOKS.filter((e) => e.kind !== "papers" && e.kind !== "repeats").map((e) => e.slug).sort()).toEqual([
+    expect(EBOOKS.filter((e) => !isBoardEbook(e)).map((e) => e.slug).sort()).toEqual([
       "mht-cet-chemistry-formulas",
       "mht-cet-chemistry-notes",
       "mht-cet-maths-formulas",
@@ -55,7 +55,7 @@ describe("ebook catalog", () => {
     }
   );
 
-  it.each(EBOOKS.flatMap((e) => (e.kind === "papers" || e.kind === "repeats" ? [] : [[e.slug, e] as const])))(
+  it.each(EBOOKS.flatMap((e) => (isBoardEbook(e) ? [] : [[e.slug, e] as const])))(
     "%s has a sample chapter inside the book",
     (_slug, ebook) => {
       expect(ebookChapters(ebook).map((c) => c.slug)).toContain(ebook.sampleChapter);
@@ -96,6 +96,21 @@ describe("ebook catalog", () => {
     expect(seeded.sort()).toEqual(REPEATS_EBOOKS.map((b) => b.slug).sort());
   });
 
+  // Chapter-wise PYQs (2026-10-27): CBSE from its one-paper-a-year selection, Maharashtra from its homework plans.
+  it("has a Chapter-wise PYQs book for 18 board subjects: CBSE from papers, Maharashtra from plans", () => {
+    expect(CHAPTERWISE_EBOOKS).toHaveLength(18);
+    for (const b of CHAPTERWISE_EBOOKS) expect(b.source, b.slug).toBe(b.examSlug.startsWith("cbse") ? "papers" : "plan");
+    expect(CHAPTERWISE_EBOOKS.map((b) => b.slug)).toContain("cbse-12-biology-chapterwise-pyqs");
+    expect(CHAPTERWISE_EBOOKS.map((b) => b.slug)).toContain("mh-ssc-10-political-science-chapterwise-pyqs");
+  });
+
+  it("seeds a store row (0188) for exactly the Chapter-wise PYQs books in the catalog", async () => {
+    const { readFileSync } = await import("node:fs");
+    const sql = readFileSync("supabase/migrations/0188_ebook_chapterwise_pyqs.sql", "utf8");
+    const seeded = Array.from(sql.matchAll(/\('([a-z0-9-]+-chapterwise-pyqs)'/g)).map((m) => m[1]);
+    expect(seeded.sort()).toEqual(CHAPTERWISE_EBOOKS.map((b) => b.slug).sort());
+  });
+
   it("names the SSC History book for both parts of its paper", () => {
     expect(getEbook("mh-ssc-10-history-solved-papers")?.title).toBe("Maharashtra SSC Class 10 History and Political Science");
     expect(getEbook("mh-hsc-12-physics-solved-papers")?.title).toBe("Maharashtra HSC Class 12 Physics");
@@ -103,7 +118,7 @@ describe("ebook catalog", () => {
 
   it("the PYQ book opens with Class XI and closes with Class XII", () => {
     const book = getEbook("mht-cet-maths-pyq");
-    if (!book || book.kind === "papers" || book.kind === "repeats") throw new Error("the CET PYQ book is missing");
+    if (!book || isBoardEbook(book)) throw new Error("the CET PYQ book is missing");
     const chapters = ebookChapters(book);
     expect(chapters[0].slug).toBe("trigonometry-ii");
     expect(chapters[chapters.length - 1].slug).toBe("binomial-distribution");

@@ -60,6 +60,12 @@ const INSIDE: Record<StoreEbook["kind"], string[]> = {
     "When each was asked, on a line over the question",
     "A worked solution to every question at the end of its chapter",
   ],
+  chapterwise: [
+    "Every board question, chapter by chapter in textbook order",
+    "Grouped by marks: 1-mark questions, then 2, 3 and more, then case studies",
+    "When each was asked, on a line over the question",
+    "A worked solution to every question at the end of its chapter",
+  ],
 };
 
 export default async function StoreBookPage({ params }: { params: { slug: string } }) {

@@ -88,6 +88,40 @@ export const REPEATS_EBOOKS: readonly RepeatsEbook[] = PLAN_SUBJECTS.flatMap((b)
   }))
 );
 
+/**
+ * A Chapter-wise PYQs book (2026-10-27): every board question, chapter by
+ * chapter, grouped by marks (lib/ebooks/chapterwise). CBSE reads the same one
+ * paper a year as its Solved Papers book (owner); Maharashtra reads every PYQ
+ * from its homework plan, repeats printed once with their "Asked N times" line.
+ */
+export type ChapterwiseEbook = Omit<PapersEbook, "kind" | "rule"> & { kind: "chapterwise"; source: "papers" | "plan" };
+
+export const CHAPTERWISE_EBOOKS: readonly ChapterwiseEbook[] = [
+  ...PLAN_SUBJECTS.filter((b) => !b.examSlug.startsWith("cbse")).flatMap((b) =>
+    b.subjects.map((subject) => ({ examSlug: b.examSlug, board: b.board, subject, source: "plan" as const }))
+  ),
+  ...["Mathematics", "Science"].map((subject) => ({ examSlug: "cbse-10", board: "CBSE Class 10", subject, source: "papers" as const })),
+  ...["Physics", "Chemistry", "Mathematics", "Biology"].map((subject) => ({
+    examSlug: "cbse-12",
+    board: "CBSE Class 12",
+    subject,
+    source: "papers" as const,
+  })),
+].map((b) => ({
+  kind: "chapterwise" as const,
+  slug: `${b.examSlug}-${slugPart(b.subject)}-chapterwise-pyqs`,
+  examSlug: b.examSlug,
+  subject: b.subject,
+  source: b.source,
+  board: b.board,
+  subjectTitle: b.subject,
+  title: `${b.board} ${b.subject}`,
+  subtitle:
+    b.source === "plan"
+      ? "Every board question, chapter by chapter, grouped by marks, with a worked solution to each."
+      : "One board paper from each year, regrouped chapter by chapter and by marks, with a worked solution to each.",
+}));
+
 export const PAPERS_EBOOKS: readonly PapersEbook[] = BOARD_PAPER_SUBJECTS.map((b) => ({
   kind: "papers",
   slug: `${b.examSlug}-${slugPart(b.subject)}-solved-papers`,
