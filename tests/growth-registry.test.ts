@@ -88,6 +88,7 @@ describe("EXPERIMENTS", () => {
       "resource-chips",
       "second-page",
       "specific-offer",
+      "tutor-interest",
       "v-explain",
       "v-finder",
       "v-plan",

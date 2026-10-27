@@ -155,6 +155,12 @@ export const FUNNEL_EVENTS = [
    * visits says how much of its traffic the button brings.
    */
   "ebook_store_link_click",
+  /**
+   * The header's Tutor button was tapped (2026-10-27); prop: from (the
+   * section the visitor was in). Against tutor_interest rows (migration 0190)
+   * it says how many who looked went on to answer.
+   */
+  "tutor_link_click",
 ] as const;
 
 export type FunnelEvent = (typeof FUNNEL_EVENTS)[number];

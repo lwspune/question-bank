@@ -216,6 +216,8 @@ export const V_REVEAL_FOLLOWUP_BASELINE_PCT = 48;
 /** A fall of this many points in that share is looked into before anything else changes in V. */
 export const V_REVEAL_FOLLOWUP_MAX_DROP = 5;
 export const ANSWER_LIMIT_RETURN_MAX_DROP = 10;
+/** "tutor-interest": student Yes answers (looking for 1:1 tutoring) that take tutoring further. */
+export const TUTOR_STUDENT_YES_KEEP = 20;
 
 /** The ISO date `days` (by default `EXPERIMENT_WINDOW_DAYS`) after `liveSince`. */
 export function checkOn(liveSince: string, days: number = EXPERIMENT_WINDOW_DAYS): string {
@@ -251,7 +253,8 @@ export type Readout =
   | "ebook-store"
   | "pass-price"
   | "answer-limit"
-  | "v-reveal";
+  | "v-reveal"
+  | "tutor-interest";
 
 export type Experiment = {
   id: string;
@@ -619,6 +622,20 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-10-23",
     windowDays: 14,
     readout: "v-reveal",
+    status: "running",
+  },
+  {
+    id: "tutor-interest",
+    title: "1:1 tutoring: is there demand?",
+    change:
+      "A Tutor button in the header, beside Ebooks, opens /tutor: Student or Teacher, then \"Looking for 1:1 tutoring?\" (a teacher is asked \"Would you like to teach 1:1?\"), then Online, Offline or Either on a Yes. Nothing is sold or booked, and no contact details are asked; the page says tutoring will be announced there.",
+    why: "The owner is weighing 1:1 tutoring and wants demand measured before anything is built. One page counts both sides: students who want a tutor and teachers who would teach.",
+    metric:
+      "Student and teacher answers, Yes and No, by Online / Offline / Either, and student Yes by exam (tutor_interest, migration 0190). Header Tutor taps (tutor_link_click) in Vercel, read by hand. Signed-out answers are one row each, so they can count a person twice",
+    rule: `Take tutoring further (ask the Yes students for a price and a number) if ${TUTOR_STUDENT_YES_KEEP}+ students answer Yes in three weeks; below that, remove the button and record the result.`,
+    liveSince: "2026-10-27",
+    windowDays: 21,
+    readout: "tutor-interest",
     status: "running",
   },
 ];
