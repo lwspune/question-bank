@@ -345,9 +345,9 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 
 ### 2026-10
 
-- **2026-10-28 — `/dashboard/sales` (superadmin): passes and books sold, and the money kept, by day, week and month; migrations 0196-0197.**
+- **2026-10-28 — `/dashboard/sales` (superadmin): passes and books sold, and the money kept, by day, week and month; migrations 0197-0198.**
   - **A pass sale now records its price** (`entitlements.amount_paise`, from the paid order `planForPaidOrder` already checks). Before, revenue was sales × the price on that date.
-  - **Past sales were filled in from Razorpay** (`scripts/billing/backfill-pass-amounts.ts`), not from the date. 0197 then requires a price on every paid grant: apply it only after the deploy and the backfill, or every sale fails.
+  - **Past sales were filled in from Razorpay** (`scripts/billing/backfill-pass-amounts.ts`), not from the date. 0198 then requires a price on every paid grant: apply it only after the deploy and the backfill, or every sale fails.
   - **Counted in SQL** (`sales_by_period`, IST days); a refund counts as sold and refunded, no money; staff count, to match Razorpay. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-10-27 (fourth) — Learn tab, Phase 1 (data): Concept Ladder's Class 12 Maths lessons copied into PYQ Vault, an experiment (migration 0192, `npm run learn:import`).**
   - **Copy, not connect (owner):** Concept Ladder exports a checked bundle (sympy, clean tree, its commit) into `learn_*` tables; no shared code or database, and lessons are still written only there.

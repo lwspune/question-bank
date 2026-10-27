@@ -42,7 +42,7 @@ function counts(t: SalesTotals): string {
 /**
  * /dashboard/sales: passes and books sold, and the money kept, per day, week
  * or month (2026-10-28). Platform-wide money, so superadmin only, like
- * /dashboard/pricing. Numbers come from public.sales_by_period (0196).
+ * /dashboard/pricing. Numbers come from public.sales_by_period (0197).
  */
 export default async function SalesPage({ searchParams }: { searchParams?: { view?: string } }) {
   if (!(await getSessionSuperadmin())) redirect("/browse");

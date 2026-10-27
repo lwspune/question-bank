@@ -1,5 +1,5 @@
 /**
- * /dashboard/sales: turns public.sales_by_period's rows (migration 0196) into the
+ * /dashboard/sales: turns public.sales_by_period's rows (migration 0197) into the
  * page's table and summary cards. Pure: dates are IST calendar days as
  * "YYYY-MM-DD" strings, done in UTC arithmetic so the server's own time zone
  * never shifts a day.

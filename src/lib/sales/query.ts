@@ -1,5 +1,5 @@
 /**
- * Reads public.sales_by_period (migration 0196) for /dashboard/sales.
+ * Reads public.sales_by_period (migration 0197) for /dashboard/sales.
  * Service-role only: the page checks for a superadmin first.
  */
 import type { SupabaseClient } from "@supabase/supabase-js";

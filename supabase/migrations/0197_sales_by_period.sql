@@ -1,4 +1,4 @@
--- 0196_sales_by_period.sql -- what each paid pass cost, and sales per day / week / month for
+-- 0197_sales_by_period.sql -- what each paid pass cost, and sales per day / week / month for
 -- /dashboard/sales.
 --
 -- Why: the owner wants passes and money sold tracked on a page, daily, weekly and monthly
@@ -10,7 +10,7 @@
 -- scripts/billing/backfill-pass-amounts.ts.
 --
 -- The column is nullable here: comp and manual grants have no price, and the code that writes it
--- must be live before a paid grant can be REQUIRED to carry one. 0197 adds that rule once the
+-- must be live before a paid grant can be REQUIRED to carry one. 0198 adds that rule once the
 -- deploy and the backfill are done; adding it now would make every sale fail until the deploy.
 --
 -- sales_by_period: one row per period with any sale, oldest first. A period is an IST calendar

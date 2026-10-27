@@ -1,5 +1,5 @@
 /**
- * Integration test for public.sales_by_period (migration 0196), the numbers behind
+ * Integration test for public.sales_by_period (migration 0197), the numbers behind
  * /dashboard/sales.
  *
  * Load-bearing properties:
@@ -10,7 +10,7 @@
  *  - only paid passes count (source 'razorpay'); a comp grant is not a sale;
  *  - books come from ebook_purchases, with the price each buyer paid;
  *  - a grain other than day / week / month is refused;
- *  - a paid pass without its price is refused by the database (0197);
+ *  - a paid pass without its price is refused by the database (0198);
  *  - students and anon cannot call it (service role only).
  *
  * Its sales are dated March 2001, so rows other tests leave in the shared test
@@ -116,7 +116,7 @@ describe.skipIf(!HAS_ENV)("sales_by_period", () => {
     expect(error).not.toBeNull();
   });
 
-  it("refuses a paid pass that does not record its price (0197)", async () => {
+  it("refuses a paid pass that does not record its price (0198)", async () => {
     const { error } = await admin.from("entitlements").insert({
       user_id: userId,
       scope: "mocks",

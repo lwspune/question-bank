@@ -1,6 +1,6 @@
--- 0197_entitlement_amount_required.sql -- a paid pass must record what it cost.
+-- 0198_entitlement_amount_required.sql -- a paid pass must record what it cost.
 --
--- Why: /dashboard/sales adds up entitlements.amount_paise (0196). A paid grant without one would
+-- Why: /dashboard/sales adds up entitlements.amount_paise (0197). A paid grant without one would
 -- count as a sale of Rs 0 and the totals would stop matching Razorpay, with no error anywhere.
 -- Comp and manual grants have no price and stay free to leave it empty.
 --

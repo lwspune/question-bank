@@ -1,7 +1,7 @@
 /**
- * Fill in `entitlements.amount_paise` (migration 0196) for paid passes sold
+ * Fill in `entitlements.amount_paise` (migration 0197) for paid passes sold
  * before the grant code recorded it, from what Razorpay says each payment
- * charged. Run once, after 0196 is applied and before 0197 makes the amount
+ * charged. Run once, after 0197 is applied and before 0198 makes the amount
  * required for a paid grant.
  *
  * Razorpay is the record of what was charged, so its amount is written, never
