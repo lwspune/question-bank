@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { chapterView, homesOf, lessonView, localProgress, type Outline } from "@/lib/learn/lessonState";
+import { chapterView, homesOf, lessonView, localProgress, scopeUpTo, type Outline } from "@/lib/learn/lessonState";
 
 vi.mock("server-only", () => ({}));
 const { toAnswerResult } = await import("@/lib/learn/answer");
@@ -109,6 +109,36 @@ describe("chapterView", () => {
 
   it("is null for a chapter the course does not have", () => {
     expect(chapterView(X, "nope", new Map(), false, NOW)).toBeNull();
+  });
+});
+
+describe("prerequisites a course teaches later (owner, 2026-10-27)", () => {
+  // Board Z teaches B in its first chapter and B's prerequisite A only later (CBSE teaches
+  // Matrices before Determinants, while the lessons make Types of matrices build on a determinant).
+  const Z = outline("z-maths", [
+    { slug: "early", title: "Early", standard: 12, pyqvault: null, parts: [{ chapter: "algebra", concepts: ["B"] }] },
+    { slug: "late", title: "Late", standard: 12, pyqvault: null, parts: [{ chapter: "algebra", concepts: ["A", "C"] }] },
+  ]);
+
+  it("scopeUpTo keeps the concepts of this course chapter and the ones before it", () => {
+    expect([...scopeUpTo(Z, "early", "algebra")]).toEqual(["B"]);
+    expect([...scopeUpTo(Z, "late", "algebra")].sort()).toEqual(["A", "B", "C"]);
+  });
+
+  it("does not lock a concept behind a prerequisite the course teaches in a later chapter", () => {
+    const early = chapterView(Z, "early", new Map(), true, Date.now())!;
+    expect(early.concepts.map((c) => [c.code, c.state])).toEqual([["B", "available"]]);
+    const v = lessonView({ pool, scope: scopeUpTo(Z, "early", "algebra"), code: "B", learner: new Map(), signedIn: true });
+    expect(v).toMatchObject({ locked: false, buildsOn: [] });
+  });
+
+  it("still locks behind a prerequisite taught in the same or an earlier chapter", () => {
+    const late = chapterView(Z, "late", new Map(), true, Date.now())!;
+    // C needs B (an earlier chapter, not mastered): locked; A has no prerequisite: open.
+    expect(late.concepts.map((c) => [c.code, c.state])).toEqual([
+      ["A", "available"],
+      ["C", "locked"],
+    ]);
   });
 });
 

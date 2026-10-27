@@ -63,9 +63,17 @@ export function homesOf(outlines: Outline[], chapter: string, code: string): Hom
   );
 }
 
-/** The concepts of pool chapter `chapter` that course `outline` shows anywhere. */
-export function scopeOf(outline: Outline, chapter: string): Set<string> {
-  return new Set(outline.chapters.flatMap((ch) => ch.parts.filter((p) => p.chapter === chapter).flatMap((p) => p.concepts)));
+/**
+ * The concepts of pool chapter `chapter` the course shows in course chapter `courseChapter` or any
+ * chapter before it: the scope a concept there is gated in (owner, 2026-10-27). A prerequisite the
+ * course teaches only LATER counts as known, as one it never teaches does: CBSE teaches Matrices
+ * before Determinants, while the lessons make Types of matrices build on a determinant.
+ */
+export function scopeUpTo(outline: Outline, courseChapter: string, chapter: string): Set<string> {
+  const upTo = outline.chapters.findIndex((c) => c.slug === courseChapter);
+  return new Set(
+    outline.chapters.slice(0, upTo + 1).flatMap((ch) => ch.parts.filter((p) => p.chapter === chapter).flatMap((p) => p.concepts)),
+  );
 }
 
 export type LessonView = {
@@ -138,7 +146,7 @@ export function chapterView(
   const concepts = ch.parts.flatMap((part) => {
     const pool = outline.pools[part.chapter];
     const states = new Map([...learner].filter(([k]) => k.startsWith(`${part.chapter}/`)).map(([k, v]) => [k.split("/")[1], v.state]));
-    const scope = scopeOf(outline, part.chapter);
+    const scope = scopeUpTo(outline, courseChapter, part.chapter);
     return part.concepts.flatMap((code) => {
       const node = pool.concepts.find((c) => c.code === code);
       if (!node || !node.published) return [];
