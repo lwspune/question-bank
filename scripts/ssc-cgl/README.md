@@ -240,7 +240,8 @@ npx tsx scripts/ssc-cgl/commit.ts <shiftId> --apply        # uploads figure pict
   Shipped rows: `trim-stems.ts` (dry run makes every check; `--apply` swaps the picture in place,
   the row keeping its id, content_hash recomputed through rows.ts, logged to `stem-trim-log.json`).
 - **Replacing a shipped row's pictures** (a better crop, a chart redrawn from its numbers):
-  `refigure.ts <shift> <n> --from=<dir>`, same guards. The 2023 scan's option crops now cut at the
+  `refigure.ts <shift> <n> --from=<dir>`, same guards; `<dir>` must hold only that question's
+  pictures (it refuses a file the row does not have). The 2023 scan's option crops now cut at the
   white gaps between pictures (`option_bands`), not halfway between the option marks: a tall
   picture is not centred on its mark (24 Jul 2023 S1 Q2 had arcs of its neighbours).
 - **The site shows a stem picture at most 256 px tall** (options 112-128 px), and a smaller one at
@@ -248,6 +249,11 @@ npx tsx scripts/ssc-cgl/commit.ts <shiftId> --apply        # uploads figure pict
   with a LANCZOS-scaled copy). A chart whose labels stay unreadable is redrawn from the numbers
   printed on it (`redraw_charts.py`: values as data, checked to sum to the whole, SSC's order and
   colours), the owner's one exception to drawn figures. Never redraw a reasoning figure.
+  **Three-circle Venn counting diagrams count as charts** (owner, 2026-10-27): the region numbers
+  are the data, the circles are always the same. `redraw_venns.py` draws them from `venns.json`,
+  and `tests/ssc-cgl-venns.test.ts` re-solves each question from that data against SSC's key. A
+  circle SSC left unlabelled gets a label only when the question names it (`added`). A diagram
+  whose overlaps are the puzzle (2024-09-17 S3 Q12, four shapes) stays SSC's picture.
 - **Held for review** (beyond wrong keys): items SSC printed in Hindi only (our English is a
   translation), stems SSC's print cuts off or washes out, a chart whose legend is blank.
 - **Not readable yet:** 1 Dec 2022 Shift 3 (the file starts mid-paper); 5 Dec S4, 7 Dec S2,
