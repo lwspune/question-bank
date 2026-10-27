@@ -486,6 +486,56 @@ export function buildChapterwiseChapterHtml(input: ChapterwiseChapterInput): str
   );
 }
 
+// ── Textbook Solutions chapter (board) ──────────────────────────────────────
+
+export type TextbookChapterInput = {
+  number: number;
+  name: string;
+  bookTitle: string;
+  /** The book's layout, as /board reads it: section -> block -> runs of questions (a passage's questions one run). */
+  groups: { title: string; blocks: { label: string | null; units: QuestionRow[][] }[] }[];
+  /** Question id -> the book's own number ("Q.3 (i)", lib/board/cleanRef). */
+  printedOf: ReadonlyMap<string, PrintedLabel>;
+  images?: Map<string, string>;
+  head: string;
+  /** A later section of a chapter printed on its own (scripts/ebooks/build): no chapter heading. */
+  continued?: boolean;
+};
+
+/** A question's worked solution, set right under it: an MCQ's answer first. */
+function textbookSolution(q: QuestionRow, images: Map<string, string> | undefined): string {
+  const answer = q.questionFormat === "subjective" ? "" : `<div class="ans">Answer: ${esc(answerOf(q))}</div>`;
+  const body = q.solution ? blocksHtml(q.solution) : "";
+  return `<div class="tsol"><div class="tl">Solution</div>${answer}${body}${figure(q.solutionImageUrl, images)}</div>`;
+}
+
+export function buildTextbookChapterHtml(input: TextbookChapterInput): string {
+  const common = { title: input.name, images: input.images, printedOf: input.printedOf, head: "" };
+  const units = input.groups.flatMap((g) => g.blocks.flatMap((b) => b.units));
+  const count = units.reduce((n, u) => n + u.length, 0);
+  const header =
+    `<header class="chead"><div class="cn">${String(input.number).padStart(2, "0")}</div><div>` +
+    `<div class="eyebrow">Chapter ${input.number} · ${esc(input.bookTitle)}</div><h1>${esc(input.name)}</h1>` +
+    `<div class="pmeta">${plural(count, "question", "questions")}</div></div></header>`;
+  const body = input.groups
+    .map(
+      (g) =>
+        `<h2 class="part">${esc(g.title)}</h2>` +
+        g.blocks
+          .map(
+            (b) =>
+              (b.label ? `<h3 class="mgroup">${esc(b.label)}</h3>` : "") +
+              // A passage prints once over its questions; their solutions follow the run.
+              b.units
+                .map((u) => paperBodyHtml({ ...common, questions: u }) + u.map((q) => textbookSolution(q, input.images)).join(""))
+                .join("")
+          )
+          .join("")
+    )
+    .join("");
+  return doc(input.name, "textbook", input.head, (input.continued ? "" : header) + `<section id="questions" class="bp">${body}</section>`);
+}
+
 // ── Cover and contents ──────────────────────────────────────────────────────
 
 const FRONT_CSS = `
@@ -529,6 +579,8 @@ const HOW: Record<EbookKind, string> = {
     "Each chapter gathers the questions the board has asked more than once, most-asked first, then the types of question it keeps coming back to. A line over each says when it was asked. The solutions close the chapter under the same numbers, so you can try them all before you check.",
   chapterwise:
     "Each chapter gathers its board questions by marks: the 1-mark questions first, then 2, 3 and more, then the case studies and passages, then questions from earlier years. A line over each says when it was asked. The solutions close the chapter under the same numbers, so you can try them all before you check.",
+  textbook:
+    "Each chapter follows the textbook: its sections in order, each with its solved examples and exercises, every question under the book's own number. The worked solution sits right under each question, so you can check your work as you go.",
 };
 
 /** The gold seal on the premium cover, by kind. */
@@ -536,6 +588,7 @@ const SEAL: Partial<Record<EbookKind, [string, string, string]>> = {
   papers: ["Fully", "Solved", "Every Q"],
   repeats: ["Asked", "Again", "& again"],
   chapterwise: ["Every", "Chapter", "By marks"],
+  textbook: ["Every", "Exercise", "Solved"],
 };
 
 export type EbookFrontInput = {

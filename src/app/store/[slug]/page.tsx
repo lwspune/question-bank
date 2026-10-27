@@ -66,6 +66,12 @@ const INSIDE: Record<StoreEbook["kind"], string[]> = {
     "When each was asked, on a line over the question",
     "A worked solution to every question at the end of its chapter",
   ],
+  textbook: [
+    "Every exercise of the textbook, in the book's own order",
+    "Each question under the book's own number",
+    "A worked solution right under each question",
+    "The solved examples and miscellaneous exercises too",
+  ],
 };
 
 export default async function StoreBookPage({ params }: { params: { slug: string } }) {

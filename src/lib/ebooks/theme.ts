@@ -22,7 +22,7 @@ export const PAPER = "#f5f7fb";
 /** The site's navy (--foreground) and muted text (--muted-foreground). */
 export const INK = "#0f1d4a";
 export const MUTED = "#55657f";
-export const ACCENT: Record<EbookKind, string> = { formula: "#1d4ed8", notes: "#6d28d9", pyq: "#047857", papers: "#b45309", repeats: "#be123c", chapterwise: "#0f766e" };
+export const ACCENT: Record<EbookKind, string> = { formula: "#1d4ed8", notes: "#6d28d9", pyq: "#047857", papers: "#b45309", repeats: "#be123c", chapterwise: "#0f766e", textbook: "#4338ca" };
 export const KIND_LABEL: Record<EbookKind, string> = {
   formula: "Formula Book",
   notes: "Notes Book",
@@ -30,10 +30,11 @@ export const KIND_LABEL: Record<EbookKind, string> = {
   papers: "Solved Papers",
   repeats: "Repeated PYQs",
   chapterwise: "Chapter-wise PYQs",
+  textbook: "Textbook Solutions",
 };
 
 /** The board books, which wear the navy and gold cover (2026-10-26). */
-export const PREMIUM_KINDS: ReadonlySet<EbookKind> = new Set<EbookKind>(["papers", "repeats", "chapterwise"]);
+export const PREMIUM_KINDS: ReadonlySet<EbookKind> = new Set<EbookKind>(["papers", "repeats", "chapterwise", "textbook"]);
 
 /** Shared by every part. Pages keep their margins; the page tint shows through them once painted. */
 export const THEME_CSS = `
@@ -147,4 +148,7 @@ table.ref { border-collapse: collapse; width: 100%; font-size: 9pt; }
 /* Chapter-wise PYQs: a marks group heading, above the per-question lines */
 .mgroup { font-size: 13pt; margin: 14pt 0 8pt; padding: 4pt 10pt; border-radius: 6pt; background: var(--soft); color: var(--ink); break-after: avoid; }
 .mgroup:first-child { margin-top: 0; }
+/* Textbook Solutions: the worked solution right under its question */
+.tsol { margin: -6pt 0 13pt 2.6em; padding: 6pt 10pt; border-left: 2.5pt solid var(--emerald); background: var(--emerald-bg); border-radius: 0 6pt 6pt 0; }
+.tsol .tl { font-size: 7.5pt; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--emerald); margin-bottom: 2pt; }
 `;

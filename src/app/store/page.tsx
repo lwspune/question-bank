@@ -31,6 +31,7 @@ const KIND_LINE: Record<StoreEbook["kind"], string> = {
   papers: "Past board papers, solved",
   repeats: "Questions the board asks again",
   chapterwise: "Every board question, by chapter and marks",
+  textbook: "Every textbook exercise, solved",
 };
 
 const shelfId = (key: string) => `shelf-${key}`;
