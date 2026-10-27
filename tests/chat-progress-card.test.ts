@@ -273,6 +273,12 @@ describe("progressRows", () => {
     }
   });
 
+  it("leaves a band with no chapters out of the Chapters line, as it leaves out a zero line", () => {
+    const attempts = [attempt("A1", { startedAt: daysAgo(2) })];
+    const card = buildProgressCard(input({ perf: payload(attempts, [...four("A1", 0, 0), ...four("A1", 1, 0)]) }));
+    expect(progressRows(card).find((r) => r.label === "Chapters")?.value).toBe("Weak 2");
+  });
+
   it("says down, or the same, when accuracy fell or held", () => {
     const down = buildProgressCard(input({ practice: { week: { answered: 10, right: 5 }, prev: { answered: 10, right: 8 } } }));
     expect(progressRows(down)[0].value).toBe("10 answered, 50% right, down 30 points on last week");

@@ -266,9 +266,18 @@ export function progressRows(card: ProgressCard): ProgressRow[] {
   }
   if (card.chapters) {
     const c = card.chapters;
+    // A band with no chapters is left out, like a zero line.
+    const bandText = [
+      ["strong", c.strong],
+      ["getting there", c.mid],
+      ["weak", c.weak],
+    ]
+      .filter(([, n]) => (n as number) > 0)
+      .map(([name, n]) => `${name} ${n}`)
+      .join(", ");
     rows.push({
       label: "Chapters",
-      value: `Strong ${c.strong}, getting there ${c.mid}, weak ${c.weak}`,
+      value: bandText.charAt(0).toUpperCase() + bandText.slice(1),
       detail: c.movedUp.length > 0 ? `Moved up this week: ${c.movedUp.join(", ")}` : undefined,
     });
   }
