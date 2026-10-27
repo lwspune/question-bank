@@ -50,6 +50,9 @@ export type ShotArgs = {
    *  every page load (shots.ts), e.g. a saved V conversation under "v-chat",
    *  so a state can be shown without writing anything to production. */
   storage: string | null;
+  /** `--cookie=name=value[,name=value]`: cookies set on both sites before the shots, e.g.
+   *  `qb_exam=cbse-12` so the nav shows that exam's tabs. */
+  cookies: { name: string; value: string }[] | null;
 };
 
 /** "/guide/nda?x=1" → "guide-nda"; "/" → "home". */
@@ -141,7 +144,17 @@ export function parseShotArgs(argv: string[]): ShotArgs {
     withPass: flag("with-pass"),
     click: clickArg(value("click")),
     storage: value("storage") ?? null,
+    cookies: cookieArg(value("cookie")),
   };
+}
+
+function cookieArg(raw: string | undefined): { name: string; value: string }[] | null {
+  if (raw === undefined) return null;
+  return raw.split(",").map((pair) => {
+    const at = pair.indexOf("=");
+    if (at < 1) throw new Error(`--cookie= takes name=value pairs, e.g. --cookie=qb_exam=cbse-12, not "${pair}"`);
+    return { name: pair.slice(0, at).trim(), value: pair.slice(at + 1).trim() };
+  });
 }
 
 function clickArg(raw: string | undefined): string[] | null {

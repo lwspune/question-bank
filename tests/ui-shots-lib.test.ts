@@ -232,6 +232,16 @@ describe("--storage: seed localStorage before every page load", () => {
     expect(set).toEqual({ "v-chat": '{"v":1,"turns":[]}', theme: "dark" });
   });
 
+  it("reads --cookie as name=value pairs, so a view chosen by a cookie (the exam) can be captured", () => {
+    expect(parseShotArgs(["--pages=/"]).cookies).toBeNull();
+    expect(parseShotArgs(["--pages=/", "--cookie=qb_exam=cbse-12"]).cookies).toEqual([{ name: "qb_exam", value: "cbse-12" }]);
+    expect(parseShotArgs(["--pages=/", "--cookie=a=1,b=x=y"]).cookies).toEqual([
+      { name: "a", value: "1" },
+      { name: "b", value: "x=y" },
+    ]);
+    expect(() => parseShotArgs(["--pages=/", "--cookie=novalue"])).toThrow(/name=value/);
+  });
+
   it("never throws where storage is blocked", () => {
     const localStorage = { setItem: () => { throw new Error("blocked"); } };
     expect(() => new Function("localStorage", storageScript({ a: "b" }))(localStorage)).not.toThrow();
