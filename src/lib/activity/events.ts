@@ -57,6 +57,10 @@ export const ACTIVITY_KINDS = [
   // earned it; it is telemetry, never a feature. See lib/celebrate/milestones.
   "milestone_reached", // metadata: answered (the milestone)
   "push_clicked", // tapped one of our browser notifications (refId = push_sends.id, metadata: kind) — 0128
+  // Tapped Understood or Review later under a written model answer (refId =
+  // questionId, metadata: surface, mark) — 0196. The tap alone; the drill rows
+  // it implies are written beside it. See lib/questions/selfMark.
+  "self_mark",
 ] as const;
 
 export type ActivityKind = (typeof ACTIVITY_KINDS)[number];

@@ -215,6 +215,14 @@ export const V_PROGRESS_STUDENTS_KEEP = 30;
 export const V_PROGRESS_NEXT_STEP_KEEP_PCT = 25;
 
 /**
+ * "self-mark": keep Understood / Review later under written model answers if
+ * at least this share of signed-in written-answer reveals get a tap (%)...
+ */
+export const SELF_MARK_TAP_KEEP_PCT = 10;
+/** ...and at least this share of the questions saved for review are later fixed (%). */
+export const SELF_MARK_FIXED_KEEP_PCT = 20;
+
+/**
  * "pass-price": keep Rs 199 if a week's pass revenue is at least the week
  * before the change (6 sales at Rs 99)...
  */
@@ -269,7 +277,8 @@ export type Readout =
   | "answer-limit"
   | "v-reveal"
   | "tutor-interest"
-  | "v-progress";
+  | "v-progress"
+  | "self-mark";
 
 export type Experiment = {
   id: string;
@@ -627,6 +636,19 @@ export const EXPERIMENTS: readonly Experiment[] = [
     status: "running",
   },
   {
+    id: "self-mark",
+    title: "Understood / Review later on written answers",
+    change:
+      "Under every written (subjective) model answer on /browse, the /questions pages and the board readers, two buttons: Understood and Review later. Review later sends the question to Fix your mistakes (/drill), where written questions are now served with the same two buttons; Understood there fixes it. Signed-out visitors see the buttons and are asked to sign in, and the tap saves itself once they do.",
+    why: "The drill was fed only by graded MCQ picks, so the ~27,000 written questions never reached it: in the 30 days to 2026-10-28 ~400 students opened ~6,500 model answers and nothing came back to them. No grader exists for a written answer, so the student judges their own (the owner's call): spaced repetition and metacognition for the board-exam half of the bank.",
+    metric:
+      "Share of signed-in written-answer reveals (question_practiced on a subjective question, surfaces bank + board) followed by a self_mark tap the same day; and of the questions saved for review, the share later marked Understood (an answer_correct with selfMark)",
+    rule: `Keep it if ${SELF_MARK_TAP_KEEP_PCT}%+ of written reveals get a tap and ${SELF_MARK_FIXED_KEEP_PCT}%+ of saved questions are fixed within the window; under the tap share, ask students before adding anything to the buttons.`,
+    liveSince: "2026-10-28",
+    readout: "self-mark",
+    status: "running",
+  },
+  {
     id: "pass-price",
     title: "Premium Pass at Rs 199",
     change:
@@ -763,6 +785,8 @@ export type ReadingMetric =
   | "v-plan-days-done"
   | "v-progress-students"
   | "v-progress-next-step"
+  | "self-mark-tap-share"
+  | "self-mark-review-fixed"
   | "price-weekly-revenue"
   | "price-checkout-paid"
   | "answer-limit-students"
@@ -962,6 +986,18 @@ export const READINGS: Record<ReadingMetric, { label: string; source: string; en
     label: "V: progress-card openers who drilled or opened /performance within 30 minutes (%)",
     source:
       "user_activity: each 'v_progress' view followed within 30 minutes by drill_started, or by surface_viewed 'performance', for the same student",
+    entries: [],
+  },
+  "self-mark-tap-share": {
+    label: "Written answers: reveals followed by an Understood / Review later tap (%)",
+    source:
+      "user_activity: question_practiced on a question_format subjective question (surfaces bank + board), signed-in, since liveSince; the share with a self_mark row for the same student and question the same India day",
+    entries: [],
+  },
+  "self-mark-review-fixed": {
+    label: "Written answers: questions saved for review later marked Understood (%)",
+    source:
+      "user_activity answer_wrong with metadata.selfMark review since liveSince, distinct (user, question); the share with a later answer_correct carrying metadata.selfMark understood",
     entries: [],
   },
   "v-false-not-found": {

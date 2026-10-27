@@ -112,7 +112,7 @@ export default async function DrillPage({
                   ? "Five new questions from where you are weakest."
                   : drill.fresh > 0
                     ? "Your mistakes first, then new ones from the same topics."
-                    : "Questions you\u2019ve got wrong before, one at a time."}
+                    : "Questions you\u2019ve got wrong or saved for review, one at a time."}
             </p>
           </div>
         </header>

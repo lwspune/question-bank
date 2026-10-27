@@ -56,6 +56,7 @@ import SolutionViews from "@/components/visuals/SolutionViews";
 import { optionVersions, solutionVersions, stemVersions } from "@/lib/i18n/bilingual";
 import { useQuestionLang } from "@/lib/i18n/useQuestionLang";
 import { singleItemStatKey, type ItemStatAggregate } from "@/lib/itemStats/types";
+import SelfMarkButtons from "@/components/reveal/SelfMarkButtons";
 
 type OptionLabel = OptionRow["label"];
 
@@ -132,6 +133,9 @@ export default function QuestionCard({
   const isSubjective = question.questionFormat === "subjective";
   const isNumeric = question.questionFormat === "numeric";
   const isOpenFormat = isSubjective || isNumeric;
+  // Where a written answer's Understood / Review later is recorded: the bank
+  // lists and the board readers, never the question of the day or a guide.
+  const selfMarkSurface = surface === "bank" || surface === "board" ? surface : null;
   const cart = useCart();
   const inCart = !hideCart && cart.has(question.id);
 
@@ -600,6 +604,14 @@ export default function QuestionCard({
                   }
                 />
               </div>
+            )}
+
+            {/* Understood / Review later under a written model answer
+                (lib/questions/selfMark). Not in the paper editor, the one
+                surface that hides the cart: staff there are building a paper,
+                not studying. */}
+            {isSubjective && showSolution && question.solution && selfMarkSurface && !hideCart && (
+              <SelfMarkButtons questionId={question.id} surface={selfMarkSurface} />
             )}
 
             {/* Strategy and concept chips: one line, SHOWN only with the

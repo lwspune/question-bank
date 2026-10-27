@@ -57,6 +57,21 @@ describe("parseDrillAnswer", () => {
     expect(parseDrillAnswer({ questionId: ID }).ok).toBe(false);
     expect(parseDrillAnswer({ label: "A" }).ok).toBe(false);
   });
+
+  it("accepts a self-mark on a written question instead of a label", () => {
+    expect(parseDrillAnswer({ questionId: ID, selfMark: "review" })).toEqual({
+      ok: true,
+      questionId: ID,
+      selfMark: "review",
+    });
+    expect(parseDrillAnswer({ questionId: ID, selfMark: "understood" })).toMatchObject({ selfMark: "understood" });
+  });
+
+  it("rejects an unknown self-mark, and a body carrying both a label and a self-mark", () => {
+    expect(parseDrillAnswer({ questionId: ID, selfMark: "maybe" }).ok).toBe(false);
+    // Which one would be graded? Neither guess is safe, so refuse.
+    expect(parseDrillAnswer({ questionId: ID, label: "A", selfMark: "review" }).ok).toBe(false);
+  });
 });
 
 describe("parseDrillComplete", () => {

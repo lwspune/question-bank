@@ -176,6 +176,10 @@ export const TELEMETRY_KINDS: readonly string[] = [
   // would count those answers twice.
   "milestone_reached",
   "push_clicked",
+  // Understood / Review later under a written model answer (2026-10-28,
+  // migration 0196). Always beside the reveal row it judges, so counting it as
+  // adoption would count that reveal twice.
+  "self_mark",
 ];
 
 export const FEATURE_LABELS: Partial<Record<ActivityKind, string>> = {
@@ -777,16 +781,16 @@ export const SURFACE_COVERAGE: SurfaceCoverage[] = [
   },
   {
     surface: "Question bank (/browse, /questions)",
-    via: "user_activity via the reveal beacon (surface='bank'); a tapped option is graded server-side from 2026-10-02",
-    kinds: ["question_practiced", "answer_wrong", "answer_correct"],
+    via: "user_activity via the reveal beacon (surface='bank'); a tapped option is graded server-side from 2026-10-02; a written answer's Understood / Review later tap from 2026-10-28 (self_mark, migration 0196)",
+    kinds: ["question_practiced", "answer_wrong", "answer_correct", "self_mark"],
     practiceSurface: "bank",
     tracked: "partial",
     lost: "Only a SIGNED-IN student's answer reveals are recorded. A reveal from a tapped option carries its verdict (metadata.chose/correct) only from 2026-10-02; earlier reveals have none, and a reveal via 'Show solution' never does. Anonymous visitors — most of the traffic, and the whole point of the 317 landing pages — leave nothing, by design: attributing them over time would need a persistent device id, on an audience that is largely under 18.",
   },
   {
     surface: "Board reader (/board)",
-    via: "user_activity via the reveal beacon (surface='board', migration 0108)",
-    kinds: ["question_practiced"],
+    via: "user_activity via the reveal beacon (surface='board', migration 0108); a written answer's Understood / Review later tap from 2026-10-28 (self_mark, migration 0196)",
+    kinds: ["question_practiced", "self_mark"],
     practiceSurface: "board",
     tracked: "partial",
     lost: "Answer reveals are recorded (signed-in only); opening or reading a chapter is not. The reader is reported separately only from 2026-09-18: it shared the bank's reveal hook and wrote no surface of its own, so every earlier reveal is indistinguishable from a /browse one and stays in the bank's row. Not backfillable — the distinction was never recorded.",

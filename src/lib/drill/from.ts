@@ -26,6 +26,7 @@ export const DRILL_FROM = [
   "push", // the due-nudge notification
   "again", // "Another five" at the end of a drill
   "nav", // the Fix tab graduates get in place of Board (lib/nav/fifthTab)
+  "review", // "Saved for review" under a written model answer (lib/questions/selfMark)
 ] as const;
 
 export type DrillFrom = (typeof DRILL_FROM)[number];

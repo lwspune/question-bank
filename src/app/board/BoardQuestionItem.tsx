@@ -25,6 +25,7 @@ import { asBilingual, type BoardQuestion } from "@/lib/board/query";
 import { hasMarathi } from "@/lib/i18n/bilingual";
 import { BilingualOption, BilingualSolution, BilingualStem } from "@/components/i18n/BilingualText";
 import SolutionViews from "@/components/visuals/SolutionViews";
+import SelfMarkButtons from "@/components/reveal/SelfMarkButtons";
 
 function questionHasAnswer(q: BoardQuestion): boolean {
   return !!q.solution || q.options.some((o) => o.isCorrect);
@@ -230,6 +231,11 @@ export default function BoardQuestionItem({
                 }
               />
             </div>
+          )}
+          {/* Understood / Review later: the student judges their own written
+              answer, and Review later sends it to the drill (lib/questions/selfMark). */}
+          {revealed && q.solution && q.format === "subjective" && (
+            <SelfMarkButtons questionId={q.id} surface="board" className="mt-3" />
           )}
         </div>
       ) : (
