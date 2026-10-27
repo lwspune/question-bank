@@ -80,6 +80,7 @@ export async function POST(request: NextRequest) {
     paymentId: decision.paymentId,
     scope: decision.grant.scope,
     expiresAt: computeExpiry(Date.now(), decision.grant.durationDays),
+    amountPaise: decision.grant.amountPaise,
   });
   if (result.kind === "error") {
     console.error("billing webhook: grant failed", result.message);

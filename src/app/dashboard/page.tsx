@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import {
   Activity,
   AlertTriangle,
+  BarChart3,
   HeartPulse,
   ArrowRight,
   BookOpen,
@@ -334,6 +335,14 @@ function QuickActions({
           icon={<IndianRupee className="h-5 w-5" aria-hidden />}
           title="Pricing"
           description="The passes on sale (price, length, copy) and the free-mock limit. No deploy needed."
+        />
+      )}
+      {isSuperadmin && (
+        <ActionCard
+          href="/dashboard/sales"
+          icon={<BarChart3 className="h-5 w-5" aria-hidden />}
+          title="Sales"
+          description="Passes and books sold, and the money taken, by day, week and month."
         />
       )}
       {isSuperadmin && (

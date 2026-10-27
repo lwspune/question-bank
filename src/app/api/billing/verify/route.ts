@@ -103,6 +103,7 @@ export async function POST(request: NextRequest) {
     paymentId: body.razorpay_payment_id,
     scope: decided.grant.scope,
     expiresAt: computeExpiry(Date.now(), decided.grant.durationDays),
+    amountPaise: decided.grant.amountPaise,
   });
   if (result.kind === "error") {
     console.error("grant after verify failed:", result.message);

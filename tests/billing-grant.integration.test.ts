@@ -98,6 +98,7 @@ describe.skipIf(!HAS_ENV)("Razorpay grant → entitlement → access", () => {
       paymentId: PAY_PAID,
       scope: SCOPE_MOCKS,
       expiresAt: computeExpiry(Date.now(), 182),
+      amountPaise: 19900,
     });
     expect(result.kind).toBe("ok");
 
@@ -111,12 +112,23 @@ describe.skipIf(!HAS_ENV)("Razorpay grant → entitlement → access", () => {
     expect(count).toBe(1);
   });
 
+  it("records what the buyer paid, so /dashboard/sales can add it up", async () => {
+    const { data, error } = await admin
+      .from("entitlements")
+      .select("amount_paise")
+      .eq("provider_ref", PAY_PAID)
+      .single();
+    expect(error).toBeNull();
+    expect(data?.amount_paise).toBe(19900);
+  });
+
   it("re-granting the same paymentId is idempotent (no double-grant)", async () => {
     const result = await grantRazorpayEntitlement({
       userId: paidUserId,
       paymentId: PAY_PAID,
       scope: SCOPE_MOCKS,
       expiresAt: computeExpiry(Date.now(), 182),
+      amountPaise: 19900,
     });
     expect(result.kind).toBe("already_granted");
 
@@ -136,6 +148,7 @@ describe.skipIf(!HAS_ENV)("Razorpay grant → entitlement → access", () => {
       paymentId: PAY_PAID,
       scope: SCOPE_MOCKS,
       expiresAt: computeExpiry(Date.now(), 182),
+      amountPaise: 19900,
     });
     expect(replay.kind).toBe("already_granted");
     await expect(userHasAccess(paidClient, paidUserId, SCOPE_MOCKS)).resolves.toBe(false);
@@ -155,6 +168,7 @@ describe.skipIf(!HAS_ENV)("Razorpay grant → entitlement → access", () => {
       paymentId: PAY_EXPIRED,
       scope: SCOPE_ALL,
       expiresAt: new Date(Date.now() - 86_400_000).toISOString(), // yesterday
+      amountPaise: 9900,
     });
     expect(result.kind).toBe("ok");
 

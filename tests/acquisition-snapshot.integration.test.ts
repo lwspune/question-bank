@@ -124,6 +124,7 @@ describe.skipIf(!HAS_ENV)("get_acquisition_snapshot (migration 0125)", () => {
       scope: "mocks",
       source: "razorpay",
       status: "active",
+      amount_paise: 19900,
       note: `test ${RUN_ID}`,
     });
     expect(eErr).toBeNull();

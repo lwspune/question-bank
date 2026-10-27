@@ -143,7 +143,7 @@ export type PaidOrder = {
   notes?: Record<string, string> | null;
 };
 
-export type OrderGrant = { planId: string; scope: string; durationDays: number | null };
+export type OrderGrant = { planId: string; scope: string; durationDays: number | null; amountPaise: number };
 
 /**
  * What a paid order grants, for the account claiming it — decided from the
@@ -176,7 +176,7 @@ export function planForPaidOrder(
   if (order.amount_paid !== amount || order.currency !== notes.currency) {
     return { ok: false, reason: "amount does not match order" };
   }
-  return { ok: true, grant: { planId: notes.planId, scope: notes.scope, durationDays } };
+  return { ok: true, grant: { planId: notes.planId, scope: notes.scope, durationDays, amountPaise: amount } };
 }
 
 /**

@@ -51,7 +51,7 @@ describe("stampOrderNotes", () => {
 describe("planForPaidOrder", () => {
   it("grants what the notes say, to the buyer they name", () => {
     const r = planForPaidOrder(order(), "u1");
-    expect(r).toEqual({ ok: true, grant: { planId: "mock-pass-6m", scope: SCOPE_MOCKS, durationDays: 182 } });
+    expect(r).toEqual({ ok: true, grant: { planId: "mock-pass-6m", scope: SCOPE_MOCKS, durationDays: 182, amountPaise: 9900 } });
   });
 
   it("does not need the plan to still exist or be active — the order is the contract", () => {
