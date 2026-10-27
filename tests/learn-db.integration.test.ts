@@ -374,6 +374,22 @@ describe.skipIf(!HAS_ENV)("Learn tables (0190)", () => {
       expect(other.data).toEqual([]);
     });
 
+    it("learn_experiment_readout counts students who answered, mastered and came back on a second day (0193)", async () => {
+      // Backdate one of Alice's answers by a day, so she has answered on two different days.
+      const { data: one } = await admin.from("learn_attempts").select("id").eq("user_id", aliceId).order("id").limit(1).single();
+      await admin.from("learn_attempts").update({ created_at: new Date(Date.now() - 26 * 3600_000).toISOString() }).eq("id", one!.id);
+      const since = new Date(Date.now() - 3 * 86_400_000).toISOString();
+      const { data, error } = await admin.rpc("learn_experiment_readout", { p_since: since });
+      expect(error).toBeNull();
+      const r = data as { students: number; mastered_one: number; returned_second_day: number; answers: number };
+      expect(r.students).toBeGreaterThanOrEqual(2); // Alice and Bob
+      expect(r.mastered_one).toBeGreaterThanOrEqual(1); // Alice
+      expect(r.returned_second_day).toBeGreaterThanOrEqual(1); // Alice
+      expect(r.answers).toBeGreaterThan(0);
+      // Only the service role reads it.
+      expect((await alice.rpc("learn_experiment_readout", { p_since: since })).error).not.toBeNull();
+    });
+
     it("anon gets nothing from the own-progress reads", async () => {
       expect((await anon.rpc("learn_my_misses", { p_exam: "x" })).error).not.toBeNull();
       expect((await anon.rpc("learn_my_progress", {})).error).not.toBeNull();

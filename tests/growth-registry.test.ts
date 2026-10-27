@@ -75,6 +75,7 @@ describe("EXPERIMENTS", () => {
       "formula-pages",
       "imat",
       "indexing",
+      "learn",
       "mock-together",
       "notes-titles",
       "onboarding-arms",
