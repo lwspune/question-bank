@@ -1,5 +1,7 @@
 /**
- * Put seven board subjects' chapters in textbook order (2026-10-26, owner OK).
+ * Put board subjects' chapters in textbook order (owner OK: seven on 2026-10-26,
+ * four more, CBSE 11 and MH Class 11 Physics and Chemistry, on 2026-10-27).
+ * Re-running is safe: a subject already in order moves nothing.
  *
  *   npx tsx scripts/fix-chapter-order.ts            # dry run: old -> new per chapter
  *   npx tsx scripts/fix-chapter-order.ts --apply    # writes; saves the old values first
@@ -13,8 +15,9 @@
  * Where each order comes from:
  * - CBSE (NCERT): the books' solved examples are numbered by chapter
  *   ("Eg 7.1" is chapter 7); each subject read 1..N with no gap or repeat.
- * - Maharashtra HSC 12 (Balbharati): the chapter PDFs in scripts/stateboard/config.ts
- *   are named by their book number ("01. Rotational Dynamics.pdf").
+ * - Maharashtra HSC 12 and Class 11 (Balbharati): the chapter PDFs in
+ *   scripts/stateboard/config.ts and scripts/mh-sb-11/config.ts are named by
+ *   their book number ("01. Rotational Dynamics.pdf").
  * Retired "[Outdated]" chapters stay after the book's (lib/chapterOrder).
  */
 import { join } from "node:path";
@@ -25,6 +28,83 @@ import { planChapterOrder, type ChapterRow } from "./lib/chapterOrder";
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 
 const ORDERS: { exam: string; subject: string; chapters: string[] }[] = [
+  {
+    exam: "CBSE Class 11",
+    subject: "Physics",
+    chapters: [
+      "Units and Measurement",
+      "Motion in a Straight Line",
+      "Motion in a Plane",
+      "Laws of Motion",
+      "Work, Energy and Power",
+      "System of Particles and Rotational Motion",
+      "Gravitation",
+      "Mechanical Properties of Solids",
+      "Mechanical Properties of Fluids",
+      "Thermal Properties of Matter",
+      "Thermodynamics",
+      "Kinetic Theory",
+      "Oscillations",
+      "Waves",
+    ],
+  },
+  {
+    exam: "CBSE Class 11",
+    subject: "Chemistry",
+    chapters: [
+      "Some Basic Concepts of Chemistry",
+      "Structure of Atom",
+      "Classification of Elements and Periodicity in Properties",
+      "Chemical Bonding and Molecular Structure",
+      "Thermodynamics",
+      "Equilibrium",
+      "Redox Reactions",
+      "Organic Chemistry – Some Basic Principles and Techniques",
+      "Hydrocarbons",
+    ],
+  },
+  {
+    exam: "Maharashtra State Board Class 11",
+    subject: "Physics",
+    chapters: [
+      "Units and Measurements",
+      "Mathematical Methods",
+      "Motion in a Plane",
+      "Laws of Motion",
+      "Gravitation",
+      "Mechanical Properties of Solids",
+      "Thermal Properties of Matter",
+      "Sound",
+      "Optics",
+      "Electrostatics",
+      "Electric Current Through Conductors",
+      "Magnetism",
+      "Electromagnetic Waves and Communication System",
+      "Semiconductors",
+    ],
+  },
+  {
+    exam: "Maharashtra State Board Class 11",
+    subject: "Chemistry",
+    chapters: [
+      "Some Basic Concepts of Chemistry",
+      "Introduction to Analytical Chemistry",
+      "Some Analytical Techniques",
+      "Structure of Atom",
+      "Chemical Bonding",
+      "Redox Reactions",
+      "Modern Periodic Table",
+      "Elements of Group 1 and 2",
+      "Elements of Group 13, 14 and 15",
+      "States of Matter",
+      "Adsorption and Colloids",
+      "Chemical Equilibrium",
+      "Nuclear Chemistry and Radioactivity",
+      "Basic Principles of Organic Chemistry",
+      "Hydrocarbons",
+      "Chemistry in Everyday Life",
+    ],
+  },
   {
     exam: "CBSE Class 12",
     subject: "Physics",
