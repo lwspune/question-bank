@@ -51,7 +51,7 @@ describe("decideWebhook: order.paid", () => {
       action: "grant",
       userId: "u1",
       paymentId: "pay_1",
-      grant: { planId: "mock-pass-6m", scope: "mocks", durationDays: 182 },
+      grant: { planId: "mock-pass-6m", scope: "mocks", durationDays: 182, amountPaise: 9900 },
     });
   });
 

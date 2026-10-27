@@ -12,6 +12,8 @@ export type GrantRazorpayInput = {
   paymentId: string;
   scope: string;
   expiresAt: string | null;
+  /** What the buyer paid (the order amount), for /dashboard/sales. */
+  amountPaise: number;
 };
 
 export type GrantRazorpayResult =
@@ -31,6 +33,7 @@ export async function grantRazorpayEntitlement(
       status: "active",
       expires_at: input.expiresAt,
       provider_ref: input.paymentId,
+      amount_paise: input.amountPaise,
     });
     if (error) {
       // 23505 = unique violation on provider_ref → already granted. Idempotent.
