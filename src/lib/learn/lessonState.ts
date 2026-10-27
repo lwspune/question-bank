@@ -258,3 +258,21 @@ export function neighbours(
   const strip = (c: (typeof list)[number] | undefined) => (c ? { chapter: c.chapter, slug: c.slug, title: c.title } : null);
   return { index: at + 1, total: list.length, prev: strip(list[at - 1]), next: strip(list[at + 1]) };
 }
+
+/** Every Learn page worth indexing: the hub, each course and course chapter, and each published lesson once (decision B: one address per concept). */
+export function learnSitemapPaths(outlines: Outline[]): string[] {
+  const paths = ["/learn", ...outlines.map((o) => `/learn/${o.slug}`)];
+  for (const o of outlines) for (const ch of o.chapters) paths.push(`/learn/${o.slug}/${ch.slug}`);
+  const lessons = new Set<string>();
+  for (const o of outlines) {
+    for (const ch of o.chapters) {
+      for (const part of ch.parts) {
+        for (const code of part.concepts) {
+          const node = o.pools[part.chapter]?.concepts.find((c) => c.code === code);
+          if (node?.published) lessons.add(`/learn/lesson/${part.chapter}/${node.slug}`);
+        }
+      }
+    }
+  }
+  return [...paths, ...lessons];
+}

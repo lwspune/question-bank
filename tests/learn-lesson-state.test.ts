@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { chapterView, courseSummary, groupsOf, homesOf, lessonView, localProgress, neighbours, scopeUpTo, upNextIn, type ConceptProgress, type Outline } from "@/lib/learn/lessonState";
+import { chapterView, courseSummary, groupsOf, homesOf, lessonView, localProgress, neighbours, scopeUpTo, upNextIn, learnSitemapPaths, type ConceptProgress, type Outline } from "@/lib/learn/lessonState";
 
 vi.mock("server-only", () => ({}));
 const { toAnswerResult } = await import("@/lib/learn/answer");
@@ -270,5 +270,21 @@ describe("toAnswerResult", () => {
 
   it("has no explanation for a right answer", () => {
     expect(toAnswerResult({ ...graded, correct: true, misconception_code: null, remediation: null }, false).remediation).toBeNull();
+  });
+});
+
+describe("learnSitemapPaths", () => {
+  it("lists the hub, each course and chapter, and each published lesson once", () => {
+    const paths = learnSitemapPaths([X, Y]);
+    expect(paths.slice(0, 4)).toEqual(["/learn", "/learn/x-maths", "/learn/y-maths", "/learn/x-maths/algebra"]);
+    expect(paths).toContain("/learn/y-maths/second");
+    // A, B, C, D are published and shown; E is a draft. A and C appear in both courses but once here.
+    expect(paths.filter((p) => p.startsWith("/learn/lesson/")).sort()).toEqual([
+      "/learn/lesson/algebra/a",
+      "/learn/lesson/algebra/b",
+      "/learn/lesson/algebra/c",
+      "/learn/lesson/algebra/d",
+    ]);
+    expect(new Set(paths).size).toBe(paths.length);
   });
 });
