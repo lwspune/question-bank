@@ -122,6 +122,45 @@ export const CHAPTERWISE_EBOOKS: readonly ChapterwiseEbook[] = [
       : "One board paper from each year, regrouped chapter by chapter and by marks, with a worked solution to each.",
 }));
 
+/**
+ * A Textbook Solutions book (2026-10-27): one textbook's exercises in the
+ * book's own order (the /board reader's section -> block -> question), each
+ * question under the book's number with its solution right after it. One per
+ * board subject with textbook questions on /board. `part` names one volume of
+ * a textbook printed in two parts, by its first and last chapter.
+ */
+export type TextbookEbook = Omit<PapersEbook, "kind" | "rule"> & {
+  kind: "textbook";
+  part?: { label: string; first: string; last: string };
+};
+
+const TEXTBOOK_SUBJECTS: { examSlug: string; board: string; subjects: string[] }[] = [
+  { examSlug: "mh-hsc-12", board: "Maharashtra HSC Class 12", subjects: ["Mathematics", "Physics", "Chemistry", "Biology", "Geography"] },
+  { examSlug: "mh-sb-11", board: "Maharashtra Class 11", subjects: ["Mathematics", "Physics", "Chemistry", "Biology"] },
+  {
+    examSlug: "mh-ssc-10",
+    board: "Maharashtra SSC Class 10",
+    subjects: ["Algebra", "Geometry", "Science and Technology I", "Science and Technology II", "History", "Political Science", "Geography"],
+  },
+  { examSlug: "mh-sb-9", board: "Maharashtra Class 9", subjects: ["Mathematics", "Geography", "History", "Political Science"] },
+  { examSlug: "cbse-12", board: "CBSE Class 12", subjects: ["Mathematics", "Physics", "Chemistry", "Biology"] },
+  { examSlug: "cbse-11", board: "CBSE Class 11", subjects: ["Mathematics", "Physics", "Chemistry", "Biology"] },
+  { examSlug: "cbse-10", board: "CBSE Class 10", subjects: ["Mathematics", "Science", "Social Science"] },
+];
+
+export const TEXTBOOK_EBOOKS: readonly TextbookEbook[] = TEXTBOOK_SUBJECTS.flatMap((b) =>
+  b.subjects.map((subject) => ({
+    kind: "textbook" as const,
+    slug: `${b.examSlug}-${slugPart(subject)}-textbook-solutions`,
+    examSlug: b.examSlug,
+    subject,
+    board: b.board,
+    subjectTitle: subject,
+    title: `${b.board} ${subject}`,
+    subtitle: "Every textbook exercise in the book's own order, with a worked solution right under each question.",
+  }))
+);
+
 export const PAPERS_EBOOKS: readonly PapersEbook[] = BOARD_PAPER_SUBJECTS.map((b) => ({
   kind: "papers",
   slug: `${b.examSlug}-${slugPart(b.subject)}-solved-papers`,

@@ -27,7 +27,7 @@ export type StoreEbook = {
 
 const COLUMNS =
   "slug, kind, title, subtitle, description, price_paise, page_count, question_count, contents, stats, sample_path, sort_order";
-const KINDS: readonly EbookKind[] = ["formula", "notes", "pyq", "papers", "repeats", "chapterwise"];
+const KINDS: readonly EbookKind[] = ["formula", "notes", "pyq", "papers", "repeats", "chapterwise", "textbook"];
 
 function toStoreEbook(row: Record<string, unknown>): StoreEbook {
   const contents = Array.isArray(row.contents) ? (row.contents as StoreContentsEntry[]) : [];

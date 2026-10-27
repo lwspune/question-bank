@@ -19,11 +19,29 @@ import { getBookBySlug, type BookChapter } from "@/lib/books/registry";
 import { getNotesChapterBySlug, getNotesChaptersForSubject, type NotesChapterRegistration } from "@/lib/notes/chapters";
 import { BOOK_POSITION } from "@/lib/notes/bookOrder";
 import { formulaPageCounts } from "@/lib/formula/chapterPages";
-import { CHAPTERWISE_EBOOKS, PAPERS_EBOOKS, REPEATS_EBOOKS, type ChapterwiseEbook, type PapersEbook, type RepeatsEbook } from "./paperBooks";
+import {
+  CHAPTERWISE_EBOOKS,
+  PAPERS_EBOOKS,
+  REPEATS_EBOOKS,
+  TEXTBOOK_EBOOKS,
+  type ChapterwiseEbook,
+  type PapersEbook,
+  type RepeatsEbook,
+  type TextbookEbook,
+} from "./paperBooks";
 
-export { CHAPTERWISE_EBOOKS, PAPERS_EBOOKS, REPEATS_EBOOKS, type ChapterwiseEbook, type PapersEbook, type RepeatsEbook };
+export {
+  CHAPTERWISE_EBOOKS,
+  PAPERS_EBOOKS,
+  REPEATS_EBOOKS,
+  TEXTBOOK_EBOOKS,
+  type ChapterwiseEbook,
+  type PapersEbook,
+  type RepeatsEbook,
+  type TextbookEbook,
+};
 
-export type EbookKind = "formula" | "notes" | "pyq" | "papers" | "repeats" | "chapterwise";
+export type EbookKind = "formula" | "notes" | "pyq" | "papers" | "repeats" | "chapterwise" | "textbook";
 
 type Common = {
   slug: string;
@@ -46,13 +64,13 @@ export type PyqEbook = Common & {
   chapterOrder: readonly string[];
 };
 /** A Solved Papers book (lib/ebooks/paperBooks): its chapters are papers, read at build time. */
-export type EbookDefinition = NotesEbook | PyqEbook | PapersEbook | RepeatsEbook | ChapterwiseEbook;
+export type EbookDefinition = NotesEbook | PyqEbook | PapersEbook | RepeatsEbook | ChapterwiseEbook | TextbookEbook;
 /** The board books: their chapters come from the database at build time, not from this catalog. */
-export type BoardEbook = PapersEbook | RepeatsEbook | ChapterwiseEbook;
+export type BoardEbook = PapersEbook | RepeatsEbook | ChapterwiseEbook | TextbookEbook;
 
-/** A board book (type guard): papers, repeats or chapter-wise. */
+/** A board book (type guard): papers, repeats, chapter-wise or textbook. */
 export function isBoardEbook(e: EbookDefinition): e is BoardEbook {
-  return e.kind === "papers" || e.kind === "repeats" || e.kind === "chapterwise";
+  return e.kind === "papers" || e.kind === "repeats" || e.kind === "chapterwise" || e.kind === "textbook";
 }
 
 const CET_SUBJECTS = [
@@ -125,6 +143,7 @@ export const EBOOKS: readonly EbookDefinition[] = [
   ...PAPERS_EBOOKS,
   ...REPEATS_EBOOKS,
   ...CHAPTERWISE_EBOOKS,
+  ...TEXTBOOK_EBOOKS,
 ];
 
 /** PYQ chapters with no notes, so no BOOK_POSITION entry: their class, by hand. */

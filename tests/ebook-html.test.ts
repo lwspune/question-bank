@@ -562,3 +562,74 @@ describe("buildChapterwiseChapterHtml", () => {
     expect(sol).not.toContain("Asked 2 times");
   });
 });
+
+// ── Textbook Solutions (board) ──────────────────────────────────────────────
+// The book's own layout (section -> block -> question, the /board order), each
+// question under its own number and its solution right after it, a passage once.
+describe("buildTextbookChapterHtml", () => {
+  const written = (id: string, over: Partial<QuestionRow> = {}): QuestionRow =>
+    q(id, "A", { options: [], questionFormat: "subjective", solution: `Worked answer of ${id}.`, ...over });
+  const input = {
+    number: 2,
+    name: "Matrices",
+    bookTitle: "Maharashtra HSC Class 12 Mathematics",
+    groups: [
+      {
+        title: "2.1 Elementary Transformations",
+        blocks: [
+          { label: "Solved Examples", units: [[written("s1")]] },
+          { label: "Exercise 2.1", units: [[q("e1", "C", { solution: "Because of e1." })], [written("e2")]] },
+        ],
+      },
+      {
+        title: "Miscellaneous Exercise 2",
+        blocks: [
+          {
+            label: null,
+            units: [
+              [
+                written("p1", { setId: "tb-1", context: "A passage about a matrix." }),
+                written("p2", { setId: "tb-1", context: "A passage about a matrix." }),
+              ],
+            ],
+          },
+        ],
+      },
+    ],
+    printedOf: new Map([
+      ["s1", { number: "Ex. 1", marks: null, orBefore: false }],
+      ["e1", { number: "Q.1", marks: null, orBefore: false }],
+      ["e2", { number: "Q.2 (i)", marks: null, orBefore: false }],
+      ["p1", { number: "Q.1", marks: null, orBefore: false }],
+      ["p2", { number: "Q.2", marks: null, orBefore: false }],
+    ]),
+    head: "",
+  };
+
+  it("heads the chapter with its questions and exercises", async () => {
+    const { buildTextbookChapterHtml } = await import("@/lib/ebooks/bookHtml");
+    const head = between(buildTextbookChapterHtml(input), 'class="chead', 'id="questions"');
+    expect(head).toContain("Matrices");
+    expect(head).toContain("5 questions");
+  });
+
+  it("follows the book: section, then block, then each question under its own number", async () => {
+    const { buildTextbookChapterHtml } = await import("@/lib/ebooks/bookHtml");
+    const html = buildTextbookChapterHtml(input);
+    expect(html).toMatch(/2\.1 Elementary Transformations[\s\S]*Solved Examples[\s\S]*Ex\. 1\.[\s\S]*Exercise 2\.1[\s\S]*Q\.1\.[\s\S]*Q\.2 \(i\)\.[\s\S]*Miscellaneous Exercise 2/);
+  });
+
+  it("puts each solution right after its question, an MCQ's answer with it", async () => {
+    const { buildTextbookChapterHtml } = await import("@/lib/ebooks/bookHtml");
+    const html = buildTextbookChapterHtml(input);
+    expect(html).toMatch(/Stem of e1[\s\S]*Answer: \(c\)[\s\S]*Because of e1\.[\s\S]*Stem of e2[\s\S]*Worked answer of e2\./);
+    expect(html.indexOf("Worked answer of s1.")).toBeLessThan(html.indexOf("Stem of e1"));
+  });
+
+  it("prints a shared passage once, its questions' solutions after them", async () => {
+    const { buildTextbookChapterHtml } = await import("@/lib/ebooks/bookHtml");
+    const html = buildTextbookChapterHtml(input);
+    expect(html.split("A passage about a matrix.").length - 1).toBe(1);
+    expect(html).toMatch(/Stem of p1[\s\S]*Stem of p2[\s\S]*Worked answer of p1\.[\s\S]*Worked answer of p2\./);
+  });
+});

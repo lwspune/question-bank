@@ -45,6 +45,7 @@ import {
   buildNotesChapterHtml,
   buildPyqChapterHtml,
   buildChapterwiseChapterHtml,
+  buildTextbookChapterHtml,
   buildRepeatsChapterHtml,
   buildSolvedPaperHtml,
   formulaPreview,
@@ -52,11 +53,13 @@ import {
   papersPreview,
   pyqPreview,
 } from "../../src/lib/ebooks/bookHtml";
-import { EBOOKS, ebookChapters, getEbook, isBoardEbook, type EbookChapter, type ChapterwiseEbook, type EbookDefinition, type PapersEbook, type RepeatsEbook } from "../../src/lib/ebooks/catalog";
+import { EBOOKS, ebookChapters, getEbook, isBoardEbook, type EbookChapter, type ChapterwiseEbook, type EbookDefinition, type PapersEbook, type RepeatsEbook, type TextbookEbook } from "../../src/lib/ebooks/catalog";
 import { pickBookPapers } from "../../src/lib/ebooks/boardPapers";
 import { repeatChapters, type RepeatPlanRow } from "../../src/lib/ebooks/repeats";
 import { chapterwiseChapters, groupLabel, type ChapterwiseSlot } from "../../src/lib/ebooks/chapterwise";
 import { bookContext } from "../../src/lib/ebooks/contexts";
+import { getBoardChapter, groupHasSubHeaders, listBoardChapters } from "../../src/lib/board/query";
+import { cleanRef } from "../../src/lib/board/cleanRef";
 import { homeworkQuestions } from "../../src/lib/homework/dayExport";
 import { getExamBySlug } from "../../src/lib/exam/examContext";
 import { getBoardPaperForExport, listPublishedPapers } from "../../src/lib/questionPapers/query";
@@ -581,6 +584,102 @@ async function buildChapterwiseChapters(
   return { built, preview };
 }
 
+/**
+ * A Textbook Solutions book's chapters, through the /board reader's own loaders
+ * (listBoardChapters, getBoardChapter), so the book and the reader follow the
+ * same order: section -> block -> question, each question with its solution.
+ */
+async function buildTextbookChapters(
+  admin: SupabaseClient,
+  anon: SupabaseClient,
+  ebook: TextbookEbook,
+  only: string[] | undefined,
+  totals: Totals,
+  head: string
+): Promise<{ built: Built[]; preview: string }> {
+  const exam = getExamBySlug(ebook.examSlug);
+  if (!exam) throw new Error(`ebook ${ebook.slug}: no exam "${ebook.examSlug}"`);
+  const { data: ex, error: exErr } = await anon.from("exams").select("id").eq("name", exam.examName).single();
+  if (exErr || !ex) throw new Error(`${ebook.slug}: exam ${exam.examName}: ${exErr?.message}`);
+  const subject = (await listBoardChapters(anon, exam.examName)).find((s) => s.subjectName === ebook.subject);
+  if (!subject || subject.chapters.length === 0) throw new Error(`ebook ${ebook.slug}: no ${ebook.subject} chapters on /board`);
+  let chapters = subject.chapters;
+  if (ebook.part) {
+    const first = chapters.findIndex((c) => c.name === ebook.part!.first);
+    const last = chapters.findIndex((c) => c.name === ebook.part!.last);
+    if (first < 0 || last < first) throw new Error(`${ebook.slug}: part ${ebook.part.first} to ${ebook.part.last} not found`);
+    chapters = chapters.slice(first, last + 1);
+  }
+  const picked = chapters.filter((c) => !only || only.includes(c.chapterSlug));
+  if (picked.length === 0) throw new Error(`--only matched none of: ${chapters.map((c) => c.chapterSlug).join(", ")}`);
+  const built: Built[] = [];
+  let preview = "";
+  for (const [i, link] of picked.entries()) {
+    const chapter = await getBoardChapter(anon, {
+      examId: ex.id as string,
+      chapterId: link.chapterId,
+      examName: exam.examName,
+      subjectName: ebook.subject,
+      chapterName: link.name,
+    });
+    if (!chapter) throw new Error(`${link.name}: no book-ordered questions`);
+    const ids = chapter.groups.flatMap((g) => g.blocks.flatMap((b) => b.questions.map((q) => q.id)));
+    const rows = await loadQuestions(anon, ids);
+    if (rows.size !== new Set(ids).size) throw new Error(`${link.name}: only ${rows.size} of ${ids.length} questions are PUBLIC`);
+    const printedOf = new Map<string, { number: string; marks: number | null; orBefore: boolean }>();
+    let blocks = 0;
+    const groups = chapter.groups.map((g) => {
+      const labelled = groupHasSubHeaders(g);
+      return {
+        title: g.group,
+        blocks: g.blocks.map((b) => {
+          blocks += 1;
+          // A passage's questions run together under one unit, so it prints once.
+          const units: QuestionRow[][] = [];
+          for (const [k, bq] of b.questions.entries()) {
+            printedOf.set(bq.id, { number: bq.questionNumber ? cleanRef(bq.questionNumber) : String(k + 1), marks: null, orBefore: false });
+            const q = rows.get(bq.id)!;
+            const last = units[units.length - 1];
+            if (last && q.setId && last[0].setId === q.setId) last.push(q);
+            else units.push([q]);
+          }
+          return { label: labelled ? b.label : null, units };
+        }),
+      };
+    });
+    const chapterQuestions = [...rows.values()];
+    const [paperImages, keyImages] = await Promise.all([
+      imageDataUris(admin, "paper", chapterQuestions),
+      imageDataUris(admin, "key", chapterQuestions),
+    ]);
+    const pdf = await printPdf(
+      buildTextbookChapterHtml({
+        number: i + 1,
+        name: link.name,
+        bookTitle: ebook.title,
+        groups,
+        printedOf,
+        images: await asJpegs(new Map([...paperImages, ...keyImages])),
+        head,
+      }),
+      { timeoutMs: PRINT_TIMEOUT_MS }
+    );
+    totals.questions += ids.length;
+    totals.topics += blocks;
+    if (!preview) {
+      const q = chapterQuestions.find((x) => !x.imageUrl && !x.context && x.solution && (x.text ?? "").length < 220);
+      if (q) preview = papersPreview(q, { label: link.name, meta: "", section: chapter.groups[0].group, number: printedOf.get(q.id)!.number });
+    }
+    console.log(`  ${String(i + 1).padStart(2)}. ${link.name.padEnd(44)} ${String(ids.length).padStart(4)} q  ${blocks} blocks`);
+    built.push({
+      chapter: { number: i + 1, slug: link.chapterSlug, name: link.name, classLabel: null, notes: null, bookChapter: null },
+      pdf,
+      detail: `${ids.length} q`,
+    });
+  }
+  return { built, preview };
+}
+
 async function buildNotesChapter(
   ebook: EbookDefinition,
   c: EbookChapter,
@@ -640,6 +739,14 @@ function coverStats(ebook: EbookDefinition, chapters: number, t: Totals): { valu
       { value: "Full", label: "solutions" },
     ];
   }
+  if (ebook.kind === "textbook") {
+    return [
+      { value: String(chapters), label: "chapters" },
+      { value: n(t.topics), label: "exercises" },
+      { value: n(t.questions), label: "questions" },
+      { value: "Full", label: "solutions" },
+    ];
+  }
   if (ebook.kind === "pyq") {
     return [
       { value: n(t.questions), label: "past questions" },
@@ -696,6 +803,8 @@ async function buildBook(
     ({ built, preview: boardCover } = await buildRepeatChapters(client, anon, ebook, only, totals, head));
   } else if (ebook.kind === "chapterwise") {
     ({ built, preview: boardCover } = await buildChapterwiseChapters(client, anon, ebook, only, totals, head));
+  } else if (ebook.kind === "textbook") {
+    ({ built, preview: boardCover } = await buildTextbookChapters(client, anon, ebook, only, totals, head));
   } else {
     for (const c of ebookChapters(ebook).filter((c) => !only || only.includes(c.slug))) {
       built.push(
@@ -734,7 +843,12 @@ async function buildBook(
       preview,
       // The board books wear the premium cover; its edition is the newest year in the book.
       cover: isBoardEbook(ebook)
-        ? { over: ebook.board, main: ebook.subjectTitle, edition: `${Math.max(...totals.years)} Edition` }
+        ? {
+            over: ebook.board,
+            main: ebook.kind === "textbook" && ebook.part ? `${ebook.subjectTitle} ${ebook.part.label}` : ebook.subjectTitle,
+            // The newest year in the book; a textbook book names no years, so the year it was built.
+            edition: `${totals.years.length ? Math.max(...totals.years) : new Date().getFullYear()} Edition`,
+          }
         : undefined,
       chapters: contents,
       head,
