@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { chapterView, homesOf, lessonView, localProgress, scopeUpTo, type Outline } from "@/lib/learn/lessonState";
+import { chapterView, courseSummary, groupsOf, homesOf, lessonView, localProgress, neighbours, scopeUpTo, upNextIn, type ConceptProgress, type Outline } from "@/lib/learn/lessonState";
 
 vi.mock("server-only", () => ({}));
 const { toAnswerResult } = await import("@/lib/learn/answer");
@@ -139,6 +139,72 @@ describe("prerequisites a course teaches later (owner, 2026-10-27)", () => {
       ["A", "available"],
       ["C", "locked"],
     ]);
+  });
+});
+
+describe("course and chapter summaries (the premium pages)", () => {
+  const NOW = Date.parse("2026-10-27T10:00:00Z");
+  // X: one chapter "algebra" with A, B, C (A <- B <- C), all published; groups g1 (A, B) and g2 (C).
+  const mastered = (key: string): [string, ConceptProgress] => [key, { state: "mastered", nextReviewAt: "2026-11-01T00:00:00Z" }];
+
+  it("counts mastered concepts per chapter and overall, and points Up next at the first open concept", () => {
+    const s = courseSummary(Y, new Map(), true, NOW);
+    expect(s.total).toBe(3);
+    expect(s.mastered).toBe(0);
+    expect(s.chapters.map((c) => [c.slug, c.mastered, c.total])).toEqual([
+      ["first", 0, 2],
+      ["second", 0, 1],
+    ]);
+    expect(s.upNext).toMatchObject({ courseChapter: "first", slug: "a", title: "Concept A" });
+  });
+
+  it("prefers a concept in progress, then one due for review, then a new one", () => {
+    const learning = new Map<string, ConceptProgress>([["algebra/B", { state: "learning" as const, nextReviewAt: null }], mastered("algebra/A")]);
+    expect(courseSummary(X, learning, true, NOW).upNext).toMatchObject({ slug: "b" });
+    const due = new Map<string, ConceptProgress>([["algebra/A", { state: "mastered" as const, nextReviewAt: "2026-10-27T09:00:00Z" }]]);
+    const s = courseSummary(X, due, true, NOW);
+    expect(s.due).toBe(1);
+    expect(s.upNext).toMatchObject({ slug: "a", state: "mastered", due: true });
+  });
+
+  it("continues the concept in progress the student touched most recently", () => {
+    const two = new Map<string, ConceptProgress>([
+      mastered("algebra/A"),
+      ["algebra/B", { state: "learning" as const, nextReviewAt: null, updatedAt: "2026-10-20T00:00:00Z" }],
+      ["algebra/C", { state: "learning" as const, nextReviewAt: null, updatedAt: "2026-10-26T00:00:00Z" }],
+    ]);
+    expect(courseSummary(X, two, true, NOW).upNext).toMatchObject({ slug: "c" });
+  });
+
+  it("has no Up next when everything is mastered and nothing is due", () => {
+    const all = new Map<string, ConceptProgress>([mastered("algebra/A"), mastered("algebra/B"), mastered("algebra/C")]);
+    const s = courseSummary(X, all, true, NOW);
+    expect(s.mastered).toBe(3);
+    expect(s.upNext).toBeNull();
+  });
+
+  it("upNextIn picks within one chapter by the same rule", () => {
+    const view = chapterView(X, "algebra", new Map<string, ConceptProgress>([mastered("algebra/A")]), true, NOW)!;
+    expect(upNextIn(view.concepts)?.code).toBe("B");
+  });
+
+  it("groups a chapter's concepts by topic in teaching order, with how many are mastered", () => {
+    const view = chapterView(X, "algebra", new Map<string, ConceptProgress>([mastered("algebra/A")]), true, NOW)!;
+    expect(groupsOf(view.concepts).map((g) => [g.group, g.concepts.map((c) => c.code), g.mastered])).toEqual([
+      ["g1", ["A", "B"], 1],
+      ["g2", ["C"], 0],
+    ]);
+  });
+
+  it("neighbours: a concept's place in its course chapter, with the concepts either side", () => {
+    expect(neighbours(X, "algebra", "algebra", "B")).toEqual({
+      index: 2,
+      total: 3,
+      prev: { chapter: "algebra", slug: "a", title: "Concept A" },
+      next: { chapter: "algebra", slug: "c", title: "Concept C" },
+    });
+    expect(neighbours(X, "algebra", "algebra", "A")).toMatchObject({ index: 1, prev: null });
+    expect(neighbours(X, "nope", "algebra", "A")).toBeNull();
   });
 });
 

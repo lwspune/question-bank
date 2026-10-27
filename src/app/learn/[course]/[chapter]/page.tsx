@@ -4,7 +4,8 @@ import Link from "next/link";
 import AppHeader from "@/components/AppHeader";
 import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/nav/Breadcrumbs";
-import { ChapterMap } from "@/components/learn/ChapterMap";
+import { ChapterPath } from "@/components/learn/ChapterPath";
+import { MistakesCard } from "@/components/learn/MistakesCard";
 import { getExamBySlug } from "@/lib/exam/examContext";
 import { courseName } from "@/lib/learn/courseName";
 import { courseHref, LEARN_HUB } from "@/lib/learn/links";
@@ -51,13 +52,15 @@ export default async function LearnChapter({ params }: { params: Params }) {
           className="mb-4"
           items={[{ href: LEARN_HUB, label: "Learn" }, { href: courseHref(outline.slug), label: name }, { label: ch.title }]}
         />
-        <header className="mb-6">
-          <h1 className="text-2xl font-bold tracking-tight text-foreground">{ch.title}</h1>
+        <header className="mb-5">
+          <p className="text-xs font-semibold uppercase tracking-wider text-brand-accent">{name}</p>
+          <h1 className="mt-1 text-2xl font-bold tracking-tight text-foreground sm:text-3xl">{ch.title}</h1>
           <p className="mt-1.5 text-sm text-muted-foreground">
-            The concepts in teaching order. Each one is a short lesson, then questions until you get three right.
+            Each concept is a short lesson, then questions until you get three right.
           </p>
+          <MistakesCard course={outline.slug} chapter={ch.slug} />
         </header>
-        <ChapterMap outline={outline} chapter={ch.slug} oneLiners={oneLiners} />
+        <ChapterPath outline={outline} chapter={ch.slug} oneLiners={oneLiners} />
         {board && (
           <p className="mt-8 text-sm text-muted-foreground">
             Done with the concepts?{" "}

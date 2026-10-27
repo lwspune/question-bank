@@ -48,7 +48,7 @@ export type Home = { course: string; courseTitle: string; chapter: string; chapt
 export type LearnerState = "learning" | "mastered";
 
 /** A student's own progress on one concept (`learn_my_progress`, migration 0191). */
-export type ConceptProgress = { state: LearnerState; nextReviewAt: string | null };
+export type ConceptProgress = { state: LearnerState; nextReviewAt: string | null; updatedAt?: string | null };
 
 const graphOf = (pool: Pool): GraphNode[] => pool.concepts.map((c) => ({ id: c.code, prereqs: c.prereqs }));
 const publishedOf = (pool: Pool) => new Set(pool.concepts.filter((c) => c.published).map((c) => c.code));
@@ -131,6 +131,8 @@ export type ChapterConcept = {
   /** Mastered and due for spaced review now. */
   due: boolean;
   buildsOn: { slug: string; title: string }[];
+  /** When the student last answered here (migration 0192); null for a guest or an untouched concept. */
+  updatedAt: string | null;
 };
 
 /** A course chapter's concepts in teaching order, each with this learner's state. Null if the course has no such chapter. */
@@ -163,6 +165,7 @@ export function chapterView(
           state: view.state,
           due: own ? isReviewDue(own.state, own.nextReviewAt, now) : false,
           buildsOn: view.buildsOn,
+          updatedAt: own?.updatedAt ?? null,
         },
       ];
     });
@@ -177,4 +180,81 @@ export function localProgress(attempts: { itemId: string; correct: boolean }[], 
   const streak = [...latest.values()].filter(Boolean).length;
   const toRetry = latest.size - streak;
   return { streak, toRetry, mastered: streak >= needed && toRetry === 0 };
+}
+
+/** What a learner should open next among these concepts: one in progress, then one due for review, then a new one. */
+export function upNextIn(concepts: ChapterConcept[]): ChapterConcept | null {
+  // Of several in progress, the one the student touched last ("Continue where you left off").
+  const learning = concepts
+    .filter((c) => c.state === "learning")
+    .sort((a, b) => (b.updatedAt ?? "").localeCompare(a.updatedAt ?? ""));
+  return (
+    learning[0] ??
+    concepts.find((c) => c.due) ??
+    concepts.find((c) => c.state === "available") ??
+    null
+  );
+}
+
+/** A chapter's concepts by topic (Concept Ladder's groups), in the order the topics first appear. */
+export function groupsOf(concepts: ChapterConcept[]): { group: string; concepts: ChapterConcept[]; mastered: number }[] {
+  const groups: { group: string; concepts: ChapterConcept[]; mastered: number }[] = [];
+  for (const c of concepts) {
+    let g = groups.find((x) => x.group === c.group);
+    if (!g) groups.push((g = { group: c.group, concepts: [], mastered: 0 }));
+    g.concepts.push(c);
+    if (c.state === "mastered") g.mastered++;
+  }
+  return groups;
+}
+
+export type CourseSummary = {
+  total: number;
+  mastered: number;
+  /** Mastered concepts due for spaced review now. */
+  due: number;
+  chapters: { slug: string; title: string; total: number; mastered: number; learning: number }[];
+  /** The concept to open next anywhere in the course (upNextIn, in course order); null when all is mastered and nothing is due. */
+  upNext: (ChapterConcept & { courseChapter: string; chapterTitle: string }) | null;
+};
+
+/** A course for one learner: progress per chapter and overall, and where to go next. */
+export function courseSummary(outline: Outline, learner: Map<string, ConceptProgress>, signedIn: boolean, now: number): CourseSummary {
+  const views = outline.chapters.map((ch) => ({ ch, view: chapterView(outline, ch.slug, learner, signedIn, now)! }));
+  const all = views.flatMap(({ ch, view }) => view.concepts.map((c) => ({ ...c, courseChapter: ch.slug, chapterTitle: ch.title })));
+  const next = upNextIn(all) as (typeof all)[number] | null;
+  return {
+    total: all.length,
+    mastered: all.filter((c) => c.state === "mastered").length,
+    due: all.filter((c) => c.due).length,
+    chapters: views.map(({ ch, view }) => ({
+      slug: ch.slug,
+      title: ch.title,
+      total: view.concepts.length,
+      mastered: view.concepts.filter((c) => c.state === "mastered").length,
+      learning: view.concepts.filter((c) => c.state === "learning").length,
+    })),
+    upNext: next,
+  };
+}
+
+/** A concept's place among its course chapter's published concepts (1-based), with the ones either side. */
+export function neighbours(
+  outline: Outline,
+  courseChapter: string,
+  chapter: string,
+  code: string,
+): { index: number; total: number; prev: { chapter: string; slug: string; title: string } | null; next: { chapter: string; slug: string; title: string } | null } | null {
+  const ch = outline.chapters.find((c) => c.slug === courseChapter);
+  if (!ch) return null;
+  const list = ch.parts.flatMap((p) =>
+    p.concepts.flatMap((k) => {
+      const node = outline.pools[p.chapter]?.concepts.find((c) => c.code === k && c.published);
+      return node ? [{ chapter: p.chapter, code: k, slug: node.slug, title: node.title }] : [];
+    }),
+  );
+  const at = list.findIndex((c) => c.chapter === chapter && c.code === code);
+  if (at === -1) return null;
+  const strip = (c: (typeof list)[number] | undefined) => (c ? { chapter: c.chapter, slug: c.slug, title: c.title } : null);
+  return { index: at + 1, total: list.length, prev: strip(list[at - 1]), next: strip(list[at + 1]) };
 }

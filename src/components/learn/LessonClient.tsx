@@ -2,10 +2,10 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { Lock } from "lucide-react";
+import { ArrowLeft, ArrowRight, Lock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { isReviewDue } from "@/lib/learn/engine/review";
-import { type Home, type LearnerState, lessonView, type Pool } from "@/lib/learn/lessonState";
+import { type Home, type LearnerState, lessonView, type neighbours, type Pool } from "@/lib/learn/lessonState";
 import { chapterHref, lessonHref } from "@/lib/learn/links";
 import type { RenderedSlide } from "@/lib/learn/lesson/renderDeck";
 import type { LessonItem } from "@/lib/learn/query";
@@ -19,7 +19,11 @@ import { type Attempt, QuestionPanel, type StartProgress } from "./QuestionPanel
  * if they have answered here before, and has their answers saved.
  */
 
-export type HomeWithScope = Home & { scope: string[] };
+export type HomeWithScope = Home & {
+  scope: string[];
+  /** The concept's place in this course chapter, with the concepts either side. */
+  place: ReturnType<typeof neighbours>;
+};
 
 type ProgressRow = {
   chapter: string;
@@ -138,8 +142,18 @@ export function LessonClient({
   };
   const questionsIndex = slides.findIndex((s) => s.kind === "questions");
 
+  const place = home?.place ?? null;
+
   return (
     <>
+      {place && home && (
+        <p className="mb-3 text-sm text-muted-foreground">
+          Concept {place.index} of {place.total} in{" "}
+          <Link href={chapterHref(home.course, home.chapter)} className="font-medium text-brand-accent underline-offset-2 hover:underline">
+            {home.chapterTitle}
+          </Link>
+        </p>
+      )}
       {viewer.kind === "guest" && view.buildsOn.length > 0 && (
         <p className="mb-3 rounded-xl border bg-card px-4 py-3 text-sm">
           <span className="font-medium">Builds on: </span>
@@ -200,6 +214,30 @@ export function LessonClient({
           </div>
         )}
       />
+      {place && (place.prev || place.next) && (
+        <nav aria-label="Concepts in this chapter" className="mt-4 flex flex-wrap justify-between gap-3 text-sm">
+          {place.prev ? (
+            <Link
+              href={lessonHref(place.prev.chapter, place.prev.slug, { course })}
+              className="inline-flex items-center gap-1.5 rounded-lg px-2 py-1 text-muted-foreground hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+              {place.prev.title}
+            </Link>
+          ) : (
+            <span />
+          )}
+          {place.next && (
+            <Link
+              href={lessonHref(place.next.chapter, place.next.slug, { course })}
+              className="inline-flex items-center gap-1.5 rounded-lg px-2 py-1 font-medium text-brand-accent hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            >
+              {place.next.title}
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </Link>
+          )}
+        </nav>
+      )}
     </>
   );
 }

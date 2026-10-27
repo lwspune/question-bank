@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/nav/Breadcrumbs";
 import { LessonClient } from "@/components/learn/LessonClient";
 import { courseName } from "@/lib/learn/courseName";
-import { homesOf, scopeUpTo } from "@/lib/learn/lessonState";
+import { homesOf, neighbours, scopeUpTo } from "@/lib/learn/lessonState";
 import { chapterHref, courseHref, LEARN_HUB, lessonHref } from "@/lib/learn/links";
 import { getAllOutlines, getLesson } from "@/lib/learn/query";
 
@@ -29,6 +29,7 @@ async function load(params: Params) {
   if (!lesson || !pool) return null;
   const homes = homesOf(outlines, params.chapter, lesson.concept.code).map((h) => ({
     ...h,
+    place: neighbours(outlines.find((o) => o.slug === h.course)!, h.chapter, params.chapter, lesson.concept.code),
     // Gated only on what the course teaches in this chapter or before it.
     scope: [...scopeUpTo(outlines.find((o) => o.slug === h.course)!, h.chapter, params.chapter)],
   }));
