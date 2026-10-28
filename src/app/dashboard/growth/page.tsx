@@ -551,10 +551,14 @@ export default async function GrowthPage() {
             <p className="text-sm text-muted-foreground">
               Judged on {fmtDate(checkOn(e.liveSince, e.windowDays))}: keep building learning inside PYQ Vault if{" "}
               {LEARN_MASTERED_KEEP}+ students master a concept and {LEARN_RETURNED_KEEP}+ come back on a second day;
-              otherwise keep building on Concept Ladder. Students only, since launch. Guest lesson views are in Vercel.
+              otherwise keep building on Concept Ladder. Students only, since launch; visits and lessons begun are
+              counted from 28 Oct 2026. Guest lesson views and lessons begun (learn_lesson_start) are in Vercel.
             </p>
             {learn ? (
               <div className="grid gap-3 sm:grid-cols-4">
+                <StatCard kind="numeric" label="Opened a Learn page" value={learn.visited} />
+                <StatCard kind="numeric" label="Opened a lesson" value={learn.openedLesson} />
+                <StatCard kind="numeric" label="Began a lesson" value={learn.beganLesson} />
                 <StatCard kind="numeric" label="Students who answered" value={learn.students} />
                 <StatCard kind="numeric" label={`Mastered a concept (keep at ${LEARN_MASTERED_KEEP})`} value={learn.masteredOne} />
                 <StatCard kind="numeric" label={`Came back another day (keep at ${LEARN_RETURNED_KEEP})`} value={learn.returnedSecondDay} />

@@ -390,6 +390,24 @@ describe.skipIf(!HAS_ENV)("Learn tables (0192)", () => {
       expect((await alice.rpc("learn_experiment_readout", { p_since: since })).error).not.toBeNull();
     });
 
+    it("learn_experiment_readout counts students who visited Learn, opened a lesson and began one (0202)", async () => {
+      const view = (client: SupabaseClient, uid: string, surface: string, path: string) =>
+        client.from("user_activity").insert({ user_id: uid, kind: "surface_viewed", metadata: { surface, path } });
+      // Alice: the hub, a lesson, and a lesson begun. Bob: the hub only.
+      expect((await view(alice, aliceId, "learn", "/learn")).error).toBeNull();
+      await view(alice, aliceId, "learn", "/learn/lesson/x/concept-c01");
+      await view(alice, aliceId, "learn_start", "/learn/lesson/x/concept-c01");
+      await view(bob, bobId, "learn", "/learn");
+      const since = new Date(Date.now() - 3 * 86_400_000).toISOString();
+      const { data, error } = await admin.rpc("learn_experiment_readout", { p_since: since });
+      expect(error).toBeNull();
+      const r = data as { visited: number; opened_lesson: number; began_lesson: number };
+      expect(r.visited).toBeGreaterThanOrEqual(2); // Alice and Bob
+      expect(r.opened_lesson).toBeGreaterThanOrEqual(1); // Alice
+      expect(r.began_lesson).toBeGreaterThanOrEqual(1); // Alice
+      expect(r.opened_lesson).toBeLessThan(r.visited); // Bob saw only the hub
+    });
+
     it("anon gets nothing from the own-progress reads", async () => {
       expect((await anon.rpc("learn_my_misses", { p_exam: "x" })).error).not.toBeNull();
       expect((await anon.rpc("learn_my_progress", {})).error).not.toBeNull();
