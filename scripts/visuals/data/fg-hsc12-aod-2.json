@@ -1,0 +1,872 @@
+{
+  "//": "Assembled from agent drafts (functionGraph).",
+  "visuals": [
+    {
+      "id": "87326f62-2630-490d-bf1d-a7f14d24aac0",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "sqrt(x-3)",
+          "fLabel": "y = √(x − 3)",
+          "window": {
+            "x": [
+              3,
+              7
+            ],
+            "y": [
+              0,
+              2.2
+            ]
+          },
+          "ask": {
+            "kind": "slopePoint",
+            "slope": 0.5,
+            "normal": false,
+            "pointLabel": "(4, 1)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "tangent"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "d9aa01e1",
+        "answer": {
+          "value": 3.999999999992921,
+          "label": "x = 4"
+        }
+      }
+    },
+    {
+      "id": "88d9e047-3dd6-48cf-a95a-1211ef1ed767",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "x-1/x",
+          "fLabel": "y = x − 1/x",
+          "window": {
+            "x": [
+              -3,
+              3
+            ],
+            "y": [
+              -6,
+              6
+            ]
+          },
+          "ask": {
+            "kind": "increasingOn",
+            "intervals": [
+              [
+                -3,
+                -0.05
+              ],
+              [
+                0.05,
+                3
+              ]
+            ],
+            "intervalLabel": "x < 0 and x > 0"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "shade"
+            ]
+          }
+        ],
+        "fingerprint": "da858464",
+        "answer": {
+          "value": 1,
+          "label": "increasing on both pieces"
+        }
+      }
+    },
+    {
+      "id": "8c47ecd8-50c4-48ca-ad27-fc9ea4f24fc9",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "x+25/x",
+          "fLabel": "y = x + 25/x",
+          "window": {
+            "x": [
+              -8,
+              8
+            ],
+            "y": [
+              -25,
+              25
+            ]
+          },
+          "ask": {
+            "kind": "decreasingOn",
+            "intervals": [
+              [
+                -5,
+                -0.5
+              ],
+              [
+                0.5,
+                5
+              ]
+            ],
+            "intervalLabel": "−5 < x < 5, x ≠ 0"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "shade"
+            ]
+          }
+        ],
+        "fingerprint": "b97e5533",
+        "answer": {
+          "value": 1,
+          "label": "falls on (−5,0) and (0,5)"
+        }
+      }
+    },
+    {
+      "id": "96838a95-0147-48e9-a9ae-ce991350b2e1",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "exp(x*log(x))",
+          "fLabel": "y = xˣ",
+          "window": {
+            "x": [
+              0.05,
+              2.5
+            ],
+            "y": [
+              0.6,
+              10
+            ]
+          },
+          "ask": {
+            "kind": "increasingOn",
+            "interval": [
+              0.36787944,
+              2.5
+            ],
+            "intervalLabel": "x > 1/e"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 13,
+            "beats": [
+              "shade"
+            ]
+          }
+        ],
+        "fingerprint": "7387f596",
+        "answer": {
+          "value": 1,
+          "label": "rising for x > 1/e"
+        }
+      }
+    },
+    {
+      "id": "9c746e39-e908-4696-8cb7-05354ecd6ecc",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "x-cos(x)",
+          "fLabel": "y = x − cos x",
+          "window": {
+            "x": [
+              -6.28318531,
+              6.28318531
+            ],
+            "y": [
+              -8,
+              8
+            ]
+          },
+          "xTicks": "pi",
+          "ask": {
+            "kind": "increasingOn",
+            "interval": [
+              -6.28318531,
+              6.28318531
+            ],
+            "intervalLabel": "all x"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "shade"
+            ]
+          }
+        ],
+        "fingerprint": "9e6b2bf9",
+        "answer": {
+          "value": 1,
+          "label": "rising for all x"
+        }
+      }
+    },
+    {
+      "id": "b363f1cb-842b-4a2d-8a37-a9d84555d103",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "x^3+10*x+7",
+          "fLabel": "y = x³ + 10x + 7",
+          "window": {
+            "x": [
+              -3,
+              3
+            ],
+            "y": [
+              -70,
+              70
+            ]
+          },
+          "ask": {
+            "kind": "increasingOn",
+            "interval": [
+              -3,
+              3
+            ],
+            "intervalLabel": "all x"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "shade"
+            ]
+          }
+        ],
+        "fingerprint": "7fba5d4f",
+        "answer": {
+          "value": 1,
+          "label": "rising for all x"
+        }
+      }
+    },
+    {
+      "id": "b4c4438d-c336-4127-946c-c7af25c93414",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "x^3+6*x^2+12*x-5",
+          "fLabel": "y = x³ + 6x² + 12x − 5",
+          "window": {
+            "x": [
+              -5,
+              1
+            ],
+            "y": [
+              -45,
+              18
+            ]
+          },
+          "ask": {
+            "kind": "increasingOn",
+            "interval": [
+              -5,
+              1
+            ],
+            "intervalLabel": "all x"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "shade"
+            ]
+          }
+        ],
+        "fingerprint": "9717cac0",
+        "answer": {
+          "value": 1,
+          "label": "rising for all x"
+        }
+      }
+    },
+    {
+      "id": "be0aa6cd-8d16-4f71-9e71-5ee08eb554cd",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "(x^3+2)/6",
+          "fLabel": "6y = x³ + 2",
+          "window": {
+            "x": [
+              -6,
+              6
+            ],
+            "y": [
+              -40,
+              40
+            ]
+          },
+          "ask": {
+            "kind": "slopePoints",
+            "slope": 8,
+            "normal": false,
+            "report": "count",
+            "pointLabels": [
+              "(−4, −31/3)",
+              "(4, 11)"
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "tangent"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "0b43c313",
+        "answer": {
+          "value": 2,
+          "label": "2 points"
+        }
+      }
+    },
+    {
+      "id": "c7898da1-865b-4bc7-9978-249c533dca2f",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "x/(x^2+1)",
+          "fLabel": "y = x/(x² + 1)",
+          "window": {
+            "x": [
+              -5,
+              5
+            ],
+            "y": [
+              -0.7,
+              0.7
+            ]
+          },
+          "ask": {
+            "kind": "increasingOn",
+            "interval": [
+              -1,
+              1
+            ],
+            "intervalLabel": "−1 < x < 1"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "shade"
+            ]
+          }
+        ],
+        "fingerprint": "c48a50a7",
+        "answer": {
+          "value": 1,
+          "label": "(a) rising on −1 < x < 1"
+        }
+      }
+    },
+    {
+      "id": "cc042430-dbf7-4502-a79c-0bb5fdbd18e9",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "log(1+x)-2*x/(2+x)",
+          "fLabel": "y = log(1+x) − 2x/(2+x)",
+          "window": {
+            "x": [
+              -0.9,
+              6
+            ],
+            "y": [
+              -0.8,
+              0.6
+            ]
+          },
+          "ask": {
+            "kind": "increasingOn",
+            "interval": [
+              -0.9,
+              6
+            ],
+            "intervalLabel": "x > −1"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "shade"
+            ]
+          }
+        ],
+        "fingerprint": "52c20236",
+        "answer": {
+          "value": 1,
+          "label": "rising for x > −1"
+        }
+      }
+    },
+    {
+      "id": "d5090270-a488-44ca-bf68-5f552d0f4593",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "2*x^3-15*x^2-144*x-7",
+          "fLabel": "y = 2x³ − 15x² − 144x − 7",
+          "window": {
+            "x": [
+              -8,
+              12
+            ],
+            "y": [
+              -1200,
+              300
+            ]
+          },
+          "ask": {
+            "kind": "increasingOn",
+            "intervals": [
+              [
+                -8,
+                -3
+              ],
+              [
+                8,
+                12
+              ]
+            ],
+            "intervalLabel": "x < −3 or x > 8"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "shade"
+            ]
+          }
+        ],
+        "fingerprint": "c42a314d",
+        "answer": {
+          "value": 1,
+          "label": "(a) rising: x < −3 or x > 8"
+        }
+      }
+    },
+    {
+      "id": "d5e0f276-1778-493c-af06-d6c418d2cdfc",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "x^3+10*x+7",
+          "fLabel": "y = x³ + 10x + 7",
+          "window": {
+            "x": [
+              -3,
+              3
+            ],
+            "y": [
+              -70,
+              70
+            ]
+          },
+          "ask": {
+            "kind": "increasingOn",
+            "interval": [
+              -3,
+              3
+            ],
+            "intervalLabel": "all x"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "shade"
+            ]
+          }
+        ],
+        "fingerprint": "8ee5a7fa",
+        "answer": {
+          "value": 1,
+          "label": "rising for all x"
+        }
+      }
+    },
+    {
+      "id": "db2f70ba-de8f-49ab-beb0-cb3b3ae5f92b",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "4*sin(x)/(2+cos(x))-x",
+          "fLabel": "y = 4sinθ/(2+cosθ) − θ",
+          "window": {
+            "x": [
+              0,
+              1.57079633
+            ],
+            "y": [
+              -0.05,
+              0.5
+            ]
+          },
+          "xTicks": "pi",
+          "ask": {
+            "kind": "increasingOn",
+            "interval": [
+              0,
+              1.57079633
+            ],
+            "intervalLabel": "0 ≤ θ ≤ π/2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "shade"
+            ]
+          }
+        ],
+        "fingerprint": "385b689a",
+        "answer": {
+          "value": 1,
+          "label": "rising on [0, π/2]"
+        }
+      }
+    },
+    {
+      "id": "dffbaab5-79e9-4bf4-936f-7d97d8480e4b",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "3+3*x-3*x^2+x^3",
+          "fLabel": "y = 3 + 3x − 3x² + x³",
+          "window": {
+            "x": [
+              -2,
+              4
+            ],
+            "y": [
+              -28,
+              36
+            ]
+          },
+          "ask": {
+            "kind": "increasingOn",
+            "interval": [
+              -2,
+              4
+            ],
+            "intervalLabel": "all x"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "shade"
+            ]
+          }
+        ],
+        "fingerprint": "a69162cb",
+        "answer": {
+          "value": 1,
+          "label": "rising for all x"
+        }
+      }
+    },
+    {
+      "id": "e85330b3-7c68-43fe-a5a8-fa8f33dbdaf5",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "x^3-6*x^2+x+3",
+          "fLabel": "y = x³ − 6x² + x + 3",
+          "window": {
+            "x": [
+              -2,
+              6
+            ],
+            "y": [
+              -35,
+              12
+            ]
+          },
+          "ask": {
+            "kind": "slopePoints",
+            "slope": 1,
+            "normal": false,
+            "report": "count",
+            "pointLabels": [
+              "(0, 3)",
+              "(4, −25)"
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "tangent"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "5f0e2c19",
+        "answer": {
+          "value": 2,
+          "label": "2 points"
+        }
+      }
+    },
+    {
+      "id": "f480b314-9026-4327-98b2-cddf23583d24",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "2*x^3-3*x^2-12*x+6",
+          "fLabel": "y = 2x³ − 3x² − 12x + 6",
+          "window": {
+            "x": [
+              -3,
+              4
+            ],
+            "y": [
+              -45,
+              45
+            ]
+          },
+          "ask": {
+            "kind": "increasingOn",
+            "intervals": [
+              [
+                -3,
+                -1
+              ],
+              [
+                2,
+                4
+              ]
+            ],
+            "intervalLabel": "x < −1 or x > 2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "shade"
+            ]
+          }
+        ],
+        "fingerprint": "9540444f",
+        "answer": {
+          "value": 1,
+          "label": "rising: x < −1 or x > 2"
+        }
+      }
+    },
+    {
+      "id": "f973002b-bfb0-4293-a657-c499be3bbb10",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "x^3-6*x^2+x+3",
+          "fLabel": "y = x³ − 6x² + x + 3",
+          "window": {
+            "x": [
+              -1,
+              2
+            ],
+            "y": [
+              -13,
+              6
+            ]
+          },
+          "ask": {
+            "kind": "slopePoint",
+            "slope": 1,
+            "normal": false,
+            "pointLabel": "(0, 3)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "tangent"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "f94f94b8",
+        "answer": {
+          "value": 1.5627251292905868e-12,
+          "label": "x = 0"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

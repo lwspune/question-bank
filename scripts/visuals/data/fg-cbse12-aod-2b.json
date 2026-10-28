@@ -1,0 +1,54 @@
+{
+  "//": "Assembled from agent drafts (functionGraph).",
+  "visuals": [
+    {
+      "id": "a07cb931-e4f4-42f0-b051-071f2496927d",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "x^4-4*x^3+10",
+          "fLabel": "y = x⁴ − 4x³ + 10",
+          "window": {
+            "x": [
+              -2,
+              4
+            ],
+            "y": [
+              -20,
+              60
+            ]
+          },
+          "ask": {
+            "kind": "decreasingOn",
+            "intervalLabel": "x < 3",
+            "interval": [
+              -2,
+              3
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "shade"
+            ]
+          }
+        ],
+        "fingerprint": "2567e494",
+        "answer": {
+          "value": 1,
+          "label": "falling for x < 3"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

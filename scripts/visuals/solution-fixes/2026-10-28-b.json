@@ -1,0 +1,20 @@
+[
+  {
+    "id": "7398dbff-17bb-47a5-b762-2547d1f4db5a",
+    "before": "926e7836",
+    "solution": "Given that : \\(x^3 + 2x^2 y - 9xy = -2\\)\nDifferentiate \\(w.\\ r.\\ t.\\ x\\)\n\\(3x^2 + 2\\left(x^2 \\frac{dy}{dx} + y \\frac{d}{dx}(x^2)\\right) - 9\\left(x \\frac{dy}{dx} + y \\frac{d}{dx}(x)\\right) = 0\\)\n\\(3x^2 + 2x^2 \\frac{dy}{dx} + 4xy - 9x \\frac{dy}{dx} - 9y = 0\\)\n\\((2x^2 - 9x) \\frac{dy}{dx} = 9y - 4xy - 3x^2 \\therefore \\frac{dy}{dx} = \\frac{9y - 4xy - 3x^2}{2x^2 - 9x}\\)\nSlope of tangent at \\((2, 1)\\)\n\\(\\left(\\frac{dy}{dx}\\right)_{(2,\\, 1)} = m = \\frac{9(1) - 4(2)(1) - 3(4)}{2(4) - 9(2)} = \\frac{9 - 8 - 12}{8 - 18}\\)\n\\(m = \\frac{-11}{-10} \\therefore m = \\frac{11}{10}\\)\nSlope of normal at \\((2, 1) = m' = -\\frac{10}{11}\\)\nEquation of tangent is given by\n\\(y - 1 = \\frac{11}{10}(x - 2) \\Rightarrow 10y - 10 = 11x - 22 \\Rightarrow 11x - 10y - 12 = 0\\)\nEquation of normal is given by\n\\(y - 1 = -\\frac{10}{11}(x - 2) \\Rightarrow 11y - 11 = -10x + 20\\)\n\\(10x + 11y - 31 = 0\\)",
+    "note": "the denominator 2x^2 - 9x at (2, 1) is 8 - 18 = -10, not 8 - 9, so the tangent slope is 11/10 (not 11) and both equations change: tangent 11x - 10y - 12 = 0, normal 10x + 11y - 31 = 0 (both pass through (2, 1), which is on the curve)."
+  },
+  {
+    "id": "851010b3-3997-4b39-9054-f933e4496076",
+    "before": "df47a851",
+    "solution": "We have\n\\(f(x) = 3x^4 + 4x^3 - 12x^2 + 12\\)\n\nor \\(f'(x) = 12x^3 + 12x^2 - 24x = 12x(x - 1)(x + 2)\\)\n\nor \\(f'(x) = 0\\) at \\(x = 0\\), \\(x = 1\\) and \\(x = -2\\).\n\nNow \\(f''(x) = 36x^2 + 24x - 24 = 12(3x^2 + 2x - 2)\\)\n\nor \\(f''(0) = -24 < 0\\), \\(f''(1) = 36 > 0\\), \\(f''(-2) = 72 > 0\\).\n\nTherefore, by second derivative test, \\(x = 0\\) is a point of local maxima and local maximum value of \\(f\\) at \\(x = 0\\) is \\(f(0) = 12\\) while \\(x = 1\\) and \\(x = -2\\) are the points of local minima and local minimum values of \\(f\\) at \\(x = 1\\) and \\(-2\\) are \\(f(1) = 7\\) and \\(f(-2) = -20\\), respectively.",
+    "note": "the minima were named as x = -1 and -2; the solution's own f''(1) > 0 and f(1) = 7 show they are at x = 1 and -2."
+  },
+  {
+    "id": "7bc91bbc-f5e2-47e9-bccb-c5d31a08636c",
+    "before": "aa18900a",
+    "solution": "Let \\(f(x) = e^{x}\\) ... (I)\n\nDifferentiate (I) w. r. t. \\(x\\),\n\\(f'(x) = e^{x}\\) ... (II)\n\nLet \\(a = 1\\) and \\(h = 0.005\\), so that \\(a + h = 1.005\\).\n\nFor \\(x = a = 1\\), from (I),\n\\(f(a) = f(1) = e^{1} = 2.7183\\) ... (III)\n\nFor \\(x = a = 1\\), from (II),\n\\(f'(a) = f'(1) = e^{1} = 2.7183\\) ... (IV)\n\nWe have \\(f(a + h) \\approx f(a) + h f'(a)\\),\n\\(f(1.005) \\approx f(1) + (0.005)f'(1)\\)\n\\(f(1.005) \\approx 2.7183 + (0.005)(2.7183)\\) ... [From (III) and (IV)]\n\\(f(1.005) \\approx 2.7183 + 0.0135915\\)\n\\(\\approx 2.7318915\\)\n\n\\(\\therefore e^{1.005} \\approx 2.73189\\)\n\n[The true value is \\(2.731907\\ldots\\), so the linear approximation is right to four decimal places here.]",
+    "note": "2.73189 against the true 2.731907 agrees to four decimal places (2.7319), not five."
+  }
+]
