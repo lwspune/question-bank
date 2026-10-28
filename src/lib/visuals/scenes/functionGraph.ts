@@ -268,8 +268,12 @@ function curveObstacles(p: FunctionGraphParams, X: (x: number) => number, Y: (y:
   return out;
 }
 
-/** A dot at each point (pixels) and its label in the clearest of several spots round it; a far spot gets a leader line. */
-function placeMarks(over: Shape[], obstacles: [number, number][], pts: [number, number][], labels: string[]) {
+/**
+ * A dot at each point (pixels) and its label in the clearest of several spots
+ * round it; a far spot gets a leader line. No label goes inside `avoid` (the
+ * header's box), however crowded the rest is.
+ */
+function placeMarks(over: Shape[], obstacles: [number, number][], pts: [number, number][], labels: string[], avoid?: { l: number; r: number; t: number; b: number }) {
   pts.forEach(([px, py], i) => {
     const label = labels[i];
     const halfW = label.length * 3.4;
@@ -281,6 +285,7 @@ function placeMarks(over: Shape[], obstacles: [number, number][], pts: [number, 
       const cx = anchor === "start" ? sx + halfW : sx - halfW;
       const cy = sy - 4;
       if (cx - halfW < 2 || cx + halfW > W - 2 || cy < P.t + 14 || cy > P.b) return -1;
+      if (avoid && cx + halfW > avoid.l && cx - halfW < avoid.r && cy + 8 > avoid.t && cy - 8 < avoid.b) return -2;
       // Distance from each obstacle to the label's whole box (half-height 8): 0 means it touches the text.
       return Math.min(...obstacles.map(([ox, oy]) => Math.max(Math.abs(ox - cx) - halfW, Math.abs(oy - cy) - 8, 0)));
     };
@@ -652,15 +657,25 @@ export const functionGraph: Scene<FunctionGraphParams> = {
       if (ask.scope === "absolute" && (ask.on[0] > xa || ask.on[1] < xb)) {
         for (const e of ask.on) over.push(line(X(e), P.t + 16, X(e), P.b, { stroke: "muted", width: 1.2, dash: "4 4" }));
       }
+      // x as a fraction of pi on a pi-ticked chart ("π/6", not "0.524").
+      const xs = (v: number) => {
+        const frac = p.xTicks === "pi" && Math.abs(v) > 1e-12 ? piFraction(Math.abs(v)) : null;
+        return frac ? (v < 0 ? `−${frac}` : frac) : num(v, 3);
+      };
+      const head = ask.scope === "absolute" ? `greatest and least, ${xs(ask.on[0])} ≤ x ≤ ${xs(ask.on[1])}` : "local max and min";
+      // The header's row is settled first (it drops a row when it would meet the
+      // curve's name), and its box is kept clear of the point labels.
+      const headStart = P.r - 2 - head.length * 11 * 0.52;
+      const headY = headStart < P.l + 6 + p.fLabel.length * 6.4 + 8 ? P.t + 17 : P.t + 2;
       const shown = shownExtrema(p);
       placeMarks(
         over,
         curveObstacles(p, X, Y),
         shown.map((e): [number, number] => [X(e.x), clampY(Y(e.y))]),
-        shown.map((e, i) => ask.pointLabels[i] ?? `${e.type} (${num(e.x, 3)}, ${num(e.y, 3)})`),
+        shown.map((e, i) => ask.pointLabels[i] ?? `${e.type} (${xs(e.x)}, ${num(e.y, 3)})`),
+        { l: headStart - 4, r: P.r, t: headY - 12, b: headY + 3 },
       );
-      const head = ask.scope === "absolute" ? `greatest and least, ${num(ask.on[0], 3)} ≤ x ≤ ${num(ask.on[1], 3)}` : "local max and min";
-      over.push(text(P.r - 2, P.t + 2, head, { tone: "good", size: 11, weight: 600, anchor: "end" }));
+      over.push(text(P.r - 2, headY, head, { tone: "good", size: 11, weight: 600, anchor: "end" }));
     }
 
     // The header (top right) drops to a second row when it would run into the

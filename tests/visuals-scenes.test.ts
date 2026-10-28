@@ -275,6 +275,24 @@ describe("functionGraph extrema", () => {
     expect(s.parse({ ...cubic, ask: { kind: "extrema", scope: "absolute", on: [-4, 1], expect: [{ type: "max", y: 2 }] } })).toHaveProperty("error");
     expect(s.parse({ ...cubic, ask: { kind: "extrema", scope: "local", expect: [{ type: "peak", x: 1, y: 2 }] } })).toHaveProperty("error");
   });
+  it("keeps extremum labels off the header, and writes pi-ticked x as a fraction of pi", () => {
+    // cos^2 x + sin x on [0, pi]: greatest 5/4 at pi/6 (and 5pi/6), least 1 at 0 and pi.
+    const { scene, p } = parsedParams("functionGraph", { f: "cos(x)^2+sin(x)", fLabel: "f(x) = cos²x + sin x", xTicks: "pi", window: { x: [-0.3, 3.45], y: [0.5, 1.4] }, ask: { kind: "extrema", scope: "absolute", on: [0, Math.PI], expect: [{ type: "max", y: 1.25 }, { type: "min", y: 1 }] } });
+    const shapes = scene.frame(p, { played: ["curve", "mark"], t: 1 } as never).filter((sh) => sh.kind === "text") as { text: string; x: number; y: number; anchor?: string; size?: number }[];
+    const head = shapes.find((t) => t.text.startsWith("greatest and least"))!;
+    expect(head.text).toContain("π");
+    const box = (t: (typeof shapes)[number]) => {
+      const w = t.text.length * (t.size ?? 12) * 0.56;
+      const left = t.anchor === "end" ? t.x - w : t.anchor === "middle" ? t.x - w / 2 : t.x;
+      return { left, right: left + w, top: t.y - (t.size ?? 12), bottom: t.y + 2 };
+    };
+    const h = box(head);
+    for (const t of shapes.filter((s) => s.text.startsWith("max") || s.text.startsWith("min"))) {
+      const b = box(t);
+      expect(b.right < h.left || b.left > h.right || b.bottom < h.top || b.top > h.bottom).toBe(true);
+    }
+    expect(shapes.some((t) => t.text === "max (π/6, 1.25)")).toBe(true);
+  });
   it("marks the extrema on the mark beat", () => {
     const { scene, p } = parsedParams("functionGraph", { ...cubic, ask: { kind: "extrema", scope: "local", expect: [{ type: "max", x: -1, y: 2 }, { type: "min", x: 1, y: -2 }] } });
     const texts = scene.frame(p, { played: ["curve", "mark"], t: 1 } as never).filter((sh) => sh.kind === "text").map((sh) => (sh as { text: string }).text);
