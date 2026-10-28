@@ -31,6 +31,7 @@ import type { QuestionRow } from "@/lib/questions/query";
 import type { NotesChapterRegistration } from "@/lib/notes/chapters";
 import type { AuthoredExample, ConceptUnit, ReferenceTable, TrapCallout, VisualizationSlug } from "@/app/notes/_types";
 import { PAPER_CSS, answerOf, blocksHtml, keyDetailsHtml, optionsHtml, paperBodyHtml, richHtml } from "@/lib/export/pdf/paperHtml";
+import { stripPassageCountPhrase } from "@/lib/export/stripPassageCount";
 import type { PrintedLabel } from "@/lib/export/printedLabel";
 import { splitFormulaLines } from "@/lib/export/pdf/formulaSheetHtml";
 import type { EbookKind } from "./catalog";
@@ -279,21 +280,20 @@ export function buildPyqChapterHtml(input: PyqChapterInput): string {
     for (const set of block.sets) {
       const ids = live(set);
       if (ids.length === 0) continue;
+      // Every context prints above the question(s) it serves, count stripped:
+      // "Which of the statements given above…" must follow its statements.
+      const banner = (context: string, label: string) =>
+        `<div class="passage"><span class="label">${label}: </span>${blocksHtml(stripPassageCountPhrase(context))}</div>`;
       const shared = ids.length > 1 ? questionsById.get(ids[0])?.context : null;
-      if (shared) {
-        questions.push(
-          `<div class="passage"><span class="label">Common context for ${rangeText(ids.map((id) => numberOf.get(id)!))}: </span>${blocksHtml(shared)}</div>`
-        );
-      }
+      if (shared) questions.push(banner(shared, `Common context for ${rangeText(ids.map((id) => numberOf.get(id)!))}`));
       for (const id of ids) {
         const q = questionsById.get(id)!;
         const { tail, line } = provenance(q, set, input.recurrence);
-        const ctx = !shared && q.context ? `<div class="ctx"><span class="label">Context: </span>${blocksHtml(q.context)}</div>` : "";
+        if (!shared && q.context) questions.push(banner(q.context, `Context for ${rangeText([numberOf.get(id)!])}`));
         questions.push(
           `<section class="q"><div class="qn">${numberOf.get(id)}</div><div class="qb">` +
             blocksHtml(q.text, tail) +
             figure(q.imageUrl, images) +
-            ctx +
             optionsHtml(q.options, images) +
             line +
             `</div></section>`

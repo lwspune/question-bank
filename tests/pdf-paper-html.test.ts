@@ -159,6 +159,33 @@ describe("buildPaperHtml", () => {
     expect(html.match(/Read the passage\./g)).toHaveLength(1);
   });
 
+  // A stem like "Which of the statements given above is correct?" printed ABOVE
+  // its statements until 2026-10-28: a lone question's context came after it.
+  it("prints a lone question's context before its stem, in the same banner as a set", () => {
+    const solo = q({
+      text: "Which of the statements given above is/are correct?",
+      context: "Consider the following statements: 1. A 2. B",
+    });
+    const html = buildPaperHtml({ ...base, questions: [q({ id: "x" }), solo] });
+    expect(html).toContain("Context for question 2:");
+    expect(html).not.toContain("Context: ");
+    expect(html.indexOf("Consider the following statements")).toBeLessThan(
+      html.indexOf("Which of the statements given above")
+    );
+  });
+
+  it("drops the count from a set passage when only one of its questions is exported", () => {
+    const lone = q({
+      setId: "s1",
+      text: "What is \\(\\sin A\\cos B\\) equal to?",
+      context: "For the next two (02) items that follow : The angles are in the ratio 1 : 2 : 7.",
+    });
+    const html = buildPaperHtml({ ...base, questions: [lone] });
+    expect(html).toContain("Context for question 1:");
+    expect(html).toContain("For the items that follow");
+    expect(html).not.toContain("two (02)");
+  });
+
   it("renders a pipe-table as a real table", () => {
     const html = buildPaperHtml({
       ...base,

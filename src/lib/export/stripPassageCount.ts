@@ -7,23 +7,38 @@
  *
  * Bank text stays verbatim; only the rendered output is normalised.
  *
- * Handles:
+ * Handles, with the count as a word or a numeral and an optional bracketed
+ * copy before or after "items":
  *   - "for the three (03) items that follow"
- *   - "for the next two (02) items that follow"
- *   - "for the next four items that follow"
- *   - "for the 5 items that follow"
- *   - "for the next 1 item that follows" (singular)
+ *   - "for the next two (02) items that follow" / "for the next 02 (two) items:"
+ *   - "For the following two (02) items:"     (keeps "following")
+ *   - "answer the two items (02) that follow"
+ *   - "for the next 1 item that follows"      (singular)
  *
- * Leaves untouched any passage that doesn't carry the pattern (no count
- * word between "the" and "items").
+ * A count needs "next" or "following" before it, or "that follow" after the
+ * items, before it is stripped: "sold the two items at a profit" is content.
  */
 
 const NUMBER_WORDS = "one|two|three|four|five|six|seven|eight|nine|ten";
-const COUNT_PHRASE_RE = new RegExp(
-  String.raw`\bfor\s+(?:the\s+next\s+|the\s+)(?:${NUMBER_WORDS}|\d+)\s*(?:\(\d+\)\s*)?(items?\s+that\s+follows?)`,
+const COUNT = String.raw`(?:${NUMBER_WORDS}|\d+)`;
+const BRACKET = String.raw`\(\s*${COUNT}\s*\)`;
+
+/** "the next two (02) items" / "the following 02 (two) items" */
+const LEAD_IN_RE = new RegExp(
+  String.raw`\b(the\s+)(?:next\s+|(following\s+))${COUNT}\s*(?:${BRACKET}\s*)?(items?)\b(?:\s*${BRACKET})?`,
+  "gi"
+);
+
+/** "the three (03) items that follow" / "the two items (02) that follow" */
+const THAT_FOLLOW_RE = new RegExp(
+  String.raw`\b(the\s+)${COUNT}\s*(?:${BRACKET}\s*)?(items?)(?:\s*${BRACKET})?(\s+that\s+follows?)`,
   "gi"
 );
 
 export function stripPassageCountPhrase(passage: string): string {
-  return passage.replace(COUNT_PHRASE_RE, "for the $1");
+  return passage
+    .replace(LEAD_IN_RE, (_m, the: string, following: string | undefined, items: string) =>
+      `${the}${following ?? ""}${items}`
+    )
+    .replace(THAT_FOLLOW_RE, "$1$2$3");
 }
