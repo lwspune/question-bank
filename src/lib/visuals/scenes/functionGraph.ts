@@ -163,13 +163,23 @@ export function functionGraphFacts(p: FunctionGraphParams): FunctionGraphFacts {
   return facts;
 }
 
-/** Is f' strictly of one sign at every sampled interior point of [lo, hi]? */
+/**
+ * Is f strictly monotone on [lo, hi] in the given direction? f' may vanish at
+ * isolated points (x^3 rises straight through x = 0), so a sample there is
+ * allowed; f' of the wrong sign anywhere, or f failing to move between two
+ * samples (a flat stretch), is not.
+ */
 function monotoneOn(f: Fn, [lo, hi]: [number, number], sign: 1 | -1): boolean {
   const n = 400;
-  for (let i = 1; i < n; i++) {
-    const s = slopeAt(f, lo + ((hi - lo) * i) / n);
-    if (!Number.isFinite(s) || sign * s <= 0) return false;
-  }
+  // Interior points only: an endpoint may sit on the edge of the domain (log x at 0).
+  const xs = Array.from({ length: n - 1 }, (_, i) => lo + ((hi - lo) * (i + 1)) / n);
+  const slopes = xs.map((x) => slopeAt(f, x));
+  if (!slopes.every(Number.isFinite)) return false;
+  const tol = 1e-7 * Math.max(1, ...slopes.map(Math.abs));
+  if (slopes.some((s) => sign * s < -tol)) return false;
+  const ys = xs.map((x) => f(x));
+  if (!ys.every(Number.isFinite)) return false;
+  for (let i = 1; i < ys.length; i++) if (sign * (ys[i] - ys[i - 1]) <= 0) return false;
   return true;
 }
 

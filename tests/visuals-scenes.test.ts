@@ -213,6 +213,28 @@ describe("functionGraph drawing details", () => {
   });
 });
 
+describe("functionGraph rises straight through an isolated stationary point", () => {
+  const check = (f: string, x: [number, number], kind: "increasingOn" | "decreasingOn", interval: [number, number]) => {
+    const { scene, p } = parsedParams("functionGraph", { f, window: { x, y: [-50, 50] }, ask: { kind, interval } });
+    return scene.check(p);
+  };
+  it("x^3 - 6x^2 + 12x - 16 has f' = 3(x - 2)^2: increasing on all of [-1, 5], even with a sample at x = 2", () => {
+    expect(check("x^3-6*x^2+12*x-16", [-1, 5], "increasingOn", [-1, 5])).toBe(1);
+  });
+  it("2 - 3x + 3x^2 - x^3 has f' = -3(x - 1)^2: decreasing on all of [-1, 3]", () => {
+    expect(check("2-3*x+3*x^2-x^3", [-1, 3], "decreasingOn", [-1, 3])).toBe(1);
+  });
+  it("x - cos x has f' = 1 + sin x, zero at isolated points: increasing on [-2pi, 2pi]", () => {
+    expect(check("x-cos(x)", [-2 * Math.PI, 2 * Math.PI], "increasingOn", [-2 * Math.PI, 2 * Math.PI])).toBe(1);
+  });
+  it("still refuses a wrong sign, and a flat stretch", () => {
+    expect(check("x^3-3*x", [-3, 3], "increasingOn", [-3, 0])).toBe(0);
+    expect(check("x^2-2*x", [-1, 3], "increasingOn", [0, 2])).toBe(0);
+    // |x - 1| + |x - 2| is flat on [1, 2], then rises.
+    expect(check("abs(x-1)+abs(x-2)", [0, 3], "increasingOn", [1.2, 3])).toBe(0);
+  });
+});
+
 describe("functionGraph unions and several points", () => {
   it("checks every interval of a union: x^3 - 3x rises on x < -1 and on x > 1", () => {
     const ok = parsedParams("functionGraph", { f: "x^3-3*x", window: { x: [-3, 3], y: [-5, 5] }, ask: { kind: "increasingOn", intervals: [[-3, -1], [1, 3]], intervalLabel: "x < −1 or x > 1" } });
