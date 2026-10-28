@@ -24,10 +24,15 @@ export function backward(slides: readonly Navigable[], { index, shown }: Positio
 }
 
 /**
- * The first slide's main button reads Start until the learner begins: it opens full screen and
- * stays on the slide. Only where full screen works (not on iPhone); elsewhere it stays Next.
+ * The first slide's main button reads Start until the learner begins: it makes the lesson fill the
+ * screen and stays on the slide. Offered on every device: where the browser has no full screen
+ * (iPhone), the lesson covers the page instead (fillWith).
  */
-export const offersStart = (
-  { index }: Position,
-  { canFullscreen, isFullscreen, begun }: { canFullscreen: boolean; isFullscreen: boolean; begun: boolean },
-): boolean => index === 0 && canFullscreen && !isFullscreen && !begun;
+export const offersStart = ({ index }: Position, { isFilled, begun }: { isFilled: boolean; begun: boolean }): boolean =>
+  index === 0 && !isFilled && !begun;
+
+/**
+ * How the lesson fills the screen: the browser's full screen where it works, otherwise by covering
+ * the page (iPhone Safari allows full screen only for video; V's chat covers the page the same way).
+ */
+export const fillWith = (fullscreenEnabled: boolean): "fullscreen" | "cover" => (fullscreenEnabled ? "fullscreen" : "cover");

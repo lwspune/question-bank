@@ -3,7 +3,7 @@
 import { type ReactNode, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { ArrowLeft, ArrowRight, Maximize2, Minimize2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { type Position, backward, forward, offersStart, startAt } from "@/lib/learn/lesson/navigation";
+import { type Position, backward, fillWith, forward, offersStart, startAt } from "@/lib/learn/lesson/navigation";
 import type { RenderedSlide } from "@/lib/learn/lesson/renderDeck";
 import { RenderedInlineNodes } from "./RenderedRichText";
 import { SlideBody } from "./SlideBody";
@@ -20,8 +20,8 @@ const subscribeFullscreen = (cb: () => void) => {
 
 /**
  * Slides on a stage: swipe, arrow keys or Previous/Next. A points slide reveals one point per
- * step before moving on (navigation.ts). Where full screen works, the first slide's button reads
- * Start and opens it.
+ * step before moving on (navigation.ts). The first slide's button reads Start and fills the
+ * screen: the browser's full screen where it works, otherwise (iPhone) the stage covers the page.
  *
  * - `banner`: above the header (the refresher bar).
  * - `questions`: rendered under the slide and kept mounted; given whether the questions slide is
@@ -43,6 +43,8 @@ export function LessonStage({
   const [pos, setPos] = useState<Position>(() => startAt(slides, startIndex));
   // Set on the first move or full screen, so Start never comes back (even after leaving full screen).
   const [begun, setBegun] = useState(false);
+  // Covering the page, where the browser has no full screen (iPhone).
+  const [covering, setCovering] = useState(false);
   const slide = slides[pos.index];
 
   const stageRef = useRef<HTMLElement>(null);
@@ -51,11 +53,6 @@ export function LessonStage({
   const firstRender = useRef(true);
   const swipeStart = useRef<{ x: number; y: number } | null>(null);
 
-  const canFullscreen = useSyncExternalStore(
-    () => () => {},
-    () => document.fullscreenEnabled,
-    () => false,
-  );
   const isFullscreen = useSyncExternalStore(
     subscribeFullscreen,
     () => document.fullscreenElement !== null,
@@ -66,7 +63,8 @@ export function LessonStage({
   const prev = backward(slides, pos);
   const canGoOn = next.index !== pos.index || next.shown !== pos.shown;
   const canGoBack = prev.index !== pos.index || prev.shown !== pos.shown;
-  const showStart = offersStart(pos, { canFullscreen, isFullscreen, begun });
+  const isFilled = isFullscreen || covering;
+  const showStart = offersStart(pos, { isFilled, begun });
 
   function go(to: (p: Position) => Position) {
     setBegun(true);
@@ -120,17 +118,32 @@ export function LessonStage({
         e.preventDefault();
         setBegun(true);
         setPos((p) => backward(slides, p));
+      } else if (e.key === "Escape") {
+        setCovering(false);
       }
     }
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [slides]);
 
-  function toggleFullscreen() {
+  // The page behind a covering stage must not scroll under the learner's swipes.
+  useEffect(() => {
+    if (!covering) return;
+    const root = document.documentElement;
+    const before = root.style.overflow;
+    root.style.overflow = "hidden";
+    return () => {
+      root.style.overflow = before;
+    };
+  }, [covering]);
+
+  function toggleFill() {
     setBegun(true);
     if (document.fullscreenElement) void document.exitFullscreen();
+    else if (covering) setCovering(false);
     // A refusal (the browser or the learner) just leaves the slides where they are.
-    else stageRef.current?.requestFullscreen().catch(() => {});
+    else if (fillWith(document.fullscreenEnabled) === "fullscreen") stageRef.current?.requestFullscreen().catch(() => {});
+    else setCovering(true);
   }
 
   const nextLabel = showStart ? "Start" : next.index !== pos.index && slides[next.index].kind === "questions" ? "Try a question" : "Next";
@@ -140,7 +153,11 @@ export function LessonStage({
       ref={stageRef}
       aria-roledescription="carousel"
       aria-label={label}
-      className="flex h-[calc(100dvh-13rem)] min-h-[26rem] flex-col overflow-hidden rounded-2xl border bg-card md:h-[min(calc(100dvh-14rem),48rem)]"
+      className={
+        covering
+          ? "fixed inset-0 z-[60] flex h-[100dvh] w-full flex-col overflow-hidden bg-card"
+          : "flex h-[calc(100dvh-13rem)] min-h-[26rem] flex-col overflow-hidden rounded-2xl border bg-card md:h-[min(calc(100dvh-14rem),48rem)]"
+      }
       onPointerDown={(e) => {
         if (e.pointerType !== "mouse") swipeStart.current = { x: e.clientX, y: e.clientY };
       }}
@@ -154,7 +171,7 @@ export function LessonStage({
       }}
     >
       {banner}
-      <header className="flex items-center gap-4 border-b px-5 py-3">
+      <header className={`flex items-center gap-4 border-b px-5 py-3 ${covering ? "pt-[max(0.75rem,env(safe-area-inset-top))]" : ""}`}>
         <p className="text-sm font-medium tabular-nums text-muted-foreground">
           {pos.index + 1} / {slides.length}
         </p>
@@ -167,17 +184,15 @@ export function LessonStage({
             />
           ))}
         </div>
-        {canFullscreen && (
-          <button
-            type="button"
-            onClick={toggleFullscreen}
-            className="inline-flex items-center gap-1.5 rounded-md px-2 py-1 text-sm text-muted-foreground hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-            aria-label={isFullscreen ? "Exit full screen" : "Full screen"}
-          >
-            {isFullscreen ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}
-            <span className="hidden sm:inline">{isFullscreen ? "Exit full screen" : "Full screen"}</span>
-          </button>
-        )}
+        <button
+          type="button"
+          onClick={toggleFill}
+          className="inline-flex items-center gap-1.5 rounded-md px-2 py-1 text-sm text-muted-foreground hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          aria-label={isFilled ? "Exit full screen" : "Full screen"}
+        >
+          {isFilled ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}
+          <span className="hidden sm:inline">{isFilled ? "Exit full screen" : "Full screen"}</span>
+        </button>
       </header>
 
       <div ref={scrollRef} className="min-h-0 flex-1 overflow-y-auto px-5 py-7 md:px-14 md:py-12">
@@ -197,13 +212,15 @@ export function LessonStage({
         {questions?.({ active: slide.kind === "questions", reread: () => go(() => startAt(slides, 0)) })}
       </div>
 
-      <footer className="flex items-center justify-between gap-3 border-t bg-muted/40 px-5 py-3">
+      <footer
+        className={`flex items-center justify-between gap-3 border-t bg-muted/40 px-5 py-3 ${covering ? "pb-[max(0.75rem,env(safe-area-inset-bottom))]" : ""}`}
+      >
         <Button type="button" variant="outline" onClick={() => go(() => prev)} disabled={!canGoBack}>
           <ArrowLeft className="h-4 w-4" aria-hidden="true" />
           Previous
         </Button>
         {canGoOn && (
-          <Button type="button" variant="brand" onClick={showStart ? toggleFullscreen : () => go(() => next)}>
+          <Button type="button" variant="brand" onClick={showStart ? toggleFill : () => go(() => next)}>
             {nextLabel}
             <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </Button>
