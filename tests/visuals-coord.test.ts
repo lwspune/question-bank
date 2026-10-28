@@ -328,6 +328,11 @@ describe("coordGeometry constructed points, the point ask and the ratio ask", ()
     expect(parseError({ window: win, points: [...ab, { id: "P", at: [0, 0] }], ask: { kind: "ratio", of: ["A", "B"], by: "P" } })).toMatch(/not on/);
     expect(parseError({ window: win, points: [{ id: "A", at: [0, 1] }, { id: "B", at: [3, 1] }], lines: [{ id: "X", eq: [0, 1, 0] }], ask: { kind: "ratio", of: ["A", "B"], by: "X" } })).toMatch(/parallel/);
   });
+  it("does not print a labelled answer point's coordinates a second time", () => {
+    const raw = { window: win, points: [...ab, { id: "P", divides: ["A", "B"], ratio: [2, 3], label: "P(1, 3)" }], ask: { kind: "point", point: "P", expect: [1, 3] } };
+    const texts = scene().frame(parse(raw), { played: ["given", "derived", "answer"], t: 1 } as never).filter((s) => s.kind === "text").map((s) => (s as { text: string }).text);
+    expect(texts.filter((t) => t.includes("(1, 3)"))).toEqual(["P(1, 3)", "P = (1, 3)"]);
+  });
   it("draws the two parts of the divided segment on the answer beat", () => {
     const raw = { window: { x: [-4, 7], y: [-9, 11] }, points: [{ id: "A", at: [-3, 10] }, { id: "B", at: [6, -8] }, { id: "P", at: [-1, 6] }], ask: { kind: "ratio", of: ["A", "B"], by: "P" } };
     const shapes: Shape[] = scene().frame(parse(raw), { played: ["given", "answer"], t: 1 } as never);

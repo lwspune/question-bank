@@ -1061,7 +1061,10 @@ export const coordGeometry: Scene<CoordParams> = {
           // Coordinates only when they read cleanly ("(0, −1)", not "(2.828, 0)"):
           // the header already gives the exact value.
           const short = (v: number) => Math.abs(v * 100 - Math.round(v * 100)) < 1e-6;
-          if (pa > 0.5 && short(m.at[0]) && short(m.at[1])) {
+          // A constructed answer point already carries its own label.
+          const ask = p.ask;
+          const labelled = ask.kind === "point" && !!p.points.find((q) => q.id === ask.point)?.label;
+          if (pa > 0.5 && !labelled && short(m.at[0]) && short(m.at[1])) {
             const lab = `(${num(m.at[0])}, ${num(m.at[1])})`;
             over.push(...labelShapes(place([[qx, qy]], lab, 12), lab, "good", 12));
           }
