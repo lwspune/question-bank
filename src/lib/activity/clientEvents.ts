@@ -28,9 +28,9 @@ const BROWSER_SET: ReadonlySet<string> = new Set(VIEW_BROWSERS);
 const CHAPTER_SURFACES: ReadonlySet<string> = new Set(["handout", "handout_request"]);
 const CHAPTER_RE = /^[a-z0-9-]{1,60}\/[a-z0-9-]{1,100}$/;
 
-/** Where a paywall met the student. The last five are the 0134 limits
- *  (2026-10-05): chapter tests, the drill, daily answers, saves, the
- *  projected score. */
+/** Where a paywall met the student. Five are the 0134 limits (2026-10-05):
+ *  chapter tests, the drill, daily answers, saves, the projected score.
+ *  "store" is the ebook store, where only book orders are recorded. */
 export const PAYWALL_GATES = [
   "mock_limit",
   "teacher",
@@ -40,10 +40,13 @@ export const PAYWALL_GATES = [
   "reveals",
   "saves",
   "projection",
+  "store",
 ] as const;
 export type PaywallGate = (typeof PAYWALL_GATES)[number];
 
-export const PAYWALL_STEPS = ["shown", "checkout_opened", "checkout_dismissed", "verify_failed"] as const;
+/** checkout_opened is a PASS order; a book order is book_checkout_opened
+ *  (2026-10-28), so the pass funnel's counts never include a book. */
+export const PAYWALL_STEPS = ["shown", "checkout_opened", "book_checkout_opened", "checkout_dismissed", "verify_failed"] as const;
 export type PaywallStep = (typeof PAYWALL_STEPS)[number];
 
 /**
@@ -60,7 +63,7 @@ export function checkoutBox(v: unknown): DownloadBox | undefined {
   return typeof v === "string" && BOX_SET.has(v) ? (v as DownloadBox) : undefined;
 }
 
-/** Steps a client may report. The other two are written by the billing routes. */
+/** Steps a client may report. The others are written by the billing routes. */
 const CLIENT_STEPS: ReadonlySet<string> = new Set<PaywallStep>(["shown", "checkout_dismissed"]);
 const GATE_SET: ReadonlySet<string> = new Set(PAYWALL_GATES);
 const MAX_PLAN_ID = 64;
@@ -101,6 +104,16 @@ export function paywallEvent(
     event.dedupeKey = `paywall:shown:${gate}:${box ? `${box}:` : ""}${dedupe.userId}:${istDayKey(dedupe.now)}`;
   }
   return event;
+}
+
+/** The order route's record of a book order created on Razorpay, for /dashboard/sales (0199). */
+export function bookCheckoutEvent(ebookSlug: string): ActivityEvent {
+  return {
+    kind: "paywall_event",
+    refId: ebookSlug,
+    refKind: "ebook",
+    metadata: { step: "book_checkout_opened", gate: "store" },
+  };
 }
 
 export type ParseClientEventResult =

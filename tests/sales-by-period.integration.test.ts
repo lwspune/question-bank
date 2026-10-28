@@ -9,6 +9,10 @@
  *    an expired pass was still paid for, so it counts in full;
  *  - only paid passes count (source 'razorpay'); a comp grant is not a sale;
  *  - books come from ebook_purchases, with the price each buyer paid;
+ *  - orders are the Razorpay orders the site created: pass orders are paywall_event
+ *    step 'checkout_opened', book orders step 'book_checkout_opened' (0199); any other
+ *    step (an offer shown, a checkout dismissed) is not an order, and a day with
+ *    orders but no sale still gets a row;
  *  - a grain other than day / week / month is refused;
  *  - a paid pass without its price is refused by the database (0198);
  *  - students and anon cannot call it (service role only).
@@ -32,9 +36,11 @@ const SINCE = "2001-03-01T00:00:00+05:30";
 
 type Row = {
   period: string;
+  pass_orders: number;
   passes_sold: number;
   passes_refunded: number;
   pass_paise: number;
+  book_orders: number;
   books_sold: number;
   books_refunded: number;
   book_paise: number;
@@ -88,25 +94,67 @@ describe.skipIf(!HAS_ENV)("sales_by_period", () => {
       created_at: "2001-03-06T04:00:00Z", // Tue 6 Mar, 09:30 IST
     });
     if (buyError) throw new Error(`insert book purchase: ${buyError.message}`);
+
+    const event = (step: string, at: string, refId: string | null, refKind: string | null) => ({
+      user_id: userId,
+      kind: "paywall_event",
+      ref_id: refId,
+      ref_kind: refKind,
+      metadata: { step, gate: step === "book_checkout_opened" ? "store" : "pricing" },
+      created_at: at,
+    });
+    const { error: eventError } = await admin.from("user_activity").insert([
+      event("checkout_opened", "2001-03-05T10:00:00Z", "mock-pass-6m", "plan"), // Mon 5 Mar
+      event("checkout_opened", "2001-03-05T18:15:00Z", "mock-pass-6m", "plan"), // Mon 5 Mar, 23:45 IST
+      event("checkout_opened", "2001-03-05T18:30:00Z", "mock-pass-6m", "plan"), // Tue 6 Mar, 00:00 IST
+      event("book_checkout_opened", "2001-03-06T03:55:00Z", book.slug, "ebook"), // Tue 6 Mar
+      event("checkout_dismissed", "2001-03-06T04:00:00Z", "mock-pass-6m", "plan"), // not an order
+      event("shown", "2001-03-06T04:00:00Z", null, null), // not an order
+      event("checkout_opened", "2001-03-08T06:00:00Z", "mock-pass-6m", "plan"), // Thu 8 Mar: an order, no sale
+    ]);
+    if (eventError) throw new Error(`insert checkout events: ${eventError.message}`);
   });
 
   afterAll(async () => {
     if (!admin) return;
     await admin.from("ebook_purchases").delete().eq("payment_id", PAY("book"));
+    await admin.from("user_activity").delete().eq("user_id", userId);
     await admin.from("entitlements").delete().eq("user_id", userId);
     if (userId) await admin.auth.admin.deleteUser(userId);
   });
 
-  it("puts each sale on its IST day, refunds counted but not kept", async () => {
+  it("puts each sale and order on its IST day, refunds counted but not kept", async () => {
+    const day = (period: string, over: Partial<Row>): Row => ({
+      period,
+      pass_orders: 0,
+      passes_sold: 0,
+      passes_refunded: 0,
+      pass_paise: 0,
+      book_orders: 0,
+      books_sold: 0,
+      books_refunded: 0,
+      book_paise: 0,
+      ...over,
+    });
     expect(await periods("day")).toEqual([
-      { period: "2001-03-05", passes_sold: 1, passes_refunded: 0, pass_paise: 19900, books_sold: 0, books_refunded: 0, book_paise: 0 },
-      { period: "2001-03-06", passes_sold: 1, passes_refunded: 1, pass_paise: 0, books_sold: 1, books_refunded: 0, book_paise: 4900 },
-      { period: "2001-03-07", passes_sold: 1, passes_refunded: 0, pass_paise: 9900, books_sold: 0, books_refunded: 0, book_paise: 0 },
+      day("2001-03-05", { pass_orders: 2, passes_sold: 1, pass_paise: 19900 }),
+      day("2001-03-06", { pass_orders: 1, passes_sold: 1, passes_refunded: 1, book_orders: 1, books_sold: 1, book_paise: 4900 }),
+      day("2001-03-07", { passes_sold: 1, pass_paise: 9900 }),
+      day("2001-03-08", { pass_orders: 1 }),
     ]);
   });
 
   it("groups a week from Monday and a month from the 1st", async () => {
-    const total = { passes_sold: 3, passes_refunded: 1, pass_paise: 29800, books_sold: 1, books_refunded: 0, book_paise: 4900 };
+    const total = {
+      pass_orders: 4,
+      passes_sold: 3,
+      passes_refunded: 1,
+      pass_paise: 29800,
+      book_orders: 1,
+      books_sold: 1,
+      books_refunded: 0,
+      book_paise: 4900,
+    };
     expect(await periods("week")).toEqual([{ period: "2001-03-05", ...total }]);
     expect(await periods("month")).toEqual([{ period: "2001-03-01", ...total }]);
   });

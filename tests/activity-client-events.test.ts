@@ -5,7 +5,7 @@
  * because those carry meaning the server alone can vouch for.
  */
 import { describe, it, expect } from "vitest";
-import { parseClientEvent, paywallEvent, checkoutGate, checkoutBox } from "@/lib/activity/clientEvents";
+import { parseClientEvent, paywallEvent, checkoutGate, checkoutBox, bookCheckoutEvent } from "@/lib/activity/clientEvents";
 
 const NOW = new Date("2026-09-27T03:00:00Z");
 
@@ -45,7 +45,7 @@ describe("parseClientEvent", () => {
   });
 
   it("refuses server-only paywall steps from the client", () => {
-    for (const step of ["checkout_opened", "verify_failed"]) {
+    for (const step of ["checkout_opened", "book_checkout_opened", "verify_failed"]) {
       expect(parseClientEvent({ kind: "paywall_event", step, gate: "pricing" }, "u1", NOW).ok).toBe(false);
     }
   });
@@ -123,6 +123,19 @@ describe("paywall events — the download box", () => {
 // Which gate a checkout started from (2026-10-04): the download box buys in
 // place, so the order route can no longer assume /pricing. Only gates that
 // open a checkout are accepted; anything else is /pricing, as before.
+describe("bookCheckoutEvent", () => {
+  // A book order is its own step, so the pass funnel's checkout_opened counts
+  // (growth readings, /dashboard/sales pass orders) never include a book.
+  it("records a book order on the store gate, the book as its ref", () => {
+    expect(bookCheckoutEvent("cbse-12-maths-papers")).toEqual({
+      kind: "paywall_event",
+      refId: "cbse-12-maths-papers",
+      refKind: "ebook",
+      metadata: { step: "book_checkout_opened", gate: "store" },
+    });
+  });
+});
+
 describe("checkoutGate", () => {
   it("accepts the download gate", () => {
     expect(checkoutGate("teacher")).toBe("teacher");

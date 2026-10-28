@@ -1,5 +1,5 @@
 /**
- * Reads public.sales_by_period (migration 0197) for /dashboard/sales.
+ * Reads public.sales_by_period (migrations 0197, 0199) for /dashboard/sales.
  * Service-role only: the page checks for a superadmin first.
  */
 import type { SupabaseClient } from "@supabase/supabase-js";
@@ -7,9 +7,11 @@ import type { SalesGrain, SalesPeriodRow } from "./summary";
 
 type Row = {
   period: string;
+  pass_orders: number;
   passes_sold: number;
   passes_refunded: number;
   pass_paise: number | string;
+  book_orders: number;
   books_sold: number;
   books_refunded: number;
   book_paise: number | string;
@@ -28,9 +30,11 @@ export async function loadSalesByPeriod(
   if (error) throw new Error(`sales_by_period(${grain}): ${error.message}`);
   return ((data ?? []) as Row[]).map((r) => ({
     period: r.period,
+    passOrders: r.pass_orders,
     passesSold: r.passes_sold,
     passesRefunded: r.passes_refunded,
     passPaise: Number(r.pass_paise),
+    bookOrders: r.book_orders,
     booksSold: r.books_sold,
     booksRefunded: r.books_refunded,
     bookPaise: Number(r.book_paise),
