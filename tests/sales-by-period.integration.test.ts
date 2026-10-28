@@ -13,6 +13,10 @@
  *    step 'checkout_opened', book orders step 'book_checkout_opened' (0199); any other
  *    step (an offer shown, a checkout dismissed) is not an order, and a day with
  *    orders but no sale still gets a row;
+ *  - the funnel counts STUDENTS (0200): paywall_students are distinct students with a
+ *    paywall 'shown' event in the period, checkout_students distinct students who created a
+ *    pass order; distinct per period, so a student on two days of a week counts once in it.
+ *    sales_funnel_students(from, to) gives the same two counts over any run of IST days;
  *  - a grain other than day / week / month is refused;
  *  - a paid pass without its price is refused by the database (0198);
  *  - students and anon cannot call it (service role only).
@@ -31,11 +35,14 @@ const HAS_ENV =
 
 const RUN = randomUUID().slice(0, 8);
 const EMAIL = `sales_period_${RUN}@test.invalid`;
+const EMAIL_B = `sales_period_b_${RUN}@test.invalid`;
 const PAY = (n: string) => `pay_sales_${RUN}_${n}`;
 const SINCE = "2001-03-01T00:00:00+05:30";
 
 type Row = {
   period: string;
+  paywall_students: number;
+  checkout_students: number;
   pass_orders: number;
   passes_sold: number;
   passes_refunded: number;
@@ -50,6 +57,7 @@ describe.skipIf(!HAS_ENV)("sales_by_period", () => {
   let admin: SupabaseClient;
   let anon: SupabaseClient;
   let userId = "";
+  let userB = "";
 
   async function periods(grain: string): Promise<Row[]> {
     const { data, error } = await admin.rpc("sales_by_period", { p_grain: grain, p_since: SINCE });
@@ -66,6 +74,9 @@ describe.skipIf(!HAS_ENV)("sales_by_period", () => {
     const created = await admin.auth.admin.createUser({ email: EMAIL, password: "sales-test-1234", email_confirm: true });
     if (created.error) throw new Error(`create user: ${created.error.message}`);
     userId = created.data.user!.id;
+    const createdB = await admin.auth.admin.createUser({ email: EMAIL_B, password: "sales-test-1234", email_confirm: true });
+    if (createdB.error) throw new Error(`create user B: ${createdB.error.message}`);
+    userB = createdB.data.user!.id;
 
     const pass = (ref: string, at: string, paise: number | null, status = "active", source = "razorpay") => ({
       user_id: userId,
@@ -95,12 +106,12 @@ describe.skipIf(!HAS_ENV)("sales_by_period", () => {
     });
     if (buyError) throw new Error(`insert book purchase: ${buyError.message}`);
 
-    const event = (step: string, at: string, refId: string | null, refKind: string | null) => ({
-      user_id: userId,
+    const event = (step: string, at: string, refId: string | null, refKind: string | null, who = userId, gate = "pricing") => ({
+      user_id: who,
       kind: "paywall_event",
       ref_id: refId,
       ref_kind: refKind,
-      metadata: { step, gate: step === "book_checkout_opened" ? "store" : "pricing" },
+      metadata: { step, gate: step === "book_checkout_opened" ? "store" : gate },
       created_at: at,
     });
     const { error: eventError } = await admin.from("user_activity").insert([
@@ -111,6 +122,13 @@ describe.skipIf(!HAS_ENV)("sales_by_period", () => {
       event("checkout_dismissed", "2001-03-06T04:00:00Z", "mock-pass-6m", "plan"), // not an order
       event("shown", "2001-03-06T04:00:00Z", null, null), // not an order
       event("checkout_opened", "2001-03-08T06:00:00Z", "mock-pass-6m", "plan"), // Thu 8 Mar: an order, no sale
+      // The funnel's top: A meets two walls on Mon 5 Mar (one student), and one more on Wed 7 Mar.
+      event("shown", "2001-03-05T05:00:00Z", null, null, userId, "reveals"),
+      event("shown", "2001-03-05T06:00:00Z", null, null, userId, "teacher"),
+      event("shown", "2001-03-07T05:00:00Z", null, null, userId, "reveals"),
+      // B meets a wall and starts a checkout at 23:59 IST on Mon 5 Mar.
+      event("shown", "2001-03-05T18:00:00Z", null, null, userB, "teacher"),
+      event("checkout_opened", "2001-03-05T18:29:00Z", "mock-pass-6m", "plan", userB),
     ]);
     if (eventError) throw new Error(`insert checkout events: ${eventError.message}`);
   });
@@ -118,14 +136,17 @@ describe.skipIf(!HAS_ENV)("sales_by_period", () => {
   afterAll(async () => {
     if (!admin) return;
     await admin.from("ebook_purchases").delete().eq("payment_id", PAY("book"));
-    await admin.from("user_activity").delete().eq("user_id", userId);
+    await admin.from("user_activity").delete().in("user_id", [userId, userB].filter(Boolean));
     await admin.from("entitlements").delete().eq("user_id", userId);
     if (userId) await admin.auth.admin.deleteUser(userId);
+    if (userB) await admin.auth.admin.deleteUser(userB);
   });
 
   it("puts each sale and order on its IST day, refunds counted but not kept", async () => {
     const day = (period: string, over: Partial<Row>): Row => ({
       period,
+      paywall_students: 0,
+      checkout_students: 0,
       pass_orders: 0,
       passes_sold: 0,
       passes_refunded: 0,
@@ -137,16 +158,28 @@ describe.skipIf(!HAS_ENV)("sales_by_period", () => {
       ...over,
     });
     expect(await periods("day")).toEqual([
-      day("2001-03-05", { pass_orders: 2, passes_sold: 1, pass_paise: 19900 }),
-      day("2001-03-06", { pass_orders: 1, passes_sold: 1, passes_refunded: 1, book_orders: 1, books_sold: 1, book_paise: 4900 }),
-      day("2001-03-07", { passes_sold: 1, pass_paise: 9900 }),
-      day("2001-03-08", { pass_orders: 1 }),
+      day("2001-03-05", { paywall_students: 2, checkout_students: 2, pass_orders: 3, passes_sold: 1, pass_paise: 19900 }),
+      day("2001-03-06", {
+        paywall_students: 1,
+        checkout_students: 1,
+        pass_orders: 1,
+        passes_sold: 1,
+        passes_refunded: 1,
+        book_orders: 1,
+        books_sold: 1,
+        book_paise: 4900,
+      }),
+      day("2001-03-07", { paywall_students: 1, passes_sold: 1, pass_paise: 9900 }),
+      day("2001-03-08", { checkout_students: 1, pass_orders: 1 }),
     ]);
   });
 
   it("groups a week from Monday and a month from the 1st", async () => {
+    // Distinct over the week: A and B, though A met a wall on three days.
     const total = {
-      pass_orders: 4,
+      paywall_students: 2,
+      checkout_students: 2,
+      pass_orders: 5,
       passes_sold: 3,
       passes_refunded: 1,
       pass_paise: 29800,
@@ -157,6 +190,22 @@ describe.skipIf(!HAS_ENV)("sales_by_period", () => {
     };
     expect(await periods("week")).toEqual([{ period: "2001-03-05", ...total }]);
     expect(await periods("month")).toEqual([{ period: "2001-03-01", ...total }]);
+  });
+
+  it("counts funnel students over a run of IST days, each once", async () => {
+    const funnel = async (from: string, to: string) => {
+      const { data, error } = await admin.rpc("sales_funnel_students", { p_from: from, p_to: to });
+      if (error) throw new Error(`sales_funnel_students: ${error.message}`);
+      return (data as { paywall_students: number; checkout_students: number }[])[0];
+    };
+    expect(await funnel("2001-03-05", "2001-03-05")).toEqual({ paywall_students: 2, checkout_students: 2 });
+    // B's 23:59 IST checkout stays on the 5th; A's 00:00 IST one falls on the 6th.
+    expect(await funnel("2001-03-06", "2001-03-08")).toEqual({ paywall_students: 1, checkout_students: 1 });
+    expect(await funnel("2001-03-01", "2001-03-31")).toEqual({ paywall_students: 2, checkout_students: 2 });
+    // No start = from the first record (other tests' rows may add to it).
+    const { data, error } = await admin.rpc("sales_funnel_students", { p_from: null, p_to: "2001-03-31" });
+    expect(error).toBeNull();
+    expect((data as { paywall_students: number }[])[0].paywall_students).toBeGreaterThanOrEqual(2);
   });
 
   it("refuses any other grain", async () => {
@@ -179,5 +228,7 @@ describe.skipIf(!HAS_ENV)("sales_by_period", () => {
   it("is not callable without the service role", async () => {
     const { error } = await anon.rpc("sales_by_period", { p_grain: "day", p_since: SINCE });
     expect(error).not.toBeNull();
+    const funnel = await anon.rpc("sales_funnel_students", { p_from: "2001-03-01", p_to: "2001-03-31" });
+    expect(funnel.error).not.toBeNull();
   });
 });

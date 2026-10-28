@@ -11,16 +11,20 @@ import {
   cardsSince,
   fillPeriods,
   istDate,
+  paidShare,
   parseGrain,
   periodStart,
   salesSince,
   summaryCards,
   sumRows,
+  windowKey,
   type SalesPeriodRow,
 } from "@/lib/sales/summary";
 
 const row = (period: string, over: Partial<SalesPeriodRow> = {}): SalesPeriodRow => ({
   period,
+  paywallStudents: 0,
+  checkoutStudents: 0,
   passOrders: 0,
   passesSold: 0,
   passesRefunded: 0,
@@ -133,9 +137,35 @@ describe("summaryCards", () => {
     expect(byLabel["This month"].previous.paise).toBe(29700);
     expect(byLabel["This month"].previousLabel).toBe("Last month");
   });
+  it("names the IST days each card covers, for its distinct-student counts", () => {
+    expect(byLabel["Today"].window).toEqual({ from: today, to: today });
+    expect(byLabel["Today"].previousWindow).toEqual({ from: "2026-10-27", to: "2026-10-27" });
+    expect(byLabel["Last 7 days"].window).toEqual({ from: "2026-10-22", to: today });
+    expect(byLabel["Last 7 days"].previousWindow).toEqual({ from: "2026-10-15", to: "2026-10-21" });
+    expect(byLabel["This month"].window).toEqual({ from: "2026-10-01", to: today });
+    expect(byLabel["This month"].previousWindow).toEqual({ from: "2026-09-01", to: "2026-09-30" });
+  });
   it("reads days back to the 1st of last month, which always covers the 14 the weeks need", () => {
     expect(cardsSince(today)).toBe("2026-09-01");
     expect(cardsSince("2026-03-01")).toBe("2026-02-01");
     expect(cards).toHaveLength(3);
+  });
+});
+
+describe("windowKey", () => {
+  it("tells windows apart, an open start included", () => {
+    expect(windowKey({ from: "2026-10-22", to: "2026-10-28" })).toBe("2026-10-22..2026-10-28");
+    expect(windowKey({ from: null, to: "2026-10-28" })).toBe("start..2026-10-28");
+  });
+});
+
+describe("paidShare", () => {
+  it("is the share of checkout students who bought, rounded to a whole percent", () => {
+    expect(paidShare(5, 10)).toBe(50);
+    expect(paidShare(1, 3)).toBe(33);
+  });
+  it("is null with no checkout, so the page shows a dash, not 0% or a division by zero", () => {
+    expect(paidShare(0, 0)).toBeNull();
+    expect(paidShare(1, 0)).toBeNull();
   });
 });

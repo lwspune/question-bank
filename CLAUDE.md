@@ -345,9 +345,10 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 
 ### 2026-10
 
-- **2026-10-28 (fourth) — /dashboard/sales shows orders created beside passes and books sold (migration 0199); the 26 Oct paid pass that got no grant is now a sale.**
-  - **Counted from our own log, not Razorpay's API:** the order route's `checkout_opened` matched Razorpay's pass orders every day 15-28 Oct (63 and 63); asking Razorpay on each page load was rejected (outside call, 100 a page, fails when Razorpay is slow).
+- **2026-10-28 (fourth) — /dashboard/sales shows the pass funnel in students (met a paywall → checkout → bought; 0199-0200); the 26 Oct paid pass with no grant is now a sale.**
+  - **Our own log, not Razorpay's API:** `checkout_opened` matched Razorpay's pass orders every day 15-28 Oct (63 and 63); a per-load API call was rejected (slow, fragile).
   - **Book orders wrote nothing:** they now write `book_checkout_opened`, its own step so pass-funnel readings never count a book. Book orders count from 28 Oct, pass orders from 4 Oct.
+  - **Students, not orders (owner):** 27 Oct had 13 orders from 10 students. Distinct counts cannot be summed, so each card and total asks `sales_funnel_students(from, to)`.
   - **A paid order got no pass** (26 Oct, a webhook issue since fixed; a comp was granted by hand): that comp row became the paid sale (`pay_TsW7A7sufIljTp`, Rs 199). Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-10-28 (third) — V sells the pass in place when the day's free answers stop an explanation: the bank's offer card under V's reply and on V's question card; after paying V asks again.**
   - **Why:** 27 limit replies to 16 students in 14 days, a text link to /pricing that left the question and was counted nowhere.
