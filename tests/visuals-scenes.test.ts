@@ -235,6 +235,15 @@ describe("functionGraph rises straight through an isolated stationary point", ()
   });
 });
 
+describe("functionGraph tick labels", () => {
+  it("prints ticks of 100,000 or more compactly, so they fit the left margin", () => {
+    const { scene, p } = parsedParams("functionGraph", { f: "(5000-10*x)*(300+x)", window: { x: [0, 500], y: [0, 1.7e6] }, ask: { kind: "extrema", scope: "local", expect: [{ type: "max", x: 100, y: 1600000 }] } });
+    const ticks = scene.frame(p, { played: ["curve"], t: 1 } as never).filter((sh) => sh.kind === "text" && (sh as { tone?: string }).tone === "muted").map((sh) => (sh as { text: string }).text);
+    expect(ticks).toContain("1M");
+    expect(ticks.every((t) => t.length <= 5)).toBe(true);
+  });
+});
+
 describe("functionGraph extrema", () => {
   const run = (raw: Record<string, unknown>) => {
     const { scene, p } = parsedParams("functionGraph", raw);

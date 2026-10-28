@@ -297,6 +297,14 @@ function niceStep(span: number, maxTicks: number): number {
   return 10 * mag;
 }
 
+/** A y tick of 100,000 or more as "1.5M" / "500k": the full digits ran off the left margin. */
+function tickText(v: number): string {
+  const a = Math.abs(v);
+  if (a >= 1e6) return `${num(v / 1e6)}M`;
+  if (a >= 1e5) return `${num(v / 1e3)}k`;
+  return num(v);
+}
+
 /** Points along the curve, in pixels, for labels to keep clear of. */
 function curveObstacles(p: FunctionGraphParams, X: (x: number) => number, Y: (y: number) => number): [number, number][] {
   const [xa, xb] = p.x;
@@ -510,7 +518,7 @@ export const functionGraph: Scene<FunctionGraphParams> = {
       if (Math.abs(v) < 1e-12) continue;
       axes.push(line(axisX - 3, Y(v), axisX + 3, Y(v), { stroke: "muted", width: 1 }));
       // No number in the top row, where the curve's own label sits.
-      if (Y(v) > P.t + 14) axes.push(text(Math.max(2, axisX - 5), Y(v) + 3, num(v), { tone: "muted", size: 10, anchor: "end" }));
+      if (Y(v) > P.t + 14) axes.push(text(Math.max(2, axisX - 5), Y(v) + 3, tickText(v), { tone: "muted", size: 10, anchor: "end" }));
     }
 
     // A curve as polylines, broken where it leaves the domain or jumps (a pole).
