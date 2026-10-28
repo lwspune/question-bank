@@ -35,7 +35,6 @@ describe.skipIf(!HAS_ENV)("get_own_progress_card", () => {
   let examId = "";
   let examName = "";
   let chapterId = "";
-  let examChapters = 0;
 
   beforeAll(async () => {
     const url = process.env.NEXT_PUBLIC_SUPABASE_URL!;
@@ -58,11 +57,6 @@ describe.skipIf(!HAS_ENV)("get_own_progress_card", () => {
     examId = q1.exam_id;
     const { data: exam } = await admin.from("exams").select("name").eq("id", examId).single();
     examName = exam!.name as string;
-    const { count } = await admin
-      .from("chapters")
-      .select("id, subjects!inner(exam_id)", { count: "exact", head: true })
-      .eq("subjects.exam_id", examId);
-    examChapters = count ?? 0;
 
     const a = await admin.auth.admin.createUser({ email: EMAIL, password: PASSWORD, email_confirm: true });
     if (a.error) throw new Error(a.error.message);
@@ -113,6 +107,23 @@ describe.skipIf(!HAS_ENV)("get_own_progress_card", () => {
     }
   });
 
+  // Read at assertion time, not in beforeAll: other files share this exam and
+  // add chapters to it while this file runs.
+  async function examChapterIds(): Promise<Set<string>> {
+    const ids = new Set<string>();
+    for (let from = 0; ; from += 1000) {
+      const { data, error } = await admin
+        .from("chapters")
+        .select("id, subjects!inner(exam_id)")
+        .eq("subjects.exam_id", examId)
+        .order("id")
+        .range(from, from + 999);
+      if (error) throw new Error(error.message);
+      for (const r of data ?? []) ids.add(r.id as string);
+      if ((data ?? []).length < 1000) return ids;
+    }
+  }
+
   async function card(exam: string | null): Promise<Card> {
     const { data, error } = await student.rpc("get_own_progress_card", { p_exam_id: exam });
     if (error) throw new Error(error.message);
@@ -128,8 +139,13 @@ describe.skipIf(!HAS_ENV)("get_own_progress_card", () => {
   });
 
   it("lists every chapter of the exam, with the distinct questions answered in each", async () => {
+    const before = await examChapterIds();
     const c = await card(examId);
-    expect(c.chapters.length).toBe(examChapters);
+    const after = await examChapterIds();
+    const ids = new Set(c.chapters.map((x) => x.id));
+    expect(ids.size).toBe(c.chapters.length);
+    for (const id of before) if (after.has(id)) expect(ids.has(id)).toBe(true);
+    for (const id of ids) expect(before.has(id) || after.has(id)).toBe(true);
     expect(c.chapters.find((x) => x.id === chapterId)?.answered).toBe(2);
     expect(c.chapters.filter((x) => x.id !== chapterId).every((x) => x.answered === 0)).toBe(true);
   });
