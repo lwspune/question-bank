@@ -42,6 +42,17 @@ circles and conics), `"derived"` (what the solution works out), or
   axes, widening the shorter side, so circles stay round.
 - `points`: `{ "id", "at": [x, y], "label"? }`. Without a label the point
   shows its coordinates; `"label": ""` draws a bare dot (a helper point).
+  A point the SOLUTION works out from earlier points is built by the scene
+  instead of given as numbers (list it after the points it uses; its beat is
+  `"derived"` unless you say otherwise):
+  - `{ "id", "divides": [A, B], "ratio": [m, n] }`: the point dividing AB
+    internally in m : n (AP : PB = m : n). Add `"external": true` for
+    external division.
+  - `{ "id", "midpointOf": [A, B] }`, `{ "id", "centroidOf": [A, B, C] }`.
+  A vertex found from a midpoint ("M(4, 5) is the midpoint of AB, A(2, 3),
+  find B") is B dividing AM externally in 2 : 1: `{ "id": "B", "divides": ["A", "M"], "ratio": [2, 1], "external": true }`.
+  Give a constructed point a short label with its coordinates as the
+  solution writes them ("P(1, 3)", "G(3, 1/3)").
 - `circles`: `{ "id", "center": [x, y] or a point id, "r", "label"? }`.
 - `conics`: one of
   - `{ "id", "type": "parabola", "vertex": [h, k] or point id, "a", "axis": "x" }` for (y − k)² = 4a(x − h);
@@ -87,7 +98,20 @@ circles and conics), `"derived"` (what the solution works out), or
     `"tan"` with value k; cos⁻¹(k) → `"cos"` with value k; sin⁻¹(k) → `"sin"`.
     The two lines must meet inside the window, so choose the window around
     where they cross.
-  Any ask may also carry `"squared": true` and/or `"times": k` when the KEY is the
+  - `{ "kind": "point", "point": id, "expect": [x, y] }`: the answer is a
+    POINT the scene constructs (divides, midpointOf, centroidOf). `expect` is
+    the answer's coordinates as decimals (7/2 = 3.5, 1/3 = 0.333333333333);
+    the scene builds the point from the question's numbers and the visual is
+    refused unless it lands on `expect`. `answer.value` is 0 (how far it
+    misses) and `answer.label` is the point ("(1, 3)").
+  - `{ "kind": "ratio", "of": [A, B], "by": id }`: the ratio AP : PB in which
+    `by` divides AB, where `by` is a point on AB or a line (an axis is
+    `eq: [0, 1, 0]` for the x-axis, `[1, 0, 0]` for the y-axis) crossing it.
+    `answer.value` is m/n as a decimal (2 : 7 = 0.285714285714; negative when
+    the cut is outside AB) and `answer.label` the ratio ("2 : 7").
+  When the question asks for a ratio AND then a point or k, skip unless the
+  solution's final answer is the ratio or the point.
+  Any ask other than point and ratio may also carry `"squared": true` and/or `"times": k` when the KEY is the
   measured value squared or multiplied: "(AB)² =" is `squared: true`, "6 × area"
   is `times: 6`, "(2β)²" for a length β is `squared: true, times: 4`. The picture
   still draws the length or area itself; give a header label that says what is
@@ -119,6 +143,31 @@ solution can be one step with several beats.
   done, reply in one line with how many drafted and how many skipped.
 
 ## More finished examples
+
+Section point, CBSE "find the point dividing A(−1, 7), B(4, −3) in 2 : 3",
+sentences [0] by the section formula, [1] x = 1, [2] y = 3, so (1, 3):
+
+```json
+{ "params": { "window": { "x": [-3, 6], "y": [-5, 9] },
+    "points": [{ "id": "A", "at": [-1, 7], "label": "A(−1, 7)" }, { "id": "B", "at": [4, -3], "label": "B(4, −3)" },
+               { "id": "P", "divides": ["A", "B"], "ratio": [2, 3], "label": "P(1, 3)" }],
+    "segments": [{ "from": "A", "to": "B" }],
+    "ask": { "kind": "point", "point": "P", "expect": [1, 3], "label": "P = (1, 3)" } },
+  "steps": [{ "from": 0, "beats": ["given", "construct"] }, { "from": 1, "beats": ["derived", "answer"] }],
+  "answer": { "value": 0, "label": "(1, 3)" } }
+```
+
+Ratio by an axis, CBSE "in what ratio does the x-axis divide A(1, −5), B(−4, 5)?",
+sentences [0] let it be k : 1, [1] y = 0 gives 5k − 5 = 0, [2] k = 1, so 1 : 1:
+
+```json
+{ "params": { "window": { "x": [-5, 2], "y": [-6, 6] },
+    "points": [{ "id": "A", "at": [1, -5], "label": "A(1, −5)" }, { "id": "B", "at": [-4, 5], "label": "B(−4, 5)" }],
+    "lines": [{ "id": "X", "eq": [0, 1, 0], "label": "x-axis", "beat": "given" }],
+    "ask": { "kind": "ratio", "of": ["A", "B"], "by": "X", "label": "ratio = 1 : 1" } },
+  "steps": [{ "from": 0, "beats": ["given"] }, { "from": 1, "beats": ["answer"] }],
+  "answer": { "value": 1, "label": "1 : 1" } }
+```
 
 Locus, JEE "the midpoint of the segment from (3, 2) to a point on x² + y² = 1
 traces a circle of radius r", one solution sentence:

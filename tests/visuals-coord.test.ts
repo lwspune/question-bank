@@ -273,3 +273,71 @@ describe("coordGeometry pair of lines from one second-degree equation", () => {
     expect(parseError({ window: win, lines: [{ id: "P", pair: [1, 2, 3] }], ask: { kind: "angle", lines: ["P1", "P2"] } })).toMatch(/six numbers/);
   });
 });
+
+describe("coordGeometry constructed points, the point ask and the ratio ask", () => {
+  const ab = [{ id: "A", at: [-1, 7] }, { id: "B", at: [4, -3] }];
+  const pointAt = (raw: unknown, id: string) => (parse(raw) as { points: { id: string; at: [number, number] }[] }).points.find((q) => q.id === id)!.at;
+
+  it("builds the point dividing AB internally in m : n", () => {
+    // (-1, 7) to (4, -3) in 2 : 3 is (1, 3).
+    const raw = { window: win, points: [...ab, { id: "P", divides: ["A", "B"], ratio: [2, 3] }], ask: { kind: "point", point: "P", expect: [1, 3] } };
+    expect(pointAt(raw, "P")[0]).toBeCloseTo(1, 12);
+    expect(pointAt(raw, "P")[1]).toBeCloseTo(3, 12);
+    expect(value(raw)).toBeCloseTo(0, 12);
+  });
+  it("builds the point dividing AB externally, so a vertex comes back from a midpoint", () => {
+    // B with A(2, 3) and midpoint M(4, 5): B divides AM externally in 2 : 1, so B = 2M - A = (6, 7).
+    const raw = { window: { x: [0, 8], y: [0, 8] }, points: [{ id: "A", at: [2, 3] }, { id: "M", at: [4, 5] }, { id: "B", divides: ["A", "M"], ratio: [2, 1], external: true }], ask: { kind: "point", point: "B", expect: [6, 7] } };
+    expect(value(raw)).toBeCloseTo(0, 12);
+  });
+  it("builds a midpoint and a centroid", () => {
+    const pts = [{ id: "A", at: [1, 2] }, { id: "B", at: [5, 4] }, { id: "C", at: [3, -3] }];
+    expect(value({ window: win, points: [...pts, { id: "M", midpointOf: ["A", "B"] }], ask: { kind: "point", point: "M", expect: [3, 3] } })).toBeCloseTo(0, 12);
+    expect(value({ window: win, points: [...pts, { id: "G", centroidOf: ["A", "B", "C"] }], ask: { kind: "point", point: "G", expect: [3, 1] } })).toBeCloseTo(0, 12);
+  });
+  it("reports how far the constructed point misses a wrong stated answer, so the check fails", () => {
+    const raw = { window: win, points: [...ab, { id: "P", divides: ["A", "B"], ratio: [2, 3] }], ask: { kind: "point", point: "P", expect: [1, 4] } };
+    expect(value(raw)).toBeCloseTo(1, 12);
+    expect(scene().checkText(parse(raw), 1)).toMatch(/not \(1, 4\)/);
+  });
+  it("a point ask must name a constructed point, and expect must be two numbers", () => {
+    expect(parseError({ window: win, points: ab, ask: { kind: "point", point: "A", expect: [-1, 7] } })).toMatch(/constructed/);
+    expect(parseError({ window: win, points: [...ab, { id: "M", midpointOf: ["A", "B"] }], ask: { kind: "point", point: "M" } })).toMatch(/expect/);
+    expect(parseError({ window: win, points: [...ab, { id: "M", midpointOf: ["A", "B"] }], ask: { kind: "point", point: "M", expect: [1.5, 2], squared: true } })).toMatch(/squared/);
+  });
+  it("refuses constructions that name a later or missing point, or divide externally in 1 : 1", () => {
+    expect(parseError({ window: win, points: [{ id: "P", divides: ["A", "B"], ratio: [1, 2] }, ...ab], ask: { kind: "distance", from: "A", to: "B" } })).toMatch(/no point named A/);
+    expect(parseError({ window: win, points: [...ab, { id: "P", divides: ["A", "B"], ratio: [3, 3], external: true }], ask: { kind: "distance", from: "A", to: "B" } })).toMatch(/external/);
+    expect(parseError({ window: win, points: [...ab, { id: "P", divides: ["A", "B"], ratio: [0, 3] }], ask: { kind: "distance", from: "A", to: "B" } })).toMatch(/ratio/);
+  });
+  it("ratio in which a given point divides AB", () => {
+    // (-1, 6) divides (-3, 10) to (6, -8) in 2 : 7.
+    const raw = { window: { x: [-4, 7], y: [-9, 11] }, points: [{ id: "A", at: [-3, 10] }, { id: "B", at: [6, -8] }, { id: "P", at: [-1, 6] }], ask: { kind: "ratio", of: ["A", "B"], by: "P" } };
+    expect(value(raw)).toBeCloseTo(2 / 7, 12);
+    expect(scene().checkText(parse(raw), 2 / 7)).toMatch(/2 : 7/);
+  });
+  it("ratio in which an axis or a line divides AB", () => {
+    // The x-axis cuts (1, -5) to (-4, 5) at its midpoint: 1 : 1.
+    const axis = { window: win, points: [{ id: "A", at: [1, -5] }, { id: "B", at: [-4, 5] }], lines: [{ id: "X", eq: [0, 1, 0] }], ask: { kind: "ratio", of: ["A", "B"], by: "X" } };
+    expect(value(axis)).toBeCloseTo(1, 12);
+    // x + y = 4 cuts (-2, 2) to (3, 7) at (0, 4): 2 : 3.
+    const ln = { window: { x: [-3, 4], y: [0, 8] }, points: [{ id: "A", at: [-2, 2] }, { id: "B", at: [3, 7] }], lines: [{ id: "L", eq: [1, 1, -4] }], ask: { kind: "ratio", of: ["A", "B"], by: "L" } };
+    expect(value(ln)).toBeCloseTo(2 / 3, 12);
+  });
+  it("refuses a ratio by a point off AB, or by a line parallel to AB", () => {
+    expect(parseError({ window: win, points: [...ab, { id: "P", at: [0, 0] }], ask: { kind: "ratio", of: ["A", "B"], by: "P" } })).toMatch(/not on/);
+    expect(parseError({ window: win, points: [{ id: "A", at: [0, 1] }, { id: "B", at: [3, 1] }], lines: [{ id: "X", eq: [0, 1, 0] }], ask: { kind: "ratio", of: ["A", "B"], by: "X" } })).toMatch(/parallel/);
+  });
+  it("does not print a labelled answer point's coordinates a second time", () => {
+    const raw = { window: win, points: [...ab, { id: "P", divides: ["A", "B"], ratio: [2, 3], label: "P(1, 3)" }], ask: { kind: "point", point: "P", expect: [1, 3] } };
+    const texts = scene().frame(parse(raw), { played: ["given", "derived", "answer"], t: 1 } as never).filter((s) => s.kind === "text").map((s) => (s as { text: string }).text);
+    expect(texts.filter((t) => t.includes("(1, 3)"))).toEqual(["P(1, 3)", "P = (1, 3)"]);
+  });
+  it("draws the two parts of the divided segment on the answer beat", () => {
+    const raw = { window: { x: [-4, 7], y: [-9, 11] }, points: [{ id: "A", at: [-3, 10] }, { id: "B", at: [6, -8] }, { id: "P", at: [-1, 6] }], ask: { kind: "ratio", of: ["A", "B"], by: "P" } };
+    const shapes: Shape[] = scene().frame(parse(raw), { played: ["given", "answer"], t: 1 } as never);
+    const thick = shapes.filter((s) => s.kind === "line" && (s as { width?: number }).width === 4);
+    expect(thick.length).toBe(2);
+    expect(coordFacts(parse(raw) as never).mark.kind).toBe("split");
+  });
+});
