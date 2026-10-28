@@ -18,7 +18,7 @@ export async function POST(_request: Request, { params }: { params: { slug: stri
   const result = await prepareEbookDownload({
     db: createSupabaseServerClient(),
     admin: createSupabaseAdminClient(),
-    user: { id: user.id, email: user.email },
+    user: { id: user.id, email: user.email, name: user.name ?? null },
     slug: params.slug,
   });
   if (!result.ok) return NextResponse.json({ error: result.error }, { status: result.status });

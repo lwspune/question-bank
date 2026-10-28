@@ -67,6 +67,7 @@ import { boardPaperExport } from "../../src/lib/questionPapers/exportPlan";
 import type { VisualizationSlug } from "../../src/app/notes/_types";
 import { PDFDocument } from "pdf-lib";
 import { assembleMaster, pageCounts } from "../../src/lib/ebooks/pdfAssemble";
+import { stampCoverName } from "../../src/lib/ebooks/stamp";
 import { KIND_LABEL, PAPER } from "../../src/lib/ebooks/theme";
 import { buildDiagramCss } from "../lib/ebookDiagramCss";
 
@@ -131,7 +132,7 @@ type Totals = {
 };
 
 /** Shared by every PYQ chapter of one book: the bank's ordering facts, read once. */
-type PyqContext = { metaByChapter: Map<string, BookMetaRow[]>; firstQuestion?: { q: QuestionRow; sitting: string } };
+type PyqContext = { metaByChapter: Map<string, BookMetaRow[]>; firstQuestion?: { q: QuestionRow; sitting: string; chapter: string } };
 
 async function buildPyqChapter(
   client: SupabaseClient,
@@ -194,7 +195,7 @@ async function buildPyqChapter(
   if (!ctx.firstQuestion) {
     const first = printed.map((id) => questions.get(id)!).find((q) => !q.imageUrl && q.options.length === 4);
     const m = first ? metaById.get(first.id) : undefined;
-    if (first && m) ctx.firstQuestion = { q: first, sitting: sittingLabel(m.exam, m.pyqYear, sittingOrdinal(m)) };
+    if (first && m) ctx.firstQuestion = { q: first, sitting: sittingLabel(m.exam, m.pyqYear, sittingOrdinal(m)), chapter: c.name };
   }
   const missing = ids.length - questions.size;
   console.log(
@@ -765,9 +766,9 @@ function coverStats(ebook: EbookDefinition, chapters: number, t: Totals): { valu
   }
   if (ebook.kind === "pyq") {
     return [
-      { value: n(t.questions), label: "past questions" },
+      { value: n(t.questions), label: "questions" },
       { value: String(chapters), label: "chapters" },
-      { value: ebook.years.replace(/^(\d{4})-\d\d(\d\d)$/, "$1-$2"), label: "every sitting" },
+      { value: ebook.years.replace(/^(\d{4})-\d\d(\d\d)$/, "$1-$2"), label: "sittings" },
       { value: "Full", label: "solutions" },
     ];
   }
@@ -775,15 +776,15 @@ function coverStats(ebook: EbookDefinition, chapters: number, t: Totals): { valu
     return [
       { value: String(chapters), label: "chapters" },
       { value: n(t.formulas), label: "formulas" },
-      { value: n(t.tables), label: "reference tables" },
-      { value: n(t.traps), label: "traps explained" },
+      { value: n(t.tables), label: "tables" },
+      { value: n(t.traps), label: "traps" },
     ];
   }
   return [
     { value: String(chapters), label: "chapters" },
     { value: n(t.topics), label: "topics" },
-    { value: n(t.examples), label: "worked examples" },
-    { value: n(t.traps), label: "traps explained" },
+    { value: n(t.examples), label: "examples" },
+    { value: n(t.traps), label: "traps" },
   ];
 }
 
@@ -832,15 +833,19 @@ async function buildBook(
   }
   for (const b of built) writeFileSync(join(outDir, "parts", `${String(b.chapter.number).padStart(2, "0")}-${b.chapter.slug}.pdf`), b.pdf);
 
+  const sheetHead = `Chapter ${built[0].chapter.number} · ${built[0].chapter.name}`;
   const preview = isBoardEbook(ebook)
     ? boardCover
-      : ebook.kind === "pyq"
+    : ebook.kind === "pyq"
       ? pyqCtx.firstQuestion
-        ? pyqPreview(pyqCtx.firstQuestion.q, pyqCtx.firstQuestion.sitting)
+        ? pyqPreview(pyqCtx.firstQuestion.q, pyqCtx.firstQuestion.sitting, pyqCtx.firstQuestion.chapter)
         : ""
       : ebook.kind === "formula"
-        ? formulaPreview(built[0].chapter.notes!)
-        : notesPreview(built[0].chapter.notes!);
+        ? formulaPreview(built[0].chapter.notes!, sheetHead)
+        : notesPreview(built[0].chapter.notes!, sheetHead);
+  // The MHT-CET books' covers carry a line for the buyer's name (2026-10-28);
+  // the board books' gain one when their covers are next printed.
+  const namePlate = !isBoardEbook(ebook);
 
   // Front matter last: its contents page needs every chapter's first page.
   const counts = await pageCounts(built.map((b) => b.pdf));
@@ -857,7 +862,7 @@ async function buildBook(
       subtitle: ebook.subtitle,
       stats: coverStats(ebook, built.length, totals),
       preview,
-      // The board books wear the premium cover; its edition is the newest year in the book.
+      // The exam or board line over the subject; the edition is the newest year in the book.
       cover: isBoardEbook(ebook)
         ? {
             over: ebook.board,
@@ -865,7 +870,13 @@ async function buildBook(
             // The newest year in the book; a textbook book names no years, so the year it was built.
             edition: `${totals.years.length ? Math.max(...totals.years) : new Date().getFullYear()} Edition`,
           }
-        : undefined,
+        : {
+            over: "MHT-CET",
+            main: ebook.title.replace(/^MHT-CET\s+/, ""),
+            // A PYQ book's newest sitting; a Formula or Notes book's, the year it was built.
+            edition: `${ebook.kind === "pyq" ? ebook.years.slice(-4) : new Date().getFullYear()} Edition`,
+            namePlate,
+          },
       chapters: contents,
       head,
     });
@@ -891,9 +902,11 @@ async function buildBook(
       : isBoardEbook(ebook)
         ? [...built].sort((a, b) => parseInt(b.detail, 10) - parseInt(a.detail, 10))[0]
         : built.find((b) => b.chapter.slug === ebook.sampleChapter);
-  const sample = sampleBuilt
+  const sampleJoined = sampleBuilt
     ? await assembleMaster([frontPdf, sampleBuilt.pdf], { footer: `${footer}  ·  Free sample`, paper: PAPER })
     : null;
+  // A visitor sees where their name goes before they buy.
+  const sample = sampleJoined && namePlate ? await stampCoverName(sampleJoined, "Your name here", "placeholder") : sampleJoined;
   const masterPages = (await pageCounts([master]))[0];
   const summary = {
     pageCount: masterPages,
@@ -932,6 +945,7 @@ async function buildBook(
       question_count: summary.questionCount,
       stats: summary.stats,
       contents: summary.contents,
+      name_plate: namePlate,
       built_at: new Date().toISOString(),
     })
     .eq("slug", ebook.slug);

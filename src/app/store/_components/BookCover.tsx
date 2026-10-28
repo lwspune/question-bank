@@ -1,11 +1,20 @@
-import { ACCENT, INK, KIND_LABEL, MUTED, PAPER, PREMIUM_KINDS } from "@/lib/ebooks/theme";
+import { KIND_LABEL } from "@/lib/ebooks/theme";
 import type { EbookKind } from "@/lib/ebooks/catalog";
 
+const GOLD = "#f0c46e";
+const PALE = "#b9c6ec";
+
 /**
- * A book's cover as the store shows it: the same paper, ink, accent and
- * layout the PDF cover prints (lib/ebooks/theme), drawn in CSS so it stays
- * crisp at any size and needs no image. It keeps the book's own colours in
- * dark mode too, as a printed book on a dark table would.
+ * A book's cover as the store shows it, drawn in CSS so it stays crisp at any
+ * size and needs no image: the PDF's own cover (lib/ebooks/bookHtml
+ * PREMIUM_CSS), navy with a soft blue glow, a gold frame, the exam or board
+ * line over the subject, a stack of paper sheets with a gold seal, gold
+ * numbers. Every book wears it since 2026-10-28 (the board books since
+ * 10-26). It keeps its colours in dark mode, as a printed book on a dark
+ * table would.
+ *
+ * `namePlate` draws the line a buyer's name is printed on; `name` fills it
+ * (the visitor's own name on the book page), else it reads "Your name here".
  */
 export default function BookCover({
   kind,
@@ -13,79 +22,22 @@ export default function BookCover({
   over,
   size = "md",
   stats = [],
+  namePlate = false,
+  name = null,
 }: {
   kind: EbookKind;
   subject: string;
-  /** The line over the subject on a board book's cover: "Maharashtra HSC Class 12". */
+  /** The line over the subject: "MHT-CET", "Maharashtra HSC Class 12". */
   over?: string;
   size?: "sm" | "md" | "lg";
   /** The cover's numbers (`ebooks.stats`); the first three fill the tiles, as on the PDF cover. */
   stats?: { value: string; label: string }[];
+  namePlate?: boolean;
+  name?: string | null;
 }) {
-  const accent = ACCENT[kind];
   const pad = size === "sm" ? "p-3" : size === "md" ? "p-4" : "p-6";
   const title = size === "sm" ? "text-sm" : size === "md" ? "text-base sm:text-xl" : "text-2xl";
   const tiles = size === "sm" ? [] : stats.slice(0, 3);
-  if (PREMIUM_KINDS.has(kind)) return <PremiumCover kind={kind} subject={subject} over={over} pad={pad} title={title} tiles={tiles} />;
-  return (
-    <div
-      aria-hidden
-      className={`relative flex aspect-[1/1.414] w-full flex-col overflow-hidden rounded-lg font-serif shadow-[0_10px_30px_rgba(15,29,74,0.18)] ring-1 ring-black/5 ${pad}`}
-      style={{ background: PAPER, color: INK }}
-    >
-      <div className="flex items-center gap-1.5 text-[0.55rem] font-bold tracking-[0.2em]">
-        <span className="h-1.5 w-1.5 rounded-full" style={{ background: accent }} />
-        PYQ VAULT
-      </div>
-      <div className="mt-[22%]">
-        <span
-          className="inline-block rounded-full px-2 py-0.5 text-[0.55rem] font-bold uppercase tracking-[0.14em]"
-          style={{ color: accent, background: `color-mix(in srgb, ${accent} 12%, white)` }}
-        >
-          {KIND_LABEL[kind]}
-        </span>
-        <div className={`mt-2 font-bold leading-tight ${title}`}>{subject}</div>
-        <div className="mt-2 h-0.5 w-8 rounded" style={{ background: accent }} />
-      </div>
-      <div className="mt-auto grid grid-cols-2 gap-1 sm:grid-cols-3">
-        {tiles.length > 0
-          ? tiles.map((t, i) => (
-              // Two tiles on a phone, where three would cut their labels short.
-              <div key={t.label} className={`min-w-0 rounded bg-white px-1.5 py-1 shadow-sm ${i === 2 ? "hidden sm:block" : ""}`}>
-                <div className="truncate text-[0.7rem] font-bold leading-tight sm:text-sm" style={{ color: accent }}>
-                  {t.value}
-                </div>
-                <div className="truncate text-[0.5rem] leading-tight sm:text-[0.6rem]" style={{ color: MUTED }}>{t.label}</div>
-              </div>
-            ))
-          : [0, 1, 2].map((i) => <div key={i} className="h-3 rounded bg-white shadow-sm" />)}
-      </div>
-    </div>
-  );
-}
-
-const GOLD = "#f0c46e";
-
-/**
- * A board book's cover as the PDF prints it (lib/ebooks/bookHtml PREMIUM_CSS):
- * navy with a soft blue glow, a gold frame, the board line over the subject, a
- * stack of paper sheets with a gold seal, gold numbers.
- */
-function PremiumCover({
-  kind,
-  subject,
-  over,
-  pad,
-  title,
-  tiles,
-}: {
-  kind: EbookKind;
-  subject: string;
-  over?: string;
-  pad: string;
-  title: string;
-  tiles: { value: string; label: string }[];
-}) {
   return (
     <div
       aria-hidden
@@ -105,14 +57,15 @@ function PremiumCover({
           {KIND_LABEL[kind]}
         </span>
         {over ? (
-          <div className="mt-2 text-[0.5rem] font-semibold uppercase leading-tight tracking-[0.12em] sm:text-[0.6rem]" style={{ color: "#b9c6ec" }}>
+          <div className="mt-2 text-[0.5rem] font-semibold uppercase leading-tight tracking-[0.12em] sm:text-[0.6rem]" style={{ color: PALE }}>
             {over}
           </div>
         ) : null}
         <div className={`mt-0.5 font-bold leading-tight ${title}`}>{subject}</div>
         <div className="mt-2 h-0.5 w-8 rounded" style={{ background: `linear-gradient(90deg, #f7d58b, #d99a2b)` }} />
       </div>
-      <div className="relative mt-auto h-[24%]">
+      {/* The small cover has no room for both the paper stack and the name line: the name wins. */}
+      <div className={`relative mt-auto ${namePlate ? (size === "sm" ? "hidden" : "h-[21%]") : "h-[24%]"}`}>
         <div className="absolute left-[30%] top-[12%] h-[80%] w-[52%] rotate-[8deg] rounded-sm bg-[#dfe6f7] shadow-md" />
         <div className="absolute left-[22%] top-[4%] h-[80%] w-[52%] -rotate-[3deg] rounded-sm bg-white shadow-lg">
           <div className="mx-[10%] mt-[12%] h-[6%] rounded bg-[#0f1d4a]/70" />
@@ -124,14 +77,31 @@ function PremiumCover({
           style={{ background: "radial-gradient(circle at 34% 28%, #fde9b4 0%, #eab452 48%, #b97f1f 100%)" }}
         />
       </div>
+      {namePlate ? (
+        <div className={`relative border-b pb-0.5 ${size === "sm" ? "mt-auto w-full" : "mt-2 w-[70%]"}`} style={{ borderColor: GOLD }}>
+          <div
+            className={`whitespace-nowrap font-bold uppercase ${size === "sm" ? "text-[0.35rem] tracking-[0.1em]" : "text-[0.4rem] tracking-[0.18em] sm:text-[0.45rem]"}`}
+            style={{ color: PALE }}
+          >
+            This copy belongs to
+          </div>
+          <div
+            className={`truncate leading-tight ${size === "sm" ? "text-[0.6rem]" : "text-xs sm:text-sm"} ${name ? "font-bold" : "font-semibold italic"}`}
+            style={{ color: name ? GOLD : "#93a3d1" }}
+          >
+            {name ?? "Your name here"}
+          </div>
+        </div>
+      ) : null}
       {tiles.length > 0 ? (
         <div className="relative mt-2 grid grid-cols-2 border-t pt-1.5 sm:grid-cols-3" style={{ borderColor: "rgba(240,196,110,0.5)" }}>
           {tiles.map((t, i) => (
+            // Two tiles on a phone, where three would cut their labels short.
             <div key={t.label} className={`min-w-0 ${i === 2 ? "hidden sm:block" : ""}`}>
               <div className="truncate text-[0.7rem] font-bold leading-tight sm:text-sm" style={{ color: GOLD }}>
                 {t.value}
               </div>
-              <div className="truncate text-[0.5rem] leading-tight sm:text-[0.6rem]" style={{ color: "#b9c6ec" }}>
+              <div className="truncate text-[0.5rem] leading-tight sm:text-[0.6rem]" style={{ color: PALE }}>
                 {t.label}
               </div>
             </div>

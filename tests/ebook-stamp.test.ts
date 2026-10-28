@@ -11,7 +11,7 @@
 import { describe, it, expect } from "vitest";
 import { PDFDocument, decodePDFRawStream, PDFArray, PDFRawStream, type PDFPage } from "pdf-lib";
 import { assembleMaster } from "@/lib/ebooks/pdfAssemble";
-import { licenceLines, safePdfText, stampEbook } from "@/lib/ebooks/stamp";
+import { licenceLines, safePdfText, stampCoverName, stampEbook } from "@/lib/ebooks/stamp";
 
 async function blankPdf(pages: number): Promise<Uint8Array> {
   const doc = await PDFDocument.create();
@@ -47,6 +47,10 @@ describe("licenceLines", () => {
     expect(text).toContain("20 Oct 2026");
     expect(text).toMatch(/not allowed/i);
   });
+
+  it("names the buyer by name too, when the cover carries one", () => {
+    expect(licenceLines({ ...LICENCE, name: "Asha Patil" }).join(" ")).toContain("Asha Patil (asha@example.com)");
+  });
 });
 
 describe("safePdfText", () => {
@@ -58,19 +62,52 @@ describe("safePdfText", () => {
 
 describe("stampEbook", () => {
   it("paints the licence page with the book's paper too", async () => {
-    const out = await stampEbook(await blankPdf(1), { ...LICENCE, paper: "#faf8f3" });
+    const out = await stampEbook(await blankPdf(2), { ...LICENCE, paper: "#faf8f3" });
     const doc = await PDFDocument.load(out);
-    expect(pageStreams(doc.getPage(0)).join(" ")).toMatch(/0\.98\d* 0\.97\d* 0\.95\d* rg/);
+    expect(pageStreams(doc.getPage(1)).join(" ")).toMatch(/0\.98\d* 0\.97\d* 0\.95\d* rg/);
   });
 
-  it("adds a licence page in front and marks every page with the email", async () => {
+  // The book opens on its cover, as a printed book does; the licence page follows it.
+  it("adds the licence page after the cover and marks every page with the email", async () => {
     const out = await stampEbook(await blankPdf(3), LICENCE);
     const doc = await PDFDocument.load(out);
     expect(doc.getPageCount()).toBe(4);
     for (const page of doc.getPages()) {
       expect(pageContent(page)).toContain(hex("asha@example.com"));
     }
-    expect(pageContent(doc.getPage(0))).toContain(hex("Licensed copy"));
+    expect(pageContent(doc.getPage(0))).not.toContain(hex("Licensed copy"));
+    expect(pageContent(doc.getPage(1))).toContain(hex("Licensed copy"));
+  });
+
+  it("writes the buyer's name on a cover that has room for it", async () => {
+    const out = await stampEbook(await blankPdf(3), { ...LICENCE, name: "Asha Patil", namePlate: true });
+    const doc = await PDFDocument.load(out);
+    expect(pageContent(doc.getPage(0))).toContain(hex("Asha Patil"));
+    expect(pageContent(doc.getPage(2))).not.toContain(hex("Asha Patil"));
+  });
+
+  it("writes the email on such a cover when there is no name it can print", async () => {
+    const out = await stampEbook(await blankPdf(2), { ...LICENCE, name: null, namePlate: true });
+    const doc = await PDFDocument.load(out);
+    // Once in the footer line, once on the plate.
+    expect(pageContent(doc.getPage(0)).split(hex("asha@example.com")).length - 1).toBeGreaterThanOrEqual(3);
+  });
+
+  it("leaves a cover without room for a name as it is, and names the buyer on the licence page", async () => {
+    const out = await stampEbook(await blankPdf(2), { ...LICENCE, name: "Asha Patil", namePlate: false });
+    const doc = await PDFDocument.load(out);
+    expect(pageContent(doc.getPage(0))).not.toContain(hex("Asha Patil"));
+    expect(pageContent(doc.getPage(1))).toContain(hex("Asha Patil"));
+  });
+});
+
+describe("stampCoverName", () => {
+  it("writes a placeholder on the free sample's cover and adds no page", async () => {
+    const out = await stampCoverName(await blankPdf(2), "Your name here", "placeholder");
+    const doc = await PDFDocument.load(out);
+    expect(doc.getPageCount()).toBe(2);
+    expect(pageContent(doc.getPage(0))).toContain(hex("Your name here"));
+    expect(pageContent(doc.getPage(1))).not.toContain(hex("Your name here"));
   });
 });
 
