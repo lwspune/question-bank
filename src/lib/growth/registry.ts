@@ -715,10 +715,10 @@ export const EXPERIMENTS: readonly Experiment[] = [
     id: "tutor-interest",
     title: "1:1 tutoring: is there demand?",
     change:
-      "A Tutor button in the header, beside Ebooks, opens /tutor: Student or Teacher, then \"Looking for 1:1 tutoring?\" (a teacher is asked \"Would you like to teach 1:1?\"), then Online, Offline or Either on a Yes. Nothing is sold or booked, and no contact details are asked; the page says tutoring will be announced there.",
+      "A Tutor button in the header, beside Ebooks, opens /tutor: Student or Teacher, then \"Looking for 1:1 tutoring?\" (a teacher is asked \"Would you like to teach 1:1?\"), then Online, Offline or Either on a Yes. Nothing is sold or booked. Since 28 Oct only signed-in accounts can answer, and a Yes from an account with no mobile on file is asked for one last (\"Not now\" allowed); the Yes students are listed on this page to reach.",
     why: "The owner is weighing 1:1 tutoring and wants demand measured before anything is built. One page counts both sides: students who want a tutor and teachers who would teach.",
     metric:
-      "Student and teacher answers, Yes and No, by Online / Offline / Either, and student Yes by exam (tutor_interest, migration 0190). Header Tutor taps (tutor_link_click) in Vercel, read by hand. Signed-out answers are one row each, so they can count a person twice",
+      "Student and teacher answers, Yes and No, by Online / Offline / Either, and student Yes by exam (tutor_interest, migration 0190). Header Tutor taps (tutor_link_click) in Vercel, read by hand. Answers given signed out before 28 Oct are one row each, so they can count a person twice",
     rule: `Take tutoring further (ask the Yes students for a price and a number) if ${TUTOR_STUDENT_YES_KEEP}+ students answer Yes in three weeks; below that, remove the button and record the result.`,
     liveSince: "2026-10-27",
     windowDays: 21,

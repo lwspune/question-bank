@@ -3,8 +3,61 @@ import {
   validateTutorInterest,
   normaliseFrom,
   summariseTutorInterest,
+  needsContactStep,
+  buildTutorContacts,
   type TutorInterestRow,
 } from "@/lib/tutor/interest";
+
+describe("needsContactStep", () => {
+  it("asks for a number after a Yes when none is on file", () => {
+    expect(needsContactStep({ wants: true, hasMobile: false })).toBe(true);
+  });
+
+  it("does not ask after a No, or when a number is already on file", () => {
+    expect(needsContactStep({ wants: false, hasMobile: false })).toBe(false);
+    expect(needsContactStep({ wants: true, hasMobile: true })).toBe(false);
+  });
+});
+
+describe("buildTutorContacts", () => {
+  const answer = (r: Partial<Parameters<typeof buildTutorContacts>[0][number]>) => ({
+    user_id: "u1",
+    role: "student" as const,
+    wants: true,
+    mode: "online" as const,
+    exam_slug: "nda",
+    created_at: "2026-10-28T03:00:00Z",
+    ...r,
+  });
+
+  it("lists signed-in Yes answers newest first, with name, email and mobile", () => {
+    const { contacts } = buildTutorContacts(
+      [
+        answer({ user_id: "u1", created_at: "2026-10-28T03:00:00Z" }),
+        answer({ user_id: "u2", role: "teacher", mode: "either", exam_slug: null, created_at: "2026-10-28T09:00:00Z" }),
+      ],
+      new Map([
+        ["u1", { name: "Asha", email: "asha@example.com" }],
+        ["u2", { name: null, email: "t@example.com" }],
+      ]),
+      new Map([["u1", "919876543210"]])
+    );
+    expect(contacts).toEqual([
+      { userId: "u2", name: null, email: "t@example.com", mobile: null, role: "teacher", mode: "either", examSlug: null, answeredAt: "2026-10-28T09:00:00Z" },
+      { userId: "u1", name: "Asha", email: "asha@example.com", mobile: "919876543210", role: "student", mode: "online", examSlug: "nda", answeredAt: "2026-10-28T03:00:00Z" },
+    ]);
+  });
+
+  it("leaves out No answers and counts signed-out Yes answers as unreachable", () => {
+    const out = buildTutorContacts(
+      [answer({ wants: false, mode: null }), answer({ user_id: null }), answer({ user_id: null, role: "teacher" })],
+      new Map(),
+      new Map()
+    );
+    expect(out.contacts).toEqual([]);
+    expect(out.unreachableYes).toBe(2);
+  });
+});
 
 describe("validateTutorInterest", () => {
   it("accepts a student who wants tutoring, with a mode", () => {

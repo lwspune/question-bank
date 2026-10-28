@@ -5,33 +5,42 @@ import Link from "next/link";
 import { ArrowLeft, Check, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
-import type { TutorMode, TutorRole } from "@/lib/tutor/interest";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { isValidIndianMobile } from "@/lib/profile/mobile";
+import { needsContactStep, type TutorMode, type TutorRole } from "@/lib/tutor/interest";
 
 /**
  * Three one-tap questions (migration 0190). Student or Teacher first, because
  * the second question means something different to each: a student is asked
  * whether they want a tutor, a teacher whether they would be one. A No is
  * saved at once and ends the flow; a Yes asks Online / Offline / Either.
+ * After a Yes, an account with no mobile on file is asked for one last
+ * (2026-10-28), saved to student_profiles like the mock-result gate. The Yes
+ * is already saved by then, so "Not now" still counts it.
  */
 
-type Step = "role" | "wants" | "mode" | "done";
+type Step = "role" | "wants" | "mode" | "contact" | "done";
 
 const QUESTION: Record<Exclude<Step, "done">, Record<TutorRole, string>> = {
   role: { student: "Are you a student or a teacher?", teacher: "Are you a student or a teacher?" },
   wants: { student: "Are you looking for 1:1 tutoring?", teacher: "Would you like to teach 1:1 on PYQ Vault?" },
   mode: { student: "How would you like to learn?", teacher: "How would you like to teach?" },
+  contact: { student: "How can we reach you?", teacher: "How can we reach you?" },
 };
 
 const MODE_LABEL: Record<TutorMode, string> = { online: "Online", offline: "Offline", either: "Either" };
 
 const choiceClass = "h-12 w-full text-base";
 
-export default function TutorInterestForm() {
+export default function TutorInterestForm({ hasMobile }: { hasMobile: boolean }) {
   const [step, setStep] = useState<Step>("role");
   const [role, setRole] = useState<TutorRole>("student");
   const [wants, setWants] = useState(false);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [mobile, setMobile] = useState("");
+  const [consent, setConsent] = useState(false);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const firstRender = useRef(true);
 
@@ -59,10 +68,43 @@ export default function TutorInterestForm() {
         throw new Error(body?.error ?? "Could not save your answer. Please try again.");
       }
       setWants(answer.wants);
-      setStep("done");
+      setStep(needsContactStep({ wants: answer.wants, hasMobile }) ? "contact" : "done");
       toast.success("Thanks, your answer is saved.");
     } catch (err) {
       const message = err instanceof Error ? err.message : "Could not save your answer. Please try again.";
+      setError(message);
+      toast.error(message);
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  async function saveMobile(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    if (!isValidIndianMobile(mobile)) {
+      setError("Enter a valid 10-digit mobile number.");
+      return;
+    }
+    if (!consent) {
+      setError("Please tick the box so we may contact you.");
+      return;
+    }
+    setSaving(true);
+    setError(null);
+    try {
+      const res = await fetch("/api/profile/mobile", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ mobile, consent: true }),
+      });
+      if (!res.ok) {
+        const body = (await res.json().catch(() => null)) as { error?: string } | null;
+        throw new Error(body?.error ?? "Could not save your number. Please try again.");
+      }
+      setStep("done");
+      toast.success("Thanks, we have your number.");
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Could not save your number. Please try again.";
       setError(message);
       toast.error(message);
     } finally {
@@ -81,7 +123,7 @@ export default function TutorInterestForm() {
         </h2>
         <p className="mx-auto mt-2 max-w-sm text-sm leading-relaxed text-muted-foreground">
           {wants
-            ? "We are checking how many people want this. If we open 1:1 tutoring, we will announce it here."
+            ? "We are checking how many people want this. If we open 1:1 tutoring, we will get in touch."
             : "That helps us just as much as a yes."}
         </p>
         <Button asChild variant="outline" className="mt-5">
@@ -92,58 +134,115 @@ export default function TutorInterestForm() {
   }
 
   const back = step === "wants" ? "role" : step === "mode" ? "wants" : null;
+  const questionNo = { role: 1, wants: 2, mode: 3, contact: 4 }[step];
+  const mobileOk = isValidIndianMobile(mobile);
 
   return (
     <section className="mt-6 rounded-xl border bg-card p-6" aria-live="polite" aria-busy={saving}>
       <p className="text-xs font-medium text-muted-foreground">
-        Question {step === "role" ? 1 : step === "wants" ? 2 : 3} of 3
+        Question {questionNo} of {hasMobile ? 3 : 4}
       </p>
       <h2 ref={headingRef} tabIndex={-1} className="mt-1 text-lg font-semibold focus:outline-none">
         {QUESTION[step][role]}
       </h2>
 
-      <div className="mt-5 grid gap-3">
-        {step === "role" &&
-          (["student", "teacher"] as const).map((r) => (
-            <Button
-              key={r}
-              variant="outline"
-              className={choiceClass}
-              onClick={() => {
-                setRole(r);
-                setStep("wants");
-              }}
-            >
-              {r === "student" ? "Student" : "Teacher"}
-            </Button>
-          ))}
+      {step !== "contact" && (
+        <div className="mt-5 grid gap-3">
+          {step === "role" &&
+            (["student", "teacher"] as const).map((r) => (
+              <Button
+                key={r}
+                variant="outline"
+                className={choiceClass}
+                onClick={() => {
+                  setRole(r);
+                  setStep("wants");
+                }}
+              >
+                {r === "student" ? "Student" : "Teacher"}
+              </Button>
+            ))}
 
-        {step === "wants" && (
-          <>
-            <Button
-              variant="outline"
-              className={choiceClass}
+          {step === "wants" && (
+            <>
+              <Button
+                variant="outline"
+                className={choiceClass}
+                disabled={saving}
+                onClick={() => {
+                  setWants(true);
+                  setStep("mode");
+                }}
+              >
+                Yes
+              </Button>
+              <Button variant="outline" className={choiceClass} disabled={saving} onClick={() => submit({ wants: false, mode: null })}>
+                No
+              </Button>
+            </>
+          )}
+
+          {step === "mode" &&
+            (["online", "offline", "either"] as const).map((m) => (
+              <Button key={m} variant="outline" className={choiceClass} disabled={saving} onClick={() => submit({ wants: true, mode: m })}>
+                {MODE_LABEL[m]}
+              </Button>
+            ))}
+        </div>
+      )}
+
+      {step === "contact" && (
+        <form onSubmit={saveMobile} className="mt-3 space-y-4">
+          <p className="text-sm leading-relaxed text-muted-foreground">
+            Your answer is saved. Leave your mobile number so we can contact you if we open 1:1 tutoring.
+          </p>
+          <div className="space-y-2">
+            <Label htmlFor="tutor-mobile">Mobile number</Label>
+            <Input
+              id="tutor-mobile"
+              type="tel"
+              inputMode="numeric"
+              autoComplete="tel"
+              required
+              placeholder="10-digit mobile"
+              value={mobile}
+              onChange={(e) => setMobile(e.target.value)}
               disabled={saving}
-              onClick={() => {
-                setWants(true);
-                setStep("mode");
-              }}
-            >
-              Yes
-            </Button>
-            <Button variant="outline" className={choiceClass} disabled={saving} onClick={() => submit({ wants: false, mode: null })}>
-              No
-            </Button>
-          </>
-        )}
-
-        {step === "mode" &&
-          (["online", "offline", "either"] as const).map((m) => (
-            <Button key={m} variant="outline" className={choiceClass} disabled={saving} onClick={() => submit({ wants: true, mode: m })}>
-              {MODE_LABEL[m]}
-            </Button>
-          ))}
-      </div>
+              aria-invalid={mobile.length > 0 && !mobileOk}
+            />
+          </div>
+          <label className="flex items-start gap-2 text-sm text-muted-foreground">
+            <input
+              type="checkbox"
+              checked={consent}
+              onChange={(e) => setConsent(e.target.checked)}
+              disabled={saving}
+              className="mt-0.5 h-4 w-4 rounded border-input accent-[var(--brand)]"
+            />
+            <span>
+              PYQ Vault may contact me about 1:1 tutoring. See our{" "}
+              <Link href="/privacy" className="underline underline-offset-2 hover:text-foreground" target="_blank">
+                privacy policy
+              </Link>
+              .
+            </span>
+          </label>
+          <Button type="submit" variant="brand" className={choiceClass} disabled={saving || !mobileOk || !consent}>
+            Save my number
+          </Button>
+          <button
+            type="button"
+            disabled={saving}
+            onClick={() => {
+              setError(null);
+              setStep("done");
+            }}
+            className="w-full rounded-md py-1 text-sm text-muted-foreground hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+          >
+            Not now
+          </button>
+        </form>
+      )}
 
       {saving && (
         <p className="mt-4 flex items-center gap-2 text-sm text-muted-foreground">
