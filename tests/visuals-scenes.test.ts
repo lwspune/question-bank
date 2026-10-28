@@ -324,6 +324,81 @@ describe("functionGraph extrema", () => {
   });
 });
 
+describe("functionGraph roots", () => {
+  const run = (raw: Record<string, unknown>) => {
+    const { scene, p } = parsedParams("functionGraph", raw);
+    return { value: scene.check(p), text: scene.checkText(p, scene.check(p)), facts: functionGraphFacts(p as never) };
+  };
+  const quad = { f: "x^2-3*x+2", window: { x: [-1, 4], y: [-1, 4] } };
+  it("finds the zeros and checks them against the stated ones: 0 when they agree", () => {
+    const r = run({ ...quad, ask: { kind: "roots", expect: [2, 1] } });
+    expect(r.value).toBe(0);
+    expect(r.facts.roots.map((x) => Math.round(x * 1e6) / 1e6)).toEqual([1, 2]);
+    expect(r.text).toContain("as stated");
+  });
+  it("counts a wrong zero, a missing zero and an extra zero", () => {
+    expect(run({ ...quad, ask: { kind: "roots", expect: [1, 3] } }).value).toBe(1);
+    expect(run({ ...quad, ask: { kind: "roots", expect: [1] } }).value).toBeGreaterThan(0);
+    expect(run({ f: "x^3-x", window: { x: [-2, 2], y: [-2, 2] }, ask: { kind: "roots", expect: [-1, 0, 1, 1.5] } }).value).toBeGreaterThan(0);
+  });
+  it("counts a double root once, and takes irrational zeros to a few decimals", () => {
+    expect(run({ f: "x^2-4*x+4", window: { x: [0, 4], y: [-1, 4] }, ask: { kind: "roots", expect: [2] } }).value).toBe(0);
+    // 2x^2 - 6x + 3 = 0: x = (3 ± √3)/2.
+    expect(run({ f: "2*x^2-6*x+3", window: { x: [-1, 4], y: [-3, 8] }, ask: { kind: "roots", expect: [0.633975, 2.366025] } }).value).toBe(0);
+  });
+  it("reports the sum or the product of the zeros it found, and nothing when they disagree", () => {
+    expect(run({ ...quad, ask: { kind: "roots", expect: [1, 2], report: "sum" } }).value).toBeCloseTo(3, 6);
+    expect(run({ ...quad, ask: { kind: "roots", expect: [1, 2], report: "product" } }).value).toBeCloseTo(2, 6);
+    expect(run({ ...quad, ask: { kind: "roots", expect: [1, 3], report: "sum" } }).value).toBeNaN();
+  });
+  it("refuses a malformed ask", () => {
+    const s = getScene("functionGraph")!;
+    expect(s.parse({ ...quad, ask: { kind: "roots", expect: [] } })).toHaveProperty("error");
+    expect(s.parse({ ...quad, ask: { kind: "roots", expect: [1, 2, 3, 4, 5] } })).toHaveProperty("error");
+    expect(s.parse({ ...quad, ask: { kind: "roots", expect: [1, 9] } })).toHaveProperty("error");
+    expect(s.parse({ ...quad, ask: { kind: "roots", expect: [1, 2], report: "mean" } })).toHaveProperty("error");
+    expect(s.parse({ ...quad, ask: { kind: "roots", expect: [1, 2], rootLabels: ["x = 1", "x = 2", "x = 3"] } })).toHaveProperty("error");
+    expect(s.parse({ ...quad, g: ["1"], ask: { kind: "roots", expect: [1, 2] } })).toHaveProperty("error");
+    // The zeros sit on the x-axis, so the window must show it.
+    expect(s.parse({ ...quad, window: { x: [-1, 4], y: [0.5, 4] }, ask: { kind: "roots", expect: [1, 2] } })).toHaveProperty("error");
+  });
+  it("marks the zeros on the axis one at a time, with their labels and a computed header", () => {
+    const { scene, p } = parsedParams("functionGraph", { ...quad, ask: { kind: "roots", expect: [1, 2], rootLabels: ["x = 1", "x = 2"], report: "sum" } });
+    const texts = (played: string[], t: number) => scene.frame(p, { played, t } as never).filter((sh) => sh.kind === "text").map((sh) => (sh as { text: string }).text);
+    expect(texts(["curve"], 1)).not.toContain("x = 1");
+    const half = texts(["curve", "mark"], 0.5);
+    expect(half).toContain("x = 1");
+    expect(half).not.toContain("x = 2");
+    const all = texts(["curve", "mark"], 1);
+    expect(all).toEqual(expect.arrayContaining(["x = 1", "x = 2", "sum of zeros 3"]));
+  });
+  const head = (raw: Record<string, unknown>) => {
+    const { scene, p } = parsedParams("functionGraph", raw);
+    const texts = scene.frame(p, { played: ["curve", "mark"], t: 1 } as never).filter((sh) => sh.kind === "text") as { text: string; tone?: string; anchor?: string }[];
+    return texts.filter((t) => t.tone === "good" && t.anchor === "end").map((t) => t.text);
+  };
+  it("counts a repeated zero twice in the sum and product, and says the zeros are equal", () => {
+    const sq = { f: "4*x^2-4*x+1", window: { x: [-1, 2], y: [-1, 4] } };
+    expect(run({ ...sq, ask: { kind: "roots", expect: [0.5], report: "sum" } }).value).toBeCloseTo(1, 6);
+    expect(run({ ...sq, ask: { kind: "roots", expect: [0.5], report: "product" } }).value).toBeCloseTo(0.25, 6);
+    expect(head({ ...sq, ask: { kind: "roots", expect: [0.5] } })).toContain("2 equal zeros");
+    expect(head({ ...sq, ask: { kind: "roots", expect: [0.5], withSumProduct: true } })).toContain("2 equal zeros · sum 1 · product 1/4");
+    // x(x - 1)^2: three zeros, one of them repeated; sum 2, product 0.
+    expect(head({ f: "x*(x-1)^2", window: { x: [-1, 2], y: [-1, 1] }, ask: { kind: "roots", expect: [0, 1], withSumProduct: true } })).toContain("3 zeros, one repeated · sum 2 · product 0");
+  });
+  it("writes a sum or product as a fraction when it is one, and can say roots", () => {
+    expect(head({ f: "5*x-7*x^2+3", window: { x: [-1, 1.5], y: [-3, 3] }, ask: { kind: "roots", expect: [-0.388618, 1.102904], report: "sum" } })).toContain("sum of zeros 5/7");
+    expect(head({ f: "3*x^2+x-2", window: { x: [-2, 1.5], y: [-3, 5] }, ask: { kind: "roots", expect: [-1, 2 / 3], word: "roots", withSumProduct: true } })).toContain("2 roots · sum −1/3 · product −2/3");
+    expect(getScene("functionGraph")!.parse({ ...quad, ask: { kind: "roots", expect: [1, 2], word: "answers" } })).toHaveProperty("error");
+  });
+  it("can add the sum and product to the header of a zeros answer", () => {
+    const { scene, p } = parsedParams("functionGraph", { ...quad, ask: { kind: "roots", expect: [1, 2], withSumProduct: true } });
+    const texts = scene.frame(p, { played: ["curve", "mark"], t: 1 } as never).filter((sh) => sh.kind === "text").map((sh) => (sh as { text: string }).text);
+    expect(texts).toContain("2 zeros · sum 3 · product 2");
+    expect(texts).toContain("x = 1");
+  });
+});
+
 describe("functionGraph unions and several points", () => {
   it("checks every interval of a union: x^3 - 3x rises on x < -1 and on x > 1", () => {
     const ok = parsedParams("functionGraph", { f: "x^3-3*x", window: { x: [-3, 3], y: [-5, 5] }, ask: { kind: "increasingOn", intervals: [[-3, -1], [1, 3]], intervalLabel: "x < −1 or x > 1" } });

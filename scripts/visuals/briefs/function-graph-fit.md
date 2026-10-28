@@ -18,6 +18,11 @@ PYQ Vault draws animated solutions from a question's own numbers. The
    word problem whose solution reduces it to one function of one variable on
    a stated interval and asks for the largest or least value or where it
    occurs.
+7. **roots**: the real zeros of a fully numeric function or polynomial (find
+   the zeros, solve the quadratic, verify the relationship between zeros and
+   coefficients), or the sum or product of those zeros. Not: complex zeros, a
+   letter left in f (k, p), an expression of the zeros (α² + β²), forming a
+   polynomial from given zeros, or a word problem whose answer is not a zero.
 
 For each question decide which ONE of these the solution is really about, or
 `no` if none fits. Fit only when the whole question is answered by that
@@ -35,7 +40,7 @@ Write a JSON array to your output path, one object per question, input order:
 [{ "n": 3, "id": "<id>", "fit": "increasingOn", "note": "f'(x) = -sin4x; asks where f rises" }]
 ```
 
-- `fit`: crossings, slopePoint, slopePoints, increasingOn, decreasingOn, extrema or no.
+- `fit`: crossings, slopePoint, slopePoints, increasingOn, decreasingOn, extrema, roots or no.
 - `note`: at most 12 words.
 
 Read only your input file, write only your output file, run nothing. When
