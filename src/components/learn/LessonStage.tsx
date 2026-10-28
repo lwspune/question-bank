@@ -26,6 +26,7 @@ const subscribeFullscreen = (cb: () => void) => {
  * - `banner`: above the header (the refresher bar).
  * - `questions`: rendered under the slide and kept mounted; given whether the questions slide is
  *   showing, and a way back to the first slide.
+ * - `onBegin`: called once, on the learner's first move (Start, Next, a swipe, an arrow key).
  */
 export function LessonStage({
   slides,
@@ -33,12 +34,14 @@ export function LessonStage({
   startIndex = 0,
   banner,
   questions,
+  onBegin,
 }: {
   slides: RenderedSlide[];
   label: string;
   startIndex?: number;
   banner?: ReactNode;
   questions?: (api: { active: boolean; reread: () => void }) => ReactNode;
+  onBegin?: () => void;
 }) {
   const [pos, setPos] = useState<Position>(() => startAt(slides, startIndex));
   // Set on the first move or full screen, so Start never comes back (even after leaving full screen).
@@ -78,6 +81,12 @@ export function LessonStage({
   useEffect(() => {
     if (!begunRef.current) setPos(startAt(slides, startIndex));
   }, [slides, startIndex]);
+
+  const onBeginRef = useRef(onBegin);
+  onBeginRef.current = onBegin;
+  useEffect(() => {
+    if (begun) onBeginRef.current?.();
+  }, [begun]);
 
   // Move focus to a new slide's heading so screen readers announce it (a new point announces itself).
   useEffect(() => {

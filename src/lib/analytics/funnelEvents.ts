@@ -167,6 +167,12 @@ export const FUNNEL_EVENTS = [
    * (surface_viewed 'v_progress'); this adds which button on the card was used.
    */
   "v_progress_tap",
+  /**
+   * A Learn lesson was begun (2026-10-28): the visitor's first move through its slides (Start,
+   * Next, a swipe). Props: signedIn, chapter. Once per lesson per page. Lesson page views are its
+   * scale; a signed-in student's is also a row (surface_viewed 'learn_start').
+   */
+  "learn_lesson_start",
 ] as const;
 
 export type FunnelEvent = (typeof FUNNEL_EVENTS)[number];

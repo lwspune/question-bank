@@ -50,6 +50,11 @@ export const SURFACES = [
   // V's "How's my progress" card was opened (2026-10-27, migration 0191),
   // written by GET /api/chat/progress: how many look, and whether they drill after.
   "v_progress",
+  // The Learn tab (2026-10-28): "learn" is a reading surface (every Learn page, by address);
+  // "learn_start" is the student's first move through a lesson's slides, with the lesson's
+  // address. Until then nothing told "nobody came" from "came and left before a question".
+  "learn",
+  "learn_start",
 ] as const;
 
 export type Surface = (typeof SURFACES)[number];
@@ -59,7 +64,7 @@ export function isSurface(v: unknown): v is Surface {
   return typeof v === "string" && SURFACE_SET.has(v);
 }
 
-export type ReadingSurface = "notes" | "board" | "questions" | "guide" | "formula" | "question_papers" | "past_paper" | "store";
+export type ReadingSurface = "notes" | "board" | "questions" | "guide" | "formula" | "question_papers" | "past_paper" | "store" | "learn";
 
 /** A section's first path segment -> its reading surface. */
 const READING_SECTIONS: Record<string, ReadingSurface> = {
@@ -70,6 +75,7 @@ const READING_SECTIONS: Record<string, ReadingSurface> = {
   formula: "formula",
   "question-papers": "question_papers",
   store: "store",
+  learn: "learn",
 };
 const READING_SET: ReadonlySet<string> = new Set(Object.values(READING_SECTIONS).concat("past_paper"));
 const PATH_RE = /^\/[a-z0-9-]+(\/[a-z0-9-]+)*$/;
@@ -94,6 +100,14 @@ export function readingViewFor(pathname: string): { surface: ReadingSurface; pat
   if (section) return { surface: section, path };
   if (segments.length === 3 && segments[0] === "mock" && segments[2] === "paper") return { surface: "past_paper", path };
   return null;
+}
+
+/** A Learn lesson's cleaned address (/learn/lesson/<chapter>/<concept>), or null for any other page. */
+export function learnLessonPath(pathname: string): string | null {
+  const view = readingViewFor(pathname);
+  if (view?.surface !== "learn") return null;
+  const segments = view.path.split("/").slice(1);
+  return segments.length === 4 && segments[1] === "lesson" ? view.path : null;
 }
 
 export function viewDedupeKey(userId: string, surface: Surface, now: Date): string {

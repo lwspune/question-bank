@@ -255,3 +255,35 @@ describe("parseClientEvent — reading pages", () => {
     expect(r.ok && r.value.metadata).toEqual({ surface: "guide", path: "/guide/nda-physics" });
   });
 });
+
+// A lesson begun (2026-10-28): the first move through a Learn lesson's slides, by a signed-in
+// student. Its address must be a lesson's, so the row names the concept.
+describe("parseClientEvent - a Learn lesson begun", () => {
+  it("accepts a lesson's address, deduped per lesson per student per IST day", () => {
+    const r = parseClientEvent(
+      { kind: "surface_viewed", surface: "learn_start", path: "/learn/lesson/matrices/what-is-a-matrix?course=cbse-12-maths" },
+      "u1",
+      NOW
+    );
+    expect(r).toEqual({
+      ok: true,
+      value: {
+        kind: "surface_viewed",
+        metadata: { surface: "learn_start", path: "/learn/lesson/matrices/what-is-a-matrix" },
+        dedupeKey: "view:learn_start:/learn/lesson/matrices/what-is-a-matrix:u1:2026-09-27",
+      },
+    });
+  });
+
+  it("refuses it without an address, or with one that is not a lesson", () => {
+    expect(parseClientEvent({ kind: "surface_viewed", surface: "learn_start" }, "u1", NOW).ok).toBe(false);
+    for (const path of ["/learn", "/learn/mh-hsc-12-maths/matrices", "/notes/nda-maths/vectors"]) {
+      expect(parseClientEvent({ kind: "surface_viewed", surface: "learn_start", path }, "u1", NOW).ok).toBe(false);
+    }
+  });
+
+  it("records a Learn page read like any reading page", () => {
+    const r = parseClientEvent({ kind: "surface_viewed", surface: "learn", path: "/learn/lesson/matrices/what-is-a-matrix" }, "u1", NOW);
+    expect(r.ok && r.value.dedupeKey).toBe("view:learn:/learn/lesson/matrices/what-is-a-matrix:u1:2026-09-27");
+  });
+});
