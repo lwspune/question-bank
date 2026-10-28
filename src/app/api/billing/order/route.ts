@@ -5,7 +5,7 @@ import { createOrder } from "@/lib/billing/razorpay";
 import { stampOrderNotes } from "@/lib/billing/plans";
 import { getActivePlan } from "@/lib/billing/plansQuery";
 import { logActivity } from "@/lib/activity/service";
-import { checkoutBox, checkoutGate, paywallEvent } from "@/lib/activity/clientEvents";
+import { bookCheckoutEvent, checkoutBox, checkoutGate, paywallEvent } from "@/lib/activity/clientEvents";
 import { readCountry, withCountry } from "@/lib/acquisition/country";
 import { ebookOrderTerms } from "@/lib/ebooks/checkout";
 import { stampEbookOrderNotes } from "@/lib/ebooks/order";
@@ -50,6 +50,7 @@ export async function POST(request: NextRequest) {
       console.error("razorpay createOrder (ebook) failed:", result.error);
       return NextResponse.json({ error: "Could not start checkout" }, { status: 502 });
     }
+    await logActivity(db, user.id, withCountry(bookCheckoutEvent(terms.slug), readCountry(request.headers)));
     return NextResponse.json({
       orderId: result.orderId,
       amount: result.amount,

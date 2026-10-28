@@ -39,10 +39,17 @@ function counts(t: SalesTotals): string {
   return parts.join(" · ");
 }
 
+/** "14 orders (13 pass · 1 book)": checkouts started, paid or not. */
+function orders(t: SalesTotals): string {
+  const n = t.passOrders + t.bookOrders;
+  return `${n} ${n === 1 ? "order" : "orders"} (${t.passOrders} pass · ${t.bookOrders} book)`;
+}
+
 /**
  * /dashboard/sales: passes and books sold, and the money kept, per day, week
  * or month (2026-10-28). Platform-wide money, so superadmin only, like
- * /dashboard/pricing. Numbers come from public.sales_by_period (0197).
+ * /dashboard/pricing. Numbers come from public.sales_by_period (0197; orders
+ * created on Razorpay since 0199).
  */
 export default async function SalesPage({ searchParams }: { searchParams?: { view?: string } }) {
   if (!(await getSessionSuperadmin())) redirect("/browse");
@@ -76,7 +83,8 @@ export default async function SalesPage({ searchParams }: { searchParams?: { vie
         <header>
           <h1 className="text-2xl font-semibold tracking-tight">Sales</h1>
           <p className="mt-1 text-sm text-muted-foreground">
-            Passes and books sold, and the money kept after refunds. Days are Indian time.
+            Orders created on Razorpay, passes and books sold, and the money kept after refunds. Days are Indian
+            time.
           </p>
         </header>
 
@@ -92,6 +100,7 @@ export default async function SalesPage({ searchParams }: { searchParams?: { vie
                   <p className="text-xs font-medium text-muted-foreground">{c.label}</p>
                   <p className="mt-1 text-2xl font-semibold tabular-nums">{formatRupees(c.current.paise)}</p>
                   <p className="mt-1 text-xs text-muted-foreground">{counts(c.current)}</p>
+                  <p className="mt-1 text-xs text-muted-foreground">{orders(c.current)}</p>
                   <p className="mt-2 text-xs text-muted-foreground">
                     {c.previousLabel}: <span className="tabular-nums">{formatRupees(c.previous.paise)}</span> (
                     {c.previous.passesSold + c.previous.booksSold} sold)
@@ -103,6 +112,7 @@ export default async function SalesPage({ searchParams }: { searchParams?: { vie
                   <p className="text-xs font-medium text-muted-foreground">All time</p>
                   <p className="mt-1 text-2xl font-semibold tabular-nums">{formatRupees(allTime.paise)}</p>
                   <p className="mt-1 text-xs text-muted-foreground">{counts(allTime)}</p>
+                  <p className="mt-1 text-xs text-muted-foreground">{orders(allTime)}</p>
                 </div>
               )}
             </section>
@@ -126,7 +136,7 @@ export default async function SalesPage({ searchParams }: { searchParams?: { vie
               </nav>
 
               <div className="overflow-x-auto">
-                <table className="w-full min-w-[34rem] text-sm">
+                <table className="w-full min-w-[44rem] text-sm">
                   <caption className="sr-only">
                     {GRAIN_LABEL[grain]} sales, the last {shown} {grain === "day" ? "days" : `${grain}s`}, newest first
                   </caption>
@@ -135,8 +145,10 @@ export default async function SalesPage({ searchParams }: { searchParams?: { vie
                       <th scope="col" className="py-1.5 pr-3 font-medium">
                         {grain === "day" ? "Day" : grain === "week" ? "Week" : "Month"}
                       </th>
+                      <th scope="col" className="py-1.5 pr-3 text-right font-medium">Pass orders</th>
                       <th scope="col" className="py-1.5 pr-3 text-right font-medium">Passes</th>
                       <th scope="col" className="py-1.5 pr-3 text-right font-medium">Pass ₹</th>
+                      <th scope="col" className="py-1.5 pr-3 text-right font-medium">Book orders</th>
                       <th scope="col" className="py-1.5 pr-3 text-right font-medium">Books</th>
                       <th scope="col" className="py-1.5 pr-3 text-right font-medium">Book ₹</th>
                       <th scope="col" className="py-1.5 pr-3 text-right font-medium">Total ₹</th>
@@ -145,14 +157,16 @@ export default async function SalesPage({ searchParams }: { searchParams?: { vie
                   </thead>
                   <tbody className="tabular-nums">
                     {rows.map((r) => {
-                      const empty = r.passesSold + r.booksSold === 0;
+                      const empty = r.passesSold + r.booksSold + r.passOrders + r.bookOrders === 0;
                       return (
                         <tr key={r.period} className={cn("border-b last:border-0", empty && "text-muted-foreground")}>
                           <th scope="row" className="py-1.5 pr-3 text-left font-normal">
                             {periodLabel(r.period, grain)}
                           </th>
+                          <td className="py-1.5 pr-3 text-right">{r.passOrders}</td>
                           <td className="py-1.5 pr-3 text-right">{r.passesSold}</td>
                           <td className="py-1.5 pr-3 text-right">{formatRupees(r.passPaise)}</td>
+                          <td className="py-1.5 pr-3 text-right">{r.bookOrders}</td>
                           <td className="py-1.5 pr-3 text-right">{r.booksSold}</td>
                           <td className="py-1.5 pr-3 text-right">{formatRupees(r.bookPaise)}</td>
                           <td className="py-1.5 pr-3 text-right font-medium">{formatRupees(r.passPaise + r.bookPaise)}</td>
@@ -164,8 +178,10 @@ export default async function SalesPage({ searchParams }: { searchParams?: { vie
                   <tfoot className="tabular-nums">
                     <tr className="border-t font-medium">
                       <th scope="row" className="py-1.5 pr-3 text-left">Total</th>
+                      <td className="py-1.5 pr-3 text-right">{windowTotal.passOrders}</td>
                       <td className="py-1.5 pr-3 text-right">{windowTotal.passesSold}</td>
                       <td className="py-1.5 pr-3 text-right">{formatRupees(rows.reduce((s, r) => s + r.passPaise, 0))}</td>
+                      <td className="py-1.5 pr-3 text-right">{windowTotal.bookOrders}</td>
                       <td className="py-1.5 pr-3 text-right">{windowTotal.booksSold}</td>
                       <td className="py-1.5 pr-3 text-right">{formatRupees(rows.reduce((s, r) => s + r.bookPaise, 0))}</td>
                       <td className="py-1.5 pr-3 text-right">{formatRupees(windowTotal.paise)}</td>
@@ -176,7 +192,9 @@ export default async function SalesPage({ searchParams }: { searchParams?: { vie
               </div>
 
               <p className="text-xs text-muted-foreground">
-                A refunded sale counts in Passes or Books and in Refunds, and its money is not in the totals. Every
+                Orders are the Razorpay orders the site created when a student tapped Buy, paid or not. Pass orders
+                are counted from 4 Oct 2026 and book orders from 28 Oct 2026, when the site began recording them. A refunded sale counts in Passes or Books and in Refunds, and its money
+                is not in the totals. Every
                 paid sale counts, staff included, so the totals match Razorpay. Who bought and per-book detail:{" "}
                 <Link href="/dashboard/entitlements" className="underline underline-offset-2">Access</Link> and the
                 store section of <Link href="/dashboard/growth" className="underline underline-offset-2">Growth</Link>.

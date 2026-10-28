@@ -21,9 +21,11 @@ import {
 
 const row = (period: string, over: Partial<SalesPeriodRow> = {}): SalesPeriodRow => ({
   period,
+  passOrders: 0,
   passesSold: 0,
   passesRefunded: 0,
   passPaise: 0,
+  bookOrders: 0,
   booksSold: 0,
   booksRefunded: 0,
   bookPaise: 0,
@@ -95,12 +97,12 @@ describe("fillPeriods", () => {
 });
 
 describe("sumRows", () => {
-  it("adds passes and books, and the money kept", () => {
+  it("adds orders, passes and books, and the money kept", () => {
     const t = sumRows([
-      row("2026-10-27", { passesSold: 2, passesRefunded: 1, passPaise: 19900 }),
-      row("2026-10-26", { booksSold: 1, bookPaise: 4900 }),
+      row("2026-10-27", { passOrders: 5, passesSold: 2, passesRefunded: 1, passPaise: 19900 }),
+      row("2026-10-26", { passOrders: 1, bookOrders: 2, booksSold: 1, bookPaise: 4900 }),
     ]);
-    expect(t).toEqual({ passesSold: 2, booksSold: 1, refunded: 1, paise: 24800 });
+    expect(t).toEqual({ passOrders: 6, passesSold: 2, bookOrders: 2, booksSold: 1, refunded: 1, paise: 24800 });
   });
 });
 

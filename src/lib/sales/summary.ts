@@ -1,5 +1,5 @@
 /**
- * /dashboard/sales: turns public.sales_by_period's rows (migration 0197) into the
+ * /dashboard/sales: turns public.sales_by_period's rows (migrations 0197, 0199) into the
  * page's table and summary cards. Pure: dates are IST calendar days as
  * "YYYY-MM-DD" strings, done in UTC arithmetic so the server's own time zone
  * never shifts a day.
@@ -11,19 +11,32 @@ export const SALES_GRAINS: readonly SalesGrain[] = ["day", "week", "month"];
 /** How many periods the table shows for each grain. */
 export const PERIODS_SHOWN: Record<SalesGrain, number> = { day: 30, week: 12, month: 12 };
 
-/** One period's sales. Money is what was kept: refunded sales count as sold and refunded, not in the money. */
+/**
+ * One period's sales. Money is what was kept: refunded sales count as sold and refunded, not in the money.
+ * Orders are the Razorpay orders the site created (checkouts started), paid or not; pass orders count
+ * from 2026-10-04 and book orders from 2026-10-28, when the order route began recording each.
+ */
 export type SalesPeriodRow = {
   /** Start of the period, IST: the day, the week's Monday or the month's 1st. */
   period: string;
+  passOrders: number;
   passesSold: number;
   passesRefunded: number;
   passPaise: number;
+  bookOrders: number;
   booksSold: number;
   booksRefunded: number;
   bookPaise: number;
 };
 
-export type SalesTotals = { passesSold: number; booksSold: number; refunded: number; paise: number };
+export type SalesTotals = {
+  passOrders: number;
+  passesSold: number;
+  bookOrders: number;
+  booksSold: number;
+  refunded: number;
+  paise: number;
+};
 
 export type SummaryCard = {
   label: string;
@@ -75,9 +88,11 @@ export function cardsSince(today: string): string {
 
 const emptyRow = (period: string): SalesPeriodRow => ({
   period,
+  passOrders: 0,
   passesSold: 0,
   passesRefunded: 0,
   passPaise: 0,
+  bookOrders: 0,
   booksSold: 0,
   booksRefunded: 0,
   bookPaise: 0,
@@ -96,12 +111,14 @@ export function fillPeriods(rows: SalesPeriodRow[], grain: SalesGrain, today: st
 export function sumRows(rows: SalesPeriodRow[]): SalesTotals {
   return rows.reduce<SalesTotals>(
     (t, r) => ({
+      passOrders: t.passOrders + r.passOrders,
       passesSold: t.passesSold + r.passesSold,
+      bookOrders: t.bookOrders + r.bookOrders,
       booksSold: t.booksSold + r.booksSold,
       refunded: t.refunded + r.passesRefunded + r.booksRefunded,
       paise: t.paise + r.passPaise + r.bookPaise,
     }),
-    { passesSold: 0, booksSold: 0, refunded: 0, paise: 0 }
+    { passOrders: 0, passesSold: 0, bookOrders: 0, booksSold: 0, refunded: 0, paise: 0 }
   );
 }
 
