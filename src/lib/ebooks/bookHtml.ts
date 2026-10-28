@@ -708,12 +708,16 @@ const SHEET_LINE_MAX = 56;
  * chapter that fit the sheet's width, without their symbol legends.
  */
 export function formulaPreview(chapter: Pick<NotesChapterRegistration, "notes" | "slugs">, head: string): string {
+  return `<div class="sh-head">${esc(head)}</div>${sheetFormulas(chapter).map((f) => formulaHtml({ ...f, symbols: [] })).join("")}`;
+}
+
+/** A chapter's first two formulas that fit the cover's sheet (fewer when it has fewer). */
+export function sheetFormulas(chapter: Pick<NotesChapterRegistration, "notes" | "slugs">) {
   const fits = (latex: string) => splitFormulaLines(latex).every((line) => line.length <= SHEET_LINE_MAX);
-  const fs = chapter.slugs
+  return chapter.slugs
     .flatMap((slug) => chapter.notes[slug].concepts.flatMap((c) => (c.kind === "formula" && c.formula ? [c.formula] : [])))
     .filter((f) => fits(f.latex))
     .slice(0, 2);
-  return `<div class="sh-head">${esc(head)}</div>${fs.map((f) => formulaHtml({ ...f, symbols: [] })).join("")}`;
 }
 
 /** The top sheet of a Notes Book's cover: the first concept's name and idea. */

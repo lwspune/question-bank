@@ -52,6 +52,7 @@ import {
   notesPreview,
   papersPreview,
   pyqPreview,
+  sheetFormulas,
 } from "../../src/lib/ebooks/bookHtml";
 import { EBOOKS, ebookChapters, getEbook, isBoardEbook, type EbookChapter, type ChapterwiseEbook, type EbookDefinition, type PapersEbook, type RepeatsEbook, type TextbookEbook } from "../../src/lib/ebooks/catalog";
 import { pickBookPapers } from "../../src/lib/ebooks/boardPapers";
@@ -833,7 +834,10 @@ async function buildBook(
   }
   for (const b of built) writeFileSync(join(outDir, "parts", `${String(b.chapter.number).padStart(2, "0")}-${b.chapter.slug}.pdf`), b.pdf);
 
-  const sheetHead = `Chapter ${built[0].chapter.number} · ${built[0].chapter.name}`;
+  // A Formula Book's sheet comes from the first chapter with two formulas that fit it.
+  const sheetChapter =
+    ebook.kind === "formula" ? (built.find((b) => sheetFormulas(b.chapter.notes!).length >= 2) ?? built[0]) : built[0];
+  const sheetHead = `Chapter ${sheetChapter.chapter.number} · ${sheetChapter.chapter.name}`;
   const preview = isBoardEbook(ebook)
     ? boardCover
     : ebook.kind === "pyq"
@@ -841,7 +845,7 @@ async function buildBook(
         ? pyqPreview(pyqCtx.firstQuestion.q, pyqCtx.firstQuestion.sitting, pyqCtx.firstQuestion.chapter)
         : ""
       : ebook.kind === "formula"
-        ? formulaPreview(built[0].chapter.notes!, sheetHead)
+        ? formulaPreview(sheetChapter.chapter.notes!, sheetHead)
         : notesPreview(built[0].chapter.notes!, sheetHead);
   // The MHT-CET books' covers carry a line for the buyer's name (2026-10-28);
   // the board books' gain one when their covers are next printed.
