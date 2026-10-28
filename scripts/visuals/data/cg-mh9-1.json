@@ -1,0 +1,138 @@
+{
+  "//": "Assembled from agent drafts (coordGeometry).",
+  "visuals": [
+    {
+      "id": "00fdcaed-0626-4b49-8b97-ba071771a477",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -6,
+              2
+            ],
+            "y": [
+              -3,
+              3
+            ]
+          },
+          "lines": [
+            {
+              "id": "Y",
+              "eq": [
+                1,
+                0,
+                0
+              ],
+              "label": "Y-axis",
+              "beat": "given"
+            },
+            {
+              "id": "L",
+              "eq": [
+                1,
+                0,
+                4
+              ],
+              "label": "x = −4",
+              "beat": "given"
+            }
+          ],
+          "ask": {
+            "kind": "distance",
+            "from": "L",
+            "to": "Y",
+            "label": "distance = 4"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "4acf4e63",
+        "answer": {
+          "value": 4,
+          "label": "4"
+        }
+      }
+    },
+    {
+      "id": "62f22165-fac9-443d-8b3b-4bb7e72d2dac",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -2,
+              5
+            ],
+            "y": [
+              -3,
+              3
+            ]
+          },
+          "lines": [
+            {
+              "id": "Y",
+              "eq": [
+                1,
+                0,
+                0
+              ],
+              "label": "Y-axis",
+              "beat": "given"
+            },
+            {
+              "id": "LM",
+              "eq": [
+                1,
+                0,
+                -3
+              ],
+              "label": "line LM",
+              "beat": "given"
+            }
+          ],
+          "ask": {
+            "kind": "distance",
+            "from": "LM",
+            "to": "Y",
+            "label": "distance = 3"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "f3e88d0b",
+        "answer": {
+          "value": 3,
+          "label": "3"
+        }
+      }
+    }
+  ],
+  "decided": []
+}
