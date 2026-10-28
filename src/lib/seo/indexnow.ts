@@ -121,3 +121,101 @@ export function buildIndexNowPayloads(
   }
   return payloads;
 }
+
+/** A sitemap read as URL -> its `<lastmod>` ("" when the entry has none). */
+export type SitemapSnapshot = Record<string, string>;
+
+const XML_ENTITIES: Record<string, string> = {
+  "&amp;": "&",
+  "&lt;": "<",
+  "&gt;": ">",
+  "&quot;": '"',
+  "&apos;": "'",
+};
+const decodeXml = (s: string) => s.replace(/&(amp|lt|gt|quot|apos);/g, (m) => XML_ENTITIES[m]);
+
+/**
+ * Read a sitemap into URL -> lastmod.
+ *
+ * THROWS on zero URLs: a broken fetch that parsed to nothing would otherwise
+ * read as "nothing changed" and quietly overwrite the saved copy.
+ */
+export function parseSitemap(xml: string): SitemapSnapshot {
+  const out: SitemapSnapshot = {};
+  for (const m of xml.matchAll(/<url>([\s\S]*?)<\/url>/g)) {
+    const loc = m[1].match(/<loc>([^<]+)<\/loc>/);
+    if (!loc) continue;
+    const lastmod = m[1].match(/<lastmod>([^<]+)<\/lastmod>/);
+    out[decodeXml(loc[1].trim())] = lastmod ? lastmod[1].trim() : "";
+  }
+  if (Object.keys(out).length === 0) throw new Error("sitemap parsed to zero URLs");
+  return out;
+}
+
+export type ChangedUrls = {
+  /** What to send, in sitemap order. */
+  urls: string[];
+  firstRun: boolean;
+  added: number;
+  changed: number;
+  /** Date moved, but only to the sitemap's own generation time. */
+  skippedGenerated: number;
+  unchanged: number;
+  removed: number;
+};
+
+/**
+ * The URLs worth sending since the last saved copy: new ones, plus ones whose
+ * content date moved. With no saved copy, every URL.
+ *
+ * The sitemap stamps ~570 hub entries with the moment it was generated, so
+ * their date moves on every read. No content date can be later than that
+ * moment, which makes the NEWEST date in the file the generation time: an
+ * entry carrying it counts only when the URL itself is new.
+ */
+export function selectChangedUrls(
+  prev: SitemapSnapshot | null,
+  curr: SitemapSnapshot
+): ChangedUrls {
+  const entries = Object.entries(curr);
+  const r: ChangedUrls = {
+    urls: [],
+    firstRun: prev === null,
+    added: 0,
+    changed: 0,
+    skippedGenerated: 0,
+    unchanged: 0,
+    removed: 0,
+  };
+  if (prev === null) {
+    r.urls = entries.map(([url]) => url);
+    r.added = r.urls.length;
+    return r;
+  }
+
+  let stamp = "";
+  let stampMs = -Infinity;
+  for (const [, d] of entries) {
+    const ms = Date.parse(d);
+    if (Number.isFinite(ms) && ms > stampMs) {
+      stampMs = ms;
+      stamp = d;
+    }
+  }
+
+  for (const [url, d] of entries) {
+    if (!(url in prev)) {
+      r.added++;
+      r.urls.push(url);
+    } else if (prev[url] === d) {
+      r.unchanged++;
+    } else if (d === stamp) {
+      r.skippedGenerated++;
+    } else {
+      r.changed++;
+      r.urls.push(url);
+    }
+  }
+  for (const url of Object.keys(prev)) if (!(url in curr)) r.removed++;
+  return r;
+}
