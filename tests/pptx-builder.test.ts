@@ -67,7 +67,7 @@ describe("planSlides", () => {
   it("REPEATS a set's shared context on every sibling slide", () => {
     // A slide is shown on its own, so a passage printed once (as the paper
     // does) would leave siblings 2..n unanswerable on screen.
-    const passage = "Consider the following for the next two items.";
+    const passage = "Let p = sin 35, q = sin 25 and r = sin -95.";
     const plan = planSlides(
       [
         q("a", "First of set", { setId: "s1", context: passage }),

@@ -292,8 +292,10 @@ export async function buildQuestionPaper(
   // The banner names the questions explicitly by their 1-indexed position
   // in the export ("Common context for questions X-Y:") so a student reading
   // the paper sees which questions share the context without inferring it
-  // from visual grouping. Set-of-1 falls through to a standalone render with
-  // the passage inline as Context — a 1-question "Set:" framing reads worst.
+  // from visual grouping. A standalone question's context, and a set-of-1's
+  // passage, print the same way above it: "Context for question N:". Until
+  // 2026-10-28 they printed between stem and options, so "Which of the
+  // statements given above…" sat above its statements.
   // Subtopic section headings (opt-in). Computed per set-group so a passage
   // set stays under one heading; the label comes from the group's first
   // question (set siblings are co-located on one subtopic by invariant).
@@ -312,33 +314,12 @@ export async function buildQuestionPaper(
     if (headings[gi]) {
       children.push(subtopicHeading(headings[gi]!));
     }
-    if (group.kind === "single") {
+    if (group.kind === "single" || group.questions.length === 1) {
+      const q = group.kind === "single" ? group.question : group.questions[0];
       children.push(
-        ...orFor(group.question),
-        ...questionParagraphs(
-          group.question,
-          builder,
-          input.imageBytes,
-          /* skipContextParagraph */ false,
-          includeSourceTag,
-          printed(group.question)
-        )
-      );
-      children.push(blank());
-      position += 1;
-      continue;
-    }
-    if (group.questions.length === 1) {
-      children.push(
-        ...orFor(group.questions[0]),
-        ...questionParagraphs(
-          group.questions[0],
-          builder,
-          input.imageBytes,
-          /* skipContextParagraph */ false,
-          includeSourceTag,
-          printed(group.questions[0])
-        )
+        ...orFor(q),
+        ...(q.context ? passageBanner(q.context, `Context for question ${printed(q)?.number ?? position}`, builder) : []),
+        ...questionParagraphs(q, builder, input.imageBytes, includeSourceTag, printed(q))
       );
       children.push(blank());
       position += 1;
@@ -346,18 +327,11 @@ export async function buildQuestionPaper(
     }
     const firstQ = printed(group.questions[0])?.number ?? position;
     const lastQ = printed(group.questions[group.questions.length - 1])?.number ?? position + group.questions.length - 1;
-    children.push(...passageBanner(group.passage, firstQ, lastQ, builder));
+    children.push(...passageBanner(group.passage, `Common context for questions ${firstQ}-${lastQ}`, builder));
     for (const q of group.questions) {
       children.push(
         ...orFor(q),
-        ...questionParagraphs(
-          q,
-          builder,
-          input.imageBytes,
-          /* skipContextParagraph */ true,
-          includeSourceTag,
-          printed(q)
-        )
+        ...questionParagraphs(q, builder, input.imageBytes, includeSourceTag, printed(q))
       );
       children.push(blank());
     }
@@ -535,7 +509,6 @@ function questionParagraphs(
   q: QuestionRow,
   builder: Builder,
   imageBytes: Map<string, Buffer> | undefined,
-  skipContextParagraph: boolean,
   includeSourceTag: boolean,
   printed?: PrintedLabel
 ): (Paragraph | Table)[] {
@@ -614,36 +587,6 @@ function questionParagraphs(
       FALLBACK_QUESTION_DIMS
     );
     out.push(imageParagraph(data, dims.width, dims.height, 0));
-  }
-
-  if (q.context && !skipContextParagraph) {
-    const ctxBlocks = parseTableBlocks(q.context);
-    if (ctxBlocks.some((b) => b.kind === "table")) {
-      // Table-bearing context: label line, then prose paragraphs + table(s).
-      out.push(
-        new Paragraph({
-          indent: { left: 0 },
-          children: [new TextRun({ text: "Context:", italics: true })],
-        })
-      );
-      for (const b of ctxBlocks) {
-        if (b.kind === "text") {
-          out.push(new Paragraph({ indent: { left: 0 }, children: mathRuns(b.text, builder) }));
-        } else {
-          out.push(docxTable(b, builder));
-        }
-      }
-    } else {
-      out.push(
-        new Paragraph({
-          indent: { left: 0 },
-          children: [
-            new TextRun({ text: "Context: ", italics: true }),
-            ...mathRuns(q.context, builder),
-          ],
-        })
-      );
-    }
   }
 
   for (const opt of q.options) {
@@ -867,26 +810,18 @@ function blank(): Paragraph {
 }
 
 /**
- * Print the passage shared by a question-set once, naming the questions
- * by their 1-indexed position in the export so the student reading the
- * paper sees exactly which questions inherit this context. The passage's
+ * Print a context above the question(s) it serves, naming them by their
+ * 1-indexed position in the export so the student reading the paper sees
+ * exactly which questions inherit it: a set's shared passage once, or a lone
+ * question's own context ("Context for question N"). The passage's
  * own count phrase ("for the three (03) items that follow") is stripped
  * at render so it can't contradict the banner when the user has selected
  * a subset of the original siblings.
  */
-function passageBanner(
-  passage: string,
-  firstQ: number | string,
-  lastQ: number | string,
-  builder: Builder
-): (Paragraph | Table)[] {
+function passageBanner(passage: string, labelText: string, builder: Builder): (Paragraph | Table)[] {
   if (!passage) return [];
   const text = stripPassageCountPhrase(passage);
-  const label = new TextRun({
-    text: `Common context for questions ${firstQ}-${lastQ}: `,
-    italics: true,
-    bold: true,
-  });
+  const label = new TextRun({ text: `${labelText}: `, italics: true, bold: true });
 
   // A SHARED context can carry a pipe-table just as a solo one can — the
   // co-ordinate table that several "are these segments congruent?" siblings all

@@ -190,7 +190,6 @@ h1 { font-size: 17pt; line-height: 1.25; margin: 2pt 0 3pt; color: #0F1D4A; font
 .passage { background: #F3F6FC; border-left: 2.5pt solid #1D4ED8; padding: 7pt 10pt; margin: 2pt 0 10pt;
   break-inside: avoid; break-after: avoid; }
 .label { font-weight: 700; font-style: italic; color: #0F1D4A; }
-.ctx { margin-top: 4pt; }
 .fig { display: block; max-width: 110mm; max-height: 85mm; margin: 6pt 0; }
 .ofig { display: block; max-width: 45mm; max-height: 40mm; margin-top: 3pt; }
 .opts { display: grid; column-gap: 10pt; row-gap: 3pt; margin-top: 5pt; }
@@ -272,25 +271,30 @@ function numberOf(q: QuestionRow, n: number, printedOf: PaperHtmlInput["printedO
   return printedOf?.get(q.id)?.number ?? String(n);
 }
 
-function questionHtml(q: QuestionRow, n: number, input: PaperHtmlInput, showContext: boolean): string {
+function questionHtml(q: QuestionRow, n: number, input: PaperHtmlInput): string {
   const tag = input.includeSourceTag ? formatSourceTag(q) : null;
   const printed = input.printedOf?.get(q.id);
   const tail =
     (tag ? ` <span class="src">${esc(tag)}</span>` : "") +
     (printed && printed.marks !== null ? ` <span class="mk">${esc(marksTag(printed.marks))}</span>` : "");
-  const ctx =
-    showContext && q.context
-      ? `<div class="ctx"><span class="label">Context: </span>${blocksHtml(q.context)}</div>`
-      : "";
   return (
     (printed?.orBefore ? `<div class="or">OR</div>` : "") +
     `<section class="q${printed ? " pq" : ""}"><div class="qn">${esc(numberOf(q, n, input.printedOf))}.</div><div class="qb">` +
     blocksHtml(q.text, tail) +
     figure(q.imageUrl, input.images) +
-    ctx +
     optionsHtml(q.options, input.images) +
     `</div></section>`
   );
+}
+
+/**
+ * A context printed above the question(s) it serves. A lone question's context
+ * used to print between its stem and options, so "Which of the statements given
+ * above…" sat above the statements. The count is stripped from every context:
+ * a set's own passage says "the next two items" even when one was exported.
+ */
+function contextBanner(context: string, label: string): string {
+  return `<div class="passage"><span class="label">${esc(label)}: </span>${blocksHtml(stripPassageCountPhrase(context))}</div>`;
 }
 
 export function buildPaperHtml(input: PaperHtmlInput): string {
@@ -310,18 +314,14 @@ export function paperBodyHtml(input: PaperHtmlInput): string {
     if (headings[gi]) parts.push(`<div class="subtopic">${esc(headings[gi]!)}</div>`);
     if (group.kind === "single" || group.questions.length === 1) {
       const q = group.kind === "single" ? group.question : group.questions[0];
-      parts.push(questionHtml(q, n++, input, true));
+      if (q.context) parts.push(contextBanner(q.context, `Context for question ${numberOf(q, n, input.printedOf)}`));
+      parts.push(questionHtml(q, n++, input));
       return;
     }
     const first = numberOf(group.questions[0], n, input.printedOf);
     const last = numberOf(group.questions[group.questions.length - 1], n + group.questions.length - 1, input.printedOf);
-    if (group.passage) {
-      parts.push(
-        `<div class="passage"><span class="label">Common context for questions ${esc(first)}-${esc(last)}: </span>` +
-          `${blocksHtml(stripPassageCountPhrase(group.passage))}</div>`
-      );
-    }
-    for (const q of group.questions) parts.push(questionHtml(q, n++, input, false));
+    if (group.passage) parts.push(contextBanner(group.passage, `Common context for questions ${first}-${last}`));
+    for (const q of group.questions) parts.push(questionHtml(q, n++, input));
   });
   return parts.join("");
 }

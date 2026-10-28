@@ -63,18 +63,37 @@ async function readPart(buf: Buffer, path: string): Promise<string> {
 }
 
 describe("docx Set banner rendering", () => {
-  it("set-of-1 (only one sibling selected): no Set: banner, passage renders as inline Context", async () => {
+  it("set-of-1 (only one sibling selected): passage prints above the question, named for it, count stripped", async () => {
     const buf = await buildQuestionPaper({
       title: "T",
       questions: [SET_SIBLING_1, STANDALONE],
     });
     const xml = await readPart(buf, "word/document.xml");
 
-    // No "Set:" banner anywhere.
     expect(xml).not.toContain("Set: ");
-    // Passage is still present (rendered as Context: for the lone sibling).
-    expect(xml).toContain("Context: ");
-    expect(xml).toContain("Consider the following for the three (03) items");
+    expect(xml).not.toContain("Context: ");
+    expect(xml).toContain("Context for question 1:");
+    expect(xml).not.toContain("three (03)");
+    expect(xml).toContain("Consider the following for the items that follow");
+    expect(xml.indexOf("Context for question 1:")).toBeLessThan(xml.indexOf("What is (pq + qr + rp) equal to?"));
+  });
+
+  // A stem like "Which of the statements given above…" printed ABOVE its
+  // statements until 2026-10-28, because a question's own context came after it.
+  it("a question with its own context prints the context before the stem", async () => {
+    const solo: QuestionRow = {
+      ...STANDALONE,
+      id: "x2",
+      text: "Which of the statements given above is/are correct?",
+      context: "Consider the following statements: 1. A 2. B",
+    };
+    const buf = await buildQuestionPaper({ title: "T", questions: [STANDALONE, solo] });
+    const xml = await readPart(buf, "word/document.xml");
+
+    expect(xml).toContain("Context for question 2:");
+    expect(xml.indexOf("Consider the following statements")).toBeLessThan(
+      xml.indexOf("Which of the statements given above")
+    );
   });
 
   it("set-of-2+ at the top of the export: banner names questions 1-2 and strips count phrase from passage", async () => {

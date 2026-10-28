@@ -70,6 +70,52 @@ describe("stripPassageCountPhrase", () => {
     );
   });
 
+  // The wordings below reached exported papers unstripped (75 of the bank's 231
+  // counted set passages on 2026-10-28), so a two-question subset still read
+  // "for the next 02 (two) items" over one question.
+  it("strips a numeral count with the word in brackets ('next 02 (two) items')", () => {
+    expect(
+      stripPassageCountPhrase("Consider the following for the next 02 (two) items that follow:")
+    ).toBe("Consider the following for the items that follow:");
+  });
+
+  it("strips the count when 'that follow' is absent after 'next'", () => {
+    expect(stripPassageCountPhrase("Consider the following for the next 02 (two) items:")).toBe(
+      "Consider the following for the items:"
+    );
+    expect(stripPassageCountPhrase("Consider the following for the next three (03) items :")).toBe(
+      "Consider the following for the items :"
+    );
+  });
+
+  it("strips 'the following two (02) items', keeping 'following'", () => {
+    expect(stripPassageCountPhrase("For the following two (02) items: Let p = 1.")).toBe(
+      "For the following items: Let p = 1."
+    );
+    expect(stripPassageCountPhrase("The following six (6) items consist of two statements.")).toBe(
+      "The following items consist of two statements."
+    );
+  });
+
+  it("strips 'answer the two items that follow', with the bracket before or after 'items'", () => {
+    expect(stripPassageCountPhrase("Read the data and answer the two (02) items that follow.")).toBe(
+      "Read the data and answer the items that follow."
+    );
+    expect(stripPassageCountPhrase("Read the data and answer the two items (02) that follow.")).toBe(
+      "Read the data and answer the items that follow."
+    );
+  });
+
+  it("leaves a count of items in the content itself alone", () => {
+    for (const input of [
+      "A shopkeeper sold the two items at a profit of 10%.",
+      "If the 3 items cost Rs 50 in all, what is the price of one?",
+      "Of the five items in the box, two are defective.",
+    ]) {
+      expect(stripPassageCountPhrase(input)).toBe(input);
+    }
+  });
+
   it("handles case-insensitive count phrases without mangling case elsewhere", () => {
     // The strip only touches the matched span; surrounding text keeps its case.
     expect(
