@@ -265,6 +265,14 @@ describe("functionGraph extrema", () => {
     expect(run({ f: "x^3-3*x", window: { x: [-0.5, 3.2], y: [-4, 20] }, ask: { kind: "extrema", scope: "absolute", on: [0, 3], expect: [{ type: "max", y: 18 }] } }).value).toBe(0);
     expect(run({ f: "x^3-3*x", window: { x: [-0.5, 3.2], y: [-4, 20] }, ask: { kind: "extrema", scope: "absolute", on: [0, 3], expect: [{ type: "max", y: 2 }] } }).value).toBe(1);
   });
+  it("finds extrema of functions in the millions, where the slope's rounding is far above 1e-6", () => {
+    expect(run({ f: "x^2*(35-x)^5", window: { x: [1, 34], y: [0, 1.1e9] }, ask: { kind: "extrema", scope: "local", expect: [{ type: "max", x: 10, y: 976562500 }] } }).value).toBe(0);
+    expect(run({ f: "(5000-10*x)*(300+x)", window: { x: [0, 500], y: [0, 1.7e6] }, ask: { kind: "extrema", scope: "local", expect: [{ type: "max", x: 100, y: 1600000 }] } }).value).toBe(0);
+  });
+  it("does not count a pole as an extremum: x + 1/x has a max at -1 and a min at 1 only", () => {
+    const r = run({ f: "x+1/x", window: { x: [-3, 3], y: [-6, 6] }, ask: { kind: "extrema", scope: "local", expect: [{ type: "max", x: -1, y: -2 }, { type: "min", x: 1, y: 2 }] } });
+    expect(r.value).toBe(0);
+  });
   it("takes a word problem's function: x(10 - x) on [0, 10] is greatest, 25, at x = 5", () => {
     expect(run({ f: "x*(10-x)", window: { x: [0, 10], y: [0, 30] }, ask: { kind: "extrema", scope: "absolute", on: [0, 10], expect: [{ type: "max", x: 5, y: 25 }] } }).value).toBe(0);
   });

@@ -186,25 +186,65 @@ export function functionGraphFacts(p: FunctionGraphParams): FunctionGraphFacts {
  * points where f' = 0.
  */
 function extremaOf(f: Fn, [lo, hi]: [number, number], scope: "local" | "absolute"): { type: "max" | "min"; x: number; y: number }[] {
-  const eps = (hi - lo) * 1e-4;
-  const crit = rootsOf((x) => slopeAt(f, x), lo + eps, hi - eps);
+  const crit = slopeSignChanges(f, lo, hi);
   if (scope === "local") {
-    const d = (hi - lo) * 1e-3;
     const out: { type: "max" | "min"; x: number; y: number }[] = [];
-    for (const r of crit) {
-      const [sl, sr] = [slopeAt(f, r - d), slopeAt(f, r + d)];
-      const y = f(r);
-      if (!Number.isFinite(y)) continue;
-      if (sl > 0 && sr < 0) out.push({ type: "max", x: r, y });
-      else if (sl < 0 && sr > 0) out.push({ type: "min", x: r, y });
+    for (const { x, type } of crit) {
+      const y = f(x);
+      if (Number.isFinite(y)) out.push({ type, x, y });
     }
     return out;
   }
-  const cands = [lo, hi, ...crit].map((x) => ({ x, y: f(x) })).filter((c) => Number.isFinite(c.y));
+  const cands = [lo, hi, ...crit.map((c) => c.x)].map((x) => ({ x, y: f(x) })).filter((c) => Number.isFinite(c.y));
   if (!cands.length) return [];
   const top = cands.reduce((m, c) => (c.y > m.y ? c : m));
   const bottom = cands.reduce((m, c) => (c.y < m.y ? c : m));
   return [{ type: "max", ...top }, { type: "min", ...bottom }];
+}
+
+/**
+ * Where f' changes sign inside (lo, hi): + to - a maximum, - to + a minimum.
+ * Its own search rather than rootsOf, whose 1e-6 test on the root's value is
+ * absolute: for a function in the millions the numerical slope's rounding is
+ * far above that, and every extremum was lost. A pole (f' blows up and changes
+ * sign, 1/x at 0) is told apart by f itself blowing up there.
+ */
+function slopeSignChanges(f: Fn, lo: number, hi: number): { x: number; type: "max" | "min" }[] {
+  const n = 3000;
+  const eps = (hi - lo) * 1e-4;
+  const xs = Array.from({ length: n + 1 }, (_, i) => lo + eps + ((hi - lo - 2 * eps) * i) / n);
+  const ss = xs.map((x) => slopeAt(f, x));
+  const ys = xs.map((x) => f(x));
+  const finiteY = ys.filter(Number.isFinite).map(Math.abs);
+  const scale = finiteY.length ? Math.max(1, ...finiteY) : 1;
+  const out: { x: number; type: "max" | "min" }[] = [];
+  for (let i = 1; i <= n; i++) {
+    const [a, b] = [ss[i - 1], ss[i]];
+    if (!Number.isFinite(a) || !Number.isFinite(b) || a === 0 || Math.sign(a) === Math.sign(b)) continue;
+    let [l, h] = [xs[i - 1], xs[i]];
+    for (let k = 0; k < 80; k++) {
+      const m = (l + h) / 2;
+      const sm = slopeAt(f, m);
+      if (!Number.isFinite(sm)) break;
+      if (Math.sign(sm) === Math.sign(a)) l = m;
+      else h = m;
+    }
+    const r = (l + h) / 2;
+    const y = f(r);
+    // A pole: f is not finite there, or runs far past everything else the window shows.
+    if (!Number.isFinite(y) || Math.abs(y) > 1e3 * scale) continue;
+    if (out.length && Math.abs(out[out.length - 1].x - r) < 1e-9 * Math.max(1, Math.abs(r))) continue;
+    out.push({ x: r, type: a > 0 ? "max" : "min" });
+  }
+  // A zero sample sitting exactly on the root: the change is between its neighbours.
+  for (let i = 1; i < n; i++) {
+    if (ss[i] !== 0) continue;
+    const [a, b] = [ss[i - 1], ss[i + 1]];
+    if (Number.isFinite(a) && Number.isFinite(b) && Math.sign(a) !== Math.sign(b) && a !== 0 && b !== 0 && !out.some((o) => Math.abs(o.x - xs[i]) < 2 * (xs[1] - xs[0]))) {
+      out.push({ x: xs[i], type: a > 0 ? "max" : "min" });
+    }
+  }
+  return out.sort((m, q) => m.x - q.x);
 }
 
 /** How many stated extrema the drawing does not bear out (0 = all of them, and no others for local scope). */
