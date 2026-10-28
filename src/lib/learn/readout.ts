@@ -11,6 +11,10 @@ export type LearnReadout = {
   masteredOne: number;
   conceptsMastered: number;
   returnedSecondDay: number;
+  /** The steps before an answer (0202): students who opened any Learn page, a lesson, and began one. */
+  visited: number;
+  openedLesson: number;
+  beganLesson: number;
 };
 
 export async function loadLearnReadout(admin: SupabaseClient, since: string): Promise<LearnReadout | null> {
@@ -19,12 +23,24 @@ export async function loadLearnReadout(admin: SupabaseClient, since: string): Pr
     console.error("learn readout failed", error.message);
     return null;
   }
-  const r = data as { students: number; answers: number; mastered_one: number; concepts_mastered: number; returned_second_day: number };
+  const r = data as {
+    students: number;
+    answers: number;
+    mastered_one: number;
+    concepts_mastered: number;
+    returned_second_day: number;
+    visited: number;
+    opened_lesson: number;
+    began_lesson: number;
+  };
   return {
     students: r.students,
     answers: r.answers,
     masteredOne: r.mastered_one,
     conceptsMastered: r.concepts_mastered,
     returnedSecondDay: r.returned_second_day,
+    visited: r.visited,
+    openedLesson: r.opened_lesson,
+    beganLesson: r.began_lesson,
   };
 }

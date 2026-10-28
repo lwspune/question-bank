@@ -10,7 +10,7 @@
  */
 import { istDayKey } from "@/lib/email/dueNudge";
 import type { ActivityEvent } from "./events";
-import { isReadingSurface, isSurface, readingViewFor, viewDedupeKey } from "./views";
+import { isReadingSurface, isSurface, learnLessonPath, readingViewFor, viewDedupeKey } from "./views";
 
 /**
  * Which kind of browser recorded a view. Only the handout sends it: in-app
@@ -139,6 +139,11 @@ export function parseClientEvent(raw: unknown, userId: string, now: Date): Parse
       const view = typeof raw.path === "string" ? readingViewFor(raw.path) : null;
       if (!view || view.surface !== raw.surface) return { ok: false, error: "Invalid page address." };
       path = view.path;
+    } else if (raw.surface === "learn_start") {
+      // A lesson begun names its lesson (2026-10-28); no other page will do.
+      const lesson = typeof raw.path === "string" ? learnLessonPath(raw.path) : null;
+      if (!lesson) return { ok: false, error: "Invalid lesson address." };
+      path = lesson;
     } else if (raw.path !== undefined) {
       return { ok: false, error: "No page address on this surface." };
     }

@@ -7,7 +7,7 @@
  * also the day's heartbeat and a refresh cannot inflate anything.
  */
 import { describe, it, expect } from "vitest";
-import { SURFACES, viewDedupeKey, surfaceViewedEvent, isSurface, readingViewFor, ebookSampleEvent } from "@/lib/activity/views";
+import { SURFACES, viewDedupeKey, surfaceViewedEvent, isSurface, readingViewFor, ebookSampleEvent, learnLessonPath } from "@/lib/activity/views";
 
 describe("surface_viewed", () => {
   it("names the surfaces the engagement spec needs to see", () => {
@@ -63,6 +63,16 @@ describe("readingViewFor", () => {
     expect(readingViewFor("/store/mht-cet-maths-pyq")).toEqual({ surface: "store", path: "/store/mht-cet-maths-pyq" });
   });
 
+  it("counts the Learn tab's pages, each lesson by its own address (2026-10-28)", () => {
+    expect(readingViewFor("/learn")).toEqual({ surface: "learn", path: "/learn" });
+    expect(readingViewFor("/learn/mh-hsc-12-maths/matrices")?.surface).toBe("learn");
+    expect(readingViewFor("/learn/lesson/matrices/what-is-a-matrix?course=cbse-12-maths")).toEqual({
+      surface: "learn",
+      path: "/learn/lesson/matrices/what-is-a-matrix",
+    });
+    expect(readingViewFor("/learnx")).toBeNull();
+  });
+
   it("counts a section's index page too", () => {
     expect(readingViewFor("/notes")?.surface).toBe("notes");
     expect(readingViewFor("/guide/nda")?.surface).toBe("guide");
@@ -99,5 +109,20 @@ describe("ebookSampleEvent", () => {
     expect(ebookSampleEvent("u1", "mht-cet-physics-notes", now).dedupeKey).not.toBe(
       ebookSampleEvent("u1", "mht-cet-maths-pyq", now).dedupeKey
     );
+  });
+});
+
+// The Learn experiment could not tell "nobody came" from "came and left before the first
+// question" (2026-10-28): a lesson begun is recorded by its address, lessons only.
+describe("learnLessonPath", () => {
+  it("returns a lesson's cleaned address", () => {
+    expect(learnLessonPath("/learn/lesson/matrices/what-is-a-matrix")).toBe("/learn/lesson/matrices/what-is-a-matrix");
+    expect(learnLessonPath("/learn/lesson/matrices/what-is-a-matrix/?course=x#top")).toBe("/learn/lesson/matrices/what-is-a-matrix");
+  });
+
+  it("refuses every other Learn page and anything outside Learn", () => {
+    for (const p of ["/learn", "/learn/review", "/learn/mh-hsc-12-maths/matrices", "/learn/lesson/matrices", "/learn/lesson/a/b/c", "/notes/a/b", "/learn/lesson/Bad Slug/x", ""]) {
+      expect(learnLessonPath(p)).toBeNull();
+    }
   });
 });

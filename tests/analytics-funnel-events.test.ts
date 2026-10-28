@@ -43,6 +43,7 @@ describe("FUNNEL_EVENTS", () => {
       "ebook_store_link_click",
       "tutor_link_click",
       "v_progress_tap",
+      "learn_lesson_start",
     ]);
   });
 

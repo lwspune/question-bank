@@ -530,7 +530,7 @@ export const EXPERIMENTS: readonly Experiment[] = [
       "Every visitor gets a Learn tab (in place of Guides on the phone bar, Guides moving to the account menu; beside it on desktop; owner, 2026-10-28). Class 12 State Board and CBSE students land on their course; every other exam lands on /learn, which says its lessons are coming. The course: Concept Ladder's step-by-step Maths lessons, one concept at a time, with questions until three are right, spaced reviews, and the chapters their PYQ Vault mistakes point to. 28 chapters, 172 concepts. Concept Ladder keeps running.",
     why: "Neither Class 12 exam had notes or a guide, and they are our 4th and 5th most picked exams. Concept Ladder had the lessons but no students; PYQ Vault has the students and knows their mistakes.",
     metric:
-      "Students (not staff) who answered a Learn question, mastered at least one concept, and answered on two or more different days, since launch (learn_experiment_readout, migration 0195). Guest lesson views in Vercel, read by hand",
+      "Students (not staff) who answered a Learn question, mastered at least one concept, and answered on two or more different days, since launch (learn_experiment_readout, migration 0195). The steps before an answer from 2026-10-28 (0202): students who opened a Learn page, opened a lesson, began one. Guest lesson views and lessons begun (learn_lesson_start) in Vercel, read by hand",
     rule: `Keep building learning inside PYQ Vault if ${LEARN_MASTERED_KEEP}+ students master a concept and ${LEARN_RETURNED_KEEP}+ come back to Learn on a second day by the check date; otherwise keep building on Concept Ladder and leave the Learn tab as it is.`,
     liveSince: "2026-10-28",
     readout: "learn",

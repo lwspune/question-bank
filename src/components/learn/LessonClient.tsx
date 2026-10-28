@@ -4,6 +4,8 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { ArrowLeft, ArrowRight, Lock } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { sendActivityOnce } from "@/lib/activity/clientBeacon";
+import { trackFunnelOnce } from "@/lib/analytics/trackFunnel";
 import { isReviewDue } from "@/lib/learn/engine/review";
 import { type Home, type LearnerState, lessonView, type neighbours, type Pool } from "@/lib/learn/lessonState";
 import { chapterHref, lessonHref } from "@/lib/learn/links";
@@ -97,6 +99,17 @@ export function LessonClient({
     };
   }, [chapter, slug]);
 
+  // A lesson begun (2026-10-28): every visitor's first move counts in Vercel; a signed-in student's
+  // is also a row (surface_viewed 'learn_start'), so the experiment can tell "came and left before
+  // a question" from "never came". Waits for the viewer, as a tap can beat the progress read.
+  const [begun, setBegun] = useState(false);
+  useEffect(() => {
+    if (!begun || viewer.kind === "loading") return;
+    const path = lessonHref(chapter, slug);
+    trackFunnelOnce("learn_lesson_start", path, { signedIn: viewer.kind === "student", chapter });
+    if (viewer.kind === "student") sendActivityOnce(`learn_start:${path}`, { kind: "surface_viewed", surface: "learn_start", path });
+  }, [begun, viewer.kind, chapter, slug]);
+
   const student = viewer.kind === "student" ? viewer : null;
   const learner = useMemo(
     () => new Map((student?.progress ?? []).filter((r) => r.chapter === chapter).map((r) => [r.code, r.state] as const)),
@@ -171,6 +184,7 @@ export function LessonClient({
       <LessonStage
         slides={slides}
         label={`${title} lesson`}
+        onBegin={() => setBegun(true)}
         // A refresher always starts at the beginning: rereading is the point.
         startIndex={answeredBefore && !view.refresher ? questionsIndex : 0}
         banner={
