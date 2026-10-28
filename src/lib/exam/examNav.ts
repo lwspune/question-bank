@@ -25,6 +25,7 @@ import {
   type ExamSlug,
 } from "@/lib/exam/examContext";
 import { mockCatalogueHref, notesHubHref } from "@/lib/exam/examLinks";
+import { LEARN_HUB } from "@/lib/learn/links";
 
 export const EXAM_COOKIE_NAME = "qb_exam";
 
@@ -37,8 +38,8 @@ export type ExamNav = {
   notesHref: string;
   mockHref: string;
   boardHref: string;
-  /** The exam's Learn course, or null when it has none (no Learn tab). */
-  learnHref: string | null;
+  /** The exam's Learn course, else the Learn hub, which says lessons are coming (2026-10-28). */
+  learnHref: string;
 };
 
 /**
@@ -70,7 +71,7 @@ export function resolveExamNav(
     notesHref: notesHubHref(slug, new Set(notesSlugs)),
     mockHref: mockCatalogueHref(slug),
     boardHref: resolveBoardHref(slug),
-    learnHref: (slug && getExamBySlug(slug)?.learnPath) || null,
+    learnHref: (slug && getExamBySlug(slug)?.learnPath) || LEARN_HUB,
   };
 }
 

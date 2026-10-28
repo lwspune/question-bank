@@ -85,11 +85,13 @@ describe("resolveExamNav", () => {
     expect(resolveExamNav("cds", IDS).guidesHref).toBe("/guide/cds");
   });
 
-  it("gives a Learn tab only to an exam with Learn lessons", () => {
+  it("sends Learn to the exam's course, or to the Learn hub when it has none", () => {
+    // Learn is a tab for every visitor (2026-10-28); an exam without lessons
+    // lands on /learn, which says they are coming and lists what is ready.
     expect(resolveExamNav("mh-hsc-12", IDS).learnHref).toBe("/learn/mh-hsc-12-maths");
     expect(resolveExamNav("cbse-12", IDS).learnHref).toBe("/learn/cbse-12-maths");
-    expect(resolveExamNav("nda", IDS).learnHref).toBeNull();
-    expect(resolveExamNav(null, IDS).learnHref).toBeNull();
+    expect(resolveExamNav("nda", IDS).learnHref).toBe("/learn");
+    expect(resolveExamNav(null, IDS).learnHref).toBe("/learn");
   });
 
   it("sends Mocks to the exam's catalogue only when it has mocks", () => {
@@ -108,6 +110,7 @@ describe("resolveExamNav", () => {
       expect(nav.notesHref).toBe("/notes");
       expect(nav.mockHref).toBe("/mock");
       expect(nav.boardHref).toBe("/board");
+      expect(nav.learnHref).toBe("/learn");
     });
   });
 

@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import * as Popover from "@radix-ui/react-popover";
-import { BookMarked, Bookmark, Building2, CreditCard, FileCheck2, FileText, LayoutDashboard, Lightbulb, LogOut, MessageSquarePlus, PenLine, ShieldCheck, TrendingUp, User, Target } from "lucide-react";
+import { BookMarked, BookOpen, Bookmark, Building2, CreditCard, FileCheck2, FileText, LayoutDashboard, Lightbulb, LogOut, MessageSquarePlus, PenLine, ShieldCheck, TrendingUp, User, Target } from "lucide-react";
 import { toast } from "sonner";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 import { totalsLine, type Pulse } from "@/lib/pulse/cache";
@@ -18,6 +18,7 @@ export default function UserMenu({
   isStaff = false,
   isSuperadmin = false,
   pulse = null,
+  guidesHref = "/guide",
 }: {
   email: string;
   // null = signed-in student (no org membership).
@@ -29,6 +30,8 @@ export default function UserMenu({
    *  and then the badge and the two lines below render; nothing is shown for
    *  a zero due count, because an empty badge is noise. */
   pulse?: Pulse | null;
+  /** The active exam's Guides link (lib/exam/examNav), for the phone-only Guides entry. */
+  guidesHref?: string;
 }) {
   const router = useRouter();
   const due = pulse?.due ?? 0;
@@ -123,7 +126,7 @@ export default function UserMenu({
             </Link>
           )}
           {/*
-            Papers, Books and Blog are PHONE-ONLY entries (`sm:hidden`): from sm
+            Guides, Papers, Books and Blog are PHONE-ONLY entries (`sm:hidden`): from sm
             up they are tabs in PrimaryNav, and duplicating them here would give
             two answers to "where do I go?". Below sm they are deliberately not
             in the tab bar — that bar is a fixed five for every visitor, and
@@ -137,8 +140,16 @@ export default function UserMenu({
             instead. So an anonymous phone reader reaches /blog only via the
             Footer link, which is on every page. Accepted deliberately rather
             than by oversight: the alternative is a sixth tab, and the five-tab
-            cap is a measured constraint.
+            cap is a measured constraint. Guides joined Blog here on 2026-10-28,
+            when Learn took its tab for every visitor: same gap, same Footer link.
           */}
+          <Link
+            href={guidesHref}
+            className="flex w-full items-center gap-2 rounded-sm px-3 py-2 text-left text-sm transition-colors hover:bg-accent focus-visible:bg-accent focus-visible:outline-none sm:hidden"
+          >
+            <BookOpen className="h-4 w-4" aria-hidden />
+            Guides
+          </Link>
           {isStaff && (
             <Link
               href="/dashboard/papers"

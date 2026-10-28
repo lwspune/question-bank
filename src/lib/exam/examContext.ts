@@ -95,8 +95,9 @@ export type ExamEntry = {
   practiceOnly?: boolean;
   /**
    * The exam's Learn course (`/learn/<course>`): Concept Ladder's step-by-step lessons, copied
-   * in (migration 0192, an experiment from 2026-10-27). Its students get a Learn tab: on a phone
-   * in place of Guides (none of these exams has a guide), on desktop beside it. Absent: no tab.
+   * in (migration 0192, an experiment from 2026-10-27). The Learn tab goes there. Absent: the tab
+   * (every visitor has one since 2026-10-28) goes to the /learn hub, which says lessons for the
+   * exam are coming (lib/learn/comingSoon).
    */
   learnPath?: string;
   /**

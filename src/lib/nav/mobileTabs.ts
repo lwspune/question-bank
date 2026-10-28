@@ -35,7 +35,7 @@ import { FIX_TAB_HREF, type FifthTab } from "@/lib/nav/fifthTab";
 /** The subset of primary-nav tabs that appears on a phone. */
 export type MobileTabId = Extract<
   ActiveTab,
-  "bank" | "guides" | "notes" | "mock" | "board" | "fix" | "learn"
+  "bank" | "learn" | "notes" | "mock" | "board" | "fix"
 >;
 
 export type MobileTab = {
@@ -47,7 +47,7 @@ export type MobileTab = {
 /** Render order, left to right, with the fifth slot at its default (Board). */
 export const MOBILE_TAB_IDS: readonly MobileTabId[] = [
   "bank",
-  "guides",
+  "learn",
   "notes",
   "mock",
   "board",
@@ -65,11 +65,11 @@ export const MAX_MOBILE_TABS = 5;
 export function resolveMobileTabs(nav: ExamNav, fifth: FifthTab = "board"): MobileTab[] {
   return [
     { id: "bank", label: "PYQs", href: nav.bankHref },
-    // THE SECOND SWAP (2026-10-27): Learn takes Guides' slot for an exam with Learn lessons
-    // (its students have no guide), so the bar stays five.
-    nav.learnHref
-      ? { id: "learn", label: "Learn", href: nav.learnHref }
-      : { id: "guides", label: "Guides", href: nav.guidesHref },
+    // Learn for every visitor (owner, 2026-10-28): the exam's course, or the Learn hub, which
+    // says that exam's lessons are coming. Guides moved to the account menu (UserMenu);
+    // anonymous phone readers reach it from the Footer, like Blog. Guides was the least-used
+    // reading tab (Class 9-12, 19-28 Oct: ~1.9 days per student against ~5 for Notes and Board).
+    { id: "learn", label: "Learn", href: nav.learnHref },
     { id: "notes", label: "Notes", href: nav.notesHref },
     { id: "mock", label: "Mocks", href: nav.mockHref },
     fifth === "fix"
