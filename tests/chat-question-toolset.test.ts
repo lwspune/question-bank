@@ -82,6 +82,24 @@ describe("explain_question", () => {
     expect(seen.explained).toEqual([]);
   });
 
+  it("at the limit, tells the chat window to show the pass offer and keeps the link out of V's words (2026-10-28)", async () => {
+    const limits: number[] = [];
+    const { tools, seen } = deps({ spendReveal: async () => ({ kind: "limit", limit: 20 }), onLimit: (n) => limits.push(n) });
+    const out = await tools.explain_question.run({ question_id: ID });
+    expect(limits).toEqual([20]);
+    expect(out).toMatch(/used today's 20 free answers/);
+    expect(out).toMatch(/shown to them under your reply/);
+    expect(out).not.toContain("/pricing");
+    expect(out).not.toContain("Correct answer");
+    expect(seen.explained).toEqual([]);
+  });
+
+  it("does not report the limit on an explanation that went ahead", async () => {
+    const limits: number[] = [];
+    await deps({ onLimit: (n) => limits.push(n) }).tools.explain_question.run({ question_id: ID });
+    expect(limits).toEqual([]);
+  });
+
   it("asks a signed-out visitor to sign in, giving nothing away", async () => {
     const out = await deps({ spendReveal: null }).tools.explain_question.run({ question_id: ID });
     expect(out).toMatch(/signed out/i);

@@ -21,6 +21,7 @@ import { createSupabaseAnonClient, createSupabaseServerClient } from "@/lib/supa
 import { checkAndIncrement } from "@/lib/rate-limit";
 import { queryQuestionsByIds } from "@/lib/questions/query";
 import { getPremiumLimits } from "@/lib/billing/premiumLimits";
+import { passOnSale } from "@/lib/billing/passOnSale";
 import { logActivityOnce } from "@/lib/activity/service";
 import { istDayKey } from "@/lib/email/dueNudge";
 import { readChatSettings } from "@/lib/chat/settingsAdmin";
@@ -102,7 +103,10 @@ export async function POST(request: NextRequest) {
     const limits = await getPremiumLimits(db);
     const limit = !limits || limits.hasPass ? null : limits.revealsPerDay;
     const check = revealCheck({ limit, todayIds: limit === null ? [] : await revealedToday(db, userId, now), questionId: asked.id });
-    if (check.kind === "limit") return NextResponse.json({ ok: false, limit: check.limit }, { status: 200 });
+    // The card sells the pass in place, as the bank's wall does (2026-10-28).
+    if (check.kind === "limit") {
+      return NextResponse.json({ ok: false, limit: check.limit, pass: await passOnSale() }, { status: 200 });
+    }
 
     const day = istDayKey(now);
     await logActivityOnce(db, userId, {

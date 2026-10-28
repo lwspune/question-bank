@@ -85,6 +85,7 @@ import { weakFromPerformance, type PlanDeps } from "@/lib/chat/weekPlan";
 import { loadCurrentPlan, loadPlanActivity, saveStudyPlan } from "@/lib/chat/weekPlanServer";
 import { getOwnProfile, updateOwnProfile } from "@/lib/profile/service";
 import { getOwnLadder } from "@/lib/drill/service";
+import { passOnSale } from "@/lib/billing/passOnSale";
 import type { Performance } from "@/lib/performance/compute";
 
 // One AI answer can take two model calls (a chapter search, then the reply).
@@ -111,7 +112,7 @@ function ownProgress(userId: string): Promise<Performance | null> {
  */
 function buildQuestionToolDeps(
   userId: string | null,
-  out: { onSimilar: (id: string) => void; onMatch: (id: string) => void }
+  out: { onSimilar: (id: string) => void; onMatch: (id: string) => void; onLimit: (limit: number) => void }
 ): QuestionToolDeps {
   const anon = createSupabaseAnonClient();
   return {
@@ -123,6 +124,7 @@ function buildQuestionToolDeps(
     onSimilar: out.onSimilar,
     onMatch: out.onMatch,
     onExplained: () => {},
+    onLimit: out.onLimit,
     // A slip V spots in our solution reaches the team's report queue (migration 0183, 2026-10-23).
     reportSolution: (id, issue) => fileVSolutionReport(createSupabaseAdminClient(), id, issue),
   };
@@ -264,6 +266,8 @@ export async function POST(request: NextRequest) {
     // Set by V's question tools during the answer, for the chat window: a question to try, a pasted one to confirm.
     let similarQuestionId: string | null = null;
     let matchQuestionId: string | null = null;
+    // Set when the day's free answers stopped an explanation: the window shows the pass offer (2026-10-28).
+    let limitHit: number | null = null;
     // Set when plan_week or my_plan ran: the chat window shows the plan under the reply.
     let planShown = false;
     let recorded: {
@@ -297,6 +301,7 @@ export async function POST(request: NextRequest) {
               ? buildQuestionToolDeps(ownId, {
                   onSimilar: (id) => (similarQuestionId = id),
                   onMatch: (id) => (matchQuestionId = id),
+                  onLimit: (limit) => (limitHit = limit),
                 })
               : null,
             // Concepts read PUBLIC model answers with the anon client, and the notes (V_SPEC.md step 2).
@@ -376,6 +381,8 @@ export async function POST(request: NextRequest) {
           return [figures.get(explainedId), visuals.get(explainedId)] as const;
         })()
       : [undefined, undefined];
+    // Read only when the limit was met, so an ordinary reply reads no plans.
+    const passOffer = recorded.source === "ai" && limitHit !== null ? { limit: limitHit, pass: await passOnSale() } : null;
 
     // Only on an AI answer: a fallback reply never ran the tools.
     const questionFields =
@@ -388,6 +395,7 @@ export async function POST(request: NextRequest) {
             explained: isExplanation(recorded.toolCalls, message),
             ...(solutionFigure ? { solutionFigure } : {}),
             ...(solutionVisual ? { solutionVisual } : {}),
+            ...(passOffer ? { passOffer } : {}),
           }
         : {};
     if (userId !== null) {

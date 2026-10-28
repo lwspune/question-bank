@@ -36,9 +36,10 @@ declare global {
  * "paper_download" is the past-paper box on /mock pages (2026-10-07);
  * "formula_sheet" the chapter formula-sheet box on /notes (2026-10-10);
  * "ebook" the buy box on a /store book page (2026-10-20); "reveal_wall" the
- * daily answer limit on the bank, board and guides (2026-10-25).
+ * daily answer limit on the bank, board and guides (2026-10-25); "v_chat" the
+ * same limit met inside V (2026-10-28).
  */
-export type CheckoutSurface = "download_box" | "paper_download" | "formula_sheet" | "pricing" | "ebook" | "reveal_wall";
+export type CheckoutSurface = "download_box" | "paper_download" | "formula_sheet" | "pricing" | "ebook" | "reveal_wall" | "v_chat";
 
 /** The paywall gate the server logs for each surface (see checkoutGate). */
 const GATE: Record<CheckoutSurface, "teacher" | "pricing" | "reveals"> = {
@@ -48,6 +49,7 @@ const GATE: Record<CheckoutSurface, "teacher" | "pricing" | "reveals"> = {
   pricing: "pricing",
   ebook: "pricing",
   reveal_wall: "reveals",
+  v_chat: "reveals",
 };
 
 const SCRIPT_SRC = "https://checkout.razorpay.com/v1/checkout.js";
