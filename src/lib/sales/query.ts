@@ -1,12 +1,15 @@
 /**
- * Reads public.sales_by_period (migrations 0197, 0199) for /dashboard/sales.
+ * Reads public.sales_by_period and sales_funnel_students (migrations 0197, 0199, 0200) for
+ * /dashboard/sales.
  * Service-role only: the page checks for a superadmin first.
  */
 import type { SupabaseClient } from "@supabase/supabase-js";
-import type { SalesGrain, SalesPeriodRow } from "./summary";
+import type { DayWindow, FunnelStudents, SalesGrain, SalesPeriodRow } from "./summary";
 
 type Row = {
   period: string;
+  paywall_students: number;
+  checkout_students: number;
   pass_orders: number;
   passes_sold: number;
   passes_refunded: number;
@@ -30,6 +33,8 @@ export async function loadSalesByPeriod(
   if (error) throw new Error(`sales_by_period(${grain}): ${error.message}`);
   return ((data ?? []) as Row[]).map((r) => ({
     period: r.period,
+    paywallStudents: r.paywall_students,
+    checkoutStudents: r.checkout_students,
     passOrders: r.pass_orders,
     passesSold: r.passes_sold,
     passesRefunded: r.passes_refunded,
@@ -39,4 +44,12 @@ export async function loadSalesByPeriod(
     booksRefunded: r.books_refunded,
     bookPaise: Number(r.book_paise),
   }));
+}
+
+/** Distinct students who met a paywall, and who started a pass checkout, over `window`. */
+export async function loadFunnelStudents(admin: SupabaseClient, window: DayWindow): Promise<FunnelStudents> {
+  const { data, error } = await admin.rpc("sales_funnel_students", { p_from: window.from, p_to: window.to });
+  if (error) throw new Error(`sales_funnel_students(${window.from}..${window.to}): ${error.message}`);
+  const row = ((data ?? []) as { paywall_students: number; checkout_students: number }[])[0];
+  return { paywallStudents: row?.paywall_students ?? 0, checkoutStudents: row?.checkout_students ?? 0 };
 }

@@ -1,5 +1,5 @@
 /**
- * /dashboard/sales: turns public.sales_by_period's rows (migrations 0197, 0199) into the
+ * /dashboard/sales: turns public.sales_by_period's rows (migrations 0197, 0199, 0200) into the
  * page's table and summary cards. Pure: dates are IST calendar days as
  * "YYYY-MM-DD" strings, done in UTC arithmetic so the server's own time zone
  * never shifts a day.
@@ -15,10 +15,14 @@ export const PERIODS_SHOWN: Record<SalesGrain, number> = { day: 30, week: 12, mo
  * One period's sales. Money is what was kept: refunded sales count as sold and refunded, not in the money.
  * Orders are the Razorpay orders the site created (checkouts started), paid or not; pass orders count
  * from 2026-10-04 and book orders from 2026-10-28, when the order route began recording each.
+ * The pass funnel counts STUDENTS: those who met a paywall, then those who started a checkout.
+ * They are distinct within the period, so they cannot be added across rows (see FunnelStudents).
  */
 export type SalesPeriodRow = {
   /** Start of the period, IST: the day, the week's Monday or the month's 1st. */
   period: string;
+  paywallStudents: number;
+  checkoutStudents: number;
   passOrders: number;
   passesSold: number;
   passesRefunded: number;
@@ -38,11 +42,21 @@ export type SalesTotals = {
   paise: number;
 };
 
+/** A run of IST days, both ends included; `from` null = since the first record. */
+export type DayWindow = { from: string | null; to: string };
+
+/** Distinct students over a DayWindow (public.sales_funnel_students, 0200). */
+export type FunnelStudents = { paywallStudents: number; checkoutStudents: number };
+
+export const windowKey = (w: DayWindow): string => `${w.from ?? "start"}..${w.to}`;
+
 export type SummaryCard = {
   label: string;
   current: SalesTotals;
+  window: DayWindow;
   previousLabel: string;
   previous: SalesTotals;
+  previousWindow: DayWindow;
 };
 
 const IST_OFFSET_MS = 330 * 60 * 1000;
@@ -88,6 +102,8 @@ export function cardsSince(today: string): string {
 
 const emptyRow = (period: string): SalesPeriodRow => ({
   period,
+  paywallStudents: 0,
+  checkoutStudents: 0,
   passOrders: 0,
   passesSold: 0,
   passesRefunded: 0,
@@ -123,8 +139,13 @@ export function sumRows(rows: SalesPeriodRow[]): SalesTotals {
 }
 
 /** Day rows from `from` to `to`, both IST days, inclusive. */
-const between = (days: SalesPeriodRow[], from: string, to: string) =>
-  days.filter((d) => d.period >= from && d.period <= to);
+const within = (days: SalesPeriodRow[], w: DayWindow) =>
+  days.filter((d) => (w.from === null || d.period >= w.from) && d.period <= w.to);
+
+/** Checkout students who bought, as a whole percent; null with no checkout. */
+export function paidShare(bought: number, checkoutStudents: number): number | null {
+  return checkoutStudents > 0 ? Math.round((bought / checkoutStudents) * 100) : null;
+}
 
 /**
  * Today against yesterday, the last 7 days (today included) against the 7
@@ -135,19 +156,20 @@ export function summaryCards(days: SalesPeriodRow[], today: string): SummaryCard
   const back = (n: number) => stepBack(today, "day", n);
   const monthStart = periodStart(today, "month");
   const lastMonthStart = stepBack(monthStart, "month", 1);
+  const card = (label: string, window: DayWindow, previousLabel: string, previousWindow: DayWindow): SummaryCard => ({
+    label,
+    current: sumRows(within(days, window)),
+    window,
+    previousLabel,
+    previous: sumRows(within(days, previousWindow)),
+    previousWindow,
+  });
   return [
-    { label: "Today", current: sumRows(between(days, today, today)), previousLabel: "Yesterday", previous: sumRows(between(days, back(1), back(1))) },
-    {
-      label: "Last 7 days",
-      current: sumRows(between(days, back(6), today)),
-      previousLabel: "7 days before",
-      previous: sumRows(between(days, back(13), back(7))),
-    },
-    {
-      label: "This month",
-      current: sumRows(between(days, monthStart, today)),
-      previousLabel: "Last month",
-      previous: sumRows(between(days, lastMonthStart, stepBack(monthStart, "day", 1))),
-    },
+    card("Today", { from: today, to: today }, "Yesterday", { from: back(1), to: back(1) }),
+    card("Last 7 days", { from: back(6), to: today }, "7 days before", { from: back(13), to: back(7) }),
+    card("This month", { from: monthStart, to: today }, "Last month", {
+      from: lastMonthStart,
+      to: stepBack(monthStart, "day", 1),
+    }),
   ];
 }
