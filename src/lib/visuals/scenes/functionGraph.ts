@@ -14,6 +14,11 @@
  *                 is the curve rising (falling) on the keyed interval, or on
  *                 each piece of a keyed union: the rising stretches are shaded
  *                 and every piece is checked
+ *   extrema       the curve's local maxima and minima (scope "local": every one
+ *                 in the window, found where f' changes sign), or its greatest
+ *                 and least values on a closed interval (scope "absolute", `on`,
+ *                 endpoints included), checked against the stated `expect`
+ *                 list; the value is how many of them disagree, so 0 passes
  *
  * Formulas use lib/visuals/expr (never eval). Beats: curve, compare, mark,
  * tangent, shade.
@@ -30,7 +35,15 @@ type Ask =
   | { kind: "crossings" }
   | { kind: "slopePoint"; slope: number; normal: boolean; pointLabel: string | undefined }
   | { kind: "slopePoints"; slope: number; normal: boolean; report: "count" | "sumX" | "sumY"; pointLabels: string[] }
-  | { kind: "increasingOn" | "decreasingOn"; intervals: [number, number][]; intervalLabel: string };
+  | { kind: "increasingOn" | "decreasingOn"; intervals: [number, number][]; intervalLabel: string }
+  | { kind: "extrema"; scope: "local" | "absolute"; on: [number, number]; expect: Extremum[]; pointLabels: string[] };
+
+interface Extremum {
+  type: "max" | "min";
+  /** null: the answer gives only the value (absolute scope). */
+  x: number | null;
+  y: number;
+}
 
 export interface FunctionGraphParams {
   f: Fn;
@@ -137,6 +150,8 @@ export interface FunctionGraphFacts {
   /** Every point with the asked slope (slopePoint and slopePoints). */
   points: [number, number][];
   rising: [number, number][];
+  /** local: every local max and min; absolute: the greatest and the least value on `on`. */
+  extrema: { type: "max" | "min"; x: number; y: number }[];
 }
 
 const factCache = new WeakMap<FunctionGraphParams, FunctionGraphFacts>();
@@ -158,9 +173,60 @@ export function functionGraphFacts(p: FunctionGraphParams): FunctionGraphFacts {
   }
   const sign = p.ask.kind === "decreasingOn" ? -1 : 1;
   const rising = intervalsWhere((x) => sign * slopeAt(p.f, x) > 0, a, b);
-  const facts = { crossings, point, points, rising };
+  const extrema = p.ask.kind === "extrema" ? extremaOf(p.f, p.ask.on, p.ask.scope) : [];
+  const facts = { crossings, point, points, rising, extrema };
   factCache.set(p, facts);
   return facts;
+}
+
+/**
+ * Local scope: every point of (lo, hi) where f' changes sign, + to - a maximum
+ * and - to + a minimum (a touch with no change, x^3 at 0, is neither). Absolute
+ * scope: the greatest and least of f over [lo, hi], from the endpoints and the
+ * points where f' = 0.
+ */
+function extremaOf(f: Fn, [lo, hi]: [number, number], scope: "local" | "absolute"): { type: "max" | "min"; x: number; y: number }[] {
+  const eps = (hi - lo) * 1e-4;
+  const crit = rootsOf((x) => slopeAt(f, x), lo + eps, hi - eps);
+  if (scope === "local") {
+    const d = (hi - lo) * 1e-3;
+    const out: { type: "max" | "min"; x: number; y: number }[] = [];
+    for (const r of crit) {
+      const [sl, sr] = [slopeAt(f, r - d), slopeAt(f, r + d)];
+      const y = f(r);
+      if (!Number.isFinite(y)) continue;
+      if (sl > 0 && sr < 0) out.push({ type: "max", x: r, y });
+      else if (sl < 0 && sr > 0) out.push({ type: "min", x: r, y });
+    }
+    return out;
+  }
+  const cands = [lo, hi, ...crit].map((x) => ({ x, y: f(x) })).filter((c) => Number.isFinite(c.y));
+  if (!cands.length) return [];
+  const top = cands.reduce((m, c) => (c.y > m.y ? c : m));
+  const bottom = cands.reduce((m, c) => (c.y < m.y ? c : m));
+  return [{ type: "max", ...top }, { type: "min", ...bottom }];
+}
+
+/** How many stated extrema the drawing does not bear out (0 = all of them, and no others for local scope). */
+function extremaMisses(found: { type: "max" | "min"; x: number; y: number }[], ask: Extract<Ask, { kind: "extrema" }>): number {
+  const close = (u: number, v: number) => Math.abs(u - v) <= 1e-4 * (1 + Math.abs(v));
+  if (ask.scope === "local") {
+    if (found.length !== ask.expect.length) return Math.max(1, Math.abs(found.length - ask.expect.length));
+    const want = [...ask.expect].sort((m, n) => (m.x ?? 0) - (n.x ?? 0));
+    return want.filter((e, i) => !(found[i].type === e.type && close(found[i].x, e.x ?? NaN) && close(found[i].y, e.y))).length;
+  }
+  return ask.expect.filter((e) => {
+    const g = found.find((h) => h.type === e.type);
+    return !g || !close(g.y, e.y) || (e.x !== null && !close(g.x, e.x));
+  }).length;
+}
+
+/** The extrema the picture marks: all local ones, or the asked greatest/least values. */
+function shownExtrema(p: FunctionGraphParams): { type: "max" | "min"; x: number; y: number }[] {
+  const ask = p.ask;
+  if (ask.kind !== "extrema") return [];
+  const found = functionGraphFacts(p).extrema;
+  return ask.scope === "local" ? found : found.filter((e) => ask.expect.some((w) => w.type === e.type));
 }
 
 /**
@@ -188,6 +254,47 @@ function niceStep(span: number, maxTicks: number): number {
   const mag = Math.pow(10, Math.floor(Math.log10(raw)));
   for (const m of [1, 2, 5, 10]) if (m * mag >= raw) return m * mag;
   return 10 * mag;
+}
+
+/** Points along the curve, in pixels, for labels to keep clear of. */
+function curveObstacles(p: FunctionGraphParams, X: (x: number) => number, Y: (y: number) => number): [number, number][] {
+  const [xa, xb] = p.x;
+  const out: [number, number][] = [];
+  for (let i = 0; i <= 120; i++) {
+    const xs = xa + ((xb - xa) * i) / 120;
+    const v = p.f(xs);
+    if (Number.isFinite(v)) out.push([X(xs), Y(v)]);
+  }
+  return out;
+}
+
+/** A dot at each point (pixels) and its label in the clearest of several spots round it; a far spot gets a leader line. */
+function placeMarks(over: Shape[], obstacles: [number, number][], pts: [number, number][], labels: string[]) {
+  pts.forEach(([px, py], i) => {
+    const label = labels[i];
+    const halfW = label.length * 3.4;
+    const spots: [number, number, "start" | "end"][] = [];
+    for (const ox of [10, 30, 55]) {
+      for (const oy of [-12, -32, -55, -80, 22, 42, 64]) spots.push([px + ox, py + oy, "start"], [px - ox, py + oy, "end"]);
+    }
+    const room = ([sx, sy, anchor]: [number, number, "start" | "end"]) => {
+      const cx = anchor === "start" ? sx + halfW : sx - halfW;
+      const cy = sy - 4;
+      if (cx - halfW < 2 || cx + halfW > W - 2 || cy < P.t + 14 || cy > P.b) return -1;
+      // Distance from each obstacle to the label's whole box (half-height 8): 0 means it touches the text.
+      return Math.min(...obstacles.map(([ox, oy]) => Math.max(Math.abs(ox - cx) - halfW, Math.abs(oy - cy) - 8, 0)));
+    };
+    // Clear room decides; nearness only breaks near-ties (room capped at 12 px).
+    const score = (s: [number, number, "start" | "end"]) => Math.min(room(s), 12) - 0.02 * Math.hypot(s[0] - px, s[1] - py);
+    const [lx, ly, anchor] = spots.reduce((best, s) => (score(s) > score(best) ? s : best), spots[0]);
+    if (Math.hypot(lx - px, ly - py) > 30) {
+      over.push(line(px, py, lx + (anchor === "start" ? -3 : 3), ly - 4, { stroke: "good", width: 1, opacity: 0.7 }));
+    }
+    over.push(dot(px, py, 5.5, "good", { stroke: "card", width: 2 }), text(lx, ly, label, { tone: "good", size: 12, weight: 700, anchor }));
+    // A placed label is an obstacle for the next one.
+    const cx = anchor === "start" ? lx + halfW : lx - halfW;
+    for (let k = -4; k <= 4; k++) obstacles.push([cx + (halfW * k) / 4, ly - 4]);
+  });
 }
 
 function compile(src: unknown, field: string): Fn {
@@ -251,8 +358,23 @@ export const functionGraph: Scene<FunctionGraphParams> = {
           intervals,
           intervalLabel: optionalLabel(a, "intervalLabel", 32) ?? intervals.map(([lo, hi]) => `${num(lo)} < x < ${num(hi)}`).join(" or "),
         };
+      } else if (a.kind === "extrema") {
+        if (a.scope !== "local" && a.scope !== "absolute") throw new ParamError('extrema needs scope "local" or "absolute"');
+        const on = a.on === undefined ? x : pair(a, "on");
+        if (!(on[1] > on[0]) || on[0] < x[0] || on[1] > x[1]) throw new ParamError("on must run forward inside the window");
+        if (!Array.isArray(a.expect) || a.expect.length > 4) throw new ParamError("expect must be a list of at most 4 extrema");
+        const expect = a.expect.map((raw, i): Extremum => {
+          const e = obj(raw);
+          if (e.type !== "max" && e.type !== "min") throw new ParamError(`expect[${i}].type must be "max" or "min"`);
+          if (a.scope === "local" && e.x === undefined) throw new ParamError(`expect[${i}] needs x for a local extremum`);
+          return { type: e.type, x: e.x === undefined ? null : finite(e, "x"), y: finite(e, "y") };
+        });
+        if (a.scope === "absolute" && (!expect.length || new Set(expect.map((e) => e.type)).size !== expect.length)) throw new ParamError("absolute extrema expect one max and/or one min");
+        const labels = a.pointLabels === undefined ? [] : a.pointLabels;
+        if (!Array.isArray(labels) || labels.length > 4) throw new ParamError("pointLabels must be a list of at most 4");
+        ask = { kind: "extrema", scope: a.scope, on, expect, pointLabels: labels.map((l, i) => plainLabel(l, `pointLabels[${i}]`)) };
       } else {
-        throw new ParamError("ask.kind must be crossings, slopePoint, slopePoints, increasingOn or decreasingOn");
+        throw new ParamError("ask.kind must be crossings, slopePoint, slopePoints, increasingOn, decreasingOn or extrema");
       }
       return { f, fLabel: optionalLabel(o, "fLabel", 32) ?? "y = f(x)", g, x, y, xTicks, ask };
     }),
@@ -272,6 +394,8 @@ export const functionGraph: Scene<FunctionGraphParams> = {
         return p.ask.intervals.every((iv) => monotoneOn(p.f, iv, 1)) ? 1 : 0;
       case "decreasingOn":
         return p.ask.intervals.every((iv) => monotoneOn(p.f, iv, -1)) ? 1 : 0;
+      case "extrema":
+        return extremaMisses(facts.extrema, p.ask);
     }
   },
 
@@ -290,6 +414,13 @@ export const functionGraph: Scene<FunctionGraphParams> = {
       case "decreasingOn": {
         const verb = p.ask.kind === "increasingOn" ? "rises" : "falls";
         return value === 1 ? `The curve ${verb} at every point of ${p.ask.intervalLabel} on the drawing.` : `The curve does not ${verb.slice(0, -1)} everywhere on ${p.ask.intervalLabel}.`;
+      }
+      case "extrema": {
+        const absolute = p.ask.scope === "absolute";
+        const word = (t: "max" | "min") => (absolute ? (t === "max" ? "greatest value" : "least value") : t === "max" ? "local maximum" : "local minimum");
+        const list = shownExtrema(p).map((e) => `a ${word(e.type)} at (${num(e.x, 4)}, ${num(e.y, 4)})`).join(" and ");
+        const found = list ? `The curve has ${list}` : "The curve has no local maximum or minimum here";
+        return value === 0 ? `${found}, as stated.` : `${found}; the stated answer differs.`;
       }
     }
   },
@@ -487,12 +618,7 @@ export const functionGraph: Scene<FunctionGraphParams> = {
       }
       if (pm > 0 && marked.length) {
         // Every line drawn round the points, so no label lands on one.
-        const obstacles: [number, number][] = [];
-        for (let i = 0; i <= 120; i++) {
-          const xs = xa + ((xb - xa) * i) / 120;
-          const v = p.f(xs);
-          if (Number.isFinite(v)) obstacles.push([X(xs), Y(v)]);
-        }
+        const obstacles = curveObstacles(p, X, Y);
         for (const [x0, y0] of marked) {
           over.push(line(X(x0 - dx), clampY(Y(y0 - ask.slope * dx)), X(x0 + dx), clampY(Y(y0 + ask.slope * dx)), { stroke: "amber", width: 2, cap: "round" }));
           for (let k = -10; k <= 10; k++) {
@@ -514,37 +640,27 @@ export const functionGraph: Scene<FunctionGraphParams> = {
             }
           }
         }
-        // Each label goes in the clearest of several spots round its point; a far one gets a leader line.
-        marked.forEach(([x0, y0], i) => {
-          const label = labels[i];
-          const halfW = label.length * 3.4;
-          const px = X(x0);
-          const py = clampY(Y(y0));
-          const spots: [number, number, "start" | "end"][] = [];
-          for (const ox of [10, 30, 55]) {
-            for (const oy of [-12, -32, -55, -80, 22, 42, 64]) spots.push([px + ox, py + oy, "start"], [px - ox, py + oy, "end"]);
-          }
-          const room = ([sx, sy, anchor]: [number, number, "start" | "end"]) => {
-            const cx = anchor === "start" ? sx + halfW : sx - halfW;
-            const cy = sy - 4;
-            if (cx - halfW < 2 || cx + halfW > W - 2 || cy < P.t + 14 || cy > P.b) return -1;
-            // Distance from each obstacle to the label's whole box (half-height 8): 0 means it touches the text.
-            return Math.min(...obstacles.map(([ox, oy]) => Math.max(Math.abs(ox - cx) - halfW, Math.abs(oy - cy) - 8, 0)));
-          };
-          // Clear room decides; nearness only breaks near-ties (room capped at 12 px).
-          const score = (s: [number, number, "start" | "end"]) => Math.min(room(s), 12) - 0.02 * Math.hypot(s[0] - px, s[1] - py);
-          const [lx, ly, anchor] = spots.reduce((best, s) => (score(s) > score(best) ? s : best), spots[0]);
-          if (Math.hypot(lx - px, ly - py) > 30) {
-            over.push(line(px, py, lx + (anchor === "start" ? -3 : 3), ly - 4, { stroke: "good", width: 1, opacity: 0.7 }));
-          }
-          over.push(dot(px, py, 5.5, "good", { stroke: "card", width: 2 }), text(lx, ly, label, { tone: "good", size: 12, weight: 700, anchor }));
-          // A placed label is an obstacle for the next one.
-          const cx = anchor === "start" ? lx + halfW : lx - halfW;
-          for (let k = -4; k <= 4; k++) obstacles.push([cx + (halfW * k) / 4, ly - 4]);
-        });
+        placeMarks(over, obstacles, marked.map(([x0, y0]): [number, number] => [X(x0), clampY(Y(y0))]), labels);
         const head = ask.kind === "slopePoints" ? `${marked.length} points with tangent slope ${num(ask.slope)}` : `tangent slope ${num(ask.slope)}`;
         over.push(text(P.r - 2, P.t + 2, ask.normal ? `${head}, normal dashed` : head, { tone: "amber", size: 11, weight: 600, anchor: "end" }));
       }
+    }
+
+    // Extrema: a dot and a label at each, and the interval's ends for absolute scope.
+    if (p.ask.kind === "extrema" && pm > 0) {
+      const ask = p.ask;
+      if (ask.scope === "absolute" && (ask.on[0] > xa || ask.on[1] < xb)) {
+        for (const e of ask.on) over.push(line(X(e), P.t + 16, X(e), P.b, { stroke: "muted", width: 1.2, dash: "4 4" }));
+      }
+      const shown = shownExtrema(p);
+      placeMarks(
+        over,
+        curveObstacles(p, X, Y),
+        shown.map((e): [number, number] => [X(e.x), clampY(Y(e.y))]),
+        shown.map((e, i) => ask.pointLabels[i] ?? `${e.type} (${num(e.x, 3)}, ${num(e.y, 3)})`),
+      );
+      const head = ask.scope === "absolute" ? `greatest and least, ${num(ask.on[0], 3)} ≤ x ≤ ${num(ask.on[1], 3)}` : "local max and min";
+      over.push(text(P.r - 2, P.t + 2, head, { tone: "good", size: 11, weight: 600, anchor: "end" }));
     }
 
     // The header (top right) drops to a second row when it would run into the

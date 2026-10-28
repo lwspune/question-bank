@@ -62,6 +62,24 @@ Or, when it does not fit cleanly: `{ "n": 7, "id": "<id>", "skip": true, "reason
     `intervalLabel` for the whole union (at most 32 characters). Answer value = 1.
     A key that gives BOTH an increasing and a decreasing interval: draft the
     increasing part only, and say so in the answer label.
+  - `{ "kind": "extrema", "scope": "local", "expect": [{ "type": "max", "x": -1, "y": 2 }, { "type": "min", "x": 1, "y": -2 }] }`:
+    the curve's local maxima and minima. List EVERY local max and min the
+    window shows (the scene finds them itself, where f' changes sign, and
+    refuses the visual unless your list matches exactly, so choose the window
+    to hold exactly the ones the solution names). x and y as decimals (1/3 =
+    0.333333333333; √2 = 1.414213562373). Answer value = 0.
+  - `{ "kind": "extrema", "scope": "absolute", "on": [a, b], "expect": [{ "type": "max", "x": 3, "y": 18 }, { "type": "min", "x": 1, "y": -2 }] }`:
+    the greatest and/or least value of f on the closed interval [a, b]
+    (endpoints count). Give only the one(s) the question asks; `x` may be left
+    out when the answer is only the value. `on` must lie inside the window;
+    leave room round it. Answer value = 0.
+    A word problem (largest area, least cost) fits when the solution reduces
+    it to ONE function of one variable on a stated interval: f is that
+    function (in the solution's own variable, written as x), `on` its domain,
+    and the answer the max or min the solution concludes. If the question's
+    answer is the dimension (the x), give x; if it is the area, give y.
+  - `pointLabels` (extrema): optional, one label per marked point, left to
+    right ("max (−1, 2)" is the default).
 
 ### steps
 
@@ -74,14 +92,15 @@ and each beat is used at most once. Beats:
   (crossings) or mark the point(s) (slopePoint, slopePoints). `tangent`: slide a
   tangent along the curve to the point, or sweep it across past every point
   (slopePoint, slopePoints). `shade`: shade where f rises or falls
-  (increasingOn / decreasingOn).
+  (increasingOn / decreasingOn). Extrema use `curve` and `mark` (the marked
+  maxima and minima).
 
 Match the beats to what each sentence says. A trailing "Matches option X"
 sentence needs no step of its own.
 
 ### answer
 
-- `value`: a number, as above (count, x of the point, or 1).
+- `value`: a number, as above (count, x of the point, 1, or 0 for extrema).
 - `label`: how the answer reads, plain text, at most 32 characters.
 
 ## Rules

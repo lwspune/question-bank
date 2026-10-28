@@ -235,6 +235,54 @@ describe("functionGraph rises straight through an isolated stationary point", ()
   });
 });
 
+describe("functionGraph extrema", () => {
+  const run = (raw: Record<string, unknown>) => {
+    const { scene, p } = parsedParams("functionGraph", raw);
+    return { value: scene.check(p), text: scene.checkText(p, scene.check(p)), facts: functionGraphFacts(p as never) };
+  };
+  const cubic = { f: "x^3-3*x", window: { x: [-3, 3], y: [-5, 5] } };
+  it("finds every local maximum and minimum and checks them against the stated answer", () => {
+    const ok = run({ ...cubic, ask: { kind: "extrema", scope: "local", expect: [{ type: "max", x: -1, y: 2 }, { type: "min", x: 1, y: -2 }] } });
+    expect(ok.value).toBe(0);
+    expect(ok.facts.extrema.map((e) => [e.type, Math.round(e.x * 1e6) / 1e6, Math.round(e.y * 1e6) / 1e6])).toEqual([["max", -1, 2], ["min", 1, -2]]);
+    expect(ok.text).toMatch(/as stated/);
+  });
+  it("refuses a wrong value, a wrong type, or a missing extremum (the value counts the misses)", () => {
+    expect(run({ ...cubic, ask: { kind: "extrema", scope: "local", expect: [{ type: "max", x: -1, y: 3 }, { type: "min", x: 1, y: -2 }] } }).value).toBe(1);
+    expect(run({ ...cubic, ask: { kind: "extrema", scope: "local", expect: [{ type: "min", x: -1, y: 2 }, { type: "max", x: 1, y: -2 }] } }).value).toBe(2);
+    expect(run({ ...cubic, ask: { kind: "extrema", scope: "local", expect: [{ type: "max", x: -1, y: 2 }] } }).value).toBeGreaterThan(0);
+  });
+  it("does not count an inflection point as an extremum", () => {
+    const r = run({ f: "x^3", window: { x: [-2, 2], y: [-8, 8] }, ask: { kind: "extrema", scope: "local", expect: [] } });
+    expect(r.facts.extrema).toEqual([]);
+    expect(r.value).toBe(0);
+  });
+  it("finds the greatest and least values on a closed interval, endpoints included", () => {
+    // x^3 - 3x on [0, 3]: least -2 at x = 1, greatest 18 at the endpoint x = 3.
+    const r = run({ f: "x^3-3*x", window: { x: [-0.5, 3.2], y: [-4, 20] }, ask: { kind: "extrema", scope: "absolute", on: [0, 3], expect: [{ type: "max", x: 3, y: 18 }, { type: "min", x: 1, y: -2 }] } });
+    expect(r.value).toBe(0);
+    // Only the greatest value asked, x not given.
+    expect(run({ f: "x^3-3*x", window: { x: [-0.5, 3.2], y: [-4, 20] }, ask: { kind: "extrema", scope: "absolute", on: [0, 3], expect: [{ type: "max", y: 18 }] } }).value).toBe(0);
+    expect(run({ f: "x^3-3*x", window: { x: [-0.5, 3.2], y: [-4, 20] }, ask: { kind: "extrema", scope: "absolute", on: [0, 3], expect: [{ type: "max", y: 2 }] } }).value).toBe(1);
+  });
+  it("takes a word problem's function: x(10 - x) on [0, 10] is greatest, 25, at x = 5", () => {
+    expect(run({ f: "x*(10-x)", window: { x: [0, 10], y: [0, 30] }, ask: { kind: "extrema", scope: "absolute", on: [0, 10], expect: [{ type: "max", x: 5, y: 25 }] } }).value).toBe(0);
+  });
+  it("refuses a malformed ask", () => {
+    const s = getScene("functionGraph")!;
+    expect(s.parse({ ...cubic, ask: { kind: "extrema", expect: [] } })).toHaveProperty("error");
+    expect(s.parse({ ...cubic, ask: { kind: "extrema", scope: "local", expect: [{ type: "max", y: 2 }] } })).toHaveProperty("error");
+    expect(s.parse({ ...cubic, ask: { kind: "extrema", scope: "absolute", on: [-4, 1], expect: [{ type: "max", y: 2 }] } })).toHaveProperty("error");
+    expect(s.parse({ ...cubic, ask: { kind: "extrema", scope: "local", expect: [{ type: "peak", x: 1, y: 2 }] } })).toHaveProperty("error");
+  });
+  it("marks the extrema on the mark beat", () => {
+    const { scene, p } = parsedParams("functionGraph", { ...cubic, ask: { kind: "extrema", scope: "local", expect: [{ type: "max", x: -1, y: 2 }, { type: "min", x: 1, y: -2 }] } });
+    const texts = scene.frame(p, { played: ["curve", "mark"], t: 1 } as never).filter((sh) => sh.kind === "text").map((sh) => (sh as { text: string }).text);
+    expect(texts).toContain("max (−1, 2)");
+    expect(texts).toContain("min (1, −2)");
+  });
+});
+
 describe("functionGraph unions and several points", () => {
   it("checks every interval of a union: x^3 - 3x rises on x < -1 and on x > 1", () => {
     const ok = parsedParams("functionGraph", { f: "x^3-3*x", window: { x: [-3, 3], y: [-5, 5] }, ask: { kind: "increasingOn", intervals: [[-3, -1], [1, 3]], intervalLabel: "x < −1 or x > 1" } });

@@ -122,7 +122,7 @@ fit check, Sonnet for drafts.
 
 | Scene | Draws | Chapters done (2026-10-25) |
 |---|---|---|
-| `functionGraph` | a curve from its formula (safe parser `expr.ts`), crossings (touching roots count), slopes, increasing/decreasing ranges | CET + JEE Applications of Derivative; CET Trig Functions; JEE Trig Equations, Quadratic Equations |
+| `functionGraph` | a curve from its formula (safe parser `expr.ts`), crossings (touching roots count), slopes, increasing/decreasing ranges (f' may vanish at single points), local max/min and greatest/least on an interval (`extrema`, word problems too) | CET + JEE Applications of Derivative; CBSE 12 + HSC 12 Application of Derivatives (2026-10-28); CET Trig Functions; JEE Trig Equations, Quadratic Equations |
 | `coordGeometry` | points (given, or built: dividing a segment in m : n, midpoint, centroid), lines (one or a pair from one equation), circles, conics, tangents, a locus; distance, intercepts, slope, radius, chord, tangent length, area, angle between lines, a constructed point (`point`), the ratio a point or line divides a segment in (`ratio`) | CET Circle, Straight Line, Conic, Pair of Straight Lines (pair + angle); JEE Conics, Straight Lines; CET + JEE Complex Numbers (z = x + iy); CBSE 10, MH 10, MH 9 Coordinate Geometry (2026-10-28) |
 | `space3d` | 3D points, lines, planes, vectors; foot, image, meets; distance, angle, projection, length, area, volume | CET Line and Plane, Vectors; JEE 3D Geometry, Vector Algebra |
 | `lpRegion` | linear programming: constraint lines, the feasible region, corners, the objective line sliding to the optimum; max, min, range, optimum point(s), one corner vs a whole edge | CET Linear Programming |
