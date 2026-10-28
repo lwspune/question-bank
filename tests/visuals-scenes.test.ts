@@ -301,6 +301,12 @@ describe("functionGraph extrema", () => {
     }
     expect(shapes.some((t) => t.text === "max (π/6, 1.25)")).toBe(true);
   });
+  it("writes an extremum at zero as 0, not -0", () => {
+    const { scene, p } = parsedParams("functionGraph", { f: "x^2", window: { x: [-2, 2], y: [-0.5, 4] }, ask: { kind: "extrema", scope: "local", expect: [{ type: "min", x: 0, y: 0 }] } });
+    const texts = scene.frame(p, { played: ["curve", "mark"], t: 1 } as never).filter((sh) => sh.kind === "text").map((sh) => (sh as { text: string }).text);
+    expect(texts).toContain("min (0, 0)");
+    expect(scene.checkText(p, scene.check(p))).not.toMatch(/−0/);
+  });
   it("marks the extrema on the mark beat", () => {
     const { scene, p } = parsedParams("functionGraph", { ...cubic, ask: { kind: "extrema", scope: "local", expect: [{ type: "max", x: -1, y: 2 }, { type: "min", x: 1, y: -2 }] } });
     const texts = scene.frame(p, { played: ["curve", "mark"], t: 1 } as never).filter((sh) => sh.kind === "text").map((sh) => (sh as { text: string }).text);

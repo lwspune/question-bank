@@ -191,7 +191,7 @@ function extremaOf(f: Fn, [lo, hi]: [number, number], scope: "local" | "absolute
     const out: { type: "max" | "min"; x: number; y: number }[] = [];
     for (const { x, type } of crit) {
       const y = f(x);
-      if (Number.isFinite(y)) out.push({ type, x, y });
+      if (Number.isFinite(y)) out.push({ type, x, y: Math.abs(y) < 1e-12 ? 0 : y });
     }
     return out;
   }
@@ -234,7 +234,8 @@ function slopeSignChanges(f: Fn, lo: number, hi: number): { x: number; type: "ma
     // A pole: f is not finite there, or runs far past everything else the window shows.
     if (!Number.isFinite(y) || Math.abs(y) > 1e3 * scale) continue;
     if (out.length && Math.abs(out[out.length - 1].x - r) < 1e-9 * Math.max(1, Math.abs(r))) continue;
-    out.push({ x: r, type: a > 0 ? "max" : "min" });
+    // A root within rounding of 0 is 0 (it was printing as "−0").
+    out.push({ x: Math.abs(r) < 1e-7 * (hi - lo) ? 0 : r, type: a > 0 ? "max" : "min" });
   }
   // A zero sample sitting exactly on the root: the change is between its neighbours.
   for (let i = 1; i < n; i++) {
