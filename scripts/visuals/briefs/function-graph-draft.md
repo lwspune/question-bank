@@ -90,7 +90,10 @@ Or, when it does not fit cleanly: `{ "n": 7, "id": "<id>", "skip": true, "reason
     or the product of the zeros instead, and value is that number.
     `withSumProduct: true` adds the zeros' sum and product to the header (for
     "find the zeros and verify the relationship with the coefficients"); the
-    scene computes them, never type them.
+    scene computes them, never type them. A repeated zero counts twice in
+    the sum and product, as −b/a and c/a do, and the header says "2 equal
+    zeros". `word: "roots"` (default `"zeros"`) for a quadratic EQUATION's
+    solutions, so the header reads "2 roots" and "sum of roots".
     Fits only when f is fully numeric (no k, no α, β left in it). It does not
     fit: complex zeros, an expression of the zeros (α² + β², 1/α + 1/β),
     forming a polynomial from given zeros, or a word problem whose answer is

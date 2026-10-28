@@ -41,7 +41,7 @@ type Ask =
   | { kind: "slopePoints"; slope: number; normal: boolean; report: "count" | "sumX" | "sumY"; pointLabels: string[] }
   | { kind: "increasingOn" | "decreasingOn"; intervals: [number, number][]; intervalLabel: string }
   | { kind: "extrema"; scope: "local" | "absolute"; on: [number, number]; expect: Extremum[]; pointLabels: string[] }
-  | { kind: "roots"; expect: number[]; report: "roots" | "sum" | "product"; withSumProduct: boolean; rootLabels: string[] };
+  | { kind: "roots"; expect: number[]; report: "roots" | "sum" | "product"; withSumProduct: boolean; word: "zeros" | "roots"; rootLabels: string[] };
 
 interface Extremum {
   type: "max" | "min";
@@ -159,6 +159,8 @@ export interface FunctionGraphFacts {
   extrema: { type: "max" | "min"; x: number; y: number }[];
   /** The zeros of f in the window, left to right (roots ask only). */
   roots: number[];
+  /** Each zero's count: 2 where the curve touches the axis (a repeated zero), else 1. */
+  rootMult: number[];
 }
 
 const factCache = new WeakMap<FunctionGraphParams, FunctionGraphFacts>();
@@ -182,7 +184,12 @@ export function functionGraphFacts(p: FunctionGraphParams): FunctionGraphFacts {
   const rising = intervalsWhere((x) => sign * slopeAt(p.f, x) > 0, a, b);
   const extrema = p.ask.kind === "extrema" ? extremaOf(p.f, p.ask.on, p.ask.scope) : [];
   const roots = p.ask.kind === "roots" ? rootsOf(p.f, a, b).map((r) => (Math.abs(r) < 1e-12 ? 0 : r)).sort((m, n) => m - n) : [];
-  const facts = { crossings, point, points, rising, extrema, roots };
+  const touchD = (b - a) * 1e-3;
+  const rootMult = roots.map((r) => {
+    const [l, h] = [p.f(r - touchD), p.f(r + touchD)];
+    return Number.isFinite(l) && Number.isFinite(h) && l !== 0 && h !== 0 && Math.sign(l) === Math.sign(h) ? 2 : 1;
+  });
+  const facts = { crossings, point, points, rising, extrema, roots, rootMult };
   factCache.set(p, facts);
   return facts;
 }
@@ -278,14 +285,39 @@ function rootsMisses(found: number[], expect: number[]): number {
   return want.filter((e, i) => !close(found[i], e)).length;
 }
 
+/** The sum and product of the zeros, a repeated zero counted twice (as in -b/a and c/a). */
+function rootsSumProduct(roots: number[], mult: number[]): { sum: number; product: number; count: number } {
+  let [sum, product, count] = [0, 1, 0];
+  roots.forEach((r, i) => {
+    sum += r * mult[i];
+    product *= r ** mult[i];
+    count += mult[i];
+  });
+  return { sum, product, count };
+}
+
+/** A value as a fraction with a small denominator when it is one ("5/7", "−1/3"), else a decimal. */
+function fracText(v: number): string {
+  if (Math.abs(v) < 1e-12) return "0";
+  for (let q = 1; q <= 24; q++) {
+    const n = Math.round(v * q);
+    if (Math.abs(v * q - n) < 1e-7 * q) return q === 1 ? num(n) : `${n < 0 ? "−" : ""}${Math.abs(n)}/${q}`;
+  }
+  return num(v, 3);
+}
+
 /** The header over a roots picture, from the zeros found (never typed by hand). */
-function rootsHead(ask: Extract<Ask, { kind: "roots" }>, roots: number[]): string {
-  const sum = roots.reduce((t, r) => t + r, 0);
-  const product = roots.reduce((t, r) => t * r, 1);
-  if (ask.report === "sum") return `sum of zeros ${num(sum, 3)}`;
-  if (ask.report === "product") return `product of zeros ${num(product, 3)}`;
-  const n = `${roots.length} zero${roots.length === 1 ? "" : "s"}`;
-  return ask.withSumProduct ? `${n} · sum ${num(sum, 3)} · product ${num(product, 3)}` : n;
+function rootsHead(ask: Extract<Ask, { kind: "roots" }>, roots: number[], mult: number[]): string {
+  const { sum, product, count } = rootsSumProduct(roots, mult);
+  const one = ask.word.slice(0, -1);
+  if (ask.report === "sum") return `sum of ${ask.word} ${fracText(sum)}`;
+  if (ask.report === "product") return `product of ${ask.word} ${fracText(product)}`;
+  const repeated = mult.some((m) => m > 1);
+  const n =
+    roots.length === 1 && repeated
+      ? `2 equal ${ask.word}`
+      : `${count} ${count === 1 ? one : ask.word}${repeated ? ", one repeated" : ""}`;
+  return ask.withSumProduct ? `${n} · sum ${fracText(sum)} · product ${fracText(product)}` : n;
 }
 
 /** The extrema the picture marks: all local ones, or the asked greatest/least values. */
@@ -462,9 +494,11 @@ export const functionGraph: Scene<FunctionGraphParams> = {
         const report = a.report === undefined ? "roots" : a.report;
         if (report !== "roots" && report !== "sum" && report !== "product") throw new ParamError('report must be "roots", "sum" or "product"');
         if (a.withSumProduct !== undefined && typeof a.withSumProduct !== "boolean") throw new ParamError("withSumProduct must be true or false");
+        const word = a.word === undefined ? "zeros" : a.word;
+        if (word !== "zeros" && word !== "roots") throw new ParamError('word must be "zeros" or "roots"');
         const labels = a.rootLabels === undefined ? [] : a.rootLabels;
         if (!Array.isArray(labels) || labels.length > expect.length) throw new ParamError("rootLabels must be a list, no longer than expect");
-        ask = { kind: "roots", expect, report, withSumProduct: a.withSumProduct === true, rootLabels: labels.map((l, i) => plainLabel(l, `rootLabels[${i}]`)) };
+        ask = { kind: "roots", expect, report, withSumProduct: a.withSumProduct === true, word, rootLabels: labels.map((l, i) => plainLabel(l, `rootLabels[${i}]`)) };
       } else {
         throw new ParamError("ask.kind must be crossings, slopePoint, slopePoints, increasingOn, decreasingOn, extrema or roots");
       }
@@ -490,8 +524,9 @@ export const functionGraph: Scene<FunctionGraphParams> = {
         return extremaMisses(facts.extrema, p.ask);
       case "roots": {
         if (rootsMisses(facts.roots, p.ask.expect) > 0) return p.ask.report === "roots" ? rootsMisses(facts.roots, p.ask.expect) : NaN;
-        if (p.ask.report === "sum") return facts.roots.reduce((t, r) => t + r, 0);
-        if (p.ask.report === "product") return facts.roots.reduce((t, r) => t * r, 1);
+        const { sum, product } = rootsSumProduct(facts.roots, facts.rootMult);
+        if (p.ask.report === "sum") return sum;
+        if (p.ask.report === "product") return product;
         return 0;
       }
     }
@@ -782,7 +817,7 @@ export const functionGraph: Scene<FunctionGraphParams> = {
     // Zeros: each drops onto the x-axis in turn, with its value.
     if (p.ask.kind === "roots" && pm > 0) {
       const ask = p.ask;
-      const head = rootsHead(ask, facts.roots);
+      const head = rootsHead(ask, facts.roots, facts.rootMult);
       const headStart = P.r - 2 - head.length * 11 * 0.52;
       const headY = headStart < P.l + 6 + p.fLabel.length * 6.4 + 8 ? P.t + 17 : P.t + 2;
       const n = facts.roots.length;

@@ -372,6 +372,25 @@ describe("functionGraph roots", () => {
     const all = texts(["curve", "mark"], 1);
     expect(all).toEqual(expect.arrayContaining(["x = 1", "x = 2", "sum of zeros 3"]));
   });
+  const head = (raw: Record<string, unknown>) => {
+    const { scene, p } = parsedParams("functionGraph", raw);
+    const texts = scene.frame(p, { played: ["curve", "mark"], t: 1 } as never).filter((sh) => sh.kind === "text") as { text: string; tone?: string; anchor?: string }[];
+    return texts.filter((t) => t.tone === "good" && t.anchor === "end").map((t) => t.text);
+  };
+  it("counts a repeated zero twice in the sum and product, and says the zeros are equal", () => {
+    const sq = { f: "4*x^2-4*x+1", window: { x: [-1, 2], y: [-1, 4] } };
+    expect(run({ ...sq, ask: { kind: "roots", expect: [0.5], report: "sum" } }).value).toBeCloseTo(1, 6);
+    expect(run({ ...sq, ask: { kind: "roots", expect: [0.5], report: "product" } }).value).toBeCloseTo(0.25, 6);
+    expect(head({ ...sq, ask: { kind: "roots", expect: [0.5] } })).toContain("2 equal zeros");
+    expect(head({ ...sq, ask: { kind: "roots", expect: [0.5], withSumProduct: true } })).toContain("2 equal zeros · sum 1 · product 1/4");
+    // x(x - 1)^2: three zeros, one of them repeated; sum 2, product 0.
+    expect(head({ f: "x*(x-1)^2", window: { x: [-1, 2], y: [-1, 1] }, ask: { kind: "roots", expect: [0, 1], withSumProduct: true } })).toContain("3 zeros, one repeated · sum 2 · product 0");
+  });
+  it("writes a sum or product as a fraction when it is one, and can say roots", () => {
+    expect(head({ f: "5*x-7*x^2+3", window: { x: [-1, 1.5], y: [-3, 3] }, ask: { kind: "roots", expect: [-0.388618, 1.102904], report: "sum" } })).toContain("sum of zeros 5/7");
+    expect(head({ f: "3*x^2+x-2", window: { x: [-2, 1.5], y: [-3, 5] }, ask: { kind: "roots", expect: [-1, 2 / 3], word: "roots", withSumProduct: true } })).toContain("2 roots · sum −1/3 · product −2/3");
+    expect(getScene("functionGraph")!.parse({ ...quad, ask: { kind: "roots", expect: [1, 2], word: "answers" } })).toHaveProperty("error");
+  });
   it("can add the sum and product to the header of a zeros answer", () => {
     const { scene, p } = parsedParams("functionGraph", { ...quad, ask: { kind: "roots", expect: [1, 2], withSumProduct: true } });
     const texts = scene.frame(p, { played: ["curve", "mark"], t: 1 } as never).filter((sh) => sh.kind === "text").map((sh) => (sh as { text: string }).text);
