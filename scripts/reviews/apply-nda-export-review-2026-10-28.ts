@@ -26,8 +26,10 @@
  * booklet prints exactly that, so the bank stays verbatim; recorded as a review
  * row so the next reader does not "fix" it.
  *
- * SAFETY: same as apply-set-theory-key-fix.ts. Every precondition is asserted
- * and the script fails CLOSED. content_hash covers (text, options, answer), so
+ * SAFETY: one transaction over the direct connection (SUPABASE_DB_URL): rows are
+ * locked, every precondition is asserted, the keys are read back, and a dry run
+ * performs every write and rolls it back. The script fails CLOSED. content_hash
+ * covers (text, options, answer), so
  * the two key flips recompute it; solution edits leave it alone. uuids are kept,
  * so mock snapshots, attempt answers and tags survive.
  *
@@ -36,7 +38,7 @@
  *   npx tsx scripts/reviews/regrade-attempt.ts nda-2023-sep-maths --apply --allow-lower
  */
 import { join } from "node:path";
-import { createClient } from "@supabase/supabase-js";
+import { Client } from "pg";
 import { contentHash } from "../../src/lib/upload/hash";
 
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -223,19 +225,42 @@ function keyOf(r: Row): string[] {
 }
 
 async function main() {
-  const db = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.SUPABASE_SERVICE_ROLE_KEY!,
-    { auth: { persistSession: false } }
-  );
+  const dbUrl = process.env.SUPABASE_DB_URL ?? fail("SUPABASE_DB_URL is not set");
+  const db = new Client({ connectionString: dbUrl });
+  await db.connect();
+  try {
+    // One transaction over the direct connection: the rows are locked while the
+    // preconditions are checked, and a dry run (or any failure) rolls back.
+    await db.query("BEGIN");
+    await run(db);
+    if (APPLY) {
+      await db.query("COMMIT");
+      console.log("COMMITTED.");
+    } else {
+      await db.query("ROLLBACK");
+      console.log("DRY RUN: every write ran and was rolled back. Re-run with --apply to keep them.");
+    }
+  } catch (e) {
+    await db.query("ROLLBACK").catch(() => {});
+    throw e;
+  } finally {
+    await db.end();
+  }
+}
 
+async function run(db: Client) {
   const ids = FIXES.map((f) => f.id);
-  const { data, error } = await db
-    .from("questions")
-    .select("id, text, solution, content_hash, options(label, text, is_correct)")
-    .in("id", ids);
-  if (error) throw error;
-  const byId = new Map<string, Row>((data as Row[]).map((r) => [r.id, r]));
+  const qs = await db.query<Omit<Row, "options">>(
+    "SELECT id, text, solution, content_hash FROM questions WHERE id = ANY($1::uuid[]) FOR UPDATE",
+    [ids]
+  );
+  const opts = await db.query<{ question_id: string; label: string; text: string; is_correct: boolean }>(
+    "SELECT question_id, label::text AS label, text, is_correct FROM options WHERE question_id = ANY($1::uuid[]) FOR UPDATE",
+    [ids]
+  );
+  const byId = new Map<string, Row>(
+    qs.rows.map((r) => [r.id, { ...r, options: opts.rows.filter((o) => o.question_id === r.id) }])
+  );
 
   // ---- preconditions + plan ------------------------------------------------
   type Write = { id: string; patch: Record<string, string>; flip?: { to: string }; review: Record<string, string> };
@@ -254,9 +279,8 @@ async function main() {
       if (contentHash(r.text, optTexts, f.from) !== r.content_hash)
         fail(`${f.id.slice(0, 8)} content_hash not reproducible from live columns`);
       const hashAfter = contentHash(r.text, optTexts, f.to);
-      const { data: clash, error: ce } = await db.from("questions").select("id").eq("content_hash", hashAfter);
-      if (ce) throw ce;
-      if ((clash ?? []).length) fail(`${f.id.slice(0, 8)} flipped hash collides with ${clash![0].id}`);
+      const clash = await db.query<{ id: string }>("SELECT id FROM questions WHERE content_hash = $1", [hashAfter]);
+      if (clash.rows.length) fail(`${f.id.slice(0, 8)} flipped hash collides with ${clash.rows[0].id}`);
       writes.push({
         id: f.id,
         patch: { content_hash: hashAfter, solution: f.solution },
@@ -290,36 +314,40 @@ async function main() {
   }
 
   console.log("\npreconditions OK");
-  if (!APPLY) {
-    console.log("DRY RUN. Re-run with --apply to write.");
-    return;
-  }
 
-  // ---- writes ---------------------------------------------------------------
-  // Options before the hash, as in apply-set-theory-key-fix.ts: a run that dies
-  // between the two leaves a stale dedup fingerprint, never a wrong key.
+  // ---- writes (inside the caller's transaction) ------------------------------
   for (const w of writes) {
     if (w.flip) {
-      const r = byId.get(w.id)!;
-      for (const o of r.options) {
-        const want = o.label === w.flip.to;
-        if (o.is_correct === want) continue;
-        const { error: e } = await db.from("options").update({ is_correct: want }).eq("question_id", w.id).eq("label", o.label);
-        if (e) throw e;
-      }
+      const res = await db.query(
+        "UPDATE options SET is_correct = (label::text = $2) WHERE question_id = $1 AND is_correct <> (label::text = $2)",
+        [w.id, w.flip.to]
+      );
+      if (res.rowCount !== 2) fail(`${w.id.slice(0, 8)} key flip touched ${res.rowCount} options, expected 2`);
     }
-    if (Object.keys(w.patch).length) {
-      const { error: e } = await db.from("questions").update(w.patch).eq("id", w.id);
-      if (e) throw e;
+    if (w.patch.solution !== undefined) {
+      await db.query("UPDATE questions SET solution = $2 WHERE id = $1", [w.id, w.patch.solution]);
     }
+    if (w.patch.content_hash !== undefined) {
+      await db.query("UPDATE questions SET content_hash = $2 WHERE id = $1", [w.id, w.patch.content_hash]);
+    }
+    await db.query(
+      "INSERT INTO question_reviews (question_id, run_label, derived_model, reviewed_content_hash, method, verdict, note) VALUES ($1, $2, $3, $4, $5, $6, $7)",
+      [w.id, RUN_LABEL, MODEL, w.review.reviewed_content_hash, w.review.method, w.review.verdict, w.review.note]
+    );
   }
 
-  const { error: re } = await db.from("question_reviews").insert(
-    writes.map((w) => ({ question_id: w.id, run_label: RUN_LABEL, derived_model: MODEL, ...w.review }))
+  // Read back through the same transaction: exactly one correct option each.
+  const keys = await db.query<{ id: string; key: string }>(
+    "SELECT question_id AS id, string_agg(label::text, '') AS key FROM options WHERE question_id = ANY($1::uuid[]) AND is_correct GROUP BY question_id",
+    [ids]
   );
-  if (re) throw re;
+  for (const f of FIXES) {
+    const want = f.kind === "key" ? f.to : f.key;
+    const got = keys.rows.find((r) => r.id === f.id)?.key;
+    if (got !== want) fail(`${f.id.slice(0, 8)} reads back key ${got}, expected ${want}`);
+  }
 
-  console.log(`APPLIED: ${writes.filter((w) => Object.keys(w.patch).length).length} questions updated, ${writes.length} review rows.`);
+  console.log(`\n${writes.filter((w) => Object.keys(w.patch).length).length} questions updated, ${writes.length} review rows, keys read back OK.`);
   console.log("\nNEXT:");
   console.log("  npx tsx scripts/reviews/regrade-attempt.ts nda-2017-sep-maths --apply --allow-lower");
   console.log("  npx tsx scripts/reviews/regrade-attempt.ts nda-2023-sep-maths --apply --allow-lower");
