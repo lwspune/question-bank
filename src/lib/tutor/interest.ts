@@ -43,6 +43,70 @@ export function normaliseFrom(raw: unknown): string | null {
   return typeof raw === "string" && SECTION_RE.test(raw) ? raw : null;
 }
 
+/**
+ * Whether to ask for a mobile as the last question (owner, 2026-10-28): only
+ * after a Yes, and only when the account has none on file, so we can reach the
+ * people who want tutoring without asking anyone twice.
+ */
+export function needsContactStep({ wants, hasMobile }: { wants: boolean; hasMobile: boolean }): boolean {
+  return wants && !hasMobile;
+}
+
+/** One stored answer, as the contact list reads it. */
+export type TutorAnswerRow = {
+  user_id: string | null;
+  role: TutorRole;
+  wants: boolean;
+  mode: TutorMode | null;
+  exam_slug: string | null;
+  created_at: string;
+};
+
+export type TutorContact = {
+  userId: string;
+  name: string | null;
+  email: string | null;
+  mobile: string | null;
+  role: TutorRole;
+  mode: TutorMode | null;
+  examSlug: string | null;
+  answeredAt: string;
+};
+
+/**
+ * The people who said Yes, newest first, for the owner to reach. A Yes saved
+ * before sign-in was required (2026-10-28) has no account behind it, so it is
+ * counted as unreachable rather than listed.
+ */
+export function buildTutorContacts(
+  rows: readonly TutorAnswerRow[],
+  people: ReadonlyMap<string, { name: string | null; email: string | null }>,
+  mobiles: ReadonlyMap<string, string>
+): { contacts: TutorContact[]; unreachableYes: number } {
+  const contacts: TutorContact[] = [];
+  let unreachableYes = 0;
+  for (const r of rows) {
+    if (!r.wants) continue;
+    if (!r.user_id) {
+      unreachableYes++;
+      continue;
+    }
+    const person = people.get(r.user_id);
+    contacts.push({
+      userId: r.user_id,
+      name: person?.name ?? null,
+      email: person?.email ?? null,
+      mobile: mobiles.get(r.user_id) ?? null,
+      role: r.role,
+      mode: r.mode,
+      examSlug: r.exam_slug,
+      answeredAt: r.created_at,
+    });
+  }
+  contacts.sort((a, b) => b.answeredAt.localeCompare(a.answeredAt));
+  return { contacts, unreachableYes };
+}
+
 /** One stored answer, as the readout reads it. */
 export type TutorInterestRow = {
   role: TutorRole;
