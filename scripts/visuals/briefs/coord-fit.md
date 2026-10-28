@@ -24,6 +24,13 @@ these answers:
    the scene splits a pair itself. The two lines must cross somewhere sensible
    to draw (not parallel).
 
+9. **point**: the coordinates of a point the solution works out from given
+   points: the point dividing a segment in a given ratio (internally or
+   externally), a midpoint, a vertex found from a midpoint, or a centroid.
+   One point only (two trisection points as the answer is `no`).
+10. **ratio**: the ratio in which a given point, an axis or a given line
+   divides the segment joining two given points.
+
 A pair of PARALLEL lines from one equation (9x² − 24xy + 16y² ... = 0) fits
 **distance** when the key is the distance between them.
 
@@ -34,7 +41,7 @@ For each question decide which ONE of these the answer is, or `no`. Fit only
 when the KEYED answer is that one measured number. An equation as the answer
 (of a circle, a tangent, a locus) is `no` unless the key is a single measured
 number from the list. Counting things (how many common tangents), angles
-other than between two lines, eccentricity, a parameter value (find k), a
+other than between two lines, eccentricity, a parameter value (find k, unless k is a coordinate of a point from the list), a
 joint equation as the answer, the point where two lines meet, and anything
 else are `no`.
 
@@ -50,7 +57,7 @@ Write a JSON array to your output path, one object per question, input order:
 ```
 
 - `fit`: distance, yIntercept, xIntercept, slope, radius, locusRadius,
-  chordLength, tangentLength, area, angle or no.
+  chordLength, tangentLength, area, angle, point, ratio or no.
 - `note`: at most 12 words.
 
 Read only your input file, write only your output file, run nothing. When

@@ -4,7 +4,10 @@
  * the plane. Objects appear in the beat they belong to (`beat`): what the
  * question gives, what the solution works out, then the lines it draws.
  *
- *   points    { id, at: [x, y], label?, beat? }
+ *   points    { id, at: [x, y], label?, beat? }, or a point the scene works out from
+ *             earlier points (beat "derived" by default):
+ *               { id, divides: [p, q], ratio: [m, n], external? }  the point dividing pq in m : n
+ *               { id, midpointOf: [p, q] }   { id, centroidOf: [p, q, r] }
  *   circles   { id, center: [x, y] | point id, r, label?, beat? }
  *   conics    { id, type: parabola | ellipse | hyperbola, ... }
  *               parabola  vertex, a, axis "x": (y-k)^2 = 4a(x-h); axis "y": (x-h)^2 = 4a(y-k)
@@ -21,7 +24,10 @@
  * The answer (params.ask) is measured on the scene's own model: distance (any
  * two of point, line, circle; point to a conic), yIntercept, xIntercept, slope,
  * radius, locusRadius, chordLength, tangentLength (point to circle), area,
- * angle (between two lines: acute unless obtuse, as the angle in radians or its tan, cos or sin).
+ * angle (between two lines: acute unless obtuse, as the angle in radians or its tan, cos or sin),
+ * point (a constructed point checked against the stated answer `expect`: the value is
+ * how far it misses, so 0 when it lands there) and ratio (the ratio AP : PB in which a
+ * point, or a line meeting AB, divides AB, as the number AP/PB; negative when external).
  * Beats: given, derived, construct, trace, answer.
  */
 import { arcPath, dot, line, num, onCircle, text } from "../geometry";
@@ -36,6 +42,8 @@ interface Pt {
   at: XY;
   label: string;
   beat: ObjBeat;
+  /** Worked out by the scene (divides, midpointOf, centroidOf), not given as numbers. */
+  made: boolean;
 }
 
 interface Piece {
@@ -82,7 +90,9 @@ type Ask =
   | { kind: "chordLength"; line: string; of: string }
   | { kind: "tangentLength"; from: string; to: string }
   | { kind: "area"; points: string[] }
-  | { kind: "angle"; lines: [string, string]; as: "angle" | "tan" | "cos" | "sin"; obtuse: boolean };
+  | { kind: "angle"; lines: [string, string]; as: "angle" | "tan" | "cos" | "sin"; obtuse: boolean }
+  | { kind: "point"; point: string; expect: XY }
+  | { kind: "ratio"; of: [string, string]; by: string };
 
 export interface CoordParams {
   x: [number, number];
@@ -205,6 +215,8 @@ export interface CoordFacts {
     | { kind: "polygon"; points: XY[] }
     /** An arc at the meeting point, anticlockwise from angle `from` through `span` (radians, plane coordinates). */
     | { kind: "angle"; at: XY; from: number; span: number }
+    /** A segment cut at a point: the two parts in two colours. */
+    | { kind: "split"; from: XY; at: XY; to: XY }
     | { kind: "none" };
 }
 
@@ -345,7 +357,42 @@ function measure(p: CoordParams): Pick<CoordFacts, "value" | "mark"> {
       const value = ask.as === "angle" ? want : ask.as === "cos" ? c : ask.as === "sin" ? Math.sin(want) : Math.abs(c) < 1e-12 ? NaN : Math.tan(want);
       return { value, mark };
     }
+    case "point": {
+      const P = point(ask.point)!.at;
+      return { value: len(sub(P, ask.expect)), mark: { kind: "point", at: P } };
+    }
+    case "ratio": {
+      const [A, B] = ask.of.map((id) => point(id)!.at);
+      const cut = cutOf(A, B, ask.by, p.points, p.lines);
+      if (typeof cut === "string") return { value: NaN, mark: { kind: "none" } };
+      return { value: cut.t / (1 - cut.t), mark: { kind: "split", from: A, at: cut.P, to: B } };
+    }
   }
+}
+
+/**
+ * Where a point (on line AB) or a line (crossing it) cuts AB: the point, and t
+ * with P = A + t (B - A). AP : PB = t : (1 - t), negative outside the segment.
+ */
+function cutOf(A: XY, B: XY, by: unknown, points: Pt[], lines: Ln[]): { P: XY; t: number } | string {
+  const d = sub(B, A);
+  const dd = d[0] * d[0] + d[1] * d[1];
+  const q = points.find((pp) => pp.id === by);
+  const L = lines.find((l) => l.id === by);
+  let P: XY;
+  if (q) {
+    P = q.at;
+    const off = Math.abs(d[0] * (P[1] - A[1]) - d[1] * (P[0] - A[0])) / Math.sqrt(dd);
+    if (off > 1e-6 * (1 + Math.sqrt(dd))) return `${q.id} is not on the line through the two points`;
+  } else if (L) {
+    const along = L.a * d[0] + L.b * d[1];
+    if (Math.abs(along) < 1e-12) return `${L.id} is parallel to the segment, so it does not cut it`;
+    const t = -(L.a * A[0] + L.b * A[1] + L.c) / along;
+    P = add(A, mul(d, t));
+  } else return `by must name a point or a line, not ${String(by)}`;
+  const t = ((P[0] - A[0]) * d[0] + (P[1] - A[1]) * d[1]) / dd;
+  if (Math.abs(1 - t) < 1e-12) return "the cut is at B itself, so there is no ratio";
+  return { P, t };
 }
 
 /** Where two lines meet, or null when they are parallel. */
@@ -491,16 +538,43 @@ export const coordGeometry: Scene<CoordParams> = {
         return v;
       };
 
-      const points: Pt[] = list(o, "points", 8).map((q, i) => {
-        const at = pair(q, "at");
-        return { id: claim(q.id, `points[${i}]`), at, // An empty label is a bare dot (a helper point); no label shows the coordinates.
-        label: q.label === "" ? "" : optionalLabel(q, "label") ?? `(${num(at[0])}, ${num(at[1])})`, beat: beatOf(q, "given") };
-      });
+      const points: Pt[] = [];
       const pointAt = (id: unknown, where: string): XY => {
         const q = points.find((pp) => pp.id === id);
         if (!q) throw new ParamError(`${where}: no point named ${String(id)}`);
         return q.at;
       };
+      // A constructed point names points listed before it.
+      const named = (v: unknown, n: number, id: string, key: string): XY[] => {
+        if (!Array.isArray(v) || v.length !== n) throw new ParamError(`${id}: ${key} must name ${n} points`);
+        return v.map((w) => pointAt(w, id));
+      };
+      for (const [i, q] of list(o, "points", 10).entries()) {
+        const id = claim(q.id, `points[${i}]`);
+        let at: XY;
+        let made = true;
+        if (q.divides !== undefined) {
+          const [P, Q] = named(q.divides, 2, id, "divides");
+          if (!Array.isArray(q.ratio) || q.ratio.length !== 2 || !q.ratio.every((v) => typeof v === "number" && Number.isFinite(v) && v > 0)) throw new ParamError(`${id}: ratio must be two positive numbers [m, n]`);
+          const [m, n] = q.ratio as number[];
+          if (q.external !== undefined && typeof q.external !== "boolean") throw new ParamError(`${id}: external must be true or false`);
+          if (q.external === true) {
+            if (Math.abs(m - n) < 1e-12) throw new ParamError(`${id}: no point divides a segment externally in 1 : 1`);
+            at = [(m * Q[0] - n * P[0]) / (m - n), (m * Q[1] - n * P[1]) / (m - n)];
+          } else at = [(n * P[0] + m * Q[0]) / (m + n), (n * P[1] + m * Q[1]) / (m + n)];
+        } else if (q.midpointOf !== undefined) {
+          const [P, Q] = named(q.midpointOf, 2, id, "midpointOf");
+          at = [(P[0] + Q[0]) / 2, (P[1] + Q[1]) / 2];
+        } else if (q.centroidOf !== undefined) {
+          const [P, Q, R] = named(q.centroidOf, 3, id, "centroidOf");
+          at = [(P[0] + Q[0] + R[0]) / 3, (P[1] + Q[1] + R[1]) / 3];
+        } else {
+          at = pair(q, "at");
+          made = false;
+        }
+        // An empty label is a bare dot (a helper point); no label shows the coordinates.
+        points.push({ id, at, label: q.label === "" ? "" : optionalLabel(q, "label") ?? `(${num(at[0])}, ${num(at[1])})`, beat: beatOf(q, made ? "derived" : "given"), made });
+      }
       const at = (q: Record<string, unknown>, key: string): XY => (typeof q[key] === "string" ? pointAt(q[key], key) : pair(q, key));
 
       const curves: Curve[] = [];
@@ -645,8 +719,27 @@ export const coordGeometry: Scene<CoordParams> = {
           ask = { kind: "angle", lines: [l1, l2], as, obtuse: a.obtuse === true };
           break;
         }
+        case "point": {
+          const q = points.find((pp) => pp.id === a.point);
+          if (!q) throw new ParamError("ask: point needs point naming a point");
+          if (!q.made) throw new ParamError(`ask: ${q.id} is given as numbers; a point ask checks a point the scene constructed (divides, midpointOf, centroidOf)`);
+          if (!Array.isArray(a.expect) || a.expect.length !== 2 || !a.expect.every((v) => typeof v === "number" && Number.isFinite(v))) throw new ParamError("ask: point needs expect, the answer's coordinates [x, y]");
+          if (a.squared !== undefined || a.times !== undefined) throw new ParamError("ask: a point answer cannot be squared or scaled");
+          ask = { kind: "point", point: q.id, expect: a.expect as XY };
+          break;
+        }
+        case "ratio": {
+          if (!Array.isArray(a.of) || a.of.length !== 2 || !a.of.every(isPoint) || a.of[0] === a.of[1]) throw new ParamError("ask: ratio needs of naming two points [A, B]");
+          const [A, B] = (a.of as string[]).map((id) => pointAt(id, "ask"));
+          if (len(sub(A, B)) < tol) throw new ParamError("ask: A and B are the same point");
+          const cut = cutOf(A, B, a.by, points, lines);
+          if (typeof cut === "string") throw new ParamError(`ask: ${cut}`);
+          if (a.squared !== undefined || a.times !== undefined) throw new ParamError("ask: a ratio cannot be squared or scaled");
+          ask = { kind: "ratio", of: a.of as [string, string], by: a.by as string };
+          break;
+        }
         default:
-          throw new ParamError("ask.kind must be distance, yIntercept, xIntercept, slope, radius, locusRadius, chordLength, tangentLength, area or angle");
+          throw new ParamError("ask.kind must be distance, yIntercept, xIntercept, slope, radius, locusRadius, chordLength, tangentLength, area, angle, point or ratio");
       }
       if (a.squared !== undefined && typeof a.squared !== "boolean") throw new ParamError("ask: squared must be true or false");
       const times = a.times === undefined ? 1 : finite(a, "times");
@@ -658,6 +751,12 @@ export const coordGeometry: Scene<CoordParams> = {
 
   checkText(p, value) {
     if (!Number.isFinite(value)) return "The drawing has no single value for this.";
+    if (p.ask.kind === "point") {
+      const ask = p.ask;
+      const P = p.points.find((q) => q.id === ask.point)!.at;
+      const got = `(${num(P[0], 4)}, ${num(P[1], 4)})`;
+      return value < 1e-9 ? `The point the scene constructs is ${got}, the stated answer.` : `The point the scene constructs is ${got}, not (${num(ask.expect[0], 4)}, ${num(ask.expect[1], 4)}).`;
+    }
     const base = measuredText(p, coordFacts(p).measured);
     const how = [p.report.squared ? "squared" : "", p.report.times !== 1 ? `times ${num(p.report.times)}` : ""].filter(Boolean).join(" and ");
     return how ? `${base} ${how[0].toUpperCase()}${how.slice(1)}, that gives ${num(value, 4)}.` : base;
@@ -784,6 +883,10 @@ export const coordGeometry: Scene<CoordParams> = {
       along(mk.from, [mk.from[0] + mk.run, mk.from[1]]);
       along([mk.from[0] + mk.run, mk.from[1]], [mk.from[0] + mk.run, mk.from[1] + mk.rise]);
     } else if (mk.kind === "point") obstacles.push(px(mk.at));
+    else if (mk.kind === "split") {
+      along(mk.from, mk.at);
+      along(mk.at, mk.to);
+    }
     else if (mk.kind === "angle") {
       const [cx, cy] = px(mk.at);
       for (let i = 0; i <= 12; i++) obstacles.push(onCircle(cx, cy, ANGLE_R, mk.from + (mk.span * i) / 12));
@@ -970,6 +1073,13 @@ export const coordGeometry: Scene<CoordParams> = {
         over.push(line(a[0], a[1], b[0], b[1], { stroke: "good", width: 2, dash: "4 3", opacity: pa }), line(b[0], b[1], c[0], c[1], { stroke: "good", width: 2, dash: "4 3", opacity: pa }));
       } else if (m.kind === "polygon") {
         under.push({ kind: "path", d: "M" + m.points.map((q) => px(q).map((v) => Math.round(v * 100) / 100).join(" ")).join(" L") + " Z", fill: "goodSoft", stroke: "good", width: 2, opacity: pa });
+      } else if (m.kind === "split") {
+        const [a, c, b] = [px(m.from), px(m.at), px(m.to)];
+        const part = (u: XY, v: XY, k: number, tone: "good" | "amber") => over.push(line(u[0], u[1], u[0] + (v[0] - u[0]) * k, u[1] + (v[1] - u[1]) * k, { stroke: tone, width: 4, cap: "round" }));
+        // A then the part beyond the cut, each across half the beat.
+        part(a, c, Math.min(1, pa * 2), "good");
+        if (pa > 0.5) part(c, b, Math.min(1, (pa - 0.5) * 2), "amber");
+        if (pa >= 1) over.push(dot(c[0], c[1], 5, "fg", { stroke: "card", width: 2 }));
       } else if (m.kind === "angle") {
         const [cx, cy] = px(m.at);
         const d = arcPath(cx, cy, ANGLE_R, m.from, m.from + m.span * pa);
@@ -989,8 +1099,29 @@ function angleText(v: number): string {
   return Math.abs(deg - Math.round(deg)) < 1e-6 ? `${Math.round(deg)}°` : `${num(v, 3)} rad`;
 }
 
+/** AP/PB as small whole numbers when it is a simple ratio ("2 : 7"), else to 4 places; "externally" when negative. */
+function ratioText(v: number): string {
+  if (!Number.isFinite(v)) return "?";
+  const k = Math.abs(v);
+  let r = `${num(k, 4)} : 1`;
+  for (let n = 1; n <= 30; n++) {
+    const m = k * n;
+    if (Math.abs(m - Math.round(m)) < 1e-6 && Math.round(m) > 0) {
+      r = `${Math.round(m)} : ${n}`;
+      break;
+    }
+  }
+  return v < 0 ? `${r} externally` : r;
+}
+
 function defaultLabel(p: CoordParams, v: number): string {
   const n = Number.isFinite(v) ? num(v, 3) : "?";
+  if (p.ask.kind === "point") {
+    const ask = p.ask;
+    const P = p.points.find((q) => q.id === ask.point)!.at;
+    return `${ask.point} = (${num(P[0], 3)}, ${num(P[1], 3)})`;
+  }
+  if (p.ask.kind === "ratio") return `ratio = ${ratioText(v)}`;
   if (p.ask.kind === "angle" && p.report.times === 1 && !p.report.squared) {
     return p.ask.as === "angle" ? `angle = ${Number.isFinite(v) ? angleText(v) : "?"}` : `${p.ask.as} θ = ${n}`;
   }
@@ -1032,6 +1163,10 @@ function measuredText(p: CoordParams, value: number): string {
       return `The tangent from the point is ${v} long.`;
     case "area":
       return `The shaded figure has area ${v}.`;
+    case "point":
+      return `The constructed point misses the stated answer by ${v}.`;
+    case "ratio":
+      return `The cut divides the segment as ${ratioText(value)}.`;
     case "angle": {
       const which = p.ask.obtuse ? "obtuse" : "acute";
       return p.ask.as === "angle" ? `The lines meet at an ${which} angle of ${num(value, 4)} rad (${num((value * 180) / Math.PI, 4)}°).` : `The ${which} angle θ between the lines has ${p.ask.as} θ = ${v}.`;
