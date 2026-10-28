@@ -15,6 +15,12 @@ Bing to re-crawl pages on this site, which is what we ask Bing to do anyway.
 
 `npm run seo:indexnow` (dry run) / `npm run seo:indexnow -- --apply`.
 
+**It runs by itself since 2026-10-28:** `.github/workflows/indexnow.yml`, after
+every successful deploy and once a day at 09:30 IST. It sends only pages new or
+changed since its last good run (`--since`/`--save`, a saved copy of the
+sitemap kept in the Actions cache), so there is no reason to run `--apply` by
+hand. Read the job log for what went.
+
 The script discovers the key by looking for the single `.txt` file in this
 directory whose name is a valid IndexNow key, so rotating means: add the new
 file, delete the old one. `INDEXNOW_KEY` overrides the lookup if both ever

@@ -69,6 +69,12 @@ Every push to `main` is built by `.github/workflows/deploy.yml` on GitHub's free
 - **A staged test without going live:** Actions → Run workflow → `staged` builds with the production settings and uploads with `--skip-domain`; open the URL from the run summary (Vercel login required), then Vercel → Deployments → Promote, or leave it. Google sign-in fails on that `vercel.app` URL (`origin_mismatch`, an unregistered origin); test with email sign-in there.
 - **Guards before every deploy:** no `[SENSITIVE]` and no service-key value anywhere in the built output. Only `.next/cache/webpack` is cached: in a public repo a pull request can read Actions caches.
 
+### Search engines: IndexNow and Google requests (2026-10-28)
+
+**IndexNow runs by itself** (`.github/workflows/indexnow.yml`): after every successful deploy and daily at 09:30 IST it sends Bing (and Yandex, Naver, Seznam) only the sitemap pages that are new or changed since its last good run. Its log prints `new · changed · unchanged · generation-time only · removed` and Bing's reply. `generation-time only` is the ~570 hub entries whose date is just the moment the sitemap was built; they are never resent. To send everything again, delete the `indexnow-sitemap-*` caches (Actions → Caches) and run the workflow from the Actions tab. **Google does not take IndexNow.**
+
+**Google has no API to request indexing**, so its ~10 requests a day are made by hand in Search Console (owner decision 2026-10-28). Claude does them in the owner's Chrome when asked ("do today's indexing"); the order and the log of URLs done are in Claude's memory note `project_daily_manual_indexing`.
+
 ### Student results (migration 0149, 2026-10-10)
 
 When an exam's result is announced, add it so students who chose that exam are asked on /me "Did you clear it?":

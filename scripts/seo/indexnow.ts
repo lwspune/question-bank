@@ -5,6 +5,13 @@
  *   npm run seo:indexnow -- --apply      # actually submit
  *   npm run seo:indexnow -- --only=/guide     # just one subtree
  *   npm run seo:indexnow -- --limit=50        # first N after filtering
+ *   npm run seo:indexnow -- --since=snap.json --save=snap.json
+ *        # only URLs new or changed since the saved copy, then save the new one
+ *
+ * --since/--save is what .github/workflows/indexnow.yml runs, after each deploy
+ * and once a day. A missing --since file means "first run": every URL is sent.
+ * The copy is saved only after every submission succeeded (or there was nothing
+ * to send), so a failed run is retried in full next time.
  *
  * DRY RUN BY DEFAULT, like `email:send` and `itemstats:rollup`. Submitting is
  * an outward-facing action against someone else's index, so it takes an
@@ -24,30 +31,27 @@
  * 2026-09-17 ROADMAP entry.
  */
 import { join } from "path";
-import { readdirSync } from "fs";
+import { existsSync, readFileSync, readdirSync, writeFileSync } from "fs";
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 
 import {
   buildIndexNowPayloads,
   isValidIndexNowKey,
   INDEXNOW_ENDPOINT,
+  parseSitemap,
+  selectChangedUrls,
   type IndexNowPayload,
+  type SitemapSnapshot,
 } from "../../src/lib/seo/indexnow";
 
 const HOST = "www.pyqvault.com";
 const SITE = `https://${HOST}`;
 
 /**
- * Prefixes held back from submission.
- *
- * `/formula` shipped 2026-09-17 and has NOT had a browser pass. Asking an index
- * to fetch an unverified surface is the "reported done before the golden path
- * was walked" failure the project's definition of done exists to prevent.
- *
- * TO REMOVE: walk /formula and one identity page in a browser, confirm they
- * render, then delete this entry. It is a dated hold, not a permanent rule.
+ * Prefixes held back from submission. Empty since 2026-10-28: `/formula`, held
+ * on 2026-09-17 until it had a browser pass, had been live for over a month.
  */
-const HOLD_PREFIXES = ["/formula"];
+const HOLD_PREFIXES: string[] = [];
 
 function arg(name: string): string | undefined {
   const hit = process.argv.find((a) => a.startsWith(`--${name}=`));
@@ -75,21 +79,27 @@ function resolveKey(): string {
   );
 }
 
-async function fetchSitemapUrls(): Promise<string[]> {
+async function fetchSitemap(): Promise<SitemapSnapshot> {
   const res = await fetch(`${SITE}/sitemap.xml`, {
     headers: { "user-agent": "pyqvault-indexnow/1.0" },
   });
   if (!res.ok) throw new Error(`sitemap.xml returned ${res.status}`);
-  const xml = await res.text();
-  const urls = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1].trim());
-  if (urls.length === 0) throw new Error("sitemap.xml parsed to zero URLs");
-  return urls;
+  return parseSitemap(await res.text());
 }
 
 async function main() {
   const apply = has("apply");
   const only = arg("only");
   const limit = arg("limit") ? Number(arg("limit")) : undefined;
+  const since = arg("since");
+  const save = arg("save");
+  if (save && (only || limit !== undefined)) {
+    // The saved copy says "everything in here was sent". With a filter, some
+    // of it was not, and the next run would never send it.
+    console.error("FAIL: --save cannot be combined with --only or --limit.");
+    process.exitCode = 1;
+    return;
+  }
   const key = resolveKey();
   const keyLocation = `${SITE}/${key}.txt`;
 
@@ -119,17 +129,37 @@ async function main() {
   }
   console.log("  key file verified live ✓\n");
 
-  const all = await fetchSitemapUrls();
-  let urls = all.filter((u) => {
+  const snapshot = await fetchSitemap();
+  let all = Object.keys(snapshot);
+  if (since) {
+    const prev: SitemapSnapshot | null = existsSync(since)
+      ? JSON.parse(readFileSync(since, "utf8"))
+      : null;
+    const diff = selectChangedUrls(prev, snapshot);
+    console.log("  since             %s%s", since, diff.firstRun ? "  (no saved copy: first run, sending all)" : "");
+    console.log("  sitemap URLs      %d", Object.keys(snapshot).length);
+    console.log(
+      "  new %d · changed %d · unchanged %d · generation-time only %d · removed %d",
+      diff.added,
+      diff.changed,
+      diff.unchanged,
+      diff.skippedGenerated,
+      diff.removed
+    );
+    all = diff.urls;
+  }
+  const isHeld = (u: string) => {
     const path = u.startsWith(SITE) ? u.slice(SITE.length) : u;
-    return !HOLD_PREFIXES.some((p) => path === p || path.startsWith(p + "/"));
-  });
+    return HOLD_PREFIXES.some((p) => path === p || path.startsWith(p + "/"));
+  };
+  let urls = all.filter((u) => !isHeld(u));
   const held = all.length - urls.length;
 
   if (only) urls = urls.filter((u) => u.includes(only));
   if (limit !== undefined && Number.isFinite(limit)) urls = urls.slice(0, limit);
 
-  console.log("  sitemap URLs      %d", all.length);
+  if (!since) console.log("  sitemap URLs      %d", all.length);
+  else console.log("  to send           %d", all.length);
   if (held) console.log("  held back         %d  (%s — unverified)", held, HOLD_PREFIXES.join(", "));
   if (only) console.log("  after --only=%s   %d", only, urls.length);
   if (limit !== undefined) console.log("  after --limit     %d", urls.length);
@@ -144,8 +174,17 @@ async function main() {
   }
 
   console.log("  submissions       %d\n", payloads.length);
+  const saveSnapshot = () => {
+    if (!save || !apply || process.exitCode === 1) return;
+    // Held URLs stay out of the copy, so they read as NEW once the hold lifts.
+    const kept = Object.fromEntries(Object.entries(snapshot).filter(([u]) => !isHeld(u)));
+    writeFileSync(save, JSON.stringify(kept));
+    console.log("Saved the sitemap copy to %s for the next run.", save);
+  };
+
   if (payloads.length === 0) {
     console.log("Nothing to submit.");
+    saveSnapshot();
     return;
   }
 
@@ -182,6 +221,7 @@ async function main() {
   } else {
     console.log("Submitted. Bing indexes on its own schedule - check Bing Webmaster Tools in a few days.");
   }
+  saveSnapshot();
   console.log("NOTE: Google does not participate in IndexNow. This does not affect Google.");
 }
 
