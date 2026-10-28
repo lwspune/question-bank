@@ -34,7 +34,7 @@ import { PAPER_CSS, answerOf, blocksHtml, keyDetailsHtml, optionsHtml, paperBody
 import type { PrintedLabel } from "@/lib/export/printedLabel";
 import { splitFormulaLines } from "@/lib/export/pdf/formulaSheetHtml";
 import type { EbookKind } from "./catalog";
-import { ACCENT, KIND_LABEL, THEME_CSS } from "./theme";
+import { ACCENT, KIND_LABEL, NAME_PLATE, THEME_CSS } from "./theme";
 
 const ESC: Record<string, string> = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" };
 function esc(s: string): string {
@@ -540,22 +540,6 @@ export function buildTextbookChapterHtml(input: TextbookChapterInput): string {
 
 const FRONT_CSS = `
 @page { size: A4; margin: 0; }
-.cover { height: 297mm; padding: 30mm 22mm 22mm; display: flex; flex-direction: column; break-after: page; overflow: hidden; }
-.cover .brand { display: flex; align-items: center; gap: 8pt; font-weight: 700; letter-spacing: .2em; font-size: 9pt; }
-.cover .dot { width: 9pt; height: 9pt; border-radius: 50%; background: var(--acc); }
-.cover .kind { margin-top: 30mm; padding: 4pt 11pt; border-radius: 99pt; background: color-mix(in srgb, var(--acc) 12%, white);
-  color: var(--acc); font-weight: 700; font-size: 9pt; letter-spacing: .14em; text-transform: uppercase; width: max-content; }
-.cover h1 { font-size: 40pt; line-height: 1.08; margin: 10pt 0 8pt; }
-.cover .sub { font-size: 14pt; color: var(--muted); max-width: 150mm; line-height: 1.4; }
-.cover .rule { width: 48pt; height: 3pt; border-radius: 2pt; background: var(--acc); margin-top: 16pt; }
-.cover .preview { margin-top: 14mm; font-size: 9pt; display: flex; flex-direction: column; align-items: flex-start; }
-.cover .preview .card { transform: rotate(-1.2deg); max-width: 160mm; overflow: hidden; }
-.cover .preview .card + .card { transform: rotate(1.5deg); margin: -4pt 0 0 60mm; max-width: 90mm; }
-.cover .preview .katex { font-size: .95em; }
-.cover .stats { margin-top: auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 8pt; }
-.cover .stat b { display: block; font-size: 20pt; color: var(--acc); line-height: 1.1; }
-.cover .stat span { font-size: 8.5pt; color: var(--muted); }
-.cover .url { margin-top: 10pt; font-size: 9pt; color: var(--muted); }
 .toc { padding: 22mm 20mm 26mm; }
 .toc h2 { font-size: 22pt; margin: 0 0 4mm; }
 .toc .how { font-size: 10pt; color: var(--muted); margin: 0 0 8mm; line-height: 1.5; }
@@ -583,12 +567,26 @@ const HOW: Record<EbookKind, string> = {
     "Each chapter follows the textbook: its sections in order, each with its solved examples and exercises, every question under the book's own number. The worked solution sits right under each question, so you can check your work as you go.",
 };
 
-/** The gold seal on the premium cover, by kind. */
-const SEAL: Partial<Record<EbookKind, [string, string, string]>> = {
+/** The gold seal on the cover, by kind. */
+const SEAL: Record<EbookKind, [string, string, string]> = {
+  formula: ["Every", "Formula", "+ traps"],
+  notes: ["Every", "Chapter", "Taught"],
+  pyq: ["Every", "Sitting", "Solved"],
   papers: ["Fully", "Solved", "Every Q"],
   repeats: ["Asked", "Again", "& again"],
   chapterwise: ["Every", "Chapter", "By marks"],
   textbook: ["Every", "Exercise", "Solved"],
+};
+
+/** The cover's closing line, beside the address. */
+const FOOT: Record<EbookKind, string> = {
+  formula: "Formulas, tables and traps, chapter by chapter",
+  notes: "Every topic taught, with worked examples",
+  pyq: "A worked solution to every question",
+  papers: "Worked solutions under the printed numbers",
+  repeats: "Worked solutions under the printed numbers",
+  chapterwise: "Worked solutions under the printed numbers",
+  textbook: "Worked solutions under the printed numbers",
 };
 
 export type EbookFrontInput = {
@@ -601,11 +599,12 @@ export type EbookFrontInput = {
   chapters: { number: number; name: string; detail: string; page: number }[];
   head: string;
   /**
-   * The premium cover (2026-10-26, Solved Papers books): the board line over
-   * the subject, and the edition. Absent, the standard cover prints. `preview`
-   * then fills the top sheet of the paper stack.
+   * The cover (navy and gold: the board books 2026-10-26, every book since
+   * 2026-10-28): the exam or board line over the subject, and the edition.
+   * `preview` fills the top sheet of the paper stack. `namePlate` leaves a
+   * line for the buyer's name, which the download writes in (lib/ebooks/stamp).
    */
-  cover?: { over: string; main: string; edition: string };
+  cover: { over: string; main: string; edition: string; namePlate?: boolean };
 };
 
 /** Navy and gold, full bleed. Shadows are safe here: the cover is one page and never breaks. */
@@ -652,26 +651,32 @@ const PREMIUM_CSS = `
   display: flex; flex-direction: column; align-items: center; justify-content: center; text-transform: uppercase; text-align: center; }
 .pc-seal small { font-size: 6.5pt; letter-spacing: .3em; font-weight: 700; }
 .pc-seal b { font-size: 15pt; letter-spacing: .06em; line-height: 1.05; }
+.pc-seal b.long { font-size: 12.5pt; letter-spacing: .03em; }
 .pc-stats { margin-top: auto; display: grid; grid-template-columns: repeat(4, 1fr); border-top: .6pt solid rgba(240,196,110,.5); padding-top: 10pt; }
 .pc-stat { padding: 0 9pt; border-left: .6pt solid rgba(240,196,110,.3); }
 .pc-stat:first-child { padding-left: 0; border-left: 0; }
 .pc-stat b { display: block; font-size: 22pt; color: #f0c46e; line-height: 1.1; }
 .pc-stat span { font-size: 8.5pt; color: #b9c6ec; letter-spacing: .05em; }
+.pcover.named .pc-stack { margin-top: 14mm; height: 84mm; }
+.pcover > .pc-plate { position: absolute; left: ${NAME_PLATE.leftMm}mm; bottom: ${NAME_PLATE.bottomMm}mm;
+  width: ${NAME_PLATE.widthMm}mm; height: ${NAME_PLATE.heightMm}mm; border-bottom: .8pt solid #f0c46e; }
+.pc-plate small { display: block; font-size: 7.5pt; letter-spacing: .24em; text-transform: uppercase; color: #b9c6ec; font-weight: 700; }
 .pc-foot { margin-top: 9pt; display: flex; justify-content: space-between; font-size: 8.5pt; color: #93a3d1; letter-spacing: .04em; }
 `;
 
-function premiumCoverHtml(input: EbookFrontInput & { cover: NonNullable<EbookFrontInput["cover"]> }): string {
+function premiumCoverHtml(input: EbookFrontInput): string {
   const { cover } = input;
-  const seal = SEAL[input.kind] ?? ["Fully", "Solved", "Every Q"];
+  const seal = SEAL[input.kind];
   const stats = input.stats.map((s) => `<div class="pc-stat"><b>${esc(s.value)}</b><span>${esc(s.label)}</span></div>`).join("");
   return (
-    `<section class="pcover"><div class="pc-top"><span class="pc-brand"><i></i>PYQ VAULT</span><span class="pc-ed">${esc(cover.edition)}</span></div>` +
+    `<section class="pcover${cover.namePlate ? " named" : ""}"><div class="pc-top"><span class="pc-brand"><i></i>PYQ VAULT</span><span class="pc-ed">${esc(cover.edition)}</span></div>` +
     `<div class="pc-kind">${KIND_LABEL[input.kind]}</div>` +
     `<div class="pc-over">${esc(cover.over)}</div><h1 class="pc-main${cover.main.length > 14 ? " long" : ""}">${esc(cover.main)}</h1>` +
     `<div class="pc-rule"></div><div class="pc-sub">${esc(input.subtitle)}</div>` +
     `<div class="pc-stack"><div class="pc-sheet s3"></div><div class="pc-sheet s2"></div><div class="pc-sheet s1">${input.preview}</div>` +
-    `<div class="pc-seal"><small>${seal[0]}</small><b>${seal[1]}</b><small>${esc(seal[2])}</small></div></div>` +
-    `<div class="pc-stats">${stats}</div><div class="pc-foot"><span>www.pyqvault.com</span><span>Worked solutions under the printed numbers</span></div></section>`
+    `<div class="pc-seal"><small>${seal[0]}</small><b${seal[1].length > 6 ? ' class="long"' : ""}>${seal[1]}</b><small>${esc(seal[2])}</small></div></div>` +
+    (cover.namePlate ? `<div class="pc-plate"><small>This copy belongs to</small></div>` : "") +
+    `<div class="pc-stats">${stats}</div><div class="pc-foot"><span>www.pyqvault.com</span><span>${FOOT[input.kind]}</span></div></section>`
   );
 }
 
@@ -683,17 +688,10 @@ export function buildEbookFrontHtml(input: EbookFrontInput): string {
         `<tr><td class="no">${c.number}</td><td>${esc(c.name)}</td><td class="qs">${esc(c.detail)}</td><td class="pg">${c.page}</td></tr>`
     )
     .join("");
-  const stats = input.stats.map((s) => `<div class="stat card"><b>${esc(s.value)}</b><span>${esc(s.label)}</span></div>`).join("");
-  const coverHtml = input.cover
-    ? premiumCoverHtml({ ...input, cover: input.cover })
-    : `<section class="cover"><div class="brand"><span class="dot"></span>PYQ VAULT</div>` +
-      `<div class="kind">${KIND_LABEL[input.kind]}</div><h1>${esc(input.title)}</h1><div class="sub">${esc(input.subtitle)}</div>` +
-      `<div class="rule"></div><div class="preview">${input.preview}</div>` +
-      `<div class="stats">${stats}</div><div class="url">www.pyqvault.com</div></section>`;
   return (
     `<!doctype html><html lang="en"><head><meta charset="utf-8"><title>${esc(input.title)}</title>${input.head}` +
-    `<style>${PAPER_CSS}${THEME_CSS}${FRONT_CSS}${input.cover ? PREMIUM_CSS : ""}</style></head><body style="--acc:${ACCENT[input.kind]}">` +
-    coverHtml +
+    `<style>${PAPER_CSS}${THEME_CSS}${FRONT_CSS}${PREMIUM_CSS}</style></head><body style="--acc:${ACCENT[input.kind]}">` +
+    premiumCoverHtml(input) +
     `<section class="toc"><div class="eyebrow">${KIND_LABEL[input.kind]} · ${esc(input.title)}</div><h2>Contents</h2>` +
     `<p class="how">${HOW[input.kind]}</p><table><tbody>${rows}</tbody></table></section>` +
     `</body></html>`
@@ -702,29 +700,39 @@ export function buildEbookFrontHtml(input: EbookFrontInput): string {
 
 // ── Cover previews, from the book's own first chapters ─────────────────────
 
-/** A formula card for the Formula Book's cover. */
-export function formulaPreview(chapter: Pick<NotesChapterRegistration, "notes" | "slugs">): string {
-  for (const slug of chapter.slugs) {
-    const fs = chapter.notes[slug].concepts.flatMap((c) => (c.kind === "formula" && c.formula ? [c.formula] : []));
-    if (fs.length >= 2) return `<div class="card">${fs.slice(0, 2).map(formulaHtml).join("")}</div>`;
-  }
-  return "";
+/** A formula line this long runs past the cover's sheet, which hides what overflows. */
+const SHEET_LINE_MAX = 56;
+
+/**
+ * The top sheet of a Formula Book's cover: the first two formulas of its first
+ * chapter that fit the sheet's width, without their symbol legends.
+ */
+export function formulaPreview(chapter: Pick<NotesChapterRegistration, "notes" | "slugs">, head: string): string {
+  return `<div class="sh-head">${esc(head)}</div>${sheetFormulas(chapter).map((f) => formulaHtml({ ...f, symbols: [] })).join("")}`;
 }
 
-/** A concept card (name + idea) for the Notes Book's cover. */
-export function notesPreview(chapter: Pick<NotesChapterRegistration, "notes" | "slugs">): string {
+/** A chapter's first two formulas that fit the cover's sheet (fewer when it has fewer). */
+export function sheetFormulas(chapter: Pick<NotesChapterRegistration, "notes" | "slugs">) {
+  const fits = (latex: string) => splitFormulaLines(latex).every((line) => line.length <= SHEET_LINE_MAX);
+  return chapter.slugs
+    .flatMap((slug) => chapter.notes[slug].concepts.flatMap((c) => (c.kind === "formula" && c.formula ? [c.formula] : [])))
+    .filter((f) => fits(f.latex))
+    .slice(0, 2);
+}
+
+/** The top sheet of a Notes Book's cover: the first concept's name and idea. */
+export function notesPreview(chapter: Pick<NotesChapterRegistration, "notes" | "slugs">, head: string): string {
   const c = chapter.notes[chapter.slugs[0]]?.concepts[0];
-  return c ? `<div class="card"><h3 style="margin:0 0 4pt;font-size:12pt">${esc(c.name)}</h3><p class="intu">${richHtml(c.intuition)}</p></div>` : "";
+  return (
+    `<div class="sh-head">${esc(head)}</div>` +
+    (c ? `<div class="sh-sec">${esc(c.name)}</div><p class="intu" style="margin:0">${richHtml(c.intuition)}</p>` : "") +
+    `<div class="sh-line"></div><div class="sh-line"></div><div class="sh-line short"></div>`
+  );
 }
 
-/** A past question and its answer chip for the PYQ Book's cover. */
-export function pyqPreview(q: QuestionRow, sitting: string): string {
-  return (
-    `<div class="card"><div style="display:flex;gap:6pt;align-items:center"><span class="qn" style="display:inline-flex">Q</span>` +
-    `<span class="src" style="margin:0">${esc(sitting)}</span></div><div style="margin-top:5pt">${blocksHtml(q.text)}</div>` +
-    `${optionsHtml(q.options, undefined)}</div>` +
-    `<div class="card"><div class="chip">Answer ${esc(answerOf(q))}</div><div style="color:var(--muted)">Full solution at the end of the chapter</div></div>`
-  );
+/** The top sheet of the PYQ Book's cover: a past question, as the Solved Papers sheet shows one. */
+export function pyqPreview(q: QuestionRow, sitting: string, chapterName: string): string {
+  return papersPreview(q, { label: "MHT-CET", meta: sitting, section: chapterName, number: "1" });
 }
 
 /** The top sheet of the Solved Papers cover: the newest paper's head, its section and a real question. */

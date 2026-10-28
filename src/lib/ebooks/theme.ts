@@ -33,8 +33,23 @@ export const KIND_LABEL: Record<EbookKind, string> = {
   textbook: "Textbook Solutions",
 };
 
-/** The board books, which wear the navy and gold cover (2026-10-26). */
-export const PREMIUM_KINDS: ReadonlySet<EbookKind> = new Set<EbookKind>(["papers", "repeats", "chapterwise", "textbook"]);
+/**
+ * The line on the cover where a buyer's name goes (2026-10-28), in mm from the
+ * page's bottom-left corner. The cover prints the line and its label
+ * (lib/ebooks/bookHtml PREMIUM_CSS) and the download writes the name on it
+ * (lib/ebooks/stamp), so both read these numbers.
+ */
+export const NAME_PLATE = {
+  leftMm: 20,
+  bottomMm: 47,
+  widthMm: 120,
+  heightMm: 17,
+  /** The name's baseline, above the gold line. */
+  baselineMm: 3.2,
+  /** The name's largest size; a long one shrinks to fit the width. */
+  maxPt: 24,
+  minPt: 11,
+} as const;
 
 /** Shared by every part. Pages keep their margins; the page tint shows through them once painted. */
 export const THEME_CSS = `

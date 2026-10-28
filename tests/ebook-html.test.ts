@@ -17,6 +17,8 @@
 import { describe, it, expect } from "vitest";
 import {
   buildEbookFrontHtml,
+  formulaPreview,
+  notesPreview,
   buildFormulaChapterHtml,
   buildNotesChapterHtml,
   buildPyqChapterHtml,
@@ -276,18 +278,19 @@ describe("buildEbookFrontHtml", () => {
       { number: 2, name: "Vectors", detail: "332 q", page: 21 },
     ],
     head: "",
+    cover: { over: "MHT-CET", main: "Mathematics", edition: "2026 Edition" },
   });
 
   it("names the kind of book and its subject on the cover, in the kind's colour", () => {
     expect(front).toContain("PYQ Book");
-    expect(front).toContain("MHT-CET Mathematics");
+    expect(front).toMatch(/pc-over">MHT-CET<[\s\S]*pc-main[^>]*>Mathematics</);
     expect(front).toContain("--acc:#047857");
     expect(front).toContain("3,362");
     expect(front).toContain("<p>preview</p>");
   });
 
   it("colours a Formula Book the site's royal blue and a Notes Book violet", () => {
-    const base = { title: "T", subtitle: "S", stats: [], preview: "", chapters: [], head: "" };
+    const base = { title: "T", subtitle: "S", stats: [], preview: "", chapters: [], head: "", cover: { over: "O", main: "M", edition: "E" } };
     expect(buildEbookFrontHtml({ ...base, kind: "formula" })).toContain("--acc:#1d4ed8");
     expect(buildEbookFrontHtml({ ...base, kind: "notes" })).toContain("--acc:#6d28d9");
   });
@@ -428,9 +431,46 @@ describe("buildEbookFrontHtml premium cover", () => {
     expect(buildEbookFrontHtml(input)).toMatch(/class="toc"[\s\S]*June 2026[\s\S]*>3</);
   });
 
-  it("leaves a book without cover lines on the standard cover", () => {
-    const { cover: _cover, ...plain } = input;
-    expect(buildEbookFrontHtml(plain)).not.toContain('class="pcover"');
+  it("prints no name line unless the cover is asked for one", () => {
+    expect(buildEbookFrontHtml(input)).not.toContain(`class="pc-plate"`);
+  });
+});
+
+// The MHT-CET books wear the same navy and gold cover (owner, 2026-10-28), with
+// their own seal and closing line, and a line for the buyer's name, which the
+// download writes in (lib/ebooks/stamp).
+describe("buildEbookFrontHtml on the MHT-CET books", () => {
+  const base = {
+    title: "MHT-CET Mathematics",
+    subtitle: "S",
+    stats: [],
+    preview: "",
+    chapters: [],
+    head: "",
+    cover: { over: "MHT-CET", main: "Mathematics", edition: "2026 Edition", namePlate: true },
+  };
+
+  it("wears the navy cover for every kind, never the old light one", () => {
+    for (const kind of ["formula", "notes", "pyq"] as const) {
+      const html = buildEbookFrontHtml({ ...base, kind });
+      expect(html).toContain('class="pcover named"');
+      expect(html).not.toContain('class="cover"');
+    }
+  });
+
+  it("gives each kind its own seal and closing line", () => {
+    const formula = buildEbookFrontHtml({ ...base, kind: "formula" });
+    const notes = buildEbookFrontHtml({ ...base, kind: "notes" });
+    const pyq = buildEbookFrontHtml({ ...base, kind: "pyq" });
+    expect(formula).toMatch(/class="pc-seal">(?:(?!<\/div>)[\s\S])*Formula/);
+    expect(notes).toMatch(/class="pc-seal">(?:(?!<\/div>)[\s\S])*Chapter/);
+    expect(pyq).toMatch(/class="pc-seal">(?:(?!<\/div>)[\s\S])*Sitting/);
+    for (const html of [formula, notes]) expect(html).not.toContain("printed numbers");
+  });
+
+  it("leaves a line for the buyer's name, blank in the master", () => {
+    const html = buildEbookFrontHtml({ ...base, kind: "formula" });
+    expect(html).toMatch(/class="pc-plate">(?:(?!<\/div>)[\s\S])*This copy belongs to/i);
   });
 });
 
@@ -649,5 +689,41 @@ describe("buildTextbookChapterHtml continued", () => {
     const continued = buildTextbookChapterHtml({ ...input, continued: true });
     expect(continued).not.toContain('class="chead');
     expect(continued).toContain("1.5 Switching Circuits");
+  });
+});
+
+// The cover's top sheet shows real content from the book's first chapter. It
+// hides whatever runs past its edge, so a formula too wide for it is skipped
+// rather than printed cut off (2026-10-28: the Circle diameter form was).
+describe("cover sheet previews", () => {
+  const wide = {
+    ...NOTES,
+    slugs: ["w"],
+    notes: {
+      w: {
+        title: "W",
+        concepts: [
+          { kind: "formula", slug: "a", name: "A", intuition: "", definition: "",
+            formula: { label: "Too wide", latex: "(x-x_1)(x-x_2)+(y-y_1)(y-y_2)=0 \iff x^2+y^2-(x_1+x_2)x-(y_1+y_2)y=0" }, traps: [] },
+          { kind: "formula", slug: "b", name: "B", intuition: "", definition: "",
+            formula: { label: "Fits one", latex: "x^2+y^2=r^2", symbols: [{ symbol: "r", meaning: "the radius" }] }, traps: [] },
+          { kind: "formula", slug: "c", name: "C", intuition: "", definition: "",
+            formula: { label: "Fits two", latex: "r=\sqrt{g^2+f^2-c}" }, traps: [] },
+        ],
+      },
+    },
+  } as unknown as NotesChapterRegistration;
+
+  it("heads the sheet with the chapter and shows two formulas that fit, without their legends", () => {
+    const html = formulaPreview(wide, "Chapter 4 · Circle");
+    expect(html).toContain("Chapter 4 · Circle");
+    expect(html).not.toContain("Too wide");
+    expect(html).toMatch(/Fits one[\s\S]*Fits two/);
+    expect(html).not.toContain("the radius");
+  });
+
+  it("shows a Notes Book's first concept by name and idea", () => {
+    const html = notesPreview(NOTES, "Chapter 4 · Circle");
+    expect(html).toMatch(/Centre-radius form[\s\S]*same distance from the centre/);
   });
 });

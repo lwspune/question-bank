@@ -10,6 +10,7 @@ import {
 
 import { hasPassFromEntitlements, profileFieldsFromRow, type HeaderSession } from "@/lib/header-session";
 import { loadEntitlements } from "@/lib/entitlements/query";
+import { accountNameOf } from "@/lib/ebooks/coverName";
 
 export type { PageIdentity, HeaderSession };
 
@@ -22,6 +23,8 @@ export class HttpError extends Error {
 export type SessionUser = {
   id: string;
   email: string;
+  /** The name a sign-up stored on the account (Google's full_name), when there is one. */
+  name?: string | null;
 };
 
 export type SessionMember = {
@@ -37,7 +40,7 @@ export async function getSessionUser(): Promise<SessionUser | null> {
     data: { user },
   } = await supabase.auth.getUser();
   if (!user || !user.email) return null;
-  return { id: user.id, email: user.email };
+  return { id: user.id, email: user.email, name: accountNameOf(user.user_metadata) };
 }
 
 export async function getSessionMember(): Promise<SessionMember | null> {

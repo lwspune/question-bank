@@ -23,10 +23,12 @@ export type StoreEbook = {
   /** The cover's four numbers, as the build recorded them. */
   stats: StoreStat[];
   hasSample: boolean;
+  /** The cover carries the buyer's name (migration 0201). */
+  namePlate: boolean;
 };
 
 const COLUMNS =
-  "slug, kind, title, subtitle, description, price_paise, page_count, question_count, contents, stats, sample_path, sort_order";
+  "slug, kind, title, subtitle, description, price_paise, page_count, question_count, contents, stats, sample_path, sort_order, name_plate";
 const KINDS: readonly EbookKind[] = ["formula", "notes", "pyq", "papers", "repeats", "chapterwise", "textbook"];
 
 function toStoreEbook(row: Record<string, unknown>): StoreEbook {
@@ -44,6 +46,7 @@ function toStoreEbook(row: Record<string, unknown>): StoreEbook {
     contents,
     stats: Array.isArray(row.stats) ? (row.stats as StoreStat[]) : [],
     hasSample: !!row.sample_path,
+    namePlate: !!row.name_plate,
   };
 }
 

@@ -7,10 +7,12 @@ import Breadcrumbs from "@/components/nav/Breadcrumbs";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { getStoreEbook, type StoreEbook } from "@/lib/ebooks/query";
 import { formatRupees } from "@/lib/billing/plans";
-import { KIND_LABEL, PREMIUM_KINDS } from "@/lib/ebooks/theme";
-import BookCover, { subjectOf } from "../_components/BookCover";
+import { KIND_LABEL } from "@/lib/ebooks/theme";
+import { subjectOf } from "../_components/BookCover";
 import { SHELVES, shelfOf } from "@/lib/ebooks/shelves";
 import EbookBuyBox from "./EbookBuyBox";
+import { EbookStatusProvider } from "./EbookStatusContext";
+import NamedCover from "./NamedCover";
 
 /**
  * One book's page. The page is the same cached copy for everyone (an hour);
@@ -77,11 +79,11 @@ const INSIDE: Record<StoreEbook["kind"], string[]> = {
 export default async function StoreBookPage({ params }: { params: { slug: string } }) {
   const book = await getStoreEbook(createSupabaseAnonClient(), params.slug);
   if (!book) notFound();
-  // A Solved Papers book: the board line over the subject, as its cover prints it.
+  // The exam or board line over the subject, as the cover prints it.
   const shelf = shelfOf(book);
-  const board = PREMIUM_KINDS.has(book.kind) ? SHELVES.find((s) => s.key === shelf.shelf)?.label : undefined;
-  const subject = board ? shelf.subject : subjectOf(book.title);
-  const heading = board ? `${board} ${subject}` : subject;
+  const over = shelf.shelf === "more" ? undefined : SHELVES.find((s) => s.key === shelf.shelf)?.label;
+  const subject = over ? shelf.subject : subjectOf(book.title);
+  const heading = over ? `${over} ${subject}` : subject;
   const stats = book.stats.length
     ? book.stats
     : book.pageCount
@@ -95,10 +97,11 @@ export default async function StoreBookPage({ params }: { params: { slug: string
         <Breadcrumbs items={[{ href: "/store", label: "Ebooks" }, { label: book.title }]} />
 
         {/* One buy box: after the title on a phone, in the side column on a laptop. */}
+        <EbookStatusProvider slug={book.slug}>
         <div className="mt-6 grid lg:grid-cols-[1fr_20rem] lg:gap-x-8">
           <header className="flex min-w-0 gap-5 lg:col-start-1">
             <div className="w-28 shrink-0 sm:w-40">
-              <BookCover kind={book.kind} subject={subject} over={board} size="sm" />
+              <NamedCover kind={book.kind} subject={subject} over={over} size="sm" namePlate={book.namePlate} />
             </div>
             <div className="min-w-0">
               <p className="text-xs font-semibold uppercase tracking-widest text-brand-accent">{KIND_LABEL[book.kind]}</p>
@@ -138,7 +141,7 @@ export default async function StoreBookPage({ params }: { params: { slug: string
             </h2>
             <p className="mt-2 font-serif text-sm leading-relaxed">{book.description}</p>
             <ul className="mt-4 space-y-2 text-sm">
-              {INSIDE[book.kind].map((line) => (
+              {[...INSIDE[book.kind], ...(book.namePlate ? ["Your name printed on the cover of your copy"] : [])].map((line) => (
                 <li key={line} className="flex items-start gap-2">
                   <Check className="mt-0.5 h-4 w-4 shrink-0 text-brand-accent" aria-hidden />
                   <span>{line}</span>
@@ -178,6 +181,7 @@ export default async function StoreBookPage({ params }: { params: { slug: string
             </section>
           ) : null}
         </div>
+        </EbookStatusProvider>
       </main>
       <Footer />
     </>
