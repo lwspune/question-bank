@@ -19,6 +19,10 @@
  *                 and least values on a closed interval (scope "absolute", `on`,
  *                 endpoints included), checked against the stated `expect`
  *                 list; the value is how many of them disagree, so 0 passes
+ *   roots         the zeros of f: each one drops onto the x-axis with its value,
+ *                 checked against the stated `expect` list (0 = they agree, none
+ *                 missing or extra); report "sum" or "product" makes the value
+ *                 the sum or product of the zeros found instead
  *
  * Formulas use lib/visuals/expr (never eval). Beats: curve, compare, mark,
  * tangent, shade.
@@ -36,7 +40,8 @@ type Ask =
   | { kind: "slopePoint"; slope: number; normal: boolean; pointLabel: string | undefined }
   | { kind: "slopePoints"; slope: number; normal: boolean; report: "count" | "sumX" | "sumY"; pointLabels: string[] }
   | { kind: "increasingOn" | "decreasingOn"; intervals: [number, number][]; intervalLabel: string }
-  | { kind: "extrema"; scope: "local" | "absolute"; on: [number, number]; expect: Extremum[]; pointLabels: string[] };
+  | { kind: "extrema"; scope: "local" | "absolute"; on: [number, number]; expect: Extremum[]; pointLabels: string[] }
+  | { kind: "roots"; expect: number[]; report: "roots" | "sum" | "product"; withSumProduct: boolean; rootLabels: string[] };
 
 interface Extremum {
   type: "max" | "min";
@@ -152,6 +157,8 @@ export interface FunctionGraphFacts {
   rising: [number, number][];
   /** local: every local max and min; absolute: the greatest and the least value on `on`. */
   extrema: { type: "max" | "min"; x: number; y: number }[];
+  /** The zeros of f in the window, left to right (roots ask only). */
+  roots: number[];
 }
 
 const factCache = new WeakMap<FunctionGraphParams, FunctionGraphFacts>();
@@ -174,7 +181,8 @@ export function functionGraphFacts(p: FunctionGraphParams): FunctionGraphFacts {
   const sign = p.ask.kind === "decreasingOn" ? -1 : 1;
   const rising = intervalsWhere((x) => sign * slopeAt(p.f, x) > 0, a, b);
   const extrema = p.ask.kind === "extrema" ? extremaOf(p.f, p.ask.on, p.ask.scope) : [];
-  const facts = { crossings, point, points, rising, extrema };
+  const roots = p.ask.kind === "roots" ? rootsOf(p.f, a, b).map((r) => (Math.abs(r) < 1e-12 ? 0 : r)).sort((m, n) => m - n) : [];
+  const facts = { crossings, point, points, rising, extrema, roots };
   factCache.set(p, facts);
   return facts;
 }
@@ -260,6 +268,24 @@ function extremaMisses(found: { type: "max" | "min"; x: number; y: number }[], a
     const g = found.find((h) => h.type === e.type);
     return !g || !close(g.y, e.y) || (e.x !== null && !close(g.x, e.x));
   }).length;
+}
+
+/** How many stated zeros the drawing does not bear out (0 = all of them, and no others). */
+function rootsMisses(found: number[], expect: number[]): number {
+  const close = (u: number, v: number) => Math.abs(u - v) <= 1e-4 * (1 + Math.abs(v));
+  if (found.length !== expect.length) return Math.max(1, Math.abs(found.length - expect.length));
+  const want = [...expect].sort((m, n) => m - n);
+  return want.filter((e, i) => !close(found[i], e)).length;
+}
+
+/** The header over a roots picture, from the zeros found (never typed by hand). */
+function rootsHead(ask: Extract<Ask, { kind: "roots" }>, roots: number[]): string {
+  const sum = roots.reduce((t, r) => t + r, 0);
+  const product = roots.reduce((t, r) => t * r, 1);
+  if (ask.report === "sum") return `sum of zeros ${num(sum, 3)}`;
+  if (ask.report === "product") return `product of zeros ${num(product, 3)}`;
+  const n = `${roots.length} zero${roots.length === 1 ? "" : "s"}`;
+  return ask.withSumProduct ? `${n} · sum ${num(sum, 3)} · product ${num(product, 3)}` : n;
 }
 
 /** The extrema the picture marks: all local ones, or the asked greatest/least values. */
@@ -427,8 +453,20 @@ export const functionGraph: Scene<FunctionGraphParams> = {
         const labels = a.pointLabels === undefined ? [] : a.pointLabels;
         if (!Array.isArray(labels) || labels.length > 4) throw new ParamError("pointLabels must be a list of at most 4");
         ask = { kind: "extrema", scope: a.scope, on, expect, pointLabels: labels.map((l, i) => plainLabel(l, `pointLabels[${i}]`)) };
+      } else if (a.kind === "roots") {
+        if (g.length) throw new ParamError("roots marks the zeros of f on the x-axis: leave g out");
+        if (!(y[0] < 0 && y[1] > 0)) throw new ParamError("roots needs a window whose y range shows the x-axis (y = 0)");
+        if (!Array.isArray(a.expect) || a.expect.length < 1 || a.expect.length > 4) throw new ParamError("expect must be a list of 1 to 4 zeros");
+        const expect = a.expect.map((v, i) => finite({ [`expect[${i}]`]: v }, `expect[${i}]`));
+        if (expect.some((v) => !(v > x[0] && v < x[1]))) throw new ParamError("every zero in expect must sit inside the window");
+        const report = a.report === undefined ? "roots" : a.report;
+        if (report !== "roots" && report !== "sum" && report !== "product") throw new ParamError('report must be "roots", "sum" or "product"');
+        if (a.withSumProduct !== undefined && typeof a.withSumProduct !== "boolean") throw new ParamError("withSumProduct must be true or false");
+        const labels = a.rootLabels === undefined ? [] : a.rootLabels;
+        if (!Array.isArray(labels) || labels.length > expect.length) throw new ParamError("rootLabels must be a list, no longer than expect");
+        ask = { kind: "roots", expect, report, withSumProduct: a.withSumProduct === true, rootLabels: labels.map((l, i) => plainLabel(l, `rootLabels[${i}]`)) };
       } else {
-        throw new ParamError("ask.kind must be crossings, slopePoint, slopePoints, increasingOn, decreasingOn or extrema");
+        throw new ParamError("ask.kind must be crossings, slopePoint, slopePoints, increasingOn, decreasingOn, extrema or roots");
       }
       return { f, fLabel: optionalLabel(o, "fLabel", 32) ?? "y = f(x)", g, x, y, xTicks, ask };
     }),
@@ -450,6 +488,12 @@ export const functionGraph: Scene<FunctionGraphParams> = {
         return p.ask.intervals.every((iv) => monotoneOn(p.f, iv, -1)) ? 1 : 0;
       case "extrema":
         return extremaMisses(facts.extrema, p.ask);
+      case "roots": {
+        if (rootsMisses(facts.roots, p.ask.expect) > 0) return p.ask.report === "roots" ? rootsMisses(facts.roots, p.ask.expect) : NaN;
+        if (p.ask.report === "sum") return facts.roots.reduce((t, r) => t + r, 0);
+        if (p.ask.report === "product") return facts.roots.reduce((t, r) => t * r, 1);
+        return 0;
+      }
     }
   },
 
@@ -475,6 +519,14 @@ export const functionGraph: Scene<FunctionGraphParams> = {
         const list = shownExtrema(p).map((e) => `a ${word(e.type)} at (${num(e.x, 4)}, ${num(e.y, 4)})`).join(" and ");
         const found = list ? `The curve has ${list}` : "The curve has no local maximum or minimum here";
         return value === 0 ? `${found}, as stated.` : `${found}; the stated answer differs.`;
+      }
+      case "roots": {
+        const roots = functionGraphFacts(p).roots;
+        const at = roots.length ? `The curve meets the x-axis at ${roots.map((r) => `x = ${num(r, 4)}`).join(", ")}` : "The curve does not meet the x-axis in the window";
+        const agree = rootsMisses(roots, p.ask.expect) === 0;
+        if (p.ask.report === "roots") return agree ? `${at}, as stated.` : `${at}; the stated zeros differ.`;
+        if (!agree) return `${at}; the stated zeros differ.`;
+        return `${at}; their ${p.ask.report} is ${num(value, 4)}.`;
       }
     }
   },
@@ -725,6 +777,24 @@ export const functionGraph: Scene<FunctionGraphParams> = {
         { l: headStart - 4, r: P.r, t: headY - 12, b: headY + 3 },
       );
       over.push(text(P.r - 2, headY, head, { tone: "good", size: 11, weight: 600, anchor: "end" }));
+    }
+
+    // Zeros: each drops onto the x-axis in turn, with its value.
+    if (p.ask.kind === "roots" && pm > 0) {
+      const ask = p.ask;
+      const head = rootsHead(ask, facts.roots);
+      const headStart = P.r - 2 - head.length * 11 * 0.52;
+      const headY = headStart < P.l + 6 + p.fLabel.length * 6.4 + 8 ? P.t + 17 : P.t + 2;
+      const n = facts.roots.length;
+      const shown = facts.roots.slice(0, Math.min(n, Math.ceil(n * pm - 1e-9)));
+      placeMarks(
+        over,
+        curveObstacles(p, X, Y),
+        shown.map((r): [number, number] => [X(r), axisY]),
+        shown.map((r, i) => ask.rootLabels[i] ?? `x = ${num(r, 3)}`),
+        { l: headStart - 4, r: P.r, t: headY - 12, b: headY + 3 },
+      );
+      if (shown.length === n) over.push(text(P.r - 2, headY, head, { tone: "good", size: 11, weight: 600, anchor: "end" }));
     }
 
     // The header (top right) drops to a second row when it would run into the

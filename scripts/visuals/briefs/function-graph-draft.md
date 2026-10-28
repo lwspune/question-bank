@@ -80,6 +80,24 @@ Or, when it does not fit cleanly: `{ "n": 7, "id": "<id>", "skip": true, "reason
     answer is the dimension (the x), give x; if it is the area, give y.
   - `pointLabels` (extrema): optional, one label per marked point, left to
     right ("max (−1, 2)" is the default).
+  - `{ "kind": "roots", "expect": [1, 2] }`: the zeros of f, each dropped
+    onto the x-axis with its value. List EVERY real zero the window shows,
+    1 to 4 of them, as decimals (√3 = 1.732050807569); the scene finds the
+    zeros itself and refuses the visual unless your list matches exactly. A
+    double root (the curve touches the axis) is listed once. Leave `g` out, and
+    give a y range that runs below and above 0. Answer value = 0.
+    `report: "sum"` or `"product"` (default `"roots"`): the answer is the sum
+    or the product of the zeros instead, and value is that number.
+    `withSumProduct: true` adds the zeros' sum and product to the header (for
+    "find the zeros and verify the relationship with the coefficients"); the
+    scene computes them, never type them.
+    Fits only when f is fully numeric (no k, no α, β left in it). It does not
+    fit: complex zeros, an expression of the zeros (α² + β², 1/α + 1/β),
+    forming a polynomial from given zeros, or a word problem whose answer is
+    not a zero.
+  - `rootLabels` (roots): optional, one label per zero, left to right
+    ("x = 1.5" is the default; write "x = (3 − √3)/2" for an irrational zero,
+    "x = −2/3" for a fraction).
 
 ### steps
 
@@ -93,14 +111,15 @@ and each beat is used at most once. Beats:
   tangent along the curve to the point, or sweep it across past every point
   (slopePoint, slopePoints). `shade`: shade where f rises or falls
   (increasingOn / decreasingOn). Extrema use `curve` and `mark` (the marked
-  maxima and minima).
+  maxima and minima). Roots use `curve` and `mark` (the zeros, one by one).
 
 Match the beats to what each sentence says. A trailing "Matches option X"
 sentence needs no step of its own.
 
 ### answer
 
-- `value`: a number, as above (count, x of the point, 1, or 0 for extrema).
+- `value`: a number, as above (count, x of the point, 1, 0 for extrema and
+  roots, or the sum or product for a roots `report`).
 - `label`: how the answer reads, plain text, at most 32 characters.
 
 ## Rules
