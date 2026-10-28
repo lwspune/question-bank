@@ -154,6 +154,7 @@ export default function HeaderBar({
                   isStaff={session.isStaff}
                   isSuperadmin={session.isSuperadmin}
                   pulse={pulse}
+                  guidesHref={nav.guidesHref}
                 />
               </>
             ) : (

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BookOpen, Compass, GraduationCap, Library, NotebookPen, Target, Timer } from "lucide-react";
+import { Compass, GraduationCap, Library, NotebookPen, Target, Timer } from "lucide-react";
 import { getActiveTab } from "@/lib/exam/examContext";
 import {
   isMobileTabActive,
@@ -35,9 +35,8 @@ import type { FifthTab } from "@/lib/nav/fifthTab";
  * be: the mock runner, the print pages, /login, /signup and /welcome render no
  * AppHeader at all, so none of them needs a special case here.
  */
-const ICONS: Record<MobileTabId, typeof BookOpen> = {
+const ICONS: Record<MobileTabId, typeof Compass> = {
   bank: Compass,
-  guides: BookOpen,
   notes: NotebookPen,
   mock: Timer,
   board: Library,

@@ -12,8 +12,8 @@ type Props = {
   notesHref: string;
   mockHref: string;
   boardHref: string;
-  /** The exam's Learn course; null or absent draws no Learn tab (lib/exam/examNav). */
-  learnHref?: string | null;
+  /** The exam's Learn course, or the Learn hub when it has none (lib/exam/examNav). */
+  learnHref: string;
   /** Board, or Fix for a graduate student (lib/nav/fifthTab). Default Board. */
   fifth?: FifthTab;
   /** Org members (ADMIN/TEACHER) get the Papers tab; everyone else doesn't —
@@ -41,7 +41,7 @@ export default function PrimaryNav({
   notesHref,
   mockHref,
   boardHref,
-  learnHref = null,
+  learnHref,
   fifth = "board",
   showPapers = false,
   showBooks = false,
@@ -53,7 +53,7 @@ export default function PrimaryNav({
     { id: "bank", label: "PYQs", href: bankHref, Icon: Compass },
     { id: "guides", label: "Guides", href: guidesHref, Icon: BookOpen },
     { id: "notes", label: "Notes", href: notesHref, Icon: NotebookPen },
-    ...(learnHref ? [{ id: "learn" as const, label: "Learn", href: learnHref, Icon: GraduationCap }] : []),
+    { id: "learn", label: "Learn", href: learnHref, Icon: GraduationCap },
     // Mocks — always visible, like Board. It used to be gated on the active
     // exam's `hasMocks`, which hid a working page for 11 of 13 exam states.
     // mockHref is the exam's own catalogue when it has mocks, else /mock, which

@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import { courseName } from "@/lib/learn/courseName";
 import { courseHref } from "@/lib/learn/links";
 import { listCourses } from "@/lib/learn/query";
+import LearnComingSoon from "./LearnComingSoon";
 
 /**
  * /learn: the Learn courses (an experiment from 2026-10-27, Concept Ladder's lessons copied in;
@@ -32,6 +33,7 @@ export default async function LearnHub() {
             mistake behind it, and a mistake you repeat sends you back to the idea it comes from.
           </p>
         </header>
+        <LearnComingSoon />
         <ul className="grid gap-4 sm:grid-cols-2">
           {courses.map((c) => (
             <li key={c.slug}>
