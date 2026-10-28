@@ -215,6 +215,14 @@ export const V_PROGRESS_STUDENTS_KEEP = 30;
 export const V_PROGRESS_NEXT_STEP_KEEP_PCT = 25;
 
 /**
+ * "v-pay-offer": keep the pass offer under V's limit reply if at least this
+ * share of the students shown it open checkout (%). The bank's wall, the same
+ * offer, ran ~3% (5 of 148 students, 14 days to 2026-10-28); a student asking
+ * V about one question is further along than one browsing a list...
+ */
+export const V_PAY_OFFER_CHECKOUT_KEEP_PCT = 10;
+
+/**
  * "self-mark": keep Understood / Review later under written model answers if
  * at least this share of signed-in written-answer reveals get a tap (%)...
  */
@@ -278,7 +286,8 @@ export type Readout =
   | "v-reveal"
   | "tutor-interest"
   | "v-progress"
-  | "self-mark";
+  | "self-mark"
+  | "v-pay-offer";
 
 export type Experiment = {
   id: string;
@@ -636,6 +645,20 @@ export const EXPERIMENTS: readonly Experiment[] = [
     status: "running",
   },
   {
+    id: "v-pay-offer",
+    title: "V sells the pass when the day's answers run out",
+    change:
+      "When the day's free answers stop V explaining a question, V says so in one line and the bank's own pass offer shows under the reply (price, one tap to pay, more free answers tomorrow), and on V's question card. After paying, V asks the question again, so the answer comes without leaving the chat. Before, V's reply named \"the Premium Pass at /pricing\" in text.",
+    why: "V gave the limit reply 26 times to 16 students in the 7 days to 2026-10-28, each one stuck on a specific question, and a text link took them away from it. None of it reached the paywall numbers.",
+    metric:
+      "Students shown the offer in V (Vercel reveal_daily_limit_hit with surface 'v'); of them, the share who opened checkout (checkout_opened with surface 'v_chat'), and passes paid from it (checkout_paid, surface 'v_chat')",
+    rule: `Keep it if ${V_PAY_OFFER_CHECKOUT_KEEP_PCT}%+ of the students shown it open checkout over the window; under that, read the limit conversations before changing the words.`,
+    liveSince: "2026-10-28",
+    windowDays: 14,
+    readout: "v-pay-offer",
+    status: "running",
+  },
+  {
     id: "self-mark",
     title: "Understood / Review later on written answers",
     change:
@@ -787,6 +810,8 @@ export type ReadingMetric =
   | "v-progress-next-step"
   | "self-mark-tap-share"
   | "self-mark-review-fixed"
+  | "v-pay-offer-shown"
+  | "v-pay-offer-checkout"
   | "price-weekly-revenue"
   | "price-checkout-paid"
   | "answer-limit-students"
@@ -998,6 +1023,17 @@ export const READINGS: Record<ReadingMetric, { label: string; source: string; en
     label: "Written answers: questions saved for review later marked Understood (%)",
     source:
       "user_activity answer_wrong with metadata.selfMark review since liveSince, distinct (user, question); the share with a later answer_correct carrying metadata.selfMark understood",
+    entries: [],
+  },
+  "v-pay-offer-shown": {
+    label: "V: students shown the pass offer at the day's limit",
+    source:
+      "Vercel Analytics reveal_daily_limit_hit with surface 'v' (once per page session); cross-check chat_interactions tool_calls where explain_question's result starts \"The student has used today's\"",
+    entries: [],
+  },
+  "v-pay-offer-checkout": {
+    label: "V: students shown the offer who opened checkout (%)",
+    source: "Vercel Analytics checkout_opened with surface 'v_chat' over v-pay-offer-shown; passes paid = checkout_paid, surface 'v_chat'",
     entries: [],
   },
   "v-false-not-found": {

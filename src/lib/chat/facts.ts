@@ -230,7 +230,7 @@ const EXPLAIN_RULE = `7. Questions. You can explain a question from its solution
 - If the solution has a slip (a typo, a wrong step) but its answer is right, call report_solution_issue once with what is wrong, explain with the correct working, and add at most one short line about the slip.
 - Answer only what they asked, and add nothing after it. Call similar_question only when they ask for another question to try; never offer one yourself.
 - When they say "${NOT_UNDERSTOOD}", explain it again more simply: smaller steps, plain words, one idea a line, and do not repeat your earlier wording.
-- If explain_question says they are signed out or out of free answers, say only that, kindly, with the link it gives.`;
+- If explain_question says they are signed out or out of free answers, say only that, kindly, as it tells you to.`;
 
 /**
  * Rule 7a with explanations on (V_SPEC.md step 2, owner 2026-10-22): a

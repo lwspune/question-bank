@@ -126,6 +126,16 @@ export function dailyRevealPass(): PassCta | null {
   return dailyQuota?.pass ?? null;
 }
 
+/**
+ * A pass bought without a reload (V's offer, 2026-10-28): every card on the
+ * page opens again. The quota is not asked for again on this page load.
+ */
+export function liftDailyLimit(): void {
+  if (!dailyQuota) return;
+  dailyQuota = null;
+  notify();
+}
+
 function ensureDailyQuota(): void {
   if (dailyFetch) return;
   dailyFetch = (async () => {

@@ -67,6 +67,9 @@ import VFace, { type VAvatar } from "./VFace";
 import ReplyText from "./VReplyText";
 import VRevealReply from "./VRevealReply";
 import VPlanCard from "./VPlanCard";
+import VPassOffer from "./VPassOffer";
+import { parseVPassOffer, type VPassOffer as PassOffer } from "@/lib/chat/passOffer";
+import { liftDailyLimit } from "@/components/reveal/useRevealMeter";
 import VProgressCard from "./VProgressCard";
 import {
   ASK_V_EVENT,
@@ -101,6 +104,11 @@ type ChatTurn = HistoryTurn & {
   progress?: boolean;
   /** A fresh reply, shown a line at a time (2026-10-23). Never kept: a reply from history shows whole. */
   reveal?: boolean;
+  /**
+   * The pass offer under V's reply when the day's free answers stopped an explanation (2026-10-28).
+   * Never kept: tomorrow, or once paid, an old offer would be wrong.
+   */
+  offer?: PassOffer;
 };
 
 /** What the device keeps of a turn: no face, no errors. */
@@ -108,7 +116,7 @@ function keepable(turns: readonly ChatTurn[]): HistoryTurn[] {
   return turns
     .filter((t) => !t.transient)
     .map((t) => {
-      const { avatar: _avatar, transient: _transient, reveal: _reveal, ...rest } = t;
+      const { avatar: _avatar, transient: _transient, reveal: _reveal, offer: _offer, ...rest } = t;
       return rest as HistoryTurn;
     });
 }
@@ -525,6 +533,18 @@ export default function ChatWidget() {
     addTurn({ role: "assistant", avatar: "idle", text: "Here's where you stand.", progress: true, transient: true });
   }
 
+  /**
+   * The pass was bought from the offer under reply `index`: the page's cards
+   * open again, the offer goes, and the question that met the limit is asked
+   * again, so the student gets their answer without leaving the chat.
+   */
+  function afterPassBought(index: number) {
+    liftDailyLimit();
+    setTurns((all) => all.map((t, i) => (i === index && t.role === "assistant" ? { ...t, offer: undefined } : t)));
+    const asked = turnsRef.current[index - 1];
+    if (asked?.role === "user") void askTyped(asked.text);
+  }
+
   onAskRef.current = (d: AskVDetail) => {
     setMode("chat");
     openChat();
@@ -586,6 +606,8 @@ export default function ChatWidget() {
         solutionFigure?: string;
         /** The explained question's animated solution, played under the reply (2026-10-25). */
         solutionVisual?: unknown;
+        /** The day's free answers stopped an explanation: the pass offer goes under the reply (2026-10-28). */
+        passOffer?: unknown;
         /** Abuse after the calm line (lib/chat/abuse.ts): V says nothing. */
         silent?: boolean;
         error?: string;
@@ -605,6 +627,7 @@ export default function ChatWidget() {
           ? { id: data.matchQuestionId, kind: "confirm" }
           : undefined;
       const plan = data.planShown === true ? true : undefined;
+      const offer = parseVPassOffer(data.passOffer) ?? undefined;
       addTurn(
         data.source === "ai" && data.id
           ? {
@@ -617,6 +640,7 @@ export default function ChatWidget() {
               feedback: null,
               card,
               plan,
+              offer,
               reveal: true,
               explained: data.explained === true,
               understood: null,
@@ -827,7 +851,12 @@ export default function ChatWidget() {
                       )}
                     </div>
                   )}
-                  {t.card && !t.reveal && <VQuestionCard id={t.card.id} kind={t.card.kind} />}
+                  {t.offer && !t.reveal && (
+                    <div className="ml-9 max-w-[calc(100%-2.25rem)]">
+                      <VPassOffer offer={t.offer} onPaid={() => afterPassBought(i)} onNavigate={close} />
+                    </div>
+                  )}
+                  {t.card && !t.reveal && <VQuestionCard id={t.card.id} kind={t.card.kind} onNavigate={close} />}
                   {t.plan && !t.reveal && <VPlanCard onNavigate={close} />}
                   {t.progress && <VProgressCard onNavigate={close} />}
                 </div>

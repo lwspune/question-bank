@@ -165,6 +165,9 @@ async function main() {
       case "self-mark":
         line = handRead(e.liveSince, ["self-mark-tap-share", "self-mark-review-fixed"]);
         break;
+      case "v-pay-offer":
+        line = handRead(e.liveSince, ["v-pay-offer-shown", "v-pay-offer-checkout"]);
+        break;
       case "v-strategy":
         line = handRead(e.liveSince, ["v-strategy-answers", "v-strategy-no-data"]);
         break;

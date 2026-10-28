@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { Check, Loader2, Lock } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useCheckout, type CheckoutOutcome } from "@/components/billing/useCheckout";
+import { useCheckout, type CheckoutOutcome, type CheckoutSurface } from "@/components/billing/useCheckout";
 import { trackFunnelOnce } from "@/lib/analytics/trackFunnel";
 import { sendActivityOnce } from "@/lib/activity/clientBeacon";
 import { pricingHref } from "@/lib/billing/checkoutReturn";
@@ -20,9 +20,13 @@ import { dailyRevealLimit, dailyRevealPass } from "./useRevealMeter";
  * who is already signed in: a link where the reveal button would be, and a
  * prompt after a refused tap. Both say what comes back free (tomorrow) before
  * offering the pass, and both count as meeting the wall once per page session.
+ * V shows the same offer when the limit stops an explanation (2026-10-28,
+ * components/chat/VPassOffer), as surface "v".
  */
 
-function useDailyWallSeen(surface: PracticeSurface): void {
+export type DailyWallSurface = PracticeSurface | "v";
+
+function useDailyWallSeen(surface: DailyWallSurface): void {
   useEffect(() => {
     sendActivityOnce("reveals", { kind: "paywall_event", step: "shown", gate: "reveals" });
     trackFunnelOnce("reveal_daily_limit_hit", surface, { surface });
@@ -59,25 +63,48 @@ export function RevealDailyLink({ surface }: { surface: PracticeSurface }) {
  */
 export function RevealDailyPrompt({ surface }: { surface: PracticeSurface }) {
   const pass = dailyRevealPass();
-  return pass ? <RevealDailyOffer surface={surface} pass={pass} /> : <RevealDailyLinkPrompt surface={surface} />;
+  const limit = dailyRevealLimit();
+  return pass ? (
+    <RevealDailyOffer surface={surface} pass={pass} limit={limit} />
+  ) : (
+    <RevealDailyLinkPrompt surface={surface} limit={limit} />
+  );
 }
 
-function RevealDailyOffer({ surface, pass }: { surface: PracticeSurface; pass: PassCta }) {
+// The quota is read once per page load, so on the bank a reload is what lifts the wall.
+const reload = () => window.location.reload();
+
+/**
+ * The offer itself. `onPaid` runs once access is granted (the bank reloads;
+ * V asks again instead, so the chat stays). `checkoutSurface` names where the
+ * checkout started in the funnel.
+ */
+export function RevealDailyOffer({
+  surface,
+  pass,
+  limit,
+  onPaid = reload,
+  checkoutSurface = "reveal_wall",
+}: {
+  surface: DailyWallSurface;
+  pass: PassCta;
+  limit: number | null;
+  onPaid?: () => void;
+  checkoutSurface?: CheckoutSurface;
+}) {
   useDailyWallSeen(surface);
   const router = useRouter();
-  const limit = dailyRevealLimit();
   const [showOthers, setShowOthers] = useState(false);
   const others = otherBenefits(pass.perks);
   const perMonth = perMonthLine(pass);
   const onDone = useCallback(
     (outcome: CheckoutOutcome) => {
-      // The quota is read once per page load, so a reload is what lifts the wall.
-      if (outcome === "paid") window.location.reload();
+      if (outcome === "paid") onPaid();
       else router.push("/account");
     },
-    [router]
+    [router, onPaid]
   );
-  const { start, busy } = useCheckout({ planId: pass.planId, surface: "reveal_wall", onDone });
+  const { start, busy } = useCheckout({ planId: pass.planId, surface: checkoutSurface, onDone });
   const onPay = () => {
     trackFunnelOnce("reveal_daily_limit_pass_click", surface, { surface });
     void start();
@@ -131,10 +158,18 @@ function RevealDailyOffer({ surface, pass }: { surface: PracticeSurface; pass: P
 }
 
 /** The wall before 2026-10-25, for when no pass is on sale: a link to /pricing. */
-function RevealDailyLinkPrompt({ surface }: { surface: PracticeSurface }) {
+export function RevealDailyLinkPrompt({
+  surface,
+  limit,
+  onNavigate,
+}: {
+  surface: DailyWallSurface;
+  limit: number | null;
+  /** V closes its window as the link is followed. */
+  onNavigate?: () => void;
+}) {
   useDailyWallSeen(surface);
   const href = usePassHref();
-  const limit = dailyRevealLimit();
   return (
     <div className="mt-2 flex flex-wrap items-center gap-2 rounded-md border border-dashed border-primary/30 bg-primary/5 px-3 py-2 text-sm animate-in fade-in zoom-in-95 duration-300">
       <Lock className="h-3.5 w-3.5 shrink-0 text-primary" aria-hidden />
@@ -144,7 +179,10 @@ function RevealDailyLinkPrompt({ surface }: { surface: PracticeSurface }) {
       <Link
         href={href}
         prefetch={false}
-        onClick={() => trackFunnelOnce("reveal_daily_limit_pass_click", surface, { surface })}
+        onClick={() => {
+          trackFunnelOnce("reveal_daily_limit_pass_click", surface, { surface });
+          onNavigate?.();
+        }}
         className="ml-auto inline-flex items-center gap-1 rounded-sm font-medium text-brand-accent hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
       >
         Get pass

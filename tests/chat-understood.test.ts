@@ -40,6 +40,15 @@ describe("isExplanation: the replies that ask 'Did you understand?'", () => {
     expect(isExplanation(null)).toBe(false);
   });
 
+  it("is not when explain_question was refused: no answer was given, so there is nothing to understand (2026-10-28)", () => {
+    const id = "11111111-1111-4111-8111-111111111111";
+    const call = (result: string) => [{ name: "explain_question", input: { question_id: id }, result }];
+    expect(isExplanation(call("The student has used today's 20 free answers. ..."))).toBe(false);
+    expect(isExplanation(call("The student is signed out: tell them to sign in ..."))).toBe(false);
+    expect(isExplanation(call("Question not found. Ask the student to tap Ask V on the question again."))).toBe(false);
+    expect(isExplanation(call(`Question ${id} from NDA, Mathematics ...`))).toBe(true);
+  });
+
   it("counts the reply to a No as an explanation, though V re-explains from memory with no tool", () => {
     // Case 76a45899, 2026-10-23: both runs re-explained without calling a tool; the question must come back.
     expect(isExplanation([], NOT_UNDERSTOOD)).toBe(true);

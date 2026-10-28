@@ -35,6 +35,11 @@ export type QuestionToolDeps = {
   onMatch: (id: string) => void;
   onExplained: (id: string) => void;
   /**
+   * The day's free answers stopped an explanation (2026-10-28): the window shows the pass offer.
+   * Absent where there is no window (V's test runner): V then names /pricing itself.
+   */
+  onLimit?: (limit: number) => void;
+  /**
    * Files a slip V spotted in OUR solution as a question report (2026-10-23), one open per question.
    * Absent where nothing may be filed (V's test runner): report_solution_issue is then not offered.
    */
@@ -98,6 +103,10 @@ export function questionTools(d: QuestionToolDeps): VTool[] {
         if (!d.spendReveal) return "The student is signed out: tell them to sign in (free) to get explanations, and give no answer.";
         const check = await d.spendReveal(q.id);
         if (check.kind === "limit") {
+          if (d.onLimit) {
+            d.onLimit(check.limit);
+            return `The student has used today's ${check.limit} free answers. Tell them kindly in one short sentence and give no answer or hint. A Premium Pass offer with its price is shown to them under your reply, so give no link and no price; you may say more free answers come tomorrow.`;
+          }
           return `The student has used today's ${check.limit} free answers. Tell them kindly, give no answer or hint, and say the Premium Pass at /pricing gives unlimited answers.`;
         }
         d.onExplained(q.id);

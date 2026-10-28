@@ -17,10 +17,24 @@ export const NOT_UNDERSTOOD = "I didn't understand. Please explain it more simpl
 const EXPLAIN_TOOLS = new Set(["explain_question", "explain_concept"]);
 
 /**
+ * A refused explain_question (out of free answers, signed out, not found) gave
+ * no answer, so it is no explanation (2026-10-28: the limit reply was asking
+ * "Did you understand?"). Its logged result says which: an explanation starts
+ * "Question <id> from" (questionTools explainView). A call logged without its
+ * result still counts, as before.
+ */
+function explained(c: ToolCallLog): boolean {
+  if (!EXPLAIN_TOOLS.has(c.name)) return false;
+  if (c.name !== "explain_question" || c.result === undefined) return true;
+  const id = (c.input as { question_id?: unknown } | null)?.question_id;
+  return typeof id === "string" && c.result.startsWith(`Question ${id} from`);
+}
+
+/**
  * A reply asks "Did you understand?" only when V explained something: it used
  * an explain tool, or it answered a No (V re-explains from memory, often with
  * no tool: case 76a45899, 2026-10-23), so the question comes back each time.
  */
 export function isExplanation(toolCalls: readonly ToolCallLog[] | null | undefined, message?: string | null): boolean {
-  return message === NOT_UNDERSTOOD || (toolCalls ?? []).some((c) => EXPLAIN_TOOLS.has(c.name));
+  return message === NOT_UNDERSTOOD || (toolCalls ?? []).some(explained);
 }

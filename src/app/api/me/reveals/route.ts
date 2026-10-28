@@ -15,20 +15,9 @@ import { NextResponse } from "next/server";
 import { getSessionUser } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { getPremiumLimits } from "@/lib/billing/premiumLimits";
-import { passCta, passForScope, type PassCta } from "@/lib/billing/plans";
-import { listActivePlansCached } from "@/lib/billing/plansQuery";
-import { DOWNLOAD_PASS_SCOPE } from "@/lib/export/access";
+import { passOnSale } from "@/lib/billing/passOnSale";
 import { loadRevealedToday } from "@/lib/questions/revealQuota";
 import { istDayStartIso } from "@/lib/email/dueNudge";
-
-async function passOnSale(): Promise<PassCta | null> {
-  try {
-    return passCta(passForScope(await listActivePlansCached(), DOWNLOAD_PASS_SCOPE));
-  } catch (e) {
-    console.error("reveal wall: plans read failed", e);
-    return null;
-  }
-}
 
 export const dynamic = "force-dynamic";
 

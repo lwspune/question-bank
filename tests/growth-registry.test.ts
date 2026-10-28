@@ -93,6 +93,7 @@ describe("EXPERIMENTS", () => {
       "tutor-interest",
       "v-explain",
       "v-finder",
+      "v-pay-offer",
       "v-plan",
       "v-progress",
       "v-reveal",

@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import { CheckCircle2, XCircle } from "lucide-react";
 import { toast } from "sonner";
 import MathText from "./MathText";
@@ -9,8 +8,11 @@ import MathBlockText from "./MathBlockText";
 import SignInLink from "@/components/reveal/SignInLink";
 import { askVAbout } from "@/lib/chat/askVEvent";
 import type { CardQuestion } from "@/lib/chat/questionCard";
+import { parseVPassOffer, type VPassOffer as Offer } from "@/lib/chat/passOffer";
+import { liftDailyLimit } from "@/components/reveal/useRevealMeter";
+import VPassOffer from "./VPassOffer";
 
-type Result = { correct: boolean; answer: string } | { limit: number } | null;
+type Result = { correct: boolean; answer: string } | { offer: Offer } | null;
 
 const OPTION =
   "flex w-full items-start gap-2 rounded-lg border bg-background px-3 py-2 text-left text-sm transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:cursor-default disabled:hover:bg-background";
@@ -24,8 +26,10 @@ const ACTION =
  *   answers; then "Ask V why" explains it.
  * - "confirm": the closest match to a pasted question. The student says
  *   whether it is theirs, so V never explains the wrong one.
+ * Past the day's free answers the card offers the pass in place (2026-10-28),
+ * and once it is bought checks the pick it was holding.
  */
-export default function VQuestionCard({ id, kind }: { id: string; kind: "try" | "confirm" }) {
+export default function VQuestionCard({ id, kind, onNavigate }: { id: string; kind: "try" | "confirm"; onNavigate?: () => void }) {
   const [q, setQ] = useState<CardQuestion | null>(null);
   const [failed, setFailed] = useState(false);
   const [picked, setPicked] = useState<string | null>(null);
@@ -47,6 +51,10 @@ export default function VQuestionCard({ id, kind }: { id: string; kind: "try" | 
   async function answer(label: string) {
     if (picked) return;
     setPicked(label);
+    await check(label);
+  }
+
+  async function check(label: string) {
     try {
       const res = await fetch("/api/chat/question", {
         method: "POST",
@@ -58,8 +66,9 @@ export default function VQuestionCard({ id, kind }: { id: string; kind: "try" | 
         setPicked(null);
         return;
       }
-      const j = (await res.json().catch(() => ({}))) as { ok?: boolean; correct?: boolean; answer?: string; limit?: number; error?: string };
-      if (typeof j.limit === "number") setResult({ limit: j.limit });
+      const j = (await res.json().catch(() => ({}))) as { ok?: boolean; correct?: boolean; answer?: string; limit?: number; pass?: unknown; error?: string };
+      const offer = parseVPassOffer({ limit: j.limit, pass: j.pass });
+      if (offer) setResult({ offer });
       else if (j.ok && typeof j.correct === "boolean" && j.answer) setResult({ correct: j.correct, answer: j.answer });
       else throw new Error(j.error ?? "not checked");
     } catch {
@@ -121,14 +130,16 @@ export default function VQuestionCard({ id, kind }: { id: string; kind: "try" | 
           to answer and get explanations.
         </p>
       )}
-      {result && "limit" in result && (
-        <p>
-          You have used today&apos;s {result.limit} free answers.{" "}
-          <Link href="/pricing" className="font-semibold text-brand-accent underline underline-offset-2">
-            See the Premium Pass
-          </Link>{" "}
-          for unlimited answers.
-        </p>
+      {result && "offer" in result && picked && (
+        <VPassOffer
+          offer={result.offer}
+          onNavigate={onNavigate}
+          onPaid={() => {
+            liftDailyLimit();
+            setResult(null);
+            void check(picked);
+          }}
+        />
       )}
       {result && "correct" in result && (
         <div className="flex flex-wrap items-center gap-2" role="status">
