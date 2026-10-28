@@ -25,6 +25,8 @@
  * What it cannot show: a REAL student's data. A screen behind ONE tap (a dialog,
  * a sheet) can be shown with `--click="<button text>"`, and a few taps deep with
  * `--click="A >> B"` (each matched by its text or its aria-label).
+ * `--no-fullscreen` makes the page read full screen as unavailable, as on an
+ * iPhone, so a full-screen fallback can be captured (with --click).
  * `--with-pass` (with --as-student) makes that student a Premium Pass holder.
  * `--as-student=<exam,...>` renders the signed-in view of a cached page (the
  * header and any island that reads /api/me/header) for a stand-in student;
@@ -38,7 +40,7 @@ import { spawn, type ChildProcess } from "node:child_process";
 import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
-import { clickScript, parseShotArgs, planCaptures, sheetHtml, storageScript, stubHeaderSession, VIEWPORTS, type Capture } from "./lib";
+import { clickScript, NO_FULLSCREEN_SCRIPT, parseShotArgs, planCaptures, sheetHtml, storageScript, stubHeaderSession, VIEWPORTS, type Capture } from "./lib";
 
 const EDGE = process.env.EDGE ?? "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe";
 const PHONE_UA =
@@ -165,6 +167,10 @@ async function main() {
       // Without Page.enable the script is accepted but never runs (found 2026-10-18).
       await cdp.send("Page.enable");
       await cdp.send("Page.addScriptToEvaluateOnNewDocument", { source: storageScript(entries) });
+    }
+    if (args.noFullscreen) {
+      await cdp.send("Page.enable");
+      await cdp.send("Page.addScriptToEvaluateOnNewDocument", { source: NO_FULLSCREEN_SCRIPT });
     }
     for (const c of plan) {
       if (args.phase !== "both" && c.target !== args.phase) continue;

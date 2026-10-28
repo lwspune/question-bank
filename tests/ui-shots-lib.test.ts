@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { clickScript, pageSlug, planCaptures, parseShotArgs, sheetHtml, storageScript, stubHeaderSession, VIEWPORTS } from "../scripts/ui/lib";
+import { clickScript, NO_FULLSCREEN_SCRIPT, pageSlug, planCaptures, parseShotArgs, sheetHtml, storageScript, stubHeaderSession, VIEWPORTS } from "../scripts/ui/lib";
 
 /**
  * `npm run ui:shots` (2026-10-04): the before/after screenshot sheet every
@@ -54,6 +54,14 @@ describe("planCaptures", () => {
     const files = plan.map((c) => c.file);
     expect(new Set(files).size).toBe(files.length);
     expect(files).toContain("after-phone-dark-mock.png");
+  });
+});
+
+describe("NO_FULLSCREEN_SCRIPT", () => {
+  it("makes the page read full screen as unavailable", () => {
+    const Doc = function () {} as unknown as { prototype: object };
+    new Function("Document", NO_FULLSCREEN_SCRIPT)(Doc);
+    expect((Object.create(Doc.prototype) as { fullscreenEnabled: boolean }).fullscreenEnabled).toBe(false);
   });
 });
 
@@ -148,6 +156,11 @@ describe("--as-student: a signed-in view without signing in", () => {
       },
     });
   });
+  it("--no-fullscreen hides the browser's full screen, as iPhone Safari does; off by default", () => {
+    expect(parseShotArgs(["--pages=/learn"]).noFullscreen).toBe(false);
+    expect(parseShotArgs(["--pages=/learn", "--no-fullscreen"]).noFullscreen).toBe(true);
+  });
+
   it("--with-pass makes that student a Premium Pass holder", () => {
     expect(parseShotArgs(["--pages=/", "--as-student=nda", "--with-pass"]).withPass).toBe(true);
     expect(parseShotArgs(["--pages=/", "--as-student=nda"]).withPass).toBe(false);

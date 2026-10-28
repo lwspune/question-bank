@@ -39,6 +39,9 @@ export type ShotArgs = {
    *  student who chose these exams, so a signed-in view can be captured on
    *  both sides without signing in. Null = anonymous, as before. */
   asStudent: string[] | null;
+  /** `--no-fullscreen`: the page reads full screen as unavailable, as on iPhone
+   *  Safari (which allows it only for video), so its fallback can be captured. */
+  noFullscreen: boolean;
   /** `--with-pass`: that student also holds the Premium Pass (the header's
    *  diamond). Needs --as-student. */
   withPass: boolean;
@@ -142,6 +145,7 @@ export function parseShotArgs(argv: string[]): ShotArgs {
     phase,
     asStudent,
     withPass: flag("with-pass"),
+    noFullscreen: flag("no-fullscreen"),
     click: clickArg(value("click")),
     storage: value("storage") ?? null,
     cookies: cookieArg(value("cookie")),
@@ -167,6 +171,9 @@ function clickArg(raw: string | undefined): string[] | null {
 }
 
 /** The script that seeds localStorage (`--storage`); objects are stored as JSON. Never throws. */
+/** Run before each load under `--no-fullscreen`: `document.fullscreenEnabled` reads false. */
+export const NO_FULLSCREEN_SCRIPT = `Object.defineProperty(Document.prototype, "fullscreenEnabled", { configurable: true, get: () => false });`;
+
 export function storageScript(entries: Record<string, unknown>): string {
   const pairs = Object.entries(entries).map(([k, v]) => [k, typeof v === "string" ? v : JSON.stringify(v)]);
   return `try { for (const [k, v] of ${JSON.stringify(pairs)}) localStorage.setItem(k, v); } catch (e) {}`;
