@@ -13,6 +13,15 @@ describe("decideRecrop", () => {
     expect(decideRecrop({ liveVsOld: 0.001, oldVsNew: 0 })).toBe("clean");
   });
 
+  it("leaves an image a previous run already replaced with the clean crop", () => {
+    // Measured 2026-10-29: the 171 replaced on 10-19 score liveVsNew <= 0.0015.
+    expect(decideRecrop({ liveVsOld: 0.002, oldVsNew: 0.04, liveVsNew: 0.0015 })).toBe("done");
+  });
+
+  it("still replaces when the live image differs from the clean crop", () => {
+    expect(decideRecrop({ liveVsOld: 0.008, oldVsNew: 0.014, liveVsNew: 0.1 })).toBe("replace");
+  });
+
   it("refuses to touch an image its record no longer reproduces (a hand-made or re-cropped one)", () => {
     expect(decideRecrop({ liveVsOld: 0.2, oldVsNew: 0.04 })).toBe("mismatch");
   });

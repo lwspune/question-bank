@@ -5,13 +5,15 @@
 jobs.json = {"outdir": dir, "jobs": [{"key", "pdf", "parts": [{"page", "bbox", "mask"?}], "live": png path}]}.
 For each job: the OLD crop (watermark kept, as it was made), the NEW crop
 (watermark removed), and the live image. Prints one JSON line:
-{key: {"liveVsOld": share, "oldVsNew": share, "new": path}}.
+{key: {"liveVsOld": share, "oldVsNew": share, "liveVsNew": share, "new": path}}.
 
 liveVsOld counts pixels differing by more than 48 grey levels after both are
 scaled to one size: a record that still reproduces the live image scores near
 0 whatever zoom or quantization it was uploaded at. oldVsNew counts pixels
 differing by more than 12 levels at full size: the watermark is a pale grey
-(about 35 levels off white), so it shows there and nowhere else.
+(about 35 levels off white), so it shows there and nowhere else. liveVsNew uses the same fine threshold
+against the live image: near 0 means the live image is already the clean crop
+(replaced on an earlier run), so a re-run does not upload it again.
 """
 import json
 import os
@@ -45,7 +47,8 @@ def main():
         live = Image.open(job["live"]).convert("RGB")
         path = os.path.join(spec["outdir"], job["key"] + ".png")
         open(path, "wb").write(encode(new))
-        out[job["key"]] = {"liveVsOld": round(share(old, live, 48, width=300), 5), "oldVsNew": round(share(old, new, 12), 5), "new": path}
+        out[job["key"]] = {"liveVsOld": round(share(old, live, 48, width=300), 5), "oldVsNew": round(share(old, new, 12), 5),
+                          "liveVsNew": round(share(new, live, 12), 5), "new": path}
     print(json.dumps(out))
 
 
