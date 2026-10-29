@@ -1,0 +1,1459 @@
+{
+  "//": "Assembled from agent drafts (truthTable).",
+  "visuals": [
+    {
+      "id": "10314a04-c299-4ec9-a2df-c14ffeab892b",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "truthTable",
+        "params": {
+          "letters": {
+            "p": "two numbers are equal",
+            "q": "their squares are equal"
+          },
+          "ask": {
+            "kind": "transform",
+            "of": "p -> q",
+            "op": "contrapositive",
+            "equals": "~q -> ~p"
+          },
+          "say": "If the squares are not equal, then the numbers are not equal."
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "vars"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "columns",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "a724d5cd",
+        "answer": {
+          "value": 1,
+          "label": "∼q → ∼p"
+        }
+      }
+    },
+    {
+      "id": "14597045-1163-4665-b312-ce8602ca064f",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "truthTable",
+        "params": {
+          "letters": {
+            "p": "3 + 2 = 7",
+            "q": "4 + 3 = 8",
+            "r": "5 + 2 = 7",
+            "s": "the earth is flat"
+          },
+          "ask": {
+            "kind": "evaluate",
+            "at": {
+              "p": false,
+              "q": false,
+              "r": true,
+              "s": false
+            },
+            "f": [
+              "p -> q",
+              "r -> s",
+              "((p -> q) & (r -> s)) -> T"
+            ],
+            "expect": [
+              true,
+              false,
+              true
+            ]
+          },
+          "say": "(A) true, (B) false, (C) true (5 + 6 = 11 is true, shown as T)."
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "vars"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "columns"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "fd9aeb23",
+        "answer": {
+          "value": 1,
+          "label": "A, C true; B false"
+        }
+      }
+    },
+    {
+      "id": "15428480-12d6-4717-9da7-4fb694f9300e",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "truthTable",
+        "params": {
+          "letters": {
+            "p": "a quadrilateral is a square",
+            "q": "all its sides are equal"
+          },
+          "ask": {
+            "kind": "transform",
+            "of": "p -> q",
+            "op": "converse",
+            "equals": "q -> p"
+          },
+          "say": "Statement 2 is the converse of statement 1."
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "vars"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "columns"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "858b6a31",
+        "answer": {
+          "value": 1,
+          "label": "q → p, the converse"
+        }
+      }
+    },
+    {
+      "id": "15667e25-1e88-4dc4-9a60-fae12beb13a3",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "truthTable",
+        "params": {
+          "letters": {
+            "p": "horses have wings",
+            "q": "crows have tails"
+          },
+          "ask": {
+            "kind": "transform",
+            "of": "p <-> q",
+            "op": "negation",
+            "equals": "(p & ~q) | (q & ~p)"
+          },
+          "say": "Horses have wings but crows do not have tails, or crows have tails but horses do not have wings."
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "vars",
+              "columns"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "ce673580",
+        "answer": {
+          "value": 1,
+          "label": "(p ∧ ∼q) ∨ (q ∧ ∼p)"
+        }
+      }
+    },
+    {
+      "id": "2bba9224-a0d2-4f01-a7a2-a30790cfe242",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "truthTable",
+        "params": {
+          "letters": {
+            "p": "∀n ∈ N, n² + n is even",
+            "q": "∀n ∈ N, n² − n is odd"
+          },
+          "ask": {
+            "kind": "evaluate",
+            "at": {
+              "p": true,
+              "q": false
+            },
+            "f": [
+              "p & q",
+              "p | q",
+              "p -> q"
+            ],
+            "expect": [
+              false,
+              true,
+              false
+            ]
+          },
+          "say": "p is true, q is false: p ∧ q = F, p ∨ q = T, p → q = F."
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "vars"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "columns"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "fb3a70a5",
+        "answer": {
+          "value": 1,
+          "label": "F, T, F"
+        }
+      }
+    },
+    {
+      "id": "2e5f0d92-25d0-4dcd-93b6-afdc3d491a27",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "truthTable",
+        "params": {
+          "letters": {
+            "p": "she works",
+            "q": "she will earn money"
+          },
+          "ask": {
+            "kind": "transform",
+            "of": "p -> q",
+            "op": "negation",
+            "equals": "p & ~q"
+          },
+          "say": "She works and she will not earn money."
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "vars",
+              "columns",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "0fb5f58c",
+        "answer": {
+          "value": 1,
+          "label": "p ∧ ∼q"
+        }
+      }
+    },
+    {
+      "id": "31c61477-5f27-4ff2-9af6-026ca94cf702",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "truthTable",
+        "params": {
+          "letters": {
+            "p": "three vertices are cube roots of unity",
+            "q": "the triangle is equilateral"
+          },
+          "ask": {
+            "kind": "transform",
+            "of": "p -> q",
+            "op": "contrapositive",
+            "equals": "~q -> ~p"
+          },
+          "say": "If a triangle is not equilateral, its vertices cannot be cube roots of unity."
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "vars"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "columns"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "8ce7463c",
+        "answer": {
+          "value": 1,
+          "label": "∼q → ∼p"
+        }
+      }
+    },
+    {
+      "id": "331d290c-b547-45e2-ab46-09cc04c1fe19",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "truthTable",
+        "params": {
+          "letters": {
+            "p": "x = 1",
+            "q": "x² = x"
+          },
+          "ask": {
+            "kind": "transform",
+            "of": "~p | q",
+            "op": "dual",
+            "equals": "~p & q"
+          },
+          "say": "x ≠ 1 and x² = x."
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "vars"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "columns",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "bde28125",
+        "answer": {
+          "value": 1,
+          "label": "∼p ∧ q"
+        }
+      }
+    },
+    {
+      "id": "33b58cb3-e1ef-40e3-b259-fc2b24a9c404",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "truthTable",
+        "params": {
+          "letters": {
+            "p": "3 is a prime number",
+            "q": "3 is odd"
+          },
+          "ask": {
+            "kind": "transform",
+            "of": "p -> q",
+            "op": "converse",
+            "equals": "q -> p"
+          },
+          "say": "If 3 is odd, then it is a prime number."
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "vars"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "columns"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "111f0d28",
+        "answer": {
+          "value": 1,
+          "label": "q → p"
+        }
+      }
+    },
+    {
+      "id": "372ed72d-e0b9-4427-b9a8-a4d6f71c8b55",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "truthTable",
+        "params": {
+          "letters": {
+            "p": "3 + 3 = 7",
+            "q": "4 + 3 = 8",
+            "r": "5 + 3 = 8",
+            "s": "the earth is flat"
+          },
+          "ask": {
+            "kind": "evaluate",
+            "at": {
+              "p": false,
+              "q": false,
+              "r": true,
+              "s": false
+            },
+            "f": [
+              "p -> q",
+              "r -> s",
+              "((p -> q) & (r -> s)) -> F"
+            ],
+            "expect": [
+              true,
+              false,
+              true
+            ]
+          },
+          "say": "(A) true, (B) false, (C) true (5 + 6 = 17 is false, shown as F)."
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "vars"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "columns"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "b9cba77a",
+        "answer": {
+          "value": 1,
+          "label": "A, C true; B false"
+        }
+      }
+    },
+    {
+      "id": "50c6aa4a-6de2-46a4-8029-8732ec982e7f",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "truthTable",
+        "params": {
+          "letters": {
+            "p": "statement p",
+            "q": "statement q",
+            "r": "statement r"
+          },
+          "ask": {
+            "kind": "evaluate",
+            "at": {
+              "p": false,
+              "q": false,
+              "r": false
+            },
+            "f": [
+              "(p | q) | r",
+              "((p -> q) & ~q) -> r"
+            ],
+            "expect": [
+              false,
+              false
+            ]
+          },
+          "say": "S2 is false only when p, q, r are all false; then S1 is false too."
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "vars",
+              "columns"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "4f4ddb47",
+        "answer": {
+          "value": 1,
+          "label": "S2 F gives S1 F, so D fails"
+        }
+      }
+    },
+    {
+      "id": "577d4a77-e4bf-4558-80e0-2b41decce1c7",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "truthTable",
+        "params": {
+          "letters": {
+            "p": "the triangle is equilateral",
+            "q": "the triangle is isosceles",
+            "r": "the triangle is right angled"
+          },
+          "ask": {
+            "kind": "transform",
+            "of": "(p | q) & ~q & r",
+            "op": "negation",
+            "equals": "(p | q) -> (q | ~r)"
+          },
+          "say": "If equilateral or isosceles, then isosceles or not right angled."
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "vars"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "columns"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "0fbfd906",
+        "answer": {
+          "value": 1,
+          "label": "(p ∨ q) → (q ∨ ∼r)"
+        }
+      }
+    },
+    {
+      "id": "5c5998a9-0526-4508-9189-f6ce981608fb",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "truthTable",
+        "params": {
+          "letters": {
+            "p": "a man is a judge",
+            "q": "he is honest"
+          },
+          "ask": {
+            "kind": "transform",
+            "of": "p -> q",
+            "op": "inverse",
+            "equals": "~p -> ~q"
+          },
+          "say": "If a man is not a judge, then he is not honest."
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "vars",
+              "columns",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "a9278ff4",
+        "answer": {
+          "value": 1,
+          "label": "∼p → ∼q"
+        }
+      }
+    },
+    {
+      "id": "68823dba-362c-421b-8c04-5576b9dc4632",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "truthTable",
+        "params": {
+          "columns": [
+            {
+              "f": "p & ~q",
+              "label": "p ∧ ∼q"
+            },
+            {
+              "f": "~(p & ~q)",
+              "label": "(i)"
+            },
+            {
+              "f": "p -> q",
+              "label": "p → q"
+            },
+            {
+              "f": "~q -> ~p",
+              "label": "∼q → ∼p"
+            },
+            {
+              "f": "(p -> q) <-> (~q -> ~p)",
+              "label": "(ii)"
+            }
+          ],
+          "ask": {
+            "kind": "classify",
+            "f": "(p -> q) <-> (~q -> ~p)",
+            "expect": "tautology",
+            "label": "(ii)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "vars",
+              "columns"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "0bd48cfb",
+        "answer": {
+          "value": 1,
+          "label": "both results false"
+        }
+      }
+    },
+    {
+      "id": "72f86a6e-6cdb-458a-9187-af2998e69a4c",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "truthTable",
+        "params": {
+          "letters": {
+            "p": "two numbers are not equal",
+            "q": "their squares are not equal"
+          },
+          "ask": {
+            "kind": "transform",
+            "of": "p -> q",
+            "op": "contrapositive",
+            "equals": "~q -> ~p"
+          },
+          "say": "If the squares of two numbers are equal, then the numbers are equal."
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "vars"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "columns"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "8c105911",
+        "answer": {
+          "value": 1,
+          "label": "∼q → ∼p"
+        }
+      }
+    },
+    {
+      "id": "83e67272-7fb2-45ef-8072-04d5f7efc21d",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "truthTable",
+        "params": {
+          "letters": {
+            "p": "primes between 2 and 100 number 26",
+            "q": "zero is a complex number",
+            "r": "the L.C.M. of 6 and 7 is 6"
+          },
+          "ask": {
+            "kind": "evaluate",
+            "at": {
+              "p": false,
+              "q": true,
+              "r": false
+            },
+            "f": [
+              "(p | q) <-> r"
+            ],
+            "expect": [
+              false
+            ]
+          },
+          "say": "(F ∨ T) ↔ F is T ↔ F, which is False: option C."
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "vars"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "columns"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "8b5d8139",
+        "answer": {
+          "value": 1,
+          "label": "False"
+        }
+      }
+    },
+    {
+      "id": "920c05ef-19b7-4597-b7c8-bb53786973dd",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "truthTable",
+        "params": {
+          "letters": {
+            "p": "the work is finished on time",
+            "q": "the contractor is in trouble"
+          },
+          "ask": {
+            "kind": "equivalent",
+            "a": "~p -> q",
+            "b": "p | q"
+          },
+          "say": "Statement I is ∼p → q, which is p ∨ q: Statement II."
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "vars",
+              "columns"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "e7af2dfb",
+        "answer": {
+          "value": 1,
+          "label": "equivalent"
+        }
+      }
+    },
+    {
+      "id": "ab842ace-57c7-4e44-a2e7-f9760ae44ade",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "truthTable",
+        "params": {
+          "letters": {
+            "p": "7 is greater than 4",
+            "q": "6 is less than 7"
+          },
+          "ask": {
+            "kind": "transform",
+            "of": "p | q",
+            "op": "negation",
+            "equals": "~p & ~q"
+          },
+          "say": "7 is not greater than 4 and 6 is not less than 7."
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "vars"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "columns"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "4533a094",
+        "answer": {
+          "value": 1,
+          "label": "∼p ∧ ∼q"
+        }
+      }
+    },
+    {
+      "id": "ac2da51e-03dd-42ef-8458-847376e2678c",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "truthTable",
+        "params": {
+          "letters": {
+            "p": "the payment will be made",
+            "q": "the work is finished in time"
+          },
+          "ask": {
+            "kind": "transform",
+            "of": "p <-> q",
+            "op": "negation",
+            "equals": "(p & ~q) | (~p & q)"
+          },
+          "say": "Either the payment is made and the work is not finished, or the work is finished and the payment is not made."
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "vars",
+              "columns"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "77b3f090",
+        "answer": {
+          "value": 1,
+          "label": "(p ∧ ∼q) ∨ (∼p ∧ q)"
+        }
+      }
+    },
+    {
+      "id": "bf076547-7b76-470b-b1e3-6f9d0f70dadd",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "truthTable",
+        "params": {
+          "letters": {
+            "p": "if 3⁴ > 4³ then 3³ > 4⁴",
+            "q": "x²−2x+2=0 has real roots ⇔ Mumbai is in MH",
+            "r": "p is true or q is false"
+          },
+          "ask": {
+            "kind": "evaluate",
+            "at": {
+              "p": false,
+              "q": false,
+              "r": true
+            },
+            "f": [
+              "(p & q) | r"
+            ],
+            "expect": [
+              true
+            ]
+          },
+          "say": "p = F, q = F, r = T, so (p ∧ q) ∨ r = F ∨ T = T."
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "vars",
+              "columns"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "3554d9e3",
+        "answer": {
+          "value": 1,
+          "label": "True"
+        }
+      }
+    },
+    {
+      "id": "cae180cc-a2b3-4192-b526-5f7c09490e07",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "truthTable",
+        "params": {
+          "letters": {
+            "p": "10n − 3 is prime when n is not divisible by 3",
+            "q": "2/√3, −2/√3, −1/√3 are direction cosines",
+            "r": "sin x increases on [−π/2, π/2]"
+          },
+          "ask": {
+            "kind": "evaluate",
+            "at": {
+              "p": false,
+              "q": false,
+              "r": true
+            },
+            "f": [
+              "(~p | q) & r"
+            ],
+            "expect": [
+              true
+            ]
+          },
+          "say": "p = F, q = F, r = T, so (∼p ∨ q) ∧ r = (T ∨ F) ∧ T = T."
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "vars"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "columns"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "5df0ca88",
+        "answer": {
+          "value": 1,
+          "label": "(∼p ∨ q) ∧ r"
+        }
+      }
+    },
+    {
+      "id": "d28e1f4b-de23-4652-b352-448bcf9ab373",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "truthTable",
+        "params": {
+          "columns": [
+            {
+              "f": "p -> ~q",
+              "label": "∼p ∨ ∼q"
+            },
+            {
+              "f": "~p -> q",
+              "label": "inverse"
+            },
+            {
+              "f": "~(~p -> q)",
+              "label": "negation"
+            }
+          ],
+          "ask": {
+            "kind": "equivalent",
+            "a": "~(~p -> q)",
+            "b": "~p & ~q"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "vars",
+              "columns"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "2e04cb7e",
+        "answer": {
+          "value": 1,
+          "label": "∼p ∧ ∼q"
+        }
+      }
+    },
+    {
+      "id": "d49c3c23-1532-447f-836f-769613b0514d",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "truthTable",
+        "params": {
+          "letters": {
+            "p": "the surface area increases",
+            "q": "the pressure decreases"
+          },
+          "ask": {
+            "kind": "transform",
+            "of": "p -> q",
+            "op": "inverse",
+            "equals": "~p -> ~q"
+          },
+          "say": "If the surface area does not increase, then the pressure does not decrease."
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "vars",
+              "columns",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "ac787bd2",
+        "answer": {
+          "value": 1,
+          "label": "∼p → ∼q"
+        }
+      }
+    },
+    {
+      "id": "d7508ee4-ec1e-4708-8569-290f540ab4c1",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "truthTable",
+        "params": {
+          "letters": {
+            "p": "X is an equilateral triangle",
+            "q": "X is an isosceles triangle"
+          },
+          "columns": [
+            {
+              "f": "q | ~p",
+              "label": "r = q ∨ ∼p"
+            },
+            {
+              "f": "~q -> ~p",
+              "label": "∼q → ∼p"
+            }
+          ],
+          "ask": {
+            "kind": "equivalent",
+            "a": "q | ~p",
+            "b": "~q -> ~p"
+          },
+          "say": "If X is not an isosceles triangle, then X is not an equilateral triangle."
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "vars",
+              "columns"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "f24af83b",
+        "answer": {
+          "value": 1,
+          "label": "∼q → ∼p"
+        }
+      }
+    },
+    {
+      "id": "dc924b6b-4e1a-4682-813a-8eb646a1236d",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "truthTable",
+        "params": {
+          "columns": [
+            {
+              "f": "p | ~q"
+            },
+            {
+              "f": "~p | q"
+            },
+            {
+              "f": "(p | ~q) & (~p | q)",
+              "label": "given"
+            },
+            {
+              "f": "p <-> q"
+            }
+          ],
+          "ask": {
+            "kind": "equivalent",
+            "a": "(p | ~q) & (~p | q)",
+            "b": "p <-> q"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "vars",
+              "columns",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "6061cff3",
+        "answer": {
+          "value": 1,
+          "label": "p and q have the same value"
+        }
+      }
+    },
+    {
+      "id": "e3613ab7-eb0b-4708-b7c7-eab86afeaaab",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "truthTable",
+        "params": {
+          "letters": {
+            "p": "an integer is greater than 4 and less than 5",
+            "q": "it is a multiple of 3"
+          },
+          "ask": {
+            "kind": "transform",
+            "of": "p -> q",
+            "op": "negation",
+            "equals": "p & ~q"
+          },
+          "say": "An integer is greater than 4 and less than 5 but it is not a multiple of 3."
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "vars",
+              "columns",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "9cbcc12b",
+        "answer": {
+          "value": 1,
+          "label": "p ∧ ∼q"
+        }
+      }
+    },
+    {
+      "id": "f19f90f5-c0be-4c7f-b646-60b540f16001",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "truthTable",
+        "params": {
+          "letters": {
+            "p": "a person is social",
+            "q": "he is happy"
+          },
+          "columns": [
+            {
+              "f": "p -> q",
+              "label": "(i) p → q"
+            },
+            {
+              "f": "~p -> ~q",
+              "label": "(ii) ∼p → ∼q"
+            },
+            {
+              "f": "~q -> ~p",
+              "label": "(iii) ∼q → ∼p"
+            },
+            {
+              "f": "q -> p",
+              "label": "(iv) q → p"
+            }
+          ],
+          "ask": {
+            "kind": "equivalent",
+            "a": "p -> q",
+            "b": "~q -> ~p"
+          },
+          "say": "(i) and (iii) are equivalent; (ii) and (iv) are equivalent."
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "vars",
+              "columns",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "49ee6f8d",
+        "answer": {
+          "value": 1,
+          "label": "(i)≡(iii), (ii)≡(iv)"
+        }
+      }
+    },
+    {
+      "id": "f750fd10-c12d-4cdd-8e59-19fe9596c485",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "truthTable",
+        "params": {
+          "letters": {
+            "p": "the payment will be made",
+            "q": "the work is finished in time"
+          },
+          "ask": {
+            "kind": "transform",
+            "of": "p <-> q",
+            "op": "negation",
+            "equals": "(q & ~p) | (p & ~q)"
+          },
+          "say": "Either the work is finished and the payment is not made, or the payment is made and the work is not finished."
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "vars",
+              "columns"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "b6fbcdc6",
+        "answer": {
+          "value": 1,
+          "label": "(q ∧ ∼p) ∨ (p ∧ ∼q)"
+        }
+      }
+    },
+    {
+      "id": "f7e23596-5d60-4a36-87b7-76bb3e663b3e",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "truthTable",
+        "params": {
+          "letters": {
+            "p": "A²−B²=(A−B)(A+B) when AB≠BA",
+            "q": "5 ≤ 5",
+            "r": "⁸C₁+⁸C₂+…+⁸C₈ = 256",
+            "s": "the maximum of ⁸Cr is 70"
+          },
+          "columns": [
+            {
+              "f": "s | ~p"
+            },
+            {
+              "f": "~p & ~r"
+            }
+          ],
+          "ask": {
+            "kind": "evaluate",
+            "at": {
+              "p": false,
+              "q": true,
+              "r": false,
+              "s": true
+            },
+            "f": [
+              "(s | ~p) <-> (~p & ~r)"
+            ],
+            "expect": [
+              true
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "vars",
+              "columns"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "3b7eca1a",
+        "answer": {
+          "value": 1,
+          "label": "(s ∨ ∼p) ↔ (∼p ∧ ∼r) is T"
+        }
+      }
+    },
+    {
+      "id": "f8b037be-fb16-46eb-bafa-ecf8e4d1910f",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "truthTable",
+        "params": {
+          "letters": {
+            "p": "I get my ticket reserved",
+            "q": "I can travel by train"
+          },
+          "ask": {
+            "kind": "transform",
+            "of": "q -> p",
+            "op": "negation",
+            "equals": "q & ~p"
+          },
+          "say": "I can travel by train and I get my ticket not reserved."
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "vars",
+              "columns"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "6050c5ff",
+        "answer": {
+          "value": 1,
+          "label": "q ∧ ∼p"
+        }
+      }
+    },
+    {
+      "id": "fe183b2b-c0e2-42e3-89be-978881d5d47f",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "truthTable",
+        "params": {
+          "letters": {
+            "p": "the number is odd",
+            "q": "it is divisible by 3"
+          },
+          "ask": {
+            "kind": "transform",
+            "of": "p <-> q",
+            "op": "negation",
+            "equals": "(p & ~q) | (~p & q)"
+          },
+          "say": "It is odd and not divisible by 3, or not odd and divisible by 3."
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "vars",
+              "columns"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "9b16f496",
+        "answer": {
+          "value": 1,
+          "label": "(p ∧ ∼q) ∨ (∼p ∧ q)"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

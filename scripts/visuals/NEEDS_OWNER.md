@@ -119,6 +119,8 @@ settled; settled rows move to the bottom with the date and what was done.
 | `9fa84dae` | Maharashtra HSC 12 · Application of Derivatives | **Stem incoherent as printed (book's own).** x = −1 cannot be an extreme point of y = α log x + βx² + x, since log x is undefined there. Under the intended log\|x\| the key C (α = 2, β = −1/2) is right; the solution says so. | Change log x to log\|x\| in the stem (hash-safe repair). |
 | `521dd092` | Maharashtra HSC 12 · Vectors | **Duplicate options.** B and C both print ±(i + j − k)/√3 (keyed A, ±(i + j − 2k)/√6, is right and unaffected). Found 2026-10-29 in the algebra-steps run. | Restore option C from the source. |
 | `a2734bf7` | CBSE Class 12 · Vector Algebra | **Duplicate options.** B and C both print AB + BC − AC = 0 (keyed C, the "not true" one, must differ from B). The stored solution notes it. Found 2026-10-29 in the algebra-steps run. | Restore option B or C from NCERT Fig 10.18's question. |
+| `d34a45d0` | MHT-CET · Mathematical Logic | **Stem mixes letters.** S3 reads "∀n ∈ N, x² + 3x − 10 = 0" (n bound, x used). False either way, so the key "only S3" stands. Found 2026-10-29 in the logic run. | Write ∀x ∈ N if the source paper does (changes content_hash). |
+| `f7e23596` and 29 more | MHT-CET · several chapters | **`\cdots` stored as `\cdot s`**, shown as "· s". Logged in the SUGGESTIONS.md backfill ledger with the probe. | Owner OK on the 360 there. |
 
 ## Settled
 

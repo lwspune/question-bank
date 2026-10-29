@@ -135,6 +135,11 @@ takes the FIRST kind that fits; anything left keeps its still solution.
   had misread their circuit (fixed, `solution-fixes/2026-10-29-logic.json`), and
   one figure was cut off (re-cropped from the book). The review sheet now shows
   the question's figure above the frames: compare the two before `--apply`.
+- 2026-10-29, MHT-CET Mathematical Logic (61 noFit, 5 slices, 3 agents; 46
+  applied: 13 circuits, 31 words, 2 set claims): all 13 circuits matched their
+  figures. Dropped 2 where the legend gave the question's own letter p to a
+  different clause (brief rule added). Labels with "∥" drew a solid block:
+  `plainLabel` now refuses it (4 live visuals relabelled with `--replace`).
 
 ## Pieces
 

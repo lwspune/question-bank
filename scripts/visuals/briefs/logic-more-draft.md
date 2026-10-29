@@ -115,6 +115,10 @@ set to test, a question in several unrelated parts: skip with a short reason.
   it is a draft, and `"figureNeeded"` and `"solutionWrong"` as `truth-draft.md`
   says.
 - Use the question's own statements and numbers; never change the problem.
+- When the question itself names statements p, q, r, s, keep its letters for
+  them. Never give one of its letters to a different clause ("p: voltage
+  increases" when its p is "if voltage increases then ..."): the legend would
+  contradict the stem. If its statements will not fit as its own letters, skip.
 - Animate only what the solution concludes: a question that asks only for a
   negation (and whose solution gives no truth value) is not a setClaim with a
   T/F answer; a check comparing a formula with itself is not a check: skip.
