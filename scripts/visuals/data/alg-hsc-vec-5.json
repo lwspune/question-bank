@@ -1,0 +1,308 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "3d651b90-83fa-41c3-acde-3ec6ff1c2337",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "C=\\dfrac{tB+A}{t+1},\\quad (-2,-3,1)(t+1)=(tq+3,\\ 8t+2,\\ -10t+p)"
+            },
+            {
+              "step": "s2",
+              "kind": "eq",
+              "tex": "{{1:-3(t+1) = 8t+2}}",
+              "lhs": "-3*(x+1)",
+              "rhs": "8*x+2",
+              "roots": [
+                "-5/11"
+              ],
+              "note": "j-components give t"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "q=\\dfrac{-2(t+1)-3}{t}={{2:9}}",
+              "f": "(-2*(6/11)-3)/(-5/11)",
+              "value": "9",
+              "note": "put t = −5/11 in (1)"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "p=11t+1={{3:-4}}",
+              "f": "11*(-5/11)+1",
+              "value": "-4",
+              "note": "put t = −5/11 in (3)"
+            }
+          ],
+          "answer": "11*(-5/11)+1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 12,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 13,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "1ddf6b85",
+        "answer": {
+          "value": -4,
+          "label": "p = −4, q = 9"
+        }
+      }
+    },
+    {
+      "id": "40dee4f3-d032-4bd3-9796-af837958326b",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "AB=(-2,-2,1),\\ AC=(2,-1,5),\\ AD=(0,-1,2)"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "i:\\ (-1)(2)-(5)(-1)={{1:3}}",
+              "f": "(-1)*2-5*(-1)",
+              "value": "3"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "j:\\ -\\left[(2)(2)-(5)(0)\\right]={{1:-4}}",
+              "f": "-(2*2-5*0)",
+              "value": "-4"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "k:\\ (2)(-1)-(-1)(0)={{1:-2}}",
+              "f": "2*(-1)-(-1)*0",
+              "value": "-2"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "AB\\cdot(AC\\times AD)=(-2)({{1:3}})+(-2)({{1:-4}})+(1)({{1:-2}})=0",
+              "f": "(-2)*3+(-2)*(-4)+1*(-2)",
+              "value": "0",
+              "note": "zero, so the points are coplanar"
+            }
+          ],
+          "answer": "(-2)*3+(-2)*(-4)+1*(-2)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s2",
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "from": 10,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "eb406994",
+        "answer": {
+          "value": 0,
+          "label": "[AB AC AD] = 0"
+        }
+      }
+    },
+    {
+      "id": "41baefe2-fc1d-40c6-a524-a939df7e3c66",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{Volume}=\\left|[\\vec a\\ \\vec b\\ \\vec c]\\right|"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "2(-39)-5(-30)-4(-3)=-78+150+12={{1:84}}",
+              "f": "2*(7*(-2)-5*5)-5*(5*(-2)-5*4)+(-4)*(5*5-7*4)",
+              "value": "84",
+              "note": "volume = 84 cubic units"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "\\text{Coplanar: determinant}=0"
+            },
+            {
+              "step": "s4",
+              "kind": "eq",
+              "tex": "1({{2:-20-9p}})+2({{2:8+5p}})+7=0",
+              "lhs": "1*(-20-9*x)+2*(8+5*x)+1*(-18+25)",
+              "rhs": "0",
+              "roots": [
+                "-3"
+              ]
+            },
+            {
+              "step": "s5",
+              "kind": "eq",
+              "tex": "p+3=0\\Rightarrow p={{3:-3}}",
+              "lhs": "x+3",
+              "rhs": "0",
+              "roots": [
+                "-3"
+              ]
+            }
+          ],
+          "answer": "-3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 12,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 15,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "dbe00567",
+        "answer": {
+          "value": -3,
+          "label": "volume 84; p = −3"
+        }
+      }
+    },
+    {
+      "id": "4241a10d-22a6-4be3-88a1-5aa9c65b4519",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "d=\\dfrac{b+2c}{3},\\quad e=\\dfrac{a+3c}{4}"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "{{1:\\dfrac{3k}{4(k+1)}}}=\\dfrac{2m}{3(m+1)},\\ \\ \\dfrac{1}{k+1}=\\dfrac{m}{3(m+1)}",
+              "note": "equate coefficients of c and b"
+            },
+            {
+              "step": "s3",
+              "kind": "eq",
+              "tex": "(3)\\div(2):\\ {{1:\\dfrac{3k}{4}}}=2",
+              "lhs": "3*x/4",
+              "rhs": "2",
+              "roots": [
+                "8/3"
+              ]
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\dfrac{BP}{PE}=\\dfrac{k}{1}=\\dfrac{2}{3/4}={{2:\\dfrac{8}{3}}}",
+              "f": "2/(3/4)",
+              "value": "8/3",
+              "note": "BP : PE = 8 : 3"
+            }
+          ],
+          "answer": "2/(3/4)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 12,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 15,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "312843d2",
+        "answer": {
+          "value": 2.6666666666666665,
+          "label": "BP : PE = 8 : 3"
+        }
+      }
+    }
+  ],
+  "decided": []
+}
