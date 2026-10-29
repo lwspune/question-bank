@@ -66,7 +66,14 @@ function marks(tex: string, field: string): string {
     }
     out += tex.slice(i, at);
     const m = /^\{\{([1-3]):/.exec(tex.slice(at));
-    if (!m) throw new ParamError(`${field}: a mark is {{1:...}}, {{2:...}} or {{3:...}}`);
+    if (!m) {
+      // {{4:...}} is a mark with no such colour; anything else is ordinary TeX
+      // braces (\dfrac{{{1:...}}}{2} puts a mark inside the fraction's own brace).
+      if (/^\{\{\d:/.test(tex.slice(at))) throw new ParamError(`${field}: a mark is {{1:...}}, {{2:...}} or {{3:...}}`);
+      out += "{";
+      i = at + 1;
+      continue;
+    }
     let j = at + m[0].length;
     let depth = 0;
     const start = j;
@@ -112,6 +119,9 @@ export const algebraSteps: Scene<AlgebraParams> = {
         if (typeof l.step !== "string" || !(STEPS as readonly string[]).includes(l.step)) throw new ParamError(`${f}: step must be one of s1 to s8`);
         if (typeof l.tex !== "string" || !l.tex.trim() || l.tex.length > 140) throw new ParamError(`${f}: tex must be 1 to 140 characters`);
         if (/\\(htmlClass|href|url|htmlId|htmlStyle|htmlData|includegraphics)/.test(l.tex)) throw new ParamError(`${f}: tex may not use \\htmlClass, \\href or other HTML commands (mark terms with {{1:...}})`);
+        // A backslash lost on the way in: "\t" of "\text" read as a TAB, or "\frac" left as "frac".
+        if (/[\x00-\x1f]/.test(l.tex)) throw new ParamError(`${f}: tex holds a control character (a lost backslash: write \\\\text, not \\text, inside a JSON string)`);
+        if (/(^|[^\\a-zA-Z])(d?frac|tfrac|sqrt|cdot|times|Rightarrow|quad|text|left|right)(?![a-zA-Z])/.test(l.tex)) throw new ParamError(`${f}: tex has a TeX command without its backslash (frac, sqrt, text...)`);
         const tex = marks(l.tex, f);
         const note = l.note === undefined ? undefined : plainLabel(l.note, `${f} note`, 44);
         if (l.kind === "expr") {

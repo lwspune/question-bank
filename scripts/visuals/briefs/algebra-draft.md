@@ -62,7 +62,12 @@ appears, so the eye follows it: the term that is about to change, and what it
 becomes. Use marks sparingly, at most three quantities.
 
 `note` on a line (plain text, at most 44 characters, no LaTeX) prints a short
-reason under it: "split −5x as −2x − 3x", "f(a + h) ≈ f(a) + h f′(a)".
+reason under it: "split −5x as −2x − 3x", "f(a + h) ≈ f(a) + h f′(a)". Write
+it as a reader sees it: x², π, √, −, never x^2 or pi.
+
+In the JSON you write, every TeX backslash is doubled ("\\frac", "\\text"): a
+single one is read as an escape, so "\t" of "\text" becomes a TAB and "\f" of
+"\frac" a form feed, and the checker refuses the line.
 
 ### steps and answer
 
@@ -79,7 +84,9 @@ first step starts at 0, later ones later, each step name used once. `answer`
   skip it, unless the solution's own working substitutes numbers.
 - If the stored working has a wrong line, say so in `solutionWrong` and skip.
 - If the keyed answer is not what the working gives, skip with the reason.
-- Keep tex short enough for a phone line: split a long line in two.
+- Keep tex short enough for a phone line (about 40 characters of maths): split
+  a long line in two. A line is maths, not prose: a sentence ("f is a
+  polynomial, so it is continuous") goes in that line's `note`, never in tex.
 - Read only your input, write only your output (a JSON array, one object per
   question, input order). Run nothing that touches the database or git. You
   may run small Python checks. Keep tool output small.

@@ -83,6 +83,21 @@ takes the FIRST kind that fits; anything left keeps its still solution.
 - Write any line holding a backslash with the Edit tool, not a shell heredoc
   or Python string: escaping mangled `\htmlClass` and the TALL regex once.
 
+**Algebra steps refinement log:**
+- 2026-10-29, first 12th-board run (HSC + CBSE Application of Derivatives,
+  HSC Pair of Straight Lines; 111 applied): the drafts were right; the
+  faults were mechanical. (1) A lost JSON escape turned `\text`, `\frac`,
+  `\beta` into TAB, form feed, backspace: the scene now refuses a control
+  character or a bare `frac`/`sqrt`/`text` (repair: scratchpad fixctl.js maps
+  them back). The same check caught the scene's own test fixtures. (2)
+  `\dfrac{{{1:...}}}{2}` (a mark inside a fraction's brace) was refused as a
+  bad mark: plain double braces now pass through. (3) Notes printed `x^2`,
+  `pi`: write x², π. Judgement calls dropped at review: a proof re-done on a
+  numeric example the stored proof never uses, and a note addressed to the
+  checker ("check numbers use a = 1, b = 2"). Yield is low on proofs with
+  free letters (Pair of Straight Lines: 15 of 49), high on rates and
+  approximations (CBSE AoD: 53 of 85).
+
 ## Pieces
 
 | Piece | Where |
