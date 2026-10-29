@@ -46,6 +46,16 @@ takes the FIRST kind that fits; anything left keeps its still solution.
   placed with `pos: "e"` ran into a point's name: put answer labels in empty
   corners. Next refinement to consider: a label-overlap check in `visuals:run`
   so the sheet does not have to catch it.
+- 2026-10-29, pilot (60 noFit: 40 MHT-CET Applications of Derivative, 20 JEE
+  Straight Lines; one Sonnet pass doing fit + draft): 42 judged sketch, 16
+  algebra, 2 none; 39 applied after review (4 held on NEEDS_OWNER, 1 merged
+  into its fix). Every picture was mathematically right; the faults were all
+  labels: cut off at an edge, or printed on another label. The scene now keeps
+  labels inside the picture and moves one off an earlier label
+  (`tidyLabels`). Agents also used capital var names (R, L): now allowed. A
+  var named x or y is still refused (x is the curve variable): rename it (xf).
+  Next to consider: keep labels off LINES too (a line's name printed along the
+  x-axis), and a lint in `visuals:run` that lists suspected overlaps on the sheet.
 
 ## Pieces
 
