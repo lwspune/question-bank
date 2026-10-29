@@ -110,7 +110,7 @@ export const sketch: Scene<SketchParams> = {
       const names = Object.keys(vsrc);
       if (names.length > LIMITS.vars) throw new ParamError(`at most ${LIMITS.vars} vars`);
       for (const n of names) {
-        if (!/^[a-z][a-z0-9]{0,11}$/.test(n) || RESERVED.has(n)) throw new ParamError(`"${n}" cannot be a var name (lowercase letters and digits, not x, pi, e or a function)`);
+        if (!/^[A-Za-z][A-Za-z0-9]{0,11}$/.test(n) || RESERVED.has(n)) throw new ParamError(`"${n}" cannot be a var name (letters and digits, not x, pi, e or a function)`);
         vars[n] = value(vsrc[n], vars, `vars.${n}`);
       }
 
@@ -373,9 +373,49 @@ export const sketch: Scene<SketchParams> = {
       }
     }
     if (p.title) over.push(text(W - 4, 14, p.title, { tone: "good", size: 11, weight: 600, anchor: "end" }));
+    tidyLabels(over);
     return [...under, ...mid, ...over];
   },
 };
+
+/**
+ * Keep every label inside the picture and off the labels placed before it:
+ * slide it in from an edge, then, if it still lands on an earlier one, try
+ * rows above and below. Widths are estimated from the font size. Earlier
+ * items keep their place, so a label does not jump when a later one appears.
+ */
+function tidyLabels(shapes: Shape[]): void {
+  type T = Extract<Shape, { kind: "text" }>;
+  const placed: { l: number; r: number; t: number; b: number }[] = [];
+  const boxOf = (s: T, y = s.y) => {
+    const size = s.size ?? 12;
+    const w = s.text.length * size * 0.56;
+    const l = s.anchor === "end" ? s.x - w : s.anchor === "middle" ? s.x - w / 2 : s.x;
+    return { l, r: l + w, t: y - size, b: y + 3 };
+  };
+  const hits = (a: { l: number; r: number; t: number; b: number }) => placed.some((q) => a.l < q.r && q.l < a.r && a.t < q.b && q.t < a.b);
+  for (const s of shapes) {
+    if (s.kind !== "text") continue;
+    const size = s.size ?? 12;
+    let b = boxOf(s);
+    if (b.l < 2) s.x += 2 - b.l;
+    else if (b.r > W - 2) s.x -= b.r - (W - 2);
+    b = boxOf(s);
+    if (hits(b)) {
+      const h = size + 3;
+      for (const dy of [h, -h, 2 * h, -2 * h, 3 * h, -3 * h]) {
+        const y = s.y + dy;
+        if (y - size < 2 || y + 3 > H - 2) continue;
+        if (!hits(boxOf(s, y))) {
+          s.y = y;
+          break;
+        }
+      }
+      b = boxOf(s);
+    }
+    placed.push(b);
+  }
+}
 
 /** The part of the line through a and b that lies inside the view (Liang-Barsky), or null. */
 function clipLine(a: Pt, b: Pt, view: { x: [number, number]; y: [number, number] }): [Pt, Pt] | null {

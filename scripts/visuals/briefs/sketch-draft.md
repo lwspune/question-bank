@@ -43,8 +43,8 @@ Or, when it cannot be drawn honestly: `{ "n": 4, "id": "<id>", "skip": true, "re
 ### params
 
 - `vars`: named numbers in order; each is a number or a formula of the ones
-  BEFORE it. Names: lowercase letters and digits, up to 12, not x, pi, e or a
-  function name. Formulas: + - * / ^ ( ), numbers, pi, e, and sin cos tan asin
+  BEFORE it. Names: letters and digits, up to 12 (R and L2 are fine), not x,
+  pi, e or a function name. Formulas: + - * / ^ ( ), numbers, pi, e, and sin cos tan asin
   acos atan exp log (natural) ln log10 sqrt abs deg rad, atan2(y, x), min(a, b),
   max(a, b). Always write `*` (2*x, not 2x). Angles inside sin/cos are radians;
   `rad(30)` converts. Put EVERY number that matters in vars, computed from the

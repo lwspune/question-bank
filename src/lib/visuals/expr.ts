@@ -64,7 +64,8 @@ function tokenize(src: string): Token[] {
       i += num[0].length;
       continue;
     }
-    const id = /^[a-z][a-z0-9]*/.exec(src.slice(i));
+    // Capitals are read only as named numbers (R, L2); every function and x are lowercase.
+    const id = /^[A-Za-z][A-Za-z0-9]*/.exec(src.slice(i));
     if (id) {
       out.push({ kind: "id", name: id[0] });
       i += id[0].length;

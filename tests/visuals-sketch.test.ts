@@ -95,5 +95,36 @@ describe("sketch scene", () => {
     expect(Math.abs(t.x - at.cx)).toBeLessThan(2);
     expect(t.y).toBeGreaterThan(at.cy);
   });
+
+  it("takes capitalised var names too (R for a radius, L for a ladder), which formulas can read", () => {
+    const p = ok({ ...tri, vars: { ...tri.vars, R: "3", L2: "R*2" }, answer: "L2" });
+    expect(scene.check(p)).toBe(6);
+    // A function name with a capital is still not a function.
+    expect(parse({ ...tri, vars: { ...tri.vars, R: "Sin(1)" }, answer: "R" })).toHaveProperty("error");
+  });
+
+  const box = (t: { x: number; y: number; text: string; size?: number; anchor?: string }) => {
+    const w = t.text.length * (t.size ?? 12) * 0.56;
+    const left = t.anchor === "end" ? t.x - w : t.anchor === "middle" ? t.x - w / 2 : t.x;
+    return { left, right: left + w, top: t.y - (t.size ?? 12), bottom: t.y + 3 };
+  };
+  const labels = (raw: unknown) =>
+    frame(raw, [...Array(8)].map((_, i) => `s${i + 1}`)).filter((s) => s.kind === "text") as { x: number; y: number; text: string; size?: number; anchor?: string }[];
+
+  it("keeps every label inside the picture, even one placed at the edge", () => {
+    const raw = { ...tri, items: [{ kind: "label", at: [4.9, 2], text: "a long answer label at the edge", step: "s1" }, { kind: "label", at: [-0.9, 3], text: "left edge label", pos: "w", step: "s1" }] };
+    for (const t of labels(raw)) {
+      const b = box(t);
+      expect(b.left, t.text).toBeGreaterThanOrEqual(0);
+      expect(b.right, t.text).toBeLessThanOrEqual(340);
+    }
+  });
+
+  it("moves a label off one placed earlier instead of printing on top of it", () => {
+    const raw = { ...tri, items: [{ kind: "label", at: [1, 2], text: "first label", step: "s1" }, { kind: "label", at: [1, 2], text: "second label", step: "s1" }] };
+    const [a, b] = labels(raw).filter((t) => t.text.endsWith("label")).map(box);
+    const overlap = a.left < b.right && b.left < a.right && a.top < b.bottom && b.top < a.bottom;
+    expect(overlap).toBe(false);
+  });
 });
 
