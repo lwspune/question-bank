@@ -233,6 +233,19 @@ fit check, Sonnet for drafts.
    `figureNeeded`. A real wrong solution goes in `solution-fixes/<batch>.json`
    (below); a wrong key, broken stem, or blank/duplicate options goes on
    `NEEDS_OWNER.md`; a missing figure is added, not just noted.
+   **Before calling a key or stem wrong, open the source paper**: of the 111
+   rows settled on 2026-10-30, most MHT-CET 2021-2024 and NDA "defects" were
+   our own copying errors (roots, fractions and brackets lost by the old
+   import), fixed to the paper with their key intact. Settling a row follows
+   the policy at the top of `NEEDS_OWNER.md`: fixes go through
+   `scripts/reports/apply-fixes.ts` (hash-safe for every question format; a
+   row whose options are duplicated in the source takes its solution through
+   `visuals:fix-solutions` instead), defective rows join
+   `src/lib/mocks/flawed.json` and `scripts/mocks/regrace-flawed.ts --apply`
+   makes them grace in existing mocks, and a stem or key change is also
+   written to the pipeline's own record (MHT-CET `shifts/*.json`
+   `stemOverride` or the 2026 transcripts; JEE `papers/*.json`
+   `stemOverrides`, `answerOverrides`, `numericOverrides`).
 5. **Drafts (Sonnet, one agent per ~25 fitting questions).** Brief =
    `briefs/<scene>-draft.md` + the fitting ids. Each agent writes an array of
    drafts or `{ skip: true, reason }`.
