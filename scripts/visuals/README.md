@@ -20,8 +20,8 @@ takes the FIRST kind that fits; anything left keeps its still solution.
 | Kind | What it is | When | Status |
 |---|---|---|---|
 | **Shared scene** | one scene type serving many questions from their numbers (`functionGraph`, `coordGeometry`, `space3d`, `lpRegion`, `truthTable`, ...) | the question's shape is common | live |
-| **Sketch** (standalone) | one animation for ONE question, built from computed objects: named numbers (`vars`), points, then segments, lines, arrows, polygons, circles, arcs, angle marks, curves and labels, each on a step `s1`..`s8` | a picture would explain it but no shared scene fits | built 2026-10-29, pilot next |
-| **Algebra steps** | the written working itself animates: each line appears, the changed term highlighted and moving | no picture helps (identities, division, find-k, root expressions) | to plan |
+| **Sketch** (standalone) | one animation for ONE question, built from computed objects: named numbers (`vars`), points, then segments, lines, arrows, polygons, circles, arcs, angle marks, curves and labels, each on a step `s1`..`s8` | a picture would explain it but no shared scene fits | live 2026-10-29 |
+| **Algebra steps** | the written working itself animates: each line appears, the changed term coloured in its old line and its new one | no picture helps (identities, division, find-k, root expressions, small-change approximations) | built 2026-10-29, pilot next |
 
 **Sketch rules** (`scenes/sketch.ts`, spec `tests/visuals-sketch.test.ts`):
 - Every number is a formula of the `vars`, every var a formula of the ones
@@ -56,6 +56,32 @@ takes the FIRST kind that fits; anything left keeps its still solution.
   var named x or y is still refused (x is the curve variable): rename it (xf).
   Next to consider: keep labels off LINES too (a line's name printed along the
   x-axis), and a lint in `visuals:run` that lists suspected overlaps on the sheet.
+- 2026-10-29, 12th boards (HSC Pair of Straight Lines, CBSE + HSC Application
+  of Derivatives): every applied picture was right again. Three were dropped
+  at review because equal units made them needles: a slope graph, a 5 m pole
+  50 m away, a sand cone 4 high and 48 wide. Agents are now told to call such
+  a question algebra. Next to consider: an `aspect` option (unequal axes,
+  labelled as such) for graphs only, never for figures with true lengths.
+  The checker's mechanical refusals (label over 40 characters, a first step
+  not at sentence 0, a var named x) recurred on every slice, so the draft
+  brief now ends with a checklist of them. Labels still sit on lines in cone
+  pictures (readable, not yet fixed).
+
+**Algebra steps rules** (`scenes/algebraSteps.ts`, spec `tests/visuals-algebra.test.ts`, brief `briefs/algebra-draft.md`):
+- Up to 10 lines, each KaTeX, on a step `s1`..`s8`. Each says how it is checked:
+  `expr` (equals the previous expr line at sample x values), `eq` (every root
+  satisfies lhs = rhs), `calc` (worked value = stated value, `dp` for a
+  rounded line), `note` (unchecked). At least one line must be checked.
+- Marks `{{1:...}}`..`{{3:...}}` colour a term (blue, amber, green); the same
+  number on the same quantity in each line links them. They become
+  `\htmlClass{viz-mark-n}`, and the renderer's KaTeX trust allows only that
+  command with those three classes, so stored text cannot add links or styles.
+- A line with a built-up fraction, sum or integral gets a taller row, or KaTeX
+  is cut off; faint ruled lines show the working's space before it fills.
+- The review sheet inlines KaTeX's CSS (fonts by file URL), or the maths
+  renders as raw markup in the screenshot.
+- Write any line holding a backslash with the Edit tool, not a shell heredoc
+  or Python string: escaping mangled `\htmlClass` and the TALL regex once.
 
 ## Pieces
 
