@@ -185,7 +185,11 @@ export function functionGraphFacts(p: FunctionGraphParams): FunctionGraphFacts {
   const extrema = p.ask.kind === "extrema" ? extremaOf(p.f, p.ask.on, p.ask.scope) : [];
   const roots = p.ask.kind === "roots" ? rootsOf(p.f, a, b).map((r) => (Math.abs(r) < 1e-12 ? 0 : r)).sort((m, n) => m - n) : [];
   const touchD = (b - a) * 1e-3;
+  // A repeated root is a polynomial idea (it counts twice in -b/a and c/a): a
+  // corner touching the axis, or an exponential, is one root.
+  const poly = roots.length > 0 && isPolynomial(p.f, a, b);
   const rootMult = roots.map((r) => {
+    if (!poly) return 1;
     const [l, h] = [p.f(r - touchD), p.f(r + touchD)];
     return Number.isFinite(l) && Number.isFinite(h) && l !== 0 && h !== 0 && Math.sign(l) === Math.sign(h) ? 2 : 1;
   });
@@ -275,6 +279,19 @@ function extremaMisses(found: { type: "max" | "min"; x: number; y: number }[], a
     const g = found.find((h) => h.type === e.type);
     return !g || !close(g.y, e.y) || (e.x !== null && !close(g.x, e.x));
   }).length;
+}
+
+/**
+ * Is f a polynomial of degree at most 8 on [a, b]? Its 9th finite difference
+ * over 10 equally spaced points is then 0 (up to rounding); a corner (|x|), an
+ * exponential or a fraction leaves it far from 0.
+ */
+function isPolynomial(f: Fn, a: number, b: number): boolean {
+  let d = Array.from({ length: 10 }, (_, i) => f(a + ((b - a) * i) / 9));
+  if (!d.every(Number.isFinite)) return false;
+  const scale = Math.max(1, ...d.map(Math.abs));
+  while (d.length > 1) d = d.slice(1).map((v, i) => v - d[i]);
+  return Math.abs(d[0]) < 1e-8 * scale;
 }
 
 /** How many stated zeros the drawing does not bear out (0 = all of them, and no others). */
