@@ -33,6 +33,7 @@ const FUNCTIONS: Record<string, (v: number) => number> = {
   log10: Math.log10,
   sqrt: Math.sqrt,
   abs: Math.abs,
+  floor: Math.floor,
   deg: (v) => (v * 180) / Math.PI,
   rad: (v) => (v * Math.PI) / 180,
 };
@@ -41,6 +42,8 @@ const FUNCTIONS2: Record<string, (a: number, b: number) => number> = {
   atan2: Math.atan2,
   min: Math.min,
   max: Math.max,
+  // Remainder between 0 and b, so mod(-3, 2) is 1 (a negative odd number is still odd).
+  mod: (a, b) => a - b * Math.floor(a / b),
 };
 
 const MAX_LENGTH = 120;

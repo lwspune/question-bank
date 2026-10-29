@@ -66,5 +66,14 @@ describe("compileExpr", () => {
     expect(at("min(2, 3) + max(2, 3)")).toBe(5);
     expect(compileExpr("atan2(1)")).toHaveProperty("error");
   });
+
+  it("knows floor and mod, for claims about whole numbers (even, a multiple of 3)", () => {
+    expect(at("floor(x)", 2.7)).toBe(2);
+    expect(at("floor(x)", -2.5)).toBe(-3);
+    expect(at("mod(x^2 + x, 2)", 3)).toBe(0);
+    expect(at("mod(x, 3)", 7)).toBe(1);
+    // A negative number's remainder is still between 0 and the divisor, as in "an even number".
+    expect(at("mod(x, 2)", -3)).toBe(1);
+  });
 });
 

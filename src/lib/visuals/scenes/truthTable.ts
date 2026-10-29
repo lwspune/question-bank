@@ -39,6 +39,10 @@ export interface TruthParams {
   columns: Column[];
   ask: Ask;
   askLabel: string | undefined;
+  /** What each letter stands for, in table order ("p: it is raining"). */
+  letters: string[];
+  /** The answer in words, one or two lines; shown, never checked. */
+  say: string[];
 }
 
 export interface TruthFacts {
@@ -87,6 +91,19 @@ export function headingLines(label: string): string[] {
   const mains = spaces.filter((x) => x.main);
   const cut = best(mains.length ? mains : spaces).at;
   return [label.slice(0, cut), label.slice(cut + 1)];
+}
+
+const LEGEND_LINE = 15;
+const legendH = (p: { letters: string[] }) => (p.letters.length ? p.letters.length * LEGEND_LINE + 6 : 0);
+const sayH = (p: { say: string[] }) => (p.say.length ? p.say.length * LEGEND_LINE + 10 : 0);
+
+/** A sentence longer than 62 characters goes on two lines, split at the space nearest the middle. */
+function sayLines(s: string): string[] {
+  if (s.length <= 62) return [s];
+  const mid = s.length / 2;
+  let cut = -1;
+  for (let i = 0; i < s.length; i++) if (s[i] === " " && (cut < 0 || Math.abs(i - mid) < Math.abs(cut - mid))) cut = i;
+  return cut < 0 ? [s] : [s.slice(0, cut), s.slice(cut + 1)];
 }
 
 const colWidth = (label: string) => Math.max(34, Math.ceil(Math.max(...headingLines(label).map((l) => l.length)) * 6.6) + 14);
@@ -156,7 +173,7 @@ const tf = (v: boolean) => (v ? "T" : "F");
 
 function box(p: TruthParams): { w: number; h: number } {
   const table = PAD * 2 + p.vars.length * VAR_W + p.columns.reduce((s, c) => s + colWidth(c.label), 0);
-  return { w: Math.max(MIN_W, table), h: TOP + headOf(p) + (1 << p.vars.length) * ROW + 10 };
+  return { w: Math.max(MIN_W, table), h: TOP + legendH(p) + headOf(p) + (1 << p.vars.length) * ROW + 10 + sayH(p) };
 }
 
 function header(p: TruthParams, f: TruthFacts): string {
@@ -275,7 +292,15 @@ export const truthTable: Scene<TruthParams> = {
       if (columns.length > 8) throw new ParamError("at most 8 statement columns in all");
       const width = PAD * 2 + vars.length * VAR_W + columns.reduce((s, c) => s + colWidth(c.label), 0);
       if (width > MAX_W) throw new ParamError(`the table is too wide (${width} px): fewer columns or shorter labels`);
-      return { vars, columns, ask, askLabel: optionalLabel(a, "label", 40) };
+      // Sentences in words: what each letter stands for, and the answer as the solution words it.
+      const letters: string[] = [];
+      if (o.letters !== undefined) {
+        const given = obj(o.letters);
+        for (const k of Object.keys(given)) if (!vars.includes(k)) throw new ParamError(`letters names ${k}, which is not in the table`);
+        for (const k of vars) if (given[k] !== undefined) letters.push(`${k}: ${plainLabel(given[k], `letters.${k}`, 46)}`);
+      }
+      const sayText = optionalLabel(o, "say", 120);
+      return { vars, columns, ask, askLabel: optionalLabel(a, "label", 40), letters, say: sayText ? sayLines(sayText) : [] };
     }),
 
   check: (p) => truthFacts(p).value,
@@ -302,6 +327,7 @@ export const truthTable: Scene<TruthParams> = {
   duration: (beat) => ({ vars: 1400, columns: 2400, answer: 1200 })[beat] ?? 1300,
 
   frame(p, { played, t }) {
+    const TOPP = TOP + legendH(p);
     const f = truthFacts(p);
     const { w } = box(p);
     const tableW = p.vars.length * VAR_W + p.columns.reduce((s, c) => s + colWidth(c.label), 0);
@@ -319,7 +345,7 @@ export const truthTable: Scene<TruthParams> = {
     }
     const widths = [...p.vars.map(() => VAR_W), ...p.columns.map((c) => colWidth(c.label))];
     const head = headOf(p);
-    const rowY = (r: number) => TOP + head + r * ROW;
+    const rowY = (r: number) => TOPP + head + r * ROW;
     const n = f.rows.length;
     const under: Shape[] = [];
     const grid: Shape[] = [];
@@ -327,17 +353,20 @@ export const truthTable: Scene<TruthParams> = {
     const over: Shape[] = [];
 
     // Grid and header.
-    grid.push(line(x0, TOP + head, x0 + tableW, TOP + head, { stroke: "muted", width: 1.2 }));
-    grid.push(line(varEnd, TOP + 4, varEnd, rowY(n), { stroke: "muted", width: 1.2 }));
+    grid.push(line(x0, TOPP + head, x0 + tableW, TOPP + head, { stroke: "muted", width: 1.2 }));
+    grid.push(line(varEnd, TOPP + 4, varEnd, rowY(n), { stroke: "muted", width: 1.2 }));
     for (let r = 1; r < n; r++) grid.push(line(x0, rowY(r), x0 + tableW, rowY(r), { stroke: "line", width: 0.8 }));
-    p.vars.forEach((v, i) => cells.push(text(xs[i] + VAR_W / 2, TOP + head - 9, v, { tone: "fg", size: 12.5, weight: 700, anchor: "middle", italic: true })));
+    p.vars.forEach((v, i) => cells.push(text(xs[i] + VAR_W / 2, TOPP + head - 9, v, { tone: "fg", size: 12.5, weight: 700, anchor: "middle", italic: true })));
     p.columns.forEach((c, j) => {
       const ls = headingLines(c.label);
-      ls.forEach((l, k) => cells.push(text(xs[p.vars.length + j] + widths[p.vars.length + j] / 2, TOP + head - 9 - (ls.length - 1 - k) * 13, l, { tone: "amber", size: 11, weight: 600, anchor: "middle" })));
+      ls.forEach((l, k) => cells.push(text(xs[p.vars.length + j] + widths[p.vars.length + j] / 2, TOPP + head - 9 - (ls.length - 1 - k) * 13, l, { tone: "amber", size: 11, weight: 600, anchor: "middle" })));
     });
 
     const cell = (col: number, r: number, v: boolean, opacity = 1) =>
       text(xs[col] + widths[col] / 2, rowY(r) + 14, tf(v), { tone: v ? "good" : "muted", size: 12, weight: v ? 700 : 400, anchor: "middle", opacity });
+
+    // What each letter stands for, from the start.
+    p.letters.forEach((l, i) => cells.push(text(PAD, TOP + 10 + i * LEGEND_LINE, l, { tone: "muted", size: 11.5, italic: true })));
 
     // The letters, row by row.
     const pv = prog("vars");
@@ -358,10 +387,11 @@ export const truthTable: Scene<TruthParams> = {
       for (const j of f.marked) {
         if (j < 0) continue;
         const col = p.vars.length + j;
-        over.push({ kind: "rect", x: xs[col] + 1, y: TOP + 2, w: widths[col] - 2, h: rowY(n) - TOP - 2, rx: 5, stroke: "good", width: 2, opacity: pa });
+        over.push({ kind: "rect", x: xs[col] + 1, y: TOPP + 2, w: widths[col] - 2, h: rowY(n) - TOPP - 2, rx: 5, stroke: "good", width: 2, opacity: pa });
       }
       for (const r of f.lit) under.push({ kind: "rect", x: x0, y: rowY(r) + 1, w: tableW, h: ROW - 2, rx: 3, fill: "goodSoft", opacity: pa });
       if (pa > 0.6) over.push(text(w / 2, 18, p.askLabel ?? header(p, f), { tone: "good", size: 12.5, weight: 700, anchor: "middle" }));
+      p.say.forEach((l, i) => over.push(text(w / 2, rowY(n) + 20 + i * LEGEND_LINE, l, { tone: "good", size: 12, weight: 600, anchor: "middle", opacity: pa })));
     }
     return [...under, ...grid, ...cells, ...over];
 
