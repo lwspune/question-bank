@@ -1,0 +1,157 @@
+{
+ "//": "Assembled from agent drafts (algebraSteps).",
+ "visuals": [
+  {
+   "id": "02b6f719-f43c-485b-b3cd-e4b4e7be43be",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "y=(1+\\sqrt3)x,\\quad y=(1-\\sqrt3)x"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "m_1+m_2={{1:2}}",
+       "f": "(1+sqrt(3))+(1-sqrt(3))",
+       "value": "2"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "m_1m_2=1-3={{2:-2}}",
+       "f": "(1+sqrt(3))*(1-sqrt(3))",
+       "value": "-2"
+      },
+      {
+       "step": "s4",
+       "kind": "eq",
+       "tex": "m^2-{{1:2}}m{{2:-2}}=0",
+       "lhs": "x^2-2*x-2",
+       "rhs": "0",
+       "roots": [
+        "1+sqrt(3)",
+        "1-sqrt(3)"
+       ],
+       "note": "m = y/x, so y² − 2xy − 2x² = 0"
+      },
+      {
+       "step": "s5",
+       "kind": "note",
+       "tex": "2x^2+2xy-y^2=0"
+      }
+     ],
+     "answer": "2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "d95c8a99",
+    "answer": {
+     "value": 2,
+     "label": "2x^2+2xy-y^2=0"
+    }
+   }
+  },
+  {
+   "id": "50a70cdf-67f4-43bf-accd-a3d00fa1c8e2",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "a=1,\\ 2h=6\\Rightarrow h=3,\\ b=9"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "h^2={{1:3^2}}=9",
+       "f": "3^2",
+       "value": "9"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "ab=1\\times9={{1:9}}",
+       "f": "1*9",
+       "value": "9"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "h^2-ab=9-9=0",
+       "f": "3^2-1*9",
+       "value": "0",
+       "note": "h² = ab: coincident"
+      },
+      {
+       "step": "s5",
+       "kind": "note",
+       "tex": "x^2+6xy+9y^2=(x+3y)^2=0"
+      }
+     ],
+     "answer": "0"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2",
+       "s3",
+       "s4"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "c86b4c43",
+    "answer": {
+     "value": 0,
+     "label": "h^2 = ab, lines coincide"
+    }
+   }
+  }
+ ],
+ "decided": []
+}

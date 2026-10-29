@@ -1,0 +1,388 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "e756c3d9-360f-4c33-a4d5-0b749d14d2d5",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "R(x) = 13x^2 + 26x + 15"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "MR = \\dfrac{dR}{dx} = 26x + 26"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "MR(7) = 26({{1:7}}) + 26 = 208",
+              "f": "26*7+26",
+              "value": "208"
+            }
+          ],
+          "answer": "208"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "b301f00e",
+        "answer": {
+          "value": 208,
+          "label": "Rs 208"
+        }
+      }
+    },
+    {
+      "id": "e8edca56-25b1-44ca-85d2-a28036df5403",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "S = 6x^2,\\quad V = x^3"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\dfrac{dS}{dt} = 12x\\dfrac{dx}{dt} = 72"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "\\dfrac{dx}{dt} = \\dfrac{72}{12x} = {{1:\\dfrac{6}{x}}}"
+            },
+            {
+              "step": "s4",
+              "kind": "expr",
+              "tex": "\\dfrac{dV}{dt} = 3x^2\\left({{1:\\dfrac{6}{x}}}\\right)",
+              "f": "3*x^2*(6/x)"
+            },
+            {
+              "step": "s5",
+              "kind": "expr",
+              "tex": "\\dfrac{dV}{dt} = 18x",
+              "f": "18*x"
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "\\dfrac{dV}{dt} = 18 \\times 3 = 54",
+              "f": "18*3",
+              "value": "54"
+            }
+          ],
+          "answer": "54"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4",
+              "s5"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "0b4abcc7",
+        "answer": {
+          "value": 54,
+          "label": "54 cm^3/s"
+        }
+      }
+    },
+    {
+      "id": "f4123525-17f4-4bc4-b9bd-c7e64d25a15c",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "P = 4a"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\dfrac{dP}{dt} = 4\\dfrac{da}{dt}"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{dP}{dt} = 4 \\times {{1:1.5}} = 6",
+              "f": "4*1.5",
+              "value": "6"
+            }
+          ],
+          "answer": "6"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "e7342b4b",
+        "answer": {
+          "value": 6,
+          "label": "6 cm/s"
+        }
+      }
+    },
+    {
+      "id": "f4f4f10f-3bac-4c8f-a709-e921a9251b51",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "V = x^3,\\quad 6 = 3x^2\\dfrac{dx}{dt}"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\dfrac{dx}{dt} = {{1:\\dfrac{2}{x^2}}}"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "S = 6x^2,\\quad \\dfrac{dS}{dt} = 12x\\dfrac{dx}{dt}"
+            },
+            {
+              "step": "s4",
+              "kind": "expr",
+              "tex": "\\dfrac{dS}{dt} = 12x\\left({{1:\\dfrac{2}{x^2}}}\\right)",
+              "f": "12*x*(2/x^2)"
+            },
+            {
+              "step": "s5",
+              "kind": "expr",
+              "tex": "\\dfrac{dS}{dt} = \\dfrac{24}{x}",
+              "f": "24/x"
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "\\dfrac{dS}{dt} = \\dfrac{24}{8} = 3",
+              "f": "24/8",
+              "value": "3"
+            }
+          ],
+          "answer": "3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3",
+              "s4",
+              "s5"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "79e852f6",
+        "answer": {
+          "value": 3,
+          "label": "3 cm^2/s"
+        }
+      }
+    },
+    {
+      "id": "fc29c2f3-b0da-4186-b100-4b9fef971145",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "V = \\pi r^2 h,\\ \\ r = 4,\\ h = 6"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\dfrac{dV}{dt} = \\pi\\left(2rh\\dfrac{dr}{dt} + r^2\\dfrac{dh}{dt}\\right)"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "2\\pi(4)({{1:-2}})(6) = -96\\pi",
+              "f": "2*pi*4*(-2)*6",
+              "value": "-96*pi"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\pi(4)^2({{2:3}}) = 48\\pi",
+              "f": "pi*4^2*3",
+              "value": "48*pi"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\dfrac{dV}{dt} = -96\\pi + 48\\pi = -48\\pi",
+              "f": "-96*pi+48*pi",
+              "value": "-48*pi",
+              "note": "negative: volume is decreasing"
+            }
+          ],
+          "answer": "-48*pi"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s3",
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "691f78b8",
+        "answer": {
+          "value": -150.79644737231007,
+          "label": "-48π cm³/s"
+        }
+      }
+    },
+    {
+      "id": "fc3fdcf6-0d8f-4097-8059-b9ae885b848e",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "A = \\pi r^2"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\dfrac{dA}{dr} = 2\\pi r"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{dA}{dr} = 2\\pi({{1:5}}) = 10\\pi",
+              "f": "2*pi*5",
+              "value": "10*pi"
+            }
+          ],
+          "answer": "10*pi"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "1046f1a7",
+        "answer": {
+          "value": 31.41592653589793,
+          "label": "10π cm²/s"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

@@ -1,0 +1,92 @@
+{
+ "//": "Assembled from agent drafts (algebraSteps).",
+ "visuals": [
+  {
+   "id": "ec646028-5e96-49ae-9918-dbe87adc0563",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "A=a^2-3b^2,\\ H=4ab,\\ B=b^2-3a^2"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "H^2-AB=3(a^2+b^2)^2",
+       "f": "(4*a*b)^2-(a^2-3*b^2)*(b^2-3*a^2)",
+       "value": "3*(a^2+b^2)^2"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "A+B=-2(a^2+b^2)",
+       "f": "(a^2-3*b^2)+(b^2-3*a^2)",
+       "value": "-2*(a^2+b^2)"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\tan\\theta=\\left|\\dfrac{2\\sqrt{H^2-AB}}{A+B}\\right|=\\sqrt3",
+       "f": "abs(2*sqrt((4*a*b)^2-(a^2-3*b^2)*(b^2-3*a^2))/((a^2-3*b^2)+(b^2-3*a^2)))",
+       "value": "sqrt(3)"
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "\\theta=60^\\circ",
+       "f": "deg(atan(sqrt(3)))",
+       "value": "60"
+      }
+     ],
+     "vars": {
+      "a": "1",
+      "b": "2"
+     },
+     "answer": "60"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 6,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 7,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 8,
+      "beats": [
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "d72681c2",
+    "answer": {
+     "value": 60,
+     "label": "60°"
+    }
+   }
+  }
+ ],
+ "decided": []
+}

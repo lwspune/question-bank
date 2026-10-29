@@ -1,0 +1,582 @@
+{
+ "//": "Assembled from agent drafts (algebraSteps).",
+ "visuals": [
+  {
+   "id": "3d46aec0-30b4-48ef-90e5-8bddb02b5695",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "p(x) = \\sqrt{x^2-40x+884} + \\sqrt{x^2+256}"
+      },
+      {
+       "step": "s2",
+       "kind": "expr",
+       "tex": "p'(x) = \\dfrac{{{1:2x-40}}}{2\\sqrt{x^2-40x+884}} + \\dfrac{{{2:2x}}}{2\\sqrt{x^2+256}}",
+       "f": "(2*x-40)/(2*sqrt(x^2-40*x+884))+2*x/(2*sqrt(x^2+256))",
+       "note": "chain rule on each root"
+      },
+      {
+       "step": "s3",
+       "kind": "expr",
+       "tex": "p'(x) = \\dfrac{{{1:x-20}}}{\\sqrt{x^2-40x+884}} + \\dfrac{{{2:x}}}{\\sqrt{x^2+256}}",
+       "f": "(x-20)/sqrt(x^2-40*x+884)+x/sqrt(x^2+256)",
+       "note": "cancel the 2"
+      }
+     ],
+     "answer": "20/sqrt(656)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "3d1ac003",
+    "answer": {
+     "value": 0.7808688094430304,
+     "label": "p′(x) as in the last line"
+    }
+   }
+  },
+  {
+   "id": "4a91e856-a6fa-4ec9-8a42-5759438d8237",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "S = 6a^2"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\dfrac{dS}{dt} = 12a\\,\\dfrac{da}{dt}"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\dfrac{dS}{dt} = {{1:12}}\\times{{2:2}}\\times{{3:5}} = 120",
+       "f": "12*2*5",
+       "value": "120"
+      }
+     ],
+     "answer": "120"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 6,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "f114b4fa",
+    "answer": {
+     "value": 120,
+     "label": "120 cm^2/s"
+    }
+   }
+  },
+  {
+   "id": "4bbce1c7-5f47-4d39-a740-4bc00285636c",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "R'(x) = 6x + 36"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "R'(15) = 6({{1:15}}) + 36 = 126",
+       "f": "6*15+36",
+       "value": "126"
+      }
+     ],
+     "answer": "126"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "645a948b",
+    "answer": {
+     "value": 126,
+     "label": "126"
+    }
+   }
+  },
+  {
+   "id": "4f2f61f0-6dae-44d9-b19c-5a1022498171",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "V = x^3,\\quad \\dfrac{dx}{dt} = 3"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\dfrac{dV}{dt} = 3x^2\\cdot 3 = 9x^2"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\dfrac{dV}{dt} = 9({{1:10}})^2 = 900",
+       "f": "9*10^2",
+       "value": "900"
+      }
+     ],
+     "answer": "900"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "bbe1aaae",
+    "answer": {
+     "value": 900,
+     "label": "900 cm^3/s"
+    }
+   }
+  },
+  {
+   "id": "501cf2ee-04f0-4675-9686-f0698839fcd5",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "S = x^3 + (5-x)^3"
+      },
+      {
+       "step": "s2",
+       "kind": "expr",
+       "tex": "\\dfrac{dS}{dx} = {{1:3x^2 - 3(5-x)^2}}",
+       "f": "3*x^2-3*(5-x)^2"
+      },
+      {
+       "step": "s3",
+       "kind": "expr",
+       "tex": "\\dfrac{dS}{dx} = {{1:15(2x-5)}}",
+       "f": "15*(2*x-5)",
+       "note": "expand and collect"
+      },
+      {
+       "step": "s4",
+       "kind": "eq",
+       "tex": "15(2x-5) = 0",
+       "lhs": "15*(2*x-5)",
+       "rhs": "0",
+       "roots": [
+        "5/2"
+       ]
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "x^2+y^2 = \\dfrac{25}{4}+\\dfrac{25}{4} = \\dfrac{25}{2}",
+       "f": "2.5^2+2.5^2",
+       "value": "12.5"
+      }
+     ],
+     "answer": "12.5"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "79064e38",
+    "answer": {
+     "value": 12.5,
+     "label": "25/2"
+    }
+   }
+  },
+  {
+   "id": "5b86c32e-587e-41cb-ae34-e669d5c384f3",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "C = 40000(250)^2x^{-4} + 5000x^2"
+      },
+      {
+       "step": "s2",
+       "kind": "expr",
+       "tex": "\\dfrac{dC}{dx} = {{1:-4\\cdot 40000(250)^2}}x^{-5} + {{2:10000x}}",
+       "f": "-4*40000*250^2*x^(-5)+10000*x"
+      },
+      {
+       "step": "s3",
+       "kind": "expr",
+       "tex": "\\dfrac{dC}{dx} = \\dfrac{{{1:-160000(250)^2}}}{x^5} + {{2:10000x}}",
+       "f": "-160000*250^2/x^5+10000*x"
+      }
+     ],
+     "answer": "0"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "92bdd83e",
+    "answer": {
+     "value": 0,
+     "label": "-160000(250)^2/x^5 + 10000x"
+    }
+   }
+  },
+  {
+   "id": "5c1e3c43-5c9d-418e-a225-e4da37144ef6",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "expr",
+       "tex": "\\dfrac{dC}{dx} = \\dfrac{-160000(250)^2}{x^5} + 10000x",
+       "f": "-160000*250^2/x^5+10000*x",
+       "note": "x⁵ is right (scheme prints x⁴)"
+      },
+      {
+       "step": "s2",
+       "kind": "expr",
+       "tex": "\\dfrac{dC}{dx} = \\dfrac{10000x^6 - 10^{10}}{x^5}",
+       "f": "(10000*x^6-10^10)/x^5"
+      },
+      {
+       "step": "s3",
+       "kind": "expr",
+       "tex": "\\dfrac{dC}{dx} = \\dfrac{10000\\,(x^6-10^6)}{x^5}",
+       "f": "10000*(x^6-10^6)/x^5"
+      },
+      {
+       "step": "s4",
+       "kind": "eq",
+       "tex": "x^6 - 10^6 = 0",
+       "lhs": "x^6",
+       "rhs": "10^6",
+       "roots": [
+        "10"
+       ],
+       "note": "negative before 10, positive after"
+      }
+     ],
+     "answer": "10"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "7968aba4",
+    "answer": {
+     "value": 10,
+     "label": "not increasing; turns at x=10"
+    }
+   }
+  },
+  {
+   "id": "6d1cf32d-1cb7-440b-a7e3-b42b62d3b08f",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "V = \\tfrac43\\pi r^3,\\quad \\dfrac{dV}{dr} = 4\\pi r^2"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\dfrac{dV}{dr} = 4\\pi({{1:10}})^2 = 400\\pi",
+       "f": "4*pi*10^2",
+       "value": "400*pi"
+      }
+     ],
+     "answer": "400*pi"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "f2698c96",
+    "answer": {
+     "value": 1256.6370614359173,
+     "label": "400pi cm^3 per cm"
+    }
+   }
+  },
+  {
+   "id": "74ee165e-d2f8-4a23-a4b8-d8dd522e9c21",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "R(x) = 1500000 + 2000x - 10x^2"
+      },
+      {
+       "step": "s2",
+       "kind": "expr",
+       "tex": "R'(x) = {{1:2000 - 20x}}",
+       "f": "2000-20*x"
+      },
+      {
+       "step": "s3",
+       "kind": "expr",
+       "tex": "R'(x) = 20\\,{{1:(100 - x)}}",
+       "f": "20*(100-x)"
+      },
+      {
+       "step": "s4",
+       "kind": "eq",
+       "tex": "20(100 - x) = 0",
+       "lhs": "20*(100-x)",
+       "rhs": "0",
+       "roots": [
+        "100"
+       ],
+       "note": "R' > 0 before 100, < 0 after"
+      }
+     ],
+     "answer": "100"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2",
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "b5085bd4",
+    "answer": {
+     "value": 100,
+     "label": "inc (0,100), dec (100,5000)"
+    }
+   }
+  },
+  {
+   "id": "751f7504-cdf7-42e5-8b9b-03707b9f297c",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "r = \\tfrac52(3x+1)\\div 2 = \\tfrac54(3x+1)"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\tfrac43\\pi\\left(\\tfrac54\\right)^3 = \\dfrac{125\\pi}{48}",
+       "f": "4/3*pi*(5/4)^3",
+       "value": "125*pi/48",
+       "note": "V = (125π/48)(3x+1)³"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\dfrac{125\\pi}{48}\\times 3\\times 3 = \\dfrac{375\\pi}{16}",
+       "f": "125*pi/48*3*3",
+       "value": "375*pi/16",
+       "note": "dV/dx = (375π/16)(3x+1)²"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "\\dfrac{dV}{dx} = \\dfrac{375\\pi}{16}\\,({{1:4}})^2 = 375\\pi",
+       "f": "375*pi/16*4^2",
+       "value": "375*pi"
+      }
+     ],
+     "answer": "375*pi"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "563f875c",
+    "answer": {
+     "value": 1178.0972450961724,
+     "label": "375pi"
+    }
+   }
+  }
+ ],
+ "decided": []
+}
