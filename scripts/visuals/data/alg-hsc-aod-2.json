@@ -1,0 +1,1648 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "68bd1251-4e02-43e3-90b1-2a00fec1f771",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "f(x)=\\log_{10}x,\\quad a=1000,\\quad h={{2:16}}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "f(a)=\\log_{10}1000=3",
+              "f": "log10(1000)",
+              "value": "3"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "f'(a)=\\dfrac{0.4343}{1000}={{3:0.0004343}}",
+              "f": "0.4343/1000",
+              "value": "0.0004343"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "f(a+h)\\approx 3+{{2:16}}({{3:0.0004343}})\\approx 3.0069",
+              "f": "3+16*0.0004343",
+              "value": "3.0069",
+              "dp": 4,
+              "note": "f(a+h) ≈ f(a) + h f′(a)"
+            }
+          ],
+          "answer": "3.0069"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 10,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "5b78c2ee",
+        "answer": {
+          "value": 3.0069,
+          "label": "3.0069"
+        }
+      }
+    },
+    {
+      "id": "6c232db7-620f-4979-803c-589b7de65391",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "f(x)=\\tan x,\\quad a=45^\\circ=\\dfrac{\\pi}{4},\\quad 44^\\circ30'=45^\\circ-0.5^\\circ"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "h={{1:-0.5\\times0.0175}}=-0.00875",
+              "f": "-0.5*0.0175",
+              "value": "-0.00875"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "f(a)=\\tan\\dfrac{\\pi}{4}=1",
+              "f": "tan(pi/4)",
+              "value": "1"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "f'(a)=\\sec^2\\dfrac{\\pi}{4}={{3:2}}",
+              "f": "1/cos(pi/4)^2",
+              "value": "2"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\tan(44^\\circ30')\\approx 1+({{1:-0.00875}})({{3:2}})=0.9825",
+              "f": "1+(-0.00875)*2",
+              "value": "0.9825",
+              "note": "f(a+h) ≈ f(a) + h f′(a)"
+            }
+          ],
+          "answer": "0.9825"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "cbb4f401",
+        "answer": {
+          "value": 0.9825,
+          "label": "0.9825"
+        }
+      }
+    },
+    {
+      "id": "6edf68d7-6080-4da4-ad77-38209d4b2de0",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "f(1)=f(3):\\ 6+p+q=32+9p+3q\\ \\Rightarrow\\ 4p+q=-13"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "3c^2=3\\left(2+\\tfrac{1}{\\sqrt3}\\right)^2=13+4\\sqrt3",
+              "f": "3*(2+1/sqrt(3))^2",
+              "value": "13+4*sqrt(3)"
+            },
+            {
+              "step": "s3",
+              "kind": "eq",
+              "tex": "13+4\\sqrt3+4p+\\dfrac{2p}{\\sqrt3}+q=0\\ \\to\\ 4\\sqrt3+\\dfrac{2p}{\\sqrt3}=0",
+              "lhs": "4*sqrt(3)+2*x/sqrt(3)",
+              "rhs": "0",
+              "roots": [
+                "-6"
+              ],
+              "note": "put q = -13 - 4p"
+            },
+            {
+              "step": "s4",
+              "kind": "eq",
+              "tex": "2p=-12",
+              "lhs": "2*x",
+              "rhs": "-12",
+              "roots": [
+                "-6"
+              ]
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "q=-13-4({{1:-6}})=11",
+              "f": "-13-4*(-6)",
+              "value": "11"
+            }
+          ],
+          "answer": "-6"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 11,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 17,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 21,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 23,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "42bd3e3e",
+        "answer": {
+          "value": -6,
+          "label": "p = -6, q = 11"
+        }
+      }
+    },
+    {
+      "id": "7398dbff-17bb-47a5-b762-2547d1f4db5a",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\dfrac{dy}{dx}=\\dfrac{9y-4xy-3x^2}{2x^2-9x}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "m=\\dfrac{9-8-12}{8-18}=\\dfrac{-11}{-10}={{1:\\dfrac{11}{10}}}",
+              "f": "(9*1-4*2*1-3*4)/(2*4-9*2)",
+              "value": "1.1"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "m'=-\\dfrac{1}{m}={{2:-\\dfrac{10}{11}}}",
+              "f": "-1/1.1",
+              "value": "-10/11"
+            },
+            {
+              "step": "s4",
+              "kind": "eq",
+              "tex": "y-1={{1:\\tfrac{11}{10}}}(x-2)\\Rightarrow 11x-10y-12=0",
+              "lhs": "1+1.1*(x-2)",
+              "rhs": "(11*x-12)/10",
+              "roots": [
+                "2",
+                "0",
+                "5"
+              ]
+            },
+            {
+              "step": "s5",
+              "kind": "eq",
+              "tex": "y-1={{2:-\\tfrac{10}{11}}}(x-2)\\Rightarrow 10x+11y-31=0",
+              "lhs": "1-10/11*(x-2)",
+              "rhs": "(31-10*x)/11",
+              "roots": [
+                "2",
+                "0",
+                "3"
+              ]
+            }
+          ],
+          "answer": "1.1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 11,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "11550fa1",
+        "answer": {
+          "value": 1.1,
+          "label": "11x-10y-12=0, 10x+11y-31=0"
+        }
+      }
+    },
+    {
+      "id": "7691775b-bfa9-42de-b5a6-1036a4a61c0f",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "f(x)=x(x-1)(x-2)(x-3),\\quad [0,4]"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "f(0)=0,\\quad f(4)=4(3)(2)(1)=24",
+              "f": "4*3*2*1",
+              "value": "24"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "f'(c)=\\dfrac{24-0}{4-0}={{1:6}}",
+              "f": "(24-0)/(4-0)",
+              "value": "6"
+            },
+            {
+              "step": "s4",
+              "kind": "eq",
+              "tex": "2(c^2-3c+1)(2c-3)={{1:6}}",
+              "lhs": "2*(x^2-3*x+1)*(2*x-3)",
+              "rhs": "6",
+              "roots": [
+                "3"
+              ]
+            },
+            {
+              "step": "s5",
+              "kind": "eq",
+              "tex": "2c^3-9c^2+11c-6=0",
+              "lhs": "2*x^3-9*x^2+11*x-6",
+              "rhs": "0",
+              "roots": [
+                "3"
+              ]
+            },
+            {
+              "step": "s6",
+              "kind": "eq",
+              "tex": "(c-3)(2c^2-3c+2)=0",
+              "lhs": "(x-3)*(2*x^2-3*x+2)",
+              "rhs": "0",
+              "roots": [
+                "3"
+              ],
+              "note": "2c² − 3c + 2 has no real root"
+            },
+            {
+              "step": "s7",
+              "kind": "note",
+              "tex": "c=3\\in(0,4)"
+            }
+          ],
+          "answer": "3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 15,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 18,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 22,
+            "beats": [
+              "s6"
+            ]
+          },
+          {
+            "from": 24,
+            "beats": [
+              "s7"
+            ]
+          }
+        ],
+        "fingerprint": "5dda61b4",
+        "answer": {
+          "value": 3,
+          "label": "c = 3"
+        }
+      }
+    },
+    {
+      "id": "77551133-6e5d-4e76-ad8d-32db266de0de",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "f(x)=x^3+5x^2-2x+3,\\quad a=2,\\quad h={{2:-0.02}}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "f(2)=8+20-4+3={{1:27}}",
+              "f": "8+20-4+3",
+              "value": "27"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "f'(2)=3(2)^2+10(2)-2={{3:30}}",
+              "f": "12+20-2",
+              "value": "30"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "f(1.98)\\approx {{1:27}}+({{2:-0.02}})({{3:30}})=26.4",
+              "f": "27+(-0.02)*30",
+              "value": "26.4",
+              "note": "f(a+h) ≈ f(a) + h f′(a)"
+            }
+          ],
+          "answer": "26.4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 10,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 14,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "ed82f695",
+        "answer": {
+          "value": 26.4,
+          "label": "26.4"
+        }
+      }
+    },
+    {
+      "id": "7bc91bbc-f5e2-47e9-bccb-c5d31a08636c",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "f(x)=e^x,\\quad a=1,\\quad h={{2:0.005}}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "f(a)=f'(a)=e^1={{1:2.7183}}",
+              "f": "2.7183",
+              "value": "2.7183"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "f(1.005)\\approx {{1:2.7183}}+({{2:0.005}})(2.7183)=2.7318915",
+              "f": "2.7183+0.005*2.7183",
+              "value": "2.7318915",
+              "note": "f(a+h) ≈ f(a) + h f′(a)"
+            },
+            {
+              "step": "s4",
+              "kind": "note",
+              "tex": "e^{1.005}\\approx 2.73189"
+            }
+          ],
+          "answer": "2.73189"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 13,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "1fdadb32",
+        "answer": {
+          "value": 2.73189,
+          "label": "2.73189"
+        }
+      }
+    },
+    {
+      "id": "b14f4869-84e5-4f17-8caf-330ef089f736",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "f(x)=\\tan^{-1}x,\\quad a=1,\\quad h={{2:-0.01}}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "f(1)=\\dfrac{\\pi}{4}=\\dfrac{3.1416}{4}={{1:0.7854}}",
+              "f": "3.1416/4",
+              "value": "0.7854"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "f'(1)=\\dfrac{1}{1+1^2}={{3:0.5}}",
+              "f": "1/(1+1^2)",
+              "value": "0.5"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\tan^{-1}(0.99)\\approx {{1:0.7854}}+({{2:-0.01}})({{3:0.5}})=0.7804",
+              "f": "0.7854-0.01*0.5",
+              "value": "0.7804",
+              "dp": 4,
+              "note": "f(a+h) ≈ f(a) + h f′(a)"
+            }
+          ],
+          "answer": "0.7804"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 12,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "5b8f39c1",
+        "answer": {
+          "value": 0.7804,
+          "label": "0.7804"
+        }
+      }
+    },
+    {
+      "id": "b20b43f5-ee30-4070-859b-290d39217f4d",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "f(x)=\\sin x,\\ a=30^\\circ,\\ f(a)=0.5,\\ h=-30'=-0.5^\\circ"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "h={{1:-0.5\\times0.0175}}=-0.00875",
+              "f": "-0.5*0.0175",
+              "value": "-0.00875"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "f'(a)=\\cos30^\\circ=\\dfrac{1.732}{2}={{3:0.866}}",
+              "f": "1.732/2",
+              "value": "0.866"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\sin(29^\\circ30')\\approx 0.5+({{1:-0.00875}})({{3:0.866}})=0.4924225",
+              "f": "0.5+(-0.00875)*0.866",
+              "value": "0.4924225",
+              "note": "f(a+h) ≈ f(a) + h f′(a)"
+            },
+            {
+              "step": "s5",
+              "kind": "note",
+              "tex": "\\sin(29^\\circ30')\\approx 0.4924"
+            }
+          ],
+          "answer": "0.4924"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 10,
+            "beats": [
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "77a98b6a",
+        "answer": {
+          "value": 0.4924,
+          "label": "0.4924"
+        }
+      }
+    },
+    {
+      "id": "b3e22965-83fe-4454-9401-1e397fd69d15",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "f(x)=\\sqrt{x^2+3x},\\quad a=1,\\quad h={{2:0.02}}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "f(1)=\\sqrt{1+3}={{1:2}}",
+              "f": "sqrt(1+3)",
+              "value": "2"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "f'(1)=\\dfrac{2(1)+3}{2\\sqrt4}={{3:1.25}}",
+              "f": "(2*1+3)/(2*sqrt(4))",
+              "value": "1.25"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "f(1.02)\\approx {{1:2}}+({{2:0.02}})({{3:1.25}})=2.025",
+              "f": "2+0.02*1.25",
+              "value": "2.025",
+              "note": "f(a+h) ≈ f(a) + h f′(a)"
+            }
+          ],
+          "answer": "2.025"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "2b7ca79d",
+        "answer": {
+          "value": 2.025,
+          "label": "2.025"
+        }
+      }
+    },
+    {
+      "id": "b3f77075-f5c5-4b98-b4aa-d03064bb701b",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "f(x)=\\sqrt{x},\\quad a=64,\\quad h={{2:0.1}}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "f(64)=\\sqrt{64}={{1:8}}",
+              "f": "sqrt(64)",
+              "value": "8"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "f'(64)=\\dfrac{1}{2\\sqrt{64}}={{3:0.0625}}",
+              "f": "1/(2*sqrt(64))",
+              "value": "0.0625"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\sqrt{64.1}\\approx {{1:8}}+({{2:0.1}})({{3:0.0625}})=8.00625",
+              "f": "8+0.1*0.0625",
+              "value": "8.00625",
+              "note": "f(a+h) ≈ f(a) + h f′(a)"
+            }
+          ],
+          "answer": "8.00625"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 10,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 13,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "639bf1a7",
+        "answer": {
+          "value": 8.00625,
+          "label": "8.00625"
+        }
+      }
+    },
+    {
+      "id": "b62094bf-33d4-45fc-be26-dd2687b30df3",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "f(x)=x^3+5x^2-7x+10,\\quad a=1,\\quad h={{2:0.12}}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "f(1)=1+5-7+10={{1:9}}",
+              "f": "1+5-7+10",
+              "value": "9"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "f'(1)=3+10-7={{3:6}}",
+              "f": "3+10-7",
+              "value": "6"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "f(1.12)\\approx {{1:9}}+({{2:0.12}})({{3:6}})=9.72",
+              "f": "9+0.12*6",
+              "value": "9.72",
+              "note": "f(a+h) ≈ f(a) + h f′(a)"
+            }
+          ],
+          "answer": "9.72"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "5a63cdaa",
+        "answer": {
+          "value": 9.72,
+          "label": "9.72"
+        }
+      }
+    },
+    {
+      "id": "b678a6df-6eeb-4687-bca0-be28cf30dc4b",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "f(x)=\\cos x,\\ a=60^\\circ,\\ f(a)=0.5,\\ h=30'=0.5^\\circ"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "h={{1:0.5\\times0.0175}}=0.00875",
+              "f": "0.5*0.0175",
+              "value": "0.00875"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "f'(a)=-\\sin60^\\circ=-\\dfrac{1.732}{2}={{3:-0.866}}",
+              "f": "-1.732/2",
+              "value": "-0.866"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\cos(60^\\circ30')\\approx 0.5+({{1:0.00875}})({{3:-0.866}})=0.4924225",
+              "f": "0.5+0.00875*(-0.866)",
+              "value": "0.4924225",
+              "note": "f(a+h) ≈ f(a) + h f′(a)"
+            },
+            {
+              "step": "s5",
+              "kind": "note",
+              "tex": "\\cos(60^\\circ30')\\approx 0.4924"
+            }
+          ],
+          "answer": "0.4924"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "60534959",
+        "answer": {
+          "value": 0.4924,
+          "label": "0.4924"
+        }
+      }
+    },
+    {
+      "id": "b6cc5290-77d7-46d9-8d85-719b80816355",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "f(x)=e^x,\\quad a=1,\\quad h={{2:0.005}}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "f(a)=f'(a)=e^1={{1:2.7183}}",
+              "f": "2.7183",
+              "value": "2.7183"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "f(1.005)\\approx {{1:2.7183}}+({{2:0.005}})(2.7183)=2.7318915",
+              "f": "2.7183+0.005*2.7183",
+              "value": "2.7318915",
+              "note": "f(a+h) ≈ f(a) + h f′(a)"
+            },
+            {
+              "step": "s4",
+              "kind": "note",
+              "tex": "e^{1.005}\\approx 2.73189"
+            }
+          ],
+          "answer": "2.73189"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 12,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "b1bc3539",
+        "answer": {
+          "value": 2.73189,
+          "label": "2.73189"
+        }
+      }
+    },
+    {
+      "id": "b75e3df8-e17a-44be-a647-88105b50ba0c",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "f(x)=\\log_{10}x,\\quad a=1000,\\quad h={{2:-2}}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "f(1000)=\\log_{10}1000={{1:3}}",
+              "f": "log10(1000)",
+              "value": "3"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "f'(1000)=\\dfrac{0.4343}{1000}={{3:0.0004343}}",
+              "f": "0.4343/1000",
+              "value": "0.0004343"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "f(998)\\approx {{1:3}}+({{2:-2}})({{3:0.0004343}})=2.9991314",
+              "f": "3+(-2)*0.0004343",
+              "value": "2.9991314",
+              "note": "f(a+h) ≈ f(a) + h f′(a)"
+            }
+          ],
+          "answer": "2.9991314"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 10,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 14,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 19,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "553a7d8e",
+        "answer": {
+          "value": 2.9991314,
+          "label": "2.9991314"
+        }
+      }
+    },
+    {
+      "id": "bc2df72e-34e7-4eb0-b5ba-9c37aaa2de03",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "f(x)=\\tan x,\\quad a=45^\\circ=\\dfrac{\\pi}{4},\\quad h=-30'=-0.5^\\circ"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "h={{1:-0.5\\times0.0175}}=-0.00875",
+              "f": "-0.5*0.0175",
+              "value": "-0.00875"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "f(a)=\\tan 45^\\circ=1",
+              "f": "tan(pi/4)",
+              "value": "1"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "f'(a)=\\sec^2 45^\\circ=(\\sqrt2)^2={{3:2}}",
+              "f": "1/cos(pi/4)^2",
+              "value": "2"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\tan(44^\\circ30')\\approx 1+({{1:-0.00875}})({{3:2}})=0.9825",
+              "f": "1+(-0.00875)*2",
+              "value": "0.9825",
+              "note": "f(a+h) ≈ f(a) + h f′(a)"
+            }
+          ],
+          "answer": "0.9825"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "f28ff481",
+        "answer": {
+          "value": 0.9825,
+          "label": "0.9825"
+        }
+      }
+    },
+    {
+      "id": "bf2d564d-408c-440d-af8b-7fedb1ac9cc6",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "f(x)=\\sqrt{x+4},\\quad [a,b]=[0,5]"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "f(0)=\\sqrt4={{1:2}}",
+              "f": "sqrt(4)",
+              "value": "2"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "f(5)=\\sqrt9={{2:3}}",
+              "f": "sqrt(9)",
+              "value": "3"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\dfrac{f(b)-f(a)}{b-a}=\\dfrac{ {{2:3}}-{{1:2}} }{5-0}=\\dfrac15",
+              "f": "(3-2)/(5-0)",
+              "value": "0.2"
+            },
+            {
+              "step": "s5",
+              "kind": "eq",
+              "tex": "f'(c)=\\dfrac{1}{2\\sqrt{4+c}}=\\dfrac15",
+              "lhs": "1/(2*sqrt(4+x))",
+              "rhs": "1/5",
+              "roots": [
+                "9/4"
+              ]
+            },
+            {
+              "step": "s6",
+              "kind": "eq",
+              "tex": "4+c=\\dfrac{25}{4}\\Rightarrow c=\\dfrac94",
+              "lhs": "4+x",
+              "rhs": "25/4",
+              "roots": [
+                "9/4"
+              ]
+            },
+            {
+              "step": "s7",
+              "kind": "note",
+              "tex": "c=\\dfrac94=2.25\\in(0,5),\\ \\text{LMVT verified}"
+            }
+          ],
+          "answer": "2.25"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 11,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 12,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 15,
+            "beats": [
+              "s6"
+            ]
+          },
+          {
+            "from": 17,
+            "beats": [
+              "s7"
+            ]
+          }
+        ],
+        "fingerprint": "55b238ba",
+        "answer": {
+          "value": 2.25,
+          "label": "c = 9/4"
+        }
+      }
+    },
+    {
+      "id": "bf70989f-00fc-4520-a858-fa8a108802c7",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "f(x)=2x^2-5x+3,\\quad [1,3]",
+              "note": "a polynomial: continuous, differentiable"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "f(1)=2-5+3={{1:0}}",
+              "f": "2-5+3",
+              "value": "0"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "f(3)=18-15+3={{2:6}}",
+              "f": "18-15+3",
+              "value": "6"
+            },
+            {
+              "step": "s4",
+              "kind": "note",
+              "tex": "f(1)\\neq f(3)\\ \\Rightarrow\\ \\text{Rolle's theorem not applicable}"
+            }
+          ],
+          "answer": "6"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "f4411c87",
+        "answer": {
+          "value": 6,
+          "label": "Rolle's theorem not applicable"
+        }
+      }
+    },
+    {
+      "id": "c69c1002-8ba3-400f-aca6-657b34abcec3",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "f(x)=\\sqrt{x+4},\\quad [a,b]=[0,5]"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "f(0)=\\sqrt4={{1:2}}",
+              "f": "sqrt(4)",
+              "value": "2"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "f(5)=\\sqrt9={{2:3}}",
+              "f": "sqrt(9)",
+              "value": "3"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\dfrac{f(b)-f(a)}{b-a}=\\dfrac{ {{2:3}}-{{1:2}} }{5-0}=\\dfrac15",
+              "f": "(3-2)/(5-0)",
+              "value": "0.2"
+            },
+            {
+              "step": "s5",
+              "kind": "eq",
+              "tex": "f'(c)=\\dfrac{1}{2\\sqrt{4+c}}=\\dfrac15",
+              "lhs": "1/(2*sqrt(4+x))",
+              "rhs": "1/5",
+              "roots": [
+                "9/4"
+              ]
+            },
+            {
+              "step": "s6",
+              "kind": "eq",
+              "tex": "4+c=\\dfrac{25}{4}\\Rightarrow c=\\dfrac94",
+              "lhs": "4+x",
+              "rhs": "25/4",
+              "roots": [
+                "9/4"
+              ]
+            },
+            {
+              "step": "s7",
+              "kind": "note",
+              "tex": "c=\\dfrac94=2.25\\in(0,5),\\ \\text{LMVT verified}"
+            }
+          ],
+          "answer": "2.25"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 10,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 11,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 12,
+            "beats": [
+              "s6"
+            ]
+          },
+          {
+            "from": 13,
+            "beats": [
+              "s7"
+            ]
+          }
+        ],
+        "fingerprint": "30b33ec1",
+        "answer": {
+          "value": 2.25,
+          "label": "c = 9/4"
+        }
+      }
+    },
+    {
+      "id": "c8040d0a-5c07-4361-a96c-e5a1db221774",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "f(x)=x^3+5x^2-2x+3,\\quad a=2,\\quad h={{2:-0.02}}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "f(2)=8+20-4+3={{1:27}}",
+              "f": "8+20-4+3",
+              "value": "27"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "f'(2)=3(2)^2+10(2)-2={{3:30}}",
+              "f": "12+20-2",
+              "value": "30"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "f(1.98)\\approx {{1:27}}+({{2:-0.02}})({{3:30}})=26.4",
+              "f": "27+(-0.02)*30",
+              "value": "26.4",
+              "note": "f(a+h) ≈ f(a) + h f′(a)"
+            }
+          ],
+          "answer": "26.4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "65e54a12",
+        "answer": {
+          "value": 26.4,
+          "label": "26.4"
+        }
+      }
+    },
+    {
+      "id": "d00c3b0a-21b4-441f-a044-4c28df4f590d",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "f(x)=\\log_e x,\\quad a=100,\\quad h={{2:1}}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "f(100)=2\\log_e10=2(2.3026)={{1:4.6052}}",
+              "f": "2*2.3026",
+              "value": "4.6052"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "f'(100)=\\dfrac{1}{100}={{3:0.01}}",
+              "f": "1/100",
+              "value": "0.01"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\log_e101\\approx {{1:4.6052}}+({{2:1}})({{3:0.01}})=4.6152",
+              "f": "4.6052+1*0.01",
+              "value": "4.6152",
+              "note": "f(a+h) ≈ f(a) + h f′(a)"
+            }
+          ],
+          "answer": "4.6152"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "efd4abbe",
+        "answer": {
+          "value": 4.6152,
+          "label": "4.6152"
+        }
+      }
+    }
+  ],
+  "decided": []
+}
