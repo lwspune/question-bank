@@ -1,0 +1,73 @@
+[
+  {
+    "id": "ee882375-8b53-41cf-9815-d36c6dc737aa",
+    "label": "NDA 2023 NDA 1 Q23",
+    "reason": "ourkey: NDA 2023-I Q23 (paper page 9): as in the bank; statement 1 leaves α = ±1, statement 2 gives α = −1",
+    "correct": "B",
+    "solution": "Statement 1: \\(\\alpha + \\beta = 0\\) and \\(\\alpha^2 + \\beta^2 = 2\\) give \\(\\alpha\\beta = -1\\), so the roots are 1 and \\(-1\\), but nothing says which one is \\(\\alpha\\). Not sufficient.\n\nStatement 2: \\(a = 0\\) means \\(\\alpha + \\beta = 0\\), so \\(\\beta = -\\alpha\\) and \\(\\alpha\\beta^2 = \\alpha^3 = -1\\), giving \\(\\alpha = -1\\). Sufficient.\n\nSo statement 2 only."
+  },
+  {
+    "id": "99a7ced0-9e7d-48c3-9e18-eb231d74f8d2",
+    "label": "NDA 2024 NDA 1 Q8",
+    "reason": "copy: NDA 2024-I Q8 (paper page 5): prints 'If −√2 and √3 are roots'; key (c)",
+    "text": "If \\(-\\sqrt{2}\\) and \\(\\sqrt{3}\\) are roots of the equation \\(a_0+a_1 x+a_2 x^2+a_3 x^3+x^4=0\\) where \\(a_0,a_1,a_2,a_3\\) are integers, then which one of the following is correct?",
+    "solution": "The coefficients are integers and the polynomial is monic, so \\(x^2 - 2\\) (for the root \\(-\\sqrt{2}\\)) and \\(x^2 - 3\\) (for \\(\\sqrt{3}\\)) both divide it.\n\nSo the equation is \\((x^2 - 2)(x^2 - 3) = x^4 - 5x^2 + 6 = 0\\): \\(a_0 = 6\\), \\(a_1 = 0\\), \\(a_2 = -5\\), \\(a_3 = 0\\), which is option C."
+  },
+  {
+    "id": "e8061d69-1d9d-4e80-9b86-e725572ee29c",
+    "label": "NDA 2024 NDA 2 Q47",
+    "reason": "copy: NDA 2024-II Q47 (paper page 19): equation a²(b² − c²)x² + b²(c² − a²)x + c²(a² − b²) = 0; our context had dropped the brackets",
+    "context": "The roots of the quadratic equation \\(a^2(b^2-c^2)x^2+b^2(c^2-a^2)x+c^2(a^2-b^2)=0\\) are equal, \\(a^2\\neq b^2\\neq c^2\\).",
+    "solution": "The coefficients add up to \\(a^2b^2 - a^2c^2 + b^2c^2 - a^2b^2 + a^2c^2 - b^2c^2 = 0\\), so \\(x = 1\\) is a root; the roots are equal, so both are 1.\n\nThe product of the roots is \\(\\frac{c^2(a^2 - b^2)}{a^2(b^2 - c^2)} = 1\\), so \\(a^2c^2 - b^2c^2 = a^2b^2 - a^2c^2\\), that is \\(b^2 = \\frac{2a^2c^2}{a^2 + c^2}\\).\n\nSo \\(b^2\\) is the harmonic mean of \\(a^2\\) and \\(c^2\\): \\(a^2, b^2, c^2\\) are in HP."
+  },
+  {
+    "id": "976ecdd4-e90d-4ece-bd9f-c8bfd58a2bc8",
+    "label": "NDA 2024 NDA 2 Q48",
+    "reason": "copy: NDA 2024-II Q48 (paper page 19): same equation; options b²(c² − a²) over a²(c² − b²), a²(b² − c²), 2a²(c² − b²), 2a²(b² − c²)",
+    "context": "The roots of the quadratic equation \\(a^2(b^2-c^2)x^2+b^2(c^2-a^2)x+c^2(a^2-b^2)=0\\) are equal, \\(a^2\\neq b^2\\neq c^2\\).",
+    "options": {
+      "A": "\\(\\dfrac{b^2(c^2-a^2)}{a^2(c^2-b^2)}\\)",
+      "B": "\\(\\dfrac{b^2(c^2-a^2)}{a^2(b^2-c^2)}\\)",
+      "C": "\\(\\dfrac{b^2(c^2-a^2)}{2a^2(c^2-b^2)}\\)",
+      "D": "\\(\\dfrac{b^2(c^2-a^2)}{2a^2(b^2-c^2)}\\)"
+    },
+    "solution": "The coefficients add up to 0, so \\(x = 1\\) is a root, and since the roots are equal both are 1.\n\nTheir sum is \\(2 = -\\frac{b^2(c^2 - a^2)}{a^2(b^2 - c^2)}\\), so \\(\\frac{b^2(c^2 - a^2)}{2a^2(c^2 - b^2)} = 1\\): option C is the root."
+  },
+  {
+    "id": "be59b072-fa2e-45be-b68b-becf1fcb8e53",
+    "label": "NDA 2025 NDA 2 Q21",
+    "reason": "flawed: NDA 2025-II Q21 (paper page 9): as in the bank; no real roots fit; the intended β = t is option (b)",
+    "correct": "B",
+    "solution": "**Note:** As printed no real roots fit both conditions (see the solution). The answer shown, option B, is the one the conditions intend: \\(\\beta^3 = t^3\\) gives \\(\\beta = t\\), where \\(t = \\log_{0.5}(a^2)\\).\n\nLet \\(t = \\log_{0.5}(a^2) > 0\\); then \\(\\log_{a^2}(0.5) = \\frac{1}{t}\\), \\(\\alpha + \\beta = -t\\), \\(\\alpha\\beta = t^4\\) and \\(\\beta^2 = \\frac{\\alpha}{t}\\).\n\nSo \\(\\beta^3 = \\frac{\\alpha\\beta}{t} = t^3\\), and the real cube root gives \\(\\beta = t = \\log_{0.5}(a^2)\\).\n\nThen \\(\\alpha = -t - \\beta = -2t\\), but \\(\\alpha\\beta = -2t^2\\) cannot equal \\(t^4\\), so as printed the conditions have no real solution."
+  },
+  {
+    "id": "3a2fbde9-337d-42ee-9e3b-8b1c6e9dd163",
+    "label": "NDA 2025 NDA 2 Q22",
+    "reason": "flawed: NDA 2025-II Q22 (paper page 9): as in the bank; key (c)",
+    "solution": "**Note:** As printed no real roots fit both conditions. The answer shown follows from the intended \\(\\beta = \\log_{0.5}(a^2)\\), which gives \\(\\alpha = -2\\beta\\).\n\nWith \\(t = \\log_{0.5}(a^2)\\), \\(\\beta^3 = t^3\\) gives \\(\\beta = t\\), and \\(\\alpha + \\beta = -t\\) gives \\(\\alpha = -2t = -2\\beta\\).\n\nAs printed this cannot hold exactly, since \\(\\alpha\\beta = -2t^2\\) would then have to equal \\(t^4\\)."
+  },
+  {
+    "id": "12b8c9cd-f49d-41ab-8c96-ce7bf1b7fcf5",
+    "label": "CDS 2017 CDS (I) 2017 — Elementary Mathematics Q3",
+    "reason": "flawed: CDS 2017-I Q3 (paper page 1): as in the bank; key (b)",
+    "solution": "**Note:** There is no maximum: \\(\\frac{\\alpha}{\\beta} + \\frac{\\beta}{\\alpha} = \\frac{18}{k} - 2\\) is below \\(-2\\) for every \\(k < 0\\) and only approaches \\(-2\\). The answer shown follows the answer key, the value it approaches.\n\n\\(\\alpha+\\beta=-3,\\ \\alpha\\beta=\\dfrac k2\\), so \\(\\dfrac\\alpha\\beta+\\dfrac\\beta\\alpha=\\dfrac{9-k}{k/2}=\\dfrac{18}{k}-2\\).\nFor \\(k<0\\), \\(\\dfrac{18}{k}<0\\) and tends to \\(0\\) as \\(k\\to-\\infty\\), so the expression stays below \\(-2\\) and approaches \\(-2\\).\nThe least upper bound is \\(-2\\) (not attained), and it is the only option that bounds the expression above, option B."
+  },
+  {
+    "id": "e89a5974-5507-4799-b3ca-8470d13ed216",
+    "label": "CDS 2018 CDS (II) 2018 — Elementary Mathematics Q49",
+    "reason": "flawed: CDS 2018-II Q49 (paper page 17): as in the bank; key (a)",
+    "solution": "**Note:** Two options fit: \\(a = 1\\) also gives a single solution with \\(x, y > 0\\), namely \\((1, 1)\\). The answer shown follows the answer key.\n\nFrom \\(x^2 = y^2\\), \\(y = \\pm x\\); substituting in \\((x - a)^2 + y^2 = 1\\) gives \\(2x^2 - 2ax + a^2 - 1 = 0\\).\n\nWith \\(a = \\sqrt{2}\\) this is \\(2x^2 - 2\\sqrt{2}x + 1 = 0\\), a double root \\(x = \\frac{1}{\\sqrt{2}}\\), so the only solution with \\(x, y > 0\\) is \\(\\left(\\frac{1}{\\sqrt{2}}, \\frac{1}{\\sqrt{2}}\\right)\\).\n\nWith \\(a = 1\\) the roots are \\(x = 0\\) and \\(x = 1\\), and the only solution with \\(x, y > 0\\) is \\((1, 1)\\), so option D fits as well."
+  },
+  {
+    "id": "782f955a-56d2-407b-a047-f16aa553ce16",
+    "label": "CDS 2023 CDS (II) 2023 — Elementary Mathematics Q20",
+    "reason": "flawed: CDS 2023-II Q20 (paper page 3): as in the bank; key (c)",
+    "solution": "**Note:** As printed no \\(p, q\\) work: divisibility by both \\(x - ay\\) and \\(x - bz\\) needs \\(p = a^n, q = 0\\) and \\(p = 0, q = -b^n\\) at once. The answer shown is what either factor alone gives.\n\n\\(x^2 + abyz - bzx - axy = (x - ay)(x - bz)\\).\n\nDivisibility by \\(x - ay\\): putting \\(x = ay\\) gives \\(a^ny^n - py^n + qz^n = 0\\) for all \\(y, z\\), so \\(p = a^n\\), \\(q = 0\\) and \\(\\frac{p}{a^n} - \\frac{q}{b^n} = 1\\).\n\nDivisibility by \\(x - bz\\): putting \\(x = bz\\) gives \\(p = 0\\), \\(q = -b^n\\), and again \\(\\frac{p}{a^n} - \\frac{q}{b^n} = 1\\). Both together cannot hold, but each gives 1."
+  },
+  {
+    "id": "cd2a39d1-7086-4b6c-9a66-a4488933d538",
+    "label": "CDS 2026 CDS (I) 2026 — Elementary Mathematics Q7",
+    "reason": "flawed: CDS 2026-I Q7 (paper page 5): as in the bank; key (c)",
+    "solution": "**Note:** As printed the data are inconsistent: the HCF \\(x^2 - ax + a^2\\) does not divide the LCM \\((x + a)(x^3 - a^3)\\). The answer shown follows from LCM \\(\\times\\) HCF \\(= p(x)\\,q(x)\\).\n\nUsing LCM \\(\\times\\) HCF \\(= p(x)\\,q(x)\\): \\(q(x) = \\frac{(x + a)(x^3 - a^3)(x^2 - ax + a^2)}{x^4 + a^2x^2 + a^4}\\).\n\nSince \\(x^3 - a^3 = (x - a)(x^2 + ax + a^2)\\) and \\(x^4 + a^2x^2 + a^4 = (x^2 + ax + a^2)(x^2 - ax + a^2)\\), this gives \\(q(x) = (x + a)(x - a) = x^2 - a^2\\)."
+  }
+]
