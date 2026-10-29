@@ -59,6 +59,13 @@ Write a JSON array to your output path, one object per question, input order:
 - `fit`: distance, yIntercept, xIntercept, slope, radius, locusRadius,
   chordLength, tangentLength, area, angle, point, ratio or no.
 - `note`: at most 12 words.
+- `situation` (every `fit: "no"`): one camelCase word for what the question
+  asks, so the questions no scene fits can be counted by what a new one would
+  unlock. Use the run's list when its addendum gives one; otherwise pick from
+  `findK` (a letter's value), `rootExpr` (an expression of roots), `formEquation`,
+  `wordProblem`, `identity`, `division`, `proof`, `recall` (a fact or definition),
+  `graphGiven` (read from a printed figure), or a new word that names a picture
+  you would want ("twoLinesMeet", "wave", "circuit"), else `other`.
 
 Read only your input file, write only your output file, run nothing. When
 done, reply in one line with the count of each fit.

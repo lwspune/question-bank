@@ -15,10 +15,17 @@ import { checkVisual, parseSolutionVisual, solutionFingerprint, stepTexts } from
 
 export type Verdict = "still" | "none" | "noFit";
 export const VERDICTS: readonly Verdict[] = ["still", "none", "noFit"];
+/** A noFit's situation word: camelCase, 2 to 24 letters ("findK", "rootExpr"). */
+export const SITUATION = /^[a-z][a-zA-Z]{1,23}$/;
 
 export interface VisualBatch {
   visuals: { id: string; option?: string; visual: unknown }[];
-  decided?: { id: string; verdict: Verdict; reason: string }[];
+  /**
+   * `situation` (noFit only): one short camelCase word for what the question
+   * asks ("findK", "rootExpr"), from the fit checker, so the noFit pile can be
+   * sorted by what a new scene or ask would unlock.
+   */
+  decided?: { id: string; verdict: Verdict; reason: string; situation?: string }[];
 }
 
 export interface BatchRow {
@@ -64,6 +71,10 @@ export function planVisualBatch(batch: VisualBatch, rows: Map<string, BatchRow>,
     once(d.id);
     if (!VERDICTS.includes(d.verdict)) plan.problems.push(`${d.id}: verdict must be one of ${VERDICTS.join(", ")}`);
     if (typeof d.reason !== "string" || !d.reason.trim() || d.reason.length > 200) plan.problems.push(`${d.id}: give a reason (at most 200 characters)`);
+    if (d.situation !== undefined) {
+      if (d.verdict !== "noFit") plan.problems.push(`${d.id}: only a noFit carries a situation`);
+      else if (!SITUATION.test(d.situation)) plan.problems.push(`${d.id}: situation must be one short camelCase word`);
+    }
     if (!rows.has(d.id)) plan.problems.push(`${d.id}: no such question`);
   }
 

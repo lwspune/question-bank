@@ -386,6 +386,16 @@ describe("functionGraph roots", () => {
     // x(x - 1)^2: three zeros, one of them repeated; sum 2, product 0.
     expect(head({ f: "x*(x-1)^2", window: { x: [-1, 2], y: [-1, 1] }, ask: { kind: "roots", expect: [0, 1], withSumProduct: true } })).toContain("3 zeros, one repeated · sum 2 · product 0");
   });
+  it("calls a touching zero repeated only on a polynomial: a corner or an exponential is one root", () => {
+    // |x^2 - x - 6| = x + 2 has three solutions; at -2 the curve touches the axis at a corner.
+    const kink = { f: "abs(x^2-x-6)-x-2", window: { x: [-3, 5], y: [-6, 6] }, ask: { kind: "roots", expect: [-2, 2, 4], word: "roots" } };
+    expect(head(kink)).toContain("3 roots");
+    expect(head(kink).join(" ")).not.toMatch(/repeated/);
+    // 3^(2x) - 18*3^x + 81 = (3^x - 9)^2 touches at x = 2, but it is one solution, not two equal roots.
+    expect(head({ f: "3^(2*x)-2*3^(x+2)+81", window: { x: [1, 3], y: [-20, 300] }, ask: { kind: "roots", expect: [2], word: "roots" } })).toContain("1 root");
+    // A quadratic that touches still has two equal roots.
+    expect(head({ f: "9*x^2+12*x+4", window: { x: [-2, 0.5], y: [-1, 15] }, ask: { kind: "roots", expect: [-2 / 3], word: "roots" } })).toContain("2 equal roots");
+  });
   it("writes a sum or product as a fraction when it is one, and can say roots", () => {
     expect(head({ f: "5*x-7*x^2+3", window: { x: [-1, 1.5], y: [-3, 3] }, ask: { kind: "roots", expect: [-0.388618, 1.102904], report: "sum" } })).toContain("sum of zeros 5/7");
     expect(head({ f: "3*x^2+x-2", window: { x: [-2, 1.5], y: [-3, 5] }, ask: { kind: "roots", expect: [-1, 2 / 3], word: "roots", withSumProduct: true } })).toContain("2 roots · sum −1/3 · product −2/3");
