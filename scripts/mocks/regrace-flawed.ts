@@ -34,6 +34,8 @@ async function main() {
     const { data, error } = await db
       .from("mock_tests")
       .select("id, slug, status, questions")
+      // The site's own mocks only: a student's personal practice test is theirs.
+      .in("status", ["published", "draft"])
       .order("id")
       .range(from, from + PAGE - 1);
     if (error) throw new Error(error.message);
