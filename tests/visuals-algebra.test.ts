@@ -134,6 +134,12 @@ describe("algebraSteps scene", () => {
     expect(scene.viewBox(ok(line("D = \\begin{vmatrix} 3 & -2 & 1 \\\\ -2 & 4 & -1 \\\\ 3 & -2 & 1 \\end{vmatrix} = 0"))).h).toBeGreaterThan(frac);
   });
 
+  it("gives a fraction of fractions the matrix height, so the inner denominators are not cut off (review 2026-10-29)", () => {
+    const line = (tex: string) => ({ lines: [{ step: "s1", kind: "calc", tex, f: "0", value: "0" }, { step: "s2", kind: "note", tex: "x" }], answer: "0" });
+    const frac = scene.viewBox(ok(line("\\dfrac{1}{2} = 0"))).h;
+    expect(scene.viewBox(ok(line("\\dfrac{x-\\frac35}{\\frac15}=\\dfrac{y+\\frac7{15}}{\\frac1{15}}"))).h).toBeGreaterThan(frac);
+  });
+
   it("gives a small fraction under a root a tall row too, so it is not cut off (review 2026-10-29)", () => {
     const line = (tex: string) => ({ lines: [{ step: "s1", kind: "calc", tex, f: "3/4", value: "0.75" }, { step: "s2", kind: "note", tex: "x" }], answer: "0.75" });
     const flat = scene.viewBox(ok(line("\\lambda = 0.75"))).h;

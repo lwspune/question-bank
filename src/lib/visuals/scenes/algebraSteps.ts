@@ -37,10 +37,15 @@ const TALL_ROW = 54;
 const TALL = /[\\](d?frac|binom|sum|int|prod|begin|over)(?![a-zA-Z])/;
 /** A small \tfrac is fine alone, but under a root (or a power) it pushes the line past the row. */
 const TALL_UNDER = /[\\]sqrt\s*(\[[^\]]*\])?\s*\{[^}]*[\\]tfrac|[\\]tfrac[^=]*\}\s*\^/;
-/** A matrix or determinant of three rows (two \\ breaks) is taller still. */
+/** A matrix or determinant of three rows (two \\ breaks), or a fraction whose top or bottom holds another fraction, is taller still. */
 const MATRIX_ROW = 80;
+const NESTED_FRAC = /[\\]d?frac\s*\{[^{}]*[\\][dt]?frac/;
 const rowOf = (l: Line) =>
-  /[\\]begin\{/.test(l.tex) && (l.tex.match(/\\\\/g) ?? []).length >= 2 ? MATRIX_ROW : TALL.test(l.tex) || TALL_UNDER.test(l.tex) ? TALL_ROW : ROW;
+  (/[\\]begin\{/.test(l.tex) && (l.tex.match(/\\\\/g) ?? []).length >= 2) || NESTED_FRAC.test(l.tex)
+    ? MATRIX_ROW
+    : TALL.test(l.tex) || TALL_UNDER.test(l.tex)
+      ? TALL_ROW
+      : ROW;
 const NOTE = 15;
 const TOP = 10;
 const MAX_LINES = 10;
