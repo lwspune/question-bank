@@ -332,6 +332,36 @@ export const TT_VISUAL = {
   answer: { value: 1, label: "a tautology" },
 };
 
+export const SKETCH_SOLUTION = String.raw`The slope at \(P\) is \(2e^0 = 2\), so the tangent is \(y = 2x + 1\). It meets the axes at \(A\left(-\dfrac{1}{2}, 0\right)\) and \(B(0, 1)\); area \(= \dfrac{1}{2} \times \dfrac{1}{2} \times 1 = \dfrac{1}{4}\).`;
+
+/** MHT-CET 8aceb9c7: the tangent to y = e^(2x) at P(0, 1) cuts the axes at A and B; area of OAB. A noFit for every shared scene. */
+export const SKETCH_VISUAL = {
+  v: 1,
+  scene: "sketch",
+  params: {
+    vars: { m: "2*exp(0)", c: "exp(0)", ax: "-c/m", by: "c", area: "abs(ax)*by/2" },
+    view: { x: [-1.6, 1.4], y: [-0.5, 2.6] },
+    axes: true,
+    points: { O: [0, 0], A: ["ax", 0], B: [0, "by"] },
+    items: [
+      { kind: "curve", f: "exp(2*x)", x: [-1.6, 0.47], step: "s1", label: "y = e²ˣ", labelAt: [-1.5, 0.15], pos: "n" },
+      { kind: "point", at: "B", step: "s1", label: "P(0, 1)", pos: "nw" },
+      { kind: "line", through: ["A", "B"], step: "s2", label: "y = 2x + 1", labelAt: [0.55, 2.1], pos: "e" },
+      { kind: "point", at: "A", step: "s3", label: "A(−1/2, 0)", pos: "sw" },
+      { kind: "polygon", points: ["O", "A", "B"], step: "s3" },
+      { kind: "label", at: [-1.55, 2.3], text: "area of OAB = {area}", step: "s3", tone: "good" },
+    ],
+    assert: ["by = exp(2*0)", "m*ax + c = 0"],
+    answer: "area",
+  },
+  steps: [
+    { from: 0, beats: ["s1", "s2"] },
+    { from: 1, beats: ["s3"] },
+  ],
+  fingerprint: solutionFingerprint(SKETCH_SOLUTION),
+  answer: { value: 0.25, label: "1/4" },
+};
+
 export const FIXTURES = [
   { name: "rotation", visual: ROTATION_VISUAL, solution: ROTATION_SOLUTION },
   { name: "circleArc", visual: ARC_VISUAL, solution: ARC_SOLUTION },
@@ -349,4 +379,5 @@ export const FIXTURES = [
   { name: "space3d", visual: S3_FOOT_VISUAL, solution: S3_FOOT_SOLUTION },
   { name: "lpRegion", visual: LP_VISUAL, solution: LP_SOLUTION },
   { name: "truthTable", visual: TT_VISUAL, solution: TT_SOLUTION },
+  { name: "sketch", visual: SKETCH_VISUAL, solution: SKETCH_SOLUTION },
 ] as const;

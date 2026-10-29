@@ -43,4 +43,28 @@ describe("compileExpr", () => {
     expect(at("log(x)", -1)).toBeNaN();
     expect(at("sqrt(x)", -4)).toBeNaN();
   });
+
+  it("reads named numbers when given them, for the sketch scene's vars", () => {
+    const r = compileExpr("sqrt(a^2+b^2)", { a: 3, b: 4 });
+    if ("error" in r) throw new Error(r.error);
+    expect(r.fn(0)).toBe(5);
+    // A name not given is still refused, so a typo cannot read as zero.
+    expect(compileExpr("a+c", { a: 1 })).toHaveProperty("error");
+    // Without names the language is unchanged.
+    expect(compileExpr("a+1")).toHaveProperty("error");
+  });
+
+  it("knows atan2 and degree helpers, for angles in a sketch", () => {
+    const at = (src: string) => {
+      const r = compileExpr(src, {});
+      if ("error" in r) throw new Error(r.error);
+      return r.fn(0);
+    };
+    expect(at("atan2(1, 1)")).toBeCloseTo(Math.PI / 4, 12);
+    expect(at("deg(pi)")).toBeCloseTo(180, 12);
+    expect(at("rad(90)")).toBeCloseTo(Math.PI / 2, 12);
+    expect(at("min(2, 3) + max(2, 3)")).toBe(5);
+    expect(compileExpr("atan2(1)")).toHaveProperty("error");
+  });
 });
+

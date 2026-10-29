@@ -2,6 +2,9 @@
  * Export a chapter's questions for the visuals agents (triage, then drafting).
  *
  *   npm run visuals:export -- --exam="MHT-CET" --chapter="Applications of Derivative" --out=<dir> [--slices=3]
+ *   ... --recheck=noFit   instead, ONLY the questions recorded noFit, each with
+ *                         its earlier reason (`earlier`): for a new scene or
+ *                         kind (sketch) to try them again
  *
  * Writes <dir>/slice-<k>.json: PUBLIC questions with a solution, each with its
  * options (the key marked), and its solution split into numbered sentences by
@@ -14,7 +17,7 @@ import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { sentenceStarts } from "../../src/lib/visuals/visual";
-import { verdictsFromBatchFiles } from "./batchFiles";
+import { reasonsFromBatchFiles, verdictsFromBatchFiles } from "./batchFiles";
 
 const arg = (name: string) => process.argv.find((a) => a.startsWith(`--${name}=`))?.slice(name.length + 3);
 
@@ -55,7 +58,10 @@ async function main() {
     if (data.length < 1000) break;
   }
   const decided = verdictsFromBatchFiles();
-  const todo = rows.filter((r) => r.solution_visual == null && !decided.has(r.id));
+  const recheck = arg("recheck");
+  if (recheck !== undefined && recheck !== "noFit") throw new Error("--recheck takes noFit");
+  const todo = rows.filter((r) => r.solution_visual == null && (recheck ? decided.get(r.id) === "noFit" : !decided.has(r.id)));
+  const reasons = recheck ? reasonsFromBatchFiles() : new Map<string, string>();
 
   const items = todo.map((r, i) => {
     const sol = r.solution!;
@@ -71,13 +77,15 @@ async function main() {
       options: (r.options ?? []).sort((a, b) => a.label.localeCompare(b.label)).map((o) => `${o.label}) ${o.text}${o.image_url ? "  [IMAGE]" : ""}${o.is_correct ? "  [KEY]" : ""}`),
       numericAnswer: r.numeric_answer === null ? null : Number(r.numeric_answer),
       sentences: starts.map((s, k) => `[${k}] ${sol.slice(s, starts[k + 1] ?? sol.length).trim()}`),
+      ...(recheck ? { earlier: reasons.get(r.id) } : {}),
     };
   });
 
   mkdirSync(out, { recursive: true });
   const size = Math.ceil(items.length / slices);
   for (let k = 0; k < slices; k++) writeFileSync(join(out, `slice-${k + 1}.json`), JSON.stringify(items.slice(k * size, (k + 1) * size), null, 1));
-  console.log(`${exam} / ${chapter}: ${rows.length} PUBLIC with a solution, ${rows.length - todo.length} already done or decided, ${todo.length} exported in ${slices} slice(s) to ${out}`);
+  const what = recheck ? `${todo.length} noFit re-exported` : `${rows.length - todo.length} already done or decided, ${todo.length} exported`;
+  console.log(`${exam} / ${chapter}: ${rows.length} PUBLIC with a solution, ${what} in ${slices} slice(s) to ${out}`);
 }
 
 main().catch((e) => {

@@ -28,7 +28,7 @@
  * tangent, shade.
  */
 import { compileExpr } from "../expr";
-import { dot, line, num, text } from "../geometry";
+import { dot, fracText, line, num, text } from "../geometry";
 import { finite, obj, optionalLabel, pair, ParamError, plainLabel, safely } from "../params";
 import type { Scene, Shape } from "../types";
 import { piFraction } from "./circleArc";
@@ -311,16 +311,6 @@ function rootsSumProduct(roots: number[], mult: number[]): { sum: number; produc
     count += mult[i];
   });
   return { sum, product, count };
-}
-
-/** A value as a fraction with a small denominator when it is one ("5/7", "−1/3"), else a decimal. */
-function fracText(v: number): string {
-  if (Math.abs(v) < 1e-12) return "0";
-  for (let q = 1; q <= 24; q++) {
-    const n = Math.round(v * q);
-    if (Math.abs(v * q - n) < 1e-7 * q) return q === 1 ? num(n) : `${n < 0 ? "−" : ""}${Math.abs(n)}/${q}`;
-  }
-  return num(v, 3);
 }
 
 /** The header over a roots picture, from the zeros found (never typed by hand). */
