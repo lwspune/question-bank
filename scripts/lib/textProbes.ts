@@ -235,3 +235,28 @@ export function toBracketMatrices(value: string, aboutCombinations: boolean): st
     return `\\begin{bmatrix}${cells}\\end{bmatrix}`;
   });
 }
+
+/**
+ * SPLIT_CDOTS — `\cdots` stored as `\cdot s` (an MHT-CET transcription, found
+ * 2026-10-29). KaTeX draws it as a centred dot then the letter s, so a blank
+ * `= \cdots` reads "= · s" and a sum `C_3 + \cdots + C_8` reads "+ · s +".
+ *
+ * The look-alike is a real product with a quantity named s: `N\cdot s` (a unit),
+ * `s \cdot s`, `2g\sin\theta \cdot s`. Those always have a LETTER just before the
+ * dot, while a split `\cdots` follows `=`, `+`, a bracket, a brace or a digit.
+ * A letter or `_` just after (`\cdot sin`, `\cdot s_{rel}`) is a word or a
+ * subscript, never this split. A command just after is a product too
+ * (`\sqrt{2} \cdot s\sqrt{n}`, CDS side s), except the three a split is seen
+ * before: `\)`, `\cdot` and `\infty`. In a run `\cdot s\cdot s` the second
+ * split follows the first one's s, so that counts as not-a-letter.
+ */
+const SPLIT_CDOTS_RE =
+  /(?<=(?:^|[^A-Za-z\s]|\\cdot s)\s*)\\cdot s(?![A-Za-z_]|\\(?!\)|cdot|infty))/g;
+
+export function hasSplitCdots(text: string): boolean {
+  return new RegExp(SPLIT_CDOTS_RE.source).test(text);
+}
+
+export function fixSplitCdots(text: string): string {
+  return text.replace(SPLIT_CDOTS_RE, "\\cdots");
+}
