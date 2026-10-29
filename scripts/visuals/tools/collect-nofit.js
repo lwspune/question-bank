@@ -10,6 +10,9 @@
 // stay visible as undecided), or when the draft skipped it as "solution wrong"
 // (fix the solution and draft again). Write <out.json> into scripts/visuals/data/
 // as decided-<date>.json and run visuals:run on it like any batch.
+// A fit-check row's `situation` (one camelCase word, e.g. findK) is kept on its
+// verdict, so the noFit pile can later be sorted by what a new scene unlocks;
+// anything else in that field is dropped (SITUATION in lib/visuals/batch.ts).
 const fs = require("fs");
 const path = require("path");
 const dir = path.join(__dirname, "..");
@@ -41,7 +44,9 @@ for (const input of inputs) {
       skippedHeld++;
       continue;
     }
-    out.set(x.id, { id: x.id, verdict: "noFit", reason: `${scene}: ${String(why || "no fit").slice(0, 110)}` });
+    const entry = { id: x.id, verdict: "noFit", reason: `${scene}: ${String(why || "no fit").slice(0, 110)}` };
+    if (typeof x.situation === "string" && /^[a-z][a-zA-Z]{1,23}$/.test(x.situation)) entry.situation = x.situation;
+    out.set(x.id, entry);
   }
 }
 const body = { "//": "Questions checked against a scene that did not fit (noFit: no scene fits yet).", visuals: [], decided: [...out.values()] };

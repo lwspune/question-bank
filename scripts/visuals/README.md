@@ -117,6 +117,10 @@ fit check, Sonnet for drafts.
    turns `fit: "no"` and draft skips into `noFit` verdicts (leaving out
    questions held on NEEDS_OWNER.md), then `visuals:run --apply` it. Without this,
    coverage keeps counting checked questions as not reviewed.
+   Each noFit keeps the fit checker's `situation` word (findK, rootExpr, ...,
+   from 2026-10-29; earlier verdicts have none), and
+   `node scripts/visuals/tools/nofit-situations.js [scene]` counts the pile by
+   scene and situation, which is how the next scene or ask gets picked.
 9. **Commit** the batch files, fixes and NEEDS_OWNER rows on the branch, and
    report: visuals applied, solutions fixed, new NEEDS_OWNER rows.
 

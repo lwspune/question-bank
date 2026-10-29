@@ -81,4 +81,16 @@ describe("planVisualBatch", () => {
     const bad = planVisualBatch(batch({ decided: [{ id: QUAD_ID, verdict: "maybe" as "none", reason: "" }] }), rows(), {});
     expect(bad.problems.length).toBeGreaterThan(0);
   });
+
+  it("lets a noFit carry a short situation word, so the pile can be sorted by what a new scene would unlock", () => {
+    const ok = planVisualBatch(batch({ decided: [{ id: QUAD_ID, verdict: "noFit", reason: "functionGraph: asks for k", situation: "findK" }] }), rows(), {});
+    expect(ok.problems).toEqual([]);
+    for (const situation of ["find K", "x".repeat(30), "", "Roots"]) {
+      const bad = planVisualBatch(batch({ decided: [{ id: QUAD_ID, verdict: "noFit", reason: "r", situation }] }), rows(), {});
+      expect(bad.problems.length, situation).toBeGreaterThan(0);
+    }
+    // Only a noFit has a situation: a still or none verdict is not waiting for a scene.
+    const still = planVisualBatch(batch({ decided: [{ id: QUAD_ID, verdict: "still", reason: "r", situation: "findK" }] }), rows(), {});
+    expect(still.problems.length).toBeGreaterThan(0);
+  });
 });
