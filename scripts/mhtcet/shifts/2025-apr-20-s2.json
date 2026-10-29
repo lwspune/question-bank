@@ -964,7 +964,7 @@
       "subtopic": "Equation of Circle from Diameter, Centre, and Concentric Conditions",
       "difficulty": "HARD",
       "answer": "A",
-      "solution": "For \\(x^{2}+y^{2}+kx+(1-k)y+5=0\\): \\(g=\\tfrac{k}{2},\\ f=\\tfrac{1-k}{2},\\ c=5\\).\\n\\nRadius \\(\\le 5 \\Rightarrow g^{2}+f^{2}-c \\le 25\\):\\n\\n\\(\\tfrac{k^{2}}{4}+\\tfrac{(1-k)^{2}}{4}-5 \\le 25 \\Rightarrow 2k^{2}-2k-119 \\le 0\\).\\n\\nRoots: \\(k = \\dfrac{1 \\pm \\sqrt{239}}{2} \\approx -7.23,\\ 8.23\\), so \\(-7.23 \\le k \\le 8.23\\).\\n\\nIntegral values \\(-7,-6,\\ldots,8\\) give \\(16\\) values.",
+      "solution": "**Note:** Counting only real circles the answer is 10, which is not an option; the key, 16, also counts values of \\(k\\) for which \\(g^2 + f^2 - c < 0\\). The answer shown follows the paper's answer key.\n\n\\(g = \\dfrac{k}{2}\\), \\(f = \\dfrac{1 - k}{2}\\), \\(c = 5\\), and the radius is \\(\\sqrt{g^2 + f^2 - c}\\).\n\nRadius \\(\\le 5\\): \\(\\dfrac{k^2 + (1 - k)^2}{4} - 5 \\le 25\\), so \\(2k^2 - 2k - 119 \\le 0\\) and \\(-7.23 \\le k \\le 8.23\\): the 16 integers \\(-7, \\dots, 8\\).\n\nA real circle also needs \\(g^2 + f^2 - c > 0\\), that is \\(2k^2 - 2k - 19 > 0\\), which fails for \\(k = -2, \\dots, 3\\); with it the count is 10.",
       "akAnswer": "A",
       "agreesWithAk": true,
       "note": "Standard MHT-CET reading: 'radius cannot exceed 5' taken as radius \\(\\le 5\\). A strict 'represents a real circle' requirement (radius\\(^2>0\\), i.e. \\(2k^2-2k-19>0\\)) would exclude k=-2..3 and give 10, which is NOT among the options; the intended answer is 16."

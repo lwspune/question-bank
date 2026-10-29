@@ -1061,7 +1061,7 @@
       "subtopic": "Distances in 3-D",
       "difficulty": "MODERATE",
       "answer": "A",
-      "solution": "Line direction \\((1,1,1)\\) is perpendicular to plane normal \\((2,1,1)\\)? \\(2+1+1=4\\neq0\\), so they are not parallel — but using a point \\((3,-2,1)\\) on the line: distance \\(=\\dfrac{|2(3)+1(-2)+1(1)-4|}{\\sqrt{4+1+1}}=\\dfrac{|1|}{\\sqrt6}=\\dfrac{1}{\\sqrt6}\\) units (line meets plane only if not parallel; here the question intends the point-to-plane distance).",
+      "solution": "**Note:** As printed the line is not parallel to the plane, so it meets the plane and the distance is 0, which is not an option. The answer shown follows the paper's answer key. The key is the distance of the line's point \\((3, -2, 1)\\) from the plane.\n\nThe line's direction \\((1, 1, 1)\\) and the plane's normal \\((2, 1, 1)\\) give \\(2 + 1 + 1 = 4 \\neq 0\\), so the line is not parallel to the plane and meets it: the distance between them is 0.\n\nThe distance of the line's point \\((3, -2, 1)\\) from the plane is \\(\\dfrac{|6 - 2 + 1 - 4|}{\\sqrt{6}} = \\dfrac{1}{\\sqrt{6}}\\).",
       "akAnswer": "A",
       "agreesWithAk": true,
       "note": "Line direction (1,1,1) is not perpendicular to normal (2,1,1) so the line actually intersects the plane (true distance 0); the standard textbook treatment computes point-to-plane distance =1/sqrt6. Kept official key A."
@@ -1161,7 +1161,7 @@
       "subtopic": "Dot Product, Angle, and Perpendicularity",
       "difficulty": "HARD",
       "answer": "D",
-      "solution": "Obtuse angle requires \\(\\bar p\\cdot\\bar q<0\\): \\((my)(y)+(-6)(2)+(3)(2my)=my^{2}+6my-12<0\\). For this quadratic in \\(y\\) to be negative for the relevant \\(y\\), the discriminant condition \\(36m^{2}+48m>0\\Rightarrow12m(3m+4)>0\\) together with the leading sign gives \\(-\\dfrac43<m<0\\).",
+      "solution": "**Note:** Option B is also true: with \\(m = 0\\), \\(\\bar{p} \\cdot \\bar{q} = -12 < 0\\) for every \\(y\\). The answer shown follows the paper's answer key.\n\nThe angle is obtuse when \\(\\bar p\\cdot\\bar q<0\\) for every \\(y\\): \\(my^{2}+6my-12<0\\). For \\(m<0\\) this holds for all \\(y\\) exactly when the discriminant is negative: \\(36m^{2}+48m<0\\Rightarrow12m(3m+4)<0\\Rightarrow-\\dfrac{4}{3}<m<0\\). Matches option D.",
       "akAnswer": "D",
       "agreesWithAk": true
     },
@@ -1197,7 +1197,7 @@
       "subtopic": "Trig Identities, Compound Angle, and Equations",
       "difficulty": "MODERATE",
       "answer": "A",
-      "solution": "\\(\\sin\\left(\\dfrac{\\pi}{4}\\cot\\theta\\right)=\\cos\\left(\\dfrac{\\pi}{4}\\tan\\theta\\right)=\\sin\\left(\\dfrac{\\pi}{2}-\\dfrac{\\pi}{4}\\tan\\theta\\right)\\Rightarrow\\cot\\theta+\\tan\\theta=2\\Rightarrow(1-\\tan\\theta)^{2}=0\\Rightarrow\\tan\\theta=1\\), so \\(\\theta=n\\pi+\\dfrac{\\pi}{4}\\).",
+      "solution": "**Note:** Option A is only part of the solution set: \\(\\theta = \\frac{\\pi}{8}\\) also satisfies the equation. The answer shown follows the paper's answer key.\n\n\\(\\cos\\left(\\frac{\\pi}{4}\\tan\\theta\\right) = \\sin\\left(\\frac{\\pi}{2} - \\frac{\\pi}{4}\\tan\\theta\\right)\\), so equal sines give \\(\\frac{\\pi}{4}\\cot\\theta = \\frac{\\pi}{2} - \\frac{\\pi}{4}\\tan\\theta + 2k\\pi\\) or \\(\\frac{\\pi}{4}\\cot\\theta = \\frac{\\pi}{2} + \\frac{\\pi}{4}\\tan\\theta + 2k\\pi\\).\n\nWith \\(k = 0\\) the first is \\(\\cot\\theta + \\tan\\theta = 2\\), so \\(\\tan\\theta = 1\\) and \\(\\theta = n\\pi + \\frac{\\pi}{4}\\): option A.\n\nThe second, \\(\\cot\\theta - \\tan\\theta = 2\\), gives \\(\\tan\\theta = -1 \\pm \\sqrt{2}\\) (for example \\(\\theta = \\frac{\\pi}{8}\\)), and other values of \\(k\\) give more; no option lists them.",
       "akAnswer": "A",
       "agreesWithAk": true
     },
@@ -1234,7 +1234,7 @@
       "subtopic": "Properties of Triangles — Sine/Cosine Rules and Projection",
       "difficulty": "MODERATE",
       "answer": "C",
-      "solution": "\\(\\tan\\dfrac A2\\tan\\dfrac C2=\\dfrac{s-b}{s}=\\dfrac56\\cdot\\dfrac25=\\dfrac13\\Rightarrow 2s=3b\\Rightarrow a+b+c=3b\\Rightarrow 2b=a+c\\). Thus \\(a,b,c\\) (and hence \\(A,B,C\\)) are in A.P.",
+      "solution": "**Note:** The data make the sides \\(a, b, c\\) an A.P., not the angles \\(A, B, C\\) named in option C. The answer shown follows the paper's answer key.\n\n\\(\\tan\\frac{A}{2}\\tan\\frac{C}{2} = \\frac{s - b}{s} = \\frac{5}{6} \\cdot \\frac{2}{5} = \\frac{1}{3}\\), so \\(2s = 3b\\), \\(a + b + c = 3b\\) and \\(2b = a + c\\): the sides \\(a, b, c\\) are in A.P.\n\nThe angles are not: \\(A = 2\\tan^{-1}\\frac{5}{6} \\approx 79.6^\\circ\\) and \\(C = 2\\tan^{-1}\\frac{2}{5} \\approx 43.6^\\circ\\), so \\(B \\approx 56.8^\\circ\\).",
       "akAnswer": "C",
       "agreesWithAk": true
     },
@@ -1296,7 +1296,7 @@
       "subtopic": "Angles — Line, Plane, and Direction Conditions",
       "difficulty": "HARD",
       "answer": "B",
-      "solution": "Roots of \\(x^{3}+x^{2}-4x-4=0\\) are \\(l,m,n\\): \\(\\sum=-1,\\ \\sum lm=-4\\), so \\(l^{2}+m^{2}+n^{2}=(-1)^{2}-2(-4)=9\\). \\(\\cos\\theta=\\dfrac{lm+mn+nl}{l^{2}+m^{2}+n^{2}}=\\dfrac{-4}{9}\\Rightarrow\\theta=\\cos^{-1}\\left(\\dfrac{-4}{9}\\right)\\).",
+      "solution": "**Note:** The angle between two lines is usually taken as acute, \\(\\cos^{-1}\\frac{4}{9}\\), which is not an option; option B is the angle between the direction vectors as written. The answer shown follows the paper's answer key.\n\nRoots of \\(x^{3}+x^{2}-4x-4=0\\) are \\(l,m,n\\): \\(\\sum=-1,\\ \\sum lm=-4\\), so \\(l^{2}+m^{2}+n^{2}=(-1)^{2}-2(-4)=9\\). \\(\\cos\\theta=\\dfrac{lm+mn+nl}{l^{2}+m^{2}+n^{2}}=\\dfrac{-4}{9}\\Rightarrow\\theta=\\cos^{-1}\\left(\\dfrac{-4}{9}\\right)\\).",
       "akAnswer": "B",
       "agreesWithAk": true
     },

@@ -1237,7 +1237,7 @@
       "subtopic": "Inverse Trigonometric Functions — Identities, Equations, Principal Values, and Sums",
       "difficulty": "HARD",
       "answer": "B",
-      "solution": "Combining \\(\\tan^{-1}(x+1)+\\tan^{-1}(x-1)+\\tan^{-1}x=\\tan^{-1}3\\) leads to \\(\\dfrac{4x-x^3}{2-3x^2}=3\\), giving \\(x=-1\\) for \\(x<0\\).\nThen \\(500x^4+270x^2+997=500+270+997=1767\\).",
+      "solution": "**Note:** With principal values no \\(x < 0\\) satisfies the equation: \\(x = -1\\) makes the tangents agree but not the angles. The answer shown follows the paper's answer key.\n\n\\(\\tan^{-1}(x + 1) + \\tan^{-1}(x - 1) = \\tan^{-1}\\frac{2x}{2 - x^2}\\), and adding \\(\\tan^{-1}x\\) gives a tangent of \\(\\frac{4x - x^3}{2 - 3x^2}\\).\n\nSetting this equal to 3: \\(x^3 - 9x^2 - 4x + 6 = 0\\), whose negative root is \\(x = -1\\), and then \\(500x^4 + 270x^2 + 997 = 1767\\).\n\nCheck: at \\(x = -1\\) the left side is \\(0 - \\frac{\\pi}{4} - \\tan^{-1}2 = \\tan^{-1}3 - \\pi\\), not \\(\\tan^{-1}3\\).",
       "akAnswer": "B",
       "agreesWithAk": true
     },
@@ -1327,7 +1327,7 @@
       "subtopic": "Cross Product, Angle, and Area",
       "difficulty": "HARD",
       "answer": "B",
-      "solution": "From \\(\\bar b\\times\\bar c=\\bar a\\) with \\(\\bar c=(5,-3,2)\\): \\(2b_2+3b_3=1,\\ 5b_3-2b_1=1,\\ 3b_1+5b_2=1\\).\nThe component along \\(\\bar c\\) is free; choosing the minimal/intended solution gives \\(|\\bar b|=\\sqrt{114}\\), matching the key.",
+      "solution": "**Note:** \\(|\\bar{b}|\\) is not determined: if \\(\\bar{b}\\) works, so does \\(\\bar{b} + t\\bar{c}\\) for any \\(t\\). The answer shown follows the paper's answer key.\n\n\\(\\bar{a} \\cdot \\bar{c} = 5 - 3 - 2 = 0\\), so \\(\\bar{b} \\times \\bar{c} = \\bar{a}\\) has solutions.\n\nBut \\(\\bar{b}\\) is fixed only up to adding a multiple of \\(\\bar{c}\\): \\((\\bar{b} + t\\bar{c}) \\times \\bar{c} = \\bar{b} \\times \\bar{c}\\). So \\(|\\bar{b}|\\) can take many values; the least is \\(\\frac{|\\bar{a}|}{|\\bar{c}|} = \\frac{\\sqrt{3}}{\\sqrt{38}}\\).",
       "akAnswer": "B",
       "agreesWithAk": true,
       "note": "System has one free parameter (component of b along c is undetermined since b x c fixes only the part of b perpendicular to c). AK notes multiple values possible; key B = sqrt(114) is the intended answer."
