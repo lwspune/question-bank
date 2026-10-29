@@ -1,0 +1,50 @@
+{
+  "//": "Assembled from agent drafts (switchCircuit).",
+  "visuals": [
+    {
+      "id": "17160454-0fc1-4f22-80a1-7a9d05ef7ff2",
+      "visual": {
+        "v": 1,
+        "scene": "switchCircuit",
+        "params": {
+          "circuits": [
+            {
+              "f": "p & (~p | q)"
+            },
+            {
+              "f": "p & q",
+              "label": "simplified: S1 in series with S2"
+            }
+          ],
+          "equals": "p & (~p | q)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "build"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "rows"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "3346d85e",
+        "answer": {
+          "value": 1,
+          "label": "S1 in series with S2"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

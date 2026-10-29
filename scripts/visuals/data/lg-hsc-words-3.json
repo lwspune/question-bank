@@ -1,0 +1,641 @@
+{
+  "//": "Assembled from agent drafts (truthTable).",
+  "visuals": [
+    {
+      "id": "8941f4e2-4936-4158-a2f3-f045cf3009ae",
+      "visual": {
+        "v": 1,
+        "scene": "truthTable",
+        "params": {
+          "letters": {
+            "p": "all sides of triangle ABC are equal",
+            "q": "all angles of triangle ABC are equal"
+          },
+          "ask": {
+            "kind": "evaluate",
+            "at": {
+              "p": true,
+              "q": true
+            },
+            "f": [
+              "p -> q"
+            ],
+            "expect": [
+              true
+            ]
+          },
+          "say": "An equilateral triangle is equiangular, so p → q is true."
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "vars"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "columns"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "3e0f1c60",
+        "answer": {
+          "value": 1,
+          "label": "T"
+        }
+      }
+    },
+    {
+      "id": "8bded450-ad43-4179-8ac7-10b3106b45df",
+      "visual": {
+        "v": 1,
+        "scene": "truthTable",
+        "params": {
+          "letters": {
+            "p": "it is cold",
+            "q": "we wear woollen clothes"
+          },
+          "ask": {
+            "kind": "equivalent",
+            "a": "p -> q",
+            "b": "~p | q"
+          },
+          "say": "It is not cold or we wear woollen clothes."
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "vars"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "columns"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "e5508b74",
+        "answer": {
+          "value": 1,
+          "label": "∼p ∨ q"
+        }
+      }
+    },
+    {
+      "id": "8cf3865c-2cac-4ff5-9aaf-9a849201fabd",
+      "visual": {
+        "v": 1,
+        "scene": "truthTable",
+        "params": {
+          "letters": {
+            "p": "24 is a composite number",
+            "q": "17 is a prime number"
+          },
+          "ask": {
+            "kind": "evaluate",
+            "at": {
+              "p": true,
+              "q": true
+            },
+            "f": [
+              "p | q"
+            ],
+            "expect": [
+              true
+            ]
+          },
+          "say": "T ∨ T = T, so the truth value is T."
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "vars"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "columns"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "a69c8594",
+        "answer": {
+          "value": 1,
+          "label": "T"
+        }
+      }
+    },
+    {
+      "id": "905b68c6-1f80-4fa8-acb8-f2d6ca0b088d",
+      "visual": {
+        "v": 1,
+        "scene": "truthTable",
+        "params": {
+          "letters": {
+            "p": "the number is odd",
+            "q": "the number is a perfect square"
+          },
+          "ask": {
+            "kind": "transform",
+            "of": "~p & ~q",
+            "op": "negation",
+            "equals": "p | q"
+          },
+          "say": "The number is odd or perfect square."
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "vars"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "columns"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "5d687309",
+        "answer": {
+          "value": 1,
+          "label": "p ∨ q"
+        }
+      }
+    },
+    {
+      "id": "96c4ca3f-d954-4cdb-8dc3-db2343a598b1",
+      "visual": {
+        "v": 1,
+        "scene": "truthTable",
+        "params": {
+          "letters": {
+            "p": "64 is a perfect square",
+            "q": "46 is a prime number"
+          },
+          "ask": {
+            "kind": "evaluate",
+            "at": {
+              "p": true,
+              "q": false
+            },
+            "f": [
+              "p & q"
+            ],
+            "expect": [
+              false
+            ]
+          },
+          "say": "T ∧ F = F, so the truth value is F."
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "vars"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "columns"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "7dec33b0",
+        "answer": {
+          "value": 1,
+          "label": "F"
+        }
+      }
+    },
+    {
+      "id": "07af2232-c06c-4b9e-af05-d3a1f690a29a",
+      "visual": {
+        "v": 1,
+        "scene": "truthTable",
+        "params": {
+          "letters": {
+            "p": "it rains",
+            "q": "the match gets cancelled"
+          },
+          "ask": {
+            "kind": "transforms",
+            "of": "p -> q",
+            "ops": [
+              {
+                "op": "converse",
+                "equals": "q -> p"
+              },
+              {
+                "op": "inverse",
+                "equals": "~p -> ~q"
+              },
+              {
+                "op": "contrapositive",
+                "equals": "~q -> ~p"
+              }
+            ]
+          },
+          "say": "Converse: if the match is cancelled then it rains. Inverse: no rain, no cancel. Contrapositive: not cancelled, no rain."
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "vars"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "columns"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "22d5bf25",
+        "answer": {
+          "value": 1,
+          "label": "all three statements"
+        }
+      }
+    },
+    {
+      "id": "34e94013-0115-49a1-b2fe-9247b64561e5",
+      "visual": {
+        "v": 1,
+        "scene": "truthTable",
+        "params": {
+          "letters": {
+            "p": "voltage increases",
+            "q": "current decreases"
+          },
+          "ask": {
+            "kind": "transforms",
+            "of": "p -> q",
+            "ops": [
+              {
+                "op": "converse",
+                "equals": "q -> p"
+              },
+              {
+                "op": "inverse",
+                "equals": "~p -> ~q"
+              },
+              {
+                "op": "contrapositive",
+                "equals": "~q -> ~p"
+              }
+            ]
+          },
+          "say": "Converse: current decreases, so voltage increases. Inverse: no rise, no fall. Contrapositive: no fall, so no rise."
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "vars"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "columns"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "a9ac6f91",
+        "answer": {
+          "value": 1,
+          "label": "all three statements"
+        }
+      }
+    },
+    {
+      "id": "567a99bd-736e-4436-9c02-2fd521c4f634",
+      "visual": {
+        "v": 1,
+        "scene": "truthTable",
+        "params": {
+          "letters": {
+            "p": "two triangles are congruent",
+            "q": "their areas are equal"
+          },
+          "ask": {
+            "kind": "transforms",
+            "of": "p -> q",
+            "ops": [
+              {
+                "op": "converse",
+                "equals": "q -> p"
+              },
+              {
+                "op": "contrapositive",
+                "equals": "~q -> ~p"
+              }
+            ]
+          },
+          "say": "Converse: equal areas, so congruent. Contrapositive: unequal areas, so not congruent."
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "vars"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "columns"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "f5997ba4",
+        "answer": {
+          "value": 1,
+          "label": "converse and contrapositive"
+        }
+      }
+    },
+    {
+      "id": "6e3e8dda-c9c8-47cd-9858-a5904c678b88",
+      "visual": {
+        "v": 1,
+        "scene": "truthTable",
+        "params": {
+          "letters": {
+            "p": "a sequence is bounded",
+            "q": "it is convergent"
+          },
+          "ask": {
+            "kind": "transforms",
+            "of": "p -> q",
+            "ops": [
+              {
+                "op": "converse",
+                "equals": "q -> p"
+              },
+              {
+                "op": "inverse",
+                "equals": "~p -> ~q"
+              },
+              {
+                "op": "contrapositive",
+                "equals": "~q -> ~p"
+              }
+            ]
+          },
+          "say": "Converse: convergent, so bounded. Inverse: not bounded, not convergent. Contrapositive: not convergent, not bounded."
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "vars"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "columns"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "8825b93e",
+        "answer": {
+          "value": 1,
+          "label": "all three statements"
+        }
+      }
+    },
+    {
+      "id": "71c71920-417b-498d-a85c-fa820d3b88e6",
+      "visual": {
+        "v": 1,
+        "scene": "truthTable",
+        "params": {
+          "letters": {
+            "p": "a function is differentiable",
+            "q": "a function is continuous"
+          },
+          "ask": {
+            "kind": "transforms",
+            "of": "p -> q",
+            "ops": [
+              {
+                "op": "converse",
+                "equals": "q -> p"
+              },
+              {
+                "op": "inverse",
+                "equals": "~p -> ~q"
+              },
+              {
+                "op": "contrapositive",
+                "equals": "~q -> ~p"
+              }
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "vars"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "columns"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "240b157c",
+        "answer": {
+          "value": 1,
+          "label": "all three statements"
+        }
+      }
+    },
+    {
+      "id": "78302237-4092-40e3-ad42-7f511d39272e",
+      "visual": {
+        "v": 1,
+        "scene": "truthTable",
+        "params": {
+          "letters": {
+            "p": "x < y",
+            "q": "x² < y²"
+          },
+          "ask": {
+            "kind": "transforms",
+            "of": "p -> q",
+            "ops": [
+              {
+                "op": "inverse",
+                "equals": "~p -> ~q"
+              },
+              {
+                "op": "contrapositive",
+                "equals": "~q -> ~p"
+              }
+            ]
+          },
+          "say": "Inverse: if x ≥ y then x² ≥ y². Contrapositive: if x² ≥ y² then x ≥ y."
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "vars"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "columns"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "0550aaff",
+        "answer": {
+          "value": 1,
+          "label": "inverse and contrapositive"
+        }
+      }
+    },
+    {
+      "id": "7b5d3cb3-6ac8-4d64-9ca5-fc3c6e1eddec",
+      "visual": {
+        "v": 1,
+        "scene": "truthTable",
+        "params": {
+          "letters": {
+            "p": "x < y",
+            "q": "x² < y²"
+          },
+          "ask": {
+            "kind": "transforms",
+            "of": "p -> q",
+            "ops": [
+              {
+                "op": "converse",
+                "equals": "q -> p"
+              },
+              {
+                "op": "inverse",
+                "equals": "~p -> ~q"
+              },
+              {
+                "op": "contrapositive",
+                "equals": "~q -> ~p"
+              }
+            ]
+          },
+          "say": "Converse: x² < y² gives x < y. Inverse: x ≥ y gives x² ≥ y². Contrapositive: x² ≥ y² gives x ≥ y."
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "vars"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "columns"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "8a0bef08",
+        "answer": {
+          "value": 1,
+          "label": "all three statements"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

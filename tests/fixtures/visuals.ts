@@ -386,6 +386,51 @@ export const ALG_VISUAL = {
   answer: { value: 0.2963, label: "0.2963" },
 };
 
+export const CIRCUIT_SOLUTION = String.raw`Let \(p\) : The switch \(S_1\), \(q\) : The switch \(S_2\).
+
+\(S_1\) is in series with a block of \(S_1'\) parallel to \(S_2\). The symbolic form is \(p \wedge (\sim p \vee q)\).
+
+Simplify: \(p \wedge (\sim p \vee q) \equiv (p \wedge \sim p) \vee (p \wedge q)\) [Distributive Law] \(\equiv c \vee (p \wedge q)\) [Complement Law] \(\equiv p \wedge q\) [Identity Law].
+
+The equivalent simple circuit is \(S_1\) in series with \(S_2\).`;
+
+/** HSC 17160454: the drawn circuit S1 in series with (S1′ parallel S2), simplified to S1 in series with S2. */
+export const CIRCUIT_VISUAL = {
+  v: 1,
+  scene: "switchCircuit",
+  params: {
+    circuits: [{ f: "p & (~p | q)" }, { f: "p & q", label: "simplified: S1 in series with S2" }],
+    equals: "p & (~p | q)",
+  },
+  steps: [
+    { from: 0, beats: ["build"] },
+    { from: 2, beats: ["rows"] },
+    { from: 4, beats: ["answer"] },
+  ],
+  fingerprint: solutionFingerprint(CIRCUIT_SOLUTION),
+  answer: { value: 1, label: "S1 in series with S2" },
+};
+
+export const SET_SOLUTION = String.raw`For \(x = 1\), \(x + 1 = 1 + 1 = 2\) which is not greater than or equal to 3
+\(\therefore\) For \(x = 1\), \(x + 1 \geq 3\) is not true.
+\(\therefore\) The truth value of given statement is F.`;
+
+/** HSC 047a1be4: with A = {1, ..., 7}, ∀x ∈ A, x + 1 ≥ 3 is F (x = 1 gives 2). */
+export const SET_VISUAL = {
+  v: 1,
+  scene: "setClaim",
+  params: {
+    set: { name: "A", members: [1, 2, 3, 4, 5, 6, 7] },
+    claims: [{ quant: "all", lhs: "x + 1", rel: ">=", rhs: "3", show: "x + 1 ≥ 3" }],
+  },
+  steps: [
+    { from: 0, beats: ["set", "test"] },
+    { from: 2, beats: ["answer"] },
+  ],
+  fingerprint: solutionFingerprint(SET_SOLUTION),
+  answer: { value: 0, label: "F" },
+};
+
 export const FIXTURES = [
   { name: "rotation", visual: ROTATION_VISUAL, solution: ROTATION_SOLUTION },
   { name: "circleArc", visual: ARC_VISUAL, solution: ARC_SOLUTION },
@@ -405,4 +450,6 @@ export const FIXTURES = [
   { name: "truthTable", visual: TT_VISUAL, solution: TT_SOLUTION },
   { name: "sketch", visual: SKETCH_VISUAL, solution: SKETCH_SOLUTION },
   { name: "algebraSteps", visual: ALG_VISUAL, solution: ALG_SOLUTION },
+  { name: "switchCircuit", visual: CIRCUIT_VISUAL, solution: CIRCUIT_SOLUTION },
+  { name: "setClaim", visual: SET_VISUAL, solution: SET_SOLUTION },
 ] as const;

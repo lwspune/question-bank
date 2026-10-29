@@ -1,0 +1,255 @@
+{
+  "//": "Assembled from agent drafts (setClaim).",
+  "visuals": [
+    {
+      "id": "556b3588-fada-4678-bb3e-82ee2323a630",
+      "visual": {
+        "v": 1,
+        "scene": "setClaim",
+        "params": {
+          "set": {
+            "name": "A",
+            "members": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ]
+          },
+          "claims": [
+            {
+              "quant": "some",
+              "lhs": "x + 8",
+              "rel": "=",
+              "rhs": "15",
+              "show": "∃x ∈ A: x + 8 = 15"
+            }
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "set",
+              "test"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "fd71882a",
+        "answer": {
+          "value": 1,
+          "label": "T"
+        }
+      }
+    },
+    {
+      "id": "71ddfc91-0d52-4d01-b9a6-8e98edd0fc6c",
+      "visual": {
+        "v": 1,
+        "scene": "setClaim",
+        "params": {
+          "set": {
+            "name": "A",
+            "members": [
+              3,
+              5,
+              7,
+              9,
+              11,
+              12
+            ]
+          },
+          "claims": [
+            {
+              "quant": "some",
+              "lhs": "3*x + 8",
+              "rel": ">",
+              "rhs": "40",
+              "show": "∃x: 3x + 8 > 40"
+            }
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "set",
+              "test"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "0018b8eb",
+        "answer": {
+          "value": 1,
+          "label": "T"
+        }
+      }
+    },
+    {
+      "id": "7cd3ecaa-8180-4892-b880-29fc52cb5995",
+      "visual": {
+        "v": 1,
+        "scene": "setClaim",
+        "params": {
+          "set": {
+            "name": "A",
+            "members": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ]
+          },
+          "claims": [
+            {
+              "quant": "all",
+              "lhs": "8 - x",
+              "rel": "<=",
+              "rhs": "7",
+              "show": "8 − x ≤ 7"
+            }
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "set",
+              "test"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "cf8dee24",
+        "answer": {
+          "value": 1,
+          "label": "T"
+        }
+      }
+    },
+    {
+      "id": "7ed0744b-ce2d-46eb-a6ac-6b0528ce27c8",
+      "visual": {
+        "v": 1,
+        "scene": "setClaim",
+        "params": {
+          "set": {
+            "name": "A",
+            "members": [
+              3,
+              5,
+              7,
+              9,
+              11,
+              12
+            ]
+          },
+          "claims": [
+            {
+              "quant": "all",
+              "lhs": "mod(x, 2)",
+              "rel": "=",
+              "rhs": "0",
+              "show": "x is even"
+            }
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "set",
+              "test"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "994d3144",
+        "answer": {
+          "value": 0,
+          "label": "F"
+        }
+      }
+    },
+    {
+      "id": "870e7944-b431-4492-b3d2-7605e0a1f32d",
+      "visual": {
+        "v": 1,
+        "scene": "setClaim",
+        "params": {
+          "set": {
+            "name": "A",
+            "members": [
+              3,
+              5,
+              7,
+              9,
+              11,
+              12
+            ]
+          },
+          "claims": [
+            {
+              "quant": "some",
+              "lhs": "x - 8",
+              "rel": "=",
+              "rhs": "1",
+              "show": "x − 8 = 1"
+            }
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "set",
+              "test"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "7aaeefdd",
+        "answer": {
+          "value": 1,
+          "label": "T"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

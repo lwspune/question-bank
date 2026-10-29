@@ -8,7 +8,7 @@ import { compileExpr } from "./expr";
 import { obj, ParamError } from "./params";
 
 /** Names a var may not take: the curve variable, the constants and every function. */
-export const RESERVED = new Set(["x", "pi", "e", "sin", "cos", "tan", "asin", "acos", "atan", "exp", "log", "ln", "log10", "sqrt", "abs", "deg", "rad", "atan2", "min", "max"]);
+export const RESERVED = new Set(["x", "pi", "e", "sin", "cos", "tan", "asin", "acos", "atan", "exp", "log", "ln", "log10", "sqrt", "abs", "deg", "rad", "atan2", "min", "max", "floor", "mod"]);
 
 /** A number, or a formula of the vars so far, evaluated (x = 0 when it appears). */
 export function value(src: unknown, vars: Readonly<Record<string, number>>, field: string): number {

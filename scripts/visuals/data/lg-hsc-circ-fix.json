@@ -1,0 +1,90 @@
+{
+  "//": "Assembled from agent drafts (switchCircuit).",
+  "visuals": [
+    {
+      "id": "5539db55-fdd9-4af5-9489-fff7e851a508",
+      "visual": {
+        "v": 1,
+        "scene": "switchCircuit",
+        "params": {
+          "circuits": [
+            {
+              "f": "p | ~q | (~p & q)"
+            }
+          ],
+          "equals": "(p | ~q) | (~p & q)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "build"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "rows"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "d63fe87c",
+        "answer": {
+          "value": 1,
+          "label": "the lamp always glows"
+        }
+      }
+    },
+    {
+      "id": "4cf9be7f-4a9a-46af-afda-51ed5b063cbf",
+      "visual": {
+        "v": 1,
+        "scene": "switchCircuit",
+        "params": {
+          "circuits": [
+            {
+              "f": "(~p | q) | (p | ~q) | (p | q)"
+            },
+            {
+              "f": "T",
+              "label": "simplified: a plain wire, no switch"
+            }
+          ],
+          "equals": "(~p | q) | (p | ~q) | (p | q)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "build"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "rows"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "560f8e59",
+        "answer": {
+          "value": 1,
+          "label": "no switch needed"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

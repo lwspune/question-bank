@@ -1,0 +1,14 @@
+[
+  {
+    "id": "5539db55-fdd9-4af5-9489-fff7e851a508",
+    "before": "c0bb9abd",
+    "solution": "Let \\(p\\): the switch \\(S_1\\) is closed and \\(q\\): the switch \\(S_2\\) is closed. In Fig. 1.25 the circuit has three branches in parallel between the same two junctions: \\(S_1\\) alone, \\(S_2'\\) alone, and \\(S_1'\\) in series with \\(S_2\\).\n\nSymbolic form: \\((p \\vee \\sim q) \\vee (\\sim p \\wedge q)\\).\n\nSwitching table:\n\n| \\(p\\) | \\(q\\) | \\(\\sim p\\) | \\(\\sim q\\) | \\(p \\vee \\sim q\\) | \\(\\sim p \\wedge q\\) | \\((p \\vee \\sim q) \\vee (\\sim p \\wedge q)\\) |\n|---|---|---|---|---|---|---|\n| 1 | 1 | 0 | 0 | 1 | 0 | 1 |\n| 1 | 0 | 0 | 1 | 1 | 0 | 1 |\n| 0 | 1 | 1 | 0 | 0 | 1 | 1 |\n| 0 | 0 | 1 | 1 | 1 | 0 | 1 |\n\nInterpretation: the last column is 1 in every row, so the lamp glows whatever the positions of \\(S_1\\) and \\(S_2\\). The statement is a tautology.",
+    "note": "misread Fig. 1.25 as two series branches and marked the book's key wrong; the figure has S1, S2' and S1'-S2 all in parallel, so the book's (p v ~q) v (~p ^ q), a tautology, is right."
+  },
+  {
+    "id": "4cf9be7f-4a9a-46af-afda-51ed5b063cbf",
+    "before": "15a02391",
+    "solution": "Let \\(p\\): the switch \\(S_1\\) is closed and \\(q\\): the switch \\(S_2\\) is closed. In Fig. 1.39 three blocks are joined in parallel, and in each block the two switches are themselves in parallel: \\(S_1'\\) with \\(S_2\\), \\(S_1\\) with \\(S_2'\\), and \\(S_1\\) with \\(S_2\\).\n\nSymbolic form: \\((\\sim p \\vee q) \\vee (p \\vee \\sim q) \\vee (p \\vee q)\\).\n\nSince \\(\\vee\\) is associative and commutative, this is \\((p \\vee \\sim p) \\vee (q \\vee \\sim q) \\vee (p \\vee q) \\equiv T \\vee T \\vee (p \\vee q) \\equiv T\\) (complement law, identity law).\n\nSo the lamp glows whatever the positions of the switches. The new circuit needs no switch at all: a plain wire from the battery to the lamp.",
+    "note": "read each block of Fig. 1.39 as two switches in series; each block is two switches in parallel, so the circuit is a tautology and needs no switch, not S1 parallel S2."
+  }
+]

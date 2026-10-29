@@ -103,3 +103,64 @@ describe("truthTable drawing", () => {
     expect(shapes(["vars", "columns", "answer"]).some((s) => s.kind === "text" && /T, F, F/.test(s.text))).toBe(true);
   });
 });
+
+// Sentences in words (owner, 2026-10-29): the letters' meanings above the
+// table, the answer in words below it; the check stays symbolic.
+describe("truthTable in words", () => {
+  const raining = {
+    letters: { p: "it is raining", q: "we will go and play football" },
+    say: "It is raining and we will not go and play football.",
+    ask: { kind: "transform", of: "p -> q", op: "negation", equals: "p & ~q" },
+  };
+  const texts = (raw: unknown, played: string[]) =>
+    scene()
+      .frame(parse(raw), { played, t: 1, slider: undefined })
+      .filter((s): s is Extract<Shape, { kind: "text" }> => s.kind === "text")
+      .map((s) => s.text);
+
+  it("shows what each letter stands for from the start, and the answer in words only once the answer plays", () => {
+    expect(value(raining)).toBe(1);
+    expect(texts(raining, ["vars"])).toEqual(expect.arrayContaining(["p: it is raining", "q: we will go and play football"]));
+    expect(texts(raining, ["vars", "columns"]).join(" ")).not.toMatch(/not go and play/);
+    expect(texts(raining, ["vars", "columns", "answer"]).join(" ")).toMatch(/not go and play/);
+  });
+
+  it("makes room for the legend and the sentence, and still checks the symbols, not the words", () => {
+    const bare = { ask: raining.ask };
+    expect(scene().viewBox(parse(raining)).h).toBeGreaterThan(scene().viewBox(parse(bare)).h);
+    // A wrong negation is still refused, whatever the sentence says.
+    expect(value({ ...raining, ask: { ...raining.ask, equals: "~p & ~q" } })).toBe(0);
+  });
+
+  it("refuses a meaning for a letter the table does not have, and an over-long meaning", () => {
+    expect(parseError({ ...raining, letters: { r: "it is cold" } })).toMatch(/r/);
+    expect(parseError({ ...raining, letters: { p: "x".repeat(60) } })).toMatch(/p/);
+  });
+});
+
+describe("truthTable: several transforms at once", () => {
+  const three = {
+    letters: { p: "a man is happy", q: "he is rich" },
+    ask: {
+      kind: "transforms",
+      of: "p -> q",
+      ops: [
+        { op: "converse", equals: "q -> p" },
+        { op: "inverse", equals: "~p -> ~q" },
+        { op: "contrapositive", equals: "~q -> ~p" },
+      ],
+    },
+  };
+
+  it("checks every transform the question asks for, and fails if any one is wrong", () => {
+    expect(value(three)).toBe(1);
+    const wrong = { ...three, ask: { ...three.ask, ops: [three.ask.ops[0], { op: "inverse", equals: "~q -> ~p" }, three.ask.ops[2]] } };
+    expect(value(wrong)).toBe(0);
+  });
+
+  it("refuses an empty list, more than three, and an unknown operation", () => {
+    expect(parseError({ ...three, ask: { ...three.ask, ops: [] } })).toMatch(/ops/);
+    expect(parseError({ ...three, ask: { ...three.ask, ops: [...three.ask.ops, three.ask.ops[0]] } })).toMatch(/ops/);
+    expect(parseError({ ...three, ask: { ...three.ask, ops: [{ op: "reverse", equals: "q -> p" }] } })).toMatch(/op/);
+  });
+});

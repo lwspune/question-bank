@@ -165,4 +165,10 @@ describe("plain labels", () => {
     expect(() => plainLabel("<img src=x>", "l")).toThrow();
     expect(() => plainLabel("\\frac{1}{2}", "l")).toThrow();
   });
+
+  it("refuse the parallel sign, which the picture font draws as a block", async () => {
+    const { plainLabel } = await import("@/lib/visuals/params");
+    expect(() => plainLabel("S1 ∥ S2", "l")).toThrow(/parallel/);
+    expect(plainLabel("S1 parallel to S2", "l")).toBe("S1 parallel to S2");
+  });
 });

@@ -19,7 +19,7 @@ takes the FIRST kind that fits; anything left keeps its still solution.
 
 | Kind | What it is | When | Status |
 |---|---|---|---|
-| **Shared scene** | one scene type serving many questions from their numbers (`functionGraph`, `coordGeometry`, `space3d`, `lpRegion`, `truthTable`, ...) | the question's shape is common | live |
+| **Shared scene** | one scene type serving many questions from their numbers (`functionGraph`, `coordGeometry`, `space3d`, `lpRegion`, `truthTable`, `switchCircuit`, `setClaim`, ...) | the question's shape is common | live |
 | **Sketch** (standalone) | one animation for ONE question, built from computed objects: named numbers (`vars`), points, then segments, lines, arrows, polygons, circles, arcs, angle marks, curves and labels, each on a step `s1`..`s8` | a picture would explain it but no shared scene fits | live 2026-10-29 |
 | **Algebra steps** | the written working itself animates: each line appears, the changed term coloured in its old line and its new one | no picture helps (identities, division, find-k, root expressions, small-change approximations) | built 2026-10-29, pilot next |
 
@@ -110,6 +110,36 @@ takes the FIRST kind that fits; anything left keeps its still solution.
   `\a` (vertical tab, bell), a ninth step (limit eight), an eq line without
   roots. Not a fit: HSC Mathematical Logic's noFit pile (sentences in words,
   negations, switching circuits): the checker reads numbers, not truth values.
+
+**Logic tools** (brief `briefs/logic-more-draft.md`; specs `tests/visuals-circuit.test.ts`,
+`visuals-set-claim.test.ts`, `visuals-truth.test.ts`), built 2026-10-29 for that pile:
+- `switchCircuit`: draws a circuit from its formula (∧ series, ∨ parallel, ∼p the
+  switch S′, `T` a plain wire), plays the truth-table rows with the lamp, and
+  refuses any circuit whose table differs from `equals`. Only single-letter
+  switches, at most 4 letters, about 7 switches wide.
+- `truthTable` with words: `letters` (each letter's meaning) as a legend, `say`
+  (the answer in words, shown, not checked); ask `transforms` checks converse,
+  inverse and contrapositive asked together.
+- `setClaim`: every member of a set tested against ∀/∃ claims; on an infinite
+  set only a claim the listed members settle is accepted; several claims need
+  `ask` true|false (which one a multiple choice picks out).
+
+**Logic refinement log:**
+- 2026-10-29, HSC Mathematical Logic (184 noFit questions, 13 slices; 113 applied:
+  53 circuits, 39 sentences in words, 21 set claims, in `data/lg-hsc-*`):
+  drafts were right as checked; two were dropped as teaching nothing (a
+  single letter's negation, a single letter's value). Recurring refusals: a
+  multiple choice without `ask`, a first step not at sentence 0. **Agents cannot
+  see a stem figure**, and the circuit check compares the drawing with the
+  SOLUTION's reading of it, so a misread figure passes: two stored solutions
+  had misread their circuit (fixed, `solution-fixes/2026-10-29-logic.json`), and
+  one figure was cut off (re-cropped from the book). The review sheet now shows
+  the question's figure above the frames: compare the two before `--apply`.
+- 2026-10-29, MHT-CET Mathematical Logic (61 noFit, 5 slices, 3 agents; 46
+  applied: 13 circuits, 31 words, 2 set claims): all 13 circuits matched their
+  figures. Dropped 2 where the legend gave the question's own letter p to a
+  different clause (brief rule added). Labels with "∥" drew a solid block:
+  `plainLabel` now refuses it (4 live visuals relabelled with `--replace`).
 
 ## Pieces
 
@@ -261,6 +291,9 @@ picture shows the right shape.
   the scene's own constructions (two-line meet, image in a line) or skip.
 - A right number on the wrong shape (a triangle drawn for a parallelogram) passes
   the check: only the sheet catches it.
+- A question with a figure: the agent never saw it, so compare the drawn picture
+  with the figure the sheet shows above the frames (a circuit read from the
+  solution repeated the solution's misreading twice).
 - LP: a corner label can still be crossed by a constraint line, and a stroke just
   after the comma reads as a minus ("(50, 100)" looked like "(50, −100)"). Zoom in
   on any corner label a line passes through; hold the draft (undecided) if the
