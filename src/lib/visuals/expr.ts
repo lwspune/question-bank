@@ -8,7 +8,11 @@
  *   term    := unary (('*' | '/') unary)*
  *   unary   := '-' unary | power
  *   power   := atom ('^' unary)?          right-associative; -x^2 = -(x^2)
- *   atom    := number | x | pi | e | fn '(' expr ')' | '(' expr ')'
+ *   atom    := number | x | pi | e | name | fn '(' expr ')' | fn2 '(' expr ',' expr ')' | '(' expr ')'
+ *
+ * `name` is a named number, only when the caller passes them (the sketch
+ * scene's vars); without them the language is exactly the formula-in-x one.
+ * fn2 is atan2, min or max; deg and rad convert angles.
  *
  * Multiplication is always written (2*x, not 2x), so a typo cannot silently
  * change the meaning. `log` is the natural log, as in JEE and CET solutions.
@@ -29,6 +33,14 @@ const FUNCTIONS: Record<string, (v: number) => number> = {
   log10: Math.log10,
   sqrt: Math.sqrt,
   abs: Math.abs,
+  deg: (v) => (v * 180) / Math.PI,
+  rad: (v) => (v * Math.PI) / 180,
+};
+
+const FUNCTIONS2: Record<string, (a: number, b: number) => number> = {
+  atan2: Math.atan2,
+  min: Math.min,
+  max: Math.max,
 };
 
 const MAX_LENGTH = 120;
@@ -52,13 +64,14 @@ function tokenize(src: string): Token[] {
       i += num[0].length;
       continue;
     }
-    const id = /^[a-z][a-z0-9]*/.exec(src.slice(i));
+    // Capitals are read only as named numbers (R, L2); every function and x are lowercase.
+    const id = /^[A-Za-z][A-Za-z0-9]*/.exec(src.slice(i));
     if (id) {
       out.push({ kind: "id", name: id[0] });
       i += id[0].length;
       continue;
     }
-    if ("+-*/^()".includes(c)) {
+    if ("+-*/^(),".includes(c)) {
       out.push({ kind: "op", op: c });
       i++;
       continue;
@@ -68,7 +81,7 @@ function tokenize(src: string): Token[] {
   return out;
 }
 
-function parse(tokens: Token[]): Fn {
+function parse(tokens: Token[], vars?: Readonly<Record<string, number>>): Fn {
   let pos = 0;
   const peekOp = (op: string) => {
     const t = tokens[pos];
@@ -129,6 +142,19 @@ function parse(tokens: Token[]): Fn {
       if (t.name === "x") return (x) => x;
       if (t.name === "pi") return () => Math.PI;
       if (t.name === "e") return () => Math.E;
+      if (vars && Object.prototype.hasOwnProperty.call(vars, t.name) && !peekOp("(")) {
+        const v = vars[t.name];
+        return () => v;
+      }
+      const f2 = Object.prototype.hasOwnProperty.call(FUNCTIONS2, t.name) ? FUNCTIONS2[t.name] : undefined;
+      if (f2) {
+        expectOp("(");
+        const a = expr();
+        expectOp(",");
+        const b = expr();
+        expectOp(")");
+        return (x) => f2(a(x), b(x));
+      }
       const f = Object.prototype.hasOwnProperty.call(FUNCTIONS, t.name) ? FUNCTIONS[t.name] : undefined;
       if (!f) throw new ExprError(`unknown name "${t.name}"`);
       expectOp("(");
@@ -150,12 +176,12 @@ function parse(tokens: Token[]): Fn {
   return fn;
 }
 
-/** Compile a formula in x, or say what is wrong with it. */
-export function compileExpr(src: unknown): { fn: Fn } | { error: string } {
+/** Compile a formula in x (and the given named numbers), or say what is wrong with it. */
+export function compileExpr(src: unknown, vars?: Readonly<Record<string, number>>): { fn: Fn } | { error: string } {
   if (typeof src !== "string" || src.trim() === "") return { error: "the formula is empty" };
   if (src.length > MAX_LENGTH) return { error: `the formula is longer than ${MAX_LENGTH} characters` };
   try {
-    return { fn: parse(tokenize(src)) };
+    return { fn: parse(tokenize(src), vars) };
   } catch (e) {
     if (e instanceof ExprError) return { error: e.message };
     throw e;

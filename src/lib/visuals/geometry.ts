@@ -74,3 +74,13 @@ export function piMultiple(v: number): string {
   if (Math.abs(k - r) < 1e-9 && r > 0) return r === 1 ? "π" : `${r}π`;
   return `${k.toFixed(2)}π`;
 }
+
+/** A value as a fraction with a small denominator when it is one ("5/7", "−1/3"), else a decimal. */
+export function fracText(v: number): string {
+  if (Math.abs(v) < 1e-12) return "0";
+  for (let q = 1; q <= 24; q++) {
+    const n = Math.round(v * q);
+    if (Math.abs(v * q - n) < 1e-7 * q) return q === 1 ? num(n) : `${n < 0 ? "−" : ""}${Math.abs(n)}/${q}`;
+  }
+  return num(v, 3);
+}

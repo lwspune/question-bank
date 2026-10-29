@@ -12,6 +12,51 @@ it always has. Surfaces: /browse and the /questions landing pages, mock review,
 drill, and under V's explanation (there it plays on its own, since V's words
 are not the stored solution).
 
+## Three kinds of animation (owner, 2026-10-29)
+
+Every solution that can be explained with an animation gets one. A question
+takes the FIRST kind that fits; anything left keeps its still solution.
+
+| Kind | What it is | When | Status |
+|---|---|---|---|
+| **Shared scene** | one scene type serving many questions from their numbers (`functionGraph`, `coordGeometry`, `space3d`, `lpRegion`, `truthTable`, ...) | the question's shape is common | live |
+| **Sketch** (standalone) | one animation for ONE question, built from computed objects: named numbers (`vars`), points, then segments, lines, arrows, polygons, circles, arcs, angle marks, curves and labels, each on a step `s1`..`s8` | a picture would explain it but no shared scene fits | built 2026-10-29, pilot next |
+| **Algebra steps** | the written working itself animates: each line appears, the changed term highlighted and moving | no picture helps (identities, division, find-k, root expressions) | to plan |
+
+**Sketch rules** (`scenes/sketch.ts`, spec `tests/visuals-sketch.test.ts`):
+- Every number is a formula of the `vars`, every var a formula of the ones
+  before it (`lib/visuals/expr`, never eval). No freehand paths.
+- `assert` states facts the picture must satisfy ("c^2 = a^2 + b^2", "m*ax + c
+  = 0"); one that fails refuses the picture. Write at least one for every
+  construction a reader could get wrong (a point on a line, a right angle, a
+  point on the curve).
+- `answer` is a formula; it must equal the key, as for every scene.
+- One unit is the same on both axes, so lengths and angles are true. Every
+  point must sit inside the `view`. Limits: 30 vars, 26 points, 40 items, 12
+  asserts, 8 steps.
+- Names go where they read: `labelAt` + `pos` on a segment, line or curve; a
+  free `label` item for the answer. Pick a view near 4:3.
+- Not for biology or other high-fidelity figures (owner, 2026-10-08).
+- When one kind of sketch keeps recurring (about 15 times), propose it as a
+  shared scene.
+
+**Refinement log** (add a dated line whenever review or a run teaches something):
+- 2026-10-29: names of a curve and a line both defaulted to the top of the
+  view and collided with the y-axis letter; `labelAt` added. A free label
+  placed with `pos: "e"` ran into a point's name: put answer labels in empty
+  corners. Next refinement to consider: a label-overlap check in `visuals:run`
+  so the sheet does not have to catch it.
+- 2026-10-29, pilot (60 noFit: 40 MHT-CET Applications of Derivative, 20 JEE
+  Straight Lines; one Sonnet pass doing fit + draft): 42 judged sketch, 16
+  algebra, 2 none; 39 applied after review (4 held on NEEDS_OWNER, 1 merged
+  into its fix). Every picture was mathematically right; the faults were all
+  labels: cut off at an edge, or printed on another label. The scene now keeps
+  labels inside the picture and moves one off an earlier label
+  (`tidyLabels`). Agents also used capital var names (R, L): now allowed. A
+  var named x or y is still refused (x is the curve variable): rename it (xf).
+  Next to consider: keep labels off LINES too (a line's name printed along the
+  x-axis), and a lint in `visuals:run` that lists suspected overlaps on the sheet.
+
 ## Pieces
 
 | Piece | Where |

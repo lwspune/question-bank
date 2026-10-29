@@ -11,3 +11,13 @@ export function verdictsFromBatchFiles(dir = join(__dirname, "data")): Map<strin
   }
   return out;
 }
+
+/** Every noFit's recorded reason, by question id (the latest file wins), for re-checking the pile. */
+export function reasonsFromBatchFiles(dir = join(__dirname, "data")): Map<string, string> {
+  const out = new Map<string, string>();
+  for (const f of readdirSync(dir).filter((n) => n.endsWith(".json")).sort()) {
+    const b = JSON.parse(readFileSync(join(dir, f), "utf8")) as VisualBatch;
+    for (const d of b.decided ?? []) if (d.verdict === "noFit") out.set(d.id, d.reason);
+  }
+  return out;
+}

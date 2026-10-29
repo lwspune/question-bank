@@ -9,6 +9,7 @@ import { functionGraph } from "./scenes/functionGraph";
 import { quadraticFamily } from "./scenes/quadraticFamily";
 import { rotation } from "./scenes/rotation";
 import { lpRegion } from "./scenes/lpRegion";
+import { sketch } from "./scenes/sketch";
 import { slab } from "./scenes/slab";
 import { space3d } from "./scenes/space3d";
 import { truthTable } from "./scenes/truthTable";
@@ -25,6 +26,7 @@ export const SCENES: Record<string, Scene<any>> = {
   space3d,
   lpRegion,
   truthTable,
+  sketch,
 };
 
 export function getScene(id: string): Scene<any> | undefined {

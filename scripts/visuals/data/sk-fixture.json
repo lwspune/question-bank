@@ -1,0 +1,137 @@
+{
+ "//": "Sketch scene: its fixture question.",
+ "visuals": [
+  {
+   "id": "8aceb9c7-6fc8-4383-b735-5129e2a7f9a8",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "sketch",
+    "params": {
+     "vars": {
+      "m": "2*exp(0)",
+      "c": "exp(0)",
+      "ax": "-c/m",
+      "by": "c",
+      "area": "abs(ax)*by/2"
+     },
+     "view": {
+      "x": [
+       -1.6,
+       1.4
+      ],
+      "y": [
+       -0.5,
+       2.6
+      ]
+     },
+     "axes": true,
+     "points": {
+      "O": [
+       0,
+       0
+      ],
+      "A": [
+       "ax",
+       0
+      ],
+      "B": [
+       0,
+       "by"
+      ]
+     },
+     "items": [
+      {
+       "kind": "curve",
+       "f": "exp(2*x)",
+       "x": [
+        -1.6,
+        0.47
+       ],
+       "step": "s1",
+       "label": "y = e²ˣ",
+       "labelAt": [
+        -1.5,
+        0.15
+       ],
+       "pos": "n"
+      },
+      {
+       "kind": "point",
+       "at": "B",
+       "step": "s1",
+       "label": "P(0, 1)",
+       "pos": "nw"
+      },
+      {
+       "kind": "line",
+       "through": [
+        "A",
+        "B"
+       ],
+       "step": "s2",
+       "label": "y = 2x + 1",
+       "labelAt": [
+        0.55,
+        2.1
+       ],
+       "pos": "e"
+      },
+      {
+       "kind": "point",
+       "at": "A",
+       "step": "s3",
+       "label": "A(−1/2, 0)",
+       "pos": "sw"
+      },
+      {
+       "kind": "polygon",
+       "points": [
+        "O",
+        "A",
+        "B"
+       ],
+       "step": "s3"
+      },
+      {
+       "kind": "label",
+       "at": [
+        -1.55,
+        2.3
+       ],
+       "text": "area of OAB = {area}",
+       "step": "s3",
+       "tone": "good"
+      }
+     ],
+     "assert": [
+      "by = exp(2*0)",
+      "m*ax + c = 0"
+     ],
+     "answer": "area"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "e7b90d90",
+    "answer": {
+     "value": 0.25,
+     "label": "1/4"
+    }
+   }
+  }
+ ],
+ "decided": []
+}
