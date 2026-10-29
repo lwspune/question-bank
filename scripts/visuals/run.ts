@@ -16,10 +16,12 @@
  */
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { join } from "node:path";
+import { pathToFileURL } from "node:url";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import SceneSvg from "../../src/components/visuals/SceneSvg";
+import { fitMathLine, fittedSize } from "../../src/lib/visuals/fitMath";
 import { planVisualBatch, type BatchRow, type VisualBatch } from "../../src/lib/visuals/batch";
 import { getScene } from "../../src/lib/visuals/registry";
 import { checkVisual, parseSolutionVisual, stepTexts } from "../../src/lib/visuals/visual";
@@ -41,7 +43,22 @@ type Row = {
 const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
 // The light theme's scene colours (globals.css .viz), so the sheet matches the site.
-const SHEET_VARS = `.viz{--viz-fg:#0f1d4a;--viz-muted:#55657f;--viz-line:#dfe6f1;--viz-brand:#1d4ed8;--viz-brand-text:#1d4ed8;--viz-card:#fff;--viz-bg:#f5f7fb;--viz-soft:#e8f0ff;--viz-amber:#b45309;--viz-good:#047857;--viz-good-soft:#e3f4ec;--viz-bad:#b91c1c;--viz-glass:#dcebfb}`;
+// KaTeX's own stylesheet, inlined with its fonts resolved to the installed package,
+// so an algebra-steps maths line looks on the sheet as it does on the site.
+const KATEX_DIR = join(process.cwd(), "node_modules", "katex", "dist");
+const KATEX_CSS = (() => {
+  try {
+    return readFileSync(join(KATEX_DIR, "katex.min.css"), "utf8").replace(/url\((fonts\/[^)]+)\)/g, (_, f: string) => `url(${pathToFileURL(join(KATEX_DIR, f)).href})`);
+  } catch {
+    return "";
+  }
+})();
+// The player's fit for maths lines (lib/visuals/fitMath), run on the sheet so it
+// shows what students see; a line still too wide at the smallest size is
+// outlined in red and counted in the heading, for the reviewer. It waits for
+// KaTeX's fonts: measured in the fallback font a line looks narrower than it is.
+const FIT_SCRIPT = `<script>const fittedSize=${fittedSize.toString()};const fitMathLine=${fitMathLine.toString()};document.fonts.ready.then(function(){var over=0;document.querySelectorAll("[data-viz-math]").forEach(function(el){if(!fitMathLine(el)){over++;el.style.outline="2px solid #b91c1c";el.setAttribute("data-viz-over","1")}});document.querySelector("h1").insertAdjacentHTML("beforeend",over?' <span class="bad">('+over+" maths lines still too wide)</span>":' <small>(maths lines fitted)</small>')})</script>`;
+const SHEET_VARS =`.viz{--viz-fg:#0f1d4a;--viz-muted:#55657f;--viz-line:#dfe6f1;--viz-brand:#1d4ed8;--viz-brand-text:#1d4ed8;--viz-card:#fff;--viz-bg:#f5f7fb;--viz-soft:#e8f0ff;--viz-amber:#b45309;--viz-good:#047857;--viz-good-soft:#e3f4ec;--viz-bad:#b91c1c;--viz-glass:#dcebfb}.viz .viz-mark-1{color:#1d4ed8;font-weight:700}.viz .viz-mark-2{color:#b45309;font-weight:700}.viz .viz-mark-3{color:#047857;font-weight:700}`;
 
 async function fetchRows(client: SupabaseClient, ids: string[]): Promise<{ rows: Map<string, Row>; hasColumn: boolean }> {
   const base = "id, question_number, visibility, text, solution, question_format, numeric_answer, exams(name), chapters(name), options(label, text, is_correct)";
@@ -85,8 +102,8 @@ function sheet(name: string, batch: VisualBatch, rows: Map<string, Row>, problem
 <p><b>Key:</b> ${esc(key)} &nbsp; <b>Visual's answer:</b> ${esc(v.answer.label)} &nbsp; <b>Check:</b> <span class="${check.ok ? "ok" : "bad"}">${esc(scene.checkText(v.params, check.value))}</span></p>
 <div class="frames">${frames.join("")}</div></section>`;
   });
-  return `<!doctype html><meta charset="utf-8"><title>${esc(name)}</title><style>${SHEET_VARS}body{font:14px system-ui;margin:24px;max-width:1400px;color:#0f1d4a}section{border-top:1px solid #ccc;padding:14px 0}h2{font-size:16px}small{color:#666;font-weight:400}.stem{font-family:Georgia,serif}.frames{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px}figure{margin:0}figcaption{font-size:12.5px;color:#333;margin-top:6px}.ok{color:#047857}.bad{color:#b91c1c}</style>
-<h1>${esc(name)}: ${batch.visuals.length} visuals, ${(batch.decided ?? []).length} decided without one</h1>${problems.length ? `<ul class="bad">${problems.map((p) => `<li>${esc(p)}</li>`).join("")}</ul>` : ""}${sections.join("")}`;
+  return `<!doctype html><meta charset="utf-8"><title>${esc(name)}</title><style>${KATEX_CSS}</style><style>${SHEET_VARS}body{font:14px system-ui;margin:24px;max-width:1400px;color:#0f1d4a}section{border-top:1px solid #ccc;padding:14px 0}h2{font-size:16px}small{color:#666;font-weight:400}.stem{font-family:Georgia,serif}.frames{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px}figure{margin:0}figcaption{font-size:12.5px;color:#333;margin-top:6px}.ok{color:#047857}.bad{color:#b91c1c}</style>
+<h1>${esc(name)}: ${batch.visuals.length} visuals, ${(batch.decided ?? []).length} decided without one</h1>${problems.length ? `<ul class="bad">${problems.map((p) => `<li>${esc(p)}</li>`).join("")}</ul>` : ""}${sections.join("")}${FIT_SCRIPT}`;
 }
 
 async function main() {

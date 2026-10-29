@@ -1,0 +1,1220 @@
+{
+  "//": "Assembled from agent drafts (sketch).",
+  "visuals": [
+    {
+      "id": "044b4fcd-5ba0-469d-bf06-e36c6d931556",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "base": 10,
+            "xs": 10,
+            "h": "sqrt(xs^2-25)",
+            "dxdt": 4,
+            "dAdt": "5*xs/h*dxdt"
+          },
+          "view": {
+            "x": [
+              -8,
+              8
+            ],
+            "y": [
+              -2,
+              10
+            ]
+          },
+          "points": {
+            "B": [
+              -5,
+              0
+            ],
+            "C": [
+              5,
+              0
+            ],
+            "A": [
+              0,
+              "h"
+            ],
+            "M": [
+              0,
+              0
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "points": [
+                "A",
+                "B",
+                "C"
+              ],
+              "step": "s1"
+            },
+            {
+              "kind": "segment",
+              "from": "A",
+              "to": "B",
+              "label": "x",
+              "labelAt": [
+                -3.4,
+                4.7
+              ],
+              "pos": "w",
+              "step": "s1"
+            },
+            {
+              "kind": "segment",
+              "from": "A",
+              "to": "C",
+              "label": "x",
+              "labelAt": [
+                3.4,
+                4.7
+              ],
+              "pos": "e",
+              "step": "s1"
+            },
+            {
+              "kind": "segment",
+              "from": "B",
+              "to": "C",
+              "label": "base 10",
+              "labelAt": [
+                0,
+                -0.3
+              ],
+              "pos": "s",
+              "step": "s1"
+            },
+            {
+              "kind": "segment",
+              "from": "M",
+              "to": "A",
+              "dash": true,
+              "label": "√(x²−25)",
+              "labelAt": [
+                0.1,
+                4.3
+              ],
+              "pos": "e",
+              "step": "s2"
+            },
+            {
+              "kind": "angle",
+              "at": "M",
+              "from": "C",
+              "to": "A",
+              "label": "90°",
+              "step": "s2"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -7.7,
+                9.2
+              ],
+              "text": "all sides equal: x = 10",
+              "step": "s3",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -7.7,
+                8.3
+              ],
+              "text": "dx/dt = 4 cm/s",
+              "step": "s3",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -7.7,
+                7.4
+              ],
+              "text": "dA/dt = 40/√3 ≈ 23.09 cm²/s",
+              "step": "s4",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "h^2+25 = xs^2",
+            "xs = base",
+            "h = 5*sqrt(3)",
+            "dAdt*sqrt(3) = 40"
+          ],
+          "answer": "dAdt"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "eb65489b",
+        "answer": {
+          "value": 23.09401076758503,
+          "label": "40/√3 ≈ 23.09 cm²/s"
+        }
+      }
+    },
+    {
+      "id": "05a093fd-e6dc-4f4d-a928-d0c5d8d01cf2",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "xs": 75,
+            "ys": 50,
+            "total": "2*xs+3*ys"
+          },
+          "view": {
+            "x": [
+              -10,
+              90
+            ],
+            "y": [
+              -14,
+              61
+            ]
+          },
+          "points": {
+            "P1": [
+              0,
+              0
+            ],
+            "P2": [
+              "xs",
+              0
+            ],
+            "P3": [
+              "xs",
+              "ys"
+            ],
+            "P4": [
+              0,
+              "ys"
+            ],
+            "M1": [
+              "xs/2",
+              0
+            ],
+            "M2": [
+              "xs/2",
+              "ys"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "points": [
+                "P1",
+                "P2",
+                "P3",
+                "P4"
+              ],
+              "step": "s1"
+            },
+            {
+              "kind": "segment",
+              "from": "P1",
+              "to": "P2",
+              "label": "x",
+              "labelAt": [
+                18,
+                -4
+              ],
+              "pos": "s",
+              "step": "s2"
+            },
+            {
+              "kind": "segment",
+              "from": "P1",
+              "to": "P4",
+              "label": "y",
+              "labelAt": [
+                -2,
+                25
+              ],
+              "pos": "w",
+              "step": "s2"
+            },
+            {
+              "kind": "segment",
+              "from": "M1",
+              "to": "M2",
+              "tone": "amber",
+              "label": "partition: y",
+              "labelAt": [
+                39.5,
+                25
+              ],
+              "pos": "e",
+              "step": "s3"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -8,
+                56
+              ],
+              "text": "2x + 2y + y = 300",
+              "step": "s4",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "2*xs+2*ys+ys = 300",
+            "total = 300"
+          ],
+          "answer": "total"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "a852c7a9",
+        "answer": {
+          "value": 300,
+          "label": "2x+3y=300"
+        }
+      }
+    },
+    {
+      "id": "072ddf12-f989-4c95-9e78-3df585f6e3f6",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "h": 5,
+            "yf": 3,
+            "xw": "sqrt(h^2-yf^2)",
+            "dydt": -2,
+            "dxdt": "-yf*dydt/xw"
+          },
+          "view": {
+            "x": [
+              -2.5,
+              6.5
+            ],
+            "y": [
+              -1.25,
+              5.5
+            ]
+          },
+          "points": {
+            "O": [
+              0,
+              0
+            ],
+            "F": [
+              "yf",
+              0
+            ],
+            "T": [
+              0,
+              "xw"
+            ]
+          },
+          "items": [
+            {
+              "kind": "segment",
+              "from": "O",
+              "to": "T",
+              "tone": "muted",
+              "step": "s1"
+            },
+            {
+              "kind": "segment",
+              "from": "O",
+              "to": "F",
+              "tone": "muted",
+              "step": "s1"
+            },
+            {
+              "kind": "segment",
+              "from": "F",
+              "to": "T",
+              "label": "5 m",
+              "labelAt": [
+                1.8,
+                2.5
+              ],
+              "pos": "ne",
+              "step": "s1"
+            },
+            {
+              "kind": "angle",
+              "at": "O",
+              "from": "F",
+              "to": "T",
+              "label": "90°",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                1.2,
+                0.35
+              ],
+              "text": "y = 3",
+              "step": "s2"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.2,
+                1
+              ],
+              "text": "x = 4",
+              "step": "s2"
+            },
+            {
+              "kind": "arrow",
+              "from": [
+                3,
+                -0.7
+              ],
+              "to": [
+                1.6,
+                -0.7
+              ],
+              "label": "foot: 2 m/s",
+              "labelAt": [
+                2.3,
+                -0.7
+              ],
+              "pos": "s",
+              "tone": "amber",
+              "step": "s3"
+            },
+            {
+              "kind": "arrow",
+              "from": [
+                -0.6,
+                3.6
+              ],
+              "to": [
+                -0.6,
+                4.9
+              ],
+              "label": "top: 1.5 m/s",
+              "labelAt": [
+                -0.7,
+                4.3
+              ],
+              "pos": "w",
+              "tone": "good",
+              "step": "s4"
+            }
+          ],
+          "assert": [
+            "xw^2+yf^2 = h^2",
+            "xw = 4",
+            "2*xw*dxdt + 2*yf*dydt = 0"
+          ],
+          "answer": "dxdt"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "231144dd",
+        "answer": {
+          "value": 1.5,
+          "label": "1.5 m/s"
+        }
+      }
+    },
+    {
+      "id": "08503ca5-dae8-4abc-8124-39e453a51414",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "h": 5,
+            "xc": 50,
+            "thdt": "3/101",
+            "dthdx": "h/(h^2+xc^2)",
+            "speed": "thdt/dthdx"
+          },
+          "view": {
+            "x": [
+              -10,
+              60
+            ],
+            "y": [
+              -8,
+              44.5
+            ]
+          },
+          "points": {
+            "O": [
+              0,
+              0
+            ],
+            "K": [
+              0,
+              "h"
+            ],
+            "C": [
+              "xc",
+              0
+            ]
+          },
+          "items": [
+            {
+              "kind": "segment",
+              "from": "O",
+              "to": "K",
+              "tone": "fg",
+              "label": "pole 5 m",
+              "labelAt": [
+                2,
+                9
+              ],
+              "pos": "e",
+              "step": "s1"
+            },
+            {
+              "kind": "segment",
+              "from": "O",
+              "to": "C",
+              "tone": "muted",
+              "step": "s1"
+            },
+            {
+              "kind": "segment",
+              "from": "K",
+              "to": "C",
+              "tone": "amber",
+              "step": "s1"
+            },
+            {
+              "kind": "point",
+              "at": "K",
+              "label": "camera",
+              "pos": "nw",
+              "step": "s1"
+            },
+            {
+              "kind": "point",
+              "at": "C",
+              "label": "car",
+              "pos": "ne",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                20,
+                -3.5
+              ],
+              "text": "x = 50 m",
+              "step": "s2"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -9,
+                40
+              ],
+              "text": "dθ/dt = 3/101 rad/s",
+              "step": "s2",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -9,
+                36
+              ],
+              "text": "dθ/dx = −5/2525 = −1/505",
+              "step": "s3"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -9,
+                32
+              ],
+              "text": "speed = 15 m/s (approaching)",
+              "step": "s4",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "h = 5",
+            "thdt = dthdx*speed",
+            "speed = 15",
+            "dthdx*505 = 1"
+          ],
+          "answer": "speed"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "fff91198",
+        "answer": {
+          "value": 15,
+          "label": "15 m/s"
+        }
+      }
+    },
+    {
+      "id": "128d5dc3-c88c-401c-a029-78669cc33e66",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "r": 15,
+            "dVdt": 900,
+            "drdt": "dVdt/(4*pi*r^2)"
+          },
+          "view": {
+            "x": [
+              -20,
+              20
+            ],
+            "y": [
+              -15,
+              15
+            ]
+          },
+          "points": {
+            "O": [
+              0,
+              0
+            ],
+            "P": [
+              "r",
+              0
+            ]
+          },
+          "items": [
+            {
+              "kind": "circle",
+              "center": "O",
+              "r": "r",
+              "step": "s1"
+            },
+            {
+              "kind": "segment",
+              "from": "O",
+              "to": "P",
+              "label": "r = 15",
+              "labelAt": [
+                7.5,
+                0.4
+              ],
+              "pos": "n",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -18.5,
+                12.5
+              ],
+              "text": "dV/dt = 900 cm³/s",
+              "step": "s2",
+              "tone": "muted"
+            },
+            {
+              "kind": "arrow",
+              "from": "P",
+              "to": [
+                19,
+                0
+              ],
+              "tone": "amber",
+              "step": "s3"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -18.5,
+                10.5
+              ],
+              "text": "dr/dt = 1/π cm/s",
+              "step": "s4",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "4*pi*r^2*drdt = dVdt",
+            "drdt*pi = 1"
+          ],
+          "answer": "drdt"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "86ca50b0",
+        "answer": {
+          "value": 0.3183098861837907,
+          "label": "1/π cm/s"
+        }
+      }
+    },
+    {
+      "id": "15b18dec-0f74-4eba-b910-ee051fd24208",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "h": 10,
+            "xl": "h/sqrt(2)",
+            "area": "xl*xl/2"
+          },
+          "view": {
+            "x": [
+              -2,
+              12
+            ],
+            "y": [
+              -1.5,
+              9
+            ]
+          },
+          "points": {
+            "O": [
+              0,
+              0
+            ],
+            "F": [
+              "xl",
+              0
+            ],
+            "T": [
+              0,
+              "xl"
+            ]
+          },
+          "items": [
+            {
+              "kind": "segment",
+              "from": "F",
+              "to": "T",
+              "label": "h",
+              "labelAt": [
+                3.8,
+                3.8
+              ],
+              "pos": "ne",
+              "step": "s1"
+            },
+            {
+              "kind": "angle",
+              "at": "O",
+              "from": "F",
+              "to": "T",
+              "label": "90°",
+              "step": "s1"
+            },
+            {
+              "kind": "segment",
+              "from": "O",
+              "to": "T",
+              "label": "x = h/√2",
+              "labelAt": [
+                0.2,
+                3.5
+              ],
+              "pos": "e",
+              "step": "s2"
+            },
+            {
+              "kind": "segment",
+              "from": "O",
+              "to": "F",
+              "label": "y = h/√2",
+              "labelAt": [
+                3.5,
+                -0.2
+              ],
+              "pos": "s",
+              "step": "s2"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                "O",
+                "F",
+                "T"
+              ],
+              "step": "s3"
+            },
+            {
+              "kind": "label",
+              "at": [
+                5.5,
+                7.8
+              ],
+              "text": "max area = h²/4",
+              "step": "s4",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "xl^2+xl^2 = h^2",
+            "4*area = 100"
+          ],
+          "answer": "area/h^2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "f34779a9",
+        "answer": {
+          "value": 0.24999999999999997,
+          "label": "A = h²/4"
+        }
+      }
+    },
+    {
+      "id": "18f03be9-8322-47b1-8011-4b78ff3a0e3e",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "r": 5,
+            "w": 4.5,
+            "hh": "sqrt(r^2-w^2)",
+            "a": "r/sqrt(2)",
+            "side": "2*a"
+          },
+          "view": {
+            "x": [
+              -8,
+              8
+            ],
+            "y": [
+              -6,
+              6
+            ]
+          },
+          "points": {
+            "O": [
+              0,
+              0
+            ],
+            "R1": [
+              "w",
+              "hh"
+            ],
+            "R2": [
+              "-w",
+              "hh"
+            ],
+            "R3": [
+              "-w",
+              "-hh"
+            ],
+            "R4": [
+              "w",
+              "-hh"
+            ],
+            "S1": [
+              "a",
+              "a"
+            ],
+            "S2": [
+              "-a",
+              "a"
+            ],
+            "S3": [
+              "-a",
+              "-a"
+            ],
+            "S4": [
+              "a",
+              "-a"
+            ]
+          },
+          "items": [
+            {
+              "kind": "circle",
+              "center": "O",
+              "r": "r",
+              "step": "s1"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                "R1",
+                "R2",
+                "R3",
+                "R4"
+              ],
+              "tone": "muted",
+              "step": "s1"
+            },
+            {
+              "kind": "segment",
+              "from": "R1",
+              "to": "R3",
+              "dash": true,
+              "label": "2r",
+              "labelAt": [
+                1,
+                1.5
+              ],
+              "pos": "n",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -7.7,
+                5.2
+              ],
+              "text": "A² = x²(4r²−x²)",
+              "step": "s2",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                "S1",
+                "S2",
+                "S3",
+                "S4"
+              ],
+              "tone": "good",
+              "step": "s3"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -7.7,
+                -5.2
+              ],
+              "text": "x = y = r√2: a square",
+              "step": "s4",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "w^2+hh^2 = r^2",
+            "2*a^2 = r^2",
+            "side^2 = 2*r^2",
+            "side = r*sqrt(2)"
+          ],
+          "answer": "side/r"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "3f9c3255",
+        "answer": {
+          "value": 1.414213562373095,
+          "label": "x = y = r√2"
+        }
+      }
+    },
+    {
+      "id": "198fe210-71c7-41ef-af4b-34e104e5b12f",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "xa": 4,
+            "ya": "(xa^3+2)/6",
+            "xb": -4,
+            "yb": "(xb^3+2)/6",
+            "sl": 8
+          },
+          "view": {
+            "x": [
+              -20,
+              20
+            ],
+            "y": [
+              -15,
+              15
+            ]
+          },
+          "axes": true,
+          "points": {
+            "P": [
+              "xa",
+              "ya"
+            ],
+            "Q": [
+              "xb",
+              "yb"
+            ],
+            "P2": [
+              "xa-1",
+              "ya-sl"
+            ],
+            "Q2": [
+              "xb+1",
+              "yb+sl"
+            ]
+          },
+          "items": [
+            {
+              "kind": "curve",
+              "f": "(x^3+2)/6",
+              "x": [
+                -4.4,
+                4.4
+              ],
+              "label": "6y = x³ + 2",
+              "labelAt": [
+                -12,
+                -8
+              ],
+              "pos": "w",
+              "step": "s1"
+            },
+            {
+              "kind": "line",
+              "through": [
+                "P",
+                "P2"
+              ],
+              "tone": "amber",
+              "step": "s2"
+            },
+            {
+              "kind": "line",
+              "through": [
+                "Q",
+                "Q2"
+              ],
+              "tone": "amber",
+              "step": "s2"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -19,
+                13
+              ],
+              "text": "tangent slope = 8 at both points",
+              "step": "s2",
+              "tone": "amber"
+            },
+            {
+              "kind": "point",
+              "at": "P",
+              "label": "(4, 11)",
+              "pos": "e",
+              "step": "s3"
+            },
+            {
+              "kind": "point",
+              "at": "Q",
+              "label": "(−4, −31/3)",
+              "pos": "w",
+              "step": "s3"
+            },
+            {
+              "kind": "label",
+              "at": [
+                6,
+                -12
+              ],
+              "text": "x = ±4",
+              "step": "s4",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "xa^2/2 = sl",
+            "xb^2/2 = sl",
+            "ya = 11",
+            "3*yb = -31"
+          ],
+          "answer": "xa"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "ccc11e2b",
+        "answer": {
+          "value": 4,
+          "label": "(4, 11) and (−4, −31/3)"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

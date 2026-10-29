@@ -1,0 +1,8 @@
+[
+  {
+    "id": "b0e94d46-69df-46fd-8d5e-78a78c3239bf",
+    "before": "bffb669d",
+    "solution": "The line \\(x+y=0\\) has slope \\(-1\\) (inclination \\(135^\\circ\\)). A required line through the origin makes angle \\(\\alpha\\) with it, so its slope is \\(m=\\tan(135^\\circ\\pm\\alpha)\\). Then \\(m\\) satisfies (with \\(m=y/x\\)) a quadratic whose sum and product give the pair. Sum of slopes \\(=\\tan(135+\\alpha)+\\tan(135-\\alpha)\\) and product \\(=\\tan(135+\\alpha)\\tan(135-\\alpha)\\). Using \\(\\tan(135^\\circ+\\alpha)=\\dfrac{-1+\\tan\\alpha}{1+\\tan\\alpha}\\) and \\(\\tan(135^\\circ-\\alpha)=\\dfrac{-1-\\tan\\alpha}{1-\\tan\\alpha}\\): the product is \\(\\dfrac{(-1+\\tan\\alpha)(-1-\\tan\\alpha)}{(1+\\tan\\alpha)(1-\\tan\\alpha)}=\\dfrac{1-\\tan^2\\alpha}{1-\\tan^2\\alpha}=1\\), and the sum is \\(\\dfrac{-(1-\\tan\\alpha)^2-(1+\\tan\\alpha)^2}{1-\\tan^2\\alpha}=\\dfrac{-2(1+\\tan^2\\alpha)}{1-\\tan^2\\alpha}=-2\\sec2\\alpha\\). Thus the pair is \\(y^2-(\\text{sum})xy+(\\text{product})x^2=0\\Rightarrow y^2+2\\sec2\\alpha\\,xy+x^2=0\\), i.e. \\(x^2+2(\\sec2\\alpha)xy+y^2=0\\). Hence proved.",
+    "note": "the sum-of-slopes step broke off ('... computing gives'); it is -2(1 + tan²α)/(1 - tan²α) = -2 sec 2α, and the product's denominator is (1 + tan α)(1 - tan α)."
+  }
+]

@@ -362,6 +362,30 @@ export const SKETCH_VISUAL = {
   answer: { value: 0.25, label: "1/4" },
 };
 
+export const ALG_SOLUTION = String.raw`Let \(f(x) = x^{1/3}\), \(a = 0.027\), \(h = -0.001\). \(f(0.027) = 0.3\), \(f'(0.027) = \frac{1}{3(0.027)^{2/3}} = \frac{1}{0.27}\). Approximation: \(0.3 + (-0.001)(1/0.27) \approx 0.2963\). Matches option B: 0.2963.`;
+
+/** MHT-CET 287df011: the approximate value of the cube root of 0.026 (linear approximation). No picture helps; the working animates. */
+export const ALG_VISUAL = {
+  v: 1,
+  scene: "algebraSteps",
+  params: {
+    lines: [
+      { step: "s1", kind: "note", tex: String.raw`f(x) = \sqrt[3]{x},\quad a = 0.027,\quad h = {{2:-0.001}}` },
+      { step: "s2", kind: "calc", tex: String.raw`f(a) = \sqrt[3]{0.027} = {{1:0.3}}`, f: "0.027^(1/3)", value: "0.3" },
+      { step: "s3", kind: "calc", tex: String.raw`f'(a) = \dfrac{1}{3(0.027)^{2/3}} = {{3:\dfrac{1}{0.27}}}`, f: "1/(3*0.027^(2/3))", value: "1/0.27" },
+      { step: "s4", kind: "calc", tex: String.raw`f(a+h) \approx {{1:0.3}} + ({{2:-0.001}})\left({{3:\dfrac{1}{0.27}}}\right) \approx 0.2963`, f: "0.3+(-0.001)*(1/0.27)", value: "0.2963", dp: 4, note: "f(a + h) ≈ f(a) + h f′(a)" },
+    ],
+    answer: "0.2963",
+  },
+  steps: [
+    { from: 0, beats: ["s1"] },
+    { from: 1, beats: ["s2", "s3"] },
+    { from: 2, beats: ["s4"] },
+  ],
+  fingerprint: solutionFingerprint(ALG_SOLUTION),
+  answer: { value: 0.2963, label: "0.2963" },
+};
+
 export const FIXTURES = [
   { name: "rotation", visual: ROTATION_VISUAL, solution: ROTATION_SOLUTION },
   { name: "circleArc", visual: ARC_VISUAL, solution: ARC_SOLUTION },
@@ -380,4 +404,5 @@ export const FIXTURES = [
   { name: "lpRegion", visual: LP_VISUAL, solution: LP_SOLUTION },
   { name: "truthTable", visual: TT_VISUAL, solution: TT_SOLUTION },
   { name: "sketch", visual: SKETCH_VISUAL, solution: SKETCH_SOLUTION },
+  { name: "algebraSteps", visual: ALG_VISUAL, solution: ALG_SOLUTION },
 ] as const;

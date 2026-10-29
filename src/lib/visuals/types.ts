@@ -26,6 +26,8 @@ export type Shape =
   | ({ kind: "rect"; x: number; y: number; w: number; h: number; rx?: number } & Style)
   | ({ kind: "path"; d: string } & Style)
   | ({ kind: "polyline"; points: [number, number][] } & Style)
+  /** A line of typeset maths (KaTeX), for the algebra-steps scene. `tex` may mark terms with \htmlClass{viz-mark-1..3}. */
+  | { kind: "math"; x: number; y: number; w: number; h: number; tex: string; tone: Tone; size?: number; opacity?: number }
   | {
       kind: "text";
       x: number;
