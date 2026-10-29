@@ -97,6 +97,19 @@ takes the FIRST kind that fits; anything left keeps its still solution.
   checker ("check numbers use a = 1, b = 2"). Yield is low on proofs with
   free letters (Pair of Straight Lines: 15 of 49), high on rates and
   approximations (CBSE AoD: 53 of 85).
+- 2026-10-29, vectors and 3D (HSC Vectors, CBSE Vector Algebra, CBSE 3D
+  Geometry; ~370 applied): one agent per 14-question slice deciding sketch /
+  algebra / none and drafting in the same pass works (~2 min a slice). Telling
+  agents to check a vector answer per component (one calc a component, answer
+  pinned to the first non-zero one) raised yield from ~4 to ~9 of 14. Row
+  heights needed two more classes: a three-row matrix, and a fraction whose
+  top or bottom holds a fraction. The x/λ trap: formulas use x, but drafts
+  leaked x into the SHOWN maths ("9x − 37" for 9λ − 37); the brief now says
+  tex keeps the solution's own letter, and scratchpad scanx.js lists suspects
+  (most hits are real coordinates). Other recurring repairs: a lost `\v` /
+  `\a` (vertical tab, bell), a ninth step (limit eight), an eq line without
+  roots. Not a fit: HSC Mathematical Logic's noFit pile (sentences in words,
+  negations, switching circuits): the checker reads numbers, not truth values.
 
 ## Pieces
 
