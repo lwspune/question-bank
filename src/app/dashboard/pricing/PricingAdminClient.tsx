@@ -19,11 +19,12 @@ import {
 } from "@/components/ui/dialog";
 import {
   SELLABLE_SCOPES,
-  formatRupees,
+  formatPrice,
   planLengthLabel,
   validatePlan,
   type Plan,
   type PlanInput,
+  type PlanSite,
 } from "@/lib/billing/plans";
 import type { PaywallLimit, PaywallSettings } from "@/lib/billing/paywallSettings";
 import { PERK_PLACEHOLDERS } from "@/lib/billing/perkLimits";
@@ -41,6 +42,9 @@ type Draft = {
   blurb: string;
   perks: string;
   urlKey: string;
+  /** Which site sells it (0203): www in INR, intl.pyqvault.com in USD. Fixed at creation. */
+  site: PlanSite;
+  /** The price in whole currency units (rupees or dollars), as typed. */
   rupees: string;
   durationDays: string;
   scope: string;
@@ -65,6 +69,7 @@ function toDraft(p: Plan | null): Draft {
         blurb: p.blurb,
         perks: p.perks.join("\n"),
         urlKey: p.urlKey,
+        site: p.site,
         rupees: String(p.amountPaise / 100),
         durationDays: p.durationDays === null ? "" : String(p.durationDays),
         scope: p.scope,
@@ -78,6 +83,7 @@ function toDraft(p: Plan | null): Draft {
         blurb: "",
         perks: "",
         urlKey: "",
+        site: "pyqvault",
         rupees: "",
         durationDays: "365",
         scope: SELLABLE_SCOPES[0],
@@ -96,7 +102,8 @@ function fromDraft(d: Draft): PlanInput & { active: boolean } {
     perks: d.perks.split("\n").map((s) => s.trim()).filter(Boolean),
     urlKey: d.urlKey.trim(),
     amountPaise: Number.isFinite(rupees) ? Math.round(rupees * 100) : NaN,
-    currency: "INR",
+    currency: d.site === "intl" ? "USD" : "INR",
+    site: d.site,
     durationDays: d.durationDays.trim() === "" ? null : Number(d.durationDays),
     scope: d.scope,
     sortOrder: Number(d.sortOrder),
@@ -208,7 +215,8 @@ export default function PricingAdminClient({ initialPlans, initialSettings, load
                       </Badge>
                     </p>
                     <p className="text-sm text-muted-foreground">
-                      {formatRupees(p.amountPaise)} / {planLengthLabel(p)} · scope{" "}
+                      {formatPrice(p.amountPaise, p.currency)} / {planLengthLabel(p)} ·{" "}
+                      {p.site === "intl" ? "intl.pyqvault.com" : "www"} · scope{" "}
                       <code>{p.scope}</code> · <code>/pricing?plan={p.urlKey}</code> · id{" "}
                       <code>{p.id}</code>
                     </p>
@@ -294,6 +302,20 @@ export default function PricingAdminClient({ initialPlans, initialSettings, load
               </div>
 
               <div className="space-y-1">
+                <Label htmlFor="plan-site">Sold on</Label>
+                <select
+                  id="plan-site"
+                  className={fieldClass}
+                  value={draft.site}
+                  onChange={(e) => setDraft({ ...draft, site: e.target.value as PlanSite })}
+                  disabled={!draft.isNew}
+                >
+                  <option value="pyqvault">www.pyqvault.com, in rupees (₹)</option>
+                  <option value="intl">intl.pyqvault.com, in US dollars ($)</option>
+                </select>
+              </div>
+
+              <div className="space-y-1">
                 <Label htmlFor="plan-label">Label</Label>
                 <Input
                   id="plan-label"
@@ -305,12 +327,12 @@ export default function PricingAdminClient({ initialPlans, initialSettings, load
 
               <div className="grid gap-3 sm:grid-cols-3">
                 <div className="space-y-1">
-                  <Label htmlFor="plan-rupees">Price (₹)</Label>
+                  <Label htmlFor="plan-rupees">Price ({draft.site === "intl" ? "$" : "₹"})</Label>
                   <Input
                     id="plan-rupees"
                     type="number"
                     min={1}
-                    step={1}
+                    step={draft.site === "intl" ? 0.01 : 1}
                     value={draft.rupees}
                     onChange={(e) => setDraft({ ...draft, rupees: e.target.value })}
                     required

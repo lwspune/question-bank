@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { headers } from "next/headers";
 import { Check } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import { getSessionMember, getSessionUser } from "@/lib/auth";
 import { createSupabaseAnonClient, createSupabaseServerClient } from "@/lib/supabase/server";
 import { loadEntitlements } from "@/lib/entitlements/query";
 import { hasActiveScope } from "@/lib/entitlements/access";
-import { formatRupees, planLengthLabel, type Plan } from "@/lib/billing/plans";
+import { formatPrice, planLengthLabel, type Plan } from "@/lib/billing/plans";
+import { planSiteForHost } from "@/lib/sites/intl";
 import { listActivePlans } from "@/lib/billing/plansQuery";
 import PricingClient from "./PricingClient";
 import { afterPurchasePath, pricingHref } from "@/lib/billing/checkoutReturn";
@@ -36,7 +38,10 @@ export default async function PricingPage({
   searchParams: { plan?: string; next?: string };
 }) {
   const anon = createSupabaseAnonClient();
-  const [member, user, plans] = await Promise.all([getSessionMember(), getSessionUser(), listActivePlans(anon)]);
+  const [member, user, allPlans] = await Promise.all([getSessionMember(), getSessionUser(), listActivePlans(anon)]);
+  // intl.pyqvault.com sells its own pass, in USD (migration 0203); www sells in INR.
+  const site = planSiteForHost(headers().get("host"));
+  const plans = allPlans.filter((p) => p.site === site);
   const rows = user && !member ? await loadEntitlements(createSupabaseServerClient(), user.id) : [];
   if (user) {
     await logActivityOnce(createSupabaseServerClient(), user.id, surfaceViewedEvent(user.id, "pricing", new Date()));
@@ -62,7 +67,7 @@ export default async function PricingPage({
           </p>
         </header>
 
-        <ResultsStrip className="mt-6" />
+        {site === "pyqvault" && <ResultsStrip className="mt-6" />}
 
         {plans.length === 0 ? (
           <p className="mt-8 text-center text-sm text-muted-foreground">
@@ -96,7 +101,7 @@ export default async function PricingPage({
                   </h2>
                   <p className="mt-2 flex items-baseline gap-1">
                     <span className="text-4xl font-semibold tracking-tight">
-                      {formatRupees(plan.amountPaise)}
+                      {formatPrice(plan.amountPaise, plan.currency)}
                     </span>
                     <span className="text-sm text-muted-foreground">/ {planLengthLabel(plan)}</span>
                   </p>
@@ -125,7 +130,7 @@ export default async function PricingPage({
                       <PricingClient
                         planId={plan.id}
                         returnTo={returnTo}
-                        buttonLabel={`Buy ${plan.label}: ${formatRupees(plan.amountPaise)}`}
+                        buttonLabel={`Buy ${plan.label}: ${formatPrice(plan.amountPaise, plan.currency)}`}
                       />
                     ) : (
                       <div className="space-y-2 text-center">
@@ -150,7 +155,11 @@ export default async function PricingPage({
         )}
 
         <div className="mt-8 space-y-2 text-center text-xs text-muted-foreground">
-          <p>Secure payment via Razorpay · UPI, cards, netbanking</p>
+          <p>
+            {site === "intl"
+              ? "Secure payment via Razorpay · international debit and credit cards, in US dollars"
+              : "Secure payment via Razorpay · UPI, cards, netbanking"}
+          </p>
           <p>
             One-time payment, no auto-renewal. By paying you agree to the{" "}
             <Link href="/terms" className="underline hover:text-foreground">

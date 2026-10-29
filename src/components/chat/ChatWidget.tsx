@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type CSSProperties } from "react";
+import { useIntlSite } from "@/lib/sites/useIntlSite";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
@@ -321,6 +322,8 @@ export default function ChatWidget() {
   const openRecordedRef = useRef(false);
   const accountCheckedRef = useRef(false);
   const pathname = usePathname() ?? "/";
+  // V speaks to PYQ Vault's Indian students; intl.pyqvault.com has no V (2026-10-30).
+  const intl = useIntlSite();
   const cart = useCart();
   const placement = vPlacement(pathname, cart);
 
@@ -658,7 +661,7 @@ export default function ChatWidget() {
     }
   }
 
-  if (placement.hidden) return null;
+  if (placement.hidden || intl) return null;
 
   // Vertical position lives in globals.css (.chat-launcher-offset): clear of
   // MobileTabBar below sm, and raised by --v-lift over /browse's cart pill.

@@ -14,7 +14,7 @@
  * a student may legitimately target CBSE Class 11 AND Class 12, so there is
  * nothing to nest and no single selection to resolve.
  */
-import { EXAM_REGISTRY, type ExamEntry } from "@/lib/exam/examContext";
+import { PYQVAULT_EXAMS, type ExamEntry } from "@/lib/exam/examContext";
 import { classLabelFor, groupExamFamilies } from "@/lib/exam/examFamily";
 import type { ChipOption } from "@/components/ProfileChips";
 import { tierOfStage, type Stage } from "@/lib/profile/onboarding";
@@ -69,7 +69,7 @@ export function buildExamChips(entries: readonly ExamEntry[]): ChipOption[] {
   return [...flat, ...grouped];
 }
 
-export const EXAM_CHIP_OPTIONS: readonly ChipOption[] = buildExamChips(EXAM_REGISTRY);
+export const EXAM_CHIP_OPTIONS: readonly ChipOption[] = buildExamChips(PYQVAULT_EXAMS);
 
 /** The classes whose board exams fit each stage; null = no narrowing. */
 const BOARD_STDS: Record<Stage, readonly number[]> = {

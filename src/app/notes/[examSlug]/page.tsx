@@ -1,3 +1,4 @@
+import { EXAM_REGISTRY } from "@/lib/exam/examContext";
 import type { Metadata } from "next";
 import { notesExamDescription, notesExamTitle } from "@/lib/notes/titles";
 import Link from "next/link";
@@ -21,6 +22,7 @@ import { buildHubSubject, chapterKey, type HubSubject } from "@/lib/notes/examHu
 import NotesHubChapters from "@/app/notes/_components/NotesHubChapters";
 import ContinueReadingCard from "@/app/notes/_components/ContinueReadingCard";
 import ResultsStrip from "@/components/results/ResultsStrip";
+import { canonicalFor } from "@/lib/sites/intl";
 
 export const revalidate = 86400;
 
@@ -61,7 +63,7 @@ export function generateMetadata({ params }: { params: Params }): Metadata {
   return {
     title: { absolute: notesExamTitle(group.examName) },
     description: notesExamDescription(group.examName, group.subjects.length, chapterTotal(group)),
-    alternates: { canonical: `/notes/${group.slug}` },
+    alternates: { canonical: canonicalFor(`/notes/${group.slug}`) },
   };
 }
 
@@ -108,7 +110,7 @@ export default async function NotesExamHub({ params }: { params: Params }) {
 
   const sideNav = [
     { href: "/notes", label: "All exams" },
-    ...getNotesExamGroups().map((g) => ({
+    ...getNotesExamGroups(EXAM_REGISTRY).map((g) => ({
       href: `/notes/${g.slug}`,
       label: g.displayName,
     })),

@@ -37,7 +37,8 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { footerLinks } from "@/lib/nav/footerLinks";
 
-const FOOTER = join(process.cwd(), "src", "components", "Footer.tsx");
+// PYQ Vault's footer; Footer.tsx shows it on every www page (and the intl one on intl.pyqvault.com).
+const FOOTER = join(process.cwd(), "src", "components", "PyqVaultFooter.tsx");
 const HOME = join(process.cwd(), "src", "app", "page.tsx");
 const footerHrefs = footerLinks().flatMap((g) => g.links.map((l) => l.href));
 

@@ -29,6 +29,7 @@ import {
   splitMockTypeCards,
 } from "@/lib/mocks/catalogue";
 import ResultsStrip from "@/components/results/ResultsStrip";
+import { canonicalFor } from "@/lib/sites/intl";
 
 // Nested under /mock/exam/ (not /mock/[slug], which is the instructions page).
 export const revalidate = 3600;
@@ -45,7 +46,7 @@ export function generateMetadata({ params }: { params: Params }): Metadata {
     return {
       title: { absolute: fitTitle(`${family.name} Mock Tests`, [{ text: "past papers, timed & auto-graded", optional: true }]) },
       description: `Sit ${family.name} mock tests online: real past papers served whole, on the official marking scheme, with a live timer. Free, from PYQ Vault.`,
-      alternates: { canonical: `/mock/exam/${family.slug}` },
+      alternates: { canonical: canonicalFor(`/mock/exam/${family.slug}`) },
     };
   }
   const exam = getMockExam(params.examSlug);
@@ -53,7 +54,7 @@ export function generateMetadata({ params }: { params: Params }): Metadata {
   return {
     title: { absolute: fitTitle(`${exam.examName} Mock Tests`, [{ text: "past papers & practice, timed & auto-graded", optional: true }]) },
     description: `Sit ${exam.examName} mock tests online: real past papers served whole, plus full-length practice papers built to the exam blueprint. Official marking, live timer, instant scoring. Free, from PYQ Vault.`,
-    alternates: { canonical: `/mock/exam/${exam.slug}` },
+    alternates: { canonical: canonicalFor(`/mock/exam/${exam.slug}`) },
   };
 }
 
@@ -95,7 +96,7 @@ async function MockFamilyPage({ family }: { family: MockFamilyNav }) {
   return (
     <GuideShell
       guideTitle="Mock Tests"
-      sideNav={mockSideNav()}
+      sideNav={mockSideNav(family.slug)}
       breadcrumbs={[{ href: "/mock", label: "Mocks" }, { label: family.name }]}
     >
       <GuideHero
@@ -182,7 +183,7 @@ export default async function MockExamTypePicker({ params }: { params: Params })
   return (
     <GuideShell
       guideTitle="Mock Tests"
-      sideNav={mockSideNav()}
+      sideNav={mockSideNav(params.examSlug)}
       breadcrumbs={[
         { href: "/mock", label: "Mocks" },
         ...(parent ? [{ href: `/mock/exam/${parent.slug}`, label: parent.name }] : []),

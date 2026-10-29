@@ -35,8 +35,8 @@ import {
   formulaPageSiblings,
   listFormulaChapterPages,
 } from "@/lib/formula/chapterPages";
+import { canonicalFor } from "@/lib/sites/intl";
 
-const SITE_URL = "https://www.pyqvault.com";
 
 export const revalidate = 86400;
 
@@ -70,7 +70,7 @@ export function generateMetadata({ params }: Params): Metadata {
   return {
     title: { absolute: title },
     description,
-    alternates: { canonical: `${SITE_URL}${formulaChapterHref(page)}` },
+    alternates: { canonical: canonicalFor(formulaChapterHref(page)) },
     openGraph: { title, description, type: "website" },
   };
 }

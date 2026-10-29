@@ -57,7 +57,7 @@ function makeRequest(
 
 const TEACHER: Plan = {
   id: "teacher-pass-1y", label: "Teacher Pass", blurb: "", perks: [], urlKey: "teacher",
-  amountPaise: 49900, currency: "INR", durationDays: 365, scope: "teacher", active: true, sortOrder: 2,
+  amountPaise: 49900, currency: "INR", site: "pyqvault", durationDays: 365, scope: "teacher", active: true, sortOrder: 2,
 };
 /** notes: a full server stamp for TEACHER, with overrides. */
 const orderPaid = (notes: Record<string, string>, paymentId?: string) => ({

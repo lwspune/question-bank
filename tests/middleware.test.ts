@@ -100,14 +100,25 @@ describe("middleware matcher scope", () => {
     expect(Array.isArray(config.matcher)).toBe(true);
 
     for (const entry of config.matcher) {
+      // intl.pyqvault.com (2026-10-30): the one catch-all runs on every host
+      // EXCEPT production www, whose public pages stay middleware-free.
+      if (typeof entry !== "string") {
+        expect(entry.missing).toEqual([{ type: "host", value: "www\\.pyqvault\\.com" }]);
+        continue;
+      }
       // The old broad matcher was a negative-lookahead catch-all "/((?!...).*)"
       // that ran middleware on every public page. Guard against regressing to it.
       expect(entry.startsWith("/((")).toBe(false);
+      // A plain entry is a signed-in surface, or an intl page www must move
+      // (lib/sites/intl; tests/intl-middleware.test.ts checks those in full).
+      const intlPage = entry === "/intl" || entry.startsWith("/intl/") || /imat/.test(entry);
       expect(
-        AUTH_PAGES.includes(entry) ||
+        intlPage ||
+          AUTH_PAGES.includes(entry) ||
           AUTH_PREFIXES.some(
             (p) => entry === p || entry.startsWith(p + "/")
-          )
+          ),
+        entry
       ).toBe(true);
     }
   });

@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { cookies } from "next/headers";
+import { cookies, headers } from "next/headers";
+import { redirect } from "next/navigation";
 import { Inbox } from "lucide-react";
 import type { Metadata } from "next";
 import { getPageIdentity } from "@/lib/auth";
@@ -51,6 +52,8 @@ import { getExamIdMap } from "@/lib/exam/examIdMap";
 import { QuestionLangSwitch } from "@/components/i18n/BilingualText";
 import { hasMarathi } from "@/lib/i18n/bilingual";
 import { listChapterLandings } from "@/lib/questions/landing";
+import { INTL_EXAMS, WWW_ORIGIN, intlOriginFor, isIntlHost } from "@/lib/sites/intl";
+import { examsForSite, isNicheExam } from "@/lib/sites/nicheExams";
 import BrowseLanding from "./BrowseLanding";
 import { mergeAndSortFacets, type FacetedOption } from "@/lib/questions/facets";
 import { getResourceTagsForQuestions } from "@/lib/links/getResourceTagsForQuestions";
@@ -79,6 +82,18 @@ export const metadata: Metadata = {
 type PageProps = {
   searchParams: Record<string, string | string[] | undefined>;
 };
+
+/** The whole query string, every value of every key, for a redirect that keeps it. */
+function fullQuery(searchParams: Record<string, string | string[] | undefined>, examId?: string): string {
+  const sp = new URLSearchParams();
+  for (const [k, v] of Object.entries(searchParams)) {
+    if (v == null || (examId && k === "examId")) continue;
+    for (const one of Array.isArray(v) ? v : [v]) sp.append(k, one);
+  }
+  if (examId) sp.set("examId", examId);
+  const q = sp.toString();
+  return q ? `?${q}` : "";
+}
 
 function paramsFromSearch(
   searchParams: Record<string, string | string[] | undefined>
@@ -110,6 +125,23 @@ export default async function BrowsePage({ searchParams }: PageProps) {
 
   const rawParams = paramsFromSearch(searchParams);
   let filters = parseFilters(rawParams);
+
+  // intl.pyqvault.com (2026-10-30): each host shows only its own exams. A bank
+  // view of the other host's exam moves there, and a bare /browse on intl opens
+  // its exam, since PYQ Vault's landing lists Indian exams.
+  const host = headers().get("host");
+  const intl = isIntlHost(host);
+  if (intl && !filters.examId && INTL_EXAMS[0]) {
+    const examId = await getExamIdByName(INTL_EXAMS[0].examName);
+    if (examId) redirect(`/browse${fullQuery(searchParams, examId)}`);
+  }
+  if (filters.examId) {
+    const examName = await getExamNameById(filters.examId);
+    const isIntlExam = examName ? isNicheExam(examName) : false;
+    if (intl && !isIntlExam) redirect(`${WWW_ORIGIN}/browse${fullQuery(searchParams)}`);
+    const intlOrigin = !intl && isIntlExam ? intlOriginFor(host) : null;
+    if (intlOrigin) redirect(`${intlOrigin}/browse${fullQuery(searchParams)}`);
+  }
   const supabase = createSupabaseServerClient();
   // The pass the download dialog offers a non-staff viewer (null = none on sale).
   // The remembered price list (cleared on every price save), started now and
@@ -276,7 +308,7 @@ export default async function BrowsePage({ searchParams }: PageProps) {
   const paperLinks = paperLinkMap(await papersPromise, yearsOf(questionsResult.rows));
 
   const downloadPass = plansPromise
-    ? passCta(passForScope(await plansPromise, DOWNLOAD_PASS_SCOPE))
+    ? passCta(passForScope(await plansPromise, DOWNLOAD_PASS_SCOPE, intl ? "intl" : "pyqvault"))
     : null;
   const freeDownloadLeft = freePromise ? await freePromise : false;
 
@@ -293,7 +325,7 @@ export default async function BrowsePage({ searchParams }: PageProps) {
           questionsResult.rows.map((r) => r.id)
         ).catch(() => undefined);
 
-  const examOpts = (exams ?? []).map((e) => ({ id: e.id, name: e.name }));
+  const examOpts = examsForSite(exams ?? [], intl).map((e) => ({ id: e.id, name: e.name }));
   // A bilingual exam (MPSC prints Marathi + English) offers a print-language
   // choice in the download dialog. Registry flag, not a count — see ExamEntry.
   const bilingualExam =

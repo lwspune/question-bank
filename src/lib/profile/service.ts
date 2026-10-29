@@ -288,3 +288,29 @@ export async function saveSignupCountry(
     .is("signup_country", null);
   if (error) throw new Error(error.message);
 }
+
+/**
+ * An account made on intl.pyqvault.com (2026-10-30) targets the international
+ * exams. Intl skips PYQ Vault's onboarding (it asks for Indian exams and a
+ * mobile number), so this is how the profile learns the student's exam, and
+ * how the email and push jobs know to leave them out (lib/sites/intlStudent).
+ * Only while no exam is chosen: it never overwrites a student's own choice.
+ */
+export async function saveIntlTargets(
+  db: SupabaseClient,
+  user: { id: string },
+  examSlugs: readonly string[]
+): Promise<void> {
+  if (examSlugs.length === 0) return;
+  const { error: rowError } = await db
+    .from("student_profiles")
+    .upsert({ user_id: user.id }, { onConflict: "user_id", ignoreDuplicates: true });
+  if (rowError) throw new Error(rowError.message);
+
+  const { error } = await db
+    .from("student_profiles")
+    .update({ target_exams: [...examSlugs] })
+    .eq("user_id", user.id)
+    .eq("target_exams", "{}");
+  if (error) throw new Error(error.message);
+}

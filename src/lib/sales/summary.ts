@@ -31,6 +31,8 @@ export type SalesPeriodRow = {
   booksSold: number;
   booksRefunded: number;
   bookPaise: number;
+  /** USD passes sold on intl.pyqvault.com, in cents (0203). Never added to the rupee figures. */
+  passUsdCents: number;
 };
 
 export type SalesTotals = {
@@ -112,6 +114,7 @@ const emptyRow = (period: string): SalesPeriodRow => ({
   booksSold: 0,
   booksRefunded: 0,
   bookPaise: 0,
+  passUsdCents: 0,
 });
 
 /** `count` periods, newest first, ending with today's; a period with no sales is a row of zeros. */

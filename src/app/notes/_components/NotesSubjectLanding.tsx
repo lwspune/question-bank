@@ -13,6 +13,7 @@ import { chapterCardBlurb } from "@/lib/notes/cardBlurb";
 import { loadChapterPyqCounts } from "@/lib/notes/chapterCounts";
 import { notesCountKind, notesCountNoun } from "@/lib/notes/countKind";
 import { notesExamCrumbs } from "@/lib/notes/breadcrumbs";
+import { canonicalFor } from "@/lib/sites/intl";
 
 /**
  * Subject-level notes index (e.g. /notes/nda-biology) — lists every shipped
@@ -49,7 +50,7 @@ export function buildSubjectMetadata(subjectRoute: string): Metadata {
   return {
     title: { absolute: notesSubjectTitle(meta.first.subjectDisplay) },
     description: notesSubjectDescription(meta.first.subjectDisplay, meta.chapters.length),
-    alternates: { canonical: `/notes/${subjectRoute}` },
+    alternates: { canonical: canonicalFor(`/notes/${subjectRoute}`) },
   };
 }
 

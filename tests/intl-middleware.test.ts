@@ -1,6 +1,5 @@
 import { describe, it, expect } from "vitest";
 // Next's own copy of the library it compiles middleware matchers with.
-// eslint-disable-next-line @typescript-eslint/no-require-imports
 const { pathToRegexp } = require("next/dist/compiled/path-to-regexp") as {
   pathToRegexp: (path: string) => RegExp;
 };

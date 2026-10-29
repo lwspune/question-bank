@@ -88,6 +88,7 @@ describe("validatePlan refuses a perk with an unknown placeholder", () => {
     urlKey: "mocks",
     amountPaise: 9900,
     currency: "INR",
+    site: "pyqvault",
     durationDays: 182,
     scope: SCOPE_MOCKS,
     sortOrder: 1,

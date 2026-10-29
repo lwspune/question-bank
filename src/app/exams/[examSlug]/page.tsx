@@ -40,8 +40,8 @@ import {
 import { fitTitle } from "@/lib/seo/title";
 import { withArticle } from "@/lib/text/article";
 import Breadcrumbs from "@/components/nav/Breadcrumbs";
+import { canonicalFor } from "@/lib/sites/intl";
 
-const SITE_URL = "https://www.pyqvault.com";
 
 export const revalidate = 86400;
 
@@ -58,7 +58,7 @@ async function loadModel(slug: string): Promise<ExamHomeModel | null> {
   const entry = getExamBySlug(slug);
   if (!entry || entry.noPublicContent) return null;
   const [catalog, landings] = await Promise.all([
-    getCachedExamCatalog(),
+    getCachedExamCatalog(EXAM_REGISTRY),
     listChapterLandings(),
   ]);
   const item = catalog.exams.find((e) => e.slug === entry.slug);
@@ -84,7 +84,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   return {
     title: { absolute: title },
     description,
-    alternates: { canonical: `${SITE_URL}${examHomeHref(model.slug)}` },
+    alternates: { canonical: canonicalFor(examHomeHref(model.slug)) },
     openGraph: { title, description, type: "website" },
   };
 }

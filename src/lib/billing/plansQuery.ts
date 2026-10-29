@@ -6,7 +6,7 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { unstable_cache } from "next/cache";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
-import type { Plan } from "./plans";
+import { siteForCurrency, type Plan, type PlanCurrency } from "./plans";
 import { PERK_PLACEHOLDERS, fillPerks, type FreeLimits } from "./perkLimits";
 
 export type PlanRow = {
@@ -17,6 +17,7 @@ export type PlanRow = {
   url_key: string;
   amount_paise: number;
   currency: string;
+  site: string;
   duration_days: number | null;
   scope: string;
   active: boolean;
@@ -24,9 +25,11 @@ export type PlanRow = {
 };
 
 export const PLAN_COLUMNS =
-  "id, label, blurb, perks, url_key, amount_paise, currency, duration_days, scope, active, sort_order";
+  "id, label, blurb, perks, url_key, amount_paise, currency, site, duration_days, scope, active, sort_order";
 
 export function rowToPlan(r: PlanRow): Plan {
+  // 0203's CHECK pairs USD with intl and INR with www, so the site follows the currency.
+  const currency: PlanCurrency = r.currency === "USD" ? "USD" : "INR";
   return {
     id: r.id,
     label: r.label,
@@ -34,7 +37,8 @@ export function rowToPlan(r: PlanRow): Plan {
     perks: r.perks ?? [],
     urlKey: r.url_key,
     amountPaise: r.amount_paise,
-    currency: "INR",
+    currency,
+    site: siteForCurrency(currency),
     durationDays: r.duration_days,
     scope: r.scope,
     active: r.active,
@@ -104,7 +108,7 @@ const listActivePlansRemembered = unstable_cache(
     if (!limits) throw new Error("free_limits unreadable");
     return ((data ?? []) as PlanRow[]).map((r) => withLiveLimits(rowToPlan(r), limits));
   },
-  ["active-plans-v2"],
+  ["active-plans-v3"],
   { revalidate: 86400, tags: [PLANS_CACHE_TAG] }
 );
 

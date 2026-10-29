@@ -1,3 +1,4 @@
+import { EXAM_REGISTRY } from "@/lib/exam/examContext";
 import type { Metadata } from "next";
 import { fitTitle } from "@/lib/seo/title";
 import Link from "next/link";
@@ -15,6 +16,7 @@ import {
   groupMocksForType,
 } from "@/lib/mocks/catalogue";
 import MockCatalogueList from "../../../_components/MockCatalogueList";
+import { canonicalFor } from "@/lib/sites/intl";
 
 export const revalidate = 3600;
 
@@ -29,7 +31,7 @@ type Params = { examSlug: string; type: string };
  */
 export function generateStaticParams(): Params[] {
   // Exams only: a family page (/mock/exam/mpsc) is a picker with no type lists.
-  return getMockExams().map((e) => e.slug as string).flatMap((examSlug) =>
+  return getMockExams(EXAM_REGISTRY).map((e) => e.slug as string).flatMap((examSlug) =>
     MOCK_TYPES.map((t) => ({ examSlug, type: t.slug }))
   );
 }
@@ -41,7 +43,7 @@ export function generateMetadata({ params }: { params: Params }): Metadata {
   return {
     title: { absolute: fitTitle(`${exam.examName} ${type.label}`, [{ text: "timed & auto-graded mock tests", optional: true }]) },
     description: `${type.blurb} Free ${exam.examName} mock tests from PYQ Vault, with a live timer and instant scoring.`,
-    alternates: { canonical: `/mock/exam/${exam.slug}/${type.slug}` },
+    alternates: { canonical: canonicalFor(`/mock/exam/${exam.slug}/${type.slug}`) },
   };
 }
 
@@ -76,7 +78,7 @@ export default async function MockTypeList({ params }: { params: Params }) {
   return (
     <GuideShell
       guideTitle="Mock Tests"
-      sideNav={mockSideNav()}
+      sideNav={mockSideNav(params.examSlug)}
       breadcrumbs={[
         { href: "/mock", label: "Mocks" },
         ...(parent ? [{ href: `/mock/exam/${parent.slug}`, label: parent.name }] : []),

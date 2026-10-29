@@ -2,6 +2,7 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import { unstable_cache } from "next/cache";
 import {
   EXAM_REGISTRY,
+  PYQVAULT_EXAMS,
   resolveBankHref,
   type ExamEntry,
 } from "./examContext";
@@ -79,9 +80,12 @@ export function pickExamCardHref(
 export function shapeExamCatalog(
   countsByExamName: Map<string, KindCounts>,
   idsBySlug: Map<string, string>,
-  notesSlugs: Set<string>
+  notesSlugs: Set<string>,
+  // www's exams by default: the homepage, /about, llms.txt and V list these.
+  // /exams/[examSlug] passes the full registry so an intl exam finds itself.
+  registry: readonly ExamEntry[] = PYQVAULT_EXAMS
 ): ExamCatalog {
-  const exams: ExamCatalogItem[] = EXAM_REGISTRY.map((exam) => {
+  const exams: ExamCatalogItem[] = registry.map((exam) => {
     const counts = countsByExamName.get(exam.examName) ?? { pyq: 0, practice: 0 };
     const examId = idsBySlug.get(exam.slug) ?? null;
     return {
@@ -220,12 +224,15 @@ const loadCachedExamCatalogPayload = unstable_cache(
  * adding an exam or shipping a notes chapter shows up on the next deploy rather
  * than waiting out a 24-hour cache entry.
  */
-export async function getCachedExamCatalog(): Promise<ExamCatalog> {
+export async function getCachedExamCatalog(
+  registry: readonly ExamEntry[] = PYQVAULT_EXAMS
+): Promise<ExamCatalog> {
   const { counts, ids } = await loadCachedExamCatalogPayload();
   return shapeExamCatalog(
     new Map(counts),
     new Map(ids),
-    new Set(getNotesExamGroups().map((g) => g.slug))
+    new Set(getNotesExamGroups(EXAM_REGISTRY).map((g) => g.slug)),
+    registry
   );
 }
 

@@ -23,6 +23,7 @@ const mockPass: Plan = {
   urlKey: "mocks",
   amountPaise: 9900,
   currency: "INR",
+  site: "pyqvault",
   durationDays: 182,
   scope: SCOPE_MOCKS,
   active: true,
@@ -51,7 +52,7 @@ describe("stampOrderNotes", () => {
 describe("planForPaidOrder", () => {
   it("grants what the notes say, to the buyer they name", () => {
     const r = planForPaidOrder(order(), "u1");
-    expect(r).toEqual({ ok: true, grant: { planId: "mock-pass-6m", scope: SCOPE_MOCKS, durationDays: 182, amountPaise: 9900 } });
+    expect(r).toEqual({ ok: true, grant: { planId: "mock-pass-6m", scope: SCOPE_MOCKS, durationDays: 182, amountPaise: 9900, currency: "INR" } });
   });
 
   it("does not need the plan to still exist or be active — the order is the contract", () => {

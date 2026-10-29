@@ -7,8 +7,8 @@ import Breadcrumbs from "@/components/nav/Breadcrumbs";
 import { fitTitle } from "@/lib/seo/title";
 import type { FormulaIndexGroup } from "@/lib/formula/chapterPages";
 import FormulaChapterList from "./FormulaChapterList";
+import { canonicalFor } from "@/lib/sites/intl";
 
-const SITE_URL = "https://www.pyqvault.com";
 
 function counts(group: FormulaIndexGroup) {
   const pages = group.subjects.flatMap((s) => s.pages);
@@ -28,7 +28,7 @@ export function formulaExamHubMetadata(group: FormulaIndexGroup): Metadata {
   return {
     title: { absolute: title },
     description,
-    alternates: { canonical: `${SITE_URL}/formula/${group.examSlug}` },
+    alternates: { canonical: canonicalFor(`/formula/${group.examSlug}`) },
     openGraph: { title, description, type: "website" },
   };
 }

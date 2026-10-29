@@ -11,7 +11,8 @@
  * `pass`, the pass on sale, which the wall sells in place (2026-10-25); null
  * when none is on sale or the read failed, and the wall then links to /pricing.
  */
-import { NextResponse } from "next/server";
+import { NextResponse, type NextRequest } from "next/server";
+import { planSiteForHost } from "@/lib/sites/intl";
 import { getSessionUser } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { getPremiumLimits } from "@/lib/billing/premiumLimits";
@@ -23,7 +24,7 @@ export const dynamic = "force-dynamic";
 
 const NO_STORE = { "Cache-Control": "no-store, private" } as const;
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   let user = null;
   try {
     user = await getSessionUser();
@@ -40,7 +41,7 @@ export async function GET() {
   try {
     const [todayIds, pass] = await Promise.all([
       loadRevealedToday(db, user.id, istDayStartIso(new Date())),
-      passOnSale(),
+      passOnSale(planSiteForHost(request.headers.get("host"))),
     ]);
     return NextResponse.json({ limit: limits.revealsPerDay, todayIds, pass }, { headers: NO_STORE });
   } catch (e) {

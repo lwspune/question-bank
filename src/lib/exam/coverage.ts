@@ -3,7 +3,7 @@
  * prints. Typed lists rot: the README named eleven exams for three ingests
  * after UPSC, IPMAT and MPSC landed. Spec: tests/exam-coverage.test.ts.
  */
-import { EXAM_REGISTRY, type ExamEntry } from "./examContext";
+import { PYQVAULT_EXAMS, type ExamEntry } from "./examContext";
 
 /** "10, 11 and 12" */
 export function joinList(items: readonly string[]): string {
@@ -19,7 +19,7 @@ export function joinList(items: readonly string[]): string {
  * An exam with no public content is left out — it is not "here".
  */
 export function examCoverageGroups(
-  registry: readonly ExamEntry[] = EXAM_REGISTRY
+  registry: readonly ExamEntry[] = PYQVAULT_EXAMS
 ): string[] {
   type Group =
     | { kind: "plain"; label: string }

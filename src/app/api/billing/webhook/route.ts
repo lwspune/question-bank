@@ -81,6 +81,7 @@ export async function POST(request: NextRequest) {
     scope: decision.grant.scope,
     expiresAt: computeExpiry(Date.now(), decision.grant.durationDays),
     amountPaise: decision.grant.amountPaise,
+    currency: decision.grant.currency,
   });
   if (result.kind === "error") {
     console.error("billing webhook: grant failed", result.message);

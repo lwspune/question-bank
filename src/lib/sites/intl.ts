@@ -17,6 +17,7 @@
  * Supabase. Nothing else names the host.
  */
 import { EXAM_REGISTRY, type ExamEntry, type ExamSlug } from "@/lib/exam/examContext";
+import type { PlanSite } from "@/lib/billing/plans";
 
 export const INTL_ORIGIN = "https://intl.pyqvault.com";
 export const WWW_ORIGIN = "https://www.pyqvault.com";
@@ -136,7 +137,7 @@ function sectionIndex(pathname: string): string | null {
 }
 
 /** A same-site relative path from a `next` parameter, or "/" for anything else. */
-function safeNext(search: string): string {
+export function safeNextFrom(search: string): string {
   const next = new URLSearchParams(search).get("next");
   if (!next || !next.startsWith("/") || next.startsWith("//") || next.startsWith("/\\")) return "/";
   return next;
@@ -148,9 +149,9 @@ export function intlHostDecision(pathname: string, search: string): HostDecision
   if (pathname === "/sitemap.xml") return { kind: "rewrite", path: "/intl/sitemap.xml" };
   if (pathname === "/robots.txt") return { kind: "rewrite", path: "/intl/robots.txt" };
   if (intlExamOfPath(pathname) || isShared(pathname)) return NEXT;
-  // PYQ Vault's onboarding asks for Indian exams and a mobile number; an intl
-  // student skips it and goes where they were headed.
-  if (pathname === "/welcome") return { kind: "redirect", url: safeNext(search), permanent: false };
+  // PYQ Vault's onboarding asks for Indian exams and a mobile number. On intl a
+  // handler records the international exams instead and sends the student on.
+  if (pathname === "/welcome") return { kind: "rewrite", path: `/intl/welcome${search}` };
   const index = sectionIndex(pathname);
   if (index) return { kind: "redirect", url: `${index}${search}`, permanent: false };
   return { kind: "redirect", url: `${WWW_ORIGIN}${pathname}${search}`, permanent: true };
@@ -181,4 +182,63 @@ export function canonicalFor(path: string): string {
 export function isIntlUrl(url: string): boolean {
   const pathname = url.startsWith("/") ? url : new URL(url).pathname;
   return intlExamOfPath(pathname) !== null;
+}
+
+/**
+ * Whether a path is an intl page by its path alone: an international exam's
+ * pages or the intl-only /intl tree. The header, footer and chatbot use it to
+ * pick the intl look without reading the host on the server; a SHARED page
+ * (/login, /pricing) is false here and asks the browser's host instead.
+ */
+export function isIntlPagePath(pathname: string): boolean {
+  return intlExamOfPath(pathname) !== null || pathname === "/intl" || pathname.startsWith("/intl/");
+}
+
+export type IntlNavLink = { label: string; href: string; active: boolean };
+
+/** The intl header's tabs: the current exam's notes, mocks and bank (the first intl exam on a shared page). */
+export function intlNavFor(pathname: string): IntlNavLink[] {
+  const slug = intlExamOfPath(pathname);
+  const exam = INTL_EXAMS.find((e) => e.slug === slug) ?? INTL_EXAMS[0];
+  if (!exam) return [];
+  const notesHref = exam.notesPath ?? `/notes/${exam.slug}`;
+  const section = (p: string) => pathname === p || pathname.startsWith(`${p}/`);
+  return [
+    {
+      label: "Notes",
+      href: notesHref,
+      active: pathname === `/notes/${exam.slug}` || pathname.startsWith(`/notes/${exam.slug}-`) || section(`/formula/${exam.slug}`),
+    },
+    {
+      label: "Mocks",
+      href: `/mock/exam/${exam.slug}`,
+      active: section(`/mock/exam/${exam.slug}`) || pathname.startsWith(`/mock/${exam.slug}-`) || section("/mock/attempt"),
+    },
+    {
+      label: "Questions",
+      href: "/browse",
+      active: section("/browse") || section(`/questions/${exam.slug}`),
+    },
+  ];
+}
+
+/** Which site's pass a request on this host is offered (migration 0203): intl sells in USD. */
+export function planSiteForHost(host: string | null | undefined): PlanSite {
+  return isIntlHost(host) ? "intl" : "pyqvault";
+}
+
+/** Which site's pass a page at this path offers; for cached pages, which cannot read the host. */
+export function planSiteForPath(pathname: string): PlanSite {
+  return intlExamOfPath(pathname) ? "intl" : "pyqvault";
+}
+
+/**
+ * A student whose chosen exams are all international (an intl.pyqvault.com
+ * sign-up records them, app/intl/welcome). PYQ Vault's emails and pushes are
+ * written for its Indian students and link to www, so they leave these out
+ * (lib/email/service `readStudents`). No exam chosen is NOT intl-only.
+ */
+export function isIntlOnlyStudent(targetExams: readonly string[]): boolean {
+  const intl = new Set<string>(INTL_EXAMS.map((e) => e.slug));
+  return targetExams.length > 0 && targetExams.every((s) => intl.has(s));
 }

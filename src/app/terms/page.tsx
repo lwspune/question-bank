@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { LegalH2, LegalList, LegalP, LegalPage } from "@/components/legal/LegalPage";
 import { CONTACT_EMAIL } from "@/lib/brand";
-import { formatRupees, planLengthLabel } from "@/lib/billing/plans";
+import { formatPrice, planLengthLabel } from "@/lib/billing/plans";
 import { listActivePlans, readFreeMockLimit } from "@/lib/billing/plansQuery";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 
@@ -56,12 +56,14 @@ export default async function TermsPage() {
       <LegalP>
         {plans.length === 0
           ? "No passes are on sale at the moment. When they are, they are priced in Indian rupees:"
-          : "We sell these passes, priced in Indian rupees:"}
+          : plans.some((p) => p.site === "intl")
+            ? "We sell these passes, priced in Indian rupees on www.pyqvault.com and in US dollars on intl.pyqvault.com:"
+            : "We sell these passes, priced in Indian rupees:"}
       </LegalP>
       <LegalList
         items={plans.map((p) => (
           <>
-            <strong>{p.label}</strong>: {formatRupees(p.amountPaise)} for{" "}
+            <strong>{p.label}</strong>: {formatPrice(p.amountPaise, p.currency)} for{" "}
             {planLengthLabel(p)}. {p.blurb}
           </>
         ))}

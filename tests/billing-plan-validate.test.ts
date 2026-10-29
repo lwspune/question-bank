@@ -15,6 +15,7 @@ const good = (over: Partial<PlanInput> = {}): PlanInput => ({
   urlKey: "mocks",
   amountPaise: 9900,
   currency: "INR",
+  site: "pyqvault",
   durationDays: 182,
   scope: SCOPE_MOCKS,
   sortOrder: 1,
@@ -62,7 +63,7 @@ describe("validatePlan", () => {
     expect(validatePlan(good({ perks: Array(7).fill("p") }))).toMatchObject({ ok: false, field: "perks" });
   });
 
-  it("currency is INR only (Razorpay account is INR)", () => {
-    expect(validatePlan(good({ currency: "USD" as "INR" }))).toMatchObject({ ok: false, field: "currency" });
+  it("a www plan is priced in INR (USD is the intl site's, 0203)", () => {
+    expect(validatePlan(good({ currency: "USD" }))).toMatchObject({ ok: false, field: "currency" });
   });
 });

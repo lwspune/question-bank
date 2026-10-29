@@ -19,6 +19,17 @@ import { PERK_PLACEHOLDERS, unknownPerkPlaceholders } from "./perkLimits";
 
 export const SELLABLE_SCOPES: readonly string[] = [SCOPE_MOCKS, SCOPE_TEACHER];
 
+/** Which site sells a plan (migration 0203): www in INR, intl.pyqvault.com in USD. */
+export type PlanSite = "pyqvault" | "intl";
+export type PlanCurrency = "INR" | "USD";
+
+const CURRENCY_OF_SITE: Record<PlanSite, PlanCurrency> = { pyqvault: "INR", intl: "USD" };
+
+/** The site that sells in a currency; the pair is one rule (0203's CHECK). */
+export function siteForCurrency(currency: PlanCurrency): PlanSite {
+  return currency === "USD" ? "intl" : "pyqvault";
+}
+
 export type Plan = {
   /** Stable slug, stamped into Razorpay order notes. Never reused. */
   id: string;
@@ -30,9 +41,11 @@ export type Plan = {
   perks: string[];
   /** The `/pricing?plan=<urlKey>` value CTAs link by. Fixed at creation. */
   urlKey: string;
-  /** Amount in paise (₹999 = 99900). Razorpay works in the smallest unit. */
+  /** Price in the currency's smallest unit: paise for INR (₹999 = 99900), cents for USD. Razorpay works in it. */
   amountPaise: number;
-  currency: "INR";
+  currency: PlanCurrency;
+  /** The site that sells it; fixes the currency (www INR, intl USD). */
+  site: PlanSite;
   /** Access length in days from purchase; null = lifetime. */
   durationDays: number | null;
   /** Entitlement scope granted (one of SELLABLE_SCOPES). */
@@ -75,7 +88,9 @@ export function validatePlan(input: PlanInput): PlanValidation {
   if (!Number.isInteger(input.amountPaise) || input.amountPaise <= 0) {
     return { ok: false, field: "amountPaise", message: "Price must be a positive whole number of paise." };
   }
-  if (input.currency !== "INR") return { ok: false, field: "currency", message: "Only INR is supported." };
+  if (CURRENCY_OF_SITE[input.site] === undefined || CURRENCY_OF_SITE[input.site] !== input.currency) {
+    return { ok: false, field: "currency", message: "www plans are priced in INR, intl plans in USD." };
+  }
   if (input.durationDays !== null && (!Number.isInteger(input.durationDays) || input.durationDays <= 0)) {
     return { ok: false, field: "durationDays", message: "Duration is blank (lifetime) or a positive number of days." };
   }
@@ -107,14 +122,24 @@ export function formatRupees(amountPaise: number): string {
   return `₹${(amountPaise / 100).toLocaleString("en-IN")}`;
 }
 
+/** A price in its own currency: "₹499", "$19", "$19.99". `amount` is paise or cents. */
+export function formatPrice(amount: number, currency: PlanCurrency): string {
+  if (currency === "INR") return formatRupees(amount);
+  const dollars = amount / 100;
+  return `$${dollars.toLocaleString("en-US", {
+    minimumFractionDigits: Number.isInteger(dollars) ? 0 : 2,
+    maximumFractionDigits: 2,
+  })}`;
+}
+
 /**
  * The pass a CTA offers for `scope`: active, EXACT scope (the teacher pass
  * covers mocks, but a student at the free-mock limit is offered the mock
  * pass), lowest sort order first. Null when nothing sells that scope.
  */
-export function passForScope(plans: readonly Plan[], scope: string): Plan | null {
+export function passForScope(plans: readonly Plan[], scope: string, site: PlanSite = "pyqvault"): Plan | null {
   const matches = plans
-    .filter((p) => p.active && p.scope === scope)
+    .filter((p) => p.active && p.scope === scope && p.site === site)
     .sort((a, b) => a.sortOrder - b.sortOrder || a.amountPaise - b.amountPaise);
   return matches[0] ?? null;
 }
@@ -143,7 +168,13 @@ export type PaidOrder = {
   notes?: Record<string, string> | null;
 };
 
-export type OrderGrant = { planId: string; scope: string; durationDays: number | null; amountPaise: number };
+export type OrderGrant = {
+  planId: string;
+  scope: string;
+  durationDays: number | null;
+  amountPaise: number;
+  currency: PlanCurrency;
+};
 
 /**
  * What a paid order grants, for the account claiming it — decided from the
@@ -160,7 +191,7 @@ export function planForPaidOrder(
     return { ok: false, reason: "order belongs to another account" };
   }
   const amount = Number(notes.amountPaise);
-  if (!notes.planId || !Number.isInteger(amount) || amount <= 0 || !notes.currency) {
+  if (!notes.planId || !Number.isInteger(amount) || amount <= 0 || (notes.currency !== "INR" && notes.currency !== "USD")) {
     return { ok: false, reason: "order notes incomplete" };
   }
   if (!notes.scope || notes.scope === SCOPE_ALL || !SELLABLE_SCOPES.includes(notes.scope)) {
@@ -176,7 +207,10 @@ export function planForPaidOrder(
   if (order.amount_paid !== amount || order.currency !== notes.currency) {
     return { ok: false, reason: "amount does not match order" };
   }
-  return { ok: true, grant: { planId: notes.planId, scope: notes.scope, durationDays, amountPaise: amount } };
+  return {
+    ok: true,
+    grant: { planId: notes.planId, scope: notes.scope, durationDays, amountPaise: amount, currency: notes.currency },
+  };
 }
 
 /**
@@ -200,7 +234,7 @@ export function passCta(plan: Plan | null): PassCta | null {
   return {
     planId: plan.id,
     label: plan.label,
-    price: formatRupees(plan.amountPaise),
+    price: formatPrice(plan.amountPaise, plan.currency),
     length: planLengthLabel(plan),
     urlKey: plan.urlKey,
     perks: [...plan.perks],

@@ -537,15 +537,15 @@ export const EXPERIMENTS: readonly Experiment[] = [
     status: "running",
   },
   {
-    id: "imat-on-pyqvault",
-    title: "IMAT on PYQ Vault, the same for every visitor",
+    id: "intl-site",
+    title: "intl.pyqvault.com: IMAT on its own site, priced in dollars",
     change:
-      "IMAT is an ordinary exam on pyqvault.com: 681 original practice questions (five options, filed under 206 subtopics) and 46 chapters of notes. The ministry papers wait on the copyright opinion.",
-    why: "We have no foreign traffic because we have no foreign content, Indian students sit IMAT too, and the site that already ranks is the cheapest place to test demand. A country-dependent site was rejected: Google crawls from the US (owner, 2026-10-20).",
+      "IMAT's pages moved from www to intl.pyqvault.com by permanent redirects. Intl shows no Indian exam (its own header, footer and home), has no V, and sells the pass in US dollars through Razorpay's international cards. Replaces imat-on-pyqvault (IMAT on www for everyone, 2026-10-20 to 10-30), ended early by the owner with 4 IMAT students, 2 of them foreign (US, Turkey), and no IMAT mock sat.",
+    why: "Owner, 2026-10-30: international students pay where Indian students mostly do not, and an Indian site dilutes the offer for them. More international exams (MCAT next) will join the same site.",
     metric:
-      "Students with IMAT among their exams; IMAT page views and the share from outside India (Clarity)",
-    rule: `Keep investing in IMAT if ${IMAT_STUDENTS_KEEP}+ students choose it in six weeks; build intl.pyqvault.com once visitors from outside India are ${IMAT_FOREIGN_SHARE_PCT}%+ of IMAT page views; if neither moves, leave IMAT as it is and spend nothing more on it.`,
-    liveSince: "2026-10-20",
+      "Students with IMAT among their exams and their countries; IMAT mocks sat; USD passes sold (/dashboard/sales, Pass $)",
+    rule: "No decision rule yet: there is no baseline for foreign demand or dollar sales. Read it at six weeks; a first USD sale or 10+ foreign IMAT students is the sign to add the next international exam.",
+    liveSince: "2026-10-30",
     windowDays: 42,
     readout: "imat",
     status: "running",

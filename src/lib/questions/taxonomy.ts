@@ -22,7 +22,6 @@
  */
 import { unstable_cache } from "next/cache";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
-import { withoutNicheExams } from "@/lib/sites/nicheExams";
 
 /**
  * How long a taxonomy list may be stale. Ingests are frequent in this project,
@@ -56,10 +55,11 @@ export const listExams = unstable_cache(
       .from("exams")
       .select("id, name")
       .order("name");
-    // Niche-site exams are never listed on PYQ Vault (none since 2026-10-20).
-    return withoutNicheExams(data ?? []);
+    // Every exam: /browse keeps the ones its host lists (examsForSite), so one
+    // cached list serves www and intl.pyqvault.com.
+    return data ?? [];
   },
-  ["browse-taxonomy", "exams"],
+  ["browse-taxonomy", "exams-v2"],
   { revalidate: TAXONOMY_TTL_SECONDS }
 );
 

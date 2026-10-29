@@ -104,6 +104,7 @@ export async function POST(request: NextRequest) {
     scope: decided.grant.scope,
     expiresAt: computeExpiry(Date.now(), decided.grant.durationDays),
     amountPaise: decided.grant.amountPaise,
+    currency: decided.grant.currency,
   });
   if (result.kind === "error") {
     console.error("grant after verify failed:", result.message);

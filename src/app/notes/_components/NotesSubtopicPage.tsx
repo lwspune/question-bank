@@ -41,6 +41,7 @@ import PracticeGate from "./PracticeGate";
 import NotesProgressControls from "./NotesProgressControls";
 import SubtopicMasteryCheckpoint, { CheckpointPreview } from "./SubtopicMasteryCheckpoint";
 import SubtopicSummary from "./SubtopicSummary";
+import { canonicalFor } from "@/lib/sites/intl";
 
 /**
  * Chapter-agnostic renderer for a single /notes subtopic page. Every chapter's
@@ -63,7 +64,7 @@ export function buildSubtopicMetadata(
   return {
     title: { absolute: notesSubtopicTitle(c, subtopicSlug)! },
     description: note.oneLineDefinition,
-    alternates: { canonical: `${routeBase(c)}/${subtopicSlug}` },
+    alternates: { canonical: canonicalFor(`${routeBase(c)}/${subtopicSlug}`) },
   };
 }
 

@@ -33,6 +33,7 @@ const row = (period: string, over: Partial<SalesPeriodRow> = {}): SalesPeriodRow
   booksSold: 0,
   booksRefunded: 0,
   bookPaise: 0,
+  passUsdCents: 0,
   ...over,
 });
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo } from "react";
-import { EXAM_REGISTRY } from "@/lib/exam/examContext";
+import { PYQVAULT_EXAMS } from "@/lib/exam/examContext";
 import { ANON_FEED, resolveExamFeed, type ExamFeed } from "@/lib/exam/examFeed";
 import { useViewerSession } from "@/lib/viewer/useViewerSession";
 
@@ -24,7 +24,7 @@ export function useExamFeed(): { loading: boolean; signedIn: boolean; feed: Exam
   const feed = useMemo(
     () =>
       session
-        ? resolveExamFeed({ stage, targetExams: targets ?? [] }, EXAM_REGISTRY)
+        ? resolveExamFeed({ stage, targetExams: targets ?? [] }, PYQVAULT_EXAMS)
         : ANON_FEED,
     // Keyed on the values, not the object, so a re-fetch with the same profile
     // does not reshuffle the page.

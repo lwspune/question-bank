@@ -27,7 +27,7 @@
  */
 import { describe, it, expect } from "vitest";
 import { buildExamChips, EXAM_CHIP_OPTIONS } from "@/lib/profile/examChoices";
-import { EXAM_REGISTRY, type ExamEntry } from "@/lib/exam/examContext";
+import { EXAM_REGISTRY, PYQVAULT_EXAMS, type ExamEntry } from "@/lib/exam/examContext";
 
 /** A minimal registry entry; only the fields the chip builder reads matter. */
 function entry(over: Partial<ExamEntry> & Pick<ExamEntry, "slug">): ExamEntry {
@@ -106,7 +106,8 @@ describe("the real registry", () => {
     // The mirror direction. Without it the guard could hide everything and
     // still pass — and a missing chip is a target exam a student cannot pick.
     expect(EXAM_CHIP_OPTIONS.map((c) => c.value).sort()).toEqual(
-      EXAM_REGISTRY.filter((e) => !e.noPublicContent).map((e) => e.slug).sort()
+      // www's chips: an international exam (`site: "intl"`) is picked on intl.pyqvault.com, never here.
+      PYQVAULT_EXAMS.filter((e) => !e.noPublicContent).map((e) => e.slug).sort()
     );
   });
 

@@ -10,8 +10,11 @@ import {
   wwwHostDecision,
   canonicalFor,
   isIntlUrl,
+  isIntlPagePath,
+  intlNavFor,
 } from "@/lib/sites/intl";
 import { EXAM_REGISTRY, PYQVAULT_EXAMS } from "@/lib/exam/examContext";
+import { safeNextFrom } from "@/lib/sites/intl";
 
 // intl.pyqvault.com (2026-10-30, NICHE_SITES_SPEC.md "intl.pyqvault.com"):
 // international exams live on their own host, and PYQ Vault's www host never
@@ -196,12 +199,11 @@ describe("intlHostDecision (the intl host)", () => {
 
   it("sends a student's PYQ Vault home to the intl home, never to a signed-out www", () => {
     expect(intlHostDecision("/me", "")).toEqual({ kind: "redirect", url: "/", permanent: false });
-    expect(intlHostDecision("/welcome", "?next=%2Fmock")).toEqual({ kind: "redirect", url: "/mock", permanent: false });
-    expect(intlHostDecision("/welcome", "?next=https%3A%2F%2Fevil.example")).toEqual({
-      kind: "redirect",
-      url: "/",
-      permanent: false,
-    });
+  });
+
+  it("swaps PYQ Vault's onboarding for intl's, which records the exam and moves on", () => {
+    expect(intlHostDecision("/welcome", "?next=%2Fmock")).toEqual({ kind: "rewrite", path: "/intl/welcome?next=%2Fmock" });
+    expect(intlHostDecision("/welcome", "")).toEqual({ kind: "rewrite", path: "/intl/welcome" });
   });
 
   it("sends every PYQ Vault page to www permanently, so no Indian exam is ever shown on intl", () => {
@@ -237,5 +239,79 @@ describe("isIntlUrl (splits one sitemap into two)", () => {
   it("is false for PYQ Vault URLs", () => {
     expect(isIntlUrl("https://www.pyqvault.com/notes/nda-maths")).toBe(false);
     expect(isIntlUrl("https://www.pyqvault.com/")).toBe(false);
+  });
+});
+
+
+describe("isIntlPagePath (header, footer and chatbot pick the intl look from the path)", () => {
+  it("is true on an international exam's pages and the intl-only pages", () => {
+    expect(isIntlPagePath("/notes/imat-biology")).toBe(true);
+    expect(isIntlPagePath("/intl")).toBe(true);
+    expect(isIntlPagePath("/intl/anything")).toBe(true);
+  });
+
+  it("is false on shared and PYQ Vault pages (a shared page asks the host instead)", () => {
+    expect(isIntlPagePath("/login")).toBe(false);
+    expect(isIntlPagePath("/")).toBe(false);
+    expect(isIntlPagePath("/notes/nda-maths")).toBe(false);
+    expect(isIntlPagePath("/international")).toBe(false);
+  });
+});
+
+describe("intlNavFor", () => {
+  it("links the current exam's notes, mocks and question bank, marking the active one", () => {
+    expect(intlNavFor("/notes/imat-biology/cell-biology")).toEqual([
+      { label: "Notes", href: "/notes/imat", active: true },
+      { label: "Mocks", href: "/mock/exam/imat", active: false },
+      { label: "Questions", href: "/browse", active: false },
+    ]);
+  });
+
+  it("marks Mocks on a mock paper and an attempt, Questions on the bank", () => {
+    expect(intlNavFor("/mock/imat-2023").find((l) => l.active)?.label).toBe("Mocks");
+    expect(intlNavFor("/mock/attempt/x").find((l) => l.active)?.label).toBe("Mocks");
+    expect(intlNavFor("/browse").find((l) => l.active)?.label).toBe("Questions");
+    expect(intlNavFor("/questions/imat/biology/x").find((l) => l.active)?.label).toBe("Questions");
+  });
+
+  it("falls back to the first international exam on a shared page, with nothing active", () => {
+    const nav = intlNavFor("/pricing");
+    expect(nav.map((l) => l.href)).toEqual(["/notes/imat", "/mock/exam/imat", "/browse"]);
+    expect(nav.some((l) => l.active)).toBe(false);
+  });
+});
+
+describe("planSiteFor (which pass a page offers)", () => {
+  it("offers the intl pass on the intl host and on an international exam's page", async () => {
+    const { planSiteForHost, planSiteForPath } = await import("@/lib/sites/intl");
+    expect(planSiteForHost("intl.pyqvault.com")).toBe("intl");
+    expect(planSiteForHost("www.pyqvault.com")).toBe("pyqvault");
+    expect(planSiteForHost(null)).toBe("pyqvault");
+    expect(planSiteForPath("/mock/imat-2023")).toBe("intl");
+    expect(planSiteForPath("/mock/nda-2024-i")).toBe("pyqvault");
+  });
+});
+
+describe("safeNextFrom", () => {
+  it("keeps a same-site path and refuses anything that leaves the site", () => {
+    expect(safeNextFrom("?next=%2Fmock%2Fimat-2023")).toBe("/mock/imat-2023");
+    expect(safeNextFrom("?next=https%3A%2F%2Fevil.example")).toBe("/");
+    expect(safeNextFrom("?next=%2F%2Fevil.example")).toBe("/");
+    expect(safeNextFrom("?next=%2F%5Cevil.example")).toBe("/");
+    expect(safeNextFrom("")).toBe("/");
+  });
+});
+
+describe("isIntlOnlyStudent (PYQ Vault's emails and pushes leave these students out)", () => {
+  it("is true when every chosen exam is international", async () => {
+    const { isIntlOnlyStudent } = await import("@/lib/sites/intl");
+    expect(isIntlOnlyStudent(["imat"])).toBe(true);
+  });
+
+  it("is false with no exam chosen, or with any PYQ Vault exam among them", async () => {
+    const { isIntlOnlyStudent } = await import("@/lib/sites/intl");
+    expect(isIntlOnlyStudent([])).toBe(false);
+    expect(isIntlOnlyStudent(["imat", "neet"])).toBe(false);
+    expect(isIntlOnlyStudent(["nda"])).toBe(false);
   });
 });
