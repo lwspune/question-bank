@@ -1,5 +1,66 @@
 # Niche sites — spec (2026-10-08)
 
+> **BUILT, 2026-10-30: international exams live on `intl.pyqvault.com`.** The
+> section "intl.pyqvault.com (2026-10-30)" right below is how it works today and
+> overrides the rest of this document wherever they differ. Everything after it
+> is the history of how we got here.
+
+## intl.pyqvault.com (2026-10-30)
+
+**Owner's decisions:** IMAT moves off www to `intl.pyqvault.com`, which shows
+no Indian exam; the pass there is sold in US dollars (Razorpay international
+cards, on since 2026-10-30); more international exams follow on the same site
+(MCAT named next, which would be original questions: AAMC sells its own). The
+trigger the 10-20 note below set (steady foreign traffic) had not been met: 4
+IMAT students, 2 of them foreign. The owner moved anyway.
+
+**How it works.** One codebase, one database, one Vercel project. An exam is
+international when its `EXAM_REGISTRY` entry says `site: "intl"`.
+- `src/lib/sites/intl.ts` is the whole rule set, pure and tested
+  (`tests/intl-site.test.ts`): which paths belong to an intl exam
+  (`intlExamOfPath`), what the intl host does with a request (`intlHostDecision`:
+  `/` is the intl home, intl exam pages and the shared pages serve, `/welcome`
+  records the exam, section indexes go to the exam's page, every other path
+  308s to www), what www does (`wwwHostDecision`: an intl exam's page 308s to
+  intl), canonicals (`canonicalFor`), and which pass a page sells.
+- `src/middleware.ts` applies it. On production www the matcher is a literal
+  list of the intl exams' paths (Next needs a literal), checked against the
+  registry by `tests/intl-middleware.test.ts`; on every other host it runs on
+  every page. It still refreshes the session only on the signed-in surfaces.
+- The look is chosen from the PATH, never by reading the host in a shared
+  layout (that de-caches every page): `useIntlSite` gives the intl header,
+  footer and no V on an intl exam's pages, and on shared pages (`/login`,
+  `/pricing`, `/account`) after the browser reports the host.
+- www's lists read `PYQVAULT_EXAMS`; lookups keep the full `EXAM_REGISTRY`.
+  The `/browse` exam list is a DB read, filtered by `examsForSite`.
+- One sitemap list (`lib/seo/sitemapAll.ts`) feeds two sitemaps: www's drops
+  intl URLs, `app/intl/sitemap.xml` keeps them on the intl origin.
+- Students whose chosen exams are all international are left out of every
+  PYQ Vault email and push (`readStudents`): those are written for India and
+  link to www. Intl has no emails of its own yet.
+
+**Money (migration 0203).** `plans.site` ('pyqvault' INR, 'intl' USD, one
+CHECK pairs them); `amount_paise` is the currency's smallest unit. Each paid
+pass records `entitlements.currency`; `sales_by_period` sums INR passes in
+`pass_paise` and USD ones in `pass_usd_cents`, never together. The pass
+itself is the same scope (`mocks`), so it works on both sites.
+
+**Moving to its own domain later:** change `INTL_ORIGIN`, add the old host to
+`FORMER_INTL_HOSTS` (the middleware 301s every old URL to the same path on the
+new origin), attach the domain in Vercel, add its auth callback in Supabase.
+
+**Adding the next international exam:** registry entry with `site: "intl"`,
+its URL families in the middleware matcher (the test lists what is missing),
+and a sentence for its card in `app/intl/page.tsx`. Notes subject routes and
+mock slugs must start with `<slug>-`, as IMAT's do.
+
+**Open (not built):** emails for intl students; the mock result page and
+`/account` still show some PYQ Vault links (they go to www); EU VAT on
+digital sales to EU consumers (no threshold for a non-EU seller; the owner's
+accountant decides).
+
+## History (2026-10-08 to 2026-10-20)
+
 > **Superseded for IMAT (owner, 2026-10-20): IMAT goes on pyqvault.com as an
 > ordinary exam, the same for every visitor.** The 681 original twins and the
 > 46 notes chapters go PUBLIC; the 240 ministry questions followed once D1
