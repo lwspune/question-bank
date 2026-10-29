@@ -1,0 +1,632 @@
+{
+ "//": "Assembled from agent drafts (algebraSteps).",
+ "visuals": [
+  {
+   "id": "c80925b2-3a26-4c50-9c23-7a06f6652889",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "S = 4\\pi r^2,\\quad V = \\tfrac43\\pi r^3,\\quad \\dfrac{dS}{dt} = 5"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\dfrac{dS}{dt} = 8\\pi r\\,\\dfrac{dr}{dt} \\Rightarrow \\dfrac{dr}{dt} = \\dfrac{5}{8\\pi r}"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "\\dfrac{dV}{dt} = 4\\pi r^2\\cdot\\dfrac{5}{8\\pi r} = \\dfrac{5r}{2}",
+       "note": "π cancels"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "r = 8:\\ \\dfrac{dV}{dt} = \\dfrac{5\\times 8}{2} = 20",
+       "f": "5*8/2",
+       "value": "20"
+      }
+     ],
+     "answer": "5*8/2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "33668877",
+    "answer": {
+     "value": 20,
+     "label": "20 mm^3/s"
+    }
+   }
+  },
+  {
+   "id": "c9f94d2b-bd78-44c4-bf36-199d5ef9489a",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "\\dfrac{V}{250}-\\dfrac14=-\\dfrac1{100} \\Rightarrow V = 250\\times 0.24 = 60",
+       "f": "250*(1/4-1/100)",
+       "value": "60"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "F = \\dfrac{3600}{500} - 15 + 14 = 6.2",
+       "f": "3600/500-15+14",
+       "value": "6.2"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "6\\times 6.2 = 37.2\\ \\text{litres}",
+       "f": "6*6.2",
+       "value": "37.2",
+       "note": "600 km is 6 lots of 100 km"
+      }
+     ],
+     "answer": "6*6.2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "c53c737c",
+    "answer": {
+     "value": 37.2,
+     "label": "37.2 litres"
+    }
+   }
+  },
+  {
+   "id": "cba1772b-fd13-49ee-9563-e9bd0e54a424",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "m = \\dfrac{dy}{dx} = 7 - 3x^2"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\dfrac{dm}{dt} = -6x\\,\\dfrac{dx}{dt}"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "-6(5)(2) = -60",
+       "f": "-6*5*2",
+       "value": "-60"
+      }
+     ],
+     "answer": "-6*5*2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "e81955d9",
+    "answer": {
+     "value": -60,
+     "label": "-60 units/sec"
+    }
+   }
+  },
+  {
+   "id": "cc2b53fc-f033-4082-af6a-22edcc8f2c07",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "v = \\dfrac{dS}{dt} = 72 + 6t - 3t^2"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "72 + 6t - 3t^2 = 0",
+       "lhs": "72+6*x-3*x^2",
+       "rhs": "0",
+       "roots": [
+        "6",
+        "-4"
+       ]
+      },
+      {
+       "step": "s3",
+       "kind": "eq",
+       "tex": "3t^2 - 6t - 72 = 0",
+       "lhs": "3*x^2-6*x-72",
+       "rhs": "0",
+       "roots": [
+        "6",
+        "-4"
+       ]
+      },
+      {
+       "step": "s4",
+       "kind": "eq",
+       "tex": "t^2 - 2t - 24 = 0",
+       "lhs": "x^2-2*x-24",
+       "rhs": "0",
+       "roots": [
+        "6",
+        "-4"
+       ]
+      },
+      {
+       "step": "s5",
+       "kind": "eq",
+       "tex": "(t-6)(t+4) = 0",
+       "lhs": "(x-6)*(x+4)",
+       "rhs": "0",
+       "roots": [
+        "6",
+        "-4"
+       ],
+       "note": "t = -4 rejected: time is positive"
+      }
+     ],
+     "answer": "6"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2",
+       "s3",
+       "s4"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "05a87af6",
+    "answer": {
+     "value": 6,
+     "label": "6 seconds"
+    }
+   }
+  },
+  {
+   "id": "cf59ff4b-3d24-463d-96da-6d927e85a58b",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "S = 4\\pi r^2 \\Rightarrow \\dfrac{dS}{dr} = 8\\pi r"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "r = 4:\\ 8\\pi\\times 4 = 32\\pi",
+       "f": "8*pi*4",
+       "value": "32*pi"
+      }
+     ],
+     "answer": "32*pi"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "d882f518",
+    "answer": {
+     "value": 100.53096491487338,
+     "label": "32 pi cm^2/cm"
+    }
+   }
+  },
+  {
+   "id": "d0bfdd56-fd9d-4343-a7a5-09b26e7bc307",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "C = 2\\pi r \\Rightarrow \\dfrac{dC}{dt} = 2\\pi\\,\\dfrac{dr}{dt}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "2\\pi(0.7) = 1.4\\pi",
+       "f": "2*pi*0.7",
+       "value": "1.4*pi"
+      }
+     ],
+     "answer": "1.4*pi"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "bb06a3eb",
+    "answer": {
+     "value": 4.39822971502571,
+     "label": "1.4 pi cm/s"
+    }
+   }
+  },
+  {
+   "id": "d66d828a-c77b-4cc4-aaa6-0c3e0b5d1887",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "V = \\pi(15)^2 h = 225\\pi h,\\quad \\dfrac{dV}{dt} = -5"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "-5 = 225\\pi\\,\\dfrac{dh}{dt}"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\dfrac{dh}{dt} = -\\dfrac{5}{225\\pi} = -\\dfrac{1}{45\\pi} \\approx -0.0071",
+       "f": "-5/(225*pi)",
+       "value": "-0.0071",
+       "dp": 4,
+       "note": "depth 2 m is not needed"
+      }
+     ],
+     "answer": "5/(225*pi)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "0fedd685",
+    "answer": {
+     "value": 0.007073553026306459,
+     "label": "1/(45 pi) cm/s, decreasing"
+    }
+   }
+  },
+  {
+   "id": "d76b12cc-dde0-405d-8079-836d2dc3526b",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "V = \\pi(10)^2 h = 100\\pi h \\Rightarrow \\dfrac{dV}{dt} = 100\\pi\\,\\dfrac{dh}{dt}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "\\dfrac{dh}{dt} = \\dfrac{314}{100\\pi} \\approx 0.99949",
+       "f": "314/(100*pi)",
+       "value": "0.99949",
+       "dp": 5,
+       "note": "314 stands in for 100π"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\dfrac{dh}{dt} \\approx 1\\ \\text{m/h}",
+       "f": "314/(100*pi)",
+       "value": "1",
+       "dp": 2
+      }
+     ],
+     "answer": "1"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "8665dc03",
+    "answer": {
+     "value": 1,
+     "label": "1 m/h"
+    }
+   }
+  },
+  {
+   "id": "d7d17a9c-d097-49e1-9919-f73ca90bca20",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "V = \\tfrac43\\pi r^3 \\Rightarrow \\dfrac{dV}{dt} = 4\\pi r^2\\dfrac{dr}{dt}"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\dfrac{dV}{dt} = \\dfrac{dr}{dt} \\Rightarrow 4\\pi r^2 = 1"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "S = 4\\pi r^2 = 1",
+       "f": "4*pi*(1/sqrt(4*pi))^2",
+       "value": "1",
+       "note": "the radius is never needed"
+      }
+     ],
+     "answer": "1"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "ce4f8938",
+    "answer": {
+     "value": 1,
+     "label": "1 sq. unit"
+    }
+   }
+  },
+  {
+   "id": "da8238d4-a3db-4dfd-97a0-f0e5e2e74495",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "f'(x) = 2x - 1 = 0 \\Rightarrow x = \\tfrac12"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "f(-\\tfrac12) = \\tfrac14 + \\tfrac12 + 1 = \\tfrac74",
+       "f": "(-0.5)^2+0.5+1",
+       "value": "7/4",
+       "note": "f(-1/2) > f(0) = 1: not increasing"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "f(\\tfrac12) = \\tfrac14 - \\tfrac12 + 1 = \\tfrac34",
+       "f": "0.5^2-0.5+1",
+       "value": "3/4",
+       "note": "f(1/2) < f(3/4) = 13/16: not decreasing"
+      }
+     ],
+     "answer": "1/2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "c898d423",
+    "answer": {
+     "value": 0.5,
+     "label": "f' = 0 at x = 1/2"
+    }
+   }
+  },
+  {
+   "id": "de8f3745-ead2-446a-9b5c-abf1cd19525e",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "A = \\pi r^2 \\Rightarrow \\dfrac{dA}{dt} = 2\\pi r\\dfrac{dr}{dt}"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "2\\pi(3.2)(0.05) = 0.320\\pi",
+       "f": "2*pi*3.2*0.05",
+       "value": "0.32*pi",
+       "note": "in cm²/s"
+      }
+     ],
+     "answer": "0.32*pi"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "bd251709",
+    "answer": {
+     "value": 1.0053096491487339,
+     "label": "0.32 pi cm^2/s"
+    }
+   }
+  }
+ ],
+ "decided": []
+}

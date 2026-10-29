@@ -1,0 +1,403 @@
+{
+ "//": "Assembled from agent drafts (algebraSteps).",
+ "visuals": [
+  {
+   "id": "1446b092-3078-488a-852f-6557818eaa0f",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\vec E=\\dfrac{\\vec b}{2},\\quad \\vec D=\\dfrac{\\vec a+2\\vec b}{3}"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\vec P=\\dfrac t3(\\vec a+2\\vec b)=(1-s)\\vec a+\\dfrac s2\\vec b"
+      },
+      {
+       "step": "s3",
+       "kind": "note",
+       "tex": "\\dfrac t3=1-s,\\quad \\dfrac{2t}{3}=\\dfrac s2\\Rightarrow s=\\dfrac{4t}{3}"
+      },
+      {
+       "step": "s4",
+       "kind": "eq",
+       "tex": "{{1:\\dfrac t3}}=1-\\dfrac{4t}{3}",
+       "lhs": "x/3",
+       "rhs": "1-4*x/3",
+       "roots": [
+        "3/5"
+       ]
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "t=\\dfrac{3}{5}",
+       "f": "1/(5/3)",
+       "value": "0.6"
+      },
+      {
+       "step": "s6",
+       "kind": "calc",
+       "tex": "OP:PD=t:(1-t)={{2:\\dfrac35:\\dfrac25}}",
+       "f": "(3/5)/(1-3/5)",
+       "value": "1.5",
+       "note": "OP : PD = 3 : 2"
+      }
+     ],
+     "answer": "(3/5)/(1-3/5)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s2",
+       "s3"
+      ]
+     },
+     {
+      "from": 7,
+      "beats": [
+       "s4",
+       "s5"
+      ]
+     },
+     {
+      "from": 8,
+      "beats": [
+       "s6"
+      ]
+     }
+    ],
+    "fingerprint": "1fff6771",
+    "answer": {
+     "value": 1.4999999999999998,
+     "label": "3:2"
+    }
+   }
+  },
+  {
+   "id": "149140f6-5838-46ef-b6a5-1c82996291bb",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "l=\\cos 90^\\circ={{1:0}}",
+       "f": "cos(rad(90))",
+       "value": "0"
+      },
+      {
+       "step": "s2",
+       "kind": "calc",
+       "tex": "m=\\cos 60^\\circ={{2:\\dfrac12}}",
+       "f": "cos(rad(60))",
+       "value": "0.5"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "n=\\cos 30^\\circ={{3:\\dfrac{\\sqrt3}{2}}}",
+       "f": "cos(rad(30))",
+       "value": "sqrt(3)/2"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "l^2+m^2+n^2=0+\\dfrac14+\\dfrac34=1",
+       "f": "0+1/4+3/4",
+       "value": "1",
+       "note": "check: squares add to 1"
+      }
+     ],
+     "answer": "sqrt(3)/2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2",
+       "s3"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "052776f4",
+    "answer": {
+     "value": 0.8660254037844386,
+     "label": "0, 1/2, √3/2"
+    }
+   }
+  },
+  {
+   "id": "179e9b1e-62b3-4032-aa1e-f2556dcbe981",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "|\\hat q|^2=|\\hat p+\\hat r|^2=1+2\\,\\hat p\\cdot\\hat r+1"
+      },
+      {
+       "step": "s2",
+       "kind": "eq",
+       "tex": "{{1:1}}=2+2\\,\\hat p\\cdot\\hat r",
+       "lhs": "1",
+       "rhs": "2+2*x",
+       "roots": [
+        "-1/2"
+       ]
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\hat p\\cdot\\hat q=|\\hat p|^2+\\hat p\\cdot\\hat r=1-\\dfrac12={{2:\\dfrac12}}",
+       "f": "1+(-1/2)",
+       "value": "0.5"
+      }
+     ],
+     "answer": "1+(-1/2)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "ac40c1cf",
+    "answer": {
+     "value": 0.5,
+     "label": "1/2"
+    }
+   }
+  },
+  {
+   "id": "1c407e0c-6b6a-49a4-9d1a-ad509de608c6",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "calc",
+       "tex": "|\\vec b|=\\sqrt{4^2+3^2}={{1:5}}",
+       "f": "sqrt(16+9)",
+       "value": "5"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\hat b=\\dfrac{4\\hat i+3\\hat j}{5},\\quad \\hat c=\\dfrac{-3\\hat i+4\\hat j}{5}"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "x\\text{-part}=1\\cdot\\dfrac45+2\\cdot\\left(-\\dfrac35\\right)={{2:-\\dfrac25}}",
+       "f": "4/5-6/5",
+       "value": "-0.4"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "y\\text{-part}=1\\cdot\\dfrac35+2\\cdot\\dfrac45={{3:\\dfrac{11}{5}}}",
+       "f": "3/5+8/5",
+       "value": "2.2"
+      },
+      {
+       "step": "s5",
+       "kind": "calc",
+       "tex": "\\vec r\\cdot\\hat b=\\dfrac{-8+33}{25}=1",
+       "f": "(-0.4*4+2.2*3)/5",
+       "value": "1",
+       "note": "check: projection along b is 1"
+      }
+     ],
+     "answer": "4/5-6/5"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s4",
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "ebbcaf14",
+    "answer": {
+     "value": -0.3999999999999999,
+     "label": "-2/5 i + 11/5 j"
+    }
+   }
+  },
+  {
+   "id": "1d5012d6-9559-4539-b37d-67426f0e24fb",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "2\\vec c=5\\vec a-3\\vec b\\Rightarrow \\vec c=\\dfrac{5\\vec a-3\\vec b}{5-3}"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\vec c=\\dfrac{m\\vec a-n\\vec b}{m-n}\\Rightarrow m=5,\\ n=3"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "5-3-2={{1:0}}",
+       "f": "5-3-2",
+       "value": "0",
+       "note": "coefficients add to 0: A, B, C collinear"
+      },
+      {
+       "step": "s4",
+       "kind": "calc",
+       "tex": "m:n={{2:5}}:{{3:3}}\\ \\text{externally}",
+       "f": "5/3",
+       "value": "5/3"
+      }
+     ],
+     "answer": "5/3"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 9,
+      "beats": [
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "edcb6616",
+    "answer": {
+     "value": 1.6666666666666667,
+     "label": "5:3 externally"
+    }
+   }
+  },
+  {
+   "id": "201ac093-1c49-4968-88f9-26cff1e71452",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "step": "s1",
+       "kind": "note",
+       "tex": "\\vec{AM}=\\vec q-\\dfrac12\\vec p,\\quad \\vec{AB}=\\vec p"
+      },
+      {
+       "step": "s2",
+       "kind": "note",
+       "tex": "\\vec{MB}=\\vec{AB}-\\vec{AM}=\\vec p-\\vec q+\\dfrac12\\vec p"
+      },
+      {
+       "step": "s3",
+       "kind": "calc",
+       "tex": "\\text{coefficient of }\\vec p=1+\\dfrac12={{1:\\dfrac32}}",
+       "f": "1+1/2",
+       "value": "1.5"
+      },
+      {
+       "step": "s4",
+       "kind": "note",
+       "tex": "\\vec{MB}={{1:\\dfrac32}}\\vec p-\\vec q"
+      }
+     ],
+     "answer": "1+1/2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1",
+       "s2"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s3",
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "d27e32b1",
+    "answer": {
+     "value": 1.5,
+     "label": "3/2 p − q"
+    }
+   }
+  }
+ ],
+ "decided": []
+}

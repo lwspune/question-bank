@@ -1,0 +1,729 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "a7727003-d2c0-4174-8d8f-793c03f149e6",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{12}{4} = {{1:3}}",
+              "f": "12/4",
+              "value": "3"
+            },
+            {
+              "step": "s2",
+              "kind": "eq",
+              "tex": "\\dfrac{-3}{q} = {{1:3}}",
+              "lhs": "-3/x",
+              "rhs": "3",
+              "roots": [
+                "-1"
+              ]
+            },
+            {
+              "step": "s3",
+              "kind": "eq",
+              "tex": "\\dfrac{9}{-p} = {{1:3}}",
+              "lhs": "9/(-x)",
+              "rhs": "3",
+              "roots": [
+                "-3"
+              ]
+            },
+            {
+              "step": "s4",
+              "kind": "note",
+              "tex": "p = -3,\\quad q = -1"
+            }
+          ],
+          "answer": "-3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "962fc684",
+        "answer": {
+          "value": -3,
+          "label": "p = -3, q = -1"
+        }
+      }
+    },
+    {
+      "id": "aab7c3de-32e4-4f23-858c-6edf1b502c0d",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "\\dfrac{2-z}{2}",
+              "f": "(2-x)/2",
+              "note": "the given last fraction"
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "\\dfrac{-(z-2)}{2} = \\dfrac{z-2}{-2}",
+              "f": "(x-2)/(-2)",
+              "note": "flip the sign of z - 2"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "\\langle 1, 2, -2\\rangle",
+              "note": "direction ratios of the given line"
+            },
+            {
+              "step": "s4",
+              "kind": "note",
+              "tex": "\\dfrac{x-2}{1} = \\dfrac{y+1}{2} = \\dfrac{z}{-2}",
+              "note": "same ratios, through (2, -1, 0)"
+            }
+          ],
+          "answer": "-2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "9f1694e1",
+        "answer": {
+          "value": -2,
+          "label": "(x-2)/1=(y+1)/2=z/(-2)"
+        }
+      }
+    },
+    {
+      "id": "abb48b07-e9fe-4996-a3f0-341e1f69f47f",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\langle 2,3,4\\rangle \\ne k\\langle 5,2,1\\rangle",
+              "note": "not parallel"
+            },
+            {
+              "step": "s2",
+              "kind": "eq",
+              "tex": "11\\lambda = -11",
+              "lhs": "11*x",
+              "rhs": "-11",
+              "roots": [
+                "-1"
+              ]
+            },
+            {
+              "step": "s3",
+              "kind": "eq",
+              "tex": "2(-1) - 5\\mu = 3",
+              "lhs": "2*(-1)-5*x",
+              "rhs": "3",
+              "roots": [
+                "-1"
+              ],
+              "note": "put back to find mu"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "4(-1)+3 = {{1:-1}} = \\mu",
+              "f": "4*(-1)+3",
+              "value": "-1",
+              "note": "the third equation holds"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "2(-1)+1 = {{2:-1}}",
+              "f": "2*(-1)+1",
+              "value": "-1"
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "3(-1)+2 = {{2:-1}}",
+              "f": "3*(-1)+2",
+              "value": "-1"
+            },
+            {
+              "step": "s7",
+              "kind": "note",
+              "tex": "(-1,-1,-1)"
+            }
+          ],
+          "answer": "-1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s5",
+              "s6",
+              "s7"
+            ]
+          }
+        ],
+        "fingerprint": "3b6d8952",
+        "answer": {
+          "value": -1,
+          "label": "(-1, -1, -1)"
+        }
+      }
+    },
+    {
+      "id": "af7e9d11-9992-468c-8e2f-a061811f51f1",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\langle 2,7,-3\\rangle,\\quad \\langle -1,2,4\\rangle"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "(2)(-1)+(7)(2)+(-3)(4) = {{1:0}}",
+              "f": "2*(-1)+7*2+(-3)*4",
+              "value": "0"
+            }
+          ],
+          "answer": "2*(-1)+7*2+(-3)*4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "370907ad",
+        "answer": {
+          "value": 0,
+          "label": "Perpendicular (dot product 0)"
+        }
+      }
+    },
+    {
+      "id": "b5867a0a-a8ee-4abb-b4bd-d7e3d073cc45",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "eq",
+              "tex": "18\\lambda - 3 = 9\\lambda + 7",
+              "lhs": "18*x-3",
+              "rhs": "9*x+7",
+              "roots": [
+                "10/9"
+              ],
+              "note": "plane contains (2, 1, 3)"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "2+2\\lambda = {{1:\\dfrac{38}{9}}}",
+              "f": "2+2*(10/9)",
+              "value": "38/9"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "2+5\\lambda = {{1:\\dfrac{68}{9}}}",
+              "f": "2+5*(10/9)",
+              "value": "68/9"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "-3+3\\lambda = {{1:\\dfrac{3}{9}}}",
+              "f": "-3+3*(10/9)",
+              "value": "3/9"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "7+9\\lambda = {{2:17}}",
+              "f": "7+9*(10/9)",
+              "value": "17"
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "9\\times 17 = {{2:153}}",
+              "f": "9*17",
+              "value": "153",
+              "note": "multiply through by 9"
+            },
+            {
+              "step": "s7",
+              "kind": "calc",
+              "tex": "38(2)+68(1)+3(3) = {{2:153}}",
+              "f": "38*2+68*1+3*3",
+              "value": "153",
+              "note": "check with the point"
+            }
+          ],
+          "answer": "153"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2",
+              "s3",
+              "s4",
+              "s5"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s6"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s7"
+            ]
+          }
+        ],
+        "fingerprint": "ef6e9578",
+        "answer": {
+          "value": 153,
+          "label": "r.(38i+68j+3k)=153"
+        }
+      }
+    },
+    {
+      "id": "bb3835f1-9eb4-474e-a444-6caf32d34dc6",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "eq",
+              "tex": "\\lambda - (-\\lambda-1) - 2(3-2\\lambda) = 0",
+              "lhs": "x-(-x-1)-2*(3-2*x)",
+              "rhs": "0",
+              "roots": [
+                "5/6"
+              ],
+              "note": "PQ is perpendicular to the line"
+            },
+            {
+              "step": "s2",
+              "kind": "eq",
+              "tex": "6\\lambda = 5",
+              "lhs": "6*x",
+              "rhs": "5",
+              "roots": [
+                "5/6"
+              ]
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "-\\lambda - 1 = {{1:-\\dfrac{11}{6}}}",
+              "f": "-(5/6)-1",
+              "value": "-11/6"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "3 - 2\\lambda = {{2:\\dfrac{4}{3}}}",
+              "f": "3-2*(5/6)",
+              "value": "4/3"
+            }
+          ],
+          "answer": "5/6"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "63a41eb8",
+        "answer": {
+          "value": 0.8333333333333334,
+          "label": "(5/6, -11/6, 4/3)"
+        }
+      }
+    },
+    {
+      "id": "be547722-f646-4b5b-af22-0d382dd2675b",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\vec b_1=\\langle 3,-2,4\\rangle,\\ \\vec b_2=\\langle 2,1,-3\\rangle"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\hat i:\\ 6-4 = {{1:2}}",
+              "f": "6-4",
+              "value": "2"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\hat j:\\ -(-9-8) = {{1:17}}",
+              "f": "-(-9-8)",
+              "value": "17"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\hat k:\\ 3+4 = {{1:7}}",
+              "f": "3+4",
+              "value": "7"
+            },
+            {
+              "step": "s5",
+              "kind": "note",
+              "tex": "\\dfrac{x-3}{2} = \\dfrac{y-2}{17} = \\dfrac{z-1}{7}",
+              "note": "through (3, 2, 1)"
+            }
+          ],
+          "answer": "2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2",
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "71475dd8",
+        "answer": {
+          "value": 2,
+          "label": "(x-3)/2=(y-2)/17=(z-1)/7"
+        }
+      }
+    },
+    {
+      "id": "bf280909-3259-48ca-9920-1b5d87ae0427",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "eq",
+              "tex": "(\\lambda+2)-(-\\lambda+1)-(-\\lambda) = 0",
+              "lhs": "(x+2)-(-x+1)-(-x)",
+              "rhs": "0",
+              "roots": [
+                "-1/3"
+              ],
+              "note": "AP is perpendicular to l"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "P_x = -\\tfrac13 + 4 = {{1:\\dfrac{11}{3}}}",
+              "f": "-1/3+4",
+              "value": "11/3"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "P_y = \\tfrac13 + 2 = {{1:\\dfrac{7}{3}}}",
+              "f": "1/3+2",
+              "value": "7/3"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\alpha = 2\\cdot\\dfrac{11}{3}-2 = {{2:\\dfrac{16}{3}}}",
+              "f": "2*11/3-2",
+              "value": "16/3",
+              "note": "P is the mid-point of AA'"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\beta = 2\\cdot\\dfrac{7}{3}-1 = {{2:\\dfrac{11}{3}}}",
+              "f": "2*7/3-1",
+              "value": "11/3"
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "\\gamma = 2\\cdot\\dfrac{7}{3}-2 = {{2:\\dfrac{8}{3}}}",
+              "f": "2*7/3-2",
+              "value": "8/3"
+            },
+            {
+              "step": "s7",
+              "kind": "calc",
+              "tex": "5-4-1 = {{3:0}}",
+              "f": "5-4-1",
+              "value": "0",
+              "note": "AA' is perpendicular to l"
+            }
+          ],
+          "answer": "16/3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s4",
+              "s5",
+              "s6"
+            ]
+          },
+          {
+            "from": 10,
+            "beats": [
+              "s7"
+            ]
+          }
+        ],
+        "fingerprint": "6eabc149",
+        "answer": {
+          "value": 5.333333333333333,
+          "label": "A'(16/3, 11/3, 8/3)"
+        }
+      }
+    },
+    {
+      "id": "c0220aa9-5a53-4c61-834b-e6d90a3b70c5",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "eq",
+              "tex": "(\\lambda-1)+2(2\\lambda-5)+3(3\\lambda-1) = 0",
+              "lhs": "(x-1)+2*(2*x-5)+3*(3*x-1)",
+              "rhs": "0",
+              "roots": [
+                "1"
+              ],
+              "note": "PM is perpendicular to l"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "M_y = 2(1)+1 = {{1:3}}",
+              "f": "2*1+1",
+              "value": "3"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "M_z = 3(1)+2 = {{1:5}}",
+              "f": "3*1+2",
+              "value": "5"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "Q_x = 2(1)-1 = {{2:1}}",
+              "f": "2*1-1",
+              "value": "1",
+              "note": "M is the mid-point of PQ"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "Q_y = 2(3)-6 = {{2:0}}",
+              "f": "2*3-6",
+              "value": "0"
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "Q_z = 2(5)-3 = {{2:7}}",
+              "f": "2*5-3",
+              "value": "7"
+            },
+            {
+              "step": "s7",
+              "kind": "note",
+              "tex": "\\dfrac{x-1}{1} = \\dfrac{y}{2} = \\dfrac{z-7}{3}"
+            }
+          ],
+          "answer": "7"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s4",
+              "s5",
+              "s6"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s7"
+            ]
+          }
+        ],
+        "fingerprint": "981afbf1",
+        "answer": {
+          "value": 7,
+          "label": "(x-1)/1=y/2=(z-7)/3"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

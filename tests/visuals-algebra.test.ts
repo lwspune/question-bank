@@ -20,7 +20,7 @@ const quad = {
     { step: "s1", kind: "eq", tex: "x^2 {{1:-5x}} + 6 = 0", lhs: "x^2-5*x+6", rhs: "0" },
     { step: "s2", kind: "eq", tex: "x^2 {{1:-2x-3x}} + 6 = 0", lhs: "x^2-2*x-3*x+6", rhs: "0", note: "split −5x" },
     { step: "s3", kind: "eq", tex: "(x-2)(x-3) = 0", lhs: "(x-2)*(x-3)", rhs: "0" },
-    { step: "s4", kind: "note", tex: "x = 2 \text{ or } x = 3" },
+    { step: "s4", kind: "note", tex: "x = 2 \\text{ or } x = 3" },
   ],
   answer: "2",
 };
@@ -34,6 +34,29 @@ describe("algebraSteps scene", () => {
   it("refuses an equation line the roots do not satisfy (a dropped sign)", () => {
     const bad = { ...quad, lines: [...quad.lines.slice(0, 2), { step: "s3", kind: "eq", tex: "(x+2)(x-3) = 0", lhs: "(x+2)*(x-3)", rhs: "0" }] };
     expect(parse(bad).error).toMatch(/line 3/);
+  });
+
+  it("reads a mark inside a fraction's own braces, and leaves ordinary double braces alone", () => {
+    const frac = {
+      lines: [
+        { step: "s1", kind: "calc", tex: "\\dfrac{{{1:2x}}}{2} = {{x}}", f: "2/2", value: "1" },
+        { step: "s2", kind: "note", tex: "x = 1" },
+      ],
+      answer: "1",
+    };
+    const p = ok(frac) as { lines: { tex: string }[] };
+    expect(p.lines[0].tex).toBe("\\dfrac{\\htmlClass{viz-mark-1}{2x}}{2} = {{x}}");
+    // A mark with a colour that does not exist is still refused.
+    expect(parse({ ...frac, lines: [{ ...frac.lines[0], tex: "{{4:x}}" }] })).toHaveProperty("error");
+  });
+
+  it("refuses a line that lost a backslash: a control character, or a bare TeX command word (review 2026-10-29)", () => {
+    const base = { lines: [{ step: "s1", kind: "calc", tex: "h = \\frac52", f: "5/2", value: "2.5" }, { step: "s2", kind: "note", tex: "x" }], answer: "2.5" };
+    expect(parse(base)).not.toHaveProperty("error");
+    // "\t" in "\text" read as an escape became a TAB, and "\f" a form feed.
+    expect(parse({ ...base, lines: [{ ...base.lines[0], tex: "h ≥ 0 ⇒ \text{pair}" }, base.lines[1]] }).error).toMatch(/line 1/);
+    expect(parse({ ...base, lines: [{ ...base.lines[0], tex: "h = frac52" }, base.lines[1]] }).error).toMatch(/line 1/);
+    expect(parse({ ...base, lines: [base.lines[0], { ...base.lines[1], tex: "x = sqrt{2}" }] }).error).toMatch(/line 2/);
   });
 
   it("lets an equation line carry its own roots, for working where each line solves for something else", () => {
@@ -55,8 +78,8 @@ describe("algebraSteps scene", () => {
     const chain = {
       vars: { a: "3", b: "2" },
       lines: [
-        { step: "s1", kind: "expr", tex: "\alpha^2 + \beta^2", f: "13" },
-        { step: "s2", kind: "expr", tex: "(\alpha+\beta)^2 - 2\alpha\beta", f: "(a+b)^2-2*a*b" },
+        { step: "s1", kind: "expr", tex: "\\alpha^2 + \\beta^2", f: "13" },
+        { step: "s2", kind: "expr", tex: "(\\alpha+\\beta)^2 - 2\\alpha\\beta", f: "(a+b)^2-2*a*b" },
         { step: "s3", kind: "expr", tex: "13", f: "13" },
       ],
       answer: "13",
@@ -73,8 +96,8 @@ describe("algebraSteps scene", () => {
   it("checks a calc line on its own: the formula must equal the value it states, to the shown decimals", () => {
     const calc = {
       lines: [
-        { step: "s1", kind: "calc", tex: "f'(a) = \dfrac{1}{0.27}", f: "1/(3*0.027^(2/3))", value: "1/0.27" },
-        { step: "s2", kind: "calc", tex: "0.3 - \dfrac{0.001}{0.27} \approx 0.2963", f: "0.3-0.001/0.27", value: "0.2963", dp: 4 },
+        { step: "s1", kind: "calc", tex: "f'(a) = \\dfrac{1}{0.27}", f: "1/(3*0.027^(2/3))", value: "1/0.27" },
+        { step: "s2", kind: "calc", tex: "0.3 - \\dfrac{0.001}{0.27} \\approx 0.2963", f: "0.3-0.001/0.27", value: "0.2963", dp: 4 },
       ],
       answer: "0.2963",
     };
@@ -96,12 +119,30 @@ describe("algebraSteps scene", () => {
     const p = ok(quad);
     const one = maths(scene.frame(p, { played: ["s1"], t: 1, slider: undefined }));
     expect(one).toHaveLength(1);
-    expect(one[0].tex).toContain("\htmlClass{viz-mark-1}{-5x}");
+    expect(one[0].tex).toContain("\\htmlClass{viz-mark-1}{-5x}");
     const all = maths(scene.frame(p, { played: ["s1", "s2", "s3", "s4"], t: 1, slider: undefined }));
     expect(all.length).toBe(4);
     expect(all[1].y).toBeGreaterThan(all[0].y);
     expect(scene.viewBox(p).h).toBeGreaterThan(4 * 30);
     const notes = scene.frame(p, { played: ["s1", "s2"], t: 1, slider: undefined }).filter((s) => s.kind === "text").map((s) => (s as { text: string }).text);
     expect(notes).toContain("split −5x");
+  });
+
+  it("gives a three-row matrix a taller row than a fraction, so its last row is not cut off (review 2026-10-29)", () => {
+    const line = (tex: string) => ({ lines: [{ step: "s1", kind: "calc", tex, f: "0", value: "0" }, { step: "s2", kind: "note", tex: "x" }], answer: "0" });
+    const frac = scene.viewBox(ok(line("\\dfrac{1}{2} = 0"))).h;
+    expect(scene.viewBox(ok(line("D = \\begin{vmatrix} 3 & -2 & 1 \\\\ -2 & 4 & -1 \\\\ 3 & -2 & 1 \\end{vmatrix} = 0"))).h).toBeGreaterThan(frac);
+  });
+
+  it("gives a fraction of fractions the matrix height, so the inner denominators are not cut off (review 2026-10-29)", () => {
+    const line = (tex: string) => ({ lines: [{ step: "s1", kind: "calc", tex, f: "0", value: "0" }, { step: "s2", kind: "note", tex: "x" }], answer: "0" });
+    const frac = scene.viewBox(ok(line("\\dfrac{1}{2} = 0"))).h;
+    expect(scene.viewBox(ok(line("\\dfrac{x-\\frac35}{\\frac15}=\\dfrac{y+\\frac7{15}}{\\frac1{15}}"))).h).toBeGreaterThan(frac);
+  });
+
+  it("gives a small fraction under a root a tall row too, so it is not cut off (review 2026-10-29)", () => {
+    const line = (tex: string) => ({ lines: [{ step: "s1", kind: "calc", tex, f: "3/4", value: "0.75" }, { step: "s2", kind: "note", tex: "x" }], answer: "0.75" });
+    const flat = scene.viewBox(ok(line("\\lambda = 0.75"))).h;
+    expect(scene.viewBox(ok(line("\\lambda = \\sqrt{\\tfrac{9}{16}} = \\tfrac34"))).h).toBeGreaterThan(flat);
   });
 });

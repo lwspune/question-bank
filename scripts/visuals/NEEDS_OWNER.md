@@ -117,6 +117,8 @@ settled; settled rows move to the bottom with the date and what was done.
 | `03e0d7f6` | MHT-CET · Applications of Derivative | **Stem ill-posed.** y = a log x + bx² + x cannot have an extreme value at x = −1 (log x is undefined there); the keyed 3/2 treats log x as log\|x\|. The solution says so. | A notice, or check the source (log\|x\|). |
 | `9f46a3b4` | MHT-CET · Applications of Derivative | **Duplicate options.** A and B both print 1/(6π) cm/sec (keyed C, 1/(16π), is unaffected). Solution corrected 2026-10-29 (solution-fixes c). | Restore option B from the source. |
 | `9fa84dae` | Maharashtra HSC 12 · Application of Derivatives | **Stem incoherent as printed (book's own).** x = −1 cannot be an extreme point of y = α log x + βx² + x, since log x is undefined there. Under the intended log\|x\| the key C (α = 2, β = −1/2) is right; the solution says so. | Change log x to log\|x\| in the stem (hash-safe repair). |
+| `521dd092` | Maharashtra HSC 12 · Vectors | **Duplicate options.** B and C both print ±(i + j − k)/√3 (keyed A, ±(i + j − 2k)/√6, is right and unaffected). Found 2026-10-29 in the algebra-steps run. | Restore option C from the source. |
+| `a2734bf7` | CBSE Class 12 · Vector Algebra | **Duplicate options.** B and C both print AB + BC − AC = 0 (keyed C, the "not true" one, must differ from B). The stored solution notes it. Found 2026-10-29 in the algebra-steps run. | Restore option B or C from NCERT Fig 10.18's question. |
 
 ## Settled
 

@@ -1,0 +1,442 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "cf67d24f-7612-4cc0-a2eb-92f69487bee6",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\vec{PQ}=5\\hat{i}+\\hat{j}+2\\hat{k},\\ \\vec{AB}=3\\hat{i}-2\\hat{j}-6\\hat{k}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\vec{PQ}\\cdot\\vec{AB}=15-2-12={{1:1}}",
+              "f": "5*3+1*(-2)+2*(-6)",
+              "value": "1"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "|\\vec{AB}|^2=9+4+36={{2:49}}",
+              "f": "3^2+(-2)^2+(-6)^2",
+              "value": "49"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\hat{i}:\\ \\dfrac{ {{1:1}} }{ {{2:49}} }\\cdot 3={{3:\\dfrac{3}{49}}}",
+              "f": "1/49*3",
+              "value": "3/49"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\hat{j}:\\ \\dfrac{1}{49}\\cdot(-2)=-\\dfrac{2}{49}",
+              "f": "1/49*(-2)",
+              "value": "-2/49"
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "\\hat{k}:\\ \\dfrac{1}{49}\\cdot(-6)=-\\dfrac{6}{49}",
+              "f": "1/49*(-6)",
+              "value": "-6/49"
+            }
+          ],
+          "answer": "3/49"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s2",
+              "s3",
+              "s4",
+              "s5",
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "e844d4e0",
+        "answer": {
+          "value": 0.061224489795918366,
+          "label": "(3i − 2j − 6k)/49"
+        }
+      }
+    },
+    {
+      "id": "d23f8d41-af02-46e2-9956-358734b2808e",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "M=\\begin{pmatrix}1&1&0\\\\0&1&1\\\\1&0&1\\end{pmatrix}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\det M=1(1)-1(-1)+0={{1:2}}",
+              "f": "1*(1*1-1*0)-1*(0*1-1*1)+0*(0*0-1*1)",
+              "value": "2"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "[\\vec a+\\vec b\\ \\vec b+\\vec c\\ \\vec c+\\vec a]=2[\\vec a\\ \\vec b\\ \\vec c]"
+            }
+          ],
+          "answer": "2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "18446a15",
+        "answer": {
+          "value": 2,
+          "label": "coefficient 2"
+        }
+      }
+    },
+    {
+      "id": "d4a79958-1c6d-4924-8d8c-938f5cf92d17",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\vec v=2\\hat i+3\\hat j+4\\hat k"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "|p|+|q|+|r|={{1:2}}+{{2:3}}+{{3:4}}=9",
+              "f": "abs(2)+abs(3)+abs(4)",
+              "value": "9"
+            }
+          ],
+          "answer": "9"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "872be8e6",
+        "answer": {
+          "value": 9,
+          "label": "9"
+        }
+      }
+    },
+    {
+      "id": "d54dea55-e70d-404b-af90-1cb5ebeed778",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\overline{AB}=-2\\hat i+3\\hat j-3\\hat k,\\ \\overline{AC}=-4\\hat i+6\\hat j-6\\hat k"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\hat i:\\ (3)(-6)-(-3)(6)=-18+18={{1:0}}",
+              "f": "3*(-6)-(-3)*6",
+              "value": "0"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\hat j:\\ -\\left[(-2)(-6)-(-3)(-4)\\right]=-(12-12)={{1:0}}",
+              "f": "-((-2)*(-6)-(-3)*(-4))",
+              "value": "0"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\hat k:\\ (-2)(6)-(3)(-4)=-12+12={{1:0}}",
+              "f": "(-2)*6-3*(-4)",
+              "value": "0"
+            },
+            {
+              "step": "s5",
+              "kind": "note",
+              "tex": "\\overline{AB}\\times\\overline{AC}=\\vec 0"
+            }
+          ],
+          "answer": "0"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s2",
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "db4e3bfd",
+        "answer": {
+          "value": 0,
+          "label": "AB × AC = 0"
+        }
+      }
+    },
+    {
+      "id": "d558c863-595b-463c-b594-89cfa6e75661",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\dfrac{2}{p}=\\dfrac{-3}{6}=\\dfrac{4}{-8}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{-3}{6}=\\dfrac{4}{-8}=-\\dfrac12",
+              "f": "-3/6",
+              "value": "-0.5"
+            },
+            {
+              "step": "s3",
+              "kind": "eq",
+              "tex": "\\dfrac{2}{ {{1:p}} }=-\\dfrac12",
+              "lhs": "2/x",
+              "rhs": "-1/2",
+              "roots": [
+                "-4"
+              ]
+            },
+            {
+              "step": "s4",
+              "kind": "eq",
+              "tex": "{{1:p}}=-4",
+              "lhs": "x",
+              "rhs": "-4",
+              "roots": [
+                "-4"
+              ]
+            }
+          ],
+          "answer": "-4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "8f68ff09",
+        "answer": {
+          "value": -4,
+          "label": "p = −4"
+        }
+      }
+    },
+    {
+      "id": "d77af2bc-a9c9-4588-9c5a-3d317d920488",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\vec a=-\\tfrac35\\hat i+\\tfrac12\\hat j+\\tfrac13\\hat k,\\ \\vec b=5\\hat i+4\\hat j+3\\hat k"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\vec a\\cdot\\vec b=-3+2+1={{1:0}}",
+              "f": "(-3/5)*5+(1/2)*4+(1/3)*3",
+              "value": "0"
+            }
+          ],
+          "answer": "0"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "c493caa8",
+        "answer": {
+          "value": 0,
+          "label": "a · b = 0, orthogonal"
+        }
+      }
+    },
+    {
+      "id": "d798d756-399c-44e1-9938-57cd020e33b9",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\vec{AB}=\\hat i+5\\hat j-7\\hat k"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\vec{AC}=-\\hat i-5\\hat j+7\\hat k"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{-1}{1}={{1:-1}}",
+              "f": "-1/1",
+              "value": "-1"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\dfrac{-5}{5}={{1:-1}}",
+              "f": "-5/5",
+              "value": "-1"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\dfrac{7}{-7}={{1:-1}}",
+              "f": "7/(-7)",
+              "value": "-1"
+            },
+            {
+              "step": "s6",
+              "kind": "note",
+              "tex": "\\vec{AC}=-\\vec{AB}"
+            }
+          ],
+          "answer": "-1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s2",
+              "s3",
+              "s4",
+              "s5"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "057b3d09",
+        "answer": {
+          "value": -1,
+          "label": "AC = −1 · AB"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

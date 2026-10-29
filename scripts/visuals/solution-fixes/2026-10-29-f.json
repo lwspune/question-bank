@@ -1,0 +1,8 @@
+[
+  {
+    "id": "41691864-19cd-4f43-a585-443c2e9081f8",
+    "before": "7fe3e472",
+    "solution": "Let \\(\\vec{a}=2\\hat{i}-\\hat{j}, \\vec{b}=-3\\hat{i}+4\\hat{k}, \\vec{c}=-\\hat{i}-\\hat{j}+4\\hat{k}, \\vec{d}=-5\\hat{j}+2\\hat{k}\\) be the position vectors of A, B, C, D respectively.\n\n\\(\\overline{AB} = \\vec{b}-\\vec{a} = -5\\hat{i}+\\hat{j}+4\\hat{k}\\)\n\n\\(\\overline{AC} = \\vec{c}-\\vec{a} = -3\\hat{i}+4\\hat{k}\\)\n\n\\(\\overline{AD} = \\vec{d}-\\vec{a} = -2\\hat{i}-4\\hat{j}+2\\hat{k}\\)\n\nConsider: \\(\\overline{AB}\\cdot(\\overline{AC}\\times\\overline{AD}) = \\begin{vmatrix} -5 & 1 & 4 \\\\ -3 & 0 & 4 \\\\ -2 & -4 & 2 \\end{vmatrix}\\)\n\n\\(= -5(0+16) - 1(-6+8) + 4(12)\\)\n\n\\(= -80 - 2 + 48 = -34 \\neq 0\\)\n\nTherefore, the points A, B, C, D are non-coplanar.",
+    "note": "the determinant -5(16) - 1(2) + 4(12) = -80 - 2 + 48 is -34, not 34; still non-zero, so the conclusion (non-coplanar) stands."
+  }
+]

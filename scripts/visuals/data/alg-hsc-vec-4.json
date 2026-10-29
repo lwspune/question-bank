@@ -1,0 +1,231 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "3108da0f-f14d-4714-85e6-fedbcfce2413",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\hat i\\times\\hat j=\\hat k,\\ \\hat j\\times\\hat k=\\hat i,\\ \\hat k\\times\\hat i=\\hat j"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\hat i\\cdot(\\hat j\\times\\hat k)=\\hat i\\cdot\\hat i={{1:1}}",
+              "f": "1",
+              "value": "1"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\hat j\\cdot(\\hat k\\times\\hat i)=\\hat j\\cdot\\hat j={{2:1}}",
+              "f": "1",
+              "value": "1"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\hat k\\cdot(\\hat i\\times\\hat j)=\\hat k\\cdot\\hat k={{3:1}}",
+              "f": "1",
+              "value": "1"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "{{1:1}}+{{2:1}}+{{3:1}}=3",
+              "f": "1+1+1",
+              "value": "3"
+            }
+          ],
+          "answer": "1+1+1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "00fd2a9f",
+        "answer": {
+          "value": 3,
+          "label": "3"
+        }
+      }
+    },
+    {
+      "id": "3113b2ba-d42f-4226-b2b2-27fdc4aa069e",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\vec D=\\dfrac{\\vec a+2\\vec b}{3},\\ \\vec E=\\dfrac{\\vec b}{2}"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\dfrac t3=1-s,\\quad \\dfrac{2t}3=\\dfrac s2\\Rightarrow s=\\dfrac{4t}3",
+              "note": "equate coefficients of a and b"
+            },
+            {
+              "step": "s3",
+              "kind": "eq",
+              "tex": "\\dfrac t3=1-\\dfrac{4t}{3}",
+              "lhs": "x/3",
+              "rhs": "1-4*x/3",
+              "roots": [
+                "3/5"
+              ]
+            },
+            {
+              "step": "s4",
+              "kind": "eq",
+              "tex": "\\dfrac{5t}{3}=1",
+              "lhs": "5*x/3",
+              "rhs": "1",
+              "roots": [
+                "3/5"
+              ]
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "OP:PD=t:(1-t)={{1:\\dfrac35}}:\\dfrac25",
+              "f": "(3/5)/(1-3/5)",
+              "value": "3/2",
+              "note": "OP : PD = 3 : 2"
+            }
+          ],
+          "answer": "(3/5)/(1-3/5)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "4bbaa9d1",
+        "answer": {
+          "value": 1.4999999999999998,
+          "label": "OP : PD = 3 : 2"
+        }
+      }
+    },
+    {
+      "id": "396a34c7-485d-473b-8d86-baf25cd27794",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "|\\hat q|^2=|\\hat p+\\hat r|^2,\\ \\text{let } \\hat p\\cdot\\hat r=k"
+            },
+            {
+              "step": "s2",
+              "kind": "eq",
+              "tex": "1=1+2k+1",
+              "lhs": "1",
+              "rhs": "2+2*x",
+              "roots": [
+                "-1/2"
+              ]
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\hat q\\cdot\\hat r=k+|\\hat r|^2={{1:-\\dfrac12}}+1=\\dfrac12",
+              "f": "-1/2+1",
+              "value": "1/2"
+            }
+          ],
+          "answer": "-1/2+1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "6a0551fe",
+        "answer": {
+          "value": 0.5,
+          "label": "1/2"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

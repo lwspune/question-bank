@@ -83,6 +83,34 @@ takes the FIRST kind that fits; anything left keeps its still solution.
 - Write any line holding a backslash with the Edit tool, not a shell heredoc
   or Python string: escaping mangled `\htmlClass` and the TALL regex once.
 
+**Algebra steps refinement log:**
+- 2026-10-29, first 12th-board run (HSC + CBSE Application of Derivatives,
+  HSC Pair of Straight Lines; 111 applied): the drafts were right; the
+  faults were mechanical. (1) A lost JSON escape turned `\text`, `\frac`,
+  `\beta` into TAB, form feed, backspace: the scene now refuses a control
+  character or a bare `frac`/`sqrt`/`text` (repair: scratchpad fixctl.js maps
+  them back). The same check caught the scene's own test fixtures. (2)
+  `\dfrac{{{1:...}}}{2}` (a mark inside a fraction's brace) was refused as a
+  bad mark: plain double braces now pass through. (3) Notes printed `x^2`,
+  `pi`: write x², π. Judgement calls dropped at review: a proof re-done on a
+  numeric example the stored proof never uses, and a note addressed to the
+  checker ("check numbers use a = 1, b = 2"). Yield is low on proofs with
+  free letters (Pair of Straight Lines: 15 of 49), high on rates and
+  approximations (CBSE AoD: 53 of 85).
+- 2026-10-29, vectors and 3D (HSC Vectors, CBSE Vector Algebra, CBSE 3D
+  Geometry; ~370 applied): one agent per 14-question slice deciding sketch /
+  algebra / none and drafting in the same pass works (~2 min a slice). Telling
+  agents to check a vector answer per component (one calc a component, answer
+  pinned to the first non-zero one) raised yield from ~4 to ~9 of 14. Row
+  heights needed two more classes: a three-row matrix, and a fraction whose
+  top or bottom holds a fraction. The x/λ trap: formulas use x, but drafts
+  leaked x into the SHOWN maths ("9x − 37" for 9λ − 37); the brief now says
+  tex keeps the solution's own letter, and scratchpad scanx.js lists suspects
+  (most hits are real coordinates). Other recurring repairs: a lost `\v` /
+  `\a` (vertical tab, bell), a ninth step (limit eight), an eq line without
+  roots. Not a fit: HSC Mathematical Logic's noFit pile (sentences in words,
+  negations, switching circuits): the checker reads numbers, not truth values.
+
 ## Pieces
 
 | Piece | Where |
