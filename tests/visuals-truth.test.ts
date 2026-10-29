@@ -137,3 +137,30 @@ describe("truthTable in words", () => {
     expect(parseError({ ...raining, letters: { p: "x".repeat(60) } })).toMatch(/p/);
   });
 });
+
+describe("truthTable: several transforms at once", () => {
+  const three = {
+    letters: { p: "a man is happy", q: "he is rich" },
+    ask: {
+      kind: "transforms",
+      of: "p -> q",
+      ops: [
+        { op: "converse", equals: "q -> p" },
+        { op: "inverse", equals: "~p -> ~q" },
+        { op: "contrapositive", equals: "~q -> ~p" },
+      ],
+    },
+  };
+
+  it("checks every transform the question asks for, and fails if any one is wrong", () => {
+    expect(value(three)).toBe(1);
+    const wrong = { ...three, ask: { ...three.ask, ops: [three.ask.ops[0], { op: "inverse", equals: "~q -> ~p" }, three.ask.ops[2]] } };
+    expect(value(wrong)).toBe(0);
+  });
+
+  it("refuses an empty list, more than three, and an unknown operation", () => {
+    expect(parseError({ ...three, ask: { ...three.ask, ops: [] } })).toMatch(/ops/);
+    expect(parseError({ ...three, ask: { ...three.ask, ops: [...three.ask.ops, three.ask.ops[0]] } })).toMatch(/ops/);
+    expect(parseError({ ...three, ask: { ...three.ask, ops: [{ op: "reverse", equals: "q -> p" }] } })).toMatch(/op/);
+  });
+});

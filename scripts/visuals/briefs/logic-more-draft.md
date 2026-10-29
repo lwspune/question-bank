@@ -67,6 +67,10 @@ if-then"), truth values of statements in words: the truth table of
   inverse / contrapositive, `equivalent` for a rewrite (p → q as ∼p ∨ q),
   `evaluate` for a truth value (`at` gives each letter's truth value, which the
   solution states; `expect` the value it concludes).
+- Converse, inverse AND contrapositive (or any two of them) asked together:
+  `{ "kind": "transforms", "of": "p -> q", "ops": [{ "op": "converse", "equals": "q -> p" }, { "op": "inverse", "equals": "~p -> ~q" }, { "op": "contrapositive", "equals": "~q -> ~p" }] }`,
+  one to three ops, each checked; `say` can give all three answers in words
+  (at most 120 characters), or leave it out when they do not fit.
 - A sentence that is not built from letters and connectives (an open sentence,
   a single fact like "3 is not a root", a quantified sentence): not this tool.
 
@@ -111,6 +115,9 @@ set to test, a question in several unrelated parts: skip with a short reason.
   it is a draft, and `"figureNeeded"` and `"solutionWrong"` as `truth-draft.md`
   says.
 - Use the question's own statements and numbers; never change the problem.
+- Animate only what the solution concludes: a question that asks only for a
+  negation (and whose solution gives no truth value) is not a setClaim with a
+  T/F answer; a check comparing a formula with itself is not a check: skip.
 - If the key is not what your picture gives, skip with the reason.
 - In the JSON every backslash is doubled; text fields are plain (∼ ∧ ∨ → ↔ ∀
   ∃ ≥ ≤ allowed, no LaTeX).

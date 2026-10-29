@@ -27,7 +27,8 @@ type Ask =
   | { kind: "classify"; f: Logic; expect: Kind }
   | { kind: "solve"; f: Logic; value: boolean; expect: Record<string, boolean> }
   | { kind: "evaluate"; at: Record<string, boolean>; f: Logic[]; expect: boolean[] }
-  | { kind: "transform"; of: Logic; op: Transform; made: Logic; equals: Logic };
+  | { kind: "transform"; of: Logic; op: Transform; made: Logic; equals: Logic }
+  | { kind: "transforms"; of: Logic; ops: { op: Transform; made: Logic; equals: Logic }[] };
 
 interface Column {
   f: Logic;
@@ -163,6 +164,10 @@ export function truthFacts(p: TruthParams): TruthFacts {
       value = equivalent(a.made, a.equals) ? 1 : 0;
       marked = [find(a.made), find(a.equals)];
       break;
+    case "transforms":
+      value = a.ops.every((o) => equivalent(o.made, o.equals)) ? 1 : 0;
+      marked = [...new Set(a.ops.flatMap((o) => [find(o.made), find(o.equals)]))];
+      break;
   }
   const facts: TruthFacts = { vars: p.vars, rows, columns: p.columns, values, value, lit, marked };
   cache.set(p, facts);
@@ -193,6 +198,8 @@ function header(p: TruthParams, f: TruthFacts): string {
       return `values: ${a.expect.map(tf).join(", ")}`;
     case "transform":
       return f.value ? `the ${a.op} matches, row by row` : `the ${a.op} does not match`;
+    case "transforms":
+      return f.value ? `each one matches, row by row` : `one of them does not match`;
   }
 }
 
@@ -280,8 +287,31 @@ export const truthTable: Scene<TruthParams> = {
           ask = { kind: "transform", of, op: a.op as Transform, made, equals };
           break;
         }
+        case "transforms": {
+          // Converse, inverse and contrapositive asked together: each is formed by the scene and checked.
+          const ops: Transform[] = ["negation", "converse", "inverse", "contrapositive", "dual"];
+          if (!Array.isArray(a.ops) || a.ops.length < 1 || a.ops.length > 3) throw new ParamError("ask.ops must be a list of 1 to 3");
+          const of = formula(a.of, "ask.of");
+          add(of, undefined, "given");
+          const list = a.ops.map((raw2, i) => {
+            const q = obj(raw2);
+            if (!ops.includes(q.op as Transform)) throw new ParamError(`ask.ops[${i}].op must be ${ops.join(", ")}`);
+            let made: Logic;
+            try {
+              made = transform(of, q.op as Transform);
+            } catch (e) {
+              throw new ParamError(`ask.ops[${i}]: no ${String(q.op)}: ${(e as Error).message}`);
+            }
+            const equals = formula(q.equals, `ask.ops[${i}].equals`);
+            add(made, undefined, `its ${String(q.op)}`);
+            add(equals, undefined, `keyed ${String(q.op)}`);
+            return { op: q.op as Transform, made, equals };
+          });
+          ask = { kind: "transforms", of, ops: list };
+          break;
+        }
         default:
-          throw new ParamError("ask.kind must be equivalent, classify, solve, evaluate or transform");
+          throw new ParamError("ask.kind must be equivalent, classify, solve, evaluate, transform or transforms");
       }
 
       const vars = varsOf(...columns.map((c) => c.f));
@@ -319,6 +349,10 @@ export const truthTable: Scene<TruthParams> = {
         return value ? "At the given truth values the statements take the keyed values." : "At the given truth values the statements do not take the keyed values.";
       case "transform":
         return value ? `The ${a.op} agrees with the keyed statement on every row.` : `The ${a.op} differs from the keyed statement on at least one row.`;
+      case "transforms":
+        return value
+          ? `The ${a.ops.map((o) => o.op).join(", ")} each agree with the keyed statement on every row.`
+          : `At least one of the ${a.ops.map((o) => o.op).join(", ")} differs from the keyed statement.`;
     }
   },
 
