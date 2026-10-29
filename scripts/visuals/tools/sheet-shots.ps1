@@ -19,7 +19,7 @@ try {
   foreach ($b in $Batches) { npm run visuals:run -- $b 2>&1 | Select-String "visuals \(|!!" }
   foreach ($b in $Batches) {
     $sheet = "file:///" + ((Join-Path $repo "generated-papers\visuals\$b.html") -replace "\\", "/")
-    & $edge --headless=new --disable-gpu --hide-scrollbars --window-size=1100,16000 "--user-data-dir=$prof" "--screenshot=$out\$b.png" $sheet 2>$null | Out-Null
+    & $edge --headless=new --disable-gpu --hide-scrollbars --virtual-time-budget=8000 --window-size=1100,16000 "--user-data-dir=$prof" "--screenshot=$out\$b.png" $sheet 2>$null | Out-Null
     Start-Sleep 2
   }
   python "$PSScriptRoot\split-sheet.py" $out $Tag @Batches

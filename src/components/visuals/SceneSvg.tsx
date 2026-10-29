@@ -1,4 +1,19 @@
+import katex from "katex";
 import type { Shape, Tone } from "@/lib/visuals/types";
+
+/**
+ * KaTeX may trust ONE command, \htmlClass, and only with the three mark
+ * classes (globals.css .viz-mark-*), so a stored maths line can colour a term
+ * and can never add a link, a style or any other class. KaTeX escapes the rest.
+ */
+const MARK = /^viz-mark-[1-3]$/;
+function mathHtml(tex: string): string {
+  return katex.renderToString(tex, {
+    throwOnError: false,
+    strict: "ignore",
+    trust: (ctx) => ctx.command === "\\htmlClass" && MARK.test((ctx as { class?: string }).class ?? ""),
+  });
+}
 
 /** Tone -> theme variable (defined on .viz in globals.css). */
 const VAR: Record<Tone, string> = {
@@ -17,7 +32,7 @@ const VAR: Record<Tone, string> = {
 // Text in the brand tone takes the lighter shade in dark mode, so it stays AA.
 const TEXT_VAR: Record<Tone, string> = { ...VAR, brand: "var(--viz-brand-text)" };
 
-function paint(s: Exclude<Shape, { kind: "text" }>) {
+function paint(s: Exclude<Shape, { kind: "text" | "math" }>) {
   return {
     fill: s.fill ? VAR[s.fill] : "none",
     stroke: s.stroke ? VAR[s.stroke] : undefined,
@@ -44,6 +59,18 @@ export default function SceneSvg({ shapes, w, h, label }: { shapes: Shape[]; w: 
             return <path key={i} d={s.d} {...paint(s)} />;
           case "polyline":
             return <polyline key={i} points={s.points.map((p) => p.join(",")).join(" ")} {...paint(s)} />;
+          case "math":
+            return (
+              <foreignObject key={i} x={s.x} y={s.y} width={s.w} height={s.h} opacity={s.opacity}>
+                <div
+                  // The size to start from; lib/visuals/fitMath shrinks the line in the browser if KaTeX draws it wider than the box.
+                  data-viz-math={s.size ?? 15}
+                  // KaTeX output is escaped HTML; the trust rule above is the only door.
+                  dangerouslySetInnerHTML={{ __html: mathHtml(s.tex) }}
+                  style={{ fontSize: s.size ?? 15, color: TEXT_VAR[s.tone], whiteSpace: "nowrap", overflow: "hidden", lineHeight: `${s.h}px` }}
+                />
+              </foreignObject>
+            );
           case "text":
             return (
               <text

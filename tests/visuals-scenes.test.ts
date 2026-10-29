@@ -20,6 +20,7 @@ function coords(s: Shape): number[] {
     case "circle": return [s.cx, s.cy, s.r];
     case "rect": return [s.x, s.y, s.w, s.h];
     case "text": return [s.x, s.y];
+    case "math": return [s.x, s.y, s.x + s.w, s.y + s.h];
     case "polyline": return s.points.flat();
     case "path": return (s.d.match(/-?\d+(\.\d+)?/g) ?? []).map(Number);
   }

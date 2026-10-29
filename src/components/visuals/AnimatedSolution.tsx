@@ -8,9 +8,10 @@
  * never rewritten; when the steps cannot be trusted against it, the picture
  * plays on its own and the whole solution sits below it.
  */
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { CheckCircle2, ChevronLeft, ChevronRight, Play } from "lucide-react";
 import BlockText from "@/components/math/BlockText";
+import { fitMathLines } from "@/lib/visuals/fitMath";
 import { easeInOut } from "@/lib/visuals/geometry";
 import { getScene } from "@/lib/visuals/registry";
 import { checkVisual, parseSolutionVisual, stepTexts } from "@/lib/visuals/visual";
@@ -81,6 +82,21 @@ function Player({ visual, solution }: { visual: Extract<ReturnType<typeof parseS
     seen.observe(el);
     return () => seen.disconnect();
   }, [steps]);
+
+  // Maths lines (algebra steps) are measured once drawn and shrunk if wider than their box.
+  useLayoutEffect(() => {
+    if (frame.current) fitMathLines(frame.current);
+  });
+  // ...and again once KaTeX's fonts have loaded, which widens every line.
+  useEffect(() => {
+    let live = true;
+    void document.fonts?.ready.then(() => {
+      if (live && frame.current) fitMathLines(frame.current, true);
+    });
+    return () => {
+      live = false;
+    };
+  }, []);
 
   // Stop any animation in flight when the player goes away.
   useEffect(

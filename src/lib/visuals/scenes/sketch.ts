@@ -18,6 +18,7 @@
  */
 import { compileExpr } from "../expr";
 import { arcPath, arrowHead, dot, fracText, line, lerp, num, progressOf, text } from "../geometry";
+import { parseVars, value } from "../namedVars";
 import { obj, ParamError, plainLabel, safely } from "../params";
 import type { Scene, Shape, Tone } from "../types";
 
@@ -26,7 +27,6 @@ const W = 340;
 const H = 260;
 const PAD = 14;
 const LIMITS = { vars: 30, points: 26, items: 40, asserts: 12 };
-const RESERVED = new Set(["x", "pi", "e", "sin", "cos", "tan", "asin", "acos", "atan", "exp", "log", "ln", "log10", "sqrt", "abs", "deg", "rad", "atan2", "min", "max"]);
 const TONES = new Set<Tone>(["fg", "muted", "brand", "amber", "good", "bad"]);
 type Pos = "n" | "s" | "e" | "w" | "ne" | "nw" | "se" | "sw";
 const POS: Record<Pos, [number, number, "start" | "middle" | "end"]> = {
@@ -61,19 +61,6 @@ export interface SketchParams {
   asserts: number;
 }
 
-/** Evaluate a number or formula against the vars so far. */
-function value(src: unknown, vars: Record<string, number>, field: string): number {
-  if (typeof src === "number") {
-    if (!Number.isFinite(src)) throw new ParamError(`${field} must be finite`);
-    return src;
-  }
-  const r = compileExpr(src, vars);
-  if ("error" in r) throw new ParamError(`${field}: ${r.error}`);
-  const v = r.fn(0);
-  if (!Number.isFinite(v)) throw new ParamError(`${field} is not a finite number`);
-  return v;
-}
-
 /** A label with {formula} parts filled in from the vars (fractions where they are fractions). */
 function fill(template: unknown, vars: Record<string, number>, field: string): string {
   if (typeof template !== "string") throw new ParamError(`${field} must be text`);
@@ -105,14 +92,7 @@ export const sketch: Scene<SketchParams> = {
     safely(() => {
       const o = obj(raw);
       // Named numbers, each from the ones before it.
-      const vars: Record<string, number> = {};
-      const vsrc = o.vars === undefined ? {} : obj(o.vars);
-      const names = Object.keys(vsrc);
-      if (names.length > LIMITS.vars) throw new ParamError(`at most ${LIMITS.vars} vars`);
-      for (const n of names) {
-        if (!/^[A-Za-z][A-Za-z0-9]{0,11}$/.test(n) || RESERVED.has(n)) throw new ParamError(`"${n}" cannot be a var name (letters and digits, not x, pi, e or a function)`);
-        vars[n] = value(vsrc[n], vars, `vars.${n}`);
-      }
+      const vars = parseVars(o.vars, LIMITS.vars);
 
       const w = obj(o.view);
       const range = (k: "x" | "y"): [number, number] => {
@@ -234,6 +214,8 @@ export const sketch: Scene<SketchParams> = {
     const X = (x: number) => ox + (x - xa) * k;
     const Y = (y: number) => H - oy - (y - ya) * k;
     const S = ([x, y]: Pt): Pt => [X(x), Y(y)];
+    // Shaded regions go first, under the axes, so a half-plane never hides them.
+    const fills: Shape[] = [];
     const under: Shape[] = [];
     const mid: Shape[] = [];
     const over: Shape[] = [];
@@ -298,7 +280,7 @@ export const sketch: Scene<SketchParams> = {
         case "polygon": {
           const pts = it.points.map(S);
           const d = `M${pts.map(([x, y]) => `${x.toFixed(2)} ${y.toFixed(2)}`).join(" L")} Z`;
-          under.push({ kind: "path", d, fill: "goodSoft", stroke, width: 1.5, opacity: pr });
+          fills.push({ kind: "path", d, fill: "goodSoft", stroke, width: 1.5, opacity: pr });
           break;
         }
         case "circle":
@@ -374,7 +356,7 @@ export const sketch: Scene<SketchParams> = {
     }
     if (p.title) over.push(text(W - 4, 14, p.title, { tone: "good", size: 11, weight: 600, anchor: "end" }));
     tidyLabels(over);
-    return [...under, ...mid, ...over];
+    return [...fills, ...under, ...mid, ...over];
   },
 };
 

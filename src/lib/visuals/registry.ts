@@ -3,6 +3,7 @@
  * scenes/, an entry here, and a real bank question as its fixture in
  * tests/fixtures/visuals.ts (the registry test fails until it has one).
  */
+import { algebraSteps } from "./scenes/algebraSteps";
 import { circleArc } from "./scenes/circleArc";
 import { coordGeometry } from "./scenes/coordGeometry";
 import { functionGraph } from "./scenes/functionGraph";
@@ -27,6 +28,7 @@ export const SCENES: Record<string, Scene<any>> = {
   lpRegion,
   truthTable,
   sketch,
+  algebraSteps,
 };
 
 export function getScene(id: string): Scene<any> | undefined {

@@ -257,6 +257,10 @@ a[data-nav-pending] {
     --viz-bad: #b91c1c;
     --viz-glass: #dcebfb;
   }
+  /* Algebra steps: a changed term, coloured in its old line and its new one. */
+  .viz .viz-mark-1 { color: var(--viz-brand-text); font-weight: 700; }
+  .viz .viz-mark-2 { color: var(--viz-amber); font-weight: 700; }
+  .viz .viz-mark-3 { color: var(--viz-good); font-weight: 700; }
   .dark .viz {
     --viz-amber: #f59e4b;
     --viz-good: #34d399;

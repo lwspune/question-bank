@@ -35,6 +35,20 @@ describe("SceneSvg", () => {
     expect(out).not.toMatch(/#[0-9a-f]{3,6}/i);
   });
 
+  it("typesets a maths line with KaTeX inside the picture, a marked term in its theme class", () => {
+    const out = html([{ kind: "math", x: 8, y: 10, w: 320, h: 30, tex: "x^2 \htmlClass{viz-mark-1}{-5x} + 6 = 0", tone: "fg" }]);
+    expect(out).toContain("<foreignObject");
+    expect(out).toContain("katex");
+    expect(out).toContain("viz-mark-1");
+    expect(out).not.toMatch(/#[0-9a-f]{3,6}/i);
+  });
+
+  it("refuses any htmlClass other than the three mark classes, and any other trusted command", () => {
+    const out = html([{ kind: "math", x: 0, y: 0, w: 300, h: 30, tex: "\htmlClass{evil}{x} + \href{javascript:alert(1)}{y}", tone: "fg" }]);
+    expect(out).not.toContain('class="evil');
+    expect(out).not.toMatch(/href="javascript/);
+  });
+
   it("escapes label text", () => {
     expect(html([{ kind: "text", x: 1, y: 1, text: "x < 0 & y > 1", tone: "fg" }])).toContain("x &lt; 0 &amp; y &gt; 1");
   });

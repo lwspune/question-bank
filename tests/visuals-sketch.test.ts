@@ -31,6 +31,15 @@ const tri = {
 };
 
 describe("sketch scene", () => {
+  it("draws a shaded region under the axes, so a half-plane never hides them (review 2026-10-29, LP)", () => {
+    const half = { ...tri, axes: true, items: [{ kind: "polygon", points: ["A", "B", "C"], step: "s1" }] };
+    const shapes = frame(half, ["s1"]);
+    const fill = shapes.findIndex((s) => s.kind === "path" && (s as { fill?: string }).fill === "goodSoft");
+    const axis = shapes.findIndex((s) => s.kind === "line" && (s as { stroke?: string }).stroke === "muted");
+    expect(fill).toBeGreaterThanOrEqual(0);
+    expect(axis).toBeGreaterThan(fill);
+  });
+
   it("works out its answer from the named numbers, in order", () => {
     expect(scene.check(ok(tri))).toBe(5);
     expect(scene.checkText(ok(tri), 5)).toMatch(/5/);
