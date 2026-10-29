@@ -544,50 +544,6 @@
           "label": "equivalent"
         }
       }
-    },
-    {
-      "id": "4cf9be7f-4a9a-46af-afda-51ed5b063cbf",
-      "visual": {
-        "v": 1,
-        "scene": "switchCircuit",
-        "params": {
-          "circuits": [
-            {
-              "f": "(~p & q) | (p & ~q) | (p & q)"
-            },
-            {
-              "f": "p | q",
-              "label": "simplified: S1 parallel S2"
-            }
-          ],
-          "equals": "(~p & q) | (p & ~q) | (p & q)"
-        },
-        "steps": [
-          {
-            "from": 0,
-            "beats": [
-              "build"
-            ]
-          },
-          {
-            "from": 3,
-            "beats": [
-              "rows"
-            ]
-          },
-          {
-            "from": 5,
-            "beats": [
-              "answer"
-            ]
-          }
-        ],
-        "fingerprint": "15a02391",
-        "answer": {
-          "value": 1,
-          "label": "S1 parallel S2"
-        }
-      }
     }
   ],
   "decided": []

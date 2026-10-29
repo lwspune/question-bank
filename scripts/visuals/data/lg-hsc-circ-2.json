@@ -2,46 +2,6 @@
   "//": "Assembled from agent drafts (switchCircuit).",
   "visuals": [
     {
-      "id": "5539db55-fdd9-4af5-9489-fff7e851a508",
-      "visual": {
-        "v": 1,
-        "scene": "switchCircuit",
-        "params": {
-          "circuits": [
-            {
-              "f": "(p & ~q) | (~p & q)"
-            }
-          ],
-          "equals": "(p & ~q) | (~p & q)"
-        },
-        "steps": [
-          {
-            "from": 0,
-            "beats": [
-              "build"
-            ]
-          },
-          {
-            "from": 3,
-            "beats": [
-              "rows"
-            ]
-          },
-          {
-            "from": 4,
-            "beats": [
-              "answer"
-            ]
-          }
-        ],
-        "fingerprint": "c0bb9abd",
-        "answer": {
-          "value": 1,
-          "label": "(p ∧ ∼q) ∨ (∼p ∧ q)"
-        }
-      }
-    },
-    {
       "id": "5c7c067f-bb39-4c67-9fb3-c948cdecb8d7",
       "visual": {
         "v": 1,
