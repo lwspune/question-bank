@@ -4,6 +4,8 @@
  *
  *   npx tsx scripts/solution-figures/recrop-ncert.ts            # measure every image, write the report, change nothing
  *   npx tsx scripts/solution-figures/recrop-ncert.ts --apply    # replace the ones the watermark crossed
+ *   ... --only="<label part>" [--reviewed] [--keep-old]          # just the labels containing it; --reviewed also
+ *       replaces a MISMATCH (someone has looked at new/ against live/); --keep-old leaves the old files in storage
  *
  * Three records name a figure's page and box, and are read here as they are:
  *   - scripts/ncert/data/<chapter>.*fig.json       stem figures (questions.image_url)
@@ -14,7 +16,8 @@
  * For each live image: re-crop it the OLD way (watermark kept) and compare with
  * the live file, then the NEW way and compare with the old. recrop.ts decides:
  * a record that no longer reproduces the live image is reported and left alone;
- * an image the watermark never crossed is left alone; the rest are replaced
+ * an image the watermark never crossed is left alone, and so is one an earlier run
+ * already replaced ("done"); the rest are replaced
  * (new object, row repointed, old object deleted once nothing points at it).
  */
 import { readFileSync, writeFileSync, readdirSync, existsSync, mkdirSync, mkdtempSync } from "node:fs";
@@ -46,11 +49,13 @@ function ncertJobs(): Job[] {
   for (const [id, ch] of Object.entries(CHAPTERS as Record<string, { sourceFile: string; pdf: string; examId: string }>)) {
     for (const f of files.filter((f) => f.startsWith(`${id}.`) && (f.endsWith("fig.json") || f.endsWith(".solution-images.json")))) {
       const field = f.endsWith("fig.json") ? "image_url" : "solution_image_url";
-      for (const e of JSON.parse(readFileSync(join(NCERT_DATA, f), "utf8")) as { ref: string; page?: number; bbox?: number[] }[]) {
+      for (const e of JSON.parse(readFileSync(join(NCERT_DATA, f), "utf8")) as { ref: string; page?: number; bbox?: number[]; also?: { page: number; bbox: number[] } }[]) {
         if (typeof e.page !== "number" || !e.bbox) continue; // a pre-made file or a computed diagram: not a page crop
+        // `also`: the second figure of a two-part image, stacked below the first.
+        const parts = [{ page: e.page, bbox: e.bbox }, ...(e.also ? [{ page: e.also.page, bbox: e.also.bbox }] : [])];
         jobs.push({
           key: `${id}-${field === "image_url" ? "stem" : "sol"}-${e.ref}`.replace(/[^A-Za-z0-9]+/g, "_"),
-          label: `${ch.sourceFile} ${e.ref} (${field})`, field, pdf: ch.pdf, parts: [{ page: e.page, bbox: e.bbox }],
+          label: `${ch.sourceFile} ${e.ref} (${field})`, field, pdf: ch.pdf, parts,
           find: { examId: ch.examId, sourceFile: ch.sourceFile, qn: e.ref },
         });
       }
@@ -86,12 +91,16 @@ function bioJobs(): Job[] {
 
 async function main() {
   const apply = process.argv.includes("--apply");
+  const only = process.argv.find((a) => a.startsWith("--only="))?.slice("--only=".length);
+  const reviewed = process.argv.includes("--reviewed");
+  const keepOld = process.argv.includes("--keep-old");
+  if (reviewed && !only) throw new Error("--reviewed needs --only: a MISMATCH is replaced only after someone has looked at it");
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
   const base = process.env.NEXT_PUBLIC_SUPABASE_URL!;
   const db = createClient(base, process.env.SUPABASE_SERVICE_ROLE_KEY!, { auth: { persistSession: false } });
   mkdirSync(join(OUT, "live"), { recursive: true });
 
-  const jobs = [...ncertJobs(), ...bioJobs()];
+  const jobs = [...ncertJobs(), ...bioJobs()].filter((j) => !only || j.label.includes(only));
   const rows = new Map<string, { id: string; value: string }[]>();
   for (const j of jobs) {
     let q = db.from("questions").select(`id, ${j.field}`).eq("exam_id", j.find.examId);
@@ -131,8 +140,9 @@ async function main() {
     const d = decideRecrop(m);
     tally[d] = (tally[d] ?? 0) + 1;
     if (d === "mismatch") report.push(`MISMATCH (${m.liveVsOld})  ${l.job.label}`);
-    if (d === "replace") toReplace.push({ ...l, newPng: m.new });
+    if (d === "replace" || (d === "mismatch" && reviewed)) toReplace.push({ ...l, newPng: m.new });
   }
+  writeFileSync(join(OUT, "metrics.json"), JSON.stringify(Object.fromEntries(live.map((l) => [l.job.label, { ...metrics[l.job.key], decision: decideRecrop(metrics[l.job.key]) }])), null, 1));
   writeFileSync(join(OUT, "report.txt"), report.join("\n") + "\n");
   console.log(`${jobs.length} records, ${live.length} live images measured: ${JSON.stringify(tally)}; ${report.length} notes in ${join(OUT, "report.txt")}`);
   if (!apply) { console.log("[dry run] look at out/recrop-ncert/new/ against live/, then --apply."); return; }
@@ -145,7 +155,8 @@ async function main() {
     replaced += r.ids.length;
     const old = r.value.startsWith("http") ? r.value.split(PUBLIC_PREFIX)[1] : r.value;
     const { count } = await db.from("questions").select("id", { count: "exact", head: true }).or(`image_url.eq.${r.value},solution_image_url.eq.${r.value}`);
-    if (old && count === 0 && existsSync(r.newPng)) { await deleteImage(db, old); deleted++; }
+    if (keepOld) console.log(`kept old ${old} -> new ${path}  ${r.job.label}`);
+    else if (old && count === 0 && existsSync(r.newPng)) { await deleteImage(db, old); deleted++; }
   }
   console.log(`done: ${replaced} rows repointed to ${toReplace.length} new images; ${deleted} old images deleted.`);
 }
