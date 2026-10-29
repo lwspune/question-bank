@@ -1,0 +1,406 @@
+{
+  "//": "Assembled from agent drafts (switchCircuit).",
+  "visuals": [
+    {
+      "id": "5539db55-fdd9-4af5-9489-fff7e851a508",
+      "visual": {
+        "v": 1,
+        "scene": "switchCircuit",
+        "params": {
+          "circuits": [
+            {
+              "f": "(p & ~q) | (~p & q)"
+            }
+          ],
+          "equals": "(p & ~q) | (~p & q)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "build"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "rows"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "c0bb9abd",
+        "answer": {
+          "value": 1,
+          "label": "(p ∧ ∼q) ∨ (∼p ∧ q)"
+        }
+      }
+    },
+    {
+      "id": "5c7c067f-bb39-4c67-9fb3-c948cdecb8d7",
+      "visual": {
+        "v": 1,
+        "scene": "switchCircuit",
+        "params": {
+          "circuits": [
+            {
+              "f": "(p & q) | ~p | (p & ~q)"
+            }
+          ],
+          "equals": "(p & q) | ~p | (p & ~q)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "build"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "rows"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "fbb613fa",
+        "answer": {
+          "value": 1,
+          "label": "(p ∧ q) ∨ ∼p ∨ (p ∧ ∼q)"
+        }
+      }
+    },
+    {
+      "id": "6674b7a5-70c8-4b91-a498-872d81213c7e",
+      "visual": {
+        "v": 1,
+        "scene": "switchCircuit",
+        "params": {
+          "circuits": [
+            {
+              "f": "(p | q) | (~p & ~q)"
+            }
+          ],
+          "equals": "(p | q) | (~p & ~q)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "build"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "rows"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "4037df5a",
+        "answer": {
+          "value": 1,
+          "label": "(p ∨ q) ∨ (∼p ∧ ∼q)"
+        }
+      }
+    },
+    {
+      "id": "6ffc94b6-cbee-4417-a871-e868c4e609b8",
+      "visual": {
+        "v": 1,
+        "scene": "switchCircuit",
+        "params": {
+          "circuits": [
+            {
+              "f": "(p | (~p & q)) | ((~q & r) | ~p)"
+            }
+          ],
+          "equals": "(p | (~p & q)) | ((~q & r) | ~p)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "build"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "rows"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "4fd73b80",
+        "answer": {
+          "value": 1,
+          "label": "four branches in parallel"
+        }
+      }
+    },
+    {
+      "id": "704feaa5-42f2-4fca-9dcd-e8e564c1f6dd",
+      "visual": {
+        "v": 1,
+        "scene": "switchCircuit",
+        "params": {
+          "circuits": [
+            {
+              "f": "p & (~p | ~q) & q"
+            }
+          ],
+          "equals": "p & (~p | ~q) & q"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "build"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "rows"
+            ]
+          },
+          {
+            "from": 10,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "96b0f0af",
+        "answer": {
+          "value": 1,
+          "label": "lamp never glows"
+        }
+      }
+    },
+    {
+      "id": "79a37725-80ca-4746-8c44-2963a0eb3e08",
+      "visual": {
+        "v": 1,
+        "scene": "switchCircuit",
+        "params": {
+          "circuits": [
+            {
+              "f": "(p | q) & ~p & ~q"
+            }
+          ],
+          "equals": "(p | q) & ~p & ~q"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "build"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "rows"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "c4091325",
+        "answer": {
+          "value": 1,
+          "label": "lamp never glows"
+        }
+      }
+    },
+    {
+      "id": "7d8dabb2-8ecb-44e3-936c-d8a898fdfd37",
+      "visual": {
+        "v": 1,
+        "scene": "switchCircuit",
+        "params": {
+          "circuits": [
+            {
+              "f": "(~p & q) | (p & ~r)"
+            }
+          ],
+          "equals": "(~p & q) | (p & ~r)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "build"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "rows"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "c0cdf163",
+        "answer": {
+          "value": 1,
+          "label": "two parallel branches"
+        }
+      }
+    },
+    {
+      "id": "7eda6c31-1a4a-4f28-a855-0f0937e86ce5",
+      "visual": {
+        "v": 1,
+        "scene": "switchCircuit",
+        "params": {
+          "circuits": [
+            {
+              "f": "(p | q) & ~p & ~q"
+            }
+          ],
+          "equals": "(p | q) & ~p & ~q"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "build"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "rows"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "1a8df8ea",
+        "answer": {
+          "value": 1,
+          "label": "lamp never glows"
+        }
+      }
+    },
+    {
+      "id": "81108f26-a77b-44f4-b6fa-3811f0dcec85",
+      "visual": {
+        "v": 1,
+        "scene": "switchCircuit",
+        "params": {
+          "circuits": [
+            {
+              "f": "(~p & q) | (p & ~r)"
+            }
+          ],
+          "equals": "(~p & q) | (p & ~r)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "build"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "rows"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "07bb031e",
+        "answer": {
+          "value": 1,
+          "label": "two parallel branches"
+        }
+      }
+    },
+    {
+      "id": "865e9232-49da-4f36-8135-167a79509ec1",
+      "visual": {
+        "v": 1,
+        "scene": "switchCircuit",
+        "params": {
+          "circuits": [
+            {
+              "f": "(p & ~q & r) | (p & (~q | ~r))"
+            }
+          ],
+          "equals": "(p & ~q & r) | (p & (~q | ~r))"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "build"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "rows"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "4aa382fe",
+        "answer": {
+          "value": 1,
+          "label": "two parallel branches"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

@@ -1,0 +1,382 @@
+{
+  "//": "Assembled from agent drafts (truthTable).",
+  "visuals": [
+    {
+      "id": "53bfd223-59c6-4f8c-99d5-687ce08b92c6",
+      "visual": {
+        "v": 1,
+        "scene": "truthTable",
+        "params": {
+          "letters": {
+            "p": "milk is white",
+            "q": "sky is blue"
+          },
+          "ask": {
+            "kind": "evaluate",
+            "at": {
+              "p": true,
+              "q": true
+            },
+            "f": [
+              "p <-> q"
+            ],
+            "expect": [
+              true
+            ]
+          },
+          "say": "Truth value: T."
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "vars"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "columns"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "3103d153",
+        "answer": {
+          "value": 1,
+          "label": "T"
+        }
+      }
+    },
+    {
+      "id": "54d9e48a-6087-4a1a-a69b-3e019555bafd",
+      "visual": {
+        "v": 1,
+        "scene": "truthTable",
+        "params": {
+          "letters": {
+            "p": "it is cold",
+            "q": "it is raining"
+          },
+          "ask": {
+            "kind": "transform",
+            "of": "p & q",
+            "op": "negation",
+            "equals": "~p | ~q"
+          },
+          "say": "It is not cold or it is not raining."
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "vars"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "columns"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "92bb6ea6",
+        "answer": {
+          "value": 1,
+          "label": "∼p ∨ ∼q"
+        }
+      }
+    },
+    {
+      "id": "5c239d6e-4d8f-47ca-af85-b0fc57d24aee",
+      "visual": {
+        "v": 1,
+        "scene": "truthTable",
+        "params": {
+          "letters": {
+            "p": "a man is a judge",
+            "q": "he is honest"
+          },
+          "ask": {
+            "kind": "equivalent",
+            "a": "p -> q",
+            "b": "~p | q"
+          },
+          "say": "A man is not a judge or he is honest."
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "vars"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "columns"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "60297ef7",
+        "answer": {
+          "value": 1,
+          "label": "∼p ∨ q"
+        }
+      }
+    },
+    {
+      "id": "6c12e0b3-12e1-4665-964f-91fccb4c95d3",
+      "visual": {
+        "v": 1,
+        "scene": "truthTable",
+        "params": {
+          "letters": {
+            "p": "the square of any even number is odd",
+            "q": "the cube of any odd number is odd"
+          },
+          "ask": {
+            "kind": "evaluate",
+            "at": {
+              "p": false,
+              "q": true
+            },
+            "f": [
+              "p | q"
+            ],
+            "expect": [
+              true
+            ]
+          },
+          "say": "p is F, q is T, so p ∨ q is T."
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "vars",
+              "columns"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "9dab0f55",
+        "answer": {
+          "value": 1,
+          "label": "T (True)"
+        }
+      }
+    },
+    {
+      "id": "6c720a0f-5625-4e46-96b4-b342f74355e1",
+      "visual": {
+        "v": 1,
+        "scene": "truthTable",
+        "params": {
+          "letters": {
+            "p": "All flowers are red",
+            "q": "All cows are black"
+          },
+          "ask": {
+            "kind": "evaluate",
+            "at": {
+              "p": false,
+              "q": false
+            },
+            "f": [
+              "p | q"
+            ],
+            "expect": [
+              false
+            ]
+          },
+          "say": "p and q are F, so p ∨ q is F."
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "vars",
+              "columns"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "33d46e19",
+        "answer": {
+          "value": 1,
+          "label": "F (False)"
+        }
+      }
+    },
+    {
+      "id": "7b4b36f6-b062-4020-a347-0fe592728b17",
+      "visual": {
+        "v": 1,
+        "scene": "truthTable",
+        "params": {
+          "letters": {
+            "p": "f(2) = 0",
+            "q": "f(x) is divisible by (x − 2)"
+          },
+          "ask": {
+            "kind": "equivalent",
+            "a": "p -> q",
+            "b": "~p | q"
+          },
+          "say": "f(2) ≠ 0 or f(x) is divisible by (x − 2)."
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "vars"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "columns"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "95e7d60f",
+        "answer": {
+          "value": 1,
+          "label": "∼p ∨ q"
+        }
+      }
+    },
+    {
+      "id": "81909bac-1e84-44e5-9049-986fb06b4de3",
+      "visual": {
+        "v": 1,
+        "scene": "truthTable",
+        "params": {
+          "letters": {
+            "p": "5 is a prime number",
+            "q": "7 divides 94"
+          },
+          "ask": {
+            "kind": "evaluate",
+            "at": {
+              "p": true,
+              "q": false
+            },
+            "f": [
+              "p & q"
+            ],
+            "expect": [
+              false
+            ]
+          },
+          "say": "T ∧ F = F, so the truth value is F."
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "vars"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "columns"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "ba0fd0d8",
+        "answer": {
+          "value": 1,
+          "label": "F"
+        }
+      }
+    },
+    {
+      "id": "81b078a6-03bb-4e46-8111-5a61bebc0c10",
+      "visual": {
+        "v": 1,
+        "scene": "truthTable",
+        "params": {
+          "letters": {
+            "p": "quadrilateral is a square",
+            "q": "it is a rhombus"
+          },
+          "ask": {
+            "kind": "transform",
+            "of": "p <-> q",
+            "op": "negation",
+            "equals": "(p & ~q) | (q & ~p)"
+          },
+          "say": "A square but not a rhombus, or a rhombus but not a square."
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "vars"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "columns"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "8339b552",
+        "answer": {
+          "value": 1,
+          "label": "(p ∧ ∼q) ∨ (q ∧ ∼p)"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

@@ -1,0 +1,294 @@
+{
+  "//": "Assembled from agent drafts (switchCircuit).",
+  "visuals": [
+    {
+      "id": "87124c72-7dab-4f7c-9ecd-1c111a121282",
+      "visual": {
+        "v": 1,
+        "scene": "switchCircuit",
+        "params": {
+          "circuits": [
+            {
+              "f": "(p|q)&(p|r)"
+            }
+          ],
+          "equals": "(p|q)&(p|r)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "build"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "rows"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "40fd8649",
+        "answer": {
+          "value": 1,
+          "label": "(S1 ∨ S2) ∧ (S1 ∨ S3)"
+        }
+      }
+    },
+    {
+      "id": "8bfccf61-49fe-4e8b-8a49-4cf1cf8e0a32",
+      "visual": {
+        "v": 1,
+        "scene": "switchCircuit",
+        "params": {
+          "circuits": [
+            {
+              "f": "(p|~q|~r)&(p|(q&r))"
+            }
+          ],
+          "equals": "(p|~q|~r)&(p|(q&r))"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "build"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "rows"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "1707187b",
+        "answer": {
+          "value": 1,
+          "label": "(p ∨ ∼q ∨ ∼r) ∧ [p ∨ (q ∧ r)]"
+        }
+      }
+    },
+    {
+      "id": "90e4679b-9e00-4575-9d4c-b4eb8fe9116e",
+      "visual": {
+        "v": 1,
+        "scene": "switchCircuit",
+        "params": {
+          "circuits": [
+            {
+              "f": "(p&~q)|(~p&q)|(~p&~q)"
+            },
+            {
+              "f": "~p|~q",
+              "label": "simplified: S1′ parallel S2′"
+            }
+          ],
+          "equals": "(p&~q)|(~p&q)|(~p&~q)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "build"
+            ]
+          },
+          {
+            "from": 10,
+            "beats": [
+              "rows"
+            ]
+          },
+          {
+            "from": 18,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "7e1a314c",
+        "answer": {
+          "value": 1,
+          "label": "S1′ parallel S2′"
+        }
+      }
+    },
+    {
+      "id": "99e61c78-0296-45e5-baec-4c31ab29ffec",
+      "visual": {
+        "v": 1,
+        "scene": "switchCircuit",
+        "params": {
+          "circuits": [
+            {
+              "f": "p&(~p|q)"
+            },
+            {
+              "f": "p&q",
+              "label": "simplified: S1 in series with S2"
+            }
+          ],
+          "equals": "p&(~p|q)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "build"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "rows"
+            ]
+          },
+          {
+            "from": 14,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "8e163334",
+        "answer": {
+          "value": 1,
+          "label": "S1 in series with S2"
+        }
+      }
+    },
+    {
+      "id": "9e50feb9-7d95-486e-bbac-bd05e93dd605",
+      "visual": {
+        "v": 1,
+        "scene": "switchCircuit",
+        "params": {
+          "circuits": [
+            {
+              "f": "(p | ~q | ~r) & (p | (q & r))"
+            }
+          ],
+          "equals": "(p | ~q | ~r) & (p | (q & r))"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "build"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "rows"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "361848e2",
+        "answer": {
+          "value": 1,
+          "label": "two blocks in series"
+        }
+      }
+    },
+    {
+      "id": "9e7fff89-2701-4003-836c-4b9f1abde7c3",
+      "visual": {
+        "v": 1,
+        "scene": "switchCircuit",
+        "params": {
+          "circuits": [
+            {
+              "f": "(p | q) & (q | r) & (r | p)"
+            }
+          ],
+          "equals": "(p | q) & (q | r) & (r | p)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "build"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "rows"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "44b773ff",
+        "answer": {
+          "value": 1,
+          "label": "(p ∨ q) ∧ (q ∨ r) ∧ (r ∨ p)"
+        }
+      }
+    },
+    {
+      "id": "a6d203f4-941a-4168-af30-be34113b317d",
+      "visual": {
+        "v": 1,
+        "scene": "switchCircuit",
+        "params": {
+          "circuits": [
+            {
+              "f": "p | (~p & ~q) | (p & q)"
+            }
+          ],
+          "equals": "p | (~p & ~q) | (p & q)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "build"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "rows"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "fc288b55",
+        "answer": {
+          "value": 1,
+          "label": "p ∨ (∼p ∧ ∼q) ∨ (p ∧ q)"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

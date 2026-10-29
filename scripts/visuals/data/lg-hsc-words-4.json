@@ -1,0 +1,731 @@
+{
+ "//": "Assembled from agent drafts (truthTable).",
+ "visuals": [
+  {
+   "id": "b02808c0-9b85-440c-9a85-5f8b9be3506d",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "letters": {
+      "p": "4 is odd",
+      "q": "1 is prime"
+     },
+     "ask": {
+      "kind": "evaluate",
+      "at": {
+       "p": false,
+       "q": false
+      },
+      "f": [
+       "p | q"
+      ],
+      "expect": [
+       false
+      ]
+     },
+     "say": "Both parts are F, so F ∨ F = F."
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "columns"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "df745fae",
+    "answer": {
+     "value": 1,
+     "label": "F"
+    }
+   }
+  },
+  {
+   "id": "b18abdb0-cf0d-4512-903c-84a997b23024",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "letters": {
+      "p": "x + 8 > 11",
+      "q": "y - 3 = 6"
+     },
+     "ask": {
+      "kind": "transform",
+      "of": "p | q",
+      "op": "negation",
+      "equals": "~p & ~q"
+     },
+     "say": "x + 8 ≤ 11 and y - 3 ≠ 6."
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "columns"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "a01c9d1a",
+    "answer": {
+     "value": 1,
+     "label": "∼p ∧ ∼q"
+    }
+   }
+  },
+  {
+   "id": "b38dcbeb-0764-444a-8725-44dcbd7dc862",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "letters": {
+      "p": "√5 is irrational",
+      "q": "3√5 is a complex number"
+     },
+     "ask": {
+      "kind": "evaluate",
+      "at": {
+       "p": true,
+       "q": true
+      },
+      "f": [
+       "p & q"
+      ],
+      "expect": [
+       true
+      ]
+     },
+     "say": "p and q are both T, so p ∧ q is T."
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "columns"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "4ea789cc",
+    "answer": {
+     "value": 1,
+     "label": "T"
+    }
+   }
+  },
+  {
+   "id": "b74ea5e6-46d3-41ec-a2d3-8d0dc362cf83",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "letters": {
+      "p": "2 is a rational number",
+      "q": "√2 is an irrational number"
+     },
+     "ask": {
+      "kind": "equivalent",
+      "a": "p -> q",
+      "b": "~p | q"
+     },
+     "say": "2 is not a rational number or √2 is an irrational number."
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "columns"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "947bd925",
+    "answer": {
+     "value": 1,
+     "label": "∼p ∨ q"
+    }
+   }
+  },
+  {
+   "id": "b9ed566b-8a96-4244-a1be-a7982f21247b",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "letters": {
+      "p": "3 is a prime number",
+      "q": "4 is a rational number"
+     },
+     "ask": {
+      "kind": "evaluate",
+      "at": {
+       "p": true,
+       "q": true
+      },
+      "f": [
+       "p & q"
+      ],
+      "expect": [
+       true
+      ]
+     },
+     "say": "p and q are both T, so p ∧ q is T."
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "columns"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "1cbb2398",
+    "answer": {
+     "value": 1,
+     "label": "T"
+    }
+   }
+  },
+  {
+   "id": "c3b57988-6883-46c4-937e-3bc9a569ef07",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "letters": {
+      "p": "Prices increase",
+      "q": "The wages rise"
+     },
+     "ask": {
+      "kind": "equivalent",
+      "a": "p -> q",
+      "b": "~p | q"
+     },
+     "say": "Prices do not increase or the wages rise."
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "columns"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "fb4bdccd",
+    "answer": {
+     "value": 1,
+     "label": "∼p ∨ q"
+    }
+   }
+  },
+  {
+   "id": "caf2692d-377b-4b4f-bff0-45e7c5ffc1d1",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "letters": {
+      "p": "3 × 5 = 8",
+      "q": "3 + 5 = 15"
+     },
+     "ask": {
+      "kind": "evaluate",
+      "at": {
+       "p": false,
+       "q": false
+      },
+      "f": [
+       "p -> q"
+      ],
+      "expect": [
+       true
+      ]
+     },
+     "say": "F → F is T, so the statement is true."
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "columns"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "dca04d10",
+    "answer": {
+     "value": 1,
+     "label": "T"
+    }
+   }
+  },
+  {
+   "id": "da8c1ae4-8c54-4e18-b6ef-dbc43118958c",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "letters": {
+      "p": "surface area decreases",
+      "q": "pressure increases"
+     },
+     "ask": {
+      "kind": "transforms",
+      "of": "p -> q",
+      "ops": [
+       {
+        "op": "converse",
+        "equals": "q -> p"
+       },
+       {
+        "op": "inverse",
+        "equals": "~p -> ~q"
+       },
+       {
+        "op": "contrapositive",
+        "equals": "~q -> ~p"
+       }
+      ]
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "columns"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "043219cb",
+    "answer": {
+     "value": 1,
+     "label": "q→p, ∼p→∼q, ∼q→∼p"
+    }
+   }
+  },
+  {
+   "id": "e179eef8-52fa-4c1e-9285-615f89ad1d41",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "letters": {
+      "p": "the woman in the family is literate",
+      "q": "the family becomes literate"
+     },
+     "ask": {
+      "kind": "transforms",
+      "of": "p -> q",
+      "ops": [
+       {
+        "op": "converse",
+        "equals": "q -> p"
+       },
+       {
+        "op": "inverse",
+        "equals": "~p -> ~q"
+       },
+       {
+        "op": "contrapositive",
+        "equals": "~q -> ~p"
+       }
+      ]
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "columns"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "077adda2",
+    "answer": {
+     "value": 1,
+     "label": "q→p, ∼p→∼q, ∼q→∼p"
+    }
+   }
+  },
+  {
+   "id": "ebc36cd2-d40b-4407-8178-1ded2462869c",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "letters": {
+      "p": "it is raining",
+      "q": "we will go and play football"
+     },
+     "ask": {
+      "kind": "transform",
+      "of": "p -> q",
+      "op": "negation",
+      "equals": "p & ~q"
+     },
+     "say": "It is raining and we will not go or will not play football."
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "columns"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "b7edf972",
+    "answer": {
+     "value": 1,
+     "label": "p ∧ ∼q"
+    }
+   }
+  },
+  {
+   "id": "ec28b6cd-e593-484b-808e-d195decc6eef",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "ask": {
+      "kind": "transform",
+      "of": "(p|q)|r",
+      "op": "dual",
+      "equals": "(p&q)&r"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars",
+       "columns",
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "a1d0803e",
+    "answer": {
+     "value": 1,
+     "label": "(p ∧ q) ∧ r"
+    }
+   }
+  },
+  {
+   "id": "f054e8e2-ed9f-4a45-bfbc-5f90f59ad67a",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "letters": {
+      "p": "an angle is a right angle",
+      "q": "its measure is 90°"
+     },
+     "ask": {
+      "kind": "transforms",
+      "of": "p -> q",
+      "ops": [
+       {
+        "op": "converse",
+        "equals": "q -> p"
+       },
+       {
+        "op": "inverse",
+        "equals": "~p -> ~q"
+       },
+       {
+        "op": "contrapositive",
+        "equals": "~q -> ~p"
+       }
+      ]
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "columns"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "06f3ac30",
+    "answer": {
+     "value": 1,
+     "label": "q→p, ∼p→∼q, ∼q→∼p"
+    }
+   }
+  },
+  {
+   "id": "f6a2c3b8-9ac5-490a-9e80-c0d7f0902cdd",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "letters": {
+      "p": "Milk is white",
+      "q": "Sun rises in the West"
+     },
+     "ask": {
+      "kind": "evaluate",
+      "at": {
+       "p": true,
+       "q": false
+      },
+      "f": [
+       "p <-> q"
+      ],
+      "expect": [
+       false
+      ]
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "columns"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "68551ef3",
+    "answer": {
+     "value": 1,
+     "label": "F"
+    }
+   }
+  },
+  {
+   "id": "f804bd77-d4bf-48a9-b15a-2c4262a5fc5a",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "letters": {
+      "p": "11 < 15",
+      "q": "25 > 20"
+     },
+     "ask": {
+      "kind": "transform",
+      "of": "p & q",
+      "op": "negation",
+      "equals": "~p | ~q"
+     },
+     "say": "11 ≥ 15 or 25 ≤ 20"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "columns"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "3e504f1b",
+    "answer": {
+     "value": 1,
+     "label": "∼p ∨ ∼q"
+    }
+   }
+  },
+  {
+   "id": "f847c47f-b517-41be-a25c-cb67c572afde",
+   "visual": {
+    "v": 1,
+    "scene": "truthTable",
+    "params": {
+     "letters": {
+      "p": "The number is an even number",
+      "q": "The number is divisible by 2"
+     },
+     "ask": {
+      "kind": "transform",
+      "of": "p <-> q",
+      "op": "negation",
+      "equals": "(p & ~q) | (q & ~p)"
+     },
+     "say": "A number is even but not divisible by 2 or a number is divisible by 2 but not even."
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "vars"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "columns"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "c204107a",
+    "answer": {
+     "value": 1,
+     "label": "(p ∧ ∼q) ∨ (q ∧ ∼p)"
+    }
+   }
+  }
+ ],
+ "decided": []
+}
