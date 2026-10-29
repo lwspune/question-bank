@@ -1,0 +1,1863 @@
+{
+  "//": "Assembled from agent drafts (functionGraph).",
+  "visuals": [
+    {
+      "id": "8051c25f-4e0b-40cc-92a3-fee4ecb65d17",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "x^2-60*x+899",
+          "fLabel": "y = x² − 60x + 899",
+          "window": {
+            "x": [
+              27,
+              33
+            ],
+            "y": [
+              -2,
+              8
+            ]
+          },
+          "ask": {
+            "kind": "roots",
+            "expect": [
+              29,
+              31
+            ],
+            "word": "roots",
+            "rootLabels": [
+              "x = 29",
+              "x = 31"
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve",
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "41aecf5e",
+        "answer": {
+          "value": 0,
+          "label": "q = 29, p = 31"
+        }
+      }
+    },
+    {
+      "id": "b1bd1669-95a4-4ff5-8960-434fd7a94dfd",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "x-x^2",
+          "fLabel": "y = x − x²",
+          "window": {
+            "x": [
+              -0.5,
+              1.5
+            ],
+            "y": [
+              -1,
+              0.5
+            ]
+          },
+          "ask": {
+            "kind": "extrema",
+            "scope": "local",
+            "expect": [
+              {
+                "type": "max",
+                "x": 0.5,
+                "y": 0.25
+              }
+            ],
+            "pointLabels": [
+              "max (1/2, 1/4)"
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "d057498c",
+        "answer": {
+          "value": 0,
+          "label": "max at x = 1/2"
+        }
+      }
+    },
+    {
+      "id": "b9b266dd-d39d-4463-b816-83a04aa70410",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "2*x^2+5*x+5",
+          "fLabel": "y = 2x² + 5x + 5",
+          "window": {
+            "x": [
+              -3,
+              0.5
+            ],
+            "y": [
+              0,
+              9
+            ]
+          },
+          "ask": {
+            "kind": "extrema",
+            "scope": "local",
+            "expect": [
+              {
+                "type": "min",
+                "x": -1.25,
+                "y": 1.875
+              }
+            ],
+            "pointLabels": [
+              "min (−5/4, 15/8)"
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "19ffc23a",
+        "answer": {
+          "value": 0,
+          "label": "least value 15/8"
+        }
+      }
+    },
+    {
+      "id": "e7baae41-8b03-4b73-86a3-39200cc3bf18",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "1/(x^2+5*x+10)",
+          "fLabel": "y = 1/(x² + 5x + 10)",
+          "window": {
+            "x": [
+              -6,
+              1
+            ],
+            "y": [
+              0,
+              0.3
+            ]
+          },
+          "ask": {
+            "kind": "extrema",
+            "scope": "local",
+            "expect": [
+              {
+                "type": "max",
+                "x": -2.5,
+                "y": 0.266666666667
+              }
+            ],
+            "pointLabels": [
+              "max (−5/2, 4/15)"
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "a839d183",
+        "answer": {
+          "value": 0,
+          "label": "maximum 4/15"
+        }
+      }
+    },
+    {
+      "id": "ea694306-bfd7-4188-a75a-4be0cf0c4fc3",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "(x-1)^2+1",
+          "fLabel": "p²+q² = (s−1)² + 1",
+          "window": {
+            "x": [
+              -0.2,
+              1.2
+            ],
+            "y": [
+              0.5,
+              2.6
+            ]
+          },
+          "ask": {
+            "kind": "extrema",
+            "scope": "absolute",
+            "on": [
+              0,
+              1
+            ],
+            "expect": [
+              {
+                "type": "min",
+                "x": 1,
+                "y": 1
+              }
+            ],
+            "pointLabels": [
+              "min (s = 1, 1)"
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "d4f69cfe",
+        "answer": {
+          "value": 0,
+          "label": "least value 1 at s = 1"
+        }
+      }
+    },
+    {
+      "id": "8566f5a1-7dba-4379-b810-c86cb03c5666",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "(x-1)*(x-2)*(x-4)-90",
+          "fLabel": "y = (x−1)(x−2)(x−4) − 90",
+          "window": {
+            "x": [
+              -1,
+              9
+            ],
+            "y": [
+              -130,
+              200
+            ]
+          },
+          "ask": {
+            "kind": "roots",
+            "expect": [
+              7
+            ],
+            "rootLabels": [
+              "x = 7"
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "25519426",
+        "answer": {
+          "value": 0,
+          "label": "zero x = 7, factor x − 7"
+        }
+      }
+    },
+    {
+      "id": "a011c87d-3b71-4e07-ae52-0fa0b52f1790",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "x^3+4*x^2-11*x-30",
+          "fLabel": "y = x³ + 4x² − 11x − 30",
+          "window": {
+            "x": [
+              -6,
+              4
+            ],
+            "y": [
+              -45,
+              60
+            ]
+          },
+          "ask": {
+            "kind": "roots",
+            "expect": [
+              -5,
+              -2,
+              3
+            ],
+            "rootLabels": [
+              "x = −5",
+              "x = −2",
+              "x = 3"
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "ff30b91a",
+        "answer": {
+          "value": 0,
+          "label": "zeros −5, −2, 3"
+        }
+      }
+    },
+    {
+      "id": "a34e7ed9-371e-4958-8238-38c119c12acb",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "3*x^3+4*x^2-7",
+          "fLabel": "y = 3x³ + 4x² − 7",
+          "window": {
+            "x": [
+              -2,
+              2
+            ],
+            "y": [
+              -20,
+              35
+            ]
+          },
+          "ask": {
+            "kind": "roots",
+            "expect": [
+              1
+            ],
+            "rootLabels": [
+              "x = 1"
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "60425afc",
+        "answer": {
+          "value": 0,
+          "label": "the zero is x = 1"
+        }
+      }
+    },
+    {
+      "id": "029d145b-de9d-4200-b71b-d52e7300b74c",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "x^2+2*x-3",
+          "fLabel": "f(x) = x² + 2x − 3",
+          "window": {
+            "x": [
+              -4,
+              2
+            ],
+            "y": [
+              -5,
+              6
+            ]
+          },
+          "ask": {
+            "kind": "extrema",
+            "scope": "absolute",
+            "on": [
+              -3,
+              1
+            ],
+            "expect": [
+              {
+                "type": "min",
+                "x": -1,
+                "y": -4
+              }
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "82a40282",
+        "answer": {
+          "value": 0,
+          "label": "minimum −4"
+        }
+      }
+    },
+    {
+      "id": "23decc23-345a-4d63-b82e-647bcbab08f4",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "2*x^2-7*x+3",
+          "fLabel": "y = 2x² − 7x + 3",
+          "window": {
+            "x": [
+              -0.5,
+              3.5
+            ],
+            "y": [
+              -4,
+              8
+            ]
+          },
+          "ask": {
+            "kind": "roots",
+            "expect": [
+              0.5,
+              3
+            ],
+            "word": "roots",
+            "report": "sum",
+            "rootLabels": [
+              "x = 1/2",
+              "x = 3"
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "a2597f5b",
+        "answer": {
+          "value": 3.5,
+          "label": "α + β = 7/2"
+        }
+      }
+    },
+    {
+      "id": "28bd92c5-6dd1-4c84-a395-e6c298023cd0",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "4*x^2-4*x+3",
+          "fLabel": "y = 4x² − 4x + 3",
+          "window": {
+            "x": [
+              -0.5,
+              2.5
+            ],
+            "y": [
+              1,
+              19
+            ]
+          },
+          "ask": {
+            "kind": "extrema",
+            "scope": "absolute",
+            "on": [
+              0,
+              2
+            ],
+            "expect": [
+              {
+                "type": "min",
+                "x": 0.5,
+                "y": 2
+              }
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "f0e46f1d",
+        "answer": {
+          "value": 0,
+          "label": "minimum 2"
+        }
+      }
+    },
+    {
+      "id": "4c208108-39c1-4c1b-b4b9-b240a8954281",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "x^2-6*x+10",
+          "fLabel": "y = x² − 6x + 10",
+          "window": {
+            "x": [
+              0,
+              6
+            ],
+            "y": [
+              0,
+              11
+            ]
+          },
+          "ask": {
+            "kind": "extrema",
+            "scope": "local",
+            "expect": [
+              {
+                "type": "min",
+                "x": 3,
+                "y": 1
+              }
+            ],
+            "pointLabels": [
+              "min (3, 1)"
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "504d058c",
+        "answer": {
+          "value": 0,
+          "label": "least value 1: range [1, ∞)"
+        }
+      }
+    },
+    {
+      "id": "53b91316-a682-4e9b-bf19-67d04a9296bc",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "x^2+4*x+5",
+          "fLabel": "y = x² + 4x + 5",
+          "g": [
+            "0"
+          ],
+          "gLabels": [
+            "y = 0"
+          ],
+          "window": {
+            "x": [
+              -5,
+              1
+            ],
+            "y": [
+              -1,
+              10
+            ]
+          },
+          "ask": {
+            "kind": "crossings"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve",
+              "compare"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "0f045a5a",
+        "answer": {
+          "value": 0,
+          "label": "no real root: complex"
+        }
+      }
+    },
+    {
+      "id": "630b9baf-dee4-4357-abb6-eeafa05b0a21",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "2*x^2-6*x+5",
+          "fLabel": "y = 2x² − 6x + 5",
+          "g": [
+            "0"
+          ],
+          "gLabels": [
+            "y = 0"
+          ],
+          "window": {
+            "x": [
+              -1,
+              4
+            ],
+            "y": [
+              -1,
+              13
+            ]
+          },
+          "ask": {
+            "kind": "crossings"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve",
+              "compare"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "46aa0491",
+        "answer": {
+          "value": 0,
+          "label": "no real root: complex"
+        }
+      }
+    },
+    {
+      "id": "64f8c334-a85b-4bcb-ac2b-178c9c36bfa6",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "3*x^2-12*x+8",
+          "fLabel": "y = 3x² − 12x + 8",
+          "window": {
+            "x": [
+              -1,
+              5
+            ],
+            "y": [
+              -6,
+              24
+            ]
+          },
+          "ask": {
+            "kind": "extrema",
+            "scope": "local",
+            "expect": [
+              {
+                "type": "min",
+                "x": 2,
+                "y": -4
+              }
+            ],
+            "pointLabels": [
+              "vertex (2, −4)"
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve",
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "43bc570f",
+        "answer": {
+          "value": 0,
+          "label": "axis of symmetry x = 2"
+        }
+      }
+    },
+    {
+      "id": "69d756df-a20d-43c0-a96b-f91108cddc56",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "2*x^2-8*x+11",
+          "fLabel": "f(x) = 2x² − 8x + 11",
+          "window": {
+            "x": [
+              -1,
+              5
+            ],
+            "y": [
+              0,
+              22
+            ]
+          },
+          "ask": {
+            "kind": "extrema",
+            "scope": "local",
+            "expect": [
+              {
+                "type": "min",
+                "x": 2,
+                "y": 3
+              }
+            ],
+            "pointLabels": [
+              "min (2, 3)"
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "f2f2a5b5",
+        "answer": {
+          "value": 0,
+          "label": "minimum value 3"
+        }
+      }
+    },
+    {
+      "id": "6f377c0d-41a6-48dd-bb39-5638abc7bd4f",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "x^2-7*x+10",
+          "fLabel": "y = x² − 7x + 10",
+          "window": {
+            "x": [
+              1,
+              6
+            ],
+            "y": [
+              -3,
+              5
+            ]
+          },
+          "ask": {
+            "kind": "roots",
+            "expect": [
+              2,
+              5
+            ],
+            "word": "roots",
+            "report": "sum",
+            "rootLabels": [
+              "x = 2",
+              "x = 5"
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "e127e2a5",
+        "answer": {
+          "value": 7,
+          "label": "α + β = 7"
+        }
+      }
+    },
+    {
+      "id": "72377419-1358-43b4-8538-d0520d058bbe",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "sin(x)*cos(x)",
+          "fLabel": "y = sin x cos x",
+          "window": {
+            "x": [
+              -0.3,
+              3.45
+            ],
+            "y": [
+              -0.7,
+              0.7
+            ]
+          },
+          "xTicks": "pi",
+          "ask": {
+            "kind": "extrema",
+            "scope": "local",
+            "expect": [
+              {
+                "type": "max",
+                "x": 0.78539816,
+                "y": 0.5
+              },
+              {
+                "type": "min",
+                "x": 2.35619449,
+                "y": -0.5
+              }
+            ],
+            "pointLabels": [
+              "max (π/4, 1/2)",
+              "min (3π/4, −1/2)"
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "db14895d",
+        "answer": {
+          "value": 0,
+          "label": "maximum 1/2"
+        }
+      }
+    },
+    {
+      "id": "9a881ea2-d028-45cc-be9d-11df014077a9",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "-x^2+6*x-5",
+          "fLabel": "y = −x² + 6x − 5",
+          "window": {
+            "x": [
+              -0.5,
+              6.5
+            ],
+            "y": [
+              -9,
+              5
+            ]
+          },
+          "ask": {
+            "kind": "extrema",
+            "scope": "local",
+            "expect": [
+              {
+                "type": "max",
+                "x": 3,
+                "y": 4
+              }
+            ],
+            "pointLabels": [
+              "max (3, 4)"
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "91dd6c78",
+        "answer": {
+          "value": 0,
+          "label": "maximum at x = 3"
+        }
+      }
+    },
+    {
+      "id": "a3ffa103-6f15-4e85-a091-b6b61321cbd6",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "-2*x^2+4*x+1",
+          "fLabel": "f(x) = −2x² + 4x + 1",
+          "window": {
+            "x": [
+              -1.5,
+              3.5
+            ],
+            "y": [
+              -10,
+              4
+            ]
+          },
+          "ask": {
+            "kind": "extrema",
+            "scope": "local",
+            "expect": [
+              {
+                "type": "max",
+                "x": 1,
+                "y": 3
+              }
+            ],
+            "pointLabels": [
+              "max (1, 3)"
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "72d5f78d",
+        "answer": {
+          "value": 0,
+          "label": "maximum value 3"
+        }
+      }
+    },
+    {
+      "id": "c73b4523-981a-49ff-89b7-ae57b5718759",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "2*x^2-12*x+14",
+          "fLabel": "y = 2x² − 12x + 14",
+          "window": {
+            "x": [
+              0,
+              6
+            ],
+            "y": [
+              -6,
+              15
+            ]
+          },
+          "ask": {
+            "kind": "extrema",
+            "scope": "local",
+            "expect": [
+              {
+                "type": "min",
+                "x": 3,
+                "y": -4
+              }
+            ],
+            "pointLabels": [
+              "vertex (3, −4)"
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve",
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "0f0bcbc0",
+        "answer": {
+          "value": 0,
+          "label": "vertex (3, −4)"
+        }
+      }
+    },
+    {
+      "id": "d44d5b5c-43db-4a26-90ed-bcc795161faa",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "sqrt(2)*x^2+3*x+sqrt(2)",
+          "fLabel": "y = √2x² + 3x + √2",
+          "g": [
+            "0"
+          ],
+          "gLabels": [
+            "y = 0"
+          ],
+          "window": {
+            "x": [
+              -2.5,
+              0.5
+            ],
+            "y": [
+              -0.5,
+              3.3
+            ]
+          },
+          "ask": {
+            "kind": "crossings"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve",
+              "compare"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "54e5c3fc",
+        "answer": {
+          "value": 2,
+          "label": "two distinct real roots"
+        }
+      }
+    },
+    {
+      "id": "e3802b81-ed70-4e32-b34d-6d107deeba01",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "3*x^2+5*x-2",
+          "fLabel": "y = 3x² + 5x − 2",
+          "window": {
+            "x": [
+              -3,
+              1.5
+            ],
+            "y": [
+              -5,
+              13
+            ]
+          },
+          "ask": {
+            "kind": "roots",
+            "expect": [
+              -2,
+              0.333333333333
+            ],
+            "word": "roots",
+            "report": "product",
+            "rootLabels": [
+              "x = −2",
+              "x = 1/3"
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "46ef609a",
+        "answer": {
+          "value": -0.6666666666666667,
+          "label": "αβ = −2/3"
+        }
+      }
+    },
+    {
+      "id": "f49d29d9-6c81-4b8d-bd9a-72a0512206c8",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "x^2-4*x+7",
+          "fLabel": "y = x² − 4x + 7",
+          "window": {
+            "x": [
+              -1,
+              5
+            ],
+            "y": [
+              0,
+              13
+            ]
+          },
+          "ask": {
+            "kind": "extrema",
+            "scope": "local",
+            "expect": [
+              {
+                "type": "min",
+                "x": 2,
+                "y": 3
+              }
+            ],
+            "pointLabels": [
+              "vertex (2, 3)"
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "253cdef3",
+        "answer": {
+          "value": 0,
+          "label": "vertex (2, 3)"
+        }
+      }
+    },
+    {
+      "id": "141b5cab-bb68-4afa-a2b0-44721780a19f",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "(x+1)^2-(2*x+1)",
+          "fLabel": "y = (x+1)² − (2x+1)",
+          "window": {
+            "x": [
+              -2,
+              2
+            ],
+            "y": [
+              -1,
+              4
+            ]
+          },
+          "ask": {
+            "kind": "roots",
+            "expect": [
+              0
+            ],
+            "word": "roots",
+            "rootLabels": [
+              "x = 0 (repeated)"
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve",
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "75113be2",
+        "answer": {
+          "value": 0,
+          "label": "touches axis: equal roots"
+        }
+      }
+    },
+    {
+      "id": "1adcb5c7-4bff-42c5-a461-904e9cb76945",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "2*x^2-x-6",
+          "fLabel": "y = 2x² − x − 6",
+          "window": {
+            "x": [
+              -2.5,
+              3
+            ],
+            "y": [
+              -7,
+              10
+            ]
+          },
+          "ask": {
+            "kind": "roots",
+            "expect": [
+              -1.5,
+              2
+            ],
+            "word": "roots",
+            "rootLabels": [
+              "x = −3/2",
+              "x = 2"
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "be9a7d5e",
+        "answer": {
+          "value": 0,
+          "label": "roots 2 and −3/2"
+        }
+      }
+    },
+    {
+      "id": "1e942457-969d-4503-9907-9a45c5fcede1",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "x^2-6*x+6",
+          "fLabel": "y = x² − 6x + 6",
+          "g": [
+            "0"
+          ],
+          "gLabels": [
+            "y = 0"
+          ],
+          "window": {
+            "x": [
+              -1,
+              7
+            ],
+            "y": [
+              -4,
+              13
+            ]
+          },
+          "ask": {
+            "kind": "crossings"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve",
+              "compare"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "789e880f",
+        "answer": {
+          "value": 2,
+          "label": "two distinct real roots"
+        }
+      }
+    },
+    {
+      "id": "3441da05-8267-433a-a839-c1791f5df548",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "4*x^2-2*x-3",
+          "fLabel": "y = 4x² − 2x − 3",
+          "g": [
+            "0"
+          ],
+          "gLabels": [
+            "y = 0"
+          ],
+          "window": {
+            "x": [
+              -1.5,
+              2
+            ],
+            "y": [
+              -4,
+              10
+            ]
+          },
+          "ask": {
+            "kind": "crossings"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve",
+              "compare"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "a6d7f6c1",
+        "answer": {
+          "value": 2,
+          "label": "two distinct real roots"
+        }
+      }
+    },
+    {
+      "id": "3ec2a2c7-6483-439c-8ba1-367e360cb5fe",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "5*x^2-2*x-2",
+          "fLabel": "y = 5m² − 2m − 2",
+          "window": {
+            "x": [
+              -1.5,
+              1.5
+            ],
+            "y": [
+              -3,
+              13
+            ]
+          },
+          "ask": {
+            "kind": "roots",
+            "expect": [
+              -0.463324958071,
+              0.863324958071
+            ],
+            "word": "roots",
+            "rootLabels": [
+              "m = (1 − √11)/5",
+              "m = (1 + √11)/5"
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "d8874041",
+        "answer": {
+          "value": 0,
+          "label": "m = (1 ± √11)/5"
+        }
+      }
+    },
+    {
+      "id": "43f45b5e-9007-4bee-83c2-58bb7a14d29e",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "9*x^2+12*x+4",
+          "fLabel": "y = 9x² + 12x + 4",
+          "window": {
+            "x": [
+              -2,
+              0.7
+            ],
+            "y": [
+              -1,
+              17
+            ]
+          },
+          "ask": {
+            "kind": "roots",
+            "expect": [
+              -0.666666666667
+            ],
+            "word": "roots",
+            "withSumProduct": true,
+            "rootLabels": [
+              "x = −2/3"
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve",
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "01ca052b",
+        "answer": {
+          "value": 0,
+          "label": "equal roots, x = −2/3"
+        }
+      }
+    },
+    {
+      "id": "90e1b4b3-6ed6-4378-a40a-66791160f1b0",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "x^2+21*x-196",
+          "fLabel": "y = x² + 21x − 196",
+          "window": {
+            "x": [
+              -31,
+              10
+            ],
+            "y": [
+              -320,
+              130
+            ]
+          },
+          "ask": {
+            "kind": "roots",
+            "expect": [
+              -28,
+              7
+            ],
+            "word": "roots",
+            "rootLabels": [
+              "x = −28",
+              "x = 7"
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "3fc795fa",
+        "answer": {
+          "value": 0,
+          "label": "roots −28 and 7"
+        }
+      }
+    },
+    {
+      "id": "dd270ea9-2e88-47ed-82f8-e64aeb4204f5",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "3*x^2-2*sqrt(6)*x+2",
+          "fLabel": "y = 3x² − 2√6x + 2",
+          "window": {
+            "x": [
+              -0.5,
+              2
+            ],
+            "y": [
+              -1,
+              6
+            ]
+          },
+          "ask": {
+            "kind": "roots",
+            "expect": [
+              0.816496580928
+            ],
+            "word": "roots",
+            "withSumProduct": true,
+            "rootLabels": [
+              "x = √6/3"
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "a663f2a5",
+        "answer": {
+          "value": 0,
+          "label": "real and equal roots"
+        }
+      }
+    },
+    {
+      "id": "de951b7f-f259-46d3-9845-fd811ac877f0",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "x^2-5*x-6",
+          "fLabel": "y = x² − 5x − 6",
+          "window": {
+            "x": [
+              -2.5,
+              7.5
+            ],
+            "y": [
+              -14,
+              14
+            ]
+          },
+          "ask": {
+            "kind": "roots",
+            "expect": [
+              -1,
+              6
+            ],
+            "word": "roots",
+            "rootLabels": [
+              "x = −1",
+              "x = 6"
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "a38d25f7",
+        "answer": {
+          "value": 0,
+          "label": "correct roots 6 and −1"
+        }
+      }
+    },
+    {
+      "id": "2dee071e-affe-4634-8f34-4b73b6e3d8ea",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "x^3+7*x^2-2*x-14",
+          "fLabel": "y = x³ + 7x² − 2x − 14",
+          "window": {
+            "x": [
+              -8,
+              3
+            ],
+            "y": [
+              -70,
+              80
+            ]
+          },
+          "ask": {
+            "kind": "roots",
+            "expect": [
+              -7,
+              -1.414213562373,
+              1.414213562373
+            ],
+            "rootLabels": [
+              "x = −7",
+              "x = −√2",
+              "x = √2"
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "02981b10",
+        "answer": {
+          "value": 0,
+          "label": "third zero −7"
+        }
+      }
+    },
+    {
+      "id": "668b76ec-ae71-4694-a269-6deb7e223525",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "3*x^4+6*x^3-2*x^2-10*x-5",
+          "fLabel": "y = 3x⁴ + 6x³ − 2x² − 10x − 5",
+          "window": {
+            "x": [
+              -1.6,
+              1.6
+            ],
+            "y": [
+              -12,
+              20
+            ]
+          },
+          "ask": {
+            "kind": "roots",
+            "expect": [
+              -1.290994448736,
+              -1,
+              1.290994448736
+            ],
+            "rootLabels": [
+              "x = −√(5/3)",
+              "x = −1 (double)",
+              "x = √(5/3)"
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "822ca097",
+        "answer": {
+          "value": 0,
+          "label": "other zeros −1 and −1"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

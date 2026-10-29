@@ -1,0 +1,8 @@
+[
+  {
+    "id": "babbcc6a-6063-4388-9262-294b93f9adf2",
+    "before": "e680aaae",
+    "solution": "Let \\(\\alpha\\) be the common root, so \\(a\\alpha^2 + b\\alpha + c = 0\\) and \\(p\\alpha^2 + q\\alpha + r = 0\\).\nBy cross-multiplication, \\(\\dfrac{\\alpha^2}{br - cq} = \\dfrac{\\alpha}{cp - ar} = \\dfrac{1}{aq - bp}\\).\nSo \\(\\alpha = \\dfrac{cp - ar}{aq - bp}\\) and \\(\\alpha^2 = \\dfrac{br - cq}{aq - bp}\\).\nSquaring the first and equating with the second: \\(\\dfrac{(cp - ar)^2}{(aq - bp)^2} = \\dfrac{br - cq}{aq - bp}\\), so \\((cp - ar)^2 = (br - cq)(aq - bp)\\).\nSince \\((cp - ar)^2 = (ar - cp)^2\\), the condition is \\((ar - cp)^2 = (br - cq)(aq - bp)\\), which is option B.",
+    "note": "the solution stated the condition as (br - cq)^2 = (ar - cp)(aq - bp), with the squared and product terms swapped, which matches no option and contradicts the key; elimination gives (ar - cp)^2 = (br - cq)(aq - bp), the keyed option B."
+  }
+]
