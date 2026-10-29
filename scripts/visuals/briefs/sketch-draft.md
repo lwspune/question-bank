@@ -93,6 +93,15 @@ characters) how it reads.
   short, plain text (no LaTeX), Unicode allowed (², √, θ, π, −). Put each label
   where it will not sit on a line or another label: `labelAt` for a line or
   curve's name, the answer label in an empty corner.
+- A WRITTEN question (format "subjective", no options; most board questions):
+  the answer is what the model answer concludes. When that is not one number
+  (an equation, a pair, "show that"), make `answer` the number that pins it
+  down and the picture verifies (the slope of the line found, the constant of
+  the equation once x has coefficient 1, the angle between the lines), and say
+  the whole result in `answer.label`. A "show that" with nothing to compute:
+  skip.
+- Keep labels off lines and axes as well as off each other: a line's name goes
+  beside the line (`labelAt` a little off it), never on the x-axis.
 - A rate-of-change question: draw the set-up at the instant the question names
   (the ladder when its foot is 6 m out), with the answer as a label.
 - No 3D, and nothing you would have to guess (a letter the question leaves
@@ -106,3 +115,13 @@ characters) how it reads.
 Add `"figureNeeded"` ("none", or "stem" / "options" when the question cannot
 be answered without a picture it does not have, with `"figureNote"`), and
 `"solutionWrong"` ("none", or what is wrong with the stored solution or key).
+
+## Before you write the file: the checker refuses these
+
+- `answer.label` longer than 32 characters (write "36x²−25y²−252x+350y−784=0", not
+  the spaced form; for two lines "5x+3y−1=0 and 2x−y+4=0").
+- Any `label` or `text` longer than 40 characters.
+- A first step that does not start at sentence 0.
+- A var named x or y (x is the curve variable): call it xf, yt.
+- A point outside the `view`.
+
