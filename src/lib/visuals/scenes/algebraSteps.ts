@@ -37,7 +37,10 @@ const TALL_ROW = 54;
 const TALL = /[\\](d?frac|binom|sum|int|prod|begin|over)(?![a-zA-Z])/;
 /** A small \tfrac is fine alone, but under a root (or a power) it pushes the line past the row. */
 const TALL_UNDER = /[\\]sqrt\s*(\[[^\]]*\])?\s*\{[^}]*[\\]tfrac|[\\]tfrac[^=]*\}\s*\^/;
-const rowOf = (l: Line) => (TALL.test(l.tex) || TALL_UNDER.test(l.tex) ? TALL_ROW : ROW);
+/** A matrix or determinant of three rows (two \\ breaks) is taller still. */
+const MATRIX_ROW = 80;
+const rowOf = (l: Line) =>
+  /[\\]begin\{/.test(l.tex) && (l.tex.match(/\\\\/g) ?? []).length >= 2 ? MATRIX_ROW : TALL.test(l.tex) || TALL_UNDER.test(l.tex) ? TALL_ROW : ROW;
 const NOTE = 15;
 const TOP = 10;
 const MAX_LINES = 10;

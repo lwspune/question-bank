@@ -53,7 +53,9 @@ at most 140 characters) and `kind`, which says how the program checks it:
 Formulas: + - * / ^ ( ), numbers, pi, e, and sin cos tan asin acos atan exp
 log (natural) ln log10 sqrt abs deg rad, atan2(y, x), min, max. Always write
 `*`. **The unknown is always x in formulas**, whatever letter the tex shows
-(k, m, t): write the formula in x. Named numbers go in a top-level `vars`
+(k, m, t): write the formula in x. The reverse does not hold: the SHOWN maths
+(`tex`) keeps the solution's own letter. Write 9\lambda - 37, never 9x - 37,
+when the solution solves for λ; x stays in tex only where it is a coordinate. Named numbers go in a top-level `vars`
 object (each a formula of the ones before it), as in the sketch brief.
 
 Marks: `{{1:...}}`, `{{2:...}}`, `{{3:...}}` around a term colour it (blue,
