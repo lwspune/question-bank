@@ -30,6 +30,8 @@ export function plainLabel(v: unknown, field: string, max = 24): string {
   // Only a whole tag is refused ("<b>", "<img …>"), so inequalities pass with or
   // without spaces: "π/4 < x", "1<x<8".
   if (/\\/.test(v) || /<\/?[a-z!][^<>]*>/i.test(v)) throw new ParamError(`${field} must be plain text, no LaTeX or markup`);
+  // The picture font has no "∥": it drew a solid block on the review sheet.
+  if (v.includes("∥")) throw new ParamError(`${field}: write "parallel" (the picture font has no ∥)`);
   return v;
 }
 
