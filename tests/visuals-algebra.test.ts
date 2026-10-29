@@ -119,12 +119,18 @@ describe("algebraSteps scene", () => {
     const p = ok(quad);
     const one = maths(scene.frame(p, { played: ["s1"], t: 1, slider: undefined }));
     expect(one).toHaveLength(1);
-    expect(one[0].tex).toContain("\htmlClass{viz-mark-1}{-5x}");
+    expect(one[0].tex).toContain("\\htmlClass{viz-mark-1}{-5x}");
     const all = maths(scene.frame(p, { played: ["s1", "s2", "s3", "s4"], t: 1, slider: undefined }));
     expect(all.length).toBe(4);
     expect(all[1].y).toBeGreaterThan(all[0].y);
     expect(scene.viewBox(p).h).toBeGreaterThan(4 * 30);
     const notes = scene.frame(p, { played: ["s1", "s2"], t: 1, slider: undefined }).filter((s) => s.kind === "text").map((s) => (s as { text: string }).text);
     expect(notes).toContain("split −5x");
+  });
+
+  it("gives a small fraction under a root a tall row too, so it is not cut off (review 2026-10-29)", () => {
+    const line = (tex: string) => ({ lines: [{ step: "s1", kind: "calc", tex, f: "3/4", value: "0.75" }, { step: "s2", kind: "note", tex: "x" }], answer: "0.75" });
+    const flat = scene.viewBox(ok(line("\\lambda = 0.75"))).h;
+    expect(scene.viewBox(ok(line("\\lambda = \\sqrt{\\tfrac{9}{16}} = \\tfrac34"))).h).toBeGreaterThan(flat);
   });
 });

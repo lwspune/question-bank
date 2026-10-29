@@ -35,7 +35,9 @@ const ROW = 34;
 /** A row holding a built-up fraction, a sum or an integral needs more height, or KaTeX's output is cut off. */
 const TALL_ROW = 54;
 const TALL = /[\\](d?frac|binom|sum|int|prod|begin|over)(?![a-zA-Z])/;
-const rowOf = (l: Line) => (TALL.test(l.tex) ? TALL_ROW : ROW);
+/** A small \tfrac is fine alone, but under a root (or a power) it pushes the line past the row. */
+const TALL_UNDER = /[\\]sqrt\s*(\[[^\]]*\])?\s*\{[^}]*[\\]tfrac|[\\]tfrac[^=]*\}\s*\^/;
+const rowOf = (l: Line) => (TALL.test(l.tex) || TALL_UNDER.test(l.tex) ? TALL_ROW : ROW);
 const NOTE = 15;
 const TOP = 10;
 const MAX_LINES = 10;

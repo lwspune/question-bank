@@ -80,6 +80,10 @@ first step starts at 0, later ones later, each step name used once. `answer`
 ## Rules
 
 - Follow the stored solution. Never change the method or the numbers.
+- An answer that is a vector or a point (2i − 3j + k, M(6, −1, 5)): give each
+  component its own `calc` line (or one `calc` per component inside a line's
+  working), pin `answer` to the first component that is not 0, and write the
+  whole vector in `answer.label`. Do not skip it for being a vector.
 - A "show that" with letters left free (a, b, h) cannot be checked by numbers:
   skip it, unless the solution's own working substitutes numbers.
 - If the stored working has a wrong line, say so in `solutionWrong` and skip.
