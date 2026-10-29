@@ -120,8 +120,11 @@ settled; settled rows move to the bottom with the date and what was done.
 | `521dd092` | Maharashtra HSC 12 · Vectors | **Duplicate options.** B and C both print ±(i + j − k)/√3 (keyed A, ±(i + j − 2k)/√6, is right and unaffected). Found 2026-10-29 in the algebra-steps run. | Restore option C from the source. |
 | `a2734bf7` | CBSE Class 12 · Vector Algebra | **Duplicate options.** B and C both print AB + BC − AC = 0 (keyed C, the "not true" one, must differ from B). The stored solution notes it. Found 2026-10-29 in the algebra-steps run. | Restore option B or C from NCERT Fig 10.18's question. |
 | `d34a45d0` | MHT-CET · Mathematical Logic | **Stem mixes letters.** S3 reads "∀n ∈ N, x² + 3x − 10 = 0" (n bound, x used). False either way, so the key "only S3" stands. Found 2026-10-29 in the logic run. | Write ∀x ∈ N if the source paper does (changes content_hash). |
-| `f7e23596` and 29 more | MHT-CET · several chapters | **`\cdots` stored as `\cdot s`**, shown as "· s". Logged in the SUGGESTIONS.md backfill ledger with the probe. | Owner OK on the 360 there. |
 
 ## Settled
 
-(none yet)
+Owner policy (2026-10-29): the source paper decides first; a key the source itself prints wrong is corrected with a notice; a question defective as printed stays PUBLIC with a notice and is grace in mocks.
+
+| Question | Exam · chapter | Problem | Settled |
+|---|---|---|---|
+| `f7e23596` and 28 more | MHT-CET · several chapters | `\cdots` stored as `\cdot s`, shown as "· s". | **2026-10-29:** the MHT-CET de-glue step caused it and now keeps longer commands whole; 29 rows restored (hash-safe), `audit:text` SPLIT_CDOTS added. One row of the 30 first counted (CDS `8f8ae4ca`) was a real product, side s times √n, and is left as it is. |
