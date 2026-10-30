@@ -1,0 +1,61 @@
+{
+  "//": "Assembled from agent drafts (space3d).",
+  "visuals": [
+    {
+      "id": "7441ad26-e144-4049-b63f-cb03165f92bd",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "space3d",
+        "params": {
+          "vectors": [
+            {
+              "id": "w",
+              "v": [
+                22,
+                8,
+                18
+              ],
+              "label": "x × y"
+            },
+            {
+              "id": "z",
+              "v": [
+                3,
+                -4,
+                -12
+              ],
+              "label": "z"
+            }
+          ],
+          "ask": {
+            "kind": "projection",
+            "vector": "w",
+            "on": "z",
+            "label": "projection = 14"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "a1f3711b",
+        "answer": {
+          "value": 14,
+          "label": "14"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

@@ -23,7 +23,8 @@ if (!outFile || !inputs.length) {
 }
 const decided = new Set();
 for (const f of fs.readdirSync(path.join(dir, "data"))) {
-  if (!f.endsWith(".json")) continue;
+  // The output file itself is not a prior decision: re-running onto it would drop its verdicts.
+  if (!f.endsWith(".json") || path.resolve(dir, "data", f) === path.resolve(outFile)) continue;
   const b = JSON.parse(fs.readFileSync(path.join(dir, "data", f), "utf8"));
   for (const v of b.visuals || []) decided.add(v.id);
   for (const d of b.decided || []) decided.add(d.id);

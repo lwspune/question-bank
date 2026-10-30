@@ -1,0 +1,32 @@
+[
+  {
+    "id": "46bb7542-65b2-403c-a2bd-1c781f17be31",
+    "before": "c463d5f9",
+    "solution": "By the vector triple product, \\(\\vec{d} = (\\vec{a}\\times\\vec{b})\\times\\vec{c} = (\\vec{a}\\cdot\\vec{c})\\vec{b} - (\\vec{b}\\cdot\\vec{c})\\vec{a}\\).\n\nStatement I: \\(\\vec{d}\\) is a combination of \\(\\vec{a}\\) and \\(\\vec{b}\\), so it is coplanar with them. True.\n\nStatement II: \\(\\vec{d}\\cdot\\vec{c} = (\\vec{a}\\cdot\\vec{c})(\\vec{b}\\cdot\\vec{c}) - (\\vec{b}\\cdot\\vec{c})(\\vec{a}\\cdot\\vec{c}) = 0\\). (This also follows because \\(\\vec{d}\\) is a cross product with \\(\\vec{c}\\).) True.\n\nBoth statements are correct. Hence (C).",
+    "note": "removed a notice that wrongly blamed the paper's key; the stored key was our own transcription error"
+  },
+  {
+    "id": "7876f8a5-ca4e-4e83-8888-f82215ffcadd",
+    "before": "ecde7b18",
+    "solution": "\\(|\\vec{a}-\\vec{b}|^2 = 2 - 2\\cos 2\\theta = 4\\sin^2\\theta\\). The condition \\(|\\vec{a}-\\vec{b}| < 2\\) gives \\(4\\sin^2\\theta < 4\\), so \\(-1 < \\sin\\theta < 1\\).\n\nNothing forces \\(\\vec{a}\\neq\\vec{b}\\): taking \\(\\vec{a} = \\vec{b}\\) gives \\(\\theta = 0\\) and \\(\\sin\\theta = 0\\), which is allowed. So the strict lower bound \\(0 < \\sin\\theta\\) in (A) fails. Options (B) and (C) fail too, since \\(\\sin\\theta\\) can be \\(0\\) and can come close to \\(1\\).\n\nThe one statement that always holds is \\(-1 < \\sin\\theta < 1\\). Hence (D).",
+    "note": "removed a notice that wrongly blamed the paper's key; the stored key was our own transcription error"
+  },
+  {
+    "id": "83d1a007-7a25-4a6a-ae4c-19d5909a0ebd",
+    "before": "6960e88e",
+    "solution": "Three vectors are coplanar when their scalar triple product is zero:\n\n\\(\\begin{vmatrix} 1 & -1 & 1 \\\\ 2 & 3 & 2 \\\\ 1 & m & n \\end{vmatrix} = 1(3n-2m) + 1(2n-2) + 1(2m-3) = 5n - 5 = 0\\), so \\(n = 1\\).\n\nThen \\(|\\vec{c}|^2 = 1 + m^2 + 1 = 6\\) gives \\(m^2 = 4\\), so \\(m = \\pm 2\\).\n\nSo \\(m = \\pm 2\\) and \\(n = 1\\). Hence (D).",
+    "note": "removed a notice that wrongly blamed the paper's key; the stored key was our own transcription error"
+  },
+  {
+    "id": "aade885c-3c88-44a9-8efc-b9966e7c0340",
+    "before": "6053ebce",
+    "solution": "Statement 1: \\(\\overrightarrow{AB}+\\overrightarrow{BC}+\\overrightarrow{CA} = \\vec{0}\\) by the triangle law. Correct.\n\nStatement 2: \\(\\overrightarrow{AB}+\\overrightarrow{BC} = \\overrightarrow{AC} = -\\overrightarrow{CA}\\), so the expression is \\(-2\\overrightarrow{CA} \\neq \\vec{0}\\). Incorrect.\n\nStatement 3: \\(\\overrightarrow{AB}+\\overrightarrow{CA} = \\overrightarrow{CB}\\), so the expression is \\(\\overrightarrow{CB}-\\overrightarrow{BC} = 2\\overrightarrow{CB} \\neq \\vec{0}\\). Incorrect.\n\nStatement 4: \\(\\overrightarrow{BA}-\\overrightarrow{BC} = \\overrightarrow{CA}\\), so the expression is \\(2\\overrightarrow{CA} \\neq \\vec{0}\\). Incorrect.\n\nExactly one statement is correct. Hence (A).",
+    "note": "removed a notice that wrongly blamed the paper's key; the stored key was our own transcription error"
+  },
+  {
+    "id": "fdc4997a-976f-4043-97af-b6669b936cb3",
+    "before": "a8cfee43",
+    "solution": "\\(|\\vec{a}+\\vec{b}| = 1\\) gives \\(1 + 1 + 2\\,\\vec{a}\\cdot\\vec{b} = 1\\), so \\(\\vec{a}\\cdot\\vec{b} = -\\dfrac{1}{2}\\). In the same way \\(|\\vec{b}+\\vec{c}| = 1\\) gives \\(\\vec{b}\\cdot\\vec{c} = -\\dfrac{1}{2}\\).\n\n\\(|\\vec{a}+\\vec{b}+\\vec{c}| = 1\\) gives \\(3 + 2(\\vec{a}\\cdot\\vec{b}+\\vec{b}\\cdot\\vec{c}+\\vec{a}\\cdot\\vec{c}) = 1\\), so the sum of the three dot products is \\(-1\\). Hence \\(\\vec{a}\\cdot\\vec{c} = -1 + \\dfrac{1}{2} + \\dfrac{1}{2} = 0\\).\n\nSo the angle between \\(\\vec{a}\\) and \\(\\vec{c}\\) is \\(\\dfrac{\\pi}{2}\\). Hence (C).",
+    "note": "removed a notice that wrongly blamed the paper's key; the stored key was our own transcription error"
+  }
+]

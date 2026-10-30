@@ -1,0 +1,74 @@
+[
+  {
+    "id": "2aad3f0b-caf5-4522-afd1-dc08ec77dfdd",
+    "before": "8ad161f9",
+    "solution": "Step 1: \\(x = t, y = 1 + 2t, z = -1 - t\\)\n\nStep 2: \\(t + (1 + 2t) + (-1 - t) = 1\\)\n\nStep 3: \\(2t = 1\\) so \\(t = \\frac{1}{2}\\)\n\nStep 4: \\(x = \\frac{1}{2}, y = 1 + 1 = 2, z = -1 - \\frac{1}{2} = -\\frac{3}{2}\\), so the point is \\(\\left(\\frac{1}{2}, 2, -\\frac{3}{2}\\right)\\).\n\nHence (C).",
+    "note": "fit-check flag settled: t=1/2 gives z=-1-1/2=-3/2, point (1/2,2,-3/2) = option C; step 4 wrote -1/2."
+  },
+  {
+    "id": "3cc69156-5809-4912-95a5-0fe61cf1e49c",
+    "before": "e4820286",
+    "solution": "Two lines are perpendicular when the dot product of their direction ratios is zero.\n\nStep 1: Option A: \\(1(2) + 2(2) + 2(1) = 2 + 4 + 2 = 8 \\neq 0\\)\n\nStep 2: Option B: \\(1(1) + 1(2) + 1(3) = 6 \\neq 0\\)\n\nStep 3: Option C: \\(1(2) + 2(-2) + 2(1) = 2 - 4 + 2 = 0\\), so these are perpendicular.\n\nStep 4: Option D: \\((4,6,8) = 2(2,3,4)\\), so the lines are parallel, not perpendicular.\n\nHence (C).",
+    "note": "fit-check flag settled: Only (1,2,2).(2,-2,1)=2-4+2=0 is zero; option C is the perpendicular pair; steps 2 and 3 had B and C swapped."
+  },
+  {
+    "id": "4ba05d95-7a51-4bd2-abb5-68473907f3f2",
+    "before": "7a467fc1",
+    "solution": "Step 1: Direction ratios - Line 1: \\((2, 3, 4)\\), Line 2: \\((1, 1, 1)\\)\n\nStep 2: Dot product: \\(2(1) + 3(1) + 4(1) = 9\\)\n\nStep 3: Magnitude 1: \\(\\sqrt{4+9+16} = \\sqrt{29}\\)\n\nStep 4: Magnitude 2: \\(\\sqrt{1+1+1} = \\sqrt{3}\\)\n\nStep 5: \\(\\cos\\theta = \\frac{9}{\\sqrt{29} \\cdot \\sqrt{3}} = \\frac{9}{\\sqrt{87}}\\)\n\nSo \\(\\theta = \\cos^{-1}\\left(\\frac{9}{\\sqrt{87}}\\right)\\).\n\nHence (A).",
+    "note": "fit-check flag settled: cos = 9/(sqrt29*sqrt3) = 9/sqrt87, option A; steps 5-6 wrongly rewrite it as 9/(3 sqrt29)."
+  },
+  {
+    "id": "55eb2081-0014-4ade-b2aa-eeb44f8fc46e",
+    "before": "df4d5a5e",
+    "solution": "Step 1: The z-axis has direction ratios \\((0, 0, 1)\\).\n\nStep 2: A line with direction ratios \\((a, b, c)\\) is perpendicular to the z-axis when \\(a(0) + b(0) + c(1) = 0\\).\n\nStep 3: This gives \\(c = 0\\).\n\nStep 4: So the direction ratios are of the form \\((a, b, 0)\\).\n\nStep 5: Option A \\((1,1,1)\\), option B \\((0,0,1)\\) and option C \\((0,1,1)\\) all have \\(c \\neq 0\\). Option D \\((1, 1, 0)\\) has \\(c = 0\\).\n\nHence (D).",
+    "note": "fit-check flag settled: Need c=0; only (1,1,0) (option D) has third ratio 0. Solution called it option A and wrongly required a,b non-zero."
+  },
+  {
+    "id": "7dae500b-765f-47b2-9b4f-dc25b015038c",
+    "before": "8aba2830",
+    "solution": "**Note:** In three dimensions a line has infinitely many perpendicular lines, so the angle between 'their perpendiculars' is not determined. The answer shown follows the worksheet's key, which treats the two lines as lying in one plane.\n\nStep 1: Let the original lines have direction vectors \\(\\vec{b_1}\\) and \\(\\vec{b_2}\\) with angle \\(\\alpha\\) between them, lying in a plane.\n\nStep 2: In that plane, the perpendicular to each line is obtained by rotating its direction through \\(90^{\\circ}\\), and both rotations are in the same sense.\n\nStep 3: A common rotation does not change the angle between two directions, so the angle between the perpendiculars is \\(\\alpha\\).\n\nHence (A).",
+    "note": "defective as printed: notice added (stemFlawed)"
+  },
+  {
+    "id": "90afad37-a301-4062-86e4-04d575add15d",
+    "before": "f1ccb9c8",
+    "solution": "Step 1: Line 1: Point \\((0,0,0)\\), Direction \\((1,1,0)\\)\n\nStep 2: Line 2: Point \\((1,0,0)\\), Direction \\((0,1,1)\\)\n\nStep 3: \\(\\vec{a_2} - \\vec{a_1} = (1,0,0)\\)\n\nStep 4: \\(\\vec{b_1} \\times \\vec{b_2} = (1,1,0) \\times (0,1,1) = (1,-1,1)\\)\n\nStep 5: \\(|\\vec{b_1} \\times \\vec{b_2}| = \\sqrt{1+1+1} = \\sqrt{3}\\)\n\nStep 6: \\((1,0,0) \\cdot (1,-1,1) = 1\\)\n\nStep 7: \\(d = \\frac{1}{\\sqrt{3}}\\).\n\nHence (B).",
+    "note": "fit-check flag settled: Steps 1-7 give 1/sqrt3 correctly; the trailing 'simpler version' solves a different line pair and should be removed."
+  },
+  {
+    "id": "c0ad7d2e-dcec-41c1-ae84-629ea7e3241c",
+    "before": "17bebe0b",
+    "solution": "**Note:** No plane can contain all three coordinate axes, and \\(x - 3y = 0\\) contains only the z-axis, not the x-axis. The answer shown follows the worksheet's key, reading the question as a plane through the origin.\n\nStep 1: A plane through the origin has no constant term. Options B, C and D have non-zero constants on the right, so they do not pass through the origin.\n\nStep 2: \\(x - 3y = 0\\) has no constant term and no \\(z\\) term, so every point with \\(x = 3y\\) lies on it for any \\(z\\).\n\nStep 3: This plane passes through the origin and is parallel to (contains) the z-axis.\n\nHence (A).",
+    "note": "defective as printed: notice added (stemFlawed)"
+  },
+  {
+    "id": "c787a001-da0b-4d3d-9c3c-9a34013c42aa",
+    "before": "c2476efe",
+    "solution": "Step 1: Normal vectors: \\(\\vec{n_1} = (3, -2, 1), \\vec{n_2} = (1, 2, -1)\\)\n\nStep 2: Direction = \\(\\vec{n_1} \\times \\vec{n_2} = \\begin{vmatrix} \\vec{i} & \\vec{j} & \\vec{k} \\\\ 3 & -2 & 1 \\\\ 1 & 2 & -1 \\end{vmatrix}\\)\n\nStep 3: \\(= \\vec{i}\\left((-2)(-1) - (1)(2)\\right) - \\vec{j}\\left((3)(-1) - (1)(1)\\right) + \\vec{k}\\left((3)(2) - (-2)(1)\\right)\\)\n\nStep 4: \\(= \\vec{i}(2-2) - \\vec{j}(-4) + \\vec{k}(8) = 0\\vec{i} + 4\\vec{j} + 8\\vec{k}\\)\n\nStep 5: Direction ratios are \\((0, 4, 8)\\).\n\nHence (A).",
+    "note": "fit-check flag settled: Cross product (3,-2,1)x(1,2,-1) = i(2-2) - j(-3-1) + k(6+2) = (0,4,8), option A."
+  },
+  {
+    "id": "d511f97a-d88d-4d18-83ed-6256d533d1d2",
+    "before": "af33c1ac",
+    "solution": "Step 1: Normals: \\((2, -2, 1)\\) and \\((1, -1, 2)\\)\n\nStep 2: Dot product: \\(2 + 2 + 2 = 6\\)\n\nStep 3: \\(|\\vec{n_1}| = 3, |\\vec{n_2}| = \\sqrt{6}\\)\n\nStep 4: \\(\\cos\\theta = \\frac{6}{3\\sqrt{6}} = \\frac{2}{\\sqrt{6}}\\)\n\nSo \\(\\theta = \\cos^{-1}\\left(\\frac{2}{\\sqrt{6}}\\right)\\).\n\nHence (D).",
+    "note": "fit-check flag settled: cos = 6/(3 sqrt6) = 2/sqrt6, option D; the step wrote 6/15."
+  },
+  {
+    "id": "ed0c11ef-1070-4fcd-a884-c6cf6e21969c",
+    "before": "1b2de488",
+    "solution": "**Note:** More than one option lies on the line: \\((3,1,7)\\) gives ratios \\(1, 1, 1\\) and \\((-1,-7,-3)\\) gives \\(-1, -1, -1\\), so options A and D also satisfy it. The answer shown follows the worksheet's key, (B).\n\nStep 1: A point lies on the line if \\(\\frac{x-1}{2} = \\frac{y+3}{4} = \\frac{z-2}{5}\\) holds for it.\n\nStep 2: For \\((1, -3, 2)\\): \\(\\frac{0}{2} = \\frac{0}{4} = \\frac{0}{5} = 0\\), so it lies on the line (it is the point the line is written from).\n\nHence (B).",
+    "note": "defective as printed: notice added (twoRight)"
+  },
+  {
+    "id": "f389f7ba-f85b-4722-80e9-05c08437b631",
+    "before": "e9b13b55",
+    "solution": "Compare with \\(x^2 + y^2 + z^2 + 2ux + 2vy + 2wz + d = 0\\).\n\nStep 1: \\(2u = -6, 2v = 4, 2w = -8\\), so \\(u = -3, v = 2, w = -4\\).\n\nStep 2: Center = \\((-u, -v, -w) = (3, -2, 4)\\).\n\nHence (D).",
+    "note": "fit-check flag settled: 2v=4 gives v=2 (not -2); centre (-u,-v,-w)=(3,-2,4), option D."
+  },
+  {
+    "id": "238544a7-ed96-486a-8d1d-ded6a95cb9f9",
+    "before": "66b7fb3d",
+    "solution": "**Note:** The answer depends on the convention for 'imaginary'. If imaginary numbers mean \\(bi\\) with \\(b \\neq 0\\), the intersection is empty. The answer shown follows the worksheet's key, which counts \\(0\\) as imaginary.\n\nStep 1: A real number has the form \\(a + 0i\\); a purely imaginary number has the form \\(0 + bi\\).\n\nStep 2: A number of both forms needs \\(a = 0\\) and \\(b = 0\\), so it is \\(0 + 0i = 0\\).\n\nStep 3: So the intersection is the set \\(\\{0\\}\\).\n\nHence (D).",
+    "note": "defective as printed: notice added (stemFlawed)"
+  }
+]

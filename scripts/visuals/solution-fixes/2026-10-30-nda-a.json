@@ -1,0 +1,122 @@
+[
+  {
+    "id": "1d4cd08c-2eab-4ca4-9ff7-ecf8377cad6f",
+    "before": "c77bdf48",
+    "solution": "Find vertices: \\(L_1\\cap L_2\\): \\(2x=0 \\Rightarrow x=0, y=4\\). \\(L_1\\cap L_3\\): \\(2y=0 \\Rightarrow y=0, x=4\\). \\(L_2\\cap L_3\\): \\(3x+y=4, x+3y=4 \\Rightarrow x=y=1\\). Distances: \\(d_{12}=\\sqrt{16+16}=4\\sqrt2\\); \\(d_{13}=\\sqrt{1+9}=\\sqrt{10}\\); \\(d_{23}=\\sqrt{9+1}=\\sqrt{10}\\). Two sides are equal, so the triangle is isosceles. Matches option A.",
+    "note": "side lengths: d13 = d23 = sqrt10 (was 4sqrt2 and 3sqrt2)"
+  },
+  {
+    "id": "201d512b-d51b-474d-9662-83c9a8dc0e8e",
+    "before": "060a0fef",
+    "solution": "The triangle is right angled at \\(O(0,0)\\). Therefore the orthocentre is \\(O(0,0)\\) and the circumcentre is the mid-point of the hypotenuse, i.e. \\(\\left(\\frac{b}{2}, \\frac{a}{2}\\right)\\). Therefore the distance between the orthocentre and the circumcentre \\(= \\frac{1}{2}\\sqrt{a^{2} + b^{2}}\\).",
+    "note": "circumcentre is (b/2, a/2), midpoint of (0,a) and (b,0)"
+  },
+  {
+    "id": "727efe50-207f-41b0-867f-9a6ac94d5751",
+    "before": "27b56849",
+    "solution": "Take \\(A(0,0)\\), \\(B(3,4)\\) and \\(C(4,0)\\). \\(AC\\) lies on the \\(x\\)-axis, so the altitude \\(BD\\) from \\(B\\) is the vertical line \\(x = 3\\) ...(i).\n\nSlope of \\(BC = \\frac{0 - 4}{4 - 3} = -4\\), so the altitude \\(AE \\perp BC\\) through \\(A\\) has slope \\(\\frac{1}{4}\\): \\(x - 4y = 0\\) ...(ii).\n\nFrom (i) and (ii), \\(x = 3,\\ y = \\frac{3}{4}\\).\n\n\\(\\therefore\\) the orthocentre of the triangle is \\(\\left(3, \\frac{3}{4}\\right)\\).",
+    "note": "altitude BD is x = 3 (AC is the x-axis), not 3x + 4y = 12"
+  },
+  {
+    "id": "bdc4e4bb-1bc0-4dd2-9e30-95fadfc8d250",
+    "before": "184f0fbf",
+    "solution": "Take \\(A(0,0)\\), \\(B(3,4)\\) and \\(C(4,0)\\). \\(AC\\) lies on the \\(x\\)-axis, so the altitude \\(BD\\) from \\(B\\) is the vertical line \\(x = 3\\) ...(i).\n\nSlope of \\(BC = \\frac{0 - 4}{4 - 3} = -4\\), so the altitude \\(AE \\perp BC\\) through \\(A\\) has slope \\(\\frac{1}{4}\\): \\(x - 4y = 0\\) ...(ii).\n\nFrom (i) and (ii), \\(x = 3,\\ y = \\frac{3}{4}\\).\n\n\\(\\therefore\\) the orthocentre of the triangle is \\(\\left(3, \\frac{3}{4}\\right)\\).",
+    "note": "altitude BD is x = 3 (AC is the x-axis), not 3x + 4y = 12; duplicate of 727efe50"
+  },
+  {
+    "id": "2e6cb1ed-d401-4af1-b131-615635c73ca8",
+    "before": "fd979149",
+    "solution": "Co-ordinates of the vertices of the square are \\(A(0,0),\\ B(0,1),\\ C(1,1)\\) and \\(D(1,0).\\)\n\nNow the equation of AC is \\(y = x\\) and of BD is \\(y - 1 = \\  - \\frac{1}{1}\\ (x - 0) \\Rightarrow x + y = 1\\)",
+    "note": "vertex D is (1,0)"
+  },
+  {
+    "id": "37019d26-04c8-477f-85c7-114aa56da028",
+    "before": "abbfb38b",
+    "solution": "Let the point be (x,y) which is equidistant from (a+b, a-b) and (b-a, a+b).\n\nThen, \\(\\sqrt{\\{\\left( x - (a + b) \\right\\}^{2} + \\left\\{ y - (a - b) \\right\\}^{2}}\\)\n\n\\(= \\sqrt{\\{\\left( x - (b - a) \\right\\}^{2} + \\left\\{ y - (a + b) \\right\\}^{2}}\\)\n\nOn squaring,\n\n\\(x^{2} + (a + b)^{2} - 2x\\ (a + b) + y^{2} + (a - b)^{2} - 2y\\ (a - b)\\) \\(= x^{2} + (b - a)^{2} - 2x(b - a) + y^{2} + (a + b)^{2} - 2(a + b)y\\)\n\n\\(\\Rightarrow 2x\\ (b - a - a - b) = 2y\\ (a - b - a - b)\\)\n\n\\(\\Rightarrow 4ax = 4by\\)\n\n\\(\\Rightarrow ax - by = 0\\ or - ax + by = 0\\)",
+    "note": "typo b(b - a) -> (b - a)"
+  },
+  {
+    "id": "45393dde-cc20-4fac-b492-a8ca67cdac17",
+    "before": "8b279d48",
+    "solution": "The points are collinear when the slope from \\((-5, 1)\\) to \\((p, 5)\\) equals the slope from \\((-5, 1)\\) to \\((10, 7)\\).\n\nSlope \\(= \\frac{7 - 1}{10 + 5} = \\frac{6}{15} = \\frac{2}{5}\\), so \\(\\frac{5 - 1}{p + 5} = \\frac{2}{5}\\), that is \\(p + 5 = 10\\) and \\(p = 5\\).",
+    "note": "rewritten: the determinant used the wrong points and found k = 7"
+  },
+  {
+    "id": "8824b9a2-bad0-4178-a212-d1d3af836fd8",
+    "before": "f836ae9a",
+    "solution": "Slope of first diagonal: \\(\\frac{1}{2}\\). Slope of second: \\(-2\\). Product \\(=-1\\), so diagonals are perpendicular. A rhombus has perpendicular diagonals, so \\(ABCD\\) may be a rhombus (it is one when the diagonals also bisect each other). A rectangle's diagonals are perpendicular only when it is a square, and a general parallelogram's never are.",
+    "note": "perpendicular diagonals do not make a rhombus on their own; the question asks 'may be'"
+  },
+  {
+    "id": "afe6677e-6baf-4f2e-b58c-b85d187218b0",
+    "before": "ec799a3a",
+    "solution": "Area of triangle \\(= \\frac{1}{2}\\left|x_1(y_2 - y_3) + x_2(y_3 - y_1) + x_3(y_1 - y_2)\\right|\\).\n\nHere \\(y_2 - y_3 = 4\\lambda - 6\\), \\(y_3 - y_1 = 4\\) and \\(y_1 - y_2 = 2 - 4\\lambda\\), so twice the area is \\(\\left|\\lambda(4\\lambda - 6) + 4(1 - \\lambda) - (4 + \\lambda)(2 - 4\\lambda)\\right| = \\left|8\\lambda^{2} + 4\\lambda - 4\\right|\\).\n\nArea 70 gives \\(8\\lambda^{2} + 4\\lambda - 4 = \\pm 140\\). With \\(+140\\): \\(2\\lambda^{2} + \\lambda - 36 = 0\\), so \\(\\lambda = 4\\) or \\(\\lambda = -\\frac{9}{2}\\). With \\(-140\\): \\(2\\lambda^{2} + \\lambda + 34 = 0\\), which has no real root.\n\nSo there is exactly one integral value, \\(\\lambda = 4\\).",
+    "note": "rewritten: expansion was wrong (roots are 4 and -9/2, not 4.186 and -4.061)"
+  },
+  {
+    "id": "c5b0c644-1e55-425a-917e-ef2e17c00d8d",
+    "before": "1c005878",
+    "solution": "Use section formula: if \\(R\\) divides \\(PQ\\) in ratio \\(m:n\\), then \\(x=\\frac{5m-n}{m+n}\\), \\(y=\\frac{7m+n}{m+n}\\). Substitute in \\(x+y=4\\): \\(\\frac{12m}{m+n}=4\\Rightarrow 3m=m+n\\Rightarrow m:n=1:2\\). Common mistake: arithmetic error in section formula.",
+    "note": "removed 'Per key A = 1:1' and the garbled recheck; 1:2 is option B, the key"
+  },
+  {
+    "id": "cccb14e4-f4d0-4623-8203-e8021b1b5db7",
+    "before": "3109014d",
+    "solution": "Line equation: \\(x\\cos15^{\\circ}+y\\sin15^{\\circ}=4\\). Intercepts: \\(x\\)-intercept \\(=4/\\cos15^{\\circ}\\), \\(y\\)-intercept \\(=4/\\sin15^{\\circ}\\). Sum \\(=4\\left(\\frac{1}{\\cos15^{\\circ}}+\\frac{1}{\\sin15^{\\circ}}\\right)=4\\cdot\\frac{\\sin15^{\\circ}+\\cos15^{\\circ}}{\\sin15^{\\circ}\\cos15^{\\circ}}=4\\cdot\\frac{\\sqrt{2}\\sin60^{\\circ}}{\\sin30^{\\circ}/2}=4\\cdot\\frac{\\sqrt{6}/2}{1/4}=8\\sqrt{6}\\). Common mistake: using complementary angles incorrectly.",
+    "note": "removed 'Per key B'; 8sqrt6 is option C, the key"
+  },
+  {
+    "id": "d755665f-32a4-4090-87da-8309ac17c19a",
+    "before": "e1d71afe",
+    "solution": "The slope of \\((k-3)x-(5-k^2)y+(k^2-7k+6)=0\\) is \\(\\frac{k - 3}{5 - k^2}\\). Parallel to \\(x + y = 1\\) (slope \\(-1\\)) means \\(\\frac{k - 3}{5 - k^2} = -1\\), so \\(k - 3 = k^2 - 5\\), that is \\(k^2 - k - 2 = 0\\) and \\((k - 2)(k + 1) = 0\\).\n\nSo \\(k = 2\\) or \\(k = -1\\). Hence (B).",
+    "note": "rewritten: the stored text claimed k^2 + k - 8 = 0 before reaching k^2 - k - 2 = 0"
+  },
+  {
+    "id": "dacca04d-c104-43a0-a48b-a8ee5a80fcf3",
+    "before": "8e9962ca",
+    "solution": "The line passes through \\((1, 0)\\) and \\((-2, \\sqrt{3})\\). Slope \\(m = \\frac{y_2 - y_1}{x_2 - x_1} = \\frac{\\sqrt{3} - 0}{-2 - 1} = -\\frac{1}{\\sqrt{3}}\\). The angle \\(\\theta\\) the line makes with the \\(x\\)-axis (\\(0^{\\circ} \\le \\theta < 180^{\\circ}\\)) has \\(\\tan\\theta = -\\frac{1}{\\sqrt{3}}\\), so \\(\\theta = 180^{\\circ} - 30^{\\circ} = 150^{\\circ}\\).",
+    "note": "arctan(-1/sqrt3) is -30 degrees; the inclination is 150 degrees"
+  },
+  {
+    "id": "ebf8b832-d44b-4251-92bb-0eea46b54e52",
+    "before": "f431b6b9",
+    "solution": "Let \\(A(x,y)\\) be the required point.\n\n\\(\\therefore\\ PA = 2 \\cdot AQ\\)\n\nThus, \\(A\\) divides \\(PQ\\) internally or externally in the ratio \\(2:1\\).\n\nIf \\(A\\) divides \\(PQ\\) internally in the ratio \\(2:1\\), then coordinates of \\(A\\) are\n\n\\(\\begin{matrix} & x = \\frac{2 \\times ( - 2) + 1 \\times 3}{2 + 1}\\text{~and~}y = \\frac{2 \\times 5 + 1 \\times ( - 4)}{2 + 1} \\\\ \\Rightarrow & x = - \\frac{1}{3}\\text{~and~}y = 2 \\end{matrix}\\)\n\n\\(\\therefore\\) Coordinates of \\(A\\) are \\(\\left( - \\frac{1}{3},2 \\right)\\).\n\nAgain, if \\(A\\) divides \\(PQ\\) externally in the ratio \\(2:1\\), then coordinates of \\(A\\) are\n\n\\(\\begin{matrix} & \\ x = \\frac{2 \\times ( - 2) - 1 \\times 3}{2 - 1}\\text{~and~}y = \\frac{2 \\times 5 - 1 \\times ( - 4)}{2 - 1} \\\\ & \\  \\Rightarrow \\ x = - 7\\text{~and~}y = 14 \\\\ & \\ \\therefore\\text{~Coordinates of~}A\\text{~are~}( - 7,14). \\end{matrix}\\)",
+    "note": "PA = 2AQ (was PA = 2PQ); stray 'Solution (a)**' removed"
+  },
+  {
+    "id": "ed895ad8-fdc1-4c5d-9451-6079d786323b",
+    "before": "1da9c784",
+    "solution": "\\(AB = \\sqrt{(4 + 1)^{2} + (0 + 1)^{2}} = \\sqrt{26};\\)\n\n\\(BC = \\sqrt{(3 + 1)^{2} + (5 + 1)^{2}} = \\sqrt{52}\\)\n\n\\(CA = \\sqrt{(4 - 3)^{2} + (0 - 5)^{2}} = \\sqrt{26}\\ ;\\)\n\nIn isosceles triangle side \\(AB = CA\\)\n\nFor right angled triangle, \\(BC^{2} = AB^{2} + AC^{2}\\)\n\nSo, here \\(BC = \\sqrt{52}\\ or\\ BC^{2} = 52\\)\n\nor \\(\\left( \\sqrt{26} \\right)^{2} + \\left( \\sqrt{26} \\right)^{2} = 52\\)\n\nSo, the given triangle is right angled and also isosceles",
+    "note": "CA is sqrt26, so 26 + 26 = 52"
+  },
+  {
+    "id": "f385fcba-491a-4591-811b-8b2850e48e2a",
+    "before": "63532202",
+    "solution": "Let the coordinates of the point \\(P\\) which divides the line joining \\((1,0)\\) and \\((2cos\\theta,2sin\\theta)\\) in the ratio \\(2:3\\) be \\((h,k)\\). Then, \\(h = \\frac{4cos\\theta + 3}{5}\\) and \\(k = \\frac{4sin\\theta}{5}\\) \\(\\Rightarrow cos\\theta = \\frac{5h - 3}{4}\\) and \\(sin\\theta = \\frac{5k}{4}\\) \\(\\Rightarrow \\left( \\frac{5h - 3}{4} \\right)^{2} + \\left( \\frac{5k}{4} \\right)^{2} = 1 \\Rightarrow (5h - 3)^{2} + (5k)^{2} = 16\\) Therefore locus of \\((h,k)\\) is \\((5x - 3)^{2} + (5y)^{2} = 16\\), which is a circle.",
+    "note": "(5k)^2, not 5k^2"
+  },
+  {
+    "id": "fd9ac551-42c2-4984-90f5-34a35634f7a5",
+    "before": "90dacc88",
+    "solution": "If \\(3, x_1, x_2\\) and \\(4, y_1, y_2\\) are each in A.P. with common differences \\(d\\) and \\(e\\), then \\(B = (3 + d, 4 + e)\\) and \\(C = (3 + 2d, 4 + 2e)\\). So \\(\\overrightarrow{AC} = 2\\,\\overrightarrow{AB}\\), and \\(A\\), \\(B\\), \\(C\\) lie on one line. Hence (B), collinear.",
+    "note": "B is one step from A and C two steps, not equal increments"
+  },
+  {
+    "id": "056aaa48-fa26-47be-b308-83af2a143042",
+    "before": "044fd466",
+    "solution": "Equation of a circle \\(x^{2} + y^{2} - 6x + 2y = 0\\)\n\n\\(x(x - 6) + y(y + 2) = 0\\)\n\nThis is the equation of a circle in diameter form, where end points of diameter are (0,0) and (6,-2).\n\nSo, equation of diameter, \\(y - 0 = \\frac{- 2}{6}\\ (x - 0) \\Rightarrow x + 3y = 0\\)",
+    "note": "the diameter passes through the origin: (x - 0), not (x - 2)"
+  },
+  {
+    "id": "628f324f-37cb-4ace-9dc6-01751250efae",
+    "before": "a585a500",
+    "solution": "\\(x^{2} + y^{2} = 4\\) ...(i)\n\n\\(x + y = 2\\) ...(ii)\n\n\\(\\because x^{2} + y^{2} = (x + y)^{2} - 2xy\\)\n\n\\(\\Rightarrow 4 = 4 - 2xy\\)\n\n\\(\\Rightarrow xy = 0\\) ...(iii)\n\nValues satisfying Eqs. (i), (ii) and (iii) are (2,0) and (0,2): with \\(xy = 0\\) one coordinate is 0, and then \\(x + y = 2\\) makes the other 2",
+    "note": "only (2,0) and (0,2) satisfy x + y = 2"
+  },
+  {
+    "id": "e18c0fb6-0f9c-49d2-91b9-195200522cdf",
+    "before": "6242b17d",
+    "solution": "Area of \\(\\triangle ABD = \\frac{1}{2}\\left|\\begin{matrix} 0 & 0 & 1 \\\\ \\frac{5}{3} & -\\frac{4}{3} & 1 \\\\ -\\frac{2}{3} & \\frac{7}{3} & 1 \\end{matrix}\\right| = \\frac{1}{2}\\left(\\frac{35}{9} - \\frac{8}{9}\\right) = \\frac{3}{2}\\) sq units.\n\nSo the area of parallelogram \\(ABCD = 2 \\times \\frac{3}{2} = 3\\) sq units.",
+    "note": "stray '**' and text-tilde padding removed; same working"
+  }
+]

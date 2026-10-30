@@ -1,0 +1,339 @@
+[
+ {
+  "id": "0c656ba2-646f-442b-96f1-76d1a7e5e0d9",
+  "label": "mock 3 Q20",
+  "reason": "fix: solution slip, mock 3 Q20",
+  "solution": "The point \\(A\\) is \\((-1,5)\\), so \\(\\overrightarrow{OA} = -\\hat{i} + 5\\hat{j}\\). The vector \\(\\vec{a}\\) is the position vector of \\((1,-3)\\), so \\(\\vec{a} = \\hat{i} - 3\\hat{j}\\).\n\nSince \\(\\overrightarrow{AB} = \\vec{a}\\), we get \\(\\overrightarrow{OB} = \\overrightarrow{OA} + \\overrightarrow{AB} = (-\\hat{i} + 5\\hat{j}) + (\\hat{i} - 3\\hat{j}) = 2\\hat{j}\\).\n\nSo \\(B = (0, 2)\\). Hence (B)."
+ },
+ {
+  "id": "123b4387-cca6-40a1-b194-3d4160d40d1f",
+  "label": "booklet 1887",
+  "reason": "fix: solution slip, booklet 1887",
+  "solution": "Let \\(\\vec{a} = 3\\hat{i} + \\hat{j} + 2\\hat{k}\\) and \\(\\vec{b} = \\hat{i} + \\hat{j} + 2\\hat{k}\\). Then \\(\\vec{a}\\times\\vec{b} = (1\\cdot 2 - 2\\cdot 1)\\hat{i} - (3\\cdot 2 - 2\\cdot 1)\\hat{j} + (3\\cdot 1 - 1\\cdot 1)\\hat{k} = -4\\hat{j} + 2\\hat{k}\\), so \\(|\\vec{a}\\times\\vec{b}| = \\sqrt{16 + 4} = \\sqrt{20}\\).\n\nAlso \\(|\\vec{a}| = \\sqrt{14}\\) and \\(|\\vec{b}| = \\sqrt{6}\\), so \\(\\sin\\theta = \\dfrac{|\\vec{a}\\times\\vec{b}|}{|\\vec{a}||\\vec{b}|} = \\dfrac{\\sqrt{20}}{\\sqrt{84}} = \\sqrt{\\dfrac{5}{21}}\\).\n\nHence (A)."
+ },
+ {
+  "id": "4413b337-0ef9-416a-baae-fc8695d5a8ea",
+  "label": "booklet 1951",
+  "reason": "fix: solution slip, booklet 1951",
+  "solution": "Expand \\((\\vec{u}-\\vec{v})\\times(\\vec{v}-\\vec{w}) = \\vec{u}\\times\\vec{v} - \\vec{u}\\times\\vec{w} + \\vec{v}\\times\\vec{w}\\), since \\(\\vec{v}\\times\\vec{v} = \\vec{0}\\).\n\nDot this with \\(\\vec{u}+\\vec{v}-\\vec{w}\\). A scalar triple product with a repeated vector is zero, so only three terms survive: \\(\\vec{u}\\cdot(\\vec{v}\\times\\vec{w}) = [\\vec{u}\\ \\vec{v}\\ \\vec{w}]\\), then \\(-\\vec{v}\\cdot(\\vec{u}\\times\\vec{w}) = +[\\vec{u}\\ \\vec{v}\\ \\vec{w}]\\), then \\(-\\vec{w}\\cdot(\\vec{u}\\times\\vec{v}) = -[\\vec{u}\\ \\vec{v}\\ \\vec{w}]\\).\n\nThe total is \\([\\vec{u}\\ \\vec{v}\\ \\vec{w}]\\). As a check, the coefficient determinant with rows \\((1,1,-1)\\), \\((1,-1,0)\\), \\((0,1,-1)\\) equals \\(1(1-0) - 1(-1-0) + (-1)(1-0) = 1\\).\n\nSo the result is \\(\\vec{u}\\cdot\\vec{v}\\times\\vec{w}\\). Hence (A)."
+ },
+ {
+  "id": "8d770df7-8aa6-49a6-bc82-ed1cabc60624",
+  "label": "booklet 1858",
+  "reason": "fix: solution slip, booklet 1858",
+  "solution": "The angle at \\(A\\) is a right angle, so \\(\\overrightarrow{AB}\\cdot\\overrightarrow{AC} = 0\\).\n\n\\(\\overrightarrow{AB} = -2\\hat{i} + 2\\hat{j} + (p+1)\\hat{k}\\) and \\(\\overrightarrow{AC} = 2\\hat{i} + (q-1)\\hat{j} - 3\\hat{k}\\).\n\nHence \\(-4 + 2(q-1) - 3(p+1) = 0\\), that is \\(-3p + 2q - 9 = 0\\). So \\((p,q)\\) lies on the line \\(3x - 2y + 9 = 0\\), whose slope is \\(\\dfrac{3}{2} > 0\\). It makes an acute angle with the positive direction of the x-axis. Hence (D)."
+ },
+ {
+  "id": "9c236bc7-6c50-4554-808d-b5727006cd3d",
+  "label": "weekly mock T2 Q76",
+  "reason": "fix: solution slip, weekly mock T2 Q76",
+  "solution": "The area of a parallelogram with diagonals \\(\\vec{p}\\) and \\(\\vec{q}\\) is \\(\\dfrac{1}{2}|\\vec{p}\\times\\vec{q}|\\).\n\nHere \\(\\vec{p} = \\vec{a}+\\vec{b} = 2\\hat{i}+4\\hat{j}+6\\hat{k}\\) and \\(\\vec{q} = \\vec{b}+\\vec{c} = 8\\hat{i}+12\\hat{j}+16\\hat{k}\\).\n\n\\(\\vec{p}\\times\\vec{q} = (4\\cdot 16 - 6\\cdot 12)\\hat{i} - (2\\cdot 16 - 6\\cdot 8)\\hat{j} + (2\\cdot 12 - 4\\cdot 8)\\hat{k} = -8\\hat{i} + 16\\hat{j} - 8\\hat{k}\\).\n\nSo \\(|\\vec{p}\\times\\vec{q}| = \\sqrt{64+256+64} = \\sqrt{384} = 8\\sqrt{6}\\), and the area is \\(\\dfrac{1}{2}\\cdot 8\\sqrt{6} = 4\\sqrt{6}\\) sq. units. Hence (A)."
+ },
+ {
+  "id": "a0f0ab2e-daad-489d-9af4-b1dbb723c4e2",
+  "label": "mock 5 Q57",
+  "reason": "fix: solution slip, mock 5 Q57",
+  "solution": "Since \\(\\vec{a}+\\vec{b}+\\vec{c} = \\vec{0}\\), take the dot product of this with itself:\n\n\\(|\\vec{a}|^2 + |\\vec{b}|^2 + |\\vec{c}|^2 + 2(\\vec{a}\\cdot\\vec{b} + \\vec{b}\\cdot\\vec{c} + \\vec{c}\\cdot\\vec{a}) = 0\\).\n\nWith \\(|\\vec{a}| = 1\\), \\(|\\vec{b}| = 2\\), \\(|\\vec{c}| = 3\\) this gives \\(1 + 4 + 9 + 2S = 0\\), where \\(S = \\vec{a}\\cdot\\vec{b} + \\vec{b}\\cdot\\vec{c} + \\vec{c}\\cdot\\vec{a}\\). So \\(S = -\\dfrac{14}{2} = -7\\). Hence (C)."
+ },
+ {
+  "id": "ca6660d0-239a-438b-901f-a8461df2b6fe",
+  "label": "booklet 1803",
+  "reason": "fix: solution slip, booklet 1803",
+  "solution": "The points are \\(P(-2,-1)\\), \\(Q(4,0)\\), \\(R(3,3)\\), \\(S(-3,2)\\).\n\n**Parallelogram?** \\(\\overrightarrow{PQ} = (6,1)\\) and \\(\\overrightarrow{SR} = (3+3,\\ 3-2) = (6,1)\\). They are equal, so PQRS is a parallelogram.\n\n**Rhombus?** \\(|\\overrightarrow{PQ}| = \\sqrt{37}\\) and \\(\\overrightarrow{QR} = (-1,3)\\) gives \\(|\\overrightarrow{QR}| = \\sqrt{10}\\). Adjacent sides differ, so it is not a rhombus.\n\n**Rectangle?** \\(\\overrightarrow{PQ}\\cdot\\overrightarrow{QR} = (6)(-1) + (1)(3) = -3 \\neq 0\\), so it is not a rectangle.\n\nPQRS is a parallelogram that is neither a rhombus nor a rectangle. Hence (A)."
+ },
+ {
+  "id": "fef9ce3b-9fc8-46a4-b226-7cc062e7f631",
+  "label": "mock 6 Q57",
+  "reason": "fix: solution slip, mock 6 Q57",
+  "solution": "**Obtuse angle between \\(\\mathbf{a}\\) and \\(\\mathbf{b}\\):** \\(\\mathbf{a}\\cdot\\mathbf{b} = 14x^2 - 8x + x = 7x(2x-1) < 0\\), so \\(0 < x < \\dfrac{1}{2}\\).\n\n**Angle of \\(\\mathbf{b}\\) with the Z-axis less than \\(\\dfrac{\\pi}{6}\\):** \\(\\cos\\theta = \\dfrac{x}{\\sqrt{x^2+53}} > \\dfrac{\\sqrt{3}}{2}\\). The left side must be positive, so \\(x > 0\\), and squaring gives \\(4x^2 > 3x^2 + 159\\), so \\(x^2 > 159\\). Hence \\(x > \\sqrt{159}\\).\n\nThe two conditions \\(0 < x < \\dfrac{1}{2}\\) and \\(x > \\sqrt{159}\\) cannot hold together, so no value of \\(x\\) works. Hence (D)."
+ },
+ {
+  "id": "0ea0d567-1b8d-43de-915f-5c3accf1c6ed",
+  "label": "Complex 0ea0d567",
+  "reason": "fix: solution slip, power typo (y+3)^3 should be (y+3)^2",
+  "solution": "With \\(z = x+iy\\), \\(z\\bar{z} = x^2+y^2\\) and \\((2-3i)z + (2+3i)\\bar{z} = 2\\,\\mathrm{Re}\\big((2-3i)z\\big) = 2(2x+3y) = 4x+6y\\).\n\nSo the equation becomes \\(x^2 + y^2 + 4x + 6y + 4 = 0\\).\n\nComplete the squares: \\((x+2)^2 + (y+3)^2 = 4 + 9 - 4 = 9 = 3^2\\).\n\nThis is a circle with centre \\((-2,-3)\\) and radius \\(3\\). Hence (B)."
+ },
+ {
+  "id": "e3d20dbf-1bf2-40fa-b2c4-55c4db19e738",
+  "label": "booklet 1804",
+  "reason": "fix: stem restored to the booklet, booklet 1804",
+  "text": "Let \\(\\vec{a}, \\vec{b}, \\vec{c}\\) be three vectors, and let \\(\\vec{a} - 2\\vec{b} + 3\\vec{c}\\), \\(-2\\vec{a} + 3\\vec{b} - \\vec{c}\\) and \\(4\\vec{a} - 7\\vec{b} + 7\\vec{c}\\) be the position vectors of the points A, B and C respectively. Then the points A, B and C are",
+  "solution": "With \\(A = \\vec{a}-2\\vec{b}+3\\vec{c}\\), \\(B = -2\\vec{a}+3\\vec{b}-\\vec{c}\\) and \\(C = 4\\vec{a}-7\\vec{b}+7\\vec{c}\\):\n\n\\(\\overrightarrow{AB} = B - A = -3\\vec{a}+5\\vec{b}-4\\vec{c}\\) and \\(\\overrightarrow{AC} = C - A = 3\\vec{a}-5\\vec{b}+4\\vec{c}\\).\n\nSo \\(\\overrightarrow{AC} = -\\overrightarrow{AB}\\). The vectors \\(\\overrightarrow{AB}\\) and \\(\\overrightarrow{AC}\\) are parallel and share the point \\(A\\), so A, B and C are collinear. Hence (D)."
+ },
+ {
+  "id": "2537372a-8a8e-4e9f-84ef-12f5eabc00bf",
+  "label": "booklet 1810",
+  "reason": "fix: stem and options restored to the booklet, booklet 1810",
+  "text": "If \\(\\vec{a}, \\vec{b}\\) and \\(\\vec{c}\\) are non-coplanar vectors and if \\(\\vec{d}\\) is such that \\(\\vec{d} = \\dfrac{1}{x}(\\vec{a} + \\vec{b} + \\vec{c})\\) and \\(\\vec{a} = \\dfrac{1}{y}(\\vec{b} + \\vec{c} + \\vec{d})\\), where \\(x\\) and \\(y\\) are non-zero real numbers, then \\(\\dfrac{1}{xy}(\\vec{a} + \\vec{b} + \\vec{c} + \\vec{d})\\) is equal to",
+  "options": {
+   "A": "\\(-\\vec{a}\\)",
+   "B": "\\(\\vec{0}\\)",
+   "C": "\\(2\\vec{a}\\)",
+   "D": "\\(3\\vec{c}\\)"
+  },
+  "solution": "From the first relation, \\(x\\vec{d} = \\vec{a}+\\vec{b}+\\vec{c}\\). From the second, \\(y\\vec{a} = \\vec{b}+\\vec{c}+\\vec{d}\\).\n\nPut \\(\\vec{b}+\\vec{c} = x\\vec{d}-\\vec{a}\\) into the second: \\(y\\vec{a} = (x+1)\\vec{d} - \\vec{a}\\), so \\((y+1)\\vec{a} = (x+1)\\vec{d} = \\dfrac{x+1}{x}(\\vec{a}+\\vec{b}+\\vec{c})\\).\n\nSince \\(\\vec{a},\\vec{b},\\vec{c}\\) are non-coplanar, compare the coefficients of \\(\\vec{b}\\): \\(\\dfrac{x+1}{x} = 0\\), so \\(x = -1\\). Then the coefficient of \\(\\vec{a}\\) gives \\(y+1 = 0\\), so \\(y = -1\\).\n\nNow \\(\\vec{a}+\\vec{b}+\\vec{c} = x\\vec{d} = -\\vec{d}\\), so \\(\\vec{a}+\\vec{b}+\\vec{c}+\\vec{d} = \\vec{0}\\), and the expression \\(\\dfrac{1}{xy}(\\vec{a}+\\vec{b}+\\vec{c}+\\vec{d})\\) is the zero vector. Hence (B)."
+ },
+ {
+  "id": "b18f02da-e8d0-4614-92ee-e3219b34e043",
+  "label": "booklet 1816",
+  "reason": "fix + note: option C restored, and the hexagon data is inconsistent, booklet 1816",
+  "options": {
+   "C": "\\(3\\hat{i} - \\hat{j} - \\hat{k}\\)"
+  },
+  "solution": "**Note:** As printed, the vertices \\(A\\) and \\(B\\) are at different distances from the origin (\\(|\\overrightarrow{OA}|^2 = 26\\) and \\(|\\overrightarrow{OB}|^2 = 11\\)), but all vertices of a regular hexagon centred at the origin are equidistant from it, so no such hexagon exists. The answer shown follows the booklet's key.\n\nIn a regular hexagon ABCDEF the opposite sides AB and DE are parallel, equal in length and opposite in direction, so \\(\\overrightarrow{DE} = -\\overrightarrow{AB} = \\overrightarrow{BA}\\).\n\n\\(\\overrightarrow{BA} = (4\\hat{i}+3\\hat{j}-\\hat{k}) - (-3\\hat{i}+\\hat{j}+\\hat{k}) = 7\\hat{i}+2\\hat{j}-2\\hat{k}\\). Hence (A)."
+ },
+ {
+  "id": "c50d194c-fb6a-4706-b43d-c81c7b164dd6",
+  "label": "booklet 1833",
+  "reason": "fix: options restored to the booklet, booklet 1833",
+  "options": {
+   "A": "\\(15\\)",
+   "B": "\\(15\\sqrt{3}\\)",
+   "C": "\\(\\dfrac{5\\sqrt{3}}{2}\\)",
+   "D": "\\(\\dfrac{15\\sqrt{3}}{2}\\)"
+  },
+  "solution": "The diagonals of a rhombus bisect each other at right angles (here \\(\\vec{d_1}\\cdot\\vec{d_2} = 6-12+6 = 0\\)), so each side is the hypotenuse of a right triangle with legs \\(\\dfrac{|\\vec{d_1}|}{2}\\) and \\(\\dfrac{|\\vec{d_2}|}{2}\\).\n\n\\(|\\vec{d_1}|^2 = 9+16+1 = 26\\) and \\(|\\vec{d_2}|^2 = 4+9+36 = 49\\).\n\nSide \\(= \\dfrac{1}{2}\\sqrt{26+49} = \\dfrac{\\sqrt{75}}{2} = \\dfrac{5\\sqrt{3}}{2}\\). Hence (C)."
+ },
+ {
+  "id": "98c7949c-85ce-4a70-9f30-fe2ee52b8e91",
+  "label": "booklet 1857",
+  "reason": "fix: options restored to the booklet, booklet 1857",
+  "options": {
+   "A": "\\(25\\)",
+   "B": "\\(7\\)",
+   "C": "\\(13\\)",
+   "D": "\\(12\\)"
+  },
+  "solution": "\\(\\vec{a}\\cdot\\vec{b} = |\\vec{a}||\\vec{b}|\\cos 120^\\circ = 3\\cdot 4\\cdot\\left(-\\dfrac{1}{2}\\right) = -6\\).\n\n\\(|4\\vec{a}+3\\vec{b}|^2 = 16|\\vec{a}|^2 + 9|\\vec{b}|^2 + 24\\,\\vec{a}\\cdot\\vec{b} = 144 + 144 - 144 = 144\\).\n\nSo \\(|4\\vec{a}+3\\vec{b}| = 12\\). Hence (D)."
+ },
+ {
+  "id": "689c86a3-a14c-4fdf-a366-749959da4b4d",
+  "label": "booklet 1867",
+  "reason": "fix: stem and options restored to the booklet, booklet 1867",
+  "text": "If \\(\\vec{a} + 2\\vec{b} - \\vec{c} = \\vec{0}\\) and \\(\\vec{a} \\times \\vec{b} + \\vec{b} \\times \\vec{c} + \\vec{c} \\times \\vec{a} = \\lambda(\\vec{a} \\times \\vec{b})\\) then the value of \\(\\lambda\\) is",
+  "options": {
+   "A": "\\(5\\)",
+   "B": "\\(4\\)",
+   "C": "\\(2\\)",
+   "D": "\\(-2\\)"
+  },
+  "solution": "From \\(\\vec{a}+2\\vec{b}-\\vec{c} = \\vec{0}\\) we get \\(\\vec{c} = \\vec{a}+2\\vec{b}\\).\n\n\\(\\vec{b}\\times\\vec{c} = \\vec{b}\\times\\vec{a} + 2\\,\\vec{b}\\times\\vec{b} = -\\vec{a}\\times\\vec{b}\\).\n\n\\(\\vec{c}\\times\\vec{a} = \\vec{a}\\times\\vec{a} + 2\\,\\vec{b}\\times\\vec{a} = -2\\,\\vec{a}\\times\\vec{b}\\).\n\nSo the sum is \\(\\vec{a}\\times\\vec{b} - \\vec{a}\\times\\vec{b} - 2\\,\\vec{a}\\times\\vec{b} = -2(\\vec{a}\\times\\vec{b})\\), and \\(\\lambda = -2\\). Hence (D)."
+ },
+ {
+  "id": "748a4abe-d1e3-4c92-afaa-6caf634f927b",
+  "label": "booklet 1875",
+  "reason": "fix: options restored to the booklet, booklet 1875",
+  "options": {
+   "A": "\\(\\dfrac{3}{2}\\)",
+   "B": "\\(-\\dfrac{3}{2}\\)",
+   "C": "\\(\\dfrac{2}{3}\\)",
+   "D": "\\(\\dfrac{1}{2}\\)"
+  },
+  "solution": "Since \\(\\vec{a}+\\vec{b}+\\vec{c} = \\vec{0}\\), take the dot product of this with itself:\n\n\\(|\\vec{a}|^2+|\\vec{b}|^2+|\\vec{c}|^2 + 2(\\vec{a}\\cdot\\vec{b}+\\vec{b}\\cdot\\vec{c}+\\vec{c}\\cdot\\vec{a}) = 0\\).\n\nFor unit vectors this is \\(3 + 2S = 0\\), so \\(S = -\\dfrac{3}{2}\\). Hence (B)."
+ },
+ {
+  "id": "31c9e99f-79b0-466f-944e-e47ed30d0fdc",
+  "label": "booklet 1876",
+  "reason": "fix: options restored to the booklet, booklet 1876",
+  "options": {
+   "C": "\\(-\\hat{i} - 8\\hat{j} - 2\\hat{k}\\)",
+   "D": "\\(-\\hat{i} - 8\\hat{j} + 2\\hat{k}\\)"
+  },
+  "solution": "\\(\\vec{r}\\times\\vec{b} = \\vec{c}\\times\\vec{b}\\) gives \\((\\vec{r}-\\vec{c})\\times\\vec{b} = \\vec{0}\\), so \\(\\vec{r}-\\vec{c} = t\\vec{b}\\) for some scalar \\(t\\). Then \\(\\vec{r} = (4+t)\\hat{i} + (-3+t)\\hat{j} + (7+t)\\hat{k}\\).\n\n\\(\\vec{r}\\cdot\\vec{a} = 0\\) with \\(\\vec{a} = 2\\hat{i}+\\hat{k}\\) gives \\(2(4+t) + (7+t) = 0\\), so \\(3t = -15\\) and \\(t = -5\\).\n\nTherefore \\(\\vec{r} = -\\hat{i} - 8\\hat{j} + 2\\hat{k}\\). Hence (D)."
+ },
+ {
+  "id": "3853822a-732e-40a7-8bdd-98d534f71f9f",
+  "label": "booklet 1878",
+  "reason": "fix: stem and options restored to the booklet, booklet 1878",
+  "text": "In a parallelogram ABCD, \\(|\\overrightarrow{AB}| = a\\), \\(|\\overrightarrow{AD}| = b\\) and \\(|\\overrightarrow{AC}| = c\\), then \\(\\overrightarrow{DB}\\cdot\\overrightarrow{AB}\\) has the value",
+  "options": {
+   "A": "\\(\\dfrac{1}{2}(a^2 - b^2 + c^2)\\)",
+   "B": "\\(\\dfrac{1}{4}(a^2 + b^2 - c^2)\\)",
+   "C": "\\(\\dfrac{1}{3}(b^2 + c^2 - a^2)\\)",
+   "D": "\\(\\dfrac{1}{2}(3a^2 + b^2 - c^2)\\)"
+  },
+  "solution": "Let \\(\\overrightarrow{AB} = \\vec{u}\\) and \\(\\overrightarrow{AD} = \\vec{v}\\), so \\(|\\vec{u}| = a\\) and \\(|\\vec{v}| = b\\). Then \\(\\overrightarrow{AC} = \\vec{u}+\\vec{v}\\) with \\(|\\vec{u}+\\vec{v}| = c\\), and \\(\\overrightarrow{DB} = \\vec{u}-\\vec{v}\\).\n\nFrom \\(c^2 = a^2 + b^2 + 2\\,\\vec{u}\\cdot\\vec{v}\\) we get \\(\\vec{u}\\cdot\\vec{v} = \\dfrac{c^2-a^2-b^2}{2}\\).\n\nThen \\(\\overrightarrow{DB}\\cdot\\overrightarrow{AB} = |\\vec{u}|^2 - \\vec{u}\\cdot\\vec{v} = a^2 - \\dfrac{c^2-a^2-b^2}{2} = \\dfrac{3a^2+b^2-c^2}{2}\\). Hence (D)."
+ },
+ {
+  "id": "8eaeb451-2ba2-4315-8e4b-140f48e5494e",
+  "label": "booklet 1880",
+  "reason": "fix: stem restored to the booklet, booklet 1880",
+  "text": "Let \\(|\\vec{a}| = 1\\), \\(|\\vec{b}| = \\sqrt{2}\\), \\(|\\vec{c}| = \\sqrt{3}\\) and \\(\\vec{a}\\) perpendicular to \\((\\vec{b}+\\vec{c})\\), \\(\\vec{b}\\) perpendicular to \\((\\vec{c}+\\vec{a})\\) and \\(\\vec{c}\\) perpendicular to \\((\\vec{a}+\\vec{b})\\). Then \\(|\\vec{a}+\\vec{b}+\\vec{c}|\\) is",
+  "solution": "The three perpendicularity conditions give \\(\\vec{a}\\cdot\\vec{b}+\\vec{a}\\cdot\\vec{c} = 0\\), \\(\\vec{b}\\cdot\\vec{c}+\\vec{b}\\cdot\\vec{a} = 0\\) and \\(\\vec{c}\\cdot\\vec{a}+\\vec{c}\\cdot\\vec{b} = 0\\).\n\nAdding them gives \\(2(\\vec{a}\\cdot\\vec{b}+\\vec{b}\\cdot\\vec{c}+\\vec{c}\\cdot\\vec{a}) = 0\\).\n\nSo \\(|\\vec{a}+\\vec{b}+\\vec{c}|^2 = 1 + 2 + 3 + 0 = 6\\), and \\(|\\vec{a}+\\vec{b}+\\vec{c}| = \\sqrt{6}\\). Hence (A)."
+ },
+ {
+  "id": "422db699-c012-4b81-8576-c2e7a9d29178",
+  "label": "booklet 1882",
+  "reason": "fix: options restored to the booklet, booklet 1882",
+  "options": {
+   "A": "\\(15\\)",
+   "B": "\\(\\dfrac{15\\sqrt{3}}{2}\\)",
+   "C": "\\(\\dfrac{15}{2}\\)",
+   "D": "\\(\\dfrac{15}{4}\\)"
+  },
+  "solution": "Area of the triangle \\(= \\dfrac{1}{2}|\\vec{a}||\\vec{b}|\\sin\\theta\\).\n\n\\(|\\vec{a}| = \\sqrt{1+4+4} = 3\\), \\(|\\vec{b}| = 5\\) and \\(\\theta = \\dfrac{\\pi}{6}\\), so the area is \\(\\dfrac{1}{2}\\cdot 3\\cdot 5\\cdot\\dfrac{1}{2} = \\dfrac{15}{4}\\). Hence (D)."
+ },
+ {
+  "id": "8a81df12-83fd-4917-9cbd-0b6d14281a03",
+  "label": "booklet 1883",
+  "reason": "fix: stem restored to the booklet, booklet 1883",
+  "text": "If \\(\\vec{a} = \\hat{i} - 2\\hat{j} + 3\\hat{k}\\), \\(\\vec{b}\\) is a vector such that \\(\\vec{a}\\cdot\\vec{b} = |\\vec{b}|^2\\) and \\(|\\vec{a}-\\vec{b}| = \\sqrt{7}\\), then \\(|\\vec{b}|\\) is",
+  "solution": "Here \\(|\\vec{a}|^2 = 1+4+9 = 14\\).\n\n\\(|\\vec{a}-\\vec{b}|^2 = |\\vec{a}|^2 - 2\\,\\vec{a}\\cdot\\vec{b} + |\\vec{b}|^2 = 7\\). Using \\(\\vec{a}\\cdot\\vec{b} = |\\vec{b}|^2\\), this becomes \\(14 - 2|\\vec{b}|^2 + |\\vec{b}|^2 = 7\\), so \\(|\\vec{b}|^2 = 7\\).\n\nHence \\(|\\vec{b}| = \\sqrt{7}\\). Hence (D)."
+ },
+ {
+  "id": "f3d8a778-1be8-4584-b16f-f19aa9dcbd23",
+  "label": "booklet 1885",
+  "reason": "fix: option B restored to the booklet, booklet 1885",
+  "options": {
+   "B": "\\(|\\vec{a} + \\lambda \\vec{b}| \\ge |\\vec{a}|\\) for all real \\(\\lambda\\) if \\(\\vec{a}\\) and \\(\\vec{b}\\) are perpendicular to each other"
+  },
+  "solution": "For \\(\\vec{a}\\perp\\vec{b}\\), \\(\\vec{a}\\cdot\\vec{b} = 0\\), so \\(|\\vec{a}+\\lambda\\vec{b}|^2 = |\\vec{a}|^2 + \\lambda^2|\\vec{b}|^2\\).\n\n(A) is the case \\(\\lambda = 1\\) of this, so it is true. (C) is this identity itself, so it is true. (B) follows from it, since \\(|\\vec{a}+\\lambda\\vec{b}|^2 \\ge |\\vec{a}|^2\\) for every real \\(\\lambda\\), so it is true.\n\n(D) is false. Take \\(\\vec{a} = \\vec{b} \\neq \\vec{0}\\), which are parallel, and \\(\\lambda = -1\\): then \\(|\\vec{a}+\\lambda\\vec{b}| = 0 < |\\vec{a}|\\).\n\nSo (D) is the statement that is not always true. Hence (D)."
+ },
+ {
+  "id": "91f9766a-1470-46f0-a7d0-2af9866c8f9b",
+  "label": "NDA 2017-I Q68",
+  "reason": "fix: option B restored to the paper, NDA 2017-I Q68",
+  "options": {
+   "B": "\\(\\overrightarrow{BA}+\\overrightarrow{CD}=\\overrightarrow{BD}+\\overrightarrow{CA}\\)"
+  },
+  "correct": "B",
+  "solution": "Write every vector with position vectors: \\(\\overrightarrow{BA}+\\overrightarrow{CD} = (A-B)+(D-C)\\).\n\n**(B):** \\(\\overrightarrow{BD}+\\overrightarrow{CA} = (D-B)+(A-C)\\), which is the same vector. So (B) is an identity.\n\n**(A):** \\(\\overrightarrow{AC}+\\overrightarrow{DB} = (C-A)+(B-D)\\). The difference from the left side is \\(2(A-B+D-C)\\), not zero in general.\n\n**(C):** \\(\\overrightarrow{AC}+\\overrightarrow{BD} = (C-A)+(D-B)\\). The difference from the left side is \\(2(A-C)\\), not zero in general.\n\n**(D):** \\(\\overrightarrow{BC}+\\overrightarrow{AD} = (C-B)+(D-A)\\). The difference is again \\(2(A-C)\\), not zero in general.\n\nHence (B)."
+ },
+ {
+  "id": "6d361ed9-cfa2-4980-8e5f-4aa7336cddfa",
+  "label": "NDA 2024-II Q55",
+  "reason": "fix: second candidate restored to the paper, NDA 2024-II Q55",
+  "text": "The vectors \\(\\vec{a},\\vec{b}\\) and \\(\\vec{c}\\) are of the same length. If taken pairwise, they form equal angles. If \\(\\vec{a}=\\hat{i}+\\hat{j}\\) and \\(\\vec{b}=\\hat{j}+\\hat{k}\\), then what can \\(\\vec{c}\\) be equal to?\nA. \\(\\hat{i}+\\hat{k}\\)\nB. \\(\\dfrac{-\\hat{i}+4\\hat{j}-\\hat{k}}{3}\\)\nSelect the correct answer using the code given below.",
+  "solution": "Here \\(|\\vec{a}| = |\\vec{b}| = \\sqrt{2}\\) and \\(\\vec{a}\\cdot\\vec{b} = 1\\), so the common angle has \\(\\cos\\theta = \\dfrac{1}{2}\\). So \\(\\vec{c}\\) needs \\(|\\vec{c}| = \\sqrt{2}\\), \\(\\vec{c}\\cdot\\vec{a} = 1\\) and \\(\\vec{c}\\cdot\\vec{b} = 1\\).\n\n**A.** \\(\\vec{c} = \\hat{i}+\\hat{k}\\): \\(|\\vec{c}| = \\sqrt{2}\\), \\(\\vec{c}\\cdot\\vec{a} = 1\\), \\(\\vec{c}\\cdot\\vec{b} = 1\\). It works.\n\n**B.** \\(\\vec{c} = \\dfrac{-\\hat{i}+4\\hat{j}-\\hat{k}}{3}\\): \\(|\\vec{c}|^2 = \\dfrac{1+16+1}{9} = 2\\), \\(\\vec{c}\\cdot\\vec{a} = \\dfrac{-1+4}{3} = 1\\), \\(\\vec{c}\\cdot\\vec{b} = \\dfrac{4-1}{3} = 1\\). It works.\n\nBoth A and B are possible. Hence (C)."
+ },
+ {
+  "id": "e196df2d-9071-46e6-bc5b-c75d549c470a",
+  "label": "booklet 1866",
+  "reason": "fix + note: options restored, and the booklet key is wrong, booklet 1866",
+  "options": {
+   "A": "\\(-7\\)",
+   "B": "\\(0\\)"
+  },
+  "correct": "B",
+  "solution": "**Note:** The booklet's key says (c), \\(-13\\), but the value is \\(0\\). The answer shown is the corrected one, (B).\n\n\\(4\\vec{a}\\times 5\\vec{b} = 20(\\vec{a}\\times\\vec{b})\\), and \\(\\vec{a}\\times\\vec{b}\\) is perpendicular to both \\(\\vec{a}\\) and \\(\\vec{b}\\), so it is perpendicular to every combination such as \\(3\\vec{a}-5\\vec{b}\\).\n\nSo \\((3\\vec{a}-5\\vec{b})\\cdot(4\\vec{a}\\times 5\\vec{b}) = 0\\). Hence (B)."
+ },
+ {
+  "id": "83d1a007-7a25-4a6a-ae4c-19d5909a0ebd",
+  "label": "NDA 2017-I Q66",
+  "reason": "fix + note: the paper key is wrong, NDA 2017-I Q66",
+  "correct": "D",
+  "solution": "**Note:** The paper's key says (c), \\(m = 2\\) and \\(n = -1\\), but \\(n = -1\\) does not make the vectors coplanar. The answer shown is the corrected one, (D).\n\nThree vectors are coplanar when their scalar triple product is zero:\n\n\\(\\begin{vmatrix} 1 & -1 & 1 \\\\ 2 & 3 & 2 \\\\ 1 & m & n \\end{vmatrix} = 1(3n-2m) + 1(2n-2) + 1(2m-3) = 5n - 5 = 0\\), so \\(n = 1\\).\n\nThen \\(|\\vec{c}|^2 = 1 + m^2 + 1 = 6\\) gives \\(m^2 = 4\\), so \\(m = \\pm 2\\).\n\nSo \\(m = \\pm 2\\) and \\(n = 1\\). Hence (D)."
+ },
+ {
+  "id": "aade885c-3c88-44a9-8efc-b9966e7c0340",
+  "label": "NDA 2018-II Q70",
+  "reason": "fix + note: the paper key is wrong, NDA 2018-II Q70",
+  "correct": "A",
+  "solution": "**Note:** The paper's key says (b), two statements, but only one statement holds. The answer shown is the corrected one, (A).\n\nStatement 1: \\(\\overrightarrow{AB}+\\overrightarrow{BC}+\\overrightarrow{CA} = \\vec{0}\\) by the triangle law. Correct.\n\nStatement 2: \\(\\overrightarrow{AB}+\\overrightarrow{BC} = \\overrightarrow{AC} = -\\overrightarrow{CA}\\), so the expression is \\(-2\\overrightarrow{CA} \\neq \\vec{0}\\). Incorrect.\n\nStatement 3: \\(\\overrightarrow{AB}+\\overrightarrow{CA} = \\overrightarrow{CB}\\), so the expression is \\(\\overrightarrow{CB}-\\overrightarrow{BC} = 2\\overrightarrow{CB} \\neq \\vec{0}\\). Incorrect.\n\nStatement 4: \\(\\overrightarrow{BA}-\\overrightarrow{BC} = \\overrightarrow{CA}\\), so the expression is \\(2\\overrightarrow{CA} \\neq \\vec{0}\\). Incorrect.\n\nExactly one statement is correct. Hence (A)."
+ },
+ {
+  "id": "7876f8a5-ca4e-4e83-8888-f82215ffcadd",
+  "label": "NDA 2022-I Q100",
+  "reason": "fix + note: the paper key is wrong, NDA 2022-I Q100",
+  "correct": "D",
+  "solution": "**Note:** The paper's key says (a), \\(0 < \\sin\\theta < 1\\) only, but \\(\\sin\\theta = 0\\) is possible. The answer shown is the corrected one, (D).\n\n\\(|\\vec{a}-\\vec{b}|^2 = 2 - 2\\cos 2\\theta = 4\\sin^2\\theta\\). The condition \\(|\\vec{a}-\\vec{b}| < 2\\) gives \\(4\\sin^2\\theta < 4\\), so \\(-1 < \\sin\\theta < 1\\).\n\nNothing forces \\(\\vec{a}\\neq\\vec{b}\\): taking \\(\\vec{a} = \\vec{b}\\) gives \\(\\theta = 0\\) and \\(\\sin\\theta = 0\\), which is allowed. So the strict lower bound \\(0 < \\sin\\theta\\) in (A) fails. Options (B) and (C) fail too, since \\(\\sin\\theta\\) can be \\(0\\) and can come close to \\(1\\).\n\nThe one statement that always holds is \\(-1 < \\sin\\theta < 1\\). Hence (D)."
+ },
+ {
+  "id": "46bb7542-65b2-403c-a2bd-1c781f17be31",
+  "label": "NDA 2025-I Q67",
+  "reason": "fix + note: the paper key is wrong, NDA 2025-I Q67",
+  "correct": "C",
+  "solution": "**Note:** The paper's key says (a), I only, but statement II is also always true. The answer shown is the corrected one, (C).\n\nBy the vector triple product, \\(\\vec{d} = (\\vec{a}\\times\\vec{b})\\times\\vec{c} = (\\vec{a}\\cdot\\vec{c})\\vec{b} - (\\vec{b}\\cdot\\vec{c})\\vec{a}\\).\n\nStatement I: \\(\\vec{d}\\) is a combination of \\(\\vec{a}\\) and \\(\\vec{b}\\), so it is coplanar with them. True.\n\nStatement II: \\(\\vec{d}\\cdot\\vec{c} = (\\vec{a}\\cdot\\vec{c})(\\vec{b}\\cdot\\vec{c}) - (\\vec{b}\\cdot\\vec{c})(\\vec{a}\\cdot\\vec{c}) = 0\\). (This also follows because \\(\\vec{d}\\) is a cross product with \\(\\vec{c}\\).) True.\n\nBoth statements are correct. Hence (C)."
+ },
+ {
+  "id": "fdc4997a-976f-4043-97af-b6669b936cb3",
+  "label": "NDA 2026-I Q66",
+  "reason": "fix + note: the paper key is wrong, NDA 2026-I Q66",
+  "correct": "C",
+  "solution": "**Note:** The paper's key says (d), \\(\\dfrac{2\\pi}{3}\\), but the angle between \\(\\vec{a}\\) and \\(\\vec{c}\\) is \\(\\dfrac{\\pi}{2}\\). The answer shown is the corrected one, (C).\n\n\\(|\\vec{a}+\\vec{b}| = 1\\) gives \\(1 + 1 + 2\\,\\vec{a}\\cdot\\vec{b} = 1\\), so \\(\\vec{a}\\cdot\\vec{b} = -\\dfrac{1}{2}\\). In the same way \\(|\\vec{b}+\\vec{c}| = 1\\) gives \\(\\vec{b}\\cdot\\vec{c} = -\\dfrac{1}{2}\\).\n\n\\(|\\vec{a}+\\vec{b}+\\vec{c}| = 1\\) gives \\(3 + 2(\\vec{a}\\cdot\\vec{b}+\\vec{b}\\cdot\\vec{c}+\\vec{a}\\cdot\\vec{c}) = 1\\), so the sum of the three dot products is \\(-1\\). Hence \\(\\vec{a}\\cdot\\vec{c} = -1 + \\dfrac{1}{2} + \\dfrac{1}{2} = 0\\).\n\nSo the angle between \\(\\vec{a}\\) and \\(\\vec{c}\\) is \\(\\dfrac{\\pi}{2}\\). Hence (C)."
+ },
+ {
+  "id": "63258511-8b05-414e-bc46-d6ec7c62b18f",
+  "label": "booklet 1879",
+  "reason": "note: defective as printed, booklet 1879",
+  "solution": "**Note:** As printed, only \\(|\\vec{a}|\\) and \\(|\\vec{b}|\\) are given, and these do not fix the angle between \\(\\vec{a}+\\vec{b}\\) and \\(\\vec{a}-\\vec{b}\\), which depends on the angle between \\(\\vec{a}\\) and \\(\\vec{b}\\). The answer shown follows the booklet's key.\n\nThe answer \\(\\pi\\) holds when \\(\\vec{a}\\) is parallel to \\(\\vec{b}\\). Then \\(\\vec{a} = k\\vec{b}\\) with \\(k = \\pm\\dfrac{7}{11}\\), so \\(\\vec{a}+\\vec{b} = (k+1)\\vec{b}\\) and \\(\\vec{a}-\\vec{b} = (k-1)\\vec{b}\\). Since \\(|k| < 1\\), the factor \\(k+1\\) is positive and \\(k-1\\) is negative, so the two vectors point in opposite directions and the angle is \\(\\pi\\). Hence (A)."
+ },
+ {
+  "id": "be561a21-3dad-4fb9-afbe-882b898bf59c",
+  "label": "booklet 1881",
+  "reason": "note: defective as printed, booklet 1881",
+  "solution": "**Note:** As printed, the vector in the plane of \\(\\vec{a}\\) and \\(\\vec{b}\\) with the required property is option (B), but its projection on \\(\\vec{c}\\) is \\(-\\dfrac{1}{\\sqrt{3}}\\), not \\(+\\dfrac{1}{\\sqrt{3}}\\), and no option has projection \\(+\\dfrac{1}{\\sqrt{3}}\\). The answer shown follows the booklet's key.\n\nA vector in the plane of \\(\\vec{a}\\) and \\(\\vec{b}\\) is \\(\\alpha\\vec{a}+\\beta\\vec{b} = (\\alpha+\\beta)\\hat{i} + (2\\alpha-\\beta)\\hat{j} + (\\alpha+\\beta)\\hat{k}\\), so its \\(\\hat{i}\\) and \\(\\hat{k}\\) components are equal. Only option (B), \\(4\\hat{i}-\\hat{j}+4\\hat{k}\\), has that form (it is \\(\\vec{a}+3\\vec{b}\\)).\n\nIts projection on \\(\\vec{c}\\) is \\(\\dfrac{4-1-4}{\\sqrt{3}} = -\\dfrac{1}{\\sqrt{3}}\\). Hence (B)."
+ },
+ {
+  "id": "413bbef4-076c-4a49-abf5-ff5a6abb8447",
+  "label": "booklet 1898",
+  "reason": "note: defective as printed, booklet 1898",
+  "solution": "**Note:** Options (B) and (C) are both true as printed. The answer shown follows the booklet's key.\n\n\\(\\vec{a}\\cdot\\vec{b} = \\vec{a}\\cdot\\vec{c}\\) gives \\(\\vec{a}\\cdot(\\vec{b}-\\vec{c}) = 0\\), which is option (C) exactly. Option (B) says the same thing in words: either \\(\\vec{a}\\perp(\\vec{b}-\\vec{c})\\), or \\(\\vec{b} = \\vec{c}\\), in which case \\(\\vec{b}-\\vec{c} = \\vec{0}\\) and the dot product is zero anyway.\n\nOption (A) is not forced (only the difference \\(\\vec{b}-\\vec{c}\\) is perpendicular to \\(\\vec{a}\\)), and option (D) is not forced either. Hence (B)."
+ },
+ {
+  "id": "1f01e46d-bf1e-4b0f-a3d3-572eed1a0028",
+  "label": "booklet 1912",
+  "reason": "note: defective as printed, booklet 1912",
+  "solution": "**Note:** The printed expression is ill-formed, since a scalar \\((\\vec{b}+\\vec{c})\\cdot\\vec{a}\\) is followed by a cross product. The answer shown follows the booklet's key, which reads it as \\((\\vec{b}+\\vec{c})\\cdot\\left[\\vec{a}\\times\\{(\\vec{b}+\\vec{c})\\times\\vec{a}\\}\\right]\\).\n\nLet \\(\\vec{u} = \\vec{b}+\\vec{c} = (-1+2)\\hat{i} + (2-2)\\hat{j} + (3-3)\\hat{k} = \\hat{i}\\).\n\n\\(\\vec{a}\\times(\\vec{u}\\times\\vec{a}) = \\vec{u}(\\vec{a}\\cdot\\vec{a}) - \\vec{a}(\\vec{a}\\cdot\\vec{u})\\), with \\(\\vec{a}\\cdot\\vec{a} = 14\\) and \\(\\vec{a}\\cdot\\vec{u} = 1\\). This equals \\(14\\hat{i} - (\\hat{i}+2\\hat{j}+3\\hat{k}) = 13\\hat{i} - 2\\hat{j} - 3\\hat{k}\\).\n\nDot with \\(\\vec{u} = \\hat{i}\\): the result is \\(13\\). Hence (C)."
+ },
+ {
+  "id": "fb76c38a-1808-488e-886f-191ce0d5d6a6",
+  "label": "booklet 1856",
+  "reason": "note: option A misprint, booklet 1856",
+  "solution": "**Note:** Option (A) is printed as \\(\\left(\\dfrac{-24}{4}, \\dfrac{-36}{5}\\right)\\), a misprint for \\(\\left(\\dfrac{-24}{5}, \\dfrac{-36}{5}\\right)\\), which is the correct pair. The answer shown follows the booklet's key.\n\n\\(\\vec{a}\\times\\vec{b} = \\vec{0}\\) means \\(\\vec{a}\\) and \\(\\vec{b}\\) are parallel, so their components are proportional: \\(\\dfrac{m}{2} = \\dfrac{n}{3} = \\dfrac{12}{-5}\\).\n\nSo \\(m = -\\dfrac{24}{5}\\) and \\(n = -\\dfrac{36}{5}\\). Hence (A)."
+ },
+ {
+  "id": "d9dd60b4-ac27-4222-a231-2060acff3cdf",
+  "label": "NDA 2023-II Q94",
+  "reason": "note: defective as printed, NDA 2023-II Q94",
+  "solution": "**Note:** As vectors, \\(60\\hat{i}+3\\hat{j}\\) and \\(40\\hat{i}-8\\hat{j}\\) are not parallel, so no value of \\(\\beta\\) makes the three vectors collinear. Read as position vectors of three points, they are collinear for \\(\\beta = -40\\). The answer shown follows the paper's key.\n\nTake the points \\((60,3)\\), \\((40,-8)\\) and \\((\\beta,-52)\\). The slope between the first two is \\(\\dfrac{-8-3}{40-60} = \\dfrac{11}{20}\\).\n\nThe slope between the second and third must be the same: \\(\\dfrac{-52+8}{\\beta-40} = \\dfrac{-44}{\\beta-40} = \\dfrac{11}{20}\\), so \\(\\beta-40 = -80\\) and \\(\\beta = -40\\). Hence (C)."
+ },
+ {
+  "id": "60e618d6-740b-4ee0-8a25-5859d2ea326d",
+  "label": "NDA 2024-I Q68",
+  "reason": "note: defective as printed, NDA 2024-I Q68",
+  "solution": "**Note:** Texts differ on whether the moment of a force about a line is a vector (along the line) or a scalar. The paper's key takes it as a vector. The answer shown follows the paper's key.\n\n(A) is false. The moment of a force about a point is \\(\\vec{r}\\times\\vec{F}\\), where \\(\\vec{r}\\) runs from the point to the point of application. Sliding the point of application along the line of action leaves it unchanged, but moving it off that line changes \\(\\vec{r}\\times\\vec{F}\\).\n\n(B) is true under the paper's convention: the moment about a line is the component of \\(\\vec{r}\\times\\vec{F}\\) along the line, taken as a vector along the line.\n\nOnly (B) is correct. Hence (B)."
+ },
+ {
+  "id": "c577f20d-1f7e-416d-bd59-70158a66cc21",
+  "label": "NDA 2026-I Q67",
+  "reason": "note: defective as printed, NDA 2026-I Q67",
+  "solution": "**Note:** The relations \\(\\vec{a}\\times\\vec{b} = \\vec{c}\\) and \\(\\vec{b}\\times\\vec{c} = \\vec{a}\\) force the three vectors to be orthogonal in pairs and give \\(|\\vec{b}| = 1\\), but they do not force \\(|\\vec{a}| = |\\vec{c}| = 1\\). The answer shown follows the paper's key, which assumes unit vectors.\n\nFrom \\(\\vec{c} = \\vec{a}\\times\\vec{b}\\), \\(\\vec{c}\\) is perpendicular to \\(\\vec{a}\\) and \\(\\vec{b}\\). From \\(\\vec{a} = \\vec{b}\\times\\vec{c}\\), \\(\\vec{a}\\) is perpendicular to \\(\\vec{b}\\) and \\(\\vec{c}\\). So the vectors are orthogonal in pairs: statement I is true.\n\nFor lengths, \\(|\\vec{c}| = |\\vec{a}||\\vec{b}|\\) and \\(|\\vec{a}| = |\\vec{b}||\\vec{c}|\\), so \\(|\\vec{a}| = |\\vec{a}||\\vec{b}|^2\\) and \\(|\\vec{b}| = 1\\), with \\(|\\vec{c}| = |\\vec{a}|\\). Taking the intended unit vectors, statement II is true as well. Hence (C)."
+ },
+ {
+  "id": "ba5cc853-353b-404b-a5d9-3a8b9fa8daf4",
+  "label": "NDA 2026-I Q68",
+  "reason": "note: defective as printed, NDA 2026-I Q68",
+  "solution": "**Note:** Statement II equals \\(|\\vec{c}|^2\\), which is \\(1\\) only if \\(\\vec{c}\\) is a unit vector, and the set does not force that. Statement I is false because \\([\\vec{a}\\,\\vec{b}\\,\\vec{c}] = |\\vec{c}|^2\\) is not \\(0\\). The answer shown follows the paper's key, which assumes unit vectors.\n\nStatement I: \\((\\vec{a}\\times\\vec{b})\\cdot\\vec{c} + (\\vec{b}\\times\\vec{c})\\cdot\\vec{a} = 2[\\vec{a}\\,\\vec{b}\\,\\vec{c}]\\), while \\((\\vec{c}\\times\\vec{a})\\cdot\\vec{b} = [\\vec{a}\\,\\vec{b}\\,\\vec{c}]\\). These are equal only if \\([\\vec{a}\\,\\vec{b}\\,\\vec{c}] = 0\\), but \\([\\vec{a}\\,\\vec{b}\\,\\vec{c}] = \\vec{c}\\cdot\\vec{c} = |\\vec{c}|^2 \\neq 0\\). False.\n\nStatement II: \\((\\vec{a}\\times\\vec{b})\\times(\\vec{b}\\times\\vec{c}) = \\vec{c}\\times\\vec{a}\\), and \\((\\vec{c}\\times\\vec{a})\\cdot\\vec{b} = [\\vec{c}\\,\\vec{a}\\,\\vec{b}] = |\\vec{c}|^2\\). For the intended unit vectors this is \\(1\\). True.\n\nOnly II is correct. Hence (B)."
+ },
+ {
+  "id": "2fee9fbd-79e8-406b-a9ec-4ff82127f3d5",
+  "label": "mock 1 Q11",
+  "reason": "note: defective as printed, mock 1 Q11",
+  "solution": "**Note:** As printed, the second vector is \\(4\\hat{i}+4\\hat{j}+7\\hat{k}\\), for which the projection is \\(\\dfrac{1}{3}\\), and that is not an option. The key \\(\\dfrac{19}{9}\\) follows \\(4\\hat{i}-4\\hat{j}+7\\hat{k}\\). The answer shown follows the paper's key.\n\nProjection of \\(\\hat{i}-2\\hat{j}+\\hat{k}\\) on \\(4\\hat{i}-4\\hat{j}+7\\hat{k}\\) is \\(\\dfrac{(1)(4)+(-2)(-4)+(1)(7)}{\\sqrt{16+16+49}} = \\dfrac{19}{9}\\). Hence (B)."
+ },
+ {
+  "id": "5818c431-9ade-4ae4-9728-0839d60b0e16",
+  "label": "mock 1 Q87",
+  "reason": "note: defective as printed, mock 1 Q87",
+  "solution": "**Note:** The stem has a pasted sentence between \\(4\\hat{i}\\) and \\(2\\hat{j}\\). It is read as the vectors \\(4\\hat{i}+2\\hat{j}\\) and \\(-3\\hat{i}+2\\hat{j}\\). The answer shown follows the paper's key.\n\nLet \\(\\vec{a} = 4\\hat{i}+2\\hat{j}\\) and \\(\\vec{b} = -3\\hat{i}+2\\hat{j}\\). Then \\(\\vec{a}\\times\\vec{b} = (4\\cdot 2 - 2\\cdot(-3))\\hat{k} = 14\\hat{k}\\).\n\nThe unit vector perpendicular to both is \\(\\pm\\dfrac{\\vec{a}\\times\\vec{b}}{|\\vec{a}\\times\\vec{b}|} = \\pm\\hat{k}\\), and \\(\\hat{k}\\) is among the options. Hence (C)."
+ },
+ {
+  "id": "580054b2-3500-4a8a-9cc6-91e55393a517",
+  "label": "mock 2 Q90",
+  "reason": "note: defective as printed, mock 2 Q90",
+  "solution": "**Note:** The question asks for the \"value\" of the vector \\(\\overrightarrow{OG}\\), which is not a number. The key \\(-1\\) reads it as the coefficient \\(k\\) in (resultant) \\(= k\\,\\overrightarrow{OG}\\). The answer shown follows the paper's key.\n\nLet \\(\\overrightarrow{OA} = \\vec{a}\\) and \\(\\overrightarrow{OB} = \\vec{b}\\). The forces are \\(2\\vec{a}\\) and \\(3\\overrightarrow{BO} = -3\\vec{b}\\), so the resultant is \\(2\\vec{a}-3\\vec{b}\\).\n\n\\(\\dfrac{BG}{AG} = -\\dfrac{2}{3}\\) means \\(AG : GB = 3 : -2\\), so G divides AB externally and \\(\\overrightarrow{OG} = \\dfrac{-2\\vec{a}+3\\vec{b}}{3-2} = -2\\vec{a}+3\\vec{b}\\).\n\nSo the resultant is \\(2\\vec{a}-3\\vec{b} = -\\overrightarrow{OG}\\), a coefficient of \\(-1\\). Hence (B)."
+ },
+ {
+  "id": "d8992a46-faa2-4e49-bd2b-e149b2aba4d1",
+  "label": "mock 4 Q86",
+  "reason": "note: defective as printed, mock 4 Q86",
+  "solution": "**Note:** The stem is garbled in print. It is read as the points \\((60,3)\\), \\((40,-8)\\) and \\((a,-52)\\). The answer shown follows the paper's key.\n\nThe slope between the first two points is \\(\\dfrac{-8-3}{40-60} = \\dfrac{11}{20}\\). For collinearity the slope between the second and third must match: \\(\\dfrac{-52+8}{a-40} = \\dfrac{-44}{a-40} = \\dfrac{11}{20}\\), so \\(a-40 = -80\\) and \\(a = -40\\). Hence (A)."
+ },
+ {
+  "id": "5bf78a16-e74d-4543-9927-747cba7ab90f",
+  "label": "2D booklet 1758",
+  "reason": "note: more than one option true, 2D booklet 1758",
+  "solution": "**Note:** Options (A), (B) and (C) are all true as printed, so the question has more than one correct answer. The answer shown follows the booklet's key.\n\nComplete the squares: \\(16(x-1)^2 - 3(y+2)^2 = 48\\), so \\(\\dfrac{(x-1)^2}{3} - \\dfrac{(y+2)^2}{16} = 1\\), with \\(a^2 = 3\\) and \\(b^2 = 16\\).\n\n(A) The transverse axis has length \\(2a = 2\\sqrt{3}\\). True.\n\n(B) Each latus rectum has length \\(\\dfrac{2b^2}{a} = \\dfrac{32}{\\sqrt{3}}\\). True.\n\n(C) \\(e^2 = 1 + \\dfrac{b^2}{a^2} = \\dfrac{19}{3}\\), so \\(e = \\sqrt{\\dfrac{19}{3}}\\). True.\n\n(D) The directrices are \\(x = 1 \\pm \\dfrac{a}{e} = 1 \\pm \\dfrac{3}{\\sqrt{19}}\\), not \\(x = \\dfrac{\\sqrt{19}}{3}\\). False.\n\nHence (A)."
+ }
+]

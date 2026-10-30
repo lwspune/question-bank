@@ -1,0 +1,38 @@
+[
+  {
+    "id": "0cd38a3d-3eb5-4065-a335-474f77a6a68a",
+    "before": "0d4adb68",
+    "solution": "Rewrite \\(x - 2y + 3 \\ge 0\\) as \\(2y \\le x + 3\\), that is \\(y \\le \\frac{x + 3}{2}\\).\n\nSo the inequality holds on the line \\(x - 2y + 3 = 0\\) and at every point below it (the origin, below the line, gives \\(3 \\ge 0\\)). Hence (D).",
+    "note": "said 'on and above'; the region is on and below, as keyed"
+  },
+  {
+    "id": "54de5518-5a07-4e45-a7ca-24cc084d401a",
+    "before": "78bf8836",
+    "solution": "Using the distance from a point to a line, \\(d = \\frac{|ax_1 + by_1 + c|}{\\sqrt{a^2 + b^2}}\\):\n\n\\(d = \\frac{|3(2) + 4(3) - 5|}{\\sqrt{3^2 + 4^2}} = \\frac{|6 + 12 - 5|}{\\sqrt{25}} = \\frac{13}{5}\\). Hence (A).",
+    "note": "arithmetic slip: 6 + 12 - 5 is 13, not 17"
+  },
+  {
+    "id": "967e90a1-fe3f-4954-acda-f4a25ab0b3b2",
+    "before": "bd95dc25",
+    "solution": "Substitute each point into \\(5x - 3y + 15\\):\n\n- \\((0, 5)\\): \\(5(0) - 3(5) + 15 = 0\\), so it lies on the line.\n- \\((3, 0)\\): \\(5(3) - 3(0) + 15 = 30 \\ne 0\\).\n- \\((1, 5)\\): \\(5 - 15 + 15 = 5 \\ne 0\\).\n- \\((6, 10)\\): \\(30 - 30 + 15 = 15 \\ne 0\\).\n\nOnly \\((0, 5)\\) lies on the line. Hence (A).",
+    "note": "claimed option B's point (3, 0) also lies on the line; it does not"
+  },
+  {
+    "id": "97b42ffc-b5e7-4af1-89e2-23df888ae21b",
+    "before": "78224736",
+    "solution": "If two lines make angles \\(\\alpha\\) and \\(\\beta\\) with the x-axis, their slopes are \\(\\tan \\alpha\\) and \\(\\tan \\beta\\).\n\nThe angle \\(\\theta\\) between them satisfies \\(\\tan \\theta = \\left|\\frac{\\tan \\alpha - \\tan \\beta}{1 + \\tan \\alpha \\tan \\beta}\\right| = |\\tan(\\alpha - \\beta)|\\).\n\nSo one angle between the lines is \\(|\\alpha - \\beta|\\) (the other is its supplement). Hence (A).",
+    "note": "no longer implies |alpha - beta| is always the acute angle"
+  },
+  {
+    "id": "c98890b1-13a5-4c77-ac7d-5fb9386d719f",
+    "before": "0d08bcb7",
+    "solution": "The slopes are \\(m_1 = \\tan\\alpha\\) and \\(m_2 = \\tan\\beta\\), so \\(\\tan \\theta = \\left|\\frac{\\tan\\alpha - \\tan\\beta}{1 + \\tan\\alpha \\tan\\beta}\\right|\\).\n\nBy the tangent subtraction formula this is \\(|\\tan(\\alpha - \\beta)|\\).\n\nSo one angle between the lines is \\(|\\alpha - \\beta|\\) (the other is its supplement). Hence (A).",
+    "note": "dropped the false claim that |alpha - beta| is always the acute angle"
+  },
+  {
+    "id": "162233bc-1ebf-4132-b5fd-ac09d448d83c",
+    "before": "050ebec3",
+    "solution": "Take the parallelogram as \\(ABCD\\), so its diagonals are \\(AC\\) and \\(BD\\), and they bisect each other.\n\nMidpoint of \\(AC = \\left(\\frac{1+9}{2}, \\frac{2+4}{2}\\right) = (5, 3)\\), which is also the midpoint of \\(BD\\).\n\nWith \\(D(x, y)\\): \\(\\frac{3+x}{2} = 5\\) gives \\(x = 7\\), and \\(\\frac{8+y}{2} = 3\\) gives \\(y = -2\\). So \\(D = (7, -2)\\). Hence (C).",
+    "note": "states the vertex order ABCD the answer depends on"
+  }
+]

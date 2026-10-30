@@ -1,0 +1,954 @@
+{
+  "//": "Assembled from agent drafts (coordGeometry).",
+  "visuals": [
+    {
+      "id": "19171ea5-16d5-4fc2-a23b-ebae82eec29d",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -11,
+              4
+            ],
+            "y": [
+              -3,
+              28
+            ]
+          },
+          "points": [
+            {
+              "id": "O",
+              "at": [
+                0,
+                0
+              ],
+              "label": "O"
+            },
+            {
+              "id": "Z",
+              "at": [
+                -7,
+                24
+              ],
+              "label": "z(−7, 24)"
+            }
+          ],
+          "segments": [
+            {
+              "from": "O",
+              "to": "Z"
+            }
+          ],
+          "ask": {
+            "kind": "distance",
+            "from": "O",
+            "to": "Z",
+            "label": "|z| = 25"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given",
+              "construct",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "4c2cee41",
+        "answer": {
+          "value": 25,
+          "label": "25"
+        }
+      }
+    },
+    {
+      "id": "23c61835-ed31-4bcd-b82e-650f268306a1",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -2,
+              3
+            ],
+            "y": [
+              -3,
+              2
+            ]
+          },
+          "points": [
+            {
+              "id": "O",
+              "at": [
+                0,
+                0
+              ],
+              "label": "O"
+            },
+            {
+              "id": "Z",
+              "at": [
+                1,
+                -1
+              ],
+              "label": "z(1, −1)"
+            }
+          ],
+          "segments": [
+            {
+              "from": "O",
+              "to": "Z"
+            }
+          ],
+          "ask": {
+            "kind": "distance",
+            "from": "O",
+            "to": "Z",
+            "label": "|z| = √2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given",
+              "construct",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "5e1de9a2",
+        "answer": {
+          "value": 1.4142135623730951,
+          "label": "√2"
+        }
+      }
+    },
+    {
+      "id": "3d81bbf8-9d77-428b-91de-01be320d7d2b",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -6,
+              15
+            ],
+            "y": [
+              -13,
+              6
+            ]
+          },
+          "points": [
+            {
+              "id": "O",
+              "at": [
+                0,
+                0
+              ],
+              "label": "O"
+            },
+            {
+              "id": "Z",
+              "at": [
+                2,
+                -3
+              ],
+              "label": "z(2, −3)"
+            },
+            {
+              "id": "W",
+              "at": [
+                4,
+                1
+              ],
+              "label": "w(4, 1)"
+            },
+            {
+              "id": "P",
+              "at": [
+                11,
+                -10
+              ],
+              "label": "zw(11, −10)",
+              "beat": "derived"
+            }
+          ],
+          "segments": [
+            {
+              "from": "O",
+              "to": "P"
+            }
+          ],
+          "ask": {
+            "kind": "distance",
+            "from": "O",
+            "to": "P",
+            "label": "|zw| = √221"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given",
+              "derived",
+              "construct",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "8f771c57",
+        "answer": {
+          "value": 14.866068747318504,
+          "label": "√221"
+        }
+      }
+    },
+    {
+      "id": "4076d8af-4ed6-43d5-b261-887be3724eeb",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -2,
+              5
+            ],
+            "y": [
+              -2,
+              7
+            ]
+          },
+          "points": [
+            {
+              "id": "O",
+              "at": [
+                0,
+                0
+              ],
+              "label": "O"
+            },
+            {
+              "id": "Z",
+              "at": [
+                2,
+                5
+              ],
+              "label": "z(2, 5)"
+            }
+          ],
+          "segments": [
+            {
+              "from": "O",
+              "to": "Z"
+            }
+          ],
+          "ask": {
+            "kind": "distance",
+            "from": "O",
+            "to": "Z",
+            "squared": true,
+            "label": "z × conjugate = |z|² = 29"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given",
+              "construct",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "1bb2aa36",
+        "answer": {
+          "value": 29.000000000000007,
+          "label": "29"
+        }
+      }
+    },
+    {
+      "id": "514cf7cf-f747-4456-a2a8-d6df946de65c",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -5,
+              5
+            ],
+            "y": [
+              -2,
+              10
+            ]
+          },
+          "points": [
+            {
+              "id": "O",
+              "at": [
+                0,
+                0
+              ],
+              "label": "O"
+            },
+            {
+              "id": "Z",
+              "at": [
+                0,
+                8
+              ],
+              "label": "z(0, 8)"
+            }
+          ],
+          "segments": [
+            {
+              "from": "O",
+              "to": "Z"
+            }
+          ],
+          "ask": {
+            "kind": "distance",
+            "from": "O",
+            "to": "Z",
+            "label": "|z| = 8"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given",
+              "construct",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "2d4fa1f1",
+        "answer": {
+          "value": 8,
+          "label": "8"
+        }
+      }
+    },
+    {
+      "id": "645c60d7-75da-4482-b998-218084c4e453",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -3,
+              8
+            ],
+            "y": [
+              -3,
+              15
+            ]
+          },
+          "points": [
+            {
+              "id": "O",
+              "at": [
+                0,
+                0
+              ],
+              "label": "O"
+            },
+            {
+              "id": "Z",
+              "at": [
+                5,
+                12
+              ],
+              "label": "z(5, 12)"
+            }
+          ],
+          "segments": [
+            {
+              "from": "O",
+              "to": "Z"
+            }
+          ],
+          "ask": {
+            "kind": "distance",
+            "from": "O",
+            "to": "Z",
+            "label": "|z| = 13"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given",
+              "construct"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "f5a1ec59",
+        "answer": {
+          "value": 13,
+          "label": "13"
+        }
+      }
+    },
+    {
+      "id": "68d22f68-d65c-4cd2-84d2-040c52051377",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -2,
+              9
+            ],
+            "y": [
+              -6,
+              3
+            ]
+          },
+          "points": [
+            {
+              "id": "O",
+              "at": [
+                0,
+                0
+              ],
+              "label": "O"
+            },
+            {
+              "id": "Z",
+              "at": [
+                6,
+                -3
+              ],
+              "label": "z(6, −3)"
+            }
+          ],
+          "segments": [
+            {
+              "from": "O",
+              "to": "Z"
+            }
+          ],
+          "ask": {
+            "kind": "distance",
+            "from": "O",
+            "to": "Z",
+            "squared": true,
+            "label": "z × conjugate = |z|² = 45"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given",
+              "construct",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "53a3bbce",
+        "answer": {
+          "value": 45.00000000000001,
+          "label": "45"
+        }
+      }
+    },
+    {
+      "id": "8874be39-a90f-4573-82a5-a46cc7c320ee",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -4,
+              4
+            ],
+            "y": [
+              -2,
+              6
+            ]
+          },
+          "points": [
+            {
+              "id": "O",
+              "at": [
+                0,
+                0
+              ],
+              "label": "O"
+            },
+            {
+              "id": "Z",
+              "at": [
+                0,
+                4
+              ],
+              "label": "z(0, 4)"
+            }
+          ],
+          "segments": [
+            {
+              "from": "O",
+              "to": "Z"
+            }
+          ],
+          "ask": {
+            "kind": "distance",
+            "from": "O",
+            "to": "Z",
+            "label": "|z| = 4"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given",
+              "construct",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "5a206810",
+        "answer": {
+          "value": 4,
+          "label": "4"
+        }
+      }
+    },
+    {
+      "id": "8b66854d-9269-49d0-b879-8de93fb690fa",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -2,
+              6
+            ],
+            "y": [
+              -2,
+              6
+            ]
+          },
+          "points": [
+            {
+              "id": "O",
+              "at": [
+                0,
+                0
+              ],
+              "label": "O"
+            },
+            {
+              "id": "Z",
+              "at": [
+                3,
+                4
+              ],
+              "label": "z(3, 4)"
+            }
+          ],
+          "segments": [
+            {
+              "from": "O",
+              "to": "Z"
+            }
+          ],
+          "ask": {
+            "kind": "distance",
+            "from": "O",
+            "to": "Z",
+            "label": "|z| = 5"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given",
+              "construct",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "785f8db7",
+        "answer": {
+          "value": 5,
+          "label": "5"
+        }
+      }
+    },
+    {
+      "id": "9bde1a9d-a73e-4a74-b9f4-ba0e79104fb5",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -3,
+              8
+            ],
+            "y": [
+              -5,
+              3
+            ]
+          },
+          "points": [
+            {
+              "id": "O",
+              "at": [
+                0,
+                0
+              ],
+              "label": "O"
+            },
+            {
+              "id": "Z",
+              "at": [
+                4.330127,
+                -2.5
+              ],
+              "label": "z = 5e^(−iπ/6)"
+            }
+          ],
+          "segments": [
+            {
+              "from": "O",
+              "to": "Z"
+            }
+          ],
+          "ask": {
+            "kind": "distance",
+            "from": "O",
+            "to": "Z",
+            "label": "|z| = 5"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given",
+              "construct"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "e6caedd4",
+        "answer": {
+          "value": 4.9999999836129,
+          "label": "5"
+        }
+      }
+    },
+    {
+      "id": "a1e44c73-1f01-4146-b246-76bc0e937afd",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -5,
+              5
+            ],
+            "y": [
+              -2,
+              9
+            ]
+          },
+          "points": [
+            {
+              "id": "O",
+              "at": [
+                0,
+                0
+              ],
+              "label": "O"
+            },
+            {
+              "id": "Z",
+              "at": [
+                0,
+                7
+              ],
+              "label": "7i (0, 7)"
+            }
+          ],
+          "segments": [
+            {
+              "from": "O",
+              "to": "Z"
+            }
+          ],
+          "ask": {
+            "kind": "distance",
+            "from": "O",
+            "to": "Z",
+            "label": "|7i| = 7"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given",
+              "construct",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "80d72ee9",
+        "answer": {
+          "value": 7,
+          "label": "7"
+        }
+      }
+    },
+    {
+      "id": "a9ead61f-b2b4-4492-bcda-7c376a6c08f5",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -9,
+              3
+            ],
+            "y": [
+              -2,
+              11
+            ]
+          },
+          "points": [
+            {
+              "id": "O",
+              "at": [
+                0,
+                0
+              ],
+              "label": "O"
+            },
+            {
+              "id": "Z",
+              "at": [
+                -6,
+                8
+              ],
+              "label": "z(−6, 8)"
+            }
+          ],
+          "segments": [
+            {
+              "from": "O",
+              "to": "Z"
+            }
+          ],
+          "ask": {
+            "kind": "distance",
+            "from": "O",
+            "to": "Z",
+            "label": "distance = 10"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given",
+              "construct",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "39eab74e",
+        "answer": {
+          "value": 10,
+          "label": "10"
+        }
+      }
+    },
+    {
+      "id": "aa65a18b-186d-49f3-927a-eb24831108c6",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -20,
+              20
+            ],
+            "y": [
+              -38,
+              8
+            ]
+          },
+          "points": [
+            {
+              "id": "O",
+              "at": [
+                0,
+                0
+              ],
+              "label": "O"
+            },
+            {
+              "id": "Z",
+              "at": [
+                0,
+                -32
+              ],
+              "label": "(1−i)^10 (0, −32)",
+              "beat": "derived"
+            }
+          ],
+          "segments": [
+            {
+              "from": "O",
+              "to": "Z"
+            }
+          ],
+          "ask": {
+            "kind": "distance",
+            "from": "O",
+            "to": "Z",
+            "label": "modulus = 2^5 = 32"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "derived",
+              "construct",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "ff9eaa08",
+        "answer": {
+          "value": 32,
+          "label": "2^5 = 32"
+        }
+      }
+    },
+    {
+      "id": "df88c8e9-7da8-4328-b499-4998e04adfd1",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -3,
+              7
+            ],
+            "y": [
+              -6,
+              3
+            ]
+          },
+          "points": [
+            {
+              "id": "O",
+              "at": [
+                0,
+                0
+              ],
+              "label": "O"
+            },
+            {
+              "id": "Z",
+              "at": [
+                4,
+                -3
+              ],
+              "label": "z(4, −3)"
+            }
+          ],
+          "segments": [
+            {
+              "from": "O",
+              "to": "Z"
+            }
+          ],
+          "ask": {
+            "kind": "distance",
+            "from": "O",
+            "to": "Z",
+            "label": "|z| = 5"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "given",
+              "construct",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "f02957c3",
+        "answer": {
+          "value": 5,
+          "label": "5"
+        }
+      }
+    }
+  ],
+  "decided": [
+    {
+      "id": "8bf47542-d6da-4f85-904c-13b2ae9aa8e5",
+      "verdict": "noFit",
+      "reason": "coordGeometry: picture misleads at review (argument arc drawn below the real axis, not from the positive real axis to OZ)",
+      "situation": "argumentAngle"
+    }
+  ]
+}

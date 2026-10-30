@@ -1,0 +1,314 @@
+[
+  {
+    "id": "e4bde5c7-934f-4230-bb68-72940d0fb366",
+    "before": "5104d555",
+    "solution": "\\(\\left|\\frac{2 - m}{1 + 2m}\\right| = \\tan 30^\\circ = \\frac{1}{\\sqrt{3}}\\): the plus branch gives \\(m = \\frac{2\\sqrt{3} - 1}{2 + \\sqrt{3}} \\approx 0.66\\), the minus branch \\(m = \\frac{2\\sqrt{3} + 1}{\\sqrt{3} - 2} \\approx -16.7\\). Hence (B).",
+    "note": "fit-check flag settled: (2sqrt3-1)/(2+sqrt3)=2.464/3.732=0.66, not 0.90. Key B is the correct pair."
+  },
+  {
+    "id": "0453469f-580d-41cc-9711-0970946ab083",
+    "before": "f449f81b",
+    "solution": "Every normal to a circle passes through its centre, so from the external point \\((5, 0)\\) only one normal can be drawn: the line through the centre \\((0, 0)\\), that is the \\(x\\)-axis.\n\nThis line meets the circle at \\((3, 0)\\) and \\((-3, 0)\\), at distances \\(5 - 3 = 2\\) and \\(5 + 3 = 8\\) from the point.\n\nSo 'the length of the normal' has no single value, and none of \\(4\\), \\(5\\), \\(\\sqrt{34}\\) is a length measured along it. Hence (D).",
+    "note": "fit-check flag settled: All normals of a circle pass through the centre, so from (5,0) only one normal exists; it meets the circle at distances 2 and 8, so no unique length. Key D stan"
+  },
+  {
+    "id": "07570665-e812-4959-9e81-2680b6a03a96",
+    "before": "35f13c72",
+    "solution": "Polar of \\(P(8, 6)\\) w.r.t \\(x^2 + y^2 = 16\\) is: \\(8x + 6y = 16\\) or \\(4x + 3y = 8\\)\n\nUsing chord length formula for circle \\(x^2 + y^2 = r^2\\) cut by line \\(ax + by + c = 0\\): Length \\(= 2\\sqrt{r^2 - \\frac{c^2}{a^2 + b^2}}\\)\n\nHere \\(r = 4\\), line is \\(4x + 3y - 8 = 0\\)\n\nLength \\(= 2\\sqrt{16 - \\frac{64}{25}} = 2\\sqrt{\\frac{336}{25}} = \\frac{2\\sqrt{336}}{5}\\)\n\n\\(\\sqrt{336} = \\sqrt{16 \\times 21} = 4\\sqrt{21}\\), so Length \\(= \\frac{8\\sqrt{21}}{5}\\). Hence (D).",
+    "note": "fit-check flag settled: Chord length 2sqrt(16-64/25)=8sqrt21/5 (about 7.33); the final line about 128/25 is false."
+  },
+  {
+    "id": "0f0bfb0f-185f-4f4a-80af-42555deae6b4",
+    "before": "7bf3b665",
+    "solution": "Circle center: \\((-g, -f)\\), radius: \\(\\sqrt{g^2 + f^2 - c}\\)\n\nFor tangency, distance from center to line equals radius:\n\n\\(\\frac{|l(-g) + m(-f) + n|}{\\sqrt{l^2 + m^2}} = \\sqrt{g^2 + f^2 - c}\\)\n\nSince \\(|-lg - mf + n| = |lg + mf - n|\\), squaring gives \\((lg + mf - n)^2 = (l^2 + m^2)(g^2 + f^2 - c)\\). Hence (B).",
+    "note": "fit-check flag settled: Distance from (-g,-f) to line is |-lg-mf+n|=|lg+mf-n|, so squaring gives (lg+mf-n)^2, option B."
+  },
+  {
+    "id": "16226d52-9ea6-41ed-9efd-76a408a75e53",
+    "before": "958022b9",
+    "solution": "Circle in first quadrant touching both axes has center \\((r, r)\\) and radius \\(r\\)\n\nDistance from \\((r, r)\\) to line \\(3x + 4y - 24 = 0\\) equals \\(r\\): \\(\\frac{|7r - 24|}{5} = r\\)\n\nFor \\(24 - 7r = 5r\\): \\(r = 2\\). For \\(7r - 24 = 5r\\): \\(r = 12\\), but \\(12\\) is not among the options.\n\nOf the given options only \\(r = 2\\) fits. Hence (A).",
+    "note": "fit-check flag settled: |7r-24|=5r gives r=2 or r=12; r=12 is not an option, so only A fits. Solution omits r=12."
+  },
+  {
+    "id": "16a7de53-7f4c-4776-9776-e2e91ca5d52a",
+    "before": "9b71582d",
+    "solution": "Three distinct points on a circle are never collinear, so the triangle's area is always greater than \\(0\\).\n\nAs the three vertices approach the same point on the circle, the area approaches \\(0\\), so it can be made as small as we like but never equals \\(0\\).\n\nHence the area has no least value. Hence (D).",
+    "note": "fit-check flag settled: Three distinct points on a circle give area >0, but area can be made arbitrarily small, so infimum 0 is never attained: no minimum. Key D stands."
+  },
+  {
+    "id": "177d1cd1-5e3d-41aa-8021-e987a3a443e2",
+    "before": "5c1e34e8",
+    "solution": "The normal at \\((a\\cos\\theta, a\\sin\\theta)\\) passes through the center \\((0, 0)\\)\n\nEquation of normal: \\(x\\sin\\theta - y\\cos\\theta = 0\\)\n\nSubstituting \\((2a, 0)\\): \\(2a\\sin\\theta = 0\\)\n\nSince \\(a \\neq 0\\), \\(\\sin\\theta = 0\\), so \\(\\theta = 0\\) among the options. Hence (D).",
+    "note": "fit-check flag settled: Normal at the point is the line through origin and the point; it passes through (2a,0) only if the point is on the x-axis, sin theta=0, theta=0."
+  },
+  {
+    "id": "18ab2e96-719b-4b7e-951f-149de85ebc71",
+    "before": "b6f218e2",
+    "solution": "The polar of \\((x_1, y_1)\\) is \\(xx_1 + yy_1 + g(x + x_1) + f(y + y_1) + c = 0\\), that is \\((x_1 + g)x + (y_1 + f)y + (gx_1 + fy_1 + c) = 0\\).\n\nThis is a line unless both coefficients of \\(x\\) and \\(y\\) vanish, i.e. \\(x_1 = -g\\), \\(y_1 = -f\\): the center.\n\nAt the center the equation becomes \\(-(g^2 + f^2 - c) = 0\\), which is false since the radius is positive. So the center has no polar. Hence (B).",
+    "note": "fit-check flag settled: Polar of (x1,y1) is (x1+g)x+(y1+f)y+(gx1+fy1+c)=0; at the centre x,y coefficients vanish and the constant is -(g^2+f^2-c)!=0, so no line. Key B."
+  },
+  {
+    "id": "1d94b5d6-e251-4c01-ad43-ed3675b1c8a5",
+    "before": "1573d411",
+    "solution": "Let \\(P(x,y)\\) be the point\n\nDistance from \\((3,0)\\): \\(\\sqrt{(x-3)^2 + y^2}\\)\n\nDistance from \\((0,0)\\): \\(\\sqrt{x^2 + y^2}\\)\n\nCondition: \\(\\sqrt{(x-3)^2 + y^2} = 2\\sqrt{x^2 + y^2}\\)\n\nSquaring: \\((x-3)^2 + y^2 = 4(x^2 + y^2)\\)\n\n\\(x^2 - 6x + 9 + y^2 = 4x^2 + 4y^2\\)\n\n\\(3x^2 + 3y^2 + 6x - 9 = 0\\), which is \\(x^2 + y^2 + 2x - 3 = 0\\). Hence (D).",
+    "note": "fit-check flag settled: Step 7 gives x^2+y^2+2x-3=0, which matches option D (times 3); step 8 flips the sign of 2x wrongly."
+  },
+  {
+    "id": "1e64ff46-dd9b-4da3-b041-461446aaf060",
+    "before": "8d6dccd1",
+    "solution": "Center at equal distance from both axes and touching both: center is \\((r, r)\\) with radius \\(r\\)\n\nThe circle passes through \\((3, 3)\\), so the distance from center to point equals \\(r\\): \\(\\sqrt{2}\\,|3 - r| = r\\)\n\nSquaring: \\(2(3 - r)^2 = r^2\\), so \\(r^2 - 12r + 18 = 0\\)\n\n\\(r = 6 \\pm 3\\sqrt{2}\\). Hence (A).",
+    "note": "fit-check flag settled: Centre (r,r), radius r: 2(3-r)^2=r^2 gives r^2-12r+18=0, r=6+-3sqrt2. r=3 does not put (3,3) on the circle."
+  },
+  {
+    "id": "1f5eb295-4f3c-4ad8-a5ec-ee261c80d07c",
+    "before": "cbf3f124",
+    "solution": "Common chord equation: \\(S_1 - S_2 = 0\\)\n\n\\((x^2 + y^2 - 25) - (x^2 + y^2 - 6x - 8y) = 0\\), so \\(6x + 8y = 25\\)\n\nFirst circle: center \\((0, 0)\\), radius \\(5\\)\n\nDistance from center to line \\(6x + 8y - 25 = 0\\): \\(d = \\frac{25}{\\sqrt{6^2 + 8^2}} = \\frac{25}{10} = 2.5\\)\n\nLength of chord \\(= 2\\sqrt{r^2 - d^2} = 2\\sqrt{25 - 6.25} = 2\\sqrt{\\frac{75}{4}} = 5\\sqrt{3}\\). Hence (C).",
+    "note": "fit-check flag settled: d=2.5, chord=2sqrt(25-6.25)=2sqrt(75/4)=5sqrt3 exactly, option C; the 'closest 9' remark is false."
+  },
+  {
+    "id": "1f68e602-9b0c-4dd2-b15b-9b86ce516ba5",
+    "before": "cc216b81",
+    "solution": "Circle passes through \\((0,0)\\) and \\((4,0)\\), so center lies on perpendicular bisector: \\(x = 2\\)\n\nThe circle touches the \\(y\\)-axis and passes through the origin on it, so it touches the \\(y\\)-axis at the origin. The radius to the origin is then perpendicular to the \\(y\\)-axis, so the center lies on the \\(x\\)-axis: \\(k = 0\\).\n\nCenter: \\((2, 0)\\), radius \\(2\\), and \\((4, 0)\\) lies on it. Hence (B).",
+    "note": "fit-check flag settled: Circle through origin touching y-axis touches it at origin, so centre is on x-axis; with x=2 the centre is (2,0), radius 2, passing through (4,0)."
+  },
+  {
+    "id": "24570cb8-2e7b-4caa-936a-1d3560d16d91",
+    "before": "0a67de8c",
+    "solution": "Distance from P(h,k) to first circle = \\(|\\sqrt{h^2+k^2} - 2|\\)\n\nDistance from P(h,k) to second circle = \\(|\\sqrt{h^2+k^2} - 4|\\)\n\nLet \\(r = \\sqrt{h^2+k^2}\\). For P to be nearer to the first circle: \\(|r - 2| < |r - 4|\\)\n\nSquaring: \\((r-2)^2 < (r-4)^2\\), so \\(-4r + 4 < -8r + 16\\), giving \\(r < 3\\)\n\nTherefore \\(h^2 + k^2 < 9\\). Hence (C).",
+    "note": "fit-check flag settled: |r-2|<|r-4| squares to -4r+4<-8r+16, so r<3, h^2+k^2<9; equal distances at r=3, not sqrt10."
+  },
+  {
+    "id": "38b45a01-5fa7-4699-bf9b-b994e2863307",
+    "before": "58ced65a",
+    "solution": "By reciprocity: if \\(P\\) moves on a line \\(L\\), the polar of \\(P\\) passes through the pole of \\(L\\), so the required locus is the polar of the pole of \\(L\\), which is \\(L\\) itself.\n\nPole of \\(2x + 3y = 6\\) w.r.t \\(x^2 + y^2 = 9\\): comparing \\(xx_1 + yy_1 = 9\\) with \\(2x + 3y = 6\\) gives \\(\\frac{x_1}{2} = \\frac{y_1}{3} = \\frac{9}{6}\\), so the pole is \\((3, \\frac{9}{2})\\).\n\nPolar of this pole: \\(3x + \\frac{9}{2}y = 9\\) or \\(2x + 3y = 6\\)\n\nTherefore the locus is the straight line \\(2x + 3y = 6\\). Hence (A).",
+    "note": "fit-check flag settled: Pole of 2x+3y=6 w.r.t x^2+y^2=9 is (3, 9/2), whose polar 3x+4.5y=9 is 2x+3y=6, not -6. Locus is a line, key A."
+  },
+  {
+    "id": "39430ba7-192b-4bad-9189-5f18099b8e6f",
+    "before": "9803ccc3",
+    "solution": "Every normal to a circle passes through its center.\n\nFrom an external point, any normal must therefore be the line joining the point to the center, so only one normal can be drawn from it.\n\nTwo different normals, let alone two perpendicular ones, cannot both pass through an external point. Hence no such locus exists. Hence (C).",
+    "note": "fit-check flag settled: All normals pass through the centre, so from an external point only one normal exists (the line to the centre); two distinct perpendicular normals cannot exist."
+  },
+  {
+    "id": "45fb72f8-7393-4b64-9e44-c08b6fd467af",
+    "before": "e8f2f188",
+    "solution": "Point \\((3, 4)\\) is on the circle since \\(3^2 + 4^2 = 25\\)\n\nA chord through this point joins it to another point of the circle. As that second point approaches \\((3, 4)\\), the chord length tends to \\(0\\), and the limiting chord (the tangent at the point) has length \\(0\\).\n\nNo proper chord has a smallest positive length, so the minimum is \\(0\\). Hence (D).",
+    "note": "fit-check flag settled: (3,4) is on the circle; chord lengths through it fall toward 0 as the other end nears (3,4), so there is no positive minimum; key 0 is the degenerate (tangent) "
+  },
+  {
+    "id": "4b6c114d-4e41-4ae8-9df2-2ef2fddc20f2",
+    "before": "b69bf8d8",
+    "solution": "Second circle: \\((x-3)^2 + (y-4)^2 = 25\\)\n\nCommon chord equation: \\(6x + 8y = 25\\)\n\nDistance from center \\((0, 0)\\) to line \\(= \\frac{25}{\\sqrt{36 + 64}} = \\frac{25}{10} = 2.5\\)\n\nChord length \\(= 2\\sqrt{25 - 6.25} = 2\\sqrt{18.75} = 2\\sqrt{\\frac{75}{4}} = 5\\sqrt{3}\\). Hence (B).",
+    "note": "fit-check flag settled: 2sqrt(18.75)=sqrt(75)=5sqrt3 (about 8.66), not 8. Key B is right."
+  },
+  {
+    "id": "4f7c4405-7dba-41e3-8ec1-6c238c768f04",
+    "before": "bd54a8f4",
+    "solution": "Family of circles through the intersection: \\(S_1 + \\lambda S_2 = 0\\)\n\n\\((1 + \\lambda)(x^2 + y^2) + (4 - 2\\lambda)x + (6 + 4\\lambda)y + (-3 + \\lambda) = 0\\)\n\nFor center \\((1, -2)\\) we would need \\(-\\frac{4-2\\lambda}{2(1+\\lambda)} = 1\\), which gives \\(-4 + 2\\lambda = 2 + 2\\lambda\\), impossible for any finite \\(\\lambda\\).\n\nSo the required circle is the member with \\(\\lambda \\to \\infty\\), namely \\(S_2 = 0\\) itself, whose center is \\((1, -2)\\) and radius squared is \\(1 + 4 - 1 = 4\\)\n\nCircle: \\((x-1)^2 + (y+2)^2 = 4\\). Hence (D).",
+    "note": "fit-check flag settled: No finite lambda gives centre (1,-2) (equations give -4=2); (1,-2) is the centre of S2, the lambda-to-infinity member, so circle is S2 with r^2=1+4-1=4. Key D."
+  },
+  {
+    "id": "5f3e0296-e166-477f-a458-25841dbec901",
+    "before": "4ca18038",
+    "solution": "Let \\(P(x,y)\\), \\(A(1,2)\\), \\(B(3,4)\\)\n\n\\(PA^2 + PB^2 = (x-1)^2+(y-2)^2+(x-3)^2+(y-4)^2 = 50\\)\n\nExpanding: \\(2x^2+2y^2-8x-12y+30 = 50\\), so \\(x^2+y^2-4x-6y = 10\\)\n\nCompleting square: \\((x-2)^2+(y-3)^2 = 4+9+10 = 23\\). Hence (A).",
+    "note": "fit-check flag settled: Expansion gives x^2+y^2-4x-6y=10, so (x-2)^2+(y-3)^2=23, option A; the closest-option-21 remark is false."
+  },
+  {
+    "id": "6626c90d-ab5f-4c9e-aa24-dc8877adca0a",
+    "before": "6b10f016",
+    "solution": "General tangent to \\(x^2 + y^2 = 1\\): \\(y = mx \\pm \\sqrt{1 + m^2}\\)\n\nTaking \\(y = mx + \\sqrt{1 + m^2}\\): X-intercept \\(-\\frac{\\sqrt{1 + m^2}}{m}\\), Y-intercept \\(\\sqrt{1 + m^2}\\)\n\nArea \\(= \\frac{1}{2} \\times \\frac{\\sqrt{1 + m^2}}{|m|} \\times \\sqrt{1 + m^2} = \\frac{1 + m^2}{2|m|}\\)\n\nSince \\(1 + m^2 \\ge 2|m|\\), the area is at least \\(1\\), with equality at \\(m = \\pm 1\\). By symmetry the same holds in every quadrant, so the minimum area is \\(1\\). Hence (C).",
+    "note": "fit-check flag settled: Area (1+m^2)/(2|m|) >= 1 with equality at |m|=1, and symmetry gives the same in every quadrant; minimum stays 1."
+  },
+  {
+    "id": "6bb660d0-d3d6-4307-8fc4-97139930f2fc",
+    "before": "1fd4222b",
+    "solution": "Given circle: \\((x-4)^2 + (y+3)^2 = 4\\), center \\((4, -3)\\)\n\nRadius to pass through \\((2, 3)\\): \\(\\sqrt{(2-4)^2 + (3+3)^2} = \\sqrt{40}\\)\n\nEquation: \\((x-4)^2 + (y+3)^2 = 40\\). Hence (A).",
+    "note": "fit-check flag settled: Centre (4,-3); radius^2 to (2,3) is 4+36=40, option A; the 'closest option 13' step is false."
+  },
+  {
+    "id": "74876ff3-2553-4b53-bd75-8807c904af0c",
+    "before": "82db6cca",
+    "solution": "Circles touching both axes have centers \\((\\pm r, \\pm r)\\). The point \\((4,4)\\) is in the first quadrant.\n\nFor center \\((r, r)\\): \\(2(4 - r)^2 = r^2\\), so \\(r^2 - 16r + 32 = 0\\), giving \\(r = 8 \\pm 4\\sqrt{2}\\): two circles.\n\nFor a center in any other quadrant, e.g. \\((-r, r)\\): \\((4 + r)^2 + (4 - r)^2 = r^2\\) gives \\(r^2 + 32 = 0\\), impossible. The other two quadrants fail likewise.\n\nSo exactly two circles exist. Hence (B).",
+    "note": "fit-check flag settled: Centre (r,r): 2(4-r)^2=r^2 gives r=8+-4sqrt2, two circles; other quadrants give 2r^2+32=r^2, impossible. Answer 2, key B."
+  },
+  {
+    "id": "75d27e50-ef15-4802-b43b-78bc3568274d",
+    "before": "a731f40d",
+    "solution": "First verify point lies on circle: \\(\\left(\\frac{9}{\\sqrt{13}}\\right)^2 + \\left(\\frac{6}{\\sqrt{13}}\\right)^2 = \\frac{81}{13} + \\frac{36}{13} = \\frac{117}{13} = 9\\)\n\nNormal at any point \\((a, b)\\) on circle \\(x^2 + y^2 = 9\\) passes through center \\((0, 0)\\), so the normal is a diameter line.\n\nIt meets the circle at the given point and at the diametrically opposite point. Both lie on the circle, so both are at distance \\(3\\) from the center. The center itself is not on the circle.\n\nHence the distance is \\(3\\). Hence (A).",
+    "note": "fit-check flag settled: The normal meets the circle at two points, both at distance 3 from the centre; the centre (0,0) is not on the circle, so 0 is not an intersection distance."
+  },
+  {
+    "id": "7e2517bc-5a0d-48c2-8788-d8112aa87786",
+    "before": "86bebd56",
+    "solution": "Let pole be \\((h, k)\\). For circle \\(x^2 + y^2 + 2gx + 2fy + c = 0\\), the polar of \\((h, k)\\) is \\(hx + ky + g(x + h) + f(y + k) + c = 0\\)\n\nHere \\(g = -2, f = -3, c = 12\\), so the polar is \\(x(h - 2) + y(k - 3) - 2h - 3k + 12 = 0\\)\n\nThis must be the line \\(x + y + 1 = 0\\), so the coefficients are proportional: \\(h - 2 = k - 3 = t\\) and \\(-2h - 3k + 12 = t\\)\n\nThen \\(h = t + 2\\), \\(k = t + 3\\), and \\(-2t - 4 - 3t - 9 + 12 = t\\), so \\(-5t - 1 = t\\) and \\(t = -\\frac{1}{6}\\)\n\nPole: \\(\\left(\\frac{11}{6}, \\frac{17}{6}\\right)\\). Hence (B).",
+    "note": "fit-check flag settled: Polar x(h-2)+y(k-3)-2h-3k+12=0 is proportional to x+y+1: h-2=k-3=t, -2h-3k+12=t gives t=-1/6, so (11/6,17/6). Step 7 wrongly sets t=1."
+  },
+  {
+    "id": "8539eda0-34f6-46a7-9a4d-7e4976c8eb88",
+    "before": "4eb0dcf4",
+    "solution": "Pole of line \\(3x + 4y - 12 = 0\\) w.r.t circle \\(x^2 + y^2 = r^2\\) is: \\(\\left(-\\frac{r^2 \\cdot 3}{-12}, -\\frac{r^2 \\cdot 4}{-12}\\right) = \\left(\\frac{r^2}{4}, \\frac{r^2}{3}\\right)\\)\n\nThis pole lies on line \\(x + y = 1\\): \\(\\frac{r^2}{4} + \\frac{r^2}{3} = 1\\)\n\n\\(\\frac{7r^2}{12} = 1\\), so \\(r^2 = \\frac{12}{7}\\). Hence (B).",
+    "note": "fit-check flag settled: Steps 0-7 give r^2=12/7 (option B); the later 'closest is 12' check is false."
+  },
+  {
+    "id": "8be88620-40ce-4b4d-abe5-44e9de93b204",
+    "before": "ef3fd167",
+    "solution": "Converting: \\((x-1)^2 + (y-3)^2 = 4\\), center = \\((1, 3)\\), radius = \\(2\\)\n\nDistance from \\(P(1, 4)\\) to center \\(= |4 - 3| = 1\\)\n\nSince \\(1 < 2\\), P is inside the circle. The greatest distance from P to the circle is the distance to the farthest point on the line through the center: \\(1 + 2 = 3\\). Hence (A).",
+    "note": "fit-check flag settled: Distance from P to centre is 1 < radius 2, so P is inside; greatest distance 1+2=3 still holds."
+  },
+  {
+    "id": "8d85373a-3e26-4338-8ffb-f66a8ad1477a",
+    "before": "8be57a2e",
+    "solution": "Circle: \\(x^2 + y^2 + 8x - 10y + 25 = 0\\)\n\nCenter: \\((-4, 5)\\), Radius \\(= \\sqrt{16 + 25 - 25} = 4\\)\n\nThe farthest point from the origin lies on the line from the origin through the center, at distance \\(\\sqrt{41} + 4\\) from the origin.\n\nThe normal at that point passes through the center, so it is the same line. Slope \\(= \\frac{5}{-4} = -\\frac{5}{4}\\), so the normal is \\(y = -\\frac{5}{4}x\\) or \\(5x + 4y = 0\\). Hence (D).",
+    "note": "fit-check flag settled: Normal at the farthest point is the line through origin and centre (-4,5): y=-5x/4, i.e. 5x+4y=0, option D."
+  },
+  {
+    "id": "91ad172f-9beb-4871-b513-db60f1ccb24e",
+    "before": "b43e7c81",
+    "solution": "Circle 1: \\(x^2 + y^2 = 1\\), center \\(O_1(0, 0)\\), radius \\(r_1 = 1\\)\n\nCircle 2: \\((x-3)^2 + y^2 = 4\\), center \\(O_2(3, 0)\\), radius \\(r_2 = 2\\)\n\nDistance between centers \\(= 3 = r_1 + r_2\\), so the circles touch externally.\n\nA normal to a circle passes through its center, so a common normal must pass through both centers. Two distinct points determine one line, so there is exactly one common normal: the line of centres. Hence (D).",
+    "note": "fit-check flag settled: d=3=r1+r2, externally tangent; a normal to a circle passes through its centre, so the only common normal is the line of centres: 1. Step 4 '3<3' is false."
+  },
+  {
+    "id": "9ad36f91-337a-424d-9360-212eaf8e4d8b",
+    "before": "5dfd6a00",
+    "solution": "Area of sector \\(= \\frac{\\theta}{360^{\\circ}} \\times \\pi r^2\\).\n\n\\(= \\frac{120^{\\circ}}{360^{\\circ}} \\times \\frac{22}{7} \\times 6^2\\)\n\n\\(= \\frac{1}{3} \\times \\frac{22}{7} \\times 36\\)\n\n\\(= \\frac{22 \\times 36}{21} = \\frac{792}{21} = \\frac{264}{7}\\) \\(\\text{cm}^2\\).\n\nHence (B).",
+    "note": "fit-check flag settled: (1/3)(22/7)(36)=264/7, since 792/21=264/7; step 3 wrote 132/7. Key B is right."
+  },
+  {
+    "id": "9ee1d546-97a3-41e5-94a1-635972ce64ea",
+    "before": "22b4c5f2",
+    "solution": "Circle touching both axes has center \\((r, r)\\) and radius \\(r\\).\n\nDistance from \\((r, r)\\) to line \\(x + y - 8 = 0\\) must equal \\(r\\):\n\n\\(\\frac{|r + r - 8|}{\\sqrt{2}} = r\\)\n\n\\(\\frac{|2r - 8|}{\\sqrt{2}} = r\\)\n\nFor \\(8 - 2r = r\\sqrt{2}\\): \\(r(2 + \\sqrt{2}) = 8\\), giving \\(r = \\frac{8}{2+\\sqrt{2}} = 8 - 4\\sqrt{2}\\).\n\nFor \\(2r - 8 = r\\sqrt{2}\\): \\(r = \\frac{8}{2-\\sqrt{2}} = 8 + 4\\sqrt{2}\\), which is larger.\n\nSmaller radius is \\(8 - 4\\sqrt{2}\\). Hence (C).",
+    "note": "fit-check flag settled: r=8/(2+sqrt2)=8(2-sqrt2)/2=8-4sqrt2, not 4-2sqrt2. The other case gives 8+4sqrt2. Key C right."
+  },
+  {
+    "id": "b9649aad-0118-476d-8c9a-0d952a5cdedd",
+    "before": "e9223236",
+    "solution": "For two circles with radii \\(r_1\\) and \\(r_2\\) and centers distance \\(d\\) apart:\n\nLength of internal common tangent \\(= \\sqrt{d^2 - (r_1 + r_2)^2}\\)\n\nGiven: \\(r_1 = 6\\), \\(r_2 = 4\\), \\(d = 15\\)\n\nLength \\(= \\sqrt{15^2 - (6+4)^2} = \\sqrt{225 - 100} = \\sqrt{125}\\)\n\nHence (D).",
+    "note": "fit-check flag settled: sqrt(225-100)=sqrt125 is right (key D); step 4 claim that A and B equal sqrt125 is false (sqrt121=11, 5sqrt6=sqrt150)."
+  },
+  {
+    "id": "ba5b9f25-f104-4eba-ba51-07b065cd646c",
+    "before": "43437254",
+    "solution": "Circle: \\(x^2 + y^2 = 9\\), center \\(O(0, 0)\\), radius \\(r = 3\\).\n\nExternal point: \\(P(5, 0)\\), so \\(OP = 5\\).\n\nLength of tangent from \\(P\\): \\(PT = \\sqrt{25 - 9} = 4\\).\n\nIn right triangle \\(OTP\\): \\(\\sin \\alpha = \\frac{OT}{OP} = \\frac{3}{5}\\), where \\(\\alpha\\) is angle \\(OPT\\).\n\nAngle between the two tangents \\(= 2\\alpha = 2\\sin^{-1}\\left(\\frac{3}{5}\\right) \\approx 73.74^{\\circ}\\).\n\nHence (D).",
+    "note": "fit-check flag settled: 2alpha=2 arcsin(3/5)=73.74 degrees is exactly option D; step 8 wrongly says closest to 60, which is not an option."
+  },
+  {
+    "id": "bd34e287-edc4-4fbe-bce7-c1a926f48912",
+    "before": "bf9aecb2",
+    "solution": "The point \\((3, 4)\\) lies in the first quadrant, so a circle touching both axes and passing through it must have center \\((r, r)\\) with \\(r > 0\\). Circles with centers \\((r, -r)\\), \\((-r, r)\\), \\((-r, -r)\\) lie in the other quadrants and cannot contain \\((3, 4)\\).\n\n\\((3-r)^2 + (4-r)^2 = r^2\\)\n\n\\(r^2 - 14r + 25 = 0\\)\n\nDiscriminant \\(= 196 - 100 = 96 > 0\\), so \\(r = 7 \\pm 2\\sqrt{6}\\), both positive.\n\nHence there are 2 circles. Hence (B).",
+    "note": "fit-check flag settled: Point (3,4) is in quadrant I, so only centre (r,r) works: r^2-14r+25=0 has two positive roots 7+-2sqrt6. Two circles; key B right."
+  },
+  {
+    "id": "bec6f4d1-cac5-4d83-89e3-fe6ee5706371",
+    "before": "c18ddcff",
+    "solution": "Standard form of normal at \\((x_1, y_1)\\) is:\n\n\\(\\frac{x - x_1}{x_1 + g} = \\frac{y - y_1}{y_1 + f}\\)\n\nThis can be written as: \\((y_1 + f)(x - x_1) = (x_1 + g)(y - y_1)\\)\n\nExpanding: \\((y_1 + f)x - (x_1 + g)y + \\text{constant} = 0\\)\n\nComparing with \\(ax + by + k = 0\\): \\(a = \\lambda(y_1 + f)\\) and \\(b = -\\lambda(x_1 + g)\\).\n\nThen \\(a(x_1 + g) + b(y_1 + f) = \\lambda[(y_1 + f)(x_1 + g) - (x_1 + g)(y_1 + f)] = 0\\).\n\nHence (C).",
+    "note": "fit-check flag settled: Normal direction is (x1+g, y1+f) and line ax+by+k=0 has direction (b,-a), giving a(x1+g)+b(y1+f)=0 (key C). Step 6 contradicts step 5."
+  },
+  {
+    "id": "c07adda7-27c1-4529-9750-cd4064a26ddf",
+    "before": "96509902",
+    "solution": "Center \\(= (1, 1)\\), radius \\(= 2\\).\n\nDistance from A to center \\(= \\sqrt{(4-1)^2 + (3-1)^2} = \\sqrt{9 + 4} = \\sqrt{13}\\).\n\nA is outside the circle, so the maximum distance \\(= \\sqrt{13} + 2\\).\n\nHence (B).",
+    "note": "fit-check flag settled: Max distance = sqrt13 + 2 exactly, which is option B; the final step wrongly rounds and cites a non-existent option 7."
+  },
+  {
+    "id": "c090bd43-82e8-4c5c-ada8-a7fecbb9d0e6",
+    "before": "dd02fa47",
+    "solution": "For triangle with sides \\(13, 14, 15\\):\n\nSemi-perimeter \\(s = 21\\), area \\(= 84\\) sq cm, inradius \\(r = 4\\) cm.\n\nThe tangent length from a vertex to the incircle equals \\(s\\) minus the side opposite that vertex.\n\nThe vertex opposite the side of length \\(14\\) gives \\(21 - 14 = 7\\) cm.\n\nHence (C).",
+    "note": "fit-check flag settled: Tangent from a vertex to the incircle = s minus opposite side = 21-14 = 7. sqrt65 is vertex-to-incentre distance. Key C right."
+  },
+  {
+    "id": "c61ed1be-4181-42bc-98a4-47ed6a17ccd7",
+    "before": "39cad20b",
+    "solution": "Let the isosceles triangle have its apex on the circle of radius \\(R = 5\\), with the base subtending \\(2\\varphi\\) at the center.\n\nHeight \\(= R(1 + \\cos\\varphi)\\), half-base \\(= R\\sin\\varphi\\), so area \\(= R^2\\sin\\varphi(1 + \\cos\\varphi)\\).\n\nSetting the derivative to zero: \\(\\cos\\varphi + \\cos 2\\varphi = 0\\), i.e. \\(2\\cos^2\\varphi + \\cos\\varphi - 1 = 0\\), so \\(\\cos\\varphi = \\frac{1}{2}\\) and \\(\\varphi = 60^{\\circ}\\). The triangle is equilateral.\n\nMaximum area \\(= 25 \\times \\frac{\\sqrt{3}}{2} \\times \\frac{3}{2} = \\frac{75\\sqrt{3}}{4}\\).\n\nHence (B).",
+    "note": "fit-check flag settled: Max inscribed triangle is equilateral: side 5sqrt3, area (sqrt3/4)(75)=75sqrt3/4. Stored right-triangle area 25 is not a maximum. Key B right."
+  },
+  {
+    "id": "cea76047-92f1-4aa1-a5dd-207999b1d7c4",
+    "before": "8eca78c8",
+    "solution": "Square has side \\(8\\) cm.\n\nCircle has diameter \\(=\\) side of square \\(= 8\\) cm, so radius \\(= 4\\) cm; its center is the midpoint of that side.\n\nDistance from the opposite vertex to the center of the circle \\(= \\sqrt{8^2 + 4^2} = \\sqrt{80}\\) cm.\n\nTangent length \\(= \\sqrt{d^2 - r^2} = \\sqrt{80 - 16} = \\sqrt{64} = 8\\) cm.\n\nHence (C).",
+    "note": "fit-check flag settled: Distance from the opposite vertex to the circle centre is sqrt(8^2+4^2)=sqrt80, not 8; tangent = sqrt(80-16)=8. Key C right."
+  },
+  {
+    "id": "dbf3a1cb-6c16-42c2-9947-d942c9e2eb3f",
+    "before": "99b93f27",
+    "solution": "By property of conjugate points:\n\nIf polar of \\(A\\) passes through \\(B\\), then polar of \\(B\\) passes through \\(A\\).\n\nIf polar of \\(B\\) passes through \\(C\\), then polar of \\(C\\) passes through \\(B\\).\n\nThe points \\(A\\) and \\(C\\) both lie on the polar of \\(B\\), but that does not make \\(A\\) and \\(C\\) conjugate to each other, so the polar of \\(C\\) need not pass through \\(A\\).\n\nHence the polar of \\(C\\) is certain to pass through point \\(B\\) only. Hence (B).",
+    "note": "fit-check flag settled: Conjugacy is symmetric but not transitive: polar of C passes through B, but A and C both lie on the polar of B, which does not make them conjugate. Key B right."
+  },
+  {
+    "id": "dc4adc35-16c6-4bfc-932f-8315b4407c11",
+    "before": "de853265",
+    "solution": "Let the circles have centers \\(O_1\\) and \\(O_2\\) with radii \\(r_1\\) and \\(r_2\\).\n\nSince the circles touch externally at \\(P\\): \\(O_1O_2 = r_1 + r_2\\).\n\nFor the external common tangent \\(AB\\), \\(O_1A\\) and \\(O_2B\\) are parallel, so if \\(\\angle AO_1P = \\alpha\\) then \\(\\cos\\alpha = \\frac{r_1 - r_2}{r_1 + r_2}\\) and \\(\\angle BO_2P = 180^{\\circ} - \\alpha\\).\n\n\\(AP^2 = 2r_1^2(1 - \\cos\\alpha) = \\frac{4r_1^2 r_2}{r_1 + r_2}\\)\n\n\\(BP^2 = 2r_2^2(1 + \\cos\\alpha) = \\frac{4r_1 r_2^2}{r_1 + r_2}\\)\n\nMultiplying: \\(AP \\cdot BP = \\frac{4 r_1 r_2\\sqrt{r_1 r_2}}{r_1 + r_2}\\).\n\nHence (D).",
+    "note": "fit-check flag settled: AP^2=4r1^2 r2/(r1+r2), BP^2=4r1 r2^2/(r1+r2), product AP.BP=4r1r2 sqrt(r1r2)/(r1+r2). Stored step equates AP.BP to tangent length. Key D right."
+  },
+  {
+    "id": "e2b62c65-2d72-4cc5-8ff1-4c62ab8650df",
+    "before": "fe369e22",
+    "solution": "Circle in fourth quadrant touching both axes has center \\((r, -r)\\).\n\nPassing through \\((3, -1)\\): \\((3-r)^2 + (-1-(-r))^2 = r^2\\)\n\n\\((3-r)^2 + (r-1)^2 = r^2\\)\n\n\\(9 - 6r + r^2 + r^2 - 2r + 1 = r^2\\)\n\n\\(r^2 - 8r + 10 = 0\\)\n\nSolving: \\(r = 4 \\pm \\sqrt{6}\\). Both roots are positive and give valid circles.\n\nHence (A).",
+    "note": "fit-check flag settled: r^2-8r+10=0 gives r=4+-sqrt6, both positive and both valid circles, matching A exactly. The 'closest to A' step is false (1.55 is nearer B)."
+  },
+  {
+    "id": "e77f1781-8c4a-4f84-b8df-508cd8b7bbab",
+    "before": "468da9d0",
+    "solution": "Let radii be \\(r_1\\) and \\(r_2\\).\n\nGiven: \\(\\pi r_1^2 + \\pi r_2^2 = 130\\pi\\), so \\(r_1^2 + r_2^2 = 130\\).\n\nSince circles touch externally: \\(r_1 + r_2 = 12\\).\n\nUsing \\((r_1 + r_2)^2 = r_1^2 + r_2^2 + 2r_1r_2\\): \\(144 = 130 + 2r_1r_2\\), so \\(r_1r_2 = 7\\).\n\n\\((r_1 - r_2)^2 = r_1^2 + r_2^2 - 2r_1r_2 = 130 - 14 = 116\\).\n\nDifference of radii \\(= \\sqrt{116} = 2\\sqrt{29}\\) cm.\n\nHence (B).",
+    "note": "fit-check flag settled: r1r2=7 and r1+r2=12 give (r1-r2)^2=130-14=116, difference 2sqrt29 (key B); r1=7,r2=5 does not satisfy r1r2=7."
+  },
+  {
+    "id": "e9d440a7-53da-475d-a353-90e7ac23fb8c",
+    "before": "99b151af",
+    "solution": "By the alternate segment theorem, the angle between tangent and chord equals the angle in the alternate segment.\n\nAngle in alternate segment \\(= 30^{\\circ}\\).\n\nAngle at centre \\(= 2 \\times\\) angle at circumference \\(= 2 \\times 30^{\\circ} = 60^{\\circ}\\).\n\nHence (D).",
+    "note": "fit-check flag settled: Alternate segment theorem gives 30 degrees at the circumference, so the centre angle is 2x30=60 (key D); stored last step 180-30=150 is false."
+  },
+  {
+    "id": "ee041a13-81d1-439c-8eae-9fa119bc13cf",
+    "before": "00b62f64",
+    "solution": "Chord equation: \\(y - 1 = \\tan 30^{\\circ}(x - 1) = \\frac{1}{\\sqrt{3}}(x - 1)\\).\n\nRearranging: \\(x - \\sqrt{3}y + (\\sqrt{3} - 1) = 0\\).\n\nDistance from center to line \\(= \\frac{|\\sqrt{3} - 1|}{\\sqrt{1 + 3}} = \\frac{\\sqrt{3} - 1}{2}\\), so \\(d^2 = \\frac{4 - 2\\sqrt{3}}{4} = 1 - \\frac{\\sqrt{3}}{2}\\).\n\nChord length \\(= 2\\sqrt{9 - d^2} = 2\\sqrt{8 + \\frac{\\sqrt{3}}{2}} = \\sqrt{32 + 2\\sqrt{3}}\\).\n\nHence (C).",
+    "note": "fit-check flag settled: d^2=(4-2sqrt3)/4, chord=2sqrt(9-d^2)=sqrt(32+2sqrt3), option C; stored final 2sqrt7 is false."
+  },
+  {
+    "id": "f0794627-3407-4c42-8645-a0bce93a1b32",
+    "before": "75f919e6",
+    "solution": "The normal at any point of a circle is the line joining that point to the center.\n\nA normal passing through \\((3, 4)\\) must therefore also pass through the center \\((0, 0)\\), so it is the line \\(4x - 3y = 0\\).\n\nThere is exactly one such line, so exactly one normal can be drawn from \\((3, 4)\\).\n\nHence (D).",
+    "note": "fit-check flag settled: A normal to a circle passes through its centre, so only the line through (3,4) and (0,0) qualifies: one normal. Stored claim of 0 normals is false. Key D defens"
+  },
+  {
+    "id": "f2cb4924-53eb-47f3-ab04-316b4924e0da",
+    "before": "51d368ed",
+    "solution": "Length of tangent from \\(P\\) \\(= \\sqrt{15^2 - 9^2} = \\sqrt{225 - 81} = 12\\) cm.\n\nThe chord of contact is twice the perpendicular from a point of contact to \\(OP\\), which is \\(\\frac{rL}{d}\\).\n\nLength of chord of contact \\(= \\frac{2rL}{d} = \\frac{2 \\times 9 \\times 12}{15} = \\frac{216}{15}\\) cm.\n\nHence (D).",
+    "note": "fit-check flag settled: Chord of contact = 2rL/d = 2*9*12/15 = 216/15; stored 2r^2/d is not the chord length. Key D right."
+  },
+  {
+    "id": "f33ffc31-fbb1-4eb8-9fe5-f8ca994c4df2",
+    "before": "c30c5842",
+    "solution": "Normal has slope \\(\\frac{3}{4}\\) and passes through origin.\n\nEquation of normal: \\(y = \\frac{3}{4}x\\).\n\nSubstituting in circle: \\(x^2 + \\left(\\frac{3x}{4}\\right)^2 = 16\\), so \\(\\frac{25x^2}{16} = 16\\) and \\(x^2 = \\frac{256}{25}\\).\n\n\\(x = \\pm\\frac{16}{5}\\), \\(y = \\pm\\frac{12}{5}\\), with the same sign.\n\nSo \\(P\\) is \\(\\left(\\frac{16}{5}, \\frac{12}{5}\\right)\\) or \\(\\left(-\\frac{16}{5}, -\\frac{12}{5}\\right)\\); only the first is listed.\n\nHence (D).",
+    "note": "fit-check flag settled: Both (16/5,12/5) and (-16/5,-12/5) lie on y=3x/4; only the first is among the options. Positive slope does not pick the point. Key D right."
+  },
+  {
+    "id": "fa7accf3-5767-4ae6-a0cc-0132ff3e5442",
+    "before": "ba0ac04f",
+    "solution": "Two points are conjugate when each lies on the polar of the other, so the conjugates of \\(P(3, 4)\\) lie on the polar of \\(P\\).\n\nPolar of \\((3, 4)\\) with respect to \\(x^2 + y^2 = 25\\) is \\(3x + 4y = 25\\). Since \\(P\\) lies on the circle, this is the tangent at \\(P\\).\n\nHence the harmonic conjugate lies on the line \\(3x + 4y = 25\\). Hence (B).",
+    "note": "fit-check flag settled: Conjugate points of P lie on the polar of P; P is on the circle so its polar is the tangent 3x+4y=25 (key B). Stored 'conjugate at infinity' is false."
+  },
+  {
+    "id": "fbdad588-3b8d-4dcd-9a9b-4307a5c0d485",
+    "before": "1aa84cc1",
+    "solution": "Circle 1: \\((x-2)^2 + (y+3)^2 = 3 + 4 + 9 = 16\\), center \\((2, -3)\\).\n\nCircle 2: \\((x-2)^2 + (y+3)^2 = -8 + 4 + 9 = 5\\), center \\((2, -3)\\).\n\nBoth have the same center \\((2, -3)\\).\n\nDistance between centers \\(= 0\\). Hence (A).",
+    "note": "fit-check flag settled: Circle 2: (x-2)^2+(y+3)^2 = -8+13 = 5, not 1. Centres are still both (2,-3), distance 0. Key A right."
+  },
+  {
+    "id": "430402e4-f243-454d-9afa-9d202b2bf4e2",
+    "before": "987c8c56",
+    "solution": "For parabola \\(y^2 = 4ax\\), equation of chord with midpoint \\((h, k)\\) is:\n\n\\(ky - 2a(x + h) = k^2 - 4ah\\)\n\nIts direction is \\((k, 2a)\\), so points on it are \\((h + tk, k + 2at)\\).\n\nSubstituting in \\(y^2 = 4ax\\): \\((k + 2at)^2 = 4a(h + tk)\\), so \\(4a^2t^2 = 4ah - k^2\\) and \\(t = \\pm\\frac{\\sqrt{4ah - k^2}}{2a}\\).\n\nLength \\(= 2|t|\\sqrt{k^2 + 4a^2} = \\frac{1}{a}\\sqrt{(4ah - k^2)(4a^2 + k^2)}\\).\n\nHence (D).",
+    "note": "fit-check flag settled: Chord points (h+tk, k+2at) give 4a^2t^2=4ah-k^2, length (1/a)sqrt((4ah-k^2)(4a^2+k^2)), option D; stored formula is wrong."
+  },
+  {
+    "id": "886fcbf1-d610-4a88-869e-e41264c81b6e",
+    "before": "3e4bb93b",
+    "solution": "Given parabola: \\(y^2 = 4x\\), so \\(a = 1\\). Point: \\((2, -4)\\).\n\nLet general point on parabola be \\((t^2, 2t)\\).\n\n\\(D^2 = (t^2 - 2)^2 + (2t + 4)^2 = t^4 + 16t + 20\\)\n\nFor minimum, \\(\\frac{d(D^2)}{dt} = 4t^3 + 16 = 0\\), so \\(t^3 = -4\\) and \\(t = -\\sqrt[3]{4}\\). The second derivative \\(12t^2 > 0\\), so this is a minimum.\n\nSince \\(t^4 = t \\cdot t^3 = -4t\\): \\(D^2 = -4t + 16t + 20 = 12t + 20 = 20 - 12\\sqrt[3]{4}\\).\n\nShortest distance \\(= \\sqrt{20 - 12\\sqrt[3]{4}}\\).\n\nHence (A).",
+    "note": "fit-check flag settled: D^2=t^4+16t+20, t^3=-4 gives D^2=12t+20=20-12cuberoot4, about 0.95, option A; stored 'close to 2' is false."
+  },
+  {
+    "id": "958b0666-5320-40c1-aaf6-378515c957d9",
+    "before": "5f9e7e18",
+    "solution": "Given: \\(x^2 = \\sqrt{3}y\\).\n\nComparing with \\(x^2 = 4ay\\): \\(4a = \\sqrt{3}\\). Latus rectum \\(q = 4a = \\sqrt{3}\\).\n\nFor an equilateral triangle with one vertex at the parabola vertex \\((0, 0)\\), the other two vertices are symmetric about the y-axis, say \\((t, \\frac{t^2}{\\sqrt{3}})\\) and \\((-t, \\frac{t^2}{\\sqrt{3}})\\).\n\nSide \\(p = 2t\\), and the height of an equilateral triangle is \\(\\frac{\\sqrt{3}}{2}p = \\sqrt{3}t\\).\n\nSo \\(\\frac{t^2}{\\sqrt{3}} = \\sqrt{3}t\\), giving \\(t = 3\\) and \\(p = 6\\).\n\nSince \\(q = \\sqrt{3}\\): \\(p = 6 = 2\\sqrt{3} \\cdot \\sqrt{3} = 2\\sqrt{3}\\,q\\).\n\nHence (D).",
+    "note": "fit-check flag settled: Vertices (+-t, t^2/sqrt3): height t^2/sqrt3 = sqrt3*t gives t=3, side p=6=2sqrt3*q with q=sqrt3. Key D right; 'p=2q' is false."
+  }
+]

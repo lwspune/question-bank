@@ -1,0 +1,5722 @@
+{
+ "//": "Assembled from agent drafts (coordGeometry).",
+ "visuals": [
+  {
+   "id": "05069f60-2f2f-4948-85d1-d6a1427ed1c7",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -1,
+       5
+      ],
+      "y": [
+       -1,
+       11
+      ]
+     },
+     "points": [
+      {
+       "id": "O",
+       "at": [
+        0,
+        0
+       ],
+       "label": "O(0, 0)",
+       "beat": "derived"
+      },
+      {
+       "id": "A",
+       "at": [
+        3,
+        9
+       ],
+       "label": "A(3, 9)",
+       "beat": "derived"
+      },
+      {
+       "id": "B",
+       "at": [
+        1.5,
+        9
+       ],
+       "label": "B(3/2, 9)",
+       "beat": "derived"
+      }
+     ],
+     "lines": [
+      {
+       "id": "L1",
+       "eq": [
+        3,
+        -1,
+        0
+       ],
+       "label": "y = 3x",
+       "beat": "given"
+      },
+      {
+       "id": "L2",
+       "eq": [
+        6,
+        -1,
+        0
+       ],
+       "label": "y = 6x",
+       "beat": "given"
+      },
+      {
+       "id": "L3",
+       "eq": [
+        0,
+        1,
+        -9
+       ],
+       "label": "y = 9",
+       "beat": "given"
+      }
+     ],
+     "ask": {
+      "kind": "area",
+      "points": [
+       "O",
+       "A",
+       "B"
+      ],
+      "label": "area = 27/4"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given",
+       "derived",
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "cf9a353a",
+    "answer": {
+     "value": 6.75,
+     "label": "27/4"
+    }
+   }
+  },
+  {
+   "id": "0b1779ee-af73-454c-9239-4250dfcc92b4",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -1,
+       8
+      ],
+      "y": [
+       -1,
+       8
+      ]
+     },
+     "points": [
+      {
+       "id": "O",
+       "at": [
+        0,
+        0
+       ],
+       "label": "(0, 0)",
+       "beat": "derived"
+      },
+      {
+       "id": "B",
+       "at": [
+        6,
+        0
+       ],
+       "label": "(6, 0)",
+       "beat": "derived"
+      },
+      {
+       "id": "C",
+       "at": [
+        6,
+        6
+       ],
+       "label": "(6, 6)",
+       "beat": "derived"
+      }
+     ],
+     "lines": [
+      {
+       "id": "L1",
+       "eq": [
+        1,
+        -1,
+        0
+       ],
+       "label": "y = x",
+       "beat": "given"
+      },
+      {
+       "id": "L2",
+       "eq": [
+        1,
+        0,
+        -6
+       ],
+       "label": "x = 6",
+       "beat": "given"
+      },
+      {
+       "id": "L3",
+       "eq": [
+        0,
+        1,
+        0
+       ],
+       "label": "y = 0",
+       "beat": "given"
+      }
+     ],
+     "ask": {
+      "kind": "area",
+      "points": [
+       "O",
+       "B",
+       "C"
+      ],
+      "label": "area = 18"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "derived"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "d7cd6324",
+    "answer": {
+     "value": 18,
+     "label": "18"
+    }
+   }
+  },
+  {
+   "id": "1265efbd-5451-4221-94ad-93262c7ee25d",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -3,
+       3
+      ],
+      "y": [
+       -3,
+       3
+      ]
+     },
+     "lines": [
+      {
+       "id": "L1",
+       "eq": [
+        0.2679491924,
+        -1,
+        0
+       ],
+       "label": "slope 2 − √3"
+      },
+      {
+       "id": "L2",
+       "eq": [
+        3.7320508076,
+        -1,
+        0
+       ],
+       "label": "slope 2 + √3"
+      }
+     ],
+     "ask": {
+      "kind": "angle",
+      "lines": [
+       "L1",
+       "L2"
+      ],
+      "as": "angle",
+      "obtuse": true,
+      "label": "obtuse angle = 120°"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "construct"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "c98f5d95",
+    "answer": {
+     "value": 2.094395102362073,
+     "label": "120°"
+    }
+   }
+  },
+  {
+   "id": "1caf978b-7bf7-4eeb-a6df-e514d83bfd03",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -1,
+       8
+      ],
+      "y": [
+       -3,
+       3
+      ]
+     },
+     "points": [
+      {
+       "id": "A",
+       "at": [
+        2,
+        1
+       ],
+       "label": "A(2, 1)",
+       "beat": "derived"
+      },
+      {
+       "id": "B",
+       "at": [
+        2,
+        -1
+       ],
+       "label": "B(2, −1)",
+       "beat": "derived"
+      },
+      {
+       "id": "C",
+       "at": [
+        6,
+        -1
+       ],
+       "label": "C(6, −1)",
+       "beat": "derived"
+      },
+      {
+       "id": "P",
+       "midpointOf": [
+        "A",
+        "C"
+       ],
+       "label": "(4, 0)",
+       "beat": "construct"
+      }
+     ],
+     "lines": [
+      {
+       "id": "AB",
+       "eq": [
+        1,
+        0,
+        -2
+       ],
+       "label": "x = 2",
+       "beat": "given"
+      },
+      {
+       "id": "BC",
+       "eq": [
+        0,
+        1,
+        1
+       ],
+       "label": "y = −1",
+       "beat": "given"
+      },
+      {
+       "id": "CA",
+       "eq": [
+        1,
+        2,
+        -4
+       ],
+       "label": "x + 2y = 4",
+       "beat": "given"
+      }
+     ],
+     "ask": {
+      "kind": "point",
+      "point": "P",
+      "expect": [
+       4,
+       0
+      ],
+      "label": "circumcentre = (4, 0)"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given",
+       "derived"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "construct"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "22364687",
+    "answer": {
+     "value": 0,
+     "label": "(4, 0)"
+    }
+   }
+  },
+  {
+   "id": "261b53ef-c83f-45c4-a38c-983683795d6a",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -8,
+       3
+      ],
+      "y": [
+       -14,
+       4
+      ]
+     },
+     "points": [
+      {
+       "id": "A",
+       "at": [
+        -3,
+        2
+       ],
+       "label": "(−3, 2)"
+      },
+      {
+       "id": "M",
+       "at": [
+        -3,
+        -5
+       ],
+       "label": "",
+       "beat": "derived"
+      },
+      {
+       "id": "B",
+       "divides": [
+        "A",
+        "M"
+       ],
+       "ratio": [
+        2,
+        1
+       ],
+       "external": true,
+       "label": "(−3, −12)"
+      }
+     ],
+     "lines": [
+      {
+       "id": "L",
+       "eq": [
+        0,
+        1,
+        5
+       ],
+       "label": "y = −5",
+       "beat": "given"
+      }
+     ],
+     "segments": [
+      {
+       "from": "A",
+       "to": "B"
+      }
+     ],
+     "ask": {
+      "kind": "point",
+      "point": "B",
+      "expect": [
+       -3,
+       -12
+      ],
+      "label": "reflection = (−3, −12)"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "derived",
+       "construct",
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "6ea66691",
+    "answer": {
+     "value": 0,
+     "label": "(−3, −12)"
+    }
+   }
+  },
+  {
+   "id": "2bd14784-80ac-49f0-97ba-7d3a6fee0049",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -22,
+       -8
+      ],
+      "y": [
+       -1,
+       8
+      ]
+     },
+     "lines": [
+      {
+       "id": "L1",
+       "eq": [
+        2,
+        11,
+        -7
+       ],
+       "label": "2x + 11y − 7 = 0"
+      },
+      {
+       "id": "L2",
+       "eq": [
+        1,
+        3,
+        5
+       ],
+       "label": "x + 3y + 5 = 0"
+      }
+     ],
+     "ask": {
+      "kind": "angle",
+      "lines": [
+       "L1",
+       "L2"
+      ],
+      "as": "tan",
+      "label": "tan θ = 1/7"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "construct"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "02cbab35",
+    "answer": {
+     "value": 0.14285714285714296,
+     "label": "tan⁻¹(1/7)"
+    }
+   }
+  },
+  {
+   "id": "3e3c262c-44fc-461d-92ce-40d6d9673ab7",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -1,
+       8
+      ],
+      "y": [
+       -1,
+       12
+      ]
+     },
+     "points": [
+      {
+       "id": "O",
+       "at": [
+        0,
+        0
+       ],
+       "label": "O"
+      },
+      {
+       "id": "M",
+       "at": [
+        3,
+        5
+       ],
+       "label": "M(3, 5)"
+      },
+      {
+       "id": "P",
+       "at": [
+        6,
+        0
+       ],
+       "label": "P(6, 0)",
+       "beat": "derived"
+      },
+      {
+       "id": "Q",
+       "at": [
+        0,
+        10
+       ],
+       "label": "Q(0, 10)",
+       "beat": "derived"
+      }
+     ],
+     "lines": [
+      {
+       "id": "PQ",
+       "through": [
+        "P",
+        "Q"
+       ],
+       "label": "line PQ"
+      }
+     ],
+     "ask": {
+      "kind": "area",
+      "points": [
+       "O",
+       "P",
+       "Q"
+      ],
+      "label": "area OPQ = 30"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "derived",
+       "construct"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "65690f4c",
+    "answer": {
+     "value": 30,
+     "label": "30"
+    }
+   }
+  },
+  {
+   "id": "49c87605-314f-41b1-bbd3-a70b3c80991e",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -4,
+       3
+      ],
+      "y": [
+       -1,
+       4
+      ]
+     },
+     "points": [
+      {
+       "id": "A",
+       "at": [
+        -0.5,
+        1
+       ],
+       "label": "(−1/2, 1)"
+      },
+      {
+       "id": "B",
+       "at": [
+        1,
+        2
+       ],
+       "label": "(1, 2)"
+      }
+     ],
+     "lines": [
+      {
+       "id": "L",
+       "through": [
+        "A",
+        "B"
+       ],
+       "label": "y − 2 = 2/3 (x − 1)"
+      }
+     ],
+     "ask": {
+      "kind": "xIntercept",
+      "line": "L",
+      "label": "x-intercept = −2"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given",
+       "construct",
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "55089c7b",
+    "answer": {
+     "value": -2,
+     "label": "−2"
+    }
+   }
+  },
+  {
+   "id": "5e7cac34-7e73-4d7b-8d4a-9fae3b916455",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -12,
+       -3
+      ],
+      "y": [
+       -12,
+       -3
+      ]
+     },
+     "lines": [
+      {
+       "id": "L1",
+       "eq": [
+        -1.7320508076,
+        1,
+        -5
+       ],
+       "label": "y = √3x + 5"
+      },
+      {
+       "id": "L2",
+       "eq": [
+        -1,
+        1.7320508076,
+        6
+       ],
+       "label": "y = x/√3 − 6/√3"
+      }
+     ],
+     "ask": {
+      "kind": "angle",
+      "lines": [
+       "L1",
+       "L2"
+      ],
+      "as": "angle",
+      "label": "acute angle = 30°"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "construct",
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "5a8f6686",
+    "answer": {
+     "value": 0.5235987756138605,
+     "label": "30°"
+    }
+   }
+  },
+  {
+   "id": "6ce09756-93d1-4cda-be24-a4b9acb79bd2",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -4,
+       10
+      ],
+      "y": [
+       -24,
+       36
+      ]
+     },
+     "lines": [
+      {
+       "id": "L",
+       "eq": [
+        4,
+        -1,
+        -20
+       ],
+       "label": "L: 4x − y = 20",
+       "beat": "derived"
+      },
+      {
+       "id": "K",
+       "eq": [
+        4,
+        -1,
+        3
+       ],
+       "label": "K: 4x − y = −3",
+       "beat": "derived"
+      }
+     ],
+     "ask": {
+      "kind": "distance",
+      "from": "L",
+      "to": "K",
+      "label": "distance = 23/√17"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "derived"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "c1a3a751",
+    "answer": {
+     "value": 5.578319375835659,
+     "label": "23/√17"
+    }
+   }
+  },
+  {
+   "id": "73ae6d61-b53d-4df7-97a5-dfa003b2b02f",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -1,
+       4
+      ],
+      "y": [
+       -1,
+       10
+      ]
+     },
+     "points": [
+      {
+       "id": "A",
+       "at": [
+        1,
+        3
+       ],
+       "label": "(1, 3)"
+      },
+      {
+       "id": "B",
+       "at": [
+        2,
+        7
+       ],
+       "label": "(2, 7)"
+      }
+     ],
+     "lines": [
+      {
+       "id": "L",
+       "eq": [
+        3,
+        1,
+        -9
+       ],
+       "label": "3x + y = 9",
+       "beat": "given"
+      }
+     ],
+     "segments": [
+      {
+       "from": "A",
+       "to": "B"
+      }
+     ],
+     "ask": {
+      "kind": "ratio",
+      "of": [
+       "A",
+       "B"
+      ],
+      "by": "L",
+      "label": "ratio = 3 : 4 internally"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given",
+       "construct"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "b5a7317c",
+    "answer": {
+     "value": 0.7499999999999994,
+     "label": "3 : 4"
+    }
+   }
+  },
+  {
+   "id": "7e59fd1a-aa26-48cb-b6d9-4acab632d13c",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -8,
+       5
+      ],
+      "y": [
+       -6,
+       7
+      ]
+     },
+     "points": [
+      {
+       "id": "A",
+       "at": [
+        -1,
+        0
+       ],
+       "label": "(−1, 0)"
+      },
+      {
+       "id": "C",
+       "at": [
+        -2,
+        1
+       ],
+       "label": "(−2, 1)"
+      },
+      {
+       "id": "B",
+       "at": [
+        -6,
+        5
+       ],
+       "label": "(−6, 5)"
+      },
+      {
+       "id": "M",
+       "midpointOf": [
+        "A",
+        "C"
+       ],
+       "label": "(−3/2, 1/2)"
+      },
+      {
+       "id": "D",
+       "divides": [
+        "B",
+        "M"
+       ],
+       "ratio": [
+        2,
+        1
+       ],
+       "external": true,
+       "label": "D(3, −4)"
+      }
+     ],
+     "segments": [
+      {
+       "from": "A",
+       "to": "C"
+      },
+      {
+       "from": "B",
+       "to": "D"
+      }
+     ],
+     "ask": {
+      "kind": "point",
+      "point": "D",
+      "expect": [
+       3,
+       -4
+      ],
+      "label": "fourth vertex = (3, −4)"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "derived",
+       "construct",
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "624a146e",
+    "answer": {
+     "value": 0,
+     "label": "(3, −4)"
+    }
+   }
+  },
+  {
+   "id": "863aafff-a8c9-419b-a64e-2e54e873422e",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -2,
+       5
+      ],
+      "y": [
+       -2,
+       3
+      ]
+     },
+     "points": [
+      {
+       "id": "O",
+       "at": [
+        0,
+        0
+       ],
+       "label": "O"
+      },
+      {
+       "id": "P",
+       "at": [
+        3,
+        1
+       ],
+       "label": "(3, 1)"
+      }
+     ],
+     "lines": [
+      {
+       "id": "L",
+       "eq": [
+        1,
+        -2,
+        -1
+       ],
+       "label": "x − 2y − 1 = 0"
+      }
+     ],
+     "ask": {
+      "kind": "distance",
+      "from": "O",
+      "to": "L",
+      "label": "distance = 1/√5"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "construct"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "f1f57e72",
+    "answer": {
+     "value": 0.4472135954999579,
+     "label": "1/√5"
+    }
+   }
+  },
+  {
+   "id": "9754b891-002d-4945-893b-1f6975a39337",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -1,
+       3
+      ],
+      "y": [
+       -1,
+       2.5
+      ]
+     },
+     "points": [
+      {
+       "id": "A",
+       "at": [
+        1,
+        1.7320508
+       ],
+       "label": "A(1, √3)"
+      },
+      {
+       "id": "B",
+       "at": [
+        0,
+        0
+       ],
+       "label": "B(0, 0)"
+      },
+      {
+       "id": "C",
+       "at": [
+        2,
+        0
+       ],
+       "label": "C(2, 0)"
+      },
+      {
+       "id": "G",
+       "centroidOf": [
+        "A",
+        "B",
+        "C"
+       ],
+       "label": "(1, 1/√3)"
+      }
+     ],
+     "segments": [
+      {
+       "from": "A",
+       "to": "B"
+      },
+      {
+       "from": "B",
+       "to": "C"
+      },
+      {
+       "from": "C",
+       "to": "A"
+      }
+     ],
+     "ask": {
+      "kind": "point",
+      "point": "G",
+      "expect": [
+       1,
+       0.577350269
+      ],
+      "label": "incentre = (1, 1/√3)"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given",
+       "construct"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "derived",
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "6f7d2d74",
+    "answer": {
+     "value": 2.333333304349594e-9,
+     "label": "(1, 1/√3)"
+    }
+   }
+  },
+  {
+   "id": "a9ffbb95-f067-4f0c-bbff-374e66b36aee",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -4,
+       3
+      ],
+      "y": [
+       -5,
+       9
+      ]
+     },
+     "lines": [
+      {
+       "id": "L1",
+       "eq": [
+        2,
+        -1,
+        4
+       ],
+       "label": "y = 2x + 4"
+      },
+      {
+       "id": "L2",
+       "eq": [
+        6,
+        -3,
+        -5
+       ],
+       "label": "6x = 3y + 5"
+      }
+     ],
+     "ask": {
+      "kind": "distance",
+      "from": "L1",
+      "to": "L2",
+      "label": "distance = 17√5/15"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "construct"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "7a35a44b",
+    "answer": {
+     "value": 2.5342103744997617,
+     "label": "17√5/15"
+    }
+   }
+  },
+  {
+   "id": "b767fabd-02e6-4aa7-ad60-d82c3734d4fe",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -8,
+       8
+      ],
+      "y": [
+       -6,
+       8
+      ]
+     },
+     "lines": [
+      {
+       "id": "L1",
+       "eq": [
+        3,
+        -4,
+        -5
+       ],
+       "label": "3x − 4y − 5 = 0"
+      },
+      {
+       "id": "L2",
+       "eq": [
+        3,
+        -4,
+        15
+       ],
+       "label": "3x − 4y + 15 = 0"
+      }
+     ],
+     "ask": {
+      "kind": "distance",
+      "from": "L1",
+      "to": "L2",
+      "squared": true,
+      "label": "area = (side)² = 16"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "construct"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "aece29d3",
+    "answer": {
+     "value": 16,
+     "label": "16"
+    }
+   }
+  },
+  {
+   "id": "cbd51d66-2e6c-4a1c-a9d5-85601e454a4a",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       0,
+       7
+      ],
+      "y": [
+       0,
+       7
+      ]
+     },
+     "points": [
+      {
+       "id": "O",
+       "at": [
+        5,
+        5
+       ],
+       "label": "O(5, 5)"
+      },
+      {
+       "id": "H",
+       "at": [
+        2,
+        2
+       ],
+       "label": "H(2, 2)"
+      },
+      {
+       "id": "G",
+       "divides": [
+        "O",
+        "H"
+       ],
+       "ratio": [
+        1,
+        2
+       ],
+       "label": "G(4, 4)"
+      }
+     ],
+     "segments": [
+      {
+       "from": "O",
+       "to": "H"
+      }
+     ],
+     "ask": {
+      "kind": "point",
+      "point": "G",
+      "expect": [
+       4,
+       4
+      ],
+      "label": "centroid = (4, 4)"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given",
+       "construct",
+       "derived",
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "9c7de655",
+    "answer": {
+     "value": 0,
+     "label": "(4, 4)"
+    }
+   }
+  },
+  {
+   "id": "e5372bc1-fd0c-4038-bf6c-50a328841457",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -4,
+       8
+      ],
+      "y": [
+       -4,
+       4
+      ]
+     },
+     "points": [
+      {
+       "id": "P",
+       "at": [
+        1,
+        -1
+       ],
+       "label": "(1, −1)"
+      }
+     ],
+     "lines": [
+      {
+       "id": "L",
+       "eq": [
+        1,
+        5,
+        -9
+       ],
+       "label": "x + 5y − 9 = 0"
+      }
+     ],
+     "ask": {
+      "kind": "distance",
+      "from": "P",
+      "to": "L",
+      "label": "distance = √(13/2)"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given",
+       "construct",
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "5ac3b9e0",
+    "answer": {
+     "value": 2.5495097567963922,
+     "label": "√(13/2)"
+    }
+   }
+  },
+  {
+   "id": "fb63c76c-86d3-4195-87c0-ccbd58581642",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -0.5,
+       3.5
+      ],
+      "y": [
+       -0.5,
+       3
+      ]
+     },
+     "lines": [
+      {
+       "id": "L1",
+       "eq": [
+        3,
+        4,
+        -9
+       ],
+       "label": "3x + 4y = 9"
+      },
+      {
+       "id": "L2",
+       "eq": [
+        6,
+        8,
+        -15
+       ],
+       "label": "6x + 8y = 15"
+      }
+     ],
+     "ask": {
+      "kind": "distance",
+      "from": "L1",
+      "to": "L2",
+      "label": "distance = 3/10"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "construct"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "944d21ff",
+    "answer": {
+     "value": 0.30000000000000004,
+     "label": "3/10"
+    }
+   }
+  },
+  {
+   "id": "13070d25-50aa-4181-9f95-95602dd1416b",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       0,
+       8
+      ],
+      "y": [
+       3,
+       11
+      ]
+     },
+     "points": [
+      {
+       "id": "D",
+       "at": [
+        2,
+        5
+       ],
+       "label": "D(2, 5)"
+      },
+      {
+       "id": "E",
+       "at": [
+        5,
+        9
+       ],
+       "label": "E(5, 9)"
+      }
+     ],
+     "segments": [
+      {
+       "from": "D",
+       "to": "E",
+       "label": "DE = 5"
+      }
+     ],
+     "ask": {
+      "kind": "distance",
+      "from": "D",
+      "to": "E",
+      "times": 2,
+      "label": "BC = 2·DE = 10"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "construct"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "082191a9",
+    "answer": {
+     "value": 10,
+     "label": "10"
+    }
+   }
+  },
+  {
+   "id": "162dc770-9b2b-4075-8dfd-d9b8b0298286",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -1,
+       4
+      ],
+      "y": [
+       -2,
+       3
+      ]
+     },
+     "points": [
+      {
+       "id": "P",
+       "at": [
+        1,
+        1
+       ],
+       "label": "(1, 1)"
+      },
+      {
+       "id": "Q",
+       "at": [
+        2,
+        0
+       ],
+       "label": "(2, 0)",
+       "beat": "derived"
+      }
+     ],
+     "lines": [
+      {
+       "id": "L1",
+       "eq": [
+        1,
+        1,
+        -1
+       ],
+       "label": "x + y = 1",
+       "beat": "given"
+      },
+      {
+       "id": "L2",
+       "eq": [
+        2,
+        -3,
+        -4
+       ],
+       "label": "2x − 3y = 4",
+       "beat": "given"
+      },
+      {
+       "id": "L3",
+       "eq": [
+        1,
+        1,
+        -2
+       ],
+       "label": "x + y − 2 = 0",
+       "beat": "construct"
+      }
+     ],
+     "ask": {
+      "kind": "distance",
+      "from": "P",
+      "to": "Q",
+      "label": "distance = √2"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "construct"
+      ]
+     },
+     {
+      "from": 9,
+      "beats": [
+       "derived"
+      ]
+     },
+     {
+      "from": 11,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "d2ebe340",
+    "answer": {
+     "value": 1.4142135623730951,
+     "label": "√2"
+    }
+   }
+  },
+  {
+   "id": "1f98ef88-e1f3-4f6e-b733-cc60847ed825",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -3,
+       4
+      ],
+      "y": [
+       -2,
+       4
+      ]
+     },
+     "points": [
+      {
+       "id": "P",
+       "at": [
+        1,
+        1
+       ],
+       "label": "(1, 1)"
+      }
+     ],
+     "lines": [
+      {
+       "id": "L",
+       "eq": [
+        2,
+        1,
+        -3
+       ],
+       "label": "2x + y = 3",
+       "beat": "given"
+      },
+      {
+       "id": "M",
+       "eq": [
+        1,
+        -2,
+        1
+       ],
+       "label": "y = x/2 + 1/2"
+      }
+     ],
+     "ask": {
+      "kind": "yIntercept",
+      "line": "M",
+      "label": "y-intercept = 1/2"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given",
+       "construct",
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "fecccf36",
+    "answer": {
+     "value": 0.5,
+     "label": "1/2"
+    }
+   }
+  },
+  {
+   "id": "31166a57-533d-4b09-8b88-3c5028fdd659",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -4,
+       4
+      ],
+      "y": [
+       -4,
+       3
+      ]
+     },
+     "points": [
+      {
+       "id": "O",
+       "at": [
+        0,
+        0
+       ],
+       "label": "O"
+      },
+      {
+       "id": "P",
+       "at": [
+        1,
+        -2
+       ],
+       "label": "(1, −2)",
+       "beat": "derived"
+      }
+     ],
+     "lines": [
+      {
+       "id": "L1",
+       "eq": [
+        2,
+        3,
+        4
+       ],
+       "label": "2x + 3y + 4 = 0",
+       "beat": "given"
+      },
+      {
+       "id": "L2",
+       "eq": [
+        4,
+        3,
+        2
+       ],
+       "label": "4x + 3y + 2 = 0",
+       "beat": "given"
+      }
+     ],
+     "ask": {
+      "kind": "distance",
+      "from": "O",
+      "to": "P",
+      "label": "d = √5"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "derived"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "149608fc",
+    "answer": {
+     "value": 2.23606797749979,
+     "label": "√5"
+    }
+   }
+  },
+  {
+   "id": "43e0b5a9-8605-4639-9772-cb78356687f8",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -6,
+       8
+      ],
+      "y": [
+       -24,
+       6
+      ]
+     },
+     "points": [
+      {
+       "id": "A",
+       "at": [
+        5,
+        0
+       ],
+       "label": "(5, 0)"
+      }
+     ],
+     "lines": [
+      {
+       "id": "L",
+       "eq": [
+        2,
+        8,
+        -10
+       ],
+       "label": "2x + 8y = 10",
+       "beat": "given"
+      },
+      {
+       "id": "M",
+       "eq": [
+        4,
+        -1,
+        -20
+       ],
+       "label": "y = 4x − 20"
+      }
+     ],
+     "ask": {
+      "kind": "yIntercept",
+      "line": "M",
+      "label": "meets y-axis at (0, −20)"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given",
+       "construct",
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "1aca10de",
+    "answer": {
+     "value": -20.000000000000004,
+     "label": "(0, −20)"
+    }
+   }
+  },
+  {
+   "id": "4c9dd4d0-5e66-4e05-97c8-ff98644658fd",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -2,
+       3
+      ],
+      "y": [
+       -2,
+       3
+      ]
+     },
+     "lines": [
+      {
+       "id": "L1",
+       "eq": [
+        1.7320508,
+        1,
+        -1
+       ],
+       "label": "√3x + y = 1"
+      },
+      {
+       "id": "L2",
+       "eq": [
+        1,
+        1.7320508,
+        -1
+       ],
+       "label": "x + √3y = 1"
+      }
+     ],
+     "ask": {
+      "kind": "angle",
+      "lines": [
+       "L1",
+       "L2"
+      ],
+      "as": "angle",
+      "label": "angle = π/6"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "construct",
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "019ed67c",
+    "answer": {
+     "value": 0.5235987718138602,
+     "label": "π/6"
+    }
+   }
+  },
+  {
+   "id": "5bcc706e-1d53-47c0-82dd-77cb0b3846b7",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -2,
+       6
+      ],
+      "y": [
+       -2,
+       15
+      ]
+     },
+     "points": [
+      {
+       "id": "A",
+       "at": [
+        0,
+        1
+       ],
+       "label": "(0, 1)",
+       "beat": "derived"
+      },
+      {
+       "id": "B",
+       "at": [
+        4,
+        9
+       ],
+       "label": "(4, 9)",
+       "beat": "derived"
+      },
+      {
+       "id": "C",
+       "at": [
+        4,
+        13
+       ],
+       "label": "(4, 13)",
+       "beat": "derived"
+      }
+     ],
+     "lines": [
+      {
+       "id": "L1",
+       "eq": [
+        2,
+        -1,
+        1
+       ],
+       "label": "y = 2x + 1",
+       "beat": "given"
+      },
+      {
+       "id": "L2",
+       "eq": [
+        3,
+        -1,
+        1
+       ],
+       "label": "y = 3x + 1",
+       "beat": "given"
+      },
+      {
+       "id": "L3",
+       "eq": [
+        1,
+        0,
+        -4
+       ],
+       "label": "x = 4",
+       "beat": "given"
+      }
+     ],
+     "ask": {
+      "kind": "area",
+      "points": [
+       "A",
+       "B",
+       "C"
+      ],
+      "label": "area = 8"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given",
+       "derived"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "ed1aaacb",
+    "answer": {
+     "value": 8,
+     "label": "8"
+    }
+   }
+  },
+  {
+   "id": "64dce5aa-560d-4a75-bc37-1589266bc0a6",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -4,
+       6
+      ],
+      "y": [
+       -3,
+       5
+      ]
+     },
+     "points": [
+      {
+       "id": "A",
+       "at": [
+        -2,
+        -1
+       ],
+       "label": "A(−2, −1)"
+      },
+      {
+       "id": "B",
+       "at": [
+        1,
+        0
+       ],
+       "label": "B(1, 0)"
+      },
+      {
+       "id": "C",
+       "at": [
+        4,
+        3
+       ],
+       "label": "C(4, 3)"
+      },
+      {
+       "id": "M",
+       "midpointOf": [
+        "A",
+        "C"
+       ],
+       "label": "M(1, 1)"
+      },
+      {
+       "id": "D",
+       "divides": [
+        "B",
+        "M"
+       ],
+       "ratio": [
+        2,
+        1
+       ],
+       "external": true,
+       "label": "D(1, 2)"
+      }
+     ],
+     "segments": [
+      {
+       "from": "A",
+       "to": "C"
+      },
+      {
+       "from": "B",
+       "to": "D"
+      }
+     ],
+     "ask": {
+      "kind": "point",
+      "point": "D",
+      "expect": [
+       1,
+       2
+      ],
+      "label": "D = (1, 2)"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "construct"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "derived"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "065beb8e",
+    "answer": {
+     "value": 0,
+     "label": "(1, 2)"
+    }
+   }
+  },
+  {
+   "id": "7e7fd3bb-8145-4148-b47d-e2cb46639856",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -6,
+       6
+      ],
+      "y": [
+       -4,
+       4
+      ]
+     },
+     "lines": [
+      {
+       "id": "L1",
+       "eq": [
+        5,
+        -12,
+        -14
+       ],
+       "label": "5x − 12y − 14 = 0",
+       "beat": "given"
+      },
+      {
+       "id": "L2",
+       "eq": [
+        5,
+        -12,
+        12
+       ],
+       "label": "5x − 12y + 12 = 0",
+       "beat": "given"
+      }
+     ],
+     "ask": {
+      "kind": "distance",
+      "from": "L1",
+      "to": "L2",
+      "label": "distance = 2"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given",
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "19657f55",
+    "answer": {
+     "value": 2,
+     "label": "2"
+    }
+   }
+  },
+  {
+   "id": "844e4693-128f-4195-b95d-af8eb4add13d",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -5,
+       5
+      ],
+      "y": [
+       -2,
+       5
+      ]
+     },
+     "points": [
+      {
+       "id": "P",
+       "at": [
+        2,
+        2
+       ],
+       "label": "(2, 2)"
+      }
+     ],
+     "lines": [
+      {
+       "id": "L",
+       "eq": [
+        3,
+        1,
+        -3
+       ],
+       "label": "3x + y = 3",
+       "beat": "given"
+      },
+      {
+       "id": "M",
+       "eq": [
+        1,
+        -3,
+        4
+       ],
+       "label": "x − 3y + 4 = 0"
+      }
+     ],
+     "ask": {
+      "kind": "yIntercept",
+      "line": "M",
+      "label": "y-intercept = 4/3"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given",
+       "construct"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "074520fc",
+    "answer": {
+     "value": 1.3333333333333335,
+     "label": "4/3"
+    }
+   }
+  },
+  {
+   "id": "86e9b380-545e-4e94-8b32-585ec6f4f630",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -4,
+       4
+      ],
+      "y": [
+       -6,
+       0
+      ]
+     },
+     "points": [
+      {
+       "id": "A",
+       "at": [
+        -2,
+        -2
+       ],
+       "label": "A(−2, −2)"
+      },
+      {
+       "id": "B",
+       "at": [
+        2,
+        -4
+       ],
+       "label": "B(2, −4)"
+      },
+      {
+       "id": "C",
+       "at": [
+        -0.285714285714,
+        -2.857142857143
+       ],
+       "label": "C(−2/7, −20/7)"
+      }
+     ],
+     "segments": [
+      {
+       "from": "A",
+       "to": "B"
+      }
+     ],
+     "ask": {
+      "kind": "ratio",
+      "of": [
+       "A",
+       "B"
+      ],
+      "by": "C",
+      "label": "ratio = 3 : 4"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given",
+       "construct"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "37bbe570",
+    "answer": {
+     "value": 0.7500000000002189,
+     "label": "3 : 4"
+    }
+   }
+  },
+  {
+   "id": "99ccc177-0819-4e78-ab24-f848d2a6c571",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -0.15,
+       0.5
+      ],
+      "y": [
+       -0.15,
+       0.4
+      ]
+     },
+     "points": [
+      {
+       "id": "O",
+       "at": [
+        0,
+        0
+       ],
+       "label": "O"
+      },
+      {
+       "id": "P",
+       "at": [
+        0.333333333333,
+        0
+       ],
+       "label": "(1/3, 0)"
+      },
+      {
+       "id": "Q",
+       "at": [
+        0,
+        0.25
+       ],
+       "label": "(0, 1/4)"
+      }
+     ],
+     "lines": [
+      {
+       "id": "L",
+       "eq": [
+        3,
+        4,
+        -1
+       ],
+       "label": "3x + 4y = 1"
+      }
+     ],
+     "ask": {
+      "kind": "distance",
+      "from": "O",
+      "to": "L",
+      "label": "p = 1/5"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given",
+       "construct"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "e8ae7c37",
+    "answer": {
+     "value": 0.2,
+     "label": "1/5"
+    }
+   }
+  },
+  {
+   "id": "b099724d-b160-4b80-b653-38759b6fcad5",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -1,
+       7
+      ],
+      "y": [
+       -3,
+       4
+      ]
+     },
+     "points": [
+      {
+       "id": "O",
+       "at": [
+        0,
+        0
+       ],
+       "label": "O"
+      },
+      {
+       "id": "P",
+       "at": [
+        1,
+        2
+       ],
+       "label": "P(1, 2)"
+      },
+      {
+       "id": "Q",
+       "at": [
+        5,
+        3
+       ],
+       "label": "Q(5, 3)"
+      },
+      {
+       "id": "R",
+       "at": [
+        1,
+        -2
+       ],
+       "label": "P′(1, −2)",
+       "beat": "derived"
+      },
+      {
+       "id": "N",
+       "at": [
+        2.6,
+        0
+       ],
+       "label": "N(13/5, 0)",
+       "beat": "derived"
+      }
+     ],
+     "lines": [
+      {
+       "id": "X",
+       "eq": [
+        0,
+        1,
+        0
+       ],
+       "label": "x-axis",
+       "beat": "given"
+      },
+      {
+       "id": "K",
+       "through": [
+        "R",
+        "Q"
+       ]
+      }
+     ],
+     "segments": [
+      {
+       "from": "P",
+       "to": "N"
+      },
+      {
+       "from": "N",
+       "to": "Q"
+      }
+     ],
+     "ask": {
+      "kind": "distance",
+      "from": "O",
+      "to": "N",
+      "label": "ON = 13/5"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given",
+       "derived"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "construct"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "6eb42137",
+    "answer": {
+     "value": 2.6,
+     "label": "13/5"
+    }
+   }
+  },
+  {
+   "id": "bc0fb5da-b010-46e4-b27e-8de541817939",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -6,
+       3
+      ],
+      "y": [
+       -10,
+       4
+      ]
+     },
+     "points": [
+      {
+       "id": "P",
+       "at": [
+        1,
+        2
+       ],
+       "label": "P(1, 2)"
+      },
+      {
+       "id": "Q",
+       "at": [
+        -4,
+        -8
+       ],
+       "label": "Q(−4, −8)"
+      },
+      {
+       "id": "A",
+       "divides": [
+        "P",
+        "Q"
+       ],
+       "ratio": [
+        1,
+        2
+       ],
+       "label": "A"
+      },
+      {
+       "id": "B",
+       "divides": [
+        "P",
+        "Q"
+       ],
+       "ratio": [
+        2,
+        1
+       ],
+       "label": "B"
+      },
+      {
+       "id": "M",
+       "midpointOf": [
+        "A",
+        "B"
+       ],
+       "label": "M(−3/2, −3)"
+      }
+     ],
+     "segments": [
+      {
+       "from": "P",
+       "to": "Q"
+      }
+     ],
+     "ask": {
+      "kind": "point",
+      "point": "M",
+      "expect": [
+       -1.5,
+       -3
+      ],
+      "label": "M = (−3/2, −3)"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given",
+       "construct"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "derived",
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "356e017c",
+    "answer": {
+     "value": 0,
+     "label": "(−3/2, −3)"
+    }
+   }
+  },
+  {
+   "id": "d70c29ca-b4d2-43a2-9b57-d02b19ceb097",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -5,
+       5
+      ],
+      "y": [
+       -2,
+       5
+      ]
+     },
+     "points": [
+      {
+       "id": "P",
+       "at": [
+        2,
+        2
+       ],
+       "label": "(2, 2)"
+      }
+     ],
+     "lines": [
+      {
+       "id": "L",
+       "eq": [
+        3,
+        1,
+        -3
+       ],
+       "label": "3x + y = 3",
+       "beat": "given"
+      },
+      {
+       "id": "M",
+       "eq": [
+        1,
+        -3,
+        4
+       ],
+       "label": "x − 3y + 4 = 0"
+      }
+     ],
+     "ask": {
+      "kind": "yIntercept",
+      "line": "M",
+      "label": "y-intercept = 4/3"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given",
+       "construct",
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "c1e69b62",
+    "answer": {
+     "value": 1.3333333333333335,
+     "label": "4/3"
+    }
+   }
+  },
+  {
+   "id": "fdfbc9d9-067b-4b8a-9d38-4cdb5782d0e0",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -4,
+       6
+      ],
+      "y": [
+       -4,
+       4
+      ]
+     },
+     "points": [
+      {
+       "id": "P",
+       "at": [
+        0,
+        2
+       ],
+       "label": "(0, 2)"
+      }
+     ],
+     "lines": [
+      {
+       "id": "L",
+       "eq": [
+        3,
+        -2,
+        -6
+       ],
+       "label": "3x − 2y = 6",
+       "beat": "given"
+      },
+      {
+       "id": "M",
+       "eq": [
+        2,
+        3,
+        -6
+       ],
+       "label": "y = −2x/3 + 2"
+      }
+     ],
+     "ask": {
+      "kind": "xIntercept",
+      "line": "M",
+      "label": "x-intercept = 3"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given",
+       "construct",
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "b8b21dd9",
+    "answer": {
+     "value": 3,
+     "label": "3"
+    }
+   }
+  },
+  {
+   "id": "14d44a4f-434e-465f-a6f6-ee04b27885ea",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -2,
+       8
+      ],
+      "y": [
+       -8,
+       12
+      ]
+     },
+     "lines": [
+      {
+       "id": "L1",
+       "eq": [
+        0.2679491924,
+        -1,
+        5
+       ],
+       "label": "y = (2 − √3)x + 5"
+      },
+      {
+       "id": "L2",
+       "eq": [
+        3.7320508076,
+        -1,
+        -7
+       ],
+       "label": "y = (2 + √3)x − 7"
+      }
+     ],
+     "ask": {
+      "kind": "angle",
+      "lines": [
+       "L1",
+       "L2"
+      ],
+      "as": "angle",
+      "label": "angle = 60°"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "construct"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "6ceb8de5",
+    "answer": {
+     "value": 1.04719755122772,
+     "label": "60°"
+    }
+   }
+  },
+  {
+   "id": "1682a3be-c559-4126-8a85-b11d2a6e0177",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -1,
+       4
+      ],
+      "y": [
+       -1,
+       3.5
+      ]
+     },
+     "lines": [
+      {
+       "id": "L1",
+       "eq": [
+        3,
+        4,
+        -9
+       ],
+       "label": "3x + 4y = 9"
+      },
+      {
+       "id": "L2",
+       "eq": [
+        6,
+        8,
+        -15
+       ],
+       "label": "6x + 8y = 15"
+      }
+     ],
+     "ask": {
+      "kind": "distance",
+      "from": "L1",
+      "to": "L2",
+      "label": "distance = 3/10"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "construct"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "689a1a2c",
+    "answer": {
+     "value": 0.30000000000000004,
+     "label": "3/10"
+    }
+   }
+  },
+  {
+   "id": "21348338-6399-42d5-9bc2-a2c56ea21c21",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -6,
+       3
+      ],
+      "y": [
+       -4,
+       3
+      ]
+     },
+     "lines": [
+      {
+       "id": "L",
+       "eq": [
+        1,
+        1.7320508076,
+        5.1961524227
+       ],
+       "label": "x + √3y + 3√3 = 0"
+      },
+      {
+       "id": "M",
+       "eq": [
+        1,
+        -1.7320508076,
+        0
+       ],
+       "label": "x − √3y = 0"
+      }
+     ],
+     "ask": {
+      "kind": "angle",
+      "lines": [
+       "L",
+       "M"
+      ],
+      "as": "angle",
+      "label": "α = 60°"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "construct"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "de084fe9",
+    "answer": {
+     "value": 1.047197551181036,
+     "label": "60°"
+    }
+   }
+  },
+  {
+   "id": "46e61af9-405a-47c5-9027-8c1e720eb0c6",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       0,
+       13
+      ],
+      "y": [
+       -3,
+       11
+      ]
+     },
+     "points": [
+      {
+       "id": "D",
+       "at": [
+        11,
+        9
+       ],
+       "label": "(11, 9)"
+      },
+      {
+       "id": "E",
+       "at": [
+        2,
+        1
+       ],
+       "label": "(2, 1)"
+      },
+      {
+       "id": "F",
+       "at": [
+        2,
+        -1
+       ],
+       "label": "(2, −1)"
+      },
+      {
+       "id": "G",
+       "centroidOf": [
+        "D",
+        "E",
+        "F"
+       ],
+       "label": "G(5, 3)"
+      }
+     ],
+     "ask": {
+      "kind": "point",
+      "point": "G",
+      "expect": [
+       5,
+       3
+      ],
+      "label": "centroid = (5, 3)"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "derived",
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "fabfb63d",
+    "answer": {
+     "value": 0,
+     "label": "(5, 3)"
+    }
+   }
+  },
+  {
+   "id": "4fa3b421-e263-4de5-9a52-0e346aecc8a9",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -2,
+       14
+      ],
+      "y": [
+       -2,
+       9
+      ]
+     },
+     "points": [
+      {
+       "id": "A",
+       "at": [
+        0,
+        0
+       ],
+       "label": "A(0, 0)"
+      },
+      {
+       "id": "B",
+       "at": [
+        12,
+        0
+       ],
+       "label": "B(12, 0)"
+      },
+      {
+       "id": "C",
+       "at": [
+        12,
+        2
+       ],
+       "label": "C(12, 2)"
+      },
+      {
+       "id": "D",
+       "at": [
+        6,
+        7
+       ],
+       "label": "D(6, 7)"
+      },
+      {
+       "id": "E",
+       "at": [
+        0,
+        5
+       ],
+       "label": "E(0, 5)"
+      }
+     ],
+     "ask": {
+      "kind": "area",
+      "points": [
+       "A",
+       "B",
+       "C",
+       "D",
+       "E"
+      ],
+      "label": "area = 63"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "488efe54",
+    "answer": {
+     "value": 63,
+     "label": "63"
+    }
+   }
+  },
+  {
+   "id": "6b13011b-f3b1-4081-a07e-8a656d22154f",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -4,
+       4
+      ],
+      "y": [
+       -6,
+       8
+      ]
+     },
+     "lines": [
+      {
+       "id": "L1",
+       "eq": [
+        2,
+        1,
+        -3
+       ],
+       "label": "2x + y − 3 = 0"
+      },
+      {
+       "id": "L2",
+       "eq": [
+        4,
+        2,
+        5
+       ],
+       "label": "4x + 2y + 5 = 0"
+      }
+     ],
+     "ask": {
+      "kind": "distance",
+      "from": "L1",
+      "to": "L2",
+      "squared": true,
+      "label": "(side)² = area = 6.05"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "construct"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "8cf3f8ec",
+    "answer": {
+     "value": 6.050000000000002,
+     "label": "6.05"
+    }
+   }
+  },
+  {
+   "id": "6edec66a-f176-428f-92e5-8a05d9487c76",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -9,
+       3
+      ],
+      "y": [
+       -9,
+       3
+      ]
+     },
+     "points": [
+      {
+       "id": "O",
+       "at": [
+        0,
+        0
+       ],
+       "label": "O"
+      },
+      {
+       "id": "P",
+       "at": [
+        1,
+        1
+       ],
+       "label": "(1, 1)"
+      },
+      {
+       "id": "I",
+       "at": [
+        -6,
+        -6
+       ],
+       "label": "(−6, −6)",
+       "beat": "derived"
+      }
+     ],
+     "lines": [
+      {
+       "id": "L",
+       "eq": [
+        1,
+        1,
+        5
+       ],
+       "label": "x + y + 5 = 0"
+      }
+     ],
+     "ask": {
+      "kind": "distance",
+      "from": "O",
+      "to": "I",
+      "label": "distance = 6√2"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given",
+       "construct",
+       "derived"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "da303cfa",
+    "answer": {
+     "value": 8.485281374238571,
+     "label": "6√2"
+    }
+   }
+  },
+  {
+   "id": "77856812-edd9-47b4-b9ab-4c07e6258f90",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -3,
+       7
+      ],
+      "y": [
+       0,
+       8
+      ]
+     },
+     "points": [
+      {
+       "id": "A",
+       "at": [
+        1,
+        3
+       ],
+       "label": "A(1, 3)"
+      },
+      {
+       "id": "B",
+       "at": [
+        -1,
+        2
+       ],
+       "label": "B(−1, 2)"
+      },
+      {
+       "id": "C",
+       "at": [
+        3,
+        5
+       ],
+       "label": "C(3, 5)"
+      },
+      {
+       "id": "D",
+       "at": [
+        5,
+        6
+       ],
+       "label": "D(5, 6)",
+       "beat": "derived"
+      }
+     ],
+     "ask": {
+      "kind": "area",
+      "points": [
+       "A",
+       "B",
+       "C",
+       "D"
+      ],
+      "label": "area = 2"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given",
+       "derived"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "e0275953",
+    "answer": {
+     "value": 2,
+     "label": "2"
+    }
+   }
+  },
+  {
+   "id": "811f6831-9e4e-427b-ade0-aba58b89f621",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -16,
+       22
+      ],
+      "y": [
+       -14,
+       24
+      ]
+     },
+     "points": [
+      {
+       "id": "A",
+       "at": [
+        8,
+        10
+       ],
+       "label": "A(8, 10)"
+      },
+      {
+       "id": "B",
+       "at": [
+        18,
+        20
+       ],
+       "label": "B(18, 20)"
+      },
+      {
+       "id": "Q",
+       "divides": [
+        "A",
+        "B"
+       ],
+       "ratio": [
+        2,
+        3
+       ],
+       "external": true,
+       "label": "Q(−12, −10)"
+      },
+      {
+       "id": "M",
+       "midpointOf": [
+        "A",
+        "B"
+       ],
+       "label": "M(13, 15)"
+      }
+     ],
+     "segments": [
+      {
+       "from": "M",
+       "to": "Q"
+      }
+     ],
+     "ask": {
+      "kind": "distance",
+      "from": "M",
+      "to": "Q",
+      "label": "MQ = 25√2"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given",
+       "derived",
+       "construct",
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "0bee3425",
+    "answer": {
+     "value": 35.35533905932738,
+     "label": "25√2"
+    }
+   }
+  },
+  {
+   "id": "851e990a-dc71-4dfa-8ba4-45ba923283dc",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -2,
+       5
+      ],
+      "y": [
+       -5,
+       6
+      ]
+     },
+     "points": [
+      {
+       "id": "A",
+       "at": [
+        2,
+        3
+       ],
+       "label": "A(2, 3)"
+      },
+      {
+       "id": "B",
+       "at": [
+        1,
+        4
+       ],
+       "label": "B(1, 4)"
+      },
+      {
+       "id": "C",
+       "at": [
+        0,
+        -2
+       ],
+       "label": "C(0, −2)"
+      },
+      {
+       "id": "M",
+       "midpointOf": [
+        "A",
+        "C"
+       ],
+       "label": "M(1, 1/2)"
+      },
+      {
+       "id": "D",
+       "divides": [
+        "B",
+        "M"
+       ],
+       "ratio": [
+        2,
+        1
+       ],
+       "external": true,
+       "label": "D(1, −3)"
+      }
+     ],
+     "segments": [
+      {
+       "from": "A",
+       "to": "C"
+      },
+      {
+       "from": "B",
+       "to": "D"
+      }
+     ],
+     "ask": {
+      "kind": "point",
+      "point": "D",
+      "expect": [
+       1,
+       -3
+      ],
+      "label": "D = (1, −3)"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "derived",
+       "construct"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "4ee7c96e",
+    "answer": {
+     "value": 0,
+     "label": "(1, −3)"
+    }
+   }
+  },
+  {
+   "id": "8d17918e-fb5e-4409-8a42-732362e9c92b",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -2,
+       5
+      ],
+      "y": [
+       -2,
+       5
+      ]
+     },
+     "points": [
+      {
+       "id": "O",
+       "at": [
+        0,
+        0
+       ],
+       "label": "O"
+      },
+      {
+       "id": "X",
+       "at": [
+        3,
+        0
+       ],
+       "label": "(3, 0)"
+      },
+      {
+       "id": "Y",
+       "at": [
+        0,
+        4
+       ],
+       "label": "(0, 4)"
+      }
+     ],
+     "lines": [
+      {
+       "id": "L",
+       "through": [
+        "X",
+        "Y"
+       ],
+       "label": "4x + 3y = 12"
+      }
+     ],
+     "ask": {
+      "kind": "distance",
+      "from": "O",
+      "to": "L",
+      "label": "distance = 12/5"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given",
+       "construct"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "e2b09918",
+    "answer": {
+     "value": 2.4000000000000004,
+     "label": "12/5"
+    }
+   }
+  },
+  {
+   "id": "9535acbd-3bc8-452b-94eb-5b9a23bbafa2",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -3,
+       4
+      ],
+      "y": [
+       -2,
+       6
+      ]
+     },
+     "points": [
+      {
+       "id": "A",
+       "at": [
+        -1,
+        0
+       ],
+       "label": "A(−1, 0)"
+      },
+      {
+       "id": "B",
+       "at": [
+        2,
+        0
+       ],
+       "label": "B(2, 0)"
+      },
+      {
+       "id": "D",
+       "at": [
+        -1,
+        4
+       ],
+       "label": "D(−1, 4)"
+      },
+      {
+       "id": "C",
+       "at": [
+        2,
+        4
+       ],
+       "label": "C(2, 4)",
+       "beat": "derived"
+      }
+     ],
+     "segments": [
+      {
+       "from": "A",
+       "to": "B"
+      },
+      {
+       "from": "B",
+       "to": "C"
+      },
+      {
+       "from": "C",
+       "to": "D"
+      },
+      {
+       "from": "D",
+       "to": "A"
+      }
+     ],
+     "ask": {
+      "kind": "distance",
+      "from": "A",
+      "to": "C",
+      "label": "AC = 5"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given",
+       "derived",
+       "construct",
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "0bb80ab3",
+    "answer": {
+     "value": 5,
+     "label": "5"
+    }
+   }
+  },
+  {
+   "id": "9bb573eb-99f7-46a3-84a3-acb22c96c5de",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -2,
+       6
+      ],
+      "y": [
+       -7,
+       2
+      ]
+     },
+     "points": [
+      {
+       "id": "O",
+       "at": [
+        0,
+        0
+       ],
+       "label": "O"
+      },
+      {
+       "id": "P",
+       "at": [
+        4,
+        0
+       ],
+       "label": "(4, 0)"
+      },
+      {
+       "id": "R",
+       "at": [
+        4,
+        -5
+       ],
+       "label": "(4, −5)"
+      },
+      {
+       "id": "S",
+       "at": [
+        0,
+        -5
+       ],
+       "label": "(0, −5)"
+      }
+     ],
+     "lines": [
+      {
+       "id": "LX",
+       "eq": [
+        0,
+        1,
+        0
+       ],
+       "label": "y = 0"
+      },
+      {
+       "id": "LY",
+       "eq": [
+        1,
+        0,
+        0
+       ],
+       "label": "x = 0"
+      },
+      {
+       "id": "L4",
+       "eq": [
+        1,
+        0,
+        -4
+       ],
+       "label": "x = 4"
+      },
+      {
+       "id": "L5",
+       "eq": [
+        0,
+        1,
+        5
+       ],
+       "label": "y = −5"
+      }
+     ],
+     "ask": {
+      "kind": "area",
+      "points": [
+       "O",
+       "P",
+       "R",
+       "S"
+      ],
+      "label": "area = 20"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "construct"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "given"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "60ee293e",
+    "answer": {
+     "value": 20,
+     "label": "20"
+    }
+   }
+  },
+  {
+   "id": "b3478ac8-abd5-4f76-ba51-13abe77c5f19",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -5,
+       5
+      ],
+      "y": [
+       -7,
+       7
+      ]
+     },
+     "points": [
+      {
+       "id": "A",
+       "at": [
+        2,
+        4
+       ],
+       "label": "A(2, 4)"
+      },
+      {
+       "id": "C",
+       "at": [
+        2,
+        -4
+       ],
+       "label": "C(2, −4)",
+       "beat": "derived"
+      },
+      {
+       "id": "B",
+       "at": [
+        -2,
+        -4
+       ],
+       "label": "B(−2, −4)",
+       "beat": "derived"
+      }
+     ],
+     "lines": [
+      {
+       "id": "LX",
+       "eq": [
+        0,
+        1,
+        0
+       ],
+       "label": "x-axis"
+      },
+      {
+       "id": "LY",
+       "eq": [
+        1,
+        0,
+        0
+       ],
+       "label": "y-axis"
+      }
+     ],
+     "ask": {
+      "kind": "distance",
+      "from": "A",
+      "to": "B",
+      "label": "|AB| = 4√5"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given",
+       "construct",
+       "derived"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "cbb3878b",
+    "answer": {
+     "value": 8.94427190999916,
+     "label": "4√5"
+    }
+   }
+  },
+  {
+   "id": "be9b4232-c6d0-4951-a6ea-2a5788120d15",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -1,
+       4
+      ],
+      "y": [
+       -1,
+       5
+      ]
+     },
+     "lines": [
+      {
+       "id": "L1",
+       "eq": [
+        4,
+        3,
+        -11
+       ],
+       "label": "4x + 3y = 11"
+      },
+      {
+       "id": "L2",
+       "eq": [
+        8,
+        6,
+        -15
+       ],
+       "label": "8x + 6y = 15"
+      }
+     ],
+     "ask": {
+      "kind": "distance",
+      "from": "L1",
+      "to": "L2",
+      "label": "distance = 7/10"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "construct"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "ea8d50e9",
+    "answer": {
+     "value": 0.7000000000000002,
+     "label": "7/10"
+    }
+   }
+  },
+  {
+   "id": "d84238c5-c154-457d-a593-dac16234594b",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -5,
+       70
+      ],
+      "y": [
+       -10,
+       10
+      ]
+     },
+     "points": [
+      {
+       "id": "O",
+       "at": [
+        0,
+        0
+       ],
+       "label": "O"
+      },
+      {
+       "id": "A",
+       "at": [
+        64,
+        0
+       ],
+       "label": "A(64, 0)"
+      },
+      {
+       "id": "P",
+       "divides": [
+        "O",
+        "A"
+       ],
+       "ratio": [
+        1,
+        5
+       ],
+       "label": "P(32/3, 0)"
+      }
+     ],
+     "segments": [
+      {
+       "from": "O",
+       "to": "A"
+      }
+     ],
+     "ask": {
+      "kind": "point",
+      "point": "P",
+      "expect": [
+       10.666666666667,
+       0
+      ],
+      "label": "P = (32/3, 0)"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given",
+       "construct"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "derived",
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "9b5c0ad4",
+    "answer": {
+     "value": 3.339550858072471e-13,
+     "label": "(32/3, 0)"
+    }
+   }
+  },
+  {
+   "id": "0872a167-7355-4760-af27-300775819804",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -1,
+       4
+      ],
+      "y": [
+       -1,
+       6
+      ]
+     },
+     "points": [
+      {
+       "id": "P",
+       "at": [
+        1,
+        3
+       ],
+       "label": "(1, 3)"
+      },
+      {
+       "id": "Q",
+       "at": [
+        1.5,
+        1
+       ],
+       "label": "(3/2, 1)",
+       "beat": "derived"
+      }
+     ],
+     "lines": [
+      {
+       "id": "L",
+       "eq": [
+        2,
+        3,
+        -6
+       ],
+       "label": "2x + 3y = 6",
+       "beat": "given"
+      },
+      {
+       "id": "M",
+       "eq": [
+        4,
+        1,
+        -4
+       ],
+       "label": "4x + y = 4",
+       "beat": "given"
+      },
+      {
+       "id": "T",
+       "through": [
+        "P",
+        "Q"
+       ],
+       "label": "slope −4"
+      }
+     ],
+     "ask": {
+      "kind": "distance",
+      "from": "P",
+      "to": "Q",
+      "label": "distance = √17/2"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "construct"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "derived"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "4dee091a",
+    "answer": {
+     "value": 2.0615528128088303,
+     "label": "√17/2"
+    }
+   }
+  },
+  {
+   "id": "14ecbda3-826c-4cda-8f8f-c801797ce610",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -1,
+       5
+      ],
+      "y": [
+       -4,
+       3
+      ]
+     },
+     "lines": [
+      {
+       "id": "L",
+       "eq": [
+        1.41421356,
+        1.73205081,
+        -1
+       ],
+       "label": "√2x + √3y = 1"
+      },
+      {
+       "id": "M",
+       "eq": [
+        1.73205081,
+        1.41421356,
+        -2
+       ],
+       "label": "√3x + √2y = 2"
+      }
+     ],
+     "ask": {
+      "kind": "angle",
+      "lines": [
+       "L",
+       "M"
+      ],
+      "as": "tan",
+      "label": "tan θ = 1/(2√6)"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "construct"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "842fcd9b",
+    "answer": {
+     "value": 0.20412414837711804,
+     "label": "tan⁻¹(1/(2√6))"
+    }
+   }
+  },
+  {
+   "id": "2b3281c6-ddeb-415b-8cec-56aed7afabd9",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -4,
+       8
+      ],
+      "y": [
+       -3,
+       7
+      ]
+     },
+     "points": [
+      {
+       "id": "A",
+       "at": [
+        -2,
+        2
+       ],
+       "label": "(−2, 2)"
+      },
+      {
+       "id": "B",
+       "at": [
+        1,
+        5
+       ],
+       "label": "(1, 5)"
+      },
+      {
+       "id": "C",
+       "at": [
+        6,
+        -1
+       ],
+       "label": "(6, −1)"
+      }
+     ],
+     "ask": {
+      "kind": "area",
+      "points": [
+       "A",
+       "B",
+       "C"
+      ],
+      "label": "area = 33/2"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "6762b0af",
+    "answer": {
+     "value": 16.5,
+     "label": "33/2"
+    }
+   }
+  },
+  {
+   "id": "383c5047-cb5e-4b37-b5c5-f7ac1810a772",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -5,
+       7
+      ],
+      "y": [
+       -4,
+       6
+      ]
+     },
+     "points": [
+      {
+       "id": "P",
+       "at": [
+        1,
+        1
+       ],
+       "label": "P(1, 1)"
+      },
+      {
+       "id": "Q",
+       "at": [
+        -3,
+        4
+       ],
+       "label": "Q(−3, 4)"
+      }
+     ],
+     "lines": [
+      {
+       "id": "L",
+       "eq": [
+        1,
+        1,
+        -3
+       ],
+       "label": "x + y = 3",
+       "beat": "given"
+      },
+      {
+       "id": "M",
+       "through": [
+        "P",
+        "Q"
+       ],
+       "label": "line PQ"
+      }
+     ],
+     "ask": {
+      "kind": "angle",
+      "lines": [
+       "L",
+       "M"
+      ],
+      "as": "tan",
+      "label": "tan θ = 1/7"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "construct"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "a2acedc1",
+    "answer": {
+     "value": 0.14285714285714296,
+     "label": "tan⁻¹(1/7)"
+    }
+   }
+  },
+  {
+   "id": "6c4e10c4-bc08-4b9c-9bfe-2b8f13ab6305",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -2,
+       14
+      ],
+      "y": [
+       -2,
+       13
+      ]
+     },
+     "points": [
+      {
+       "id": "O",
+       "at": [
+        0,
+        0
+       ],
+       "label": "(0, 0)"
+      },
+      {
+       "id": "A",
+       "at": [
+        7,
+        2
+       ],
+       "label": "(7, 2)"
+      },
+      {
+       "id": "D",
+       "at": [
+        12,
+        11
+       ],
+       "label": "(12, 11)"
+      },
+      {
+       "id": "B",
+       "at": [
+        5,
+        9
+       ],
+       "label": "(5, 9)"
+      }
+     ],
+     "ask": {
+      "kind": "area",
+      "points": [
+       "O",
+       "A",
+       "D",
+       "B"
+      ],
+      "label": "area = 53"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "f9ef5fc2",
+    "answer": {
+     "value": 53,
+     "label": "53"
+    }
+   }
+  },
+  {
+   "id": "6f10d7f6-e656-4830-9c30-da832cc3a70e",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -2,
+       8
+      ],
+      "y": [
+       -9,
+       3
+      ]
+     },
+     "points": [
+      {
+       "id": "P",
+       "at": [
+        3,
+        -5
+       ],
+       "label": "(3, −5)"
+      }
+     ],
+     "lines": [
+      {
+       "id": "L",
+       "eq": [
+        3,
+        -4,
+        -26
+       ],
+       "label": "3x − 4y − 26 = 0",
+       "beat": "given"
+      }
+     ],
+     "ask": {
+      "kind": "distance",
+      "from": "P",
+      "to": "L",
+      "label": "distance = 3/5"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given",
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "e0e13216",
+    "answer": {
+     "value": 0.5999999999999996,
+     "label": "3/5"
+    }
+   }
+  },
+  {
+   "id": "7946ebca-bff3-47ff-a05e-08d82f3cb606",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       0,
+       7
+      ],
+      "y": [
+       -7,
+       9
+      ]
+     },
+     "points": [
+      {
+       "id": "A",
+       "at": [
+        4,
+        3
+       ],
+       "label": "A(4, 3)"
+      },
+      {
+       "id": "B",
+       "at": [
+        5,
+        7
+       ],
+       "label": "B(5, 7)"
+      },
+      {
+       "id": "P",
+       "divides": [
+        "A",
+        "B"
+       ],
+       "ratio": [
+        2,
+        3
+       ],
+       "label": "P(22/5, 23/5)"
+      },
+      {
+       "id": "Q",
+       "divides": [
+        "A",
+        "B"
+       ],
+       "ratio": [
+        2,
+        3
+       ],
+       "external": true,
+       "label": "Q(2, −5)"
+      }
+     ],
+     "segments": [
+      {
+       "from": "A",
+       "to": "B"
+      }
+     ],
+     "ask": {
+      "kind": "distance",
+      "from": "P",
+      "to": "Q",
+      "label": "PQ = 12√17/5"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given",
+       "construct",
+       "derived"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "6f01be6e",
+    "answer": {
+     "value": 9.895453501482384,
+     "label": "12√17/5"
+    }
+   }
+  },
+  {
+   "id": "85ae48f2-19c6-4d3d-9216-c75325517824",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -7,
+       11
+      ],
+      "y": [
+       -3,
+       7
+      ]
+     },
+     "points": [
+      {
+       "id": "A",
+       "at": [
+        3,
+        5
+       ],
+       "label": "A(3, 5)"
+      },
+      {
+       "id": "M",
+       "at": [
+        -1,
+        2
+       ],
+       "label": "(−1, 2)"
+      },
+      {
+       "id": "N",
+       "at": [
+        6,
+        4
+       ],
+       "label": "(6, 4)"
+      },
+      {
+       "id": "B",
+       "divides": [
+        "A",
+        "M"
+       ],
+       "ratio": [
+        2,
+        1
+       ],
+       "external": true,
+       "label": "B(−5, −1)"
+      },
+      {
+       "id": "C",
+       "divides": [
+        "A",
+        "N"
+       ],
+       "ratio": [
+        2,
+        1
+       ],
+       "external": true,
+       "label": "C(9, 3)"
+      },
+      {
+       "id": "G",
+       "centroidOf": [
+        "A",
+        "B",
+        "C"
+       ],
+       "label": "G(7/3, 7/3)"
+      }
+     ],
+     "segments": [
+      {
+       "from": "A",
+       "to": "B"
+      },
+      {
+       "from": "B",
+       "to": "C"
+      },
+      {
+       "from": "A",
+       "to": "C"
+      }
+     ],
+     "ask": {
+      "kind": "point",
+      "point": "G",
+      "expect": [
+       2.333333333333,
+       2.333333333333
+      ],
+      "label": "centroid = (7/3, 7/3)"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given",
+       "derived",
+       "construct"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "710755c5",
+    "answer": {
+     "value": 4.716557745886061e-13,
+     "label": "(7/3, 7/3)"
+    }
+   }
+  },
+  {
+   "id": "8ee89254-af29-4560-888a-f3b70d993828",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -6,
+       8
+      ],
+      "y": [
+       -7,
+       9
+      ]
+     },
+     "points": [
+      {
+       "id": "A",
+       "at": [
+        -4,
+        7
+       ],
+       "label": "(−4, 7)"
+      },
+      {
+       "id": "B",
+       "at": [
+        6,
+        -5
+       ],
+       "label": "(6, −5)"
+      }
+     ],
+     "lines": [
+      {
+       "id": "L",
+       "eq": [
+        2,
+        5,
+        -7
+       ],
+       "label": "2x + 5y − 7 = 0",
+       "beat": "given"
+      }
+     ],
+     "ask": {
+      "kind": "ratio",
+      "of": [
+       "A",
+       "B"
+      ],
+      "by": "L",
+      "label": "ratio = 1 : 1"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given",
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "57f0dc4c",
+    "answer": {
+     "value": 0.9999999999999996,
+     "label": "1 : 1"
+    }
+   }
+  },
+  {
+   "id": "954c9c08-5829-41ca-9c76-549a1fc9a4ca",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -5,
+       35
+      ],
+      "y": [
+       -14,
+       4
+      ]
+     },
+     "lines": [
+      {
+       "id": "L",
+       "eq": [
+        2,
+        -5,
+        -60
+       ],
+       "label": "x/10 − y/4 = 3",
+       "beat": "given"
+      }
+     ],
+     "ask": {
+      "kind": "slope",
+      "line": "L",
+      "label": "slope = 2/5"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given",
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "d21f2558",
+    "answer": {
+     "value": 0.39999999999999997,
+     "label": "2/5"
+    }
+   }
+  },
+  {
+   "id": "a0bc981c-eecc-473f-952f-b4e247f2d45a",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -5,
+       5
+      ],
+      "y": [
+       -7,
+       2
+      ]
+     },
+     "lines": [
+      {
+       "id": "L",
+       "eq": [
+        1,
+        1.73205081,
+        5.19615242
+       ],
+       "label": "line L",
+       "beat": "given"
+      },
+      {
+       "id": "Y",
+       "eq": [
+        1,
+        0,
+        0
+       ],
+       "label": "y-axis",
+       "beat": "given"
+      }
+     ],
+     "ask": {
+      "kind": "angle",
+      "lines": [
+       "L",
+       "Y"
+      ],
+      "as": "angle",
+      "label": "angle = 60°"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "a9e515c6",
+    "answer": {
+     "value": 1.0471975518043783,
+     "label": "60°"
+    }
+   }
+  },
+  {
+   "id": "b5e9509b-40f5-43fa-9f74-75e1d96de86e",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -2,
+       6
+      ],
+      "y": [
+       -3,
+       5
+      ]
+     },
+     "lines": [
+      {
+       "id": "L",
+       "eq": [
+        1,
+        0,
+        -2
+       ],
+       "label": "x = 2"
+      },
+      {
+       "id": "M",
+       "eq": [
+        1.73205081,
+        -1,
+        -2
+       ],
+       "label": "√3x − y − 2 = 0"
+      }
+     ],
+     "ask": {
+      "kind": "angle",
+      "lines": [
+       "L",
+       "M"
+      ],
+      "as": "angle",
+      "label": "acute angle = 30°"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "construct"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "b1a0874a",
+    "answer": {
+     "value": 0.5235987749905182,
+     "label": "30°"
+    }
+   }
+  },
+  {
+   "id": "c343981a-30ac-444a-a8a5-24ba5afb1195",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -6,
+       7
+      ],
+      "y": [
+       -7,
+       12
+      ]
+     },
+     "points": [
+      {
+       "id": "A",
+       "at": [
+        -3,
+        4
+       ],
+       "label": "A(−3, 4)"
+      },
+      {
+       "id": "B",
+       "at": [
+        0,
+        -4
+       ],
+       "label": "B(0, −4)"
+      },
+      {
+       "id": "C",
+       "at": [
+        5,
+        2
+       ],
+       "label": "C(5, 2)"
+      },
+      {
+       "id": "M",
+       "midpointOf": [
+        "A",
+        "C"
+       ],
+       "label": "M(1, 3)"
+      },
+      {
+       "id": "D",
+       "divides": [
+        "B",
+        "M"
+       ],
+       "ratio": [
+        2,
+        1
+       ],
+       "external": true,
+       "label": "D(2, 10)"
+      }
+     ],
+     "segments": [
+      {
+       "from": "A",
+       "to": "B"
+      },
+      {
+       "from": "B",
+       "to": "C"
+      },
+      {
+       "from": "C",
+       "to": "D"
+      },
+      {
+       "from": "D",
+       "to": "A"
+      }
+     ],
+     "ask": {
+      "kind": "point",
+      "point": "D",
+      "expect": [
+       2,
+       10
+      ],
+      "label": "D = (2, 10)"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "derived",
+       "construct"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "b3b5e774",
+    "answer": {
+     "value": 0,
+     "label": "(2, 10)"
+    }
+   }
+  },
+  {
+   "id": "d8484714-327f-4315-bdd0-0c7c6a92aec4",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -4,
+       4
+      ],
+      "y": [
+       -4,
+       4
+      ]
+     },
+     "points": [
+      {
+       "id": "A",
+       "at": [
+        2,
+        0
+       ],
+       "label": "(2, 0)"
+      },
+      {
+       "id": "B",
+       "at": [
+        0,
+        2
+       ],
+       "label": "(0, 2)"
+      },
+      {
+       "id": "C",
+       "at": [
+        -2,
+        -2
+       ],
+       "label": "(−2, −2)"
+      },
+      {
+       "id": "G",
+       "centroidOf": [
+        "A",
+        "B",
+        "C"
+       ],
+       "label": "centroid (0, 0)"
+      }
+     ],
+     "ask": {
+      "kind": "point",
+      "point": "G",
+      "expect": [
+       0,
+       0
+      ],
+      "label": "fixed point = (0, 0)"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "derived"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "27603358",
+    "answer": {
+     "value": 0,
+     "label": "(0, 0)"
+    }
+   }
+  },
+  {
+   "id": "e51510be-88e9-42a1-8117-56bc5846b8bf",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -1,
+       7
+      ],
+      "y": [
+       -3,
+       5
+      ]
+     },
+     "points": [
+      {
+       "id": "A",
+       "at": [
+        3,
+        3
+       ],
+       "label": "A(3, 3)"
+      },
+      {
+       "id": "M",
+       "at": [
+        2,
+        0.666666666667
+       ],
+       "label": "(2, 2/3)"
+      },
+      {
+       "id": "N",
+       "at": [
+        4,
+        1.5
+       ],
+       "label": "(4, 3/2)"
+      },
+      {
+       "id": "B",
+       "divides": [
+        "A",
+        "M"
+       ],
+       "ratio": [
+        2,
+        1
+       ],
+       "external": true,
+       "label": "B(1, −5/3)"
+      },
+      {
+       "id": "C",
+       "divides": [
+        "A",
+        "N"
+       ],
+       "ratio": [
+        2,
+        1
+       ],
+       "external": true,
+       "label": "C(5, 0)"
+      },
+      {
+       "id": "G",
+       "centroidOf": [
+        "A",
+        "B",
+        "C"
+       ],
+       "label": "G(3, 4/9)"
+      }
+     ],
+     "segments": [
+      {
+       "from": "A",
+       "to": "B"
+      },
+      {
+       "from": "B",
+       "to": "C"
+      },
+      {
+       "from": "A",
+       "to": "C"
+      }
+     ],
+     "ask": {
+      "kind": "point",
+      "point": "G",
+      "expect": [
+       3,
+       0.444444444444
+      ],
+      "label": "centroid = (3, 4/9)"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given",
+       "derived",
+       "construct",
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "3dfabb8c",
+    "answer": {
+     "value": 6.666889262874065e-13,
+     "label": "(3, 4/9)"
+    }
+   }
+  },
+  {
+   "id": "f68a1414-90e2-4818-a5c6-2e1d345e9fec",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "coordGeometry",
+    "params": {
+     "window": {
+      "x": [
+       -2,
+       8
+      ],
+      "y": [
+       -2,
+       7
+      ]
+     },
+     "points": [
+      {
+       "id": "P",
+       "at": [
+        4,
+        4
+       ],
+       "label": "(4, 4)"
+      },
+      {
+       "id": "A",
+       "at": [
+        5,
+        0
+       ],
+       "label": "(5, 0)"
+      },
+      {
+       "id": "B",
+       "at": [
+        0,
+        3
+       ],
+       "label": "(0, 3)"
+      }
+     ],
+     "lines": [
+      {
+       "id": "L",
+       "through": [
+        "A",
+        "B"
+       ],
+       "label": "3x + 5y − 15 = 0"
+      }
+     ],
+     "ask": {
+      "kind": "distance",
+      "from": "P",
+      "to": "L",
+      "label": "distance = √(17/2)"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given",
+       "construct"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "2234e62f",
+    "answer": {
+     "value": 2.9154759474226513,
+     "label": "√(17/2)"
+    }
+   }
+  }
+ ],
+ "decided": []
+}

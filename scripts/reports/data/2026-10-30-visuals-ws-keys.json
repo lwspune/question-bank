@@ -1,0 +1,30 @@
+[
+  {
+    "id": "5318307f-03c3-4713-aee5-4bb9652ff49d",
+    "label": "Worksheets Complex (1+i)^10",
+    "reason": "fix: key corrected; (1+i)^10 = (2i)^5 = 32i, option (d). The worksheet key (b) 32 was wrong.",
+    "solution": "**Note:** The worksheet's key gives (B), but \\((1+i)^{10} = 32i\\); the answer shown is the corrected one, (D).\n\nStep 1: \\((1+i)^2 = 1 + 2i + i^2 = 2i\\).\n\nStep 2: \\((1+i)^{10} = \\left((1+i)^2\\right)^5 = (2i)^5 = 32 i^5\\).\n\nStep 3: \\(i^5 = i^4 \\cdot i = i\\), so \\((1+i)^{10} = 32i\\).\n\nCheck with polar form: \\(1+i = \\sqrt{2}\\,e^{i\\pi/4}\\), so \\((1+i)^{10} = 32\\,e^{i\\,5\\pi/2} = 32\\left(\\cos\\frac{5\\pi}{2} + i\\sin\\frac{5\\pi}{2}\\right) = 32i\\).\n\nHence (D).",
+    "correct": "D"
+  },
+  {
+    "id": "9af293ff-8b90-4439-919f-36bdf0bc343a",
+    "label": "Worksheets Complex 9af293ff",
+    "reason": "fix: key corrected; (x+yw+zw^2)^3+(x+yw^2+zw)^3+(x+y+z)^3 = 3(x^3+y^3+z^3+6xyz) = 27xyz under the given condition; x=y=z=1 gives 27. The worksheet key was wrong.",
+    "solution": "**Note:** The worksheet's key gives (A), 9xyz; the answer shown is the corrected one, (D).\n\nLet \\(a = x+y+z\\), \\(b = x+y\\omega+z\\omega^2\\), \\(c = x+y\\omega^2+z\\omega\\). Then \\(abc = x^3+y^3+z^3-3xyz = 0\\) by the given condition.\n\nExpanding with \\(1+\\omega+\\omega^2=0\\) and \\(\\omega^3=1\\), the cross terms cancel and \\(a^3+b^3+c^3 = 3(x^3+y^3+z^3+6xyz)\\).\n\nUsing \\(x^3+y^3+z^3 = 3xyz\\): the sum is \\(3(3xyz+6xyz) = 27xyz\\). Check with \\(x=y=z=1\\): \\(a=3\\), \\(b=c=0\\), sum \\(=27 = 27xyz\\).\n\nHence (D).",
+    "correct": "D"
+  },
+  {
+    "id": "9b8aa43f-945d-403d-bb99-03f5354b0bc7",
+    "label": "Worksheets Complex 9b8aa43f",
+    "reason": "fix: key corrected; 100 terms: 33 cycles of three sum to 0 and omega^99 = 1, so S = 1. The worksheet key was wrong.",
+    "solution": "**Note:** The worksheet's key gives (A), 33; the answer shown is the corrected one, (D).\n\nThe sum has \\(100\\) terms, from \\(\\omega^0\\) to \\(\\omega^{99}\\). Group them in threes: each group \\(\\omega^{3k}+\\omega^{3k+1}+\\omega^{3k+2} = \\omega^{3k}(1+\\omega+\\omega^2) = 0\\). There are \\(33\\) such groups, using \\(99\\) terms, so they add to \\(0\\).\n\nOne term is left: \\(\\omega^{99} = (\\omega^3)^{33} = 1\\). So \\(S = 0 + 1 = 1\\).\n\nHence (D).",
+    "correct": "D"
+  },
+  {
+    "id": "cfe85ba8-6636-45b5-b29c-8f09656d02d4",
+    "label": "Worksheets Complex cfe85ba8",
+    "reason": "fix: key corrected; (1+w+w^2)(1+w^3) = 0 for a non-real cube root of unity. The worksheet key was wrong.",
+    "solution": "**Note:** The worksheet's key gives (D), 3; the answer shown is the corrected one, (A).\n\nTake \\(\\omega\\) as a non-real cube root of unity, so \\(1+\\omega+\\omega^2=0\\) and \\(\\omega^3=1\\).\n\nGroup the six terms: \\((1+\\omega+\\omega^2)+(\\omega^3+\\omega^4+\\omega^5) = (1+\\omega+\\omega^2)+\\omega^3(1+\\omega+\\omega^2) = 0 + 0 = 0\\).\n\nHence (A).",
+    "correct": "A"
+  }
+]

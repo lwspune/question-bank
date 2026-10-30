@@ -1,0 +1,14 @@
+[
+  {
+    "id": "c7ca7bdd-fcb3-4004-a1fb-e6401d3957da",
+    "before": "a710370c",
+    "solution": "Test the four choices of \\(\\nabla\\) and \\(\\Delta\\).\n\nWith \\(\\nabla = \\vee\\) and \\(\\Delta = \\wedge\\), the statement is \\((p \\vee q) \\Rightarrow ((p \\wedge q) \\vee r)\\), which fails at \\(p = T, q = F, r = F\\).\n\nWith \\(\\nabla = \\wedge\\) (either \\(\\Delta\\)), it is \\((p \\wedge q) \\Rightarrow ((p\\Delta q) \\wedge r)\\), which fails at \\(p = T, q = T, r = F\\).\n\nWith \\(\\nabla = \\Delta = \\vee\\), it is \\((p \\vee q) \\Rightarrow ((p \\vee q) \\vee r)\\), a tautology. So \\(\\nabla = \\Delta = \\vee\\).\n\nThen \\((p \\nabla q) \\Delta r = (p \\vee q) \\vee r = (p \\vee r) \\vee q = (p\\Delta r) \\vee q\\). Hence (A).",
+    "note": "the counter-example only ruled out one case; each case now has its own"
+  },
+  {
+    "id": "766d6083-1681-4b44-bada-ba61139b111b",
+    "before": "011a467b",
+    "solution": "**Note:** As printed, options (B), (C) and (D) are all tautologies, so all three are equivalent to the given statement. The answer shown is the keyed option, (C).\n\n\\(B \\Rightarrow ((\\sim A) \\vee B)\\) is a tautology: if \\(B\\) is true, \\((\\sim A) \\vee B\\) is true, and if \\(B\\) is false the implication is true.\n\n(C) \\(B \\Rightarrow (A \\Rightarrow B) = \\sim B \\vee \\sim A \\vee B\\) is a tautology, so it is equivalent to the given statement.\n\n(B) \\(A \\Rightarrow ((\\sim A) \\Rightarrow B) = \\sim A \\vee A \\vee B\\) and (D) \\(B \\Rightarrow ((\\sim A) \\Rightarrow B) = \\sim B \\vee A \\vee B\\) are tautologies too; only (A) is not (it is false at \\(A = T, B = F\\)). Hence (C).",
+    "note": "defective as printed: three options are tautologies; notice added"
+  }
+]
