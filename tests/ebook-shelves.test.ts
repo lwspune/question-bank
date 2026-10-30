@@ -6,7 +6,8 @@
  * shelf, so no book on sale can vanish from the page.
  */
 import { describe, it, expect } from "vitest";
-import { storeShelves, shelfOf } from "@/lib/ebooks/shelves";
+import { SHELVES, storeShelves, shelfOf, shelfExamSlugs } from "@/lib/ebooks/shelves";
+import { isExamSlug } from "@/lib/exam/examContext";
 
 const book = (slug: string, title = slug) => ({ slug, title });
 
@@ -72,5 +73,20 @@ describe("storeShelves", () => {
 
   it("shows every book exactly once", () => {
     expect(storeShelves(books).flatMap((s) => s.books.map((b) => b.book.slug)).sort()).toEqual(books.map((b) => b.slug).sort());
+  });
+});
+
+describe("shelfExamSlugs", () => {
+  // The store puts a student's own exams first by these slugs (ExamFeedList), so a
+  // shelf key that stops being an exam slug would quietly fold that shelf away.
+  it("is the shelf's own exam for every exam shelf", () => {
+    for (const s of SHELVES.filter((s) => s.key !== "more")) {
+      expect(isExamSlug(s.key), s.key).toBe(true);
+      expect(shelfExamSlugs(s.key)).toEqual([s.key]);
+    }
+  });
+
+  it("is no exam for More books", () => {
+    expect(shelfExamSlugs("more")).toEqual([]);
   });
 });

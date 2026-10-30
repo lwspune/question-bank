@@ -212,4 +212,10 @@ describe("feedLayout", () => {
     // The MPSC student on /notes: no notes for MPSC, so no "Your exams" at all.
     expect(feedLayout("graduate", 0, 7)).toBe("folded");
   });
+
+  it("stays the plain list instead of folding everything, on a page that asks it to", () => {
+    // The NDA student on /store: no NDA shelf, and a page of one fold button sells nothing.
+    expect(feedLayout("senior", 0, 7, { foldWhenNone: false })).toBe("plain");
+    expect(feedLayout("senior", 2, 6, { foldWhenNone: false })).toBe("split");
+  });
 });

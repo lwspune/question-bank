@@ -32,11 +32,14 @@ export default function ExamFeedList({
   items,
   as = "ul",
   className,
+  foldWhenNone = true,
 }: {
   items: FeedListItem[];
   /** "ul" wraps each node in an <li>; "div" renders the nodes as they are. */
   as?: "ul" | "div";
   className?: string;
+  /** false = when none of the viewer's exams is here, show the plain list (feedLayout). */
+  foldWhenNone?: boolean;
 }) {
   const { feed } = useExamFeed();
 
@@ -62,7 +65,7 @@ export default function ExamFeedList({
       ? { primary: items, other: [] as FeedListItem[] }
       : splitByFeed(items, (i) => i.slugs, feed);
 
-  const layout = feedLayout(feed.tier, primary.length, other.length);
+  const layout = feedLayout(feed.tier, primary.length, other.length, { foldWhenNone });
   if (layout === "plain") return renderGroup(items);
 
   return (
