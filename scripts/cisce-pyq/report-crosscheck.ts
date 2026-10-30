@@ -1,8 +1,8 @@
 /**
  * Diff a blind derivation against CISCE's official key and print the report.
  *
- *   npx tsx scripts/isc-12-pyq/report-crosscheck.ts 2025 Mathematics
- *   npx tsx scripts/isc-12-pyq/report-crosscheck.ts 2026 Physics      # vs second.json
+ *   npx tsx scripts/cisce-pyq/report-crosscheck.ts icse-10 2025 Mathematics
+ *   npx tsx scripts/cisce-pyq/report-crosscheck.ts icse-10 2026 Physics      # vs second.json
  *
  * Read-only. Decides nothing — a DISAGREE is a LEAD, not a verdict: it can mean
  * our derivation is wrong, the printed key is wrong, or the question is
@@ -22,17 +22,13 @@
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { crossCheck, summarise, type DerivedAnswer, type OfficialAnswer } from "./crosscheck";
-import { derivationPath } from "./config";
+import { dataDir, derivationPath, parsePaperArgs } from "./exams";
 
 function main() {
-  const [year, subject] = process.argv.slice(2);
-  if (!year || !subject) {
-    throw new Error("usage: report-crosscheck.ts <year> <subject>   e.g. 2025 Mathematics");
-  }
-  const stem = `${year}-${subject}`;
-  const derivedPath = derivationPath(stem, "derived");
-  const keyPath = join(process.cwd(), "scripts", "isc-12-pyq", "data", `${stem}.key.json`);
-  const secondPath = derivationPath(stem, "second");
+  const { exam, year, subject, stem } = parsePaperArgs(process.argv.slice(2), "report-crosscheck.ts <exam> <year> <subject>");
+  const derivedPath = derivationPath(exam, stem, "derived");
+  const keyPath = join(dataDir(exam), `${stem}.key.json`);
+  const secondPath = derivationPath(exam, stem, "second");
   if (!existsSync(derivedPath)) throw new Error(`no derivation yet: ${derivedPath}`);
   const derived = JSON.parse(readFileSync(derivedPath, "utf8")) as { derivedBy?: string; answers: DerivedAnswer[] };
 
@@ -57,7 +53,7 @@ function main() {
   const sorted = [...rows].sort((a, b) => order[a.verdict] - order[b.verdict]);
   const verbose = process.argv.includes("--all");
 
-  console.log(`\nISC ${subject} ${year} — blind derivation vs ${what}`);
+  console.log(`\n${exam.examName} ${subject} ${year} — blind derivation vs ${what}`);
   console.log(`derivedBy: ${derived.derivedBy ?? "(unstated)"}\n`);
   for (const r of sorted) {
     if (r.verdict === "AGREE" && !verbose) continue;

@@ -7,7 +7,7 @@ import {
   sourceForYear,
   YEAR_SOURCES,
   ISC_12_EXAM_NAME,
-} from "../scripts/isc-12-pyq/config";
+} from "../scripts/cisce-pyq/config";
 import { EXAM_REGISTRY } from "@/lib/exam/examContext";
 
 /**

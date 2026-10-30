@@ -1,7 +1,7 @@
 /**
  * Emit a BLIND derivation payload — questions only, key structurally absent.
  *
- *   npx tsx scripts/isc-12-pyq/dump-for-derivation.ts 2025 Mathematics
+ *   npx tsx scripts/cisce-pyq/dump-for-derivation.ts icse-10 2025 Mathematics
  *
  * WHY THIS IS A SEPARATE STEP AND NOT A CONVENTION:
  *
@@ -19,7 +19,7 @@
  *
  * Figures: a 2025 deriver cannot be pointed at the page images (the key is on
  * them), so each row's figure is copied in as its own crop, from
- * FIGURE_ROOT/<stem>/<file>.png (crop-figures.py). A row whose figure is
+ * <sourceRoot>/figures/<stem>/<file>.png (crop-figures.py). A row whose figure is
  * `required` and not yet cropped stops the dump: a deriver solving from a
  * described figure is guessing.
  *
@@ -28,19 +28,15 @@
  */
 import { copyFileSync, existsSync, mkdirSync, readFileSync, writeFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
-import { paperIssues, type IscPaper } from "./lib";
-import { BLIND_ROOT, FIGURE_ROOT, figureFile } from "./config";
+import { paperIssues, type CiscePaper } from "./lib";
+import { figureFile } from "./config";
+import { blindRoot, dataDir, figureRoot, parsePaperArgs } from "./exams";
 
 function main() {
-  const [year, subject] = process.argv.slice(2);
-  if (!year || !subject) {
-    throw new Error("usage: dump-for-derivation.ts <year> <subject>   e.g. 2025 Mathematics");
-  }
-
-  const stem = `${year}-${subject}`;
-  const src = join(process.cwd(), "scripts", "isc-12-pyq", "data", `${stem}.questions.json`);
+  const { exam, stem } = parsePaperArgs(process.argv.slice(2), "dump-for-derivation.ts <exam> <year> <subject>");
+  const src = join(dataDir(exam), `${stem}.questions.json`);
   if (!existsSync(src)) throw new Error(`missing transcription: ${src}`);
-  const paper = JSON.parse(readFileSync(src, "utf8")) as IscPaper;
+  const paper = JSON.parse(readFileSync(src, "utf8")) as CiscePaper;
 
   // paperIssues includes the answer-shaped-field check, which is the one that
   // matters here: the dump is only blind if the thing it copies is.
@@ -49,7 +45,7 @@ function main() {
     throw new Error(`REFUSING TO DUMP: the transcription has ${issues.length} issue(s):\n  ${issues.join("\n  ")}`);
   }
 
-  const outDir = join(BLIND_ROOT, stem);
+  const outDir = join(blindRoot(exam), stem);
   mkdirSync(join(outDir, "figures"), { recursive: true });
   const intruders = readdirSync(outDir).filter((f) => /key|answer/i.test(f));
   if (intruders.length) {
@@ -59,7 +55,7 @@ function main() {
   const missing: string[] = [];
   for (const r of paper.rows) {
     if (!r.figure) continue;
-    const crop = join(FIGURE_ROOT, stem, figureFile(r.ref));
+    const crop = join(figureRoot(exam), stem, figureFile(r.ref));
     if (existsSync(crop)) copyFileSync(crop, join(outDir, "figures", figureFile(r.ref)));
     else if (r.figure.required !== false) missing.push(r.ref);
   }
@@ -68,7 +64,7 @@ function main() {
   }
 
   const payload = {
-    instructions: "Read scripts/isc-12-pyq/DERIVATION_BRIEF.md. Solve every row; write derived.json beside this file.",
+    instructions: "Read scripts/cisce-pyq/DERIVATION_BRIEF.md. Solve every row; write derived.json beside this file.",
     exam: paper.exam,
     subject: paper.subject,
     year: paper.year,

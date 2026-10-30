@@ -102,11 +102,19 @@ Two MHT-CET ingest files are not the papers their labels say. **Both were verifi
 
 ## ISC Class 12 PCM (`isc-12`, PUBLIC 2026-10-30)
 
-**Source.** CISCE prints one paper per subject per year. 2025 comes from CISCE's *Analysis of Pupil Performance*, which reprints every question with its full marking scheme (no separate 2025 paper is needed); 2026 from the question papers, whose key CISCE had not published on 2026-10-30. 2021-2024 were not located (cisce.org's archive is JavaScript-driven). Vision only: the 2026 scans have no text layer and the 2025 one is lossy (`dx` and `dy` extract identically). Runbook: `scripts/isc-12-pyq/README.md`.
+**Source.** CISCE prints one paper per subject per year. 2025 comes from CISCE's *Analysis of Pupil Performance*, which reprints every question with its full marking scheme (no separate 2025 paper is needed); 2026 from the question papers, whose key CISCE had not published on 2026-10-30. 2021-2024 were not located (cisce.org's archive is JavaScript-driven). Vision only: the 2026 scans have no text layer and the 2025 one is lossy (`dx` and `dy` extract identically). Runbook: `scripts/cisce-pyq/README.md`.
 
 **Outcome.** 257 rows PUBLIC (59 MCQ, 198 written), 24 figures cropped from the page renders. Six transcription agents split each question from CISCE's answer at transcription time; six solvers then worked from key-free files only. 2025 against CISCE: 28/29 MCQ and 98/98 written answers (read, not string-matched); the one difference is CISCE's own 1(ix), kept with a note. 2026: a second independent solver per paper, 30/30 MCQ and 98/100 written, both differences settled (one a paper defect, Maths 6(ii), solved as printed). Every decision is in `data/<year>-<Subject>.adjudication.json`; detail in `FINDINGS.md`.
 
 **Traps.** (1) ISC numbers an OR's alternatives as subparts, so `16(i)`/`16(ii)` are alternatives where `1(i)`/`1(ii)` are compulsory; only the bare `OR` line tells them apart. (2) A shell heredoc turned `\times` into TAB + `imes` in a data file; `paperIssues` now rejects any control character. (3) Physics and Chemistry Q1 restart their numbering in each block, so refs carry the block letter (`1(A)(i)`, `1(B)(i)`).
+
+## ICSE Class 10 Maths + Science (`icse-10`, PUBLIC 2026-10-30)
+
+**Source.** Same CISCE shape as ISC: 2025 from the Analysis of Pupil Performance reports (keyed), 2026 from the main-examination question papers (no key yet). Mathematics (511) and Science papers 1-3 (Physics 521, Chemistry 522, Biology 523), each 80 marks: Section A compulsory, Section B "attempt any four", transcribed whole. The chapter list follows the ICSE 2027 Class X syllabus plus the older-syllabus topics the 2025-26 papers still examine (Shares and Dividend, GP, Loci, Constructions, spheres, Human Evolution), each marked `pre-2027`; the syllabus that governed 2025-26 is no longer on cisce.org.
+
+**Outcome.** 353 rows PUBLIC (120 MCQ, 233 written), 75 figures. Shared lane `scripts/cisce-pyq/` (generalised from the ISC lane the same day). 2025 against CISCE: 60/60 MCQ and 117/117 written answers. 2026: two independent solvers, 60/60 and 117/117. 2026 Biology 7(i) asks the photosynthesis equation word for word as 2025 3(i), so it is one row.
+
+**Traps.** (1) ICSE parts are separately marked questions, so every numbered part is a row; ISC keeps compulsory parts together. (2) Graph-paper figures run 1.3-1.4 MB in full colour, over storage's limit; `crop-figures.py` falls back to a 256-colour palette. (3) A figure printed across a page break, or with question text printed inside its box, needs `parts` or `mask` (2025 Chemistry 2(v), 6(ii)).
 
 ## SSC CGL (pilot, PRIVATE, 2026-10-16)
 

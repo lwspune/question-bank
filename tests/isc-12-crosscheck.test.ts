@@ -4,7 +4,7 @@ import {
   summarise,
   type DerivedAnswer,
   type OfficialAnswer,
-} from "../scripts/isc-12-pyq/crosscheck";
+} from "../scripts/cisce-pyq/crosscheck";
 
 /**
  * Diffing an independently derived answer against CISCE's official one.

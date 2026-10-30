@@ -1,46 +1,59 @@
-# ISC Class-12 PCM — board PYQ ingestion
+# CISCE board PYQs: ISC Class 12 PCM and ICSE Class 10 Maths + Science
 
-CISCE's past **ISC** (Class 12) papers for Mathematics, Physics and Chemistry
-into `question_kind='pyq'` rows on a new `isc-12` exam.
+CISCE's past papers into `question_kind='pyq'` rows: **ISC** (Class 12)
+Mathematics, Physics and Chemistry on `isc-12`, and **ICSE** (Class 10)
+Mathematics, Physics, Chemistry and Biology on `icse-10`. One lane, one profile
+per exam in `exams.ts` (2026-10-30); every script takes `<exam> <year> <subject>`.
 
-> **ISC is Class 12. ICSE is Class 10.** Both are CISCE certificates and both
-> archives sit side by side on disk. This lane is ISC. An ICSE Class-10 lane is
-> wanted later and is *not* a rename of this one — different papers, different
-> syllabus, different pattern.
+**2026 question papers carry a light-blue diagonal serial-number watermark**
+(ISC; ICSE's 2026 papers have none). `crop-figures.py` strips it from every
+2026 crop, only where it is actually present, and `commit.ts` names each
+uploaded figure by a hash of its bytes so a re-crop always gets a fresh URL.
+
+> **ISC is Class 12. ICSE is Class 10.** Both are CISCE certificates with
+> different papers, syllabi and patterns; what they share is the source (one
+> paper per subject per year, and a reprint of every question with CISCE's
+> marking scheme), which is why one lane serves both. The per-exam differences
+> live in `exams.ts`, `taxonomy/<exam>.ts` and `pattern.ts`.
 
 ---
 
-## Status — LIVE 2026-10-30
+## Status — both LIVE 2026-10-30
 
-| | |
-|---|---|
-| Bank | **257 rows PUBLIC**, `question_kind='pyq'`: 2025 Maths 51 · Physics 39 · Chemistry 37; 2026 Maths 54 · Physics 39 · Chemistry 37 |
-| Registry | `isc-12` (`board: "CISCE"`), `mixedFormats: true` (59 MCQ vs 198 subjective, measured live), `noPublicContent` removed |
-| Figures | 24 cropped from the page renders and attached (`image_url`); 4 decorative ones left off |
-| 2025 accuracy | blind solve vs CISCE's key: **35/36 MCQ** (the 1 = CISCE's own 1(ix), key kept) and **98/98 written answers** read side by side |
-| 2026 | **NO official key yet** (404 on cisce.org, checked 2026-10-30). Two independent solvers: 30/30 MCQ, 98/100 written; both differences settled in `data/2026-Mathematics.adjudication.json` |
+| | ISC Class 12 (`isc-12`) | ICSE Class 10 (`icse-10`) |
+|---|---|---|
+| Bank (PUBLIC, `pyq`) | **257**: 2025 Maths 51 · Physics 39 · Chemistry 37; 2026 Maths 54 · Physics 39 · Chemistry 37 | **353**: 2025 Maths 41 · Physics 43 · Chemistry 43 · Biology 50; 2026 Maths 41 · Physics 43 · Chemistry 43 · Biology 49 (2026 7(i) = 2025 3(i) word for word, one row) |
+| Formats (live) | 59 MCQ, 198 written | 120 MCQ, 233 written |
+| Figures | 24 attached; the 12 from the 2026 scans re-cropped without the serial watermark | 75 attached; every one passed the watermark gate (7 graph-paper/tinted ones looked at and marked `none`) |
+| 2025 vs CISCE's key | **28/29 MCQ** (the 1 = CISCE's own 1(ix), key kept) and **98/98 written** | **60/60 MCQ** and **117/117 written** |
+| 2026 (no key yet) | two solvers: 30/30 MCQ, 98/100 written, both settled | two solvers: 60/60 MCQ, 117/117 written |
 
-Per-paper files in `data/`: `<year>-<Subject>.questions.json` (transcription,
+ICSE row grain differs from ISC's: every numbered part of an ICSE question is
+its own row (`4(i)`, `4(ii)`), because ICSE marks each part separately; ISC keeps
+a question with compulsory parts as one row. Section B of every ICSE paper is
+"attempt any four" and is transcribed whole (`attempt` in `pattern.ts`).
+
+Per-paper files in `data/<exam>/`: `<year>-<Subject>.questions.json` (transcription,
 no answers), `.key.json` (2025 only: CISCE's marking scheme),
 `.derived.json` (the blind solve: source of every published solution and
 difficulty), `.second.json` (2026's independent control, answers only) and
 `.adjudication.json` (every human decision, with its reason). A solve in
-progress writes under `C:\tmp\PYQPs\ISC\XII\blind\<stem>\`; copy it into `data/`
-once the paper is settled (`derivationPath` in `config.ts` reads `data/` first).
+progress writes under `<sourceRoot>\blind\<stem>\`; copy it into `data/<exam>/`
+once the paper is settled (`derivationPath` in `exams.ts` reads `data/<exam>/` first).
 
 ## Re-running a paper
 
 ```sh
-npx tsx scripts/isc-12-pyq/validate.ts 2026 Physics          # catalog, marks, delimiters, control chars
-python  scripts/isc-12-pyq/crop-figures.py 2026 Physics --sheet   # LOOK at _sheet.png
-npx tsx scripts/isc-12-pyq/dump-for-derivation.ts 2026 Physics   # key-free payload + figure crops
+npx tsx scripts/cisce-pyq/validate.ts isc-12 2026 Physics          # catalog, marks, delimiters, control chars
+python  scripts/cisce-pyq/crop-figures.py isc-12 2026 Physics --sheet   # LOOK at _sheet.png
+npx tsx scripts/cisce-pyq/dump-for-derivation.ts isc-12 2026 Physics   # key-free payload + figure crops
 #   -> a solver reads DERIVATION_BRIEF.md and writes blind/<stem>/derived.json
 #   -> 2026: a second solver writes blind/<stem>/second.json (answers only)
-npx tsx scripts/isc-12-pyq/report-crosscheck.ts 2026 Physics     # vs key (2025) or vs second.json (2026)
+npx tsx scripts/cisce-pyq/report-crosscheck.ts isc-12 2026 Physics     # vs key (2025) or vs second.json (2026)
 #   -> record every decision in data/<stem>.adjudication.json
-npx tsx scripts/isc-12-pyq/commit.ts 2026 Physics [--apply]      # PRIVATE; re-syncs solution/difficulty/image
-npx tsx scripts/isc-12-pyq/seed.ts --order --apply               # chapter + subtopic order
-npx tsx scripts/isc-12-pyq/flip-public.ts 2026 Physics [--apply]
+npx tsx scripts/cisce-pyq/commit.ts isc-12 2026 Physics [--apply]      # PRIVATE; re-syncs solution/difficulty/image
+npx tsx scripts/cisce-pyq/seed.ts isc-12 --order --apply               # chapter + subtopic order
+npx tsx scripts/cisce-pyq/flip-public.ts isc-12 2026 Physics [--apply]
 ```
 
 `commit.ts` refuses on any unread disagreement (`assemblePaper` in `lib.ts`,
@@ -48,11 +61,15 @@ spec `tests/isc-12-lib.test.ts`). Transcription contract: `TRANSCRIPTION_BRIEF.m
 
 ### Still open
 
-1. **CISCE's 2026 marking scheme (~November 2026).** When it lands, transcribe
-   it to `data/2026-<Subject>.key.json` and re-run `report-crosscheck.ts`: the
-   2026 answers ship as worked out by us until then, and `YEAR_SOURCES` says so.
-2. **2021-2024 papers not located** (see below).
-3. **ICSE Class 10** is a separate lane, not a rename of this one.
+1. **CISCE's 2026 marking schemes (~November 2026), for both exams.** When they
+   land, transcribe each to `data/<exam>/2026-<Subject>.key.json` and re-run
+   `report-crosscheck.ts`: the 2026 answers ship as worked out by us until then.
+2. **Earlier years.** CISCE's 2024 (and some 2023) Analysis of Pupil Performance
+   reports ARE online for ICSE Physics, Chemistry and Biology (cisce.org
+   `wp-content/uploads/2025/03/{8.-Physics,9.-Chemistry,10.-Biology}.pdf`, found
+   2026-10-30): a keyed third year for ICSE. ISC 2021-2024 still not located.
+3. ICSE subjects not yet ingested: History & Civics, Geography (no 2025 report
+   found), Computer Applications, English.
 
 ---
 
@@ -191,14 +208,14 @@ gate's scope to an exam owning no rows it can check.
 
 ```sh
 # render a source to page images for vision transcription
-python scripts/isc-12-pyq/render.py 2025 Mathematics
-python scripts/isc-12-pyq/render.py 2026 Physics --dpi 220 --dump-text
+python  scripts/cisce-pyq/render.py isc-12 2025 Mathematics
+python  scripts/cisce-pyq/render.py isc-12 2026 Physics --dpi 220 --dump-text
 
 # emit a blind (key-free) payload for a deriver
-npx tsx scripts/isc-12-pyq/dump-for-derivation.ts 2025 Mathematics
+npx tsx scripts/cisce-pyq/dump-for-derivation.ts isc-12 2025 Mathematics
 
 # diff a derivation against CISCE's key
-npx tsx scripts/isc-12-pyq/report-crosscheck.ts 2025 Mathematics
+npx tsx scripts/cisce-pyq/report-crosscheck.ts isc-12 2025 Mathematics
 ```
 
 Both CLIs **refuse an unmeasured year** rather than defaulting to the nearest

@@ -1,4 +1,4 @@
-# ISC Class-12 PCM — adjudicated findings
+# CISCE PYQs (ISC Class 12 · ICSE Class 10) — adjudicated findings
 
 One entry per question where an independent blind derivation disagreed with
 CISCE's official marking scheme, or where the paper itself looks defective.
@@ -179,3 +179,32 @@ Notes added to published 2026 solutions: Physics 1(A)(iv) (a ferromagnet's
 susceptibility also falls with temperature; paramagnetic is the expected
 answer). Two-solver agreement is weaker than a key: re-run the cross-check when
 CISCE's 2026 scheme lands.
+
+---
+
+## ICSE Class 10 · 2025 and 2026 (2026-10-30)
+
+2025 against CISCE's marking scheme: **60/60 MCQ, 117/117 written answers**
+(Maths 15/15 + 26/26, Physics 15/15 + 28/28, Chemistry 15/15 + 28/28, Biology
+15/15 + 35/35). 2026, two independent solvers: **60/60 MCQ, 117/117 written**.
+No row needed an override; decisions are in `data/icse-10/*.adjudication.json`.
+
+One grace row: 2025 Maths 1(vii), where CISCE accepted (c) or (d) because both
+\(x + 2\) and \(x - 2\) divide the cubic. Keyed (c), the solution says both.
+
+Paper defects kept as printed, each explained in the published solution:
+
+* **2025 Physics 1(xi)** — the Reason says "water column" where frequency
+  depends on the air column; CISCE keys it false, as printed.
+* **2025 Biology 1(xi)** — the Reason says axon endings secrete "acetylene"
+  (for acetylcholine); CISCE keys it as printed.
+* **2025 Chemistry 4(i)** — the data give a gas of molecular weight 6.
+* **2026 Biology 1(iv)** — "300 base pairs" with 75 guanine gives no matching
+  option; the options assume 300 BASES (thymine 75).
+* **2026 Chemistry** — "C2H5CI" printed with a capital I (1(v)); an unbalanced
+  half-equation in the 2(iii) match table.
+
+Written answers that needed reading rather than matching, recorded so nobody
+re-opens them: 2025 Chemistry 8(ii) (distinguishing tests, "any other correct test" accepted), 2025
+Biology 3(iv) (noise and air pollution are both on CISCE's list), 2025 Physics
+4(iii)(b) ("larger" = CISCE's "magnified").

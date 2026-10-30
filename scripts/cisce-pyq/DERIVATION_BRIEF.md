@@ -1,24 +1,31 @@
-# ISC Class 12 PCM: blind derivation + solution contract
+# CISCE board PYQ (ISC Class 12 · ICSE Class 10): blind derivation + solution contract
 
-You are solving **one** ISC (CISCE, Class 12) paper, question by question, as a
-strong candidate would, and writing the worked solution a student will read on
-PYQ Vault. Read this whole file before starting. Your output is a data file:
-write it, then report a SHORT summary. Keep tool output small: never print whole
-files or long command output.
+You are solving **one** CISCE paper (ISC Class 12 or ICSE Class 10), question by
+question, as a strong candidate would, and writing the worked solution a student
+will read on PYQ Vault. Read this whole file before starting. Your output is a
+data file: write it, then report a SHORT summary. Keep tool output small: never
+print whole files or long command output.
+
+`<root>` below is `C:\tmp\PYQPs\ISC\XII` for ISC and `C:\tmp\PYQPs\ICSE\X` for ICSE.
 
 ---
 
 ## 1. What you are given, and what you must not look at
 
-- `C:\tmp\PYQPs\ISC\XII\blind\<stem>\<stem>.blind.json`: every question of the
-  paper (text, options, marks), **with no answers**.
-- `C:\tmp\PYQPs\ISC\XII\blind\<stem>\figures\<ref>.png`: the printed figure for
-  each row whose payload has a `figure` field. Open it with the Read tool.
+- `<root>\blind\<stem>\<stem>.blind.json`: every question of the paper (text,
+  options, marks), **with no answers**.
+- `<root>\blind\<stem>\figures\<ref>.png`: the printed figure for each row whose
+  payload has a `figure` field. Open it with the Read tool. A row with only a
+  `figureDescription` had a decorative picture whose data is in the text.
 - **You have NOT been given an answer key, and you must not look for one.** Do
-  not open anything under `scripts\isc-12-pyq\data\`, `C:\tmp\PYQPs\ISC\XII\render\`
-  or `C:\tmp\PYQPs\ISC\XII\2025\`: for 2025 the source pages print CISCE's answer
-  beside each question, and seeing it ends the point of this exercise, which is
-  to MEASURE how often an independent solver agrees with the official key.
+  not open anything under `scripts\cisce-pyq\data\`, `<root>\render\` or
+  `<root>\2025\`: for 2025 the source pages print CISCE's answer beside each
+  question, and seeing it ends the point of this exercise, which is to MEASURE
+  how often an independent solver agrees with the official key.
+- **ICSE answers are Class 10 board answers**: the method a Class 10 candidate
+  is taught (ICSE Mathematics uses the mathematical tables the paper says to
+  use, rounded as it says; ICSE Chemistry names reagents and conditions and
+  balances every equation; ICSE Biology answers with the textbook term).
 
 ## 2. Solve AS PRINTED
 
@@ -95,7 +102,7 @@ answer at board level, in English a 17-year-old reads easily.
 
 ## 5. Output and report
 
-Write `C:\tmp\PYQPs\ISC\XII\blind\<stem>\derived.json`, then parse-check it
+Write `<root>\blind\<stem>\derived.json`, then parse-check it
 (`node -e "JSON.parse(require('fs').readFileSync('<file>','utf8'))"`) and check
 every payload ref has an entry.
 

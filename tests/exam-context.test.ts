@@ -401,7 +401,7 @@ import { EXAM_TIERS, TIER_LABELS, type ExamTier } from "@/lib/exam/examContext";
 
 describe("exam tiers", () => {
   const EXPECTED: Record<ExamTier, string[]> = {
-    school: ["foundation-course", "mh-sb-9", "mh-ssc-10", "cbse-10", "spi"],
+    school: ["foundation-course", "mh-sb-9", "mh-ssc-10", "cbse-10", "icse-10", "spi"],
     senior: [
       "nda",
       "mht-cet",

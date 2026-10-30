@@ -1,25 +1,27 @@
 /**
  * Read-only checks on one ISC paper's files.
  *
- *   npx tsx scripts/isc-12-pyq/validate.ts 2026 Physics
+ *   npx tsx scripts/cisce-pyq/validate.ts icse-10 2026 Physics
  *
  * Transcription: paperIssues (chapter/subtopic catalog, option counts, math
  * delimiters, literal \n, answer-shaped fields, OR groups) plus the marks total
- * against pattern.ts. Key (2025): one entry per row, no strays. Exits 1 on any
+ * against pattern.ts (every question transcribed, so an "attempt any four"
+ * section is checked against all of its questions: transcribedMarks). Key (2025): one entry per row, no strays. Exits 1 on any
  * issue, so it can gate the dump.
  */
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
-import { paperIssues, type IscPaper } from "./lib";
-import { patternForYear, effectiveMarks, type MeasuredYear } from "./pattern";
+import { paperIssues, type CiscePaper } from "./lib";
+import { patternFor, effectiveMarks, transcribedMarks } from "./pattern";
+import { dataDir, parsePaperArgs } from "./exams";
 import type { OfficialAnswer } from "./crosscheck";
 
 function main() {
-  const [year, subject] = process.argv.slice(2);
-  if (!year || !subject) throw new Error("usage: validate.ts <year> <subject>");
-  const data = join(process.cwd(), "scripts", "isc-12-pyq", "data");
-  const paper = JSON.parse(readFileSync(join(data, `${year}-${subject}.questions.json`), "utf8")) as IscPaper;
+  const { exam, year, subject, stem } = parsePaperArgs(process.argv.slice(2), "validate.ts <exam> <year> <subject>");
+  const data = dataDir(exam);
+  const paper = JSON.parse(readFileSync(join(data, `${stem}.questions.json`), "utf8")) as CiscePaper;
   const issues = paperIssues(paper);
+  if (paper.exam !== exam.examName) issues.push(`file says exam "${paper.exam}", expected "${exam.examName}"`);
 
   // Marks: an OR group counts once (its first alternative), and so does the
   // whole Maths Section B-or-C choice, which effectiveMarks already knows.
@@ -32,13 +34,14 @@ function main() {
     }
     bySection.set(r.section, (bySection.get(r.section) ?? 0) + r.marks);
   }
-  const pattern = patternForYear(paper.subject, Number(year) as MeasuredYear);
+  const pattern = patternFor(exam.slug, subject, year);
   for (const s of pattern.sections) {
     const got = bySection.get(s.id) ?? 0;
-    if (got !== s.marks) issues.push(`section ${s.id}: rows add to ${got} marks, the paper prints ${s.marks}`);
+    const want = transcribedMarks(s);
+    if (got !== want) issues.push(`section ${s.id}: rows add to ${got} marks, the paper prints ${want}`);
   }
 
-  const keyPath = join(data, `${year}-${subject}.key.json`);
+  const keyPath = join(data, `${stem}.key.json`);
   if (existsSync(keyPath)) {
     const key = (JSON.parse(readFileSync(keyPath, "utf8")) as { answers: OfficialAnswer[] }).answers;
     const refs = new Set(paper.rows.map((r) => r.ref));
@@ -53,7 +56,7 @@ function main() {
 
   const figs = paper.rows.filter((r) => r.figure);
   console.log(
-    `${year} ${subject}: ${paper.rows.length} rows · ${paper.rows.filter((r) => r.format === "mcq").length} mcq · ` +
+    `${exam.slug} ${year} ${subject}: ${paper.rows.length} rows · ${paper.rows.filter((r) => r.format === "mcq").length} mcq · ` +
       `${figs.length} figures (${figs.filter((r) => r.figure!.required !== false).length} required) · ` +
       `marks ${[...bySection].map(([s, m]) => `${s}=${m}`).join(" ")} (paper total ${effectiveMarks(pattern)})`
   );

@@ -7,8 +7,11 @@ import {
   type IscPaper,
   type IscRow,
   type DerivedEntry,
-} from "../scripts/isc-12-pyq/lib";
-import type { OfficialAnswer } from "../scripts/isc-12-pyq/crosscheck";
+} from "../scripts/cisce-pyq/lib";
+import type { OfficialAnswer } from "../scripts/cisce-pyq/crosscheck";
+import { cisceExam } from "../scripts/cisce-pyq/exams";
+
+const ISC = cisceExam("isc-12");
 
 /**
  * The ISC lane's pure core: the checks that run on a transcription before
@@ -233,14 +236,14 @@ describe("assemblePaper: 2026 (unkeyed)", () => {
 
 describe("provenance", () => {
   it("names one source file per paper", () => {
-    expect(sourceFileFor(2025, "Physics")).toBe("isc-12-pyq-2025-physics");
+    expect(sourceFileFor(ISC, 2025, "Physics")).toBe("isc-12-pyq-2025-physics");
   });
 
   it("says plainly whether CISCE's key checked the answers", () => {
-    expect(pyqNoteFor(2025, "Mathematics", "860")).toMatch(/cross-checked against CISCE/);
-    expect(pyqNoteFor(2026, "Mathematics", "860")).toMatch(/not yet published/);
+    expect(pyqNoteFor(ISC, 2025, "Mathematics", "860")).toMatch(/cross-checked against CISCE/);
+    expect(pyqNoteFor(ISC, 2026, "Mathematics", "860")).toMatch(/not yet published/);
     // Long by design: publicPyqNote publishes only notes under 48 characters,
     // so this provenance blurb never prints as a sitting label.
-    expect(pyqNoteFor(2026, "Chemistry", "862A").length).toBeGreaterThan(48);
+    expect(pyqNoteFor(ISC, 2026, "Chemistry", "862A").length).toBeGreaterThan(48);
   });
 });

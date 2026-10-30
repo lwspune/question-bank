@@ -1,167 +1,15 @@
 /**
- * Config for the ISC Class-12 PCM **BOARD PYQ** ingestion.
- *
- * ISC is CISCE's Class-12 certificate. It is NOT ICSE, which is CISCE's Class-10
- * certificate — a distinction worth stating because the request that opened this
- * lane said "ICSE 12th", and the two archives sit side by side on disk with
- * different papers, different syllabi and different patterns.
- *
- * ── WHAT MAKES THIS LANE DIFFERENT FROM ITS PREDECESSORS ─────────────────────
- * `mh-ssc-10`, `mh-sb-9` and `mh-hsc-12` ship no answer key at all, so every
- * answer there is derived and the end-of-source cross-check gate cannot run.
- * `cbse-12-pyq` ships an official marking scheme paired 1:1 with every paper.
- *
- * ISC sits in BETWEEN, and the split is by year rather than by subject:
- *
- *   2025 — CISCE's "Analysis of Pupil Performance" reproduces every question
- *          AND its official marking scheme (verified: 22/20/21 MARKING SCHEME
- *          blocks against 22/20/21 questions, no gaps). Key available.
- *   2026 — question papers only. The 2025 edition was published in November
- *          2025, so the 2026 edition is expected around November 2026; until it
- *          lands there is no key for this year.
- *
- * Answers are BLIND-DERIVED for both years and then, for 2025 only, diffed
- * against CISCE's own. That ordering is deliberate: it makes 2025 the one place
- * ISC derivation accuracy can be MEASURED rather than asserted, and that
- * measured rate is what says how far to trust the 2026 answers. Same role the
- * UPSC CSE corpus plays for the blind-derivation pipeline generally.
- *
- * ⚠ The derivers must not see the key. Withhold it at dump time rather than
- * asking an agent to ignore it — see [[blind-check-contamination]].
- *
- * ── MEASURED PROPERTIES ──────────────────────────────────────────────────────
- * 1. VISION ONLY. The 2026 papers have a ZERO-character text layer (150 dpi
- *    scans, legible and crisp at a 200 dpi render, with a diagonal serial-number
- *    watermark). The 2025 marking schemes DO have a text layer, and it is
- *    LOSSY rather than merely noisy: every math-italic glyph is doubled and
- *    letters COLLAPSE ONTO EACH OTHER, so `dx` and `dy` both extract as the same
- *    `𝑑𝑑𝑑𝑑` and `sin` as `𝑆𝑆𝑆𝑆𝑆𝑆`. No substitution table can repair that, because
- *    the information is gone. Use the text layer for prose cross-checking only;
- *    every symbol comes from vision. (Same class as the cbse-11 / mh-sb-11 trap,
- *    one step worse.)
- * 2. NO VECTOR DRAWINGS ANYWHERE — every page is a raster plus PNG overlays, so
- *    figures are cropped from the page image, not extracted as objects.
- * 3. FIGURES AND TABLES BOTH OCCUR (numbered "Figure 5" circuit diagrams in
- *    Physics; a features/ G1 / G2 grid in Physics Q11). Tables are authored as
- *    GFM pipe-tables per the project convention.
- * 4. ONE PAPER PER SUBJECT PER YEAR. ISC prints no series/set variants, unlike
- *    CBSE's 5-6 series x 3 sets — so there is no cross-set dedup axis here, and
- *    `content_hash` has nothing to collapse within a sitting.
- *
- * ── THE INTERNAL-CHOICE TRAP ─────────────────────────────────────────────────
- * ISC numbers an internal choice's two branches as SUBPARTS:
- *
- *     Question 16                     Question 1
- *      (i)  …drone cameras…            (i)   …
- *             OR                       (ii)  …
- *      (ii) …perpendicular vectors…    (iii) …
- *
- * Under Q16 those are ALTERNATIVES; under Q1 they are all COMPULSORY. Identical
- * label shape, opposite meaning, and the only discriminator is the bare `OR`
- * line. Both branches are bank rows either way — what the distinction protects
- * is the marks arithmetic and any future /mock reconstruction. See
- * ./pattern.ts for the per-paper counts.
- *
- * A caution inherited from cbse-12-pyq, which learned it on real data: for 2025
- * the QUESTION TEXT comes from the marking-scheme document, and CBSE was
- * observed pasting a sibling set's question block into the wrong marking scheme.
- * ISC prints one paper per subject per year, so that specific failure mode has
- * no mechanism here — but we hold no 2025 question paper, so it is unverified
- * rather than ruled out. Treat a 2025 stem that reads oddly as suspect.
+ * ISC Class 12 chapter + subtopic taxonomy (Mathematics 860, Physics 861A,
+ * Chemistry 862A). Moved here from config.ts on 2026-10-30 when the lane became
+ * the shared CISCE lane; the content is unchanged.
  */
-import { existsSync } from "node:fs";
-import { join } from "node:path";
+import type { CisceChapter } from "../exams";
 
-export { ORG_ID, CREATED_BY } from "../practice/config";
-export {
-  ISC_SUBJECTS,
-  MEASURED_YEARS,
-  patternForYear,
-  effectiveMarks,
-  isMeasuredYear,
-  type IscSubject,
-  type MeasuredYear,
-  type PaperPattern,
-  type SectionSpec,
-  type SectionId,
-} from "./pattern";
-import { ISC_SUBJECTS, type IscSubject } from "./pattern";
+export const ISC_12_SUBJECTS = ["Mathematics", "Physics", "Chemistry"] as const;
+export type Isc12Subject = (typeof ISC_12_SUBJECTS)[number];
 
-/** Must match the `exams` DB row, and the `isc-12` registry entry's examName. */
-export const ISC_12_EXAM_NAME = "ISC Class 12" as const;
-
-/** Where the source corpus is unpacked. Nothing here is committed to the repo. */
-export const SOURCE_ROOT = "C:\\tmp\\PYQPs\\ISC\\XII";
-export const qpPath = (year: number, subject: IscSubject) =>
-  join(SOURCE_ROOT, String(year), "qp", `${subject}.pdf`);
-export const apupPath = (year: number, subject: IscSubject) =>
-  join(SOURCE_ROOT, String(year), "apup", `${subject}.pdf`);
-export const syllabusPath = (file: string) => join(SOURCE_ROOT, "syllabus", file);
-/** Key-free payloads + derivations. Outside scripts/ so a deriver cannot walk into data/. */
-export const BLIND_ROOT = join(SOURCE_ROOT, "blind");
-/** Figure crops, `<stem>/<file>`; crop-figures.py writes them, commit.ts uploads them. */
-export const FIGURE_ROOT = join(SOURCE_ROOT, "figures");
-/**
- * A finished derivation, `which` = "derived" (the published solutions) or
- * "second" (2026's independent control). Once a paper is done its files are
- * copied into data/ as `<stem>.<which>.json`, which is the copy of record: the
- * blind folder is scratch under C:\tmp. Read data/ first, the blind folder
- * while a solve is still in progress.
- */
-export const derivationPath = (stem: string, which: "derived" | "second") => {
-  const kept = join(process.cwd(), "scripts", "isc-12-pyq", "data", `${stem}.${which}.json`);
-  return existsSync(kept) ? kept : join(BLIND_ROOT, stem, `${which}.json`);
-};
-/** `16(ii)` -> `16-ii.png`: a ref is not a safe filename. */
-export const figureFile = (ref: string) => `${ref.replace(/[()]/g, "-").replace(/-+$/, "").replace(/-+/g, "-")}.png`;
-
-/**
- * Which source each (subject, year) is transcribed FROM, and whether an official
- * key exists for it. Read by the dump step, which must hand a blind deriver the
- * questions WITHOUT the key for a `keyed` year.
- */
-export type YearSource = {
-  year: number;
-  /** The document questions are transcribed from. */
-  from: "question-paper" | "marking-scheme";
-  /** Whether CISCE's own answer is available for cross-check. */
-  keyed: boolean;
-  note: string;
-};
-
-export const YEAR_SOURCES: readonly YearSource[] = [
-  {
-    year: 2025,
-    from: "marking-scheme",
-    keyed: true,
-    note:
-      "Analysis of Pupil Performance (Oct 2025). Reproduces every question plus " +
-      "the official marking scheme and step-wise working. No separate 2025 " +
-      "question paper is held — 120 candidate archive URLs were probed and none " +
-      "exists; the APUP is complete on its own.",
-  },
-  {
-    year: 2026,
-    from: "question-paper",
-    keyed: false,
-    note:
-      "Question papers only (ISC 2026 Q.P.s archive). NO KEY YET — on the 2025 " +
-      "edition's cadence the 2026 APUP is expected around Nov 2026, at which " +
-      "point these answers get the same cross-check retroactively.",
-  },
-];
-
-export function sourceForYear(year: number): YearSource {
-  const found = YEAR_SOURCES.find((s) => s.year === year);
-  if (!found) {
-    throw new Error(
-      `ISC ${year}: no source document held. Years in hand: ` +
-        `${YEAR_SOURCES.map((s) => s.year).join(", ")}.`
-    );
-  }
-  return found;
-}
-
+/** Kept for the ISC specs; every chapter here also names its paper section. */
+export type IscChapter = CisceChapter & { section: "A" | "B" | "C" | "D" };
 /**
  * ── CHAPTER TAXONOMY ─────────────────────────────────────────────────────────
  * Authored from the OFFICIAL ISC syllabus (Revised, ISC 2026), Class XII, not
@@ -189,15 +37,7 @@ export function sourceForYear(year: number): YearSource {
  * `syllabusRef` records where each chapter came from so the derivation is
  * auditable against the source document rather than taken on trust.
  */
-export type IscChapter = {
-  name: string;
-  /** Unit (and sub-unit) in the ISC Class XII syllabus this chapter comes from. */
-  syllabusRef: string;
-  /** The paper section this chapter's questions are drawn from. */
-  section: "A" | "B" | "C" | "D";
-};
-
-export const ISC_TAXONOMY: Record<IscSubject, readonly IscChapter[]> = {
+export const ISC_12_TAXONOMY: Record<Isc12Subject, readonly IscChapter[]> = {
   // Section A 65 marks (units 1-4) · Section B 15 (units 5-7) · Section C 15
   // (units 8-10), B and C being mutually exclusive for the candidate.
   Mathematics: [
@@ -254,13 +94,6 @@ export const ISC_TAXONOMY: Record<IscSubject, readonly IscChapter[]> = {
   ],
 };
 
-export function chaptersFor(subject: IscSubject): readonly IscChapter[] {
-  return ISC_TAXONOMY[subject];
-}
-
-export function allChapterNames(): string[] {
-  return ISC_SUBJECTS.flatMap((s) => ISC_TAXONOMY[s].map((c) => c.name));
-}
 
 /**
  * ── SUBTOPICS ────────────────────────────────────────────────────────────────
@@ -276,7 +109,7 @@ export function allChapterNames(): string[] {
  * `validate.ts` rejects anything else, because commitStaged AUTO-CREATES an
  * unknown subtopic rather than failing.
  */
-export const ISC_SUBTOPICS: Record<string, readonly string[]> = {
+export const ISC_12_SUBTOPICS: Record<string, readonly string[]> = {
   // Mathematics
   "Relations and Functions": ["Types of Relations", "Equivalence Relations and Classes", "One-One and Onto Functions", "Composition and Invertible Functions"],
   "Inverse Trigonometric Functions": ["Domains, Ranges and Principal Value Branches", "Evaluating Inverse Trigonometric Expressions", "Properties of Inverse Trigonometric Functions"],
