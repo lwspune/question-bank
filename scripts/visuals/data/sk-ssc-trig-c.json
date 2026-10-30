@@ -1,0 +1,1967 @@
+{
+  "//": "Assembled from agent drafts (sketch).",
+  "visuals": [
+    {
+      "id": "dab68557-aae6-43d9-86c8-c3a80603ad09",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "s": 3,
+            "angA": "deg(atan2(s,s))",
+            "dotB": "(0-s)*(s-s)+(0-0)*(s-0)",
+            "sA": "sin(rad(angA))",
+            "cA": "cos(rad(angA))",
+            "prod": "4*sA*cA"
+          },
+          "view": {
+            "x": [
+              -1.5,
+              6.5
+            ],
+            "y": [
+              -2.5,
+              3.5
+            ]
+          },
+          "points": {
+            "A": [
+              0,
+              0
+            ],
+            "B": [
+              "s",
+              0
+            ],
+            "C": [
+              "s",
+              "s"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "points": [
+                "A",
+                "B",
+                "C"
+              ],
+              "step": "s1"
+            },
+            {
+              "kind": "point",
+              "at": "A",
+              "step": "s1",
+              "label": "A",
+              "pos": "sw"
+            },
+            {
+              "kind": "point",
+              "at": "B",
+              "step": "s1",
+              "label": "B",
+              "pos": "se"
+            },
+            {
+              "kind": "point",
+              "at": "C",
+              "step": "s1",
+              "label": "C",
+              "pos": "ne"
+            },
+            {
+              "kind": "angle",
+              "at": "B",
+              "from": "A",
+              "to": "C",
+              "step": "s1",
+              "label": "90°"
+            },
+            {
+              "kind": "angle",
+              "at": "A",
+              "from": "B",
+              "to": "C",
+              "step": "s2",
+              "label": "45°"
+            },
+            {
+              "kind": "label",
+              "at": [
+                1.5,
+                -1
+              ],
+              "text": "tan A = 1, so A = 45°",
+              "step": "s2"
+            },
+            {
+              "kind": "label",
+              "at": [
+                1.5,
+                -1.8
+              ],
+              "text": "4 sin A cos A = {prod}",
+              "step": "s3",
+              "tone": "good"
+            }
+          ],
+          "answer": "prod",
+          "assert": [
+            "angA = 45",
+            "dotB = 0"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "9b4bf211",
+        "answer": {
+          "value": 2,
+          "label": "2"
+        }
+      }
+    },
+    {
+      "id": "de480e13-94f9-4450-9e44-36fea262e07f",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "L": 5,
+            "bx": "L*cos(rad(31))",
+            "cy": "L*sin(rad(31))",
+            "angA": "deg(atan2(cy,bx))",
+            "angC": "deg(atan2(bx,cy))",
+            "dotB": "(0-bx)*(bx-bx)+(0-0)*(cy-0)",
+            "alpha": "sin(rad(31))",
+            "ans": "alpha/sqrt(1-alpha^2)"
+          },
+          "view": {
+            "x": [
+              -1.5,
+              6.5
+            ],
+            "y": [
+              -3,
+              3
+            ]
+          },
+          "points": {
+            "A": [
+              0,
+              0
+            ],
+            "B": [
+              "bx",
+              0
+            ],
+            "C": [
+              "bx",
+              "cy"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "points": [
+                "A",
+                "B",
+                "C"
+              ],
+              "step": "s1"
+            },
+            {
+              "kind": "point",
+              "at": "A",
+              "step": "s1",
+              "label": "A",
+              "pos": "sw"
+            },
+            {
+              "kind": "point",
+              "at": "B",
+              "step": "s1",
+              "label": "B",
+              "pos": "se"
+            },
+            {
+              "kind": "point",
+              "at": "C",
+              "step": "s1",
+              "label": "C",
+              "pos": "ne"
+            },
+            {
+              "kind": "angle",
+              "at": "B",
+              "from": "A",
+              "to": "C",
+              "step": "s1",
+              "label": "90°"
+            },
+            {
+              "kind": "angle",
+              "at": "A",
+              "from": "B",
+              "to": "C",
+              "step": "s1",
+              "label": "31°"
+            },
+            {
+              "kind": "angle",
+              "at": "C",
+              "from": "B",
+              "to": "A",
+              "step": "s2",
+              "label": "59°"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.3,
+                -1
+              ],
+              "text": "cot 59° = tan 31°",
+              "step": "s2"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.3,
+                -1.8
+              ],
+              "text": "tan 31° = α/√(1−α²)",
+              "step": "s3",
+              "tone": "good"
+            }
+          ],
+          "answer": "ans",
+          "assert": [
+            "angA = 31",
+            "angC = 59",
+            "dotB = 0"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "84f9a45e",
+        "answer": {
+          "value": 0.6008606190275603,
+          "label": "α/√(1−α²)"
+        }
+      }
+    },
+    {
+      "id": "e013c6d5-d321-4859-bab2-af7ab4ac6d23",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "b": 4,
+            "h": 3,
+            "angA": "deg(atan2(h,b))",
+            "sA": "sin(rad(angA))",
+            "dotB": "(0-b)*(b-b)+(0-0)*(h-0)",
+            "t": "tan(rad(angA))"
+          },
+          "view": {
+            "x": [
+              -1.5,
+              6.5
+            ],
+            "y": [
+              -3,
+              3
+            ]
+          },
+          "points": {
+            "A": [
+              0,
+              0
+            ],
+            "B": [
+              "b",
+              0
+            ],
+            "C": [
+              "b",
+              "h"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "points": [
+                "A",
+                "B",
+                "C"
+              ],
+              "step": "s1"
+            },
+            {
+              "kind": "point",
+              "at": "A",
+              "step": "s1",
+              "label": "A",
+              "pos": "sw"
+            },
+            {
+              "kind": "point",
+              "at": "B",
+              "step": "s1",
+              "label": "B",
+              "pos": "se"
+            },
+            {
+              "kind": "point",
+              "at": "C",
+              "step": "s1",
+              "label": "C",
+              "pos": "ne"
+            },
+            {
+              "kind": "angle",
+              "at": "B",
+              "from": "A",
+              "to": "C",
+              "step": "s1",
+              "label": "90°"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.3,
+                -1
+              ],
+              "text": "sin A = 3/5, so cos A = 4/5",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.3,
+                -1.8
+              ],
+              "text": "tan A = {t}",
+              "step": "s1",
+              "tone": "good"
+            }
+          ],
+          "answer": "t",
+          "assert": [
+            "sA = 0.6",
+            "dotB = 0"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          }
+        ],
+        "fingerprint": "7a1dc6aa",
+        "answer": {
+          "value": 0.75,
+          "label": "0.75"
+        }
+      }
+    },
+    {
+      "id": "e73c5289-615c-4816-b2c0-9effee1eee42",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "b": 4,
+            "h": 3,
+            "hyp": "sqrt(b^2+h^2)",
+            "dotB": "(0-b)*(b-b)+(0-0)*(h-0)",
+            "tA": "h/b",
+            "sA": "h/hyp"
+          },
+          "view": {
+            "x": [
+              -1.5,
+              6.5
+            ],
+            "y": [
+              -3,
+              3
+            ]
+          },
+          "points": {
+            "A": [
+              0,
+              0
+            ],
+            "B": [
+              "b",
+              0
+            ],
+            "C": [
+              "b",
+              "h"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "points": [
+                "A",
+                "B",
+                "C"
+              ],
+              "step": "s1"
+            },
+            {
+              "kind": "point",
+              "at": "A",
+              "step": "s1",
+              "label": "A",
+              "pos": "sw"
+            },
+            {
+              "kind": "point",
+              "at": "B",
+              "step": "s1",
+              "label": "B",
+              "pos": "se"
+            },
+            {
+              "kind": "point",
+              "at": "C",
+              "step": "s1",
+              "label": "C",
+              "pos": "ne"
+            },
+            {
+              "kind": "segment",
+              "from": "A",
+              "to": "B",
+              "step": "s1",
+              "label": "4",
+              "labelAt": [
+                2,
+                -0.6
+              ],
+              "pos": "s"
+            },
+            {
+              "kind": "segment",
+              "from": "B",
+              "to": "C",
+              "step": "s1",
+              "label": "3",
+              "labelAt": [
+                4.4,
+                1.5
+              ],
+              "pos": "e"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.3,
+                -1.4
+              ],
+              "text": "tan A = 3/4",
+              "step": "s1"
+            },
+            {
+              "kind": "segment",
+              "from": "A",
+              "to": "C",
+              "step": "s2",
+              "label": "5",
+              "labelAt": [
+                1.5,
+                1.9
+              ],
+              "pos": "nw"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.3,
+                -2.2
+              ],
+              "text": "sin A = 3/5",
+              "step": "s2",
+              "tone": "good"
+            }
+          ],
+          "answer": "sA",
+          "assert": [
+            "hyp = 5",
+            "dotB = 0",
+            "tA = 0.75"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "6e33aeed",
+        "answer": {
+          "value": 0.6,
+          "label": "3/5"
+        }
+      }
+    },
+    {
+      "id": "eb391e1f-7065-427d-967c-200001a2e52b",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "cd": 10,
+            "ac": 26,
+            "bc": 42,
+            "ad": "sqrt(ac^2-cd^2)",
+            "db": "bc-cd",
+            "ab": "sqrt(ad^2+db^2)",
+            "dotD": "(0-cd)*(0-0)+(0-0)*(ad-0)",
+            "cx": "ad/ac",
+            "cy": "db/ab",
+            "ty": "ad/db",
+            "v": "6/cx-5/cy+8*ty"
+          },
+          "view": {
+            "x": [
+              -14,
+              36
+            ],
+            "y": [
+              -34.120000000000005,
+              27
+            ]
+          },
+          "points": {
+            "D": [
+              0,
+              0
+            ],
+            "C": [
+              "-cd",
+              0
+            ],
+            "B": [
+              "db",
+              0
+            ],
+            "A": [
+              0,
+              "ad"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "points": [
+                "A",
+                "B",
+                "C"
+              ],
+              "step": "s1"
+            },
+            {
+              "kind": "segment",
+              "from": "A",
+              "to": "D",
+              "step": "s1",
+              "dash": true
+            },
+            {
+              "kind": "point",
+              "at": "A",
+              "step": "s1",
+              "label": "A",
+              "pos": "n"
+            },
+            {
+              "kind": "point",
+              "at": "B",
+              "step": "s1",
+              "label": "B",
+              "pos": "se"
+            },
+            {
+              "kind": "point",
+              "at": "C",
+              "step": "s1",
+              "label": "C",
+              "pos": "sw"
+            },
+            {
+              "kind": "point",
+              "at": "D",
+              "step": "s1",
+              "label": "D",
+              "pos": "s"
+            },
+            {
+              "kind": "angle",
+              "at": "D",
+              "from": "C",
+              "to": "A",
+              "step": "s1",
+              "label": "90°"
+            },
+            {
+              "kind": "angle",
+              "at": "A",
+              "from": "D",
+              "to": "C",
+              "step": "s1",
+              "label": "x"
+            },
+            {
+              "kind": "angle",
+              "at": "B",
+              "from": "A",
+              "to": "D",
+              "step": "s1",
+              "label": "y"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -12.5,
+                -16.36
+              ],
+              "text": "AC = 26, CD = 10, BC = 42",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -12.5,
+                -21.16
+              ],
+              "text": "AD = 24, DB = 32, AB = 40",
+              "step": "s2"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -12.5,
+                -25.96
+              ],
+              "text": "cos x = 12/13, cos y = 4/5, tan y = 3/4",
+              "step": "s3"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -12.5,
+                -30.76
+              ],
+              "text": "value = {v}",
+              "step": "s4",
+              "tone": "good"
+            }
+          ],
+          "answer": "v",
+          "assert": [
+            "dotD = 0",
+            "ab = 40",
+            "cx = 12/13",
+            "cy = 4/5",
+            "ty = 3/4",
+            "v = 25/4"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "47b11178",
+        "answer": {
+          "value": 6.25,
+          "label": "25/4"
+        }
+      }
+    },
+    {
+      "id": "f1af9d48-041b-4b23-b4f9-4e2c6e85e93d",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "b": "sqrt(10)",
+            "angA": "deg(atan2(1,b))",
+            "tA": "tan(rad(angA))",
+            "hyp": "sqrt(1+b^2)",
+            "dotB": "(0-b)*(b-b)+(0-0)*(1-0)",
+            "ans": "1/hyp+hyp"
+          },
+          "view": {
+            "x": [
+              -1.5,
+              6.5
+            ],
+            "y": [
+              -3,
+              3
+            ]
+          },
+          "points": {
+            "A": [
+              0,
+              0
+            ],
+            "B": [
+              "b",
+              0
+            ],
+            "C": [
+              "b",
+              1
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "points": [
+                "A",
+                "B",
+                "C"
+              ],
+              "step": "s1"
+            },
+            {
+              "kind": "point",
+              "at": "A",
+              "step": "s1",
+              "label": "A",
+              "pos": "sw"
+            },
+            {
+              "kind": "point",
+              "at": "B",
+              "step": "s1",
+              "label": "B",
+              "pos": "se"
+            },
+            {
+              "kind": "point",
+              "at": "C",
+              "step": "s1",
+              "label": "C",
+              "pos": "ne"
+            },
+            {
+              "kind": "segment",
+              "from": "B",
+              "to": "C",
+              "step": "s1",
+              "label": "1",
+              "labelAt": [
+                3.6,
+                0.5
+              ],
+              "pos": "e"
+            },
+            {
+              "kind": "segment",
+              "from": "A",
+              "to": "B",
+              "step": "s1",
+              "label": "√10",
+              "labelAt": [
+                1.6,
+                -0.35
+              ],
+              "pos": "s"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.2,
+                -1.1
+              ],
+              "text": "tan A = 1/√10",
+              "step": "s1"
+            },
+            {
+              "kind": "segment",
+              "from": "A",
+              "to": "C",
+              "step": "s2",
+              "label": "√11",
+              "labelAt": [
+                1.4,
+                0.75
+              ],
+              "pos": "nw"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.2,
+                -1.9
+              ],
+              "text": "sin A = 1/√11, cosec A = √11",
+              "step": "s2"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.2,
+                -2.7
+              ],
+              "text": "sin A + cosec A = 12/√11",
+              "step": "s3",
+              "tone": "good"
+            }
+          ],
+          "answer": "ans",
+          "assert": [
+            "tA = 1/sqrt(10)",
+            "hyp = sqrt(11)",
+            "dotB = 0"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "e3fb47fe",
+        "answer": {
+          "value": 3.618136134933164,
+          "label": "12/√11"
+        }
+      }
+    },
+    {
+      "id": "f86156c5-8db3-48b0-99b5-7f10c046e2c6",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "b": 3,
+            "h": 4,
+            "hyp": "sqrt(b^2+h^2)",
+            "dotB": "(0-b)*(b-b)+(0-0)*(h-0)",
+            "sT": "h/hyp",
+            "tT": "h/b",
+            "cT": "b/h",
+            "v": "tT-cT"
+          },
+          "view": {
+            "x": [
+              -1.5,
+              6.5
+            ],
+            "y": [
+              -3.5,
+              4.5
+            ]
+          },
+          "points": {
+            "A": [
+              0,
+              0
+            ],
+            "B": [
+              "b",
+              0
+            ],
+            "C": [
+              "b",
+              "h"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "points": [
+                "A",
+                "B",
+                "C"
+              ],
+              "step": "s1"
+            },
+            {
+              "kind": "point",
+              "at": "A",
+              "step": "s1",
+              "label": "θ",
+              "pos": "sw"
+            },
+            {
+              "kind": "point",
+              "at": "B",
+              "step": "s1",
+              "label": "B",
+              "pos": "se"
+            },
+            {
+              "kind": "point",
+              "at": "C",
+              "step": "s1",
+              "label": "C",
+              "pos": "ne"
+            },
+            {
+              "kind": "segment",
+              "from": "A",
+              "to": "B",
+              "step": "s1",
+              "label": "3",
+              "labelAt": [
+                1.5,
+                -0.4
+              ],
+              "pos": "s"
+            },
+            {
+              "kind": "segment",
+              "from": "B",
+              "to": "C",
+              "step": "s1",
+              "label": "4",
+              "labelAt": [
+                3.4,
+                2
+              ],
+              "pos": "e"
+            },
+            {
+              "kind": "segment",
+              "from": "A",
+              "to": "C",
+              "step": "s1",
+              "label": "5",
+              "labelAt": [
+                1.3,
+                2.3
+              ],
+              "pos": "nw"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.2,
+                -1.1
+              ],
+              "text": "sin θ = 4/5, cos θ = 3/5",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.2,
+                -1.9
+              ],
+              "text": "tan θ = 4/3, cot θ = 3/4",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.2,
+                -2.7
+              ],
+              "text": "tan θ − cot θ = {v}",
+              "step": "s2",
+              "tone": "good"
+            }
+          ],
+          "answer": "v",
+          "assert": [
+            "hyp = 5",
+            "dotB = 0",
+            "sT = 0.8",
+            "v = 7/12"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "d9fdeb1c",
+        "answer": {
+          "value": 0.5833333333333333,
+          "label": "7/12"
+        }
+      }
+    },
+    {
+      "id": "4432c8d7-fb3a-4b17-a40f-2cc8dd0d7cd6",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "qr": 21,
+            "pq": 29,
+            "pr": "sqrt(pq^2-qr^2)",
+            "lenPQ": "sqrt(qr^2+pr^2)",
+            "dotR": "qr*0+0*pr",
+            "angQ": "deg(atan2(pr,qr))",
+            "cT": "cos(rad(angQ))",
+            "sT": "sin(rad(angQ))",
+            "v": "cT^2-sT^2"
+          },
+          "view": {
+            "x": [
+              -6,
+              34
+            ],
+            "y": [
+              -12,
+              22
+            ]
+          },
+          "points": {
+            "R": [
+              0,
+              0
+            ],
+            "Q": [
+              "qr",
+              0
+            ],
+            "P": [
+              0,
+              "pr"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "points": [
+                "R",
+                "Q",
+                "P"
+              ],
+              "step": "s1"
+            },
+            {
+              "kind": "point",
+              "at": "R",
+              "step": "s1",
+              "label": "R",
+              "pos": "sw"
+            },
+            {
+              "kind": "point",
+              "at": "Q",
+              "step": "s1",
+              "label": "Q",
+              "pos": "se"
+            },
+            {
+              "kind": "point",
+              "at": "P",
+              "step": "s1",
+              "label": "P",
+              "pos": "nw"
+            },
+            {
+              "kind": "angle",
+              "at": "R",
+              "from": "Q",
+              "to": "P",
+              "step": "s1",
+              "label": "90°"
+            },
+            {
+              "kind": "angle",
+              "at": "Q",
+              "from": "P",
+              "to": "R",
+              "step": "s1",
+              "label": "θ"
+            },
+            {
+              "kind": "segment",
+              "from": "R",
+              "to": "Q",
+              "step": "s1",
+              "label": "21",
+              "labelAt": [
+                10,
+                -1.5
+              ],
+              "pos": "s"
+            },
+            {
+              "kind": "segment",
+              "from": "P",
+              "to": "Q",
+              "step": "s1",
+              "label": "29",
+              "labelAt": [
+                13,
+                12
+              ],
+              "pos": "ne"
+            },
+            {
+              "kind": "segment",
+              "from": "R",
+              "to": "P",
+              "step": "s1",
+              "label": "20",
+              "labelAt": [
+                -1.5,
+                10
+              ],
+              "pos": "w"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -5,
+                -5
+              ],
+              "text": "cos θ = 21/29, sin θ = 20/29",
+              "step": "s2"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -5,
+                -8.5
+              ],
+              "text": "cos²θ − sin²θ = {v}",
+              "step": "s2",
+              "tone": "good"
+            }
+          ],
+          "answer": "v",
+          "assert": [
+            "lenPQ = 29",
+            "dotR = 0",
+            "pr = 20",
+            "v = 41/841"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "ec900a0e",
+        "answer": {
+          "value": 0.048751486325802895,
+          "label": "41/841"
+        }
+      }
+    },
+    {
+      "id": "55740233-29fc-4686-a63a-84374537c9d9",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "qr": 1,
+            "pq": 3,
+            "pr": "sqrt(qr^2+pq^2)",
+            "dotQ": "qr*0+0*pq",
+            "angR": "deg(atan2(pq,qr))",
+            "cotR": "cos(rad(angR))/sin(rad(angR))",
+            "sinR": "pq/pr",
+            "cosR": "qr/pr",
+            "sinP": "qr/pr",
+            "secP": "pr/pq",
+            "cosecR": "pr/pq",
+            "cosecP": "pr/qr",
+            "v": "(secP*(cosR+sinP))/(cosecR*(sinR-cosecP))"
+          },
+          "view": {
+            "x": [
+              -4,
+              14
+            ],
+            "y": [
+              -9,
+              4.5
+            ]
+          },
+          "points": {
+            "Q": [
+              0,
+              0
+            ],
+            "R": [
+              "qr",
+              0
+            ],
+            "P": [
+              0,
+              "pq"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "points": [
+                "Q",
+                "R",
+                "P"
+              ],
+              "step": "s1"
+            },
+            {
+              "kind": "point",
+              "at": "Q",
+              "step": "s1",
+              "label": "Q",
+              "pos": "sw"
+            },
+            {
+              "kind": "point",
+              "at": "R",
+              "step": "s1",
+              "label": "R",
+              "pos": "se"
+            },
+            {
+              "kind": "point",
+              "at": "P",
+              "step": "s1",
+              "label": "P",
+              "pos": "nw"
+            },
+            {
+              "kind": "angle",
+              "at": "Q",
+              "from": "R",
+              "to": "P",
+              "step": "s1",
+              "label": "90°"
+            },
+            {
+              "kind": "segment",
+              "from": "Q",
+              "to": "R",
+              "step": "s1",
+              "label": "1",
+              "labelAt": [
+                0.5,
+                -0.5
+              ],
+              "pos": "s"
+            },
+            {
+              "kind": "segment",
+              "from": "Q",
+              "to": "P",
+              "step": "s1",
+              "label": "3",
+              "labelAt": [
+                -0.4,
+                1.5
+              ],
+              "pos": "w"
+            },
+            {
+              "kind": "segment",
+              "from": "R",
+              "to": "P",
+              "step": "s1",
+              "label": "√10",
+              "labelAt": [
+                0.8,
+                1.7
+              ],
+              "pos": "ne"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -3.5,
+                -1.5
+              ],
+              "text": "cot R = 1/3",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -3.5,
+                -3
+              ],
+              "text": "sin R = 3/√10, cos R = sin P = 1/√10",
+              "step": "s2"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -3.5,
+                -4.5
+              ],
+              "text": "sec P = cosec R = √10/3, cosec P = √10",
+              "step": "s2"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -3.5,
+                -6
+              ],
+              "text": "numerator = 2/3, denominator = −7/3",
+              "step": "s4"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -3.5,
+                -7.5
+              ],
+              "text": "value = {v}",
+              "step": "s5",
+              "tone": "good"
+            }
+          ],
+          "answer": "v",
+          "assert": [
+            "cotR = 1/3",
+            "dotQ = 0",
+            "pr = sqrt(10)",
+            "v = -2/7"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "7046128b",
+        "answer": {
+          "value": -0.2857142857142857,
+          "label": "−2/7"
+        }
+      }
+    },
+    {
+      "id": "a6229b4a-9600-4ac0-9bf1-565e8a0e22b9",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "ab": 12,
+            "bc": "ab*tan(rad(60))",
+            "ac": "sqrt(ab^2+bc^2)",
+            "angA": "deg(atan2(bc,ab))",
+            "dotB": "(0-ab)*(ab-ab)+(0-0)*(bc-0)"
+          },
+          "view": {
+            "x": [
+              -18,
+              28
+            ],
+            "y": [
+              -12,
+              22.5
+            ]
+          },
+          "points": {
+            "A": [
+              0,
+              0
+            ],
+            "B": [
+              "ab",
+              0
+            ],
+            "C": [
+              "ab",
+              "bc"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "points": [
+                "A",
+                "B",
+                "C"
+              ],
+              "step": "s1"
+            },
+            {
+              "kind": "point",
+              "at": "A",
+              "step": "s1",
+              "label": "A",
+              "pos": "sw"
+            },
+            {
+              "kind": "point",
+              "at": "B",
+              "step": "s1",
+              "label": "B",
+              "pos": "se"
+            },
+            {
+              "kind": "point",
+              "at": "C",
+              "step": "s1",
+              "label": "C",
+              "pos": "ne"
+            },
+            {
+              "kind": "angle",
+              "at": "B",
+              "from": "A",
+              "to": "C",
+              "step": "s1",
+              "label": "90°"
+            },
+            {
+              "kind": "angle",
+              "at": "A",
+              "from": "B",
+              "to": "C",
+              "step": "s1",
+              "label": "60°"
+            },
+            {
+              "kind": "segment",
+              "from": "A",
+              "to": "B",
+              "step": "s1",
+              "label": "12",
+              "labelAt": [
+                6,
+                -1.5
+              ],
+              "pos": "s"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -16,
+                -5
+              ],
+              "text": "tan 60° = BC / AB",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -16,
+                -8.5
+              ],
+              "text": "BC = 12√3 cm",
+              "step": "s2",
+              "tone": "good"
+            },
+            {
+              "kind": "segment",
+              "from": "A",
+              "to": "C",
+              "step": "s3",
+              "label": "24",
+              "labelAt": [
+                5,
+                12
+              ],
+              "pos": "nw"
+            }
+          ],
+          "answer": "bc",
+          "assert": [
+            "angA = 60",
+            "dotB = 0",
+            "ac = 24"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "247fef71",
+        "answer": {
+          "value": 20.78460969082652,
+          "label": "12√3 cm"
+        }
+      }
+    },
+    {
+      "id": "b2734feb-286d-4066-9adf-181210efcf92",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "opp": 9,
+            "hyp": 41,
+            "adj": "sqrt(hyp^2-opp^2)",
+            "sT": "opp/hyp",
+            "dotB": "(0-adj)*(adj-adj)+(0-0)*(opp-0)",
+            "cotT": "adj/opp"
+          },
+          "view": {
+            "x": [
+              -4,
+              46
+            ],
+            "y": [
+              -24,
+              13.5
+            ]
+          },
+          "points": {
+            "A": [
+              0,
+              0
+            ],
+            "B": [
+              "adj",
+              0
+            ],
+            "C": [
+              "adj",
+              "opp"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "points": [
+                "A",
+                "B",
+                "C"
+              ],
+              "step": "s1"
+            },
+            {
+              "kind": "point",
+              "at": "A",
+              "step": "s1",
+              "label": "θ",
+              "pos": "sw"
+            },
+            {
+              "kind": "point",
+              "at": "B",
+              "step": "s1",
+              "label": "B",
+              "pos": "se"
+            },
+            {
+              "kind": "point",
+              "at": "C",
+              "step": "s1",
+              "label": "C",
+              "pos": "ne"
+            },
+            {
+              "kind": "segment",
+              "from": "B",
+              "to": "C",
+              "step": "s1",
+              "label": "9",
+              "labelAt": [
+                41.5,
+                4.5
+              ],
+              "pos": "e"
+            },
+            {
+              "kind": "segment",
+              "from": "A",
+              "to": "C",
+              "step": "s1",
+              "label": "41",
+              "labelAt": [
+                18,
+                7
+              ],
+              "pos": "nw"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0,
+                -6
+              ],
+              "text": "sin θ = 9/41",
+              "step": "s1"
+            },
+            {
+              "kind": "segment",
+              "from": "A",
+              "to": "B",
+              "step": "s2",
+              "label": "40",
+              "labelAt": [
+                20,
+                -2
+              ],
+              "pos": "s"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0,
+                -11
+              ],
+              "text": "cot θ = 40/9",
+              "step": "s2",
+              "tone": "good"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0,
+                -16
+              ],
+              "text": "9² + 40² = 1681 = 41²",
+              "step": "s3"
+            }
+          ],
+          "answer": "cotT",
+          "assert": [
+            "sT = 9/41",
+            "dotB = 0",
+            "adj = 40"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "3c632203",
+        "answer": {
+          "value": 4.444444444444445,
+          "label": "40/9"
+        }
+      }
+    },
+    {
+      "id": "f35910ae-2f21-42c0-ab71-b31a4e642bf7",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "ab": 3,
+            "bc": "ab*tan(rad(60))",
+            "angA": "deg(atan2(bc,ab))",
+            "angC": "deg(atan2(ab,bc))",
+            "dotB": "(0-ab)*(ab-ab)+(0-0)*(bc-0)",
+            "v1": "sin(rad(angA))*cos(rad(angC))+cos(rad(angA))*sin(rad(angC))",
+            "v2": "cos(rad(angA))*cos(rad(angC))-sin(rad(angA))*sin(rad(angC))"
+          },
+          "view": {
+            "x": [
+              -6,
+              10
+            ],
+            "y": [
+              -6,
+              6.5
+            ]
+          },
+          "points": {
+            "A": [
+              0,
+              0
+            ],
+            "B": [
+              "ab",
+              0
+            ],
+            "C": [
+              "ab",
+              "bc"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "points": [
+                "A",
+                "B",
+                "C"
+              ],
+              "step": "s1"
+            },
+            {
+              "kind": "point",
+              "at": "A",
+              "step": "s1",
+              "label": "A",
+              "pos": "sw"
+            },
+            {
+              "kind": "point",
+              "at": "B",
+              "step": "s1",
+              "label": "B",
+              "pos": "se"
+            },
+            {
+              "kind": "point",
+              "at": "C",
+              "step": "s1",
+              "label": "C",
+              "pos": "ne"
+            },
+            {
+              "kind": "angle",
+              "at": "B",
+              "from": "A",
+              "to": "C",
+              "step": "s1",
+              "label": "90°"
+            },
+            {
+              "kind": "angle",
+              "at": "A",
+              "from": "B",
+              "to": "C",
+              "step": "s1",
+              "label": "60°"
+            },
+            {
+              "kind": "angle",
+              "at": "C",
+              "from": "B",
+              "to": "A",
+              "step": "s1",
+              "label": "30°"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -5,
+                -1.5
+              ],
+              "text": "tan A = √3, so A = 60°, C = 30°",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -5,
+                -2.9
+              ],
+              "text": "sin(A + C) = sin 90° = 1",
+              "step": "s2",
+              "tone": "good"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -5,
+                -4.3
+              ],
+              "text": "cos(A + C) = cos 90° = 0",
+              "step": "s3",
+              "tone": "good"
+            }
+          ],
+          "answer": "v1",
+          "assert": [
+            "angA = 60",
+            "angC = 30",
+            "dotB = 0",
+            "v1 = 1",
+            "v2 = 0"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "4c5f83bd",
+        "answer": {
+          "value": 1,
+          "label": "1 and 0"
+        }
+      }
+    }
+  ],
+  "decided": []
+}
