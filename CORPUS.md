@@ -100,6 +100,14 @@ Two MHT-CET ingest files are not the papers their labels say. **Both were verifi
 
 **Two traps.** (1) *The first labels were on a different scale*: Maths HARD 11% against 29-46% for 2021-2025, Physics 2% against 14-21%. Every 2026 question was re-graded against 2023-2025 samples of its own chapter (Chemistry 62/35/3, Maths 20/50/30, Physics 38/47/14 against 53/44/3, 10/52/38, 31/51/18, EASY/MODERATE/HARD); `build-pdf-shift` now refuses a subject more than 20 points off `difficulty-baseline.json`. (2) *commit.ts's function-name upgrade reaches prose inside math*: `\text{during expansion}` became `\exp ansion` (19 May S2 Q116); the checker now renders `commitText()`.
 
+## ISC Class 12 PCM (`isc-12`, PUBLIC 2026-10-30)
+
+**Source.** CISCE prints one paper per subject per year. 2025 comes from CISCE's *Analysis of Pupil Performance*, which reprints every question with its full marking scheme (no separate 2025 paper is needed); 2026 from the question papers, whose key CISCE had not published on 2026-10-30. 2021-2024 were not located (cisce.org's archive is JavaScript-driven). Vision only: the 2026 scans have no text layer and the 2025 one is lossy (`dx` and `dy` extract identically). Runbook: `scripts/isc-12-pyq/README.md`.
+
+**Outcome.** 257 rows PUBLIC (59 MCQ, 198 written), 24 figures cropped from the page renders. Six transcription agents split each question from CISCE's answer at transcription time; six solvers then worked from key-free files only. 2025 against CISCE: 28/29 MCQ and 98/98 written answers (read, not string-matched); the one difference is CISCE's own 1(ix), kept with a note. 2026: a second independent solver per paper, 30/30 MCQ and 98/100 written, both differences settled (one a paper defect, Maths 6(ii), solved as printed). Every decision is in `data/<year>-<Subject>.adjudication.json`; detail in `FINDINGS.md`.
+
+**Traps.** (1) ISC numbers an OR's alternatives as subparts, so `16(i)`/`16(ii)` are alternatives where `1(i)`/`1(ii)` are compulsory; only the bare `OR` line tells them apart. (2) A shell heredoc turned `\times` into TAB + `imes` in a data file; `paperIssues` now rejects any control character. (3) Physics and Chemistry Q1 restart their numbering in each block, so refs carry the block letter (`1(A)(i)`, `1(B)(i)`).
+
 ## SSC CGL (pilot, PRIVATE, 2026-10-16)
 
 **Source.** SSC never posts its papers; the only official copy is a candidate's challenge-module response sheet (one fixed order per shift, key coloured into each option's left cell). AglaSem hosts these printed to PDF, one file per exam day (`C:\Vilas\LWS_Pune\SSC\CGL\`). Every sheet says "for personal use"; the owner decided to ingest (2026-10-16). The 2025 Tier I key is SSC's PROVISIONAL one. Runbook: `scripts/ssc-cgl/README.md`.
