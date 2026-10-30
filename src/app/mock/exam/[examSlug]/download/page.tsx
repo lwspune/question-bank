@@ -9,9 +9,10 @@ import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { getPublishedMocks } from "@/lib/mocks/query";
 import { getMockExam, getMockExams, mockFamilyOf, mockSideNav } from "@/lib/mocks/mocksNav";
 import { groupMocksForType, mocksOfType, mockDownloadHref } from "@/lib/mocks/catalogue";
-import { getExamByName } from "@/lib/exam/examContext";
+import { EXAM_REGISTRY, getExamByName } from "@/lib/exam/examContext";
 import { downloadPageTitle, paperPageHref, paperYearRange } from "@/lib/mocks/paperPage";
 import PaperDownload from "../../../_components/PaperDownload";
+import { canonicalFor } from "@/lib/sites/intl";
 
 // Same refresh as the /mock lists beside it.
 export const revalidate = 3600;
@@ -20,7 +21,7 @@ type Params = { examSlug: string };
 
 /** Every exam, including one with no past papers yet: an honest empty state beats a 404. */
 export function generateStaticParams(): Params[] {
-  return getMockExams().map((e) => ({ examSlug: e.slug as string }));
+  return getMockExams(EXAM_REGISTRY).map((e) => ({ examSlug: e.slug as string }));
 }
 
 /** One read per request, shared by the metadata and the page. */
@@ -42,7 +43,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   return {
     title: { absolute: downloadPageTitle(exam.examName, range, solved) },
     description: `${exam.examName} previous year question papers${range ? ` from ${range}` : ""}, each exactly as it was set. Every paper is free to read online ${solved ? "with answers and worked solutions" : "with answers"}, or sit it as a timed mock. Your first PDF paper and answer key are free to download.`,
-    alternates: { canonical: mockDownloadHref(exam.slug) },
+    alternates: { canonical: canonicalFor(mockDownloadHref(exam.slug)) },
   };
 }
 
@@ -66,7 +67,7 @@ export default async function MockDownloadList({ params }: { params: Params }) {
   return (
     <GuideShell
       guideTitle="Mock Tests"
-      sideNav={mockSideNav()}
+      sideNav={mockSideNav(params.examSlug)}
       breadcrumbs={[
         { href: "/mock", label: "Mocks" },
         ...(parent ? [{ href: `/mock/exam/${parent.slug}`, label: parent.name }] : []),

@@ -12,7 +12,7 @@
  * vacuously for any rule the live data happens not to exercise.
  */
 import {
-  EXAM_REGISTRY,
+  PYQVAULT_EXAMS,
   type ExamEntry,
   type ExamSlug,
   type ExamTier,
@@ -76,7 +76,7 @@ export function anonFeedFor(entries: readonly ExamEntry[]): ExamFeed {
   };
 }
 
-export const ANON_FEED: ExamFeed = anonFeedFor(EXAM_REGISTRY);
+export const ANON_FEED: ExamFeed = anonFeedFor(PYQVAULT_EXAMS);
 
 export function resolveExamFeed(input: FeedInput, entries: readonly ExamEntry[]): ExamFeed {
   const tier = resolveStudentTier(input, entries);

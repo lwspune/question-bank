@@ -29,6 +29,7 @@ import SendToFriend from "@/components/practice/SendToFriend";
 import { INVITE_PARAM, isInviteCode } from "@/lib/practiceTests/mockInvite";
 import { getOrCreateInvite, readInvite } from "@/lib/practiceTests/mockInviteService";
 import { readFirstNames } from "@/lib/practiceTests/togetherService";
+import { canonicalFor, planSiteForPath } from "@/lib/sites/intl";
 
 type Params = { slug: string };
 
@@ -38,7 +39,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   return {
     title: `${mock.title} — timed mock test`,
     description: `Sit the ${mock.title} as a full-length timed mock: ${mock.totalQuestions} questions, ${mock.totalMarks} marks, ${Math.round(mock.durationSecs / 60)} minutes, instant scoring.`,
-    alternates: { canonical: `/mock/${params.slug}` },
+    alternates: { canonical: canonicalFor(`/mock/${params.slug}`) },
   };
 }
 
@@ -93,7 +94,14 @@ export default async function MockInstructions({
   const mockPass =
     startState.kind === "open"
       ? null
-      : passCta(passForScope(await listActivePlans(createSupabaseAnonClient()), SCOPE_MOCKS));
+      : passCta(
+          passForScope(
+            await listActivePlans(createSupabaseAnonClient()),
+            SCOPE_MOCKS,
+            // An international paper is sold on intl.pyqvault.com, in USD (0203).
+            planSiteForPath(`/mock/${params.slug}`)
+          )
+        );
   if (user) {
     const db = createSupabaseServerClient();
     const now = new Date();

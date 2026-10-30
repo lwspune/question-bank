@@ -125,6 +125,11 @@ describe("perMonthLine", () => {
     expect(perMonthLine({ price: "₹300", length: "90 days" })).toBe("about ₹100 a month");
   });
 
+  it("works in dollars for the intl pass (0203)", () => {
+    expect(perMonthLine({ price: "$19", length: "6 months" })).toBe("about $3 a month");
+    expect(perMonthLine({ price: "$29.99", length: "6 months" })).toBe("about $5 a month");
+  });
+
   it("says nothing where a month figure would mislead or cannot be read", () => {
     expect(perMonthLine({ price: "₹99", length: "30 days" })).toBeNull();
     expect(perMonthLine({ price: "₹499", length: "lifetime" })).toBeNull();

@@ -38,6 +38,7 @@ describe("passCta", () => {
     urlKey: "premium",
     amountPaise: 9900,
     currency: "INR",
+    site: "pyqvault",
     durationDays: 182,
     scope: SCOPE_MOCKS,
     active: true,

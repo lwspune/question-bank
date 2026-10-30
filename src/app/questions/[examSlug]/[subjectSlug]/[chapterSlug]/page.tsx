@@ -48,8 +48,8 @@ import VHello from "@/components/chat/VHello";
 import NextStepCard from "@/components/question/NextStepCard";
 import { pickHello, nextStepLinks, CARD_AFTER, type HelloInput } from "@/lib/growth/secondPage";
 import Breadcrumbs from "@/components/nav/Breadcrumbs";
+import { canonicalFor } from "@/lib/sites/intl";
 
-const SITE_URL = "https://www.pyqvault.com";
 
 /** Rebuilt daily; new chapters appear without a deploy. */
 export const revalidate = 86400;
@@ -136,7 +136,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   return {
     title: { absolute: title },
     description,
-    alternates: { canonical: `${SITE_URL}${landingHref(landing)}` },
+    alternates: { canonical: canonicalFor(landingHref(landing)) },
     openGraph: { title, description, type: "website" },
   };
 }

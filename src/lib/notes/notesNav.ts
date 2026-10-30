@@ -8,7 +8,7 @@
  * Pure (no DB / no React); unit-tested in tests/notes-nav.test.ts.
  */
 
-import { EXAM_REGISTRY, type ExamEntry, type ExamSlug } from "@/lib/exam/examContext";
+import { EXAM_REGISTRY, PYQVAULT_EXAMS, getExamBySlug, type ExamEntry, type ExamSlug } from "@/lib/exam/examContext";
 // The generated index, NOT the registry: this module is on every page through
 // AppHeader, and the registry imports the whole notes corpus. See notesNavIndex.ts.
 import { NOTES_NAV_INDEX } from "@/lib/notes/notesNavIndex.generated";
@@ -54,11 +54,12 @@ function subjectsForExam(examName: string): NotesSubjectGroup[] {
 }
 
 /**
- * All exams that have at least one notes subject, in EXAM_REGISTRY order.
- * Used by the /notes cross-exam index.
+ * All exams that have at least one notes subject, in registry order. Used by
+ * the /notes cross-exam index, so it lists www's exams unless given another
+ * registry (the full EXAM_REGISTRY when prerendering every exam's hub).
  */
-export function getNotesExamGroups(): NotesExamGroup[] {
-  return EXAM_REGISTRY.map(toExamGroup).filter((g) => g.subjects.length > 0);
+export function getNotesExamGroups(registry: readonly ExamEntry[] = PYQVAULT_EXAMS): NotesExamGroup[] {
+  return registry.map(toExamGroup).filter((g) => g.subjects.length > 0);
 }
 
 /**
@@ -83,4 +84,19 @@ function toExamGroup(entry: ExamEntry): NotesExamGroup {
 /** Slugs of exams that should be statically pre-rendered for /notes/[examSlug]. */
 export function notesExamSlugs(): ExamSlug[] {
   return EXAM_REGISTRY.map((e) => e.slug);
+}
+
+/**
+ * The exam list beside a /notes/<exam> hub: PYQ Vault's exams on www, and on an
+ * international exam's hub (intl.pyqvault.com, 2026-10-30) only the
+ * international ones, with the intl home as "All exams". Chosen by the exam,
+ * never by the host, so the hub stays cacheable.
+ */
+export function notesExamSideNav(currentExamSlug: string): { href: string; label: string }[] {
+  const intl = getExamBySlug(currentExamSlug)?.site === "intl";
+  const registry = intl ? EXAM_REGISTRY.filter((e) => e.site === "intl") : PYQVAULT_EXAMS;
+  return [
+    { href: intl ? "/" : "/notes", label: "All exams" },
+    ...getNotesExamGroups(registry).map((g) => ({ href: `/notes/${g.slug}`, label: g.displayName })),
+  ];
 }

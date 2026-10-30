@@ -35,8 +35,8 @@ import {
 import Breadcrumbs from "@/components/nav/Breadcrumbs";
 import FormulaExamHub, { formulaExamHubMetadata } from "../_components/FormulaExamHub";
 import { formulaExamGroup, formulaExamSlugs } from "@/lib/formula/chapterPages";
+import { canonicalFor } from "@/lib/sites/intl";
 
-const SITE_URL = "https://www.pyqvault.com";
 
 export const revalidate = 86400;
 
@@ -72,7 +72,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   return {
     title: { absolute: title },
     description,
-    alternates: { canonical: `${SITE_URL}/formula/${params.slug}` },
+    alternates: { canonical: canonicalFor(`/formula/${params.slug}`) },
     openGraph: { title, description, type: "website" },
   };
 }

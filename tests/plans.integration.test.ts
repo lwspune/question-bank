@@ -86,6 +86,35 @@ describe.skipIf(!HAS_ENV)("public.plans", () => {
     expect(free.error?.code).toBe("23514");
   });
 
+  it("the database pairs the site with its currency: INR on www, USD on intl (0203)", async () => {
+    const base = { label: "x", amount_paise: 1900, scope: "mocks" };
+    const usdOnWww = await admin.from("plans").insert({ ...base, id: TEST_ID, url_key: TEST_ID, currency: "USD" });
+    expect(usdOnWww.error?.code).toBe("23514");
+    const inrOnIntl = await admin
+      .from("plans")
+      .insert({ ...base, id: TEST_ID, url_key: TEST_ID, currency: "INR", site: "intl" });
+    expect(inrOnIntl.error?.code).toBe("23514");
+
+    const usd = await upsertPlan({
+      id: TEST_ID,
+      label: "Intl Pass",
+      blurb: "For the test.",
+      perks: [],
+      urlKey: TEST_ID,
+      amountPaise: 1900,
+      currency: "USD",
+      site: "intl",
+      durationDays: 182,
+      scope: SCOPE_MOCKS,
+      sortOrder: 99,
+      active: true,
+    });
+    expect(usd).toEqual({ kind: "ok" });
+    const read = (await listActivePlans(anon)).find((p) => p.id === TEST_ID);
+    expect(read).toMatchObject({ currency: "USD", site: "intl", amountPaise: 1900 });
+    await admin.from("plans").delete().eq("id", TEST_ID);
+  });
+
   it("anon and a student cannot write", async () => {
     for (const c of [anon, student]) {
       const ins = await c.from("plans").insert({ id: TEST_ID, label: "x", url_key: TEST_ID, amount_paise: 100, scope: "mocks" });
@@ -106,6 +135,7 @@ describe.skipIf(!HAS_ENV)("public.plans", () => {
       urlKey: TEST_ID,
       amountPaise: 12300,
       currency: "INR" as const,
+      site: "pyqvault" as const,
       durationDays: 30,
       scope: SCOPE_MOCKS,
       sortOrder: 99,
@@ -135,6 +165,7 @@ describe.skipIf(!HAS_ENV)("public.plans", () => {
       urlKey: "bad",
       amountPaise: 100,
       currency: "INR",
+      site: "pyqvault",
       durationDays: null,
       scope: SCOPE_MOCKS,
       sortOrder: 0,
@@ -172,6 +203,7 @@ describe.skipIf(!HAS_ENV)("public.plans", () => {
       urlKey: TEST_ID,
       amountPaise: 12300,
       currency: "INR" as const,
+      site: "pyqvault" as const,
       durationDays: 30,
       scope: SCOPE_MOCKS,
       sortOrder: 99,

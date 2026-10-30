@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import { getSessionSuperadmin } from "@/lib/auth";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import AppHeader from "@/components/AppHeader";
-import { formatRupees } from "@/lib/billing/plans";
+import { formatPrice, formatRupees } from "@/lib/billing/plans";
 import { loadFunnelStudents, loadSalesByPeriod } from "@/lib/sales/query";
 import {
   PERIODS_SHOWN,
@@ -180,6 +180,7 @@ export default async function SalesPage({ searchParams }: { searchParams?: { vie
                       <th scope="col" className="py-1.5 pr-3 text-right font-medium">Passes</th>
                       <th scope="col" className="py-1.5 pr-3 text-right font-medium">Paid</th>
                       <th scope="col" className="py-1.5 pr-3 text-right font-medium">Pass ₹</th>
+                      <th scope="col" className="py-1.5 pr-3 text-right font-medium">Pass $</th>
                       <th scope="col" className="py-1.5 pr-3 text-right font-medium">Book orders</th>
                       <th scope="col" className="py-1.5 pr-3 text-right font-medium">Books</th>
                       <th scope="col" className="py-1.5 pr-3 text-right font-medium">Book ₹</th>
@@ -202,6 +203,7 @@ export default async function SalesPage({ searchParams }: { searchParams?: { vie
                           <td className="py-1.5 pr-3 text-right">{r.passesSold}</td>
                           <td className="py-1.5 pr-3 text-right">{percent(paidShare(r.passesSold, r.checkoutStudents))}</td>
                           <td className="py-1.5 pr-3 text-right">{formatRupees(r.passPaise)}</td>
+                          <td className="py-1.5 pr-3 text-right">{formatPrice(r.passUsdCents, "USD")}</td>
                           <td className="py-1.5 pr-3 text-right">{r.bookOrders}</td>
                           <td className="py-1.5 pr-3 text-right">{r.booksSold}</td>
                           <td className="py-1.5 pr-3 text-right">{formatRupees(r.bookPaise)}</td>
@@ -224,6 +226,9 @@ export default async function SalesPage({ searchParams }: { searchParams?: { vie
                         {percent(paidShare(windowTotal.passesSold, tableFunnel.checkoutStudents))}
                       </td>
                       <td className="py-1.5 pr-3 text-right">{formatRupees(rows.reduce((s, r) => s + r.passPaise, 0))}</td>
+                      <td className="py-1.5 pr-3 text-right">
+                        {formatPrice(rows.reduce((s, r) => s + r.passUsdCents, 0), "USD")}
+                      </td>
                       <td className="py-1.5 pr-3 text-right">{windowTotal.bookOrders}</td>
                       <td className="py-1.5 pr-3 text-right">{windowTotal.booksSold}</td>
                       <td className="py-1.5 pr-3 text-right">{formatRupees(rows.reduce((s, r) => s + r.bookPaise, 0))}</td>

@@ -187,6 +187,13 @@ export type ExamEntry = {
    */
   noPublicContent?: boolean;
   /**
+   * `"intl"`: an international exam, served only on intl.pyqvault.com (2026-10-30,
+   * NICHE_SITES_SPEC.md). Absent = a PYQ Vault exam on www. Lookups by slug or
+   * name still find an intl exam (its own pages and the mock engine need it);
+   * every LIST shown on www reads `PYQVAULT_EXAMS`, which leaves it out.
+   */
+  site?: "intl";
+  /**
    * A NON-BOARD presentation family — the generic sibling of `board`+`std`.
    *
    * IPMAT is three separate exams (Indore, Rohtak, Jammu) that a student thinks
@@ -340,6 +347,9 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     // Worked solutions on all 240 ministry questions since 2026-10-23 (the ministry
     // publishes answers only; ours were written blind and checked against its key).
     pastPaperSolutions: true,
+    // On intl.pyqvault.com, not www, since 2026-10-30 (owner): international
+    // students should see no Indian exam, and www's lists leave it out.
+    site: "intl",
   },
   {
     slug: "mh-hsc-12",
@@ -860,6 +870,13 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     notesPath: "/notes/spi", // exam hub: live since 2026-10-21 (Mathematics, Probability)
   },
 ] as const;
+
+/**
+ * The exams PYQ Vault (www) lists: every entry except the international ones,
+ * in registry order. Use this, not EXAM_REGISTRY, for anything that SHOWS a
+ * list of exams on www; lookups by slug or name keep using the full registry.
+ */
+export const PYQVAULT_EXAMS: readonly ExamEntry[] = EXAM_REGISTRY.filter((e) => e.site !== "intl");
 
 export const DEFAULT_EXAM_SLUG: ExamSlug = "nda";
 

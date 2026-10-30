@@ -16,6 +16,7 @@ const plan = (over: Partial<Plan>): Plan => ({
   urlKey: "x",
   amountPaise: 100,
   currency: "INR",
+  site: "pyqvault",
   durationDays: 30,
   scope: SCOPE_MOCKS,
   active: true,

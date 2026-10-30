@@ -14,6 +14,8 @@ export type GrantRazorpayInput = {
   expiresAt: string | null;
   /** What the buyer paid (the order amount), for /dashboard/sales. */
   amountPaise: number;
+  /** The order's currency; amountPaise is in its smallest unit (migration 0203). */
+  currency: "INR" | "USD";
 };
 
 export type GrantRazorpayResult =
@@ -34,6 +36,7 @@ export async function grantRazorpayEntitlement(
       expires_at: input.expiresAt,
       provider_ref: input.paymentId,
       amount_paise: input.amountPaise,
+      currency: input.currency,
     });
     if (error) {
       // 23505 = unique violation on provider_ref → already granted. Idempotent.

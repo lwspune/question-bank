@@ -8,7 +8,7 @@
  * added, so V can link it and nothing else.
  */
 import type { SupabaseClient } from "@supabase/supabase-js";
-import { EXAM_REGISTRY } from "@/lib/exam/examContext";
+import { EXAM_REGISTRY, PYQVAULT_EXAMS } from "@/lib/exam/examContext";
 import { listActivePlans, readFreeLimits } from "@/lib/billing/plansQuery";
 import { getCachedExamCatalog, type ExamCatalog } from "@/lib/exam/allExamStats";
 import { listChapterSearchRows } from "./subtopicIndex";
@@ -123,14 +123,15 @@ export async function loadVContext(
       }),
   ]);
 
-  const exams = buildExamFacts(EXAM_REGISTRY.map((e) => examFactFromEntry(e, pyqBySlug)));
+  const exams = buildExamFacts(PYQVAULT_EXAMS.map((e) => examFactFromEntry(e, pyqBySlug)));
   // Never an exam with nothing public: its notes would point a student at an exam we do not show.
   const notes = buildNotesFacts(
     getNotesExamGroups().filter((g) => EXAM_REGISTRY.find((e) => e.slug === g.slug)?.noPublicContent !== true)
   );
   const system = buildSystemPrompt({
     exams,
-    plans: buildPlanFacts(plans),
+    // V speaks to www's students: the intl site's USD pass is not theirs to buy (0203).
+    plans: buildPlanFacts(plans.filter((p) => p.site === "pyqvault")),
     free: buildFreeFacts(limits),
     bankTotal: bankCount.count ?? 0,
     nav: NAV_FACTS,

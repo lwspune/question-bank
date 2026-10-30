@@ -45,6 +45,7 @@ import { findChapterLanding } from "@/lib/questions/findLanding";
 import ChapterShareCard from "@/components/ChapterShareCard";
 import { mockCtaCopy, withChapterTest } from "@/lib/mocks/chapterTests";
 import { listChapterTests } from "@/lib/mocks/chapterTestsQuery";
+import { canonicalFor } from "@/lib/sites/intl";
 
 /**
  * Chapter-agnostic renderer for a /notes chapter landing page. Each chapter's
@@ -63,7 +64,7 @@ export function buildChapterMetadata(c: NotesChapterRegistration): Metadata {
     // on all 84 chapter pages. Led by "Free <subject> notes on <chapter>, with
     // a PDF" (2026-10-15), the words a student searches.
     description: notesChapterDescription(c),
-    alternates: { canonical: routeBase(c) },
+    alternates: { canonical: canonicalFor(routeBase(c)) },
   };
 }
 

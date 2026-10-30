@@ -51,6 +51,7 @@ type Row = {
   books_sold: number;
   books_refunded: number;
   book_paise: number;
+  pass_usd_cents: number;
 };
 
 describe.skipIf(!HAS_ENV)("sales_by_period", () => {
@@ -78,7 +79,14 @@ describe.skipIf(!HAS_ENV)("sales_by_period", () => {
     if (createdB.error) throw new Error(`create user B: ${createdB.error.message}`);
     userB = createdB.data.user!.id;
 
-    const pass = (ref: string, at: string, paise: number | null, status = "active", source = "razorpay") => ({
+    const pass = (
+      ref: string,
+      at: string,
+      paise: number | null,
+      status = "active",
+      source = "razorpay",
+      currency = "INR"
+    ) => ({
       user_id: userId,
       scope: "mocks",
       source,
@@ -86,12 +94,15 @@ describe.skipIf(!HAS_ENV)("sales_by_period", () => {
       granted_at: at,
       provider_ref: source === "razorpay" ? ref : null,
       amount_paise: paise,
+      currency,
     });
     const { error: passError } = await admin.from("entitlements").insert([
       pass(PAY("a"), "2001-03-05T18:15:00Z", 19900), // Mon 5 Mar, 23:45 IST
       pass(PAY("b"), "2001-03-05T18:30:00Z", 9900, "revoked"), // Tue 6 Mar, 00:00 IST, refunded
       pass(PAY("c"), "2001-03-05T10:00:00Z", null, "active", "comp"), // a comp grant: not a sale
       pass(PAY("d"), "2001-03-07T06:00:00Z", 9900, "expired"), // Wed 7 Mar, paid then lapsed
+      // An intl.pyqvault.com pass (0203): 1900 CENTS, so it must stay out of pass_paise.
+      pass(PAY("e"), "2001-03-07T07:00:00Z", 1900, "active", "razorpay", "USD"), // Wed 7 Mar
     ]);
     if (passError) throw new Error(`insert passes: ${passError.message}`);
 
@@ -155,6 +166,7 @@ describe.skipIf(!HAS_ENV)("sales_by_period", () => {
       books_sold: 0,
       books_refunded: 0,
       book_paise: 0,
+      pass_usd_cents: 0,
       ...over,
     });
     expect(await periods("day")).toEqual([
@@ -169,7 +181,8 @@ describe.skipIf(!HAS_ENV)("sales_by_period", () => {
         books_sold: 1,
         book_paise: 4900,
       }),
-      day("2001-03-07", { paywall_students: 1, passes_sold: 1, pass_paise: 9900 }),
+      // Two passes sold that day: Rs 99 in pass_paise and $19 in pass_usd_cents, never added together.
+      day("2001-03-07", { paywall_students: 1, passes_sold: 2, pass_paise: 9900, pass_usd_cents: 1900 }),
       day("2001-03-08", { checkout_students: 1, pass_orders: 1 }),
     ]);
   });
@@ -180,13 +193,14 @@ describe.skipIf(!HAS_ENV)("sales_by_period", () => {
       paywall_students: 2,
       checkout_students: 2,
       pass_orders: 5,
-      passes_sold: 3,
+      passes_sold: 4,
       passes_refunded: 1,
       pass_paise: 29800,
       book_orders: 1,
       books_sold: 1,
       books_refunded: 0,
       book_paise: 4900,
+      pass_usd_cents: 1900,
     };
     expect(await periods("week")).toEqual([{ period: "2001-03-05", ...total }]);
     expect(await periods("month")).toEqual([{ period: "2001-03-01", ...total }]);

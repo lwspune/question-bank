@@ -22,6 +22,8 @@ import { useViewerSession } from "@/lib/viewer/useViewerSession";
 import { usePulse } from "@/lib/viewer/usePulse";
 import { fifthTabFor } from "@/lib/nav/fifthTab";
 import ReadingBeacon from "./ReadingBeacon";
+import IntlHeaderBar from "./IntlHeaderBar";
+import { useIntlSite } from "@/lib/sites/useIntlSite";
 
 /**
  * The whole per-visitor half of the site header, resolved in the BROWSER.
@@ -76,10 +78,22 @@ export default function HeaderBar({
   // every width without adding chrome.
   const pulse = usePulse(!!session);
 
+  const intl = useIntlSite();
+
   const nav = resolveExamNav(examSlug, examIds, notesExamSlugs, soleGuides);
   // Board, or Fix for a graduate student. Board until the session arrives, so
   // the cached HTML is the same for everyone (see lib/nav/fifthTab).
   const fifth = fifthTabFor(session);
+
+  // intl.pyqvault.com (2026-10-30): its own header, with no Indian surfaces.
+  if (intl) {
+    return (
+      <>
+        <ReadingBeacon signedIn={!!session} />
+        <IntlHeaderBar email={session?.email ?? null} sessionLoading={sessionLoading} />
+      </>
+    );
+  }
 
   return (
     <>

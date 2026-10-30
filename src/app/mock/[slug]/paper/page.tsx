@@ -23,6 +23,7 @@ import {
 } from "@/lib/mocks/paperPage";
 import PaperDownload from "../../_components/PaperDownload";
 import MockPaperReader from "./MockPaperReader";
+import { canonicalFor } from "@/lib/sites/intl";
 
 type Params = { slug: string };
 
@@ -64,7 +65,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   return {
     title: { absolute: paperPageTitle(mock.title) },
     description: paperPageDescription(mock, withSolutions),
-    alternates: { canonical: paperPageHref(params.slug) },
+    alternates: { canonical: canonicalFor(paperPageHref(params.slug)) },
   };
 }
 

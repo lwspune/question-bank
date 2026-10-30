@@ -15,7 +15,7 @@ import { stampOrderNotes, type Plan } from "@/lib/billing/plans";
 
 const MOCK: Plan = {
   id: "mock-pass-6m", label: "Student Mock Pass", blurb: "", perks: [], urlKey: "mocks",
-  amountPaise: 9900, currency: "INR", durationDays: 182, scope: "mocks", active: true, sortOrder: 1,
+  amountPaise: 9900, currency: "INR", site: "pyqvault", durationDays: 182, scope: "mocks", active: true, sortOrder: 1,
 };
 
 const orderPaid = (order: Record<string, unknown> = {}, paymentId: string | null = "pay_1") => ({
@@ -51,7 +51,7 @@ describe("decideWebhook: order.paid", () => {
       action: "grant",
       userId: "u1",
       paymentId: "pay_1",
-      grant: { planId: "mock-pass-6m", scope: "mocks", durationDays: 182, amountPaise: 9900 },
+      grant: { planId: "mock-pass-6m", scope: "mocks", durationDays: 182, amountPaise: 9900, currency: "INR" },
     });
   });
 

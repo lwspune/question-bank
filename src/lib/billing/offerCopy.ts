@@ -75,13 +75,14 @@ function lengthInMonths(length: string): number | null {
   return months > 1 ? months : null;
 }
 
-/** "about ₹33 a month", or null when it cannot be worked out honestly. */
+/** "about ₹33 a month" (or "about $3 a month" for the intl pass), or null when it cannot be worked out honestly. */
 export function perMonthLine(cta: { price: string; length: string }): string | null {
-  const price = /^₹\s?([\d,]+)$/.exec(cta.price.trim());
+  const price = /^([₹$])\s?([\d,]+(?:\.\d+)?)$/.exec(cta.price.trim());
   const months = lengthInMonths(cta.length);
   if (!price || !months) return null;
-  const rupees = Number(price[1].replace(/,/g, ""));
-  return `about ₹${Math.round(rupees / months).toLocaleString("en-IN")} a month`;
+  const amount = Number(price[2].replace(/,/g, ""));
+  const locale = price[1] === "$" ? "en-US" : "en-IN";
+  return `about ${price[1]}${Math.round(amount / months).toLocaleString(locale)} a month`;
 }
 
 /** "₹199 for 6 months". */

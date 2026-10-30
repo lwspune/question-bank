@@ -9,7 +9,8 @@
  * DATA still comes from the DB (getPublishedMocks); this only shapes the nav.
  */
 
-import { EXAM_REGISTRY, type ExamSlug } from "@/lib/exam/examContext";
+import { EXAM_REGISTRY, PYQVAULT_EXAMS, getExamBySlug, type ExamEntry, type ExamSlug } from "@/lib/exam/examContext";
+import { INTL_EXAMS } from "@/lib/sites/intl";
 import { MOCK_TYPES, mocksOfType, type MockTypeSlug } from "@/lib/mocks/catalogue";
 // Type-only: keeps this module pure (no DB import at runtime).
 import type { MockListItem } from "@/lib/mocks/query";
@@ -23,9 +24,13 @@ export type MockExamNav = {
   examName: string;
 };
 
-/** Exams that have published mock tests (`hasMocks`), in EXAM_REGISTRY order. */
-export function getMockExams(): MockExamNav[] {
-  return EXAM_REGISTRY.filter((e) => e.hasMocks === true).map((e) => ({
+/**
+ * Exams that have published mock tests (`hasMocks`), in registry order. Lists
+ * www's exams unless given another registry: the full EXAM_REGISTRY for the
+ * pages to prerender, INTL_EXAMS for the intl site's switcher.
+ */
+export function getMockExams(registry: readonly ExamEntry[] = PYQVAULT_EXAMS): MockExamNav[] {
+  return registry.filter((e) => e.hasMocks === true).map((e) => ({
     slug: e.slug,
     displayName: e.displayName,
     examName: e.examName,
@@ -66,9 +71,9 @@ function familySlug(family: string, axis: string | undefined): string {
   return EXAM_REGISTRY.some((e) => e.slug === base) ? `${base}-${urlSegment(axis ?? "exam")}s` : base;
 }
 
-export function getMockFamilies(): MockFamilyNav[] {
+export function getMockFamilies(registry: readonly ExamEntry[] = PYQVAULT_EXAMS): MockFamilyNav[] {
   const byFamily = new Map<string, MockFamilyNav>();
-  for (const e of EXAM_REGISTRY) {
+  for (const e of registry) {
     if (e.hasMocks !== true || !e.family) continue;
     let fam = byFamily.get(e.family);
     if (!fam) {
@@ -102,10 +107,17 @@ const familyMembers = (f: MockFamilyNav) => f.stages.flatMap((s) => s.members);
  * a lone exam as itself, a collapsed family as ONE link that stays active on
  * each member's own page (`alsoActive`).
  */
-export function mockSideNav(): { href: string; label: string; alsoActive?: string[] }[] {
-  const out: { href: string; label: string; alsoActive?: string[] }[] = [{ href: "/mock", label: "All exams" }];
+export function mockSideNav(
+  currentExamSlug?: string
+): { href: string; label: string; alsoActive?: string[] }[] {
+  // On an international exam's page (intl.pyqvault.com) the switcher lists the
+  // international exams only; "All exams" is the intl home there.
+  const intl = getExamBySlug(currentExamSlug)?.site === "intl";
+  const out: { href: string; label: string; alsoActive?: string[] }[] = [
+    { href: intl ? "/" : "/mock", label: "All exams" },
+  ];
   const seen = new Set<string>();
-  for (const e of getMockExams()) {
+  for (const e of getMockExams(intl ? INTL_EXAMS : PYQVAULT_EXAMS)) {
     const fam = mockFamilyOf(e.slug);
     if (!fam) {
       out.push({ href: `/mock/exam/${e.slug}`, label: e.displayName });
@@ -123,7 +135,10 @@ export function mockSideNav(): { href: string; label: string; alsoActive?: strin
 
 /** Slugs to statically pre-render for /mock/exam/[examSlug] — exams and family pages. */
 export function mockExamSlugs(): string[] {
-  return [...getMockExams().map((e) => e.slug as string), ...getMockFamilies().map((f) => f.slug)];
+  return [
+    ...getMockExams(EXAM_REGISTRY).map((e) => e.slug as string),
+    ...getMockFamilies(EXAM_REGISTRY).map((f) => f.slug),
+  ];
 }
 
 /**

@@ -10,6 +10,7 @@ import { parseBoardPaperTarget } from "@/lib/questionPapers/exportPlan";
 import { DOWNLOAD_PASS_SCOPE } from "@/lib/export/access";
 import { passCta, passForScope, type PassCta } from "@/lib/billing/plans";
 import { listActivePlansCached } from "@/lib/billing/plansQuery";
+import { planSiteForHost } from "@/lib/sites/intl";
 import type { ExportViewerAccess } from "@/lib/export/viewerAccess";
 
 /**
@@ -74,7 +75,9 @@ export async function GET(request: NextRequest) {
   let pass: PassCta | null = null;
   if (!viewer.isStaff && !viewer.hasDownloadPass) {
     try {
-      pass = passCta(passForScope(await listActivePlansCached(), DOWNLOAD_PASS_SCOPE));
+      pass = passCta(
+        passForScope(await listActivePlansCached(), DOWNLOAD_PASS_SCOPE, planSiteForHost(request.headers.get("host")))
+      );
     } catch (err) {
       console.error("export access: plans read failed", err);
     }

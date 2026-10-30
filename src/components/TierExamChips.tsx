@@ -3,7 +3,7 @@
 import { useId, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import ProfileChips from "@/components/ProfileChips";
-import { EXAM_REGISTRY } from "@/lib/exam/examContext";
+import { PYQVAULT_EXAMS } from "@/lib/exam/examContext";
 import { examChipsForStage } from "@/lib/profile/examChoices";
 import type { Stage } from "@/lib/profile/onboarding";
 
@@ -32,7 +32,7 @@ export default function TierExamChips({
   const panelId = useId();
   // Board chips name the board only once the class is known; worksheet banks
   // come back as `courses`, listed apart (lib/profile/examChoices).
-  const { shown, hidden, courses } = examChipsForStage(stage, selected, EXAM_REGISTRY);
+  const { shown, hidden, courses } = examChipsForStage(stage, selected, PYQVAULT_EXAMS);
 
   return (
     <div>

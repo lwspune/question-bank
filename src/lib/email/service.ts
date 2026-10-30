@@ -17,6 +17,7 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import type { AttemptLite, MockLite, PriorSend, Recipient, StudentLite } from "./recommend";
+import { isIntlOnlyStudent } from "@/lib/sites/intl";
 
 const PAGE = 1000;
 
@@ -162,15 +163,19 @@ export async function readStudents(db: SupabaseClient): Promise<StudentLite[]> {
   const staff = new Set((members ?? []).map((m) => m.user_id as string));
 
   const optOutById = new Map<string, boolean>();
+  // intl.pyqvault.com students (2026-10-30): every job reading this roster is
+  // written for PYQ Vault's Indian students and links to www, so they are left out.
+  const intlOnly = new Set<string>();
   for (let from = 0; ; from += PAGE) {
     const { data, error } = await db
       .from("student_profiles")
-      .select("user_id, email_opt_out")
+      .select("user_id, email_opt_out, target_exams")
       .range(from, from + PAGE - 1);
     if (error) throw new Error(`readStudents profiles: ${error.message}`);
     const rows = data ?? [];
     for (const p of rows as Record<string, unknown>[]) {
       optOutById.set(p.user_id as string, Boolean(p.email_opt_out));
+      if (isIntlOnlyStudent((p.target_exams as string[] | null) ?? [])) intlOnly.add(p.user_id as string);
     }
     if (rows.length < PAGE) break;
   }
@@ -181,7 +186,7 @@ export async function readStudents(db: SupabaseClient): Promise<StudentLite[]> {
     if (error) throw new Error(`readStudents users: ${error.message}`);
     const batch = data?.users ?? [];
     for (const u of batch) {
-      if (staff.has(u.id)) continue;
+      if (staff.has(u.id) || intlOnly.has(u.id)) continue;
       const meta = (u.user_metadata ?? null) as { full_name?: string; name?: string } | null;
       out.push({
         userId: u.id,

@@ -72,6 +72,7 @@ export async function upsertPlan(input: PlanInput & { active: boolean }): Promis
     url_key: existing ? (existing.url_key as string) : input.urlKey,
     amount_paise: input.amountPaise,
     currency: input.currency,
+    site: input.site,
     duration_days: input.durationDays,
     scope: input.scope,
     active: input.active,

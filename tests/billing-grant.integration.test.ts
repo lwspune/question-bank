@@ -99,6 +99,7 @@ describe.skipIf(!HAS_ENV)("Razorpay grant → entitlement → access", () => {
       scope: SCOPE_MOCKS,
       expiresAt: computeExpiry(Date.now(), 182),
       amountPaise: 19900,
+      currency: "INR",
     });
     expect(result.kind).toBe("ok");
 
@@ -115,11 +116,13 @@ describe.skipIf(!HAS_ENV)("Razorpay grant → entitlement → access", () => {
   it("records what the buyer paid, so /dashboard/sales can add it up", async () => {
     const { data, error } = await admin
       .from("entitlements")
-      .select("amount_paise")
+      .select("amount_paise, currency")
       .eq("provider_ref", PAY_PAID)
       .single();
     expect(error).toBeNull();
     expect(data?.amount_paise).toBe(19900);
+    // ...and in which currency (0203), so paise and cents are never added together.
+    expect(data?.currency).toBe("INR");
   });
 
   it("re-granting the same paymentId is idempotent (no double-grant)", async () => {
@@ -129,6 +132,7 @@ describe.skipIf(!HAS_ENV)("Razorpay grant → entitlement → access", () => {
       scope: SCOPE_MOCKS,
       expiresAt: computeExpiry(Date.now(), 182),
       amountPaise: 19900,
+      currency: "INR",
     });
     expect(result.kind).toBe("already_granted");
 
@@ -149,6 +153,7 @@ describe.skipIf(!HAS_ENV)("Razorpay grant → entitlement → access", () => {
       scope: SCOPE_MOCKS,
       expiresAt: computeExpiry(Date.now(), 182),
       amountPaise: 19900,
+      currency: "INR",
     });
     expect(replay.kind).toBe("already_granted");
     await expect(userHasAccess(paidClient, paidUserId, SCOPE_MOCKS)).resolves.toBe(false);
@@ -169,6 +174,7 @@ describe.skipIf(!HAS_ENV)("Razorpay grant → entitlement → access", () => {
       scope: SCOPE_ALL,
       expiresAt: new Date(Date.now() - 86_400_000).toISOString(), // yesterday
       amountPaise: 9900,
+      currency: "INR",
     });
     expect(result.kind).toBe("ok");
 

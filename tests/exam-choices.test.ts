@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { EXAM_CHIP_OPTIONS } from "@/lib/profile/examChoices";
-import { EXAM_REGISTRY } from "@/lib/exam/examContext";
+import { EXAM_REGISTRY, PYQVAULT_EXAMS } from "@/lib/exam/examContext";
 
 /**
  * The exam chips on /welcome and /account. Grouping here is PRESENTATION ONLY:
@@ -20,7 +20,8 @@ describe("EXAM_CHIP_OPTIONS", () => {
   // is tests/exam-chips-guard.test.ts.
   it("carries every registry slug with content exactly once, unchanged", () => {
     expect(EXAM_CHIP_OPTIONS.map((o) => o.value).sort()).toEqual(
-      EXAM_REGISTRY.filter((e) => !e.noPublicContent).map((e) => e.slug).sort()
+      // www's chips: an international exam (`site: "intl"`) is picked on intl.pyqvault.com, never here.
+      PYQVAULT_EXAMS.filter((e) => !e.noPublicContent).map((e) => e.slug).sort()
     );
   });
 
