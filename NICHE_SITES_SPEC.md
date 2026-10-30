@@ -42,8 +42,22 @@ international when its `EXAM_REGISTRY` entry says `site: "intl"`.
 **Money (migration 0203).** `plans.site` ('pyqvault' INR, 'intl' USD, one
 CHECK pairs them); `amount_paise` is the currency's smallest unit. Each paid
 pass records `entitlements.currency`; `sales_by_period` sums INR passes in
-`pass_paise` and USD ones in `pass_usd_cents`, never together. The pass
-itself is the same scope (`mocks`), so it works on both sites.
+`pass_paise` and USD ones in `pass_usd_cents`, never together.
+
+**A pass per exam, priced per country (migration 0206, owner 2026-10-30).**
+Each exam names the pass that covers it: registry `passScope`, mirrored by
+`exams.pass_scope` (IMAT `imat`, MCAT `mcat`, every Indian exam the www
+Premium Pass `mocks`). So the Rs 499 www pass no longer unlocks IMAT, and an
+international pass can cost more. The mock and save limit triggers ask for
+the exam's pass; downloads and the reveal meter ask for the site's passes
+(SUGGESTIONS.md 2026-10-30 has the gap). A plan may be sold to some countries
+only (`plans.countries`): IMAT is $19 for 6 months, or Rs 999 in India (an
+intl plan in INR is allowed only when sold to India alone, because Indian
+cards often fail on dollar payments and UPI is rupees only). The checkout
+picks the plan from the buyer's country (`resolveOrderPlan`, Vercel's
+location header), whichever price the button showed; /pricing shows the
+buyer's cards (`plansForBuyer`). MCAT's pass ($29 for 3 months) is in the
+table switched off until MCAT has content.
 
 **Moving to its own domain later:** change `INTL_ORIGIN`, add the old host to
 `FORMER_INTL_HOSTS` (the middleware 301s every old URL to the same path on the
