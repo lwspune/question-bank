@@ -43,13 +43,29 @@ export function normaliseFrom(raw: unknown): string | null {
   return typeof raw === "string" && SECTION_RE.test(raw) ? raw : null;
 }
 
+/** The questions that can follow a Yes, in the order they are asked. */
+export type TutorFollowUp = "city" | "contact";
+
 /**
- * Whether to ask for a mobile as the last question (owner, 2026-10-28): only
- * after a Yes, and only when the account has none on file, so we can reach the
- * people who want tutoring without asking anyone twice.
+ * What to ask after a Yes (owner, 2026-10-28 and 2026-10-30): the city, then a
+ * mobile, each only when the profile has none, so we can reach the people who
+ * want tutoring, and see where they are, without asking anyone twice. The Yes
+ * is saved before either, so skipping them still counts it.
  */
-export function needsContactStep({ wants, hasMobile }: { wants: boolean; hasMobile: boolean }): boolean {
-  return wants && !hasMobile;
+export function stepsAfterYes({
+  wants,
+  hasCity,
+  hasMobile,
+}: {
+  wants: boolean;
+  hasCity: boolean;
+  hasMobile: boolean;
+}): TutorFollowUp[] {
+  if (!wants) return [];
+  const steps: TutorFollowUp[] = [];
+  if (!hasCity) steps.push("city");
+  if (!hasMobile) steps.push("contact");
+  return steps;
 }
 
 /** One stored answer, as the contact list reads it. */
@@ -67,6 +83,7 @@ export type TutorContact = {
   name: string | null;
   email: string | null;
   mobile: string | null;
+  city: string | null;
   role: TutorRole;
   mode: TutorMode | null;
   examSlug: string | null;
@@ -74,14 +91,15 @@ export type TutorContact = {
 };
 
 /**
- * The people who said Yes, newest first, for the owner to reach. A Yes saved
+ * The people who said Yes, newest first, for the owner to reach, with the
+ * mobile and city on their profile. A Yes saved
  * before sign-in was required (2026-10-28) has no account behind it, so it is
  * counted as unreachable rather than listed.
  */
 export function buildTutorContacts(
   rows: readonly TutorAnswerRow[],
   people: ReadonlyMap<string, { name: string | null; email: string | null }>,
-  mobiles: ReadonlyMap<string, string>
+  profiles: ReadonlyMap<string, { mobile: string | null; city: string | null }>
 ): { contacts: TutorContact[]; unreachableYes: number } {
   const contacts: TutorContact[] = [];
   let unreachableYes = 0;
@@ -92,11 +110,13 @@ export function buildTutorContacts(
       continue;
     }
     const person = people.get(r.user_id);
+    const profile = profiles.get(r.user_id);
     contacts.push({
       userId: r.user_id,
       name: person?.name ?? null,
       email: person?.email ?? null,
-      mobile: mobiles.get(r.user_id) ?? null,
+      mobile: profile?.mobile ?? null,
+      city: profile?.city ?? null,
       role: r.role,
       mode: r.mode,
       examSlug: r.exam_slug,
@@ -105,6 +125,29 @@ export function buildTutorContacts(
   }
   contacts.sort((a, b) => b.answeredAt.localeCompare(a.answeredAt));
   return { contacts, unreachableYes };
+}
+
+export type TutorCityTally = { city: string | null; students: number; teachers: number };
+
+/**
+ * Yes answers per city (2026-10-30), which says where offline tutoring could
+ * work. The city is typed freely, so case and spaces are ignored and the first
+ * spelling seen is shown. Busiest first, ties by name, no city last.
+ */
+export function tallyYesByCity(contacts: readonly TutorContact[]): TutorCityTally[] {
+  const byKey = new Map<string, TutorCityTally>();
+  for (const c of contacts) {
+    const name = c.city?.trim() || null;
+    const key = name ? name.toLowerCase().replace(/\s+/g, " ") : "";
+    const t = byKey.get(key) ?? { city: name, students: 0, teachers: 0 };
+    if (c.role === "student") t.students++;
+    else t.teachers++;
+    byKey.set(key, t);
+  }
+  return Array.from(byKey.values()).sort((a, b) => {
+    if ((a.city === null) !== (b.city === null)) return a.city === null ? 1 : -1;
+    return b.students + b.teachers - (a.students + a.teachers) || (a.city ?? "").localeCompare(b.city ?? "");
+  });
 }
 
 /** One stored answer, as the readout reads it. */

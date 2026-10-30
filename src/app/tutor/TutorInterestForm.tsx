@@ -8,24 +8,26 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { isValidIndianMobile } from "@/lib/profile/mobile";
-import { needsContactStep, type TutorMode, type TutorRole } from "@/lib/tutor/interest";
+import { stepsAfterYes, type TutorFollowUp, type TutorMode, type TutorRole } from "@/lib/tutor/interest";
 
 /**
  * Three one-tap questions (migration 0190). Student or Teacher first, because
  * the second question means something different to each: a student is asked
  * whether they want a tutor, a teacher whether they would be one. A No is
  * saved at once and ends the flow; a Yes asks Online / Offline / Either.
- * After a Yes, an account with no mobile on file is asked for one last
- * (2026-10-28), saved to student_profiles like the mock-result gate. The Yes
- * is already saved by then, so "Not now" still counts it.
+ * After a Yes, an account with no city on file is asked for one (2026-10-30),
+ * then one with no mobile for that (2026-10-28), both saved to
+ * student_profiles. The Yes is already saved by then, so "Not now" on either
+ * still counts it.
  */
 
-type Step = "role" | "wants" | "mode" | "contact" | "done";
+type Step = "role" | "wants" | "mode" | TutorFollowUp | "done";
 
 const QUESTION: Record<Exclude<Step, "done">, Record<TutorRole, string>> = {
   role: { student: "Are you a student or a teacher?", teacher: "Are you a student or a teacher?" },
   wants: { student: "Are you looking for 1:1 tutoring?", teacher: "Would you like to teach 1:1 on PYQ Vault?" },
   mode: { student: "How would you like to learn?", teacher: "How would you like to teach?" },
+  city: { student: "Which city are you in?", teacher: "Which city are you in?" },
   contact: { student: "How can we reach you?", teacher: "How can we reach you?" },
 };
 
@@ -33,12 +35,19 @@ const MODE_LABEL: Record<TutorMode, string> = { online: "Online", offline: "Offl
 
 const choiceClass = "h-12 w-full text-base";
 
-export default function TutorInterestForm({ hasMobile }: { hasMobile: boolean }) {
+const CITY_MAX = 80; // student_profiles.city CHECK (migration 0049)
+
+const linkButtonClass =
+  "w-full rounded-md py-1 text-sm text-muted-foreground hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2";
+
+export default function TutorInterestForm({ hasMobile, hasCity }: { hasMobile: boolean; hasCity: boolean }) {
   const [step, setStep] = useState<Step>("role");
   const [role, setRole] = useState<TutorRole>("student");
   const [wants, setWants] = useState(false);
+  const [followUps, setFollowUps] = useState<TutorFollowUp[]>([]);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [city, setCity] = useState("");
   const [mobile, setMobile] = useState("");
   const [consent, setConsent] = useState(false);
   const headingRef = useRef<HTMLHeadingElement>(null);
@@ -68,10 +77,48 @@ export default function TutorInterestForm({ hasMobile }: { hasMobile: boolean })
         throw new Error(body?.error ?? "Could not save your answer. Please try again.");
       }
       setWants(answer.wants);
-      setStep(needsContactStep({ wants: answer.wants, hasMobile }) ? "contact" : "done");
+      const next = stepsAfterYes({ wants: answer.wants, hasCity, hasMobile });
+      setFollowUps(next);
+      setStep(next[0] ?? "done");
       toast.success("Thanks, your answer is saved.");
     } catch (err) {
       const message = err instanceof Error ? err.message : "Could not save your answer. Please try again.";
+      setError(message);
+      toast.error(message);
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  /** The question after `current` among the follow-ups, or the thank-you. */
+  function advanceFrom(current: TutorFollowUp) {
+    setError(null);
+    setStep(followUps[followUps.indexOf(current) + 1] ?? "done");
+  }
+
+  async function saveCity(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const value = city.trim();
+    if (!value) {
+      setError("Enter your city, or tap Not now.");
+      return;
+    }
+    setSaving(true);
+    setError(null);
+    try {
+      const res = await fetch("/api/profile", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ city: value }),
+      });
+      if (!res.ok) {
+        const body = (await res.json().catch(() => null)) as { error?: string } | null;
+        throw new Error(body?.error ?? "Could not save your city. Please try again.");
+      }
+      toast.success("Thanks, we have your city.");
+      advanceFrom("city");
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Could not save your city. Please try again.";
       setError(message);
       toast.error(message);
     } finally {
@@ -134,19 +181,21 @@ export default function TutorInterestForm({ hasMobile }: { hasMobile: boolean })
   }
 
   const back = step === "wants" ? "role" : step === "mode" ? "wants" : null;
-  const questionNo = { role: 1, wants: 2, mode: 3, contact: 4 }[step];
+  const askCity = !hasCity;
+  const questionNo = { role: 1, wants: 2, mode: 3, city: 4, contact: askCity ? 5 : 4 }[step];
+  const questionTotal = 3 + (askCity ? 1 : 0) + (hasMobile ? 0 : 1);
   const mobileOk = isValidIndianMobile(mobile);
 
   return (
     <section className="mt-6 rounded-xl border bg-card p-6" aria-live="polite" aria-busy={saving}>
       <p className="text-xs font-medium text-muted-foreground">
-        Question {questionNo} of {hasMobile ? 3 : 4}
+        Question {questionNo} of {questionTotal}
       </p>
       <h2 ref={headingRef} tabIndex={-1} className="mt-1 text-lg font-semibold focus:outline-none">
         {QUESTION[step][role]}
       </h2>
 
-      {step !== "contact" && (
+      {(step === "role" || step === "wants" || step === "mode") && (
         <div className="mt-5 grid gap-3">
           {step === "role" &&
             (["student", "teacher"] as const).map((r) => (
@@ -191,6 +240,33 @@ export default function TutorInterestForm({ hasMobile }: { hasMobile: boolean })
         </div>
       )}
 
+      {step === "city" && (
+        <form onSubmit={saveCity} className="mt-3 space-y-4">
+          <p className="text-sm leading-relaxed text-muted-foreground">
+            Your answer is saved. Your city tells us where we could offer tutoring.
+          </p>
+          <div className="space-y-2">
+            <Label htmlFor="tutor-city">City</Label>
+            <Input
+              id="tutor-city"
+              autoComplete="address-level2"
+              required
+              maxLength={CITY_MAX}
+              placeholder="e.g. Pune"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+              disabled={saving}
+            />
+          </div>
+          <Button type="submit" variant="brand" className={choiceClass} disabled={saving || !city.trim()}>
+            Save my city
+          </Button>
+          <button type="button" disabled={saving} onClick={() => advanceFrom("city")} className={linkButtonClass}>
+            Not now
+          </button>
+        </form>
+      )}
+
       {step === "contact" && (
         <form onSubmit={saveMobile} className="mt-3 space-y-4">
           <p className="text-sm leading-relaxed text-muted-foreground">
@@ -230,15 +306,7 @@ export default function TutorInterestForm({ hasMobile }: { hasMobile: boolean })
           <Button type="submit" variant="brand" className={choiceClass} disabled={saving || !mobileOk || !consent}>
             Save my number
           </Button>
-          <button
-            type="button"
-            disabled={saving}
-            onClick={() => {
-              setError(null);
-              setStep("done");
-            }}
-            className="w-full rounded-md py-1 text-sm text-muted-foreground hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-          >
+          <button type="button" disabled={saving} onClick={() => advanceFrom("contact")} className={linkButtonClass}>
             Not now
           </button>
         </form>

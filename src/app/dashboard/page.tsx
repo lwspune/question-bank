@@ -16,6 +16,7 @@ import {
   Flag,
   Gem,
   GraduationCap,
+  HandHelping,
   IndianRupee,
   ListChecks,
   MessageCircle,
@@ -415,6 +416,14 @@ function QuickActions({
           icon={<FlaskConical className="h-5 w-5" aria-hidden />}
           title="Growth"
           description="The North Star, signups by week, and each growth experiment against its own decision rule."
+        />
+      )}
+      {isSuperadmin && (
+        <ActionCard
+          href="/dashboard/tutor"
+          icon={<HandHelping className="h-5 w-5" aria-hidden />}
+          title="Tutor interest"
+          description="Who wants 1:1 tutoring or would teach it: Online or Offline, by city, with their contact details."
         />
       )}
       {isSuperadmin && (
