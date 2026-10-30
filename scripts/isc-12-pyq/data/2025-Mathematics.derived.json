@@ -1,0 +1,383 @@
+{
+  "derivedBy": "Claude Opus 5.5 subagent, independent solve of ISC 2025 Mathematics",
+  "answers": [
+    {
+      "ref": "1(i)",
+      "label": "B",
+      "value": "Null matrix",
+      "working": "Multiply \\(A\\) by itself: \\(A^2 = \\begin{bmatrix} 0 & a \\\\ 0 & 0 \\end{bmatrix}\\begin{bmatrix} 0 & a \\\\ 0 & 0 \\end{bmatrix} = \\begin{bmatrix} 0 & 0 \\\\ 0 & 0 \\end{bmatrix} = O\\).\n\nOnce \\(A^2 = O\\), every higher power is also zero: \\(A^{16} = (A^2)^8 = O\\).\n\nSo the answer is option (B), the null matrix.",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "1(ii)",
+      "label": "D",
+      "value": "\\(y^2 dx + (x^2 - xy - y^2)dy = 0\\)",
+      "working": "An equation \\(M\\,dx + N\\,dy = 0\\) is homogeneous when \\(M\\) and \\(N\\) are homogeneous functions of the same degree.\n\nIn (A) the coefficients contain constant and first-degree terms mixed with second-degree terms, so they are not homogeneous. In (B), \\(xy\\) has degree 2 but \\(x^3 + y^3\\) has degree 3. In (C), \\(x^3 + 2y^2\\) mixes degrees 3 and 2.\n\nIn (D), \\(y^2\\) and \\(x^2 - xy - y^2\\) are both homogeneous of degree 2, so \\(\\frac{dy}{dx} = \\frac{-y^2}{x^2 - xy - y^2}\\) is a function of \\(\\frac{y}{x}\\) alone.\n\nSo the answer is option (D).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "1(iii)",
+      "label": "C",
+      "value": "Both the statements are true.",
+      "working": "From the graph, \\(f\\) rises from 0 to 1 on \\(\\left(\\frac{1}{2}, 1\\right)\\) and then stays constant at 1 on \\((1, 2)\\).\n\n**Statement 1:** a function is increasing on an interval if \\(x_1 < x_2 \\Rightarrow f(x_1) \\le f(x_2)\\). On \\(\\left(\\frac{1}{2}, 2\\right)\\) the graph never goes down (it rises, then stays level), so \\(f\\) is increasing there. True.\n\n**Statement 2:** on \\(\\left(\\frac{1}{2}, 1\\right)\\) the graph rises all the way, so \\(x_1 < x_2 \\Rightarrow f(x_1) < f(x_2)\\): \\(f\\) is strictly increasing. True.\n\nSo the answer is option (C), both statements are true.",
+      "difficulty": "Easy",
+      "confidence": "MEDIUM",
+      "flag": "Statement 1 is true only under the textbook definition of 'increasing' (non-decreasing); f is constant on (1, 2), so it is not strictly increasing on (1/2, 2)."
+    },
+    {
+      "ref": "1(iv)",
+      "label": "C",
+      "value": "\\(\\frac{-2}{3}\\)",
+      "working": "Factorise the numerator: \\(x^4 - 1 = (x^2 - 1)(x^2 + 1)\\), so \\(\\frac{x^4 - 1}{x^2 + 1} = x^2 - 1\\).\n\nThen \\(\\int_0^1 (x^2 - 1)\\,dx = \\left[\\frac{x^3}{3} - x\\right]_0^1 = \\frac{1}{3} - 1 = -\\frac{2}{3}\\).\n\nSo the answer is option (C), \\(\\frac{-2}{3}\\).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "1(v)",
+      "label": "C",
+      "value": "Assertion is true and Reason is false.",
+      "working": "\\(P\\left(\\frac{A}{B}\\right) = \\frac{P(A \\cap B)}{P(B)}\\) and \\(P\\left(\\frac{B}{A}\\right) = \\frac{P(A \\cap B)}{P(A)}\\). When \\(n(A) = n(B)\\) we have \\(P(A) = P(B)\\), so the two conditional probabilities are always equal. The situation described in the Assertion is therefore possible and correct.\n\nThe Reason claims that A and B must be mutually exclusive. This does not follow: for example, if \\(A = B\\) then \\(n(A) = n(B)\\) and both conditional probabilities equal 1, yet A and B are not mutually exclusive. Equality comes from \\(P(A) = P(B)\\), not from \\(A \\cap B = \\phi\\).\n\nSo the answer is option (C), Assertion is true and Reason is false.",
+      "difficulty": "Moderate",
+      "confidence": "MEDIUM",
+      "flag": "The Assertion is worded as a description ('Consider the two events...') rather than a claim, so 'true' has to be read as 'this situation is consistent'. The Reason is read as the claim that A and B must be mutually exclusive."
+    },
+    {
+      "ref": "1(vi)",
+      "label": "D",
+      "value": "\\(k\\) only",
+      "working": "A system of two linear equations has a unique solution exactly when the determinant of its coefficient matrix is non-zero.\n\nHere \\(\\begin{vmatrix} 1 & 1 \\\\ 5 & k \\end{vmatrix} = k - 5\\), so there is a unique solution whenever \\(k \\ne 5\\), whatever the value of \\(\\lambda\\). The right-hand side \\(\\lambda\\) only affects what the solution is, not whether it is unique.\n\nSo the answer is option (D), \\(k\\) only.",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "1(vii)",
+      "label": "A",
+      "value": "1 cm/minute",
+      "working": "Volume of popcorn in the tub: \\(V = \\pi r^2 h = 100\\pi h\\) (since \\(r = 10\\) cm is fixed).\n\nDifferentiate with respect to time: \\(\\frac{dV}{dt} = 100\\pi \\frac{dh}{dt}\\). With \\(\\frac{dV}{dt} = 314\\) and \\(\\pi = 3{\\cdot}14\\): \\(314 = 314\\frac{dh}{dt}\\), so \\(\\frac{dh}{dt} = 1\\) cm/minute.\n\nSo the answer is option (A), 1 cm/minute.",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "1(viii)",
+      "label": "C",
+      "value": "\\(2\\)",
+      "working": "Each piece is a polynomial, so \\(f\\) can only break at the joins \\(x = 0\\) and \\(x = 1\\).\n\nAt \\(x = 0\\): left-hand limit \\(= 0 + 2 = 2\\), but \\(f(0) = -0 - 2 = -2\\). Discontinuous.\n\nAt \\(x = 1\\): left-hand limit \\(= -1 - 2 = -3\\), but \\(f(1) = 1\\). Discontinuous.\n\nSo there are 2 points of discontinuity, option (C).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "1(ix)",
+      "label": "A",
+      "value": "Both Assertion and Reason are true and Reason is the correct explanation for Assertion.",
+      "working": "**Reason:** by definition, \\(f : A \\rightarrow B\\) is a function only if every element of A has an image in B. True.\n\n**Assertion:** a one-one function needs the \\(m\\) elements of A to have \\(m\\) different images. Because every element of A must have an image (the Reason), and B has only \\(n < m\\) elements, at least two elements of A would have to share an image. So no one-one function exists, and the number is zero. True.\n\nThe Reason is exactly what forces all \\(m\\) elements to be mapped, which is why distinct images run out. So the answer is option (A).",
+      "difficulty": "Easy",
+      "confidence": "MEDIUM",
+      "flag": "Whether the Reason counts as 'the correct explanation' is a judgement call: the full argument also needs the one-one (distinct images) condition, so some may argue for (B)."
+    },
+    {
+      "ref": "1(x)",
+      "label": "B",
+      "value": "\\(4\\)",
+      "working": "\\(E(X) = \\sum x\\,P(x) = 30 \\times \\frac{1}{5} + 10 \\times \\frac{3}{10} + (-10) \\times \\frac{1}{2} = 6 + 3 - 5 = 4\\).\n\nSo the answer is option (B), 4.",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "1(xi)",
+      "label": "C",
+      "value": "Both the statements are true.",
+      "working": "**Statement 1:** \\(A^2 (A^{-1})^2 = A A A^{-1} A^{-1} = A I A^{-1} = I\\), so \\((A^2)^{-1} = (A^{-1})^2\\). True.\n\n**Statement 2:** \\(A A^{-1} = I\\) gives \\(|A|\\,|A^{-1}| = |I| = 1\\), so \\(|A^{-1}| = \\frac{1}{|A|} = |A|^{-1}\\). True.\n\nSo the answer is option (C), both statements are true.",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "1(xii)",
+      "value": "\\(R = \\{(1, 1), (2, 2), (3, 3)\\}\\)",
+      "working": "Every equivalence relation on A must be reflexive, so it must contain \\((1, 1), (2, 2), (3, 3)\\).\n\nThe identity relation \\(R = \\{(1, 1), (2, 2), (3, 3)\\}\\) is reflexive, and it is also symmetric and transitive (each pair only relates an element to itself). Since nothing smaller can be reflexive, this is the smallest equivalence relation on A.",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "1(xiii)",
+      "value": "\\(x = 2\\)",
+      "working": "A matrix is skew symmetric when \\(a_{ji} = -a_{ij}\\) for all \\(i, j\\).\n\nThe other entries already satisfy this (\\(a_{21} = -1 = -a_{12}\\), \\(a_{32} = -3 = -a_{23}\\), diagonal all zero). For the remaining pair we need \\(a_{31} = -a_{13}\\), that is \\(x = -(-2) = 2\\).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "1(xiv)",
+      "value": "\\(\\frac{60}{343}\\)",
+      "working": "Odds in favour \\(a : b\\) mean a probability of \\(\\frac{a}{a + b}\\). So the three critics favour the book with probabilities \\(\\frac{5}{7}\\), \\(\\frac{4}{7}\\) and \\(\\frac{3}{7}\\).\n\nThe critics judge independently, so \\(P(\\text{all in favour}) = \\frac{5}{7} \\times \\frac{4}{7} \\times \\frac{3}{7} = \\frac{60}{343}\\).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "1(xv)",
+      "value": "\\(5\\sqrt{2x + 7} + C\\)",
+      "working": "Put \\(t = 2x + 7\\), so \\(dt = 2\\,dx\\).\n\n\\(\\int \\frac{5}{\\sqrt{2x + 7}}\\,dx = \\frac{5}{2}\\int t^{-\\frac{1}{2}}\\,dt = \\frac{5}{2} \\cdot 2t^{\\frac{1}{2}} + C = 5\\sqrt{2x + 7} + C\\).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "2",
+      "value": "\\(\\left(\\frac{3}{2}, -\\frac{17}{2}\\right)\\)",
+      "working": "The tangent is parallel to the \\(x\\)-axis where its slope is zero.\n\n\\(\\frac{dy}{dx} = 4x - 6 = 0 \\Rightarrow x = \\frac{3}{2}\\).\n\nThen \\(y = 2\\left(\\frac{9}{4}\\right) - 6\\left(\\frac{3}{2}\\right) - 4 = \\frac{9}{2} - 9 - 4 = -\\frac{17}{2}\\).\n\nSo the required point is \\(\\left(\\frac{3}{2}, -\\frac{17}{2}\\right)\\).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "3",
+      "value": "\\(\\frac{5}{4}\\)",
+      "working": "We know \\(\\tan^{-1} x + \\cot^{-1} x = \\frac{\\pi}{2}\\).\n\nFactorise the given equation as a difference of squares:\n\n\\((\\tan^{-1} x - \\cot^{-1} x)(\\tan^{-1} x + \\cot^{-1} x) = \\frac{5\\pi}{8}\\)\n\n\\((\\tan^{-1} x - \\cot^{-1} x) \\cdot \\frac{\\pi}{2} = \\frac{5\\pi}{8}\\)\n\n\\(\\tan^{-1} x - \\cot^{-1} x = \\frac{5\\pi}{8} \\times \\frac{2}{\\pi} = \\frac{5}{4}\\).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "4(i)",
+      "value": "Proved",
+      "working": "Take logarithms of \\(x^y = e^{x - y}\\):\n\n\\(y \\log x = x - y \\Rightarrow y(1 + \\log x) = x \\Rightarrow y = \\frac{x}{1 + \\log x}\\).\n\nDifferentiate by the quotient rule:\n\n\\(\\frac{dy}{dx} = \\frac{(1 + \\log x) \\cdot 1 - x \\cdot \\frac{1}{x}}{(1 + \\log x)^2} = \\frac{1 + \\log x - 1}{(1 + \\log x)^2} = \\frac{\\log x}{(1 + \\log x)^2}\\).\n\nHence proved.",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "4(ii)",
+      "value": "Minimum at \\(x = 0\\), minimum value 1",
+      "working": "The function is defined for \\(x > -1\\).\n\n\\(f'(x) = \\frac{1}{1 + x} - \\frac{1}{(1 + x)^2} = \\frac{(1 + x) - 1}{(1 + x)^2} = \\frac{x}{(1 + x)^2}\\).\n\n\\(f'(x) = 0 \\Rightarrow x = 0\\).\n\n\\(f''(x) = -\\frac{1}{(1 + x)^2} + \\frac{2}{(1 + x)^3}\\), so \\(f''(0) = -1 + 2 = 1 > 0\\).\n\n(Equally, \\(f'(x) < 0\\) for \\(-1 < x < 0\\) and \\(f'(x) > 0\\) for \\(x > 0\\).) So \\(f\\) has a minimum at \\(x = 0\\), and the minimum value is \\(f(0) = \\log 1 + 1 = 1\\).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "5",
+      "value": "A = ₹250, B = ₹270, C = ₹200",
+      "working": "**(i)** Let the rows stand for Gaurav, Rizwan and Jacob and the columns for polythene, handmade and newspaper bags. With the cost per bag as a column matrix:\n\n\\(\\begin{bmatrix} 20 & 30 & 40 \\\\ 30 & 40 & 20 \\\\ 40 & 20 & 30 \\end{bmatrix} \\begin{bmatrix} 1 \\\\ 5 \\\\ 2 \\end{bmatrix} = \\begin{bmatrix} A \\\\ B \\\\ C \\end{bmatrix}\\)\n\n**(ii)** Multiplying:\n\n\\(A = 20(1) + 30(5) + 40(2) = 20 + 150 + 80 = 250\\)\n\n\\(B = 30(1) + 40(5) + 20(2) = 30 + 200 + 40 = 270\\)\n\n\\(C = 40(1) + 20(5) + 30(2) = 40 + 100 + 60 = 200\\)\n\nSo Gaurav spends ₹250, Rizwan ₹270 and Jacob ₹200.",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "6(i)",
+      "value": "\\(\\frac{2 \\cdot 6^x \\log 6}{1 + 36^x}\\)",
+      "working": "Simplify the argument: \\(2^{x + 1}3^x = 2 \\cdot 6^x\\) and \\(36^x = (6^x)^2\\), so\n\n\\(y = \\sin^{-1}\\left(\\frac{2 \\cdot 6^x}{1 + (6^x)^2}\\right)\\).\n\nPut \\(6^x = \\tan\\theta\\). Then \\(\\frac{2\\tan\\theta}{1 + \\tan^2\\theta} = \\sin 2\\theta\\), so \\(y = \\sin^{-1}(\\sin 2\\theta) = 2\\theta = 2\\tan^{-1}(6^x)\\) (this holds for \\(-\\frac{\\pi}{4} \\le \\theta \\le \\frac{\\pi}{4}\\), i.e. \\(6^x \\le 1\\)).\n\nDifferentiate:\n\n\\(\\frac{dy}{dx} = 2 \\cdot \\frac{1}{1 + (6^x)^2} \\cdot 6^x \\log 6 = \\frac{2 \\cdot 6^x \\log 6}{1 + 36^x}\\).\n\nNote: for \\(x > 0\\) (where \\(6^x > 1\\)), \\(y = \\pi - 2\\tan^{-1}(6^x)\\) and the derivative is the negative of this expression.",
+      "difficulty": "Moderate",
+      "confidence": "HIGH",
+      "flag": "The question gives no domain; the standard answer 2*6^x log6/(1+36^x) holds for x < 0, and the sign flips for x > 0."
+    },
+    {
+      "ref": "6(ii)",
+      "value": "Shown",
+      "working": "Separate the variables in \\((1 + x^2)dy + (1 + y^2)dx = 0\\) by dividing by \\((1 + x^2)(1 + y^2)\\):\n\n\\(\\frac{dy}{1 + y^2} + \\frac{dx}{1 + x^2} = 0\\).\n\nIntegrate both terms:\n\n\\(\\tan^{-1} y + \\tan^{-1} x = C\\), where \\(C\\) is an arbitrary constant.\n\nThis contains one arbitrary constant for a first-order equation, so \\(\\tan^{-1} x + \\tan^{-1} y = C\\) is the general solution.",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "7",
+      "value": "Shown: the determinant equals \\((y - x)(z - x)(z - y)(x + y + z) = 0\\)",
+      "working": "Let \\(\\Delta = \\begin{vmatrix} 1 & 1 & 1 \\\\ x & y & z \\\\ x^3 & y^3 & z^3 \\end{vmatrix}\\).\n\nApply \\(C_2 \\rightarrow C_2 - C_1\\) and \\(C_3 \\rightarrow C_3 - C_1\\):\n\n\\(\\Delta = \\begin{vmatrix} 1 & 0 & 0 \\\\ x & y - x & z - x \\\\ x^3 & y^3 - x^3 & z^3 - x^3 \\end{vmatrix}\\).\n\nTake \\((y - x)\\) common from \\(C_2\\) and \\((z - x)\\) common from \\(C_3\\), using \\(y^3 - x^3 = (y - x)(y^2 + xy + x^2)\\):\n\n\\(\\Delta = (y - x)(z - x)\\begin{vmatrix} 1 & 0 & 0 \\\\ x & 1 & 1 \\\\ x^3 & y^2 + xy + x^2 & z^2 + zx + x^2 \\end{vmatrix}\\).\n\nExpand along \\(R_1\\):\n\n\\(\\Delta = (y - x)(z - x)\\left[(z^2 + zx + x^2) - (y^2 + xy + x^2)\\right] = (y - x)(z - x)\\left[(z^2 - y^2) + x(z - y)\\right]\\)\n\n\\(= (y - x)(z - x)(z - y)(x + y + z)\\).\n\nSince \\(x + y + z = 0\\), \\(\\Delta = 0\\). Hence shown.",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "8(i)",
+      "value": "\\(\\frac{x}{3} - \\frac{5}{6}\\tan^{-1}\\left(2\\tan\\frac{x}{2}\\right) + C\\)",
+      "working": "Write the numerator in terms of the denominator: \\(\\cos x = \\frac{1}{3}(3\\cos x - 5) + \\frac{5}{3}\\). So\n\n\\(I = \\int \\frac{\\cos x}{3\\cos x - 5}\\,dx = \\frac{1}{3}\\int dx + \\frac{5}{3}\\int \\frac{dx}{3\\cos x - 5} = \\frac{x}{3} + \\frac{5}{3}I_1\\).\n\nFor \\(I_1\\), put \\(t = \\tan\\frac{x}{2}\\), so \\(\\cos x = \\frac{1 - t^2}{1 + t^2}\\) and \\(dx = \\frac{2\\,dt}{1 + t^2}\\):\n\n\\(3\\cos x - 5 = \\frac{3 - 3t^2 - 5 - 5t^2}{1 + t^2} = \\frac{-2(1 + 4t^2)}{1 + t^2}\\).\n\n\\(I_1 = \\int \\frac{2\\,dt}{-2(1 + 4t^2)} = -\\int \\frac{dt}{1 + (2t)^2} = -\\frac{1}{2}\\tan^{-1}(2t)\\).\n\nTherefore\n\n\\(I = \\frac{x}{3} - \\frac{5}{6}\\tan^{-1}\\left(2\\tan\\frac{x}{2}\\right) + C\\).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "8(ii)",
+      "value": "\\(x(\\log x)^2 - 2x\\log x + 2x + C\\)",
+      "working": "Integrate by parts, taking \\((\\log x)^2\\) as the first function and 1 as the second:\n\n\\(\\int (\\log x)^2 \\cdot 1\\,dx = x(\\log x)^2 - \\int 2\\log x \\cdot \\frac{1}{x} \\cdot x\\,dx = x(\\log x)^2 - 2\\int \\log x\\,dx\\).\n\nAgain by parts, \\(\\int \\log x\\,dx = x\\log x - \\int \\frac{1}{x} \\cdot x\\,dx = x\\log x - x\\).\n\nSo \\(\\int (\\log x)^2\\,dx = x(\\log x)^2 - 2x\\log x + 2x + C\\).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "9(i)",
+      "value": "Shown",
+      "working": "From \\(x = \\tan\\left(\\frac{1}{a}\\log y\\right)\\): \\(\\frac{1}{a}\\log y = \\tan^{-1} x\\), so \\(\\log y = a\\tan^{-1} x\\) and \\(y = e^{a\\tan^{-1} x}\\).\n\nDifferentiate: \\(\\frac{dy}{dx} = e^{a\\tan^{-1} x} \\cdot \\frac{a}{1 + x^2} = \\frac{ay}{1 + x^2}\\), so\n\n\\((1 + x^2)\\frac{dy}{dx} = ay\\).\n\nDifferentiate again with respect to \\(x\\):\n\n\\((1 + x^2)\\frac{d^2y}{dx^2} + 2x\\frac{dy}{dx} = a\\frac{dy}{dx}\\).\n\nRearranging, \\((1 + x^2)\\frac{d^2y}{dx^2} + (2x - a)\\frac{dy}{dx} = 0\\). Hence shown.",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "9(ii)",
+      "value": "(a) \\(-3x^2 + 27\\); (b) A\\((-3, -56)\\), B\\((3, 52)\\); (c) \\(f(0) < f'(3) < f''(-2)\\), i.e. \\(-2 < 0 < 12\\)",
+      "working": "**(a)** The slope of the graph at any point is\n\n\\(f'(x) = \\frac{d}{dx}(-x^3 + 27x - 2) = -3x^2 + 27\\).\n\n**(b)** At the turning points the slope is zero: \\(-3x^2 + 27 = 0 \\Rightarrow x^2 = 9 \\Rightarrow x = \\pm 3\\).\n\n\\(f''(x) = -6x\\). At \\(x = -3\\), \\(f''(-3) = 18 > 0\\), a local minimum (point A on the left); \\(f(-3) = 27 - 81 - 2 = -56\\).\n\nAt \\(x = 3\\), \\(f''(3) = -18 < 0\\), a local maximum (point B on the right); \\(f(3) = -27 + 81 - 2 = 52\\).\n\nSo A is \\((-3, -56)\\) and B is \\((3, 52)\\).\n\n**(c)** \\(f''(-2) = -6(-2) = 12\\), \\(f(0) = -2\\), \\(f'(3) = -27 + 27 = 0\\).\n\nIn ascending order: \\(f(0) < f'(3) < f''(-2)\\), that is \\(-2 < 0 < 12\\).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "10",
+      "value": "(i) \\(\\frac{75}{406}\\); (ii) \\(\\frac{117}{812}\\)",
+      "working": "There are \\(15 + 5 + 10 = 30\\) paintings in all. The number of ways to choose 3 of them is\n\n\\({}^{30}C_3 = \\frac{30 \\times 29 \\times 28}{6} = 4060\\).\n\n**(i)** One painting from each artist: \\({}^{15}C_1 \\times {}^{5}C_1 \\times {}^{10}C_1 = 15 \\times 5 \\times 10 = 750\\) ways.\n\n\\(P = \\frac{750}{4060} = \\frac{75}{406}\\).\n\n**(ii)** All three from the same artist: \\({}^{15}C_3 + {}^{5}C_3 + {}^{10}C_3 = 455 + 10 + 120 = 585\\) ways.\n\n\\(P = \\frac{585}{4060} = \\frac{117}{812}\\).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "11(i)",
+      "value": "Proved",
+      "working": "Let \\(I = \\int_{\\frac{\\pi}{4}}^{\\frac{3\\pi}{4}} \\frac{x\\,dx}{1 + \\sin x}\\). ...(1)\n\nUse \\(\\int_a^b f(x)\\,dx = \\int_a^b f(a + b - x)\\,dx\\) with \\(a + b = \\pi\\). Since \\(\\sin(\\pi - x) = \\sin x\\):\n\n\\(I = \\int_{\\frac{\\pi}{4}}^{\\frac{3\\pi}{4}} \\frac{(\\pi - x)\\,dx}{1 + \\sin x}\\). ...(2)\n\nAdd (1) and (2):\n\n\\(2I = \\pi\\int_{\\frac{\\pi}{4}}^{\\frac{3\\pi}{4}} \\frac{dx}{1 + \\sin x}\\).\n\nNow \\(1 + \\sin x = 1 + \\cos\\left(\\frac{\\pi}{2} - x\\right) = 2\\cos^2\\left(\\frac{\\pi}{4} - \\frac{x}{2}\\right)\\), so\n\n\\(\\int \\frac{dx}{1 + \\sin x} = \\frac{1}{2}\\int \\sec^2\\left(\\frac{\\pi}{4} - \\frac{x}{2}\\right)dx = -\\tan\\left(\\frac{\\pi}{4} - \\frac{x}{2}\\right)\\).\n\nTherefore\n\n\\(2I = \\pi\\left[-\\tan\\left(\\frac{\\pi}{4} - \\frac{x}{2}\\right)\\right]_{\\frac{\\pi}{4}}^{\\frac{3\\pi}{4}} = \\pi\\left[-\\tan\\left(-\\frac{\\pi}{8}\\right) + \\tan\\frac{\\pi}{8}\\right] = 2\\pi\\tan\\frac{\\pi}{8}\\).\n\nSo \\(I = \\pi\\tan\\frac{\\pi}{8}\\). Since \\(\\tan\\frac{\\pi}{8} = \\frac{1 - \\cos\\frac{\\pi}{4}}{\\sin\\frac{\\pi}{4}} = \\frac{1 - \\frac{1}{\\sqrt{2}}}{\\frac{1}{\\sqrt{2}}} = \\sqrt{2} - 1\\),\n\n\\(I = (\\sqrt{2} - 1)\\pi\\). Hence proved.\n\n(Equivalently, \\(\\int \\frac{dx}{1 + \\sin x} = \\int \\frac{1 - \\sin x}{\\cos^2 x}\\,dx = \\tan x - \\sec x\\), which gives \\((\\sqrt{2} - 1) - (1 - \\sqrt{2}) = 2\\sqrt{2} - 2\\) between the limits, the same result.)",
+      "difficulty": "Hard",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "11(ii)",
+      "value": "\\(\\frac{1}{2}\\log|x - 1| - \\frac{1}{2(x - 1)} - \\frac{1}{4}\\log(x^2 + 1) + C\\)",
+      "working": "Use partial fractions:\n\n\\(\\frac{x^2}{(x - 1)^2(x^2 + 1)} = \\frac{A}{x - 1} + \\frac{B}{(x - 1)^2} + \\frac{Cx + D}{x^2 + 1}\\)\n\n\\(x^2 = A(x - 1)(x^2 + 1) + B(x^2 + 1) + (Cx + D)(x - 1)^2\\).\n\nPut \\(x = 1\\): \\(1 = 2B\\), so \\(B = \\frac{1}{2}\\).\n\nCompare coefficients:\n\n\\(x^3\\): \\(A + C = 0\\)\n\n\\(x\\): \\(A + C - 2D = 0\\), so \\(D = 0\\)\n\nconstant: \\(-A + B + D = 0\\), so \\(A = \\frac{1}{2}\\), and then \\(C = -\\frac{1}{2}\\).\n\n(Check \\(x^2\\): \\(-A + B + D - 2C = -\\frac{1}{2} + \\frac{1}{2} + 0 + 1 = 1\\). Correct.)\n\nSo\n\n\\(\\int \\frac{x^2\\,dx}{(x - 1)^2(x^2 + 1)} = \\frac{1}{2}\\int \\frac{dx}{x - 1} + \\frac{1}{2}\\int \\frac{dx}{(x - 1)^2} - \\frac{1}{2}\\int \\frac{x\\,dx}{x^2 + 1}\\)\n\n\\(= \\frac{1}{2}\\log|x - 1| - \\frac{1}{2(x - 1)} - \\frac{1}{4}\\log(x^2 + 1) + C\\).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "12(i)",
+      "value": "\\(x = 5y^2 - 3y\\)",
+      "working": "The equation is not linear in \\(y\\), so write it with \\(x\\) as the dependent variable:\n\n\\(\\frac{dx}{dy} = \\frac{x + 5y^2}{y} \\Rightarrow \\frac{dx}{dy} - \\frac{1}{y}x = 5y\\).\n\nThis is linear in \\(x\\) with \\(P = -\\frac{1}{y}\\), \\(Q = 5y\\).\n\nIntegrating factor: \\(e^{\\int -\\frac{1}{y}dy} = e^{-\\log y} = \\frac{1}{y}\\) (near \\(y = 1\\), \\(y > 0\\)).\n\nSolution: \\(x \\cdot \\frac{1}{y} = \\int 5y \\cdot \\frac{1}{y}\\,dy = 5y + C\\), so \\(x = 5y^2 + Cy\\).\n\nUsing \\(x = 2\\), \\(y = 1\\): \\(2 = 5 + C\\), so \\(C = -3\\).\n\nThe required solution is \\(x = 5y^2 - 3y\\).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "12(ii)",
+      "value": "\\(y^2 = x^2(1 - \\log|x|)\\)",
+      "working": "Rewrite: \\(\\frac{dy}{dx} = \\frac{2y^2 - x^2}{2xy}\\). The right side is homogeneous of degree 0, so put \\(y = vx\\), \\(\\frac{dy}{dx} = v + x\\frac{dv}{dx}\\):\n\n\\(v + x\\frac{dv}{dx} = \\frac{2v^2x^2 - x^2}{2vx^2} = \\frac{2v^2 - 1}{2v}\\)\n\n\\(x\\frac{dv}{dx} = \\frac{2v^2 - 1}{2v} - v = -\\frac{1}{2v}\\).\n\nSeparate the variables: \\(2v\\,dv = -\\frac{dx}{x}\\).\n\nIntegrate: \\(v^2 = -\\log|x| + C\\), i.e. \\(\\frac{y^2}{x^2} = -\\log|x| + C\\).\n\nUsing \\(x = 1\\), \\(y = 1\\): \\(1 = 0 + C\\), so \\(C = 1\\).\n\nThe particular solution is \\(\\frac{y^2}{x^2} = 1 - \\log|x|\\), that is \\(y^2 = x^2(1 - \\log|x|)\\).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "13",
+      "value": "(i) Graph 2; (ii) domain \\([-1, 1]\\), range \\(\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]\\); (iii) proved; (iv) \\(\\frac{\\pi}{3}\\)",
+      "working": "**(i)** For \\(y = \\sin^{-1}x\\), \\(\\frac{dy}{dx} = \\frac{1}{\\sqrt{1 - x^2}}\\): the slope is 1 at the origin and becomes very large as \\(x \\rightarrow \\pm 1\\), so the curve turns almost vertical at its end points \\(\\left(-1, -\\frac{\\pi}{2}\\right)\\) and \\(\\left(1, \\frac{\\pi}{2}\\right)\\). Graph 2 has this shape. (Graph 1, which flattens out at its ends, is \\(y = \\sin x\\) on \\(\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]\\).) So **Graph 2** represents \\(y = \\sin^{-1}x\\).\n\n**(ii)** Domain: \\([-1, 1]\\). Range (principal value branch): \\(\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]\\).\n\n**(iii)** Let \\(\\alpha = \\sin^{-1}\\frac{1}{\\sqrt{5}}\\), so \\(\\sin\\alpha = \\frac{1}{\\sqrt{5}}\\) with \\(0 < \\alpha < \\frac{\\pi}{2}\\), and \\(\\cos\\alpha = \\sqrt{1 - \\frac{1}{5}} = \\frac{2}{\\sqrt{5}}\\). Hence \\(\\alpha = \\cos^{-1}\\frac{2}{\\sqrt{5}}\\).\n\nThen \\(\\sin^{-1}\\frac{1}{\\sqrt{5}} + \\sin^{-1}\\frac{2}{\\sqrt{5}} = \\cos^{-1}\\frac{2}{\\sqrt{5}} + \\sin^{-1}\\frac{2}{\\sqrt{5}} = \\frac{\\pi}{2}\\), using \\(\\sin^{-1}t + \\cos^{-1}t = \\frac{\\pi}{2}\\). Hence proved.\n\n**(iv)** \\(\\cos^{-1}\\frac{\\sqrt{3}}{2} = \\frac{\\pi}{6}\\), so \\(2\\cos^{-1}\\frac{\\sqrt{3}}{2} = \\frac{\\pi}{3}\\) and \\(\\sin\\frac{\\pi}{3} = \\frac{\\sqrt{3}}{2}\\).\n\n\\(\\tan^{-1}\\left[2 \\times \\frac{\\sqrt{3}}{2}\\right] = \\tan^{-1}\\sqrt{3} = \\frac{\\pi}{3}\\).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "14",
+      "value": "\\(\\frac{1}{10}\\)",
+      "working": "Let \\(E_1, E_2, E_3\\) be the events that the participant was under agency X, Y, Z, and \\(M\\) the event that a participant goes missing. Out of \\(1000 + 2000 + 3000 = 6000\\) people:\n\n\\(P(E_1) = \\frac{1000}{6000} = \\frac{1}{6}\\), \\(P(E_2) = \\frac{2000}{6000} = \\frac{1}{3}\\), \\(P(E_3) = \\frac{3000}{6000} = \\frac{1}{2}\\).\n\nThe chance of failure of each agency is \\(100\\%\\) minus its success rate:\n\n\\(P(M|E_1) = 0{\\cdot}01\\), \\(P(M|E_2) = 0{\\cdot}015\\), \\(P(M|E_3) = 0{\\cdot}02\\).\n\nBy Bayes' theorem:\n\n\\(P(E_1|M) = \\frac{P(E_1)P(M|E_1)}{P(E_1)P(M|E_1) + P(E_2)P(M|E_2) + P(E_3)P(M|E_3)}\\)\n\n\\(= \\frac{\\frac{1}{6}(0{\\cdot}01)}{\\frac{1}{6}(0{\\cdot}01) + \\frac{1}{3}(0{\\cdot}015) + \\frac{1}{2}(0{\\cdot}02)} = \\frac{\\frac{1}{600}}{\\frac{1}{600} + \\frac{3}{600} + \\frac{6}{600}} = \\frac{1}{10}\\).\n\nSo the probability that the missing participant was under agency X is \\(\\frac{1}{10}\\).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "15(i)",
+      "label": "A",
+      "value": "Both Assertion and Reason are true and Reason is the correct explanation for Assertion.",
+      "working": "Expand using the dot product:\n\n\\((\\vec{a} + \\vec{b})^2 = \\vec{a} \\cdot \\vec{a} + \\vec{a} \\cdot \\vec{b} + \\vec{b} \\cdot \\vec{a} + \\vec{b} \\cdot \\vec{b} = a^2 + 2\\vec{a} \\cdot \\vec{b} + b^2\\)\n\n\\((\\vec{b} - \\vec{a})^2 = b^2 - 2\\vec{a} \\cdot \\vec{b} + a^2\\)\n\nwhere \\(\\vec{b} \\cdot \\vec{a} = \\vec{a} \\cdot \\vec{b}\\) has been used to combine the middle terms. Adding, the \\(2\\vec{a} \\cdot \\vec{b}\\) terms cancel and the sum is \\(2(a^2 + b^2)\\). So the Assertion is true, the Reason is true, and the Reason is what lets the middle terms be written as \\(\\pm 2\\vec{a} \\cdot \\vec{b}\\) and cancel.\n\nSo the answer is option (A).",
+      "difficulty": "Easy",
+      "confidence": "MEDIUM",
+      "flag": "Strictly, the cross terms a.b + b.a and -(b.a) - (a.b) cancel even without commutativity, so (B) is arguable; (A) follows the usual textbook expansion."
+    },
+    {
+      "ref": "15(ii)",
+      "label": "B",
+      "value": "\\(\\frac{\\pi}{3}\\)",
+      "working": "The angle between two planes is the angle between their normals \\(\\vec{n}_1 = \\hat{i} + \\hat{j} + 2\\hat{k}\\) and \\(\\vec{n}_2 = 2\\hat{i} - \\hat{j} + \\hat{k}\\).\n\n\\(\\cos\\theta = \\frac{|\\vec{n}_1 \\cdot \\vec{n}_2|}{|\\vec{n}_1||\\vec{n}_2|} = \\frac{|2 - 1 + 2|}{\\sqrt{6}\\sqrt{6}} = \\frac{3}{6} = \\frac{1}{2}\\), so \\(\\theta = \\frac{\\pi}{3}\\).\n\nSo the answer is option (B), \\(\\frac{\\pi}{3}\\).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "15(iii)",
+      "value": "Shown: \\(\\overrightarrow{QR} = 2\\overrightarrow{PQ}\\)",
+      "working": "\\(\\overrightarrow{PQ} = (1 + 2)\\hat{i} + (2 - 3)\\hat{j} + (3 - 5)\\hat{k} = 3\\hat{i} - \\hat{j} - 2\\hat{k}\\)\n\n\\(\\overrightarrow{QR} = (7 - 1)\\hat{i} + (0 - 2)\\hat{j} + (-1 - 3)\\hat{k} = 6\\hat{i} - 2\\hat{j} - 4\\hat{k} = 2\\overrightarrow{PQ}\\)\n\nSo \\(\\overrightarrow{PQ}\\) and \\(\\overrightarrow{QR}\\) are parallel, and they share the point Q. Hence P, Q and R are collinear.",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "15(iv)",
+      "value": "(a) \\(\\frac{x - 1}{2} = \\frac{y - 2}{3} = \\frac{z - 3}{4}\\); (b) \\(\\frac{x - 2}{2} = \\frac{y - 4}{3} = \\frac{z - 5}{4}\\)",
+      "working": "**(a)** The line passes through \\((1, 2, 3)\\) and has direction ratios \\(2, 3, 4\\). Its cartesian form is\n\n\\(\\frac{x - 1}{2} = \\frac{y - 2}{3} = \\frac{z - 3}{4}\\).\n\n**(b)** The second path is parallel, so it has the same direction ratios \\(2, 3, 4\\), and it passes through \\((2, 4, 5)\\):\n\n\\(\\frac{x - 2}{2} = \\frac{y - 4}{3} = \\frac{z - 5}{4}\\), or in vector form \\(\\vec{r} = (2\\hat{i} + 4\\hat{j} + 5\\hat{k}) + \\mu(2\\hat{i} + 3\\hat{j} + 4\\hat{k})\\).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "16(i)",
+      "value": "\\(5x + 2y - 3z = 17\\)",
+      "working": "Let the points be \\(P(2, 2, -1)\\), \\(Q(3, 4, 2)\\), \\(R(7, 0, 6)\\).\n\n\\(\\overrightarrow{PQ} = \\hat{i} + 2\\hat{j} + 3\\hat{k}\\), \\(\\overrightarrow{PR} = 5\\hat{i} - 2\\hat{j} + 7\\hat{k}\\).\n\nA normal to the plane is \\(\\overrightarrow{PQ} \\times \\overrightarrow{PR} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 1 & 2 & 3 \\\\ 5 & -2 & 7 \\end{vmatrix} = 20\\hat{i} + 8\\hat{j} - 12\\hat{k}\\), i.e. direction ratios \\(5, 2, -3\\).\n\nPlane through \\(P\\): \\(5(x - 2) + 2(y - 2) - 3(z + 1) = 0\\), which gives \\(5x + 2y - 3z = 17\\).\n\n(Check: Q gives \\(15 + 8 - 6 = 17\\), R gives \\(35 + 0 - 18 = 17\\).)",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "16(ii)",
+      "value": "\\(y + 4z - 7 = 0\\)",
+      "working": "A plane parallel to the \\(x\\)-axis has a normal perpendicular to \\(\\hat{i}\\), so its equation has no \\(x\\) term: \\(by + cz + d = 0\\).\n\nThrough \\((2, 3, 1)\\): \\(3b + c + d = 0\\). ...(1)\n\nThrough \\((4, -5, 3)\\): \\(-5b + 3c + d = 0\\). ...(2)\n\nSubtract (2) from (1): \\(8b - 2c = 0\\), so \\(c = 4b\\). Then \\(d = -3b - 4b = -7b\\).\n\nSo the plane is \\(by + 4bz - 7b = 0\\), i.e. \\(y + 4z - 7 = 0\\).\n\n(Check: \\(3 + 4 = 7\\) and \\(-5 + 12 = 7\\).)",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "17",
+      "value": "(i) \\(\\overrightarrow{AB} = -\\hat{i} + 4\\hat{j} - 3\\hat{k}\\), \\(\\overrightarrow{BC} = \\hat{i} - 3\\hat{j} + 6\\hat{k}\\); (ii) \\(-\\frac{31}{\\sqrt{46}}\\); (iii) \\(\\frac{\\sqrt{235}}{2}\\) sq units",
+      "working": "**(i)** \\(\\overrightarrow{AB} = \\overrightarrow{OB} - \\overrightarrow{OA} = (1 - 2)\\hat{i} + (2 + 2)\\hat{j} + (-2 - 1)\\hat{k} = -\\hat{i} + 4\\hat{j} - 3\\hat{k}\\)\n\n\\(\\overrightarrow{BC} = \\overrightarrow{OC} - \\overrightarrow{OB} = (2 - 1)\\hat{i} + (-1 - 2)\\hat{j} + (4 + 2)\\hat{k} = \\hat{i} - 3\\hat{j} + 6\\hat{k}\\)\n\n**(ii)** Projection of \\(\\overrightarrow{AB}\\) on \\(\\overrightarrow{BC}\\) \\(= \\frac{\\overrightarrow{AB} \\cdot \\overrightarrow{BC}}{|\\overrightarrow{BC}|} = \\frac{(-1)(1) + (4)(-3) + (-3)(6)}{\\sqrt{1 + 9 + 36}} = \\frac{-31}{\\sqrt{46}}\\).\n\n**(iii)** \\(\\overrightarrow{AB} \\times \\overrightarrow{BC} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ -1 & 4 & -3 \\\\ 1 & -3 & 6 \\end{vmatrix} = (24 - 9)\\hat{i} - (-6 + 3)\\hat{j} + (3 - 4)\\hat{k} = 15\\hat{i} + 3\\hat{j} - \\hat{k}\\).\n\n\\(|\\overrightarrow{AB} \\times \\overrightarrow{BC}| = \\sqrt{225 + 9 + 1} = \\sqrt{235}\\).\n\nArea of triangle ABC \\(= \\frac{1}{2}|\\overrightarrow{AB} \\times \\overrightarrow{BC}| = \\frac{\\sqrt{235}}{2}\\) square units.",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "18(i)",
+      "value": "(b) \\(\\frac{16}{3}\\) sq units; (c) \\(\\frac{32}{3}\\) sq units",
+      "working": "**(a)** \\(y = 4 - x^2\\) (i.e. \\(x^2 = -(y - 4)\\)) is a parabola opening downwards with vertex \\((0, 4)\\), symmetric about the \\(y\\)-axis. Setting \\(y = 0\\) gives \\(x = \\pm 2\\), so it cuts the \\(x\\)-axis at \\((-2, 0)\\) and \\((2, 0)\\). The sketch is an arch rising from \\((-2, 0)\\) to the top point \\((0, 4)\\) and coming down to \\((2, 0)\\), continuing below the \\(x\\)-axis beyond these points.\n\n**(b)** Between \\(x = 0\\) and \\(x = 2\\) the curve lies above the \\(x\\)-axis, so\n\n\\(\\text{Area} = \\int_0^2 (4 - x^2)\\,dx = \\left[4x - \\frac{x^3}{3}\\right]_0^2 = 8 - \\frac{8}{3} = \\frac{16}{3}\\) square units.\n\n**(c)** The parabola and the \\(x\\)-axis enclose the region from \\(x = -2\\) to \\(x = 2\\). By symmetry about the \\(y\\)-axis this is twice the area in (b):\n\n\\(\\text{Area} = 2 \\times \\frac{16}{3} = \\frac{32}{3}\\) square units.",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "18(ii)",
+      "value": "6 square units",
+      "working": "Find the corners of the field:\n\n\\(x + 2y = 2\\) and \\(y - x = 1\\): \\(y = x + 1 \\Rightarrow 3x + 2 = 2 \\Rightarrow x = 0, y = 1\\). Point \\((0, 1)\\).\n\n\\(y - x = 1\\) and \\(2x + y = 7\\): \\(3x + 1 = 7 \\Rightarrow x = 2, y = 3\\). Point \\((2, 3)\\).\n\n\\(x + 2y = 2\\) and \\(2x + y = 7\\): \\(x = 2 - 2y \\Rightarrow 4 - 3y = 7 \\Rightarrow y = -1, x = 4\\). Point \\((4, -1)\\).\n\nThe lower boundary throughout is \\(y = \\frac{2 - x}{2}\\). The upper boundary is \\(y = x + 1\\) for \\(0 \\le x \\le 2\\) and \\(y = 7 - 2x\\) for \\(2 \\le x \\le 4\\).\n\n\\(\\text{Area} = \\int_0^2 \\left[(x + 1) - \\frac{2 - x}{2}\\right]dx + \\int_2^4 \\left[(7 - 2x) - \\frac{2 - x}{2}\\right]dx\\)\n\n\\(= \\int_0^2 \\frac{3x}{2}\\,dx + \\int_2^4 \\left(6 - \\frac{3x}{2}\\right)dx\\)\n\n\\(= \\left[\\frac{3x^2}{4}\\right]_0^2 + \\left[6x - \\frac{3x^2}{4}\\right]_2^4 = 3 + \\left[(24 - 12) - (12 - 3)\\right] = 3 + 3 = 6\\).\n\nSo the area of the field is 6 square units.",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "19(i)",
+      "label": "C",
+      "value": "93",
+      "working": "The actual revenue from selling the 10th item is the extra revenue when sales go from 9 to 10 units:\n\n\\(R(10) = 360 + 300 + 5 = 665\\), \\(R(9) = 324 + 243 + 5 = 572\\).\n\n\\(R(10) - R(9) = 665 - 572 = 93\\).\n\n(The tempting 90 is the marginal revenue \\(R'(9) = 36 + 6(9)\\), which only approximates the actual revenue.) So the answer is option (C), 93.",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "19(ii)",
+      "label": "C",
+      "value": "Only (I) and (IV) are correct.",
+      "working": "(I) True: \\(b_{yx}\\), \\(b_{xy}\\) and \\(r\\) all have the sign of the covariance.\n\n(II) False: \\(r\\) is the geometric mean of the regression coefficients, \\(r = \\pm\\sqrt{b_{yx}b_{xy}}\\), not their arithmetic mean.\n\n(III) False: \\(b_{yx}b_{xy} = r^2\\), which equals 1 only for perfect correlation.\n\n(IV) True: since \\(b_{yx}b_{xy} = r^2 \\le 1\\), both cannot be numerically greater than 1.\n\nSo the answer is option (C), only (I) and (IV) are correct.",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "19(iii)",
+      "value": "(a) \\(\\bar{x} = 3\\), \\(\\bar{y} = 4\\); (c) \\(b_{xy} = -1\\)",
+      "working": "**(a)** \\(\\bar{x} = \\frac{1 + 2 + 3 + 6}{4} = \\frac{12}{4} = 3\\), \\(\\bar{y} = \\frac{6 + 5 + 4 + 1}{4} = \\frac{16}{4} = 4\\).\n\n**(b)**\n\n| \\(x\\) | 1 | 2 | 3 | 6 |\n|---|---|---|---|---|\n| \\(y\\) | 6 | 5 | 4 | 1 |\n| \\(x - \\bar{x}\\) | \\(-2\\) | \\(-1\\) | 0 | 3 |\n| \\(y - \\bar{y}\\) | 2 | 1 | 0 | \\(-3\\) |\n\n**(c)** \\(\\sum (x - \\bar{x})(y - \\bar{y}) = -4 - 1 + 0 - 9 = -14\\) and \\(\\sum (y - \\bar{y})^2 = 4 + 1 + 0 + 9 = 14\\).\n\n\\(b_{xy} = \\frac{\\sum (x - \\bar{x})(y - \\bar{y})}{\\sum (y - \\bar{y})^2} = \\frac{-14}{14} = -1\\).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "20(i)",
+      "value": "\\(y\\) on \\(x\\): \\(y = 2{\\cdot}1x - 1{\\cdot}6\\) (i.e. \\(21x - 10y = 16\\)); \\(x\\) on \\(y\\): \\(46x - 21y = 45\\)",
+      "working": "\\(\\bar{x} = \\frac{24}{4} = 6\\), \\(\\bar{y} = \\frac{44}{4} = 11\\).\n\n**Regression line of \\(y\\) on \\(x\\):**\n\n\\(b_{yx} = \\frac{n\\sum xy - \\sum x\\sum y}{n\\sum x^2 - (\\sum x)^2} = \\frac{4(306) - 24(44)}{4(164) - 24^2} = \\frac{1224 - 1056}{656 - 576} = \\frac{168}{80} = 2{\\cdot}1\\).\n\n\\(y - 11 = 2{\\cdot}1(x - 6) \\Rightarrow y = 2{\\cdot}1x - 1{\\cdot}6\\), or \\(21x - 10y = 16\\).\n\n**Regression line of \\(x\\) on \\(y\\)** (using \\(\\sum y^2\\)):\n\n\\(b_{xy} = \\frac{n\\sum xy - \\sum x\\sum y}{n\\sum y^2 - (\\sum y)^2} = \\frac{168}{4(576) - 44^2} = \\frac{168}{2304 - 1936} = \\frac{168}{368} = \\frac{21}{46}\\).\n\n\\(x - 6 = \\frac{21}{46}(y - 11) \\Rightarrow 46x - 21y = 45\\).\n\nThe line of best fit for predicting \\(y\\) from \\(x\\) is \\(y = 2{\\cdot}1x - 1{\\cdot}6\\).",
+      "difficulty": "Moderate",
+      "confidence": "MEDIUM",
+      "flag": "The question does not say which regression line it wants; both are given, with y on x (y = 2.1x - 1.6) as the line of best fit. Sigma y^2 is supplied, which suggests x on y (46x - 21y = 45) may also be expected."
+    },
+    {
+      "ref": "20(ii)",
+      "value": "\\(4x + 3y + 7 = 0\\) is the line of regression of \\(x\\) on \\(y\\)",
+      "working": "**Trial 1:** take \\(4x + 3y + 7 = 0\\) as \\(y\\) on \\(x\\) and \\(3x + 4y + 8 = 0\\) as \\(x\\) on \\(y\\).\n\nThen \\(y = -\\frac{4}{3}x - \\frac{7}{3}\\) gives \\(b_{yx} = -\\frac{4}{3}\\), and \\(x = -\\frac{4}{3}y - \\frac{8}{3}\\) gives \\(b_{xy} = -\\frac{4}{3}\\). Their product is \\(\\frac{16}{9} > 1\\), which is impossible because \\(b_{yx}b_{xy} = r^2 \\le 1\\).\n\n**Trial 2:** take \\(4x + 3y + 7 = 0\\) as \\(x\\) on \\(y\\) and \\(3x + 4y + 8 = 0\\) as \\(y\\) on \\(x\\).\n\nThen \\(x = -\\frac{3}{4}y - \\frac{7}{4}\\) gives \\(b_{xy} = -\\frac{3}{4}\\), and \\(y = -\\frac{3}{4}x - 2\\) gives \\(b_{yx} = -\\frac{3}{4}\\). Their product is \\(\\frac{9}{16} \\le 1\\), and both have the same sign. This is valid.\n\nSo the line of regression of \\(x\\) on \\(y\\) is \\(4x + 3y + 7 = 0\\) (and \\(r = -\\frac{3}{4}\\)).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "21(i)",
+      "value": "(a) \\(R = 600x - 8x^2\\); (b) \\(P = -9x^2 + 522x - 2000\\); (c) 29 dinner sets",
+      "working": "**(a)** From \\(x = \\frac{600 - p}{8}\\), the price is \\(p = 600 - 8x\\). Revenue:\n\n\\(R(x) = px = 600x - 8x^2\\).\n\n**(b)** Profit \\(= \\) Revenue \\(-\\) Cost:\n\n\\(P(x) = 600x - 8x^2 - (x^2 + 78x + 2000) = -9x^2 + 522x - 2000\\).\n\n**(c)** \\(P'(x) = -18x + 522 = 0 \\Rightarrow x = 29\\).\n\n\\(P''(x) = -18 < 0\\), so profit is maximum at \\(x = 29\\).\n\nThe manufacturer should produce and sell 29 dinner sets per week. (The maximum profit is \\(P(29) = -7569 + 15138 - 2000 = ₹5569\\), at a price of \\(p = ₹368\\) per set.)",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "21(ii)",
+      "value": "(a) \\(C = \\frac{x^3}{200} - \\frac{x^2}{50} - 30x + 5000\\); (b) \\(MC = \\frac{3x^2}{200} - \\frac{x}{25} - 30\\); (c) \\(MAC = \\frac{x}{100} - \\frac{1}{50} - \\frac{5000}{x^2}\\); (d) verified",
+      "working": "**(a)** Total cost \\(= x \\times AC\\):\n\n\\(C(x) = \\frac{x^3}{200} - \\frac{x^2}{50} - 30x + 5000\\).\n\n**(b)** \\(MC = \\frac{dC}{dx} = \\frac{3x^2}{200} - \\frac{x}{25} - 30\\).\n\n**(c)** \\(MAC = \\frac{d}{dx}(AC) = \\frac{2x}{200} - \\frac{1}{50} + 0 - \\frac{5000}{x^2} = \\frac{x}{100} - \\frac{1}{50} - \\frac{5000}{x^2}\\).\n\n**(d)** \\(MC - AC = \\left(\\frac{3x^2}{200} - \\frac{x}{25} - 30\\right) - \\left(\\frac{x^2}{200} - \\frac{x}{50} - 30 + \\frac{5000}{x}\\right) = \\frac{2x^2}{200} - \\frac{x}{50} - \\frac{5000}{x}\\).\n\nDividing by \\(x\\): \\(\\frac{MC - AC}{x} = \\frac{x}{100} - \\frac{1}{50} - \\frac{5000}{x^2}\\), which is the same as \\(\\frac{d}{dx}(AC)\\) found in (c). Hence verified.",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "22",
+      "value": "12 books of the first type and 6 of the second type (18 books)",
+      "working": "Let \\(x\\) be the number of books of the first type and \\(y\\) the number of books of the second type.\n\n**Formulation:** Maximise \\(Z = x + y\\) subject to\n\n\\(6x + 4y \\le 96\\) (shelf length), i.e. \\(3x + 2y \\le 48\\)\n\n\\(x + 1{\\cdot}5y \\le 21\\) (weight), i.e. \\(2x + 3y \\le 42\\)\n\n\\(x \\ge 0\\), \\(y \\ge 0\\).\n\n**Graph:** draw \\(3x + 2y = 48\\) through \\((16, 0)\\) and \\((0, 24)\\), and \\(2x + 3y = 42\\) through \\((21, 0)\\) and \\((0, 14)\\). The feasible region is the region in the first quadrant on the origin side of both lines.\n\nThe two lines meet where \\(9x + 6y = 144\\) and \\(4x + 6y = 84\\): subtracting, \\(5x = 60\\), so \\(x = 12\\), \\(y = 6\\).\n\nCorner points of the feasible region and the value of \\(Z\\):\n\n| Corner point | \\(Z = x + y\\) |\n|---|---|\n| \\((0, 0)\\) | 0 |\n| \\((16, 0)\\) | 16 |\n| \\((12, 6)\\) | 18 |\n| \\((0, 14)\\) | 14 |\n\nThe maximum is \\(Z = 18\\) at \\((12, 6)\\), which is a whole-number point.\n\nSo 12 books of the first type and 6 books of the second type should be placed, giving the maximum of 18 books.",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    }
+  ]
+}
