@@ -81,6 +81,16 @@ takes the FIRST kind that fits; anything left keeps its still solution.
   about a sixth of the screenshots, enough to check shapes and labels.
   Dropped as too big for one sketch: 13 (over 26 points or 30 vars:
   polygons with all diagonals, two-circle chains).
+- 2026-10-31, SSC CGL arithmetic wave 1 (Percentage, Profit and Loss and the
+  start of Ratio; 450 questions as bar models, brief `briefs/sketch-bar.md`):
+  390 sketches + 52 algebra applied, every picture right. (1) Labels on bar
+  outlines were the defect, not the maths: 45 of 131 sketches in one slice
+  set. `label-overlap.js <batch> --edges` now tests each label against every
+  bar edge and divider (a bar edge touching the top of the text counts); the
+  brief carries the renderer's own screen mapping and text box, and builders
+  that computed boxes from it came back clean. (2) `{var}` prints fractions
+  ("225/4%"): write the key's decimal as text. (3) A rupee sign on votes:
+  check the units on the sheet.
 
 **Algebra steps rules** (`scenes/algebraSteps.ts`, spec `tests/visuals-algebra.test.ts`, brief `briefs/algebra-draft.md`):
 - Up to 10 lines, each KaTeX, on a step `s1`..`s8`. Each says how it is checked:
