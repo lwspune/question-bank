@@ -34,8 +34,13 @@ export const THRESHOLDS = {
   rowCapWarn: 800,
   rowCapCritical: 950,
 
-  /** Supabase free plan. Confirm on the dashboard if the plan ever changes. */
-  dbSizeCapBytes: 500 * 1024 * 1024,
+  /**
+   * Supabase Pro: 8 GB of disk included. It was the free plan's 500 MB until
+   * 2026-10-30, months after the Pro upgrade, and read 549 MB as "110% of the
+   * cap". A plan change leaves no trace in the repo, so confirm on the
+   * dashboard if it ever changes again.
+   */
+  dbSizeCapBytes: 8 * 1024 * 1024 * 1024,
   dbSizeWarnFraction: 0.8,
   dbSizeCriticalFraction: 0.9,
 
@@ -228,7 +233,10 @@ export function evaluateFlags(delta: HealthDelta): Flag[] {
       message:
         `The largest single chapter now holds ${delta.largestGroupRows} PUBLIC questions, against the ` +
         `PostgREST 1000-row response cap. Past that point a plain .select() truncates SILENTLY — ` +
-        `no error, just undercounted results. Move the affected reads to an aggregate RPC.`,
+        `no error, just undercounted results. Every read of one chapter's questions was checked on ` +
+        `2026-10-30 (SSC CGL English Vocabulary, 1036): the /board readers serve board exams only, ` +
+        `/browse, /questions, /books and the practice pool page, and V's paste search falls back to a ` +
+        `word search. Any NEW per-chapter read must page or aggregate in an RPC.`,
     });
   }
 
@@ -299,14 +307,16 @@ export function evaluateFlags(delta: HealthDelta): Flag[] {
   }
 
   for (const t of delta.tables) {
-    if (t.liveRows < THRESHOLDS.deadRowsMinLiveRows) continue;
-    const deadPct = (t.deadRows / t.liveRows) * 100;
+    // A restart resets n_live_tup to "rows inserted since"; reltuples survives.
+    const rows = Math.max(t.liveRows, t.estRows ?? 0);
+    if (rows < THRESHOLDS.deadRowsMinLiveRows) continue;
+    const deadPct = (t.deadRows / rows) * 100;
     if (deadPct < THRESHOLDS.deadRowsWarnPct) continue;
     flags.push({
       level: "info",
       code: "dead-rows",
       message:
-        `${t.name} carries ${deadPct.toFixed(0)}% dead rows (${t.deadRows} of ${t.liveRows}) — ` +
+        `${t.name} carries ${deadPct.toFixed(0)}% dead rows (${t.deadRows} of ${rows}) — ` +
         `past the point where autovacuum should already have cleared it, so it is not keeping up here.`,
     });
   }

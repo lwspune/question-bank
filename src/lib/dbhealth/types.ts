@@ -25,6 +25,13 @@ export type QueryStat = {
 export type TableStat = {
   name: string;
   liveRows: number;
+  /**
+   * `pg_class.reltuples`, the planner's row estimate. Unlike `liveRows`
+   * (`n_live_tup`) it survives a restart: on 2026-10-24 the counters were lost
+   * and `questions` read 1,548 live rows of 120,408. Absent on snapshots
+   * predating migration 0207; -1 for a table never analyzed.
+   */
+  estRows?: number | null;
   deadRows: number;
   totalBytes: number;
   seqScans: number;
