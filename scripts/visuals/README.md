@@ -100,6 +100,16 @@ takes the FIRST kind that fits; anything left keeps its still solution.
   next and hit it, and `--apply` stops at the first refused row. Fix: plain
   numbers for long coordinate formulas (same picture). Candidate: have
   `visuals:assemble` refuse an oversized visual so the dry run catches it.
+- 2026-10-31, SSC CGL arithmetic wave 3 (Time and Work tail, Interest, Speed,
+  Time and Distance; 436 questions): 227 sketches + 205 algebra applied, every
+  picture right. Speed and distance drew as tracks (chases with a dashed gap,
+  trains crossing, boats with the current, circular tracks unrolled or as a
+  circle). One builder's 12 px label box let labels touch, which the renderer
+  answers by moving the later one 16 px, onto a bar (35 of 102); its own check
+  passed them, so the review's `--edges` run is what found them. All 1,336
+  arithmetic questions now decided: 1,288 animated (575 sketch + 713 algebra
+  across waves 1-3), 18 none, the rest left undecided (free-letter answers,
+  one truncated key).
 
 **Algebra steps rules** (`scenes/algebraSteps.ts`, spec `tests/visuals-algebra.test.ts`, brief `briefs/algebra-draft.md`):
 - Up to 10 lines, each KaTeX, on a step `s1`..`s8`. Each says how it is checked:

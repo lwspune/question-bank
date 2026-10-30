@@ -116,6 +116,12 @@ The review runs `node scripts/visuals/tools/label-overlap.js <batch>
   visual over 8 KB (wave 2: a 17-block bar row whose every x nested the one
   before, "((((1)+(r*k))+(r*k))+(r*k))+(r*k)"). Write a block's x as one short
   formula ("1+3*r*k") or a plain number, never by wrapping the previous one.
+- Check label against label with the SAME box as label against line (top =
+  baseline - 13, bottom = baseline + 3 at 13 px). Wave 3: a builder that used
+  a 12 px box for labels let a part's value touch the bar name above it by
+  3 px; the renderer then moved the value down 16 px, onto the bar (35 of 102
+  sketches). And keep every label's `at` inside the view: a solver that nudges
+  a label down past the view's bottom gets the whole sketch refused.
 - One step per solution sentence at most: a 3-sentence solution has at most
   3 steps (merge beats into one step).
 - A label under a bar needs the same 2 px clearance as one above it: text
