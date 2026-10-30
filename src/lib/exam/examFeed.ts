@@ -149,12 +149,17 @@ export function splitByFeed<T>(
  *   folded - none of the student's exams is on this page, so there is no
  *            "Your exams" and everything sits folded (the page's no-content
  *            notice says what their exam does have).
+ *
+ * `foldWhenNone: false` keeps the plain list instead of "folded", for a page
+ * with no such notice: /store, where a page of one fold button sells nothing.
  */
 export function feedLayout(
   tier: ExamTier | null,
   primaryCount: number,
-  otherCount: number
+  otherCount: number,
+  { foldWhenNone = true }: { foldWhenNone?: boolean } = {}
 ): "plain" | "split" | "folded" {
   if (tier === null || otherCount === 0) return "plain";
-  return primaryCount === 0 ? "folded" : "split";
+  if (primaryCount === 0) return foldWhenNone ? "folded" : "plain";
+  return "split";
 }

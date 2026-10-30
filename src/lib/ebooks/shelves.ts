@@ -7,6 +7,7 @@
  * last "More books" shelf, so no book on sale can drop off the page. This file
  * does not import lib/ebooks/catalog, which loads the whole notes library.
  */
+import type { ExamSlug } from "@/lib/exam/examContext";
 import { CHAPTERWISE_EBOOKS, PAPERS_EBOOKS, REPEATS_EBOOKS, TEXTBOOK_EBOOKS } from "./paperBooks";
 
 export const SHELVES = [
@@ -27,6 +28,15 @@ export type Shelf<B> = { key: ShelfKey; label: string; short: string; books: { b
 const BOARD_BOOK = new Map(
   [...PAPERS_EBOOKS, ...REPEATS_EBOOKS, ...CHAPTERWISE_EBOOKS, ...TEXTBOOK_EBOOKS].map((b) => [b.slug, b])
 );
+
+/**
+ * The exam a shelf belongs to, for putting a student's own exams first
+ * (ExamFeedList, 2026-10-30). Every shelf key but "more" is an exam slug, which
+ * the spec checks; More books belongs to no exam, so it folds with the rest.
+ */
+export function shelfExamSlugs(key: ShelfKey): ExamSlug[] {
+  return key === "more" ? [] : [key];
+}
 
 /** A book's shelf and the subject it is shown under. */
 export function shelfOf(book: { slug: string; title: string }): { shelf: ShelfKey; subject: string } {
