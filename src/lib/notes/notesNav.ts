@@ -8,7 +8,7 @@
  * Pure (no DB / no React); unit-tested in tests/notes-nav.test.ts.
  */
 
-import { EXAM_REGISTRY, PYQVAULT_EXAMS, type ExamEntry, type ExamSlug } from "@/lib/exam/examContext";
+import { EXAM_REGISTRY, PYQVAULT_EXAMS, getExamBySlug, type ExamEntry, type ExamSlug } from "@/lib/exam/examContext";
 // The generated index, NOT the registry: this module is on every page through
 // AppHeader, and the registry imports the whole notes corpus. See notesNavIndex.ts.
 import { NOTES_NAV_INDEX } from "@/lib/notes/notesNavIndex.generated";
@@ -84,4 +84,19 @@ function toExamGroup(entry: ExamEntry): NotesExamGroup {
 /** Slugs of exams that should be statically pre-rendered for /notes/[examSlug]. */
 export function notesExamSlugs(): ExamSlug[] {
   return EXAM_REGISTRY.map((e) => e.slug);
+}
+
+/**
+ * The exam list beside a /notes/<exam> hub: PYQ Vault's exams on www, and on an
+ * international exam's hub (intl.pyqvault.com, 2026-10-30) only the
+ * international ones, with the intl home as "All exams". Chosen by the exam,
+ * never by the host, so the hub stays cacheable.
+ */
+export function notesExamSideNav(currentExamSlug: string): { href: string; label: string }[] {
+  const intl = getExamBySlug(currentExamSlug)?.site === "intl";
+  const registry = intl ? EXAM_REGISTRY.filter((e) => e.site === "intl") : PYQVAULT_EXAMS;
+  return [
+    { href: intl ? "/" : "/notes", label: "All exams" },
+    ...getNotesExamGroups(registry).map((g) => ({ href: `/notes/${g.slug}`, label: g.displayName })),
+  ];
 }

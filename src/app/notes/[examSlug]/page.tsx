@@ -1,4 +1,3 @@
-import { EXAM_REGISTRY } from "@/lib/exam/examContext";
 import type { Metadata } from "next";
 import { notesExamDescription, notesExamTitle } from "@/lib/notes/titles";
 import Link from "next/link";
@@ -9,7 +8,7 @@ import GuideHero from "@/app/guide/_components/GuideHero";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 import {
   getNotesExamGroup,
-  getNotesExamGroups,
+  notesExamSideNav,
   notesExamSlugs,
   type NotesExamGroup,
 } from "@/lib/notes/notesNav";
@@ -108,13 +107,7 @@ export default async function NotesExamHub({ params }: { params: Params }) {
   const group = getNotesExamGroup(params.examSlug);
   if (!group) notFound();
 
-  const sideNav = [
-    { href: "/notes", label: "All exams" },
-    ...getNotesExamGroups(EXAM_REGISTRY).map((g) => ({
-      href: `/notes/${g.slug}`,
-      label: g.displayName,
-    })),
-  ];
+  const sideNav = notesExamSideNav(group.slug);
 
   const title = `${group.examName} notes`;
   const intro = examIntro(group.examName, group.subjects.length, chapterTotal(group));
