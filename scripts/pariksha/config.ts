@@ -90,6 +90,15 @@ export const TESTS: Record<string, Test> = {
   // `number` runs 1..N. The key tables are images, so keys.json is hand-entered from them.
   // Book pp. 237-238 (all of 29.11, 29.12 Q1-5) are missing from the scan; 29.12 Q6 is
   // left out until they arrive (owner, 2026-10-30).
+  // Ch. 23-28 (2026-10-30): the scans skip only SOLUTIONS pages (every section's question count
+  // matches its key table). questionCount = questions committed; rows held for a rescan (clipped
+  // values) are listed in each data file's commit message, not here.
+  "gpcc-nkl-ch23": { id: "gpcc-nkl-ch23", sourceFile: "GPCC_NKL_Physics_Vol2_Ch23_Ray_Optics.pdf", pdf: "C:\\Users\\vilas\\Downloads\\Adobe Scan 28 Oct 2026.pdf", questionCount: 302, hasKey: true, subjects: ["Physics"], chapterHint: "Ray Optics and Optical Instruments", note: "GPCC NKL Physics Volume II, Ch. 23 Ray Optics" },
+  "gpcc-nkl-ch24": { id: "gpcc-nkl-ch24", sourceFile: "GPCC_NKL_Physics_Vol2_Ch24_Wave_Optics.pdf", pdf: "C:\\Users\\vilas\\Downloads\\Adobe Scan 28 Oct 2026 (1).pdf", questionCount: 148, hasKey: true, subjects: ["Physics"], chapterHint: "Wave Optics", note: "GPCC NKL Physics Volume II, Ch. 24 Wave Optics" },
+  "gpcc-nkl-ch25": { id: "gpcc-nkl-ch25", sourceFile: "GPCC_NKL_Physics_Vol2_Ch25_Dual_Nature.pdf", pdf: "C:\\Users\\vilas\\Downloads\\Adobe Scan 28 Oct 2026 (2).pdf", questionCount: 97, hasKey: true, subjects: ["Physics"], chapterHint: "Dual Nature of Radiation and Matter", note: "GPCC NKL Physics Volume II, Ch. 25 Dual Nature of Radiation and Matter" },
+  "gpcc-nkl-ch26": { id: "gpcc-nkl-ch26", sourceFile: "GPCC_NKL_Physics_Vol2_Ch26_Atoms.pdf", pdf: "C:\\Users\\vilas\\Downloads\\Adobe Scan 28 Oct 2026 (3) (1).pdf", questionCount: 115, hasKey: true, subjects: ["Physics"], chapterHint: "Atoms", note: "GPCC NKL Physics Volume II, Ch. 26 Atoms" },
+  "gpcc-nkl-ch27": { id: "gpcc-nkl-ch27", sourceFile: "GPCC_NKL_Physics_Vol2_Ch27_Nuclei.pdf", pdf: "C:\\Users\\vilas\\Downloads\\Adobe Scan 28 Oct 2026 (3).pdf", questionCount: 108, hasKey: true, subjects: ["Physics"], chapterHint: "Nuclei", note: "GPCC NKL Physics Volume II, Ch. 27 Nuclei" },
+  "gpcc-nkl-ch28": { id: "gpcc-nkl-ch28", sourceFile: "GPCC_NKL_Physics_Vol2_Ch28_Semiconductor_Devices.pdf", pdf: "C:\\Users\\vilas\\Downloads\\Adobe Scan 28 Oct 2026 (4).pdf", questionCount: 106, hasKey: true, subjects: ["Physics"], chapterHint: "Semiconductor Electronics", note: "GPCC NKL Physics Volume II, Ch. 28 Semiconductor Devices" },
   "gpcc-nkl-ch29": { id: "gpcc-nkl-ch29", sourceFile: "GPCC_NKL_Physics_Vol2_Ch29_Experimental_Skills.pdf", pdf: "C:\\Users\\vilas\\Downloads\\Adobe Scan 28 Oct 2026 (5).pdf", questionCount: 67, hasKey: true, subjects: ["Physics"], chapterHint: "Experimental Skills", note: "GPCC NKL Physics Volume II, Ch. 29 Experimental Skills" },
 };
 

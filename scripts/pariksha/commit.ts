@@ -79,9 +79,10 @@ async function main() {
   const seenKey = new Set<string>();
   const built = [];
   const dropped: string[] = [];
+  const droppedRows: number[] = []; // running numbers (sourceRow): what coverage counts
   for (const r of built0) {
     const k = contentKey(r);
-    if (seenKey.has(k)) { dropped.push(String(r.questionNumber ?? r.sourceRow)); continue; }
+    if (seenKey.has(k)) { dropped.push(String(r.questionNumber ?? r.sourceRow)); droppedRows.push(r.sourceRow); continue; }
     seenKey.add(k); built.push(r);
   }
   if (dropped.length) console.log(`dropped ${dropped.length} exact-duplicate row(s): Q${dropped.join(", Q")}`);
@@ -91,7 +92,7 @@ async function main() {
   const full = Array.from({ length: test.questionCount }, (_, i) => i + 1).every((n) => nums.has(n));
   // Coverage is checked against the ORIGINAL numbers (pre-dedup) — a number removed as an
   // exact duplicate isn't a real gap, so drop its spurious "missing Q<n>" error.
-  const droppedSet = new Set(dropped);
+  const droppedSet = new Set(droppedRows.map(String));
   const errs = validateRows(built, 1, full ? test.questionCount : 0).filter((e) => {
     const m = e.match(/^missing Q(\d+)$/);
     return !(m && droppedSet.has(m[1]));
