@@ -194,6 +194,13 @@ export type ExamEntry = {
    */
   site?: "intl";
   /**
+   * The pass that covers this exam (2026-10-30, migration 0204, mirrored by
+   * `exams.pass_scope`). Absent = the www Premium Pass (`mocks`). Every intl
+   * exam names its own, so a www pass never unlocks it and its price can differ
+   * (tests/billing-exam-pass.test.ts). Read through `passScopeForExam`.
+   */
+  passScope?: "imat" | "mcat";
+  /**
    * A NON-BOARD presentation family — the generic sibling of `board`+`std`.
    *
    * IPMAT is three separate exams (Indore, Rohtak, Jammu) that a student thinks
@@ -350,6 +357,8 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     // On intl.pyqvault.com, not www, since 2026-10-30 (owner): international
     // students should see no Indian exam, and www's lists leave it out.
     site: "intl",
+    // Its own pass (2026-10-30): $19, or Rs 999 for buyers in India.
+    passScope: "imat",
   },
   {
     slug: "mh-hsc-12",
