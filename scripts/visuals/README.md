@@ -329,6 +329,11 @@ picture shows the right shape.
   the xy-plane is drawn wide (the view never tilts past 60 degrees). 7 of 11
   such NDA drafts were dropped at review as noFit `vectorAngleView`; fixing the
   scene would bring them back. Angles at a shared vertex of a triangle drew fine.
+- A key-wrong notice ("The paper's key says (b) ...") is only true when the
+  SOURCE printed that key (a booklet's answer page, a UPSC key). For NDA
+  papers our stored key came from a transcription, and twice the paper's own
+  key agreed with the correction. When only our copy was wrong, fix the key
+  with no notice (2026-10-30: 5 such notices removed, fix batch nda-e).
 - Stored solutions from the old Word imports often open with a stray `**`,
   `Solution (b)**` or `Ans. (c)**`: that text becomes step 1 beside the picture.
   Clean it with `visuals:fix-solutions` first, then draft.
