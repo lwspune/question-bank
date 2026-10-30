@@ -111,10 +111,13 @@ describe("the real registry", () => {
     );
   });
 
-  it("flags isc-12, whose examName resolves to no exams row", () => {
-    // Pinned by slug on purpose. This is the case that proved the guard was
-    // needed; if someone un-flags it, that must be a deliberate edit here too.
+  it("offers isc-12 now that its papers are PUBLIC (2026-10-30)", () => {
+    // Pinned by slug on purpose. isc-12 is the case that proved the guard was
+    // needed: it shipped as a chip while its examName resolved to no exams row.
+    // Its 2025 + 2026 PCM papers went PUBLIC on 2026-10-30, so the flag came off
+    // in the same change; re-flagging it must be a deliberate edit here too.
     const isc = EXAM_REGISTRY.find((e) => e.slug === "isc-12");
-    expect(isc?.noPublicContent).toBe(true);
+    expect(isc?.noPublicContent).toBeUndefined();
+    expect(EXAM_CHIP_OPTIONS.map((c) => c.value)).toContain("isc-12");
   });
 });
