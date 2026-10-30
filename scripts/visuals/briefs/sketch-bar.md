@@ -112,6 +112,10 @@ The review runs `node scripts/visuals/tools/label-overlap.js <batch>
   "14 2/7%"), not the var.
 - A rupee sign only on money: votes, marks, people and litres take none, in
   the bar labels and in `answer.label` alike.
+- Keep each sketch's params under about 5 KB of JSON: the database refuses a
+  visual over 8 KB (wave 2: a 17-block bar row whose every x nested the one
+  before, "((((1)+(r*k))+(r*k))+(r*k))+(r*k)"). Write a block's x as one short
+  formula ("1+3*r*k") or a plain number, never by wrapping the previous one.
 - One step per solution sentence at most: a 3-sentence solution has at most
   3 steps (merge beats into one step).
 - A label under a bar needs the same 2 px clearance as one above it: text

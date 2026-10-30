@@ -91,6 +91,15 @@ takes the FIRST kind that fits; anything left keeps its still solution.
   that computed boxes from it came back clean. (2) `{var}` prints fractions
   ("225/4%"): write the key's decimal as text. (3) A rupee sign on votes:
   check the units on the sheet.
+- 2026-10-31, SSC CGL arithmetic wave 2 (rest of Ratio, Averages, Time and
+  Work; 450 questions): 155 sketches + 282 algebra applied, every picture
+  right; label hits came back at 1 per batch once agents reused wave 1's
+  builder. New refusal, at the DATABASE not the checker: the 8 KB cap of
+  `questions_solution_visual_shape` measures the raw jsonb, so ~6 KB of JSON
+  text is the real limit; a chained bar builder nested every block's x in the
+  next and hit it, and `--apply` stops at the first refused row. Fix: plain
+  numbers for long coordinate formulas (same picture). Candidate: have
+  `visuals:assemble` refuse an oversized visual so the dry run catches it.
 
 **Algebra steps rules** (`scenes/algebraSteps.ts`, spec `tests/visuals-algebra.test.ts`, brief `briefs/algebra-draft.md`):
 - Up to 10 lines, each KaTeX, on a step `s1`..`s8`. Each says how it is checked:

@@ -107,5 +107,6 @@ first step starts at 0, later ones later, each step name used once. `answer`
 - Fewer than 2 lines or more than 10 (a one-line working: split it into the
   set-up and the result, or choose `none`).
 - An `f` formula over 120 characters: give the long part its own line.
-- A TeX word without its backslash (`frac`, `sqrt`, `text`, `right`, `left`),
-  even inside `\text{...}`: "from the right" in prose is read as `\right`.
+- A TeX word without its backslash (`frac`, `sqrt`, `text`, `right`, `left`, `times`),
+  even inside `\text{...}`: "from the right" in prose is read as `\right`,
+  "3 times as" as `\times`. Marks are `{{1:..}}` to `{{3:..}}` only, never 4.
