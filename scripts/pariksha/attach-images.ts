@@ -17,6 +17,10 @@
  * actual figure ink within [top,bottom]x[col], pads into whitespace, and returns a tight bbox
  * + `ok`/warnings. Not-ok crops (misplaced anchor / leak risk) are reported and skipped unless
  * --force. Merged from data/<testId>.figures*.json. Idempotent: skips a set image_url.
+ *
+ * A REDRAWN figure skips the crop: its manifest entry is { "png": "<repo-relative path>" }
+ * (e.g. scripts/pariksha/figures/<testId>/q16.png, written by that folder's figures.py)
+ * and that file is uploaded as-is. Use it when the scan is too poor to crop from.
  */
 import { readFileSync, readdirSync, mkdirSync } from "node:fs";
 import { join } from "node:path";
@@ -29,7 +33,7 @@ function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 }
 
-type FigSpec = { img: string; col: [number, number]; top: number; bottom: number; answerY: number };
+type FigSpec = { img: string; col: [number, number]; top: number; bottom: number; answerY: number; png?: string };
 type CropResult = { png: string; ok: boolean; warnings: string[] };
 
 function loadManifest(testId: string): Record<string, FigSpec> {
@@ -86,7 +90,9 @@ async function main() {
   if (only) nums = nums.filter((n) => only.has(n));
   console.log(`${test.id}: ${nums.length} figure(s) — Q${nums.join(", Q")}`);
 
-  const crops = cropFigures(test.id, figs, join(OUT, `${test.id}-figs`));
+  const toCrop = Object.fromEntries(Object.entries(figs).filter(([, f]) => !f.png));
+  const crops: Record<string, CropResult> = Object.keys(toCrop).length ? cropFigures(test.id, toCrop, join(OUT, `${test.id}-figs`)) : {};
+  for (const [q, f] of Object.entries(figs)) if (f.png) crops[q] = { png: join(process.cwd(), f.png), ok: true, warnings: [] };
   let okCount = 0;
   for (const q of nums) {
     const c = crops[q];

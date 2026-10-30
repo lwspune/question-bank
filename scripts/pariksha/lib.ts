@@ -57,7 +57,7 @@ export function buildRecords(questions: NQ[]): BuildResult {
     const o = q.options ?? [];
     rows.push({
       sourceRow: q.number,
-      questionNumber: String(q.number),
+      questionNumber: q.ref ?? String(q.number),
       subject: q.subject,
       chapter: q.chapter,
       subtopic: q.subtopic,

@@ -51,6 +51,15 @@ describe("buildRecords (Pariksha)", () => {
       answer: "A",
     });
   });
+  it("uses the book ref as question_number when one is given (numbering restarts per section)", () => {
+    const { rows } = buildRecords([nq({ number: 9, ref: "29.2 Q8" })]);
+    expect(rows[0].questionNumber).toBe("29.2 Q8");
+    expect(rows[0].sourceRow).toBe(9);
+  });
+  it("checks coverage on the running number, not the printed ref", () => {
+    const { rows } = buildRecords([nq({ number: 1, ref: "29.1 Q1" }), nq({ number: 2, ref: "29.2 Q1", stem: "Another." })]);
+    expect(validateRows(rows, 1, 2).filter((e) => e.startsWith("missing"))).toEqual([]);
+  });
   it("flags a chapter that is not in the subject's NCERT catalog", () => {
     const { flags } = buildRecords([nq({ chapter: "Made Up Chapter" })]);
     expect(flags).toHaveLength(1);

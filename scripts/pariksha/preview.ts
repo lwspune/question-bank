@@ -28,6 +28,11 @@ function main() {
   const keys: Record<string, string> = existsSync(keysFile) ? JSON.parse(readFileSync(keysFile, "utf8")) : {};
   for (const q of qs) { const k = keys[String(q.number)]; if (k) q.answer = k.toUpperCase(); }
 
+  // A redrawn figure (manifest entry with `png`) is shown inline; cropped ones only exist after attach-images.
+  const figs: Record<string, { png?: string }> = {};
+  for (const f of readdirSync(DATA).filter((f) => f.startsWith(`${test.id}.figures`) && f.endsWith(".json")))
+    Object.assign(figs, JSON.parse(readFileSync(join(DATA, f), "utf8")));
+
   const letters = ["A", "B", "C", "D"];
   const cards = qs.map((q) => {
     const ansIdx = letters.indexOf(String(q.answer).toUpperCase());
@@ -41,10 +46,14 @@ function main() {
       q.confidence?.toUpperCase() !== "HIGH" ? `<span class="badge warn">conf: ${esc(q.confidence)}</span>` : "",
       q.hasFigure ? `<span class="badge fig">FIGURE</span>` : "",
     ].join(" ");
-    return `<div class="q"><div class="head"><b>Q${q.number}</b> ${badges}</div>
-      <div class="stem">${esc(q.stem)}</div>${opts}
+    const label = q.ref ?? String(q.number);
+    const png = figs[label]?.png;
+    const fig = png ? `<img src="file:///${join(process.cwd(), png).split("\\").join("/")}" style="max-width:100%;margin:8px 0">` : "";
+    return `<div class="q"><div class="head"><b>Q${esc(label)}</b> ${badges}</div>
+      <div class="stem">${esc(q.stem)}</div>${fig}${opts}
       <div class="ans">Answer: (${letters[ansIdx] ?? q.answer})</div>
-      ${q.solution ? `<details><summary>Solution</summary><div class="sol">${esc(q.solution)}</div></details>` : ""}</div>`;
+      ${q.reasoning ? `<div class="ans">Review note: ${esc(q.reasoning)}</div>` : ""}
+      ${q.solution ? `<details open><summary>Solution</summary><div class="sol">${esc(q.solution)}</div></details>` : ""}</div>`;
   }).join("\n");
 
   const html = `<!doctype html><html><head><meta charset="utf-8"><title>${test.id} preview</title>

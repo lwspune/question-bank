@@ -26,6 +26,7 @@ export type NQ = {
   confidence: string; // HIGH|MED|LOW
   hasFigure?: boolean; // stem needs a diagram (figure-attach pass)
   reasoning?: string;
+  ref?: string; // printed ref ("29.2 Q8") when the source restarts numbering per section → question_number
 };
 
 export type Flag = { number: number; reason: string };
@@ -129,7 +130,8 @@ export function buildRecords(questions: NQ[], questionCount = 180): BuildResult 
 /** Coverage + structural + collision checks over the assembled rows. */
 export function validateRows(rows: RawRow[], qFrom: number, qTo: number): string[] {
   const errs: string[] = [];
-  const nums = new Set(rows.map((r) => Number(r.questionNumber)));
+  // sourceRow is the running number; questionNumber may be a printed ref ("29.2 Q8").
+  const nums = new Set(rows.map((r) => r.sourceRow));
   for (let n = qFrom; n <= qTo; n++) if (!nums.has(n)) errs.push(`missing Q${n}`);
 
   const seen = new Map<string, number>();
