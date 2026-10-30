@@ -56,8 +56,12 @@ function snippetOf(text: string): string {
  * The bank questions a pasted text most likely is, best first. Within the
  * page's chapter when there is one: a paste usually comes from the page the
  * student is on, and a chapter is a few hundred stems, few enough to compare
- * every one (matchPasted). Elsewhere a word search narrows the bank first, and
- * its hits must still pass matchPasted, so a stray word match is never offered.
+ * every one (matchPasted). Elsewhere, or when the chapter holds no match, a
+ * word search narrows the bank first, and its hits must still pass
+ * matchPasted, so a stray word match is never offered. "No match", not "no
+ * rows": the chapter read stops at CHAPTER_POOL, and SSC CGL English
+ * Vocabulary passed it (1,036 PUBLIC, 2026-10-30), so a pasted stem can be one
+ * the read never returned.
  */
 export async function searchVQuestions(anon: SupabaseClient, text: string, chapterId: string | null = null): Promise<QuestionMatch[]> {
   type Row = { id: string; text: string; chapter: { name: string } | null; exam: { name: string } | null };
@@ -73,7 +77,8 @@ export async function searchVQuestions(anon: SupabaseClient, text: string, chapt
     if (error) console.error("V: chapter question read failed", error.message);
     rows = (data ?? []) as unknown as Row[];
   }
-  if (rows.length === 0) {
+  let ids = matchPasted(text, rows);
+  if (ids.length === 0) {
     for (const n of SEARCH_WORDS) {
       const words = searchWordsOf(text, n);
       if (words.length < 2) break;
@@ -90,9 +95,10 @@ export async function searchVQuestions(anon: SupabaseClient, text: string, chapt
       rows = (data ?? []) as unknown as Row[];
       if (rows.length > 0) break;
     }
+    ids = matchPasted(text, rows);
   }
   const byId = new Map(rows.map((r) => [r.id, r]));
-  return matchPasted(text, rows).map((id) => {
+  return ids.map((id) => {
     const r = byId.get(id)!;
     return { id, snippet: snippetOf(r.text), where: [r.exam?.name, r.chapter?.name].filter(Boolean).join(", ") };
   });
