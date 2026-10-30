@@ -1,0 +1,130 @@
+[
+  {
+    "id": "c2c8463d-5a70-4597-99e0-bec2ece8dea8",
+    "label": "NDA practice 2D Q1588 (Circles)",
+    "reason": "fix: LWS 2D practice booklet Q1588 prints x^2 + y^2 + 4x + 2y + 1 = 0 and x^2 + y^2 - 2x + 6y - 6 = 0; our copy had -4x and -6y + 6. Key (d) cos^-1(7/16) holds as printed.",
+    "text": "The angle between the circles \\(x^2 + y^2 + 4x + 2y + 1 = 0\\) and \\(x^2 + y^2 - 2x + 6y - 6 = 0\\) is",
+    "solution": "Circle 1: centre \\((-2, -1)\\), \\(r_1 = \\sqrt{4 + 1 - 1} = 2\\). Circle 2: centre \\((1, -3)\\), \\(r_2 = \\sqrt{1 + 9 + 6} = 4\\).\n\nDistance between the centres: \\(d^2 = (1 + 2)^2 + (-3 + 1)^2 = 13\\).\n\nThe angle \\(\\theta\\) between the circles has \\(\\cos\\theta = \\frac{r_1^2 + r_2^2 - d^2}{2 r_1 r_2} = \\frac{4 + 16 - 13}{16} = \\frac{7}{16}\\), so \\(\\theta = \\cos^{-1}\\frac{7}{16}\\). Hence (D)."
+  },
+  {
+    "id": "eef3844c-e541-4807-acf0-0cc0553cf310",
+    "label": "NDA practice 2D Q1599 (Circles)",
+    "reason": "fix: LWS 2D practice booklet Q1599 prints x^2 + y^2 = 1 and x^2 + y^2 - 4x + 3 = 0; our copy had = 4 and - 4x = 0. Key (c) three holds as printed.",
+    "text": "What is the number of common tangents to the circles \\(x^2 + y^2 = 1\\) and \\(x^2 + y^2 - 4x + 3 = 0\\)?",
+    "solution": "Circle 1: centre \\((0, 0)\\), radius \\(1\\). Circle 2: centre \\((2, 0)\\), radius \\(\\sqrt{4 - 3} = 1\\).\n\nThe distance between the centres is \\(2 = r_1 + r_2\\), so the circles touch externally and have \\(3\\) common tangents. Hence (C)."
+  },
+  {
+    "id": "c2545ed1-fa95-4c20-8ebe-a272a3ecac7e",
+    "label": "NDA practice 2D Q1719 (Conics)",
+    "reason": "fix: LWS 2D practice booklet Q1719 prints x^2/5^2 + y^2/4^2 = 1; our copy had 3^2. Key (c) 12 holds as printed.",
+    "text": "Let P be any point on the circumference of the ellipse \\(\\dfrac{x^2}{5^2} + \\dfrac{y^2}{4^2} = 1\\), the maximum area formed by the two foci of the ellipse and point P is",
+    "solution": "Here \\(a = 5\\), \\(b = 4\\), so \\(c = \\sqrt{25 - 16} = 3\\) and the foci are \\((3, 0)\\) and \\((-3, 0)\\).\n\nThe base joining the foci is 6, and the height is greatest when \\(P\\) is at an end of the minor axis, \\((0, \\pm 4)\\).\n\nMaximum area \\(= \\dfrac12 \\times 6 \\times 4 = 12\\) sq. units. Hence (C)."
+  },
+  {
+    "id": "91c43e35-811a-47bf-b29a-95e86227e7e4",
+    "label": "NDA practice 2D Q1693 (Conics)",
+    "reason": "fix: LWS 2D practice booklet Q1693 prints ax^2 + 4y^2 = 4a; our copy had by^2. Its worked solution gives a = 2, semi-minor sqrt2: key (b) holds.",
+    "text": "The eccentricity of the ellipse \\(ax^2 + 4y^2 = 4a\\), \\((a < 4)\\) is \\(\\dfrac{1}{\\sqrt{2}}\\), then its semi-minor axis is equal to",
+    "solution": "\\(ax^2 + 4y^2 = 4a\\) gives \\(\\dfrac{x^2}{4} + \\dfrac{y^2}{a} = 1\\). Since \\(a < 4\\), the major axis is along the \\(x\\)-axis, with semi-axes \\(2\\) and \\(\\sqrt{a}\\).\n\n\\(e^2 = 1 - \\dfrac{a}{4} = \\dfrac{1}{2}\\) gives \\(a = 2\\), so the semi-minor axis is \\(\\sqrt{2}\\). Hence (B)."
+  },
+  {
+    "id": "28880ee6-10a7-435a-b864-17cbac82cf23",
+    "label": "NDA practice 2D Q1737 (Conics)",
+    "reason": "fix: LWS 2D practice booklet Q1737 prints x^2/(2 - l) - y^2/(l - 5) - 1 = 0 (its solution uses 2 - l > 0 and l - 5 < 0); our copy had + y^2. Key (d) holds as printed.",
+    "text": "The equation \\(\\dfrac{x^2}{2 - \\lambda} - \\dfrac{y^2}{\\lambda - 5} - 1 = 0\\) represents an ellipse if",
+    "solution": "Write the equation as \\(\\dfrac{x^2}{2 - \\lambda} + \\dfrac{y^2}{5 - \\lambda} = 1\\).\n\nIt is an ellipse when both denominators are positive: \\(2 - \\lambda > 0\\) and \\(5 - \\lambda > 0\\), that is \\(\\lambda < 2\\). (The denominators are never equal, so it is never a circle.) Hence (D)."
+  },
+  {
+    "id": "cc84732b-9e62-407c-9509-02e498df740b",
+    "label": "NDA 2025-I Q14 (Complex Numbers)",
+    "reason": "fix: NDA 2025-I Q14 (scanned paper page 4) prints (x - 1/x)^2 + (x - 1/x)^4 + (x - 1/x)^8; our copy had (x - 1/x^4) + (x - 1/x^8). Key (c) 87 holds as printed.",
+    "text": "If \\(x^2 - x + 1 = 0\\), then what is \\(\\left(x - \\frac{1}{x}\\right)^2 + \\left(x - \\frac{1}{x}\\right)^4 + \\left(x - \\frac{1}{x}\\right)^8\\) equal to?",
+    "solution": "Dividing \\(x^2 - x + 1 = 0\\) by \\(x\\) gives \\(x + \\frac{1}{x} = 1\\).\n\nSo \\(\\left(x - \\frac{1}{x}\\right)^2 = \\left(x + \\frac{1}{x}\\right)^2 - 4 = 1 - 4 = -3\\).\n\nThe sum is \\((-3) + (-3)^2 + (-3)^4 = -3 + 9 + 81 = 87\\). Hence (C)."
+  },
+  {
+    "id": "48814380-5dc7-447f-a4bf-1a4391d27867",
+    "label": "NDA 2024-II Q9 (Complex Numbers)",
+    "reason": "fix: NDA 2024-II Q9 (scanned paper page 5) prints the rows (i, 2i, 1), (2i, 3i, 2), (3, 1, 3); our copy had (2i, 1, 2i), (3i, 2, 3). Key (b) sqrt2 holds as printed.",
+    "text": "If \\(Z=\\frac{1}{3}\\begin{vmatrix}i & 2i & 1 \\\\ 2i & 3i & 2 \\\\ 3 & 1 & 3 \\end{vmatrix} = x + iy\\) where \\(i=\\sqrt{-1}\\), then what is the modulus of \\(Z\\)?",
+    "solution": "Expanding along the first row: \\(i(9i - 2) - 2i(6i - 6) + 1(2i - 9i) = -9 - 2i + 12 + 12i - 7i = 3 + 3i\\).\n\nSo \\(Z = \\frac{3 + 3i}{3} = 1 + i\\), and its modulus is \\(\\sqrt{1^2 + 1^2} = \\sqrt{2}\\). Hence (B)."
+  },
+  {
+    "id": "cb76afb8-9102-41e0-8990-2a0574d0b3a0",
+    "label": "NDA practice Algebra Q110 (Complex Numbers)",
+    "reason": "fix + note: LWS Algebra practice booklet Q110 prints '+ 1', a misprint: its own worked solution uses '+ i' (z^3 - iz^2 + iz + 1 = 0 after dividing by i). Shown as the solution reads it; key (b).",
+    "text": "If \\(iz^3 + z^2 - z + i = 0\\), then \\(|z|\\) is equal to",
+    "solution": "**Note:** The booklet prints the last term as \\(+1\\); with \\(+1\\), no root has modulus 0, 1 or 2. Its own worked solution uses \\(+i\\), the standard form of this question, which is shown here.\n\nDividing by \\(i\\) (and using \\(\\frac{1}{i} = -i\\)): \\(z^3 - iz^2 + iz + 1 = 0\\), that is \\(z^2(z - i) + i(z - i) = 0\\), so \\((z - i)(z^2 + i) = 0\\).\n\nSo \\(z = i\\) or \\(z^2 = -i\\); in both cases \\(|z| = 1\\). Hence (B)."
+  },
+  {
+    "id": "efdbac0c-5409-4065-9ec7-62dbc2bf1f2f",
+    "label": "NDA practice Algebra Q128 (Complex Numbers)",
+    "reason": "fix + note: LWS Algebra practice booklet Q128 prints e^(z-1), a misprint: its own worked solution uses e^(z-i). Shown as the solution reads it; key (a).",
+    "text": "If \\(z = 1 + i\\), then the argument of \\(z^2 e^{z-i}\\) is",
+    "solution": "**Note:** The booklet prints \\(e^{z-1}\\); its own worked solution uses \\(e^{z-i}\\), which is shown here. (With \\(e^{z-1} = e^{i}\\) the argument would be \\(\\frac{\\pi}{2} + 1\\), which is not among the options.)\n\n\\(z^2 = (1+i)^2 = 2i\\) and \\(e^{z-i} = e^{1} = e\\), a positive real number.\n\nSo \\(z^2 e^{z-i} = 2e\\,i\\), whose argument is \\(\\dfrac{\\pi}{2}\\). Hence (A)."
+  },
+  {
+    "id": "b356ca99-3a0f-4c18-9a79-a7f16ac6951d",
+    "label": "NDA 2019-II Q17 (Complex Numbers)",
+    "reason": "fix: NDA 2019-II Q17 (scanned paper page 7) prints the question as stored; both powers equal i, so the sum is 2i, option (c). Our stored key (d) -2i was wrong.",
+    "correct": "C",
+    "solution": "\\(\\frac{\\sqrt{3} + i}{2} = \\cos\\frac{\\pi}{6} + i\\sin\\frac{\\pi}{6} = e^{i\\pi/6}\\) and \\(\\frac{i - \\sqrt{3}}{2} = \\cos\\frac{5\\pi}{6} + i\\sin\\frac{5\\pi}{6} = e^{i5\\pi/6}\\).\n\nSince \\(2019 = 12 \\times 168 + 3\\), \\(\\left(e^{i\\pi/6}\\right)^{2019} = e^{i3\\pi/6} = i\\). Since \\(5 \\times 2019 = 10095 = 12 \\times 841 + 3\\), \\(\\left(e^{i5\\pi/6}\\right)^{2019} = e^{i3\\pi/6} = i\\) as well.\n\nSo the sum is \\(i + i = 2i\\). Hence (C)."
+  },
+  {
+    "id": "dd190749-4e70-4fff-aef0-c4671cda6451",
+    "label": "NDA 2026-I Q5 (Complex Numbers)",
+    "reason": "fix: NDA 2026-I Q5 (scanned paper page 4) prints the question as stored; the ratio is gamma/beta under either labelling of the roots, option (b). Our stored key (a) was wrong.",
+    "correct": "B",
+    "solution": "The cube roots of \\(-8\\) are \\(-2, -2\\omega, -2\\omega^2\\), where \\(\\omega\\) is a complex cube root of unity. Take \\(\\alpha = -2\\), \\(\\beta = -2\\omega\\), \\(\\gamma = -2\\omega^2\\).\n\nThen the numerator is \\(4(p^2 + \\omega^2 q^2 + \\omega^4 r^2) = 4(p^2 + \\omega^2 q^2 + \\omega r^2)\\) and the denominator is \\(4(\\omega^2 p^2 + \\omega^4 q^2 + r^2) = 4(\\omega^2 p^2 + \\omega q^2 + r^2)\\).\n\nMultiplying the denominator by \\(\\omega\\) gives the numerator, so the ratio is \\(\\omega = \\frac{-2\\omega^2}{-2\\omega} = \\frac{\\gamma}{\\beta}\\). (Taking \\(\\beta = -2\\omega^2\\) and \\(\\gamma = -2\\omega\\) instead gives \\(\\omega^2\\), which is again \\(\\frac{\\gamma}{\\beta}\\).) Hence (B)."
+  },
+  {
+    "id": "691daaf6-4e5b-4dbd-b4ff-efdc76c13f60",
+    "label": "NDA practice LWS mock 9 Q10 (Complex Numbers)",
+    "reason": "fix + note: LWS mock 9 Q10 (from the Oswaal mock) prints the stem as stored (base 1/sqrt3, > -2); the mock's key (b) forgets that a base below 1 reverses the inequality. Correct answer (a), with a notice.",
+    "correct": "A",
+    "solution": "**Note:** The mock's answer key gives (b), from \\(\\frac{|z|^2 - |z| + 1}{|z| + 2} > 3\\); but the base \\(\\frac{1}{\\sqrt{3}}\\) is less than 1, so taking the inequality out of the logarithm reverses it. The answer shown is the corrected one, (a).\n\nSince the base \\(\\frac{1}{\\sqrt{3}} < 1\\), \\(\\log_{1/\\sqrt{3}} X > -2\\) means \\(X < \\left(\\frac{1}{\\sqrt{3}}\\right)^{-2} = 3\\).\n\nSo \\(\\frac{|z|^{2} - |z| + 1}{|z| + 2} < 3\\), that is \\(|z|^{2} - 4|z| - 5 < 0\\), or \\((|z| - 5)(|z| + 1) < 0\\).\n\nSince \\(|z| + 1 > 0\\), this gives \\(|z| < 5\\): the interior of a circle. Hence (A)."
+  },
+  {
+    "id": "d10047b6-f5d6-4745-a876-e8f52774ff86",
+    "label": "NDA practice 2D Q1558 (Circles)",
+    "reason": "fix + note: LWS 2D practice booklet Q1558: option (d) prints 1, ours sqrt3. As printed the radius is not fixed (anything from 2 to 3); key (a) 3 as the booklet.",
+    "options": { "D": "\\(1\\)" },
+    "solution": "**Note:** The data do not fix the radius: it depends on which diameter is the chord, and can be anything from 2 to 3. The answer shown takes the diameter perpendicular to the line joining the centres, as the booklet's key does.\n\nThe circle \\(x^2 + y^2 - 4x - 6y + 9 = 0\\) has centre \\((2, 3)\\) and radius \\(\\sqrt{4 + 9 - 9} = 2\\). A diameter of this circle (length \\(4\\)) is a chord of the circle of centre \\((1, 1)\\). For the diameter perpendicular to the line of centres, the distance from \\((1, 1)\\) to the chord is \\(d = \\sqrt{(2-1)^2 + (3-1)^2} = \\sqrt{5}\\) and the half-chord is \\(2\\). Required radius \\(= \\sqrt{d^2 + 2^2} = \\sqrt{5 + 4} = 3\\). Hence (A)."
+  },
+  {
+    "id": "f1df27c9-64d0-4f81-947c-167bdbd1a903",
+    "label": "NDA practice 2D Q1564 (Circles)",
+    "reason": "fix + note: LWS 2D practice booklet Q1564: option (b) prints sqrt3, ours sqrt2. As printed the radius is not fixed (anything from 2 to 3); key (c) 3 as the booklet.",
+    "options": { "B": "\\(\\sqrt{3}\\)" },
+    "solution": "**Note:** The data do not fix the radius: it depends on which diameter is the chord, and can be anything from 2 to 3. The answer shown takes the diameter perpendicular to the line joining the centres, as the booklet's key does.\n\nThe circle \\(x^2 + y^2 - 2x - 6y + 6 = 0\\) has centre \\((1, 3)\\) and radius \\(\\sqrt{1 + 9 - 6} = 2\\). Its diameter (length \\(4\\)) is a chord of circle \\(C\\) of centre \\((2, 1)\\). For the diameter perpendicular to the line of centres, the distance from \\((2, 1)\\) to the chord is \\(d = \\sqrt{(2-1)^2 + (1-3)^2} = \\sqrt{5}\\) and the half-chord is \\(2\\). Radius of \\(C = \\sqrt{d^2 + 2^2} = \\sqrt{5 + 4} = 3\\). Hence (C)."
+  },
+  {
+    "id": "b8e28261-4fdc-4d6d-8e2b-9cc3419454b5",
+    "label": "NDA practice 2D Q1592 (Circles)",
+    "reason": "fix + note: LWS 2D practice booklet Q1592: options restored to the booklet's (ours differed in all four). As printed no option is right (constant 46/25); key (b) as the booklet.",
+    "options": {
+      "A": "\\(x^2 - y^2 - 2x - 2y + 2 = 0\\)",
+      "B": "\\(x^2 + y^2 - 2x - 2y - 2 = 0\\)",
+      "C": "\\(x^2 + y^2 + 2x + 2y + 2 = 0\\)",
+      "D": "\\(x^2 + y^2 - 2x - 2y + 4 = 0\\)"
+    },
+    "solution": "**Note:** As printed, no option is right: the circle is \\(x^2 + y^2 - 2x - 2y + \\frac{46}{25} = 0\\). The answer shown follows the booklet's key.\n\nThe radius is the distance from \\((1, 1)\\) to \\(3x - 4y + 3 = 0\\): \\(r = \\frac{|3 - 4 + 3|}{\\sqrt{9 + 16}} = \\frac{2}{5}\\).\n\nSo the circle is \\((x - 1)^2 + (y - 1)^2 = \\frac{4}{25}\\), that is \\(x^2 + y^2 - 2x - 2y + \\frac{46}{25} = 0\\)."
+  },
+  {
+    "id": "7cda903e-8b00-4a37-a80b-0650b68962d4",
+    "label": "NDA practice 2D Q1720 (Conics)",
+    "reason": "note: LWS 2D practice booklet Q1720: as printed both (c) and (d) are right (the major axis is not stated); key (c) as the booklet.",
+    "solution": "**Note:** Both (C) and (D) are right: the question does not say which axis is the major one. With the major axis along \\(x\\) the ellipse is \\(3x^2 + 5y^2 = 32\\) (C); along \\(y\\) it is \\(5x^2 + 3y^2 = 48\\) (D). The answer shown follows the booklet's key.\n\nLet \\(\\dfrac{x^2}{a^2} + \\dfrac{y^2}{b^2} = 1\\) with \\(e^2 = 2/5\\), so \\(b^2 = a^2(1 - 2/5) = \\dfrac{3a^2}{5}\\). Passes through \\((-3, 1)\\): \\(\\dfrac{9}{a^2} + \\dfrac{5}{3a^2} = 1\\), so \\(\\dfrac{27 + 5}{3a^2} = 1\\), \\(a^2 = 32/3\\) and \\(b^2 = 32/5\\). Equation: \\(3x^2 + 5y^2 = 32\\). Hence (C)."
+  },
+  {
+    "id": "4f8c7f9b-1b54-4b39-ad4a-8157c1d603e6",
+    "label": "NDA practice 2D Q1673 (Conics)",
+    "reason": "note: LWS 2D practice booklet Q1673 prints option (d) m^2 = 4nl and key (d); the condition is am^2 = 4nl, so no option is right for general a.",
+    "solution": "**Note:** As printed, no option is right: the condition is \\(am^2 = 4nl\\), and option (D), \\(m^2 = 4nl\\), is that condition only when \\(a = 1\\). The answer shown follows the booklet's key.\n\nFor the line \\(lx + my + n = 0\\) to touch \\(y^2 = ax\\), substitute \\(x = -\\frac{my + n}{l}\\) into \\(y^2 = ax\\): \\(ly^2 + amy + an = 0\\). Tangency requires the discriminant to vanish: \\((am)^2 - 4l(an) = 0\\), giving \\(am^2 = 4nl\\). Hence (D)."
+  },
+  {
+    "id": "f3c7cbf6-6cd1-4b87-88cf-ba6f86d79ba3",
+    "label": "NDA practice LWS mock 8 Q89 (Conics)",
+    "reason": "note: LWS mock 8 Q89 (from the Oswaal mock) as printed: (6, 2) lies inside the hyperbola, so no real tangent passes through it; key (b) 6/5 from the sum and product of the roots.",
+    "solution": "**Note:** As printed, the point \\((6, 2)\\) lies inside the hyperbola (\\(\\frac{36}{25} - \\frac{4}{16} > 1\\)), so no real tangent passes through it: the quadratic below has no real roots. The answer shown follows the paper's key, from the sum and product of the roots.\n\nSuppose the tangent \\(y = mx + c\\) passes through \\((6, 2)\\). For this hyperbola \\(c^2 = 25m^2 - 16\\), so \\((2 - 6m)^2 = 25m^2 - 16\\), that is \\(11m^2 - 24m + 20 = 0\\).\n\nIts roots \\(m_1, m_2\\) have \\(m_1 + m_2 = \\frac{24}{11}\\) and \\(m_1 m_2 = \\frac{20}{11}\\).\n\nSo \\(\\frac{1}{m_1} + \\frac{1}{m_2} = \\frac{m_1 + m_2}{m_1 m_2} = \\frac{24}{20} = \\frac{6}{5}\\). Hence (B)."
+  }
+]

@@ -1,0 +1,110 @@
+[
+  {
+    "id": "cfe3cb7b-b7ac-4eac-9291-3d6365ee2eed",
+    "before": "c081b18f",
+    "solution": "\\(B(6,8)\\) and \\(C(-8,6)\\) both lie on \\(x^2+y^2=100\\), and \\(A\\) is only required to lie on the same circle.\n\nSo \\(A\\) can be any point of the circle other than \\(B\\) and \\(C\\). For example, both \\((-6,8)\\) and \\((-6,-8)\\) satisfy \\(x^2+y^2=100\\), so there are infinitely many positions for \\(A\\) and no single one is fixed by the data.\n\nHence (D).",
+    "note": "BC has length sqrt200, not a diameter, so no right-angle argument applies; A is any other point of the circle. Key D right."
+  },
+  {
+    "id": "254921f7-8a2c-4194-b522-a76b1b0a65f5",
+    "before": "7edba5d6",
+    "solution": "The latus rectum is vertical (\\(x=-2\\)), so the axis is horizontal.\n\nThe focus is at \\((-2,0)\\) (midpoint), and the latus rectum has length \\(4a=8\\), so \\(a=2\\).\n\nThe parabola can open left, with vertex \\((0,0)\\): \\(y^2=-8x\\), or open right, with vertex \\((-4,0)\\): \\(y^2=8(x+4)\\). So there are 2 parabolas.\n\nHence (B).",
+    "note": "Latus rectum 8 = 4a gives a=2, focus (-2,0); left-opening is y^2=-8x, right-opening y^2=8(x+4). Count 2 stands."
+  },
+  {
+    "id": "7732453c-5014-44d7-8ab2-2628e509df91",
+    "before": "c2ae294d",
+    "solution": "\\(y^2-kx+8=0\\Rightarrow y^2=k\\left(x-\\tfrac{8}{k}\\right)\\), so the vertex is at \\(x=\\tfrac{8}{k}\\) and \\(4A=k\\).\n\nThe directrix is \\(x=\\tfrac{8}{k}-\\tfrac{k}{4}=1\\Rightarrow k^2+4k-32=0\\Rightarrow k=4\\) or \\(k=-8\\).\n\nOnly \\(k=4\\) appears among the options.\n\nHence (C).",
+    "note": "k^2+4k-32=0 has roots 4 and -8; the solution drops -8 silently. Only k=4 is among the options."
+  },
+  {
+    "id": "8bc52442-ddc2-4002-afa1-6acf9a3eb3d6",
+    "before": "6af42d8f",
+    "solution": "\\(2x^2 + 3y^2 = 1\\) gives \\(\\dfrac{x^2}{1/2} + \\dfrac{y^2}{1/3} = 1\\), so \\(a^2 = 1/2\\), \\(b^2 = 1/3\\).\n\nTangent \\(y = x + \\lambda\\) has \\(m = 1\\); the condition \\(\\lambda^2 = a^2 m^2 + b^2 = 1/2 + 1/3 = 5/6\\) gives \\(\\lambda = \\pm\\sqrt{5/6}\\).\n\nOnly \\(\\sqrt{5/6}\\) is among the options.\n\nHence (C).",
+    "note": "lambda^2 = 5/6 gives lambda = +/- sqrt(5/6); only the positive value is an option."
+  },
+  {
+    "id": "da3449e8-9ba9-4af8-935e-8d17cf25ceda",
+    "before": "27d54d8f",
+    "solution": "The given equation can be rewritten as\n\n\\((y - 1)^{2} = 2(x - 2)\\)\n\nor \\(Y^{2} = 4AX\\), where \\(Y = y - 1\\), \\(X = x - 2\\), \\(4A = 2\\).\n\nThe directrix is \\(X = -A \\Rightarrow x - 2 = -\\tfrac{1}{2}\\), so \\(x = \\tfrac{3}{2}\\).\n\nHence (B).",
+    "note": "Rewriting gives (y-1)^2=2(x-2), directrix x=3/2, key B right; trailing text is another question's working."
+  },
+  {
+    "id": "ea25ad10-8964-4694-9e94-1d66e720e6cd",
+    "before": "f2afe0c5",
+    "solution": "It represents a hyperbola if the equation is in the form \\(\\frac{x^{2}}{a^{2}} - \\frac{y^{2}}{b^{2}} = 1\\).\n\nSo \\(12 - k > 0 \\Rightarrow k < 12\\), and \\(8 - k < 0 \\Rightarrow k > 8\\).\n\nOn combining both, we get \\(8 < k < 12\\). (For \\(k < 8\\) both denominators are positive, which is an ellipse.)\n\nTherefore it represents a hyperbola if \\(8 < k < 12\\).\n\nHence (C).",
+    "note": "Hyperbola needs 12-k>0 and 8-k<0, i.e. k<12 and k>8, so 8<k<12; the solution wrongly writes 8-k<0 as k<8."
+  },
+  {
+    "id": "027719b9-051f-4e8d-a967-12c070ca6228",
+    "before": "8ca67443",
+    "solution": "Roots of \\(x^2-x+1=0\\) are \\(\\alpha=e^{i\\pi/3},\\beta=e^{-i\\pi/3}\\).\n\nThen \\(\\alpha^{100}=e^{i100\\pi/3}\\) and \\(\\beta^{100}=e^{-i100\\pi/3}\\); \\(100\\pi/3 \\equiv 4\\pi/3 \\pmod{2\\pi}\\).\n\nSo \\(\\alpha^{100}+\\beta^{100}=2\\cos(4\\pi/3)=-1\\) and \\(\\alpha^{100}-\\beta^{100}=2i\\sin(4\\pi/3)=-i\\sqrt{3}\\).\n\nThe ratio \\(\\left|\\frac{-1}{-i\\sqrt{3}}\\right|=\\frac{1}{\\sqrt{3}}\\). Hence (D).",
+    "note": "Roots of x^2-x+1 are e^{±i pi/3}, not -omega; the rest holds."
+  },
+  {
+    "id": "0e6bca0c-e731-4f04-a90e-dbaff3b3ac08",
+    "before": "802a94ba",
+    "solution": "Let \\(s=z_1+z_2=-1\\) and \\(p=z_1z_2\\).\n\nThen \\(z_1^3+z_2^3-3z_1z_2=s^3-3ps-3p=-1+3p-3p=-1\\).\n\nHence (B).",
+    "note": "As printed z1 is not omega, but z1+z2=-1 so the expression is s^3-3ps-3p=-1 anyway."
+  },
+  {
+    "id": "28a7b664-7dc6-4847-9c46-c4678a662093",
+    "before": "486b15d1",
+    "solution": "We have \\(\\frac{1-i}{1+i}=\\frac{(1-i)^2}{(1+i)(1-i)}=\\frac{1-2i+i^2}{1-i^2}=\\frac{-2i}{2}=-i\\).\n\nSo \\(\\left(\\frac{1-i}{1+i}\\right)^n=(-i)^n\\), which is purely imaginary when \\(n\\) is odd.\n\nFor \\(n=1\\): \\((-i)^1=-i\\), negative imaginary part.\n\nFor \\(n=3\\): \\((-i)^3=i\\), positive imaginary part. Hence \\(n=3\\), (B).",
+    "note": "(1-i)/(1+i) = -i, so the power is (-i)^n, not (-1)^n."
+  },
+  {
+    "id": "4898a5a7-7625-4323-b4db-198636ed7fbe",
+    "before": "c0b9874a",
+    "solution": "\\(z^{\\frac13}=p+iq\\Rightarrow z=(p+iq)^3=p^3+3p^2(iq)+3p(iq)^2+(iq)^3\\)\n\n\\(\\Rightarrow x-iy=p^{3}-3pq^{2}+i\\left(3p^{2}q-q^{3}\\right)\\)\n\n\\(\\therefore x=p^{3}-3pq^{2}\\Rightarrow\\frac{x}{p}=p^{2}-3q^{2}\\)\n\n\\(y=q^{3}-3p^{2}q\\Rightarrow\\frac{y}{q}=q^{2}-3p^{2}\\)\n\n\\(\\therefore\\frac{x}{p}+\\frac{y}{q}=-2p^{2}-2q^{2}\\), so the required value is \\(-2\\). Hence (A).",
+    "note": "(p+iq)^3 = p^3+3p^2(iq)+3p(iq)^2+(iq)^3; the stated expansion is false."
+  },
+  {
+    "id": "66d6817d-377d-4b7c-b092-be054120c997",
+    "before": "58911706",
+    "solution": "\\(a=e^{i\\alpha},\\ b=e^{i\\beta},\\ c=\\cos\\gamma+i\\sin\\gamma=e^{i\\gamma}\\).\n\nThen \\(\\frac bc+\\frac ca+\\frac ab=e^{i(\\beta-\\gamma)}+e^{i(\\gamma-\\alpha)}+e^{i(\\alpha-\\beta)}=1\\).\n\nThe imaginary part of the left side is \\(\\sin(\\beta-\\gamma)+\\sin(\\gamma-\\alpha)+\\sin(\\alpha-\\beta)\\), and the right side is real, so this equals \\(0\\).\n\nHence \\(\\sin(\\alpha-\\beta)+\\sin(\\beta-\\gamma)+\\sin(\\gamma-\\alpha)=0\\), (A).",
+    "note": "b/c=e^{i(beta-gamma)}, c/a=e^{i(gamma-alpha)}, a/b=e^{i(alpha-beta)}; imaginary part gives the sum 0."
+  },
+  {
+    "id": "69512ebe-bf7a-4761-aeb6-67360eae3755",
+    "before": "0ba8ae85",
+    "solution": "Cube root of unity \\(=-\\frac12\\left(1+i\\sqrt3\\right)\\), so A matches 4.\n\nA square root of \\(-1\\) is \\(i\\), so B matches 3.\n\n\\((1-i)^3=1-3i+3i^2-i^3=1-3i-3+i=-2-2i=-2(1+i)\\), so C matches 1.\n\n\\((1+i)^2=1+2i+i^2=2i\\), so D matches 2. Hence (C).",
+    "note": "(1-i)^3 = 1-3i+3i^2-i^3 = -2-2i; the written expansion is false though result is right."
+  },
+  {
+    "id": "69c84297-1126-4e23-9f27-38e3033aac7d",
+    "before": "7d42401c",
+    "solution": "Given \\(|z+\\omega|=|z-\\omega|\\)\n\n\\(\\Rightarrow|z+\\omega|^{2}=|z-\\omega|^{2}\\)\n\n\\(\\Rightarrow(z+\\omega)\\left(\\overline{z+\\omega}\\right)=(z-\\omega)\\left(\\overline{z-\\omega}\\right)\\)\n\n\\(\\Rightarrow z\\overline{z}+z\\overline{\\omega}+\\overline{z}\\omega+\\omega\\overline{\\omega}=z\\overline{z}-z\\overline{\\omega}-\\omega\\overline{z}+\\omega\\overline{\\omega}\\)\n\n\\(\\Rightarrow z\\overline{\\omega}+\\omega\\overline{z}=0\\)\n\nSince \\(\\omega\\overline{z}=\\overline{z\\overline{\\omega}}\\), this says \\(2\\,\\mathrm{Re}(z\\overline{\\omega})=0\\), so \\(z\\overline{\\omega}\\) is purely imaginary (zero allowed). Hence (D).",
+    "note": "Expanding gives z*conj(w)+w*conj(z)=2Re(z conj w)=0, i.e. z conj(w) purely imaginary, not z=0 or w=0."
+  },
+  {
+    "id": "940a1469-2ec7-4fdb-90b9-00e4b1d7fb2b",
+    "before": "63b34a5e",
+    "solution": "\\(\\left|z+\\frac12\\right|\\ge\\big||z|-\\frac12\\big|=|z|-\\frac12\\ge2-\\frac12=\\frac32\\), with equality at \\(z=-2\\).\n\nThere is no upper bound, but the minimum value is \\(\\frac32\\).\n\nSince \\(1<\\frac32<2\\), the minimum lies in the interval \\((1,2)\\). Hence (D).",
+    "note": "|z|>=2 gives |z+1/2| >= |z|-1/2 >= 3/2, attained at z=-2; no upper bound. Minimum 3/2 lies in (1,2)."
+  },
+  {
+    "id": "aebf1c36-4814-48b2-9ac9-e1db9ec42e80",
+    "before": "8a7d3b94",
+    "solution": "\\(Z=1+\\cos\\frac\\pi5+i\\sin\\frac\\pi5\\)\n\n\\(|Z|=\\sqrt{\\left(1+\\cos\\frac\\pi5\\right)^2+\\sin^2\\frac\\pi5}=\\sqrt{2+2\\cos\\frac\\pi5}\\)\n\n\\(=\\sqrt{2\\left(1+2\\cos^2\\frac{\\pi}{10}-1\\right)}=\\sqrt{4\\cos^2\\frac{\\pi}{10}}=2\\cos\\frac{\\pi}{10}\\). Hence (C).",
+    "note": "2+2cos(pi/5) = 4cos^2(pi/10), not 2cos^2(pi/10)."
+  },
+  {
+    "id": "af14a0c7-e25a-41bd-9dc8-0f8df98a7959",
+    "before": "62398b70",
+    "solution": "\\(1+\\sqrt3 i=2\\left(\\frac12+\\frac{\\sqrt3}2i\\right)=2e^{i\\pi/3}\\)\n\nSo \\((1+\\sqrt3 i)^{n/2}=2^{n/2}e^{in\\pi/6}\\).\n\nThis is positive real exactly when \\(\\frac{n\\pi}{6}=2k\\pi\\), i.e. \\(n=12k\\). (For \\(n=6\\) it equals \\(-8\\), negative.)\n\nThe smallest positive value is \\(n=12\\). Hence (C).",
+    "note": "1+sqrt3 i = 2e^{i pi/3}; power is 2^{n/2}e^{i n pi/6}, positive real only for n=12k. n=6 gives -8."
+  },
+  {
+    "id": "b2cc36c0-505a-4b09-badc-0b81f6a47a4f",
+    "before": "0a0332b4",
+    "solution": "Let \\(z_1=a+ib\\Rightarrow z_2=a-ib\\), and \\(z_3=c+id\\Rightarrow z_4=c-id\\).\n\n\\(\\arg\\left(\\frac{z_1}{z_4}\\right)+\\arg\\left(\\frac{z_2}{z_3}\\right)=\\arg\\left(\\frac{z_1z_2}{z_3z_4}\\right)=\\arg\\left(\\frac{(a+ib)(a-ib)}{(c+id)(c-id)}\\right)=\\arg\\left(\\frac{a^2+b^2}{c^2+d^2}\\right)=0\\).\n\nHence (A).",
+    "note": "z3 z4 are conjugates, so the denominator is (c-id)(c+id)=c^2+d^2, not (c+id)(c+id)."
+  },
+  {
+    "id": "b714fe4d-c752-4a16-a736-27159a091315",
+    "before": "16d0fdd3",
+    "solution": "\\(\\frac32+i\\frac{\\sqrt3}2=\\frac{\\sqrt3}{2}(\\sqrt3+i)=\\sqrt3\\left(\\cos\\frac\\pi6+i\\sin\\frac\\pi6\\right)\\)\n\nSo \\(\\left(\\frac32+i\\frac{\\sqrt3}2\\right)^{50}=3^{25}\\left(\\cos\\frac{50\\pi}6+i\\sin\\frac{50\\pi}6\\right)\\).\n\n\\(\\frac{50\\pi}{6}=8\\pi+\\frac\\pi3\\), so \\(x=\\cos\\frac\\pi3=\\frac12\\) and \\(y=\\sin\\frac\\pi3=\\frac{\\sqrt3}2\\).\n\nThe ordered pair is \\(\\left(\\frac12,\\frac{\\sqrt3}2\\right)\\). Hence (D).",
+    "note": "Solution is right but ends with another question working (set theory); drop it."
+  }
+]
