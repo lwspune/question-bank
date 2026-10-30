@@ -81,6 +81,35 @@ takes the FIRST kind that fits; anything left keeps its still solution.
   about a sixth of the screenshots, enough to check shapes and labels.
   Dropped as too big for one sketch: 13 (over 26 points or 30 vars:
   polygons with all diagonals, two-circle chains).
+- 2026-10-31, SSC CGL arithmetic wave 1 (Percentage, Profit and Loss and the
+  start of Ratio; 450 questions as bar models, brief `briefs/sketch-bar.md`):
+  390 sketches + 52 algebra applied, every picture right. (1) Labels on bar
+  outlines were the defect, not the maths: 45 of 131 sketches in one slice
+  set. `label-overlap.js <batch> --edges` now tests each label against every
+  bar edge and divider (a bar edge touching the top of the text counts); the
+  brief carries the renderer's own screen mapping and text box, and builders
+  that computed boxes from it came back clean. (2) `{var}` prints fractions
+  ("225/4%"): write the key's decimal as text. (3) A rupee sign on votes:
+  check the units on the sheet.
+- 2026-10-31, SSC CGL arithmetic wave 2 (rest of Ratio, Averages, Time and
+  Work; 450 questions): 155 sketches + 282 algebra applied, every picture
+  right; label hits came back at 1 per batch once agents reused wave 1's
+  builder. New refusal, at the DATABASE not the checker: the 8 KB cap of
+  `questions_solution_visual_shape` measures the raw jsonb, so ~6 KB of JSON
+  text is the real limit; a chained bar builder nested every block's x in the
+  next and hit it, and `--apply` stops at the first refused row. Fix: plain
+  numbers for long coordinate formulas (same picture). Candidate: have
+  `visuals:assemble` refuse an oversized visual so the dry run catches it.
+- 2026-10-31, SSC CGL arithmetic wave 3 (Time and Work tail, Interest, Speed,
+  Time and Distance; 436 questions): 227 sketches + 205 algebra applied, every
+  picture right. Speed and distance drew as tracks (chases with a dashed gap,
+  trains crossing, boats with the current, circular tracks unrolled or as a
+  circle). One builder's 12 px label box let labels touch, which the renderer
+  answers by moving the later one 16 px, onto a bar (35 of 102); its own check
+  passed them, so the review's `--edges` run is what found them. All 1,336
+  arithmetic questions now decided: 1,311 animated (772 sketch + 539 algebra
+  across waves 1-3), 18 none, 7 left undecided (free-letter answers, one
+  truncated key).
 
 **Algebra steps rules** (`scenes/algebraSteps.ts`, spec `tests/visuals-algebra.test.ts`, brief `briefs/algebra-draft.md`):
 - Up to 10 lines, each KaTeX, on a step `s1`..`s8`. Each says how it is checked:

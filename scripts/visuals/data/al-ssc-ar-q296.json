@@ -1,0 +1,77 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "ebbf1039-29f3-449a-96be-c7701018f711",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "1.3 \\times 1.3 = {{1:1.69}}",
+              "f": "1.3*1.3",
+              "value": "1.69",
+              "note": "net increase 69%"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "0.7 \\times 0.7 = {{2:0.49}}",
+              "f": "0.7*0.7",
+              "value": "0.49",
+              "note": "net decrease 51%"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{69-51}{51} \\times 100 = \\dfrac{1800}{51}",
+              "f": "(69-51)/51*100",
+              "value": "1800/51"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\dfrac{1800}{51} \\approx {{3:35.29\\%}}",
+              "f": "1800/51",
+              "value": "35.29",
+              "dp": 2,
+              "note": "compare the two net changes"
+            }
+          ],
+          "answer": "1800/51"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "0c5771a0",
+        "answer": {
+          "value": 35.294117647058826,
+          "label": "35.29%"
+        }
+      }
+    }
+  ],
+  "decided": []
+}
