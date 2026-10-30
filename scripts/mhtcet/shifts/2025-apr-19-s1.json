@@ -971,10 +971,11 @@
       "subtopic": "Scalar Triple Product, Coplanarity, and Volume",
       "difficulty": "MODERATE",
       "answer": "D",
-      "solution": "Treat each bracket as a scalar triple product, linear in each slot. The left side \\([2\\bar p - 3\\bar r,\\ \\bar q,\\ \\bar s] + [3\\bar p + 2\\bar q,\\ \\bar r,\\ \\bar s]\\) expands. The first term \\(= 2[\\bar p,\\bar q,\\bar s] - 3[\\bar r,\\bar q,\\bar s]\\). The second \\(= 3[\\bar p,\\bar r,\\bar s] + 2[\\bar q,\\bar r,\\bar s]\\). Using \\([\\bar r,\\bar q,\\bar s] = -[\\bar q,\\bar r,\\bar s]\\), the \\(-3[\\bar r,\\bar q,\\bar s]\\) becomes \\(+3[\\bar q,\\bar r,\\bar s]\\). Collecting: \\(3[\\bar p,\\bar r,\\bar s] + 5[\\bar q,\\bar r,\\bar s] + 2[\\bar p,\\bar q,\\bar s]\\). Comparing with \\(m[\\bar p,\\bar r,\\bar s] + n[\\bar q,\\bar r,\\bar s] + t[\\bar p,\\bar q,\\bar s]\\) gives \\(m=3,\\ n=5,\\ t=2\\).",
+      "solution": "**Note:** The paper's question prints \\([\\bar{p} - 3\\bar{r}\\ \\bar{q}\\ \\bar{s}]\\); its own solution uses \\([2\\bar{p} - 3\\bar{r}\\ \\bar{q}\\ \\bar{s}]\\), shown here.\n\nTreat each bracket as a scalar triple product, linear in each slot. The left side \\([2\\bar p - 3\\bar r,\\ \\bar q,\\ \\bar s] + [3\\bar p + 2\\bar q,\\ \\bar r,\\ \\bar s]\\) expands. The first term \\(= 2[\\bar p,\\bar q,\\bar s] - 3[\\bar r,\\bar q,\\bar s]\\). The second \\(= 3[\\bar p,\\bar r,\\bar s] + 2[\\bar q,\\bar r,\\bar s]\\). Using \\([\\bar r,\\bar q,\\bar s] = -[\\bar q,\\bar r,\\bar s]\\), the \\(-3[\\bar r,\\bar q,\\bar s]\\) becomes \\(+3[\\bar q,\\bar r,\\bar s]\\). Collecting: \\(3[\\bar p,\\bar r,\\bar s] + 5[\\bar q,\\bar r,\\bar s] + 2[\\bar p,\\bar q,\\bar s]\\). Comparing with \\(m[\\bar p,\\bar r,\\bar s] + n[\\bar q,\\bar r,\\bar s] + t[\\bar p,\\bar q,\\bar s]\\) gives \\(m=3,\\ n=5,\\ t=2\\).",
       "akAnswer": "D",
       "agreesWithAk": true,
-      "note": "Stem prints '2p-3r' for the first matrix; akSolution treats first entry as 2p (text shows p-3r, likely OCR). The comparison m,n,t = 3,5,2 matches option D regardless."
+      "note": "Stem prints '2p-3r' for the first matrix; akSolution treats first entry as 2p (text shows p-3r, likely OCR). The comparison m,n,t = 3,5,2 matches option D regardless.",
+      "stemOverride": "If \\(\\begin{bmatrix} 2\\bar{p}- 3\\bar{r} & \\bar{q} & \\bar{s} \\end{bmatrix}+ \\lbrack 3\\bar{p}+ 2\\bar{q}\\ \\bar{r}\\ \\bar{s}\\rbrack =m\\begin{bmatrix} \\bar{p} & \\bar{r} & \\bar{s} \\end{bmatrix}+n\\begin{bmatrix} \\bar{q} & \\bar{r} & \\bar{s} \\end{bmatrix}+t\\begin{bmatrix} \\bar{p} & \\bar{q} & \\bar{s} \\end{bmatrix}\\), then the values of \\(m,n,t\\) respectively are \\(\\_\\_\\_\\_\\)"
     },
     "104": {
       "chapter": "Line and Plane",

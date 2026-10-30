@@ -56,6 +56,12 @@
  *    place: the ingest collapsed the whitespace, so rebuild each table from the
  *    source paper (scripts/table-fix/).
  *
+ * 10. SPLIT_CDOTS — `\cdots` stored as `\cdot s`, drawn as "· s". 29 public
+ *    MHT-CET rows on 2026-10-29. Every field AND every option. Repairable in
+ *    place with `fixSplitCdots` (the stem changes content_hash, so through
+ *    scripts/reports/apply-fixes.ts); `N\cdot s` and other real products are
+ *    left alone by the probe's own guard.
+ *
  * Every detector reuses production helpers, so a false positive here is a real
  * disagreement worth investigating, not a probe artefact. Math zones are masked
  * by `normalizeNewlines` / `maskMathZones`, so `\neq` / `\nabla` / `\nu` and
@@ -70,6 +76,7 @@ import {
   leakedOptionValues,
   isFlattenedTable,
   isDashedTable,
+  hasSplitCdots,
   mixedMatrixDelimiters,
 } from "./lib/textProbes";
 import { pandocArtifactCount, stripPandocArtifacts } from "./lib/pandocArtifacts";
@@ -104,7 +111,8 @@ type Finding = {
     | "FLATTENED_TABLE"
     | "MIXED_MATRIX_DELIM"
     | "PHANTOM_ARROW"
-    | "DASHED_TABLE";
+    | "DASHED_TABLE"
+    | "SPLIT_CDOTS";
   sample: string;
 };
 
@@ -221,6 +229,23 @@ function inspect(r: Row): Finding[] {
     });
   }
 
+  // A split \cdots can sit in any field or option; one finding per question.
+  const cdotsField = FIELDS.find((f) => typeof r[f] === "string" && hasSplitCdots(r[f] as string));
+  const cdotsOpt = (r.options ?? []).find((o) => typeof o.text === "string" && hasSplitCdots(o.text));
+  if (cdotsField || cdotsOpt) {
+    const src = cdotsField ? (r[cdotsField] as string) : (cdotsOpt!.text as string);
+    const at = src.indexOf("\\cdot s");
+    out.push({
+      id: r.id,
+      source: r.source_file ?? "(none)",
+      qnum: r.question_number ?? "(none)",
+      visibility: r.visibility,
+      field: cdotsField ?? "text",
+      kind: "SPLIT_CDOTS",
+      sample: (cdotsField ? "" : "[option] ") + src.slice(Math.max(0, at - 40), at + 50).replace(/\n/g, "⏎"),
+    });
+  }
+
   // Whole-question probe — the mismatch is usually BETWEEN fields (a round stem
   // against a square solution), so no single field can be inspected alone.
   const allFields = [
@@ -299,6 +324,7 @@ async function main() {
     "MIXED_MATRIX_DELIM",
     "PHANTOM_ARROW",
     "DASHED_TABLE",
+    "SPLIT_CDOTS",
   ] as const) {
     const hits = byKind(kind);
     console.log(`${kind}: ${hits.length}`);

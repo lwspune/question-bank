@@ -1286,9 +1286,10 @@
       "subtopic": "Logical Equivalence and Algebra of Statements",
       "difficulty": "HARD",
       "answer": "A",
-      "solution": "\\([\\sim(\\sim p\\vee q)\\vee(p\\wedge r)]\\wedge(\\sim q\\wedge r)\\). By De Morgan, \\(\\sim(\\sim p\\vee q)=p\\wedge\\sim q\\), so the bracket is \\((p\\wedge\\sim q)\\vee(p\\wedge r)=p\\wedge(\\sim q\\vee r)\\). Then \\(p\\wedge(\\sim q\\vee r)\\wedge(\\sim q\\wedge r)\\); since \\(\\sim q\\wedge r\\) implies \\(\\sim q\\vee r\\), this reduces to \\(p\\wedge\\sim q\\wedge r=(p\\wedge r)\\wedge\\sim q\\).",
+      "solution": "**Note:** The paper's question places a bracket wrongly; its own solution reads \\([\\sim(\\sim p \\vee q) \\vee (p \\land r)] \\land (\\sim q \\land r)\\), shown here.\n\n\\([\\sim(\\sim p\\vee q)\\vee(p\\wedge r)]\\wedge(\\sim q\\wedge r)\\). By De Morgan, \\(\\sim(\\sim p\\vee q)=p\\wedge\\sim q\\), so the bracket is \\((p\\wedge\\sim q)\\vee(p\\wedge r)=p\\wedge(\\sim q\\vee r)\\). Then \\(p\\wedge(\\sim q\\vee r)\\wedge(\\sim q\\wedge r)\\); since \\(\\sim q\\wedge r\\) implies \\(\\sim q\\vee r\\), this reduces to \\(p\\wedge\\sim q\\wedge r=(p\\wedge r)\\wedge\\sim q\\).",
       "akAnswer": "A",
-      "agreesWithAk": true
+      "agreesWithAk": true,
+      "stemOverride": "The logical statement \\(\\left\\lbrack \\sim\\left( \\sim p\\vee q \\right)\\vee\\left( p\\land r \\right) \\right\\rbrack\\land\\left( \\sim q\\land r \\right)\\) is equivalent to"
     },
     "139": {
       "chapter": "Linear Programming",

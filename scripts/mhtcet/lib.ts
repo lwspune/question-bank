@@ -33,6 +33,29 @@ export function subjectForNumber(n: number): Subject {
  * Idempotent. Applied to stem/option/solution text at commit, before hashing.
  */
 export function cleanupArtifacts(s: string): string {
+  return restoreLongerCommands(deglue(shieldLongerCommands(s)));
+}
+
+/**
+ * Real commands that START with a macro `deglue` separates. Unshielded, the
+ * de-glue reads `\cdots` as `\cdot` fused to s and writes `\cdot s` (drawn as
+ * "· s"): 29 MHT-CET 2026 rows, found 2026-10-29. Longest spelling first.
+ */
+const LONGER_COMMANDS_RE =
+  /\\(cdots|cdotp|simeq|approxeq|middle|triangleq|triangleleft|triangleright|triangledown|veebar|subseteqq|supseteqq|coth|intop|intercal)/g;
+
+function shieldLongerCommands(s: string): string {
+  return s.replace(LONGER_COMMANDS_RE, (_, name: string) => `\u0000${name}\u0001`);
+}
+
+/** Puts each shielded command back; a letter fused to it is separated, as deglue would. */
+function restoreLongerCommands(s: string): string {
+  return s.replace(/\u0000([a-z]+)\u0001([A-Za-z])?/g, (_, name: string, next?: string) =>
+    next ? `\\${name} ${next}` : `\\${name}`
+  );
+}
+
+function deglue(s: string): string {
   return s
     // de-glue long arrows pandoc fused to the next atom (`\longrightarrowNO` -> `\longrightarrow NO`);
     // the JEE sanitizeLatex deglue list covers `\rightarrow` but not these longer reaction arrows.

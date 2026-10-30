@@ -5,11 +5,12 @@
  * bank are testable: (1) WHEN a `content_hash` recompute is required, and (2) the
  * integrity invariants (exactly one correct option, no duplicate option texts).
  *
- * The rehash rule follows `contentHash(text, options, answer)` in
- * `src/lib/upload/hash.ts` — note `context` and `solution` are NOT hashed, so
- * edits to those are id-stable and need no recompute (and therefore cannot
- * collide with a sibling row).
+ * The rehash rule follows `src/lib/upload/hash.ts`, one formula per format (see
+ * `newContentHash`). `solution` is never hashed, so a solution edit is always
+ * id-stable; `context` is hashed for numeric and subjective rows only.
  */
+
+import { contentHash, numericContentHash, subjectiveContentHash } from "../../src/lib/upload/hash";
 
 export interface QuestionState {
   text: string;
@@ -107,4 +108,25 @@ export function planFix(state: QuestionState, fix: Fix): FixPlan {
     problems,
     isNoop: changed.length === 0,
   };
+}
+
+export type QuestionFormat = "mcq" | "subjective" | "numeric";
+
+/**
+ * The content_hash a fixed row should carry, or null when the fix leaves it
+ * alone. Each format has its own formula (src/lib/upload/hash.ts): an MCQ hashes
+ * stem + options + key, a numeric or subjective row hashes stem + context. Using
+ * the MCQ formula on a numeric row would give it a hash its pipeline never
+ * produces, so a re-ingest would insert a duplicate instead of matching it.
+ */
+export function newContentHash(state: QuestionState, plan: FixPlan, format: QuestionFormat): string | null {
+  if (format === "mcq") {
+    return plan.needsRehash
+      ? contentHash(plan.finalText, plan.finalOptions.map((o) => o.text), plan.finalCorrect ?? "")
+      : null;
+  }
+  if (plan.finalText === state.text && plan.finalContext === state.context) return null;
+  return format === "numeric"
+    ? numericContentHash(plan.finalText, plan.finalContext)
+    : subjectiveContentHash(plan.finalText, plan.finalContext);
 }

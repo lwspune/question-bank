@@ -1,0 +1,82 @@
+[
+  {
+    "id": "009b24ef-a793-47b1-96da-9aa728b8a121",
+    "label": "MHT-CET 2025 20 April Shift II Q102",
+    "reason": "flawed: MHT-CET 2025 20 April Shift II Q102: as in the bank; key (a) 16",
+    "solution": "**Note:** Counting only real circles the answer is 10, which is not an option; the key, 16, also counts values of \\(k\\) for which \\(g^2 + f^2 - c < 0\\). The answer shown follows the paper's answer key.\n\n\\(g = \\dfrac{k}{2}\\), \\(f = \\dfrac{1 - k}{2}\\), \\(c = 5\\), and the radius is \\(\\sqrt{g^2 + f^2 - c}\\).\n\nRadius \\(\\le 5\\): \\(\\dfrac{k^2 + (1 - k)^2}{4} - 5 \\le 25\\), so \\(2k^2 - 2k - 119 \\le 0\\) and \\(-7.23 \\le k \\le 8.23\\): the 16 integers \\(-7, \\dots, 8\\).\n\nA real circle also needs \\(g^2 + f^2 - c > 0\\), that is \\(2k^2 - 2k - 19 > 0\\), which fails for \\(k = -2, \\dots, 3\\); with it the count is 10."
+  },
+  {
+    "id": "28a12562-c336-483d-a232-f387224caa9e",
+    "label": "MHT-CET 2025 23 April Shift I Q106",
+    "reason": "note: MHT-CET 2025 23 April Shift I Q106: as in the bank; key (b); the paper's solution does not use a · c = 1",
+    "solution": "**Note:** As printed the data contradict each other: \\(\\bar{c} = \\bar{a} \\times \\bar{b}\\) is perpendicular to \\(\\bar{a}\\), so \\(\\bar{a} \\cdot \\bar{c} = 0\\), not 1. The answer does not use that condition.\n\nFrom \\(\\overline{a}\\times\\overline{b} = \\overline{c}\\): \\((\\overline{a}\\times\\overline{b})\\cdot\\overline{c} = \\overline{c}\\cdot\\overline{c} = |\\widehat{j}-\\widehat{k}|^2 = 2\\), so \\([\\overline{a}\\ \\overline{b}\\ \\overline{c}] = 2\\), giving \\(\\overline{b}\\cdot(\\overline{a}\\times\\overline{c}) = -2\\).\n\\(\\overline{a}\\times\\overline{c} = -2\\widehat{i}+\\widehat{j}+\\widehat{k}\\), \\(|\\overline{a}\\times\\overline{c}| = \\sqrt{6}\\).\nProjection length \\(l = \\frac{|\\overline{b}\\cdot(\\overline{a}\\times\\overline{c})|}{|\\overline{a}\\times\\overline{c}|} = \\frac{2}{\\sqrt{6}}\\), so \\(3l^2 = 3\\cdot\\frac{4}{6} = 2\\)."
+  },
+  {
+    "id": "652b7194-2693-4792-8f08-179a8c5c9581",
+    "label": "MHT-CET 2025 21 April Shift II Q124",
+    "reason": "flawed: MHT-CET 2025 21 April Shift II Q124: as in the bank; key (d)",
+    "solution": "**Note:** Option B is also true: with \\(m = 0\\), \\(\\bar{p} \\cdot \\bar{q} = -12 < 0\\) for every \\(y\\). The answer shown follows the paper's answer key.\n\nThe angle is obtuse when \\(\\bar p\\cdot\\bar q<0\\) for every \\(y\\): \\(my^{2}+6my-12<0\\). For \\(m<0\\) this holds for all \\(y\\) exactly when the discriminant is negative: \\(36m^{2}+48m<0\\Rightarrow12m(3m+4)<0\\Rightarrow-\\dfrac{4}{3}<m<0\\). Matches option D."
+  },
+  {
+    "id": "6fb70707-8133-40a3-9039-fddd21636155",
+    "label": "MHT-CET 2025 21 April Shift II Q113",
+    "reason": "flawed: MHT-CET 2025 21 April Shift II Q113: as in the bank; key (a)",
+    "solution": "**Note:** As printed the line is not parallel to the plane, so it meets the plane and the distance is 0, which is not an option. The answer shown follows the paper's answer key. The key is the distance of the line's point \\((3, -2, 1)\\) from the plane.\n\nThe line's direction \\((1, 1, 1)\\) and the plane's normal \\((2, 1, 1)\\) give \\(2 + 1 + 1 = 4 \\neq 0\\), so the line is not parallel to the plane and meets it: the distance between them is 0.\n\nThe distance of the line's point \\((3, -2, 1)\\) from the plane is \\(\\dfrac{|6 - 2 + 1 - 4|}{\\sqrt{6}} = \\dfrac{1}{\\sqrt{6}}\\)."
+  },
+  {
+    "id": "7f7e292e-e29c-422f-984e-dcc64a5ba41d",
+    "label": "MHT-CET 2025 19 April Shift I Q103",
+    "reason": "repair: MHT-CET 2025 19 April Shift I Q103: question prints [p − 3r q s], its solution uses [2p − 3r q s]; key (d)",
+    "text": "If \\(\\begin{bmatrix} 2\\bar{p}- 3\\bar{r} & \\bar{q} & \\bar{s} \\end{bmatrix}+ \\lbrack 3\\bar{p}+ 2\\bar{q}\\ \\bar{r}\\ \\bar{s}\\rbrack =m\\begin{bmatrix} \\bar{p} & \\bar{r} & \\bar{s} \\end{bmatrix}+n\\begin{bmatrix} \\bar{q} & \\bar{r} & \\bar{s} \\end{bmatrix}+t\\begin{bmatrix} \\bar{p} & \\bar{q} & \\bar{s} \\end{bmatrix}\\), then the values of \\(m,n,t\\) respectively are \\(\\_\\_\\_\\_\\)",
+    "solution": "**Note:** The paper's question prints \\([\\bar{p} - 3\\bar{r}\\ \\bar{q}\\ \\bar{s}]\\); its own solution uses \\([2\\bar{p} - 3\\bar{r}\\ \\bar{q}\\ \\bar{s}]\\), shown here.\n\nTreat each bracket as a scalar triple product, linear in each slot. The left side \\([2\\bar p - 3\\bar r,\\ \\bar q,\\ \\bar s] + [3\\bar p + 2\\bar q,\\ \\bar r,\\ \\bar s]\\) expands. The first term \\(= 2[\\bar p,\\bar q,\\bar s] - 3[\\bar r,\\bar q,\\bar s]\\). The second \\(= 3[\\bar p,\\bar r,\\bar s] + 2[\\bar q,\\bar r,\\bar s]\\). Using \\([\\bar r,\\bar q,\\bar s] = -[\\bar q,\\bar r,\\bar s]\\), the \\(-3[\\bar r,\\bar q,\\bar s]\\) becomes \\(+3[\\bar q,\\bar r,\\bar s]\\). Collecting: \\(3[\\bar p,\\bar r,\\bar s] + 5[\\bar q,\\bar r,\\bar s] + 2[\\bar p,\\bar q,\\bar s]\\). Comparing with \\(m[\\bar p,\\bar r,\\bar s] + n[\\bar q,\\bar r,\\bar s] + t[\\bar p,\\bar q,\\bar s]\\) gives \\(m=3,\\ n=5,\\ t=2\\)."
+  },
+  {
+    "id": "8c15af00-1996-4d21-ba2d-3b438e3b4661",
+    "label": "MHT-CET 2025 26 April Shift I Q109",
+    "reason": "flawed: MHT-CET 2025 26 April Shift I Q109: as in the bank; key (a)",
+    "solution": "**Note:** Only \\(x = -\\frac{1}{8}\\) satisfies the equation (\\(x = \\frac{1}{8}\\) gives \\(+\\frac{\\pi}{2}\\)), but every option is written with \\(\\pm\\). The answer shown follows the paper's answer key.\n\nSquaring leads to \\(64x^2=1\\), so \\(x=\\pm\\frac{1}{8}\\) are the candidates. Check each: \\(x=\\frac{1}{8}\\) gives \\(\\sin^{-1}\\frac{1}{2}+\\sin^{-1}\\frac{\\sqrt3}{2}=\\frac{\\pi}{2}\\), not \\(-\\frac{\\pi}{2}\\); \\(x=-\\frac{1}{8}\\) gives \\(-\\frac{\\pi}{6}-\\frac{\\pi}{3}=-\\frac{\\pi}{2}\\). So only \\(x=-\\frac{1}{8}\\) satisfies the equation. Every option is written with \\(\\pm\\), and the official key is (a) \\(\\pm\\frac{1}{8}\\)."
+  },
+  {
+    "id": "aafeb460-d46f-4fa9-82fb-b687a120951f",
+    "label": "MHT-CET 2025 21 April Shift II Q132",
+    "reason": "flawed: MHT-CET 2025 21 April Shift II Q132: as in the bank; key (c)",
+    "solution": "**Note:** The data make the sides \\(a, b, c\\) an A.P., not the angles \\(A, B, C\\) named in option C. The answer shown follows the paper's answer key.\n\n\\(\\tan\\frac{A}{2}\\tan\\frac{C}{2} = \\frac{s - b}{s} = \\frac{5}{6} \\cdot \\frac{2}{5} = \\frac{1}{3}\\), so \\(2s = 3b\\), \\(a + b + c = 3b\\) and \\(2b = a + c\\): the sides \\(a, b, c\\) are in A.P.\n\nThe angles are not: \\(A = 2\\tan^{-1}\\frac{5}{6} \\approx 79.6^\\circ\\) and \\(C = 2\\tan^{-1}\\frac{2}{5} \\approx 43.6^\\circ\\), so \\(B \\approx 56.8^\\circ\\)."
+  },
+  {
+    "id": "ad8962a4-29f6-4478-a070-9ed8b69c9fc5",
+    "label": "MHT-CET 2025 19 April Shift II Q125",
+    "reason": "flawed: MHT-CET 2025 19 April Shift II Q125: as in the bank; key (d)",
+    "solution": "**Note:** No such triangle exists: \\(\\sqrt{3} - 2\\) is negative. The answer shown follows the paper's answer key, the value the cosine rule gives.\n\nBy the cosine rule with \\(a = \\sqrt3 - 2,\\; b = \\sqrt3 + 2,\\; C = 60^\\circ\\):\n\\[c^2 = a^2 + b^2 - 2ab\\cos 60^\\circ.\\]\n\\(a^2 = 7 - 4\\sqrt3,\\; b^2 = 7 + 4\\sqrt3\\Rightarrow a^2 + b^2 = 14\\). \\(ab = (\\sqrt3)^2 - 2^2 = -1\\), so \\(-2ab\\cos60^\\circ = -2(-1)(\\tfrac12) = 1\\).\n\nThus \\(c^2 = 14 + 1 = 15\\), \\(c = \\sqrt{15}\\) units."
+  },
+  {
+    "id": "adc64014-eced-4c26-8952-393b9b540cae",
+    "label": "MHT-CET 2025 21 April Shift I Q138",
+    "reason": "repair: MHT-CET 2025 21 April Shift I Q138: question misplaces a bracket, its solution reads [∼(∼p ∨ q) ∨ (p ∧ r)] ∧ (∼q ∧ r); key (a)",
+    "text": "The logical statement \\(\\left\\lbrack \\sim\\left( \\sim p\\vee q \\right)\\vee\\left( p\\land r \\right) \\right\\rbrack\\land\\left( \\sim q\\land r \\right)\\) is equivalent to",
+    "solution": "**Note:** The paper's question places a bracket wrongly; its own solution reads \\([\\sim(\\sim p \\vee q) \\vee (p \\land r)] \\land (\\sim q \\land r)\\), shown here.\n\n\\([\\sim(\\sim p\\vee q)\\vee(p\\wedge r)]\\wedge(\\sim q\\wedge r)\\). By De Morgan, \\(\\sim(\\sim p\\vee q)=p\\wedge\\sim q\\), so the bracket is \\((p\\wedge\\sim q)\\vee(p\\wedge r)=p\\wedge(\\sim q\\vee r)\\). Then \\(p\\wedge(\\sim q\\vee r)\\wedge(\\sim q\\wedge r)\\); since \\(\\sim q\\wedge r\\) implies \\(\\sim q\\vee r\\), this reduces to \\(p\\wedge\\sim q\\wedge r=(p\\wedge r)\\wedge\\sim q\\)."
+  },
+  {
+    "id": "b511bfa3-5be6-488c-8433-ddef501aece7",
+    "label": "MHT-CET 2025 21 April Shift II Q128",
+    "reason": "flawed: MHT-CET 2025 21 April Shift II Q128: as in the bank; key (a)",
+    "solution": "**Note:** Option A is only part of the solution set: \\(\\theta = \\frac{\\pi}{8}\\) also satisfies the equation. The answer shown follows the paper's answer key.\n\n\\(\\cos\\left(\\frac{\\pi}{4}\\tan\\theta\\right) = \\sin\\left(\\frac{\\pi}{2} - \\frac{\\pi}{4}\\tan\\theta\\right)\\), so equal sines give \\(\\frac{\\pi}{4}\\cot\\theta = \\frac{\\pi}{2} - \\frac{\\pi}{4}\\tan\\theta + 2k\\pi\\) or \\(\\frac{\\pi}{4}\\cot\\theta = \\frac{\\pi}{2} + \\frac{\\pi}{4}\\tan\\theta + 2k\\pi\\).\n\nWith \\(k = 0\\) the first is \\(\\cot\\theta + \\tan\\theta = 2\\), so \\(\\tan\\theta = 1\\) and \\(\\theta = n\\pi + \\frac{\\pi}{4}\\): option A.\n\nThe second, \\(\\cot\\theta - \\tan\\theta = 2\\), gives \\(\\tan\\theta = -1 \\pm \\sqrt{2}\\) (for example \\(\\theta = \\frac{\\pi}{8}\\)), and other values of \\(k\\) give more; no option lists them."
+  },
+  {
+    "id": "ca0e1fcb-74fb-4973-a5bd-3ddd28df309c",
+    "label": "MHT-CET 2025 21 April Shift II Q138",
+    "reason": "flawed: MHT-CET 2025 21 April Shift II Q138: as in the bank; key (b)",
+    "solution": "**Note:** The angle between two lines is usually taken as acute, \\(\\cos^{-1}\\frac{4}{9}\\), which is not an option; option B is the angle between the direction vectors as written. The answer shown follows the paper's answer key.\n\nRoots of \\(x^{3}+x^{2}-4x-4=0\\) are \\(l,m,n\\): \\(\\sum=-1,\\ \\sum lm=-4\\), so \\(l^{2}+m^{2}+n^{2}=(-1)^{2}-2(-4)=9\\). \\(\\cos\\theta=\\dfrac{lm+mn+nl}{l^{2}+m^{2}+n^{2}}=\\dfrac{-4}{9}\\Rightarrow\\theta=\\cos^{-1}\\left(\\dfrac{-4}{9}\\right)\\)."
+  },
+  {
+    "id": "eb258db8-60c6-4327-a2de-bfae779c618c",
+    "label": "MHT-CET 2025 25 April Shift II Q135",
+    "reason": "flawed: MHT-CET 2025 25 April Shift II Q135: as in the bank; key (b)",
+    "solution": "**Note:** With principal values no \\(x < 0\\) satisfies the equation: \\(x = -1\\) makes the tangents agree but not the angles. The answer shown follows the paper's answer key.\n\n\\(\\tan^{-1}(x + 1) + \\tan^{-1}(x - 1) = \\tan^{-1}\\frac{2x}{2 - x^2}\\), and adding \\(\\tan^{-1}x\\) gives a tangent of \\(\\frac{4x - x^3}{2 - 3x^2}\\).\n\nSetting this equal to 3: \\(x^3 - 9x^2 - 4x + 6 = 0\\), whose negative root is \\(x = -1\\), and then \\(500x^4 + 270x^2 + 997 = 1767\\).\n\nCheck: at \\(x = -1\\) the left side is \\(0 - \\frac{\\pi}{4} - \\tan^{-1}2 = \\tan^{-1}3 - \\pi\\), not \\(\\tan^{-1}3\\)."
+  },
+  {
+    "id": "fc2969a9-835e-490b-91de-449ece48447c",
+    "label": "MHT-CET 2025 25 April Shift II Q145",
+    "reason": "flawed: MHT-CET 2025 25 April Shift II Q145: as in the bank; key (b)",
+    "solution": "**Note:** \\(|\\bar{b}|\\) is not determined: if \\(\\bar{b}\\) works, so does \\(\\bar{b} + t\\bar{c}\\) for any \\(t\\). The answer shown follows the paper's answer key.\n\n\\(\\bar{a} \\cdot \\bar{c} = 5 - 3 - 2 = 0\\), so \\(\\bar{b} \\times \\bar{c} = \\bar{a}\\) has solutions.\n\nBut \\(\\bar{b}\\) is fixed only up to adding a multiple of \\(\\bar{c}\\): \\((\\bar{b} + t\\bar{c}) \\times \\bar{c} = \\bar{b} \\times \\bar{c}\\). So \\(|\\bar{b}|\\) can take many values; the least is \\(\\frac{|\\bar{a}|}{|\\bar{c}|} = \\frac{\\sqrt{3}}{\\sqrt{38}}\\)."
+  }
+]

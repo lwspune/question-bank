@@ -1,0 +1,14 @@
+[
+  {
+    "id": "a2734bf7-e808-4d48-a252-7ebd7c58240d",
+    "before": "09a80680",
+    "solution": "**Note:** The book prints options B and C identically. The answer shown follows the book's answer key.\n\n[Textbook misprint: options (B) and (C) are printed identically, so as printed all four alternatives are TRUE and none is uniquely 'not true'. The official NCERT key gives (C), and the intended option (C) is the one whose left side equals twice the third side rather than the zero vector, the only false statement of the four. The key's (C) is retained on that reading.] DEFECT - NO OPTION IS CORRECT AS PRINTED. The question asks which statement is NOT true, but all four printed statements hold for every triangle. \\(\\overrightarrow{AB} + \\overrightarrow{BC} + \\overrightarrow{CA} = \\vec{0}\\) is the closed-polygon law; \\(\\overrightarrow{AB} + \\overrightarrow{BC} - \\overrightarrow{AC} = \\vec{0}\\) is the triangle law rearranged, and it is printed TWICE, character for character, as two separate alternatives; and \\(\\overrightarrow{AB} - \\overrightarrow{CB} + \\overrightarrow{CA} = \\vec{0}\\) reduces to the closed-polygon law because \\(-\\overrightarrow{CB} = \\overrightarrow{BC}\\). Verified in the concrete triangle \\(A(0,0,0)\\), \\(B(3,1,0)\\), \\(C(1,4,0)\\): all four expressions evaluate to \\((0,0,0)\\). Since the duplicated statement cannot be the unique false one and the other two are provably true, no printed alternative is uniquely correct. The corruption is in the duplicated slot: the statement \\(\\overrightarrow{AB} + \\overrightarrow{BC} - \\overrightarrow{CA}\\), which evaluates to \\((2,8,0) = 2\\,\\overrightarrow{AC}\\) and is NOT the zero vector, is the only nearby statement that makes the question well posed, so that slot is recorded as the intended answer while what is printed there is a transcription of its neighbour.",
+    "note": "flawed: NCERT 12 (2025-26 reprint) Ex 10.2 Q18 prints options (b) and (c) identically (checked by rendering the PDF, 2026-10-27)"
+  },
+  {
+    "id": "521dd092-2ff0-4f61-84a4-6a63405599be",
+    "before": "7f095607",
+    "solution": "**Note:** Options B and C print the same vector; neither is correct.\n\n\\([\\vec{b}\\ \\vec{c}\\ \\vec{d}]=0\\) puts \\(\\vec{d}=\\alpha\\vec{b}+\\beta\\vec{c}\\); imposing \\(\\vec{a}\\cdot\\vec{d}=0\\) forces \\(\\beta=-\\alpha\\), giving \\(\\vec{d}\\parallel(1,1,-2)\\). Normalizing, \\(\\vec{d}=\\pm\\dfrac{\\hat{i}+\\hat{j}-2\\hat{k}}{\\sqrt{6}}\\).",
+    "note": "note: Balbharati 12 Vectors Misc I Q19: options (b) and (c) identical; d ∝ (1, 1, −2), so (a) is the only right option (book PDF not on this machine)"
+  }
+]

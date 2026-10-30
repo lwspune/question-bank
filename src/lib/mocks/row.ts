@@ -12,6 +12,7 @@
  */
 
 import type { MockPaperSnapshot } from "./reconstruct";
+import { withFlawedGrace } from "./flawed";
 import type { MockScope, MockSource } from "./query";
 
 export type MockTestRowOptions = {
@@ -39,7 +40,7 @@ export function mockTestRow(snap: MockPaperSnapshot, o: MockTestRowOptions) {
     duration_secs: snap.durationSecs,
     marking: snap.marking,
     sections: snap.sections,
-    questions: snap.questions,
+    questions: withFlawedGrace(snap.questions),
     total_questions: snap.totalQuestions,
     total_marks: snap.totalMarks,
     status: o.publish ? ("published" as const) : ("draft" as const),

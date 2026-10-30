@@ -13,8 +13,7 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
-import { contentHash } from "../../src/lib/upload/hash";
-import { planFix, type Fix, type QuestionState } from "./fixes";
+import { newContentHash, planFix, type Fix, type QuestionFormat, type QuestionState } from "./fixes";
 
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 
@@ -39,7 +38,7 @@ async function main() {
   for (const fix of fixes) {
     const { data: q, error } = await db
       .from("questions")
-      .select("id, text, context, solution, org_id, exam_id, content_hash, options(id, label, text, is_correct)")
+      .select("id, text, context, solution, org_id, exam_id, content_hash, question_format, options(id, label, text, is_correct)")
       .eq("id", fix.id)
       .maybeSingle();
     if (error) throw error;
@@ -70,14 +69,9 @@ async function main() {
       continue;
     }
 
-    let newHash: string | null = null;
+    const newHash = newContentHash(state, plan, (q.question_format as QuestionFormat | null) ?? "mcq");
     let collides = false;
-    if (plan.needsRehash) {
-      newHash = contentHash(
-        plan.finalText,
-        plan.finalOptions.map((o) => o.text),
-        plan.finalCorrect ?? ""
-      );
+    if (newHash) {
       const { data: clash, error: cErr } = await db
         .from("questions")
         .select("id")
@@ -87,12 +81,17 @@ async function main() {
         .neq("id", q.id);
       if (cErr) throw cErr;
       collides = (clash ?? []).length > 0;
-      if (collides) problems.push(`${fix.label}: hash collision — content_hash left unchanged`);
+      if (collides) {
+        // Writing the new text under the old hash would leave the two out of step.
+        problems.push(`${fix.label}: hash collision, row left unchanged`);
+        console.log(`[${fix.label}] ⚠HASH_COLLISION, skipped`);
+        continue;
+      }
     }
 
     console.log(
       `[${fix.label}] ${plan.changed.join(", ")}` +
-        `${plan.needsRehash ? (collides ? "  ⚠HASH_COLLISION" : "  rehash") : "  (hash-neutral)"}` +
+        `${newHash ? "  rehash" : "  (hash-neutral)"}` +
         `  — ${fix.reason}`
     );
 

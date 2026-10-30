@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { planFix, type QuestionState, type Fix } from "../scripts/reports/fixes";
+import { newContentHash, planFix, type QuestionState, type Fix } from "../scripts/reports/fixes";
+import { contentHash, numericContentHash, subjectiveContentHash } from "../src/lib/upload/hash";
 
 const base = (): QuestionState => ({
   text: "Stem here",
@@ -104,5 +105,38 @@ describe("planFix", () => {
     expect(p.problems).toEqual([]);
     expect(p.finalCorrect).toBeNull();
     expect(p.needsRehash).toBe(false);
+  });
+});
+
+describe("newContentHash", () => {
+  const mcq = (): QuestionState => ({
+    text: "Q",
+    context: null,
+    solution: "s",
+    options: [
+      { label: "A", text: "1", is_correct: true },
+      { label: "B", text: "2", is_correct: false },
+    ],
+  });
+
+  it("uses the MCQ hash, and only when the stem, an option or the key moved", () => {
+    const s = mcq();
+    const p = planFix(s, fix({ text: "Q2" }));
+    expect(newContentHash(s, p, "mcq")).toBe(contentHash("Q2", ["1", "2"], "A"));
+    expect(newContentHash(s, planFix(s, fix({ solution: "t" })), "mcq")).toBeNull();
+  });
+
+  it("hashes a numeric row with numericContentHash, never the MCQ formula", () => {
+    const s: QuestionState = { text: "Find n", context: null, solution: "s", options: [] };
+    const p = planFix(s, fix({ text: "Find m" }));
+    expect(newContentHash(s, p, "numeric")).toBe(numericContentHash("Find m", null));
+  });
+
+  it("hashes a subjective row with subjectiveContentHash, context included", () => {
+    const s: QuestionState = { text: "Prove it", context: "ctx", solution: "s", options: [] };
+    expect(newContentHash(s, planFix(s, fix({ context: "ctx2" })), "subjective")).toBe(
+      subjectiveContentHash("Prove it", "ctx2")
+    );
+    expect(newContentHash(s, planFix(s, fix({ solution: "t" })), "subjective")).toBeNull();
   });
 });
