@@ -43,6 +43,22 @@ of that logical L/R half-page, TIGHT around the figure, excluding stem/options/`
 `attach-images.ts` maps the half-rect (matching render.ts's mid±4 split) + bbox and
 rasterizes at 4x. **Always montage-verify the crops before `--apply`.**
 
+## Coaching-book chapters on the same lane (2026-10-30)
+A scanned book chapter (first: GPCC NKL Physics Vol II, Ch. 29 Experimental Skills,
+`gpcc-nkl-ch29`) rides this lane as one `TESTS` entry. What differs from a ParikshaGruh test:
+- **Single-page, two-column scan**: `render.ts`'s mid split gives the two COLUMNS.
+- **Numbering restarts per book section**: each question carries `ref` ("29.2 Q8"), stored
+  as `question_number`; `number` runs 1..N and is what keys, coverage and sorting use.
+- **The key tables are images**: `data/<id>.keys.json` is hand-entered from them, and the
+  transcription's own `answer` is a blind derivation, so diffing the two before commit
+  checks both (67/67 agreed on Ch. 29).
+- **Book solutions kept, stubs written**: "Conceptual" / "Procedure" stubs get a short
+  explanation that agrees with the key; a book solution with a slip is corrected (a
+  `reasoning` line says so).
+- **Figures are redrawn, not cropped**, when the scan is a phone photo:
+  `figures/<id>/figures.py` writes `qNN.png`, and the manifest entry `{ "png": "<path>" }`
+  makes `attach-images.ts` upload it as-is. `preview.ts` shows these inline.
+
 ## Conventions reused
 - `lib.ts` re-exports the NEET pure helpers (optionLetter / parseAnswer / normalizeQuestions
   / validateRows) — same `(a)(b)(c)(d)`→`A/B/C/D` positional map; Pariksha-specific

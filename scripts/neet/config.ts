@@ -178,6 +178,8 @@ export const NEET_CHAPTERS: Record<NeetSubject, string[]> = {
     "Atoms",
     "Nuclei",
     "Semiconductor Electronics",
+    // Not an NCERT chapter: the NEET syllabus's own "Experimental Skills" unit (since 2024).
+    "Experimental Skills",
   ],
   Chemistry: [
     "Some Basic Concepts of Chemistry",

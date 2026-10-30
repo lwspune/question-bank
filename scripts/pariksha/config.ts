@@ -83,6 +83,14 @@ export const TESTS: Record<string, Test> = {
   "13164": { id: "13164", sourceFile: "PARIKSHA_VV_13164.pdf", pdf: join(SOURCE_ROOT, "14+.pdf"), questionCount: 45,  hasKey: true,  subjects: ["Zoology"], note: "CC Zoology Mock Test No.1 (20.5.26) — ParikshaGruh 13164" },
   "13060": { id: "13060", sourceFile: "PARIKSHA_VV_13060.pdf", pdf: join(SOURCE_ROOT, "22+.pdf"), questionCount: 45,  hasKey: true,  subjects: ["Zoology"], chapterHint: "Chemical Coordination and Integration", note: "VVMHSS Zoology Chemical Coordination — ParikshaGruh 13060" },
   "13012": { id: "13012", sourceFile: "PARIKSHA_VV_13012.pdf", pdf: join(SOURCE_ROOT, "30+.pdf"), questionCount: 45,  hasKey: true,  subjects: ["Zoology"], chapterHint: "Excretory Products and their Elimination", note: "VVMHSS Zoology Excretion and Elimination 27.4.26 — ParikshaGruh 13012" },
+
+  // ── Coaching BOOK chapters (not ParikshaGruh tests) riding the same lane ──
+  // A scanned single-page two-column book: render.ts's mid split yields the two COLUMNS.
+  // Numbering restarts per book section, so each question carries `ref` ("29.2 Q8") and
+  // `number` runs 1..N. The key tables are images, so keys.json is hand-entered from them.
+  // Book pp. 237-238 (all of 29.11, 29.12 Q1-5) are missing from the scan; 29.12 Q6 is
+  // left out until they arrive (owner, 2026-10-30).
+  "gpcc-nkl-ch29": { id: "gpcc-nkl-ch29", sourceFile: "GPCC_NKL_Physics_Vol2_Ch29_Experimental_Skills.pdf", pdf: "C:\\Users\\vilas\\Downloads\\Adobe Scan 28 Oct 2026 (5).pdf", questionCount: 67, hasKey: true, subjects: ["Physics"], chapterHint: "Experimental Skills", note: "GPCC NKL Physics Volume II, Ch. 29 Experimental Skills" },
 };
 
 export function requireTest(id: string | undefined): Test {
