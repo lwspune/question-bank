@@ -1,0 +1,6405 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "ae63af8f-7a20-47a7-9bc3-8c7b160adf73",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{1}{10}+\\dfrac{1}{12} = \\dfrac{6+5}{60} = {{1:11/60}}",
+              "f": "1/10+1/12",
+              "value": "11/60"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{days} = \\dfrac{60}{11} = 5\\dfrac{5}{11}",
+              "f": "60/11",
+              "value": "60/11",
+              "dp": 4
+            }
+          ],
+          "answer": "60/11"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "d0caa252",
+        "answer": {
+          "value": 5.454545454545454,
+          "label": "5 5/11 days"
+        }
+      }
+    },
+    {
+      "id": "aea30039-be64-4840-9815-8b2c31346634",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{9\\times 6}{9+6} = \\dfrac{54}{15} = {{1:3.6}}",
+              "f": "9*6/(9+6)",
+              "value": "3.6"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{1}{9}+\\dfrac{1}{6} = {{2:5/18}},\\quad \\dfrac{18}{5} = 3.6",
+              "f": "1/(1/9+1/6)",
+              "value": "3.6"
+            }
+          ],
+          "answer": "9*6/(9+6)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "4f0d9198",
+        "answer": {
+          "value": 3.6,
+          "label": "3 3/5 days"
+        }
+      }
+    },
+    {
+      "id": "af511013-a9b7-4040-8cdb-8391d4241ad2",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{1}{5}-\\dfrac{1}{7} = \\dfrac{7-5}{35} = {{1:2/35}}",
+              "f": "1/5-1/7",
+              "value": "2/35"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{Rajat} = \\dfrac{35}{2} = {{2:17.5}}\\text{ days}",
+              "f": "1/(1/5-1/7)",
+              "value": "17.5"
+            }
+          ],
+          "answer": "1/(1/5-1/7)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "7464307c",
+        "answer": {
+          "value": 17.499999999999993,
+          "label": "17.5 days"
+        }
+      }
+    },
+    {
+      "id": "b1aac145-9d8a-425e-92ca-14c86b3ff4cb",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "eq",
+              "tex": "5.4x - x = 22 \\Rightarrow x = {{1:5}}",
+              "lhs": "5.4*x-x",
+              "rhs": "22",
+              "roots": [
+                "5"
+              ],
+              "note": "A takes x days, B takes 5.4x"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{B} = 5.4\\times 5 = {{2:27}}\\text{ days}",
+              "f": "5.4*5",
+              "value": "27"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{5\\times 27}{5+27} = \\dfrac{135}{32} = 4\\dfrac{7}{32}",
+              "f": "5*27/(5+27)",
+              "value": "135/32",
+              "dp": 4
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{1}{5}+\\dfrac{1}{27} = {{3:32/135}}",
+              "f": "1/5+1/27",
+              "value": "32/135"
+            }
+          ],
+          "answer": "5*27/(5+27)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "e5eadd96",
+        "answer": {
+          "value": 4.21875,
+          "label": "4 7/32 days"
+        }
+      }
+    },
+    {
+      "id": "b1b2f819-a09f-463d-822a-b350645fcfc7",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "A = 4t,\\quad B = 5t"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\dfrac{1}{4t}+\\dfrac{1}{5t} = \\dfrac{9}{20t}\\Rightarrow \\dfrac{20t}{9}\\text{ h for A, B}"
+            },
+            {
+              "step": "s3",
+              "kind": "eq",
+              "tex": "\\dfrac{9}{5}\\times \\dfrac{20t}{9} = 4t = 40 \\Rightarrow t = {{1:10}}",
+              "lhs": "4*x",
+              "rhs": "40",
+              "roots": [
+                "10"
+              ]
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "A = {{2:40}},\\quad B = {{3:50}}\\text{ hours}",
+              "f": "4*10",
+              "value": "40"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "C = \\left(\\dfrac{1}{40}+\\dfrac{1}{50}\\right)-\\dfrac{1}{40} = \\dfrac{1}{50}",
+              "f": "1/40+1/50-1/40",
+              "value": "1/50"
+            }
+          ],
+          "answer": "1/(1/40+1/50-1/40)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "a6c33fb6",
+        "answer": {
+          "value": 50.00000000000001,
+          "label": "50 hours"
+        }
+      }
+    },
+    {
+      "id": "b2bd5765-ecbe-46b1-835d-c5479735c418",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{P2: } T\\text{ h},\\quad \\text{P1: } T-5\\text{ h}"
+            },
+            {
+              "step": "s2",
+              "kind": "eq",
+              "tex": "\\dfrac{T-5}{20}+\\dfrac{T}{30} = 1",
+              "lhs": "(x-5)/20+x/30",
+              "rhs": "1",
+              "roots": [
+                "15"
+              ]
+            },
+            {
+              "step": "s3",
+              "kind": "eq",
+              "tex": "3(T-5)+2T = 60 \\Rightarrow 5T = 75 \\Rightarrow T = {{1:15}}",
+              "lhs": "3*(x-5)+2*x",
+              "rhs": "60",
+              "roots": [
+                "15"
+              ],
+              "note": "multiply by 60"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\dfrac{10}{20}+\\dfrac{15}{30} = {{2:1}}",
+              "f": "10/20+15/30",
+              "value": "1"
+            }
+          ],
+          "answer": "15"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "a622013c",
+        "answer": {
+          "value": 15,
+          "label": "15 hours"
+        }
+      }
+    },
+    {
+      "id": "b59cb7b1-3df3-4601-99c2-f9905fdfaa03",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{work} = {{1:30}}\\text{ person-days}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "A_{17} = 17-3 = {{2:14}}",
+              "f": "17-floor(17/5)",
+              "value": "14",
+              "note": "A is off on days 5, 10, 15"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "B_{17} = 17-2 = {{3:15}}",
+              "f": "17-floor(17/6)",
+              "value": "15",
+              "note": "B is off on days 6, 12"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "14+15 = 29 < 30",
+              "f": "(17-floor(17/5))+(17-floor(17/6))",
+              "value": "29"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "A_{18}+B_{18} = 15+15 = {{1:30}}",
+              "f": "(18-floor(18/5))+(18-floor(18/6))",
+              "value": "30",
+              "note": "day 18: A works, B is off"
+            }
+          ],
+          "answer": "18"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "4bc57257",
+        "answer": {
+          "value": 18,
+          "label": "18 August 2022"
+        }
+      }
+    },
+    {
+      "id": "b5ad1221-f3f8-484c-b2d8-ee61e0eb9780",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "eq",
+              "tex": "\\dfrac{(N+18)(7.5)(20)}{48} = \\dfrac{(N+12)(6.5)(30)}{52}",
+              "lhs": "(x+18)*7.5*20/48",
+              "rhs": "(x+12)*6.5*30/52",
+              "roots": [
+                "18"
+              ],
+              "note": "work per man-hour is the same"
+            },
+            {
+              "step": "s2",
+              "kind": "eq",
+              "tex": "3.125N+56.25 = 3.75N+45 \\Rightarrow N = {{1:18}}",
+              "lhs": "3.125*x+56.25",
+              "rhs": "3.75*x+45",
+              "roots": [
+                "18"
+              ]
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "36\\times 150 = {{2:5400}},\\quad \\dfrac{5400}{48}\\times 52 = 5850",
+              "f": "36*150",
+              "value": "5400"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "30\\times 195 = {{3:5850}}",
+              "f": "30*195",
+              "value": "5850"
+            }
+          ],
+          "answer": "18"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "b9b3541c",
+        "answer": {
+          "value": 18,
+          "label": "18"
+        }
+      }
+    },
+    {
+      "id": "b7e6ed5c-215c-400b-b2d7-15013cf8e632",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{12}{6}+\\dfrac{6}{12} = 2+\\dfrac{1}{2} = {{1:2.5}}\\text{ pages a minute}",
+              "f": "12/6+6/12",
+              "value": "2.5"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "{{1:2.5}}\\times 32 = {{2:80}}",
+              "f": "2.5*32",
+              "value": "80"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "64+16 = {{2:80}}",
+              "f": "64+16",
+              "value": "80",
+              "note": "Susan 64 pages, Mary 16"
+            }
+          ],
+          "answer": "2.5*32"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "7a402151",
+        "answer": {
+          "value": 80,
+          "label": "80 pages"
+        }
+      }
+    },
+    {
+      "id": "b895c6af-7153-46c5-a600-13789dd770e0",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{whole work} = 24\\div \\dfrac{2}{3} = {{1:36}}\\text{ days}",
+              "f": "24/(2/3)",
+              "value": "36"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "36\\times \\dfrac{1}{9} = {{2:4}}\\text{ days}",
+              "f": "36/9",
+              "value": "4"
+            }
+          ],
+          "answer": "36/9"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "706ab1e7",
+        "answer": {
+          "value": 4,
+          "label": "4 days"
+        }
+      }
+    },
+    {
+      "id": "b9e45bb1-e812-41f4-bd37-337a2bbb95bd",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{tank} = {{1:36}}\\text{ units}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{36}{4.5} = {{2:8}},\\quad \\dfrac{36}{7.2} = {{3:5}}\\text{ units an hour}",
+              "f": "36/4.5",
+              "value": "8"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "8-5 = {{2:3}}\\text{ units per 2 hours}",
+              "f": "8-5",
+              "value": "3"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "36-8 = {{1:28}}\\text{ needed before the last hour}",
+              "f": "36-8",
+              "value": "28"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "9\\times 3 = 27 < 28",
+              "f": "9*3",
+              "value": "27"
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "10\\times 3 = 30 > 28,\\quad 20\\text{ hours}",
+              "f": "10*3",
+              "value": "30"
+            },
+            {
+              "step": "s7",
+              "kind": "calc",
+              "tex": "20+\\dfrac{36-30}{8} = 20+\\dfrac{3}{4}",
+              "f": "20+(36-30)/8",
+              "value": "20.75"
+            }
+          ],
+          "answer": "20+(36-30)/8"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s6"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s7"
+            ]
+          }
+        ],
+        "fingerprint": "c7c0088c",
+        "answer": {
+          "value": 20.75,
+          "label": "20 3/4 hours"
+        }
+      }
+    },
+    {
+      "id": "bbcc9a15-5b2a-4abd-91ae-a5e2c5a1d09d",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{1}{4}+\\dfrac{1}{5}-\\dfrac{1}{3} = \\dfrac{15+12-20}{60} = {{1:7/60}}",
+              "f": "1/4+1/5-1/3",
+              "value": "7/60"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{60}{7}\\times 60 = \\dfrac{3600}{7} \\approx {{2:514.3}}\\text{ min}",
+              "f": "3600/7",
+              "value": "514.3",
+              "dp": 1
+            }
+          ],
+          "answer": "floor(3600/7+0.5)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "89ede5ee",
+        "answer": {
+          "value": 514,
+          "label": "514 minutes"
+        }
+      }
+    },
+    {
+      "id": "be519644-6835-4c64-98b4-d0e92b884e2d",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{job} = 11n\\text{ man-days}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "16(0+1+\\cdots+14) = 16\\times 105 = {{1:1680}}",
+              "f": "16*105",
+              "value": "1680"
+            },
+            {
+              "step": "s3",
+              "kind": "eq",
+              "tex": "15n-1680 = 11n \\Rightarrow n = {{2:420}}",
+              "lhs": "15*x-1680",
+              "rhs": "11*x",
+              "roots": [
+                "420"
+              ]
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "11\\times 420 = {{3:4620}}",
+              "f": "11*420",
+              "value": "4620"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "15\\times 420-1680 = {{3:4620}}",
+              "f": "15*420-1680",
+              "value": "4620"
+            }
+          ],
+          "answer": "420"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "bc7b2a82",
+        "answer": {
+          "value": 420,
+          "label": "420 men"
+        }
+      }
+    },
+    {
+      "id": "beb30395-a1c3-4f50-8eaf-2658303e7dfa",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{85}{10} = {{1:8.5}},\\quad \\dfrac{500}{40} = {{2:12.5}}\\text{ pages an hour}",
+              "f": "85/10",
+              "value": "8.5"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "{{2:12.5}}-{{1:8.5}} = {{3:4}},\\quad \\dfrac{40}{4} = 10\\text{ hours}",
+              "f": "40/(500/40-85/10)",
+              "value": "10"
+            }
+          ],
+          "answer": "40/(500/40-85/10)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "91ae0186",
+        "answer": {
+          "value": 10,
+          "label": "10 hours"
+        }
+      }
+    },
+    {
+      "id": "bed0a170-4826-448f-86f7-d84db61e9895",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "A = 7\\times 3 = {{1:21}}\\text{ days}",
+              "f": "7*3",
+              "value": "21"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "B = 10\\times \\dfrac{7}{2} = {{2:35}}\\text{ days}",
+              "f": "10*7/2",
+              "value": "35"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{1}{21}+\\dfrac{1}{35} = \\dfrac{8}{105} \\Rightarrow \\dfrac{105}{8}",
+              "f": "1/(1/21+1/35)",
+              "value": "105/8"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\dfrac{21\\times 35}{21+35} = \\dfrac{735}{56} = 13.125",
+              "f": "21*35/(21+35)",
+              "value": "13.125"
+            }
+          ],
+          "answer": "1/(1/21+1/35)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "214c7e46",
+        "answer": {
+          "value": 13.125000000000002,
+          "label": "13 1/8 days"
+        }
+      }
+    },
+    {
+      "id": "bfb0fd53-7d08-4a2b-9ac0-3e2e4d979ee6",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{1}{6}-\\dfrac{1}{8} = \\dfrac{4-3}{24} = {{1:1/24}}\\text{ a hour}",
+              "f": "1/6-1/8",
+              "value": "1/24"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{leak empties in } {{2:24}}\\text{ hours}",
+              "f": "1/(1/6-1/8)",
+              "value": "24"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{6\\times 8}{8-6} = {{2:24}}",
+              "f": "6*8/(8-6)",
+              "value": "24"
+            }
+          ],
+          "answer": "1/(1/6-1/8)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "73900781",
+        "answer": {
+          "value": 24.000000000000007,
+          "label": "24 hours"
+        }
+      }
+    },
+    {
+      "id": "c0b20059-31b0-449c-bb3c-0c4f9e7922fe",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{1}{8}-\\dfrac{1}{24} = \\dfrac{2}{24} = {{1:1/12}}",
+              "f": "1/8-1/24",
+              "value": "1/12"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{Somesh} = {{2:12}}\\text{ days}",
+              "f": "1/(1/8-1/24)",
+              "value": "12"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{1}{24}+\\dfrac{1}{12} = \\dfrac{3}{24} = \\dfrac{1}{8}",
+              "f": "1/24+1/12",
+              "value": "1/8"
+            }
+          ],
+          "answer": "1/(1/8-1/24)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "709ccc08",
+        "answer": {
+          "value": 11.999999999999998,
+          "label": "12 days"
+        }
+      }
+    },
+    {
+      "id": "c3030b59-b81b-427d-b3c4-1e4eb1555657",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{50}{10} = {{1:5}}\\text{ pages an hour}",
+              "f": "50/10",
+              "value": "5"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{300}{40} = {{2:7.5}}\\text{ pages an hour}",
+              "f": "300/40",
+              "value": "7.5"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "{{2:7.5}}-{{1:5}} = {{3:2.5}},\\quad \\dfrac{25}{2.5} = 10\\text{ hours}",
+              "f": "25/(300/40-50/10)",
+              "value": "10"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "200+100 = 300",
+              "f": "40*5+40*2.5",
+              "value": "300",
+              "note": "40 hours: Sudarshan 200, Prakash 100"
+            }
+          ],
+          "answer": "25/(300/40-50/10)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "eec05225",
+        "answer": {
+          "value": 10,
+          "label": "10 hours"
+        }
+      }
+    },
+    {
+      "id": "c35b495d-49ae-4e59-bfb0-fcaaec974b66",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{inlet 5 min, outlet 6 min}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{1}{5}-\\dfrac{1}{6} = {{1:1/30}}\\text{ a minute}",
+              "f": "1/5-1/6",
+              "value": "1/30"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{time} = {{2:30}}\\text{ min}",
+              "f": "1/(1/5-1/6)",
+              "value": "30"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{tank = 30 units: } 6-5 = 1\\text{ a min}",
+              "f": "30/(30/5-30/6)",
+              "value": "30"
+            }
+          ],
+          "answer": "1/(1/5-1/6)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "15e34302",
+        "answer": {
+          "value": 29.999999999999982,
+          "label": "30 min"
+        }
+      }
+    },
+    {
+      "id": "c3b037a1-1f6a-4f6e-8fde-e7cea6c899bc",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{14\\times 21}{14+21} = \\dfrac{294}{35} = {{1:8.4}}",
+              "f": "14*21/(14+21)",
+              "value": "8.4"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{42}{3+2} = \\dfrac{42}{5} = {{1:8.4}}",
+              "f": "42/(42/14+42/21)",
+              "value": "8.4"
+            }
+          ],
+          "answer": "14*21/(14+21)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "34698fe8",
+        "answer": {
+          "value": 8.4,
+          "label": "8 2/5 hours"
+        }
+      }
+    },
+    {
+      "id": "c5502d34-9131-4134-bca8-cf1f599b2cd2",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{group} = \\dfrac{1}{6}",
+              "f": "1/6",
+              "value": "1/6"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "20\\text{ women} = \\dfrac{20}{150} = {{1:2/15}}",
+              "f": "20/150",
+              "value": "2/15"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "15\\text{ men} = \\dfrac{1}{6}-\\dfrac{2}{15} = {{2:1/30}}",
+              "f": "1/6-2/15",
+              "value": "1/30"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "1\\text{ man} = \\dfrac{1}{450} \\Rightarrow {{3:450}}\\text{ days}",
+              "f": "1/((1/6-2/15)/15)",
+              "value": "450"
+            }
+          ],
+          "answer": "1/((1/6-2/15)/15)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "dd0721f0",
+        "answer": {
+          "value": 450.0000000000001,
+          "label": "450 days"
+        }
+      }
+    },
+    {
+      "id": "c744d7db-a240-466f-af1b-b9cfddf90199",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{work} = {{1:60}}\\text{ units}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "6+4+3 = {{2:13}}\\text{ units a day}",
+              "f": "60/10+60/15+60/20",
+              "value": "13"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{60}{13} = 4\\dfrac{8}{13}\\text{ days}",
+              "f": "60/13",
+              "value": "60/13",
+              "dp": 4
+            }
+          ],
+          "answer": "60/(60/10+60/15+60/20)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "270f4757",
+        "answer": {
+          "value": 4.615384615384615,
+          "label": "4 8/13 days"
+        }
+      }
+    },
+    {
+      "id": "c99d1882-3b5b-4997-9b00-792c7d60e855",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{work} = {{1:60}}\\text{ units}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "3,\\quad 5,\\quad \\dfrac{60}{5} = {{2:12}}\\text{ together}",
+              "f": "60/5",
+              "value": "12"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "12-3-5 = {{3:4}},\\quad \\dfrac{60}{4} = 15\\text{ hours}",
+              "f": "60/(60/5-60/20-60/12)",
+              "value": "15"
+            }
+          ],
+          "answer": "60/(60/5-60/20-60/12)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "d30f67cd",
+        "answer": {
+          "value": 15,
+          "label": "15 hours"
+        }
+      }
+    },
+    {
+      "id": "cbbb5c1b-d1a9-49f0-baeb-51e7e38892f6",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{each works } {{1:4}}\\text{ days}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{4}{32} = \\dfrac{1}{8},\\quad 1-\\dfrac{1}{8} = {{2:7/8}}",
+              "f": "1-4/32",
+              "value": "7/8"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{4}{7/8} = \\dfrac{32}{7},\\quad 7\\times \\dfrac{32}{7} = {{3:32}}",
+              "f": "7*4/(7/8)",
+              "value": "32"
+            }
+          ],
+          "answer": "7*4/(7/8)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "008a199a",
+        "answer": {
+          "value": 32,
+          "label": "32 days"
+        }
+      }
+    },
+    {
+      "id": "ccf90f28-b67d-48fa-9c9f-077553910645",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "80 = 8\\times 10,\\quad 120 = 10\\times 12\\Rightarrow 1\\text{ man} = {{1:1.5}}\\text{ women}",
+              "f": "120/80",
+              "value": "1.5"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "4\\times 1.5+4 = {{2:10}},\\quad \\dfrac{120}{10} = 12",
+              "f": "120/(4*1.5+4)",
+              "value": "12"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{80}{20/3} = 12",
+              "f": "80/(4+4*80/120)",
+              "value": "12"
+            }
+          ],
+          "answer": "120/(4*1.5+4)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "c98ce7d0",
+        "answer": {
+          "value": 12,
+          "label": "12 days"
+        }
+      }
+    },
+    {
+      "id": "cefa3efd-0e56-42cc-847f-89c884c7c4a7",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{16}{ {{1:1.6}} } = {{2:10}}\\text{ days}",
+              "f": "16/1.6",
+              "value": "10",
+              "note": "time is inversely proportional to efficiency"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{1}{16}\\times {{1:1.6}} = \\dfrac{1}{10}",
+              "f": "1.6/16",
+              "value": "1/10"
+            }
+          ],
+          "answer": "16/1.6"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "5d70ebd0",
+        "answer": {
+          "value": 10,
+          "label": "10 days"
+        }
+      }
+    },
+    {
+      "id": "d4edc48f-aeef-44dd-ba28-9875170b1e29",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{1}{20}+\\dfrac{1}{30}-\\dfrac{1}{60} = \\dfrac{3+2-1}{60} = {{1:1/15}}",
+              "f": "1/20+1/30-1/60",
+              "value": "1/15"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{time} = {{2:15}}\\text{ min}",
+              "f": "1/(1/20+1/30-1/60)",
+              "value": "15"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{60}{3+2-1} = {{2:15}}",
+              "f": "60/(3+2-1)",
+              "value": "15",
+              "note": "60-litre tank: 3 + 2 - 1 = 4 a minute"
+            }
+          ],
+          "answer": "1/(1/20+1/30-1/60)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "56647949",
+        "answer": {
+          "value": 14.999999999999996,
+          "label": "15 min"
+        }
+      }
+    },
+    {
+      "id": "d4f76078-8fb6-43dc-9df2-0f119318b1f8",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{10}{15} = {{1:2/3}},\\quad 1-\\dfrac{2}{3} = {{2:1/3}}",
+              "f": "10/15",
+              "value": "2/3"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{1}{3}\\times 18 = {{3:6}}\\text{ days}",
+              "f": "18/3",
+              "value": "6"
+            }
+          ],
+          "answer": "18/3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "7ae2ef6f",
+        "answer": {
+          "value": 6,
+          "label": "6 days"
+        }
+      }
+    },
+    {
+      "id": "d5a1e7b7-c4d0-4998-8720-a0295d114bb9",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{1}{30}-\\dfrac{1}{50} = \\dfrac{5-3}{150} = {{1:1/75}}",
+              "f": "1/30-1/50",
+              "value": "1/75"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{leak empties in } {{2:75}}\\text{ hours}",
+              "f": "1/(1/30-1/50)",
+              "value": "75"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{30\\times 50}{50-30} = {{2:75}}",
+              "f": "30*50/(50-30)",
+              "value": "75"
+            }
+          ],
+          "answer": "1/(1/30-1/50)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "37552d32",
+        "answer": {
+          "value": 75,
+          "label": "75 hours"
+        }
+      }
+    },
+    {
+      "id": "d653b1ba-e0d4-4b3a-bdca-20af644582b1",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "34\\times \\dfrac{27}{17} = 2\\times 27 = {{1:54}}\\text{ days}",
+              "f": "34*27/17",
+              "value": "54"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{17}{27}\\times 54 = {{1:34}}",
+              "f": "17/27*54",
+              "value": "34"
+            }
+          ],
+          "answer": "34*27/17"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "6ac800aa",
+        "answer": {
+          "value": 54,
+          "label": "54 days"
+        }
+      }
+    },
+    {
+      "id": "d71993cc-077c-4501-8456-4790b2b70798",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{1}{15}-\\dfrac{1}{20} = \\dfrac{4-3}{60} = {{1:1/60}}",
+              "f": "1/15-1/20",
+              "value": "1/60"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{Anil alone} = {{2:60}}\\text{ days}",
+              "f": "1/(1/15-1/20)",
+              "value": "60"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{60 units: } 4-3 = {{1:1}}\\text{ a day}",
+              "f": "60/15-60/20",
+              "value": "1"
+            }
+          ],
+          "answer": "1/(1/15-1/20)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "3078b73e",
+        "answer": {
+          "value": 60.000000000000014,
+          "label": "60 days"
+        }
+      }
+    },
+    {
+      "id": "d880ba73-ca7f-4d16-9ca1-48865cc95d27",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "14\\times 60 = {{1:840}}\\text{ person-days}",
+              "f": "14*60",
+              "value": "840"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{ {{1:840}} }{30} = {{2:28}}\\text{ days}",
+              "f": "840/30",
+              "value": "28"
+            }
+          ],
+          "answer": "840/30"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "82fbe654",
+        "answer": {
+          "value": 28,
+          "label": "28 days"
+        }
+      }
+    },
+    {
+      "id": "e2887ec3-51f8-4d61-8e20-327c03ad8845",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{job} = {{1:144}}\\text{ units}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "9+6+4 = {{2:19}}\\text{ units a day}",
+              "f": "144/16+144/24+144/36",
+              "value": "19"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{144}{19} = 7\\dfrac{11}{19}\\text{ days}",
+              "f": "144/19",
+              "value": "144/19",
+              "dp": 4
+            }
+          ],
+          "answer": "144/19"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "9921028b",
+        "answer": {
+          "value": 7.578947368421052,
+          "label": "7 11/19 days"
+        }
+      }
+    },
+    {
+      "id": "e4fa7143-daa2-4fd2-a106-fa7bc338ab8d",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{1}{72}-\\dfrac{1}{120} = \\dfrac{5-3}{360} = {{1:1/180}}",
+              "f": "1/72-1/120",
+              "value": "1/180"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{B alone} = {{2:180}}\\text{ days}",
+              "f": "1/(1/72-1/120)",
+              "value": "180"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{1}{120}+\\dfrac{1}{180} = \\dfrac{3+2}{360} = \\dfrac{1}{72}",
+              "f": "1/120+1/180",
+              "value": "1/72"
+            }
+          ],
+          "answer": "1/(1/72-1/120)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "2fc7e0ba",
+        "answer": {
+          "value": 180.00000000000003,
+          "label": "180 days"
+        }
+      }
+    },
+    {
+      "id": "e873b422-4d30-40dc-9543-2add10cc19a1",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{1}{8}+\\dfrac{1}{12} = \\dfrac{5}{24}",
+              "f": "1/8+1/12",
+              "value": "5/24"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{24}{5} = {{1:4.8}}\\text{ hours}",
+              "f": "24/5",
+              "value": "4.8"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{8\\times 12}{8+12} = \\dfrac{96}{20} = {{1:4.8}}",
+              "f": "8*12/(8+12)",
+              "value": "4.8"
+            }
+          ],
+          "answer": "24/5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "f5956cbb",
+        "answer": {
+          "value": 4.8,
+          "label": "4.8 hours"
+        }
+      }
+    },
+    {
+      "id": "e921501d-2b77-4072-a117-b420b15cb6b5",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{A: } 1\\dfrac{1}{3}\\text{ h,}\\quad \\text{B: } 2\\text{ h}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{3}{4}+\\dfrac{1}{2} = {{1:5/4}}\\text{ a hour}",
+              "f": "3/4+1/2",
+              "value": "5/4"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{4}{5}\\text{ h} = {{2:48}}\\text{ min}",
+              "f": "60/(3/4+1/2)",
+              "value": "48"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{48}{80}+\\dfrac{48}{120} = 0.6+0.4 = {{3:1}}",
+              "f": "48/80+48/120",
+              "value": "1"
+            }
+          ],
+          "answer": "60/(3/4+1/2)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "99795930",
+        "answer": {
+          "value": 48,
+          "label": "48 minutes"
+        }
+      }
+    },
+    {
+      "id": "eca747c2-1fee-4f4d-82d4-566614a660f4",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{1}{60}+\\dfrac{1}{45} = \\dfrac{7}{180},\\quad 6\\times \\dfrac{7}{180} = {{1:42/180}}",
+              "f": "6*(1/60+1/45)",
+              "value": "42/180"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{90-42}{180}\\div 24 = {{2:2/180}}\\text{ a hour}",
+              "f": "(90-42)/180/24",
+              "value": "2/180"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{7}{180}-\\dfrac{2}{180} = \\dfrac{1}{36} \\Rightarrow {{3:36}}\\text{ h}",
+              "f": "1/(7/180-2/180)",
+              "value": "36"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\dfrac{42+48}{180} = \\dfrac{1}{2}",
+              "f": "(42+48)/180",
+              "value": "1/2"
+            }
+          ],
+          "answer": "1/(7/180-2/180)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "b7fcb7fc",
+        "answer": {
+          "value": 36,
+          "label": "36 hours"
+        }
+      }
+    },
+    {
+      "id": "ed13461a-3971-46a9-bd85-ea63fd1cc0d2",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "144\\text{ units: } 6,\\quad 4,\\quad 3\\text{ a day}"
+            },
+            {
+              "step": "s2",
+              "kind": "eq",
+              "tex": "6(T-4)+4(T-10)+3T = 144",
+              "lhs": "6*(x-4)+4*(x-10)+3*x",
+              "rhs": "144",
+              "roots": [
+                "16"
+              ]
+            },
+            {
+              "step": "s2",
+              "kind": "eq",
+              "tex": "13T-64 = 144 \\Rightarrow T = {{1:16}}",
+              "lhs": "13*x-64",
+              "rhs": "144",
+              "roots": [
+                "16"
+              ]
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "6\\times 12+4\\times 6+3\\times 16 = {{2:144}}",
+              "f": "6*12+4*6+3*16",
+              "value": "144"
+            }
+          ],
+          "answer": "16"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "f1db0757",
+        "answer": {
+          "value": 16,
+          "label": "16 days"
+        }
+      }
+    },
+    {
+      "id": "ed6f2928-2f5a-4c25-9d88-2f879bb87d70",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{first pipe } x\\text{ h}"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\text{second } x-5,\\quad \\text{third } x-9\\text{ h}"
+            },
+            {
+              "step": "s3",
+              "kind": "eq",
+              "tex": "\\dfrac{1}{x}+\\dfrac{1}{x-5} = \\dfrac{1}{x-9}",
+              "lhs": "1/x+1/(x-5)",
+              "rhs": "1/(x-9)",
+              "roots": [
+                "15",
+                "3"
+              ]
+            },
+            {
+              "step": "s3",
+              "kind": "eq",
+              "tex": "x^2-18x+45 = 0 \\Rightarrow (x-15)(x-3) = 0",
+              "lhs": "x^2-18*x+45",
+              "rhs": "0",
+              "roots": [
+                "15",
+                "3"
+              ]
+            },
+            {
+              "step": "s4",
+              "kind": "note",
+              "tex": "x = 3\\text{ gives negative hours, so } x = {{1:15}}"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\dfrac{1}{15}+\\dfrac{1}{10} = \\dfrac{1}{6}",
+              "f": "1/15+1/10",
+              "value": "1/6"
+            }
+          ],
+          "answer": "15"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "78498b52",
+        "answer": {
+          "value": 15,
+          "label": "15 hours"
+        }
+      }
+    },
+    {
+      "id": "f127b8fe-6524-4729-b841-3e3b4489a411",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{tank filled in } t\\text{ min}"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "A, B: t\\text{ min},\\quad C: t-2\\text{ min}"
+            },
+            {
+              "step": "s3",
+              "kind": "eq",
+              "tex": "\\dfrac{t}{10}+\\dfrac{t}{20}-\\dfrac{t-2}{30} = 1",
+              "lhs": "x/10+x/20-(x-2)/30",
+              "rhs": "1",
+              "roots": [
+                "8"
+              ]
+            },
+            {
+              "step": "s3",
+              "kind": "eq",
+              "tex": "6t+3t-2(t-2) = 60 \\Rightarrow 7t = 56 \\Rightarrow t = {{1:8}}",
+              "lhs": "6*x+3*x-2*(x-2)",
+              "rhs": "60",
+              "roots": [
+                "8"
+              ],
+              "note": "multiply by 60"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\dfrac{8}{10}+\\dfrac{8}{20}-\\dfrac{6}{30} = {{2:1}}",
+              "f": "8/10+8/20-6/30",
+              "value": "1"
+            }
+          ],
+          "answer": "8"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "6ac0de83",
+        "answer": {
+          "value": 8,
+          "label": "8 minutes"
+        }
+      }
+    },
+    {
+      "id": "f3d4175f-9557-4100-b3b9-85928a1acdda",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "A+B = \\dfrac{2}{3},\\quad C = \\dfrac{2}{9},\\quad A-C = \\dfrac{1}{6}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "A = \\dfrac{1}{6}+\\dfrac{2}{9} = {{1:7/18}}",
+              "f": "1/6+2/9",
+              "value": "7/18"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "B = \\dfrac{2}{3}-\\dfrac{7}{18} = {{2:5/18}}",
+              "f": "2/3-7/18",
+              "value": "5/18"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{18}{5} = {{3:3.6}}\\text{ h} = 3\\text{ h } 36\\text{ min}",
+              "f": "18/5",
+              "value": "3.6"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{18 units: } 7-4 = 3,\\quad 7+5 = 12",
+              "f": "7-4",
+              "value": "3"
+            }
+          ],
+          "answer": "18/5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "d040b6ab",
+        "answer": {
+          "value": 3.6,
+          "label": "3 hours 36 minutes"
+        }
+      }
+    },
+    {
+      "id": "f45d87c8-726a-4936-831d-f08005a4fb8c",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "n\\text{ students; work } = 10n\\text{ student-days}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "2(0+1+\\cdots+14) = 2\\times 105 = {{1:210}}",
+              "f": "2*105",
+              "value": "210"
+            },
+            {
+              "step": "s3",
+              "kind": "eq",
+              "tex": "15n-210 = 10n \\Rightarrow n = {{2:42}}",
+              "lhs": "15*x-210",
+              "rhs": "10*x",
+              "roots": [
+                "42"
+              ]
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\dfrac{15}{2}(42+14) = {{3:420}} = 10\\times 42",
+              "f": "15/2*(42+14)",
+              "value": "420"
+            }
+          ],
+          "answer": "42"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "498a7828",
+        "answer": {
+          "value": 42,
+          "label": "42 students"
+        }
+      }
+    },
+    {
+      "id": "f4845409-e781-4eb9-ac4b-815a6041fb1e",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "eq",
+              "tex": "5(12m+16b) = 4(13m+24b) \\Rightarrow 8m = 16b",
+              "lhs": "5*(12*x+16)",
+              "rhs": "4*(13*x+24)",
+              "roots": [
+                "2"
+              ],
+              "note": "b = 1; m is a man in boy units"
+            },
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "m = {{1:2}}b"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{work} = 5(24+16)b = {{2:200}}\\text{ boy-days}",
+              "f": "5*(24+16)",
+              "value": "200"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "29\\times 2+22 = {{3:80}}\\text{ boys},\\quad \\dfrac{200}{80} = 2.5",
+              "f": "200/(29*2+22)",
+              "value": "2.5"
+            }
+          ],
+          "answer": "200/(29*2+22)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "92937353",
+        "answer": {
+          "value": 2.5,
+          "label": "2.5 days"
+        }
+      }
+    },
+    {
+      "id": "f4f3c1d9-1e38-4a99-a821-2547c036e721",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{1}{4}-\\dfrac{1}{16}-\\dfrac{1}{12} = \\dfrac{12-3-4}{48} = {{1:5/48}}",
+              "f": "1/4-1/16-1/12",
+              "value": "5/48"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{C alone} = \\dfrac{48}{5} = {{2:9.6}}\\text{ days}",
+              "f": "1/(1/4-1/16-1/12)",
+              "value": "9.6"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{48}{3+4+5} = {{3:4}}\\text{ days}",
+              "f": "48/(3+4+5)",
+              "value": "4"
+            }
+          ],
+          "answer": "1/(1/4-1/16-1/12)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "920da30e",
+        "answer": {
+          "value": 9.6,
+          "label": "9 3/5 days"
+        }
+      }
+    },
+    {
+      "id": "f5a99870-6555-4917-826f-ac23750d249c",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{whole work} = 12\\div \\dfrac{3}{5} = {{1:20}}\\text{ days}",
+              "f": "12/(3/5)",
+              "value": "20"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{3}{4}\\times 20 = {{2:15}}\\text{ days}",
+              "f": "20*3/4",
+              "value": "15"
+            }
+          ],
+          "answer": "20*3/4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "e74ab8b5",
+        "answer": {
+          "value": 15,
+          "label": "15 days"
+        }
+      }
+    },
+    {
+      "id": "f61fc7f6-0072-4ead-91a5-ffc52f8237ee",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "P = 6k,\\quad Q = 3k,\\quad R = 2k"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{1}{6k}+\\dfrac{2}{6k}+\\dfrac{3}{6k} = \\dfrac{1}{k} \\Rightarrow k = {{1:2}}",
+              "f": "1/(1/6+2/6+3/6)",
+              "value": "1"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "Q = 3k = {{2:6}}\\text{ days}",
+              "f": "3*2",
+              "value": "6"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\dfrac{1}{12}+\\dfrac{1}{6}+\\dfrac{1}{4} = \\dfrac{1}{2}",
+              "f": "1/12+1/6+1/4",
+              "value": "1/2"
+            }
+          ],
+          "answer": "3*2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "ae91df3b",
+        "answer": {
+          "value": 6,
+          "label": "6 days"
+        }
+      }
+    },
+    {
+      "id": "f7003620-d89c-4268-91cb-ff0738456349",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "20\\times 45 = {{1:900}}\\text{ man-days}",
+              "f": "20*45",
+              "value": "900"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "60\\times 6 = {{2:360}}\\text{ man-days}",
+              "f": "60*6",
+              "value": "360"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{360}{900}\\times 100 = {{3:40}}\\%",
+              "f": "360/900*100",
+              "value": "40"
+            }
+          ],
+          "answer": "360/900*100"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "acf09fc5",
+        "answer": {
+          "value": 40,
+          "label": "40%"
+        }
+      }
+    },
+    {
+      "id": "f79c43f8-4967-4301-a3fb-b042642254cf",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{4 days: } \\dfrac{4}{8} = {{1:1/2}}\\text{ built}",
+              "f": "4/8",
+              "value": "1/2"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "2\\left(\\dfrac{1}{8}-\\dfrac{1}{3}\\right) = -\\dfrac{5}{12}",
+              "f": "2*(1/8-1/3)",
+              "value": "-5/12"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{1}{2}-\\dfrac{5}{12} = \\dfrac{1}{12},\\quad 1-\\dfrac{1}{12} = {{2:11/12}}",
+              "f": "1-(1/2-5/12)",
+              "value": "11/12"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\dfrac{11}{12}\\times 8 = \\dfrac{22}{3} = 7\\dfrac{1}{3}\\text{ days}",
+              "f": "11/12*8",
+              "value": "22/3",
+              "dp": 4
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "\\text{24 units: } 12-10 = 2,\\quad \\dfrac{24-2}{3} = \\dfrac{22}{3}",
+              "f": "(24-2)/3",
+              "value": "22/3",
+              "dp": 4
+            }
+          ],
+          "answer": "11/12*8"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "6d653e22",
+        "answer": {
+          "value": 7.333333333333333,
+          "label": "7 1/3 days"
+        }
+      }
+    },
+    {
+      "id": "f91e1df9-3486-4294-a222-a5102411de9b",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "P+Q = 5,\\quad Q+R = 4,\\quad P+R = 3\\quad (120\\text{ units})"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "P+Q+R = 6 \\Rightarrow P = {{1:2}},\\quad Q = {{2:3}},\\quad R = 1",
+              "f": "(5+4+3)/2-4",
+              "value": "2"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "X = 8,\\quad Y = 1.5,\\quad Z = 2.5 \\Rightarrow 12\\text{ a day}",
+              "f": "4*2+3/2+2.5*1",
+              "value": "12"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\dfrac{120}{12} = {{3:10}}\\text{ days}",
+              "f": "120/12",
+              "value": "10"
+            }
+          ],
+          "answer": "120/12"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "cdc9d33d",
+        "answer": {
+          "value": 10,
+          "label": "10 days"
+        }
+      }
+    },
+    {
+      "id": "f9c07d1a-0bf1-42ee-9612-a87b5acb2c36",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "10\\text{ men} = 15\\text{ women} \\Rightarrow 20\\text{ men} = {{1:30}}\\text{ women}",
+              "f": "20*15/10",
+              "value": "30"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "30+20 = {{2:50}}\\text{ women}",
+              "f": "30+20",
+              "value": "50"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{15\\times 170}{50} = \\dfrac{2550}{50} = {{3:51}}\\text{ days}",
+              "f": "15*170/50",
+              "value": "51"
+            }
+          ],
+          "answer": "15*170/50"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "1dbf2bf7",
+        "answer": {
+          "value": 51,
+          "label": "51 days"
+        }
+      }
+    },
+    {
+      "id": "f9e27559-5a04-45b5-8d53-bb63c97a8be8",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{30\\times 45}{30+45} = \\dfrac{1350}{75} = {{1:18}}\\text{ hours}",
+              "f": "30*45/(30+45)",
+              "value": "18"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{18}{30}+\\dfrac{18}{45} = \\dfrac{3}{5}+\\dfrac{2}{5} = {{2:1}}",
+              "f": "18/30+18/45",
+              "value": "1"
+            }
+          ],
+          "answer": "30*45/(30+45)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "06a504d5",
+        "answer": {
+          "value": 18,
+          "label": "18 hours"
+        }
+      }
+    },
+    {
+      "id": "fb0e0269-fd06-45e8-b5f9-3b76535e69a9",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{3\\times 9}{40} = \\dfrac{27}{40} \\text{ in the last 3 min}",
+              "f": "3*(1/8+1/10)",
+              "value": "27/40"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{5}{8}\\times \\dfrac{1}{8}+\\dfrac{3}{5}\\times \\dfrac{1}{10} = {{1:221/1600}}",
+              "f": "5/8/8+3/5/10",
+              "value": "221/1600"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{13}{40}\\div \\dfrac{221}{1600} = \\dfrac{40}{17} = {{2:2.353}}\\text{ min}",
+              "f": "(1-27/40)/(221/1600)",
+              "value": "40/17",
+              "dp": 3
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\dfrac{40}{17}\\times \\dfrac{221}{1600} = \\dfrac{13}{40}",
+              "f": "40/17*221/1600",
+              "value": "13/40"
+            }
+          ],
+          "answer": "(1-27/40)/(221/1600)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "49a89f10",
+        "answer": {
+          "value": 2.352941176470588,
+          "label": "2 6/17 minutes"
+        }
+      }
+    },
+    {
+      "id": "fd3738b1-116c-40bc-bed6-b925b57f4387",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "16\\times 27 = {{1:432}}\\text{ woman-days}",
+              "f": "16*27",
+              "value": "432"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "9.6\\times 45 = 432 \\Rightarrow 15M = 20W \\Rightarrow M = {{2:4/3}}W",
+              "f": "20/15",
+              "value": "4/3"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "16M = \\dfrac{64}{3}W,\\quad 432\\times \\dfrac{3}{64} = {{3:20.25}}\\text{ days}",
+              "f": "432/(16*4/3)",
+              "value": "20.25"
+            }
+          ],
+          "answer": "432/(16*4/3)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "c77c20e6",
+        "answer": {
+          "value": 20.25,
+          "label": "20.25 days"
+        }
+      }
+    },
+    {
+      "id": "fd6effeb-c418-4035-a30f-c518cf3d199c",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "A = \\dfrac{3}{2}\\times 18 = {{1:27}}\\text{ hours}",
+              "f": "3/2*18",
+              "value": "27"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{27\\times 18}{27+18} = \\dfrac{486}{45} = {{2:10.8}}",
+              "f": "27*18/(27+18)",
+              "value": "10.8"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{1}{27}+\\dfrac{1}{18} = \\dfrac{5}{54},\\quad \\dfrac{54}{5} = 10.8",
+              "f": "54/5",
+              "value": "10.8"
+            }
+          ],
+          "answer": "27*18/(27+18)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "faaa8a0a",
+        "answer": {
+          "value": 10.8,
+          "label": "10.8 hours"
+        }
+      }
+    },
+    {
+      "id": "ffe7a362-afd2-4cc5-a2d9-6fe20a7f53a2",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{1}{12}-\\dfrac{1}{18} = \\dfrac{3-2}{36} = {{1:1/36}}",
+              "f": "1/12-1/18",
+              "value": "1/36"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{leak empties in } {{2:36}}\\text{ hours}",
+              "f": "1/(1/12-1/18)",
+              "value": "36"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{36 litres: } 3-1 = 2\\text{ a hour},\\quad \\dfrac{36}{2} = 18",
+              "f": "36/(3-1)",
+              "value": "18"
+            }
+          ],
+          "answer": "1/(1/12-1/18)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "256bd07e",
+        "answer": {
+          "value": 36,
+          "label": "36 hours"
+        }
+      }
+    },
+    {
+      "id": "3f336461-5959-4d3d-952c-cc469f2b3ba0",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{2}{25}+\\dfrac{1}{25} = \\dfrac{3}{25},\\quad \\dfrac{25}{3} = 8\\text{ h } 20\\text{ min}",
+              "f": "25/3",
+              "value": "25/3",
+              "dp": 4
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "8\\text{ h } 20\\text{ min}+1\\text{ h } 40\\text{ min} = {{1:10}}\\text{ h}",
+              "f": "25/3+5/3",
+              "value": "10"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{3}{25}-\\dfrac{1}{10} = {{2:1/50}}\\text{, leak empties in 50 h}",
+              "f": "1/(3/25-1/10)",
+              "value": "50"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "0.7\\times 50 = {{3:35}}\\text{ hours}",
+              "f": "0.7*50",
+              "value": "35"
+            }
+          ],
+          "answer": "0.7*50"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "c67818d5",
+        "answer": {
+          "value": 35,
+          "label": "35 hours"
+        }
+      }
+    },
+    {
+      "id": "51606129-0174-4689-a2c8-9ae67079da74",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "A+B = \\dfrac{6}{75},\\quad B+C = \\dfrac{4}{75},\\quad C+A = \\dfrac{5}{75}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "A+B+C = \\dfrac{1}{2}\\times \\dfrac{15}{75} = {{1:1/10}}",
+              "f": "(6+4+5)/75/2",
+              "value": "1/10"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "C = \\dfrac{1}{10}-\\dfrac{2}{25} = {{2:1/50}}",
+              "f": "1/10-2/25",
+              "value": "1/50"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "D = 0.4\\times \\dfrac{1}{50} = {{3:1/125}}",
+              "f": "0.4/50",
+              "value": "1/125"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\dfrac{1}{10}+\\dfrac{1}{125} = \\dfrac{27}{250} \\Rightarrow \\dfrac{250}{27}",
+              "f": "1/(1/10+1/125)",
+              "value": "250/27",
+              "dp": 4
+            }
+          ],
+          "answer": "1/(1/10+1/125)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "e18fefd9",
+        "answer": {
+          "value": 9.259259259259258,
+          "label": "9 7/27 days"
+        }
+      }
+    },
+    {
+      "id": "61bc22ed-b3fd-4fd9-8a4f-1bc81dce0f2d",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "B = {{1:1}}\\text{ unit a day},\\quad A = 4\\text{ units}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{work} = 5\\times 48 = {{2:240}}\\text{ units}",
+              "f": "5*48",
+              "value": "240"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{B alone} = \\dfrac{240}{1} = {{3:240}}\\text{ days}",
+              "f": "240/1",
+              "value": "240"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{1}{60}+\\dfrac{1}{240} = \\dfrac{5}{240} = \\dfrac{1}{48}",
+              "f": "1/60+1/240",
+              "value": "1/48"
+            }
+          ],
+          "answer": "240/1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "14ae0990",
+        "answer": {
+          "value": 240,
+          "label": "240 days"
+        }
+      }
+    },
+    {
+      "id": "67f17e96-2284-406a-86a3-5a770d4d02da",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{flow ratio } 2^2:3^2:4^2 = {{1:4}}:9:16"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{tank} = 16\\times 81 = {{2:1296}}\\text{ units}",
+              "f": "16*81",
+              "value": "1296"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "4+9+16 = {{3:29}},\\quad \\dfrac{1296}{29} = 44\\dfrac{20}{29}\\text{ min}",
+              "f": "1296/29",
+              "value": "1296/29",
+              "dp": 3
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "29\\times 44 = 1276,\\quad 1296-1276 = 20",
+              "f": "1296-29*44",
+              "value": "20"
+            }
+          ],
+          "answer": "1296/(4+9+16)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "60ee8072",
+        "answer": {
+          "value": 44.689655172413794,
+          "label": "44 20/29 min"
+        }
+      }
+    },
+    {
+      "id": "75e0812c-4e62-47bc-b791-b169d2f63921",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{1}{43.2} = \\dfrac{5}{216},\\quad \\dfrac{1}{108} = \\dfrac{2}{216},\\quad \\dfrac{1}{54} = \\dfrac{4}{216}",
+              "f": "1/43.2",
+              "value": "5/216"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "C = \\dfrac{5+2-4}{216} = {{1:3/216}}",
+              "f": "(5+2-4)/216",
+              "value": "3/216"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{tank} = 3\\times \\dfrac{216}{3} = {{2:216}}\\text{ L}",
+              "f": "3/(3/216)",
+              "value": "216"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "5+2-3 = 4,\\quad \\dfrac{216}{4} = {{3:54}}\\text{ min}",
+              "f": "216/(5+2-3)",
+              "value": "54"
+            }
+          ],
+          "answer": "3/(1/43.2+1/108-1/54)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "6b04143e",
+        "answer": {
+          "value": 216,
+          "label": "216 litres"
+        }
+      }
+    },
+    {
+      "id": "7b8cec6f-fc6a-432a-9cf7-bbc43ffc3db0",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{2}{20}+\\dfrac{1}{30} = {{1:2/15}}\\text{ filled by 9 a.m.}",
+              "f": "2/20+1/30",
+              "value": "2/15"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{1}{20}+\\dfrac{1}{30}+\\dfrac{1}{60} = {{2:1/10}}\\text{ an hour}",
+              "f": "1/20+1/30+1/60",
+              "value": "1/10"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{13}{15}\\times 10 = 8\\dfrac{2}{3}\\text{ h} = {{3:8.667}}",
+              "f": "13/15*10",
+              "value": "8.667",
+              "dp": 3
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "9\\text{ a.m.}+8\\text{ h } 40\\text{ min} = 5{:}40\\text{ p.m.}"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\dfrac{32}{60}+\\dfrac{29}{90}+\\dfrac{26}{180} = \\dfrac{180}{180}",
+              "f": "32/60+29/90+26/180",
+              "value": "1"
+            }
+          ],
+          "answer": "9+13/15*10"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "01be938f",
+        "answer": {
+          "value": 17.666666666666668,
+          "label": "5:40 p.m."
+        }
+      }
+    },
+    {
+      "id": "7bfe4dbe-b6cb-4c5b-bbf1-82a1926be214",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "A = \\dfrac{4}{0.2} = {{1:20}},\\quad B = \\dfrac{10}{1/3} = {{2:30}}\\text{ days}",
+              "f": "4/0.2",
+              "value": "20"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "9\\left(\\dfrac{1}{20}+\\dfrac{1}{30}\\right) = \\dfrac{3}{4},\\quad C = 6\\times 4 = {{3:24}}",
+              "f": "6/(1-9*(1/20+1/30))",
+              "value": "24"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{1}{30}+\\dfrac{1}{24} = \\dfrac{3}{40}",
+              "f": "1/30+1/24",
+              "value": "3/40"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{3}{4}\\div \\dfrac{3}{40} = {{3:10}}\\text{ days}",
+              "f": "3/4/(3/40)",
+              "value": "10"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{120 units: } 9\\times 10 = 90,\\quad \\dfrac{90}{9} = 10",
+              "f": "90/9",
+              "value": "10"
+            }
+          ],
+          "answer": "3/4/(3/40)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "6f9db731",
+        "answer": {
+          "value": 10,
+          "label": "10 days"
+        }
+      }
+    },
+    {
+      "id": "884ce4db-25f4-4fcf-8feb-89c60d48a804",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "A+B = \\dfrac{9}{240},\\quad B+C = \\dfrac{5}{240},\\quad A+C = \\dfrac{8}{240}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "A+B+C = \\dfrac{22}{480} = \\dfrac{11}{240}",
+              "f": "(9+5+8)/240/2",
+              "value": "11/240"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "A = \\dfrac{11}{240}-\\dfrac{5}{240} = {{1:1/40}}",
+              "f": "(11-5)/240",
+              "value": "1/40"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "0.6\\times 40 = {{2:24}}\\text{ days}",
+              "f": "0.6*40",
+              "value": "24"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "B = \\dfrac{3}{80}-\\dfrac{1}{40} = \\dfrac{1}{80}",
+              "f": "3/80-1/40",
+              "value": "1/80"
+            }
+          ],
+          "answer": "0.6/(11/240-5/240)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "23d40b74",
+        "answer": {
+          "value": 24,
+          "label": "24 days"
+        }
+      }
+    },
+    {
+      "id": "95039823-cf0a-49da-a82b-3e36b9bcb313",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "eq",
+              "tex": "7(3m+4w) = 14(2m+w) \\Rightarrow m = {{1:2}}w",
+              "lhs": "7*(3*x+4)",
+              "rhs": "14*(2*x+1)",
+              "roots": [
+                "2"
+              ],
+              "note": "w = 1; m is a man in woman units"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "3m+4w = 10w,\\quad \\text{work} = 10\\times 7 = {{2:70}}",
+              "f": "10*7",
+              "value": "70"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{70}{7} = {{3:10}}\\text{ days}",
+              "f": "70/7",
+              "value": "10"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "2m+w = 5w,\\quad \\dfrac{70}{5} = 14",
+              "f": "70/5",
+              "value": "14"
+            }
+          ],
+          "answer": "70/7"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "02469f65",
+        "answer": {
+          "value": 10,
+          "label": "10 days"
+        }
+      }
+    },
+    {
+      "id": "ac688389-3297-4ed2-b9cf-9e54ea2a0ce1",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "A = 12\\times \\dfrac{5}{2} = {{1:30}}\\text{ days}",
+              "f": "12*5/2",
+              "value": "30"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "B = \\dfrac{30}{1.25} = {{2:24}}\\text{ days}",
+              "f": "30/1.25",
+              "value": "24"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "C = 24-12 = {{3:12}}\\text{ days}",
+              "f": "24-12",
+              "value": "12"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "D = \\dfrac{12}{0.75} = 16\\text{ days}",
+              "f": "12/0.75",
+              "value": "16"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\dfrac{1}{30}+\\dfrac{1}{24}+\\dfrac{1}{12}+\\dfrac{1}{16} = \\dfrac{53}{240}",
+              "f": "1/30+1/24+1/12+1/16",
+              "value": "53/240"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\text{time} = \\dfrac{240}{53} \\text{ days}",
+              "f": "1/(1/30+1/24+1/12+1/16)",
+              "value": "240/53",
+              "dp": 4
+            }
+          ],
+          "answer": "1/(1/30+1/24+1/12+1/16)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "755403c1",
+        "answer": {
+          "value": 4.528301886792453,
+          "label": "240/53 days"
+        }
+      }
+    },
+    {
+      "id": "aeafee92-b00d-44ea-b78d-69b7ddcb3387",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "A = 9\\times 4 = {{1:36}}\\text{ days}",
+              "f": "9*4",
+              "value": "36"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "B = 28\\times \\dfrac{3}{2} = {{2:42}}\\text{ days}",
+              "f": "28*3/2",
+              "value": "42"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{36\\times 42}{36+42} = \\dfrac{1512}{78} = \\dfrac{252}{13}",
+              "f": "36*42/(36+42)",
+              "value": "252/13",
+              "dp": 4
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\dfrac{1}{36}+\\dfrac{1}{42} = \\dfrac{13}{252}",
+              "f": "1/36+1/42",
+              "value": "13/252"
+            }
+          ],
+          "answer": "36*42/(36+42)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "bf1aefdc",
+        "answer": {
+          "value": 19.384615384615383,
+          "label": "252/13 days"
+        }
+      }
+    },
+    {
+      "id": "ba996518-aaa9-43d1-be38-cc636088836d",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "5\\text{ days: } \\dfrac{5}{18},\\quad \\text{remaining } \\dfrac{13}{18}",
+              "f": "1-5/18",
+              "value": "13/18"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{13}{18}\\div \\dfrac{13}{5} = {{1:5/18}}\\text{ a day}",
+              "f": "13/18/(13/5)",
+              "value": "5/18"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "Q = \\dfrac{5}{18}-\\dfrac{1}{18} = {{2:2/9}},\\quad \\text{whole work } 4.5\\text{ days}",
+              "f": "1/(5/18-1/18)",
+              "value": "4.5"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\dfrac{2}{3}\\times 4.5 = {{3:3}}\\text{ days}",
+              "f": "2/3*4.5",
+              "value": "3"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\dfrac{13}{5}\\times \\dfrac{5}{18} = \\dfrac{13}{18}",
+              "f": "13/5*5/18",
+              "value": "13/18"
+            }
+          ],
+          "answer": "2/3/(5/18-1/18)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "54bfccc4",
+        "answer": {
+          "value": 2.9999999999999996,
+          "label": "3 days"
+        }
+      }
+    },
+    {
+      "id": "d1fe2f58-587e-424c-b1fd-500f185fafc1",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "A, B: t\\text{ min},\\quad C: t-2\\text{ min}"
+            },
+            {
+              "step": "s2",
+              "kind": "eq",
+              "tex": "\\dfrac{t}{12}+\\dfrac{t}{24}-\\dfrac{t-2}{32} = 1",
+              "lhs": "x/12+x/24-(x-2)/32",
+              "rhs": "1",
+              "roots": [
+                "10"
+              ]
+            },
+            {
+              "step": "s3",
+              "kind": "eq",
+              "tex": "8t+4t-3t+6 = 96 \\Rightarrow 9t = 90 \\Rightarrow t = {{1:10}}",
+              "lhs": "8*x+4*x-3*x+6",
+              "rhs": "96",
+              "roots": [
+                "10"
+              ],
+              "note": "multiply by 96"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\dfrac{10}{12}+\\dfrac{10}{24}-\\dfrac{8}{32} = {{2:1}}",
+              "f": "10/12+10/24-8/32",
+              "value": "1"
+            }
+          ],
+          "answer": "10"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "49eddc7b",
+        "answer": {
+          "value": 10,
+          "label": "10 minutes"
+        }
+      }
+    },
+    {
+      "id": "d31a3a24-3f5a-4a3d-99d2-9476256aff72",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{tank} = {{1:28}}\\text{ units}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{28}{5.6} = {{2:5}}\\text{ out},\\quad \\dfrac{28}{7} = {{3:4}}\\text{ in}",
+              "f": "28/5.6",
+              "value": "5"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "5-4 = 1\\text{ unit per 2 hours}",
+              "f": "5-4",
+              "value": "1"
+            },
+            {
+              "step": "s4",
+              "kind": "note",
+              "tex": "\\text{A empties it once 5 units or fewer remain}"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "28-23 = {{2:5}}\\text{ after 46 hours}",
+              "f": "28-23",
+              "value": "5",
+              "note": "after 44 hours 6 remain: too many"
+            },
+            {
+              "step": "s7",
+              "kind": "calc",
+              "tex": "46+1 = {{1:47}}\\text{ hours}",
+              "f": "46+1",
+              "value": "47"
+            }
+          ],
+          "answer": "46+1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s7"
+            ]
+          }
+        ],
+        "fingerprint": "70d2b494",
+        "answer": {
+          "value": 47,
+          "label": "47 hours"
+        }
+      }
+    },
+    {
+      "id": "d8ec5c32-6488-4205-8041-717944689db4",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "eq",
+              "tex": "15(4m+5w) = 10(9m+6w) \\Rightarrow w = {{1:2}}m",
+              "lhs": "15*(4+5*x)",
+              "rhs": "10*(9+6*x)",
+              "roots": [
+                "2"
+              ],
+              "note": "m = 1; w is a woman in men units"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "15\\times (4+10) = {{2:210}}\\text{ man-days}",
+              "f": "15*(4+10)",
+              "value": "210"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{210}{7} = {{3:30}}\\text{ men's work}",
+              "f": "210/7",
+              "value": "30"
+            },
+            {
+              "step": "s4",
+              "kind": "eq",
+              "tex": "4+2x = 30 \\Rightarrow x = {{1:13}}",
+              "lhs": "4+2*x",
+              "rhs": "30",
+              "roots": [
+                "13"
+              ]
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "(9+12)\\times 10 = 210",
+              "f": "(9+2*6)*10",
+              "value": "210"
+            }
+          ],
+          "answer": "13"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "e40d5ef1",
+        "answer": {
+          "value": 13,
+          "label": "13 women"
+        }
+      }
+    },
+    {
+      "id": "d9f5400a-1a27-45fc-9c86-36cbb6f53a63",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{work} = {{1:56}},\\quad A=4,\\quad B=2,\\quad C=1\\text{ a day}"
+            },
+            {
+              "step": "s2",
+              "kind": "eq",
+              "tex": "4(T-3)+2(T-2)+T = 56",
+              "lhs": "4*(x-3)+2*(x-2)+x",
+              "rhs": "56",
+              "roots": [
+                "72/7"
+              ]
+            },
+            {
+              "step": "s3",
+              "kind": "eq",
+              "tex": "7T-16 = 56 \\Rightarrow T = \\dfrac{72}{7}",
+              "lhs": "7*x-16",
+              "rhs": "56",
+              "roots": [
+                "72/7"
+              ]
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "4\\times \\dfrac{51}{7}+2\\times \\dfrac{58}{7}+\\dfrac{72}{7} = {{2:56}}",
+              "f": "4*51/7+2*58/7+72/7",
+              "value": "56"
+            }
+          ],
+          "answer": "72/7"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "5bf774eb",
+        "answer": {
+          "value": 10.285714285714286,
+          "label": "72/7 days"
+        }
+      }
+    },
+    {
+      "id": "e3c195f7-9747-4b03-94b7-9461232ce0ba",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "6\\times 10 = 12\\times h",
+              "f": "6*10",
+              "value": "60"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "h = \\dfrac{60}{12} = {{1:5}}\\text{ hours}",
+              "f": "60/12",
+              "value": "5"
+            }
+          ],
+          "answer": "60/12"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          }
+        ],
+        "fingerprint": "fb88e791",
+        "answer": {
+          "value": 5,
+          "label": "5 hours"
+        }
+      }
+    },
+    {
+      "id": "e3f6a9c0-7f23-4d84-b708-0dd9bf256b24",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{2}{11}-\\dfrac{4}{33} = \\dfrac{2}{33}\\text{, leak empties in } {{1:16.5}}\\text{ h}",
+              "f": "1/(2/11-4/33)",
+              "value": "16.5"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "0.3\\times \\dfrac{33}{2} = \\dfrac{99}{20} = {{2:4.95}}\\text{ hours}",
+              "f": "0.3*33/2",
+              "value": "4.95"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{5.5\\times 8.25}{8.25-5.5} = \\dfrac{45.375}{2.75} = {{1:16.5}}",
+              "f": "5.5*8.25/(8.25-5.5)",
+              "value": "16.5"
+            }
+          ],
+          "answer": "0.3*33/2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "5f405563",
+        "answer": {
+          "value": 4.95,
+          "label": "99/20 hours"
+        }
+      }
+    },
+    {
+      "id": "08828184-43bf-4f6a-a5e6-b17af94193fe",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "8000\\times 1.12^3 = 8000\\times 1.404928 = {{1:11239.424}}",
+              "f": "8000*1.12^3",
+              "value": "11239.424"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{4 months: } \\dfrac{12}{3} = {{2:4}}\\%,\\quad 11239.424\\times 1.04",
+              "f": "11239.424*1.04",
+              "value": "11689.0",
+              "dp": 2
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "11689-8000 = {{3:3689}}",
+              "f": "11689-8000",
+              "value": "3689"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "960+1075.20+1204.22 = 3239.42",
+              "f": "960+1075.2+1204.22",
+              "value": "3239.42",
+              "dp": 2
+            }
+          ],
+          "answer": "floor(11239.424*1.04-8000+0.5)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "dfb11e87",
+        "answer": {
+          "value": 3689,
+          "label": "₹3,689"
+        }
+      }
+    },
+    {
+      "id": "0e06203a-2615-41b1-b2de-c3430a4fb79f",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "SI = \\dfrac{1500\\times 6\\times 3}{100} = {{1:270}}",
+              "f": "1500*6*3/100",
+              "value": "270"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{amount} = 1500+{{1:270}} = {{2:1770}}",
+              "f": "1500+270",
+              "value": "1770"
+            }
+          ],
+          "answer": "1500+1500*6*3/100"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "39028fd9",
+        "answer": {
+          "value": 1770,
+          "label": "₹1,770"
+        }
+      }
+    },
+    {
+      "id": "108dd120-af8c-42f7-9888-e1ccd2be588f",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{8000\\times 5\\times 4}{100} = {{1:1600}}",
+              "f": "8000*5*4/100",
+              "value": "1600"
+            },
+            {
+              "step": "s2",
+              "kind": "eq",
+              "tex": "\\dfrac{10000\\times 4\\times t}{100} = 400t = {{1:1600}}",
+              "lhs": "400*x",
+              "rhs": "1600",
+              "roots": [
+                "4"
+              ]
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "t = \\dfrac{1600}{400} = {{2:4}}\\text{ years}",
+              "f": "1600/400",
+              "value": "4"
+            }
+          ],
+          "answer": "1600/400"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "e494533b",
+        "answer": {
+          "value": 4,
+          "label": "4 years"
+        }
+      }
+    },
+    {
+      "id": "153546c4-1d73-41f2-8250-b65705778a30",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "eq",
+              "tex": "\\dfrac{500\\times 4r}{100}+\\dfrac{700\\times 2r}{100} = 20r+14r = 34r = 280",
+              "lhs": "20*x+14*x",
+              "rhs": "280",
+              "roots": [
+                "140/17"
+              ]
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "r = \\dfrac{280}{34} = \\dfrac{140}{17} = 8\\dfrac{4}{17}\\%",
+              "f": "280/34",
+              "value": "140/17",
+              "dp": 4
+            }
+          ],
+          "answer": "280/34"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "6d6d950e",
+        "answer": {
+          "value": 8.235294117647058,
+          "label": "8 4/17%"
+        }
+      }
+    },
+    {
+      "id": "1ddff965-c8d1-4246-86e7-3362a00ae769",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "7.25\\times 8+8.5\\times 6+6.5\\times 4 = 58+51+26 = {{1:135}}\\%",
+              "f": "7.25*8+8.5*6+6.5*4",
+              "value": "135"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "P = \\dfrac{35100}{1.35} = {{2:26000}}",
+              "f": "35100/1.35",
+              "value": "26000"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "26000\\times 1.35 = {{3:35100}}",
+              "f": "26000*1.35",
+              "value": "35100"
+            }
+          ],
+          "answer": "35100/1.35"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "58dd5c42",
+        "answer": {
+          "value": 26000,
+          "label": "₹26,000"
+        }
+      }
+    },
+    {
+      "id": "1e5d7fb6-96ad-4a84-83e3-3dc5cadef8ab",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{rate} = \\dfrac{25}{5} = {{1:5}}\\%\\text{ a year}",
+              "f": "25/5",
+              "value": "5"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{100}{ {{1:5}} } = {{2:20}}\\text{ years}",
+              "f": "100/5",
+              "value": "20"
+            }
+          ],
+          "answer": "100/(25/5)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "a7b5c215",
+        "answer": {
+          "value": 20,
+          "label": "20 years"
+        }
+      }
+    },
+    {
+      "id": "1ec00ab7-6576-49db-a650-cca45748fb29",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "335180\\times 0.13 = {{1:43573.4}}",
+              "f": "335180*0.13",
+              "value": "43573.4"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "335180-23060 = 312120,\\quad 312120\\times 0.13 = {{2:40575.6}}",
+              "f": "312120*0.13",
+              "value": "40575.6"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "312120+43573.4+40575.6 = {{3:396269}}",
+              "f": "312120+43573.4+40575.6",
+              "value": "396269"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "0.13\\times 647300 = 84149,\\quad 312120+84149 = 396269",
+              "f": "312120+0.13*(335180+312120)",
+              "value": "396269"
+            }
+          ],
+          "answer": "312120+43573.4+40575.6"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "ab36edca",
+        "answer": {
+          "value": 396269,
+          "label": "₹3,96,269"
+        }
+      }
+    },
+    {
+      "id": "25a2e53f-e3bd-4f6a-8252-806aae035aa9",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "10\\text{ Jan to } 10\\text{ Jul} = 6\\text{ months} = \\dfrac{1}{2}\\text{ year}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "12000\\times \\dfrac{6}{100}\\times \\dfrac{1}{2} = {{1:360}}",
+              "f": "12000*6/100*1/2",
+              "value": "360"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "12000+360 = {{2:12360}}",
+              "f": "12000+360",
+              "value": "12360"
+            }
+          ],
+          "answer": "12000+360"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "2311fae3",
+        "answer": {
+          "value": 12360,
+          "label": "₹12,360"
+        }
+      }
+    },
+    {
+      "id": "2f02f6fa-412e-46ee-8646-9e056ab48acf",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "P = \\dfrac{500\\times 100}{4\\times 5} = {{1:2500}}",
+              "f": "500*100/(4*5)",
+              "value": "2500"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{2500\\times 6\\times 7}{100} = {{2:1050}}",
+              "f": "2500*6*7/100",
+              "value": "1050"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "500\\times \\dfrac{42}{20} = {{2:1050}}",
+              "f": "500*42/20",
+              "value": "1050"
+            }
+          ],
+          "answer": "2500*6*7/100"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "41fa31a9",
+        "answer": {
+          "value": 1050,
+          "label": "₹1,050"
+        }
+      }
+    },
+    {
+      "id": "324d3281-9406-445b-9ee6-0c5213adabf9",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "7040-6400 = {{1:640}}",
+              "f": "7040-6400",
+              "value": "640",
+              "note": "year 3 interest is on the 2-year amount"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{640}{6400}\\times 100 = {{2:10}}\\%",
+              "f": "640/6400*100",
+              "value": "10"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "6400\\times 1.1 = {{3:7040}}",
+              "f": "6400*1.1",
+              "value": "7040"
+            }
+          ],
+          "answer": "(7040-6400)/6400*100"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "3f654828",
+        "answer": {
+          "value": 10,
+          "label": "10%"
+        }
+      }
+    },
+    {
+      "id": "32f0a1b5-eca9-4c96-93b5-0061fc3a7656",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{interest} = 4P-P = 3P"
+            },
+            {
+              "step": "s1",
+              "kind": "eq",
+              "tex": "3P = \\dfrac{P\\times R\\times 12}{100} \\Rightarrow R = {{1:25}}\\%",
+              "lhs": "3*100",
+              "rhs": "x*12",
+              "roots": [
+                "25"
+              ],
+              "note": "P cancels"
+            }
+          ],
+          "answer": "3*100/12"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          }
+        ],
+        "fingerprint": "a5d6598a",
+        "answer": {
+          "value": 25,
+          "label": "25%"
+        }
+      }
+    },
+    {
+      "id": "347abea1-7669-4738-99e3-31c898fe2c2d",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "eq",
+              "tex": "\\dfrac{A\\times 6\\times 2}{100} = \\dfrac{B\\times 4\\times 3}{100} \\Rightarrow 12A = 12B",
+              "lhs": "12*x",
+              "rhs": "12*1",
+              "roots": [
+                "1"
+              ],
+              "note": "B = 1, x = A"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "A:B = {{1:12}}:{{1:12}} = 1:1",
+              "f": "12/12",
+              "value": "1"
+            }
+          ],
+          "answer": "12/12"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          }
+        ],
+        "fingerprint": "f5b1a35b",
+        "answer": {
+          "value": 1,
+          "label": "1 : 1"
+        }
+      }
+    },
+    {
+      "id": "375721c2-60ab-457e-af3c-6c21883e2104",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "19650-3100 = {{1:16550}}",
+              "f": "19650-3100",
+              "value": "16550"
+            },
+            {
+              "step": "s2",
+              "kind": "eq",
+              "tex": "\\dfrac{x}{1.1}+\\dfrac{x}{1.21}+\\dfrac{x}{1.331} = \\dfrac{3310x}{1331} = 16550",
+              "lhs": "x/1.1+x/1.21+x/1.331",
+              "rhs": "16550",
+              "roots": [
+                "6655"
+              ]
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "x = 5\\times 1331 = {{2:6655}}",
+              "f": "16550*1331/3310",
+              "value": "6655"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "16550\\times 1.1-6655 = 11550",
+              "f": "16550*1.1-6655",
+              "value": "11550"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "11550\\times 1.1-6655 = 6050,\\quad 6050\\times 1.1 = 6655",
+              "f": "(11550*1.1-6655)*1.1",
+              "value": "6655"
+            }
+          ],
+          "answer": "16550*1331/3310"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "a1f42fe3",
+        "answer": {
+          "value": 6655,
+          "label": "₹6,655"
+        }
+      }
+    },
+    {
+      "id": "3e85564b-3e1a-48ae-8ba7-ec31d0043ed7",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "1.2^3-1 = {{1:0.728}},\\quad P = \\dfrac{864}{0.728} \\approx 1186.81",
+              "f": "864/0.728",
+              "value": "1186.81",
+              "dp": 2
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{SI} = 0.6P = \\dfrac{0.6\\times 864}{0.728} = {{2:712.09}}",
+              "f": "0.6*864/0.728",
+              "value": "712.09",
+              "dp": 2
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "1186.81\\times 0.728 \\approx 864",
+              "f": "1186.81*0.728",
+              "value": "864",
+              "dp": 0
+            }
+          ],
+          "answer": "floor(100*0.6*864/0.728+0.5)/100"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "c2461a6d",
+        "answer": {
+          "value": 712.09,
+          "label": "₹712.09"
+        }
+      }
+    },
+    {
+      "id": "3fc089cd-8df5-4d7f-87ff-ba27a2aa5940",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "7000\\times 0.05 = {{1:350}},\\quad 6000\\times 0.06 = {{2:360}}",
+              "f": "7000*0.05",
+              "value": "350"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "350+360 = {{3:710}}",
+              "f": "350+360",
+              "value": "710"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "18000-13000 = 5000,\\quad 1160-710 = 450",
+              "f": "1160-710",
+              "value": "450"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\dfrac{450}{5000}\\times 100 = {{3:9}}\\%",
+              "f": "450/5000*100",
+              "value": "9"
+            }
+          ],
+          "answer": "450/5000*100"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "275587bb",
+        "answer": {
+          "value": 9,
+          "label": "9%"
+        }
+      }
+    },
+    {
+      "id": "43d239fc-1e17-4a5c-bc38-b3fb5e701767",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "2\\times 9.5 = {{1:19}}\\%,\\quad 1.19P = 21420",
+              "f": "2*9.5",
+              "value": "19"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "P = \\dfrac{21420}{1.19} = {{2:18000}}",
+              "f": "21420/1.19",
+              "value": "18000"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "18000\\times 0.19 = 3420,\\quad 18000+3420 = {{3:21420}}",
+              "f": "18000+18000*0.19",
+              "value": "21420"
+            }
+          ],
+          "answer": "21420/1.19"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "ef8723b4",
+        "answer": {
+          "value": 18000,
+          "label": "₹18,000"
+        }
+      }
+    },
+    {
+      "id": "460d13d4-9949-44cc-a77d-c0321190dd3d",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "2625-1875 = 750,\\quad r = \\dfrac{750\\times 100}{1875\\times 4} = {{1:10}}\\%",
+              "f": "750*100/(1875*4)",
+              "value": "10"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{24000\\times 10\\times 9}{100} = {{2:21600}}",
+              "f": "24000*10*9/100",
+              "value": "21600"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "24000+21600 = {{3:45600}}",
+              "f": "24000+21600",
+              "value": "45600"
+            }
+          ],
+          "answer": "24000+24000*10*9/100"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "881fcc9a",
+        "answer": {
+          "value": 45600,
+          "label": "₹45,600"
+        }
+      }
+    },
+    {
+      "id": "4974adf6-1175-44bf-a044-fb8d8a26c067",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{P\\times 7\\times 6}{100} = 0.42P = 1512",
+              "f": "0.42*3600",
+              "value": "1512"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "P = \\dfrac{1512\\times 100}{42} = {{1:3600}}",
+              "f": "1512*100/42",
+              "value": "3600"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "0.42\\times 3600 = {{2:1512}}",
+              "f": "0.42*3600",
+              "value": "1512"
+            }
+          ],
+          "answer": "1512*100/42"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "6e4c35e6",
+        "answer": {
+          "value": 3600,
+          "label": "₹3,600"
+        }
+      }
+    },
+    {
+      "id": "4a11a615-9763-4435-8a0d-f4a86d3a9070",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "24800-10800 = {{1:14000}}",
+              "f": "24800-10800",
+              "value": "14000"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "10800\\times 0.155 = {{2:1674}}\\text{ a year}",
+              "f": "10800*0.155",
+              "value": "1674"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{14000}{1674} \\approx {{3:8.36}}\\text{ years}",
+              "f": "14000/1674",
+              "value": "8.36",
+              "dp": 2
+            }
+          ],
+          "answer": "floor(100*14000/1674+0.5)/100"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "536738ef",
+        "answer": {
+          "value": 8.36,
+          "label": "8.36 years"
+        }
+      }
+    },
+    {
+      "id": "4abf1565-2f39-4b35-890b-685b4d2d6c40",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{7200\\times 16\\times 3}{100} = {{1:3456}}",
+              "f": "7200*16*3/100",
+              "value": "3456"
+            },
+            {
+              "step": "s2",
+              "kind": "eq",
+              "tex": "\\dfrac{9600\\times x\\times 4}{100} = 384x = {{1:3456}}",
+              "lhs": "384*x",
+              "rhs": "3456",
+              "roots": [
+                "9"
+              ]
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "x = \\dfrac{3456}{384} = {{2:9}}",
+              "f": "3456/384",
+              "value": "9"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "7200\\times 48 = 345600 = 9600\\times 36",
+              "f": "7200*48",
+              "value": "345600"
+            }
+          ],
+          "answer": "3456/384"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "13056704",
+        "answer": {
+          "value": 9,
+          "label": "9%"
+        }
+      }
+    },
+    {
+      "id": "4f4e5c8c-6676-49e5-8d1f-2d84ee3867ee",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{9810}{1.09} = {{1:9000}}",
+              "f": "9810/1.09",
+              "value": "9000"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "9000\\times \\left(1+\\dfrac{9}{100}\\times \\dfrac{1}{2}\\right) = 9000\\times 1.045 = {{2:9405}}",
+              "f": "9000*1.045",
+              "value": "9405"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "9405+405 = {{3:9810}}",
+              "f": "9405+9000*0.09/2",
+              "value": "9810"
+            }
+          ],
+          "answer": "9000*1.045"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "63d8e0c5",
+        "answer": {
+          "value": 9405,
+          "label": "₹9,405"
+        }
+      }
+    },
+    {
+      "id": "501c3fca-2d00-4871-9241-458bfd648608",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "eq",
+              "tex": "\\dfrac{3}{5}\\times 100 = 10T \\Rightarrow T = {{1:6}}",
+              "lhs": "10*x",
+              "rhs": "3/5*100",
+              "roots": [
+                "6"
+              ]
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{16000\\times 14\\times 6}{100} = {{2:13440}}",
+              "f": "16000*14*6/100",
+              "value": "13440"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "2240\\times 6 = {{2:13440}}",
+              "f": "2240*6",
+              "value": "13440",
+              "note": "16000 at 14% is 2,240 a year"
+            }
+          ],
+          "answer": "16000*14*6/100"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "c66fff1a",
+        "answer": {
+          "value": 13440,
+          "label": "₹13,440"
+        }
+      }
+    },
+    {
+      "id": "56e05353-cb8b-49fe-8f8f-e75c059a1ac5",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "360-300 = {{1:60}}\\text{ on Rs.300 for 2 months}",
+              "f": "360-300",
+              "value": "60"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{60\\times 100}{300\\times \\frac{2}{12}} = \\dfrac{6000}{50} = {{2:120}}\\%",
+              "f": "6000/(300*2/12)",
+              "value": "120"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "300\\times 1.2\\times \\dfrac{1}{6} = {{1:60}}",
+              "f": "300*1.2/6",
+              "value": "60"
+            }
+          ],
+          "answer": "6000/(300*2/12)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "1b14cc16",
+        "answer": {
+          "value": 120,
+          "label": "120%"
+        }
+      }
+    },
+    {
+      "id": "5a792e06-4e79-4357-bd4c-b8c3f785e338",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "8000\\times 0.06+5000\\times 0.08 = 480+400 = {{1:880}}",
+              "f": "8000*0.06+5000*0.08",
+              "value": "880"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{1760}{880} = {{2:2}}\\text{ years}",
+              "f": "1760/880",
+              "value": "2"
+            }
+          ],
+          "answer": "1760/880"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "ca479616",
+        "answer": {
+          "value": 2,
+          "label": "2 years"
+        }
+      }
+    },
+    {
+      "id": "5cb174f7-17fd-4f26-954d-4bd136f72577",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{deposit} = \\dfrac{135}{0.045} = {{1:3000}}",
+              "f": "135/0.045",
+              "value": "3000"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "3000\\times 0.005 = {{2:15}}",
+              "f": "3000*0.005",
+              "value": "15"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "3000\\times 0.05 = 150,\\quad 150-135 = {{2:15}}",
+              "f": "3000*0.05-135",
+              "value": "15"
+            }
+          ],
+          "answer": "3000*0.005"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "3cdec8d5",
+        "answer": {
+          "value": 15,
+          "label": "₹15"
+        }
+      }
+    },
+    {
+      "id": "5d973e15-d4f9-4eab-8720-efedd0c21017",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "27000\\times \\dfrac{44}{300} = {{1:3960}}\\text{ a year}",
+              "f": "27000*44/300",
+              "value": "3960"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "3960\\times \\dfrac{8}{12} = {{2:2640}}",
+              "f": "3960*8/12",
+              "value": "2640"
+            }
+          ],
+          "answer": "27000*44/300*8/12"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          }
+        ],
+        "fingerprint": "076d65de",
+        "answer": {
+          "value": 2640,
+          "label": "₹2,640"
+        }
+      }
+    },
+    {
+      "id": "5f624d40-b1a3-479e-9f11-88927d6d8b3a",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "eq",
+              "tex": "100r+120r = 220r",
+              "lhs": "100*x+120*x",
+              "rhs": "220*x",
+              "roots": [
+                "10"
+              ]
+            },
+            {
+              "step": "s2",
+              "kind": "eq",
+              "tex": "220r = 2200 \\Rightarrow r = {{1:10}}\\%",
+              "lhs": "220*x",
+              "rhs": "2200",
+              "roots": [
+                "10"
+              ]
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "1000+1200 = {{2:2200}}",
+              "f": "5000*2*10/100+3000*4*10/100",
+              "value": "2200"
+            }
+          ],
+          "answer": "2200/220"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "4d407294",
+        "answer": {
+          "value": 10,
+          "label": "10%"
+        }
+      }
+    },
+    {
+      "id": "600b87d9-ad08-421d-955e-1422c4d7bf85",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "1.12^2 = 1.2544,\\quad P = \\dfrac{3136}{1.2544} = {{1:2500}}",
+              "f": "3136/1.2544",
+              "value": "2500"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "1.4\\times 2500 = {{2:3500}}",
+              "f": "1.4*2500",
+              "value": "3500"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "2500\\times 1.12 = 2800,\\quad 2800\\times 1.12 = {{3:3136}}",
+              "f": "2500*1.12*1.12",
+              "value": "3136"
+            }
+          ],
+          "answer": "1.4*3136/1.2544"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "e69c8ecc",
+        "answer": {
+          "value": 3500,
+          "label": "₹3,500"
+        }
+      }
+    }
+  ],
+  "decided": []
+}
