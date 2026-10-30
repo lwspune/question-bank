@@ -1,0 +1,70 @@
+{
+  "//": "Assembled from agent drafts (coordGeometry).",
+  "visuals": [
+    {
+      "id": "0ea0d567-1b8d-43de-915f-5c3accf1c6ed",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "coordGeometry",
+        "params": {
+          "window": {
+            "x": [
+              -6,
+              2
+            ],
+            "y": [
+              -7,
+              1
+            ]
+          },
+          "points": [
+            {
+              "id": "C",
+              "at": [
+                -2,
+                -3
+              ],
+              "label": "(−2, −3)",
+              "beat": "derived"
+            }
+          ],
+          "circles": [
+            {
+              "id": "S",
+              "center": "C",
+              "r": 3,
+              "label": "r = 3",
+              "beat": "derived"
+            }
+          ],
+          "ask": {
+            "kind": "radius",
+            "circle": "S",
+            "label": "radius = 3"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "derived"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "ad1ce5a4",
+        "answer": {
+          "value": 3,
+          "label": "3"
+        }
+      }
+    }
+  ],
+  "decided": []
+}
