@@ -27,7 +27,8 @@ const IN_CHUNK = 200; // ids per .in() filter: the list rides in the URL
 
 /**
  * The people who said Yes, with the name and email on their account and the
- * mobile on their profile, for the owner to reach (2026-10-28).
+ * mobile and city on their profile, for the owner to reach (2026-10-28; city
+ * 2026-10-30).
  */
 export async function loadTutorContacts(
   admin: SupabaseClient
@@ -51,15 +52,20 @@ export async function loadTutorContacts(
     })
   );
 
-  const mobiles = new Map<string, string>();
+  const profiles = new Map<string, { mobile: string | null; city: string | null }>();
   for (let i = 0; i < ids.length; i += IN_CHUNK) {
     const { data, error } = await admin
       .from("student_profiles")
-      .select("user_id, mobile")
+      .select("user_id, mobile, city")
       .in("user_id", ids.slice(i, i + IN_CHUNK));
     if (error) throw new Error(error.message);
-    for (const p of data ?? []) if (p.mobile) mobiles.set(p.user_id as string, p.mobile as string);
+    for (const p of data ?? []) {
+      profiles.set(p.user_id as string, {
+        mobile: (p.mobile as string | null) || null,
+        city: (p.city as string | null) || null,
+      });
+    }
   }
 
-  return buildTutorContacts(rows, people, mobiles);
+  return buildTutorContacts(rows, people, profiles);
 }
