@@ -44,8 +44,10 @@ of that logical L/R half-page, TIGHT around the figure, excluding stem/options/`
 rasterizes at 4x. **Always montage-verify the crops before `--apply`.**
 
 ## Coaching-book chapters on the same lane (2026-10-30)
-A scanned book chapter (first: GPCC NKL Physics Vol II, Ch. 29 Experimental Skills,
-`gpcc-nkl-ch29`) rides this lane as one `TESTS` entry. What differs from a ParikshaGruh test:
+**Runbook, agent briefs and tools: [book/README.md](book/README.md)** (transcribe, solve blind,
+settle by hand, redraw figures). A scanned book chapter (first: GPCC NKL Physics Vol II, Ch. 29
+Experimental Skills, `gpcc-nkl-ch29`) rides this lane as one `TESTS` entry. What differs from a
+ParikshaGruh test:
 - **Single-page, two-column scan**: `render.ts`'s mid split gives the two COLUMNS.
 - **Numbering restarts per book section**: each question carries `ref` ("29.2 Q8"), stored
   as `question_number`; `number` runs 1..N and is what keys, coverage and sorting use.
