@@ -1,0 +1,354 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "edb7c79d-0d1e-4f39-9289-cee3771d2833",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "d^2-(r_1-r_2)^2 = 81"
+            },
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "d^2-(r_1+r_2)^2 = 25"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "4r_1r_2 = {{1:81}} - {{2:25}} = 56",
+              "f": "81-25",
+              "value": "56",
+              "note": "subtract the two lines"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "r_1r_2 = \\dfrac{56}{4} = 14",
+              "f": "56/4",
+              "value": "14"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\dfrac{9^2-5^2}{4} = 14",
+              "f": "(81-25)/4",
+              "value": "14",
+              "note": "shortcut check"
+            }
+          ],
+          "answer": "56/4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "50d030c2",
+        "answer": {
+          "value": 14,
+          "label": "14"
+        }
+      }
+    },
+    {
+      "id": "ef33566c-f324-45d8-a3ad-84bdab226daa",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "L^2 = d^2-(r_1-r_2)^2,\\; M^2 = d^2-(r_1+r_2)^2"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "L^2+M^2 = 2d^2 - 200",
+              "f": "2*200-2*100",
+              "value": "200",
+              "note": "add; r1² + r2² = 100"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "200 = 2d^2 - 200 \\Rightarrow d^2 = {{1:200}}",
+              "f": "(200+200)/2",
+              "value": "200"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "d = \\sqrt{200} = 10\\sqrt{2}",
+              "f": "sqrt(200)",
+              "value": "10*sqrt(2)"
+            }
+          ],
+          "answer": "sqrt(200)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "6d99b8e2",
+        "answer": {
+          "value": 14.142135623730951,
+          "label": "10√2"
+        }
+      }
+    },
+    {
+      "id": "077af7a6-c88a-49ce-9c84-20f2a3c7b8a8",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "AB+CD = BC+AD"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "BC+AD = 21+15 = 36",
+              "f": "21+15",
+              "value": "36"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "CD = 36-18 = 18",
+              "f": "36-18",
+              "value": "18"
+            }
+          ],
+          "answer": "36-18"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "3fec1cba",
+        "answer": {
+          "value": 18,
+          "label": "18 cm"
+        }
+      }
+    },
+    {
+      "id": "22109813-c15d-44a5-a4c1-e96ee541063b",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "A = \\dfrac{\\sqrt3}{4}a^2,\\; a = 16"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "A = \\dfrac{\\sqrt3}{4}\\times {{1:256}} = 64\\sqrt3",
+              "f": "sqrt(3)/4*256",
+              "value": "64*sqrt(3)"
+            }
+          ],
+          "answer": "sqrt(3)/4*256"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          }
+        ],
+        "fingerprint": "4585c2fa",
+        "answer": {
+          "value": 110.85125168440814,
+          "label": "64√3 cm²"
+        }
+      }
+    },
+    {
+      "id": "38aa0e82-3c48-4b29-a3c9-04294a5cf06a",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "s = \\dfrac{\\text{perimeter}}{2}"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "s = \\dfrac{100}{2} = 50",
+              "f": "100/2",
+              "value": "50",
+              "note": "the base 36 is not needed"
+            }
+          ],
+          "answer": "100/2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          }
+        ],
+        "fingerprint": "dfb2c764",
+        "answer": {
+          "value": 50,
+          "label": "50 cm"
+        }
+      }
+    },
+    {
+      "id": "3a53c132-2a03-4be3-9c70-ef19c378da95",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "A = \\tfrac12 ab\\sin C"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "A = \\tfrac12\\times 8\\times 10\\times\\sin 120^\\circ = {{1:40}}\\times\\dfrac{\\sqrt3}{2}",
+              "f": "0.5*8*10*sin(rad(120))",
+              "value": "20*sqrt(3)"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "A = 20\\sqrt3",
+              "f": "40*sqrt(3)/2",
+              "value": "20*sqrt(3)"
+            }
+          ],
+          "answer": "40*sqrt(3)/2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          }
+        ],
+        "fingerprint": "92941e3d",
+        "answer": {
+          "value": 34.64101615137754,
+          "label": "20√3 cm²"
+        }
+      }
+    },
+    {
+      "id": "a52455ed-d6bf-4c03-8422-2b3a4c4cd350",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "A = \\dfrac{\\sqrt3}{4}\\times 12^2 = 36\\sqrt3"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "A = 36\\times 1.732 = 62.352 \\approx 62.35",
+              "f": "36*1.732",
+              "value": "62.352",
+              "note": "rounded to 2 decimals"
+            }
+          ],
+          "answer": "floor(100*36*1.732+0.5)/100"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          }
+        ],
+        "fingerprint": "d870a770",
+        "answer": {
+          "value": 62.35,
+          "label": "62.35 cm²"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

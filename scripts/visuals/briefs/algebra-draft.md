@@ -104,3 +104,8 @@ first step starts at 0, later ones later, each step name used once. `answer`
   equal the expr line before it, an `eq` a root does not satisfy.
 - `\htmlClass`, `\href` or other HTML commands in tex (marks are {{n:...}}).
 - `answer.label` over 32 characters, a `note` over 44.
+- Fewer than 2 lines or more than 10 (a one-line working: split it into the
+  set-up and the result, or choose `none`).
+- An `f` formula over 120 characters: give the long part its own line.
+- A TeX word without its backslash (`frac`, `sqrt`, `text`, `right`, `left`),
+  even inside `\text{...}`: "from the right" in prose is read as `\right`.

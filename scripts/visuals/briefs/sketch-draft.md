@@ -124,4 +124,16 @@ be answered without a picture it does not have, with `"figureNote"`), and
 - A first step that does not start at sentence 0.
 - A var named x or y (x is the curve variable): call it xf, yt.
 - A point outside the `view`.
+- An `assert` or `answer` longer than 120 characters: give each angle or length
+  its own var (`aB: "deg(atan2(...))"`) and assert with the names.
+- "∥" in any label (the picture font has none): write "parallel to".
+- A key rounded "correct to one decimal place" (24.3 for 73/3): make the answer
+  `floor(10*v + 0.5)/10` and show the exact value in a label.
+
+## Labels on lines (2026-10-30, SSC Triangles: about one sketch in three)
+
+Free labels placed beside a figure's top corners landed on its sides. Put a
+stack of result labels BELOW the figure (widen `view` downwards for them, about
+1.5 units apart) or in a corner the figure does not reach, never inside the
+triangle's bounding box.
 

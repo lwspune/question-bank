@@ -1,0 +1,363 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "5981a83f-57be-4777-8809-666e0829cbc5",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{EF}{BC} = \\sqrt{\\dfrac{12}{9}} = \\dfrac{2}{\\sqrt{3}}",
+              "f": "sqrt(12/9)",
+              "value": "2/sqrt(3)",
+              "note": "areas are in the ratio of side squares"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "EF = 2.1\\times\\dfrac{2}{\\sqrt{3}} = {{1:1.4\\sqrt{3}}}",
+              "f": "2.1*2/sqrt(3)",
+              "value": "1.4*sqrt(3)"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\left({{1:1.4\\sqrt{3}}}\\right)^2 = 5.88",
+              "f": "(1.4*sqrt(3))^2",
+              "value": "5.88",
+              "note": "check: 5.88 ÷ 2.1² = 4/3"
+            }
+          ],
+          "answer": "7*sqrt(3)/5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "d0c01b92",
+        "answer": {
+          "value": 2.4248711305964283,
+          "label": "7√3/5 cm"
+        }
+      }
+    },
+    {
+      "id": "6f2bced9-03f9-496e-adc1-e13f2e0c2c10",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "LN^2 = LM^2 + MN^2 - 2\\cdot LM\\cdot MN\\cos 135^\\circ",
+              "note": "cosine rule at M, cos 135° = −√2/2"
+            },
+            {
+              "step": "s2",
+              "kind": "eq",
+              "tex": "50 + x^2 + 10x = 169",
+              "lhs": "50+x^2+10*x",
+              "rhs": "169"
+            },
+            {
+              "step": "s3",
+              "kind": "eq",
+              "tex": "x^2 + 10x - 119 = 0",
+              "lhs": "x^2+10*x-119",
+              "rhs": "0"
+            },
+            {
+              "step": "s4",
+              "kind": "eq",
+              "tex": "(x + 17)(x - 7) = 0",
+              "lhs": "(x+17)*(x-7)",
+              "rhs": "0",
+              "note": "x = −17 is rejected, a length"
+            },
+            {
+              "step": "s5",
+              "kind": "note",
+              "tex": "MN = {{1:7}}\\text{ cm}"
+            }
+          ],
+          "roots": [
+            "7",
+            "-17"
+          ],
+          "answer": "7"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "2578fe63",
+        "answer": {
+          "value": 7,
+          "label": "7"
+        }
+      }
+    },
+    {
+      "id": "875f2cf1-7a04-4122-bf68-948236d599bb",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "A = B + 33,\\quad C = B - 18"
+            },
+            {
+              "step": "s2",
+              "kind": "eq",
+              "tex": "(B + 33) + B + (B - 18) = 180",
+              "lhs": "(x+33)+x+(x-18)",
+              "rhs": "180",
+              "roots": [
+                "55"
+              ],
+              "note": "3B + 15 = 180"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "B = \\dfrac{180 - 15}{3} = {{1:55}}",
+              "f": "(180-15)/3",
+              "value": "55"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "A = {{1:55}} + 33 = {{2:88}}",
+              "f": "55+33",
+              "value": "88"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "C = {{1:55}} - 18 = {{3:37}}",
+              "f": "55-18",
+              "value": "37"
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "{{3:37}} + {{2:88}} = 125",
+              "f": "37+88",
+              "value": "125",
+              "note": "smallest + largest"
+            },
+            {
+              "step": "s7",
+              "kind": "calc",
+              "tex": "180 - {{1:55}} = 125",
+              "f": "180-55",
+              "value": "125",
+              "note": "the triangle less its middle angle"
+            }
+          ],
+          "answer": "125"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4",
+              "s5"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s6"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s7"
+            ]
+          }
+        ],
+        "fingerprint": "4cde38a2",
+        "answer": {
+          "value": 125,
+          "label": "125°"
+        }
+      }
+    },
+    {
+      "id": "9ba4cf40-efd0-48f4-93b3-a77c2845ae33",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{AB}{DE} = \\dfrac{43.2}{28.8} = {{1:\\dfrac{3}{2}}}",
+              "f": "43.2/28.8",
+              "value": "3/2",
+              "note": "sides are in the ratio of perimeters"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "AB = 12\\times{{1:\\dfrac{3}{2}}} = 18",
+              "f": "12*3/2",
+              "value": "18"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{18}{12} = 1.5",
+              "f": "18/12",
+              "value": "1.5",
+              "note": "check: it equals 43.2 / 28.8"
+            }
+          ],
+          "answer": "18"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "e8b2a4cf",
+        "answer": {
+          "value": 18,
+          "label": "18 cm"
+        }
+      }
+    },
+    {
+      "id": "e88bbe9c-5cc9-43a0-8f29-73c275558769",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "BA \\leftrightarrow PQ",
+              "note": "B matches P and A matches Q"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{BA}{PQ} = \\sqrt{\\dfrac{25}{36}} = {{1:\\dfrac{5}{6}}}",
+              "f": "sqrt(25/36)",
+              "value": "5/6",
+              "note": "side ratio is the root of the area ratio"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "PQ = 4\\times\\dfrac{6}{5} = 4.8",
+              "f": "4*6/5",
+              "value": "4.8"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\left(\\dfrac{4}{4.8}\\right)^2 = \\dfrac{25}{36}",
+              "f": "(4/4.8)^2",
+              "value": "25/36",
+              "note": "check"
+            }
+          ],
+          "answer": "4.8"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "229577b0",
+        "answer": {
+          "value": 4.8,
+          "label": "4.8 cm"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

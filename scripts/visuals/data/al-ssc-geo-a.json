@@ -1,0 +1,159 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "383a766b-b84d-45b2-81c6-d68c3a0a6727",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\sqrt{36^2-6^2} = \\sqrt{1260} = 6\\sqrt{35}",
+              "f": "sqrt(1260)",
+              "value": "6*sqrt(35)",
+              "dp": 4
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\sqrt{36^2-24^2} = \\sqrt{720} = 12\\sqrt{5}",
+              "f": "sqrt(720)",
+              "value": "12*sqrt(5)",
+              "dp": 4
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "6\\sqrt{35}+12\\sqrt{5} = 6\\sqrt{5}(\\sqrt{7}+2)",
+              "f": "6*sqrt(35)+12*sqrt(5)",
+              "value": "6*sqrt(5)*(sqrt(7)+2)",
+              "dp": 4
+            }
+          ],
+          "answer": "6*sqrt(5)*(sqrt(7)+2)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "595936b7",
+        "answer": {
+          "value": 62.329294428595176,
+          "label": "6√5(√7+2)"
+        }
+      }
+    },
+    {
+      "id": "4baae161-84ca-46a9-bb10-38bb1b9c66af",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{central}=2\\times\\text{circumference}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "2\\times{{1:110}}^\\circ = 220^\\circ",
+              "f": "2*110",
+              "value": "220"
+            }
+          ],
+          "answer": "2*110"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "04794f3d",
+        "answer": {
+          "value": 220,
+          "label": "220°"
+        }
+      }
+    },
+    {
+      "id": "ce3e0c01-fcbe-40ba-8831-0c92b05137a5",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "360-{{1:140}} = 220^\\circ",
+              "f": "360-140",
+              "value": "220"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "140+220 = 360",
+              "f": "140+220",
+              "value": "360",
+              "note": "check"
+            }
+          ],
+          "answer": "360-140"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "0d4cac9f",
+        "answer": {
+          "value": 220,
+          "label": "220°"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

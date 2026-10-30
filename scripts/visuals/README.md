@@ -66,6 +66,21 @@ takes the FIRST kind that fits; anything left keeps its still solution.
   not at sentence 0, a var named x) recurred on every slice, so the draft
   brief now ends with a checklist of them. Labels still sit on lines in cone
   pictures (readable, not yet fixed).
+- 2026-10-30, SSC CGL geometry (Triangles, Circles, Mensuration 2D, Heights,
+  Quadrilaterals, Lines and Angles; 580 questions, one Sonnet pass per ~14
+  doing fit + draft): 370 sketches + 59 algebra applied, every picture right.
+  (1) A brief line saying "algebra beats none" read as "algebra beats sketch":
+  one agent drafted 5 sketches and 107 algebra on circle questions. State the
+  ORDER: sketch first, algebra only where no picture helps, then none. (2)
+  About one picture in seven printed two result labels on each other;
+  `tools/label-overlap.js <batch>` finds them from the sheet (it named every
+  one seen by eye, and more); the fix that held was a column of result
+  labels BELOW the figure, the view widened for it. (3) Points named A, B, C
+  where the question says P, Q, R: check the letters on the sheet. (4)
+  `tools/compact-sheet.js <batch> 4` shows only last frames, four to a row:
+  about a sixth of the screenshots, enough to check shapes and labels.
+  Dropped as too big for one sketch: 13 (over 26 points or 30 vars:
+  polygons with all diagonals, two-circle chains).
 
 **Algebra steps rules** (`scenes/algebraSteps.ts`, spec `tests/visuals-algebra.test.ts`, brief `briefs/algebra-draft.md`):
 - Up to 10 lines, each KaTeX, on a step `s1`..`s8`. Each says how it is checked:
