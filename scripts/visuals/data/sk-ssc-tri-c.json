@@ -1,0 +1,6315 @@
+{
+  "//": "Assembled from agent drafts (sketch).",
+  "visuals": [
+    {
+      "id": "003c9300-a361-4db5-b760-90212f872d57",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "be": "5",
+            "ba": "12",
+            "bc": "sqrt(3*be*ba)",
+            "bd": "bc/3",
+            "tB": "50",
+            "Bx": "0",
+            "By": "0",
+            "Cx": "bc",
+            "Cy": "0",
+            "Ax": "ba*cos(rad(tB))",
+            "Ay": "ba*sin(rad(tB))",
+            "Ex": "be*cos(rad(tB))",
+            "Ey": "be*sin(rad(tB))",
+            "Dx": "bd",
+            "Dy": "0"
+          },
+          "view": {
+            "x": [
+              -1.5,
+              15
+            ],
+            "y": [
+              -1.8,
+              10.7
+            ]
+          },
+          "points": {
+            "B": [
+              "Bx",
+              "By"
+            ],
+            "C": [
+              "Cx",
+              "Cy"
+            ],
+            "A": [
+              "Ax",
+              "Ay"
+            ],
+            "E": [
+              "Ex",
+              "Ey"
+            ],
+            "D": [
+              "Dx",
+              "Dy"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "step": "s1",
+              "points": [
+                "A",
+                "B",
+                "C"
+              ]
+            },
+            {
+              "kind": "segment",
+              "step": "s1",
+              "from": "E",
+              "to": "D"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "A",
+              "label": "A",
+              "pos": "n"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "B",
+              "label": "B",
+              "pos": "sw"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "C",
+              "label": "C",
+              "pos": "se"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "E",
+              "label": "E",
+              "pos": "w"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "D",
+              "label": "D",
+              "pos": "s"
+            },
+            {
+              "kind": "label",
+              "step": "s1",
+              "at": [
+                -1.3,
+                7.6
+              ],
+              "text": "AB = 12"
+            },
+            {
+              "kind": "label",
+              "step": "s1",
+              "at": [
+                -1.3,
+                3.2
+              ],
+              "text": "BE = 5"
+            },
+            {
+              "kind": "label",
+              "step": "s1",
+              "at": [
+                -1.3,
+                -1.4
+              ],
+              "text": "BD : CD = 1 : 2"
+            },
+            {
+              "kind": "polygon",
+              "step": "s2",
+              "points": [
+                "B",
+                "E",
+                "D"
+              ],
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "step": "s3",
+              "at": [
+                -1.3,
+                10.1
+              ],
+              "text": "60 = BC²/3"
+            },
+            {
+              "kind": "label",
+              "step": "s4",
+              "at": [
+                9.6,
+                6.2
+              ],
+              "text": "BC = 6√5",
+              "tone": "good"
+            },
+            {
+              "kind": "label",
+              "step": "s5",
+              "at": [
+                6.2,
+                -1.4
+              ],
+              "text": "BD×BC = 60 = BE×BA",
+              "tone": "muted"
+            }
+          ],
+          "assert": [
+            "bd*bc = be*ba",
+            "deg(atan2(abs((Ax-Cx)*(By-Cy)-(Ay-Cy)*(Bx-Cx)),(Ax-Cx)*(Bx-Cx)+(Ay-Cy)*(By-Cy))) = deg(atan2(abs((Dx-Ex)*(By-Ey)-(Dy-Ey)*(Bx-Ex)),(Dx-Ex)*(Bx-Ex)+(Dy-Ey)*(By-Ey)))",
+            "sqrt((Bx-Dx)^2+(By-Dy)^2) = sqrt((Bx-Cx)^2+(By-Cy)^2)/3"
+          ],
+          "answer": "bc"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "508646e4",
+        "answer": {
+          "value": 13.416407864998739,
+          "label": "6√5 cm"
+        }
+      }
+    },
+    {
+      "id": "135090e0-8275-42cd-ba4f-c91a206b1248",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "hx": "36",
+            "d": "sin(rad(2*hx))/sin(rad(hx))",
+            "Jx": "0",
+            "Jy": "0",
+            "Kx": "1",
+            "Ky": "0",
+            "Hx": "0.5",
+            "Hy": "sqrt(d^2-0.25)",
+            "Gx": "Hx+(Jx-Hx)/d",
+            "Gy": "Hy+(Jy-Hy)/d",
+            "g1": "deg(atan2(abs((Jx-Hx)*(Ky-Hy)-(Jy-Hy)*(Kx-Hx)),(Jx-Hx)*(Kx-Hx)+(Jy-Hy)*(Ky-Hy)))",
+            "g2": "deg(atan2(abs((Hx-Gx)*(Ky-Gy)-(Hy-Gy)*(Kx-Gx)),(Hx-Gx)*(Kx-Gx)+(Hy-Gy)*(Ky-Gy)))",
+            "g3": "deg(atan2(abs((Gx-Kx)*(Jy-Ky)-(Gy-Ky)*(Jx-Kx)),(Gx-Kx)*(Jx-Kx)+(Gy-Ky)*(Jy-Ky)))"
+          },
+          "view": {
+            "x": [
+              -0.9,
+              1.9
+            ],
+            "y": [
+              -0.3,
+              1.8
+            ]
+          },
+          "points": {
+            "J": [
+              "Jx",
+              "Jy"
+            ],
+            "K": [
+              "Kx",
+              "Ky"
+            ],
+            "H": [
+              "Hx",
+              "Hy"
+            ],
+            "G": [
+              "Gx",
+              "Gy"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "step": "s1",
+              "points": [
+                "H",
+                "J",
+                "K"
+              ]
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "H",
+              "label": "H",
+              "pos": "n"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "J",
+              "label": "J",
+              "pos": "sw"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "K",
+              "label": "K",
+              "pos": "se"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "G",
+              "label": "G",
+              "pos": "w"
+            },
+            {
+              "kind": "segment",
+              "step": "s2",
+              "from": "G",
+              "to": "K"
+            },
+            {
+              "kind": "angle",
+              "step": "s3",
+              "at": "H",
+              "from": "J",
+              "to": "K",
+              "label": "x = 36°"
+            },
+            {
+              "kind": "angle",
+              "step": "s4",
+              "at": "G",
+              "from": "H",
+              "to": "K",
+              "label": "108°"
+            },
+            {
+              "kind": "angle",
+              "step": "s4",
+              "at": "K",
+              "from": "G",
+              "to": "J",
+              "label": "36°"
+            },
+            {
+              "kind": "label",
+              "step": "s5",
+              "at": [
+                1,
+                1.25
+              ],
+              "text": "⅔ × 144° = 96°",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "sqrt((Hx-Jx)^2+(Hy-Jy)^2) = sqrt((Hx-Kx)^2+(Hy-Ky)^2)",
+            "sqrt((Hx-Gx)^2+(Hy-Gy)^2) = sqrt((Gx-Kx)^2+(Gy-Ky)^2)",
+            "sqrt((Gx-Kx)^2+(Gy-Ky)^2) = sqrt((Jx-Kx)^2+(Jy-Ky)^2)",
+            "g1 = hx",
+            "g2 = 108",
+            "g3 = 36"
+          ],
+          "answer": "2/3*(g2+g3)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "bc64af72",
+        "answer": {
+          "value": 96,
+          "label": "96°"
+        }
+      }
+    },
+    {
+      "id": "140463f3-e34c-4716-be71-4b2b9ca28b0a",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "tB": "78",
+            "dae": "24",
+            "tC": "tB-2*dae",
+            "aA": "180-tB-tC",
+            "LBC": "10",
+            "Bx": "0",
+            "By": "0",
+            "Cx": "LBC",
+            "Cy": "0",
+            "lBA": "LBC*sin(rad(tC))/sin(rad(180-tB-tC))",
+            "Ax": "lBA*cos(rad(tB))",
+            "Ay": "lBA*sin(rad(tB))",
+            "bdl": "lBA*sin(rad(aA/2))/sin(rad(tB+aA/2))",
+            "Dx": "bdl",
+            "Dy": "0",
+            "Ex": "Ax",
+            "Ey": "0"
+          },
+          "view": {
+            "x": [
+              -2,
+              12
+            ],
+            "y": [
+              -2,
+              7
+            ]
+          },
+          "points": {
+            "B": [
+              "Bx",
+              "By"
+            ],
+            "C": [
+              "Cx",
+              "Cy"
+            ],
+            "A": [
+              "Ax",
+              "Ay"
+            ],
+            "D": [
+              "Dx",
+              "Dy"
+            ],
+            "E": [
+              "Ex",
+              "Ey"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "step": "s1",
+              "points": [
+                "A",
+                "B",
+                "C"
+              ]
+            },
+            {
+              "kind": "segment",
+              "step": "s1",
+              "from": "A",
+              "to": "E",
+              "dash": true
+            },
+            {
+              "kind": "segment",
+              "step": "s1",
+              "from": "A",
+              "to": "D"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "A",
+              "label": "A",
+              "pos": "n"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "B",
+              "label": "B",
+              "pos": "sw"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "C",
+              "label": "C",
+              "pos": "se"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "D",
+              "label": "D",
+              "pos": "s"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "E",
+              "label": "E",
+              "pos": "sw"
+            },
+            {
+              "kind": "angle",
+              "step": "s1",
+              "at": "B",
+              "from": "A",
+              "to": "C",
+              "label": "78°"
+            },
+            {
+              "kind": "angle",
+              "step": "s1",
+              "at": "A",
+              "from": "E",
+              "to": "D",
+              "label": "24°"
+            },
+            {
+              "kind": "angle",
+              "step": "s2",
+              "at": "C",
+              "from": "A",
+              "to": "B",
+              "label": "30°"
+            },
+            {
+              "kind": "label",
+              "step": "s3",
+              "at": [
+                6.5,
+                4.8
+              ],
+              "text": "∠C = 30°",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "deg(atan2(abs((Dx-Ax)*(Ey-Ay)-(Dy-Ay)*(Ex-Ax)),(Dx-Ax)*(Ex-Ax)+(Dy-Ay)*(Ey-Ay))) = dae",
+            "deg(atan2(abs((Bx-Ax)*(Dy-Ay)-(By-Ay)*(Dx-Ax)),(Bx-Ax)*(Dx-Ax)+(By-Ay)*(Dy-Ay))) = deg(atan2(abs((Dx-Ax)*(Cy-Ay)-(Dy-Ay)*(Cx-Ax)),(Dx-Ax)*(Cx-Ax)+(Dy-Ay)*(Cy-Ay)))",
+            "deg(atan2(abs((Ax-Bx)*(Cy-By)-(Ay-By)*(Cx-Bx)),(Ax-Bx)*(Cx-Bx)+(Ay-By)*(Cy-By))) = tB",
+            "deg(atan2(abs((Ax-Cx)*(By-Cy)-(Ay-Cy)*(Bx-Cx)),(Ax-Cx)*(Bx-Cx)+(Ay-Cy)*(By-Cy))) = 30"
+          ],
+          "answer": "tC"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "9c3ca898",
+        "answer": {
+          "value": 30,
+          "label": "30°"
+        }
+      }
+    },
+    {
+      "id": "14e77eed-6912-46a3-9d9c-53350304086a",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "tQ": "96",
+            "tPRQ": "tQ-34",
+            "tP": "180-tQ-tPRQ",
+            "r": "0.55",
+            "LQR": "6",
+            "Qx": "0",
+            "Qy": "0",
+            "Rx": "LQR",
+            "Ry": "0",
+            "lQP": "LQR*sin(rad(tPRQ))/sin(rad(180-tQ-tPRQ))",
+            "Px": "lQP*cos(rad(tQ))",
+            "Py": "lQP*sin(rad(tQ))",
+            "Sx": "Px+r*(Qx-Px)",
+            "Sy": "Py+r*(Qy-Py)",
+            "Tx": "Px+r*(Rx-Px)",
+            "Ty": "Py+r*(Ry-Py)"
+          },
+          "view": {
+            "x": [
+              -10,
+              12
+            ],
+            "y": [
+              -1.5,
+              15
+            ]
+          },
+          "points": {
+            "Q": [
+              "Qx",
+              "Qy"
+            ],
+            "R": [
+              "Rx",
+              "Ry"
+            ],
+            "P": [
+              "Px",
+              "Py"
+            ],
+            "S": [
+              "Sx",
+              "Sy"
+            ],
+            "T": [
+              "Tx",
+              "Ty"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "step": "s1",
+              "points": [
+                "P",
+                "Q",
+                "R"
+              ]
+            },
+            {
+              "kind": "segment",
+              "step": "s1",
+              "from": "S",
+              "to": "T"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "P",
+              "label": "P",
+              "pos": "n"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "Q",
+              "label": "Q",
+              "pos": "sw"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "R",
+              "label": "R",
+              "pos": "se"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "S",
+              "label": "S",
+              "pos": "w"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "T",
+              "label": "T",
+              "pos": "e"
+            },
+            {
+              "kind": "angle",
+              "step": "s1",
+              "at": "Q",
+              "from": "P",
+              "to": "R",
+              "label": "96°"
+            },
+            {
+              "kind": "angle",
+              "step": "s2",
+              "at": "S",
+              "from": "P",
+              "to": "T",
+              "label": "96°"
+            },
+            {
+              "kind": "angle",
+              "step": "s3",
+              "at": "R",
+              "from": "P",
+              "to": "Q",
+              "label": "62°"
+            },
+            {
+              "kind": "angle",
+              "step": "s4",
+              "at": "P",
+              "from": "Q",
+              "to": "R",
+              "label": "22°"
+            },
+            {
+              "kind": "label",
+              "step": "s4",
+              "at": [
+                1.5,
+                12.5
+              ],
+              "text": "∠QPR = 22°",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "sqrt((Px-Sx)^2+(Py-Sy)^2)*sqrt((Px-Rx)^2+(Py-Ry)^2) = sqrt((Px-Qx)^2+(Py-Qy)^2)*sqrt((Px-Tx)^2+(Py-Ty)^2)",
+            "Sy = Ty",
+            "deg(atan2(abs((Px-Sx)*(Ty-Sy)-(Py-Sy)*(Tx-Sx)),(Px-Sx)*(Tx-Sx)+(Py-Sy)*(Ty-Sy))) = tQ",
+            "deg(atan2(abs((Px-Sx)*(Ty-Sy)-(Py-Sy)*(Tx-Sx)),(Px-Sx)*(Tx-Sx)+(Py-Sy)*(Ty-Sy))) = deg(atan2(abs((Px-Rx)*(Qy-Ry)-(Py-Ry)*(Qx-Rx)),(Px-Rx)*(Qx-Rx)+(Py-Ry)*(Qy-Ry)))+34",
+            "deg(atan2(abs((Qx-Px)*(Ry-Py)-(Qy-Py)*(Rx-Px)),(Qx-Px)*(Rx-Px)+(Qy-Py)*(Ry-Py))) = 22"
+          ],
+          "answer": "deg(atan2(abs((Qx-Px)*(Ry-Py)-(Qy-Py)*(Rx-Px)),(Qx-Px)*(Rx-Px)+(Qy-Py)*(Ry-Py)))"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "6e62fb3e",
+        "answer": {
+          "value": 22.000000000000004,
+          "label": "22°"
+        }
+      }
+    },
+    {
+      "id": "18157320-06cc-41cd-bbc4-e413252adf02",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "ar": "36*sqrt(3)",
+            "a": "sqrt(4*ar/sqrt(3))",
+            "R": "a/sqrt(3)",
+            "Bx": "0",
+            "By": "0",
+            "Cx": "a",
+            "Cy": "0",
+            "Ax": "a/2",
+            "Ay": "a*sqrt(3)/2",
+            "Ox": "a/2",
+            "Oy": "a*sqrt(3)/6"
+          },
+          "view": {
+            "x": [
+              -3,
+              15
+            ],
+            "y": [
+              -4.5,
+              11.5
+            ]
+          },
+          "points": {
+            "B": [
+              "Bx",
+              "By"
+            ],
+            "C": [
+              "Cx",
+              "Cy"
+            ],
+            "A": [
+              "Ax",
+              "Ay"
+            ],
+            "O": [
+              "Ox",
+              "Oy"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "step": "s1",
+              "points": [
+                "A",
+                "B",
+                "C"
+              ]
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "A",
+              "label": "A",
+              "pos": "n"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "B",
+              "label": "B",
+              "pos": "sw"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "C",
+              "label": "C",
+              "pos": "se"
+            },
+            {
+              "kind": "label",
+              "step": "s1",
+              "at": [
+                -2.8,
+                10.4
+              ],
+              "text": "area = 36√3"
+            },
+            {
+              "kind": "label",
+              "step": "s2",
+              "at": [
+                4.9,
+                0.7
+              ],
+              "text": "a = 12"
+            },
+            {
+              "kind": "circle",
+              "step": "s3",
+              "center": "O",
+              "r": "R",
+              "tone": "brand"
+            },
+            {
+              "kind": "segment",
+              "step": "s3",
+              "from": "O",
+              "to": "A",
+              "label": "R = 4√3",
+              "labelAt": [
+                6.5,
+                7.2
+              ],
+              "pos": "e"
+            },
+            {
+              "kind": "label",
+              "step": "s4",
+              "at": [
+                8.2,
+                -2.2
+              ],
+              "text": "R = ⅔ of height 6√3",
+              "tone": "muted"
+            }
+          ],
+          "assert": [
+            "sqrt((Ax-Bx)^2+(Ay-By)^2) = sqrt((Bx-Cx)^2+(By-Cy)^2)",
+            "sqrt((Bx-Cx)^2+(By-Cy)^2) = sqrt((Ax-Cx)^2+(Ay-Cy)^2)",
+            "sqrt(3)/4*a^2 = ar",
+            "sqrt((Ox-Ax)^2+(Oy-Ay)^2) = R",
+            "sqrt((Ox-Bx)^2+(Oy-By)^2) = R",
+            "sqrt((Ox-Cx)^2+(Oy-Cy)^2) = R"
+          ],
+          "answer": "R"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "100e463b",
+        "answer": {
+          "value": 6.92820323027551,
+          "label": "4√3"
+        }
+      }
+    },
+    {
+      "id": "18271760-b013-42e7-b342-1abee1fc1a61",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "a": "12",
+            "r": "a/(2*sqrt(3))",
+            "Bx": "0",
+            "By": "0",
+            "Cx": "a",
+            "Cy": "0",
+            "Ax": "a/2",
+            "Ay": "a*sqrt(3)/2",
+            "Ox": "a/2",
+            "Oy": "r",
+            "Mx": "a/2",
+            "My": "0"
+          },
+          "view": {
+            "x": [
+              -4,
+              16
+            ],
+            "y": [
+              -2.5,
+              11.5
+            ]
+          },
+          "points": {
+            "B": [
+              "Bx",
+              "By"
+            ],
+            "C": [
+              "Cx",
+              "Cy"
+            ],
+            "A": [
+              "Ax",
+              "Ay"
+            ],
+            "O": [
+              "Ox",
+              "Oy"
+            ],
+            "M": [
+              "Mx",
+              "My"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "step": "s1",
+              "points": [
+                "A",
+                "B",
+                "C"
+              ]
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "A",
+              "label": "A",
+              "pos": "n"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "B",
+              "label": "B",
+              "pos": "sw"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "C",
+              "label": "C",
+              "pos": "se"
+            },
+            {
+              "kind": "label",
+              "step": "s1",
+              "at": [
+                4.6,
+                -1.4
+              ],
+              "text": "side = 12 cm"
+            },
+            {
+              "kind": "circle",
+              "step": "s2",
+              "center": "O",
+              "r": "r",
+              "tone": "brand"
+            },
+            {
+              "kind": "segment",
+              "step": "s2",
+              "from": "O",
+              "to": "M",
+              "label": "r = 2√3",
+              "labelAt": [
+                6.3,
+                1.7
+              ],
+              "pos": "e"
+            },
+            {
+              "kind": "segment",
+              "step": "s3",
+              "from": "A",
+              "to": "M",
+              "dash": true,
+              "label": "6√3",
+              "labelAt": [
+                6.3,
+                7.6
+              ],
+              "pos": "e"
+            },
+            {
+              "kind": "label",
+              "step": "s3",
+              "at": [
+                10.5,
+                5
+              ],
+              "text": "r = ⅓ of height",
+              "tone": "muted"
+            }
+          ],
+          "assert": [
+            "sqrt((Ax-Bx)^2+(Ay-By)^2) = sqrt((Bx-Cx)^2+(By-Cy)^2)",
+            "sqrt((Bx-Cx)^2+(By-Cy)^2) = sqrt((Ax-Cx)^2+(Ay-Cy)^2)",
+            "deg(atan2(abs((Ox-Mx)*(By-My)-(Oy-My)*(Bx-Mx)),(Ox-Mx)*(Bx-Mx)+(Oy-My)*(By-My))) = 90",
+            "sqrt((Ox-Mx)^2+(Oy-My)^2) = r",
+            "sqrt((Ax-Mx)^2+(Ay-My)^2) = 3*r"
+          ],
+          "answer": "r"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "6d917590",
+        "answer": {
+          "value": 3.464101615137755,
+          "label": "2√3 cm"
+        }
+      }
+    },
+    {
+      "id": "27947139-0509-4736-ae06-bcb4f85f31a5",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "ab": "48",
+            "bc": "55",
+            "ac": "73",
+            "Bx": "0",
+            "By": "0",
+            "Cx": "bc",
+            "Cy": "0",
+            "Ax": "0",
+            "Ay": "ab",
+            "Mx": "(Ax+Cx)/2",
+            "My": "(Ay+Cy)/2",
+            "Ox": "(Ax+Bx+Cx)/3",
+            "Oy": "(Ay+By+Cy)/3"
+          },
+          "view": {
+            "x": [
+              -8,
+              62
+            ],
+            "y": [
+              -6,
+              50
+            ]
+          },
+          "points": {
+            "B": [
+              "Bx",
+              "By"
+            ],
+            "C": [
+              "Cx",
+              "Cy"
+            ],
+            "A": [
+              "Ax",
+              "Ay"
+            ],
+            "M": [
+              "Mx",
+              "My"
+            ],
+            "O": [
+              "Ox",
+              "Oy"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "step": "s1",
+              "points": [
+                "A",
+                "B",
+                "C"
+              ]
+            },
+            {
+              "kind": "angle",
+              "step": "s1",
+              "at": "B",
+              "from": "A",
+              "to": "C",
+              "label": "90°"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "A",
+              "label": "A",
+              "pos": "nw"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "B",
+              "label": "B",
+              "pos": "sw"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "C",
+              "label": "C",
+              "pos": "se"
+            },
+            {
+              "kind": "label",
+              "step": "s1",
+              "at": [
+                -7,
+                22
+              ],
+              "text": "48"
+            },
+            {
+              "kind": "label",
+              "step": "s1",
+              "at": [
+                26,
+                -4
+              ],
+              "text": "55"
+            },
+            {
+              "kind": "label",
+              "step": "s1",
+              "at": [
+                33,
+                31
+              ],
+              "text": "73"
+            },
+            {
+              "kind": "point",
+              "step": "s2",
+              "at": "M",
+              "label": "M",
+              "pos": "ne"
+            },
+            {
+              "kind": "segment",
+              "step": "s2",
+              "from": "B",
+              "to": "M",
+              "dash": true
+            },
+            {
+              "kind": "point",
+              "step": "s2",
+              "at": "O",
+              "label": "O",
+              "pos": "n"
+            },
+            {
+              "kind": "segment",
+              "step": "s2",
+              "from": "B",
+              "to": "O",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "step": "s2",
+              "at": [
+                36,
+                8
+              ],
+              "text": "BO = 73/3 ≈ 24.3",
+              "tone": "good"
+            },
+            {
+              "kind": "label",
+              "step": "s3",
+              "at": [
+                36,
+                14
+              ],
+              "text": "BM = 36.5",
+              "tone": "muted"
+            }
+          ],
+          "assert": [
+            "ab^2+bc^2 = ac^2",
+            "sqrt((Ax-Cx)^2+(Ay-Cy)^2) = ac",
+            "deg(atan2(abs((Ax-Bx)*(Cy-By)-(Ay-By)*(Cx-Bx)),(Ax-Bx)*(Cx-Bx)+(Ay-By)*(Cy-By))) = 90",
+            "sqrt((Bx-Mx)^2+(By-My)^2) = ac/2",
+            "sqrt((Bx-Ox)^2+(By-Oy)^2) = 2/3*sqrt((Bx-Mx)^2+(By-My)^2)"
+          ],
+          "answer": "floor(10*sqrt((Bx-Ox)^2+(By-Oy)^2)+0.5)/10"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "80aca4b4",
+        "answer": {
+          "value": 24.3,
+          "label": "24.3 cm"
+        }
+      }
+    },
+    {
+      "id": "3a70fd46-3999-4c0e-98e5-6bb7309db962",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "tP": "78",
+            "tR": "44",
+            "tQ": "180-tP-tR",
+            "xq": "tQ",
+            "LQR": "10",
+            "Qx": "0",
+            "Qy": "0",
+            "Rx": "LQR",
+            "Ry": "0",
+            "lQP": "LQR*sin(rad(tR))/sin(rad(180-tQ-tR))",
+            "Px": "lQP*cos(rad(tQ))",
+            "Py": "lQP*sin(rad(tQ))",
+            "qs": "lQP*sin(rad(xq))/sin(rad(180-2*xq))",
+            "Sx": "qs",
+            "Sy": "0"
+          },
+          "view": {
+            "x": [
+              -2,
+              12
+            ],
+            "y": [
+              -2,
+              7.5
+            ]
+          },
+          "points": {
+            "Q": [
+              "Qx",
+              "Qy"
+            ],
+            "R": [
+              "Rx",
+              "Ry"
+            ],
+            "P": [
+              "Px",
+              "Py"
+            ],
+            "S": [
+              "Sx",
+              "Sy"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "step": "s1",
+              "points": [
+                "P",
+                "Q",
+                "R"
+              ]
+            },
+            {
+              "kind": "segment",
+              "step": "s1",
+              "from": "P",
+              "to": "S"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "P",
+              "label": "P",
+              "pos": "n"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "Q",
+              "label": "Q",
+              "pos": "sw"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "R",
+              "label": "R",
+              "pos": "se"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "S",
+              "label": "S",
+              "pos": "s"
+            },
+            {
+              "kind": "angle",
+              "step": "s1",
+              "at": "P",
+              "from": "Q",
+              "to": "R",
+              "label": "78°"
+            },
+            {
+              "kind": "angle",
+              "step": "s1",
+              "at": "R",
+              "from": "P",
+              "to": "Q",
+              "label": "44°"
+            },
+            {
+              "kind": "angle",
+              "step": "s2",
+              "at": "P",
+              "from": "Q",
+              "to": "S",
+              "label": "x"
+            },
+            {
+              "kind": "angle",
+              "step": "s2",
+              "at": "S",
+              "from": "P",
+              "to": "R",
+              "label": "2x"
+            },
+            {
+              "kind": "angle",
+              "step": "s3",
+              "at": "S",
+              "from": "P",
+              "to": "Q",
+              "label": "64°"
+            },
+            {
+              "kind": "label",
+              "step": "s3",
+              "at": [
+                7.5,
+                5.5
+              ],
+              "text": "∠PSQ = 64°",
+              "tone": "good"
+            },
+            {
+              "kind": "label",
+              "step": "s4",
+              "at": [
+                -1.8,
+                3
+              ],
+              "text": "x = ∠Q = 58°",
+              "tone": "muted"
+            }
+          ],
+          "assert": [
+            "deg(atan2(abs((Qx-Px)*(Sy-Py)-(Qy-Py)*(Sx-Px)),(Qx-Px)*(Sx-Px)+(Qy-Py)*(Sy-Py))) = xq",
+            "deg(atan2(abs((Px-Sx)*(Ry-Sy)-(Py-Sy)*(Rx-Sx)),(Px-Sx)*(Rx-Sx)+(Py-Sy)*(Ry-Sy))) = 2*deg(atan2(abs((Qx-Px)*(Sy-Py)-(Qy-Py)*(Sx-Px)),(Qx-Px)*(Sx-Px)+(Qy-Py)*(Sy-Py)))",
+            "deg(atan2(abs((Qx-Px)*(Ry-Py)-(Qy-Py)*(Rx-Px)),(Qx-Px)*(Rx-Px)+(Qy-Py)*(Ry-Py))) = tP",
+            "deg(atan2(abs((Px-Rx)*(Qy-Ry)-(Py-Ry)*(Qx-Rx)),(Px-Rx)*(Qx-Rx)+(Py-Ry)*(Qy-Ry))) = tR",
+            "deg(atan2(abs((Px-Sx)*(Qy-Sy)-(Py-Sy)*(Qx-Sx)),(Px-Sx)*(Qx-Sx)+(Py-Sy)*(Qy-Sy))) = 64"
+          ],
+          "answer": "deg(atan2(abs((Px-Sx)*(Qy-Sy)-(Py-Sy)*(Qx-Sx)),(Px-Sx)*(Qx-Sx)+(Py-Sy)*(Qy-Sy)))"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "6d584f36",
+        "answer": {
+          "value": 63.99999999999999,
+          "label": "64°"
+        }
+      }
+    },
+    {
+      "id": "45eb4702-6088-44b3-8ba3-edcc501d332b",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "tA": "50",
+            "tB": "60",
+            "tC": "180-tA-tB",
+            "LBC": "10",
+            "Bx": "0",
+            "By": "0",
+            "Cx": "LBC",
+            "Cy": "0",
+            "lBA": "LBC*sin(rad(tC))/sin(rad(180-tB-tC))",
+            "Ax": "lBA*cos(rad(tB))",
+            "Ay": "lBA*sin(rad(tB))",
+            "tE": "((Bx-Ax)*(Cx-Ax)+(By-Ay)*(Cy-Ay))/((Cx-Ax)^2+(Cy-Ay)^2)",
+            "tF": "((Cx-Ax)*(Bx-Ax)+(Cy-Ay)*(By-Ay))/((Bx-Ax)^2+(By-Ay)^2)",
+            "Ex": "Ax+tE*(Cx-Ax)",
+            "Ey": "Ay+tE*(Cy-Ay)",
+            "Fx": "Ax+tF*(Bx-Ax)",
+            "Fy": "Ay+tF*(By-Ay)",
+            "Hx": "Ax",
+            "Hy": "Ax*(LBC-Ax)/Ay",
+            "wH": "sqrt((Bx-Cx)^2+(By-Cy)^2)",
+            "wB": "sqrt((Hx-Cx)^2+(Hy-Cy)^2)",
+            "wC": "sqrt((Hx-Bx)^2+(Hy-By)^2)",
+            "Px": "(wH*Hx+wB*Bx+wC*Cx)/(wH+wB+wC)",
+            "Py": "(wH*Hy+wB*By+wC*Cy)/(wH+wB+wC)"
+          },
+          "view": {
+            "x": [
+              -3,
+              13
+            ],
+            "y": [
+              -2,
+              12
+            ]
+          },
+          "points": {
+            "B": [
+              "Bx",
+              "By"
+            ],
+            "C": [
+              "Cx",
+              "Cy"
+            ],
+            "A": [
+              "Ax",
+              "Ay"
+            ],
+            "E": [
+              "Ex",
+              "Ey"
+            ],
+            "F": [
+              "Fx",
+              "Fy"
+            ],
+            "H": [
+              "Hx",
+              "Hy"
+            ],
+            "P": [
+              "Px",
+              "Py"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "step": "s1",
+              "points": [
+                "A",
+                "B",
+                "C"
+              ]
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "A",
+              "label": "A",
+              "pos": "n"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "B",
+              "label": "B",
+              "pos": "sw"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "C",
+              "label": "C",
+              "pos": "se"
+            },
+            {
+              "kind": "angle",
+              "step": "s1",
+              "at": "A",
+              "from": "B",
+              "to": "C",
+              "label": "50°"
+            },
+            {
+              "kind": "segment",
+              "step": "s2",
+              "from": "B",
+              "to": "E",
+              "dash": true
+            },
+            {
+              "kind": "segment",
+              "step": "s2",
+              "from": "C",
+              "to": "F",
+              "dash": true
+            },
+            {
+              "kind": "point",
+              "step": "s2",
+              "at": "E",
+              "label": "E",
+              "pos": "ne"
+            },
+            {
+              "kind": "point",
+              "step": "s2",
+              "at": "F",
+              "label": "F",
+              "pos": "nw"
+            },
+            {
+              "kind": "point",
+              "step": "s2",
+              "at": "H",
+              "label": "H",
+              "pos": "n"
+            },
+            {
+              "kind": "angle",
+              "step": "s2",
+              "at": "H",
+              "from": "B",
+              "to": "C",
+              "label": "130°"
+            },
+            {
+              "kind": "segment",
+              "step": "s3",
+              "from": "B",
+              "to": "P",
+              "tone": "brand"
+            },
+            {
+              "kind": "segment",
+              "step": "s3",
+              "from": "C",
+              "to": "P",
+              "tone": "brand"
+            },
+            {
+              "kind": "point",
+              "step": "s3",
+              "at": "P",
+              "label": "P",
+              "pos": "s"
+            },
+            {
+              "kind": "label",
+              "step": "s3",
+              "at": [
+                7.6,
+                9.5
+              ],
+              "text": "∠BPC = 155°",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "((Cx-Ax)*(Ex-Bx)+(Cy-Ay)*(Ey-By)) = 0",
+            "((Bx-Ax)*(Fx-Cx)+(By-Ay)*(Fy-Cy)) = 0",
+            "((Cx-Ax)*(Hx-Bx)+(Cy-Ay)*(Hy-By)) = 0",
+            "((Bx-Ax)*(Hx-Cx)+(By-Ay)*(Hy-Cy)) = 0",
+            "deg(atan2(abs((Bx-Hx)*(Cy-Hy)-(By-Hy)*(Cx-Hx)),(Bx-Hx)*(Cx-Hx)+(By-Hy)*(Cy-Hy))) = 130",
+            "deg(atan2(abs((Hx-Bx)*(Py-By)-(Hy-By)*(Px-Bx)),(Hx-Bx)*(Px-Bx)+(Hy-By)*(Py-By))) = deg(atan2(abs((Px-Bx)*(Cy-By)-(Py-By)*(Cx-Bx)),(Px-Bx)*(Cx-Bx)+(Py-By)*(Cy-By)))",
+            "deg(atan2(abs((Hx-Cx)*(Py-Cy)-(Hy-Cy)*(Px-Cx)),(Hx-Cx)*(Px-Cx)+(Hy-Cy)*(Py-Cy))) = deg(atan2(abs((Px-Cx)*(By-Cy)-(Py-Cy)*(Bx-Cx)),(Px-Cx)*(Bx-Cx)+(Py-Cy)*(By-Cy)))",
+            "deg(atan2(abs((Bx-Px)*(Cy-Py)-(By-Py)*(Cx-Px)),(Bx-Px)*(Cx-Px)+(By-Py)*(Cy-Py))) = 155"
+          ],
+          "answer": "deg(atan2(abs((Bx-Px)*(Cy-Py)-(By-Py)*(Cx-Px)),(Bx-Px)*(Cx-Px)+(By-Py)*(Cy-Py)))"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "ae2a8466",
+        "answer": {
+          "value": 155,
+          "label": "155°"
+        }
+      }
+    },
+    {
+      "id": "485d4736-0def-4a44-b7ca-ef8dd4c64c23",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "a": "12",
+            "Qx": "0",
+            "Qy": "0",
+            "Rx": "a",
+            "Ry": "0",
+            "Px": "a/2",
+            "Py": "a*sqrt(3)/2",
+            "Mx": "a/2",
+            "My": "0",
+            "Ax": "a/2",
+            "Ay": "a*sqrt(3)/6"
+          },
+          "view": {
+            "x": [
+              -3,
+              15
+            ],
+            "y": [
+              -2.5,
+              12
+            ]
+          },
+          "points": {
+            "Q": [
+              "Qx",
+              "Qy"
+            ],
+            "R": [
+              "Rx",
+              "Ry"
+            ],
+            "P": [
+              "Px",
+              "Py"
+            ],
+            "M": [
+              "Mx",
+              "My"
+            ],
+            "A": [
+              "Ax",
+              "Ay"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "step": "s1",
+              "points": [
+                "P",
+                "Q",
+                "R"
+              ]
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "P",
+              "label": "P",
+              "pos": "n"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "Q",
+              "label": "Q",
+              "pos": "sw"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "R",
+              "label": "R",
+              "pos": "se"
+            },
+            {
+              "kind": "label",
+              "step": "s1",
+              "at": [
+                4.6,
+                -1.4
+              ],
+              "text": "side = 12 cm"
+            },
+            {
+              "kind": "point",
+              "step": "s2",
+              "at": "M",
+              "label": "M",
+              "pos": "s"
+            },
+            {
+              "kind": "segment",
+              "step": "s2",
+              "from": "P",
+              "to": "M",
+              "dash": true,
+              "label": "6√3",
+              "labelAt": [
+                6.3,
+                8.2
+              ],
+              "pos": "e"
+            },
+            {
+              "kind": "point",
+              "step": "s3",
+              "at": "A",
+              "label": "A",
+              "pos": "e"
+            },
+            {
+              "kind": "segment",
+              "step": "s3",
+              "from": "P",
+              "to": "A",
+              "tone": "brand",
+              "label": "PA = 4√3",
+              "labelAt": [
+                4.3,
+                7
+              ],
+              "pos": "w"
+            },
+            {
+              "kind": "label",
+              "step": "s4",
+              "at": [
+                8.2,
+                3.2
+              ],
+              "text": "circumradius = 12/√3",
+              "tone": "muted"
+            }
+          ],
+          "assert": [
+            "sqrt((Px-Qx)^2+(Py-Qy)^2) = sqrt((Qx-Rx)^2+(Qy-Ry)^2)",
+            "sqrt((Qx-Rx)^2+(Qy-Ry)^2) = sqrt((Px-Rx)^2+(Py-Ry)^2)",
+            "deg(atan2(abs((Px-Mx)*(Qy-My)-(Py-My)*(Qx-Mx)),(Px-Mx)*(Qx-Mx)+(Py-My)*(Qy-My))) = 90",
+            "sqrt((Px-Mx)^2+(Py-My)^2) = sqrt(3)/2*a",
+            "sqrt((Px-Ax)^2+(Py-Ay)^2) = 2/3*sqrt((Px-Mx)^2+(Py-My)^2)"
+          ],
+          "answer": "sqrt((Px-Ax)^2+(Py-Ay)^2)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "b0c0f5f3",
+        "answer": {
+          "value": 6.928203230275509,
+          "label": "4√3 cm"
+        }
+      }
+    },
+    {
+      "id": "4a3d009b-47ce-41eb-9d0e-7030c196a5c7",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "sd": "10",
+            "dd": "3",
+            "Bx": "0",
+            "By": "0",
+            "Cx": "sd",
+            "Cy": "0",
+            "Ax": "sd/2",
+            "Ay": "sd*sqrt(3)/2",
+            "Dx": "Ax+dd*(Bx-Ax)/sd",
+            "Dy": "Ay+dd*(By-Ay)/sd",
+            "Ex": "Cx+dd*(Ax-Cx)/sd",
+            "Ey": "Cy+dd*(Ay-Cy)/sd",
+            "ex": "Ex-Bx",
+            "ey": "Ey-By",
+            "fx": "Dx-Cx",
+            "fy": "Dy-Cy",
+            "tt": "((Cx-Bx)*fy-(Cy-By)*fx)/(ex*fy-ey*fx)",
+            "Fx": "Bx+tt*ex",
+            "Fy": "By+tt*ey"
+          },
+          "view": {
+            "x": [
+              -2,
+              12
+            ],
+            "y": [
+              -1.5,
+              10
+            ]
+          },
+          "points": {
+            "B": [
+              "Bx",
+              "By"
+            ],
+            "C": [
+              "Cx",
+              "Cy"
+            ],
+            "A": [
+              "Ax",
+              "Ay"
+            ],
+            "D": [
+              "Dx",
+              "Dy"
+            ],
+            "E": [
+              "Ex",
+              "Ey"
+            ],
+            "F": [
+              "Fx",
+              "Fy"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "step": "s1",
+              "points": [
+                "A",
+                "B",
+                "C"
+              ]
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "A",
+              "label": "A",
+              "pos": "n"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "B",
+              "label": "B",
+              "pos": "sw"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "C",
+              "label": "C",
+              "pos": "se"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "D",
+              "label": "D",
+              "pos": "w"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "E",
+              "label": "E",
+              "pos": "e"
+            },
+            {
+              "kind": "label",
+              "step": "s1",
+              "at": [
+                -1.8,
+                9.6
+              ],
+              "text": "AD = CE"
+            },
+            {
+              "kind": "segment",
+              "step": "s2",
+              "from": "B",
+              "to": "E"
+            },
+            {
+              "kind": "segment",
+              "step": "s2",
+              "from": "C",
+              "to": "D"
+            },
+            {
+              "kind": "point",
+              "step": "s2",
+              "at": "F",
+              "label": "F",
+              "pos": "s"
+            },
+            {
+              "kind": "angle",
+              "step": "s2",
+              "at": "C",
+              "from": "A",
+              "to": "D",
+              "label": "x"
+            },
+            {
+              "kind": "angle",
+              "step": "s2",
+              "at": "B",
+              "from": "C",
+              "to": "E",
+              "label": "x"
+            },
+            {
+              "kind": "angle",
+              "step": "s3",
+              "at": "F",
+              "from": "C",
+              "to": "B",
+              "label": "120°"
+            },
+            {
+              "kind": "label",
+              "step": "s3",
+              "at": [
+                7.6,
+                6
+              ],
+              "text": "∠CFB = 120°",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "sqrt((Ax-Dx)^2+(Ay-Dy)^2) = sqrt((Cx-Ex)^2+(Cy-Ey)^2)",
+            "sqrt((Ax-Bx)^2+(Ay-By)^2) = sqrt((Bx-Cx)^2+(By-Cy)^2)",
+            "sqrt((Bx-Cx)^2+(By-Cy)^2) = sqrt((Ax-Cx)^2+(Ay-Cy)^2)",
+            "deg(atan2(abs((Ax-Cx)*(Dy-Cy)-(Ay-Cy)*(Dx-Cx)),(Ax-Cx)*(Dx-Cx)+(Ay-Cy)*(Dy-Cy))) = deg(atan2(abs((Cx-Bx)*(Ey-By)-(Cy-By)*(Ex-Bx)),(Cx-Bx)*(Ex-Bx)+(Cy-By)*(Ey-By)))",
+            "deg(atan2(abs((Cx-Fx)*(By-Fy)-(Cy-Fy)*(Bx-Fx)),(Cx-Fx)*(Bx-Fx)+(Cy-Fy)*(By-Fy))) = 120",
+            "Fy*ex = Fx*ey"
+          ],
+          "answer": "deg(atan2(abs((Cx-Fx)*(By-Fy)-(Cy-Fy)*(Bx-Fx)),(Cx-Fx)*(Bx-Fx)+(Cy-Fy)*(By-Fy)))"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "56a25f88",
+        "answer": {
+          "value": 120.00000000000001,
+          "label": "120°"
+        }
+      }
+    },
+    {
+      "id": "6db3f7cb-2422-4c08-a0c8-d4c9c6bf4fef",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "pr": "10",
+            "rq": "14",
+            "pq": "12",
+            "ps": "pq*pr/(pr+rq)",
+            "Px": "0",
+            "Py": "0",
+            "Qx": "pq",
+            "Qy": "0",
+            "Rx": "(pq^2+pr^2-rq^2)/(2*pq)",
+            "Ry": "sqrt(pr^2-Rx^2)",
+            "Sx": "ps",
+            "Sy": "0"
+          },
+          "view": {
+            "x": [
+              -2,
+              14
+            ],
+            "y": [
+              -2,
+              11
+            ]
+          },
+          "points": {
+            "P": [
+              "Px",
+              "Py"
+            ],
+            "Q": [
+              "Qx",
+              "Qy"
+            ],
+            "R": [
+              "Rx",
+              "Ry"
+            ],
+            "S": [
+              "Sx",
+              "Sy"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "step": "s1",
+              "points": [
+                "P",
+                "Q",
+                "R"
+              ]
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "P",
+              "label": "P",
+              "pos": "sw"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "Q",
+              "label": "Q",
+              "pos": "se"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "R",
+              "label": "R",
+              "pos": "n"
+            },
+            {
+              "kind": "label",
+              "step": "s1",
+              "at": [
+                -1.6,
+                5.2
+              ],
+              "text": "10"
+            },
+            {
+              "kind": "label",
+              "step": "s1",
+              "at": [
+                8.2,
+                5.8
+              ],
+              "text": "14"
+            },
+            {
+              "kind": "label",
+              "step": "s1",
+              "at": [
+                5.4,
+                -1.2
+              ],
+              "text": "12"
+            },
+            {
+              "kind": "segment",
+              "step": "s2",
+              "from": "R",
+              "to": "S",
+              "dash": true
+            },
+            {
+              "kind": "point",
+              "step": "s2",
+              "at": "S",
+              "label": "S",
+              "pos": "s"
+            },
+            {
+              "kind": "angle",
+              "step": "s2",
+              "at": "R",
+              "from": "P",
+              "to": "S"
+            },
+            {
+              "kind": "angle",
+              "step": "s2",
+              "at": "R",
+              "from": "S",
+              "to": "Q"
+            },
+            {
+              "kind": "label",
+              "step": "s2",
+              "at": [
+                -1.6,
+                9.8
+              ],
+              "text": "PS : SQ = 10 : 14 = 5 : 7",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "step": "s3",
+              "from": "S",
+              "to": "Q",
+              "tone": "brand",
+              "label": "SQ = 7",
+              "labelAt": [
+                8.5,
+                0
+              ],
+              "pos": "s"
+            }
+          ],
+          "assert": [
+            "sqrt((Px-Rx)^2+(Py-Ry)^2) = pr",
+            "sqrt((Qx-Rx)^2+(Qy-Ry)^2) = rq",
+            "deg(atan2(abs((Px-Rx)*(Sy-Ry)-(Py-Ry)*(Sx-Rx)),(Px-Rx)*(Sx-Rx)+(Py-Ry)*(Sy-Ry))) = deg(atan2(abs((Sx-Rx)*(Qy-Ry)-(Sy-Ry)*(Qx-Rx)),(Sx-Rx)*(Qx-Rx)+(Sy-Ry)*(Qy-Ry)))",
+            "sqrt((Px-Sx)^2+(Py-Sy)^2) = 5",
+            "sqrt((Sx-Qx)^2+(Sy-Qy)^2) = 7"
+          ],
+          "answer": "sqrt((Sx-Qx)^2+(Sy-Qy)^2)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "b6882d2e",
+        "answer": {
+          "value": 7,
+          "label": "7 cm"
+        }
+      }
+    },
+    {
+      "id": "70509861-50bd-4db2-b787-6070ced29d19",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "tP": "132",
+            "tQ": "(180-tP)/2",
+            "a": "(180-tQ-96)/2",
+            "Qx": "0",
+            "Qy": "0",
+            "Rx": "10",
+            "Ry": "0",
+            "Px": "5",
+            "Py": "5*tan(rad(tQ))",
+            "qs": "sqrt((Qx-Px)^2+(Qy-Py)^2)*sin(rad(a))/sin(rad(96+a))",
+            "Sx": "qs",
+            "Sy": "0"
+          },
+          "view": {
+            "x": [
+              -1,
+              11
+            ],
+            "y": [
+              -3,
+              6
+            ]
+          },
+          "points": {
+            "Q": [
+              "Qx",
+              "Qy"
+            ],
+            "R": [
+              "Rx",
+              "Ry"
+            ],
+            "P": [
+              "Px",
+              "Py"
+            ],
+            "S": [
+              "Sx",
+              "Sy"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "step": "s1",
+              "points": [
+                "P",
+                "Q",
+                "R"
+              ]
+            },
+            {
+              "kind": "segment",
+              "step": "s1",
+              "from": "P",
+              "to": "S"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "P",
+              "label": "P",
+              "pos": "n"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "Q",
+              "label": "Q",
+              "pos": "sw"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "R",
+              "label": "R",
+              "pos": "se"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "S",
+              "label": "S",
+              "pos": "s"
+            },
+            {
+              "kind": "angle",
+              "step": "s1",
+              "at": "P",
+              "from": "Q",
+              "to": "R",
+              "label": "132°"
+            },
+            {
+              "kind": "angle",
+              "step": "s2",
+              "at": "Q",
+              "from": "P",
+              "to": "R",
+              "label": "24°"
+            },
+            {
+              "kind": "angle",
+              "step": "s2",
+              "at": "R",
+              "from": "Q",
+              "to": "P",
+              "label": "24°"
+            },
+            {
+              "kind": "angle",
+              "step": "s3",
+              "at": "P",
+              "from": "Q",
+              "to": "S",
+              "label": "a"
+            },
+            {
+              "kind": "angle",
+              "step": "s3",
+              "at": "S",
+              "from": "P",
+              "to": "Q",
+              "label": "96° + a"
+            },
+            {
+              "kind": "angle",
+              "step": "s4",
+              "at": "S",
+              "from": "P",
+              "to": "R",
+              "label": "54°"
+            },
+            {
+              "kind": "label",
+              "step": "s4",
+              "at": [
+                6.2,
+                4.4
+              ],
+              "text": "∠PSR = 54°",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "sqrt((Px-Qx)^2+(Py-Qy)^2) = sqrt((Px-Rx)^2+(Py-Ry)^2)",
+            "deg(atan2(abs((Qx-Px)*(Ry-Py)-(Qy-Py)*(Rx-Px)),(Qx-Px)*(Rx-Px)+(Qy-Py)*(Ry-Py))) = tP",
+            "deg(atan2(abs((Px-Sx)*(Qy-Sy)-(Py-Sy)*(Qx-Sx)),(Px-Sx)*(Qx-Sx)+(Py-Sy)*(Qy-Sy))) = 96+deg(atan2(abs((Qx-Px)*(Sy-Py)-(Qy-Py)*(Sx-Px)),(Qx-Px)*(Sx-Px)+(Qy-Py)*(Sy-Py)))",
+            "deg(atan2(abs((Px-Sx)*(Ry-Sy)-(Py-Sy)*(Rx-Sx)),(Px-Sx)*(Rx-Sx)+(Py-Sy)*(Ry-Sy))) = 54"
+          ],
+          "answer": "deg(atan2(abs((Px-Sx)*(Ry-Sy)-(Py-Sy)*(Rx-Sx)),(Px-Sx)*(Rx-Sx)+(Py-Sy)*(Ry-Sy)))"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "0f52eb99",
+        "answer": {
+          "value": 53.999999999999986,
+          "label": "54°"
+        }
+      }
+    },
+    {
+      "id": "76e71913-1dfb-461d-867c-6ea734a55b70",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "sq": "6",
+            "Bx": "0",
+            "By": "0",
+            "Cx": "sq",
+            "Cy": "0",
+            "Dx": "sq",
+            "Dy": "sq",
+            "Ex": "0",
+            "Ey": "sq",
+            "Ax": "sq/2",
+            "Ay": "-sq*sqrt(3)/2",
+            "g1": "deg(atan2(abs((Ax-Bx)*(Cy-By)-(Ay-By)*(Cx-Bx)),(Ax-Bx)*(Cx-Bx)+(Ay-By)*(Cy-By)))",
+            "g2": "deg(atan2(abs((Cx-Bx)*(Ey-By)-(Cy-By)*(Ex-Bx)),(Cx-Bx)*(Ex-Bx)+(Cy-By)*(Ey-By)))",
+            "g3": "deg(atan2(abs((Ax-Bx)*(Ey-By)-(Ay-By)*(Ex-Bx)),(Ax-Bx)*(Ex-Bx)+(Ay-By)*(Ey-By)))",
+            "g4": "deg(atan2(abs((Ex-Ax)*(By-Ay)-(Ey-Ay)*(Bx-Ax)),(Ex-Ax)*(Bx-Ax)+(Ey-Ay)*(By-Ay)))",
+            "g5": "deg(atan2(abs((Ax-Ex)*(By-Ey)-(Ay-Ey)*(Bx-Ex)),(Ax-Ex)*(Bx-Ex)+(Ay-Ey)*(By-Ey)))"
+          },
+          "view": {
+            "x": [
+              -6,
+              12
+            ],
+            "y": [
+              -6.5,
+              7.2
+            ]
+          },
+          "points": {
+            "B": [
+              "Bx",
+              "By"
+            ],
+            "C": [
+              "Cx",
+              "Cy"
+            ],
+            "D": [
+              "Dx",
+              "Dy"
+            ],
+            "E": [
+              "Ex",
+              "Ey"
+            ],
+            "A": [
+              "Ax",
+              "Ay"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "step": "s1",
+              "points": [
+                "B",
+                "C",
+                "D",
+                "E"
+              ]
+            },
+            {
+              "kind": "polygon",
+              "step": "s1",
+              "points": [
+                "A",
+                "B",
+                "C"
+              ],
+              "tone": "amber"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "A",
+              "label": "A",
+              "pos": "se"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "B",
+              "label": "B",
+              "pos": "sw"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "C",
+              "label": "C",
+              "pos": "se"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "D",
+              "label": "D",
+              "pos": "ne"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "E",
+              "label": "E",
+              "pos": "nw"
+            },
+            {
+              "kind": "angle",
+              "step": "s2",
+              "at": "B",
+              "from": "A",
+              "to": "E",
+              "label": "150°"
+            },
+            {
+              "kind": "segment",
+              "step": "s3",
+              "from": "A",
+              "to": "E",
+              "dash": true
+            },
+            {
+              "kind": "angle",
+              "step": "s3",
+              "at": "A",
+              "from": "E",
+              "to": "B",
+              "label": "15°"
+            },
+            {
+              "kind": "angle",
+              "step": "s3",
+              "at": "E",
+              "from": "A",
+              "to": "B",
+              "label": "15°"
+            },
+            {
+              "kind": "label",
+              "step": "s4",
+              "at": [
+                6.4,
+                0.5
+              ],
+              "text": "15° + 3 × 15° = 60°",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "sqrt((Ax-Bx)^2+(Ay-By)^2) = sqrt((Bx-Cx)^2+(By-Cy)^2)",
+            "sqrt((Bx-Cx)^2+(By-Cy)^2) = sqrt((Bx-Ex)^2+(By-Ey)^2)",
+            "g1 = 60",
+            "g2 = 90",
+            "g3 = 150",
+            "g4 = g5",
+            "g4+3*g5 = 60"
+          ],
+          "answer": "g4+3*g5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "0fbcd614",
+        "answer": {
+          "value": 59.99999999999999,
+          "label": "60°"
+        }
+      }
+    },
+    {
+      "id": "7bf4f257-b318-4ad1-8744-c8f07156f966",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "oa": "12",
+            "oc": "9",
+            "ob": "sqrt(oa*oc)",
+            "Ox": "0",
+            "Oy": "0",
+            "Ax": "oa",
+            "Ay": "0",
+            "Bx": "ob*cos(rad(120))",
+            "By": "ob*sin(rad(120))",
+            "Cx": "oc*cos(rad(240))",
+            "Cy": "oc*sin(rad(240))"
+          },
+          "view": {
+            "x": [
+              -9,
+              16
+            ],
+            "y": [
+              -10,
+              11
+            ]
+          },
+          "points": {
+            "O": [
+              "Ox",
+              "Oy"
+            ],
+            "A": [
+              "Ax",
+              "Ay"
+            ],
+            "B": [
+              "Bx",
+              "By"
+            ],
+            "C": [
+              "Cx",
+              "Cy"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "step": "s1",
+              "points": [
+                "A",
+                "B",
+                "C"
+              ]
+            },
+            {
+              "kind": "segment",
+              "step": "s1",
+              "from": "O",
+              "to": "A",
+              "label": "12",
+              "labelAt": [
+                6.5,
+                0
+              ],
+              "pos": "s"
+            },
+            {
+              "kind": "segment",
+              "step": "s1",
+              "from": "O",
+              "to": "B"
+            },
+            {
+              "kind": "segment",
+              "step": "s1",
+              "from": "O",
+              "to": "C",
+              "label": "9",
+              "labelAt": [
+                -2.9,
+                -4.2
+              ],
+              "pos": "w"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "A",
+              "label": "A",
+              "pos": "e"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "B",
+              "label": "B",
+              "pos": "n"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "C",
+              "label": "C",
+              "pos": "s"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "O",
+              "label": "O",
+              "pos": "nw"
+            },
+            {
+              "kind": "angle",
+              "step": "s1",
+              "at": "O",
+              "from": "A",
+              "to": "B",
+              "label": "120°"
+            },
+            {
+              "kind": "angle",
+              "step": "s1",
+              "at": "O",
+              "from": "B",
+              "to": "C",
+              "label": "120°"
+            },
+            {
+              "kind": "angle",
+              "step": "s1",
+              "at": "B",
+              "from": "A",
+              "to": "C",
+              "label": "60°"
+            },
+            {
+              "kind": "angle",
+              "step": "s2",
+              "at": "A",
+              "from": "O",
+              "to": "B",
+              "label": "α"
+            },
+            {
+              "kind": "angle",
+              "step": "s2",
+              "at": "B",
+              "from": "A",
+              "to": "O",
+              "label": "β"
+            },
+            {
+              "kind": "angle",
+              "step": "s3",
+              "at": "B",
+              "from": "O",
+              "to": "C",
+              "label": "α"
+            },
+            {
+              "kind": "angle",
+              "step": "s3",
+              "at": "C",
+              "from": "B",
+              "to": "O",
+              "label": "β"
+            },
+            {
+              "kind": "polygon",
+              "step": "s4",
+              "points": [
+                "A",
+                "O",
+                "B"
+              ],
+              "tone": "amber"
+            },
+            {
+              "kind": "polygon",
+              "step": "s4",
+              "points": [
+                "B",
+                "O",
+                "C"
+              ],
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "step": "s5",
+              "at": [
+                4.5,
+                -8.5
+              ],
+              "text": "OB = 6√3",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "deg(atan2(abs((Ax-Ox)*(By-Oy)-(Ay-Oy)*(Bx-Ox)),(Ax-Ox)*(Bx-Ox)+(Ay-Oy)*(By-Oy))) = 120",
+            "deg(atan2(abs((Bx-Ox)*(Cy-Oy)-(By-Oy)*(Cx-Ox)),(Bx-Ox)*(Cx-Ox)+(By-Oy)*(Cy-Oy))) = 120",
+            "deg(atan2(abs((Cx-Ox)*(Ay-Oy)-(Cy-Oy)*(Ax-Ox)),(Cx-Ox)*(Ax-Ox)+(Cy-Oy)*(Ay-Oy))) = 120",
+            "deg(atan2(abs((Ax-Bx)*(Cy-By)-(Ay-By)*(Cx-Bx)),(Ax-Bx)*(Cx-Bx)+(Ay-By)*(Cy-By))) = 60",
+            "deg(atan2(abs((Ox-Ax)*(By-Ay)-(Oy-Ay)*(Bx-Ax)),(Ox-Ax)*(Bx-Ax)+(Oy-Ay)*(By-Ay))) = deg(atan2(abs((Ox-Bx)*(Cy-By)-(Oy-By)*(Cx-Bx)),(Ox-Bx)*(Cx-Bx)+(Oy-By)*(Cy-By)))",
+            "deg(atan2(abs((Ox-Bx)*(Ay-By)-(Oy-By)*(Ax-Bx)),(Ox-Bx)*(Ax-Bx)+(Oy-By)*(Ay-By))) = deg(atan2(abs((Ox-Cx)*(By-Cy)-(Oy-Cy)*(Bx-Cx)),(Ox-Cx)*(Bx-Cx)+(Oy-Cy)*(By-Cy)))",
+            "ob^2 = oa*oc"
+          ],
+          "answer": "ob"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "dde136ce",
+        "answer": {
+          "value": 10.392304845413264,
+          "label": "6√3 cm"
+        }
+      }
+    },
+    {
+      "id": "85837c1f-6609-4e68-988f-3f523d60463f",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "a": "6",
+            "Qx": "0",
+            "Qy": "0",
+            "Rx": "a",
+            "Ry": "0",
+            "Px": "a/2",
+            "Py": "a*sqrt(3)/2",
+            "Mx": "a/2",
+            "My": "0",
+            "Lx": "a/2",
+            "Ly": "a*sqrt(3)/6"
+          },
+          "view": {
+            "x": [
+              -1.5,
+              7.5
+            ],
+            "y": [
+              -1.5,
+              6
+            ]
+          },
+          "points": {
+            "Q": [
+              "Qx",
+              "Qy"
+            ],
+            "R": [
+              "Rx",
+              "Ry"
+            ],
+            "P": [
+              "Px",
+              "Py"
+            ],
+            "M": [
+              "Mx",
+              "My"
+            ],
+            "L": [
+              "Lx",
+              "Ly"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "step": "s1",
+              "points": [
+                "P",
+                "Q",
+                "R"
+              ]
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "P",
+              "label": "P",
+              "pos": "n"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "Q",
+              "label": "Q",
+              "pos": "sw"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "R",
+              "label": "R",
+              "pos": "se"
+            },
+            {
+              "kind": "label",
+              "step": "s1",
+              "at": [
+                1.7,
+                -0.9
+              ],
+              "text": "side = 6 cm"
+            },
+            {
+              "kind": "point",
+              "step": "s2",
+              "at": "M",
+              "label": "M",
+              "pos": "s"
+            },
+            {
+              "kind": "segment",
+              "step": "s2",
+              "from": "P",
+              "to": "M",
+              "dash": true,
+              "label": "3√3",
+              "labelAt": [
+                3.2,
+                4.2
+              ],
+              "pos": "e"
+            },
+            {
+              "kind": "point",
+              "step": "s3",
+              "at": "L",
+              "label": "L",
+              "pos": "e"
+            },
+            {
+              "kind": "segment",
+              "step": "s3",
+              "from": "P",
+              "to": "L",
+              "tone": "brand",
+              "label": "PL = 2√3",
+              "labelAt": [
+                2.8,
+                4.3
+              ],
+              "pos": "w"
+            },
+            {
+              "kind": "label",
+              "step": "s4",
+              "at": [
+                4.2,
+                2.4
+              ],
+              "text": "circumradius = 6/√3",
+              "tone": "muted"
+            }
+          ],
+          "assert": [
+            "sqrt((Px-Qx)^2+(Py-Qy)^2) = sqrt((Qx-Rx)^2+(Qy-Ry)^2)",
+            "sqrt((Qx-Rx)^2+(Qy-Ry)^2) = sqrt((Px-Rx)^2+(Py-Ry)^2)",
+            "deg(atan2(abs((Px-Mx)*(Qy-My)-(Py-My)*(Qx-Mx)),(Px-Mx)*(Qx-Mx)+(Py-My)*(Qy-My))) = 90",
+            "sqrt((Px-Mx)^2+(Py-My)^2) = sqrt(3)/2*a",
+            "sqrt((Px-Lx)^2+(Py-Ly)^2) = 2/3*sqrt((Px-Mx)^2+(Py-My)^2)"
+          ],
+          "answer": "sqrt((Px-Lx)^2+(Py-Ly)^2)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "ffee5787",
+        "answer": {
+          "value": 3.4641016151377544,
+          "label": "2√3 cm"
+        }
+      }
+    },
+    {
+      "id": "89eba20d-4a07-4dbc-9b9a-e9424c2a028a",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "tA": "66",
+            "tB": "50",
+            "tC": "180-tA-tB",
+            "LBC": "10",
+            "Bx": "0",
+            "By": "0",
+            "Cx": "LBC",
+            "Cy": "0",
+            "lBA": "LBC*sin(rad(tC))/sin(rad(180-tB-tC))",
+            "Ax": "lBA*cos(rad(tB))",
+            "Ay": "lBA*sin(rad(tB))",
+            "wa": "sqrt((Bx-Cx)^2+(By-Cy)^2)",
+            "wb": "sqrt((Ax-Cx)^2+(Ay-Cy)^2)",
+            "wc": "sqrt((Ax-Bx)^2+(Ay-By)^2)",
+            "Px": "(wa*Ax+wb*Bx+wc*Cx)/(wa+wb+wc)",
+            "Py": "(wa*Ay+wb*By+wc*Cy)/(wa+wb+wc)",
+            "g1": "deg(atan2(abs((Bx-Ax)*(Cy-Ay)-(By-Ay)*(Cx-Ax)),(Bx-Ax)*(Cx-Ax)+(By-Ay)*(Cy-Ay)))",
+            "g2": "deg(atan2(abs((Ax-Cx)*(By-Cy)-(Ay-Cy)*(Bx-Cx)),(Ax-Cx)*(Bx-Cx)+(Ay-Cy)*(By-Cy)))",
+            "g3": "deg(atan2(abs((Ax-Bx)*(Py-By)-(Ay-By)*(Px-Bx)),(Ax-Bx)*(Px-Bx)+(Ay-By)*(Py-By)))",
+            "g4": "deg(atan2(abs((Px-Bx)*(Cy-By)-(Py-By)*(Cx-Bx)),(Px-Bx)*(Cx-Bx)+(Py-By)*(Cy-By)))",
+            "g5": "deg(atan2(abs((Ax-Cx)*(Py-Cy)-(Ay-Cy)*(Px-Cx)),(Ax-Cx)*(Px-Cx)+(Ay-Cy)*(Py-Cy)))",
+            "g6": "deg(atan2(abs((Px-Cx)*(By-Cy)-(Py-Cy)*(Bx-Cx)),(Px-Cx)*(Bx-Cx)+(Py-Cy)*(By-Cy)))",
+            "g7": "deg(atan2(abs((Bx-Px)*(Cy-Py)-(By-Py)*(Cx-Px)),(Bx-Px)*(Cx-Px)+(By-Py)*(Cy-Py)))"
+          },
+          "view": {
+            "x": [
+              -2,
+              12
+            ],
+            "y": [
+              -2,
+              9.5
+            ]
+          },
+          "points": {
+            "B": [
+              "Bx",
+              "By"
+            ],
+            "C": [
+              "Cx",
+              "Cy"
+            ],
+            "A": [
+              "Ax",
+              "Ay"
+            ],
+            "P": [
+              "Px",
+              "Py"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "step": "s1",
+              "points": [
+                "A",
+                "B",
+                "C"
+              ]
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "A",
+              "label": "A",
+              "pos": "n"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "B",
+              "label": "B",
+              "pos": "sw"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "C",
+              "label": "C",
+              "pos": "se"
+            },
+            {
+              "kind": "angle",
+              "step": "s1",
+              "at": "A",
+              "from": "B",
+              "to": "C",
+              "label": "66°"
+            },
+            {
+              "kind": "angle",
+              "step": "s1",
+              "at": "B",
+              "from": "A",
+              "to": "C",
+              "label": "50°"
+            },
+            {
+              "kind": "angle",
+              "step": "s2",
+              "at": "C",
+              "from": "A",
+              "to": "B",
+              "label": "64°"
+            },
+            {
+              "kind": "segment",
+              "step": "s3",
+              "from": "B",
+              "to": "P",
+              "tone": "brand"
+            },
+            {
+              "kind": "segment",
+              "step": "s3",
+              "from": "C",
+              "to": "P",
+              "tone": "brand"
+            },
+            {
+              "kind": "point",
+              "step": "s3",
+              "at": "P",
+              "label": "P",
+              "pos": "s"
+            },
+            {
+              "kind": "angle",
+              "step": "s3",
+              "at": "P",
+              "from": "B",
+              "to": "C",
+              "label": "123°"
+            },
+            {
+              "kind": "angle",
+              "step": "s3",
+              "at": "C",
+              "from": "P",
+              "to": "A",
+              "label": "32°"
+            },
+            {
+              "kind": "label",
+              "step": "s4",
+              "at": [
+                6.6,
+                3.2
+              ],
+              "text": "123° − 32° = 91°",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "g1 = tA",
+            "g2 = 64",
+            "g3 = g4",
+            "g5 = g6",
+            "g7 = 123",
+            "g5 = 32",
+            "g7-g5 = 91"
+          ],
+          "answer": "g7-g5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "04e02719",
+        "answer": {
+          "value": 90.99999999999997,
+          "label": "91°"
+        }
+      }
+    },
+    {
+      "id": "8dd202aa-a4ae-42fc-b21a-a1969d4406b0",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "th": "35",
+            "bc": "10",
+            "ac": "15",
+            "Cx": "0",
+            "Cy": "0",
+            "Ax": "ac",
+            "Ay": "0",
+            "Bx": "bc*cos(rad(2*th))",
+            "By": "bc*sin(rad(2*th))",
+            "Nx": "bc*cos(rad(th))*cos(rad(th))",
+            "Ny": "bc*cos(rad(th))*sin(rad(th))",
+            "Px": "bc",
+            "Py": "0",
+            "Mx": "(Ax+Bx)/2",
+            "My": "(Ay+By)/2"
+          },
+          "view": {
+            "x": [
+              -2,
+              17
+            ],
+            "y": [
+              -2,
+              11
+            ]
+          },
+          "points": {
+            "C": [
+              "Cx",
+              "Cy"
+            ],
+            "A": [
+              "Ax",
+              "Ay"
+            ],
+            "B": [
+              "Bx",
+              "By"
+            ],
+            "N": [
+              "Nx",
+              "Ny"
+            ],
+            "P": [
+              "Px",
+              "Py"
+            ],
+            "M": [
+              "Mx",
+              "My"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "step": "s1",
+              "points": [
+                "A",
+                "B",
+                "C"
+              ]
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "A",
+              "label": "A",
+              "pos": "se"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "B",
+              "label": "B",
+              "pos": "n"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "C",
+              "label": "C",
+              "pos": "sw"
+            },
+            {
+              "kind": "label",
+              "step": "s1",
+              "at": [
+                0.6,
+                7.2
+              ],
+              "text": "BC = 10"
+            },
+            {
+              "kind": "label",
+              "step": "s1",
+              "at": [
+                10.5,
+                -1.4
+              ],
+              "text": "AC = 15"
+            },
+            {
+              "kind": "segment",
+              "step": "s2",
+              "from": "C",
+              "to": "N"
+            },
+            {
+              "kind": "point",
+              "step": "s2",
+              "at": "N",
+              "label": "N",
+              "pos": "s"
+            },
+            {
+              "kind": "segment",
+              "step": "s2",
+              "from": "B",
+              "to": "P",
+              "dash": true
+            },
+            {
+              "kind": "point",
+              "step": "s2",
+              "at": "P",
+              "label": "P",
+              "pos": "s"
+            },
+            {
+              "kind": "angle",
+              "step": "s2",
+              "at": "N",
+              "from": "C",
+              "to": "B",
+              "label": "90°"
+            },
+            {
+              "kind": "polygon",
+              "step": "s3",
+              "points": [
+                "C",
+                "B",
+                "P"
+              ],
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "step": "s3",
+              "at": [
+                10.6,
+                7.5
+              ],
+              "text": "CP = CB = 10",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "step": "s4",
+              "at": [
+                10.6,
+                5.6
+              ],
+              "text": "AP = 15 − 10 = 5",
+              "tone": "muted"
+            },
+            {
+              "kind": "point",
+              "step": "s5",
+              "at": "M",
+              "label": "M",
+              "pos": "ne"
+            },
+            {
+              "kind": "segment",
+              "step": "s5",
+              "from": "M",
+              "to": "N",
+              "tone": "brand",
+              "label": "MN = 2.5",
+              "labelAt": [
+                8,
+                3.7
+              ],
+              "pos": "s"
+            }
+          ],
+          "assert": [
+            "sqrt((Bx-Cx)^2+(By-Cy)^2) = bc",
+            "sqrt((Ax-Cx)^2+(Ay-Cy)^2) = ac",
+            "deg(atan2(abs((Ax-Cx)*(Ny-Cy)-(Ay-Cy)*(Nx-Cx)),(Ax-Cx)*(Nx-Cx)+(Ay-Cy)*(Ny-Cy))) = deg(atan2(abs((Nx-Cx)*(By-Cy)-(Ny-Cy)*(Bx-Cx)),(Nx-Cx)*(Bx-Cx)+(Ny-Cy)*(By-Cy)))",
+            "((Nx-Cx)*(Bx-Nx)+(Ny-Cy)*(By-Ny)) = 0",
+            "sqrt((Cx-Px)^2+(Cy-Py)^2) = sqrt((Cx-Bx)^2+(Cy-By)^2)",
+            "sqrt((Nx-Bx)^2+(Ny-By)^2) = sqrt((Nx-Px)^2+(Ny-Py)^2)",
+            "sqrt((Mx-Nx)^2+(My-Ny)^2) = 2.5",
+            "sqrt((Ax-Px)^2+(Ay-Py)^2) = 5"
+          ],
+          "answer": "sqrt((Mx-Nx)^2+(My-Ny)^2)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "13a7cbea",
+        "answer": {
+          "value": 2.5000000000000018,
+          "label": "2.5 cm"
+        }
+      }
+    },
+    {
+      "id": "93942090-5064-4ddc-bb55-1ce0fbc12437",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "tR": "62",
+            "tTPR": "38",
+            "xa": "(180-tR-tTPR)/2",
+            "LQR": "10",
+            "Qx": "0",
+            "Qy": "0",
+            "Rx": "LQR",
+            "Ry": "0",
+            "lQP": "LQR*sin(rad(tR))/sin(rad(180-xa-tR))",
+            "Px": "lQP*cos(rad(xa))",
+            "Py": "lQP*sin(rad(xa))",
+            "tq": "sqrt((Qx-Px)^2+(Qy-Py)^2)/(2*cos(rad(xa)))",
+            "Tx": "tq",
+            "Ty": "0",
+            "Sx": "(Px+Qx)/2",
+            "Sy": "(Py+Qy)/2",
+            "g1": "deg(atan2(abs((Tx-Px)*(Ry-Py)-(Ty-Py)*(Rx-Px)),(Tx-Px)*(Rx-Px)+(Ty-Py)*(Ry-Py)))",
+            "g2": "deg(atan2(abs((Px-Qx)*(Ry-Qy)-(Py-Qy)*(Rx-Qx)),(Px-Qx)*(Rx-Qx)+(Py-Qy)*(Ry-Qy)))",
+            "g3": "deg(atan2(abs((Qx-Px)*(Ry-Py)-(Qy-Py)*(Rx-Px)),(Qx-Px)*(Rx-Px)+(Qy-Py)*(Ry-Py)))",
+            "g4": "deg(atan2(abs((Px-Sx)*(Ty-Sy)-(Py-Sy)*(Tx-Sx)),(Px-Sx)*(Tx-Sx)+(Py-Sy)*(Ty-Sy)))",
+            "g5": "deg(atan2(abs((Qx-Px)*(Ty-Py)-(Qy-Py)*(Tx-Px)),(Qx-Px)*(Tx-Px)+(Qy-Py)*(Ty-Py)))"
+          },
+          "view": {
+            "x": [
+              -2,
+              12
+            ],
+            "y": [
+              -2,
+              8
+            ]
+          },
+          "points": {
+            "Q": [
+              "Qx",
+              "Qy"
+            ],
+            "R": [
+              "Rx",
+              "Ry"
+            ],
+            "P": [
+              "Px",
+              "Py"
+            ],
+            "T": [
+              "Tx",
+              "Ty"
+            ],
+            "S": [
+              "Sx",
+              "Sy"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "step": "s1",
+              "points": [
+                "P",
+                "Q",
+                "R"
+              ]
+            },
+            {
+              "kind": "segment",
+              "step": "s1",
+              "from": "P",
+              "to": "T"
+            },
+            {
+              "kind": "segment",
+              "step": "s1",
+              "from": "S",
+              "to": "T",
+              "dash": true
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "P",
+              "label": "P",
+              "pos": "n"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "Q",
+              "label": "Q",
+              "pos": "sw"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "R",
+              "label": "R",
+              "pos": "se"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "S",
+              "label": "S",
+              "pos": "nw"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "T",
+              "label": "T",
+              "pos": "s"
+            },
+            {
+              "kind": "angle",
+              "step": "s1",
+              "at": "R",
+              "from": "P",
+              "to": "Q",
+              "label": "62°"
+            },
+            {
+              "kind": "angle",
+              "step": "s1",
+              "at": "P",
+              "from": "T",
+              "to": "R",
+              "label": "38°"
+            },
+            {
+              "kind": "angle",
+              "step": "s1",
+              "at": "S",
+              "from": "P",
+              "to": "T",
+              "label": "90°"
+            },
+            {
+              "kind": "angle",
+              "step": "s2",
+              "at": "P",
+              "from": "Q",
+              "to": "T",
+              "label": "x"
+            },
+            {
+              "kind": "angle",
+              "step": "s2",
+              "at": "Q",
+              "from": "P",
+              "to": "R",
+              "label": "x"
+            },
+            {
+              "kind": "angle",
+              "step": "s3",
+              "at": "P",
+              "from": "Q",
+              "to": "R",
+              "label": "x + 38°"
+            },
+            {
+              "kind": "label",
+              "step": "s3",
+              "at": [
+                7.2,
+                3.2
+              ],
+              "text": "x = 40°",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "sqrt((Tx-Px)^2+(Ty-Py)^2) = sqrt((Tx-Qx)^2+(Ty-Qy)^2)",
+            "g1 = tTPR",
+            "g2 = 40",
+            "g3 = 78",
+            "g4 = 90",
+            "g5 = g2"
+          ],
+          "answer": "xa"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "6de65897",
+        "answer": {
+          "value": 40,
+          "label": "40°"
+        }
+      }
+    },
+    {
+      "id": "982b29e7-811a-405f-a160-932d87bab6ca",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "ad": "10.8",
+            "be": "14.4",
+            "ag": "2/3*ad",
+            "bg": "2/3*be",
+            "Gx": "0",
+            "Gy": "0",
+            "Ax": "ag",
+            "Ay": "0",
+            "Dx": "-ad/3",
+            "Dy": "0",
+            "Bx": "0",
+            "By": "bg",
+            "Ex": "0",
+            "Ey": "-be/3",
+            "Cx": "2*Dx-Bx",
+            "Cy": "2*Dy-By",
+            "area": "abs((Bx-Ax)*(Cy-Ay)-(By-Ay)*(Cx-Ax))/2"
+          },
+          "view": {
+            "x": [
+              -13,
+              13
+            ],
+            "y": [
+              -11,
+              11
+            ]
+          },
+          "points": {
+            "G": [
+              "Gx",
+              "Gy"
+            ],
+            "A": [
+              "Ax",
+              "Ay"
+            ],
+            "D": [
+              "Dx",
+              "Dy"
+            ],
+            "B": [
+              "Bx",
+              "By"
+            ],
+            "E": [
+              "Ex",
+              "Ey"
+            ],
+            "C": [
+              "Cx",
+              "Cy"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "step": "s1",
+              "points": [
+                "A",
+                "B",
+                "C"
+              ]
+            },
+            {
+              "kind": "segment",
+              "step": "s1",
+              "from": "A",
+              "to": "D",
+              "dash": true
+            },
+            {
+              "kind": "segment",
+              "step": "s1",
+              "from": "B",
+              "to": "E",
+              "dash": true
+            },
+            {
+              "kind": "angle",
+              "step": "s1",
+              "at": "G",
+              "from": "A",
+              "to": "B",
+              "label": "90°"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "A",
+              "label": "A",
+              "pos": "e"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "B",
+              "label": "B",
+              "pos": "n"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "C",
+              "label": "C",
+              "pos": "sw"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "D",
+              "label": "D",
+              "pos": "w"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "E",
+              "label": "E",
+              "pos": "s"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "G",
+              "label": "G",
+              "pos": "ne"
+            },
+            {
+              "kind": "label",
+              "step": "s1",
+              "at": [
+                -12.5,
+                1.6
+              ],
+              "text": "AD = 10.8"
+            },
+            {
+              "kind": "label",
+              "step": "s1",
+              "at": [
+                -12.5,
+                9.2
+              ],
+              "text": "BE = 14.4"
+            },
+            {
+              "kind": "label",
+              "step": "s2",
+              "at": [
+                2.8,
+                -1.6
+              ],
+              "text": "AG = 7.2"
+            },
+            {
+              "kind": "label",
+              "step": "s2",
+              "at": [
+                0.8,
+                5
+              ],
+              "text": "BG = 9.6"
+            },
+            {
+              "kind": "polygon",
+              "step": "s3",
+              "points": [
+                "A",
+                "B",
+                "G"
+              ],
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "step": "s3",
+              "at": [
+                2,
+                2.6
+              ],
+              "text": "ABG = 34.56",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "step": "s4",
+              "at": [
+                1.8,
+                -8.8
+              ],
+              "text": "ABC = 3 × 34.56 = 103.68",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "sqrt((Ax-Dx)^2+(Ay-Dy)^2) = ad",
+            "sqrt((Bx-Ex)^2+(By-Ey)^2) = be",
+            "Ex*2 = Ax+Cx",
+            "Ey*2 = Ay+Cy",
+            "Dx*2 = Bx+Cx",
+            "Dy*2 = By+Cy",
+            "deg(atan2(abs((Ax-Gx)*(By-Gy)-(Ay-Gy)*(Bx-Gx)),(Ax-Gx)*(Bx-Gx)+(Ay-Gy)*(By-Gy))) = 90",
+            "area = 103.68"
+          ],
+          "answer": "area"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "aa6ca63f",
+        "answer": {
+          "value": 103.68,
+          "label": "103.68 cm²"
+        }
+      }
+    },
+    {
+      "id": "9a80378f-dcf6-407c-ac0a-acb908a3db8c",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "ab": "35",
+            "bc": "12",
+            "ac": "37",
+            "Bx": "0",
+            "By": "0",
+            "Ax": "ab",
+            "Ay": "0",
+            "Cx": "0",
+            "Cy": "bc",
+            "Mx": "(Ax+Cx)/2",
+            "My": "(Ay+Cy)/2",
+            "Gx": "(Ax+Bx+Cx)/3",
+            "Gy": "(Ay+By+Cy)/3"
+          },
+          "view": {
+            "x": [
+              -5,
+              42
+            ],
+            "y": [
+              -8,
+              27
+            ]
+          },
+          "points": {
+            "B": [
+              "Bx",
+              "By"
+            ],
+            "A": [
+              "Ax",
+              "Ay"
+            ],
+            "C": [
+              "Cx",
+              "Cy"
+            ],
+            "M": [
+              "Mx",
+              "My"
+            ],
+            "G": [
+              "Gx",
+              "Gy"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "step": "s1",
+              "points": [
+                "A",
+                "B",
+                "C"
+              ]
+            },
+            {
+              "kind": "angle",
+              "step": "s1",
+              "at": "B",
+              "from": "A",
+              "to": "C",
+              "label": "90°"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "A",
+              "label": "A",
+              "pos": "se"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "B",
+              "label": "B",
+              "pos": "sw"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "C",
+              "label": "C",
+              "pos": "nw"
+            },
+            {
+              "kind": "label",
+              "step": "s1",
+              "at": [
+                16,
+                -2.8
+              ],
+              "text": "35"
+            },
+            {
+              "kind": "label",
+              "step": "s1",
+              "at": [
+                -3.2,
+                6
+              ],
+              "text": "12"
+            },
+            {
+              "kind": "label",
+              "step": "s1",
+              "at": [
+                26,
+                8.4
+              ],
+              "text": "37"
+            },
+            {
+              "kind": "point",
+              "step": "s2",
+              "at": "M",
+              "label": "M",
+              "pos": "ne"
+            },
+            {
+              "kind": "segment",
+              "step": "s2",
+              "from": "B",
+              "to": "M",
+              "dash": true,
+              "label": "BM = 18.5",
+              "labelAt": [
+                7,
+                5.2
+              ],
+              "pos": "s"
+            },
+            {
+              "kind": "point",
+              "step": "s3",
+              "at": "G",
+              "label": "G",
+              "pos": "n"
+            },
+            {
+              "kind": "segment",
+              "step": "s3",
+              "from": "B",
+              "to": "G",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "step": "s3",
+              "at": [
+                14,
+                -5.8
+              ],
+              "text": "BG = 37/3 ≈ 12.3",
+              "tone": "good"
+            },
+            {
+              "kind": "label",
+              "step": "s4",
+              "at": [
+                14,
+                21
+              ],
+              "text": "BM² = 1369/4, BM = 18.5",
+              "tone": "muted"
+            }
+          ],
+          "assert": [
+            "ab^2+bc^2 = ac^2",
+            "sqrt((Ax-Cx)^2+(Ay-Cy)^2) = ac",
+            "deg(atan2(abs((Ax-Bx)*(Cy-By)-(Ay-By)*(Cx-Bx)),(Ax-Bx)*(Cx-Bx)+(Ay-By)*(Cy-By))) = 90",
+            "sqrt((Bx-Mx)^2+(By-My)^2) = ac/2",
+            "sqrt((Bx-Gx)^2+(By-Gy)^2) = 2/3*sqrt((Bx-Mx)^2+(By-My)^2)"
+          ],
+          "answer": "floor(10*sqrt((Bx-Gx)^2+(By-Gy)^2)+0.5)/10"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "f5be5d07",
+        "answer": {
+          "value": 12.3,
+          "label": "12.3 cm"
+        }
+      }
+    },
+    {
+      "id": "9ebcff19-7c37-4277-9bad-a4eb384486dc",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "tA": "(108-90)*2",
+            "tB": "70",
+            "tC": "180-tA-tB",
+            "LBC": "10",
+            "Bx": "0",
+            "By": "0",
+            "Cx": "LBC",
+            "Cy": "0",
+            "lBA": "LBC*sin(rad(tC))/sin(rad(180-tB-tC))",
+            "Ax": "lBA*cos(rad(tB))",
+            "Ay": "lBA*sin(rad(tB))",
+            "wa": "sqrt((Bx-Cx)^2+(By-Cy)^2)",
+            "wb": "sqrt((Ax-Cx)^2+(Ay-Cy)^2)",
+            "wc": "sqrt((Ax-Bx)^2+(Ay-By)^2)",
+            "Ox": "(wa*Ax+wb*Bx+wc*Cx)/(wa+wb+wc)",
+            "Oy": "(wa*Ay+wb*By+wc*Cy)/(wa+wb+wc)"
+          },
+          "view": {
+            "x": [
+              -6,
+              16
+            ],
+            "y": [
+              -2,
+              17
+            ]
+          },
+          "points": {
+            "B": [
+              "Bx",
+              "By"
+            ],
+            "C": [
+              "Cx",
+              "Cy"
+            ],
+            "A": [
+              "Ax",
+              "Ay"
+            ],
+            "O": [
+              "Ox",
+              "Oy"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "step": "s1",
+              "points": [
+                "A",
+                "B",
+                "C"
+              ]
+            },
+            {
+              "kind": "segment",
+              "step": "s1",
+              "from": "A",
+              "to": "O"
+            },
+            {
+              "kind": "segment",
+              "step": "s1",
+              "from": "B",
+              "to": "O"
+            },
+            {
+              "kind": "segment",
+              "step": "s1",
+              "from": "C",
+              "to": "O"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "A",
+              "label": "A",
+              "pos": "n"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "B",
+              "label": "B",
+              "pos": "sw"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "C",
+              "label": "C",
+              "pos": "se"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "O",
+              "label": "O",
+              "pos": "s"
+            },
+            {
+              "kind": "angle",
+              "step": "s1",
+              "at": "O",
+              "from": "B",
+              "to": "C",
+              "label": "108°"
+            },
+            {
+              "kind": "angle",
+              "step": "s2",
+              "at": "A",
+              "from": "B",
+              "to": "C",
+              "label": "36°"
+            },
+            {
+              "kind": "angle",
+              "step": "s2",
+              "at": "A",
+              "from": "B",
+              "to": "O",
+              "label": "18°"
+            },
+            {
+              "kind": "label",
+              "step": "s2",
+              "at": [
+                7.6,
+                11.4
+              ],
+              "text": "∠BAO = 18°",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "deg(atan2(abs((Bx-Ax)*(Cy-Ay)-(By-Ay)*(Cx-Ax)),(Bx-Ax)*(Cx-Ax)+(By-Ay)*(Cy-Ay))) = tA",
+            "deg(atan2(abs((Bx-Ox)*(Cy-Oy)-(By-Oy)*(Cx-Ox)),(Bx-Ox)*(Cx-Ox)+(By-Oy)*(Cy-Oy))) = 108",
+            "deg(atan2(abs((Bx-Ax)*(Oy-Ay)-(By-Ay)*(Ox-Ax)),(Bx-Ax)*(Ox-Ax)+(By-Ay)*(Oy-Ay))) = deg(atan2(abs((Ox-Ax)*(Cy-Ay)-(Oy-Ay)*(Cx-Ax)),(Ox-Ax)*(Cx-Ax)+(Oy-Ay)*(Cy-Ay)))",
+            "deg(atan2(abs((Ax-Bx)*(Oy-By)-(Ay-By)*(Ox-Bx)),(Ax-Bx)*(Ox-Bx)+(Ay-By)*(Oy-By))) = deg(atan2(abs((Ox-Bx)*(Cy-By)-(Oy-By)*(Cx-Bx)),(Ox-Bx)*(Cx-Bx)+(Oy-By)*(Cy-By)))",
+            "deg(atan2(abs((Bx-Ax)*(Oy-Ay)-(By-Ay)*(Ox-Ax)),(Bx-Ax)*(Ox-Ax)+(By-Ay)*(Oy-Ay))) = 18"
+          ],
+          "answer": "deg(atan2(abs((Bx-Ax)*(Oy-Ay)-(By-Ay)*(Ox-Ax)),(Bx-Ax)*(Ox-Ax)+(By-Ay)*(Oy-Ay)))"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "9f8fd07f",
+        "answer": {
+          "value": 18,
+          "label": "18°"
+        }
+      }
+    },
+    {
+      "id": "a2d6ff5c-c4d4-4ec1-8644-96e4adea802a",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "ab": "12",
+            "ac": "15",
+            "bc": "18",
+            "bd": "bc*ab/(ab+ac)",
+            "Bx": "0",
+            "By": "0",
+            "Cx": "bc",
+            "Cy": "0",
+            "Ax": "(ab^2+bc^2-ac^2)/(2*bc)",
+            "Ay": "sqrt(ab^2-Ax^2)",
+            "Dx": "bd",
+            "Dy": "0"
+          },
+          "view": {
+            "x": [
+              -2,
+              20
+            ],
+            "y": [
+              -2,
+              11.5
+            ]
+          },
+          "points": {
+            "B": [
+              "Bx",
+              "By"
+            ],
+            "C": [
+              "Cx",
+              "Cy"
+            ],
+            "A": [
+              "Ax",
+              "Ay"
+            ],
+            "D": [
+              "Dx",
+              "Dy"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "step": "s1",
+              "points": [
+                "A",
+                "B",
+                "C"
+              ]
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "A",
+              "label": "A",
+              "pos": "n"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "B",
+              "label": "B",
+              "pos": "sw"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "C",
+              "label": "C",
+              "pos": "se"
+            },
+            {
+              "kind": "label",
+              "step": "s1",
+              "at": [
+                1.4,
+                6.8
+              ],
+              "text": "12"
+            },
+            {
+              "kind": "label",
+              "step": "s1",
+              "at": [
+                13.8,
+                6
+              ],
+              "text": "15"
+            },
+            {
+              "kind": "label",
+              "step": "s1",
+              "at": [
+                8.5,
+                -1.4
+              ],
+              "text": "18"
+            },
+            {
+              "kind": "segment",
+              "step": "s2",
+              "from": "A",
+              "to": "D",
+              "dash": true
+            },
+            {
+              "kind": "point",
+              "step": "s2",
+              "at": "D",
+              "label": "D",
+              "pos": "s"
+            },
+            {
+              "kind": "angle",
+              "step": "s2",
+              "at": "A",
+              "from": "B",
+              "to": "D",
+              "label": "θ"
+            },
+            {
+              "kind": "angle",
+              "step": "s2",
+              "at": "A",
+              "from": "D",
+              "to": "C",
+              "label": "θ"
+            },
+            {
+              "kind": "label",
+              "step": "s2",
+              "at": [
+                -1.6,
+                10.2
+              ],
+              "text": "BD : DC = 12 : 15 = 4 : 5",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "step": "s3",
+              "from": "B",
+              "to": "D",
+              "tone": "brand",
+              "label": "BD = 8",
+              "labelAt": [
+                4,
+                -0.2
+              ],
+              "pos": "s"
+            },
+            {
+              "kind": "label",
+              "step": "s4",
+              "at": [
+                12.2,
+                2.6
+              ],
+              "text": "DC = 10",
+              "tone": "muted"
+            }
+          ],
+          "assert": [
+            "sqrt((Ax-Bx)^2+(Ay-By)^2) = ab",
+            "sqrt((Ax-Cx)^2+(Ay-Cy)^2) = ac",
+            "deg(atan2(abs((Bx-Ax)*(Dy-Ay)-(By-Ay)*(Dx-Ax)),(Bx-Ax)*(Dx-Ax)+(By-Ay)*(Dy-Ay))) = deg(atan2(abs((Dx-Ax)*(Cy-Ay)-(Dy-Ay)*(Cx-Ax)),(Dx-Ax)*(Cx-Ax)+(Dy-Ay)*(Cy-Ay)))",
+            "sqrt((Bx-Dx)^2+(By-Dy)^2) = 8",
+            "sqrt((Dx-Cx)^2+(Dy-Cy)^2) = 10"
+          ],
+          "answer": "sqrt((Bx-Dx)^2+(By-Dy)^2)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "9dcd00f7",
+        "answer": {
+          "value": 8,
+          "label": "8 cm"
+        }
+      }
+    },
+    {
+      "id": "a63659a8-dfe2-418f-bd2b-569183f321ae",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "ab": "10",
+            "ac": "15",
+            "d": "1/(1/ab+1/ac)",
+            "Ax": "0",
+            "Ay": "0",
+            "Bx": "ab",
+            "By": "0",
+            "Cx": "0",
+            "Cy": "ac",
+            "Dx": "d",
+            "Dy": "d",
+            "Ex": "0",
+            "Ey": "d",
+            "Fx": "d",
+            "Fy": "0"
+          },
+          "view": {
+            "x": [
+              -6,
+              16
+            ],
+            "y": [
+              -2,
+              16.5
+            ]
+          },
+          "points": {
+            "A": [
+              "Ax",
+              "Ay"
+            ],
+            "B": [
+              "Bx",
+              "By"
+            ],
+            "C": [
+              "Cx",
+              "Cy"
+            ],
+            "D": [
+              "Dx",
+              "Dy"
+            ],
+            "E": [
+              "Ex",
+              "Ey"
+            ],
+            "F": [
+              "Fx",
+              "Fy"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "step": "s1",
+              "points": [
+                "A",
+                "B",
+                "C"
+              ]
+            },
+            {
+              "kind": "angle",
+              "step": "s1",
+              "at": "A",
+              "from": "B",
+              "to": "C",
+              "label": "90°"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "A",
+              "label": "A",
+              "pos": "sw"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "B",
+              "label": "B",
+              "pos": "se"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "C",
+              "label": "C",
+              "pos": "nw"
+            },
+            {
+              "kind": "label",
+              "step": "s1",
+              "at": [
+                4.6,
+                -1.4
+              ],
+              "text": "10"
+            },
+            {
+              "kind": "label",
+              "step": "s1",
+              "at": [
+                -2.6,
+                7.5
+              ],
+              "text": "15"
+            },
+            {
+              "kind": "segment",
+              "step": "s2",
+              "from": "A",
+              "to": "D"
+            },
+            {
+              "kind": "point",
+              "step": "s2",
+              "at": "D",
+              "label": "D",
+              "pos": "ne"
+            },
+            {
+              "kind": "segment",
+              "step": "s2",
+              "from": "D",
+              "to": "E",
+              "dash": true
+            },
+            {
+              "kind": "point",
+              "step": "s2",
+              "at": "E",
+              "label": "E",
+              "pos": "w"
+            },
+            {
+              "kind": "segment",
+              "step": "s2",
+              "from": "D",
+              "to": "F",
+              "dash": true
+            },
+            {
+              "kind": "label",
+              "step": "s2",
+              "at": [
+                7.2,
+                3
+              ],
+              "text": "DE = DF = d",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "step": "s3",
+              "at": [
+                7.8,
+                9.6
+              ],
+              "text": "25d = 150",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "step": "s4",
+              "at": [
+                7.8,
+                12
+              ],
+              "text": "DE = d = 6",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "deg(atan2(abs((Bx-Ax)*(Cy-Ay)-(By-Ay)*(Cx-Ax)),(Bx-Ax)*(Cx-Ax)+(By-Ay)*(Cy-Ay))) = 90",
+            "deg(atan2(abs((Bx-Ax)*(Dy-Ay)-(By-Ay)*(Dx-Ax)),(Bx-Ax)*(Dx-Ax)+(By-Ay)*(Dy-Ay))) = deg(atan2(abs((Dx-Ax)*(Cy-Ay)-(Dy-Ay)*(Cx-Ax)),(Dx-Ax)*(Cx-Ax)+(Dy-Ay)*(Cy-Ay)))",
+            "d*(1/ab+1/ac) = 1",
+            "sqrt((Dx-Ex)^2+(Dy-Ey)^2) = sqrt((Dx-Fx)^2+(Dy-Fy)^2)",
+            "deg(atan2(abs((Ax-Ex)*(Dy-Ey)-(Ay-Ey)*(Dx-Ex)),(Ax-Ex)*(Dx-Ex)+(Ay-Ey)*(Dy-Ey))) = 90",
+            "sqrt((Dx-Ex)^2+(Dy-Ey)^2) = 6"
+          ],
+          "answer": "sqrt((Dx-Ex)^2+(Dy-Ey)^2)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "14b7def9",
+        "answer": {
+          "value": 5.999999999999999,
+          "label": "6 cm"
+        }
+      }
+    },
+    {
+      "id": "ab2878f8-62a5-4d10-b68c-0419079bb8db",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "tQ": "84",
+            "tR": "48",
+            "tP": "180-tQ-tR",
+            "LQR": "10",
+            "Qx": "0",
+            "Qy": "0",
+            "Rx": "LQR",
+            "Ry": "0",
+            "lQP": "LQR*sin(rad(tR))/sin(rad(180-tQ-tR))",
+            "Px": "lQP*cos(rad(tQ))",
+            "Py": "lQP*sin(rad(tQ))",
+            "qt": "sqrt((Qx-Px)^2+(Qy-Py)^2)*sin(rad(tP/2))/sin(rad(tQ+tP/2))",
+            "Tx": "qt",
+            "Ty": "0",
+            "Sx": "Px",
+            "Sy": "0"
+          },
+          "view": {
+            "x": [
+              -2,
+              12
+            ],
+            "y": [
+              -2,
+              11.5
+            ]
+          },
+          "points": {
+            "Q": [
+              "Qx",
+              "Qy"
+            ],
+            "R": [
+              "Rx",
+              "Ry"
+            ],
+            "P": [
+              "Px",
+              "Py"
+            ],
+            "T": [
+              "Tx",
+              "Ty"
+            ],
+            "S": [
+              "Sx",
+              "Sy"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "step": "s1",
+              "points": [
+                "P",
+                "Q",
+                "R"
+              ]
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "P",
+              "label": "P",
+              "pos": "n"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "Q",
+              "label": "Q",
+              "pos": "sw"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "R",
+              "label": "R",
+              "pos": "se"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "S",
+              "label": "S",
+              "pos": "s"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "T",
+              "label": "T",
+              "pos": "s"
+            },
+            {
+              "kind": "angle",
+              "step": "s1",
+              "at": "Q",
+              "from": "P",
+              "to": "R",
+              "label": "84°"
+            },
+            {
+              "kind": "angle",
+              "step": "s1",
+              "at": "R",
+              "from": "P",
+              "to": "Q",
+              "label": "48°"
+            },
+            {
+              "kind": "segment",
+              "step": "s2",
+              "from": "P",
+              "to": "T"
+            },
+            {
+              "kind": "angle",
+              "step": "s2",
+              "at": "P",
+              "from": "Q",
+              "to": "R",
+              "label": "48°"
+            },
+            {
+              "kind": "angle",
+              "step": "s3",
+              "at": "P",
+              "from": "Q",
+              "to": "T",
+              "label": "24°"
+            },
+            {
+              "kind": "segment",
+              "step": "s3",
+              "from": "P",
+              "to": "S",
+              "dash": true
+            },
+            {
+              "kind": "angle",
+              "step": "s3",
+              "at": "S",
+              "from": "P",
+              "to": "Q",
+              "label": "90°"
+            },
+            {
+              "kind": "angle",
+              "step": "s4",
+              "at": "P",
+              "from": "Q",
+              "to": "S",
+              "label": "6°"
+            },
+            {
+              "kind": "angle",
+              "step": "s5",
+              "at": "P",
+              "from": "S",
+              "to": "T",
+              "label": "18°"
+            },
+            {
+              "kind": "label",
+              "step": "s5",
+              "at": [
+                6.6,
+                5.4
+              ],
+              "text": "∠SPT = 18°",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "deg(atan2(abs((Qx-Px)*(Ry-Py)-(Qy-Py)*(Rx-Px)),(Qx-Px)*(Rx-Px)+(Qy-Py)*(Ry-Py))) = tP",
+            "deg(atan2(abs((Qx-Px)*(Ty-Py)-(Qy-Py)*(Tx-Px)),(Qx-Px)*(Tx-Px)+(Qy-Py)*(Ty-Py))) = deg(atan2(abs((Tx-Px)*(Ry-Py)-(Ty-Py)*(Rx-Px)),(Tx-Px)*(Rx-Px)+(Ty-Py)*(Ry-Py)))",
+            "((Rx-Qx)*(Sx-Px)+(Ry-Qy)*(Sy-Py)) = 0",
+            "deg(atan2(abs((Sx-Px)*(Ty-Py)-(Sy-Py)*(Tx-Px)),(Sx-Px)*(Tx-Px)+(Sy-Py)*(Ty-Py))) = 18"
+          ],
+          "answer": "deg(atan2(abs((Sx-Px)*(Ty-Py)-(Sy-Py)*(Tx-Px)),(Sx-Px)*(Tx-Px)+(Sy-Py)*(Ty-Py)))"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "fd69a41c",
+        "answer": {
+          "value": 18,
+          "label": "18°"
+        }
+      }
+    },
+    {
+      "id": "c185e5a2-e17b-4fd4-9316-aa71ba91cd67",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "tP": "42",
+            "tQ": "70",
+            "tR": "180-tP-tQ",
+            "LQR": "10",
+            "Qx": "0",
+            "Qy": "0",
+            "Rx": "LQR",
+            "Ry": "0",
+            "lQP": "LQR*sin(rad(tR))/sin(rad(180-tQ-tR))",
+            "Px": "lQP*cos(rad(tQ))",
+            "Py": "lQP*sin(rad(tQ))",
+            "wa": "sqrt((Qx-Rx)^2+(Qy-Ry)^2)",
+            "wb": "sqrt((Px-Rx)^2+(Py-Ry)^2)",
+            "wc": "sqrt((Px-Qx)^2+(Py-Qy)^2)",
+            "Ox": "(wa*Px+wb*Qx+wc*Rx)/(wa+wb+wc)",
+            "Oy": "(wa*Py+wb*Qy+wc*Ry)/(wa+wb+wc)"
+          },
+          "view": {
+            "x": [
+              -6,
+              16
+            ],
+            "y": [
+              -2,
+              15
+            ]
+          },
+          "points": {
+            "Q": [
+              "Qx",
+              "Qy"
+            ],
+            "R": [
+              "Rx",
+              "Ry"
+            ],
+            "P": [
+              "Px",
+              "Py"
+            ],
+            "O": [
+              "Ox",
+              "Oy"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "step": "s1",
+              "points": [
+                "P",
+                "Q",
+                "R"
+              ]
+            },
+            {
+              "kind": "segment",
+              "step": "s1",
+              "from": "P",
+              "to": "O"
+            },
+            {
+              "kind": "segment",
+              "step": "s1",
+              "from": "Q",
+              "to": "O"
+            },
+            {
+              "kind": "segment",
+              "step": "s1",
+              "from": "R",
+              "to": "O"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "P",
+              "label": "P",
+              "pos": "n"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "Q",
+              "label": "Q",
+              "pos": "sw"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "R",
+              "label": "R",
+              "pos": "se"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "O",
+              "label": "O",
+              "pos": "s"
+            },
+            {
+              "kind": "angle",
+              "step": "s1",
+              "at": "P",
+              "from": "Q",
+              "to": "R",
+              "label": "42°"
+            },
+            {
+              "kind": "angle",
+              "step": "s2",
+              "at": "O",
+              "from": "Q",
+              "to": "R",
+              "label": "111°"
+            },
+            {
+              "kind": "label",
+              "step": "s2",
+              "at": [
+                7.8,
+                8.6
+              ],
+              "text": "∠QOR = 111°",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "deg(atan2(abs((Qx-Px)*(Ry-Py)-(Qy-Py)*(Rx-Px)),(Qx-Px)*(Rx-Px)+(Qy-Py)*(Ry-Py))) = tP",
+            "deg(atan2(abs((Qx-Ox)*(Ry-Oy)-(Qy-Oy)*(Rx-Ox)),(Qx-Ox)*(Rx-Ox)+(Qy-Oy)*(Ry-Oy))) = 111",
+            "deg(atan2(abs((Qx-Px)*(Oy-Py)-(Qy-Py)*(Ox-Px)),(Qx-Px)*(Ox-Px)+(Qy-Py)*(Oy-Py))) = deg(atan2(abs((Ox-Px)*(Ry-Py)-(Oy-Py)*(Rx-Px)),(Ox-Px)*(Rx-Px)+(Oy-Py)*(Ry-Py)))",
+            "deg(atan2(abs((Px-Qx)*(Oy-Qy)-(Py-Qy)*(Ox-Qx)),(Px-Qx)*(Ox-Qx)+(Py-Qy)*(Oy-Qy))) = deg(atan2(abs((Ox-Qx)*(Ry-Qy)-(Oy-Qy)*(Rx-Qx)),(Ox-Qx)*(Rx-Qx)+(Oy-Qy)*(Ry-Qy)))",
+            "deg(atan2(abs((Px-Rx)*(Oy-Ry)-(Py-Ry)*(Ox-Rx)),(Px-Rx)*(Ox-Rx)+(Py-Ry)*(Oy-Ry))) = deg(atan2(abs((Ox-Rx)*(Qy-Ry)-(Oy-Ry)*(Qx-Rx)),(Ox-Rx)*(Qx-Rx)+(Oy-Ry)*(Qy-Ry)))"
+          ],
+          "answer": "deg(atan2(abs((Qx-Ox)*(Ry-Oy)-(Qy-Oy)*(Rx-Ox)),(Qx-Ox)*(Rx-Ox)+(Qy-Oy)*(Ry-Oy)))"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "66bb030c",
+        "answer": {
+          "value": 111.00000000000003,
+          "label": "111°"
+        }
+      }
+    },
+    {
+      "id": "c614ca66-5b05-4f20-98df-326842776f87",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "ab": "12",
+            "rc": "ab*sqrt(2)/2",
+            "ri": "ab-rc",
+            "Bx": "0",
+            "By": "0",
+            "Ax": "0",
+            "Ay": "ab",
+            "Cx": "ab",
+            "Cy": "0",
+            "Ix": "ri",
+            "Iy": "ri",
+            "Mx": "ab/2",
+            "My": "ab/2"
+          },
+          "view": {
+            "x": [
+              -6,
+              18
+            ],
+            "y": [
+              -3,
+              15
+            ]
+          },
+          "points": {
+            "B": [
+              "Bx",
+              "By"
+            ],
+            "A": [
+              "Ax",
+              "Ay"
+            ],
+            "C": [
+              "Cx",
+              "Cy"
+            ],
+            "I": [
+              "Ix",
+              "Iy"
+            ],
+            "M": [
+              "Mx",
+              "My"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "step": "s1",
+              "points": [
+                "A",
+                "B",
+                "C"
+              ]
+            },
+            {
+              "kind": "angle",
+              "step": "s1",
+              "at": "B",
+              "from": "A",
+              "to": "C",
+              "label": "90°"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "A",
+              "label": "A",
+              "pos": "nw"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "B",
+              "label": "B",
+              "pos": "sw"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "C",
+              "label": "C",
+              "pos": "se"
+            },
+            {
+              "kind": "label",
+              "step": "s1",
+              "at": [
+                0.6,
+                9.4
+              ],
+              "text": "12"
+            },
+            {
+              "kind": "label",
+              "step": "s1",
+              "at": [
+                9,
+                0.9
+              ],
+              "text": "12"
+            },
+            {
+              "kind": "label",
+              "step": "s2",
+              "at": [
+                7.6,
+                8.6
+              ],
+              "text": "12√2",
+              "tone": "muted"
+            },
+            {
+              "kind": "circle",
+              "step": "s3",
+              "center": "I",
+              "r": "ri",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "step": "s3",
+              "at": [
+                2.6,
+                3.4
+              ],
+              "text": "r = 12 − 6√2",
+              "tone": "brand"
+            },
+            {
+              "kind": "circle",
+              "step": "s4",
+              "center": "M",
+              "r": "rc",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "step": "s4",
+              "at": [
+                -5.8,
+                13.6
+              ],
+              "text": "R = 6√2",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "step": "s5",
+              "at": [
+                6,
+                -2.4
+              ],
+              "text": "r : R = (2 − √2) : √2",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "deg(atan2(abs((Ax-Bx)*(Cy-By)-(Ay-By)*(Cx-Bx)),(Ax-Bx)*(Cx-Bx)+(Ay-By)*(Cy-By))) = 90",
+            "sqrt((Ax-Bx)^2+(Ay-By)^2) = sqrt((Bx-Cx)^2+(By-Cy)^2)",
+            "sqrt((Mx-Ax)^2+(My-Ay)^2) = rc",
+            "sqrt((Mx-Bx)^2+(My-By)^2) = rc",
+            "sqrt((Mx-Cx)^2+(My-Cy)^2) = rc",
+            "abs(Ix+Iy-ab)/sqrt(2) = ri",
+            "Ix = ri",
+            "ri/rc = (2-sqrt(2))/sqrt(2)"
+          ],
+          "answer": "ri/rc"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "6e85ac2f",
+        "answer": {
+          "value": 0.41421356237309487,
+          "label": "(2 − √2) : √2"
+        }
+      }
+    },
+    {
+      "id": "c95ce134-46c8-412b-8c1e-2bd516004832",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "ab": "20",
+            "bc": "7",
+            "ca": "15",
+            "k": "ab/ca",
+            "dc": "bc/(k^2-1)",
+            "Bx": "0",
+            "By": "0",
+            "Cx": "bc",
+            "Cy": "0",
+            "Ax": "(ab^2+bc^2-ca^2)/(2*bc)",
+            "Ay": "sqrt(ab^2-Ax^2)",
+            "Dx": "bc+dc",
+            "Dy": "0"
+          },
+          "view": {
+            "x": [
+              -3,
+              22
+            ],
+            "y": [
+              -3,
+              15
+            ]
+          },
+          "points": {
+            "B": [
+              "Bx",
+              "By"
+            ],
+            "C": [
+              "Cx",
+              "Cy"
+            ],
+            "A": [
+              "Ax",
+              "Ay"
+            ],
+            "D": [
+              "Dx",
+              "Dy"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "step": "s1",
+              "points": [
+                "A",
+                "B",
+                "C"
+              ]
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "A",
+              "label": "A",
+              "pos": "n"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "B",
+              "label": "B",
+              "pos": "sw"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "C",
+              "label": "C",
+              "pos": "sw"
+            },
+            {
+              "kind": "label",
+              "step": "s1",
+              "at": [
+                5.4,
+                6.6
+              ],
+              "text": "20"
+            },
+            {
+              "kind": "label",
+              "step": "s1",
+              "at": [
+                8.6,
+                7.8
+              ],
+              "text": "15"
+            },
+            {
+              "kind": "label",
+              "step": "s1",
+              "at": [
+                2.8,
+                -1.4
+              ],
+              "text": "7"
+            },
+            {
+              "kind": "segment",
+              "step": "s2",
+              "from": "C",
+              "to": "D",
+              "dash": true
+            },
+            {
+              "kind": "segment",
+              "step": "s2",
+              "from": "A",
+              "to": "D"
+            },
+            {
+              "kind": "point",
+              "step": "s2",
+              "at": "D",
+              "label": "D",
+              "pos": "se"
+            },
+            {
+              "kind": "angle",
+              "step": "s2",
+              "at": "B",
+              "from": "D",
+              "to": "A",
+              "label": "θ"
+            },
+            {
+              "kind": "angle",
+              "step": "s2",
+              "at": "A",
+              "from": "D",
+              "to": "C",
+              "label": "θ"
+            },
+            {
+              "kind": "label",
+              "step": "s3",
+              "at": [
+                16.6,
+                7
+              ],
+              "text": "DA = 4/3 DC",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "step": "s3",
+              "at": [
+                16.6,
+                4.4
+              ],
+              "text": "DB = 16/9 DC",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "step": "s4",
+              "from": "C",
+              "to": "D",
+              "tone": "brand",
+              "label": "DC = 9",
+              "labelAt": [
+                11.5,
+                -0.2
+              ],
+              "pos": "s"
+            },
+            {
+              "kind": "label",
+              "step": "s5",
+              "at": [
+                10,
+                -2.4
+              ],
+              "text": "144 = 16 × 9",
+              "tone": "muted"
+            }
+          ],
+          "assert": [
+            "sqrt((Ax-Bx)^2+(Ay-By)^2) = ab",
+            "sqrt((Ax-Cx)^2+(Ay-Cy)^2) = ca",
+            "sqrt((Dx-Ax)^2+(Dy-Ay)^2)/sqrt((Dx-Cx)^2+(Dy-Cy)^2) = ab/ca",
+            "sqrt((Dx-Bx)^2+(Dy-By)^2)/sqrt((Dx-Ax)^2+(Dy-Ay)^2) = ab/ca",
+            "deg(atan2(abs((Dx-Bx)*(Ay-By)-(Dy-By)*(Ax-Bx)),(Dx-Bx)*(Ax-Bx)+(Dy-By)*(Ay-By))) = deg(atan2(abs((Dx-Ax)*(Cy-Ay)-(Dy-Ay)*(Cx-Ax)),(Dx-Ax)*(Cx-Ax)+(Dy-Ay)*(Cy-Ay)))",
+            "sqrt((Dx-Ax)^2+(Dy-Ay)^2)^2 = sqrt((Dx-Bx)^2+(Dy-By)^2)*sqrt((Dx-Cx)^2+(Dy-Cy)^2)",
+            "sqrt((Dx-Cx)^2+(Dy-Cy)^2) = 9"
+          ],
+          "answer": "sqrt((Dx-Cx)^2+(Dy-Cy)^2)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "0a017578",
+        "answer": {
+          "value": 9,
+          "label": "9 cm"
+        }
+      }
+    },
+    {
+      "id": "caca47af-ba79-4a32-b35b-89583fda9a4c",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "tA": "70",
+            "tB": "56",
+            "tC": "180-tA-tB",
+            "LBC": "10",
+            "Bx": "0",
+            "By": "0",
+            "Cx": "LBC",
+            "Cy": "0",
+            "lBA": "LBC*sin(rad(tC))/sin(rad(180-tB-tC))",
+            "Ax": "lBA*cos(rad(tB))",
+            "Ay": "lBA*sin(rad(tB))",
+            "dcl": "sqrt((Ax-Cx)^2+(Ay-Cy)^2)/(2*cos(rad(tC)))",
+            "Dx": "LBC-dcl",
+            "Dy": "0"
+          },
+          "view": {
+            "x": [
+              -2,
+              12
+            ],
+            "y": [
+              -2,
+              9
+            ]
+          },
+          "points": {
+            "B": [
+              "Bx",
+              "By"
+            ],
+            "C": [
+              "Cx",
+              "Cy"
+            ],
+            "A": [
+              "Ax",
+              "Ay"
+            ],
+            "D": [
+              "Dx",
+              "Dy"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "step": "s1",
+              "points": [
+                "A",
+                "B",
+                "C"
+              ]
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "A",
+              "label": "A",
+              "pos": "n"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "B",
+              "label": "B",
+              "pos": "sw"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "C",
+              "label": "C",
+              "pos": "se"
+            },
+            {
+              "kind": "angle",
+              "step": "s1",
+              "at": "A",
+              "from": "B",
+              "to": "C",
+              "label": "70°"
+            },
+            {
+              "kind": "angle",
+              "step": "s1",
+              "at": "B",
+              "from": "A",
+              "to": "C",
+              "label": "56°"
+            },
+            {
+              "kind": "angle",
+              "step": "s2",
+              "at": "C",
+              "from": "A",
+              "to": "B",
+              "label": "54°"
+            },
+            {
+              "kind": "segment",
+              "step": "s3",
+              "from": "A",
+              "to": "D"
+            },
+            {
+              "kind": "point",
+              "step": "s3",
+              "at": "D",
+              "label": "D",
+              "pos": "s"
+            },
+            {
+              "kind": "angle",
+              "step": "s3",
+              "at": "A",
+              "from": "D",
+              "to": "C",
+              "label": "y"
+            },
+            {
+              "kind": "angle",
+              "step": "s4",
+              "at": "D",
+              "from": "A",
+              "to": "B",
+              "label": "2y"
+            },
+            {
+              "kind": "label",
+              "step": "s4",
+              "at": [
+                6.8,
+                5.2
+              ],
+              "text": "2y = y + 54°",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "step": "s4",
+              "at": [
+                6.8,
+                4
+              ],
+              "text": "y = 54°",
+              "tone": "muted"
+            },
+            {
+              "kind": "angle",
+              "step": "s5",
+              "at": "D",
+              "from": "A",
+              "to": "C",
+              "label": "72°"
+            },
+            {
+              "kind": "label",
+              "step": "s5",
+              "at": [
+                6.8,
+                2.8
+              ],
+              "text": "∠ADC = 72°",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "deg(atan2(abs((Bx-Ax)*(Cy-Ay)-(By-Ay)*(Cx-Ax)),(Bx-Ax)*(Cx-Ax)+(By-Ay)*(Cy-Ay))) = tA",
+            "deg(atan2(abs((Ax-Dx)*(By-Dy)-(Ay-Dy)*(Bx-Dx)),(Ax-Dx)*(Bx-Dx)+(Ay-Dy)*(By-Dy))) = 2*deg(atan2(abs((Dx-Ax)*(Cy-Ay)-(Dy-Ay)*(Cx-Ax)),(Dx-Ax)*(Cx-Ax)+(Dy-Ay)*(Cy-Ay)))",
+            "deg(atan2(abs((Dx-Ax)*(Cy-Ay)-(Dy-Ay)*(Cx-Ax)),(Dx-Ax)*(Cx-Ax)+(Dy-Ay)*(Cy-Ay))) = 54",
+            "deg(atan2(abs((Ax-Dx)*(By-Dy)-(Ay-Dy)*(Bx-Dx)),(Ax-Dx)*(Bx-Dx)+(Ay-Dy)*(By-Dy))) = 108",
+            "deg(atan2(abs((Ax-Dx)*(Cy-Dy)-(Ay-Dy)*(Cx-Dx)),(Ax-Dx)*(Cx-Dx)+(Ay-Dy)*(Cy-Dy))) = 72"
+          ],
+          "answer": "deg(atan2(abs((Ax-Dx)*(Cy-Dy)-(Ay-Dy)*(Cx-Dx)),(Ax-Dx)*(Cx-Dx)+(Ay-Dy)*(Cy-Dy)))"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "92557232",
+        "answer": {
+          "value": 72,
+          "label": "72°"
+        }
+      }
+    },
+    {
+      "id": "cd4aa8b6-2e67-43ac-84ac-1289568679cd",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "ab": "6",
+            "bc": "8",
+            "Bx": "0",
+            "By": "0",
+            "Ax": "0",
+            "Ay": "ab",
+            "Cx": "bc",
+            "Cy": "0",
+            "Mx": "bc/2",
+            "My": "ab/2",
+            "Gx": "bc/3",
+            "Gy": "ab/3"
+          },
+          "view": {
+            "x": [
+              -2,
+              12
+            ],
+            "y": [
+              -2,
+              8
+            ]
+          },
+          "points": {
+            "B": [
+              "Bx",
+              "By"
+            ],
+            "A": [
+              "Ax",
+              "Ay"
+            ],
+            "C": [
+              "Cx",
+              "Cy"
+            ],
+            "M": [
+              "Mx",
+              "My"
+            ],
+            "G": [
+              "Gx",
+              "Gy"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "step": "s1",
+              "points": [
+                "A",
+                "B",
+                "C"
+              ]
+            },
+            {
+              "kind": "angle",
+              "step": "s1",
+              "at": "B",
+              "from": "A",
+              "to": "C",
+              "label": "90°"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "A",
+              "label": "A",
+              "pos": "nw"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "C",
+              "label": "C",
+              "pos": "se"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "B",
+              "label": "B = H",
+              "pos": "sw"
+            },
+            {
+              "kind": "label",
+              "step": "s1",
+              "at": [
+                -1.6,
+                3
+              ],
+              "text": "6"
+            },
+            {
+              "kind": "label",
+              "step": "s1",
+              "at": [
+                3.8,
+                -1.4
+              ],
+              "text": "8"
+            },
+            {
+              "kind": "point",
+              "step": "s2",
+              "at": "M",
+              "label": "M",
+              "pos": "ne"
+            },
+            {
+              "kind": "segment",
+              "step": "s2",
+              "from": "B",
+              "to": "M",
+              "dash": true,
+              "label": "BM = 5",
+              "labelAt": [
+                2.7,
+                1.3
+              ],
+              "pos": "se"
+            },
+            {
+              "kind": "point",
+              "step": "s3",
+              "at": "G",
+              "label": "G",
+              "pos": "se"
+            },
+            {
+              "kind": "segment",
+              "step": "s3",
+              "from": "B",
+              "to": "G",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "step": "s3",
+              "at": [
+                5,
+                -1.4
+              ],
+              "text": "GH = BG = 10/3",
+              "tone": "good"
+            },
+            {
+              "kind": "label",
+              "step": "s4",
+              "at": [
+                5.2,
+                4.6
+              ],
+              "text": "G = (8/3, 2)",
+              "tone": "muted"
+            }
+          ],
+          "assert": [
+            "deg(atan2(abs((Ax-Bx)*(Cy-By)-(Ay-By)*(Cx-Bx)),(Ax-Bx)*(Cx-Bx)+(Ay-By)*(Cy-By))) = 90",
+            "sqrt((Ax-Cx)^2+(Ay-Cy)^2) = 10",
+            "sqrt((Bx-Mx)^2+(By-My)^2) = 5",
+            "sqrt((Bx-Gx)^2+(By-Gy)^2) = 2/3*sqrt((Bx-Mx)^2+(By-My)^2)",
+            "sqrt((Bx-Gx)^2+(By-Gy)^2) = 10/3"
+          ],
+          "answer": "sqrt((Bx-Gx)^2+(By-Gy)^2)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "319878e6",
+        "answer": {
+          "value": 3.3333333333333335,
+          "label": "10/3 cm"
+        }
+      }
+    },
+    {
+      "id": "d1bac85f-8838-4f50-8086-de2cb8c71b32",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "a": "3",
+            "b": "2",
+            "Cx": "0",
+            "Cy": "0",
+            "Ax": "3*a",
+            "Ay": "0",
+            "Bx": "0",
+            "By": "3*b",
+            "Px": "2*a",
+            "Py": "0",
+            "Qx": "0",
+            "Qy": "2*b",
+            "num": "(sqrt((Ax-Qx)^2+(Ay-Qy)^2)^2+sqrt((Bx-Px)^2+(By-Py)^2)^2)",
+            "den": "sqrt((Ax-Bx)^2+(Ay-By)^2)^2"
+          },
+          "view": {
+            "x": [
+              -5.5,
+              12
+            ],
+            "y": [
+              -2.6,
+              8
+            ]
+          },
+          "points": {
+            "C": [
+              "Cx",
+              "Cy"
+            ],
+            "A": [
+              "Ax",
+              "Ay"
+            ],
+            "B": [
+              "Bx",
+              "By"
+            ],
+            "P": [
+              "Px",
+              "Py"
+            ],
+            "Q": [
+              "Qx",
+              "Qy"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "step": "s1",
+              "points": [
+                "A",
+                "B",
+                "C"
+              ]
+            },
+            {
+              "kind": "angle",
+              "step": "s1",
+              "at": "C",
+              "from": "A",
+              "to": "B",
+              "label": "90°"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "A",
+              "label": "A",
+              "pos": "se"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "B",
+              "label": "B",
+              "pos": "nw"
+            },
+            {
+              "kind": "point",
+              "step": "s1",
+              "at": "C",
+              "label": "C",
+              "pos": "sw"
+            },
+            {
+              "kind": "label",
+              "step": "s1",
+              "at": [
+                4.2,
+                0.5
+              ],
+              "text": "3a"
+            },
+            {
+              "kind": "label",
+              "step": "s1",
+              "at": [
+                -1.7,
+                3
+              ],
+              "text": "3b"
+            },
+            {
+              "kind": "point",
+              "step": "s2",
+              "at": "P",
+              "label": "P",
+              "pos": "s"
+            },
+            {
+              "kind": "point",
+              "step": "s2",
+              "at": "Q",
+              "label": "Q",
+              "pos": "w"
+            },
+            {
+              "kind": "label",
+              "step": "s2",
+              "at": [
+                6.4,
+                -1
+              ],
+              "text": "AP : PC = 1 : 2",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "step": "s2",
+              "at": [
+                -5.3,
+                4.4
+              ],
+              "text": "BQ : QC = 1 : 2",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "step": "s3",
+              "from": "A",
+              "to": "Q",
+              "tone": "brand"
+            },
+            {
+              "kind": "segment",
+              "step": "s3",
+              "from": "B",
+              "to": "P",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "step": "s3",
+              "at": [
+                4.6,
+                6.6
+              ],
+              "text": "AQ² = 9a² + 4b²"
+            },
+            {
+              "kind": "label",
+              "step": "s3",
+              "at": [
+                4.6,
+                5.6
+              ],
+              "text": "BP² = 4a² + 9b²"
+            },
+            {
+              "kind": "label",
+              "step": "s3",
+              "at": [
+                4.6,
+                4.6
+              ],
+              "text": "AB² = 9(a² + b²)"
+            },
+            {
+              "kind": "label",
+              "step": "s4",
+              "at": [
+                0.4,
+                -2.1
+              ],
+              "text": "(AQ² + BP²) : AB² = 13 : 9",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "deg(atan2(abs((Ax-Cx)*(By-Cy)-(Ay-Cy)*(Bx-Cx)),(Ax-Cx)*(Bx-Cx)+(Ay-Cy)*(By-Cy))) = 90",
+            "sqrt((Ax-Px)^2+(Ay-Py)^2)*2 = sqrt((Px-Cx)^2+(Py-Cy)^2)",
+            "sqrt((Bx-Qx)^2+(By-Qy)^2)*2 = sqrt((Qx-Cx)^2+(Qy-Cy)^2)",
+            "num = 13*(a^2+b^2)",
+            "den = 9*(a^2+b^2)",
+            "num/den = 13/9"
+          ],
+          "answer": "num/den"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "66eff1f1",
+        "answer": {
+          "value": 1.444444444444444,
+          "label": "13/9"
+        }
+      }
+    }
+  ],
+  "decided": []
+}
