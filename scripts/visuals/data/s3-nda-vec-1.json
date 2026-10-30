@@ -1,0 +1,1012 @@
+{
+ "//": "Assembled from agent drafts (space3d).",
+ "visuals": [
+  {
+   "id": "23dd6f2e-b5aa-4fb1-9760-a3344d958db2",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "space3d",
+    "params": {
+     "points": [
+      {
+       "id": "A",
+       "at": [
+        0.41421356,
+        -1,
+        0
+       ],
+       "label": "A(√2 − 1, −1)"
+      },
+      {
+       "id": "B",
+       "at": [
+        1,
+        2.41421356,
+        0
+       ],
+       "label": "B(1, √2 + 1)"
+      }
+     ],
+     "segments": [
+      {
+       "from": "A",
+       "to": "B",
+       "beat": "construct"
+      }
+     ],
+     "ask": {
+      "kind": "distance",
+      "from": "A",
+      "to": "B",
+      "label": "|AB| = 2√3"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "construct"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "ebff4330",
+    "answer": {
+     "value": 3.4641016132001305,
+     "label": "2√3"
+    }
+   }
+  },
+  {
+   "id": "3451f19d-ac45-41c4-911a-ee9d7d9f89e5",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "space3d",
+    "params": {
+     "points": [
+      {
+       "id": "A",
+       "at": [
+        0,
+        0,
+        0
+       ],
+       "label": "A"
+      },
+      {
+       "id": "B",
+       "at": [
+        3,
+        0,
+        4
+       ],
+       "label": "B"
+      },
+      {
+       "id": "C",
+       "at": [
+        5,
+        -2,
+        4
+       ],
+       "label": "C"
+      },
+      {
+       "id": "M",
+       "at": [
+        4,
+        -1,
+        4
+       ],
+       "label": "M",
+       "beat": "derived"
+      }
+     ],
+     "segments": [
+      {
+       "from": "A",
+       "to": "B",
+       "beat": "given"
+      },
+      {
+       "from": "A",
+       "to": "C",
+       "beat": "given"
+      },
+      {
+       "from": "B",
+       "to": "C",
+       "beat": "given"
+      },
+      {
+       "from": "A",
+       "to": "M",
+       "beat": "derived"
+      }
+     ],
+     "ask": {
+      "kind": "distance",
+      "from": "A",
+      "to": "M",
+      "label": "median AM = √33"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "derived"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "8ba2a0da",
+    "answer": {
+     "value": 5.744562646538029,
+     "label": "√33"
+    }
+   }
+  },
+  {
+   "id": "35615f6f-46bf-4924-af25-99592883ef31",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "space3d",
+    "params": {
+     "vectors": [
+      {
+       "id": "V",
+       "v": [
+        1,
+        1,
+        0
+       ],
+       "label": "(1, 1)"
+      }
+     ],
+     "ask": {
+      "kind": "length",
+      "vector": "V",
+      "label": "length = √2"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given",
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "8077e379",
+    "answer": {
+     "value": 1.4142135623730951,
+     "label": "√2"
+    }
+   }
+  },
+  {
+   "id": "3a42bc1e-6815-4bed-9c20-a8317c806cee",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "space3d",
+    "params": {
+     "vectors": [
+      {
+       "id": "a",
+       "v": [
+        1,
+        2,
+        3
+       ],
+       "label": "a"
+      },
+      {
+       "id": "b",
+       "v": [
+        2,
+        3,
+        -2
+       ],
+       "label": "b"
+      }
+     ],
+     "ask": {
+      "kind": "projection",
+      "vector": "a",
+      "on": "b",
+      "label": "projection = 2/√17"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "f719bc57",
+    "answer": {
+     "value": 0.48507125007266594,
+     "label": "2/√17"
+    }
+   }
+  },
+  {
+   "id": "3e8ec97f-67dc-40fb-82b3-1312f206014a",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "space3d",
+    "params": {
+     "points": [
+      {
+       "id": "A",
+       "at": [
+        1,
+        1,
+        0
+       ],
+       "label": "A(1, 1, 0)"
+      },
+      {
+       "id": "B",
+       "at": [
+        0,
+        1,
+        1
+       ],
+       "label": "B(0, 1, 1)"
+      },
+      {
+       "id": "C",
+       "at": [
+        1,
+        0,
+        1
+       ],
+       "label": "C(1, 0, 1)"
+      }
+     ],
+     "vectors": [
+      {
+       "id": "AB",
+       "v": [
+        -1,
+        0,
+        1
+       ],
+       "from": "A",
+       "label": "AB",
+       "beat": "construct"
+      },
+      {
+       "id": "AC",
+       "v": [
+        0,
+        -1,
+        1
+       ],
+       "from": "A",
+       "label": "AC",
+       "beat": "construct"
+      }
+     ],
+     "ask": {
+      "kind": "angle",
+      "between": [
+       "AB",
+       "AC"
+      ],
+      "label": "∠A = π/3"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "construct"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "8acf5df0",
+    "answer": {
+     "value": 1.0471975511965979,
+     "label": "π/3"
+    }
+   }
+  },
+  {
+   "id": "3effaaec-15e5-4043-bf69-07e8837f5f32",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "space3d",
+    "params": {
+     "points": [
+      {
+       "id": "A",
+       "at": [
+        1,
+        2,
+        3
+       ],
+       "label": "A(1, 2, 3)"
+      },
+      {
+       "id": "P",
+       "at": [
+        2,
+        4,
+        5
+       ],
+       "label": "P(2, 4, 5)"
+      },
+      {
+       "id": "Q",
+       "at": [
+        3,
+        3,
+        1
+       ],
+       "label": "Q(3, 3, 1)"
+      }
+     ],
+     "vectors": [
+      {
+       "id": "AP",
+       "v": [
+        1,
+        2,
+        2
+       ],
+       "from": "A",
+       "label": "AP",
+       "beat": "construct"
+      },
+      {
+       "id": "AQ",
+       "v": [
+        2,
+        1,
+        -2
+       ],
+       "from": "A",
+       "label": "AQ",
+       "beat": "construct"
+      }
+     ],
+     "ask": {
+      "kind": "angle",
+      "between": [
+       "AP",
+       "AQ"
+      ],
+      "label": "angle = 90°"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given",
+       "construct"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "4fcd5a82",
+    "answer": {
+     "value": 1.5707963267948966,
+     "label": "90°"
+    }
+   }
+  },
+  {
+   "id": "41a77a92-8df8-45ac-9ee9-de6f18a62f1f",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "space3d",
+    "params": {
+     "points": [
+      {
+       "id": "O",
+       "at": [
+        0,
+        0,
+        0
+       ],
+       "label": "O"
+      },
+      {
+       "id": "P",
+       "at": [
+        1,
+        2,
+        3
+       ],
+       "label": "P(1, 2, 3)"
+      },
+      {
+       "id": "Q",
+       "at": [
+        -1,
+        -2,
+        -3
+       ],
+       "label": "Q(−1, −2, −3)"
+      }
+     ],
+     "vectors": [
+      {
+       "id": "OQ",
+       "v": [
+        -1,
+        -2,
+        -3
+       ],
+       "label": "OQ",
+       "beat": "construct"
+      }
+     ],
+     "ask": {
+      "kind": "length",
+      "vector": "OQ",
+      "label": "|OQ| = √14"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given",
+       "construct"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "fe7247c8",
+    "answer": {
+     "value": 3.7416573867739413,
+     "label": "√14"
+    }
+   }
+  },
+  {
+   "id": "4a27cdc1-23d7-49fc-8a4b-2661dfe681a3",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "space3d",
+    "params": {
+     "vectors": [
+      {
+       "id": "a",
+       "v": [
+        1,
+        2,
+        3
+       ],
+       "label": "a"
+      },
+      {
+       "id": "b",
+       "v": [
+        1,
+        1,
+        1
+       ],
+       "label": "b"
+      }
+     ],
+     "ask": {
+      "kind": "projection",
+      "vector": "a",
+      "on": "b",
+      "label": "projection = 2√3"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "b852339b",
+    "answer": {
+     "value": 3.4641016151377553,
+     "label": "2√3"
+    }
+   }
+  },
+  {
+   "id": "8b636e01-9ae1-42a2-8eb6-fbf5b24e7a53",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "space3d",
+    "params": {
+     "points": [
+      {
+       "id": "A",
+       "at": [
+        3,
+        -2,
+        1
+       ],
+       "label": "A(3, −2, 1)"
+      },
+      {
+       "id": "B",
+       "at": [
+        2,
+        4,
+        -3
+       ],
+       "label": "B(2, 4, −3)"
+      }
+     ],
+     "ask": {
+      "kind": "distance",
+      "from": "A",
+      "to": "B",
+      "label": "|AB| = √53"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "bfc6f2a5",
+    "answer": {
+     "value": 7.280109889280518,
+     "label": "√53"
+    }
+   }
+  },
+  {
+   "id": "8c613d06-8a57-4fdd-b44d-dd5c30c4cd95",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "space3d",
+    "params": {
+     "vectors": [
+      {
+       "id": "a",
+       "v": [
+        1,
+        2,
+        3
+       ],
+       "label": "a"
+      },
+      {
+       "id": "b",
+       "v": [
+        2,
+        1,
+        2
+       ],
+       "label": "b"
+      }
+     ],
+     "ask": {
+      "kind": "area",
+      "vectors": [
+       "a",
+       "b"
+      ],
+      "shape": "parallelogram",
+      "label": "area = √26"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "b99d1003",
+    "answer": {
+     "value": 5.0990195135927845,
+     "label": "√26"
+    }
+   }
+  },
+  {
+   "id": "97e6593e-3cd2-4d8d-a016-3ac39cb40d34",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "space3d",
+    "params": {
+     "points": [
+      {
+       "id": "A",
+       "at": [
+        1,
+        1,
+        1
+       ],
+       "label": "A(1, 1, 1)"
+      },
+      {
+       "id": "B",
+       "at": [
+        1,
+        2,
+        3
+       ],
+       "label": "B(1, 2, 3)"
+      },
+      {
+       "id": "C",
+       "at": [
+        2,
+        3,
+        1
+       ],
+       "label": "C(2, 3, 1)"
+      }
+     ],
+     "ask": {
+      "kind": "area",
+      "points": [
+       "A",
+       "B",
+       "C"
+      ],
+      "shape": "triangle",
+      "label": "area = ½√21"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given",
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "75de66c4",
+    "answer": {
+     "value": 2.29128784747792,
+     "label": "½√21"
+    }
+   }
+  },
+  {
+   "id": "aa50ce8a-a022-418f-bda9-4e7925aee9d1",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "space3d",
+    "params": {
+     "vectors": [
+      {
+       "id": "a",
+       "v": [
+        1,
+        -2,
+        1
+       ],
+       "label": "a"
+      },
+      {
+       "id": "b",
+       "v": [
+        4,
+        -4,
+        7
+       ],
+       "label": "b"
+      }
+     ],
+     "ask": {
+      "kind": "projection",
+      "vector": "a",
+      "on": "b",
+      "label": "projection = 19/9"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "db1791f2",
+    "answer": {
+     "value": 2.1111111111111107,
+     "label": "19/9"
+    }
+   }
+  },
+  {
+   "id": "bc4bd708-dbc3-4e8c-afaf-49159bb0efc7",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "space3d",
+    "params": {
+     "points": [
+      {
+       "id": "O",
+       "at": [
+        0,
+        0,
+        0
+       ],
+       "label": "O"
+      },
+      {
+       "id": "A",
+       "at": [
+        2,
+        2,
+        1
+       ],
+       "label": "A(2, 2, 1)"
+      },
+      {
+       "id": "B",
+       "at": [
+        2,
+        4,
+        4
+       ],
+       "label": "B(2, 4, 4)"
+      },
+      {
+       "id": "P",
+       "at": [
+        2,
+        2.66666667,
+        2
+       ],
+       "label": "P",
+       "beat": "derived"
+      }
+     ],
+     "segments": [
+      {
+       "from": "A",
+       "to": "B",
+       "beat": "construct"
+      }
+     ],
+     "ask": {
+      "kind": "distance",
+      "from": "O",
+      "to": "P",
+      "label": "OP = √136/3"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given",
+       "construct"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "derived"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "a09bdc96",
+    "answer": {
+     "value": 3.8873012655168484,
+     "label": "√136/3"
+    }
+   }
+  },
+  {
+   "id": "e33f5444-b5a0-4196-8e3c-57d438de365b",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "space3d",
+    "params": {
+     "vectors": [
+      {
+       "id": "a",
+       "v": [
+        1,
+        -2,
+        1
+       ],
+       "label": "a"
+      },
+      {
+       "id": "b",
+       "v": [
+        4,
+        -4,
+        7
+       ],
+       "label": "b"
+      }
+     ],
+     "ask": {
+      "kind": "projection",
+      "vector": "a",
+      "on": "b",
+      "label": "projection = 19/9"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "given"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "answer"
+      ]
+     }
+    ],
+    "fingerprint": "a7de0c84",
+    "answer": {
+     "value": 2.1111111111111107,
+     "label": "19/9"
+    }
+   }
+  }
+ ],
+ "decided": [
+  {
+   "id": "3cbe4d57-9103-4089-85ad-7aff19780599",
+   "verdict": "noFit",
+   "reason": "space3d: picture misleads at review (vector angle arc misplaced or flat right angle foreshortened; triangle seen edge-on; diagonal-triangle for a parallelogram)",
+   "situation": "vectorAngleView"
+  },
+  {
+   "id": "56bb2cbb-4fc6-4093-a21d-5e850685994d",
+   "verdict": "noFit",
+   "reason": "space3d: picture misleads at review (vector angle arc misplaced or flat right angle foreshortened; triangle seen edge-on; diagonal-triangle for a parallelogram)",
+   "situation": "vectorAngleView"
+  },
+  {
+   "id": "77319cff-1210-425f-9d1c-c42ddbcac754",
+   "verdict": "noFit",
+   "reason": "space3d: picture misleads at review (vector angle arc misplaced or flat right angle foreshortened; triangle seen edge-on; diagonal-triangle for a parallelogram)",
+   "situation": "vectorAngleView"
+  },
+  {
+   "id": "82884287-0196-442b-b340-21beb4792858",
+   "verdict": "noFit",
+   "reason": "space3d: picture misleads at review (vector angle arc misplaced or flat right angle foreshortened; triangle seen edge-on; diagonal-triangle for a parallelogram)",
+   "situation": "vectorAngleView"
+  },
+  {
+   "id": "9a24f466-1876-4b61-aa97-8f21487dd4a3",
+   "verdict": "noFit",
+   "reason": "space3d: picture misleads at review (vector angle arc misplaced or flat right angle foreshortened; triangle seen edge-on; diagonal-triangle for a parallelogram)",
+   "situation": "vectorAngleView"
+  },
+  {
+   "id": "b390ea2e-4d59-44bb-8007-939aab2388ef",
+   "verdict": "noFit",
+   "reason": "space3d: picture misleads at review (vector angle arc misplaced or flat right angle foreshortened; triangle seen edge-on; diagonal-triangle for a parallelogram)",
+   "situation": "vectorAngleView"
+  },
+  {
+   "id": "e23a13f5-fd38-4fb3-8a15-384006b16e31",
+   "verdict": "noFit",
+   "reason": "space3d: picture misleads at review (vector angle arc misplaced or flat right angle foreshortened; triangle seen edge-on; diagonal-triangle for a parallelogram)",
+   "situation": "vectorAngleView"
+  },
+  {
+   "id": "e2fafdb0-fddb-48fd-855e-a47cc232ba34",
+   "verdict": "noFit",
+   "reason": "space3d: picture misleads at review (vector angle arc misplaced or flat right angle foreshortened; triangle seen edge-on; diagonal-triangle for a parallelogram)",
+   "situation": "vectorAngleView"
+  }
+ ]
+}

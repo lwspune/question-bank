@@ -320,6 +320,27 @@ picture shows the right shape.
   solution's fingerprint, and `fix-solutions` names any question whose visual
   must be redone (`--replace`).
 - PostgREST `like` on `id::text` fails: resolve full ids from the export JSON.
+- Two points one above the other (a vertex and a centroid on the same x) get
+  their labels pushed onto leader lines that cross the other point, so the
+  label reads as the wrong dot. Give the less important point an empty label
+  (the header already names the answer). The draft briefs now say so.
+- space3d angles between free vectors (2026-10-30, NDA Vectors): the arc can
+  land away from where the two directions meet, and a right angle lying flat in
+  the xy-plane is drawn wide (the view never tilts past 60 degrees). 7 of 11
+  such NDA drafts were dropped at review as noFit `vectorAngleView`; fixing the
+  scene would bring them back. Angles at a shared vertex of a triangle drew fine.
+- Stored solutions from the old Word imports often open with a stray `**`,
+  `Solution (b)**` or `Ans. (c)**`: that text becomes step 1 beside the picture.
+  Clean it with `visuals:fix-solutions` first, then draft.
+- NDA (old import) needs a source check far more often than JEE or MHT-CET:
+  2026-10-30 it ran about one suspect key or stem per 10 questions checked, and
+  most were our copying errors (a lost sign, root or option). The owner chose to
+  settle each against the scanned paper or LWS booklet as found: UPSC scans in
+  `C:\Vilas\LWS_Pune\NDA_Subjects_Content\PYQPs\Maths\` (2026-I under
+  `NDA_Maths_PYQPs_Edited\`; transcripts with keys in `NDA_Maths_Gyanam\`, which
+  drop every root sign), LWS booklets in `C:\tmp\Practice\Maths\` (text layer,
+  keys in `_*_answers.pdf`, worked solutions in `Solutions\`), LWS mocks in
+  `...\Test_Series\NDA Math 1 to 10 - Complete Mock\`.
 
 ## Part of ingestion
 
