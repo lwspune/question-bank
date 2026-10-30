@@ -15,6 +15,8 @@ export type MockQuota = {
   limit: number | null;
   used: number;
   hasPass: boolean;
+  /** Every pass held, 'all' for staff (migration 0206; absent on an older database). */
+  passScopes?: string[];
   chapterLimit: number | null;
   chapterUsed: number;
   /** Free practice tests a day (0156). Absent from a quota read before 0156. */

@@ -2,8 +2,10 @@ import { NextResponse, type NextRequest } from "next/server";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { getSessionMember, getSessionUser } from "@/lib/auth";
-import { resolveExportAccess, DOWNLOAD_PASS_SCOPE } from "@/lib/export/access";
-import { userHasAccess } from "@/lib/entitlements/query";
+import { resolveExportAccess } from "@/lib/export/access";
+import { userHasAnyAccess } from "@/lib/entitlements/query";
+import { passScopesFor } from "@/lib/billing/passScope";
+import { planSiteForHost } from "@/lib/sites/intl";
 import { recordExportEvent } from "@/lib/export/log";
 import { readPaywallSettings } from "@/lib/billing/admin";
 import type { BrandingParts } from "@/lib/export/branding";
@@ -60,7 +62,14 @@ export async function POST(request: NextRequest) {
     const isStaff = !!member;
     const isSignedIn = !!user;
     const hasDownloadPass =
-      user && !isStaff ? await userHasAccess(createSupabaseServerClient(), user.id, DOWNLOAD_PASS_SCOPE) : false;
+      user && !isStaff
+        ? await userHasAnyAccess(
+            createSupabaseServerClient(),
+            user.id,
+            // The site's own passes (0206).
+            passScopesFor(planSiteForHost(request.headers.get("host")))
+          )
+        : false;
 
     const bucket = user ? `export:user:${user.id}` : `export:anon:${getClientIp(request)}`;
     const limit = isStaff || hasDownloadPass ? AUTHED_LIMIT : isSignedIn ? STUDENT_LIMIT : ANON_LIMIT;

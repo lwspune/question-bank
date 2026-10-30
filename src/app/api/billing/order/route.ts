@@ -2,8 +2,8 @@ import { NextResponse, type NextRequest } from "next/server";
 import { getSessionUser } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { createOrder } from "@/lib/billing/razorpay";
-import { stampOrderNotes } from "@/lib/billing/plans";
-import { getActivePlan } from "@/lib/billing/plansQuery";
+import { resolveOrderPlan, stampOrderNotes } from "@/lib/billing/plans";
+import { listActivePlans } from "@/lib/billing/plansQuery";
 import { logActivity } from "@/lib/activity/service";
 import { bookCheckoutEvent, checkoutBox, checkoutGate, paywallEvent } from "@/lib/activity/clientEvents";
 import { readCountry, withCountry } from "@/lib/acquisition/country";
@@ -61,7 +61,11 @@ export async function POST(request: NextRequest) {
     });
   }
 
-  const plan = body?.planId ? await getActivePlan(db, body.planId) : null;
+  // The button names the pass; the buyer's country picks the price (0206): a
+  // buyer in India gets the rupee IMAT plan whichever price they tapped, and a
+  // rupee plan id sent from elsewhere sells the plan sold everywhere.
+  const country = readCountry(request.headers);
+  const plan = body?.planId ? resolveOrderPlan(await listActivePlans(db), body.planId, country) : null;
   if (!plan) {
     return NextResponse.json({ error: "Unknown plan" }, { status: 400 });
   }
@@ -81,7 +85,7 @@ export async function POST(request: NextRequest) {
     user.id,
     withCountry(
       paywallEvent("checkout_opened", checkoutGate(body?.gate), plan.id, undefined, checkoutBox(body?.box)),
-      readCountry(request.headers)
+      country
     )
   );
 

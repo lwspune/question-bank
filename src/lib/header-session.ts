@@ -5,7 +5,8 @@
  */
 import type { ExamSlug } from "@/lib/exam/examContext";
 import { isStage, sanitizeTargetExams, type Stage } from "@/lib/profile/onboarding";
-import { hasActiveScope, SCOPE_MOCKS, type Entitlement } from "@/lib/entitlements/access";
+import { hasActiveScope, type Entitlement } from "@/lib/entitlements/access";
+import { SELLABLE_SCOPES } from "@/lib/billing/plans";
 
 /** Everything the header renders about the viewer, resolved in one pass. */
 export type HeaderSession = {
@@ -48,7 +49,8 @@ export function profileFieldsFromRow(
  * download through their institute, not a pass, and already carry the org chip.
  */
 export function hasPassFromEntitlements(rows: Entitlement[], nowMs: number): boolean {
-  return hasActiveScope(rows, SCOPE_MOCKS, nowMs);
+  // Any pass (2026-10-30): the IMAT pass earns the diamond as the www pass does.
+  return SELLABLE_SCOPES.some((scope) => hasActiveScope(rows, scope, nowMs));
 }
 
 /**

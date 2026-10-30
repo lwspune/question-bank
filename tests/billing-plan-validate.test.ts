@@ -31,7 +31,9 @@ describe("validatePlan", () => {
   });
 
   it("sells only the scopes something in code enforces", () => {
-    expect(SELLABLE_SCOPES).toEqual([SCOPE_MOCKS, SCOPE_TEACHER]);
+    // imat and mcat (2026-10-30): enforced per exam by the pass checks and the
+    // 0204 limit triggers (tests/billing-exam-pass.test.ts).
+    expect(SELLABLE_SCOPES).toEqual([SCOPE_MOCKS, SCOPE_TEACHER, "imat", "mcat"]);
     expect(validatePlan(good({ scope: SCOPE_ALL }))).toMatchObject({ ok: false, field: "scope" });
     expect(validatePlan(good({ scope: "notes" }))).toMatchObject({ ok: false, field: "scope" });
   });

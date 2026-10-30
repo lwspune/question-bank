@@ -10,6 +10,7 @@ import { trackFunnelOnce } from "@/lib/analytics/trackFunnel";
 import { noteRevealForRun } from "@/components/celebrate/answerRun";
 import type { PickLabel, PracticeSurface } from "@/lib/questions/practiceBatch";
 import type { PassCta } from "@/lib/billing/plans";
+import { intlExamOfPath } from "@/lib/sites/intl";
 
 /**
  * A reveal that came from tapping an option. `correct` is the page's own
@@ -140,7 +141,10 @@ function ensureDailyQuota(): void {
   if (dailyFetch) return;
   dailyFetch = (async () => {
     try {
-      const res = await fetch("/api/me/reveals", { cache: "no-store" });
+      // An intl exam's page names its exam, so only that exam's pass lifts the
+      // limit (migration 0206); a www page names none and the site's pass counts.
+      const exam = intlExamOfPath(window.location.pathname);
+      const res = await fetch(`/api/me/reveals${exam ? `?exam=${exam}` : ""}`, { cache: "no-store" });
       if (!res.ok) return;
       const data = (await res.json()) as { limit: number | null; todayIds: string[]; pass?: PassCta | null };
       // null = no limit (off, or a pass): stay unlimited for this page load.

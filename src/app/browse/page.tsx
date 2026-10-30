@@ -4,11 +4,12 @@ import { redirect } from "next/navigation";
 import { Inbox } from "lucide-react";
 import type { Metadata } from "next";
 import { getPageIdentity } from "@/lib/auth";
-import { sessionHasScope } from "@/lib/entitlements/session";
+import { sessionHasAnyScope } from "@/lib/entitlements/session";
 import { sessionPaperFree } from "@/lib/export/freeDownloadSession";
 import { paperKey } from "@/lib/export/freePaper";
-import { DOWNLOAD_PASS_SCOPE } from "@/lib/export/access";
-import { passCta, passForScope } from "@/lib/billing/plans";
+import { passCta, passForBuyer } from "@/lib/billing/plans";
+import { passScopesFor } from "@/lib/billing/passScope";
+import { readCountry } from "@/lib/acquisition/country";
 import { listActivePlansCached } from "@/lib/billing/plansQuery";
 import { getCachedPyqYears } from "@/lib/exam/bankYears";
 import { yearsSource } from "@/lib/questions/browseSharedReads";
@@ -120,8 +121,10 @@ export default async function BrowsePage({ searchParams }: PageProps) {
   const { isStaff, isSignedIn, canEditContent } = await getPageIdentity();
   // The Premium Pass: a paid grant that unlocks the paper + key for an
   // account with no org. Only a signed-in non-staff viewer needs the lookup.
+  // Each host asks for its own passes (0206): www the Premium Pass, intl its exams'.
+  const passSite = isIntlHost(headers().get("host")) ? "intl" : "pyqvault";
   const hasDownloadPass =
-    isSignedIn && !isStaff ? await sessionHasScope(DOWNLOAD_PASS_SCOPE) : false;
+    isSignedIn && !isStaff ? await sessionHasAnyScope(passScopesFor(passSite)) : false;
 
   const rawParams = paramsFromSearch(searchParams);
   let filters = parseFilters(rawParams);
@@ -308,7 +311,7 @@ export default async function BrowsePage({ searchParams }: PageProps) {
   const paperLinks = paperLinkMap(await papersPromise, yearsOf(questionsResult.rows));
 
   const downloadPass = plansPromise
-    ? passCta(passForScope(await plansPromise, DOWNLOAD_PASS_SCOPE, intl ? "intl" : "pyqvault"))
+    ? passCta(passForBuyer(await plansPromise, passScopesFor(passSite)[0], passSite, readCountry(headers())))
     : null;
   const freeDownloadLeft = freePromise ? await freePromise : false;
 

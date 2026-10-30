@@ -67,3 +67,14 @@ export async function userHasAccess(
   const rows = await loadEntitlements(client, userId);
   return hasActiveScope(rows, scope, nowMs);
 }
+
+/** True when the user holds a grant covering ANY of `scopes` (a site-level pass check, migration 0206). */
+export async function userHasAnyAccess(
+  client: SupabaseClient,
+  userId: string,
+  scopes: readonly string[],
+  nowMs: number = Date.now()
+): Promise<boolean> {
+  const rows = await loadEntitlements(client, userId);
+  return scopes.some((s) => hasActiveScope(rows, s, nowMs));
+}

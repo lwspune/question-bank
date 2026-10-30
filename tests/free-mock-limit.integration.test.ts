@@ -19,6 +19,10 @@
  *   - a paper a friend sent (migration 0166: a mock_invite_joins row) starts
  *     free past either limit and is not counted, unless the student had
  *     already started it before joining; someone else's join frees nobody
+ *   - a pass covers the EXAMS it is for (migration 0206): the www pass
+ *     (`mocks`) does not let a student past the limit on an IMAT mock, and
+ *     the IMAT pass does not on an Indian one; my_mock_quota lists the
+ *     user's passes as `passScopes`
  *
  * The settings row is global, so this suite restores it in afterAll. Other
  * suites start at most one mock per user, so the limit cannot trip them.
@@ -36,7 +40,9 @@ const HAS_ENV =
 const PASSWORD = "free-mock-limit-pw-1234";
 const RUN_ID = randomUUID().slice(0, 8);
 const FUTURE = new Date(Date.now() + 3600_000).toISOString();
-const ROLES = ["student", "early", "mockpass", "teacherpass", "staff", "off", "invited", "inviter"] as const;
+const ROLES = [
+  "student", "early", "mockpass", "teacherpass", "staff", "off", "invited", "inviter", "imatpass", "mocksonimat",
+] as const;
 type Role = (typeof ROLES)[number];
 
 describe.skipIf(!HAS_ENV)("free-mock limit (migration 0120)", () => {
@@ -46,6 +52,9 @@ describe.skipIf(!HAS_ENV)("free-mock limit (migration 0120)", () => {
   const mockIds: string[] = [];
   let orgId = "";
   const chapterIds: string[] = [];
+  // An exam that asks for the IMAT pass (0206), and four full mocks in it.
+  let imatExamId = "";
+  const imatMockIds: string[] = [];
   let saved: Record<string, unknown> | null = null;
   let countsFrom = "";
 
@@ -60,6 +69,13 @@ describe.skipIf(!HAS_ENV)("free-mock limit (migration 0120)", () => {
     clients[role]
       .from("mock_attempts")
       .insert({ mock_id: chapterIds[idx], user_id: ids[role], expires_at: FUTURE })
+      .select("id")
+      .single();
+
+  const startImat = (role: Role, idx: number) =>
+    clients[role]
+      .from("mock_attempts")
+      .insert({ mock_id: imatMockIds[idx], user_id: ids[role], expires_at: FUTURE })
       .select("id")
       .single();
 
@@ -118,10 +134,47 @@ describe.skipIf(!HAS_ENV)("free-mock limit (migration 0120)", () => {
       (chapter ? chapterIds : mockIds).push(data!.id);
     }
 
-    await admin.from("entitlements").insert([
+    const { data: imatExam, error: examErr } = await admin
+      .from("exams")
+      .insert({ name: `Pass scope exam ${RUN_ID}`, pass_scope: "imat" })
+      .select("id")
+      .single();
+    expect(examErr).toBeNull();
+    imatExamId = imatExam!.id;
+    for (let i = 0; i < 4; i++) {
+      const { data, error } = await admin
+        .from("mock_tests")
+        .insert({
+          id: randomUUID(),
+          slug: `free-mock-limit-imat-${i}-${RUN_ID}`,
+          scope: "full",
+          exam_id: imatExamId,
+          paper_code: "maths",
+          pyq_year: 2099,
+          title: `Free mock limit IMAT ${i} ${RUN_ID}`,
+          duration_secs: 9000,
+          marking: { correct: 1.5, wrong: -0.4 },
+          sections: [{ key: "mathematics", label: "Mathematics", count: 1 }],
+          questions: [
+            { position: 1, questionId: q!.id, sectionKey: "mathematics", marks: 1.5, negMarks: -0.4 },
+          ],
+          total_questions: 1,
+          total_marks: 1.5,
+          status: "published",
+        })
+        .select("id")
+        .single();
+      expect(error).toBeNull();
+      imatMockIds.push(data!.id);
+    }
+
+    const { error: entErr } = await admin.from("entitlements").insert([
       { user_id: ids.mockpass, scope: "mocks", source: "manual", status: "active", note: `test ${RUN_ID}` },
       { user_id: ids.teacherpass, scope: "teacher", source: "manual", status: "active", note: `test ${RUN_ID}` },
+      { user_id: ids.imatpass, scope: "imat", source: "manual", status: "active", note: `test ${RUN_ID}` },
+      { user_id: ids.mocksonimat, scope: "mocks", source: "manual", status: "active", note: `test ${RUN_ID}` },
     ]);
+    expect(entErr).toBeNull();
     const { data: org } = await admin
       .from("organizations")
       .insert({ name: `Free mock limit org ${RUN_ID}` })
@@ -165,8 +218,9 @@ describe.skipIf(!HAS_ENV)("free-mock limit (migration 0120)", () => {
       await admin.from("paywall_settings").update(saved).eq("id", true);
     }
     // Deleting the mocks cascades their attempts; deleting users cascades the rest.
-    const all = [...mockIds, ...chapterIds];
+    const all = [...mockIds, ...chapterIds, ...imatMockIds];
     if (all.length) await admin.from("mock_tests").delete().in("id", all);
+    if (imatExamId) await admin.from("exams").delete().eq("id", imatExamId);
     if (orgId) await admin.from("organizations").delete().eq("id", orgId);
     for (const role of ROLES) if (ids[role]) await admin.auth.admin.deleteUser(ids[role]);
   });
@@ -184,6 +238,7 @@ describe.skipIf(!HAS_ENV)("free-mock limit (migration 0120)", () => {
       limit: 3,
       used: 3,
       hasPass: false,
+      passScopes: [],
       chapterLimit: 1,
       chapterUsed: 0,
       practiceLimit: 1,
@@ -200,6 +255,7 @@ describe.skipIf(!HAS_ENV)("free-mock limit (migration 0120)", () => {
       limit: 3,
       used: 3,
       hasPass: false,
+      passScopes: [],
       chapterLimit: 1,
       chapterUsed: 1,
       practiceLimit: 1,
@@ -240,6 +296,28 @@ describe.skipIf(!HAS_ENV)("free-mock limit (migration 0120)", () => {
   it("reports a pass holder as hasPass", async () => {
     const { data } = await clients.teacherpass.rpc("my_mock_quota");
     expect(data).toMatchObject({ hasPass: true });
+  });
+
+  it("does not let the www pass past the limit on an exam with its own pass", async () => {
+    for (let i = 0; i < 3; i++) expect((await startImat("mocksonimat", i)).error).toBeNull();
+    expect((await startImat("mocksonimat", 3)).error?.code).toBe("PT402");
+    // Its own exams stay unlimited.
+    expect((await start("mocksonimat", 0)).error).toBeNull();
+  });
+
+  it("lets the IMAT pass past the limit on IMAT only", async () => {
+    for (let i = 0; i < 3; i++) expect((await start("imatpass", i)).error).toBeNull();
+    expect((await start("imatpass", 3)).error?.code).toBe("PT402");
+    for (let i = 0; i < 4; i++) expect((await startImat("imatpass", i)).error).toBeNull();
+  });
+
+  it("lists the user's passes in my_mock_quota and my_premium_limits", async () => {
+    const { data: imat } = await clients.imatpass.rpc("my_mock_quota");
+    expect(imat).toMatchObject({ hasPass: false, passScopes: ["imat"] });
+    const { data: mocks } = await clients.mockpass.rpc("my_premium_limits");
+    expect(mocks).toMatchObject({ hasPass: true, passScopes: ["mocks"] });
+    const { data: staff } = await clients.staff.rpc("my_mock_quota");
+    expect(staff).toMatchObject({ hasPass: true, passScopes: ["all"] });
   });
 
   it("blocks nothing when the limit is NULL (off)", async () => {

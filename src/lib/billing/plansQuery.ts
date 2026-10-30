@@ -6,7 +6,7 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { unstable_cache } from "next/cache";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
-import { siteForCurrency, type Plan, type PlanCurrency } from "./plans";
+import { siteForCurrency, type Plan, type PlanCurrency, type PlanSite } from "./plans";
 import { PERK_PLACEHOLDERS, fillPerks, type FreeLimits } from "./perkLimits";
 
 export type PlanRow = {
@@ -22,14 +22,18 @@ export type PlanRow = {
   scope: string;
   active: boolean;
   sort_order: number;
+  countries?: string[] | null;
 };
 
 export const PLAN_COLUMNS =
-  "id, label, blurb, perks, url_key, amount_paise, currency, site, duration_days, scope, active, sort_order";
+  "id, label, blurb, perks, url_key, amount_paise, currency, site, duration_days, scope, active, sort_order, countries";
 
 export function rowToPlan(r: PlanRow): Plan {
-  // 0203's CHECK pairs USD with intl and INR with www, so the site follows the currency.
   const currency: PlanCurrency = r.currency === "USD" ? "USD" : "INR";
+  // The row's own site: since 0206 an intl plan may be INR (sold to India
+  // only), so the site no longer follows the currency. An unknown value falls
+  // back to the currency's site, as before.
+  const site: PlanSite = r.site === "intl" || r.site === "pyqvault" ? r.site : siteForCurrency(currency);
   return {
     id: r.id,
     label: r.label,
@@ -38,11 +42,12 @@ export function rowToPlan(r: PlanRow): Plan {
     urlKey: r.url_key,
     amountPaise: r.amount_paise,
     currency,
-    site: siteForCurrency(currency),
+    site,
     durationDays: r.duration_days,
     scope: r.scope,
     active: r.active,
     sortOrder: r.sort_order,
+    countries: r.countries ?? null,
   };
 }
 
@@ -94,7 +99,7 @@ export const PLANS_CACHE_TAG = "plans";
  * for a price changed outside the pricing page. A failed read throws inside
  * the cache so it is never remembered, and degrades to "no passes" like
  * listActivePlans. CHECKOUT NEVER READS THIS: /api/billing/order prices the
- * order through getActivePlan, live.
+ * order from listActivePlans, live, for the buyer's country (resolveOrderPlan).
  */
 const listActivePlansRemembered = unstable_cache(
   async (): Promise<Plan[]> => {
@@ -121,17 +126,6 @@ export async function listActivePlansCached(): Promise<Plan[]> {
   }
 }
 
-/** One active plan by id, for /api/billing/order. Null if missing or inactive. */
-export async function getActivePlan(client: SupabaseClient, id: string): Promise<Plan | null> {
-  const { data, error } = await client
-    .from("plans")
-    .select(PLAN_COLUMNS)
-    .eq("id", id)
-    .eq("active", true)
-    .maybeSingle();
-  if (error || !data) return null;
-  return rowToPlan(data as PlanRow);
-}
 
 /** The free-mock number for public copy; null = the limit is off. */
 export async function readFreeMockLimit(client: SupabaseClient): Promise<number | null> {

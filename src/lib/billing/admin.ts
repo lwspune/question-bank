@@ -73,6 +73,7 @@ export async function upsertPlan(input: PlanInput & { active: boolean }): Promis
     amount_paise: input.amountPaise,
     currency: input.currency,
     site: input.site,
+    countries: input.countries ?? null,
     duration_days: input.durationDays,
     scope: input.scope,
     active: input.active,

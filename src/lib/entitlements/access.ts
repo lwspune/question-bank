@@ -20,6 +20,15 @@ export const SCOPE_MOCKS = "mocks";
 export const SCOPE_TEACHER = "teacher";
 
 /**
+ * Passes for international exams (2026-10-30, migration 0204): each covers its
+ * own exam only, so the www pass (SCOPE_MOCKS) never unlocks them and they
+ * never unlock the Indian exams. Which exam asks for which: the registry's
+ * `passScope` (lib/billing/passScope).
+ */
+export const SCOPE_IMAT = "imat";
+export const SCOPE_MCAT = "mcat";
+
+/**
  * Scopes a grant carries beyond its own name. The teacher pass includes mocks;
  * the mock pass includes nothing else. Mirrored in SQL by
  * private.user_has_mock_access (migration 0120) — change both together.

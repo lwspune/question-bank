@@ -14,10 +14,10 @@
  * those notes and never re-read the plan. So a price edit, or deactivating a
  * plan, cannot reject a checkout that was open at the time.
  */
-import { SCOPE_ALL, SCOPE_MOCKS, SCOPE_TEACHER } from "@/lib/entitlements/access";
+import { SCOPE_ALL, SCOPE_IMAT, SCOPE_MCAT, SCOPE_MOCKS, SCOPE_TEACHER } from "@/lib/entitlements/access";
 import { PERK_PLACEHOLDERS, unknownPerkPlaceholders } from "./perkLimits";
 
-export const SELLABLE_SCOPES: readonly string[] = [SCOPE_MOCKS, SCOPE_TEACHER];
+export const SELLABLE_SCOPES: readonly string[] = [SCOPE_MOCKS, SCOPE_TEACHER, SCOPE_IMAT, SCOPE_MCAT];
 
 /** Which site sells a plan (migration 0203): www in INR, intl.pyqvault.com in USD. */
 export type PlanSite = "pyqvault" | "intl";
@@ -53,6 +53,13 @@ export type Plan = {
   /** Inactive plans are not shown or sold; kept because orders reference the id. */
   active: boolean;
   sortOrder: number;
+  /**
+   * Sold only to buyers in these countries (ISO two-letter codes, from Vercel's
+   * location header at checkout); null or absent = everywhere. Migration 0204.
+   * The IMAT pass in rupees for India is the first: Indian cards often fail on
+   * dollar payments and UPI is rupees only.
+   */
+  countries?: string[] | null;
 };
 
 export type PlanInput = Omit<Plan, "active">;
@@ -63,6 +70,30 @@ export type PlanValidation =
 
 const SLUG_RE = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 export const MAX_PERKS = 6;
+
+const COUNTRY_RE = /^[A-Z]{2}$/;
+
+/**
+ * The site/currency rule (0203, widened by 0204): www sells in INR; intl in
+ * USD, or in INR for a plan sold to buyers in India only. Mirrored by the
+ * plans_site_currency_check CHECK.
+ */
+function currencyAllowed(site: PlanSite, currency: PlanCurrency, countries: readonly string[] | null): boolean {
+  if (CURRENCY_OF_SITE[site] === undefined) return false;
+  if (CURRENCY_OF_SITE[site] === currency) return true;
+  return site === "intl" && currency === "INR" && countries?.length === 1 && countries[0] === "IN";
+}
+
+/** The currency a plan is priced in, from where and to whom it is sold (the admin form's rule). */
+export function planCurrencyFor(site: PlanSite, countries: readonly string[] | null): PlanCurrency {
+  return currencyAllowed(site, "INR", countries) ? "INR" : CURRENCY_OF_SITE[site];
+}
+
+/** The admin form's "sold to" text: codes split on commas or spaces, upper-cased; blank = everywhere (null). */
+export function parseCountries(text: string): string[] | null {
+  const codes = text.split(/[\s,]+/).map((c) => c.trim().toUpperCase()).filter(Boolean);
+  return codes.length > 0 ? codes : null;
+}
 
 /** Field-level validation for an admin write, in form order. */
 export function validatePlan(input: PlanInput): PlanValidation {
@@ -88,8 +119,16 @@ export function validatePlan(input: PlanInput): PlanValidation {
   if (!Number.isInteger(input.amountPaise) || input.amountPaise <= 0) {
     return { ok: false, field: "amountPaise", message: "Price must be a positive whole number of paise." };
   }
-  if (CURRENCY_OF_SITE[input.site] === undefined || CURRENCY_OF_SITE[input.site] !== input.currency) {
-    return { ok: false, field: "currency", message: "www plans are priced in INR, intl plans in USD." };
+  const countries = input.countries ?? null;
+  if (countries !== null && (countries.length === 0 || countries.some((c) => !COUNTRY_RE.test(c)))) {
+    return { ok: false, field: "countries", message: "Countries are two-letter codes such as IN, or blank for everywhere." };
+  }
+  if (!currencyAllowed(input.site, input.currency, countries)) {
+    return {
+      ok: false,
+      field: "currency",
+      message: "www plans are priced in INR; intl plans in USD, or in INR when sold to India only.",
+    };
   }
   if (input.durationDays !== null && (!Number.isInteger(input.durationDays) || input.durationDays <= 0)) {
     return { ok: false, field: "durationDays", message: "Duration is blank (lifetime) or a positive number of days." };
@@ -114,6 +153,7 @@ export function planLengthLabel(plan: Pick<Plan, "durationDays">): string {
   if (plan.durationDays === null) return "lifetime";
   if (plan.durationDays === 365) return "1 year";
   if (plan.durationDays === 182) return "6 months";
+  if (plan.durationDays === 90) return "3 months";
   return `${plan.durationDays} days`;
 }
 
@@ -142,6 +182,52 @@ export function passForScope(plans: readonly Plan[], scope: string, site: PlanSi
     .filter((p) => p.active && p.scope === scope && p.site === site)
     .sort((a, b) => a.sortOrder - b.sortOrder || a.amountPaise - b.amountPaise);
   return matches[0] ?? null;
+}
+
+/** True when a plan may be sold to a buyer in `country` (null = unknown). */
+function soldTo(plan: Plan, country: string | null): boolean {
+  const list = plan.countries ?? null;
+  return list === null || (country !== null && list.includes(country));
+}
+
+/**
+ * The pass a buyer in `country` is offered for `scope` on `site`: a plan limited
+ * to their country first, else a plan sold everywhere. A country plan is never
+ * offered outside its list, nor to a buyer whose country is unknown.
+ */
+export function passForBuyer(
+  plans: readonly Plan[],
+  scope: string,
+  site: PlanSite,
+  country: string | null
+): Plan | null {
+  const eligible = plans.filter((p) => p.active && p.scope === scope && p.site === site && soldTo(p, country));
+  const local = eligible.filter((p) => p.countries != null);
+  return passForScope(local.length > 0 ? local : eligible, scope, site);
+}
+
+/**
+ * The plans /pricing shows a buyer in `country` on `site`, in the given order:
+ * each one they may buy, minus a plan sold everywhere when a plan priced for
+ * their country sells the same pass.
+ */
+export function plansForBuyer(plans: readonly Plan[], site: PlanSite, country: string | null): Plan[] {
+  const eligible = plans.filter((p) => p.active && p.site === site && soldTo(p, country));
+  const localScopes = new Set(eligible.filter((p) => p.countries != null).map((p) => p.scope));
+  return eligible.filter((p) => p.countries != null || !localScopes.has(p.scope));
+}
+
+/**
+ * What /api/billing/order sells when a buyer asks for `planId`: the plan for
+ * the same pass (scope and site) at the buyer's country price. The button
+ * names the pass, the server picks the price, so a rupee plan id sent from
+ * outside India still sells the dollar pass, and a buyer in India who tapped
+ * the dollar price pays in rupees. Null for an unknown or inactive id.
+ */
+export function resolveOrderPlan(plans: readonly Plan[], planId: string, country: string | null): Plan | null {
+  const asked = plans.find((p) => p.id === planId && p.active);
+  if (!asked) return null;
+  return passForBuyer(plans, asked.scope, asked.site, country);
 }
 
 // ────────────────────────────────────────────────────────────────────
