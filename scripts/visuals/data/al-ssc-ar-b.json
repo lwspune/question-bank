@@ -1,0 +1,1240 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "82f4cdba-aad5-418e-9d2d-0ccc70e7c116",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "x = \\text{profit-making investment}"
+            },
+            {
+              "step": "s2",
+              "kind": "eq",
+              "tex": "{{1:0.10x}} - 0.05(5000 - x) = 100",
+              "lhs": "0.10*x-0.05*(5000-x)",
+              "rhs": "100",
+              "roots": [
+                "350/0.15"
+              ]
+            },
+            {
+              "step": "s3",
+              "kind": "eq",
+              "tex": "0.15x - 250 = 100",
+              "lhs": "0.15*x-250",
+              "rhs": "100",
+              "roots": [
+                "350/0.15"
+              ]
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "x = \\dfrac{350}{0.15} \\approx 2333.33",
+              "f": "350/0.15",
+              "value": "2333.33",
+              "dp": 2
+            }
+          ],
+          "answer": "floor(100*350/0.15+0.5)/100"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "95ce2330",
+        "answer": {
+          "value": 2333.33,
+          "label": "₹2333.33"
+        }
+      }
+    },
+    {
+      "id": "845e0adc-77ea-4a11-b7bc-a931f3d3391e",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "80\\% \\text{ of } 350 = {{1:280}}",
+              "f": "0.8*350",
+              "value": "280"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "37\\tfrac{1}{2}\\% = \\tfrac{3}{8}, \\quad \\tfrac{3}{8} \\times 160 = {{2:60}}",
+              "f": "3/8*160",
+              "value": "60"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "11\\% \\text{ of } 500 = {{3:55}}",
+              "f": "0.11*500",
+              "value": "55"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "{{1:280}} - {{2:60}} + {{3:55}} = 275",
+              "f": "280-60+55",
+              "value": "275"
+            }
+          ],
+          "answer": "280-60+55"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "9d5dc5f1",
+        "answer": {
+          "value": 275,
+          "label": "275"
+        }
+      }
+    },
+    {
+      "id": "84b1ad44-a9b5-4836-81af-7caa07e68d67",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "I = \\text{father's monthly income}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{elder son} = 0.85 \\times 0.08 = {{1:0.068}}\\, I",
+              "f": "0.85*0.08",
+              "value": "0.068"
+            },
+            {
+              "step": "s3",
+              "kind": "eq",
+              "tex": "0.1 \\times {{1:0.068}} I = 0.0068 I = 17",
+              "lhs": "0.0068*x",
+              "rhs": "17",
+              "roots": [
+                "17/0.0068"
+              ]
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "I = \\dfrac{17}{0.0068} = 2500",
+              "f": "17/0.0068",
+              "value": "2500"
+            }
+          ],
+          "answer": "17/0.0068"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "44090ab4",
+        "answer": {
+          "value": 2500,
+          "label": "₹2500"
+        }
+      }
+    },
+    {
+      "id": "85caab73-58ab-40f5-accb-5d2ffc31b5db",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{first} = \\dfrac{20}{5} = {{1:4}}",
+              "f": "20/5",
+              "value": "4"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{second} = \\dfrac{9}{2} = {{2:4.50}}",
+              "f": "9/2",
+              "value": "4.5"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{third} = \\dfrac{45}{10} = {{2:4.50}}",
+              "f": "45/10",
+              "value": "4.5"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "3(4) + 4(4.5) + 3(4.5) = 43.50",
+              "f": "3*4+4*4.5+3*4.5",
+              "value": "43.5",
+              "note": "cost of 10 notebooks in the ratio 3 : 4 : 3"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\text{cost each} = \\dfrac{43.5}{10} = 4.35",
+              "f": "43.5/10",
+              "value": "4.35"
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "\\text{SP each} = \\dfrac{19}{4} = 4.75",
+              "f": "19/4",
+              "value": "4.75"
+            },
+            {
+              "step": "s7",
+              "kind": "calc",
+              "tex": "\\text{gain} = \\dfrac{0.40}{4.35} \\times 100 \\approx 9.2\\%",
+              "f": "(4.75-4.35)/4.35*100",
+              "value": "9.2",
+              "dp": 1
+            }
+          ],
+          "answer": "floor(10*(4.75-4.35)/4.35*100+0.5)/10"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s4",
+              "s5"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s6"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s7"
+            ]
+          }
+        ],
+        "fingerprint": "13f2ae00",
+        "answer": {
+          "value": 9.2,
+          "label": "9.2% profit"
+        }
+      }
+    },
+    {
+      "id": "86399df2-84d3-414e-8ee0-68da6472c41f",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{dividend} = 25d",
+              "note": "quotient 25, remainder 0"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{new dividend} = 1.1 \\times 25d = {{1:27.5}}\\,d",
+              "f": "1.1*25",
+              "value": "27.5"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "{{1:27.5}}\\,d \\div 1.25\\,d = 22",
+              "f": "27.5/1.25",
+              "value": "22"
+            }
+          ],
+          "answer": "27.5/1.25"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "18b91b27",
+        "answer": {
+          "value": 22,
+          "label": "22"
+        }
+      }
+    },
+    {
+      "id": "946fcdf8-8d70-4c1a-b609-9a3aec80ae74",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "15\\% \\text{ of } 240 = {{1:36}}",
+              "f": "0.15*240",
+              "value": "36"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "20\\% \\text{ of } 310 = {{2:62}}",
+              "f": "0.2*310",
+              "value": "62"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "{{1:36}} + {{2:62}} = 98",
+              "f": "36+62",
+              "value": "98"
+            },
+            {
+              "step": "s4",
+              "kind": "eq",
+              "tex": "\\dfrac{x}{100} \\times 280 = 98",
+              "lhs": "x/100*280",
+              "rhs": "98",
+              "roots": [
+                "35"
+              ]
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "x = \\dfrac{98 \\times 100}{280} = 35",
+              "f": "98*100/280",
+              "value": "35"
+            }
+          ],
+          "answer": "98*100/280"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "0a5080db",
+        "answer": {
+          "value": 35,
+          "label": "35"
+        }
+      }
+    },
+    {
+      "id": "989398ef-d07a-42c5-aa8e-4c09d8a86377",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{red} = \\dfrac{15}{3} = 5",
+              "f": "15/3",
+              "value": "5"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{blue} = \\dfrac{18}{4} = 4.50",
+              "f": "18/4",
+              "value": "4.5"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{green} = \\dfrac{22}{5} = 4.40",
+              "f": "22/5",
+              "value": "4.4"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "5 + 4.5 + 2(4.4) = 18.30",
+              "f": "5+4.5+2*4.4",
+              "value": "18.3",
+              "note": "1 red, 1 blue, 2 green"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\text{SP of 4} = 4 \\times 5 = 20",
+              "f": "4*5",
+              "value": "20"
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "\\text{profit} = \\dfrac{1.70}{18.30} \\times 100 \\approx 9.29\\%",
+              "f": "(20-18.3)/18.3*100",
+              "value": "9.29",
+              "dp": 2
+            }
+          ],
+          "answer": "floor(100*(20-18.3)/18.3*100+0.5)/100"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s4",
+              "s5"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "168a1372",
+        "answer": {
+          "value": 9.29,
+          "label": "9.29% profit"
+        }
+      }
+    },
+    {
+      "id": "99c13878-e519-4ccb-afe2-db471f1d2154",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{net change} = -\\dfrac{x^2}{100}\\%",
+              "note": "decrease x% then increase x%"
+            },
+            {
+              "step": "s2",
+              "kind": "eq",
+              "tex": "\\dfrac{x^2}{100} = 10",
+              "lhs": "x^2/100",
+              "rhs": "10",
+              "roots": [
+                "sqrt(1000)"
+              ]
+            },
+            {
+              "step": "s3",
+              "kind": "eq",
+              "tex": "x^2 = 1000",
+              "lhs": "x^2",
+              "rhs": "1000",
+              "roots": [
+                "sqrt(1000)"
+              ]
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "x = \\sqrt{1000} \\approx 31.6",
+              "f": "sqrt(1000)",
+              "value": "31.6",
+              "dp": 1
+            }
+          ],
+          "answer": "floor(10*sqrt(1000)+0.5)/10"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "606a685f",
+        "answer": {
+          "value": 31.6,
+          "label": "31.6"
+        }
+      }
+    },
+    {
+      "id": "a2979480-bd69-4444-91bd-03e7d2f2f83d",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{Amit's profit} = \\dfrac{1500y}{100} = 15y"
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "\\text{Bilal} = 2000\\left(1 + \\tfrac{2y}{100}\\right)\\left(1 - \\tfrac{y}{100}\\right) - 2000",
+              "f": "2000*(1+2*x/100)*(1-x/100)-2000"
+            },
+            {
+              "step": "s3",
+              "kind": "expr",
+              "tex": "= 2000\\left(\\tfrac{y}{100} - \\tfrac{2y^2}{10000}\\right) = 20y - 0.4y^2",
+              "f": "20*x-0.4*x^2"
+            },
+            {
+              "step": "s4",
+              "kind": "eq",
+              "tex": "15y = 20y - 0.4y^2",
+              "lhs": "15*x",
+              "rhs": "20*x-0.4*x^2",
+              "roots": [
+                "12.5"
+              ]
+            },
+            {
+              "step": "s5",
+              "kind": "eq",
+              "tex": "0.4y = 5",
+              "lhs": "0.4*x",
+              "rhs": "5",
+              "roots": [
+                "12.5"
+              ]
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "y = \\dfrac{5}{0.4} = 12.5",
+              "f": "5/0.4",
+              "value": "12.5"
+            }
+          ],
+          "answer": "5/0.4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4",
+              "s5",
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "49e3f871",
+        "answer": {
+          "value": 12.5,
+          "label": "12.5"
+        }
+      }
+    },
+    {
+      "id": "afb9ca17-de45-4443-8632-0478b126bcb5",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{laptop} = 40000 - 4000 = {{1:36000}}",
+              "f": "40000-4000",
+              "value": "36000"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{mouse} = 1500 \\times 0.8 = {{2:1200}}",
+              "f": "1500*0.8",
+              "value": "1200"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "{{1:36000}} + {{2:1200}} = 37200",
+              "f": "36000+1200",
+              "value": "37200"
+            }
+          ],
+          "answer": "36000+1200"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "f7393aa7",
+        "answer": {
+          "value": 37200,
+          "label": "₹37200"
+        }
+      }
+    },
+    {
+      "id": "cbf819bf-03f9-4a73-ae9e-66418b534ff3",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{72}{1.2} = {{1:60}}",
+              "f": "72/1.2",
+              "value": "60"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{60}{1.25} = {{2:48}}",
+              "f": "60/1.25",
+              "value": "48"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{2({{1:60}}) + 1({{2:48}})}{3} = 56",
+              "f": "(2*60+48)/3",
+              "value": "56",
+              "note": "cost per kg of the mixture"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\dfrac{70 - 56}{56} \\times 100 = 25",
+              "f": "(70-56)/56*100",
+              "value": "25"
+            }
+          ],
+          "answer": "(70-56)/56*100"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "37bc591a",
+        "answer": {
+          "value": 25,
+          "label": "25% profit"
+        }
+      }
+    },
+    {
+      "id": "cd461d2a-fe9d-4417-94e2-4dd9b9c0df2c",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{factor} = 1.2 \\times 0.82 = {{1:0.984}}",
+              "f": "1.2*0.82",
+              "value": "0.984",
+              "note": "20% more staff, wage 18% less"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "(1 - {{1:0.984}}) \\times 100 = 1.6",
+              "f": "(1-0.984)*100",
+              "value": "1.6",
+              "dp": 1
+            }
+          ],
+          "answer": "floor(10*(1-0.984)*100+0.5)/10"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "e8c30069",
+        "answer": {
+          "value": 1.6,
+          "label": "1.6% decrease"
+        }
+      }
+    },
+    {
+      "id": "cf5aa74f-9c74-4194-8dc5-7b22092b9486",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "12\\tfrac{1}{2}\\% = \\tfrac{1}{8}, \\quad \\tfrac{1}{8} \\times 560 = {{1:70}}",
+              "f": "560/8",
+              "value": "70"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "66\\tfrac{2}{3}\\% = \\tfrac{2}{3}, \\quad \\tfrac{2}{3} \\times 240 = {{2:160}}",
+              "f": "2/3*240",
+              "value": "160"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "{{1:70}} + {{2:160}} = 230",
+              "f": "70+160",
+              "value": "230"
+            }
+          ],
+          "answer": "70+160"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "8d33bab8",
+        "answer": {
+          "value": 230,
+          "label": "230 km"
+        }
+      }
+    },
+    {
+      "id": "d0c7b338-2ed8-47d1-a6c1-df8b753cf575",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "eq",
+              "tex": "0.2(P + Q) = 0.5(P - Q)",
+              "lhs": "0.2*(x+Q)",
+              "rhs": "0.5*(x-Q)",
+              "roots": [
+                "7*Q/3"
+              ]
+            },
+            {
+              "step": "s2",
+              "kind": "eq",
+              "tex": "2P + 2Q = 5P - 5Q",
+              "lhs": "2*x+2*Q",
+              "rhs": "5*x-5*Q",
+              "roots": [
+                "7*Q/3"
+              ]
+            },
+            {
+              "step": "s3",
+              "kind": "eq",
+              "tex": "3P = 7Q",
+              "lhs": "3*x",
+              "rhs": "7*Q",
+              "roots": [
+                "7*Q/3"
+              ]
+            },
+            {
+              "step": "s4",
+              "kind": "note",
+              "tex": "P : Q = 7 : 3"
+            }
+          ],
+          "answer": "7*Q/3",
+          "vars": {
+            "Q": "3"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "7749f6f8",
+        "answer": {
+          "value": 7,
+          "label": "7 : 3"
+        }
+      }
+    },
+    {
+      "id": "d87181a7-7a61-4979-aedf-9709b0fd34fe",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{mobile} = 10\\% \\text{ of } 20000 = {{1:2000}}",
+              "f": "0.1*20000",
+              "value": "2000"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{laptop} = 20\\% \\text{ of } 72000 = {{2:14400}}",
+              "f": "0.2*72000",
+              "value": "14400"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{cover} = 12\\% \\text{ of } 300 = {{3:36}}",
+              "f": "0.12*300",
+              "value": "36"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "{{1:2000}} + {{2:14400}} + {{3:36}} = 16436",
+              "f": "2000+14400+36",
+              "value": "16436"
+            }
+          ],
+          "answer": "2000+14400+36"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "edf5778e",
+        "answer": {
+          "value": 16436,
+          "label": "₹16436"
+        }
+      }
+    },
+    {
+      "id": "d8de7ab3-f072-4ba1-b94b-2bf73507e068",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{2.5}{100} \\times 200 = 5",
+              "f": "2.5/100*200",
+              "value": "5"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "1\\% \\text{ of } 200 = 2, \\quad 2.5 \\times 2 = 5",
+              "f": "2.5*2",
+              "value": "5",
+              "note": "check"
+            }
+          ],
+          "answer": "2.5/100*200"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "9bd85d21",
+        "answer": {
+          "value": 5,
+          "label": "5"
+        }
+      }
+    },
+    {
+      "id": "e17df154-962d-4df9-82ef-3c848e22904c",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "65\\% \\text{ of } 350 = {{1:227.5}}",
+              "f": "0.65*350",
+              "value": "227.5"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "40\\% \\text{ of } 120 = {{2:48}}",
+              "f": "0.4*120",
+              "value": "48"
+            },
+            {
+              "step": "s3",
+              "kind": "eq",
+              "tex": "{{1:227.5}} - 2.5x + {{2:48}} = 158",
+              "lhs": "227.5-2.5*x+48",
+              "rhs": "158",
+              "roots": [
+                "47"
+              ]
+            },
+            {
+              "step": "s4",
+              "kind": "eq",
+              "tex": "2.5x = 117.5",
+              "lhs": "2.5*x",
+              "rhs": "117.5",
+              "roots": [
+                "47"
+              ]
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "x = \\dfrac{117.5}{2.5} = 47",
+              "f": "117.5/2.5",
+              "value": "47"
+            }
+          ],
+          "answer": "117.5/2.5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3",
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "64dde833",
+        "answer": {
+          "value": 47,
+          "label": "47"
+        }
+      }
+    },
+    {
+      "id": "ee3450dd-693f-486a-a2df-5fe1957e14d6",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{10}{4} = 2.50,\\ \\dfrac{12}{5} = 2.40,\\ \\dfrac{5}{2} = 2.50",
+              "f": "12/5",
+              "value": "2.4"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "2(2.5) + 3(2.4) + 1(2.5) = 14.70",
+              "f": "2*2.5+3*2.4+2.5",
+              "value": "14.7",
+              "note": "cost of 6 mangoes in the ratio 2 : 3 : 1"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{SP of 6} = 2 \\times 7 = 14",
+              "f": "2*7",
+              "value": "14"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{loss} = \\dfrac{0.7}{14.7} \\times 100 \\approx 4.76\\%",
+              "f": "0.7/14.7*100",
+              "value": "4.76",
+              "dp": 2
+            }
+          ],
+          "answer": "floor(100*0.7/14.7*100+0.5)/100"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "cc17fd31",
+        "answer": {
+          "value": 4.76,
+          "label": "4.76% loss"
+        }
+      }
+    }
+  ],
+  "decided": []
+}
