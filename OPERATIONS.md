@@ -266,6 +266,14 @@ It always returns **200 with `{}`** — deliberately, to prevent email enumerati
 
 **⚠️ Known: auth mail lands in SPAM with a Gmail phishing banner.** Not a deliverability fault — auth is PASS/PASS/PASS and the campaign from the same domain reaches the inbox. Supabase's stock template links to `<project-ref>.supabase.co` while the From says `pyqvault.com`, and a password-reset email whose link domain ≠ From domain is the classic credential-harvesting shape. Fix = point the template at `{{ .SiteURL }}/auth/confirm?token_hash={{ .TokenHash }}` + build that route. Deferred — see ROADMAP "Password reset flow".
 
+### Adding a new domain to sign-in (2026-10-30)
+
+A domain that people sign in on must be listed in TWO places, or sign-in breaks there:
+1. **Supabase → Authentication → URL Configuration → Redirect URLs:** `https://<domain>/api/auth/callback` (used by the redirect Google button and email links).
+2. **Google Cloud Console** (project `lws-question-bank`) **→ Google Auth Platform → Clients → "PYQ Vault" → Authorized JavaScript origins:** `https://<domain>`. The Google button on /login and /signup and One Tap are drawn by Google and only work on listed origins. If the domain is missing, the button still draws but the click fails (`origin_mismatch`), and the redirect button does NOT step in, because it only shows when Google's button cannot be drawn. Takes 5 minutes to a few hours to start working.
+
+The **redirect URIs** on that Google client are the Supabase callback (`wunvtnqlzjrkvolslbnm.supabase.co/auth/v1/callback`, `auth.pyqvault.com/auth/v1/callback`) and do not change per domain. Listed today: www, apex, intl (both places, 2026-10-30), the old `question-bank-sage.vercel.app` and localhost:3000.
+
 ### Refreshing item statistics (weekly, Monday)
 
 How hard each bank question really is, and where a distractor outpulls the key. Spec:
