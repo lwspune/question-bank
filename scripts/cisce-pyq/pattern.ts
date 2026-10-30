@@ -67,6 +67,13 @@ export type SectionSpec = {
    * Mathematics has one (B or C) — Physics and Chemistry are answer-all.
    */
   choiceGroup?: string;
+  /**
+   * ICSE: "Attempt any FOUR questions from Section B". The candidate answers
+   * `attempt` of the section's `questions`, so `marks` (what a candidate can
+   * score) is less than what the section PRINTS, and the bank transcribes all
+   * of it: see transcribedMarks.
+   */
+  attempt?: number;
 };
 
 /**
@@ -91,7 +98,7 @@ export type SectionSpec = {
 export type QuestionBand = { from: number; to: number; section: SectionId };
 
 export type PaperPattern = {
-  subject: IscSubject;
+  subject: string;
   year: MeasuredYear;
   /** The paper's own stated maximum. */
   totalMarks: number;
@@ -191,6 +198,102 @@ const SHAPES: Record<IscSubject, Omit<PaperPattern, "year">> = {
   },
 };
 
+/**
+ * ICSE Class 10 (Mathematics 51, Science 52 papers 1-3). Read off the 2025
+ * marking schemes and the 2026 papers' instruction pages and SECTION headers,
+ * independently; they agree. Every paper is 80 marks: Section A 40, compulsory;
+ * Section B "attempt any four", each question 10 marks.
+ */
+const ICSE_10_SHAPES: Record<string, Omit<PaperPattern, "year">> = {
+  Mathematics: {
+    subject: "Mathematics",
+    totalMarks: 80,
+    totalQuestions: 10,
+    durationMinutes: 150,
+    sections: [
+      { id: "A", marks: 40, questions: 3 },
+      { id: "B", marks: 40, questions: 7, attempt: 4 },
+    ],
+    internalChoices: 0,
+    bands: [
+      { from: 1, to: 3, section: "A" },
+      { from: 4, to: 10, section: "B" },
+    ],
+  },
+  Physics: {
+    subject: "Physics",
+    totalMarks: 80,
+    totalQuestions: 9,
+    durationMinutes: 120,
+    sections: [
+      { id: "A", marks: 40, questions: 3 },
+      { id: "B", marks: 40, questions: 6, attempt: 4 },
+    ],
+    internalChoices: 0,
+    bands: [
+      { from: 1, to: 3, section: "A" },
+      { from: 4, to: 9, section: "B" },
+    ],
+  },
+  Chemistry: {
+    subject: "Chemistry",
+    totalMarks: 80,
+    totalQuestions: 8,
+    durationMinutes: 120,
+    sections: [
+      { id: "A", marks: 40, questions: 2 },
+      { id: "B", marks: 40, questions: 6, attempt: 4 },
+    ],
+    internalChoices: 0,
+    bands: [
+      { from: 1, to: 2, section: "A" },
+      { from: 3, to: 8, section: "B" },
+    ],
+  },
+  Biology: {
+    subject: "Biology",
+    totalMarks: 80,
+    totalQuestions: 8,
+    durationMinutes: 120,
+    sections: [
+      { id: "A", marks: 40, questions: 2 },
+      { id: "B", marks: 40, questions: 6, attempt: 4 },
+    ],
+    internalChoices: 0,
+    bands: [
+      { from: 1, to: 2, section: "A" },
+      { from: 3, to: 8, section: "B" },
+    ],
+  },
+};
+
+const SHAPES_BY_EXAM: Record<string, Record<string, Omit<PaperPattern, "year">>> = {
+  "isc-12": SHAPES,
+  "icse-10": ICSE_10_SHAPES,
+};
+
+/**
+ * The pattern for one exam's paper. THROWS for an unmeasured year or a subject
+ * the exam does not set, for the same reason patternForYear does.
+ */
+export function patternFor(examSlug: string, subject: string, year: number): PaperPattern {
+  const shape = SHAPES_BY_EXAM[examSlug]?.[subject];
+  if (!shape) throw new Error(`${examSlug} ${subject}: no paper pattern recorded for this exam and subject.`);
+  if (!isMeasuredYear(year)) {
+    throw new Error(`${examSlug} ${subject} ${year}: paper pattern not measured (measured: ${MEASURED_YEARS.join(", ")}).`);
+  }
+  return { ...shape, year };
+}
+
+/**
+ * The marks a section holds when every one of its questions is transcribed.
+ * An "attempt any N of M" section prints M questions worth marks/N each; a
+ * plain section prints exactly its marks. validate.ts checks rows against this.
+ */
+export function transcribedMarks(section: SectionSpec): number {
+  return section.attempt ? (section.marks / section.attempt) * section.questions : section.marks;
+}
+
 export function isMeasuredYear(year: number): year is MeasuredYear {
   return (MEASURED_YEARS as readonly number[]).includes(year);
 }
@@ -255,7 +358,7 @@ export function sectionForQuestion(
   );
   if (!band) {
     throw new Error(
-      `ISC ${pattern.subject} ${pattern.year}: Question ${questionNumber} is ` +
+      `${pattern.subject} ${pattern.year}: Question ${questionNumber} is ` +
         `outside the paper (1..${pattern.totalQuestions}). A subpart is not a ` +
         `question — ISC Section A is ONE question with 14-15 subparts.`
     );

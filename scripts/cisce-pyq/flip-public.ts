@@ -1,9 +1,9 @@
 /**
  * Flip a committed ISC paper PUBLIC (or back to PRIVATE).
  *
- *   npx tsx scripts/isc-12-pyq/flip-public.ts 2025 Mathematics            # dry run
- *   npx tsx scripts/isc-12-pyq/flip-public.ts 2025 Mathematics --apply
- *   npx tsx scripts/isc-12-pyq/flip-public.ts 2025 Mathematics --private --apply
+ *   npx tsx scripts/cisce-pyq/flip-public.ts icse-10 2025 Mathematics            # dry run
+ *   npx tsx scripts/cisce-pyq/flip-public.ts icse-10 2025 Mathematics --apply
+ *   npx tsx scripts/cisce-pyq/flip-public.ts icse-10 2025 Mathematics --private --apply
  *
  * Only after the audits (README "What is left"). Refuses a row with no
  * solution, and a figure-bearing row with no image_url, because both ship as a
@@ -15,29 +15,28 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
-import { sourceFileFor, type IscPaper } from "./lib";
-import { ISC_12_EXAM_NAME } from "./config";
+import { sourceFileFor, type CiscePaper } from "./lib";
+import { dataDir, parsePaperArgs } from "./exams";
 
 async function main() {
-  const [year, subject] = process.argv.slice(2);
+  const { exam, stem } = parsePaperArgs(process.argv.slice(2), "flip-public.ts <exam> <year> <subject> [--private] [--apply]");
   const apply = process.argv.includes("--apply");
   const target = process.argv.includes("--private") ? "PRIVATE" : "PUBLIC";
-  if (!year || !subject) throw new Error("usage: flip-public.ts <year> <subject> [--private] [--apply]");
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
   const client = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!, {
     auth: { persistSession: false },
   });
 
   const paper = JSON.parse(
-    readFileSync(join(process.cwd(), "scripts", "isc-12-pyq", "data", `${year}-${subject}.questions.json`), "utf8")
-  ) as IscPaper;
-  const src = sourceFileFor(paper.year, paper.subject);
-  const { data: exam } = await client.from("exams").select("id").eq("name", ISC_12_EXAM_NAME).single();
-  if (!exam) throw new Error("exam not found");
+    readFileSync(join(dataDir(exam), `${stem}.questions.json`), "utf8")
+  ) as CiscePaper;
+  const src = sourceFileFor(exam, paper.year, paper.subject);
+  const { data: examRow } = await client.from("exams").select("id").eq("name", exam.examName).single();
+  if (!examRow) throw new Error("exam not found");
   const { data: rows, error } = await client
     .from("questions")
     .select("id, question_number, visibility, solution, image_url")
-    .eq("exam_id", exam.id)
+    .eq("exam_id", examRow.id)
     .eq("source_file", src);
   if (error) throw new Error(error.message);
 
@@ -61,7 +60,7 @@ async function main() {
   const { count } = await client
     .from("questions")
     .select("id", { count: "exact", head: true })
-    .eq("exam_id", exam.id)
+    .eq("exam_id", examRow.id)
     .eq("source_file", src)
     .neq("visibility", target);
   console.log(`done. rows not ${target}: ${count}`);

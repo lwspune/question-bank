@@ -22,15 +22,22 @@
  * equivalent forms and no string match is honest. `agree: true` records that
  * the reading was done.
  */
-import { ISC_TAXONOMY, ISC_SUBTOPICS, type IscSubject } from "./config";
+import { cisceExam, sourceForYear, type CisceExam } from "./exams";
 import type { OfficialAnswer, Confidence } from "./crosscheck";
 import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
 
 export type IscFigure = {
-  page: string;
+  /** The page of `region`/`regions`; for `parts`, the first part's page. */
+  page?: string;
   region?: [number, number, number, number];
   /** Several boxes on the same page, stacked into one image (crop-figures.py). */
   regions?: [number, number, number, number][];
+  /** Boxes on DIFFERENT pages (a figure printed across a page break), stacked. */
+  parts?: { page: string; region: [number, number, number, number] }[];
+  /** Boxes whited out before cropping: question text printed inside a figure's box. */
+  mask?: { page: string; region: [number, number, number, number] }[];
+  /** "none": a person looked at a figure the watermark check flagged and saw no watermark. */
+  watermark?: "none";
   note?: string;
   required?: boolean;
 };
@@ -52,15 +59,19 @@ export type IscRow = {
   _flag?: string;
 };
 
-export type IscPaper = {
+export type CiscePaper = {
+  /** The exams-row name, "ISC Class 12" or "ICSE Class 10": picks the taxonomy. */
   exam: string;
-  subject: IscSubject;
+  subject: string;
   year: number;
   paperCode: string;
   source: string;
   _transcription?: string;
   rows: IscRow[];
 };
+
+/** The pre-2026-10-30 name, from when the lane was ISC-only. */
+export type IscPaper = CiscePaper;
 
 export type DerivedEntry = {
   ref: string;
@@ -139,9 +150,15 @@ function textIssues(where: string, s: string | undefined): string[] {
   return out;
 }
 
-export function paperIssues(paper: IscPaper): string[] {
+export function paperIssues(paper: CiscePaper): string[] {
   const issues: string[] = [];
-  const chapters = new Set((ISC_TAXONOMY[paper.subject] ?? []).map((c) => c.name));
+  let exam: CisceExam;
+  try {
+    exam = cisceExam(paper.exam);
+  } catch (e) {
+    return [(e as Error).message];
+  }
+  const chapters = new Set((exam.taxonomy[paper.subject] ?? []).map((c) => c.name));
   const refs = new Set<string>();
   const choices = new Map<string, number>();
 
@@ -149,8 +166,8 @@ export function paperIssues(paper: IscPaper): string[] {
     const at = r.ref;
     if (refs.has(r.ref)) issues.push(`${at}: duplicate ref`);
     refs.add(r.ref);
-    if (!chapters.has(r.chapter)) issues.push(`${at}: chapter "${r.chapter}" is not in the ${paper.subject} taxonomy`);
-    else if (!(ISC_SUBTOPICS[r.chapter] ?? []).includes(r.subtopic)) {
+    if (!chapters.has(r.chapter)) issues.push(`${at}: chapter "${r.chapter}" is not in the ${exam.examName} ${paper.subject} taxonomy`);
+    else if (!(exam.subtopics[r.chapter] ?? []).includes(r.subtopic)) {
       issues.push(`${at}: subtopic "${r.subtopic}" is not one of ${r.chapter}'s`);
     }
     const leaked = Object.keys(r).filter((k) => /answer|correct|key|solution/i.test(k));
@@ -179,7 +196,7 @@ export function paperIssues(paper: IscPaper): string[] {
 }
 
 export function assemblePaper(input: {
-  paper: IscPaper;
+  paper: CiscePaper;
   derived: readonly DerivedEntry[];
   /** CISCE's key. Present for a keyed year only. */
   key?: readonly OfficialAnswer[];
@@ -282,12 +299,12 @@ export function assemblePaper(input: {
   return { rows, issues };
 }
 
-export const sourceFileFor = (year: number, subject: IscSubject) =>
-  `isc-12-pyq-${year}-${subject.toLowerCase()}`;
+export const sourceFileFor = (exam: CisceExam, year: number, subject: string) =>
+  `${exam.slug}-pyq-${year}-${subject.toLowerCase()}`;
 
-export function pyqNoteFor(year: number, subject: IscSubject, paperCode: string): string {
-  const head = `ISC Class 12 ${subject} (${paperCode}) board examination ${year}. Official CISCE question paper; `;
-  return year === 2025
+export function pyqNoteFor(exam: CisceExam, year: number, subject: string, paperCode: string): string {
+  const head = `${exam.examName} ${subject} (${paperCode}) board examination ${year}. Official CISCE question paper; `;
+  return sourceForYear(exam, year).keyed
     ? `${head}answers cross-checked against CISCE's published marking scheme (Analysis of Pupil Performance).`
     : `${head}answers worked out independently, as CISCE has not yet published its marking scheme for ${year}.`;
 }

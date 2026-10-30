@@ -1,10 +1,10 @@
 /**
- * Create the ISC Class 12 exam row and its three subjects; with --order, set
+ * Create a CISCE exam row and its subjects; with --order, set
  * chapter and subtopic order_index from the syllabus.
  *
- *   npx tsx scripts/isc-12-pyq/seed.ts                 # dry run
- *   npx tsx scripts/isc-12-pyq/seed.ts --apply         # create what is missing
- *   npx tsx scripts/isc-12-pyq/seed.ts --order --apply # after the commits
+ *   npx tsx scripts/cisce-pyq/seed.ts icse-10                 # dry run
+ *   npx tsx scripts/cisce-pyq/seed.ts icse-10 --apply         # create what is missing
+ *   npx tsx scripts/cisce-pyq/seed.ts icse-10 --order --apply # after the commits
  *
  * Idempotent. commitStaged creates chapters and subtopics itself but refuses an
  * unknown SUBJECT (a typo there would corrupt the top level), so the subjects
@@ -12,26 +12,31 @@
  * listSubjects applies no question-count filter, so an empty subject renders as
  * a live /browse filter that returns nothing (README "Do not seed early").
  *
- * --order writes chapters in ISC_TAXONOMY order (the syllabus's unit order) and
- * subtopics in ISC_SUBTOPICS order, for the chapters commitStaged created. It
+ * --order writes chapters in the exam's taxonomy order (the syllabus's unit order)
+ * and subtopics in its subtopic order, for the chapters commitStaged created. It
  * creates nothing: a chapter no question uses stays absent.
  */
 import { createClient } from "@supabase/supabase-js";
 import { join } from "node:path";
-import { ISC_12_EXAM_NAME, ISC_SUBJECTS, ISC_SUBTOPICS, ISC_TAXONOMY } from "./config";
+import { cisceExam } from "./exams";
 
 async function main() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
   const apply = process.argv.includes("--apply");
   const order = process.argv.includes("--order");
+  const slug = process.argv.slice(2).find((a) => !a.startsWith("--"));
+  if (!slug) throw new Error("usage: seed.ts <exam> [--order] [--apply]");
+  const cisce = cisceExam(slug);
+  const EXAM_NAME = cisce.examName;
+  const SUBJECTS = cisce.subjects;
   const client = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!, {
     auth: { persistSession: false },
   });
 
-  let { data: exam } = await client.from("exams").select("id, name").eq("name", ISC_12_EXAM_NAME).maybeSingle();
+  let { data: exam } = await client.from("exams").select("id, name").eq("name", EXAM_NAME).maybeSingle();
   if (!exam) {
-    if (!apply) return console.log(`[dry run] would create exam "${ISC_12_EXAM_NAME}" and ${ISC_SUBJECTS.join(", ")}`);
-    const { data, error } = await client.from("exams").insert({ name: ISC_12_EXAM_NAME }).select("id, name").single();
+    if (!apply) return console.log(`[dry run] would create exam "${EXAM_NAME}" and ${SUBJECTS.join(", ")}`);
+    const { data, error } = await client.from("exams").insert({ name: EXAM_NAME }).select("id, name").single();
     if (error) throw new Error(`exam insert failed: ${error.message}`);
     exam = data;
     console.log(`created exam ${exam.name}  ${exam.id}`);
@@ -39,7 +44,7 @@ async function main() {
 
   const { data: subs, error } = await client.from("subjects").select("id, name").eq("exam_id", exam.id);
   if (error) throw new Error(`subject read failed: ${error.message}`);
-  const missing = ISC_SUBJECTS.filter((n) => !(subs ?? []).some((s) => s.name === n));
+  const missing = SUBJECTS.filter((n) => !(subs ?? []).some((s) => s.name === n));
   if (missing.length) {
     if (!apply) return console.log(`[dry run] would create subjects: ${missing.join(", ")}`);
     const { error: iErr } = await client.from("subjects").insert(missing.map((name) => ({ exam_id: exam!.id, name })));
@@ -50,25 +55,25 @@ async function main() {
 
   const { data: subjects } = await client.from("subjects").select("id, name").eq("exam_id", exam.id);
   for (const subject of subjects ?? []) {
-    const wanted = ISC_TAXONOMY[subject.name as keyof typeof ISC_TAXONOMY]?.map((c) => c.name) ?? [];
+    const wanted = cisce.taxonomy[subject.name]?.map((c) => c.name) ?? [];
     const { data: chapters } = await client.from("chapters").select("id, name, order_index").eq("subject_id", subject.id);
     for (const ch of chapters ?? []) {
       const ci = wanted.indexOf(ch.name);
       if (ci < 0) {
-        console.log(`  ${subject.name} / ${ch.name}: not in ISC_TAXONOMY, left as it is`);
+        console.log(`  ${subject.name} / ${ch.name}: not in the taxonomy, left as it is`);
         continue;
       }
       if (ch.order_index !== ci + 1) {
         console.log(`  ${subject.name} / ${ch.name}: order ${ch.order_index} -> ${ci + 1}`);
         if (apply) await client.from("chapters").update({ order_index: ci + 1 }).eq("id", ch.id);
       }
-      const subOrder = ISC_SUBTOPICS[ch.name] ?? [];
+      const subOrder = cisce.subtopics[ch.name] ?? [];
       const { data: sts } = await client.from("subtopics").select("id, name, order_index").eq("chapter_id", ch.id);
       for (const st of sts ?? []) {
         const si = subOrder.indexOf(st.name);
         if (si >= 0 && st.order_index !== si + 1) {
           if (apply) await client.from("subtopics").update({ order_index: si + 1 }).eq("id", st.id);
-        } else if (si < 0) console.log(`  ${ch.name} / ${st.name}: not in ISC_SUBTOPICS`);
+        } else if (si < 0) console.log(`  ${ch.name} / ${st.name}: not in the subtopic list`);
       }
     }
   }

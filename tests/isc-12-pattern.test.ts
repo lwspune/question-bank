@@ -6,7 +6,7 @@ import {
   effectiveMarks,
   sectionForQuestion,
   type IscSubject,
-} from "../scripts/isc-12-pyq/pattern";
+} from "../scripts/cisce-pyq/pattern";
 
 /**
  * The ISC paper-pattern core.

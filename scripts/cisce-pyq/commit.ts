@@ -1,8 +1,8 @@
 /**
  * Commit one ISC paper — PRIVATE, question_kind='pyq' — and attach its figures.
  *
- *   npx tsx scripts/isc-12-pyq/commit.ts 2025 Mathematics          # dry run
- *   npx tsx scripts/isc-12-pyq/commit.ts 2025 Mathematics --apply  # write
+ *   npx tsx scripts/cisce-pyq/commit.ts icse-10 2025 Mathematics          # dry run
+ *   npx tsx scripts/cisce-pyq/commit.ts icse-10 2025 Mathematics --apply  # write
  *
  * Reads the transcription, the blind derivation, CISCE's key (2025), the second
  * derivation (2026) and the adjudication file, and refuses on ANY issue
@@ -20,6 +20,7 @@
  * in which an unreviewed transcription is public (the CBSE lane flipped after
  * the insert and once left 52 rows live when that UPDATE timed out).
  */
+import { createHash } from "node:crypto";
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
@@ -29,9 +30,11 @@ import type { ParsedRowPayload } from "../../src/lib/upload/validate";
 import type { OfficialAnswer } from "./crosscheck";
 import {
   assemblePaper, paperIssues, pyqNoteFor, sourceFileFor,
-  type Adjudication, type DerivedEntry, type IscPaper,
+  type Adjudication, type DerivedEntry, type CiscePaper,
 } from "./lib";
-import { CREATED_BY, derivationPath, FIGURE_ROOT, ISC_12_EXAM_NAME, ORG_ID, figureFile } from "./config";
+import { CREATED_BY, ORG_ID, figureFile } from "./config";
+import { dataDir, derivationPath, figureRoot, parsePaperArgs } from "./exams";
+import { checkFigureFile, figureWatermarkIssue } from "../lib/figures/watermark";
 
 const BUCKET = "question-images";
 const DIFF = { Easy: "EASY", Moderate: "MODERATE", Hard: "HARD" } as const;
@@ -40,19 +43,17 @@ const readJson = <T>(p: string): T | undefined =>
   existsSync(p) ? (JSON.parse(readFileSync(p, "utf8")) as T) : undefined;
 
 async function main() {
-  const [year, subject] = process.argv.slice(2);
+  const { exam, stem } = parsePaperArgs(process.argv.slice(2), "commit.ts <exam> <year> <subject> [--apply]");
   const apply = process.argv.includes("--apply");
-  if (!year || !subject) throw new Error("usage: commit.ts <year> <subject> [--apply]");
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 
-  const stem = `${year}-${subject}`;
-  const data = join(process.cwd(), "scripts", "isc-12-pyq", "data");
-  const paper = readJson<IscPaper>(join(data, `${stem}.questions.json`));
+  const data = dataDir(exam);
+  const paper = readJson<CiscePaper>(join(data, `${stem}.questions.json`));
   if (!paper) throw new Error(`no transcription for ${stem}`);
-  const derived = readJson<{ answers: DerivedEntry[] }>(derivationPath(stem, "derived"));
+  const derived = readJson<{ answers: DerivedEntry[] }>(derivationPath(exam, stem, "derived"));
   if (!derived) throw new Error(`no derivation for ${stem}`);
   const key = readJson<{ answers: OfficialAnswer[] }>(join(data, `${stem}.key.json`));
-  const second = readJson<{ answers: DerivedEntry[] }>(derivationPath(stem, "second"));
+  const second = readJson<{ answers: DerivedEntry[] }>(derivationPath(exam, stem, "second"));
   const adj = readJson<{ adjudications: Adjudication[] }>(join(data, `${stem}.adjudication.json`));
 
   const issues = paperIssues(paper);
@@ -62,9 +63,18 @@ async function main() {
   });
   issues.push(...aIssues);
   const missingFig = rows.filter(
-    (r) => r.figure && r.figure.required !== false && !existsSync(join(FIGURE_ROOT, stem, figureFile(r.ref)))
+    (r) => r.figure && r.figure.required !== false && !existsSync(join(figureRoot(exam), stem, figureFile(r.ref)))
   );
   for (const r of missingFig) issues.push(`${r.ref}: required figure not cropped`);
+  // Every figure that will be uploaded is checked for a printed watermark
+  // (scripts/lib/figures/watermark.ts); a flagged one is refused until a
+  // person has cleaned it or recorded figure.watermark = "none".
+  for (const r of rows) {
+    if (!r.figure || r.figure.required === false || missingFig.includes(r)) continue;
+    const fraction = await checkFigureFile(join(figureRoot(exam), stem, figureFile(r.ref)));
+    const wm = figureWatermarkIssue(r.ref, fraction, r.figure.watermark);
+    if (wm) issues.push(wm);
+  }
   if (issues.length) {
     console.error(`REFUSING: ${issues.length} issue(s):\n  ${issues.join("\n  ")}`);
     process.exit(1);
@@ -91,9 +101,9 @@ async function main() {
           contentHash: contentHash(r.text, r.options!.map((o) => o.text), r.answer!),
         };
   });
-  const src = sourceFileFor(paper.year, paper.subject);
+  const src = sourceFileFor(exam, paper.year, paper.subject);
   const held = paper.rows.length - rows.length;
-  console.log(`ISC ${paper.subject} ${paper.year}: ${payload.length} rows (${held} held)  source_file=${src}`);
+  console.log(`${exam.examName} ${paper.subject} ${paper.year}: ${payload.length} rows (${held} held)  source_file=${src}`);
   console.log(`  mcq ${rows.filter((r) => r.format === "mcq").length} | subjective ${rows.filter((r) => r.format === "subjective").length} | figures ${rows.filter((r) => r.figure && r.figure.required !== false).length}`);
   console.log(`  distinct content_hash: ${new Set(payload.map((p) => p.contentHash)).size} of ${payload.length}`);
   if (new Set(payload.map((p) => p.contentHash)).size !== payload.length) {
@@ -104,18 +114,18 @@ async function main() {
   const client = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!, {
     auth: { persistSession: false },
   });
-  const { data: exam, error: eErr } = await client.from("exams").select("id").eq("name", ISC_12_EXAM_NAME).single();
-  if (eErr || !exam) throw new Error(`exam "${ISC_12_EXAM_NAME}" not found: run seed.ts first`);
+  const { data: examRow, error: eErr } = await client.from("exams").select("id").eq("name", exam.examName).single();
+  if (eErr || !examRow) throw new Error(`exam "${exam.examName}" not found: run seed.ts first`);
 
   const res = await commitStaged(client, {
     orgId: ORG_ID,
-    examId: exam.id,
+    examId: examRow.id,
     filename: src,
     createdBy: CREATED_BY,
     rows: payload,
     pyqYear: paper.year,
     pyqMonth: null,
-    pyqNote: pyqNoteFor(paper.year, paper.subject, paper.paperCode),
+    pyqNote: pyqNoteFor(exam, paper.year, paper.subject, paper.paperCode),
     visibility: "PRIVATE",
     questionKind: "pyq",
   });
@@ -135,7 +145,7 @@ async function main() {
       .from("questions")
       .select("id")
       .eq("org_id", ORG_ID)
-      .eq("exam_id", exam.id)
+      .eq("exam_id", examRow.id)
       .eq("source_file", src)
       .eq("content_hash", p.contentHash);
     if (error) throw new Error(`${r.ref}: lookup failed: ${error.message}`);
@@ -145,11 +155,15 @@ async function main() {
     }
     const update: Record<string, string> = { solution: p.solution!, difficulty: p.difficulty };
     if (r.figure && r.figure.required !== false) {
-      const file = join(FIGURE_ROOT, stem, figureFile(r.ref));
-      const objectKey = `isc-12-pyq/${stem.toLowerCase()}/${figureFile(r.ref)}`;
+      const bytes = readFileSync(join(figureRoot(exam), stem, figureFile(r.ref)));
+      // The object name carries a hash of the bytes, so a re-cropped figure
+      // (the 2026 watermark removal, 2026-10-30) gets a NEW public URL and no
+      // browser or CDN can keep serving the old image from cache.
+      const hash = createHash("sha256").update(bytes).digest("hex").slice(0, 10);
+      const objectKey = `${exam.slug}-pyq/${stem.toLowerCase()}/${figureFile(r.ref).replace(/\.png$/, "")}-${hash}.png`;
       const { error: upErr } = await client.storage
         .from(BUCKET)
-        .upload(objectKey, readFileSync(file), { contentType: "image/png", upsert: true });
+        .upload(objectKey, bytes, { contentType: "image/png", upsert: true });
       if (upErr) throw new Error(`${r.ref}: figure upload failed: ${upErr.message}`);
       update.image_url = client.storage.from(BUCKET).getPublicUrl(objectKey).data.publicUrl;
       figures++;
@@ -163,7 +177,7 @@ async function main() {
   const { count } = await client
     .from("questions")
     .select("id", { count: "exact", head: true })
-    .eq("exam_id", exam.id)
+    .eq("exam_id", examRow.id)
     .eq("source_file", src)
     .eq("visibility", "PUBLIC");
   console.log(`PUBLIC rows for ${src}: ${count ?? "?"}`);
