@@ -1,0 +1,729 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "bf97a8da-b697-4085-9ff4-641a66528f74",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "C = 2\\times\\dfrac{22}{7}\\times 182 = {{1:1144}}",
+              "f": "2*22/7*182",
+              "value": "1144"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{6600000}{60} = {{2:110000}}\\text{ cm/min}",
+              "f": "6600000/60",
+              "value": "110000"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{110000}{1144} \\approx 96",
+              "f": "110000/1144",
+              "value": "96.15",
+              "dp": 0
+            }
+          ],
+          "answer": "floor(110000/1144+0.5)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "0fa971aa",
+        "answer": {
+          "value": 96,
+          "label": "96"
+        }
+      }
+    },
+    {
+      "id": "d0f65f91-194a-4f10-86f1-cfd064e2fcb5",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "16x^2+40x+25 = (4x+5)^2",
+              "note": "the side is 4x + 5"
+            },
+            {
+              "step": "s2",
+              "kind": "eq",
+              "tex": "P = 4(4x+5)",
+              "lhs": "4*(4*x+5)",
+              "rhs": "16*x+20",
+              "roots": [
+                "0",
+                "1",
+                "-3"
+              ]
+            },
+            {
+              "step": "s3",
+              "kind": "eq",
+              "tex": "P = 16x+20 = 2(8x+10)",
+              "lhs": "16*x+20",
+              "rhs": "2*(8*x+10)",
+              "roots": [
+                "0",
+                "1",
+                "-3"
+              ]
+            }
+          ],
+          "answer": "16"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "5dd5f496",
+        "answer": {
+          "value": 16,
+          "label": "2(8x + 10)"
+        }
+      }
+    },
+    {
+      "id": "de25e0d3-ee86-4ef5-b820-e164bd9b2573",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "10^2 = 100",
+              "f": "10^2",
+              "value": "100"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "4^2 = 16",
+              "f": "4^2",
+              "value": "16"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "100 - 16 = 84",
+              "f": "100-16",
+              "value": "84"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "84 : 100 = 21 : 25",
+              "f": "84/100",
+              "value": "21/25"
+            }
+          ],
+          "answer": "21/25"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "0ea19135",
+        "answer": {
+          "value": 0.84,
+          "label": "21 : 25"
+        }
+      }
+    },
+    {
+      "id": "de6cf1ed-818b-4f94-8c80-336ba520d6b0",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{area} \\propto \\text{side}^2"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\sqrt{1.44} = {{1:1.2}}",
+              "f": "sqrt(1.44)",
+              "value": "1.2"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "({{1:1.2}}-1)\\times 100 = 20\\%",
+              "f": "(1.2-1)*100",
+              "value": "20"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "20 + 20 + \\dfrac{20\\times 20}{100} = 44\\%",
+              "f": "20+20+20*20/100",
+              "value": "44"
+            }
+          ],
+          "answer": "20"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "d44339c9",
+        "answer": {
+          "value": 20,
+          "label": "20%"
+        }
+      }
+    },
+    {
+      "id": "78861915-46a8-4bd1-b442-4d5b3fe80f0d",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "118 = 120-2,\\quad 102 = 104-2",
+              "f": "120-2",
+              "value": "118"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "P = 2(118+102) = 440",
+              "f": "2*(118+102)",
+              "value": "440"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "440\\times 2.50 = 1100",
+              "f": "440*2.5",
+              "value": "1100"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "448 - 8\\times 1 = 440",
+              "f": "448-8",
+              "value": "440",
+              "note": "four corners each save 2 m"
+            }
+          ],
+          "answer": "440*2.5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "111f2918",
+        "answer": {
+          "value": 1100,
+          "label": "₹1100"
+        }
+      }
+    },
+    {
+      "id": "8103c4d7-440d-448e-955a-97822e6860a4",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "d = 8\\times 2\\times\\dfrac{22}{7}\\times 7 = 352",
+              "f": "8*2*22/7*7",
+              "value": "352"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "t = 3\\times 60+40 = 220",
+              "f": "3*60+40",
+              "value": "220"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "v = \\dfrac{352}{220} = 1.6\\text{ m/s}",
+              "f": "352/220",
+              "value": "1.6"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "1.6\\times\\dfrac{18}{5} = 5.76 = \\dfrac{144}{25}",
+              "f": "1.6*18/5",
+              "value": "144/25"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\dfrac{0.352\\times 3600}{220} = 5.76",
+              "f": "0.352*3600/220",
+              "value": "5.76"
+            }
+          ],
+          "answer": "144/25"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "06120f4c",
+        "answer": {
+          "value": 5.76,
+          "label": "144/25 km/h"
+        }
+      }
+    },
+    {
+      "id": "caf512d4-d709-42b3-aa16-9b8dd28a8d0f",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "eq",
+              "tex": "\\dfrac{22}{7}(R^2-r^2) = 264",
+              "lhs": "22/7*x",
+              "rhs": "264",
+              "note": "R² − r² = 264 × 7/22 = 84",
+              "roots": [
+                "84"
+              ]
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{22}{7}\\times 84 = 264",
+              "f": "22/7*84",
+              "value": "264"
+            }
+          ],
+          "answer": "84"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "779c6aff",
+        "answer": {
+          "value": 84,
+          "label": "84 cm²"
+        }
+      }
+    },
+    {
+      "id": "1c99f5e3-70db-4d16-b557-810ce590bf07",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{ext} = \\dfrac{180^\\circ}{k+1}",
+              "note": "interior = k × exterior, sum 180°"
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "n = \\dfrac{360}{180/(k+1)}",
+              "f": "360/(180/(x+1))"
+            },
+            {
+              "step": "s3",
+              "kind": "expr",
+              "tex": "n = \\dfrac{360(k+1)}{180}",
+              "f": "360*(x+1)/180"
+            },
+            {
+              "step": "s4",
+              "kind": "expr",
+              "tex": "n = 2k+2",
+              "f": "2*x+2"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "k=1:\\ n = 2(1)+2 = 4",
+              "f": "2*1+2",
+              "value": "4",
+              "note": "check with a square"
+            }
+          ],
+          "answer": "2*1+2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "970da4ed",
+        "answer": {
+          "value": 4,
+          "label": "2k + 2"
+        }
+      }
+    },
+    {
+      "id": "6b7eb034-c005-40e8-adaf-f032bd2ef932",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "(8-2)\\times 180^\\circ = 1080^\\circ",
+              "f": "(8-2)*180",
+              "value": "1080"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "8\\text{th interior} = 1080 - 1000 = 80^\\circ",
+              "f": "1080-1000",
+              "value": "80"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{exterior} = 180 - 80 = 100^\\circ",
+              "f": "180-80",
+              "value": "100"
+            }
+          ],
+          "answer": "180-80"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "b71aaf93",
+        "answer": {
+          "value": 100,
+          "label": "100°"
+        }
+      }
+    },
+    {
+      "id": "ab64cf71-c815-4633-b1f3-61b69e2a39ba",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "eq",
+              "tex": "(n-2)\\times 180 = 6\\times 360",
+              "lhs": "(x-2)*180",
+              "rhs": "6*360",
+              "roots": [
+                "14"
+              ],
+              "note": "n = 14"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{n(n-3)}{2} = \\dfrac{14\\times 11}{2} = 77",
+              "f": "14*11/2",
+              "value": "77"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{2160}{14} = 6\\times\\dfrac{360}{14}",
+              "f": "2160/14",
+              "value": "6*360/14"
+            }
+          ],
+          "answer": "14*11/2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "9f1dd6bd",
+        "answer": {
+          "value": 77,
+          "label": "77"
+        }
+      }
+    },
+    {
+      "id": "0546b84b-6776-4b2c-82a8-1cf8fce7832d",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "eq",
+              "tex": "(n-2)\\times 180 = 2700",
+              "lhs": "(x-2)*180",
+              "rhs": "2700",
+              "roots": [
+                "17"
+              ],
+              "note": "n = 17"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{n(n-3)}{2} = \\dfrac{17\\times 14}{2} = 119",
+              "f": "17*14/2",
+              "value": "119"
+            }
+          ],
+          "answer": "17*14/2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "0f63dda6",
+        "answer": {
+          "value": 119,
+          "label": "119"
+        }
+      }
+    },
+    {
+      "id": "49886026-40ec-4def-b33a-02da713ab1ab",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "n = \\dfrac{360}{18} = 20",
+              "f": "360/18",
+              "value": "20"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{20\\times 17}{2} = 170",
+              "f": "20*17/2",
+              "value": "170"
+            }
+          ],
+          "answer": "20*17/2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "228dfb48",
+        "answer": {
+          "value": 170,
+          "label": "170"
+        }
+      }
+    }
+  ],
+  "decided": []
+}
