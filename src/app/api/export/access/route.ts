@@ -1,14 +1,15 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { getPageIdentity } from "@/lib/auth";
-import { sessionHasScope } from "@/lib/entitlements/session";
+import { sessionHasAnyScope } from "@/lib/entitlements/session";
 import { sessionFormulaSheetFree, sessionPaperFree } from "@/lib/export/freeDownloadSession";
 import { formulaSheetKey, parseFormulaSheetTarget } from "@/lib/export/formulaSheet";
 import { paperKey } from "@/lib/export/freePaper";
 import { parseHomeworkTarget } from "@/lib/homework/dayExport";
 import { parseTopPyqsTarget } from "@/lib/homework/topPyqs";
 import { parseBoardPaperTarget } from "@/lib/questionPapers/exportPlan";
-import { DOWNLOAD_PASS_SCOPE } from "@/lib/export/access";
-import { passCta, passForScope, type PassCta } from "@/lib/billing/plans";
+import { passCta, passForBuyer, type PassCta } from "@/lib/billing/plans";
+import { passScopesFor } from "@/lib/billing/passScope";
+import { readCountry } from "@/lib/acquisition/country";
 import { listActivePlansCached } from "@/lib/billing/plansQuery";
 import { planSiteForHost } from "@/lib/sites/intl";
 import type { ExportViewerAccess } from "@/lib/export/viewerAccess";
@@ -52,11 +53,14 @@ export async function GET(request: NextRequest) {
   // then `freeDownloadLeft` answers for the free SHEET, which is its own file,
   // apart from the free paper.
   const sheet = parseFormulaSheetTarget(request.nextUrl.searchParams.get("formula") ?? undefined);
+  // The passes this site sells (0206): www the Premium Pass, intl its exams'.
+  const site = planSiteForHost(request.headers.get("host"));
+  const scopes = passScopesFor(site);
   let viewer = ANON;
   try {
     const { isSignedIn, isStaff } = await getPageIdentity();
     if (isSignedIn) {
-      const hasDownloadPass = !isStaff && (await sessionHasScope(DOWNLOAD_PASS_SCOPE));
+      const hasDownloadPass = !isStaff && (await sessionHasAnyScope(scopes));
       viewer = {
         signedIn: true,
         isStaff,
@@ -76,7 +80,7 @@ export async function GET(request: NextRequest) {
   if (!viewer.isStaff && !viewer.hasDownloadPass) {
     try {
       pass = passCta(
-        passForScope(await listActivePlansCached(), DOWNLOAD_PASS_SCOPE, planSiteForHost(request.headers.get("host")))
+        passForBuyer(await listActivePlansCached(), scopes[0], site, readCountry(request.headers))
       );
     } catch (err) {
       console.error("export access: plans read failed", err);

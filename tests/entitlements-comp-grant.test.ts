@@ -13,7 +13,8 @@ describe("COMP_SCOPE_OPTIONS", () => {
   // The dialog offers only scopes something in code enforces; `all` first because
   // it is the default a one-click comp should reach for.
   it("offers all, mocks, teacher — all first", () => {
-    expect(COMP_SCOPE_OPTIONS.map((o) => o.value)).toEqual([SCOPE_ALL, SCOPE_MOCKS, SCOPE_TEACHER]);
+    // The IMAT and MCAT passes (2026-10-30) can be comped like the www pass.
+    expect(COMP_SCOPE_OPTIONS.map((o) => o.value)).toEqual([SCOPE_ALL, SCOPE_MOCKS, SCOPE_TEACHER, "imat", "mcat"]);
   });
 });
 

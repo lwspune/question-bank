@@ -7,14 +7,20 @@
  */
 import { describe, it, expect } from "vitest";
 import {
+  parseCountries,
   passForBuyer,
+  planCurrencyFor,
+  planLengthLabel,
+  plansForBuyer,
   resolveOrderPlan,
   SELLABLE_SCOPES,
   validatePlan,
   type Plan,
   type PlanInput,
 } from "@/lib/billing/plans";
-import { coversAny, passScopeForExam, sitePassScopes } from "@/lib/billing/passScope";
+import { coversAny, holdsPassFor, passScopeForExam, passScopesFor, sitePassScopes } from "@/lib/billing/passScope";
+import { hasPassFromEntitlements } from "@/lib/header-session";
+import { rowToPlan } from "@/lib/billing/plansQuery";
 import { SCOPE_ALL, SCOPE_IMAT, SCOPE_MCAT, SCOPE_MOCKS, SCOPE_TEACHER, scopeCovers } from "@/lib/entitlements/access";
 import { EXAM_REGISTRY } from "@/lib/exam/examContext";
 
@@ -171,5 +177,116 @@ describe("validatePlan: countries and currency", () => {
 
   it("the new scopes validate", () => {
     expect(validatePlan(input({ scope: SCOPE_MCAT, durationDays: 90 }))).toEqual({ ok: true });
+  });
+});
+
+describe("holdsPassFor: a quota summary read against an exam's pass", () => {
+  it("reads passScopes when the database sends them", () => {
+    expect(holdsPassFor({ hasPass: false, passScopes: [SCOPE_IMAT] }, SCOPE_IMAT)).toBe(true);
+    expect(holdsPassFor({ hasPass: true, passScopes: [SCOPE_MOCKS] }, SCOPE_IMAT)).toBe(false);
+    expect(holdsPassFor({ hasPass: true, passScopes: [SCOPE_ALL] }, SCOPE_MCAT)).toBe(true);
+    expect(holdsPassFor({ hasPass: true, passScopes: [SCOPE_TEACHER] }, SCOPE_MOCKS)).toBe(true);
+  });
+
+  it("without passScopes (a database before 0206), hasPass means the www pass only", () => {
+    expect(holdsPassFor({ hasPass: true }, SCOPE_MOCKS)).toBe(true);
+    expect(holdsPassFor({ hasPass: true }, SCOPE_IMAT)).toBe(false);
+    expect(holdsPassFor({ hasPass: false }, SCOPE_MOCKS)).toBe(false);
+  });
+});
+
+describe("rowToPlan: site and countries come from the row", () => {
+  const row = {
+    id: "imat-india-6m", label: "L", blurb: "b", perks: [], url_key: "imat-india", amount_paise: 99900,
+    currency: "INR", site: "intl", duration_days: 182, scope: SCOPE_IMAT, active: true, sort_order: 2,
+    countries: ["IN"],
+  };
+
+  it("an intl plan priced in rupees stays an intl plan", () => {
+    expect(rowToPlan(row)).toMatchObject({ site: "intl", currency: "INR", countries: ["IN"] });
+  });
+
+  it("a row with no countries is sold everywhere", () => {
+    expect(rowToPlan({ ...row, currency: "USD", countries: null }).countries).toBeNull();
+  });
+
+  it("an unknown site falls back to the currency's site", () => {
+    expect(rowToPlan({ ...row, site: "elsewhere", currency: "USD", countries: null }).site).toBe("intl");
+  });
+});
+
+describe("planCurrencyFor: what the admin form prices a plan in", () => {
+  it("www is rupees; intl is dollars, or rupees when sold to India only", () => {
+    expect(planCurrencyFor("pyqvault", null)).toBe("INR");
+    expect(planCurrencyFor("intl", null)).toBe("USD");
+    expect(planCurrencyFor("intl", ["IN"])).toBe("INR");
+    expect(planCurrencyFor("intl", ["IN", "PK"])).toBe("USD");
+    expect(planCurrencyFor("intl", ["US"])).toBe("USD");
+  });
+});
+
+describe("parseCountries: the admin form's free-text list", () => {
+  it("reads codes separated by commas or spaces, upper-cased; blank is everywhere", () => {
+    expect(parseCountries("in, pk  US")).toEqual(["IN", "PK", "US"]);
+    expect(parseCountries("   ")).toBeNull();
+  });
+});
+
+describe("planLengthLabel: the MCAT pass's 90 days", () => {
+  it("reads 90 days as 3 months", () => {
+    expect(planLengthLabel({ durationDays: 90 })).toBe("3 months");
+  });
+});
+
+describe("passScopesFor: the passes a check asks for", () => {
+  it("the exam's own pass when the check knows its exam", () => {
+    expect(passScopesFor("intl", "imat")).toEqual([SCOPE_IMAT]);
+    expect(passScopesFor("pyqvault", "nda")).toEqual([SCOPE_MOCKS]);
+  });
+
+  it("otherwise any pass its site sells", () => {
+    expect(passScopesFor("pyqvault", null)).toEqual([SCOPE_MOCKS]);
+    expect(passScopesFor("intl", undefined)).toEqual(sitePassScopes("intl"));
+  });
+});
+
+describe("the header's diamond: any pass", () => {
+  const row = (scope: string) => ({
+    id: "e", userId: "u", scope, source: "razorpay" as const, status: "active" as const,
+    grantedAt: "2026-10-01T00:00:00Z", expiresAt: null, providerRef: null, note: null, grantedBy: null,
+  });
+  it("shows for the IMAT pass as well as the www pass", () => {
+    expect(hasPassFromEntitlements([row(SCOPE_IMAT)], Date.now())).toBe(true);
+    expect(hasPassFromEntitlements([row(SCOPE_MOCKS)], Date.now())).toBe(true);
+    expect(hasPassFromEntitlements([], Date.now())).toBe(false);
+  });
+});
+
+describe("holdsPassFor with several passes (a site-level check)", () => {
+  it("any listed pass is enough", () => {
+    expect(holdsPassFor({ hasPass: false, passScopes: [SCOPE_IMAT] }, [SCOPE_IMAT, SCOPE_MCAT])).toBe(true);
+    expect(holdsPassFor({ hasPass: true }, [SCOPE_IMAT, SCOPE_MCAT])).toBe(false);
+    expect(holdsPassFor({ hasPass: true }, [SCOPE_MOCKS])).toBe(true);
+  });
+});
+
+describe("plansForBuyer: the cards /pricing shows", () => {
+  const world = plan({ id: "imat-6m" });
+  const india = plan({ id: "imat-india-6m", amountPaise: 99900, currency: "INR", countries: ["IN"] });
+  const mcat = plan({ id: "mcat-3m", scope: SCOPE_MCAT, amountPaise: 2900, durationDays: 90 });
+  const www = plan({ id: "mock-pass-6m", scope: SCOPE_MOCKS, site: "pyqvault", currency: "INR", amountPaise: 49900 });
+  const all = [world, india, mcat, www];
+
+  it("in India: the rupee IMAT card replaces the dollar one; MCAT stays", () => {
+    expect(plansForBuyer(all, "intl", "IN").map((p) => p.id)).toEqual(["imat-india-6m", "mcat-3m"]);
+  });
+
+  it("elsewhere: the dollar cards only", () => {
+    expect(plansForBuyer(all, "intl", "US").map((p) => p.id)).toEqual(["imat-6m", "mcat-3m"]);
+    expect(plansForBuyer(all, "intl", null).map((p) => p.id)).toEqual(["imat-6m", "mcat-3m"]);
+  });
+
+  it("www is unchanged", () => {
+    expect(plansForBuyer(all, "pyqvault", "IN").map((p) => p.id)).toEqual(["mock-pass-6m"]);
   });
 });

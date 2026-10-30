@@ -7,7 +7,8 @@ import { getSessionMember, getSessionUser } from "@/lib/auth";
 import { createSupabaseAnonClient, createSupabaseServerClient } from "@/lib/supabase/server";
 import { loadEntitlements } from "@/lib/entitlements/query";
 import { hasActiveScope } from "@/lib/entitlements/access";
-import { formatPrice, planLengthLabel, type Plan } from "@/lib/billing/plans";
+import { formatPrice, planLengthLabel, plansForBuyer, type Plan } from "@/lib/billing/plans";
+import { readCountry } from "@/lib/acquisition/country";
 import { planSiteForHost } from "@/lib/sites/intl";
 import { listActivePlans } from "@/lib/billing/plansQuery";
 import PricingClient from "./PricingClient";
@@ -41,7 +42,9 @@ export default async function PricingPage({
   const [member, user, allPlans] = await Promise.all([getSessionMember(), getSessionUser(), listActivePlans(anon)]);
   // intl.pyqvault.com sells its own pass, in USD (migration 0203); www sells in INR.
   const site = planSiteForHost(headers().get("host"));
-  const plans = allPlans.filter((p) => p.site === site);
+  // At the buyer's country price where one is set (0206): a visitor in India
+  // sees the rupee IMAT pass in place of the dollar one.
+  const plans = plansForBuyer(allPlans, site, readCountry(headers()));
   const rows = user && !member ? await loadEntitlements(createSupabaseServerClient(), user.id) : [];
   if (user) {
     await logActivityOnce(createSupabaseServerClient(), user.id, surfaceViewedEvent(user.id, "pricing", new Date()));

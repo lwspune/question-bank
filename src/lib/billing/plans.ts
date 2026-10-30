@@ -207,6 +207,17 @@ export function passForBuyer(
 }
 
 /**
+ * The plans /pricing shows a buyer in `country` on `site`, in the given order:
+ * each one they may buy, minus a plan sold everywhere when a plan priced for
+ * their country sells the same pass.
+ */
+export function plansForBuyer(plans: readonly Plan[], site: PlanSite, country: string | null): Plan[] {
+  const eligible = plans.filter((p) => p.active && p.site === site && soldTo(p, country));
+  const localScopes = new Set(eligible.filter((p) => p.countries != null).map((p) => p.scope));
+  return eligible.filter((p) => p.countries != null || !localScopes.has(p.scope));
+}
+
+/**
  * What /api/billing/order sells when a buyer asks for `planId`: the plan for
  * the same pass (scope and site) at the buyer's country price. The button
  * names the pass, the server picks the price, so a rupee plan id sent from

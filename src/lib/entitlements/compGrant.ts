@@ -7,6 +7,8 @@
  */
 import {
   SCOPE_ALL,
+  SCOPE_IMAT,
+  SCOPE_MCAT,
   SCOPE_MOCKS,
   SCOPE_TEACHER,
   isEntitlementActive,
@@ -22,6 +24,8 @@ export const COMP_SCOPE_OPTIONS: readonly { value: string; label: string; help: 
     label: "Teacher pass",
     help: "Retired ₹499 pass. Covers the same as the Premium Pass.",
   },
+  { value: SCOPE_IMAT, label: "IMAT pass", help: "IMAT only, on intl.pyqvault.com: unlimited IMAT mocks, downloads and answers." },
+  { value: SCOPE_MCAT, label: "MCAT pass", help: "MCAT only, on intl.pyqvault.com: unlimited MCAT mocks, downloads and answers." },
 ];
 
 /** A yyyy-mm-dd date → end of that day in UTC, so the grant covers the chosen day. Blank/malformed → null. */

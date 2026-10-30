@@ -12,7 +12,10 @@ import { passCta, passForScope, type PassCta } from "./plans";
 import { listActivePlans } from "./plansQuery";
 
 export type PremiumLimits = {
+  /** Holds the www pass (or is staff). India-only features read this. */
   hasPass: boolean;
+  /** Every pass held, 'all' for staff (migration 0206; absent on an older database). */
+  passScopes?: string[];
   drillPerDay: number | null;
   revealsPerDay: number | null;
   saveLimit: number | null;

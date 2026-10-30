@@ -12,9 +12,11 @@ import { mockKindNote } from "@/lib/mocks/catalogue";
 import StartMock from "./StartMock";
 import { getMockQuota } from "@/lib/mocks/service";
 import { mockStartState } from "@/lib/mocks/quota";
-import { passCta, passForScope } from "@/lib/billing/plans";
+import { passCta, passForBuyer } from "@/lib/billing/plans";
+import { holdsPassFor, passScopeForExam } from "@/lib/billing/passScope";
+import { readCountry } from "@/lib/acquisition/country";
+import { headers } from "next/headers";
 import { listActivePlans } from "@/lib/billing/plansQuery";
-import { SCOPE_MOCKS } from "@/lib/entitlements/access";
 import { logActivityOnce } from "@/lib/activity/service";
 import { surfaceViewedEvent } from "@/lib/activity/views";
 import { paywallEvent } from "@/lib/activity/clientEvents";
@@ -89,17 +91,24 @@ export default async function MockInstructions({
   // Free-test limits (0120 + 0134): open, "N free left", or locked. A chapter
   // test counts against its own limit; a retake of this paper is always open,
   // and so is a paper a friend sent (0166).
-  const startState = mockStartState(quota, myAttempts.length > 0, mock.scope, fromFriend !== null);
+  // The pass that covers THIS paper's exam (0206): the IMAT pass for an IMAT
+  // paper, the Premium Pass for an Indian one. The database's trigger asks the
+  // same question when the attempt starts.
+  const examScope = passScopeForExam(getExamByName(mock.examName)?.slug);
+  const examQuota = quota ? { ...quota, hasPass: holdsPassFor(quota, examScope) } : quota;
+  const startState = mockStartState(examQuota, myAttempts.length > 0, mock.scope, fromFriend !== null);
   // The pass offered at the limit (null = none on sale; the card then links to /pricing).
   const mockPass =
     startState.kind === "open"
       ? null
       : passCta(
-          passForScope(
+          passForBuyer(
             await listActivePlans(createSupabaseAnonClient()),
-            SCOPE_MOCKS,
-            // An international paper is sold on intl.pyqvault.com, in USD (0203).
-            planSiteForPath(`/mock/${params.slug}`)
+            examScope,
+            // An international paper is sold on intl.pyqvault.com (0203), at the
+            // buyer's country price where one is set (0206).
+            planSiteForPath(`/mock/${params.slug}`),
+            readCountry(headers())
           )
         );
   if (user) {

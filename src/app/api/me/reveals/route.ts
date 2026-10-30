@@ -19,6 +19,8 @@ import { getPremiumLimits } from "@/lib/billing/premiumLimits";
 import { passOnSale } from "@/lib/billing/passOnSale";
 import { loadRevealedToday } from "@/lib/questions/revealQuota";
 import { istDayStartIso } from "@/lib/email/dueNudge";
+import { holdsPassFor, passScopesFor } from "@/lib/billing/passScope";
+import { readCountry } from "@/lib/acquisition/country";
 
 export const dynamic = "force-dynamic";
 
@@ -35,13 +37,17 @@ export async function GET(request: NextRequest) {
 
   const db = createSupabaseServerClient();
   const limits = await getPremiumLimits(db);
-  if (!limits || limits.hasPass || limits.revealsPerDay === null) {
+  // The pass that lifts the limit (0206): the page's exam's, when the meter
+  // says it (?exam=), else any pass this site sells.
+  const site = planSiteForHost(request.headers.get("host"));
+  const scopes = passScopesFor(site, request.nextUrl.searchParams.get("exam"));
+  if (!limits || holdsPassFor(limits, scopes) || limits.revealsPerDay === null) {
     return NextResponse.json({ limit: null, todayIds: [] }, { headers: NO_STORE });
   }
   try {
     const [todayIds, pass] = await Promise.all([
       loadRevealedToday(db, user.id, istDayStartIso(new Date())),
-      passOnSale(planSiteForHost(request.headers.get("host"))),
+      passOnSale(site, { scope: scopes[0], country: readCountry(request.headers) }),
     ]);
     return NextResponse.json({ limit: limits.revealsPerDay, todayIds, pass }, { headers: NO_STORE });
   } catch (e) {
