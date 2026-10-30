@@ -1,0 +1,32 @@
+[
+  {
+    "id": "5e473c94-4605-4321-bb2a-74b2156215aa",
+    "before": "cfc5037d",
+    "solution": "A non-zero imaginary number has the form \\(bi\\) with \\(b \\neq 0\\) real. Its square \\(-b^2\\) is negative, and it is never a real number. Complex numbers have no order, so an imaginary number is neither positive nor negative: \\(2i\\) and \\(-3i\\) cannot be compared with \\(0\\) by size. Only the claim that it is always positive is not a property of an imaginary number.\n\nHence (D).",
+    "note": "fit-check flag settled: Key D is right: imaginary numbers are not ordered, so they are neither positive nor negative; the solution wrongly calls them positive or negative."
+  },
+  {
+    "id": "a1f2dc80-7aa9-4791-8229-f35e4e786920",
+    "before": "79e3d1c2",
+    "solution": "Conjugation reflects the point about the real axis, so for any \\(z\\) that is not a negative real number, \\(\\text{Arg}(\\bar{z}) = -\\text{Arg}(z)\\). (For a negative real \\(z\\), the principal argument is \\(\\pi\\) for both \\(z\\) and \\(\\bar{z}\\), so the rule holds only up to \\(2\\pi\\) there.) The other options fail in general: for \\(z=1\\), \\(\\pi+\\text{Arg}(z) = \\pi\\) and \\(2\\,\\text{Arg}(z)=0\\) are not equal to \\(\\text{Arg}(\\bar z)=0\\) in the same way, and \\(z=i\\) gives \\(\\text{Arg}(\\bar z) = -\\pi/2 \\neq \\text{Arg}(z)\\).\n\nHence (A).",
+    "note": "fit-check flag settled: Key A is the only fitting option, but the stored claim fails for negative real z, where both arguments equal pi (principal value)."
+  },
+  {
+    "id": "bfad2472-c2d9-4727-8fb6-a887a0f4c411",
+    "before": "5424d919",
+    "solution": "Combine the fractions: \\(S = \\dfrac{(1-\\omega^2)+(1-\\omega)}{(1-\\omega)(1-\\omega^2)} = \\dfrac{2-(\\omega+\\omega^2)}{(1-\\omega)(1-\\omega^2)}\\).\n\nUsing \\(1+\\omega+\\omega^2=0\\), we get \\(\\omega+\\omega^2=-1\\), so the numerator is \\(2-(-1)=3\\).\n\nThe denominator is \\(1-\\omega-\\omega^2+\\omega^3 = 1-(-1)+1 = 3\\).\n\nSo \\(S = \\dfrac{3}{3} = 1\\).\n\nHence (A).",
+    "note": "fit-check flag settled: (1-w)(1-w^2) = 1 - w - w^2 + w^3 = 3, not 1+w+w^2 (which is 0). Numerator 2-(w+w^2) = 3, so S = 1."
+  },
+  {
+    "id": "c030a730-bd47-4ff3-aa6f-e6b1de4ebd67",
+    "before": "38aab95f",
+    "solution": "Let \\(|z|=1\\) and \\(n \\in \\mathbb{Z}\\).\n\n(A) \\(\\text{Arg}(z^n) = n\\,\\text{Arg}(z)\\) up to a multiple of \\(2\\pi\\), so it holds modulo the principal range.\n\n(B) \\(|z^n| = |z|^n = 1\\) for every integer \\(n\\).\n\n(C) \\(z\\bar{z} = |z|^2 = 1\\), which holds here because \\(|z|=1\\).\n\nAll three statements are true, so the answer is 'all of the above'.\n\nHence (D).",
+    "note": "fit-check flag settled: All three hold when |z|=1, but z times conj(z) = |z|^2, which equals 1 only because |z|=1; the solution says it holds for any z."
+  },
+  {
+    "id": "d6246ee3-adfa-4bd3-a1f6-35df2307d1ce",
+    "before": "63b2bee5",
+    "solution": "For \\(z=x+iy \\neq 0\\), \\(\\dfrac{z}{\\bar z} = \\dfrac{z^2}{|z|^2} = \\dfrac{x^2-y^2+2ixy}{x^2+y^2}\\), which is real only when \\(xy=0\\), that is, when \\(z\\) is real or purely imaginary. For example, \\(z=1+i\\) gives \\(i\\), which is not real. So (B) is not true for all \\(z \\neq 0\\).\n\nThe others always hold: \\(|z|=0 \\Leftrightarrow z=0\\); \\(|z_1 z_2| = |z_1||z_2|\\); \\(|z| \\ge 0\\).\n\nHence (B).",
+    "note": "fit-check flag settled: Key B is right, but z/conj(z) = z^2/|z|^2 is real exactly when xy = 0, not only when y = 0 (z = i gives -1)."
+  }
+]
