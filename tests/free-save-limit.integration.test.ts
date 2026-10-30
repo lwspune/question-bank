@@ -133,6 +133,7 @@ describe.skipIf(!HAS_ENV)("free save limit + my_premium_limits (migration 0134)"
     expect(error).toBeNull();
     expect(data).toEqual({
       hasPass: false,
+      passScopes: [],
       drillPerDay: 15,
       revealsPerDay: 50,
       saveLimit: 2,
