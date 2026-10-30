@@ -347,9 +347,9 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 ### 2026-10
 
 - **2026-10-30 (second) — A pass per exam, priced per buyer country (0206): IMAT $19 or Rs 999 in India; MCAT $29/3 months, off.**
-  - **Why:** both passes were scope `mocks`, so the Rs 499 www pass unlocked IMAT and no intl price could exceed it.
+  - **Why:** both passes were scope `mocks`: the Rs 499 www pass unlocked IMAT, so no intl price could exceed it.
   - **Exam -> pass twice:** registry `passScope` (TS), `exams.pass_scope` (limit triggers). Mocks ask the exam's pass; downloads and the reveal meter the site's (gap in SUGGESTIONS.md).
-  - **The server prices each order** for the buyer's country (`resolveOrderPlan`). India pays rupees: Indian cards fail on USD, UPI is rupees only.
+  - **The server prices each order** for the buyer's country (`resolveOrderPlan`). India pays rupees: cards fail on USD, UPI is rupees.
   - **Deploy:** 0206 before the push, the rupee plan after it. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-10-30 — intl.pyqvault.com: IMAT moves to its own host, which shows no Indian exam and sells the pass in US dollars (migration 0203).**
   - **Look by path, host in the middleware:** reading the host in a shared layout de-caches every page; www's matcher lists IMAT's paths literally (a test checks it), so public www pages still run no middleware.
