@@ -84,6 +84,17 @@ function currencyAllowed(site: PlanSite, currency: PlanCurrency, countries: read
   return site === "intl" && currency === "INR" && countries?.length === 1 && countries[0] === "IN";
 }
 
+/** The currency a plan is priced in, from where and to whom it is sold (the admin form's rule). */
+export function planCurrencyFor(site: PlanSite, countries: readonly string[] | null): PlanCurrency {
+  return currencyAllowed(site, "INR", countries) ? "INR" : CURRENCY_OF_SITE[site];
+}
+
+/** The admin form's "sold to" text: codes split on commas or spaces, upper-cased; blank = everywhere (null). */
+export function parseCountries(text: string): string[] | null {
+  const codes = text.split(/[\s,]+/).map((c) => c.trim().toUpperCase()).filter(Boolean);
+  return codes.length > 0 ? codes : null;
+}
+
 /** Field-level validation for an admin write, in form order. */
 export function validatePlan(input: PlanInput): PlanValidation {
   if (!SLUG_RE.test(input.id)) {
@@ -142,6 +153,7 @@ export function planLengthLabel(plan: Pick<Plan, "durationDays">): string {
   if (plan.durationDays === null) return "lifetime";
   if (plan.durationDays === 365) return "1 year";
   if (plan.durationDays === 182) return "6 months";
+  if (plan.durationDays === 90) return "3 months";
   return `${plan.durationDays} days`;
 }
 

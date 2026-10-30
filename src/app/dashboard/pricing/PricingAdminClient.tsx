@@ -20,6 +20,8 @@ import {
 import {
   SELLABLE_SCOPES,
   formatPrice,
+  parseCountries,
+  planCurrencyFor,
   planLengthLabel,
   validatePlan,
   type Plan,
@@ -44,6 +46,8 @@ type Draft = {
   urlKey: string;
   /** Which site sells it (0203): www in INR, intl.pyqvault.com in USD. Fixed at creation. */
   site: PlanSite;
+  /** Who may buy it (0206): country codes such as "IN"; blank = everywhere. */
+  countries: string;
   /** The price in whole currency units (rupees or dollars), as typed. */
   rupees: string;
   durationDays: string;
@@ -56,6 +60,8 @@ type Draft = {
 const SCOPE_HELP: Record<string, string> = {
   mocks: "Unlimited mock tests past the free limit, plus question paper + answer key PDF downloads.",
   teacher: "Retired ₹499 pass. Covers the same as the Premium Pass.",
+  imat: "IMAT only (intl.pyqvault.com): unlimited IMAT mocks, downloads and answers.",
+  mcat: "MCAT only (intl.pyqvault.com): unlimited MCAT mocks, downloads and answers.",
 };
 
 const fieldClass =
@@ -70,6 +76,7 @@ function toDraft(p: Plan | null): Draft {
         perks: p.perks.join("\n"),
         urlKey: p.urlKey,
         site: p.site,
+        countries: (p.countries ?? []).join(", "),
         rupees: String(p.amountPaise / 100),
         durationDays: p.durationDays === null ? "" : String(p.durationDays),
         scope: p.scope,
@@ -84,6 +91,7 @@ function toDraft(p: Plan | null): Draft {
         perks: "",
         urlKey: "",
         site: "pyqvault",
+        countries: "",
         rupees: "",
         durationDays: "365",
         scope: SELLABLE_SCOPES[0],
@@ -95,6 +103,7 @@ function toDraft(p: Plan | null): Draft {
 
 function fromDraft(d: Draft): PlanInput & { active: boolean } {
   const rupees = Number(d.rupees);
+  const countries = parseCountries(d.countries);
   return {
     id: d.id.trim(),
     label: d.label,
@@ -102,8 +111,9 @@ function fromDraft(d: Draft): PlanInput & { active: boolean } {
     perks: d.perks.split("\n").map((s) => s.trim()).filter(Boolean),
     urlKey: d.urlKey.trim(),
     amountPaise: Number.isFinite(rupees) ? Math.round(rupees * 100) : NaN,
-    currency: d.site === "intl" ? "USD" : "INR",
+    currency: planCurrencyFor(d.site, countries),
     site: d.site,
+    countries,
     durationDays: d.durationDays.trim() === "" ? null : Number(d.durationDays),
     scope: d.scope,
     sortOrder: Number(d.sortOrder),
@@ -216,7 +226,8 @@ export default function PricingAdminClient({ initialPlans, initialSettings, load
                     </p>
                     <p className="text-sm text-muted-foreground">
                       {formatPrice(p.amountPaise, p.currency)} / {planLengthLabel(p)} ·{" "}
-                      {p.site === "intl" ? "intl.pyqvault.com" : "www"} · scope{" "}
+                      {p.site === "intl" ? "intl.pyqvault.com" : "www"}
+                      {p.countries ? ` · sold to ${p.countries.join(", ")}` : ""} · scope{" "}
                       <code>{p.scope}</code> · <code>/pricing?plan={p.urlKey}</code> · id{" "}
                       <code>{p.id}</code>
                     </p>
@@ -316,6 +327,20 @@ export default function PricingAdminClient({ initialPlans, initialSettings, load
               </div>
 
               <div className="space-y-1">
+                <Label htmlFor="plan-countries">Sold to (country codes, blank = everywhere)</Label>
+                <Input
+                  id="plan-countries"
+                  value={draft.countries}
+                  placeholder="e.g. IN"
+                  onChange={(e) => setDraft({ ...draft, countries: e.target.value })}
+                />
+                <p className="text-xs text-muted-foreground">
+                  Buyers in these countries get this plan instead of the one sold everywhere for the same
+                  pass. An intl plan sold to IN only is priced in rupees.
+                </p>
+              </div>
+
+              <div className="space-y-1">
                 <Label htmlFor="plan-label">Label</Label>
                 <Input
                   id="plan-label"
@@ -327,12 +352,14 @@ export default function PricingAdminClient({ initialPlans, initialSettings, load
 
               <div className="grid gap-3 sm:grid-cols-3">
                 <div className="space-y-1">
-                  <Label htmlFor="plan-rupees">Price ({draft.site === "intl" ? "$" : "₹"})</Label>
+                  <Label htmlFor="plan-rupees">
+                    Price ({planCurrencyFor(draft.site, parseCountries(draft.countries)) === "USD" ? "$" : "₹"})
+                  </Label>
                   <Input
                     id="plan-rupees"
                     type="number"
                     min={1}
-                    step={draft.site === "intl" ? 0.01 : 1}
+                    step={planCurrencyFor(draft.site, parseCountries(draft.countries)) === "USD" ? 0.01 : 1}
                     value={draft.rupees}
                     onChange={(e) => setDraft({ ...draft, rupees: e.target.value })}
                     required
