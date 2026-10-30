@@ -219,6 +219,13 @@ describe("evaluateFlags — capacity", () => {
     expect(codes(d({ dbSizeBytes: 0.85 * THRESHOLDS.dbSizeCapBytes }))).toContain("db-size");
   });
 
+  // The project is on Supabase Pro (8 GB disk included). The rule kept the free
+  // plan's 500 MB and read 549 MB as "110% of the cap" on 2026-10-30.
+  it("measures size against the Pro plan's 8 GB disk, not the free plan's 500 MB", () => {
+    expect(THRESHOLDS.dbSizeCapBytes).toBe(8 * 1024 * 1024 * 1024);
+    expect(codes(d({ dbSizeBytes: 549 * 1024 * 1024 }))).not.toContain("db-size");
+  });
+
   it("warns when connections near the maximum", () => {
     expect(codes(d({ connections: 55, maxConnections: 60 }))).toContain("connections");
   });
@@ -274,6 +281,35 @@ describe("evaluateFlags — table hygiene", () => {
       d({ tables: [{ name: "questions", liveRows: 44631, deadRows: 8167, totalBytes: 1, seqScans: 0, idxScans: 0 }] })
     );
     expect(flags.map((f) => f.code)).not.toContain("dead-rows");
+  });
+
+  /**
+   * A RESTART RESETS n_live_tup, NOT THE TABLE. Postgres restarted on
+   * 2026-10-24 and lost its counters: `questions` then reported 1,548 live rows
+   * (only those inserted since) against 120,408 real ones, and the rule read
+   * 7,712 dead rows as "445%". `pg_class.reltuples` (118,860) survived, so the
+   * rule divides by the larger of the two.
+   */
+  it("uses the planner's row estimate when the live counter was reset", () => {
+    const flags = evaluateFlags(
+      d({
+        tables: [
+          { name: "questions", liveRows: 1548, estRows: 118860, deadRows: 7712, totalBytes: 1, seqScans: 0, idxScans: 0 },
+        ],
+      })
+    );
+    expect(flags.map((f) => f.code)).not.toContain("dead-rows");
+  });
+
+  it("still fires on genuine bloat when both counts agree", () => {
+    const flags = evaluateFlags(
+      d({
+        tables: [
+          { name: "questions", liveRows: 42536, estRows: 42000, deadRows: 20000, totalBytes: 1, seqScans: 0, idxScans: 0 },
+        ],
+      })
+    );
+    expect(flags.map((f) => f.code)).toContain("dead-rows");
   });
 });
 
