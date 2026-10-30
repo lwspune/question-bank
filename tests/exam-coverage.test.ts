@@ -79,11 +79,11 @@ describe("examCoverageGroups", () => {
     expect(groups).toEqual(["NDA"]);
   });
 
-  it("on the live registry: every group is non-empty and ISC is absent", () => {
+  it("on the live registry: every group is non-empty, CISCE named once for both classes", () => {
     const groups = examCoverageGroups(EXAM_REGISTRY);
     expect(groups.length).toBeGreaterThan(5);
     for (const g of groups) expect(g.trim().length).toBeGreaterThan(0);
-    expect(groups.join(" ")).not.toMatch(/ISC|CISCE/);
+    expect(groups).toContain("CISCE Classes 10 and 12");
     expect(groups).toContain("IPMAT (Indore, Rohtak, Jammu)");
     expect(groups).toContain("CBSE Classes 10, 11 and 12");
   });
