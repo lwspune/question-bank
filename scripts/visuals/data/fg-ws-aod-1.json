@@ -1,0 +1,2580 @@
+{
+  "//": "Assembled from agent drafts (functionGraph).",
+  "visuals": [
+    {
+      "id": "03b09309-e559-4b39-a6e5-91cc245d4f89",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "0.75*x^4-x^3-9*x^2+7",
+          "fLabel": "y = 0.75x⁴ − x³ − 9x² + 7",
+          "window": {
+            "x": [
+              -3.5,
+              4.5
+            ],
+            "y": [
+              -45,
+              60
+            ]
+          },
+          "ask": {
+            "kind": "extrema",
+            "scope": "local",
+            "expect": [
+              {
+                "type": "min",
+                "x": -2,
+                "y": -9
+              },
+              {
+                "type": "max",
+                "x": 0,
+                "y": 7
+              },
+              {
+                "type": "min",
+                "x": 3,
+                "y": -40.25
+              }
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "98491009",
+        "answer": {
+          "value": 0,
+          "label": "local max value 7"
+        }
+      }
+    },
+    {
+      "id": "061baa50-fd2b-4b29-a53d-b1ca9c8ac880",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "2*x^3-3*x",
+          "fLabel": "h = 2u³ − 3u",
+          "window": {
+            "x": [
+              -1.6,
+              1.6
+            ],
+            "y": [
+              -3.6,
+              3.6
+            ]
+          },
+          "ask": {
+            "kind": "extrema",
+            "scope": "absolute",
+            "on": [
+              -1.414213562373,
+              1.414213562373
+            ],
+            "expect": [
+              {
+                "type": "max",
+                "y": 1.414213562373
+              }
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "a19a7e84",
+        "answer": {
+          "value": 0,
+          "label": "max √2"
+        }
+      }
+    },
+    {
+      "id": "1175782f-c7da-477b-acba-80df682e493d",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "abs(x-1)+x^2",
+          "fLabel": "y = |x − 1| + x²",
+          "window": {
+            "x": [
+              -1.5,
+              2
+            ],
+            "y": [
+              0,
+              5.2
+            ]
+          },
+          "ask": {
+            "kind": "extrema",
+            "scope": "local",
+            "expect": [
+              {
+                "type": "min",
+                "x": 0.5,
+                "y": 0.75
+              }
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve",
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "c245b9ff",
+        "answer": {
+          "value": 0,
+          "label": "one local minimum, x = 1/2"
+        }
+      }
+    },
+    {
+      "id": "11e8fb35-2100-43c4-8f65-bb64d812de64",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "(x-1)^2*(x+1)*(x-2)^3",
+          "fLabel": "y = (x−1)²(x+1)(x−2)³",
+          "window": {
+            "x": [
+              -1,
+              2.2
+            ],
+            "y": [
+              -20,
+              3
+            ]
+          },
+          "ask": {
+            "kind": "extrema",
+            "scope": "local",
+            "expect": [
+              {
+                "type": "min",
+                "x": -0.586799548233,
+                "y": -18.00915
+              },
+              {
+                "type": "max",
+                "x": 1,
+                "y": 0
+              },
+              {
+                "type": "min",
+                "x": 1.420132881566,
+                "y": -0.083291
+              }
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "72267a36",
+        "answer": {
+          "value": 0,
+          "label": "2 local minima"
+        }
+      }
+    },
+    {
+      "id": "14b53178-9554-4666-a6dc-6e247da4b70f",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "3*x^4-20*x^3-12*x^2+288*x+1",
+          "fLabel": "y = 3x⁴ − 20x³ − 12x² + 288x + 1",
+          "window": {
+            "x": [
+              -3,
+              5
+            ],
+            "y": [
+              -450,
+              550
+            ]
+          },
+          "ask": {
+            "kind": "increasingOn",
+            "interval": [
+              -2,
+              3
+            ],
+            "intervalLabel": "−2 < x < 3"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "shade"
+            ]
+          }
+        ],
+        "fingerprint": "e1f3d936",
+        "answer": {
+          "value": 1,
+          "label": "rising on −2 < x < 3"
+        }
+      }
+    },
+    {
+      "id": "153e1d8f-08f1-4156-9f6c-72e9652135f2",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "log(x)/x",
+          "fLabel": "y = ln x / x",
+          "window": {
+            "x": [
+              0.5,
+              10
+            ],
+            "y": [
+              -1.6,
+              0.5
+            ]
+          },
+          "ask": {
+            "kind": "extrema",
+            "scope": "local",
+            "expect": [
+              {
+                "type": "max",
+                "x": 2.718281828459,
+                "y": 0.367879441171
+              }
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "d6e57415",
+        "answer": {
+          "value": 0,
+          "label": "max 1/e at x = e"
+        }
+      }
+    },
+    {
+      "id": "1ac3c5ff-7ac3-456d-b1bf-e6756d00899f",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "4*(x^2-x+1)",
+          "fLabel": "y = 4(t² − t + 1)",
+          "window": {
+            "x": [
+              -0.2,
+              1.2
+            ],
+            "y": [
+              2.7,
+              5.2
+            ]
+          },
+          "ask": {
+            "kind": "extrema",
+            "scope": "absolute",
+            "on": [
+              0,
+              1
+            ],
+            "expect": [
+              {
+                "type": "min",
+                "x": 0.5,
+                "y": 3
+              }
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "35ae8927",
+        "answer": {
+          "value": 0,
+          "label": "min 3"
+        }
+      }
+    },
+    {
+      "id": "1b08a619-3955-4eb4-a485-24794277b3a9",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "0.75*x^4-x^3-9*x^2+7",
+          "fLabel": "y = 0.75x⁴ − x³ − 9x² + 7",
+          "window": {
+            "x": [
+              -3.5,
+              4.5
+            ],
+            "y": [
+              -45,
+              60
+            ]
+          },
+          "ask": {
+            "kind": "extrema",
+            "scope": "local",
+            "expect": [
+              {
+                "type": "min",
+                "x": -2,
+                "y": -9
+              },
+              {
+                "type": "max",
+                "x": 0,
+                "y": 7
+              },
+              {
+                "type": "min",
+                "x": 3,
+                "y": -40.25
+              }
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "06b84643",
+        "answer": {
+          "value": 0,
+          "label": "minima at x = −2 and 3"
+        }
+      }
+    },
+    {
+      "id": "1f3e3ef6-bc1c-42c2-b8e3-56b7a179378a",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "x*sin(x)+cos(x)+0.5*cos(2*x)",
+          "fLabel": "y = x sin x + cos x + ½cos 2x",
+          "window": {
+            "x": [
+              -0.2,
+              1.8
+            ],
+            "y": [
+              1,
+              1.6
+            ]
+          },
+          "xTicks": "pi",
+          "ask": {
+            "kind": "decreasingOn",
+            "interval": [
+              0,
+              1.57079633
+            ],
+            "intervalLabel": "0 < x < π/2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "shade"
+            ]
+          }
+        ],
+        "fingerprint": "35273d78",
+        "answer": {
+          "value": 1,
+          "label": "falling on 0 < x < π/2"
+        }
+      }
+    },
+    {
+      "id": "26e6a1c5-1774-4b6b-9c1f-d4e14a428c9e",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "x^3-x",
+          "fLabel": "y = x³ − x",
+          "window": {
+            "x": [
+              -1.5,
+              1.5
+            ],
+            "y": [
+              -2,
+              2
+            ]
+          },
+          "ask": {
+            "kind": "extrema",
+            "scope": "local",
+            "expect": [
+              {
+                "type": "max",
+                "x": -0.57735026919,
+                "y": 0.384900179459
+              },
+              {
+                "type": "min",
+                "x": 0.57735026919,
+                "y": -0.384900179459
+              }
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "556e87b1",
+        "answer": {
+          "value": 0,
+          "label": "local max > local min"
+        }
+      }
+    },
+    {
+      "id": "328ecbf6-62c5-4bfc-857d-4d1279614b35",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "exp(-2*x^2*ln(x))",
+          "fLabel": "y = (1/x)^(2x²)",
+          "window": {
+            "x": [
+              0.1,
+              1.5
+            ],
+            "y": [
+              0,
+              1.6
+            ]
+          },
+          "ask": {
+            "kind": "extrema",
+            "scope": "local",
+            "expect": [
+              {
+                "type": "max",
+                "x": 0.60653066,
+                "y": 1.444667861
+              }
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "bb4a8b81",
+        "answer": {
+          "value": 0,
+          "label": "max at x = 1/√e"
+        }
+      }
+    },
+    {
+      "id": "34084162-7d89-4cd7-84f2-be8b2bc1bb29",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "x/ln(x)",
+          "fLabel": "y = x / ln x",
+          "window": {
+            "x": [
+              1.4,
+              7
+            ],
+            "y": [
+              2.5,
+              4.5
+            ]
+          },
+          "ask": {
+            "kind": "extrema",
+            "scope": "local",
+            "expect": [
+              {
+                "type": "min",
+                "x": 2.718281828459,
+                "y": 2.718281828459
+              }
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "ced88132",
+        "answer": {
+          "value": 0,
+          "label": "local min e at x = e"
+        }
+      }
+    },
+    {
+      "id": "343f422a-868b-4b72-87f1-c10002e894ba",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "sin(x+pi/6)+cos(x+pi/6)",
+          "fLabel": "y = sin(x+π/6) + cos(x+π/6)",
+          "window": {
+            "x": [
+              0,
+              1.57079633
+            ],
+            "y": [
+              0.2,
+              1.6
+            ]
+          },
+          "xTicks": "pi",
+          "ask": {
+            "kind": "extrema",
+            "scope": "local",
+            "expect": [
+              {
+                "type": "max",
+                "x": 0.261799388,
+                "y": 1.414213562
+              }
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "24325b04",
+        "answer": {
+          "value": 0,
+          "label": "max at x = π/12"
+        }
+      }
+    },
+    {
+      "id": "346fc524-31e7-4aa3-995b-f0983cc9040a",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "(x^2-1)/(x^2+1)",
+          "fLabel": "y = (x²−1)/(x²+1)",
+          "window": {
+            "x": [
+              -4,
+              4
+            ],
+            "y": [
+              -1.2,
+              1.2
+            ]
+          },
+          "ask": {
+            "kind": "extrema",
+            "scope": "local",
+            "expect": [
+              {
+                "type": "min",
+                "x": 0,
+                "y": -1
+              }
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "7b34c809",
+        "answer": {
+          "value": 0,
+          "label": "min −1"
+        }
+      }
+    },
+    {
+      "id": "40634bef-e6f7-4ae8-8b45-b0aa120ed828",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "x*sqrt(16-x^2)",
+          "fLabel": "A = x√(16 − x²)",
+          "window": {
+            "x": [
+              0,
+              4
+            ],
+            "y": [
+              0,
+              9
+            ]
+          },
+          "ask": {
+            "kind": "extrema",
+            "scope": "absolute",
+            "on": [
+              0,
+              4
+            ],
+            "expect": [
+              {
+                "type": "max",
+                "x": 2.828427125,
+                "y": 8
+              }
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "5b644931",
+        "answer": {
+          "value": 0,
+          "label": "max area 8"
+        }
+      }
+    },
+    {
+      "id": "47c0e418-ca18-456f-8f9b-5529fcbc127e",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "36*sin(x)*(1+cos(x))",
+          "fLabel": "A = 36 sinα (1 + cosα)",
+          "window": {
+            "x": [
+              0,
+              1.57079633
+            ],
+            "y": [
+              0,
+              50
+            ]
+          },
+          "xTicks": "pi",
+          "ask": {
+            "kind": "extrema",
+            "scope": "local",
+            "expect": [
+              {
+                "type": "max",
+                "x": 1.047197551,
+                "y": 46.7653718
+              }
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "f8078d84",
+        "answer": {
+          "value": 0,
+          "label": "max at α = π/3"
+        }
+      }
+    },
+    {
+      "id": "4957d748-7b61-46ea-98d9-3e40f18add2f",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "(x^2-x+1)^(1/3)",
+          "fLabel": "y = (x² − x + 1)^(1/3)",
+          "window": {
+            "x": [
+              -0.2,
+              1.2
+            ],
+            "y": [
+              0.88,
+              1.1
+            ]
+          },
+          "ask": {
+            "kind": "extrema",
+            "scope": "absolute",
+            "on": [
+              0,
+              1
+            ],
+            "expect": [
+              {
+                "type": "min",
+                "x": 0.5,
+                "y": 0.9085602964
+              }
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "5531ad0f",
+        "answer": {
+          "value": 0,
+          "label": "min (3/4)^(1/3)"
+        }
+      }
+    },
+    {
+      "id": "4a4519c1-672e-493b-98a8-985636f84efa",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "x^3*sin(x)",
+          "fLabel": "y = x³ sin x",
+          "window": {
+            "x": [
+              -1.5,
+              1.5
+            ],
+            "y": [
+              -0.5,
+              3.6
+            ]
+          },
+          "ask": {
+            "kind": "extrema",
+            "scope": "local",
+            "expect": [
+              {
+                "type": "min",
+                "x": 0,
+                "y": 0
+              }
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "62efe118",
+        "answer": {
+          "value": 0,
+          "label": "local min at x = 0"
+        }
+      }
+    },
+    {
+      "id": "4d6f6ab4-04d0-4363-8798-3d621cf65a4e",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "sqrt(2)*abs(sin(x+pi/4))",
+          "fLabel": "p = √2|sin(α + π/4)|",
+          "window": {
+            "x": [
+              -0.7,
+              2.3
+            ],
+            "y": [
+              0,
+              1.6
+            ]
+          },
+          "xTicks": "pi",
+          "ask": {
+            "kind": "extrema",
+            "scope": "local",
+            "expect": [
+              {
+                "type": "max",
+                "x": 0.785398163,
+                "y": 1.414213562
+              }
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "513be153",
+        "answer": {
+          "value": 0,
+          "label": "max √2"
+        }
+      }
+    },
+    {
+      "id": "4f26b720-df21-49cb-aa67-346286b9df4e",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "x^2-3*x+5",
+          "fLabel": "S = k² − 3k + 5",
+          "window": {
+            "x": [
+              -1,
+              4
+            ],
+            "y": [
+              2,
+              9.5
+            ]
+          },
+          "ask": {
+            "kind": "extrema",
+            "scope": "local",
+            "expect": [
+              {
+                "type": "min",
+                "x": 1.5,
+                "y": 2.75
+              }
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "24dccb72",
+        "answer": {
+          "value": 0,
+          "label": "min at k = 3/2"
+        }
+      }
+    },
+    {
+      "id": "4f719091-56be-4816-8638-7b6bf8a7f7d2",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "x^2*exp(-x)",
+          "fLabel": "y = x²/eˣ",
+          "window": {
+            "x": [
+              -1,
+              5
+            ],
+            "y": [
+              -0.2,
+              3
+            ]
+          },
+          "ask": {
+            "kind": "increasingOn",
+            "interval": [
+              0,
+              2
+            ],
+            "intervalLabel": "0 < x < 2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "shade"
+            ]
+          }
+        ],
+        "fingerprint": "047c10e1",
+        "answer": {
+          "value": 1,
+          "label": "rising on 0 < x < 2"
+        }
+      }
+    },
+    {
+      "id": "50e387c8-aed0-44d2-845f-e4a13f4ffb7e",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "abs(x-1)+x^2",
+          "fLabel": "y = |x − 1| + x²",
+          "window": {
+            "x": [
+              -1.5,
+              2.5
+            ],
+            "y": [
+              0,
+              8
+            ]
+          },
+          "ask": {
+            "kind": "increasingOn",
+            "interval": [
+              0.5,
+              2.5
+            ],
+            "intervalLabel": "x > 1/2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "shade"
+            ]
+          }
+        ],
+        "fingerprint": "50fc3b86",
+        "answer": {
+          "value": 1,
+          "label": "rising x > 1/2; falls x < 1/2"
+        }
+      }
+    },
+    {
+      "id": "6913f0fe-3eee-4fce-baa6-fd793740540f",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "(x^2-1)/(x^2+1)",
+          "fLabel": "y = (x² − 1)/(x² + 1)",
+          "window": {
+            "x": [
+              -3,
+              3
+            ],
+            "y": [
+              -1.2,
+              1
+            ]
+          },
+          "ask": {
+            "kind": "extrema",
+            "scope": "local",
+            "expect": [
+              {
+                "type": "min",
+                "x": 0,
+                "y": -1
+              }
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "67389443",
+        "answer": {
+          "value": 0,
+          "label": "min at x = 0"
+        }
+      }
+    },
+    {
+      "id": "76e17c1f-1cad-4334-88a0-76d758fee1ad",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "3*x^4-20*x^3-12*x^2+288*x+1",
+          "fLabel": "y = 3x⁴ − 20x³ − 12x² + 288x + 1",
+          "window": {
+            "x": [
+              -4,
+              6
+            ],
+            "y": [
+              -450,
+              900
+            ]
+          },
+          "ask": {
+            "kind": "decreasingOn",
+            "interval": [
+              3,
+              4
+            ],
+            "intervalLabel": "3 < x < 4"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "shade"
+            ]
+          }
+        ],
+        "fingerprint": "c079ed07",
+        "answer": {
+          "value": 1,
+          "label": "falling on 3 < x < 4"
+        }
+      }
+    },
+    {
+      "id": "83351666-559f-42f1-ab14-7bd061516c57",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "16*sin(x)-12*sin(x)^2",
+          "fLabel": "y = 16 sinθ − 12 sin²θ",
+          "window": {
+            "x": [
+              -0.3,
+              6.6
+            ],
+            "y": [
+              -30,
+              8
+            ]
+          },
+          "xTicks": "pi",
+          "ask": {
+            "kind": "extrema",
+            "scope": "absolute",
+            "on": [
+              0,
+              6.28318531
+            ],
+            "expect": [
+              {
+                "type": "max",
+                "x": 0.729727656,
+                "y": 5.333333333
+              }
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "ab8290f9",
+        "answer": {
+          "value": 0,
+          "label": "max 16/3"
+        }
+      }
+    },
+    {
+      "id": "8662aad0-fac0-4619-a586-cdf0028a4f11",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "4*(sin(x)^2+cos(x)^4)",
+          "fLabel": "y = 4(sin²θ + cos⁴θ)",
+          "window": {
+            "x": [
+              -0.3,
+              3.5
+            ],
+            "y": [
+              2.5,
+              4.4
+            ]
+          },
+          "xTicks": "pi",
+          "ask": {
+            "kind": "extrema",
+            "scope": "absolute",
+            "on": [
+              0,
+              3.14159265
+            ],
+            "expect": [
+              {
+                "type": "max",
+                "y": 4
+              }
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "e0acc107",
+        "answer": {
+          "value": 0,
+          "label": "max 4"
+        }
+      }
+    },
+    {
+      "id": "8ab20295-7a26-44cc-ba66-b4b0fbf74e30",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "x-sin(x)",
+          "fLabel": "y = x − sin x",
+          "window": {
+            "x": [
+              0,
+              10
+            ],
+            "y": [
+              -0.5,
+              11
+            ]
+          },
+          "ask": {
+            "kind": "increasingOn",
+            "interval": [
+              0,
+              10
+            ],
+            "intervalLabel": "x > 0"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "shade"
+            ]
+          }
+        ],
+        "fingerprint": "599fcc8c",
+        "answer": {
+          "value": 1,
+          "label": "rising for x > 0"
+        }
+      }
+    },
+    {
+      "id": "9f7a9804-b2cc-4c64-ab2c-11d2df792993",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "exp(-2*x^2*log(x))",
+          "fLabel": "y = (1/x)^(2x²)",
+          "window": {
+            "x": [
+              0.02,
+              1.8
+            ],
+            "y": [
+              -0.1,
+              1.6
+            ]
+          },
+          "ask": {
+            "kind": "extrema",
+            "scope": "local",
+            "expect": [
+              {
+                "type": "max",
+                "x": 0.60653066,
+                "y": 1.44466786
+              }
+            ]
+          },
+          "pointLabels": [
+            "max (1/√e, e^(1/e))"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "4c0ee451",
+        "answer": {
+          "value": 0,
+          "label": "max e^(1/e)"
+        }
+      }
+    },
+    {
+      "id": "a21c9159-1681-4512-be5d-5b5b66a1f04c",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "sin(x)+1+1/sin(x)",
+          "fLabel": "y = sinA + 1 + 1/sinA",
+          "window": {
+            "x": [
+              0.15,
+              1.7
+            ],
+            "y": [
+              2,
+              8.5
+            ]
+          },
+          "xTicks": "pi",
+          "ask": {
+            "kind": "extrema",
+            "scope": "absolute",
+            "on": [
+              0.2,
+              1.57079633
+            ],
+            "expect": [
+              {
+                "type": "min",
+                "x": 1.57079633,
+                "y": 3
+              }
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "86265687",
+        "answer": {
+          "value": 0,
+          "label": "min 3"
+        }
+      }
+    },
+    {
+      "id": "a4fdd15c-0b0b-43e3-a480-2ad36940ffca",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "3*sin(x)-4*sin(x)^3",
+          "fLabel": "y = 3 sin x − 4 sin³x",
+          "window": {
+            "x": [
+              -1.0471976,
+              1.0471976
+            ],
+            "y": [
+              -1.2,
+              1.2
+            ]
+          },
+          "xTicks": "pi",
+          "ask": {
+            "kind": "increasingOn",
+            "interval": [
+              -0.52359878,
+              0.52359878
+            ],
+            "intervalLabel": "−π/6 < x < π/6"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "shade"
+            ]
+          }
+        ],
+        "fingerprint": "78bb76e5",
+        "answer": {
+          "value": 1,
+          "label": "length π/3"
+        }
+      }
+    },
+    {
+      "id": "accf38c8-f32a-4283-9092-8b99c54dca36",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "x^2*(x+14)",
+          "fLabel": "y = x²(x + 14)",
+          "window": {
+            "x": [
+              -12,
+              4
+            ],
+            "y": [
+              -20,
+              450
+            ]
+          },
+          "ask": {
+            "kind": "decreasingOn",
+            "interval": [
+              -9.33333333,
+              0
+            ],
+            "intervalLabel": "−28/3 < x < 0"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "shade"
+            ]
+          }
+        ],
+        "fingerprint": "9d609ac7",
+        "answer": {
+          "value": 1,
+          "label": "falling on −28/3 < x < 0"
+        }
+      }
+    },
+    {
+      "id": "ae90edca-a83d-41bf-8d56-aa1f64d2f455",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "-2*x^3-9*x^2-12*x+1",
+          "fLabel": "y = −2x³ − 9x² − 12x + 1",
+          "window": {
+            "x": [
+              -3,
+              0
+            ],
+            "y": [
+              0,
+              11
+            ]
+          },
+          "ask": {
+            "kind": "increasingOn",
+            "interval": [
+              -2,
+              -1
+            ],
+            "intervalLabel": "−2 < x < −1"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "shade"
+            ]
+          }
+        ],
+        "fingerprint": "80d9f043",
+        "answer": {
+          "value": 1,
+          "label": "rising on −2 < x < −1"
+        }
+      }
+    },
+    {
+      "id": "af947fce-2a71-491a-9c58-073ba162adaf",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "25/sin(x)^2+36/cos(x)^2",
+          "fLabel": "y = 25 csc²x + 36 sec²x",
+          "window": {
+            "x": [
+              0.3,
+              1.27
+            ],
+            "y": [
+              80,
+              330
+            ]
+          },
+          "xTicks": "pi",
+          "ask": {
+            "kind": "extrema",
+            "scope": "absolute",
+            "on": [
+              0.35,
+              1.2
+            ],
+            "expect": [
+              {
+                "type": "min",
+                "y": 121
+              }
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "9a2b61bb",
+        "answer": {
+          "value": 0,
+          "label": "min 121"
+        }
+      }
+    },
+    {
+      "id": "b2611857-3eb7-462b-9618-ff450d62588a",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "3*cos(x+pi/3)",
+          "fLabel": "y = 3 cos(A + π/3)",
+          "window": {
+            "x": [
+              -0.3,
+              6.6
+            ],
+            "y": [
+              -3.6,
+              3.6
+            ]
+          },
+          "xTicks": "pi",
+          "ask": {
+            "kind": "extrema",
+            "scope": "absolute",
+            "on": [
+              0,
+              6.28318531
+            ],
+            "expect": [
+              {
+                "type": "min",
+                "x": 2.0943951,
+                "y": -3
+              }
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "08f6be15",
+        "answer": {
+          "value": 0,
+          "label": "min −3"
+        }
+      }
+    },
+    {
+      "id": "b2f08a62-b100-4c5f-9fe5-4f0bae9b5adc",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "x^3/3-5*x^2/2+6*x+7",
+          "fLabel": "y = x³/3 − 5x²/2 + 6x + 7",
+          "window": {
+            "x": [
+              -1,
+              6
+            ],
+            "y": [
+              -3,
+              27
+            ]
+          },
+          "ask": {
+            "kind": "increasingOn",
+            "intervals": [
+              [
+                -1,
+                2
+              ],
+              [
+                3,
+                6
+              ]
+            ],
+            "intervalLabel": "x < 2 or x > 3"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "shade"
+            ]
+          }
+        ],
+        "fingerprint": "2a7e94a1",
+        "answer": {
+          "value": 1,
+          "label": "T: rising x < 2 or x > 3"
+        }
+      }
+    },
+    {
+      "id": "b2fbfd14-8aca-4f54-844e-89d95b18e5bd",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "x*(10-x)",
+          "fLabel": "A = l(10 − l)",
+          "window": {
+            "x": [
+              -1,
+              11
+            ],
+            "y": [
+              -14,
+              28
+            ]
+          },
+          "ask": {
+            "kind": "extrema",
+            "scope": "absolute",
+            "on": [
+              0,
+              10
+            ],
+            "expect": [
+              {
+                "type": "max",
+                "x": 5,
+                "y": 25
+              }
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "527c95d9",
+        "answer": {
+          "value": 0,
+          "label": "max area 25 cm²"
+        }
+      }
+    },
+    {
+      "id": "b73b77ef-04c9-4200-8046-a91e24231c5c",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "4*sin(x)^2+1",
+          "fLabel": "y = 4 sin²x + 1",
+          "window": {
+            "x": [
+              -0.3,
+              3.5
+            ],
+            "y": [
+              0,
+              6
+            ]
+          },
+          "xTicks": "pi",
+          "ask": {
+            "kind": "extrema",
+            "scope": "absolute",
+            "on": [
+              0,
+              3.14159265
+            ],
+            "expect": [
+              {
+                "type": "max",
+                "x": 1.57079633,
+                "y": 5
+              }
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "396fb98c",
+        "answer": {
+          "value": 0,
+          "label": "max 5"
+        }
+      }
+    },
+    {
+      "id": "b7a73437-1a45-4ab1-855a-a465325c2b50",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "-2*x^3-9*x^2-12*x+1",
+          "fLabel": "y = −2x³ − 9x² − 12x + 1",
+          "window": {
+            "x": [
+              -3.5,
+              0.5
+            ],
+            "y": [
+              -9,
+              20
+            ]
+          },
+          "ask": {
+            "kind": "decreasingOn",
+            "intervals": [
+              [
+                -3.5,
+                -2
+              ],
+              [
+                -1,
+                0.5
+              ]
+            ],
+            "intervalLabel": "x < −2 or x > −1"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "shade"
+            ]
+          }
+        ],
+        "fingerprint": "da8b40d3",
+        "answer": {
+          "value": 1,
+          "label": "falling x < −2 or x > −1"
+        }
+      }
+    },
+    {
+      "id": "c08e4d04-93d8-4d11-8f9b-a3545298717b",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "x^3/3-7*x^2/2+6*x+5",
+          "fLabel": "y = x³/3 − 7x²/2 + 6x + 5",
+          "window": {
+            "x": [
+              -1,
+              8
+            ],
+            "y": [
+              -15,
+              10
+            ]
+          },
+          "ask": {
+            "kind": "decreasingOn",
+            "interval": [
+              1,
+              6
+            ],
+            "intervalLabel": "1 < x < 6"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "shade"
+            ]
+          }
+        ],
+        "fingerprint": "6c4244b5",
+        "answer": {
+          "value": 1,
+          "label": "falling on 1 < x < 6"
+        }
+      }
+    },
+    {
+      "id": "c49ab1e9-1b0c-4029-a971-d47b04a85a84",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "(x-1)^2*(x+1)*(x-2)^3",
+          "fLabel": "y = (x−1)²(x+1)(x−2)³",
+          "window": {
+            "x": [
+              -1,
+              2.2
+            ],
+            "y": [
+              -20,
+              3
+            ]
+          },
+          "ask": {
+            "kind": "extrema",
+            "scope": "local",
+            "expect": [
+              {
+                "type": "min",
+                "x": -0.586799548,
+                "y": -18.0091
+              },
+              {
+                "type": "max",
+                "x": 1,
+                "y": 0
+              },
+              {
+                "type": "min",
+                "x": 1.420132882,
+                "y": -0.0833
+              }
+            ],
+            "pointLabels": [
+              "min",
+              "max (1, 0)",
+              "min"
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "16d88176",
+        "answer": {
+          "value": 0,
+          "label": "one local max, at x = 1"
+        }
+      }
+    },
+    {
+      "id": "c8c3ffb8-bf77-4033-b4ab-2f9534b2c2f8",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "1/(x-5)",
+          "fLabel": "y = 1/(x − 5)",
+          "window": {
+            "x": [
+              2,
+              8
+            ],
+            "y": [
+              -3,
+              3
+            ]
+          },
+          "ask": {
+            "kind": "decreasingOn",
+            "intervals": [
+              [
+                2,
+                4.99
+              ],
+              [
+                5.01,
+                8
+              ]
+            ],
+            "intervalLabel": "x < 5 and x > 5"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "shade"
+            ]
+          }
+        ],
+        "fingerprint": "a6572358",
+        "answer": {
+          "value": 1,
+          "label": "falling on x < 5 and x > 5"
+        }
+      }
+    },
+    {
+      "id": "d1a8ae88-e20d-4f7b-befa-68c1e090df0b",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "(x-1)^2+(x-2)^2+(x-3)^2+(x-4)^2+(x-5)^2+(x-6)^2+(x-7)^2",
+          "fLabel": "y = Σ (x − j)², j = 1…7",
+          "window": {
+            "x": [
+              0,
+              8
+            ],
+            "y": [
+              20,
+              150
+            ]
+          },
+          "ask": {
+            "kind": "extrema",
+            "scope": "local",
+            "expect": [
+              {
+                "type": "min",
+                "x": 4,
+                "y": 28
+              }
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "937477dc",
+        "answer": {
+          "value": 0,
+          "label": "minimum at x = 4"
+        }
+      }
+    },
+    {
+      "id": "d6521c64-f591-4ebd-9e94-6db50180f131",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "abs(sin(x)-sin(x-pi/2))",
+          "fLabel": "p = |sin α − sin(α − 90°)|",
+          "window": {
+            "x": [
+              -0.5,
+              6.8
+            ],
+            "y": [
+              -0.2,
+              1.6
+            ]
+          },
+          "xTicks": "pi",
+          "ask": {
+            "kind": "extrema",
+            "scope": "absolute",
+            "on": [
+              0,
+              6.28318531
+            ],
+            "expect": [
+              {
+                "type": "min",
+                "y": 0
+              }
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "1ec865c4",
+        "answer": {
+          "value": 0,
+          "label": "minimum value 0"
+        }
+      }
+    },
+    {
+      "id": "e3a9924f-f861-45fa-9cc2-885eff7b9ae8",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "x+1/x",
+          "fLabel": "y = x + 1/x",
+          "window": {
+            "x": [
+              0.1,
+              2
+            ],
+            "y": [
+              1.5,
+              10.5
+            ]
+          },
+          "ask": {
+            "kind": "decreasingOn",
+            "interval": [
+              0.1,
+              1
+            ],
+            "intervalLabel": "0 < x < 1"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "shade"
+            ]
+          }
+        ],
+        "fingerprint": "70b1f687",
+        "answer": {
+          "value": 1,
+          "label": "falling on 0 < x < 1"
+        }
+      }
+    },
+    {
+      "id": "f0225f29-d141-44f4-b6ce-d3d6f860db55",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "x^2-5*x+6",
+          "fLabel": "y = x² − 5x + 6",
+          "window": {
+            "x": [
+              -1,
+              5
+            ],
+            "y": [
+              -1,
+              13
+            ]
+          },
+          "ask": {
+            "kind": "decreasingOn",
+            "interval": [
+              -1,
+              2
+            ],
+            "intervalLabel": "x ≤ 2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "shade"
+            ]
+          }
+        ],
+        "fingerprint": "a8b8e72f",
+        "answer": {
+          "value": 1,
+          "label": "falling on x ≤ 2"
+        }
+      }
+    },
+    {
+      "id": "f9daf3aa-b748-4041-bf02-4b26c22fe4ae",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "1/(tan(x)+1/tan(x))",
+          "fLabel": "y = 1/(tan x + cot x)",
+          "window": {
+            "x": [
+              0.02,
+              1.55
+            ],
+            "y": [
+              -0.05,
+              0.6
+            ]
+          },
+          "xTicks": "pi",
+          "ask": {
+            "kind": "extrema",
+            "scope": "local",
+            "expect": [
+              {
+                "type": "max",
+                "x": 0.78539816,
+                "y": 0.5
+              }
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "cc786c15",
+        "answer": {
+          "value": 0,
+          "label": "maximum value 1/2"
+        }
+      }
+    },
+    {
+      "id": "fb542366-fe3a-44f9-82e0-34221dc9b656",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "sqrt(2-x)+sqrt(2+x)",
+          "fLabel": "y = √(2−x) + √(2+x)",
+          "window": {
+            "x": [
+              -2,
+              2
+            ],
+            "y": [
+              1.5,
+              3
+            ]
+          },
+          "ask": {
+            "kind": "extrema",
+            "scope": "local",
+            "expect": [
+              {
+                "type": "max",
+                "x": 0,
+                "y": 2.828427124746
+              }
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "b1e5b975",
+        "answer": {
+          "value": 0,
+          "label": "greatest value √8"
+        }
+      }
+    },
+    {
+      "id": "fcc43469-8aa4-47bd-b74f-3c91a4286967",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "functionGraph",
+        "params": {
+          "f": "log10(x^2+2*x+11)",
+          "fLabel": "y = log₁₀(x² + 2x + 11)",
+          "window": {
+            "x": [
+              -5,
+              3
+            ],
+            "y": [
+              0.9,
+              1.5
+            ]
+          },
+          "ask": {
+            "kind": "extrema",
+            "scope": "local",
+            "expect": [
+              {
+                "type": "min",
+                "x": -1,
+                "y": 1
+              }
+            ]
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "curve"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "mark"
+            ]
+          }
+        ],
+        "fingerprint": "41f7873d",
+        "answer": {
+          "value": 0,
+          "label": "minimum value 1"
+        }
+      }
+    }
+  ],
+  "decided": []
+}
