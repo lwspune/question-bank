@@ -1,0 +1,86 @@
+[
+  {
+    "id": "22a2538d-49c9-4903-9213-f5f34abef525",
+    "before": "d722ae8a",
+    "solution": "8 points with 4 collinear. A valid quadrilateral requires 4 vertices with NO 3 collinear (Indian school convention).\n\nTotal ways to choose 4 points from 8: \\(\\binom{8}{4} = 70\\).\n\nSubtract degenerate cases:\n- All 4 chosen points collinear (from the 4-collinear set): \\(\\binom{4}{4} = 1\\) set.\n- Exactly 3 chosen from the 4-collinear set + 1 from the other 4: \\(\\binom{4}{3} \\cdot \\binom{4}{1} = 4 \\cdot 4 = 16\\) sets. (These have 3 collinear vertices: degenerate quadrilaterals.)\n\nValid quadrilaterals \\(= 70 - 1 - 16 = 53\\). Hence (C).",
+    "note": "removed a leftover review note; same working"
+  },
+  {
+    "id": "269f0bd4-ad7d-432d-8753-79e24fc11f77",
+    "before": "419c5a05",
+    "solution": "We have \\(f(x) = 2x^{2} - \\log|x|\\), so \\(f'(x) = 4x - \\frac{1}{x}\\) for all \\(x \\neq 0\\).\n\nFor \\(f\\) to be increasing, \\(f'(x) > 0\\): \\(\\frac{4x^{2} - 1}{x} > 0\\), i.e. \\(\\frac{(2x - 1)(2x + 1)}{x} > 0\\), i.e. \\(x(2x - 1)(2x + 1) > 0\\).\n\nFrom the sign scheme of \\(x(2x - 1)(2x + 1)\\), \\(x \\in \\left(-\\frac{1}{2}, 0\\right) \\cup \\left(\\frac{1}{2}, \\infty\\right)\\). Hence (B).",
+    "note": "kept the (b) working; removed a second question's solution pasted after it"
+  },
+  {
+    "id": "26a2c579-4455-4a9c-b22b-b6789bc65922",
+    "before": "d6844b68",
+    "solution": "Given \\(f(x) = \\frac{x^{4}}{4} - x\\), so \\(f'(x) = x^{3} - 1\\).\n\nFor increasing, \\(f'(x) \\geq 0\\): \\(x^{3} - 1 = (x - 1)\\left(x^{2} + x + 1\\right) \\geq 0\\).\n\nBut \\(x^{2} + x + 1 > 0\\) for all real \\(x\\), so \\(x - 1 \\geq 0\\), i.e. \\(x \\geq 1\\). Hence (D).",
+    "note": "removed 'Ans. (d)**' debris; same working"
+  },
+  {
+    "id": "3d3f9020-90dc-4437-a0c7-1490b8188166",
+    "before": "bf9015a4",
+    "solution": "Put \\(x^2=\\cos2\\theta\\) (\\(\\theta\\in(0,\\tfrac{\\pi}{4})\\)). Then \\(\\sqrt{1+x^2}=\\sqrt2\\cos\\theta\\), \\(\\sqrt{1-x^2}=\\sqrt2\\sin\\theta\\), so the argument is \\(\\dfrac{\\cos\\theta+\\sin\\theta}{\\cos\\theta-\\sin\\theta}=\\dfrac{1+\\tan\\theta}{1-\\tan\\theta}=\\tan\\!\\bigl(\\tfrac{\\pi}{4}+\\theta\\bigr)\\). Therefore the expression \\(=\\tfrac{\\pi}{4}+\\theta=\\tfrac{\\pi}{4}+\\tfrac12\\cos^{-1}x^2\\). Hence (A).",
+    "note": "removed a leftover review note; same working"
+  },
+  {
+    "id": "4fcc809d-bd05-4956-98b6-71fedbfa3a4a",
+    "before": "a2853fe3",
+    "solution": "Points on \\(y^2=8x\\): \\((2t^2,4t)\\). Distance-squared to \\((4,2)\\): \\(D^2=(2t^2-4)^2+(4t-2)^2\\). Then \\(\\dfrac{d(D^2)}{dt}=2(2t^2-4)(4t)+2(4t-2)(4)=16t^3-16=0\\Rightarrow t^3=1\\Rightarrow t=1\\). Foot: \\((2,4)\\); minimum distance \\(=\\sqrt{(4-2)^2+(2-4)^2}=\\sqrt{8}=2\\sqrt2\\). Hence (B).",
+    "note": "removed a leftover review note; same working"
+  },
+  {
+    "id": "4ff9a51a-8351-4fff-8150-c56422e052cf",
+    "before": "d042e686",
+    "solution": "\\(f(x) = \\frac{1}{x + 1} - \\log(1 + x)\\), so \\(f'(x) = -\\frac{1}{(x + 1)^{2}} - \\frac{1}{x + 1} = -\\frac{2 + x}{(x + 1)^{2}}\\).\n\nFor \\(x > 0\\), \\(f'(x) < 0\\), so \\(f\\) is a decreasing function. Hence (B).",
+    "note": "removed 'Ans. (b)**' debris; same working"
+  },
+  {
+    "id": "658c037c-6898-4d0b-9895-d9704320f7ff",
+    "before": "0c67279c",
+    "solution": "Let \\(y = \\frac{x}{1 + x\\tan x}\\). Then \\(\\frac{dy}{dx} = \\frac{(1 + x\\tan x) - x\\left(\\tan x + x\\sec^{2}x\\right)}{(1 + x\\tan x)^{2}} = \\frac{1 - x^{2}\\sec^{2}x}{(1 + x\\tan x)^{2}}\\).\n\nSetting \\(\\frac{dy}{dx} = 0\\): \\(x^{2}\\sec^{2}x = 1\\), so \\(x^{2} = \\cos^{2}x\\), i.e. \\(x = \\pm\\cos x\\).\n\nThe maximum is at \\(x = \\cos x\\) (about \\(x = 0.739\\)), where \\(\\frac{dy}{dx}\\) changes from positive to negative. Hence (A).",
+    "note": "removed 'Ans- (a)**' and Hindi debris; added why x = cos x is the maximum"
+  },
+  {
+    "id": "75219f11-c48a-4fdb-bf09-3905b32f1895",
+    "before": "05f8fbb1",
+    "solution": "Let \\(\\theta\\) be the angle with the floor. Top height \\(h=5\\sin\\theta\\) with \\(\\dfrac{dh}{dt}=-0.1\\) m/s (sliding down). Differentiate: \\(\\dfrac{dh}{dt}=5\\cos\\theta\\,\\dfrac{d\\theta}{dt}\\). When the foot is \\(4\\) m away, \\(\\cos\\theta=\\tfrac45\\), so \\(-0.1=5\\cdot\\tfrac45\\cdot\\dfrac{d\\theta}{dt}=4\\dfrac{d\\theta}{dt}\\Rightarrow\\dfrac{d\\theta}{dt}=-0.025\\) rad/s. The angle decreases at \\(0.025\\) rad/s. Hence (D).",
+    "note": "removed a leftover review note; same working"
+  },
+  {
+    "id": "7fbd6238-f30f-4eef-9704-192290046493",
+    "before": "1fa56eee",
+    "solution": "Use \\(\\sin^{-1}x+\\cos^{-1}x=\\tfrac{\\pi}{2}\\). Subtract this from the given \\(4\\sin^{-1}x+\\cos^{-1}x=\\pi\\): \\(3\\sin^{-1}x=\\tfrac{\\pi}{2}\\Rightarrow\\sin^{-1}x=\\tfrac{\\pi}{6}\\), so \\(\\cos^{-1}x=\\tfrac{\\pi}{3}\\). Then \\(\\sin^{-1}x+4\\cos^{-1}x=\\tfrac{\\pi}{6}+\\tfrac{4\\pi}{3}=\\tfrac{\\pi}{6}+\\tfrac{8\\pi}{6}=\\tfrac{9\\pi}{6}=\\tfrac{3\\pi}{2}\\). Hence (C).",
+    "note": "removed a leftover review note; same working"
+  },
+  {
+    "id": "86a6d216-b70a-430b-a479-71511fecc700",
+    "before": "535c1df9",
+    "solution": "Given \\(f(x) = \\cos 2x + x\\) on \\(\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]\\). Differentiate: \\(f'(x) = -2\\sin 2x + 1\\). Set \\(f'(x) = 0\\), so \\(\\sin 2x = \\frac{1}{2}\\). On the interval, \\(2x \\in [-\\pi, \\pi]\\), giving \\(2x = \\frac{\\pi}{6}\\) and \\(2x = \\frac{5\\pi}{6}\\), i.e. critical points \\(x = \\frac{\\pi}{12}\\) and \\(x = \\frac{5\\pi}{12}\\). Evaluate \\(f\\) at the critical points and the endpoints. At \\(x = -\\frac{\\pi}{2}\\): \\(f = \\cos(-\\pi) - \\frac{\\pi}{2} = -1 - \\frac{\\pi}{2} = -\\left(1 + \\frac{\\pi}{2}\\right)\\). At \\(x = \\frac{\\pi}{2}\\): \\(f = \\cos\\pi + \\frac{\\pi}{2} = -1 + \\frac{\\pi}{2}\\). At \\(x = \\frac{\\pi}{12}\\): \\(f = \\cos\\frac{\\pi}{6} + \\frac{\\pi}{12} = \\frac{\\sqrt{3}}{2} + \\frac{\\pi}{12}\\) (about \\(1.13\\), the greatest). At \\(x = \\frac{5\\pi}{12}\\): \\(f = \\cos\\frac{5\\pi}{6} + \\frac{5\\pi}{12} = -\\frac{\\sqrt{3}}{2} + \\frac{5\\pi}{12}\\) (about \\(0.44\\)). The smallest of these is \\(-\\left(1 + \\frac{\\pi}{2}\\right)\\) at \\(x = -\\frac{\\pi}{2}\\). So the least value is \\(-\\left(1 + \\frac{\\pi}{2}\\right)\\). Hence (A).",
+    "note": "removed a leftover review note; same working"
+  },
+  {
+    "id": "aaa8b1f1-85b3-437f-afe4-772120b86ae3",
+    "before": "06cd3ffb",
+    "solution": "For the trapezium with three equal sides of length 6 and base angle \\(\\alpha\\), area \\(A=36\\sin\\alpha(1+\\cos\\alpha)=36\\bigl(\\sin\\alpha+\\tfrac12\\sin2\\alpha\\bigr)\\). Then \\(\\dfrac{dA}{d\\alpha}=36(\\cos\\alpha+\\cos2\\alpha)=0\\Rightarrow 2\\cos^2\\alpha+\\cos\\alpha-1=0\\Rightarrow(2\\cos\\alpha-1)(\\cos\\alpha+1)=0\\Rightarrow\\cos\\alpha=\\tfrac12\\Rightarrow\\alpha=\\tfrac{\\pi}{3}\\). Hence (C).",
+    "note": "removed a leftover review note; same working"
+  },
+  {
+    "id": "c1fec5ef-1c19-46bb-93f9-0ba946c479dc",
+    "before": "4780eb4d",
+    "solution": "Let \\(x=\\tfrac{ab}{cr},\\ y=\\tfrac{bc}{ar},\\ z=\\tfrac{ca}{br}\\). Then \\(xy=\\tfrac{b^2}{r^2},\\ yz=\\tfrac{c^2}{r^2},\\ zx=\\tfrac{a^2}{r^2}\\), so \\(xy+yz+zx=\\dfrac{a^2+b^2+c^2}{r^2}=1\\). For positive \\(x,y,z\\) with \\(xy+yz+zx=1\\), \\(\\tan^{-1}x+\\tan^{-1}y+\\tan^{-1}z=\\tfrac{\\pi}{2}\\) (the tangent of the sum has denominator \\(1-(xy+yz+zx)=0\\)). So the value is \\(\\tfrac{\\pi}{2}\\). Hence (A).",
+    "note": "removed a leftover review note; same working"
+  },
+  {
+    "id": "e43e3b14-c227-49b6-97c9-272ef3bb3f96",
+    "before": "b574f352",
+    "solution": "Let \\(y = \\left(\\frac{1}{x}\\right)^{2x} = x^{-2x}\\), so \\(\\log y = -2x\\log x\\).\n\nThen \\(\\frac{1}{y}\\frac{dy}{dx} = -2\\left(x \\cdot \\frac{1}{x} + \\log x\\right) = -2(1 + \\log x)\\).\n\nFor an extremum \\(\\frac{dy}{dx} = 0\\): \\(1 + \\log x = 0\\), so \\(x = \\frac{1}{e}\\), and \\(\\frac{dy}{dx}\\) changes from positive to negative there, so it is a maximum.\n\nThe maximum value is \\(e^{2/e}\\) (about \\(2.087\\)), which matches none of options A to C. Hence (D).",
+    "note": "removed 'Ans. (d)**' debris; finished the working to the value e^(2/e)"
+  },
+  {
+    "id": "f52f4bfc-5fbe-4d9c-a2c6-f744db886c1c",
+    "before": "8e528bcd",
+    "solution": "Over \\([-1,1]\\) the terms \\(\\dfrac{17x^5}{x^2+1}\\), \\(\\dfrac{29x^3}{x^2+1}\\) and \\(\\dfrac{-31x}{x^2+1}\\) are odd (an odd numerator over an even denominator), so they integrate to 0. The even part is \\(\\dfrac{1-x^4}{x^2+1}=1-x^2\\). So \\(\\displaystyle\\int_{-1}^{1}(1-x^2)\\,dx=\\Bigl[x-\\tfrac{x^3}{3}\\Bigr]_{-1}^{1}=\\tfrac23-\\left(-\\tfrac23\\right)=\\tfrac43\\). Hence (C).",
+    "note": "fixed broken fractions in the odd-terms step; removed a review note"
+  }
+]

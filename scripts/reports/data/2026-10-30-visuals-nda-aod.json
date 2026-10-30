@@ -1,0 +1,262 @@
+[
+  {
+    "id": "113eed6d-1b1f-463f-8f61-92ee227b06c4",
+    "label": "AoD solution slip",
+    "reason": "note: solution slip, key unchanged",
+    "solution": "\\(y^2 e^{xy} = 9e^{-3}x^2\\).\n\nTaking logarithms (with \\(\\ln x^2 = 2\\ln|x|\\), since \\(x=-1\\) is negative): \\(2\\ln y + xy = \\ln 9 - 3 + 2\\ln|x|\\).\n\nDifferentiating: \\(\\frac{2}{y}\\frac{dy}{dx} + y + x\\frac{dy}{dx} = \\frac{2}{x}\\).\n\nAt \\((-1, 3)\\): \\(\\frac{2}{3}\\frac{dy}{dx} + 3 - \\frac{dy}{dx} = -2\\), so \\(\\left(\\frac{2}{3} - 1\\right)\\frac{dy}{dx} = -5\\), \\(-\\frac{1}{3}\\frac{dy}{dx} = -5\\), \\(\\frac{dy}{dx} = 15\\).\n\nHence (C)."
+  },
+  {
+    "id": "3497f4a7-a00a-49a8-93ac-10e98d8d8a6a",
+    "label": "AoD solution slip",
+    "reason": "note: solution slip, key unchanged",
+    "solution": "\\(y = 5 + x - x^2\\), \\(\\frac{dy}{dx} = 1 - 2x\\).\n\nA line makes equal intercepts on the axes when its slope is \\(-1\\). So the normal has slope \\(-1\\), and the tangent has slope \\(1\\): \\(1 - 2x = 1\\), \\(x = 0\\).\n\nThen \\(y = 5\\), giving the point \\((0, 5)\\). The normal there is \\(y - 5 = -(x - 0)\\), i.e. \\(x + y = 5\\), with both intercepts equal to 5.\n\nHence (D)."
+  },
+  {
+    "id": "44c2e1b8-1a7a-4499-8eba-4aa43aa0609d",
+    "label": "AoD solution slip",
+    "reason": "note: solution slip, key unchanged",
+    "solution": "Let \\(y = \\left(\\frac{1}{x}\\right)^{x}\\), \\(x>0\\). Then \\(\\log y = x\\log\\left(\\frac{1}{x}\\right) = -x\\log x\\).\n\nDifferentiating with respect to \\(x\\): \\(\\frac{1}{y}\\frac{dy}{dx} = -(1+\\log x)\\), so \\(\\frac{dy}{dx} = -y(1+\\log x)\\).\n\nFor a maximum, \\(\\frac{dy}{dx} = 0\\Rightarrow 1+\\log x = 0\\) (as \\(y\\neq 0\\)) \\(\\Rightarrow x=\\frac{1}{e}\\).\n\nAlso \\(\\frac{d^{2}y}{dx^{2}} = -\\frac{dy}{dx}(1+\\log x) - \\frac{y}{x} = y(1+\\log x)^{2} - \\frac{y}{x}\\). At \\(x=\\frac{1}{e}\\) this equals \\(0 - e\\cdot e^{1/e} < 0\\), so \\(x=\\frac{1}{e}\\) is a point of local maximum.\n\nThe maximum value is \\(y = e^{\\frac{1}{e}}\\). Hence (C)."
+  },
+  {
+    "id": "7724b479-abc3-4899-81a1-9edb9b6ae543",
+    "label": "AoD solution slip",
+    "reason": "note: solution slip, key unchanged",
+    "solution": "Let the volume of the cube be \\(V\\) with edge \\(x\\). Then \\(\\frac{dV}{dt} = 9\\) and \\(x = 10\\).\n\nSince \\(V = x^{3}\\), \\(\\frac{dV}{dt} = 3x^{2}\\frac{dx}{dt}\\), so \\(9 = 3x^{2}\\frac{dx}{dt}\\) and \\(\\frac{dx}{dt} = \\frac{3}{x^{2}}\\).\n\nThe surface area is \\(S = 6x^{2}\\), so \\(\\frac{dS}{dt} = 12x\\frac{dx}{dt} = 12 \\times 10 \\times \\frac{3}{100} = 3.6\\). The rate is in square centimetres per second, and the value is 3.6.\n\nHence (A)."
+  },
+  {
+    "id": "7eb5450a-6e67-444d-9a84-d5b4dd1ae448",
+    "label": "AoD solution slip",
+    "reason": "note: solution slip, key unchanged",
+    "solution": "\\(f(x) = x^{3} - 1 = (x - 1)(x^{2} + x + 1)\\).\n\nSetting \\(f(x) = 0\\) gives \\(x = 1\\) or \\(x^{2}+x+1=0\\), whose roots \\(\\omega, \\omega^{2}\\) are not real. The only real root is \\(x=1\\), which is not in \\((-1, 1)\\). So statement 2 is true.\n\n\\(f'(x) = 3x^{2} \\ge 0\\) on \\([-1, 1]\\), and \\(f'(x) = 0\\) only at the single point \\(x = 0\\). So \\(f\\) is increasing on \\([-1, 1]\\), and statement 1 is true.\n\nHence (C)."
+  },
+  {
+    "id": "7f926d70-fd64-4e38-bfd5-a3fdec924553",
+    "label": "AoD solution slip",
+    "reason": "note: solution slip, key unchanged",
+    "solution": "\\(f(x) = 3x^{4} - 8x^{3} + 12x^{2} - 48x + 25\\), so \\(f'(x) = 12x^{3} - 24x^{2} + 24x - 48 = 12\\left(x^{3} - 2x^{2} + 2x - 4\\right) = 12(x - 2)\\left(x^{2} + 2\\right)\\).\n\nFor a maximum or minimum, \\(f'(x) = 0\\Rightarrow x = 2\\). Now \\(f''(x) = 12\\left(3x^{2} - 4x + 2\\right)\\), so \\(f''(2) = 12(12 - 8 + 2) = 72 > 0\\) and \\(f\\) has a minimum at \\(x = 2\\).\n\nOn \\([0, 3]\\): \\(f(0) = 25\\), \\(f(2) = -39\\), \\(f(3) = 16\\). The minimum value is \\(\\min\\{25, -39, 16\\} = -39\\).\n\nHence (B)."
+  },
+  {
+    "id": "9b1dc178-6db7-490f-ab7a-59dbba55be90",
+    "label": "AoD solution slip",
+    "reason": "note: solution slip, key unchanged",
+    "solution": "Let \\(r\\) and \\(h\\) be the radius and height of the cylinder.\n\nThen \\(r^{2} + (h/2)^{2} = R^{2} \\Rightarrow h^{2} = 4(R^{2} - r^{2})\\).\n\nNow \\(V = \\pi r^{2}h = 2\\pi r^{2}\\sqrt{R^{2} - r^{2}}\\).\n\nTherefore \\(\\frac{dV}{dr} = 4\\pi r\\sqrt{R^{2} - r^{2}} + 2\\pi r^{2}\\cdot\\frac{1}{2}\\frac{(-2r)}{\\sqrt{R^{2} - r^{2}}}\\).\n\nFor a maximum or minimum, \\(\\frac{dV}{dr} = 0\\Rightarrow 4\\pi r\\sqrt{R^{2} - r^{2}} = \\frac{2\\pi r^{3}}{\\sqrt{R^{2} - r^{2}}}\\Rightarrow 4\\left(R^{2} - r^{2}\\right) = 2r^{2}\\Rightarrow 2R^{2} = 3r^{2}\\Rightarrow r = \\sqrt{\\frac{2}{3}}R\\), and \\(\\frac{d^{2}V}{dr^{2}}\\) is negative there.\n\nTherefore \\(V\\) is maximum when \\(r = \\sqrt{\\frac{2}{3}}R\\). Hence (B)."
+  },
+  {
+    "id": "ba5c45c7-65ab-4de3-8680-936f8c0e4c52",
+    "label": "AoD solution slip",
+    "reason": "note: solution slip, key unchanged",
+    "solution": "On \\(\\left(0, \\frac{\\pi}{2}\\right)\\), \\(\\frac{d}{dx}\\cos 2x = -2\\sin 2x < 0\\) throughout, so \\(\\cos 2x\\) is decreasing.\n\nThe others fail: \\(\\sin 2x\\) increases on \\(\\left(0, \\frac{\\pi}{4}\\right)\\) and decreases after, \\(\\tan x\\) increases, and \\(\\cos 3x\\) has derivative \\(-3\\sin 3x\\), which changes sign at \\(x = \\frac{\\pi}{3}\\).\n\nHence (D)."
+  },
+  {
+    "id": "c15fe5ad-89c7-4ccf-810a-8e16ac3888b1",
+    "label": "AoD solution slip",
+    "reason": "note: solution slip, key unchanged",
+    "solution": "Since \\(f\\) is differentiable with a local maximum at \\(x=0\\), \\(f'(0)=0\\). So \\(y'(0)=2f'(0)+a=a\\).\n\nFor \\(y\\) to have a relative maximum at \\(x=0\\), we need \\(y'(0)=0\\), so \\(a=0\\).\n\nThen \\(y=2f(x)-b\\), which has a local maximum at \\(x=0\\) because \\(f\\) does; \\(b\\) only shifts the graph, so this holds for all \\(b\\).\n\nHence (B)."
+  },
+  {
+    "id": "c49ac7e5-e1b5-4859-8d96-6cbbfc08c748",
+    "label": "AoD solution slip",
+    "reason": "note: solution slip, key unchanged",
+    "solution": "\\(f(x) = e^{\\sin x} + e^{\\cos x}\\), so \\(f'(x) = e^{\\sin x}\\cos x - e^{\\cos x}\\sin x\\).\n\nSetting \\(f'(x) = 0\\) gives \\(e^{\\sin x}\\cos x = e^{\\cos x}\\sin x\\). At \\(x = \\frac{\\pi}{4}\\) both sides equal \\(\\frac{1}{\\sqrt{2}}e^{1/\\sqrt{2}}\\), so \\(x = \\frac{\\pi}{4}\\) is a critical point, and \\(f'\\) changes from positive to negative there, so it is a maximum.\n\n\\(f\\left(\\frac{\\pi}{4}\\right) = 2e^{1/\\sqrt{2}} \\approx 4.06\\), which exceeds other values such as \\(f\\left(\\frac{\\pi}{2}\\right) = e + 1 \\approx 3.72\\).\n\nHence (C)."
+  },
+  {
+    "id": "d5bf9803-58eb-4bb0-a3bd-2d84e1b976ea",
+    "label": "AoD solution slip",
+    "reason": "note: solution slip, key unchanged",
+    "solution": "\\(y = \\log(1 + x) - \\frac{2x}{2 + x}\\), so \\(\\frac{dy}{dx} = \\frac{1}{1 + x} - \\frac{4}{(2 + x)^{2}} = \\frac{(2 + x)^{2} - 4(1 + x)}{(1 + x)(2 + x)^{2}} = \\frac{x^{2}}{(1 + x)(2 + x)^{2}}\\).\n\nFor \\(x > -1\\), \\((1 + x) > 0\\) and \\((2 + x)^{2} > 0\\), so \\(y' \\ge 0\\), with \\(y' = 0\\) only at the single point \\(x = 0\\).\n\nA derivative that is non-negative and vanishes only at an isolated point leaves \\(y\\) increasing throughout \\(x > -1\\).\n\nHence (A)."
+  },
+  {
+    "id": "ddf45227-3317-4407-893a-12e1bfa89571",
+    "label": "AoD solution slip",
+    "reason": "note: solution slip, key unchanged",
+    "solution": "\\(f(x) = x + \\cos x\\), so \\(f'(x) = 1 - \\sin x \\ge 0\\) for all \\(x\\), and \\(f'(x) = 0\\) only at the isolated points \\(x = \\frac{\\pi}{2} + 2k\\pi\\).\n\nSince \\(f'\\) vanishes on no interval, \\(f(x)\\) is always increasing.\n\nHence (A)."
+  },
+  {
+    "id": "e3bc09c2-7e0b-4d65-bbc3-c0595dbbcba7",
+    "label": "AoD solution slip",
+    "reason": "note: solution slip, key unchanged Option (d) is 100 alone; the next passage had been swallowed into it.",
+    "solution": "\\(f(x) = x^{2} + \\frac{250}{x}\\), so \\(f'(x) = 2x - \\frac{250}{x^{2}}\\).\n\nSetting \\(f'(x) = 0\\) gives \\(2x^{3} = 250\\), so \\(x^{3} = 125\\) and \\(x = 5\\). Since \\(f''(x) = 2 + \\frac{500}{x^{3}} > 0\\), this is a minimum.\n\nThe minimum value is \\(f(5) = 25 + 50 = 75\\).\n\nHence (C).",
+    "options": {
+      "D": "100"
+    }
+  },
+  {
+    "id": "b4262de7-21bc-4a3b-b6de-ee58efa1133c",
+    "label": "AoD solution slip",
+    "reason": "note: solution slip, key unchanged",
+    "solution": "\\(f(x) = \\cos 2x + x\\), so \\(f'(x) = 1 - 2\\sin 2x\\). Setting \\(f'(x) = 0\\) gives \\(\\sin 2x = \\frac{1}{2}\\), so \\(x = \\frac{\\pi}{12}\\) or \\(x = \\frac{5\\pi}{12}\\) in \\(\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]\\).\n\nThe values are \\(f\\left(-\\frac{\\pi}{2}\\right) = -1 - \\frac{\\pi}{2}\\), \\(f\\left(\\frac{\\pi}{12}\\right) = \\frac{\\sqrt{3}}{2} + \\frac{\\pi}{12}\\), \\(f\\left(\\frac{5\\pi}{12}\\right) = -\\frac{\\sqrt{3}}{2} + \\frac{5\\pi}{12}\\) and \\(f\\left(\\frac{\\pi}{2}\\right) = -1 + \\frac{\\pi}{2}\\).\n\nThe greatest is \\(\\frac{\\sqrt{3}}{2} + \\frac{\\pi}{12} \\approx 1.13\\).\n\nHence (B)."
+  },
+  {
+    "id": "706cbdda-cbdc-4c58-905c-fdc605afead2",
+    "label": "booklet 2513",
+    "reason": "fix: booklet 2513 option (a) is (-1, -1); our copy had a second correct point. Key (b) stays.",
+    "options": {
+      "A": "\\((-1, -1)\\)"
+    },
+    "solution": "With \\(\\frac{dx}{dt} = \\frac{dy}{dt}\\), differentiating \\(x^{2} + y^{2} = 2\\) gives \\(2x\\frac{dx}{dt} + 2y\\frac{dy}{dt} = 0\\), so \\(x + y = 0\\), that is \\(y = -x\\).\n\nOn the circle, \\(2x^{2} = 2\\), so \\(x = \\pm 1\\), giving the points \\((1, -1)\\) and \\((-1, 1)\\). Of the offered points only \\((1, -1)\\) qualifies.\n\nHence (B)."
+  },
+  {
+    "id": "15f3e379-6ea2-46e9-a473-ae9c92ed8c84",
+    "label": "booklet 2603",
+    "reason": "fix: stem curve and option A restored to the booklet, booklet 2603",
+    "text": "The equation of the tangent to the curve \\(x = \\frac{t-1}{t+1}\\), \\(y = \\frac{t+1}{t-1}\\) at \\(t = 2\\) is",
+    "options": {
+      "A": "\\(x + 9y - 6 = 0\\)"
+    },
+    "solution": "At \\(t = 2\\), \\(x = \\frac{1}{3}\\) and \\(y = 3\\).\n\n\\(\\frac{dx}{dt} = \\frac{2}{(t+1)^{2}} = \\frac{2}{9}\\) and \\(\\frac{dy}{dt} = -\\frac{2}{(t-1)^{2}} = -2\\), so \\(\\frac{dy}{dx} = -9\\).\n\nThe tangent is \\(y - 3 = -9\\left(x - \\frac{1}{3}\\right)\\), that is \\(9x + y - 6 = 0\\).\n\nHence (D)."
+  },
+  {
+    "id": "1b91a6e4-873f-42cf-9761-347c59809cee",
+    "label": "booklet 2605",
+    "reason": "fix: stem curve restored to the booklet, booklet 2605",
+    "text": "If a tangent to the curve \\(y = 2 + \\sqrt{4x + 1}\\) has slope \\(\\frac{2}{5}\\) at a point, then the point is",
+    "solution": "For \\(y = 2 + \\sqrt{4x + 1}\\), \\(\\frac{dy}{dx} = \\frac{4}{2\\sqrt{4x + 1}} = \\frac{2}{\\sqrt{4x + 1}}\\).\n\nSetting \\(\\frac{dy}{dx} = \\frac{2}{5}\\) gives \\(\\sqrt{4x + 1} = 5\\), so \\(4x + 1 = 25\\) and \\(x = 6\\).\n\nThen \\(y = 2 + 5 = 7\\), so the point is \\((6, 7)\\).\n\nHence (D)."
+  },
+  {
+    "id": "64dcb83d-320d-43ad-83eb-b087c420cbb5",
+    "label": "booklet 2663",
+    "reason": "fix: stem asks for the minimum value, booklet 2663",
+    "text": "The minimum value of \\(f(x) = e^{(x^{4} - x^{3} + x^{2})}\\) is",
+    "solution": "Let \\(g(x) = x^{4} - x^{3} + x^{2} = x^{2}(x^{2} - x + 1)\\). Since \\(x^{2} - x + 1 > 0\\) for all \\(x\\), \\(g(x) \\ge 0\\), with \\(g(x) = 0\\) only at \\(x = 0\\).\n\nAlso \\(g'(x) = x(4x^{2} - 3x + 2)\\), and \\(4x^{2} - 3x + 2\\) has negative discriminant, so \\(x = 0\\) is the only critical point.\n\nSince \\(f(x) = e^{g(x)}\\) is least where \\(g\\) is least, the minimum value is \\(f(0) = e^{0} = 1\\).\n\nHence (C)."
+  },
+  {
+    "id": "c0728828-b0aa-4af7-9543-623d1b5386d1",
+    "label": "booklet 2577",
+    "reason": "fix: stem curve restored to x^2 + 2xy - 3y^2 = 0, booklet 2577",
+    "text": "The normal to the curve \\(x^{2} + 2xy - 3y^{2} = 0\\) at \\((1, 1)\\)",
+    "solution": "Factorising, \\(x^{2} + 2xy - 3y^{2} = (x - y)(x + 3y) = 0\\), so the curve is the pair of lines \\(y = x\\) and \\(x + 3y = 0\\).\n\nThe point \\((1, 1)\\) lies on \\(y = x\\), so the normal there has slope \\(-1\\): \\(y - 1 = -(x - 1)\\), that is \\(x + y = 2\\).\n\nThis meets \\(x + 3y = 0\\) where \\(2y = -2\\), so \\(y = -1\\) and \\(x = 3\\), the point \\((3, -1)\\), which lies in the fourth quadrant.\n\nHence (B)."
+  },
+  {
+    "id": "9856b707-d149-437e-a120-a7152dc53b10",
+    "label": "booklet 2607",
+    "reason": "fix + note: option D restored to the booklet, booklet 2607",
+    "options": {
+      "D": "\\(-1\\)"
+    },
+    "solution": "**Note:** The given point \\((1, -2)\\) is not on the curve \\(y = 1 + bx - x^{2}\\) as printed, since at \\(x = 1\\) the curve gives \\(y = b\\). The answer shown follows the booklet's key.\n\nFor \\(y = 1 + bx - x^{2}\\), \\(\\frac{dy}{dx} = b - 2x\\). A tangent parallel to the x-axis needs \\(\\frac{dy}{dx} = 0\\) at \\(x = 1\\), so \\(b - 2 = 0\\) and \\(b = 2\\).\n\nHence (A)."
+  },
+  {
+    "id": "6243df5f-b5f8-4fe6-94d8-2f57389419ca",
+    "label": "booklet 2611",
+    "reason": "fix + note: option D restored to the booklet, booklet 2611",
+    "options": {
+      "D": "\\(2x - y = 0\\)"
+    },
+    "solution": "**Note:** The given point \\((1, 1)\\) is not on the curve \\(2y = 9 - x^{2}\\) as printed, since at \\(x = 1\\) the curve gives \\(y = 4\\). The answer shown follows the booklet's key.\n\nFor \\(2y = 9 - x^{2}\\), \\(\\frac{dy}{dx} = -x\\), so at \\(x = 1\\) the tangent slope is \\(-1\\) and the normal slope is \\(1\\).\n\nThe normal through \\((1, 1)\\) is \\(y - 1 = x - 1\\), that is \\(x - y = 0\\).\n\nHence (B)."
+  },
+  {
+    "id": "9cd7b616-4385-4214-859c-21a45239b2c7",
+    "label": "booklet 2557",
+    "reason": "fix + note: option B restored to the booklet, booklet 2557",
+    "options": {
+      "B": "\\((-\\infty, 2)\\)"
+    },
+    "solution": "**Note:** The function \\(f\\) is not defined at \\(x = 0\\). It decreases on \\((-2, 0)\\) and on \\((0, 2)\\) separately, but not on \\((-2, 2)\\) as a whole, since \\(f(-1) < f(1)\\). The answer shown follows the booklet's key.\n\n\\(f'(x) = \\frac{1}{2} - \\frac{2}{x^{2}}\\), and \\(f\\) decreases where \\(f'(x) < 0\\), that is \\(x^{2} < 4\\) with \\(x \\ne 0\\).\n\nThis gives \\((-2, 2)\\) with \\(0\\) excluded.\n\nHence (A)."
+  },
+  {
+    "id": "65a59ee3-18f7-484a-81de-6a09ac2a1d90",
+    "label": "LWS mock 1 Q60",
+    "reason": "fix: stem restored, LWS mock 1 Q60",
+    "text": "The function \\(f(x) = k\\sin x + \\frac{1}{3}\\sin 3x\\) has a maximum value at \\(x = \\frac{\\pi}{3}\\). What is the value of \\(k\\)?",
+    "solution": "\\(f(x) = k\\sin x + \\frac{1}{3}\\sin 3x\\), so \\(f'(x) = k\\cos x + \\cos 3x\\).\n\nA maximum at \\(x = \\frac{\\pi}{3}\\) needs \\(f'\\left(\\frac{\\pi}{3}\\right) = 0\\): \\(\\frac{k}{2} + \\cos\\pi = 0\\), so \\(\\frac{k}{2} - 1 = 0\\) and \\(k = 2\\).\n\nCheck: \\(f''(x) = -k\\sin x - 3\\sin 3x\\), so \\(f''\\left(\\frac{\\pi}{3}\\right) = -2 \\cdot \\frac{\\sqrt{3}}{2} - 3\\sin\\pi = -\\sqrt{3} < 0\\), a maximum.\n\nHence (C)."
+  },
+  {
+    "id": "6ef4dd35-dd30-401f-9941-cdfafb43546d",
+    "label": "NDA 2023-II Q45",
+    "reason": "fix: the function restored as a determinant (context) and options as closed intervals, NDA 2023-II Q45",
+    "context": "A function is defined by \\(f(x)=\\begin{vmatrix} x+1 & 2 & 3 \\\\ 2 & x+4 & 6 \\\\ 3 & 6 & x+9 \\end{vmatrix}\\).",
+    "options": {
+      "A": "\\(\\left[-\\frac{28}{3}, 0\\right]\\)",
+      "B": "\\(\\left[0, \\frac{28}{3}\\right]\\)",
+      "C": "\\(\\left[0, \\frac{50}{3}\\right]\\)",
+      "D": "\\(\\left[0, \\frac{56}{3}\\right]\\)"
+    },
+    "solution": "Expanding the determinant, \\(f(x) = x^{3} + 14x^{2} = x^{2}(x + 14)\\), so \\(f'(x) = 3x^{2} + 28x = x(3x + 28)\\) and \\(f''(x) = 6x + 28\\).\n\n\\(f\\) is decreasing where \\(f'(x) \\le 0\\). Since \\(x(3x + 28) \\le 0\\) for \\(-\\frac{28}{3} \\le x \\le 0\\), \\(f\\) is decreasing on \\(\\left[-\\frac{28}{3}, 0\\right]\\).\n\nHence (A)."
+  },
+  {
+    "id": "535879d6-b4c2-4187-843c-12b6d49174bb",
+    "label": "NDA 2023-II Q46",
+    "reason": "fix: the function restored as a determinant (context) and the key corrected, NDA 2023-II Q46",
+    "context": "A function is defined by \\(f(x)=\\begin{vmatrix} x+1 & 2 & 3 \\\\ 2 & x+4 & 6 \\\\ 3 & 6 & x+9 \\end{vmatrix}\\).",
+    "correct": "C",
+    "solution": "Expanding the determinant, \\(f(x) = x^{3} + 14x^{2} = x^{2}(x + 14)\\), so \\(f'(x) = 3x^{2} + 28x = x(3x + 28)\\) and \\(f''(x) = 6x + 28\\).\n\nThe critical points are \\(x = 0\\) and \\(x = -\\frac{28}{3}\\). At \\(x = 0\\), \\(f'\\) changes from negative to positive (\\(f''(0) = 28 > 0\\)), so there is a local minimum. At \\(x = -\\frac{28}{3}\\), \\(f''\\left(-\\frac{28}{3}\\right) = -28 < 0\\), so that point is a local maximum.\n\nHence (C)."
+  },
+  {
+    "id": "f54dbc01-8240-4582-a556-1fdf6be418b7",
+    "label": "NDA 2018-II Q86",
+    "reason": "fix: key corrected, NDA 2018-II Q86",
+    "correct": "A",
+    "solution": "\\(f'(x) = 2x - 5\\), which is negative for \\(x < \\frac{5}{2}\\), so \\(f\\) is decreasing on \\(\\left(-\\infty, \\frac{5}{2}\\right]\\).\n\nThe interval \\((-\\infty, 2]\\) lies inside this, so \\(f\\) is decreasing on it.\n\nOn \\((2, 3)\\), \\(f'(x) > 0\\) for \\(x > \\frac{5}{2}\\), so \\(f\\) is not decreasing throughout \\((2, 3)\\).\n\nHence (A)."
+  },
+  {
+    "id": "077fa5c4-82ec-4cc3-ad5f-7c1b5b45c85e",
+    "label": "booklet 2526",
+    "reason": "note: defective as printed, booklet 2526",
+    "solution": "**Note:** Options (A) and (D) are both correct as printed: \\(f\\) is strictly increasing on \\([-1, \\infty)\\) as well as on \\((-1, \\infty)\\). The answer shown follows the booklet's key.\n\n\\(f'(x) = 2x + 2 = 2(x + 1) > 0\\) for \\(x > -1\\), so \\(f\\) is strictly increasing on \\((-1, \\infty)\\).\n\nHence (D)."
+  },
+  {
+    "id": "86a6f06f-c6d6-4b24-90c4-06032c100131",
+    "label": "booklet 2529",
+    "reason": "note: defective as printed, booklet 2529",
+    "solution": "**Note:** Every offered interval satisfies the condition as printed, since \\(\\cos^{2}x\\) is also strictly decreasing at the endpoints \\(0\\) and \\(\\frac{\\pi}{2}\\). The answer shown follows the booklet's key.\n\n\\(f'(x) = -2\\sin x\\cos x = -\\sin 2x\\), which is negative on \\(\\left(0, \\frac{\\pi}{2}\\right)\\), so \\(f\\) is strictly decreasing there.\n\nHence (C)."
+  },
+  {
+    "id": "3894263d-46f9-4dbe-a572-771df10bcdb3",
+    "label": "booklet 2528",
+    "reason": "note: defective as printed, booklet 2528",
+    "solution": "**Note:** The exact condition is \\(K \\ge \\sqrt{2}\\), which no option states. The answer shown follows the booklet's key.\n\n\\(f'(x) = \\cos x + \\sin x - K = \\sqrt{2}\\sin\\left(x + \\frac{\\pi}{4}\\right) - K\\). For \\(f\\) to decrease we need \\(f'(x) \\le 0\\) for all positive \\(x\\), that is \\(K \\ge \\sqrt{2}\\), the maximum of \\(\\sqrt{2}\\sin\\left(x + \\frac{\\pi}{4}\\right)\\).\n\nHence (C)."
+  },
+  {
+    "id": "324d88bf-2660-497f-b6c8-335136f9a5f6",
+    "label": "booklet 2594",
+    "reason": "note: defective as printed, booklet 2594",
+    "solution": "**Note:** The booklet prints \\(y^{2} = \\frac{x^{2}}{2a + x}\\), but the point \\((a, a)\\) is not on that curve. The answer shown follows the booklet's key.\n\nThe length of the subtangent is \\(\\left|\\frac{y}{dy/dx}\\right|\\). Differentiating \\(y^{2}(2a + x) = x^{2}\\) gives \\(2yy'(2a + x) + y^{2} = 2x\\).\n\nBecause \\((a, a)\\) does not satisfy the printed curve, this cannot be evaluated there, and the value \\(\\frac{18a^{2}}{5}\\) is the booklet's.\n\nHence (C)."
+  },
+  {
+    "id": "eec60ff3-e796-41be-8f76-0803760856dc",
+    "label": "booklet 2539",
+    "reason": "note: defective as printed, booklet 2539",
+    "solution": "**Note:** The function \\(f\\) is not defined at \\(x = 0\\), so it cannot be decreasing on all of \\((-3, 3)\\) as the stem asks. The answer shown follows the booklet's key.\n\n\\(f'(x) = \\frac{1}{3} - \\frac{3}{x^{2}}\\), and \\(f\\) decreases where \\(f'(x) < 0\\), that is \\(x^{2} < 9\\) with \\(x \\ne 0\\). This gives \\((-3, 3)\\) with \\(0\\) excluded.\n\nHence (A)."
+  },
+  {
+    "id": "c2c3c873-5016-4a8e-8cba-5b4c63bab5d2",
+    "label": "booklet 2568",
+    "reason": "defective as printed: booklet 2568 keys both (b) and (d); our copy had swapped its (a) and (b). Options restored, key (b).",
+    "solution": "**Note:** Options (B) and (D) both fit, since \\(a\\) and \\(b\\) need only have the same sign, and the booklet's key lists both (b) and (d). The answer shown is (B), the first the booklet lists.\n\nThe curve \\(xy = 1 - 2x\\) gives \\(y = \\frac{1}{x} - 2\\), with slope \\(-\\frac{1}{x^{2}} < 0\\) everywhere.\n\nThe line \\(ax + by + c = 0\\) has slope \\(-\\frac{a}{b}\\), which must be negative, so \\(\\frac{a}{b} > 0\\) and \\(a\\), \\(b\\) have the same sign. Taking \\(a > 0\\) gives \\(b > 0\\).\n\nHence (B).",
+    "options": {
+      "A": "\\(a > 0, b < 0\\)",
+      "B": "\\(a > 0, b > 0\\)"
+    },
+    "correct": "B"
+  },
+  {
+    "id": "c7f0c743-4e7b-4466-bd29-10eee7ddb6de",
+    "label": "booklet 2662",
+    "reason": "note: defective as printed, booklet 2662",
+    "solution": "**Note:** The endpoint \\(x = 2\\pi\\) gives a larger slope than the keyed point, because the key considers only interior points. The answer shown follows the booklet's key.\n\nThe slope is \\(s = f'(x) = e^{x}(\\sin x + \\cos x)\\), and \\(s' = 2e^{x}\\cos x = 0\\) gives \\(x = \\frac{\\pi}{2}\\) or \\(x = \\frac{3\\pi}{2}\\). Here \\(s'' = 2e^{x}(\\cos x - \\sin x)\\) is negative at \\(x = \\frac{\\pi}{2}\\), so that is the interior maximum.\n\nAt the endpoint, \\(s(2\\pi) = e^{2\\pi}\\), which is larger than \\(s\\left(\\frac{\\pi}{2}\\right) = e^{\\pi/2}\\).\n\nHence (B)."
+  },
+  {
+    "id": "b6375fba-0590-4b0d-ab12-c08cf8ed715b",
+    "label": "booklet 2667",
+    "reason": "note: defective as printed, booklet 2667",
+    "solution": "**Note:** The word \\\"positive\\\" is missing from the stem: over all real numbers the sum of reciprocals has no minimum. The answer shown follows the booklet's key.\n\nFor positive numbers \\(x\\) and \\(y\\) with \\(x + y = 6\\), \\(\\frac{1}{x} + \\frac{1}{y} = \\frac{6}{xy}\\). By AM-GM, \\(xy \\le 9\\), with equality at \\(x = y = 3\\), so the least value is \\(\\frac{6}{9} = \\frac{2}{3}\\).\n\nHence (C)."
+  },
+  {
+    "id": "25b913ec-a83a-461e-85bd-7f106631359d",
+    "label": "NDA 2021-II Q95",
+    "reason": "note: defective as printed, NDA 2021-II Q95",
+    "solution": "**Note:** The exact condition is \\(3k \\ge 1\\), while the options offer \\(4k < 1\\), \\(3k > 1\\), \\(3k < 1\\) and \\(3k \\le 1\\). The answer shown follows the paper's key.\n\n\\(f'(x) = 3x^{2} + 2x + k\\). There is no local extremum when \\(f'\\) does not change sign, that is when the discriminant \\(4 - 12k \\le 0\\), so \\(3k \\ge 1\\). The nearest offered condition is \\(3k > 1\\).\n\nHence (B)."
+  },
+  {
+    "id": "aed0a7c1-3971-47db-9ee0-8a8402e5d3e5",
+    "label": "NDA 2024-I Q79",
+    "reason": "note: defective as printed, NDA 2024-I Q79",
+    "solution": "**Note:** The exact answer is \\(0 \\le b \\le 1\\), while option (D) is \\(0 \\le b < 1\\). The answer shown follows the paper's key.\n\n\\(f'(x) = 16x^{2} - 8bx + 1\\). There is no extremum when \\(f'\\) does not change sign, that is when the discriminant \\(64b^{2} - 64 \\le 0\\), so \\(-1 \\le b \\le 1\\); with \\(b \\ge 0\\) this is \\(0 \\le b \\le 1\\). The nearest offered option is \\(0 \\le b < 1\\).\n\nHence (D)."
+  },
+  {
+    "id": "bc6e1080-8ac1-4712-b481-c6f9e145ac9c",
+    "label": "LWS mock 10 Q93",
+    "reason": "note: defective as printed, LWS mock 10 Q93",
+    "solution": "**Note:** Options (A) and (D) are both true. The answer shown follows the mock's key.\n\n\\(f(x) = 3x^{2} + 6x - 9\\), so \\(f'(x) = 6x + 6\\). This is negative for \\(x < -1\\), so \\(f\\) is decreasing in \\((-\\infty, -1)\\), and positive for \\(x > -1\\), so \\(f\\) is also increasing in \\((-1, 3)\\).\n\nHence (D)."
+  }
+]
