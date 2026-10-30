@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { getSessionUser } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { getOwnMobile } from "@/lib/profile/service";
+import { getOwnProfile } from "@/lib/profile/service";
 import { normaliseFrom } from "@/lib/tutor/interest";
 import TutorInterestForm from "./TutorInterestForm";
 
@@ -13,7 +13,7 @@ import TutorInterestForm from "./TutorInterestForm";
  * The 1:1 tutoring interest check (owner, 2026-10-27; migration 0190): a few
  * taps that measure demand before anything is built. Signed-in only since
  * 2026-10-28, so every Yes is someone we can reach; a Yes from an account with
- * no mobile on file is asked for one last. Kept out of search: it offers
+ * no city or no mobile on file is asked for them last. Kept out of search: it offers
  * nothing yet, so it should not rank for "tutoring".
  */
 export const metadata: Metadata = {
@@ -27,7 +27,7 @@ export const dynamic = "force-dynamic";
 
 export default async function TutorPage({ searchParams }: { searchParams: { from?: string } }) {
   const user = await getSessionUser();
-  const hasMobile = user ? !!(await getOwnMobile(createSupabaseServerClient(), user.id)).mobile : false;
+  const profile = user ? await getOwnProfile(createSupabaseServerClient(), user.id) : null;
   const from = normaliseFrom(searchParams.from);
   const here = encodeURIComponent(from ? `/tutor?from=${from}` : "/tutor");
 
@@ -42,7 +42,7 @@ export default async function TutorPage({ searchParams }: { searchParams: { from
           </p>
         </header>
         {user ? (
-          <TutorInterestForm hasMobile={hasMobile} />
+          <TutorInterestForm hasMobile={!!profile?.mobile} hasCity={!!profile?.city} />
         ) : (
           <section className="mt-6 rounded-xl border bg-card p-6 text-center">
             <h2 className="text-lg font-semibold">Sign in to answer</h2>

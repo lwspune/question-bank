@@ -3,19 +3,26 @@ import {
   validateTutorInterest,
   normaliseFrom,
   summariseTutorInterest,
-  needsContactStep,
+  stepsAfterYes,
   buildTutorContacts,
+  tallyYesByCity,
+  type TutorContact,
   type TutorInterestRow,
 } from "@/lib/tutor/interest";
 
-describe("needsContactStep", () => {
-  it("asks for a number after a Yes when none is on file", () => {
-    expect(needsContactStep({ wants: true, hasMobile: false })).toBe(true);
+describe("stepsAfterYes", () => {
+  it("asks for the city, then the mobile, after a Yes when neither is on file", () => {
+    expect(stepsAfterYes({ wants: true, hasCity: false, hasMobile: false })).toEqual(["city", "contact"]);
   });
 
-  it("does not ask after a No, or when a number is already on file", () => {
-    expect(needsContactStep({ wants: false, hasMobile: false })).toBe(false);
-    expect(needsContactStep({ wants: true, hasMobile: true })).toBe(false);
+  it("skips what is already on file", () => {
+    expect(stepsAfterYes({ wants: true, hasCity: true, hasMobile: false })).toEqual(["contact"]);
+    expect(stepsAfterYes({ wants: true, hasCity: false, hasMobile: true })).toEqual(["city"]);
+    expect(stepsAfterYes({ wants: true, hasCity: true, hasMobile: true })).toEqual([]);
+  });
+
+  it("asks nothing more after a No", () => {
+    expect(stepsAfterYes({ wants: false, hasCity: false, hasMobile: false })).toEqual([]);
   });
 });
 
@@ -40,11 +47,11 @@ describe("buildTutorContacts", () => {
         ["u1", { name: "Asha", email: "asha@example.com" }],
         ["u2", { name: null, email: "t@example.com" }],
       ]),
-      new Map([["u1", "919876543210"]])
+      new Map([["u1", { mobile: "919876543210", city: "Pune" }]])
     );
     expect(contacts).toEqual([
-      { userId: "u2", name: null, email: "t@example.com", mobile: null, role: "teacher", mode: "either", examSlug: null, answeredAt: "2026-10-28T09:00:00Z" },
-      { userId: "u1", name: "Asha", email: "asha@example.com", mobile: "919876543210", role: "student", mode: "online", examSlug: "nda", answeredAt: "2026-10-28T03:00:00Z" },
+      { userId: "u2", name: null, email: "t@example.com", mobile: null, city: null, role: "teacher", mode: "either", examSlug: null, answeredAt: "2026-10-28T09:00:00Z" },
+      { userId: "u1", name: "Asha", email: "asha@example.com", mobile: "919876543210", city: "Pune", role: "student", mode: "online", examSlug: "nda", answeredAt: "2026-10-28T03:00:00Z" },
     ]);
   });
 
@@ -56,6 +63,50 @@ describe("buildTutorContacts", () => {
     );
     expect(out.contacts).toEqual([]);
     expect(out.unreachableYes).toBe(2);
+  });
+});
+
+describe("tallyYesByCity", () => {
+  const contact = (c: Partial<TutorContact>): TutorContact => ({
+    userId: "u",
+    name: null,
+    email: null,
+    mobile: null,
+    city: null,
+    role: "student",
+    mode: "online",
+    examSlug: null,
+    answeredAt: "2026-10-28T03:00:00Z",
+    ...c,
+  });
+
+  it("counts students and teachers per city, busiest first, no city last", () => {
+    expect(
+      tallyYesByCity([
+        contact({ city: "Pune" }),
+        contact({ city: "Mumbai" }),
+        contact({ city: "Pune", role: "teacher" }),
+        contact({ city: "Pune" }),
+        contact({ city: null }),
+      ])
+    ).toEqual([
+      { city: "Pune", students: 2, teachers: 1 },
+      { city: "Mumbai", students: 1, teachers: 0 },
+      { city: null, students: 1, teachers: 0 },
+    ]);
+  });
+
+  it("treats spelling case and spaces as one city, keeping the first spelling seen", () => {
+    expect(tallyYesByCity([contact({ city: "Pune" }), contact({ city: " pune " }), contact({ city: "PUNE" })])).toEqual([
+      { city: "Pune", students: 3, teachers: 0 },
+    ]);
+  });
+
+  it("breaks a tie by name", () => {
+    expect(tallyYesByCity([contact({ city: "Nagpur" }), contact({ city: "Delhi" })]).map((x) => x.city)).toEqual([
+      "Delhi",
+      "Nagpur",
+    ]);
   });
 });
 

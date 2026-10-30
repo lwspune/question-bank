@@ -715,7 +715,7 @@ export const EXPERIMENTS: readonly Experiment[] = [
     id: "tutor-interest",
     title: "1:1 tutoring: is there demand?",
     change:
-      "A Tutor button in the header, beside Ebooks, opens /tutor: Student or Teacher, then \"Looking for 1:1 tutoring?\" (a teacher is asked \"Would you like to teach 1:1?\"), then Online, Offline or Either on a Yes. Nothing is sold or booked. Since 28 Oct only signed-in accounts can answer, and a Yes from an account with no mobile on file is asked for one last (\"Not now\" allowed); the Yes students are listed on this page to reach.",
+      "A Tutor button in the header, beside Ebooks, opens /tutor: Student or Teacher, then \"Looking for 1:1 tutoring?\" (a teacher is asked \"Would you like to teach 1:1?\"), then Online, Offline or Either on a Yes. Nothing is sold or booked. Since 28 Oct only signed-in accounts can answer, and a Yes from an account with no city or no mobile on file is asked for them last (city since 30 Oct; \"Not now\" allowed on each); the Yes answers are listed, with their cities, on /dashboard/tutor.",
     why: "The owner is weighing 1:1 tutoring and wants demand measured before anything is built. One page counts both sides: students who want a tutor and teachers who would teach.",
     metric:
       "Student and teacher answers, Yes and No, by Online / Offline / Either, and student Yes by exam (tutor_interest, migration 0190). Header Tutor taps (tutor_link_click) in Vercel, read by hand. Answers given signed out before 28 Oct are one row each, so they can count a person twice",
