@@ -23,6 +23,7 @@ export type ExamSlug =
   | "cbse-11"
   | "cbse-12"
   | "isc-12"
+  | "icse-10"
   | "mh-sb-9"
   | "mh-sb-11"
   | "mh-ssc-10"
@@ -519,8 +520,22 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     // examName resolved to no `exams` row at all; tests/exam-chips-guard pins it.
     board: "CISCE",
     std: 12,
-    // A CISCE family of one degrades to a flat picker entry (groupExamFamilies
-    // rule 2); it becomes a real family automatically when ICSE Class 10 lands.
+    // With icse-10 below, CISCE is a real picker family (groupExamFamilies).
+  },
+  {
+    slug: "icse-10",
+    tier: "school",
+    displayName: "ICSE Class 10",
+    examName: "ICSE Class 10", // must match the `exams` DB row exactly
+    guidesPath: null, // no /guide subtree yet — falls back to the index
+    notesPath: "/notes/icse-10", // exam hub: "coming soon" until notes ship
+    // CISCE's Class 10 certificate: Mathematics + Science (Physics, Chemistry,
+    // Biology) board papers 2025 + 2026, PYQ-only, so NOT practiceOnly. NOT
+    // boardExam for the same reason as isc-12: no textbook-structured corpus.
+    // mixedFormats from the LIVE count (2026-10-30: 120 MCQ vs 233 written PUBLIC).
+    mixedFormats: true,
+    board: "CISCE",
+    std: 10,
   },
   {
     slug: "mh-sb-9",
