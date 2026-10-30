@@ -510,25 +510,13 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     // 'practice' rows) would widen its scope to an exam that owns none.
     // If an ISC textbook corpus is ever ingested, flip this then, not now.
     //
-    // ⚠ NO mixedFormats YET, and that is a correctness requirement rather than
-    // caution. `tests/format-mix-registry` measures this flag against the LIVE
-    // BANK in both directions, and its rule for an exam with no PUBLIC rows is
-    // "absent-and-unflagged is the correct state" — a flag an exam cannot yet
-    // earn. It was briefly set here from the PAPERS (all three PCM papers do
-    // carry MCQ, fill-in-the-blanks and long-form subjective in one sitting)
-    // and that failed the contract suite, which is right: the flag describes
-    // the corpus, and the corpus is empty.
-    //
-    // SET IT AT THE FIRST INGEST, from a live count, not from the papers — the
-    // cbse-11 entry records what happens when it is set from one subject and
-    // then treated as a permanent property of the exam.
-    //
-    // ⚠ NOTHING IS INGESTED — not one row, and `examName` resolves to NO `exams`
-    // row at all (the corpus is PAUSED; see the ISC ingestion notes). Until that
-    // changes this exam must not be offered as a student target: it shipped as a
-    // live chip on /welcome + /account pointing at an exam that exists nowhere.
-    // Remove the flag at the first PUBLIC row, not at the first ingest.
-    noPublicContent: true,
+    // mixedFormats from the LIVE count at the first ingest (2026-10-30: 59 MCQ
+    // vs 198 subjective PUBLIC across 2025 + 2026 PCM), never from the papers:
+    // tests/format-mix-registry measures it against the bank in both directions.
+    mixedFormats: true,
+    // `noPublicContent` came off on 2026-10-30 when the 257 rows went PUBLIC.
+    // Until then this exam rendered as a /welcome + /account chip while its
+    // examName resolved to no `exams` row at all; tests/exam-chips-guard pins it.
     board: "CISCE",
     std: 12,
     // A CISCE family of one degrades to a flat picker entry (groupExamFamilies

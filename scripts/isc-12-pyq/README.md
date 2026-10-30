@@ -10,83 +10,49 @@ into `question_kind='pyq'` rows on a new `isc-12` exam.
 
 ---
 
-## Status — paused 2026-09-16
+## Status — LIVE 2026-10-30
 
 | | |
 |---|---|
-| Registry | `isc-12` added (`board: "CISCE"`, the third board). **No `mixedFormats`** — see below |
-| Taxonomy | authored from the official ISC syllabus — 15 Maths / 14 Physics / 10 Chemistry chapters |
-| Sources | 2025 marking schemes + 2026 question papers + Class-XII syllabus, staged under `C:\tmp\PYQPs\ISC\XII\` |
-| Pure cores | `pattern.ts`, `config.ts`, `crosscheck.ts` — 44 tests, all green |
-| Transcribed | **2025 Mathematics Q1 ONLY** — 15 subparts = 15 bank rows |
-| Committed to the bank | **NOTHING** |
+| Bank | **257 rows PUBLIC**, `question_kind='pyq'`: 2025 Maths 51 · Physics 39 · Chemistry 37; 2026 Maths 54 · Physics 39 · Chemistry 37 |
+| Registry | `isc-12` (`board: "CISCE"`), `mixedFormats: true` (59 MCQ vs 198 subjective, measured live), `noPublicContent` removed |
+| Figures | 24 cropped from the page renders and attached (`image_url`); 4 decorative ones left off |
+| 2025 accuracy | blind solve vs CISCE's key: **35/36 MCQ** (the 1 = CISCE's own 1(ix), key kept) and **98/98 written answers** read side by side |
+| 2026 | **NO official key yet** (404 on cisce.org, checked 2026-10-30). Two independent solvers: 30/30 MCQ, 98/100 written; both differences settled in `data/2026-Mathematics.adjudication.json` |
 
-**Q1 is one question, not one paper.** It is the densest question in the paper
-(Section A's 15x1-mark block), so it alone yields 15 of that paper's ~54 rows —
-which reads like more progress than it is. Q2-Q22 are untouched, as is all of
-Physics, all of Chemistry, and all of 2026.
+Per-paper files in `data/`: `<year>-<Subject>.questions.json` (transcription,
+no answers), `.key.json` (2025 only: CISCE's marking scheme),
+`.derived.json` (the blind solve: source of every published solution and
+difficulty), `.second.json` (2026's independent control, answers only) and
+`.adjudication.json` (every human decision, with its reason). A solve in
+progress writes under `C:\tmp\PYQPs\ISC\XII\blind\<stem>\`; copy it into `data/`
+once the paper is settled (`derivationPath` in `config.ts` reads `data/` first).
 
-```
-done   15 rows   ~28% of ONE paper   ~6% of the PCM x 2-year scope
-left  ~245 rows
-```
-
-Nothing is in the database. The exam, its subjects and its chapters are **not
-seeded**, deliberately — see "Do not seed early" below. Consequently `isc-12`
-does **not** appear in the `/browse` exam filter (that list is built by
-`listExams()` from the `exams` TABLE). It *does* render an "ISC Class 12 ·
-Coming soon" card on the homepage, because that grid maps `EXAM_REGISTRY`
-directly; the card links to `/browse` unfiltered.
-
----
-
-## RESUME HERE
-
-The blocker is transcription. Everything around it is built and tested.
-
-**Next unit: finish ISC 2025 Mathematics (Q2–Q22, ~39 more rows).** That turns
-the pilot into a genuine complete paper and replaces an accuracy figure resting
-on 11 MCQs with one resting on the whole paper.
+## Re-running a paper
 
 ```sh
-# 1. pages are already rendered at C:\tmp\PYQPs\ISC\XII\render\2025-Mathematics\
-#    (p08..p43). Re-render if needed:
-python scripts/isc-12-pyq/render.py 2025 Mathematics
-
-# 2. transcribe Q2..Q22 by READING THE PAGE IMAGES (never the text layer — it
-#    is lossy, see "Measured properties"). Write TWO files per block, splitting
-#    question from key exactly as 2025-Mathematics-Q1.* does:
-#      data/2025-Mathematics-Q<n>.questions.json   ← no answers, ever
-#      data/2025-Mathematics-Q<n>.key.json         ← CISCE's MARKING SCHEME
-
-# 3. blind-derive, then diff:
-npx tsx scripts/isc-12-pyq/dump-for-derivation.ts 2025 Mathematics Q<n>
-#    → hand C:\tmp\PYQPs\ISC\XII\blind\<stem>\ to a FRESH deriver, key withheld
-npx tsx scripts/isc-12-pyq/report-crosscheck.ts 2025 Mathematics Q<n>
-
-# 4. adjudicate every DISAGREE into FINDINGS.md before moving on
+npx tsx scripts/isc-12-pyq/validate.ts 2026 Physics          # catalog, marks, delimiters, control chars
+python  scripts/isc-12-pyq/crop-figures.py 2026 Physics --sheet   # LOOK at _sheet.png
+npx tsx scripts/isc-12-pyq/dump-for-derivation.ts 2026 Physics   # key-free payload + figure crops
+#   -> a solver reads DERIVATION_BRIEF.md and writes blind/<stem>/derived.json
+#   -> 2026: a second solver writes blind/<stem>/second.json (answers only)
+npx tsx scripts/isc-12-pyq/report-crosscheck.ts 2026 Physics     # vs key (2025) or vs second.json (2026)
+#   -> record every decision in data/<stem>.adjudication.json
+npx tsx scripts/isc-12-pyq/commit.ts 2026 Physics [--apply]      # PRIVATE; re-syncs solution/difficulty/image
+npx tsx scripts/isc-12-pyq/seed.ts --order --apply               # chapter + subtopic order
+npx tsx scripts/isc-12-pyq/flip-public.ts 2026 Physics [--apply]
 ```
 
-Where each question sits in the 2025 APUP (`render/2025-Mathematics/pNN.png`):
-Q1 pp8-11 · Q2-Q3 p13 · Q4-Q9 pp15-23 · Q10-Q14 pp24-30 · Q15-Q18 pp31-36 ·
-Q19-Q22 pp37-43. Physics is pp8-41 of its APUP, Chemistry pp8-32.
+`commit.ts` refuses on any unread disagreement (`assemblePaper` in `lib.ts`,
+spec `tests/isc-12-lib.test.ts`). Transcription contract: `TRANSCRIPTION_BRIEF.md`.
 
-**Then:** Physics 2025 → Chemistry 2025 → all of 2026 → figures → seed → commit
-→ audits → flip PUBLIC.
+### Still open
 
-### Three things to re-check on resume
-
-1. **`mixedFormats` must be set at the FIRST INGEST**, from a live count, not
-   from the papers. It is currently absent and pinned absent by a test.
-   `tests/format-mix-registry` measures it against the live bank and an exam
-   with no PUBLIC rows must stay unflagged.
-2. **Run `npm run test:prod-contract` by hand after any registry change.** It
-   left the push gate on 2026-08-31 and runs on a daily schedule, so a green
-   `prepush` says nothing about the registry-vs-bank contract. That is exactly
-   how a bad `mixedFormats` flag shipped on 2026-09-16 and had to be reverted.
-3. **CISCE's 2026 marking scheme publishes ~November 2026.** When it lands,
-   re-run the cross-check over the 2026 rows — they ship DERIVED AND UNVERIFIED
-   until then, and `YEAR_SOURCES` in `config.ts` says so.
+1. **CISCE's 2026 marking scheme (~November 2026).** When it lands, transcribe
+   it to `data/2026-<Subject>.key.json` and re-run `report-crosscheck.ts`: the
+   2026 answers ship as worked out by us until then, and `YEAR_SOURCES` says so.
+2. **2021-2024 papers not located** (see below).
+3. **ICSE Class 10** is a separate lane, not a rename of this one.
 
 ---
 
@@ -229,10 +195,10 @@ python scripts/isc-12-pyq/render.py 2025 Mathematics
 python scripts/isc-12-pyq/render.py 2026 Physics --dpi 220 --dump-text
 
 # emit a blind (key-free) payload for a deriver
-npx tsx scripts/isc-12-pyq/dump-for-derivation.ts 2025 Mathematics Q1
+npx tsx scripts/isc-12-pyq/dump-for-derivation.ts 2025 Mathematics
 
 # diff a derivation against CISCE's key
-npx tsx scripts/isc-12-pyq/report-crosscheck.ts 2025 Mathematics Q1
+npx tsx scripts/isc-12-pyq/report-crosscheck.ts 2025 Mathematics
 ```
 
 Both CLIs **refuse an unmeasured year** rather than defaulting to the nearest
@@ -242,11 +208,4 @@ one — a default turns "nobody has looked at this year" into an assertion.
 
 ## What is left
 
-1. Transcribe the remaining 2025 questions (Maths Q2–22, Physics, Chemistry) and
-   all of 2026. ~260 rows in total; 15 are done.
-2. Crop figures from page rasters and attach them.
-3. Seed exam → subjects → chapters, then `commit --apply`.
-4. Run `audit:keys`, `audit:text`, `audit:omml` scoped to the new `source_file`.
-5. Flip PUBLIC, `npm run stats`, update `CLAUDE.md`.
-6. Re-run the 2026 cross-check when CISCE publishes its 2026 APUP (~Nov 2026).
-7. Find the 2021–2024 archive, or record that it is unreachable.
+See "Still open" under Status.

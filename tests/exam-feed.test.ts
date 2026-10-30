@@ -142,7 +142,10 @@ describe("ANON_FEED", () => {
   it("lists every public registry exam in primary and nothing in other", () => {
     expect(ANON_FEED.tier).toBeNull();
     expect(ANON_FEED.other).toEqual([]);
-    expect(ANON_FEED.primary).not.toContain("isc-12");
+    // isc-12 was the noPublicContent exam this line excluded until its papers
+    // went PUBLIC on 2026-10-30; the exclusion rule itself is covered on the
+    // synthetic registry above, so the real one now just has to list it.
+    expect(ANON_FEED.primary).toContain("isc-12");
     expect(ANON_FEED.primary[0]).toBe("nda");
   });
 });

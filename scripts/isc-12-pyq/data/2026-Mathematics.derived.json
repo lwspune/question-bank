@@ -1,0 +1,401 @@
+{
+  "derivedBy": "Independent solver (Claude, Opus), worked by hand with numerical checks in Python",
+  "answers": [
+    {
+      "ref": "1(i)",
+      "label": "B",
+      "value": "\\(192\\)",
+      "working": "For a square matrix of order \\(n\\), \\(|kA| = k^n|A|\\). Here \\(n = 3\\) and \\(k = -4\\), so\n\n\\(|-4A| = (-4)^3|A| = (-64)(-3) = 192\\).\n\nA common slip is to forget the cube and write \\((-4)(-3) = 12\\), or to lose the sign. So the answer is option (B), \\(192\\).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "1(ii)",
+      "label": "A",
+      "value": "differentiable and continuous at \\(x = 1\\).",
+      "working": "\\(f(x) = \\log x\\) is defined for all \\(x > 0\\), and \\(x = 1\\) lies inside this domain. Its derivative \\(f'(x) = \\frac{1}{x}\\) exists at \\(x = 1\\) (it equals 1), so \\(f\\) is differentiable at \\(x = 1\\). Every differentiable function is continuous, so \\(f\\) is also continuous there.\n\nSo the answer is option (A): differentiable and continuous at \\(x = 1\\).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "1(iii)",
+      "label": "D",
+      "value": "\\(\\frac{13}{15}\\)",
+      "working": "For mutually exclusive events \\(P(A \\cap B) = 0\\), so\n\n\\(P(A \\cup B) = P(A) + P(B) = \\frac{1}{5} + \\frac{2}{3} = \\frac{3 + 10}{15} = \\frac{13}{15}\\).\n\nSo the answer is option (D), \\(\\frac{13}{15}\\).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "1(iv)",
+      "label": "A",
+      "value": "Both Assertion and Reason are true and Reason is the correct explanation for Assertion.",
+      "working": "At \\(x = 2\\): \\(f(2) = 3\\), and the right-hand limit is \\(5 - 2 = 3\\), so \\(f\\) is continuous at \\(x = 2\\).\n\nLeft hand derivative: for \\(x \\le 2\\), \\(f(x) = 1 + x\\), so \\(\\mathrm{L}f'(2) = 1\\). Right hand derivative: for \\(x > 2\\), \\(f(x) = 5 - x\\), so \\(\\mathrm{R}f'(2) = -1\\).\n\nSince \\(\\mathrm{L}f'(2) \\ne \\mathrm{R}f'(2)\\), \\(f\\) is not differentiable at \\(x = 2\\): the Assertion is true. The Reason states the condition for differentiability (LHD = RHD), which is true, and it is exactly the condition that fails here, so it explains the Assertion.\n\nSo the answer is option (A).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "1(v)",
+      "label": "B",
+      "value": "\\(\\frac{9}{8}\\)",
+      "working": "On \\(\\left[0, \\frac{3}{2}\\right]\\), \\(x \\ge 0\\), so \\(|x| = x\\).\n\n\\(\\int_0^{3/2} x\\, dx = \\left[\\frac{x^2}{2}\\right]_0^{3/2} = \\frac{1}{2} \\times \\frac{9}{4} = \\frac{9}{8}\\).\n\nSo the answer is option (B), \\(\\frac{9}{8}\\).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "1(vi)",
+      "label": "A",
+      "value": "Statement 1 is true and Statement 2 is false.",
+      "working": "**Statement 1:** \\(\\cot x = \\tan\\left(\\frac{\\pi}{2} - x\\right)\\). If \\(0 < x < \\frac{\\pi}{2}\\), then \\(0 < \\frac{\\pi}{2} - x < \\frac{\\pi}{2}\\), which lies in the principal range \\(\\left(-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right)\\) of \\(\\tan^{-1}\\). So \\(\\tan^{-1}(\\cot x) = \\frac{\\pi}{2} - x\\). True.\n\n**Statement 2:** \\(\\tan^{-1}(\\tan x) = x\\) holds only for \\(x \\in \\left(-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right)\\), not for all real \\(x\\). For example \\(\\tan^{-1}(\\tan \\pi) = \\tan^{-1} 0 = 0 \\ne \\pi\\). False.\n\nSo the answer is option (A).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "1(vii)",
+      "label": "C",
+      "value": "\\(512\\)",
+      "working": "A \\(3 \\times 3\\) matrix has 9 entries, and each entry can be chosen in 2 ways (0 or 1). So the number of matrices is \\(2^9 = 512\\).\n\nSo the answer is option (C), \\(512\\).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "1(viii)",
+      "label": "D",
+      "value": "Both the statements are false.",
+      "working": "Read the graph from left to right. The curve comes down from the top left to touch the \\(x\\)-axis at \\(x = -1\\), rises to a small peak at \\(x = 0\\), falls again to the \\(x\\)-axis at \\(x = 1\\), and then rises steeply.\n\nSo \\(f\\) decreases on \\((-\\infty, -1)\\), increases on \\((-1, 0)\\), decreases on \\((0, 1)\\) and increases on \\((1, \\infty)\\).\n\n**Statement 1** says \\(f\\) increases on \\((-\\infty, -1)\\): false, it decreases there.\n\n**Statement 2** says \\(f\\) decreases on \\((-\\infty, 0)\\) and \\((1, \\infty)\\): false, since \\(f\\) increases on \\((-1, 0)\\) and on \\((1, \\infty)\\).\n\nSo the answer is option (D), both statements are false.",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "1(ix)",
+      "label": "B",
+      "value": "\\(0\\)",
+      "working": "A one-one and onto map (a bijection) from A to B exists only when A and B have the same number of elements. Here \\(n(A) = 4\\) and \\(n(B) = 5\\): a one-one map uses only 4 of the 5 elements of B, so one element of B is always left without a pre-image and the map cannot be onto.\n\nSo the number of such mappings is 0, option (B).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "1(x)",
+      "label": "D",
+      "value": "\\(y = 2e^x - 1\\)",
+      "working": "\\(\\frac{dy}{dx} = y + 1\\), so \\(\\frac{dy}{y + 1} = dx\\). Integrating, \\(\\log|y + 1| = x + c\\), i.e. \\(y + 1 = Ce^x\\).\n\nUsing \\(y(0) = 1\\): \\(1 + 1 = C\\), so \\(C = 2\\) and \\(y = 2e^x - 1\\).\n\nCheck: \\(\\frac{dy}{dx} - y = 2e^x - (2e^x - 1) = 1\\), and \\(y(0) = 2 - 1 = 1\\). Option (C), \\(y = e^x - 1\\), also satisfies the equation but gives \\(y(0) = 0\\). So the answer is option (D), \\(y = 2e^x - 1\\).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "1(xi)",
+      "label": "A",
+      "value": "Both Assertion and Reason are true and Reason is the correct explanation for Assertion.",
+      "working": "A system of three linear equations in three unknowns can always be written as \\(AX = B\\), where A is the coefficient matrix. If A is non-singular (\\(|A| \\ne 0\\)), then \\(A^{-1}\\) exists, and multiplying both sides by \\(A^{-1}\\) on the left gives the unique solution \\(X = A^{-1}B\\).\n\nSo the Assertion holds because A is non-singular, which is exactly what the Reason states: the Reason is true and explains the Assertion.\n\nSo the answer is option (A).\n\nNote: on its own, the Assertion is true only when A is non-singular; if \\(|A| = 0\\), the system has either no solution or infinitely many. The question pairs it with the Reason to supply that condition.",
+      "difficulty": "Easy",
+      "confidence": "MEDIUM",
+      "flag": "The Assertion is not true for every system (it needs |A| != 0); it is true only under the condition the Reason supplies. Read as intended, (A). A reader who judges the Assertion on its own could argue it is false, giving (D)."
+    },
+    {
+      "ref": "1(xii)",
+      "value": "\\(\\frac{dy}{dx} = \\frac{1 - x}{x}\\)",
+      "working": "The exponent \\(y + e^{y + e^{y + \\ldots}}\\) is \\(y + x\\), since the repeating part is \\(x\\) itself. So\n\n\\(x = e^{y + x}\\).\n\nTaking log on both sides: \\(\\log x = y + x\\), so \\(y = \\log x - x\\).\n\nDifferentiating with respect to \\(x\\):\n\n\\(\\frac{dy}{dx} = \\frac{1}{x} - 1 = \\frac{1 - x}{x}\\).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "1(xiii)",
+      "value": "\\(x = 3\\) or \\(x = -7\\)",
+      "working": "Expanding along the first row:\n\n\\(1\\,(x \\cdot 2x - (-1)(4)) - (-2)\\,(2 \\cdot 2x - (-1)(0)) + 5\\,(2 \\cdot 4 - x \\cdot 0)\\)\n\n\\(= (2x^2 + 4) + 2(4x) + 40 = 2x^2 + 8x + 44\\).\n\nSetting this equal to 86: \\(2x^2 + 8x - 42 = 0\\), i.e. \\(x^2 + 4x - 21 = 0\\), so \\((x + 7)(x - 3) = 0\\).\n\nHence \\(x = 3\\) or \\(x = -7\\).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "1(xiv)",
+      "value": "\\(\\frac{3\\pi}{4}\\)",
+      "working": "The principal value branch of \\(\\sec^{-1}\\) is \\([0, \\pi] - \\left\\{\\frac{\\pi}{2}\\right\\}\\).\n\nSince \\(\\sec\\frac{\\pi}{4} = \\sqrt{2}\\), we have \\(\\sec\\left(\\pi - \\frac{\\pi}{4}\\right) = -\\sec\\frac{\\pi}{4} = -\\sqrt{2}\\), and \\(\\frac{3\\pi}{4}\\) lies in the principal range.\n\nSo \\(\\sec^{-1}(-\\sqrt{2}) = \\pi - \\frac{\\pi}{4} = \\frac{3\\pi}{4}\\).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "1(xv)",
+      "value": "Yes, R is symmetric.",
+      "working": "A relation R is symmetric if \\((x, y) \\in R \\Rightarrow (y, x) \\in R\\).\n\nHere \\(R = \\{(a, b), (b, a)\\}\\). For \\((a, b) \\in R\\), the pair \\((b, a)\\) is also in R; for \\((b, a) \\in R\\), the pair \\((a, b)\\) is also in R. Every pair has its reverse in R.\n\nHence R is symmetric. (It is not reflexive, since \\((a, a) \\notin R\\).)",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "2",
+      "value": "Proved (the determinant is 0).",
+      "working": "Let \\(\\Delta = \\begin{vmatrix} b - c & c - a & a - b \\\\ c - a & a - b & b - c \\\\ 2(a - b) & 2(b - c) & 2(c - a) \\end{vmatrix}\\).\n\nApply \\(C_1 \\rightarrow C_1 + C_2 + C_3\\). The new first-column entries are:\n\nRow 1: \\((b - c) + (c - a) + (a - b) = 0\\)\n\nRow 2: \\((c - a) + (a - b) + (b - c) = 0\\)\n\nRow 3: \\(2(a - b) + 2(b - c) + 2(c - a) = 0\\)\n\nSo \\(\\Delta = \\begin{vmatrix} 0 & c - a & a - b \\\\ 0 & a - b & b - c \\\\ 0 & 2(b - c) & 2(c - a) \\end{vmatrix}\\).\n\nA determinant with every entry of one column equal to zero has value zero. Hence \\(\\Delta = 0\\).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "3(i)",
+      "value": "\\(f^{-1}(x) = 7 + (4 - x)^{1/3}\\)",
+      "working": "Let \\(y = f(x) = 4 - (x - 7)^3\\).\n\nThen \\((x - 7)^3 = 4 - y\\), so \\(x - 7 = (4 - y)^{1/3}\\) and \\(x = 7 + (4 - y)^{1/3}\\).\n\nSo \\(f^{-1}(y) = 7 + (4 - y)^{1/3}\\), that is,\n\n\\(f^{-1}(x) = 7 + \\sqrt[3]{4 - x}\\).\n\nCheck: \\(f(f^{-1}(x)) = 4 - \\left(\\sqrt[3]{4 - x}\\right)^3 = 4 - (4 - x) = x\\).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "3(ii)",
+      "value": "Range \\(= \\left[\\frac{1}{5}, 1\\right]\\)",
+      "working": "For all real \\(x\\), \\(-1 \\le \\sin x \\le 1\\).\n\nMultiplying by \\(-2\\) reverses the inequalities: \\(-2 \\le -2\\sin x \\le 2\\). Adding 3: \\(1 \\le 3 - 2\\sin x \\le 5\\).\n\nThe denominator is always positive, so taking reciprocals reverses the inequalities again: \\(\\frac{1}{5} \\le \\frac{1}{3 - 2\\sin x} \\le 1\\).\n\nBoth ends are reached (\\(\\sin x = -1\\) gives \\(\\frac{1}{5}\\), \\(\\sin x = 1\\) gives 1), and \\(f\\) is continuous, so the range of \\(f\\) is \\(\\left[\\frac{1}{5}, 1\\right]\\).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "4",
+      "value": "\\(\\tan^{-1}(e^x) + C\\)",
+      "working": "Let \\(I = \\int \\frac{e^x}{1 + e^{2x}}\\, dx\\).\n\nPut \\(e^x = t\\), so \\(e^x\\, dx = dt\\) and \\(e^{2x} = t^2\\).\n\n\\(I = \\int \\frac{dt}{1 + t^2} = \\tan^{-1} t + C = \\tan^{-1}(e^x) + C\\).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "5",
+      "value": "Proved: \\(P(A \\cap B) = \\frac{1}{6} \\ne \\frac{1}{4} = P(A)P(B)\\)",
+      "working": "Sample space \\(S = \\{1, 2, 3, 4, 5, 6\\}\\).\n\nA (number is odd) \\(= \\{1, 3, 5\\}\\), so \\(P(A) = \\frac{3}{6} = \\frac{1}{2}\\).\n\nB (number is green) \\(= \\{4, 5, 6\\}\\), so \\(P(B) = \\frac{3}{6} = \\frac{1}{2}\\).\n\n\\(A \\cap B = \\{5\\}\\), so \\(P(A \\cap B) = \\frac{1}{6}\\).\n\n\\(P(A) \\cdot P(B) = \\frac{1}{2} \\times \\frac{1}{2} = \\frac{1}{4}\\).\n\nSince \\(P(A \\cap B) = \\frac{1}{6} \\ne \\frac{1}{4} = P(A)P(B)\\), the events A and B are not independent.",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "6(i)",
+      "value": "\\(24\\ \\mathrm{cm^3/sec}\\)",
+      "working": "Let \\(r\\) be the radius, \\(S = 4\\pi r^2\\) the surface area and \\(V = \\frac{4}{3}\\pi r^3\\) the volume.\n\nGiven \\(\\frac{dS}{dt} = 4\\ \\mathrm{cm^2/sec}\\). Since \\(\\frac{dS}{dt} = 8\\pi r \\frac{dr}{dt}\\), at \\(r = 12\\):\n\n\\(4 = 8\\pi(12)\\frac{dr}{dt}\\), so \\(\\frac{dr}{dt} = \\frac{4}{96\\pi} = \\frac{1}{24\\pi}\\ \\mathrm{cm/sec}\\).\n\nNow \\(\\frac{dV}{dt} = 4\\pi r^2 \\frac{dr}{dt} = 4\\pi(144) \\times \\frac{1}{24\\pi} = 24\\).\n\nSo the volume is increasing at \\(24\\ \\mathrm{cm^3/sec}\\) when the radius is 12 cm.",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "6(ii)",
+      "value": "\\(2x + y - 4 = 0\\) (as printed; the point \\((1, 2)\\) is not on the curve)",
+      "working": "Differentiating \\(x^2 = 4y\\): \\(2x = 4\\frac{dy}{dx}\\), so \\(\\frac{dy}{dx} = \\frac{x}{2}\\).\n\nAt \\(x = 1\\), the slope of the tangent is \\(\\frac{1}{2}\\), so the slope of the normal is \\(-\\frac{1}{1/2} = -2\\).\n\nThe normal through \\((1, 2)\\) with slope \\(-2\\) is \\(y - 2 = -2(x - 1)\\), i.e. \\(2x + y - 4 = 0\\).\n\nNote: as printed, the point \\((1, 2)\\) does not lie on \\(x^2 = 4y\\) (\\(1^2 = 1\\) but \\(4 \\times 2 = 8\\)), so strictly there is no normal to the curve \"at\" this point. The question was most likely meant to use the point \\((2, 1)\\), which is on the curve: there the slope of the tangent is \\(\\frac{2}{2} = 1\\), the slope of the normal is \\(-1\\), and the normal is \\(y - 1 = -(x - 2)\\), i.e. \\(x + y - 3 = 0\\).",
+      "difficulty": "Easy",
+      "confidence": "LOW",
+      "flag": "DEFECTIVE: (1, 2) is not on x^2 = 4y. Solved as printed (slope at x = 1, line through (1, 2)): 2x + y - 4 = 0. If the intended point is (2, 1) (coordinates swapped), the answer is x + y - 3 = 0; the solution gives both."
+    },
+    {
+      "ref": "7",
+      "value": "Sandwich ₹10, fruit juice ₹5, cookie ₹2 per unit",
+      "working": "The equations are \\(AX = B\\) with \\(A = \\begin{pmatrix} 2 & 3 & 1 \\\\ 1 & 2 & 3 \\\\ 3 & 1 & 1 \\end{pmatrix}\\), \\(X = \\begin{pmatrix} x \\\\ y \\\\ z \\end{pmatrix}\\), \\(B = \\begin{pmatrix} 37 \\\\ 26 \\\\ 37 \\end{pmatrix}\\).\n\n\\(|A| = 2(2 - 3) - 3(1 - 9) + 1(1 - 6) = -2 + 24 - 5 = 17 \\ne 0\\), so \\(A^{-1}\\) exists and the system has a unique solution \\(X = A^{-1}B\\).\n\n**Cofactors:**\n\n\\(A_{11} = 2 - 3 = -1\\), \\(A_{12} = -(1 - 9) = 8\\), \\(A_{13} = 1 - 6 = -5\\)\n\n\\(A_{21} = -(3 - 1) = -2\\), \\(A_{22} = 2 - 3 = -1\\), \\(A_{23} = -(2 - 9) = 7\\)\n\n\\(A_{31} = 9 - 2 = 7\\), \\(A_{32} = -(6 - 1) = -5\\), \\(A_{33} = 4 - 3 = 1\\)\n\n\\(\\mathrm{adj}\\,A = \\begin{pmatrix} -1 & -2 & 7 \\\\ 8 & -1 & -5 \\\\ -5 & 7 & 1 \\end{pmatrix}\\), so \\(A^{-1} = \\frac{1}{17}\\begin{pmatrix} -1 & -2 & 7 \\\\ 8 & -1 & -5 \\\\ -5 & 7 & 1 \\end{pmatrix}\\).\n\n\\(X = A^{-1}B = \\frac{1}{17}\\begin{pmatrix} -37 - 52 + 259 \\\\ 296 - 26 - 185 \\\\ -185 + 182 + 37 \\end{pmatrix} = \\frac{1}{17}\\begin{pmatrix} 170 \\\\ 85 \\\\ 34 \\end{pmatrix} = \\begin{pmatrix} 10 \\\\ 5 \\\\ 2 \\end{pmatrix}\\).\n\nSo \\(x = 10\\), \\(y = 5\\), \\(z = 2\\): a sandwich costs ₹10, a fruit juice ₹5 and a cookie ₹2 per unit.\n\nCheck (day 1): \\(2(10) + 3(5) + 2 = 37\\).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "8(i)",
+      "value": "Proved: \\(\\sin 2\\alpha = x^2\\)",
+      "working": "Given \\(\\tan\\alpha = \\frac{\\sqrt{1 + x^2} - \\sqrt{1 - x^2}}{\\sqrt{1 + x^2} + \\sqrt{1 - x^2}}\\).\n\nBy componendo and dividendo,\n\n\\(\\frac{1 + \\tan\\alpha}{1 - \\tan\\alpha} = \\frac{2\\sqrt{1 + x^2}}{2\\sqrt{1 - x^2}} = \\frac{\\sqrt{1 + x^2}}{\\sqrt{1 - x^2}}\\).\n\nSquaring both sides:\n\n\\(\\frac{(1 + \\tan\\alpha)^2}{(1 - \\tan\\alpha)^2} = \\frac{1 + x^2}{1 - x^2}\\).\n\nThe left side is \\(\\frac{1 + \\tan^2\\alpha + 2\\tan\\alpha}{1 + \\tan^2\\alpha - 2\\tan\\alpha}\\). Divide numerator and denominator by \\(1 + \\tan^2\\alpha\\) and use \\(\\sin 2\\alpha = \\frac{2\\tan\\alpha}{1 + \\tan^2\\alpha}\\):\n\n\\(\\frac{1 + \\sin 2\\alpha}{1 - \\sin 2\\alpha} = \\frac{1 + x^2}{1 - x^2}\\).\n\nApplying componendo and dividendo again:\n\n\\(\\frac{2}{2\\sin 2\\alpha} = \\frac{2}{2x^2}\\), so \\(\\sin 2\\alpha = x^2\\).\n\nHence proved.",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "8(ii)",
+      "value": "\\(x = 1\\)",
+      "working": "**Step 1.** \\(2\\tan^{-1}\\frac{1}{3} = \\tan^{-1}\\left(\\frac{2 \\cdot \\frac{1}{3}}{1 - \\frac{1}{9}}\\right) = \\tan^{-1}\\left(\\frac{2/3}{8/9}\\right) = \\tan^{-1}\\frac{3}{4}\\).\n\n**Step 2.** Let \\(\\theta = \\sec^{-1}\\frac{5\\sqrt{2}}{7}\\). Then \\(\\cos\\theta = \\frac{7}{5\\sqrt{2}}\\), with \\(\\theta\\) acute, so \\(\\sin\\theta = \\sqrt{1 - \\frac{49}{50}} = \\frac{1}{5\\sqrt{2}}\\) and \\(\\tan\\theta = \\frac{1}{7}\\). Hence \\(\\sec^{-1}\\frac{5\\sqrt{2}}{7} = \\tan^{-1}\\frac{1}{7}\\).\n\n**Step 3.** The equation becomes \\(\\tan^{-1}\\frac{3}{4} + \\tan^{-1}\\frac{1}{7} = \\tan^{-1} x\\). Since \\(\\frac{3}{4} \\cdot \\frac{1}{7} < 1\\),\n\n\\(\\tan^{-1}\\frac{3}{4} + \\tan^{-1}\\frac{1}{7} = \\tan^{-1}\\left(\\frac{\\frac{3}{4} + \\frac{1}{7}}{1 - \\frac{3}{28}}\\right) = \\tan^{-1}\\left(\\frac{25/28}{25/28}\\right) = \\tan^{-1} 1\\).\n\nSo \\(\\tan^{-1} x = \\tan^{-1} 1\\), giving \\(x = 1\\).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "9",
+      "value": "Proved",
+      "working": "\\(y = x^3\\log\\left(\\frac{1}{x}\\right) = -x^3\\log x\\).\n\nDifferentiating with respect to \\(x\\) (product rule):\n\n\\(\\frac{dy}{dx} = -3x^2\\log x - x^3 \\cdot \\frac{1}{x} = -3x^2\\log x - x^2\\).\n\nDifferentiating again:\n\n\\(\\frac{d^2y}{dx^2} = -6x\\log x - 3x^2 \\cdot \\frac{1}{x} - 2x = -6x\\log x - 5x\\).\n\nNow\n\n\\(x\\frac{d^2y}{dx^2} = -6x^2\\log x - 5x^2\\)\n\n\\(-2\\frac{dy}{dx} = 6x^2\\log x + 2x^2\\)\n\nAdding these and \\(3x^2\\):\n\n\\(x\\frac{d^2y}{dx^2} - 2\\frac{dy}{dx} + 3x^2 = -6x^2\\log x - 5x^2 + 6x^2\\log x + 2x^2 + 3x^2 = 0\\).\n\nHence proved.",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "10(i)",
+      "value": "\\(\\frac{9}{35}\\)",
+      "working": "Bag I: 4 white, 4 red. Bag II: 3 white, 5 red. The customer wins if the two transferred balls and the drawn ball are all of one colour.\n\n**Case 1: all white.** Both transferred balls are white: \\(P = \\frac{4}{8} \\times \\frac{3}{7} = \\frac{3}{14}\\). Bag II then has 5 white and 5 red, so \\(P(\\text{white drawn}) = \\frac{5}{10} = \\frac{1}{2}\\).\n\n\\(P(\\text{WWW}) = \\frac{3}{14} \\times \\frac{1}{2} = \\frac{3}{28}\\).\n\n**Case 2: all red.** Both transferred balls are red: \\(P = \\frac{4}{8} \\times \\frac{3}{7} = \\frac{3}{14}\\). Bag II then has 3 white and 7 red, so \\(P(\\text{red drawn}) = \\frac{7}{10}\\).\n\n\\(P(\\text{RRR}) = \\frac{3}{14} \\times \\frac{7}{10} = \\frac{3}{20}\\).\n\nThe two cases are mutually exclusive, so\n\n\\(P(\\text{win}) = \\frac{3}{28} + \\frac{3}{20} = \\frac{15}{140} + \\frac{21}{140} = \\frac{36}{140} = \\frac{9}{35}\\).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "10(ii)",
+      "value": "(a) 4 days (b) valid distribution (c) mean = 2 pyramids per day",
+      "working": "**(a)** The total number of days is 16, so \\(1 + 4 + 6 + x + 1 = 16\\), giving \\(x = 4\\). The children made 3 pyramids on 4 days.\n\n**(b)** \\(P(X = k) = \\frac{\\text{number of days}}{16}\\):\n\n| X | 0 | 1 | 2 | 3 | 4 |\n|---|---|---|---|---|---|\n| P(X) | \\(\\frac{1}{16}\\) | \\(\\frac{4}{16}\\) | \\(\\frac{6}{16}\\) | \\(\\frac{4}{16}\\) | \\(\\frac{1}{16}\\) |\n\nEvery probability lies between 0 and 1, and \\(\\sum P(X) = \\frac{1 + 4 + 6 + 4 + 1}{16} = \\frac{16}{16} = 1\\). Hence it is a valid probability distribution.\n\n**(c)** Mean \\(= \\sum X\\,P(X) = \\frac{0(1) + 1(4) + 2(6) + 3(4) + 4(1)}{16} = \\frac{0 + 4 + 12 + 12 + 4}{16} = \\frac{32}{16} = 2\\).\n\nThe average number of pyramids formed is 2 per day.",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "11",
+      "value": "(i) h(0) = 3, i.e. 300 m (ii) x = 2 and x = 4 (iii) 800 m (iv) no extra guard (v) absolute max 4300 m at x = 2, absolute min 300 m at x = 0",
+      "working": "\\(h(x) = 2x^3 - 18x^2 + 48x + 3\\), with \\(h\\) in units of 100 m.\n\n**(i)** When the van starts, \\(x = 0\\): \\(h(0) = 3\\), i.e. \\(3 \\times 100 = 300\\) m. Hence proved.\n\n**(ii)** \\(h'(x) = 6x^2 - 36x + 48 = 6(x^2 - 6x + 8) = 6(x - 2)(x - 4)\\).\n\n\\(h'(x) = 0\\) gives \\(x = 2\\) or \\(x = 4\\). Also \\(h''(x) = 12x - 36\\): \\(h''(2) = -12 < 0\\) (local maximum) and \\(h''(4) = 12 > 0\\) (local minimum). So the turning points, and the ATM machines, are at \\(x = 2\\) and \\(x = 4\\).\n\n\\(h(2) = 16 - 72 + 96 + 3 = 43\\), i.e. 4300 m; \\(h(4) = 128 - 288 + 192 + 3 = 35\\), i.e. 3500 m.\n\nSo the ATMs are at the points \\((2, 43)\\) and \\((4, 35)\\): at \\(x = 2\\) (height 4300 m) and \\(x = 4\\) (height 3500 m).\n\n**(iii)** Difference in heights \\(= h(2) - h(4) = 43 - 35 = 8\\) units \\(= 800\\) m.\n\n**(iv)** 800 m is less than 1 km (1000 m), so no extra armed security guard is required.\n\n**(v)** On \\([0, 4]\\) the critical points are \\(x = 2\\) and \\(x = 4\\). Compare \\(h\\) at the critical points and the end points:\n\n\\(h(0) = 3\\), \\(h(2) = 43\\), \\(h(4) = 35\\).\n\nAbsolute maximum \\(= 43\\) (4300 m) at \\(x = 2\\); absolute minimum \\(= 3\\) (300 m) at \\(x = 0\\).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "12(i)",
+      "value": "\\(\\frac{1}{4}\\log\\left|\\frac{1 - \\sin x}{1 + \\sin x}\\right| + \\frac{1}{2(1 - \\sin x)} + C\\)",
+      "working": "Let \\(I = \\int \\frac{\\sin x}{\\cos x(1 - \\sin x)}\\, dx\\). Multiply numerator and denominator by \\(\\cos x\\):\n\n\\(I = \\int \\frac{\\sin x\\cos x}{\\cos^2 x(1 - \\sin x)}\\, dx = \\int \\frac{\\sin x\\cos x}{(1 - \\sin x)^2(1 + \\sin x)}\\, dx\\), using \\(\\cos^2 x = (1 - \\sin x)(1 + \\sin x)\\).\n\nPut \\(\\sin x = t\\), so \\(\\cos x\\, dx = dt\\):\n\n\\(I = \\int \\frac{t}{(1 - t)^2(1 + t)}\\, dt\\).\n\n**Partial fractions.** Let \\(\\frac{t}{(1 - t)^2(1 + t)} = \\frac{A}{1 - t} + \\frac{B}{(1 - t)^2} + \\frac{C}{1 + t}\\). Then\n\n\\(t = A(1 - t)(1 + t) + B(1 + t) + C(1 - t)^2\\).\n\nPut \\(t = 1\\): \\(1 = 2B\\), so \\(B = \\frac{1}{2}\\). Put \\(t = -1\\): \\(-1 = 4C\\), so \\(C = -\\frac{1}{4}\\). Put \\(t = 0\\): \\(0 = A + B + C\\), so \\(A = -\\frac{1}{4}\\).\n\n\\(I = -\\frac{1}{4}\\int \\frac{dt}{1 - t} + \\frac{1}{2}\\int \\frac{dt}{(1 - t)^2} - \\frac{1}{4}\\int \\frac{dt}{1 + t}\\)\n\n\\(= \\frac{1}{4}\\log|1 - t| + \\frac{1}{2(1 - t)} - \\frac{1}{4}\\log|1 + t| + C\\).\n\nReplacing \\(t\\) by \\(\\sin x\\):\n\n\\(I = \\frac{1}{4}\\log\\left|\\frac{1 - \\sin x}{1 + \\sin x}\\right| + \\frac{1}{2(1 - \\sin x)} + C\\).",
+      "difficulty": "Hard",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "12(ii)",
+      "value": "\\(\\frac{\\pi}{3\\sqrt{3}}\\)",
+      "working": "Let \\(I = \\int_0^{\\pi/2} \\frac{\\sin^2 x}{1 + \\sin x\\cos x}\\, dx\\). ...(1)\n\nUsing \\(\\int_0^a f(x)\\, dx = \\int_0^a f(a - x)\\, dx\\), and \\(\\sin\\left(\\frac{\\pi}{2} - x\\right) = \\cos x\\), \\(\\cos\\left(\\frac{\\pi}{2} - x\\right) = \\sin x\\):\n\n\\(I = \\int_0^{\\pi/2} \\frac{\\cos^2 x}{1 + \\sin x\\cos x}\\, dx\\). ...(2)\n\nAdding (1) and (2): \\(2I = \\int_0^{\\pi/2} \\frac{\\sin^2 x + \\cos^2 x}{1 + \\sin x\\cos x}\\, dx = \\int_0^{\\pi/2} \\frac{dx}{1 + \\sin x\\cos x}\\).\n\nDivide numerator and denominator by \\(\\cos^2 x\\):\n\n\\(2I = \\int_0^{\\pi/2} \\frac{\\sec^2 x}{\\sec^2 x + \\tan x}\\, dx = \\int_0^{\\pi/2} \\frac{\\sec^2 x}{\\tan^2 x + \\tan x + 1}\\, dx\\).\n\nPut \\(\\tan x = t\\), \\(\\sec^2 x\\, dx = dt\\); when \\(x = 0\\), \\(t = 0\\), and as \\(x \\to \\frac{\\pi}{2}\\), \\(t \\to \\infty\\):\n\n\\(2I = \\int_0^{\\infty} \\frac{dt}{t^2 + t + 1} = \\int_0^{\\infty} \\frac{dt}{\\left(t + \\frac{1}{2}\\right)^2 + \\left(\\frac{\\sqrt{3}}{2}\\right)^2}\\)\n\n\\(= \\frac{2}{\\sqrt{3}}\\left[\\tan^{-1}\\frac{2t + 1}{\\sqrt{3}}\\right]_0^{\\infty} = \\frac{2}{\\sqrt{3}}\\left(\\frac{\\pi}{2} - \\frac{\\pi}{6}\\right) = \\frac{2}{\\sqrt{3}} \\cdot \\frac{\\pi}{3} = \\frac{2\\pi}{3\\sqrt{3}}\\).\n\nHence \\(I = \\frac{\\pi}{3\\sqrt{3}}\\).",
+      "difficulty": "Hard",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "13",
+      "value": "(i) \\(0{\\cdot}74\\) (ii) \\(0{\\cdot}26\\) (iii) \\(\\frac{16}{37}\\) (iv) \\(0{\\cdot}18\\)",
+      "working": "The gardener plants only on a day without rain. Let \\(R_1\\) = it rains today and \\(R_2\\) = it rains tomorrow.\n\nGiven: \\(P(R_1) = 0{\\cdot}4\\), \\(P(R_1') = 0{\\cdot}6\\), \\(P(R_2 \\mid R_1) = 0{\\cdot}8\\), \\(P(R_2 \\mid R_1') = 0{\\cdot}7\\).\n\n**(i)** He will not plant tomorrow if it rains tomorrow. By the theorem of total probability,\n\n\\(P(R_2) = P(R_1)P(R_2 \\mid R_1) + P(R_1')P(R_2 \\mid R_1') = 0{\\cdot}4 \\times 0{\\cdot}8 + 0{\\cdot}6 \\times 0{\\cdot}7 = 0{\\cdot}32 + 0{\\cdot}42 = 0{\\cdot}74\\).\n\n**(ii)** He plants tomorrow if it does not rain tomorrow: \\(P(R_2') = 1 - 0{\\cdot}74 = 0{\\cdot}26\\).\n\n**(iii)** \"He did not plant today\" means it rained today. By Bayes' theorem,\n\n\\(P(R_1 \\mid R_2) = \\frac{P(R_1)P(R_2 \\mid R_1)}{P(R_2)} = \\frac{0{\\cdot}32}{0{\\cdot}74} = \\frac{32}{74} = \\frac{16}{37}\\).\n\n**(iv)** He plants on both days if it rains neither today nor tomorrow:\n\n\\(P(R_1' \\cap R_2') = P(R_1')P(R_2' \\mid R_1') = 0{\\cdot}6 \\times (1 - 0{\\cdot}7) = 0{\\cdot}6 \\times 0{\\cdot}3 = 0{\\cdot}18\\).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "14(i)",
+      "value": "\\(x^2y = C(y + 2x)\\)",
+      "working": "\\(x^2\\, dy + (xy + y^2)\\, dx = 0\\) gives \\(\\frac{dy}{dx} = -\\frac{xy + y^2}{x^2}\\).\n\nThe right side is a function of \\(\\frac{y}{x}\\) alone, so the equation is homogeneous. Put \\(y = vx\\), so \\(\\frac{dy}{dx} = v + x\\frac{dv}{dx}\\):\n\n\\(v + x\\frac{dv}{dx} = -(v + v^2)\\), so \\(x\\frac{dv}{dx} = -(v^2 + 2v)\\).\n\nSeparating the variables: \\(\\frac{dv}{v(v + 2)} = -\\frac{dx}{x}\\).\n\nSince \\(\\frac{1}{v(v + 2)} = \\frac{1}{2}\\left(\\frac{1}{v} - \\frac{1}{v + 2}\\right)\\), integrating gives\n\n\\(\\frac{1}{2}\\log\\left|\\frac{v}{v + 2}\\right| = -\\log|x| + \\log|c|\\), so \\(\\log\\left|\\frac{v}{v + 2}\\right| = \\log\\frac{c^2}{x^2}\\).\n\nHence \\(\\frac{v}{v + 2} = \\frac{C}{x^2}\\), where \\(C = \\pm c^2\\).\n\nPutting back \\(v = \\frac{y}{x}\\): \\(\\frac{v}{v + 2} = \\frac{y}{y + 2x}\\), so \\(\\frac{y}{y + 2x} = \\frac{C}{x^2}\\).\n\nThe general solution is \\(x^2y = C(y + 2x)\\), where \\(C\\) is an arbitrary constant.",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "14(ii)",
+      "value": "\\(x = \\sin^{-1} y - 1 + e^{-\\sin^{-1} y}\\)",
+      "working": "\\(\\sqrt{1 - y^2}\\, dx = (\\sin^{-1} y - x)\\, dy\\) gives\n\n\\(\\frac{dx}{dy} + \\frac{x}{\\sqrt{1 - y^2}} = \\frac{\\sin^{-1} y}{\\sqrt{1 - y^2}}\\),\n\na linear equation in \\(x\\) of the form \\(\\frac{dx}{dy} + Px = Q\\) with \\(P = \\frac{1}{\\sqrt{1 - y^2}}\\), \\(Q = \\frac{\\sin^{-1} y}{\\sqrt{1 - y^2}}\\).\n\nIntegrating factor: \\(\\mathrm{I.F.} = e^{\\int P\\, dy} = e^{\\sin^{-1} y}\\).\n\nSolution: \\(x\\, e^{\\sin^{-1} y} = \\int \\frac{\\sin^{-1} y}{\\sqrt{1 - y^2}}\\, e^{\\sin^{-1} y}\\, dy\\).\n\nPut \\(\\sin^{-1} y = t\\), so \\(\\frac{dy}{\\sqrt{1 - y^2}} = dt\\). Integrating by parts,\n\n\\(\\int t e^t\\, dt = te^t - e^t + C = (t - 1)e^t + C\\).\n\nSo \\(x\\, e^{\\sin^{-1} y} = (\\sin^{-1} y - 1)e^{\\sin^{-1} y} + C\\), i.e. \\(x = \\sin^{-1} y - 1 + Ce^{-\\sin^{-1} y}\\).\n\nGiven \\(y = 0\\) when \\(x = 0\\): \\(0 = 0 - 1 + C\\), so \\(C = 1\\).\n\nThe particular solution is \\(x = \\sin^{-1} y - 1 + e^{-\\sin^{-1} y}\\).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "15(i)",
+      "label": "A",
+      "value": "Statement 1 is true and Statement 2 is false.",
+      "working": "If \\(\\lambda\\) is a scalar and \\(\\hat{a}\\) a unit vector, then \\(|\\lambda\\hat{a}| = |\\lambda|\\,|\\hat{a}| = |\\lambda|\\). So the result is a vector whose magnitude is that of the scalar (its absolute value), in the direction of \\(\\hat{a}\\) (or opposite to it if \\(\\lambda < 0\\)).\n\nStatement 1 is true. Statement 2 is false: the result has unit magnitude only in the special case \\(|\\lambda| = 1\\).\n\nSo the answer is option (A).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "15(ii)",
+      "label": "B",
+      "value": "\\(\\frac{-\\sqrt{3}}{\\sqrt{2}}\\)",
+      "working": "Projection of \\(\\vec{a}\\) on \\(\\vec{b}\\) \\(= \\frac{\\vec{a} \\cdot \\vec{b}}{|\\vec{b}|}\\).\n\n\\(\\vec{a} \\cdot \\vec{b} = (1)(2) + (2)(-1) + (-3)(1) = 2 - 2 - 3 = -3\\) and \\(|\\vec{b}| = \\sqrt{4 + 1 + 1} = \\sqrt{6}\\).\n\nProjection \\(= \\frac{-3}{\\sqrt{6}} = -\\frac{\\sqrt{3} \\cdot \\sqrt{3}}{\\sqrt{3} \\cdot \\sqrt{2}} = \\frac{-\\sqrt{3}}{\\sqrt{2}}\\).\n\nSo the answer is option (B), \\(\\frac{-\\sqrt{3}}{\\sqrt{2}}\\).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "15(iii)",
+      "label": "A",
+      "value": "\\(\\left(\\frac{3}{\\sqrt{11}}, \\frac{1}{\\sqrt{11}}, \\frac{1}{\\sqrt{11}}\\right)\\)",
+      "working": "Direction ratios of PQ: \\((-1 - 2, 2 - 3, 4 - 5) = (-3, -1, -1)\\), or equivalently \\((3, 1, 1)\\).\n\n\\(\\sqrt{3^2 + 1^2 + 1^2} = \\sqrt{11}\\), so the direction cosines are \\(\\pm\\left(\\frac{3}{\\sqrt{11}}, \\frac{1}{\\sqrt{11}}, \\frac{1}{\\sqrt{11}}\\right)\\).\n\nOptions (C) and (D) mix signs, which no line through P and Q can have, and (B) is not proportional to \\((3, 1, 1)\\). So the answer is option (A), \\(\\left(\\frac{3}{\\sqrt{11}}, \\frac{1}{\\sqrt{11}}, \\frac{1}{\\sqrt{11}}\\right)\\) (the direction from Q to P).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "15(iv)",
+      "value": "\\(\\sqrt{318}\\) square units",
+      "working": "Area of the parallelogram \\(= |\\vec{a} \\times \\vec{b}|\\).\n\n\\(\\vec{a} \\times \\vec{b} = \\begin{vmatrix} \\hat{i} & \\hat{j} & \\hat{k} \\\\ 1 & -1 & 3 \\\\ 2 & -7 & 4 \\end{vmatrix} = \\hat{i}(-4 + 21) - \\hat{j}(4 - 6) + \\hat{k}(-7 + 2) = 17\\hat{i} + 2\\hat{j} - 5\\hat{k}\\).\n\n\\(|\\vec{a} \\times \\vec{b}| = \\sqrt{289 + 4 + 25} = \\sqrt{318}\\).\n\nArea \\(= \\sqrt{318}\\) square units (about 17.83 square units).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "15(v)",
+      "value": "\\(4x - 3y + 6z = 12\\)",
+      "working": "The intercept form of a plane is \\(\\frac{x}{a} + \\frac{y}{b} + \\frac{z}{c} = 1\\). With \\(a = 3\\), \\(b = -4\\), \\(c = 2\\):\n\n\\(\\frac{x}{3} - \\frac{y}{4} + \\frac{z}{2} = 1\\).\n\nMultiplying by 12: \\(4x - 3y + 6z = 12\\).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "16(i)",
+      "value": "Proved: \\(\\overrightarrow{AB} = \\overrightarrow{BC}\\), so A, B, C are collinear.",
+      "working": "With O as origin, the position vectors are \\(\\vec{a} = \\hat{i} + 4\\hat{j} + 6\\hat{k}\\), \\(\\vec{b} = 3\\hat{i} + 4\\hat{j} + 5\\hat{k}\\), \\(\\vec{c} = 5\\hat{i} + 4\\hat{j} + 4\\hat{k}\\).\n\n\\(\\overrightarrow{AB} = \\vec{b} - \\vec{a} = 2\\hat{i} + 0\\hat{j} - \\hat{k}\\)\n\n\\(\\overrightarrow{BC} = \\vec{c} - \\vec{b} = 2\\hat{i} + 0\\hat{j} - \\hat{k}\\)\n\nSo \\(\\overrightarrow{AB} = \\overrightarrow{BC}\\): the two vectors are parallel, and they share the point B. Hence A, B and C are collinear, i.e. the drone cameras lie on (and move along) a straight path.",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "16(ii)",
+      "value": "\\(|\\vec{b}| = 12\\)",
+      "working": "\\(|\\vec{a} + \\vec{b}|^2 = |\\vec{a}|^2 + 2\\vec{a} \\cdot \\vec{b} + |\\vec{b}|^2\\).\n\nSince \\(\\vec{a}\\) and \\(\\vec{b}\\) are perpendicular, \\(\\vec{a} \\cdot \\vec{b} = 0\\). So\n\n\\(13^2 = 5^2 + |\\vec{b}|^2\\), i.e. \\(169 = 25 + |\\vec{b}|^2\\), giving \\(|\\vec{b}|^2 = 144\\).\n\nHence \\(|\\vec{b}| = 12\\).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "17(i)",
+      "value": "\\(b = 2\\) must be avoided",
+      "working": "The balloons can collide only if the two lines intersect. Since the direction ratios \\((2, 3, 4)\\) and \\((5, 2, 1)\\) are not proportional, the lines are not parallel; they intersect exactly when the shortest distance between them is zero.\n\nLine 1 passes through \\((1, b, 3)\\) with direction \\((2, 3, 4)\\); line 2 passes through \\((4, 1, 0)\\) with direction \\((5, 2, 1)\\).\n\nThe lines are coplanar (and so intersect) when\n\n\\(\\begin{vmatrix} 4 - 1 & 1 - b & 0 - 3 \\\\ 2 & 3 & 4 \\\\ 5 & 2 & 1 \\end{vmatrix} = 0\\).\n\nExpanding: \\(3(3 - 8) - (1 - b)(2 - 20) - 3(4 - 15) = -15 + 18(1 - b) + 33 = 36 - 18b\\).\n\n\\(36 - 18b = 0\\) gives \\(b = 2\\).\n\nCheck: with \\(b = 2\\), a general point of line 1 is \\((1 + 2s, 2 + 3s, 3 + 4s)\\) and of line 2 is \\((4 + 5t, 1 + 2t, t)\\). Taking \\(s = t = -1\\) gives \\((-1, -1, -1)\\) on both lines.\n\nSo the value \\(b = 2\\) must be avoided; for any other \\(b\\) the paths do not meet and the balloons cannot collide.",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "17(ii)",
+      "value": "(a) \\(\\sqrt{6}\\) units (b) \\((5, 1, 2)\\)",
+      "working": "As the figure shows, the backdrop, the mic and the light lie on one straight line perpendicular to the backdrop, with the mic midway between the backdrop and the light.\n\n**(a)** Distance of \\((3, 2, 1)\\) from \\(2x - y + z + 1 = 0\\):\n\n\\(d = \\frac{|2(3) - 2 + 1 + 1|}{\\sqrt{4 + 1 + 1}} = \\frac{6}{\\sqrt{6}} = \\sqrt{6}\\) units.\n\n**(b)** The perpendicular from the mic to the backdrop has direction ratios \\((2, -1, 1)\\), the normal to the plane. A point on it is \\((3 + 2k, 2 - k, 1 + k)\\).\n\nFoot of the perpendicular: substitute in the plane, \\(2(3 + 2k) - (2 - k) + (1 + k) + 1 = 0\\), i.e. \\(6 + 6k = 0\\), so \\(k = -1\\). The foot is \\(F(1, 3, 0)\\).\n\nThe mic \\(M(3, 2, 1)\\) is the midpoint of F and the light \\(L(\\alpha, \\beta, \\gamma)\\):\n\n\\(\\frac{1 + \\alpha}{2} = 3,\\ \\frac{3 + \\beta}{2} = 2,\\ \\frac{0 + \\gamma}{2} = 1\\), so \\(\\alpha = 5,\\ \\beta = 1,\\ \\gamma = 2\\).\n\nThe hanging light is at \\((5, 1, 2)\\). (Check: its distance from the mic is \\(\\sqrt{4 + 1 + 1} = \\sqrt{6}\\).)",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "18",
+      "value": "\\(2\\pi\\) square units",
+      "working": "\\(y = \\sqrt{4 - x^2}\\) gives \\(x^2 + y^2 = 4\\) with \\(y \\ge 0\\): the upper half of the circle with centre \\((0, 0)\\) and radius 2. It meets the \\(x\\)-axis at \\(x = -2\\) and \\(x = 2\\), so the region is the upper semicircle.\n\nArea \\(= \\int_{-2}^{2} \\sqrt{4 - x^2}\\, dx = 2\\int_0^2 \\sqrt{4 - x^2}\\, dx\\) (the integrand is even).\n\nUsing \\(\\int \\sqrt{a^2 - x^2}\\, dx = \\frac{x}{2}\\sqrt{a^2 - x^2} + \\frac{a^2}{2}\\sin^{-1}\\frac{x}{a}\\):\n\n\\(2\\left[\\frac{x}{2}\\sqrt{4 - x^2} + 2\\sin^{-1}\\frac{x}{2}\\right]_0^2 = 2\\left[(0 + 2\\sin^{-1} 1) - (0 + 0)\\right] = 2 \\times 2 \\times \\frac{\\pi}{2} = 2\\pi\\).\n\nThe required area is \\(2\\pi\\) square units (half of \\(\\pi r^2 = 4\\pi\\), as expected).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "19(i)",
+      "label": "D",
+      "value": "Both the statements are false.",
+      "working": "**Statement 1:** \\(b_{yx} = r\\frac{\\sigma_y}{\\sigma_x}\\) and \\(b_{xy} = r\\frac{\\sigma_x}{\\sigma_y}\\), and \\(\\sigma_x, \\sigma_y > 0\\). So both regression coefficients have the same sign as \\(r\\): they always have the same sign. False.\n\n**Statement 2:** \\(b_{yx} \\cdot b_{xy} = r^2 \\le 1\\). If both were numerically greater than 1, their product would exceed 1. So at most one can exceed 1 numerically. False.\n\nSo the answer is option (D), both statements are false.",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "19(ii)",
+      "label": "D",
+      "value": "MR at \\(x = a\\) is the additional revenue obtained by increasing the output from \\(a\\) to \\(a + 1\\).",
+      "working": "Marginal Revenue is \\(MR = \\frac{dR}{dx}\\), the rate at which total revenue changes with output. Interpreted at \\(x = a\\), it is approximately the extra revenue earned by producing and selling one more unit, from \\(a\\) to \\(a + 1\\).\n\n(A) is wrong: MR changes with output for most firms. (B) is wrong: MR equals AR only under perfect competition (constant price). (C) is wrong: MR is about increasing output, not decreasing it.\n\nSo the answer is option (D).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "19(iii)",
+      "value": "\\(0 < x < 3\\)",
+      "working": "\\(C(x) = 27 + 12x + 3x^2\\), so \\(AC = \\frac{C}{x} = \\frac{27}{x} + 12 + 3x\\).\n\n\\(\\frac{d(AC)}{dx} = -\\frac{27}{x^2} + 3\\).\n\nAC is decreasing when \\(-\\frac{27}{x^2} + 3 < 0\\), i.e. \\(x^2 < 9\\), i.e. \\(x < 3\\) (output is positive).\n\nSo the average cost decreases for \\(0 < x < 3\\).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "19(iv)",
+      "value": "\\(\\sigma_y = \\frac{20}{7}\\)",
+      "working": "\\(b_{yx} = r\\frac{\\sigma_y}{\\sigma_x}\\).\n\n\\(-\\frac{2}{7} = -\\frac{1}{2} \\times \\frac{\\sigma_y}{5}\\), so \\(\\frac{\\sigma_y}{10} = \\frac{2}{7}\\), giving \\(\\sigma_y = \\frac{20}{7}\\) (about 2.86).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "19(v)",
+      "value": "\\(x = 2\\) units",
+      "working": "\\(C(x) = \\frac{3x^2}{4} - 7x + 3\\).\n\n\\(MC = \\frac{dC}{dx} = \\frac{3x}{2} - 7\\) and \\(AC = \\frac{C}{x} = \\frac{3x}{4} - 7 + \\frac{3}{x}\\).\n\nSetting \\(MC = AC\\): \\(\\frac{3x}{2} - 7 = \\frac{3x}{4} - 7 + \\frac{3}{x}\\), so \\(\\frac{3x}{4} = \\frac{3}{x}\\), i.e. \\(x^2 = 4\\).\n\nSince output is positive, \\(x = 2\\). MC = AC when 2 units are produced.",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "20(i)",
+      "value": "(a) \\(C(x) = 36000 + 5x\\) (b) \\(P(x) = 15x - 36000\\)",
+      "working": "Let \\(x\\) be the number of units produced and sold.\n\nRevenue: \\(R(x) = 20x\\).\n\n**(a)** Variable cost \\(= 25\\%\\) of revenue \\(= \\frac{25}{100} \\times 20x = 5x\\). Fixed cost \\(= 36000\\).\n\nCost function: \\(C(x) = 36000 + 5x\\).\n\n**(b)** Profit function: \\(P(x) = R(x) - C(x) = 20x - (36000 + 5x) = 15x - 36000\\).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "20(ii)",
+      "value": "More than 10 items must be sold (\\(x > 10\\)).",
+      "working": "Revenue from \\(x\\) items: \\(R(x) = 6x\\).\n\nProfit: \\(P(x) = R(x) - C(x) = 6x - (-x^2 + 11x + 50) = x^2 - 5x - 50\\).\n\nFor profit, \\(P(x) > 0\\): \\(x^2 - 5x - 50 > 0\\), i.e. \\((x - 10)(x + 5) > 0\\).\n\nSince \\(x \\ge 0\\), \\(x + 5 > 0\\), so we need \\(x - 10 > 0\\), i.e. \\(x > 10\\).\n\nThe school earns a profit when more than 10 items are sold (at least 11 items).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "21(i)",
+      "value": "(a) \\(y = 1{\\cdot}6x - 10\\) and \\(x = 0{\\cdot}4y + 13\\) (b) \\(y = 86\\) (c) \\(r = 0{\\cdot}8\\)",
+      "working": "Given \\(\\bar{x} = 25\\), \\(\\bar{y} = 30\\), \\(b_{xy} = 0{\\cdot}4\\), \\(b_{yx} = 1{\\cdot}6\\).\n\n**(a)** Regression line of \\(y\\) on \\(x\\): \\(y - \\bar{y} = b_{yx}(x - \\bar{x})\\)\n\n\\(y - 30 = 1{\\cdot}6(x - 25)\\), i.e. \\(y = 1{\\cdot}6x - 10\\).\n\nRegression line of \\(x\\) on \\(y\\): \\(x - \\bar{x} = b_{xy}(y - \\bar{y})\\)\n\n\\(x - 25 = 0{\\cdot}4(y - 30)\\), i.e. \\(x = 0{\\cdot}4y + 13\\).\n\n**(b)** To estimate \\(y\\) from \\(x\\), use the line of \\(y\\) on \\(x\\): \\(y = 1{\\cdot}6(60) - 10 = 96 - 10 = 86\\).\n\n**(c)** \\(r^2 = b_{xy} \\cdot b_{yx} = 0{\\cdot}4 \\times 1{\\cdot}6 = 0{\\cdot}64\\), so \\(r = \\pm 0{\\cdot}8\\). Both regression coefficients are positive, so \\(r = 0{\\cdot}8\\).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "21(ii)",
+      "value": "(a) \\(\\bar{x} = 13\\), \\(\\bar{y} = 17\\) (b) \\(x = 8{\\cdot}5\\) (c) variance of \\(y\\) = 16",
+      "working": "**(a)** Both regression lines pass through \\((\\bar{x}, \\bar{y})\\), so solve\n\n\\(4x - 5y = -33\\) ...(1) and \\(20x - 9y = 107\\) ...(2).\n\n(1) \\(\\times 5\\): \\(20x - 25y = -165\\). Subtracting from (2): \\(16y = 272\\), so \\(y = 17\\). Then \\(4x = 5(17) - 33 = 52\\), so \\(x = 13\\).\n\nHence \\(\\bar{x} = 13\\) and \\(\\bar{y} = 17\\).\n\n**Identifying the lines.** Suppose (1) is \\(y\\) on \\(x\\) and (2) is \\(x\\) on \\(y\\):\n\n(1): \\(y = \\frac{4}{5}x + \\frac{33}{5}\\), so \\(b_{yx} = \\frac{4}{5}\\); (2): \\(x = \\frac{9}{20}y + \\frac{107}{20}\\), so \\(b_{xy} = \\frac{9}{20}\\).\n\n\\(b_{yx} \\cdot b_{xy} = \\frac{4}{5} \\times \\frac{9}{20} = \\frac{9}{25} \\le 1\\), so this assumption is valid. (The other way round gives \\(b_{xy} = \\frac{5}{4}\\), \\(b_{yx} = \\frac{20}{9}\\), with product greater than 1, which is impossible.) Also \\(r = +\\sqrt{\\frac{9}{25}} = \\frac{3}{5}\\).\n\n**(b)** Use the line of \\(x\\) on \\(y\\): \\(x = \\frac{9(7) + 107}{20} = \\frac{170}{20} = 8{\\cdot}5\\).\n\n**(c)** \\(b_{yx} = r\\frac{\\sigma_y}{\\sigma_x}\\): \\(\\frac{4}{5} = \\frac{3}{5} \\times \\frac{\\sigma_y}{3}\\), so \\(\\sigma_y = 4\\).\n\nVariance of \\(y\\) \\(= \\sigma_y^2 = 16\\).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "22",
+      "value": "8 electronic and 12 manual machines; maximum profit ₹392",
+      "working": "Let \\(x\\) = number of electronic machines and \\(y\\) = number of manually operated machines.\n\n**Objective:** maximise \\(Z = 22x + 18y\\).\n\n**Constraints:**\n\nCapital: \\(360x + 240y \\le 5760\\), i.e. \\(3x + 2y \\le 48\\).\n\nStorage: \\(x + y \\le 20\\).\n\n\\(x \\ge 0,\\ y \\ge 0\\).\n\n**Feasible region.** The line \\(3x + 2y = 48\\) meets the axes at \\((16, 0)\\) and \\((0, 24)\\); the line \\(x + y = 20\\) meets them at \\((20, 0)\\) and \\((0, 20)\\). Solving them together: subtracting \\(2(x + y) = 40\\) from \\(3x + 2y = 48\\) gives \\(x = 8\\), so \\(y = 12\\).\n\nThe feasible region is the shaded quadrilateral in the first quadrant, on the origin side of both lines, with corner points \\(O(0, 0)\\), \\(A(16, 0)\\), \\(B(8, 12)\\), \\(C(0, 20)\\).\n\n| Corner point | \\(Z = 22x + 18y\\) |\n|---|---|\n| \\((0, 0)\\) | 0 |\n| \\((16, 0)\\) | 352 |\n| \\((8, 12)\\) | 176 + 216 = 392 |\n| \\((0, 20)\\) | 360 |\n\nThe region is bounded, so the maximum occurs at a corner: \\(Z_{\\max} = 392\\) at \\((8, 12)\\).\n\nRaunak should sell 8 electronic and 12 manually operated sewing machines, for a maximum profit of ₹392.",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    }
+  ]
+}

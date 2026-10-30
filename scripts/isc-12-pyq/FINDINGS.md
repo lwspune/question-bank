@@ -122,3 +122,60 @@ numerical evaluation either side of each seam.
 This is the same shape CLAUDE.md already records for `simplify()` and for
 `solve`/`solveset` misses: a CAS result that disagrees with a hand derivation is
 a question, never a verdict.
+
+---
+
+## 2025 · whole corpus (2026-10-30)
+
+Every 2025 row was blind-solved by an agent that never saw the source pages,
+then compared with CISCE's marking scheme row by row.
+
+| Paper | MCQ agree | Written answers agree (read, not string-matched) |
+|---|---|---|
+| Mathematics | 14/15 | 36/36 |
+| Physics | 7/7 | 32/32 |
+| Chemistry | 7/7 | 30/30 |
+| **All** | **28/29** | **98/98** |
+
+The one MCQ difference is 1(ix) above, CISCE's own key, kept. Two Maths rows are
+GRACE (CISCE printed two accepted letters): 1(v) (c or a) and 15(i) (a or b).
+The bank keys the first letter printed, which is also the blind answer, and the
+solution tells the student both were accepted.
+
+Written answers that differed only in form, recorded so nobody re-opens them:
+Maths 12(i) `x = 5y^2 - 3y` vs CISCE `x/y = 5y - 3`; 7 the same factorised
+determinant in a different sign order; Physics 16(ii) we quote the new fringe
+width (0.12 mm), CISCE quotes the part (i) distance at the new wavelength
+(0.96 mm = 8 x 0.12 mm); Chemistry 11, different but correct distinguishing
+tests ("any other correct test accepted").
+
+Marking-scheme slips (all non-answer-changing) are recorded as `note`s in the
+key files: Maths 6(ii), 11(i), 11(ii), 18(ii), 20(i), 22; Physics 6, 11, 20(i);
+Chemistry 16(i) (salt bridge "lets electrons pass"), 16(ii) ("Daniel cell" as a
+non-reversible example).
+
+## 2026 · no key (2026-10-30)
+
+CISCE had not published its 2026 Analysis of Pupil Performance (404 on
+cisce.org). Each paper was solved twice, independently; the second solver gave
+answers only.
+
+| Paper | MCQ agree | Written answers agree |
+|---|---|---|
+| Mathematics | 16/16 | 36/38 |
+| Physics | 7/7 | 32/32 |
+| Chemistry | 7/7 | 30/30 |
+
+Both Maths differences are settled in `data/2026-Mathematics.adjudication.json`:
+
+* **6(ii) — paper defect.** "the normal at (1, 2) to the curve x^2 = 4y", but
+  (1, 2) is not on that curve. Solved as printed (2x + y - 4 = 0); the solution
+  tells the student the intended point is most likely (2, 1), giving
+  x + y - 3 = 0. Not repaired in the stem.
+* **13(iii)** — the second solver misread "did not plant them today" as "no rain
+  today" (21/37); it means it rained today, so P(R1 | R2) = 16/37.
+
+Notes added to published 2026 solutions: Physics 1(A)(iv) (a ferromagnet's
+susceptibility also falls with temperature; paramagnetic is the expected
+answer). Two-solver agreement is weaker than a key: re-run the cross-check when
+CISCE's 2026 scheme lands.

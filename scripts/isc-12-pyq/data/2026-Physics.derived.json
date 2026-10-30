@@ -1,0 +1,286 @@
+{
+  "derivedBy": "Claude Opus 5.5 subagent, independent solve of ISC 2026 Physics with numeric checks in Python",
+  "answers": [
+    {
+      "ref": "1(A)(i)",
+      "label": "D",
+      "value": "4W",
+      "working": "Power delivered is \\(P = VI\\).\n\nWith \\(V = 800\\ \\mathrm{V}\\) and \\(I = 5\\ \\mathrm{mA} = 5 \\times 10^{-3}\\ \\mathrm{A}\\):\n\n\\(P = 800 \\times 5 \\times 10^{-3} = 4\\ \\mathrm{W}\\).\n\nSo the answer is option (d), 4 W.",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "1(A)(ii)",
+      "label": "D",
+      "value": "continue to travel undeflected.",
+      "working": "Inside a long current-carrying solenoid the magnetic field is directed along its axis, here the X-axis. The protons also move along the X-axis, so their velocity is parallel to \\(\\vec{B}\\).\n\nThe magnetic force is \\(\\vec{F} = q(\\vec{v} \\times \\vec{B})\\), and \\(\\vec{v} \\times \\vec{B} = 0\\) when the two vectors are parallel. No force acts, so the beam keeps moving in a straight line.\n\nSo the answer is option (d): it will continue to travel undeflected.",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "1(A)(iii)",
+      "label": "C",
+      "value": "Electron",
+      "working": "A particle of charge \\(q\\) and mass \\(m\\) accelerated from rest through a potential difference \\(V\\) gains kinetic energy \\(qV\\), so its momentum is \\(p = \\sqrt{2mqV}\\) and its de Broglie wavelength is\n\n\\(\\lambda = \\dfrac{h}{\\sqrt{2mqV}}\\).\n\nFor the same \\(V\\), the particle with the smallest product \\(mq\\) has the largest wavelength. The electron has the same magnitude of charge as the proton but about 1836 times less mass, while the deuteron and alpha particle are heavier still (the alpha also has double charge). So the electron has the smallest \\(mq\\).\n\nSo the answer is option (c), the electron.",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "1(A)(iv)",
+      "label": "B",
+      "value": "paramagnetic.",
+      "working": "The susceptibility of a diamagnetic material is negative and practically independent of temperature.\n\nFor a paramagnetic material the susceptibility follows Curie's law, \\(\\chi = \\dfrac{C}{T}\\): it decreases as the temperature rises, because thermal agitation disturbs the alignment of the atomic magnetic dipoles.\n\nSo the answer is option (b), paramagnetic.",
+      "difficulty": "Easy",
+      "confidence": "MEDIUM",
+      "flag": "A ferromagnet's susceptibility also falls as temperature rises (and it turns paramagnetic above the Curie temperature), so (c) is arguably also true as printed; (b) is the textbook answer via Curie's law. The paper also writes susceptibility as \\psi instead of the usual \\chi."
+    },
+    {
+      "ref": "1(A)(v)",
+      "label": "B",
+      "value": "it offers a low resistance and a large current flows through it.",
+      "working": "In forward bias the p-side is connected to the positive terminal. The applied voltage opposes the barrier potential, so the depletion region becomes narrower and majority carriers cross the junction easily.\n\nThe diode then offers a low resistance and a large current (of the order of mA) flows. Options (a) and (c) describe reverse bias, and in forward bias the depletion region narrows, not widens, so (d) is wrong.\n\nSo the answer is option (b).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "1(A)(vi)",
+      "label": "D",
+      "value": "\\(1{\\cdot}6\\)",
+      "working": "In a liquid of refractive index \\(\\mu_l\\), the lens maker's formula becomes\n\n\\(\\dfrac{1}{f} = \\left(\\dfrac{\\mu_g}{\\mu_l} - 1\\right)\\left(\\dfrac{1}{R_1} - \\dfrac{1}{R_2}\\right)\\).\n\nThe lens behaves like a plane sheet of glass when its power is zero, that is \\(\\dfrac{1}{f} = 0\\). This needs \\(\\dfrac{\\mu_g}{\\mu_l} = 1\\), so \\(\\mu_l = \\mu_g = 1{\\cdot}6\\). The light then does not bend at the lens surfaces at all.\n\nSo the answer is option (d), \\(1{\\cdot}6\\).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "1(A)(vii)",
+      "label": "C",
+      "value": "Assertion is true and Reason is false.",
+      "working": "In Young's double slit experiment, the distance of the first bright band from the centre is \\(y_1 = \\dfrac{\\lambda D}{d}\\), which is proportional to the wavelength.\n\nBlue light has a SHORTER wavelength than green light, so its first bright band is closer to the centre. The Assertion is true. The Reason says blue light has a longer wavelength, which is false.\n\nSo the answer is option (c): Assertion is true and Reason is false.",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "1(B)(i)",
+      "value": "\\(1{\\cdot}6 \\times 10^{-27}\\ \\mathrm{kg\\,m\\,s^{-1}}\\)",
+      "working": "For a photon, \\(E = pc\\), so \\(p = \\dfrac{E}{c}\\).\n\n\\(p = \\dfrac{4{\\cdot}8 \\times 10^{-19}}{3 \\times 10^{8}} = 1{\\cdot}6 \\times 10^{-27}\\ \\mathrm{kg\\,m\\,s^{-1}}\\).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "1(B)(ii)",
+      "value": "The emf induced in a conductor because it moves through a magnetic field, \\(e = Blv\\)",
+      "working": "**Motional emf** is the emf induced across a conductor when the conductor itself moves in a magnetic field so that it cuts the magnetic field lines (the flux linked with the circuit changes because of the motion, not because the field changes).\n\nFor a straight rod of length \\(l\\) moving with velocity \\(v\\) perpendicular to a uniform field \\(B\\), its value is \\(e = Blv\\).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "1(B)(iii)",
+      "value": "Zero",
+      "working": "At any point on the perpendicular bisector of a dipole, the point is at equal distance \\(a\\) from \\(+Q\\) and \\(-Q\\), so the potential is\n\n\\(V = \\dfrac{1}{4\\pi\\epsilon_0}\\left(\\dfrac{Q}{a} - \\dfrac{Q}{a}\\right) = 0\\).\n\nThe perpendicular bisector (the equatorial line) is therefore an equipotential line with \\(V = 0\\) everywhere on it. The work done in moving charge \\(q\\) between two of its points is \\(W = q(V_2 - V_1) = q(0 - 0) = 0\\), whatever the distance \\(d\\).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "1(B)(iv)",
+      "value": "Diode symbol (triangle pointing at a bar) with the bar's ends bent like the letter Z",
+      "working": "The Zener diode is drawn like an ordinary diode: a triangle (the p-side, anode) pointing towards a straight bar (the n-side, cathode), with a wire on each side. The difference is that the bar at the tip of the triangle has its two ends bent in opposite directions, like a small letter Z (or a flattened S), to show it is a Zener diode. In a circuit it is normally connected in reverse bias.",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "1(B)(v)",
+      "value": "\\(-33{\\cdot}3\\ \\mathrm{cm}\\) (diverging)",
+      "working": "For lenses in contact, powers add. The convex lens has \\(P_1 = +5\\ \\mathrm{D}\\) and the concave lens \\(P_2 = -8\\ \\mathrm{D}\\).\n\n\\(P = P_1 + P_2 = 5 - 8 = -3\\ \\mathrm{D}\\).\n\n\\(f = \\dfrac{1}{P} = -\\dfrac{1}{3}\\ \\mathrm{m} \\approx -33{\\cdot}3\\ \\mathrm{cm}\\).\n\nThe combination behaves as a concave (diverging) lens of focal length \\(33{\\cdot}3\\ \\mathrm{cm}\\).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "1(B)(vi)",
+      "value": "\\(L_1\\) (the eyepiece)",
+      "working": "In the figure, \\(L_1\\) is the eyepiece (the lens at the top, next to the eye) and \\(L_2\\) is the objective (the lens close to the object). In a compound microscope the objective has a very short focal length and the eyepiece has a larger focal length (\\(f_e > f_o\\)).\n\nSo \\(L_1\\), the eyepiece, has the larger focal length.",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "1(B)(vii)",
+      "value": "\\(0{\\cdot}45\\ \\mathrm{nm}\\)",
+      "working": "The radius of the \\(n\\)th Bohr orbit of hydrogen is \\(r_n = n^2 r_1\\).\n\nFor \\(n = 3\\): \\(r_3 = 3^2 \\times 0{\\cdot}05 = 9 \\times 0{\\cdot}05 = 0{\\cdot}45\\ \\mathrm{nm}\\).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "2(i)",
+      "value": "\\(1 \\times 10^{6}\\ \\mathrm{N\\,m^2\\,C^{-1}}\\)",
+      "working": "By Gauss's theorem, the electric flux through a closed surface depends only on the charge enclosed by it: \\(\\phi = \\dfrac{q_{\\text{enclosed}}}{\\epsilon_0}\\). Charges outside the surface (\\(Q_3\\) and \\(Q_4\\)) contribute zero net flux.\n\nCharges inside S: \\(Q_1 = +17{\\cdot}7\\ \\mu\\mathrm{C}\\) and \\(Q_2 = -8{\\cdot}85\\ \\mu\\mathrm{C}\\).\n\n\\(q_{\\text{enclosed}} = 17{\\cdot}7 - 8{\\cdot}85 = 8{\\cdot}85\\ \\mu\\mathrm{C} = 8{\\cdot}85 \\times 10^{-6}\\ \\mathrm{C}\\).\n\n\\(\\phi = \\dfrac{8{\\cdot}85 \\times 10^{-6}}{8{\\cdot}85 \\times 10^{-12}} = 1 \\times 10^{6}\\ \\mathrm{N\\,m^2\\,C^{-1}}\\) (or \\(\\mathrm{V\\,m}\\)).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "2(ii)",
+      "value": "(a) \\(I = 7\\ \\mathrm{A}\\); (b) conservation of charge (Kirchhoff's junction rule)",
+      "working": "**(a)** The two junctions are joined by a single wire, so all the current entering the left junction must leave from the right junction.\n\nCurrent entering: \\(8 + I\\). Current leaving: \\(7 + 5 + 3 = 15\\ \\mathrm{A}\\).\n\n\\(8 + I = 15 \\Rightarrow I = 7\\ \\mathrm{A}\\).\n\n**(b)** The calculation is based on the **law of conservation of charge** (Kirchhoff's first law, the junction rule): charge cannot accumulate at a junction, so the total current entering a junction equals the total current leaving it, \\(\\sum I = 0\\).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "3",
+      "value": "\\(\\dfrac{C_s}{C_p} = \\dfrac{1}{9}\\)",
+      "working": "In parallel, capacitances add: \\(C_p = C + C + C = 3C\\).\n\nIn series, reciprocals add: \\(\\dfrac{1}{C_s} = \\dfrac{1}{C} + \\dfrac{1}{C} + \\dfrac{1}{C} = \\dfrac{3}{C}\\), so \\(C_s = \\dfrac{C}{3}\\).\n\n\\(\\dfrac{C_s}{C_p} = \\dfrac{C/3}{3C} = \\dfrac{1}{9}\\), that is \\(C_s : C_p = 1 : 9\\).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "4(i)",
+      "value": "(a) drift speed doubles; (b) relaxation time unchanged",
+      "working": "**(a)** Current and drift speed are related by \\(I = neAv_d\\). For the same wire, \\(n\\), \\(e\\) and \\(A\\) are fixed, so \\(v_d \\propto I\\). Doubling the current **doubles the drift speed**.\n\n**(b)** The relaxation time \\(\\tau\\) is the average time between successive collisions of a free electron with the ions of the lattice. It depends on the material and its temperature, not on the current. So the relaxation time **remains unchanged** (assuming the temperature of the wire stays the same).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "4(ii)",
+      "value": "Labelled potentiometer circuit for comparing emfs of cells X and Y",
+      "working": "The labelled circuit diagram shows two circuits.\n\n**Primary (driver) circuit:** a uniform potentiometer wire AB stretched along a metre scale. A driver battery (emf greater than that of X and Y), a plug key K and a rheostat \\(R_h\\) are joined in series between A and B, with the positive terminal of the battery connected to end A.\n\n**Secondary circuit:** the positive terminals of the two cells X and Y are both connected to end A. Their negative terminals go to the two outer terminals of a two-way key (terminals 1 and 2). The common (middle) terminal of the two-way key is connected through a galvanometer G (with a high resistance or resistance box in series for protection) to a jockey J, which can slide and touch any point on wire AB.\n\nLabels to show: AB (potentiometer wire), driver battery, K, \\(R_h\\), X, Y, two-way key, G, J, and the balancing lengths \\(l_1\\) (for X) and \\(l_2\\) (for Y) measured from A.",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "5",
+      "value": "(i) \\(d\\vec{B} = \\dfrac{\\mu_0}{4\\pi}\\dfrac{I\\,(d\\vec{l} \\times \\vec{r})}{r^3}\\); (ii) \\(\\oint \\vec{B} \\cdot d\\vec{l} = \\mu_0 I\\)",
+      "working": "**(i) Biot-Savart law (vector form):** the magnetic field \\(d\\vec{B}\\) at a point due to a small current element \\(I\\,d\\vec{l}\\) is\n\n\\(d\\vec{B} = \\dfrac{\\mu_0}{4\\pi}\\,\\dfrac{I\\,(d\\vec{l} \\times \\vec{r})}{r^3}\\)\n\nwhere \\(\\vec{r}\\) is the position vector of the point from the current element and \\(\\mu_0\\) is the permeability of free space.\n\n**(ii) Ampere's circuital law:** the line integral of the magnetic field \\(\\vec{B}\\) around any closed loop is equal to \\(\\mu_0\\) times the net current enclosed by the loop:\n\n\\(\\oint \\vec{B} \\cdot d\\vec{l} = \\mu_0 I_{\\text{enclosed}}\\).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "6",
+      "value": "\\(f_2 = 3f_1\\)",
+      "working": "Let the refractive index of the glass be \\(\\mu\\). By the lens maker's formula for the original biconvex lens (\\(R_1 = +R\\), \\(R_2 = -2R\\)):\n\n\\(\\dfrac{1}{f_1} = (\\mu - 1)\\left(\\dfrac{1}{R} + \\dfrac{1}{2R}\\right) = (\\mu - 1)\\dfrac{3}{2R}\\).\n\nAfter cutting along CD, the lens in Figure 3(b) is plano-convex: one face is plane (\\(R_1 = \\infty\\)) and the other has radius \\(2R\\):\n\n\\(\\dfrac{1}{f_2} = (\\mu - 1)\\left(\\dfrac{1}{\\infty} + \\dfrac{1}{2R}\\right) = (\\mu - 1)\\dfrac{1}{2R}\\).\n\nDividing: \\(\\dfrac{f_2}{f_1} = \\dfrac{(\\mu - 1)\\frac{3}{2R}}{(\\mu - 1)\\frac{1}{2R}} = 3\\).\n\nSo \\(f_2 = 3f_1\\): the new lens has three times the focal length of the original lens.",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "7",
+      "value": "(i) X-rays; (ii) speed (\\(3 \\times 10^{8}\\ \\mathrm{m\\,s^{-1}}\\))",
+      "working": "**(i)** Luggage at security checks is scanned with **X-rays**, which pass through soft materials but are absorbed more by dense objects such as metals.\n\n**(ii)** All electromagnetic waves travel in vacuum with the **same speed**, \\(c = 3 \\times 10^{8}\\ \\mathrm{m\\,s^{-1}}\\). So UV rays, red light and radio waves have the same speed in vacuum (their wavelengths and frequencies differ).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "8",
+      "value": "Only \\(M_1\\) emits photoelectrons (photon energy \\(\\approx 3{\\cdot}02\\ \\mathrm{eV}\\))",
+      "working": "Energy of one photon of the incident light:\n\n\\(E = \\dfrac{hc}{\\lambda} = \\dfrac{6{\\cdot}6 \\times 10^{-34} \\times 3 \\times 10^{8}}{410 \\times 10^{-9}} = 4{\\cdot}83 \\times 10^{-19}\\ \\mathrm{J}\\).\n\nIn electron volts: \\(E = \\dfrac{4{\\cdot}83 \\times 10^{-19}}{1{\\cdot}6 \\times 10^{-19}} \\approx 3{\\cdot}02\\ \\mathrm{eV}\\).\n\nPhotoelectrons are emitted only if the photon energy is greater than the work function.\n\nFor \\(M_1\\): \\(3{\\cdot}02\\ \\mathrm{eV} > 1{\\cdot}9\\ \\mathrm{eV}\\), so \\(M_1\\) **emits** photoelectrons.\n\nFor \\(M_2\\): \\(3{\\cdot}02\\ \\mathrm{eV} < 5{\\cdot}0\\ \\mathrm{eV}\\), so \\(M_2\\) **does not** emit photoelectrons.",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "9",
+      "value": "Proved",
+      "working": "Consider an electric dipole of charges \\(-q\\) at A and \\(+q\\) at B, separated by \\(2l\\), so its dipole moment is \\(p = q(2l)\\), directed from \\(-q\\) to \\(+q\\). Let O be the centre of the dipole and P a point on its axis at distance \\(r\\) from O, on the side of \\(+q\\).\n\nThen \\(BP = r - l\\) and \\(AP = r + l\\).\n\n**Field due to \\(+q\\)** at P, directed away from B along the axis (along \\(\\vec{p}\\)):\n\n\\(E_1 = \\dfrac{1}{4\\pi\\epsilon_0}\\,\\dfrac{q}{(r - l)^2}\\).\n\n**Field due to \\(-q\\)** at P, directed towards A (opposite to \\(\\vec{p}\\)):\n\n\\(E_2 = \\dfrac{1}{4\\pi\\epsilon_0}\\,\\dfrac{q}{(r + l)^2}\\).\n\nSince \\(r - l < r + l\\), \\(E_1 > E_2\\), and the resultant field is along \\(\\vec{p}\\):\n\n\\(E = E_1 - E_2 = \\dfrac{q}{4\\pi\\epsilon_0}\\left[\\dfrac{1}{(r - l)^2} - \\dfrac{1}{(r + l)^2}\\right] = \\dfrac{q}{4\\pi\\epsilon_0}\\,\\dfrac{(r + l)^2 - (r - l)^2}{(r^2 - l^2)^2}\\).\n\nNow \\((r + l)^2 - (r - l)^2 = 4rl\\), so\n\n\\(E = \\dfrac{1}{4\\pi\\epsilon_0}\\,\\dfrac{4qlr}{(r^2 - l^2)^2} = \\dfrac{1}{4\\pi\\epsilon_0}\\,\\dfrac{2(q \\cdot 2l)r}{(r^2 - l^2)^2}\\).\n\nUsing \\(p = q \\cdot 2l\\):\n\n\\(E = \\left(\\dfrac{1}{4\\pi\\epsilon_0}\\right)\\dfrac{2pr}{(r^2 - l^2)^2}\\), directed along the dipole moment. Hence proved.\n\n(For a short dipole, \\(l \\ll r\\), this reduces to \\(E = \\dfrac{1}{4\\pi\\epsilon_0}\\,\\dfrac{2p}{r^3}\\).)",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "10(i)",
+      "value": "\\(40\\ \\Omega\\) connected in parallel with the \\(10\\ \\Omega\\) resistor",
+      "working": "Both branches (3 \\(\\Omega\\), M, 6 \\(\\Omega\\)) and (4 \\(\\Omega\\), N, 10 \\(\\Omega\\)) are connected across the same two points, the left junction and O, so the same voltage is applied across each. M and N will be at the same potential when the potential drops across 3 \\(\\Omega\\) and 4 \\(\\Omega\\) are equal, that is when the bridge is balanced:\n\n\\(\\dfrac{3}{6} = \\dfrac{4}{X} \\Rightarrow X = 8\\ \\Omega\\).\n\nSo the 10 \\(\\Omega\\) arm must be reduced to 8 \\(\\Omega\\). A resistance added in series would increase it, so the resistance \\(R\\) must be connected **in parallel** with the 10 \\(\\Omega\\) resistor:\n\n\\(\\dfrac{10R}{10 + R} = 8 \\Rightarrow 10R = 80 + 8R \\Rightarrow R = 40\\ \\Omega\\).\n\n**Check:** upper branch current \\(= \\dfrac{2}{3 + 6} = \\dfrac{2}{9}\\ \\mathrm{A}\\), drop across 3 \\(\\Omega\\) \\(= \\dfrac{2}{3}\\ \\mathrm{V}\\). Lower branch current \\(= \\dfrac{2}{4 + 8} = \\dfrac{1}{6}\\ \\mathrm{A}\\), drop across 4 \\(\\Omega\\) \\(= \\dfrac{2}{3}\\ \\mathrm{V}\\). The drops are equal, so M and N are at the same potential.\n\nSo a \\(40\\ \\Omega\\) resistor should be connected in parallel with the \\(10\\ \\Omega\\) resistor.",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "10(ii)",
+      "value": "(a) 6 V; (b) \\(3\\ \\Omega\\)",
+      "working": "**Upper branch:** the 2 V (1 \\(\\Omega\\)) and 4 V (3 \\(\\Omega\\)) cells are in series and drawn the same way round, so they aid each other:\n\n\\(E_1 = 2 + 4 = 6\\ \\mathrm{V}\\), \\(r_1 = 1 + 3 = 4\\ \\Omega\\).\n\n**Lower branch:** \\(E_2 = 6\\ \\mathrm{V}\\), \\(r_2 = 12\\ \\Omega\\).\n\nThe two branches are in parallel with like terminals together.\n\n**(a)** For cells in parallel,\n\n\\(E = \\dfrac{\\dfrac{E_1}{r_1} + \\dfrac{E_2}{r_2}}{\\dfrac{1}{r_1} + \\dfrac{1}{r_2}} = \\dfrac{\\dfrac{6}{4} + \\dfrac{6}{12}}{\\dfrac{1}{4} + \\dfrac{1}{12}} = \\dfrac{2}{1/3} = 6\\ \\mathrm{V}\\).\n\n(This is expected: both branches have the same emf of 6 V, so no current circulates between them on open circuit.)\n\n**(b)** \\(\\dfrac{1}{r} = \\dfrac{1}{4} + \\dfrac{1}{12} = \\dfrac{4}{12} = \\dfrac{1}{3}\\), so \\(r = 3\\ \\Omega\\).\n\nThe battery has emf 6 V and internal resistance \\(3\\ \\Omega\\).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "11(i)",
+      "value": "\\(B = \\dfrac{\\mu_0 n I}{2R}\\)",
+      "working": "Consider a circular coil of radius \\(R\\) with \\(n\\) turns carrying current \\(I\\), with centre O. Take a small current element \\(I\\,d\\vec{l}\\) on the coil.\n\nBy the Biot-Savart law, the field at O due to this element is\n\n\\(dB = \\dfrac{\\mu_0}{4\\pi}\\,\\dfrac{I\\,dl\\,\\sin\\theta}{R^2}\\),\n\nwhere \\(\\theta\\) is the angle between \\(d\\vec{l}\\) and the radius vector to O. Every element of the coil is tangential, so \\(d\\vec{l}\\) is perpendicular to the radius: \\(\\theta = 90^\\circ\\) and \\(\\sin\\theta = 1\\).\n\nAlso, by the right-hand rule, the field due to every element at O points in the same direction, perpendicular to the plane of the coil. So the contributions simply add:\n\n\\(B_{\\text{one turn}} = \\dfrac{\\mu_0 I}{4\\pi R^2}\\oint dl = \\dfrac{\\mu_0 I}{4\\pi R^2}(2\\pi R) = \\dfrac{\\mu_0 I}{2R}\\).\n\nFor \\(n\\) turns the fields add, so\n\n\\(B = \\dfrac{\\mu_0 n I}{2R}\\),\n\ndirected along the axis of the coil, perpendicular to its plane (given by the right-hand thumb rule).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "11(ii)",
+      "value": "(a) \\(G_2\\) has greater current sensitivity; (b) concave pole pieces with a soft-iron cylindrical core",
+      "working": "**(a)** The current sensitivity of a moving coil galvanometer is\n\n\\(S_I = \\dfrac{\\theta}{I} = \\dfrac{NBA}{k}\\),\n\nwhere \\(k\\) is the torsional constant. The galvanometers are identical except for \\(N\\), \\(A\\) and resistance, so \\(B\\) and \\(k\\) are the same and \\(S_I \\propto NA\\). The resistance of the coil does not affect current sensitivity.\n\n\\(G_1\\): \\(NA = 50 \\times 30 = 1500\\ \\mathrm{cm^2}\\).\n\n\\(G_2\\): \\(NA = 60 \\times 40 = 2400\\ \\mathrm{cm^2}\\).\n\n\\(\\dfrac{S_{I2}}{S_{I1}} = \\dfrac{2400}{1500} = 1{\\cdot}6\\).\n\nSo \\(G_2\\) has the greater current sensitivity (\\(1{\\cdot}6\\) times that of \\(G_1\\)).\n\n**(b)** The magnetic field is made radial by using **concave (cylindrical) pole pieces** for the permanent magnet and placing a **soft iron cylindrical core** inside the coil, coaxial with the pole pieces. The field lines then point along the radii, so the plane of the coil is always parallel to the field and the deflecting torque \\(NBAI\\) does not depend on the coil's position.",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "12",
+      "value": "(i) \\(F = \\dfrac{\\mu_0 I_1 I l}{2\\pi r_1}\\), attractive (towards X); (ii) \\(\\dfrac{I_1}{I_2} = \\dfrac{r_1}{r_2}\\)",
+      "working": "**(i)** The long conductor X produces at P a magnetic field\n\n\\(B_1 = \\dfrac{\\mu_0 I_1}{2\\pi r_1}\\),\n\nperpendicular to the plane containing X and Y. The short conductor Y of length \\(l\\) carrying current \\(I\\) is perpendicular to this field, so the force on it is\n\n\\(F_1 = B_1 I l = \\dfrac{\\mu_0 I_1 I l}{2\\pi r_1}\\).\n\nSince the currents in X and Y are in the same direction (both upward), the force is **attractive**: Y is pulled towards X.\n\n**(ii)** Wire Z is on the other side of Y, and its current \\(I_2\\) is also in the same direction as \\(I\\), so Z attracts Y towards Z with a force\n\n\\(F_2 = \\dfrac{\\mu_0 I_2 I l}{2\\pi r_2}\\).\n\nThe two forces act in opposite directions. For Y to remain at rest they must be equal in magnitude:\n\n\\(\\dfrac{\\mu_0 I_1 I l}{2\\pi r_1} = \\dfrac{\\mu_0 I_2 I l}{2\\pi r_2} \\Rightarrow \\dfrac{I_1}{r_1} = \\dfrac{I_2}{r_2}\\).\n\nSo \\(\\dfrac{I_1}{I_2} = \\dfrac{r_1}{r_2}\\): the currents are in the same ratio as their distances from Y.",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "13",
+      "value": "(i) \\(\\mu = 2\\sin 50^\\circ \\approx 1{\\cdot}53\\); (ii) \\(\\omega = \\dfrac{\\mu_v - \\mu_r}{\\mu_y - 1}\\)",
+      "working": "**(i)** The prism is equilateral, so \\(A = 60^\\circ\\).\n\nIn the figure, \\(\\theta = 40^\\circ\\) is the angle between the incident ray and the refracting face. The angle of incidence is measured from the normal, so\n\n\\(i = 90^\\circ - 40^\\circ = 50^\\circ\\).\n\nThe deviation is \\(\\delta = 40^\\circ\\). For a prism, \\(i + e = A + \\delta\\), so\n\n\\(e = 60^\\circ + 40^\\circ - 50^\\circ = 50^\\circ\\).\n\nSince \\(e = i\\), the ray passes symmetrically through the prism: this is the position of **minimum deviation**, \\(\\delta_m = 40^\\circ\\). Then\n\n\\(\\mu = \\dfrac{\\sin\\left(\\dfrac{A + \\delta_m}{2}\\right)}{\\sin\\left(\\dfrac{A}{2}\\right)} = \\dfrac{\\sin 50^\\circ}{\\sin 30^\\circ} = \\dfrac{0{\\cdot}766}{0{\\cdot}5} \\approx 1{\\cdot}53\\).\n\n**(ii)** The **dispersive power** of a transparent material is its ability to spread white light into its component colours. It is defined as the ratio of the angular dispersion (between violet and red) to the mean deviation (for yellow light) produced by a thin prism of that material:\n\n\\(\\omega = \\dfrac{\\delta_v - \\delta_r}{\\delta_y} = \\dfrac{\\mu_v - \\mu_r}{\\mu_y - 1}\\),\n\nwhere \\(\\mu_v\\), \\(\\mu_r\\) and \\(\\mu_y\\) are the refractive indices for violet, red and yellow light.",
+      "difficulty": "Hard",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "14",
+      "value": "Labelled ray diagram of an astronomical telescope in normal adjustment",
+      "working": "The labelled diagram shows:\n\n- A common principal axis with two convex lenses on it: the **objective** \\(O\\) (large aperture, long focal length \\(f_o\\)) facing the distant object, and the **eyepiece** \\(E\\) (small aperture, short focal length \\(f_e\\)) next to the eye.\n- A parallel beam of rays from a distant object, inclined at a small angle \\(\\alpha\\) to the axis, falling on the objective.\n- The objective forming a real, inverted, diminished image \\(A'B'\\) at its second focus \\(F_o\\).\n- The eyepiece placed so that its first focus \\(F_e\\) coincides with \\(F_o\\), that is \\(A'B'\\) lies at the focus of the eyepiece. The distance between the lenses is \\(f_o + f_e\\).\n- Rays leaving the eyepiece as a parallel beam, inclined at a larger angle \\(\\beta\\) to the axis, entering the eye; extended backwards (dotted) they show the final inverted image at infinity.\n\nLabels: objective, eyepiece, \\(f_o\\), \\(f_e\\), \\(F_o\\) and \\(F_e\\) (coinciding), image \\(A'B'\\), angles \\(\\alpha\\) and \\(\\beta\\), eye, \"final image at infinity\". The magnifying power in this setting is \\(M = \\dfrac{\\beta}{\\alpha} = \\dfrac{f_o}{f_e}\\).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "15",
+      "value": "(i) Diffraction at a single slit; (ii) a central white band with a few coloured bands on either side; (iii) light behaves as a wave",
+      "working": "Kabir's pattern has bright bands of equal width, equally spaced: this is **interference** (as in Young's double slit experiment). Neha's pattern has a wide central bright band with narrower and fainter bands on both sides.\n\n**(i)** Neha observed **diffraction of light at a single slit**.\n\n**(ii)** With white light, Kabir would see a **white central bright band** (all colours have zero path difference there and reinforce). On either side there would be a few **coloured bands**, each with violet/blue nearer the centre and red farther out, because the fringe width \\(\\beta = \\dfrac{\\lambda D}{d}\\) is smaller for shorter wavelengths. Farther from the centre the colours overlap and the screen looks almost uniformly white, so only a few fringes are visible.\n\n**(iii)** Interference and diffraction can be explained only if light is a **wave**. So both concluded that light has a wave nature.",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "16",
+      "value": "Proved, \\(\\angle r = \\angle i\\)",
+      "working": "**Diagram (described):** a plane reflecting surface XY. A plane wavefront AB is incident obliquely on it, with A just touching the surface. Incident rays (perpendicular to AB) reach the surface at A and, from B, at C. The normals at A and C are drawn, the angle of incidence \\(i\\) is marked between the incident ray and the normal, and the reflected wavefront CD is drawn with the reflected rays and the angle of reflection \\(r\\).\n\n**Proof:** Let \\(v\\) be the speed of light in the medium. When point A of the wavefront touches the surface, point B still has to travel BC to reach the surface at C. Let this take time \\(t\\), so \\(BC = vt\\).\n\nAccording to Huygens' principle, A becomes a source of secondary wavelets. In time \\(t\\), the wavelet from A spreads into a hemisphere of radius \\(AD = vt\\) in the same medium. The tangent drawn from C to this hemisphere touches it at D, and CD is the reflected wavefront.\n\nNow compare triangles ABC and CDA:\n\n- \\(\\angle ABC = \\angle CDA = 90^\\circ\\) (a ray is perpendicular to its wavefront),\n- \\(BC = AD = vt\\),\n- AC is common.\n\nSo the two triangles are congruent (RHS), and therefore \\(\\angle BAC = \\angle DCA\\).\n\nThe angle between the incident wavefront AB and the surface equals the angle of incidence: \\(\\angle BAC = i\\). The angle between the reflected wavefront CD and the surface equals the angle of reflection: \\(\\angle DCA = r\\).\n\nHence \\(i = r\\): the angle of reflection equals the angle of incidence. Also the incident ray, the reflected ray and the normal lie in the same plane.",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "17",
+      "value": "(i) Metal A, since it has the lower threshold frequency (work function); (ii) moving electrons have a wave nature, confirming de Broglie's hypothesis",
+      "working": "**(i)** **Metal A** emits photoelectrons with higher maximum kinetic energy.\n\n**Reason:** Einstein's photoelectric equation gives \\(E_{max} = h\\nu - \\phi_0 = h\\nu - h\\nu_0\\). From the graph, the threshold frequency of A is less than that of B (\\(\\nu_{0A} < \\nu_{0B}\\)), so A has the smaller work function. For the same UV radiation (same \\(\\nu\\)), \\(E_{max}\\) is therefore larger for A. The graph shows the same thing: at any frequency the stopping potential of A is higher, and \\(E_{max} = eV_0\\).\n\n**(ii)** Davisson and Germer found that a beam of electrons is diffracted by a nickel crystal, just as X-rays are. The conclusion: **electrons (material particles) have a wave nature**, and the measured wavelength agreed with de Broglie's relation \\(\\lambda = \\dfrac{h}{p}\\). This confirmed de Broglie's hypothesis of matter waves.",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "18(i)",
+      "value": "(a)(1) the coil's inductive reactance adds to its resistance on ac; (a)(2) \\(L \\approx 1{\\cdot}1\\ \\mathrm{H}\\); (b) \\(60^\\circ\\) (\\(\\pi/3\\))",
+      "working": "**(a)(1)** With dc, the only opposition to current is the coil's resistance \\(R\\) (a steady current induces no back emf). With ac, the changing current induces a back emf in the coil, which appears as an inductive reactance \\(X_L = \\omega L\\). The total opposition is the impedance \\(Z = \\sqrt{R^2 + X_L^2}\\), which is greater than \\(R\\), so the current is smaller.\n\n**(a)(2)** From the dc reading: \\(R = \\dfrac{V}{I} = \\dfrac{200}{1} = 200\\ \\Omega\\).\n\nFrom the ac reading: \\(Z = \\dfrac{200}{0{\\cdot}5} = 400\\ \\Omega\\).\n\n\\(X_L = \\sqrt{Z^2 - R^2} = \\sqrt{400^2 - 200^2} = \\sqrt{120000} \\approx 346{\\cdot}4\\ \\Omega\\).\n\n\\(X_L = 2\\pi f L \\Rightarrow L = \\dfrac{346{\\cdot}4}{2 \\times 3{\\cdot}14 \\times 50} = \\dfrac{346{\\cdot}4}{314} \\approx 1{\\cdot}1\\ \\mathrm{H}\\).\n\n**(b)** Power factor \\(= \\cos\\phi = 0{\\cdot}5\\), so \\(\\phi = 60^\\circ\\), that is \\(\\dfrac{\\pi}{3}\\) radian.",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "18(ii)",
+      "value": "(a) \\(I_{rms} \\approx 5\\ \\mathrm{A}\\); (b) \\(L \\approx 1{\\cdot}18 \\times 10^{-3}\\ \\mathrm{H}\\); (c) soft iron has higher permeability and lower hysteresis loss",
+      "working": "**(a)** Comparing \\(e = 495\\sin(100\\pi t)\\) with \\(e = E_0\\sin\\omega t\\): \\(E_0 = 495\\ \\mathrm{V}\\).\n\n\\(E_{rms} = \\dfrac{E_0}{\\sqrt{2}} = \\dfrac{495}{1{\\cdot}414} \\approx 350\\ \\mathrm{V}\\).\n\n\\(I_{rms} = \\dfrac{E_{rms}}{R} = \\dfrac{350}{70} = 5\\ \\mathrm{A}\\).\n\n**(b)** For a solenoid with an iron core, \\(L = \\dfrac{\\mu_0\\mu_r N^2 A}{l}\\), with \\(N = 25\\), \\(l = 0{\\cdot}2\\ \\mathrm{m}\\), \\(A = 1 \\times 10^{-4}\\ \\mathrm{m^2}\\) and \\(\\mu_r = 3000\\) (iron, from the table).\n\n\\(L = \\dfrac{4 \\times 3{\\cdot}14 \\times 10^{-7} \\times 3000 \\times 25^2 \\times 1 \\times 10^{-4}}{0{\\cdot}2}\\)\n\n\\(L = \\dfrac{4 \\times 3{\\cdot}14 \\times 10^{-7} \\times 3000 \\times 625 \\times 10^{-4}}{0{\\cdot}2} \\approx 1{\\cdot}18 \\times 10^{-3}\\ \\mathrm{H}\\) (about \\(1{\\cdot}18\\ \\mathrm{mH}\\)).\n\n**(c)** Soft iron is preferred because it has a **high permeability** (so the flux is concentrated and linked well between the coils) and a **narrow hysteresis loop** (low retentivity and coercivity), so the energy lost as heat in each cycle of magnetisation (hysteresis loss) is much smaller than in steel.",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "19(i-iii)",
+      "value": "(i) BE/A curve rising to a peak of about \\(8{\\cdot}8\\ \\mathrm{MeV}\\) at Fe-56 (most stable); (ii) \\(L = \\dfrac{nh}{2\\pi}\\); (iii) \\(\\lambda \\approx 364{\\cdot}6\\ \\mathrm{nm}\\)",
+      "working": "**(i)** The graph has mass number \\(A\\) on the x-axis (0 to about 240) and binding energy per nucleon (in MeV) on the y-axis (0 to about 9 MeV). Its main features:\n\n- For light nuclei the curve rises steeply from about \\(1{\\cdot}1\\ \\mathrm{MeV}\\) (\\(^2\\mathrm{H}\\)), with small peaks for \\(^4\\mathrm{He}\\), \\(^{12}\\mathrm{C}\\) and \\(^{16}\\mathrm{O}\\).\n- It reaches a broad maximum of about \\(8{\\cdot}8\\ \\mathrm{MeV}\\) near \\(A = 56\\). This point is marked \\(^{56}\\mathrm{Fe}\\) (iron), the **most stable nucleus**.\n- For heavier nuclei it falls slowly, to about \\(7{\\cdot}6\\ \\mathrm{MeV}\\) for \\(^{238}\\mathrm{U}\\).\n\n**(ii)** It means the angular momentum of an electron in a Bohr orbit cannot have just any value: it can only be an integral multiple of \\(\\dfrac{h}{2\\pi}\\),\n\n\\(L = mvr = \\dfrac{nh}{2\\pi}\\), where \\(n = 1, 2, 3, \\ldots\\)\n\nSo the electron can revolve only in those orbits for which this condition holds (the stationary orbits).\n\n**(iii)** For the Balmer series, \\(\\dfrac{1}{\\lambda} = R_H\\left(\\dfrac{1}{2^2} - \\dfrac{1}{n^2}\\right)\\), \\(n = 3, 4, 5, \\ldots\\)\n\nThe shortest wavelength (series limit) corresponds to \\(n = \\infty\\):\n\n\\(\\dfrac{1}{\\lambda_{min}} = \\dfrac{R_H}{4} \\Rightarrow \\lambda_{min} = \\dfrac{4}{R_H} = \\dfrac{4}{1{\\cdot}097 \\times 10^{7}} \\approx 3{\\cdot}646 \\times 10^{-7}\\ \\mathrm{m} \\approx 364{\\cdot}6\\ \\mathrm{nm}\\).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "19(iv-vii)",
+      "value": "(iv) \\(\\approx 3{\\cdot}0 \\times 10^{-10}\\ \\mathrm{J} \\approx 1879\\ \\mathrm{MeV}\\); (v) it needs extremely high temperatures; (vi) the electron is bound to the nucleus; (vii) e.g. it applies only to one-electron atoms",
+      "working": "**(iv)** A proton and an antiproton have equal rest mass \\(m_p\\). The minimum photon energy is the rest mass energy of the pair (created at rest):\n\n\\(E_{min} = 2m_p c^2 = 2 \\times 1{\\cdot}67 \\times 10^{-27} \\times (3 \\times 10^{8})^2 = 3{\\cdot}006 \\times 10^{-10}\\ \\mathrm{J}\\).\n\nIn eV: \\(\\dfrac{3{\\cdot}006 \\times 10^{-10}}{1{\\cdot}6 \\times 10^{-19}} \\approx 1{\\cdot}88 \\times 10^{9}\\ \\mathrm{eV} \\approx 1879\\ \\mathrm{MeV}\\).\n\n**(v)** In fusion, two positively charged light nuclei must come very close together, against their strong electrostatic repulsion. They get enough kinetic energy to do this only at extremely high temperatures (of the order of \\(10^{7}\\) K or more). Because the reaction is started and sustained by such high temperature, it is called a thermonuclear reaction.\n\n**(vi)** The negative total energy shows that the electron is **bound** to the nucleus by the attractive force; it cannot escape on its own. Energy equal to the magnitude of the total energy (the ionisation energy) must be supplied from outside to free it.\n\n**(vii)** One limitation: Bohr's theory applies only to hydrogen and hydrogen-like (single-electron) atoms; it cannot explain the spectra of atoms with more than one electron. (Other acceptable answers: it cannot explain the fine structure of spectral lines, or the relative intensities of the lines.)",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "20",
+      "value": "(i) a microammeter; (ii) by doping with a pentavalent or trivalent impurity; (iii) the pd across the depletion layer that opposes diffusion; (iv) half-wave rectifier circuit",
+      "working": "**(i)** In reverse bias the current is very small (of the order of microamperes), so Annie used a **microammeter** (\\(\\mu\\mathrm{A}\\)).\n\n**(ii)** She **doped** the pure (intrinsic) semiconductor, such as silicon or germanium, by adding a very small amount of a suitable impurity: a **pentavalent** impurity (for example phosphorus, arsenic) gives an n-type semiconductor, and a **trivalent** impurity (for example boron, aluminium, indium) gives a p-type semiconductor.\n\n**(iii)** When the p-n junction forms, electrons and holes diffuse across it and recombine, leaving immobile positive ions on the n-side and immobile negative ions on the p-side of the junction (the depletion region). These ions set up an electric field and a potential difference across the junction, directed so that it opposes further diffusion of majority carriers. This potential difference is the **potential barrier** (about \\(0{\\cdot}7\\ \\mathrm{V}\\) for silicon and \\(0{\\cdot}3\\ \\mathrm{V}\\) for germanium).\n\n**(iv)** The labelled circuit diagram of a half wave rectifier shows: the ac input applied to the primary coil of a transformer; one end of the secondary coil connected to the p-side (anode) of a p-n junction diode D; the n-side (cathode) of the diode connected through a load resistance \\(R_L\\) back to the other end of the secondary coil. The dc output is taken across \\(R_L\\). (Waveforms, if drawn: a full sine wave at the input, and only the positive half cycles at the output, with gaps for the negative half cycles when the diode is reverse biased.)",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    }
+  ]
+}

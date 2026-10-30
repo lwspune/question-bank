@@ -69,6 +69,7 @@
  * no mechanism here — but we hold no 2025 question paper, so it is unverified
  * rather than ruled out. Treat a 2025 stem that reads oddly as suspect.
  */
+import { existsSync } from "node:fs";
 import { join } from "node:path";
 
 export { ORG_ID, CREATED_BY } from "../practice/config";
@@ -96,6 +97,23 @@ export const qpPath = (year: number, subject: IscSubject) =>
 export const apupPath = (year: number, subject: IscSubject) =>
   join(SOURCE_ROOT, String(year), "apup", `${subject}.pdf`);
 export const syllabusPath = (file: string) => join(SOURCE_ROOT, "syllabus", file);
+/** Key-free payloads + derivations. Outside scripts/ so a deriver cannot walk into data/. */
+export const BLIND_ROOT = join(SOURCE_ROOT, "blind");
+/** Figure crops, `<stem>/<file>`; crop-figures.py writes them, commit.ts uploads them. */
+export const FIGURE_ROOT = join(SOURCE_ROOT, "figures");
+/**
+ * A finished derivation, `which` = "derived" (the published solutions) or
+ * "second" (2026's independent control). Once a paper is done its files are
+ * copied into data/ as `<stem>.<which>.json`, which is the copy of record: the
+ * blind folder is scratch under C:\tmp. Read data/ first, the blind folder
+ * while a solve is still in progress.
+ */
+export const derivationPath = (stem: string, which: "derived" | "second") => {
+  const kept = join(process.cwd(), "scripts", "isc-12-pyq", "data", `${stem}.${which}.json`);
+  return existsSync(kept) ? kept : join(BLIND_ROOT, stem, `${which}.json`);
+};
+/** `16(ii)` -> `16-ii.png`: a ref is not a safe filename. */
+export const figureFile = (ref: string) => `${ref.replace(/[()]/g, "-").replace(/-+$/, "").replace(/-+/g, "-")}.png`;
 
 /**
  * Which source each (subject, year) is transcribed FROM, and whether an official
@@ -243,3 +261,62 @@ export function chaptersFor(subject: IscSubject): readonly IscChapter[] {
 export function allChapterNames(): string[] {
   return ISC_SUBJECTS.flatMap((s) => ISC_TAXONOMY[s].map((c) => c.name));
 }
+
+/**
+ * ── SUBTOPICS ────────────────────────────────────────────────────────────────
+ * Per chapter, the subtopics a row may be filed under. Where an ISC chapter is
+ * the same topic as a CBSE Class 12 chapter, its subtopics are CBSE's (read from
+ * the live `cbse-12` taxonomy on 2026-10-30), so a student moving between the
+ * two boards sees the same grain. ISC-only material gets its own: Section C
+ * commerce maths (syllabus units 8-9), cyanides and isocyanides (Chemistry unit
+ * 9), and a few ISC syllabus items CBSE dropped (mean value theorems,
+ * tangents and normals, binomial distribution, logic gates, radioactivity).
+ *
+ * The transcription brief tells agents to pick from this list verbatim;
+ * `validate.ts` rejects anything else, because commitStaged AUTO-CREATES an
+ * unknown subtopic rather than failing.
+ */
+export const ISC_SUBTOPICS: Record<string, readonly string[]> = {
+  // Mathematics
+  "Relations and Functions": ["Types of Relations", "Equivalence Relations and Classes", "One-One and Onto Functions", "Composition and Invertible Functions"],
+  "Inverse Trigonometric Functions": ["Domains, Ranges and Principal Value Branches", "Evaluating Inverse Trigonometric Expressions", "Properties of Inverse Trigonometric Functions"],
+  Matrices: ["Order and Types of Matrices", "Equality of Matrices", "Addition and Scalar Multiplication", "Multiplication of Matrices", "Transpose of a Matrix", "Symmetric and Skew-Symmetric Matrices", "Elementary Operations and Inverse of a Matrix"],
+  Determinants: ["Determinant and its Properties", "Area of a Triangle", "Minors and Cofactors", "Adjoint and Inverse of a Matrix", "Solving System of Linear Equations"],
+  "Continuity, Differentiability and Differentiation": ["Continuity", "Differentiability and the Chain Rule", "Derivatives of Implicit and Inverse Trigonometric Functions", "Derivatives of Exponential and Logarithmic Functions", "Logarithmic Differentiation", "Derivatives of Functions in Parametric Form", "Second Order Derivatives", "Mean Value Theorems"],
+  "Applications of Derivatives": ["Rate of Change of Quantities", "Increasing and Decreasing Functions", "Maxima and Minima", "Absolute Maximum and Minimum on a Closed Interval", "Tangents and Normals", "Approximations"],
+  Integrals: ["Integration as the Inverse of Differentiation", "Integration by Substitution", "Integration using Trigonometric Identities", "Integrals of Some Particular Functions", "Integration by Partial Fractions", "Integration by Parts", "Integrals of Special Forms", "Definite Integrals and the Fundamental Theorem", "Definite Integrals by Substitution", "Properties of Definite Integrals"],
+  "Differential Equations": ["Order and Degree of a Differential Equation", "Formation of a Differential Equation", "General and Particular Solutions", "Variables Separable", "Homogeneous Differential Equations", "Linear Differential Equations", "Applications of Differential Equations"],
+  Probability: ["Conditional Probability", "Multiplication Theorem on Probability", "Independent Events", "Theorem of Total Probability", "Bayes' Theorem", "Random Variables and Probability Distributions", "Binomial Distribution"],
+  Vectors: ["Types of Vectors", "Addition of Vectors", "Components and Direction Cosines", "Section Formula", "Scalar (Dot) Product and Projection", "Vector (Cross) Product", "Scalar Triple Product"],
+  "Three-dimensional Geometry": ["Direction Cosines and Direction Ratios", "Equation of a Line in Space", "Angle Between Two Lines", "Shortest Distance Between Two Lines", "The Plane"],
+  "Application of Integrals": ["Area Under Simple Curves", "Area Bounded by a Curve and a Line", "Area Between Two Curves"],
+  "Application of Calculus": ["Cost, Revenue and Profit Functions", "Average and Marginal Functions", "Break-even Point", "Optimisation in Commerce and Economics"],
+  "Linear Regression": ["Lines of Regression", "Regression Coefficients and Correlation", "Method of Least Squares", "Estimation from a Regression Line"],
+  "Linear Programming": ["Formulation of LP Problems", "Graphical Solution and the Feasible Region"],
+  // Physics
+  "Electric Charges and Fields": ["Electric Charge and its Basic Properties", "Coulomb's Law and Forces Between Multiple Charges", "Electric Field and Field Lines", "Electric Dipole and Dipole in a Uniform Field", "Electric Flux and Gauss's Law", "Applications of Gauss's Law"],
+  "Electrostatic Potential, Potential Energy and Capacitance": ["Electrostatic Potential due to Charges and Dipoles", "Potential Energy of a System of Charges", "Equipotential Surfaces", "Electrostatics of Conductors and Dielectrics", "Capacitors, Capacitance and their Combinations", "Energy Stored in a Capacitor"],
+  "Current Electricity": ["Electric Current and Ohm's Law", "Drift of Electrons and Resistivity", "Temperature Dependence of Resistivity", "Electrical Energy and Power", "Combination of Resistors", "Cells, EMF and Internal Resistance", "Kirchhoff's Rules and Wheatstone Bridge", "Meter Bridge and Potentiometer"],
+  "Moving Charges and Magnetism": ["Magnetic Force and Motion in a Magnetic Field", "Biot-Savart Law and Field of a Circular Loop", "Ampere's Circuital Law and the Solenoid", "Force Between Parallel Currents", "Torque on a Current Loop and Magnetic Dipole", "The Moving Coil Galvanometer"],
+  "Magnetism and Matter": ["The Bar Magnet", "Magnetism and Gauss's Law", "Magnetisation and Magnetic Intensity", "Magnetic Properties of Materials"],
+  "Electromagnetic Induction": ["Magnetic Flux and Faraday's Law", "Lenz's Law and Conservation of Energy", "Motional Electromotive Force", "Inductance", "AC Generator"],
+  "Alternating Current": ["AC Voltage Applied to a Resistor", "AC Voltage Applied to an Inductor and a Capacitor", "Series LCR Circuit and Resonance", "Power in AC Circuits and the Power Factor", "Transformers"],
+  "Electromagnetic Waves": ["Displacement Current", "Electromagnetic Waves and their Properties", "Electromagnetic Spectrum"],
+  "Ray Optics and Optical Instruments": ["Reflection by Spherical Mirrors", "Refraction and Total Internal Reflection", "Refraction at Spherical Surfaces and by Lenses", "Refraction Through a Prism", "Optical Instruments"],
+  "Wave Optics": ["Huygens Principle", "Refraction and Reflection of Plane Waves", "Interference and Young's Experiment", "Diffraction", "Polarisation"],
+  "Dual Nature of Radiation and Matter": ["Electron Emission", "Photoelectric Effect and its Experimental Study", "Einstein's Photoelectric Equation and the Photon", "Wave Nature of Matter"],
+  Atoms: ["Alpha-Particle Scattering and Rutherford's Model", "Atomic Spectra", "Bohr Model of the Hydrogen Atom", "Line Spectra of the Hydrogen Atom", "de Broglie's Explanation of Bohr's Postulate"],
+  Nuclei: ["Atomic Masses and Composition of the Nucleus", "Size of the Nucleus", "Mass-Energy and Nuclear Binding Energy", "Nuclear Force", "Radioactivity", "Nuclear Energy"],
+  "Semiconductor Electronics: Materials, Devices and Simple Circuits": ["Classification of Metals, Conductors and Semiconductors", "Intrinsic and Extrinsic Semiconductors", "p-n Junction and the Semiconductor Diode", "Application of Junction Diode as a Rectifier", "Special Purpose p-n Junction Diodes", "Logic Gates"],
+  // Chemistry
+  Solutions: ["Types of Solutions", "Expressing Concentration of Solutions", "Solubility", "Vapour Pressure of Liquid Solutions", "Ideal and Non-ideal Solutions", "Colligative Properties and Determination of Molar Mass", "Abnormal Molar Masses"],
+  Electrochemistry: ["Electrochemical Cells", "Galvanic Cells", "Nernst Equation", "Conductance of Electrolytic Solutions", "Electrolytic Cells and Electrolysis", "Batteries", "Fuel Cells", "Corrosion"],
+  "Chemical Kinetics": ["Rate of a Chemical Reaction", "Factors Influencing Rate of a Reaction", "Integrated Rate Equations", "Temperature Dependence of the Rate of a Reaction", "Collision Theory of Chemical Reactions"],
+  "d- and f-Block Elements": ["Position in the Periodic Table", "Electronic Configurations of the d-Block Elements", "General Properties of the Transition Elements (d-Block)", "Some Important Compounds of Transition Elements", "The Lanthanoids", "The Actinoids"],
+  "Coordination Compounds": ["Werner's Theory of Coordination Compounds", "Definitions of Some Important Terms Pertaining to Coordination Compounds", "Nomenclature of Coordination Compounds", "Isomerism in Coordination Compounds", "Bonding in Coordination Compounds", "Bonding in Metal Carbonyls", "Importance and Applications of Coordination Compounds"],
+  "Haloalkanes and Haloarenes": ["Classification", "Nomenclature", "Nature of C-X Bond", "Methods of Preparation of Haloalkanes", "Preparation of Haloarenes", "Physical Properties", "Chemical Reactions", "Polyhalogen Compounds"],
+  "Alcohols, Phenols and Ethers": ["Classification", "Nomenclature", "Alcohols and Phenols", "Ethers"],
+  "Aldehydes, Ketones and Carboxylic Acids": ["Nomenclature and Structure of Carbonyl Group", "Preparation of Aldehydes and Ketones", "Physical Properties of Aldehydes and Ketones", "Chemical Reactions of Aldehydes and Ketones", "Nomenclature and Structure of Carboxyl Group", "Methods of Preparation of Carboxylic Acids", "Physical Properties of Carboxylic Acids", "Chemical Reactions of Carboxylic Acids"],
+  "Organic Compounds containing Nitrogen": ["Classification", "Nomenclature", "Preparation of Amines", "Physical Properties of Amines", "Chemical Reactions of Amines", "Cyanides and Isocyanides", "Chemical Reactions of Diazonium Salts", "Importance of Diazonium Salts in Synthesis of Aromatic Compounds"],
+  Biomolecules: ["Carbohydrates", "Proteins", "Enzymes", "Vitamins", "Nucleic Acids"],
+};
