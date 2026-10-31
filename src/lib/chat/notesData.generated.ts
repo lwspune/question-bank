@@ -488,7 +488,8 @@ export const NOTES_DATA_KEYS: readonly string[] = [
   "ssc-cgl-english/spotting-errors",
   "ssc-cgl-english/cloze-test",
   "ssc-cgl-english/grammar",
-  "ssc-cgl-english/vocabulary"
+  "ssc-cgl-english/vocabulary",
+  "ssc-cgl-history/modern-india"
 ];
 
 export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, SubtopicNote>>> = {
@@ -977,4 +978,5 @@ export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, Sub
   "ssc-cgl-english/cloze-test": () => import("@/app/notes/ssc-cgl-english/cloze-test/_data").then((m) => m.SSC_CLOZE_TEST_NOTES),
   "ssc-cgl-english/grammar": () => import("@/app/notes/ssc-cgl-english/grammar/_data").then((m) => m.SSC_GRAMMAR_NOTES),
   "ssc-cgl-english/vocabulary": () => import("@/app/notes/ssc-cgl-english/vocabulary/_data").then((m) => m.SSC_VOCABULARY_NOTES),
+  "ssc-cgl-history/modern-india": () => import("@/app/notes/ssc-cgl-history/modern-india/_data").then((m) => m.SSC_MODERN_INDIA_NOTES),
 };

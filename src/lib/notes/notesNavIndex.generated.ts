@@ -3398,5 +3398,12 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "SSC CGL English",
     "chapterSlug": "vocabulary",
     "subtopicCount": 5
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-history",
+    "subjectDisplay": "SSC CGL History",
+    "chapterSlug": "modern-india",
+    "subtopicCount": 8
   }
 ];

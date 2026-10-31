@@ -2211,6 +2211,11 @@ import {
   SSC_VOCABULARY_NOTES,
   SSC_VOCABULARY_SLUGS,
 } from "@/app/notes/ssc-cgl-english/vocabulary/_data";
+import {
+  SSC_MODERN_INDIA_CHAPTER,
+  SSC_MODERN_INDIA_NOTES,
+  SSC_MODERN_INDIA_SLUGS,
+} from "@/app/notes/ssc-cgl-history/modern-india/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -7091,6 +7096,17 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SSC_VOCABULARY_CHAPTER,
     notes: SSC_VOCABULARY_NOTES,
     slugs: SSC_VOCABULARY_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "History",
+    subjectRoute: "ssc-cgl-history",
+    subjectDisplay: "SSC CGL History",
+    chapterSlug: "modern-india",
+    chipLabel: "Modern India notes",
+    chapter: SSC_MODERN_INDIA_CHAPTER,
+    notes: SSC_MODERN_INDIA_NOTES,
+    slugs: SSC_MODERN_INDIA_SLUGS,
   },
 ];
 
