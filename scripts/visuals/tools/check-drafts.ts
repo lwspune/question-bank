@@ -22,10 +22,16 @@ if (!scene || !files.length) {
 let ok = 0;
 let bad = 0;
 for (const f of files) {
-  const drafts = JSON.parse(readFileSync(f, "utf8")) as { n?: number; id?: string; skip?: boolean; params?: unknown; answer?: { value?: number } }[];
+  const drafts = JSON.parse(readFileSync(f, "utf8")) as { n?: number; id?: string; skip?: boolean; params?: unknown; answer?: { value?: number; label?: string } }[];
   for (const d of drafts) {
     if (d.skip) continue;
     const tag = `#${d.n ?? "?"} ${String(d.id ?? "").slice(0, 8)}`;
+    // The assembler's own limit: a longer label drops the draft there.
+    if (typeof d.answer?.label !== "string" || !d.answer.label.trim() || d.answer.label.length > 32) {
+      console.log(`${tag}: answer.label must be 1 to 32 characters`);
+      bad++;
+      continue;
+    }
     const p = scene.parse(d.params);
     if (p && typeof p === "object" && "error" in p) {
       console.log(`${tag}: ${(p as { error: string }).error}`);
