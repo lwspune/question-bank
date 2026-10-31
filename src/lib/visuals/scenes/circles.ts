@@ -58,6 +58,7 @@ interface Option {
 
 export interface CircleParams {
   sets: Circle[];
+  labels: LabelBox[];
   statements: Line[];
   conclusions: Conclusion[];
   options: Option[];
@@ -122,7 +123,65 @@ function readCircle(raw: unknown, f: string): Circle {
   return c;
 }
 
-const labelPos = (c: Circle): [number, number] => c.labelAt ?? [c.x, c.y - c.r + 3.6];
+export interface LabelBox {
+  id: string;
+  /** Centre x and baseline y, in px. */
+  x: number;
+  y: number;
+  x0: number;
+  x1: number;
+  y0: number;
+  y1: number;
+}
+
+/**
+ * Where each label goes, in px: inside its own circle where the curve leaves
+ * room (top, then centre, then bottom), else just outside it (above, below).
+ * The first spot that crosses no circle's outline, sits in no circle that does
+ * not hold its own, and touches no other label wins (owner, 2026-10-30: a
+ * line through a label reads as struck out). `labelAt` is tried alone.
+ */
+export function labelBoxes(sets: readonly Pick<Circle, "id" | "label" | "x" | "y" | "r" | "labelAt">[]): LabelBox[] {
+  const px = sets.map((c) => ({ id: c.id, cx: OX + c.x * K, cy: TOP + c.y * K, R: c.r * K }));
+  const placed: LabelBox[] = [];
+  const crosses = (b: LabelBox, c: (typeof px)[number]) => {
+    const corners = [[b.x0, b.y0], [b.x1, b.y0], [b.x0, b.y1], [b.x1, b.y1]].map(([x, y]) => Math.hypot(x - c.cx, y - c.cy));
+    const nx = Math.max(b.x0, Math.min(c.cx, b.x1));
+    const ny = Math.max(b.y0, Math.min(c.cy, b.y1));
+    const inside = corners.every((d) => d <= c.R - 1.5);
+    const outside = Math.hypot(nx - c.cx, ny - c.cy) >= c.R + 1.5;
+    return { inside, crossing: !inside && !outside };
+  };
+  sets.forEach((c, i) => {
+    const me = px[i];
+    const w = c.label.length * 6.4;
+    const box = (x: number, y: number): LabelBox => ({ id: c.id, x, y, x0: x - w / 2, x1: x + w / 2, y0: y - 9, y1: y + 3 });
+    const half = w / 2 + 3;
+    const cands: LabelBox[] = [];
+    if (c.labelAt) cands.push(box(OX + c.labelAt[0] * K, TOP + c.labelAt[1] * K));
+    else {
+      if (half < me.R - 2) {
+        const d = Math.sqrt(me.R * me.R - half * half) - 1;
+        cands.push(box(me.cx, me.cy - d + 10), box(me.cx, me.cy + 4), box(me.cx, me.cy + d - 4));
+      }
+      cands.push(box(me.cx, me.cy - me.R - 5), box(me.cx, me.cy + me.R + 12));
+    }
+    const holdsMe = (o: (typeof px)[number]) => Math.hypot(o.cx - me.cx, o.cy - me.cy) + me.R <= o.R + 0.5;
+    const ok = cands.find(
+      (b) =>
+        b.x0 >= OX - 4 && b.x1 <= OX + 100 * K + 4 && b.y0 >= TOP - 6 && b.y1 <= TOP + PIC + 6 &&
+        px.every((o) => {
+          const r = crosses(b, o);
+          if (r.crossing) return false;
+          return o === me || !r.inside || holdsMe(o);
+        }) &&
+        placed.every((q) => !(b.x0 < q.x1 && q.x0 < b.x1 && b.y0 < q.y1 && q.y0 < b.y1)),
+    );
+    if (!ok) throw new ParamError(c.labelAt ? `the label of ${c.id} at labelAt crosses an outline or another label` : `no place for the label of ${c.id} clear of every outline: shorten it, make its circle bigger, or give labelAt`);
+    placed.push(ok);
+  });
+  return placed;
+}
 
 export const circles: Scene<CircleParams> = {
   id: "circles",
@@ -142,17 +201,7 @@ export const circles: Scene<CircleParams> = {
       for (const s of statements) if (!shows(byId, s)) throw new ParamError(`the picture does not show "${s.show}"`);
       for (const s of sets) if (!statements.some((x) => x.a === s.id || x.b === s.id) && !(o.conclusions as unknown[] | undefined)?.length) throw new ParamError(`${s.id} is in no statement`);
 
-      // Labels must not touch each other (11 px bold, 6.4 px a character).
-      const boxes = sets.map((s) => {
-        const [lx, ly] = labelPos(s);
-        const w = s.label.length * 6.4;
-        return { id: s.id, x0: OX + lx * K - w / 2, x1: OX + lx * K + w / 2, y0: TOP + ly * K - 11, y1: TOP + ly * K + 3 };
-      });
-      for (let i = 0; i < boxes.length; i++)
-        for (let j = i + 1; j < boxes.length; j++) {
-          const [p, q] = [boxes[i], boxes[j]];
-          if (p.x0 < q.x1 && q.x0 < p.x1 && p.y0 < q.y1 && q.y0 < p.y1) throw new ParamError(`the labels of ${p.id} and ${q.id} touch: move one with labelAt`);
-        }
+      const labels = labelBoxes(sets);
 
       const cRaw = o.conclusions ?? [];
       if (!Array.isArray(cRaw) || cRaw.length > 4) throw new ParamError("conclusions must be a list of up to 4");
@@ -219,7 +268,7 @@ export const circles: Scene<CircleParams> = {
         const hits = options.map((op, i) => (holds(op) ? i + 1 : 0)).filter(Boolean);
         answer = hits.length === 1 ? hits[0] : 0;
       }
-      return { sets, statements, conclusions, options, figure, either: verdict.either, answer };
+      return { sets, labels, statements, conclusions, options, figure, either: verdict.either, answer };
     }),
 
   check: (p) => p.answer,
@@ -258,8 +307,8 @@ export const circles: Scene<CircleParams> = {
       const tone = TONES[i % TONES.length];
       out.push({ kind: "circle", cx: X(s.x), cy: Y(s.y), r: round(s.r * K), fill: tone, opacity: 0.08 * v });
       out.push({ kind: "circle", cx: X(s.x), cy: Y(s.y), r: round(s.r * K * (0.85 + 0.15 * v)), stroke: tone, width: 2, opacity: v });
-      const [lx, ly] = labelPos(s);
-      out.push(text(X(lx), Y(ly), s.label, { tone, size: 11, weight: 700, anchor: "middle", opacity: v }));
+      const lb = p.labels[i];
+      out.push(text(round(lb.x), round(lb.y), s.label, { tone, size: 11, weight: 700, anchor: "middle", opacity: v }));
     });
 
     // Counter-pictures: the moved circle, dashed, while its conclusion plays.
@@ -294,6 +343,9 @@ export const circles: Scene<CircleParams> = {
     return out;
 
     function prog(beat: string) {
+      // A statement or conclusion shows when its own beat plays (solutions take
+      // conclusions in any order), or at the answer if no step named it.
+      if (beat !== "answer") return played.includes(beat) ? progressOf(beat, played, t) : played.includes("answer") ? 1 : 0;
       const later = BEATS.slice(BEATS.indexOf(beat) + 1);
       if (!played.includes(beat) && later.some((b) => played.includes(b))) return 1;
       return progressOf(beat, played, t);

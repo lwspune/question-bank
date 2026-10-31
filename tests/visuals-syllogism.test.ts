@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { judge, type Claim } from "@/lib/visuals/syllogism";
 import { getScene } from "@/lib/visuals/registry";
+import { labelBoxes } from "@/lib/visuals/scenes/circles";
 import type { Shape } from "@/lib/visuals/types";
 
 // Syllogisms (owner, 2026-10-31): a conclusion FOLLOWS when it holds in every
@@ -150,6 +151,53 @@ describe("circles scene", () => {
     expect(c).toMatch(/does not follow/);
     expect(c).not.toMatch(/option/);
     expect(texts(shapes, ["s1", "s2", "c1", "c2", "answer"]).join(" | ")).toMatch(/option A/);
+  });
+
+  it("shows a conclusion only when its own beat plays, whatever order the solution takes them in", () => {
+    const shown = texts(shapes, ["s1", "s2", "c2"]).join(" | ");
+    expect(shown).toMatch(/II\. No triangle/);
+    expect(shown).not.toMatch(/I\. Some triangles/);
+    expect(texts(shapes, ["s1", "s2", "c2", "answer"]).join(" | ")).toMatch(/I\. Some triangles/);
+  });
+
+  it("places every label clear of every circle's outline and of the other labels", () => {
+    // 029c9353: 'Woman' sat on its own circle's top edge; 36e97931: 'Brothers' sat on the Fathers circle.
+    const pics = [
+      [
+        { id: "humans", label: "Humans", x: 26, y: 30, r: 24 },
+        { id: "woman", label: "Woman", x: 26, y: 36, r: 11 },
+        { id: "lions", label: "Lions", x: 76, y: 28, r: 16 },
+      ],
+      [
+        { id: "males", label: "Males", x: 50, y: 30, r: 27 },
+        { id: "fathers", label: "Fathers", x: 40, y: 32, r: 12 },
+        { id: "brothers", label: "Brothers", x: 57, y: 32, r: 12 },
+      ],
+      [
+        { id: "E", label: "Electronics", x: 50, y: 30, r: 27 },
+        { id: "L", label: "Laptops", x: 38, y: 34, r: 12 },
+        { id: "M", label: "Microwaves", x: 62, y: 34, r: 12 },
+      ],
+    ];
+    // A label no spot can hold is refused, not drawn across a line.
+    expect(() => labelBoxes([pics[2][0], pics[2][1], { ...pics[2][2], label: "Microwave ovens" }])).toThrow(/no place for the label of M/);
+    for (const sets of pics) {
+      const boxes = labelBoxes(sets);
+      for (const b of boxes) {
+        for (const c of sets) {
+          const cx = 10 + c.x * 3.4;
+          const cy = 26 + c.y * 3.4;
+          const R = c.r * 3.4;
+          const corners = [[b.x0, b.y0], [b.x1, b.y0], [b.x0, b.y1], [b.x1, b.y1]].map(([x, y]) => Math.hypot(x - cx, y - cy));
+          const nx = Math.max(b.x0, Math.min(cx, b.x1));
+          const ny = Math.max(b.y0, Math.min(cy, b.y1));
+          const inside = corners.every((d) => d <= R - 1);
+          const outside = Math.hypot(nx - cx, ny - cy) >= R + 1;
+          expect(inside || outside, `${b.id} label on ${c.id}'s outline`).toBe(true);
+        }
+        for (const o of boxes) if (o !== b) expect(b.x0 < o.x1 && o.x0 < b.x1 && b.y0 < o.y1 && o.y0 < b.y1, `${b.id} touches ${o.id}`).toBe(false);
+      }
+    }
   });
 
   it("answers a pick-the-diagram question with the figure the drafter names, once the drawing fits every relation", () => {

@@ -52,10 +52,12 @@ That is the real question ef10c2ba, keyed A. Or, when it does not fit:
 
 2 to 4 sets (skip a question with 5 or more terms), each a circle in a box
 100 wide and 60 tall: centre `x`, `y`, radius `r` (3 to 40), wholly inside the
-box. `label` (at most 16 characters) is drawn just inside the circle's top;
-move it with `"labelAt": [x, y]` when two labels would touch (the scene
-refuses touching labels; a label is 11 px bold, 1 unit = 3.4 px, about 1.9
-units a character, 4 units tall).
+box. `label` is at most 16 characters. The scene places every label itself:
+inside its circle where the curve leaves room, else just outside, never on
+any circle's outline or on another label. When it finds no spot it refuses
+the picture: shorten the label ("Microwaves", "Leafy veg"), make the circle
+bigger, or give `"labelAt": [x, y]` (a label is 11 px bold, 1 unit = 3.4 px,
+about 1.9 units a character, 4 units tall).
 
 Draw the plainest picture the statements allow: a set inside another for
 "all", apart for "no", two circles crossing for "some". Keep circles clear of
@@ -74,7 +76,8 @@ Each is `{ form, a, b, show, step }`:
 - `show` (at most 44 characters, plain text) as the question words it; a
   conclusion starts with its number: "I. Some triangles are not circles".
 - `step`: statements "s1".."s4" (one beat each, or share one), conclusions
-  "c1".."c4" in order.
+  "c1".."c4". Each shows when its own beat plays, so play them in the order
+  the solution discusses them.
 
 A conclusion that does NOT follow may carry `alt`: one circle moved (`set`,
 `x`, `y`, `r`) to a place where every statement still holds and the
