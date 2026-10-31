@@ -6,6 +6,7 @@
 import { algebraSteps } from "./scenes/algebraSteps";
 import { circleArc } from "./scenes/circleArc";
 import { coordGeometry } from "./scenes/coordGeometry";
+import { familyTree } from "./scenes/familyTree";
 import { functionGraph } from "./scenes/functionGraph";
 import { quadraticFamily } from "./scenes/quadraticFamily";
 import { rotation } from "./scenes/rotation";
@@ -35,6 +36,7 @@ export const SCENES: Record<string, Scene<any>> = {
   switchCircuit,
   setClaim,
   letterStrip,
+  familyTree,
 };
 
 export function getScene(id: string): Scene<any> | undefined {

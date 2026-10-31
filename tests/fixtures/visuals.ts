@@ -458,6 +458,40 @@ export const STRIP_VISUAL = {
   answer: { value: 3, label: "option C: IDMHDQNVCT" },
 };
 
+export const TREE_SOLUTION = String.raw`R # S: R is the father of S. S & T: S is the husband of T. R is the father of T's husband, so R is T's father-in-law.`;
+
+/** SSC CGL 42a4fef8: R # S & T, # "father of", & "husband of": R is T's father-in-law, option C. */
+export const TREE_VISUAL = {
+  v: 1,
+  scene: "familyTree",
+  params: {
+    people: [
+      { id: "R", sex: "m" },
+      { id: "S", sex: "m" },
+      { id: "T", sex: "f" },
+    ],
+    facts: [
+      { rel: "parent", a: "R", b: "S", step: "f1" },
+      { rel: "spouse", a: "S", b: "T", step: "f2" },
+    ],
+    rows: [["R"], ["S", "T"]],
+    ask: { who: "R", of: "T" },
+    options: [
+      { text: "R is the father of T", means: { rel: "father" } },
+      { text: "R is the brother of T", means: { rel: "brother" } },
+      { text: "R is the father-in-law of T", means: { rel: "father-in-law" } },
+      { text: "R is the husband of T", means: { rel: "husband" } },
+    ],
+  },
+  steps: [
+    { from: 0, beats: ["f1"] },
+    { from: 1, beats: ["f2"] },
+    { from: 2, beats: ["path", "answer"] },
+  ],
+  fingerprint: solutionFingerprint(TREE_SOLUTION),
+  answer: { value: 3, label: "R is T's father-in-law" },
+};
+
 export const FIXTURES = [
   { name: "rotation", visual: ROTATION_VISUAL, solution: ROTATION_SOLUTION },
   { name: "circleArc", visual: ARC_VISUAL, solution: ARC_SOLUTION },
@@ -480,4 +514,5 @@ export const FIXTURES = [
   { name: "switchCircuit", visual: CIRCUIT_VISUAL, solution: CIRCUIT_SOLUTION },
   { name: "setClaim", visual: SET_VISUAL, solution: SET_SOLUTION },
   { name: "letterStrip", visual: STRIP_VISUAL, solution: STRIP_SOLUTION },
+  { name: "familyTree", visual: TREE_VISUAL, solution: TREE_SOLUTION },
 ] as const;
