@@ -124,7 +124,12 @@ later, each beat once, never more steps than sentences (merge beats).
 ## When to skip
 
 - The options are coded expressions ("S * F & J ! I # M"), or the question
-  counts people, or asks which statement is true about several pairs at once.
+  counts people, or asks for the statement that is NOT correct (several hold).
+  "Which statement is correct", each option about its own pair, is fine: give
+  each option its own who/of; exactly one must hold.
+- The solution places someone only as one possibility ("such as") where the
+  question allows another place (a sister or a cousin; a daughter or a niece):
+  the tree would show a guess as fact.
 - An option uses a word not in the list (great-uncle, co-brother), or the key
   uses a listed word more loosely than it is defined here (sister-in-law for
   a cousin's wife): name the word.

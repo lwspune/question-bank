@@ -306,7 +306,12 @@ export const familyTree: Scene<TreeParams> = {
     let y = L.treeBottom + 16 + 12;
     const name = (id: string) => label(p, id);
     if (pa > 0.3) {
-      const words = p.route.length ? `${name(p.ask.of)}'s ${p.route.map((r) => r.step).join("'s ")} is ${name(p.ask.who)}` : `no route from ${name(p.ask.of)} to ${name(p.ask.who)}`;
+      const self = ({ m: "himself", f: "herself" } as Record<string, string>)[p.people.find((x) => x.id === p.ask.who)?.sex ?? "?"] ?? "themself";
+      const words = p.route.length
+        ? `${name(p.ask.of)}'s ${p.route.map((r) => r.step).join("'s ")} is ${name(p.ask.who)}`
+        : p.ask.who === p.ask.of
+          ? `${name(p.ask.who)} ${self}`
+          : `no route from ${name(p.ask.of)} to ${name(p.ask.who)}`;
       out.push(text(L.W / 2, y, words, { tone: "good", size: words.length > 46 ? 10.5 : 12, weight: 700, anchor: "middle", opacity: Math.min(1, (pa - 0.3) * 3) }));
     }
     y += LINE;

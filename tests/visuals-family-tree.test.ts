@@ -144,6 +144,26 @@ describe("familyTree scene", () => {
     expect(texts(raw, ["f1", "f2", "f3", "f4", "f5", "path"]).join(" | ")).toMatch(/2's mother is 1/);
   });
 
+  it("says a person is themself, not that there is no route (Azad himself)", () => {
+    const self = {
+      people: [
+        { id: "Azad", sex: "m" },
+        { id: "dad", sex: "m" },
+      ],
+      facts: [{ rel: "parent", a: "dad", b: "Azad", step: "f1" }],
+      rows: [["dad"], ["Azad"]],
+      ask: { who: "Azad", of: "Azad" },
+      options: [
+        { text: "Azad himself", means: { self: true } },
+        { text: "His father", means: { rel: "father" } },
+      ],
+    };
+    expect(value(self)).toBe(1);
+    const path = texts(self, ["f1", "path"]).join(" | ");
+    expect(path).toMatch(/Azad himself/);
+    expect(path).not.toMatch(/no route/);
+  });
+
   it("gives no answer when several options hold", () => {
     expect(value({ ...coded, options: [...coded.options.slice(0, 3), { text: "R is the father-in-law", means: { rel: "father-in-law" } }] })).toBe(0);
   });
