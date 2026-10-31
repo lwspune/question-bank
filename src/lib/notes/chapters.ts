@@ -2226,6 +2226,21 @@ import {
   SSC_MEDIEVAL_INDIA_NOTES,
   SSC_MEDIEVAL_INDIA_SLUGS,
 } from "@/app/notes/ssc-cgl-history/medieval-india/_data";
+import {
+  SSC_GOVERNMENT_STRUCTURE_CHAPTER,
+  SSC_GOVERNMENT_STRUCTURE_NOTES,
+  SSC_GOVERNMENT_STRUCTURE_SLUGS,
+} from "@/app/notes/ssc-cgl-polity/government-structure/_data";
+import {
+  SSC_CONSTITUTION_CHAPTER,
+  SSC_CONSTITUTION_NOTES,
+  SSC_CONSTITUTION_SLUGS,
+} from "@/app/notes/ssc-cgl-polity/constitution/_data";
+import {
+  SSC_RIGHTS_DPSP_LOCAL_CHAPTER,
+  SSC_RIGHTS_DPSP_LOCAL_NOTES,
+  SSC_RIGHTS_DPSP_LOCAL_SLUGS,
+} from "@/app/notes/ssc-cgl-polity/rights-dpsp-local/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -7139,6 +7154,41 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SSC_MEDIEVAL_INDIA_CHAPTER,
     notes: SSC_MEDIEVAL_INDIA_NOTES,
     slugs: SSC_MEDIEVAL_INDIA_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Polity",
+    subjectRoute: "ssc-cgl-polity",
+    subjectDisplay: "SSC CGL Polity",
+    chapterSlug: "government-structure",
+    chipLabel: "Government Structure notes",
+    titleName: "Government Structure",
+    chapter: SSC_GOVERNMENT_STRUCTURE_CHAPTER,
+    notes: SSC_GOVERNMENT_STRUCTURE_NOTES,
+    slugs: SSC_GOVERNMENT_STRUCTURE_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Polity",
+    subjectRoute: "ssc-cgl-polity",
+    subjectDisplay: "SSC CGL Polity",
+    chapterSlug: "constitution",
+    chipLabel: "Indian Constitution notes",
+    titleName: "Indian Constitution",
+    chapter: SSC_CONSTITUTION_CHAPTER,
+    notes: SSC_CONSTITUTION_NOTES,
+    slugs: SSC_CONSTITUTION_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Polity",
+    subjectRoute: "ssc-cgl-polity",
+    subjectDisplay: "SSC CGL Polity",
+    chapterSlug: "rights-dpsp-local",
+    chipLabel: "Fundamental Rights, DPSP and Local Governance notes",
+    chapter: SSC_RIGHTS_DPSP_LOCAL_CHAPTER,
+    notes: SSC_RIGHTS_DPSP_LOCAL_NOTES,
+    slugs: SSC_RIGHTS_DPSP_LOCAL_SLUGS,
   },
 ];
 
