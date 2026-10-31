@@ -1,0 +1,891 @@
+{
+  "//": "Assembled from agent drafts (sketch).",
+  "visuals": [
+    {
+      "id": "09b4ef11-1883-4748-a0c2-5293811ac040",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "Ln": 12,
+            "Wd": 10,
+            "Ht": 6,
+            "T": "Ln*Wd*Ht",
+            "R": "min(min(Ln, Wd), Ht)/2",
+            "B": "4/3*pi*R^3",
+            "U": "T - B"
+          },
+          "view": {
+            "x": [
+              -2.5,
+              14.5
+            ],
+            "y": [
+              -5.6,
+              7.15
+            ]
+          },
+          "title": "tank seen side-on",
+          "points": {
+            "A": [
+              0,
+              0
+            ],
+            "B": [
+              "Ln",
+              0
+            ],
+            "C": [
+              "Ln",
+              "Ht"
+            ],
+            "D": [
+              0,
+              "Ht"
+            ],
+            "O": [
+              "Ln/2",
+              "Ht/2"
+            ],
+            "P": [
+              "Ln/2+R",
+              "Ht/2"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "points": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                "Ln/2",
+                0
+              ],
+              "text": "12 cm",
+              "step": "s1",
+              "pos": "s"
+            },
+            {
+              "kind": "label",
+              "at": [
+                "Ln",
+                "Ht/2"
+              ],
+              "text": "6 cm",
+              "step": "s1",
+              "pos": "e"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -2.3,
+                -2.1
+              ],
+              "text": "tank = 12 × 10 × 6 = {T} cm³",
+              "step": "s1",
+              "pos": "e"
+            },
+            {
+              "kind": "circle",
+              "center": "O",
+              "r": "R",
+              "step": "s2",
+              "tone": "brand"
+            },
+            {
+              "kind": "point",
+              "at": "O",
+              "step": "s2",
+              "tone": "brand"
+            },
+            {
+              "kind": "segment",
+              "from": "O",
+              "to": "P",
+              "step": "s2",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                "Ln/2+R/2",
+                "Ht/2"
+              ],
+              "text": "r = {R}",
+              "step": "s2",
+              "pos": "n",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -2.3,
+                -3.6
+              ],
+              "text": "ball: d = 6, V = 4/3 π × 27 = 36π",
+              "step": "s2",
+              "pos": "e"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -2.3,
+                -5.1
+              ],
+              "text": "empty = (720 − 36π) cm³",
+              "step": "s3",
+              "pos": "e",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "T = 720",
+            "2*R = Ht",
+            "2*R < Wd",
+            "B = 36*pi"
+          ],
+          "answer": "U"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "7221f094",
+        "answer": {
+          "value": 606.9026644707675,
+          "label": "(720 − 36π) cm³"
+        }
+      }
+    },
+    {
+      "id": "0e8845c0-361a-4bb0-88ea-cb459eadaba5",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "d": 48,
+            "r": "d/2",
+            "hh": 10,
+            "l": "sqrt(r^2 + hh^2)",
+            "A": "pi*r*l"
+          },
+          "view": {
+            "x": [
+              -27,
+              27
+            ],
+            "y": [
+              -12,
+              16
+            ]
+          },
+          "title": "cone seen side-on",
+          "points": {
+            "O": [
+              0,
+              0
+            ],
+            "A": [
+              "r",
+              0
+            ],
+            "B": [
+              "-r",
+              0
+            ],
+            "P": [
+              0,
+              "hh"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "points": [
+                "B",
+                "A",
+                "P"
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": "O",
+              "to": "P",
+              "step": "s1",
+              "tone": "muted",
+              "dash": true
+            },
+            {
+              "kind": "angle",
+              "at": "O",
+              "from": "A",
+              "to": "P",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                "r/2",
+                0
+              ],
+              "text": "r = 24",
+              "step": "s1",
+              "pos": "s"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.6,
+                3.8
+              ],
+              "text": "h = 10",
+              "step": "s1",
+              "pos": "e"
+            },
+            {
+              "kind": "segment",
+              "from": "P",
+              "to": "A",
+              "step": "s2",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                "r/2",
+                "hh/2"
+              ],
+              "text": "l = 26",
+              "step": "s2",
+              "pos": "ne",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -26,
+                -5
+              ],
+              "text": "l = √(24² + 10²) = √676 = 26 m",
+              "step": "s2",
+              "pos": "e"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -26,
+                -9
+              ],
+              "text": "CSA = π × 24 × 26 = 624π m²",
+              "step": "s3",
+              "pos": "e",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "l = 26",
+            "l^2 = r^2 + hh^2",
+            "A = 624*pi"
+          ],
+          "answer": "A"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "06353809",
+        "answer": {
+          "value": 1960.3538158400308,
+          "label": "624π m²"
+        }
+      }
+    },
+    {
+      "id": "196ebeb7-7388-4b63-89d5-1c102bec9fee",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "hh": 24,
+            "V": 1232,
+            "r2": "V*3*7/(22*hh)",
+            "r": "sqrt(r2)",
+            "l": "sqrt(r^2 + hh^2)",
+            "T": "22/7*r*(l + r)"
+          },
+          "view": {
+            "x": [
+              -9,
+              31
+            ],
+            "y": [
+              -3,
+              27
+            ]
+          },
+          "title": "cone seen side-on",
+          "points": {
+            "O": [
+              0,
+              0
+            ],
+            "A": [
+              "r",
+              0
+            ],
+            "B": [
+              "-r",
+              0
+            ],
+            "P": [
+              0,
+              "hh"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "points": [
+                "B",
+                "A",
+                "P"
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": "O",
+              "to": "P",
+              "step": "s1",
+              "tone": "muted",
+              "dash": true
+            },
+            {
+              "kind": "angle",
+              "at": "O",
+              "from": "A",
+              "to": "P",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.3,
+                10
+              ],
+              "text": "h",
+              "step": "s1",
+              "pos": "e"
+            },
+            {
+              "kind": "label",
+              "at": [
+                "r/2",
+                0
+              ],
+              "text": "r",
+              "step": "s1",
+              "pos": "s"
+            },
+            {
+              "kind": "label",
+              "at": [
+                8.5,
+                25.2
+              ],
+              "text": "h = 24, V = 1232 cm³",
+              "step": "s1",
+              "pos": "e"
+            },
+            {
+              "kind": "label",
+              "at": [
+                8.5,
+                21.7
+              ],
+              "text": "r² = 1232 × 7/176 = {r2}",
+              "step": "s1",
+              "pos": "e"
+            },
+            {
+              "kind": "label",
+              "at": [
+                8.5,
+                18.2
+              ],
+              "text": "r = {r} cm",
+              "step": "s1",
+              "pos": "e"
+            },
+            {
+              "kind": "segment",
+              "from": "P",
+              "to": "A",
+              "step": "s2",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                3.8,
+                12.4
+              ],
+              "text": "l",
+              "step": "s2",
+              "pos": "e",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                8.5,
+                14.7
+              ],
+              "text": "l = √(24² + 7²) = {l} cm",
+              "step": "s2",
+              "pos": "e",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                8.5,
+                11.2
+              ],
+              "text": "TSA = πr(l + r)",
+              "step": "s3",
+              "pos": "e"
+            },
+            {
+              "kind": "label",
+              "at": [
+                8.5,
+                7.7
+              ],
+              "text": "= 22/7 × 7 × 32",
+              "step": "s3",
+              "pos": "e"
+            },
+            {
+              "kind": "label",
+              "at": [
+                8.5,
+                4.2
+              ],
+              "text": "= 704 cm²",
+              "step": "s3",
+              "pos": "e",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "r = 7",
+            "l = 25",
+            "1/3*22/7*r^2*hh = V",
+            "l^2 = r^2 + hh^2"
+          ],
+          "answer": "T"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "b52d5049",
+        "answer": {
+          "value": 704,
+          "label": "704 cm²"
+        }
+      }
+    },
+    {
+      "id": "291f0108-1b56-4547-8a2a-49fa31b824c2",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "cap": "88/7",
+            "r": "sqrt(cap/(22/7*1))",
+            "R": "2*r",
+            "M": "22/7*(R^2 - r^2)*1",
+            "M1": "floor(10*M + 0.5)/10"
+          },
+          "view": {
+            "x": [
+              -5,
+              15
+            ],
+            "y": [
+              -11,
+              4.8
+            ]
+          },
+          "title": "pipe end, 1 m long",
+          "points": {
+            "O": [
+              0,
+              0
+            ],
+            "I1": [
+              "-r",
+              0
+            ],
+            "I2": [
+              "r",
+              0
+            ],
+            "Q": [
+              "R*cos(rad(45))",
+              "R*sin(rad(45))"
+            ]
+          },
+          "items": [
+            {
+              "kind": "circle",
+              "center": "O",
+              "r": "r",
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "segment",
+              "from": "I1",
+              "to": "I2",
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0,
+                0
+              ],
+              "text": "d = 4",
+              "step": "s1",
+              "pos": "s",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -4.8,
+                -5.6
+              ],
+              "text": "22/7 × r² × 1 = 88/7, r = {r} m",
+              "step": "s1",
+              "pos": "e"
+            },
+            {
+              "kind": "circle",
+              "center": "O",
+              "r": "R",
+              "step": "s2",
+              "tone": "amber"
+            },
+            {
+              "kind": "segment",
+              "from": "O",
+              "to": "Q",
+              "step": "s2",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": "Q",
+              "text": "R = 4",
+              "step": "s2",
+              "pos": "ne",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -4.8,
+                -7.6
+              ],
+              "text": "outer radius R = inner diameter = {R}",
+              "step": "s2",
+              "pos": "e"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -4.8,
+                -9.6
+              ],
+              "text": "π(R² − r²) × 1 = 22/7 × 12 ≈ 37.7",
+              "step": "s3",
+              "pos": "e",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "r = 2",
+            "R = 4",
+            "M = 264/7",
+            "M1 = 37.7"
+          ],
+          "answer": "M1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "736ec497",
+        "answer": {
+          "value": 37.7,
+          "label": "37.7 cubic units"
+        }
+      }
+    },
+    {
+      "id": "29e4ab4b-7022-46d4-93e2-195150692536",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "l": 5,
+            "r": "l/sqrt(2)",
+            "hh": "r",
+            "V": "1/3*pi*r^2*hh"
+          },
+          "view": {
+            "x": [
+              -4.5,
+              9.5
+            ],
+            "y": [
+              -6.5,
+              4.5
+            ]
+          },
+          "title": "cone seen side-on",
+          "points": {
+            "O": [
+              0,
+              0
+            ],
+            "A": [
+              "r",
+              0
+            ],
+            "B": [
+              "-r",
+              0
+            ],
+            "P": [
+              0,
+              "hh"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "points": [
+                "B",
+                "A",
+                "P"
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": "O",
+              "to": "P",
+              "step": "s1",
+              "tone": "muted",
+              "dash": true
+            },
+            {
+              "kind": "angle",
+              "at": "O",
+              "from": "A",
+              "to": "P",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.15,
+                1.6
+              ],
+              "text": "h",
+              "step": "s1",
+              "pos": "e"
+            },
+            {
+              "kind": "label",
+              "at": [
+                "r/2",
+                0
+              ],
+              "text": "r",
+              "step": "s1",
+              "pos": "s"
+            },
+            {
+              "kind": "segment",
+              "from": "P",
+              "to": "A",
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                1.9,
+                1.9
+              ],
+              "text": "l = 5",
+              "step": "s1",
+              "pos": "ne",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -4.3,
+                -2.2
+              ],
+              "text": "h = r, so l² = 2r² = 25",
+              "step": "s1",
+              "pos": "e"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -4.3,
+                -3.7
+              ],
+              "text": "r = h = 5/√2 cm",
+              "step": "s1",
+              "pos": "e"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -4.3,
+                -5.2
+              ],
+              "text": "V = ⅓πr²h = 125π/(6√2) cm³",
+              "step": "s2",
+              "pos": "e",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "hh = r",
+            "l^2 = r^2 + hh^2",
+            "2*r^2 = 25",
+            "V = 125*pi/(6*sqrt(2))"
+          ],
+          "answer": "V"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "96851680",
+        "answer": {
+          "value": 46.2800306058163,
+          "label": "125π/(6√2) cm³"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

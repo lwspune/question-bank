@@ -1,0 +1,641 @@
+{
+  "//": "Assembled from agent drafts (sketch).",
+  "visuals": [
+    {
+      "id": "e1f1bf3e-a29d-4a20-a647-dc58d03224ac",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "a1": 5,
+            "a2": 9,
+            "a3": 11,
+            "b1": 4,
+            "b2": 8,
+            "b3": 13,
+            "TA": "a1+a2+a3",
+            "TB": "b1+b2+b3",
+            "s": "10/TA"
+          },
+          "view": {
+            "x": [
+              -0.8,
+              12.2
+            ],
+            "y": [
+              -2.2,
+              7.55
+            ]
+          },
+          "points": {
+            "A0": [
+              0,
+              3.4
+            ],
+            "A1": [
+              "TA*s",
+              3.4
+            ],
+            "A2": [
+              "TA*s",
+              4.4
+            ],
+            "A3": [
+              0,
+              4.4
+            ],
+            "DA1": [
+              "a1*s",
+              3.4
+            ],
+            "DA2": [
+              "a1*s",
+              4.4
+            ],
+            "DA3": [
+              "(a1+a2)*s",
+              3.4
+            ],
+            "DA4": [
+              "(a1+a2)*s",
+              4.4
+            ],
+            "B0": [
+              0,
+              0
+            ],
+            "B1": [
+              "TB*s",
+              0
+            ],
+            "B2": [
+              "TB*s",
+              1
+            ],
+            "B3": [
+              0,
+              1
+            ],
+            "DB1": [
+              "b1*s",
+              0
+            ],
+            "DB2": [
+              "b1*s",
+              1
+            ],
+            "DB3": [
+              "(b1+b2)*s",
+              0
+            ],
+            "DB4": [
+              "(b1+b2)*s",
+              1
+            ]
+          },
+          "items": [
+            {
+              "kind": "label",
+              "at": [
+                -0.8,
+                6.6
+              ],
+              "text": "heights 1.55, 1.60, 1.62 m (below 1.65)",
+              "step": "s1",
+              "pos": "e"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                "A0",
+                "A1",
+                "A2",
+                "A3"
+              ],
+              "step": "s2",
+              "tone": "brand"
+            },
+            {
+              "kind": "segment",
+              "from": "DA1",
+              "to": "DA2",
+              "step": "s2"
+            },
+            {
+              "kind": "segment",
+              "from": "DA3",
+              "to": "DA4",
+              "step": "s2"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0,
+                4.9
+              ],
+              "text": "Section A = 5 + 9 + 11 = 25",
+              "step": "s2",
+              "pos": "e"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.511,
+                3.9000000000000004
+              ],
+              "text": "5",
+              "step": "s2",
+              "pos": "e"
+            },
+            {
+              "kind": "label",
+              "at": [
+                3.311,
+                3.9000000000000004
+              ],
+              "text": "9",
+              "step": "s2",
+              "pos": "e"
+            },
+            {
+              "kind": "label",
+              "at": [
+                7.158,
+                3.9000000000000004
+              ],
+              "text": "11",
+              "step": "s2",
+              "pos": "e"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                "B0",
+                "B1",
+                "B2",
+                "B3"
+              ],
+              "step": "s3",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": "DB1",
+              "to": "DB2",
+              "step": "s3"
+            },
+            {
+              "kind": "segment",
+              "from": "DB3",
+              "to": "DB4",
+              "step": "s3"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0,
+                1.5
+              ],
+              "text": "Section B = 4 + 8 + 13 = 25",
+              "step": "s3",
+              "pos": "e"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.311,
+                0.5
+              ],
+              "text": "4",
+              "step": "s3",
+              "pos": "e"
+            },
+            {
+              "kind": "label",
+              "at": [
+                2.711,
+                0.5
+              ],
+              "text": "8",
+              "step": "s3",
+              "pos": "e"
+            },
+            {
+              "kind": "label",
+              "at": [
+                6.758,
+                0.5
+              ],
+              "text": "13",
+              "step": "s3",
+              "pos": "e"
+            },
+            {
+              "kind": "segment",
+              "from": "B2",
+              "to": "A1",
+              "step": "s4",
+              "dash": true,
+              "tone": "good"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -0.6,
+                -1.2
+              ],
+              "text": "25 : 25 = 1 : 1",
+              "step": "s4",
+              "pos": "e",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "TA = 25",
+            "TB = 25",
+            "TA = TB"
+          ],
+          "answer": "TA/TB"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "3fd3765d",
+        "answer": {
+          "value": 1,
+          "label": "25 : 25 = 1 : 1"
+        }
+      }
+    },
+    {
+      "id": "e6756318-7c85-4086-8184-b0f227039166",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "v1": 120,
+            "v2": 150,
+            "v3": 150,
+            "v4": 120,
+            "v5": 120,
+            "T": "v1+v2+v3+v4+v5",
+            "avg": "T/5",
+            "h": "5/v2"
+          },
+          "view": {
+            "x": [
+              -1,
+              12
+            ],
+            "y": [
+              -3,
+              6.75
+            ]
+          },
+          "points": {
+            "P1a": [
+              0,
+              0
+            ],
+            "P1b": [
+              1.4,
+              0
+            ],
+            "P1c": [
+              1.4,
+              "v1*h"
+            ],
+            "P1d": [
+              0,
+              "v1*h"
+            ],
+            "P2a": [
+              2,
+              0
+            ],
+            "P2b": [
+              3.4,
+              0
+            ],
+            "P2c": [
+              3.4,
+              "v2*h"
+            ],
+            "P2d": [
+              2,
+              "v2*h"
+            ],
+            "P3a": [
+              4,
+              0
+            ],
+            "P3b": [
+              5.4,
+              0
+            ],
+            "P3c": [
+              5.4,
+              "v3*h"
+            ],
+            "P3d": [
+              4,
+              "v3*h"
+            ],
+            "P4a": [
+              6,
+              0
+            ],
+            "P4b": [
+              7.4,
+              0
+            ],
+            "P4c": [
+              7.4,
+              "v4*h"
+            ],
+            "P4d": [
+              6,
+              "v4*h"
+            ],
+            "P5a": [
+              8,
+              0
+            ],
+            "P5b": [
+              9.4,
+              0
+            ],
+            "P5c": [
+              9.4,
+              "v5*h"
+            ],
+            "P5d": [
+              8,
+              "v5*h"
+            ],
+            "M1": [
+              -0.4,
+              "avg*h"
+            ],
+            "M2": [
+              9.8,
+              "avg*h"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "points": [
+                "P1a",
+                "P1b",
+                "P1c",
+                "P1d"
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                "P2a",
+                "P2b",
+                "P2c",
+                "P2d"
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                "P3a",
+                "P3b",
+                "P3c",
+                "P3d"
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                "P4a",
+                "P4b",
+                "P4c",
+                "P4d"
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                "P5a",
+                "P5b",
+                "P5c",
+                "P5d"
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.7,
+                0
+              ],
+              "text": "B1",
+              "step": "s1",
+              "pos": "s"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -0.095,
+                2
+              ],
+              "text": "120",
+              "step": "s1",
+              "pos": "e"
+            },
+            {
+              "kind": "label",
+              "at": [
+                2.7,
+                0
+              ],
+              "text": "B2",
+              "step": "s1",
+              "pos": "s"
+            },
+            {
+              "kind": "label",
+              "at": [
+                1.905,
+                2.5
+              ],
+              "text": "150",
+              "step": "s1",
+              "pos": "e"
+            },
+            {
+              "kind": "label",
+              "at": [
+                4.7,
+                0
+              ],
+              "text": "B3",
+              "step": "s1",
+              "pos": "s"
+            },
+            {
+              "kind": "label",
+              "at": [
+                3.905,
+                2.5
+              ],
+              "text": "150",
+              "step": "s1",
+              "pos": "e"
+            },
+            {
+              "kind": "label",
+              "at": [
+                6.7,
+                0
+              ],
+              "text": "B4",
+              "step": "s1",
+              "pos": "s"
+            },
+            {
+              "kind": "label",
+              "at": [
+                5.905,
+                2
+              ],
+              "text": "120",
+              "step": "s1",
+              "pos": "e"
+            },
+            {
+              "kind": "label",
+              "at": [
+                8.7,
+                0
+              ],
+              "text": "B5",
+              "step": "s1",
+              "pos": "s"
+            },
+            {
+              "kind": "label",
+              "at": [
+                7.905,
+                2
+              ],
+              "text": "120",
+              "step": "s1",
+              "pos": "e"
+            },
+            {
+              "kind": "segment",
+              "from": "M1",
+              "to": "M2",
+              "step": "s2",
+              "dash": true,
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                6,
+                4.85
+              ],
+              "text": "average 132",
+              "step": "s2",
+              "pos": "e",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -0.6,
+                -1.4
+              ],
+              "text": "total 660 ÷ 5 = 132",
+              "step": "s2",
+              "pos": "e",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -0.6,
+                -2.4
+              ],
+              "text": "B1 : average = 120 : 132 = 10 : 11",
+              "step": "s3",
+              "pos": "e",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "T = 660",
+            "avg = 132",
+            "v1 < avg"
+          ],
+          "answer": "v1/avg"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "572573cf",
+        "answer": {
+          "value": 0.9090909090909091,
+          "label": "120 : 132 = 10 : 11"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

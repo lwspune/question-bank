@@ -1,0 +1,1297 @@
+{
+  "//": "Assembled from agent drafts (sketch).",
+  "visuals": [
+    {
+      "id": "20ed803c-ffb5-4d3d-a84f-1dd0c7fd3066",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "v1": 80,
+            "v2": 92,
+            "s": "6/v2",
+            "inc": "v2-v1",
+            "pct": "inc*100/v1"
+          },
+          "view": {
+            "x": [
+              0,
+              13.3
+            ],
+            "y": [
+              -3.6,
+              6.9
+            ]
+          },
+          "items": [
+            {
+              "kind": "segment",
+              "from": [
+                0.6,
+                0
+              ],
+              "to": [
+                10.6,
+                0
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  2,
+                  0
+                ],
+                [
+                  4.4,
+                  0
+                ],
+                [
+                  4.4,
+                  "s*v1"
+                ],
+                [
+                  2,
+                  "s*v1"
+                ]
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                3.2,
+                "s*v1"
+              ],
+              "text": "80",
+              "pos": "n",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                3.2,
+                0
+              ],
+              "text": "2021",
+              "pos": "s",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  6.4,
+                  0
+                ],
+                [
+                  8.8,
+                  0
+                ],
+                [
+                  8.8,
+                  "s*v2"
+                ],
+                [
+                  6.4,
+                  "s*v2"
+                ]
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                7.6000000000000005,
+                "s*v2"
+              ],
+              "text": "92",
+              "pos": "n",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                7.6000000000000005,
+                0
+              ],
+              "text": "2022",
+              "pos": "s",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  6.4,
+                  "s*v1"
+                ],
+                [
+                  8.8,
+                  "s*v1"
+                ],
+                [
+                  8.8,
+                  "s*v2"
+                ],
+                [
+                  6.4,
+                  "s*v2"
+                ]
+              ],
+              "step": "s2",
+              "tone": "amber"
+            },
+            {
+              "kind": "segment",
+              "from": [
+                4.4,
+                "s*v1"
+              ],
+              "to": [
+                6.4,
+                "s*v1"
+              ],
+              "dash": true,
+              "step": "s2",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                8.8,
+                "s*(v1+v2)/2"
+              ],
+              "text": "+12",
+              "pos": "e",
+              "step": "s2",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.6,
+                -1.6
+              ],
+              "text": "increase = 92 − 80 = 12",
+              "pos": "e",
+              "step": "s2",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.6,
+                -2.9
+              ],
+              "text": "12/80 × 100 = 15%",
+              "pos": "e",
+              "step": "s2",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "inc = 12",
+            "pct = 15",
+            "v2 > v1"
+          ],
+          "answer": "pct"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "7639772e",
+        "answer": {
+          "value": 15,
+          "label": "15%"
+        }
+      }
+    },
+    {
+      "id": "239e20da-e51e-49ab-ad7d-c96042341a37",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "a1": 95,
+            "a2": 130,
+            "a3": 150,
+            "c1": 184,
+            "c2": 200,
+            "c3": 216,
+            "t1": "a1+a2+a3",
+            "t2": "c1+c2+c3",
+            "kk": "10/t2",
+            "pct": "t1*100/t2"
+          },
+          "view": {
+            "x": [
+              -0.4,
+              12.6
+            ],
+            "y": [
+              -4.3,
+              5.45
+            ]
+          },
+          "items": [
+            {
+              "kind": "label",
+              "at": [
+                0.4,
+                4.62
+              ],
+              "text": "B1 (in lakh)",
+              "pos": "e",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  "0.4",
+                  3
+                ],
+                [
+                  "0.4+(a1)*kk",
+                  3
+                ],
+                [
+                  "0.4+(a1)*kk",
+                  4
+                ],
+                [
+                  "0.4",
+                  4
+                ]
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.55,
+                3.5
+              ],
+              "text": "95",
+              "pos": "e",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  "0.4+(a1)*kk",
+                  3
+                ],
+                [
+                  "0.4+(a1+a2)*kk",
+                  3
+                ],
+                [
+                  "0.4+(a1+a2)*kk",
+                  4
+                ],
+                [
+                  "0.4+(a1)*kk",
+                  4
+                ]
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                2.27,
+                3.5
+              ],
+              "text": "130",
+              "pos": "e",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  "0.4+(a1+a2)*kk",
+                  3
+                ],
+                [
+                  "0.4+(a1+a2+a3)*kk",
+                  3
+                ],
+                [
+                  "0.4+(a1+a2+a3)*kk",
+                  4
+                ],
+                [
+                  "0.4+(a1+a2)*kk",
+                  4
+                ]
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                4.6,
+                3.5
+              ],
+              "text": "150",
+              "pos": "e",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                "0.4+t1*kk",
+                3.5
+              ],
+              "text": "375",
+              "pos": "e",
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.4,
+                1.62
+              ],
+              "text": "B2 (in lakh)",
+              "pos": "e",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  "0.4",
+                  0
+                ],
+                [
+                  "0.4+(c1)*kk",
+                  0
+                ],
+                [
+                  "0.4+(c1)*kk",
+                  1
+                ],
+                [
+                  "0.4",
+                  1
+                ]
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                1.14,
+                0.5
+              ],
+              "text": "184",
+              "pos": "e",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  "0.4+(c1)*kk",
+                  0
+                ],
+                [
+                  "0.4+(c1+c2)*kk",
+                  0
+                ],
+                [
+                  "0.4+(c1+c2)*kk",
+                  1
+                ],
+                [
+                  "0.4+(c1)*kk",
+                  1
+                ]
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                4.34,
+                0.5
+              ],
+              "text": "200",
+              "pos": "e",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  "0.4+(c1+c2)*kk",
+                  0
+                ],
+                [
+                  "0.4+(c1+c2+c3)*kk",
+                  0
+                ],
+                [
+                  "0.4+(c1+c2+c3)*kk",
+                  1
+                ],
+                [
+                  "0.4+(c1+c2)*kk",
+                  1
+                ]
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                7.8,
+                0.5
+              ],
+              "text": "216",
+              "pos": "e",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                "0.4+t2*kk",
+                0.5
+              ],
+              "text": "600",
+              "pos": "e",
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "segment",
+              "from": [
+                "0.4+t1*kk",
+                3
+              ],
+              "to": [
+                "0.4+t1*kk",
+                0
+              ],
+              "dash": true,
+              "step": "s2",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.4,
+                -1.5
+              ],
+              "text": "375/600 × 100 = 62.5%",
+              "pos": "e",
+              "step": "s2",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "t1 = 375",
+            "t2 = 600",
+            "pct = 62.5"
+          ],
+          "answer": "pct"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "459cb0b2",
+        "answer": {
+          "value": 62.5,
+          "label": "62.5%"
+        }
+      }
+    },
+    {
+      "id": "25fb4280-3306-42e1-b5e4-18d2dba56754",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "m1": 65,
+            "m2": 68,
+            "m3": 62,
+            "m4": 64,
+            "s": "5.6/m2",
+            "tot": "m1+m2+m3+m4",
+            "avg": "tot/4"
+          },
+          "view": {
+            "x": [
+              0,
+              13.6
+            ],
+            "y": [
+              -3.6,
+              6.15
+            ]
+          },
+          "items": [
+            {
+              "kind": "segment",
+              "from": [
+                0.4,
+                0
+              ],
+              "to": [
+                10.6,
+                0
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  0.8,
+                  0
+                ],
+                [
+                  2.4,
+                  0
+                ],
+                [
+                  2.4,
+                  "s*m1"
+                ],
+                [
+                  0.8,
+                  "s*m1"
+                ]
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                1.6,
+                "s*m1"
+              ],
+              "text": "{m1}",
+              "pos": "n",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                1.6,
+                0
+              ],
+              "text": "Jan",
+              "pos": "s",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  3.3,
+                  0
+                ],
+                [
+                  4.9,
+                  0
+                ],
+                [
+                  4.9,
+                  "s*m2"
+                ],
+                [
+                  3.3,
+                  "s*m2"
+                ]
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                4.1,
+                "s*m2"
+              ],
+              "text": "{m2}",
+              "pos": "n",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                4.1,
+                0
+              ],
+              "text": "Feb",
+              "pos": "s",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  5.8,
+                  0
+                ],
+                [
+                  7.4,
+                  0
+                ],
+                [
+                  7.4,
+                  "s*m3"
+                ],
+                [
+                  5.8,
+                  "s*m3"
+                ]
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                6.6,
+                "s*m3"
+              ],
+              "text": "{m3}",
+              "pos": "n",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                6.6,
+                0
+              ],
+              "text": "Mar",
+              "pos": "s",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  8.3,
+                  0
+                ],
+                [
+                  9.9,
+                  0
+                ],
+                [
+                  9.9,
+                  "s*m4"
+                ],
+                [
+                  8.3,
+                  "s*m4"
+                ]
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                9.1,
+                "s*m4"
+              ],
+              "text": "{m4}",
+              "pos": "n",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                9.1,
+                0
+              ],
+              "text": "Apr",
+              "pos": "s",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.4,
+                -1.6
+              ],
+              "text": "Q's total = {tot}",
+              "pos": "e",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "segment",
+              "from": [
+                0.4,
+                "s*avg"
+              ],
+              "to": [
+                6.15,
+                "s*avg"
+              ],
+              "dash": true,
+              "step": "s2",
+              "tone": "amber"
+            },
+            {
+              "kind": "segment",
+              "from": [
+                7.05,
+                "s*avg"
+              ],
+              "to": [
+                10.6,
+                "s*avg"
+              ],
+              "dash": true,
+              "step": "s2",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                10.6,
+                "s*avg"
+              ],
+              "text": "avg 64.75",
+              "pos": "e",
+              "step": "s2",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.4,
+                -2.9
+              ],
+              "text": "259 ÷ 4 = 64.75 (₹000)",
+              "pos": "e",
+              "step": "s2",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "tot = 259",
+            "avg = 64.75"
+          ],
+          "answer": "avg"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "54d552ca",
+        "answer": {
+          "value": 64.75,
+          "label": "₹64.75 (in ₹000)"
+        }
+      }
+    },
+    {
+      "id": "26a5c2cb-d48a-4b28-b7de-80c985756f87",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "m1": 80,
+            "m2": 80,
+            "m3": 70,
+            "m4": 60,
+            "m5": 70,
+            "m6": 60,
+            "s": "5.4/100",
+            "tot": "m1+m2+m3+m4+m5+m6",
+            "pct": "tot*100/600",
+            "avg": "tot/6"
+          },
+          "view": {
+            "x": [
+              0,
+              13.3
+            ],
+            "y": [
+              -3.75,
+              6.25
+            ]
+          },
+          "items": [
+            {
+              "kind": "segment",
+              "from": [
+                0.2,
+                0
+              ],
+              "to": [
+                10.6,
+                0
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  0.45,
+                  0
+                ],
+                [
+                  1.7,
+                  0
+                ],
+                [
+                  1.7,
+                  "s*m1"
+                ],
+                [
+                  0.45,
+                  "s*m1"
+                ]
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                1.07,
+                "s*m1"
+              ],
+              "text": "{m1}",
+              "pos": "n",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                1.07,
+                0
+              ],
+              "text": "Eng",
+              "pos": "s",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  2.17,
+                  0
+                ],
+                [
+                  3.42,
+                  0
+                ],
+                [
+                  3.42,
+                  "s*m2"
+                ],
+                [
+                  2.17,
+                  "s*m2"
+                ]
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                2.79,
+                "s*m2"
+              ],
+              "text": "{m2}",
+              "pos": "n",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                2.79,
+                0
+              ],
+              "text": "Hindi",
+              "pos": "s",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  3.89,
+                  0
+                ],
+                [
+                  5.14,
+                  0
+                ],
+                [
+                  5.14,
+                  "s*m3"
+                ],
+                [
+                  3.89,
+                  "s*m3"
+                ]
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                4.51,
+                "s*m3"
+              ],
+              "text": "{m3}",
+              "pos": "n",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                4.51,
+                0
+              ],
+              "text": "Maths",
+              "pos": "s",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  5.61,
+                  0
+                ],
+                [
+                  6.86,
+                  0
+                ],
+                [
+                  6.86,
+                  "s*m4"
+                ],
+                [
+                  5.61,
+                  "s*m4"
+                ]
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                6.24,
+                "s*m4"
+              ],
+              "text": "{m4}",
+              "pos": "n",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                6.24,
+                0
+              ],
+              "text": "Phys",
+              "pos": "s",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  7.33,
+                  0
+                ],
+                [
+                  8.58,
+                  0
+                ],
+                [
+                  8.58,
+                  "s*m5"
+                ],
+                [
+                  7.33,
+                  "s*m5"
+                ]
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                7.96,
+                "s*m5"
+              ],
+              "text": "{m5}",
+              "pos": "n",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                7.96,
+                0
+              ],
+              "text": "Chem",
+              "pos": "s",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  9.05,
+                  0
+                ],
+                [
+                  10.3,
+                  0
+                ],
+                [
+                  10.3,
+                  "s*m6"
+                ],
+                [
+                  9.05,
+                  "s*m6"
+                ]
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                9.68,
+                "s*m6"
+              ],
+              "text": "{m6}",
+              "pos": "n",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                9.68,
+                0
+              ],
+              "text": "Bio",
+              "pos": "s",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.2,
+                -1.65
+              ],
+              "text": "C's total = {tot} of 600",
+              "pos": "e",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.2,
+                -2.95
+              ],
+              "text": "420/600 × 100 = 70%",
+              "pos": "e",
+              "step": "s2",
+              "tone": "good"
+            },
+            {
+              "kind": "segment",
+              "from": [
+                0.2,
+                "s*avg"
+              ],
+              "to": [
+                5.8,
+                "s*avg"
+              ],
+              "dash": true,
+              "step": "s3",
+              "tone": "amber"
+            },
+            {
+              "kind": "segment",
+              "from": [
+                6.68,
+                "s*avg"
+              ],
+              "to": [
+                9.24,
+                "s*avg"
+              ],
+              "dash": true,
+              "step": "s3",
+              "tone": "amber"
+            },
+            {
+              "kind": "segment",
+              "from": [
+                10.12,
+                "s*avg"
+              ],
+              "to": [
+                10.6,
+                "s*avg"
+              ],
+              "dash": true,
+              "step": "s3",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                10.6,
+                "s*avg"
+              ],
+              "text": "avg 70",
+              "pos": "e",
+              "step": "s3",
+              "tone": "amber"
+            }
+          ],
+          "assert": [
+            "tot = 420",
+            "pct = 70",
+            "avg = 70"
+          ],
+          "answer": "pct"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "e517b8d5",
+        "answer": {
+          "value": 70,
+          "label": "70%"
+        }
+      }
+    }
+  ],
+  "decided": []
+}
