@@ -466,3 +466,27 @@ question's verdict, and its visual where the verdict is "animate", in the same
 pass as the transcription and solution. The main session runs `visuals:run`
 on the draft batch, looks at the sheet, and applies it with the questions.
 Wave 1 exams: JEE Mains and MHT-CET (every subject; the triage decides per question).
+
+## Is anyone watching? (2026-10-31)
+
+`npm run visuals:usage` (read-only; `-- --since=YYYY-MM-DD`, `-- --by=all|day|surface|exam|scene`)
+says what signed-in students do with the visuals, staff left out. Before
+2026-10-31 nothing recorded a play or the Animated/Still choice, so the only
+proxy was reveals on questions that have a visual TODAY, which counted reveals
+from before the visual existed.
+
+- **Events** (`user_activity` kind `solution_visual`, migration 0208): `shown`
+  (first run started, 40% on screen), `finished`, `replayed`, `opened_still`
+  (opened in Still from the device's memory, counted when its switch is seen),
+  `chose_still`, `chose_animated`. One row per student, question, action and
+  India day. Pure core `src/lib/visuals/usage.ts`; sender `usageBeacon.ts`
+  (sends only with a sign-in cookie); route `/api/activity/visual` (its own
+  300/hour limit). Every surface passes `track` to `SolutionViews`; V passes
+  the explained question's id.
+- **`questions.solution_visual_at`** (migration 0209): when a visual first went
+  on, set by a trigger on every write path (kept on `--replace`, cleared on
+  removal). The ~6,850 visuals written before 2026-10-31 stay NULL: date
+  unknown (owner: count from the push).
+- Signed-out visitors are never recorded, so every number is a floor. Growth
+  experiment `visual-solutions` (`src/lib/growth/registry.ts`) holds the
+  keep-or-change rule.
