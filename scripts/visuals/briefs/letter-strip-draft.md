@@ -100,8 +100,15 @@ Skip (`skip: true`, a short reason) when:
 - no list of the steps above reproduces every example (a product of
   positions, a different rule per example, letters regrouped in a way the
   steps cannot say); do not bend the rule to fit;
+- the rule does not use letter positions at all ("code = number of letters
+  × 7"): a sum step would tag each letter with a position that plays no part;
 - a word or code is over 12 letters;
 - it is not a code at all (a letter-position or alphabet-test question).
+
+If the rule is right but a sentence misprints an in-between word (the pilot
+found "swap to LPANT" where the two swaps give LPATN), draft it as usual and
+name the misprint in your report: id, the wrong text, the right text. The
+stored solution is corrected before its visual is written.
 
 If the stored solution's rule does not give the printed codes, set
 `"solutionWrong": "<what is wrong>"` and skip. If the rule gives an option
