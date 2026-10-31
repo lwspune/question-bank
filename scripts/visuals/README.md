@@ -196,6 +196,19 @@ trees, then circle diagrams; ranking rows use `sketch`):
   each option) and checks the one option that matches. Agents run
   `tools/check-drafts.ts --scene=letterStrip` on their own file, no database.
 
+**Reasoning refinement log:**
+- 2026-10-31, SSC CGL Coding-Decoding (247 with a solution, 9 slices of 28,
+  3 agents at a time): 162 drawn (`data/ls-ssc-cd-1..9`), 85 decided none
+  (`data/decided-2026-10-31-ssc-cd-*`): letter-digit or symbol tables 29, word
+  or sentence codes 26, rules on the letter COUNT or a product 10, vowel /
+  consonant rules 9, fixed reorderings the steps cannot say and single-letter
+  "words" 11. Every check line agreed with the key; agents matched hand drafts
+  on 5 of 5. One solution misprinted an in-between word (LPANT for LPATN),
+  fixed in `solution-fixes/2026-10-31-ssc-cd.json`. Review changes: codes are
+  printed as the question prints them (9, 12, 26, 23, not 9122623); a shift
+  on named letters drops "each letter". Candidates for new steps, if worth
+  it: a vowel/consonant selector (9) and a single-letter word (2).
+
 ## Pieces
 
 | Piece | Where |
