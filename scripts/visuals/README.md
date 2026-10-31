@@ -218,6 +218,15 @@ trees, then circle diagrams; ranking rows use `sketch`):
   printed as the question prints them (9, 12, 26, 23, not 9122623); a shift
   on named letters drops "each letter". Candidates for new steps, if worth
   it: a vowel/consonant selector (9) and a single-letter word (2).
+- 2026-10-31, SSC CGL Blood Relations (154 with a solution, 7 slices of 22):
+  134 drawn (`data/ft-ssc-br-1..7`), 20 decided none: coded-expression options
+  6, "which statement is NOT correct" 4, placements the solution gives only
+  as one possibility 3 (dropped at review: a sister or a cousin, a daughter
+  or a niece), loose words (sister-in-law for a cousin's wife, grand aunt) 3,
+  and one each of a count question, an ambiguous stem, a key by elimination
+  and a guessed placement. Review fixes: a person asked about themself reads
+  "Azad himself"; the listener reads "your father". Candidate addition: a
+  false-statement ask (4).
 
 ## Pieces
 
