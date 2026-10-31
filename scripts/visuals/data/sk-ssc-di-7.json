@@ -1,0 +1,612 @@
+{
+  "//": "Assembled from agent drafts (sketch).",
+  "visuals": [
+    {
+      "id": "9e3874ed-4a3c-425f-b559-018f456e99a2",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "a1": 840,
+            "a2": 900,
+            "a3": 760,
+            "b1": 960,
+            "b2": 1000,
+            "b3": 1200,
+            "T1": "a1+a2+a3",
+            "T2": "b1+b2+b3",
+            "k": "10/T2",
+            "G": "T2-T1"
+          },
+          "view": {
+            "x": [
+              -0.6,
+              11
+            ],
+            "y": [
+              -1.6,
+              5.4
+            ]
+          },
+          "points": {
+            "A0": [
+              0,
+              3
+            ],
+            "A1": [
+              "T1*k",
+              3
+            ],
+            "A2": [
+              "T1*k",
+              4
+            ],
+            "A3": [
+              0,
+              4
+            ],
+            "B0": [
+              0,
+              0
+            ],
+            "B1": [
+              "T2*k",
+              0
+            ],
+            "B2": [
+              "T2*k",
+              1
+            ],
+            "B3": [
+              0,
+              1
+            ],
+            "D1": [
+              "a1*k",
+              3
+            ],
+            "D2": [
+              "a1*k",
+              4
+            ],
+            "D3": [
+              "(a1+a2)*k",
+              3
+            ],
+            "D4": [
+              "(a1+a2)*k",
+              4
+            ],
+            "E1": [
+              "b1*k",
+              0
+            ],
+            "E2": [
+              "b1*k",
+              1
+            ],
+            "E3": [
+              "(b1+b2)*k",
+              0
+            ],
+            "E4": [
+              "(b1+b2)*k",
+              1
+            ],
+            "G0": [
+              "T1*k",
+              0
+            ],
+            "G1": [
+              "T1*k",
+              1
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "points": [
+                "A0",
+                "A1",
+                "A2",
+                "A3"
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "segment",
+              "from": "D1",
+              "to": "D2",
+              "step": "s1"
+            },
+            {
+              "kind": "segment",
+              "from": "D3",
+              "to": "D4",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0,
+                4.55
+              ],
+              "text": "A, 2015 to 2017 = 2500",
+              "step": "s1",
+              "pos": "e"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.626,
+                3.5
+              ],
+              "text": "840",
+              "step": "s1",
+              "pos": "e"
+            },
+            {
+              "kind": "label",
+              "at": [
+                3.379,
+                3.5
+              ],
+              "text": "900",
+              "step": "s1",
+              "pos": "e"
+            },
+            {
+              "kind": "label",
+              "at": [
+                6.005,
+                3.5
+              ],
+              "text": "760",
+              "step": "s1",
+              "pos": "e"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                "B0",
+                "B1",
+                "B2",
+                "B3"
+              ],
+              "step": "s2",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": "E1",
+              "to": "E2",
+              "step": "s2"
+            },
+            {
+              "kind": "segment",
+              "from": "E3",
+              "to": "E4",
+              "step": "s2"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0,
+                1.55
+              ],
+              "text": "C, 2016 to 2018 = 3160",
+              "step": "s2",
+              "pos": "e"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.816,
+                0.5
+              ],
+              "text": "960",
+              "step": "s2",
+              "pos": "e"
+            },
+            {
+              "kind": "label",
+              "at": [
+                3.781,
+                0.5
+              ],
+              "text": "1000",
+              "step": "s2",
+              "pos": "e"
+            },
+            {
+              "kind": "label",
+              "at": [
+                6.218,
+                0.5
+              ],
+              "text": "1200",
+              "step": "s2",
+              "pos": "e"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                "G0",
+                "B1",
+                "B2",
+                "G1"
+              ],
+              "step": "s3",
+              "tone": "amber"
+            },
+            {
+              "kind": "segment",
+              "from": "A1",
+              "to": "G1",
+              "step": "s3",
+              "dash": true
+            },
+            {
+              "kind": "label",
+              "at": [
+                8.252,
+                1.55
+              ],
+              "text": "660",
+              "step": "s3",
+              "pos": "e",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0,
+                -0.8
+              ],
+              "text": "660/3160 ≈ 20.9%: less, 21%",
+              "step": "s3",
+              "pos": "e",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "T1 = 2500",
+            "T2 = 3160",
+            "G = 660",
+            "T1 < T2"
+          ],
+          "answer": "floor(100*G/T2+0.5)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "f9273f30",
+        "answer": {
+          "value": 21,
+          "label": "Less, 21%"
+        }
+      }
+    },
+    {
+      "id": "b15de780-6dc9-4029-b481-ab3fb8a670bb",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "a1": 200,
+            "a2": 150,
+            "a3": 225,
+            "b1": 250,
+            "b2": 300,
+            "b3": 210,
+            "T1": "a1+a2+a3",
+            "T2": "b1+b2+b3",
+            "k": "10/T2",
+            "G": "T2-T1"
+          },
+          "view": {
+            "x": [
+              -0.6,
+              11
+            ],
+            "y": [
+              -1.6,
+              5.4
+            ]
+          },
+          "points": {
+            "A0": [
+              0,
+              3
+            ],
+            "A1": [
+              "T1*k",
+              3
+            ],
+            "A2": [
+              "T1*k",
+              4
+            ],
+            "A3": [
+              0,
+              4
+            ],
+            "B0": [
+              0,
+              0
+            ],
+            "B1": [
+              "T2*k",
+              0
+            ],
+            "B2": [
+              "T2*k",
+              1
+            ],
+            "B3": [
+              0,
+              1
+            ],
+            "D1": [
+              "a1*k",
+              3
+            ],
+            "D2": [
+              "a1*k",
+              4
+            ],
+            "D3": [
+              "(a1+a2)*k",
+              3
+            ],
+            "D4": [
+              "(a1+a2)*k",
+              4
+            ],
+            "E1": [
+              "b1*k",
+              0
+            ],
+            "E2": [
+              "b1*k",
+              1
+            ],
+            "E3": [
+              "(b1+b2)*k",
+              0
+            ],
+            "E4": [
+              "(b1+b2)*k",
+              1
+            ],
+            "G0": [
+              "T1*k",
+              0
+            ],
+            "G1": [
+              "T1*k",
+              1
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "points": [
+                "A0",
+                "A1",
+                "A2",
+                "A3"
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "segment",
+              "from": "D1",
+              "to": "D2",
+              "step": "s1"
+            },
+            {
+              "kind": "segment",
+              "from": "D3",
+              "to": "D4",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0,
+                4.55
+              ],
+              "text": "P1 total = 575",
+              "step": "s1",
+              "pos": "e"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.612,
+                3.5
+              ],
+              "text": "200",
+              "step": "s1",
+              "pos": "e"
+            },
+            {
+              "kind": "label",
+              "at": [
+                2.915,
+                3.5
+              ],
+              "text": "150",
+              "step": "s1",
+              "pos": "e"
+            },
+            {
+              "kind": "label",
+              "at": [
+                5.382,
+                3.5
+              ],
+              "text": "225",
+              "step": "s1",
+              "pos": "e"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                "B0",
+                "B1",
+                "B2",
+                "B3"
+              ],
+              "step": "s2",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": "E1",
+              "to": "E2",
+              "step": "s2"
+            },
+            {
+              "kind": "segment",
+              "from": "E3",
+              "to": "E4",
+              "step": "s2"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0,
+                1.55
+              ],
+              "text": "P2 total = 760",
+              "step": "s2",
+              "pos": "e"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.941,
+                0.5
+              ],
+              "text": "250",
+              "step": "s2",
+              "pos": "e"
+            },
+            {
+              "kind": "label",
+              "at": [
+                4.56,
+                0.5
+              ],
+              "text": "300",
+              "step": "s2",
+              "pos": "e"
+            },
+            {
+              "kind": "label",
+              "at": [
+                8.079,
+                0.5
+              ],
+              "text": "210",
+              "step": "s2",
+              "pos": "e"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                "G0",
+                "B1",
+                "B2",
+                "G1"
+              ],
+              "step": "s3",
+              "tone": "amber"
+            },
+            {
+              "kind": "segment",
+              "from": "A1",
+              "to": "G1",
+              "step": "s3",
+              "dash": true
+            },
+            {
+              "kind": "label",
+              "at": [
+                7.944,
+                1.55
+              ],
+              "text": "+185",
+              "step": "s3",
+              "pos": "e",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0,
+                -0.8
+              ],
+              "text": "difference = 760 − 575 = 185",
+              "step": "s3",
+              "pos": "e",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "T1 = 575",
+            "T2 = 760",
+            "G = 185"
+          ],
+          "answer": "G"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "24ff034c",
+        "answer": {
+          "value": 185,
+          "label": "185"
+        }
+      }
+    }
+  ],
+  "decided": []
+}
