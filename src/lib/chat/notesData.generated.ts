@@ -493,7 +493,8 @@ export const NOTES_DATA_KEYS: readonly string[] = [
   "ssc-cgl-history/ancient-india",
   "ssc-cgl-history/medieval-india",
   "ssc-cgl-polity/government-structure",
-  "ssc-cgl-polity/constitution"
+  "ssc-cgl-polity/constitution",
+  "ssc-cgl-polity/rights-dpsp-local"
 ];
 
 export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, SubtopicNote>>> = {
@@ -987,4 +988,5 @@ export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, Sub
   "ssc-cgl-history/medieval-india": () => import("@/app/notes/ssc-cgl-history/medieval-india/_data").then((m) => m.SSC_MEDIEVAL_INDIA_NOTES),
   "ssc-cgl-polity/government-structure": () => import("@/app/notes/ssc-cgl-polity/government-structure/_data").then((m) => m.SSC_GOVERNMENT_STRUCTURE_NOTES),
   "ssc-cgl-polity/constitution": () => import("@/app/notes/ssc-cgl-polity/constitution/_data").then((m) => m.SSC_CONSTITUTION_NOTES),
+  "ssc-cgl-polity/rights-dpsp-local": () => import("@/app/notes/ssc-cgl-polity/rights-dpsp-local/_data").then((m) => m.SSC_RIGHTS_DPSP_LOCAL_NOTES),
 };

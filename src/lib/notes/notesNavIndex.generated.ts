@@ -3433,5 +3433,12 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "SSC CGL Polity",
     "chapterSlug": "constitution",
     "subtopicCount": 5
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-polity",
+    "subjectDisplay": "SSC CGL Polity",
+    "chapterSlug": "rights-dpsp-local",
+    "subtopicCount": 4
   }
 ];
