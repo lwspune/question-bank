@@ -6,7 +6,7 @@
  * committed rather than computed at build time, and src/lib/seo/lastmod.ts for
  * how a route with no entry here inherits from its nearest recorded ancestor.
  *
- * Entries: 456
+ * Entries: 459
  */
 import type { ContentDateMap } from "@/lib/seo/lastmod";
 
@@ -424,7 +424,10 @@ export const CONTENT_DATES: ContentDateMap = {
   "/notes/ssc-cgl-english/reading-comprehension": "2026-10-23T13:24:45+05:30",
   "/notes/ssc-cgl-english/sentence-rearrangement": "2026-10-26T05:58:32+05:30",
   "/notes/ssc-cgl-english/spotting-errors": "2026-10-23T13:35:15+05:30",
-  "/notes/ssc-cgl-english/vocabulary": "2026-10-27T08:20:28+05:30",
+  "/notes/ssc-cgl-english/vocabulary": "2026-10-27T08:52:03+05:30",
+  "/notes/ssc-cgl-history/ancient-india": "2026-10-31T07:47:35+05:30",
+  "/notes/ssc-cgl-history/medieval-india": "2026-10-31T07:56:21+05:30",
+  "/notes/ssc-cgl-history/modern-india": "2026-10-31T07:34:24+05:30",
   "/notes/ssc-cgl-maths/algebraic-identities": "2026-10-23T06:12:39+05:30",
   "/notes/ssc-cgl-maths/averages": "2026-10-23T05:21:26+05:30",
   "/notes/ssc-cgl-maths/circles": "2026-10-23T06:20:50+05:30",
