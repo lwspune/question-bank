@@ -431,6 +431,33 @@ export const SET_VISUAL = {
   answer: { value: 0, label: "F" },
 };
 
+export const STRIP_SOLUTION = String.raw`The first five letters move +1, \(-1\), +1, \(-1\), +1 and the last five move +2, \(-2\), +2, \(-2\), +2. TELEVISION: T+1 = U, E\(-1\) = D, L+1 = M, E\(-1\) = D, V+1 = W, I+2 = K, S\(-2\) = Q, I+2 = K, O\(-2\) = M, N+2 = P. PUNISHMENT checks the same way. HELICOPTER: H+1 = I, E\(-1\) = D, L+1 = M, I\(-1\) = H, C+1 = D, O+2 = Q, P\(-2\) = N, T+2 = V, E\(-2\) = C, R+2 = T, giving IDMHDQNVCT.`;
+
+/** SSC CGL 0bf6705a: TELEVISION and PUNISHMENT prove the rule; HELICOPTER is IDMHDQNVCT, option C. */
+export const STRIP_VISUAL = {
+  v: 1,
+  scene: "letterStrip",
+  params: {
+    examples: [
+      { word: "TELEVISION", code: "UDMDWKQKMP" },
+      { word: "PUNISHMENT", code: "QTOHTJKGLV" },
+    ],
+    rule: [
+      { op: "shift", by: [1, -1], from: 1, to: 5 },
+      { op: "shift", by: [2, -2], from: 6, to: 10 },
+    ],
+    ask: { word: "HELICOPTER" },
+    options: ["IDMHDQCVNT", "IDMHQDVNCT", "IDMHDQNVCT", "IDMHDQVCNT"],
+  },
+  steps: [
+    { from: 0, beats: ["example"] },
+    { from: 2, beats: ["check"] },
+    { from: 3, beats: ["apply", "answer"] },
+  ],
+  fingerprint: solutionFingerprint(STRIP_SOLUTION),
+  answer: { value: 3, label: "option C: IDMHDQNVCT" },
+};
+
 export const FIXTURES = [
   { name: "rotation", visual: ROTATION_VISUAL, solution: ROTATION_SOLUTION },
   { name: "circleArc", visual: ARC_VISUAL, solution: ARC_SOLUTION },
@@ -452,4 +479,5 @@ export const FIXTURES = [
   { name: "algebraSteps", visual: ALG_VISUAL, solution: ALG_SOLUTION },
   { name: "switchCircuit", visual: CIRCUIT_VISUAL, solution: CIRCUIT_SOLUTION },
   { name: "setClaim", visual: SET_VISUAL, solution: SET_SOLUTION },
+  { name: "letterStrip", visual: STRIP_VISUAL, solution: STRIP_SOLUTION },
 ] as const;
