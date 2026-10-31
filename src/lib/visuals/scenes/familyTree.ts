@@ -308,7 +308,7 @@ export const familyTree: Scene<TreeParams> = {
     if (pa > 0.3) {
       const self = ({ m: "himself", f: "herself" } as Record<string, string>)[p.people.find((x) => x.id === p.ask.who)?.sex ?? "?"] ?? "themself";
       const words = p.route.length
-        ? `${name(p.ask.of)}'s ${p.route.map((r) => r.step).join("'s ")} is ${name(p.ask.who)}`
+        ? `${possessive(name(p.ask.of))} ${p.route.map((r) => r.step).join("'s ")} is ${name(p.ask.who)}`
         : p.ask.who === p.ask.of
           ? `${name(p.ask.who)} ${self}`
           : `no route from ${name(p.ask.of)} to ${name(p.ask.who)}`;
@@ -348,6 +348,12 @@ export const familyTree: Scene<TreeParams> = {
     }
   },
 };
+
+/** "your father", "my father", "Ravi's father". */
+function possessive(name: string) {
+  const own: Record<string, string> = { you: "your", I: "my", me: "my" };
+  return own[name] ?? own[name.toLowerCase()] ?? `${name}'s`;
+}
 
 function label(p: TreeParams, id: string) {
   return p.people.find((x) => x.id === id)?.label ?? id;

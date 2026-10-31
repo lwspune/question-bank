@@ -164,6 +164,30 @@ describe("familyTree scene", () => {
     expect(path).not.toMatch(/no route/);
   });
 
+  it("writes 'your', not 'you's', when a person is the listener", () => {
+    // fdcaabb4: "My mother's husband's only son is the father of your sister's brother."
+    const you = {
+      people: [
+        { id: "man", sex: "m" },
+        { id: "you", sex: "?" },
+        { id: "sis", sex: "f", label: "your sister" },
+      ],
+      facts: [
+        { rel: "parent", a: "man", b: "you", step: "f1" },
+        { rel: "sibling", a: "you", b: "sis", step: "f1" },
+      ],
+      rows: [["man"], ["you", "sis"]],
+      ask: { who: "man", of: "you" },
+      options: [
+        { text: "Brother", means: { rel: "brother" } },
+        { text: "Father", means: { rel: "father" } },
+      ],
+    };
+    const path = texts(you, ["f1", "path"]).join(" | ");
+    expect(path).toMatch(/your father is man/);
+    expect(path).not.toMatch(/you's/);
+  });
+
   it("gives no answer when several options hold", () => {
     expect(value({ ...coded, options: [...coded.options.slice(0, 3), { text: "R is the father-in-law", means: { rel: "father-in-law" } }] })).toBe(0);
   });
