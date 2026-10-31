@@ -59,6 +59,11 @@ A spoken chain names people it never names ("my uncle's only son"): give each
 one a short id and a `label` the box shows, at most 12 characters ("uncle",
 "uncle's son", "John's dad"). Every person must appear in at least one fact.
 
+Leave a person out when the solution never uses them and the question leaves
+their place open ("R is married to one of S's children"): placing them would
+be a guess. Leave out facts a solution adds only after its answer ("... do
+not change this"): facts play before the route and the answer.
+
 ### facts
 
 One per relation a statement gives, in the solution's order:
@@ -120,7 +125,9 @@ later, each beat once, never more steps than sentences (merge beats).
 
 - The options are coded expressions ("S * F & J ! I # M"), or the question
   counts people, or asks which statement is true about several pairs at once.
-- An option uses a word not in the list (great-uncle, co-brother).
+- An option uses a word not in the list (great-uncle, co-brother), or the key
+  uses a listed word more loosely than it is defined here (sister-in-law for
+  a cousin's wife): name the word.
 - The stored solution says the question is ambiguous or follows a key it
   disagrees with: skip, saying so.
 - More than 12 people, 5 rows or 5 people a row.
