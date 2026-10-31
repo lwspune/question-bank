@@ -60,6 +60,15 @@ describe("letterStrip rules", () => {
     expect(applyRule("ABCDE", [{ op: "shift", by: [1, 2], at: [2, 4] }])).toBe("ACCFE");
   });
 
+  it("says \"each letter\" only when every letter moves", () => {
+    // 875ee436: TABLE is reversed, then only its third letter moves +3.
+    const table = { examples: [{ word: "TABLE", code: "ELEAT" }], rule: [{ op: "reverse" }, { op: "shift", by: 3, at: [3] }], ask: { word: "FRAME" }, options: ["EMDRF", "EMARF"] };
+    const captions = texts(table, ["example"]).join(" | ");
+    expect(captions).toMatch(/\| \+3 \(letter 3\) \|/);
+    expect(captions).not.toMatch(/each letter \+3 \(letter/);
+    expect(texts(television, ["example"]).join(" | ")).not.toMatch(/each letter/);
+  });
+
   it("swaps letters for their opposites (A and Z, positions adding to 27)", () => {
     expect(applyRule("BEAR", [{ op: "opposite" }])).toBe("YVZI");
     expect(applyRule("FIGURE", [{ op: "opposite" }, { op: "shift", by: 1 }])).toBe("VSUGJW");

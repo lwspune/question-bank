@@ -204,7 +204,9 @@ function run(word: string, steps: Step[]): Run {
       moves.push({ at: i, from, to, tag });
     }
     cells = next;
-    const caption = s.op === "opposite" ? "opposite letter (A↔Z)" : shiftCaption(s.by, idx.length);
+    let caption = s.op === "opposite" ? "opposite letter (A↔Z)" : shiftCaption(s.by, idx.length);
+    // "each letter +3 (letter 3)" contradicts itself: only the named letters move.
+    if (where) caption = caption.replace(/^each letter /, "");
     stages.push({ caption: (s.show ?? caption) + where, cells, moves });
   }
   return { word, stages, code: code || cells.join("") };
