@@ -98,6 +98,7 @@ describe("EXPERIMENTS", () => {
       "v-progress",
       "v-reveal",
       "v-strategy",
+      "visual-solutions",
     ]);
   });
 });
