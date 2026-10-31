@@ -195,6 +195,16 @@ trees, then circle diagrams; ranking rows use `sketch`):
   its printed code, then applies it to the asked word (or, for a decode, to
   each option) and checks the one option that matches. Agents run
   `tools/check-drafts.ts --scene=letterStrip` on their own file, no database.
+- `familyTree` (brief `briefs/family-tree-draft.md`, specs
+  `tests/visuals-family-tree.test.ts` + `visuals-kinship.test.ts`): blood
+  relations. People, facts (parent / spouse / sibling, each on a beat f1..f8)
+  and rows; the scene checks the rows against the facts and builds the family
+  with the exam's conventions (`lib/visuals/kinship.ts`: a spouse shares the
+  children, siblings share parents; about 35 relation words, each defined
+  once as chains). Every option is FOLLOWED on the family; a sex not stated
+  is tried both ways, and "cannot be determined" holds only when no other
+  option holds for every allowed sex. The route lights up, its steps named by
+  the sex every allowed family agrees on.
 
 **Reasoning refinement log:**
 - 2026-10-31, SSC CGL Coding-Decoding (247 with a solution, 9 slices of 28,
