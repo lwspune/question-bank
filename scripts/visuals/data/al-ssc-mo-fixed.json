@@ -1,0 +1,154 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "099dd89c-71b7-4d90-b23d-3b258f24fe61",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "48 \\div {{1:4}} + 12 \\times {{1:3}} - 6 \\times 7 + 21",
+              "note": "swap 3 and 4"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "= 12 + 36 - 42 + 21 = {{2:27}}",
+              "f": "48/4+12*3-6*7+21",
+              "value": "27",
+              "note": "LHS = 27 = RHS"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "12, 21: 16 + 84 - 42 + 12 = 70",
+              "f": "48/3+21*4-6*7+12",
+              "value": "70",
+              "note": "not 27"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "4, 7: 16 + 84 - 24 + 21 = 97",
+              "f": "48/3+12*7-6*4+21",
+              "value": "97",
+              "note": "not 27"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "3, 6: 8 + 48 - 21 + 21 = 56",
+              "f": "48/6+12*4-3*7+21",
+              "value": "56",
+              "note": "not 27"
+            }
+          ],
+          "answer": "48/4+12*3-6*7+21"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "47d62060",
+        "answer": {
+          "value": 27,
+          "label": "3 and 4"
+        }
+      }
+    },
+    {
+      "id": "26d07d7d-3d03-4872-819c-1444c85c1d48",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "28 \\div 4 \\times 3 + 9 = 42 - 12",
+              "note": "option C's signs"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "7 \\times 3 + 9 = {{1:30}}",
+              "f": "28/4*3+9",
+              "value": "30",
+              "note": "left side"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "42 - 12 = {{1:30}}",
+              "f": "42-12",
+              "value": "30",
+              "note": "right side: balanced"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "A: 21 - 9 = 12, \\; 42 \\times 12 = 504",
+              "f": "42*12",
+              "value": "504",
+              "note": "not equal"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "B: 21, \\; 9 + 42 + 12 = 63",
+              "f": "9+42+12",
+              "value": "63",
+              "note": "not equal"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "D: 32, \\; 3 \\div 9 \\times 42 + 12 = 26",
+              "f": "3/9*42+12",
+              "value": "26",
+              "note": "not equal"
+            }
+          ],
+          "answer": "28/4*3+9"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "d6a989db",
+        "answer": {
+          "value": 30,
+          "label": "÷, ×, +, =, −"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

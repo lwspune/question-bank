@@ -10,7 +10,54 @@ question defective as printed keeps its key, gets a notice and joins the grace
 list, `src/lib/mocks/flawed.json`). Settled rows move to the bottom with the
 date and what was done.
 
-Nothing is open. Every row found up to 2026-10-29 is settled below.
+Every row found up to 2026-10-29 is settled below. Open rows, found 2026-10-31 in
+the SSC CGL Data Interpretation and Mensuration 3D animation run (38): each keeps
+its written solution and no animation until settled. Most are stems whose question
+line, a total or a name never printed, so the stored solution reconstructs it to
+fit the key; the source paper should settle each one.
+
+## Open
+
+| Question | Exam · chapter | Problem |
+|---|---|---|
+| `0e583436` | SSC CGL · Data Interpretation | **Key disputed.** The stem asks the ratio of engineers (248:100 = 62:25, option A); SSC's key counts countries (3:3); stepping it would present the disputed reading as the method |
+| `2e0d78e8` | SSC CGL · Data Interpretation | **Key disputed.** The paper prints no total, so degrees cannot become ₹ lakh; the solution says the keyed 69 needs an unprinted total of 432 |
+| `57fabd74` | SSC CGL · Data Interpretation | **Key disputed.** The working gives 933.25 (933 rounded); the solution takes the key 934 only as the nearest option |
+| `08a8b830` | SSC CGL · Data Interpretation | **Stem incomplete.** The chart's labels did not print; the solution picks School as the 6-hour slice only because 25% is an option, so the animation would present a guessed slice as read data |
+| `1a5c22c5` | SSC CGL · Data Interpretation | **Stem incomplete.** The question line did not print; the solution derives no ratio, and its one plausible reading (Punjab to U.P total) gives 2 : 3, not the keyed 1 : 2 |
+| `1fd4b9cb` | SSC CGL · Data Interpretation | **Stem incomplete.** No question is printed; the solution picks 'average FDI over six years' only because 15.6 is an option, so the animation would present a guessed question |
+| `24715b40` | SSC CGL · Data Interpretation | **Stem incomplete.** No question is printed; the solution's 'how many times total is of R&D' (100/5 = 20) is a reading chosen because 20 is an option |
+| `26c18e9a` | SSC CGL · Data Interpretation | **Stem incomplete.** The question did not print; the solution infers base 190 and numerator 30 from the options' denominator 19, not from a stated question |
+| `2d8d4611` | SSC CGL · Data Interpretation | **Stem incomplete.** The chart prints no company names; P is taken as the left pair only because it gives an option (72%) |
+| `2ead3b6b` | SSC CGL · Data Interpretation | **Stem incomplete.** What the difference is taken against (Y in 2019 and 2020) is a bracketed reconstruction of an illegible question, chosen to fit the key |
+| `30b53297` | SSC CGL · Data Interpretation | **Stem incomplete.** Which heads are combined did not print; the solution picks 1,47,900 only as the one option that is a whole percent (51%), two different combinations fit |
+| `324e00b2` | SSC CGL · Data Interpretation | **Stem incomplete.** 'and D' is a reconstruction ('[and D?]') added because C alone (40800) is not an option |
+| `4145b108` | SSC CGL · Data Interpretation | **Stem incomplete.** The question did not print; '[What percentage of the students in 2021 opted for Biology?]' is reconstructed and the answer follows SSC's key |
+| `4985c47d` | SSC CGL · Data Interpretation | **Stem incomplete.** The second company's name did not print; '[partners who joined Twiggy ...]' is reconstructed (Tomato gives the same 6.0) |
+| `62481af4` | SSC CGL · Data Interpretation | **Stem incomplete.** The question did not print; "ratio of A to E" is a reconstruction in square brackets |
+| `64b45dfd` | SSC CGL · Data Interpretation | **Stem incomplete.** The question asked did not print; the working reaches 2.4% (option B), not the key 2.9% |
+| `65348288` | SSC CGL · Data Interpretation | **Stem incomplete.** The end of the question did not print; the solution says no reading gives the key 16000 |
+| `6c396852` | SSC CGL · Data Interpretation | **Stem incomplete.** The end of the question ('the companies in 2012 and 2014') is reconstructed in square brackets; the solution follows SSC's key |
+| `791f90c6` | SSC CGL · Data Interpretation | **Stem incomplete.** The question line is cut off in the print; the solution tests every comparison to find one matching the key |
+| `7b4765fa` | SSC CGL · Data Interpretation | **Stem incomplete.** What the percentage is taken of ('[number of illiterates in D]') is reconstructed in square brackets |
+| `7ddbe765` | SSC CGL · Data Interpretation | **Stem incomplete.** The blue sector's share (40%) did not print; the solution reconstructs it in brackets and follows SSC's key |
+| `8204b9be` | SSC CGL · Data Interpretation | **Stem incomplete.** The second group compared (the Civil department in the two colleges) did not print; reconstructed in brackets |
+| `8295198b` | SSC CGL · Data Interpretation | **Stem incomplete.** The question line is illegible; the solution cannot derive the ratio asked |
+| `8567c38a` | SSC CGL · Data Interpretation | **Stem incomplete.** The question stops after 'compared to the'; the solution reads it as 'the year before' |
+| `8850f748` | SSC CGL · Data Interpretation | **Stem incomplete.** The comparison base (tea, pulses and flour) did not print; reconstructed in brackets |
+| `957a75b9` | SSC CGL · Data Interpretation | **Stem incomplete.** The question itself did not print; the solution guesses a reading, which gives 1479, not the key 1113 |
+| `9768788c` | SSC CGL · Data Interpretation | **Stem incomplete.** The question line is a bracketed reconstruction |
+| `a23e4d45` | SSC CGL · Data Interpretation | **Stem incomplete.** The year (2019-20) the key depends on is a bracketed reconstruction; the solution picks it because only it gives an option |
+| `a855cf07` | SSC CGL · Data Interpretation | **Stem incomplete.** The question line is not legible; the solution guesses two readings |
+| `bfdd7499` | SSC CGL · Data Interpretation | **Stem incomplete.** The question itself did not print on SSC's paper; the solution guesses it asks for the total number of volunteers |
+| `d32c861b` | SSC CGL · Data Interpretation | **Stem incomplete.** The years compared (1997 to 2000) are a bracketed reconstruction; the solution picks them because 1997 to 1999 gives no option |
+| `e21b63b5` | SSC CGL · Data Interpretation | **Stem incomplete.** The question line is not legible; the solution guesses 24% of 1000 = 240, which is not even the key 280 |
+| `edcaacb8` | SSC CGL · Data Interpretation | **Stem incomplete.** The question is cut off after "then the"; the solution guesses it asks for Madhuri's marbles |
+| `f0dbd410` | SSC CGL · Data Interpretation | **Stem incomplete.** The question below the chart is washed out; the solution guesses it asks in how many years the price fell |
+| `5e25901e` | SSC CGL · Mensuration 3D | **Key not what the working gives.** Keyed 732.06 is not what the working gives: 1000 − 256π/3 is 731.92 (exact π) or 732.05 (π = 3.14); the solution picks B as nearest |
+| `83f3b947` | SSC CGL · Mensuration 3D | **Key not what the working gives.** Keyed 5026.33 is not what the working gives: (2/3)π·2401 is 5030.67 (22/7), 5026.09 (3.14) or 5028.6 (exact π); the solution calls it an approximate match |
+| `b9c5800c` | SSC CGL · Mensuration 3D | **Key not what the working gives.** (4/3)π(10³ − 9³) is 1134.59 with π = 3.14 (the stem's π), 1135.17 exact, 1135.81 with 22/7; none gives the key 1134.7 (the solution says 'closest to') |
+| `5e8bb9f3` | SSC CGL · Mensuration 3D | **Stem defective as printed.** Defective question: base area = curved area forces l = r, a cone of zero height; the solution follows SSC's key, and the answer is a letter (r) with nothing numeric to check |
 
 ## Settled
 

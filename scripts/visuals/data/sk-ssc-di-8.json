@@ -1,0 +1,867 @@
+{
+  "//": "Assembled from agent drafts (sketch).",
+  "visuals": [
+    {
+      "id": "b36a975b-8530-420b-a0f3-1b20fecd3e9a",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "B": 80,
+            "G": 120,
+            "T": "B+G",
+            "P": "B/T*100",
+            "s": "3.6/G"
+          },
+          "view": {
+            "x": [
+              0,
+              8
+            ],
+            "y": [
+              -1,
+              5
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  3.2,
+                  0
+                ],
+                [
+                  4.6,
+                  0
+                ],
+                [
+                  4.6,
+                  "B*s"
+                ],
+                [
+                  3.2,
+                  "B*s"
+                ]
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  5.6,
+                  0
+                ],
+                [
+                  7,
+                  0
+                ],
+                [
+                  7,
+                  "G*s"
+                ],
+                [
+                  5.6,
+                  "G*s"
+                ]
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                3.9,
+                2.4
+              ],
+              "text": "80",
+              "pos": "n",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                3.9,
+                0
+              ],
+              "text": "Boys",
+              "pos": "s",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                6.3,
+                3.6
+              ],
+              "text": "120",
+              "pos": "n",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                6.3,
+                0
+              ],
+              "text": "Girls",
+              "pos": "s",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.1,
+                4.6
+              ],
+              "text": "Medical: 80 + 120 = {T}",
+              "pos": "e",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.1,
+                3.9
+              ],
+              "text": "boys: 80/200 = {P}%",
+              "pos": "e",
+              "step": "s2",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "T = 200",
+            "B < G"
+          ],
+          "answer": "P"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "3c9d5851",
+        "answer": {
+          "value": 40,
+          "label": "40%"
+        }
+      }
+    },
+    {
+      "id": "b77fe506-c677-4f68-b2a6-b995b7732175",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "T": 150,
+            "V": 105,
+            "NV": "T-V",
+            "P": "NV*100/T",
+            "s": "3.6/T"
+          },
+          "view": {
+            "x": [
+              0,
+              8
+            ],
+            "y": [
+              -1,
+              5
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  1,
+                  0
+                ],
+                [
+                  2.6,
+                  0
+                ],
+                [
+                  2.6,
+                  "V*s"
+                ],
+                [
+                  1,
+                  "V*s"
+                ]
+              ],
+              "step": "s1",
+              "tone": "good"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  1,
+                  "V*s"
+                ],
+                [
+                  2.6,
+                  "V*s"
+                ],
+                [
+                  2.6,
+                  "T*s"
+                ],
+                [
+                  1,
+                  "T*s"
+                ]
+              ],
+              "step": "s1",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                1.8,
+                3.6
+              ],
+              "text": "150",
+              "pos": "n",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                1.8,
+                0
+              ],
+              "text": "Class XII",
+              "pos": "s",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                2.6,
+                1.26
+              ],
+              "text": "veg 105",
+              "pos": "e",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                2.6,
+                3.06
+              ],
+              "text": "non-veg {NV}",
+              "pos": "e",
+              "step": "s1",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                4.3,
+                2
+              ],
+              "text": "{NV}/150 = {P}%",
+              "pos": "e",
+              "step": "s2",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "NV = 45",
+            "V + NV = T"
+          ],
+          "answer": "P"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "b2a01eea",
+        "answer": {
+          "value": 30,
+          "label": "30%"
+        }
+      }
+    },
+    {
+      "id": "c3c425fa-c5f0-4f5f-91b3-b2bdace9820d",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "A": 54,
+            "B": 68,
+            "I": "B-A",
+            "P": "I/A*100",
+            "s": "3.6/B"
+          },
+          "view": {
+            "x": [
+              0,
+              8
+            ],
+            "y": [
+              -1,
+              5
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  1,
+                  0
+                ],
+                [
+                  2.4,
+                  0
+                ],
+                [
+                  2.4,
+                  "A*s"
+                ],
+                [
+                  1,
+                  "A*s"
+                ]
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  3.6,
+                  0
+                ],
+                [
+                  5,
+                  0
+                ],
+                [
+                  5,
+                  "A*s"
+                ],
+                [
+                  3.6,
+                  "A*s"
+                ]
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  3.6,
+                  "A*s"
+                ],
+                [
+                  5,
+                  "A*s"
+                ],
+                [
+                  5,
+                  "B*s"
+                ],
+                [
+                  3.6,
+                  "B*s"
+                ]
+              ],
+              "step": "s2",
+              "tone": "amber"
+            },
+            {
+              "kind": "segment",
+              "from": [
+                2.4,
+                "A*s"
+              ],
+              "to": [
+                3.6,
+                "A*s"
+              ],
+              "dash": true,
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                1.7,
+                2.859
+              ],
+              "text": "54",
+              "pos": "n",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                1.7,
+                0
+              ],
+              "text": "1999",
+              "pos": "s",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                4.3,
+                3.6
+              ],
+              "text": "68",
+              "pos": "n",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                4.3,
+                0
+              ],
+              "text": "2002",
+              "pos": "s",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                5,
+                3.229
+              ],
+              "text": "+{I}",
+              "pos": "e",
+              "step": "s2",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                5.6,
+                1.2
+              ],
+              "text": "{I}/54 × 100",
+              "pos": "e",
+              "step": "s2"
+            },
+            {
+              "kind": "label",
+              "at": [
+                5.6,
+                0.5
+              ],
+              "text": "= 25.93%",
+              "pos": "e",
+              "step": "s2",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "I = 14",
+            "A < B"
+          ],
+          "answer": "floor(100*P+0.5)/100"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "5049aa9e",
+        "answer": {
+          "value": 25.93,
+          "label": "25.93%"
+        }
+      }
+    },
+    {
+      "id": "c6325040-c954-4a0a-b835-1df7021099bd",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "Jan": 60,
+            "Mar": 75,
+            "May": 45,
+            "Jul": 85,
+            "Sep": 90,
+            "Nov": 108,
+            "s": "5/Nov"
+          },
+          "view": {
+            "x": [
+              0,
+              12
+            ],
+            "y": [
+              -1.5,
+              7.5
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  0.6,
+                  0
+                ],
+                [
+                  1.8,
+                  0
+                ],
+                [
+                  1.8,
+                  "Jan*s"
+                ],
+                [
+                  0.6,
+                  "Jan*s"
+                ]
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  2.5,
+                  0
+                ],
+                [
+                  3.7,
+                  0
+                ],
+                [
+                  3.7,
+                  "Mar*s"
+                ],
+                [
+                  2.5,
+                  "Mar*s"
+                ]
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  4.4,
+                  0
+                ],
+                [
+                  5.6,
+                  0
+                ],
+                [
+                  5.6,
+                  "May*s"
+                ],
+                [
+                  4.4,
+                  "May*s"
+                ]
+              ],
+              "step": "s1",
+              "tone": "amber"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  6.3,
+                  0
+                ],
+                [
+                  7.5,
+                  0
+                ],
+                [
+                  7.5,
+                  "Jul*s"
+                ],
+                [
+                  6.3,
+                  "Jul*s"
+                ]
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  8.2,
+                  0
+                ],
+                [
+                  9.4,
+                  0
+                ],
+                [
+                  9.4,
+                  "Sep*s"
+                ],
+                [
+                  8.2,
+                  "Sep*s"
+                ]
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  10.1,
+                  0
+                ],
+                [
+                  11.3,
+                  0
+                ],
+                [
+                  11.3,
+                  "Nov*s"
+                ],
+                [
+                  10.1,
+                  "Nov*s"
+                ]
+              ],
+              "step": "s1",
+              "tone": "good"
+            },
+            {
+              "kind": "label",
+              "at": [
+                1.2,
+                2.778
+              ],
+              "text": "60",
+              "pos": "n",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                1.2,
+                0
+              ],
+              "text": "Jan",
+              "pos": "s",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                3.1,
+                3.472
+              ],
+              "text": "75",
+              "pos": "n",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                3.1,
+                0
+              ],
+              "text": "Mar",
+              "pos": "s",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                5,
+                2.083
+              ],
+              "text": "45",
+              "pos": "n",
+              "step": "s1",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                5,
+                0
+              ],
+              "text": "May",
+              "pos": "s",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                6.9,
+                3.935
+              ],
+              "text": "85",
+              "pos": "n",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                6.9,
+                0
+              ],
+              "text": "Jul",
+              "pos": "s",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                8.8,
+                4.167
+              ],
+              "text": "90",
+              "pos": "n",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                8.8,
+                0
+              ],
+              "text": "Sep",
+              "pos": "s",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                10.7,
+                5
+              ],
+              "text": "108",
+              "pos": "n",
+              "step": "s1",
+              "tone": "good"
+            },
+            {
+              "kind": "label",
+              "at": [
+                10.7,
+                0
+              ],
+              "text": "Nov",
+              "pos": "s",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.1,
+                6.9
+              ],
+              "text": "Nov : May = 108 : 45",
+              "pos": "e",
+              "step": "s2"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.1,
+                6.2
+              ],
+              "text": "= 12 : 5",
+              "pos": "e",
+              "step": "s2",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "Nov > Jan",
+            "Nov > Mar",
+            "Nov > Jul",
+            "Nov > Sep",
+            "Nov > May",
+            "May < Jan",
+            "May < Mar",
+            "May < Jul",
+            "May < Sep"
+          ],
+          "answer": "Nov/May"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "c780528b",
+        "answer": {
+          "value": 2.4,
+          "label": "12 : 5"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

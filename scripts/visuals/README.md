@@ -251,6 +251,19 @@ trees, then circle diagrams; ranking rows use `sketch`):
   timelines, floor stacks, facing-North rows; 6 decided none (chronology
   lists, circular seating, grid puzzles, a two-arrangement "cannot be
   determined"). label-overlap --edges: 0 hits.
+- 2026-10-31, SSC CGL Mathematical Operations (282), Mensuration 3D (160) and
+  Data Interpretation (219), existing scenes only (brief `briefs/ssc-more.md`):
+  281 + 152 + 185 drawn (algebra steps; flat sections and bar charts on
+  `sketch` where they explain), 43 decided none. Data Interpretation draws a
+  bar chart only from a table printed in the text, never from a chart image the
+  drafter cannot see (those get algebra steps on the numbers the solution
+  quotes), and every chart reading was compared with the picture on the sheet.
+  Two stored solutions had a wrong check line (fixed,
+  `solution-fixes/2026-10-31-ssc-mo.json`, then animated). 38 questions whose
+  stem never printed its question, a total or a name, or whose key the working
+  does not give, keep the written solution and are open in NEEDS_OWNER.md.
+  Lesson: an agent's console shows curly quotes and dashes as a replacement
+  character; check the JSON itself before calling a stem garbled.
 
 ## Pieces
 
