@@ -205,6 +205,16 @@ trees, then circle diagrams; ranking rows use `sketch`):
   is tried both ways, and "cannot be determined" holds only when no other
   option holds for every allowed sex. The route lights up, its steps named by
   the sex every allowed family agrees on.
+- `circles` (brief `briefs/circles-draft.md`, spec `tests/visuals-syllogism.test.ts`):
+  syllogisms and "which Venn diagram" questions. The drafter's circles must
+  show every statement (all = inside, no = apart, some = meet, overlap);
+  whether a conclusion follows is decided by `lib/visuals/syllogism.ts`,
+  which tries every way 2 to 4 sets can overlap (each set non-empty): a
+  definite conclusion must hold in all, a possibility in one, and two that
+  never agree form an either/or. Labels are placed by the scene, never on an
+  outline (`labelBoxes`). A "which diagram" question names the key's figure;
+  only that match is checked by eye, so review it beside the option picture
+  (the review sheet does not show option images: build a side-by-side page).
 
 **Reasoning refinement log:**
 - 2026-10-31, SSC CGL Coding-Decoding (247 with a solution, 9 slices of 28,
@@ -227,6 +237,15 @@ trees, then circle diagrams; ranking rows use `sketch`):
   and a guessed placement. Review fixes: a person asked about themself reads
   "Azad himself"; the listener reads "your father". Candidate addition: a
   false-statement ask (4).
+- 2026-10-31, SSC CGL Syllogism (113, 6 slices) and Venn Diagrams (44, 2
+  slices): 109 + 28 drawn (`data/ci-ssc-sy-*`, `ci-ssc-vn-*`), 4 + 16 decided
+  none (count-from-the-figure 14, five terms, contradictory statements, an
+  either/or pair the key ignores, a key picture that is only a best fit, a
+  reverse question). Review changes: labels sat on outlines ('Woman',
+  'Brothers'), so the scene now places them; conclusions show on their own
+  beat, since solutions discuss III before II. Every Venn drawing was matched
+  against its key option's picture. check-drafts now enforces the 32-character
+  answer label the assembler drops on.
 
 ## Pieces
 
