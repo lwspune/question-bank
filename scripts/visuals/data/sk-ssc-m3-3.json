@@ -1,0 +1,810 @@
+{
+  "//": "Assembled from agent drafts (sketch).",
+  "visuals": [
+    {
+      "id": "63d3d280-5269-454e-82e1-7f3e0553b843",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "R": 5,
+            "H": 30,
+            "rb": 4,
+            "V": "4/3*pi*rb^3"
+          },
+          "view": {
+            "x": [
+              -8,
+              40
+            ],
+            "y": [
+              -4,
+              32
+            ]
+          },
+          "points": {
+            "A": [
+              0,
+              0
+            ],
+            "B": [
+              "2*R",
+              0
+            ],
+            "C": [
+              "2*R",
+              "H"
+            ],
+            "D": [
+              0,
+              "H"
+            ],
+            "O": [
+              "R",
+              "rb"
+            ],
+            "P": [
+              "R-rb",
+              "rb"
+            ],
+            "Q": [
+              "R+rb",
+              "rb"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "points": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "circle",
+              "center": "O",
+              "r": "rb",
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                11.5,
+                28
+              ],
+              "text": "tank: r = 5, h = 30",
+              "pos": "e",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                11.5,
+                4
+              ],
+              "text": "ball: r = 4",
+              "pos": "e",
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                11.5,
+                20
+              ],
+              "text": "displaced = 256π/3 cm³",
+              "pos": "e",
+              "step": "s2",
+              "tone": "good"
+            },
+            {
+              "kind": "segment",
+              "from": "P",
+              "to": "Q",
+              "dash": true,
+              "step": "s3",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                "R",
+                "rb"
+              ],
+              "text": "8",
+              "pos": "n",
+              "step": "s3",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                "R",
+                -0.4
+              ],
+              "text": "10",
+              "pos": "s",
+              "step": "s3",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                11.5,
+                12
+              ],
+              "text": "8 < 10, so it fits",
+              "pos": "e",
+              "step": "s3",
+              "tone": "fg"
+            }
+          ],
+          "assert": [
+            "2*rb < 2*R",
+            "2*rb < H",
+            "V = 256*pi/3"
+          ],
+          "answer": "V"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "e623b1af",
+        "answer": {
+          "value": 268.082573106329,
+          "label": "256π/3 cm³"
+        }
+      }
+    },
+    {
+      "id": "65a6a627-4ca6-4e94-b6d1-b527f810ff81",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "h": 3,
+            "r": 4,
+            "l": 5,
+            "V": "pi*r^2*h/3"
+          },
+          "view": {
+            "x": [
+              -5.5,
+              6.5
+            ],
+            "y": [
+              -3,
+              6
+            ]
+          },
+          "points": {
+            "O": [
+              0,
+              0
+            ],
+            "A": [
+              0,
+              "h"
+            ],
+            "B": [
+              "r",
+              0
+            ],
+            "B2": [
+              "-r",
+              0
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "points": [
+                "A",
+                "O",
+                "B"
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "angle",
+              "at": "O",
+              "from": "B",
+              "to": "A",
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.15,
+                1
+              ],
+              "text": "h = 3",
+              "pos": "e",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                2,
+                -0.2
+              ],
+              "text": "r = 4",
+              "pos": "s",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                2,
+                1.5
+              ],
+              "text": "l = 5",
+              "pos": "ne",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "segment",
+              "from": "A",
+              "to": "B2",
+              "dash": true,
+              "step": "s2",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": "O",
+              "to": "B2",
+              "dash": true,
+              "step": "s2",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -5.2,
+                -1.6
+              ],
+              "text": "V = (1/3)π·4²·3 = 16π cm³",
+              "pos": "e",
+              "step": "s3",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "l^2 = r^2 + h^2",
+            "V = 16*pi"
+          ],
+          "answer": "V"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "a5fd6e68",
+        "answer": {
+          "value": 50.26548245743669,
+          "label": "16π cm³"
+        }
+      }
+    },
+    {
+      "id": "7248f6a0-8319-460c-9dd5-5b28d553c237",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "r": 1,
+            "s": "2*r",
+            "rat": "(4/3*pi*r^3)/s^3",
+            "occ": "100*3.14/6",
+            "ans": "floor(100*(100-occ)+0.5)/100"
+          },
+          "view": {
+            "x": [
+              -1.6,
+              4.4
+            ],
+            "y": [
+              -2,
+              2.5
+            ]
+          },
+          "points": {
+            "O": [
+              0,
+              0
+            ],
+            "P1": [
+              "-r",
+              "-r"
+            ],
+            "P2": [
+              "r",
+              "-r"
+            ],
+            "P3": [
+              "r",
+              "r"
+            ],
+            "P4": [
+              "-r",
+              "r"
+            ],
+            "T": [
+              "r",
+              0
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "points": [
+                "P1",
+                "P2",
+                "P3",
+                "P4"
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "circle",
+              "center": "O",
+              "r": "r",
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "segment",
+              "from": "O",
+              "to": "T",
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.5,
+                0.05
+              ],
+              "text": "r",
+              "pos": "n",
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0,
+                -1.1
+              ],
+              "text": "side = 2r",
+              "pos": "s",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                1.3,
+                1.6
+              ],
+              "text": "sphere/cube = π/6",
+              "pos": "e",
+              "step": "s2",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                1.3,
+                0.6
+              ],
+              "text": "occupied: 52.33%",
+              "pos": "e",
+              "step": "s3",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                1.3,
+                -0.4
+              ],
+              "text": "not occupied: 47.67%",
+              "pos": "e",
+              "step": "s3",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "s = 2*r",
+            "rat = pi/6"
+          ],
+          "answer": "ans"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "f1423f34",
+        "answer": {
+          "value": 47.67,
+          "label": "47.67%"
+        }
+      }
+    },
+    {
+      "id": "859c6d96-3b38-48c7-8e7b-c15f71d2f65d",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "r": 6,
+            "h": 8,
+            "l": "sqrt(r^2+h^2)",
+            "CSA": "22/7*r*l"
+          },
+          "view": {
+            "x": [
+              -8,
+              8.7
+            ],
+            "y": [
+              -4,
+              8.5
+            ]
+          },
+          "points": {
+            "O": [
+              0,
+              0
+            ],
+            "A": [
+              0,
+              "h"
+            ],
+            "B": [
+              "r",
+              0
+            ],
+            "B2": [
+              "-r",
+              0
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "points": [
+                "A",
+                "B2",
+                "B"
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                "A",
+                "O",
+                "B"
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "angle",
+              "at": "O",
+              "from": "B",
+              "to": "A",
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.15,
+                2.5
+              ],
+              "text": "h = 8",
+              "pos": "e",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                3,
+                -0.2
+              ],
+              "text": "r = 6",
+              "pos": "s",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                3,
+                4
+              ],
+              "text": "l = {l}",
+              "pos": "ne",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -7.6,
+                -2
+              ],
+              "text": "canvas = πrl = (22/7)·6·10",
+              "pos": "e",
+              "step": "s2",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -7.6,
+                -3.2
+              ],
+              "text": "= 1320/7 ≈ 188.57",
+              "pos": "e",
+              "step": "s2",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "l^2 = r^2 + h^2",
+            "l = 10",
+            "CSA = 1320/7"
+          ],
+          "answer": "floor(100*CSA+0.5)/100"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "6438bacf",
+        "answer": {
+          "value": 188.57,
+          "label": "188.57 units"
+        }
+      }
+    },
+    {
+      "id": "89acbee9-18cb-4090-b174-ebc43f2b4670",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "r": 6,
+            "h": 8,
+            "l": "sqrt(r^2+h^2)",
+            "TSA": "22/7*r*(l+r)"
+          },
+          "view": {
+            "x": [
+              -8,
+              8.7
+            ],
+            "y": [
+              -4,
+              8.5
+            ]
+          },
+          "points": {
+            "O": [
+              0,
+              0
+            ],
+            "A": [
+              0,
+              "h"
+            ],
+            "B": [
+              "r",
+              0
+            ],
+            "B2": [
+              "-r",
+              0
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "points": [
+                "A",
+                "B2",
+                "B"
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                "A",
+                "O",
+                "B"
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "angle",
+              "at": "O",
+              "from": "B",
+              "to": "A",
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.15,
+                2.5
+              ],
+              "text": "h = 8",
+              "pos": "e",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                3,
+                -0.2
+              ],
+              "text": "r = 6",
+              "pos": "s",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                3,
+                4
+              ],
+              "text": "l = {l}",
+              "pos": "ne",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -7.6,
+                -2
+              ],
+              "text": "πr(l + r) = π·6·16 = 96π",
+              "pos": "e",
+              "step": "s2",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -7.6,
+                -3.2
+              ],
+              "text": "96 × 22/7 = 2112/7 ≈ 301.71",
+              "pos": "e",
+              "step": "s3",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "l^2 = r^2 + h^2",
+            "l = 10",
+            "TSA = 2112/7"
+          ],
+          "answer": "floor(100*TSA+0.5)/100"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "53d94466",
+        "answer": {
+          "value": 301.71,
+          "label": "301.71 cm²"
+        }
+      }
+    }
+  ],
+  "decided": []
+}
