@@ -3412,5 +3412,12 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "SSC CGL History",
     "chapterSlug": "ancient-india",
     "subtopicCount": 7
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-history",
+    "subjectDisplay": "SSC CGL History",
+    "chapterSlug": "medieval-india",
+    "subtopicCount": 6
   }
 ];
