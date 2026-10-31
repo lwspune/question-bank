@@ -246,6 +246,11 @@ trees, then circle diagrams; ranking rows use `sketch`):
   beat, since solutions discuss III before II. Every Venn drawing was matched
   against its key option's picture. check-drafts now enforces the 32-character
   answer label the assembler drops on.
+- 2026-10-31, SSC CGL Order, Ranking and Arrangement (19 with a solution,
+  `sketch`): 13 drawn (`data/sk-ssc-rk`): rows counted from both ends, day
+  timelines, floor stacks, facing-North rows; 6 decided none (chronology
+  lists, circular seating, grid puzzles, a two-arrangement "cannot be
+  determined"). label-overlap --edges: 0 hits.
 
 ## Pieces
 

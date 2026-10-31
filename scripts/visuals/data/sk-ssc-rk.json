@@ -1,0 +1,3912 @@
+{
+  "//": "Assembled from agent drafts (sketch).",
+  "visuals": [
+    {
+      "id": "14f99625-dcd1-473c-b399-f96b24dd627a",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "N": 50,
+            "a": 15,
+            "b": 20,
+            "s": "12/N",
+            "bL": "N - b + 1",
+            "gap": "bL - a - 1"
+          },
+          "view": {
+            "x": [
+              -1,
+              13
+            ],
+            "y": [
+              -4.4,
+              3.6
+            ]
+          },
+          "axes": false,
+          "points": {
+            "L0": [
+              0,
+              0
+            ],
+            "R0": [
+              12,
+              0
+            ],
+            "R1": [
+              12,
+              0.6
+            ],
+            "L1": [
+              0,
+              0.6
+            ],
+            "A": [
+              "(a - 0.5)*s",
+              0.3
+            ],
+            "B": [
+              "(bL - 0.5)*s",
+              0.3
+            ],
+            "G0": [
+              "a*s",
+              0
+            ],
+            "G1": [
+              "(bL - 1)*s",
+              0
+            ],
+            "G2": [
+              "(bL - 1)*s",
+              0.6
+            ],
+            "G3": [
+              "a*s",
+              0.6
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "points": [
+                "L0",
+                "R0",
+                "R1",
+                "L1"
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0,
+                2.55
+              ],
+              "text": "50 books",
+              "pos": "e",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "point",
+              "at": "A",
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                "(a - 0.5)*s",
+                0.6
+              ],
+              "text": "A",
+              "pos": "n",
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "arrow",
+              "from": [
+                0,
+                -0.7
+              ],
+              "to": [
+                "a*s",
+                -0.7
+              ],
+              "step": "s1",
+              "tone": "brand",
+              "label": "15th from left",
+              "labelAt": [
+                "a*s/2",
+                -0.7
+              ],
+              "pos": "s"
+            },
+            {
+              "kind": "point",
+              "at": "B",
+              "step": "s1",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                "(bL - 0.5)*s",
+                0.6
+              ],
+              "text": "B",
+              "pos": "n",
+              "step": "s1",
+              "tone": "amber"
+            },
+            {
+              "kind": "arrow",
+              "from": [
+                12,
+                1.95
+              ],
+              "to": [
+                "(bL - 1)*s",
+                1.95
+              ],
+              "step": "s1",
+              "tone": "amber",
+              "label": "20th from right",
+              "labelAt": [
+                "(bL - 1 + 12/s)*s/2",
+                1.95
+              ],
+              "pos": "n"
+            },
+            {
+              "kind": "arrow",
+              "from": [
+                0,
+                -2.1
+              ],
+              "to": [
+                "bL*s",
+                -2.1
+              ],
+              "step": "s2",
+              "tone": "amber",
+              "label": "50 − 20 + 1 = {bL}st from left",
+              "labelAt": [
+                "bL*s/2",
+                -2.1
+              ],
+              "pos": "s"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                "G0",
+                "G1",
+                "G2",
+                "G3"
+              ],
+              "step": "s3",
+              "tone": "good"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -0.8,
+                -3.6
+              ],
+              "text": "{bL} − 15 − 1 = {gap} between",
+              "pos": "e",
+              "step": "s3",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "bL + b - 1 = N",
+            "gap + 2 = bL - a + 1",
+            "bL > a"
+          ],
+          "answer": "gap"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "038d24da",
+        "answer": {
+          "value": 15,
+          "label": "15 books between"
+        }
+      }
+    },
+    {
+      "id": "32869ca1-455b-47ad-bffd-45dd5bc49c75",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "dD": 2,
+            "dS": "dD + 3",
+            "dK": "dS - 1"
+          },
+          "view": {
+            "x": [
+              -0.4,
+              7.2
+            ],
+            "y": [
+              -1.5,
+              3.6
+            ]
+          },
+          "axes": false,
+          "points": {
+            "T0": [
+              0.5,
+              0
+            ],
+            "T1": [
+              6.5,
+              0
+            ],
+            "D": [
+              "dD",
+              3
+            ],
+            "S": [
+              "dS",
+              2
+            ],
+            "K": [
+              "dK",
+              1
+            ]
+          },
+          "items": [
+            {
+              "kind": "segment",
+              "from": "T0",
+              "to": "T1",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                1,
+                0
+              ],
+              "text": "1",
+              "pos": "s",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                2,
+                0
+              ],
+              "text": "2",
+              "pos": "s",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                3,
+                0
+              ],
+              "text": "3",
+              "pos": "s",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                4,
+                0
+              ],
+              "text": "4",
+              "pos": "s",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                5,
+                0
+              ],
+              "text": "5",
+              "pos": "s",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                6,
+                0
+              ],
+              "text": "6",
+              "pos": "s",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": "D",
+              "to": [
+                "dD",
+                0
+              ],
+              "dash": true,
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "point",
+              "at": "D",
+              "step": "s1",
+              "tone": "brand",
+              "label": "Darjeeling",
+              "pos": "e"
+            },
+            {
+              "kind": "segment",
+              "from": "S",
+              "to": [
+                "dS",
+                0
+              ],
+              "dash": true,
+              "step": "s2",
+              "tone": "muted"
+            },
+            {
+              "kind": "point",
+              "at": "S",
+              "step": "s2",
+              "tone": "amber",
+              "label": "Siliguri",
+              "pos": "e"
+            },
+            {
+              "kind": "segment",
+              "from": "K",
+              "to": [
+                "dK",
+                0
+              ],
+              "dash": true,
+              "step": "s3",
+              "tone": "muted"
+            },
+            {
+              "kind": "point",
+              "at": "K",
+              "step": "s3",
+              "tone": "good",
+              "label": "Kalimpong",
+              "pos": "w"
+            },
+            {
+              "kind": "arrow",
+              "from": [
+                "dD",
+                2
+              ],
+              "to": [
+                "dS",
+                2
+              ],
+              "step": "s2",
+              "tone": "amber",
+              "label": "+3 days",
+              "labelAt": [
+                "(dD + dS)/2",
+                2
+              ],
+              "pos": "n"
+            },
+            {
+              "kind": "arrow",
+              "from": [
+                "dS",
+                1
+              ],
+              "to": [
+                "dK",
+                1
+              ],
+              "step": "s3",
+              "tone": "good",
+              "label": "−1 day",
+              "labelAt": [
+                "dS",
+                1
+              ],
+              "pos": "e"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.5,
+                -1.05
+              ],
+              "text": "days of March",
+              "pos": "e",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                3.7,
+                -1.05
+              ],
+              "text": "Kalimpong: {dK}th March",
+              "pos": "e",
+              "step": "s3",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "dS - dD = 3",
+            "dS - dK = 1"
+          ],
+          "answer": "dK"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "e3cdb90e",
+        "answer": {
+          "value": 4,
+          "label": "4th March"
+        }
+      }
+    },
+    {
+      "id": "567f965f-0678-4638-af5f-1c4804e4fc8c",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "fE": 1,
+            "fG": 7,
+            "fC": 2,
+            "fF": "fC + 4",
+            "fB": "fF - 1",
+            "fD": "(fF + fC)/2",
+            "fA": 3
+          },
+          "view": {
+            "x": [
+              -1.2,
+              9
+            ],
+            "y": [
+              -0.6,
+              7.6
+            ]
+          },
+          "axes": false,
+          "points": {
+            "Q0": [
+              0,
+              0
+            ],
+            "Q1": [
+              3,
+              0
+            ],
+            "Q2": [
+              3,
+              7
+            ],
+            "Q3": [
+              0,
+              7
+            ]
+          },
+          "items": [
+            {
+              "kind": "segment",
+              "from": "Q0",
+              "to": "Q1",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": "Q1",
+              "to": "Q2",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": "Q2",
+              "to": "Q3",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": "Q3",
+              "to": "Q0",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": [
+                0,
+                1
+              ],
+              "to": [
+                3,
+                1
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": [
+                0,
+                2
+              ],
+              "to": [
+                3,
+                2
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": [
+                0,
+                3
+              ],
+              "to": [
+                3,
+                3
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": [
+                0,
+                4
+              ],
+              "to": [
+                3,
+                4
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": [
+                0,
+                5
+              ],
+              "to": [
+                3,
+                5
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": [
+                0,
+                6
+              ],
+              "to": [
+                3,
+                6
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0,
+                0.5
+              ],
+              "text": "1",
+              "pos": "w",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0,
+                1.5
+              ],
+              "text": "2",
+              "pos": "w",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0,
+                2.5
+              ],
+              "text": "3",
+              "pos": "w",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0,
+                3.5
+              ],
+              "text": "4",
+              "pos": "w",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0,
+                4.5
+              ],
+              "text": "5",
+              "pos": "w",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0,
+                5.5
+              ],
+              "text": "6",
+              "pos": "w",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0,
+                6.5
+              ],
+              "text": "7",
+              "pos": "w",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                1.089,
+                "fG - 0.5"
+              ],
+              "text": "G",
+              "pos": "e",
+              "step": "s2",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                1.089,
+                "fE - 0.5"
+              ],
+              "text": "E",
+              "pos": "e",
+              "step": "s2",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                1.089,
+                "fC - 0.5"
+              ],
+              "text": "C",
+              "pos": "e",
+              "step": "s3",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                1.089,
+                "fF - 0.5"
+              ],
+              "text": "F",
+              "pos": "e",
+              "step": "s3",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                1.089,
+                "fB - 0.5"
+              ],
+              "text": "B",
+              "pos": "e",
+              "step": "s3",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                1.089,
+                "fD - 0.5"
+              ],
+              "text": "D",
+              "pos": "e",
+              "step": "s4",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                1.089,
+                "fA - 0.5"
+              ],
+              "text": "A",
+              "pos": "e",
+              "step": "s5",
+              "tone": "brand"
+            },
+            {
+              "kind": "arrow",
+              "from": [
+                3.5,
+                "fA - 0.5"
+              ],
+              "to": [
+                3.5,
+                "fE - 0.5"
+              ],
+              "step": "s6",
+              "tone": "good",
+              "label": "2 floors below A",
+              "labelAt": [
+                3.5,
+                "(fA + fE)/2 - 0.5"
+              ],
+              "pos": "e"
+            },
+            {
+              "kind": "label",
+              "at": [
+                3.3,
+                5.5
+              ],
+              "text": "E is on floor {fE}",
+              "pos": "e",
+              "step": "s6",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "fG - fE = 6",
+            "fG > fB",
+            "mod(fC, 2) = 0",
+            "fF - fC = 4",
+            "fD - fC = fF - fD",
+            "fA < 7",
+            "fA + fB + fC + fD + fE + fF + fG = 28",
+            "fA*fB*fC*fD*fE*fF*fG = 5040",
+            "fA - 2 = fE"
+          ],
+          "answer": "fE"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "74d90127",
+        "answer": {
+          "value": 1,
+          "label": "E (floor 1)"
+        }
+      }
+    },
+    {
+      "id": "5d84cf3a-1e41-4bbc-8398-d9d10db972c2",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "N": 40,
+            "a": 13,
+            "b": 17,
+            "s": "12/N",
+            "bL": "N - b + 1",
+            "gap": "bL - a - 1"
+          },
+          "view": {
+            "x": [
+              -1,
+              13
+            ],
+            "y": [
+              -4.4,
+              3.6
+            ]
+          },
+          "axes": false,
+          "points": {
+            "L0": [
+              0,
+              0
+            ],
+            "R0": [
+              12,
+              0
+            ],
+            "R1": [
+              12,
+              0.6
+            ],
+            "L1": [
+              0,
+              0.6
+            ],
+            "A": [
+              "(a - 0.5)*s",
+              0.3
+            ],
+            "B": [
+              "(bL - 0.5)*s",
+              0.3
+            ],
+            "G0": [
+              "a*s",
+              0
+            ],
+            "G1": [
+              "(bL - 1)*s",
+              0
+            ],
+            "G2": [
+              "(bL - 1)*s",
+              0.6
+            ],
+            "G3": [
+              "a*s",
+              0.6
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "points": [
+                "L0",
+                "R0",
+                "R1",
+                "L1"
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0,
+                2.55
+              ],
+              "text": "40 students",
+              "pos": "e",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "point",
+              "at": "A",
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                "(a - 0.5)*s",
+                0.6
+              ],
+              "text": "Rahul",
+              "pos": "n",
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "arrow",
+              "from": [
+                0,
+                -0.7
+              ],
+              "to": [
+                "a*s",
+                -0.7
+              ],
+              "step": "s1",
+              "tone": "brand",
+              "label": "13th from left",
+              "labelAt": [
+                "a*s/2",
+                -0.7
+              ],
+              "pos": "s"
+            },
+            {
+              "kind": "point",
+              "at": "B",
+              "step": "s1",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                "(bL - 0.5)*s",
+                0.6
+              ],
+              "text": "Kunal",
+              "pos": "n",
+              "step": "s1",
+              "tone": "amber"
+            },
+            {
+              "kind": "arrow",
+              "from": [
+                12,
+                1.95
+              ],
+              "to": [
+                "(bL - 1)*s",
+                1.95
+              ],
+              "step": "s1",
+              "tone": "amber",
+              "label": "17th from right",
+              "labelAt": [
+                "(bL - 1 + 12/s)*s/2",
+                1.95
+              ],
+              "pos": "n"
+            },
+            {
+              "kind": "arrow",
+              "from": [
+                0,
+                -2.1
+              ],
+              "to": [
+                "bL*s",
+                -2.1
+              ],
+              "step": "s2",
+              "tone": "amber",
+              "label": "40 − 17 + 1 = {bL}th from left",
+              "labelAt": [
+                "bL*s/2",
+                -2.1
+              ],
+              "pos": "s"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                "G0",
+                "G1",
+                "G2",
+                "G3"
+              ],
+              "step": "s3",
+              "tone": "good"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -0.8,
+                -3.6
+              ],
+              "text": "{bL} − 13 − 1 = {gap} between",
+              "pos": "e",
+              "step": "s3",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "bL + b - 1 = N",
+            "gap + 2 = bL - a + 1",
+            "bL > a"
+          ],
+          "answer": "gap"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "a958a601",
+        "answer": {
+          "value": 10,
+          "label": "10 students between"
+        }
+      }
+    },
+    {
+      "id": "636209a0-7a04-44d6-9ede-ad00f2113b11",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "N": 60,
+            "a": 25,
+            "b": 20,
+            "s": "12/N",
+            "bL": "N - b + 1",
+            "gap": "bL - a - 1"
+          },
+          "view": {
+            "x": [
+              -1,
+              13
+            ],
+            "y": [
+              -4.4,
+              3.6
+            ]
+          },
+          "axes": false,
+          "points": {
+            "L0": [
+              0,
+              0
+            ],
+            "R0": [
+              12,
+              0
+            ],
+            "R1": [
+              12,
+              0.6
+            ],
+            "L1": [
+              0,
+              0.6
+            ],
+            "A": [
+              "(a - 0.5)*s",
+              0.3
+            ],
+            "B": [
+              "(bL - 0.5)*s",
+              0.3
+            ],
+            "G0": [
+              "a*s",
+              0
+            ],
+            "G1": [
+              "(bL - 1)*s",
+              0
+            ],
+            "G2": [
+              "(bL - 1)*s",
+              0.6
+            ],
+            "G3": [
+              "a*s",
+              0.6
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "points": [
+                "L0",
+                "R0",
+                "R1",
+                "L1"
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0,
+                2.55
+              ],
+              "text": "60 students",
+              "pos": "e",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "point",
+              "at": "A",
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                "(a - 0.5)*s",
+                0.6
+              ],
+              "text": "Meena",
+              "pos": "n",
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "arrow",
+              "from": [
+                0,
+                -0.7
+              ],
+              "to": [
+                "a*s",
+                -0.7
+              ],
+              "step": "s1",
+              "tone": "brand",
+              "label": "25th from left",
+              "labelAt": [
+                "a*s/2",
+                -0.7
+              ],
+              "pos": "s"
+            },
+            {
+              "kind": "point",
+              "at": "B",
+              "step": "s1",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                "(bL - 0.5)*s",
+                0.6
+              ],
+              "text": "Rupa",
+              "pos": "n",
+              "step": "s1",
+              "tone": "amber"
+            },
+            {
+              "kind": "arrow",
+              "from": [
+                12,
+                1.95
+              ],
+              "to": [
+                "(bL - 1)*s",
+                1.95
+              ],
+              "step": "s1",
+              "tone": "amber",
+              "label": "20th from right",
+              "labelAt": [
+                "(bL - 1 + 12/s)*s/2",
+                1.95
+              ],
+              "pos": "n"
+            },
+            {
+              "kind": "arrow",
+              "from": [
+                0,
+                -2.1
+              ],
+              "to": [
+                "bL*s",
+                -2.1
+              ],
+              "step": "s2",
+              "tone": "amber",
+              "label": "60 − 20 + 1 = {bL}st from left",
+              "labelAt": [
+                "bL*s/2",
+                -2.1
+              ],
+              "pos": "s"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                "G0",
+                "G1",
+                "G2",
+                "G3"
+              ],
+              "step": "s3",
+              "tone": "good"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -0.8,
+                -3.6
+              ],
+              "text": "{bL} − 25 − 1 = {gap} between",
+              "pos": "e",
+              "step": "s3",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "bL + b - 1 = N",
+            "gap + 2 = bL - a + 1",
+            "bL > a"
+          ],
+          "answer": "gap"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "cb06d542",
+        "answer": {
+          "value": 15,
+          "label": "15 students between"
+        }
+      }
+    },
+    {
+      "id": "8d7e7dd3-9ce6-44b9-9696-43528d42d43c",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "fC": 1,
+            "fE": "fC + 3",
+            "fF": "fE + 2",
+            "fD": 2,
+            "fA": "fD + 3",
+            "fB": 3
+          },
+          "view": {
+            "x": [
+              -1.2,
+              8.4
+            ],
+            "y": [
+              -0.6,
+              6.6
+            ]
+          },
+          "axes": false,
+          "points": {
+            "Q0": [
+              0,
+              0
+            ],
+            "Q1": [
+              3,
+              0
+            ],
+            "Q2": [
+              3,
+              6
+            ],
+            "Q3": [
+              0,
+              6
+            ]
+          },
+          "items": [
+            {
+              "kind": "segment",
+              "from": "Q0",
+              "to": "Q1",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": "Q1",
+              "to": "Q2",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": "Q2",
+              "to": "Q3",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": "Q3",
+              "to": "Q0",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": [
+                0,
+                1
+              ],
+              "to": [
+                3,
+                1
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": [
+                0,
+                2
+              ],
+              "to": [
+                3,
+                2
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": [
+                0,
+                3
+              ],
+              "to": [
+                3,
+                3
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": [
+                0,
+                4
+              ],
+              "to": [
+                3,
+                4
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": [
+                0,
+                5
+              ],
+              "to": [
+                3,
+                5
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0,
+                0.5
+              ],
+              "text": "1",
+              "pos": "w",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0,
+                1.5
+              ],
+              "text": "2",
+              "pos": "w",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0,
+                2.5
+              ],
+              "text": "3",
+              "pos": "w",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0,
+                3.5
+              ],
+              "text": "4",
+              "pos": "w",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0,
+                4.5
+              ],
+              "text": "5",
+              "pos": "w",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0,
+                5.5
+              ],
+              "text": "6",
+              "pos": "w",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                1.139,
+                "fC - 0.5"
+              ],
+              "text": "C",
+              "pos": "e",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                1.139,
+                "fE - 0.5"
+              ],
+              "text": "E",
+              "pos": "e",
+              "step": "s2",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                1.139,
+                "fF - 0.5"
+              ],
+              "text": "F",
+              "pos": "e",
+              "step": "s3",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                1.139,
+                "fD - 0.5"
+              ],
+              "text": "D",
+              "pos": "e",
+              "step": "s4",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                1.139,
+                "fA - 0.5"
+              ],
+              "text": "A",
+              "pos": "e",
+              "step": "s5",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                1.139,
+                "fB - 0.5"
+              ],
+              "text": "B",
+              "pos": "e",
+              "step": "s5",
+              "tone": "brand"
+            },
+            {
+              "kind": "arrow",
+              "from": [
+                3.5,
+                "fB - 0.5"
+              ],
+              "to": [
+                3.5,
+                "fC - 0.5"
+              ],
+              "step": "s6",
+              "tone": "good",
+              "label": "2 floors below B",
+              "labelAt": [
+                3.5,
+                "(fB + fC)/2 - 0.5"
+              ],
+              "pos": "e"
+            },
+            {
+              "kind": "label",
+              "at": [
+                3.3,
+                4.5
+              ],
+              "text": "C is on floor {fC}",
+              "pos": "e",
+              "step": "s6",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "mod(fE, 2) = 0",
+            "fE - fC = 3",
+            "abs(fE - fF) = 2",
+            "fF > fC + 1",
+            "mod(fD, 2) = 0",
+            "abs(fA - fD) = 3",
+            "fA + fB + fC + fD + fE + fF = 21",
+            "fA*fB*fC*fD*fE*fF = 720",
+            "fB - 2 = fC"
+          ],
+          "answer": "fC"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "ff8a0251",
+        "answer": {
+          "value": 1,
+          "label": "C (floor 1)"
+        }
+      }
+    },
+    {
+      "id": "8e926ba0-65dc-493a-b05d-934d3638d208",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "dP": 12,
+            "dR": "dP + 2"
+          },
+          "view": {
+            "x": [
+              10.2,
+              19
+            ],
+            "y": [
+              -1.6,
+              3
+            ]
+          },
+          "axes": false,
+          "points": {
+            "T0": [
+              10.5,
+              0
+            ],
+            "T1": [
+              18.5,
+              0
+            ],
+            "P": [
+              "dP",
+              2
+            ],
+            "R": [
+              "dR",
+              1
+            ]
+          },
+          "items": [
+            {
+              "kind": "segment",
+              "from": "T0",
+              "to": "T1",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                11,
+                0
+              ],
+              "text": "11",
+              "pos": "s",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                12,
+                0
+              ],
+              "text": "12",
+              "pos": "s",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                13,
+                0
+              ],
+              "text": "13",
+              "pos": "s",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                14,
+                0
+              ],
+              "text": "14",
+              "pos": "s",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                15,
+                0
+              ],
+              "text": "15",
+              "pos": "s",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                16,
+                0
+              ],
+              "text": "16",
+              "pos": "s",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                17,
+                0
+              ],
+              "text": "17",
+              "pos": "s",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                18,
+                0
+              ],
+              "text": "18",
+              "pos": "s",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": "P",
+              "to": [
+                "dP",
+                0
+              ],
+              "dash": true,
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "point",
+              "at": "P",
+              "step": "s1",
+              "tone": "brand",
+              "label": "Patna",
+              "pos": "e"
+            },
+            {
+              "kind": "segment",
+              "from": "R",
+              "to": [
+                "dR",
+                0
+              ],
+              "dash": true,
+              "step": "s2",
+              "tone": "muted"
+            },
+            {
+              "kind": "point",
+              "at": "R",
+              "step": "s2",
+              "tone": "good",
+              "label": "Rourkela",
+              "pos": "e"
+            },
+            {
+              "kind": "arrow",
+              "from": [
+                "dP",
+                1
+              ],
+              "to": [
+                "dR",
+                1
+              ],
+              "step": "s2",
+              "tone": "good",
+              "label": "+2 days",
+              "labelAt": [
+                "(dP + dR)/2",
+                1
+              ],
+              "pos": "n"
+            },
+            {
+              "kind": "label",
+              "at": [
+                10.6,
+                -1.15
+              ],
+              "text": "days of Feb",
+              "pos": "e",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                14.2,
+                -1.15
+              ],
+              "text": "14 Feb: Rourkela",
+              "pos": "e",
+              "step": "s2",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "dR - dP = 2",
+            "dR = 14"
+          ],
+          "answer": "dR"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "cc7471d3",
+        "answer": {
+          "value": 14,
+          "label": "Rourkela (14th Feb)"
+        }
+      }
+    },
+    {
+      "id": "a1db1225-3654-42fc-ac20-20f8e0e02986",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "dI": 8,
+            "dS": "dI + 3",
+            "dN": "dS + 2"
+          },
+          "view": {
+            "x": [
+              6.2,
+              15.4
+            ],
+            "y": [
+              -1.6,
+              3.6
+            ]
+          },
+          "axes": false,
+          "points": {
+            "T0": [
+              6.5,
+              0
+            ],
+            "T1": [
+              14.5,
+              0
+            ],
+            "I": [
+              "dI",
+              3
+            ],
+            "S": [
+              "dS",
+              2
+            ],
+            "N": [
+              "dN",
+              1
+            ]
+          },
+          "items": [
+            {
+              "kind": "segment",
+              "from": "T0",
+              "to": "T1",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                7,
+                0
+              ],
+              "text": "7",
+              "pos": "s",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                8,
+                0
+              ],
+              "text": "8",
+              "pos": "s",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                9,
+                0
+              ],
+              "text": "9",
+              "pos": "s",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                10,
+                0
+              ],
+              "text": "10",
+              "pos": "s",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                11,
+                0
+              ],
+              "text": "11",
+              "pos": "s",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                12,
+                0
+              ],
+              "text": "12",
+              "pos": "s",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                13,
+                0
+              ],
+              "text": "13",
+              "pos": "s",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                14,
+                0
+              ],
+              "text": "14",
+              "pos": "s",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": "I",
+              "to": [
+                "dI",
+                0
+              ],
+              "dash": true,
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "point",
+              "at": "I",
+              "step": "s1",
+              "tone": "brand",
+              "label": "Indore",
+              "pos": "e"
+            },
+            {
+              "kind": "segment",
+              "from": "S",
+              "to": [
+                "dS",
+                0
+              ],
+              "dash": true,
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "point",
+              "at": "S",
+              "step": "s1",
+              "tone": "amber",
+              "label": "Surat",
+              "pos": "e"
+            },
+            {
+              "kind": "segment",
+              "from": "N",
+              "to": [
+                "dN",
+                0
+              ],
+              "dash": true,
+              "step": "s2",
+              "tone": "muted"
+            },
+            {
+              "kind": "point",
+              "at": "N",
+              "step": "s2",
+              "tone": "good",
+              "label": "Nashik",
+              "pos": "e"
+            },
+            {
+              "kind": "arrow",
+              "from": [
+                "dI",
+                2
+              ],
+              "to": [
+                "dS",
+                2
+              ],
+              "step": "s1",
+              "tone": "amber",
+              "label": "+3 days",
+              "labelAt": [
+                "(dI + dS)/2",
+                2
+              ],
+              "pos": "n"
+            },
+            {
+              "kind": "arrow",
+              "from": [
+                "dS",
+                1
+              ],
+              "to": [
+                "dN",
+                1
+              ],
+              "step": "s2",
+              "tone": "good",
+              "label": "+2 days",
+              "labelAt": [
+                "(dS + dN)/2",
+                1
+              ],
+              "pos": "n"
+            },
+            {
+              "kind": "label",
+              "at": [
+                6.6,
+                -1.15
+              ],
+              "text": "days of April",
+              "pos": "e",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                10.4,
+                -1.15
+              ],
+              "text": "8 + 5 = {dN} April",
+              "pos": "e",
+              "step": "s3",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "dS - dI = 3",
+            "dN - dS = 2",
+            "dN - dI = 5"
+          ],
+          "answer": "dN"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "c0659384",
+        "answer": {
+          "value": 13,
+          "label": "13th April"
+        }
+      }
+    },
+    {
+      "id": "c0a47e94-ecfd-4b4b-9741-463fbcd2823c",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "sA": 1,
+            "sB": "sA + 2",
+            "sX": "sA + 1"
+          },
+          "view": {
+            "x": [
+              -1,
+              7
+            ],
+            "y": [
+              -2.6,
+              3.4
+            ]
+          },
+          "axes": false,
+          "points": {
+            "S1a": [
+              0,
+              0
+            ],
+            "S1b": [
+              1.4,
+              0
+            ],
+            "S1c": [
+              1.4,
+              1.4
+            ],
+            "S1d": [
+              0,
+              1.4
+            ],
+            "S2a": [
+              2,
+              0
+            ],
+            "S2b": [
+              3.4,
+              0
+            ],
+            "S2c": [
+              3.4,
+              1.4
+            ],
+            "S2d": [
+              2,
+              1.4
+            ],
+            "S3a": [
+              4,
+              0
+            ],
+            "S3b": [
+              5.4,
+              0
+            ],
+            "S3c": [
+              5.4,
+              1.4
+            ],
+            "S3d": [
+              4,
+              1.4
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "points": [
+                "S1a",
+                "S1b",
+                "S1c",
+                "S1d"
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "arrow",
+              "from": [
+                0.7,
+                1.65
+              ],
+              "to": [
+                0.7,
+                2.35
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                "S2a",
+                "S2b",
+                "S2c",
+                "S2d"
+              ],
+              "step": "s2",
+              "tone": "good"
+            },
+            {
+              "kind": "arrow",
+              "from": [
+                2.7,
+                1.65
+              ],
+              "to": [
+                2.7,
+                2.35
+              ],
+              "step": "s2",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                "S3a",
+                "S3b",
+                "S3c",
+                "S3d"
+              ],
+              "step": "s2",
+              "tone": "muted"
+            },
+            {
+              "kind": "arrow",
+              "from": [
+                4.7,
+                1.65
+              ],
+              "to": [
+                4.7,
+                2.35
+              ],
+              "step": "s2",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.399,
+                0.7
+              ],
+              "text": "A",
+              "pos": "e",
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                2.399,
+                0.7
+              ],
+              "text": "X",
+              "pos": "e",
+              "step": "s2",
+              "tone": "good"
+            },
+            {
+              "kind": "label",
+              "at": [
+                4.399,
+                0.7
+              ],
+              "text": "B",
+              "pos": "e",
+              "step": "s2",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                2.7,
+                2.5
+              ],
+              "text": "all facing North",
+              "pos": "n",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "arrow",
+              "from": [
+                0.7,
+                -0.45
+              ],
+              "to": [
+                4.7,
+                -0.45
+              ],
+              "step": "s2",
+              "tone": "amber",
+              "label": "B: 2nd to the right of A",
+              "labelAt": [
+                2.7,
+                -0.45
+              ],
+              "pos": "s"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -0.8,
+                -2.05
+              ],
+              "text": "X: right of A, left of B",
+              "pos": "e",
+              "step": "s3",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "sB - sA = 2",
+            "sX - sA = 1",
+            "sB - sX = 1"
+          ],
+          "answer": "sX"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "83ee4b42",
+        "answer": {
+          "value": 2,
+          "label": "A's immediate right (X)"
+        }
+      }
+    },
+    {
+      "id": "c89dbddd-d6b5-4efc-b211-ba3dab0d80ab",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "fDia": 1,
+            "fRia": "fDia + 4",
+            "fTina": 4,
+            "fRaj": "fTina + 3",
+            "fViraj": 8,
+            "fSoma": "fViraj - 6",
+            "fMeena": "fViraj - 2",
+            "fNeha": 3,
+            "fU": "fRaj - 1",
+            "fAns": "fU - 3"
+          },
+          "view": {
+            "x": [
+              -1.2,
+              10
+            ],
+            "y": [
+              -0.6,
+              8.6
+            ]
+          },
+          "axes": false,
+          "points": {
+            "Q0": [
+              0,
+              0
+            ],
+            "Q1": [
+              3,
+              0
+            ],
+            "Q2": [
+              3,
+              8
+            ],
+            "Q3": [
+              0,
+              8
+            ]
+          },
+          "items": [
+            {
+              "kind": "segment",
+              "from": "Q0",
+              "to": "Q1",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": "Q1",
+              "to": "Q2",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": "Q2",
+              "to": "Q3",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": "Q3",
+              "to": "Q0",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": [
+                0,
+                1
+              ],
+              "to": [
+                3,
+                1
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": [
+                0,
+                2
+              ],
+              "to": [
+                3,
+                2
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": [
+                0,
+                3
+              ],
+              "to": [
+                3,
+                3
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": [
+                0,
+                4
+              ],
+              "to": [
+                3,
+                4
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": [
+                0,
+                5
+              ],
+              "to": [
+                3,
+                5
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": [
+                0,
+                6
+              ],
+              "to": [
+                3,
+                6
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": [
+                0,
+                7
+              ],
+              "to": [
+                3,
+                7
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0,
+                0.5
+              ],
+              "text": "1",
+              "pos": "w",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0,
+                1.5
+              ],
+              "text": "2",
+              "pos": "w",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0,
+                2.5
+              ],
+              "text": "3",
+              "pos": "w",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0,
+                3.5
+              ],
+              "text": "4",
+              "pos": "w",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0,
+                4.5
+              ],
+              "text": "5",
+              "pos": "w",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0,
+                5.5
+              ],
+              "text": "6",
+              "pos": "w",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0,
+                6.5
+              ],
+              "text": "7",
+              "pos": "w",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0,
+                7.5
+              ],
+              "text": "8",
+              "pos": "w",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.75,
+                "fDia - 0.5"
+              ],
+              "text": "Dia",
+              "pos": "e",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.75,
+                "fRia - 0.5"
+              ],
+              "text": "Ria",
+              "pos": "e",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.605,
+                "fTina - 0.5"
+              ],
+              "text": "Tina",
+              "pos": "e",
+              "step": "s2",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.75,
+                "fRaj - 0.5"
+              ],
+              "text": "Raj",
+              "pos": "e",
+              "step": "s2",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.461,
+                "fViraj - 0.5"
+              ],
+              "text": "Viraj",
+              "pos": "e",
+              "step": "s3",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.461,
+                "fMeena - 0.5"
+              ],
+              "text": "Meena",
+              "pos": "e",
+              "step": "s3",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.605,
+                "fSoma - 0.5"
+              ],
+              "text": "Soma",
+              "pos": "e",
+              "step": "s3",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.605,
+                "fNeha - 0.5"
+              ],
+              "text": "Neha",
+              "pos": "e",
+              "step": "s3",
+              "tone": "fg"
+            },
+            {
+              "kind": "arrow",
+              "from": [
+                3.5,
+                "fRaj - 0.5"
+              ],
+              "to": [
+                3.5,
+                "fU - 0.5"
+              ],
+              "step": "s4",
+              "tone": "amber",
+              "label": "just below Raj",
+              "labelAt": [
+                3.5,
+                "fRaj - 1"
+              ],
+              "pos": "e"
+            },
+            {
+              "kind": "arrow",
+              "from": [
+                3.5,
+                "fU - 0.5"
+              ],
+              "to": [
+                3.5,
+                "fAns - 0.5"
+              ],
+              "step": "s4",
+              "tone": "good",
+              "label": "3 floors below",
+              "labelAt": [
+                3.5,
+                "(fU + fAns)/2 - 0.5"
+              ],
+              "pos": "e"
+            },
+            {
+              "kind": "label",
+              "at": [
+                3.3,
+                1
+              ],
+              "text": "Neha, floor {fAns}",
+              "pos": "e",
+              "step": "s4",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "fRia - fDia = 4",
+            "fRaj - fTina = 3",
+            "fViraj - fSoma = 6",
+            "fViraj - fMeena = 2",
+            "mod(fNeha, 2) = 1",
+            "fDia + fSoma + fNeha + fTina + fRia + fMeena + fRaj + fViraj = 36",
+            "fU = fMeena",
+            "fAns = fNeha"
+          ],
+          "answer": "fAns"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "5dc991c7",
+        "answer": {
+          "value": 3,
+          "label": "Neha (floor 3)"
+        }
+      }
+    },
+    {
+      "id": "d801dcb6-f895-44fa-8fc6-8c27d81fa909",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "fKhush": 3,
+            "fVaibhav": 8,
+            "fVimal": "fVaibhav - 1",
+            "fDipak": 2,
+            "fSudhir": "fDipak + 2",
+            "fVivek": 1,
+            "fDhruv": 6,
+            "fSapna": 5,
+            "btw": "fVaibhav - fDipak - 1"
+          },
+          "view": {
+            "x": [
+              -1.2,
+              10
+            ],
+            "y": [
+              -0.6,
+              8.6
+            ]
+          },
+          "axes": false,
+          "points": {
+            "Q0": [
+              0,
+              0
+            ],
+            "Q1": [
+              3,
+              0
+            ],
+            "Q2": [
+              3,
+              8
+            ],
+            "Q3": [
+              0,
+              8
+            ],
+            "Z0": [
+              0,
+              "fDipak"
+            ],
+            "Z1": [
+              3,
+              "fDipak"
+            ],
+            "Z2": [
+              3,
+              "fVaibhav - 1"
+            ],
+            "Z3": [
+              0,
+              "fVaibhav - 1"
+            ]
+          },
+          "items": [
+            {
+              "kind": "segment",
+              "from": "Q0",
+              "to": "Q1",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": "Q1",
+              "to": "Q2",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": "Q2",
+              "to": "Q3",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": "Q3",
+              "to": "Q0",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": [
+                0,
+                1
+              ],
+              "to": [
+                3,
+                1
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": [
+                0,
+                2
+              ],
+              "to": [
+                3,
+                2
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": [
+                0,
+                3
+              ],
+              "to": [
+                3,
+                3
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": [
+                0,
+                4
+              ],
+              "to": [
+                3,
+                4
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": [
+                0,
+                5
+              ],
+              "to": [
+                3,
+                5
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": [
+                0,
+                6
+              ],
+              "to": [
+                3,
+                6
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": [
+                0,
+                7
+              ],
+              "to": [
+                3,
+                7
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0,
+                0.5
+              ],
+              "text": "1",
+              "pos": "w",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0,
+                1.5
+              ],
+              "text": "2",
+              "pos": "w",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0,
+                2.5
+              ],
+              "text": "3",
+              "pos": "w",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0,
+                3.5
+              ],
+              "text": "4",
+              "pos": "w",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0,
+                4.5
+              ],
+              "text": "5",
+              "pos": "w",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0,
+                5.5
+              ],
+              "text": "6",
+              "pos": "w",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0,
+                6.5
+              ],
+              "text": "7",
+              "pos": "w",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0,
+                7.5
+              ],
+              "text": "8",
+              "pos": "w",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.461,
+                "fKhush - 0.5"
+              ],
+              "text": "Khush",
+              "pos": "e",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.172,
+                "fVaibhav - 0.5"
+              ],
+              "text": "Vaibhav",
+              "pos": "e",
+              "step": "s2",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.461,
+                "fVimal - 0.5"
+              ],
+              "text": "Vimal",
+              "pos": "e",
+              "step": "s2",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.461,
+                "fDipak - 0.5"
+              ],
+              "text": "Dipak",
+              "pos": "e",
+              "step": "s3",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.317,
+                "fSudhir - 0.5"
+              ],
+              "text": "Sudhir",
+              "pos": "e",
+              "step": "s3",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.461,
+                "fVivek - 0.5"
+              ],
+              "text": "Vivek",
+              "pos": "e",
+              "step": "s3",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.461,
+                "fDhruv - 0.5"
+              ],
+              "text": "Dhruv",
+              "pos": "e",
+              "step": "s3",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.461,
+                "fSapna - 0.5"
+              ],
+              "text": "Sapna",
+              "pos": "e",
+              "step": "s3",
+              "tone": "fg"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                "Z0",
+                "Z1",
+                "Z2",
+                "Z3"
+              ],
+              "step": "s4",
+              "tone": "good"
+            },
+            {
+              "kind": "arrow",
+              "from": [
+                3.5,
+                "fVaibhav - 1"
+              ],
+              "to": [
+                3.5,
+                "fDipak"
+              ],
+              "step": "s4",
+              "tone": "good",
+              "label": "{btw} persons between",
+              "labelAt": [
+                3.5,
+                "(fVaibhav + fDipak)/2 - 0.5"
+              ],
+              "pos": "e"
+            }
+          ],
+          "assert": [
+            "fVivek < fKhush",
+            "mod(fVaibhav, 2) = 0",
+            "mod(fDhruv, 2) = 0",
+            "abs(fDhruv - fSudhir) > 1",
+            "abs(fSapna - fDipak) > 1",
+            "fSudhir < 8",
+            "fKhush + fVaibhav + fVimal + fDipak + fSudhir + fVivek + fDhruv + fSapna = 36",
+            "btw = 5"
+          ],
+          "answer": "btw"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 10,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "3f842096",
+        "answer": {
+          "value": 5,
+          "label": "5 persons (floors 3 to 7)"
+        }
+      }
+    },
+    {
+      "id": "e042a9b6-01a4-49be-aec8-e2476bb403e3",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "aL": 12,
+            "aL2": 17,
+            "sR": 15,
+            "N": "aL2 + sR - 1",
+            "s": "12/N"
+          },
+          "view": {
+            "x": [
+              -1,
+              13
+            ],
+            "y": [
+              -4.4,
+              3.6
+            ]
+          },
+          "axes": false,
+          "points": {
+            "L0": [
+              0,
+              0
+            ],
+            "R0": [
+              12,
+              0
+            ],
+            "R1": [
+              12,
+              0.6
+            ],
+            "L1": [
+              0,
+              0.6
+            ],
+            "A": [
+              "(aL - 0.5)*s",
+              0.3
+            ],
+            "B": [
+              "(aL2 - 0.5)*s",
+              0.3
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "points": [
+                "L0",
+                "R0",
+                "R1",
+                "L1"
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "point",
+              "at": "A",
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                "(aL - 0.5)*s",
+                0.6
+              ],
+              "text": "Amit",
+              "pos": "n",
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "point",
+              "at": "B",
+              "step": "s1",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                "(aL2 - 0.5)*s",
+                0.6
+              ],
+              "text": "Sunil",
+              "pos": "n",
+              "step": "s1",
+              "tone": "amber"
+            },
+            {
+              "kind": "arrow",
+              "from": [
+                "(aL - 0.5)*s",
+                1.95
+              ],
+              "to": [
+                "(aL2 - 0.5)*s",
+                1.95
+              ],
+              "step": "s1",
+              "tone": "brand",
+              "label": "Amit moves here",
+              "labelAt": [
+                "(aL + aL2 - 1)*s/2",
+                1.95
+              ],
+              "pos": "n"
+            },
+            {
+              "kind": "arrow",
+              "from": [
+                0,
+                -0.7
+              ],
+              "to": [
+                "aL2*s",
+                -0.7
+              ],
+              "step": "s2",
+              "tone": "brand",
+              "label": "17th from left",
+              "labelAt": [
+                "aL2*s/2",
+                -0.7
+              ],
+              "pos": "s"
+            },
+            {
+              "kind": "arrow",
+              "from": [
+                12,
+                -2.1
+              ],
+              "to": [
+                "(aL2 - 1)*s",
+                -2.1
+              ],
+              "step": "s2",
+              "tone": "amber",
+              "label": "15th from right",
+              "labelAt": [
+                "(aL2 - 1 + N)*s/2",
+                -2.1
+              ],
+              "pos": "s"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -0.8,
+                -3.6
+              ],
+              "text": "17 + 15 − 1 = {N} persons",
+              "pos": "e",
+              "step": "s3",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "N - sR + 1 = aL2",
+            "aL < aL2"
+          ],
+          "answer": "N"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "1d5dde5b",
+        "answer": {
+          "value": 31,
+          "label": "31 persons"
+        }
+      }
+    },
+    {
+      "id": "fbd3333a-6fb1-4160-b6f3-886483912645",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "nS": 5,
+            "sM": 1,
+            "sO": "sM + 2"
+          },
+          "view": {
+            "x": [
+              -1,
+              9
+            ],
+            "y": [
+              -3,
+              4.4
+            ]
+          },
+          "axes": false,
+          "points": {
+            "S1a": [
+              0,
+              0
+            ],
+            "S1b": [
+              1.2,
+              0
+            ],
+            "S1c": [
+              1.2,
+              1.2
+            ],
+            "S1d": [
+              0,
+              1.2
+            ],
+            "S2a": [
+              1.6,
+              0
+            ],
+            "S2b": [
+              2.8,
+              0
+            ],
+            "S2c": [
+              2.8,
+              1.2
+            ],
+            "S2d": [
+              1.6,
+              1.2
+            ],
+            "S3a": [
+              3.2,
+              0
+            ],
+            "S3b": [
+              4.4,
+              0
+            ],
+            "S3c": [
+              4.4,
+              1.2
+            ],
+            "S3d": [
+              3.2,
+              1.2
+            ],
+            "S4a": [
+              4.800000000000001,
+              0
+            ],
+            "S4b": [
+              6.000000000000001,
+              0
+            ],
+            "S4c": [
+              6.000000000000001,
+              1.2
+            ],
+            "S4d": [
+              4.800000000000001,
+              1.2
+            ],
+            "S5a": [
+              6.4,
+              0
+            ],
+            "S5b": [
+              7.6000000000000005,
+              0
+            ],
+            "S5c": [
+              7.6000000000000005,
+              1.2
+            ],
+            "S5d": [
+              6.4,
+              1.2
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "points": [
+                "S1a",
+                "S1b",
+                "S1c",
+                "S1d"
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "arrow",
+              "from": [
+                0.6,
+                1.45
+              ],
+              "to": [
+                0.6,
+                2.15
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                "S2a",
+                "S2b",
+                "S2c",
+                "S2d"
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "arrow",
+              "from": [
+                2.2,
+                1.45
+              ],
+              "to": [
+                2.2,
+                2.15
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                "S3a",
+                "S3b",
+                "S3c",
+                "S3d"
+              ],
+              "step": "s2",
+              "tone": "good"
+            },
+            {
+              "kind": "arrow",
+              "from": [
+                3.8000000000000003,
+                1.45
+              ],
+              "to": [
+                3.8000000000000003,
+                2.15
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                "S4a",
+                "S4b",
+                "S4c",
+                "S4d"
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "arrow",
+              "from": [
+                5.4,
+                1.45
+              ],
+              "to": [
+                5.4,
+                2.15
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                "S5a",
+                "S5b",
+                "S5c",
+                "S5d"
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "arrow",
+              "from": [
+                7,
+                1.45
+              ],
+              "to": [
+                7,
+                2.15
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.227,
+                0.6
+              ],
+              "text": "M",
+              "pos": "e",
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                3.427,
+                0.6
+              ],
+              "text": "O",
+              "pos": "e",
+              "step": "s2",
+              "tone": "good"
+            },
+            {
+              "kind": "label",
+              "at": [
+                3.8,
+                2.3
+              ],
+              "text": "Line 2, all facing North",
+              "pos": "n",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.6,
+                -0.1
+              ],
+              "text": "left end",
+              "pos": "s",
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "arrow",
+              "from": [
+                0.6,
+                -1.15
+              ],
+              "to": [
+                3.8,
+                -1.15
+              ],
+              "step": "s2",
+              "tone": "good",
+              "label": "2nd to the right of M",
+              "labelAt": [
+                2.2,
+                -1.15
+              ],
+              "pos": "s"
+            }
+          ],
+          "assert": [
+            "sO = (nS + 1)/2"
+          ],
+          "answer": "sO"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "01b3bdbe",
+        "answer": {
+          "value": 3,
+          "label": "O (centre seat)"
+        }
+      }
+    }
+  ],
+  "decided": []
+}
