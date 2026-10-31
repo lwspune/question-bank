@@ -185,6 +185,17 @@ takes the FIRST kind that fits; anything left keeps its still solution.
   different clause (brief rule added). Labels with "∥" drew a solid block:
   `plainLabel` now refuses it (4 live visuals relabelled with `--replace`).
 
+**Reasoning scenes** (SSC CGL, owner 2026-10-31: letter codes, then family
+trees, then circle diagrams; ranking rows use `sketch`):
+- `letterStrip` (brief `briefs/letter-strip-draft.md`, spec
+  `tests/visuals-letter-strip.test.ts`): a letter code as a pipeline of up to 4
+  steps (shift by a number, a repeated list or by place; opposite letter;
+  reverse, swap, swap in pairs; letters as numbers, or added up). The scene
+  puts every example word through the rule and refuses it unless each gives
+  its printed code, then applies it to the asked word (or, for a decode, to
+  each option) and checks the one option that matches. Agents run
+  `tools/check-drafts.ts --scene=letterStrip` on their own file, no database.
+
 ## Pieces
 
 | Piece | Where |
