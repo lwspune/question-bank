@@ -2231,6 +2231,11 @@ import {
   SSC_GOVERNMENT_STRUCTURE_NOTES,
   SSC_GOVERNMENT_STRUCTURE_SLUGS,
 } from "@/app/notes/ssc-cgl-polity/government-structure/_data";
+import {
+  SSC_CONSTITUTION_CHAPTER,
+  SSC_CONSTITUTION_NOTES,
+  SSC_CONSTITUTION_SLUGS,
+} from "@/app/notes/ssc-cgl-polity/constitution/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -7156,6 +7161,18 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SSC_GOVERNMENT_STRUCTURE_CHAPTER,
     notes: SSC_GOVERNMENT_STRUCTURE_NOTES,
     slugs: SSC_GOVERNMENT_STRUCTURE_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Polity",
+    subjectRoute: "ssc-cgl-polity",
+    subjectDisplay: "SSC CGL Polity",
+    chapterSlug: "constitution",
+    chipLabel: "Indian Constitution — Making, Foundation and Amendments notes",
+    titleName: "Indian Constitution",
+    chapter: SSC_CONSTITUTION_CHAPTER,
+    notes: SSC_CONSTITUTION_NOTES,
+    slugs: SSC_CONSTITUTION_SLUGS,
   },
 ];
 
