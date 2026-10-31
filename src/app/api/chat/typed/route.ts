@@ -394,7 +394,7 @@ export async function POST(request: NextRequest) {
             // An explanation asks "Did you understand?" under it (0182).
             explained: isExplanation(recorded.toolCalls, message),
             ...(solutionFigure ? { solutionFigure } : {}),
-            ...(solutionVisual ? { solutionVisual } : {}),
+            ...(solutionVisual ? { solutionVisual, solutionVisualQuestionId: explainedId } : {}),
             ...(passOffer ? { passOffer } : {}),
           }
         : {};

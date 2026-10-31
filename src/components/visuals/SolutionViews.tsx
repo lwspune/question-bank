@@ -8,11 +8,19 @@
  * opened later. With no visual this renders header + lead + still unchanged, so
  * every other question looks exactly as before.
  *
+ * With `track`, what the student does is recorded (lib/visuals/usage, signed-in
+ * only): the player's shown / finished / replayed, a tap on the switch, and a
+ * solution that opened in Still because the device remembered Still, counted
+ * when its switch comes on screen (a closed mock-review solution is mounted but
+ * never seen).
+ *
  * `visual` must already have been through usableVisual() on the server.
  */
 import dynamic from "next/dynamic";
-import type { ReactNode } from "react";
-import { useSolutionView, type SolutionView } from "@/lib/visuals/viewPref";
+import { useEffect, useRef, type ReactNode, type Ref } from "react";
+import { readSolutionView, useSolutionView, type SolutionView } from "@/lib/visuals/viewPref";
+import { sceneOf, type VisualAction } from "@/lib/visuals/usage";
+import { reportVisual, type VisualTrack } from "@/lib/visuals/usageBeacon";
 import { cn } from "@/lib/utils";
 
 const AnimatedSolution = dynamic(() => import("./AnimatedSolution"), {
@@ -28,10 +36,39 @@ interface Props {
   lead?: ReactNode;
   /** The solution as it renders today. */
   still: ReactNode;
+  /** The question and surface, to record use of the visual. */
+  track?: VisualTrack;
 }
 
-export default function SolutionViews({ visual, solution, header, lead, still }: Props) {
+export default function SolutionViews({ visual, solution, header, lead, still, track }: Props) {
   const [view, setView] = useSolutionView();
+  const switchRef = useRef<HTMLDivElement>(null);
+  const scene = sceneOf(visual);
+  const report = (action: VisualAction) => {
+    if (track) reportVisual(track, scene, action);
+  };
+  const reportRef = useRef(report);
+  reportRef.current = report;
+
+  // Opened in Still from the device's memory: recorded once the switch is seen.
+  const hasVisual = !!visual;
+  useEffect(() => {
+    const el = switchRef.current;
+    if (!hasVisual || !el || readSolutionView() !== "still") return;
+    if (typeof IntersectionObserver === "undefined") {
+      reportRef.current("opened_still");
+      return;
+    }
+    const seen = new IntersectionObserver((entries) => {
+      if (entries.some((e) => e.isIntersecting)) {
+        seen.disconnect();
+        reportRef.current("opened_still");
+      }
+    });
+    seen.observe(el);
+    return () => seen.disconnect();
+  }, [hasVisual]);
+
   if (!visual) {
     return (
       <>
@@ -41,16 +78,20 @@ export default function SolutionViews({ visual, solution, header, lead, still }:
       </>
     );
   }
+  const choose = (v: SolutionView) => {
+    if (v !== view) report(v === "still" ? "chose_still" : "chose_animated");
+    setView(v);
+  };
   return (
     <>
       <div className="flex flex-wrap items-center justify-between gap-2">
         {header}
-        <ViewSwitch view={view} onChange={setView} />
+        <ViewSwitch groupRef={switchRef} view={view} onChange={choose} />
       </div>
       {lead}
       {view === "animated" ? (
         <div className="mt-2">
-          <AnimatedSolution visual={visual} solution={solution} />
+          <AnimatedSolution visual={visual} solution={solution} onEvent={track ? report : undefined} />
         </div>
       ) : (
         still
@@ -59,7 +100,15 @@ export default function SolutionViews({ visual, solution, header, lead, still }:
   );
 }
 
-function ViewSwitch({ view, onChange }: { view: SolutionView; onChange: (v: SolutionView) => void }) {
+function ViewSwitch({
+  groupRef,
+  view,
+  onChange,
+}: {
+  groupRef: Ref<HTMLDivElement>;
+  view: SolutionView;
+  onChange: (v: SolutionView) => void;
+}) {
   const option = (v: SolutionView, label: string) => (
     <button
       type="button"
@@ -74,7 +123,7 @@ function ViewSwitch({ view, onChange }: { view: SolutionView; onChange: (v: Solu
     </button>
   );
   return (
-    <div role="group" aria-label="Solution view" className="inline-flex rounded-md border bg-card p-0.5">
+    <div ref={groupRef} role="group" aria-label="Solution view" className="inline-flex rounded-md border bg-card p-0.5">
       {option("animated", "Animated")}
       {option("still", "Still")}
     </div>

@@ -45,9 +45,11 @@ describe("historyTurns with animated solutions", () => {
       visuals,
     );
     const replies = turns.filter((t) => t.role === "assistant");
-    expect(replies[0]).toMatchObject({ visual: ARC_VISUAL });
+    // The question id rides with it, so the window can record use of the visual (lib/visuals/usage).
+    expect(replies[0]).toMatchObject({ visual: ARC_VISUAL, visualQuestionId: QID });
     expect(replies[1]).not.toHaveProperty("visual");
     expect(replies[2]).not.toHaveProperty("visual");
+    expect(replies[2]).not.toHaveProperty("visualQuestionId");
   });
 
   it("carries a figure and a visual side by side when the question has both", () => {

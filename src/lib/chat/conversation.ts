@@ -200,6 +200,8 @@ export type HistoryTurn =
       figure?: string;
       /** The explained question's animated solution, already through usableVisual() (lib/visuals). */
       visual?: unknown;
+      /** The question `visual` belongs to, to record use of it (lib/visuals/usage). */
+      visualQuestionId?: string;
     };
 
 /**
@@ -236,7 +238,7 @@ export function historyTurns(
         explained: isExplanation(r.toolCalls, text),
         understood: r.understood ?? null,
         ...(figure ? { figure } : {}),
-        ...(visual ? { visual } : {}),
+        ...(visual ? { visual, visualQuestionId: explainedId! } : {}),
       });
     } else if (r.replySource === "followup") {
       turns.push({ role: "assistant", text: r.reply!, links: r.replyLinks ?? [], source: "followup" });

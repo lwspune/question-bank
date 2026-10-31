@@ -84,6 +84,8 @@ import {
 import { MESSAGE_IN, USER_BUBBLE, V_BUBBLE } from "./chatStyles";
 import PracticeBuilder, { PENDING_BUILD_KEY, logBuilderStep } from "./PracticeBuilder";
 import type { BuilderAnswers } from "@/lib/practiceTests/builder";
+import { sceneOf } from "@/lib/visuals/usage";
+import { reportVisual } from "@/lib/visuals/usageBeacon";
 
 // The animated-solution player loads only when a reply carries a visual.
 const VAnimatedSolution = dynamic(() => import("@/components/visuals/AnimatedSolution"));
@@ -609,6 +611,7 @@ export default function ChatWidget() {
         solutionFigure?: string;
         /** The explained question's animated solution, played under the reply (2026-10-25). */
         solutionVisual?: unknown;
+        solutionVisualQuestionId?: string;
         /** The day's free answers stopped an explanation: the pass offer goes under the reply (2026-10-28). */
         passOffer?: unknown;
         /** Abuse after the calm line (lib/chat/abuse.ts): V says nothing. */
@@ -649,6 +652,7 @@ export default function ChatWidget() {
               understood: null,
               ...(typeof data.solutionFigure === "string" ? { figure: data.solutionFigure } : {}),
               ...(data.solutionVisual && typeof data.solutionVisual === "object" ? { visual: data.solutionVisual } : {}),
+              ...(typeof data.solutionVisualQuestionId === "string" ? { visualQuestionId: data.solutionVisualQuestionId } : {}),
             }
           : { role: "assistant", avatar: "laugh", text: data.reply as string, links, card, plan, reveal: true }
       );
@@ -785,7 +789,15 @@ export default function ChatWidget() {
                       V's words are not the stored solution, so there are no steps to sync. */}
                   {t.role === "assistant" && !t.reveal && t.visual ? (
                     <div className="ml-9 mt-2 max-w-[calc(100%-2.25rem)] rounded-lg border bg-card p-2">
-                      <VAnimatedSolution visual={t.visual} solution={null} />
+                      <VAnimatedSolution
+                        visual={t.visual}
+                        solution={null}
+                        onEvent={
+                          t.visualQuestionId
+                            ? (e) => reportVisual({ questionId: t.visualQuestionId!, surface: "v" }, sceneOf(t.visual), e)
+                            : undefined
+                        }
+                      />
                     </div>
                   ) : null}
                   {rateable && (

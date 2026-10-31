@@ -560,6 +560,7 @@ export default function QuestionCard({
                     a switch to Still: the block below, exactly as before. */}
                 <SolutionViews
                   visual={question.solutionVisual}
+                  track={{ questionId: question.id, surface }}
                   solution={question.solution}
                   header={
                     <p className="flex items-center gap-1.5 font-sans text-xs font-bold uppercase tracking-wide text-brand-accent">
