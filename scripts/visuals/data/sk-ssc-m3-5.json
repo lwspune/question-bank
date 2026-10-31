@@ -1,0 +1,136 @@
+{
+  "//": "Assembled from agent drafts (sketch).",
+  "visuals": [
+    {
+      "id": "d644a806-5c95-486b-93f0-56359c78a87c",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "r": 7,
+            "h": 24,
+            "l": "sqrt(r^2+h^2)"
+          },
+          "view": {
+            "x": [
+              -12,
+              26
+            ],
+            "y": [
+              -3,
+              26
+            ]
+          },
+          "points": {
+            "O": [
+              0,
+              0
+            ],
+            "A": [
+              "r",
+              0
+            ],
+            "V": [
+              0,
+              "h"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "points": [
+                "O",
+                "A",
+                "V"
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "angle",
+              "at": "O",
+              "from": "A",
+              "to": "V",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                3.5,
+                0
+              ],
+              "text": "r = 7",
+              "pos": "s",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0,
+                12
+              ],
+              "text": "h = 24",
+              "pos": "w",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                3.5,
+                12
+              ],
+              "text": "l = ?",
+              "pos": "e",
+              "step": "s2",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                6,
+                20
+              ],
+              "text": "l² = 7² + 24² = 625",
+              "pos": "e",
+              "step": "s2"
+            },
+            {
+              "kind": "label",
+              "at": [
+                6,
+                16
+              ],
+              "text": "l = √625 = {l} cm",
+              "pos": "e",
+              "step": "s3",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "l^2 = r^2 + h^2",
+            "l = 25"
+          ],
+          "answer": "l"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "b51f4e9d",
+        "answer": {
+          "value": 25,
+          "label": "25 cm"
+        }
+      }
+    }
+  ],
+  "decided": []
+}
