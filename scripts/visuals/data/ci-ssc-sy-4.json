@@ -1,0 +1,2721 @@
+{
+  "//": "Assembled from agent drafts (circles).",
+  "visuals": [
+    {
+      "id": "78b1911e-53d6-4abf-9baf-7e53e40e7160",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "circles",
+        "params": {
+          "sets": [
+            {
+              "id": "book",
+              "label": "Books",
+              "x": 22,
+              "y": 30,
+              "r": 18
+            },
+            {
+              "id": "clown",
+              "label": "Clowns",
+              "x": 16,
+              "y": 30,
+              "r": 8
+            },
+            {
+              "id": "heavy",
+              "label": "Heavy",
+              "x": 50,
+              "y": 30,
+              "r": 16
+            },
+            {
+              "id": "truck",
+              "label": "Trucks",
+              "x": 78,
+              "y": 30,
+              "r": 14
+            }
+          ],
+          "statements": [
+            {
+              "form": "all",
+              "a": "clown",
+              "b": "book",
+              "show": "All clowns are books",
+              "step": "s1"
+            },
+            {
+              "form": "some",
+              "a": "book",
+              "b": "heavy",
+              "show": "Some books are heavy",
+              "step": "s2"
+            },
+            {
+              "form": "some",
+              "a": "heavy",
+              "b": "truck",
+              "show": "Some heavy are trucks",
+              "step": "s3"
+            }
+          ],
+          "conclusions": [
+            {
+              "form": "some",
+              "a": "book",
+              "b": "clown",
+              "show": "I. Some books are clowns",
+              "step": "c1"
+            },
+            {
+              "form": "all",
+              "a": "book",
+              "b": "heavy",
+              "show": "II. All books are heavy",
+              "step": "c2"
+            },
+            {
+              "form": "some",
+              "a": "truck",
+              "b": "heavy",
+              "show": "III. Some trucks are heavy",
+              "step": "c3"
+            }
+          ],
+          "options": [
+            {
+              "text": "Only conclusions I and II follow.",
+              "means": {
+                "follow": [
+                  1,
+                  2
+                ]
+              }
+            },
+            {
+              "text": "Only conclusions I and III follow.",
+              "means": {
+                "follow": [
+                  1,
+                  3
+                ]
+              }
+            },
+            {
+              "text": "Only conclusion I follows.",
+              "means": {
+                "follow": [
+                  1
+                ]
+              }
+            },
+            {
+              "text": "None of the conclusions follows.",
+              "means": {
+                "follow": []
+              }
+            }
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "c1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "c2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "c3",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "b564f146",
+        "answer": {
+          "value": 2,
+          "label": "Only I and III follow"
+        }
+      }
+    },
+    {
+      "id": "78bff5dd-fca8-46e7-9766-df61d9915fa7",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "circles",
+        "params": {
+          "sets": [
+            {
+              "id": "boy",
+              "label": "Boys",
+              "x": 22,
+              "y": 30,
+              "r": 18
+            },
+            {
+              "id": "male",
+              "label": "Males",
+              "x": 16,
+              "y": 30,
+              "r": 8
+            },
+            {
+              "id": "teacher",
+              "label": "Teachers",
+              "x": 60,
+              "y": 30,
+              "r": 22
+            },
+            {
+              "id": "student",
+              "label": "Students",
+              "x": 66,
+              "y": 30,
+              "r": 12
+            }
+          ],
+          "statements": [
+            {
+              "form": "all",
+              "a": "male",
+              "b": "boy",
+              "show": "All males are boys",
+              "step": "s1"
+            },
+            {
+              "form": "some",
+              "a": "teacher",
+              "b": "boy",
+              "show": "Some teachers are boys",
+              "step": "s2"
+            },
+            {
+              "form": "all",
+              "a": "student",
+              "b": "teacher",
+              "show": "All students are teachers",
+              "step": "s3"
+            }
+          ],
+          "conclusions": [
+            {
+              "form": "some",
+              "a": "boy",
+              "b": "male",
+              "show": "I. Some boys are males",
+              "step": "c1"
+            },
+            {
+              "form": "some",
+              "a": "teacher",
+              "b": "student",
+              "show": "II. Some teachers are students",
+              "step": "c2"
+            },
+            {
+              "form": "all",
+              "a": "male",
+              "b": "student",
+              "show": "III. All males are students",
+              "step": "c3"
+            }
+          ],
+          "options": [
+            {
+              "text": "All conclusions follow",
+              "means": {
+                "follow": [
+                  1,
+                  2,
+                  3
+                ]
+              }
+            },
+            {
+              "text": "Only conclusions II and III follow",
+              "means": {
+                "follow": [
+                  2,
+                  3
+                ]
+              }
+            },
+            {
+              "text": "Only conclusions I and II follow",
+              "means": {
+                "follow": [
+                  1,
+                  2
+                ]
+              }
+            },
+            {
+              "text": "Only conclusions I and III follow",
+              "means": {
+                "follow": [
+                  1,
+                  3
+                ]
+              }
+            }
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "c1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "c2"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "c3"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "2cd9b368",
+        "answer": {
+          "value": 3,
+          "label": "Only I and II follow"
+        }
+      }
+    },
+    {
+      "id": "7da9feab-63e5-4f7c-a3f0-e8fa7f00e51c",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "circles",
+        "params": {
+          "sets": [
+            {
+              "id": "book",
+              "label": "Books",
+              "x": 40,
+              "y": 30,
+              "r": 22
+            },
+            {
+              "id": "pen",
+              "label": "Pens",
+              "x": 30,
+              "y": 30,
+              "r": 9
+            },
+            {
+              "id": "novel",
+              "label": "Novels",
+              "x": 70,
+              "y": 30,
+              "r": 14
+            }
+          ],
+          "statements": [
+            {
+              "form": "all",
+              "a": "pen",
+              "b": "book",
+              "show": "All pens are books",
+              "step": "s1"
+            },
+            {
+              "form": "some",
+              "a": "book",
+              "b": "novel",
+              "show": "Some books are novels",
+              "step": "s2"
+            }
+          ],
+          "conclusions": [
+            {
+              "form": "some",
+              "a": "pen",
+              "b": "novel",
+              "show": "I. Some pens are novels",
+              "step": "c1"
+            },
+            {
+              "form": "all",
+              "a": "novel",
+              "b": "book",
+              "show": "II. All novels are books",
+              "step": "c2"
+            }
+          ],
+          "options": [
+            {
+              "text": "Only I follows",
+              "means": {
+                "follow": [
+                  1
+                ]
+              }
+            },
+            {
+              "text": "Only II follows",
+              "means": {
+                "follow": [
+                  2
+                ]
+              }
+            },
+            {
+              "text": "Both I and II follow",
+              "means": {
+                "follow": [
+                  1,
+                  2
+                ]
+              }
+            },
+            {
+              "text": "Neither I nor II follows",
+              "means": {
+                "follow": []
+              }
+            }
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "c1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "c2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "07fa9690",
+        "answer": {
+          "value": 4,
+          "label": "Neither I nor II follows"
+        }
+      }
+    },
+    {
+      "id": "7dd8b423-9695-4363-a843-094bde838ee8",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "circles",
+        "params": {
+          "sets": [
+            {
+              "id": "curable",
+              "label": "Curable",
+              "x": 50,
+              "y": 30,
+              "r": 29
+            },
+            {
+              "id": "disease",
+              "label": "Diseases",
+              "x": 50,
+              "y": 33,
+              "r": 20
+            },
+            {
+              "id": "cancer",
+              "label": "Cancers",
+              "x": 41,
+              "y": 37,
+              "r": 7
+            },
+            {
+              "id": "tb",
+              "label": "TB",
+              "x": 59,
+              "y": 37,
+              "r": 7
+            }
+          ],
+          "statements": [
+            {
+              "form": "all",
+              "a": "cancer",
+              "b": "disease",
+              "show": "All cancers are diseases",
+              "step": "s1"
+            },
+            {
+              "form": "all",
+              "a": "tb",
+              "b": "disease",
+              "show": "All tuberculosis are diseases",
+              "step": "s2"
+            },
+            {
+              "form": "all",
+              "a": "disease",
+              "b": "curable",
+              "show": "All diseases are curable",
+              "step": "s3"
+            }
+          ],
+          "conclusions": [
+            {
+              "form": "all",
+              "a": "tb",
+              "b": "curable",
+              "show": "I. All tuberculosis are curable",
+              "step": "c1"
+            },
+            {
+              "form": "some",
+              "a": "cancer",
+              "b": "tb",
+              "show": "II. Some cancers are tuberculosis",
+              "step": "c2"
+            },
+            {
+              "form": "all",
+              "a": "cancer",
+              "b": "curable",
+              "show": "III. All cancers are curable",
+              "step": "c3"
+            }
+          ],
+          "options": [
+            {
+              "text": "Only conclusions II and III follow",
+              "means": {
+                "follow": [
+                  2,
+                  3
+                ]
+              }
+            },
+            {
+              "text": "Only conclusions I and III follow",
+              "means": {
+                "follow": [
+                  1,
+                  3
+                ]
+              }
+            },
+            {
+              "text": "All conclusions follow",
+              "means": {
+                "follow": [
+                  1,
+                  2,
+                  3
+                ]
+              }
+            },
+            {
+              "text": "Only conclusions I and II follow",
+              "means": {
+                "follow": [
+                  1,
+                  2
+                ]
+              }
+            }
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "c1",
+              "c3"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "c2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "6c17066f",
+        "answer": {
+          "value": 2,
+          "label": "Only I and III follow"
+        }
+      }
+    },
+    {
+      "id": "7e5cdad5-aa56-4bd8-9db4-c6b2f5cd3664",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "circles",
+        "params": {
+          "sets": [
+            {
+              "id": "wealthy",
+              "label": "Wealthy",
+              "x": 28,
+              "y": 30,
+              "r": 24
+            },
+            {
+              "id": "cric",
+              "label": "Cricketers",
+              "x": 24,
+              "y": 30,
+              "r": 13
+            },
+            {
+              "id": "indian",
+              "label": "Indians",
+              "x": 60,
+              "y": 30,
+              "r": 13
+            },
+            {
+              "id": "honest",
+              "label": "Honest",
+              "x": 68,
+              "y": 30,
+              "r": 22
+            }
+          ],
+          "statements": [
+            {
+              "form": "all",
+              "a": "cric",
+              "b": "wealthy",
+              "show": "All cricketers are wealthy",
+              "step": "s1"
+            },
+            {
+              "form": "some",
+              "a": "wealthy",
+              "b": "indian",
+              "show": "Some wealthy are Indians",
+              "step": "s2"
+            },
+            {
+              "form": "all",
+              "a": "indian",
+              "b": "honest",
+              "show": "All Indians are honest",
+              "step": "s3"
+            }
+          ],
+          "conclusions": [
+            {
+              "form": "all",
+              "a": "indian",
+              "b": "cric",
+              "show": "I. All Indians are cricketers",
+              "step": "c1"
+            },
+            {
+              "form": "some",
+              "a": "cric",
+              "b": "honest",
+              "show": "II. Some cricketers are honest",
+              "step": "c2"
+            }
+          ],
+          "options": [
+            {
+              "text": "Only conclusion II follows.",
+              "means": {
+                "follow": [
+                  2
+                ]
+              }
+            },
+            {
+              "text": "Only conclusion I follows.",
+              "means": {
+                "follow": [
+                  1
+                ]
+              }
+            },
+            {
+              "text": "Neither conclusions I nor II follows.",
+              "means": {
+                "follow": []
+              }
+            },
+            {
+              "text": "Both conclusions I and II follow.",
+              "means": {
+                "follow": [
+                  1,
+                  2
+                ]
+              }
+            }
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "c1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "c2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "788ea709",
+        "answer": {
+          "value": 3,
+          "label": "Neither I nor II follows"
+        }
+      }
+    },
+    {
+      "id": "810b8cda-ccbe-484d-8ae2-5749bf2e7224",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "circles",
+        "params": {
+          "sets": [
+            {
+              "id": "toy",
+              "label": "Toys",
+              "x": 14,
+              "y": 30,
+              "r": 11
+            },
+            {
+              "id": "plastic",
+              "label": "Plastic",
+              "x": 36,
+              "y": 30,
+              "r": 15
+            },
+            {
+              "id": "metal",
+              "label": "Metal",
+              "x": 62,
+              "y": 30,
+              "r": 13
+            },
+            {
+              "id": "chem",
+              "label": "Chemical",
+              "x": 88,
+              "y": 30,
+              "r": 10
+            }
+          ],
+          "statements": [
+            {
+              "form": "some",
+              "a": "toy",
+              "b": "plastic",
+              "show": "Some Toys are Plastic",
+              "step": "s1"
+            },
+            {
+              "form": "some",
+              "a": "plastic",
+              "b": "metal",
+              "show": "Some Plastic are Metal",
+              "step": "s2"
+            },
+            {
+              "form": "no",
+              "a": "metal",
+              "b": "chem",
+              "show": "No Metal is Chemical",
+              "step": "s3"
+            }
+          ],
+          "conclusions": [
+            {
+              "form": "some",
+              "a": "chem",
+              "b": "plastic",
+              "show": "I. Some Chemicals are Plastic",
+              "step": "c1"
+            },
+            {
+              "form": "no",
+              "a": "toy",
+              "b": "chem",
+              "show": "II. No Toy is a Chemical",
+              "step": "c2",
+              "alt": {
+                "set": "chem",
+                "x": 10,
+                "y": 46,
+                "r": 10
+              }
+            }
+          ],
+          "options": [
+            {
+              "text": "Only conclusion (I) follows.",
+              "means": {
+                "follow": [
+                  1
+                ]
+              }
+            },
+            {
+              "text": "Both conclusions (I) and (II) follow.",
+              "means": {
+                "follow": [
+                  1,
+                  2
+                ]
+              }
+            },
+            {
+              "text": "Neither conclusion (I) nor (II) follows.",
+              "means": {
+                "follow": []
+              }
+            },
+            {
+              "text": "Only conclusion (II) follows.",
+              "means": {
+                "follow": [
+                  2
+                ]
+              }
+            }
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "c1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "c2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "0008a23f",
+        "answer": {
+          "value": 3,
+          "label": "Neither I nor II follows"
+        }
+      }
+    },
+    {
+      "id": "8332f49c-e0c6-48cf-bdb6-003648b3193e",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "circles",
+        "params": {
+          "sets": [
+            {
+              "id": "med",
+              "label": "Medicines",
+              "x": 12,
+              "y": 30,
+              "r": 10
+            },
+            {
+              "id": "cap",
+              "label": "Capsules",
+              "x": 38,
+              "y": 30,
+              "r": 13
+            },
+            {
+              "id": "tab",
+              "label": "Tablets",
+              "x": 62,
+              "y": 30,
+              "r": 13
+            },
+            {
+              "id": "lap",
+              "label": "Laptops",
+              "x": 84,
+              "y": 30,
+              "r": 11
+            }
+          ],
+          "statements": [
+            {
+              "form": "no",
+              "a": "med",
+              "b": "cap",
+              "show": "No medicine is a capsule",
+              "step": "s1"
+            },
+            {
+              "form": "some",
+              "a": "cap",
+              "b": "tab",
+              "show": "Some capsules are tablets",
+              "step": "s2"
+            },
+            {
+              "form": "some",
+              "a": "tab",
+              "b": "lap",
+              "show": "Some tablets are laptops",
+              "step": "s3"
+            }
+          ],
+          "conclusions": [
+            {
+              "form": "some",
+              "a": "cap",
+              "b": "lap",
+              "show": "I. Some capsules are laptops",
+              "step": "c1"
+            },
+            {
+              "form": "someNot",
+              "a": "tab",
+              "b": "med",
+              "show": "II. All tablets can never be medicines",
+              "step": "c2"
+            }
+          ],
+          "options": [
+            {
+              "text": "Neither Conclusion I nor II follow.",
+              "means": {
+                "follow": []
+              }
+            },
+            {
+              "text": "Only Conclusion II follows.",
+              "means": {
+                "follow": [
+                  2
+                ]
+              }
+            },
+            {
+              "text": "Both Conclusions I and II follow.",
+              "means": {
+                "follow": [
+                  1,
+                  2
+                ]
+              }
+            },
+            {
+              "text": "Only Conclusion I follows.",
+              "means": {
+                "follow": [
+                  1
+                ]
+              }
+            }
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "c1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "c2"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "a81024c4",
+        "answer": {
+          "value": 2,
+          "label": "Only II follows"
+        }
+      }
+    },
+    {
+      "id": "85dbf03c-dedd-43e6-ad41-9127eed85203",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "circles",
+        "params": {
+          "sets": [
+            {
+              "id": "fun",
+              "label": "Fun",
+              "x": 50,
+              "y": 30,
+              "r": 28
+            },
+            {
+              "id": "ent",
+              "label": "Entertainment",
+              "x": 50,
+              "y": 33,
+              "r": 18
+            },
+            {
+              "id": "game",
+              "label": "Games",
+              "x": 50,
+              "y": 37,
+              "r": 9
+            }
+          ],
+          "statements": [
+            {
+              "form": "all",
+              "a": "game",
+              "b": "ent",
+              "show": "All games are entertainment",
+              "step": "s1"
+            },
+            {
+              "form": "all",
+              "a": "ent",
+              "b": "fun",
+              "show": "All entertainment is fun",
+              "step": "s2"
+            }
+          ],
+          "conclusions": [
+            {
+              "form": "all",
+              "a": "game",
+              "b": "fun",
+              "show": "I. All games are fun",
+              "step": "c1"
+            },
+            {
+              "form": "some",
+              "a": "fun",
+              "b": "ent",
+              "show": "II. Some fun is entertainment",
+              "step": "c2"
+            }
+          ],
+          "options": [
+            {
+              "text": "Only I follows",
+              "means": {
+                "follow": [
+                  1
+                ]
+              }
+            },
+            {
+              "text": "Only II follows",
+              "means": {
+                "follow": [
+                  2
+                ]
+              }
+            },
+            {
+              "text": "Both I and II follow",
+              "means": {
+                "follow": [
+                  1,
+                  2
+                ]
+              }
+            },
+            {
+              "text": "Neither I nor II follows",
+              "means": {
+                "follow": []
+              }
+            }
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "c1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "c2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "8125269b",
+        "answer": {
+          "value": 3,
+          "label": "Both I and II follow"
+        }
+      }
+    },
+    {
+      "id": "86ec6bde-feb3-4477-ba6f-5503ba86328e",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "circles",
+        "params": {
+          "sets": [
+            {
+              "id": "road",
+              "label": "Roads",
+              "x": 24,
+              "y": 30,
+              "r": 14
+            },
+            {
+              "id": "hwy",
+              "label": "Highways",
+              "x": 46,
+              "y": 30,
+              "r": 10
+            },
+            {
+              "id": "street",
+              "label": "Streets",
+              "x": 62,
+              "y": 30,
+              "r": 26
+            }
+          ],
+          "statements": [
+            {
+              "form": "some",
+              "a": "road",
+              "b": "hwy",
+              "show": "Some roads are highways",
+              "step": "s1"
+            },
+            {
+              "form": "all",
+              "a": "hwy",
+              "b": "street",
+              "show": "All highways are streets",
+              "step": "s2"
+            }
+          ],
+          "conclusions": [
+            {
+              "form": "all",
+              "a": "road",
+              "b": "street",
+              "show": "I. All roads are streets",
+              "step": "c1"
+            },
+            {
+              "form": "some",
+              "a": "street",
+              "b": "hwy",
+              "show": "II. Some streets are highways",
+              "step": "c2"
+            }
+          ],
+          "options": [
+            {
+              "text": "Only Conclusion II follows",
+              "means": {
+                "follow": [
+                  2
+                ]
+              }
+            },
+            {
+              "text": "Only Conclusion I follows",
+              "means": {
+                "follow": [
+                  1
+                ]
+              }
+            },
+            {
+              "text": "Only Conclusion I follows",
+              "means": {
+                "follow": [
+                  1
+                ]
+              }
+            },
+            {
+              "text": "Both I and II follow",
+              "means": {
+                "follow": [
+                  1,
+                  2
+                ]
+              }
+            }
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "c2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "c1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "f239b09e",
+        "answer": {
+          "value": 1,
+          "label": "Only II follows"
+        }
+      }
+    },
+    {
+      "id": "882e807f-80c4-4f86-a1a1-d3c29ad7f4e5",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "circles",
+        "params": {
+          "sets": [
+            {
+              "id": "wild",
+              "label": "Wild",
+              "x": 30,
+              "y": 30,
+              "r": 22
+            },
+            {
+              "id": "lion",
+              "label": "Lions",
+              "x": 22,
+              "y": 30,
+              "r": 9
+            },
+            {
+              "id": "dang",
+              "label": "Dangerous",
+              "x": 60,
+              "y": 30,
+              "r": 13
+            },
+            {
+              "id": "tame",
+              "label": "Tame",
+              "x": 88,
+              "y": 30,
+              "r": 10
+            }
+          ],
+          "statements": [
+            {
+              "form": "all",
+              "a": "lion",
+              "b": "wild",
+              "show": "All lions are wild",
+              "step": "s1"
+            },
+            {
+              "form": "some",
+              "a": "wild",
+              "b": "dang",
+              "show": "Some wild are dangerous",
+              "step": "s2"
+            },
+            {
+              "form": "no",
+              "a": "dang",
+              "b": "tame",
+              "show": "No dangerous is tame",
+              "step": "s3"
+            }
+          ],
+          "conclusions": [
+            {
+              "form": "someNot",
+              "a": "wild",
+              "b": "tame",
+              "show": "I. Some wild are not tame",
+              "step": "c1"
+            },
+            {
+              "form": "someNot",
+              "a": "lion",
+              "b": "tame",
+              "show": "II. Some lions are not tame",
+              "step": "c2",
+              "alt": {
+                "set": "tame",
+                "x": 20,
+                "y": 30,
+                "r": 12
+              }
+            }
+          ],
+          "options": [
+            {
+              "text": "Only I follows",
+              "means": {
+                "follow": [
+                  1
+                ]
+              }
+            },
+            {
+              "text": "Only II follows",
+              "means": {
+                "follow": [
+                  2
+                ]
+              }
+            },
+            {
+              "text": "Both I and II follow",
+              "means": {
+                "follow": [
+                  1,
+                  2
+                ]
+              }
+            },
+            {
+              "text": "Neither I nor II follows",
+              "means": {
+                "follow": []
+              }
+            }
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "c1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "c2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "3f47a18b",
+        "answer": {
+          "value": 1,
+          "label": "Only I follows"
+        }
+      }
+    },
+    {
+      "id": "8b5997ce-b0b5-4b8a-84bc-7352be1ece2e",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "circles",
+        "params": {
+          "sets": [
+            {
+              "id": "intel",
+              "label": "Intelligent",
+              "x": 24,
+              "y": 30,
+              "r": 18
+            },
+            {
+              "id": "men",
+              "label": "Men",
+              "x": 20,
+              "y": 30,
+              "r": 9
+            },
+            {
+              "id": "poor",
+              "label": "Poor",
+              "x": 60,
+              "y": 30,
+              "r": 13
+            },
+            {
+              "id": "hw",
+              "label": "Hardworking",
+              "x": 84,
+              "y": 30,
+              "r": 12
+            }
+          ],
+          "statements": [
+            {
+              "form": "all",
+              "a": "men",
+              "b": "intel",
+              "show": "All men are intelligent",
+              "step": "s1"
+            },
+            {
+              "form": "no",
+              "a": "intel",
+              "b": "poor",
+              "show": "No intelligent person is poor",
+              "step": "s2"
+            },
+            {
+              "form": "some",
+              "a": "poor",
+              "b": "hw",
+              "show": "Some poor are hardworking",
+              "step": "s3"
+            }
+          ],
+          "conclusions": [
+            {
+              "form": "some",
+              "a": "men",
+              "b": "hw",
+              "show": "I. Some men are hardworking",
+              "step": "c1"
+            },
+            {
+              "form": "no",
+              "a": "men",
+              "b": "poor",
+              "show": "II. No man is poor",
+              "step": "c2"
+            }
+          ],
+          "options": [
+            {
+              "text": "Only I follows",
+              "means": {
+                "follow": [
+                  1
+                ]
+              }
+            },
+            {
+              "text": "Only II follows",
+              "means": {
+                "follow": [
+                  2
+                ]
+              }
+            },
+            {
+              "text": "Both I and II follow",
+              "means": {
+                "follow": [
+                  1,
+                  2
+                ]
+              }
+            },
+            {
+              "text": "Neither I nor II follows",
+              "means": {
+                "follow": []
+              }
+            }
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "c2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "c1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "fa4f71f1",
+        "answer": {
+          "value": 2,
+          "label": "Only II follows"
+        }
+      }
+    },
+    {
+      "id": "8d293ba9-9300-432d-8ff2-24d6520aef27",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "circles",
+        "params": {
+          "sets": [
+            {
+              "id": "orn",
+              "label": "Ornaments",
+              "x": 50,
+              "y": 30,
+              "r": 29
+            },
+            {
+              "id": "gold",
+              "label": "Gold",
+              "x": 50,
+              "y": 33,
+              "r": 20
+            },
+            {
+              "id": "metal",
+              "label": "Metals",
+              "x": 41,
+              "y": 37,
+              "r": 7
+            },
+            {
+              "id": "jewel",
+              "label": "Jewellery",
+              "x": 59,
+              "y": 37,
+              "r": 7
+            }
+          ],
+          "statements": [
+            {
+              "form": "all",
+              "a": "metal",
+              "b": "gold",
+              "show": "All metals are gold",
+              "step": "s1"
+            },
+            {
+              "form": "all",
+              "a": "jewel",
+              "b": "gold",
+              "show": "All jewellery are gold",
+              "step": "s2"
+            },
+            {
+              "form": "all",
+              "a": "gold",
+              "b": "orn",
+              "show": "All gold are ornaments",
+              "step": "s3"
+            }
+          ],
+          "conclusions": [
+            {
+              "form": "some",
+              "a": "orn",
+              "b": "jewel",
+              "show": "I. Some ornaments are jewellery",
+              "step": "c1"
+            },
+            {
+              "form": "some",
+              "a": "metal",
+              "b": "jewel",
+              "show": "II. Some metals are jewellery",
+              "step": "c2"
+            },
+            {
+              "form": "all",
+              "a": "jewel",
+              "b": "orn",
+              "show": "III. All jewellery are ornaments",
+              "step": "c3"
+            }
+          ],
+          "options": [
+            {
+              "text": "Only conclusions I and III follow",
+              "means": {
+                "follow": [
+                  1,
+                  3
+                ]
+              }
+            },
+            {
+              "text": "All conclusions follow",
+              "means": {
+                "follow": [
+                  1,
+                  2,
+                  3
+                ]
+              }
+            },
+            {
+              "text": "Only conclusions II and III follow",
+              "means": {
+                "follow": [
+                  2,
+                  3
+                ]
+              }
+            },
+            {
+              "text": "Only conclusions I and II follow",
+              "means": {
+                "follow": [
+                  1,
+                  2
+                ]
+              }
+            }
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "c3",
+              "c1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "c2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "34441077",
+        "answer": {
+          "value": 1,
+          "label": "Only I and III follow"
+        }
+      }
+    },
+    {
+      "id": "8efd75d7-22fe-4854-ab08-c3c3fe7d7283",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "circles",
+        "params": {
+          "sets": [
+            {
+              "id": "tree",
+              "label": "Trees",
+              "x": 26,
+              "y": 30,
+              "r": 16
+            },
+            {
+              "id": "tall",
+              "label": "Tall",
+              "x": 48,
+              "y": 30,
+              "r": 9
+            },
+            {
+              "id": "vis",
+              "label": "Visible",
+              "x": 62,
+              "y": 30,
+              "r": 24
+            }
+          ],
+          "statements": [
+            {
+              "form": "some",
+              "a": "tree",
+              "b": "tall",
+              "show": "Some trees are tall",
+              "step": "s1"
+            },
+            {
+              "form": "all",
+              "a": "tall",
+              "b": "vis",
+              "show": "All tall things are visible",
+              "step": "s2"
+            }
+          ],
+          "conclusions": [
+            {
+              "form": "some",
+              "a": "tree",
+              "b": "vis",
+              "show": "I. Some trees are visible",
+              "step": "c1"
+            },
+            {
+              "form": "all",
+              "a": "tree",
+              "b": "vis",
+              "show": "II. All trees are visible",
+              "step": "c2"
+            }
+          ],
+          "options": [
+            {
+              "text": "Only I follows",
+              "means": {
+                "follow": [
+                  1
+                ]
+              }
+            },
+            {
+              "text": "Only II follows",
+              "means": {
+                "follow": [
+                  2
+                ]
+              }
+            },
+            {
+              "text": "Both I and II follow",
+              "means": {
+                "follow": [
+                  1,
+                  2
+                ]
+              }
+            },
+            {
+              "text": "Neither I nor II follows",
+              "means": {
+                "follow": []
+              }
+            }
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "c1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "c2",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "79d7a8c3",
+        "answer": {
+          "value": 1,
+          "label": "Only I follows"
+        }
+      }
+    },
+    {
+      "id": "920ac5bf-c194-4ad6-a879-02eda13fb6ec",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "circles",
+        "params": {
+          "sets": [
+            {
+              "id": "pen",
+              "label": "Pens",
+              "x": 28,
+              "y": 30,
+              "r": 20
+            },
+            {
+              "id": "bag",
+              "label": "Bags",
+              "x": 22,
+              "y": 30,
+              "r": 9
+            },
+            {
+              "id": "pencil",
+              "label": "Pencils",
+              "x": 62,
+              "y": 30,
+              "r": 12
+            },
+            {
+              "id": "scale",
+              "label": "Scales",
+              "x": 86,
+              "y": 30,
+              "r": 10
+            }
+          ],
+          "statements": [
+            {
+              "form": "all",
+              "a": "bag",
+              "b": "pen",
+              "show": "All bags are pens",
+              "step": "s1"
+            },
+            {
+              "form": "someNot",
+              "a": "pen",
+              "b": "pencil",
+              "show": "Some pens are not pencils",
+              "step": "s2"
+            },
+            {
+              "form": "no",
+              "a": "pencil",
+              "b": "scale",
+              "show": "No pencil is a scale",
+              "step": "s3"
+            }
+          ],
+          "conclusions": [
+            {
+              "form": "someNot",
+              "a": "bag",
+              "b": "scale",
+              "show": "I. Some bags are not scales",
+              "step": "c1",
+              "alt": {
+                "set": "scale",
+                "x": 22,
+                "y": 30,
+                "r": 12
+              }
+            },
+            {
+              "form": "all",
+              "a": "scale",
+              "b": "pencil",
+              "show": "II. All scales are pencils",
+              "step": "c2"
+            }
+          ],
+          "options": [
+            {
+              "text": "Only I follows",
+              "means": {
+                "follow": [
+                  1
+                ]
+              }
+            },
+            {
+              "text": "Only II follows",
+              "means": {
+                "follow": [
+                  2
+                ]
+              }
+            },
+            {
+              "text": "Both I and II follow",
+              "means": {
+                "follow": [
+                  1,
+                  2
+                ]
+              }
+            },
+            {
+              "text": "Neither I nor II follows",
+              "means": {
+                "follow": []
+              }
+            }
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "c1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "c2",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "b7bebe1a",
+        "answer": {
+          "value": 4,
+          "label": "Neither I nor II follows"
+        }
+      }
+    },
+    {
+      "id": "929dcd4a-a535-4486-91bf-0cb0f2ac8eed",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "circles",
+        "params": {
+          "sets": [
+            {
+              "id": "tree",
+              "label": "Trees",
+              "x": 13,
+              "y": 30,
+              "r": 11
+            },
+            {
+              "id": "leaf",
+              "label": "Leaves",
+              "x": 36,
+              "y": 30,
+              "r": 14
+            },
+            {
+              "id": "flower",
+              "label": "Flowers",
+              "x": 62,
+              "y": 30,
+              "r": 14
+            },
+            {
+              "id": "branch",
+              "label": "Branches",
+              "x": 86,
+              "y": 30,
+              "r": 11
+            }
+          ],
+          "statements": [
+            {
+              "form": "some",
+              "a": "tree",
+              "b": "leaf",
+              "show": "Some trees are leaves",
+              "step": "s1"
+            },
+            {
+              "form": "some",
+              "a": "leaf",
+              "b": "flower",
+              "show": "Some leaves are flowers",
+              "step": "s2"
+            },
+            {
+              "form": "some",
+              "a": "flower",
+              "b": "branch",
+              "show": "Some flowers are branches",
+              "step": "s3"
+            }
+          ],
+          "conclusions": [
+            {
+              "form": "some",
+              "a": "tree",
+              "b": "flower",
+              "show": "I. Some trees are flowers",
+              "step": "c1"
+            },
+            {
+              "form": "some",
+              "a": "leaf",
+              "b": "branch",
+              "show": "II. Some leaves are branches",
+              "step": "c2"
+            },
+            {
+              "form": "some",
+              "a": "branch",
+              "b": "flower",
+              "show": "III. Some branches are flowers",
+              "step": "c3"
+            },
+            {
+              "form": "some",
+              "a": "branch",
+              "b": "leaf",
+              "show": "IV. Some branches are leaves",
+              "step": "c4"
+            }
+          ],
+          "options": [
+            {
+              "text": "Only conclusions II and III follow",
+              "means": {
+                "follow": [
+                  2,
+                  3
+                ]
+              }
+            },
+            {
+              "text": "Only conclusions I and II follow",
+              "means": {
+                "follow": [
+                  1,
+                  2
+                ]
+              }
+            },
+            {
+              "text": "Only conclusion III follows",
+              "means": {
+                "follow": [
+                  3
+                ]
+              }
+            },
+            {
+              "text": "None of the conclusions follow",
+              "means": {
+                "follow": []
+              }
+            }
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "c3"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "c1",
+              "c2",
+              "c4"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "66962f80",
+        "answer": {
+          "value": 3,
+          "label": "Only III follows"
+        }
+      }
+    },
+    {
+      "id": "95adba9e-6275-4360-ada8-206299515c51",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "circles",
+        "params": {
+          "sets": [
+            {
+              "id": "bench",
+              "label": "Benches",
+              "x": 30,
+              "y": 30,
+              "r": 26
+            },
+            {
+              "id": "sofa",
+              "label": "Sofas",
+              "x": 30,
+              "y": 34,
+              "r": 16
+            },
+            {
+              "id": "table",
+              "label": "Tables",
+              "x": 30,
+              "y": 40,
+              "r": 7
+            },
+            {
+              "id": "chair",
+              "label": "Chairs",
+              "x": 80,
+              "y": 30,
+              "r": 14
+            }
+          ],
+          "statements": [
+            {
+              "form": "no",
+              "a": "bench",
+              "b": "chair",
+              "show": "No bench is chair",
+              "step": "s1"
+            },
+            {
+              "form": "all",
+              "a": "sofa",
+              "b": "bench",
+              "show": "All sofas are benches",
+              "step": "s2"
+            },
+            {
+              "form": "all",
+              "a": "table",
+              "b": "sofa",
+              "show": "All tables are sofas",
+              "step": "s3"
+            }
+          ],
+          "conclusions": [
+            {
+              "form": "no",
+              "a": "table",
+              "b": "chair",
+              "show": "I. No table is a chair",
+              "step": "c1"
+            },
+            {
+              "form": "some",
+              "a": "sofa",
+              "b": "chair",
+              "show": "II. Some sofas are chairs",
+              "step": "c2"
+            },
+            {
+              "form": "all",
+              "a": "table",
+              "b": "bench",
+              "show": "III. All tables are benches",
+              "step": "c3"
+            }
+          ],
+          "options": [
+            {
+              "text": "Only conclusion II follows",
+              "means": {
+                "follow": [
+                  2
+                ]
+              }
+            },
+            {
+              "text": "Only conclusions I and II follow",
+              "means": {
+                "follow": [
+                  1,
+                  2
+                ]
+              }
+            },
+            {
+              "text": "Only conclusions I and III follow",
+              "means": {
+                "follow": [
+                  1,
+                  3
+                ]
+              }
+            },
+            {
+              "text": "Only conclusion I follows",
+              "means": {
+                "follow": [
+                  1
+                ]
+              }
+            }
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "c3"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "c1",
+              "c2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "8cc04883",
+        "answer": {
+          "value": 3,
+          "label": "Only I and III follow"
+        }
+      }
+    },
+    {
+      "id": "96a44eee-66a6-4597-8140-a93a90863b99",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "circles",
+        "params": {
+          "sets": [
+            {
+              "id": "artist",
+              "label": "Artists",
+              "x": 30,
+              "y": 30,
+              "r": 22
+            },
+            {
+              "id": "dancer",
+              "label": "Dancers",
+              "x": 26,
+              "y": 30,
+              "r": 10
+            },
+            {
+              "id": "lazy",
+              "label": "Lazy",
+              "x": 78,
+              "y": 30,
+              "r": 14
+            }
+          ],
+          "statements": [
+            {
+              "form": "all",
+              "a": "dancer",
+              "b": "artist",
+              "show": "All dancers are artists",
+              "step": "s1"
+            },
+            {
+              "form": "no",
+              "a": "artist",
+              "b": "lazy",
+              "show": "No artist is lazy",
+              "step": "s2"
+            }
+          ],
+          "conclusions": [
+            {
+              "form": "no",
+              "a": "dancer",
+              "b": "lazy",
+              "show": "I. No dancer is lazy",
+              "step": "c1"
+            },
+            {
+              "form": "some",
+              "a": "lazy",
+              "b": "dancer",
+              "show": "II. Some lazy are dancers",
+              "step": "c2"
+            }
+          ],
+          "options": [
+            {
+              "text": "Only I follows",
+              "means": {
+                "follow": [
+                  1
+                ]
+              }
+            },
+            {
+              "text": "Only II follows",
+              "means": {
+                "follow": [
+                  2
+                ]
+              }
+            },
+            {
+              "text": "Both I and II follow",
+              "means": {
+                "follow": [
+                  1,
+                  2
+                ]
+              }
+            },
+            {
+              "text": "Neither I nor II follows",
+              "means": {
+                "follow": []
+              }
+            }
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "c1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "c2",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "dd212516",
+        "answer": {
+          "value": 1,
+          "label": "Only I follows"
+        }
+      }
+    },
+    {
+      "id": "997a5ba7-3025-4131-b080-a7bd85d58e47",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "circles",
+        "params": {
+          "sets": [
+            {
+              "id": "news",
+              "label": "Newspapers",
+              "x": 34,
+              "y": 30,
+              "r": 22
+            },
+            {
+              "id": "pen",
+              "label": "Pens",
+              "x": 26,
+              "y": 30,
+              "r": 9
+            },
+            {
+              "id": "novel",
+              "label": "Novels",
+              "x": 64,
+              "y": 30,
+              "r": 13
+            },
+            {
+              "id": "book",
+              "label": "Books",
+              "x": 88,
+              "y": 30,
+              "r": 10
+            }
+          ],
+          "statements": [
+            {
+              "form": "all",
+              "a": "pen",
+              "b": "news",
+              "show": "All pens are newspapers",
+              "step": "s1"
+            },
+            {
+              "form": "some",
+              "a": "news",
+              "b": "novel",
+              "show": "Some newspapers are novels",
+              "step": "s2"
+            },
+            {
+              "form": "no",
+              "a": "novel",
+              "b": "book",
+              "show": "No novel is a book",
+              "step": "s3"
+            }
+          ],
+          "conclusions": [
+            {
+              "form": "some",
+              "a": "book",
+              "b": "pen",
+              "show": "I. Some books are pens",
+              "step": "c1"
+            },
+            {
+              "form": "some",
+              "a": "novel",
+              "b": "pen",
+              "show": "II. Some novels are pens",
+              "step": "c2"
+            },
+            {
+              "form": "no",
+              "a": "book",
+              "b": "pen",
+              "show": "III. No book is a pen",
+              "step": "c3",
+              "alt": {
+                "set": "book",
+                "x": 20,
+                "y": 46,
+                "r": 10
+              }
+            }
+          ],
+          "options": [
+            {
+              "text": "Either conclusion I or III follows.",
+              "means": {
+                "follow": [],
+                "either": [
+                  1,
+                  3
+                ]
+              }
+            },
+            {
+              "text": "Both conclusions II and III follow.",
+              "means": {
+                "follow": [
+                  2,
+                  3
+                ]
+              }
+            },
+            {
+              "text": "Either conclusion II or III follows.",
+              "means": {
+                "follow": [],
+                "either": [
+                  2,
+                  3
+                ]
+              }
+            },
+            {
+              "text": "Both conclusions I and II follow.",
+              "means": {
+                "follow": [
+                  1,
+                  2
+                ]
+              }
+            }
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "c2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "c1",
+              "c3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "9ad0d8d5",
+        "answer": {
+          "value": 1,
+          "label": "Either I or III follows"
+        }
+      }
+    },
+    {
+      "id": "a144d7dd-651c-477a-b7b5-0aafa25caab5",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "circles",
+        "params": {
+          "sets": [
+            {
+              "id": "cat",
+              "label": "Cats",
+              "x": 12,
+              "y": 30,
+              "r": 10
+            },
+            {
+              "id": "dog",
+              "label": "Dogs",
+              "x": 38,
+              "y": 30,
+              "r": 14
+            },
+            {
+              "id": "pet",
+              "label": "Pets",
+              "x": 62,
+              "y": 30,
+              "r": 11
+            },
+            {
+              "id": "friendly",
+              "label": "Friendly",
+              "x": 72,
+              "y": 30,
+              "r": 24
+            }
+          ],
+          "statements": [
+            {
+              "form": "no",
+              "a": "cat",
+              "b": "dog",
+              "show": "No cats are dogs",
+              "step": "s1"
+            },
+            {
+              "form": "some",
+              "a": "dog",
+              "b": "pet",
+              "show": "Some dogs are pets",
+              "step": "s2"
+            },
+            {
+              "form": "all",
+              "a": "pet",
+              "b": "friendly",
+              "show": "All pets are friendly",
+              "step": "s3"
+            }
+          ],
+          "conclusions": [
+            {
+              "form": "someNot",
+              "a": "pet",
+              "b": "cat",
+              "show": "I. Some pets are not cats",
+              "step": "c1"
+            },
+            {
+              "form": "all",
+              "a": "dog",
+              "b": "friendly",
+              "show": "II. All dogs are friendly",
+              "step": "c2"
+            }
+          ],
+          "options": [
+            {
+              "text": "Only I follows",
+              "means": {
+                "follow": [
+                  1
+                ]
+              }
+            },
+            {
+              "text": "Only II follows",
+              "means": {
+                "follow": [
+                  2
+                ]
+              }
+            },
+            {
+              "text": "Both I and II follow",
+              "means": {
+                "follow": [
+                  1,
+                  2
+                ]
+              }
+            },
+            {
+              "text": "Neither I nor II follows",
+              "means": {
+                "follow": []
+              }
+            }
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "c1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "c2"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "82ff3fe6",
+        "answer": {
+          "value": 1,
+          "label": "Only I follows"
+        }
+      }
+    }
+  ],
+  "decided": []
+}
