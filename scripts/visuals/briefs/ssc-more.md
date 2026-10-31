@@ -29,7 +29,7 @@ For "which signs or numbers to interchange" questions, the answer `value` is
 the number the keyed swap makes both sides equal ("LHS = 274 = RHS"), the
 label the option's text; give each other option the solution checks its own
 `calc` line with what it gives. Write sides as LHS and RHS: "right" inside
-`	ext{}` is read as `ight` and refused.
+`\text{}` is read as `\right` and refused.
 
 Skip when the solution says two rules fit the examples and it follows SSC's
 key: the animation would present one guess as the rule. Skip a "which
