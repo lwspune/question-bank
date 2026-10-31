@@ -30,6 +30,7 @@ export const KIND_LABELS: Record<ActivityKind, string> = {
   milestone_reached: "Answered milestone reached",
   push_clicked: "Notification tapped",
   self_mark: "Written answer self-marked",
+  solution_visual: "Animated solution event",
 };
 
 export type KindStat = { kind: string; events: number; users: number };

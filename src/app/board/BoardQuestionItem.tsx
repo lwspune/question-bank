@@ -203,6 +203,7 @@ export default function BoardQuestionItem({
                   no visual the header is null and this renders as it always did. */}
               <SolutionViews
                 visual={bi ? null : q.solutionVisual}
+                track={{ questionId: q.id, surface: "board" }}
                 solution={q.solution}
                 header={
                   !bi && q.solutionVisual ? (

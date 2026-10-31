@@ -180,6 +180,7 @@ function ReviewCard({ item, supabaseUrl }: { item: ReviewItem; supabaseUrl: stri
             {/* Animated first where the question has a checked visual; Still is the block as before. */}
             <SolutionViews
               visual={item.solutionVisual}
+              track={{ questionId: item.questionId, surface: "mock" }}
               solution={item.solution}
               header={null}
               still={

@@ -61,6 +61,10 @@ export const ACTIVITY_KINDS = [
   // questionId, metadata: surface, mark) — 0196. The tap alone; the drill rows
   // it implies are written beside it. See lib/questions/selfMark.
   "self_mark",
+  // What the student did with an animated solution (refId = questionId,
+  // metadata: surface, action, scene) — 0208. Telemetry for the visuals; see
+  // lib/visuals/usage.
+  "solution_visual",
 ] as const;
 
 export type ActivityKind = (typeof ACTIVITY_KINDS)[number];

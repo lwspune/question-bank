@@ -62,6 +62,8 @@ import {
   SELF_MARK_TAP_KEEP_PCT,
   V_PAY_OFFER_CHECKOUT_KEEP_PCT,
   SELF_MARK_FIXED_KEEP_PCT,
+  VISUAL_FINISHED_KEEP_PCT,
+  VISUAL_STILL_MAX_PCT,
   SPECIFIC_OFFER_CHECKOUT_PCT,
   TUTOR_STUDENT_YES_KEEP,
   checkOn,
@@ -677,6 +679,18 @@ export default async function GrowthPage() {
             </p>
             <ReadingsList metric="self-mark-tap-share" />
             <ReadingsList metric="self-mark-review-fixed" />
+          </div>
+        );
+      case "visual-solutions":
+        return (
+          <div className="space-y-3">
+            <p className="text-sm text-muted-foreground">
+              Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))} from <code>npm run visuals:usage</code>: keep
+              Animated as the default if {VISUAL_FINISHED_KEEP_PCT}%+ of shown animations finish and under{" "}
+              {VISUAL_STILL_MAX_PCT}% are switched to Still.
+            </p>
+            <ReadingsList metric="visual-finished" />
+            <ReadingsList metric="visual-still" />
           </div>
         );
       case "v-strategy":

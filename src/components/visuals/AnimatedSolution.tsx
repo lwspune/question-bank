@@ -26,7 +26,18 @@ function prefersReducedMotion(): boolean {
   return typeof window !== "undefined" && window.matchMedia?.("(prefers-reduced-motion: reduce)").matches === true;
 }
 
-export default function AnimatedSolution({ visual: raw, solution }: { visual: unknown; solution: string | null }) {
+/** What the player tells its host, for measuring use (lib/visuals/usage). */
+export type PlayerEvent = "shown" | "finished" | "replayed";
+
+export default function AnimatedSolution({
+  visual: raw,
+  solution,
+  onEvent,
+}: {
+  visual: unknown;
+  solution: string | null;
+  onEvent?: (e: PlayerEvent) => void;
+}) {
   // Parsed and checked again here: a chat turn kept on the device can be edited,
   // so the player never trusts that the server's check still holds.
   const parsed = useMemo(() => {
@@ -34,10 +45,18 @@ export default function AnimatedSolution({ visual: raw, solution }: { visual: un
     return r.ok && checkVisual(r.visual).ok ? r.visual : null;
   }, [raw]);
   if (!parsed) return solution ? <BlockText text={solution} solution /> : null;
-  return <Player visual={parsed} solution={solution} />;
+  return <Player visual={parsed} solution={solution} onEvent={onEvent} />;
 }
 
-function Player({ visual, solution }: { visual: Extract<ReturnType<typeof parseSolutionVisual>, { ok: true }>["visual"]; solution: string | null }) {
+function Player({
+  visual,
+  solution,
+  onEvent,
+}: {
+  visual: Extract<ReturnType<typeof parseSolutionVisual>, { ok: true }>["visual"];
+  solution: string | null;
+  onEvent?: (e: PlayerEvent) => void;
+}) {
   const scene = getScene(visual.scene)!;
   const params = visual.params;
   const steps = visual.steps;
@@ -55,26 +74,34 @@ function Player({ visual, solution }: { visual: Extract<ReturnType<typeof parseS
   const frame = useRef<HTMLDivElement>(null);
   // The latest playAll, for the mount effect below without re-running it per render.
   const playAllRef = useRef<() => Promise<void>>(async () => {});
+  const onEventRef = useRef(onEvent);
+  onEventRef.current = onEvent;
 
   useEffect(() => {
     // Reduced motion: show the finished picture, never animate unasked.
-    if (prefersReducedMotion()) {
+    const reduced = prefersReducedMotion();
+    if (reduced) {
       const last = steps.length - 1;
       setPos({ step: last, beat: steps[last].beats.length - 1, t: 1 });
-      return;
     }
     // Play when at least 40% of the picture is on screen, so a visual lower down
     // (mock review, V's window) plays when the student reaches it, not unseen.
+    // "shown" waits for the same moment: a closed mock-review solution is mounted
+    // but never seen.
+    const start = () => {
+      onEventRef.current?.("shown");
+      if (!reduced) void playAllRef.current();
+    };
     const el = frame.current;
     if (!el || typeof IntersectionObserver === "undefined") {
-      void playAllRef.current();
+      start();
       return;
     }
     const seen = new IntersectionObserver(
       (entries) => {
         if (entries.some((e) => e.isIntersecting)) {
           seen.disconnect();
-          void playAllRef.current();
+          start();
         }
       },
       { threshold: 0.4 },
@@ -152,6 +179,12 @@ function Player({ visual, solution }: { visual: Extract<ReturnType<typeof parseS
       if (k < steps.length - 1) await wait(prefersReducedMotion() ? 1200 : 600);
       if (run.current !== token) return;
     }
+    onEventRef.current?.("finished");
+  }
+
+  function replay() {
+    onEventRef.current?.("replayed");
+    void playAll();
   }
 
   playAllRef.current = playAll;
@@ -202,7 +235,7 @@ function Player({ visual, solution }: { visual: Extract<ReturnType<typeof parseS
           <div className="flex flex-wrap items-center gap-2 font-sans">
             <button
               type="button"
-              onClick={playAll}
+              onClick={replay}
               className="inline-flex items-center gap-1.5 rounded-md bg-brand px-3 py-1.5 text-sm font-semibold text-brand-foreground hover:bg-brand/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
               <Play className="h-4 w-4" aria-hidden />

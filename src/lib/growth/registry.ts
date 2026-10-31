@@ -231,6 +231,15 @@ export const SELF_MARK_TAP_KEEP_PCT = 10;
 export const SELF_MARK_FIXED_KEEP_PCT = 20;
 
 /**
+ * "visual-solutions": keep Animated as the default view if at least this share
+ * of the animations shown play to the end (%; student-question pairs)...
+ */
+export const VISUAL_FINISHED_KEEP_PCT = 50;
+/** ...and fewer than this share are switched to Still (%). Where one exam or
+ *  surface passes it, Still becomes that exam's or surface's default. */
+export const VISUAL_STILL_MAX_PCT = 20;
+
+/**
  * "pass-price": keep Rs 199 if a week's pass revenue is at least the week
  * before the change (6 sales at Rs 99)...
  */
@@ -287,7 +296,8 @@ export type Readout =
   | "tutor-interest"
   | "v-progress"
   | "self-mark"
-  | "v-pay-offer";
+  | "v-pay-offer"
+  | "visual-solutions";
 
 export type Experiment = {
   id: string;
@@ -659,6 +669,20 @@ export const EXPERIMENTS: readonly Experiment[] = [
     status: "running",
   },
   {
+    id: "visual-solutions",
+    title: "Animated solutions",
+    change:
+      "Where a question has a checked animated solution (about 6,850 PUBLIC on 2026-10-31: JEE, MHT-CET, board maths, SSC CGL, NDA and others), the solution opens Animated and plays once it is on screen, with a switch to Still. Live since 2026-10-26; what students do with it is recorded from today (solution_visual, migration 0208).",
+    why: "A worked solution that moves step by step with the written one should be easier to follow than text alone, above all for graphs, loci and 3D. Until today nothing recorded a play, a finish or a switch to Still, so whether students watch them was unknown.",
+    metric:
+      "Signed-in students, staff left out, counted as student-question pairs: of the animations shown (action shown), the share played to the end (finished) and the share switched to Still (chose_still), by surface, exam and scene. npm run visuals:usage",
+    rule: `Keep Animated as the default if ${VISUAL_FINISHED_KEEP_PCT}%+ of shown animations finish and under ${VISUAL_STILL_MAX_PCT}% are switched to Still; where one exam or surface passes ${VISUAL_STILL_MAX_PCT}% switched to Still, make Still the default there.`,
+    liveSince: "2026-10-31",
+    windowDays: 14,
+    readout: "visual-solutions",
+    status: "running",
+  },
+  {
     id: "self-mark",
     title: "Understood / Review later on written answers",
     change:
@@ -816,7 +840,9 @@ export type ReadingMetric =
   | "price-checkout-paid"
   | "answer-limit-students"
   | "answer-limit-return"
-  | "v-follow-up";
+  | "v-follow-up"
+  | "visual-finished"
+  | "visual-still";
 
 export type Reading = { on: string; value: number; note?: string };
 
@@ -1101,5 +1127,15 @@ export const READINGS: Record<ReadingMetric, { label: string; source: string; en
     source:
       "chat_interactions: typed_question rows with reply_source 'ai' in the window, and the share with another typed_question in the same conversation_id within 30 minutes after",
     entries: [{ on: "2026-10-23", value: 48, note: "Before the line-by-line reveal: 111 of 233 AI replies, 15 to 23 Oct" }],
+  },
+  "visual-finished": {
+    label: "Animated solutions: shown animations played to the end (%)",
+    source: "npm run visuals:usage, the 'all' row's fin% (user_activity solution_visual, student-question pairs, staff left out)",
+    entries: [],
+  },
+  "visual-still": {
+    label: "Animated solutions: shown animations switched to Still (%)",
+    source: "npm run visuals:usage, the 'all' row's still%; read the surface and exam rows for any past the limit",
+    entries: [],
   },
 };

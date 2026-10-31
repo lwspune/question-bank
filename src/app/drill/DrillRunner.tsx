@@ -390,6 +390,7 @@ export default function DrillRunner({
               {!written && (
                 <SolutionViews
                   visual={answered.solution ? answered.solutionVisual : null}
+                  track={{ questionId: question.id, surface: "drill" }}
                   solution={answered.solution}
                   header={null}
                   still={

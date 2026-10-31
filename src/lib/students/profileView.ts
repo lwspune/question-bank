@@ -81,6 +81,7 @@ const ACTIVITY_LABELS: Record<ActivityKind, string> = {
   milestone_reached: "Reached an answered-questions milestone",
   push_clicked: "Tapped a notification",
   self_mark: "Marked a written answer",
+  solution_visual: "Used an animated solution",
 };
 
 const ACTIVITY_KIND_SET: ReadonlySet<string> = new Set(ACTIVITY_KINDS);
