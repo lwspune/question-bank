@@ -1,0 +1,954 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "7d215394-3e9e-4292-88e1-5c0fc64a5ce6",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{literate males} = \\dfrac{5}{11} \\times 55\\% = {{1:25\\%}}",
+              "f": "5/11*55",
+              "value": "25"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{population} = \\dfrac{500000}{ {{1:0.25}} } = 2000000",
+              "f": "500000/0.25",
+              "value": "2000000"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{literates} = 55\\% \\times 2000000 = {{2:1100000}}",
+              "f": "0.55*2000000",
+              "value": "1100000"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\dfrac{5}{11} \\times {{2:1100000}} = 500000",
+              "f": "5/11*1100000",
+              "value": "500000",
+              "note": "the literate males, as given"
+            }
+          ],
+          "answer": "500000/0.25"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "a33f75a8",
+        "answer": {
+          "value": 2000000,
+          "label": "20,00,000"
+        }
+      }
+    },
+    {
+      "id": "7e6817ce-960e-45eb-8972-540666d9f09f",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{absentees} = \\text{Total} - \\text{Present}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "2016:\\ 3 + 11 + 5 = 19",
+              "f": "(45-42)+(56-45)+(55-50)",
+              "value": "19"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "2017:\\ 5 + 20 + 5 = 30",
+              "f": "(50-45)+(75-55)+(45-40)",
+              "value": "30"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "2018:\\ 4 + 20 + 10 = {{1:34}}",
+              "f": "(64-60)+(65-45)+(65-55)",
+              "value": "34"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "2019:\\ 11 + 12 + 8 = {{2:31}}",
+              "f": "(80-69)+(84-72)+(70-62)",
+              "value": "31"
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "2020:\\ 11 + 14 + 5 = 30",
+              "f": "(55-44)+(80-66)+(90-85)",
+              "value": "30"
+            },
+            {
+              "step": "s7",
+              "kind": "note",
+              "tex": "{{1:34}} > {{2:31}} > 30 = 30 > 19",
+              "note": "second highest: 2019"
+            },
+            {
+              "step": "s8",
+              "kind": "calc",
+              "tex": "2019:\\ 234 - 203 = {{2:31}}",
+              "f": "(80+84+70)-(69+72+62)",
+              "value": "31",
+              "note": "check with the column totals"
+            }
+          ],
+          "answer": "(80-69)+(84-72)+(70-62)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3",
+              "s4",
+              "s5",
+              "s6"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s7"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s8"
+            ]
+          }
+        ],
+        "fingerprint": "58646efb",
+        "answer": {
+          "value": 31,
+          "label": "2019: 31 absentees"
+        }
+      }
+    },
+    {
+      "id": "7ec44486-046a-458e-922b-2cdf73803622",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{Housing } 25\\%,\\ \\text{Transportation } 10\\%"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "25\\% + 10\\% = {{1:35\\%}}",
+              "f": "25+10",
+              "value": "35"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "{{1:0.35}} \\times 45000 = 15750",
+              "f": "0.35*45000",
+              "value": "15750"
+            }
+          ],
+          "answer": "0.35*45000"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "b94f4a15",
+        "answer": {
+          "value": 15749.999999999998,
+          "label": "₹15,750"
+        }
+      }
+    },
+    {
+      "id": "7f3da44a-5ccf-4002-9e4a-b490e0734857",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "1975: 5200,\\quad 1976: 2700"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "5200 - 2700 = {{1:2500}}",
+              "f": "5200-2700",
+              "value": "2500",
+              "note": "the decrease in 1976"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{ {{1:2500}} }{5200} \\times 100 = 48.077\\ldots",
+              "f": "2500/5200*100",
+              "value": "48.077",
+              "dp": 3
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\approx 48.07\\%",
+              "f": "floor(2500/5200*10000)/100",
+              "value": "48.07",
+              "note": "the option, cut to two decimals"
+            }
+          ],
+          "answer": "floor(2500/5200*10000)/100"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "4d0554f6",
+        "answer": {
+          "value": 48.07,
+          "label": "48.07%"
+        }
+      }
+    },
+    {
+      "id": "7fbc58d5-f9ab-4a16-9ac5-6868753dd32b",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{Truck 1}: 18+20+22+21+19 = {{1:100}}",
+              "f": "18+20+22+21+19",
+              "value": "100"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{Truck 2}: 25+24+26+23+24 = {{2:122}}",
+              "f": "25+24+26+23+24",
+              "value": "122"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{ {{1:100}} + {{2:122}} }{10} = 22.2",
+              "f": "(100+122)/10",
+              "value": "22.2",
+              "note": "over the 10 truck-days"
+            }
+          ],
+          "answer": "(100+122)/10"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "97be1a4f",
+        "answer": {
+          "value": 22.2,
+          "label": "22.2 litres"
+        }
+      }
+    },
+    {
+      "id": "819661e4-6afd-4d29-bf9a-719a66702498",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "40\\% \\text{ of } 50 = {{1:20}}",
+              "f": "0.4*50",
+              "value": "20",
+              "note": "marks needed"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\text{Maths, } {{1:20}} \\text{ and above}: 65"
+            }
+          ],
+          "answer": "65"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "c03f9bd0",
+        "answer": {
+          "value": 65,
+          "label": "65 students"
+        }
+      }
+    },
+    {
+      "id": "82a568f0-f7fe-4a95-9690-1ea650c88ecf",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "420+435+412+285 = {{1:1552}}",
+              "f": "420+435+412+285",
+              "value": "1552",
+              "note": "Physics"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "256+310+295+345 = {{2:1206}}",
+              "f": "256+310+295+345",
+              "value": "1206",
+              "note": "Mathematics"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "{{1:1552}} : {{2:1206}} = 776 : 603",
+              "f": "1552/1206",
+              "value": "776/603",
+              "note": "divide both by 2"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "776 \\times 2 = {{1:1552}}",
+              "f": "776*2",
+              "value": "1552",
+              "note": "603 × 2 = 1206; no common factor left"
+            }
+          ],
+          "answer": "1552/1206"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "51a014f0",
+        "answer": {
+          "value": 1.286898839137645,
+          "label": "776 : 603"
+        }
+      }
+    },
+    {
+      "id": "8485ff76-cfb2-4697-a7ca-24ae24869d8d",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{B2}: 75, 65;\\quad \\text{B4}: 85, 95"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{B2}: 75 + 65 = {{1:140}}",
+              "f": "75+65",
+              "value": "140"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{B4}: 85 + 95 = {{2:180}}",
+              "f": "85+95",
+              "value": "180"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "{{1:140}} : {{2:180}} = 7 : 9",
+              "f": "140/180",
+              "value": "7/9",
+              "note": "divide both by 20"
+            }
+          ],
+          "answer": "140/180"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "e47fce31",
+        "answer": {
+          "value": 0.7777777777777778,
+          "label": "7 : 9"
+        }
+      }
+    },
+    {
+      "id": "8801a807-5f70-40a8-8622-e40b8e279457",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{fund} = 1000000"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\text{Donation } 35\\%,\\ \\text{Govt. agencies } 12\\%"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "35\\% - 12\\% = {{1:23\\%}}",
+              "f": "35-12",
+              "value": "23"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "{{1:0.23}} \\times 1000000 = 230000",
+              "f": "0.23*1000000",
+              "value": "230000"
+            }
+          ],
+          "answer": "0.23*1000000"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "1ef594fd",
+        "answer": {
+          "value": 230000,
+          "label": "Rs. 2,30,000"
+        }
+      }
+    },
+    {
+      "id": "88e4d984-3695-4938-8c8b-0f1717119398",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "A: 150, 275, 300, 250, 225"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "B: 210, 350, 375, 300, 200"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "B: 350 + 375 + 200 = {{1:925}}",
+              "f": "350+375+200",
+              "value": "925",
+              "note": "2019, 2020, 2022"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "A: 150 + 300 + 250 = {{2:700}}",
+              "f": "150+300+250",
+              "value": "700",
+              "note": "2018, 2020, 2021"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "{{1:925}} : {{2:700}} = 37 : 28",
+              "f": "925/700",
+              "value": "37/28",
+              "note": "divide both by 25"
+            }
+          ],
+          "answer": "925/700"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "a8c7537d",
+        "answer": {
+          "value": 1.3214285714285714,
+          "label": "37 : 28"
+        }
+      }
+    },
+    {
+      "id": "89f8a370-520a-4aaa-bd1c-1f4b5aa28bf4",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "1540 + 1736 = {{1:3276}}",
+              "f": "1540+1736",
+              "value": "3276",
+              "note": "Q and S in May"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\text{P in July} = {{2:1820}}"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "{{1:3276}} - {{2:1820}} = {{3:1456}}",
+              "f": "3276-1820",
+              "value": "1456"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\dfrac{ {{3:1456}} }{ {{2:1820}} } \\times 100 = 80\\%",
+              "f": "1456/1820*100",
+              "value": "80"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "{{2:1820}} \\times 1.8 = {{1:3276}}",
+              "f": "1820*1.8",
+              "value": "3276",
+              "note": "check"
+            }
+          ],
+          "answer": "1456/1820*100"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "b5a47106",
+        "answer": {
+          "value": 80,
+          "label": "80%"
+        }
+      }
+    },
+    {
+      "id": "8dbbc5b9-f1af-4930-9bdc-1ffd38a7dc3f",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{B1}: 195+230+250 = {{1:675}}",
+              "f": "195+230+250",
+              "value": "675"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{B2}: 284+300+416 = {{2:1000}}",
+              "f": "284+300+416",
+              "value": "1000"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "{{1:675}} : {{2:1000}} = 27 : 40",
+              "f": "675/1000",
+              "value": "27/40",
+              "note": "divide both by 25"
+            }
+          ],
+          "answer": "675/1000"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "fe333b18",
+        "answer": {
+          "value": 0.675,
+          "label": "27 : 40"
+        }
+      }
+    },
+    {
+      "id": "8e65ed79-036c-4516-95d9-5679e21c041c",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "100+60+45+65+35+25+30 = 360^\\circ",
+              "f": "100+60+45+65+35+25+30",
+              "value": "360",
+              "note": "all seven sectors"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "45 + 65 + 25 = {{1:135}}^\\circ",
+              "f": "45+65+25",
+              "value": "135",
+              "note": "Badminton, Tennis, Rugby"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "100 + 60 + 30 = {{2:190}}^\\circ",
+              "f": "100+60+30",
+              "value": "190",
+              "note": "Cricket, Swimming, Hockey"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\dfrac{ {{2:190}} - {{1:135}} }{ {{2:190}} } \\times 100 \\approx 28.95\\%",
+              "f": "(190-135)/190*100",
+              "value": "28.95",
+              "dp": 2,
+              "note": "135 < 190, so less"
+            }
+          ],
+          "answer": "floor((190-135)/190*10000+0.5)/100"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "617a6042",
+        "answer": {
+          "value": 28.95,
+          "label": "Less, 28.95%"
+        }
+      }
+    },
+    {
+      "id": "8f50f538-3456-48be-8933-e295b41a22ec",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{Hyd } 175,\\ \\text{Mum } 180,\\ \\text{Blr } 185"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{175 + 180 + 185}{3} = {{1:180}}",
+              "f": "(175+180+185)/3",
+              "value": "180",
+              "note": "average low rate of C"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "{{2:175}} < {{1:180}}",
+              "note": "only Hyderabad is below the average"
+            }
+          ],
+          "answer": "175"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "e135610a",
+        "answer": {
+          "value": 175,
+          "label": "Hyderabad: 175 < 180"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

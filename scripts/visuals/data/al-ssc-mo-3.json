@@ -1,0 +1,2036 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "328384a6-0e35-4848-b862-60021fdaeac9",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "4 + {{1:5 \\times 9}} - {{2:6 \\div 2}}",
+              "note": "swap: + and −, × and ÷"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "{{1:5 \\times 9}} = 45",
+              "f": "5*9",
+              "value": "45",
+              "note": "× and ÷ first"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "{{2:6 \\div 2}} = 3",
+              "f": "6/2",
+              "value": "3"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "4 + {{1:45}} - {{2:3}} = 46",
+              "f": "4+45-3",
+              "value": "46",
+              "note": "then left to right"
+            }
+          ],
+          "answer": "46"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "84bae6f3",
+        "answer": {
+          "value": 46,
+          "label": "46"
+        }
+      }
+    },
+    {
+      "id": "32d54564-0359-498c-b8cb-ce4b02ab4349",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "{{1:27 \\div 3}} - {{2:4 \\times 2}} + 7",
+              "note": "swap: + and −, × and ÷"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "{{1:27 \\div 3}} = 9",
+              "f": "27/3",
+              "value": "9",
+              "note": "× and ÷ first"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "{{2:4 \\times 2}} = 8",
+              "f": "4*2",
+              "value": "8"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "{{1:9}} - {{2:8}} + 7 = 8",
+              "f": "9-8+7",
+              "value": "8",
+              "note": "then left to right"
+            }
+          ],
+          "answer": "8"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "b46ce34a",
+        "answer": {
+          "value": 8,
+          "label": "8"
+        }
+      }
+    },
+    {
+      "id": "32e46a58-7bcd-40ad-9b6c-f8e050326c02",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "{{1:272 \\div 16}} - 97 + {{2:23 \\times 4}}",
+              "note": "swap: + and −, × and ÷"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "{{1:272 \\div 16}} = 17",
+              "f": "272/16",
+              "value": "17",
+              "note": "× and ÷ first"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "{{2:23 \\times 4}} = 92",
+              "f": "23*4",
+              "value": "92"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "{{1:17}} - 97 + {{2:92}} = 12",
+              "f": "17-97+92",
+              "value": "12",
+              "note": "then left to right"
+            }
+          ],
+          "answer": "12"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "ffa01d5d",
+        "answer": {
+          "value": 12,
+          "label": "12"
+        }
+      }
+    },
+    {
+      "id": "33168b5c-bb3f-4a55-9c7b-c3b3e56a4740",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "7^2 + 1 = 50",
+              "f": "7^2+1",
+              "value": "50",
+              "note": "rule: square plus 1"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "8^2 + 1 = 65",
+              "f": "8^2+1",
+              "value": "65"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "9^2 + 1 = 82",
+              "f": "9^2+1",
+              "value": "82",
+              "note": "same rule for 9"
+            }
+          ],
+          "answer": "82"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "e25afbd0",
+        "answer": {
+          "value": 82,
+          "label": "82"
+        }
+      }
+    },
+    {
+      "id": "339adf84-b865-45ad-894c-998d19ad2abe",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "{{1:16 \\times 2 \\div 4}} - 3 + 5",
+              "note": "+ is −, − is ÷, × is +, ÷ is ×"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "{{1:16 \\times 2 \\div 4}} = 32 \\div 4 = {{1:8}}",
+              "f": "16*2/4",
+              "value": "8",
+              "note": "× and ÷ first, left to right"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "{{1:8}} - 3 + 5 = 10",
+              "f": "8-3+5",
+              "value": "10"
+            }
+          ],
+          "answer": "10"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "7a0717c2",
+        "answer": {
+          "value": 10,
+          "label": "10"
+        }
+      }
+    },
+    {
+      "id": "351551fa-5025-48d2-842c-0837d47b09df",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "97 {{1:+}} 23 - 18 {{1:\\times}} 9 \\div 3 = 66",
+              "note": "swap × and +"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "{{2:18 \\times 9 \\div 3}} = 54",
+              "f": "18*9/3",
+              "value": "54",
+              "note": "× and ÷ first"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{LHS} = 97 + 23 - {{2:54}} = 66",
+              "f": "97+23-54",
+              "value": "66",
+              "note": "LHS = 66 = RHS"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{D: } 2231 + 18 - 3 = 2246",
+              "f": "97*23+18-9/3",
+              "value": "2246",
+              "note": "swap + and −: not 66"
+            }
+          ],
+          "answer": "66"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "f790f139",
+        "answer": {
+          "value": 66,
+          "label": "× and +"
+        }
+      }
+    },
+    {
+      "id": "35f642fc-52b0-4938-8f8f-33db6205b5b0",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "15 + {{1:3}} \\times 8 - 72 \\div 4 + 16 \\times {{1:5}}",
+              "note": "swap 5 and 3"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "{{1:3}} \\times 8 = 24",
+              "f": "3*8",
+              "value": "24"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "72 \\div 4 = 18",
+              "f": "72/4",
+              "value": "18"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "16 \\times {{1:5}} = 80",
+              "f": "16*5",
+              "value": "80"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\text{LHS} = 15 + 24 - 18 + 80 = 101",
+              "f": "15+24-18+80",
+              "value": "101",
+              "note": "LHS = 101 = RHS"
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "\\text{A: } 16 + 40 - 18 + 45 = 83",
+              "f": "16+5*8-72/4+15*3",
+              "value": "83",
+              "note": "swap 15 and 16: not 101"
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "\\text{C: } 15 + 20 - 9 + 48 = 74",
+              "f": "15+5*4-72/8+16*3",
+              "value": "74",
+              "note": "swap 8 and 4: not 101"
+            },
+            {
+              "step": "s6",
+              "kind": "note",
+              "tex": "\\text{B: } 72 \\div 5 = 14.4",
+              "note": "swap 5 and 4: a fraction"
+            }
+          ],
+          "answer": "101"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4",
+              "s5"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "fd34bf6e",
+        "answer": {
+          "value": 101,
+          "label": "5 and 3"
+        }
+      }
+    },
+    {
+      "id": "36b33ebf-6a9d-4e8c-8495-b64501c68b03",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "17 + 10 {{1:\\div}} 5 {{1:\\times}} 9 + 18",
+              "note": "swap × and ÷"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "10 \\div 5 = 2",
+              "f": "10/5",
+              "value": "2",
+              "note": "left to right"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "2 \\times 9 = 18",
+              "f": "2*9",
+              "value": "18"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{LHS} = 17 + 18 + 18 = 53",
+              "f": "17+18+18",
+              "value": "53",
+              "note": "LHS = 53 = RHS"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\text{A: } 8.5 + 0.5 = 9",
+              "f": "17/10*5+9/18",
+              "value": "9",
+              "note": "swap + and ÷: not 53"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\text{B: } 170 + 10 = 180",
+              "f": "17*10+5/9*18",
+              "value": "180",
+              "note": "swap + and ×: not 53"
+            },
+            {
+              "step": "s5",
+              "kind": "note",
+              "tex": "\\text{C: } 17 - 10 \\times 5 \\div 9 - 18 \\ne 53",
+              "note": "no − to swap: both + become −"
+            }
+          ],
+          "answer": "53"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "0e7e09ee",
+        "answer": {
+          "value": 53,
+          "label": "× and ÷"
+        }
+      }
+    },
+    {
+      "id": "38a923cd-c671-4e09-b8aa-c14a6aef72b6",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\{20 - (25 - 33)\\} \\div \\{-5 \\times 4 - (-6)\\}",
+              "note": "P is +, D is −, S is ×, V is ÷"
+            },
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "+\\ 56 \\div (-27 + 13)"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "20 - (-8) = {{1:28}}",
+              "f": "20-(25-33)",
+              "value": "28"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "-20 + 6 = {{2:-14}}",
+              "f": "-5*4-(-6)",
+              "value": "-14"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "-27 + 13 = {{3:-14}}",
+              "f": "-27+13",
+              "value": "-14"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "{{1:28}} \\div ({{2:-14}}) = -2",
+              "f": "28/(-14)",
+              "value": "-2"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "56 \\div ({{3:-14}}) = -4",
+              "f": "56/(-14)",
+              "value": "-4"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "-2 + (-4) = -6",
+              "f": "-2+(-4)",
+              "value": "-6"
+            }
+          ],
+          "answer": "-6"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "f9cf858e",
+        "answer": {
+          "value": -6,
+          "label": "−6"
+        }
+      }
+    },
+    {
+      "id": "3c26e980-4370-4b6d-93ef-36f73eb38fcc",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "(5 - 2)^3 = 3^3 = 27",
+              "f": "(5-2)^3",
+              "value": "27",
+              "note": "cube of the difference"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "(7 - 3)^3 = 4^3 = 64",
+              "f": "(7-3)^3",
+              "value": "64"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "(6 - 4)^3 = 2^3 = 8",
+              "f": "(6-4)^3",
+              "value": "8",
+              "note": "same rule for 6 and 4"
+            }
+          ],
+          "answer": "8"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "01e09907",
+        "answer": {
+          "value": 8,
+          "label": "8"
+        }
+      }
+    },
+    {
+      "id": "3ce8af1c-2666-41bc-b2e0-bf4500e87550",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "{{1:11 \\times 14}} - {{2:9 \\div 3}} + 104",
+              "note": "+ is −, − is ×, ÷ is +, × is ÷"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "{{1:11 \\times 14}} = 154",
+              "f": "11*14",
+              "value": "154",
+              "note": "× and ÷ first"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "{{2:9 \\div 3}} = 3",
+              "f": "9/3",
+              "value": "3"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "{{1:154}} - {{2:3}} + 104 = 255",
+              "f": "154-3+104",
+              "value": "255",
+              "note": "then left to right"
+            }
+          ],
+          "answer": "255"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "297e4be6",
+        "answer": {
+          "value": 255,
+          "label": "255"
+        }
+      }
+    },
+    {
+      "id": "3d0b7f47-3997-4336-b17a-2dff1705a310",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "14^2 = 196",
+              "f": "14^2",
+              "value": "196",
+              "note": "square"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "196 - 10 = 186",
+              "f": "196-10",
+              "value": "186",
+              "note": "subtract 10"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "186 - 14 = 172",
+              "f": "186-14",
+              "value": "172",
+              "note": "subtract the first number"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "15^2 - 10 - 15 = 200",
+              "f": "15^2-10-15",
+              "value": "200",
+              "note": "same rule for 15"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "9^2 = 81",
+              "f": "9^2",
+              "value": "81"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "81 - 10 = 71",
+              "f": "81-10",
+              "value": "71"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "71 - 9 = 62",
+              "f": "71-9",
+              "value": "62",
+              "note": "9, 81, 71, 62: option B"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{A: } 9 + 10 = 19",
+              "f": "9+10",
+              "value": "19",
+              "note": "adds 10 instead of taking it away"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{C: } 26 - 6 = 20 \\ne 22",
+              "f": "26-6",
+              "value": "20"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{D: } 54 - 8 = 46 \\ne 40",
+              "f": "54-8",
+              "value": "46"
+            }
+          ],
+          "answer": "62"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "7234f97d",
+        "answer": {
+          "value": 62,
+          "label": "9 → 81 → 71 → 62"
+        }
+      }
+    },
+    {
+      "id": "3f6ca2f7-f218-4247-a5bb-059439ce5130",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "{{1:10 \\times 2}} + {{2:4 \\div 2}}",
+              "note": "+ is ×, − is +, × is ÷"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "{{1:10 \\times 2}} = 20",
+              "f": "10*2",
+              "value": "20",
+              "note": "× and ÷ first"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "{{2:4 \\div 2}} = 2",
+              "f": "4/2",
+              "value": "2"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "{{1:20}} + {{2:2}} = 22",
+              "f": "20+2",
+              "value": "22"
+            }
+          ],
+          "answer": "22"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "1ddedcfa",
+        "answer": {
+          "value": 22,
+          "label": "22"
+        }
+      }
+    },
+    {
+      "id": "3fb42dd8-8e3c-42e6-a35e-ffe7df61c3ae",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "12 + 70 - 5 \\times 5 = 5 \\times 11 + 2",
+              "note": "option A's signs"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{LHS} = 82 - 25 = 57",
+              "f": "12+70-5*5",
+              "value": "57"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{RHS} = 55 + 2 = 57",
+              "f": "5*11+2",
+              "value": "57",
+              "note": "LHS = 57 = RHS"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{B: } 840 + 5 + 5 - 55 = 795 \\ne 2",
+              "f": "12*70+5+5-5*11",
+              "value": "795"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{C: } 840 \\ne 125 + 11 - 2 = 134",
+              "f": "12*70",
+              "value": "840"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{D: } 840 + 5 - 25 = 820 \\ne 22",
+              "f": "12*70+5-5*5",
+              "value": "820"
+            }
+          ],
+          "answer": "57"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "333eeb9a",
+        "answer": {
+          "value": 57,
+          "label": "+, −, ×, =, ×, +"
+        }
+      }
+    },
+    {
+      "id": "41baee61-982d-413a-8c05-b4e99040ee83",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "45 \\div 9 \\times 3 + 25 = 55 - 15",
+              "note": "option D's signs"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{LHS} = 5 \\times 3 + 25 = 40",
+              "f": "45/9*3+25",
+              "value": "40"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{RHS} = 55 - 15 = 40",
+              "f": "55-15",
+              "value": "40",
+              "note": "LHS = 40 = RHS"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{A: } {-10} \\ne 825",
+              "f": "45/9*3-25",
+              "value": "-10",
+              "note": "55 × 15 = 825 on the RHS"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{B: } 15 \\ne 95",
+              "f": "45/9*3",
+              "value": "15",
+              "note": "25 + 55 + 15 = 95 on the RHS"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{C: } 54 \\ne 21.6",
+              "f": "45+9",
+              "value": "54",
+              "note": "3 ÷ 25 × 55 + 15 = 21.6 on the RHS"
+            }
+          ],
+          "answer": "40"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "61b5ab0d",
+        "answer": {
+          "value": 40,
+          "label": "÷, ×, +, =, −"
+        }
+      }
+    },
+    {
+      "id": "4202f7e8-0994-4360-81cd-a534d2ab634b",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "{{1:49 \\div 7}} + {{2:6 \\times 2}} - 15",
+              "note": "swap: + and −, × and ÷"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "{{1:49 \\div 7}} = 7",
+              "f": "49/7",
+              "value": "7",
+              "note": "× and ÷ first"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "{{2:6 \\times 2}} = 12",
+              "f": "6*2",
+              "value": "12"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "{{1:7}} + {{2:12}} - 15 = 4",
+              "f": "7+12-15",
+              "value": "4",
+              "note": "then left to right"
+            }
+          ],
+          "answer": "4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "001ba618",
+        "answer": {
+          "value": 4,
+          "label": "4"
+        }
+      }
+    },
+    {
+      "id": "43b0bac8-fb37-4b42-8f05-33b740ee6597",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "15 \\div 3 + 15 {{1:\\times}} 3 {{1:-}} 3",
+              "note": "swap − and ×"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "15 \\div 3 = 5",
+              "f": "15/3",
+              "value": "5",
+              "note": "× and ÷ first"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "15 \\times 3 = 45",
+              "f": "15*3",
+              "value": "45"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{LHS} = 5 + 45 - 3 = 47",
+              "f": "5+45-3",
+              "value": "47",
+              "note": "LHS = 47 = RHS"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{D: } 5 - 15 + 9 = -1",
+              "f": "15/3-15+3*3",
+              "value": "-1",
+              "note": "swap + and −: not 47"
+            }
+          ],
+          "answer": "47"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "aea72dc0",
+        "answer": {
+          "value": 47,
+          "label": "− and ×"
+        }
+      }
+    },
+    {
+      "id": "43fb25f5-e948-4e52-9677-e5902c5b00b6",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "(9 - 3) \\times 3 = 18",
+              "f": "(9-3)*3",
+              "value": "18",
+              "note": "rule: (a − b) × b"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "(8 - 2) \\times 2 = 12",
+              "f": "(8-2)*2",
+              "value": "12"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "(6 - 4) \\times 4 = 8",
+              "f": "(6-4)*4",
+              "value": "8",
+              "note": "same rule for 6 and 4"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "6 \\times 4 - 4^2 = 24 - 16 = 8",
+              "f": "6*4-4^2",
+              "value": "8",
+              "note": "the same rule as ab − b²"
+            }
+          ],
+          "answer": "8"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "67ef0ce6",
+        "answer": {
+          "value": 8,
+          "label": "8"
+        }
+      }
+    },
+    {
+      "id": "444eea2e-5049-435f-b816-61d305abd191",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "7 + 5 - 4 \\div 2 - 3 = 7",
+              "note": "option B's signs"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "4 \\div 2 = 2",
+              "f": "4/2",
+              "value": "2",
+              "note": "÷ first"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{LHS} = 12 - 2 - 3 = 7",
+              "f": "7+5-2-3",
+              "value": "7",
+              "note": "LHS = 7 = RHS"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{A: } 1.4 - 4 + 6 = 3.4",
+              "f": "7/5-4+2*3",
+              "value": "3.4",
+              "note": "not 7"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{C: } 1.4 + 2 + 3 = 6.4",
+              "f": "7/5+4/2+3",
+              "value": "6.4",
+              "note": "not 7"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{D: } 7 - 1.25 + 6 = 11.75",
+              "f": "7-5/4+2*3",
+              "value": "11.75",
+              "note": "not 7"
+            }
+          ],
+          "answer": "7"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "00901855",
+        "answer": {
+          "value": 7,
+          "label": "+, −, ÷, −, ="
+        }
+      }
+    },
+    {
+      "id": "44a239e7-2e96-4862-8771-19509b514811",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "2^3 = 8",
+              "f": "2^3",
+              "value": "8",
+              "note": "rule: a * b = a to the power b"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "3^4 = 81",
+              "f": "3^4",
+              "value": "81"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "4 * 5 = 4^5 = 1024",
+              "f": "4^5",
+              "value": "1024"
+            }
+          ],
+          "answer": "1024"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "16968712",
+        "answer": {
+          "value": 1024,
+          "label": "1024"
+        }
+      }
+    },
+    {
+      "id": "47899d89-378e-4105-8228-f945d9897758",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "{{1:342 \\div 18}} - 79 + {{2:45 \\times 3}}",
+              "note": "swap: + and −, × and ÷"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "{{1:342 \\div 18}} = 19",
+              "f": "342/18",
+              "value": "19",
+              "note": "× and ÷ first"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "{{2:45 \\times 3}} = 135",
+              "f": "45*3",
+              "value": "135"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "{{1:19}} - 79 + {{2:135}} = 75",
+              "f": "19-79+135",
+              "value": "75",
+              "note": "then left to right"
+            }
+          ],
+          "answer": "75"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "39b06e4f",
+        "answer": {
+          "value": 75,
+          "label": "75"
+        }
+      }
+    },
+    {
+      "id": "483b891c-98b8-4b37-b0e7-c5615340adc5",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "28 \\div 4 \\times 3 {{1:+}} 5 {{1:-}} 7",
+              "note": "swap + and −"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "28 \\div 4 \\times 3 = 21",
+              "f": "28/4*3",
+              "value": "21",
+              "note": "÷ and × first"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{LHS} = 21 + 5 - 7 = 19",
+              "f": "21+5-7",
+              "value": "19",
+              "note": "LHS = 19 = RHS"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\text{A: } 28 \\times 4 \\div 3 - 5 + 7 \\ne 19"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{B: } 28 \\div 4 - 3 \\times 5 + 7 = -1",
+              "f": "28/4-3*5+7",
+              "value": "-1"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\text{C: } 28 + 4 \\times 3 - 5 \\div 7 \\ne 19"
+            }
+          ],
+          "answer": "19"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "3ab8a8a3",
+        "answer": {
+          "value": 19,
+          "label": "+ and −"
+        }
+      }
+    },
+    {
+      "id": "4b6ee10f-17de-4c9c-a6c1-cec371ce395c",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "588 \\div 28 \\times 32 {{1:-}} 72 {{1:+}} 160",
+              "note": "swap − and +"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "588 \\div 28 = 21",
+              "f": "588/28",
+              "value": "21",
+              "note": "÷ and × first"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "21 \\times 32 = 672",
+              "f": "21*32",
+              "value": "672"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{LHS} = 672 - 72 + 160 = 760",
+              "f": "672-72+160",
+              "value": "760",
+              "note": "LHS = 760 = RHS"
+            }
+          ],
+          "answer": "760"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "d3876f36",
+        "answer": {
+          "value": 760,
+          "label": "− and +"
+        }
+      }
+    },
+    {
+      "id": "4beae975-63d1-4414-a608-dfb854a88f96",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "2 \\times 236 {{1:\\div}} 2 + 36 {{1:-}} 72",
+              "note": "swap ÷ and −"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "2 \\times 236 \\div 2 = 236",
+              "f": "2*236/2",
+              "value": "236",
+              "note": "× and ÷ first"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{LHS} = 236 + 36 - 72 = 200",
+              "f": "236+36-72",
+              "value": "200",
+              "note": "LHS = 200 = RHS"
+            }
+          ],
+          "answer": "200"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "e7f66b59",
+        "answer": {
+          "value": 200,
+          "label": "÷ and −"
+        }
+      }
+    },
+    {
+      "id": "4c7e100f-d589-4f2e-9251-e8e3d4e0c562",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "{{1:229 \\times 41}} - {{2:502 \\div 2}} + 44",
+              "note": "swap: + and −, × and ÷"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "{{1:229 \\times 41}} = 9389",
+              "f": "229*41",
+              "value": "9389",
+              "note": "× and ÷ first"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "{{2:502 \\div 2}} = 251",
+              "f": "502/2",
+              "value": "251"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "{{1:9389}} - {{2:251}} + 44 = 9182",
+              "f": "9389-251+44",
+              "value": "9182",
+              "note": "then left to right"
+            }
+          ],
+          "answer": "9182"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "a7ee8c17",
+        "answer": {
+          "value": 9182,
+          "label": "9182"
+        }
+      }
+    },
+    {
+      "id": "4c9643ab-a10f-428a-9577-25353418c8db",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{A: } (9 \\times 5) + 3 = 45 + 3 = 48",
+              "f": "(9*5)+3",
+              "value": "48",
+              "note": "swap + and ×, 3 and 9: true"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{B: } (3 \\times 2) + 9 = 15",
+              "f": "(3*2)+9",
+              "value": "15",
+              "note": "not 10"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{C: } (9 \\times 7) + 3 = 66",
+              "f": "(9*7)+3",
+              "value": "66",
+              "note": "not 60"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{D: } (3 \\times 1) + 9 = 12",
+              "f": "(3*1)+9",
+              "value": "12",
+              "note": "not 15"
+            }
+          ],
+          "answer": "48"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "d3c78e85",
+        "answer": {
+          "value": 48,
+          "label": "(3+5)×9=48"
+        }
+      }
+    },
+    {
+      "id": "4dc6ed24-efea-4d77-a6a0-054dc6f29518",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "25 + 82 - 12 \\div 6 \\times 8 = 91",
+              "note": "option C's signs"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "12 \\div 6 \\times 8 = 16",
+              "f": "12/6*8",
+              "value": "16",
+              "note": "÷ and × first"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{LHS} = 25 + 82 - 16 = 91",
+              "f": "25+82-16",
+              "value": "91",
+              "note": "LHS = 91 = RHS"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "\\text{A: } 25 - 82 \\times 12 + 6 \\div 8 < 0",
+              "note": "negative, not 91"
+            }
+          ],
+          "answer": "91"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "1ba8ba74",
+        "answer": {
+          "value": 91,
+          "label": "+, −, ÷, ×, ="
+        }
+      }
+    },
+    {
+      "id": "4dcbfb97-f3af-47f9-9117-92a3679a35bc",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\times \\to -,\\quad - \\to +,\\quad / \\to \\times,\\quad + \\to \\div",
+              "note": "replace each sign"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{A: } 20 \\div 4 + 2 - 5 = 2",
+              "f": "20/4+2-5",
+              "value": "2",
+              "note": "not 10"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{B: } 15 + 3 \\div 6 \\times 2 = 16",
+              "f": "15+3/6*2",
+              "value": "16",
+              "note": "not 12"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{C: } 48 \\times 8 \\div 3 + 5 - 1 = 132",
+              "f": "48*8/3+5-1",
+              "value": "132",
+              "note": "not 15"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\text{D: } 10 - 2 + 4 \\div 8 \\times 2 = 9",
+              "f": "10-2+4/8*2",
+              "value": "9",
+              "note": "9 = 9: correct"
+            }
+          ],
+          "answer": "9"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "9d19b40a",
+        "answer": {
+          "value": 9,
+          "label": "10×2−4+8/2=9"
+        }
+      }
+    },
+    {
+      "id": "4dce9ab9-22b5-4834-9f43-0f78dee3caca",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "{{1:4 \\times 6}} - {{2:91 \\div 7}} + 5",
+              "note": "swap: + and −, × and ÷"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "{{1:4 \\times 6}} = 24",
+              "f": "4*6",
+              "value": "24",
+              "note": "× and ÷ first"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "{{2:91 \\div 7}} = 13",
+              "f": "91/7",
+              "value": "13"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "{{1:24}} - {{2:13}} + 5 = 16",
+              "f": "24-13+5",
+              "value": "16",
+              "note": "then left to right"
+            }
+          ],
+          "answer": "16"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "d84c091a",
+        "answer": {
+          "value": 16,
+          "label": "16"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

@@ -1,0 +1,412 @@
+{
+  "//": "Assembled from agent drafts (sketch).",
+  "visuals": [
+    {
+      "id": "423ff471-7a89-4c5a-a7d3-0ff678144e0e",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "a1": 42,
+            "a2": 38,
+            "a3": 40,
+            "b1": 45,
+            "b2": 46,
+            "b3": 44,
+            "s": 0.1,
+            "mA": "(a1+a2+a3)/3",
+            "mB": "(b1+b2+b3)/3"
+          },
+          "view": {
+            "x": [
+              -2.5,
+              9.2
+            ],
+            "y": [
+              -2,
+              6.5
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  -0.45,
+                  0
+                ],
+                [
+                  0.45,
+                  0
+                ],
+                [
+                  0.45,
+                  "a1*s"
+                ],
+                [
+                  -0.45,
+                  "a1*s"
+                ]
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -0.573,
+                "a1*s/2"
+              ],
+              "text": "{a1}",
+              "pos": "e",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0,
+                0
+              ],
+              "text": "R1",
+              "pos": "s",
+              "step": "s1"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  0.75,
+                  0
+                ],
+                [
+                  1.65,
+                  0
+                ],
+                [
+                  1.65,
+                  "a2*s"
+                ],
+                [
+                  0.75,
+                  "a2*s"
+                ]
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.627,
+                "a2*s/2"
+              ],
+              "text": "{a2}",
+              "pos": "e",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                1.2,
+                0
+              ],
+              "text": "R2",
+              "pos": "s",
+              "step": "s1"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  1.95,
+                  0
+                ],
+                [
+                  2.85,
+                  0
+                ],
+                [
+                  2.85,
+                  "a3*s"
+                ],
+                [
+                  1.95,
+                  "a3*s"
+                ]
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                1.827,
+                "a3*s/2"
+              ],
+              "text": "{a3}",
+              "pos": "e",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                2.4,
+                0
+              ],
+              "text": "R3",
+              "pos": "s",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                1.2,
+                -0.9
+              ],
+              "text": "Team A",
+              "pos": "s",
+              "step": "s1"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  3.75,
+                  0
+                ],
+                [
+                  4.65,
+                  0
+                ],
+                [
+                  4.65,
+                  "b1*s"
+                ],
+                [
+                  3.75,
+                  "b1*s"
+                ]
+              ],
+              "step": "s2",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                3.627,
+                "b1*s/2"
+              ],
+              "text": "{b1}",
+              "pos": "e",
+              "step": "s2"
+            },
+            {
+              "kind": "label",
+              "at": [
+                4.2,
+                0
+              ],
+              "text": "R1",
+              "pos": "s",
+              "step": "s2"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  4.95,
+                  0
+                ],
+                [
+                  5.8500000000000005,
+                  0
+                ],
+                [
+                  5.8500000000000005,
+                  "b2*s"
+                ],
+                [
+                  4.95,
+                  "b2*s"
+                ]
+              ],
+              "step": "s2",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                4.827,
+                "b2*s/2"
+              ],
+              "text": "{b2}",
+              "pos": "e",
+              "step": "s2"
+            },
+            {
+              "kind": "label",
+              "at": [
+                5.4,
+                0
+              ],
+              "text": "R2",
+              "pos": "s",
+              "step": "s2"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  6.1499999999999995,
+                  0
+                ],
+                [
+                  7.05,
+                  0
+                ],
+                [
+                  7.05,
+                  "b3*s"
+                ],
+                [
+                  6.1499999999999995,
+                  "b3*s"
+                ]
+              ],
+              "step": "s2",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                6.027,
+                "b3*s/2"
+              ],
+              "text": "{b3}",
+              "pos": "e",
+              "step": "s2"
+            },
+            {
+              "kind": "label",
+              "at": [
+                6.6,
+                0
+              ],
+              "text": "R3",
+              "pos": "s",
+              "step": "s2"
+            },
+            {
+              "kind": "label",
+              "at": [
+                5.4,
+                -0.9
+              ],
+              "text": "Team B",
+              "pos": "s",
+              "step": "s2"
+            },
+            {
+              "kind": "segment",
+              "from": [
+                -0.6,
+                "mA*s"
+              ],
+              "to": [
+                3,
+                "mA*s"
+              ],
+              "dash": true,
+              "step": "s1",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -0.6,
+                "mA*s"
+              ],
+              "text": "avg {mA}",
+              "pos": "w",
+              "step": "s1",
+              "tone": "amber"
+            },
+            {
+              "kind": "segment",
+              "from": [
+                3.6,
+                "mB*s"
+              ],
+              "to": [
+                7.2,
+                "mB*s"
+              ],
+              "dash": true,
+              "step": "s2",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                7.2,
+                "mB*s"
+              ],
+              "text": "avg {mB}",
+              "pos": "e",
+              "step": "s2",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -2.3,
+                6
+              ],
+              "text": "Team B: 45 > 40",
+              "pos": "e",
+              "step": "s3",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "mA = 40",
+            "mB = 45",
+            "mB > mA",
+            "b1 > a1",
+            "b2 > a2",
+            "b3 > a3"
+          ],
+          "answer": "mB"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "78196f1d",
+        "answer": {
+          "value": 45,
+          "label": "Team B: 45 > 40"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

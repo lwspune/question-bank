@@ -1,0 +1,622 @@
+{
+  "//": "Assembled from agent drafts (sketch).",
+  "visuals": [
+    {
+      "id": "ef02a298-f41c-441e-a4a2-b8752c4d0156",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "R": 54,
+            "M": 51,
+            "S": 75,
+            "T": "105/175*100",
+            "k": 0.06,
+            "w": 1.6,
+            "pR": "(abs(R-T)/(R-T)+1)/2",
+            "pM": "(abs(M-T)/(M-T)+1)/2",
+            "pS": "(abs(S-T)/(S-T)+1)/2",
+            "np": "pR+pM+pS"
+          },
+          "view": {
+            "x": [
+              -0.8,
+              8.6
+            ],
+            "y": [
+              -1.4,
+              5.65
+            ]
+          },
+          "points": {
+            "R0": [
+              0.6,
+              0
+            ],
+            "R1": [
+              "0.6+w",
+              0
+            ],
+            "R2": [
+              "0.6+w",
+              "R*k"
+            ],
+            "R3": [
+              0.6,
+              "R*k"
+            ],
+            "M0": [
+              3.4,
+              0
+            ],
+            "M1": [
+              "3.4+w",
+              0
+            ],
+            "M2": [
+              "3.4+w",
+              "M*k"
+            ],
+            "M3": [
+              3.4,
+              "M*k"
+            ],
+            "S0": [
+              6.2,
+              0
+            ],
+            "S1": [
+              "6.2+w",
+              0
+            ],
+            "S2": [
+              "6.2+w",
+              "S*k"
+            ],
+            "S3": [
+              6.2,
+              "S*k"
+            ],
+            "L0": [
+              -0.5,
+              "T*k"
+            ],
+            "L1": [
+              8.3,
+              "T*k"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "points": [
+                "R0",
+                "R1",
+                "R2",
+                "R3"
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                "M0",
+                "M1",
+                "M2",
+                "M3"
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                "S0",
+                "S1",
+                "S2",
+                "S3"
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": "L0",
+              "to": "L1",
+              "dash": true,
+              "step": "s2",
+              "tone": "amber"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                "R0",
+                "R1",
+                "R2",
+                "R3"
+              ],
+              "step": "s3",
+              "tone": "bad"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                "M0",
+                "M1",
+                "M2",
+                "M3"
+              ],
+              "step": "s3",
+              "tone": "bad"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                "S0",
+                "S1",
+                "S2",
+                "S3"
+              ],
+              "step": "s3",
+              "tone": "good"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.825,
+                1.62
+              ],
+              "text": "54%",
+              "pos": "e",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                1.4,
+                0
+              ],
+              "text": "Ram",
+              "pos": "s",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                3.625,
+                1.53
+              ],
+              "text": "51%",
+              "pos": "e",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                4.2,
+                0
+              ],
+              "text": "Mohan",
+              "pos": "s",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                6.425,
+                2.25
+              ],
+              "text": "75%",
+              "pos": "e",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                7,
+                0
+              ],
+              "text": "Shyam",
+              "pos": "s",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -0.5,
+                4.02
+              ],
+              "text": "pass mark 60%",
+              "pos": "e",
+              "step": "s2",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -0.6,
+                5.15
+              ],
+              "text": "only Shyam passes: 1 student",
+              "pos": "e",
+              "step": "s4",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "T = 60",
+            "R < T",
+            "M < T",
+            "S > T",
+            "np = 1"
+          ],
+          "answer": "np"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "12617a3e",
+        "answer": {
+          "value": 1,
+          "label": "1 student (Shyam)"
+        }
+      }
+    },
+    {
+      "id": "f87d51af-566b-4766-b6a8-f88f936bdce3",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "A1": 70,
+            "A2": 85,
+            "A3": 90,
+            "A4": 95,
+            "A5": 75,
+            "k": 0.08,
+            "w": 1.4,
+            "tot": "A1+A2+A3+A4+A5",
+            "av": "tot/5"
+          },
+          "view": {
+            "x": [
+              -0.6,
+              11.9
+            ],
+            "y": [
+              -1,
+              9
+            ]
+          },
+          "points": {
+            "A1a": [
+              0.3,
+              0
+            ],
+            "A1b": [
+              "0.3+w",
+              0
+            ],
+            "A1c": [
+              "0.3+w",
+              "A1*k"
+            ],
+            "A1d": [
+              0.3,
+              "A1*k"
+            ],
+            "A2a": [
+              2.7,
+              0
+            ],
+            "A2b": [
+              "2.7+w",
+              0
+            ],
+            "A2c": [
+              "2.7+w",
+              "A2*k"
+            ],
+            "A2d": [
+              2.7,
+              "A2*k"
+            ],
+            "A3a": [
+              5.1,
+              0
+            ],
+            "A3b": [
+              "5.1+w",
+              0
+            ],
+            "A3c": [
+              "5.1+w",
+              "A3*k"
+            ],
+            "A3d": [
+              5.1,
+              "A3*k"
+            ],
+            "A4a": [
+              7.5,
+              0
+            ],
+            "A4b": [
+              "7.5+w",
+              0
+            ],
+            "A4c": [
+              "7.5+w",
+              "A4*k"
+            ],
+            "A4d": [
+              7.5,
+              "A4*k"
+            ],
+            "A5a": [
+              9.9,
+              0
+            ],
+            "A5b": [
+              "9.9+w",
+              0
+            ],
+            "A5c": [
+              "9.9+w",
+              "A5*k"
+            ],
+            "A5d": [
+              9.9,
+              "A5*k"
+            ],
+            "V0": [
+              -0.3,
+              "av*k"
+            ],
+            "V1": [
+              11.6,
+              "av*k"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "points": [
+                "A1a",
+                "A1b",
+                "A1c",
+                "A1d"
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                "A2a",
+                "A2b",
+                "A2c",
+                "A2d"
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                "A3a",
+                "A3b",
+                "A3c",
+                "A3d"
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                "A4a",
+                "A4b",
+                "A4c",
+                "A4d"
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                "A5a",
+                "A5b",
+                "A5c",
+                "A5d"
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "segment",
+              "from": "V0",
+              "to": "V1",
+              "dash": true,
+              "step": "s2",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.341,
+                2.8
+              ],
+              "text": "70",
+              "pos": "e",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                1,
+                0
+              ],
+              "text": "Suresh",
+              "pos": "s",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                2.741,
+                3.4
+              ],
+              "text": "85",
+              "pos": "e",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                3.4000000000000004,
+                0
+              ],
+              "text": "Ramesh",
+              "pos": "s",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                5.141,
+                3.6
+              ],
+              "text": "90",
+              "pos": "e",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                5.8,
+                0
+              ],
+              "text": "Ankith",
+              "pos": "s",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                7.541,
+                3.8
+              ],
+              "text": "95",
+              "pos": "e",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                8.2,
+                0
+              ],
+              "text": "Ranjith",
+              "pos": "s",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                9.941,
+                3
+              ],
+              "text": "75",
+              "pos": "e",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                10.6,
+                0
+              ],
+              "text": "Aryan",
+              "pos": "s",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -0.5,
+                6.077
+              ],
+              "text": "avg 83",
+              "pos": "e",
+              "step": "s2",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -0.5,
+                8.4
+              ],
+              "text": "total 415, 415 ÷ 5 = 83",
+              "pos": "e",
+              "step": "s2",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "tot = 415",
+            "av = 83",
+            "A1 < av",
+            "A2 > av"
+          ],
+          "answer": "av"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "7ba8f3b3",
+        "answer": {
+          "value": 83,
+          "label": "83"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

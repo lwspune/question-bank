@@ -1,0 +1,1603 @@
+{
+  "//": "Assembled from agent drafts (sketch).",
+  "visuals": [
+    {
+      "id": "05a51a61-a0ac-427e-b14d-0149304dc2ca",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "v1": 98,
+            "v2": 112,
+            "v3": 101,
+            "v4": 133,
+            "v5": 142,
+            "tot": "v1+v2+v3+v4+v5",
+            "avg": "tot/5",
+            "s": "6/v5"
+          },
+          "view": {
+            "x": [
+              0,
+              16
+            ],
+            "y": [
+              -3.5,
+              8.5
+            ]
+          },
+          "items": [
+            {
+              "kind": "segment",
+              "from": [
+                0.3,
+                0
+              ],
+              "to": [
+                11.7,
+                0
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  0.6,
+                  0
+                ],
+                [
+                  2.2,
+                  0
+                ],
+                [
+                  2.2,
+                  "s*v1"
+                ],
+                [
+                  0.6,
+                  "s*v1"
+                ]
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                1.4,
+                "s*v1"
+              ],
+              "text": "98",
+              "pos": "n",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                1.4,
+                0
+              ],
+              "text": "2015",
+              "pos": "s",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  2.9,
+                  0
+                ],
+                [
+                  4.5,
+                  0
+                ],
+                [
+                  4.5,
+                  "s*v2"
+                ],
+                [
+                  2.9,
+                  "s*v2"
+                ]
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                3.7,
+                "s*v2"
+              ],
+              "text": "112",
+              "pos": "n",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                3.7,
+                0
+              ],
+              "text": "2016",
+              "pos": "s",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  5.2,
+                  0
+                ],
+                [
+                  6.8,
+                  0
+                ],
+                [
+                  6.8,
+                  "s*v3"
+                ],
+                [
+                  5.2,
+                  "s*v3"
+                ]
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                6,
+                "s*v3"
+              ],
+              "text": "101",
+              "pos": "n",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                6,
+                0
+              ],
+              "text": "2017",
+              "pos": "s",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  7.5,
+                  0
+                ],
+                [
+                  9.1,
+                  0
+                ],
+                [
+                  9.1,
+                  "s*v4"
+                ],
+                [
+                  7.5,
+                  "s*v4"
+                ]
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                8.3,
+                "s*v4"
+              ],
+              "text": "133",
+              "pos": "n",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                8.3,
+                0
+              ],
+              "text": "2018",
+              "pos": "s",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  9.8,
+                  0
+                ],
+                [
+                  11.4,
+                  0
+                ],
+                [
+                  11.4,
+                  "s*v5"
+                ],
+                [
+                  9.8,
+                  "s*v5"
+                ]
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                10.6,
+                "s*v5"
+              ],
+              "text": "142",
+              "pos": "n",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                10.6,
+                0
+              ],
+              "text": "2019",
+              "pos": "s",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": [
+                0.3,
+                "s*avg"
+              ],
+              "to": [
+                0.87,
+                "s*avg"
+              ],
+              "dash": true,
+              "step": "s2",
+              "tone": "amber"
+            },
+            {
+              "kind": "segment",
+              "from": [
+                1.93,
+                "s*avg"
+              ],
+              "to": [
+                2.98,
+                "s*avg"
+              ],
+              "dash": true,
+              "step": "s2",
+              "tone": "amber"
+            },
+            {
+              "kind": "segment",
+              "from": [
+                4.42,
+                "s*avg"
+              ],
+              "to": [
+                5.28,
+                "s*avg"
+              ],
+              "dash": true,
+              "step": "s2",
+              "tone": "amber"
+            },
+            {
+              "kind": "segment",
+              "from": [
+                6.72,
+                "s*avg"
+              ],
+              "to": [
+                11.7,
+                "s*avg"
+              ],
+              "dash": true,
+              "step": "s2",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                11.7,
+                "s*avg"
+              ],
+              "text": "avg 117.2",
+              "pos": "e",
+              "step": "s2",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.3,
+                -2.4
+              ],
+              "text": "total = {tot} thousand",
+              "pos": "e",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                9,
+                -2.4
+              ],
+              "text": "₹1,17,200 a year",
+              "pos": "e",
+              "step": "s2",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "tot = 586",
+            "avg = 117.2"
+          ],
+          "answer": "tot*200"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "117d3ac3",
+        "answer": {
+          "value": 117200,
+          "label": "₹1,17,200"
+        }
+      }
+    },
+    {
+      "id": "05f6f04a-a593-4987-9763-95636b2e230b",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "d1": "1600*21/100-1200*24/100",
+            "d2": "1600*22/100-1200*21/100",
+            "d3": "1600*18/100-1200*20/100",
+            "d4": "1600*19/100-1200*19/100",
+            "d5": "1600*20/100-1200*16/100",
+            "s": "5.2/d5"
+          },
+          "view": {
+            "x": [
+              0,
+              14
+            ],
+            "y": [
+              -3.5,
+              7
+            ]
+          },
+          "items": [
+            {
+              "kind": "segment",
+              "from": [
+                0.7,
+                0
+              ],
+              "to": [
+                13.2,
+                0
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  1,
+                  0
+                ],
+                [
+                  2.5,
+                  0
+                ],
+                [
+                  2.5,
+                  "s*d1"
+                ],
+                [
+                  1,
+                  "s*d1"
+                ]
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                1.75,
+                "s*d1"
+              ],
+              "text": "+48",
+              "pos": "n",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                1.75,
+                0
+              ],
+              "text": "Dept 1",
+              "pos": "s",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  3.6,
+                  0
+                ],
+                [
+                  5.1,
+                  0
+                ],
+                [
+                  5.1,
+                  "s*d2"
+                ],
+                [
+                  3.6,
+                  "s*d2"
+                ]
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                4.35,
+                "s*d2"
+              ],
+              "text": "+100",
+              "pos": "n",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                4.35,
+                0
+              ],
+              "text": "Dept 2",
+              "pos": "s",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  6.2,
+                  0
+                ],
+                [
+                  7.7,
+                  0
+                ],
+                [
+                  7.7,
+                  "s*d3"
+                ],
+                [
+                  6.2,
+                  "s*d3"
+                ]
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                6.95,
+                "s*d3"
+              ],
+              "text": "+48",
+              "pos": "n",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                6.95,
+                0
+              ],
+              "text": "Dept 3",
+              "pos": "s",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  8.8,
+                  0
+                ],
+                [
+                  10.3,
+                  0
+                ],
+                [
+                  10.3,
+                  "s*d4"
+                ],
+                [
+                  8.8,
+                  "s*d4"
+                ]
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                9.55,
+                "s*d4"
+              ],
+              "text": "+76",
+              "pos": "n",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                9.55,
+                0
+              ],
+              "text": "Dept 4",
+              "pos": "s",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  11.4,
+                  0
+                ],
+                [
+                  12.9,
+                  0
+                ],
+                [
+                  12.9,
+                  "s*d5"
+                ],
+                [
+                  11.4,
+                  "s*d5"
+                ]
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                12.15,
+                "s*d5"
+              ],
+              "text": "+128",
+              "pos": "n",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                12.15,
+                0
+              ],
+              "text": "Dept 5",
+              "pos": "s",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  11.4,
+                  0
+                ],
+                [
+                  12.9,
+                  0
+                ],
+                [
+                  12.9,
+                  "s*d5"
+                ],
+                [
+                  11.4,
+                  "s*d5"
+                ]
+              ],
+              "step": "s2",
+              "tone": "good"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.4,
+                6.3
+              ],
+              "text": "change = 2021 count − 2020 count",
+              "pos": "e",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                3,
+                -2.5
+              ],
+              "text": "Department 5: +128",
+              "pos": "e",
+              "step": "s2",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "d1 = 48",
+            "d2 = 100",
+            "d4 = 76",
+            "d5 = 128",
+            "d5 > d2",
+            "d5 > d4"
+          ],
+          "answer": "d5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "b9d5c048",
+        "answer": {
+          "value": 128,
+          "label": "Department 5: +128"
+        }
+      }
+    },
+    {
+      "id": "0bb4794f-3579-4a8d-9173-8e67a77b6849",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "v1": 450,
+            "v2": 540,
+            "v3": 370,
+            "v4": 680,
+            "tot": "v1+v2+v3+v4",
+            "avg": "tot/4",
+            "s": "5.2/v4"
+          },
+          "view": {
+            "x": [
+              0,
+              14
+            ],
+            "y": [
+              -3.5,
+              7
+            ]
+          },
+          "items": [
+            {
+              "kind": "segment",
+              "from": [
+                0.4,
+                0
+              ],
+              "to": [
+                10.2,
+                0
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  0.7,
+                  0
+                ],
+                [
+                  2.4,
+                  0
+                ],
+                [
+                  2.4,
+                  "s*v1"
+                ],
+                [
+                  0.7,
+                  "s*v1"
+                ]
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                1.55,
+                "s*v1"
+              ],
+              "text": "450",
+              "pos": "n",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                1.55,
+                0
+              ],
+              "text": "2010",
+              "pos": "s",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  3.2,
+                  0
+                ],
+                [
+                  4.9,
+                  0
+                ],
+                [
+                  4.9,
+                  "s*v2"
+                ],
+                [
+                  3.2,
+                  "s*v2"
+                ]
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                4.05,
+                "s*v2"
+              ],
+              "text": "540",
+              "pos": "n",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                4.05,
+                0
+              ],
+              "text": "2011",
+              "pos": "s",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  5.7,
+                  0
+                ],
+                [
+                  7.4,
+                  0
+                ],
+                [
+                  7.4,
+                  "s*v3"
+                ],
+                [
+                  5.7,
+                  "s*v3"
+                ]
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                6.55,
+                "s*v3"
+              ],
+              "text": "370",
+              "pos": "n",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                6.55,
+                0
+              ],
+              "text": "2012",
+              "pos": "s",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  8.2,
+                  0
+                ],
+                [
+                  9.9,
+                  0
+                ],
+                [
+                  9.9,
+                  "s*v4"
+                ],
+                [
+                  8.2,
+                  "s*v4"
+                ]
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                9.05,
+                "s*v4"
+              ],
+              "text": "680",
+              "pos": "n",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                9.05,
+                0
+              ],
+              "text": "2013",
+              "pos": "s",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": [
+                0.4,
+                "s*avg"
+              ],
+              "to": [
+                0.92,
+                "s*avg"
+              ],
+              "dash": true,
+              "step": "s3",
+              "tone": "amber"
+            },
+            {
+              "kind": "segment",
+              "from": [
+                2.18,
+                "s*avg"
+              ],
+              "to": [
+                5.92,
+                "s*avg"
+              ],
+              "dash": true,
+              "step": "s3",
+              "tone": "amber"
+            },
+            {
+              "kind": "segment",
+              "from": [
+                7.18,
+                "s*avg"
+              ],
+              "to": [
+                10.2,
+                "s*avg"
+              ],
+              "dash": true,
+              "step": "s3",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                10.2,
+                "s*avg"
+              ],
+              "text": "avg 510",
+              "pos": "e",
+              "step": "s3",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.4,
+                -2.5
+              ],
+              "text": "total = {tot}",
+              "pos": "e",
+              "step": "s2",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                6.2,
+                -2.5
+              ],
+              "text": "average = 2040 ÷ 4 = 510",
+              "pos": "e",
+              "step": "s3",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "tot = 2040",
+            "avg = 510"
+          ],
+          "answer": "avg"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "7649941c",
+        "answer": {
+          "value": 510,
+          "label": "510"
+        }
+      }
+    },
+    {
+      "id": "0d2fd537-3097-471f-9707-d12b87d9674c",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "v1": 3551,
+            "v2": 3020,
+            "v3": 2600,
+            "tot": "v1+v2+v3",
+            "avg": "tot/3",
+            "s": "5.2/v1"
+          },
+          "view": {
+            "x": [
+              0,
+              14
+            ],
+            "y": [
+              -3.5,
+              7
+            ]
+          },
+          "items": [
+            {
+              "kind": "segment",
+              "from": [
+                0.7,
+                0
+              ],
+              "to": [
+                9,
+                0
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  1,
+                  0
+                ],
+                [
+                  2.9,
+                  0
+                ],
+                [
+                  2.9,
+                  "s*v1"
+                ],
+                [
+                  1,
+                  "s*v1"
+                ]
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                1.95,
+                "s*v1"
+              ],
+              "text": "3551",
+              "pos": "n",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                1.95,
+                0
+              ],
+              "text": "X",
+              "pos": "s",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  3.9,
+                  0
+                ],
+                [
+                  5.8,
+                  0
+                ],
+                [
+                  5.8,
+                  "s*v2"
+                ],
+                [
+                  3.9,
+                  "s*v2"
+                ]
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                4.85,
+                "s*v2"
+              ],
+              "text": "3020",
+              "pos": "n",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                4.85,
+                0
+              ],
+              "text": "Y",
+              "pos": "s",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  6.8,
+                  0
+                ],
+                [
+                  8.7,
+                  0
+                ],
+                [
+                  8.7,
+                  "s*v3"
+                ],
+                [
+                  6.8,
+                  "s*v3"
+                ]
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                7.75,
+                "s*v3"
+              ],
+              "text": "2600",
+              "pos": "n",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                7.75,
+                0
+              ],
+              "text": "Z",
+              "pos": "s",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "segment",
+              "from": [
+                0.7,
+                "s*avg"
+              ],
+              "to": [
+                6.96,
+                "s*avg"
+              ],
+              "dash": true,
+              "step": "s2",
+              "tone": "amber"
+            },
+            {
+              "kind": "segment",
+              "from": [
+                8.54,
+                "s*avg"
+              ],
+              "to": [
+                9,
+                "s*avg"
+              ],
+              "dash": true,
+              "step": "s2",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                9,
+                "s*avg"
+              ],
+              "text": "avg 3057",
+              "pos": "e",
+              "step": "s2",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.4,
+                -2.5
+              ],
+              "text": "2022 total = {tot}",
+              "pos": "e",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                7.4,
+                -2.5
+              ],
+              "text": "9171 ÷ 3 = 3057",
+              "pos": "e",
+              "step": "s2",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "tot = 9171",
+            "avg = 3057"
+          ],
+          "answer": "avg"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "afe1c7dd",
+        "answer": {
+          "value": 3057,
+          "label": "3057"
+        }
+      }
+    },
+    {
+      "id": "14b8f42e-ae30-4395-8fec-c95def70b0bb",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "v1": 57,
+            "v2": 56,
+            "v3": 56,
+            "v4": 56,
+            "s": "5.2/v1"
+          },
+          "view": {
+            "x": [
+              0,
+              14
+            ],
+            "y": [
+              -3.5,
+              7
+            ]
+          },
+          "items": [
+            {
+              "kind": "segment",
+              "from": [
+                1.1,
+                0
+              ],
+              "to": [
+                12.3,
+                0
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  1.4,
+                  0
+                ],
+                [
+                  3,
+                  0
+                ],
+                [
+                  3,
+                  "s*v1"
+                ],
+                [
+                  1.4,
+                  "s*v1"
+                ]
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                2.2,
+                "s*v1"
+              ],
+              "text": "57",
+              "pos": "n",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                2.2,
+                0
+              ],
+              "text": "E 2018",
+              "pos": "s",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  1.4,
+                  0
+                ],
+                [
+                  3,
+                  0
+                ],
+                [
+                  3,
+                  "s*v1"
+                ],
+                [
+                  1.4,
+                  "s*v1"
+                ]
+              ],
+              "step": "s2",
+              "tone": "good"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  4.4,
+                  0
+                ],
+                [
+                  6,
+                  0
+                ],
+                [
+                  6,
+                  "s*v2"
+                ],
+                [
+                  4.4,
+                  "s*v2"
+                ]
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                5.2,
+                "s*v2"
+              ],
+              "text": "56",
+              "pos": "n",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                5.2,
+                0
+              ],
+              "text": "C 2022",
+              "pos": "s",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  7.4,
+                  0
+                ],
+                [
+                  9,
+                  0
+                ],
+                [
+                  9,
+                  "s*v3"
+                ],
+                [
+                  7.4,
+                  "s*v3"
+                ]
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                8.2,
+                "s*v3"
+              ],
+              "text": "56",
+              "pos": "n",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                8.2,
+                0
+              ],
+              "text": "E 2019",
+              "pos": "s",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "polygon",
+              "points": [
+                [
+                  10.4,
+                  0
+                ],
+                [
+                  12,
+                  0
+                ],
+                [
+                  12,
+                  "s*v4"
+                ],
+                [
+                  10.4,
+                  "s*v4"
+                ]
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                11.2,
+                "s*v4"
+              ],
+              "text": "56",
+              "pos": "n",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                11.2,
+                0
+              ],
+              "text": "F 2020",
+              "pos": "s",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0.4,
+                -2.5
+              ],
+              "text": "E in 2018: 57 lakh, the largest",
+              "pos": "e",
+              "step": "s2",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "v1 > v2",
+            "v1 > v3",
+            "v1 > v4"
+          ],
+          "answer": "v1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "e15c2496",
+        "answer": {
+          "value": 57,
+          "label": "E and 2018: 57 lakh"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

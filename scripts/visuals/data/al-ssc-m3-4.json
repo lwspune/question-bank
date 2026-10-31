@@ -1,0 +1,1317 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "9665d24d-23f3-4f3a-a38a-d8d00c2fb3af",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{TSA} = 6a^2,\\quad a = 12"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "6 \\times {{1:12^2}} = 6 \\times {{1:144}} = 864",
+              "f": "6*12^2",
+              "value": "864"
+            }
+          ],
+          "answer": "6*12^2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "7d18068e",
+        "answer": {
+          "value": 864,
+          "label": "864 cm²"
+        }
+      }
+    },
+    {
+      "id": "967fcea6-be3a-48c1-8593-3c6eb8223ffa",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "V_{\\text{hemi}} = \\frac{2}{3}\\pi (10)^3 = {{1:\\frac{2000\\pi}{3}}}",
+              "f": "2/3*pi*10^3",
+              "value": "2000*pi/3"
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "2 \\times \\frac{1}{3}\\pi (5)^2 h",
+              "f": "2*(1/3)*pi*5^2*x"
+            },
+            {
+              "step": "s3",
+              "kind": "expr",
+              "tex": "= {{2:\\frac{50\\pi h}{3}}}",
+              "f": "50*pi*x/3"
+            },
+            {
+              "step": "s4",
+              "kind": "eq",
+              "tex": "{{2:\\frac{50\\pi h}{3}}} = {{1:\\frac{2000\\pi}{3}}}",
+              "lhs": "50*pi*x/3",
+              "rhs": "2000*pi/3",
+              "note": "volume is unchanged"
+            },
+            {
+              "step": "s5",
+              "kind": "eq",
+              "tex": "50h = 2000",
+              "lhs": "50*x",
+              "rhs": "2000"
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "h = \\frac{2000}{50} = 40",
+              "f": "2000/50",
+              "value": "40"
+            }
+          ],
+          "answer": "2000/50",
+          "roots": [
+            "40"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4",
+              "s5",
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "0322264e",
+        "answer": {
+          "value": 40,
+          "label": "40 cm"
+        }
+      }
+    },
+    {
+      "id": "976c0307-90ce-4679-afd4-f128316ea9b4",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{CSA} = \\pi r l,\\quad r = 9,\\ l = 49"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\frac{22}{7} \\times 9 \\times 49 = 22 \\times 9 \\times 7",
+              "f": "22/7*9*49",
+              "value": "22*9*7"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "22 \\times 9 \\times 7 = 1386",
+              "f": "22*9*7",
+              "value": "1386"
+            }
+          ],
+          "answer": "22*9*7"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "5066ea2c",
+        "answer": {
+          "value": 1386,
+          "label": "1386 cm²"
+        }
+      }
+    },
+    {
+      "id": "981df7d4-bc5e-445c-b69d-0e4f3d46a596",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "2\\pi r = \\frac{3168}{48} = 66",
+              "f": "3168/48",
+              "value": "66"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "r = 66 \\times \\frac{7}{44} = {{1:10.5}}",
+              "f": "66*7/44",
+              "value": "10.5"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "r^2 = {{1:10.5}}^2 = 110.25",
+              "f": "10.5^2",
+              "value": "110.25"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "V = \\frac{22}{7} \\times 110.25 \\times 48 = 16632",
+              "f": "22/7*110.25*48",
+              "value": "16632"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "3168 \\times \\frac{10.5}{2} = 3168 \\times 5.25 = 16632",
+              "f": "3168*(10.5/2)",
+              "value": "16632",
+              "note": "volume = lateral area × r/2"
+            }
+          ],
+          "answer": "3168*10.5/2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "299f5ece",
+        "answer": {
+          "value": 16632,
+          "label": "16632 cm³"
+        }
+      }
+    },
+    {
+      "id": "9ceb2781-808a-4a1f-9c6b-5f2c1114a22e",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "V = \\frac{4}{3}\\pi r^3,\\quad r = 4.2"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "4.2^3 = {{1:74.088}}",
+              "f": "4.2^3",
+              "value": "74.088"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\frac{4}{3} \\times \\frac{22}{7} = {{2:\\frac{88}{21}}}",
+              "f": "4/3*22/7",
+              "value": "88/21"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "{{2:\\frac{88}{21}}} \\times {{1:74.088}} = 88 \\times 3.528",
+              "f": "88/21*74.088",
+              "value": "88*3.528"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "88 \\times 3.528 = 310.464",
+              "f": "88*3.528",
+              "value": "310.464"
+            }
+          ],
+          "answer": "floor(1000*88*3.528+0.5)/1000"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3",
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "339ab1e0",
+        "answer": {
+          "value": 310.464,
+          "label": "310.464 cm³"
+        }
+      }
+    },
+    {
+      "id": "9f9c2508-35c1-4ef6-bd90-56dcc455c5c0",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{LSA} = P \\times h"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "P = \\frac{240}{8} = 30",
+              "f": "240/8",
+              "value": "30"
+            }
+          ],
+          "answer": "240/8"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "4a2f5a30",
+        "answer": {
+          "value": 30,
+          "label": "30 cm"
+        }
+      }
+    },
+    {
+      "id": "a077ef20-20f9-4cb2-995a-5ecb728ffd93",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\frac{1}{3}\\pi r^2 \\times 12 = \\frac{1}{3}\\pi \\left(\\frac{r}{2}\\right)^2 h",
+              "note": "volume is unchanged"
+            },
+            {
+              "step": "s2",
+              "kind": "eq",
+              "tex": "12 = \\frac{h}{4}",
+              "lhs": "12",
+              "rhs": "x/4",
+              "note": "cancel πr²/3 on both sides"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "h = 12 \\times 4 = 48",
+              "f": "12*4",
+              "value": "48"
+            }
+          ],
+          "answer": "12*4",
+          "roots": [
+            "48"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "39522e90",
+        "answer": {
+          "value": 48,
+          "label": "48 cm"
+        }
+      }
+    },
+    {
+      "id": "a2d25b1f-1a7c-43d3-91b4-3fc28f1863a0",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "r = \\frac{28}{2} = 14,\\quad h = 12",
+              "f": "28/2",
+              "value": "14"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\frac{\\text{TSA}}{\\text{CSA}} = \\frac{2\\pi r(r + h)}{2\\pi rh} = \\frac{r + h}{h}"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\frac{14 + 12}{12} = \\frac{26}{12} = \\frac{13}{6}",
+              "f": "(14+12)/12",
+              "value": "13/6"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{CSA} = 2\\pi \\times 14 \\times 12 = {{1:336\\pi}}",
+              "f": "2*pi*14*12",
+              "value": "336*pi"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\text{TSA} = {{1:336\\pi}} + 2\\pi \\times 196 = {{2:728\\pi}}",
+              "f": "336*pi+2*pi*196",
+              "value": "728*pi"
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "{{2:728}} : {{1:336}} = 13 : 6",
+              "f": "728/336",
+              "value": "13/6"
+            }
+          ],
+          "answer": "(14+12)/12"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4",
+              "s5",
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "70e7b22d",
+        "answer": {
+          "value": 2.1666666666666665,
+          "label": "13 : 6"
+        }
+      }
+    },
+    {
+      "id": "a464dd52-c233-4740-9ef8-055d4c5fe9bb",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "eq",
+              "tex": "3^3 = 1.5^3 + 2^3 + d^3",
+              "lhs": "3^3",
+              "rhs": "1.5^3+2^3+x^3",
+              "note": "volume grows as diameter³"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "d^3 = 27 - 3.375 - 8 = {{1:15.625}}",
+              "f": "27-3.375-8",
+              "value": "15.625"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "d = \\sqrt[3]{15.625} = 2.5",
+              "f": "15.625^(1/3)",
+              "value": "2.5"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "3.375 + 8 + {{1:15.625}} = 27",
+              "f": "3.375+8+15.625",
+              "value": "27"
+            }
+          ],
+          "answer": "floor(10*(27-3.375-8)^(1/3)+0.5)/10",
+          "roots": [
+            "2.5"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "0369be9c",
+        "answer": {
+          "value": 2.5,
+          "label": "2.5 cm"
+        }
+      }
+    },
+    {
+      "id": "a5d59d9a-780c-4393-ae0e-4229ae8c5348",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{base} = \\frac{3\\sqrt{3}}{2} \\times 6^2 = {{1:54\\sqrt{3}}}",
+              "f": "3*sqrt(3)/2*6^2",
+              "value": "54*sqrt(3)"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "V = {{1:54\\sqrt{3}}} \\times 10 = 540\\sqrt{3}",
+              "f": "54*sqrt(3)*10",
+              "value": "540*sqrt(3)"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\frac{\\sqrt{3}}{4} \\times 36 = {{2:9\\sqrt{3}}}",
+              "f": "sqrt(3)/4*36",
+              "value": "9*sqrt(3)",
+              "note": "one of 6 equilateral triangles"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "6 \\times {{2:9\\sqrt{3}}} = {{1:54\\sqrt{3}}}",
+              "f": "6*9*sqrt(3)",
+              "value": "54*sqrt(3)"
+            }
+          ],
+          "answer": "540*sqrt(3)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "effa24a2",
+        "answer": {
+          "value": 935.3074360871937,
+          "label": "540√3 cm³"
+        }
+      }
+    },
+    {
+      "id": "a7d9aa03-47e8-4acc-96bc-20465206c9dd",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\frac{\\sqrt{3}}{4} \\times 10^2 = 25\\sqrt{3} \\approx {{1:43.30}}",
+              "f": "sqrt(3)/4*10^2",
+              "value": "43.30",
+              "dp": 2
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\frac{1}{3} \\times {{1:43.30}} \\times 14 \\approx {{2:202.07}}",
+              "f": "1/3*43.30*14",
+              "value": "202.07",
+              "dp": 2
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "10^3 = {{3:1000}}",
+              "f": "10^3",
+              "value": "1000"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "{{3:1000}} + {{2:202.07}} = 1202.07",
+              "f": "1000+202.07",
+              "value": "1202.07"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\frac{350\\sqrt{3}}{3} \\approx {{2:202.07}}",
+              "f": "350*sqrt(3)/3",
+              "value": "202.07",
+              "dp": 2
+            }
+          ],
+          "answer": "floor(100*(1000+350*sqrt(3)/3)+0.5)/100"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "3b2843e5",
+        "answer": {
+          "value": 1202.07,
+          "label": "1202.07 cm³"
+        }
+      }
+    },
+    {
+      "id": "a86886b3-3955-4d6e-919d-2b9c075fbcaa",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "eq",
+              "tex": "2h \\times 7 \\times h = 350",
+              "lhs": "2*x*7*x",
+              "rhs": "350",
+              "note": "length = 2h, breadth = 7"
+            },
+            {
+              "step": "s2",
+              "kind": "eq",
+              "tex": "h^2 = 25",
+              "lhs": "x^2",
+              "rhs": "25"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "h = 5,\\quad l = 2 \\times 5 = 10",
+              "f": "2*5",
+              "value": "10"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "10 \\times 7 \\times 5 = 350",
+              "f": "10*7*5",
+              "value": "350"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\text{A: } 14 \\times 7 \\times 7 = 686",
+              "f": "14*7*7",
+              "value": "686"
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "\\text{B: } 12 \\times 7 \\times 6 = 504",
+              "f": "12*7*6",
+              "value": "504"
+            },
+            {
+              "step": "s7",
+              "kind": "calc",
+              "tex": "\\text{D: } 8 \\times 7 \\times 4 = 224",
+              "f": "8*7*4",
+              "value": "224"
+            }
+          ],
+          "answer": "2*5",
+          "roots": [
+            "5"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s5",
+              "s6",
+              "s7"
+            ]
+          }
+        ],
+        "fingerprint": "85865270",
+        "answer": {
+          "value": 10,
+          "label": "10 cm × 7 cm × 5 cm"
+        }
+      }
+    },
+    {
+      "id": "a97a7300-cc21-4584-a436-8c7e2f2af145",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{CSA} = \\pi r l,\\quad r = 21,\\ l = 60"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\frac{22}{7} \\times 21 \\times 60 = 66 \\times 60",
+              "f": "22/7*21*60",
+              "value": "66*60"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "66 \\times 60 = 3960",
+              "f": "66*60",
+              "value": "3960"
+            }
+          ],
+          "answer": "66*60"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "7601f3e7",
+        "answer": {
+          "value": 3960,
+          "label": "3960 cm²"
+        }
+      }
+    },
+    {
+      "id": "aab23dd5-06c6-42d4-83c2-647eaf08a9a8",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "2(l + b)h = 2(15 + 9) \\times 5 = {{1:240}}",
+              "f": "2*(15+9)*5",
+              "value": "240",
+              "note": "area of the four walls"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "{{1:240}} \\div 40 = 6",
+              "f": "240/40",
+              "value": "6",
+              "note": "cans of paint"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "2 \\times 75 + 2 \\times 45 = 150 + 90 = {{1:240}}",
+              "f": "2*15*5+2*9*5",
+              "value": "240",
+              "note": "walls 15 × 5 and 9 × 5"
+            }
+          ],
+          "answer": "240/40"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "75645736",
+        "answer": {
+          "value": 6,
+          "label": "6 cans"
+        }
+      }
+    },
+    {
+      "id": "ac078d39-7b63-4b83-925c-e659c595959b",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "2\\pi rh = 880"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "rh = \\frac{880}{2 \\times \\frac{22}{7}} = \\frac{880 \\times 7}{44} = {{1:140}}",
+              "f": "880*7/44",
+              "value": "140"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "2 \\times \\frac{22}{7} \\times {{1:140}} = 880",
+              "f": "2*22/7*140",
+              "value": "880"
+            }
+          ],
+          "answer": "880*7/44"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "15a35b9e",
+        "answer": {
+          "value": 140,
+          "label": "140 cm²"
+        }
+      }
+    },
+    {
+      "id": "af21c8bf-36ba-4988-abc7-d54547f5ff45",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "eq",
+              "tex": "2 \\times \\frac{22}{7} \\times r \\times 12 = 2640",
+              "lhs": "2*22/7*x*12",
+              "rhs": "2640"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "r = \\frac{2640 \\times 7}{528} = {{1:35}}",
+              "f": "2640*7/528",
+              "value": "35"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\frac{22}{7} \\times {{1:35}}^2 \\times 12 = 3850 \\times 12",
+              "f": "22/7*35^2*12",
+              "value": "3850*12"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "3850 \\times 12 = 46200",
+              "f": "3850*12",
+              "value": "46200"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\frac{2640 \\times {{1:35}}}{2} = 46200",
+              "f": "2640*35/2",
+              "value": "46200",
+              "note": "volume = CSA × r / 2"
+            }
+          ],
+          "answer": "2640*35/2",
+          "roots": [
+            "35"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "cd89f85e",
+        "answer": {
+          "value": 46200,
+          "label": "46200 cm³"
+        }
+      }
+    },
+    {
+      "id": "b02a3578-c1b6-4d3b-9811-ae79ea0b21c2",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{TSA} = 2(lb + bh + hl)"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "= 2(5 \\times 7 + 7 \\times 11 + 11 \\times 5)"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "35 + 77 + 55 = {{1:167}}",
+              "f": "5*7+7*11+11*5",
+              "value": "167"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "2 \\times {{1:167}} = 334",
+              "f": "2*167",
+              "value": "334"
+            }
+          ],
+          "answer": "2*(5*7+7*11+11*5)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "a009d571",
+        "answer": {
+          "value": 334,
+          "label": "334 cm²"
+        }
+      }
+    },
+    {
+      "id": "b1e6605e-122a-4397-a0bf-559301c1ccfe",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{layer heights: } 4,\\ 8,\\ 12,\\ 16"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\frac{4}{2}(4 + 16) = {{1:40}}",
+              "f": "4/2*(4+16)",
+              "value": "40",
+              "note": "sum of 4 terms of the AP"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "V = 5^2 \\times {{1:40}} = 1000",
+              "f": "5^2*40",
+              "value": "1000"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "25 \\times (4 + 8 + 12 + 16) = 1000",
+              "f": "25*(4+8+12+16)",
+              "value": "1000"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "100 + 200 + 300 + 400 = 1000",
+              "f": "100+200+300+400",
+              "value": "1000"
+            }
+          ],
+          "answer": "5^2*(4/2*(4+16))"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "05802730",
+        "answer": {
+          "value": 1000,
+          "label": "1000 cm³"
+        }
+      }
+    },
+    {
+      "id": "b64ad04a-3fa0-4feb-a4cc-dc3ab89aae7a",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "eq",
+              "tex": "2 \\times \\frac{22}{7} \\times r \\times 56 = 1408",
+              "lhs": "2*22/7*x*56",
+              "rhs": "1408"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "352r = 1408,\\quad r = \\frac{1408}{352} = {{1:4}}",
+              "f": "1408/352",
+              "value": "4"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "d = 2 \\times {{1:4}} = 8\\ \\text{cm} = 0.08\\ \\text{m}",
+              "f": "2*4/100",
+              "value": "0.08"
+            }
+          ],
+          "answer": "2*4/100",
+          "roots": [
+            "4"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "a3f8fb7d",
+        "answer": {
+          "value": 0.08,
+          "label": "0.08 m"
+        }
+      }
+    },
+    {
+      "id": "b669ef1f-39f2-4912-bd27-48a571740728",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "r = \\frac{7}{2} = 3.5",
+              "f": "7/2",
+              "value": "3.5"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "3.5^3 = {{1:42.875}}",
+              "f": "3.5^3",
+              "value": "42.875"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\frac{4}{3} \\times \\frac{22}{7} \\times {{1:42.875}} = {{2:\\frac{539}{3}}}",
+              "f": "4/3*22/7*42.875",
+              "value": "539/3"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "{{2:\\frac{539}{3}}} \\approx 179.67",
+              "f": "539/3",
+              "value": "179.67",
+              "dp": 2
+            }
+          ],
+          "answer": "floor(100*539/3+0.5)/100"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "58803f3f",
+        "answer": {
+          "value": 179.67,
+          "label": "179.67 cm³"
+        }
+      }
+    }
+  ],
+  "decided": []
+}
