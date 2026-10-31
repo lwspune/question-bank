@@ -1,0 +1,322 @@
+{
+  "//": "Assembled from agent drafts (sketch).",
+  "visuals": [
+    {
+      "id": "4170259f-dea0-40b5-b450-01d53a60605b",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "V": 1728,
+            "a": "V^(1/3)",
+            "r": "a/2",
+            "S": "4*pi*r^2"
+          },
+          "view": {
+            "x": [
+              -4,
+              24
+            ],
+            "y": [
+              -9.6,
+              12.9
+            ]
+          },
+          "title": "cube seen side-on",
+          "points": {
+            "A": [
+              0,
+              0
+            ],
+            "B": [
+              "a",
+              0
+            ],
+            "C": [
+              "a",
+              "a"
+            ],
+            "D": [
+              0,
+              "a"
+            ],
+            "O": [
+              "r",
+              "r"
+            ],
+            "P": [
+              "a",
+              "r"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "points": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                "a",
+                "r"
+              ],
+              "text": "a = 12",
+              "step": "s1",
+              "pos": "e"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -3.6,
+                -2.4
+              ],
+              "text": "a = ∛1728 = 12 cm",
+              "step": "s1",
+              "pos": "e"
+            },
+            {
+              "kind": "circle",
+              "center": "O",
+              "r": "r",
+              "step": "s2",
+              "tone": "brand"
+            },
+            {
+              "kind": "point",
+              "at": "O",
+              "step": "s2",
+              "tone": "brand"
+            },
+            {
+              "kind": "segment",
+              "from": "O",
+              "to": "P",
+              "step": "s2",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                "r*1.5",
+                "r"
+              ],
+              "text": "r = 6",
+              "step": "s2",
+              "pos": "n",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -3.6,
+                -5.2
+              ],
+              "text": "d = a = 12, so r = 6 cm",
+              "step": "s2",
+              "pos": "e"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -3.6,
+                -8
+              ],
+              "text": "S = 4π × 36 = 144π cm²",
+              "step": "s3",
+              "pos": "e",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "a^3 = 1728",
+            "2*r = a",
+            "S = 144*pi"
+          ],
+          "answer": "S"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "dafb0dd2",
+        "answer": {
+          "value": 452.3893421169301,
+          "label": "144π cm²"
+        }
+      }
+    },
+    {
+      "id": "46484e34-088f-4b34-88f6-f0d4c6b22304",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "R": 5,
+            "r": 3,
+            "hh": 10,
+            "V": "pi*(R^2 - r^2)*hh",
+            "V0": "floor(V)"
+          },
+          "view": {
+            "x": [
+              -6,
+              16
+            ],
+            "y": [
+              -13.5,
+              6
+            ]
+          },
+          "title": "cylinder end-on, h = 10",
+          "points": {
+            "O": [
+              0,
+              0
+            ],
+            "P": [
+              "R*cos(rad(45))",
+              "R*sin(rad(45))"
+            ],
+            "Q": [
+              "-r",
+              0
+            ]
+          },
+          "items": [
+            {
+              "kind": "circle",
+              "center": "O",
+              "r": "R",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "segment",
+              "from": "O",
+              "to": "P",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": "P",
+              "text": "R = 5",
+              "step": "s1",
+              "pos": "ne"
+            },
+            {
+              "kind": "circle",
+              "center": "O",
+              "r": "r",
+              "step": "s1",
+              "tone": "amber"
+            },
+            {
+              "kind": "segment",
+              "from": "O",
+              "to": "Q",
+              "step": "s1",
+              "tone": "amber"
+            },
+            {
+              "kind": "point",
+              "at": "O",
+              "step": "s1",
+              "tone": "fg"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0,
+                0
+              ],
+              "text": "r = 3",
+              "step": "s1",
+              "pos": "s",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -5.8,
+                -7
+              ],
+              "text": "ring = π(5² − 3²) = 16π",
+              "step": "s1",
+              "pos": "e"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -5.8,
+                -9.5
+              ],
+              "text": "V = 16π × 10 = 160π ≈ 502.7",
+              "step": "s1",
+              "pos": "e"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -5.8,
+                -12
+              ],
+              "text": "785.4 − 282.7 = 502.7 cm³",
+              "step": "s2",
+              "pos": "e",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "R^2 - r^2 = 16",
+            "V = 160*pi",
+            "V0 = 502"
+          ],
+          "answer": "V0"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "39e346ab",
+        "answer": {
+          "value": 502,
+          "label": "about 502 cm³"
+        }
+      }
+    }
+  ],
+  "decided": []
+}
