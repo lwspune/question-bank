@@ -25,6 +25,12 @@ each a `calc` whose `f` is that line's arithmetic. For a rule found from
 examples, a line per example showing the rule gives its printed result, then
 the asked case. The `note` names the step ("swap: + becomes x", "÷ first").
 
+For "which signs or numbers to interchange" questions, the answer `value` is
+the number the keyed swap makes both sides equal ("LHS = 274 = RHS"), the
+label the option's text; give each other option the solution checks its own
+`calc` line with what it gives. Write sides as LHS and RHS: "right" inside
+`	ext{}` is read as `ight` and refused.
+
 Skip when the solution says two rules fit the examples and it follows SSC's
 key: the animation would present one guess as the rule. Skip a "which
 interchange makes it true" question that tests options one by one with no
