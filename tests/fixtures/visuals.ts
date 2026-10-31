@@ -492,6 +492,42 @@ export const TREE_VISUAL = {
   answer: { value: 3, label: "R is T's father-in-law" },
 };
 
+export const CIRCLES_SOLUTION = String.raw`The triangles that are squares cannot be circles, since no square is a circle. So some triangles are not circles: I follows. The other triangles may or may not be circles, so II is not definite.`;
+
+/** SSC CGL ef10c2ba: No circles are squares, some squares are triangles: only I follows, option A. */
+export const CIRCLES_VISUAL = {
+  v: 1,
+  scene: "circles",
+  params: {
+    sets: [
+      { id: "circle", label: "Circles", x: 18, y: 30, r: 14 },
+      { id: "square", label: "Squares", x: 52, y: 30, r: 16 },
+      { id: "triangle", label: "Triangles", x: 76, y: 30, r: 15 },
+    ],
+    statements: [
+      { form: "no", a: "circle", b: "square", show: "No circle is a square", step: "s1" },
+      { form: "some", a: "square", b: "triangle", show: "Some squares are triangles", step: "s2" },
+    ],
+    conclusions: [
+      { form: "someNot", a: "triangle", b: "circle", show: "I. Some triangles are not circles", step: "c1" },
+      { form: "no", a: "triangle", b: "circle", show: "II. No triangle is a circle", step: "c2", alt: { set: "triangle", x: 40, y: 30, r: 26 } },
+    ],
+    options: [
+      { text: "Only I follows", means: { follow: [1] } },
+      { text: "Only II follows", means: { follow: [2] } },
+      { text: "Both I and II follow", means: { follow: [1, 2] } },
+      { text: "Neither I nor II follows", means: { follow: [] } },
+    ],
+  },
+  steps: [
+    { from: 0, beats: ["s1", "s2"] },
+    { from: 1, beats: ["c1"] },
+    { from: 2, beats: ["c2", "answer"] },
+  ],
+  fingerprint: solutionFingerprint(CIRCLES_SOLUTION),
+  answer: { value: 1, label: "Only I follows" },
+};
+
 export const FIXTURES = [
   { name: "rotation", visual: ROTATION_VISUAL, solution: ROTATION_SOLUTION },
   { name: "circleArc", visual: ARC_VISUAL, solution: ARC_SOLUTION },
@@ -515,4 +551,5 @@ export const FIXTURES = [
   { name: "setClaim", visual: SET_VISUAL, solution: SET_SOLUTION },
   { name: "letterStrip", visual: STRIP_VISUAL, solution: STRIP_SOLUTION },
   { name: "familyTree", visual: TREE_VISUAL, solution: TREE_SOLUTION },
+  { name: "circles", visual: CIRCLES_VISUAL, solution: CIRCLES_SOLUTION },
 ] as const;
