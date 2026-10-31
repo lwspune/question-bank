@@ -2226,6 +2226,11 @@ import {
   SSC_MEDIEVAL_INDIA_NOTES,
   SSC_MEDIEVAL_INDIA_SLUGS,
 } from "@/app/notes/ssc-cgl-history/medieval-india/_data";
+import {
+  SSC_GOVERNMENT_STRUCTURE_CHAPTER,
+  SSC_GOVERNMENT_STRUCTURE_NOTES,
+  SSC_GOVERNMENT_STRUCTURE_SLUGS,
+} from "@/app/notes/ssc-cgl-polity/government-structure/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -7139,6 +7144,18 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SSC_MEDIEVAL_INDIA_CHAPTER,
     notes: SSC_MEDIEVAL_INDIA_NOTES,
     slugs: SSC_MEDIEVAL_INDIA_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Polity",
+    subjectRoute: "ssc-cgl-polity",
+    subjectDisplay: "SSC CGL Polity",
+    chapterSlug: "government-structure",
+    chipLabel: "Government Structure — Parliament, Judiciary and Constitutional Bodies notes",
+    titleName: "Government Structure",
+    chapter: SSC_GOVERNMENT_STRUCTURE_CHAPTER,
+    notes: SSC_GOVERNMENT_STRUCTURE_NOTES,
+    slugs: SSC_GOVERNMENT_STRUCTURE_SLUGS,
   },
 ];
 
