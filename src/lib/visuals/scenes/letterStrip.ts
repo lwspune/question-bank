@@ -82,6 +82,8 @@ const HEAD = 18;
 const LINE = 18;
 
 const letterOf = (k: number) => "ABCDE"[k - 1];
+/** The answer's code as the question prints it (the option's own separators), not run together. */
+const shownCode = (p: StripParams) => (p.ask === "word" ? p.options[p.answer - 1] : p.askedCode);
 const norm = (s: string) => s.toUpperCase().replace(/[^A-Z0-9]/g, "");
 const signed = (d: number) => (d >= 0 ? `+${d}` : `−${-d}`);
 const pretty = (f: string) => f.replace(/\s+/g, " ").replace(/\bx\b/g, "n").replace(/-/g, "−").replace(/\*/g, "×");
@@ -337,7 +339,7 @@ export const letterStrip: Scene<StripParams> = {
     const proved = p.examples.length ? `The rule gives ${p.examples.map((e) => e.run.word).join(" and ")} their printed codes; ` : "";
     if (!value) return `${proved}no single option matches what the rule gives.`;
     const t = p.target!;
-    return p.ask === "word" ? `${proved}${t.word} becomes ${t.code}, option ${letterOf(value)}.` : `${proved}${t.word} becomes ${p.askedCode}, option ${letterOf(value)}.`;
+    return `${proved}${t.word} becomes ${shownCode(p)}, option ${letterOf(value)}.`;
   },
 
   viewBox: (p) => ({ w: W, h: layout(p).h }),
@@ -367,7 +369,7 @@ export const letterStrip: Scene<StripParams> = {
       p.examples.slice(1).forEach((e, k) => {
         const shown = Math.max(0, Math.min(1, pc * (p.examples.length - 1) - k));
         if (shown <= 0) return;
-        out.push(text(W / 2, L.checks + 13 + k * LINE, `${e.run.word} → ${e.run.code} ${shown >= 0.5 ? "✓" : ""}`.trim(), { tone: shown >= 0.5 ? "good" : "muted", size: 11.5, weight: 600, anchor: "middle", opacity: Math.min(1, shown * 2) }));
+        out.push(text(W / 2, L.checks + 13 + k * LINE, `${e.run.word} → ${e.printed} ${shown >= 0.5 ? "✓" : ""}`.trim(), { tone: shown >= 0.5 ? "good" : "muted", size: 11.5, weight: 600, anchor: "middle", opacity: Math.min(1, shown * 2) }));
       });
     }
     if (pa > 0) {
@@ -380,11 +382,7 @@ export const letterStrip: Scene<StripParams> = {
     }
     if (pn > 0) {
       const y = p.target ? L.target + blockHeight(p.target) - 5 : L.target + HEAD + 12;
-      const msg = !p.answer
-        ? "no single option matches"
-        : p.ask === "word"
-          ? `${p.target!.word} → ${p.target!.code}: option ${letterOf(p.answer)}`
-          : `${p.target!.word} → ${p.askedCode}: option ${letterOf(p.answer)}`;
+      const msg = !p.answer ? "no single option matches" : `${p.target!.word} → ${shownCode(p)}: option ${letterOf(p.answer)}`;
       out.push(text(W / 2, y, msg, { tone: p.answer ? "good" : "bad", size: 12.5, weight: 700, anchor: "middle", opacity: Math.min(1, pn * 2) }));
     }
     return out;

@@ -103,6 +103,20 @@ describe("letterStrip scene", () => {
     expect(value({ examples: [{ word: "ESTATE", code: "80" }, { word: "FAMOUS", code: "85" }], rule: [{ op: "sum", then: "x + 10" }], ask: { word: "FOREST" }, options: ["88", "90", "93", "83"] })).toBe(3);
   });
 
+  it("prints codes as the question prints them, separators and all", () => {
+    // 0b7c2d85: TIGER is 20-9-7-5-18; the answer line reads the option, not 1857920.
+    const tiger = {
+      examples: [{ word: "TIGER", code: "20-9-7-5-18" }, { word: "RIGHT", code: "18-9-7-8-20" }],
+      rule: [{ op: "numbers" }],
+      ask: { word: "REGIT" },
+      options: ["18-5-7-20-9", "18-5-9-7-20", "18-5-7-9-20", "18-7-5-9-20"],
+    };
+    const all = texts(tiger, ["example", "check", "apply", "answer"]).join(" | ");
+    expect(all).toMatch(/RIGHT → 18-9-7-8-20 ✓/);
+    expect(all).toMatch(/REGIT → 18-5-7-9-20: option C/);
+    expect(scene.checkText(ok(tiger), 3)).toMatch(/18-5-7-9-20/);
+  });
+
   it("decodes: the option that the rule turns into the asked code", () => {
     expect(value({ examples: [{ word: "MOBILITY", code: "NPCJMJUZ" }], rule: [{ op: "shift", by: 1 }], ask: { code: "FYBNQMF" }, options: ["EXEMPLE", "EXAMPLE", "EXAMPEL", "EYAMPLE"] })).toBe(2);
   });
