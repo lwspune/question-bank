@@ -431,6 +431,103 @@ export const SET_VISUAL = {
   answer: { value: 0, label: "F" },
 };
 
+export const STRIP_SOLUTION = String.raw`The first five letters move +1, \(-1\), +1, \(-1\), +1 and the last five move +2, \(-2\), +2, \(-2\), +2. TELEVISION: T+1 = U, E\(-1\) = D, L+1 = M, E\(-1\) = D, V+1 = W, I+2 = K, S\(-2\) = Q, I+2 = K, O\(-2\) = M, N+2 = P. PUNISHMENT checks the same way. HELICOPTER: H+1 = I, E\(-1\) = D, L+1 = M, I\(-1\) = H, C+1 = D, O+2 = Q, P\(-2\) = N, T+2 = V, E\(-2\) = C, R+2 = T, giving IDMHDQNVCT.`;
+
+/** SSC CGL 0bf6705a: TELEVISION and PUNISHMENT prove the rule; HELICOPTER is IDMHDQNVCT, option C. */
+export const STRIP_VISUAL = {
+  v: 1,
+  scene: "letterStrip",
+  params: {
+    examples: [
+      { word: "TELEVISION", code: "UDMDWKQKMP" },
+      { word: "PUNISHMENT", code: "QTOHTJKGLV" },
+    ],
+    rule: [
+      { op: "shift", by: [1, -1], from: 1, to: 5 },
+      { op: "shift", by: [2, -2], from: 6, to: 10 },
+    ],
+    ask: { word: "HELICOPTER" },
+    options: ["IDMHDQCVNT", "IDMHQDVNCT", "IDMHDQNVCT", "IDMHDQVCNT"],
+  },
+  steps: [
+    { from: 0, beats: ["example"] },
+    { from: 2, beats: ["check"] },
+    { from: 3, beats: ["apply", "answer"] },
+  ],
+  fingerprint: solutionFingerprint(STRIP_SOLUTION),
+  answer: { value: 3, label: "option C: IDMHDQNVCT" },
+};
+
+export const TREE_SOLUTION = String.raw`R # S: R is the father of S. S & T: S is the husband of T. R is the father of T's husband, so R is T's father-in-law.`;
+
+/** SSC CGL 42a4fef8: R # S & T, # "father of", & "husband of": R is T's father-in-law, option C. */
+export const TREE_VISUAL = {
+  v: 1,
+  scene: "familyTree",
+  params: {
+    people: [
+      { id: "R", sex: "m" },
+      { id: "S", sex: "m" },
+      { id: "T", sex: "f" },
+    ],
+    facts: [
+      { rel: "parent", a: "R", b: "S", step: "f1" },
+      { rel: "spouse", a: "S", b: "T", step: "f2" },
+    ],
+    rows: [["R"], ["S", "T"]],
+    ask: { who: "R", of: "T" },
+    options: [
+      { text: "R is the father of T", means: { rel: "father" } },
+      { text: "R is the brother of T", means: { rel: "brother" } },
+      { text: "R is the father-in-law of T", means: { rel: "father-in-law" } },
+      { text: "R is the husband of T", means: { rel: "husband" } },
+    ],
+  },
+  steps: [
+    { from: 0, beats: ["f1"] },
+    { from: 1, beats: ["f2"] },
+    { from: 2, beats: ["path", "answer"] },
+  ],
+  fingerprint: solutionFingerprint(TREE_SOLUTION),
+  answer: { value: 3, label: "R is T's father-in-law" },
+};
+
+export const CIRCLES_SOLUTION = String.raw`The triangles that are squares cannot be circles, since no square is a circle. So some triangles are not circles: I follows. The other triangles may or may not be circles, so II is not definite.`;
+
+/** SSC CGL ef10c2ba: No circles are squares, some squares are triangles: only I follows, option A. */
+export const CIRCLES_VISUAL = {
+  v: 1,
+  scene: "circles",
+  params: {
+    sets: [
+      { id: "circle", label: "Circles", x: 18, y: 30, r: 14 },
+      { id: "square", label: "Squares", x: 52, y: 30, r: 16 },
+      { id: "triangle", label: "Triangles", x: 76, y: 30, r: 15 },
+    ],
+    statements: [
+      { form: "no", a: "circle", b: "square", show: "No circle is a square", step: "s1" },
+      { form: "some", a: "square", b: "triangle", show: "Some squares are triangles", step: "s2" },
+    ],
+    conclusions: [
+      { form: "someNot", a: "triangle", b: "circle", show: "I. Some triangles are not circles", step: "c1" },
+      { form: "no", a: "triangle", b: "circle", show: "II. No triangle is a circle", step: "c2", alt: { set: "triangle", x: 40, y: 30, r: 26 } },
+    ],
+    options: [
+      { text: "Only I follows", means: { follow: [1] } },
+      { text: "Only II follows", means: { follow: [2] } },
+      { text: "Both I and II follow", means: { follow: [1, 2] } },
+      { text: "Neither I nor II follows", means: { follow: [] } },
+    ],
+  },
+  steps: [
+    { from: 0, beats: ["s1", "s2"] },
+    { from: 1, beats: ["c1"] },
+    { from: 2, beats: ["c2", "answer"] },
+  ],
+  fingerprint: solutionFingerprint(CIRCLES_SOLUTION),
+  answer: { value: 1, label: "Only I follows" },
+};
+
 export const FIXTURES = [
   { name: "rotation", visual: ROTATION_VISUAL, solution: ROTATION_SOLUTION },
   { name: "circleArc", visual: ARC_VISUAL, solution: ARC_SOLUTION },
@@ -452,4 +549,7 @@ export const FIXTURES = [
   { name: "algebraSteps", visual: ALG_VISUAL, solution: ALG_SOLUTION },
   { name: "switchCircuit", visual: CIRCUIT_VISUAL, solution: CIRCUIT_SOLUTION },
   { name: "setClaim", visual: SET_VISUAL, solution: SET_SOLUTION },
+  { name: "letterStrip", visual: STRIP_VISUAL, solution: STRIP_SOLUTION },
+  { name: "familyTree", visual: TREE_VISUAL, solution: TREE_SOLUTION },
+  { name: "circles", visual: CIRCLES_VISUAL, solution: CIRCLES_SOLUTION },
 ] as const;

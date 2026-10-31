@@ -1,0 +1,1028 @@
+{
+  "//": "Assembled from agent drafts (circles).",
+  "visuals": [
+    {
+      "id": "902f06e0-b39e-4f06-9264-91d59ac6a1e8",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "circles",
+        "params": {
+          "sets": [
+            {
+              "id": "man",
+              "label": "Men",
+              "x": 30,
+              "y": 30,
+              "r": 26,
+              "labelAt": [
+                30,
+                7.8
+              ]
+            },
+            {
+              "id": "father",
+              "label": "Fathers",
+              "x": 34,
+              "y": 40,
+              "r": 11,
+              "labelAt": [
+                34,
+                35
+              ]
+            },
+            {
+              "id": "eng",
+              "label": "Engineers",
+              "x": 62,
+              "y": 36,
+              "r": 20,
+              "labelAt": [
+                70,
+                30
+              ]
+            }
+          ],
+          "statements": [
+            {
+              "form": "all",
+              "a": "father",
+              "b": "man",
+              "show": "Every father is a man",
+              "step": "s1"
+            },
+            {
+              "form": "overlap",
+              "a": "eng",
+              "b": "man",
+              "show": "Some engineers are men, some not",
+              "step": "s2"
+            },
+            {
+              "form": "overlap",
+              "a": "eng",
+              "b": "father",
+              "show": "Some engineers are fathers",
+              "step": "s3"
+            }
+          ],
+          "figure": 1
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "ae733343",
+        "answer": {
+          "value": 1,
+          "label": "Diagram A"
+        }
+      }
+    },
+    {
+      "id": "a1af6a6b-530e-450d-831f-50541557fdfe",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "circles",
+        "params": {
+          "sets": [
+            {
+              "id": "myth",
+              "label": "Mythical",
+              "x": 50,
+              "y": 30,
+              "r": 28,
+              "labelAt": [
+                50,
+                6.6
+              ]
+            },
+            {
+              "id": "fairy",
+              "label": "Fairies",
+              "x": 38,
+              "y": 35,
+              "r": 10,
+              "labelAt": [
+                38,
+                31.2
+              ]
+            },
+            {
+              "id": "uni",
+              "label": "Unicorns",
+              "x": 62,
+              "y": 35,
+              "r": 10,
+              "labelAt": [
+                62,
+                32.2
+              ]
+            }
+          ],
+          "statements": [
+            {
+              "form": "all",
+              "a": "fairy",
+              "b": "myth",
+              "show": "All fairies are mythical creatures",
+              "step": "s1"
+            },
+            {
+              "form": "all",
+              "a": "uni",
+              "b": "myth",
+              "show": "All unicorns are mythical creatures",
+              "step": "s2"
+            },
+            {
+              "form": "no",
+              "a": "fairy",
+              "b": "uni",
+              "show": "No fairy is a unicorn",
+              "step": "s3"
+            }
+          ],
+          "figure": 1
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "0734cd23",
+        "answer": {
+          "value": 1,
+          "label": "Diagram A"
+        }
+      }
+    },
+    {
+      "id": "b6771974-4707-4670-9f32-e288cd4dabf4",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "circles",
+        "params": {
+          "sets": [
+            {
+              "id": "woman",
+              "label": "Women",
+              "x": 50,
+              "y": 30,
+              "r": 28,
+              "labelAt": [
+                50,
+                6
+              ]
+            },
+            {
+              "id": "sister",
+              "label": "Sister",
+              "x": 42,
+              "y": 35,
+              "r": 12,
+              "labelAt": [
+                38,
+                36
+              ]
+            },
+            {
+              "id": "wife",
+              "label": "Wife",
+              "x": 58,
+              "y": 35,
+              "r": 12,
+              "labelAt": [
+                62,
+                36
+              ]
+            }
+          ],
+          "statements": [
+            {
+              "form": "all",
+              "a": "sister",
+              "b": "woman",
+              "show": "Every sister is a woman",
+              "step": "s1"
+            },
+            {
+              "form": "all",
+              "a": "wife",
+              "b": "woman",
+              "show": "Every wife is a woman",
+              "step": "s2"
+            },
+            {
+              "form": "overlap",
+              "a": "sister",
+              "b": "wife",
+              "show": "A woman can be both sister and wife",
+              "step": "s3"
+            }
+          ],
+          "figure": 3
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "5a646af5",
+        "answer": {
+          "value": 3,
+          "label": "Diagram C"
+        }
+      }
+    },
+    {
+      "id": "b6fe14a3-1693-4403-a3c6-9eadec0965d8",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "circles",
+        "params": {
+          "sets": [
+            {
+              "id": "sport",
+              "label": "Sports",
+              "x": 50,
+              "y": 30,
+              "r": 28,
+              "labelAt": [
+                50,
+                6.2
+              ]
+            },
+            {
+              "id": "swim",
+              "label": "Swimming",
+              "x": 37,
+              "y": 35,
+              "r": 11,
+              "labelAt": [
+                37,
+                30.8
+              ]
+            },
+            {
+              "id": "run",
+              "label": "Running",
+              "x": 63,
+              "y": 35,
+              "r": 11,
+              "labelAt": [
+                63,
+                30
+              ]
+            }
+          ],
+          "statements": [
+            {
+              "form": "all",
+              "a": "swim",
+              "b": "sport",
+              "show": "Swimming is a sport",
+              "step": "s1"
+            },
+            {
+              "form": "all",
+              "a": "run",
+              "b": "sport",
+              "show": "Running is a sport",
+              "step": "s2"
+            },
+            {
+              "form": "no",
+              "a": "swim",
+              "b": "run",
+              "show": "Neither is a kind of the other",
+              "step": "s3"
+            }
+          ],
+          "figure": 3
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "b8c8cace",
+        "answer": {
+          "value": 3,
+          "label": "Diagram C"
+        }
+      }
+    },
+    {
+      "id": "b9891683-77a3-4b2f-aa76-950986a79ba4",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "circles",
+        "params": {
+          "sets": [
+            {
+              "id": "foot",
+              "label": "Football fans",
+              "x": 36,
+              "y": 24,
+              "r": 18,
+              "labelAt": [
+                34,
+                18
+              ]
+            },
+            {
+              "id": "cric",
+              "label": "Cricket fans",
+              "x": 64,
+              "y": 24,
+              "r": 18,
+              "labelAt": [
+                66,
+                18
+              ]
+            },
+            {
+              "id": "doc",
+              "label": "Doctors",
+              "x": 50,
+              "y": 40,
+              "r": 18,
+              "labelAt": [
+                50,
+                52
+              ]
+            }
+          ],
+          "statements": [
+            {
+              "form": "overlap",
+              "a": "foot",
+              "b": "cric",
+              "show": "Some football fans are cricket fans",
+              "step": "s1"
+            },
+            {
+              "form": "overlap",
+              "a": "foot",
+              "b": "doc",
+              "show": "Some football fans are doctors",
+              "step": "s2"
+            },
+            {
+              "form": "overlap",
+              "a": "cric",
+              "b": "doc",
+              "show": "Some cricket fans are doctors",
+              "step": "s3"
+            }
+          ],
+          "figure": 1
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "daacac24",
+        "answer": {
+          "value": 1,
+          "label": "Diagram A"
+        }
+      }
+    },
+    {
+      "id": "b9e9d895-1037-4213-a5d6-ef74c1b0ef17",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "circles",
+        "params": {
+          "sets": [
+            {
+              "id": "female",
+              "label": "Females",
+              "x": 50,
+              "y": 30,
+              "r": 28,
+              "labelAt": [
+                50,
+                6.4
+              ]
+            },
+            {
+              "id": "mother",
+              "label": "Mothers",
+              "x": 41,
+              "y": 35,
+              "r": 13,
+              "labelAt": [
+                36,
+                36
+              ]
+            },
+            {
+              "id": "sister",
+              "label": "Sisters",
+              "x": 59,
+              "y": 35,
+              "r": 13,
+              "labelAt": [
+                64,
+                36
+              ]
+            }
+          ],
+          "statements": [
+            {
+              "form": "all",
+              "a": "mother",
+              "b": "female",
+              "show": "All mothers are females",
+              "step": "s1"
+            },
+            {
+              "form": "all",
+              "a": "sister",
+              "b": "female",
+              "show": "All sisters are females",
+              "step": "s2"
+            },
+            {
+              "form": "overlap",
+              "a": "mother",
+              "b": "sister",
+              "show": "Some mothers are sisters, some not",
+              "step": "s3"
+            }
+          ],
+          "figure": 2
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "92b55f8b",
+        "answer": {
+          "value": 2,
+          "label": "Diagram B"
+        }
+      }
+    },
+    {
+      "id": "c1418ca9-016e-4d0d-beee-c453390ba0d6",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "circles",
+        "params": {
+          "sets": [
+            {
+              "id": "sport",
+              "label": "Sport",
+              "x": 30,
+              "y": 30,
+              "r": 24,
+              "labelAt": [
+                30,
+                10.2
+              ]
+            },
+            {
+              "id": "cricket",
+              "label": "Cricket",
+              "x": 30,
+              "y": 36,
+              "r": 11,
+              "labelAt": [
+                30,
+                31
+              ]
+            },
+            {
+              "id": "ath",
+              "label": "Athlete",
+              "x": 78,
+              "y": 30,
+              "r": 18,
+              "labelAt": [
+                78,
+                17
+              ]
+            }
+          ],
+          "statements": [
+            {
+              "form": "all",
+              "a": "cricket",
+              "b": "sport",
+              "show": "Cricket is a sport",
+              "step": "s1"
+            },
+            {
+              "form": "no",
+              "a": "ath",
+              "b": "sport",
+              "show": "An athlete is not a sport",
+              "step": "s2"
+            },
+            {
+              "form": "no",
+              "a": "ath",
+              "b": "cricket",
+              "show": "An athlete is not cricket",
+              "step": "s3"
+            }
+          ],
+          "figure": 3
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "ed1ddf04",
+        "answer": {
+          "value": 3,
+          "label": "One inside another, one apart"
+        }
+      }
+    },
+    {
+      "id": "c346bbea-0f3c-4577-b661-dc77640e6aa8",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "circles",
+        "params": {
+          "sets": [
+            {
+              "id": "cur",
+              "label": "Currency",
+              "x": 30,
+              "y": 30,
+              "r": 24,
+              "labelAt": [
+                30,
+                10.8
+              ]
+            },
+            {
+              "id": "dirham",
+              "label": "Dirham",
+              "x": 30,
+              "y": 36,
+              "r": 11,
+              "labelAt": [
+                30,
+                30.2
+              ]
+            },
+            {
+              "id": "dubai",
+              "label": "Dubai",
+              "x": 78,
+              "y": 30,
+              "r": 18,
+              "labelAt": [
+                78,
+                16.2
+              ]
+            }
+          ],
+          "statements": [
+            {
+              "form": "all",
+              "a": "dirham",
+              "b": "cur",
+              "show": "The dirham is a currency",
+              "step": "s1"
+            },
+            {
+              "form": "no",
+              "a": "dubai",
+              "b": "cur",
+              "show": "Dubai, a city, is not a currency",
+              "step": "s2"
+            },
+            {
+              "form": "no",
+              "a": "dubai",
+              "b": "dirham",
+              "show": "Dubai is not a dirham",
+              "step": "s3"
+            }
+          ],
+          "figure": 2
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "4edcb400",
+        "answer": {
+          "value": 2,
+          "label": "One inside another, one apart"
+        }
+      }
+    },
+    {
+      "id": "c7c6d9ec-1ed4-4fb1-8cc8-9faf069053da",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "circles",
+        "params": {
+          "sets": [
+            {
+              "id": "comm",
+              "label": "Communication",
+              "x": 50,
+              "y": 30,
+              "r": 29,
+              "labelAt": [
+                50,
+                10
+              ]
+            },
+            {
+              "id": "lang",
+              "label": "Language",
+              "x": 50,
+              "y": 35,
+              "r": 20,
+              "labelAt": [
+                50,
+                20.2
+              ]
+            },
+            {
+              "id": "dial",
+              "label": "Dialect",
+              "x": 50,
+              "y": 41,
+              "r": 11,
+              "labelAt": [
+                50,
+                36
+              ]
+            }
+          ],
+          "statements": [
+            {
+              "form": "all",
+              "a": "dial",
+              "b": "lang",
+              "show": "A dialect is a form of a language",
+              "step": "s1"
+            },
+            {
+              "form": "all",
+              "a": "lang",
+              "b": "comm",
+              "show": "Language is a means of communication",
+              "step": "s2"
+            }
+          ],
+          "figure": 3
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "576f94cf",
+        "answer": {
+          "value": 3,
+          "label": "Three nested circles"
+        }
+      }
+    },
+    {
+      "id": "c8d84d80-7f44-45f4-a3e4-9d59ae33dfea",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "circles",
+        "params": {
+          "sets": [
+            {
+              "id": "ticket",
+              "label": "Ticket",
+              "x": 50,
+              "y": 30,
+              "r": 18,
+              "labelAt": [
+                50,
+                16.6
+              ]
+            },
+            {
+              "id": "aero",
+              "label": "Aeroplane",
+              "x": 24,
+              "y": 30,
+              "r": 14,
+              "labelAt": [
+                20,
+                31
+              ]
+            },
+            {
+              "id": "rail",
+              "label": "Rail",
+              "x": 76,
+              "y": 30,
+              "r": 14,
+              "labelAt": [
+                80,
+                31
+              ]
+            }
+          ],
+          "statements": [
+            {
+              "form": "overlap",
+              "a": "ticket",
+              "b": "aero",
+              "show": "Some tickets are aeroplane tickets",
+              "step": "s1"
+            },
+            {
+              "form": "overlap",
+              "a": "ticket",
+              "b": "rail",
+              "show": "Some tickets are rail tickets",
+              "step": "s2"
+            },
+            {
+              "form": "no",
+              "a": "aero",
+              "b": "rail",
+              "show": "Nothing is both aeroplane and rail",
+              "step": "s3"
+            }
+          ],
+          "figure": 1
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "5f8a7c6d",
+        "answer": {
+          "value": 1,
+          "label": "Diagram A"
+        }
+      }
+    },
+    {
+      "id": "e8061c34-01d8-4a86-9400-7bdbcadbd087",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "circles",
+        "params": {
+          "sets": [
+            {
+              "id": "food",
+              "label": "Food",
+              "x": 50,
+              "y": 30,
+              "r": 28,
+              "labelAt": [
+                50,
+                5.8
+              ]
+            },
+            {
+              "id": "leafy",
+              "label": "Leafy veg",
+              "x": 39,
+              "y": 34,
+              "r": 14,
+              "labelAt": [
+                35,
+                35
+              ]
+            },
+            {
+              "id": "salad",
+              "label": "Salad",
+              "x": 61,
+              "y": 34,
+              "r": 14,
+              "labelAt": [
+                65,
+                35
+              ]
+            }
+          ],
+          "statements": [
+            {
+              "form": "overlap",
+              "a": "leafy",
+              "b": "salad",
+              "show": "Some leafy vegetables are in salads",
+              "step": "s1"
+            },
+            {
+              "form": "all",
+              "a": "leafy",
+              "b": "food",
+              "show": "Leafy vegetables are food",
+              "step": "s2"
+            },
+            {
+              "form": "all",
+              "a": "salad",
+              "b": "food",
+              "show": "Salad is food",
+              "step": "s3"
+            }
+          ],
+          "figure": 3
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "368ffd44",
+        "answer": {
+          "value": 3,
+          "label": "Diagram C"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

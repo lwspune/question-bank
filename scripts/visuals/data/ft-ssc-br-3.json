@@ -1,0 +1,2640 @@
+{
+  "//": "Assembled from agent drafts (familyTree).",
+  "visuals": [
+    {
+      "id": "4ec2965d-add5-4f4a-ba45-dc601b699e0b",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "familyTree",
+        "params": {
+          "people": [
+            {
+              "id": "Veronica",
+              "sex": "f"
+            },
+            {
+              "id": "H",
+              "sex": "m",
+              "label": "husband"
+            },
+            {
+              "id": "B",
+              "sex": "m",
+              "label": "his brother"
+            },
+            {
+              "id": "girl",
+              "sex": "f",
+              "label": "the girl"
+            },
+            {
+              "id": "D",
+              "sex": "f",
+              "label": "daughter"
+            }
+          ],
+          "facts": [
+            {
+              "rel": "spouse",
+              "a": "Veronica",
+              "b": "H",
+              "step": "f1"
+            },
+            {
+              "rel": "sibling",
+              "a": "H",
+              "b": "B",
+              "step": "f1"
+            },
+            {
+              "rel": "parent",
+              "a": "B",
+              "b": "D",
+              "step": "f1"
+            },
+            {
+              "rel": "parent",
+              "a": "girl",
+              "b": "D",
+              "step": "f2"
+            },
+            {
+              "rel": "spouse",
+              "a": "B",
+              "b": "girl",
+              "step": "f2"
+            }
+          ],
+          "rows": [
+            [
+              "Veronica",
+              "H",
+              "B",
+              "girl"
+            ],
+            [
+              "D"
+            ]
+          ],
+          "ask": {
+            "who": "Veronica",
+            "of": "girl"
+          },
+          "options": [
+            {
+              "text": "Mother’s sister",
+              "means": {
+                "chain": [
+                  "mother",
+                  "sister"
+                ]
+              }
+            },
+            {
+              "text": "Husband’s Brother’s wife",
+              "means": {
+                "chain": [
+                  "husband",
+                  "brother",
+                  "wife"
+                ]
+              }
+            },
+            {
+              "text": "Father’s Brother’s daughter",
+              "means": {
+                "chain": [
+                  "father",
+                  "brother",
+                  "daughter"
+                ]
+              }
+            },
+            {
+              "text": "Mother",
+              "means": {
+                "rel": "mother"
+              }
+            }
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "f1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "f2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "path",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "cddb9d27",
+        "answer": {
+          "value": 2,
+          "label": "husband's brother's wife"
+        }
+      }
+    },
+    {
+      "id": "4f0dc73f-c0f8-457b-b340-6c07a689d604",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "familyTree",
+        "params": {
+          "people": [
+            {
+              "id": "Mishka",
+              "sex": "f"
+            },
+            {
+              "id": "Br",
+              "sex": "m",
+              "label": "brother"
+            },
+            {
+              "id": "Mo",
+              "sex": "f",
+              "label": "mother"
+            },
+            {
+              "id": "G",
+              "sex": "f",
+              "label": "grandmother"
+            }
+          ],
+          "facts": [
+            {
+              "rel": "sibling",
+              "a": "Mishka",
+              "b": "Br",
+              "step": "f1"
+            },
+            {
+              "rel": "parent",
+              "a": "Mo",
+              "b": "Br",
+              "step": "f1"
+            },
+            {
+              "rel": "parent",
+              "a": "G",
+              "b": "Mo",
+              "step": "f1"
+            }
+          ],
+          "rows": [
+            [
+              "G"
+            ],
+            [
+              "Mo"
+            ],
+            [
+              "Mishka",
+              "Br"
+            ]
+          ],
+          "ask": {
+            "who": "Mo",
+            "of": "Mishka"
+          },
+          "options": [
+            {
+              "text": "Paternal grandmother",
+              "means": {
+                "rel": "paternal grandmother"
+              }
+            },
+            {
+              "text": "Mother",
+              "means": {
+                "rel": "mother"
+              }
+            },
+            {
+              "text": "Son",
+              "means": {
+                "rel": "son"
+              }
+            },
+            {
+              "text": "Mishka herself",
+              "means": {
+                "self": true
+              }
+            }
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "f1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "path",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "f189d90e",
+        "answer": {
+          "value": 2,
+          "label": "Mishka's mother"
+        }
+      }
+    },
+    {
+      "id": "4f57f0f0-bedd-4db7-b5e2-97a9bb1d9123",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "familyTree",
+        "params": {
+          "people": [
+            {
+              "id": "V",
+              "sex": "m"
+            },
+            {
+              "id": "F",
+              "sex": "f"
+            },
+            {
+              "id": "H",
+              "sex": "m"
+            },
+            {
+              "id": "Y",
+              "sex": "f"
+            },
+            {
+              "id": "N",
+              "sex": "f"
+            },
+            {
+              "id": "D",
+              "sex": "f"
+            }
+          ],
+          "facts": [
+            {
+              "rel": "parent",
+              "a": "F",
+              "b": "Y",
+              "step": "f1"
+            },
+            {
+              "rel": "spouse",
+              "a": "F",
+              "b": "V",
+              "step": "f1"
+            },
+            {
+              "rel": "spouse",
+              "a": "H",
+              "b": "Y",
+              "step": "f2"
+            },
+            {
+              "rel": "parent",
+              "a": "H",
+              "b": "N",
+              "step": "f3"
+            },
+            {
+              "rel": "parent",
+              "a": "N",
+              "b": "D",
+              "step": "f3"
+            }
+          ],
+          "rows": [
+            [
+              "V",
+              "F"
+            ],
+            [
+              "H",
+              "Y"
+            ],
+            [
+              "N"
+            ],
+            [
+              "D"
+            ]
+          ],
+          "ask": {
+            "who": "V",
+            "of": "H"
+          },
+          "options": [
+            {
+              "text": "Father’s father",
+              "means": {
+                "chain": [
+                  "father",
+                  "father"
+                ]
+              }
+            },
+            {
+              "text": "Son-in-law",
+              "means": {
+                "rel": "son-in-law"
+              }
+            },
+            {
+              "text": "Wife’s father",
+              "means": {
+                "chain": [
+                  "wife",
+                  "father"
+                ]
+              }
+            },
+            {
+              "text": "Father",
+              "means": {
+                "rel": "father"
+              }
+            }
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "f1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "f2",
+              "f3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "path",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "b9c4e176",
+        "answer": {
+          "value": 3,
+          "label": "V is H's wife's father"
+        }
+      }
+    },
+    {
+      "id": "4f9a1b22-c34c-4a8f-8a2e-cb381b0ff911",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "familyTree",
+        "params": {
+          "people": [
+            {
+              "id": "A",
+              "sex": "m"
+            },
+            {
+              "id": "D",
+              "sex": "m"
+            },
+            {
+              "id": "F",
+              "sex": "f"
+            },
+            {
+              "id": "B",
+              "sex": "m"
+            },
+            {
+              "id": "E",
+              "sex": "m"
+            },
+            {
+              "id": "S",
+              "sex": "f"
+            }
+          ],
+          "facts": [
+            {
+              "rel": "sibling",
+              "a": "A",
+              "b": "D",
+              "step": "f1"
+            },
+            {
+              "rel": "parent",
+              "a": "F",
+              "b": "D",
+              "step": "f2"
+            },
+            {
+              "rel": "sibling",
+              "a": "F",
+              "b": "B",
+              "step": "f3"
+            },
+            {
+              "rel": "sibling",
+              "a": "B",
+              "b": "E",
+              "step": "f4"
+            },
+            {
+              "rel": "spouse",
+              "a": "E",
+              "b": "S",
+              "step": "f5"
+            }
+          ],
+          "rows": [
+            [
+              "F",
+              "B",
+              "E",
+              "S"
+            ],
+            [
+              "A",
+              "D"
+            ]
+          ],
+          "ask": {
+            "who": "A",
+            "of": "E"
+          },
+          "options": [
+            {
+              "text": "Husband",
+              "means": {
+                "rel": "husband"
+              }
+            },
+            {
+              "text": "Sister's son (nephew)",
+              "means": {
+                "any": [
+                  {
+                    "chain": [
+                      "sister",
+                      "son"
+                    ]
+                  },
+                  {
+                    "rel": "nephew"
+                  }
+                ]
+              }
+            },
+            {
+              "text": "Mother's brother (maternal uncle)",
+              "means": {
+                "any": [
+                  {
+                    "chain": [
+                      "mother",
+                      "brother"
+                    ]
+                  },
+                  {
+                    "rel": "maternal uncle"
+                  }
+                ]
+              }
+            },
+            {
+              "text": "Brother",
+              "means": {
+                "rel": "brother"
+              }
+            }
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "f1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "f2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "f3"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "f4"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "f5"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "path",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "d69ec153",
+        "answer": {
+          "value": 2,
+          "label": "A is E's sister's son"
+        }
+      }
+    },
+    {
+      "id": "52362132-6e3a-4bc7-b05e-f2e9f8adfd19",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "familyTree",
+        "params": {
+          "people": [
+            {
+              "id": "5",
+              "sex": "m"
+            },
+            {
+              "id": "2",
+              "sex": "f"
+            },
+            {
+              "id": "4",
+              "sex": "m"
+            },
+            {
+              "id": "3",
+              "sex": "?"
+            }
+          ],
+          "facts": [
+            {
+              "rel": "sibling",
+              "a": "5",
+              "b": "2",
+              "step": "f1"
+            },
+            {
+              "rel": "spouse",
+              "a": "2",
+              "b": "4",
+              "step": "f1"
+            },
+            {
+              "rel": "parent",
+              "a": "4",
+              "b": "3",
+              "step": "f1"
+            }
+          ],
+          "rows": [
+            [
+              "5",
+              "2",
+              "4"
+            ],
+            [
+              "3"
+            ]
+          ],
+          "ask": {
+            "who": "5",
+            "of": "3"
+          },
+          "options": [
+            {
+              "text": "Father’s brother",
+              "means": {
+                "chain": [
+                  "father",
+                  "brother"
+                ]
+              }
+            },
+            {
+              "text": "Father’s sister",
+              "means": {
+                "chain": [
+                  "father",
+                  "sister"
+                ]
+              }
+            },
+            {
+              "text": "Mother’s sister",
+              "means": {
+                "chain": [
+                  "mother",
+                  "sister"
+                ]
+              }
+            },
+            {
+              "text": "Mother’s brother",
+              "means": {
+                "chain": [
+                  "mother",
+                  "brother"
+                ]
+              }
+            }
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "f1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "path",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "bb27b730",
+        "answer": {
+          "value": 4,
+          "label": "3's mother's brother"
+        }
+      }
+    },
+    {
+      "id": "59125b8f-0bd6-4eaa-bc78-30031ea84930",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "familyTree",
+        "params": {
+          "people": [
+            {
+              "id": "Rani",
+              "sex": "f"
+            },
+            {
+              "id": "Mo",
+              "sex": "f",
+              "label": "mother"
+            },
+            {
+              "id": "man",
+              "sex": "m",
+              "label": "the man"
+            }
+          ],
+          "facts": [
+            {
+              "rel": "parent",
+              "a": "Mo",
+              "b": "Rani",
+              "step": "f1"
+            },
+            {
+              "rel": "spouse",
+              "a": "Rani",
+              "b": "man",
+              "step": "f2"
+            }
+          ],
+          "rows": [
+            [
+              "Mo"
+            ],
+            [
+              "Rani",
+              "man"
+            ]
+          ],
+          "ask": {
+            "who": "man",
+            "of": "Rani"
+          },
+          "options": [
+            {
+              "text": "Husband",
+              "means": {
+                "rel": "husband"
+              }
+            },
+            {
+              "text": "Father",
+              "means": {
+                "rel": "father"
+              }
+            },
+            {
+              "text": "Uncle",
+              "means": {
+                "rel": "uncle"
+              }
+            },
+            {
+              "text": "Cousin",
+              "means": {
+                "rel": "cousin"
+              }
+            }
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "f1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "f2",
+              "path",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "09e58e6d",
+        "answer": {
+          "value": 1,
+          "label": "Rani's husband"
+        }
+      }
+    },
+    {
+      "id": "5cbfbd1f-0736-45d1-9e68-ab1eefcd6703",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "familyTree",
+        "params": {
+          "people": [
+            {
+              "id": "P",
+              "sex": "f"
+            },
+            {
+              "id": "Q",
+              "sex": "m"
+            },
+            {
+              "id": "R",
+              "sex": "m"
+            },
+            {
+              "id": "S",
+              "sex": "f"
+            },
+            {
+              "id": "A",
+              "sex": "m"
+            }
+          ],
+          "facts": [
+            {
+              "rel": "spouse",
+              "a": "P",
+              "b": "Q",
+              "step": "f1"
+            },
+            {
+              "rel": "parent",
+              "a": "Q",
+              "b": "R",
+              "step": "f2"
+            },
+            {
+              "rel": "sibling",
+              "a": "R",
+              "b": "S",
+              "step": "f3"
+            },
+            {
+              "rel": "spouse",
+              "a": "S",
+              "b": "A",
+              "step": "f4"
+            }
+          ],
+          "rows": [
+            [
+              "P",
+              "Q"
+            ],
+            [
+              "R",
+              "S",
+              "A"
+            ]
+          ],
+          "ask": {
+            "who": "S",
+            "of": "P"
+          },
+          "options": [
+            {
+              "text": "Mother",
+              "means": {
+                "rel": "mother"
+              }
+            },
+            {
+              "text": "Son",
+              "means": {
+                "rel": "son"
+              }
+            },
+            {
+              "text": "Daughter",
+              "means": {
+                "rel": "daughter"
+              }
+            },
+            {
+              "text": "Father",
+              "means": {
+                "rel": "father"
+              }
+            }
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "f1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "f2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "f3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "f4"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "path",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "670ca157",
+        "answer": {
+          "value": 3,
+          "label": "S is P's daughter"
+        }
+      }
+    },
+    {
+      "id": "5f14edf6-808a-45d8-926d-005ec672f5c5",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "familyTree",
+        "params": {
+          "people": [
+            {
+              "id": "K",
+              "sex": "f"
+            },
+            {
+              "id": "L",
+              "sex": "m"
+            },
+            {
+              "id": "M",
+              "sex": "f"
+            },
+            {
+              "id": "N",
+              "sex": "m"
+            },
+            {
+              "id": "O",
+              "sex": "?"
+            }
+          ],
+          "facts": [
+            {
+              "rel": "parent",
+              "a": "L",
+              "b": "K",
+              "step": "f1"
+            },
+            {
+              "rel": "spouse",
+              "a": "L",
+              "b": "M",
+              "step": "f2"
+            },
+            {
+              "rel": "parent",
+              "a": "M",
+              "b": "N",
+              "step": "f3"
+            },
+            {
+              "rel": "parent",
+              "a": "N",
+              "b": "O",
+              "step": "f4"
+            }
+          ],
+          "rows": [
+            [
+              "L",
+              "M"
+            ],
+            [
+              "K",
+              "N"
+            ],
+            [
+              "O"
+            ]
+          ],
+          "ask": {
+            "who": "K",
+            "of": "O"
+          },
+          "options": [
+            {
+              "text": "Sister’s daughter",
+              "means": {
+                "chain": [
+                  "sister",
+                  "daughter"
+                ]
+              }
+            },
+            {
+              "text": "Father’s sister",
+              "means": {
+                "chain": [
+                  "father",
+                  "sister"
+                ]
+              }
+            },
+            {
+              "text": "Mother’s sister",
+              "means": {
+                "chain": [
+                  "mother",
+                  "sister"
+                ]
+              }
+            },
+            {
+              "text": "Father’s mother",
+              "means": {
+                "chain": [
+                  "father",
+                  "mother"
+                ]
+              }
+            }
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "f1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "f2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "f3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "f4"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "path"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "4bfc450c",
+        "answer": {
+          "value": 2,
+          "label": "O's father's sister"
+        }
+      }
+    },
+    {
+      "id": "5f8e3dfc-f4a4-47b3-98d1-6e9905aabf67",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "familyTree",
+        "params": {
+          "people": [
+            {
+              "id": "H",
+              "sex": "f"
+            },
+            {
+              "id": "I",
+              "sex": "m"
+            },
+            {
+              "id": "J",
+              "sex": "m"
+            },
+            {
+              "id": "K",
+              "sex": "f"
+            },
+            {
+              "id": "L",
+              "sex": "?"
+            }
+          ],
+          "facts": [
+            {
+              "rel": "parent",
+              "a": "I",
+              "b": "H",
+              "step": "f1"
+            },
+            {
+              "rel": "parent",
+              "a": "J",
+              "b": "I",
+              "step": "f2"
+            },
+            {
+              "rel": "parent",
+              "a": "K",
+              "b": "J",
+              "step": "f2"
+            },
+            {
+              "rel": "sibling",
+              "a": "K",
+              "b": "L",
+              "step": "f2"
+            }
+          ],
+          "rows": [
+            [
+              "K",
+              "L"
+            ],
+            [
+              "J"
+            ],
+            [
+              "I"
+            ],
+            [
+              "H"
+            ]
+          ],
+          "ask": {
+            "who": "H",
+            "of": "J"
+          },
+          "options": [
+            {
+              "text": "Son",
+              "means": {
+                "rel": "son"
+              }
+            },
+            {
+              "text": "Son’s daughter",
+              "means": {
+                "chain": [
+                  "son",
+                  "daughter"
+                ]
+              }
+            },
+            {
+              "text": "Son’s son",
+              "means": {
+                "chain": [
+                  "son",
+                  "son"
+                ]
+              }
+            },
+            {
+              "text": "Daughter",
+              "means": {
+                "rel": "daughter"
+              }
+            }
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "f1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "f2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "path",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "a567ba0f",
+        "answer": {
+          "value": 2,
+          "label": "J's son's daughter"
+        }
+      }
+    },
+    {
+      "id": "615b3035-d67e-4a53-8469-d1bd8c123f16",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "familyTree",
+        "params": {
+          "people": [
+            {
+              "id": "A",
+              "sex": "m"
+            },
+            {
+              "id": "B",
+              "sex": "f"
+            }
+          ],
+          "facts": [
+            {
+              "rel": "parent",
+              "a": "A",
+              "b": "B",
+              "step": "f1"
+            }
+          ],
+          "rows": [
+            [
+              "A"
+            ],
+            [
+              "B"
+            ]
+          ],
+          "ask": {
+            "who": "B",
+            "of": "A"
+          },
+          "options": [
+            {
+              "text": "Sister",
+              "means": {
+                "rel": "sister"
+              }
+            },
+            {
+              "text": "Mother",
+              "means": {
+                "rel": "mother"
+              }
+            },
+            {
+              "text": "Cousin",
+              "means": {
+                "rel": "cousin"
+              }
+            },
+            {
+              "text": "Daughter",
+              "means": {
+                "rel": "daughter"
+              }
+            }
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "f1",
+              "path",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "8f50eb92",
+        "answer": {
+          "value": 4,
+          "label": "B is A's daughter"
+        }
+      }
+    },
+    {
+      "id": "63375f96-136b-4e4e-a591-77b2350c69bd",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "familyTree",
+        "params": {
+          "people": [
+            {
+              "id": "woman",
+              "sex": "f",
+              "label": "the woman"
+            },
+            {
+              "id": "Mo",
+              "sex": "f",
+              "label": "her mother"
+            },
+            {
+              "id": "girl",
+              "sex": "f",
+              "label": "the girl"
+            }
+          ],
+          "facts": [
+            {
+              "rel": "parent",
+              "a": "Mo",
+              "b": "woman",
+              "step": "f1"
+            },
+            {
+              "rel": "parent",
+              "a": "woman",
+              "b": "girl",
+              "step": "f2"
+            }
+          ],
+          "rows": [
+            [
+              "Mo"
+            ],
+            [
+              "woman"
+            ],
+            [
+              "girl"
+            ]
+          ],
+          "ask": {
+            "who": "girl",
+            "of": "woman"
+          },
+          "options": [
+            {
+              "text": "Daughter",
+              "means": {
+                "rel": "daughter"
+              }
+            },
+            {
+              "text": "Daughter-in-law",
+              "means": {
+                "rel": "daughter-in-law"
+              }
+            },
+            {
+              "text": "Cousin",
+              "means": {
+                "rel": "cousin"
+              }
+            },
+            {
+              "text": "Sister",
+              "means": {
+                "rel": "sister"
+              }
+            }
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "f1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "f2",
+              "path",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "b74fd345",
+        "answer": {
+          "value": 1,
+          "label": "the woman's daughter"
+        }
+      }
+    },
+    {
+      "id": "63a2e08b-8390-4d8c-bd76-709c0f1d799a",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "familyTree",
+        "params": {
+          "people": [
+            {
+              "id": "A",
+              "sex": "m"
+            },
+            {
+              "id": "B",
+              "sex": "?"
+            },
+            {
+              "id": "C",
+              "sex": "m"
+            },
+            {
+              "id": "D",
+              "sex": "m"
+            },
+            {
+              "id": "E",
+              "sex": "m"
+            }
+          ],
+          "facts": [
+            {
+              "rel": "sibling",
+              "a": "A",
+              "b": "B",
+              "step": "f1"
+            },
+            {
+              "rel": "parent",
+              "a": "C",
+              "b": "A",
+              "step": "f1"
+            },
+            {
+              "rel": "sibling",
+              "a": "D",
+              "b": "C",
+              "step": "f2"
+            },
+            {
+              "rel": "parent",
+              "a": "D",
+              "b": "E",
+              "step": "f3"
+            }
+          ],
+          "rows": [
+            [
+              "C",
+              "D"
+            ],
+            [
+              "A",
+              "B",
+              "E"
+            ]
+          ],
+          "ask": {
+            "who": "E",
+            "of": "B"
+          },
+          "options": [
+            {
+              "text": "Cousin",
+              "means": {
+                "rel": "cousin"
+              }
+            },
+            {
+              "text": "Nephew",
+              "means": {
+                "rel": "nephew"
+              }
+            },
+            {
+              "text": "Uncle",
+              "means": {
+                "rel": "uncle"
+              }
+            },
+            {
+              "text": "Brother-in-law",
+              "means": {
+                "rel": "brother-in-law"
+              }
+            }
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "f1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "f2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "f3",
+              "path",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "805fd1c8",
+        "answer": {
+          "value": 1,
+          "label": "E is B's cousin"
+        }
+      }
+    },
+    {
+      "id": "65e8537a-a27f-448d-acc1-d082a94d89eb",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "familyTree",
+        "params": {
+          "people": [
+            {
+              "id": "M",
+              "sex": "f"
+            },
+            {
+              "id": "Q",
+              "sex": "m"
+            },
+            {
+              "id": "R",
+              "sex": "f"
+            },
+            {
+              "id": "K",
+              "sex": "m"
+            },
+            {
+              "id": "Y",
+              "sex": "?"
+            }
+          ],
+          "facts": [
+            {
+              "rel": "parent",
+              "a": "M",
+              "b": "Q",
+              "step": "f1"
+            },
+            {
+              "rel": "sibling",
+              "a": "Q",
+              "b": "R",
+              "step": "f2"
+            },
+            {
+              "rel": "parent",
+              "a": "R",
+              "b": "K",
+              "step": "f3"
+            },
+            {
+              "rel": "sibling",
+              "a": "K",
+              "b": "Y",
+              "step": "f4"
+            }
+          ],
+          "rows": [
+            [
+              "M"
+            ],
+            [
+              "Q",
+              "R"
+            ],
+            [
+              "K",
+              "Y"
+            ]
+          ],
+          "ask": {
+            "who": "M",
+            "of": "Y"
+          },
+          "options": [
+            {
+              "text": "Mother",
+              "means": {
+                "rel": "mother"
+              }
+            },
+            {
+              "text": "Father’s mother",
+              "means": {
+                "chain": [
+                  "father",
+                  "mother"
+                ]
+              }
+            },
+            {
+              "text": "Mother’s mother",
+              "means": {
+                "chain": [
+                  "mother",
+                  "mother"
+                ]
+              }
+            },
+            {
+              "text": "Brother’s wife",
+              "means": {
+                "chain": [
+                  "brother",
+                  "wife"
+                ]
+              }
+            }
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "f1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "f2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "f3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "f4"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "path",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "e5eaa304",
+        "answer": {
+          "value": 3,
+          "label": "Y's mother's mother"
+        }
+      }
+    },
+    {
+      "id": "67557ea0-3246-4a44-a153-24d1b035126c",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "familyTree",
+        "params": {
+          "people": [
+            {
+              "id": "A",
+              "sex": "m"
+            },
+            {
+              "id": "Fa",
+              "sex": "m",
+              "label": "A's father"
+            },
+            {
+              "id": "Wi",
+              "sex": "f",
+              "label": "his wife"
+            },
+            {
+              "id": "B",
+              "sex": "f"
+            }
+          ],
+          "facts": [
+            {
+              "rel": "parent",
+              "a": "Fa",
+              "b": "A",
+              "step": "f1"
+            },
+            {
+              "rel": "spouse",
+              "a": "Fa",
+              "b": "Wi",
+              "step": "f1"
+            },
+            {
+              "rel": "parent",
+              "a": "Wi",
+              "b": "B",
+              "step": "f2"
+            }
+          ],
+          "rows": [
+            [
+              "Fa",
+              "Wi"
+            ],
+            [
+              "A",
+              "B"
+            ]
+          ],
+          "ask": {
+            "who": "A",
+            "of": "B"
+          },
+          "options": [
+            {
+              "text": "Nephew",
+              "means": {
+                "rel": "nephew"
+              }
+            },
+            {
+              "text": "Cousin",
+              "means": {
+                "rel": "cousin"
+              }
+            },
+            {
+              "text": "Sibling",
+              "means": {
+                "rel": "sibling"
+              }
+            },
+            {
+              "text": "Uncle",
+              "means": {
+                "rel": "uncle"
+              }
+            }
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "f1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "f2",
+              "path",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "770d9ec0",
+        "answer": {
+          "value": 3,
+          "label": "A is B's sibling"
+        }
+      }
+    },
+    {
+      "id": "6bed3ce7-8301-410f-8843-4d5d2e4457c8",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "familyTree",
+        "params": {
+          "people": [
+            {
+              "id": "Q",
+              "sex": "f"
+            },
+            {
+              "id": "R",
+              "sex": "f"
+            },
+            {
+              "id": "S",
+              "sex": "?"
+            },
+            {
+              "id": "T",
+              "sex": "m"
+            }
+          ],
+          "facts": [
+            {
+              "rel": "parent",
+              "a": "R",
+              "b": "Q",
+              "step": "f1"
+            },
+            {
+              "rel": "parent",
+              "a": "R",
+              "b": "S",
+              "step": "f1"
+            },
+            {
+              "rel": "parent",
+              "a": "T",
+              "b": "Q",
+              "step": "f1"
+            },
+            {
+              "rel": "spouse",
+              "a": "T",
+              "b": "R",
+              "step": "f1"
+            }
+          ],
+          "rows": [
+            [
+              "T",
+              "R"
+            ],
+            [
+              "Q",
+              "S"
+            ]
+          ],
+          "ask": {
+            "who": "T",
+            "of": "S"
+          },
+          "options": [
+            {
+              "text": "Son",
+              "means": {
+                "rel": "son"
+              }
+            },
+            {
+              "text": "Husband",
+              "means": {
+                "rel": "husband"
+              }
+            },
+            {
+              "text": "Brother",
+              "means": {
+                "rel": "brother"
+              }
+            },
+            {
+              "text": "Father",
+              "means": {
+                "rel": "father"
+              }
+            }
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "f1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "path",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "aec93201",
+        "answer": {
+          "value": 4,
+          "label": "T is S's father"
+        }
+      }
+    },
+    {
+      "id": "6beeb5b0-25f7-46ee-9fb3-4acee879d40f",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "familyTree",
+        "params": {
+          "people": [
+            {
+              "id": "Reema",
+              "sex": "f"
+            },
+            {
+              "id": "D",
+              "sex": "f",
+              "label": "daughter"
+            },
+            {
+              "id": "H",
+              "sex": "m",
+              "label": "husband"
+            },
+            {
+              "id": "boy",
+              "sex": "m",
+              "label": "the boy"
+            }
+          ],
+          "facts": [
+            {
+              "rel": "parent",
+              "a": "Reema",
+              "b": "D",
+              "step": "f1"
+            },
+            {
+              "rel": "spouse",
+              "a": "Reema",
+              "b": "H",
+              "step": "f1"
+            },
+            {
+              "rel": "parent",
+              "a": "H",
+              "b": "boy",
+              "step": "f2"
+            }
+          ],
+          "rows": [
+            [
+              "Reema",
+              "H"
+            ],
+            [
+              "D",
+              "boy"
+            ]
+          ],
+          "ask": {
+            "who": "boy",
+            "of": "D"
+          },
+          "options": [
+            {
+              "text": "Father",
+              "means": {
+                "rel": "father"
+              }
+            },
+            {
+              "text": "Son",
+              "means": {
+                "rel": "son"
+              }
+            },
+            {
+              "text": "Brother",
+              "means": {
+                "rel": "brother"
+              }
+            },
+            {
+              "text": "Father’s brother",
+              "means": {
+                "chain": [
+                  "father",
+                  "brother"
+                ]
+              }
+            }
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "f1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "f2",
+              "path",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "6a7d7504",
+        "answer": {
+          "value": 3,
+          "label": "her brother"
+        }
+      }
+    },
+    {
+      "id": "6ced81d6-88fd-426b-ba35-3e75887e10b4",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "familyTree",
+        "params": {
+          "people": [
+            {
+              "id": "A",
+              "sex": "m"
+            },
+            {
+              "id": "B",
+              "sex": "?"
+            },
+            {
+              "id": "C",
+              "sex": "f"
+            },
+            {
+              "id": "D",
+              "sex": "m"
+            }
+          ],
+          "facts": [
+            {
+              "rel": "sibling",
+              "a": "A",
+              "b": "B",
+              "step": "f1"
+            },
+            {
+              "rel": "sibling",
+              "a": "C",
+              "b": "B",
+              "step": "f1"
+            },
+            {
+              "rel": "parent",
+              "a": "D",
+              "b": "C",
+              "step": "f2"
+            }
+          ],
+          "rows": [
+            [
+              "D"
+            ],
+            [
+              "A",
+              "B",
+              "C"
+            ]
+          ],
+          "ask": {
+            "who": "D",
+            "of": "A"
+          },
+          "options": [
+            {
+              "text": "Father",
+              "means": {
+                "rel": "father"
+              }
+            },
+            {
+              "text": "Uncle",
+              "means": {
+                "rel": "uncle"
+              }
+            },
+            {
+              "text": "Brother",
+              "means": {
+                "rel": "brother"
+              }
+            },
+            {
+              "text": "Grandfather",
+              "means": {
+                "rel": "grandfather"
+              }
+            }
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "f1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "f2",
+              "path",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "77b81f30",
+        "answer": {
+          "value": 1,
+          "label": "D is A's father"
+        }
+      }
+    },
+    {
+      "id": "6cf39ae4-3503-4e27-bd5e-d10d1f68e06b",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "familyTree",
+        "params": {
+          "people": [
+            {
+              "id": "Rahul",
+              "sex": "m"
+            },
+            {
+              "id": "Mo",
+              "sex": "f",
+              "label": "mother"
+            },
+            {
+              "id": "GF",
+              "sex": "m",
+              "label": "her father"
+            },
+            {
+              "id": "GGF",
+              "sex": "m",
+              "label": "her grandpa"
+            },
+            {
+              "id": "Sis",
+              "sex": "f",
+              "label": "competitor"
+            }
+          ],
+          "facts": [
+            {
+              "rel": "parent",
+              "a": "Mo",
+              "b": "Rahul",
+              "step": "f1"
+            },
+            {
+              "rel": "parent",
+              "a": "GF",
+              "b": "Mo",
+              "step": "f1"
+            },
+            {
+              "rel": "parent",
+              "a": "GGF",
+              "b": "GF",
+              "step": "f1"
+            },
+            {
+              "rel": "parent",
+              "a": "Mo",
+              "b": "Sis",
+              "step": "f2"
+            }
+          ],
+          "rows": [
+            [
+              "GGF"
+            ],
+            [
+              "GF"
+            ],
+            [
+              "Mo"
+            ],
+            [
+              "Rahul",
+              "Sis"
+            ]
+          ],
+          "ask": {
+            "who": "Sis",
+            "of": "Rahul"
+          },
+          "options": [
+            {
+              "text": "Sister",
+              "means": {
+                "rel": "sister"
+              }
+            },
+            {
+              "text": "Maternal grandmother",
+              "means": {
+                "rel": "maternal grandmother"
+              }
+            },
+            {
+              "text": "Mother",
+              "means": {
+                "rel": "mother"
+              }
+            },
+            {
+              "text": "Daughter",
+              "means": {
+                "rel": "daughter"
+              }
+            }
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "f1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "f2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "path",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "3c6cc3b2",
+        "answer": {
+          "value": 1,
+          "label": "Rahul's sister"
+        }
+      }
+    },
+    {
+      "id": "6e6915fb-2add-4a97-a9de-0e3a3d12c06f",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "familyTree",
+        "params": {
+          "people": [
+            {
+              "id": "Param",
+              "sex": "m"
+            },
+            {
+              "id": "Fa",
+              "sex": "m",
+              "label": "father"
+            },
+            {
+              "id": "Mo",
+              "sex": "f",
+              "label": "mother"
+            },
+            {
+              "id": "GM",
+              "sex": "f",
+              "label": "the woman"
+            }
+          ],
+          "facts": [
+            {
+              "rel": "parent",
+              "a": "Fa",
+              "b": "Param",
+              "step": "f1"
+            },
+            {
+              "rel": "spouse",
+              "a": "Fa",
+              "b": "Mo",
+              "step": "f2"
+            },
+            {
+              "rel": "parent",
+              "a": "GM",
+              "b": "Fa",
+              "step": "f3"
+            }
+          ],
+          "rows": [
+            [
+              "GM"
+            ],
+            [
+              "Fa",
+              "Mo"
+            ],
+            [
+              "Param"
+            ]
+          ],
+          "ask": {
+            "who": "Param",
+            "of": "GM"
+          },
+          "options": [
+            {
+              "text": "Father",
+              "means": {
+                "rel": "father"
+              }
+            },
+            {
+              "text": "Brother",
+              "means": {
+                "rel": "brother"
+              }
+            },
+            {
+              "text": "Grandson",
+              "means": {
+                "rel": "grandson"
+              }
+            },
+            {
+              "text": "Son",
+              "means": {
+                "rel": "son"
+              }
+            }
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "f1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "f2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "f3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "path",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "b79ab4e2",
+        "answer": {
+          "value": 3,
+          "label": "Param is her grandson"
+        }
+      }
+    },
+    {
+      "id": "7318617c-da3f-4111-9110-ff0a5e039fa0",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "familyTree",
+        "params": {
+          "people": [
+            {
+              "id": "P",
+              "sex": "m"
+            },
+            {
+              "id": "Q",
+              "sex": "f"
+            },
+            {
+              "id": "R",
+              "sex": "?"
+            }
+          ],
+          "facts": [
+            {
+              "rel": "parent",
+              "a": "P",
+              "b": "Q",
+              "step": "f1"
+            },
+            {
+              "rel": "sibling",
+              "a": "Q",
+              "b": "R",
+              "step": "f2"
+            }
+          ],
+          "rows": [
+            [
+              "P"
+            ],
+            [
+              "Q",
+              "R"
+            ]
+          ],
+          "ask": {
+            "who": "P",
+            "of": "R"
+          },
+          "options": [
+            {
+              "text": "P is R's uncle",
+              "means": {
+                "rel": "uncle"
+              }
+            },
+            {
+              "text": "Q is R's mother",
+              "means": {
+                "who": "Q",
+                "of": "R",
+                "rel": "mother"
+              }
+            },
+            {
+              "text": "P is R’s father",
+              "means": {
+                "rel": "father"
+              }
+            },
+            {
+              "text": "R is P’s mother",
+              "means": {
+                "who": "R",
+                "of": "P",
+                "rel": "mother"
+              }
+            }
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "f1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "f2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "path",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "d674c21f",
+        "answer": {
+          "value": 3,
+          "label": "P is R's father"
+        }
+      }
+    },
+    {
+      "id": "754b72ad-4fdf-442c-a8fd-d59e2c9a9deb",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "familyTree",
+        "params": {
+          "people": [
+            {
+              "id": "F",
+              "sex": "m"
+            },
+            {
+              "id": "C",
+              "sex": "f"
+            },
+            {
+              "id": "B",
+              "sex": "m"
+            },
+            {
+              "id": "A",
+              "sex": "f"
+            },
+            {
+              "id": "D",
+              "sex": "m"
+            }
+          ],
+          "facts": [
+            {
+              "rel": "parent",
+              "a": "B",
+              "b": "C",
+              "step": "f1"
+            },
+            {
+              "rel": "parent",
+              "a": "A",
+              "b": "C",
+              "step": "f1"
+            },
+            {
+              "rel": "spouse",
+              "a": "A",
+              "b": "B",
+              "step": "f1"
+            },
+            {
+              "rel": "spouse",
+              "a": "D",
+              "b": "C",
+              "step": "f2"
+            },
+            {
+              "rel": "parent",
+              "a": "C",
+              "b": "F",
+              "step": "f3"
+            }
+          ],
+          "rows": [
+            [
+              "B",
+              "A"
+            ],
+            [
+              "C",
+              "D"
+            ],
+            [
+              "F"
+            ]
+          ],
+          "ask": {
+            "who": "D",
+            "of": "F"
+          },
+          "options": [
+            {
+              "text": "Brother-in-law",
+              "means": {
+                "rel": "brother-in-law"
+              }
+            },
+            {
+              "text": "Father",
+              "means": {
+                "rel": "father"
+              }
+            },
+            {
+              "text": "Father-in-law",
+              "means": {
+                "rel": "father-in-law"
+              }
+            },
+            {
+              "text": "Brother",
+              "means": {
+                "rel": "brother"
+              }
+            }
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "f1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "f2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "f3",
+              "path",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "818d6486",
+        "answer": {
+          "value": 2,
+          "label": "D is F's father"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

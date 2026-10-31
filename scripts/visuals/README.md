@@ -185,6 +185,73 @@ takes the FIRST kind that fits; anything left keeps its still solution.
   different clause (brief rule added). Labels with "∥" drew a solid block:
   `plainLabel` now refuses it (4 live visuals relabelled with `--replace`).
 
+**Reasoning scenes** (SSC CGL, owner 2026-10-31: letter codes, then family
+trees, then circle diagrams; ranking rows use `sketch`):
+- `letterStrip` (brief `briefs/letter-strip-draft.md`, spec
+  `tests/visuals-letter-strip.test.ts`): a letter code as a pipeline of up to 4
+  steps (shift by a number, a repeated list or by place; opposite letter;
+  reverse, swap, swap in pairs; letters as numbers, or added up). The scene
+  puts every example word through the rule and refuses it unless each gives
+  its printed code, then applies it to the asked word (or, for a decode, to
+  each option) and checks the one option that matches. Agents run
+  `tools/check-drafts.ts --scene=letterStrip` on their own file, no database.
+- `familyTree` (brief `briefs/family-tree-draft.md`, specs
+  `tests/visuals-family-tree.test.ts` + `visuals-kinship.test.ts`): blood
+  relations. People, facts (parent / spouse / sibling, each on a beat f1..f8)
+  and rows; the scene checks the rows against the facts and builds the family
+  with the exam's conventions (`lib/visuals/kinship.ts`: a spouse shares the
+  children, siblings share parents; about 35 relation words, each defined
+  once as chains). Every option is FOLLOWED on the family; a sex not stated
+  is tried both ways, and "cannot be determined" holds only when no other
+  option holds for every allowed sex. The route lights up, its steps named by
+  the sex every allowed family agrees on.
+- `circles` (brief `briefs/circles-draft.md`, spec `tests/visuals-syllogism.test.ts`):
+  syllogisms and "which Venn diagram" questions. The drafter's circles must
+  show every statement (all = inside, no = apart, some = meet, overlap);
+  whether a conclusion follows is decided by `lib/visuals/syllogism.ts`,
+  which tries every way 2 to 4 sets can overlap (each set non-empty): a
+  definite conclusion must hold in all, a possibility in one, and two that
+  never agree form an either/or. Labels are placed by the scene, never on an
+  outline (`labelBoxes`). A "which diagram" question names the key's figure;
+  only that match is checked by eye, so review it beside the option picture
+  (the review sheet does not show option images: build a side-by-side page).
+
+**Reasoning refinement log:**
+- 2026-10-31, SSC CGL Coding-Decoding (247 with a solution, 9 slices of 28,
+  3 agents at a time): 162 drawn (`data/ls-ssc-cd-1..9`), 85 decided none
+  (`data/decided-2026-10-31-ssc-cd-*`): letter-digit or symbol tables 29, word
+  or sentence codes 26, rules on the letter COUNT or a product 10, vowel /
+  consonant rules 9, fixed reorderings the steps cannot say and single-letter
+  "words" 11. Every check line agreed with the key; agents matched hand drafts
+  on 5 of 5. One solution misprinted an in-between word (LPANT for LPATN),
+  fixed in `solution-fixes/2026-10-31-ssc-cd.json`. Review changes: codes are
+  printed as the question prints them (9, 12, 26, 23, not 9122623); a shift
+  on named letters drops "each letter". Candidates for new steps, if worth
+  it: a vowel/consonant selector (9) and a single-letter word (2).
+- 2026-10-31, SSC CGL Blood Relations (154 with a solution, 7 slices of 22):
+  134 drawn (`data/ft-ssc-br-1..7`), 20 decided none: coded-expression options
+  6, "which statement is NOT correct" 4, placements the solution gives only
+  as one possibility 3 (dropped at review: a sister or a cousin, a daughter
+  or a niece), loose words (sister-in-law for a cousin's wife, grand aunt) 3,
+  and one each of a count question, an ambiguous stem, a key by elimination
+  and a guessed placement. Review fixes: a person asked about themself reads
+  "Azad himself"; the listener reads "your father". Candidate addition: a
+  false-statement ask (4).
+- 2026-10-31, SSC CGL Syllogism (113, 6 slices) and Venn Diagrams (44, 2
+  slices): 109 + 28 drawn (`data/ci-ssc-sy-*`, `ci-ssc-vn-*`), 4 + 16 decided
+  none (count-from-the-figure 14, five terms, contradictory statements, an
+  either/or pair the key ignores, a key picture that is only a best fit, a
+  reverse question). Review changes: labels sat on outlines ('Woman',
+  'Brothers'), so the scene now places them; conclusions show on their own
+  beat, since solutions discuss III before II. Every Venn drawing was matched
+  against its key option's picture. check-drafts now enforces the 32-character
+  answer label the assembler drops on.
+- 2026-10-31, SSC CGL Order, Ranking and Arrangement (19 with a solution,
+  `sketch`): 13 drawn (`data/sk-ssc-rk`): rows counted from both ends, day
+  timelines, floor stacks, facing-North rows; 6 decided none (chronology
+  lists, circular seating, grid puzzles, a two-arrangement "cannot be
+  determined"). label-overlap --edges: 0 hits.
+
 ## Pieces
 
 | Piece | Where |

@@ -1,0 +1,1390 @@
+{
+  "//": "Assembled from agent drafts (circles).",
+  "visuals": [
+    {
+      "id": "029c9353-ac3f-4353-a19a-d2308fd8756d",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "circles",
+        "params": {
+          "sets": [
+            {
+              "id": "human",
+              "label": "Humans",
+              "x": 30,
+              "y": 30,
+              "r": 26
+            },
+            {
+              "id": "woman",
+              "label": "Woman",
+              "x": 30,
+              "y": 36,
+              "r": 12
+            },
+            {
+              "id": "lion",
+              "label": "Lions",
+              "x": 78,
+              "y": 30,
+              "r": 18
+            }
+          ],
+          "statements": [
+            {
+              "form": "all",
+              "a": "woman",
+              "b": "human",
+              "show": "All women are humans",
+              "step": "s1"
+            },
+            {
+              "form": "no",
+              "a": "lion",
+              "b": "human",
+              "show": "No lion is a human",
+              "step": "s2"
+            },
+            {
+              "form": "no",
+              "a": "lion",
+              "b": "woman",
+              "show": "No lion is a woman",
+              "step": "s3"
+            }
+          ],
+          "figure": 4
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "7c933d92",
+        "answer": {
+          "value": 4,
+          "label": "One inside another, one apart"
+        }
+      }
+    },
+    {
+      "id": "0366193f-b778-4b04-a852-ed9ded1d6b42",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "circles",
+        "params": {
+          "sets": [
+            {
+              "id": "sports",
+              "label": "Sports",
+              "x": 50,
+              "y": 30,
+              "r": 29
+            },
+            {
+              "id": "badminton",
+              "label": "Badminton",
+              "x": 35,
+              "y": 33,
+              "r": 13,
+              "labelAt": [
+                35,
+                33
+              ]
+            },
+            {
+              "id": "hockey",
+              "label": "Hockey",
+              "x": 65,
+              "y": 33,
+              "r": 13,
+              "labelAt": [
+                65,
+                33
+              ]
+            }
+          ],
+          "statements": [
+            {
+              "form": "all",
+              "a": "badminton",
+              "b": "sports",
+              "show": "Badminton is a sport",
+              "step": "s1"
+            },
+            {
+              "form": "all",
+              "a": "hockey",
+              "b": "sports",
+              "show": "Hockey is a sport",
+              "step": "s2"
+            },
+            {
+              "form": "no",
+              "a": "badminton",
+              "b": "hockey",
+              "show": "No game is both badminton and hockey",
+              "step": "s3"
+            }
+          ],
+          "figure": 1
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "8642329c",
+        "answer": {
+          "value": 1,
+          "label": "Two apart inside one"
+        }
+      }
+    },
+    {
+      "id": "055a7ea9-ccc8-4c4f-a2fc-4af68f2aaff3",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "circles",
+        "params": {
+          "sets": [
+            {
+              "id": "elec",
+              "label": "Electronics",
+              "x": 50,
+              "y": 30,
+              "r": 29
+            },
+            {
+              "id": "laptop",
+              "label": "Laptops",
+              "x": 35,
+              "y": 33,
+              "r": 13
+            },
+            {
+              "id": "oven",
+              "label": "Microwaves",
+              "x": 65,
+              "y": 33,
+              "r": 13
+            }
+          ],
+          "statements": [
+            {
+              "form": "all",
+              "a": "laptop",
+              "b": "elec",
+              "show": "All laptops are electronics",
+              "step": "s1"
+            },
+            {
+              "form": "all",
+              "a": "oven",
+              "b": "elec",
+              "show": "All microwave ovens are electronics",
+              "step": "s2"
+            },
+            {
+              "form": "no",
+              "a": "laptop",
+              "b": "oven",
+              "show": "No laptop is a microwave oven",
+              "step": "s3"
+            }
+          ],
+          "figure": 4
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "25662378",
+        "answer": {
+          "value": 4,
+          "label": "Two apart inside one"
+        }
+      }
+    },
+    {
+      "id": "1157f738-6722-494a-a1c0-29b3ddddfec5",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "circles",
+        "params": {
+          "sets": [
+            {
+              "id": "sea",
+              "label": "Sea creatures",
+              "x": 50,
+              "y": 30,
+              "r": 29
+            },
+            {
+              "id": "dolphin",
+              "label": "Dolphins",
+              "x": 35,
+              "y": 33,
+              "r": 13,
+              "labelAt": [
+                35,
+                33
+              ]
+            },
+            {
+              "id": "shark",
+              "label": "Sharks",
+              "x": 65,
+              "y": 33,
+              "r": 13,
+              "labelAt": [
+                65,
+                33
+              ]
+            }
+          ],
+          "statements": [
+            {
+              "form": "all",
+              "a": "dolphin",
+              "b": "sea",
+              "show": "All dolphins are sea creatures",
+              "step": "s1"
+            },
+            {
+              "form": "all",
+              "a": "shark",
+              "b": "sea",
+              "show": "All sharks are sea creatures",
+              "step": "s2"
+            },
+            {
+              "form": "no",
+              "a": "dolphin",
+              "b": "shark",
+              "show": "No dolphin is a shark",
+              "step": "s3"
+            }
+          ],
+          "figure": 2
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "53749187",
+        "answer": {
+          "value": 2,
+          "label": "Two apart inside one"
+        }
+      }
+    },
+    {
+      "id": "1a9bc85f-6e40-4450-85bf-8d2f98de9c5b",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "circles",
+        "params": {
+          "sets": [
+            {
+              "id": "women",
+              "label": "Women",
+              "x": 38,
+              "y": 30,
+              "r": 26
+            },
+            {
+              "id": "mother",
+              "label": "Mothers",
+              "x": 32,
+              "y": 34,
+              "r": 12
+            },
+            {
+              "id": "singer",
+              "label": "Singers",
+              "x": 58,
+              "y": 34,
+              "r": 20
+            }
+          ],
+          "statements": [
+            {
+              "form": "all",
+              "a": "mother",
+              "b": "women",
+              "show": "All mothers are women",
+              "step": "s1"
+            },
+            {
+              "form": "overlap",
+              "a": "singer",
+              "b": "women",
+              "show": "Some women are singers, some not",
+              "step": "s2"
+            },
+            {
+              "form": "overlap",
+              "a": "singer",
+              "b": "mother",
+              "show": "Some mothers are singers, some not",
+              "step": "s3"
+            }
+          ],
+          "figure": 3
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "a1b3c889",
+        "answer": {
+          "value": 3,
+          "label": "Third crosses both, goes out"
+        }
+      }
+    },
+    {
+      "id": "2809b476-413c-4469-8a59-04597468fd50",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "circles",
+        "params": {
+          "sets": [
+            {
+              "id": "clothes",
+              "label": "Clothes",
+              "x": 38,
+              "y": 30,
+              "r": 26
+            },
+            {
+              "id": "shirt",
+              "label": "Shirts",
+              "x": 32,
+              "y": 34,
+              "r": 12
+            },
+            {
+              "id": "linen",
+              "label": "Linen",
+              "x": 58,
+              "y": 34,
+              "r": 20
+            }
+          ],
+          "statements": [
+            {
+              "form": "all",
+              "a": "shirt",
+              "b": "clothes",
+              "show": "All shirts are clothes",
+              "step": "s1"
+            },
+            {
+              "form": "overlap",
+              "a": "linen",
+              "b": "clothes",
+              "show": "Some clothes are linen, some not",
+              "step": "s2"
+            },
+            {
+              "form": "overlap",
+              "a": "linen",
+              "b": "shirt",
+              "show": "Some shirts are linen, some not",
+              "step": "s3"
+            }
+          ],
+          "figure": 4
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "9423a034",
+        "answer": {
+          "value": 4,
+          "label": "Third crosses both, goes out"
+        }
+      }
+    },
+    {
+      "id": "2dc79ff9-adff-4652-b398-9e5dfc32da04",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "circles",
+        "params": {
+          "sets": [
+            {
+              "id": "reptile",
+              "label": "Reptiles",
+              "x": 50,
+              "y": 30,
+              "r": 29
+            },
+            {
+              "id": "snake",
+              "label": "Snakes",
+              "x": 35,
+              "y": 33,
+              "r": 13,
+              "labelAt": [
+                35,
+                33
+              ]
+            },
+            {
+              "id": "croc",
+              "label": "Crocodiles",
+              "x": 65,
+              "y": 33,
+              "r": 13,
+              "labelAt": [
+                65,
+                33
+              ]
+            }
+          ],
+          "statements": [
+            {
+              "form": "all",
+              "a": "snake",
+              "b": "reptile",
+              "show": "All snakes are reptiles",
+              "step": "s1"
+            },
+            {
+              "form": "all",
+              "a": "croc",
+              "b": "reptile",
+              "show": "All crocodiles are reptiles",
+              "step": "s2"
+            },
+            {
+              "form": "no",
+              "a": "snake",
+              "b": "croc",
+              "show": "No snake is a crocodile",
+              "step": "s3"
+            }
+          ],
+          "figure": 1
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "75c9f857",
+        "answer": {
+          "value": 1,
+          "label": "Two apart inside one"
+        }
+      }
+    },
+    {
+      "id": "2ea98c2c-c66e-4766-9288-e1dbc3cccc00",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "circles",
+        "params": {
+          "sets": [
+            {
+              "id": "animal",
+              "label": "Animals",
+              "x": 50,
+              "y": 30,
+              "r": 29
+            },
+            {
+              "id": "reptile",
+              "label": "Reptiles",
+              "x": 50,
+              "y": 36,
+              "r": 20
+            },
+            {
+              "id": "alli",
+              "label": "Alligators",
+              "x": 50,
+              "y": 41,
+              "r": 10
+            }
+          ],
+          "statements": [
+            {
+              "form": "all",
+              "a": "alli",
+              "b": "reptile",
+              "show": "Every alligator is a reptile",
+              "step": "s1"
+            },
+            {
+              "form": "all",
+              "a": "reptile",
+              "b": "animal",
+              "show": "Every reptile is an animal",
+              "step": "s2"
+            }
+          ],
+          "figure": 3
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "0c29dd7f",
+        "answer": {
+          "value": 3,
+          "label": "Three nested circles"
+        }
+      }
+    },
+    {
+      "id": "36e97931-309d-4f4a-a51b-15fbea2699d9",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "circles",
+        "params": {
+          "sets": [
+            {
+              "id": "male",
+              "label": "Males",
+              "x": 50,
+              "y": 30,
+              "r": 29
+            },
+            {
+              "id": "father",
+              "label": "Fathers",
+              "x": 40,
+              "y": 33,
+              "r": 13
+            },
+            {
+              "id": "brother",
+              "label": "Brothers",
+              "x": 60,
+              "y": 33,
+              "r": 13
+            }
+          ],
+          "statements": [
+            {
+              "form": "all",
+              "a": "father",
+              "b": "male",
+              "show": "All fathers are males",
+              "step": "s1"
+            },
+            {
+              "form": "all",
+              "a": "brother",
+              "b": "male",
+              "show": "All brothers are males",
+              "step": "s2"
+            },
+            {
+              "form": "overlap",
+              "a": "father",
+              "b": "brother",
+              "show": "Some fathers are brothers",
+              "step": "s3"
+            }
+          ],
+          "figure": 2
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "b5c5f6eb",
+        "answer": {
+          "value": 2,
+          "label": "Two overlapping inside one"
+        }
+      }
+    },
+    {
+      "id": "52a4b0c9-1fa5-4ede-8c0f-b10ca5c0748c",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "circles",
+        "params": {
+          "sets": [
+            {
+              "id": "women",
+              "label": "Women",
+              "x": 36,
+              "y": 24,
+              "r": 17
+            },
+            {
+              "id": "prof",
+              "label": "Professor",
+              "x": 64,
+              "y": 24,
+              "r": 17
+            },
+            {
+              "id": "player",
+              "label": "Players",
+              "x": 50,
+              "y": 42,
+              "r": 17,
+              "labelAt": [
+                50,
+                52
+              ]
+            }
+          ],
+          "statements": [
+            {
+              "form": "overlap",
+              "a": "women",
+              "b": "prof",
+              "show": "Some women are professors",
+              "step": "s1"
+            },
+            {
+              "form": "overlap",
+              "a": "women",
+              "b": "player",
+              "show": "Some women are players",
+              "step": "s2"
+            },
+            {
+              "form": "overlap",
+              "a": "prof",
+              "b": "player",
+              "show": "Some professors are players",
+              "step": "s3"
+            }
+          ],
+          "figure": 3
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "4759d165",
+        "answer": {
+          "value": 3,
+          "label": "Three overlapping circles"
+        }
+      }
+    },
+    {
+      "id": "698cf7cf-870b-4ec5-aeca-86950cd9a594",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "circles",
+        "params": {
+          "sets": [
+            {
+              "id": "edu",
+              "label": "Educated",
+              "x": 38,
+              "y": 30,
+              "r": 26
+            },
+            {
+              "id": "grad",
+              "label": "Graduates",
+              "x": 32,
+              "y": 34,
+              "r": 12
+            },
+            {
+              "id": "unemp",
+              "label": "Unemployed",
+              "x": 58,
+              "y": 34,
+              "r": 20
+            }
+          ],
+          "statements": [
+            {
+              "form": "all",
+              "a": "grad",
+              "b": "edu",
+              "show": "Every graduate is educated",
+              "step": "s1"
+            },
+            {
+              "form": "overlap",
+              "a": "unemp",
+              "b": "edu",
+              "show": "Some educated people are unemployed",
+              "step": "s2"
+            },
+            {
+              "form": "overlap",
+              "a": "unemp",
+              "b": "grad",
+              "show": "Some graduates are unemployed",
+              "step": "s3"
+            }
+          ],
+          "figure": 2
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "4144091f",
+        "answer": {
+          "value": 2,
+          "label": "Third circle cuts across both"
+        }
+      }
+    },
+    {
+      "id": "6fd94b09-c272-4106-a524-bbbd0344a199",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "circles",
+        "params": {
+          "sets": [
+            {
+              "id": "min",
+              "label": "Ministers",
+              "x": 36,
+              "y": 24,
+              "r": 17
+            },
+            {
+              "id": "farm",
+              "label": "Farmers",
+              "x": 64,
+              "y": 24,
+              "r": 17
+            },
+            {
+              "id": "eng",
+              "label": "Engineers",
+              "x": 50,
+              "y": 42,
+              "r": 17,
+              "labelAt": [
+                50,
+                52
+              ]
+            }
+          ],
+          "statements": [
+            {
+              "form": "overlap",
+              "a": "min",
+              "b": "farm",
+              "show": "A minister can be a farmer",
+              "step": "s1"
+            },
+            {
+              "form": "overlap",
+              "a": "min",
+              "b": "eng",
+              "show": "A minister can be an engineer",
+              "step": "s2"
+            },
+            {
+              "form": "overlap",
+              "a": "farm",
+              "b": "eng",
+              "show": "A farmer can also be an engineer",
+              "step": "s3"
+            }
+          ],
+          "figure": 3
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "0192572a",
+        "answer": {
+          "value": 3,
+          "label": "Three overlapping circles"
+        }
+      }
+    },
+    {
+      "id": "76a2666c-9cf4-4e14-81c0-b828f40effb5",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "circles",
+        "params": {
+          "sets": [
+            {
+              "id": "animal",
+              "label": "Animals",
+              "x": 38,
+              "y": 30,
+              "r": 26
+            },
+            {
+              "id": "insect",
+              "label": "Insects",
+              "x": 32,
+              "y": 34,
+              "r": 12
+            },
+            {
+              "id": "poison",
+              "label": "Poisonous",
+              "x": 58,
+              "y": 34,
+              "r": 20
+            }
+          ],
+          "statements": [
+            {
+              "form": "all",
+              "a": "insect",
+              "b": "animal",
+              "show": "All insects are animals",
+              "step": "s1"
+            },
+            {
+              "form": "overlap",
+              "a": "poison",
+              "b": "animal",
+              "show": "Some animals are poisonous, some not",
+              "step": "s2"
+            },
+            {
+              "form": "overlap",
+              "a": "poison",
+              "b": "insect",
+              "show": "Some insects are poisonous, some not",
+              "step": "s3"
+            }
+          ],
+          "figure": 1
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "88dea4aa",
+        "answer": {
+          "value": 1,
+          "label": "Third circle cuts across both"
+        }
+      }
+    },
+    {
+      "id": "77270686-d08d-4544-b1e2-744501a4de9f",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "circles",
+        "params": {
+          "sets": [
+            {
+              "id": "asia",
+              "label": "Asia",
+              "x": 30,
+              "y": 30,
+              "r": 26
+            },
+            {
+              "id": "dubai",
+              "label": "Dubai",
+              "x": 30,
+              "y": 36,
+              "r": 12
+            },
+            {
+              "id": "africa",
+              "label": "Africa",
+              "x": 78,
+              "y": 30,
+              "r": 18
+            }
+          ],
+          "statements": [
+            {
+              "form": "all",
+              "a": "dubai",
+              "b": "asia",
+              "show": "Dubai lies wholly inside Asia",
+              "step": "s1"
+            },
+            {
+              "form": "no",
+              "a": "africa",
+              "b": "asia",
+              "show": "Africa has nothing in common with Asia",
+              "step": "s2"
+            },
+            {
+              "form": "no",
+              "a": "africa",
+              "b": "dubai",
+              "show": "Africa has nothing in common with Dubai",
+              "step": "s3"
+            }
+          ],
+          "figure": 4
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "9b4f0376",
+        "answer": {
+          "value": 4,
+          "label": "One inside another, one apart"
+        }
+      }
+    },
+    {
+      "id": "7ee34ee5-30ab-4ef3-a1ad-ada1f0de084e",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "circles",
+        "params": {
+          "sets": [
+            {
+              "id": "player",
+              "label": "Player",
+              "x": 30,
+              "y": 30,
+              "r": 26
+            },
+            {
+              "id": "captain",
+              "label": "Captain",
+              "x": 30,
+              "y": 36,
+              "r": 12
+            },
+            {
+              "id": "coach",
+              "label": "Coach",
+              "x": 78,
+              "y": 30,
+              "r": 18
+            }
+          ],
+          "statements": [
+            {
+              "form": "all",
+              "a": "captain",
+              "b": "player",
+              "show": "Every captain is a player",
+              "step": "s1"
+            },
+            {
+              "form": "no",
+              "a": "coach",
+              "b": "player",
+              "show": "No coach is a player",
+              "step": "s2"
+            },
+            {
+              "form": "no",
+              "a": "coach",
+              "b": "captain",
+              "show": "No coach is a captain",
+              "step": "s3"
+            }
+          ],
+          "figure": 1
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "e571a0b0",
+        "answer": {
+          "value": 1,
+          "label": "One inside another, one apart"
+        }
+      }
+    },
+    {
+      "id": "843c6bb4-1805-4830-9813-082eac7d66ca",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "circles",
+        "params": {
+          "sets": [
+            {
+              "id": "pen",
+              "label": "Pens",
+              "x": 17,
+              "y": 30,
+              "r": 14
+            },
+            {
+              "id": "book",
+              "label": "Books",
+              "x": 50,
+              "y": 30,
+              "r": 14
+            },
+            {
+              "id": "eraser",
+              "label": "Erasers",
+              "x": 83,
+              "y": 30,
+              "r": 14
+            }
+          ],
+          "statements": [
+            {
+              "form": "no",
+              "a": "pen",
+              "b": "book",
+              "show": "No pen is a book",
+              "step": "s1"
+            },
+            {
+              "form": "no",
+              "a": "pen",
+              "b": "eraser",
+              "show": "No pen is an eraser",
+              "step": "s2"
+            },
+            {
+              "form": "no",
+              "a": "book",
+              "b": "eraser",
+              "show": "No book is an eraser",
+              "step": "s3"
+            }
+          ],
+          "figure": 3
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "d02fceb1",
+        "answer": {
+          "value": 3,
+          "label": "Three separate circles"
+        }
+      }
+    },
+    {
+      "id": "8594e30f-862e-41ce-8ab9-5e08423c829f",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "circles",
+        "params": {
+          "sets": [
+            {
+              "id": "actor",
+              "label": "Actors",
+              "x": 36,
+              "y": 24,
+              "r": 17
+            },
+            {
+              "id": "comic",
+              "label": "Comedians",
+              "x": 64,
+              "y": 24,
+              "r": 17
+            },
+            {
+              "id": "pol",
+              "label": "Politicians",
+              "x": 50,
+              "y": 42,
+              "r": 17,
+              "labelAt": [
+                50,
+                52
+              ]
+            }
+          ],
+          "statements": [
+            {
+              "form": "overlap",
+              "a": "actor",
+              "b": "comic",
+              "show": "Some actors are comedians, some not",
+              "step": "s1"
+            },
+            {
+              "form": "overlap",
+              "a": "actor",
+              "b": "pol",
+              "show": "Politicians can be actors",
+              "step": "s2"
+            },
+            {
+              "form": "overlap",
+              "a": "comic",
+              "b": "pol",
+              "show": "Politicians can be comedians",
+              "step": "s3"
+            }
+          ],
+          "figure": 4
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "185aa422",
+        "answer": {
+          "value": 4,
+          "label": "Three overlapping circles"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

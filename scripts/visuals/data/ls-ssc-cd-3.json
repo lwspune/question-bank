@@ -1,0 +1,1026 @@
+{
+  "//": "Assembled from agent drafts (letterStrip).",
+  "visuals": [
+    {
+      "id": "40e9a4c6-fb1c-44bd-8439-aec275e279af",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "letterStrip",
+        "params": {
+          "examples": [
+            {
+              "word": "FABRIC",
+              "code": "GZCQJB"
+            },
+            {
+              "word": "BITTER",
+              "code": "CHUSFQ"
+            }
+          ],
+          "rule": [
+            {
+              "op": "shift",
+              "by": [
+                1,
+                -1
+              ]
+            }
+          ],
+          "ask": {
+            "word": "ANIMAL"
+          },
+          "options": [
+            "CNJMCL",
+            "CMIMBJ",
+            "ANINCL",
+            "BMJLBK"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "example"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "check"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "apply"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "ac9014fa",
+        "answer": {
+          "value": 4,
+          "label": "BMJLBK"
+        }
+      }
+    },
+    {
+      "id": "413b2c50-53b9-49cb-85ac-b0a936615726",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "letterStrip",
+        "params": {
+          "examples": [
+            {
+              "word": "ABCDE",
+              "code": "EDCBA"
+            },
+            {
+              "word": "FGHIJ",
+              "code": "JIHGF"
+            },
+            {
+              "word": "KLMNO",
+              "code": "ONMLK"
+            }
+          ],
+          "rule": [
+            {
+              "op": "reverse"
+            }
+          ],
+          "ask": {
+            "word": "PQRST"
+          },
+          "options": [
+            "TSRQP",
+            "TSRQQ",
+            "TSSQP",
+            "TSRRP"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "example",
+              "check"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "apply",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "116c2172",
+        "answer": {
+          "value": 1,
+          "label": "TSRQP"
+        }
+      }
+    },
+    {
+      "id": "42e8667b-0232-455c-bb73-d991e7dfdd9a",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "letterStrip",
+        "params": {
+          "examples": [
+            {
+              "word": "MANAGE",
+              "code": "HJDQDP"
+            },
+            {
+              "word": "LITTLE",
+              "code": "HOWWLO"
+            }
+          ],
+          "rule": [
+            {
+              "op": "reverse"
+            },
+            {
+              "op": "shift",
+              "by": 3
+            }
+          ],
+          "ask": {
+            "word": "POLICY"
+          },
+          "options": [
+            "CPMDOZ",
+            "QPMJDZ",
+            "YCILOP",
+            "BFLORS"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "example"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "check"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "apply",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "fe0d70a0",
+        "answer": {
+          "value": 4,
+          "label": "BFLORS"
+        }
+      }
+    },
+    {
+      "id": "431b15a7-3bdd-4c3a-a3a6-9602acf7dec5",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "letterStrip",
+        "params": {
+          "examples": [
+            {
+              "word": "GLOBAL",
+              "code": "221714272817"
+            },
+            {
+              "word": "FOREST",
+              "code": "23141124109"
+            }
+          ],
+          "rule": [
+            {
+              "op": "numbers",
+              "f": "27 - x + 2"
+            }
+          ],
+          "ask": {
+            "word": "IMPACT"
+          },
+          "options": [
+            "20161328269",
+            "18141126247",
+            "20161226259",
+            "20161327259"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "example"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "check"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "apply",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "e60dfcc3",
+        "answer": {
+          "value": 1,
+          "label": "20161328269"
+        }
+      }
+    },
+    {
+      "id": "46faf3f3-e704-4037-858e-f7442d843f49",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "letterStrip",
+        "params": {
+          "examples": [
+            {
+              "word": "THRIVE",
+              "code": "UISJWF"
+            }
+          ],
+          "rule": [
+            {
+              "op": "shift",
+              "by": 1
+            }
+          ],
+          "ask": {
+            "word": "UISJWF"
+          },
+          "options": [
+            "VJTKXG",
+            "VJTLXG",
+            "VKTKXG",
+            "VJTKXH"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "example"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "apply",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "42d3e9da",
+        "answer": {
+          "value": 1,
+          "label": "VJTKXG"
+        }
+      }
+    },
+    {
+      "id": "48e85b62-c031-46c2-9d5f-22f472daa719",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "letterStrip",
+        "params": {
+          "examples": [
+            {
+              "word": "BRING",
+              "code": "7149182"
+            },
+            {
+              "word": "SMILE",
+              "code": "51291319"
+            }
+          ],
+          "rule": [
+            {
+              "op": "reverse"
+            },
+            {
+              "op": "numbers",
+              "f": "x"
+            }
+          ],
+          "ask": {
+            "word": "FORGIVE"
+          },
+          "options": [
+            "5229718156",
+            "5219717166",
+            "5228717156",
+            "5229179156"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "example"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "check"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "apply",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "0f1c636e",
+        "answer": {
+          "value": 1,
+          "label": "5229718156"
+        }
+      }
+    },
+    {
+      "id": "4d874f84-4285-444c-985f-45b987580829",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "letterStrip",
+        "params": {
+          "examples": [
+            {
+              "word": "HAT",
+              "code": "8-1-20"
+            }
+          ],
+          "rule": [
+            {
+              "op": "numbers",
+              "f": "x"
+            }
+          ],
+          "ask": {
+            "word": "TAH"
+          },
+          "options": [
+            "20-1-8",
+            "8-20-1",
+            "1-20-8",
+            "20-8-1"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "example"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "apply",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "7889c32d",
+        "answer": {
+          "value": 1,
+          "label": "20-1-8"
+        }
+      }
+    },
+    {
+      "id": "4f322eda-aee8-480e-9eb3-de59f0619ecf",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "letterStrip",
+        "params": {
+          "examples": [
+            {
+              "word": "RADIO",
+              "code": "SZEHP"
+            },
+            {
+              "word": "FREQUENCY",
+              "code": "GQFPVDOBZ"
+            }
+          ],
+          "rule": [
+            {
+              "op": "shift",
+              "by": [
+                1,
+                -1
+              ]
+            }
+          ],
+          "ask": {
+            "word": "TELEVISION"
+          },
+          "options": [
+            "UDMDWHTHPM",
+            "UDMDWHTHOM",
+            "UDMDWHTHPN",
+            "UDMDWHHTPM"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "example",
+              "check"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "apply"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "af423784",
+        "answer": {
+          "value": 1,
+          "label": "UDMDWHTHPM"
+        }
+      }
+    },
+    {
+      "id": "505a81c4-a90c-47c9-9139-6f8d67e56f29",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "letterStrip",
+        "params": {
+          "examples": [
+            {
+              "word": "DXF",
+              "code": "102"
+            },
+            {
+              "word": "URO",
+              "code": "162"
+            }
+          ],
+          "rule": [
+            {
+              "op": "sum",
+              "f": "x",
+              "then": "3 * x"
+            }
+          ],
+          "ask": {
+            "word": "LNZ"
+          },
+          "options": [
+            "124",
+            "148",
+            "146",
+            "156"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "example"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "check"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "apply",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "03326aa8",
+        "answer": {
+          "value": 4,
+          "label": "156"
+        }
+      }
+    },
+    {
+      "id": "51aaaa60-06db-4db1-b894-e04400ed392e",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "letterStrip",
+        "params": {
+          "examples": [
+            {
+              "word": "WINTER",
+              "code": "XJXQKX"
+            },
+            {
+              "word": "AUTUMN",
+              "code": "TRYWWB"
+            }
+          ],
+          "rule": [
+            {
+              "op": "reverse"
+            },
+            {
+              "op": "shift",
+              "by": [
+                6,
+                5,
+                4,
+                3,
+                2,
+                1
+              ]
+            }
+          ],
+          "ask": {
+            "word": "SEASON"
+          },
+          "options": [
+            "RTXCTT",
+            "TRXCGT",
+            "TGDWTT",
+            "TTWDGT"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "example"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "check"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "apply"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "de473d43",
+        "answer": {
+          "value": 4,
+          "label": "TTWDGT"
+        }
+      }
+    },
+    {
+      "id": "54d57740-f113-4219-86c2-0a5cae6c8d23",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "letterStrip",
+        "params": {
+          "examples": [
+            {
+              "word": "MAN",
+              "code": "15316"
+            },
+            {
+              "word": "SHE",
+              "code": "21107"
+            }
+          ],
+          "rule": [
+            {
+              "op": "numbers",
+              "f": "x + 2"
+            }
+          ],
+          "ask": {
+            "word": "OUT"
+          },
+          "options": [
+            "152222",
+            "172121",
+            "172322",
+            "152120"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "example"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "check"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "apply",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "b51a556a",
+        "answer": {
+          "value": 3,
+          "label": "172322"
+        }
+      }
+    },
+    {
+      "id": "59176aae-4708-4e72-9bc0-0d3040594416",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "letterStrip",
+        "params": {
+          "examples": [
+            {
+              "word": "COLD",
+              "code": "DPME"
+            }
+          ],
+          "rule": [
+            {
+              "op": "shift",
+              "by": 1
+            }
+          ],
+          "ask": {
+            "word": "HEAT"
+          },
+          "options": [
+            "IFBU",
+            "GZBU",
+            "HGZU",
+            "IDBU"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "example"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "apply",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "de031aa3",
+        "answer": {
+          "value": 1,
+          "label": "IFBU"
+        }
+      }
+    },
+    {
+      "id": "59ee9d9d-e787-44d2-bfa3-fc09cfb0067e",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "letterStrip",
+        "params": {
+          "examples": [
+            {
+              "word": "ZCJV",
+              "code": "YBIU"
+            },
+            {
+              "word": "GKMD",
+              "code": "FJLC"
+            }
+          ],
+          "rule": [
+            {
+              "op": "shift",
+              "by": -1
+            }
+          ],
+          "ask": {
+            "word": "EYOR"
+          },
+          "options": [
+            "DWMP",
+            "DXNQ",
+            "CXNQ",
+            "QWMP"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "example",
+              "check"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "apply",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "ebe9441b",
+        "answer": {
+          "value": 2,
+          "label": "DXNQ"
+        }
+      }
+    },
+    {
+      "id": "5a9d90f6-c40d-48d7-b18e-69c014ca75a6",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "letterStrip",
+        "params": {
+          "examples": [
+            {
+              "word": "RETAINED",
+              "code": "ENIATERD"
+            },
+            {
+              "word": "MATURITY",
+              "code": "TIRUTAMY"
+            }
+          ],
+          "rule": [
+            {
+              "op": "reverse",
+              "from": 1,
+              "to": -2
+            }
+          ],
+          "ask": {
+            "word": "FIREWALL"
+          },
+          "options": [
+            "LAWEFIFR",
+            "FLIREWAL",
+            "LAWERIFL",
+            "FLLAWERI"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "example",
+              "check"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "apply",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "963564b6",
+        "answer": {
+          "value": 3,
+          "label": "LAWERIFL"
+        }
+      }
+    },
+    {
+      "id": "5cbdee14-2d23-407e-8a2d-b222ed820f64",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "letterStrip",
+        "params": {
+          "examples": [
+            {
+              "word": "PLAY",
+              "code": "RICV"
+            },
+            {
+              "word": "TREE",
+              "code": "VOGB"
+            }
+          ],
+          "rule": [
+            {
+              "op": "shift",
+              "by": [
+                2,
+                -3
+              ]
+            }
+          ],
+          "ask": {
+            "word": "BOOK"
+          },
+          "options": [
+            "HLQD",
+            "DQQH",
+            "DLQH",
+            "DLLH"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "example",
+              "check"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "apply",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "7f12d2c1",
+        "answer": {
+          "value": 3,
+          "label": "DLQH"
+        }
+      }
+    },
+    {
+      "id": "5db0ff60-fa9f-4418-976b-1b607d3d7b13",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "letterStrip",
+        "params": {
+          "examples": [
+            {
+              "word": "CERTAIN",
+              "code": "ECTRCGP"
+            },
+            {
+              "word": "DIGITAL",
+              "code": "FGIGVYN"
+            }
+          ],
+          "rule": [
+            {
+              "op": "shift",
+              "by": [
+                2,
+                -2
+              ]
+            }
+          ],
+          "ask": {
+            "word": "FACTORY"
+          },
+          "options": [
+            "HYERQPA",
+            "HCEVQTA",
+            "HYPERPA",
+            "HYERRPA"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "example"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "check"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "apply",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "e5b1049c",
+        "answer": {
+          "value": 1,
+          "label": "HYERQPA"
+        }
+      }
+    },
+    {
+      "id": "631f7e7f-6cc2-40c1-950b-9b62072f3b5b",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "letterStrip",
+        "params": {
+          "examples": [
+            {
+              "word": "MAP",
+              "code": "13116"
+            }
+          ],
+          "rule": [
+            {
+              "op": "numbers",
+              "f": "x"
+            }
+          ],
+          "ask": {
+            "word": "LAP"
+          },
+          "options": [
+            "12116",
+            "12115",
+            "12117",
+            "12114"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "example"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "apply",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "c220fd61",
+        "answer": {
+          "value": 1,
+          "label": "12116"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

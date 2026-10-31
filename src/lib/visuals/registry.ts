@@ -5,10 +5,13 @@
  */
 import { algebraSteps } from "./scenes/algebraSteps";
 import { circleArc } from "./scenes/circleArc";
+import { circles } from "./scenes/circles";
 import { coordGeometry } from "./scenes/coordGeometry";
+import { familyTree } from "./scenes/familyTree";
 import { functionGraph } from "./scenes/functionGraph";
 import { quadraticFamily } from "./scenes/quadraticFamily";
 import { rotation } from "./scenes/rotation";
+import { letterStrip } from "./scenes/letterStrip";
 import { lpRegion } from "./scenes/lpRegion";
 import { sketch } from "./scenes/sketch";
 import { setClaim } from "./scenes/setClaim";
@@ -33,6 +36,9 @@ export const SCENES: Record<string, Scene<any>> = {
   algebraSteps,
   switchCircuit,
   setClaim,
+  letterStrip,
+  familyTree,
+  circles,
 };
 
 export function getScene(id: string): Scene<any> | undefined {

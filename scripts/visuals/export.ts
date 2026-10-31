@@ -42,14 +42,23 @@ async function main() {
     image_url: string | null;
     options: { label: string; text: string; is_correct: boolean; image_url: string | null }[] | null;
   };
+  // Ids first, then filter the questions on their own columns: filtering through the
+  // embedded exams/chapters names made PostgREST plan the whole join, and on
+  // 2026-10-31 that hit the statement timeout on a 264-question chapter.
+  const ex = await db.from("exams").select("id").eq("name", exam);
+  if (ex.error) throw new Error(ex.error.message);
+  if (ex.data.length !== 1) throw new Error(`exam "${exam}": ${ex.data.length} matches`);
+  const ch = await db.from("chapters").select("id, subjects!inner(exam_id)").eq("name", chapter).eq("subjects.exam_id", ex.data[0].id);
+  if (ch.error) throw new Error(ch.error.message);
+  if (!ch.data.length) throw new Error(`no chapter "${chapter}" in ${exam}`);
   const rows: Row[] = [];
   for (let from = 0; ; from += 1000) {
     const { data, error } = await db
       .from("questions")
-      .select("id, text, context, solution, question_format, numeric_answer, solution_visual, question_number, image_url, options(label, text, is_correct, image_url), exams!inner(name), chapters!inner(name)")
+      .select("id, text, context, solution, question_format, numeric_answer, solution_visual, question_number, image_url, options(label, text, is_correct, image_url)")
       .eq("visibility", "PUBLIC")
-      .eq("exams.name", exam)
-      .eq("chapters.name", chapter)
+      .eq("exam_id", ex.data[0].id)
+      .in("chapter_id", ch.data.map((c) => c.id))
       .not("solution", "is", null)
       .order("id")
       .range(from, from + 999);
