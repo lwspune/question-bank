@@ -3440,5 +3440,47 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "SSC CGL Polity",
     "chapterSlug": "rights-dpsp-local",
     "subtopicCount": 4
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-geography",
+    "subjectDisplay": "SSC CGL Geography",
+    "chapterSlug": "indian-economy-resources",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-geography",
+    "subjectDisplay": "SSC CGL Geography",
+    "chapterSlug": "indian-physical",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-geography",
+    "subjectDisplay": "SSC CGL Geography",
+    "chapterSlug": "climatology",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-geography",
+    "subjectDisplay": "SSC CGL Geography",
+    "chapterSlug": "world-human",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-geography",
+    "subjectDisplay": "SSC CGL Geography",
+    "chapterSlug": "earth-structure",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-geography",
+    "subjectDisplay": "SSC CGL Geography",
+    "chapterSlug": "oceanography",
+    "subtopicCount": 1
   }
 ];
