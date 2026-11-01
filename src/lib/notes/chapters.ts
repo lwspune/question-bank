@@ -2251,6 +2251,26 @@ import {
   SSC_INDIAN_PHYSICAL_NOTES,
   SSC_INDIAN_PHYSICAL_SLUGS,
 } from "@/app/notes/ssc-cgl-geography/indian-physical/_data";
+import {
+  SSC_CLIMATOLOGY_CHAPTER,
+  SSC_CLIMATOLOGY_NOTES,
+  SSC_CLIMATOLOGY_SLUGS,
+} from "@/app/notes/ssc-cgl-geography/climatology/_data";
+import {
+  SSC_WORLD_HUMAN_CHAPTER,
+  SSC_WORLD_HUMAN_NOTES,
+  SSC_WORLD_HUMAN_SLUGS,
+} from "@/app/notes/ssc-cgl-geography/world-human/_data";
+import {
+  SSC_EARTH_STRUCTURE_CHAPTER,
+  SSC_EARTH_STRUCTURE_NOTES,
+  SSC_EARTH_STRUCTURE_SLUGS,
+} from "@/app/notes/ssc-cgl-geography/earth-structure/_data";
+import {
+  SSC_OCEANOGRAPHY_CHAPTER,
+  SSC_OCEANOGRAPHY_NOTES,
+  SSC_OCEANOGRAPHY_SLUGS,
+} from "@/app/notes/ssc-cgl-geography/oceanography/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -7223,6 +7243,50 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SSC_INDIAN_PHYSICAL_CHAPTER,
     notes: SSC_INDIAN_PHYSICAL_NOTES,
     slugs: SSC_INDIAN_PHYSICAL_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Geography",
+    subjectRoute: "ssc-cgl-geography",
+    subjectDisplay: "SSC CGL Geography",
+    chapterSlug: "climatology",
+    chipLabel: "Climatology, Atmosphere and Weather notes",
+    chapter: SSC_CLIMATOLOGY_CHAPTER,
+    notes: SSC_CLIMATOLOGY_NOTES,
+    slugs: SSC_CLIMATOLOGY_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Geography",
+    subjectRoute: "ssc-cgl-geography",
+    subjectDisplay: "SSC CGL Geography",
+    chapterSlug: "world-human",
+    chipLabel: "World and Human Geography notes",
+    chapter: SSC_WORLD_HUMAN_CHAPTER,
+    notes: SSC_WORLD_HUMAN_NOTES,
+    slugs: SSC_WORLD_HUMAN_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Geography",
+    subjectRoute: "ssc-cgl-geography",
+    subjectDisplay: "SSC CGL Geography",
+    chapterSlug: "earth-structure",
+    chipLabel: "Earth's Structure, Landforms and Geological Time notes",
+    chapter: SSC_EARTH_STRUCTURE_CHAPTER,
+    notes: SSC_EARTH_STRUCTURE_NOTES,
+    slugs: SSC_EARTH_STRUCTURE_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Geography",
+    subjectRoute: "ssc-cgl-geography",
+    subjectDisplay: "SSC CGL Geography",
+    chapterSlug: "oceanography",
+    chipLabel: "Oceanography notes",
+    chapter: SSC_OCEANOGRAPHY_CHAPTER,
+    notes: SSC_OCEANOGRAPHY_NOTES,
+    slugs: SSC_OCEANOGRAPHY_SLUGS,
   },
 ];
 

@@ -496,7 +496,11 @@ export const NOTES_DATA_KEYS: readonly string[] = [
   "ssc-cgl-polity/constitution",
   "ssc-cgl-polity/rights-dpsp-local",
   "ssc-cgl-geography/indian-economy-resources",
-  "ssc-cgl-geography/indian-physical"
+  "ssc-cgl-geography/indian-physical",
+  "ssc-cgl-geography/climatology",
+  "ssc-cgl-geography/world-human",
+  "ssc-cgl-geography/earth-structure",
+  "ssc-cgl-geography/oceanography"
 ];
 
 export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, SubtopicNote>>> = {
@@ -993,4 +997,8 @@ export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, Sub
   "ssc-cgl-polity/rights-dpsp-local": () => import("@/app/notes/ssc-cgl-polity/rights-dpsp-local/_data").then((m) => m.SSC_RIGHTS_DPSP_LOCAL_NOTES),
   "ssc-cgl-geography/indian-economy-resources": () => import("@/app/notes/ssc-cgl-geography/indian-economy-resources/_data").then((m) => m.SSC_INDIAN_ECONOMY_RESOURCES_NOTES),
   "ssc-cgl-geography/indian-physical": () => import("@/app/notes/ssc-cgl-geography/indian-physical/_data").then((m) => m.SSC_INDIAN_PHYSICAL_NOTES),
+  "ssc-cgl-geography/climatology": () => import("@/app/notes/ssc-cgl-geography/climatology/_data").then((m) => m.SSC_CLIMATOLOGY_NOTES),
+  "ssc-cgl-geography/world-human": () => import("@/app/notes/ssc-cgl-geography/world-human/_data").then((m) => m.SSC_WORLD_HUMAN_NOTES),
+  "ssc-cgl-geography/earth-structure": () => import("@/app/notes/ssc-cgl-geography/earth-structure/_data").then((m) => m.SSC_EARTH_STRUCTURE_NOTES),
+  "ssc-cgl-geography/oceanography": () => import("@/app/notes/ssc-cgl-geography/oceanography/_data").then((m) => m.SSC_OCEANOGRAPHY_NOTES),
 };
