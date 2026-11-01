@@ -6,7 +6,7 @@
  * committed rather than computed at build time, and src/lib/seo/lastmod.ts for
  * how a route with no entry here inherits from its nearest recorded ancestor.
  *
- * Entries: 486
+ * Entries: 494
  */
 import type { ContentDateMap } from "@/lib/seo/lastmod";
 
@@ -473,6 +473,14 @@ export const CONTENT_DATES: ContentDateMap = {
   "/notes/ssc-cgl-maths/triangles": "2026-10-23T07:12:31+05:30",
   "/notes/ssc-cgl-maths/trigonometry": "2026-10-23T06:58:11+05:30",
   "/notes/ssc-cgl-maths/tsd": "2026-10-23T06:48:41+05:30",
+  "/notes/ssc-cgl-physics/astronomy-space": "2026-11-02T03:14:58+05:30",
+  "/notes/ssc-cgl-physics/electricity-magnetism": "2026-11-02T03:14:56+05:30",
+  "/notes/ssc-cgl-physics/heat-thermodynamics": "2026-11-02T03:14:59+05:30",
+  "/notes/ssc-cgl-physics/kinematics": "2026-11-02T03:15:00+05:30",
+  "/notes/ssc-cgl-physics/light-optics": "2026-11-02T03:14:57+05:30",
+  "/notes/ssc-cgl-physics/modern-physics": "2026-11-02T03:14:57+05:30",
+  "/notes/ssc-cgl-physics/sound": "2026-11-02T03:14:59+05:30",
+  "/notes/ssc-cgl-physics/units-measurement": "2026-11-02T03:14:58+05:30",
   "/notes/ssc-cgl-polity/constitution": "2026-10-31T09:41:54+05:30",
   "/notes/ssc-cgl-polity/government-structure": "2026-10-31T09:29:32+05:30",
   "/notes/ssc-cgl-polity/rights-dpsp-local": "2026-10-31T09:45:05+05:30",

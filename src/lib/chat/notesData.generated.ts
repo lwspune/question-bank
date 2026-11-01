@@ -518,7 +518,15 @@ export const NOTES_DATA_KEYS: readonly string[] = [
   "ssc-cgl-chemistry/everyday-chemistry",
   "ssc-cgl-chemistry/acids-bases-salts",
   "ssc-cgl-chemistry/mole-concept",
-  "ssc-cgl-chemistry/chemical-bonding"
+  "ssc-cgl-chemistry/chemical-bonding",
+  "ssc-cgl-physics/electricity-magnetism",
+  "ssc-cgl-physics/modern-physics",
+  "ssc-cgl-physics/light-optics",
+  "ssc-cgl-physics/astronomy-space",
+  "ssc-cgl-physics/units-measurement",
+  "ssc-cgl-physics/sound",
+  "ssc-cgl-physics/heat-thermodynamics",
+  "ssc-cgl-physics/kinematics"
 ];
 
 export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, SubtopicNote>>> = {
@@ -1037,4 +1045,12 @@ export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, Sub
   "ssc-cgl-chemistry/acids-bases-salts": () => import("@/app/notes/ssc-cgl-chemistry/acids-bases-salts/_data").then((m) => m.SSC_ACIDS_BASES_SALTS_NOTES),
   "ssc-cgl-chemistry/mole-concept": () => import("@/app/notes/ssc-cgl-chemistry/mole-concept/_data").then((m) => m.SSC_MOLE_CONCEPT_NOTES),
   "ssc-cgl-chemistry/chemical-bonding": () => import("@/app/notes/ssc-cgl-chemistry/chemical-bonding/_data").then((m) => m.SSC_CHEMICAL_BONDING_NOTES),
+  "ssc-cgl-physics/electricity-magnetism": () => import("@/app/notes/ssc-cgl-physics/electricity-magnetism/_data").then((m) => m.SSC_ELECTRICITY_MAGNETISM_NOTES),
+  "ssc-cgl-physics/modern-physics": () => import("@/app/notes/ssc-cgl-physics/modern-physics/_data").then((m) => m.SSC_MODERN_PHYSICS_NOTES),
+  "ssc-cgl-physics/light-optics": () => import("@/app/notes/ssc-cgl-physics/light-optics/_data").then((m) => m.SSC_LIGHT_OPTICS_NOTES),
+  "ssc-cgl-physics/astronomy-space": () => import("@/app/notes/ssc-cgl-physics/astronomy-space/_data").then((m) => m.SSC_ASTRONOMY_SPACE_NOTES),
+  "ssc-cgl-physics/units-measurement": () => import("@/app/notes/ssc-cgl-physics/units-measurement/_data").then((m) => m.SSC_UNITS_MEASUREMENT_NOTES),
+  "ssc-cgl-physics/sound": () => import("@/app/notes/ssc-cgl-physics/sound/_data").then((m) => m.SSC_SOUND_NOTES),
+  "ssc-cgl-physics/heat-thermodynamics": () => import("@/app/notes/ssc-cgl-physics/heat-thermodynamics/_data").then((m) => m.SSC_HEAT_THERMODYNAMICS_NOTES),
+  "ssc-cgl-physics/kinematics": () => import("@/app/notes/ssc-cgl-physics/kinematics/_data").then((m) => m.SSC_KINEMATICS_NOTES),
 };

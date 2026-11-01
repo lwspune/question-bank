@@ -3608,5 +3608,61 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "SSC CGL Chemistry",
     "chapterSlug": "chemical-bonding",
     "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-physics",
+    "subjectDisplay": "SSC CGL Physics",
+    "chapterSlug": "electricity-magnetism",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-physics",
+    "subjectDisplay": "SSC CGL Physics",
+    "chapterSlug": "modern-physics",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-physics",
+    "subjectDisplay": "SSC CGL Physics",
+    "chapterSlug": "light-optics",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-physics",
+    "subjectDisplay": "SSC CGL Physics",
+    "chapterSlug": "astronomy-space",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-physics",
+    "subjectDisplay": "SSC CGL Physics",
+    "chapterSlug": "units-measurement",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-physics",
+    "subjectDisplay": "SSC CGL Physics",
+    "chapterSlug": "sound",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-physics",
+    "subjectDisplay": "SSC CGL Physics",
+    "chapterSlug": "heat-thermodynamics",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-physics",
+    "subjectDisplay": "SSC CGL Physics",
+    "chapterSlug": "kinematics",
+    "subtopicCount": 1
   }
 ];
