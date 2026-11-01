@@ -98,7 +98,7 @@ export default function BrowseLanding({
               <li key={exam.slug}>
                 <Link
                   href={exam.href}
-                  className="group flex h-full items-center justify-between gap-2 rounded-lg border bg-card p-3 shadow-sm transition-colors hover:border-brand-accent/60 hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:gap-3 sm:p-4"
+                  className="group flex h-full items-start justify-between gap-2 rounded-lg border bg-card p-3 shadow-sm transition-colors hover:border-brand-accent/60 hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:gap-3 sm:p-4"
                 >
                   <span className="min-w-0">
                     <span className="block truncate text-sm font-medium">
