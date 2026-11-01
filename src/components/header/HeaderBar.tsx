@@ -206,7 +206,9 @@ function StoreLink() {
       className={headerButtonClass(active)}
     >
       <ShoppingBag className="h-4 w-4 shrink-0" aria-hidden />
-      <span>Ebooks</span>
+      {/* Icon-only on a phone: with the label, the row overflowed 390 px and
+          cut "Sign in" off the screen (2026-11-02). The name stays for screen readers. */}
+      <span className="sr-only sm:not-sr-only">Ebooks</span>
     </Link>
   );
 }
@@ -224,7 +226,7 @@ function TutorLink() {
       className={headerButtonClass(active)}
     >
       <GraduationCap className="h-4 w-4 shrink-0" aria-hidden />
-      <span>Tutor</span>
+      <span className="sr-only sm:not-sr-only">Tutor</span>
     </Link>
   );
 }

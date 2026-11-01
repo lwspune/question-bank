@@ -126,7 +126,7 @@ export default function UserMenu({
             </Link>
           )}
           {/*
-            Guides, Papers, Books and Blog are PHONE-ONLY entries (`sm:hidden`): from sm
+            Guides, Papers and Books are PHONE-ONLY entries (`sm:hidden`): from sm
             up they are tabs in PrimaryNav, and duplicating them here would give
             two answers to "where do I go?". Below sm they are deliberately not
             in the tab bar — that bar is a fixed five for every visitor, and
@@ -168,17 +168,19 @@ export default function UserMenu({
               Book editor
             </Link>
           )}
-          {/* Not role-gated — public surfaces, unlike the two above. */}
+          {/* Not role-gated, and shown at EVERY width: Blog and About left
+              PrimaryNav on 2026-11-02 (owner), so this menu and the Footer
+              are where a signed-in reader finds them. */}
           <Link
             href="/blog"
-            className="flex w-full items-center gap-2 rounded-sm px-3 py-2 text-left text-sm transition-colors hover:bg-accent focus-visible:bg-accent focus-visible:outline-none sm:hidden"
+            className="flex w-full items-center gap-2 rounded-sm px-3 py-2 text-left text-sm transition-colors hover:bg-accent focus-visible:bg-accent focus-visible:outline-none"
           >
             <PenLine className="h-4 w-4" aria-hidden />
             Blog
           </Link>
           <Link
             href="/about"
-            className="flex w-full items-center gap-2 rounded-sm px-3 py-2 text-left text-sm transition-colors hover:bg-accent focus-visible:bg-accent focus-visible:outline-none sm:hidden"
+            className="flex w-full items-center gap-2 rounded-sm px-3 py-2 text-left text-sm transition-colors hover:bg-accent focus-visible:bg-accent focus-visible:outline-none"
           >
             <User className="h-4 w-4" aria-hidden />
             About
