@@ -2276,6 +2276,21 @@ import {
   SSC_NATIONAL_INCOME_NOTES,
   SSC_NATIONAL_INCOME_SLUGS,
 } from "@/app/notes/ssc-cgl-economics/national-income/_data";
+import {
+  SSC_INDIAN_ECONOMY_CHAPTER,
+  SSC_INDIAN_ECONOMY_NOTES,
+  SSC_INDIAN_ECONOMY_SLUGS,
+} from "@/app/notes/ssc-cgl-economics/indian-economy/_data";
+import {
+  SSC_MONEY_BANKING_CHAPTER,
+  SSC_MONEY_BANKING_NOTES,
+  SSC_MONEY_BANKING_SLUGS,
+} from "@/app/notes/ssc-cgl-economics/money-banking/_data";
+import {
+  SSC_MICROECONOMICS_CHAPTER,
+  SSC_MICROECONOMICS_NOTES,
+  SSC_MICROECONOMICS_SLUGS,
+} from "@/app/notes/ssc-cgl-economics/microeconomics/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -7304,6 +7319,42 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SSC_NATIONAL_INCOME_CHAPTER,
     notes: SSC_NATIONAL_INCOME_NOTES,
     slugs: SSC_NATIONAL_INCOME_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Economics",
+    subjectRoute: "ssc-cgl-economics",
+    subjectDisplay: "SSC CGL Economics",
+    chapterSlug: "indian-economy",
+    chipLabel: "Indian Economy notes",
+    titleName: "Indian Economy and Planning",
+    chapter: SSC_INDIAN_ECONOMY_CHAPTER,
+    notes: SSC_INDIAN_ECONOMY_NOTES,
+    slugs: SSC_INDIAN_ECONOMY_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Economics",
+    subjectRoute: "ssc-cgl-economics",
+    subjectDisplay: "SSC CGL Economics",
+    chapterSlug: "money-banking",
+    chipLabel: "Money and Banking notes",
+    titleName: "Money, Banking and Budget",
+    chapter: SSC_MONEY_BANKING_CHAPTER,
+    notes: SSC_MONEY_BANKING_NOTES,
+    slugs: SSC_MONEY_BANKING_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Economics",
+    subjectRoute: "ssc-cgl-economics",
+    subjectDisplay: "SSC CGL Economics",
+    chapterSlug: "microeconomics",
+    chipLabel: "Microeconomics notes",
+    titleName: "Microeconomics",
+    chapter: SSC_MICROECONOMICS_CHAPTER,
+    notes: SSC_MICROECONOMICS_NOTES,
+    slugs: SSC_MICROECONOMICS_SLUGS,
   },
 ];
 

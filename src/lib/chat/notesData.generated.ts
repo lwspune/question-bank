@@ -501,7 +501,10 @@ export const NOTES_DATA_KEYS: readonly string[] = [
   "ssc-cgl-geography/world-human",
   "ssc-cgl-geography/earth-structure",
   "ssc-cgl-geography/oceanography",
-  "ssc-cgl-economics/national-income"
+  "ssc-cgl-economics/national-income",
+  "ssc-cgl-economics/indian-economy",
+  "ssc-cgl-economics/money-banking",
+  "ssc-cgl-economics/microeconomics"
 ];
 
 export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, SubtopicNote>>> = {
@@ -1003,4 +1006,7 @@ export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, Sub
   "ssc-cgl-geography/earth-structure": () => import("@/app/notes/ssc-cgl-geography/earth-structure/_data").then((m) => m.SSC_EARTH_STRUCTURE_NOTES),
   "ssc-cgl-geography/oceanography": () => import("@/app/notes/ssc-cgl-geography/oceanography/_data").then((m) => m.SSC_OCEANOGRAPHY_NOTES),
   "ssc-cgl-economics/national-income": () => import("@/app/notes/ssc-cgl-economics/national-income/_data").then((m) => m.SSC_NATIONAL_INCOME_NOTES),
+  "ssc-cgl-economics/indian-economy": () => import("@/app/notes/ssc-cgl-economics/indian-economy/_data").then((m) => m.SSC_INDIAN_ECONOMY_NOTES),
+  "ssc-cgl-economics/money-banking": () => import("@/app/notes/ssc-cgl-economics/money-banking/_data").then((m) => m.SSC_MONEY_BANKING_NOTES),
+  "ssc-cgl-economics/microeconomics": () => import("@/app/notes/ssc-cgl-economics/microeconomics/_data").then((m) => m.SSC_MICROECONOMICS_NOTES),
 };
