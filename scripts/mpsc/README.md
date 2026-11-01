@@ -156,9 +156,19 @@ layer, so both need hand-transcribed `keytokens`.
 
 **The independent check** is the transcriber's own answer, written into `box`
 before reading the key (`boxes.json`; merge.ts prints "boxes.json mark").
+A blind transcriber checks its batches with `npx tsx scripts/mpsc/draft-check.ts <id>`
+(coverage, parity, chapter list, unanswered questions), never `merge.ts`, which prints
+the key beside every disagreement.
+
+**Keys read by hand (2026-11-02):** asp-2011's Q177 Set-D cell is printed raised
+above its row, so extraction split it off; it was moved back into the row (and the
+page-header code "3 400 001" dropped) in `asp-2011.keytokens.json`. asp-2018's
+revised key (dated 2 Jul 2018) was typed from pp.1080-1081; all four sets balance.
+asp-2011 is ingested on its first key, unlabelled (owner, 2026-11-02).
 Underlined Marathi is `**bold**` (the Mains convention); English underline is
 `\(\underline{\text{..}}\)`.
 
 | paper | transcribed | marks vs key | committed |
 |---|---|---|---|
+| fsp-2017 (E09) | 100/100 | 81/91 (9 unmarked) | PRIVATE, 2026-10-16 (Q37, Q89, Q98, Q100 cancelled; Q86 waived) |
 | fsp-2018 (K11) | 100/100 | 91/98 (Q1, Q2, Q21, Q30, Q40, Q42 language items; Q90 word count) | PRIVATE, 2026-10-16 (Q26, Q47 cancelled; Q51, Q67 waived) |

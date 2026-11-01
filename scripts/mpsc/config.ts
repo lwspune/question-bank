@@ -50,7 +50,7 @@ export const EXAMS: Record<ExamKey, { name: string; id: string | null }> = {
   gbc: { name: "MPSC Group B & C Prelims", id: "583f914f-f323-42ed-ae7c-5e445ed796c3" },
   ssp: { name: "MPSC State Services Prelims", id: "a61ef55d-baf5-4e15-a4c2-2ac599519229" }, // seed.ts ssp --apply, 2026-09-27
   fsp: { name: "MPSC Forest Service Prelims", id: "646ced4c-5ec8-4896-b4f6-5bd141bb3926" }, // seed.ts fsp --apply, 2026-10-16
-  asp: { name: "MPSC Agriculture Service Prelims", id: null },
+  asp: { name: "MPSC Agriculture Service Prelims", id: "2e99a09c-6422-4360-a33c-8e13aeb231ec" }, // seed.ts asp --apply, 2026-11-02
 };
 /** Kept for the Group B & C callers that predate EXAMS. */
 export const EXAM_NAME = EXAMS.gbc.name;
