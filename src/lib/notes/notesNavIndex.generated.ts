@@ -3559,5 +3559,54 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "SSC CGL Biology",
     "chapterSlug": "biochemistry",
     "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-chemistry",
+    "subjectDisplay": "SSC CGL Chemistry",
+    "chapterSlug": "atomic-structure",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-chemistry",
+    "subjectDisplay": "SSC CGL Chemistry",
+    "chapterSlug": "carbon-compounds",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-chemistry",
+    "subjectDisplay": "SSC CGL Chemistry",
+    "chapterSlug": "chemical-reactions",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-chemistry",
+    "subjectDisplay": "SSC CGL Chemistry",
+    "chapterSlug": "everyday-chemistry",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-chemistry",
+    "subjectDisplay": "SSC CGL Chemistry",
+    "chapterSlug": "acids-bases-salts",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-chemistry",
+    "subjectDisplay": "SSC CGL Chemistry",
+    "chapterSlug": "mole-concept",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-chemistry",
+    "subjectDisplay": "SSC CGL Chemistry",
+    "chapterSlug": "chemical-bonding",
+    "subtopicCount": 1
   }
 ];

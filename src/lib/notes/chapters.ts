@@ -2326,6 +2326,41 @@ import {
   SSC_BIOCHEMISTRY_NOTES,
   SSC_BIOCHEMISTRY_SLUGS,
 } from "@/app/notes/ssc-cgl-biology/biochemistry/_data";
+import {
+  SSC_ATOMIC_STRUCTURE_CHAPTER,
+  SSC_ATOMIC_STRUCTURE_NOTES,
+  SSC_ATOMIC_STRUCTURE_SLUGS,
+} from "@/app/notes/ssc-cgl-chemistry/atomic-structure/_data";
+import {
+  SSC_CARBON_COMPOUNDS_CHAPTER,
+  SSC_CARBON_COMPOUNDS_NOTES,
+  SSC_CARBON_COMPOUNDS_SLUGS,
+} from "@/app/notes/ssc-cgl-chemistry/carbon-compounds/_data";
+import {
+  SSC_CHEMICAL_REACTIONS_CHAPTER,
+  SSC_CHEMICAL_REACTIONS_NOTES,
+  SSC_CHEMICAL_REACTIONS_SLUGS,
+} from "@/app/notes/ssc-cgl-chemistry/chemical-reactions/_data";
+import {
+  SSC_EVERYDAY_CHEMISTRY_CHAPTER,
+  SSC_EVERYDAY_CHEMISTRY_NOTES,
+  SSC_EVERYDAY_CHEMISTRY_SLUGS,
+} from "@/app/notes/ssc-cgl-chemistry/everyday-chemistry/_data";
+import {
+  SSC_ACIDS_BASES_SALTS_CHAPTER,
+  SSC_ACIDS_BASES_SALTS_NOTES,
+  SSC_ACIDS_BASES_SALTS_SLUGS,
+} from "@/app/notes/ssc-cgl-chemistry/acids-bases-salts/_data";
+import {
+  SSC_MOLE_CONCEPT_CHAPTER,
+  SSC_MOLE_CONCEPT_NOTES,
+  SSC_MOLE_CONCEPT_SLUGS,
+} from "@/app/notes/ssc-cgl-chemistry/mole-concept/_data";
+import {
+  SSC_CHEMICAL_BONDING_CHAPTER,
+  SSC_CHEMICAL_BONDING_NOTES,
+  SSC_CHEMICAL_BONDING_SLUGS,
+} from "@/app/notes/ssc-cgl-chemistry/chemical-bonding/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -7474,6 +7509,90 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SSC_BIOCHEMISTRY_CHAPTER,
     notes: SSC_BIOCHEMISTRY_NOTES,
     slugs: SSC_BIOCHEMISTRY_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Chemistry",
+    subjectRoute: "ssc-cgl-chemistry",
+    subjectDisplay: "SSC CGL Chemistry",
+    chapterSlug: "atomic-structure",
+    chipLabel: "Periodic Table notes",
+    titleName: "Periodic Table and Atoms",
+    chapter: SSC_ATOMIC_STRUCTURE_CHAPTER,
+    notes: SSC_ATOMIC_STRUCTURE_NOTES,
+    slugs: SSC_ATOMIC_STRUCTURE_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Chemistry",
+    subjectRoute: "ssc-cgl-chemistry",
+    subjectDisplay: "SSC CGL Chemistry",
+    chapterSlug: "carbon-compounds",
+    chipLabel: "Carbon Compounds notes",
+    titleName: "Hydrocarbons and Functional Groups",
+    chapter: SSC_CARBON_COMPOUNDS_CHAPTER,
+    notes: SSC_CARBON_COMPOUNDS_NOTES,
+    slugs: SSC_CARBON_COMPOUNDS_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Chemistry",
+    subjectRoute: "ssc-cgl-chemistry",
+    subjectDisplay: "SSC CGL Chemistry",
+    chapterSlug: "chemical-reactions",
+    chipLabel: "Chemical Reactions notes",
+    titleName: "Reactions, Redox and Rates",
+    chapter: SSC_CHEMICAL_REACTIONS_CHAPTER,
+    notes: SSC_CHEMICAL_REACTIONS_NOTES,
+    slugs: SSC_CHEMICAL_REACTIONS_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Chemistry",
+    subjectRoute: "ssc-cgl-chemistry",
+    subjectDisplay: "SSC CGL Chemistry",
+    chapterSlug: "everyday-chemistry",
+    chipLabel: "Everyday Chemistry notes",
+    titleName: "Everyday Chemicals",
+    chapter: SSC_EVERYDAY_CHEMISTRY_CHAPTER,
+    notes: SSC_EVERYDAY_CHEMISTRY_NOTES,
+    slugs: SSC_EVERYDAY_CHEMISTRY_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Chemistry",
+    subjectRoute: "ssc-cgl-chemistry",
+    subjectDisplay: "SSC CGL Chemistry",
+    chapterSlug: "acids-bases-salts",
+    chipLabel: "Acids and Bases notes",
+    titleName: "Acids and Bases",
+    chapter: SSC_ACIDS_BASES_SALTS_CHAPTER,
+    notes: SSC_ACIDS_BASES_SALTS_NOTES,
+    slugs: SSC_ACIDS_BASES_SALTS_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Chemistry",
+    subjectRoute: "ssc-cgl-chemistry",
+    subjectDisplay: "SSC CGL Chemistry",
+    chapterSlug: "mole-concept",
+    chipLabel: "Mole Concept notes",
+    titleName: "The Mole and Chemical Laws",
+    chapter: SSC_MOLE_CONCEPT_CHAPTER,
+    notes: SSC_MOLE_CONCEPT_NOTES,
+    slugs: SSC_MOLE_CONCEPT_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Chemistry",
+    subjectRoute: "ssc-cgl-chemistry",
+    subjectDisplay: "SSC CGL Chemistry",
+    chapterSlug: "chemical-bonding",
+    chipLabel: "Chemical Bonding notes",
+    titleName: "Valency and Oxidation Numbers",
+    chapter: SSC_CHEMICAL_BONDING_CHAPTER,
+    notes: SSC_CHEMICAL_BONDING_NOTES,
+    slugs: SSC_CHEMICAL_BONDING_SLUGS,
   },
 ];
 

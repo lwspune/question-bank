@@ -511,7 +511,14 @@ export const NOTES_DATA_KEYS: readonly string[] = [
   "ssc-cgl-biology/ecology",
   "ssc-cgl-biology/plant-biology",
   "ssc-cgl-biology/microbiology",
-  "ssc-cgl-biology/biochemistry"
+  "ssc-cgl-biology/biochemistry",
+  "ssc-cgl-chemistry/atomic-structure",
+  "ssc-cgl-chemistry/carbon-compounds",
+  "ssc-cgl-chemistry/chemical-reactions",
+  "ssc-cgl-chemistry/everyday-chemistry",
+  "ssc-cgl-chemistry/acids-bases-salts",
+  "ssc-cgl-chemistry/mole-concept",
+  "ssc-cgl-chemistry/chemical-bonding"
 ];
 
 export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, SubtopicNote>>> = {
@@ -1023,4 +1030,11 @@ export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, Sub
   "ssc-cgl-biology/plant-biology": () => import("@/app/notes/ssc-cgl-biology/plant-biology/_data").then((m) => m.SSC_PLANT_BIOLOGY_NOTES),
   "ssc-cgl-biology/microbiology": () => import("@/app/notes/ssc-cgl-biology/microbiology/_data").then((m) => m.SSC_MICROBIOLOGY_NOTES),
   "ssc-cgl-biology/biochemistry": () => import("@/app/notes/ssc-cgl-biology/biochemistry/_data").then((m) => m.SSC_BIOCHEMISTRY_NOTES),
+  "ssc-cgl-chemistry/atomic-structure": () => import("@/app/notes/ssc-cgl-chemistry/atomic-structure/_data").then((m) => m.SSC_ATOMIC_STRUCTURE_NOTES),
+  "ssc-cgl-chemistry/carbon-compounds": () => import("@/app/notes/ssc-cgl-chemistry/carbon-compounds/_data").then((m) => m.SSC_CARBON_COMPOUNDS_NOTES),
+  "ssc-cgl-chemistry/chemical-reactions": () => import("@/app/notes/ssc-cgl-chemistry/chemical-reactions/_data").then((m) => m.SSC_CHEMICAL_REACTIONS_NOTES),
+  "ssc-cgl-chemistry/everyday-chemistry": () => import("@/app/notes/ssc-cgl-chemistry/everyday-chemistry/_data").then((m) => m.SSC_EVERYDAY_CHEMISTRY_NOTES),
+  "ssc-cgl-chemistry/acids-bases-salts": () => import("@/app/notes/ssc-cgl-chemistry/acids-bases-salts/_data").then((m) => m.SSC_ACIDS_BASES_SALTS_NOTES),
+  "ssc-cgl-chemistry/mole-concept": () => import("@/app/notes/ssc-cgl-chemistry/mole-concept/_data").then((m) => m.SSC_MOLE_CONCEPT_NOTES),
+  "ssc-cgl-chemistry/chemical-bonding": () => import("@/app/notes/ssc-cgl-chemistry/chemical-bonding/_data").then((m) => m.SSC_CHEMICAL_BONDING_NOTES),
 };
