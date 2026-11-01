@@ -172,6 +172,7 @@ Underlined Marathi is `**bold**` (the Mains convention); English underline is
 |---|---|---|---|
 | fsp-2014 (D04) | 100/100 | 88/100 | PRIVATE, 2026-11-02 (Q72 cancelled; 12 figures, AglaSem watermark cleaned). An AglaSem copy: Q16-100 are printed in ENGLISH ONLY, GS and aptitude included |
 | asp-2016 (U07) | 100/100 | 89/100 | PRIVATE, 2026-11-02 (Q19, Q51, Q53, Q68, Q90 cancelled; Q60 waived; print notes Q67, Q93) |
+| asp-2017 (Q09) | 100/100 | 94/100 | PRIVATE, 2026-11-02 (Q9, Q63 cancelled; Q38, Q67 waived; print notes Q77, Q97) |
 | fsp-2017 (E09) | 100/100 | 81/91 (9 unmarked) | PRIVATE, 2026-10-16 (Q37, Q89, Q98, Q100 cancelled; Q86 waived) |
 | fsp-2018 (K11) | 100/100 | 91/98 (Q1, Q2, Q21, Q30, Q40, Q42 language items; Q90 word count) | PRIVATE, 2026-10-16 (Q26, Q47 cancelled; Q51, Q67 waived) |
 
