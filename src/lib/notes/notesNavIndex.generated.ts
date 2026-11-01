@@ -3440,5 +3440,12 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "SSC CGL Polity",
     "chapterSlug": "rights-dpsp-local",
     "subtopicCount": 4
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-geography",
+    "subjectDisplay": "SSC CGL Geography",
+    "chapterSlug": "indian-economy-resources",
+    "subtopicCount": 5
   }
 ];

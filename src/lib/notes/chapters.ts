@@ -2241,6 +2241,11 @@ import {
   SSC_RIGHTS_DPSP_LOCAL_NOTES,
   SSC_RIGHTS_DPSP_LOCAL_SLUGS,
 } from "@/app/notes/ssc-cgl-polity/rights-dpsp-local/_data";
+import {
+  SSC_INDIAN_ECONOMY_RESOURCES_CHAPTER,
+  SSC_INDIAN_ECONOMY_RESOURCES_NOTES,
+  SSC_INDIAN_ECONOMY_RESOURCES_SLUGS,
+} from "@/app/notes/ssc-cgl-geography/indian-economy-resources/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -7189,6 +7194,18 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SSC_RIGHTS_DPSP_LOCAL_CHAPTER,
     notes: SSC_RIGHTS_DPSP_LOCAL_NOTES,
     slugs: SSC_RIGHTS_DPSP_LOCAL_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Geography",
+    subjectRoute: "ssc-cgl-geography",
+    subjectDisplay: "SSC CGL Geography",
+    chapterSlug: "indian-economy-resources",
+    chipLabel: "Indian Economic Geography notes",
+    titleName: "Indian Economic Geography",
+    chapter: SSC_INDIAN_ECONOMY_RESOURCES_CHAPTER,
+    notes: SSC_INDIAN_ECONOMY_RESOURCES_NOTES,
+    slugs: SSC_INDIAN_ECONOMY_RESOURCES_SLUGS,
   },
 ];
 
