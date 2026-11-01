@@ -175,6 +175,7 @@ Underlined Marathi is `**bold**` (the Mains convention); English underline is
 | asp-2017 (Q09) | 100/100 | 94/100 | PRIVATE, 2026-11-02 (Q9, Q63 cancelled; Q38, Q67 waived; print notes Q77, Q97) |
 | fsp-2016 (M07) | 99/99 (Q7 omitted) | 93/100 | PRIVATE, 2026-11-02 (Q2, Q11, Q29, Q30 cancelled; Q55, Q69, Q72 waived; 11 figures, Q83's keeps the Marathi label between its rows). Q38-50 transcribed by the main session: an API content filter stopped two helpers at the Ambedkar-on-Ranade passage |
 | asp-2018 (I11) | 100/100 | 89/100 against the hand-typed key | PRIVATE, 2026-11-02 (Q39 cancelled; Q31, Q38 waived; print notes Q66, Q87, Q89) |
+| asp-2011 (RSM) | 200/200 | 187/200 against the FIRST key | PRIVATE, 2026-11-02 (no cancellations on the first key; Q79 waived; 5 print notes). Q41, Q42, Q109 look wrong on that key: see Key doubts |
 | fsp-2017 (E09) | 100/100 | 81/91 (9 unmarked) | PRIVATE, 2026-10-16 (Q37, Q89, Q98, Q100 cancelled; Q86 waived) |
 | fsp-2018 (K11) | 100/100 | 91/98 (Q1, Q2, Q21, Q30, Q40, Q42 language items; Q90 word count) | PRIVATE, 2026-10-16 (Q26, Q47 cancelled; Q51, Q67 waived) |
 
@@ -193,3 +194,6 @@ the owner decides** (correct the key + notice, or notice + grace, per the
 | fsp-2014 Q55 | (1) (a) or (d) | The person's sex is not given, so "(c) sister or brother, or (d)" fits; MPSC keys "sister". |
 | asp-2016 Q38 | (1) a and b | Statement a (citizenship rules not applicable to J&K) is false; c and d are false too (7 and 12 years), so no option is right. |
 | asp-2016 Q75 | (2) | Kisan Call Centres are toll-free, run at government cost; the key says farmers pay "very negligible charges". |
+| asp-2011 Q41 | (4) No article | "______ Himalaya is the biggest mountain in India" takes "The" (3). asp-2011 is on MPSC's FIRST key (owner: ingest, unlabelled). |
+| asp-2011 Q42 | (2) go | "Neither the boy nor his sister ______ to school" takes the singular "goes" (3). First key. |
+| asp-2011 Q109 | (1) Sahyadri | The watershed between the Narmada and Tapi valleys is the Satpura range (2). First key. |
