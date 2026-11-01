@@ -34,6 +34,7 @@ import { loopFor } from "@/lib/education/howItWorks";
 import { NOTES_CHAPTERS } from "@/lib/notes/chapters";
 import { getExamBySlug } from "@/lib/exam/examContext";
 import { groupExamFamilies, familyTotal, membersByStage } from "@/lib/exam/examFamily";
+import { sortByDemand } from "@/lib/exam/demandOrder";
 
 export const revalidate = 86400;
 
@@ -249,7 +250,8 @@ export default async function Home() {
   // Group the six (board, class) exams into two family cards. Presentation
   // only: every class link keeps the exact href it had before, and the hero's
   // exam COUNT below still reports 13 — we do have 13 corpora.
-  const examNodes = groupExamFamilies(catalog.exams, (e) => getExamBySlug(e.slug));
+  // Most-chosen exams first (lib/exam/demandOrder), not the registry's NDA-first order.
+  const examNodes = sortByDemand(groupExamFamilies(catalog.exams, (e) => getExamBySlug(e.slug)));
 
   return (
     <>
