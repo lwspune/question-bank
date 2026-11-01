@@ -13,18 +13,8 @@ date and what was done.
 Every row found up to 2026-10-29 is settled below. Of the 38 rows found on 2026-10-31 in
 the SSC CGL Data Interpretation and Mensuration 3D animation run, 34 turned out to be
 settled already at ingestion (`flawed: yes` in the transcript, a notice above the
-solution, grace in mocks) and moved below on 2026-11-01. The 4 left are not defects:
-SSC's options are rounded and the key is the nearest one; they are being animated on
-the solution's own working with an answer tolerance.
-
-## Open
-
-| Question | Exam · chapter | Problem |
-|---|---|---|
-| `57fabd74` | SSC CGL · Data Interpretation | **Key disputed.** The working gives 933.25 (933 rounded); the solution takes the key 934 only as the nearest option |
-| `5e25901e` | SSC CGL · Mensuration 3D | **Key not what the working gives.** Keyed 732.06 is not what the working gives: 1000 − 256π/3 is 731.92 (exact π) or 732.05 (π = 3.14); the solution picks B as nearest |
-| `83f3b947` | SSC CGL · Mensuration 3D | **Key not what the working gives.** Keyed 5026.33 is not what the working gives: (2/3)π·2401 is 5030.67 (22/7), 5026.09 (3.14) or 5028.6 (exact π); the solution calls it an approximate match |
-| `b9c5800c` | SSC CGL · Mensuration 3D | **Key not what the working gives.** (4/3)π(10³ − 9³) is 1134.59 with π = 3.14 (the stem's π), 1135.17 exact, 1135.81 with 22/7; none gives the key 1134.7 (the solution says 'closest to') |
+solution, grace in mocks) and moved below on 2026-11-01. The 4 left were not defects either (rounded options,
+the key the nearest one) and were animated; settled below. Nothing is open.
 
 ## Settled
 
@@ -32,6 +22,10 @@ Owner policy (2026-10-29): the source paper decides first; a key the source itse
 
 | Question | Exam · chapter | Problem | Settled |
 |---|---|---|---|
+| `57fabd74` | SSC CGL · Data Interpretation | **Key disputed.** The working gives 933.25 (933 rounded); the solution takes the key 934 only as the nearest option | **2026-11-01:** Not a defect: SSC printed rounded options and the key is the nearest one. Animated on the solution's own working with an answer tolerance; key kept. |
+| `5e25901e` | SSC CGL · Mensuration 3D | **Key not what the working gives.** Keyed 732.06 is not what the working gives: 1000 − 256π/3 is 731.92 (exact π) or 732.05 (π = 3.14); the solution picks B as nearest | **2026-11-01:** Not a defect: SSC printed rounded options and the key is the nearest one. Animated on the solution's own working with an answer tolerance; key kept. |
+| `83f3b947` | SSC CGL · Mensuration 3D | **Key not what the working gives.** Keyed 5026.33 is not what the working gives: (2/3)π·2401 is 5030.67 (22/7), 5026.09 (3.14) or 5028.6 (exact π); the solution calls it an approximate match | **2026-11-01:** Not a defect: SSC printed rounded options and the key is the nearest one. Animated on the solution's own working with an answer tolerance; key kept. |
+| `b9c5800c` | SSC CGL · Mensuration 3D | **Key not what the working gives.** (4/3)π(10³ − 9³) is 1134.59 with π = 3.14 (the stem's π), 1135.17 exact, 1135.81 with 22/7; none gives the key 1134.7 (the solution says 'closest to') | **2026-11-01:** Not a defect: SSC printed rounded options and the key is the nearest one. Animated on the solution's own working with an answer tolerance; key kept. |
 | `0e583436` | SSC CGL · Data Interpretation | **Key disputed.** The stem asks the ratio of engineers (248:100 = 62:25, option A); SSC's key counts countries (3:3); stepping it would present the disputed reading as the method | **2026-11-01:** Already settled at ingestion: `flawed: yes` in the transcript (grace in mocks) and a notice above the solution; key kept. No animation, which would present the reconstruction as data. |
 | `2e0d78e8` | SSC CGL · Data Interpretation | **Key disputed.** The paper prints no total, so degrees cannot become ₹ lakh; the solution says the keyed 69 needs an unprinted total of 432 | **2026-11-01:** Already settled at ingestion: `flawed: yes` in the transcript (grace in mocks) and a notice above the solution; key kept. No animation, which would present the reconstruction as data. |
 | `08a8b830` | SSC CGL · Data Interpretation | **Stem incomplete.** The chart's labels did not print; the solution picks School as the 6-hour slice only because 25% is an option, so the animation would present a guessed slice as read data | **2026-11-01:** Already settled at ingestion: `flawed: yes` in the transcript (grace in mocks) and a notice above the solution; key kept. No animation, which would present the reconstruction as data. |
