@@ -3482,5 +3482,33 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "SSC CGL Geography",
     "chapterSlug": "oceanography",
     "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-economics",
+    "subjectDisplay": "SSC CGL Economics",
+    "chapterSlug": "national-income",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-economics",
+    "subjectDisplay": "SSC CGL Economics",
+    "chapterSlug": "indian-economy",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-economics",
+    "subjectDisplay": "SSC CGL Economics",
+    "chapterSlug": "money-banking",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-economics",
+    "subjectDisplay": "SSC CGL Economics",
+    "chapterSlug": "microeconomics",
+    "subtopicCount": 1
   }
 ];
