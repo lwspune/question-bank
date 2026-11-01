@@ -176,6 +176,7 @@ Underlined Marathi is `**bold**` (the Mains convention); English underline is
 | fsp-2016 (M07) | 99/99 (Q7 omitted) | 93/100 | PRIVATE, 2026-11-02 (Q2, Q11, Q29, Q30 cancelled; Q55, Q69, Q72 waived; 11 figures, Q83's keeps the Marathi label between its rows). Q38-50 transcribed by the main session: an API content filter stopped two helpers at the Ambedkar-on-Ranade passage |
 | asp-2018 (I11) | 100/100 | 89/100 against the hand-typed key | PRIVATE, 2026-11-02 (Q39 cancelled; Q31, Q38 waived; print notes Q66, Q87, Q89) |
 | asp-2011 (RSM) | 200/200 | 187/200 against the FIRST key | PRIVATE, 2026-11-02 (no cancellations on the first key; Q79 waived; 5 print notes). Q41, Q42, Q109 look wrong on that key: see Key doubts |
+| asp-2012 (EOO) | 200/200 | 189/200 | PRIVATE, 2026-11-02 (Q155 cancelled). Q66-70 (a passage from Huxley's Ends and Means) by the main session: the passage was read by Windows OCR into a file, because writing a published text out trips the API's content filter |
 | fsp-2017 (E09) | 100/100 | 81/91 (9 unmarked) | PRIVATE, 2026-10-16 (Q37, Q89, Q98, Q100 cancelled; Q86 waived) |
 | fsp-2018 (K11) | 100/100 | 91/98 (Q1, Q2, Q21, Q30, Q40, Q42 language items; Q90 word count) | PRIVATE, 2026-10-16 (Q26, Q47 cancelled; Q51, Q67 waived) |
 
@@ -197,3 +198,5 @@ the owner decides** (correct the key + notice, or notice + grace, per the
 | asp-2011 Q41 | (4) No article | "______ Himalaya is the biggest mountain in India" takes "The" (3). asp-2011 is on MPSC's FIRST key (owner: ingest, unlabelled). |
 | asp-2011 Q42 | (2) go | "Neither the boy nor his sister ______ to school" takes the singular "goes" (3). First key. |
 | asp-2011 Q109 | (1) Sahyadri | The watershed between the Narmada and Tapi valleys is the Satpura range (2). First key. |
+| asp-2012 Q117 | (1) constant returns | The textbook answer for manufacturing is the law of INCREASING returns (2). Final key; doubtful, not certain. |
+| asp-2012 Q150 | (3) open rural branches | An RRB's main function is credit to the weaker sections (1). Final key; doubtful, not certain. |
