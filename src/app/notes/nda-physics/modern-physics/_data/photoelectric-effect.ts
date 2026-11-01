@@ -199,7 +199,7 @@ export const PHOTOELECTRIC_EFFECT_NOTE: SubtopicNote = {
         label: "Cutoff wavelength of X-rays",
         latex: "\\lambda_{min} = \\dfrac{hc}{eV}",
         symbols: [
-          { symbol: "λ_min", meaning: "shortest (cutoff) wavelength produced" },
+          { symbol: "λ_{\\min}", meaning: "shortest (cutoff) wavelength produced" },
           { symbol: "h", meaning: "Planck's constant" },
           { symbol: "c", meaning: "speed of light" },
           { symbol: "e", meaning: "electron charge" },

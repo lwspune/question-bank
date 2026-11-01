@@ -173,6 +173,23 @@ a[data-nav-pending] {
   overflow-y: hidden;
   padding-block: 0.2em;
 }
+/*
+  A sideways-scrolling formula gives no sign that it scrolls: phones hide the
+  scrollbar, so the notes formula box read as cut off (2026-11-02, Logarithmic
+  Differentiation at 390 px). A soft shadow shows at whichever edge still hides
+  content, and disappears once that edge is reached. Pure CSS: the two "local"
+  covers move with the content and paint over the two "scroll" shadows at the
+  ends. --cue-bg must match the surface behind the box (the formula box's 5%
+  brand tint on a card).
+*/
+.scroll-cue-x {
+  --cue-bg: color-mix(in srgb, hsl(var(--brand)) 5%, hsl(var(--card)));
+  background:
+    linear-gradient(to right, var(--cue-bg) 40%, transparent) left center / 1.5rem 100% no-repeat local,
+    linear-gradient(to left, var(--cue-bg) 40%, transparent) right center / 1.5rem 100% no-repeat local,
+    radial-gradient(farthest-side at 0 50%, hsl(var(--foreground) / 0.2), transparent) left center / 0.6rem 100% no-repeat scroll,
+    radial-gradient(farthest-side at 100% 50%, hsl(var(--foreground) / 0.2), transparent) right center / 0.6rem 100% no-repeat scroll;
+}
 
 /*
   Depth and brand moments (2026-10-04). Every rule here is zero-specificity

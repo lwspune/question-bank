@@ -1,6 +1,7 @@
 import KatexRenderer from "@/components/math/KatexRenderer";
 import { Sigma } from "lucide-react";
 import type { FormulaSpec } from "@/app/notes/_types";
+import { legendSymbolText } from "@/lib/notes/printDoc";
 
 type Props = {
   formula: FormulaSpec;
@@ -32,7 +33,7 @@ export default function FormulaBlock({ formula, presentMode }: Props) {
       </p>
       <div
         className={
-          "leading-tight overflow-x-auto [&_.katex]:max-w-full " +
+          "scroll-cue-x leading-tight overflow-x-auto [&_.katex]:max-w-full " +
           (presentMode
             ? "mt-6 text-3xl sm:text-4xl md:text-5xl"
             : "mt-2 text-lg leading-relaxed")
@@ -50,7 +51,9 @@ export default function FormulaBlock({ formula, presentMode }: Props) {
           {formula.symbols.map((s, i) => (
             <li key={i} className="flex flex-wrap items-baseline gap-2">
               <span className="font-semibold text-foreground">
-                <KatexRenderer text={s.symbol} />
+                {/* The handout's rule: bare math ("F_b") is wrapped, prose stays text.
+                    Rendered raw, 109 bare symbols printed as markup (2026-11-02). */}
+                <KatexRenderer text={legendSymbolText(s.symbol)} />
               </span>
               <span aria-hidden>=</span>
               <span>
