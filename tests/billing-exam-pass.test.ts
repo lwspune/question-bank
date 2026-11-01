@@ -18,10 +18,10 @@ import {
   type Plan,
   type PlanInput,
 } from "@/lib/billing/plans";
-import { coversAny, holdsPassFor, passScopeForExam, passScopesFor, sitePassScopes } from "@/lib/billing/passScope";
+import { coversAny, holdsPassFor, isFreeExamName, passScopeForExam, passScopesFor, sitePassScopes } from "@/lib/billing/passScope";
 import { hasPassFromEntitlements } from "@/lib/header-session";
 import { rowToPlan } from "@/lib/billing/plansQuery";
-import { SCOPE_ALL, SCOPE_IMAT, SCOPE_MCAT, SCOPE_MOCKS, SCOPE_TEACHER, scopeCovers } from "@/lib/entitlements/access";
+import { SCOPE_ALL, SCOPE_FREE, SCOPE_IMAT, SCOPE_MCAT, SCOPE_MOCKS, SCOPE_TEACHER, scopeCovers } from "@/lib/entitlements/access";
 import { EXAM_REGISTRY } from "@/lib/exam/examContext";
 
 const plan = (over: Partial<Plan>): Plan => ({
@@ -58,11 +58,32 @@ describe("which pass covers an exam", () => {
     expect(passScopeForExam("no-such-exam")).toBe(SCOPE_MOCKS);
   });
 
-  it("every intl exam names its own pass, and no www exam does", () => {
+  it("every intl exam names its own pass; a www exam takes the mocks pass or is free", () => {
     for (const e of EXAM_REGISTRY) {
-      if (e.site === "intl") expect(passScopeForExam(e.slug), e.slug).not.toBe(SCOPE_MOCKS);
-      else expect(passScopeForExam(e.slug), e.slug).toBe(SCOPE_MOCKS);
+      if (e.site === "intl") expect([SCOPE_MOCKS, SCOPE_FREE], e.slug).not.toContain(passScopeForExam(e.slug));
+      else expect([SCOPE_MOCKS, SCOPE_FREE], e.slug).toContain(passScopeForExam(e.slug));
     }
+  });
+
+  it("the six Class 9-10 exams are free, and no other (owner, 2026-11-02; mirrors migration 0210)", () => {
+    const free = EXAM_REGISTRY.filter((e) => passScopeForExam(e.slug) === SCOPE_FREE).map((e) => e.examName);
+    expect(free.sort()).toEqual(
+      [
+        "CBSE Class 10",
+        "Foundation Course",
+        "ICSE Class 10",
+        "Maharashtra State Board Class 10",
+        "Maharashtra State Board Class 9",
+        "SPI",
+      ].sort()
+    );
+  });
+
+  it("isFreeExamName: by the DB exam name, false for an unknown one", () => {
+    expect(isFreeExamName("CBSE Class 10")).toBe(true);
+    expect(isFreeExamName("CBSE Class 12")).toBe(false);
+    expect(isFreeExamName("No such exam")).toBe(false);
+    expect(isFreeExamName(null)).toBe(false);
   });
 
   it("a site's passes: www sells mocks, intl its exams' passes", () => {
@@ -98,9 +119,24 @@ describe("what a held pass covers", () => {
     expect(coversAny([SCOPE_ALL], [SCOPE_MCAT])).toBe(true);
   });
 
-  it("the IMAT and MCAT passes can be sold; all never can", () => {
+  it("the IMAT and MCAT passes can be sold; all and free never can", () => {
     expect(SELLABLE_SCOPES).toEqual(expect.arrayContaining([SCOPE_MOCKS, SCOPE_TEACHER, SCOPE_IMAT, SCOPE_MCAT]));
     expect(SELLABLE_SCOPES).not.toContain(SCOPE_ALL);
+    expect(SELLABLE_SCOPES).not.toContain(SCOPE_FREE);
+  });
+
+  it("a free exam needs no pass: everyone holds it, with or without passes", () => {
+    expect(coversAny([], [SCOPE_FREE])).toBe(true);
+    expect(holdsPassFor({ hasPass: false, passScopes: [] }, SCOPE_FREE)).toBe(true);
+    expect(holdsPassFor({ hasPass: false }, SCOPE_FREE)).toBe(true);
+    expect(holdsPassFor({ hasPass: false, passScopes: [] }, passScopesFor("pyqvault", "cbse-10"))).toBe(true);
+    // ...and holding it is not holding anything else.
+    expect(holdsPassFor({ hasPass: false, passScopes: [] }, passScopesFor("pyqvault", "cbse-12"))).toBe(false);
+  });
+
+  it("nothing is on sale for a free exam, so no offer is shown", () => {
+    const www = plan({ id: "mock-pass-6m", scope: SCOPE_MOCKS, site: "pyqvault", currency: "INR", amountPaise: 49900 });
+    expect(passForBuyer([www], SCOPE_FREE, "pyqvault", "IN")).toBeNull();
   });
 });
 

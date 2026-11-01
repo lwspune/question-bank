@@ -53,6 +53,7 @@ import type { PrintedLabel } from "@/lib/export/printedLabel";
 import { buildTagRows, tagRowsToAoa } from "@/lib/export/tagsSheet";
 import { getResourceTagsForQuestions } from "@/lib/links/getResourceTagsForQuestions";
 import { downloadImage } from "@/lib/storage/images";
+import { downloadIsFree } from "@/lib/export/freeExamDownload";
 import * as XLSX from "xlsx";
 
 // 60 s covered every Word export; a PDF also starts a Chromium (a cold one
@@ -296,11 +297,32 @@ export async function POST(request: NextRequest) {
           ? (body.filters as Record<string, unknown> | undefined)
           : null,
     });
-    const freeDownloadLeft =
+    // A free exam's paper (the Class 9-10 exams, migration 0210) downloads as a
+    // pass holder's does: branded PDF, nothing spent.
+    const examFree =
       user && !isStaff && !hasDownloadPass && (kind === "paper" || kind === "key")
+        ? await downloadIsFree(createSupabaseServerClient(), {
+            examSlug: boardPaper?.exam ?? null,
+            homeworkSlug: homework?.slug ?? topPyqs?.plan ?? null,
+            mockSlug: isMockMode ? String(body.mockSlug).trim() : null,
+            questionIds: isCartMode ? (body.questionIds as string[]) : null,
+            examId:
+              !isMockMode && !isHomeworkMode && !isBoardPaperMode && !isTopMode && !isCartMode
+                ? body.filters?.examId ?? null
+                : null,
+          })
+        : false;
+    const freeDownloadLeft =
+      user && !isStaff && !hasDownloadPass && !examFree && (kind === "paper" || kind === "key")
         ? await isPaperFree(createSupabaseServerClient(), user.id, freeKey)
         : undefined;
-    const access = resolveExportAccess({ kind, isSignedIn, isStaff, hasDownloadPass, freeDownloadLeft });
+    const access = resolveExportAccess({
+      kind,
+      isSignedIn,
+      isStaff,
+      hasDownloadPass: hasDownloadPass || examFree,
+      freeDownloadLeft,
+    });
     if (!access.allowed) {
       return NextResponse.json({ error: access.message }, { status: access.status });
     }

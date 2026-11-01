@@ -30,3 +30,17 @@ export async function loadRevealedToday(
   if (error) throw new Error(`loadRevealedToday: ${error.message}`);
   return [...new Set(((data ?? []) as { ref_id: string }[]).map((r) => r.ref_id))];
 }
+
+/**
+ * The same day's reveals, minus a free exam's questions (migration 0211): what
+ * the daily answer limit counts, since the Class 9-10 exams need no pass
+ * (2026-11-02). The caller's own rows only, through their login.
+ */
+export async function loadPaidRevealedToday(db: SupabaseClient, sinceIso: string): Promise<string[]> {
+  const { data, error } = await db.rpc("my_paid_reveals_today", {
+    p_since: sinceIso,
+    p_surfaces: [...DAILY_REVEAL_SURFACES],
+  });
+  if (error) throw new Error(`loadPaidRevealedToday: ${error.message}`);
+  return (data ?? []) as string[];
+}

@@ -27,7 +27,8 @@ import { istDayKey } from "@/lib/email/dueNudge";
 import { readChatSettings } from "@/lib/chat/settingsAdmin";
 import { parseAskedQuestion, revealCheck, toVQuestion } from "@/lib/chat/questionTools";
 import { cardView, gradeCard } from "@/lib/chat/questionCard";
-import { revealedToday } from "@/lib/chat/questionReveal";
+import { paidRevealedToday } from "@/lib/chat/questionReveal";
+import { isFreeExamName } from "@/lib/billing/passScope";
 import { publicImageUrl } from "@/lib/storage/imageUrl";
 import { parseNotesItemRef } from "@/lib/chat/notesItem";
 import { loadNotesItemCard } from "@/lib/chat/notesItemServer";
@@ -101,8 +102,9 @@ export async function POST(request: NextRequest) {
     const db = createSupabaseServerClient();
     const now = new Date();
     const limits = await getPremiumLimits(db);
-    const limit = !limits || limits.hasPass ? null : limits.revealsPerDay;
-    const check = revealCheck({ limit, todayIds: limit === null ? [] : await revealedToday(db, userId, now), questionId: asked.id });
+    // A free exam's question (the Class 9-10 exams, 0210) uses no free answer.
+    const limit = isFreeExamName(row?.exam?.name) || !limits || limits.hasPass ? null : limits.revealsPerDay;
+    const check = revealCheck({ limit, todayIds: limit === null ? [] : await paidRevealedToday(db, now), questionId: asked.id });
     // The card sells the pass in place, as the bank's wall does (2026-10-28).
     if (check.kind === "limit") {
       return NextResponse.json({ ok: false, limit: check.limit, pass: await passOnSale() }, { status: 200 });

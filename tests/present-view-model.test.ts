@@ -62,6 +62,7 @@ function makeWorkedExample(partial: Partial<WorkedExample> = {}): WorkedExample 
     subtopic: "Central Tendency",
     provenance: "Q110 · Sep · 2023",
     source: { kind: "pyq", label: "NDA · Sep 2023 · Q110" },
+    examName: "NDA",
     options: [
       { label: "A", text: "5", isCorrect: false },
       { label: "B", text: "5.5", isCorrect: true },

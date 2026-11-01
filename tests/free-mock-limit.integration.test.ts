@@ -42,6 +42,7 @@ const RUN_ID = randomUUID().slice(0, 8);
 const FUTURE = new Date(Date.now() + 3600_000).toISOString();
 const ROLES = [
   "student", "early", "mockpass", "teacherpass", "staff", "off", "invited", "inviter", "imatpass", "mocksonimat",
+  "freeexam",
 ] as const;
 type Role = (typeof ROLES)[number];
 
@@ -55,6 +56,10 @@ describe.skipIf(!HAS_ENV)("free-mock limit (migration 0120)", () => {
   // An exam that asks for the IMAT pass (0206), and four full mocks in it.
   let imatExamId = "";
   const imatMockIds: string[] = [];
+  // A free exam (0210, the Class 9-10 exams): its full mocks, chapter tests and
+  // practice tests (practice tests are their owner's, so "freeexam"'s).
+  let freeExamId = "";
+  const freeTestIds: { full: string[]; sectional: string[]; custom: string[] } = { full: [], sectional: [], custom: [] };
   let saved: Record<string, unknown> | null = null;
   let countsFrom = "";
 
@@ -168,6 +173,37 @@ describe.skipIf(!HAS_ENV)("free-mock limit (migration 0120)", () => {
       imatMockIds.push(data!.id);
     }
 
+    const { data: freeExam, error: freeErr } = await admin
+      .from("exams")
+      .insert({ name: `zz test free exam ${RUN_ID}`, pass_scope: "free" })
+      .select("id")
+      .single();
+    expect(freeErr).toBeNull();
+    freeExamId = freeExam!.id;
+    for (const scope of ["full", "full", "full", "full", "sectional", "sectional", "custom", "custom"] as const) {
+      const id = randomUUID();
+      const { error } = await admin.from("mock_tests").insert({
+        id,
+        slug: `free-mock-limit-free-${scope}-${freeTestIds[scope].length}-${RUN_ID}`,
+        scope,
+        exam_id: freeExamId,
+        paper_code: "maths",
+        pyq_year: 2099,
+        title: `Free mock limit free ${scope} ${RUN_ID}`,
+        duration_secs: 9000,
+        marking: { correct: 1, wrong: 0 },
+        sections: [{ key: "mathematics", label: "Mathematics", count: 1 }],
+        questions: [{ position: 1, questionId: q!.id, sectionKey: "mathematics", marks: 1, negMarks: 0 }],
+        total_questions: 1,
+        total_marks: 1,
+        // A practice test is its owner's (0156 mock_tests_personal_shape).
+        status: scope === "custom" ? "personal" : "published",
+        owner_id: scope === "custom" ? ids.freeexam : null,
+      });
+      expect(error).toBeNull();
+      freeTestIds[scope].push(id);
+    }
+
     const { error: entErr } = await admin.from("entitlements").insert([
       { user_id: ids.mockpass, scope: "mocks", source: "manual", status: "active", note: `test ${RUN_ID}` },
       { user_id: ids.teacherpass, scope: "teacher", source: "manual", status: "active", note: `test ${RUN_ID}` },
@@ -218,9 +254,13 @@ describe.skipIf(!HAS_ENV)("free-mock limit (migration 0120)", () => {
       await admin.from("paywall_settings").update(saved).eq("id", true);
     }
     // Deleting the mocks cascades their attempts; deleting users cascades the rest.
-    const all = [...mockIds, ...chapterIds, ...imatMockIds];
+    const all = [
+      ...mockIds, ...chapterIds, ...imatMockIds,
+      ...freeTestIds.full, ...freeTestIds.sectional, ...freeTestIds.custom,
+    ];
     if (all.length) await admin.from("mock_tests").delete().in("id", all);
     if (imatExamId) await admin.from("exams").delete().eq("id", imatExamId);
+    if (freeExamId) await admin.from("exams").delete().eq("id", freeExamId);
     if (orgId) await admin.from("organizations").delete().eq("id", orgId);
     for (const role of ROLES) if (ids[role]) await admin.auth.admin.deleteUser(ids[role]);
   });
@@ -318,6 +358,23 @@ describe.skipIf(!HAS_ENV)("free-mock limit (migration 0120)", () => {
     expect(mocks).toMatchObject({ hasPass: true, passScopes: ["mocks"] });
     const { data: staff } = await clients.staff.rpc("my_mock_quota");
     expect(staff).toMatchObject({ hasPass: true, passScopes: ["all"] });
+  });
+
+  it("lets a student with no pass start every test on a free exam, and counts none of them (0210)", async () => {
+    const startFree = (id: string) =>
+      clients.freeexam
+        .from("mock_attempts")
+        .insert({ mock_id: id, user_id: ids.freeexam, expires_at: FUTURE })
+        .select("id")
+        .single();
+    for (const id of [...freeTestIds.full, ...freeTestIds.sectional, ...freeTestIds.custom]) {
+      expect((await startFree(id)).error).toBeNull();
+    }
+    const { data } = await clients.freeexam.rpc("my_mock_quota");
+    expect(data).toMatchObject({ used: 0, chapterUsed: 0, practiceUsed: 0, hasPass: false });
+    // A paid exam stays limited as before: three free mocks, then PT402.
+    for (let i = 0; i < 3; i++) expect((await start("freeexam", i)).error).toBeNull();
+    expect((await start("freeexam", 3)).error?.code).toBe("PT402");
   });
 
   it("blocks nothing when the limit is NULL (off)", async () => {
