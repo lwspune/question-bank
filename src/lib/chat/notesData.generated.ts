@@ -500,7 +500,8 @@ export const NOTES_DATA_KEYS: readonly string[] = [
   "ssc-cgl-geography/climatology",
   "ssc-cgl-geography/world-human",
   "ssc-cgl-geography/earth-structure",
-  "ssc-cgl-geography/oceanography"
+  "ssc-cgl-geography/oceanography",
+  "ssc-cgl-economics/national-income"
 ];
 
 export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, SubtopicNote>>> = {
@@ -1001,4 +1002,5 @@ export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, Sub
   "ssc-cgl-geography/world-human": () => import("@/app/notes/ssc-cgl-geography/world-human/_data").then((m) => m.SSC_WORLD_HUMAN_NOTES),
   "ssc-cgl-geography/earth-structure": () => import("@/app/notes/ssc-cgl-geography/earth-structure/_data").then((m) => m.SSC_EARTH_STRUCTURE_NOTES),
   "ssc-cgl-geography/oceanography": () => import("@/app/notes/ssc-cgl-geography/oceanography/_data").then((m) => m.SSC_OCEANOGRAPHY_NOTES),
+  "ssc-cgl-economics/national-income": () => import("@/app/notes/ssc-cgl-economics/national-income/_data").then((m) => m.SSC_NATIONAL_INCOME_NOTES),
 };

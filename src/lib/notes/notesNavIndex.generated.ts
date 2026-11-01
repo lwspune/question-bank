@@ -3482,5 +3482,12 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "SSC CGL Geography",
     "chapterSlug": "oceanography",
     "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-economics",
+    "subjectDisplay": "SSC CGL Economics",
+    "chapterSlug": "national-income",
+    "subtopicCount": 4
   }
 ];

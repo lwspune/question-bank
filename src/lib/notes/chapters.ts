@@ -2271,6 +2271,11 @@ import {
   SSC_OCEANOGRAPHY_NOTES,
   SSC_OCEANOGRAPHY_SLUGS,
 } from "@/app/notes/ssc-cgl-geography/oceanography/_data";
+import {
+  SSC_NATIONAL_INCOME_CHAPTER,
+  SSC_NATIONAL_INCOME_NOTES,
+  SSC_NATIONAL_INCOME_SLUGS,
+} from "@/app/notes/ssc-cgl-economics/national-income/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -7287,6 +7292,18 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SSC_OCEANOGRAPHY_CHAPTER,
     notes: SSC_OCEANOGRAPHY_NOTES,
     slugs: SSC_OCEANOGRAPHY_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Economics",
+    subjectRoute: "ssc-cgl-economics",
+    subjectDisplay: "SSC CGL Economics",
+    chapterSlug: "national-income",
+    chipLabel: "National Income notes",
+    titleName: "National Income and Development",
+    chapter: SSC_NATIONAL_INCOME_CHAPTER,
+    notes: SSC_NATIONAL_INCOME_NOTES,
+    slugs: SSC_NATIONAL_INCOME_SLUGS,
   },
 ];
 
