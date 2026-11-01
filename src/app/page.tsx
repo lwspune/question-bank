@@ -67,19 +67,19 @@ const EXAM_META: Record<
   },
   "mht-cet": {
     Icon: FlaskConical,
-    blurb: "Maharashtra CET: Physics, Chemistry & Maths, shift-wise PYQs.",
+    blurb: "Maharashtra CET: Physics, Chemistry and Maths, shift-wise papers from 2021 to 2026.",
   },
   "jee-mains": {
     Icon: Layers,
-    blurb: "JEE Mains: shift-wise PCM past papers.",
+    blurb: "JEE Main: shift-wise Physics, Chemistry and Maths papers from 2021 to 2026, numeric answers included.",
   },
   neet: {
     Icon: Stethoscope,
-    blurb: "NEET (UG): Physics, Chemistry, Botany & Zoology with keys.",
+    blurb: "NEET (UG): Physics, Chemistry, Botany and Zoology, with official keys and worked solutions.",
   },
   cds: {
     Icon: GraduationCap,
-    blurb: "Combined Defence Services: English past papers.",
+    blurb: "Combined Defence Services: English, General Knowledge and Elementary Maths papers.",
   },
   "foundation-course": {
     Icon: School,
@@ -88,6 +88,22 @@ const EXAM_META: Record<
   "mh-hsc-12": {
     Icon: BookMarked,
     blurb: "Maharashtra State Board: Class 12 textbook solutions, book-faithful.",
+  },
+  "worksheets-11-12": {
+    Icon: NotebookPen,
+    blurb: "Class 11 and 12 Maths worksheets for NDA, every answer worked out again from scratch.",
+  },
+  "upsc-cse": {
+    Icon: Landmark,
+    blurb: "UPSC Civil Services Prelims: both papers of every sitting from 2017 to 2026, with UPSC's official keys.",
+  },
+  afcat: {
+    Icon: Target,
+    blurb: "AFCAT Numerical Ability, chapter by chapter: past questions, practice and notes.",
+  },
+  spi: {
+    Icon: School,
+    blurb: "Services Preparatory Institute entrance (Class 10): the 2022 paper and ten practice papers.",
   },
 };
 
@@ -107,7 +123,7 @@ const FAMILY_META: Record<string, { Icon: typeof BookOpen; blurb: string }> = {
   CBSE: {
     Icon: Library,
     blurb:
-      "NCERT textbook solutions for Class 11 and 12, plus CBSE board past papers.",
+      "NCERT textbook solutions for Class 10, 11 and 12, plus CBSE board past papers.",
   },
   "Maharashtra State Board": {
     Icon: BookMarked,
@@ -118,6 +134,18 @@ const FAMILY_META: Record<string, { Icon: typeof BookOpen; blurb: string }> = {
     Icon: Landmark,
     blurb:
       "Maharashtra PSC: Group B & C Prelims, plus the Mains Marathi & English papers, with MPSC's final keys.",
+  },
+  CISCE: {
+    Icon: Library,
+    blurb: "ICSE Class 10 and ISC Class 12 board papers from 2025 and 2026: Maths and Science, worked answers.",
+  },
+  IPMAT: {
+    Icon: Compass,
+    blurb: "IPMAT Indore, IPMAT Rohtak and JIPMAT past papers: Quant, Verbal and Logical Reasoning.",
+  },
+  "SSC CGL": {
+    Icon: Landmark,
+    blurb: "SSC CGL Tier I shifts from 2023 to 2025 and Tier II papers, answers checked against SSC's key.",
   },
 };
 
