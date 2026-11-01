@@ -103,13 +103,16 @@ function formula(src: unknown, field: string): (x: number, n: number) => number 
   };
 }
 
-/** "×{n+2} +1" at n = 1 is "×3 +1". */
+const SUP: Record<string, string> = { "0": "⁰", "1": "¹", "2": "²", "3": "³", "4": "⁴", "5": "⁵", "6": "⁶", "7": "⁷", "8": "⁸", "9": "⁹", "-": "⁻" };
+
+/** "×{n+2} +1" at n = 1 is "×3 +1"; a power written ^{n} or ^2 prints raised, so "{n}^{n}" at n = 3 is "3³". */
 function fillShow(show: string, n: number, field: string): string {
-  return show.replace(/\{([^{}]+)\}/g, (_, src: string) => {
+  const filled = show.replace(/\{([^{}]+)\}/g, (_, src: string) => {
     const r = compileExpr(src, { n });
     if ("error" in r) throw new ParamError(`${field}: ${r.error}`);
     return num(r.fn(0));
   });
+  return filled.replace(/\^(-?\d+)/g, (_, d: string) => d.split("").map((c) => SUP[c]).join(""));
 }
 
 function readOptions(raw: unknown): string[] {

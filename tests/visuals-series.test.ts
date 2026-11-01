@@ -75,6 +75,15 @@ describe("series: numbers", () => {
     expect(labels).toEqual(expect.arrayContaining(["1³", "2²", "3³", "4²", "7³"]));
   });
 
+  it("prints a power in a label as a superscript", () => {
+    // 1, 4, 27, 256, ?: each term is n^n.
+    const powers = { kind: "numbers", terms: [1, 4, 27, 256, "?"], rule: { type: "term", f: "n^n", show: "{n}^{n}" }, options: ["3125", "625", "1024", "3025"] };
+    expect(value(powers)).toBe(1);
+    const labels = texts(powers, ["terms", "rule"]);
+    expect(labels).toEqual(expect.arrayContaining(["1¹", "2²", "4⁴", "5⁵"]));
+    expect(labels.join(" ")).not.toMatch(/\^/);
+  });
+
   it("prints a decimal term in full, not rounded to two places", () => {
     // 120, 96, 76.8, 61.44, ?: each x0.8, so 49.152.
     const decimals = { kind: "numbers", terms: [120, 96, 76.8, 61.44, "?"], rule: { type: "step", f: "x*0.8", show: "×0.8" }, options: ["48.152", "49.512", "47.152", "49.152"] };
