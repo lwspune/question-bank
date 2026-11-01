@@ -341,8 +341,8 @@ const FSP_2014_NOTICES = {
     "आयोगाच्या उत्तरतालिकेत पर्याय C बरोबर दिला आहे. तीन ठिपके घड्याळाच्या दिशेने वाचल्यास पर्याय A, C व D हे पहिल्या आकृतीचे आरशातील प्रतिबिंब आहेत आणि फक्त B हा त्याच आकृतीचा फिरवलेले रूप आहे, म्हणून B वेगळा आहे."
   ),
   67: notice(
-    "No option is exactly right as printed. If \(t\) minutes remain until noon, then \(145 - t = 2t\), so \(t = 48\tfrac{1}{3}\); MPSC's key gives option C, 47.",
-    "छापलेल्या स्वरूपात कोणताही पर्याय अचूक नाही. दुपारी 12 वाजण्यास \(t\) मिनिटे बाकी असल्यास \(145 - t = 2t\), म्हणजे \(t = 48\tfrac{1}{3}\); आयोगाच्या उत्तरतालिकेत पर्याय C, 47, दिला आहे."
+    "No option is exactly right as printed. If \\(t\\) minutes remain until noon, then \\(145 - t = 2t\\), so \\(t = 48\\tfrac{1}{3}\\); MPSC's key gives option C, 47.",
+    "छापलेल्या स्वरूपात कोणताही पर्याय अचूक नाही. दुपारी 12 वाजण्यास \\(t\\) मिनिटे बाकी असल्यास \\(145 - t = 2t\\), म्हणजे \\(t = 48\\tfrac{1}{3}\\); आयोगाच्या उत्तरतालिकेत पर्याय C, 47, दिला आहे."
   ),
   74: notice(
     "No option is right as printed. Two days after Monday is Wednesday, the day immediately after is Thursday, two days after that is Saturday, and three days after Saturday is Tuesday, which is not an option. MPSC's key gives option B, Friday.",

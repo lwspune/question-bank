@@ -143,6 +143,12 @@ describe("Forest + Agriculture key notices (owner 2026-11-02: notice + grace on 
         expect(v.en.length, `${p.id} Q${n} en`).toBeGreaterThan(40);
         expect(v.mr.length, `${p.id} Q${n} mr`).toBeGreaterThan(40);
         expect(key[n], `${p.id} Q${n} is cancelled already`).not.toBe("#");
+        // A TS string drops the backslash of "\(" and turns "\t" into a TAB: maths must survive as written.
+        for (const text of [v.en, v.mr]) {
+          expect(text, `${p.id} Q${n}: control character`).not.toMatch(/[\t\r]/);
+          expect(text.split("\(").length, `${p.id} Q${n}: unbalanced math delimiters`).toBe(text.split("\)").length);
+        }
+        if (n === "67") expect(v.en).toContain(String.raw`\(t = 48\tfrac{1}{3}\)`);
       }
     }
   });
