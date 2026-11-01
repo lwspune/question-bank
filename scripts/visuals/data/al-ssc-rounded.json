@@ -1,0 +1,278 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "57fabd74-0cdb-4090-8655-0ba94d3cf411",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{April: } 860,\\ 765,\\ 960,\\ 1148",
+              "note": "cities 1 to 4, read from the graph"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "860 + 765 + 960 + 1148 = {{1:3733}}",
+              "f": "860+765+960+1148",
+              "value": "3733"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{{{1:3733}}}{4} = {{2:933.25}}",
+              "f": "3733/4",
+              "value": "933.25"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "{{2:933.25}} \\approx 934",
+              "note": "nearest option: D"
+            }
+          ],
+          "answer": "(860+765+960+1148)/4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "2efeb841",
+        "answer": {
+          "value": 934,
+          "label": "934 (933.25, nearest)",
+          "tolerance": 1
+        }
+      }
+    },
+    {
+      "id": "5e25901e-553f-4543-b0a5-6e3b7169d3f2",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "10^3 = {{1:1000}}",
+              "f": "10^3",
+              "value": "1000",
+              "note": "cube, cm³"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\tfrac{4}{3} \\times 3.14 \\times 4^3 \\approx {{2:267.95}}",
+              "f": "4/3*3.14*4^3",
+              "value": "267.95",
+              "dp": 2,
+              "note": "marble, π = 3.14"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "{{1:1000}} - {{2:267.95}} \\approx 732.05",
+              "f": "1000-4/3*3.14*4^3",
+              "value": "732.05",
+              "dp": 2,
+              "note": "nearest option: 732.06"
+            }
+          ],
+          "answer": "1000-4/3*3.14*4^3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "5aee441a",
+        "answer": {
+          "value": 732.06,
+          "label": "732.06 cm³",
+          "tolerance": 0.05
+        }
+      }
+    },
+    {
+      "id": "83f3b947-e69d-4a31-88d2-81402235363f",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "14^3 - 7^3 = 2744 - 343 = {{1:2401}}",
+              "f": "14^3-7^3",
+              "value": "2401"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\tfrac{2}{3} \\times \\tfrac{22}{7} \\times {{1:2401}} \\approx 5030.67",
+              "f": "2/3*22/7*2401",
+              "value": "5030.67",
+              "dp": 2,
+              "note": "with π = 22/7"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\tfrac{2}{3} \\times 3.14 \\times {{1:2401}} \\approx {{2:5026.09}}",
+              "f": "2/3*3.14*2401",
+              "value": "5026.09",
+              "dp": 2,
+              "note": "with π = 3.14"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "{{2:5026.09}} \\approx 5026.33",
+              "note": "nearest option: B"
+            }
+          ],
+          "answer": "2/3*3.14*2401"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "c1a57b6a",
+        "answer": {
+          "value": 5026.33,
+          "label": "5026.33 cm³ (nearest)",
+          "tolerance": 0.3
+        }
+      }
+    },
+    {
+      "id": "b9c5800c-361e-41ce-9d90-4bcf5afa960e",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "R = 10,\\quad r = 10 - 1 = {{1:9}}",
+              "f": "10-1",
+              "value": "9",
+              "note": "radii in cm"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "10^3 - {{1:9}}^3 = {{2:271}}",
+              "f": "10^3-9^3",
+              "value": "271"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\tfrac{4}{3} \\times 3.14 \\times {{2:271}} \\approx {{3:1134.6}}",
+              "f": "4/3*3.14*271",
+              "value": "1134.6",
+              "dp": 1,
+              "note": "nearest option: 1134.7"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "4186.67 - 3052.08 \\approx {{3:1134.6}}",
+              "f": "4/3*3.14*1000-4/3*3.14*729",
+              "value": "1134.6",
+              "dp": 1,
+              "note": "check: outer minus inner"
+            }
+          ],
+          "answer": "4/3*3.14*271"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "b5073ab2",
+        "answer": {
+          "value": 1134.7,
+          "label": "1134.7 cm³ (nearest)",
+          "tolerance": 0.15
+        }
+      }
+    }
+  ],
+  "decided": []
+}
