@@ -29,6 +29,13 @@ export const SCOPE_IMAT = "imat";
 export const SCOPE_MCAT = "mcat";
 
 /**
+ * Not a pass: the pass name of an exam that needs none (2026-11-02, migration
+ * 0210, the Class 9-10 exams). Every user holds it, nothing sells it, and an
+ * entitlement may not carry it (a DB CHECK).
+ */
+export const SCOPE_FREE = "free";
+
+/**
  * Scopes a grant carries beyond its own name. The teacher pass includes mocks;
  * the mock pass includes nothing else. Mirrored in SQL by
  * private.user_has_mock_access (migration 0120) — change both together.

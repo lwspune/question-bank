@@ -17,7 +17,7 @@ import { getSessionUser } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { getPremiumLimits } from "@/lib/billing/premiumLimits";
 import { passOnSale } from "@/lib/billing/passOnSale";
-import { loadRevealedToday } from "@/lib/questions/revealQuota";
+import { loadPaidRevealedToday } from "@/lib/questions/revealQuota";
 import { istDayStartIso } from "@/lib/email/dueNudge";
 import { holdsPassFor, passScopesFor } from "@/lib/billing/passScope";
 import { readCountry } from "@/lib/acquisition/country";
@@ -46,7 +46,8 @@ export async function GET(request: NextRequest) {
   }
   try {
     const [todayIds, pass] = await Promise.all([
-      loadRevealedToday(db, user.id, istDayStartIso(new Date())),
+      // A free exam's answers (the Class 9-10 exams, 0210) are not counted (0211).
+      loadPaidRevealedToday(db, istDayStartIso(new Date())),
       passOnSale(site, { scope: scopes[0], country: readCountry(request.headers) }),
     ]);
     return NextResponse.json({ limit: limits.revealsPerDay, todayIds, pass }, { headers: NO_STORE });

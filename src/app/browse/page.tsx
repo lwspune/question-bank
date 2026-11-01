@@ -8,7 +8,7 @@ import { sessionHasAnyScope } from "@/lib/entitlements/session";
 import { sessionPaperFree } from "@/lib/export/freeDownloadSession";
 import { paperKey } from "@/lib/export/freePaper";
 import { passCta, passForBuyer } from "@/lib/billing/plans";
-import { passScopesFor } from "@/lib/billing/passScope";
+import { isFreeExamName, passScopesFor } from "@/lib/billing/passScope";
 import { readCountry } from "@/lib/acquisition/country";
 import { listActivePlansCached } from "@/lib/billing/plansQuery";
 import { getCachedPyqYears } from "@/lib/exam/bankYears";
@@ -187,8 +187,15 @@ export default async function BrowsePage({ searchParams }: PageProps) {
   // stays free. Keyed on the FINAL filters (the cookie branch above can change
   // them) and looked up only for an account the pass would otherwise be
   // offered to. Started here, awaited with the plans, so it adds no round trip.
+  // A free exam's paper (the Class 9-10 exams, migration 0210) downloads as a
+  // pass holder's: the dialog offers the download, and nothing is spent.
+  const examFree =
+    isSignedIn && !isStaff && !hasDownloadPass && filters.examId
+      ? isFreeExamName(await getExamNameById(filters.examId))
+      : false;
+  const downloadUnlocked = hasDownloadPass || examFree;
   const freePromise =
-    isSignedIn && !isStaff && !hasDownloadPass
+    isSignedIn && !isStaff && !downloadUnlocked
       ? sessionPaperFree(paperKey({ filters: filters as unknown as Record<string, unknown> }))
       : null;
 
@@ -425,7 +432,7 @@ export default async function BrowsePage({ searchParams }: PageProps) {
               totalCount={totalCount}
               isSignedIn={isSignedIn}
               isStaff={isStaff}
-              hasDownloadPass={hasDownloadPass}
+              hasDownloadPass={downloadUnlocked}
               freeDownloadLeft={freeDownloadLeft}
               downloadPass={downloadPass}
               bilingual={bilingualExam}
@@ -520,7 +527,7 @@ export default async function BrowsePage({ searchParams }: PageProps) {
           totalCount,
           isSignedIn,
           isStaff,
-          hasDownloadPass,
+          hasDownloadPass: downloadUnlocked,
           freeDownloadLeft,
           downloadPass,
           bilingual: bilingualExam,

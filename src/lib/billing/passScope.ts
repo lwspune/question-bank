@@ -10,8 +10,8 @@
  * A check with no exam in hand (the reveal meter on a cached page that did not
  * say its exam) asks for any pass its SITE sells: `sitePassScopes`.
  */
-import { SCOPE_MOCKS, scopeCovers } from "@/lib/entitlements/access";
-import { EXAM_REGISTRY, getExamBySlug } from "@/lib/exam/examContext";
+import { SCOPE_FREE, SCOPE_MOCKS, scopeCovers } from "@/lib/entitlements/access";
+import { EXAM_REGISTRY, getExamByName, getExamBySlug } from "@/lib/exam/examContext";
 import type { PlanSite } from "./plans";
 
 /** The pass that covers an exam; the www pass for an Indian, unknown or missing exam. */
@@ -25,8 +25,20 @@ export function sitePassScopes(site: PlanSite): string[] {
   return [...new Set(EXAM_REGISTRY.filter((e) => e.site === "intl").map((e) => passScopeForExam(e.slug)))];
 }
 
-/** True when any held scope covers any wanted one (`all` covers everything; teacher covers mocks). */
+/**
+ * True when the exam (by its DB name, as cards and mocks carry it) needs no
+ * pass: the Class 9-10 exams since 2026-11-02 (migration 0210).
+ */
+export function isFreeExamName(examName: string | null | undefined): boolean {
+  return getExamByName(examName)?.passScope === SCOPE_FREE;
+}
+
+/**
+ * True when any held scope covers any wanted one (`all` covers everything;
+ * teacher covers mocks). A wanted `free` is held by everyone, passes or none.
+ */
 export function coversAny(held: readonly string[], wanted: readonly string[]): boolean {
+  if (wanted.includes(SCOPE_FREE)) return true;
   return held.some((h) => wanted.some((w) => scopeCovers(h, w)));
 }
 
@@ -40,6 +52,7 @@ export type PassSummary = { hasPass: boolean; passScopes?: readonly string[] | n
  */
 export function holdsPassFor(summary: PassSummary, scopes: string | readonly string[]): boolean {
   const wanted = typeof scopes === "string" ? [scopes] : scopes;
+  if (wanted.includes(SCOPE_FREE)) return true;
   if (summary.passScopes) return coversAny(summary.passScopes, wanted);
   return summary.hasPass && wanted.includes(SCOPE_MOCKS);
 }

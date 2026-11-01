@@ -199,8 +199,9 @@ export type ExamEntry = {
    * `exams.pass_scope`). Absent = the www Premium Pass (`mocks`). Every intl
    * exam names its own, so a www pass never unlocks it and its price can differ
    * (tests/billing-exam-pass.test.ts). Read through `passScopeForExam`.
+   * `"free"` (2026-11-02, migration 0210): no pass needed, the Class 9-10 exams.
    */
-  passScope?: "imat" | "mcat";
+  passScope?: "imat" | "mcat" | "free";
   /**
    * A NON-BOARD presentation family — the generic sibling of `board`+`std`.
    *
@@ -313,6 +314,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
   },
   {
     slug: "foundation-course",
+    passScope: "free", // Class 9-10: no pass needed (migration 0210)
     tier: "school",
     displayName: "Foundation",
     examName: "Foundation Course", // must match the `exams` DB row exactly
@@ -387,6 +389,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
   },
   {
     slug: "cbse-10",
+    passScope: "free", // Class 9-10: no pass needed (migration 0210)
     tier: "school",
     displayName: "CBSE Class 10",
     examName: "CBSE Class 10", // must match the `exams` DB row exactly
@@ -533,6 +536,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
   },
   {
     slug: "icse-10",
+    passScope: "free", // Class 9-10: no pass needed (migration 0210)
     tier: "school",
     displayName: "ICSE Class 10",
     examName: "ICSE Class 10", // must match the `exams` DB row exactly
@@ -548,6 +552,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
   },
   {
     slug: "mh-sb-9",
+    passScope: "free", // Class 9-10: no pass needed (migration 0210)
     tier: "school",
     displayName: "MH State Board 9",
     examName: "Maharashtra State Board Class 9", // must match the `exams` DB row exactly
@@ -574,6 +579,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
   },
   {
     slug: "mh-ssc-10",
+    passScope: "free", // Class 9-10: no pass needed (migration 0210)
     tier: "school",
     displayName: "MH SSC 10",
     examName: "Maharashtra State Board Class 10", // must match the `exams` DB row exactly
@@ -864,6 +870,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
   },
   {
     slug: "spi",
+    passScope: "free", // Class 9-10: no pass needed (migration 0210)
     // Services Preparatory Institute entrance (Chhatrapati Sambhajinagar), sat in
     // Class 10 by students aiming at NDA. GSPI, the girls' institute, sits a paper
     // of the same shape, so one exam covers both. Part 1 Mathematical Ability and

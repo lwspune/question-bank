@@ -13,6 +13,8 @@ import { readCountry } from "@/lib/acquisition/country";
 import { listActivePlansCached } from "@/lib/billing/plansQuery";
 import { planSiteForHost } from "@/lib/sites/intl";
 import type { ExportViewerAccess } from "@/lib/export/viewerAccess";
+import { downloadIsFree } from "@/lib/export/freeExamDownload";
+import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 /**
  * What the download box needs to know about the viewer (2026-10-07).
@@ -60,7 +62,17 @@ export async function GET(request: NextRequest) {
   try {
     const { isSignedIn, isStaff } = await getPageIdentity();
     if (isSignedIn) {
-      const hasDownloadPass = !isStaff && (await sessionHasAnyScope(scopes));
+      // A free exam's paper or sheet (the Class 9-10 exams, 0210) is offered as
+      // a pass holder's is, so the box shows the download, not the pass.
+      const hasDownloadPass =
+        !isStaff &&
+        ((await sessionHasAnyScope(scopes)) ||
+          (await downloadIsFree(createSupabaseServerClient(), {
+            mockSlug: slug && /^[a-z0-9-]{1,120}$/.test(slug) ? slug : null,
+            homeworkSlug: homework?.slug ?? topPyqs?.plan ?? null,
+            examSlug: boardPaper?.exam ?? null,
+            formula: sheet,
+          })));
       viewer = {
         signedIn: true,
         isStaff,

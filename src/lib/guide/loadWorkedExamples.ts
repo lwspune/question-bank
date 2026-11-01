@@ -20,6 +20,8 @@ export type WorkedExample = {
   provenance: string | null;
   /** The tag the bank card leads with ("NDA · Sep 2023 · Q110"); see sourceTag. */
   source: SourceTag;
+  /** The DB exam name; a free exam's example spends no daily answer (0210). */
+  examName: string | null;
   options: {
     label: "A" | "B" | "C" | "D";
     text: string;
@@ -111,6 +113,7 @@ export async function loadWorkedExamples(
         pyqNote: publicPyqNote(r.pyq_note, r.question_kind),
         questionNumber: r.question_number,
       }),
+      examName: flat(r.exam)?.name ?? null,
       options: (r.options ?? [])
         .map((o) => ({
           label: o.label,

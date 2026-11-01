@@ -11,6 +11,7 @@ import { noteRevealForRun } from "@/components/celebrate/answerRun";
 import type { PickLabel, PracticeSurface } from "@/lib/questions/practiceBatch";
 import type { PassCta } from "@/lib/billing/plans";
 import { intlExamOfPath } from "@/lib/sites/intl";
+import { isFreeExamName } from "@/lib/billing/passScope";
 
 /**
  * A reveal that came from tapping an option. `correct` is the page's own
@@ -219,6 +220,9 @@ export function useRevealedIds(): string[] {
 function useAttemptReveal(surface: PracticeSurface, examName: string) {
   const { signedIn, loading } = useSignedIn();
   useDailyQuota(signedIn, loading);
+  // A free exam (the Class 9-10 exams, migration 0210) has no daily limit and
+  // spends none of it; the signed-out sign-in prompt still applies.
+  const free = isFreeExamName(examName);
 
   /** `pick`: the option tapped, when this reveal is an answer — graded on the
    *  server (bank verdicts, 2026-10-02). Omitted for a "Show solution" reveal.
@@ -228,7 +232,7 @@ function useAttemptReveal(surface: PracticeSurface, examName: string) {
       // Don't gate before auth resolves — a signed-in user must never be walled
       // by a brief loading window.
       if (loading) return true;
-      const daily = signedIn ? currentDaily() : null;
+      const daily = signedIn && !free ? currentDaily() : null;
       const decision = revealDecision({ signedIn, revealedIds: readIds(), questionId, daily });
       if (decision.allow && !signedIn) writeIds(decision.nextIds);
       if (decision.allow && daily) spendDaily(decision.nextIds);
@@ -254,24 +258,24 @@ function useAttemptReveal(surface: PracticeSurface, examName: string) {
       else if (!decision.allow) trackFunnelOnce("reveal_wall_hit", surface, { surface, exam: examName });
       return decision.allow;
     },
-    [signedIn, loading, surface, examName]
+    [signedIn, loading, surface, examName, free]
   );
 
-  return { attemptReveal, signedIn, loading };
+  return { attemptReveal, signedIn, loading, free };
 }
 
 export function useRevealMeter(surface: PracticeSurface, examName: string) {
-  const { attemptReveal, signedIn, loading } = useAttemptReveal(surface, examName);
+  const { attemptReveal, signedIn, loading, free } = useAttemptReveal(surface, examName);
   const ids = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
   const v = useSyncExternalStore(subscribe, getVersion, () => 0);
 
   /** Render this card locked (before any tap)? See `isRevealLocked`. */
   const isLocked = useCallback(
     (questionId: string): boolean =>
-      isRevealLocked({ signedIn, loading, revealedIds: ids, questionId, daily: signedIn ? currentDaily() : null }),
+      isRevealLocked({ signedIn, loading, revealedIds: ids, questionId, daily: signedIn && !free ? currentDaily() : null }),
     // `v` is read only to redraw when the daily list changes.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [signedIn, loading, ids, v]
+    [signedIn, loading, ids, v, free]
   );
 
   return { attemptReveal, isLocked, signedIn, loading };
@@ -288,7 +292,7 @@ export function useRevealMeter(surface: PracticeSurface, examName: string) {
  * its items.
  */
 export function useCardRevealMeter(surface: PracticeSurface, examName: string, questionId: string) {
-  const { attemptReveal, signedIn, loading } = useAttemptReveal(surface, examName);
+  const { attemptReveal, signedIn, loading, free } = useAttemptReveal(surface, examName);
   const getLocked = useCallback(
     () =>
       isRevealLocked({
@@ -296,9 +300,9 @@ export function useCardRevealMeter(surface: PracticeSurface, examName: string, q
         loading,
         revealedIds: getSnapshot(),
         questionId,
-        daily: signedIn ? currentDaily() : null,
+        daily: signedIn && !free ? currentDaily() : null,
       }),
-    [signedIn, loading, questionId]
+    [signedIn, loading, questionId, free]
   );
   // Nothing is locked on the server or in the hydration pass, as before.
   const locked = useSyncExternalStore(subscribe, getLocked, () => false);
@@ -313,17 +317,24 @@ export function useCardRevealMeter(surface: PracticeSurface, examName: string, q
  * count toward, and are stopped by, the same 50 a day as the bank and board.
  * Returns whether this reveal may go ahead.
  */
-export function useDailyRevealGate(signedIn: boolean, loading: boolean, surface: PracticeSurface) {
+export function useDailyRevealGate(
+  signedIn: boolean,
+  loading: boolean,
+  surface: PracticeSurface,
+  examName: string | null
+) {
   useDailyQuota(signedIn, loading);
+  // A free exam's example (the Class 9-10 exams, 0210) spends no daily answer.
+  const free = isFreeExamName(examName);
   return useCallback(
     (questionId: string): boolean => {
-      if (loading || !signedIn) return true;
+      if (loading || !signedIn || free) return true;
       const daily = currentDaily();
       const decision = revealDecision({ signedIn: true, revealedIds: [], questionId, daily });
       if (decision.allow && daily) spendDaily(decision.nextIds);
       if (!decision.allow) reportDailyWall(surface);
       return decision.allow;
     },
-    [signedIn, loading, surface]
+    [signedIn, loading, surface, free]
   );
 }

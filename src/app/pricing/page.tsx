@@ -72,6 +72,14 @@ export default async function PricingPage({
 
         {site === "pyqvault" && <ResultsStrip className="mt-6" />}
 
+        {/* The free exams (migration 0210, owner 2026-11-02). The six are pinned
+            by tests/billing-exam-pass.test.ts, so this line cannot quietly drift. */}
+        {site === "pyqvault" && (
+          <p className="mx-auto mt-6 max-w-md rounded-md border border-brand-accent/30 bg-brand-accent/5 p-3 text-center text-sm">
+            Free for Class 9 and 10: CBSE 10, ICSE 10, Maharashtra Class 9 and 10, SPI and Foundation Course.
+          </p>
+        )}
+
         {plans.length === 0 ? (
           <p className="mt-8 text-center text-sm text-muted-foreground">
             No passes are on sale right now.
