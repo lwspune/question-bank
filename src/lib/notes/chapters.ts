@@ -2361,6 +2361,46 @@ import {
   SSC_CHEMICAL_BONDING_NOTES,
   SSC_CHEMICAL_BONDING_SLUGS,
 } from "@/app/notes/ssc-cgl-chemistry/chemical-bonding/_data";
+import {
+  SSC_ELECTRICITY_MAGNETISM_CHAPTER,
+  SSC_ELECTRICITY_MAGNETISM_NOTES,
+  SSC_ELECTRICITY_MAGNETISM_SLUGS,
+} from "@/app/notes/ssc-cgl-physics/electricity-magnetism/_data";
+import {
+  SSC_MODERN_PHYSICS_CHAPTER,
+  SSC_MODERN_PHYSICS_NOTES,
+  SSC_MODERN_PHYSICS_SLUGS,
+} from "@/app/notes/ssc-cgl-physics/modern-physics/_data";
+import {
+  SSC_LIGHT_OPTICS_CHAPTER,
+  SSC_LIGHT_OPTICS_NOTES,
+  SSC_LIGHT_OPTICS_SLUGS,
+} from "@/app/notes/ssc-cgl-physics/light-optics/_data";
+import {
+  SSC_ASTRONOMY_SPACE_CHAPTER,
+  SSC_ASTRONOMY_SPACE_NOTES,
+  SSC_ASTRONOMY_SPACE_SLUGS,
+} from "@/app/notes/ssc-cgl-physics/astronomy-space/_data";
+import {
+  SSC_UNITS_MEASUREMENT_CHAPTER,
+  SSC_UNITS_MEASUREMENT_NOTES,
+  SSC_UNITS_MEASUREMENT_SLUGS,
+} from "@/app/notes/ssc-cgl-physics/units-measurement/_data";
+import {
+  SSC_SOUND_CHAPTER,
+  SSC_SOUND_NOTES,
+  SSC_SOUND_SLUGS,
+} from "@/app/notes/ssc-cgl-physics/sound/_data";
+import {
+  SSC_HEAT_THERMODYNAMICS_CHAPTER,
+  SSC_HEAT_THERMODYNAMICS_NOTES,
+  SSC_HEAT_THERMODYNAMICS_SLUGS,
+} from "@/app/notes/ssc-cgl-physics/heat-thermodynamics/_data";
+import {
+  SSC_KINEMATICS_CHAPTER,
+  SSC_KINEMATICS_NOTES,
+  SSC_KINEMATICS_SLUGS,
+} from "@/app/notes/ssc-cgl-physics/kinematics/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -7593,6 +7633,101 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SSC_CHEMICAL_BONDING_CHAPTER,
     notes: SSC_CHEMICAL_BONDING_NOTES,
     slugs: SSC_CHEMICAL_BONDING_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Physics",
+    subjectRoute: "ssc-cgl-physics",
+    subjectDisplay: "SSC CGL Physics",
+    chapterSlug: "electricity-magnetism",
+    chipLabel: "Electricity notes",
+    titleName: "Circuits, Power and Magnetism",
+    chapter: SSC_ELECTRICITY_MAGNETISM_CHAPTER,
+    notes: SSC_ELECTRICITY_MAGNETISM_NOTES,
+    slugs: SSC_ELECTRICITY_MAGNETISM_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Physics",
+    subjectRoute: "ssc-cgl-physics",
+    subjectDisplay: "SSC CGL Physics",
+    chapterSlug: "modern-physics",
+    chipLabel: "Modern Physics notes",
+    titleName: "Radioactivity and Quantum Physics",
+    chapter: SSC_MODERN_PHYSICS_CHAPTER,
+    notes: SSC_MODERN_PHYSICS_NOTES,
+    slugs: SSC_MODERN_PHYSICS_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Physics",
+    subjectRoute: "ssc-cgl-physics",
+    subjectDisplay: "SSC CGL Physics",
+    chapterSlug: "light-optics",
+    chipLabel: "Light notes",
+    titleName: "Mirrors, Lenses and Refraction",
+    chapter: SSC_LIGHT_OPTICS_CHAPTER,
+    notes: SSC_LIGHT_OPTICS_NOTES,
+    slugs: SSC_LIGHT_OPTICS_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Physics",
+    subjectRoute: "ssc-cgl-physics",
+    subjectDisplay: "SSC CGL Physics",
+    chapterSlug: "astronomy-space",
+    chipLabel: "Astronomy and Space notes",
+    chapter: SSC_ASTRONOMY_SPACE_CHAPTER,
+    notes: SSC_ASTRONOMY_SPACE_NOTES,
+    slugs: SSC_ASTRONOMY_SPACE_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Physics",
+    subjectRoute: "ssc-cgl-physics",
+    subjectDisplay: "SSC CGL Physics",
+    chapterSlug: "units-measurement",
+    chipLabel: "Units notes",
+    titleName: "Units and Measuring",
+    chapter: SSC_UNITS_MEASUREMENT_CHAPTER,
+    notes: SSC_UNITS_MEASUREMENT_NOTES,
+    slugs: SSC_UNITS_MEASUREMENT_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Physics",
+    subjectRoute: "ssc-cgl-physics",
+    subjectDisplay: "SSC CGL Physics",
+    chapterSlug: "sound",
+    chipLabel: "Sound notes",
+    titleName: "Sound Waves and Doppler Effect",
+    chapter: SSC_SOUND_CHAPTER,
+    notes: SSC_SOUND_NOTES,
+    slugs: SSC_SOUND_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Physics",
+    subjectRoute: "ssc-cgl-physics",
+    subjectDisplay: "SSC CGL Physics",
+    chapterSlug: "heat-thermodynamics",
+    chipLabel: "Heat notes",
+    titleName: "Heat and Latent Heat",
+    chapter: SSC_HEAT_THERMODYNAMICS_CHAPTER,
+    notes: SSC_HEAT_THERMODYNAMICS_NOTES,
+    slugs: SSC_HEAT_THERMODYNAMICS_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Physics",
+    subjectRoute: "ssc-cgl-physics",
+    subjectDisplay: "SSC CGL Physics",
+    chapterSlug: "kinematics",
+    chipLabel: "Motion notes",
+    titleName: "Motion and Rotation",
+    chapter: SSC_KINEMATICS_CHAPTER,
+    notes: SSC_KINEMATICS_NOTES,
+    slugs: SSC_KINEMATICS_SLUGS,
   },
 ];
 

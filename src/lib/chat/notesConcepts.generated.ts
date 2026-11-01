@@ -520,4 +520,12 @@ export const NOTES_CONCEPT_TREE: NotesConceptTree = [
   ["ssc-cgl-chemistry/acids-bases-salts","SSC CGL",[["ssc-cab-acids","Acids, Bases and Their Reactions",[["ssccabac-daily","Acids and bases at home"],["ssccabac-reactions","Metals with acids, and base strength"]]]]],
   ["ssc-cgl-chemistry/mole-concept","SSC CGL",[["ssc-cmo-mole","The Mole and the Laws of Combination",[["ssccmomo-mole","Percentage composition and balancing"],["ssccmomo-laws","The laws and their discoverers"]]]]],
   ["ssc-cgl-chemistry/chemical-bonding","SSC CGL",[["ssc-ccb-bonding","Valency, Oxidation Numbers and Atomicity",[["ssccbbo-valency","Valency and oxidation numbers"],["ssccbbo-atomicity","Atomicity"]]]]],
+  ["ssc-cgl-physics/electricity-magnetism","SSC CGL",[["ssc-fem-electricity","Circuits, Power and Magnetism",[["sscfemel-circuits","Ohm's law and resistance"],["sscfemel-power","Electrical energy and heating"],["sscfemel-magnetism","Magnets and devices"]]]]],
+  ["ssc-cgl-physics/modern-physics","SSC CGL",[["ssc-fmp-modern","Radioactivity and Quantum Physics",[["sscfmpmo-decay","Radioactive decay"],["sscfmpmo-quantum","Quantum ideas and the physicists"]]]]],
+  ["ssc-cgl-physics/light-optics","SSC CGL",[["ssc-flo-light","Mirrors, Lenses and Refraction",[["sscfloli-mirrors","Mirrors and lenses"],["sscfloli-refraction","Refraction, the eye and light's behaviour"]]]]],
+  ["ssc-cgl-physics/astronomy-space","SSC CGL",[["ssc-fas-space","The Universe and Satellites",[["sscfassp-universe","Stars, telescopes and theories"],["sscfassp-satellites","Satellites and space weather"]]]]],
+  ["ssc-cgl-physics/units-measurement","SSC CGL",[["ssc-fun-units","Units, Dimensions and Measuring",[["sscfunun-units","Units and what they measure"],["sscfunun-dimensions","Dimensions and the vernier calliper"]]]]],
+  ["ssc-cgl-physics/sound","SSC CGL",[["ssc-fso-sound","Sound Waves and the Doppler Effect",[["sscfsoso-waves","The wave equation"],["sscfsoso-doppler","The Doppler effect and hearing"]]]]],
+  ["ssc-cgl-physics/heat-thermodynamics","SSC CGL",[["ssc-fht-heat","Heat, Latent Heat and Thermodynamics",[["sscfhthe-heat","Heat in daily life"],["sscfhthe-laws","Laws of thermodynamics and engines"]]]]],
+  ["ssc-cgl-physics/kinematics","SSC CGL",[["ssc-fkm-motion","Kinds of Motion and Rotation",[["sscfkmmo-kinds","Kinds of motion"],["sscfkmmo-rotation","Circular motion and rotation"]]]]],
 ];
