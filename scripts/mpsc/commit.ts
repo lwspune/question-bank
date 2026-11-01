@@ -58,7 +58,10 @@ async function main() {
   const cancelledNote =
     `Cancelled by MPSC in the final answer key for this paper (${paper.pyqNote}). ` +
     `No option is correct. In PYQ Vault mocks it is awarded to every candidate.`;
-  const { rows, cancelled, errors } = buildRecords(questions, key, cancelledNote, graded);
+  // Owner-settled doubtful keys (config.ts Paper.notices): MPSC's key is kept,
+  // the notice heads the solution, and the mock builder graces the question.
+  const notices = paper.notices ?? {};
+  const { rows, cancelled, errors } = buildRecords(questions, key, cancelledNote, graded, notices);
   const nl = (s: string) => normalizeNewlines(s);
   for (const r of rows) {
     r.question = nl(r.question);
@@ -186,7 +189,7 @@ async function main() {
         p_lang: "mr",
         p_text: nl(mr.stem),
         p_context: mr.context ? nl(mr.context) : null,
-        p_solution: questionSolution(q.printNote, graded[q.n])?.mr ?? null,
+        p_solution: questionSolution(q.printNote, graded[q.n], notices[q.n])?.mr ?? null,
         p_options: opts.map((o, i) => ({ option_id: o.id, text: nl(mr.options[i]) })),
       });
       if (error) problems.push(`Q${q.n}: ${error.message}`);
@@ -195,7 +198,7 @@ async function main() {
     // The print-difference / graded-marks remark on the English row.
     // commitStaged never rewrites an existing row, so a re-run sets it here
     // (solution is outside content_hash, so this cannot change the question's identity).
-    const remark = questionSolution(q.printNote, graded[q.n]);
+    const remark = questionSolution(q.printNote, graded[q.n], notices[q.n]);
     if (remark) {
       const { error: sErr } = await client.from("questions").update({ solution: nl(remark.en) }).eq("id", row.id);
       if (sErr) problems.push(`Q${q.n}: solution update failed — ${sErr.message}`);
