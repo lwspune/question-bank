@@ -381,7 +381,9 @@ describe("family stages", () => {
       "mpsc-sti-mains",
       "mpsc-group-b-c",
       "mpsc-state-services-prelims",
+      "mpsc-agriculture-service-prelims",
       "mpsc-aso-mains",
+      "mpsc-forest-service-prelims",
       "mpsc-state-services-mains",
       "mpsc-psi-mains",
       "mpsc-group-b-combined-mains"
@@ -399,6 +401,8 @@ describe("family stages", () => {
     expect(node.members.map((m) => `${m.stage}:${m.item.slug}`)).toEqual([
       "Prelims:mpsc-group-b-c",
       "Prelims:mpsc-state-services-prelims",
+      "Prelims:mpsc-forest-service-prelims",
+      "Prelims:mpsc-agriculture-service-prelims",
       "Mains:mpsc-state-services-mains",
       "Mains:mpsc-group-b-combined-mains",
       "Mains:mpsc-sti-mains",
@@ -459,7 +463,7 @@ describe("family stages", () => {
   it("groups members by stage for the card surfaces", () => {
     const node = family(groupExamFamilies(mpsc(), bySlug));
     expect(membersByStage(node).map((g) => `${g.stage}:${g.members.length}`)).toEqual([
-      "Prelims:2",
+      "Prelims:4",
       "Mains:5",
     ]);
     const ipmat = family(groupExamFamilies(items("ipmat-indore", "ipmat-rohtak"), bySlug));

@@ -33,6 +33,8 @@ export type ExamSlug =
   | "jipmat"
   | "mpsc-group-b-c"
   | "mpsc-state-services-prelims"
+  | "mpsc-forest-service-prelims"
+  | "mpsc-agriculture-service-prelims"
   | "mpsc-state-services-mains"
   | "mpsc-group-b-combined-mains"
   | "mpsc-sti-mains"
@@ -727,6 +729,43 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     guidesPath: null,
     notesPath: null,
     hasMocks: true, // 10 GS Paper I mocks published 2026-09-27
+  },
+  {
+    slug: "mpsc-forest-service-prelims",
+    // Maharashtra Forest Service (ACF / RFO), graduate entry.
+    tier: "graduate",
+    displayName: "MPSC Forest Service Prelims",
+    examName: "MPSC Forest Service Prelims", // must match the `exams` DB row exactly
+    solutionCoverage: "none", // answers + key notices only (2026-11-02)
+    family: "MPSC",
+    familyStage: "Prelims",
+    familyLabel: "Forest Service",
+    familyAxis: "Exam",
+    // Marathi grammar in Marathi only, an English section in English only, GS
+    // and aptitude in both (2014 prints them in English only).
+    bilingual: true,
+    // 4 papers (2014, 2016, 2017, 2018), 399 q, PUBLIC since 2026-11-02; MPSC's final keys.
+    guidesPath: null,
+    notesPath: null,
+    hasMocks: true, // one mock per paper, 2026-11-02
+  },
+  {
+    slug: "mpsc-agriculture-service-prelims",
+    // Maharashtra Agriculture Service (Class I and II), graduate entry.
+    tier: "graduate",
+    displayName: "MPSC Agriculture Service Prelims",
+    examName: "MPSC Agriculture Service Prelims", // must match the `exams` DB row exactly
+    solutionCoverage: "none", // answers + key notices only (2026-11-02)
+    family: "MPSC",
+    familyStage: "Prelims",
+    familyLabel: "Agriculture Service",
+    familyAxis: "Exam",
+    // Same layout as Forest, plus an agriculture head.
+    bilingual: true,
+    // 5 papers (2011, 2012: 200 q; 2016, 2017, 2018: 100 q), 700 q, PUBLIC since 2026-11-02.
+    guidesPath: null,
+    notesPath: null,
+    hasMocks: true, // one mock per paper, 2026-11-02
   },
   {
     slug: "mpsc-state-services-mains",
