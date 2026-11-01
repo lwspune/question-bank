@@ -43,7 +43,12 @@ export type BilingualQuestion = {
    * transcribed as a table in each language instead, so it stays answerable
    * and readable in either.
    */
-  figure?: { page: number; box: [number, number, number, number] };
+  figure?: {
+    page: number;
+    box: [number, number, number, number];
+    /** "none" once a person has looked at a figure the watermark check flags and seen no watermark. */
+    watermark?: "none";
+  };
   /**
    * A MEANING difference between the printed Marathi and English (the booklet's
    * own translation error — e.g. "south-west" vs "North-Western"). Both versions
