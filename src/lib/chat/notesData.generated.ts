@@ -504,7 +504,14 @@ export const NOTES_DATA_KEYS: readonly string[] = [
   "ssc-cgl-economics/national-income",
   "ssc-cgl-economics/indian-economy",
   "ssc-cgl-economics/money-banking",
-  "ssc-cgl-economics/microeconomics"
+  "ssc-cgl-economics/microeconomics",
+  "ssc-cgl-biology/biodiversity",
+  "ssc-cgl-biology/cell-biology",
+  "ssc-cgl-biology/human-physiology",
+  "ssc-cgl-biology/ecology",
+  "ssc-cgl-biology/plant-biology",
+  "ssc-cgl-biology/microbiology",
+  "ssc-cgl-biology/biochemistry"
 ];
 
 export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, SubtopicNote>>> = {
@@ -1009,4 +1016,11 @@ export const NOTES_DATA_LOADERS: Record<string, () => Promise<Record<string, Sub
   "ssc-cgl-economics/indian-economy": () => import("@/app/notes/ssc-cgl-economics/indian-economy/_data").then((m) => m.SSC_INDIAN_ECONOMY_NOTES),
   "ssc-cgl-economics/money-banking": () => import("@/app/notes/ssc-cgl-economics/money-banking/_data").then((m) => m.SSC_MONEY_BANKING_NOTES),
   "ssc-cgl-economics/microeconomics": () => import("@/app/notes/ssc-cgl-economics/microeconomics/_data").then((m) => m.SSC_MICROECONOMICS_NOTES),
+  "ssc-cgl-biology/biodiversity": () => import("@/app/notes/ssc-cgl-biology/biodiversity/_data").then((m) => m.SSC_BIODIVERSITY_NOTES),
+  "ssc-cgl-biology/cell-biology": () => import("@/app/notes/ssc-cgl-biology/cell-biology/_data").then((m) => m.SSC_CELL_BIOLOGY_NOTES),
+  "ssc-cgl-biology/human-physiology": () => import("@/app/notes/ssc-cgl-biology/human-physiology/_data").then((m) => m.SSC_HUMAN_PHYSIOLOGY_NOTES),
+  "ssc-cgl-biology/ecology": () => import("@/app/notes/ssc-cgl-biology/ecology/_data").then((m) => m.SSC_ECOLOGY_NOTES),
+  "ssc-cgl-biology/plant-biology": () => import("@/app/notes/ssc-cgl-biology/plant-biology/_data").then((m) => m.SSC_PLANT_BIOLOGY_NOTES),
+  "ssc-cgl-biology/microbiology": () => import("@/app/notes/ssc-cgl-biology/microbiology/_data").then((m) => m.SSC_MICROBIOLOGY_NOTES),
+  "ssc-cgl-biology/biochemistry": () => import("@/app/notes/ssc-cgl-biology/biochemistry/_data").then((m) => m.SSC_BIOCHEMISTRY_NOTES),
 };

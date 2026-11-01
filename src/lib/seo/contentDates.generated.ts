@@ -6,7 +6,7 @@
  * committed rather than computed at build time, and src/lib/seo/lastmod.ts for
  * how a route with no entry here inherits from its nearest recorded ancestor.
  *
- * Entries: 472
+ * Entries: 479
  */
 import type { ContentDateMap } from "@/lib/seo/lastmod";
 
@@ -417,6 +417,13 @@ export const CONTENT_DATES: ContentDateMap = {
   "/notes/spi-reasoning/classification": "2026-10-22T19:13:03+05:30",
   "/notes/spi-reasoning/order-ranking": "2026-10-22T19:13:03+05:30",
   "/notes/spi-reasoning/series": "2026-10-22T19:13:03+05:30",
+  "/notes/ssc-cgl-biology/biochemistry": "2026-11-02T01:50:28+05:30",
+  "/notes/ssc-cgl-biology/biodiversity": "2026-11-02T01:50:26+05:30",
+  "/notes/ssc-cgl-biology/cell-biology": "2026-11-02T01:50:26+05:30",
+  "/notes/ssc-cgl-biology/ecology": "2026-11-02T01:50:27+05:30",
+  "/notes/ssc-cgl-biology/human-physiology": "2026-11-02T01:50:27+05:30",
+  "/notes/ssc-cgl-biology/microbiology": "2026-11-02T01:50:28+05:30",
+  "/notes/ssc-cgl-biology/plant-biology": "2026-11-02T01:50:27+05:30",
   "/notes/ssc-cgl-economics/indian-economy": "2026-11-01T22:39:33+05:30",
   "/notes/ssc-cgl-economics/microeconomics": "2026-11-01T22:39:34+05:30",
   "/notes/ssc-cgl-economics/money-banking": "2026-11-01T22:39:33+05:30",
