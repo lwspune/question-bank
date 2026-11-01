@@ -170,5 +170,23 @@ Underlined Marathi is `**bold**` (the Mains convention); English underline is
 
 | paper | transcribed | marks vs key | committed |
 |---|---|---|---|
+| fsp-2014 (D04) | 100/100 | 88/100 | PRIVATE, 2026-11-02 (Q72 cancelled; 12 figures, AglaSem watermark cleaned). An AglaSem copy: Q16-100 are printed in ENGLISH ONLY, GS and aptitude included |
+| asp-2016 (U07) | 100/100 | 89/100 | PRIVATE, 2026-11-02 (Q19, Q51, Q53, Q68, Q90 cancelled; Q60 waived; print notes Q67, Q93) |
 | fsp-2017 (E09) | 100/100 | 81/91 (9 unmarked) | PRIVATE, 2026-10-16 (Q37, Q89, Q98, Q100 cancelled; Q86 waived) |
 | fsp-2018 (K11) | 100/100 | 91/98 (Q1, Q2, Q21, Q30, Q40, Q42 language items; Q90 word count) | PRIVATE, 2026-10-16 (Q26, Q47 cancelled; Q51, Q67 waived) |
+
+### Key doubts (Forest + Agriculture), for the owner before publishing
+
+Every paper here is committed on MPSC's key. These questions disagree with an
+independent solve in a way the page does not explain. **Nothing is changed until
+the owner decides** (correct the key + notice, or notice + grace, per the
+2026-10-29 defective-question policy).
+
+| paper · Q | MPSC key | finding |
+|---|---|---|
+| fsp-2014 Q63 | (3) | Odd figure out: (1), (3), (4) are mirror images of the reference triangle; only (2) is a rotation, so (2) is the odd one. Read from the figure; looks like a wrong key. |
+| fsp-2014 Q67 | (3) 47 | Defective as printed: 145 - t = 2t gives t = 48⅓; no option is exact. Text checked against the page. |
+| fsp-2014 Q74 | (2) Friday | Defective as printed: the chain works out to Tuesday, not an option. Text checked against the page. |
+| fsp-2014 Q55 | (1) (a) or (d) | The person's sex is not given, so "(c) sister or brother, or (d)" fits; MPSC keys "sister". |
+| asp-2016 Q38 | (1) a and b | Statement a (citizenship rules not applicable to J&K) is false; c and d are false too (7 and 12 years), so no option is right. |
+| asp-2016 Q75 | (2) | Kisan Call Centres are toll-free, run at government cost; the key says farmers pay "very negligible charges". |
