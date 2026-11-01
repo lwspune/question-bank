@@ -22,7 +22,7 @@ if (!scene || !files.length) {
 let ok = 0;
 let bad = 0;
 for (const f of files) {
-  const drafts = JSON.parse(readFileSync(f, "utf8")) as { n?: number; id?: string; skip?: boolean; params?: unknown; answer?: { value?: number; label?: string } }[];
+  const drafts = JSON.parse(readFileSync(f, "utf8")) as { n?: number; id?: string; skip?: boolean; params?: unknown; answer?: { value?: number; label?: string; tolerance?: number } }[];
   for (const d of drafts) {
     if (d.skip) continue;
     const tag = `#${d.n ?? "?"} ${String(d.id ?? "").slice(0, 8)}`;
@@ -39,7 +39,16 @@ for (const f of files) {
       continue;
     }
     const v = scene.check(p);
-    if (v !== d.answer?.value) {
+    // The same rule as checkVisual: within answer.tolerance (at most 5% of the answer), else exact.
+    const want = d.answer?.value;
+    const tol = d.answer?.tolerance;
+    if (tol !== undefined && typeof want === "number" && tol > 0.05 * Math.max(1, Math.abs(want))) {
+      console.log(`${tag}: answer.tolerance is wider than 5% of the answer`);
+      bad++;
+      continue;
+    }
+    const near = typeof want === "number" && tol !== undefined ? Math.abs(v - want) <= tol : v === want;
+    if (!near) {
       console.log(`${tag}: the scene gives ${v}, the draft says ${d.answer?.value} (${scene.checkText(p, v)})`);
       bad++;
       continue;
