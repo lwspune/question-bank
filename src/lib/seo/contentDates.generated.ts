@@ -6,7 +6,7 @@
  * committed rather than computed at build time, and src/lib/seo/lastmod.ts for
  * how a route with no entry here inherits from its nearest recorded ancestor.
  *
- * Entries: 479
+ * Entries: 486
  */
 import type { ContentDateMap } from "@/lib/seo/lastmod";
 
@@ -424,6 +424,13 @@ export const CONTENT_DATES: ContentDateMap = {
   "/notes/ssc-cgl-biology/human-physiology": "2026-11-02T01:50:27+05:30",
   "/notes/ssc-cgl-biology/microbiology": "2026-11-02T01:50:28+05:30",
   "/notes/ssc-cgl-biology/plant-biology": "2026-11-02T01:50:27+05:30",
+  "/notes/ssc-cgl-chemistry/acids-bases-salts": "2026-11-02T02:41:27+05:30",
+  "/notes/ssc-cgl-chemistry/atomic-structure": "2026-11-02T02:39:54+05:30",
+  "/notes/ssc-cgl-chemistry/carbon-compounds": "2026-11-02T02:39:54+05:30",
+  "/notes/ssc-cgl-chemistry/chemical-bonding": "2026-11-02T02:41:28+05:30",
+  "/notes/ssc-cgl-chemistry/chemical-reactions": "2026-11-02T02:39:55+05:30",
+  "/notes/ssc-cgl-chemistry/everyday-chemistry": "2026-11-02T02:41:27+05:30",
+  "/notes/ssc-cgl-chemistry/mole-concept": "2026-11-02T02:41:28+05:30",
   "/notes/ssc-cgl-economics/indian-economy": "2026-11-01T22:39:33+05:30",
   "/notes/ssc-cgl-economics/microeconomics": "2026-11-01T22:39:34+05:30",
   "/notes/ssc-cgl-economics/money-banking": "2026-11-01T22:39:33+05:30",
