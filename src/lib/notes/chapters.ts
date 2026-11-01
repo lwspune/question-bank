@@ -2291,6 +2291,41 @@ import {
   SSC_MICROECONOMICS_NOTES,
   SSC_MICROECONOMICS_SLUGS,
 } from "@/app/notes/ssc-cgl-economics/microeconomics/_data";
+import {
+  SSC_BIODIVERSITY_CHAPTER,
+  SSC_BIODIVERSITY_NOTES,
+  SSC_BIODIVERSITY_SLUGS,
+} from "@/app/notes/ssc-cgl-biology/biodiversity/_data";
+import {
+  SSC_CELL_BIOLOGY_CHAPTER,
+  SSC_CELL_BIOLOGY_NOTES,
+  SSC_CELL_BIOLOGY_SLUGS,
+} from "@/app/notes/ssc-cgl-biology/cell-biology/_data";
+import {
+  SSC_HUMAN_PHYSIOLOGY_CHAPTER,
+  SSC_HUMAN_PHYSIOLOGY_NOTES,
+  SSC_HUMAN_PHYSIOLOGY_SLUGS,
+} from "@/app/notes/ssc-cgl-biology/human-physiology/_data";
+import {
+  SSC_ECOLOGY_CHAPTER,
+  SSC_ECOLOGY_NOTES,
+  SSC_ECOLOGY_SLUGS,
+} from "@/app/notes/ssc-cgl-biology/ecology/_data";
+import {
+  SSC_PLANT_BIOLOGY_CHAPTER,
+  SSC_PLANT_BIOLOGY_NOTES,
+  SSC_PLANT_BIOLOGY_SLUGS,
+} from "@/app/notes/ssc-cgl-biology/plant-biology/_data";
+import {
+  SSC_MICROBIOLOGY_CHAPTER,
+  SSC_MICROBIOLOGY_NOTES,
+  SSC_MICROBIOLOGY_SLUGS,
+} from "@/app/notes/ssc-cgl-biology/microbiology/_data";
+import {
+  SSC_BIOCHEMISTRY_CHAPTER,
+  SSC_BIOCHEMISTRY_NOTES,
+  SSC_BIOCHEMISTRY_SLUGS,
+} from "@/app/notes/ssc-cgl-biology/biochemistry/_data";
 export type NotesChapterRegistration = {
   /** Canonical exam name in the DB exams table (e.g. "NDA"). */
   examName: string;
@@ -7355,6 +7390,90 @@ export const NOTES_CHAPTERS: readonly NotesChapterRegistration[] = [
     chapter: SSC_MICROECONOMICS_CHAPTER,
     notes: SSC_MICROECONOMICS_NOTES,
     slugs: SSC_MICROECONOMICS_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Biology",
+    subjectRoute: "ssc-cgl-biology",
+    subjectDisplay: "SSC CGL Biology",
+    chapterSlug: "biodiversity",
+    chipLabel: "Classification notes",
+    titleName: "Plant and Animal Classification",
+    chapter: SSC_BIODIVERSITY_CHAPTER,
+    notes: SSC_BIODIVERSITY_NOTES,
+    slugs: SSC_BIODIVERSITY_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Biology",
+    subjectRoute: "ssc-cgl-biology",
+    subjectDisplay: "SSC CGL Biology",
+    chapterSlug: "cell-biology",
+    chipLabel: "Cell Biology notes",
+    titleName: "Cell Structure and Function",
+    chapter: SSC_CELL_BIOLOGY_CHAPTER,
+    notes: SSC_CELL_BIOLOGY_NOTES,
+    slugs: SSC_CELL_BIOLOGY_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Biology",
+    subjectRoute: "ssc-cgl-biology",
+    subjectDisplay: "SSC CGL Biology",
+    chapterSlug: "human-physiology",
+    chipLabel: "Human Physiology notes",
+    titleName: "Human Body and Nutrition",
+    chapter: SSC_HUMAN_PHYSIOLOGY_CHAPTER,
+    notes: SSC_HUMAN_PHYSIOLOGY_NOTES,
+    slugs: SSC_HUMAN_PHYSIOLOGY_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Biology",
+    subjectRoute: "ssc-cgl-biology",
+    subjectDisplay: "SSC CGL Biology",
+    chapterSlug: "ecology",
+    chipLabel: "Ecology notes",
+    titleName: "Ecosystems and Environment",
+    chapter: SSC_ECOLOGY_CHAPTER,
+    notes: SSC_ECOLOGY_NOTES,
+    slugs: SSC_ECOLOGY_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Biology",
+    subjectRoute: "ssc-cgl-biology",
+    subjectDisplay: "SSC CGL Biology",
+    chapterSlug: "plant-biology",
+    chipLabel: "Plant Biology notes",
+    titleName: "Plant Form and Function",
+    chapter: SSC_PLANT_BIOLOGY_CHAPTER,
+    notes: SSC_PLANT_BIOLOGY_NOTES,
+    slugs: SSC_PLANT_BIOLOGY_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Biology",
+    subjectRoute: "ssc-cgl-biology",
+    subjectDisplay: "SSC CGL Biology",
+    chapterSlug: "microbiology",
+    chipLabel: "Microbiology notes",
+    titleName: "Microbes and Diseases",
+    chapter: SSC_MICROBIOLOGY_CHAPTER,
+    notes: SSC_MICROBIOLOGY_NOTES,
+    slugs: SSC_MICROBIOLOGY_SLUGS,
+  },
+  {
+    examName: "SSC CGL",
+    subjectName: "Biology",
+    subjectRoute: "ssc-cgl-biology",
+    subjectDisplay: "SSC CGL Biology",
+    chapterSlug: "biochemistry",
+    chipLabel: "Biochemistry notes",
+    titleName: "Carbohydrates and Proteins",
+    chapter: SSC_BIOCHEMISTRY_CHAPTER,
+    notes: SSC_BIOCHEMISTRY_NOTES,
+    slugs: SSC_BIOCHEMISTRY_SLUGS,
   },
 ];
 

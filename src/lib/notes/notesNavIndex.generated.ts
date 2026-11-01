@@ -3510,5 +3510,54 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "SSC CGL Economics",
     "chapterSlug": "microeconomics",
     "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-biology",
+    "subjectDisplay": "SSC CGL Biology",
+    "chapterSlug": "biodiversity",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-biology",
+    "subjectDisplay": "SSC CGL Biology",
+    "chapterSlug": "cell-biology",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-biology",
+    "subjectDisplay": "SSC CGL Biology",
+    "chapterSlug": "human-physiology",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-biology",
+    "subjectDisplay": "SSC CGL Biology",
+    "chapterSlug": "ecology",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-biology",
+    "subjectDisplay": "SSC CGL Biology",
+    "chapterSlug": "plant-biology",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-biology",
+    "subjectDisplay": "SSC CGL Biology",
+    "chapterSlug": "microbiology",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-biology",
+    "subjectDisplay": "SSC CGL Biology",
+    "chapterSlug": "biochemistry",
+    "subtopicCount": 1
   }
 ];
