@@ -6,7 +6,9 @@
  *
  *   numbers  terms: 3 to 9 numbers with one "?". rule:
  *              { type: "step", f, show? }   each term from the one before:
- *                                           f(x = previous term, n = step 1, 2, ...)
+ *                                           f(x = previous term, n = step 1, 2, ...);
+ *                                           f and show may be lists used in turn
+ *                                           (x2, +3, x2, +3 ...)
  *              { type: "term", f, show? }   each term from its place, f(n), n = 1, 2, ...
  *              { type: "diff", f }          second differences are f(n); the first
  *                                           two terms must be printed
@@ -31,7 +33,7 @@ import { obj, ParamError, plainLabel, safely } from "../params";
 import type { Scene, Shape, Tone } from "../types";
 
 type NumRule =
-  | { type: "step"; f: string; show?: string }
+  | { type: "step"; f: string[]; show?: string[] }
   | { type: "term"; f: string; show?: string }
   | { type: "diff"; f: string }
   | { type: "alternate"; odd: NumRule; even: NumRule };
@@ -131,12 +133,22 @@ function readTerms<T>(raw: unknown, read: (v: unknown, i: number) => T): { print
 
 function readRule(raw: unknown, field: string, nested = false): NumRule {
   const r = obj(raw);
-  const show = r.show === undefined ? undefined : plainLabel(r.show, `${field}.show`, 24);
   switch (r.type) {
-    case "step":
+    case "step": {
+      const fs = Array.isArray(r.f) ? r.f : [r.f];
+      if (fs.length < 1 || fs.length > 4) throw new ParamError(`${field}.f must be a formula or a list of 1 to 4`);
+      fs.forEach((f, i) => formula(f, `${field}.f[${i}]`));
+      let shows: string[] | undefined;
+      if (r.show !== undefined) {
+        const raw = Array.isArray(r.show) ? r.show : [r.show];
+        if (raw.length !== fs.length) throw new ParamError(`${field}.show must give one label for each formula in f`);
+        shows = raw.map((v, i) => plainLabel(v, `${field}.show[${i}]`, 24));
+      }
+      return { type: "step", f: fs as string[], show: shows };
+    }
     case "term":
       formula(r.f, `${field}.f`);
-      return { type: r.type, f: r.f as string, show };
+      return { type: "term", f: r.f as string, show: r.show === undefined ? undefined : plainLabel(r.show, `${field}.show`, 24) };
     case "diff":
       if (nested) throw new ParamError(`${field}: a diff rule cannot take turns`);
       formula(r.f, `${field}.f`);
@@ -155,12 +167,12 @@ function readRule(raw: unknown, field: string, nested = false): NumRule {
  * term rule's `show`.
  */
 function runSimple(rule: Extract<NumRule, { type: "step" | "term" }>, printed: (number | null)[], places: number[], field: string) {
-  const f = formula(rule.f, `${field}.f`);
+  const fs = rule.type === "step" ? rule.f.map((src, i) => formula(src, `${field}.f[${i}]`)) : [formula(rule.f, `${field}.f`)];
   const out = new Map<number, number>();
   const label = new Map<number, string>();
   places.forEach((at, k) => {
     if (rule.type === "term") {
-      out.set(at, f(0, k + 1));
+      out.set(at, fs[0](0, k + 1));
       if (rule.show) label.set(at, fillShow(rule.show, k + 1, `${field}.show`));
       return;
     }
@@ -171,9 +183,10 @@ function runSimple(rule: Extract<NumRule, { type: "step" | "term" }>, printed: (
       return;
     }
     const prev = out.get(places[k - 1])!;
-    const next = f(prev, k);
+    const turn = (k - 1) % fs.length;
+    const next = fs[turn](prev, k);
     out.set(at, next);
-    label.set(at, rule.show ? fillShow(rule.show, k, `${field}.show`) : signed(next - prev));
+    label.set(at, rule.show ? fillShow(rule.show[turn], k, `${field}.show`) : signed(next - prev));
   });
   return { out, label };
 }
@@ -304,14 +317,18 @@ const ARC = 30;
 
 /** Where each part of a number or letter series sits, top to bottom. */
 function rows(p: NumParams | LetterParams) {
-  const turns = p.kind === "numbers" && p.rule.type === "alternate";
-  const top = TOP + (turns ? ARC : 0);
+  const alt = p.kind === "numbers" && p.rule.type === "alternate" ? p.rule : undefined;
+  // In two series taking turns, a step series arcs (places 1, 3, 5 above the row, 2, 4, 6 below); a term series labels each term under it.
+  const arcAbove = alt?.odd.type === "step";
+  const arcBelow = alt?.even.type === "step";
+  const top = TOP + (arcAbove ? ARC : 0);
   const below = top + (p.kind === "letters" ? p.values[0].length : 1) * (TH + 8) - 8;
   if (p.kind === "letters") return { top, below, steps: 0, second: 0, under: 0, h: below + 34 };
   const steps = p.steps.some(Boolean) ? 34 : 0;
   const second = p.second.length ? 26 : 0;
-  const under = !turns && p.under.some(Boolean) ? 20 : 0;
-  return { top, below, steps, second, under, h: below + (turns ? ARC : 0) + steps + second + under + 30 };
+  const under = p.under.some(Boolean) && (!alt || alt.odd.type === "term" || alt.even.type === "term") ? 20 : 0;
+  const lift = arcBelow ? ARC : 0;
+  return { top, below, steps: steps + lift, second, under, h: below + lift + steps + second + under + 30 };
 }
 
 function height(p: SeriesParams): number {
@@ -427,10 +444,16 @@ export const series: Scene<SeriesParams> = {
         p.moves[k].forEach((m, r) => out.push(text(round(mx), rowY(r) + TH / 2 + 4, m, { tone: "amber", size: 9.5, weight: 700, anchor: "middle", opacity: fade(q) })));
       }
     } else if (p.rule.type === "alternate") {
-      // Two series taking turns: places 1, 3, 5 arc above the row, places 2, 4, 6 below.
-      for (let i = 2; i < n; i++) {
-        const q = revealed(i - 1);
-        if (q > 0 && p.under[i]) arc(i - 2, i, i % 2 === 0, p.under[i], q, i % 2 === 0 ? "amber" : "brand");
+      // Two series taking turns, told apart by colour: a step series arcs to the term two places on
+      // (places 1, 3, 5 above the row, 2, 4, 6 below); a term series labels each of its terms under it.
+      const rule = p.rule;
+      for (let i = 0; i < n; i++) {
+        const own = i % 2 === 0 ? rule.odd : rule.even;
+        const tone: Tone = i % 2 === 0 ? "amber" : "brand";
+        const q = revealed(Math.max(0, i - 1));
+        if (!p.under[i] || q <= 0) continue;
+        if (own.type === "step") arc(i - 2, i, i % 2 === 0, p.under[i], q, tone);
+        else out.push(text(round(x(i) + w / 2), R.below + R.steps + 16, p.under[i], { tone, size: 9.5, weight: 700, anchor: "middle", opacity: fade(q) }));
       }
     } else {
       p.steps.forEach((label, k) => {

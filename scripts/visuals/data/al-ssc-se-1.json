@@ -1,0 +1,160 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "181af2ce-7451-416d-b33e-beb447e15762",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "8 - 3 = 5",
+              "f": "8-3",
+              "value": "5"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "15 - 8 = 7",
+              "f": "15-8",
+              "value": "7"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "26 - 15 = 11",
+              "f": "26-15",
+              "value": "11"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "39 - 26 = 13",
+              "f": "39-26",
+              "value": "13"
+            },
+            {
+              "step": "s5",
+              "kind": "note",
+              "tex": "5,\\ 7,\\ 11,\\ 13,\\ {{1:17}}",
+              "note": "consecutive primes"
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "39 + {{1:17}} = 56",
+              "f": "39+17",
+              "value": "56"
+            }
+          ],
+          "answer": "56"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s5",
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "79bb0601",
+        "answer": {
+          "value": 56,
+          "label": "56"
+        }
+      }
+    },
+    {
+      "id": "22e1feaf-0564-47b8-af16-398abbc1e914",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "96 - 77 = 19",
+              "f": "96-77",
+              "value": "19"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "77 - 60 = 17",
+              "f": "77-60",
+              "value": "17"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "60 - 47 = 13",
+              "f": "60-47",
+              "value": "13"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "47 - 36 = 11",
+              "f": "47-36",
+              "value": "11"
+            },
+            {
+              "step": "s5",
+              "kind": "note",
+              "tex": "19,\\ 17,\\ 13,\\ 11,\\ {{1:7}}",
+              "note": "primes in descending order"
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "36 - {{1:7}} = 29",
+              "f": "36-7",
+              "value": "29"
+            }
+          ],
+          "answer": "29"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4",
+              "s5"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "166e100c",
+        "answer": {
+          "value": 29,
+          "label": "29"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

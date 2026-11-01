@@ -52,6 +52,9 @@ That is the real question ceabe869, keyed A. Or, when it does not fit:
 - `terms`: 3 to 9 printed terms in order, numbers, with exactly one `"?"` for
   the term asked (a blank "____" is the "?").
 - `rule`, one of:
+  - `{ "type": "step", "f": ["x*2", "x + 3"], "show": ["×2", "+3"] }`: one series
+    whose operation takes turns (×2, +3, ×2, +3): `f` and `show` as lists of
+    the same length, used in turn from the first step.
   - `{ "type": "step", "f": "x*(n+2) + 1", "show": "×{n+2} +1" }`: each term
     from the one before. In `f`, `x` is the previous term and `n` the step
     number (1 for term 1 to term 2). The first term must be printed. Without
@@ -65,7 +68,8 @@ That is the real question ceabe869, keyed A. Or, when it does not fit:
     works through second differences.
   - `{ "type": "alternate", "odd": <step or term rule>, "even": <step or term rule> }`:
     two series taking turns (places 1, 3, 5 ... and 2, 4, 6 ...); n counts
-    within each.
+    within each. A term rule here labels each of its terms under the term
+    (give it a `show`, e.g. "{2*n-1}³"); a step rule arcs to the term two on.
 - Formulas: + - * / ^ ( ) and numbers, in x and n. Always write `*`.
 
 ### kind letters

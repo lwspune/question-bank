@@ -52,6 +52,29 @@ describe("series: numbers", () => {
     expect(value(alt)).toBe(1);
   });
 
+  it("takes a list of step formulas used in turn, each with its own label", () => {
+    // 3, 6, 9, 18, 21, ?: x2, +3, x2, +3, x2.
+    const turns = { kind: "numbers", terms: [3, 6, 9, 18, 21, "?"], rule: { type: "step", f: ["x*2", "x + 3"], show: ["×2", "+3"] }, options: ["42", "24", "44", "63"] };
+    expect(value(turns)).toBe(1);
+    expect(texts(turns, ["terms", "rule"]).join(" | ")).toMatch(/×2 \| \+3 \| ×2 \| \+3 \| ×2/);
+    expect(parse({ ...turns, rule: { type: "step", f: ["x*2", "x + 3"], show: ["×2"] } }).error).toMatch(/show/);
+  });
+
+  it("labels each term of a turn-taking term rule under the term, the first two included", () => {
+    // 1, 4, 27, 16, 125, 36, ?: odd places n^3 (1, 3, 5), even places n^2 (2, 4, 6).
+    const cubesSquares = {
+      kind: "numbers",
+      terms: [1, 4, 27, 16, 125, 36, "?"],
+      rule: { type: "alternate", odd: { type: "term", f: "(2*n-1)^3", show: "{2*n-1}³" }, even: { type: "term", f: "(2*n)^2", show: "{2*n}²" } },
+      options: ["343", "49", "216", "64"],
+    };
+    expect(value(cubesSquares)).toBe(1);
+    const shapes = scene.frame(ok(cubesSquares), { played: ["terms", "rule"], t: 1, slider: undefined });
+    expect(shapes.filter((s) => s.kind === "path").length).toBe(0);
+    const labels = shapes.filter((s): s is Extract<Shape, { kind: "text" }> => s.kind === "text").map((s) => s.text);
+    expect(labels).toEqual(expect.arrayContaining(["1³", "2²", "3³", "4²", "7³"]));
+  });
+
   it("refuses a rule that misses a printed term, naming it", () => {
     const e = parse({ ...sevens, rule: { type: "step", f: "x + 7" } });
     expect(e.error).toMatch(/term 3/);
