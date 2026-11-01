@@ -431,6 +431,21 @@ export const SET_VISUAL = {
   answer: { value: 0, label: "F" },
 };
 
+export const SERIES_SOLUTION = String.raw`The differences are 7, 14, 21, 28, the multiples of 7. The next difference is 35, so \(87 + 35 = 122\).`;
+
+/** SSC CGL ceabe869: the differences are the multiples of 7, so the next term is 87 + 35 = 122, option A. */
+export const SERIES_VISUAL = {
+  v: 1,
+  scene: "series",
+  params: { kind: "numbers", terms: [17, 24, 38, 59, 87, "?"], rule: { type: "step", f: "x + 7*n" }, options: ["122", "137", "117", "109"] },
+  steps: [
+    { from: 0, beats: ["terms", "rule"] },
+    { from: 1, beats: ["answer"] },
+  ],
+  fingerprint: solutionFingerprint(SERIES_SOLUTION),
+  answer: { value: 1, label: "122" },
+};
+
 export const STRIP_SOLUTION = String.raw`The first five letters move +1, \(-1\), +1, \(-1\), +1 and the last five move +2, \(-2\), +2, \(-2\), +2. TELEVISION: T+1 = U, E\(-1\) = D, L+1 = M, E\(-1\) = D, V+1 = W, I+2 = K, S\(-2\) = Q, I+2 = K, O\(-2\) = M, N+2 = P. PUNISHMENT checks the same way. HELICOPTER: H+1 = I, E\(-1\) = D, L+1 = M, I\(-1\) = H, C+1 = D, O+2 = Q, P\(-2\) = N, T+2 = V, E\(-2\) = C, R+2 = T, giving IDMHDQNVCT.`;
 
 /** SSC CGL 0bf6705a: TELEVISION and PUNISHMENT prove the rule; HELICOPTER is IDMHDQNVCT, option C. */
@@ -552,4 +567,5 @@ export const FIXTURES = [
   { name: "letterStrip", visual: STRIP_VISUAL, solution: STRIP_SOLUTION },
   { name: "familyTree", visual: TREE_VISUAL, solution: TREE_SOLUTION },
   { name: "circles", visual: CIRCLES_VISUAL, solution: CIRCLES_SOLUTION },
+  { name: "series", visual: SERIES_VISUAL, solution: SERIES_SOLUTION },
 ] as const;
