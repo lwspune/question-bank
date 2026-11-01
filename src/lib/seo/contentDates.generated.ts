@@ -6,7 +6,7 @@
  * committed rather than computed at build time, and src/lib/seo/lastmod.ts for
  * how a route with no entry here inherits from its nearest recorded ancestor.
  *
- * Entries: 468
+ * Entries: 472
  */
 import type { ContentDateMap } from "@/lib/seo/lastmod";
 
@@ -417,6 +417,10 @@ export const CONTENT_DATES: ContentDateMap = {
   "/notes/spi-reasoning/classification": "2026-10-22T19:13:03+05:30",
   "/notes/spi-reasoning/order-ranking": "2026-10-22T19:13:03+05:30",
   "/notes/spi-reasoning/series": "2026-10-22T19:13:03+05:30",
+  "/notes/ssc-cgl-economics/indian-economy": "2026-11-01T22:39:33+05:30",
+  "/notes/ssc-cgl-economics/microeconomics": "2026-11-01T22:39:34+05:30",
+  "/notes/ssc-cgl-economics/money-banking": "2026-11-01T22:39:33+05:30",
+  "/notes/ssc-cgl-economics/national-income": "2026-11-01T08:26:18+05:30",
   "/notes/ssc-cgl-english/cloze-test": "2026-10-23T13:43:46+05:30",
   "/notes/ssc-cgl-english/fill-in-the-blanks": "2026-10-23T12:57:36+05:30",
   "/notes/ssc-cgl-english/grammar": "2026-10-23T13:52:28+05:30",
@@ -429,7 +433,7 @@ export const CONTENT_DATES: ContentDateMap = {
   "/notes/ssc-cgl-geography/earth-structure": "2026-11-01T08:06:53+05:30",
   "/notes/ssc-cgl-geography/indian-economy-resources": "2026-11-01T07:59:15+05:30",
   "/notes/ssc-cgl-geography/indian-physical": "2026-11-01T08:02:40+05:30",
-  "/notes/ssc-cgl-geography/oceanography": "2026-11-01T08:06:53+05:30",
+  "/notes/ssc-cgl-geography/oceanography": "2026-11-01T08:19:12+05:30",
   "/notes/ssc-cgl-geography/world-human": "2026-11-01T08:06:53+05:30",
   "/notes/ssc-cgl-history/ancient-india": "2026-10-31T07:47:35+05:30",
   "/notes/ssc-cgl-history/medieval-india": "2026-10-31T07:56:21+05:30",
