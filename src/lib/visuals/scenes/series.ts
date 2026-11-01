@@ -82,7 +82,9 @@ const W = 360;
 const MAX_TERMS = 9;
 const letterOf = (k: number) => "ABCDE"[k - 1];
 const same = (a: number, b: number) => Math.abs(a - b) <= 1e-6 * Math.max(1, Math.abs(b));
-const signed = (d: number) => (d >= 0 ? `+${num(d)}` : num(d));
+/** A term or step as printed: series decimals run to 3 or 4 places (76.8 x 0.8 = 61.44, then 49.152). */
+const val = (v: number) => num(v, 4);
+const signed = (d: number) => (d >= 0 ? `+${val(d)}` : val(d));
 const lettersOnly = (s: string) => s.toUpperCase().replace(/[^A-Z]/g, "");
 const asNumber = (s: string) => {
   const t = s.replace(/,/g, "").trim();
@@ -233,7 +235,7 @@ function numbers(o: Record<string, unknown>): NumParams {
   }
 
   printed.forEach((p, i) => {
-    if (p !== null && !same(values[i], p)) throw new ParamError(`the rule gives ${num(values[i])} for term ${i + 1}, not ${num(p)}`);
+    if (p !== null && !same(values[i], p)) throw new ParamError(`the rule gives ${val(values[i])} for term ${i + 1}, not ${val(p)}`);
   });
   const options = readOptions(o.options);
   const answer = pick(options, (opt) => same(asNumber(opt), values[gap]));
@@ -338,7 +340,7 @@ function height(p: SeriesParams): number {
 
 const answerText = (p: SeriesParams) => {
   if (!p.answer) return "no single option matches";
-  const got = p.kind === "numbers" ? num(p.values[p.gap]) : p.kind === "letters" ? p.values[p.gap] : p.read;
+  const got = p.kind === "numbers" ? val(p.values[p.gap]) : p.kind === "letters" ? p.values[p.gap] : p.read;
   return `${p.kind === "block" ? "the blanks read " : "? = "}${got}: option ${letterOf(p.answer)}`;
 };
 
@@ -401,7 +403,7 @@ export const series: Scene<SeriesParams> = {
       return out;
     }
 
-    const vals = p.kind === "numbers" ? p.values.map((v) => num(v)) : p.values;
+    const vals = p.kind === "numbers" ? p.values.map((v) => val(v)) : p.values;
     const n = vals.length;
     const w = termW(p, n);
     const x = (i: number) => termX(p, n, i);

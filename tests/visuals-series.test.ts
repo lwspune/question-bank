@@ -75,6 +75,15 @@ describe("series: numbers", () => {
     expect(labels).toEqual(expect.arrayContaining(["1³", "2²", "3³", "4²", "7³"]));
   });
 
+  it("prints a decimal term in full, not rounded to two places", () => {
+    // 120, 96, 76.8, 61.44, ?: each x0.8, so 49.152.
+    const decimals = { kind: "numbers", terms: [120, 96, 76.8, 61.44, "?"], rule: { type: "step", f: "x*0.8", show: "×0.8" }, options: ["48.152", "49.512", "47.152", "49.152"] };
+    expect(value(decimals)).toBe(4);
+    const end = texts(decimals, ["terms", "rule", "answer"]);
+    expect(end).toContain("49.152");
+    expect(end.join(" | ")).toMatch(/\? = 49\.152: option D/);
+  });
+
   it("refuses a rule that misses a printed term, naming it", () => {
     const e = parse({ ...sevens, rule: { type: "step", f: "x + 7" } });
     expect(e.error).toMatch(/term 3/);
