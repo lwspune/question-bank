@@ -67,6 +67,16 @@ export function sspMockTitle(pyqYear: number, pyqNote: string): string {
   return `MPSC State Services Prelims ${pyqYear} — ${paper}${date ? ` — ${date}` : ""}`;
 }
 
+/**
+ * "MPSC Forest Service Prelims 2014 (27 Apr 2014)". The pyqNote is
+ * "<exam> · <date>" for the Forest and Agriculture papers; the date sits in
+ * brackets because visible text carries no em dash (owner, 2026-10-05).
+ */
+export function serviceMockTitle(pyqYear: number, pyqNote: string): string {
+  const [exam, date] = pyqNote.split(" · ");
+  return `MPSC ${exam} ${pyqYear}${date ? ` (${date})` : ""}`;
+}
+
 function readCancelled(id: string): number[] {
   const key = JSON.parse(readFileSync(dataPath(id, "key"), "utf8")) as { cancelled?: number[] };
   return key.cancelled ?? [];

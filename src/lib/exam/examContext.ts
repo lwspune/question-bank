@@ -747,7 +747,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     // 4 papers (2014, 2016, 2017, 2018), 399 q, PUBLIC since 2026-11-02; MPSC's final keys.
     guidesPath: null,
     notesPath: null,
-    hasMocks: true, // one mock per paper, 2026-11-02
+    hasMocks: true, // 3 mocks published 2026-11-02; 2016 held (Q7 left out, 99 q)
   },
   {
     slug: "mpsc-agriculture-service-prelims",
@@ -765,7 +765,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     // 5 papers (2011, 2012: 200 q; 2016, 2017, 2018: 100 q), 700 q, PUBLIC since 2026-11-02.
     guidesPath: null,
     notesPath: null,
-    hasMocks: true, // one mock per paper, 2026-11-02
+    hasMocks: true, // 5 mocks published 2026-11-02
   },
   {
     slug: "mpsc-state-services-mains",

@@ -585,6 +585,60 @@ export const MPSC_SSP_GS1_PAPER: MockPaperBlueprint = {
 };
 
 /**
+ * MPSC Forest Service Prelims and Agriculture Service Prelims: one paper per
+ * sitting, every question worth one mark, and "for every four wrong answers one
+ * question's marks are deducted" (clause 7 on all nine covers). 100 questions
+ * in 1 hour, except Agriculture 2011 and 2012: 200 questions in 2 hours.
+ *
+ * ONE section across every subject the paper is filed under (config.ts
+ * FSP_CHAPTERS / ASP_CHAPTERS): Marathi grammar and the English section are
+ * printed in their own language, GS and aptitude in both, under no subject
+ * headings. Hard counts: a cancelled question, or one whose key the owner
+ * judged doubtful (a notice), is printed and ships as grace.
+ * Sittings are source_file-keyed via scripts/mocks/mpscSittings.ts.
+ */
+const MPSC_SERVICE_SUBJECTS = [
+  "Marathi",
+  "English",
+  "History",
+  "Geography",
+  "Polity",
+  "Economics",
+  "General Science",
+  "Environment",
+  "Current Affairs",
+  "Reasoning and Aptitude",
+];
+
+export const MPSC_FSP_PAPER: MockPaperBlueprint = {
+  code: "fsp",
+  examName: "MPSC Forest Service Prelims",
+  examSlug: "mpsc-forest-service-prelims",
+  paperLabel: "Prelims",
+  durationSecs: 60 * 60,
+  marking: { correct: 1, wrong: -0.25 },
+  sections: [{ key: "prelims", label: "Prelims", subjects: MPSC_SERVICE_SUBJECTS, count: 100 }],
+};
+
+export const MPSC_ASP_PAPER: MockPaperBlueprint = {
+  code: "asp",
+  examName: "MPSC Agriculture Service Prelims",
+  examSlug: "mpsc-agriculture-service-prelims",
+  paperLabel: "Prelims",
+  durationSecs: 60 * 60,
+  marking: { correct: 1, wrong: -0.25 },
+  sections: [{ key: "prelims", label: "Prelims", subjects: [...MPSC_SERVICE_SUBJECTS, "Agriculture"], count: 100 }],
+};
+
+/** Agriculture 2011 and 2012: 200 questions, 200 marks, 2 hours. */
+export const MPSC_ASP_200_PAPER: MockPaperBlueprint = {
+  ...MPSC_ASP_PAPER,
+  code: "asp-200",
+  durationSecs: 120 * 60,
+  sections: [{ key: "prelims", label: "Prelims", subjects: [...MPSC_SERVICE_SUBJECTS, "Agriculture"], count: 200 }],
+};
+
+/**
  * UPSC Civil Services (Prelims) — TWO papers per sitting, both 2 hours, both
  * 200 marks (scripts/upsc/README.md, read off the booklets):
  *
@@ -864,6 +918,9 @@ const ALL_BLUEPRINTS: readonly MockPaperBlueprint[] = [
   JIPMAT_PAPER,
   MPSC_GBC_PAPER,
   MPSC_SSP_GS1_PAPER,
+  MPSC_FSP_PAPER,
+  MPSC_ASP_PAPER,
+  MPSC_ASP_200_PAPER,
   UPSC_GS1_PAPER,
   UPSC_CSAT_PAPER,
   SSC_CGL_T1_PAPER,

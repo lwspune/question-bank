@@ -180,7 +180,18 @@ Underlined Marathi is `**bold**` (the Mains convention); English underline is
 | fsp-2017 (E09) | 100/100 | 81/91 (9 unmarked) | PRIVATE, 2026-10-16 (Q37, Q89, Q98, Q100 cancelled; Q86 waived) |
 | fsp-2018 (K11) | 100/100 | 91/98 (Q1, Q2, Q21, Q30, Q40, Q42 language items; Q90 word count) | PRIVATE, 2026-10-16 (Q26, Q47 cancelled; Q51, Q67 waived) |
 
-### Key doubts (Forest + Agriculture), for the owner before publishing
+**PUBLIC 2026-11-02** (owner): registry entries `mpsc-forest-service-prelims` and
+`mpsc-agriculture-service-prelims` (MPSC -> Prelims), `flip-public.ts fsp|asp`, and 8
+mocks published (`build.ts --paper=mpsc --only=<id> --apply --publish`, one at a
+time so the other MPSC mocks are untouched): +1 / -1/4 on every cover; 100 q in
+1 hour, Agriculture 2011 and 2012 200 q in 2 hours. fsp-2016 has no mock: Q7 is
+left out, and a paper with an omission is never a whole-paper mock.
+
+### Key doubts (Forest + Agriculture): SETTLED 2026-11-02
+
+**Owner: notice + grace on all eleven, MPSC's key kept.** Each notice is in
+config.ts `notices` (English and Marathi), heads the question's solution, and
+graces the question in its mock (scripts/mocks/mpscSittings.ts).
 
 Every paper here is committed on MPSC's key. These questions disagree with an
 independent solve in a way the page does not explain. **Nothing is changed until

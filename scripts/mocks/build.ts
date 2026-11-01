@@ -63,6 +63,9 @@ import {
   JIPMAT_PAPER,
   MPSC_GBC_PAPER,
   MPSC_SSP_GS1_PAPER,
+  MPSC_FSP_PAPER,
+  MPSC_ASP_PAPER,
+  MPSC_ASP_200_PAPER,
   UPSC_GS1_PAPER,
   UPSC_CSAT_PAPER,
   SSC_CGL_T1_PAPER,
@@ -95,8 +98,8 @@ import {
 import { deriveMhtCetSittings } from "./mhtcetSittings";
 import { deriveJeeSittings, JEE_SHIFT_SIZE } from "./jeeSittings";
 import { ipmatIndoreSittings, isGrace, jipmatSittings as deriveJipmatSittings } from "./ipmatSittings";
-import { deriveMpscSittings, sspMockTitle } from "./mpscSittings";
-import { PAPERS as MPSC_PAPERS, SSP_PAPERS as MPSC_SSP_PAPERS } from "../mpsc/config";
+import { deriveMpscSittings, serviceMockTitle, sspMockTitle } from "./mpscSittings";
+import { ASP_PAPERS as MPSC_ASP_PAPERS, FSP_PAPERS as MPSC_FSP_PAPERS, PAPERS as MPSC_PAPERS, SSP_PAPERS as MPSC_SSP_PAPERS } from "../mpsc/config";
 import { deriveMainsSittings, mainsBlueprint } from "./mpscMainsSittings";
 import { PAPERS as MPSC_MAINS_PAPERS } from "../mpsc-mains/config";
 import { deriveUpscSittings } from "./upscSittings";
@@ -896,6 +899,11 @@ async function main() {
   if (runMpsc) {
     await buildFromSourceFiles(db, MPSC_GBC_PAPER, mpscSittings(), run, "mpscSittings.ts");
     await buildFromSourceFiles(db, MPSC_SSP_GS1_PAPER, mpscSittings(MPSC_SSP_PAPERS, sspMockTitle), run, "mpscSittings.ts");
+    // Forest + Agriculture: Agriculture 2011 and 2012 are 200-question papers, the rest 100.
+    await buildFromSourceFiles(db, MPSC_FSP_PAPER, mpscSittings(MPSC_FSP_PAPERS, serviceMockTitle), run, "mpscSittings.ts");
+    const asp = (long: boolean) => MPSC_ASP_PAPERS.filter((p) => (p.questions === 200) === long);
+    await buildFromSourceFiles(db, MPSC_ASP_PAPER, mpscSittings(asp(false), serviceMockTitle), run, "mpscSittings.ts");
+    await buildFromSourceFiles(db, MPSC_ASP_200_PAPER, mpscSittings(asp(true), serviceMockTitle), run, "mpscSittings.ts");
   }
   if (runSsc) await buildFromSourceFiles(db, SSC_CGL_T1_PAPER, sscCglSittings(), run, "sscSittings.ts");
   if (runSscT2) await buildSscT2(db, run);
