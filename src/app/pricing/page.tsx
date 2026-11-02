@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { headers } from "next/headers";
+import { cookies, headers } from "next/headers";
 import { Check } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import { getSessionMember, getSessionUser } from "@/lib/auth";
@@ -16,6 +16,12 @@ import { afterPurchasePath, pricingHref } from "@/lib/billing/checkoutReturn";
 import { logActivityOnce } from "@/lib/activity/service";
 import { surfaceViewedEvent } from "@/lib/activity/views";
 import ResultsStrip from "@/components/results/ResultsStrip";
+import { getOnboardingState } from "@/lib/profile/service";
+import { isExamSlug } from "@/lib/exam/examContext";
+import { passScopeForExam } from "@/lib/billing/passScope";
+import { SCOPE_MOCKS } from "@/lib/entitlements/access";
+import { getMockExamCardsCached } from "@/lib/mocks/examCardsCached";
+import { passLineForExam } from "@/lib/mocks/mocksNav";
 
 export const dynamic = "force-dynamic";
 
@@ -50,6 +56,7 @@ export default async function PricingPage({
     await logActivityOnce(createSupabaseServerClient(), user.id, surfaceViewedEvent(user.id, "pricing", new Date()));
   }
   const now = Date.now();
+  const examLine = site === "pyqvault" ? await passLineForViewer(user?.id ?? null) : null;
   // Staff already have everything a pass sells.
   const owns = (plan: Plan) => !!member || hasActiveScope(rows, plan.scope, now);
   const highlighted = searchParams.plan;
@@ -76,6 +83,10 @@ export default async function PricingPage({
           <p className="mx-auto mt-6 max-w-md rounded-md border border-brand-accent/30 bg-brand-accent/5 p-3 text-center text-sm">
             Free for Class 9 and 10: CBSE 10, ICSE 10, Maharashtra Class 9 and 10, SPI and Foundation Course.
           </p>
+        )}
+
+        {examLine && (
+          <p className="mx-auto mt-6 max-w-md text-center text-sm font-medium">{examLine}</p>
         )}
 
         {plans.length === 0 ? (
@@ -207,4 +218,23 @@ function Button({ href, children }: { href: string; children: React.ReactNode })
       {children}
     </Link>
   );
+}
+
+/**
+ * The pass in the viewer's own exam (2026-11-02): a signed-in student's first
+ * target exam, else the exam a visitor picked (qb_exam). Nothing for a free
+ * exam, an exam with no mocks, or when the read fails: the offer stands alone.
+ */
+async function passLineForViewer(userId: string | null): Promise<string | null> {
+  try {
+    const slug = userId
+      ? (await getOnboardingState(createSupabaseServerClient(), userId)).targetExams[0] ?? null
+      : cookies().get("qb_exam")?.value ?? null;
+    if (!isExamSlug(slug) || passScopeForExam(slug) !== SCOPE_MOCKS) return null;
+    const cards = await getMockExamCardsCached();
+    return passLineForExam(cards.find((c) => c.slug === slug));
+  } catch (e) {
+    console.error("pricing exam line", e instanceof Error ? e.message : e);
+    return null;
+  }
 }
