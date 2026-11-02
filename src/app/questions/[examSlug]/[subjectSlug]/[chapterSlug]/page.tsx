@@ -48,6 +48,7 @@ import VHello from "@/components/chat/VHello";
 import NextStepCard from "@/components/question/NextStepCard";
 import { pickHello, nextStepLinks, CARD_AFTER, type HelloInput } from "@/lib/growth/secondPage";
 import Breadcrumbs from "@/components/nav/Breadcrumbs";
+import RememberVisit from "@/components/visits/RememberVisit";
 import { canonicalFor } from "@/lib/sites/intl";
 
 
@@ -227,6 +228,11 @@ export default async function ChapterQuestionsPage({ params }: Params) {
     <>
       <AppHeader />
       <main className="mx-auto w-full max-w-5xl px-4 py-6 sm:p-8">
+        <RememberVisit
+          href={landingHref(landing)}
+          title={`${landing.examName} ${landing.subjectName}: ${landing.chapterName}`}
+          kind="chapter"
+        />
         <Breadcrumbs
           items={[
             { href: "/questions", label: "Questions" },

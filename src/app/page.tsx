@@ -30,6 +30,7 @@ import { countSummary } from "@/lib/exam/questionCounts";
 import { examCardAnchor, homeExamChips } from "@/lib/exam/homeChips";
 import HomeExamChips from "@/components/home/HomeExamChips";
 import HowItWorks from "@/components/HowItWorks";
+import ContinueCard from "@/components/visits/ContinueCard";
 import ResultsStrip from "@/components/results/ResultsStrip";
 import { loopFor } from "@/lib/education/howItWorks";
 import { NOTES_CHAPTERS } from "@/lib/notes/chapters";
@@ -341,6 +342,9 @@ export default async function Home() {
             />
           </div>
         </section>
+
+        {/* A returning signed-out visitor's last notes topic or chapter page. */}
+        <ContinueCard />
 
         {/* A8: pick an exam without scrolling past every card. */}
         <HomeExamChips chips={homeExamChips(examNodes)} />
