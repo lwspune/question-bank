@@ -204,6 +204,16 @@ export function offListChapters(
     .map((q) => `Q${q.n}: ${q.subject} / ${q.chapter}`);
 }
 
+const DIFFICULTIES = ["EASY", "MODERATE", "HARD"];
+
+/**
+ * Questions whose difficulty is not one the bank stores. A helper wrote
+ * "MEDIUM" on 52 CSAT 2014 rows and nothing caught it before the commit.
+ */
+export function badDifficulties(questions: { n: number; difficulty: string }[]): string[] {
+  return questions.filter((q) => !DIFFICULTIES.includes(q.difficulty)).map((q) => `Q${q.n}: ${q.difficulty}`);
+}
+
 const fmt = (bag: string[]) => `[${bag.join(",")}]`;
 const sameBag = (a: string[], b: string[]) => a.length === b.length && a.every((v, k) => v === b[k]);
 const lineCount = (s: string) => s.split("\n").filter((l) => l.trim() !== "").length;

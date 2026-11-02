@@ -15,6 +15,7 @@ import {
   setBalanceIssues,
   markDisagreements,
   offListChapters,
+  badDifficulties,
   type BilingualQuestion,
   type Version,
 } from "../scripts/mpsc/lib";
@@ -141,6 +142,19 @@ describe("markDisagreements", () => {
 
   it("ignores a question with no mark, and reports a mark the key does not cover", () => {
     expect(markDisagreements({ 1: null, 4: "D" }, { 1: "A" })).toEqual([{ n: 4, mark: "D", key: undefined }]);
+  });
+});
+
+describe("badDifficulties", () => {
+  it("names every question whose difficulty is not EASY, MODERATE or HARD", () => {
+    const qs = [
+      { n: 1, difficulty: "EASY" },
+      { n: 2, difficulty: "MEDIUM" },
+      { n: 3, difficulty: "HARD" },
+      { n: 4, difficulty: "DIFFICULT" },
+      { n: 5, difficulty: "MODERATE" },
+    ];
+    expect(badDifficulties(qs)).toEqual(["Q2: MEDIUM", "Q4: DIFFICULT"]);
   });
 });
 
