@@ -14,6 +14,11 @@
 
 export type Lang = "en" | "mr";
 export type KeyLetter = "A" | "B" | "C" | "D" | "#";
+/**
+ * A printed key cell: a letter, or `*` where that set prints a decision-making
+ * question (its marks are in the graded grid, CSAT 2015). Never reaches key.json.
+ */
+export type KeyCell = KeyLetter | "*";
 
 export type Version = {
   stem: string;
@@ -76,21 +81,22 @@ export function numberBag(s: string): string[] {
   return hits.map((h) => h.replace(/,/g, "")).sort();
 }
 
-const ANSWER: Record<string, KeyLetter> = { "1": "A", "2": "B", "3": "C", "4": "D", "#": "#" };
+const ANSWER: Record<string, KeyCell> = { "1": "A", "2": "B", "3": "C", "4": "D", "#": "#", "*": "*" };
 
 /**
  * Parse an MPSC answer-key token stream. The key prints one row per question —
  * `q, setA, setB, setC, setD`, answers as 1-4 — in two columns that interleave
  * in the text layer, so rows are keyed by their own number, never by position.
- * `#` marks a question the Commission cancelled. Nothing is guessed: an
+ * `#` marks a question the Commission cancelled; `*` a graded (decision-making)
+ * question in that set. Nothing is guessed: an
  * unreadable token or a duplicate row is reported and the row dropped.
  */
 export function parseKeyTokens(tokens: string[]): {
-  rows: Map<number, KeyLetter[]>;
+  rows: Map<number, KeyCell[]>;
   errors: string[];
 } {
   const clean = tokens.map((t) => t.trim()).filter((t) => t !== "");
-  const rows = new Map<number, KeyLetter[]>();
+  const rows = new Map<number, KeyCell[]>();
   const errors: string[] = [];
 
   let i = 0;
@@ -125,7 +131,7 @@ export function parseKeyTokens(tokens: string[]): {
  * cell was lost, and the line is refused rather than let it shift the answers.
  */
 export function parseKeyLines(lines: string[][]): {
-  rows: Map<number, KeyLetter[]>;
+  rows: Map<number, KeyCell[]>;
   errors: string[];
   ignored: string[][];
 } {
@@ -155,7 +161,7 @@ export function parseKeyLines(lines: string[][]): {
  * included. A single misread or mis-extracted cell breaks that balance — a free
  * checksum on a key read off a scan. Empty when balanced.
  */
-export function setBalanceIssues(rows: Map<number, KeyLetter[]>): string[] {
+export function setBalanceIssues(rows: Map<number, KeyCell[]>): string[] {
   const width = Math.max(0, ...[...rows.values()].map((r) => r.length));
   const counts = Array.from({ length: width }, () => new Map<string, number>());
   for (const sets of rows.values()) sets.forEach((l, i) => counts[i].set(l, (counts[i].get(l) ?? 0) + 1));
@@ -341,6 +347,38 @@ export function gradedKeyLetter(marks: number[]): KeyLetter {
   const best = Math.max(...marks);
   if (marks.filter((m) => m === best).length !== 1) throw new Error(`graded row [${marks.join(",")}] has no single best option`);
   return "ABCD"[marks.indexOf(best)] as KeyLetter;
+}
+
+/**
+ * Key Set A's decision-making questions from its graded grid. A question the
+ * letter table leaves out gets the grid's letter in every set (the sets were
+ * balance-checked on the grid). A letter row whose Set A prints `*` takes the
+ * grid's letter in Set A and keeps the other sets' cells. A row keyed by both,
+ * or a Set-A `*` with no grid row, is an error.
+ */
+export function applyGradedKey(
+  rows: Map<number, KeyCell[]>,
+  gradedA: Record<string | number, number[]>
+): { rows: Map<number, KeyCell[]>; errors: string[] } {
+  const out = new Map([...rows].map(([q, r]) => [q, [...r]]));
+  const errors: string[] = [];
+  for (const [qs, marks] of Object.entries(gradedA)) {
+    const q = Number(qs);
+    let letter: KeyLetter;
+    try {
+      letter = gradedKeyLetter(marks);
+    } catch (e) {
+      errors.push(`Q${q}: ${(e as Error).message}`);
+      continue;
+    }
+    const row = out.get(q);
+    if (!row) out.set(q, [letter, letter, letter, letter]);
+    else if (row[0] === "*") row[0] = letter;
+    else errors.push(`Q${q}: in both the letter key and the graded grid`);
+  }
+  for (const [q, row] of [...out].sort(([a], [b]) => a - b))
+    if (row[0] === "*") errors.push(`Q${q}: set A prints * but the graded grid has no row for it`);
+  return { rows: out, errors };
 }
 
 /**
