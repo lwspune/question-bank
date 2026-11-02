@@ -8,7 +8,7 @@ import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 import ExamFeedList from "@/components/exam/ExamFeedList";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { getPublishedMocks } from "@/lib/mocks/query";
-import { mockSideNav, mockExamNames, buildMockCatalogueEntries, type MockExamCard } from "@/lib/mocks/mocksNav";
+import { mockSideNav, mockExamNames, buildMockCatalogueEntries, mockCardMetaLine, type MockExamCard } from "@/lib/mocks/mocksNav";
 
 // Public catalogue — anon + stable, cacheable. New mocks appear on revalidation.
 export const revalidate = 3600;
@@ -87,33 +87,6 @@ const COPY: Record<string, ExamCopy> = {
   },
 };
 
-/**
- * "36 past papers (2017–2026) · 27 practice" — every part derived.
- *
- * Broken down BY TYPE rather than a single total, because "63 mocks" would hide
- * the difference between the real thing and a simulation of it, and the year
- * span only ever describes the past papers. A type with none is omitted rather
- * than printed as a zero.
- */
-function metaLine(card: MockExamCard) {
-  if (card.count === 0) return "Coming soon";
-  const parts: string[] = [];
-
-  const past = card.byType["past-papers"];
-  if (past > 0) {
-    const span =
-      card.firstYear === 0
-        ? ""
-        : card.firstYear === card.lastYear
-          ? ` (${card.firstYear})`
-          : ` (${card.firstYear}–${card.lastYear})`;
-    parts.push(`${past} past ${past === 1 ? "paper" : "papers"}${span}`);
-  }
-  if (card.byType["practice"] > 0) parts.push(`${card.byType["practice"]} practice`);
-  if (card.byType["sectional"] > 0) parts.push(`${card.byType["sectional"]} sectional`);
-  return parts.join(" · ");
-}
-
 export default async function MockCatalogue() {
   const mocks = await getPublishedMocks(createSupabaseAnonClient());
   const entries = buildMockCatalogueEntries(mocks);
@@ -182,7 +155,7 @@ export default async function MockCatalogue() {
                 </p>
 
                 <p className="mt-4 text-xs font-medium text-muted-foreground tabular-nums">
-                  {metaLine(card)}
+                  {mockCardMetaLine(card)}
                 </p>
 
                 <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-brand-accent">

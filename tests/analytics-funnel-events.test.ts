@@ -44,6 +44,7 @@ describe("FUNNEL_EVENTS", () => {
       "tutor_link_click",
       "v_progress_tap",
       "learn_lesson_start",
+      "home_continue_click",
     ]);
   });
 
