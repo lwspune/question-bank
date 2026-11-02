@@ -22,7 +22,8 @@ import AttemptsList from "../mock/_components/AttemptsList";
 import FeedbackCards from "./FeedbackCards";
 import TodayCard from "./TodayCard";
 import HomeReminder from "./HomeReminder";
-import { greetingFor } from "@/lib/me/today";
+import { greetingFor, greetingName } from "@/lib/me/today";
+import Greeting from "./Greeting";
 import SuggestExamCard from "./SuggestExamCard";
 import { loadSuggestedExam } from "@/lib/profile/suggestExamServer";
 import { getExamBySlug } from "@/lib/exam/examContext";
@@ -119,7 +120,10 @@ export default async function MePage() {
       <main className="mx-auto max-w-4xl space-y-6 px-4 py-6 sm:space-y-8 sm:px-6 sm:py-8">
         {/* A greeting, not "Your dashboard" over the student's own email. */}
         <header className="space-y-2">
-          <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">{greetingFor(istHour(now))}</h1>
+          <Greeting
+            greeting={greetingFor(istHour(now))}
+            name={greetingName({ preferred_name: user.preferredName, full_name: user.name })}
+          />
           {examLinks.length > 0 ? (
             <YourExams links={examLinks} />
           ) : suggestedExam ? (
