@@ -240,14 +240,17 @@ export default function DownloadDialog({
     <Dialog open={open} onOpenChange={setOpen}>
       {!hideTrigger && (
         <DialogTrigger asChild>
+          {/* Filled only once an exam is chosen (or for staff): on the bare
+              page it was the loudest control, offering a student 1,15,604
+              questions in one file before they had seen one (2026-11-02). */}
           <Button
-            variant="brand"
+            variant={isStaff || filters.examId ? "brand" : "outline"}
             disabled={filterCount === 0}
             className="w-full sm:w-auto"
           >
             <Download className="h-4 w-4" aria-hidden />
             Download
-            {filterCount > 0 && (
+            {filterCount > 0 && (isStaff || filters.examId) && (
               <span className="ml-1 text-brand-foreground/80">
                 · {filterCount.toLocaleString("en-IN")}
               </span>

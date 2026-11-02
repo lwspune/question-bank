@@ -60,17 +60,15 @@ export default async function PricingPage({
   return (
     <>
       <AppHeader />
-      <main className="mx-auto max-w-4xl px-6 py-12">
-        <header className="hero-soft rounded-2xl px-5 py-8 text-center">
+      <main className="mx-auto max-w-4xl px-4 py-6 sm:px-6 sm:py-12">
+        {/* The offer leads (owner, 2026-11-02): on a phone the price used to
+            sit on the third screen, under the note and the results strip. */}
+        <header className="hero-soft rounded-2xl px-5 py-6 text-center sm:py-8">
           <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">Pricing</h1>
-          {/* The owner's own words (2026-10-11), kept in the first person on purpose. */}
           <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-muted-foreground">
-            I wish I could keep all of PYQ Vault free. But maintaining and running the website costs money,
-            so I charge a small fee to keep it going. I hope you understand.
+            Every question is free to browse. The pass is for when you want more.
           </p>
         </header>
-
-        {site === "pyqvault" && <ResultsStrip className="mt-6" />}
 
         {/* The free exams (migration 0210, owner 2026-11-02). The six are pinned
             by tests/billing-exam-pass.test.ts, so this line cannot quietly drift. */}
@@ -164,6 +162,15 @@ export default async function PricingPage({
             })}
           </div>
         )}
+
+        {/* The owner's own words (2026-10-11), kept in the first person on
+            purpose; below the offer since 2026-11-02 (owner). */}
+        <p className="mx-auto mt-8 max-w-md text-center font-serif text-sm leading-relaxed text-muted-foreground">
+          I wish I could keep all of PYQ Vault free. But maintaining and running the website costs money,
+          so I charge a small fee to keep it going. I hope you understand.
+        </p>
+
+        {site === "pyqvault" && <ResultsStrip className="mt-6" />}
 
         <div className="mt-8 space-y-2 text-center text-xs text-muted-foreground">
           <p>

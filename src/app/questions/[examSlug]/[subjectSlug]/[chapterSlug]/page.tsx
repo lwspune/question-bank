@@ -12,7 +12,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ArrowRight, BookOpen, ChevronDown, ClipboardCheck, Compass } from "lucide-react";
+import { ArrowRight, BookOpen, ChevronDown, ClipboardCheck, Compass, Target } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -226,7 +226,7 @@ export default async function ChapterQuestionsPage({ params }: Params) {
   return (
     <>
       <AppHeader />
-      <main className="mx-auto w-full max-w-5xl p-8">
+      <main className="mx-auto w-full max-w-5xl px-4 py-6 sm:p-8">
         <Breadcrumbs
           items={[
             { href: "/questions", label: "Questions" },
@@ -289,7 +289,20 @@ export default async function ChapterQuestionsPage({ params }: Params) {
           )}
         </div>
 
-        <div className="mt-8">
+        {/* The product's promise, where most new students first land (54% of
+            sign-ups in October 2026 started on a chapter page). Same for every
+            visitor, so the page stays cached. */}
+        {questions.rows.length > 0 && (
+          <p className="mt-6 flex items-start gap-2 text-sm text-muted-foreground">
+            <Target className="mt-0.5 h-4 w-4 shrink-0 text-brand-accent" aria-hidden />
+            <span>
+              Try each question before you open its answer. Sign in, and the ones you get wrong
+              come back in Fix your mistakes until you get them right.
+            </span>
+          </p>
+        )}
+
+        <div className="mt-4">
           {questions.rows.length === 0 ? (
             <p className="rounded-md border p-6 text-muted-foreground">
               No public questions here yet.

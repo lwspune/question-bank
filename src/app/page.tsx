@@ -5,6 +5,7 @@ import {
   BookMarked,
   BookOpen,
   Compass,
+  FileText,
   FlaskConical,
   GraduationCap,
   Layers,
@@ -33,6 +34,7 @@ import { loopFor } from "@/lib/education/howItWorks";
 import { NOTES_CHAPTERS } from "@/lib/notes/chapters";
 import { getExamBySlug } from "@/lib/exam/examContext";
 import { groupExamFamilies, familyTotal, membersByStage } from "@/lib/exam/examFamily";
+import { sortByDemand } from "@/lib/exam/demandOrder";
 
 export const revalidate = 86400;
 
@@ -156,8 +158,8 @@ type SurfacePreview = {
   Icon: typeof BookOpen;
 };
 
-// These six render side by side in one grid, so a reader takes them in at a
-// glance. They are therefore written in six DELIBERATELY DIFFERENT shapes — a
+// These eight render side by side in one grid, so a reader takes them in at a
+// glance. They are therefore written in DELIBERATELY DIFFERENT shapes — a
 // declarative pair, a question, a colon-list, a short pair, a contrast, an
 // instruction. The original set were all "noun phrase — tricolon of features",
 // and copies of one rhythm in one eyeful is what reads as machine-written. Keep
@@ -172,11 +174,11 @@ const SURFACES: SurfacePreview[] = [
     href: "/browse",
     title: "Question bank",
     blurb:
-      "Filter by exam, chapter, subtopic, difficulty and year. Teachers can export the result as a Word question paper with a separate answer key.",
+      "Filter by exam, chapter, subtopic, difficulty and year. Try each question first, then open the answer and the worked solution.",
     Icon: Compass,
   },
   {
-    href: "/guide/nda",
+    href: "/guide",
     title: "Strategy guides",
     blurb:
       "Which chapters actually carry the marks? Every weightage and difficulty figure in these guides was counted off the papers themselves, not taken from a syllabus.",
@@ -214,6 +216,22 @@ const SURFACES: SurfacePreview[] = [
       "Balbharati and NCERT textbooks, read in book order. Solved examples, then the exercise, then miscellaneous, with worked answers throughout.",
     Icon: Library,
   },
+  {
+    href: "/question-papers",
+    title: "Board past papers",
+    // Shape: what it is, then the one thing that makes it worth opening.
+    blurb:
+      "Each paper as the board set it, section by section. Every question has a model answer you can open under it.",
+    Icon: FileText,
+  },
+  {
+    href: "/drill",
+    title: "Fix your mistakes",
+    // Signed out, this asks you to sign in first: the queue is yours alone.
+    blurb:
+      "Five of the questions you got wrong, a few minutes a day. Get one right and it goes quiet; miss it and it comes back.",
+    Icon: Target,
+  },
 ];
 
 export default async function Home() {
@@ -232,7 +250,8 @@ export default async function Home() {
   // Group the six (board, class) exams into two family cards. Presentation
   // only: every class link keeps the exact href it had before, and the hero's
   // exam COUNT below still reports 13 — we do have 13 corpora.
-  const examNodes = groupExamFamilies(catalog.exams, (e) => getExamBySlug(e.slug));
+  // Most-chosen exams first (lib/exam/demandOrder), not the registry's NDA-first order.
+  const examNodes = sortByDemand(groupExamFamilies(catalog.exams, (e) => getExamBySlug(e.slug)));
 
   return (
     <>
@@ -264,10 +283,10 @@ export default async function Home() {
           <div className="relative grid items-center gap-8 md:grid-cols-[1.15fr_1fr]">
             <div>
               <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">
-                Every past paper, sorted question by question.
+                Practise the questions your exam actually asks.
               </h1>
               <p className="mt-4 max-w-xl font-serif text-base leading-relaxed text-white/85 sm:text-lg">
-                Practise every previous year question free, then drill the chapters that cost you marks.
+                Every past paper, sorted by chapter, with worked answers. We find the chapters that cost you marks and bring your mistakes back until you get them right.
               </p>
               <ul className="mt-5 flex flex-wrap gap-2 text-xs font-semibold" aria-label="What is in the bank">
                 {countsKnown && (
@@ -290,15 +309,15 @@ export default async function Home() {
                   className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-bold text-[#0f1d4a] shadow-lg transition-colors hover:bg-white/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#0f1d4a]"
                 >
                   <Compass className="h-4 w-4" aria-hidden />
-                  Browse the question bank
+                  Start practising free
                   <ArrowRight className="h-3.5 w-3.5" aria-hidden />
                 </Link>
                 <Link
-                  href="/guide/nda"
+                  href="/mock"
                   className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/35 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#0f1d4a]"
                 >
-                  <BookOpen className="h-4 w-4" aria-hidden />
-                  Explore the guides
+                  <Timer className="h-4 w-4" aria-hidden />
+                  Sit a real past paper
                 </Link>
               </div>
             </div>
@@ -318,9 +337,6 @@ export default async function Home() {
 
         {/* A8: pick an exam without scrolling past every card. */}
         <HomeExamChips chips={homeExamChips(examNodes)} />
-
-        {/* Our students' newest published result (migration 0149). */}
-        <ResultsStrip className="mb-12" />
 
         {/* A9: the loop /start teaches, rendered from the same object so it
             cannot describe a loop the app does not have. /start had one
@@ -456,6 +472,11 @@ export default async function Home() {
             })}
           </ul>
         </section>
+
+        {/* Our students' newest published result (migration 0149). Below the
+            exam list since 2026-11-02: it names one exam, so it should not be
+            the first thing every other exam's student reads. */}
+        <ResultsStrip className="mb-12" />
 
         {/* What's inside — surface previews */}
         <section className="mb-12">
