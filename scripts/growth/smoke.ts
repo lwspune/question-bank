@@ -186,6 +186,7 @@ async function main() {
         line = "live counts on the page (learn_experiment_readout)";
         break;
       case "pass-price":
+      case "pass-tiers":
         line = handRead(e.liveSince, ["price-weekly-revenue", "price-checkout-paid"]);
         break;
       case "answer-limit":
