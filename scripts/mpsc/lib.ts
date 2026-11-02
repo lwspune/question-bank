@@ -43,7 +43,12 @@ export type BilingualQuestion = {
    * transcribed as a table in each language instead, so it stays answerable
    * and readable in either.
    */
-  figure?: { page: number; box: [number, number, number, number] };
+  figure?: {
+    page: number;
+    box: [number, number, number, number];
+    /** "none" once a person has looked at a figure the watermark check flags and seen no watermark. */
+    watermark?: "none";
+  };
   /**
    * A MEANING difference between the printed Marathi and English (the booklet's
    * own translation error — e.g. "south-west" vs "North-Western"). Both versions
@@ -267,7 +272,8 @@ export function buildRecords(
   questions: BilingualQuestion[],
   key: Record<number, KeyLetter>,
   cancelledNote = "Cancelled by MPSC in its final answer key. No option is correct.",
-  graded: Record<number, number[]> = {}
+  graded: Record<number, number[]> = {},
+  notices: Record<number, Notice> = {}
 ): { rows: MpscRow[]; cancelled: number[]; errors: string[] } {
   const rows: MpscRow[] = [];
   const cancelled: number[] = [];
@@ -283,7 +289,7 @@ export function buildRecords(
       errors.push(`Q${q.n}: key ${k} but its graded marks make ${gradedKeyLetter(marks)} the best option`);
       continue;
     }
-    const solution = questionSolution(q.printNote, marks);
+    const solution = questionSolution(q.printNote, marks, notices[q.n]);
     if (k === "#") cancelled.push(q.n);
     const v = (q.en ?? q.mr)!; // canonical: English, else the one language printed
     const [a, b, c, d] = v.options;
@@ -366,9 +372,16 @@ export function gradedRemark(marks: number[]): { en: string; mr: string } {
   };
 }
 
-/** A question's solution text: the graded remark, then the print note; null when neither applies. */
-export function questionSolution(printNote: string | undefined, marks: number[] | undefined): { en: string; mr: string } | null {
-  const parts = [marks ? gradedRemark(marks) : null, printNoteSolution(printNote)].filter(
+/** A question's solution text: the key notice, the graded remark, then the print note; null when none applies. */
+/** A notice on a question whose key the owner judged doubtful (config.ts Paper.notices). */
+export type Notice = { en: string; mr: string };
+
+export function questionSolution(
+  printNote: string | undefined,
+  marks: number[] | undefined,
+  notice?: Notice
+): { en: string; mr: string } | null {
+  const parts = [notice ?? null, marks ? gradedRemark(marks) : null, printNoteSolution(printNote)].filter(
     (p): p is { en: string; mr: string } => p !== null
   );
   if (!parts.length) return null;

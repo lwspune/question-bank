@@ -156,9 +156,58 @@ layer, so both need hand-transcribed `keytokens`.
 
 **The independent check** is the transcriber's own answer, written into `box`
 before reading the key (`boxes.json`; merge.ts prints "boxes.json mark").
+A blind transcriber checks its batches with `npx tsx scripts/mpsc/draft-check.ts <id>`
+(coverage, parity, chapter list, unanswered questions), never `merge.ts`, which prints
+the key beside every disagreement.
+
+**Keys read by hand (2026-11-02):** asp-2011's Q177 Set-D cell is printed raised
+above its row, so extraction split it off; it was moved back into the row (and the
+page-header code "3 400 001" dropped) in `asp-2011.keytokens.json`. asp-2018's
+revised key (dated 2 Jul 2018) was typed from pp.1080-1081; all four sets balance.
+asp-2011 is ingested on its first key, unlabelled (owner, 2026-11-02).
 Underlined Marathi is `**bold**` (the Mains convention); English underline is
 `\(\underline{\text{..}}\)`.
 
 | paper | transcribed | marks vs key | committed |
 |---|---|---|---|
+| fsp-2014 (D04) | 100/100 | 88/100 | PRIVATE, 2026-11-02 (Q72 cancelled; 12 figures, AglaSem watermark cleaned). An AglaSem copy: Q16-100 are printed in ENGLISH ONLY, GS and aptitude included |
+| asp-2016 (U07) | 100/100 | 89/100 | PRIVATE, 2026-11-02 (Q19, Q51, Q53, Q68, Q90 cancelled; Q60 waived; print notes Q67, Q93) |
+| asp-2017 (Q09) | 100/100 | 94/100 | PRIVATE, 2026-11-02 (Q9, Q63 cancelled; Q38, Q67 waived; print notes Q77, Q97) |
+| fsp-2016 (M07) | 99/99 (Q7 omitted) | 93/100 | PRIVATE, 2026-11-02 (Q2, Q11, Q29, Q30 cancelled; Q55, Q69, Q72 waived; 11 figures, Q83's keeps the Marathi label between its rows). Q38-50 transcribed by the main session: an API content filter stopped two helpers at the Ambedkar-on-Ranade passage |
+| asp-2018 (I11) | 100/100 | 89/100 against the hand-typed key | PRIVATE, 2026-11-02 (Q39 cancelled; Q31, Q38 waived; print notes Q66, Q87, Q89) |
+| asp-2011 (RSM) | 200/200 | 187/200 against the FIRST key | PRIVATE, 2026-11-02 (no cancellations on the first key; Q79 waived; 5 print notes). Q41, Q42, Q109 look wrong on that key: see Key doubts |
+| asp-2012 (EOO) | 200/200 | 189/200 | PRIVATE, 2026-11-02 (Q155 cancelled). Q66-70 (a passage from Huxley's Ends and Means) by the main session: the passage was read by Windows OCR into a file, because writing a published text out trips the API's content filter |
+| fsp-2017 (E09) | 100/100 | 81/91 (9 unmarked) | PRIVATE, 2026-10-16 (Q37, Q89, Q98, Q100 cancelled; Q86 waived) |
 | fsp-2018 (K11) | 100/100 | 91/98 (Q1, Q2, Q21, Q30, Q40, Q42 language items; Q90 word count) | PRIVATE, 2026-10-16 (Q26, Q47 cancelled; Q51, Q67 waived) |
+
+**PUBLIC 2026-11-02** (owner): registry entries `mpsc-forest-service-prelims` and
+`mpsc-agriculture-service-prelims` (MPSC -> Prelims), `flip-public.ts fsp|asp`, and 8
+mocks published (`build.ts --paper=mpsc --only=<id> --apply --publish`, one at a
+time so the other MPSC mocks are untouched): +1 / -1/4 on every cover; 100 q in
+1 hour, Agriculture 2011 and 2012 200 q in 2 hours. fsp-2016 has no mock: Q7 is
+left out, and a paper with an omission is never a whole-paper mock.
+
+### Key doubts (Forest + Agriculture): SETTLED 2026-11-02
+
+**Owner: notice + grace on all eleven, MPSC's key kept.** Each notice is in
+config.ts `notices` (English and Marathi), heads the question's solution, and
+graces the question in its mock (scripts/mocks/mpscSittings.ts).
+
+Every paper here is committed on MPSC's key. These questions disagree with an
+independent solve in a way the page does not explain. **Nothing is changed until
+the owner decides** (correct the key + notice, or notice + grace, per the
+2026-10-29 defective-question policy).
+
+| paper · Q | MPSC key | finding |
+|---|---|---|
+| fsp-2014 Q63 | (3) | Odd figure out: (1), (3), (4) are mirror images of the reference triangle; only (2) is a rotation, so (2) is the odd one. Read from the figure; looks like a wrong key. |
+| fsp-2014 Q67 | (3) 47 | Defective as printed: 145 - t = 2t gives t = 48⅓; no option is exact. Text checked against the page. |
+| fsp-2014 Q74 | (2) Friday | Defective as printed: the chain works out to Tuesday, not an option. Text checked against the page. |
+| fsp-2014 Q55 | (1) (a) or (d) | The person's sex is not given, so "(c) sister or brother, or (d)" fits; MPSC keys "sister". |
+| asp-2016 Q38 | (1) a and b | Statement a (citizenship rules not applicable to J&K) is false; c and d are false too (7 and 12 years), so no option is right. |
+| asp-2016 Q75 | (2) | Kisan Call Centres are toll-free, run at government cost; the key says farmers pay "very negligible charges". |
+| asp-2011 Q41 | (4) No article | "______ Himalaya is the biggest mountain in India" takes "The" (3). asp-2011 is on MPSC's FIRST key (owner: ingest, unlabelled). |
+| asp-2011 Q42 | (2) go | "Neither the boy nor his sister ______ to school" takes the singular "goes" (3). First key. |
+| asp-2011 Q109 | (1) Sahyadri | The watershed between the Narmada and Tapi valleys is the Satpura range (2). First key. |
+| asp-2012 Q117 | (1) constant returns | The textbook answer for manufacturing is the law of INCREASING returns (2). Final key; doubtful, not certain. |
+| asp-2012 Q150 | (3) open rural branches | An RRB's main function is credit to the weaker sections (1). Final key; doubtful, not certain. |

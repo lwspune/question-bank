@@ -18,6 +18,27 @@ import sys
 
 import fitz
 
+# Papers whose scan is a third-party copy with a printed watermark across the
+# page. fsp-2014 is an AglaSem copy: a faint light-blue and light-yellow
+# ".com" logo sits under several aptitude figures. The figures themselves are
+# black print, so a LIGHT, COLOURED pixel is watermark and becomes white; black
+# lines, grey anti-aliasing and solid black fills stay (2026-11-02).
+WATERMARKED = {"fsp-2014": "AglaSem logo"}
+
+
+def dewatermark(path):
+    import numpy as np
+    from PIL import Image
+
+    a = np.asarray(Image.open(path).convert("RGB")).astype(np.int16)
+    spread = a.max(axis=2) - a.min(axis=2)
+    # Coloured and light, or simply near-white (the palest edge of the logo is
+    # almost grey, so the colour test alone leaves a ghost of it).
+    hit = ((spread > 8) & (a.max(axis=2) > 150)) | (a.min(axis=2) > 205)
+    a[hit] = 255
+    Image.fromarray(a.astype(np.uint8)).save(path)
+    return int(hit.sum())
+
 SRC = r"C:/Users/vilas/Downloads/Group B & C Pre Papers 2017 to 2024.pdf"
 HERE = os.path.dirname(os.path.abspath(__file__))
 DATA = os.path.join(HERE, "data")
@@ -188,7 +209,10 @@ def figures(pid, dpi=220):
             continue
         x0, y0, x1, y1 = fig["box"]
         clip = fitz.Rect(x0 * k, y0 * k, x1 * k, y1 * k)
-        doc_for(source(pid)[0])[fig["page"] - 1].get_pixmap(dpi=dpi, clip=clip).save(os.path.join(out, f"q{q['n']}.png"))
+        path = os.path.join(out, f"q{q['n']}.png")
+        doc_for(source(pid)[0])[fig["page"] - 1].get_pixmap(dpi=dpi, clip=clip).save(path)
+        if pid in WATERMARKED:
+            print(f"  q{q['n']}: {dewatermark(path)} watermark pixel(s) whitened ({WATERMARKED[pid]})")
         n += 1
     print(f"{pid}: {n} figure(s) -> {out}")
 

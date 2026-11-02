@@ -7,7 +7,9 @@
  * one pyq_year carries both a Group B and a Group C paper.
  *
  * Grace comes from each paper's official final key (`data/<id>.key.json`,
- * `cancelled`). A cancelled question has no correct option; the Commission
+ * `cancelled`), plus any question whose key the owner judged doubtful
+ * (config.ts `notices`: the key is kept, a notice heads the solution, and the
+ * mock awards the question to everyone; owner 2026-11-02). A cancelled question has no correct option; the Commission
  * awarded it to every candidate, so the mock does the same — the question stays
  * printed in its place, exactly as a candidate sat it. The same numbers drive
  * the `cancelled_note` on the rows (scripts/mpsc/commit.ts), so a mismatch
@@ -31,7 +33,16 @@ export type MpscSitting = {
   graceNumbers: number[];
 };
 
-type PaperLike = { id: string; pyqYear: number; pyqNote: string; sourceFile: string };
+type PaperLike = {
+  id: string;
+  pyqYear: number;
+  pyqNote: string;
+  sourceFile: string;
+  /** Questions in the paper when not 100 (Agriculture 2011 and 2012 have 200). */
+  questions?: number;
+  /** Owner-settled doubtful keys: the key is kept, the question is graced (2026-11-02). */
+  notices?: Record<number, unknown>;
+};
 
 /** "2019-b" → "mpsc-2019-b". The paper id is unique per sitting. */
 export function mpscMockSlug(id: string): string {
@@ -56,6 +67,16 @@ export function sspMockTitle(pyqYear: number, pyqNote: string): string {
   return `MPSC State Services Prelims ${pyqYear} — ${paper}${date ? ` — ${date}` : ""}`;
 }
 
+/**
+ * "MPSC Forest Service Prelims 2014 (27 Apr 2014)". The pyqNote is
+ * "<exam> · <date>" for the Forest and Agriculture papers; the date sits in
+ * brackets because visible text carries no em dash (owner, 2026-10-05).
+ */
+export function serviceMockTitle(pyqYear: number, pyqNote: string): string {
+  const [exam, date] = pyqNote.split(" · ");
+  return `MPSC ${exam} ${pyqYear}${date ? ` (${date})` : ""}`;
+}
+
 function readCancelled(id: string): number[] {
   const key = JSON.parse(readFileSync(dataPath(id, "key"), "utf8")) as { cancelled?: number[] };
   return key.cancelled ?? [];
@@ -67,10 +88,12 @@ export function deriveMpscSittings(
   titleFor: (pyqYear: number, pyqNote: string) => string = mpscMockTitle
 ): MpscSitting[] {
   return papers.map((p) => {
-    const graceNumbers = [...cancelledFor(p.id)].sort((a, b) => a - b);
-    const bad = graceNumbers.filter((n) => !Number.isInteger(n) || n < 1 || n > QUESTIONS_PER_PAPER);
+    const noticed = Object.keys(p.notices ?? {}).map(Number);
+    const graceNumbers = [...new Set([...cancelledFor(p.id), ...noticed])].sort((a, b) => a - b);
+    const last = p.questions ?? QUESTIONS_PER_PAPER;
+    const bad = graceNumbers.filter((n) => !Number.isInteger(n) || n < 1 || n > last);
     if (bad.length) {
-      throw new Error(`MPSC ${p.id}: cancelled question number(s) ${bad.join(", ")} outside 1-${QUESTIONS_PER_PAPER}`);
+      throw new Error(`MPSC ${p.id}: grace question number(s) ${bad.join(", ")} outside 1-${last}`);
     }
     return {
       key: p.id,

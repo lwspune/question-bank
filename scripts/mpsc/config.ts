@@ -50,7 +50,7 @@ export const EXAMS: Record<ExamKey, { name: string; id: string | null }> = {
   gbc: { name: "MPSC Group B & C Prelims", id: "583f914f-f323-42ed-ae7c-5e445ed796c3" },
   ssp: { name: "MPSC State Services Prelims", id: "a61ef55d-baf5-4e15-a4c2-2ac599519229" }, // seed.ts ssp --apply, 2026-09-27
   fsp: { name: "MPSC Forest Service Prelims", id: "646ced4c-5ec8-4896-b4f6-5bd141bb3926" }, // seed.ts fsp --apply, 2026-10-16
-  asp: { name: "MPSC Agriculture Service Prelims", id: null },
+  asp: { name: "MPSC Agriculture Service Prelims", id: "2e99a09c-6422-4360-a33c-8e13aeb231ec" }, // seed.ts asp --apply, 2026-11-02
 };
 /** Kept for the Group B & C callers that predate EXAMS. */
 export const EXAM_NAME = EXAMS.gbc.name;
@@ -103,6 +103,12 @@ export type Paper = {
    * whole-paper mock.
    */
   omitted?: Record<number, string>;
+  /**
+   * Questions whose MPSC key the owner judged doubtful (2026-11-02): the key is
+   * KEPT, this notice heads the solution in both languages, and the mock awards
+   * the question to every candidate (scripts/mocks/mpscSittings.ts).
+   */
+  notices?: Record<number, { en: string; mr: string }>;
   pyqNote: string;
   sourceFile: string;
 };
@@ -318,9 +324,71 @@ const prelims = (
   ...extra,
 });
 
+/** A doubtful-key notice; every one ends by saying the mock gives the mark to all. */
+const notice = (en: string, mr: string) => ({
+  en: `**Notice:** ${en} In PYQ Vault mocks this question is awarded to every candidate.`,
+  mr: `**सूचना:** ${mr} PYQ Vault च्या सराव परीक्षांमध्ये या प्रश्नाचे गुण सर्व उमेदवारांना दिले जातात.`,
+});
+
+/** The owner's 2026-11-02 ruling on every doubtful key in these papers: notice + grace, key kept. */
+const FSP_2014_NOTICES = {
+  55: notice(
+    "MPSC's key gives option A, (a) or (d). The woman's words show only that the person is her brother or sister, or herself; nothing says the person is a woman, so option C fits better.",
+    "आयोगाच्या उत्तरतालिकेत पर्याय A, (a) किंवा (d), बरोबर दिला आहे. स्त्रीच्या विधानावरून ती व्यक्ती तिचा भाऊ किंवा बहीण किंवा ती स्वतः आहे एवढेच कळते; ती व्यक्ती स्त्री आहे असे कुठेही म्हटलेले नाही, म्हणून पर्याय C अधिक योग्य ठरतो."
+  ),
+  63: notice(
+    "MPSC's key gives option C. Reading the three dots clockwise, options A, C and D are mirror images of the first figure and only B is a rotation of it, so B is the odd one out.",
+    "आयोगाच्या उत्तरतालिकेत पर्याय C बरोबर दिला आहे. तीन ठिपके घड्याळाच्या दिशेने वाचल्यास पर्याय A, C व D हे पहिल्या आकृतीचे आरशातील प्रतिबिंब आहेत आणि फक्त B हा त्याच आकृतीचा फिरवलेले रूप आहे, म्हणून B वेगळा आहे."
+  ),
+  67: notice(
+    "No option is exactly right as printed. If \\(t\\) minutes remain until noon, then \\(145 - t = 2t\\), so \\(t = 48\\tfrac{1}{3}\\); MPSC's key gives option C, 47.",
+    "छापलेल्या स्वरूपात कोणताही पर्याय अचूक नाही. दुपारी 12 वाजण्यास \\(t\\) मिनिटे बाकी असल्यास \\(145 - t = 2t\\), म्हणजे \\(t = 48\\tfrac{1}{3}\\); आयोगाच्या उत्तरतालिकेत पर्याय C, 47, दिला आहे."
+  ),
+  74: notice(
+    "No option is right as printed. Two days after Monday is Wednesday, the day immediately after is Thursday, two days after that is Saturday, and three days after Saturday is Tuesday, which is not an option. MPSC's key gives option B, Friday.",
+    "छापलेल्या स्वरूपात कोणताही पर्याय बरोबर नाही. सोमवारनंतर दोन दिवसांनी बुधवार, त्यानंतरचा दिवस गुरुवार, त्यानंतर दोन दिवसांनी शनिवार आणि शनिवारनंतर तीन दिवसांनी मंगळवार येतो; मंगळवार पर्यायांमध्ये नाही. आयोगाच्या उत्तरतालिकेत पर्याय B, शुक्रवार, दिला आहे."
+  ),
+};
+const ASP_2011_NOTICES = {
+  41: notice(
+    "MPSC's key gives option D, no article. The sentence needs the definite article, \"The Himalaya is the biggest mountain in India\", option C.",
+    "आयोगाच्या उत्तरतालिकेत पर्याय D (आर्टिकल नाही) बरोबर दिला आहे. या वाक्याला निश्चित आर्टिकल हवे: \"The Himalaya is the biggest mountain in India\", म्हणजे पर्याय C."
+  ),
+  42: notice(
+    "MPSC's key gives option B, \"go\". With \"neither ... nor\" the verb agrees with the nearer subject, \"his sister\", which is singular: \"Neither the boy nor his sister goes to school\", option C.",
+    "आयोगाच्या उत्तरतालिकेत पर्याय B, \"go\", बरोबर दिला आहे. \"neither ... nor\" मध्ये क्रियापद जवळच्या कर्त्याशी जुळते; \"his sister\" एकवचनी आहे, म्हणून \"Neither the boy nor his sister goes to school\", म्हणजे पर्याय C."
+  ),
+  109: notice(
+    "MPSC's key gives option A, Sahyadri. The range between the Narmada and Tapi valleys is the Satpuda, option B.",
+    "आयोगाच्या उत्तरतालिकेत पर्याय A, सह्याद्री, बरोबर दिला आहे. नर्मदा व तापी खोऱ्यांमधील जलविभाजक सातपुडा पर्वतरांग आहे, म्हणजे पर्याय B."
+  ),
+};
+const ASP_2012_NOTICES = {
+  117: notice(
+    "MPSC's key gives option A, the law of constant returns. The standard textbook answer is that manufacturing follows the law of increasing returns, option B, so the key is doubtful.",
+    "आयोगाच्या उत्तरतालिकेत पर्याय A, स्थिर उत्पत्तीचा नियम, बरोबर दिला आहे. पाठ्यपुस्तकानुसार निर्मिती उद्योगाला वाढत्या उत्पत्तीचा नियम (पर्याय B) लागू होतो, म्हणून हे उत्तर संशयास्पद आहे."
+  ),
+  150: notice(
+    "MPSC's key gives option C, opening branches in rural areas. A Regional Rural Bank's main function is credit to small farmers and other weaker sections, option A, so the key is doubtful.",
+    "आयोगाच्या उत्तरतालिकेत पर्याय C, ग्रामीण भागात शाखा उघडणे, बरोबर दिला आहे. प्रादेशिक ग्रामीण बँकेचे मुख्य कार्य लहान शेतकरी व इतर दुर्बल घटकांना कर्जपुरवठा करणे हे आहे (पर्याय A), म्हणून हे उत्तर संशयास्पद आहे."
+  ),
+};
+const ASP_2016_NOTICES = {
+  38: notice(
+    "MPSC's key gives option A, a and b. Statement a is not correct: the rules on Indian citizenship applied in Jammu and Kashmir too. Statements c and d are not correct either (registration needed seven years' residence, naturalisation twelve), so no option is fully right.",
+    "आयोगाच्या उत्तरतालिकेत पर्याय A, अ आणि ब, बरोबर दिला आहे. विधान अ बरोबर नाही: भारतीय नागरिकत्वाचे नियम जम्मू व काश्मीरलाही लागू होते. विधाने क व ड देखील बरोबर नाहीत (नोंदणीसाठी सात वर्षांचे, तर देशीयीकरणासाठी बारा वर्षांचे वास्तव्य आवश्यक), म्हणून कोणताही पर्याय पूर्णपणे बरोबर नाही."
+  ),
+  75: notice(
+    "MPSC's key gives option B, that farmers pay very small charges. Kisan Call Centres are a free, toll-free service run at the government's cost, so the key is doubtful.",
+    "आयोगाच्या उत्तरतालिकेत पर्याय B, शेतकऱ्यांना फार अल्प खर्च सहन करावा लागतो, बरोबर दिला आहे. किसान कॉल सेंटर ही सरकारी खर्चाने चालणारी मोफत (टोल-फ्री) सेवा आहे, म्हणून हे उत्तर संशयास्पद आहे."
+  ),
+};
+
 /** Dates are each key's "परीक्षेचा दिनांक". */
 export const FSP_PAPERS: Paper[] = [
-  prelims("fsp", 2014, "2014-04-27", "D04", [741, 772], [773, 774], "Forest Service Prelims · 27 Apr 2014"),
+  prelims("fsp", 2014, "2014-04-27", "D04", [741, 772], [773, 774], "Forest Service Prelims · 27 Apr 2014", {
+    notices: FSP_2014_NOTICES,
+  }),
   prelims("fsp", 2016, "2016-04-03", "M07", [775, 814], [815, 816], "Forest Service Prelims · 3 Apr 2016", {
     omitted: { 7: "Each pair differs only in how a conjunct is drawn (half-form vs stacked), which plain text cannot show; left out at the user's call, 2026-10-16." },
   }),
@@ -333,9 +401,15 @@ export const ASP_PAPERS: Paper[] = [
   prelims("asp", 2011, "2011-07-31", "RSM", [893, 939], [940, 943], "Agriculture Service Prelims · 31 Jul 2011", {
     questions: 200,
     provisionalKey: true,
+    notices: ASP_2011_NOTICES,
   }),
-  prelims("asp", 2012, "2012-08-05", "EOO", [944, 983], [984, 987], "Agriculture Service Prelims · 5 Aug 2012", { questions: 200 }),
-  prelims("asp", 2016, "2016-07-10", "U07", [988, 1019], [1020, 1021], "Agriculture Service Prelims · 10 Jul 2016"),
+  prelims("asp", 2012, "2012-08-05", "EOO", [944, 983], [984, 987], "Agriculture Service Prelims · 5 Aug 2012", {
+    questions: 200,
+    notices: ASP_2012_NOTICES,
+  }),
+  prelims("asp", 2016, "2016-07-10", "U07", [988, 1019], [1020, 1021], "Agriculture Service Prelims · 10 Jul 2016", {
+    notices: ASP_2016_NOTICES,
+  }),
   prelims("asp", 2017, "2017-07-30", "Q09", [1022, 1045], [1046, 1047], "Agriculture Service Prelims · 30 Jul 2017"),
   prelims("asp", 2018, "2018-05-20", "I11", [1048, 1079], [1080, 1081], "Agriculture Service Prelims · 20 May 2018"),
 ];

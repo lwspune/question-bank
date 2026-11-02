@@ -34,7 +34,7 @@ describe("mock families", () => {
     const mpsc = getMockFamily("mpsc")!;
     expect(mpsc.name).toBe("MPSC");
     expect(mpsc.stages.map((s) => s.stage)).toEqual(["Prelims", "Mains"]);
-    expect(mpsc.stages[0].members.map((m) => m.slug)).toEqual(["mpsc-group-b-c", "mpsc-state-services-prelims"]);
+    expect(mpsc.stages[0].members.map((m) => m.slug)).toEqual(["mpsc-group-b-c", "mpsc-state-services-prelims", "mpsc-forest-service-prelims", "mpsc-agriculture-service-prelims"]);
     expect(mpsc.stages[1].members.map((m) => m.slug)).toEqual([
       "mpsc-state-services-mains",
       "mpsc-group-b-combined-mains",

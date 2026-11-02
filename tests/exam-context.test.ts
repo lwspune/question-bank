@@ -422,6 +422,8 @@ describe("exam tiers", () => {
       "cds",
       "mpsc-group-b-c",
       "mpsc-state-services-prelims",
+      "mpsc-forest-service-prelims",
+      "mpsc-agriculture-service-prelims",
       "mpsc-state-services-mains",
       "mpsc-group-b-combined-mains",
       "mpsc-sti-mains",

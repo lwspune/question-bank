@@ -321,6 +321,15 @@ describe("gradedRemark + questionSolution", () => {
     expect(questionSolution("Marathi says X.", undefined)).toEqual(printNoteSolution("Marathi says X."));
   });
 
+  it("puts a key notice first, ahead of the graded remark and the print note", () => {
+    const notice = { en: "**Notice:** EN text.", mr: "**सूचना:** MR text." };
+    expect(questionSolution(undefined, undefined, notice)).toEqual(notice);
+    const s = questionSolution("Marathi says X.", [0, 1, 1.5, 2.5], notice)!;
+    expect(s.en.split("\n\n")).toHaveLength(3);
+    expect(s.en.startsWith("**Notice:**")).toBe(true);
+    expect(s.mr.startsWith("**सूचना:**")).toBe(true);
+  });
+
   it("buildRecords puts the graded remark on a decision-making row and keys its best option", () => {
     const q = {
       n: 76, subject: "Decision Making", chapter: "Decision Making and Problem Solving", subtopic: "Workplace",
