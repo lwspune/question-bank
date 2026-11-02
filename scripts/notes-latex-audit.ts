@@ -25,6 +25,8 @@ import { IMAT_NOTES_CHAPTERS } from "../src/lib/sites/imat/notes/registry";
 /** `--imat` audits the IMAT site's own registry instead of PYQ Vault's. */
 const CHAPTERS = process.argv.includes("--imat") ? IMAT_NOTES_CHAPTERS : NOTES_CHAPTERS;
 import { findCombiningMarks } from "./lib/combiningMarks";
+import { findUnwrappedMacro } from "./lib/unwrappedMacro";
+import { legendSymbolText } from "../src/lib/notes/printDoc";
 
 type Hit = { where: string; detail: string };
 
@@ -45,15 +47,12 @@ function checkCombining(where: string, s: string | undefined) {
 // macro must sit inside a \(...\) / \[...\] zone or it renders as literal
 // markup (e.g. a bare "\det A" printed verbatim). Delimiter-balance can't catch
 // this (a bare macro has zero delimiters = "balanced"), so check it directly.
-const MATH_ZONE = /\\\(.*?\\\)|\\\[.*?\\\]/gs;
 function checkUnwrapped(where: string, s: string | undefined) {
-  if (!s) return;
-  const residual = s.replace(/\\\\/g, " ").replace(MATH_ZONE, " ");
-  const m = residual.match(/\\[a-zA-Z]+/);
-  if (m)
+  const macro = findUnwrappedMacro(s);
+  if (macro && s)
     unwrappedMacro.push({
       where,
-      detail: `${m[0]} not wrapped in \\(...\\) :: ${s.slice(0, 80)}`,
+      detail: `${macro} not wrapped in \\(...\\) :: ${s.slice(0, 80)}`,
     });
 }
 
@@ -139,8 +138,9 @@ for (const chapter of CHAPTERS) {
         for (const sym of c.formula?.symbols ?? []) {
           katexFields.push([`${cb}.formula.symbol`, sym.symbol]);
           katexFields.push([`${cb}.formula.meaning`, sym.meaning]);
-          // symbol/meaning render raw (no auto-\[...\] wrap) — bare macros leak
-          checkUnwrapped(`${cb}.formula.symbol`, sym.symbol);
+          // A symbol is wrapped by legendSymbolText before rendering (screen and
+          // handout alike), so check what is RENDERED; a meaning renders raw.
+          checkUnwrapped(`${cb}.formula.symbol`, legendSymbolText(sym.symbol));
           checkUnwrapped(`${cb}.formula.meaning`, sym.meaning);
         }
         const ex = c.authoredExample;

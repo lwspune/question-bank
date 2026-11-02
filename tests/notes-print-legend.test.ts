@@ -10,6 +10,8 @@
  * real KaTeX, so a new chapter cannot reintroduce it in any shape.
  */
 import { describe, it, expect } from "vitest";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import katex from "katex";
 import { legendSymbolText } from "@/lib/notes/printDoc";
 import { parseRichSegments } from "@/components/math/parseLatex";
@@ -87,5 +89,27 @@ describe("every legend in the registry renders without a KaTeX error", () => {
   it("meanings", () => {
     const errors = symbols.flatMap((s) => katexErrors(s.meaning).map((e) => `${s.where} ${e}`));
     expect(errors).toEqual([]);
+  });
+
+  // "F_net" renders as F with subscript n, then "et": only ONE character after
+  // _ or ^ is scripted unless it is braced. Six legends did this (2026-11-02).
+  it("no symbol carries an unbraced multi-letter subscript or superscript", () => {
+    const bad = symbols
+      .filter((s) => /[_^][A-Za-z]{2,}/.test(legendSymbolText(s.symbol)))
+      .map((s) => `${s.where} ${JSON.stringify(s.symbol)}`);
+    expect(bad).toEqual([]);
+  });
+});
+
+// The on-screen legend printed bare symbols as raw text ("F_b", "g(x)\,f'(x)")
+// on live pages while the handout wrapped them, because only the handout used
+// this helper (2026-11-02). Both surfaces must render a symbol the same way.
+describe("the on-screen FormulaBlock uses the same legend rule", () => {
+  it("renders each symbol through legendSymbolText", () => {
+    const src = readFileSync(
+      join(process.cwd(), "src", "app", "notes", "_components", "FormulaBlock.tsx"),
+      "utf8"
+    );
+    expect(src).toContain("legendSymbolText(s.symbol)");
   });
 });

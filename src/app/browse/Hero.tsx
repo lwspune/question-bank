@@ -14,10 +14,10 @@ export default function Hero({
   return (
     <section className="hero-soft mb-5 rounded-2xl p-4 sm:mb-6 sm:p-6">
       <h1
-        className="animate-fade-in-up font-serif text-2xl font-semibold tracking-tight sm:text-4xl"
+        className="animate-fade-in-up text-2xl font-bold tracking-tight sm:text-4xl"
         style={{ animationDelay: "0ms" }}
       >
-        Practice every previous year question.
+        Practise every previous year question.
       </h1>
       <p
         className="mt-2 max-w-2xl animate-fade-in-up text-sm text-muted-foreground sm:mt-3 sm:text-base"
