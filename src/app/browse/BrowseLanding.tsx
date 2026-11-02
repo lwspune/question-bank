@@ -6,7 +6,7 @@ import type {
 } from "@/lib/questions/browseLanding";
 import { getExamBySlug } from "@/lib/exam/examContext";
 import { groupExamFamilies, familyTotal, membersByStage } from "@/lib/exam/examFamily";
-import { sortByDemand } from "@/lib/exam/demandOrder";
+import { sortByDemand, withChosenExamFirst } from "@/lib/exam/demandOrder";
 
 /**
  * What bare `/browse` shows instead of 25 arbitrary questions.
@@ -26,16 +26,22 @@ export default function BrowseLanding({
   exams,
   chapters,
   chapterDirectoryCount,
+  chosenSlug = null,
 }: {
   exams: ExamStarter[];
   chapters: StarterChapter[];
   chapterDirectoryCount: number;
+  /** The visitor's chosen exam (qb_exam), shown first. */
+  chosenSlug?: string | null;
 }) {
   // Board exams grouped into two families. `buildExamStarters` has already
   // dropped any exam with nothing in the default view, so a family that lost
   // all but one member correctly degrades back to a single pill.
-  // Most-chosen exams first, the same order as the homepage.
-  const examNodes = sortByDemand(groupExamFamilies(exams, (e) => getExamBySlug(e.slug)));
+  // The visitor's own exam first, then most-chosen first, as on the homepage.
+  const examNodes = withChosenExamFirst(
+    sortByDemand(groupExamFamilies(exams, (e) => getExamBySlug(e.slug))),
+    chosenSlug
+  );
   return (
     <div className="space-y-8">
       <section aria-labelledby="browse-start-exam">

@@ -482,6 +482,7 @@ export default async function BrowsePage({ searchParams }: PageProps) {
                 exams={landing.exams}
                 chapters={landing.chapters}
                 chapterDirectoryCount={landing.chapterDirectoryCount}
+                chosenSlug={chosenExamSlug()}
               />
             ) : questionsResult.rows.length === 0 ? (
               <EmptyState filtered={filtered} />
@@ -587,6 +588,12 @@ async function loadLandingPanel() {
     chapters: pickStarterChapters(landings, { perExam: 2, total: 8 }),
     chapterDirectoryCount: landings.length,
   };
+}
+
+/** The visitor's chosen exam from the qb_exam cookie, or null. */
+function chosenExamSlug(): string | null {
+  const raw = cookies().get("qb_exam")?.value;
+  return isExamSlug(raw) ? raw : null;
 }
 
 function countActiveFilters(f: Filters): number {
