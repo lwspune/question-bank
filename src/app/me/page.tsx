@@ -23,6 +23,9 @@ import FeedbackCards from "./FeedbackCards";
 import TodayCard from "./TodayCard";
 import HomeReminder from "./HomeReminder";
 import { greetingFor } from "@/lib/me/today";
+import SuggestExamCard from "./SuggestExamCard";
+import { loadSuggestedExam } from "@/lib/profile/suggestExamServer";
+import { getExamBySlug } from "@/lib/exam/examContext";
 import { getOwnWeekly } from "@/lib/goals/service";
 import { listMyAssignments } from "@/lib/assignments/service";
 import type { StudentAssignmentView } from "@/lib/assignments/core";
@@ -106,6 +109,9 @@ export default async function MePage() {
     return [];
   });
   const suggestedName = resultCheck ? await loadSuggestedName(user.id).catch(() => "") : "";
+  // No exam chosen: offer the one their practice or first page points to.
+  const suggestedSlug = targets.length === 0 ? await loadSuggestedExam(db, user.id, examIds) : null;
+  const suggestedExam = suggestedSlug ? getExamBySlug(suggestedSlug) : null;
 
   return (
     <>
@@ -114,7 +120,13 @@ export default async function MePage() {
         {/* A greeting, not "Your dashboard" over the student's own email. */}
         <header className="space-y-2">
           <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">{greetingFor(istHour(now))}</h1>
-          {examLinks.length > 0 ? <YourExams links={examLinks} /> : <NoTargetCard />}
+          {examLinks.length > 0 ? (
+            <YourExams links={examLinks} />
+          ) : suggestedExam ? (
+            <SuggestExamCard slug={suggestedExam.slug} examName={suggestedExam.displayName} />
+          ) : (
+            <NoTargetCard />
+          )}
         </header>
 
         {resultCheck && (
