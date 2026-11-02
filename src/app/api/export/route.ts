@@ -4,7 +4,7 @@ import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { getSessionMember, getSessionUser } from "@/lib/auth";
 import { chooseFormat, resolveExportAccess, DOWNLOAD_PASS_SCOPE, type ExportKind } from "@/lib/export/access";
 import { userHasAnyAccess } from "@/lib/entitlements/query";
-import { passScopesFor } from "@/lib/billing/passScope";
+import { downloadScopesFor } from "@/lib/billing/passScope";
 import { planSiteForHost } from "@/lib/sites/intl";
 import { recordExportEvent } from "@/lib/export/log";
 import { exportTaxonomy } from "@/lib/export/exportTaxonomy";
@@ -133,14 +133,15 @@ export async function POST(request: NextRequest) {
     const isStaff = !!member;
     const isSignedIn = !!user;
     // The Premium Pass: a paid grant that unlocks paper + key without an org.
-    // Since 0206 each site asks for its own passes: www the Premium Pass, intl
-    // its exams' passes, so the www pass never downloads an IMAT paper there.
+    // Since 0206 each site asks for its own passes: www the Premium Pass (not the
+    // Practice Pass, 2026-11-03), intl its exams' passes, so the www pass never
+    // downloads an IMAT paper there.
     const hasDownloadPass =
       user && !isStaff
         ? await userHasAnyAccess(
             createSupabaseServerClient(),
             user.id,
-            passScopesFor(planSiteForHost(request.headers.get("host")))
+            downloadScopesFor(planSiteForHost(request.headers.get("host")))
           )
         : false;
     const bucket = user

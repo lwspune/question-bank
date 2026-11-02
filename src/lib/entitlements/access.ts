@@ -13,8 +13,26 @@ export type EntitlementStatus = "active" | "expired" | "revoked" | "cancelled";
 /** The full-premium scope. A grant with this scope unlocks everything. */
 export const SCOPE_ALL = "all";
 
-/** The Premium Pass: unlimited mocks past the free limit, and paper + key PDF downloads (DOWNLOAD_PASS_SCOPE). */
+/**
+ * The Premium Pass: every online limit lifted, plus PDF downloads. As a REQUEST,
+ * `mocks` is what every online check on a www exam asks for (answers, drill,
+ * saves, mocks, V), so the Practice Pass covers it too; downloads ask for
+ * SCOPE_DOWNLOADS, which only this pass and the Teacher pass cover.
+ */
 export const SCOPE_MOCKS = "mocks";
+
+/**
+ * The Practice Pass (2026-11-03, migration 0212): every online limit lifted,
+ * no downloads. Mirrored in SQL by private.user_has_pass and
+ * private.user_has_mock_access.
+ */
+export const SCOPE_PRACTICE = "practice";
+
+/**
+ * Not a pass: what a download asks for (DOWNLOAD_PASS_SCOPE). Nothing sells or
+ * grants it; the Premium and Teacher passes cover it.
+ */
+export const SCOPE_DOWNLOADS = "downloads";
 
 /** The retired ₹499 Teacher Pass (2026-09-26 to 2026-10-01). Still a valid scope: it covers SCOPE_MOCKS, and so downloads. */
 export const SCOPE_TEACHER = "teacher";
@@ -36,13 +54,26 @@ export const SCOPE_MCAT = "mcat";
 export const SCOPE_FREE = "free";
 
 /**
- * Scopes a grant carries beyond its own name. The teacher pass includes mocks;
- * the mock pass includes nothing else. Mirrored in SQL by
- * private.user_has_mock_access (migration 0120) — change both together.
+ * Scopes a grant carries beyond its own name. Not transitive: Practice covers
+ * the online request (`mocks`) and stops there, so it never reaches
+ * downloads. Mirrored in SQL by private.user_has_pass and
+ * private.user_has_mock_access (migration 0212): change both together.
  */
 const SCOPE_IMPLIES: Record<string, readonly string[]> = {
-  [SCOPE_TEACHER]: [SCOPE_MOCKS],
+  [SCOPE_TEACHER]: [SCOPE_MOCKS, SCOPE_PRACTICE, SCOPE_DOWNLOADS],
+  [SCOPE_MOCKS]: [SCOPE_PRACTICE, SCOPE_DOWNLOADS],
+  [SCOPE_PRACTICE]: [SCOPE_MOCKS],
 };
+
+/**
+ * True when `granted` gives everything a pass of scope `planScope` gives: the
+ * scope itself and all it implies. What /pricing marks as already yours: a
+ * Practice holder covers the `mocks` request but does not own the Premium
+ * Pass, which adds downloads.
+ */
+export function scopeIncludes(granted: string, planScope: string): boolean {
+  return [planScope, ...(SCOPE_IMPLIES[planScope] ?? [])].every((s) => scopeCovers(granted, s));
+}
 
 /** True if a grant of `granted` satisfies a request for `requested`. */
 export function scopeCovers(granted: string, requested: string): boolean {

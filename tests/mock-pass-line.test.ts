@@ -21,6 +21,13 @@ describe("lockedPassLine", () => {
     );
   });
 
+  it("does not promise the PDF when the pass offered has no downloads (the Practice Pass, 2026-11-03)", () => {
+    const practice = { label: "Practice Pass", length: "6 months", price: "₹199", downloads: false };
+    expect(lockedPassLine({ pass: practice, plural: "mock tests", isPastPaper: true })).toBe(
+      "Get the Practice Pass for unlimited mock tests for 6 months, for ₹199. "
+    );
+  });
+
   it("names the download even when no pass is on sale", () => {
     expect(lockedPassLine({ pass: null, plural: "mock tests", isPastPaper: true })).toBe(
       "A pass unlocks unlimited mock tests and past-paper downloads. "

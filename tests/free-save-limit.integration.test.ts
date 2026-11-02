@@ -30,7 +30,7 @@ const HAS_ENV =
 
 const PASSWORD = "free-save-limit-pw-1234";
 const RUN_ID = randomUUID().slice(0, 8);
-const ROLES = ["student", "pass", "off", "freeexam"] as const;
+const ROLES = ["student", "pass", "practice", "off", "freeexam"] as const;
 type Role = (typeof ROLES)[number];
 
 describe.skipIf(!HAS_ENV)("free save limit + my_premium_limits (migration 0134)", () => {
@@ -118,6 +118,15 @@ describe.skipIf(!HAS_ENV)("free save limit + my_premium_limits (migration 0134)"
       note: `test ${RUN_ID}`,
     });
 
+    // The Practice Pass (0212): online limits lifted, no downloads.
+    await admin.from("entitlements").insert({
+      user_id: ids.practice,
+      scope: "practice",
+      source: "manual",
+      status: "active",
+      note: `test ${RUN_ID}`,
+    });
+
     const { data: prev, error: readErr } = await admin
       .from("paywall_settings")
       .select("free_save_limit, free_drill_per_day, free_reveals_per_day, projection_trial_days")
@@ -174,6 +183,12 @@ describe.skipIf(!HAS_ENV)("free save limit + my_premium_limits (migration 0134)"
 
   it("never limits a pass holder", async () => {
     for (let i = 0; i < 4; i++) expect((await save("pass", i)).error).toBeNull();
+  });
+
+  it("never limits a Practice Pass holder, and reports the pass (0212)", async () => {
+    for (let i = 0; i < 4; i++) expect((await save("practice", i)).error).toBeNull();
+    const { data } = await clients.practice.rpc("my_premium_limits");
+    expect(data).toMatchObject({ hasPass: true, passScopes: ["practice"], saves: 4 });
   });
 
   it("reports the caller's limits and saves", async () => {

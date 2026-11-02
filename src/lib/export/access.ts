@@ -35,14 +35,14 @@
  * Denials carry the HTTP status the route should return (401 = not signed in,
  * 403 = signed in without staff or a pass) plus a user-facing message.
  */
-import { SCOPE_MOCKS } from "@/lib/entitlements/access";
+import { SCOPE_DOWNLOADS } from "@/lib/entitlements/access";
 
 /**
- * The entitlement scope that unlocks paper + key downloads: the scope the
- * Premium Pass is sold under. "teacher" (the retired ₹499 pass) and "all"
- * both cover it through scopeCovers, so no older grant loses anything.
+ * What a download asks for (2026-11-03): the Premium Pass (`mocks`), the retired
+ * Teacher pass and "all" cover it through scopeCovers, so no older grant loses
+ * anything; the Practice Pass does not.
  */
-export const DOWNLOAD_PASS_SCOPE = SCOPE_MOCKS;
+export const DOWNLOAD_PASS_SCOPE = SCOPE_DOWNLOADS;
 
 /**
  * "formula" (2026-10-10) is a /notes chapter's formula sheet: the pass rule of

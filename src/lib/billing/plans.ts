@@ -14,10 +14,21 @@
  * those notes and never re-read the plan. So a price edit, or deactivating a
  * plan, cannot reject a checkout that was open at the time.
  */
-import { SCOPE_ALL, SCOPE_IMAT, SCOPE_MCAT, SCOPE_MOCKS, SCOPE_TEACHER } from "@/lib/entitlements/access";
+import {
+  isEntitlementActive,
+  SCOPE_ALL,
+  SCOPE_IMAT,
+  SCOPE_MCAT,
+  SCOPE_MOCKS,
+  SCOPE_PRACTICE,
+  SCOPE_TEACHER,
+  scopeCovers,
+  scopeIncludes,
+  type Entitlement,
+} from "@/lib/entitlements/access";
 import { PERK_PLACEHOLDERS, unknownPerkPlaceholders } from "./perkLimits";
 
-export const SELLABLE_SCOPES: readonly string[] = [SCOPE_MOCKS, SCOPE_TEACHER, SCOPE_IMAT, SCOPE_MCAT];
+export const SELLABLE_SCOPES: readonly string[] = [SCOPE_MOCKS, SCOPE_PRACTICE, SCOPE_TEACHER, SCOPE_IMAT, SCOPE_MCAT];
 
 /** Which site sells a plan (migration 0203): www in INR, intl.pyqvault.com in USD. */
 export type PlanSite = "pyqvault" | "intl";
@@ -218,6 +229,31 @@ export function plansForBuyer(plans: readonly Plan[], site: PlanSite, country: s
 }
 
 /**
+ * The pass a wall offers (2026-11-03): the cheapest active pass on `site`, for
+ * a buyer in `country`, that covers `need`, what the student was stopped from.
+ * An online wall (need `mocks`) offers the Practice Pass, a download wall
+ * (`downloads`) the Premium Pass. Unlike passForBuyer this is "covers", not
+ * exact scope, because the two www passes overlap on purpose. A plan priced
+ * for the buyer's country beats one sold everywhere, as in passForBuyer.
+ */
+export function offerForNeed(
+  plans: readonly Plan[],
+  need: string,
+  site: PlanSite,
+  country: string | null
+): Plan | null {
+  const eligible = plans.filter((p) => p.active && p.site === site && soldTo(p, country) && scopeCovers(p.scope, need));
+  const local = eligible.filter((p) => p.countries != null);
+  const pool = local.length > 0 ? local : eligible;
+  return [...pool].sort((a, b) => a.amountPaise - b.amountPaise || a.sortOrder - b.sortOrder)[0] ?? null;
+}
+
+/** True when an active grant gives everything `plan` sells: /pricing shows it as yours. */
+export function ownsPlan(rows: readonly Entitlement[], plan: Pick<Plan, "scope">, nowMs: number): boolean {
+  return rows.some((r) => isEntitlementActive(r, nowMs) && scopeIncludes(r.scope, plan.scope));
+}
+
+/**
  * What /api/billing/order sells when a buyer asks for `planId`: the plan for
  * the same pass (scope and site) at the buyer's country price. The button
  * names the pass, the server picks the price, so a rupee plan id sent from
@@ -313,6 +349,8 @@ export type PassCta = {
   length: string;
   urlKey: string;
   perks: string[];
+  /** False for the Practice Pass (no downloads), so an offer never promises a PDF it does not sell. */
+  downloads: boolean;
 };
 
 export function passCta(plan: Plan | null): PassCta | null {
@@ -324,5 +362,6 @@ export function passCta(plan: Plan | null): PassCta | null {
     length: planLengthLabel(plan),
     urlKey: plan.urlKey,
     perks: [...plan.perks],
+    downloads: plan.scope !== SCOPE_PRACTICE,
   };
 }

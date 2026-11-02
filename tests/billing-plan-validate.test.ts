@@ -32,9 +32,11 @@ describe("validatePlan", () => {
 
   it("sells only the scopes something in code enforces", () => {
     // imat and mcat (2026-10-30): enforced per exam by the pass checks and the
-    // 0204 limit triggers (tests/billing-exam-pass.test.ts).
-    expect(SELLABLE_SCOPES).toEqual([SCOPE_MOCKS, SCOPE_TEACHER, "imat", "mcat"]);
+    // 0204 limit triggers (tests/billing-exam-pass.test.ts). practice (2026-11-03):
+    // the online checks and 0212 (tests/billing-practice-pass.test.ts).
+    expect(SELLABLE_SCOPES).toEqual([SCOPE_MOCKS, "practice", SCOPE_TEACHER, "imat", "mcat"]);
     expect(validatePlan(good({ scope: SCOPE_ALL }))).toMatchObject({ ok: false, field: "scope" });
+    expect(validatePlan(good({ scope: "downloads" }))).toMatchObject({ ok: false, field: "scope" });
     expect(validatePlan(good({ scope: "notes" }))).toMatchObject({ ok: false, field: "scope" });
   });
 
