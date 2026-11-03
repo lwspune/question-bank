@@ -3,9 +3,14 @@
 import type { RevisionSheet } from "./types";
 
 export const SHEET_LOADERS: Record<string, () => Promise<{ default: RevisionSheet }>> = {
+  "cbse-12/chemistry/alcohols-phenols-and-ethers": () => import("./sheets/cbse-12/chemistry/alcohols-phenols-and-ethers"),
+  "cbse-12/chemistry/aldehydes-ketones-and-carboxylic-acids": () => import("./sheets/cbse-12/chemistry/aldehydes-ketones-and-carboxylic-acids"),
+  "cbse-12/chemistry/amines": () => import("./sheets/cbse-12/chemistry/amines"),
+  "cbse-12/chemistry/biomolecules": () => import("./sheets/cbse-12/chemistry/biomolecules"),
   "cbse-12/chemistry/chemical-kinetics": () => import("./sheets/cbse-12/chemistry/chemical-kinetics"),
   "cbse-12/chemistry/coordination-compounds": () => import("./sheets/cbse-12/chemistry/coordination-compounds"),
   "cbse-12/chemistry/electrochemistry": () => import("./sheets/cbse-12/chemistry/electrochemistry"),
+  "cbse-12/chemistry/haloalkanes-and-haloarenes": () => import("./sheets/cbse-12/chemistry/haloalkanes-and-haloarenes"),
   "cbse-12/chemistry/solutions": () => import("./sheets/cbse-12/chemistry/solutions"),
   "cbse-12/chemistry/the-d-and-f-block-elements": () => import("./sheets/cbse-12/chemistry/the-d-and-f-block-elements"),
   "cbse-12/mathematics/application-of-derivatives": () => import("./sheets/cbse-12/mathematics/application-of-derivatives"),
