@@ -25,7 +25,9 @@ Your brief names a chapter folder written by `npm run revision:prepare`:
   statements from the prose in the book's own words; rebuild formulas from the
   subject and cross-check them against the garbled text.
 - `pyqs.txt`: every board past-paper question of the chapter, one a line:
-  `<year> <month> [<format>] <text>`, newest first.
+  `<year> <month> [<format>] <text>`, newest first. A line ending
+  `[has a figure, not shown here]` refers to a diagram you cannot see: group
+  it by its words if you can, and never report its figure as missing.
 
 Search with grep; never print a whole file.
 

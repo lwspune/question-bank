@@ -57,16 +57,30 @@ function bookText(ch: Chapter): string {
     }
     const { data: qs, error } = await db
       .from("questions")
-      .select("pyq_year,pyq_month,question_format,text")
+      .select("pyq_year,pyq_month,question_format,text,image_url,options(label,text)")
       .eq("chapter_id", dbCh.id)
       .eq("question_kind", "pyq")
       .eq("visibility", "PUBLIC")
       .order("pyq_year", { ascending: false })
       .limit(1000);
     if (error) throw new Error(`${ch.chapterName}: ${error.message}`);
-    const lines = (qs ?? []).map(
-      (q) => `${q.pyq_year} ${q.pyq_month ?? ""} [${q.question_format}] ${String(q.text).replace(/\s+/g, " ").slice(0, 300)}`
-    );
+    // The FULL text, one line: a 300-character cut once made a complete table
+    // question read as truncated. A question whose figure is an image says so,
+    // or its "identify A and B" reads as a question with nothing to identify.
+    // An MCQ's options follow its stem on the same line, so a drafter can tell
+    // "Identify the alga among the following" from its choices; the evidence
+    // check matches a cited line by its START, which the options never move.
+    const lines = (qs ?? []).map((q) => {
+      const opts = ((q.options ?? []) as { label: string; text: string }[])
+        .sort((a, b) => a.label.localeCompare(b.label))
+        .map((o) => `(${o.label}) ${String(o.text).replace(/\s+/g, " ")}`)
+        .join(" ");
+      return (
+        `${q.pyq_year} ${q.pyq_month ?? ""} [${q.question_format}] ${String(q.text).replace(/\s+/g, " ")}` +
+        (opts ? ` OPTIONS: ${opts}` : "") +
+        (q.image_url ? " [has a figure, not shown here]" : "")
+      );
+    });
     const dir = join(out, slugify(ch.subjectName), slugify(ch.chapterName));
     mkdirSync(dir, { recursive: true });
     writeFileSync(join(dir, "book.txt"), bookText(ch));
