@@ -211,6 +211,10 @@ solutions it rejected, so the pilot shows how often it happens.
 - `apply.ts` dry run clean, then `--apply`; counts recorded in the batch's
   commit message (or the progress log below for DB-only batches).
 - 10% of the batch read by the main session before applying.
+- Every Marathi draft that reaches the key read in full before applying
+  (b31, b36: about one in eight has a wrong grammar term or gloss).
+- A picture question the solver skipped without opening its picture goes
+  back as its own small batch (b35b: one solver skipped 19 unopened).
 - `npm run audit:text -- <source substring>` shows no new hits. Its argument
   is a `source_file` substring, not an exam name: an exam name scans nothing,
   prints "NOTHING SCANNED" and still exits 0.
