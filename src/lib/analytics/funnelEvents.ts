@@ -179,6 +179,14 @@ export const FUNNEL_EVENTS = [
    * Homepage views are its scale.
    */
   "home_continue_click",
+  /**
+   * An anon /notes reader scrolled the practice sign-in wall into view
+   * (2026-11-03); prop: variant ("full" = the mastery checkpoint, "compact" =
+   * a concept's opened practice row). Once per page per variant.
+   */
+  "notes_practice_wall_shown",
+  /** …and tapped a sign-in link on it; props: variant, button ("signup" | "login"). */
+  "notes_practice_wall_signin_click",
 ] as const;
 
 export type FunnelEvent = (typeof FUNNEL_EVENTS)[number];

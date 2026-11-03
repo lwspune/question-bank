@@ -45,6 +45,8 @@ describe("FUNNEL_EVENTS", () => {
       "v_progress_tap",
       "learn_lesson_start",
       "home_continue_click",
+      "notes_practice_wall_shown",
+      "notes_practice_wall_signin_click",
     ]);
   });
 
