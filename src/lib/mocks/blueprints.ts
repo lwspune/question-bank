@@ -585,6 +585,99 @@ export const MPSC_SSP_GS1_PAPER: MockPaperBlueprint = {
 };
 
 /**
+ * MPSC State Services Prelims, CSAT Paper II: 80 questions, 200 marks, 2 hours,
+ * every question 2.5 marks. Clause 7(b) of each cover: a wrong answer costs
+ * ONE-THIRD of its marks (2013-2020), ONE-FOURTH from the 2021 paper on; the
+ * Decision Making questions cost nothing and score per option from the final
+ * key's grid (best 2.5, then 2 / 1.5 / 1 / 0.5 / 0). Those two exceptions ride
+ * per question (PaperQuestionRow.optionMarks / noPenalty), not here.
+ *
+ * ONE section across the three CSAT subjects (config.ts SSP_CSAT_CHAPTERS): the
+ * booklet prints no subject headings. Hard count: a cancelled question is
+ * printed and ships as grace. Sittings: scripts/mocks/mpscSittings.ts.
+ */
+export const MPSC_SSP_CSAT_PAPER: MockPaperBlueprint = {
+  code: "ssp-csat",
+  examName: "MPSC State Services Prelims",
+  examSlug: "mpsc-state-services-prelims",
+  paperLabel: "CSAT Paper II",
+  durationSecs: 120 * 60,
+  marking: { correct: 2.5, wrong: -0.8333 },
+  sections: [
+    {
+      key: "csat",
+      label: "CSAT",
+      subjects: ["Comprehension", "Reasoning and Aptitude", "Decision Making"],
+      count: 80,
+    },
+  ],
+};
+
+/**
+ * 2021 on (2021, 2023, 2025 covers: "25% or 1/4"): a quarter, not a third.
+ * The 2024 scan has no cover; it rides with its neighbours.
+ */
+export const MPSC_SSP_CSAT_2021_PAPER: MockPaperBlueprint = {
+  ...MPSC_SSP_CSAT_PAPER,
+  code: "ssp-csat-2021",
+  marking: { correct: 2.5, wrong: -0.625 },
+};
+
+/**
+ * MPSC Forest Service Prelims and Agriculture Service Prelims: one paper per
+ * sitting, every question worth one mark, and "for every four wrong answers one
+ * question's marks are deducted" (clause 7 on all nine covers). 100 questions
+ * in 1 hour, except Agriculture 2011 and 2012: 200 questions in 2 hours.
+ *
+ * ONE section across every subject the paper is filed under (config.ts
+ * FSP_CHAPTERS / ASP_CHAPTERS): Marathi grammar and the English section are
+ * printed in their own language, GS and aptitude in both, under no subject
+ * headings. Hard counts: a cancelled question, or one whose key the owner
+ * judged doubtful (a notice), is printed and ships as grace.
+ * Sittings are source_file-keyed via scripts/mocks/mpscSittings.ts.
+ */
+const MPSC_SERVICE_SUBJECTS = [
+  "Marathi",
+  "English",
+  "History",
+  "Geography",
+  "Polity",
+  "Economics",
+  "General Science",
+  "Environment",
+  "Current Affairs",
+  "Reasoning and Aptitude",
+];
+
+export const MPSC_FSP_PAPER: MockPaperBlueprint = {
+  code: "fsp",
+  examName: "MPSC Forest Service Prelims",
+  examSlug: "mpsc-forest-service-prelims",
+  paperLabel: "Prelims",
+  durationSecs: 60 * 60,
+  marking: { correct: 1, wrong: -0.25 },
+  sections: [{ key: "prelims", label: "Prelims", subjects: MPSC_SERVICE_SUBJECTS, count: 100 }],
+};
+
+export const MPSC_ASP_PAPER: MockPaperBlueprint = {
+  code: "asp",
+  examName: "MPSC Agriculture Service Prelims",
+  examSlug: "mpsc-agriculture-service-prelims",
+  paperLabel: "Prelims",
+  durationSecs: 60 * 60,
+  marking: { correct: 1, wrong: -0.25 },
+  sections: [{ key: "prelims", label: "Prelims", subjects: [...MPSC_SERVICE_SUBJECTS, "Agriculture"], count: 100 }],
+};
+
+/** Agriculture 2011 and 2012: 200 questions, 200 marks, 2 hours. */
+export const MPSC_ASP_200_PAPER: MockPaperBlueprint = {
+  ...MPSC_ASP_PAPER,
+  code: "asp-200",
+  durationSecs: 120 * 60,
+  sections: [{ key: "prelims", label: "Prelims", subjects: [...MPSC_SERVICE_SUBJECTS, "Agriculture"], count: 200 }],
+};
+
+/**
  * UPSC Civil Services (Prelims) — TWO papers per sitting, both 2 hours, both
  * 200 marks (scripts/upsc/README.md, read off the booklets):
  *
@@ -864,6 +957,11 @@ const ALL_BLUEPRINTS: readonly MockPaperBlueprint[] = [
   JIPMAT_PAPER,
   MPSC_GBC_PAPER,
   MPSC_SSP_GS1_PAPER,
+  MPSC_SSP_CSAT_PAPER,
+  MPSC_SSP_CSAT_2021_PAPER,
+  MPSC_FSP_PAPER,
+  MPSC_ASP_PAPER,
+  MPSC_ASP_200_PAPER,
   UPSC_GS1_PAPER,
   UPSC_CSAT_PAPER,
   SSC_CGL_T1_PAPER,

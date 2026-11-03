@@ -35,7 +35,12 @@ function main() {
     for (let q = 1; q <= p.questions; q++) if (!rows.has(q)) missing.push(q);
     const extra = [...rows.keys()].filter((q) => q > p.questions);
     const key: Record<number, KeyLetter> = {};
-    for (const [q, sets] of rows) if (q <= p.questions) key[q] = sets[BOOKLET_SET_INDEX];
+    for (const [q, sets] of rows) {
+      if (q > p.questions) continue;
+      const cell = sets[BOOKLET_SET_INDEX];
+      if (cell === "*") errors.push(`Q${q}: * (a graded cell) has no meaning in a mains key`);
+      else key[q] = cell;
+    }
     const cancelled = Object.entries(key)
       .filter(([, v]) => v === "#")
       .map(([q]) => Number(q));

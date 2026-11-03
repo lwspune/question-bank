@@ -39,7 +39,7 @@ export default function ProjectionGate({
     return (
       <div className="mt-3">
         <PremiumLimitCard
-          title="Your projected score is in Premium Pass"
+          title="Your projected score is in the Practice Pass"
           body={`Your free days with it are over. ${
             pass ? `The ${pass.label} shows` : "A pass shows"
           } the score you're heading for in each subject, and the chapters worth the most marks to fix, after every paper you sit.`}

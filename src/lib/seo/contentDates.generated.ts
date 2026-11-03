@@ -6,7 +6,7 @@
  * committed rather than computed at build time, and src/lib/seo/lastmod.ts for
  * how a route with no entry here inherits from its nearest recorded ancestor.
  *
- * Entries: 462
+ * Entries: 494
  */
 import type { ContentDateMap } from "@/lib/seo/lastmod";
 
@@ -417,6 +417,24 @@ export const CONTENT_DATES: ContentDateMap = {
   "/notes/spi-reasoning/classification": "2026-10-22T19:13:03+05:30",
   "/notes/spi-reasoning/order-ranking": "2026-10-22T19:13:03+05:30",
   "/notes/spi-reasoning/series": "2026-10-22T19:13:03+05:30",
+  "/notes/ssc-cgl-biology/biochemistry": "2026-11-02T01:50:28+05:30",
+  "/notes/ssc-cgl-biology/biodiversity": "2026-11-02T01:50:26+05:30",
+  "/notes/ssc-cgl-biology/cell-biology": "2026-11-02T01:50:26+05:30",
+  "/notes/ssc-cgl-biology/ecology": "2026-11-02T01:50:27+05:30",
+  "/notes/ssc-cgl-biology/human-physiology": "2026-11-02T01:50:27+05:30",
+  "/notes/ssc-cgl-biology/microbiology": "2026-11-02T01:50:28+05:30",
+  "/notes/ssc-cgl-biology/plant-biology": "2026-11-02T01:50:27+05:30",
+  "/notes/ssc-cgl-chemistry/acids-bases-salts": "2026-11-02T02:41:27+05:30",
+  "/notes/ssc-cgl-chemistry/atomic-structure": "2026-11-02T02:39:54+05:30",
+  "/notes/ssc-cgl-chemistry/carbon-compounds": "2026-11-02T02:39:54+05:30",
+  "/notes/ssc-cgl-chemistry/chemical-bonding": "2026-11-02T02:41:28+05:30",
+  "/notes/ssc-cgl-chemistry/chemical-reactions": "2026-11-02T02:39:55+05:30",
+  "/notes/ssc-cgl-chemistry/everyday-chemistry": "2026-11-02T02:41:27+05:30",
+  "/notes/ssc-cgl-chemistry/mole-concept": "2026-11-02T02:41:28+05:30",
+  "/notes/ssc-cgl-economics/indian-economy": "2026-11-01T22:39:33+05:30",
+  "/notes/ssc-cgl-economics/microeconomics": "2026-11-01T22:39:34+05:30",
+  "/notes/ssc-cgl-economics/money-banking": "2026-11-01T22:39:33+05:30",
+  "/notes/ssc-cgl-economics/national-income": "2026-11-01T08:26:18+05:30",
   "/notes/ssc-cgl-english/cloze-test": "2026-10-23T13:43:46+05:30",
   "/notes/ssc-cgl-english/fill-in-the-blanks": "2026-10-23T12:57:36+05:30",
   "/notes/ssc-cgl-english/grammar": "2026-10-23T13:52:28+05:30",
@@ -425,6 +443,12 @@ export const CONTENT_DATES: ContentDateMap = {
   "/notes/ssc-cgl-english/sentence-rearrangement": "2026-10-26T05:58:32+05:30",
   "/notes/ssc-cgl-english/spotting-errors": "2026-10-23T13:35:15+05:30",
   "/notes/ssc-cgl-english/vocabulary": "2026-10-27T08:52:03+05:30",
+  "/notes/ssc-cgl-geography/climatology": "2026-11-01T08:06:53+05:30",
+  "/notes/ssc-cgl-geography/earth-structure": "2026-11-01T08:06:53+05:30",
+  "/notes/ssc-cgl-geography/indian-economy-resources": "2026-11-01T07:59:15+05:30",
+  "/notes/ssc-cgl-geography/indian-physical": "2026-11-01T08:02:40+05:30",
+  "/notes/ssc-cgl-geography/oceanography": "2026-11-01T08:19:12+05:30",
+  "/notes/ssc-cgl-geography/world-human": "2026-11-01T08:06:53+05:30",
   "/notes/ssc-cgl-history/ancient-india": "2026-10-31T07:47:35+05:30",
   "/notes/ssc-cgl-history/medieval-india": "2026-10-31T07:56:21+05:30",
   "/notes/ssc-cgl-history/modern-india": "2026-10-31T07:34:24+05:30",
@@ -449,6 +473,14 @@ export const CONTENT_DATES: ContentDateMap = {
   "/notes/ssc-cgl-maths/triangles": "2026-10-23T07:12:31+05:30",
   "/notes/ssc-cgl-maths/trigonometry": "2026-10-23T06:58:11+05:30",
   "/notes/ssc-cgl-maths/tsd": "2026-10-23T06:48:41+05:30",
+  "/notes/ssc-cgl-physics/astronomy-space": "2026-11-02T03:14:58+05:30",
+  "/notes/ssc-cgl-physics/electricity-magnetism": "2026-11-02T03:14:56+05:30",
+  "/notes/ssc-cgl-physics/heat-thermodynamics": "2026-11-02T03:14:59+05:30",
+  "/notes/ssc-cgl-physics/kinematics": "2026-11-02T03:15:00+05:30",
+  "/notes/ssc-cgl-physics/light-optics": "2026-11-02T03:14:57+05:30",
+  "/notes/ssc-cgl-physics/modern-physics": "2026-11-02T03:14:57+05:30",
+  "/notes/ssc-cgl-physics/sound": "2026-11-02T03:14:59+05:30",
+  "/notes/ssc-cgl-physics/units-measurement": "2026-11-02T03:14:58+05:30",
   "/notes/ssc-cgl-polity/constitution": "2026-10-31T09:41:54+05:30",
   "/notes/ssc-cgl-polity/government-structure": "2026-10-31T09:29:32+05:30",
   "/notes/ssc-cgl-polity/rights-dpsp-local": "2026-10-31T09:45:05+05:30",

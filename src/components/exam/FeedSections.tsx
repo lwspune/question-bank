@@ -19,11 +19,14 @@ export default function FeedSections({
   primary,
   otherLabel,
   other,
+  changeHref = "/account",
 }: {
   eyebrow: string;
   primary: ReactNode | null;
   otherLabel: string;
   other: ReactNode | null;
+  /** Where "Change your exams" goes: /account when signed in, the homepage chips when not. */
+  changeHref?: string;
 }) {
   const [open, setOpen] = useState(false);
   const panelId = useId();
@@ -37,7 +40,7 @@ export default function FeedSections({
           <span aria-hidden />
         )}
         <Link
-          href="/account"
+          href={changeHref}
           prefetch={false}
           className="text-xs font-medium text-muted-foreground underline-offset-2 hover:text-foreground hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
         >

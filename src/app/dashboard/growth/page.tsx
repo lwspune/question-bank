@@ -27,6 +27,7 @@ import {
   SECOND_PAGE_KEEP_PCT,
   BOX_BUY_MIN_SALES,
   PREMIUM_LIMITS_MIN_SALES,
+  PASS_TIERS_BASELINE_WEEKLY_REVENUE,
   PRICE_BASELINE_WEEKLY_REVENUE,
   ANSWER_LIMIT_RETURN_BASELINE_PCT,
   ANSWER_LIMIT_RETURN_MAX_DROP,
@@ -756,6 +757,18 @@ export default async function GrowthPage() {
               Judged by hand, first at 14 days, then on {fmtDate(checkOn(e.liveSince))}: keep Rs 199 if a week&apos;s
               revenue holds at Rs {PRICE_BASELINE_WEEKLY_REVENUE}+. The answer limit changed the same day, so
               checkout-to-paid is the cleaner read on price.
+            </p>
+            <ReadingsList metric="price-weekly-revenue" />
+            <ReadingsList metric="price-checkout-paid" />
+          </div>
+        );
+      case "pass-tiers":
+        return (
+          <div className="space-y-3">
+            <p className="text-sm text-muted-foreground">
+              Judged by hand, first at 14 days, then on {fmtDate(checkOn(e.liveSince))}: keep both passes if a
+              week&apos;s revenue beats Rs {PASS_TIERS_BASELINE_WEEKLY_REVENUE.toLocaleString("en-IN")} (the single
+              Rs 499 pass). The Practice share of sales is on /dashboard/sales.
             </p>
             <ReadingsList metric="price-weekly-revenue" />
             <ReadingsList metric="price-checkout-paid" />

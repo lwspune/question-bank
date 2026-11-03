@@ -5,6 +5,7 @@ import {
   BookMarked,
   BookOpen,
   Compass,
+  FileText,
   FlaskConical,
   GraduationCap,
   Layers,
@@ -18,6 +19,7 @@ import {
   Timer,
 } from "lucide-react";
 import { redirect } from "next/navigation";
+import { cookies } from "next/headers";
 import AppHeader from "@/components/AppHeader";
 import Footer from "@/components/Footer";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
@@ -28,11 +30,13 @@ import { countSummary } from "@/lib/exam/questionCounts";
 import { examCardAnchor, homeExamChips } from "@/lib/exam/homeChips";
 import HomeExamChips from "@/components/home/HomeExamChips";
 import HowItWorks from "@/components/HowItWorks";
+import ContinueCard from "@/components/visits/ContinueCard";
 import ResultsStrip from "@/components/results/ResultsStrip";
 import { loopFor } from "@/lib/education/howItWorks";
 import { NOTES_CHAPTERS } from "@/lib/notes/chapters";
-import { getExamBySlug } from "@/lib/exam/examContext";
+import { getExamBySlug, isExamSlug } from "@/lib/exam/examContext";
 import { groupExamFamilies, familyTotal, membersByStage } from "@/lib/exam/examFamily";
+import { sortByDemand, withChosenExamFirst } from "@/lib/exam/demandOrder";
 
 export const revalidate = 86400;
 
@@ -67,19 +71,19 @@ const EXAM_META: Record<
   },
   "mht-cet": {
     Icon: FlaskConical,
-    blurb: "Maharashtra CET: Physics, Chemistry & Maths, shift-wise PYQs.",
+    blurb: "Maharashtra CET: Physics, Chemistry and Maths, shift-wise papers from 2021 to 2026.",
   },
   "jee-mains": {
     Icon: Layers,
-    blurb: "JEE Mains: shift-wise PCM past papers.",
+    blurb: "JEE Main: shift-wise Physics, Chemistry and Maths papers from 2021 to 2026, numeric answers included.",
   },
   neet: {
     Icon: Stethoscope,
-    blurb: "NEET (UG): Physics, Chemistry, Botany & Zoology with keys.",
+    blurb: "NEET (UG): Physics, Chemistry, Botany and Zoology, with official keys and worked solutions.",
   },
   cds: {
     Icon: GraduationCap,
-    blurb: "Combined Defence Services: English past papers.",
+    blurb: "Combined Defence Services: English, General Knowledge and Elementary Maths papers.",
   },
   "foundation-course": {
     Icon: School,
@@ -88,6 +92,22 @@ const EXAM_META: Record<
   "mh-hsc-12": {
     Icon: BookMarked,
     blurb: "Maharashtra State Board: Class 12 textbook solutions, book-faithful.",
+  },
+  "worksheets-11-12": {
+    Icon: NotebookPen,
+    blurb: "Class 11 and 12 Maths worksheets for NDA, every answer worked out again from scratch.",
+  },
+  "upsc-cse": {
+    Icon: Landmark,
+    blurb: "UPSC Civil Services Prelims: both papers of every sitting from 2017 to 2026, with UPSC's official keys.",
+  },
+  afcat: {
+    Icon: Target,
+    blurb: "AFCAT Numerical Ability, chapter by chapter: past questions, practice and notes.",
+  },
+  spi: {
+    Icon: School,
+    blurb: "Services Preparatory Institute entrance (Class 10): the 2022 paper and ten practice papers.",
   },
 };
 
@@ -107,7 +127,7 @@ const FAMILY_META: Record<string, { Icon: typeof BookOpen; blurb: string }> = {
   CBSE: {
     Icon: Library,
     blurb:
-      "NCERT textbook solutions for Class 11 and 12, plus CBSE board past papers.",
+      "NCERT textbook solutions for Class 10, 11 and 12, plus CBSE board past papers.",
   },
   "Maharashtra State Board": {
     Icon: BookMarked,
@@ -119,6 +139,18 @@ const FAMILY_META: Record<string, { Icon: typeof BookOpen; blurb: string }> = {
     blurb:
       "Maharashtra PSC: Group B & C Prelims, plus the Mains Marathi & English papers, with MPSC's final keys.",
   },
+  CISCE: {
+    Icon: Library,
+    blurb: "ICSE Class 10 and ISC Class 12 board papers from 2025 and 2026: Maths and Science, worked answers.",
+  },
+  IPMAT: {
+    Icon: Compass,
+    blurb: "IPMAT Indore, IPMAT Rohtak and JIPMAT past papers: Quant, Verbal and Logical Reasoning.",
+  },
+  "SSC CGL": {
+    Icon: Landmark,
+    blurb: "SSC CGL Tier I shifts from 2023 to 2025 and Tier II papers, answers checked against SSC's key.",
+  },
 };
 
 type SurfacePreview = {
@@ -128,8 +160,8 @@ type SurfacePreview = {
   Icon: typeof BookOpen;
 };
 
-// These six render side by side in one grid, so a reader takes them in at a
-// glance. They are therefore written in six DELIBERATELY DIFFERENT shapes — a
+// These eight render side by side in one grid, so a reader takes them in at a
+// glance. They are therefore written in DELIBERATELY DIFFERENT shapes — a
 // declarative pair, a question, a colon-list, a short pair, a contrast, an
 // instruction. The original set were all "noun phrase — tricolon of features",
 // and copies of one rhythm in one eyeful is what reads as machine-written. Keep
@@ -144,11 +176,11 @@ const SURFACES: SurfacePreview[] = [
     href: "/browse",
     title: "Question bank",
     blurb:
-      "Filter by exam, chapter, subtopic, difficulty and year. Teachers can export the result as a Word question paper with a separate answer key.",
+      "Filter by exam, chapter, subtopic, difficulty and year. Try each question first, then open the answer and the worked solution.",
     Icon: Compass,
   },
   {
-    href: "/guide/nda",
+    href: "/guide",
     title: "Strategy guides",
     blurb:
       "Which chapters actually carry the marks? Every weightage and difficulty figure in these guides was counted off the papers themselves, not taken from a syllabus.",
@@ -186,6 +218,22 @@ const SURFACES: SurfacePreview[] = [
       "Balbharati and NCERT textbooks, read in book order. Solved examples, then the exercise, then miscellaneous, with worked answers throughout.",
     Icon: Library,
   },
+  {
+    href: "/question-papers",
+    title: "Board past papers",
+    // Shape: what it is, then the one thing that makes it worth opening.
+    blurb:
+      "Each paper as the board set it, section by section. Every question has a model answer you can open under it.",
+    Icon: FileText,
+  },
+  {
+    href: "/drill",
+    title: "Fix your mistakes",
+    // Signed out, this asks you to sign in first: the queue is yours alone.
+    blurb:
+      "Five of the questions you got wrong, a few minutes a day. Get one right and it goes quiet; miss it and it comes back.",
+    Icon: Target,
+  },
 ];
 
 export default async function Home() {
@@ -204,7 +252,14 @@ export default async function Home() {
   // Group the six (board, class) exams into two family cards. Presentation
   // only: every class link keeps the exact href it had before, and the hero's
   // exam COUNT below still reports 13 — we do have 13 corpora.
-  const examNodes = groupExamFamilies(catalog.exams, (e) => getExamBySlug(e.slug));
+  // Most-chosen exams first (lib/exam/demandOrder), not the registry's NDA-first order.
+  // ...and the visitor's own exam (qb_exam, set by the chips below) before all.
+  // This page already renders per request, so reading the cookie costs nothing.
+  const chosen = cookies().get("qb_exam")?.value;
+  const examNodes = withChosenExamFirst(
+    sortByDemand(groupExamFamilies(catalog.exams, (e) => getExamBySlug(e.slug))),
+    isExamSlug(chosen) ? chosen : null
+  );
 
   return (
     <>
@@ -236,10 +291,10 @@ export default async function Home() {
           <div className="relative grid items-center gap-8 md:grid-cols-[1.15fr_1fr]">
             <div>
               <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">
-                Every past paper, sorted question by question.
+                Practise the questions your exam actually asks.
               </h1>
               <p className="mt-4 max-w-xl font-serif text-base leading-relaxed text-white/85 sm:text-lg">
-                Practise every previous year question free, then drill the chapters that cost you marks.
+                Every past paper, sorted by chapter, with worked answers. We find the chapters that cost you marks and bring your mistakes back until you get them right.
               </p>
               <ul className="mt-5 flex flex-wrap gap-2 text-xs font-semibold" aria-label="What is in the bank">
                 {countsKnown && (
@@ -262,15 +317,15 @@ export default async function Home() {
                   className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-bold text-[#0f1d4a] shadow-lg transition-colors hover:bg-white/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#0f1d4a]"
                 >
                   <Compass className="h-4 w-4" aria-hidden />
-                  Browse the question bank
+                  Start practising free
                   <ArrowRight className="h-3.5 w-3.5" aria-hidden />
                 </Link>
                 <Link
-                  href="/guide/nda"
+                  href="/mock"
                   className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/35 px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#0f1d4a]"
                 >
-                  <BookOpen className="h-4 w-4" aria-hidden />
-                  Explore the guides
+                  <Timer className="h-4 w-4" aria-hidden />
+                  Sit a real past paper
                 </Link>
               </div>
             </div>
@@ -288,11 +343,11 @@ export default async function Home() {
           </div>
         </section>
 
+        {/* A returning signed-out visitor's last notes topic or chapter page. */}
+        <ContinueCard />
+
         {/* A8: pick an exam without scrolling past every card. */}
         <HomeExamChips chips={homeExamChips(examNodes)} />
-
-        {/* Our students' newest published result (migration 0149). */}
-        <ResultsStrip className="mb-12" />
 
         {/* A9: the loop /start teaches, rendered from the same object so it
             cannot describe a loop the app does not have. /start had one
@@ -428,6 +483,11 @@ export default async function Home() {
             })}
           </ul>
         </section>
+
+        {/* Our students' newest published result (migration 0149). Below the
+            exam list since 2026-11-02: it names one exam, so it should not be
+            the first thing every other exam's student reads. */}
+        <ResultsStrip className="mb-12" />
 
         {/* What's inside — surface previews */}
         <section className="mb-12">

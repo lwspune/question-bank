@@ -10,6 +10,7 @@ import {
   SCOPE_IMAT,
   SCOPE_MCAT,
   SCOPE_MOCKS,
+  SCOPE_PRACTICE,
   SCOPE_TEACHER,
   isEntitlementActive,
   type EntitlementStatus,
@@ -18,7 +19,12 @@ import {
 /** Scopes a comp grant can carry — only ones something in code enforces. */
 export const COMP_SCOPE_OPTIONS: readonly { value: string; label: string; help: string }[] = [
   { value: SCOPE_ALL, label: "Full premium", help: "Everything below, and any future premium." },
-  { value: SCOPE_MOCKS, label: "Premium Pass", help: "Unlimited mock tests past the free limit, plus question paper + answer key PDF downloads." },
+  { value: SCOPE_MOCKS, label: "Premium Pass", help: "Everything in the Practice Pass, plus question paper + answer key PDF downloads." },
+  {
+    value: SCOPE_PRACTICE,
+    label: "Practice Pass",
+    help: "Every online limit lifted (answers, drill, saves, mocks, chapter tests, V). No downloads.",
+  },
   {
     value: SCOPE_TEACHER,
     label: "Teacher pass",

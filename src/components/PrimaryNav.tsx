@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BookMarked, BookOpen, Compass, FileText, GraduationCap, Library, NotebookPen, PenLine, Target, Timer, User } from "lucide-react";
+import { BookMarked, BookOpen, Compass, FileText, GraduationCap, Library, NotebookPen, Target, Timer } from "lucide-react";
 import { getActiveTab, type ActiveTab } from "@/lib/exam/examContext";
 import { FIX_TAB_HREF, type FifthTab } from "@/lib/nav/fifthTab";
 
@@ -65,16 +65,9 @@ export default function PrimaryNav({
     fifth === "fix"
       ? { id: "fix", label: "Fix", href: FIX_TAB_HREF, Icon: Target, prefetch: false }
       : { id: "board", label: "Board", href: boardHref, Icon: Library },
-    // Blog — public, so it sits with the open surfaces rather than after the
-    // role-gated pair below. It has no phone tab: MobileTabBar is a fixed five
-    // (lib/nav/mobileTabs.ts), so below sm it appears in the account menu, the
-    // same place Papers and Books go.
-    { id: "blog", label: "Blog", href: "/blog", Icon: PenLine },
-    // About — public, and last of the public tabs because it is an identity
-    // page, not a place you go to study. Same phone story as Blog: no tab in
-    // the fixed-five MobileTabBar, so below sm it lives in the account menu
-    // and, for anon visitors, the Footer.
-    { id: "about", label: "About", href: "/about", Icon: User },
+    // Blog and About left this nav on 2026-11-02 (owner): they are not places
+    // you go to study, and they crowded the study tabs. Both are in the Footer
+    // on every page and in the account menu at every width.
     ...(showBooks
       ? [
           {

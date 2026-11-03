@@ -83,7 +83,7 @@ export const CDS_PH_FL_MATTER_NOTE: SubtopicNote = {
         latex: "F_b = \\rho_{\\text{liquid}}\\,V_{\\text{sub}}\\,g \\qquad W_{\\text{apparent}} = W - F_b \\qquad \\dfrac{V_{\\text{sub}}}{V} = \\dfrac{\\rho_{\\text{body}}}{\\rho_{\\text{liquid}}}",
         symbols: [
           { symbol: "F_b", meaning: "buoyant (upthrust) force" },
-          { symbol: "V_sub", meaning: "volume of the body under the liquid" },
+          { symbol: "V_{\\text{sub}}", meaning: "volume of the body under the liquid" },
           { symbol: "W", meaning: "true weight of the body" },
         ],
       },

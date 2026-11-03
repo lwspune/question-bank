@@ -124,6 +124,9 @@ In a JSON string every LaTeX backslash is written TWICE. `\(` is `"\\("`,
 `\frac` is `"\\frac"`, `\neq` is `"\\neq"`. A single backslash is eaten:
 `"\neq"` becomes a line break + "eq", `"\times"` a tab + "imes". A real line
 break between steps is `\n` (single backslash, that one is meant).
+Never drop the backslashes altogether: "(60^circ)", "(5-3 = 2)" and
+"8 div 2" print as plain text and are refused (b40, b41). Write
+`"\\(60^\\circ\\)"`, `"\\(5 - 3 = 2\\)"`, `"\\(8 \\div 2\\)"`.
 
 ## A finished example
 

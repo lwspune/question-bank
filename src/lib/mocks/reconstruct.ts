@@ -16,7 +16,7 @@
  */
 
 import { slugToUuid } from "../quiz/quizPayload";
-import type { MockAnswerKey } from "./answers";
+import type { MockAnswerKey, OptionLabel } from "./answers";
 import {
   sectionMarking,
   totalQuestions,
@@ -49,6 +49,13 @@ export type PaperQuestionRow = {
    * no valid key, so it's graded as GRACE: full marks to everyone, no penalty.
    */
   grace?: boolean;
+  /**
+   * Marks per option (MPSC CSAT "Decision Making"): each option earns its own
+   * marks, the best one (the key) the section's full marks, none penalised.
+   */
+  optionMarks?: Partial<Record<OptionLabel, number>>;
+  /** The paper printed no penalty for this question (MPSC CSAT 2015 Q46-50, Q71-80). */
+  noPenalty?: boolean;
 };
 
 export type MockQuestionSnapshot = {
@@ -59,6 +66,8 @@ export type MockQuestionSnapshot = {
   negMarks: number;
   /** Grace question — awarded to all at grade time (see PaperQuestionRow.grace). */
   grace?: boolean;
+  /** Marks per option, scored by gradeMock (see PaperQuestionRow.optionMarks). */
+  optionMarks?: Partial<Record<OptionLabel, number>>;
 };
 
 export type MockPaperSnapshot = {
@@ -345,6 +354,26 @@ export function jeeMockTitle(
 }
 
 /**
+ * Per-option marks must agree with the key and the section's marking: the best
+ * option IS the key, and scores the section's full marks. Either drifting would
+ * make the score and the review disagree.
+ */
+function optionMarksIssues(bp: MockPaperBlueprint, sectionKey: string, r: PaperQuestionRow): string[] {
+  const entries = Object.entries(r.optionMarks ?? {}) as [OptionLabel, number][];
+  const best = Math.max(...entries.map(([, m]) => m));
+  const bests = entries.filter(([, m]) => m === best).map(([l]) => l);
+  const section = bp.sections.find((s) => s.key === sectionKey);
+  const full = section ? sectionMarking(bp, section).correct : bp.marking.correct;
+  const issues: string[] = [];
+  const keyLabel = r.answer?.kind === "mcq" ? r.answer.label : null;
+  if (!r.grace && (bests.length !== 1 || bests[0] !== keyLabel)) {
+    issues.push(`Question ${r.id}: best option ${bests.join("/")} is not the key ${keyLabel ?? "(none)"}`);
+  }
+  if (best !== full) issues.push(`Question ${r.id}: best option scores ${best}, not ${full}`);
+  return issues;
+}
+
+/**
  * Check reconstructed rows against the blueprint. Returns a list of issue
  * strings (empty = the paper faithfully reconstructs). Never throws.
  */
@@ -367,6 +396,7 @@ export function validatePaperRows(
     perSection.set(key, (perSection.get(key) ?? 0) + 1);
     // A grace (officially-dropped/bonus) question legitimately has no valid key.
     if (!r.answer && !r.grace) issues.push(`Question ${r.id} has no correct answer (key)`);
+    if (r.optionMarks) issues.push(...optionMarksIssues(bp, key, r));
   }
   // Per-section count is a HARD contract only where the blueprint declares one
   // (NDA). NEET's sections omit `count` (layout varies by sitting) → skipped.
@@ -450,8 +480,10 @@ export function buildMockPaper(
         questionId: r.id,
         sectionKey: section.key,
         marks: marking.correct,
-        negMarks: marking.wrong,
+        // A per-option question is never penalised: its worst option scores 0.
+        negMarks: r.noPenalty || r.optionMarks ? 0 : marking.wrong,
         ...(r.grace ? { grace: true } : {}),
+        ...(r.optionMarks ? { optionMarks: r.optionMarks } : {}),
       });
     }
   }

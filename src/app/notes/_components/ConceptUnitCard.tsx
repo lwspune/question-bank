@@ -851,7 +851,7 @@ export default function ConceptUnitCard({
               aria-hidden
             />
             <span className="flex-1 text-sm font-semibold text-violet-800 dark:text-violet-200">
-              Practice this concept
+              Practise this concept
               <span className="ml-2 text-xs font-normal text-muted-foreground">
                 {practiceParts.join(" · ")}
               </span>

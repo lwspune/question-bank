@@ -33,6 +33,8 @@ export type ExamSlug =
   | "jipmat"
   | "mpsc-group-b-c"
   | "mpsc-state-services-prelims"
+  | "mpsc-forest-service-prelims"
+  | "mpsc-agriculture-service-prelims"
   | "mpsc-state-services-mains"
   | "mpsc-group-b-combined-mains"
   | "mpsc-sti-mains"
@@ -43,7 +45,8 @@ export type ExamSlug =
   | "ssc-cgl"
   | "ssc-cgl-tier-2"
   | "imat"
-  | "spi";
+  | "spi"
+  | "uceed";
 
 /**
  * School boards the bank carries content for. NOT every exam has one — a
@@ -188,6 +191,14 @@ export type ExamEntry = {
    */
   noPublicContent?: boolean;
   /**
+   * Keep this exam's figures out of image search: its `/questions` pages carry
+   * `noimageindex` (seo/examRobots), and stay indexed otherwise. For papers whose
+   * figures include third-party images, such as UCEED's artworks, logos and
+   * product photos (owner, 2026-11-03). tests/exam-robots.test.ts holds every
+   * page that shows questions to it.
+   */
+  noImageIndex?: boolean;
+  /**
    * `"intl"`: an international exam, served only on intl.pyqvault.com (2026-10-30,
    * NICHE_SITES_SPEC.md). Absent = a PYQ Vault exam on www. Lookups by slug or
    * name still find an intl exam (its own pages and the mock engine need it);
@@ -199,8 +210,9 @@ export type ExamEntry = {
    * `exams.pass_scope`). Absent = the www Premium Pass (`mocks`). Every intl
    * exam names its own, so a www pass never unlocks it and its price can differ
    * (tests/billing-exam-pass.test.ts). Read through `passScopeForExam`.
+   * `"free"` (2026-11-02, migration 0210): no pass needed, the Class 9-10 exams.
    */
-  passScope?: "imat" | "mcat";
+  passScope?: "imat" | "mcat" | "free";
   /**
    * A NON-BOARD presentation family — the generic sibling of `board`+`std`.
    *
@@ -313,6 +325,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
   },
   {
     slug: "foundation-course",
+    passScope: "free", // Class 9-10: no pass needed (migration 0210)
     tier: "school",
     displayName: "Foundation",
     examName: "Foundation Course", // must match the `exams` DB row exactly
@@ -387,6 +400,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
   },
   {
     slug: "cbse-10",
+    passScope: "free", // Class 9-10: no pass needed (migration 0210)
     tier: "school",
     displayName: "CBSE Class 10",
     examName: "CBSE Class 10", // must match the `exams` DB row exactly
@@ -533,6 +547,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
   },
   {
     slug: "icse-10",
+    passScope: "free", // Class 9-10: no pass needed (migration 0210)
     tier: "school",
     displayName: "ICSE Class 10",
     examName: "ICSE Class 10", // must match the `exams` DB row exactly
@@ -548,6 +563,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
   },
   {
     slug: "mh-sb-9",
+    passScope: "free", // Class 9-10: no pass needed (migration 0210)
     tier: "school",
     displayName: "MH State Board 9",
     examName: "Maharashtra State Board Class 9", // must match the `exams` DB row exactly
@@ -574,6 +590,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
   },
   {
     slug: "mh-ssc-10",
+    passScope: "free", // Class 9-10: no pass needed (migration 0210)
     tier: "school",
     displayName: "MH SSC 10",
     examName: "Maharashtra State Board Class 10", // must match the `exams` DB row exactly
@@ -679,6 +696,19 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     notesPath: null,
     hasMocks: true, // 4 JIPMAT mocks (2021-2024) published 2026-09-26; 2025 + 2026 held
   },
+  {
+    slug: "uceed",
+    // IIT Bombay's B.Des design entrance, sat after Class 12. Part A past papers
+    // with IIT Bombay's final keys; 2026 PUBLIC first (scripts/uceed/). MSQ rows
+    // are held until the bank has a multiple-select format, so no mocks yet.
+    tier: "senior",
+    displayName: "UCEED",
+    examName: "UCEED", // must match the `exams` DB row exactly
+    guidesPath: null,
+    notesPath: null,
+    mixedFormats: true, // 2026: 28 MCQ + 13 NAT
+    noImageIndex: true,
+  },
   // ── MPSC ──────────────────────────────────────────────────────────────────
   // One family with a stage level: MPSC -> Prelims / Mains -> exam. Prelims
   // first, so the Stage control reads Prelims, Mains. The Mains exams are the
@@ -721,6 +751,43 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     guidesPath: null,
     notesPath: null,
     hasMocks: true, // 10 GS Paper I mocks published 2026-09-27
+  },
+  {
+    slug: "mpsc-forest-service-prelims",
+    // Maharashtra Forest Service (ACF / RFO), graduate entry.
+    tier: "graduate",
+    displayName: "MPSC Forest Service Prelims",
+    examName: "MPSC Forest Service Prelims", // must match the `exams` DB row exactly
+    solutionCoverage: "none", // answers + key notices only (2026-11-02)
+    family: "MPSC",
+    familyStage: "Prelims",
+    familyLabel: "Forest Service",
+    familyAxis: "Exam",
+    // Marathi grammar in Marathi only, an English section in English only, GS
+    // and aptitude in both (2014 prints them in English only).
+    bilingual: true,
+    // 4 papers (2014, 2016, 2017, 2018), 399 q, PUBLIC since 2026-11-02; MPSC's final keys.
+    guidesPath: null,
+    notesPath: null,
+    hasMocks: true, // 3 mocks published 2026-11-02; 2016 held (Q7 left out, 99 q)
+  },
+  {
+    slug: "mpsc-agriculture-service-prelims",
+    // Maharashtra Agriculture Service (Class I and II), graduate entry.
+    tier: "graduate",
+    displayName: "MPSC Agriculture Service Prelims",
+    examName: "MPSC Agriculture Service Prelims", // must match the `exams` DB row exactly
+    solutionCoverage: "none", // answers + key notices only (2026-11-02)
+    family: "MPSC",
+    familyStage: "Prelims",
+    familyLabel: "Agriculture Service",
+    familyAxis: "Exam",
+    // Same layout as Forest, plus an agriculture head.
+    bilingual: true,
+    // 5 papers (2011, 2012: 200 q; 2016, 2017, 2018: 100 q), 700 q, PUBLIC since 2026-11-02.
+    guidesPath: null,
+    notesPath: null,
+    hasMocks: true, // 5 mocks published 2026-11-02
   },
   {
     slug: "mpsc-state-services-mains",
@@ -864,6 +931,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
   },
   {
     slug: "spi",
+    passScope: "free", // Class 9-10: no pass needed (migration 0210)
     // Services Preparatory Institute entrance (Chhatrapati Sambhajinagar), sat in
     // Class 10 by students aiming at NDA. GSPI, the girls' institute, sits a paper
     // of the same shape, so one exam covers both. Part 1 Mathematical Ability and

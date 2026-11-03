@@ -3440,5 +3440,229 @@ export const NOTES_NAV_INDEX: readonly NotesNavEntry[] = [
     "subjectDisplay": "SSC CGL Polity",
     "chapterSlug": "rights-dpsp-local",
     "subtopicCount": 4
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-geography",
+    "subjectDisplay": "SSC CGL Geography",
+    "chapterSlug": "indian-economy-resources",
+    "subtopicCount": 5
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-geography",
+    "subjectDisplay": "SSC CGL Geography",
+    "chapterSlug": "indian-physical",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-geography",
+    "subjectDisplay": "SSC CGL Geography",
+    "chapterSlug": "climatology",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-geography",
+    "subjectDisplay": "SSC CGL Geography",
+    "chapterSlug": "world-human",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-geography",
+    "subjectDisplay": "SSC CGL Geography",
+    "chapterSlug": "earth-structure",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-geography",
+    "subjectDisplay": "SSC CGL Geography",
+    "chapterSlug": "oceanography",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-economics",
+    "subjectDisplay": "SSC CGL Economics",
+    "chapterSlug": "national-income",
+    "subtopicCount": 4
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-economics",
+    "subjectDisplay": "SSC CGL Economics",
+    "chapterSlug": "indian-economy",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-economics",
+    "subjectDisplay": "SSC CGL Economics",
+    "chapterSlug": "money-banking",
+    "subtopicCount": 3
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-economics",
+    "subjectDisplay": "SSC CGL Economics",
+    "chapterSlug": "microeconomics",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-biology",
+    "subjectDisplay": "SSC CGL Biology",
+    "chapterSlug": "biodiversity",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-biology",
+    "subjectDisplay": "SSC CGL Biology",
+    "chapterSlug": "cell-biology",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-biology",
+    "subjectDisplay": "SSC CGL Biology",
+    "chapterSlug": "human-physiology",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-biology",
+    "subjectDisplay": "SSC CGL Biology",
+    "chapterSlug": "ecology",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-biology",
+    "subjectDisplay": "SSC CGL Biology",
+    "chapterSlug": "plant-biology",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-biology",
+    "subjectDisplay": "SSC CGL Biology",
+    "chapterSlug": "microbiology",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-biology",
+    "subjectDisplay": "SSC CGL Biology",
+    "chapterSlug": "biochemistry",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-chemistry",
+    "subjectDisplay": "SSC CGL Chemistry",
+    "chapterSlug": "atomic-structure",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-chemistry",
+    "subjectDisplay": "SSC CGL Chemistry",
+    "chapterSlug": "carbon-compounds",
+    "subtopicCount": 2
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-chemistry",
+    "subjectDisplay": "SSC CGL Chemistry",
+    "chapterSlug": "chemical-reactions",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-chemistry",
+    "subjectDisplay": "SSC CGL Chemistry",
+    "chapterSlug": "everyday-chemistry",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-chemistry",
+    "subjectDisplay": "SSC CGL Chemistry",
+    "chapterSlug": "acids-bases-salts",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-chemistry",
+    "subjectDisplay": "SSC CGL Chemistry",
+    "chapterSlug": "mole-concept",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-chemistry",
+    "subjectDisplay": "SSC CGL Chemistry",
+    "chapterSlug": "chemical-bonding",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-physics",
+    "subjectDisplay": "SSC CGL Physics",
+    "chapterSlug": "electricity-magnetism",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-physics",
+    "subjectDisplay": "SSC CGL Physics",
+    "chapterSlug": "modern-physics",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-physics",
+    "subjectDisplay": "SSC CGL Physics",
+    "chapterSlug": "light-optics",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-physics",
+    "subjectDisplay": "SSC CGL Physics",
+    "chapterSlug": "astronomy-space",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-physics",
+    "subjectDisplay": "SSC CGL Physics",
+    "chapterSlug": "units-measurement",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-physics",
+    "subjectDisplay": "SSC CGL Physics",
+    "chapterSlug": "sound",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-physics",
+    "subjectDisplay": "SSC CGL Physics",
+    "chapterSlug": "heat-thermodynamics",
+    "subtopicCount": 1
+  },
+  {
+    "examName": "SSC CGL",
+    "subjectRoute": "ssc-cgl-physics",
+    "subjectDisplay": "SSC CGL Physics",
+    "chapterSlug": "kinematics",
+    "subtopicCount": 1
   }
 ];

@@ -44,7 +44,7 @@ export default function WorkedExampleCard({ rank, example }: Props) {
   const [showSolution, setShowSolution] = useState(false);
   const [blockedTaps, setBlockedTaps] = useState(0);
   const { signedIn, loading } = useSignedIn();
-  const dailyGate = useDailyRevealGate(signedIn, loading, "guide");
+  const dailyGate = useDailyRevealGate(signedIn, loading, "guide", example.examName);
 
   const reveal = (label: string | null) => {
     if (!revealed) {

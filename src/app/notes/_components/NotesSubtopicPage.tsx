@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import RememberVisit from "@/components/visits/RememberVisit";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowUpRight, BookOpen, Compass, Sparkles } from "lucide-react";
@@ -246,6 +247,7 @@ export default async function NotesSubtopicPage({
       }
     >
       <NotesReadingProgress />
+      <RememberVisit href={`${base}/${subtopicSlug}`} title={note.title} kind="notes" />
       <GuideJsonLd
         type="Article"
         path={`${base}/${subtopicSlug}`}

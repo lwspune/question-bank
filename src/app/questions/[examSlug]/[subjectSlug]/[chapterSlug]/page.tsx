@@ -12,11 +12,12 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ArrowRight, BookOpen, ChevronDown, ClipboardCheck, Compass } from "lucide-react";
+import { ArrowRight, BookOpen, ChevronDown, ClipboardCheck, Compass, Target } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import QuestionList from "@/app/browse/QuestionList";
+import { examRobots } from "@/lib/seo/examRobots";
 import { getQuestionResources } from "@/lib/links/questionResources";
 import { getPaperLinksForQuestions } from "@/lib/questions/paperLinks";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
@@ -48,6 +49,7 @@ import VHello from "@/components/chat/VHello";
 import NextStepCard from "@/components/question/NextStepCard";
 import { pickHello, nextStepLinks, CARD_AFTER, type HelloInput } from "@/lib/growth/secondPage";
 import Breadcrumbs from "@/components/nav/Breadcrumbs";
+import RememberVisit from "@/components/visits/RememberVisit";
 import { canonicalFor } from "@/lib/sites/intl";
 
 
@@ -133,11 +135,14 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   // screen state the same facts (count, papers, years).
   const description = `${landing.chapterName}: ${landingLead(landing)} Free to browse.`;
 
+  // An exam whose figures must stay out of image search (registry noImageIndex).
+  const robots = examRobots(landing.examSlug);
   return {
     title: { absolute: title },
     description,
     alternates: { canonical: canonicalFor(landingHref(landing)) },
     openGraph: { title, description, type: "website" },
+    ...(robots ? { robots } : {}),
   };
 }
 
@@ -226,7 +231,12 @@ export default async function ChapterQuestionsPage({ params }: Params) {
   return (
     <>
       <AppHeader />
-      <main className="mx-auto w-full max-w-5xl p-8">
+      <main className="mx-auto w-full max-w-5xl px-4 py-6 sm:p-8">
+        <RememberVisit
+          href={landingHref(landing)}
+          title={`${landing.examName} ${landing.subjectName}: ${landing.chapterName}`}
+          kind="chapter"
+        />
         <Breadcrumbs
           items={[
             { href: "/questions", label: "Questions" },
@@ -289,7 +299,20 @@ export default async function ChapterQuestionsPage({ params }: Params) {
           )}
         </div>
 
-        <div className="mt-8">
+        {/* The product's promise, where most new students first land (54% of
+            sign-ups in October 2026 started on a chapter page). Same for every
+            visitor, so the page stays cached. */}
+        {questions.rows.length > 0 && (
+          <p className="mt-6 flex items-start gap-2 text-sm text-muted-foreground">
+            <Target className="mt-0.5 h-4 w-4 shrink-0 text-brand-accent" aria-hidden />
+            <span>
+              Try each question before you open its answer. Sign in, and the ones you get wrong
+              come back in Fix your mistakes until you get them right.
+            </span>
+          </p>
+        )}
+
+        <div className="mt-4">
           {questions.rows.length === 0 ? (
             <p className="rounded-md border p-6 text-muted-foreground">
               No public questions here yet.

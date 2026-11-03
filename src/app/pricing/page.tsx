@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { headers } from "next/headers";
+import { cookies, headers } from "next/headers";
 import { Check } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import { getSessionMember, getSessionUser } from "@/lib/auth";
 import { createSupabaseAnonClient, createSupabaseServerClient } from "@/lib/supabase/server";
 import { loadEntitlements } from "@/lib/entitlements/query";
-import { hasActiveScope } from "@/lib/entitlements/access";
-import { formatPrice, planLengthLabel, plansForBuyer, type Plan } from "@/lib/billing/plans";
+import { formatPrice, ownsPlan, planLengthLabel, plansForBuyer, type Plan } from "@/lib/billing/plans";
 import { readCountry } from "@/lib/acquisition/country";
 import { planSiteForHost } from "@/lib/sites/intl";
 import { listActivePlans } from "@/lib/billing/plansQuery";
@@ -16,13 +15,19 @@ import { afterPurchasePath, pricingHref } from "@/lib/billing/checkoutReturn";
 import { logActivityOnce } from "@/lib/activity/service";
 import { surfaceViewedEvent } from "@/lib/activity/views";
 import ResultsStrip from "@/components/results/ResultsStrip";
+import { getOnboardingState } from "@/lib/profile/service";
+import { isExamSlug } from "@/lib/exam/examContext";
+import { passScopeForExam } from "@/lib/billing/passScope";
+import { SCOPE_MOCKS } from "@/lib/entitlements/access";
+import { getMockExamCardsCached } from "@/lib/mocks/examCardsCached";
+import { passLineForExam } from "@/lib/mocks/mocksNav";
 
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "The Premium Pass: unlimited timed mock tests and PDF question-paper + answer-key downloads, for students and teachers. Browsing stays free.",
+    "The Practice Pass: unlimited answers, mock tests and practice. The Premium Pass adds PDF question-paper + answer-key downloads. Browsing stays free.",
   // Indexable (a genuine landing surface), but it is reachable with `?plan=`
   // and `?next=`, so it declares its canonical.
   alternates: { canonical: "/pricing" },
@@ -50,8 +55,11 @@ export default async function PricingPage({
     await logActivityOnce(createSupabaseServerClient(), user.id, surfaceViewedEvent(user.id, "pricing", new Date()));
   }
   const now = Date.now();
+  const examLine = site === "pyqvault" ? await passLineForViewer(user?.id ?? null) : null;
   // Staff already have everything a pass sells.
-  const owns = (plan: Plan) => !!member || hasActiveScope(rows, plan.scope, now);
+  // ownsPlan, not "covers": a Practice holder covers the online checks but does
+  // not own the Premium Pass, which adds downloads.
+  const owns = (plan: Plan) => !!member || ownsPlan(rows, plan, now);
   const highlighted = searchParams.plan;
   // Where the buyer was blocked (a mock's Start button, the download gate); they
   // land back there after paying, and the sign-in round-trip keeps it.
@@ -60,17 +68,27 @@ export default async function PricingPage({
   return (
     <>
       <AppHeader />
-      <main className="mx-auto max-w-4xl px-6 py-12">
-        <header className="hero-soft rounded-2xl px-5 py-8 text-center">
+      <main className="mx-auto max-w-4xl px-4 py-6 sm:px-6 sm:py-12">
+        {/* The offer leads (owner, 2026-11-02): on a phone the price used to
+            sit on the third screen, under the note and the results strip. */}
+        <header className="hero-soft rounded-2xl px-5 py-6 text-center sm:py-8">
           <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">Pricing</h1>
-          {/* The owner's own words (2026-10-11), kept in the first person on purpose. */}
           <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-muted-foreground">
-            I wish I could keep all of PYQ Vault free. But maintaining and running the website costs money,
-            so I charge a small fee to keep it going. I hope you understand.
+            Every question is free to browse. The pass is for when you want more.
           </p>
         </header>
 
-        {site === "pyqvault" && <ResultsStrip className="mt-6" />}
+        {/* The free exams (migration 0210, owner 2026-11-02). The six are pinned
+            by tests/billing-exam-pass.test.ts, so this line cannot quietly drift. */}
+        {site === "pyqvault" && (
+          <p className="mx-auto mt-6 max-w-md rounded-md border border-brand-accent/30 bg-brand-accent/5 p-3 text-center text-sm">
+            Free for Class 9 and 10: CBSE 10, ICSE 10, Maharashtra Class 9 and 10, SPI and Foundation Course.
+          </p>
+        )}
+
+        {examLine && (
+          <p className="mx-auto mt-6 max-w-md text-center text-sm font-medium">{examLine}</p>
+        )}
 
         {plans.length === 0 ? (
           <p className="mt-8 text-center text-sm text-muted-foreground">
@@ -157,6 +175,15 @@ export default async function PricingPage({
           </div>
         )}
 
+        {/* The owner's own words (2026-10-11), kept in the first person on
+            purpose; below the offer since 2026-11-02 (owner). */}
+        <p className="mx-auto mt-8 max-w-md text-center font-serif text-sm leading-relaxed text-muted-foreground">
+          I wish I could keep all of PYQ Vault free. But maintaining and running the website costs money,
+          so I charge a small fee to keep it going. I hope you understand.
+        </p>
+
+        {site === "pyqvault" && <ResultsStrip className="mt-6" />}
+
         <div className="mt-8 space-y-2 text-center text-xs text-muted-foreground">
           <p>
             {site === "intl"
@@ -192,4 +219,23 @@ function Button({ href, children }: { href: string; children: React.ReactNode })
       {children}
     </Link>
   );
+}
+
+/**
+ * The pass in the viewer's own exam (2026-11-02): a signed-in student's first
+ * target exam, else the exam a visitor picked (qb_exam). Nothing for a free
+ * exam, an exam with no mocks, or when the read fails: the offer stands alone.
+ */
+async function passLineForViewer(userId: string | null): Promise<string | null> {
+  try {
+    const slug = userId
+      ? (await getOnboardingState(createSupabaseServerClient(), userId)).targetExams[0] ?? null
+      : cookies().get("qb_exam")?.value ?? null;
+    if (!isExamSlug(slug) || passScopeForExam(slug) !== SCOPE_MOCKS) return null;
+    const cards = await getMockExamCardsCached();
+    return passLineForExam(cards.find((c) => c.slug === slug));
+  } catch (e) {
+    console.error("pricing exam line", e instanceof Error ? e.message : e);
+    return null;
+  }
 }

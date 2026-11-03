@@ -38,7 +38,12 @@ function periodLabel(period: string, grain: SalesGrain): string {
 }
 
 function counts(t: SalesTotals): string {
-  const parts = [`${t.passesSold} ${t.passesSold === 1 ? "pass" : "passes"}`, `${t.booksSold} ${t.booksSold === 1 ? "book" : "books"}`];
+  // The Practice share of the passes (0212), so the two prices read apart.
+  const practice = t.practiceSold > 0 ? ` (${t.practiceSold} Practice)` : "";
+  const parts = [
+    `${t.passesSold} ${t.passesSold === 1 ? "pass" : "passes"}${practice}`,
+    `${t.booksSold} ${t.booksSold === 1 ? "book" : "books"}`,
+  ];
   if (t.refunded > 0) parts.push(`${t.refunded} refunded`);
   return parts.join(" · ");
 }
@@ -178,6 +183,9 @@ export default async function SalesPage({ searchParams }: { searchParams?: { vie
                         Checkout <span className="font-normal">(orders)</span>
                       </th>
                       <th scope="col" className="py-1.5 pr-3 text-right font-medium">Passes</th>
+                      <th scope="col" className="py-1.5 pr-3 text-right font-medium">
+                        <span className="font-normal">of which</span> Practice
+                      </th>
                       <th scope="col" className="py-1.5 pr-3 text-right font-medium">Paid</th>
                       <th scope="col" className="py-1.5 pr-3 text-right font-medium">Pass ₹</th>
                       <th scope="col" className="py-1.5 pr-3 text-right font-medium">Pass $</th>
@@ -201,6 +209,7 @@ export default async function SalesPage({ searchParams }: { searchParams?: { vie
                             {r.checkoutStudents} <span className="text-xs text-muted-foreground">({r.passOrders})</span>
                           </td>
                           <td className="py-1.5 pr-3 text-right">{r.passesSold}</td>
+                          <td className="py-1.5 pr-3 text-right">{r.practiceSold}</td>
                           <td className="py-1.5 pr-3 text-right">{percent(paidShare(r.passesSold, r.checkoutStudents))}</td>
                           <td className="py-1.5 pr-3 text-right">{formatRupees(r.passPaise)}</td>
                           <td className="py-1.5 pr-3 text-right">{formatPrice(r.passUsdCents, "USD")}</td>
@@ -222,6 +231,7 @@ export default async function SalesPage({ searchParams }: { searchParams?: { vie
                         <span className="text-xs font-normal text-muted-foreground">({windowTotal.passOrders})</span>
                       </td>
                       <td className="py-1.5 pr-3 text-right">{windowTotal.passesSold}</td>
+                      <td className="py-1.5 pr-3 text-right">{windowTotal.practiceSold}</td>
                       <td className="py-1.5 pr-3 text-right">
                         {percent(paidShare(windowTotal.passesSold, tableFunnel.checkoutStudents))}
                       </td>

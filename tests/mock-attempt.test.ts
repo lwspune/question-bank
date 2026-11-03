@@ -215,3 +215,54 @@ describe("gradeMock", () => {
     expect(r.verdicts.x1).toBe(0);
   });
 });
+
+describe("gradeMock with per-option marks (MPSC CSAT Decision Making)", () => {
+  // MPSC's grid for a decision-making question: every option earns its own
+  // marks, the best one full marks, and no option is ever penalised.
+  const dm: MockGradeQuestion = {
+    questionId: "dm",
+    sectionKey: "csat",
+    marks: 2.5,
+    negMarks: 0,
+    answer: key("C"),
+    optionMarks: { A: 1, B: 1.5, C: 2.5, D: 0 },
+  };
+  const plain: MockGradeQuestion = { questionId: "p", sectionKey: "csat", marks: 2.5, negMarks: -0.8333, answer: key("A") };
+
+  it("scores the picked option's own marks, and counts only the best option as correct", () => {
+    const r = gradeMock([dm], { dm: pick("B") });
+    expect(r.score).toBe(1.5);
+    expect(r.maxScore).toBe(2.5);
+    expect(r.correct).toBe(0);
+    expect(r.wrong).toBe(1);
+    expect(r.verdicts.dm).toBe(-1);
+    expect(r.sectionScores.csat.score).toBe(1.5);
+  });
+
+  it("gives full marks for the best option", () => {
+    const r = gradeMock([dm], { dm: pick("c") });
+    expect(r.score).toBe(2.5);
+    expect(r.correct).toBe(1);
+    expect(r.verdicts.dm).toBe(1);
+  });
+
+  it("never goes negative: the zero-mark option scores 0", () => {
+    const r = gradeMock([dm], { dm: pick("D") });
+    expect(r.score).toBe(0);
+    expect(r.wrong).toBe(1);
+  });
+
+  it("scores a blank as skipped, and grace as full marks whatever was picked", () => {
+    expect(gradeMock([dm], { dm: blank }).skipped).toBe(1);
+    const g = gradeMock([{ ...dm, grace: true }], { dm: pick("D") });
+    expect(g.score).toBe(2.5);
+    expect(g.correct).toBe(1);
+  });
+
+  it("leaves the other questions on the paper's marking", () => {
+    const r = gradeMock([dm, plain], { dm: pick("A"), p: pick("B") });
+    // 1 (DM option A) - 0.8333 (plain wrong) = 0.1667
+    expect(r.score).toBe(0.17);
+    expect(r.maxScore).toBe(5);
+  });
+});

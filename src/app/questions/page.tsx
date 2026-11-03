@@ -61,7 +61,7 @@ export default async function QuestionsIndexPage() {
         </h1>
         <p className="mt-2 max-w-2xl text-muted-foreground">
           {totalQuestions.toLocaleString("en-IN")} questions across{" "}
-          {landings.length} chapters, with answers and worked solutions. Pick a
+          {landings.length.toLocaleString("en-IN")} chapters, with answers and worked solutions. Pick a
           chapter to start, or{" "}
           <Link href="/browse" className="text-brand-accent hover:underline">
             filter the whole bank

@@ -173,6 +173,20 @@ export const FUNNEL_EVENTS = [
    * scale; a signed-in student's is also a row (surface_viewed 'learn_start').
    */
   "learn_lesson_start",
+  /**
+   * The homepage's "Pick up where you left off" card was tapped (2026-11-02,
+   * signed-out returners only; components/visits). Prop: kind (notes · chapter).
+   * Homepage views are its scale.
+   */
+  "home_continue_click",
+  /**
+   * An anon /notes reader scrolled the practice sign-in wall into view
+   * (2026-11-03); prop: variant ("full" = the mastery checkpoint, "compact" =
+   * a concept's opened practice row). Once per page per variant.
+   */
+  "notes_practice_wall_shown",
+  /** …and tapped a sign-in link on it; props: variant, button ("signup" | "login"). */
+  "notes_practice_wall_signin_click",
 ] as const;
 
 export type FunnelEvent = (typeof FUNNEL_EVENTS)[number];

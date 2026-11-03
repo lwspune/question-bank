@@ -12,7 +12,7 @@ import { mockKindNote } from "@/lib/mocks/catalogue";
 import StartMock from "./StartMock";
 import { getMockQuota } from "@/lib/mocks/service";
 import { mockStartState } from "@/lib/mocks/quota";
-import { passCta, passForBuyer } from "@/lib/billing/plans";
+import { offerForNeed, passCta } from "@/lib/billing/plans";
 import { holdsPassFor, passScopeForExam } from "@/lib/billing/passScope";
 import { readCountry } from "@/lib/acquisition/country";
 import { headers } from "next/headers";
@@ -97,12 +97,13 @@ export default async function MockInstructions({
   const examScope = passScopeForExam(getExamByName(mock.examName)?.slug);
   const examQuota = quota ? { ...quota, hasPass: holdsPassFor(quota, examScope) } : quota;
   const startState = mockStartState(examQuota, myAttempts.length > 0, mock.scope, fromFriend !== null);
-  // The pass offered at the limit (null = none on sale; the card then links to /pricing).
+  // The pass offered at the limit (null = none on sale; the card then links to
+  // /pricing): the cheapest that lifts it, the Practice Pass on www (2026-11-03).
   const mockPass =
     startState.kind === "open"
       ? null
       : passCta(
-          passForBuyer(
+          offerForNeed(
             await listActivePlans(createSupabaseAnonClient()),
             examScope,
             // An international paper is sold on intl.pyqvault.com (0203), at the

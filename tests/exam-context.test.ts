@@ -73,6 +73,18 @@ describe("EXAM_REGISTRY", () => {
     expect(afcat?.noPublicContent).not.toBe(true);
   });
 
+  it("registers UCEED as a senior entrance with numeric rows whose figures stay out of image search", () => {
+    const uceed = getExamBySlug("uceed");
+    expect(uceed?.examName).toBe("UCEED");
+    expect(uceed?.tier).toBe("senior");
+    expect(uceed?.practiceOnly).not.toBe(true);
+    expect(uceed?.noPublicContent).not.toBe(true);
+    // 13 NAT rows beside 28 MCQ (2026 Part A), so /browse shows the format filter.
+    expect(uceed?.mixedFormats).toBe(true);
+    // Owner, 2026-11-03: IIT Bombay's figures carry third-party artworks and logos.
+    expect(uceed?.noImageIndex).toBe(true);
+  });
+
   it("registers SSC CGL as a graduate exam with mocks and worked solutions", () => {
     const ssc = getExamBySlug("ssc-cgl");
     expect(ssc?.examName).toBe("SSC CGL");
@@ -416,12 +428,15 @@ describe("exam tiers", () => {
       "ipmat-indore",
       "ipmat-rohtak",
       "jipmat",
+      "uceed",
       "imat",
     ],
     graduate: [
       "cds",
       "mpsc-group-b-c",
       "mpsc-state-services-prelims",
+      "mpsc-forest-service-prelims",
+      "mpsc-agriculture-service-prelims",
       "mpsc-state-services-mains",
       "mpsc-group-b-combined-mains",
       "mpsc-sti-mains",

@@ -10,7 +10,7 @@ export function lockedPassLine({
   plural,
   isPastPaper,
 }: {
-  pass: Pick<PassCta, "label" | "length" | "price"> | null;
+  pass: (Pick<PassCta, "label" | "length" | "price"> & { downloads?: boolean }) | null;
   plural: string;
   isPastPaper: boolean;
 }): string {
@@ -19,7 +19,8 @@ export function lockedPassLine({
       ? `A pass unlocks unlimited ${plural} and past-paper downloads. `
       : `A pass unlocks unlimited ${plural}. `;
   }
-  return isPastPaper
+  // The Practice Pass (2026-11-03) has no downloads, so it never promises the PDF.
+  return isPastPaper && pass.downloads !== false
     ? `Get the ${pass.label} for unlimited ${plural} and every past paper as a PDF with its answer key, for ${pass.length}, for ${pass.price}. `
     : `Get the ${pass.label} for unlimited ${plural} for ${pass.length}, for ${pass.price}. `;
 }

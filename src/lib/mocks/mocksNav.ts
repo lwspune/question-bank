@@ -268,3 +268,40 @@ export function buildMockCatalogueEntries(mocks: MockListItem[]): MockCatalogueE
   }
   return out;
 }
+
+/**
+ * "36 past papers (2017–2026) · 27 practice" — every part derived.
+ *
+ * Broken down BY TYPE rather than a single total, because "63 mocks" would hide
+ * the difference between the real thing and a simulation of it, and the year
+ * span only ever describes the past papers. A type with none is omitted rather
+ * than printed as a zero.
+ */
+export function mockCardMetaLine(card: MockExamCard): string {
+  if (card.count === 0) return "Coming soon";
+  const parts: string[] = [];
+
+  const past = card.byType["past-papers"];
+  if (past > 0) {
+    const span =
+      card.firstYear === 0
+        ? ""
+        : card.firstYear === card.lastYear
+          ? ` (${card.firstYear})`
+          : ` (${card.firstYear}–${card.lastYear})`;
+    parts.push(`${past} past ${past === 1 ? "paper" : "papers"}${span}`);
+  }
+  if (card.byType["practice"] > 0) parts.push(`${card.byType["practice"]} practice`);
+  if (card.byType["sectional"] > 0) parts.push(`${card.byType["sectional"]} sectional`);
+  return parts.join(" · ");
+}
+
+/**
+ * /pricing in the student's own exam (2026-11-02): what the pass opens for it,
+ * in the same words as that exam's /mock card. Null when it has no mocks, so
+ * the page says nothing rather than "opens 0 mocks".
+ */
+export function passLineForExam(card: MockExamCard | undefined): string | null {
+  if (!card || card.count === 0) return null;
+  return `For ${card.displayName}, the pass opens every mock: ${mockCardMetaLine(card)}.`;
+}

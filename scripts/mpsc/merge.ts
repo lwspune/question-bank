@@ -23,7 +23,7 @@
 import { existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { DATA_DIR, dataPath, expectedNumbers, requirePaper } from "./config";
-import { markDisagreements, offListChapters, parityIssues, type BilingualQuestion, type KeyLetter } from "./lib";
+import { badDifficulties, markDisagreements, offListChapters, parityIssues, type BilingualQuestion, type KeyLetter } from "./lib";
 
 export function loadBatches(id: string): BilingualQuestion[] {
   const files = readdirSync(DATA_DIR).filter((f) => f.startsWith(`${id}.t`) && f.endsWith(".json")).sort();
@@ -76,6 +76,8 @@ function main() {
   // State Services: a fixed chapter list, and the coaching marks read against the key.
   const offList = paper.chapters ? offListChapters(qs, paper.chapters) : [];
   for (const o of offList) console.log(`off-list chapter — ${o}`);
+  const badDiff = badDifficulties(qs);
+  for (const d of badDiff) console.log(`bad difficulty — ${d}`);
   const marksFile = dataPath(paper.id, "boxes");
   let marksNote = "";
   if (existsSync(marksFile)) {
@@ -96,6 +98,7 @@ function main() {
     if (missing.length || dupes.length) throw new Error("refusing to write an incomplete or duplicated paper");
     if (extra.length) throw new Error(`refusing to write omitted question(s) ${extra.join(", ")} (config.ts omitted)`);
     if (offList.length) throw new Error("refusing to write a paper with off-list chapters");
+    if (badDiff.length) throw new Error("refusing to write a paper with a difficulty other than EASY, MODERATE or HARD");
     writeFileSync(dataPath(paper.id, "merged"), JSON.stringify({ paper: paper.id, questions: qs }, null, 1));
     console.log(`wrote ${dataPath(paper.id, "merged")}`);
   }

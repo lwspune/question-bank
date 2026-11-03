@@ -30,7 +30,7 @@ const HAS_ENV =
 
 const PASSWORD = "free-save-limit-pw-1234";
 const RUN_ID = randomUUID().slice(0, 8);
-const ROLES = ["student", "pass", "off"] as const;
+const ROLES = ["student", "pass", "practice", "off", "freeexam"] as const;
 type Role = (typeof ROLES)[number];
 
 describe.skipIf(!HAS_ENV)("free save limit + my_premium_limits (migration 0134)", () => {
@@ -38,6 +38,9 @@ describe.skipIf(!HAS_ENV)("free save limit + my_premium_limits (migration 0134)"
   const ids = {} as Record<Role, string>;
   const clients = {} as Record<Role, SupabaseClient>;
   let questionIds: string[] = [];
+  // A free exam (0210) and two questions in it, copied from a paid one.
+  let freeExamId = "";
+  const freeQuestionIds: string[] = [];
   let saved: Record<string, unknown> | null = null;
 
   const save = (role: Role, idx: number) =>
@@ -67,19 +70,58 @@ describe.skipIf(!HAS_ENV)("free save limit + my_premium_limits (migration 0134)"
       await mustSignIn(email, clients[role], { email, password: PASSWORD });
     }
 
+    // Questions of a paid exam: a free exam's saves are never limited (0210).
     const { data: qs, error: qErr } = await admin
       .from("questions")
-      .select("id")
+      .select("id, exams!inner(pass_scope)")
       .eq("visibility", "PUBLIC")
+      .eq("exams.pass_scope", "mocks")
       .order("created_at", { ascending: true })
       .limit(4);
     expect(qErr).toBeNull();
     questionIds = (qs ?? []).map((q) => q.id as string);
     expect(questionIds).toHaveLength(4);
 
+    const { data: freeExam, error: freeErr } = await admin
+      .from("exams")
+      .insert({ name: `zz test free save exam ${RUN_ID}`, pass_scope: "free" })
+      .select("id")
+      .single();
+    expect(freeErr).toBeNull();
+    freeExamId = freeExam!.id;
+    const { data: base } = await admin
+      .from("questions")
+      .select("org_id, subject_id, chapter_id, difficulty, created_by")
+      .eq("id", questionIds[0])
+      .single();
+    for (let i = 0; i < 2; i++) {
+      const { data, error } = await admin
+        .from("questions")
+        .insert({
+          ...base,
+          exam_id: freeExamId,
+          text: `Free save question ${i} ${RUN_ID}`,
+          content_hash: `free-save-${i}-${RUN_ID}`,
+          visibility: "PRIVATE",
+        })
+        .select("id")
+        .single();
+      expect(error).toBeNull();
+      freeQuestionIds.push(data!.id);
+    }
+
     await admin.from("entitlements").insert({
       user_id: ids.pass,
       scope: "mocks",
+      source: "manual",
+      status: "active",
+      note: `test ${RUN_ID}`,
+    });
+
+    // The Practice Pass (0212): online limits lifted, no downloads.
+    await admin.from("entitlements").insert({
+      user_id: ids.practice,
+      scope: "practice",
       source: "manual",
       status: "active",
       note: `test ${RUN_ID}`,
@@ -102,6 +144,8 @@ describe.skipIf(!HAS_ENV)("free save limit + my_premium_limits (migration 0134)"
     if (saved) await admin.from("paywall_settings").update(saved).eq("id", true);
     // Deleting users cascades their bookmarks and entitlements.
     for (const role of ROLES) if (ids[role]) await admin.auth.admin.deleteUser(ids[role]);
+    if (freeQuestionIds.length) await admin.from("questions").delete().in("id", freeQuestionIds);
+    if (freeExamId) await admin.from("exams").delete().eq("id", freeExamId);
   });
 
   it("lets a free student save two questions, then refuses the third with PT402", async () => {
@@ -124,8 +168,27 @@ describe.skipIf(!HAS_ENV)("free save limit + my_premium_limits (migration 0134)"
     expect((await save("student", 2)).error).toBeNull();
   });
 
+  it("never refuses or counts a free exam's saves (0210)", async () => {
+    const saveAny = (questionId: string) =>
+      clients.freeexam
+        .from("question_bookmarks")
+        .upsert({ user_id: ids.freeexam, question_id: questionId }, { onConflict: "user_id,question_id", ignoreDuplicates: true });
+    expect((await saveAny(questionIds[0])).error).toBeNull();
+    expect((await saveAny(questionIds[1])).error).toBeNull();
+    expect((await saveAny(questionIds[2])).error?.code).toBe("PT402");
+    for (const id of freeQuestionIds) expect((await saveAny(id)).error).toBeNull();
+    const { data } = await clients.freeexam.rpc("my_premium_limits");
+    expect(data).toMatchObject({ saveLimit: 2, saves: 2 });
+  });
+
   it("never limits a pass holder", async () => {
     for (let i = 0; i < 4; i++) expect((await save("pass", i)).error).toBeNull();
+  });
+
+  it("never limits a Practice Pass holder, and reports the pass (0212)", async () => {
+    for (let i = 0; i < 4; i++) expect((await save("practice", i)).error).toBeNull();
+    const { data } = await clients.practice.rpc("my_premium_limits");
+    expect(data).toMatchObject({ hasPass: true, passScopes: ["practice"], saves: 4 });
   });
 
   it("reports the caller's limits and saves", async () => {

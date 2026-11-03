@@ -14,6 +14,11 @@
 
 export type Lang = "en" | "mr";
 export type KeyLetter = "A" | "B" | "C" | "D" | "#";
+/**
+ * A printed key cell: a letter, or `*` where that set prints a decision-making
+ * question (its marks are in the graded grid, CSAT 2015). Never reaches key.json.
+ */
+export type KeyCell = KeyLetter | "*";
 
 export type Version = {
   stem: string;
@@ -43,7 +48,12 @@ export type BilingualQuestion = {
    * transcribed as a table in each language instead, so it stays answerable
    * and readable in either.
    */
-  figure?: { page: number; box: [number, number, number, number] };
+  figure?: {
+    page: number;
+    box: [number, number, number, number];
+    /** "none" once a person has looked at a figure the watermark check flags and seen no watermark. */
+    watermark?: "none";
+  };
   /**
    * A MEANING difference between the printed Marathi and English (the booklet's
    * own translation error — e.g. "south-west" vs "North-Western"). Both versions
@@ -71,21 +81,22 @@ export function numberBag(s: string): string[] {
   return hits.map((h) => h.replace(/,/g, "")).sort();
 }
 
-const ANSWER: Record<string, KeyLetter> = { "1": "A", "2": "B", "3": "C", "4": "D", "#": "#" };
+const ANSWER: Record<string, KeyCell> = { "1": "A", "2": "B", "3": "C", "4": "D", "#": "#", "*": "*" };
 
 /**
  * Parse an MPSC answer-key token stream. The key prints one row per question —
  * `q, setA, setB, setC, setD`, answers as 1-4 — in two columns that interleave
  * in the text layer, so rows are keyed by their own number, never by position.
- * `#` marks a question the Commission cancelled. Nothing is guessed: an
+ * `#` marks a question the Commission cancelled; `*` a graded (decision-making)
+ * question in that set. Nothing is guessed: an
  * unreadable token or a duplicate row is reported and the row dropped.
  */
 export function parseKeyTokens(tokens: string[]): {
-  rows: Map<number, KeyLetter[]>;
+  rows: Map<number, KeyCell[]>;
   errors: string[];
 } {
   const clean = tokens.map((t) => t.trim()).filter((t) => t !== "");
-  const rows = new Map<number, KeyLetter[]>();
+  const rows = new Map<number, KeyCell[]>();
   const errors: string[] = [];
 
   let i = 0;
@@ -120,7 +131,7 @@ export function parseKeyTokens(tokens: string[]): {
  * cell was lost, and the line is refused rather than let it shift the answers.
  */
 export function parseKeyLines(lines: string[][]): {
-  rows: Map<number, KeyLetter[]>;
+  rows: Map<number, KeyCell[]>;
   errors: string[];
   ignored: string[][];
 } {
@@ -150,7 +161,7 @@ export function parseKeyLines(lines: string[][]): {
  * included. A single misread or mis-extracted cell breaks that balance — a free
  * checksum on a key read off a scan. Empty when balanced.
  */
-export function setBalanceIssues(rows: Map<number, KeyLetter[]>): string[] {
+export function setBalanceIssues(rows: Map<number, KeyCell[]>): string[] {
   const width = Math.max(0, ...[...rows.values()].map((r) => r.length));
   const counts = Array.from({ length: width }, () => new Map<string, number>());
   for (const sets of rows.values()) sets.forEach((l, i) => counts[i].set(l, (counts[i].get(l) ?? 0) + 1));
@@ -191,6 +202,16 @@ export function offListChapters(
   return questions
     .filter((q) => !(allowed[q.subject] ?? []).includes(q.chapter))
     .map((q) => `Q${q.n}: ${q.subject} / ${q.chapter}`);
+}
+
+const DIFFICULTIES = ["EASY", "MODERATE", "HARD"];
+
+/**
+ * Questions whose difficulty is not one the bank stores. A helper wrote
+ * "MEDIUM" on 52 CSAT 2014 rows and nothing caught it before the commit.
+ */
+export function badDifficulties(questions: { n: number; difficulty: string }[]): string[] {
+  return questions.filter((q) => !DIFFICULTIES.includes(q.difficulty)).map((q) => `Q${q.n}: ${q.difficulty}`);
 }
 
 const fmt = (bag: string[]) => `[${bag.join(",")}]`;
@@ -267,7 +288,8 @@ export function buildRecords(
   questions: BilingualQuestion[],
   key: Record<number, KeyLetter>,
   cancelledNote = "Cancelled by MPSC in its final answer key. No option is correct.",
-  graded: Record<number, number[]> = {}
+  graded: Record<number, number[]> = {},
+  notices: Record<number, Notice> = {}
 ): { rows: MpscRow[]; cancelled: number[]; errors: string[] } {
   const rows: MpscRow[] = [];
   const cancelled: number[] = [];
@@ -283,7 +305,7 @@ export function buildRecords(
       errors.push(`Q${q.n}: key ${k} but its graded marks make ${gradedKeyLetter(marks)} the best option`);
       continue;
     }
-    const solution = questionSolution(q.printNote, marks);
+    const solution = questionSolution(q.printNote, marks, notices[q.n]);
     if (k === "#") cancelled.push(q.n);
     const v = (q.en ?? q.mr)!; // canonical: English, else the one language printed
     const [a, b, c, d] = v.options;
@@ -338,6 +360,40 @@ export function gradedKeyLetter(marks: number[]): KeyLetter {
 }
 
 /**
+ * Key the booklet's decision-making questions from its set's graded grid
+ * (`setIndex`: 0 = Set A, the default). A question the letter table leaves out
+ * gets the grid's letter in every set (the sets were balance-checked on the
+ * grid; only the booklet's column is ever read). A letter row whose booklet set
+ * prints `*` takes the grid's letter there and keeps the other sets' cells. A
+ * row keyed by both, or a `*` in the booklet's set with no grid row, is an error.
+ */
+export function applyGradedKey(
+  rows: Map<number, KeyCell[]>,
+  graded: Record<string | number, number[]>,
+  setIndex = 0
+): { rows: Map<number, KeyCell[]>; errors: string[] } {
+  const out = new Map([...rows].map(([q, r]) => [q, [...r]]));
+  const errors: string[] = [];
+  for (const [qs, marks] of Object.entries(graded)) {
+    const q = Number(qs);
+    let letter: KeyLetter;
+    try {
+      letter = gradedKeyLetter(marks);
+    } catch (e) {
+      errors.push(`Q${q}: ${(e as Error).message}`);
+      continue;
+    }
+    const row = out.get(q);
+    if (!row) out.set(q, [letter, letter, letter, letter]);
+    else if (row[setIndex] === "*") row[setIndex] = letter;
+    else errors.push(`Q${q}: in both the letter key and the graded grid`);
+  }
+  for (const [q, row] of [...out].sort(([a], [b]) => a - b))
+    if (row[setIndex] === "*") errors.push(`Q${q}: set ${"ABCD"[setIndex]} prints * but the graded grid has no row for it`);
+  return { rows: out, errors };
+}
+
+/**
  * The four booklet sets carry the same decision-making questions in another
  * order, so each set's collection of mark rows (each row sorted) must match — a
  * checksum on a hand-transcribed grid, as `setBalanceIssues` is for letters.
@@ -366,9 +422,16 @@ export function gradedRemark(marks: number[]): { en: string; mr: string } {
   };
 }
 
-/** A question's solution text: the graded remark, then the print note; null when neither applies. */
-export function questionSolution(printNote: string | undefined, marks: number[] | undefined): { en: string; mr: string } | null {
-  const parts = [marks ? gradedRemark(marks) : null, printNoteSolution(printNote)].filter(
+/** A question's solution text: the key notice, the graded remark, then the print note; null when none applies. */
+/** A notice on a question whose key the owner judged doubtful (config.ts Paper.notices). */
+export type Notice = { en: string; mr: string };
+
+export function questionSolution(
+  printNote: string | undefined,
+  marks: number[] | undefined,
+  notice?: Notice
+): { en: string; mr: string } | null {
+  const parts = [notice ?? null, marks ? gradedRemark(marks) : null, printNoteSolution(printNote)].filter(
     (p): p is { en: string; mr: string } => p !== null
   );
   if (!parts.length) return null;

@@ -203,18 +203,37 @@ export async function loadExamCatalogPayload(
  * the payload is aggregate counts + exam UUIDs — no per-user data — so one copy
  * really can be served to everyone. Same property `getExamIdMap` relies on.
  */
-const loadCachedExamCatalogPayload = unstable_cache(
-  async (): Promise<ExamCatalogCachePayload> =>
-    loadExamCatalogPayload(createSupabaseAnonClient()),
-  // v2 (2026-10-02): counts became {pyq, practice}. A new key, because an entry
-  // cached in the old number shape would deserialize as a number here.
-  // v3 (2026-10-09): drops the all-zero entry cached on 2026-10-08, before
-  // loadExamCatalogPayload learned to throw on a failed read.
-  // v4 (2026-10-21): SPI went live; an entry cached before carries no SPI count
-  // and survives the deploy, so the new exam would read "0 questions" for a day.
-  ["exam-catalog-payload-v4"],
-  { revalidate: 86400 }
-);
+const loadCachedExamCatalogPayload = () =>
+  unstable_cache(
+    async (): Promise<ExamCatalogCachePayload> =>
+      loadExamCatalogPayload(createSupabaseAnonClient()),
+    examCatalogCacheKey(new Date()),
+    { revalidate: 86400 }
+  )();
+
+/**
+ * The catalog's cache key: a shape version plus the UTC day.
+ *
+ * The version moves when the payload's SHAPE changes:
+ * v2 (2026-10-02): counts became {pyq, practice}; an entry cached in the old
+ * number shape would deserialize as a number here.
+ * v3 (2026-10-09): dropped the all-zero entry cached on 2026-10-08, before
+ * loadExamCatalogPayload learned to throw on a failed read.
+ * v4 (2026-10-21): SPI went live; an older entry carried no SPI count.
+ *
+ * The DAY is there because `revalidate` alone did not keep the copy fresh: on
+ * 2026-11-02 the homepage was still serving one that predated ISC and ICSE
+ * going live on 10-30 (CISCE "Coming soon", ~1,550 questions short), and the
+ * loader itself ran clean in under 2 s, so the refresh was simply not
+ * happening. Yesterday's key cannot be read today, so no copy outlives its day,
+ * and a newly live exam needs no hand-bumped version. Cost: one fresh load
+ * (two head counts per exam, ~1 s) on the first request of each day.
+ *
+ * Pure. Spec: tests/exam-catalog-cache-key.test.ts.
+ */
+export function examCatalogCacheKey(now: Date): string[] {
+  return ["exam-catalog-payload-v5", now.toISOString().slice(0, 10)];
+}
 
 /**
  * The homepage exam catalog.

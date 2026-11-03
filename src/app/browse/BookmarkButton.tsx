@@ -42,7 +42,7 @@ export default function BookmarkButton({ questionId }: { questionId: string }) {
         // The free save limit (0134): say so, and where unlimited saves are.
         sendActivityOnce("saves", { kind: "paywall_event", step: "shown", gate: "saves" });
         toast.error(err.message, {
-          description: "Remove a saved question to make room, or get Premium Pass for unlimited saves.",
+          description: "Remove a saved question to make room, or get the Practice Pass for unlimited saves.",
           action: {
             label: "Get pass",
             onClick: () => {

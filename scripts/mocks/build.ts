@@ -63,6 +63,11 @@ import {
   JIPMAT_PAPER,
   MPSC_GBC_PAPER,
   MPSC_SSP_GS1_PAPER,
+  MPSC_SSP_CSAT_PAPER,
+  MPSC_SSP_CSAT_2021_PAPER,
+  MPSC_FSP_PAPER,
+  MPSC_ASP_PAPER,
+  MPSC_ASP_200_PAPER,
   UPSC_GS1_PAPER,
   UPSC_CSAT_PAPER,
   SSC_CGL_T1_PAPER,
@@ -95,8 +100,8 @@ import {
 import { deriveMhtCetSittings } from "./mhtcetSittings";
 import { deriveJeeSittings, JEE_SHIFT_SIZE } from "./jeeSittings";
 import { ipmatIndoreSittings, isGrace, jipmatSittings as deriveJipmatSittings } from "./ipmatSittings";
-import { deriveMpscSittings, sspMockTitle } from "./mpscSittings";
-import { PAPERS as MPSC_PAPERS, SSP_PAPERS as MPSC_SSP_PAPERS } from "../mpsc/config";
+import { CSAT_MOCK_PAPERS, deriveMpscSittings, serviceMockTitle, sspCsatMockTitle, sspMockTitle } from "./mpscSittings";
+import { ASP_PAPERS as MPSC_ASP_PAPERS, FSP_PAPERS as MPSC_FSP_PAPERS, PAPERS as MPSC_PAPERS, SSP_PAPERS as MPSC_SSP_PAPERS } from "../mpsc/config";
 import { deriveMainsSittings, mainsBlueprint } from "./mpscMainsSittings";
 import { PAPERS as MPSC_MAINS_PAPERS } from "../mpsc-mains/config";
 import { deriveUpscSittings } from "./upscSittings";
@@ -664,8 +669,9 @@ function jeeSittings(bp: MockPaperBlueprint): SourceFileSitting[] {
 }
 
 /**
- * MPSC Group B & C sittings as the shared shape. The official key's cancelled
- * questions ride as grace through `prepare`, as CDS's withdrawn items do.
+ * MPSC sittings as the shared shape. The official key's cancelled questions ride
+ * as grace through `prepare`, as CDS's withdrawn items do; so do CSAT's
+ * per-option marks (Decision Making) and its printed no-penalty questions.
  */
 function mpscSittings(papers = MPSC_PAPERS, titleFor?: (y: number, note: string) => string): SourceFileSitting[] {
   return deriveMpscSittings(papers, undefined, titleFor).map((s) => ({
@@ -676,7 +682,17 @@ function mpscSittings(papers = MPSC_PAPERS, titleFor?: (y: number, note: string)
     title: s.title,
     prepare: (rows) => {
       const grace = new Set(s.graceNumbers);
-      return rows.map((r) => (grace.has(Number(r.questionNumber)) ? { ...r, grace: true } : r));
+      const noPenalty = new Set(s.noPenaltyNumbers ?? []);
+      return rows.map((r) => {
+        const n = Number(r.questionNumber);
+        const optionMarks = s.optionMarks?.[n];
+        return {
+          ...r,
+          ...(grace.has(n) ? { grace: true } : {}),
+          ...(optionMarks ? { optionMarks } : {}),
+          ...(noPenalty.has(n) ? { noPenalty: true } : {}),
+        };
+      });
     },
   }));
 }
@@ -896,6 +912,15 @@ async function main() {
   if (runMpsc) {
     await buildFromSourceFiles(db, MPSC_GBC_PAPER, mpscSittings(), run, "mpscSittings.ts");
     await buildFromSourceFiles(db, MPSC_SSP_GS1_PAPER, mpscSittings(MPSC_SSP_PAPERS, sspMockTitle), run, "mpscSittings.ts");
+    // CSAT: covers from 2021 on cut a quarter for a wrong answer, every earlier one a third.
+    const csat = (quarter: boolean) => CSAT_MOCK_PAPERS.filter((p) => (p.pyqYear >= 2021) === quarter);
+    await buildFromSourceFiles(db, MPSC_SSP_CSAT_PAPER, mpscSittings(csat(false), sspCsatMockTitle), run, "mpscSittings.ts");
+    await buildFromSourceFiles(db, MPSC_SSP_CSAT_2021_PAPER, mpscSittings(csat(true), sspCsatMockTitle), run, "mpscSittings.ts");
+    // Forest + Agriculture: Agriculture 2011 and 2012 are 200-question papers, the rest 100.
+    await buildFromSourceFiles(db, MPSC_FSP_PAPER, mpscSittings(MPSC_FSP_PAPERS, serviceMockTitle), run, "mpscSittings.ts");
+    const asp = (long: boolean) => MPSC_ASP_PAPERS.filter((p) => (p.questions === 200) === long);
+    await buildFromSourceFiles(db, MPSC_ASP_PAPER, mpscSittings(asp(false), serviceMockTitle), run, "mpscSittings.ts");
+    await buildFromSourceFiles(db, MPSC_ASP_200_PAPER, mpscSittings(asp(true), serviceMockTitle), run, "mpscSittings.ts");
   }
   if (runSsc) await buildFromSourceFiles(db, SSC_CGL_T1_PAPER, sscCglSittings(), run, "sscSittings.ts");
   if (runSscT2) await buildSscT2(db, run);

@@ -52,6 +52,7 @@ type Row = {
   books_refunded: number;
   book_paise: number;
   pass_usd_cents: number;
+  practice_sold: number;
 };
 
 describe.skipIf(!HAS_ENV)("sales_by_period", () => {
@@ -85,10 +86,11 @@ describe.skipIf(!HAS_ENV)("sales_by_period", () => {
       paise: number | null,
       status = "active",
       source = "razorpay",
-      currency = "INR"
+      currency = "INR",
+      scope = "mocks"
     ) => ({
       user_id: userId,
-      scope: "mocks",
+      scope,
       source,
       status,
       granted_at: at,
@@ -97,7 +99,8 @@ describe.skipIf(!HAS_ENV)("sales_by_period", () => {
       currency,
     });
     const { error: passError } = await admin.from("entitlements").insert([
-      pass(PAY("a"), "2001-03-05T18:15:00Z", 19900), // Mon 5 Mar, 23:45 IST
+      // A Practice Pass (0212): counted in passes_sold and again in practice_sold.
+      pass(PAY("a"), "2001-03-05T18:15:00Z", 19900, "active", "razorpay", "INR", "practice"), // Mon 5 Mar, 23:45 IST
       pass(PAY("b"), "2001-03-05T18:30:00Z", 9900, "revoked"), // Tue 6 Mar, 00:00 IST, refunded
       pass(PAY("c"), "2001-03-05T10:00:00Z", null, "active", "comp"), // a comp grant: not a sale
       pass(PAY("d"), "2001-03-07T06:00:00Z", 9900, "expired"), // Wed 7 Mar, paid then lapsed
@@ -167,10 +170,18 @@ describe.skipIf(!HAS_ENV)("sales_by_period", () => {
       books_refunded: 0,
       book_paise: 0,
       pass_usd_cents: 0,
+      practice_sold: 0,
       ...over,
     });
     expect(await periods("day")).toEqual([
-      day("2001-03-05", { paywall_students: 2, checkout_students: 2, pass_orders: 3, passes_sold: 1, pass_paise: 19900 }),
+      day("2001-03-05", {
+        paywall_students: 2,
+        checkout_students: 2,
+        pass_orders: 3,
+        passes_sold: 1,
+        pass_paise: 19900,
+        practice_sold: 1,
+      }),
       day("2001-03-06", {
         paywall_students: 1,
         checkout_students: 1,
@@ -201,6 +212,7 @@ describe.skipIf(!HAS_ENV)("sales_by_period", () => {
       books_refunded: 0,
       book_paise: 4900,
       pass_usd_cents: 1900,
+      practice_sold: 1,
     };
     expect(await periods("week")).toEqual([{ period: "2001-03-05", ...total }]);
     expect(await periods("month")).toEqual([{ period: "2001-03-01", ...total }]);

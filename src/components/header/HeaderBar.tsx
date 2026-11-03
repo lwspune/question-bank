@@ -112,7 +112,9 @@ export default function HeaderBar({
             <img src="/icons/mark-96.png" alt="" aria-hidden width={24} height={24} className="h-6 w-6 shrink-0" />
             {/* The wordmark used to hide below sm so the icon row could fit; the nav
                 has moved to MobileTabBar, so there is room for it again. */}
-            <span>PYQ Vault</span>
+            {/* Below 360 px the words give way so the Ebooks and Tutor labels fit;
+                the logo stays and the link keeps its name for screen readers. */}
+            <span className="max-[359px]:sr-only">PYQ Vault</span>
             {/* The Premium Pass mark (2026-10-21). Drawn only once the session
                 lands, so the cached HTML stays the same for everyone. Part of
                 the brand link, not a link of its own; /account shows the pass. */}
@@ -190,7 +192,7 @@ export default function HeaderBar({
 /** The header's outlined buttons (Ebooks, Tutor); filled when you are on their page. */
 function headerButtonClass(active: boolean): string {
   return (
-    "inline-flex h-9 shrink-0 items-center gap-1.5 rounded-md border px-2.5 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 " +
+    "inline-flex h-9 shrink-0 items-center gap-1.5 rounded-md border px-2 text-sm sm:px-2.5 font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 " +
     (active ? "border-brand bg-brand text-brand-foreground" : "border-brand/40 text-brand-accent hover:bg-brand/10")
   );
 }
@@ -205,7 +207,11 @@ function StoreLink() {
       aria-current={active ? "page" : undefined}
       className={headerButtonClass(active)}
     >
-      <ShoppingBag className="h-4 w-4 shrink-0" aria-hidden />
+      <ShoppingBag className="hidden h-4 w-4 shrink-0 sm:block" aria-hidden />
+      {/* Words, not icons, on a phone: students did not know what the icons
+          meant (owner, 2026-11-02). Icon AND word overflowed a 390 px screen
+          and cut "Sign in" off, so the icon shows from sm up; measured to fit
+          at 360 px. */}
       <span>Ebooks</span>
     </Link>
   );
@@ -223,7 +229,7 @@ function TutorLink() {
       aria-current={active ? "page" : undefined}
       className={headerButtonClass(active)}
     >
-      <GraduationCap className="h-4 w-4 shrink-0" aria-hidden />
+      <GraduationCap className="hidden h-4 w-4 shrink-0 sm:block" aria-hidden />
       <span>Tutor</span>
     </Link>
   );

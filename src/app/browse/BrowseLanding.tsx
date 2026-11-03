@@ -6,6 +6,7 @@ import type {
 } from "@/lib/questions/browseLanding";
 import { getExamBySlug } from "@/lib/exam/examContext";
 import { groupExamFamilies, familyTotal, membersByStage } from "@/lib/exam/examFamily";
+import { sortByDemand, withChosenExamFirst } from "@/lib/exam/demandOrder";
 
 /**
  * What bare `/browse` shows instead of 25 arbitrary questions.
@@ -25,15 +26,22 @@ export default function BrowseLanding({
   exams,
   chapters,
   chapterDirectoryCount,
+  chosenSlug = null,
 }: {
   exams: ExamStarter[];
   chapters: StarterChapter[];
   chapterDirectoryCount: number;
+  /** The visitor's chosen exam (qb_exam), shown first. */
+  chosenSlug?: string | null;
 }) {
   // Board exams grouped into two families. `buildExamStarters` has already
   // dropped any exam with nothing in the default view, so a family that lost
   // all but one member correctly degrades back to a single pill.
-  const examNodes = groupExamFamilies(exams, (e) => getExamBySlug(e.slug));
+  // The visitor's own exam first, then most-chosen first, as on the homepage.
+  const examNodes = withChosenExamFirst(
+    sortByDemand(groupExamFamilies(exams, (e) => getExamBySlug(e.slug))),
+    chosenSlug
+  );
   return (
     <div className="space-y-8">
       <section aria-labelledby="browse-start-exam">
@@ -98,7 +106,7 @@ export default function BrowseLanding({
               <li key={exam.slug}>
                 <Link
                   href={exam.href}
-                  className="group flex h-full items-center justify-between gap-2 rounded-lg border bg-card p-3 shadow-sm transition-colors hover:border-brand-accent/60 hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:gap-3 sm:p-4"
+                  className="group flex h-full items-start justify-between gap-2 rounded-lg border bg-card p-3 shadow-sm transition-colors hover:border-brand-accent/60 hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 sm:gap-3 sm:p-4"
                 >
                   <span className="min-w-0">
                     <span className="block truncate text-sm font-medium">

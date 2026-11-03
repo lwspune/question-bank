@@ -26,7 +26,7 @@ export const NEWTONS_LAWS_NOTE: SubtopicNote = {
         label: "Condition for the first law (equilibrium of motion)",
         latex: "\\vec{F}_{\\text{net}} = 0 \\iff \\vec{a} = 0",
         symbols: [
-          { symbol: "F_net", meaning: "net (resultant) external force on the body" },
+          { symbol: "F_{\\text{net}}", meaning: "net (resultant) external force on the body" },
           { symbol: "a", meaning: "acceleration; zero means rest or constant velocity" },
         ],
       },
@@ -147,8 +147,8 @@ export const NEWTONS_LAWS_NOTE: SubtopicNote = {
         label: "Newton's third law (force pair)",
         latex: "\\vec{F}_{AB} = -\\vec{F}_{BA}",
         symbols: [
-          { symbol: "F_AB", meaning: "force exerted by A on B (action)" },
-          { symbol: "F_BA", meaning: "force exerted by B on A (reaction)" },
+          { symbol: "F_{AB}", meaning: "force exerted by A on B (action)" },
+          { symbol: "F_{BA}", meaning: "force exerted by B on A (reaction)" },
         ],
       },
       authoredExample: {

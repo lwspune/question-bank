@@ -4,7 +4,7 @@ import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { getSessionMember, getSessionUser } from "@/lib/auth";
 import { resolveExportAccess } from "@/lib/export/access";
 import { userHasAnyAccess } from "@/lib/entitlements/query";
-import { passScopesFor } from "@/lib/billing/passScope";
+import { downloadScopesFor } from "@/lib/billing/passScope";
 import { planSiteForHost } from "@/lib/sites/intl";
 import { recordExportEvent } from "@/lib/export/log";
 import { readPaywallSettings } from "@/lib/billing/admin";
@@ -18,6 +18,7 @@ import { PDF_CONTENT_TYPE } from "@/lib/export/fileType";
 import { getNotesChapterBySlug } from "@/lib/notes/chapters";
 import { checkAndIncrement } from "@/lib/rate-limit";
 import { getClientIp } from "@/lib/http";
+import { formulaSheetIsFree } from "@/lib/export/freeExamDownload";
 
 /**
  * POST /api/export/formula-sheet (2026-10-10): one /notes chapter's formula
@@ -66,8 +67,8 @@ export async function POST(request: NextRequest) {
         ? await userHasAnyAccess(
             createSupabaseServerClient(),
             user.id,
-            // The site's own passes (0206).
-            passScopesFor(planSiteForHost(request.headers.get("host")))
+            // The site's own passes (0206); on www the Premium Pass, not Practice.
+            downloadScopesFor(planSiteForHost(request.headers.get("host")))
           )
         : false;
 
@@ -98,11 +99,19 @@ export async function POST(request: NextRequest) {
     }
 
     const sheetKey = formulaSheetKey(target);
+    // A free exam's sheet (the Class 9-10 exams, 0210) downloads as a pass holder's.
+    const examFree = !isStaff && !hasDownloadPass && formulaSheetIsFree(target);
     const freeDownloadLeft =
-      user && !isStaff && !hasDownloadPass
+      user && !isStaff && !hasDownloadPass && !examFree
         ? await isFormulaSheetFree(createSupabaseServerClient(), user.id, sheetKey)
         : undefined;
-    const access = resolveExportAccess({ kind: "formula", isSignedIn, isStaff, hasDownloadPass, freeDownloadLeft });
+    const access = resolveExportAccess({
+      kind: "formula",
+      isSignedIn,
+      isStaff,
+      hasDownloadPass: hasDownloadPass || examFree,
+      freeDownloadLeft,
+    });
     if (!access.allowed) {
       return NextResponse.json({ error: access.message }, { status: access.status });
     }

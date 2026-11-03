@@ -25,7 +25,7 @@ export const FRICTION_NOTE: SubtopicNote = {
         label: "Limiting friction",
         latex: "f_{\\max} = \\mu N",
         symbols: [
-          { symbol: "f_max", meaning: "maximum (limiting) friction force" },
+          { symbol: "f_{\\max}", meaning: "maximum (limiting) friction force" },
           { symbol: "μ", meaning: "coefficient of friction (dimensionless)" },
           { symbol: "N", meaning: "normal force (= mg on flat ground)" },
         ],

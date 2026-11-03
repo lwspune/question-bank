@@ -19,6 +19,7 @@ type Row = {
   books_refunded: number;
   book_paise: number | string;
   pass_usd_cents: number | string | null;
+  practice_sold: number | null;
 };
 
 /** Sales per period from the IST day `since` (null = from the first sale), oldest first. */
@@ -45,6 +46,7 @@ export async function loadSalesByPeriod(
     booksRefunded: r.books_refunded,
     bookPaise: Number(r.book_paise),
     passUsdCents: Number(r.pass_usd_cents ?? 0),
+    practiceSold: r.practice_sold ?? 0,
   }));
 }
 
