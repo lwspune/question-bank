@@ -43,6 +43,15 @@ export const SSP_KEY_DIR = "C:/Users/vilas/Downloads/mpsc-ssp-final-keys";
  * 2017 booklet was on the listing, so 2017 has a key but no paper.
  */
 export const SSP_CSAT_DIR = "C:/Users/vilas/Downloads/mpsc-ssp-csat";
+/**
+ * State Services 2023-2025, both papers: MPSC's booklets and keys as posted on
+ * Google Drive by Physics Wallah (2026-11-03). paper-<gs|csat>-<year>.pdf and
+ * key-<gs|csat>-<year>.pdf. The 2024 booklets are a candidate's used copies,
+ * photographed (ticks and circles on options, an "@SPOTLESS_MPSC" mark, some
+ * pages sideways): the marks are a cross-check at most, never the key. The 2025
+ * keys are MPSC's FIRST keys (objections until 18 Nov 2025); no final key found.
+ */
+export const SSP_2023_DIR = "C:/Users/vilas/Downloads/mpsc-ssp-2023-2025";
 
 /** The exams this pipeline writes to. Ids are printed by seed.ts --apply. */
 export type ExamKey = "gbc" | "ssp" | "fsp" | "asp";
@@ -117,6 +126,8 @@ export type Paper = {
    * the mock's marking; not used by the bank.
    */
   noPenalty?: number[];
+  /** The booklet's set (संच), whose column of the 4-set key applies. Absent: A. */
+  bookletSet?: "A" | "B" | "C" | "D";
   pyqNote: string;
   sourceFile: string;
 };
@@ -226,6 +237,17 @@ export const SSP_PAPERS: Paper[] = [
   ssp(2015, "2015-04-05", "V05", [317, 364], "5 Apr 2015"),
   ssp(2013, "2013-05-18", "X01", [365, 412], "18 May 2013"),
   ssp(2014, "2014-02-02", "G03", [413, 460], "2 Feb 2014"),
+  ...([
+    [2023, "2023-06-04", "Q17", 46, "4 Jun 2023", "A"],
+    [2024, "2024-12-01", "W18", 45, "1 Dec 2024", "D"],
+    [2025, "2025-11-09", "E21", 46, "9 Nov 2025", "C"],
+  ] as const).map(([y, date, code, n, label, set]): Paper => ({
+    ...ssp(y, date, code, [1, n], label),
+    sourcePdf: `${SSP_2023_DIR}/paper-gs-${y}.pdf`,
+    keyPdf: `${SSP_2023_DIR}/key-gs-${y}.pdf`,
+    bookletSet: set,
+    ...(y === 2025 ? { provisionalKey: true } : {}),
+  })),
 ];
 
 /**
@@ -275,6 +297,18 @@ export const SSP_CSAT_PAPERS: Paper[] = [
   { ...csat(2015, "2015-04-05", "W05", 56, "5 Apr 2015"), noPenalty: [46, 47, 48, 49, 50, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80] },
   csat(2014, "2014-02-02", "H03", 48, "2 Feb 2014"),
   csat(2013, "2013-05-18", "Y01", 48, "18 May 2013"),
+  ...([
+    [2023, "2023-06-04", "R17", 64, "4 Jun 2023", "D"],
+    [2024, "2024-12-01", "X18", 43, "1 Dec 2024", "D"],
+    [2025, "2025-11-09", "F21", 52, "9 Nov 2025", "C"],
+  ] as const).map(([y, date, code, n, label, set]): Paper => ({
+    ...csat(y, date, code, n, label),
+    sourcePdf: `${SSP_2023_DIR}/paper-csat-${y}.pdf`,
+    keyPdf: `${SSP_2023_DIR}/key-csat-${y}.pdf`,
+    keyPages: [1, 2],
+    bookletSet: set,
+    ...(y === 2025 ? { provisionalKey: true } : {}),
+  })),
 ];
 
 /**
@@ -425,8 +459,8 @@ export const ASP_PAPERS: Paper[] = [
 /** Every paper this pipeline can load. `PAPERS` stays Group B & C only — the mock builder derives its sittings from it. */
 export const ALL_PAPERS: Paper[] = [...PAPERS, ...SSP_PAPERS, ...SSP_CSAT_PAPERS, ...FSP_PAPERS, ...ASP_PAPERS];
 
-/** The booklets on file are all Set A, so the key's first column applies. */
-export const BOOKLET_SET_INDEX = 0;
+/** The column of the 4-set key that applies to a paper's booklet (Set A unless `bookletSet` says otherwise). */
+export const bookletSetIndex = (p: Paper): number => "ABCD".indexOf(p.bookletSet ?? "A");
 export const QUESTIONS_PER_PAPER = 100;
 export const questionCount = (p: Paper): number => p.questions ?? QUESTIONS_PER_PAPER;
 

@@ -104,11 +104,45 @@ MERGED_PAPERS = {
     "asp-2017": ((1022, 1045), (1046, 1047)),
     "asp-2018": ((1048, 1079), (1080, 1081)),
 }
+# State Services 2023-2025 (config.ts SSP_2023_DIR): each booklet and key its
+# own PDF, paper-<gs|csat>-<year>.pdf / key-<gs|csat>-<year>.pdf, booklet pages 1..n.
+SSP_2023_DIR = r"C:/Users/vilas/Downloads/mpsc-ssp-2023-2025"
+SSP_2023_PAPERS = {
+    "ssp-2023": ("gs", 2023, 46),
+    "ssp-2024": ("gs", 2024, 45),
+    "ssp-2025": ("gs", 2025, 46),
+    "ssp-csat-2023": ("csat", 2023, 64),
+    "ssp-csat-2024": ("csat", 2024, 43),
+    "ssp-csat-2025": ("csat", 2025, 52),
+}
 IMAGE_ONLY_KEYS = {"2019-c", "ssp-2019"}
+# Pages photographed sideways: page number -> degrees CLOCKWISE to stand them
+# up. Applied on render and on figure crops, so a figure box is always read
+# off the upright page. ssp-csat-2024 pp.26-43 have their top to the left.
+ROTATE = {"ssp-csat-2024": {n: 90 for n in range(26, 44)}}
+
+
+def page_image(pid, n, dpi, clip=None):
+    """Page n of a paper's booklet as an upright PIL image (clip = a box in 130-dpi upright pixels)."""
+    from PIL import Image
+
+    pix = doc_for(source(pid)[0])[n - 1].get_pixmap(dpi=dpi)
+    im = Image.frombytes("RGB", (pix.width, pix.height), pix.samples)
+    turn = ROTATE.get(pid, {}).get(n)
+    if turn:
+        im = im.rotate(-turn, expand=True)
+    if clip:
+        k = dpi / 130
+        im = im.crop(tuple(round(v * k) for v in clip))
+    return im
 
 
 def source(pid):
     """(booklet doc path, booklet pages, key doc path, key pages) for a paper."""
+    if pid in SSP_2023_PAPERS:
+        kind, year, n = SSP_2023_PAPERS[pid]
+        key = os.path.join(SSP_2023_DIR, f"key-{kind}-{year}.pdf")
+        return os.path.join(SSP_2023_DIR, f"paper-{kind}-{year}.pdf"), (1, n), key, (1, len(doc_for(key)))
     if pid in SSP_CSAT_PAPERS:
         file_year, n = SSP_CSAT_PAPERS[pid]
         key = os.path.join(SSP_CSAT_DIR, f"key-{pid[-4:]}.pdf")
@@ -133,7 +167,7 @@ def doc_for(path):
 
 def keys(only=None):
     os.makedirs(DATA, exist_ok=True)
-    for pid in [*PAPERS, *SSP_PAPERS, *SSP_CSAT_PAPERS, *MERGED_PAPERS]:
+    for pid in [*PAPERS, *SSP_PAPERS, *SSP_CSAT_PAPERS, *SSP_2023_PAPERS, *MERGED_PAPERS]:
         if only and not pid.startswith(only):
             continue
         _, _, keypath, (k1, k2) = source(pid)
@@ -192,7 +226,10 @@ def render(pid, dpi=130):
     out = os.path.join(DATA, "pages", pid)
     os.makedirs(out, exist_ok=True)
     for n in range(a, b + 1):
-        doc[n - 1].get_pixmap(dpi=dpi).save(os.path.join(out, f"p{n:03d}.png"))
+        if n in ROTATE.get(pid, {}):
+            page_image(pid, n, dpi).save(os.path.join(out, f"p{n:03d}.png"))
+        else:
+            doc[n - 1].get_pixmap(dpi=dpi).save(os.path.join(out, f"p{n:03d}.png"))
     print(f"{pid}: rendered pages {a}-{b} -> {out}")
 
 
@@ -210,7 +247,10 @@ def figures(pid, dpi=220):
         x0, y0, x1, y1 = fig["box"]
         clip = fitz.Rect(x0 * k, y0 * k, x1 * k, y1 * k)
         path = os.path.join(out, f"q{q['n']}.png")
-        doc_for(source(pid)[0])[fig["page"] - 1].get_pixmap(dpi=dpi, clip=clip).save(path)
+        if fig["page"] in ROTATE.get(pid, {}):
+            page_image(pid, fig["page"], dpi, clip=fig["box"]).save(path)
+        else:
+            doc_for(source(pid)[0])[fig["page"] - 1].get_pixmap(dpi=dpi, clip=clip).save(path)
         if pid in WATERMARKED:
             print(f"  q{q['n']}: {dewatermark(path)} watermark pixel(s) whitened ({WATERMARKED[pid]})")
         n += 1

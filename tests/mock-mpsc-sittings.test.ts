@@ -113,12 +113,13 @@ describe("deriveMpscSittings", () => {
     expect(sspMockTitle(2020, "GS Paper I · 21 Mar 2021")).toBe("MPSC State Services Prelims 2020 — GS Paper I — 21 Mar 2021");
   });
 
-  it("derives the ten State Services sittings, graced from their official keys", () => {
+  it("derives the thirteen State Services sittings, graced from their official keys", () => {
     const got = deriveMpscSittings(SSP_PAPERS, undefined, sspMockTitle);
     expect(got.map((s) => s.slug).sort()).toEqual(SSP_PAPERS.map((p) => `mpsc-ssp-${p.pyqYear}`).sort());
     expect(got.find((s) => s.key === "ssp-2022")?.graceNumbers).toEqual([42, 95, 96]);
-    // Measured: 24 cancelled questions across the ten final keys.
-    expect(got.reduce((n, s) => n + s.graceNumbers.length, 0)).toBe(24);
+    // Measured: 24 cancelled across the 2013-2022 final keys, plus 2023's Q38 and Q75.
+    expect(got.find((s) => s.key === "ssp-2023")?.graceNumbers).toEqual([38, 75]);
+    expect(got.reduce((n, s) => n + s.graceNumbers.length, 0)).toBe(26);
   });
 
   it("covers every configured paper with a distinct slug", () => {
@@ -224,23 +225,27 @@ describe("State Services CSAT (Paper II): every cover, 80 questions, 200 marks, 
     expect(sspCsatMockTitle(2021, "CSAT Paper II · 23 Jan 2022")).toBe("MPSC State Services Prelims 2021, CSAT Paper II (23 Jan 2022)");
   });
 
-  it("mocks the eight ingested sittings, never 2022 (dropped by the owner)", () => {
-    expect(CSAT_MOCK_PAPERS.map((p) => p.pyqYear).sort()).toEqual([2013, 2014, 2015, 2016, 2018, 2019, 2020, 2021]);
+  it("mocks every sitting but 2022 (dropped by the owner)", () => {
+    expect(CSAT_MOCK_PAPERS.map((p) => p.pyqYear).sort()).toEqual([2013, 2014, 2015, 2016, 2018, 2019, 2020, 2021, 2023, 2024, 2025]);
   });
 
   const got = deriveMpscSittings(CSAT_MOCK_PAPERS, undefined, sspCsatMockTitle);
   const sit = (y: number) => got.find((s) => s.year === y)!;
 
-  it("graces MPSC's 17 cancelled questions", () => {
+  it("graces MPSC's 18 cancelled questions", () => {
     expect(sit(2016).graceNumbers).toEqual([35, 57, 61, 62, 69]);
-    expect(got.reduce((n, s) => n + s.graceNumbers.length, 0)).toBe(17);
+    // 2023's Set-D booklet: the key cancels Q51 in that set (Q56 in Set A).
+    expect(sit(2023).graceNumbers).toEqual([51]);
+    expect(got.reduce((n, s) => n + s.graceNumbers.length, 0)).toBe(18);
   });
 
   it("carries the final key's per-option marks for every Decision Making question", () => {
     expect(Object.keys(sit(2013).optionMarks ?? {}).map(Number)).toEqual([74, 75, 76, 77, 78, 79, 80]);
     expect(sit(2015).optionMarks?.[77]).toEqual({ A: 0, B: 2.5, C: 2, D: 1 });
+    // Read from the booklet's own set: 2023 is a Set-D booklet.
+    expect(sit(2023).optionMarks?.[76]).toEqual({ A: 1.5, B: 0, C: 1, D: 2.5 });
     // 2013 prints seven, every later booklet five.
-    expect(got.reduce((n, s) => n + Object.keys(s.optionMarks ?? {}).length, 0)).toBe(42);
+    expect(got.reduce((n, s) => n + Object.keys(s.optionMarks ?? {}).length, 0)).toBe(57);
   });
 
   it("drops the penalty on the fifteen questions 2015's final key exempts (key p.3)", () => {

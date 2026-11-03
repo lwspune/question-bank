@@ -330,6 +330,21 @@ describe("star cells (a set's decision-making question)", () => {
   });
 });
 
+describe("applyGradedKey on a booklet other than Set A", () => {
+  it("fills a * in the booklet's own set column from that set's grid", () => {
+    const rows = new Map<number, ("A" | "B" | "C" | "D" | "#" | "*")[]>([[76, ["B", "C", "*", "*"]]]);
+    const { rows: out, errors } = applyGradedKey(rows, { 76: [1, 1.5, 2.5, 0] }, 2);
+    expect(errors).toEqual([]);
+    expect(out.get(76)).toEqual(["B", "C", "C", "*"]);
+  });
+
+  it("refuses a * in the booklet's set with no grid row, and ignores a * in another set", () => {
+    const rows = new Map<number, ("A" | "B" | "C" | "D" | "#" | "*")[]>([[80, ["*", "A", "*", "B"]]]);
+    expect(applyGradedKey(rows, {}, 2).errors).toEqual(["Q80: set C prints * but the graded grid has no row for it"]);
+    expect(applyGradedKey(rows, {}, 3).errors).toEqual([]);
+  });
+});
+
 describe("gradedBalanceIssues", () => {
   it("passes when every set holds the same mark rows, in any question order and option order", () => {
     expect(
