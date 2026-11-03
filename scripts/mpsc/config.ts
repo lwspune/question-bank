@@ -43,6 +43,15 @@ export const SSP_KEY_DIR = "C:/Users/vilas/Downloads/mpsc-ssp-final-keys";
  * 2017 booklet was on the listing, so 2017 has a key but no paper.
  */
 export const SSP_CSAT_DIR = "C:/Users/vilas/Downloads/mpsc-ssp-csat";
+/**
+ * State Services 2023-2025, both papers: MPSC's booklets and keys as posted on
+ * Google Drive by Physics Wallah (2026-11-03). paper-<gs|csat>-<year>.pdf and
+ * key-<gs|csat>-<year>.pdf. The 2024 booklets are a candidate's used copies,
+ * photographed (ticks and circles on options, an "@SPOTLESS_MPSC" mark, some
+ * pages sideways): the marks are a cross-check at most, never the key. The 2025
+ * keys are MPSC's FIRST keys (objections until 18 Nov 2025); no final key found.
+ */
+export const SSP_2023_DIR = "C:/Users/vilas/Downloads/mpsc-ssp-2023-2025";
 
 /** The exams this pipeline writes to. Ids are printed by seed.ts --apply. */
 export type ExamKey = "gbc" | "ssp" | "fsp" | "asp";
@@ -117,6 +126,8 @@ export type Paper = {
    * the mock's marking; not used by the bank.
    */
   noPenalty?: number[];
+  /** The booklet's set (संच), whose column of the 4-set key applies. Absent: A. */
+  bookletSet?: "A" | "B" | "C" | "D";
   pyqNote: string;
   sourceFile: string;
 };
@@ -215,6 +226,44 @@ const ssp = (pyqYear: number, date: string, code: string, pages: [number, number
   chapters: SSP_CHAPTERS,
 });
 
+/**
+ * The owner's 2026-11-03 ruling on the doubtful keys in the State Services
+ * 2023-2025 papers: notice + grace, MPSC's key kept (the 2026-11-02 Forest and
+ * Agriculture ruling). `notice` is a function declaration so these can sit
+ * above the paper lists that use them.
+ */
+const SSP_2023_2025_NOTICES: Record<string, Record<number, { en: string; mr: string }>> = {
+  "ssp-2023": {
+    17: notice(
+      "MPSC's key gives option C, nitrogen trioxide. When soil bacteria break down nitrogen fertilisers (nitrification and denitrification), the gas they release is nitrous oxide, \\(\\mathrm{N_2O}\\), option B.",
+      "आयोगाच्या उत्तरतालिकेत पर्याय C, नायट्रोजन ट्रायऑक्साइड, बरोबर दिला आहे. मातीतील जिवाणू नायट्रोजन खतांचे विघटन करतात (नायट्रीकरण व विनायट्रीकरण) तेव्हा मुक्त होणारा वायू नायट्रस ऑक्साइड, \\(\\mathrm{N_2O}\\), म्हणजे पर्याय B आहे."
+    ),
+    50: notice(
+      "MPSC's key gives option C. AMRUT's first aim is a tap and sewerage connection for every household, so statement C is correct. The incorrect statement is more likely B: AMRUT was launched in 2015 by the Ministry of Urban Development, which became the Ministry of Housing and Urban Affairs only in 2017.",
+      "आयोगाच्या उत्तरतालिकेत पर्याय C बरोबर दिला आहे. प्रत्येक घराला नळजोडणी व मलनिःसारण जोडणी देणे हे अमृत योजनेचे पहिले उद्दिष्ट आहे, म्हणून विधान C बरोबर आहे. चुकीचे विधान बहुधा B आहे: अमृत योजना 2015 मध्ये नगरविकास मंत्रालयाने सुरू केली; त्याचे गृहनिर्माण व नागरी व्यवहार मंत्रालय 2017 मध्ये झाले."
+    ),
+  },
+  "ssp-2025": {
+    84: notice(
+      "MPSC's key gives option A, 1990. That is the year of the National Commission for Women Act; the Commission itself was set up on 31 January 1992, option C.",
+      "आयोगाच्या उत्तरतालिकेत पर्याय A, 1990, बरोबर दिला आहे. 1990 हे राष्ट्रीय महिला आयोग कायद्याचे वर्ष आहे; आयोग प्रत्यक्ष 31 जानेवारी 1992 रोजी स्थापन झाला, म्हणजे पर्याय C."
+    ),
+  },
+  "ssp-csat-2024": {
+    64: notice(
+      "MPSC's key gives option B. The passage says we are surrounded by people who enjoy the suffering of others; it does not say that most people become happy that way. Option A follows the whole paragraph: empathy brings kind acts and happiness, while jealousy and greed poison social life and lower the self-esteem of others.",
+      "आयोगाच्या उत्तरतालिकेत पर्याय B बरोबर दिला आहे. इतरांच्या दुःखात आनंद मानणारे लोक आपल्याभोवती असतात एवढेच उताऱ्यात म्हटले आहे; बहुतेक लोक त्यातून आनंदी होतात असे म्हटलेले नाही. पर्याय A संपूर्ण उताऱ्याचा आशय मांडतो: सहानुभूतीमुळे दयाळू कृती व आनंद मिळतो, तर मत्सर व लोभ सामाजिक जीवन विषारी करतात आणि इतरांचा आत्मसन्मान कमी करतात."
+    ),
+  },
+  "ssp-csat-2025": {
+    58: notice(
+      "No option is right as printed. Three of the 13 balls are red, so the probability that all three balls drawn are red is \\(\\frac{1}{\\binom{13}{3}} = \\frac{1}{286}\\), which is not an option. MPSC's key gives option C, \\(\\frac{2}{91}\\).",
+      "छापलेल्या स्वरूपात कोणताही पर्याय बरोबर नाही. 13 बॉलपैकी 3 लाल आहेत, म्हणून काढलेले तिन्ही बॉल लाल असण्याची शक्यता \\(\\frac{1}{\\binom{13}{3}} = \\frac{1}{286}\\) आहे; हे उत्तर पर्यायांमध्ये नाही. आयोगाच्या उत्तरतालिकेत पर्याय C, \\(\\frac{2}{91}\\), दिला आहे."
+    ),
+  },
+};
+const notices2023 = (id: string) => (SSP_2023_2025_NOTICES[id] ? { notices: SSP_2023_2025_NOTICES[id] } : {});
+
 export const SSP_PAPERS: Paper[] = [
   ssp(2022, "2022-08-21", "H15", [1, 40], "21 Aug 2022"),
   ssp(2021, "2022-01-23", "O14", [41, 88], "23 Jan 2022"),
@@ -226,6 +275,18 @@ export const SSP_PAPERS: Paper[] = [
   ssp(2015, "2015-04-05", "V05", [317, 364], "5 Apr 2015"),
   ssp(2013, "2013-05-18", "X01", [365, 412], "18 May 2013"),
   ssp(2014, "2014-02-02", "G03", [413, 460], "2 Feb 2014"),
+  ...([
+    [2023, "2023-06-04", "Q17", 46, "4 Jun 2023", "A"],
+    [2024, "2024-12-01", "W18", 45, "1 Dec 2024", "D"],
+    [2025, "2025-11-09", "E21", 46, "9 Nov 2025", "C"],
+  ] as const).map(([y, date, code, n, label, set]): Paper => ({
+    ...ssp(y, date, code, [1, n], label),
+    ...notices2023(`ssp-${y}`),
+    sourcePdf: `${SSP_2023_DIR}/paper-gs-${y}.pdf`,
+    keyPdf: `${SSP_2023_DIR}/key-gs-${y}.pdf`,
+    bookletSet: set,
+    ...(y === 2025 ? { provisionalKey: true } : {}),
+  })),
 ];
 
 /**
@@ -275,6 +336,19 @@ export const SSP_CSAT_PAPERS: Paper[] = [
   { ...csat(2015, "2015-04-05", "W05", 56, "5 Apr 2015"), noPenalty: [46, 47, 48, 49, 50, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80] },
   csat(2014, "2014-02-02", "H03", 48, "2 Feb 2014"),
   csat(2013, "2013-05-18", "Y01", 48, "18 May 2013"),
+  ...([
+    [2023, "2023-06-04", "R17", 64, "4 Jun 2023", "D"],
+    [2024, "2024-12-01", "X18", 43, "1 Dec 2024", "D"],
+    [2025, "2025-11-09", "F21", 52, "9 Nov 2025", "C"],
+  ] as const).map(([y, date, code, n, label, set]): Paper => ({
+    ...csat(y, date, code, n, label),
+    ...notices2023(`ssp-csat-${y}`),
+    sourcePdf: `${SSP_2023_DIR}/paper-csat-${y}.pdf`,
+    keyPdf: `${SSP_2023_DIR}/key-csat-${y}.pdf`,
+    keyPages: [1, 2],
+    bookletSet: set,
+    ...(y === 2025 ? { provisionalKey: true } : {}),
+  })),
 ];
 
 /**
@@ -333,10 +407,12 @@ const prelims = (
 });
 
 /** A doubtful-key notice; every one ends by saying the mock gives the mark to all. */
-const notice = (en: string, mr: string) => ({
-  en: `**Notice:** ${en} In PYQ Vault mocks this question is awarded to every candidate.`,
-  mr: `**सूचना:** ${mr} PYQ Vault च्या सराव परीक्षांमध्ये या प्रश्नाचे गुण सर्व उमेदवारांना दिले जातात.`,
-});
+function notice(en: string, mr: string) {
+  return {
+    en: `**Notice:** ${en} In PYQ Vault mocks this question is awarded to every candidate.`,
+    mr: `**सूचना:** ${mr} PYQ Vault च्या सराव परीक्षांमध्ये या प्रश्नाचे गुण सर्व उमेदवारांना दिले जातात.`,
+  };
+}
 
 /** The owner's 2026-11-02 ruling on every doubtful key in these papers: notice + grace, key kept. */
 const FSP_2014_NOTICES = {
@@ -425,8 +501,8 @@ export const ASP_PAPERS: Paper[] = [
 /** Every paper this pipeline can load. `PAPERS` stays Group B & C only — the mock builder derives its sittings from it. */
 export const ALL_PAPERS: Paper[] = [...PAPERS, ...SSP_PAPERS, ...SSP_CSAT_PAPERS, ...FSP_PAPERS, ...ASP_PAPERS];
 
-/** The booklets on file are all Set A, so the key's first column applies. */
-export const BOOKLET_SET_INDEX = 0;
+/** The column of the 4-set key that applies to a paper's booklet (Set A unless `bookletSet` says otherwise). */
+export const bookletSetIndex = (p: Paper): number => "ABCD".indexOf(p.bookletSet ?? "A");
 export const QUESTIONS_PER_PAPER = 100;
 export const questionCount = (p: Paper): number => p.questions ?? QUESTIONS_PER_PAPER;
 

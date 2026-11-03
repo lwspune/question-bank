@@ -176,6 +176,61 @@ Decision Making scores the picked option's marks and is never penalised
 (`optionMarks` on the mock question). 2015's final key (p.3) also waives the
 penalty on Q46-50 and Q71-75 (`noPenalty`). 17 cancelled questions ride as grace.
 
+# MPSC State Services Prelims 2023-2025 — GS and CSAT
+
+Six more papers on the same pipeline (2026-11-03): `ssp-2023/2024/2025` in
+`SSP_PAPERS` and `ssp-csat-2023/2024/2025` in `SSP_CSAT_PAPERS`.
+
+**Source:** MPSC's booklets and keys as posted on Google Drive by Physics Wallah,
+in `SSP_2023_DIR` (`paper-<gs|csat>-<year>.pdf`, `key-<gs|csat>-<year>.pdf`). No
+text layer in any booklet. **The 2024 booklets are a candidate's used copy**,
+photographed: ticks and circles on options, an "@SPOTLESS_MPSC" mark, no cover,
+and CSAT pp.26-43 sideways (`extract.py` `ROTATE` stands them up for reading and
+for figure crops). The ticks were never used as an answer.
+
+**Booklet sets are not all A:** GS 2023 A, CSAT 2023 D, both 2024 D, both 2025 C.
+`Paper.bookletSet` names the set, and `keys.ts`, `applyGradedKey` and `key.json`
+read that set's column of the 4-set key.
+
+**Keys:** 2023 and 2024 are MPSC's FINAL keys. **2025 is MPSC's FIRST key**
+(objections until 18 Nov 2025; `provisionalKey`); the final key was not found,
+because mpsc.gov.in's file API needs a header only its own front end sends.
+Shipped unlabelled (owner, 2026-11-03), as asp-2011 was; **re-check 2025 against
+the final key when it is found.** The CSAT decision-making grids were typed from
+each key's page image into `graded.json`. Every paper was solved blind first.
+
+**English passages:** 13 CSAT passages and one stem were left as placeholders by
+the helpers (published texts: a history textbook, a judgment, Russell, Harari and
+others) and read by OCR (Windows OCR on 300-dpi renders, several tilts, the best
+kept) into the batches by the main session, every doubtful word checked on the page.
+
+| paper | marks vs key | cancelled | notes |
+|---|---|---|---|
+| ssp-2023 (Q17, A) | 88/100 final | Q38, Q75 | 1 figure (show-through cleaned) |
+| ssp-2024 (W18, D) | 95/100 final | none | used copy; Q66's Marathi stem cut by the photo (print note) |
+| ssp-2025 (E21, C) | 95/100 FIRST | none | 1 figure |
+| ssp-csat-2023 (R17, D) | 71/80 final | Q51 | 7 figures |
+| ssp-csat-2024 (X18, D) | 77/80 final | none | used copy; 6 English passages by OCR; Q72's grid kept as photographed (`watermark: "none"`) |
+| ssp-csat-2025 (F21, C) | 75/80 FIRST | none | 5 English passages by OCR |
+
+### Key doubts (State Services 2023-2025): SETTLED 2026-11-03
+
+**Owner: notice + grace on all five, MPSC's key kept** (config.ts
+`SSP_2023_2025_NOTICES`).
+
+| paper · Q | MPSC key | finding |
+|---|---|---|
+| ssp-2023 Q17 | (3) NO₃ | Bacteria release nitrous oxide, N₂O (2). Text checked against p.9. |
+| ssp-2023 Q50 | (3) | AMRUT does address water supply; the false statement is more likely (2), the ministry's name. |
+| ssp-2025 Q84 | (1) 1990 | The NCW Act is 1990; the Commission was set up on 31 Jan 1992 (3). First key. |
+| ssp-csat-2024 Q64 | (2) | The key's "central idea" overstates one line; (1) follows the paragraph. |
+| ssp-csat-2025 Q58 | (3) 2/91 | Defective: P(three red of 13) = 1/286, not offered. First key. |
+
+**PUBLIC 2026-11-03** (owner), with 6 mocks `mpsc-ssp-<year>` and
+`mpsc-ssp-csat-<year>`. GS +2 / -0.5 (every cover: a quarter). CSAT 2021 on is
+`MPSC_SSP_CSAT_2021_PAPER`, +2.5 / -0.625 (the 2023 and 2025 covers say a
+quarter; the 2024 copy has no cover and rides with its neighbours).
+
 # MPSC Forest Service + Agriculture Service Prelims
 
 Two more exams on the same pipeline: `EXAMS.fsp` (MPSC Forest Service Prelims)

@@ -360,19 +360,21 @@ export function gradedKeyLetter(marks: number[]): KeyLetter {
 }
 
 /**
- * Key Set A's decision-making questions from its graded grid. A question the
- * letter table leaves out gets the grid's letter in every set (the sets were
- * balance-checked on the grid). A letter row whose Set A prints `*` takes the
- * grid's letter in Set A and keeps the other sets' cells. A row keyed by both,
- * or a Set-A `*` with no grid row, is an error.
+ * Key the booklet's decision-making questions from its set's graded grid
+ * (`setIndex`: 0 = Set A, the default). A question the letter table leaves out
+ * gets the grid's letter in every set (the sets were balance-checked on the
+ * grid; only the booklet's column is ever read). A letter row whose booklet set
+ * prints `*` takes the grid's letter there and keeps the other sets' cells. A
+ * row keyed by both, or a `*` in the booklet's set with no grid row, is an error.
  */
 export function applyGradedKey(
   rows: Map<number, KeyCell[]>,
-  gradedA: Record<string | number, number[]>
+  graded: Record<string | number, number[]>,
+  setIndex = 0
 ): { rows: Map<number, KeyCell[]>; errors: string[] } {
   const out = new Map([...rows].map(([q, r]) => [q, [...r]]));
   const errors: string[] = [];
-  for (const [qs, marks] of Object.entries(gradedA)) {
+  for (const [qs, marks] of Object.entries(graded)) {
     const q = Number(qs);
     let letter: KeyLetter;
     try {
@@ -383,11 +385,11 @@ export function applyGradedKey(
     }
     const row = out.get(q);
     if (!row) out.set(q, [letter, letter, letter, letter]);
-    else if (row[0] === "*") row[0] = letter;
+    else if (row[setIndex] === "*") row[setIndex] = letter;
     else errors.push(`Q${q}: in both the letter key and the graded grid`);
   }
   for (const [q, row] of [...out].sort(([a], [b]) => a - b))
-    if (row[0] === "*") errors.push(`Q${q}: set A prints * but the graded grid has no row for it`);
+    if (row[setIndex] === "*") errors.push(`Q${q}: set ${"ABCD"[setIndex]} prints * but the graded grid has no row for it`);
   return { rows: out, errors };
 }
 

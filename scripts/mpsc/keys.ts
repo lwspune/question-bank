@@ -17,7 +17,7 @@
  * `graded` so the marks reach the solution.
  */
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
-import { ALL_PAPERS, BOOKLET_SET_INDEX, dataPath, questionCount } from "./config";
+import { ALL_PAPERS, bookletSetIndex, dataPath, questionCount } from "./config";
 import { applyGradedKey, gradedBalanceIssues, parseKeyLines, setBalanceIssues, type KeyLetter } from "./lib";
 
 function main() {
@@ -25,6 +25,8 @@ function main() {
   const only = process.argv.slice(2).find((a) => !a.startsWith("--"));
   let bad = 0;
   for (const p of ALL_PAPERS.filter((x) => !only || x.id.startsWith(only))) {
+    const setIdx = bookletSetIndex(p);
+    const setLabel = "ABCD"[setIdx];
     const f = dataPath(p.id, "keytokens");
     if (!existsSync(f)) {
       console.log(`${p.id}: no keytokens file`);
@@ -41,23 +43,23 @@ function main() {
     if (existsSync(gradedFile)) {
       const sets: Record<string, Record<string, number[]>> = JSON.parse(readFileSync(gradedFile, "utf8")).sets;
       errors.push(...gradedBalanceIssues(sets));
-      graded = sets.A;
-      const applied = applyGradedKey(rows, graded);
+      graded = sets[setLabel];
+      const applied = applyGradedKey(rows, graded, setIdx);
       keyed = applied.rows;
       errors.push(...applied.errors);
     } else {
-      for (const [q, r] of rows) if (r[BOOKLET_SET_INDEX] === "*") errors.push(`Q${q}: set A prints * but there is no graded grid`);
+      for (const [q, r] of rows) if (r[setIdx] === "*") errors.push(`Q${q}: set ${setLabel} prints * but there is no graded grid`);
     }
     const total = questionCount(p);
     const missing: number[] = [];
     for (let q = 1; q <= total; q++) if (!keyed.has(q)) missing.push(q);
     const extra = [...keyed.keys()].filter((q) => q > total);
     const key: Record<number, KeyLetter> = {};
-    for (const [q, sets] of keyed) if (q <= total) key[q] = sets[BOOKLET_SET_INDEX] as KeyLetter; // no * left: applyGradedKey refuses one
+    for (const [q, sets] of keyed) if (q <= total) key[q] = sets[setIdx] as KeyLetter; // no * left: applyGradedKey refuses one
     const cancelled = Object.entries(key).filter(([, v]) => v === "#").map(([q]) => Number(q));
     const ok = errors.length === 0 && missing.length === 0 && extra.length === 0;
     console.log(
-      `${p.id}: ${rows.size} rows · cancelled(set A) [${cancelled.join(",")}]` +
+      `${p.id}: ${rows.size} rows · cancelled(set ${setLabel}) [${cancelled.join(",")}]` +
         (Object.keys(graded).length ? ` · graded [${Object.keys(graded).join(",")}]` : "") +
         (ignored.length ? ` · footer ${JSON.stringify(ignored)}` : "") +
         (ok ? " · OK" : ` · errors ${JSON.stringify(errors)} missing [${missing.join(",")}] extra [${extra.join(",")}]`)
@@ -66,7 +68,7 @@ function main() {
       bad++;
       continue;
     }
-    if (write) writeFileSync(dataPath(p.id, "key"), JSON.stringify({ paper: p.id, set: "A", key, cancelled, ...(Object.keys(graded).length ? { graded } : {}) }, null, 1));
+    if (write) writeFileSync(dataPath(p.id, "key"), JSON.stringify({ paper: p.id, set: setLabel, key, cancelled, ...(Object.keys(graded).length ? { graded } : {}) }, null, 1));
   }
   if (bad) process.exitCode = 1;
 }

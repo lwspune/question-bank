@@ -613,7 +613,10 @@ export const MPSC_SSP_CSAT_PAPER: MockPaperBlueprint = {
   ],
 };
 
-/** The 2021 paper (sat 23 Jan 2022): its cover cuts a quarter, not a third. */
+/**
+ * 2021 on (2021, 2023, 2025 covers: "25% or 1/4"): a quarter, not a third.
+ * The 2024 scan has no cover; it rides with its neighbours.
+ */
 export const MPSC_SSP_CSAT_2021_PAPER: MockPaperBlueprint = {
   ...MPSC_SSP_CSAT_PAPER,
   code: "ssp-csat-2021",
