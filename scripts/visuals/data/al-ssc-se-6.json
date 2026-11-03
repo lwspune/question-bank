@@ -1,0 +1,236 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "d9c34192-d7b6-4ee4-883c-e10140177962",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "+11,\\ +13,\\ +17,\\ +19,\\ +23",
+              "note": "differences: consecutive primes"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "27 + 11 = 38",
+              "f": "27+11",
+              "value": "38"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "38 + 13 = {{1:51}}",
+              "f": "38+13",
+              "value": "51"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "{{1:51}} + 17 = 68",
+              "f": "51+17",
+              "value": "68"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "68 + 19 = 87",
+              "f": "68+19",
+              "value": "87"
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "87 + 23 = 110",
+              "f": "87+23",
+              "value": "110"
+            }
+          ],
+          "answer": "51"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3",
+              "s4",
+              "s5",
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "1b4d7c1c",
+        "answer": {
+          "value": 51,
+          "label": "51"
+        }
+      }
+    },
+    {
+      "id": "e6a377c5-3450-4582-96a2-4e6054d77226",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "420 - 389 = 31",
+              "f": "420-389",
+              "value": "31"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "457 - 420 = 37",
+              "f": "457-420",
+              "value": "37"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "498 - 457 = 41",
+              "f": "498-457",
+              "value": "41"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "541 - 498 = 43",
+              "f": "541-498",
+              "value": "43"
+            },
+            {
+              "step": "s5",
+              "kind": "note",
+              "tex": "31,\\ 37,\\ 41,\\ 43,\\ {{1:47}}",
+              "note": "consecutive primes"
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "541 + {{1:47}} = 588",
+              "f": "541+47",
+              "value": "588"
+            }
+          ],
+          "answer": "588"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "ab305655",
+        "answer": {
+          "value": 588,
+          "label": "588"
+        }
+      }
+    },
+    {
+      "id": "ebbf5480-a031-433f-a636-f9d1117d2a8d",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "183 - 150 = 33",
+              "f": "183-150",
+              "value": "33"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "219 - 183 = 36",
+              "f": "219-183",
+              "value": "36"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "258 - 219 = 39",
+              "f": "258-219",
+              "value": "39"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "33 - 3 = {{1:30}}",
+              "f": "33-3",
+              "value": "30",
+              "note": "the difference before 150"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "150 - {{1:30}} = 120",
+              "f": "150-30",
+              "value": "120"
+            }
+          ],
+          "answer": "120"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "2c33d3f0",
+        "answer": {
+          "value": 120,
+          "label": "120"
+        }
+      }
+    }
+  ],
+  "decided": []
+}
