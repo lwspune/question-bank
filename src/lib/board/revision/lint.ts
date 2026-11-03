@@ -76,6 +76,10 @@ export function lintRevisionSheet(sheet: RevisionSheet): string[] {
     for (const z of zones) {
       const e = katexError(z);
       if (e) out.push(`${path}: maths does not render (${e})`);
+      // A reaction must name what reacts: a drafted equation once began at its arrow.
+      const ce = z.indexOf("\\ce{");
+      if (ce >= 0 && !z.slice(0, ce).trim() && /^\s*(->|<=>|<-)/.test(z.slice(ce + 4)))
+        out.push(`${path}: a reaction with no reactant before its arrow`);
     }
   }
 

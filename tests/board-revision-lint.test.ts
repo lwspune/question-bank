@@ -93,6 +93,13 @@ describe("lintRevisionSheet", () => {
     }
   });
 
+  it("refuses a reaction with nothing before its arrow", () => {
+    const bad = sheet({ derivations: [{ title: "Nylon 2-nylon 6", steps: ["Glycine and amino caproic acid.", "\\(\\ce{-> (-NH-CH2-CO-)_n}\\)"] }] });
+    expect(lintRevisionSheet(bad).join()).toMatch(/derivations\[0\]\.steps\[1\].*reactant/);
+    const ok = sheet({ derivations: [{ title: "x", steps: ["\\(\\ce{2H2 + O2 -> 2H2O}\\)", "\\(n\\ \\text{caprolactam} \\ce{->[heat] P}\\)"] }] });
+    expect(lintRevisionSheet(ok)).toEqual([]);
+  });
+
   it("refuses an unclosed inline math zone", () => {
     const bad = sheet({ keyPoints: [{ term: "x", text: "open \\(I = MK^2 never closed" }, ...sheet().keyPoints.slice(1)] });
     expect(lintRevisionSheet(bad).join()).toMatch(/keyPoints\[0\]/);

@@ -47,6 +47,12 @@ Search with grep; never print a whole file.
   should be in the sheet.
 - **Diagrams:** name the book's figure and list the labels an examiner looks
   for. Never draw.
+- **Equations (Chemistry, Biology):** every reaction names its reactants
+  (the checker refuses one that starts at its arrow) and balances; count
+  atoms before you write it. A condensation polymer from n molecules of each
+  monomer releases (2n - 1) water, written `(2n-1)\,\ce{H2O}` outside the
+  `\ce{}`. The two review checks cannot see a wrong coefficient: you are the
+  check.
 - **Wording:** plain, simple English; for definitions and laws, the book's own
   wording, trimmed. No em dashes anywhere in your words.
 - `examSlug` is `mh-hsc-12`; `subjectName` and `chapterName` are as given in
