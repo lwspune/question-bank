@@ -45,7 +45,8 @@ export type ExamSlug =
   | "ssc-cgl"
   | "ssc-cgl-tier-2"
   | "imat"
-  | "spi";
+  | "spi"
+  | "uceed";
 
 /**
  * School boards the bank carries content for. NOT every exam has one — a
@@ -189,6 +190,14 @@ export type ExamEntry = {
    * student-visible; this flag is for an exam that is on its way in.
    */
   noPublicContent?: boolean;
+  /**
+   * Keep this exam's figures out of image search: its `/questions` pages carry
+   * `noimageindex` (seo/examRobots), and stay indexed otherwise. For papers whose
+   * figures include third-party images, such as UCEED's artworks, logos and
+   * product photos (owner, 2026-11-03). tests/exam-robots.test.ts holds every
+   * page that shows questions to it.
+   */
+  noImageIndex?: boolean;
   /**
    * `"intl"`: an international exam, served only on intl.pyqvault.com (2026-10-30,
    * NICHE_SITES_SPEC.md). Absent = a PYQ Vault exam on www. Lookups by slug or
@@ -686,6 +695,19 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     guidesPath: null,
     notesPath: null,
     hasMocks: true, // 4 JIPMAT mocks (2021-2024) published 2026-09-26; 2025 + 2026 held
+  },
+  {
+    slug: "uceed",
+    // IIT Bombay's B.Des design entrance, sat after Class 12. Part A past papers
+    // with IIT Bombay's final keys; 2026 PUBLIC first (scripts/uceed/). MSQ rows
+    // are held until the bank has a multiple-select format, so no mocks yet.
+    tier: "senior",
+    displayName: "UCEED",
+    examName: "UCEED", // must match the `exams` DB row exactly
+    guidesPath: null,
+    notesPath: null,
+    mixedFormats: true, // 2026: 28 MCQ + 13 NAT
+    noImageIndex: true,
   },
   // ── MPSC ──────────────────────────────────────────────────────────────────
   // One family with a stage level: MPSC -> Prelims / Mains -> exam. Prelims

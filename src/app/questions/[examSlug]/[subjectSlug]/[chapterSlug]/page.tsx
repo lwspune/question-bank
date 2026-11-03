@@ -17,6 +17,7 @@ import AppHeader from "@/components/AppHeader";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import QuestionList from "@/app/browse/QuestionList";
+import { examRobots } from "@/lib/seo/examRobots";
 import { getQuestionResources } from "@/lib/links/questionResources";
 import { getPaperLinksForQuestions } from "@/lib/questions/paperLinks";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
@@ -134,11 +135,14 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   // screen state the same facts (count, papers, years).
   const description = `${landing.chapterName}: ${landingLead(landing)} Free to browse.`;
 
+  // An exam whose figures must stay out of image search (registry noImageIndex).
+  const robots = examRobots(landing.examSlug);
   return {
     title: { absolute: title },
     description,
     alternates: { canonical: canonicalFor(landingHref(landing)) },
     openGraph: { title, description, type: "website" },
+    ...(robots ? { robots } : {}),
   };
 }
 
