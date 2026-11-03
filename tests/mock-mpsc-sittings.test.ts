@@ -1,6 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { ASP_CHAPTERS, ASP_PAPERS, FSP_CHAPTERS, FSP_PAPERS, PAPERS, SSP_CHAPTERS, SSP_CSAT_CHAPTERS, SSP_CSAT_PAPERS, SSP_PAPERS, dataPath } from "../scripts/mpsc/config";
 import { readFileSync } from "node:fs";
+import { KEY_DOUBT_NOTICES } from "../scripts/mpsc/keyDoubtNotices";
 import { CSAT_MOCK_PAPERS, deriveMpscSittings, mpscMockSlug, mpscMockTitle, serviceMockTitle, sspCsatMockTitle, sspMockTitle } from "../scripts/mocks/mpscSittings";
 import {
   MPSC_ASP_200_PAPER,
@@ -116,26 +117,33 @@ describe("deriveMpscSittings", () => {
   it("derives the thirteen State Services sittings, graced from their official keys", () => {
     const got = deriveMpscSittings(SSP_PAPERS, undefined, sspMockTitle);
     expect(got.map((s) => s.slug).sort()).toEqual(SSP_PAPERS.map((p) => `mpsc-ssp-${p.pyqYear}`).sort());
-    expect(got.find((s) => s.key === "ssp-2022")?.graceNumbers).toEqual([42, 95, 96]);
+    // Plus the owner's 2026-11-03 ruling on the 203 KEY_DOUBTS.md questions (keyDoubtNotices.ts).
+    expect(got.find((s) => s.key === "ssp-2022")?.graceNumbers).toEqual([42, 48, 49, 86, 95, 96]);
     // Measured: 24 cancelled across the 2013-2022 final keys, plus 2023's Q38 and Q75.
     // 2023 adds Q38 and Q75 (cancelled) and Q17, Q50 (owner notices, 2026-11-03); 2025 adds Q84 (notice).
     expect(got.find((s) => s.key === "ssp-2023")?.graceNumbers).toEqual([17, 38, 50, 75]);
-    expect(got.find((s) => s.key === "ssp-2025")?.graceNumbers).toEqual([84]);
-    expect(got.reduce((n, s) => n + s.graceNumbers.length, 0)).toBe(29);
+    expect(got.find((s) => s.key === "ssp-2025")?.graceNumbers).toEqual([15, 47, 50, 84, 87, 89]);
+    // 29 before the 2026-11-03 key-doubt ruling, which adds 34 GS questions.
+    expect(got.reduce((n, s) => n + s.graceNumbers.length, 0)).toBe(63);
   });
 
   it("covers every configured paper with a distinct slug", () => {
     const got = deriveMpscSittings(PAPERS);
     expect(got).toHaveLength(PAPERS.length);
     expect(new Set(got.map((s) => s.slug)).size).toBe(PAPERS.length);
-    // Measured: 35 cancelled questions across the 14 official keys.
-    expect(got.reduce((n, s) => n + s.graceNumbers.length, 0)).toBe(35);
+    // Measured: 35 cancelled questions across the 14 official keys, plus 31 key-doubt notices (2026-11-03).
+    expect(got.reduce((n, s) => n + s.graceNumbers.length, 0)).toBe(66);
   });
 });
 
 describe("Forest + Agriculture key notices (owner 2026-11-02: notice + grace on every doubtful key)", () => {
   const all = [...FSP_PAPERS, ...ASP_PAPERS];
-  const noticed = all.flatMap((p) => Object.keys(p.notices ?? {}).map((n) => `${p.id} Q${n}`));
+  // The 2026-11-02 ruling alone: the 2026-11-03 key-doubt ruling is pinned in mpsc-key-doubt-notices.test.ts.
+  const noticed = all.flatMap((p) =>
+    Object.keys(p.notices ?? {})
+      .filter((n) => !KEY_DOUBT_NOTICES[p.id]?.[Number(n)])
+      .map((n) => `${p.id} Q${n}`)
+  );
 
   it("carries exactly the eleven questions the owner settled", () => {
     expect(noticed.sort()).toEqual(
@@ -197,10 +205,11 @@ describe("Forest + Agriculture blueprints (every cover: equal marks, four wrong 
     const got = deriveMpscSittings([...FSP_PAPERS, ...ASP_PAPERS], undefined, serviceMockTitle);
     expect(got.map((s) => s.slug)).toEqual([...FSP_PAPERS, ...ASP_PAPERS].map((p) => `mpsc-${p.id}`));
     const grace = (id: string) => got.find((s) => s.key === id)!.graceNumbers;
-    expect(grace("fsp-2014")).toEqual([55, 63, 67, 72, 74]);
-    expect(grace("asp-2011")).toEqual([41, 42, 109]);
-    expect(grace("asp-2012")).toEqual([117, 150, 155]);
-    expect(grace("asp-2016")).toEqual([19, 38, 51, 53, 68, 75, 90]);
+    // Includes Plus the owner's 2026-11-03 ruling on the 203 KEY_DOUBTS.md questions (keyDoubtNotices.ts).
+    expect(grace("fsp-2014")).toEqual([30, 48, 55, 63, 67, 72, 74, 77]);
+    expect(grace("asp-2011")).toEqual([41, 42, 66, 109, 116, 151, 190]);
+    expect(grace("asp-2012")).toEqual([58, 61, 69, 117, 138, 150, 155]);
+    expect(grace("asp-2016")).toEqual([19, 38, 51, 53, 68, 75, 90, 100]);
   });
 });
 
@@ -235,13 +244,15 @@ describe("State Services CSAT (Paper II): every cover, 80 questions, 200 marks, 
   const sit = (y: number) => got.find((s) => s.year === y)!;
 
   it("graces MPSC's 18 cancelled questions and the owner's two notices", () => {
-    expect(sit(2016).graceNumbers).toEqual([35, 57, 61, 62, 69]);
-    // 2023's Set-D booklet: the key cancels Q51 in that set (Q56 in Set A).
-    expect(sit(2023).graceNumbers).toEqual([51]);
-    // Plus the owner's notices (2026-11-03): 2024 Q64, 2025 Q58.
-    expect(sit(2024).graceNumbers).toEqual([64]);
+    // Cancelled 2016: 35, 57, 61, 62, 69; the rest are 2026-11-03 key-doubt notices.
+    expect(sit(2016).graceNumbers).toEqual([1, 15, 25, 27, 35, 38, 57, 61, 62, 69]);
+    // 2023's Set-D booklet: the key cancels Q51 in that set (Q56 in Set A); the rest are key-doubt notices.
+    expect(sit(2023).graceNumbers).toEqual([11, 13, 24, 28, 29, 32, 33, 35, 51, 53, 65, 66]);
+    // Plus the owner's notices (2026-11-03): 2024 Q64, 2025 Q58, and 2024's key doubts Q40, Q42.
+    expect(sit(2024).graceNumbers).toEqual([40, 42, 64]);
     expect(sit(2025).graceNumbers).toEqual([58]);
-    expect(got.reduce((n, s) => n + s.graceNumbers.length, 0)).toBe(20);
+    // 20 before the key-doubt ruling, which adds 47 CSAT questions.
+    expect(got.reduce((n, s) => n + s.graceNumbers.length, 0)).toBe(67);
   });
 
   it("carries the final key's per-option marks for every Decision Making question", () => {
@@ -261,7 +272,12 @@ describe("State Services CSAT (Paper II): every cover, 80 questions, 200 marks, 
 
 describe("State Services 2023-2025 key notices (owner 2026-11-03: notice + grace, key kept)", () => {
   const all = [...SSP_PAPERS, ...SSP_CSAT_PAPERS];
-  const noticed = all.flatMap((p) => Object.keys(p.notices ?? {}).map((n) => `${p.id} Q${n}`));
+  // The first 2026-11-03 ruling alone; the 203-question key-doubt ruling is pinned in mpsc-key-doubt-notices.test.ts.
+  const noticed = all.flatMap((p) =>
+    Object.keys(p.notices ?? {})
+      .filter((n) => !KEY_DOUBT_NOTICES[p.id]?.[Number(n)])
+      .map((n) => `${p.id} Q${n}`)
+  );
 
   it("carries exactly the five questions the owner settled", () => {
     expect(noticed.sort()).toEqual(["ssp-2023 Q17", "ssp-2023 Q50", "ssp-2025 Q84", "ssp-csat-2024 Q64", "ssp-csat-2025 Q58"].sort());

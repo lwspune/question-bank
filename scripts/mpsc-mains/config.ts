@@ -27,6 +27,7 @@
  * paper is committed under both exams, so it carries two labels.
  */
 import { join } from "node:path";
+import { MAINS_KEY_DOUBT_NOTICES } from "./keyDoubtNotices";
 
 export const SOURCE_PDF = "C:/Users/vilas/Downloads/All PYQ mar eng.pdf";
 /** Founding tenant org + the superadmin who owns ingested content (same as every pipeline). */
@@ -72,6 +73,14 @@ export type Paper = {
    * Kept in PAPERS (not deleted) so the page map stays complete and the drop is on record.
    */
   dropped?: string;
+  /**
+   * Questions whose MPSC key the owner judged doubtful, or defective as printed
+   * (2026-11-03, scripts/mpsc/KEY_DOUBTS.md): the key is KEPT, this notice (in the
+   * question's own language) heads the solution, and every exam's mock awards the
+   * question to all (scripts/mocks/mpscMainsSittings.ts). Folded in from
+   * keyDoubtNotices.ts below the paper list.
+   */
+  notices?: Record<number, string>;
 };
 
 /** The question numbers a paper's transcription must cover. */
@@ -129,6 +138,16 @@ export const PAPERS: Paper[] = [
   p("psi-2016", ["psi"], 2016, "2017-06-25", "KO9", [659, 682], [683, 684], 100),
   p("psi-2017", ["psi"], 2017, "2017-11-05", "L10", [685, 708], [709, 710], 100),
 ];
+
+// The owner's 2026-11-03 ruling (scripts/mpsc/KEY_DOUBTS.md), folded into each paper's
+// `notices`. A notice on a question that already has one is a mistake, not a merge.
+for (const [id, byQ] of Object.entries(MAINS_KEY_DOUBT_NOTICES)) {
+  const paper = PAPERS.find((x) => x.id === id);
+  if (!paper) throw new Error(`MAINS_KEY_DOUBT_NOTICES: no paper "${id}"`);
+  const twice = Object.keys(byQ).filter((n) => paper.notices?.[Number(n)]);
+  if (twice.length) throw new Error(`MAINS_KEY_DOUBT_NOTICES: ${id} Q${twice.join(", Q")} already has a notice`);
+  paper.notices = { ...paper.notices, ...byQ };
+}
 
 /** The booklets on file are all Set A, so the key's first column applies. */
 export const BOOKLET_SET_INDEX = 0;
