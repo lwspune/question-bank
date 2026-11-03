@@ -3,10 +3,16 @@
 import type { RevisionSheet } from "./types";
 
 export const SHEET_LOADERS: Record<string, () => Promise<{ default: RevisionSheet }>> = {
+  "cbse-12/biology/biodiversity-and-conservation": () => import("./sheets/cbse-12/biology/biodiversity-and-conservation"),
+  "cbse-12/biology/biotechnology-and-its-applications": () => import("./sheets/cbse-12/biology/biotechnology-and-its-applications"),
+  "cbse-12/biology/biotechnology-principles-and-processes": () => import("./sheets/cbse-12/biology/biotechnology-principles-and-processes"),
+  "cbse-12/biology/ecosystem": () => import("./sheets/cbse-12/biology/ecosystem"),
   "cbse-12/biology/evolution": () => import("./sheets/cbse-12/biology/evolution"),
   "cbse-12/biology/human-health-and-disease": () => import("./sheets/cbse-12/biology/human-health-and-disease"),
   "cbse-12/biology/human-reproduction": () => import("./sheets/cbse-12/biology/human-reproduction"),
+  "cbse-12/biology/microbes-in-human-welfare": () => import("./sheets/cbse-12/biology/microbes-in-human-welfare"),
   "cbse-12/biology/molecular-basis-of-inheritance": () => import("./sheets/cbse-12/biology/molecular-basis-of-inheritance"),
+  "cbse-12/biology/organisms-and-populations": () => import("./sheets/cbse-12/biology/organisms-and-populations"),
   "cbse-12/biology/principles-of-inheritance-and-variation": () => import("./sheets/cbse-12/biology/principles-of-inheritance-and-variation"),
   "cbse-12/biology/reproductive-health": () => import("./sheets/cbse-12/biology/reproductive-health"),
   "cbse-12/biology/sexual-reproduction-in-flowering-plants": () => import("./sheets/cbse-12/biology/sexual-reproduction-in-flowering-plants"),
