@@ -1040,6 +1040,16 @@ export const CHAPTERS: Record<string, Chapter> = {
 
 export const questionsJsonPath = (id: string) => join(DATA, `${id}.questions.json`);
 
+/**
+ * Rows kept PRIVATE on purpose, by question id. flip-public.ts never flips
+ * these, so re-running it cannot republish them. Owner's call, 2026-11-04:
+ * old-syllabus questions with no chapter in the current Balbharati book.
+ */
+export const WITHHELD: Record<string, string> = {
+  "583825fa-381f-4a08-9f9d-a2fc28e98432": "Mar 2014 calcination vs roasting: metallurgy, off the current syllabus",
+  "d8be09a9-c6c9-4263-8d12-7fb2ecb95476": "Mar 2017 nitrogen pentahalides: group 15, off the current syllabus",
+};
+
 export function requireChapter(id: string | undefined): Chapter {
   const ch = id ? CHAPTERS[id] : undefined;
   if (!ch) {

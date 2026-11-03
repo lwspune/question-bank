@@ -6,7 +6,8 @@
  *
  * WITHHELD BY CONSTRUCTION — a row is flipped only when it is answered:
  *   - every row must carry a solution;
- *   - every MCQ must have exactly one option flagged correct.
+ *   - every MCQ must have exactly one option flagged correct;
+ *   - the row is not in config.ts WITHHELD (kept PRIVATE on purpose).
  * A board paper ships no key, so an unanswered MCQ is a genuine state here and
  * must stay PRIVATE rather than go out with nothing marked right.
  *
@@ -17,7 +18,7 @@
  */
 import { createClient } from "@supabase/supabase-js";
 import { join } from "node:path";
-import { EXAM_ID, requireChapter } from "./config";
+import { EXAM_ID, WITHHELD, requireChapter } from "./config";
 
 function loadEnv() {
   require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
@@ -45,6 +46,7 @@ async function main() {
   const withheld: string[] = [];
   for (const r of rows) {
     const why: string[] = [];
+    if (WITHHELD[r.id]) why.push(`withheld: ${WITHHELD[r.id]}`);
     if (!r.solution?.trim()) why.push("no solution");
     if (r.question_format === "mcq") {
       const correct = (r.options ?? []).filter((o: { is_correct: boolean }) => o.is_correct).length;
