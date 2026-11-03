@@ -243,7 +243,7 @@ describe("State Services CSAT (Paper II): every cover, 80 questions, 200 marks, 
     expect(got.reduce((n, s) => n + Object.keys(s.optionMarks ?? {}).length, 0)).toBe(42);
   });
 
-  it("drops the penalty on the fifteen questions 2015's cover exempts", () => {
+  it("drops the penalty on the fifteen questions 2015's final key exempts (key p.3)", () => {
     expect(sit(2015).noPenaltyNumbers).toEqual([46, 47, 48, 49, 50, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80]);
     expect(sit(2016).noPenaltyNumbers).toBeUndefined();
   });
