@@ -23,7 +23,7 @@ import fitz
 # ".com" logo sits under several aptitude figures. The figures themselves are
 # black print, so a LIGHT, COLOURED pixel is watermark and becomes white; black
 # lines, grey anti-aliasing and solid black fills stay (2026-11-02).
-WATERMARKED = {"fsp-2014": "AglaSem logo"}
+WATERMARKED = {"fsp-2014": "AglaSem logo", "ssp-2023": "text showing through from the back of the page"}
 
 
 def dewatermark(path):
