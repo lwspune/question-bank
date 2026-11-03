@@ -3,6 +3,16 @@
 import type { RevisionSheet } from "./types";
 
 export const SHEET_LOADERS: Record<string, () => Promise<{ default: RevisionSheet }>> = {
+  "cbse-12/mathematics/continuity-and-differentiability": () => import("./sheets/cbse-12/mathematics/continuity-and-differentiability"),
+  "cbse-12/mathematics/determinants": () => import("./sheets/cbse-12/mathematics/determinants"),
+  "cbse-12/mathematics/inverse-trigonometric-functions": () => import("./sheets/cbse-12/mathematics/inverse-trigonometric-functions"),
+  "cbse-12/mathematics/matrices": () => import("./sheets/cbse-12/mathematics/matrices"),
+  "cbse-12/mathematics/relations-and-functions": () => import("./sheets/cbse-12/mathematics/relations-and-functions"),
+  "cbse-12/physics/current-electricity": () => import("./sheets/cbse-12/physics/current-electricity"),
+  "cbse-12/physics/electric-charges-and-fields": () => import("./sheets/cbse-12/physics/electric-charges-and-fields"),
+  "cbse-12/physics/electrostatic-potential-and-capacitance": () => import("./sheets/cbse-12/physics/electrostatic-potential-and-capacitance"),
+  "cbse-12/physics/magnetism-and-matter": () => import("./sheets/cbse-12/physics/magnetism-and-matter"),
+  "cbse-12/physics/moving-charges-and-magnetism": () => import("./sheets/cbse-12/physics/moving-charges-and-magnetism"),
   "mh-hsc-12/biology/biodiversity-conservation-and-environmental-issues": () => import("./sheets/mh-hsc-12/biology/biodiversity-conservation-and-environmental-issues"),
   "mh-hsc-12/biology/biotechnology": () => import("./sheets/mh-hsc-12/biology/biotechnology"),
   "mh-hsc-12/biology/control-and-coordination": () => import("./sheets/mh-hsc-12/biology/control-and-coordination"),
