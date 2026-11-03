@@ -1,5 +1,6 @@
-import type { Metadata } from "next";
 import { getExamBySlug } from "@/lib/exam/examContext";
+
+export type ExamRobots = { index: boolean; follow: boolean; noimageindex: boolean };
 
 /**
  * Page-level robots for an exam's question pages: indexed and followed as usual, but with
@@ -7,7 +8,7 @@ import { getExamBySlug } from "@/lib/exam/examContext";
  * image search. Undefined otherwise, which leaves the root layout's robots in force.
  * Spec: tests/exam-robots.test.ts.
  */
-export function examRobots(examSlug: string): Metadata["robots"] | undefined {
+export function examRobots(examSlug: string): ExamRobots | undefined {
   if (!getExamBySlug(examSlug)?.noImageIndex) return undefined;
   return { index: true, follow: true, noimageindex: true };
 }
