@@ -211,6 +211,10 @@ solutions it rejected, so the pilot shows how often it happens.
 - `apply.ts` dry run clean, then `--apply`; counts recorded in the batch's
   commit message (or the progress log below for DB-only batches).
 - 10% of the batch read by the main session before applying.
+- Every Marathi draft that reaches the key read in full before applying
+  (b31, b36: about one in eight has a wrong grammar term or gloss).
+- A picture question the solver skipped without opening its picture goes
+  back as its own small batch (b35b: one solver skipped 19 unopened).
 - `npm run audit:text -- <source substring>` shows no new hits. Its argument
   is a `source_file` substring, not an exam name: an exam name scans nothing,
   prints "NOTHING SCANNED" and still exits 0.
@@ -424,3 +428,20 @@ One line per batch: date, exam, written, disputed, skipped.
   new questions in the MPSC Mains Marathi booklets: what is left there is
   only questions the agents skipped (a second pass is the owner's call).
   Running total 8,387.
+- 2026-11-03, b35 MPSC Forest Service Prelims (383 exported, 11
+  cancelled left out): written 213, plus 3 of the 23 picture questions
+  sent back in b35b (one solver had skipped 19 pictures unopened).
+  Disputed 7 (key right 4: a proverb, two passages, the 2016 paper's T20
+  count; judgement 3). Skipped 160+20, nearly all current affairs and
+  close options. Read 40 + all 53 Marathi: 5 English fixed before
+  writing (3 Unicode maths), 4 Marathi corrected in place after (किरकिर
+  is अनुकरणवाचक; a garbled option line; an unexplained option; quote
+  marks).
+- 2026-11-03, b36 MPSC Agriculture Service Prelims (672 exported, 9
+  cancelled left out): written 400. Disputed 8 (key right 4, key
+  doubtful 4: "King Solomon" as a period, two right adverb positions, a
+  passage subject, जिवाची उलघाल). Skipped 264, mostly facts and dates
+  Haiku does not know. Read 70 + all 88 matched Marathi: 18 fixed before
+  writing (wrong grammar terms: जेथे is not a pronoun, परीस is the
+  शब्दयोगी अव्यय, तज्ज्ञ is tat + jña, भावकर्तृक; figs ARE grown in the
+  peninsula; a "same date as above"). Running total 9,003.
