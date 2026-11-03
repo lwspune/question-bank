@@ -15,6 +15,10 @@ type Loader = () => Promise<{ default: RevisionSheet }>;
 
 const LOADERS: Record<string, Loader> = {
   "mh-hsc-12/physics/rotational-dynamics": () => import("./sheets/mh-hsc-12/physics/rotational-dynamics"),
+  "mh-hsc-12/physics/mechanical-properties-of-fluids": () =>
+    import("./sheets/mh-hsc-12/physics/mechanical-properties-of-fluids"),
+  "mh-hsc-12/physics/kinetic-theory-of-gases-and-radiation": () =>
+    import("./sheets/mh-hsc-12/physics/kinetic-theory-of-gases-and-radiation"),
 };
 
 export const REVISION_SHEET_KEYS: readonly string[] = Object.keys(LOADERS);
