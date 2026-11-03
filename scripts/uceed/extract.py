@@ -29,11 +29,17 @@ import fitz  # noqa: E402  PyMuPDF
 
 ROOT = r"C:\tmp\PYQPs\UCEED"
 FOOTER_Y = 780  # "UCEED 2026 / Page n of N" sits at y >= 790 on every page
-# "Q.01" (2018 on) or "3." (2015-2017). A number counts as a new question only when it is
-# the NEXT one in sequence, so a numbered list or a table cell inside a question cannot split it.
-MARKER = re.compile(r"^\s*(?:Q\.?\s?)?(\d{1,3})(?:\.(?!\d)|\)|(?=\s)|$)\.?")
+# Two numbering styles. "Q.01" (2018 on): a paper that has it uses ONLY that, because its
+# instructions are a numbered list too ("1. The total duration ..."). "3." (2015-2017): a bare
+# number, and the instructions are numbered the same way, so a new "1." RESTARTS the count and
+# the instruction list is thrown away. Either way a number counts only when it is the NEXT one in
+# sequence, so a numbered list or a table cell inside a question cannot split it.
+Q_MARKER = re.compile(r"^\s*Q\.?\s?(\d{1,3})\b\.?")
+BARE_MARKER = re.compile(r"^\s*(\d{1,3})(?:\.(?!\d)|\))")
 OPTION = re.compile(r"^\s*\(?([A-D])[.)]\s+(.*)$")
 TINY = 40  # px: bullets and icons, not figures
+SCANNED_PAGE = 0.6  # a picture covering more of the page than this is a scanned page, not a figure
+MAX_GAP = 3  # question numbers that may go missing in a row (scanned pages)
 
 
 def main(year: str) -> None:
@@ -45,6 +51,7 @@ def main(year: str) -> None:
 
     # One stream of items in reading order: text lines and pictures, each with its page + y.
     items = []
+    scanned: list[int] = []
     for pno, page in enumerate(pdf):
         for b in page.get_text("dict")["blocks"]:
             if b["type"] != 0:
@@ -61,16 +68,24 @@ def main(year: str) -> None:
             if w < TINY or h < TINY:
                 continue
             for r in page.get_image_rects(xref):
+                if r.get_area() > SCANNED_PAGE * page.rect.get_area():
+                    scanned.append(pno + 1)  # a scanned page: its questions are only in the picture
+                    continue
                 items.append((pno, r.y0, r.x0, "image", xref))
     items.sort(key=lambda t: (t[0], round(t[1]), t[2]))
 
+    q_style = any(k == "text" and Q_MARKER.match(t) for _p, _y, _x, k, t in items)
+    marker = Q_MARKER if q_style else BARE_MARKER
     questions: dict[int, dict] = {}
     current = None
     for pno, _y, _x, kind, payload in items:
         if kind == "text":
-            m = MARKER.match(payload)
+            m = marker.match(payload)
             expected = (current["n"] + 1) if current else 1
-            if m and int(m.group(1)) == expected:
+            if m and not q_style and int(m.group(1)) == 1 and current is not None:
+                questions, current, expected = {}, None, 1  # a list that came before the questions
+            # A small jump is allowed: a question printed only on a scanned page has no text marker.
+            if m and expected <= int(m.group(1)) <= expected + MAX_GAP:
                 n = int(m.group(1))
                 current = questions.setdefault(n, {"n": n, "page": pno + 1, "lines": [], "xrefs": []})
                 rest = payload[m.end():].strip()
@@ -100,7 +115,9 @@ def main(year: str) -> None:
             "figure": os.path.basename(files) if files else None, "pictures": len(q["xrefs"]),
         })
     with open(os.path.join(work, "draft.json"), "w", encoding="utf-8") as f:
-        json.dump({"year": int(year), "questions": drafts}, f, ensure_ascii=False, indent=2)
+        gaps = [n for n in range(1, max(questions, default=0) + 1) if n not in questions]
+        json.dump({"year": int(year), "gaps": gaps, "scanned_pages": scanned, "questions": drafts},
+                  f, ensure_ascii=False, indent=2)
     contact_sheets(figs, work, drafts)
     # Every page as an image, so whoever reads the draft can check it against the paper.
     pages = os.path.join(work, "pages")
@@ -108,6 +125,8 @@ def main(year: str) -> None:
     for pno, page in enumerate(pdf):
         page.get_pixmap(dpi=110).save(os.path.join(pages, f"p{pno + 1:02d}.png"))
     with_fig = sum(1 for d in drafts if d["figure"])
+    if gaps:
+        print(f"  GAPS (no text marker; read them off the page images): {gaps}  scanned pages: {scanned}")
     print(f"{year}: {len(drafts)} questions, {with_fig} with a figure, "
           f"{sum(d['pictures'] for d in drafts)} pictures -> {work}")
 
@@ -122,7 +141,11 @@ def save_figure(pdf, xrefs, path):
     if len(pix) == 1:
         pix[0].save(path)
         return path
-    # Several pictures in one question: stack them, scaled to one width, 12px apart.
+    # Several pictures in one question: stack them, scaled to one width, 12px apart. Each is
+    # flattened to plain RGB first (2018 mixes pictures with and without transparency). Only
+    # here, so a single picture's bytes, and so its content_hash, never change.
+    pix = [fitz.Pixmap(p, 0) if p.alpha else p for p in pix]
+    pix = [p if p.colorspace and p.colorspace.n == 3 else fitz.Pixmap(fitz.csRGB, p) for p in pix]
     width = max(p.width for p in pix)
     scaled = [fitz.Pixmap(p, width, round(p.height * width / p.width)) if p.width != width else p for p in pix]
     height = sum(p.height for p in scaled) + 12 * (len(scaled) - 1)
