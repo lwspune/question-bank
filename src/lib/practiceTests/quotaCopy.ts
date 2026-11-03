@@ -12,7 +12,7 @@ import type { MockStartState } from "@/lib/mocks/quota";
 
 /** "You've used ..." once today's free tests are gone. */
 export function practiceUsedUpLine(limit: number): string {
-  if (limit <= 0) return "Practice tests need the Premium Pass today.";
+  if (limit <= 0) return "Practice tests need the Practice Pass today.";
   if (limit === 1) return "You've used today's free practice test.";
   return `You've used your ${limit} free practice tests for today.`;
 }
@@ -33,7 +33,7 @@ export function practiceBuilderNote(state: MockStartState | null): PracticeBuild
   if (!state || state.kind === "open") return null;
   if (state.kind === "locked") {
     // A zero limit has no "tomorrow" to promise.
-    const next = state.limit > 0 ? " More tomorrow, or get the Premium Pass for unlimited tests." : "";
+    const next = state.limit > 0 ? " More tomorrow, or get the Practice Pass for unlimited tests." : "";
     return {
       kind: "usedUp",
       text: `${practiceUsedUpLine(state.limit)}${next} You can still build one to send to a friend.`,

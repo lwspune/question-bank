@@ -42,7 +42,7 @@ const RUN_ID = randomUUID().slice(0, 8);
 const FUTURE = new Date(Date.now() + 3600_000).toISOString();
 const ROLES = [
   "student", "early", "mockpass", "teacherpass", "staff", "off", "invited", "inviter", "imatpass", "mocksonimat",
-  "freeexam",
+  "freeexam", "practicepass",
 ] as const;
 type Role = (typeof ROLES)[number];
 
@@ -209,6 +209,8 @@ describe.skipIf(!HAS_ENV)("free-mock limit (migration 0120)", () => {
       { user_id: ids.teacherpass, scope: "teacher", source: "manual", status: "active", note: `test ${RUN_ID}` },
       { user_id: ids.imatpass, scope: "imat", source: "manual", status: "active", note: `test ${RUN_ID}` },
       { user_id: ids.mocksonimat, scope: "mocks", source: "manual", status: "active", note: `test ${RUN_ID}` },
+      // The Practice Pass (0212): online limits lifted on the Indian exams.
+      { user_id: ids.practicepass, scope: "practice", source: "manual", status: "active", note: `test ${RUN_ID}` },
     ]);
     expect(entErr).toBeNull();
     const { data: org } = await admin
@@ -325,7 +327,7 @@ describe.skipIf(!HAS_ENV)("free-mock limit (migration 0120)", () => {
     expect(data).toMatchObject({ limit: 3, used: 3, hasPass: false });
   });
 
-  it.each(["mockpass", "teacherpass", "staff"] as Role[])(
+  it.each(["mockpass", "teacherpass", "practicepass", "staff"] as Role[])(
     "never blocks %s",
     async (role) => {
       for (let i = 0; i < 4; i++) expect((await start(role, i)).error).toBeNull();
@@ -336,6 +338,14 @@ describe.skipIf(!HAS_ENV)("free-mock limit (migration 0120)", () => {
   it("reports a pass holder as hasPass", async () => {
     const { data } = await clients.teacherpass.rpc("my_mock_quota");
     expect(data).toMatchObject({ hasPass: true });
+    const { data: practice } = await clients.practicepass.rpc("my_mock_quota");
+    expect(practice).toMatchObject({ hasPass: true, passScopes: ["practice"] });
+  });
+
+  it("does not let the Practice Pass past the limit on IMAT (0212)", async () => {
+    // "never blocks practicepass" above started 4 Indian mocks, which count
+    // toward the free allowance, so with no IMAT pass the first IMAT start is refused.
+    expect((await startImat("practicepass", 0)).error?.code).toBe("PT402");
   });
 
   it("does not let the www pass past the limit on an exam with its own pass", async () => {

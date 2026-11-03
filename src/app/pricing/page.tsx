@@ -6,8 +6,7 @@ import AppHeader from "@/components/AppHeader";
 import { getSessionMember, getSessionUser } from "@/lib/auth";
 import { createSupabaseAnonClient, createSupabaseServerClient } from "@/lib/supabase/server";
 import { loadEntitlements } from "@/lib/entitlements/query";
-import { hasActiveScope } from "@/lib/entitlements/access";
-import { formatPrice, planLengthLabel, plansForBuyer, type Plan } from "@/lib/billing/plans";
+import { formatPrice, ownsPlan, planLengthLabel, plansForBuyer, type Plan } from "@/lib/billing/plans";
 import { readCountry } from "@/lib/acquisition/country";
 import { planSiteForHost } from "@/lib/sites/intl";
 import { listActivePlans } from "@/lib/billing/plansQuery";
@@ -28,7 +27,7 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "The Premium Pass: unlimited timed mock tests and PDF question-paper + answer-key downloads, for students and teachers. Browsing stays free.",
+    "The Practice Pass: unlimited answers, mock tests and practice. The Premium Pass adds PDF question-paper + answer-key downloads. Browsing stays free.",
   // Indexable (a genuine landing surface), but it is reachable with `?plan=`
   // and `?next=`, so it declares its canonical.
   alternates: { canonical: "/pricing" },
@@ -58,7 +57,9 @@ export default async function PricingPage({
   const now = Date.now();
   const examLine = site === "pyqvault" ? await passLineForViewer(user?.id ?? null) : null;
   // Staff already have everything a pass sells.
-  const owns = (plan: Plan) => !!member || hasActiveScope(rows, plan.scope, now);
+  // ownsPlan, not "covers": a Practice holder covers the online checks but does
+  // not own the Premium Pass, which adds downloads.
+  const owns = (plan: Plan) => !!member || ownsPlan(rows, plan, now);
   const highlighted = searchParams.plan;
   // Where the buyer was blocked (a mock's Start button, the download gate); they
   // land back there after paying, and the sign-in round-trip keeps it.

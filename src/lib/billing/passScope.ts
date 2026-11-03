@@ -10,7 +10,7 @@
  * A check with no exam in hand (the reveal meter on a cached page that did not
  * say its exam) asks for any pass its SITE sells: `sitePassScopes`.
  */
-import { SCOPE_FREE, SCOPE_MOCKS, scopeCovers } from "@/lib/entitlements/access";
+import { SCOPE_DOWNLOADS, SCOPE_FREE, SCOPE_MOCKS, scopeCovers } from "@/lib/entitlements/access";
 import { EXAM_REGISTRY, getExamByName, getExamBySlug } from "@/lib/exam/examContext";
 import type { PlanSite } from "./plans";
 
@@ -55,6 +55,15 @@ export function holdsPassFor(summary: PassSummary, scopes: string | readonly str
   if (wanted.includes(SCOPE_FREE)) return true;
   if (summary.passScopes) return coversAny(summary.passScopes, wanted);
   return summary.hasPass && wanted.includes(SCOPE_MOCKS);
+}
+
+/**
+ * What a download check asks for on a site (2026-11-03): www `downloads` (the
+ * Premium Pass, not the Practice Pass); intl its exams' own passes, which
+ * include their downloads.
+ */
+export function downloadScopesFor(site: PlanSite): string[] {
+  return sitePassScopes(site).map((s) => (s === SCOPE_MOCKS ? SCOPE_DOWNLOADS : s));
 }
 
 /**

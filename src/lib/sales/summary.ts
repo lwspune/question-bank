@@ -33,11 +33,14 @@ export type SalesPeriodRow = {
   bookPaise: number;
   /** USD passes sold on intl.pyqvault.com, in cents (0203). Never added to the rupee figures. */
   passUsdCents: number;
+  /** Of passesSold, the Practice Passes (0212); the rest are Premium (or intl). */
+  practiceSold: number;
 };
 
 export type SalesTotals = {
   passOrders: number;
   passesSold: number;
+  practiceSold: number;
   bookOrders: number;
   booksSold: number;
   refunded: number;
@@ -115,6 +118,7 @@ const emptyRow = (period: string): SalesPeriodRow => ({
   booksRefunded: 0,
   bookPaise: 0,
   passUsdCents: 0,
+  practiceSold: 0,
 });
 
 /** `count` periods, newest first, ending with today's; a period with no sales is a row of zeros. */
@@ -132,12 +136,13 @@ export function sumRows(rows: SalesPeriodRow[]): SalesTotals {
     (t, r) => ({
       passOrders: t.passOrders + r.passOrders,
       passesSold: t.passesSold + r.passesSold,
+      practiceSold: t.practiceSold + r.practiceSold,
       bookOrders: t.bookOrders + r.bookOrders,
       booksSold: t.booksSold + r.booksSold,
       refunded: t.refunded + r.passesRefunded + r.booksRefunded,
       paise: t.paise + r.passPaise + r.bookPaise,
     }),
-    { passOrders: 0, passesSold: 0, bookOrders: 0, booksSold: 0, refunded: 0, paise: 0 }
+    { passOrders: 0, passesSold: 0, practiceSold: 0, bookOrders: 0, booksSold: 0, refunded: 0, paise: 0 }
   );
 }
 
