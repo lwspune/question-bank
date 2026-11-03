@@ -23,7 +23,7 @@ import fitz
 # ".com" logo sits under several aptitude figures. The figures themselves are
 # black print, so a LIGHT, COLOURED pixel is watermark and becomes white; black
 # lines, grey anti-aliasing and solid black fills stay (2026-11-02).
-WATERMARKED = {"fsp-2014": "AglaSem logo", "ssp-2023": "text showing through from the back of the page", "ssp-csat-2025": "the photo's grey-blue page tint"}
+WATERMARKED = {"fsp-2014": "AglaSem logo", "ssp-2023": "text showing through from the back of the page", "ssp-csat-2025": "the photo's grey-blue page tint", "ssp-2025": "the photo's grey-blue page tint", "ssp-csat-2024": "the photo's grey-blue page tint"}
 
 
 def dewatermark(path):
@@ -251,7 +251,8 @@ def figures(pid, dpi=220):
             page_image(pid, fig["page"], dpi, clip=fig["box"]).save(path)
         else:
             doc_for(source(pid)[0])[fig["page"] - 1].get_pixmap(dpi=dpi, clip=clip).save(path)
-        if pid in WATERMARKED:
+        # watermark "none": looked at and judged clean; whitening would thin its faint lines.
+        if pid in WATERMARKED and fig.get("watermark") != "none":
             print(f"  q{q['n']}: {dewatermark(path)} watermark pixel(s) whitened ({WATERMARKED[pid]})")
         n += 1
     print(f"{pid}: {n} figure(s) -> {out}")
