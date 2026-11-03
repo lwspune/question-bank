@@ -25,7 +25,10 @@ Your brief names a chapter folder written by `npm run revision:prepare`:
   statements from the prose in the book's own words; rebuild formulas from the
   subject and cross-check them against the garbled text.
 - `pyqs.txt`: every board past-paper question of the chapter, one a line:
-  `<year> <month> [<format>] <text>`, newest first. A line ending
+  `<year> <month> [<format>] [<n> marks] <text>`, newest first. HSC lines have
+  a month and no marks; CBSE lines have marks and no month. A CBSE year has
+  several sets, so the same idea often appears more than once in one year, and
+  a case-study part is listed without its passage. A line ending
   `[has a figure, not shown here]` refers to a diagram you cannot see: group
   it by its words if you can, and never report its figure as missing.
 
@@ -41,7 +44,9 @@ Search with grep; never print a whole file.
   derivation and its numerical may share a topic if the topic says so: "Angle of
   banking: formula or a numerical"). `years` = every distinct year of the lines
   in that group, newest first, each once. Order topics by how many questions
-  each groups. **Never give `marks`**: our HSC data records none.
+  each groups. **`marks`:** HSC never (our HSC data records none). CBSE: give
+  the marks the topic's cited lines carry most often (the checker refuses any
+  other number); leave it out when the group mixes marks evenly.
 - **Old syllabus stays out.** A past-paper question on something the current
   book does not teach (grep `book.txt` to be sure) goes in no topic and nowhere
   in the sheet. Say so in your report.
@@ -57,14 +62,20 @@ Search with grep; never print a whole file.
   check.
 - **Wording:** plain, simple English; for definitions and laws, the book's own
   wording, trimmed. No em dashes anywhere in your words.
-- `examSlug` is `mh-hsc-12`; `subjectName` and `chapterName` are as given in
-  your brief (they must match the database exactly); `source` is
-  `Balbharati <Subject> Std XII (Maharashtra State Board), Chapter <n>`, where
-  `<n>` is the number the BOOK gives the chapter: its sections are numbered
+- `examSlug` is as given in your brief (`mh-hsc-12` or `cbse-12`);
+  `subjectName` and `chapterName` are as given in your brief (they must match
+  the database exactly). For **CBSE 12**, `source` is
+  `NCERT <Subject> Part <I or II> (CBSE Class 12), Chapter <n>` (Biology is one
+  book: `NCERT Biology (CBSE Class 12), Chapter <n>`), with the part your brief
+  names, and the definitions follow NCERT's wording, which is what CBSE marking
+  schemes reward. For **HSC 12**, `source` is
+  `Balbharati <Subject> Std XII (Maharashtra State Board), Chapter <n>`. In both, `<n>` is
+  the number the BOOK gives the chapter: its sections are numbered
   `<n>.1`, `<n>.2`, or (Geography) its heading reads `<n>. <chapter name>`.
   `revision:evidence` checks it. Do not trust a number given in your brief over
   the book's: the database's chapter order starts at 0 for some subjects.
-  Mathematics is two books, each numbered from 1:
+  HSC Mathematics is two books, each numbered from 1 (NCERT Mathematics numbers
+  straight through both parts):
   `Balbharati Mathematics and Statistics Part I Std XII (Maharashtra State Board), Chapter <n>`
   (Mathematical Logic to Linear Programming) and `... Part II ...` (Differentiation
   to Binomial Distribution).
