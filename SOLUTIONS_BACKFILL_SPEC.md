@@ -480,3 +480,9 @@ One line per batch: date, exam, written, disputed, skipped.
   7,179 PUBLIC with a solution; 1,142 without: those 203 plus about
   940 no solver could settle (mostly current affairs, dates and
   Maharashtra facts). Running total 11,106.
+- 2026-11-03, owner ruled on KEY_DOUBTS.md: notice + grace on all 203,
+  MPSC's key kept. Each notice now heads its question's solution (204
+  rows, 113 Marathi translations; `scripts/mpsc/apply-notices.ts`), so
+  those 203 are no longer without a solution; the whole-paper mocks grace
+  them. MPSC now 6,240 of 7,179 with a solution; the ~940 left are the
+  questions no solver could settle.

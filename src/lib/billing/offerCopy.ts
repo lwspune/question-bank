@@ -20,6 +20,8 @@ export function offerTitle(box: DownloadBox, count = 0): string {
       return "Get the Top 10 PYQs as a PDF";
     case "formula":
       return "Get this formula sheet as a PDF";
+    case "revision":
+      return "Get this revision sheet as a PDF";
     case "homework":
       return "Get this homework as a PDF";
   }
@@ -33,6 +35,8 @@ export function offerLine(box: DownloadBox): string {
       return "Print it, sit it against the clock, then mark yourself with the answer key.";
     case "formula":
       return "Every formula in this chapter on one A4 page, to print and revise from.";
+    case "revision":
+      return "This chapter's most-asked questions, formulas and derivations, to print and revise from.";
     default:
       return "Print them, sit them against the clock, then mark yourself with the answer key.";
   }

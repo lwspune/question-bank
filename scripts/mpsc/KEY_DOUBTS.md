@@ -4,7 +4,7 @@ Read 2026-11-03, while backfilling worked solutions (SOLUTIONS_BACKFILL_SPEC.md,
 
 **203 questions: about 73 defective as printed** (no option right, or two right, or a false premise) **and 130 with a doubtful key.** None has a worked solution: `apply.ts` never writes a solution that disagrees with the key.
 
-**Status: awaiting the owner.** The rule used for earlier papers (README, Forest and Agriculture 2026-11-02; State Services 2023-2025) is: MPSC's key is KEPT, a notice heads the solution in both languages, and the mock awards the question to every candidate. Prelims notices go in `config.ts` (`notices`, which `deriveMpscSittings` turns into grace). Mains has no notice field yet: its grace comes only from `#` in the key file.
+**Status: SETTLED 2026-11-03, owner: notice + grace on all 203, MPSC's key kept.** Each question's notice is in `keyDoubtNotices.ts` (Prelims) or `../mpsc-mains/keyDoubtNotices.ts` (Mains), written onto the live rows by `apply-notices.ts`, and graced in its whole-paper mock (README, "Key doubts found by the solutions backfill").
 
 A finding is a question, not a verdict. Several are matters of grammar-book tradition (MPSC keys the same 'साप' sentence as व्यंग्यार्थ/व्यंजना in three papers, and 'येऊ नये' as आज्ञार्थी in two), where the key may follow a source that teaches it that way.
 

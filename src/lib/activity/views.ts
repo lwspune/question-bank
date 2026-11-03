@@ -55,6 +55,9 @@ export const SURFACES = [
   // address. Until then nothing told "nobody came" from "came and left before a question".
   "learn",
   "learn_start",
+  // A /board chapter's Revision tab opened (2026-11-03), with the chapter's
+  // address: whether board students read the quick-revision sheets at all.
+  "board_revision",
 ] as const;
 
 export type Surface = (typeof SURFACES)[number];
@@ -100,6 +103,13 @@ export function readingViewFor(pathname: string): { surface: ReadingSurface; pat
   if (section) return { surface: section, path };
   if (segments.length === 3 && segments[0] === "mock" && segments[2] === "paper") return { surface: "past_paper", path };
   return null;
+}
+
+/** A /board chapter's cleaned address (/board/<exam>/<subject>/<chapter>), or null for any other page. */
+export function boardChapterPath(pathname: string): string | null {
+  const view = readingViewFor(pathname);
+  if (view?.surface !== "board") return null;
+  return view.path.split("/").length === 5 ? view.path : null;
 }
 
 /** A Learn lesson's cleaned address (/learn/lesson/<chapter>/<concept>), or null for any other page. */

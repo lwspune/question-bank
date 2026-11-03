@@ -287,3 +287,30 @@ describe("parseClientEvent - a Learn lesson begun", () => {
     expect(r.ok && r.value.dedupeKey).toBe("view:learn:/learn/lesson/matrices/what-is-a-matrix:u1:2026-09-27");
   });
 });
+
+// The /board Revision tab opened (2026-11-03), by a signed-in student. Its
+// address must be a /board CHAPTER's, so the row names the sheet read.
+describe("parseClientEvent - a board revision sheet opened", () => {
+  it("accepts a /board chapter's address, deduped per chapter per student per IST day", () => {
+    const r = parseClientEvent(
+      { kind: "surface_viewed", surface: "board_revision", path: "/board/mh-hsc-12/physics/rotational-dynamics#x" },
+      "u1",
+      NOW
+    );
+    expect(r).toEqual({
+      ok: true,
+      value: {
+        kind: "surface_viewed",
+        metadata: { surface: "board_revision", path: "/board/mh-hsc-12/physics/rotational-dynamics" },
+        dedupeKey: "view:board_revision:/board/mh-hsc-12/physics/rotational-dynamics:u1:2026-09-27",
+      },
+    });
+  });
+
+  it("refuses it without an address, or with one that is not a /board chapter", () => {
+    expect(parseClientEvent({ kind: "surface_viewed", surface: "board_revision" }, "u1", NOW).ok).toBe(false);
+    for (const path of ["/board", "/board/mh-hsc-12", "/board/mh-hsc-12/physics", "/notes/nda-maths/vectors"]) {
+      expect(parseClientEvent({ kind: "surface_viewed", surface: "board_revision", path }, "u1", NOW).ok).toBe(false);
+    }
+  });
+});

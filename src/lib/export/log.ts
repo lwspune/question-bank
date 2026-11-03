@@ -34,9 +34,10 @@ export type ExportEvent = {
    * 'homework' = one day of a published homework plan (migration 0143);
    * 'board_paper' = a published board past paper, whole (migration 0146);
    * 'formula' = one /notes chapter's formula sheet (migration 0150);
-   * 'top_pyqs' = one /board chapter's top PYQs from a homework plan (migration 0154).
+   * 'top_pyqs' = one /board chapter's top PYQs from a homework plan (migration 0154);
+   * 'revision' = one /board chapter's quick-revision sheet (migration 0213).
    */
-  mode: "cart" | "filters" | "mock" | "homework" | "board_paper" | "formula" | "top_pyqs";
+  mode: "cart" | "filters" | "mock" | "homework" | "board_paper" | "formula" | "top_pyqs" | "revision";
   /** The past paper, on a 'mock' export only. Public, so naming it is safe. */
   mockId?: string;
   /** The plan, on a 'homework' or 'top_pyqs' export; the day on 'homework' only. Public, so naming them is safe. */
@@ -48,6 +49,8 @@ export type ExportEvent = {
   boardPaperId?: string;
   /** "<subjectRoute>/<chapterSlug>", on a 'formula' export only. Editorial content, so naming it is safe. */
   formulaSheet?: string;
+  /** "<examSlug>/<subjectRoute>/<chapterSlug>", on a 'revision' export only. Editorial content, so naming it is safe. */
+  revisionSheet?: string;
   /** The one exam and subject exported, null when mixed (migration 0155). Taxonomy, so naming them is safe. */
   examId?: string | null;
   subjectId?: string | null;
@@ -69,6 +72,7 @@ export async function recordExportEvent(ev: ExportEvent): Promise<void> {
         : {}),
       ...(ev.boardPaperId ? { board_paper_id: ev.boardPaperId } : {}),
       ...(ev.formulaSheet ? { formula_sheet: ev.formulaSheet } : {}),
+      ...(ev.revisionSheet ? { revision_sheet: ev.revisionSheet } : {}),
       ...(ev.chapterId ? { chapter_id: ev.chapterId } : {}),
       ...(ev.examId ? { exam_id: ev.examId, subject_id: ev.subjectId ?? null } : {}),
       is_staff: ev.isStaff,

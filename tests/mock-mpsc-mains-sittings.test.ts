@@ -84,7 +84,8 @@ describe("deriveMainsSittings", () => {
   const key = (map: Record<number, string>) => () => map;
 
   it("emits one sitting per exam the booklet was sat for (2009 joint paper -> ASO + STI)", () => {
-    const s = deriveMainsSittings([byId("asosti-2009")], key({ 15: "#", 35: "#", 1: "B" }));
+    // The paper's own notices set aside: this case is about the key's "#" (notices: mpsc-key-doubt-notices.test.ts).
+    const s = deriveMainsSittings([{ ...byId("asosti-2009"), notices: undefined }], key({ 15: "#", 35: "#", 1: "B" }));
     expect(s.map((x) => x.slug)).toEqual(["mpsc-aso-mains-2009", "mpsc-sti-mains-2009"]);
     expect(s[0].sourceFile).toBe("MPSC-Mains-asosti-2009-TNS-ASO");
     expect(s[0].graceNumbers).toEqual([15, 35]);

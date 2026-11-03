@@ -25,6 +25,8 @@
  */
 import { join } from "node:path";
 import { SUBJECT_CHAPTERS as MAINS_CHAPTERS } from "../mpsc-mains/lib";
+import { KEY_DOUBT_NOTICES } from "./keyDoubtNotices";
+import { notice } from "./notice";
 
 export const SOURCE_PDF = "C:/Users/vilas/Downloads/Group B & C Pre Papers 2017 to 2024.pdf";
 /**
@@ -229,8 +231,7 @@ const ssp = (pyqYear: number, date: string, code: string, pages: [number, number
 /**
  * The owner's 2026-11-03 ruling on the doubtful keys in the State Services
  * 2023-2025 papers: notice + grace, MPSC's key kept (the 2026-11-02 Forest and
- * Agriculture ruling). `notice` is a function declaration so these can sit
- * above the paper lists that use them.
+ * Agriculture ruling).
  */
 const SSP_2023_2025_NOTICES: Record<string, Record<number, { en: string; mr: string }>> = {
   "ssp-2023": {
@@ -406,13 +407,6 @@ const prelims = (
   ...extra,
 });
 
-/** A doubtful-key notice; every one ends by saying the mock gives the mark to all. */
-function notice(en: string, mr: string) {
-  return {
-    en: `**Notice:** ${en} In PYQ Vault mocks this question is awarded to every candidate.`,
-    mr: `**सूचना:** ${mr} PYQ Vault च्या सराव परीक्षांमध्ये या प्रश्नाचे गुण सर्व उमेदवारांना दिले जातात.`,
-  };
-}
 
 /** The owner's 2026-11-02 ruling on every doubtful key in these papers: notice + grace, key kept. */
 const FSP_2014_NOTICES = {
@@ -500,6 +494,17 @@ export const ASP_PAPERS: Paper[] = [
 
 /** Every paper this pipeline can load. `PAPERS` stays Group B & C only — the mock builder derives its sittings from it. */
 export const ALL_PAPERS: Paper[] = [...PAPERS, ...SSP_PAPERS, ...SSP_CSAT_PAPERS, ...FSP_PAPERS, ...ASP_PAPERS];
+
+// The owner's 2026-11-03 ruling on the 203 doubts in KEY_DOUBTS.md (notice + grace,
+// key kept), folded into each paper's `notices` so every list above carries them.
+// A notice on a question that already has one is a mistake, not a merge.
+for (const [id, byQ] of Object.entries(KEY_DOUBT_NOTICES)) {
+  const p = ALL_PAPERS.find((x) => x.id === id);
+  if (!p) throw new Error(`KEY_DOUBT_NOTICES: no paper "${id}"`);
+  const twice = Object.keys(byQ).filter((n) => p.notices?.[Number(n)]);
+  if (twice.length) throw new Error(`KEY_DOUBT_NOTICES: ${id} Q${twice.join(", Q")} already has a notice`);
+  p.notices = { ...p.notices, ...byQ };
+}
 
 /** The column of the 4-set key that applies to a paper's booklet (Set A unless `bookletSet` says otherwise). */
 export const bookletSetIndex = (p: Paper): number => "ABCD".indexOf(p.bookletSet ?? "A");
