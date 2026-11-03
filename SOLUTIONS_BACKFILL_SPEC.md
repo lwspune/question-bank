@@ -466,3 +466,17 @@ One line per batch: date, exam, written, disputed, skipped.
   after). MPSC now 5,223 of 7,179 PUBLIC with a solution, up from 3,318
   this morning; about 1,820 remain, each declined by two solvers.
   Running total 10,292.
+- 2026-11-03, b42 + b43: the ~1,820 left, sent to web-checked agents
+  (search the fact, never the question; no quiz or key sites). Sonnet
+  agents barely searched and one ignored the source rule, so the rest
+  went to Opus, which settled half to three quarters of each fact
+  group. Written 660 + 130. Eight drafts turned to skips on thin or
+  single sources, two settled only by elimination.
+- 2026-11-03, b44: every remaining disagreement (144 drafts that
+  reached another answer, 83 "no option fits" skips) read by the main
+  session: 24 keys hold and got a solution; the other 203 are listed by
+  paper in `scripts/mpsc/KEY_DOUBTS.md` for the owner (about 73
+  defective as printed, 130 with a doubtful key). MPSC now 6,037 of
+  7,179 PUBLIC with a solution; 1,142 without: those 203 plus about
+  940 no solver could settle (mostly current affairs, dates and
+  Maharashtra facts). Running total 11,106.
