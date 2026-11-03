@@ -109,6 +109,14 @@ export type Paper = {
    * the question to every candidate (scripts/mocks/mpscSittings.ts).
    */
   notices?: Record<number, { en: string; mr: string }>;
+  /**
+   * Questions MPSC's final key exempts from negative marking beyond the
+   * decision-making ones. CSAT 2015 only: sets B and C printed the five
+   * decision-making questions in another set's place, so MPSC waived the penalty
+   * on the fifteen questions that moved, in every set (key-2015.pdf p.3). For
+   * the mock's marking; not used by the bank.
+   */
+  noPenalty?: number[];
   pyqNote: string;
   sourceFile: string;
 };
@@ -264,7 +272,7 @@ export const SSP_CSAT_PAPERS: Paper[] = [
   csat(2019, "2019-02-17", "U12", 56, "17 Feb 2019"),
   csat(2018, "2018-04-08", "G11", 56, "8 Apr 2018", 2017),
   csat(2016, "2016-04-10", "O07", 56, "10 Apr 2016"),
-  csat(2015, "2015-04-05", "W05", 56, "5 Apr 2015"),
+  { ...csat(2015, "2015-04-05", "W05", 56, "5 Apr 2015"), noPenalty: [46, 47, 48, 49, 50, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80] },
   csat(2014, "2014-02-02", "H03", 48, "2 Feb 2014"),
   csat(2013, "2013-05-18", "Y01", 48, "18 May 2013"),
 ];

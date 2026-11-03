@@ -244,6 +244,7 @@ export async function regradeAttempt(
     negMarks: q.negMarks,
     answer: key[q.questionId] ?? null,
     ...(q.grace ? { grace: true } : {}),
+    ...(q.optionMarks ? { optionMarks: q.optionMarks } : {}),
   }));
 
   const result = gradeMock(gradeQuestions, answers);
@@ -311,6 +312,7 @@ export async function submitAttempt(
     // scores a null key as skipped, so our defect can never cost a student marks.
     answer: key[q.questionId] ?? null,
     ...(q.grace ? { grace: true } : {}),
+    ...(q.optionMarks ? { optionMarks: q.optionMarks } : {}),
   }));
 
   const result = gradeMock(gradeQuestions, answers);
@@ -362,6 +364,9 @@ export async function submitAttempt(
   ];
   for (const gq of gradeQuestions) {
     if (gq.grace) continue; // a grace question is never "wrong" (no drill fuel)
+    // Nor is a per-option (decision-making) question: a 1.5-mark judgement is
+    // not a mistake to drill, and the drill has no way to show its marks.
+    if (gq.optionMarks) continue;
     // Read the verdict gradeMock already produced rather than re-deriving it.
     // Re-deriving was a second implementation of right-vs-wrong, and it silently
     // could not see a numeric (JEE Section-B) response at all.

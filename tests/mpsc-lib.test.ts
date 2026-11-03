@@ -9,11 +9,13 @@ import {
   printNoteSolution,
   questionSolution,
   gradedKeyLetter,
+  applyGradedKey,
   gradedBalanceIssues,
   gradedRemark,
   setBalanceIssues,
   markDisagreements,
   offListChapters,
+  badDifficulties,
   type BilingualQuestion,
   type Version,
 } from "../scripts/mpsc/lib";
@@ -140,6 +142,19 @@ describe("markDisagreements", () => {
 
   it("ignores a question with no mark, and reports a mark the key does not cover", () => {
     expect(markDisagreements({ 1: null, 4: "D" }, { 1: "A" })).toEqual([{ n: 4, mark: "D", key: undefined }]);
+  });
+});
+
+describe("badDifficulties", () => {
+  it("names every question whose difficulty is not EASY, MODERATE or HARD", () => {
+    const qs = [
+      { n: 1, difficulty: "EASY" },
+      { n: 2, difficulty: "MEDIUM" },
+      { n: 3, difficulty: "HARD" },
+      { n: 4, difficulty: "DIFFICULT" },
+      { n: 5, difficulty: "MODERATE" },
+    ];
+    expect(badDifficulties(qs)).toEqual(["Q2: MEDIUM", "Q4: DIFFICULT"]);
   });
 });
 
@@ -283,6 +298,35 @@ describe("gradedKeyLetter", () => {
   it("refuses a row that is not four marks or has no single best option", () => {
     expect(() => gradedKeyLetter([0, 1, 2.5])).toThrow(/4 marks/);
     expect(() => gradedKeyLetter([2.5, 1, 2.5, 0])).toThrow(/single best/);
+  });
+});
+
+describe("star cells (a set's decision-making question)", () => {
+  it("parses * as a graded cell, so the four sets still balance", () => {
+    const r = parseKeyTokens(["26", "3", "*", "3", "4", "76", "*", "3", "4", "*"]);
+    expect(r.errors).toEqual([]);
+    expect(r.rows.get(76)).toEqual(["*", "C", "D", "*"]);
+  });
+
+  it("fills a set-A * row from Set A's grid and keeps the other sets' letters", () => {
+    const rows = new Map<number, ("A" | "B" | "C" | "D" | "#" | "*")[]>([[76, ["*", "C", "D", "*"]]]);
+    const { rows: out, errors } = applyGradedKey(rows, { 76: [1, 1.5, 2.5, 0] });
+    expect(errors).toEqual([]);
+    expect(out.get(76)).toEqual(["C", "C", "D", "*"]);
+  });
+
+  it("adds a grid-only question as one letter in every set", () => {
+    const { rows: out } = applyGradedKey(new Map(), { 77: [0, 2.5, 1, 1.5] });
+    expect(out.get(77)).toEqual(["B", "B", "B", "B"]);
+  });
+
+  it("refuses a letter row that the grid also keys, and a set-A * with no grid row", () => {
+    const rows = new Map([
+      [76, ["A", "B", "C", "D"]],
+      [80, ["*", "A", "B", "*"]],
+    ]) as Map<number, ("A" | "B" | "C" | "D" | "#" | "*")[]>;
+    const { errors } = applyGradedKey(rows, { 76: [2.5, 0, 1, 1.5] });
+    expect(errors).toEqual(["Q76: in both the letter key and the graded grid", "Q80: set A prints * but the graded grid has no row for it"]);
   });
 });
 

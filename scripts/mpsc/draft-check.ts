@@ -12,7 +12,7 @@
 import { existsSync, readFileSync } from "node:fs";
 import { dataPath, expectedNumbers, requirePaper } from "./config";
 import { loadBatches } from "./merge";
-import { offListChapters, parityIssues } from "./lib";
+import { badDifficulties, offListChapters, parityIssues } from "./lib";
 
 const paper = requirePaper(process.argv[2]);
 const qs = loadBatches(paper.id).sort((a, b) => a.n - b.n);
@@ -40,6 +40,8 @@ for (const q of qs) {
 }
 const offList = paper.chapters ? offListChapters(qs, paper.chapters) : [];
 for (const o of offList) console.log(`off-list chapter — ${o}`);
+const badDiff = badDifficulties(qs);
+for (const d of badDiff) console.log(`bad difficulty — ${d} (EASY, MODERATE or HARD)`);
 
 const boxesFile = dataPath(paper.id, "boxes");
 const boxes: Record<string, string | null> = existsSync(boxesFile) ? JSON.parse(readFileSync(boxesFile, "utf8")) : {};
@@ -48,7 +50,7 @@ const noAnswer = qs.filter((q) => !boxes[q.n]).map((q) => q.n);
 console.log(
   `\n${paper.id}: ${qs.length} transcribed · missing ${missing.length ? `[${missing.join(",")}]` : "none"}` +
     ` · dupes ${dupes.length ? `[${dupes.join(",")}]` : "none"} · omitted-but-present ${omitted.length ? `[${omitted.join(",")}]` : "none"}` +
-    ` · parity flags ${parity} · literal \\n ${literal} · off-list ${offList.length}` +
+    ` · parity flags ${parity} · literal \\n ${literal} · off-list ${offList.length} · bad difficulty ${badDiff.length}` +
     ` · no own answer ${noAnswer.length ? `[${noAnswer.join(",")}]` : "none"}` +
     ` · figures ${qs.filter((q) => q.figure).length} · print notes ${qs.filter((q) => q.printNote).length}`
 );

@@ -18,7 +18,7 @@
  */
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { ALL_PAPERS, BOOKLET_SET_INDEX, dataPath, questionCount } from "./config";
-import { gradedBalanceIssues, gradedKeyLetter, parseKeyLines, setBalanceIssues, type KeyLetter } from "./lib";
+import { applyGradedKey, gradedBalanceIssues, parseKeyLines, setBalanceIssues, type KeyLetter } from "./lib";
 
 function main() {
   const write = process.argv.includes("--write");
@@ -37,26 +37,23 @@ function main() {
     errors.push(...setBalanceIssues(rows));
     const gradedFile = dataPath(p.id, "graded");
     let graded: Record<string, number[]> = {};
+    let keyed = rows;
     if (existsSync(gradedFile)) {
       const sets: Record<string, Record<string, number[]>> = JSON.parse(readFileSync(gradedFile, "utf8")).sets;
       errors.push(...gradedBalanceIssues(sets));
       graded = sets.A;
-      for (const [q, marks] of Object.entries(graded)) {
-        if (rows.has(Number(q))) errors.push(`Q${q}: in both the letter key and the graded grid`);
-        try {
-          const letter = gradedKeyLetter(marks);
-          rows.set(Number(q), [letter, letter, letter, letter]); // Set A is what is keyed; the grid's sets were balance-checked above
-        } catch (e) {
-          errors.push(`Q${q}: ${(e as Error).message}`);
-        }
-      }
+      const applied = applyGradedKey(rows, graded);
+      keyed = applied.rows;
+      errors.push(...applied.errors);
+    } else {
+      for (const [q, r] of rows) if (r[BOOKLET_SET_INDEX] === "*") errors.push(`Q${q}: set A prints * but there is no graded grid`);
     }
     const total = questionCount(p);
     const missing: number[] = [];
-    for (let q = 1; q <= total; q++) if (!rows.has(q)) missing.push(q);
-    const extra = [...rows.keys()].filter((q) => q > total);
+    for (let q = 1; q <= total; q++) if (!keyed.has(q)) missing.push(q);
+    const extra = [...keyed.keys()].filter((q) => q > total);
     const key: Record<number, KeyLetter> = {};
-    for (const [q, sets] of rows) if (q <= total) key[q] = sets[BOOKLET_SET_INDEX];
+    for (const [q, sets] of keyed) if (q <= total) key[q] = sets[BOOKLET_SET_INDEX] as KeyLetter; // no * left: applyGradedKey refuses one
     const cancelled = Object.entries(key).filter(([, v]) => v === "#").map(([q]) => Number(q));
     const ok = errors.length === 0 && missing.length === 0 && extra.length === 0;
     console.log(

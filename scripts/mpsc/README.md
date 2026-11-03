@@ -134,6 +134,48 @@ misread (one slip in the 2022 pilot, caught at 180 dpi): zoom any doubtful word.
 
 **All 10 papers committed PRIVATE (1,000 q, 24 cancelled, 7 figures).** Coaching marks agree with the official final key on 998 of 999 marked questions; the one disagreement (2016 Q22) is the coaching error. **PUBLIC since 2026-09-27** (`npx tsx scripts/mpsc/flip-public.ts ssp --apply`), registry slug `mpsc-state-services-prelims` (MPSC → Prelims → State Services), and 10 GS Paper I mocks published (`scripts/mocks/build.ts --paper=mpsc --only=ssp-<year>`; 100 q, 200 marks, 2 h, −0.5 per wrong, cancelled questions as grace).
 
+# MPSC State Services Prelims — CSAT Paper II
+
+Papers `ssp-csat-<year>` in `config.ts` `SSP_CSAT_PAPERS`, the same exam row as
+GS Paper I (`EXAMS.ssp`). 80 questions, 200 marks, 2 hours, three subjects
+(`SSP_CSAT_CHAPTERS`: Comprehension, Reasoning and Aptitude, Decision Making).
+2022 is configured but DROPPED (owner, 2026-09-30); it has no rows and no mock.
+
+**Source:** one booklet PDF and one key PDF per year in `SSP_CSAT_DIR`.
+`paper-2017.pdf` is the 2018 booklet (`file` in `csat()`). 2014, 2015 and 2018
+have a text layer for the English passages; the rest were read by Windows OCR.
+
+**Keys:** the Commission's final keys. The Decision Making questions (Q74-80 in
+2013, Q76-80 after) are GRADED: every option has its own marks, typed from the
+key's grid into `<id>.graded.json` (all four sets, balance-checked; the text
+layer garbles 1.5 and 2.5). `keys.ts` writes them to `key.json` `graded`, the
+key letter is the best option, and the solution prints the marks line.
+
+**Passages that trip the content filter:** a helper writing a published literary
+text or a statute word for word is stopped outright (2015 Q11-15, a Rilke
+letter; 2020 Q11-15, IPC sections 349-351). Helpers write
+`ctx_en="{{EN_PASSAGE <paper> Q<a>-<b>}}"` instead and the main session fills it
+from the text layer or OCR. Before merging a paper, grep its `t*.json` for `{{`.
+
+| paper | marks vs key | cancelled |
+|---|---|---|
+| 2013 (Y01) | 67/80 | Q33 |
+| 2014 (H03) | 64/80 | Q7 |
+| 2015 (W05) | 59/80 | Q51, Q63, Q67, Q73 |
+| 2016 (O07) | 61/80 | Q35, Q57, Q61, Q62, Q69 |
+| 2018 (G11) | 73/80 | Q14 |
+| 2019 (U12) | 68/80 | Q12, Q71, Q72 |
+| 2020 (Z13) | 68/80 | Q66 |
+| 2021 (P14) | 74/80 | Q64 |
+
+**PUBLIC 2026-11-03** (owner), with 8 mocks (`mpsc-ssp-csat-<year>`, published
+one at a time with `build.ts --paper=mpsc --only=ssp-csat-<year> --apply --publish`).
+Marking, from clause 7(b) of each cover: +2.5; a wrong answer costs one-third
+(2013-2020, `MPSC_SSP_CSAT_PAPER`) or one-fourth (2021, `MPSC_SSP_CSAT_2021_PAPER`);
+Decision Making scores the picked option's marks and is never penalised
+(`optionMarks` on the mock question). 2015's final key (p.3) also waives the
+penalty on Q46-50 and Q71-75 (`noPenalty`). 17 cancelled questions ride as grace.
+
 # MPSC Forest Service + Agriculture Service Prelims
 
 Two more exams on the same pipeline: `EXAMS.fsp` (MPSC Forest Service Prelims)

@@ -20,6 +20,8 @@ export type MockSnapshotQuestion = {
   negMarks: number;
   /** Grace question — awarded to all at grade time (officially dropped/bonus). */
   grace?: boolean;
+  /** Marks per option (MPSC CSAT Decision Making), scored by gradeMock. Never sent to the runner. */
+  optionMarks?: Partial<Record<OptionLabel, number>>;
 };
 
 export type MockSection = { key: string; label: string; count: number };
