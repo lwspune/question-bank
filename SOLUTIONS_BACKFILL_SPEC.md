@@ -445,3 +445,24 @@ One line per batch: date, exam, written, disputed, skipped.
   writing (wrong grammar terms: जेथे is not a pronoun, परीस is the
   शब्दयोगी अव्यय, तज्ज्ञ is tat + jña, भावकर्तृक; figs ARE grown in the
   peninsula; a "same date as above"). Running total 9,003.
+- 2026-11-03, b37 MPSC State Services Prelims (1,047 exported: the new
+  CSAT and 2023-2025 GS, plus what no batch had tried) and b38 (20 Group
+  B Combined Mains GK): written 668 + 9. Disputed 30. Read about 160
+  and every Marathi match; 3 wording fixes and 29 drafts whose answer
+  line was not last (moved by script before writing).
+- 2026-11-03, b39 + b40, the RETRY pass (owner: "complete whole mpsc
+  remaining solutions end to end"): every MPSC question an earlier batch
+  had skipped, 1,664 + 766, drafted by Sonnet 5.5 agents because Haiku
+  had already declined them. Written 450 + 152; disputed 55 + 22; about
+  1 in 4 solved, nearly all of the rest current affairs, dates and
+  Maharashtra facts no solver could confirm. Read all 150 Marathi
+  matches: 12 fixed (a misglossed word, a made-up word "पडवले",
+  grammar-term slips) and 3 turned to skips (two settled by
+  elimination, one with a second fair answer).
+- 2026-11-03, b41: 56 picture questions solvers had skipped without
+  opening the picture, sent back on their own: written 10. Two drafts
+  had lost every LaTeX backslash ("(60^circ)", "8 div 2"), which no
+  check caught; `solutionProblems` now refuses it (commit 8ca624baf and
+  after). MPSC now 5,223 of 7,179 PUBLIC with a solution, up from 3,318
+  this morning; about 1,820 remain, each declined by two solvers.
+  Running total 10,292.
