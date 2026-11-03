@@ -91,6 +91,19 @@ describe("solutionProblems", () => {
     expect(solutionProblems("Energy = power \\times time.").join()).toMatch(/outside maths/);
   });
 
+  it("flags maths whose backslashes were all lost, which prints as plain text", () => {
+    // A real b40 draft (2026-11-03): every \( \) and \div had lost its backslash.
+    const lost = "The two CH(_2)OH carbons are not chiral.\nSo (n = 3) and there are (2^3 = 8) isomers.\nThat is (8 div 2 = 4) pairs.";
+    expect(solutionProblems(lost).join()).toMatch(/lost its backslashes/);
+    expect(solutionProblems("So 12 times 3 = 36, and 36 div 4 = 9.").join()).toMatch(/lost its backslashes/);
+    expect(solutionProblems("Use frac{1}{2} of the area.").join()).toMatch(/lost its backslashes/);
+  });
+
+  it("allows ordinary words that are also maths names", () => {
+    expect(solutionProblems("He tried three times, and the text divides into two parts.")).toEqual([]);
+    expect(solutionProblems("Read options (a) and (b) again.")).toEqual([]);
+  });
+
   it("allows LaTeX commands inside inline and display maths", () => {
     expect(solutionProblems("Energy = power \\(\\times\\) time.\n\\[ E = 100 \\times 60 \\]")).toEqual([]);
   });

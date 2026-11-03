@@ -41,6 +41,13 @@ export function solutionProblems(text: string): string[] {
   // "3 \times 15" with no \( \) around it renders the backslash as text.
   const prose = text.replace(/\\\([\s\S]*?\\\)/g, "").replace(/\\\[[\s\S]*?\\\]/g, "");
   if (/\\[a-zA-Z]+/.test(prose)) out.push("LaTeX command outside maths delimiters");
+  // Maths that lost EVERY backslash, delimiters included: "CH(_2)OH", "(2^3 = 8)",
+  // "8 div 2". No check above sees it, since nothing is left to unbalance or
+  // escape (a real b40 draft, 2026-11-03). "times" and "div" count only between
+  // numbers, so "three times" or "divides" in prose stay clean.
+  if (/(^|[^\\A-Za-z])(frac|sqrt|cdot|mathrm)\{|\d\s*(times|div)\s*\d|\(_\d|\(\d+\^\d/.test(prose)) {
+    out.push("maths that lost its backslashes (prints as plain text)");
+  }
   return out;
 }
 
