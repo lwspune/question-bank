@@ -73,10 +73,12 @@ export function extractDbUrlRef(dbUrl: string | undefined | null): string | null
  * rows a migration INSERTS (0120 paywall_settings, 0121 plans, 0158
  * chat_settings): migrate.ts sees those migrations as applied and never
  * re-runs them, so a truncated settings table stays empty and every test that
- * reads it fails (2026-10-17, nine files). Settings are not test crumbs. A new
- * migration that seeds a row into a new table belongs on this list.
+ * reads it fails (2026-10-17, nine files). Settings are not test crumbs. The
+ * ebook catalogue (0172-0189) is the same kind of seed and was missed until a
+ * reset emptied it (2026-11-03); tests/testdb-reset-keeps.test.ts now fails on
+ * any migration-seeded table left off this list.
  */
-export const RESET_KEEPS = new Set(["testdb_migrations", "paywall_settings", "plans", "chat_settings"]);
+export const RESET_KEEPS = new Set(["testdb_migrations", "paywall_settings", "plans", "chat_settings", "ebooks"]);
 
 /** The public tables testdb:reset empties, in the order given. */
 export function tablesToTruncate(tables: string[]): string[] {

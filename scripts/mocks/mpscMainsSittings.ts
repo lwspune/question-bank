@@ -16,7 +16,9 @@
  * order, and that order is kept by question number.
  *
  * Grace = the `#` entries of the paper's final key (the same ones the rows
- * carry as CANCELLED). A derived key has none. Dropped papers are skipped;
+ * carry as CANCELLED), plus every question the owner gave a notice (config.ts
+ * `notices`: key kept, notice heads the solution; 2026-11-03). A derived key has
+ * no `#`. Dropped papers are skipped;
  * a paper with a scan gap is refused, since it can never be a whole paper.
  *
  * Pure apart from the default key loader. Unit-tested in
@@ -108,10 +110,11 @@ export function deriveMainsSittings(
       throw new Error(`MPSC Mains ${paper.id}: scan gap at Q${paper.missingQuestions.join(",")} — not a whole paper`);
     }
     const key = keyFor(paper.id);
-    const graceNumbers = Object.entries(key)
+    const cancelled = Object.entries(key)
       .filter(([, v]) => v === "#")
-      .map(([n]) => Number(n))
-      .sort((a, b) => a - b);
+      .map(([n]) => Number(n));
+    const noticed = Object.keys(paper.notices ?? {}).map(Number);
+    const graceNumbers = [...new Set([...cancelled, ...noticed])].sort((a, b) => a - b);
     for (const exam of paper.exams) {
       const [, date] = pyqNoteFor(paper, exam).split(" · ");
       out.push({
