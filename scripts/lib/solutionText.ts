@@ -45,7 +45,9 @@ export function solutionProblems(text: string): string[] {
   // "8 div 2". No check above sees it, since nothing is left to unbalance or
   // escape (a real b40 draft, 2026-11-03). "times" and "div" count only between
   // numbers, so "three times" or "divides" in prose stay clean.
-  if (/(^|[^\\A-Za-z])(frac|sqrt|cdot|mathrm)\{|\d\s*(times|div)\s*\d|\(_\d|\(\d+\^\d/.test(prose)) {
+  // "(60^circ)" and "(5-3 = 2)" are the same loss: a degree sign with no
+  // backslash, and a bracketed sum whose \( \) became plain brackets.
+  if (/(^|[^\\A-Za-z])(frac|sqrt|cdot|mathrm)\{|\d\s*(times|div)\s*\d|\(_\d|\(\d+\^\d|\^circ|\(\s*\d+\s*[-+]\s*\d+\s*=\s*\d+\s*\)/.test(prose)) {
     out.push("maths that lost its backslashes (prints as plain text)");
   }
   return out;

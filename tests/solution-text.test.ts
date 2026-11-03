@@ -97,6 +97,9 @@ describe("solutionProblems", () => {
     expect(solutionProblems(lost).join()).toMatch(/lost its backslashes/);
     expect(solutionProblems("So 12 times 3 = 36, and 36 div 4 = 9.").join()).toMatch(/lost its backslashes/);
     expect(solutionProblems("Use frac{1}{2} of the area.").join()).toMatch(/lost its backslashes/);
+    // Two more real b41 drafts: degrees and bracketed sums with no \( \) left.
+    expect(solutionProblems("Each angle is (60^circ).").join()).toMatch(/lost its backslashes/);
+    expect(solutionProblems("The gaps are (5-3 = 2) and (8 - 5 = 3).").join()).toMatch(/lost its backslashes/);
   });
 
   it("allows ordinary words that are also maths names", () => {
