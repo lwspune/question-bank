@@ -104,5 +104,6 @@ order (`SUBJECTS` in config.ts). Chapters are question types within an area:
 - **Environment and Society**: Indian Art, Craft and Culture · Art, Design and Architecture ·
   Brands, Logos and Symbols · Civic and General Awareness
 - **Analytical and Logical Reasoning**: Quantitative Reasoning · Codes and Series · Logical Deduction
-- **Language**: Reading and Interpretation
+- **Language**: Reading and Interpretation · Grammar and Vocabulary (added for 2015-2019's
+  spelling and usage questions)
 - **Creativity**: Analogies and Visual Metaphors

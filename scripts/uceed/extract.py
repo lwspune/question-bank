@@ -29,7 +29,9 @@ import fitz  # noqa: E402  PyMuPDF
 
 ROOT = r"C:\tmp\PYQPs\UCEED"
 FOOTER_Y = 780  # "UCEED 2026 / Page n of N" sits at y >= 790 on every page
-MARKER = re.compile(r"^\s*Q\.?\s?(\d{1,3})\b\.?")
+# "Q.01" (2018 on) or "3." (2015-2017). A number counts as a new question only when it is
+# the NEXT one in sequence, so a numbered list or a table cell inside a question cannot split it.
+MARKER = re.compile(r"^\s*(?:Q\.?\s?)?(\d{1,3})(?:\.(?!\d)|\)|(?=\s)|$)\.?")
 OPTION = re.compile(r"^\s*\(?([A-D])[.)]\s+(.*)$")
 TINY = 40  # px: bullets and icons, not figures
 
@@ -67,7 +69,8 @@ def main(year: str) -> None:
     for pno, _y, _x, kind, payload in items:
         if kind == "text":
             m = MARKER.match(payload)
-            if m:
+            expected = (current["n"] + 1) if current else 1
+            if m and int(m.group(1)) == expected:
                 n = int(m.group(1))
                 current = questions.setdefault(n, {"n": n, "page": pno + 1, "lines": [], "xrefs": []})
                 rest = payload[m.end():].strip()
@@ -99,6 +102,11 @@ def main(year: str) -> None:
     with open(os.path.join(work, "draft.json"), "w", encoding="utf-8") as f:
         json.dump({"year": int(year), "questions": drafts}, f, ensure_ascii=False, indent=2)
     contact_sheets(figs, work, drafts)
+    # Every page as an image, so whoever reads the draft can check it against the paper.
+    pages = os.path.join(work, "pages")
+    os.makedirs(pages, exist_ok=True)
+    for pno, page in enumerate(pdf):
+        page.get_pixmap(dpi=110).save(os.path.join(pages, f"p{pno + 1:02d}.png"))
     with_fig = sum(1 for d in drafts if d["figure"])
     print(f"{year}: {len(drafts)} questions, {with_fig} with a figure, "
           f"{sum(d['pictures'] for d in drafts)} pictures -> {work}")

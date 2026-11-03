@@ -2,13 +2,14 @@
 The owner's review sheet for one UCEED paper: every Part A question with its figure, options,
 IIT Bombay's answer, our solution and classification; held rows marked. Open it in a browser.
 
-    python -I scripts/uceed/sheet.py 2026 [--check 40,45,52]
+    python -I scripts/uceed/sheet.py 2026 [--check 40,45,52] [--embed]
 
 Writes generated-papers/uceed/<year>-review.html in the MAIN checkout (gitignored; it outlives
 a worktree). Figures are linked from C:\\tmp\\PYQPs\\UCEED\\figures\\<year>\\, not copied.
 --check lists question numbers to put in the "please check" box at the top, with the reason
 taken from data/<year>.review.json if present ({"<n>": "reason"}).
 """
+import base64
 import html
 import json
 import os
@@ -27,7 +28,14 @@ def key_text(k):
     return " or ".join(", ".join(s) for s in k["sets"])
 
 
-def main(year, check):
+def img_src(year, n, embed):
+    if not embed:
+        return f"file:///{FIGS}/{year}/Q{n:02d}.png"
+    with open(f"{FIGS}/{year}/Q{n:02d}.png", "rb") as f:
+        return "data:image/png;base64," + base64.b64encode(f.read()).decode()
+
+
+def main(year, check, embed=False):
     data = os.path.join(HERE, "data")
     paper = json.load(open(os.path.join(data, f"{year}.questions.json"), encoding="utf-8"))
     key = {k["n"]: k for k in json.load(open(os.path.join(data, f"{year}.key.json"), encoding="utf-8"))["answers"]}
@@ -44,7 +52,7 @@ def main(year, check):
             opts = "<ol type=A>" + "".join(f"<li>{e(o['text'])}</li>" for o in q["options"]) + "</ol>"
         elif q["options"]:
             opts = "<p class=muted>Options A to D are in the picture.</p>"
-        fig = f'<img src="file:///{FIGS}/{year}/Q{n:02d}.png" alt="Figure for Q{n}">' if q["figure"] else ""
+        fig = f'<img src="{img_src(year, n, embed)}" alt="Figure for Q{n}">' if q["figure"] else ""
         flag = f'<p class=flag>Please check: {e(notes.get(str(n), ""))}</p>' if n in check else ""
         cards.append(f"""<section id=q{n} class="{'held' if held else ''}">
 <h2>Q{n} <span>{q['type']} · {e(q['subject'])} › {e(q['chapter'])} › {e(q['subtopic'])} · {q['difficulty']}</span></h2>
@@ -66,7 +74,7 @@ img{{max-width:100%;border:1px solid #e3e8f0;margin:8px 0}} .ans{{color:#1D4ED8}
 <div class=top><b>Please check these first</b><ul>{box}</ul></div>
 {''.join(cards)}"""
     os.makedirs(OUT, exist_ok=True)
-    path = os.path.join(OUT, f"{year}-review.html")
+    path = os.path.join(OUT, f"{year}-review{'-embedded' if embed else ''}.html")
     open(path, "w", encoding="utf-8").write(page)
     print(path)
 
@@ -78,4 +86,4 @@ if __name__ == "__main__":
     chk = []
     if "--check" in args:
         chk = [int(x) for x in args[args.index("--check") + 1].split(",")]
-    main(args[0], chk)
+    main(args[0], chk, embed="--embed" in args)
