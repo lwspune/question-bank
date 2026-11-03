@@ -3,12 +3,15 @@
 import type { RevisionSheet } from "./types";
 
 export const SHEET_LOADERS: Record<string, () => Promise<{ default: RevisionSheet }>> = {
+  "mh-hsc-12/biology/biodiversity-conservation-and-environmental-issues": () => import("./sheets/mh-hsc-12/biology/biodiversity-conservation-and-environmental-issues"),
   "mh-hsc-12/biology/biotechnology": () => import("./sheets/mh-hsc-12/biology/biotechnology"),
   "mh-hsc-12/biology/control-and-coordination": () => import("./sheets/mh-hsc-12/biology/control-and-coordination"),
+  "mh-hsc-12/biology/ecosystems-and-energy-flow": () => import("./sheets/mh-hsc-12/biology/ecosystems-and-energy-flow"),
   "mh-hsc-12/biology/enhancement-of-food-production": () => import("./sheets/mh-hsc-12/biology/enhancement-of-food-production"),
   "mh-hsc-12/biology/human-health-and-diseases": () => import("./sheets/mh-hsc-12/biology/human-health-and-diseases"),
   "mh-hsc-12/biology/inheritance-and-variation": () => import("./sheets/mh-hsc-12/biology/inheritance-and-variation"),
   "mh-hsc-12/biology/molecular-basis-of-inheritance": () => import("./sheets/mh-hsc-12/biology/molecular-basis-of-inheritance"),
+  "mh-hsc-12/biology/organisms-and-populations": () => import("./sheets/mh-hsc-12/biology/organisms-and-populations"),
   "mh-hsc-12/biology/origin-and-evolution-of-life": () => import("./sheets/mh-hsc-12/biology/origin-and-evolution-of-life"),
   "mh-hsc-12/biology/plant-growth-and-mineral-nutrition": () => import("./sheets/mh-hsc-12/biology/plant-growth-and-mineral-nutrition"),
   "mh-hsc-12/biology/plant-water-relation": () => import("./sheets/mh-hsc-12/biology/plant-water-relation"),
