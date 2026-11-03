@@ -53,7 +53,7 @@ export default function IntlHeaderBar({
           <img src="/icons/mark-96.png" alt="" aria-hidden width={24} height={24} className="h-6 w-6 shrink-0" />
           <span>PYQ Vault</span>
           <span className="hidden rounded border px-1.5 py-0.5 text-[10px] font-medium uppercase tracking-wide text-muted-foreground sm:inline">
-            International
+            Global
           </span>
         </Link>
         <div className="hidden sm:block">{tabs}</div>

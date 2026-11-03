@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { examKindPhrase,
+  globalBankLine,
   countSummary,
   defaultViewCount,
   defaultViewLabel,
@@ -60,5 +61,26 @@ describe("defaultViewLabel — what a 'filter the bank' button may claim", () =>
 
   it("claims practice questions for a practice-only exam", () => {
     expect(defaultViewLabel({ pyq: 0, practice: 1008 }, true)).toBe("1,008 practice questions");
+  });
+});
+
+// The global site (intl.pyqvault.com, 2026-10-30) says "past papers", the term
+// outside India, and names past papers only for an exam that has them: MCAT and
+// most exams after IMAT will have practice questions alone.
+describe("globalBankLine — the global site's question bank card", () => {
+  it("names past papers and practice apart when the exam has both", () => {
+    expect(globalBankLine({ pyq: 240, practice: 681 })).toBe(
+      "240 past-paper and 681 practice questions, with solutions"
+    );
+  });
+  it("never mentions past papers for an exam without them", () => {
+    expect(globalBankLine({ pyq: 0, practice: 681 })).toBe("681 practice questions, with solutions");
+  });
+  it("drops the practice half when there is none", () => {
+    expect(globalBankLine({ pyq: 240, practice: 0 })).toBe("240 past-paper questions, with solutions");
+  });
+  it("falls back to words when the counts are unavailable", () => {
+    expect(globalBankLine(null)).toBe("Every question, with solutions");
+    expect(globalBankLine({ pyq: 0, practice: 0 })).toBe("Every question, with solutions");
   });
 });

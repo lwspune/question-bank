@@ -11,8 +11,8 @@ export default function IntlFooter() {
     <footer className="mt-16 border-t bg-background">
       <div className="mx-auto max-w-7xl px-6 py-8 text-xs text-muted-foreground">
         <p>
-          <span className="font-medium">PYQ Vault International</span>. Past papers, notes and timed mocks
-          for international entrance exams. Free to browse.
+          <span className="font-medium">PYQ Vault Global</span>. Notes, mocks and practice questions for
+          globally recognised exams. Free to browse.
         </p>
         <nav aria-label="Site links" className="mt-6 grid grid-cols-2 gap-x-6 gap-y-6 sm:grid-cols-4">
           {INTL_EXAMS.map((exam) => (
