@@ -3,10 +3,14 @@
 import type { RevisionSheet } from "./types";
 
 export const SHEET_LOADERS: Record<string, () => Promise<{ default: RevisionSheet }>> = {
+  "mh-hsc-12/chemistry/chemical-kinetics": () => import("./sheets/mh-hsc-12/chemistry/chemical-kinetics"),
   "mh-hsc-12/chemistry/chemical-thermodynamics": () => import("./sheets/mh-hsc-12/chemistry/chemical-thermodynamics"),
+  "mh-hsc-12/chemistry/electrochemistry": () => import("./sheets/mh-hsc-12/chemistry/electrochemistry"),
+  "mh-hsc-12/chemistry/elements-of-groups-16-17-and-18": () => import("./sheets/mh-hsc-12/chemistry/elements-of-groups-16-17-and-18"),
   "mh-hsc-12/chemistry/ionic-equilibria": () => import("./sheets/mh-hsc-12/chemistry/ionic-equilibria"),
   "mh-hsc-12/chemistry/solid-state": () => import("./sheets/mh-hsc-12/chemistry/solid-state"),
   "mh-hsc-12/chemistry/solutions": () => import("./sheets/mh-hsc-12/chemistry/solutions"),
+  "mh-hsc-12/chemistry/transition-and-inner-transition-elements": () => import("./sheets/mh-hsc-12/chemistry/transition-and-inner-transition-elements"),
   "mh-hsc-12/physics/ac-circuits": () => import("./sheets/mh-hsc-12/physics/ac-circuits"),
   "mh-hsc-12/physics/current-electricity": () => import("./sheets/mh-hsc-12/physics/current-electricity"),
   "mh-hsc-12/physics/dual-nature-of-radiation-and-matter": () => import("./sheets/mh-hsc-12/physics/dual-nature-of-radiation-and-matter"),
