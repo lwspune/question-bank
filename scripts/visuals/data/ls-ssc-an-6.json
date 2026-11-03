@@ -1,0 +1,830 @@
+{
+  "//": "Assembled from agent drafts (letterStrip).",
+  "visuals": [
+    {
+      "id": "dc5a01af-95a1-4cad-8e29-cd2b93ab788d",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "letterStrip",
+        "params": {
+          "examples": [
+            {
+              "word": "CIQY",
+              "code": "DJRZ"
+            }
+          ],
+          "rule": [
+            {
+              "op": "shift",
+              "by": 1
+            }
+          ],
+          "ask": {
+            "word": "AGOW"
+          },
+          "options": [
+            "BJPX",
+            "BHPX",
+            "BHPU",
+            "BJRZ"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "example"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "apply",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "1f41f334",
+        "answer": {
+          "value": 2,
+          "label": "BHPX"
+        }
+      }
+    },
+    {
+      "id": "dfbbef8f-fdcc-47ba-9fb8-8d15d3045b63",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "letterStrip",
+        "params": {
+          "examples": [
+            {
+              "word": "LISP",
+              "code": "ORHK"
+            },
+            {
+              "word": "WAND",
+              "code": "DZMW"
+            }
+          ],
+          "rule": [
+            {
+              "op": "opposite"
+            }
+          ],
+          "ask": {
+            "word": "BOTE"
+          },
+          "options": [
+            "YLGV",
+            "YKFU",
+            "YMHV",
+            "YKFW"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "example"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "check"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "apply",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "a652f8e1",
+        "answer": {
+          "value": 1,
+          "label": "YLGV"
+        }
+      }
+    },
+    {
+      "id": "e0e6881e-e2af-4ba0-b1b8-dfa2606db5dc",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "letterStrip",
+        "params": {
+          "examples": [
+            {
+              "word": "MAGNET",
+              "code": "AMNGTE"
+            },
+            {
+              "word": "FAMILY",
+              "code": "AFIMYL"
+            }
+          ],
+          "rule": [
+            {
+              "op": "swapPairs"
+            }
+          ],
+          "ask": {
+            "word": "BLOCKS"
+          },
+          "options": [
+            "LCBOSK",
+            "OLBSKC",
+            "LBCOSK",
+            "LBOCSK"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "example",
+              "check"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "apply",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "dbb557fd",
+        "answer": {
+          "value": 3,
+          "label": "LBCOSK"
+        }
+      }
+    },
+    {
+      "id": "e5ae2790-b8d3-4324-a3bb-1d1de02c705c",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "letterStrip",
+        "params": {
+          "examples": [
+            {
+              "word": "FRENCH",
+              "code": "RFNEHC"
+            },
+            {
+              "word": "RESCUE",
+              "code": "ERCSEU"
+            }
+          ],
+          "rule": [
+            {
+              "op": "swapPairs"
+            }
+          ],
+          "ask": {
+            "word": "ANIMAL"
+          },
+          "options": [
+            "INALAM",
+            "NAMILA",
+            "NALAMI",
+            "NAMIAL"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "example",
+              "check"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "apply",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "f69c1811",
+        "answer": {
+          "value": 2,
+          "label": "NAMILA"
+        }
+      }
+    },
+    {
+      "id": "eab67583-0b45-413e-8316-030602e9763d",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "letterStrip",
+        "params": {
+          "examples": [
+            {
+              "word": "FLOW",
+              "code": "WOLF"
+            }
+          ],
+          "rule": [
+            {
+              "op": "reverse"
+            }
+          ],
+          "ask": {
+            "word": "STOP"
+          },
+          "options": [
+            "POTS",
+            "TPOS",
+            "PSOT",
+            "TSOP"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "example"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "apply",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "1ac45a23",
+        "answer": {
+          "value": 1,
+          "label": "POTS"
+        }
+      }
+    },
+    {
+      "id": "ed82b2a7-87df-4a3a-bd3e-30b7928b375f",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "letterStrip",
+        "params": {
+          "examples": [
+            {
+              "word": "BEKQ",
+              "code": "YVPJ"
+            }
+          ],
+          "rule": [
+            {
+              "op": "opposite"
+            }
+          ],
+          "ask": {
+            "word": "CFGL"
+          },
+          "options": [
+            "XUOM",
+            "XUTO",
+            "XUPM",
+            "XVPL"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "example"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "apply"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "aab455a2",
+        "answer": {
+          "value": 2,
+          "label": "XUTO"
+        }
+      }
+    },
+    {
+      "id": "ef92f6f0-c67d-4b33-9715-35eaa11d0bfb",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "letterStrip",
+        "params": {
+          "examples": [
+            {
+              "word": "FUELED",
+              "code": "DXBOAG"
+            },
+            {
+              "word": "GELATO",
+              "code": "EHIDPR"
+            }
+          ],
+          "rule": [
+            {
+              "op": "shift",
+              "by": [
+                -2,
+                3,
+                -3,
+                3,
+                -4,
+                3
+              ]
+            }
+          ],
+          "ask": {
+            "word": "HEARTY"
+          },
+          "options": [
+            "OPBSUJ",
+            "MQADFH",
+            "FHXUPB",
+            "LNFXCA"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "example"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "check"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "apply",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "8894c888",
+        "answer": {
+          "value": 3,
+          "label": "FHXUPB"
+        }
+      }
+    },
+    {
+      "id": "efd7bc0a-44e4-407d-97ed-d3d741487a20",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "letterStrip",
+        "params": {
+          "examples": [
+            {
+              "word": "MGX",
+              "code": "VPG"
+            },
+            {
+              "word": "TZC",
+              "code": "CIL"
+            }
+          ],
+          "rule": [
+            {
+              "op": "shift",
+              "by": 9
+            }
+          ],
+          "ask": {
+            "word": "HPX"
+          },
+          "options": [
+            "PXF",
+            "QZG",
+            "RZG",
+            "QYG"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "example",
+              "check"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "apply",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "42ef97db",
+        "answer": {
+          "value": 4,
+          "label": "QYG"
+        }
+      }
+    },
+    {
+      "id": "f3aec31c-2efb-45a2-bb0c-d07a30b3c1dd",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "letterStrip",
+        "params": {
+          "examples": [
+            {
+              "word": "EKH",
+              "code": "BIE"
+            },
+            {
+              "word": "MGP",
+              "code": "JEM"
+            }
+          ],
+          "rule": [
+            {
+              "op": "shift",
+              "by": [
+                -3,
+                -2,
+                -3
+              ]
+            }
+          ],
+          "ask": {
+            "code": "QDI"
+          },
+          "options": [
+            "SFK",
+            "LFT",
+            "TGL",
+            "TFL"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "example",
+              "check"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "apply"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "8c4c1926",
+        "answer": {
+          "value": 4,
+          "label": "TFL"
+        }
+      }
+    },
+    {
+      "id": "f3f8ef4a-9f5b-478e-953c-70328440885a",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "letterStrip",
+        "params": {
+          "examples": [
+            {
+              "word": "GNIDAER",
+              "code": "READING"
+            }
+          ],
+          "rule": [
+            {
+              "op": "reverse"
+            }
+          ],
+          "ask": {
+            "word": "NOITULOS"
+          },
+          "options": [
+            "SOLUTION",
+            "SOLUNOIT",
+            "NOILOSUT",
+            "POLLUTION"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "example"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "apply",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "89615ebd",
+        "answer": {
+          "value": 1,
+          "label": "SOLUTION"
+        }
+      }
+    },
+    {
+      "id": "f6c018f6-9a00-492d-b790-ee1ac36247c3",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "letterStrip",
+        "params": {
+          "examples": [
+            {
+              "word": "CARBON",
+              "code": "ACIYNO"
+            },
+            {
+              "word": "DAMAGE",
+              "code": "ADNZEG"
+            }
+          ],
+          "rule": [
+            {
+              "op": "swap",
+              "a": 1,
+              "b": 2,
+              "show": "swap letters 1 and 2"
+            },
+            {
+              "op": "opposite",
+              "from": 3,
+              "to": 4,
+              "show": "opposite letters for 3 and 4"
+            },
+            {
+              "op": "swap",
+              "a": 5,
+              "b": 6,
+              "show": "swap letters 5 and 6"
+            }
+          ],
+          "ask": {
+            "word": "MARGIN"
+          },
+          "options": [
+            "MARGNI",
+            "AMITNI",
+            "MATINI",
+            "AMGRNI"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "example"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "check"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "apply",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "c36b6aeb",
+        "answer": {
+          "value": 2,
+          "label": "AMITNI"
+        }
+      }
+    },
+    {
+      "id": "f9901c82-6a91-4cb6-86d9-12addf7c63d7",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "letterStrip",
+        "params": {
+          "examples": [
+            {
+              "word": "BEAUTY",
+              "code": "ZVXEJH"
+            },
+            {
+              "word": "FRAGILE",
+              "code": "FNLKFXM"
+            }
+          ],
+          "rule": [
+            {
+              "op": "reverse"
+            },
+            {
+              "op": "shift",
+              "by": "position"
+            }
+          ],
+          "ask": {
+            "word": "BEYOND"
+          },
+          "options": [
+            "EOPZFC",
+            "DNOYEB",
+            "EPRCEB",
+            "EPRCJH"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "example"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "check"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "apply",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "ddfa3c7f",
+        "answer": {
+          "value": 4,
+          "label": "EPRCJH"
+        }
+      }
+    },
+    {
+      "id": "f9969b23-b06b-4b02-8f0c-647f77f33bc2",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "letterStrip",
+        "params": {
+          "examples": [
+            {
+              "word": "CNY",
+              "code": "GRC"
+            },
+            {
+              "word": "FRL",
+              "code": "JVP"
+            }
+          ],
+          "rule": [
+            {
+              "op": "shift",
+              "by": 4
+            }
+          ],
+          "ask": {
+            "word": "ITK"
+          },
+          "options": [
+            "MYO",
+            "EOG",
+            "MXO",
+            "EPG"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "example",
+              "check"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "apply",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "7c3111ef",
+        "answer": {
+          "value": 3,
+          "label": "MXO"
+        }
+      }
+    },
+    {
+      "id": "fc13815f-db6e-4791-9aa5-32de0775ffe5",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "letterStrip",
+        "params": {
+          "examples": [
+            {
+              "word": "ECHO",
+              "code": "PIDF"
+            },
+            {
+              "word": "EARS",
+              "code": "TSBF"
+            }
+          ],
+          "rule": [
+            {
+              "op": "reverse"
+            },
+            {
+              "op": "shift",
+              "by": 1
+            }
+          ],
+          "ask": {
+            "word": "HEAR"
+          },
+          "options": [
+            "IFBS",
+            "SCFI",
+            "SBFI",
+            "SBGI"
+          ]
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "example"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "check"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "apply",
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "785be9d7",
+        "answer": {
+          "value": 3,
+          "label": "SBFI"
+        }
+      }
+    }
+  ],
+  "decided": []
+}
