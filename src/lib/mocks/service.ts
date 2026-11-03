@@ -89,7 +89,7 @@ export async function startOrResumeAttempt(
         `${practiceUsedUpLine(limit)} Come back tomorrow, or get the Premium Pass for unlimited tests.`
       );
     }
-    throw new MockError(402, "You've used your free mock tests. Get the Premium Pass to keep going.");
+    throw new MockError(402, "You've used your free mock tests. Get the Practice Pass to keep going.");
   }
 
   // Lost a race with a concurrent start (partial unique index) → resume theirs.

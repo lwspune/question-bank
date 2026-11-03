@@ -18,8 +18,9 @@ import { useExamFeed } from "@/lib/viewer/useExamFeed";
  *
  * The first render is the plain list, in server order — useExamFeed returns
  * ANON_FEED until identity arrives — so hydration matches the cached HTML and
- * an anonymous visitor sees exactly today's page. The grouped view appears only
- * for a signed-in student with a known tier.
+ * the cached HTML is the same for everyone. The grouped view appears for a
+ * signed-in student with a known tier, and (since 2026-11-02) for a signed-out
+ * visitor who picked an exam on the homepage.
  */
 export type FeedListItem = {
   key: string;
@@ -41,7 +42,7 @@ export default function ExamFeedList({
   /** false = when none of the viewer's exams is here, show the plain list (feedLayout). */
   foldWhenNone?: boolean;
 }) {
-  const { feed } = useExamFeed();
+  const { feed, signedIn } = useExamFeed();
 
   const renderGroup = (group: FeedListItem[], extraClass = "") => {
     const cls = [className, extraClass].filter(Boolean).join(" ") || undefined;
@@ -73,6 +74,8 @@ export default function ExamFeedList({
       eyebrow="Your exams"
       primary={layout === "split" ? renderGroup(primary, "!mt-3") : null}
       otherLabel={`Browse other exams (${other.length})`}
+      // Signed out, the exam was picked from the homepage chips, so change it there.
+      changeHref={signedIn ? "/account" : "/#pick-exam"}
       other={renderGroup(other, "!mt-4")}
     />
   );

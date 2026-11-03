@@ -245,6 +245,11 @@ export const VISUAL_STILL_MAX_PCT = 20;
  */
 export const PRICE_BASELINE_WEEKLY_REVENUE = 594;
 /**
+ * "pass-tiers": the single Rs 499 pass it replaced sold Rs 998 in the 5 days
+ * 29 Oct to 2 Nov, about Rs 1,397 a week.
+ */
+export const PASS_TIERS_BASELINE_WEEKLY_REVENUE = 1397;
+/**
  * "answer-limit": keep 25 a day unless the share of limit-meeters back on a
  * later day within 7 days falls more than this many points below the 65% before.
  */
@@ -291,6 +296,7 @@ export type Readout =
   | "v-plan"
   | "ebook-store"
   | "pass-price"
+  | "pass-tiers"
   | "answer-limit"
   | "v-reveal"
   | "tutor-interest"
@@ -706,6 +712,21 @@ export const EXPERIMENTS: readonly Experiment[] = [
     rule: `Keep Rs 199 if a week's revenue holds at Rs ${PRICE_BASELINE_WEEKLY_REVENUE}+ over the window (read first at 14 days); if it falls below that, go back to Rs 99 or try a price between.`,
     liveSince: "2026-10-23",
     readout: "pass-price",
+    status: "decided",
+    decision:
+      "Rs 199 beat Rs 99: 15 sales and Rs 3,185 in 23 to 29 Oct, against Rs 594 the week before. The pass then went to Rs 499 on 29 Oct (not recorded here) and sold 2 in 5 days, none after 30 Oct, so on 2026-11-03 the owner split it into two passes (pass-tiers).",
+  },
+  {
+    id: "pass-tiers",
+    title: "Two passes: Practice Rs 199, Premium Rs 499",
+    change:
+      "The www pass split by feature (migration 0212): a Practice Pass at Rs 199 lifts every online limit (answers, drill, saves, projected score, mocks, chapter tests, V); the Premium Pass stays at Rs 499 and adds PDF downloads. Online walls offer Practice, download boxes offer Premium.",
+    why: "The 27 rupee buyers since 27 Sep split into two groups: 12 practised online and downloaded little, 12 downloaded PDFs and barely practised (4 both, 3 neither). Only 2 ever took more than the 3 free mocks. Rs 199 was the only price with a good sales week; Rs 499 is untested for downloads. The owner's call.",
+    metric:
+      "Pass revenue per week and checkout opened then paid (the two readings below), and how many of the sales are Practice (/dashboard/sales, \"of which Practice\"). Read from the day the Practice plan goes on sale",
+    rule: `Keep both passes if a week's revenue beats Rs ${PASS_TIERS_BASELINE_WEEKLY_REVENUE} (the single Rs 499 pass) at 14 days. If Premium sells none in 4 weeks, try it nearer Rs 299 before folding downloads back in.`,
+    liveSince: "2026-11-03",
+    readout: "pass-tiers",
     status: "running",
   },
   {
@@ -1103,7 +1124,11 @@ export const READINGS: Record<ReadingMetric, { label: string; source: string; en
   "price-weekly-revenue": {
     label: "Pass revenue per week (Rs)",
     source: "entitlements where source = 'razorpay', granted_at in the 7 days to the reading, times the price then (Rs 99 before 07:30 IST on 2026-10-23, Rs 199 after); staff excluded",
-    entries: [{ on: "2026-10-23", value: 594, note: "Baseline at Rs 99: 6 sales in the 7 days to 23 Oct (6 more in the 3.5 weeks before)" }],
+    entries: [
+      { on: "2026-10-23", value: 594, note: "Baseline at Rs 99: 6 sales in the 7 days to 23 Oct (6 more in the 3.5 weeks before)" },
+      { on: "2026-10-29", value: 3185, note: "At Rs 199: 15 sales in 23 to 29 Oct (the in-place offer also went live on 25 Oct)" },
+      { on: "2026-11-02", value: 1397, note: "At Rs 499: Rs 998 (2 sales) in 29 Oct to 2 Nov, scaled to 7 days; the baseline for pass-tiers" },
+    ],
   },
   "price-checkout-paid": {
     label: "Opened checkout, then paid (%)",

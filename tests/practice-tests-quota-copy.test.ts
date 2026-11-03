@@ -24,7 +24,7 @@ describe("practiceUsedUpLine", () => {
     expect(practiceUsedUpLine(1)).toBe("You've used today's free practice test.");
   });
   it("does not claim a test was used when the limit is zero", () => {
-    expect(practiceUsedUpLine(0)).toBe("Practice tests need the Premium Pass today.");
+    expect(practiceUsedUpLine(0)).toBe("Practice tests need the Practice Pass today.");
   });
 });
 
@@ -55,12 +55,12 @@ describe("practiceBuilderNote: before building", () => {
   it("warns before the steps once today's tests are used, and keeps building open", () => {
     expect(practiceBuilderNote(locked(3))).toEqual({
       kind: "usedUp",
-      text: "You've used your 3 free practice tests for today. More tomorrow, or get the Premium Pass for unlimited tests. You can still build one to send to a friend.",
+      text: "You've used your 3 free practice tests for today. More tomorrow, or get the Practice Pass for unlimited tests. You can still build one to send to a friend.",
     });
   });
   it("promises no tomorrow when the limit is zero", () => {
     expect(practiceBuilderNote(locked(0))?.text).toBe(
-      "Practice tests need the Premium Pass today. You can still build one to send to a friend."
+      "Practice tests need the Practice Pass today. You can still build one to send to a friend."
     );
   });
   it("says nothing when the state is open or unknown (signed out, pass, limit off)", () => {

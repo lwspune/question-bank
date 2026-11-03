@@ -8,7 +8,7 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { SCOPE_MOCKS } from "@/lib/entitlements/access";
-import { passCta, passForScope, type PassCta } from "./plans";
+import { offerForNeed, passCta, type PassCta } from "./plans";
 import { listActivePlans } from "./plansQuery";
 
 export type PremiumLimits = {
@@ -35,5 +35,5 @@ export async function getPremiumLimits(db: SupabaseClient): Promise<PremiumLimit
 
 /** The pass a limit card offers (null = none on sale; the card links to /pricing). */
 export async function premiumPassCta(): Promise<PassCta | null> {
-  return passCta(passForScope(await listActivePlans(createSupabaseAnonClient()), SCOPE_MOCKS));
+  return passCta(offerForNeed(await listActivePlans(createSupabaseAnonClient()), SCOPE_MOCKS, "pyqvault", null));
 }

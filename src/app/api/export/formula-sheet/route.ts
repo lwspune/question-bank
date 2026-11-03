@@ -4,7 +4,7 @@ import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { getSessionMember, getSessionUser } from "@/lib/auth";
 import { resolveExportAccess } from "@/lib/export/access";
 import { userHasAnyAccess } from "@/lib/entitlements/query";
-import { passScopesFor } from "@/lib/billing/passScope";
+import { downloadScopesFor } from "@/lib/billing/passScope";
 import { planSiteForHost } from "@/lib/sites/intl";
 import { recordExportEvent } from "@/lib/export/log";
 import { readPaywallSettings } from "@/lib/billing/admin";
@@ -67,8 +67,8 @@ export async function POST(request: NextRequest) {
         ? await userHasAnyAccess(
             createSupabaseServerClient(),
             user.id,
-            // The site's own passes (0206).
-            passScopesFor(planSiteForHost(request.headers.get("host")))
+            // The site's own passes (0206); on www the Premium Pass, not Practice.
+            downloadScopesFor(planSiteForHost(request.headers.get("host")))
           )
         : false;
 

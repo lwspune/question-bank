@@ -22,7 +22,11 @@ import AttemptsList from "../mock/_components/AttemptsList";
 import FeedbackCards from "./FeedbackCards";
 import TodayCard from "./TodayCard";
 import HomeReminder from "./HomeReminder";
-import { greetingFor } from "@/lib/me/today";
+import { greetingFor, greetingName } from "@/lib/me/today";
+import Greeting from "./Greeting";
+import SuggestExamCard from "./SuggestExamCard";
+import { loadSuggestedExam } from "@/lib/profile/suggestExamServer";
+import { getExamBySlug } from "@/lib/exam/examContext";
 import { getOwnWeekly } from "@/lib/goals/service";
 import { listMyAssignments } from "@/lib/assignments/service";
 import type { StudentAssignmentView } from "@/lib/assignments/core";
@@ -106,6 +110,9 @@ export default async function MePage() {
     return [];
   });
   const suggestedName = resultCheck ? await loadSuggestedName(user.id).catch(() => "") : "";
+  // No exam chosen: offer the one their practice or first page points to.
+  const suggestedSlug = targets.length === 0 ? await loadSuggestedExam(db, user.id, examIds) : null;
+  const suggestedExam = suggestedSlug ? getExamBySlug(suggestedSlug) : null;
 
   return (
     <>
@@ -113,8 +120,17 @@ export default async function MePage() {
       <main className="mx-auto max-w-4xl space-y-6 px-4 py-6 sm:space-y-8 sm:px-6 sm:py-8">
         {/* A greeting, not "Your dashboard" over the student's own email. */}
         <header className="space-y-2">
-          <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">{greetingFor(istHour(now))}</h1>
-          {examLinks.length > 0 ? <YourExams links={examLinks} /> : <NoTargetCard />}
+          <Greeting
+            greeting={greetingFor(istHour(now))}
+            name={greetingName({ preferred_name: user.preferredName, full_name: user.name })}
+          />
+          {examLinks.length > 0 ? (
+            <YourExams links={examLinks} />
+          ) : suggestedExam ? (
+            <SuggestExamCard slug={suggestedExam.slug} examName={suggestedExam.displayName} />
+          ) : (
+            <NoTargetCard />
+          )}
         </header>
 
         {resultCheck && (

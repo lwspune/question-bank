@@ -34,6 +34,7 @@ const row = (period: string, over: Partial<SalesPeriodRow> = {}): SalesPeriodRow
   booksRefunded: 0,
   bookPaise: 0,
   passUsdCents: 0,
+  practiceSold: 0,
   ...over,
 });
 
@@ -104,10 +105,18 @@ describe("fillPeriods", () => {
 describe("sumRows", () => {
   it("adds orders, passes and books, and the money kept", () => {
     const t = sumRows([
-      row("2026-10-27", { passOrders: 5, passesSold: 2, passesRefunded: 1, passPaise: 19900 }),
+      row("2026-10-27", { passOrders: 5, passesSold: 2, passesRefunded: 1, passPaise: 19900, practiceSold: 1 }),
       row("2026-10-26", { passOrders: 1, bookOrders: 2, booksSold: 1, bookPaise: 4900 }),
     ]);
-    expect(t).toEqual({ passOrders: 6, passesSold: 2, bookOrders: 2, booksSold: 1, refunded: 1, paise: 24800 });
+    expect(t).toEqual({
+      passOrders: 6,
+      passesSold: 2,
+      practiceSold: 1,
+      bookOrders: 2,
+      booksSold: 1,
+      refunded: 1,
+      paise: 24800,
+    });
   });
 });
 

@@ -7,8 +7,8 @@ import { paperKey } from "@/lib/export/freePaper";
 import { parseHomeworkTarget } from "@/lib/homework/dayExport";
 import { parseTopPyqsTarget } from "@/lib/homework/topPyqs";
 import { parseBoardPaperTarget } from "@/lib/questionPapers/exportPlan";
-import { passCta, passForBuyer, type PassCta } from "@/lib/billing/plans";
-import { passScopesFor } from "@/lib/billing/passScope";
+import { offerForNeed, passCta, type PassCta } from "@/lib/billing/plans";
+import { downloadScopesFor } from "@/lib/billing/passScope";
 import { readCountry } from "@/lib/acquisition/country";
 import { listActivePlansCached } from "@/lib/billing/plansQuery";
 import { planSiteForHost } from "@/lib/sites/intl";
@@ -55,9 +55,11 @@ export async function GET(request: NextRequest) {
   // then `freeDownloadLeft` answers for the free SHEET, which is its own file,
   // apart from the free paper.
   const sheet = parseFormulaSheetTarget(request.nextUrl.searchParams.get("formula") ?? undefined);
-  // The passes this site sells (0206): www the Premium Pass, intl its exams'.
+  // What a download asks for on this site (0206): www the Premium Pass (not the
+  // Practice Pass, 2026-11-03), intl its exams' passes. The offer is the
+  // cheapest pass that downloads.
   const site = planSiteForHost(request.headers.get("host"));
-  const scopes = passScopesFor(site);
+  const scopes = downloadScopesFor(site);
   let viewer = ANON;
   try {
     const { isSignedIn, isStaff } = await getPageIdentity();
@@ -92,7 +94,7 @@ export async function GET(request: NextRequest) {
   if (!viewer.isStaff && !viewer.hasDownloadPass) {
     try {
       pass = passCta(
-        passForBuyer(await listActivePlansCached(), scopes[0], site, readCountry(request.headers))
+        offerForNeed(await listActivePlansCached(), scopes[0], site, readCountry(request.headers))
       );
     } catch (err) {
       console.error("export access: plans read failed", err);

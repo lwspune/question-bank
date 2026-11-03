@@ -25,6 +25,8 @@ export type SessionUser = {
   email: string;
   /** The name a sign-up stored on the account (Google's full_name), when there is one. */
   name?: string | null;
+  /** The name the student chose to be greeted by on /me (user_metadata.preferred_name). */
+  preferredName?: string | null;
 };
 
 export type SessionMember = {
@@ -40,7 +42,13 @@ export async function getSessionUser(): Promise<SessionUser | null> {
     data: { user },
   } = await supabase.auth.getUser();
   if (!user || !user.email) return null;
-  return { id: user.id, email: user.email, name: accountNameOf(user.user_metadata) };
+  const preferred = user.user_metadata?.preferred_name;
+  return {
+    id: user.id,
+    email: user.email,
+    name: accountNameOf(user.user_metadata),
+    preferredName: typeof preferred === "string" ? preferred : null,
+  };
 }
 
 export async function getSessionMember(): Promise<SessionMember | null> {

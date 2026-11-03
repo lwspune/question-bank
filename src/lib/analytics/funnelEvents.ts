@@ -173,6 +173,12 @@ export const FUNNEL_EVENTS = [
    * scale; a signed-in student's is also a row (surface_viewed 'learn_start').
    */
   "learn_lesson_start",
+  /**
+   * The homepage's "Pick up where you left off" card was tapped (2026-11-02,
+   * signed-out returners only; components/visits). Prop: kind (notes · chapter).
+   * Homepage views are its scale.
+   */
+  "home_continue_click",
 ] as const;
 
 export type FunnelEvent = (typeof FUNNEL_EVENTS)[number];

@@ -7,8 +7,8 @@ import { getPageIdentity } from "@/lib/auth";
 import { sessionHasAnyScope } from "@/lib/entitlements/session";
 import { sessionPaperFree } from "@/lib/export/freeDownloadSession";
 import { paperKey } from "@/lib/export/freePaper";
-import { passCta, passForBuyer } from "@/lib/billing/plans";
-import { isFreeExamName, passScopesFor } from "@/lib/billing/passScope";
+import { offerForNeed, passCta } from "@/lib/billing/plans";
+import { downloadScopesFor, isFreeExamName } from "@/lib/billing/passScope";
 import { readCountry } from "@/lib/acquisition/country";
 import { listActivePlansCached } from "@/lib/billing/plansQuery";
 import { getCachedPyqYears } from "@/lib/exam/bankYears";
@@ -121,10 +121,11 @@ export default async function BrowsePage({ searchParams }: PageProps) {
   const { isStaff, isSignedIn, canEditContent } = await getPageIdentity();
   // The Premium Pass: a paid grant that unlocks the paper + key for an
   // account with no org. Only a signed-in non-staff viewer needs the lookup.
-  // Each host asks for its own passes (0206): www the Premium Pass, intl its exams'.
+  // Each host asks for its own passes (0206): www the Premium Pass (not the
+  // Practice Pass, 2026-11-03), intl its exams'.
   const passSite = isIntlHost(headers().get("host")) ? "intl" : "pyqvault";
   const hasDownloadPass =
-    isSignedIn && !isStaff ? await sessionHasAnyScope(passScopesFor(passSite)) : false;
+    isSignedIn && !isStaff ? await sessionHasAnyScope(downloadScopesFor(passSite)) : false;
 
   const rawParams = paramsFromSearch(searchParams);
   let filters = parseFilters(rawParams);
@@ -318,7 +319,7 @@ export default async function BrowsePage({ searchParams }: PageProps) {
   const paperLinks = paperLinkMap(await papersPromise, yearsOf(questionsResult.rows));
 
   const downloadPass = plansPromise
-    ? passCta(passForBuyer(await plansPromise, passScopesFor(passSite)[0], passSite, readCountry(headers())))
+    ? passCta(offerForNeed(await plansPromise, downloadScopesFor(passSite)[0], passSite, readCountry(headers())))
     : null;
   const freeDownloadLeft = freePromise ? await freePromise : false;
 
@@ -482,6 +483,7 @@ export default async function BrowsePage({ searchParams }: PageProps) {
                 exams={landing.exams}
                 chapters={landing.chapters}
                 chapterDirectoryCount={landing.chapterDirectoryCount}
+                chosenSlug={chosenExamSlug()}
               />
             ) : questionsResult.rows.length === 0 ? (
               <EmptyState filtered={filtered} />
@@ -587,6 +589,12 @@ async function loadLandingPanel() {
     chapters: pickStarterChapters(landings, { perExam: 2, total: 8 }),
     chapterDirectoryCount: landings.length,
   };
+}
+
+/** The visitor's chosen exam from the qb_exam cookie, or null. */
+function chosenExamSlug(): string | null {
+  const raw = cookies().get("qb_exam")?.value;
+  return isExamSlug(raw) ? raw : null;
 }
 
 function countActiveFilters(f: Filters): number {

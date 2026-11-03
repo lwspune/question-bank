@@ -8,6 +8,7 @@
  * the lead stays as one quiet link.
  */
 import { drillHref } from "@/lib/drill/from";
+import { isShowableName } from "@/lib/results/check";
 
 export type TodayAction = {
   kind: "resume" | "drill" | "continue" | "mock";
@@ -65,4 +66,21 @@ export function greetingFor(hourIst: number): string {
   if (hourIst >= 5 && hourIst < 12) return "Good morning";
   if (hourIst >= 12 && hourIst < 17) return "Good afternoon";
   return "Good evening";
+}
+
+/**
+ * The first name to greet a student by, or null to greet without one.
+ *
+ * `preferred_name` first: the name the student set on /me ("Not you?"). The
+ * account name (Google's full_name, else name) can be a parent's, and a Google
+ * sign-in rewrites full_name, so the student's own choice lives in its own key.
+ * Anything that looks like a handle or an email (digits, _ or @) is skipped.
+ */
+export function greetingName(meta: Record<string, unknown> | null | undefined): string | null {
+  for (const raw of [meta?.preferred_name, meta?.full_name, meta?.name]) {
+    if (typeof raw !== "string" || !isShowableName(raw)) continue;
+    const first = raw.trim().split(/\s+/)[0];
+    return first.charAt(0).toUpperCase() + first.slice(1);
+  }
+  return null;
 }

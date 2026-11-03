@@ -81,6 +81,7 @@ describe("EXPERIMENTS", () => {
       "onboarding-arms",
       "paper-pages",
       "pass-price",
+      "pass-tiers",
       "performance-starter",
       "practice-friends",
       "practice-tests",

@@ -12,9 +12,9 @@ const NOW = Date.parse("2026-09-27T10:00:00Z");
 describe("COMP_SCOPE_OPTIONS", () => {
   // The dialog offers only scopes something in code enforces; `all` first because
   // it is the default a one-click comp should reach for.
-  it("offers all, mocks, teacher — all first", () => {
-    // The IMAT and MCAT passes (2026-10-30) can be comped like the www pass.
-    expect(COMP_SCOPE_OPTIONS.map((o) => o.value)).toEqual([SCOPE_ALL, SCOPE_MOCKS, SCOPE_TEACHER, "imat", "mcat"]);
+  it("offers all, mocks, practice, teacher — all first", () => {
+    // The IMAT and MCAT passes (2026-10-30) and the Practice Pass (2026-11-03) can be comped like the www pass.
+    expect(COMP_SCOPE_OPTIONS.map((o) => o.value)).toEqual([SCOPE_ALL, SCOPE_MOCKS, "practice", SCOPE_TEACHER, "imat", "mcat"]);
   });
 });
 

@@ -19,6 +19,7 @@ import {
   Timer,
 } from "lucide-react";
 import { redirect } from "next/navigation";
+import { cookies } from "next/headers";
 import AppHeader from "@/components/AppHeader";
 import Footer from "@/components/Footer";
 import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
@@ -29,12 +30,13 @@ import { countSummary } from "@/lib/exam/questionCounts";
 import { examCardAnchor, homeExamChips } from "@/lib/exam/homeChips";
 import HomeExamChips from "@/components/home/HomeExamChips";
 import HowItWorks from "@/components/HowItWorks";
+import ContinueCard from "@/components/visits/ContinueCard";
 import ResultsStrip from "@/components/results/ResultsStrip";
 import { loopFor } from "@/lib/education/howItWorks";
 import { NOTES_CHAPTERS } from "@/lib/notes/chapters";
-import { getExamBySlug } from "@/lib/exam/examContext";
+import { getExamBySlug, isExamSlug } from "@/lib/exam/examContext";
 import { groupExamFamilies, familyTotal, membersByStage } from "@/lib/exam/examFamily";
-import { sortByDemand } from "@/lib/exam/demandOrder";
+import { sortByDemand, withChosenExamFirst } from "@/lib/exam/demandOrder";
 
 export const revalidate = 86400;
 
@@ -251,7 +253,13 @@ export default async function Home() {
   // only: every class link keeps the exact href it had before, and the hero's
   // exam COUNT below still reports 13 — we do have 13 corpora.
   // Most-chosen exams first (lib/exam/demandOrder), not the registry's NDA-first order.
-  const examNodes = sortByDemand(groupExamFamilies(catalog.exams, (e) => getExamBySlug(e.slug)));
+  // ...and the visitor's own exam (qb_exam, set by the chips below) before all.
+  // This page already renders per request, so reading the cookie costs nothing.
+  const chosen = cookies().get("qb_exam")?.value;
+  const examNodes = withChosenExamFirst(
+    sortByDemand(groupExamFamilies(catalog.exams, (e) => getExamBySlug(e.slug))),
+    isExamSlug(chosen) ? chosen : null
+  );
 
   return (
     <>
@@ -334,6 +342,9 @@ export default async function Home() {
             />
           </div>
         </section>
+
+        {/* A returning signed-out visitor's last notes topic or chapter page. */}
+        <ContinueCard />
 
         {/* A8: pick an exam without scrolling past every card. */}
         <HomeExamChips chips={homeExamChips(examNodes)} />

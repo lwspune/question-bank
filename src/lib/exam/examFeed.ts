@@ -78,6 +78,16 @@ export function anonFeedFor(entries: readonly ExamEntry[]): ExamFeed {
 
 export const ANON_FEED: ExamFeed = anonFeedFor(PYQVAULT_EXAMS);
 
+/**
+ * A signed-out visitor's feed once they have picked an exam (the homepage chips
+ * and /welcome write `qb_exam`): that exam first, the rest under "other", the
+ * same shape a signed-in student with one target gets. No choice = ANON_FEED.
+ * Until 2026-11-02 a signed-out visitor got the plain list whatever they chose.
+ */
+export function chosenExamFeed(slug: ExamSlug | null, entries: readonly ExamEntry[]): ExamFeed {
+  return slug ? resolveExamFeed({ stage: null, targetExams: [slug] }, entries) : ANON_FEED;
+}
+
 export function resolveExamFeed(input: FeedInput, entries: readonly ExamEntry[]): ExamFeed {
   const tier = resolveStudentTier(input, entries);
   const publicEntries = entries.filter((e) => !e.noPublicContent);

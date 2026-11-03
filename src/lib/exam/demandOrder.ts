@@ -53,3 +53,20 @@ export function sortByDemand<T>(nodes: readonly ExamFamilyNode<T>[]): ExamFamily
     .sort((a, b) => rank(a.node) - rank(b.node) || a.index - b.index)
     .map((x) => x.node);
 }
+
+/**
+ * `nodes` with the card holding `slug` moved to the front: the visitor's chosen
+ * exam (the `qb_exam` cookie), or the family card that has it as a class. No
+ * choice, or an exam not on the page, leaves the order as it is.
+ */
+export function withChosenExamFirst<T extends { slug: string }>(
+  nodes: readonly ExamFamilyNode<T>[],
+  slug: string | null
+): ExamFamilyNode<T>[] {
+  if (!slug) return [...nodes];
+  const holds = (n: ExamFamilyNode<T>) =>
+    n.kind === "family" ? n.members.some((m) => m.item.slug === slug) : n.item.slug === slug;
+  const i = nodes.findIndex(holds);
+  if (i <= 0) return [...nodes];
+  return [nodes[i], ...nodes.slice(0, i), ...nodes.slice(i + 1)];
+}
