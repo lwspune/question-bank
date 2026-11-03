@@ -4,22 +4,16 @@
  * download route pull in one chapter's file, never all of them (the notes
  * registry's bundle incident, 2026-10-02).
  *
- * The key is the sheet file's path under ./sheets; tests/board-revision-
- * registry.test.ts fails on a file that is not registered here, or registered
- * under another address.
+ * The key is the sheet file's path under ./sheets, and the loader list is
+ * generated from those files (`npm run revision:registry`);
+ * tests/board-revision-registry.test.ts fails when the two disagree.
  */
 import type { RevisionSheet } from "./types";
 import type { RevisionTarget } from "./target";
+import { SHEET_LOADERS } from "./loaders.generated";
 
-type Loader = () => Promise<{ default: RevisionSheet }>;
-
-const LOADERS: Record<string, Loader> = {
-  "mh-hsc-12/physics/rotational-dynamics": () => import("./sheets/mh-hsc-12/physics/rotational-dynamics"),
-  "mh-hsc-12/physics/mechanical-properties-of-fluids": () =>
-    import("./sheets/mh-hsc-12/physics/mechanical-properties-of-fluids"),
-  "mh-hsc-12/physics/kinetic-theory-of-gases-and-radiation": () =>
-    import("./sheets/mh-hsc-12/physics/kinetic-theory-of-gases-and-radiation"),
-};
+/** Generated from the sheet files by `npm run revision:registry`. */
+const LOADERS = SHEET_LOADERS;
 
 export const REVISION_SHEET_KEYS: readonly string[] = Object.keys(LOADERS);
 

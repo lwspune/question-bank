@@ -155,6 +155,42 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 | **The MH State Board Class-10 textbook layer was ingested by 30 parallel agents on 2026-08-28, and four inconsistencies survive that are cheap to fix but touch SHIPPED rows.** (a) **Ref style is split six-and-six across the twelve Mathematics chapters** - `AGENT_BRIEF.md` said `Ex 1.1 Q3` where the older `MATHS_TRANSCRIPTION_BRIEF.md` and the shipped `pythagoras-10` say `Ex 1.1 Q.3`, and both documents were in play at once. (b) **`config.ts` carries near-duplicate subtopics** the ingest deliberately reused rather than renamed - Geometry has both `Property of an Angle Bisector of a Triangle` and `Property of Angle Bisector of a Triangle` (1 PYQ row each), and `Construction of an Angle Bisector` beside `Construction of Angle Bisector`; Mensuration has `Area of Combined Figures` beside `Areas of Combined Figures`; Heat has `Humidity` beside `Humidity and Relative Humidity` and `Anomalous Behaviour of Water` beside `Anomalous Expansion of Water`; Refraction has `Refractive Index` beside `Absolute Refractive Index`. (c) **Several configured subtopics receive ZERO textbook rows because the chapter no longer teaches them** - Financial Planning's `Income Tax - Assessment Year` and `Income, Expenditure and Savings` (this edition is GST + shares), Life Processes Part 1's seven osmosis/transpiration/transport/excretion/glands names (the chapter covers three topics, not ten), Co-ordinate Geometry's `Equation of a Line`, Mensuration's `Euler's Formula`, Trigonometry's `Angle in Standard Position`, Carbon Compounds' `Rancidity`, Environmental Management's `Control of Noise Pollution` and `Blue Revolution`, Heredity's `Mendel's Laws of Inheritance`. All are PYQ-era names from an older syllabus. (d) **Two questions have no good subtopic home at all** - Lenses `Ex Q5` (astronomical telescope, filed under `Simple Microscope`) and Mensuration `PS7 Q12` (a chord-property question filed under `Circumference of a Circle`). | **(a) is measured and mechanical**: 383 rows across 41 files, `normalise-maths-refs.ts` is written, dry-run and self-tested, and `question_number` sits outside `content_hash` while sections routing keys on the block prefix - so the rename moves nothing and `backfill-sections.ts` re-proves every ref still routes. It waits only so it cannot race an in-flight agent. **(b) and (c) are a RENAME/RE-FILE pass and are the expensive half**: every one of those names carries live board-PYQ rows, so a merge or rename re-files SHIPPED PYQ content, which is exactly what the ingest policy refused to do unilaterally. Note the asymmetry recorded on the CDS GK run - an ADDITION is cheaper the earlier it lands, but a RENAME costs the same whenever it is paid, so waiting for a settled corpus is correct rather than merely convenient. **(d) needs a taxonomy decision, not a fix**: a `Telescopes and Optical Instruments` subtopic under Lenses would be a genuine addition; `PS7 Q12`'s real home is a chord property that Mensuration has no slot for. | **Identified 2026-08-28 during the ingest; (a) READY and pending only the last agents, (b)(c)(d) NOT done.** Each was reported by the agent that hit it rather than acted on, because `config.ts` was off-limits to them by design. (b)-(d) need a 360 + permission: they touch shipped PYQ rows and a subtopic rename is visible on `/browse` filters and every notes/guide cross-reference that names one. |
 
+## 2026-11-04
+
+### MH HSC 12 past-paper questions filed under the wrong chapter, or with a text defect (owner to decide)
+
+Found while drafting the 70 HSC 12 quick-revision sheets (each agent read every past-paper question of its chapter). None was changed: moving a row changes its chapter's mocks, homework plans, Top 10 and /board lists, and a text fix should be checked against the source paper first. All are PUBLIC `pyq` rows of `Maharashtra HSC Class 12`.
+
+**Filed under the wrong chapter (15):**
+
+- Chemistry / Ionic Equilibria: 2025 Feb MCQ "The formula used to calculate molar conductivity of an electrolyte is" -> Electrochemistry.
+- Chemistry / Chemical Thermodynamics: 2017 Mar "Nitrogen does not form tetrahalides. Give reason." -> Elements of Groups 16, 17 and 18 (p-block; group 15 is old syllabus).
+- Chemistry / Chemical Thermodynamics: 2014 Mar "What is 'calcination'? How does it differ from 'roasting'?" -> metallurgy, old syllabus with no current chapter.
+- Chemistry / Electrochemistry: 2014 Mar "Derive a relation between ΔH and ΔU" -> Chemical Thermodynamics.
+- Chemistry / Alcohols, Phenols and Ethers: 2015 Mar "boiling points of carboxylic acids higher than corresponding alcohols" -> Aldehydes, Ketones and Carboxylic Acids.
+- Chemistry / Aldehydes, Ketones and Carboxylic Acids: 2018 Mar "Prepare carbolic acid from benzene sulphonic acid ... ferric chloride on phenol" -> Alcohols, Phenols and Ethers.
+- Chemistry / Aldehydes, Ketones and Carboxylic Acids: 2017 Mar "Define racemic mixture ..." -> Halogen Derivatives.
+- Chemistry / Aldehydes, Ketones and Carboxylic Acids: 2015 Mar "How is ethylamine prepared from methyl iodide?" -> Amines.
+- Chemistry / Amines: 2025 Feb "reagent used to convert alkyl halide to nitroalkane" -> Halogen Derivatives.
+- Chemistry / Coordination Compounds: 2022 Mar "Calculate spin only magnetic moment of divalent cation ... Salts of Ti4+ are colorless" -> Transition and Inner Transition Elements.
+- Chemistry / Coordination Compounds: 2015 Mar MCQ "What is the geometry of chromate ion?" -> Transition and Inner Transition Elements.
+- Mathematics / Vectors: 2020 Feb MCQ "If r = (2i - j + 3k) + λ(2i + j + 2k) is parallel to the plane ..." -> Line and Planes.
+- Mathematics / Line and Planes: 2026 Jun "What is the distance of point (3, -5, 6) from XZ plane?" -> Vectors.
+- Mathematics / Probability Distributions: 2015 Mar binomial p.m.f. line "P(x) = 4Cx (5/9)^x (4/9)^(4-x)" -> Binomial Distribution (it also carries a stray "*\" before the formula). And Binomial Distribution: 2025 "Three coins are tossed simultaneously ... expected value and variance" -> Probability Distributions.
+- Geography / Geography: Nature and Scope: 2026 Mar "Arrange the countries ... from West to East - France, India, Japan, U.S.A." is a world-map item no chapter teaches.
+
+**Text defects (check against the source paper, then correct in place):**
+
+- Mathematics / Trigonometric Functions: 2022 Mar MCQ reads "if c² = a² + b² = ac, then ∠B = ?"; the paper means c² + a² − b² = ac (∠B = 60°). As stored it is unsolvable.
+- Mathematics / Definite Integration: 2022 Mar "Show that ∫₀^π log(1 + tan x) dx = (π/8) log 2": the upper limit should be π/4.
+- Mathematics / Definite Integration: 2025 Jul "Evaluate ∫₀^(−1) e^(−x) dx": odd limits, answerable as printed (1 − e); confirm.
+- Mathematics / Differential Equations: 2015 Mar "If y = e^(ax), show that x dy/dx = y log y": the maths markup swallows the prose (`\(e^{ax},show\ that\ ...\)`).
+- Mathematics / Probability Distributions: 2016 Mar "Also find P(x) at x = 0.5 and 9" should read F(x).
+- Mathematics / Binomial Distribution: 2020 Feb "i. is shows no head. ii. is shows at least once" (should be "it shows no head ... at least one head"); 2023 Mar "4C_{x}" lost its superscript.
+- Biology / Biodiversity, Conservation and Environmental Issues: 2024 Mar species-area MCQ option (A) reads `S-CA^{2}`; the law is S = CA^Z. The textbook's own exercise prints "S=CA2", so it may come from the source.
+
+**Book misprints the sheets work around (no bank action):** Physics Example 4.4 prints ΔU = +21 kJ (its working gives −21 kJ); Current Electricity Example 9.4 uses P/Q = R/S against its own derivation's P/Q = S/R; Chemistry gives thorium Z = 72 (it is 90) and defines geometric isomers with the words for enantiomers; Maths Part II prints the inverse-secant derivative's domain as |x| < 1 and calls k > 0 both growth and decay; Biology misspells Langerhans, Tachardia lacca, chalcone, Nathans.
+
 ## 2026-11-02
 
 ### Free exams still meet the drill limit and the projected-score trial
