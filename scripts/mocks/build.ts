@@ -912,8 +912,8 @@ async function main() {
   if (runMpsc) {
     await buildFromSourceFiles(db, MPSC_GBC_PAPER, mpscSittings(), run, "mpscSittings.ts");
     await buildFromSourceFiles(db, MPSC_SSP_GS1_PAPER, mpscSittings(MPSC_SSP_PAPERS, sspMockTitle), run, "mpscSittings.ts");
-    // CSAT: the 2021 cover cuts a quarter for a wrong answer, every earlier one a third.
-    const csat = (is2021: boolean) => CSAT_MOCK_PAPERS.filter((p) => (p.pyqYear === 2021) === is2021);
+    // CSAT: covers from 2021 on cut a quarter for a wrong answer, every earlier one a third.
+    const csat = (quarter: boolean) => CSAT_MOCK_PAPERS.filter((p) => (p.pyqYear >= 2021) === quarter);
     await buildFromSourceFiles(db, MPSC_SSP_CSAT_PAPER, mpscSittings(csat(false), sspCsatMockTitle), run, "mpscSittings.ts");
     await buildFromSourceFiles(db, MPSC_SSP_CSAT_2021_PAPER, mpscSittings(csat(true), sspCsatMockTitle), run, "mpscSittings.ts");
     // Forest + Agriculture: Agriculture 2011 and 2012 are 200-question papers, the rest 100.

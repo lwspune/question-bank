@@ -9,7 +9,9 @@ import {
   PAPERS,
   SSP_CHAPTERS,
   SSP_CSAT_CHAPTERS,
+  SSP_2023_DIR,
   SSP_CSAT_PAPERS,
+  SSP_SOURCE_PDF,
   SSP_PAPERS,
   expectedNumbers,
   questionCount,
@@ -22,12 +24,28 @@ describe("MPSC paper registry", () => {
     expect(SSP_PAPERS.every((p) => p.exam === "ssp")).toBe(true);
   });
 
-  it("registers the ten State Services Prelims GS Paper I booklets, one per year 2013-2022", () => {
-    expect(SSP_PAPERS.map((p) => p.pyqYear).sort()).toEqual([2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022]);
+  it("registers the thirteen State Services Prelims GS Paper I booklets, one per year 2013-2025", () => {
+    expect(SSP_PAPERS.map((p) => p.pyqYear).sort()).toEqual([2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025]);
+  });
+
+  it("reads 2023-2025 (both papers) from their own files, each booklet's set, 2025 on MPSC's first key", () => {
+    const sets = Object.fromEntries(
+      [...SSP_PAPERS, ...SSP_CSAT_PAPERS].filter((p) => p.pyqYear >= 2023).map((p) => [p.id, p.bookletSet])
+    );
+    expect(sets).toEqual({
+      "ssp-2023": "A", "ssp-2024": "D", "ssp-2025": "C",
+      "ssp-csat-2023": "D", "ssp-csat-2024": "D", "ssp-csat-2025": "C",
+    });
+    for (const p of [...SSP_PAPERS, ...SSP_CSAT_PAPERS].filter((x) => x.pyqYear >= 2023)) {
+      expect(p.sourcePdf.startsWith(SSP_2023_DIR)).toBe(true);
+      expect(p.keyPdf?.startsWith(SSP_2023_DIR)).toBe(true);
+      expect(p.provisionalKey === true).toBe(p.pyqYear === 2025);
+    }
   });
 
   it("tiles the 460-page State Services scan with no gap or overlap", () => {
-    const ranges = SSP_PAPERS.map((p) => p.pages).sort((a, b) => a[0] - b[0]);
+    const ranges = SSP_PAPERS.filter((p) => p.sourcePdf === SSP_SOURCE_PDF).map((p) => p.pages).sort((a, b) => a[0] - b[0]);
+    expect(ranges).toHaveLength(10);
     expect(ranges[0][0]).toBe(1);
     expect(ranges[ranges.length - 1][1]).toBe(460);
     for (let i = 1; i < ranges.length; i++) expect(ranges[i][0]).toBe(ranges[i - 1][1] + 1);
@@ -52,13 +70,13 @@ describe("MPSC paper registry", () => {
   it("finds a paper of either exam, and refuses an unknown id", () => {
     expect(requirePaper("ssp-2022").exam).toBe("ssp");
     expect(requirePaper("2024-b").exam).toBe("gbc");
-    expect(() => requirePaper("ssp-2023")).toThrow(/unknown paper/);
+    expect(() => requirePaper("ssp-2012")).toThrow(/unknown paper/);
   });
 });
 
 describe("MPSC State Services CSAT Paper II registry", () => {
-  it("registers the nine CSAT booklets on file — no 2017 booklet exists in the source", () => {
-    expect(SSP_CSAT_PAPERS.map((p) => p.pyqYear).sort()).toEqual([2013, 2014, 2015, 2016, 2018, 2019, 2020, 2021, 2022]);
+  it("registers the twelve CSAT booklets on file — no 2017 booklet exists in the source", () => {
+    expect(SSP_CSAT_PAPERS.map((p) => p.pyqYear).sort()).toEqual([2013, 2014, 2015, 2016, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025]);
   });
 
   it("puts CSAT under the State Services exam row, 80 questions, with its own chapter list", () => {
