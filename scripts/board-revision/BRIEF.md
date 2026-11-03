@@ -51,7 +51,15 @@ Search with grep; never print a whole file.
   wording, trimmed. No em dashes anywhere in your words.
 - `examSlug` is `mh-hsc-12`; `subjectName` and `chapterName` are as given in
   your brief (they must match the database exactly); `source` is
-  `Balbharati <Subject> Std XII (Maharashtra State Board), Chapter <n>`.
+  `Balbharati <Subject> Std XII (Maharashtra State Board), Chapter <n>`, where
+  `<n>` is the number the BOOK gives the chapter: its sections are numbered
+  `<n>.1`, `<n>.2`, or (Geography) its heading reads `<n>. <chapter name>`.
+  `revision:evidence` checks it. Do not trust a number given in your brief over
+  the book's: the database's chapter order starts at 0 for some subjects.
+  Mathematics is two books, each numbered from 1:
+  `Balbharati Mathematics and Statistics Part I Std XII (Maharashtra State Board), Chapter <n>`
+  (Mathematical Logic to Linear Programming) and `... Part II ...` (Differentiation
+  to Binomial Distribution).
 
 ## Evidence (required)
 

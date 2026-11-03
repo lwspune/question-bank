@@ -13,7 +13,7 @@ import { join, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 import { lintRevisionSheet } from "@/lib/board/revision/lint";
 import type { RevisionSheet } from "@/lib/board/revision/types";
-import { checkRevisionEvidence, type RevisionEvidence } from "./evidenceCore";
+import { checkRevisionEvidence, checkSourceChapter, type RevisionEvidence } from "./evidenceCore";
 
 (async () => {
   const [sheetPath, evidencePath, dir] = process.argv.slice(2);
@@ -25,7 +25,11 @@ import { checkRevisionEvidence, type RevisionEvidence } from "./evidenceCore";
   const ev = JSON.parse(readFileSync(evidencePath, "utf8")) as RevisionEvidence;
   const book = readFileSync(join(dir, "book.txt"), "utf8");
   const pyqs = readFileSync(join(dir, "pyqs.txt"), "utf8").split("\n").filter((l) => /^\d{4} /.test(l));
-  const problems = [...lintRevisionSheet(sheet), ...checkRevisionEvidence(sheet, ev, book, pyqs)];
+  const problems = [
+    ...lintRevisionSheet(sheet),
+    ...checkSourceChapter(sheet.source, book, sheet.chapterName),
+    ...checkRevisionEvidence(sheet, ev, book, pyqs),
+  ];
   if (problems.length === 0) console.log(`${sheetPath}: clean (sheet + evidence)`);
   else {
     console.log(`${sheetPath}: ${problems.length} problem(s)`);
