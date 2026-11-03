@@ -23,11 +23,11 @@ import { WATERMARK_PNG_BASE64 } from "../watermark.generated";
 export type FormulaSheetChapter = Pick<NotesChapterRegistration, "subjectDisplay" | "chapter" | "notes" | "slugs">;
 
 const ESC: Record<string, string> = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" };
-function esc(s: string): string {
+export function esc(s: string): string {
   return s.replace(/[&<>"']/g, (c) => ESC[c]);
 }
 
-function tex(src: string, displayMode: boolean): string {
+export function tex(src: string, displayMode: boolean): string {
   return katex.renderToString(src, { displayMode, throwOnError: false, output: "html", strict: "ignore" });
 }
 
@@ -35,7 +35,7 @@ function tex(src: string, displayMode: boolean): string {
  * Prose with inline `\( \)` math and `**bold**`, as HTML. Trap titles and
  * table cells are short; the full RichText grammar is not needed here.
  */
-function richInline(text: string): string {
+export function richInline(text: string): string {
   const out: string[] = [];
   const re = /\\\((.+?)\\\)/g;
   let last = 0;
@@ -102,7 +102,8 @@ export function formulaSheetFilename(subjectDisplay: string, chapterName: string
 
 const PALETTE = ["#1D4ED8", "#0E7490", "#7C3AED", "#B45309", "#047857", "#BE123C", "#4338CA", "#C2410C"];
 
-const PAGE_CSS = `
+/** The A4 page and masthead, shared with the board revision sheet. */
+export const PAGE_CSS = `
 @page { size: A4; margin: 12mm 12mm 16mm; }
 * { box-sizing: border-box; }
 html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
@@ -149,7 +150,7 @@ table.ref { border-collapse: collapse; font-size: 8pt; width: 100%; margin: 2pt 
 `;
 
 /** Every page's footer as a CSS margin box: the page's own fonts, like the paper PDF. */
-function footerCss(siteUrl: boolean): string {
+export function footerCss(siteUrl: boolean): string {
   const brand = siteUrl ? `"www.pyqvault.com  ·  " ` : "";
   return (
     `@page { @bottom-center { content: ${brand}"Page " counter(page) " of " counter(pages);` +

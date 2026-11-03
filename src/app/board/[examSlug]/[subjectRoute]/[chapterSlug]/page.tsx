@@ -22,6 +22,9 @@ import { homeworkDayView } from "@/lib/homework/dayView";
 import { topPyqsTitle } from "@/lib/homework/topPyqs";
 import { loadBoardQuestions } from "@/lib/questionPapers/query";
 import { LearnChapterLink } from "@/components/learn/LearnChapterLink";
+import { loadRevisionSheet } from "@/lib/board/revision/registry";
+import type { RevisionSheet } from "@/lib/board/revision/types";
+import BoardRevisionSheet from "@/app/board/_components/BoardRevisionSheet";
 
 type Params = { examSlug: string; subjectRoute: string; chapterSlug: string };
 
@@ -67,6 +70,8 @@ type Loaded = {
   paperCounts: BoardPaperCount[];
   /** The chapter's Top 10 PYQs, or null when its subject has no published homework plan. */
   top: BoardTopPyqs | null;
+  /** The chapter's quick-revision sheet (2026-11-03), or null. A code file, not a database read. */
+  revision: RevisionSheet | null;
 };
 
 /**
@@ -106,7 +111,7 @@ async function load(params: Params): Promise<Loaded | null> {
   const resolved = await resolveBoardChapter(client, exam.examName, params.subjectRoute, params.chapterSlug);
   if (!resolved) return null;
 
-  const [chapter, pyqSittings, paperCounts, top] = await Promise.all([
+  const [chapter, pyqSittings, paperCounts, top, revision] = await Promise.all([
     getBoardChapter(client, {
       examId: resolved.examId,
       chapterId: resolved.chapterId,
@@ -121,6 +126,7 @@ async function load(params: Params): Promise<Loaded | null> {
       examName: exam.examName,
     }),
     loadTop(client, { examId: resolved.examId, subjectId: resolved.subjectId, chapterId: resolved.chapterId }),
+    loadRevisionSheet({ examSlug: params.examSlug, subjectRoute: params.subjectRoute, chapterSlug: params.chapterSlug }),
   ]);
 
   // TEXTBOOK presence still decides whether this page exists — /board is the
@@ -136,6 +142,7 @@ async function load(params: Params): Promise<Loaded | null> {
     pyqSittings,
     paperCounts,
     top,
+    revision,
   };
 }
 
@@ -199,6 +206,7 @@ export default async function BoardChapterPage({ params }: { params: Params }) {
           pyqSittings={data.pyqSittings}
           paperCounts={data.paperCounts}
           top={data.top}
+          revision={data.revision ? { node: <BoardRevisionSheet sheet={data.revision} /> } : null}
           supabaseUrl={supabaseUrl}
           chapterName={chapter.chapterName}
           examName={data.examName}

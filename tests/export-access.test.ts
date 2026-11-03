@@ -22,7 +22,7 @@ const anon = { isSignedIn: false, isStaff: false };
 const student = { isSignedIn: true, isStaff: false };
 const staff = { isSignedIn: true, isStaff: true };
 
-const KINDS: ExportKind[] = ["paper", "key", "tags", "ppt", "formula"];
+const KINDS: ExportKind[] = ["paper", "key", "tags", "ppt", "formula", "revision"];
 
 describe("resolveExportAccess", () => {
   for (const kind of KINDS) {
@@ -224,6 +224,38 @@ describe("resolveExportAccess", () => {
       // by the two route tests; here: a sheet request with no lookup is refused.
       expect(resolveExportAccess({ kind: "formula", ...student }).allowed).toBe(false);
       expect(resolveExportAccess({ kind: "paper", ...student }).allowed).toBe(false);
+    });
+  });
+  // The board revision sheet (2026-11-03): the page is free to read; its PDF is
+  // a Premium Pass perk with NO free first copy (owner), unlike the formula
+  // sheet. Only ever a PDF, so staff get the PDF too, clean.
+  describe("board revision sheet", () => {
+    const passHolder = { isSignedIn: true, isStaff: false, hasDownloadPass: true };
+    it("a pass holder gets a branded PDF", () => {
+      expect(resolveExportAccess({ kind: "revision", ...passHolder })).toEqual({
+        allowed: true,
+        branded: true,
+        format: "pdf",
+      });
+    });
+    it("institute staff get the PDF unbranded", () => {
+      expect(resolveExportAccess({ kind: "revision", ...staff })).toEqual({ allowed: true, branded: false, format: "pdf" });
+    });
+    it("an unused free download does not open it", () => {
+      const r = resolveExportAccess({ kind: "revision", ...student, freeDownloadLeft: true });
+      expect(r.allowed).toBe(false);
+      if (!r.allowed) expect(r.status).toBe(403);
+    });
+    it("a student is told the pass unlocks revision sheets, never that a free one is left", () => {
+      for (const freeDownloadLeft of [undefined, true, false]) {
+        const r = resolveExportAccess({ kind: "revision", ...student, freeDownloadLeft });
+        expect(r.allowed).toBe(false);
+        if (!r.allowed) {
+          expect(r.message).toMatch(/revision sheet/i);
+          expect(r.message).toMatch(/Premium Pass/);
+          expect(r.message).not.toMatch(/free|staff/i);
+        }
+      }
     });
   });
 });

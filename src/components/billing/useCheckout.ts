@@ -37,15 +37,25 @@ declare global {
  * "formula_sheet" the chapter formula-sheet box on /notes (2026-10-10);
  * "ebook" the buy box on a /store book page (2026-10-20); "reveal_wall" the
  * daily answer limit on the bank, board and guides (2026-10-25); "v_chat" the
- * same limit met inside V (2026-10-28).
+ * same limit met inside V (2026-10-28); "revision_sheet" the /board chapter
+ * revision-sheet box (2026-11-03).
  */
-export type CheckoutSurface = "download_box" | "paper_download" | "formula_sheet" | "pricing" | "ebook" | "reveal_wall" | "v_chat";
+export type CheckoutSurface =
+  | "download_box"
+  | "paper_download"
+  | "formula_sheet"
+  | "revision_sheet"
+  | "pricing"
+  | "ebook"
+  | "reveal_wall"
+  | "v_chat";
 
 /** The paywall gate the server logs for each surface (see checkoutGate). */
 const GATE: Record<CheckoutSurface, "teacher" | "pricing" | "reveals"> = {
   download_box: "teacher",
   paper_download: "teacher",
   formula_sheet: "teacher",
+  revision_sheet: "teacher",
   pricing: "pricing",
   ebook: "pricing",
   reveal_wall: "reveals",

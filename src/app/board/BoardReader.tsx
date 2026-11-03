@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, type ReactNode } from "react";
 import { BookOpen, ChevronDown, ChevronRight } from "lucide-react";
 import BlockText from "@/components/math/BlockText";
 import BoardPassage from "@/app/board/BoardPassage";
@@ -11,6 +11,7 @@ import { cn } from "@/lib/utils";
 import { boardPyqPaperStats } from "@/lib/board/papers";
 import BoardQuestionItem, { type RevealLock } from "./BoardQuestionItem";
 import { useBoardReveal } from "./useBoardReveal";
+import { reportRevisionOpened } from "./revisionBeacon";
 import type { HomeworkSlot } from "@/lib/homework/dayView";
 import HomeworkSlotList from "@/app/homework/_components/HomeworkSlotList";
 import PaperDownload from "@/app/mock/_components/PaperDownload";
@@ -36,7 +37,13 @@ export type BoardTopPyqs = {
   slots: HomeworkSlot<BoardQuestion>[];
 };
 
-type Panel = "textbook" | "pyqs" | "top";
+/**
+ * A chapter's quick-revision sheet (2026-11-03): rendered on the SERVER and
+ * handed in as a node, so its text is in the page and none of it ships as JS.
+ */
+export type BoardRevision = { node: ReactNode };
+
+type Panel = "textbook" | "pyqs" | "top" | "revision";
 
 const KIND_TAG: Record<SectionKind, string> = {
   solved_example: "Worked",
@@ -68,6 +75,7 @@ export default function BoardReader({
   chapterName,
   examName,
   top = null,
+  revision = null,
 }: {
   groups: BoardSectionGroup[];
   /** The chapter's board past-year questions, newest sitting first. Empty only
@@ -84,6 +92,8 @@ export default function BoardReader({
   examName: string;
   /** The chapter's Top 10 PYQs, or null when its subject has no homework plan. */
   top?: BoardTopPyqs | null;
+  /** The chapter's quick-revision sheet, or null when it has none yet. */
+  revision?: BoardRevision | null;
 }) {
   // Which panel is on screen. Opens on the textbook — /board is the book
   // reader and the URL names a chapter of it.
@@ -113,15 +123,19 @@ export default function BoardReader({
 
   return (
     <div className="space-y-6">
-      {pyqTotal > 0 && (
+      {(pyqTotal > 0 || revision) && (
         <SourceTabs
           textbookTotal={textbookTotal}
           sectionCount={groups.length}
           pyqTotal={pyqTotal}
           pyqSittings={pyqSittings}
           topCount={top?.slots.length ?? 0}
+          hasRevision={!!revision}
           panel={panel}
-          onSelect={setPanel}
+          onSelect={(p) => {
+            setPanel(p);
+            if (p === "revision") reportRevisionOpened();
+          }}
         />
       )}
 
@@ -217,6 +231,12 @@ export default function BoardReader({
           </div>
         </PresentRegistry>
       )}
+
+      {revision && (
+        <div id="board-revision" hidden={panel !== "revision"}>
+          {revision.node}
+        </div>
+      )}
     </div>
   );
 }
@@ -228,7 +248,8 @@ export default function BoardReader({
  *
  * Selection is REACT STATE, deliberately not a search param: useSearchParams
  * bails a static prerender out to client rendering, and these pages are cached.
- * The cost is that the choice isn't linkable.
+ * The cost is that the choice isn't linkable. A fourth, Quick revision
+ * (2026-11-03), appears where the chapter has a revision sheet.
  */
 function SourceTabs({
   textbookTotal,
@@ -236,6 +257,7 @@ function SourceTabs({
   pyqTotal,
   pyqSittings,
   topCount,
+  hasRevision,
   panel,
   onSelect,
 }: {
@@ -245,10 +267,12 @@ function SourceTabs({
   pyqSittings: BoardPyqSitting[];
   /** Questions in the Top PYQs tab; 0 = no tab. */
   topCount: number;
+  hasRevision: boolean;
   panel: Panel;
   onSelect: (panel: Panel) => void;
 }) {
   const years = pyqSittings.map((s) => s.year);
+  const hasPyqs = pyqTotal > 0;
   const first = Math.min(...years);
   const last = Math.max(...years);
   const span = first === last ? `${first}` : `${first}–${last}`;
@@ -276,19 +300,21 @@ function SourceTabs({
           {textbookTotal} questions · {sectionCount} book sections
         </span>
       </button>
-      <button
-        type="button"
-        aria-pressed={panel === "pyqs"}
-        aria-controls="board-pyqs"
-        onClick={() => onSelect("pyqs")}
-        className={tab(panel === "pyqs")}
-      >
-        <span className={cn("text-sm font-semibold", panel === "pyqs" && "text-brand-accent")}>Board PYQs</span>
-        <span className="text-xs text-muted-foreground">
-          {pyqTotal} questions · {span}
-        </span>
-      </button>
-      {topCount > 0 && (
+      {hasPyqs && (
+        <button
+          type="button"
+          aria-pressed={panel === "pyqs"}
+          aria-controls="board-pyqs"
+          onClick={() => onSelect("pyqs")}
+          className={tab(panel === "pyqs")}
+        >
+          <span className={cn("text-sm font-semibold", panel === "pyqs" && "text-brand-accent")}>Board PYQs</span>
+          <span className="text-xs text-muted-foreground">
+            {pyqTotal} questions · {span}
+          </span>
+        </button>
+      )}
+      {topCount > 0 && hasPyqs && (
         <button
           type="button"
           aria-pressed={panel === "top"}
@@ -300,6 +326,20 @@ function SourceTabs({
             Top {topCount} PYQs
           </span>
           <span className="text-xs text-muted-foreground">Most asked first · download</span>
+        </button>
+      )}
+      {hasRevision && (
+        <button
+          type="button"
+          aria-pressed={panel === "revision"}
+          aria-controls="board-revision"
+          onClick={() => onSelect("revision")}
+          className={tab(panel === "revision")}
+        >
+          <span className={cn("text-sm font-semibold", panel === "revision" && "text-brand-accent")}>
+            Quick revision
+          </span>
+          <span className="text-xs text-muted-foreground">Most asked · formulas · PDF</span>
         </button>
       )}
     </div>
