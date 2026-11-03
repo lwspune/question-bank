@@ -9,6 +9,7 @@ export const SHEET_LOADERS: Record<string, () => Promise<{ default: RevisionShee
   "cbse-12/chemistry/solutions": () => import("./sheets/cbse-12/chemistry/solutions"),
   "cbse-12/chemistry/the-d-and-f-block-elements": () => import("./sheets/cbse-12/chemistry/the-d-and-f-block-elements"),
   "cbse-12/mathematics/application-of-derivatives": () => import("./sheets/cbse-12/mathematics/application-of-derivatives"),
+  "cbse-12/mathematics/application-of-integrals": () => import("./sheets/cbse-12/mathematics/application-of-integrals"),
   "cbse-12/mathematics/continuity-and-differentiability": () => import("./sheets/cbse-12/mathematics/continuity-and-differentiability"),
   "cbse-12/mathematics/determinants": () => import("./sheets/cbse-12/mathematics/determinants"),
   "cbse-12/mathematics/differential-equations": () => import("./sheets/cbse-12/mathematics/differential-equations"),
