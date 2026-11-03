@@ -58,6 +58,11 @@ describe("checkSourceChapter", () => {
     expect(checkSourceChapter("Balbharati Geography Std XII, Chapter 3", heading, "Primary Economic Activities").join()).toMatch(/3.*4/);
   });
 
+  it("reads NCERT's 'Miscellaneous Exercise on Chapter <n>' when the sections are too few", () => {
+    const short = "8.1 Introduction\nIn this chapter we find areas.\n8.2 Area under Simple Curves\nMiscellaneous Exercise on Chapter 8";
+    expect(checkSourceChapter("NCERT Mathematics Part II (CBSE Class 12), Chapter 8", short, "Application of Integrals")).toEqual([]);
+  });
+
   it("says so when either number is missing", () => {
     expect(checkSourceChapter("Balbharati Chemistry Std XII", sections, "Halogen Derivatives").join()).toMatch(/source/);
     expect(checkSourceChapter("Balbharati, Chapter 10", "no numbers here", "Halogen Derivatives").join()).toMatch(/book/);
@@ -98,6 +103,38 @@ describe("checkRevisionEvidence", () => {
   it("refuses years that differ from the years of the cited lines", () => {
     const wrong = { ...sheet, mostAsked: [{ topic: "Conservation of angular momentum", years: [2025, 2024, 2018] }] };
     expect(checkRevisionEvidence(wrong, ev(), book, pyqs).join()).toMatch(/mostAsked\[0\].*years/);
+  });
+
+  // CBSE papers record each question's marks; prepare.ts writes them as "[3 marks]".
+  describe("marks", () => {
+    const cbse = [
+      "2025 [subjective] [3 marks] Derive the expression for the electric field of a dipole.",
+      "2024 [subjective] [3 marks] Obtain the field of a dipole at an equatorial point.",
+      "2023 [subjective] [2 marks] Define electric dipole moment and give its SI unit.",
+      "2022 [mcq] An electric dipole is placed in a uniform field.",
+    ];
+    const s = (marks?: number) =>
+      ({ ...sheet, mostAsked: [{ topic: "Dipole field", years: [2025, 2024, 2023, 2022], ...(marks ? { marks } : {}) }] }) as typeof sheet;
+    const e = ev({ mostAsked: [{ topic: "Dipole field", questions: cbse.map((l) => l.slice(0, 50)) }] });
+
+    it("accepts the marks most of the cited lines carry", () => {
+      expect(checkRevisionEvidence(s(3), e, book, cbse)).toEqual([]);
+    });
+
+    it("accepts a topic that gives no marks", () => {
+      expect(checkRevisionEvidence(s(), e, book, cbse)).toEqual([]);
+    });
+
+    it("refuses marks the cited lines do not carry most often", () => {
+      expect(checkRevisionEvidence(s(2), e, book, cbse).join()).toMatch(/mostAsked\[0\].*marks/);
+      expect(checkRevisionEvidence(s(5), e, book, cbse).join()).toMatch(/mostAsked\[0\].*marks/);
+    });
+
+    it("refuses marks when no cited line records any", () => {
+      expect(checkRevisionEvidence({ ...sheet, mostAsked: [{ ...sheet.mostAsked[0], marks: 3 }] }, ev(), book, pyqs).join()).toMatch(
+        /mostAsked\[0\].*marks/
+      );
+    });
   });
 
   it("refuses a topic with no cited line", () => {

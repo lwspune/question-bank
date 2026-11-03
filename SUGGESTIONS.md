@@ -157,6 +157,15 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ## 2026-11-04
 
+### CBSE 12 bank items found while drafting the 50 revision sheets (owner to decide)
+
+Nothing was changed in the bank. All PUBLIC `pyq` rows of `CBSE Class 12`.
+
+- **461deaec** (Chemistry 2023, "Why is ethanol less polar than water?") is filed under Haloalkanes and Haloarenes; it belongs to Alcohols, Phenols and Ethers.
+- **5cc0ee6c** (Biology 2025 MCQ): CBSE printed "continued for 80 minutes (till III generation)" and keyed 0 : 1 : 3. At one generation per 20 minutes, 80 minutes is generation IV (0 : 1 : 7, not an option), so the paper contradicts itself; the key fits "III generation". Candidate for a notice above the solution under the defective-question policy; the key stays.
+- **Questions the current NCERT book no longer teaches but CBSE set in 2025-26** are kept on the sheets from the standard results (area between two curves, foot of a perpendicular, hydrogen spectral series, lens displacement method, probability distributions and mean, Yucca and moth, coca and the Amazon). Topics last asked in 2022 and dropped from the book (planes, photodiode, LED, solar cell) are left out.
+- The sheets follow the book where a paper disagrees with it: Saheli was developed at CDRI Lucknow (a 2025 Reason says NII); detritus is "rich in lignin and chitin" (three assertion questions say lignin and cutin).
+
 ### MH HSC 12 past-paper questions filed under the wrong chapter, or with a text defect (owner to decide)
 
 Found while drafting the 70 HSC 12 quick-revision sheets (each agent read every past-paper question of its chapter). None was changed: moving a row changes its chapter's mocks, homework plans, Top 10 and /board lists, and a text fix should be checked against the source paper first. All are PUBLIC `pyq` rows of `Maharashtra HSC Class 12`.

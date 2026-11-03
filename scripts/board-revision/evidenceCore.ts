@@ -48,6 +48,10 @@ export function bookChapterNumber(bookText: string, chapterName: string): string
   }
   const top = [...counts.entries()].sort((a, b) => b[1] - a[1])[0];
   if (top && top[1] >= 3) return top[0];
+  // NCERT's short chapters (Application of Integrals has two sections) still
+  // close with "Miscellaneous Exercise on Chapter 8".
+  const misc = bookText.match(/Miscellaneous Exercise on Chapter\s+(\d{1,2})\b/i);
+  if (misc) return misc[1];
   const want = norm(chapterName);
   for (const line of bookText.split(/\r?\n/)) {
     const m = line.match(/^\s*(\d{1,2})\s*\.\s*(.+)$/);
@@ -125,6 +129,7 @@ export function checkRevisionEvidence(
       return;
     }
     const years = new Set<number>();
+    const marks = new Map<number, number>();
     for (const q of m.questions) {
       const nq = norm(q);
       const hit = nq ? pyqs.find((p) => p.n.startsWith(nq)) : undefined;
@@ -133,9 +138,20 @@ export function checkRevisionEvidence(
         continue;
       }
       years.add(Number(hit.line.slice(0, 4)));
+      const mk = hit.line.match(/\[(\d+) marks?\]/);
+      if (mk) marks.set(Number(mk[1]), (marks.get(Number(mk[1])) ?? 0) + 1);
     }
     const cited = [...years].sort((a, b) => b - a).join(", ");
     if (cited !== want.years.join(", ")) out.push(`mostAsked[${i}]: years ${want.years.join(", ")} but the cited lines are from ${cited}`);
+    // Marks, where given, are what the cited questions carried most often (CBSE
+    // papers record them; HSC rows record none, so an HSC topic can never claim any).
+    if (want.marks !== undefined) {
+      const top = Math.max(0, ...marks.values());
+      const modes = [...marks.entries()].filter(([, n]) => n === top).map(([k]) => k);
+      if (!marks.size) out.push(`mostAsked[${i}]: marks ${want.marks} but no cited line records marks`);
+      else if (!modes.includes(want.marks))
+        out.push(`mostAsked[${i}]: marks ${want.marks} but the cited lines most often carry ${modes.join(" or ")}`);
+    }
   });
 
   return out;
