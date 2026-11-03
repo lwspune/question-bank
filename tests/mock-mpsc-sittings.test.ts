@@ -1,12 +1,14 @@
 import { describe, it, expect } from "vitest";
-import { ASP_CHAPTERS, ASP_PAPERS, FSP_CHAPTERS, FSP_PAPERS, PAPERS, SSP_CHAPTERS, SSP_PAPERS, dataPath } from "../scripts/mpsc/config";
+import { ASP_CHAPTERS, ASP_PAPERS, FSP_CHAPTERS, FSP_PAPERS, PAPERS, SSP_CHAPTERS, SSP_CSAT_CHAPTERS, SSP_PAPERS, dataPath } from "../scripts/mpsc/config";
 import { readFileSync } from "node:fs";
-import { deriveMpscSittings, mpscMockSlug, mpscMockTitle, serviceMockTitle, sspMockTitle } from "../scripts/mocks/mpscSittings";
+import { CSAT_MOCK_PAPERS, deriveMpscSittings, mpscMockSlug, mpscMockTitle, serviceMockTitle, sspCsatMockTitle, sspMockTitle } from "../scripts/mocks/mpscSittings";
 import {
   MPSC_ASP_200_PAPER,
   MPSC_ASP_PAPER,
   MPSC_FSP_PAPER,
   MPSC_GBC_PAPER,
+  MPSC_SSP_CSAT_2021_PAPER,
+  MPSC_SSP_CSAT_PAPER,
   MPSC_SSP_GS1_PAPER,
   sectionMarking,
 } from "../src/lib/mocks/blueprints";
@@ -196,5 +198,53 @@ describe("Forest + Agriculture blueprints (every cover: equal marks, four wrong 
     expect(grace("asp-2011")).toEqual([41, 42, 109]);
     expect(grace("asp-2012")).toEqual([117, 150, 155]);
     expect(grace("asp-2016")).toEqual([19, 38, 51, 53, 68, 75, 90]);
+  });
+});
+
+describe("State Services CSAT (Paper II): every cover, 80 questions, 200 marks, 2 hours", () => {
+  // Clause 7(b) of each cover: no penalty on Decision Making; on every other
+  // question one-third of its marks, except 2021, which says one-fourth.
+  const cases = [
+    { bp: MPSC_SSP_CSAT_PAPER, wrong: -0.8333 },
+    { bp: MPSC_SSP_CSAT_2021_PAPER, wrong: -0.625 },
+  ];
+  for (const { bp, wrong } of cases) {
+    it(`${bp.code}: +2.5 / ${wrong}, every CSAT subject in one section`, () => {
+      expect(bp.examSlug).toBe("mpsc-state-services-prelims");
+      expect(bp.durationSecs).toBe(120 * 60);
+      expect(bp.marking).toEqual({ correct: 2.5, wrong });
+      expect(bp.sections).toHaveLength(1);
+      expect(bp.sections[0].count).toBe(80);
+      expect([...bp.sections[0].subjects].sort()).toEqual(Object.keys(SSP_CSAT_CHAPTERS).sort());
+      expect(getExamBySlug(bp.examSlug)?.examName).toBe(bp.examName);
+    });
+  }
+
+  it("titles a CSAT paper by year, paper and date, with no dash", () => {
+    expect(sspCsatMockTitle(2021, "CSAT Paper II · 23 Jan 2022")).toBe("MPSC State Services Prelims 2021, CSAT Paper II (23 Jan 2022)");
+  });
+
+  it("mocks the eight ingested sittings, never 2022 (dropped by the owner)", () => {
+    expect(CSAT_MOCK_PAPERS.map((p) => p.pyqYear).sort()).toEqual([2013, 2014, 2015, 2016, 2018, 2019, 2020, 2021]);
+  });
+
+  const got = deriveMpscSittings(CSAT_MOCK_PAPERS, undefined, sspCsatMockTitle);
+  const sit = (y: number) => got.find((s) => s.year === y)!;
+
+  it("graces MPSC's 17 cancelled questions", () => {
+    expect(sit(2016).graceNumbers).toEqual([35, 57, 61, 62, 69]);
+    expect(got.reduce((n, s) => n + s.graceNumbers.length, 0)).toBe(17);
+  });
+
+  it("carries the final key's per-option marks for every Decision Making question", () => {
+    expect(Object.keys(sit(2013).optionMarks ?? {}).map(Number)).toEqual([74, 75, 76, 77, 78, 79, 80]);
+    expect(sit(2015).optionMarks?.[77]).toEqual({ A: 0, B: 2.5, C: 2, D: 1 });
+    // 2013 prints seven, every later booklet five.
+    expect(got.reduce((n, s) => n + Object.keys(s.optionMarks ?? {}).length, 0)).toBe(42);
+  });
+
+  it("drops the penalty on the fifteen questions 2015's cover exempts", () => {
+    expect(sit(2015).noPenaltyNumbers).toEqual([46, 47, 48, 49, 50, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80]);
+    expect(sit(2016).noPenaltyNumbers).toBeUndefined();
   });
 });

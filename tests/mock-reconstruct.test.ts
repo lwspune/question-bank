@@ -574,3 +574,38 @@ describe("JEE Mains reconstruction", () => {
     ).toBe(true);
   });
 });
+
+describe("per-question marking overrides (MPSC CSAT)", () => {
+  // q-1's key is B (1 % 4); q-2's is C.
+  const withOverrides = () =>
+    mathsRows(120).map((r) =>
+      r.id === "q-1"
+        ? { ...r, optionMarks: { A: 1, B: 2.5, C: 1.5, D: 0 } }
+        : r.id === "q-2"
+          ? { ...r, noPenalty: true }
+          : r
+    );
+
+  it("carries per-option marks into the snapshot, unpenalised", () => {
+    const snap = buildMockPaper(NDA_MATHS_PAPER, withOverrides(), { year: 2024, month: "Sep" });
+    expect(snap.questions[0]).toMatchObject({ marks: 2.5, negMarks: 0, optionMarks: { A: 1, B: 2.5, C: 1.5, D: 0 } });
+  });
+
+  it("drops the penalty on a no-penalty question and leaves the rest alone", () => {
+    const snap = buildMockPaper(NDA_MATHS_PAPER, withOverrides(), { year: 2024, month: "Sep" });
+    expect(snap.questions[1]).toMatchObject({ marks: 2.5, negMarks: 0 });
+    expect(snap.questions[1]).not.toHaveProperty("optionMarks");
+    expect(snap.questions[2]).toMatchObject({ marks: 2.5, negMarks: -0.83 });
+    expect(snap.totalMarks).toBe(300);
+  });
+
+  it("refuses option marks whose best option is not the key", () => {
+    const rows = mathsRows(120).map((r) => (r.id === "q-1" ? { ...r, optionMarks: { A: 2.5, B: 1, C: 1.5, D: 0 } } : r));
+    expect(validatePaperRows(NDA_MATHS_PAPER, rows).join(" ")).toMatch(/q-1.*best option A.*key B/);
+  });
+
+  it("refuses option marks whose best is not the section's full marks", () => {
+    const rows = mathsRows(120).map((r) => (r.id === "q-1" ? { ...r, optionMarks: { A: 1, B: 2, C: 1.5, D: 0 } } : r));
+    expect(validatePaperRows(NDA_MATHS_PAPER, rows).join(" ")).toMatch(/q-1.*best option scores 2.*not 2.5/);
+  });
+});

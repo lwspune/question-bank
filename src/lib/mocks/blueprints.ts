@@ -585,6 +585,42 @@ export const MPSC_SSP_GS1_PAPER: MockPaperBlueprint = {
 };
 
 /**
+ * MPSC State Services Prelims, CSAT Paper II: 80 questions, 200 marks, 2 hours,
+ * every question 2.5 marks. Clause 7(b) of each cover: a wrong answer costs
+ * ONE-THIRD of its marks (2013-2020), ONE-FOURTH from the 2021 paper on; the
+ * Decision Making questions cost nothing and score per option from the final
+ * key's grid (best 2.5, then 2 / 1.5 / 1 / 0.5 / 0). Those two exceptions ride
+ * per question (PaperQuestionRow.optionMarks / noPenalty), not here.
+ *
+ * ONE section across the three CSAT subjects (config.ts SSP_CSAT_CHAPTERS): the
+ * booklet prints no subject headings. Hard count: a cancelled question is
+ * printed and ships as grace. Sittings: scripts/mocks/mpscSittings.ts.
+ */
+export const MPSC_SSP_CSAT_PAPER: MockPaperBlueprint = {
+  code: "ssp-csat",
+  examName: "MPSC State Services Prelims",
+  examSlug: "mpsc-state-services-prelims",
+  paperLabel: "CSAT Paper II",
+  durationSecs: 120 * 60,
+  marking: { correct: 2.5, wrong: -0.8333 },
+  sections: [
+    {
+      key: "csat",
+      label: "CSAT",
+      subjects: ["Comprehension", "Reasoning and Aptitude", "Decision Making"],
+      count: 80,
+    },
+  ],
+};
+
+/** The 2021 paper (sat 23 Jan 2022): its cover cuts a quarter, not a third. */
+export const MPSC_SSP_CSAT_2021_PAPER: MockPaperBlueprint = {
+  ...MPSC_SSP_CSAT_PAPER,
+  code: "ssp-csat-2021",
+  marking: { correct: 2.5, wrong: -0.625 },
+};
+
+/**
  * MPSC Forest Service Prelims and Agriculture Service Prelims: one paper per
  * sitting, every question worth one mark, and "for every four wrong answers one
  * question's marks are deducted" (clause 7 on all nine covers). 100 questions
@@ -918,6 +954,8 @@ const ALL_BLUEPRINTS: readonly MockPaperBlueprint[] = [
   JIPMAT_PAPER,
   MPSC_GBC_PAPER,
   MPSC_SSP_GS1_PAPER,
+  MPSC_SSP_CSAT_PAPER,
+  MPSC_SSP_CSAT_2021_PAPER,
   MPSC_FSP_PAPER,
   MPSC_ASP_PAPER,
   MPSC_ASP_200_PAPER,

@@ -9,6 +9,7 @@ import {
   isAnswered,
   verdictFor,
   type MockAnswerKey,
+  type OptionLabel,
   type SavedResponse,
 } from "./answers";
 
@@ -55,6 +56,13 @@ export type MockGradeQuestion = {
    * Counted as correct in the tally.
    */
   grace?: boolean;
+  /**
+   * Marks per option, for a question where every option earns its own marks
+   * (MPSC CSAT "Decision Making": best option 2.5, the others 1.5 / 1 / 0, none
+   * penalised). The picked option scores its own marks; only the KEY (the best
+   * option) counts as correct, so the verdict stays verdictFor's.
+   */
+  optionMarks?: Partial<Record<OptionLabel, number>>;
 };
 
 export type SectionScore = {
@@ -83,6 +91,11 @@ const emptySection = (): SectionScore => ({
   score: 0,
   maxScore: 0,
 });
+
+/** The picked option's letter, normalised as verdictFor compares it. */
+function pickedLabel(r: SavedResponse | undefined): OptionLabel {
+  return String(r?.selectedLabel ?? "").trim().toUpperCase() as OptionLabel;
+}
 
 /**
  * Grade a set of saved responses against the key. `responses` maps questionId to
@@ -115,16 +128,22 @@ export function gradeMock(
     const verdict = verdictFor(q.answer, responses?.[q.questionId], q.grace === true);
     verdicts[q.questionId] = verdict;
 
+    // Per-option marks: the picked option's own marks, right or not. Grace has
+    // already decided the verdict above and keeps its full marks below.
+    const earned = verdict !== 0 && q.optionMarks && !q.grace
+      ? q.optionMarks[pickedLabel(responses?.[q.questionId])] ?? 0
+      : null;
+
     if (verdict === 1) {
       correct++;
       sec.correct++;
-      score += q.marks;
-      sec.score += q.marks;
+      score += earned ?? q.marks;
+      sec.score += earned ?? q.marks;
     } else if (verdict === -1) {
       wrong++;
       sec.wrong++;
-      score += q.negMarks;
-      sec.score += q.negMarks;
+      score += earned ?? q.negMarks;
+      sec.score += earned ?? q.negMarks;
     } else {
       skipped++;
       sec.skipped++;

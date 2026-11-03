@@ -19,8 +19,9 @@
  * tests/mock-mpsc-sittings.test.ts.
  */
 
-import { readFileSync } from "node:fs";
-import { dataPath, QUESTIONS_PER_PAPER } from "../mpsc/config";
+import { existsSync, readFileSync } from "node:fs";
+import type { OptionLabel } from "../../src/lib/mocks/answers";
+import { dataPath, QUESTIONS_PER_PAPER, SSP_CSAT_PAPERS } from "../mpsc/config";
 
 export type MpscSitting = {
   /** The config paper id ("2019-b") — the `--only` key. */
@@ -31,6 +32,10 @@ export type MpscSitting = {
   title: string;
   /** Question numbers the official key cancelled — awarded to all. */
   graceNumbers: number[];
+  /** Question number -> marks per option, from the final key's graded grid (CSAT Decision Making). */
+  optionMarks?: Record<number, Record<OptionLabel, number>>;
+  /** Question numbers the paper printed no penalty for (config.ts `noPenalty`). */
+  noPenaltyNumbers?: number[];
 };
 
 type PaperLike = {
@@ -42,7 +47,14 @@ type PaperLike = {
   questions?: number;
   /** Owner-settled doubtful keys: the key is kept, the question is graced (2026-11-02). */
   notices?: Record<number, unknown>;
+  noPenalty?: number[];
 };
+
+/**
+ * The CSAT sittings that have mocks: every configured booklet but 2022, which the
+ * owner dropped (2026-09-30) and which is not in the bank.
+ */
+export const CSAT_MOCK_PAPERS = SSP_CSAT_PAPERS.filter((p) => p.pyqYear !== 2022);
 
 /** "2019-b" → "mpsc-2019-b". The paper id is unique per sitting. */
 export function mpscMockSlug(id: string): string {
@@ -77,6 +89,24 @@ export function serviceMockTitle(pyqYear: number, pyqNote: string): string {
   return `MPSC ${exam} ${pyqYear}${date ? ` (${date})` : ""}`;
 }
 
+/**
+ * "MPSC State Services Prelims 2021, CSAT Paper II (23 Jan 2022)". No dash in
+ * visible text (owner, 2026-10-05); the date sits in brackets.
+ */
+export function sspCsatMockTitle(pyqYear: number, pyqNote: string): string {
+  const [paper, date] = pyqNote.split(" · ");
+  return `MPSC State Services Prelims ${pyqYear}, ${paper}${date ? ` (${date})` : ""}`;
+}
+
+const LABELS: OptionLabel[] = ["A", "B", "C", "D"];
+
+/** The final key's per-option grid (keys.ts `graded`, Set A order); {} when it has none. */
+function readGraded(id: string): Record<string, number[]> {
+  const file = dataPath(id, "key");
+  if (!existsSync(file)) return {};
+  return (JSON.parse(readFileSync(file, "utf8")) as { graded?: Record<string, number[]> }).graded ?? {};
+}
+
 function readCancelled(id: string): number[] {
   const key = JSON.parse(readFileSync(dataPath(id, "key"), "utf8")) as { cancelled?: number[] };
   return key.cancelled ?? [];
@@ -85,7 +115,8 @@ function readCancelled(id: string): number[] {
 export function deriveMpscSittings(
   papers: readonly PaperLike[],
   cancelledFor: (id: string) => number[] = readCancelled,
-  titleFor: (pyqYear: number, pyqNote: string) => string = mpscMockTitle
+  titleFor: (pyqYear: number, pyqNote: string) => string = mpscMockTitle,
+  gradedFor: (id: string) => Record<string, number[]> = readGraded
 ): MpscSitting[] {
   return papers.map((p) => {
     const noticed = Object.keys(p.notices ?? {}).map(Number);
@@ -95,6 +126,13 @@ export function deriveMpscSittings(
     if (bad.length) {
       throw new Error(`MPSC ${p.id}: grace question number(s) ${bad.join(", ")} outside 1-${last}`);
     }
+    const graded = Object.entries(gradedFor(p.id));
+    for (const [n, marks] of graded) {
+      if (marks.length !== LABELS.length) throw new Error(`MPSC ${p.id} Q${n}: graded grid has ${marks.length} marks, not 4`);
+    }
+    const optionMarks = Object.fromEntries(
+      graded.map(([n, marks]) => [Number(n), Object.fromEntries(LABELS.map((l, i) => [l, marks[i]]))])
+    ) as Record<number, Record<OptionLabel, number>>;
     return {
       key: p.id,
       sourceFile: p.sourceFile,
@@ -102,6 +140,8 @@ export function deriveMpscSittings(
       slug: mpscMockSlug(p.id),
       title: titleFor(p.pyqYear, p.pyqNote),
       graceNumbers,
+      ...(graded.length ? { optionMarks } : {}),
+      ...(p.noPenalty?.length ? { noPenaltyNumbers: [...p.noPenalty].sort((a, b) => a - b) } : {}),
     };
   });
 }
