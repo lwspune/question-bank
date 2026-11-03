@@ -766,6 +766,96 @@
         "from": "Find the expected value of the random variable \\(X\\) whose probability mass function is:\n| X = x | 1 | 2 | 3 |\n|-----------|----------------:|----------------:|----------------:|\n| P (X = x) | \\(\\(\\frac{1}{5}\\)\\( | \\)\\(\\frac{2}{5}\\)\\( | \\)\\(\\frac{2}{5}\\)\\) |",
         "to": "Find the expected value of the random variable \\(X\\) whose probability mass function is:\n| X = x | 1 | 2 | 3 |\n|-----------|----------------:|----------------:|----------------:|\n| P (X = x) | \\(\\frac{1}{5}\\) | \\(\\frac{2}{5}\\) | \\(\\frac{2}{5}\\) |",
         "consequence": "OURS, an extraction artifact. pandoc wrapped the whole run of table cells in ONE math zone, putting the table's own pipe separators inside math and nesting the real per-cell zones. The delimiters BALANCE, so findLatexImbalance cannot see it, and the |---| separator row is intact, so audit:text's table rule cannot either - it surfaces only in audit:omml, as an unconvertible construct: raw LaTeX in a downloaded Word answer key, and mangled math on the card. Unwrapping restores exactly the form the other three tables in this chapter already use - one zone per cell, pipes outside math. No value changes."
+      },
+      {
+        "ref": "diff-equations-12-pyq#12",
+        "tag": "[Q. 4. (B) iv., March 2015]",
+        "from": "If y = \\(e^{ax},show\\ that\\ x\\frac{dy}{dx} = y\\ log\\ y\\).",
+        "to": "If \\(y = e^{ax}\\), show that \\(x\\frac{dy}{dx} = y\\log y\\).",
+        "source": "Markup only: the words were typed inside the math zone.",
+        "why": "The compilation put the prose 'show that' inside the maths, so it rendered as run-together italic symbols.",
+        "consequence": "Answer unchanged; found 2026-11-04 by the HSC 12 revision-sheet rollout."
+      },
+      {
+        "ref": "binomial-distributions-12-pyq#5",
+        "tag": "[Q. 33, February 2020]",
+        "from": "A fair coin is tossed 8 times. Find the probability that: i. is shows no head. ii. is shows at least once.",
+        "to": "A fair coin is tossed 8 times. Find the probability that: i. it shows no head. ii. it shows head at least once.",
+        "source": "Maths 2020 paper.pdf, page 4, Q.33: 'i. is shows no head  ii. it shows head at least once.'",
+        "why": "The compilation dropped 'head' from part ii and copied the paper's 'is shows' typo into both parts; part i's typo is the paper's own, corrected for readability.",
+        "consequence": "Answer unchanged; found 2026-11-04 by the HSC 12 revision-sheet rollout."
+      },
+      {
+        "ref": "binomial-distributions-12-pyq#12",
+        "tag": "[Q. 1. viii., March 2023]",
+        "from": "Let the probability mass function (p.m.f.) of a random variable \\(X\\) be \\(P(X = x) = 4C_{x}\\left( \\frac{5}{9} \\right)^{x}\\left( \\frac{4}{9} \\right)^{4 - x}\\), for \\(x = 0,1,2,3,4\\) then \\(E(X)\\) is equal to _______.",
+        "to": "Let the probability mass function (p.m.f.) of a random variable \\(X\\) be \\(P(X = x) = {}^{4}C_{x}\\left( \\frac{5}{9} \\right)^{x}\\left( \\frac{4}{9} \\right)^{4 - x}\\), for \\(x = 0,1,2,3,4\\) then \\(E(X)\\) is equal to _______.",
+        "source": "Notation only: the superscript 4 of 4Cx was lost.",
+        "why": "Read as written, '4C_x' is four times C_x.",
+        "consequence": "Answer unchanged; found 2026-11-04 by the HSC 12 revision-sheet rollout."
+      },
+      {
+        "ref": "prob-distributions-12-pyq#2",
+        "tag": "[Q. 6. (A) ii., March 2015]",
+        "from": "Let the p.m.f. (probability mass function) of random variable \\(x\\) be *\\* \\(P(x) = \\binom{4}{x}\\left( \\frac{5}{9} \\right)^{x}\\left( \\frac{4}{9} \\right)^{4 - x}\\), x=0,1,2,3,4 = 0 otherwise Find \\(E(X)\\) and \\(Var(X)\\).",
+        "to": "Let the p.m.f. (probability mass function) of random variable \\(x\\) be \\(P(x) = \\binom{4}{x}\\left( \\frac{5}{9} \\right)^{x}\\left( \\frac{4}{9} \\right)^{4 - x}\\), x=0,1,2,3,4 = 0 otherwise Find \\(E(X)\\) and \\(Var(X)\\).",
+        "source": "Markup only: a stray '*\\*' before the formula.",
+        "why": "A leftover of an emphasis marker, printed literally.",
+        "consequence": "Answer unchanged; found 2026-11-04 by the HSC 12 revision-sheet rollout."
+      },
+      {
+        "ref": "electrochemistry-12-pyq#1",
+        "tag": "[Q.1.i, March 2014]",
+        "from": "Derive a relation between \\(\\Lambda\\text{H}\\) and \\(\\text{U}\\) for a chemical reaction.",
+        "to": "Derive a relation between \\(\\Delta\\text{H}\\) and \\(\\Delta\\text{U}\\) for a chemical reaction.",
+        "source": "Notation: the relation asked is Delta H = Delta U + Delta n RT (the stored solution derives exactly that).",
+        "why": "The compilation typed Lambda for Delta and lost the second Delta.",
+        "consequence": "Answer unchanged; found 2026-11-04 by the HSC 12 revision-sheet rollout."
+      },
+      {
+        "ref": "aldehydes-ketones-acids-12-pyq#13",
+        "tag": "[Q.7, March 2017]",
+        "from": "Define racemic mixture. Give the \\(\\text{IUPAC}\\) name \\(\\text{of }\\).",
+        "to": "Define racemic mixture. Give the \\(\\text{IUPAC}\\) name of \\(\\mathrm{CH_3-CH_2-CH(CH_3)-CHO}\\).",
+        "source": "Chemistry 2017 paper: the compound is CH3-CH2-CH(CH3)-CHO (the stored solution names it 2-methylbutanal).",
+        "why": "The compilation lost the compound, leaving 'name of' with nothing to name.",
+        "consequence": "Answer unchanged; found 2026-11-04 by the HSC 12 revision-sheet rollout."
+      },
+      {
+        "ref": "chem-thermodynamics-12-pyq#5",
+        "tag": "[Q.2.vii, March 2017]",
+        "from": "Nitrogen does not form tetrahalides. Give reason.",
+        "to": "Nitrogen does not form pentahalides. Give reason.",
+        "source": "Chemistry 2017 paper, Q.2: 'Nitrogen does not form pentahalides.'",
+        "why": "The compilation wrote tetrahalides. The row is withheld anyway (group 15, off the current syllabus).",
+        "consequence": "Answer unchanged; found 2026-11-04 by the HSC 12 revision-sheet rollout."
+      },
+      {
+        "ref": "coordination-12-pyq#33",
+        "tag": "[Q.21, March 2022]",
+        "from": "Calculate spin only magnetic moment of divalent cation of transition metal with atomic number 25. Salts of \\(\\text{Ti}^{4 +}\\) are colorless. Give a reazson.",
+        "to": "Calculate spin only magnetic moment of divalent cation of transition metal with atomic number 25. Salts of \\(\\text{Ti}^{4 +}\\) are colorless. Give a reason.",
+        "source": "Spelling only.",
+        "why": "Typo 'reazson'.",
+        "consequence": "Answer unchanged; found 2026-11-04 by the HSC 12 revision-sheet rollout."
+      },
+      {
+        "ref": "vectors-12-pyq#3",
+        "tag": "[Q. 1. iv., February 2020]",
+        "from": "If \\(\\overrightarrow{r} = \\left( 2\\widehat{i} - \\widehat{j} + 3\\widehat{k} \\right) + \\lambda\\left( 2\\widehat{i} + \\widehat{j} + 2\\widehat{k} \\right)\\) is parallel to the plane \\(\\overrightarrow{r} \\cdot \\left( \\widehat{3i} - 2\\widehat{j} - m\\widehat{k} \\right) = 10\\), then the value of \\(m\\) is",
+        "to": "If \\(\\overrightarrow{r} = \\left( 2\\widehat{i} - \\widehat{j} + 3\\widehat{k} \\right) + \\lambda\\left( 2\\widehat{i} + \\widehat{j} + 2\\widehat{k} \\right)\\) is parallel to the plane \\(\\overrightarrow{r} \\cdot \\left( 3\\widehat{i} - 2\\widehat{j} - m\\widehat{k} \\right) = 10\\), then the value of \\(m\\) is",
+        "source": "Markup only: the hat sat over '3i' instead of over i.",
+        "why": "\\widehat{3i} draws one hat across the 3 and the i.",
+        "consequence": "Answer unchanged; found 2026-11-04 by the HSC 12 revision-sheet rollout."
+      },
+      {
+        "ref": "prob-distributions-12-pyq#5",
+        "tag": "[Q. 6. (B) iii., March 2016]",
+        "from": "The following is the p.d.f. (Probability Density Function) of a continuous random variable \\(X\\): f(x)= \\(\\frac{x}{32}\\) for 0<x<8 = 0 otherwise a. Find the expression for c.d.f. (Cumulative Distribution Function) of \\(X\\). b. Also find \\(P(x)\\) at \\(x = 0.5\\) and \\(9\\).",
+        "to": "The following is the p.d.f. (Probability Density Function) of a continuous random variable \\(X\\): f(x)= \\(\\frac{x}{32}\\) for 0<x<8 = 0 otherwise a. Find the expression for c.d.f. (Cumulative Distribution Function) of \\(X\\). b. Also find its value at \\(x = 0.5\\) and \\(9\\).",
+        "source": "Maths 2016 paper.pdf, page 3, Q.6 (B) iii: 'b. Also find its value at x = 0.5 and 9.'",
+        "why": "The compilation wrote P(x) where the paper asks for the value of the c.d.f. Applied AFTER the superscript fix above, so its `from` is that fix's `to`.",
+        "consequence": "Answer unchanged; found 2026-11-04 by the HSC 12 revision-sheet rollout."
       }
     ]
   },
@@ -789,6 +879,61 @@
         "ref": "def-integration-12-pyq#3",
         "toChapter": "indef-integration-12-pyq",
         "why": "The printed integral has no limits, so it is an indefinite integral. Our fabricated limits are the only reason it was filed under Definite Integration."
+      },
+      {
+        "ref": "ionic-equilibria-12-pyq#10",
+        "toChapter": "electrochemistry-12-pyq",
+        "why": "Molar conductivity is taught in Electrochemistry (conductance of solutions), and the paper lane already files this Feb 2025 item there. Found 2026-11-04 by the HSC 12 revision-sheet rollout (SUGGESTIONS.md 2026-11-04); owner approved the move."
+      },
+      {
+        "ref": "electrochemistry-12-pyq#1",
+        "toChapter": "chem-thermodynamics-12-pyq",
+        "why": "The relation between enthalpy and internal energy change is Chemical Thermodynamics; chem-thermodynamics-12-pyq#30 is the same question filed there. Found 2026-11-04 by the HSC 12 revision-sheet rollout (SUGGESTIONS.md 2026-11-04); owner approved the move."
+      },
+      {
+        "ref": "alcohols-phenols-ethers-12-pyq#23",
+        "toChapter": "aldehydes-ketones-acids-12-pyq",
+        "why": "Asks why carboxylic acids boil higher than alcohols: a property of carboxylic acids. Found 2026-11-04 by the HSC 12 revision-sheet rollout (SUGGESTIONS.md 2026-11-04); owner approved the move."
+      },
+      {
+        "ref": "aldehydes-ketones-acids-12-pyq#24",
+        "toChapter": "alcohols-phenols-ethers-12-pyq",
+        "why": "Carbolic acid is phenol: preparing it from benzene sulphonic acid and its ferric chloride test are Alcohols, Phenols and Ethers. Found 2026-11-04 by the HSC 12 revision-sheet rollout (SUGGESTIONS.md 2026-11-04); owner approved the move."
+      },
+      {
+        "ref": "aldehydes-ketones-acids-12-pyq#13",
+        "toChapter": "halogen-derivatives-12-pyq",
+        "why": "Racemic mixture is defined in the optical isomerism section of Halogen Derivatives. Found 2026-11-04 by the HSC 12 revision-sheet rollout (SUGGESTIONS.md 2026-11-04); owner approved the move."
+      },
+      {
+        "ref": "aldehydes-ketones-acids-12-pyq#35",
+        "toChapter": "amines-12-pyq",
+        "why": "Preparing ethylamine from an alkyl halide is a preparation of amines. Found 2026-11-04 by the HSC 12 revision-sheet rollout (SUGGESTIONS.md 2026-11-04); owner approved the move."
+      },
+      {
+        "ref": "amines-12-pyq#12",
+        "toChapter": "halogen-derivatives-12-pyq",
+        "why": "Alkyl halide to nitroalkane (AgNO2) is a reaction of alkyl halides; the paper lane already files this Feb 2025 item there. Found 2026-11-04 by the HSC 12 revision-sheet rollout (SUGGESTIONS.md 2026-11-04); owner approved the move."
+      },
+      {
+        "ref": "coordination-12-pyq#33",
+        "toChapter": "d-f-block-12-pyq",
+        "why": "Spin-only moment of Mn2+ and the colour of Ti4+ salts are d-block properties; d-f-block-12-pyq#10 carries the same sitting's twin wording there. Found 2026-11-04 by the HSC 12 revision-sheet rollout (SUGGESTIONS.md 2026-11-04); owner approved the move."
+      },
+      {
+        "ref": "coordination-12-pyq#22",
+        "toChapter": "d-f-block-12-pyq",
+        "why": "The chromate ion is a compound of chromium, taught in Transition and Inner Transition Elements. Found 2026-11-04 by the HSC 12 revision-sheet rollout (SUGGESTIONS.md 2026-11-04); owner approved the move."
+      },
+      {
+        "ref": "vectors-12-pyq#3",
+        "toChapter": "line-planes-12-pyq",
+        "why": "A line parallel to a plane is a line-plane condition from Line and Planes. Found 2026-11-04 by the HSC 12 revision-sheet rollout (SUGGESTIONS.md 2026-11-04); owner approved the move."
+      },
+      {
+        "ref": "prob-distributions-12-pyq#2",
+        "toChapter": "binomial-distributions-12-pyq",
+        "why": "The p.m.f. is binomial (4Cx p^x q^(4-x)), and E(X), Var(X) of it are Binomial Distribution. Found 2026-11-04 by the HSC 12 revision-sheet rollout (SUGGESTIONS.md 2026-11-04); owner approved the move."
       }
     ]
   },

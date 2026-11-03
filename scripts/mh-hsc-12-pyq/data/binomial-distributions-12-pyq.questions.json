@@ -50,7 +50,7 @@
     "pyqMonth": "February",
     "format": "subjective",
     "subtopic": "The Binomial Distribution",
-    "stem": "A fair coin is tossed 8 times. Find the probability that: i. is shows no head. ii. is shows at least once.",
+    "stem": "A fair coin is tossed 8 times. Find the probability that: i. it shows no head. ii. it shows head at least once.",
     "solution": "Let \\(X\\) denote the number of heads in 8 tosses of a fair coin. The tosses are Bernoulli trials, so \\(X \\sim B(n, p)\\) with\n\n\\(n = 8\\), \\(p = \\dfrac{1}{2}\\), \\(q = \\dfrac{1}{2}\\)\n\n\\(P(X = x) = \\binom{8}{x}\\left(\\dfrac{1}{2}\\right)^{x}\\left(\\dfrac{1}{2}\\right)^{8-x} = \\dfrac{\\binom{8}{x}}{2^{8}} = \\dfrac{\\binom{8}{x}}{256}\\)\n\n**(i) It shows no head**, i.e. \\(x = 0\\):\n\n\\(P(X = 0) = \\dfrac{\\binom{8}{0}}{256} = \\dfrac{1}{256}\\)\n\n\\(\\therefore P(\\text{no head}) = \\dfrac{1}{256} = 0.0039\\) (to 4 decimal places).\n\n**(ii) It shows a head at least once**, i.e. \\(x \\geq 1\\). This is the complement of part (i):\n\n\\(P(X \\geq 1) = 1 - P(X = 0) = 1 - \\dfrac{1}{256} = \\dfrac{255}{256}\\)\n\n\\(\\therefore P(\\text{at least one head}) = \\dfrac{255}{256} = 0.9961\\) (to 4 decimal places).\n\n(The two answers must add to 1, and \\(\\dfrac{1}{256} + \\dfrac{255}{256} = 1\\), which checks the pair.)",
     "difficulty": "EASY"
   },
@@ -127,7 +127,7 @@
     "pyqMonth": "March",
     "format": "mcq",
     "subtopic": "Mean and Variance of a Binomial Distribution",
-    "stem": "Let the probability mass function (p.m.f.) of a random variable \\(X\\) be \\(P(X = x) = 4C_{x}\\left( \\frac{5}{9} \\right)^{x}\\left( \\frac{4}{9} \\right)^{4 - x}\\), for \\(x = 0,1,2,3,4\\) then \\(E(X)\\) is equal to _______.",
+    "stem": "Let the probability mass function (p.m.f.) of a random variable \\(X\\) be \\(P(X = x) = {}^{4}C_{x}\\left( \\frac{5}{9} \\right)^{x}\\left( \\frac{4}{9} \\right)^{4 - x}\\), for \\(x = 0,1,2,3,4\\) then \\(E(X)\\) is equal to _______.",
     "options": [
       {
         "label": "A",
