@@ -9,6 +9,7 @@ export const SHEET_LOADERS: Record<string, () => Promise<{ default: RevisionShee
   "mh-hsc-12/chemistry/biomolecules": () => import("./sheets/mh-hsc-12/chemistry/biomolecules"),
   "mh-hsc-12/chemistry/chemical-kinetics": () => import("./sheets/mh-hsc-12/chemistry/chemical-kinetics"),
   "mh-hsc-12/chemistry/chemical-thermodynamics": () => import("./sheets/mh-hsc-12/chemistry/chemical-thermodynamics"),
+  "mh-hsc-12/chemistry/coordination-compounds": () => import("./sheets/mh-hsc-12/chemistry/coordination-compounds"),
   "mh-hsc-12/chemistry/electrochemistry": () => import("./sheets/mh-hsc-12/chemistry/electrochemistry"),
   "mh-hsc-12/chemistry/elements-of-groups-16-17-and-18": () => import("./sheets/mh-hsc-12/chemistry/elements-of-groups-16-17-and-18"),
   "mh-hsc-12/chemistry/green-chemistry-and-nanochemistry": () => import("./sheets/mh-hsc-12/chemistry/green-chemistry-and-nanochemistry"),
