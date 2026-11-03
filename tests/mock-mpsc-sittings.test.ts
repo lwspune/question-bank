@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { ASP_CHAPTERS, ASP_PAPERS, FSP_CHAPTERS, FSP_PAPERS, PAPERS, SSP_CHAPTERS, SSP_CSAT_CHAPTERS, SSP_PAPERS, dataPath } from "../scripts/mpsc/config";
+import { ASP_CHAPTERS, ASP_PAPERS, FSP_CHAPTERS, FSP_PAPERS, PAPERS, SSP_CHAPTERS, SSP_CSAT_CHAPTERS, SSP_CSAT_PAPERS, SSP_PAPERS, dataPath } from "../scripts/mpsc/config";
 import { readFileSync } from "node:fs";
 import { CSAT_MOCK_PAPERS, deriveMpscSittings, mpscMockSlug, mpscMockTitle, serviceMockTitle, sspCsatMockTitle, sspMockTitle } from "../scripts/mocks/mpscSittings";
 import {
@@ -118,8 +118,10 @@ describe("deriveMpscSittings", () => {
     expect(got.map((s) => s.slug).sort()).toEqual(SSP_PAPERS.map((p) => `mpsc-ssp-${p.pyqYear}`).sort());
     expect(got.find((s) => s.key === "ssp-2022")?.graceNumbers).toEqual([42, 95, 96]);
     // Measured: 24 cancelled across the 2013-2022 final keys, plus 2023's Q38 and Q75.
-    expect(got.find((s) => s.key === "ssp-2023")?.graceNumbers).toEqual([38, 75]);
-    expect(got.reduce((n, s) => n + s.graceNumbers.length, 0)).toBe(26);
+    // 2023 adds Q38 and Q75 (cancelled) and Q17, Q50 (owner notices, 2026-11-03); 2025 adds Q84 (notice).
+    expect(got.find((s) => s.key === "ssp-2023")?.graceNumbers).toEqual([17, 38, 50, 75]);
+    expect(got.find((s) => s.key === "ssp-2025")?.graceNumbers).toEqual([84]);
+    expect(got.reduce((n, s) => n + s.graceNumbers.length, 0)).toBe(29);
   });
 
   it("covers every configured paper with a distinct slug", () => {
@@ -232,11 +234,14 @@ describe("State Services CSAT (Paper II): every cover, 80 questions, 200 marks, 
   const got = deriveMpscSittings(CSAT_MOCK_PAPERS, undefined, sspCsatMockTitle);
   const sit = (y: number) => got.find((s) => s.year === y)!;
 
-  it("graces MPSC's 18 cancelled questions", () => {
+  it("graces MPSC's 18 cancelled questions and the owner's two notices", () => {
     expect(sit(2016).graceNumbers).toEqual([35, 57, 61, 62, 69]);
     // 2023's Set-D booklet: the key cancels Q51 in that set (Q56 in Set A).
     expect(sit(2023).graceNumbers).toEqual([51]);
-    expect(got.reduce((n, s) => n + s.graceNumbers.length, 0)).toBe(18);
+    // Plus the owner's notices (2026-11-03): 2024 Q64, 2025 Q58.
+    expect(sit(2024).graceNumbers).toEqual([64]);
+    expect(sit(2025).graceNumbers).toEqual([58]);
+    expect(got.reduce((n, s) => n + s.graceNumbers.length, 0)).toBe(20);
   });
 
   it("carries the final key's per-option marks for every Decision Making question", () => {
@@ -251,5 +256,27 @@ describe("State Services CSAT (Paper II): every cover, 80 questions, 200 marks, 
   it("drops the penalty on the fifteen questions 2015's final key exempts (key p.3)", () => {
     expect(sit(2015).noPenaltyNumbers).toEqual([46, 47, 48, 49, 50, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80]);
     expect(sit(2016).noPenaltyNumbers).toBeUndefined();
+  });
+});
+
+describe("State Services 2023-2025 key notices (owner 2026-11-03: notice + grace, key kept)", () => {
+  const all = [...SSP_PAPERS, ...SSP_CSAT_PAPERS];
+  const noticed = all.flatMap((p) => Object.keys(p.notices ?? {}).map((n) => `${p.id} Q${n}`));
+
+  it("carries exactly the five questions the owner settled", () => {
+    expect(noticed.sort()).toEqual(["ssp-2023 Q17", "ssp-2023 Q50", "ssp-2025 Q84", "ssp-csat-2024 Q64", "ssp-csat-2025 Q58"].sort());
+  });
+
+  it("gives every notice both languages, balanced maths and no control characters", () => {
+    for (const p of all) {
+      for (const [n, v] of Object.entries(p.notices ?? {})) {
+        expect(v.en.length, `${p.id} Q${n} en`).toBeGreaterThan(40);
+        expect(v.mr.length, `${p.id} Q${n} mr`).toBeGreaterThan(40);
+        for (const text of [v.en, v.mr]) {
+          expect(text, `${p.id} Q${n}: control character`).not.toMatch(/[\t\r]/);
+          expect(text.split("\(").length, `${p.id} Q${n}: unbalanced math`).toBe(text.split("\)").length);
+        }
+      }
+    }
   });
 });
