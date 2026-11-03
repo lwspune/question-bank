@@ -3,6 +3,13 @@
 import type { RevisionSheet } from "./types";
 
 export const SHEET_LOADERS: Record<string, () => Promise<{ default: RevisionSheet }>> = {
+  "cbse-12/biology/evolution": () => import("./sheets/cbse-12/biology/evolution"),
+  "cbse-12/biology/human-health-and-disease": () => import("./sheets/cbse-12/biology/human-health-and-disease"),
+  "cbse-12/biology/human-reproduction": () => import("./sheets/cbse-12/biology/human-reproduction"),
+  "cbse-12/biology/molecular-basis-of-inheritance": () => import("./sheets/cbse-12/biology/molecular-basis-of-inheritance"),
+  "cbse-12/biology/principles-of-inheritance-and-variation": () => import("./sheets/cbse-12/biology/principles-of-inheritance-and-variation"),
+  "cbse-12/biology/reproductive-health": () => import("./sheets/cbse-12/biology/reproductive-health"),
+  "cbse-12/biology/sexual-reproduction-in-flowering-plants": () => import("./sheets/cbse-12/biology/sexual-reproduction-in-flowering-plants"),
   "cbse-12/chemistry/alcohols-phenols-and-ethers": () => import("./sheets/cbse-12/chemistry/alcohols-phenols-and-ethers"),
   "cbse-12/chemistry/aldehydes-ketones-and-carboxylic-acids": () => import("./sheets/cbse-12/chemistry/aldehydes-ketones-and-carboxylic-acids"),
   "cbse-12/chemistry/amines": () => import("./sheets/cbse-12/chemistry/amines"),
