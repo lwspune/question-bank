@@ -3,6 +3,11 @@
 import type { RevisionSheet } from "./types";
 
 export const SHEET_LOADERS: Record<string, () => Promise<{ default: RevisionSheet }>> = {
+  "cbse-12/chemistry/chemical-kinetics": () => import("./sheets/cbse-12/chemistry/chemical-kinetics"),
+  "cbse-12/chemistry/coordination-compounds": () => import("./sheets/cbse-12/chemistry/coordination-compounds"),
+  "cbse-12/chemistry/electrochemistry": () => import("./sheets/cbse-12/chemistry/electrochemistry"),
+  "cbse-12/chemistry/solutions": () => import("./sheets/cbse-12/chemistry/solutions"),
+  "cbse-12/chemistry/the-d-and-f-block-elements": () => import("./sheets/cbse-12/chemistry/the-d-and-f-block-elements"),
   "cbse-12/mathematics/continuity-and-differentiability": () => import("./sheets/cbse-12/mathematics/continuity-and-differentiability"),
   "cbse-12/mathematics/determinants": () => import("./sheets/cbse-12/mathematics/determinants"),
   "cbse-12/mathematics/inverse-trigonometric-functions": () => import("./sheets/cbse-12/mathematics/inverse-trigonometric-functions"),
