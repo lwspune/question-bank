@@ -3,6 +3,18 @@
 import type { RevisionSheet } from "./types";
 
 export const SHEET_LOADERS: Record<string, () => Promise<{ default: RevisionSheet }>> = {
+  "mh-hsc-12/biology/biotechnology": () => import("./sheets/mh-hsc-12/biology/biotechnology"),
+  "mh-hsc-12/biology/control-and-coordination": () => import("./sheets/mh-hsc-12/biology/control-and-coordination"),
+  "mh-hsc-12/biology/enhancement-of-food-production": () => import("./sheets/mh-hsc-12/biology/enhancement-of-food-production"),
+  "mh-hsc-12/biology/human-health-and-diseases": () => import("./sheets/mh-hsc-12/biology/human-health-and-diseases"),
+  "mh-hsc-12/biology/inheritance-and-variation": () => import("./sheets/mh-hsc-12/biology/inheritance-and-variation"),
+  "mh-hsc-12/biology/molecular-basis-of-inheritance": () => import("./sheets/mh-hsc-12/biology/molecular-basis-of-inheritance"),
+  "mh-hsc-12/biology/origin-and-evolution-of-life": () => import("./sheets/mh-hsc-12/biology/origin-and-evolution-of-life"),
+  "mh-hsc-12/biology/plant-growth-and-mineral-nutrition": () => import("./sheets/mh-hsc-12/biology/plant-growth-and-mineral-nutrition"),
+  "mh-hsc-12/biology/plant-water-relation": () => import("./sheets/mh-hsc-12/biology/plant-water-relation"),
+  "mh-hsc-12/biology/reproduction-in-lower-and-higher-animals": () => import("./sheets/mh-hsc-12/biology/reproduction-in-lower-and-higher-animals"),
+  "mh-hsc-12/biology/reproduction-in-lower-and-higher-plants": () => import("./sheets/mh-hsc-12/biology/reproduction-in-lower-and-higher-plants"),
+  "mh-hsc-12/biology/respiration-and-circulation": () => import("./sheets/mh-hsc-12/biology/respiration-and-circulation"),
   "mh-hsc-12/chemistry/alcohols-phenols-and-ethers": () => import("./sheets/mh-hsc-12/chemistry/alcohols-phenols-and-ethers"),
   "mh-hsc-12/chemistry/aldehydes-ketones-and-carboxylic-acids": () => import("./sheets/mh-hsc-12/chemistry/aldehydes-ketones-and-carboxylic-acids"),
   "mh-hsc-12/chemistry/amines": () => import("./sheets/mh-hsc-12/chemistry/amines"),
