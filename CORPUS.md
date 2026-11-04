@@ -92,6 +92,16 @@ Two MHT-CET ingest files are not the papers their labels say. **Both were verifi
 
 **The 12 May 2024 S2 ingest doubled its escapes.** 28 PUBLIC rows stored `\\\frac` (three backslashes) outside any matrix/array — all from this one paper, which is why its twins in the copy file rendered and it did not. The 24 Maths rows were fixed in the label pass and the last 3 Chemistry + 1 Physics rows the same day; the bank now has none. Scan: a run of 2+ backslashes before a letter in a field with no `\begin{` (inside an environment `\\` is a legitimate row break).
 
+## MHT-CET Chemistry rows not in their printed paper (found and repaired 2026-11-04)
+
+Found during the MHT-CET homework review. `scripts/mhtcet/paper-match.py <dir> Chemistry` compares every PUBLIC 2021-2025 row with every question of its `.docx` paper; 46 of 2,074 Chemistry rows matched no printed question (Physics 1, Maths 5). About half were the printed question reworded; the rest had no printed counterpart: generic textbook questions ("Cheese is an example of which type of colloid?", "packing efficiency of BCC") filed as past-year questions, typed in the `.xlsx` question banks.
+
+**Repaired (owner: "fix the bank first").** Four sittings were mapped printed question by question (agents drafted, main session checked against each paper's `(ans).docx`): 2 May 2023 S2, 9 May 2023 S2, 10 May 2023 S2, 11 May 2024 S2. 23 missing printed questions added through `commit.ts` (one more, the barium meal, already exists word for word as 13 May 2026 S2 Q15); 11 rows with no printed counterpart made PRIVATE; 30 reworded rows and 13 more elsewhere brought back to the print in place (`scripts/reports/data/2026-11-04-mhtcet-chem*.json`). 10 May 2023 S2 was renumbered to its printed 51-100 (its rows ran 0 or +3 off) and its Paper II mock rebuilt.
+
+**Still open.** Seven sittings' Chemistry `question_number` runs off by a fixed 1, 2, 3 or 9; the older rows of 2 May 2023 S2, 9 May 2023 S2 and 11 May 2024 S2 still are, so those Paper II mocks stay held.
+
+**Two traps.** A shift file for added rows must stamp the sitting's EXISTING `source_file` (the mock builder and every sitting reader key on it), and its rows need `source_row = question_number + 1` beside `.xlsx` rows, since the builder orders by `source_row`. And making a row PRIVATE that a published mock holds leaves that question BLANK in the mock: check `mock_tests.questions` before retiring a row.
+
 ## MHT-CET 2026 (PDF-sourced, 26 shifts, PUBLIC 2026-10-13)
 
 **Source and pipeline.** `C:\Vilas\LWS_Pune\MHT-CET\PYQPs\2026\`: one third-party (ExamGOAL) typeset PDF per shift, 13 days x Morning/Evening, Chemistry 1-50, Maths 51-100, Physics 101-150. Formulas are vector paths, so every question was **transcribed by hand from a crop** into `scripts/mhtcet/transcripts/<id>.txt` (the source of record), checked against the PDF's text layer, solved before the key was read, and every figure **redrawn** (RDKit, schemdraw, matplotlib; `scripts/mhtcet/figures/2026/`), since each printed figure carries the publisher's watermark. Runbook: `scripts/mhtcet/README.md`.
