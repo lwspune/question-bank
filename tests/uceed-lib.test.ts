@@ -58,6 +58,20 @@ describe("planPaper", () => {
     expect(plan.held).toEqual([{ n: 15, reason: "msq" }]);
   });
 
+  it("holds an MSQ whose solution is not settled yet, and says so: it is settled when MSQ ships", () => {
+    const plan = planPaper(
+      paper(q({ n: 22, type: "MSQ", solution: null, chapter: null })),
+      key({ n: 22, type: "MSQ", sets: [["A", "B", "D"]] }),
+    );
+    expect(plan.issues).toEqual([]);
+    expect(plan.held).toEqual([{ n: 22, reason: "msq", unsettled: true }]);
+  });
+
+  it("still refuses a held row whose options are malformed: transcription is checked now", () => {
+    const plan = planPaper(paper(q({ n: 22, type: "MSQ", options: [] })), key({ n: 22, type: "MSQ", sets: [["A"]] }));
+    expect(plan.issues).toEqual(["Q22: options must be A, B, C, D"]);
+  });
+
   it("refuses a picture-option question that has no figure to show the options", () => {
     const pic = q({ n: 33, options: ["A", "B", "C", "D"].map((label) => ({ label, text: "[figure]" })) });
     const plan = planPaper(paper(pic), key({ n: 33, type: "MCQ", value: "B" }));
@@ -132,5 +146,77 @@ describe("numericPayload", () => {
     const b = numericPayload(row, Buffer.from("picture two"));
     expect(a.contentHash).toBe(figureAwareHash(numericContentHash("How many?", null), [Buffer.from("picture one")]));
     expect(a.contentHash).not.toBe(b.contentHash);
+  });
+});
+
+describe("keys IIT Bombay marks as defective (owner policy, 2026-10-29)", () => {
+  it("keeps the first of two accepted MCQ answers, with a note above the solution and the row flawed", () => {
+    const [row] = planPaper(paper(q({ n: 79 })), key({ n: 79, type: "MCQ", value: "A", also: ["B"] })).rows;
+    expect(row).toMatchObject({ format: "mcq", answer: "A" });
+    expect(row.notice).toBe("IIT Bombay's final key accepts both A and B, so either earns full marks. The answer marked here is A.");
+    expect(row.solution).toBe(`**Note:** ${row.notice}\n\n${editorial.solution}`);
+    expect(toCommitRow(row, null)).toMatchObject({ answer: "A", flawed: true });
+  });
+
+  it("keeps the first of two accepted NAT values the same way", () => {
+    const [row] = planPaper(
+      paper(q({ n: 19, type: "NAT", options: [] })),
+      key({ n: 19, type: "NAT", value: 2, also: [4] }),
+    ).rows;
+    expect(row).toMatchObject({ format: "numeric", numericAnswer: 2 });
+    expect(row.notice).toBe("IIT Bombay's final key accepts both 2 and 4, so either earns full marks. The answer marked here is 2.");
+    expect(numericPayload(row, null).solution).toBe(`**Note:** ${row.notice}\n\n${editorial.solution}`);
+  });
+
+  it("lists three or more accepted answers in one sentence", () => {
+    const [row] = planPaper(paper(q({ n: 45 })), key({ n: 45, type: "MCQ", value: "B", also: ["C", "D"] })).rows;
+    expect(row.notice).toBe("IIT Bombay's final key accepts any of B, C and D, so each earns full marks. The answer marked here is B.");
+  });
+
+  it("commits a question IIT Bombay cancelled with no key and its notice (migration 0119)", () => {
+    const note = "IIT Bombay dropped this question in its final key and gave every candidate full marks.";
+    const [row] = planPaper(paper(q({ n: 67 })), key({ n: 67, type: "MCQ", cancelled: note })).rows;
+    expect(row).toMatchObject({ format: "mcq", answer: "CANCELLED", cancelledNote: note });
+    expect(row.notice).toBeUndefined();
+    expect(row.solution).toBe(editorial.solution);
+    expect(toCommitRow(row, null)).toMatchObject({ answer: "CANCELLED", cancelledNote: note, flawed: false });
+  });
+
+  it("still holds a cancelled MSQ, and a range that also accepts a single value", () => {
+    const plan = planPaper(
+      paper(q({ n: 36, type: "MSQ" }), q({ n: 12, type: "NAT", options: [] })),
+      key({ n: 36, type: "MSQ", cancelled: "Full marks to all." }, { n: 12, type: "NAT", range: [1.12, 1.14], also: [65] }),
+    );
+    expect(plan.rows).toEqual([]);
+    expect(plan.held).toEqual([{ n: 36, reason: "msq" }, { n: 12, reason: "range" }]);
+    expect(plan.issues).toEqual([]);
+  });
+
+  it("refuses an accepted alternative that is not A-D, or repeats the key", () => {
+    const plan = planPaper(
+      paper(q({ n: 30 }), q({ n: 31 })),
+      key({ n: 30, type: "MCQ", value: "A", also: ["E"] }, { n: 31, type: "MCQ", value: "A", also: ["A"] }),
+    );
+    expect(plan.issues).toEqual(['Q30: also-accepted "E" is not A-D', 'Q31: also-accepted "A" repeats the key']);
+  });
+});
+
+describe("a question defective as printed (owner policy, 2026-10-29)", () => {
+  it("keeps IIT Bombay's key, opens the solution with the defect, and is grace in mocks", () => {
+    const defect = "The printed figure shows one still frame of an animation the online test played, so the answer cannot be worked out from print.";
+    const [row] = planPaper(paper(q({ n: 31, defect })), key({ n: 31, type: "MCQ", value: "D" })).rows;
+    expect(row).toMatchObject({ format: "mcq", answer: "D", notice: defect });
+    expect(row.solution).toBe(`**Note:** ${defect}\n\n${editorial.solution}`);
+    expect(toCommitRow(row, null).flawed).toBe(true);
+  });
+
+  it("puts a defect and a two-answer key in one note", () => {
+    const [row] = planPaper(paper(q({ n: 31, defect: "The figure is faint." })), key({ n: 31, type: "MCQ", value: "A", also: ["B"] })).rows;
+    expect(row.notice).toBe("The figure is faint. IIT Bombay's final key accepts both A and B, so either earns full marks. The answer marked here is A.");
+  });
+
+  it("refuses a defect note with a dash", () => {
+    const plan = planPaper(paper(q({ n: 31, defect: "Faint — sorry." })), key({ n: 31, type: "MCQ", value: "A" }));
+    expect(plan.issues).toEqual(["Q31: defect note has a dash, write a full stop or comma"]);
   });
 });

@@ -18,7 +18,7 @@
  * Rollback: delete from questions where source_file = '<sourceFile(year)>'.
  */
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { uploadImage } from "../../src/lib/storage/images";
 import { commitStaged } from "../../src/lib/upload/commit";
@@ -62,7 +62,11 @@ async function main() {
   const src = sourceFile(year);
   console.log(`UCEED ${year} Part A: ${paper.questions.length} transcribed -> ${payload.length} to commit, ${plan.held.length} held  source_file="${src}"`);
   console.log(`  mcq ${parsed.length} | numeric ${payload.length - parsed.length} | with figure ${plan.rows.filter((r) => r.figure).length}`);
-  console.log(`  held: ${plan.held.map((h) => `Q${h.n} (${h.reason})`).join(", ") || "none"}`);
+  console.log(`  held: ${plan.held.map((h) => `Q${h.n} (${h.reason}${h.unsettled ? ", unsettled" : ""})`).join(", ") || "none"}`);
+  const noticed = plan.rows.filter((r) => r.notice);
+  const cancelled = plan.rows.filter((r) => r.format === "mcq" && r.answer === "CANCELLED");
+  console.log(`  note + grace in mocks (two answers accepted, or defective as printed): ${noticed.map((r) => `Q${r.n}`).join(", ") || "none"}`);
+  console.log(`  cancelled by IIT Bombay (no key, notice): ${cancelled.map((r) => `Q${r.n}`).join(", ") || "none"}`);
   const hashes = new Set(payload.map((p) => p.contentHash));
   if (hashes.size !== payload.length) issues.push("two rows share a content_hash; one would be silently dropped");
   if (issues.length) {
@@ -101,7 +105,28 @@ async function main() {
   for (const e of res.errors) console.log(`  row ${e.sourceRow}: ${e.message}`);
   if (res.failed) process.exit(1);
 
-  await syncRows(client, examId, src, plan.rows, payload, fig);
+  const ids = await syncRows(client, examId, src, plan.rows, payload, fig);
+  recordGrace(year, noticed, ids);
+}
+
+/**
+ * A question whose key accepts more than one answer is grace in every mock (owner policy
+ * 2026-10-29): add it to src/lib/mocks/flawed.json, the one list the mock builders read.
+ * Idempotent; commit the file with the paper.
+ */
+function recordGrace(year: number, noticed: PlannedRow[], ids: Map<number, string>) {
+  const file = join(process.cwd(), "src", "lib", "mocks", "flawed.json");
+  const list: { id: string; reason: string }[] = JSON.parse(readFileSync(file, "utf8"));
+  const known = new Set(list.map((f) => f.id));
+  let added = 0;
+  for (const r of noticed) {
+    const id = ids.get(r.n);
+    if (!id || known.has(id)) continue;
+    list.push({ id, reason: `UCEED ${year} Q${r.n}: ${r.notice}` });
+    added++;
+  }
+  if (added) writeFileSync(file, JSON.stringify(list, null, 2) + "\n");
+  console.log(`grace: ${added} question(s) added to src/lib/mocks/flawed.json`);
 }
 
 /** Re-sync solution + difficulty, and upload each missing figure, onto THIS paper's rows. */
@@ -112,7 +137,7 @@ async function syncRows(
   rows: PlannedRow[],
   payload: ParsedRowPayload[],
   fig: (r: PlannedRow) => string | null,
-) {
+): Promise<Map<number, string>> {
   const { data, error } = await client
     .from("questions")
     .select("id, question_number, content_hash, image_url")
@@ -120,6 +145,7 @@ async function syncRows(
     .eq("source_file", src);
   if (error) throw new Error(`row lookup failed: ${error.message}`);
   const byHash = new Map((data ?? []).map((q) => [q.content_hash as string, q]));
+  const ids = new Map<number, string>();
   let synced = 0;
   let uploaded = 0;
   for (const p of payload) {
@@ -129,10 +155,11 @@ async function syncRows(
       console.log(`  Q${row.n}: deduped into a row outside this paper; left as it is`);
       continue;
     }
+    ids.set(row.n, q.id as string);
     const update: Record<string, string> = { solution: p.solution!, difficulty: p.difficulty };
     const f = fig(row);
     if (f && !q.image_url) {
-      update.image_url = await uploadImage(client, ORG_ID, readFileSync(f), "image/png");
+      update.image_url = await uploadImage(client, ORG_ID, readFileSync(f), f.endsWith(".jpg") ? "image/jpeg" : "image/png");
       uploaded++;
     }
     const { error: uErr } = await client.from("questions").update(update).eq("id", q.id);
@@ -140,6 +167,7 @@ async function syncRows(
     synced++;
   }
   console.log(`synced ${synced} row(s); ${uploaded} figure(s) uploaded; ${(data ?? []).length} row(s) under "${src}"`);
+  return ids;
 }
 
 main().catch((e) => {

@@ -9,8 +9,15 @@ nothing is committed on anything else.
 
 | Year | Part A | State |
 |---|---|---|
-| 2026 | 57 q (14 NAT, 15 MSQ, 28 MCQ) | PILOT, 2026-11-03: **41 rows PRIVATE** (28 MCQ, 13 NAT, 35 with a figure); 16 held (15 MSQ + Q14 range). Awaiting the owner's review sheet (`sheet.py`) |
-| 2015-2025 | 2015: 100 · 2018-19: 85 · 2020-23: 68 · 2024-25: 57 (2016-17 not yet read) | sources downloaded, not started |
+| 2026 | 57 q (14 NAT, 15 MSQ, 28 MCQ) | **PUBLIC 2026-11-03**: 41 rows (28 MCQ, 13 NAT); 16 held (15 MSQ + Q14 range) |
+| 2025 | 57 q (14 / 15 / 28) | **PUBLIC 2026-11-04**: 42 rows; 15 MSQ held |
+| 2024 | 57 q (14 / 15 / 28) | **PUBLIC 2026-11-04**: 39 rows; 15 MSQ + 3 range held. Q14 two answers, Q31 animation (note + grace) |
+| 2023 | 68 q (18 / 18 / 32) | **PUBLIC 2026-11-04**: 46 rows; 18 MSQ + 4 range held. Five picture-only stems |
+| 2022 | 68 q (18 / 18 / 32) | **PUBLIC 2026-11-04**: 49 rows; 18 MSQ + 1 range held. Q6, Q39 animations (note + grace) |
+| 2021 | 68 q (18 / 18 / 32) | **PUBLIC 2026-11-04**: 49 rows; 18 MSQ + 1 range held. Q1 key not reproducible from the figure, Q15 two answers (note + grace) |
+| 2020 | 68 q (18 / 18 / 32) | **PUBLIC 2026-11-04**: 50 rows (2 cancelled by IIT Bombay: Q64, Q65); 18 MSQ held |
+| 2019 | 85 q (20 / 20 / 45) | **PUBLIC 2026-11-04**: 65 rows; 20 MSQ held. Q3, Q17 two answers; Q20's key (160) not reproducible from the sketch (note + grace) |
+| 2015-2018 | 2015: 100 (20/30/50) · 2016: 80 (20/20/40) · 2017-18: 85 (20/25/40) | **ON HOLD (owner, 2026-11-04): ingest only after demand for UCEED is evaluated.** Keys transcribed and committed (`data/<year>.key.json`), papers extract cleanly; start at the helper step |
 
 **Blind measurement (2026):** a helper solving from questions + figures alone agreed with IIT
 Bombay's key on **53 of 57** (NAT 14/14, MSQ 14/15, MCQ 25/28), and on **29 of 29** of the answers
@@ -47,6 +54,11 @@ writes them, because the bank cannot store them today:
   scheme (2015: no partial, no negative; 2019: negative; 2024+: partial +1/+2/+3, -1), a tick-box
   mock runner and keys in the downloads.
 - **NAT keyed as a range** (2026 Q14: 470-480): `numeric_answer` holds one exact value.
+
+A held row's transcription is checked like any other, but its classification and solution may
+wait: where a helper's blind answer disagrees with the key on a held row, the merge leaves the
+solution empty and `commit.ts` lists the row as `unsettled`. Settle those (figure + key) when MSQ
+ships, before anything else.
 
 One MSQ key gives **two** accepted answers (2026 Q18: "B,C or B,C,D"); `key.json` records both
 sets so the MSQ build can grade either as full marks.

@@ -1,0 +1,1699 @@
+{
+ "year": 2022,
+ "paper": "UCEED 2022 Part A",
+ "source": "UCEED 2022 question paper, uceed.iitb.ac.in",
+ "note": "Part B (drawing) is not transcribed: no model answer exists.",
+ "questions": [
+  {
+   "n": 1,
+   "type": "NAT",
+   "text": "A solid square pyramid has triangular cut-outs that pass through and through, as shown in the figure. How many surfaces are there in the resultant solid?",
+   "options": [],
+   "figure": true,
+   "subject": "Visualization and Spatial Reasoning",
+   "chapter": "Mental Rotation and Views",
+   "subtopic": "Orthographic views",
+   "difficulty": "Hard",
+   "solution": "The front and side views are the same, so one triangular tunnel runs front to back and an identical one runs side to side at the same height, crossing in the middle. The pyramid keeps its 5 outer faces (base and 4 triangles, each still one surface even with a hole). The two tunnels share one flat floor, which is a single plus-shaped surface. Each tunnel has two sloping walls, and each wall is split into two pieces where the other tunnel crosses it, giving 8 wall pieces. Total 5 + 1 + 8 = 14."
+  },
+  {
+   "n": 2,
+   "type": "NAT",
+   "text": "The figure shows different paths for going from A to B. The directions of the paths are indicated by arrows. No node can be visited twice. What is the total number of different paths to go from A to B?",
+   "options": [],
+   "figure": true,
+   "subject": "Visualization and Spatial Reasoning",
+   "chapter": "Mazes and Paths",
+   "subtopic": "Tracing paths",
+   "difficulty": "Moderate",
+   "solution": "From A there are 4 arrows to 4 nodes. Each of these nodes is joined to the next node by 4 parallel arrows. Each of those 4 nodes then sends one arrow to each of the 2 nodes in the next column, and both of those lead to B. Paths = 4 x 4 x 2 x 1 = 32.",
+   "watermark": "none"
+  },
+  {
+   "n": 3,
+   "type": "NAT",
+   "text": "Solve the visual equations shown in the figure and find the value of ?. (The paper prints only the picture for this question.)",
+   "options": [],
+   "figure": true,
+   "subject": "Analytical and Logical Reasoning",
+   "chapter": "Codes and Series",
+   "subtopic": "Letter codes",
+   "difficulty": "Hard",
+   "solution": "In the first two lines, the word after + is flipped like a mirror image and laid over the word before +. For example F laid over a mirrored F gives A, and F laid over the mirrored second shape gives R, making ART. Doing the same in the third line, the six overlaid pairs make the stencil digits 8, 3, 6, 9, 7 and 5. So ? = 836975."
+  },
+  {
+   "n": 4,
+   "type": "NAT",
+   "text": "Shown below is a book shelf that has a kid’s adventure novel in a book series of 9 volumes. The spines (binding side) of these books contain parts of a treasure map. What is the sequence of the books that forms the completed treasure map? Enter the answer as a single nine-digit integer.",
+   "options": [],
+   "figure": true,
+   "subject": "Visualization and Spatial Reasoning",
+   "chapter": "Puzzles and Assembly",
+   "subtopic": "Assembling pieces",
+   "difficulty": "Moderate",
+   "solution": "Book 7 has red on its left, so it holds the map's left edge, and book 3 has red on its right, so it holds the right edge. Matching the rivers, lakes and dashed paths across the edges: 7 joins 4, 4 joins 2, 2 joins 1, 1 joins 9, 9 joins 8, 8 joins 6, 6 joins 5 and 5 joins 3. The sequence is 742198653.",
+   "watermark": "none"
+  },
+  {
+   "n": 5,
+   "type": "NAT",
+   "text": "Perform the following steps:\nStep 1: Start with x=1, y=2\nStep 2: Replace x by x multiplied by y\nStep 3: Replace y by y+1\nStep 4: If y=5, then go to Step 6, otherwise go to Step 5\nStep 5: Go to Step 2\nStep 6: Stop\nWhat is the value of x?",
+   "options": [],
+   "figure": false,
+   "subject": "Analytical and Logical Reasoning",
+   "chapter": "Quantitative Reasoning",
+   "subtopic": "Number patterns",
+   "difficulty": "Easy",
+   "solution": "Start x = 1, y = 2. First pass: x = 2, y = 3. Second pass: x = 6, y = 4. Third pass: x = 24, y = 5, so the process stops. x = 24."
+  },
+  {
+   "n": 6,
+   "type": "NAT",
+   "text": "The animation depicts morphing of faces and abstract forms. A face consists of two eyes, two ears, a nose and a mouth. How many unique faces appear in this morphing animation?",
+   "options": [],
+   "figure": true,
+   "subject": "Observation and Design Sensitivity",
+   "chapter": "Counting in Compositions",
+   "subtopic": "Counting objects",
+   "difficulty": "Moderate",
+   "solution": "Watch the animation from start to end and note each face as it forms: a face counts only when it has all six features (two eyes, two ears, a nose and a mouth), and a face that returns later is counted once. Ignore the abstract shapes in between. IIT Bombay's final key gives 7 unique faces.",
+   "defect": "The online test showed this question as an animation; the printed paper has only one still frame, so the answer cannot be worked out from print.",
+   "watermark": "none"
+  },
+  {
+   "n": 7,
+   "type": "NAT",
+   "text": "If SQ = QR = RS = SP = PQ and PR = 21 units, what is the area of the BLACK portion? (Assume π = 22/7)",
+   "options": [],
+   "figure": true,
+   "subject": "Analytical and Logical Reasoning",
+   "chapter": "Quantitative Reasoning",
+   "subtopic": "Area and geometry",
+   "difficulty": "Hard",
+   "solution": "PQS and QRS are equilateral triangles of side a, and PR = a\\(\\sqrt{3}\\) = 21. Each circle passes through the corners of one triangle, so its radius is 7. The black area is triangle QRS plus three circle segments, each cut off by a side of length a, which subtends 120 degrees at the centre. Each segment is (1/3) of the circle minus a triangle of area \\(\\frac{49\\sqrt{3}}{4}\\), and triangle QRS has area \\(\\frac{147\\sqrt{3}}{4}\\), so the root-3 parts cancel. Black area = 49π = 49 x 22/7 = 154."
+  },
+  {
+   "n": 8,
+   "type": "NAT",
+   "text": "A circle and a semicircle are inscribed in a square as shown below. What fraction of the area of the square is the blue shaded area?",
+   "options": [],
+   "figure": true,
+   "subject": "Analytical and Logical Reasoning",
+   "chapter": "Quantitative Reasoning",
+   "subtopic": "Area and geometry",
+   "difficulty": "Hard",
+   "solution": "Take the square as 2 by 2 with the circle of radius 1 at its centre, the semicircle of radius 1 standing on the bottom side and the diagonal from the bottom-left corner. The blue parts are: inside the circle below the diagonal and outside the semicircle; inside the semicircle above the diagonal; and the two corner slivers above the diagonal outside both curves (bottom-left and top-right). Adding these areas gives 1 out of the square's 4 square units, so the blue area is one quarter, 0.25.",
+   "watermark": "none"
+  },
+  {
+   "n": 9,
+   "type": "NAT",
+   "text": "A total of 200 people were surveyed for newspaper readership. It was found that 100 people read publication X, 120 people read publication Y and 50 people do not read either X or Y. What is the total number of people who read either publication X or publication Y but not both?",
+   "options": [],
+   "figure": false,
+   "subject": "Analytical and Logical Reasoning",
+   "chapter": "Quantitative Reasoning",
+   "subtopic": "Number patterns",
+   "difficulty": "Easy",
+   "solution": "People who read at least one = 200 minus 50 = 150. Both = 100 + 120 minus 150 = 70. Exactly one = 150 minus 70 = 80."
+  },
+  {
+   "n": 10,
+   "type": "NAT",
+   "text": "Row 1 shows a word with 7 partial letters. Row 2 contains the parts that complete the word in Row 1. The parts in Row 2 are arranged randomly. What should be the correct sequence in Row 2?",
+   "options": [],
+   "figure": true,
+   "subject": "Observation and Design Sensitivity",
+   "chapter": "Typography and Lettering",
+   "subtopic": "Letters in a composition",
+   "difficulty": "Moderate",
+   "solution": "The word is CUNNING. C needs the top arc (5), U needs the two short upright tops (7), the first N already has its left stem and the start of its diagonal so it needs the short diagonal with right stem (2), the second N has both stems and needs the long diagonal (4), I needs the short upper stem (3), the third N has only its left stem so it needs the full diagonal with right stem (6), and G needs its lower part with the crossbar (1). Sequence 5724361."
+  },
+  {
+   "n": 11,
+   "type": "NAT",
+   "text": "A square of side 10 units, shaded in yellow, is cut using a square of side 5 units as shown in the figure. What is the perimeter of the resulting shape, shaded in yellow?",
+   "options": [],
+   "figure": true,
+   "subject": "Analytical and Logical Reasoning",
+   "chapter": "Quantitative Reasoning",
+   "subtopic": "Area and geometry",
+   "difficulty": "Hard",
+   "solution": "The small square has a corner at the centre of the big square and pokes out through one edge. The cut removes a piece of that edge but adds the small square's two full sides (5 + 5) and the two parts of its other sides that lie inside. Working out the lengths shows the two inside parts add up to exactly the length of edge removed, for any tilt. So the perimeter is 40 + 5 + 5 = 50."
+  },
+  {
+   "n": 12,
+   "type": "NAT",
+   "text": "X is three times as old as Y was three years ago. After 17 years, Y will be as old as X is today. What is the sum of the ages of X and Y today?",
+   "options": [],
+   "figure": false,
+   "subject": "Analytical and Logical Reasoning",
+   "chapter": "Quantitative Reasoning",
+   "subtopic": "Number patterns",
+   "difficulty": "Easy",
+   "solution": "X = 3(Y minus 3) and Y + 17 = X. So Y + 17 = 3Y minus 9, giving Y = 13 and X = 30. Sum = 43."
+  },
+  {
+   "n": 13,
+   "type": "NAT",
+   "text": "Shown below are three tubes P, Q and R with coloured marbles. Each tube can hold a maximum of 5 marbles. Only one marble can be transferred in a move. What is the minimum number of moves required to transfer the red marble from tube ‘P’ to the bottom of tube ‘R’?",
+   "options": [],
+   "figure": true,
+   "subject": "Visualization and Spatial Reasoning",
+   "chapter": "Puzzles and Assembly",
+   "subtopic": "Sequencing frames",
+   "difficulty": "Hard",
+   "solution": "P has red under 3 marbles, Q has 2 marbles and R has 4. Red cannot go straight into an empty R, because the other 9 marbles would then have to fit in one tube of 5. So: move blue and orange from P to Q, green from P to R (R is now full), red from P to Q (Q is now full with red on top), then the 5 marbles in R to P, and finally red from Q to R. That is 2 + 1 + 1 + 5 + 1 = 10 moves, and no shorter order works.",
+   "watermark": "none"
+  },
+  {
+   "n": 14,
+   "type": "NAT",
+   "text": "How many right-angled triangles are there in the image?",
+   "options": [],
+   "figure": true,
+   "subject": "Observation and Design Sensitivity",
+   "chapter": "Counting in Compositions",
+   "subtopic": "Counting shapes",
+   "difficulty": "Hard",
+   "solution": "Every right angle here is where a vertical line meets a horizontal line, so check each such corner for triangles closed by a slanting line. The top-left rectangle with its two slanting lines from the top-left corner gives 7, the top-right square with its diagonal gives 3, and the lower part with the long slanting line and the short one gives 8. Total 18."
+  },
+  {
+   "n": 15,
+   "type": "NAT",
+   "text": "The image shows a hanging sculpture created by tying fish-shaped cutouts of different weights by blue strings on brown sticks, as shown. The sticks and strings have negligible weight. The sculpture remains balanced after it is suspended from a ceiling. If the weight of the black fish is 5 grams, what is the weight (in grams) of the red fish?",
+   "options": [],
+   "figure": true,
+   "subject": "Practical and Scientific Knowledge",
+   "chapter": "Mechanisms and Machines",
+   "subtopic": "Levers",
+   "difficulty": "Moderate",
+   "solution": "On the bottom stick the blue fish hangs 2 segments from the support and the black fish 4 segments, so blue = 2 x 5 = 10 g and that group weighs 15 g. Every stick above is hung from its middle, so each fish equals the group on the other side: green = 15 g (group 30 g), orange = 30 g (group 60 g), red = 60 g.",
+   "watermark": "none"
+  },
+  {
+   "n": 16,
+   "type": "NAT",
+   "text": "A system of gears and belts is shown below. The diameters of the gears M, N, P, Q, R and S are 3, 1, 2, 1, 3 and 2 meters respectively. If the gear M is rotating at 100 rpm, what is the rpm of gear S?",
+   "options": [],
+   "figure": true,
+   "subject": "Practical and Scientific Knowledge",
+   "chapter": "Mechanisms and Machines",
+   "subtopic": "Gears and pulleys",
+   "difficulty": "Moderate",
+   "solution": "Speed times diameter stays the same across a belt or a meshing pair. M to N (belt): 100 x 3 / 1 = 300 rpm. N to P (mesh): 300 x 1 / 2 = 150 rpm. Q is on the same shaft as P, so 150 rpm. Q to R (belt): 150 x 1 / 3 = 50 rpm. R to S (mesh): 50 x 3 / 2 = 75 rpm."
+  },
+  {
+   "n": 17,
+   "type": "NAT",
+   "text": "The given 3D object is made by combining three shapes - pentagons, squares and triangles. What is the total number of squares?",
+   "options": [],
+   "figure": true,
+   "subject": "Observation and Design Sensitivity",
+   "chapter": "Counting in Compositions",
+   "subtopic": "Counting shapes",
+   "difficulty": "Moderate",
+   "solution": "The solid is a rhombicosidodecahedron: every vertex has a triangle, a square, a pentagon and a square around it. It has 12 pentagons and 20 triangles, and each pentagon edge and each triangle edge borders one square, with each square touching 2 pentagons and 2 triangles, so squares = (12 x 5) / 2 = 30."
+  },
+  {
+   "n": 18,
+   "type": "NAT",
+   "text": "The perimeter of the equilateral triangle and the regular hexagon shown in the figure are equal. The circumference of the red circle inscribed in the triangle is 10 cm. What is the circumference of the blue circle inscribed in the hexagon?",
+   "options": [],
+   "figure": true,
+   "subject": "Analytical and Logical Reasoning",
+   "chapter": "Quantitative Reasoning",
+   "subtopic": "Area and geometry",
+   "difficulty": "Moderate",
+   "solution": "Let the perimeter be 6s, so the triangle side is 2s and the hexagon side is s. The triangle's inradius is \\(\\frac{2s}{2\\sqrt{3}} = \\frac{s}{\\sqrt{3}}\\) and the hexagon's is \\(\\frac{\\sqrt{3}}{2}s\\). Their ratio is 3 : 2 for hexagon to triangle, so the blue circumference is 10 x 1.5 = 15 cm.",
+   "watermark": "none"
+  },
+  {
+   "n": 19,
+   "type": "MSQ",
+   "text": "Shown on the left is a pattern printed by repeated use of a single printing block. Which of the printing blocks shown on the right can be used to print the pattern?",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Visualization and Spatial Reasoning",
+   "chapter": "Pattern and Figure Completion",
+   "subtopic": "Tiling with shapes",
+   "difficulty": "Moderate",
+   "solution": null
+  },
+  {
+   "n": 20,
+   "type": "MSQ",
+   "text": "Shown on the left is a socket with four holes in it. Which of the plugs will fit perfectly in this socket?",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Visualization and Spatial Reasoning",
+   "chapter": "Mental Rotation and Views",
+   "subtopic": "Rotation and reassembly",
+   "difficulty": "Hard",
+   "solution": "The socket has the two round holes on one diagonal, and the triangle and square on the other, with the triangle's flat side parallel to the row below it and the square upright. A plug seen from its pin side is the mirror image of the socket, which may then be turned. Plug A is that mirror image turned a quarter turn one way (triangle pointing outward to the side, square upright) and D is it turned a quarter turn the other way, so both fit. In B the square pin would have to be tilted at 45 degrees, and in C the square pin is tilted and the triangle points the wrong way."
+  },
+  {
+   "n": 21,
+   "type": "MSQ",
+   "text": "Which of the options show parts of the graph representing the equation \\(x^{y} = 25\\)?",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Analytical and Logical Reasoning",
+   "chapter": "Quantitative Reasoning",
+   "subtopic": "Number patterns",
+   "difficulty": "Hard",
+   "solution": "Taking logs, y = ln 25 / ln x. For x > 1 the curve shoots up as x approaches 1 from the right, passes y = 2 at x = 5 and y = 1 at x = 25, so C (asymptote at x = 1, y about 1 at x = 25) fits. For 0 < x < 1, y is negative and falls to minus infinity as x approaches 1, which D shows along with the upper branch. A has its asymptote at x = 0 and B drops to almost 0 by x = 15, so neither fits."
+  },
+  {
+   "n": 22,
+   "type": "MSQ",
+   "text": "Which of the given figures can be drawn without lifting the pen? The lines can cross each other but cannot overlap on top of one another.",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Visualization and Spatial Reasoning",
+   "chapter": "Mazes and Paths",
+   "subtopic": "Tracing paths",
+   "difficulty": "Moderate",
+   "solution": null
+  },
+  {
+   "n": 23,
+   "type": "MSQ",
+   "text": "Shown below are 2 views of the same solid. Through which of the cutouts shown in the options, will the solid pass?",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Visualization and Spatial Reasoning",
+   "chapter": "Mental Rotation and Views",
+   "subtopic": "Orthographic views",
+   "difficulty": "Hard",
+   "solution": "The solid passes through a cutout if its outline seen from one direction matches the cutout. Seen from the side, the tall column with the small block sticking out and the sloping wedge make outline A. Seen from the end, the block hides behind the column and the column, the sloping cut and the wedge make the check-mark outline C. Seen from above, the column and the block form the top bar, the chamfered part the side and the wedge the long bottom bar, giving D. Outline B lacks the block that every side view of the column must show, so it does not fit."
+  },
+  {
+   "n": 24,
+   "type": "MSQ",
+   "text": "Shown below are different forms for a step-stool. Which of the forms will remain stable when a person is standing on the top step?",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Practical and Scientific Knowledge",
+   "chapter": "Everyday Objects and Systems",
+   "subtopic": "Product usability",
+   "difficulty": "Moderate",
+   "solution": "A stool stays upright when the person's weight on the top step falls between the points where its legs touch the floor. In A and D the legs of the top step reach the floor beyond the far end of the top step, so the top step lies over the base. In B the top step sticks out well past its single front leg, and in C the top step sits beyond all the floor contacts, so both would tip over."
+  },
+  {
+   "n": 25,
+   "type": "MSQ",
+   "text": "Tile X was used to create a pattern which is seamless (without gaps), when arranged as shown in Y. Which of the tiles from the options will create a seamless pattern?",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Visualization and Spatial Reasoning",
+   "chapter": "Pattern and Figure Completion",
+   "subtopic": "Tiling with shapes",
+   "difficulty": "Hard",
+   "solution": null
+  },
+  {
+   "n": 26,
+   "type": "MSQ",
+   "text": "A painted solid is shown from two different directions. Which of the options can be the same solid seen from another direction?",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Visualization and Spatial Reasoning",
+   "chapter": "Mental Rotation and Views",
+   "subtopic": "Rotation and reassembly",
+   "difficulty": "Hard",
+   "solution": "The solid is a corner cube with one cube on each side and one on top. From the two views, the top cube has a light square on one pair of opposite faces and a light ellipse on the other pair, one arm cube shows a light square and a dark ellipse, and the other shows a dark square and a light ellipse. C is the view from below on the open side and D the view from below on the closed corner; both match these faces with dark bottoms. B is C turned upside down. A has the two shapes peeping out under the top row swapped, so it cannot be the same solid."
+  },
+  {
+   "n": 27,
+   "type": "MSQ",
+   "text": "Which of the options will form a knot when both the ends are pulled outward?",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Observation and Design Sensitivity",
+   "chapter": "Visual Detail",
+   "subtopic": "Comparing details",
+   "difficulty": "Hard",
+   "solution": null
+  },
+  {
+   "n": 28,
+   "type": "MSQ",
+   "text": "Figure P can be created by tiling 4 identical pieces. The pieces should not overlap while tiling. Which of the pieces shown in the options can be used to create figure P, assuming that you can rotate and flip them?",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Visualization and Spatial Reasoning",
+   "chapter": "Puzzles and Assembly",
+   "subtopic": "Assembling pieces",
+   "difficulty": "Moderate",
+   "solution": "Figure P is a 6 by 5 grid with two opposite corner squares missing, so 28 squares, and each of the 4 pieces must cover 7. All four options have 7 squares. Trying placements square by square, four copies of A fill P exactly, and so do four copies of B. The H-shaped piece C and the piece D always leave gaps that no copy can fill."
+  },
+  {
+   "n": 29,
+   "type": "MSQ",
+   "text": "Shown below is an isometric view of a cuboidal glass container of size 2 X 2 X 3 units. It contains a solid wooden block and some water. When tilted, which of the options will be the side view(s) of the glass container?",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Analytical and Logical Reasoning",
+   "chapter": "Quantitative Reasoning",
+   "subtopic": "Volume and capacity",
+   "difficulty": "Moderate",
+   "solution": "In the upright container the wooden block fills the bottom third of the height and the water fills the next third, so the water is exactly half of the space above the block. That stays true when the container is tilted, and the water surface stays horizontal. So in the side view the blue water area must equal the empty area above it. This holds in A and C. In B there is less water than empty space and in D there is more."
+  },
+  {
+   "n": 30,
+   "type": "MSQ",
+   "text": "Four solid pieces P, Q, R and S are arranged to form a cube. Which of the cubes shown in the options is/are NOT possible?",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Visualization and Spatial Reasoning",
+   "chapter": "Puzzles and Assembly",
+   "subtopic": "Assembling pieces",
+   "difficulty": "Moderate",
+   "solution": "Each piece is two coloured cubes: orange with red, purple with dark green, light green with blue, and brown with red. So there is only one blue cube, and each pair must sit side by side. B shows two blue cubes, which is impossible. In D the purple cube is at the top left and the dark green at the bottom right, on opposite corners, so they cannot be one piece. A and C can be built with every pair touching."
+  },
+  {
+   "n": 31,
+   "type": "MSQ",
+   "text": "A contractor has a set of ceramic tiles of which one tile is shown on the left. Which of the options show(s) the pattern(s) created using this tile?",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Visualization and Spatial Reasoning",
+   "chapter": "Pattern and Figure Completion",
+   "subtopic": "Transforming a pattern",
+   "difficulty": "Moderate",
+   "solution": "Each option is four tiles in a 2 by 2 square. A ceramic tile can only be turned, not flipped over, so each quarter must be the tile rotated. In A and B every quarter is the tile turned by some multiple of 90 degrees. In D two quarters are mirror images, which needs a flipped tile, and in C the small details (the purple square and orange strips) do not match the tile in any rotation."
+  },
+  {
+   "n": 32,
+   "type": "MSQ",
+   "text": "Which of the options can be made using all the four pieces shown in the top row? Flipping the pieces is allowed.",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Visualization and Spatial Reasoning",
+   "chapter": "Puzzles and Assembly",
+   "subtopic": "Assembling pieces",
+   "difficulty": "Hard",
+   "solution": null
+  },
+  {
+   "n": 33,
+   "type": "MSQ",
+   "text": "A puzzle board can be covered completely using puzzle pieces, six of which are shown below. Which of the pieces in the options can be used along with these six pieces to cover the board completely? Flipping and rotating of the pieces is allowed. Overlapping of the pieces is NOT allowed.",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Visualization and Spatial Reasoning",
+   "chapter": "Puzzles and Assembly",
+   "subtopic": "Assembling pieces",
+   "difficulty": "Moderate",
+   "solution": "The board is 6 by 5 = 30 squares. The six pieces cover 4 + 4 + 5 + 5 + 4 + 3 = 25 squares, so the extra piece must have exactly 5 squares. The square B has 4 and the bar C has 3, so they fail. The plus shape A and the Z-shaped piece D both have 5, and for each of them an arrangement of all seven pieces covering the board exists."
+  },
+  {
+   "n": 34,
+   "type": "MSQ",
+   "text": "Which of the chairs will rock TO AND FRO?",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Practical and Scientific Knowledge",
+   "chapter": "Mechanisms and Machines",
+   "subtopic": "Motion and animation",
+   "difficulty": "Moderate",
+   "solution": null
+  },
+  {
+   "n": 35,
+   "type": "MSQ",
+   "text": "Which of the options is/are simple rotation(s) of the image P?",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Visualization and Spatial Reasoning",
+   "chapter": "Mental Rotation and Views",
+   "subtopic": "Rotational symmetry",
+   "difficulty": "Moderate",
+   "solution": "Look at the few grid corners that are rounded or cut and where they sit. Turning P through 180 degrees gives A exactly, and turning it through 90 degrees gives B. D is a mirror image of P, not a rotation, and in C some of the rounded corners are in places that no rotation of P puts them."
+  },
+  {
+   "n": 36,
+   "type": "MSQ",
+   "text": "Shown on the left is the development of a cube. Which of the options can be created when the shown development is folded?",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Visualization and Spatial Reasoning",
+   "chapter": "Paper Folding and Cutting",
+   "subtopic": "Cutting and folding",
+   "difficulty": "Hard",
+   "solution": "Folding the net, the line starts thin on one face, crosses edges near their middles, becomes thick on the two middle faces and ends thin on the face next to the start. Its ends fade near corners. In A the two thin end faces meet with the line crossing each edge at the matching heights, and the thin ends fade at the right corners. C shows the cube upside down with the two thick middle faces and the neighbouring face, with the line crossing each edge at the same distances as on the net. In B the line passes through a corner, which never happens on the net, and in D the thin end on top fades at the wrong corner."
+  },
+  {
+   "n": 37,
+   "type": "MCQ",
+   "text": "Three paper clips are attached to a paper as shown on the left. Which of the options shows the back side of the paper?",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Visualization and Spatial Reasoning",
+   "chapter": "Mental Rotation and Views",
+   "subtopic": "Matching a part to the whole",
+   "difficulty": "Hard",
+   "solution": "Turning the paper over mirrors everything, so the clip order becomes brown, blue, green with the punched holes on the left. The short bend where each clip goes over the top edge must stay at the same places, mirrored: the gaps between these bends and their widths match only in A and D. Also, on the front each clip goes over the edge at one end of its bend, so on the back the hidden loop must hang from the mirrored end. In A the brown, blue and green back loops all hang from the correct ends, while in D the brown loop hangs from the wrong end.",
+   "watermark": "none"
+  },
+  {
+   "n": 38,
+   "type": "MCQ",
+   "text": "Which option comes next in the sequence shown? (The paper prints only the picture for this question.)",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Analytical and Logical Reasoning",
+   "chapter": "Codes and Series",
+   "subtopic": "Figure series",
+   "difficulty": "Moderate",
+   "solution": "The eight outer symbols keep the same circular order, and at every step each one moves a quarter turn clockwise around the centre while the tile turns 45 degrees (diamond, square, diamond, square). Each symbol also turns 45 degrees with the tile. Moving the third figure on by one step puts the star-in-circle at top left, yin-yang at top, flower at top right, three-dot circle at left, cross at right, oval at bottom left, four leaves at bottom and target at bottom right. A and B both have this layout, but the oval, which was flat in the second figure, must now stand upright, as in B."
+  },
+  {
+   "n": 39,
+   "type": "MCQ",
+   "text": "An animation of revolving circles is shown on the left. If it is flipped horizontally and then flipped vertically, what will be the resulting animation?",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Visualization and Spatial Reasoning",
+   "chapter": "Mental Rotation and Views",
+   "subtopic": "Motion and animation",
+   "difficulty": "Moderate",
+   "solution": "A horizontal flip followed by a vertical flip is the same as turning the picture through 180 degrees. Every circle moves to the diametrically opposite position, and a turn of the picture does not reverse the direction of revolution, so the circles keep revolving the same way as before. The animation that shows this is D.",
+   "defect": "The online test showed this question as an animation; the printed paper has only one still frame, so the answer cannot be worked out from print. Options C and D look the same as still frames and differ only in which way the circles turn.",
+   "watermark": "none"
+  },
+  {
+   "n": 40,
+   "type": "MCQ",
+   "text": "You can set preferences in a mobile app by making a series of selections. You want to be notified of promotions and transactions, but do not want to receive newsletters. You want to allow access to your location and mic, but do not want to allow access to your contacts. What is the correct sequence of actions?\n\n- Do not notify me on Promotions\n- Send me Newsletter\n- Notify my Transactions\n- Do not allow access to my Contacts\n- Allow access to my Location\n- Allow access to my Mic",
+   "options": [
+    {
+     "label": "A",
+     "text": "Check, skip, check, check, skip, check"
+    },
+    {
+     "label": "B",
+     "text": "Skip, Skip, check, skip, check, check"
+    },
+    {
+     "label": "C",
+     "text": "Check, skip, skip, skip, check, check"
+    },
+    {
+     "label": "D",
+     "text": "Skip, skip, check, check, check, check"
+    }
+   ],
+   "figure": true,
+   "subject": "Practical and Scientific Knowledge",
+   "chapter": "Everyday Objects and Systems",
+   "subtopic": "Product usability",
+   "difficulty": "Easy",
+   "solution": "Go down the list. 'Do not notify me on Promotions': you want promotions, so skip. 'Send me Newsletter': you do not want it, so skip. 'Notify my Transactions': check. 'Do not allow access to my Contacts': check. Location: check. Mic: check. That is skip, skip, check, check, check, check."
+  },
+  {
+   "n": 41,
+   "type": "MCQ",
+   "text": "A story depicts Sabina encountering a spider. The continuing scene has to represent the spider’s point of view of Sabina. What is the most appropriate option?",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Practical and Scientific Knowledge",
+   "chapter": "Photography and Cameras",
+   "subtopic": "Composition",
+   "difficulty": "Moderate",
+   "solution": "The spider hangs head down just above and in front of Sabina's face, so it sees her from a steep high angle and upside down. Her upturned face, looking straight at it, is nearest and seen fully, while her body and legs stretch away below and look strongly shortened, with tiny feet. D shows this. A and C draw the body too long for such a steep view, and B shows almost only the top of her head, as if seen from directly overhead."
+  },
+  {
+   "n": 42,
+   "type": "MCQ",
+   "text": "Which option is the correct mirror image of the figure given on the left?",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Observation and Design Sensitivity",
+   "chapter": "Visual Detail",
+   "subtopic": "Comparing details",
+   "difficulty": "Moderate",
+   "solution": "Flip the figure left to right and compare every small detail. C matches the flipped figure exactly. A is missing part of the curl on the left and has the short marks on the right in a different place, B has an extra pair of marks at the bottom, and D has lost the small loop in the hat and changed the curl near the eye."
+  },
+  {
+   "n": 43,
+   "type": "MCQ",
+   "text": "A solid sphere is kept on a planar surface. Parallel rays of light are falling on it as shown in the image. Which option correctly represents the shadow cast by the sphere on the planar surface?",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Practical and Scientific Knowledge",
+   "chapter": "Light, Colour and Optics",
+   "subtopic": "Light and shadow",
+   "difficulty": "Moderate",
+   "solution": "With rays at 45 degrees, the shadow of a sphere of radius r is an ellipse as wide as the sphere (2r) but stretched along the rays to about 2.8r. Its centre lies r beyond the point where the sphere touches the ground, so the ellipse starts slightly behind that point (about 0.4r towards the light) and reaches about 2.4r ahead. A shows this. In B the shadow is too short, in C it starts exactly at the contact point, and D is not an ellipse."
+  },
+  {
+   "n": 44,
+   "type": "MCQ",
+   "text": "Four students were given a task to design a stencil for the word ’pedagogy’ for spray painting. Shown in the options are designs of each student that are to be cut into stencils for painting. Identify the design that will NOT work as a stencil to paint the given word?",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Observation and Design Sensitivity",
+   "chapter": "Typography and Lettering",
+   "subtopic": "Lettering tools",
+   "difficulty": "Moderate",
+   "solution": "In a stencil the closed inner parts of letters (the holes in p, e, d, a, g, o) must be held to the sheet by small bridges, or they fall out when the letters are cut. Designs A, B and D leave bridges in every closed letter. In C the hole inside the 'a' is completely surrounded by the cut, so it would drop out and the 'a' would paint as a blob."
+  },
+  {
+   "n": 45,
+   "type": "MCQ",
+   "text": "A group of friends are on a trek. The sunlight is directly above them. No other light source is present. Identify the most appropriate lighting for this scene.",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Practical and Scientific Knowledge",
+   "chapter": "Light, Colour and Optics",
+   "subtopic": "Light and shadow",
+   "difficulty": "Moderate",
+   "solution": "With the sun directly overhead and no other light, every lit surface faces up: the tops of heads, shoulders and the upper sides of arms and bags are bright, and shadows fall straight down, close under each person, under chins, noses and brims. Nothing is lit from the front, side or behind. A is the only option lit this way.",
+   "watermark": "none"
+  },
+  {
+   "n": 46,
+   "type": "MCQ",
+   "text": "Identify the odd one.",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Observation and Design Sensitivity",
+   "chapter": "Odd One Out and Classification",
+   "subtopic": "Odd one out",
+   "difficulty": "Moderate",
+   "solution": "Each figure is a symmetric shape built from a letterform joined to its mirror image. A, B and C each enclose a small heart-shaped counter (or form a heart) with a dot, while D has a crown-like M shape and no heart, so D is the odd one."
+  },
+  {
+   "n": 47,
+   "type": "MCQ",
+   "text": "Shown below are the 2 views of a cube. If face P is opposite to 1, Q is opposite to 2 and R is opposite to 3, which option can be folded to make the cube?",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Visualization and Spatial Reasoning",
+   "chapter": "Paper Folding and Cutting",
+   "subtopic": "Cutting and folding",
+   "difficulty": "Hard",
+   "solution": "Each face is split by a diagonal with a dot in one half. The first view fixes P, Q and R around one corner and the second fixes 3, 2 and 1 around the opposite corner, so every face's diagonal and dot position is known. Folding each net and checking it in every orientation, only net C gives all six faces with the diagonals and dots in those places.",
+   "watermark": "none"
+  },
+  {
+   "n": 48,
+   "type": "MCQ",
+   "text": "Which option comes next in the sequence shown? (The paper prints only the picture for this question.)",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Analytical and Logical Reasoning",
+   "chapter": "Codes and Series",
+   "subtopic": "Figure series",
+   "difficulty": "Moderate",
+   "solution": "Two things change at each step. The nine tiles move round a fixed path (each tile moves to the next place along the path 1, 2, 3, 6, 9, 8, 5, 7, 4 and back to 1), and the colour gets lighter: black, dark grey, mid grey, so next is light grey. Moving the third grid's tiles once more gives a, f, half-D on top, h, d, a in the middle and the half-disc, p, C at the bottom. A and C have this layout, but only C is in the lighter grey."
+  },
+  {
+   "n": 49,
+   "type": "MCQ",
+   "text": "The options show maps of some states of India. In only one of the options, the map has been scaled (either up or down). Which is that option?",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Environment and Society",
+   "chapter": "Civic and General Awareness",
+   "subtopic": "Ratio and proportion",
+   "difficulty": "Moderate",
+   "solution": "Compare each map's printed area with the state's real area. A (Gujarat), B (Madhya Pradesh) and C (Maharashtra) are all drawn at about the same scale, since Madhya Pradesh and Maharashtra are the largest and Gujarat noticeably smaller. D (West Bengal) is drawn about as large as Gujarat although West Bengal is less than half Gujarat's area, so D has been scaled up."
+  },
+  {
+   "n": 50,
+   "type": "MCQ",
+   "text": "Gita placed some objects on a white plate. She took a photo with a camera. Without disturbing the arrangement of objects, she took two more photos while turning the plate. Soon after, Shefali placed same objects on a similar plate and under similar lighting conditions, took a photo. Which option shows Shefali’s photo?",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Observation and Design Sensitivity",
+   "chapter": "Visual Detail",
+   "subtopic": "Comparing details",
+   "difficulty": "Hard",
+   "solution": "Turning the plate turns the whole arrangement together, so in every photo each object keeps the same neighbours, the same order around the plate and the same facing relative to the others. Pick two objects, line them up the same way in each photo, and check that every other object then sits in the same place. Shefali's arrangement in A is the one that matches Gita's photos once turned.",
+   "watermark": "none"
+  },
+  {
+   "n": 51,
+   "type": "MCQ",
+   "text": "Two views of the same object are shown in the box. Which option depicts the same object?",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Visualization and Spatial Reasoning",
+   "chapter": "Mental Rotation and Views",
+   "subtopic": "Rotation and reassembly",
+   "difficulty": "Hard",
+   "solution": "Use the two views to fix the object's details: where along the main pipe each side pipe joins, which way each one points, and which ends are open. Check each option against these one at a time, turning it in your mind as needed, and reject it as soon as one side pipe is at the wrong height, points the wrong way or has the wrong end. Only A agrees with both views.",
+   "watermark": "none"
+  },
+  {
+   "n": 52,
+   "type": "MCQ",
+   "text": "The image shown below is made up of triangles only, from which the central portion is missing. Identify the missing portion.",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Visualization and Spatial Reasoning",
+   "chapter": "Pattern and Figure Completion",
+   "subtopic": "Completing a shape",
+   "difficulty": "Hard",
+   "solution": "The missing piece must be made of triangles only, and every line that reaches the edge of the gap must carry on into the piece at the same point and angle. Go round the gap's border, mark where each line meets it, and check each option against those marks. Only A continues every line correctly while keeping all its shapes triangles."
+  },
+  {
+   "n": 53,
+   "type": "MCQ",
+   "text": "The figure shown below is mirrored along the axes P, Q, R, S, T and U. What would be the resultant figure?",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Visualization and Spatial Reasoning",
+   "chapter": "Mental Rotation and Views",
+   "subtopic": "Transforming a pattern",
+   "difficulty": "Moderate",
+   "solution": "Six reflections in a row amount to a single reflection or rotation, so it is enough to track the three arrows. In the figure they sit at the top, left and bottom-right of the heptagon, all pointing outward. Reflecting step by step across each axis, the arrows end at the upper right, the left and the bottom, still pointing outward, which is option B."
+  },
+  {
+   "n": 54,
+   "type": "MCQ",
+   "text": "Identify the missing portion of the tile pattern. (The paper prints only the picture for this question.)",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Visualization and Spatial Reasoning",
+   "chapter": "Pattern and Figure Completion",
+   "subtopic": "Completing a shape",
+   "difficulty": "Moderate",
+   "solution": "The pattern is a grid of small squares with large squares (each covering 2 by 2 cells) repeating every 4 columns, and each band of large squares is shifted one column to the right of the band above. A large square sits just at the gap's upper-left corner, so the missing piece must show its last quarter as a filled cell at the top-left of its left arm. A does this and places the other large squares where the pattern needs them. C is identical to A except that the top-left cell is a small square, B shows a two-cell-wide block there, and D puts large squares in the wrong columns.",
+   "watermark": "none"
+  },
+  {
+   "n": 55,
+   "type": "MCQ",
+   "text": "An A4 size paper is cut as shown below and folded across the dotted lines such that it has eight faces named from ‘P’ to ‘W’. It is further folded to make a small booklet for the purpose of a zine design. From the given options, select the correct sequence of pages.",
+   "options": [
+    {
+     "label": "A",
+     "text": "P, Q, R, S, T, U, V, W"
+    },
+    {
+     "label": "B",
+     "text": "W, S, R. V, U, Q, P, T"
+    },
+    {
+     "label": "C",
+     "text": "W, S, R, Q, P, T, U, V"
+    },
+    {
+     "label": "D",
+     "text": "W, V, U, T, S, R, Q, P"
+    }
+   ],
+   "figure": true,
+   "subject": "Visualization and Spatial Reasoning",
+   "chapter": "Paper Folding and Cutting",
+   "subtopic": "Cutting and folding",
+   "difficulty": "Moderate",
+   "solution": "This is the standard one-sheet 8-page zine. W is the front cover. Opening the booklet, the pages run along the top row from right to left (S, R, Q, P, which were folded behind) and then along the bottom row from left to right (T, U), and V on the back of the cover is the back page. So the order is W, S, R, Q, P, T, U, V."
+  },
+  {
+   "n": 56,
+   "type": "MCQ",
+   "text": "The left image below shows Nandu’s study room. The image is sliced in 9 equal parts. From the given options, find the correct set of images.",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Observation and Design Sensitivity",
+   "chapter": "Visual Detail",
+   "subtopic": "Comparing details",
+   "difficulty": "Moderate",
+   "solution": "Each option holds the nine slices in a shuffled order, and three of them have a small changed detail. In A the headphones are red instead of white and the socks have lost their stripes. In C the slippers are missing from the floor slice. In D the book Nandu holds is blue instead of orange. Every slice in B matches the original.",
+   "watermark": "none"
+  },
+  {
+   "n": 57,
+   "type": "MCQ",
+   "text": "Mixing the inks as shown, which colour replaces the question mark? (The paper prints only the picture for this question.)",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Practical and Scientific Knowledge",
+   "chapter": "Light, Colour and Optics",
+   "subtopic": "Colour and light",
+   "difficulty": "Moderate",
+   "solution": "In the first set, 50% magenta and 50% yellow (the tints of the full inks) mix to a light salmon red. In the second set, 50% cyan and 50% black would mix to a muted, greyish medium blue, which is D. A (maroon) needs magenta, B (dark olive) and C (light green) need yellow.",
+   "watermark": "none"
+  },
+  {
+   "n": 58,
+   "type": "MCQ",
+   "text": "Fill in the blank with the same font.",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Observation and Design Sensitivity",
+   "chapter": "Typography and Lettering",
+   "subtopic": "Identifying fonts",
+   "difficulty": "Moderate",
+   "solution": "The missing letter must be in the same typeface as the rest of the word: the same height, stroke weight, contrast between thick and thin strokes, and the same style of serifs. Compare each option's S with letters such as the A and N in the word, looking at the thickness of its main curve, its hairline ends and its height. A matches the word in all of these."
+  },
+  {
+   "n": 59,
+   "type": "MCQ",
+   "text": "A folding paper fan P is dipped in orange colour and then in red colour as shown. Which option is the closest representation of the resultant fan?",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Visualization and Spatial Reasoning",
+   "chapter": "Paper Folding and Cutting",
+   "subtopic": "Folding transparent sheets",
+   "difficulty": "Moderate",
+   "solution": "The closed fan is dipped first in orange and then in red, so the dipped part of every pleat takes the colours in bands, and the line where each colour stops runs across the pleats as it did across the closed fan. When the fan opens, the pleats fan out around the pivot, so those bands follow arcs around it rather than straight lines. A shows the orange and red bands placed and curved this way."
+  },
+  {
+   "n": 60,
+   "type": "MCQ",
+   "text": "A painting was created on the road as shown in the image. From the given options, identify which image was used to plan the painting (as seen from the top view).",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Environment and Society",
+   "chapter": "Art, Design and Architecture",
+   "subtopic": "Composition",
+   "difficulty": "Moderate",
+   "solution": "The 3D lettering is an anamorphic painting: it looks correct only from the viewer's position, where the far part of the road is shrunk by perspective. So the plan seen from above must make the far part (DESIGN) larger and the near part (FEST) smaller, like a keystone opened outward. C has this shape. A does the opposite, enlarging the near part, while B and D are close to the view itself and would look squashed from the viewer's spot.",
+   "watermark": "none"
+  },
+  {
+   "n": 61,
+   "type": "MCQ",
+   "text": "A game board was set with multiple decks of cards arranged in such a way that sum total of the cards on each side was equal (1+2+3+4=10). However, a new card was added on one side (blue card) and the cards were rearranged to maintain the rule, namely, that the sum total equals 10. How many cards can be added (starting from original position as shown on the left) before the game ends and no more cards can be added? Assume that every position must have at least one card and the sum total rule of 10 must be followed.",
+   "options": [
+    {
+     "label": "A",
+     "text": "4"
+    },
+    {
+     "label": "B",
+     "text": "6"
+    },
+    {
+     "label": "C",
+     "text": "8"
+    },
+    {
+     "label": "D",
+     "text": "10"
+    }
+   ],
+   "figure": true,
+   "subject": "Analytical and Logical Reasoning",
+   "chapter": "Quantitative Reasoning",
+   "subtopic": "Number patterns",
+   "difficulty": "Moderate",
+   "solution": "The board has 4 corner decks and 8 side decks, and each corner counts for two sides. Total cards = 4 x 10 minus the corner cards (they are counted twice). At the start the corners hold 1, 4, 1 and 4, so there are 40 minus 10 = 30 cards. The most cards come from making every corner 1, giving 40 minus 4 = 36. So 36 minus 30 = 6 cards can be added.",
+   "watermark": "none"
+  },
+  {
+   "n": 62,
+   "type": "MCQ",
+   "text": "Fatima is shown kicking the football. Identify the most appropriate illustration of the scene observed from behind.",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Visualization and Spatial Reasoning",
+   "chapter": "Mental Rotation and Views",
+   "subtopic": "Orthographic views",
+   "difficulty": "Moderate",
+   "solution": "Seen from behind, left and right are swapped: the leg she kicks with and the arm she swings out appear on the opposite sides from the front view, and we see the back of her head and body. Her pose, the ball's position relative to her foot and the direction of the kick must all stay the same. C shows the scene this way.",
+   "watermark": "none"
+  },
+  {
+   "n": 63,
+   "type": "MCQ",
+   "text": "Identify the correct silhouette of the coloured dragon.",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Observation and Design Sensitivity",
+   "chapter": "Visual Detail",
+   "subtopic": "Matching a part to the whole",
+   "difficulty": "Moderate",
+   "solution": "Compare the outline details: the gaps between the spines on the back, the claws and the inner foot. B has a different shape for the white gap under the spines, C has the small inner claw turned the wrong way, and D has lost one claw on the right front foot. A matches the coloured dragon at all these points.",
+   "watermark": "none"
+  },
+  {
+   "n": 64,
+   "type": "MCQ",
+   "text": "Shown below are trajectories of 4 flies over the juice glasses. Identify the fly that crossed over the maximum number of glasses.",
+   "options": [
+    {
+     "label": "A",
+     "text": "A"
+    },
+    {
+     "label": "B",
+     "text": "B"
+    },
+    {
+     "label": "C",
+     "text": "C"
+    },
+    {
+     "label": "D",
+     "text": "D"
+    }
+   ],
+   "figure": true,
+   "subject": "Visualization and Spatial Reasoning",
+   "chapter": "Mazes and Paths",
+   "subtopic": "Tracing paths",
+   "difficulty": "Hard",
+   "solution": "Follow each fly's path from the fly to its loose end and count the glasses it passes over, counting each glass once. Fly A passes over 15 glasses, fly B over 20, fly C over 18 and fly D over 15. So fly B crossed the most glasses.",
+   "watermark": "none"
+  },
+  {
+   "n": 65,
+   "type": "MCQ",
+   "text": "Vietnamese: Áo, Ba Lan, Bỉ, Đan Mạch, Hà Lan, Na Uy, Phần Lan, Thụy Điển\nEnglish: Finland, Austria, Denmark, Norway, Netherlands, Belgium, Sweden, Poland\n\nA list of 8 country names in Vietnamese (shown in red), and their English translations (shown in blue) are given below. The translation list is mixed up. Which of the following statements is TRUE?",
+   "options": [
+    {
+     "label": "A",
+     "text": "Đan Mạch is Denmark, Thụy Điển is Sweden, Phần Lan is Poland"
+    },
+    {
+     "label": "B",
+     "text": "Hà Lan is Netherlands, Áo is Austria, and Ba Lan is Poland"
+    },
+    {
+     "label": "C",
+     "text": "Bỉ is Belgium, Hà Lan is Finland, and Na Uy is Norway"
+    },
+    {
+     "label": "D",
+     "text": "Na Uy is Netherlands, Thụy Điển is Denmark, and Phần Lan is Finland"
+    }
+   ],
+   "figure": true,
+   "subject": "Language",
+   "chapter": "Grammar and Vocabulary",
+   "subtopic": "Text and image",
+   "difficulty": "Moderate",
+   "solution": "The Vietnamese names follow the sounds of the older Chinese-derived names: Áo is Austria, Ba Lan is Poland (Po-lan), Bỉ is Belgium, Đan Mạch is Denmark (Dan-mark), Hà Lan is Holland (the Netherlands), Na Uy is Norway, Phần Lan is Finland and Thụy Điển is Sweden. So B is true. A wrongly makes Phần Lan Poland, C makes Hà Lan Finland, and D makes Na Uy the Netherlands.",
+   "watermark": "none"
+  },
+  {
+   "n": 66,
+   "type": "MCQ",
+   "text": "India and Australia are playing the finals of World Cup T20 cricket match. India won the toss and decided to bat. At the end of 5 overs, India scored 24 runs with one wicket down. From there on, in every 5 overs, India scored 50% more runs than the previous 5 overs and lost two wickets. From the options, identify the correct graph that shows India’s final score.",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Analytical and Logical Reasoning",
+   "chapter": "Quantitative Reasoning",
+   "subtopic": "Ratio and proportion",
+   "difficulty": "Moderate",
+   "solution": "Runs in each 5-over block: 24, 36, 54, 81. The running totals are 24, 60, 114 and 195 after 5, 10, 15 and 20 overs, with 1 + 2 + 2 + 2 = 7 wickets (red dots). B passes through 24, 60, about 114 and ends near 195 with this pattern of wickets. A ends below 100, C jumps too sharply after 15 overs, and D ends near 180."
+  },
+  {
+   "n": 67,
+   "type": "MCQ",
+   "text": "Figure P shows a profile of a bus with circular wheels on a flat road. The options below show profiles of 4 wheels and corresponding roads. If the ‘wheel’ always moves without slipping or sliding, which of the options will result in the bumpiest ride?",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Practical and Scientific Knowledge",
+   "chapter": "Mechanisms and Machines",
+   "subtopic": "Motion and animation",
+   "difficulty": "Moderate",
+   "solution": "A wheel that is not round can still roll smoothly if the road is shaped to match it, so that the axle stays at one height: the rounded square on the gentle wave road in C is the classic example. The oval on the wave road in A and the four-lobed wheel on the zigzag road in B are matched to their roads in the same way. In D the axle sits off-centre near the round end of the teardrop, and the road's arches are far larger than the wheel, so as it rolls the axle rises and falls the most. D gives the bumpiest ride."
+  },
+  {
+   "n": 68,
+   "type": "MCQ",
+   "text": "In the figure shown below, the drive wheel P engages with the driven wheel Q through a pin marked in red. Which of the options describes the movement of Q, when P moves in the clockwise direction?",
+   "options": [
+    {
+     "label": "A",
+     "text": "Continuously anti-clockwise"
+    },
+    {
+     "label": "B",
+     "text": "Intermittently anti-clockwise"
+    },
+    {
+     "label": "C",
+     "text": "To and fro"
+    },
+    {
+     "label": "D",
+     "text": "Intermittently clockwise"
+    }
+   ],
+   "figure": true,
+   "subject": "Practical and Scientific Knowledge",
+   "chapter": "Mechanisms and Machines",
+   "subtopic": "Gears and pulleys",
+   "difficulty": "Moderate",
+   "solution": "This is a Geneva drive. Once per turn of P, the red pin enters a slot of Q and turns Q by a quarter turn, then leaves; for the rest of the turn the curved edge of P locks Q in place. Since the pin pushes the slot on the side facing P, Q turns opposite to P. So Q turns anti-clockwise in steps, that is intermittently.",
+   "watermark": "none"
+  }
+ ]
+}

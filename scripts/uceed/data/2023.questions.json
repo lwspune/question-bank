@@ -1,0 +1,1687 @@
+{
+ "year": 2023,
+ "paper": "UCEED 2023 Part A",
+ "source": "UCEED 2023 question paper, uceed.iitb.ac.in",
+ "note": "Part B (drawing) is not transcribed: no model answer exists.",
+ "questions": [
+  {
+   "n": 1,
+   "type": "NAT",
+   "text": "How many times does the shape sequence (shown on the top) appear in the grid below? The sequence may appear top-to-bottom, bottom-to-top, left-to-right, right-to-left or at an angle.",
+   "options": [],
+   "figure": true,
+   "subject": "Observation and Design Sensitivity",
+   "chapter": "Counting in Compositions",
+   "subtopic": "Counting shapes",
+   "difficulty": "Moderate",
+   "solution": "The sequence is hexagon, circle, square, upright triangle. Start from each of the five hexagons in the grid and look in all eight directions for a circle next to it, then a square and a triangle in the same line. Four runs complete: down the second column from row 2, along row 3 from column 1, diagonally from the hexagon at the end of row 3 down to the left, and leftwards along the bottom row from the corner hexagon. The sideways (right-pointing) triangles are a different shape and are not counted."
+  },
+  {
+   "n": 2,
+   "type": "NAT",
+   "text": "The bold lines correspond to four different paths P, Q, R and S. What is the length of the longest path? The length of each side of the square grids is 7 units. Use 22/7 as the value for \\(\\pi\\).",
+   "options": [],
+   "figure": true,
+   "subject": "Visualization and Spatial Reasoning",
+   "chapter": "Mazes and Paths",
+   "subtopic": "Tracing paths",
+   "difficulty": "Hard",
+   "solution": "Trace each path from left to right and add its pieces: a straight cell side is 7, a quarter circle of radius one cell (or a half circle of radius half a cell) is 11, and a quarter circle of radius two cells (or a half circle of radius one cell) is 22. P = 7 + 11 + 7 + 22 + 11 + 11 + 14 + 11 + 11 + 22 = 127. Q = 11 + 22 + 11 + 21 + 11 + 11 + 22 + 11 = 120. R = 22 + 11 + 11 + 11 + 22 + 56 = 133. S = 11 + 7 + 22 + 22 + 14 + 22 + 11 + 22 = 131. The longest is R, 133 units."
+  },
+  {
+   "n": 3,
+   "type": "NAT",
+   "text": "What is the maximum number of stars that can be packed inside the blue colour boundary including the one that is shown in the image below? The stars can be scaled but should not overlap. At least 4 points of every star should touch the blue colour boundary.",
+   "options": [],
+   "figure": true,
+   "subject": "Visualization and Spatial Reasoning",
+   "chapter": "Puzzles and Assembly",
+   "subtopic": "Tiling with shapes",
+   "difficulty": "Hard",
+   "solution": "The two long blue edges meet at a point beyond the right end, so each next star is a smaller copy of the first, scaled towards that point. The next star's top point sits at the first star's upper right point, and its left point fits into the notch of the first star, so they touch without overlapping; each star is about 0.65 times the previous one. Measuring along the figure, the sixth star's right points land at the short right edge of the boundary and a seventh would not fit, so 6 stars fit.",
+   "watermark": "none"
+  },
+  {
+   "n": 4,
+   "type": "NAT",
+   "text": "A dice throw can result in the numbers 2, 3, 5 or 6. Every 4th throw will result in 3. What is the minimum number of times the dice has to be thrown for the pawn to move from zero to reach exactly at 100?",
+   "options": [],
+   "figure": true,
+   "subject": "Analytical and Logical Reasoning",
+   "chapter": "Quantitative Reasoning",
+   "subtopic": "Probability and counting",
+   "difficulty": "Moderate",
+   "solution": "The board has ladders only: 3 to 61, 6 to 75, 11 to 47, 23 to 37, 49 to 92, 63 to 83 and 82 to 99. No pair of throws reaches 94, 95, 97 or 98, so 3 throws cannot finish, and 4 throws would need 97 after three throws (the 4th throw is fixed at 3), which is also unreachable. Five throws work: 5 (to 5), 6 (to 11, ladder to 47), 2 (to 49, ladder to 92), the forced 3 (to 95), then 5 (to 100)."
+  },
+  {
+   "n": 5,
+   "type": "NAT",
+   "text": "Count the number of human figures in the picture.",
+   "options": [],
+   "figure": true,
+   "subject": "Observation and Design Sensitivity",
+   "chapter": "Counting in Compositions",
+   "subtopic": "Counting objects",
+   "difficulty": "Hard",
+   "solution": "Count region by region. Upper balcony, left part: 5 people (including one seen from the back behind a pillar); upper balcony, right part: 7. Foreground left: the woman, the person behind her and the man seen from the back, 3. One small figure behind the hanging lamp. The crowd in the central doorway: 6, including the man walking towards us. Right side: the woman on the stairs, the person behind the counter, the person bent over the counter, the woman with the bun and the old man, 5. Total 5 + 7 + 3 + 1 + 6 + 5 = 27."
+  },
+  {
+   "n": 6,
+   "type": "NAT",
+   "text": "In the figure given below, the area of the largest regular hexagon is 720 units. What is the area of the shaded portion?",
+   "options": [],
+   "figure": true,
+   "subject": "Analytical and Logical Reasoning",
+   "chapter": "Quantitative Reasoning",
+   "subtopic": "Area and geometry",
+   "difficulty": "Moderate",
+   "solution": "The dashed guide lines show the middle hexagon has half the side of the largest and the smallest has a quarter of its side. Area scales with the square of the side, so the smallest hexagon has area 720 divided by 16, which is 45. The small hexagon is drawn as a cube made of three equal rhombi, and two of them are shaded, so the shaded area is two thirds of 45, which is 30."
+  },
+  {
+   "n": 7,
+   "type": "NAT",
+   "text": "A tetrahedron of side 18 units and a cone having base diameter of 10 units are cutting through a sphere as shown. Count the total number of surfaces in the resultant sphere.",
+   "options": [],
+   "figure": true,
+   "subject": "Visualization and Spatial Reasoning",
+   "chapter": "Mental Rotation and Views",
+   "subtopic": "Faces of solids",
+   "difficulty": "Hard",
+   "solution": "Pushed right through along their axes, the tetrahedron cuts a triangular hole with 3 flat faces and the cone cuts a round hole of diameter 10. Both holes pass through the centre. The circle of diameter 10 fits inside the triangle of side 18 (its inscribed circle has diameter about 10.4), so the triangular hole cuts the round hole completely in two. Surfaces: the outer sphere 1, three flat faces 3, and two separate curved pieces of the round hole 2, a total of 6."
+  },
+  {
+   "n": 8,
+   "type": "NAT",
+   "text": "Tim cycled from his house to his friend John's house and then on to his (Tim's) school without stopping. The average speed for his entire journey was 26 km/hr. The distance from John's house to Tim's school is 0.3 times the distance from Tim's house to John's house. Tim's speed from John's house to Tim's school was twice that of Tim's speed from Tim's house to John's house. What was Tim's average speed from John's house to Tim's school in km/hr?",
+   "options": [],
+   "figure": false,
+   "subject": "Analytical and Logical Reasoning",
+   "chapter": "Quantitative Reasoning",
+   "subtopic": "Ratio and proportion",
+   "difficulty": "Easy",
+   "solution": "Let the first leg be d at speed v, so the second leg is 0.3d at speed 2v. Total time is d/v + 0.3d/(2v) = 1.15d/v and total distance is 1.3d. Average speed 1.3v/1.15 = 26 gives v = 23 km/hr, so the speed from John's house to school is 2v = 46 km/hr."
+  },
+  {
+   "n": 9,
+   "type": "NAT",
+   "text": "Identify the total number of differences in the images shown below.",
+   "options": [],
+   "figure": true,
+   "subject": "Observation and Design Sensitivity",
+   "chapter": "Visual Detail",
+   "subtopic": "Comparing details",
+   "difficulty": "Moderate",
+   "solution": "Compare the two pictures part by part. Differences: the shape of the girl's hair bow, one book spine colour on the shelf, an extra pink crayon on the table, the pointing boy's tongue, the badge on the right girl's shirt, a button missing on the middle boy's shirt, the stripe on the girl's tie under her arm, the angle of the pencil on the floor, and the cherry on the cupcake. That makes 9.",
+   "watermark": "none"
+  },
+  {
+   "n": 10,
+   "type": "NAT",
+   "text": "Count the number of cats in the given image.",
+   "options": [],
+   "figure": true,
+   "subject": "Observation and Design Sensitivity",
+   "chapter": "Counting in Compositions",
+   "subtopic": "Counting objects",
+   "difficulty": "Hard",
+   "solution": "The picture is made of overlapping see-through cat silhouettes, each a sitting cat with two pointed ears and a curling tail. Count heads rather than bodies: find each pair of pointed ears with the notch between them, and tick each one off, working from the top of the cluster down. Where two silhouettes overlap, follow each outline separately so a shared edge is not counted twice. IIT Bombay's final key gives 11. This is a dense picture, so a careful count can easily land one off."
+  },
+  {
+   "n": 11,
+   "type": "NAT",
+   "text": "Two trains of unequal length have speeds of 60 and 50 km/hr. When they travel in opposite directions in straight line tracks, they take 9 seconds to completely cross each other. When they travel in the same direction, a person in the faster train sees the slower train for 18 seconds. For how much time (in seconds) would a person in the slower train see the faster train when the trains travel in the same direction?",
+   "options": [],
+   "figure": false,
+   "subject": "Analytical and Logical Reasoning",
+   "chapter": "Quantitative Reasoning",
+   "subtopic": "Ratio and proportion",
+   "difficulty": "Moderate",
+   "solution": "In opposite directions the relative speed is 110 km/hr, about 30.56 m/s, so the two lengths add to 30.56 times 9 = 275 m. In the same direction the relative speed is 10 km/hr = 25/9 m/s; the person in the faster train passes the slower train's length in 18 s, so the slower train is 50 m long and the faster train 225 m. A person in the slower train sees the faster train for 225 divided by 25/9 = 81 seconds."
+  },
+  {
+   "n": 12,
+   "type": "NAT",
+   "text": "The image shows the profile of the blade which is designed to turn a wooden block, rotating about the axis PQ. Calculate the volume of the turned wooden block between P and Q. Consider the value of \\(\\pi\\) to be 22/7.",
+   "options": [],
+   "figure": true,
+   "subject": "Analytical and Logical Reasoning",
+   "chapter": "Quantitative Reasoning",
+   "subtopic": "Volume and capacity",
+   "difficulty": "Moderate",
+   "solution": "The block left behind is the region between the blade edge and the axis, turned about PQ. From 0 to 4 the edge rises in a straight line from radius 0 to radius 1, giving a cone of volume one third of pi times 1 squared times 4, which is 4pi/3. From 4 to 6 the edge is a quarter circle of radius 2 centred on the axis at 4, giving a hemisphere of volume two thirds of pi times 8, which is 16pi/3. Total 20pi/3 = 440/21, about 20.95."
+  },
+  {
+   "n": 13,
+   "type": "NAT",
+   "text": "A blue colour liquid is used completely to make a star shaped jelly using the mould shown on the right. What is the value of 'X' in cm? Ignore the wall thickness of the mould and consider the value of \\(\\pi\\) to be 22/7.",
+   "options": [],
+   "figure": true,
+   "subject": "Analytical and Logical Reasoning",
+   "chapter": "Quantitative Reasoning",
+   "subtopic": "Volume and capacity",
+   "difficulty": "Moderate",
+   "solution": "The liquid fills a cylinder of diameter 12 cm to a height of 6.6 cm, written as 3.8 times root 3, so its volume is (22/7) times 36 times 3.8 root 3. The six-pointed star with edge X is made of 12 small equilateral triangles of side X, so its area is 3 root 3 times X squared, and with depth 4 cm its volume is 12 root 3 times X squared. Equating, X squared = (22/7) times 3 times 3.8, about 35.8, so X is about 6 cm."
+  },
+  {
+   "n": 14,
+   "type": "NAT",
+   "text": "What number replaces the question mark? (The paper prints only the picture for this question.)",
+   "options": [],
+   "figure": true,
+   "subject": "Analytical and Logical Reasoning",
+   "chapter": "Codes and Series",
+   "subtopic": "Number patterns",
+   "difficulty": "Moderate",
+   "solution": "Read the six sticks of each box as a 6-digit binary number, a red head being 1 and a plain stick 0. The first box is 001000 = 8, then 001010 = 10, 001011 = 11, 001101 = 13, 001110 = 14 and 010001 = 17. The last box is 010100, which is 16 + 4 = 20."
+  },
+  {
+   "n": 15,
+   "type": "NAT",
+   "text": "Shown below are four sides of a rectangular dice. If 3 such dice are thrown together, what is the probability of getting a total sum of 4? Consider the value of the blank side to be zero.",
+   "options": [],
+   "figure": true,
+   "subject": "Visualization and Spatial Reasoning",
+   "chapter": "Mental Rotation and Views",
+   "subtopic": "Dice and their faces",
+   "difficulty": "Moderate",
+   "solution": "Each die shows 0, 1, 2 or 3 with equal chance, so three dice have 4 cubed = 64 outcomes. Ways to make 4 from three values each 0 to 3: all ways of splitting 4 into three parts is 15, minus the 3 ways that use a 4, leaving 12. The probability is 12/64 = 3/16 = 0.1875."
+  },
+  {
+   "n": 16,
+   "type": "NAT",
+   "text": "How many distinct types of characters appear in the figure given below?",
+   "options": [],
+   "figure": true,
+   "subject": "Observation and Design Sensitivity",
+   "chapter": "Counting in Compositions",
+   "subtopic": "Counting letters",
+   "difficulty": "Hard",
+   "solution": "Many characters differ only in a small stroke: a straight tail, an arrow tail or a hooked tail at the bottom; a short tick, a tall stroke, a slash or a curled flag on top. Group the 49 characters by matching every stroke. The groups, with how often each occurs, are 5, 3, 3, 1, 2, 3, 3, 3, 4, 4, 1, 2, 1, 2, 1, 1, 3, 1, 2, 1, 1, 1, 1, which is 23 different characters adding to 49."
+  },
+  {
+   "n": 17,
+   "type": "NAT",
+   "text": "Objects made out of cardboard are shown in the image below. Count the number of objects shown as open containers in this image.",
+   "options": [],
+   "figure": true,
+   "subject": "Observation and Design Sensitivity",
+   "chapter": "Counting in Compositions",
+   "subtopic": "Counting objects",
+   "difficulty": "Moderate",
+   "solution": "Closed objects are the cubes with a white lid, the pyramids and the tall obelisks. Open containers show their inside walls: the dark cubes whose top shows two inner walls (9), the dark trays that widen upwards with their inner rim visible (6), and the sloped trays whose white floor and grey inner walls show (6). Total 9 + 6 + 6 = 21."
+  },
+  {
+   "n": 18,
+   "type": "NAT",
+   "text": "A triangular pyramid with equal sides can be flipped on its edges without slipping or sliding as shown on the left. What is the minimum number of flips needed for the pyramid to reach the finishing line if the starting position is as shown on the right?",
+   "options": [],
+   "figure": true,
+   "subject": "Visualization and Spatial Reasoning",
+   "chapter": "Mental Rotation and Views",
+   "subtopic": "Rotation and reassembly",
+   "difficulty": "Moderate",
+   "solution": "Seen from above, the pyramid's base is an equilateral triangle of side 30, height about 26, and each flip moves it to the neighbouring triangle across one edge. Moving up one row of triangles takes two flips: one over a slanted edge to the inverted triangle, then one over its top edge. The line is 135 away, which is in the sixth row (rows span 0 to 26, 26 to 52, and so on, the sixth from 129.9 to 155.9). Reaching the upright triangle in the sixth row takes 5 times 2 = 10 flips."
+  },
+  {
+   "n": 19,
+   "type": "MSQ",
+   "text": "Shown in the top row are 4 pieces of building blocks. Which of the option(s) is/are made using all four pieces?",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Visualization and Spatial Reasoning",
+   "chapter": "Puzzles and Assembly",
+   "subtopic": "Assembling pieces",
+   "difficulty": "Hard",
+   "solution": "All four pieces have the same depth, so compare the end profiles: a right-angled half-square wedge, a square (the cube), a slanted parallelogram of the same width and height, and a second triangular wedge, a total of three square units. Two triangles placed together make a slanted parallelogram, and a cube on a standing parallelogram makes a block two units tall, which gives B. A ramp built from the wedges and the slanted block gives A, and placing the triangles at the two ends of the cube and the parallelogram gives the six-sided block C. D has a base slab much thinner than any piece, so it cannot be built."
+  },
+  {
+   "n": 20,
+   "type": "MSQ",
+   "text": "A printer wishes to print four colours, Crimson, Pink, Brown, and Indigo, using CMYK [Cyan, Magenta, Yellow and Key (black)] inks. The printer uses the CMYK combinations shown below (in % of each ink) to produce the colours on the right. Which combination(s) will result in the correct colour(s)?",
+   "options": [
+    {
+     "label": "A",
+     "text": "C = 05%, M = 90%, Y = 70%, K = 05%: Crimson"
+    },
+    {
+     "label": "B",
+     "text": "C = 05%, M = 15%, Y = 70%, K = 00%: Pink"
+    },
+    {
+     "label": "C",
+     "text": "C = 50%, M = 50%, Y = 100%, K = 05%: Brown"
+    },
+    {
+     "label": "D",
+     "text": "C = 50%, M = 90%, Y = 00%, K = 05%: Indigo"
+    }
+   ],
+   "figure": true,
+   "subject": "Practical and Scientific Knowledge",
+   "chapter": "Light, Colour and Optics",
+   "subtopic": "Colour and light",
+   "difficulty": "Moderate",
+   "solution": "Magenta and yellow together make red, so high magenta with a lot of yellow and little cyan (A) gives crimson. B has little magenta and a lot of yellow, which prints a pale yellow, not pink; pink needs high magenta and little yellow. C has equal cyan and magenta with full yellow, which gives a muddy olive brown rather than the reddish brown shown, which needs much more magenta than cyan. D mixes cyan and a lot of magenta with no yellow, which gives the purple shown."
+  },
+  {
+   "n": 21,
+   "type": "MSQ",
+   "text": "Which of the statement(s) is/are true?",
+   "options": [
+    {
+     "label": "A",
+     "text": "Jharkhand has the highest number of sportspersons but its percentage of women representation is not the highest."
+    },
+    {
+     "label": "B",
+     "text": "Of all the North-Eastern states, Nagaland produces the highest number of sportspersons."
+    },
+    {
+     "label": "C",
+     "text": "Jammu & Kashmir has low number of sportspersons but high women's representation."
+    },
+    {
+     "label": "D",
+     "text": "Even though Tamil Nadu and Uttar Pradesh have the same number of sportspersons, Uttar Pradesh fares higher in women's representation as compared to Tamil Nadu."
+    }
+   ],
+   "figure": true,
+   "subject": "Language",
+   "chapter": "Reading and Interpretation",
+   "subtopic": "Text and image",
+   "difficulty": "Easy",
+   "solution": "Jharkhand has the most sportspersons (759) but 50.1% women, below Nagaland's 73.5%, so A is true. Among the North-Eastern states Manipur has 358, far more than Nagaland's 34, so B is false. Jammu and Kashmir has few sportspersons (73) and also the lowest women's share (10.9%), so C is false. Tamil Nadu and Uttar Pradesh both have 405, and Uttar Pradesh has 43.4% women against Tamil Nadu's 30.6%, so D is true."
+  },
+  {
+   "n": 22,
+   "type": "MSQ",
+   "text": "The figure below shows four mechanisms made using links and hinges. If circles represent hinges, which of the option(s) will allow relative motions between the links?",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Practical and Scientific Knowledge",
+   "chapter": "Mechanisms and Machines",
+   "subtopic": "Linkages",
+   "difficulty": "Hard",
+   "solution": null
+  },
+  {
+   "n": 23,
+   "type": "MSQ",
+   "text": "Shown on the left is a sheet of stickers. Identify the option(s) in which monkeys of the same species are sitting together.",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Observation and Design Sensitivity",
+   "chapter": "Visual Detail",
+   "subtopic": "Matching a part to the whole",
+   "difficulty": "Hard",
+   "solution": "The sheet has two kinds of monkey: langurs (black faces, very long tails, such as the standing one whose tail loops over its head, the sitting one with a looped tail and the mother lying with a long curled tail) and macaques (the others, with shorter tails). Match each silhouette group to its stickers by the tails and poses. In A and C each group is either all langurs (the looped-tail standing langur with the other two langurs) or all macaques. In B and D the looped-tail langur shares a group with macaques such as the walking one."
+  },
+  {
+   "n": 24,
+   "type": "MSQ",
+   "text": "Different views of the cross section of a fish toy are shown here. The points P and Q are connected in such way that the fish tail waves. The grey colour gear and the green colour part are joined together. The rod is free to move depending on how it is connected to the green part. Which of the option(s) will work to wave the tail?",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Practical and Scientific Knowledge",
+   "chapter": "Mechanisms and Machines",
+   "subtopic": "Linkages",
+   "difficulty": "Hard",
+   "solution": null
+  },
+  {
+   "n": 25,
+   "type": "MSQ",
+   "text": "A tourist is shooting photographs of an ancient building from four locations A, B, C and D marked by x. The tourist is using only one camera without changing its magnification. Identify the location(s) in the floor plan which will result in the given photograph.",
+   "options": [
+    {
+     "label": "A",
+     "text": "A"
+    },
+    {
+     "label": "B",
+     "text": "B"
+    },
+    {
+     "label": "C",
+     "text": "C"
+    },
+    {
+     "label": "D",
+     "text": "D"
+    }
+   ],
+   "figure": true,
+   "subject": "Visualization and Spatial Reasoning",
+   "chapter": "Mental Rotation and Views",
+   "subtopic": "Orthographic views",
+   "difficulty": "Hard",
+   "solution": "The photograph looks down a central aisle with five pillars on each side, the nearest pair just beside the camera at the edges of the frame. From A, looking up the middle, the two central columns each have five pillars, starting right in front of the camera. From D, looking left between the third and fourth rows, each row also has five pillars ahead, the sixth pillar being behind the camera. From C only four pillars lie ahead in each central column, and from B the two sides are unequal (two pillars in the top row against five in the next). So A and D give the photograph."
+  },
+  {
+   "n": 26,
+   "type": "MSQ",
+   "text": "The options show four ways of attempting to write the word \"universe\" in a mix of lower-case and upper-case letters. Which of the option(s) is/are correctly read as \"universe\"?",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Observation and Design Sensitivity",
+   "chapter": "Typography and Lettering",
+   "subtopic": "Letters in a composition",
+   "difficulty": "Moderate",
+   "solution": null
+  },
+  {
+   "n": 27,
+   "type": "MSQ",
+   "text": "Which of the option(s) is/are from the same font family (i.e. weight and/or width variations) of the words given below?",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure: फेड]"
+    },
+    {
+     "label": "B",
+     "text": "[figure: वात]"
+    },
+    {
+     "label": "C",
+     "text": "[figure: धागा]"
+    },
+    {
+     "label": "D",
+     "text": "[figure: अकल]"
+    }
+   ],
+   "figure": true,
+   "subject": "Observation and Design Sensitivity",
+   "chapter": "Typography and Lettering",
+   "subtopic": "Identifying fonts",
+   "difficulty": "Moderate",
+   "solution": null
+  },
+  {
+   "n": 28,
+   "type": "MSQ",
+   "text": "Which of the pieces could be used four times individually to form a square? The pieces can be rotated and flipped but should not be overlapped.",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Visualization and Spatial Reasoning",
+   "chapter": "Puzzles and Assembly",
+   "subtopic": "Tiling with shapes",
+   "difficulty": "Moderate",
+   "solution": "Each piece must have a quarter of the square's area. A is a trapezoid half the square wide whose two parallel sides add up to the square's side, so two of them (one turned upside down) make a half-square strip, and two strips make the square. B has a right angle at one corner and another right angle where its two equal cut edges meet, the shape you get by cutting a square through its centre with two perpendicular slanted lines, so four of them make a pinwheel square. D is a quarter square with a bulge on one side matching the scoop on the next side, so four interlock like jigsaw pieces. C's notch and its triangular tab are on different sides at different positions, so four copies cannot close up."
+  },
+  {
+   "n": 29,
+   "type": "MSQ",
+   "text": "Shown below is a coconut broken into two pieces. Identify the correct representation(s) of the coconut.",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Observation and Design Sensitivity",
+   "chapter": "Visual Detail",
+   "subtopic": "Matching a part to the whole",
+   "difficulty": "Moderate",
+   "solution": "A coconut has its three eyes at one end only, the end where the tuft of husk fibre is usually left on. So of the two halves, only one can show the eyes or the tuft, and the other half is plain. A shows a plain half and a half with the tuft (covering the eyes), and C shows a half with the eyes and a plain half, so both are possible. B puts the eyes on one half and the tuft on the other, and D puts eyes on both halves, which cannot happen."
+  },
+  {
+   "n": 30,
+   "type": "MSQ",
+   "text": "Shown below is an image of solid rings of black and white patterns. A ring going inside another is called a link. Which of the statement(s) is/are TRUE.",
+   "options": [
+    {
+     "label": "A",
+     "text": "All rings are linked to form one continuous chain."
+    },
+    {
+     "label": "B",
+     "text": "One ring does not have any link."
+    },
+    {
+     "label": "C",
+     "text": "One ring has three links."
+    },
+    {
+     "label": "D",
+     "text": "Two rings have only one link."
+    }
+   ],
+   "figure": true,
+   "subject": "Visualization and Spatial Reasoning",
+   "chapter": "Mental Rotation and Views",
+   "subtopic": "Interlocking rings",
+   "difficulty": "Hard",
+   "solution": "Each ring is drawn in black and white segments, and the white segments hide what is behind them, so at every crossing the ring that is in front cuts off the black of the ring behind. Two rings are linked when each is in front at one of their two crossings. Checking the crossings of the six rings in turn, they form a single chain, so the two end rings each have only one link."
+  },
+  {
+   "n": 31,
+   "type": "MSQ",
+   "text": "The options show different configurations of refill bottles of mosquito repellent, for an atypical socket shown on the left. After fitting, the red mark on the refill bottle must align with the red mark on the machine. Which of the option(s) will allow all of the liquid to be consumed?",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Practical and Scientific Knowledge",
+   "chapter": "Everyday Objects and Systems",
+   "subtopic": "Product usability",
+   "difficulty": "Hard",
+   "solution": "The socket is tilted 25 degrees, so the fitted bottle hangs tilted by 25 degrees. A has a flat bottom with the wick in the middle, so when tilted the last of the liquid runs to one corner away from the wick. B and C have cone-shaped bottoms sloping at 30 degrees towards the wick; a 25 degree tilt still leaves every part of the floor sloping down to the wick, so it soaks up all the liquid. In D the neck is set at 30 degrees, so on the tilted socket the body hangs almost upright, tipped slightly towards the corner where the wick ends, and the liquid collects there."
+  },
+  {
+   "n": 32,
+   "type": "MSQ",
+   "text": "With reference to the image below, which of the statement(s) is/are false?",
+   "options": [
+    {
+     "label": "A",
+     "text": "Ramps are good solution for standard wheel chair users to access any building with entry above ground level."
+    },
+    {
+     "label": "B",
+     "text": "Height along with the length of the ramp will determine if standard wheel chair users can use it without assistance."
+    },
+    {
+     "label": "C",
+     "text": "People on standard wheel chair will need assistance to go up and down shorter length ramps irrespective of its height."
+    },
+    {
+     "label": "D",
+     "text": "A shorter length of ramp is convenient for standard wheel chair users without assistance, if the height of the ramp is high."
+    }
+   ],
+   "figure": true,
+   "subject": "Environment and Society",
+   "chapter": "Civic and General Awareness",
+   "subtopic": "Signs and road rules",
+   "difficulty": "Easy",
+   "solution": null
+  },
+  {
+   "n": 33,
+   "type": "MSQ",
+   "text": "In which of the option(s) dust-bin lids will open?",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Practical and Scientific Knowledge",
+   "chapter": "Mechanisms and Machines",
+   "subtopic": "Levers",
+   "difficulty": "Moderate",
+   "solution": "Pressing the pedal turns the bottom lever about its pivot. In A, B and D the lever has one pivot, so its left end rises and pushes the rod up; in C the lever has an extra pivot and joint, which reverses it, so the rod is pulled down. The lid opens only if the rod pushes up on a point on the lid's side of the lid's hinge, or pulls down on a point on the far side. In B the rod pushes up just to the lid's side of the hinge, and in C the rod pulls down on the tab beyond the hinge, so both open. In A and D the rod pushes up on the tab beyond the hinge, which only presses the lid shut."
+  },
+  {
+   "n": 34,
+   "type": "MSQ",
+   "text": "On 16th July 2022, Parvathy bought 4 new pairs of socks A, B, C and D to train herself for the Marathon race on Gandhi Jayanti. She started her training next day wearing the new socks. She trained every day, including the day of the marathon, wearing the socks (one pair every day) in the following sequence: C, A, B and D. Unfortunately, she could not train from 3rd to 22nd September 2022 as she was unwell. She resumed her training on 23rd wearing pair 'A' socks and continued with the same sequence till the event day. Identify the pair of socks that Parvathy wore the maximum during her entire training period.",
+   "options": [
+    {
+     "label": "A",
+     "text": "A"
+    },
+    {
+     "label": "B",
+     "text": "B"
+    },
+    {
+     "label": "C",
+     "text": "C"
+    },
+    {
+     "label": "D",
+     "text": "D"
+    }
+   ],
+   "figure": false,
+   "subject": "Analytical and Logical Reasoning",
+   "chapter": "Logical Deduction",
+   "subtopic": "Number patterns",
+   "difficulty": "Moderate",
+   "solution": "From 17 July to 2 September is 15 + 31 + 2 = 48 days, exactly 12 rounds of C, A, B, D, so each pair is worn 12 times. From 23 September to 2 October (Gandhi Jayanti) is 10 days starting with A: A, B, D, C, A, B, D, C, A, B, so A and B get 3 more and C and D 2 more. Totals: A 15, B 15, C 14, D 14, so A and B are worn the most."
+  },
+  {
+   "n": 35,
+   "type": "MSQ",
+   "text": "The rectilinear hollow box shown on the left is cut along plane 1 and plane 2. Which of the option(s) show(s) correct unfolded pieces?",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Visualization and Spatial Reasoning",
+   "chapter": "Paper Folding and Cutting",
+   "subtopic": "Cutting and folding",
+   "difficulty": "Hard",
+   "solution": "Plane 1 is the upright plane through the top face's diagonal and plane 2 runs straight back through the front face's diagonal, so the hollow box falls into four pieces. Two pieces are a side face (a rectangle) with a triangle from the front or back face and a triangle from the top or bottom face; both triangles have their right angle at the same corner of the rectangle, as in B, but not A, where they are at different corners. The other two pieces are just two triangles joined along a box edge, a large one (width by height) and a small one (width by depth), with their right angles at opposite ends of the shared edge, as in C; D has both right angles at the same end."
+  },
+  {
+   "n": 36,
+   "type": "MSQ",
+   "text": "Shown below are tables of a new design. Which table(s) will not tilt, if given a small perturbation in any direction?",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Practical and Scientific Knowledge",
+   "chapter": "Everyday Objects and Systems",
+   "subtopic": "Product usability",
+   "difficulty": "Moderate",
+   "solution": null
+  },
+  {
+   "n": 37,
+   "type": "MCQ",
+   "text": "Imagine that you are travelling in a passenger train, with 22 coaches, depicted by curved black lines in the options. You are sitting on a window seat in the 19th coach (seat position marked as P). At a given instant of time when the train is heading northwards, select the option which will allow you to see the engine at the front clearly through the window of your seat.",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Visualization and Spatial Reasoning",
+   "chapter": "Mental Rotation and Views",
+   "subtopic": "Tracing paths",
+   "difficulty": "Moderate",
+   "solution": "The coaches are numbered towards the engine: the 20th coach is drawn below yours, so with 22 coaches the 20th, 21st and 22nd and then the engine lie ahead, down the page. Facing that way, the window marked P is on your left, so while the train heads north it looks west. You can see the engine only if the track just ahead bends to your left, towards the west. In C the train is heading north at P and the track ahead swings west, so the three coaches and the engine come into view on your side. In B the track ahead bends east, away from your window, and in A and D the train is not heading north at P.",
+   "watermark": "none"
+  },
+  {
+   "n": 38,
+   "type": "MCQ",
+   "text": "Which of the moulds shown on the right can be used to make the cake shown on the left?",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Visualization and Spatial Reasoning",
+   "chapter": "Mental Rotation and Views",
+   "subtopic": "Matching a part to the whole",
+   "difficulty": "Moderate",
+   "solution": "A mould holds the negative of the cake, and the cake comes out turned over, so the mould seen from above is the mirror image of the cake seen from above. On the cake the tall narrow cone is to the left of the wide cone, the house is on the left and the arched block is at the front right. In the mirror image the wide cone is on the left, the narrow cone on the right, the arched block on the left and the house on the right, with the arched block at the same slant as in A. That is mould B. A is the cake itself, not mirrored, C has the arched block turned the wrong way, and D has the cones in the wrong order.",
+   "watermark": "none"
+  },
+  {
+   "n": 39,
+   "type": "MCQ",
+   "text": "Which of the options shown on the right, when folded at the lines, will resemble the paper shown on the left?",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Visualization and Spatial Reasoning",
+   "chapter": "Paper Folding and Cutting",
+   "subtopic": "Cutting and folding",
+   "difficulty": "Hard",
+   "solution": "Unfold the paper in your mind in the reverse order of folding. Each fold line acts as a mirror: the flap folded over lies as the mirror image of the part it covers, so its edges show where the fold lines must be. Match the angle of each folded edge and the size of the triangle it makes with the fold lines in each option. Only A's fold lines give the folded shape shown."
+  },
+  {
+   "n": 40,
+   "type": "MCQ",
+   "text": "The faces of a solved Rubik's Cube are shown in the figure. A 90 degree clock wise turn of a face T is denoted as 'T+' and 90 degree anticlockwise rotation is denoted as 'T -'. What is the result of the operation T+, D+, R-, L-? All operations are done looking directly at the face.",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Visualization and Spatial Reasoning",
+   "chapter": "Mental Rotation and Views",
+   "subtopic": "Rotation and reassembly",
+   "difficulty": "Hard",
+   "solution": "Start with top yellow, front red, right green, back blue, left orange and down grey. T+ and D+ turn the top and bottom layers, so the front's top and bottom rows take colours from the side faces. R- then brings yellow from the top down onto the front's right column, and L- brings the grey of the down face up into the front's left column. The front ends as a grey left column, a green, red, orange middle column and a yellow right column, with the top showing green, yellow, green along its back row. That is option C.",
+   "watermark": "none"
+  },
+  {
+   "n": 41,
+   "type": "MCQ",
+   "text": "Shown on the left are all the 6 faces of a cube. Which option can be folded into this cube?",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Visualization and Spatial Reasoning",
+   "chapter": "Mental Rotation and Views",
+   "subtopic": "Cutting and folding",
+   "difficulty": "Hard",
+   "solution": "The cube has two faces with diagonal double stripes and four with straight double stripes. In the first view the two diagonals sit on adjacent faces and both run into the same bottom corner of their shared edge, and the straight stripe on top runs parallel to the edge it shares with the right face. In the second view three straight-striped faces meet at a corner, each stripe parallel to its edge with the next face going clockwise. Folding the nets, B and D give diagonals that do not meet at a common corner, and A puts the straight stripe beside the diagonals the wrong way round. Only C satisfies both views."
+  },
+  {
+   "n": 42,
+   "type": "MCQ",
+   "text": "Which option replaces the question mark? (The paper prints only the picture for this question.)",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Visualization and Spatial Reasoning",
+   "chapter": "Pattern and Figure Completion",
+   "subtopic": "Figure series",
+   "difficulty": "Moderate",
+   "solution": "Each figure is two 3 by 6 blocks of cells. At every step the cells around the edge of the upper block move one place anticlockwise round the ring, while its four inner cells stay fixed. The cells around the edge of the lower block move one place clockwise, again with the inner cells fixed. Applying one more step to the third figure gives option D exactly."
+  },
+  {
+   "n": 43,
+   "type": "MCQ",
+   "text": "The white part in the shoe sole shown left represents the embossed / raised area. Find out the right footprint of the shoe from the given options.",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Observation and Design Sensitivity",
+   "chapter": "Visual Detail",
+   "subtopic": "Comparing details",
+   "difficulty": "Hard",
+   "solution": "A footprint is the mirror image of the sole, and only the raised (white) parts print, so the print is black where the sole is white. The 3 on the heel must therefore appear reversed, which rules out D. Comparing details with the mirrored sole: A closes up the thin white slit beside the zigzag band, and C replaces the tiny dot in the row of dots with a larger one. B keeps both the slit and the tiny dot, so B is the true print."
+  },
+  {
+   "n": 44,
+   "type": "MCQ",
+   "text": "Which option replaces the question mark? (The paper prints only the picture for this question.)",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Analytical and Logical Reasoning",
+   "chapter": "Codes and Series",
+   "subtopic": "Letter codes",
+   "difficulty": "Moderate",
+   "solution": "Each emoji position codes one property of the shapes. First emoji: squares give a smile, triangles a frown. Second: blue gives an open grin, brown a teeth grimace. Third: two shapes give the closed-eye smile, three give the sweat-drop smile. Fourth: outline shapes give the tongue-out face, filled shapes the winking tongue face. Two filled blue triangles therefore give frown, grin, closed-eye smile, winking tongue face, which is option A.",
+   "watermark": "none"
+  },
+  {
+   "n": 45,
+   "type": "MCQ",
+   "text": "The following operations are done on the curve shown in the figure.\n1. The curve is revolved 360 degrees around the Y axis.\n2. The resulting form is then cloned twice around the X axis at 120 degrees to each other.\n3. The resulting form is then cloned once about the Y axis at 90 degrees.\nWhat is the resulting 3D form?",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Visualization and Spatial Reasoning",
+   "chapter": "Mental Rotation and Views",
+   "subtopic": "Rotation and reassembly",
+   "difficulty": "Moderate",
+   "solution": "Revolving the curve about the Y axis gives a round-ended cylinder standing upward from the origin. Cloning it twice about the X axis at 120 degrees gives three arms: one straight up and two pointing downward and outward, front and back. Cloning that once about the Y axis at 90 degrees keeps the upward arm and adds two more downward arms, to the left and right. The result is one vertical arm and four arms slanting down, which is B."
+  },
+  {
+   "n": 46,
+   "type": "MCQ",
+   "text": "Which combination shows lunar eclipse?",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Practical and Scientific Knowledge",
+   "chapter": "Light, Colour and Optics",
+   "subtopic": "Light and shadow",
+   "difficulty": "Easy",
+   "solution": "A lunar eclipse happens when the Earth lies between the Sun and the Moon, so the Earth's shadow falls on the Moon (which can look red). Option B shows Sun, Earth, Moon in that order. A and C put the Moon between the Sun and the Earth, the arrangement for a solar eclipse, and D puts the Sun in the middle, which never gives an eclipse.",
+   "watermark": "none"
+  },
+  {
+   "n": 47,
+   "type": "MCQ",
+   "text": "A boat is moving on the river and following the path as shown by the dashed line. Both the boatmen are facing front and rafting with equal force in the directions shown by the arrows in the options. Which of the options will help the boat to take a right turn?",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Practical and Scientific Knowledge",
+   "chapter": "Mechanisms and Machines",
+   "subtopic": "Levers",
+   "difficulty": "Moderate",
+   "solution": "Pushing a paddle backward drives that side of the boat forward. If both boatmen paddle on the left side, the left side is pushed ahead of the right, so the bow swings to the right. In D both paddles are on the left, so the boat turns right. A and C put one paddle on each side, which mostly drives the boat straight, and B has both paddles on the right, which turns it left.",
+   "watermark": "none"
+  },
+  {
+   "n": 48,
+   "type": "MCQ",
+   "text": "Select the correct sunshade pattern on the illustrated structure. Assume Sun at 45 degree on left as shown.",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Practical and Scientific Knowledge",
+   "chapter": "Light, Colour and Optics",
+   "subtopic": "Light and shadow",
+   "difficulty": "Hard",
+   "solution": "The sun shines from the left at 45 degrees with no front-to-back component, so a shadow on a front face is cast by a part just behind it and to its upper left. The tall block at the front left runs the full depth of the low block on the right, so its top corner throws a 45 degree shadow across that block's front: dark from its left edge, bounded by a diagonal running down to the right, as in B and D. At the top, the right column's face is set back behind the left part, which throws a 45 degree triangle of shade down from the column's top-left corner, as drawn in D."
+  },
+  {
+   "n": 49,
+   "type": "MCQ",
+   "text": "Which option, when folded, will result in the solid shown?",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Visualization and Spatial Reasoning",
+   "chapter": "Paper Folding and Cutting",
+   "subtopic": "Cutting and folding",
+   "difficulty": "Hard",
+   "solution": "The solid is made of six unit squares and three squares bent along a diagonal (each bent square is two right-angled triangles meeting along the fold), and it looks the same after a half turn: the top square matches the bottom square and the two bent squares on either side match each other. Every net has the right pieces, so the arrangement decides it. D is the only net that is itself symmetric under a half turn about the middle bent square, with a square and triangle at each end placed the same way, so it folds into the symmetric solid shown. A and B put the end pieces on mismatched sides.",
+   "watermark": "none"
+  },
+  {
+   "n": 50,
+   "type": "MCQ",
+   "text": "The options show designs for a remote control and its battery cover. Which design will be feasible?",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Practical and Scientific Knowledge",
+   "chapter": "Everyday Objects and Systems",
+   "subtopic": "Product usability",
+   "difficulty": "Moderate",
+   "solution": "A battery cover must slide or drop into place and then stay shut. In C the cover's side rails slide into the grooves along the remote's walls, and the springy tab at its end clicks into the square hole in the far wall, so it is guided in and locked. A's cover has a tab but no rails, and the remote's thin slit is too narrow for the tab's square block. In B and D the cover slides in on rails but has nothing that catches the remote, so it would slide straight out again.",
+   "watermark": "none"
+  },
+  {
+   "n": 51,
+   "type": "MCQ",
+   "text": "Four keyboard layouts were designed to enter text on touch-screen mobile phones. Which of these layouts has the shortest finger travel distance for entering text in the English language? Assume, the mobile is held vertically in the left hand, and a right-handed user presses the keys using only the index finger of the right hand.",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Practical and Scientific Knowledge",
+   "chapter": "Everyday Objects and Systems",
+   "subtopic": "Product usability",
+   "difficulty": "Moderate",
+   "solution": "Finger travel is shortest when the most used keys sit closest to the most used key, the space bar. In English the most frequent letters are e, t, a, o, i, n, s, h and r. Layout B rings the space bar with o, t, r, e, i and a, with s, h, n and other common letters just outside. The other layouts put rare letters such as z, x, q, j or v next to the space bar."
+  },
+  {
+   "n": 52,
+   "type": "MCQ",
+   "text": "Which option replaces the question mark? (The paper prints only the picture for this question.)",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Visualization and Spatial Reasoning",
+   "chapter": "Pattern and Figure Completion",
+   "subtopic": "Transforming a pattern",
+   "difficulty": "Moderate",
+   "solution": "The example shows the corner mark in the top-left cell ending up upside down in the bottom-right cell, so the whole grid is rotated through 180 degrees: every symbol moves to the opposite cell and is itself turned upside down. For example the symbol in the top-right cell (a downward triangle over a bar) must appear in the bottom-left cell as a bar over an upward triangle with its stem pointing down. Checking every cell this way, only B matches: A and C leave the T-shaped and cross symbols unrotated, and D shows the bottom-left symbol the wrong way up."
+  },
+  {
+   "n": 53,
+   "type": "MCQ",
+   "text": "Refer to all the sides of a vase shown below.\n\nSelect the correct order of sectional faces.",
+   "options": [
+    {
+     "label": "A",
+     "text": "1. Inside eastward, 2. Outside westward mirrored, 3. Inside westward, 4. Outside westward mirrored"
+    },
+    {
+     "label": "B",
+     "text": "1. Inside westward, 2. Outside eastward mirrored, 3. Inside southward mirrored, 4. Outside westward mirrored"
+    },
+    {
+     "label": "C",
+     "text": "1. Inside westward mirrored, 2. Outside eastward mirrored, 3. Inside southward, 4. Outside northward"
+    },
+    {
+     "label": "D",
+     "text": "1. Inside southward, 2. Outside eastward mirrored, 3. Inside westward, 4. Outside northward"
+    }
+   ],
+   "figure": true,
+   "subject": "Visualization and Spatial Reasoning",
+   "chapter": "Mental Rotation and Views",
+   "subtopic": "Orthographic views",
+   "difficulty": "Hard",
+   "solution": "Sections 1 and 3 show the pale inner shell and sections 2 and 4 the dark outer lattice. The lattice of section 4, with a strut running down into a dark patch on the base and a large opening at the lower right, matches the west view seen mirrored (as from inside), not the north view, which has a pale base band and two large shoulder loops. That rules out C and D. A gives sections 2 and 4 the same face though they are clearly different, so it is out too. Option B remains."
+  },
+  {
+   "n": 54,
+   "type": "MCQ",
+   "text": "Which of the options can be made by following the instructions given in the image below?",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Visualization and Spatial Reasoning",
+   "chapter": "Puzzles and Assembly",
+   "subtopic": "Assembling pieces",
+   "difficulty": "Moderate",
+   "solution": "The kit has square pieces in three sizes: in each size there are two open frames and one solid panel, plus pins and a key. The instructions show two frames used as legs under a panel. Three sizes, each with one panel and two frames, make three tables of decreasing size, which nest as shown in B. A, C and D need a different mix of panels and frames."
+  },
+  {
+   "n": 55,
+   "type": "MCQ",
+   "text": "Aru bought a new cushion cover from the market. Though the material is cotton, she was not happy with the plain cushion cover and planned to dye it with a colour. She followed the process as shown in the diagram, starting with folding the cover along the Y axis. After the first dye, she made the cushion cover dry and again did the same process, but this time started the folding along the X axis. Find out the pattern she created after the second dye.",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Visualization and Spatial Reasoning",
+   "chapter": "Paper Folding and Cutting",
+   "subtopic": "Cutting and folding",
+   "difficulty": "Moderate",
+   "solution": "Folding along the Y axis and then in half again makes a strip a quarter of the width, with the quarter lines (halfway between the centre and each side) lying together along one long edge. Rolling the strip and standing it on that edge in the dye colours that edge, which opens out into two vertical bands. Repeating the process starting along the X axis adds two horizontal bands. The result is a grid of two vertical and two horizontal bands, option C."
+  },
+  {
+   "n": 56,
+   "type": "MCQ",
+   "text": "Select the correct option which lists the animals appearing in the GIF.",
+   "options": [
+    {
+     "label": "A",
+     "text": "Lizard, Dog, Swan"
+    },
+    {
+     "label": "B",
+     "text": "Goat, Cat, Crocodile"
+    },
+    {
+     "label": "C",
+     "text": "Dog, Swan, Seal"
+    },
+    {
+     "label": "D",
+     "text": "Dog, Goat, lizard"
+    }
+   ],
+   "figure": true,
+   "subject": "Observation and Design Sensitivity",
+   "chapter": "Visual Detail",
+   "subtopic": "Comparing details",
+   "difficulty": "Easy",
+   "solution": "In the exam the image was an animated GIF; the printed copy shows one frame, a seal. A seal appears only in option C (Dog, Swan, Seal), so C is the only option that can list the animals shown."
+  },
+  {
+   "n": 57,
+   "type": "MCQ",
+   "text": "Find the exact pattern highlighted in the red square.",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Observation and Design Sensitivity",
+   "chapter": "Visual Detail",
+   "subtopic": "Matching a part to the whole",
+   "difficulty": "Moderate",
+   "solution": "Compare each option with the boxed region detail by detail. A drops the thin inner line on the left of the red shape at the top. B changes the lines near the bottom edge. C leaves out the small red piece below the middle. D matches every coloured shape and every line inside the red square, so D is the exact pattern."
+  },
+  {
+   "n": 58,
+   "type": "MCQ",
+   "text": "A layout director of a newspaper was listening to music loops P, Q, R and S. Subsequently, the director created layouts 1, 2, 3 and 4 for the Music section of the newspaper. Indicate the correct pair of music loop and the layout.",
+   "options": [
+    {
+     "label": "A",
+     "text": "P-4, Q-3, R-2, S-1"
+    },
+    {
+     "label": "B",
+     "text": "P-2, Q-1, R-4, S-3"
+    },
+    {
+     "label": "C",
+     "text": "P-3, Q-4, R-1, S-2"
+    },
+    {
+     "label": "D",
+     "text": "P-1, Q-2, R-3, S-4"
+    }
+   ],
+   "figure": true,
+   "subject": "Creativity",
+   "chapter": "Analogies and Visual Metaphors",
+   "subtopic": "Matching pairs",
+   "difficulty": "Hard",
+   "solution": "Read each layout as a rhythm: a wide gap between lines stands for a soft beat (small speaker) and a narrow gap for a loud beat (big speaker). Layout 1 reads soft, soft, loud, soft, the opening of R. Layout 2 reads soft, loud, soft, soft, loud, loud, soft, the opening of S. Layout 3 reads soft, soft, loud, loud, loud, soft, soft, soft, soft, the opening of P. Layout 4, with its loud beats spread among soft ones, is left for Q. So P-3, Q-4, R-1, S-2, which is option C."
+  },
+  {
+   "n": 59,
+   "type": "MCQ",
+   "text": "Shown below is a transparent roller stamp. Identify the print made from the roller.",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Visualization and Spatial Reasoning",
+   "chapter": "Mental Rotation and Views",
+   "subtopic": "Rotation and reassembly",
+   "difficulty": "Hard",
+   "solution": "Each slanted ring around the roller unrolls into a wave, and the two parallel rings give two identical waves side by side, which rules out B (loops) and C (waves out of step). The print comes from the side of the roller touching the paper, which is the far side seen through the transparent roller (the paler strokes). Those strokes lean like / at the left end and like \\ at the right end, and as the roller turns every stroke prints with that same slant. Only D has / strokes on the left and \\ strokes on the right.",
+   "watermark": "none"
+  },
+  {
+   "n": 60,
+   "type": "MCQ",
+   "text": "Find the odd one.",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Observation and Design Sensitivity",
+   "chapter": "Odd One Out and Classification",
+   "subtopic": "Odd one out",
+   "difficulty": "Moderate",
+   "solution": "Turn each square so that its central spine is vertical. A, B and C then become the same pattern: B is A turned through a right angle and C is A turned upside down. D, turned the same way, has a couple of stripes that join or split differently from the others, so it is not a rotation of the same design and is the odd one out."
+  },
+  {
+   "n": 61,
+   "type": "MCQ",
+   "text": "Shown below are visual lines that were decoded into names.",
+   "options": [
+    {
+     "label": "A",
+     "text": "RAGAVENDERAN"
+    },
+    {
+     "label": "B",
+     "text": "RADHAKRISHNAN"
+    },
+    {
+     "label": "C",
+     "text": "RAMANABHUSHAN"
+    },
+    {
+     "label": "D",
+     "text": "THIRUVALLUVAN"
+    }
+   ],
+   "figure": true,
+   "subject": "Analytical and Logical Reasoning",
+   "chapter": "Codes and Series",
+   "subtopic": "Letter codes",
+   "difficulty": "Moderate",
+   "solution": "Each letter is a pair of bars, and each bar has one of four heights. From the three names: A = short, short; D = short, third height; H = second, short; K = second, tallest; R = third, tallest; I = second, third; S = tallest, tallest; N = third, second. Reading the unknown code two bars at a time gives R, A, D, H, A, K, R, I, S, H, N, A, N, which spells RADHAKRISHNAN."
+  },
+  {
+   "n": 62,
+   "type": "MCQ",
+   "text": "Identify the side view of the spring.",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Visualization and Spatial Reasoning",
+   "chapter": "Mental Rotation and Views",
+   "subtopic": "Orthographic views",
+   "difficulty": "Hard",
+   "solution": "Looking along the axis of the spring, each coil shows as a ring, and the barrel shape means the rings grow from the ends to the middle, so the view has several nested rings rather than one smooth spiral; that rules out C. In the given view the centres of the coils sit at about the same height, so the rings in the end view should line up vertically and drift only sideways. A shows nested rings shifted only to the side, while B and D shift them up or down as well."
+  },
+  {
+   "n": 63,
+   "type": "MCQ",
+   "text": "What is the function of these objects?",
+   "options": [
+    {
+     "label": "A",
+     "text": "Measuring earthquakes"
+    },
+    {
+     "label": "B",
+     "text": "Weaving cotton"
+    },
+    {
+     "label": "C",
+     "text": "Toasting bread"
+    },
+    {
+     "label": "D",
+     "text": "Burning wood"
+    }
+   ],
+   "figure": true,
+   "subject": "Practical and Scientific Knowledge",
+   "chapter": "Everyday Objects and Systems",
+   "subtopic": "Household systems",
+   "difficulty": "Easy",
+   "solution": "These are early electric toasters: a slice of bread leans against the open wire racks on either side of a heating element, and the hinged flaps turn it to toast the other side. They have nothing to do with measuring earthquakes, weaving cotton or burning wood.",
+   "watermark": "none"
+  },
+  {
+   "n": 64,
+   "type": "MCQ",
+   "text": "Cathy has less money than David. Cathy and David together have as much money as Alice and Bob together. Alice and David together have less money than Bob and Cathy together. What is the correct richest-poorest pairing?",
+   "options": [
+    {
+     "label": "A",
+     "text": "Bob-Cathy"
+    },
+    {
+     "label": "B",
+     "text": "Bob-Alice"
+    },
+    {
+     "label": "C",
+     "text": "David-Cathy"
+    },
+    {
+     "label": "D",
+     "text": "Cathy-Alice"
+    }
+   ],
+   "figure": false,
+   "subject": "Analytical and Logical Reasoning",
+   "chapter": "Logical Deduction",
+   "subtopic": "Ranking and comparison",
+   "difficulty": "Moderate",
+   "solution": "Write A, B, C, D for their money. We know C < D, C + D = A + B and A + D < B + C. Adding the last two facts gives A + D + C + D < B + C + A + B, so 2D < 2B and D < B. Then A = C + D - B is less than C, because D - B is negative. So A < C < D < B: Bob is richest and Alice poorest."
+  },
+  {
+   "n": 65,
+   "type": "MCQ",
+   "text": "SUGAR = ?",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Observation and Design Sensitivity",
+   "chapter": "Typography and Lettering",
+   "subtopic": "Letters in a composition",
+   "difficulty": "Moderate",
+   "solution": "SUGAR is drawn in square pixels, and each option splits it into two pixel patterns joined with a plus sign. Laying the two parts of each option over each other on the 24 by 6 grid, only C fills every pixel of SUGAR exactly once: its two halves fit together with no gap and no overlap. The other options either leave pixels missing or double up the same half.",
+   "watermark": "none"
+  },
+  {
+   "n": 66,
+   "type": "MCQ",
+   "text": "Shown below is a 3D block. Four such blocks are interlocked in a square form. What will be the top view of the blocks after interlocking?",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Visualization and Spatial Reasoning",
+   "chapter": "Puzzles and Assembly",
+   "subtopic": "Assembling pieces",
+   "difficulty": "Moderate",
+   "solution": "Each block is two bars stacked with a one-unit step, so it is three units long: the lower bar covers the first two units and the upper bar the last two, overhanging the end. In the square, each block's overhang rests on the bare end of the next block, so from above you see only the four upper bars, each two units long. They wind round an empty centre square like a pinwheel, which is the pattern in A."
+  },
+  {
+   "n": 67,
+   "type": "MCQ",
+   "text": "Which betel nut cutter will require less force to be applied to cut a betel nut? Consider the hinge points to be at the same line.",
+   "options": [
+    {
+     "label": "A",
+     "text": "[figure]"
+    },
+    {
+     "label": "B",
+     "text": "[figure]"
+    },
+    {
+     "label": "C",
+     "text": "[figure]"
+    },
+    {
+     "label": "D",
+     "text": "[figure]"
+    }
+   ],
+   "figure": true,
+   "subject": "Practical and Scientific Knowledge",
+   "chapter": "Mechanisms and Machines",
+   "subtopic": "Levers",
+   "difficulty": "Moderate",
+   "solution": "A betel nut cutter is a lever with the hinge at the top, the nut between the blades and the hand squeezing the ends of the handles. The force needed is smallest when the handles are long compared with the distance from the hinge to the nut. In C the cutting edge sits right next to the hinge and the handles are long, so it gives the biggest advantage. D has short legs, and in A and B the nut sits much further down the blade compared with the handle length."
+  },
+  {
+   "n": 68,
+   "type": "MCQ",
+   "text": "Which option replaces the question mark? (The paper prints only the picture for this question.)",
+   "options": [
+    {
+     "label": "A",
+     "text": "RAM"
+    },
+    {
+     "label": "B",
+     "text": "MOTH"
+    },
+    {
+     "label": "C",
+     "text": "BAT"
+    },
+    {
+     "label": "D",
+     "text": "SNAKE"
+    }
+   ],
+   "figure": true,
+   "subject": "Analytical and Logical Reasoning",
+   "chapter": "Codes and Series",
+   "subtopic": "Letter codes",
+   "difficulty": "Moderate",
+   "solution": "Each answer starts with the last letter of the animal pictured: froG gives GOAT, snaiL gives LIZARD and caT gives TIGER. The last picture is a spideR, so the answer must start with R, which is RAM."
+  }
+ ]
+}
