@@ -41,6 +41,10 @@ OPTION = re.compile(r"^\s*\(?([A-D])[.)]\s+(.*)$")
 # clipped to the drawing (year -> question -> (page, x0, y0, x1, y1) in PDF points).
 # 2021 Q19's four rotations are line drawings.
 PAGE_CLIPS = {2021: {19: (11, 70, 354, 526, 606)}}
+# A picture printed at the foot of a page, above the question it belongs to on the next page,
+# is read as the previous question's (its marker comes later). year -> {from: to}: the LAST
+# picture of `from` moves to `to`. 2020 Q39 and Q67 sit below Q38 and Q66.
+MOVE_LAST_PICTURE = {2020: {38: 39, 66: 67}}
 MAX_FIGURE_BYTES = 1000 * 1000  # under storage's 1 MiB limit
 TINY = 40  # px: bullets and icons, not figures
 SCANNED_PAGE = 0.6  # a picture covering more of the page than this is a scanned page, not a figure
@@ -117,6 +121,10 @@ def main(year: str) -> None:
                 current["lines"].append(payload.strip())
         elif current is not None:
             current["xrefs"].append(payload)
+
+    for src, dst in MOVE_LAST_PICTURE.get(int(year), {}).items():
+        if questions.get(src, {}).get("xrefs") and dst in questions:
+            questions[dst]["xrefs"].insert(0, questions[src]["xrefs"].pop())
 
     drafts = []
     for n in sorted(questions):
