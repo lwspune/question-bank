@@ -26,7 +26,7 @@ export const GREEN_NOTE: SubtopicNote = {
       table: {
         columns: ["Statement", "Verdict"],
         rows: [
-          { cells: ["Maximum use of auxiliary substances", "**Not** a principle"], pyqExampleId: "494ff2e1-1eb2-4a2b-bc79-6ed53b285ba2" },
+          { cells: ["Maximum use of auxiliary substances", "**Not** a principle"] },
           { cells: ["Protection and deprotection is good practice", "**Not** true — reduce derivatives"], pyqExampleId: "14e9387a-93e3-4433-bbe3-218530a7c1f8" },
           { cells: ["Good atom economy = few reactant atoms in the product", "**Not** true — it means most"], pyqExampleId: "0e1789dd-0aaa-4752-bc95-64ccb59c5a84" },
           { cells: ["Plant-based chemicals", "Use of **renewable feedstocks**"], pyqExampleId: "e36dea44-7d6a-4581-85b0-2405ae7d42fa" },
@@ -45,7 +45,7 @@ export const GREEN_NOTE: SubtopicNote = {
           answer: "SO₂ — it alone turns lime water milky, turns dichromate green and lowers the pH (the official key)",
         },
       ],
-      pyqExampleId: "494ff2e1-1eb2-4a2b-bc79-6ed53b285ba2",
+      pyqExampleId: "0e1789dd-0aaa-4752-bc95-64ccb59c5a84",
       traps: [
         {
           title: "Blaming two gases when one explains everything",

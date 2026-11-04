@@ -74,7 +74,7 @@ export const CLASSIFICATION_NOTE: SubtopicNote = {
         rows: [
           { cells: ["Crotonyl (crotyl) alcohol", "1", "Monohydric, allylic", "Not dihydric despite the C=C"] },
           { cells: ["Ethylene glycol", "2", "Dihydric alcohol", "Intramolecular H-bond"] },
-          { cells: ["Catechol / resorcinol / quinol", "2", "Dihydric phenols", "1,2 / 1,3 / 1,4 — isomers of each other"], noteAmber: "Resorcinol is the isomer of catechol the paper keys." },
+          { cells: ["Catechol / resorcinol / quinol", "2", "Dihydric phenols", "1,2 / 1,3 / 1,4 — isomers of each other"], noteAmber: "Pyrogallol and phloroglucinol carry three OH groups, so a pair of dihydric phenols is drawn from these three only." },
           { cells: ["Glycerol (propylene glycerol)", "3", "Trihydric alcohol", "Propane-1,2,3-triol"] },
           { cells: ["Pyrogallol / phloroglucinol", "3", "Trihydric phenols", "1,2,3 / 1,3,5"], noteAmber: "Phloroglucinol is NOT dihydric." },
           { cells: ["Ascorbic acid", "—", "Not a phenol", "No OH on a benzene ring"] },

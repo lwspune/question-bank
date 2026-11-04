@@ -103,7 +103,7 @@ export const PREPARATION_NOTE: SubtopicNote = {
       table: {
         columns: ["Reaction", "Product"],
         rows: [
-          { cells: ["Sodium propanoate + soda-lime, Δ", "Ethane + Na₂CO₃ (paper keys **propane**)"], pyqExampleId: "7692fb49-a012-4954-a1a3-92fe5012adaa", noteAmber: "Decarboxylation loses a carbon, so C₂H₅COONa gives ethane. The 9 May 2023 key is propane; learn the rule, and expect the paper's answer." },
+          { cells: ["Sodium propanoate + soda-lime, Δ", "**Ethane** + Na₂CO₃"], pyqExampleId: "7692fb49-a012-4954-a1a3-92fe5012adaa", noteAmber: "Decarboxylation loses a carbon, so C₂H₅COONa gives ethane. The 9 May 2023 paper lists no ethane; its key is the option printed 'ethene', meant as ethane." },
           { cells: ["CO + H₂ over Ni", "**Methane and water**"], pyqExampleId: "bf7b77dd-0978-437f-b46d-397a53151e30" },
         ],
       },

@@ -81,7 +81,7 @@ export const EAS_NOTE: SubtopicNote = {
         { prompt: "A + CH₃Cl (anhyd. AlCl₃) → 2-chlorotoluene + 4-chlorotoluene. A?", answer: "Chlorobenzene" },
         { prompt: "Phenol with conc. HNO₃ and conc. H₂SO₄ gives?", answer: "2,4,6-Trinitrophenol (picric acid)" },
       ],
-      pyqExampleId: "8ee7ee22-f780-495b-8750-f52d961abd09",
+      pyqExampleId: "c602dce1-b9d4-4013-a0f4-b669d9ae66f7",
       traps: [
         {
           title: "Toluene as the starting compound",
