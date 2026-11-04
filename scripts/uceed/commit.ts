@@ -3,6 +3,7 @@
  *
  *   npx tsx scripts/uceed/commit.ts 2026            # dry run: plan, checks, hashes; writes nothing
  *   npx tsx scripts/uceed/commit.ts 2026 --apply
+ *   npx tsx scripts/uceed/commit.ts 2024 --new-only --apply   # a LIVE paper: add only rows it lacks
  *
  * Reads data/<year>.questions.json + data/<year>.key.json (IIT Bombay's final key) and
  * refuses on any issue planPaper raises (lib.ts). MSQ rows and range-keyed NAT rows are
@@ -33,6 +34,9 @@ async function main() {
   const year = Number(process.argv[2]);
   if (!year) throw new Error("usage: commit.ts <year> [--apply]");
   const apply = process.argv.includes("--apply");
+  // --new-only: add rows a LIVE paper does not have yet (its MSQ and range rows, migration
+  // 0214), PRIVATE, and touch nothing already in the bank. Publish them with publish.ts.
+  const newOnly = process.argv.includes("--new-only");
   const read = <T>(f: string): T => JSON.parse(readFileSync(join(DATA, f), "utf8"));
   const paper = read<UceedPaper>(`${year}.questions.json`);
   const plan = planPaper(paper, read<UceedKey>(`${year}.key.json`));
@@ -87,14 +91,28 @@ async function main() {
     .eq("exam_id", examId)
     .eq("source_file", src)
     .eq("visibility", "PUBLIC");
-  if ((live ?? 0) > 0) throw new Error(`${live} row(s) of ${src} are PUBLIC; refusing to re-commit a live paper`);
+  let rows = payload;
+  if (newOnly) {
+    const { data: have, error: hErr } = await client
+      .from("questions")
+      .select("content_hash")
+      .eq("exam_id", examId)
+      .eq("source_file", src);
+    if (hErr) throw new Error(`existing-row lookup failed: ${hErr.message}`);
+    const known = new Set((have ?? []).map((r) => r.content_hash as string));
+    rows = payload.filter((p) => !known.has(p.contentHash));
+    console.log(`--new-only: ${rows.length} new row(s): ${rows.map((p) => `Q${p.sourceRow}`).join(", ") || "none"}`);
+    if (rows.length === 0) return;
+  } else if ((live ?? 0) > 0) {
+    throw new Error(`${live} row(s) of ${src} are PUBLIC; refusing to re-commit a live paper (--new-only adds its missing rows)`);
+  }
 
   const res = await commitStaged(client, {
     orgId: ORG_ID,
     examId,
     filename: src,
     createdBy: CREATED_BY,
-    rows: payload,
+    rows,
     pyqYear: year,
     pyqMonth: null,
     pyqNote: PYQ_NOTE,
@@ -105,7 +123,8 @@ async function main() {
   for (const e of res.errors) console.log(`  row ${e.sourceRow}: ${e.message}`);
   if (res.failed) process.exit(1);
 
-  const ids = await syncRows(client, examId, src, plan.rows, payload, fig);
+  // Only this run's rows are synced: in --new-only, a live row is never rewritten.
+  const ids = await syncRows(client, examId, src, plan.rows, rows, fig);
   recordGrace(year, noticed, ids);
 }
 
