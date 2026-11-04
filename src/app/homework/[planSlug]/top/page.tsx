@@ -45,7 +45,7 @@ export default async function HomeworkTopListPage({ params }: { params: Params }
   const { plan, chapters } = data;
   // The side nav is a convenience: a failed read leaves this plan alone in it.
   const links = await getPlanLinks().catch(() => []);
-  const sideNav = homeworkSideNav(links.length ? links : [plan]);
+  const sideNav = homeworkSideNav(links.length ? links : [plan], plan.examName);
 
   return (
     <GuideShell

@@ -42,13 +42,13 @@ export default async function HomeworkExamPage({ params }: { params: Params }) {
   const exam = examFor(params.examSlug);
   if (!exam) notFound();
   const plans = await listPublishedPlans(createSupabaseAnonClient(), { examName: exam.examName });
-  // Every plan in the side menu, grouped by exam; a failed read leaves this exam's own.
+  // The side menu lists this exam's plans; a failed read falls back to the plans read above.
   const links = await getPlanLinks().catch(() => []);
 
   return (
     <GuideShell
       guideTitle="Daily Homework"
-      sideNav={homeworkSideNav(links.length ? links : plans)}
+      sideNav={homeworkSideNav(links.length ? links : plans, exam.examName)}
       landingHref={HOMEWORK_HUB}
       breadcrumbs={[{ href: HOMEWORK_HUB, label: "Daily Homework" }, { label: exam.displayName }]}
     >

@@ -65,23 +65,35 @@ export function homeworkExamLabel(examName: string): string {
 type NavPlan = { slug: string; title?: string; examName: string; subjectName: string };
 
 /**
- * The homework pages' side menu (2026-11-04): every plan, then each exam's
- * plans under its short name (linking that exam's homework page), each plan
- * labelled by its subject as its own title words it ("Maths", not "CBSE Class
- * 12 Maths"). Was a flat list of 18 full titles.
+ * The homework pages' side menu (2026-11-04), one level at a time like the
+ * notes menu (owner): with no exam, "All exams" and each exam with plans,
+ * opening its homework page; inside an exam, "All exams" and that exam's plans
+ * under its short name, each labelled by its subject as its own title words it
+ * ("Maths", not "CBSE Class 12 Maths"). An exam with no plans yet gets its own
+ * page's link.
  */
 export function homeworkSideNav(
-  plans: readonly NavPlan[]
+  plans: readonly NavPlan[],
+  examName: string | null = null
 ): { href: string; label: string; group?: SideNavGroup }[] {
-  const items: { href: string; label: string; group?: SideNavGroup }[] = [{ href: HOMEWORK_HUB, label: "All plans" }];
-  for (const g of groupPlansByExam(plans)) {
-    const exam = PYQVAULT_EXAMS.find((e) => e.examName === g.examName);
-    const group: SideNavGroup = exam
-      ? { label: exam.displayName, href: examHomeworkPageHref(exam.slug) }
-      : { label: g.examName };
-    const labels = subjectLabels(g.plans, group.label);
-    g.plans.forEach((p, i) => items.push({ href: planHref(p.slug), label: labels[i], group }));
+  const items: { href: string; label: string; group?: SideNavGroup }[] = [{ href: HOMEWORK_HUB, label: "All exams" }];
+  const groups = groupPlansByExam(plans);
+  if (examName === null) {
+    for (const g of groups) {
+      const exam = PYQVAULT_EXAMS.find((e) => e.examName === g.examName);
+      items.push({ href: exam ? examHomeworkPageHref(exam.slug) : planHref(g.plans[0].slug), label: exam?.displayName ?? g.examName });
+    }
+    return items;
   }
+  const exam = PYQVAULT_EXAMS.find((e) => e.examName === examName);
+  const group: SideNavGroup = exam ? { label: exam.displayName, href: examHomeworkPageHref(exam.slug) } : { label: examName };
+  const mine = groups.find((g) => g.examName === examName)?.plans ?? [];
+  if (mine.length === 0) {
+    if (exam) items.push({ href: examHomeworkPageHref(exam.slug), label: exam.displayName });
+    return items;
+  }
+  const labels = subjectLabels(mine, group.label);
+  mine.forEach((p, i) => items.push({ href: planHref(p.slug), label: labels[i], group }));
   return items;
 }
 

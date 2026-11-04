@@ -93,37 +93,51 @@ describe("groupPlansByExam", () => {
 });
 
 describe("homeworkSideNav", () => {
+  // The notes menu's pattern (owner, 2026-11-04): one level at a time. The
+  // hub lists exams; inside an exam, that exam's plans and a way back.
   const plan = (slug: string, title: string, examName: string, subjectName: string) => ({ slug, title, examName, subjectName });
+  const plans = [
+    plan("cbse-12-chemistry", "CBSE Class 12 Chemistry", "CBSE Class 12", "Chemistry"),
+    plan("cbse-12-mathematics", "CBSE Class 12 Maths", "CBSE Class 12", "Mathematics"),
+    plan("nda-maths", "NDA Maths", "NDA", "Mathematics"),
+    plan("cbse-12-physics", "CBSE Class 12 Physics", "CBSE Class 12", "Physics"),
+  ];
 
-  it("opens with every plan, then each exam's plans under its short name, labelled by subject", () => {
-    const nav = homeworkSideNav([
-      plan("cbse-12-chemistry", "CBSE Class 12 Chemistry", "CBSE Class 12", "Chemistry"),
-      plan("cbse-12-mathematics", "CBSE Class 12 Maths", "CBSE Class 12", "Mathematics"),
-      plan("mh-hsc-12-biology", "MH HSC Class 12 Biology", "Maharashtra HSC Class 12", "Biology"),
-      plan("mh-hsc-12-maths", "MH HSC Class 12 Maths", "Maharashtra HSC Class 12", "Mathematics"),
-      plan("nda-maths", "NDA Maths", "NDA", "Mathematics"),
-    ]);
-    expect(nav[0]).toEqual({ href: "/homework", label: "All plans" });
-    expect(nav.slice(1)).toEqual([
-      { href: "/homework/cbse-12-chemistry", label: "Chemistry", group: { label: "CBSE Class 12", href: "/homework/exam/cbse-12" } },
-      { href: "/homework/cbse-12-mathematics", label: "Maths", group: { label: "CBSE Class 12", href: "/homework/exam/cbse-12" } },
-      { href: "/homework/mh-hsc-12-biology", label: "Biology", group: { label: "MH HSC 12", href: "/homework/exam/mh-hsc-12" } },
-      { href: "/homework/mh-hsc-12-maths", label: "Maths", group: { label: "MH HSC 12", href: "/homework/exam/mh-hsc-12" } },
-      { href: "/homework/nda-maths", label: "Maths", group: { label: "NDA", href: "/homework/exam/nda" } },
+  it("lists only exams on the hub, each opening its homework page", () => {
+    expect(homeworkSideNav(plans)).toEqual([
+      { href: "/homework", label: "All exams" },
+      { href: "/homework/exam/cbse-12", label: "CBSE Class 12" },
+      { href: "/homework/exam/nda", label: "NDA" },
     ]);
   });
 
-  it("keeps an exam's plans together even when the list interleaves them", () => {
-    const nav = homeworkSideNav([
-      plan("a1", "CBSE Class 10 Maths", "CBSE Class 10", "Mathematics"),
-      plan("n1", "NDA Maths", "NDA", "Mathematics"),
-      plan("a2", "CBSE Class 10 Science", "CBSE Class 10", "Science"),
+  it("lists only the current exam's plans inside it, by subject, under the exam", () => {
+    const group = { label: "CBSE Class 12", href: "/homework/exam/cbse-12" };
+    expect(homeworkSideNav(plans, "CBSE Class 12")).toEqual([
+      { href: "/homework", label: "All exams" },
+      { href: "/homework/cbse-12-chemistry", label: "Chemistry", group },
+      { href: "/homework/cbse-12-mathematics", label: "Maths", group },
+      { href: "/homework/cbse-12-physics", label: "Physics", group },
     ]);
-    expect(nav.slice(1).map((i) => i.href)).toEqual(["/homework/a1", "/homework/a2", "/homework/n1"]);
+  });
+
+  it("names a single plan by its subject too", () => {
+    expect(homeworkSideNav(plans, "NDA")[1]).toEqual({
+      href: "/homework/nda-maths",
+      label: "Maths",
+      group: { label: "NDA", href: "/homework/exam/nda" },
+    });
+  });
+
+  it("links the exam's own page when it has no plans yet", () => {
+    expect(homeworkSideNav(plans, "JEE Mains")).toEqual([
+      { href: "/homework", label: "All exams" },
+      { href: "/homework/exam/jee-mains", label: "JEE Mains" },
+    ]);
   });
 
   it("falls back to the subject's name, and to the exam's own name and no link off the registry", () => {
-    const nav = homeworkSideNav([plan("x", "Odd title", "Some Board", "Botany")]);
+    const nav = homeworkSideNav([plan("x", "Odd title", "Some Board", "Botany")], "Some Board");
     expect(nav[1]).toEqual({ href: "/homework/x", label: "Botany", group: { label: "Some Board" } });
   });
 });

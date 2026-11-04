@@ -65,7 +65,7 @@ export default async function HomeworkPlanPage({ params }: { params: Params }) {
   return (
     <GuideShell
       guideTitle="Daily Homework"
-      sideNav={homeworkSideNav(plans)}
+      sideNav={homeworkSideNav(plans, plan.examName)}
       landingHref="/homework"
       breadcrumbs={[{ href: "/homework", label: "Daily Homework" }, { label: plan.title }]}
     >
