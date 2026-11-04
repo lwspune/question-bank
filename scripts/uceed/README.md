@@ -48,6 +48,11 @@ writes them, because the bank cannot store them today:
   mock runner and keys in the downloads.
 - **NAT keyed as a range** (2026 Q14: 470-480): `numeric_answer` holds one exact value.
 
+A held row's transcription is checked like any other, but its classification and solution may
+wait: where a helper's blind answer disagrees with the key on a held row, the merge leaves the
+solution empty and `commit.ts` lists the row as `unsettled`. Settle those (figure + key) when MSQ
+ships, before anything else.
+
 One MSQ key gives **two** accepted answers (2026 Q18: "B,C or B,C,D"); `key.json` records both
 sets so the MSQ build can grade either as full marks.
 

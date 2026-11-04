@@ -63,7 +63,9 @@ export type PlannedRow = Editorial & { n: number; text: string; figure: boolean;
     | { format: "numeric"; numericAnswer: number }
   );
 export type HeldReason = "msq" | "range";
-export type Plan = { rows: PlannedRow[]; held: { n: number; reason: HeldReason }[]; issues: string[] };
+/** `unsettled`: a held row still missing its classification or solution, settled when it can ship. */
+export type HeldRow = { n: number; reason: HeldReason; unsettled?: true };
+export type Plan = { rows: PlannedRow[]; held: HeldRow[]; issues: string[] };
 
 const FIGURE_OPTION = "[figure]";
 const LETTERS: Letter[] = ["A", "B", "C", "D"];
@@ -95,23 +97,22 @@ export function planPaper(paper: UceedPaper, key: UceedKey): Plan {
     if (q.options.some((o) => o.text === FIGURE_OPTION) && !q.figure) {
       issues.push(`Q${q.n}: options are in the figure but the question has no figure`);
     }
-    for (const field of ["subject", "chapter", "subtopic", "difficulty", "solution"] as const) {
-      if (!q[field]?.trim()) issues.push(`Q${q.n}: no ${field}`);
-    }
+    // A held row is not written now, so its editorial fields may wait until it can ship; its
+    // transcription (options, figure) is checked like any other.
+    const reason: HeldReason | null = k.type === "MSQ" ? "msq" : k.type === "NAT" && "range" in k ? "range" : null;
+    const missing = (["subject", "chapter", "subtopic", "difficulty", "solution"] as const).filter((f) => !q[f]?.trim());
+    if (!reason) for (const field of missing) issues.push(`Q${q.n}: no ${field}`);
     if (q.difficulty?.trim() && !(q.difficulty.trim().toLowerCase() in DIFFICULTY)) {
       issues.push(`Q${q.n}: difficulty must be Easy, Moderate or Hard`);
     }
     if (q.solution && DASH.test(q.solution)) issues.push(`Q${q.n}: solution has a dash, write a full stop or comma`);
     if (issues.length > before) continue;
 
-    if (k.type === "MSQ") {
-      held.push({ n: q.n, reason: "msq" });
+    if (reason) {
+      held.push({ n: q.n, reason, ...(missing.length ? { unsettled: true as const } : {}) });
       continue;
     }
-    if (k.type === "NAT" && "range" in k) {
-      held.push({ n: q.n, reason: "range" });
-      continue;
-    }
+    if (k.type === "MSQ" || "range" in k) continue; // held above; narrows the key's type
     const editorial = q as UceedQuestion & Editorial;
     const options = q.options.map((o) => ({ label: o.label as Letter, text: o.text }));
     if ("cancelled" in k) {

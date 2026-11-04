@@ -58,6 +58,20 @@ describe("planPaper", () => {
     expect(plan.held).toEqual([{ n: 15, reason: "msq" }]);
   });
 
+  it("holds an MSQ whose solution is not settled yet, and says so: it is settled when MSQ ships", () => {
+    const plan = planPaper(
+      paper(q({ n: 22, type: "MSQ", solution: null, chapter: null })),
+      key({ n: 22, type: "MSQ", sets: [["A", "B", "D"]] }),
+    );
+    expect(plan.issues).toEqual([]);
+    expect(plan.held).toEqual([{ n: 22, reason: "msq", unsettled: true }]);
+  });
+
+  it("still refuses a held row whose options are malformed: transcription is checked now", () => {
+    const plan = planPaper(paper(q({ n: 22, type: "MSQ", options: [] })), key({ n: 22, type: "MSQ", sets: [["A"]] }));
+    expect(plan.issues).toEqual(["Q22: options must be A, B, C, D"]);
+  });
+
   it("refuses a picture-option question that has no figure to show the options", () => {
     const pic = q({ n: 33, options: ["A", "B", "C", "D"].map((label) => ({ label, text: "[figure]" })) });
     const plan = planPaper(paper(pic), key({ n: 33, type: "MCQ", value: "B" }));

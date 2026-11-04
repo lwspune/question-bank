@@ -62,7 +62,7 @@ async function main() {
   const src = sourceFile(year);
   console.log(`UCEED ${year} Part A: ${paper.questions.length} transcribed -> ${payload.length} to commit, ${plan.held.length} held  source_file="${src}"`);
   console.log(`  mcq ${parsed.length} | numeric ${payload.length - parsed.length} | with figure ${plan.rows.filter((r) => r.figure).length}`);
-  console.log(`  held: ${plan.held.map((h) => `Q${h.n} (${h.reason})`).join(", ") || "none"}`);
+  console.log(`  held: ${plan.held.map((h) => `Q${h.n} (${h.reason}${h.unsettled ? ", unsettled" : ""})`).join(", ") || "none"}`);
   const noticed = plan.rows.filter((r) => r.notice);
   const cancelled = plan.rows.filter((r) => r.format === "mcq" && r.answer === "CANCELLED");
   console.log(`  two or more answers accepted (note + grace): ${noticed.map((r) => `Q${r.n}`).join(", ") || "none"}`);
