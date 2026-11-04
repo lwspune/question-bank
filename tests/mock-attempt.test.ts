@@ -266,3 +266,37 @@ describe("gradeMock with per-option marks (MPSC CSAT Decision Making)", () => {
     expect(r.maxScore).toBe(5);
   });
 });
+
+describe("gradeMock with multiple-select questions (UCEED, migration 0215)", () => {
+  const ticks = (...selectedLabels: OptionLabel[]): SavedResponse => ({ selectedLabel: null, numericResponse: null, selectedLabels });
+  const msqQ = (questionId: string, msqScheme: "exact" | "partial", negMarks: number) => ({
+    questionId,
+    sectionKey: "msq",
+    marks: 4,
+    negMarks,
+    answer: { kind: "msq" as const, labels: ["A", "B", "C"] as OptionLabel[] },
+    msqScheme,
+  });
+
+  it("under partial credit: exact +4, partly right +1 per tick and its own count, a wrong tick -1, blank 0", () => {
+    const qs = ["q1", "q2", "q3", "q4"].map((id) => msqQ(id, "partial", -1));
+    const r = gradeMock(qs, { q1: ticks("A", "B", "C"), q2: ticks("A", "C"), q3: ticks("A", "D"), q4: ticks() });
+    expect(r).toMatchObject({ correct: 1, partial: 1, wrong: 1, skipped: 1, score: 4 + 2 - 1, maxScore: 16 });
+    expect(r.sectionScores.msq).toMatchObject({ correct: 1, partial: 1, wrong: 1, skipped: 1, score: 5 });
+  });
+
+  it("all-or-nothing: a partly right answer is wrong and takes the penalty", () => {
+    const r = gradeMock([msqQ("q1", "exact", -0.19)], { q1: ticks("A", "C") });
+    expect(r).toMatchObject({ correct: 0, partial: 0, wrong: 1, score: -0.19 });
+  });
+
+  it("a grace MSQ earns full marks whatever was ticked", () => {
+    const r = gradeMock([{ ...msqQ("q1", "partial", -1), grace: true }], { q1: ticks("D") });
+    expect(r).toMatchObject({ correct: 1, score: 4 });
+  });
+
+  it("a paper with no MSQ reports partial 0", () => {
+    const r = gradeMock([{ questionId: "q1", sectionKey: "s", marks: 3, negMarks: -1, answer: key("A") }], { q1: pick("A") });
+    expect(r.partial).toBe(0);
+  });
+});

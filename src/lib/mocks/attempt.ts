@@ -7,8 +7,11 @@
 
 import {
   isAnswered,
+  msqMarks,
+  msqOutcome,
   verdictFor,
   type MockAnswerKey,
+  type MsqScheme,
   type OptionLabel,
   type SavedResponse,
 } from "./answers";
@@ -63,10 +66,18 @@ export type MockGradeQuestion = {
    * option) counts as correct, so the verdict stays verdictFor's.
    */
   optionMarks?: Partial<Record<OptionLabel, number>>;
+  /**
+   * How a multiple-select question (answer kind "msq") is marked: "exact" (UCEED 2019-2021:
+   * the whole set or the penalty) or "partial" (IIT Bombay from 2022: +1 per correct tick
+   * when some are missing and none is wrong). Absent = "exact".
+   */
+  msqScheme?: MsqScheme;
 };
 
 export type SectionScore = {
   correct: number;
+  /** Multiple-select answers that earned partial credit: some right options, no wrong one. */
+  partial: number;
   wrong: number;
   skipped: number;
   score: number;
@@ -75,17 +86,21 @@ export type SectionScore = {
 
 export type MockGradeResult = {
   correct: number;
+  /** Multiple-select answers that earned partial credit (only under msqScheme "partial"). */
+  partial: number;
   wrong: number;
   skipped: number;
   score: number;
   maxScore: number;
-  /** Per-question verdict keyed by questionId: 1 right, -1 wrong, 0 blank. */
+  /** Per-question verdict keyed by questionId: 1 right, -1 wrong, 0 blank. A partly right
+   *  multiple-select answer is -1 here (not fully right); its credit is in `partial` + score. */
   verdicts: Record<string, 1 | -1 | 0>;
   sectionScores: Record<string, SectionScore>;
 };
 
 const emptySection = (): SectionScore => ({
   correct: 0,
+  partial: 0,
   wrong: 0,
   skipped: 0,
   score: 0,
@@ -110,6 +125,7 @@ export function gradeMock(
   responses: Record<string, SavedResponse | undefined>
 ): MockGradeResult {
   let correct = 0;
+  let partial = 0;
   let wrong = 0;
   let skipped = 0;
   let score = 0;
@@ -133,6 +149,26 @@ export function gradeMock(
     const earned = verdict !== 0 && q.optionMarks && !q.grace
       ? q.optionMarks[pickedLabel(responses?.[q.questionId])] ?? 0
       : null;
+
+    // Multiple-select: the scheme sets the marks; partial credit is its own count.
+    if (q.answer?.kind === "msq" && !q.grace && verdict !== 0) {
+      const r = responses?.[q.questionId];
+      const scheme = q.msqScheme ?? "exact";
+      const got = msqMarks(scheme, q.answer.labels, r, q.marks, q.negMarks);
+      score += got;
+      sec.score += got;
+      if (verdict === 1) {
+        correct++;
+        sec.correct++;
+      } else if (scheme === "partial" && msqOutcome(q.answer.labels, r) === "partial") {
+        partial++;
+        sec.partial++;
+      } else {
+        wrong++;
+        sec.wrong++;
+      }
+      continue;
+    }
 
     if (verdict === 1) {
       correct++;
@@ -162,5 +198,5 @@ export function gradeMock(
     sec.maxScore = round2(sec.maxScore);
   }
 
-  return { correct, wrong, skipped, score, maxScore, verdicts, sectionScores };
+  return { correct, partial, wrong, skipped, score, maxScore, verdicts, sectionScores };
 }

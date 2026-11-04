@@ -157,3 +157,64 @@ describe("verdictFor", () => {
     expect(verdictFor(null, typed(4), false)).toBe(0);
   });
 });
+
+describe("multiple-select and range keys (migration 0214/0215)", () => {
+  const msq = (...labels: ("A" | "B" | "C" | "D")[]): MockAnswerKey => ({ kind: "msq", labels });
+  const ticks = (...selectedLabels: ("A" | "B" | "C" | "D")[]): SavedResponse => ({ selectedLabel: null, numericResponse: null, selectedLabels });
+
+  it("counts a tick set as answered, and an empty one as blank", () => {
+    expect(isAnswered(ticks("A"))).toBe(true);
+    expect(isAnswered(ticks())).toBe(false);
+  });
+
+  it("matches an MSQ only on exactly the correct set, in any order", () => {
+    expect(responseMatchesKey(msq("A", "C"), ticks("C", "A"))).toBe(true);
+    expect(responseMatchesKey(msq("A", "C"), ticks("A"))).toBe(false);
+    expect(responseMatchesKey(msq("A", "C"), ticks("A", "B", "C"))).toBe(false);
+    expect(responseMatchesKey(msq("A", "C"), pick("A"))).toBe(false);
+  });
+
+  it("gives an MSQ the verdict right only for the exact set", () => {
+    expect(verdictFor(msq("A", "C"), ticks("A", "C"), false)).toBe(1);
+    expect(verdictFor(msq("A", "C"), ticks("A"), false)).toBe(-1);
+    expect(verdictFor(msq("A", "C"), ticks(), false)).toBe(0);
+  });
+
+  it("matches a numeric answer anywhere in a keyed range, ends included", () => {
+    const range: MockAnswerKey = { kind: "numeric", value: 132.8, max: 133.1 };
+    expect(responseMatchesKey(range, typed(133))).toBe(true);
+    expect(responseMatchesKey(range, typed(132.8))).toBe(true);
+    expect(responseMatchesKey(range, typed(133.1))).toBe(true);
+    expect(responseMatchesKey(range, typed(133.2))).toBe(false);
+  });
+});
+
+describe("msqOutcome and msqMarks (UCEED's two MSQ schemes)", () => {
+  const ticks = (...selectedLabels: ("A" | "B" | "C" | "D")[]): SavedResponse => ({ selectedLabel: null, numericResponse: null, selectedLabels });
+
+  it("classifies a tick set against the key", async () => {
+    const { msqOutcome } = await import("@/lib/mocks/answers");
+    expect(msqOutcome(["A", "C"], ticks("C", "A"))).toBe("exact");
+    expect(msqOutcome(["A", "C", "D"], ticks("A", "D"))).toBe("partial");
+    expect(msqOutcome(["A", "C"], ticks("A", "B"))).toBe("wrong");
+    expect(msqOutcome(["A", "C"], ticks())).toBe("blank");
+  });
+
+  it("all-or-nothing (2019-2021): full marks for the exact set, the penalty for anything else", async () => {
+    const { msqMarks } = await import("@/lib/mocks/answers");
+    expect(msqMarks("exact", ["A", "C"], ticks("A", "C"), 4, -0.19)).toBe(4);
+    expect(msqMarks("exact", ["A", "C"], ticks("A"), 4, -0.19)).toBe(-0.19);
+    expect(msqMarks("exact", ["A", "C"], ticks(), 4, -0.19)).toBe(0);
+  });
+
+  it("IIT Bombay's partial credit (2023-): +4 exact, +1 per correct tick when some are missing and none is wrong, -1 otherwise", async () => {
+    const { msqMarks } = await import("@/lib/mocks/answers");
+    expect(msqMarks("partial", ["A", "B", "C", "D"], ticks("A", "B", "C", "D"), 4, -1)).toBe(4);
+    expect(msqMarks("partial", ["A", "B", "C", "D"], ticks("A", "B", "C"), 4, -1)).toBe(3);
+    expect(msqMarks("partial", ["A", "B", "C"], ticks("A", "C"), 4, -1)).toBe(2);
+    expect(msqMarks("partial", ["A", "B"], ticks("B"), 4, -1)).toBe(1);
+    expect(msqMarks("partial", ["A", "B"], ticks("B", "C"), 4, -1)).toBe(-1);
+    expect(msqMarks("partial", ["D"], ticks("D"), 4, -1)).toBe(4);
+    expect(msqMarks("partial", ["A", "B"], ticks(), 4, -1)).toBe(0);
+  });
+});
