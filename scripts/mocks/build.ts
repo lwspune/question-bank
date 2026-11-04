@@ -100,7 +100,7 @@ import {
   cdsGkSittings,
   cdsMathsSittings,
 } from "./cdsSittings";
-import { deriveMhtCetSittings } from "./mhtcetSittings";
+import { deriveMhtCetSittings, mhtCetIncludeRows } from "./mhtcetSittings";
 import { deriveJeeSittings, JEE_SHIFT_SIZE } from "./jeeSittings";
 import { ipmatIndoreSittings, isGrace, jipmatSittings as deriveJipmatSittings } from "./ipmatSittings";
 import { CSAT_MOCK_PAPERS, deriveMpscSittings, serviceMockTitle, sspCsatMockTitle, sspMockTitle } from "./mpscSittings";
@@ -587,6 +587,8 @@ function mhtCetSittings(
     slug: mhtCetMockSlug(s.key, bp.code),
     title: mhtCetMockTitle(s.year, s.label, bp),
     hold: paper === "maths" ? s.hold?.maths : s.hold?.phyChem,
+    // Rows deduped under another sitting, borrowed at their own slot.
+    prepare: s.include?.[paper]?.length ? (rows) => [...rows, ...mhtCetIncludeRows(s, paper)] : undefined,
   }));
 }
 
