@@ -51,8 +51,8 @@ function noticed(): Set<string> {
 }
 
 describe("MPSC key-doubt notices (owner, 2026-11-03)", () => {
-  it("the ledger lists 204 questions (203 of 2026-11-03 + ssp-2025 Q39, changed by the final key)", () => {
-    expect(ledger()).toHaveLength(204);
+  it("the ledger lists 209 questions (203 of 2026-11-03, ssp-2025 Q39, and 2025-b Q1/Q20/Q87 + ssp-2026 Q60/Q77 of 2026-11-04)", () => {
+    expect(ledger()).toHaveLength(209);
   });
 
   it("every ledger row has a notice", () => {

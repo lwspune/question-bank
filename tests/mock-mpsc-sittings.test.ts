@@ -125,7 +125,7 @@ describe("deriveMpscSittings", () => {
     expect(got.find((s) => s.key === "ssp-2025")?.graceNumbers).toEqual([15, 36, 39, 47, 50, 87, 89, 90]); // final key: 36 + 90 cancelled, 39 a new doubt, 84 settled
     // 29 before the 2026-11-03 key-doubt ruling, which adds 34 GS questions.
     // 2026-11-04: ssp-2025 moved to MPSC's final key (+Q36, Q90 cancelled, +Q39 doubt, -Q84 settled).
-    expect(got.reduce((n, s) => n + s.graceNumbers.length, 0)).toBe(71); // + ssp-2026 final key: Q14, Q22, Q25, Q50, Q51, Q70 cancelled
+    expect(got.reduce((n, s) => n + s.graceNumbers.length, 0)).toBe(73); // + ssp-2026 final key: Q14, Q22, Q25, Q50, Q51, Q70 cancelled; Q60, Q77 notices
   });
 
   it("covers every configured paper with a distinct slug", () => {
@@ -133,7 +133,7 @@ describe("deriveMpscSittings", () => {
     expect(got).toHaveLength(PAPERS.length);
     expect(new Set(got.map((s) => s.slug)).size).toBe(PAPERS.length);
     // Measured: 35 cancelled questions across the 14 official keys, plus 31 key-doubt notices (2026-11-03).
-    expect(got.reduce((n, s) => n + s.graceNumbers.length, 0)).toBe(68); // + 2025-c Q20 and 2026-b Q66, cancelled in their final keys
+    expect(got.reduce((n, s) => n + s.graceNumbers.length, 0)).toBe(71); // + 2025-c Q20 and 2026-b Q66 cancelled; 2025-b Q1, Q20, Q87 notices
   });
 });
 

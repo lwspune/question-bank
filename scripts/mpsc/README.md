@@ -192,11 +192,11 @@ for figure crops). The ticks were never used as an answer.
 `Paper.bookletSet` names the set, and `keys.ts`, `applyGradedKey` and `key.json`
 read that set's column of the 4-set key.
 
-**Keys:** 2023 and 2024 are MPSC's FINAL keys. **2025 is MPSC's FIRST key**
-(objections until 18 Nov 2025; `provisionalKey`); the final key was not found,
-because mpsc.gov.in's file API needs a header only its own front end sends.
-Shipped unlabelled (owner, 2026-11-03), as asp-2011 was; **re-check 2025 against
-the final key when it is found.** The CSAT decision-making grids were typed from
+**Keys:** all MPSC's FINAL keys. 2025 shipped on the FIRST key and moved to the
+final key (2 Jan 2026) on 2026-11-04 with `apply-final-key.ts` (see "Sources:
+mpsc.gov.in" below): GS changed 8 questions (Q19, Q64, Q84, Q86 re-keyed with new
+solutions; Q39, Q89 re-keyed to answers that still look doubtful, so notice +
+grace; Q36, Q90 cancelled); CSAT unchanged, decision-making grid included. The CSAT decision-making grids were typed from
 each key's page image into `graded.json`. Every paper was solved blind first.
 
 **English passages:** 13 CSAT passages and one stem were left as placeholders by
@@ -212,6 +212,32 @@ kept) into the batches by the main session, every doubtful word checked on the p
 | ssp-csat-2023 (R17, D) | 71/80 final | Q51 | 7 figures |
 | ssp-csat-2024 (X18, D) | 77/80 final | none | used copy; 6 English passages by OCR; Q72's grid kept as photographed (`watermark: "none"`) |
 | ssp-csat-2025 (F21, C) | 75/80 FIRST | none | 5 English passages by OCR |
+
+## Sources: mpsc.gov.in (2026-11-04)
+
+MPSC posts every booklet ("Previous Question Papers") and every first and final
+key ("Answer Keys of Examinations") on mpsc.gov.in. The file links only work
+through the site's own pages (its API wants a header its front end adds), so
+fetch them in a browser: search the table, click the file, save the PDF. Chrome
+allows one automatic download per tab, so use a fresh tab per file.
+
+`MPSC_2026_DIR` (`C:/Users/vilas/Downloads/mpsc-2026/`) holds the five papers
+below (`paper-*.pdf`, `key-*.pdf`, all Set A) and the 2025 State Services final
+keys (`key-gs-2025-final.pdf`, `key-csat-2025-final.pdf`).
+
+| id | paper | sat | final key | cancelled |
+|---|---|---|---|---|
+| ssp-2026 (D25) | State Services GS Paper I | 31 May 2026 | 17 Jun 2026 | Q14, Q22, Q25, Q50, Q51, Q70 |
+| ssp-csat-2026 (E25) | State Services CSAT Paper II | 31 May 2026 | 17 Jun 2026 | none |
+| 2025-b (M21) | Group B Combined Prelims 2025 | 4 Jan 2026 | 26 Feb 2026 | none |
+| 2025-c (P21) | Group C Combined Prelims 2025 | 11 Jan 2026 | 5 Mar 2026 | Q20 |
+| 2026-b (H25) | Group B Combined Prelims 2026 | 14 Jun 2026 | 28 Jun 2026 | Q66 |
+
+From 2025 the CSAT key's page 2 runs its left column longer than the right
+(51-65 | 66-75), with the decision-making grid printed as 0/1 text below;
+`extract.py keys` reads that layout, and the grid comes from `graded.json`, typed
+from the page image as before. Group C 2026 (scheduled 12 Jul 2026) was not on
+the site on 2026-11-04.
 
 ### Key doubts found by the solutions backfill (all MPSC exams): SETTLED 2026-11-03
 

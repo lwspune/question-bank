@@ -11,6 +11,21 @@ import { notice } from "./notice";
 type Notice = { en: string; mr: string };
 
 export const KEY_DOUBT_NOTICES: Record<string, Record<number, Notice>> = {
+  // From MPSC's FINAL keys of the 2025-26 papers, found when the blind solve disagreed (2026-11-04).
+  "2025-b": {
+    1: notice(
+      "MPSC's key gives option C, Shivrampant Paranjape. Paranjape was tried for sedition in 1908 for his articles in Kal, but the sedition case brought over writing on the Muzaffarpur bomb case was against Lokmanya Tilak, for his Kesari articles of May and June 1908: option A.",
+      "आयोगाच्या उत्तरतालिकेत पर्याय C, शिवरामपंत परांजपे, बरोबर दिला आहे. परांजपे यांच्यावर 1908 मध्ये 'काळ' मधील लेखांबद्दल राजद्रोहाचा खटला झाला; पण मुजफ्फरपूर बॉम्ब प्रकरणावरील लेखनाबद्दलचा राजद्रोहाचा खटला लोकमान्य टिळकांवर, मे व जून 1908 मधील केसरीतील लेखांबद्दल, भरला गेला: पर्याय A."
+    ),
+    20: notice(
+      "MPSC's key gives option D, statements (b) and (c). Statement (a) is not correct (the Tansa flows into the Vaitarna, and the Vaitarna reaches the sea on its own), but (c) is doubtful too: the Manyad is a tributary of the Girna, which belongs to the Tapi basin, not the Godavari. On that reading only (b) is true, and no option says so.",
+      "आयोगाच्या उत्तरतालिकेत पर्याय D, विधाने (b) व (c), बरोबर दिला आहे. विधान (a) बरोबर नाही (तानसा वैतरणेला मिळते आणि वैतरणा स्वतंत्रपणे समुद्राला मिळते), पण (c) सुद्धा संशयास्पद आहे: मन्याड ही गिरणेची उपनदी आहे आणि गिरणा तापी खोऱ्यात आहे, गोदावरी खोऱ्यात नाही. त्यानुसार फक्त (b) बरोबर ठरते, आणि असा पर्याय दिलेला नाही."
+    ),
+    87: notice(
+      "No option is right as printed. 52 : 13 is 4 : 1, so the states outnumber the union territories by \\(\\frac{52 - 13}{13} \\times 100 = 300\\%\\), which is not an option. MPSC's key gives option C, 60.",
+      "छापलेल्या स्वरूपात कोणताही पर्याय बरोबर नाही. 52 : 13 म्हणजे 4 : 1, म्हणून राज्यांची संख्या केंद्रशासित प्रदेशांपेक्षा \\(\\frac{52 - 13}{13} \\times 100 = 300\\%\\) ने जास्त आहे; हे उत्तर पर्यायांमध्ये नाही. आयोगाच्या उत्तरतालिकेत पर्याय C, 60, दिला आहे."
+    ),
+  },
   "2017-b": {
     60: notice(
       "MPSC's key gives option A, only (a). Statement (c) is not correct either: the 2013-14 budget put the fiscal deficit at 4.8% of GDP, not 2.5%. So the key leaves out a second statement that is not correct, and no option names both (a) and (c).",
@@ -454,6 +469,16 @@ export const KEY_DOUBT_NOTICES: Record<string, Record<number, Notice>> = {
     89: notice(
       "MPSC's final key gives option B, all three statements incorrect (its first key gave C). The awards began in 2018, so C is not correct, and the Sixth National Water Awards were launched in October 2024, so A is doubtful. But the awards are given in nine categories, so B looks correct, and no option is only B.",
       "आयोगाच्या अंतिम उत्तरतालिकेत पर्याय B, तिन्ही विधाने चूक, बरोबर दिला आहे (पहिल्या उत्तरतालिकेत C होता). हे पुरस्कार 2018 पासून दिले जातात, म्हणून C बरोबर नाही, आणि सहाव्या राष्ट्रीय जल पुरस्कारांची घोषणा ऑक्टोबर 2024 मध्ये झाली, म्हणून A संशयास्पद आहे. पण पुरस्कार नऊ श्रेणींमध्ये दिले जातात, म्हणून B बरोबर वाटते, आणि फक्त B असा पर्याय नाही."
+    ),
+  },
+  "ssp-2026": {
+    60: notice(
+      "MPSC's key gives option D, all of the above. Statements (a) and (b) are right, but (c) is not: Barbara McClintock found jumping genes in maize in the late 1940s and published in 1950 (Nobel Prize, 1983), not in 1965. That makes the answer (a) and (b), option A.",
+      "आयोगाच्या उत्तरतालिकेत पर्याय D, वरील सर्व, बरोबर दिला आहे. विधाने (a) व (b) बरोबर आहेत, पण (c) नाही: बार्बरा मॅक्लिंटॉक यांनी मक्यातील उड्या मारणारी जनुके 1940 च्या दशकाच्या उत्तरार्धात शोधली व 1950 मध्ये प्रसिद्ध केली (नोबेल पुरस्कार, 1983); 1965 मध्ये नव्हे. त्यामुळे उत्तर (a) व (b), पर्याय A, ठरते."
+    ),
+    77: notice(
+      "MPSC's key gives option A, only (a) and (b). The National Commission to Review the Working of the Constitution (2002) also recommended the duty to foster family values and responsible parenthood (d) and the duty of industrial undertakings to educate their employees' children (c), which would make the answer all of the above, option D.",
+      "आयोगाच्या उत्तरतालिकेत पर्याय A, फक्त (a) व (b), बरोबर दिला आहे. संविधानाच्या कार्यपद्धतीचा आढावा घेणाऱ्या राष्ट्रीय आयोगाने (2002) कौटुंबिक मूल्ये व जबाबदार पालकत्व जोपासण्याचे कर्तव्य (d) आणि औद्योगिक संस्थांनी आपल्या कर्मचाऱ्यांच्या मुलांना शिक्षण देण्याचे कर्तव्य (c) यांचीही शिफारस केली होती; त्यानुसार उत्तर वरील सर्व, पर्याय D, ठरते."
     ),
   },
   "ssp-csat-2013": {

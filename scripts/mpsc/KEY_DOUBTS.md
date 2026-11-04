@@ -507,3 +507,22 @@ A finding is a question, not a verdict. Several are matters of grammar-book trad
 | 40 | D | defective: the passage names communal, authoritarian and military strains but not feudalism; no option is (a), (c), (d) | 793d3e08 |
 | 42 | C | (ड) reverses cause and effect (experiences shape art, art does not cause experiences) and (क) is not clearly stated: no option is clean | 0abd252f |
 
+
+## MPSC-2025-b-M21
+
+Found 2026-11-04 when the blind solve disagreed with MPSC's final key (26 Feb 2026). Notice + grace, key kept (the owner's 2026-11-03 rule).
+
+| Q | key | finding | id |
+|---|---|---|---|
+| 1 | C | the sedition case over writing on the Muzaffarpur bomb case was against Tilak (Kesari, 1908) (A); Paranjape's 1908 trial was for his Kal articles | 9aa463bf |
+| 20 | D | (a) is false (Tansa joins the Vaitarna), but (c) is doubtful too: the Manyad is a Girna tributary, in the Tapi basin. Only (b) holds; no option says so | 833b1356 |
+| 87 | C | defective: 52 : 13 = 4 : 1, so states exceed union territories by 300%; no option | 5887e93a |
+
+## MPSC-ssp-2026-D25
+
+Found 2026-11-04 against MPSC's final key (17 Jun 2026). Notice + grace, key kept.
+
+| Q | key | finding | id |
+|---|---|---|---|
+| 60 | D | McClintock found jumping genes in the late 1940s (published 1950), not 1965, so (c) is false: (a) and (b) (A) | 532026f9 |
+| 77 | A | the NCRWC (2002) also recommended the family-values duty (d) and industry's duty to educate employees' children (c): all of the above (D) | 4b3cb4fd |
