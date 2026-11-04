@@ -168,6 +168,9 @@ async function main() {
       case "visual-solutions":
         line = handRead(e.liveSince, ["visual-finished", "visual-still"]);
         break;
+      case "homework-tab":
+        line = handRead(e.liveSince, ["homework-day-visitors"]);
+        break;
       case "v-pay-offer":
         line = handRead(e.liveSince, ["v-pay-offer-shown", "v-pay-offer-checkout"]);
         break;

@@ -9,7 +9,7 @@ import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { randomUUID } from "node:crypto";
 import { recordExportEvent } from "@/lib/export/log";
-import { getPlanChapterTop } from "@/lib/homework/query";
+import { getPlanChapterTop, getPlanChapters, getPlanGroup, listPublishedPlans } from "@/lib/homework/query";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -184,6 +184,25 @@ describe.skipIf(!HAS_ENV)("homework plans", () => {
     expect(top?.items.map((it) => it.position)).toEqual(expected.map((_, i) => i + 1));
   });
 
+  it("lists the chapters whose questions the plan holds, for the Top 10 tab (2026-11-04)", async () => {
+    const page = await getPlanChapters(anon, slug);
+    expect(page?.plan).toMatchObject({ id: planId, slug, title: "Homework fixture" });
+    const wanted = [...new Set(qs.map((q) => q.chapter_id))].sort();
+    expect(page?.chapters.map((c) => c.id).sort()).toEqual(wanted);
+    for (const c of page?.chapters ?? []) expect(c.slug.length).toBeGreaterThan(0);
+    expect(await getPlanChapters(anon, `${slug}-missing`)).toBeNull();
+  });
+
+  it("lists one exam's plans for its homework page, and no other exam's", async () => {
+    const { data: exam } = await admin.from("exams").select("name").eq("id", qs[0].exam_id).single();
+    const mine = await listPublishedPlans(anon, { examName: exam!.name as string });
+    const fixture = mine.find((p) => p.slug === slug);
+    expect(fixture?.chapters).toBe(new Set(qs.map((q) => q.chapter_id)).size);
+    expect(mine.every((p) => p.examName === exam!.name)).toBe(true);
+    const none = await listPublishedPlans(anon, { examName: "No Such Exam" });
+    expect(none).toEqual([]);
+  });
+
   it("reads nothing for a chapter the plan does not hold or a plan that does not exist", async () => {
     const elsewhere = other?.chapter_id ?? randomUUID();
     expect((await getPlanChapterTop(anon, slug, elsewhere))?.items ?? []).toEqual([]);
@@ -216,5 +235,76 @@ describe.skipIf(!HAS_ENV)("homework plans", () => {
       .from("export_events")
       .insert({ kind: "paper", question_count: 0, mode: "top_pyqs", homework_plan_id: planId, homework_day: 1 });
     expect(withDay.error).not.toBeNull();
+  });
+
+  describe("groups (0216)", () => {
+    const group = (n: number, members: Q[]) => ({
+      n,
+      tier: "type",
+      label: `Fixture type ${n}`,
+      sittings: members.map((_, k) => `Mar ${2015 + k}`),
+      members: members.map((q, k) => ({ position: k + 1, sub: 1, questionId: q.id, sitting: `Mar ${2015 + k}` })),
+    });
+    const replaceWith = (items: unknown[], groups: unknown[]) =>
+      admin.rpc("homework_replace_items", { p_plan_id: planId, p_items: items, p_groups: groups });
+
+    it("writes a plan's groups with its items, each slot naming its group", async () => {
+      const { error } = await replaceWith(
+        [{ ...item(1, 1, qs[0]), group: 1 }, item(1, 2, qs[1]), item(2, 1, qs[2])],
+        [group(1, [qs[0], qs[2]])]
+      );
+      expect(error).toBeNull();
+      const { data: items } = await anon
+        .from("homework_plan_items")
+        .select("day, position, group_n")
+        .eq("plan_id", planId)
+        .order("day")
+        .order("position");
+      expect(items).toEqual([
+        { day: 1, position: 1, group_n: 1 },
+        { day: 1, position: 2, group_n: null },
+        { day: 2, position: 1, group_n: null },
+      ]);
+    });
+
+    it("reads a published plan's group with every question in it, oldest first", async () => {
+      const page = await getPlanGroup(anon, slug, 1);
+      expect(page?.plan).toMatchObject({ id: planId, slug, title: "Homework fixture" });
+      expect(page?.group).toMatchObject({ n: 1, tier: "type", label: "Fixture type 1", sittings: ["Mar 2015", "Mar 2016"] });
+      expect(page?.members.map((m) => [m.position, m.questionId, m.sitting])).toEqual([
+        [1, qs[0].id, "Mar 2015"],
+        [2, qs[2].id, "Mar 2016"],
+      ]);
+      expect(await getPlanGroup(anon, slug, 99)).toBeNull();
+    });
+
+    it("hides an unpublished plan's groups from the public", async () => {
+      await admin.from("homework_plans").update({ published: false }).eq("id", planId);
+      const { data } = await anon.from("homework_plan_groups").select("n").eq("plan_id", planId);
+      const { data: members } = await anon.from("homework_plan_group_questions").select("n").eq("plan_id", planId);
+      await admin.from("homework_plans").update({ published: true }).eq("id", planId);
+      expect(data).toEqual([]);
+      expect(members).toEqual([]);
+    });
+
+    it("refuses a slot naming a group the plan does not have, leaving the plan as it was", async () => {
+      const { error } = await replaceWith([{ ...item(1, 1, qs[0]), group: 5 }], [group(1, [qs[0]])]);
+      expect(error).not.toBeNull();
+      const { data } = await admin.from("homework_plan_groups").select("n").eq("plan_id", planId);
+      expect(data).toEqual([{ n: 1 }]);
+    });
+
+    it("refuses a group listing a question from another subject", async () => {
+      if (!other) return;
+      const { error } = await replaceWith([item(1, 1, qs[0])], [group(1, [qs[0], other])]);
+      expect(error?.message).toMatch(/not a PUBLIC question of this plan/);
+    });
+
+    it("clears the groups when a plan is rewritten without them", async () => {
+      const { error } = await replace([item(1, 1, qs[0]), item(1, 2, qs[1]), item(2, 1, qs[2])]);
+      expect(error).toBeNull();
+      const { data } = await admin.from("homework_plan_groups").select("n").eq("plan_id", planId);
+      expect(data).toEqual([]);
+    });
   });
 });

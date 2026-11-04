@@ -4,16 +4,24 @@
  * Input is a reviewed repeat analysis: which questions are the SAME question
  * asked in more than one paper ("repeat" groups), and which are the same KIND
  * of question with new numbers ("type" groups). The output is days of perDay
- * questions in three parts:
+ * questions:
  *
- *   1. Every repeat, highest count first, printed ONCE in its latest wording;
- *      its other wordings are never printed again.
- *   2. One example of each type, the latest question not already printed,
- *      highest count first. A type whose questions were all printed in part 1
- *      is skipped.
- *   3. Every remaining question, asked once: types first (highest count first,
- *      taking one question per type in turn), then the rest one chapter at a
- *      time in turn, so a day never fills up with one kind of question.
+ *   First, repeats and types RANKED TOGETHER by how often they were asked
+ *   (2026-11-04, owner; until then every repeat came before every type, so in
+ *   NDA a type asked 8 times sat behind repeats asked twice). On a tie the
+ *   exact repeat comes first, then the one asked most recently.
+ *   - A repeat (part 1) is printed ONCE in its latest wording; its other
+ *     wordings are never printed again.
+ *   - A type (part 2) prints one example, its latest question not already
+ *     printed. When that example is a wording of a repeat, it is printed as the
+ *     type and the repeat's other wordings are never printed. A type whose
+ *     questions were all printed is skipped.
+ *   Then (part 3) every remaining question, asked once: types first (highest
+ *   count first, taking one question per type in turn), then the rest one
+ *   chapter at a time in turn, so a day never fills up with one kind of question.
+ *
+ * Each slot records the group it stands for (its index in the input), so a page
+ * can list every question of that group.
  *
  * Every question ends up printed, or is a wording of a printed repeat.
  * Spec: tests/homework-plan-order.test.ts.
@@ -53,6 +61,8 @@ export type PlanItem = {
   note: string;
   /** Every bank row in the slot, in order: the question, or a case study's parts. */
   rows: string[];
+  /** The group this slot stands for (its index in the input's groups), or none for a question asked once with no type. */
+  group?: number;
 };
 
 const bare = (s: string) => s.replace(/\*$/, "");
@@ -77,37 +87,48 @@ export function buildPlanOrder(input: PlanInput): PlanItem[] {
   const byWeight = (a: PlanGroup, b: PlanGroup) =>
     b.sittings.length - a.sittings.length || lastOf(b) - lastOf(a);
 
-  const repeats = input.groups.filter((g) => g.tier === "repeat").sort(byWeight);
+  const indexOf = new Map(input.groups.map((g, i) => [g, i]));
   const types = input.groups.filter((g) => g.tier === "type").sort(byWeight);
   const typeOf = new Map<string, PlanGroup>();
   for (const g of types) for (const id of g.questionIds) if (!typeOf.has(id)) typeOf.set(id, g);
+  const repeatOf = new Map<string, PlanGroup>();
+  for (const g of input.groups) if (g.tier === "repeat") for (const id of g.questionIds) if (!repeatOf.has(id)) repeatOf.set(id, g);
+  // One ranking: count, then an exact repeat before a type, then the latest asked.
+  const ranked = [...input.groups].sort(
+    (a, b) =>
+      b.sittings.length - a.sittings.length ||
+      (a.tier === "repeat" ? 0 : 1) - (b.tier === "repeat" ? 0 : 1) ||
+      lastOf(b) - lastOf(a)
+  );
 
   const used = new Set<string>();
   const order: Omit<PlanItem, "day" | "position" | "rows">[] = [];
 
-  // Part 1
-  for (const g of repeats) {
-    const avoid = new Set(g.avoidAsExample ?? []);
-    const open = latestFirst(g.questionIds).filter((id) => !used.has(id));
-    const pick = open.find((id) => !avoid.has(id)) ?? open[0];
-    if (pick === undefined) continue;
-    const list = chrono(g);
-    const star = list.some((s) => s.endsWith("*")) ? " (* = numbers or wording changed that year)" : "";
-    order.push({ questionId: pick, part: 1, note: `Asked ${list.length} times: ${list.join(", ")}${star}` });
-    used.add(pick);
-  }
-  for (const g of repeats) for (const id of g.questionIds) used.add(id);
-
-  // Part 2
-  for (const g of types) {
-    const pick = latestFirst(g.questionIds).find((id) => !used.has(id));
-    if (pick === undefined) continue;
-    order.push({
-      questionId: pick,
-      part: 2,
-      note: `This type asked ${g.sittings.length} times: ${chrono(g).join(", ")}. This one: ${byId.get(pick)!.sitting}`,
-    });
-    used.add(pick);
+  // Parts 1 and 2, interleaved by the ranking.
+  for (const g of ranked) {
+    if (g.tier === "repeat") {
+      const avoid = new Set(g.avoidAsExample ?? []);
+      const open = latestFirst(g.questionIds).filter((id) => !used.has(id));
+      const pick = open.find((id) => !avoid.has(id)) ?? open[0];
+      if (pick === undefined) continue;
+      const list = chrono(g);
+      const star = list.some((s) => s.endsWith("*")) ? " (* = numbers or wording changed that year)" : "";
+      order.push({ questionId: pick, part: 1, note: `Asked ${list.length} times: ${list.join(", ")}${star}`, group: indexOf.get(g)! });
+      // Its other wordings are never printed.
+      for (const id of g.questionIds) used.add(id);
+    } else {
+      const pick = latestFirst(g.questionIds).find((id) => !used.has(id));
+      if (pick === undefined) continue;
+      order.push({
+        questionId: pick,
+        part: 2,
+        note: `This type asked ${g.sittings.length} times: ${chrono(g).join(", ")}. This one: ${byId.get(pick)!.sitting}`,
+        group: indexOf.get(g)!,
+      });
+      used.add(pick);
+      // Printed as the type: a repeat it belongs to is never printed again.
+      for (const id of repeatOf.get(pick)?.questionIds ?? []) used.add(id);
+    }
   }
 
   // Part 3
@@ -129,6 +150,7 @@ export function buildPlanOrder(input: PlanInput): PlanItem[] {
       questionId: id,
       part: 3,
       note: `Asked once: ${byId.get(id)!.sitting}` + (g ? ` (same type asked ${g.sittings.length} times)` : ""),
+      ...(g ? { group: indexOf.get(g)! } : {}),
     });
   }
 

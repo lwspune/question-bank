@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { sideNavSegments, type SideNavGroup } from "@/lib/nav/sideNavGroups";
 
 export type SideNavItem = {
   href: string;
@@ -20,6 +21,9 @@ export type SideNavItem = {
   /** Other routes that light this item up — a collapsed exam family's link
    *  stays active on each member exam's own page (/mock). */
   alsoActive?: string[];
+  /** A heading to list this item under (2026-11-04, /homework's exams). Items
+   *  without one render as before; see lib/nav/sideNavGroups. */
+  group?: SideNavGroup;
 };
 
 type Props = {
@@ -47,28 +51,49 @@ export default function GuideSideNav({ guideTitle, items, landingHref }: Props) 
     return pathname === href || pathname.startsWith(href + "/");
   };
 
+  const link = (item: SideNavItem) => {
+    const active = isActive(item.href) || (item.alsoActive ?? []).some(isActive);
+    return (
+      <li key={item.href}>
+        <Link
+          href={item.href}
+          onClick={() => setOpen(false)}
+          className={cn(
+            "block rounded-md px-3 py-2 text-sm font-medium transition-colors",
+            active
+              ? "bg-brand/10 text-brand-accent"
+              : "text-muted-foreground hover:bg-accent hover:text-foreground"
+          )}
+          aria-current={active ? "page" : undefined}
+        >
+          {item.label}
+        </Link>
+      </li>
+    );
+  };
+
   const list = (
     <ul className="space-y-1">
-      {items.map((item) => {
-        const active = isActive(item.href) || (item.alsoActive ?? []).some(isActive);
-        return (
-          <li key={item.href}>
-            <Link
-              href={item.href}
-              onClick={() => setOpen(false)}
-              className={cn(
-                "block rounded-md px-3 py-2 text-sm font-medium transition-colors",
-                active
-                  ? "bg-brand/10 text-brand-accent"
-                  : "text-muted-foreground hover:bg-accent hover:text-foreground"
-              )}
-              aria-current={active ? "page" : undefined}
-            >
-              {item.label}
-            </Link>
+      {sideNavSegments(items).map((seg, i) =>
+        seg.group ? (
+          <li key={`group-${seg.group.label}`} className={i > 0 ? "pt-3" : undefined}>
+            {seg.group.href ? (
+              <Link
+                href={seg.group.href}
+                onClick={() => setOpen(false)}
+                className="block rounded-md px-3 py-1 text-xs font-semibold uppercase tracking-wider text-foreground transition-colors hover:text-brand-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              >
+                {seg.group.label}
+              </Link>
+            ) : (
+              <p className="px-3 py-1 text-xs font-semibold uppercase tracking-wider text-foreground">{seg.group.label}</p>
+            )}
+            <ul className="mt-1 space-y-1 border-l pl-2 ml-3">{seg.items.map(link)}</ul>
           </li>
-        );
-      })}
+        ) : (
+          seg.items.map(link)
+        )
+      )}
     </ul>
   );
 

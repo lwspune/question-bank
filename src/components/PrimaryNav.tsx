@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BookMarked, BookOpen, Compass, FileText, GraduationCap, Library, NotebookPen, Target, Timer } from "lucide-react";
+import { BookMarked, BookOpen, CalendarDays, Compass, FileText, Library, NotebookPen, Target, Timer } from "lucide-react";
 import { getActiveTab, type ActiveTab } from "@/lib/exam/examContext";
 import { FIX_TAB_HREF, type FifthTab } from "@/lib/nav/fifthTab";
 
@@ -12,8 +12,8 @@ type Props = {
   notesHref: string;
   mockHref: string;
   boardHref: string;
-  /** The exam's Learn course, or the Learn hub when it has none (lib/exam/examNav). */
-  learnHref: string;
+  /** The exam's homework page, or every plan when no exam is chosen (lib/exam/examNav). */
+  homeworkHref: string;
   /** Board, or Fix for a graduate student (lib/nav/fifthTab). Default Board. */
   fifth?: FifthTab;
   /** Org members (ADMIN/TEACHER) get the Papers tab; everyone else doesn't —
@@ -41,7 +41,7 @@ export default function PrimaryNav({
   notesHref,
   mockHref,
   boardHref,
-  learnHref,
+  homeworkHref,
   fifth = "board",
   showPapers = false,
   showBooks = false,
@@ -53,7 +53,9 @@ export default function PrimaryNav({
     { id: "bank", label: "PYQs", href: bankHref, Icon: Compass },
     { id: "guides", label: "Guides", href: guidesHref, Icon: BookOpen },
     { id: "notes", label: "Notes", href: notesHref, Icon: NotebookPen },
-    { id: "learn", label: "Learn", href: learnHref, Icon: GraduationCap },
+    // Homework took Learn's place at every width (owner, 2026-11-04); Learn is
+    // in the account menu. See lib/nav/mobileTabs.
+    { id: "homework", label: "Homework", href: homeworkHref, Icon: CalendarDays },
     // Mocks — always visible, like Board. It used to be gated on the active
     // exam's `hasMocks`, which hid a working page for 11 of 13 exam states.
     // mockHref is the exam's own catalogue when it has mocks, else /mock, which

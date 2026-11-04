@@ -97,6 +97,7 @@ export default async function HomeworkDayPage({ params }: { params: Params }) {
           slots={slots}
           examName={plan.examName}
           dayTitle={`${plan.title}, day ${day}`}
+          planSlug={plan.slug}
           supabaseUrl={process.env.NEXT_PUBLIC_SUPABASE_URL!}
         />
 

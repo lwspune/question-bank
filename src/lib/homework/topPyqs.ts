@@ -3,9 +3,9 @@
  * in its subject's daily homework plan, shown as a tab on the /board chapter
  * page and downloadable as a paper and its answer key. Pure.
  *
- * The plan's order IS the ranking (lib/homework/plan.ts): questions the board
- * asked again, most-asked first, then the types it keeps asking, then the rest,
- * newest first. So no second ranking exists to drift from the homework one; a
+ * The plan's order IS the ranking (lib/homework/plan.ts): questions asked
+ * again and the types the board keeps asking, ranked together by count (since
+ * 2026-11-04), then the rest, newest first. So no second ranking exists to drift from the homework one; a
  * chapter with fewer than ten repeats fills up with questions asked once, each
  * still headed by its own "Asked once: Feb 2026" line.
  *
@@ -32,7 +32,7 @@ export function pickTopSlots(rows: readonly PlanChapterRow[], n: number = TOP_PY
       slot += 1;
       last = key;
     }
-    out.push({ position: slot, sub: r.sub, questionId: r.questionId, chapter: r.chapter, note: r.note });
+    out.push({ position: slot, sub: r.sub, questionId: r.questionId, chapter: r.chapter, note: r.note, group: r.group ?? null });
   }
   return out;
 }

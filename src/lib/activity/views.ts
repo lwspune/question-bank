@@ -55,6 +55,9 @@ export const SURFACES = [
   // address. Until then nothing told "nobody came" from "came and left before a question".
   "learn",
   "learn_start",
+  // The Homework tab's pages (2026-11-04), with metadata.path: a plan, a day,
+  // or a chapter's Top 10. Before this nothing counted a homework visit.
+  "homework",
   // A /board chapter's Revision tab opened (2026-11-03), with the chapter's
   // address: whether board students read the quick-revision sheets at all.
   "board_revision",
@@ -67,7 +70,7 @@ export function isSurface(v: unknown): v is Surface {
   return typeof v === "string" && SURFACE_SET.has(v);
 }
 
-export type ReadingSurface = "notes" | "board" | "questions" | "guide" | "formula" | "question_papers" | "past_paper" | "store" | "learn";
+export type ReadingSurface = "notes" | "board" | "questions" | "guide" | "formula" | "question_papers" | "past_paper" | "store" | "learn" | "homework";
 
 /** A section's first path segment -> its reading surface. */
 const READING_SECTIONS: Record<string, ReadingSurface> = {
@@ -79,6 +82,7 @@ const READING_SECTIONS: Record<string, ReadingSurface> = {
   "question-papers": "question_papers",
   store: "store",
   learn: "learn",
+  homework: "homework",
 };
 const READING_SET: ReadonlySet<string> = new Set(Object.values(READING_SECTIONS).concat("past_paper"));
 const PATH_RE = /^\/[a-z0-9-]+(\/[a-z0-9-]+)*$/;

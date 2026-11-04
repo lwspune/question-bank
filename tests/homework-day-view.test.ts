@@ -22,6 +22,11 @@ describe("homeworkDayView", () => {
     ]);
   });
 
+  it("carries the group a slot stands for, for its See all link (2026-11-04)", () => {
+    const out = homeworkDayView([{ ...item(1, "a"), group: 7 }, item(2, "b")], [q("a"), q("b")]);
+    expect(out.ok && out.slots.map((s) => s.group)).toEqual([7, null]);
+  });
+
   it("keeps a case study's parts together in part order, its passage once on the slot", () => {
     const passage = "A ray of light passes through a prism of angle 60 degrees...";
     const out = homeworkDayView(

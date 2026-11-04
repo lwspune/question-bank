@@ -13,22 +13,39 @@ export function shortNote(note: string): string {
   return note;
 }
 
-export type DaySection<D> = { part: 1 | 2 | 3; from: number; to: number; days: D[] };
+/** "most" = repeats and types, ranked together by count; "once" = asked once. */
+export type DaySection<D> = { kind: "most" | "once"; from: number; to: number; days: D[] };
 
-/** Consecutive days grouped by the part of their first question. */
+/**
+ * Consecutive days grouped by their first question: asked most often (parts 1
+ * and 2, which interleave since repeats and types are ranked together,
+ * 2026-11-04) or asked once (part 3).
+ */
 export function sectionsOf<D extends { day: number; items: { part: 1 | 2 | 3 }[] }>(days: D[]): DaySection<D>[] {
   const out: DaySection<D>[] = [];
   for (const d of days) {
-    const part = d.items[0]?.part ?? 3;
+    const kind = (d.items[0]?.part ?? 3) === 3 ? "once" : "most";
     const last = out[out.length - 1];
-    if (last && last.part === part) {
+    if (last && last.kind === kind) {
       last.days.push(d);
       last.to = d.day;
     } else {
-      out.push({ part, from: d.day, to: d.day, days: [d] });
+      out.push({ kind, from: d.day, to: d.day, days: [d] });
     }
   }
   return out;
+}
+
+/**
+ * The link under a slot's note to every question of its group (2026-11-04),
+ * worded from the note the plan builder wrote. Null when there is no group to show.
+ */
+export function seeAllLabel(note: string): string | null {
+  const type = /^This type asked (\d+) times/.exec(note) ?? /same type asked (\d+) times/.exec(note);
+  if (type) return `See all ${type[1]} of this type`;
+  const again = /^Asked (\d+) times/.exec(note);
+  if (again) return `See all ${again[1]} times it was asked`;
+  return null;
 }
 
 /**

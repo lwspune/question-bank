@@ -5,8 +5,10 @@ import GuideHero from "@/app/guide/_components/GuideHero";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { getPlanBySlug, listPublishedPlans } from "@/lib/homework/query";
 import { sectionsOf, shortNote } from "@/lib/homework/display";
+import { homeworkSideNav } from "@/lib/homework/chapters";
 import { homeworkOfferFacts, homeworkOfferLead } from "@/lib/billing/passOfferLead";
 import HomeworkDownload from "../_components/HomeworkDownload";
+import PlanTabs from "../_components/PlanTabs";
 import Link from "next/link";
 import { Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -36,16 +38,16 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   };
 }
 
-const partTitle = (asker: string): Record<1 | 2 | 3, string> => ({
-  1: `Questions ${asker} asked again`,
-  2: `Question types ${asker} keeps asking`,
-  3: "Questions asked once",
+// Repeats and types are ranked together by count since 2026-11-04, so they
+// share the first section.
+const sectionTitle = (asker: string): Record<"most" | "once", string> => ({
+  most: `Asked most often by ${asker}`,
+  once: "Questions asked once",
 });
 
-const PART_HELP: Record<1 | 2 | 3, string> = {
-  1: "Each printed once, in its latest wording, highest count first.",
-  2: "One example of each type, with how often the type was asked.",
-  3: "Every other question from the papers.",
+const SECTION_HELP: Record<"most" | "once", string> = {
+  most: "Highest count first: questions asked again in their latest wording, and one example of each type of question that keeps coming back.",
+  once: "Every other question from the papers.",
 };
 
 /**
@@ -63,10 +65,7 @@ export default async function HomeworkPlanPage({ params }: { params: Params }) {
   return (
     <GuideShell
       guideTitle="Daily Homework"
-      sideNav={[
-        { href: "/homework", label: "All plans" },
-        ...plans.map((p) => ({ href: `/homework/${p.slug}`, label: p.title })),
-      ]}
+      sideNav={homeworkSideNav(plans, plan.examName)}
       landingHref="/homework"
       breadcrumbs={[{ href: "/homework", label: "Daily Homework" }, { label: plan.title }]}
     >
@@ -76,17 +75,19 @@ export default async function HomeworkPlanPage({ params }: { params: Params }) {
         subtitle={plan.summary}
       />
 
+      <PlanTabs planSlug={plan.slug} active="days" />
+
       <div className="mt-8 space-y-10">
         {sections.map((s) => (
           <section key={s.from} aria-labelledby={`part-${s.from}`}>
             <h2 id={`part-${s.from}`} className="section-title text-lg font-semibold">
-              {partTitle(planWording(plan.examName).asker)[s.part]}
+              {sectionTitle(planWording(plan.examName).asker)[s.kind]}
             </h2>
             <p className="mt-1 text-sm text-muted-foreground">
               <span className="font-medium text-foreground tabular-nums">
                 {s.from === s.to ? `Day ${s.from}.` : `Days ${s.from} to ${s.to}.`}
               </span>{" "}
-              {PART_HELP[s.part]}
+              {SECTION_HELP[s.kind]}
             </p>
             <ul className="mt-4 grid gap-3 sm:grid-cols-2">
               {s.days.map((d) => (

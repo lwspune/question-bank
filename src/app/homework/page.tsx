@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { CalendarDays, ChevronRight } from "lucide-react";
 import GuideShell from "@/app/guide/_components/GuideShell";
 import GuideHero from "@/app/guide/_components/GuideHero";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { listPublishedPlans } from "@/lib/homework/query";
+import { groupPlansByExam, homeworkExamLabel, homeworkSideNav } from "@/lib/homework/chapters";
+import { slugify } from "@/lib/board/query";
+import PlanCard from "./_components/PlanCard";
 
 // Plans change only when the plan builder runs; a day is plenty.
 export const revalidate = 86400;
@@ -17,25 +18,25 @@ export const metadata: Metadata = {
 };
 
 /**
- * Every published homework plan (2026-10-09). A cached page: nothing on it
- * depends on who is looking; the download boxes on each plan ask the browser.
+ * Every published homework plan (2026-10-09), grouped by exam since the
+ * Homework tab opens here for a visitor with no exam chosen (2026-11-04). A
+ * cached page: nothing on it depends on who is looking; the download boxes on
+ * each plan ask the browser.
  */
 export default async function HomeworkIndex() {
   const plans = await listPublishedPlans(createSupabaseAnonClient());
+  const groups = groupPlansByExam(plans);
 
   return (
     <GuideShell
       guideTitle="Daily Homework"
-      sideNav={[
-        { href: "/homework", label: "All plans" },
-        ...plans.map((p) => ({ href: `/homework/${p.slug}`, label: p.title })),
-      ]}
+      sideNav={homeworkSideNav(plans)}
       breadcrumbs={[{ label: "Daily Homework" }]}
     >
       <GuideHero
         eyebrow="Daily homework"
         title="Daily homework from past papers"
-        subtitle="Five past exam questions a day, as a file to hand out. The questions asked again come first, highest count first."
+        subtitle="Five past exam questions a day, the most repeated first. Do them here or download the day. Each subject also has the Top 10 PYQs of every chapter."
       />
 
       {plans.length === 0 ? (
@@ -43,25 +44,22 @@ export default async function HomeworkIndex() {
           Homework plans are coming soon. Check back shortly.
         </p>
       ) : (
-        <ul className="mt-8 grid gap-3 sm:grid-cols-2">
-          {plans.map((p) => (
-            <li key={p.slug}>
-              <Link
-                href={`/homework/${p.slug}`}
-                className="group flex h-full items-center justify-between gap-3 rounded-lg border bg-card p-4 transition-colors hover:border-brand-accent/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-              >
-                <div className="min-w-0">
-                  <p className="font-semibold leading-snug group-hover:text-brand-accent">{p.title}</p>
-                  <p className="mt-1 inline-flex items-center gap-1.5 text-xs text-muted-foreground">
-                    <CalendarDays className="h-3.5 w-3.5" aria-hidden />
-                    {p.questions.toLocaleString("en-IN")} questions · {p.perDay} a day
-                  </p>
-                </div>
-                <ChevronRight className="h-4 w-4 shrink-0 text-muted-foreground" aria-hidden />
-              </Link>
-            </li>
+        <div className="mt-8 space-y-8">
+          {groups.map((g) => (
+            <section key={g.examName} aria-labelledby={`exam-${slugify(g.examName)}`}>
+              <h2 id={`exam-${slugify(g.examName)}`} className="section-title text-lg font-semibold">
+                {homeworkExamLabel(g.examName)}
+              </h2>
+              <ul className="mt-3 grid gap-3 sm:grid-cols-2">
+                {g.plans.map((p) => (
+                  <li key={p.slug}>
+                    <PlanCard plan={p} />
+                  </li>
+                ))}
+              </ul>
+            </section>
           ))}
-        </ul>
+        </div>
       )}
     </GuideShell>
   );

@@ -39,7 +39,9 @@ describe("footerLinks", () => {
     expect(groups.map((g) => g.title)).toEqual(["Explore", "Guides", "Notes", "About"]);
   });
 
-  it.each(["/browse", "/questions", "/mock", "/board", "/homework", "/formula"])(
+  // /learn since 2026-11-04: Homework took its tab, and a signed-out reader has no
+  // account menu, so the footer is their way to the lessons.
+  it.each(["/browse", "/questions", "/mock", "/board", "/homework", "/learn", "/formula"])(
     "Explore carries the content surface %s",
     (href) => {
       expect(byTitle("Explore").links.map((l) => l.href)).toContain(href);

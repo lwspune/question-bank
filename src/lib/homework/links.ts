@@ -2,10 +2,27 @@
  * Where homework is linked from (2026-10-10): a board subject tab, the exam's
  * home page, and each plan's day pages. Pure; spec tests/homework-links.test.ts.
  */
-export type HomeworkPlanLink = { slug: string; examName: string; subjectName: string; perDay: number };
+export type HomeworkPlanLink = {
+  slug: string;
+  examName: string;
+  subjectName: string;
+  perDay: number;
+  /** The plan's own title ("CBSE Class 12 Maths"), for a list of plans. */
+  title?: string;
+};
 
 export const planHref = (slug: string) => `/homework/${slug}`;
 export const dayHref = (slug: string, day: number) => `/homework/${slug}/day/${day}`;
+
+/** Every published plan, grouped by exam: the Homework tab when no exam is chosen. */
+export const HOMEWORK_HUB = "/homework";
+/** One exam's plans (2026-11-04), the Homework tab's target once an exam is chosen. */
+export const examHomeworkPageHref = (examSlug: string) => `/homework/exam/${examSlug}`;
+/** A plan's chapters, each opening its Top 10 PYQs (2026-11-04). */
+export const topListHref = (planSlug: string) => `/homework/${planSlug}/top`;
+export const topChapterHref = (planSlug: string, chapterSlug: string) => `/homework/${planSlug}/top/${chapterSlug}`;
+/** Every question of one repeat or type in a plan (2026-11-04), numbered from 1. */
+export const groupHref = (planSlug: string, n: number) => `/homework/${planSlug}/group/${n}`;
 
 /** The homework card on a board subject tab, or null when that subject has no plan. */
 export function subjectHomework(

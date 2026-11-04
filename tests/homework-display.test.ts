@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { shortNote, sectionsOf, planWording } from "@/lib/homework/display";
+import { shortNote, sectionsOf, planWording, seeAllLabel } from "@/lib/homework/display";
 
 describe("shortNote", () => {
   it("shortens each kind of note the plan builder writes", () => {
@@ -16,11 +16,11 @@ describe("shortNote", () => {
 describe("sectionsOf", () => {
   const day = (n: number, part: 1 | 2 | 3) => ({ day: n, items: [{ part }] });
 
-  it("groups days by the part their first question belongs to, with the day range", () => {
-    expect(sectionsOf([day(1, 1), day(2, 1), day(3, 2), day(4, 3), day(5, 3)])).toEqual([
-      { part: 1, from: 1, to: 2, days: [day(1, 1), day(2, 1)] },
-      { part: 2, from: 3, to: 3, days: [day(3, 2)] },
-      { part: 3, from: 4, to: 5, days: [day(4, 3), day(5, 3)] },
+  it("puts repeats and types in one section, since they are ranked together, then the asked-once days", () => {
+    // Parts 1 and 2 interleave since 2026-11-04 (one ranking by count).
+    expect(sectionsOf([day(1, 1), day(2, 2), day(3, 1), day(4, 3), day(5, 3)])).toEqual([
+      { kind: "most", from: 1, to: 3, days: [day(1, 1), day(2, 2), day(3, 1)] },
+      { kind: "once", from: 4, to: 5, days: [day(4, 3), day(5, 3)] },
     ]);
   });
 });
@@ -34,5 +34,17 @@ describe("planWording", () => {
     for (const exam of ["CBSE Class 12", "Maharashtra HSC Class 12", "Maharashtra SSC Class 10", "CBSE Class 10"]) {
       expect(planWording(exam)).toEqual({ asker: "the board", questions: "board questions" });
     }
+  });
+});
+
+describe("seeAllLabel", () => {
+  it("names how many questions the link opens, from the slot's note", () => {
+    expect(seeAllLabel("This type asked 8 times: NDA 1 2017, NDA 2 2024. This one: NDA 1 2021")).toBe("See all 8 of this type");
+    expect(seeAllLabel("Asked 2 times: NDA 2 2022, NDA 2 2024")).toBe("See all 2 times it was asked");
+    expect(seeAllLabel("Asked once: Mar 2016 (same type asked 6 times)")).toBe("See all 6 of this type");
+  });
+
+  it("offers nothing for a question asked once with no type", () => {
+    expect(seeAllLabel("Asked once: Mar 2016")).toBeNull();
   });
 });

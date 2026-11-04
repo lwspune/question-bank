@@ -18,6 +18,8 @@ export default function HomeworkDayReader({
   examName,
   dayTitle,
   supabaseUrl,
+  planSlug,
+  showChapter = true,
 }: {
   slots: HomeworkSlot<BoardQuestion>[];
   /** The DB exams.name, for the free-answer meter. */
@@ -25,6 +27,9 @@ export default function HomeworkDayReader({
   /** Names where a picked option was answered ("CBSE Class 12 Physics, day 12"). */
   dayTitle: string;
   supabaseUrl: string;
+  /** For each slot's See all link (HomeworkSlotList). */
+  planSlug?: string;
+  showChapter?: boolean;
 }) {
   const byId = useMemo(() => {
     const m = new Map<string, BoardQuestion>();
@@ -38,6 +43,8 @@ export default function HomeworkDayReader({
       <HomeworkSlotList
         slots={slots}
         supabaseUrl={supabaseUrl}
+        planSlug={planSlug}
+        showChapter={showChapter}
         revealed={revealed}
         blocked={blocked}
         lock={lock}

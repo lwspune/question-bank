@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import * as Popover from "@radix-ui/react-popover";
-import { BookMarked, BookOpen, Bookmark, Building2, CreditCard, FileCheck2, FileText, LayoutDashboard, Lightbulb, LogOut, MessageSquarePlus, PenLine, ShieldCheck, TrendingUp, User, Target } from "lucide-react";
+import { BookMarked, BookOpen, Bookmark, GraduationCap, Building2, CreditCard, FileCheck2, FileText, LayoutDashboard, Lightbulb, LogOut, MessageSquarePlus, PenLine, ShieldCheck, TrendingUp, User, Target } from "lucide-react";
 import { toast } from "sonner";
 import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 import { totalsLine, type Pulse } from "@/lib/pulse/cache";
@@ -19,6 +19,7 @@ export default function UserMenu({
   isSuperadmin = false,
   pulse = null,
   guidesHref = "/guide",
+  learnHref = "/learn",
 }: {
   email: string;
   // null = signed-in student (no org membership).
@@ -32,6 +33,8 @@ export default function UserMenu({
   pulse?: Pulse | null;
   /** The active exam's Guides link (lib/exam/examNav), for the phone-only Guides entry. */
   guidesHref?: string;
+  /** The active exam's Learn course, or the Learn hub (lib/exam/examNav). */
+  learnHref?: string;
 }) {
   const router = useRouter();
   const due = pulse?.due ?? 0;
@@ -149,6 +152,15 @@ export default function UserMenu({
           >
             <BookOpen className="h-4 w-4" aria-hidden />
             Guides
+          </Link>
+          {/* Learn, at EVERY width: Homework took its tab in both navs on
+              2026-11-04 (owner). Signed-out readers find it in the Footer. */}
+          <Link
+            href={learnHref}
+            className="flex w-full items-center gap-2 rounded-sm px-3 py-2 text-left text-sm transition-colors hover:bg-accent focus-visible:bg-accent focus-visible:outline-none"
+          >
+            <GraduationCap className="h-4 w-4" aria-hidden />
+            Learn
           </Link>
           {isStaff && (
             <Link

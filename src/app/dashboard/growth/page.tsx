@@ -547,6 +547,17 @@ export default async function GrowthPage() {
             <ReadingsList metric="mock-together-signups" />
           </div>
         );
+      case "homework-tab":
+        return (
+          <div className="space-y-3">
+            <p className="text-sm text-muted-foreground">
+              Read by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))} against the week before the tab: keep it if
+              more students open a homework day or a chapter&apos;s Top 10 and come back on another day. Signed-in visits
+              are in user_activity (surface &apos;homework&apos;) from the live date.
+            </p>
+            <ReadingsList metric="homework-day-visitors" />
+          </div>
+        );
       case "learn":
         return (
           <div className="space-y-3">
