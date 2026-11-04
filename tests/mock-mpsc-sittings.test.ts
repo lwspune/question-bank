@@ -122,9 +122,10 @@ describe("deriveMpscSittings", () => {
     // Measured: 24 cancelled across the 2013-2022 final keys, plus 2023's Q38 and Q75.
     // 2023 adds Q38 and Q75 (cancelled) and Q17, Q50 (owner notices, 2026-11-03); 2025 adds Q84 (notice).
     expect(got.find((s) => s.key === "ssp-2023")?.graceNumbers).toEqual([17, 38, 50, 75]);
-    expect(got.find((s) => s.key === "ssp-2025")?.graceNumbers).toEqual([15, 47, 50, 84, 87, 89]);
+    expect(got.find((s) => s.key === "ssp-2025")?.graceNumbers).toEqual([15, 36, 39, 47, 50, 87, 89, 90]); // final key: 36 + 90 cancelled, 39 a new doubt, 84 settled
     // 29 before the 2026-11-03 key-doubt ruling, which adds 34 GS questions.
-    expect(got.reduce((n, s) => n + s.graceNumbers.length, 0)).toBe(63);
+    // 2026-11-04: ssp-2025 moved to MPSC's final key (+Q36, Q90 cancelled, +Q39 doubt, -Q84 settled).
+    expect(got.reduce((n, s) => n + s.graceNumbers.length, 0)).toBe(65);
   });
 
   it("covers every configured paper with a distinct slug", () => {
@@ -279,8 +280,8 @@ describe("State Services 2023-2025 key notices (owner 2026-11-03: notice + grace
       .map((n) => `${p.id} Q${n}`)
   );
 
-  it("carries exactly the five questions the owner settled", () => {
-    expect(noticed.sort()).toEqual(["ssp-2023 Q17", "ssp-2023 Q50", "ssp-2025 Q84", "ssp-csat-2024 Q64", "ssp-csat-2025 Q58"].sort());
+  it("carries exactly the four questions the owner settled (ssp-2025 Q84 dropped: the final key agrees)", () => {
+    expect(noticed.sort()).toEqual(["ssp-2023 Q17", "ssp-2023 Q50", "ssp-csat-2024 Q64", "ssp-csat-2025 Q58"].sort());
   });
 
   it("gives every notice both languages, balanced maths and no control characters", () => {

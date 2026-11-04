@@ -10,6 +10,7 @@ import {
   SSP_CHAPTERS,
   SSP_CSAT_CHAPTERS,
   SSP_2023_DIR,
+  MPSC_2026_DIR,
   SSP_CSAT_PAPERS,
   SSP_SOURCE_PDF,
   SSP_PAPERS,
@@ -28,18 +29,20 @@ describe("MPSC paper registry", () => {
     expect(SSP_PAPERS.map((p) => p.pyqYear).sort()).toEqual([2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025]);
   });
 
-  it("reads 2023-2025 (both papers) from their own files, each booklet's set, 2025 on MPSC's first key", () => {
+  it("reads 2023-2025 (both papers) from their own files, each booklet's set, every one on MPSC's FINAL key", () => {
     const sets = Object.fromEntries(
-      [...SSP_PAPERS, ...SSP_CSAT_PAPERS].filter((p) => p.pyqYear >= 2023).map((p) => [p.id, p.bookletSet])
+      [...SSP_PAPERS, ...SSP_CSAT_PAPERS].filter((p) => p.pyqYear >= 2023 && p.pyqYear <= 2025).map((p) => [p.id, p.bookletSet])
     );
     expect(sets).toEqual({
       "ssp-2023": "A", "ssp-2024": "D", "ssp-2025": "C",
       "ssp-csat-2023": "D", "ssp-csat-2024": "D", "ssp-csat-2025": "C",
     });
-    for (const p of [...SSP_PAPERS, ...SSP_CSAT_PAPERS].filter((x) => x.pyqYear >= 2023)) {
+    for (const p of [...SSP_PAPERS, ...SSP_CSAT_PAPERS].filter((x) => x.pyqYear >= 2023 && x.pyqYear <= 2025)) {
       expect(p.sourcePdf.startsWith(SSP_2023_DIR)).toBe(true);
-      expect(p.keyPdf?.startsWith(SSP_2023_DIR)).toBe(true);
-      expect(p.provisionalKey === true).toBe(p.pyqYear === 2025);
+      // 2025 shipped on the first key; its final key (2 Jan 2026) came from mpsc.gov.in.
+      expect(p.keyPdf?.startsWith(p.pyqYear === 2025 ? MPSC_2026_DIR : SSP_2023_DIR)).toBe(true);
+      if (p.pyqYear === 2025) expect(p.keyPdf).toMatch(/-final\.pdf$/);
+      expect(p.provisionalKey).toBeUndefined();
     }
   });
 

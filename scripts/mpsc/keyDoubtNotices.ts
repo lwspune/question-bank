@@ -434,6 +434,11 @@ export const KEY_DOUBT_NOTICES: Record<string, Record<number, Notice>> = {
       "MPSC's key gives option C, Prarthana Samaj. The initiation rite of eating bread made by a Christian and drinking water from a Muslim belongs to the Paramahansa Mandali, the forerunner of the Prarthana Samaj, not to any of the Samajs listed.",
       "आयोगाच्या उत्तरतालिकेत पर्याय C, प्रार्थना समाज, बरोबर दिला आहे. ख्रिश्चनाने बनवलेला पाव खाणे व मुसलमानाच्या हातचे पाणी पिणे हा दीक्षाविधी परमहंस मंडळीचा होता, जी प्रार्थना समाजाची पूर्वसूरी होती; दिलेल्या कोणत्याही समाजाचा तो विधी नव्हता."
     ),
+    // Q39 and Q89: MPSC's FINAL key (2 Jan 2026) changed the first key's answer.
+    39: notice(
+      "MPSC's final key gives option B, both statements incorrect (its first key gave A). The National Food Security Act, 2013 covers up to 75% of the rural and 50% of the urban population, and prices grain at Rs 3 a kg for rice, Rs 2 for wheat and Re 1 for coarse grains, so both statements read as correct: option A.",
+      "आयोगाच्या अंतिम उत्तरतालिकेत पर्याय B, दोन्ही विधाने चूक, बरोबर दिला आहे (पहिल्या उत्तरतालिकेत A होता). राष्ट्रीय अन्न सुरक्षा कायदा, 2013 ग्रामीण भागातील 75% पर्यंत व शहरी भागातील 50% पर्यंत लोकसंख्येला लागू आहे, आणि तांदूळ प्रति किलो रु. 3, गहू रु. 2 व भरड धान्य रु. 1 या दराने मिळते; म्हणून दोन्ही विधाने बरोबर वाटतात: पर्याय A."
+    ),
     47: notice(
       "MPSC's key gives option C, A and B. ICDS also trains its anganwadi workers, so whether worker's training counts as one of its programmes is arguable: option D, A, B and C, can also be defended.",
       "आयोगाच्या उत्तरतालिकेत पर्याय C, A आणि B, बरोबर दिला आहे. एकात्मिक बालविकास सेवा योजनेत अंगणवाडी सेविकांचे प्रशिक्षणही होते, म्हणून कर्मचारी प्रशिक्षण हा तिचा कार्यक्रम मानावा की नाही हे वादग्रस्त आहे: पर्याय D, A, B आणि C, सुद्धा समर्थनीय आहे."
@@ -447,8 +452,8 @@ export const KEY_DOUBT_NOTICES: Record<string, Record<number, Notice>> = {
       "आयोगाच्या उत्तरतालिकेत पर्याय A, फक्त A, बरोबर दिला आहे. विधान B बरोबर नाही (आयएनएस विक्रांत कोचीन शिपयार्ड, केरळ येथे बांधली गेली), आणि A मधील ऑगस्ट 2024 ही तारीख संशयास्पद आहे (ही नौका 20 सप्टेंबर 2024 रोजी पश्चिमी ताफ्यात दाखल झाल्याचे वृत्त आहे); म्हणून कदाचित दोन्ही विधाने चूक आहेत, पर्याय D."
     ),
     89: notice(
-      "MPSC's key gives option C, A and B. The Sixth National Water Awards were launched in October 2024, so A is doubtful; there are nine categories, B; and the awards began in 2018, so C is not correct. No option is only B.",
-      "आयोगाच्या उत्तरतालिकेत पर्याय C, A आणि B, बरोबर दिला आहे. सहाव्या राष्ट्रीय जल पुरस्कारांची घोषणा ऑक्टोबर 2024 मध्ये झाली, म्हणून A संशयास्पद आहे; पुरस्कार नऊ श्रेणींमध्ये आहेत, B; आणि हे पुरस्कार 2018 पासून दिले जातात, म्हणून C बरोबर नाही. फक्त B असा पर्याय नाही."
+      "MPSC's final key gives option B, all three statements incorrect (its first key gave C). The awards began in 2018, so C is not correct, and the Sixth National Water Awards were launched in October 2024, so A is doubtful. But the awards are given in nine categories, so B looks correct, and no option is only B.",
+      "आयोगाच्या अंतिम उत्तरतालिकेत पर्याय B, तिन्ही विधाने चूक, बरोबर दिला आहे (पहिल्या उत्तरतालिकेत C होता). हे पुरस्कार 2018 पासून दिले जातात, म्हणून C बरोबर नाही, आणि सहाव्या राष्ट्रीय जल पुरस्कारांची घोषणा ऑक्टोबर 2024 मध्ये झाली, म्हणून A संशयास्पद आहे. पण पुरस्कार नऊ श्रेणींमध्ये दिले जातात, म्हणून B बरोबर वाटते, आणि फक्त B असा पर्याय नाही."
     ),
   },
   "ssp-csat-2013": {

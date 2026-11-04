@@ -115,6 +115,10 @@ SSP_2023_PAPERS = {
     "ssp-csat-2024": ("csat", 2024, 43),
     "ssp-csat-2025": ("csat", 2025, 52),
 }
+# MPSC's own files from mpsc.gov.in (2026-11-04): the 2026 booklets and final
+# keys, and the FINAL keys of the 2025 papers, which shipped on the first key.
+MPSC_2026_DIR = r"C:/Users/vilas/Downloads/mpsc-2026"
+FINAL_KEY_2025 = {"ssp-2025": "key-gs-2025-final.pdf", "ssp-csat-2025": "key-csat-2025-final.pdf"}
 IMAGE_ONLY_KEYS = {"2019-c", "ssp-2019"}
 # Pages photographed sideways: page number -> degrees CLOCKWISE to stand them
 # up. Applied on render and on figure crops, so a figure box is always read
@@ -142,6 +146,8 @@ def source(pid):
     if pid in SSP_2023_PAPERS:
         kind, year, n = SSP_2023_PAPERS[pid]
         key = os.path.join(SSP_2023_DIR, f"key-{kind}-{year}.pdf")
+        if pid in FINAL_KEY_2025:
+            key = os.path.join(MPSC_2026_DIR, FINAL_KEY_2025[pid])
         return os.path.join(SSP_2023_DIR, f"paper-{kind}-{year}.pdf"), (1, n), key, (1, len(doc_for(key)))
     if pid in SSP_CSAT_PAPERS:
         file_year, n = SSP_CSAT_PAPERS[pid]
@@ -207,6 +213,29 @@ def keys(only=None):
             # ONLY in that exact shape - anything else is left for
             # parseKeyLines to refuse. set balance (keys.ts) then checks it.
             body = [l for l in page_lines if len(l) > 2]
+            # CSAT page 2 from 2025 on (ssp-csat-2025 final, ssp-csat-2026): the
+            # left column runs longer than the right, so a rows of 8 answers
+            # (both columns) are followed by b rows of 4 (left only), then the
+            # decision-making grid as 0/1 text, which graded.json holds instead.
+            # Left = base..base+a+b-1, right = the next a.
+            first4 = next((i for i, l in enumerate(body) if len(l) == 4), None)
+            if first4 is not None and first4 > 0:
+                head, rest = body[:first4], body[first4:]
+                fours = [l for l in rest if len(l) == 4]
+                grid = rest[len(fours):]
+                if (
+                    all(len(l) == 8 for l in head)
+                    and rest[: len(fours)] == fours
+                    and all(all(t in ("0", "1") for t in l) for l in grid)
+                ):
+                    a, b = len(head), len(fours)
+                    page_lines = [
+                        [str(base + i), *l[:4], str(base + a + b + i), *l[4:]] for i, l in enumerate(head)
+                    ] + [[str(base + a + i), *l] for i, l in enumerate(fours)]
+                    base += 2 * a + b
+                    numbered_by_position = True
+                    lines.extend(page_lines)
+                    continue
             if body and all(len(l) == 8 for l in body):
                 R = len(body)
                 page_lines = [
