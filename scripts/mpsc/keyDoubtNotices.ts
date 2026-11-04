@@ -26,6 +26,12 @@ export const KEY_DOUBT_NOTICES: Record<string, Record<number, Notice>> = {
       "छापलेल्या स्वरूपात कोणताही पर्याय बरोबर नाही. 52 : 13 म्हणजे 4 : 1, म्हणून राज्यांची संख्या केंद्रशासित प्रदेशांपेक्षा \\(\\frac{52 - 13}{13} \\times 100 = 300\\%\\) ने जास्त आहे; हे उत्तर पर्यायांमध्ये नाही. आयोगाच्या उत्तरतालिकेत पर्याय C, 60, दिला आहे."
     ),
   },
+  "2026-b": {
+    50: notice(
+      "MPSC's key gives option C, both statements correct. Statement A is right (Manohar Joshi and Pankaj Udhas received the Padma Bhushan in 2025, posthumously), but in B Ashok Saraf's 2025 award was the Padma Bhushan, not the Padma Shri; Achyut Palav's was the Padma Shri. That makes the answer only A, option A.",
+      "आयोगाच्या उत्तरतालिकेत पर्याय C, दोन्ही विधाने बरोबर, दिला आहे. विधान A बरोबर आहे (मनोहर जोशी व पंकज उधास यांना 2025 मध्ये मरणोत्तर पद्मभूषण मिळाला), पण B मध्ये अशोक सराफ यांना 2025 मध्ये पद्मश्री नव्हे तर पद्मभूषण मिळाला; अच्युत पालव यांना पद्मश्री मिळाला. त्यामुळे उत्तर फक्त A, पर्याय A, ठरते."
+    ),
+  },
   "2017-b": {
     60: notice(
       "MPSC's key gives option A, only (a). Statement (c) is not correct either: the 2013-14 budget put the fiscal deficit at 4.8% of GDP, not 2.5%. So the key leaves out a second statement that is not correct, and no option names both (a) and (c).",
@@ -479,6 +485,24 @@ export const KEY_DOUBT_NOTICES: Record<string, Record<number, Notice>> = {
     77: notice(
       "MPSC's key gives option A, only (a) and (b). The National Commission to Review the Working of the Constitution (2002) also recommended the duty to foster family values and responsible parenthood (d) and the duty of industrial undertakings to educate their employees' children (c), which would make the answer all of the above, option D.",
       "आयोगाच्या उत्तरतालिकेत पर्याय A, फक्त (a) व (b), बरोबर दिला आहे. संविधानाच्या कार्यपद्धतीचा आढावा घेणाऱ्या राष्ट्रीय आयोगाने (2002) कौटुंबिक मूल्ये व जबाबदार पालकत्व जोपासण्याचे कर्तव्य (d) आणि औद्योगिक संस्थांनी आपल्या कर्मचाऱ्यांच्या मुलांना शिक्षण देण्याचे कर्तव्य (c) यांचीही शिफारस केली होती; त्यानुसार उत्तर वरील सर्व, पर्याय D, ठरते."
+    ),
+  },
+  "ssp-csat-2026": {
+    13: notice(
+      "MPSC's key gives option B, that statements (a) and (c) are not correct. But (a) repeats the passage word for word (more than 28 trillion tonnes of ice lost since the 1990s), and (b) matches it too (Arctic sea ice 40% smaller than in 1980); only (c) misstates the passage's reason. On the passage, (a) and (b) are correct: option A.",
+      "आयोगाच्या उत्तरतालिकेत पर्याय B, विधाने (a) व (c) बरोबर नाहीत, दिला आहे. पण (a) उताऱ्यातील वाक्य जसेच्या तसे आहे (1990 पासून 28 ट्रिलियन टनांहून अधिक बर्फ नष्ट), आणि (b) सुद्धा उताऱ्याशी जुळते (आर्क्टिकमधील सागरी बर्फ 1980 पेक्षा 40% कमी); फक्त (c) उताऱ्यातील कारण चुकीचे सांगते. उताऱ्यानुसार (a) व (b) बरोबर आहेत: पर्याय A."
+    ),
+    57: notice(
+      "MPSC's key gives option B, 32. The rule (left x bottom) - right - 2 fits both given triangles (5 x 4 - 6 - 2 = 12; 6 x 5 - 7 - 2 = 21) and gives 4 x 10 - 8 - 2 = 30, option A; we found no rule that fits both and gives 32.",
+      "आयोगाच्या उत्तरतालिकेत पर्याय B, 32, दिला आहे. (डावी संख्या x खालची संख्या) - उजवी संख्या - 2 हा नियम दोन्ही दिलेल्या त्रिकोणांना लागू पडतो (5 x 4 - 6 - 2 = 12; 6 x 5 - 7 - 2 = 21) आणि त्यानुसार 4 x 10 - 8 - 2 = 30, पर्याय A, येतो; दोन्हींना लागू पडून 32 देणारा नियम आम्हाला आढळला नाही."
+    ),
+    58: notice(
+      "MPSC's key gives option B, only conclusion II. Neither conclusion follows: \"All artists are smokers\" does not make all smokers artists (I), and \"Some smokers are drunkards\" says nothing about drunkards who are not smokers (II). The answer is option C, neither follows.",
+      "आयोगाच्या उत्तरतालिकेत पर्याय B, फक्त निष्कर्ष II, दिला आहे. कोणताही निष्कर्ष निघत नाही: \"सर्व कलाकार धूम्रपान करणारे आहेत\" यावरून सर्व धूम्रपान करणारे कलाकार ठरत नाहीत (I), आणि \"काही धूम्रपान करणारे मद्यपी आहेत\" यावरून धूम्रपान न करणाऱ्या मद्यपींबद्दल काहीच कळत नाही (II). उत्तर पर्याय C, एकही निष्कर्ष निघत नाही."
+    ),
+    70: notice(
+      "MPSC's key gives option C, both conclusions definitely correct. They contradict each other (some laws are not permanent; all laws are permanent), so both cannot be true, and neither follows: the flexible rules need not be laws. The answer is option D.",
+      "आयोगाच्या उत्तरतालिकेत पर्याय C, दोन्ही निष्कर्ष निश्चितपणे बरोबर, दिला आहे. हे दोन निष्कर्ष परस्परविरोधी आहेत (काही कायदे कायमस्वरूपी नाहीत; सर्व कायदे कायमस्वरूपी आहेत), त्यामुळे दोन्ही खरे असू शकत नाहीत, आणि कोणताही निष्कर्ष निघत नाही: लवचिक नियम कायदेच असतील असे नाही. उत्तर पर्याय D."
     ),
   },
   "ssp-csat-2013": {

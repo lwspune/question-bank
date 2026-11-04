@@ -133,7 +133,7 @@ describe("deriveMpscSittings", () => {
     expect(got).toHaveLength(PAPERS.length);
     expect(new Set(got.map((s) => s.slug)).size).toBe(PAPERS.length);
     // Measured: 35 cancelled questions across the 14 official keys, plus 31 key-doubt notices (2026-11-03).
-    expect(got.reduce((n, s) => n + s.graceNumbers.length, 0)).toBe(71); // + 2025-c Q20 and 2026-b Q66 cancelled; 2025-b Q1, Q20, Q87 notices
+    expect(got.reduce((n, s) => n + s.graceNumbers.length, 0)).toBe(72); // + 2025-c Q20 and 2026-b Q66 cancelled; 2025-b Q1, Q20, Q87 and 2026-b Q50 notices
   });
 });
 
@@ -253,7 +253,7 @@ describe("State Services CSAT (Paper II): every cover, 80 questions, 200 marks, 
     expect(sit(2024).graceNumbers).toEqual([40, 42, 64]);
     expect(sit(2025).graceNumbers).toEqual([58]);
     // 20 before the key-doubt ruling, which adds 47 CSAT questions.
-    expect(got.reduce((n, s) => n + s.graceNumbers.length, 0)).toBe(67);
+    expect(got.reduce((n, s) => n + s.graceNumbers.length, 0)).toBe(71); // + ssp-csat-2026 notices Q13, Q57, Q58, Q70
   });
 
   it("carries the final key's per-option marks for every Decision Making question", () => {

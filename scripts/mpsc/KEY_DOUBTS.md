@@ -526,3 +526,22 @@ Found 2026-11-04 against MPSC's final key (17 Jun 2026). Notice + grace, key kep
 |---|---|---|---|
 | 60 | D | McClintock found jumping genes in the late 1940s (published 1950), not 1965, so (c) is false: (a) and (b) (A) | 532026f9 |
 | 77 | A | the NCRWC (2002) also recommended the family-values duty (d) and industry's duty to educate employees' children (c): all of the above (D) | 4b3cb4fd |
+
+## MPSC-2026-b-H25
+
+Found 2026-11-04 against MPSC's final key (28 Jun 2026). Notice + grace, key kept.
+
+| Q | key | finding | id |
+|---|---|---|---|
+| 50 | C | Ashok Saraf's 2025 award was the Padma Bhushan, not the Padma Shri, so B is false: only A (A) | 8ea07f93 |
+
+## MPSC-ssp-csat-2026-E25
+
+Found 2026-11-04 against MPSC's final key (17 Jun 2026). Notice + grace, key kept.
+
+| Q | key | finding | id |
+|---|---|---|---|
+| 13 | B | (a) repeats the passage and (b) matches it; only (c) is wrong: (a) and (b) (A) | e307ad91 |
+| 57 | B | (left x bottom) - right - 2 fits both triangles and gives 30 (A); no rule found giving 32 | b16933bf |
+| 58 | B | neither conclusion follows (C) | effb1419 |
+| 70 | C | the two conclusions contradict each other and neither follows (D) | 6d9bb8b4 |

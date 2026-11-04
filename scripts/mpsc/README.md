@@ -239,6 +239,17 @@ From 2025 the CSAT key's page 2 runs its left column longer than the right
 from the page image as before. Group C 2026 (scheduled 12 Jul 2026) was not on
 the site on 2026-11-04.
 
+All five committed PRIVATE on 2026-11-04 (480 rows), each solved blind before the
+key was read; every disagreement read again by the main session:
+
+| paper | blind vs final key | notices (notice + grace, key kept) | other |
+|---|---|---|---|
+| ssp-2026 | 83/100 (6 of the misses are MPSC's cancellations) | Q60, Q77 | Q50 print note; 4 waivers |
+| ssp-csat-2026 | 72/80 (3 are decision-making, scored per option) | Q13, Q57, Q58, Q70 | 2 figures; Q3, Q19 print notes; 3 waivers. Six English passages read by Windows OCR into the batches (300 dpi; every number cross-checked against the Marathi passage) |
+| 2025-b | 95/100 | Q1, Q20, Q87 | 4 figures; Q68 print note; 3 waivers |
+| 2025-c | 96/100 (Q20 cancelled) | none | 1 figure; Q65 print note; 1 waiver |
+| 2026-b | 94/100 (Q66 cancelled) | Q50 | 1 figure; Q34 print note |
+
 ### Key doubts found by the solutions backfill (all MPSC exams): SETTLED 2026-11-03
 
 **Owner: notice + grace on all 203, MPSC's key kept.** The list, by paper and
