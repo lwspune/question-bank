@@ -303,7 +303,8 @@ export type Readout =
   | "v-progress"
   | "self-mark"
   | "v-pay-offer"
-  | "visual-solutions";
+  | "visual-solutions"
+  | "homework-tab";
 
 export type Experiment = {
   id: string;
@@ -550,6 +551,20 @@ export const EXPERIMENTS: readonly Experiment[] = [
     rule: `Keep building learning inside PYQ Vault if ${LEARN_MASTERED_KEEP}+ students master a concept and ${LEARN_RETURNED_KEEP}+ come back to Learn on a second day by the check date; otherwise keep building on Concept Ladder and leave the Learn tab as it is.`,
     liveSince: "2026-10-28",
     readout: "learn",
+    status: "running",
+  },
+  {
+    id: "homework-tab",
+    title: "Homework tab with Top 10 PYQs, in Learn's place",
+    change:
+      "Homework replaces Learn in the nav at every width (phone slot 2), for every visitor. It opens the student's exam's homework page: each subject's plan (five past questions a day, the most repeated first) with a second tab listing every chapter's Top 10 PYQs, or a line saying that exam's homework is coming. Learn moved to the account menu and the footer.",
+    why: "Learn's first week (28 Oct to 4 Nov): 36 of 233 active Class 12 students opened it and one answered a lesson question, while homework, with no tab, had 34 visitors open a day against 29 opening a lesson. The owner: homework has actual value, the questions are targeted PYQs (2026-11-04).",
+    metric:
+      "Visitors opening a homework day or a chapter's Top 10 a week (Vercel, read by hand); signed-in students on homework pages (user_activity surface_viewed 'homework', from the live date)",
+    rule: "No fixed bar: the week before the tab is the baseline (34 visitors opened a day). Keep the tab if that number rises clearly and students come back on more than one day; otherwise read where they stop before moving the tab again. Homework plans will be added for the remaining exams over time.",
+    liveSince: "2026-11-04",
+    windowDays: 28,
+    readout: "homework-tab",
     status: "running",
   },
   {
@@ -863,7 +878,8 @@ export type ReadingMetric =
   | "answer-limit-return"
   | "v-follow-up"
   | "visual-finished"
-  | "visual-still";
+  | "visual-still"
+  | "homework-day-visitors";
 
 export type Reading = { on: string; value: number; note?: string };
 
@@ -1169,5 +1185,12 @@ export const READINGS: Record<ReadingMetric, { label: string; source: string; en
     label: "Animated solutions: shown animations switched to Still (%)",
     source: "npm run visuals:usage, the 'all' row's still%; read the surface and exam rows for any past the limit",
     entries: [],
+  },  "homework-day-visitors": {
+    label: "Visitors who opened a homework day or a chapter's Top 10 (Vercel, a week)",
+    source: "Vercel Web Analytics, routes /homework/[planSlug]/day/[day] and /homework/[planSlug]/top/[chapterSlug], unique visitors over the 7 days before the reading (bot-inflated, read the trend). Signed-in students from 2026-11-04 also in user_activity surface_viewed 'homework'",
+    entries: [
+      { on: "2026-11-04", value: 34, note: "Before the tab: 29 Oct to 4 Nov, homework reachable only from Board cards, the exam home and the footer. 68 visitors opened any homework page. Learn's tab in the same week: 29 opened a lesson" },
+    ],
   },
+
 };

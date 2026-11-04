@@ -73,6 +73,19 @@ describe("readingViewFor", () => {
     expect(readingViewFor("/learnx")).toBeNull();
   });
 
+  it("counts the Homework tab's pages, a day and a chapter's Top 10 by address (2026-11-04)", () => {
+    expect(readingViewFor("/homework")).toEqual({ surface: "homework", path: "/homework" });
+    expect(readingViewFor("/homework/exam/cbse-12")?.surface).toBe("homework");
+    expect(readingViewFor("/homework/cbse-12-mathematics/day/3")).toEqual({
+      surface: "homework",
+      path: "/homework/cbse-12-mathematics/day/3",
+    });
+    expect(readingViewFor("/homework/cbse-12-mathematics/top/integrals?x=1")?.path).toBe(
+      "/homework/cbse-12-mathematics/top/integrals"
+    );
+    expect(readingViewFor("/homeworkx")).toBeNull();
+  });
+
   it("counts a section's index page too", () => {
     expect(readingViewFor("/notes")?.surface).toBe("notes");
     expect(readingViewFor("/guide/nda")?.surface).toBe("guide");

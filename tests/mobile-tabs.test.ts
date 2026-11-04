@@ -16,7 +16,7 @@ const EXAM_IDS: ExamIdMap = Object.fromEntries(
 describe("mobile tab bar — shape", () => {
   it("is exactly five tabs, in reading order", () => {
     const tabs = resolveMobileTabs(resolveExamNav(null, EXAM_IDS));
-    expect(tabs.map((t) => t.id)).toEqual(["bank", "learn", "notes", "mock", "board"]);
+    expect(tabs.map((t) => t.id)).toEqual(["bank", "homework", "notes", "mock", "board"]);
     expect(tabs).toHaveLength(MAX_MOBILE_TABS);
   });
 
@@ -49,13 +49,14 @@ describe("mobile tab bar — shape", () => {
   it("swaps exactly one tab by tier and never grows", () => {
     // The 10-tap-target row this replaced was caused by a nav whose SHAPE moved
     // with permissions. Only the fifth slot moves (Board for most students, Fix
-    // for graduates, who never use Board), a swap, never a sixth tab. Learn
-    // holds the second slot for every exam since 2026-10-28; Guides went to
-    // the account menu. Same count, and still no staff surfaces.
+    // for graduates, who never use Board), a swap, never a sixth tab. Homework
+    // holds the second slot for every exam since 2026-11-04 (Learn had it from
+    // 2026-10-28; both Learn and Guides are in the account menu). Same count,
+    // and still no staff surfaces.
     for (const fifth of ["board", "fix"] as const) {
       for (const exam of [null, ...EXAM_REGISTRY]) {
         const ids = resolveMobileTabs(resolveExamNav(exam?.slug ?? null, EXAM_IDS), fifth).map((t) => t.id);
-        expect(ids).toEqual(["bank", "learn", "notes", "mock", fifth]);
+        expect(ids).toEqual(["bank", "homework", "notes", "mock", fifth]);
       }
     }
   });
@@ -67,12 +68,19 @@ describe("mobile tab bar — shape", () => {
     }
   });
 
-  it("sends Learn to the exam's course, or to the Learn hub without one", () => {
-    const learnFor = (slug: string | null) =>
-      resolveMobileTabs(resolveExamNav(slug, EXAM_IDS)).find((t) => t.id === "learn")!;
-    expect(learnFor("cbse-12")).toEqual({ id: "learn", label: "Learn", href: "/learn/cbse-12-maths" });
-    expect(learnFor("nda").href).toBe("/learn");
-    expect(learnFor(null).href).toBe("/learn");
+  it("never carries Learn — it lives in the account menu since Homework took its slot", () => {
+    for (const slug of [null, ...EXAM_REGISTRY.map((e) => e.slug)]) {
+      const ids = resolveMobileTabs(resolveExamNav(slug, EXAM_IDS)).map((t) => t.id);
+      expect(ids).not.toContain("learn");
+    }
+  });
+
+  it("sends Homework to the exam's homework page, or to every plan without an exam", () => {
+    const homeworkFor = (slug: string | null) =>
+      resolveMobileTabs(resolveExamNav(slug, EXAM_IDS)).find((t) => t.id === "homework")!;
+    expect(homeworkFor("cbse-12")).toEqual({ id: "homework", label: "Homework", href: "/homework/exam/cbse-12" });
+    expect(homeworkFor("jee-mains").href).toBe("/homework/exam/jee-mains");
+    expect(homeworkFor(null).href).toBe("/homework");
   });
 
   it("shows Board when nobody says otherwise", () => {
@@ -91,7 +99,7 @@ describe("mobile tab bar — shape", () => {
     for (const tab of tabs) {
       expect(tab.label.trim()).not.toBe("");
     }
-    expect(tabs.map((t) => t.label)).toEqual(["PYQs", "Learn", "Notes", "Mocks", "Board"]);
+    expect(tabs.map((t) => t.label)).toEqual(["PYQs", "Homework", "Notes", "Mocks", "Board"]);
   });
 
   it("exports its id list in the same order it renders", () => {
@@ -110,7 +118,7 @@ describe("mobile tab bar — hrefs mirror the desktop nav", () => {
         resolveMobileTabs(nav).map((t) => [t.id, t.href])
       );
       expect(byId.bank).toBe(nav.bankHref);
-      expect(byId.learn).toBe(nav.learnHref);
+      expect(byId.homework).toBe(nav.homeworkHref);
       expect(byId.notes).toBe(nav.notesHref);
       expect(byId.board).toBe(nav.boardHref);
       expect(byId.mock).toBe(nav.mockHref);
@@ -144,8 +152,9 @@ describe("mobile tab bar — active state", () => {
       ["/mock/nda-2024-apr-maths", "mock"],
       ["/board/mh-sb-9", "board"],
       ["/drill", "fix"],
-      ["/learn/mh-hsc-12-maths", "learn"],
-      ["/learn/lesson/matrices/inverse", "learn"],
+      ["/homework", "homework"],
+      ["/homework/exam/cbse-12", "homework"],
+      ["/homework/cbse-12-mathematics/top/integrals", "homework"],
     ];
     for (const [path, expected] of cases) {
       const active = getActiveTab(path);
@@ -156,8 +165,9 @@ describe("mobile tab bar — active state", () => {
 
   it("lights nothing on a route the bar does not own", () => {
     // /dashboard, /account and the question landing pages own no tab today,
-    // and /guide has had none on a phone since 2026-10-28 (account menu).
-    for (const path of ["/dashboard", "/account", "/questions/nda/maths/vectors", "/guide/nda-maths"]) {
+    // /guide has had none on a phone since 2026-10-28 and /learn since
+    // 2026-11-04 (both in the account menu).
+    for (const path of ["/dashboard", "/account", "/questions/nda/maths/vectors", "/guide/nda-maths", "/learn/cbse-12-maths"]) {
       const active = getActiveTab(path);
       expect(MOBILE_TAB_IDS.some((id) => isMobileTabActive(id, active))).toBe(false);
     }

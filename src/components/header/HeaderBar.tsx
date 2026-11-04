@@ -132,7 +132,7 @@ export default function HeaderBar({
             notesHref={nav.notesHref}
             mockHref={nav.mockHref}
             boardHref={nav.boardHref}
-            learnHref={nav.learnHref}
+            homeworkHref={nav.homeworkHref}
             fifth={fifth}
             showPapers={!!session?.isStaff}
             showBooks={!!session?.isSuperadmin}
@@ -171,6 +171,7 @@ export default function HeaderBar({
                   isSuperadmin={session.isSuperadmin}
                   pulse={pulse}
                   guidesHref={nav.guidesHref}
+                  learnHref={nav.learnHref}
                 />
               </>
             ) : (

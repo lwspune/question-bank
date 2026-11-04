@@ -26,6 +26,7 @@ import {
 } from "@/lib/exam/examContext";
 import { mockCatalogueHref, notesHubHref } from "@/lib/exam/examLinks";
 import { LEARN_HUB } from "@/lib/learn/links";
+import { HOMEWORK_HUB, examHomeworkPageHref } from "@/lib/homework/links";
 
 export const EXAM_COOKIE_NAME = "qb_exam";
 
@@ -40,6 +41,8 @@ export type ExamNav = {
   boardHref: string;
   /** The exam's Learn course, else the Learn hub, which says lessons are coming (2026-10-28). */
   learnHref: string;
+  /** The exam's homework page, which says when its plans are coming, else every plan (2026-11-04). */
+  homeworkHref: string;
 };
 
 /**
@@ -72,6 +75,7 @@ export function resolveExamNav(
     mockHref: mockCatalogueHref(slug),
     boardHref: resolveBoardHref(slug),
     learnHref: (slug && getExamBySlug(slug)?.learnPath) || LEARN_HUB,
+    homeworkHref: slug ? examHomeworkPageHref(slug) : HOMEWORK_HUB,
   };
 }
 

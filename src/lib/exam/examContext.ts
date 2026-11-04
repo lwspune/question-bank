@@ -1079,7 +1079,8 @@ export type ActiveTab =
   | "blog"
   | "about"
   | "fix"
-  | "learn";
+  | "learn"
+  | "homework";
 
 /**
  * Maps a pathname to the primary-nav tab that owns it. Returns null for
@@ -1116,6 +1117,9 @@ export function getActiveTab(pathname: string): ActiveTab | null {
   // Learn — Concept Ladder's lessons (2026-10-27). Its tab is drawn only for an
   // exam with a `learnPath`; the mapping is unconditional, like Books.
   if (matchesSegment(path, "/learn")) return "learn";
+  // Homework: daily homework plans and each chapter's Top 10 PYQs. The tab
+  // that replaced Learn for every visitor (2026-11-04).
+  if (matchesSegment(path, "/homework")) return "homework";
   return null;
 }
 

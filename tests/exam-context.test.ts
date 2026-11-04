@@ -263,6 +263,14 @@ describe("getActiveTab", () => {
     expect(getActiveTab("/drilling")).toBeNull();
   });
 
+  it("returns 'homework' for /homework and sub-routes, the tab that replaced Learn (2026-11-04)", () => {
+    expect(getActiveTab("/homework")).toBe("homework");
+    expect(getActiveTab("/homework/exam/nda")).toBe("homework");
+    expect(getActiveTab("/homework/nda-maths/day/3")).toBe("homework");
+    expect(getActiveTab("/homework/nda-maths/top/vectors")).toBe("homework");
+    expect(getActiveTab("/homeworks")).toBeNull();
+  });
+
   it("returns 'blog' for /blog and sub-routes", () => {
     expect(getActiveTab("/blog")).toBe("blog");
     expect(getActiveTab("/blog/")).toBe("blog");

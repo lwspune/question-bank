@@ -9,7 +9,7 @@ import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { randomUUID } from "node:crypto";
 import { recordExportEvent } from "@/lib/export/log";
-import { getPlanChapterTop } from "@/lib/homework/query";
+import { getPlanChapterTop, getPlanChapters, listPublishedPlans } from "@/lib/homework/query";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -182,6 +182,25 @@ describe.skipIf(!HAS_ENV)("homework plans", () => {
     expect(top?.chapterName.length).toBeGreaterThan(0);
     expect(top?.items.map((it) => it.questionId)).toEqual(expected.map((it) => it.questionId));
     expect(top?.items.map((it) => it.position)).toEqual(expected.map((_, i) => i + 1));
+  });
+
+  it("lists the chapters whose questions the plan holds, for the Top 10 tab (2026-11-04)", async () => {
+    const page = await getPlanChapters(anon, slug);
+    expect(page?.plan).toMatchObject({ id: planId, slug, title: "Homework fixture" });
+    const wanted = [...new Set(qs.map((q) => q.chapter_id))].sort();
+    expect(page?.chapters.map((c) => c.id).sort()).toEqual(wanted);
+    for (const c of page?.chapters ?? []) expect(c.slug.length).toBeGreaterThan(0);
+    expect(await getPlanChapters(anon, `${slug}-missing`)).toBeNull();
+  });
+
+  it("lists one exam's plans for its homework page, and no other exam's", async () => {
+    const { data: exam } = await admin.from("exams").select("name").eq("id", qs[0].exam_id).single();
+    const mine = await listPublishedPlans(anon, { examName: exam!.name as string });
+    const fixture = mine.find((p) => p.slug === slug);
+    expect(fixture?.chapters).toBe(new Set(qs.map((q) => q.chapter_id)).size);
+    expect(mine.every((p) => p.examName === exam!.name)).toBe(true);
+    const none = await listPublishedPlans(anon, { examName: "No Such Exam" });
+    expect(none).toEqual([]);
   });
 
   it("reads nothing for a chapter the plan does not hold or a plan that does not exist", async () => {

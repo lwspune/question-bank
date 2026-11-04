@@ -94,6 +94,15 @@ describe("resolveExamNav", () => {
     expect(resolveExamNav(null, IDS).learnHref).toBe("/learn");
   });
 
+  it("sends Homework to the exam's homework page, which says when its plans are coming", () => {
+    // Homework took Learn's tab for every visitor (2026-11-04). The exam page
+    // lists that exam's plans, or says they are coming and links every plan.
+    expect(resolveExamNav("cbse-10", IDS).homeworkHref).toBe("/homework/exam/cbse-10");
+    expect(resolveExamNav("ssc-cgl", IDS).homeworkHref).toBe("/homework/exam/ssc-cgl");
+    expect(resolveExamNav(null, IDS).homeworkHref).toBe("/homework");
+    expect(resolveExamNav("not-an-exam", IDS).homeworkHref).toBe("/homework");
+  });
+
   it("sends Mocks to the exam's catalogue only when it has mocks", () => {
     expect(resolveExamNav("nda", IDS).mockHref).toBe("/mock/exam/nda");
     expect(resolveExamNav("cbse-11", IDS).mockHref).toBe("/mock");
@@ -111,6 +120,7 @@ describe("resolveExamNav", () => {
       expect(nav.mockHref).toBe("/mock");
       expect(nav.boardHref).toBe("/board");
       expect(nav.learnHref).toBe("/learn");
+      expect(nav.homeworkHref).toBe("/homework");
     });
   });
 

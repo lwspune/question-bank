@@ -7,6 +7,7 @@ import { getPlanBySlug, listPublishedPlans } from "@/lib/homework/query";
 import { sectionsOf, shortNote } from "@/lib/homework/display";
 import { homeworkOfferFacts, homeworkOfferLead } from "@/lib/billing/passOfferLead";
 import HomeworkDownload from "../_components/HomeworkDownload";
+import PlanTabs from "../_components/PlanTabs";
 import Link from "next/link";
 import { Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -75,6 +76,8 @@ export default async function HomeworkPlanPage({ params }: { params: Params }) {
         title={`${plan.title} daily homework`}
         subtitle={plan.summary}
       />
+
+      <PlanTabs planSlug={plan.slug} active="days" />
 
       <div className="mt-8 space-y-10">
         {sections.map((s) => (

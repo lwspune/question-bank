@@ -16,6 +16,14 @@
  * desktop work for ten staff, against three hundred students whose dominant
  * activity is sitting mocks.
  *
+ * SLOT TWO IS HOMEWORK (2026-11-04, owner): every exam's homework page, which
+ * lists its plans (five past questions a day, the most repeated first) and each
+ * chapter's Top 10 PYQs, or says they are coming. It replaced Learn, which had
+ * the slot from 2026-10-28: 36 of 233 active Class 12 students opened Learn in
+ * its first week and one answered a lesson question, while homework, with no
+ * tab at all, had about as many students open a day as Learn had open a lesson.
+ * Learn and Guides are in the account menu.
+ *
  * THE ONE SWAP (2026-10-07): the fifth slot is Board for most viewers and Fix
  * for graduate students, who never use Board (lib/nav/fifthTab). That changes
  * one tab's label and link, never the count or the order, and a test pins it.
@@ -35,7 +43,7 @@ import { FIX_TAB_HREF, type FifthTab } from "@/lib/nav/fifthTab";
 /** The subset of primary-nav tabs that appears on a phone. */
 export type MobileTabId = Extract<
   ActiveTab,
-  "bank" | "learn" | "notes" | "mock" | "board" | "fix"
+  "bank" | "homework" | "notes" | "mock" | "board" | "fix"
 >;
 
 export type MobileTab = {
@@ -47,7 +55,7 @@ export type MobileTab = {
 /** Render order, left to right, with the fifth slot at its default (Board). */
 export const MOBILE_TAB_IDS: readonly MobileTabId[] = [
   "bank",
-  "learn",
+  "homework",
   "notes",
   "mock",
   "board",
@@ -65,11 +73,10 @@ export const MAX_MOBILE_TABS = 5;
 export function resolveMobileTabs(nav: ExamNav, fifth: FifthTab = "board"): MobileTab[] {
   return [
     { id: "bank", label: "PYQs", href: nav.bankHref },
-    // Learn for every visitor (owner, 2026-10-28): the exam's course, or the Learn hub, which
-    // says that exam's lessons are coming. Guides moved to the account menu (UserMenu);
-    // anonymous phone readers reach it from the Footer, like Blog. Guides was the least-used
-    // reading tab (Class 9-12, 19-28 Oct: ~1.9 days per student against ~5 for Notes and Board).
-    { id: "learn", label: "Learn", href: nav.learnHref },
+    // Homework for every visitor (owner, 2026-11-04), in Learn's slot: see the note above.
+    // Guides (2026-10-28) and Learn are in the account menu; anonymous phone readers reach
+    // Guides from the Footer, like Blog.
+    { id: "homework", label: "Homework", href: nav.homeworkHref },
     { id: "notes", label: "Notes", href: nav.notesHref },
     { id: "mock", label: "Mocks", href: nav.mockHref },
     fifth === "fix"
