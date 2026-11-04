@@ -3,7 +3,7 @@ import GuideShell from "@/app/guide/_components/GuideShell";
 import GuideHero from "@/app/guide/_components/GuideHero";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { listPublishedPlans } from "@/lib/homework/query";
-import { groupPlansByExam } from "@/lib/homework/chapters";
+import { groupPlansByExam, homeworkExamLabel, homeworkSideNav } from "@/lib/homework/chapters";
 import { slugify } from "@/lib/board/query";
 import PlanCard from "./_components/PlanCard";
 
@@ -30,10 +30,7 @@ export default async function HomeworkIndex() {
   return (
     <GuideShell
       guideTitle="Daily Homework"
-      sideNav={[
-        { href: "/homework", label: "All plans" },
-        ...plans.map((p) => ({ href: `/homework/${p.slug}`, label: p.title })),
-      ]}
+      sideNav={homeworkSideNav(plans)}
       breadcrumbs={[{ label: "Daily Homework" }]}
     >
       <GuideHero
@@ -51,7 +48,7 @@ export default async function HomeworkIndex() {
           {groups.map((g) => (
             <section key={g.examName} aria-labelledby={`exam-${slugify(g.examName)}`}>
               <h2 id={`exam-${slugify(g.examName)}`} className="section-title text-lg font-semibold">
-                {g.examName}
+                {homeworkExamLabel(g.examName)}
               </h2>
               <ul className="mt-3 grid gap-3 sm:grid-cols-2">
                 {g.plans.map((p) => (

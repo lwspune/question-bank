@@ -5,7 +5,8 @@ import GuideShell from "@/app/guide/_components/GuideShell";
 import GuideHero from "@/app/guide/_components/GuideHero";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { PYQVAULT_EXAMS } from "@/lib/exam/examContext";
-import { listPublishedPlans } from "@/lib/homework/query";
+import { getPlanLinks, listPublishedPlans } from "@/lib/homework/query";
+import { homeworkSideNav } from "@/lib/homework/chapters";
 import { examHomeworkPageHref, HOMEWORK_HUB } from "@/lib/homework/links";
 import PlanCard from "../../_components/PlanCard";
 
@@ -41,14 +42,13 @@ export default async function HomeworkExamPage({ params }: { params: Params }) {
   const exam = examFor(params.examSlug);
   if (!exam) notFound();
   const plans = await listPublishedPlans(createSupabaseAnonClient(), { examName: exam.examName });
+  // Every plan in the side menu, grouped by exam; a failed read leaves this exam's own.
+  const links = await getPlanLinks().catch(() => []);
 
   return (
     <GuideShell
       guideTitle="Daily Homework"
-      sideNav={[
-        { href: HOMEWORK_HUB, label: "All plans" },
-        ...plans.map((p) => ({ href: `/homework/${p.slug}`, label: p.title })),
-      ]}
+      sideNav={homeworkSideNav(links.length ? links : plans)}
       landingHref={HOMEWORK_HUB}
       breadcrumbs={[{ href: HOMEWORK_HUB, label: "Daily Homework" }, { label: exam.displayName }]}
     >

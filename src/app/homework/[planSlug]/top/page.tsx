@@ -8,6 +8,7 @@ import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { getPlanChapters, getPlanLinks } from "@/lib/homework/query";
 import { planHref, topChapterHref, topListHref } from "@/lib/homework/links";
 import { planWording } from "@/lib/homework/display";
+import { homeworkSideNav } from "@/lib/homework/chapters";
 import PlanTabs from "../../_components/PlanTabs";
 
 type Params = { planSlug: string };
@@ -44,14 +45,12 @@ export default async function HomeworkTopListPage({ params }: { params: Params }
   const { plan, chapters } = data;
   // The side nav is a convenience: a failed read leaves this plan alone in it.
   const links = await getPlanLinks().catch(() => []);
-  const sideNav = links.length
-    ? links.map((l) => ({ href: planHref(l.slug), label: l.title ?? `${l.examName} ${l.subjectName}` }))
-    : [{ href: planHref(plan.slug), label: plan.title }];
+  const sideNav = homeworkSideNav(links.length ? links : [plan]);
 
   return (
     <GuideShell
       guideTitle="Daily Homework"
-      sideNav={[{ href: "/homework", label: "All plans" }, ...sideNav]}
+      sideNav={sideNav}
       landingHref="/homework"
       breadcrumbs={[
         { href: "/homework", label: "Daily Homework" },

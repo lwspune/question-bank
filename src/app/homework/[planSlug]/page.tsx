@@ -5,6 +5,7 @@ import GuideHero from "@/app/guide/_components/GuideHero";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { getPlanBySlug, listPublishedPlans } from "@/lib/homework/query";
 import { sectionsOf, shortNote } from "@/lib/homework/display";
+import { homeworkSideNav } from "@/lib/homework/chapters";
 import { homeworkOfferFacts, homeworkOfferLead } from "@/lib/billing/passOfferLead";
 import HomeworkDownload from "../_components/HomeworkDownload";
 import PlanTabs from "../_components/PlanTabs";
@@ -64,10 +65,7 @@ export default async function HomeworkPlanPage({ params }: { params: Params }) {
   return (
     <GuideShell
       guideTitle="Daily Homework"
-      sideNav={[
-        { href: "/homework", label: "All plans" },
-        ...plans.map((p) => ({ href: `/homework/${p.slug}`, label: p.title })),
-      ]}
+      sideNav={homeworkSideNav(plans)}
       landingHref="/homework"
       breadcrumbs={[{ href: "/homework", label: "Daily Homework" }, { label: plan.title }]}
     >

@@ -9,7 +9,7 @@ import {
   topChapterHref,
   topListHref,
 } from "@/lib/homework/links";
-import { chapterNeighbours, groupPlansByExam, planChapters } from "@/lib/homework/chapters";
+import { chapterNeighbours, groupPlansByExam, homeworkExamLabel, homeworkSideNav, planChapters } from "@/lib/homework/chapters";
 
 describe("homework addresses", () => {
   it("gives every exam its own homework page, and the hub lists every plan", () => {
@@ -84,5 +84,48 @@ describe("groupPlansByExam", () => {
       { examName: "CBSE Class 12", plans: [plans[0], plans[2]] },
       { examName: "NDA", plans: [plans[1]] },
     ]);
+  });
+});
+
+describe("homeworkSideNav", () => {
+  const plan = (slug: string, title: string, examName: string, subjectName: string) => ({ slug, title, examName, subjectName });
+
+  it("opens with every plan, then each exam's plans under its short name, labelled by subject", () => {
+    const nav = homeworkSideNav([
+      plan("cbse-12-chemistry", "CBSE Class 12 Chemistry", "CBSE Class 12", "Chemistry"),
+      plan("cbse-12-mathematics", "CBSE Class 12 Maths", "CBSE Class 12", "Mathematics"),
+      plan("mh-hsc-12-biology", "MH HSC Class 12 Biology", "Maharashtra HSC Class 12", "Biology"),
+      plan("mh-hsc-12-maths", "MH HSC Class 12 Maths", "Maharashtra HSC Class 12", "Mathematics"),
+      plan("nda-maths", "NDA Maths", "NDA", "Mathematics"),
+    ]);
+    expect(nav[0]).toEqual({ href: "/homework", label: "All plans" });
+    expect(nav.slice(1)).toEqual([
+      { href: "/homework/cbse-12-chemistry", label: "Chemistry", group: { label: "CBSE Class 12", href: "/homework/exam/cbse-12" } },
+      { href: "/homework/cbse-12-mathematics", label: "Maths", group: { label: "CBSE Class 12", href: "/homework/exam/cbse-12" } },
+      { href: "/homework/mh-hsc-12-biology", label: "Biology", group: { label: "MH HSC 12", href: "/homework/exam/mh-hsc-12" } },
+      { href: "/homework/mh-hsc-12-maths", label: "Maths", group: { label: "MH HSC 12", href: "/homework/exam/mh-hsc-12" } },
+      { href: "/homework/nda-maths", label: "Maths", group: { label: "NDA", href: "/homework/exam/nda" } },
+    ]);
+  });
+
+  it("keeps an exam's plans together even when the list interleaves them", () => {
+    const nav = homeworkSideNav([
+      plan("a1", "CBSE Class 10 Maths", "CBSE Class 10", "Mathematics"),
+      plan("n1", "NDA Maths", "NDA", "Mathematics"),
+      plan("a2", "CBSE Class 10 Science", "CBSE Class 10", "Science"),
+    ]);
+    expect(nav.slice(1).map((i) => i.href)).toEqual(["/homework/a1", "/homework/a2", "/homework/n1"]);
+  });
+
+  it("falls back to the subject's name, and to the exam's own name and no link off the registry", () => {
+    const nav = homeworkSideNav([plan("x", "Odd title", "Some Board", "Botany")]);
+    expect(nav[1]).toEqual({ href: "/homework/x", label: "Botany", group: { label: "Some Board" } });
+  });
+});
+
+describe("homeworkExamLabel", () => {
+  it("is the site's short exam name, or the database name off the registry", () => {
+    expect(homeworkExamLabel("Maharashtra State Board Class 10")).toBe("MH SSC 10");
+    expect(homeworkExamLabel("Some Board")).toBe("Some Board");
   });
 });

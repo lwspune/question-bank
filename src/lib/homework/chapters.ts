@@ -7,6 +7,9 @@
  * (lib/homework/query.ts loadChapterTop), so every listed chapter has a list.
  */
 import { slugify } from "@/lib/board/query";
+import { PYQVAULT_EXAMS } from "@/lib/exam/examContext";
+import type { SideNavGroup } from "@/lib/nav/sideNavGroups";
+import { examHomeworkPageHref, HOMEWORK_HUB, planHref } from "./links";
 
 export type PlanChapterRow = { id: string; name: string; orderIndex: number | null };
 export type PlanChapter = { id: string; name: string; slug: string };
@@ -52,4 +55,52 @@ export function groupPlansByExam<P extends { examName: string }>(plans: readonly
     groups.set(p.examName, list);
   }
   return [...groups].map(([examName, list]) => ({ examName, plans: list }));
+}
+
+/** The site's short name for an exam ("MH SSC 10"), from its DB name; the DB name off the registry. */
+export function homeworkExamLabel(examName: string): string {
+  return PYQVAULT_EXAMS.find((e) => e.examName === examName)?.displayName ?? examName;
+}
+
+type NavPlan = { slug: string; title?: string; examName: string; subjectName: string };
+
+/**
+ * The homework pages' side menu (2026-11-04): every plan, then each exam's
+ * plans under its short name (linking that exam's homework page), each plan
+ * labelled by its subject as its own title words it ("Maths", not "CBSE Class
+ * 12 Maths"). Was a flat list of 18 full titles.
+ */
+export function homeworkSideNav(
+  plans: readonly NavPlan[]
+): { href: string; label: string; group?: SideNavGroup }[] {
+  const items: { href: string; label: string; group?: SideNavGroup }[] = [{ href: HOMEWORK_HUB, label: "All plans" }];
+  for (const g of groupPlansByExam(plans)) {
+    const exam = PYQVAULT_EXAMS.find((e) => e.examName === g.examName);
+    const group: SideNavGroup = exam
+      ? { label: exam.displayName, href: examHomeworkPageHref(exam.slug) }
+      : { label: g.examName };
+    const labels = subjectLabels(g.plans, group.label);
+    g.plans.forEach((p, i) => items.push({ href: planHref(p.slug), label: labels[i], group }));
+  }
+  return items;
+}
+
+/**
+ * Each plan's title with what the exam's plans share removed: the common
+ * leading words when there are several, the exam's short name when there is
+ * one. The subject's DB name when that leaves nothing.
+ */
+function subjectLabels(plans: readonly NavPlan[], examLabel: string): string[] {
+  const words = plans.map((p) => (p.title ?? "").split(/\s+/).filter(Boolean));
+  let shared = 0;
+  if (plans.length > 1) {
+    while (words.every((w) => w.length > shared + 1 && w[shared] === words[0][shared])) shared++;
+  }
+  return plans.map((p, i) => {
+    const title = p.title ?? "";
+    let rest = "";
+    if (shared > 0) rest = words[i].slice(shared).join(" ");
+    else if (plans.length === 1 && title.startsWith(`${examLabel} `)) rest = title.slice(examLabel.length + 1);
+    return rest || p.subjectName;
+  });
 }
