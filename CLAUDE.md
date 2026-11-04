@@ -348,11 +348,12 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 
 ### 2026-11
 
-- **2026-11-03 — Board quick-revision sheets: a Quick revision tab on /board chapters, PDF for the Premium Pass only (0213); HSC 12 (70) and CBSE 12 (50).**
+- **2026-11-03 — Board quick-revision sheets: a Quick revision tab on /board chapters, PDF for the Premium Pass only (0213); HSC 12 (70), CBSE 12 (50), MH SSC 10 (56), CBSE 10 (27).**
   - **Sheets, not notes (owner):** HSC 12 and CBSE 12 had the most active students and no notes; a board answer rewards the book's wording, so a sheet is most asked, points, formulas, derivations, diagrams, mistakes.
   - **"Quick" is enforced:** `lib/board/revision/lint.ts` caps every section and text; `npm run revision:check` lets agents check drafts outside the repo.
   - **Most asked only from our past papers; marks only where a stored paper prints them** (CBSE yes, HSC 12 none): `revision:evidence` refuses marks the cited lines do not carry most often.
   - **A topic the board set in 2025-26 stays even if the rationalised book dropped it** (CBSE: area between curves, foot of a perpendicular, spectral series); only topics last asked before 2024 and no longer taught go.
+  - **The PDF needs the pass even for free Class 10 exams (owner):** printing costs compute. CBSE 10 Social Science waits (no past papers).
   - **0213 applied 2026-11-04**, ahead of the push (export kind `revision`). Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-11-02 — The Class 9-10 exams need no pass (0210-0211): CBSE 10, ICSE 10, MH 9 and 10, SPI, Foundation Course.**
   - **Free EXAMS, not students:** a picked category can be claimed; an exam cannot. Why: 68 actives, 2 passes in 30 days.

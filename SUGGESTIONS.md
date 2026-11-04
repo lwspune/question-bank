@@ -157,6 +157,18 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ## 2026-11-04
 
+### Class 10 revision sheets: past-paper questions filed under a chapter that does not teach them (owner to decide)
+
+Found while drafting the 56 MH SSC 10 and 27 CBSE 10 quick-revision sheets. Nothing was changed in the bank; each sheet leaves the question out of the chapter it is filed under, or keeps it as a "most asked" topic with a mistake note when the board keeps setting it there. A move is a 360 + ask (chapter tests, homework plans, Top 10 and /board lists follow the chapter).
+
+- **MH SSC 10 History:** Applied History (Ch 3) carries Sthalakosh notes (2024, 2025), the universities-and-cities wrong pair (2026) and "first Chief Minister of Maharashtra" (2025), all taught in Heritage Management (Ch 9); Indian Tradition (Ch 2) carries the 2022 encyclopaedia timeline (Ch 9); Indian Arts (Ch 4) carries "What is Powada?" (2025, taught in Ch 6) and the Ramman wrong pair (2024, Ch 3); Mass Media (Ch 5) carries the 2022 Bal J. Pandit commentary question (Ch 7); Tourism (Ch 8) carries the 2020 World Natural Heritage table and UNESCO list (Ch 3). Heritage Management carries Sohagaura copper-plate (6 lines) and the first ASI Director General, both taught in Ch 2.
+- **MH SSC 10 Political Science:** Social and Political Movements (Ch 4) carries the 2020 left-extremism true or false (Ch 5); Challenges (Ch 5) carries RTI (Ch 1) and regionalism (Ch 3).
+- **MH SSC 10 Science II:** connecting links (2020, 2024, 2025) sit in Animal Classification but are taught in Heredity and Evolution; Environmental Management carries acid rain and sewage uses (Ch 7), blue revolution (Ch 8) and waste decomposition (Ch 7); Towards Green Energy carries biofuel lines (Ch 7) and radiation effects (Ch 4); Cell Biology carries protein tables (Ch 2) and body organisation (Ch 6); Social Health carries organ donation (Ch 8); Disaster Management carries "selfie on road" (Ch 9).
+- **MH SSC 10 Science I:** Effects of Electric Current carries the 2022 gold-plating MCQ (electroplating is taught in Metallurgy).
+- **MH SSC 10 Geography:** Population carries many urbanisation questions (graphs, Goa, Brazil's urbanised states) taught in Human Settlements; Economy and Occupations carries the 2025 "problems after Independence" question (Location and Extent).
+- **CBSE 10 Mathematics:** Triangles carries 2025 30/3/1 Q32 (2fe7e48e, isosceles-triangle area from its perimeter). It needs only Pythagoras (area 48 cm²), so Triangles is a fair home; listed only because the sheet leaves it out.
+- **Class 9 facts the board still sets** (kept on the sheets as mistake notes, nothing to do): the diameter is the longest chord (2019, 2023, 2024), the Y-axis is x = 0 (June 2026), WHO in full (2024).
+
 ### CBSE 12 bank items found while drafting the 50 revision sheets
 
 All PUBLIC `pyq` rows of `CBSE Class 12`. The two row items were settled 2026-11-04; the last two bullets are notes, nothing to do.
