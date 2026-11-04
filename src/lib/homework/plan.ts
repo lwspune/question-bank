@@ -67,6 +67,24 @@ export type PlanItem = {
 
 const bare = (s: string) => s.replace(/\*$/, "");
 
+/** The database caps a note at 300 characters (migration 0143). */
+const NOTE_MAX = 300;
+
+/** "5 in 2023, 4 in 2024": papers counted by year, oldest first, for a list too long to print whole. */
+function byYear(list: readonly string[]): string {
+  const counts = new Map<string, number>();
+  for (const s of list) {
+    const year = /\d{4}/.exec(s)?.[0] ?? s;
+    counts.set(year, (counts.get(year) ?? 0) + 1);
+  }
+  return [...counts].map(([year, n]) => `${n} in ${year}`).join(", ");
+}
+
+function typeNote(count: number, list: readonly string[], shown: string): string {
+  const full = `This type asked ${count} times: ${list.join(", ")}. This one: ${shown}`;
+  return full.length <= NOTE_MAX ? full : `This type asked ${count} times: ${byYear(list)}. This one: ${shown}`;
+}
+
 export function buildPlanOrder(input: PlanInput): PlanItem[] {
   const sittingRank = new Map(input.sittings.map((s, i) => [s, i]));
   const byId = new Map(input.questions.map((x) => [x.id, x]));
@@ -112,8 +130,14 @@ export function buildPlanOrder(input: PlanInput): PlanItem[] {
       const pick = open.find((id) => !avoid.has(id)) ?? open[0];
       if (pick === undefined) continue;
       const list = chrono(g);
-      const star = list.some((s) => s.endsWith("*")) ? " (* = numbers or wording changed that year)" : "";
-      order.push({ questionId: pick, part: 1, note: `Asked ${list.length} times: ${list.join(", ")}${star}`, group: indexOf.get(g)! });
+      const changed = list.some((s) => s.endsWith("*"));
+      const star = changed ? " (* = numbers or wording changed that year)" : "";
+      let note = `Asked ${list.length} times: ${list.join(", ")}${star}`;
+      // MHT-CET has 69 shifts: a long list is summarised by year (the See all page lists every paper).
+      if (note.length > NOTE_MAX) {
+        note = `Asked ${list.length} times: ${byYear(list)}${changed ? " (numbers or wording changed in some)" : ""}`;
+      }
+      order.push({ questionId: pick, part: 1, note, group: indexOf.get(g)! });
       // Its other wordings are never printed.
       for (const id of g.questionIds) used.add(id);
     } else {
@@ -122,7 +146,7 @@ export function buildPlanOrder(input: PlanInput): PlanItem[] {
       order.push({
         questionId: pick,
         part: 2,
-        note: `This type asked ${g.sittings.length} times: ${chrono(g).join(", ")}. This one: ${byId.get(pick)!.sitting}`,
+        note: typeNote(g.sittings.length, chrono(g), byId.get(pick)!.sitting),
         group: indexOf.get(g)!,
       });
       used.add(pick);
