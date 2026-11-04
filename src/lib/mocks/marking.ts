@@ -60,3 +60,47 @@ export function markingCopy(marking: Marking): MarkingCopy {
       : "marks for un-attempted questions — a blank scores the same as a wrong answer, so never leave one.",
   };
 }
+
+export type SectionMarkingLine = { label: string; count: number; text: string };
+
+type MarkedQuestion = { sectionKey: string; marks: number; negMarks: number; msqScheme?: "exact" | "partial" };
+
+/**
+ * The marking per section, read from the questions as stamped (buildMockPaper), for a
+ * paper whose sections are marked DIFFERENTLY: UCEED (NAT, MSQ, MCQ each its own), IPMAT
+ * Indore (Short Answer has no penalty). The paper-level `marking` is one section's scheme
+ * there, so the one-line copy would be false for the others.
+ *
+ * Null when one line is true for the whole paper, and also when any section is mixed
+ * within itself (MPSC CSAT's unpenalised questions): no section line would be true then,
+ * so the page keeps the copy it had.
+ */
+export function sectionMarkingLines(
+  sections: readonly { key: string; label: string; count: number }[],
+  questions: readonly MarkedQuestion[]
+): SectionMarkingLine[] | null {
+  const sig = (q: MarkedQuestion) => `${q.marks}|${q.negMarks}|${q.msqScheme ?? ""}`;
+  if (new Set(questions.map(sig)).size <= 1) return null;
+  const lines: SectionMarkingLine[] = [];
+  for (const s of sections) {
+    const qs = questions.filter((q) => q.sectionKey === s.key);
+    if (qs.length === 0) continue;
+    if (new Set(qs.map(sig)).size > 1) return null;
+    lines.push({ label: s.label, count: s.count, text: sectionText(qs[0]) });
+  }
+  return lines;
+}
+
+function sectionText(q: MarkedQuestion): string {
+  const plus = fmt(q.marks, true);
+  const minus = fmt(q.negMarks, false);
+  if (q.msqScheme === "partial") {
+    return `${plus} when you tick every correct option and no wrong one; +1 for each correct option ticked when some are missing and none is wrong; ${minus} otherwise.`;
+  }
+  if (q.msqScheme === "exact") {
+    return `${plus} when you tick every correct option and no wrong one; ${minus} otherwise. No partial marks.`;
+  }
+  return q.negMarks === 0
+    ? `${plus} for a correct answer, no negative marking.`
+    : `${plus} for a correct answer, ${minus} for a wrong one.`;
+}

@@ -68,6 +68,8 @@ export async function readPeerAccuracy(
 }
 
 import { ENGAGEMENT_FLOOR } from "@/lib/performance/compute";
+import { answeredShape } from "@/lib/mocks/answeredShape";
+import { isAnswered } from "@/lib/mocks/answers";
 
 export type ReportCandidate = {
   attemptId: string;
@@ -100,11 +102,12 @@ async function dropAbandoned(
   for (let i = 0; i < ids.length; i += CHUNK) {
     const { data, error } = await db
       .from("attempt_answers")
-      .select("attempt_id, selected_label, numeric_response")
+      .select("attempt_id, selected_label, numeric_response, selected_labels")
       .in("attempt_id", ids.slice(i, i + CHUNK));
     if (error) throw new Error(`dropAbandoned answers: ${error.message}`);
     for (const r of (data ?? []) as Record<string, unknown>[]) {
-      if (r.selected_label == null && r.numeric_response == null) continue;
+      // The grader's own rule (a tick set counts too, migration 0215).
+      if (!isAnswered(answeredShape(r))) continue;
       const id = r.attempt_id as string;
       answered.set(id, (answered.get(id) ?? 0) + 1);
     }

@@ -117,10 +117,15 @@ export function cardQuery(c: AskedCard): string {
  * numeric answer of 0 is an answer.
  */
 export function askedFromReview(item: {
-  format: "mcq" | "numeric";
+  format: "mcq" | "numeric" | "msq";
   selectedLabel: string | null;
   numericResponse: number | null;
+  selectedLabels?: readonly string[];
 }): { chose: string | null; entered: number | null; skipped: boolean } {
+  // A tick set has no one letter to name; V's message carries one (askVMessage).
+  if (item.format === "msq") {
+    return { chose: null, entered: null, skipped: (item.selectedLabels ?? []).length === 0 };
+  }
   if (item.format === "numeric") {
     return { chose: null, entered: item.numericResponse, skipped: item.numericResponse === null };
   }

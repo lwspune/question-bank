@@ -106,12 +106,13 @@ async function main() {
     question_id: string;
     selected_label: OptionLabel | null;
     numeric_response: number | null;
+    selected_labels: OptionLabel[] | null;
   }[] = [];
   for (const ids of chunk([...attemptById.keys()], IN_CHUNK)) {
     const batch = (await pageAll((f, t) =>
       db
         .from("attempt_answers")
-        .select("attempt_id, question_id, selected_label, numeric_response")
+        .select("attempt_id, question_id, selected_label, numeric_response, selected_labels")
         .in("attempt_id", ids)
         .order("question_id", { ascending: true })
         .range(f, t)
@@ -124,7 +125,9 @@ async function main() {
   for (const a of answers) {
     const e = perAttempt.get(a.attempt_id) ?? { rows: 0, answered: 0 };
     e.rows += 1;
-    if (a.selected_label !== null || a.numeric_response !== null) e.answered += 1;
+    // A tick set (multiple-select, 0215) is an answer for the floor, though its question is
+    // left out of the statistic below.
+    if (a.selected_label !== null || a.numeric_response !== null || a.selected_labels !== null) e.answered += 1;
     perAttempt.set(a.attempt_id, e);
   }
   const kept = new Set<string>();
@@ -152,13 +155,28 @@ async function main() {
   const questionIds = [...new Set(live.map((a) => a.question_id))];
   const hashById = new Map<string, string>();
   const numericById = new Map<string, number>();
+  const numericMaxById = new Map<string, number>();
+  const msqIds = new Set<string>();
   for (const ids of chunk(questionIds, IN_CHUNK)) {
     const qs = (await pageAll((f, t) =>
-      db.from("questions").select("id, content_hash, numeric_answer").in("id", ids).range(f, t)
-    )) as unknown as { id: string; content_hash: string; numeric_answer: number | null }[];
+      db.from("questions").select("id, content_hash, question_format, numeric_answer, numeric_answer_max").in("id", ids).range(f, t)
+    )) as unknown as {
+      id: string;
+      content_hash: string;
+      question_format: string | null;
+      numeric_answer: number | null;
+      numeric_answer_max: number | null;
+    }[];
     for (const q of qs) {
+      // A multiple-select question has no single right letter, and the statistic counts
+      // one choice per answer: it is left out (migration 0215).
+      if (q.question_format === "msq") {
+        msqIds.add(q.id);
+        continue;
+      }
       hashById.set(q.id, q.content_hash);
       if (q.numeric_answer !== null) numericById.set(q.id, Number(q.numeric_answer));
+      if (q.numeric_answer_max !== null) numericMaxById.set(q.id, Number(q.numeric_answer_max));
     }
   }
   const keyById = new Map<string, MockAnswerKey>();
@@ -181,7 +199,10 @@ async function main() {
     }
   }
   for (const id of numericById.keys()) {
-    if (!keyById.has(id)) keyById.set(id, { kind: "numeric", value: numericById.get(id)! });
+    const value = numericById.get(id)!;
+    const max = numericMaxById.get(id);
+    // A range key (0214) accepts any value in it, as the mock grader does.
+    if (!keyById.has(id)) keyById.set(id, max !== undefined && max !== value ? { kind: "numeric", value, max } : { kind: "numeric", value });
   }
 
   // ---- 6. Discrimination split, WITHIN each mock ----------------------------
@@ -221,11 +242,16 @@ async function main() {
   const buckets = new Map<string, Bucket>();
   let graceSkipped = 0;
   let multiSkipped = 0;
+  let msqSkipped = 0;
 
   for (const a of live) {
     const gk = `${attemptById.get(a.attempt_id)!.mock_id}|${a.question_id}`;
     if (graceKeys.has(gk)) {
       graceSkipped += 1;
+      continue;
+    }
+    if (msqIds.has(a.question_id)) {
+      msqSkipped += 1;
       continue;
     }
     if (multiKeyed.has(a.question_id)) {
@@ -328,6 +354,7 @@ async function main() {
       `answer rows live        ${live.length}`,
       `  grace skipped         ${graceSkipped}`,
       `  multi-keyed skipped   ${multiSkipped}  (${multiKeyed.size} questions)`,
+      `  multiple-select skipped ${msqSkipped}  (${msqIds.size} questions)`,
       `sitting rows            ${rows.length}  (${withAttempts} with >=1 attempt)`,
       `distinct questions      ${new Set(rows.map((r) => r.question_id)).size}`,
     ].join("\n")

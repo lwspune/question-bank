@@ -107,8 +107,13 @@ function makeReviewItem(partial: Partial<ReviewItem> = {}): ReviewItem {
     selectedLabel: "C",
     correctLabel: "B",
     numericResponse: null,
+    selectedLabels: [],
+    correctLabels: [],
     correctNumeric: null,
+    correctNumericMax: null,
     verdict: -1,
+    partial: false,
+    marksEarned: -1,
     solution: "Substitute \\(u = x^2\\).",
     solutionImageUrl: null,
     grace: false,
@@ -284,6 +289,15 @@ describe("fromReviewItem (/mock review)", () => {
     );
     expect(p.options).toEqual([]);
     expect(p.answer?.numericAnswer).toBe(12);
+  });
+
+  it("names every correct option of a multiple-select item, and a numeric range", () => {
+    const msq = fromReviewItem(makeReviewItem({ format: "msq", correctLabel: null, correctLabels: ["A", "C"] }));
+    expect(msq.answer?.correctLabels).toEqual(["A", "C"]);
+    const range = fromReviewItem(
+      makeReviewItem({ format: "numeric", options: [], correctLabel: null, correctNumeric: 5, correctNumericMax: 5.35 })
+    );
+    expect(range.answer?.numericAnswerMax).toBe(5.35);
   });
 
   it("never leaks the student's own selection into the projection", () => {

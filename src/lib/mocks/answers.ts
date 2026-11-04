@@ -24,7 +24,18 @@ export type OptionLabel = (typeof MOCK_OPTION_LABELS)[number];
 /** The correct answer for one question, as stored in the bank. */
 export type MockAnswerKey =
   | { kind: "mcq"; label: OptionLabel }
-  | { kind: "numeric"; value: number };
+  /** `max`: the top of a range key (UCEED 2023 Q2: 132.8 to 133.1); absent = `value` is exact (0214). */
+  | { kind: "numeric"; value: number; max?: number }
+  /** Multiple-select (0214): the full set of correct options. */
+  | { kind: "msq"; labels: OptionLabel[] };
+
+/**
+ * How a multiple-select question is marked. "exact" (UCEED 2019-2021): full marks only for exactly
+ * the correct set, the penalty for anything else. "partial" (UCEED 2022 on, IIT Bombay's printed
+ * rule from 2023): full marks for the exact set, and when some correct options are missing but no
+ * wrong one is ticked, one mark per correct tick (+3 / +2 / +1); the penalty otherwise.
+ */
+export type MsqScheme = "exact" | "partial";
 
 /**
  * One student's saved response, mirroring the two `attempt_answers` columns
@@ -34,6 +45,8 @@ export type MockAnswerKey =
 export type SavedResponse = {
   selectedLabel: OptionLabel | null;
   numericResponse: number | null;
+  /** The ticks on a multiple-select question (migration 0215); absent or empty = none. */
+  selectedLabels?: OptionLabel[] | null;
 };
 
 /**
@@ -77,7 +90,7 @@ export function matchesNumericAnswer(response: number, key: number): boolean {
  */
 export function isAnswered(r: SavedResponse | undefined | null): boolean {
   if (!r) return false;
-  return r.selectedLabel !== null || r.numericResponse !== null;
+  return r.selectedLabel !== null || r.numericResponse !== null || (r.selectedLabels?.length ?? 0) > 0;
 }
 
 /**
@@ -91,11 +104,15 @@ export function responseMatchesKey(
   r: SavedResponse | undefined | null
 ): boolean {
   if (!key || !r) return false;
+  if (key.kind === "msq") return msqOutcome(key.labels, r) === "exact";
   if (key.kind === "mcq") {
     if (r.selectedLabel === null) return false;
     return String(r.selectedLabel).trim().toUpperCase() === key.label;
   }
   if (r.numericResponse === null) return false;
+  if (key.max !== undefined) {
+    return r.numericResponse >= key.value - FLOAT_EPSILON && r.numericResponse <= key.max + FLOAT_EPSILON;
+  }
   return matchesNumericAnswer(r.numericResponse, key.value);
 }
 
@@ -121,4 +138,60 @@ export function verdictFor(
   if (!isAnswered(r)) return 0;
   if (!key) return 0;
   return responseMatchesKey(key, r) ? 1 : -1;
+}
+
+/** A tick set against a multiple-select key: the exact set, some correct and none wrong, a wrong tick, or nothing. */
+export function msqOutcome(
+  correct: readonly string[],
+  r: SavedResponse | undefined | null
+): "exact" | "partial" | "wrong" | "blank" {
+  const key = new Set(correct.map((l) => String(l).toUpperCase()));
+  const picks = [...new Set((r?.selectedLabels ?? []).map((l) => String(l).trim().toUpperCase()))];
+  if (picks.length === 0) return "blank";
+  if (picks.some((l) => !key.has(l))) return "wrong";
+  return picks.length === key.size ? "exact" : "partial";
+}
+
+/** The marks a tick set earns under a scheme (see MsqScheme). Grace is decided by the caller. */
+export function msqMarks(
+  scheme: MsqScheme,
+  correct: readonly string[],
+  r: SavedResponse | undefined | null,
+  marks: number,
+  negMarks: number
+): number {
+  const outcome = msqOutcome(correct, r);
+  if (outcome === "blank") return 0;
+  if (outcome === "exact") return marks;
+  if (outcome === "partial" && scheme === "partial") return new Set(r?.selectedLabels ?? []).size;
+  return negMarks;
+}
+
+/** The columns a question's key is read from (questions + its options). */
+export type AnswerKeyRow = {
+  question_format?: string | null;
+  numeric_answer?: number | string | null;
+  numeric_answer_max?: number | string | null;
+  options?: readonly { label: string; is_correct: boolean }[] | null;
+};
+
+/**
+ * A question's key, read the ONE way the mock build and the grader both use (build.ts
+ * readAnswerKey and query.ts loadAnswerKey were two copies until migration 0214 added
+ * two shapes). The SHAPE comes from the question's own `question_format`, never from
+ * whether options exist: a failed options read must not turn a question numeric.
+ * Null when no key is stored; validatePaperRows refuses such a paper unless it is grace.
+ */
+export function answerKeyFromRow(row: AnswerKeyRow): MockAnswerKey | null {
+  const num = (v: unknown) => (v === null || v === undefined || v === "" || !Number.isFinite(Number(v)) ? null : Number(v));
+  if (row.question_format === "numeric") {
+    const value = num(row.numeric_answer);
+    if (value === null) return null;
+    const max = num(row.numeric_answer_max);
+    return max !== null && max !== value ? { kind: "numeric", value, max } : { kind: "numeric", value };
+  }
+  const correct = (row.options ?? []).filter((o) => o.is_correct).map((o) => o.label as OptionLabel);
+  if (correct.length === 0) return null;
+  if (row.question_format === "msq") return { kind: "msq", labels: [...correct].sort() };
+  return { kind: "mcq", label: correct[0] };
 }

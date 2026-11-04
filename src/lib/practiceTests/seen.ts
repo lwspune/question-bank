@@ -19,7 +19,7 @@ export async function readAnsweredQuestionIds(db: SupabaseClient): Promise<Set<s
     const { data, error } = await db
       .from("attempt_answers")
       .select("question_id")
-      .or("selected_label.not.is.null,numeric_response.not.is.null")
+      .or("selected_label.not.is.null,numeric_response.not.is.null,selected_labels.not.is.null")
       .order("updated_at", { ascending: false })
       .order("question_id")
       .range(from, from + PAGE - 1);

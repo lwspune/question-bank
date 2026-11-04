@@ -60,3 +60,21 @@ export function msqVerdictLine(v: MsqVerdict): string {
   }
   return "Tick one or more options, then check.";
 }
+
+/**
+ * One tap on an option of a multiple-select question: tick it, or untick it. The set stays
+ * in letter order, and an emptied set is null, which is how an unanswered question is stored.
+ */
+export function toggleTick<L extends string>(ticked: readonly L[] | null, label: L): L[] | null {
+  const now = new Set(ticked ?? []);
+  if (now.has(label)) now.delete(label);
+  else now.add(label);
+  return now.size === 0 ? null : [...now].sort();
+}
+
+/** How a multiple-select question is marked, in one line under its options (a mock runner). */
+export function msqInstruction(scheme: "exact" | "partial", marks: number, negMarks: number): string {
+  const head = `Tick every correct option. All correct and no wrong one: +${marks}.`;
+  if (scheme === "partial") return `${head} Some correct and no wrong one: +1 for each. Any wrong tick: ${negMarks}.`;
+  return `${head} Anything else: ${negMarks}. No partial marks.`;
+}

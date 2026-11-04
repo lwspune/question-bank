@@ -220,6 +220,15 @@ describe("coverage — seen-and-skipped vs never reached", () => {
   });
 });
 
+describe("multiple-select questions are left out (migration 0215)", () => {
+  it("counts neither their coverage nor a verdict: the facts carry one letter, a tick set has many", () => {
+    const facts = [right({ p: 1 }), wrong({ p: 2 }), fact({ p: 3, f: "msq", k: "A", r: null }), fact({ p: 4, f: "msq", k: "B", r: null })];
+    const { lanes, summary } = buildPerformance(input([attempt()], facts), NOW);
+    expect(lanes[0].coverage.inPaper).toBe(2);
+    expect(summary.attemptQuality).toBe(50);
+  });
+});
+
 // ── attempt quality + score delta ───────────────────────────────────────────
 
 describe("summary", () => {

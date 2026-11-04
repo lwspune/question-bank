@@ -36,6 +36,7 @@
  *   npx tsx scripts/mocks/build.ts --paper=jee              # JEE Mains 2025+
  *   npx tsx scripts/mocks/build.ts --paper=ipmat-indore    # IPMAT Indore 2022-2026
  *   npx tsx scripts/mocks/build.ts --paper=imat            # IMAT ministry papers 2023+
+ *   npx tsx scripts/mocks/build.ts --paper=uceed           # UCEED Part A 2019-2026 (opt-in)
  *   npx tsx scripts/mocks/build.ts --only=2026-jan-21-s1    # one JEE shift
  *   npx tsx scripts/mocks/build.ts --only=2024-Sep --apply --publish
  *   npx tsx scripts/mocks/build.ts --only=cds-2026-i-english
@@ -76,9 +77,10 @@ import {
   SSC_CGL_T2_QUANT_PAPER,
   SPI_PAPER,
   IMAT_PAPER,
+  uceedPaper,
   type MockPaperBlueprint,
 } from "../../src/lib/mocks/blueprints";
-import type { MockAnswerKey, OptionLabel } from "../../src/lib/mocks/answers";
+import { answerKeyFromRow, type MockAnswerKey, type OptionLabel } from "../../src/lib/mocks/answers";
 import {
   buildMockPaper,
   dedupeMergedRows,
@@ -90,6 +92,7 @@ import {
   jeeMockSlug,
   jeeMockTitle,
   type MockPaperSnapshot,
+  type PaperFormat,
   type PaperQuestionRow,
 } from "../../src/lib/mocks/reconstruct";
 import {
@@ -109,6 +112,7 @@ import { PAPERS as UPSC_PAPERS } from "../upsc/config";
 import { sscSittings, sscT2Sittings, t2Rows, withHeld } from "./sscSittings";
 import { spiSittings } from "./spiSittings";
 import { imatSittings } from "./imatSittings";
+import { uceedSittings } from "./uceedSittings";
 import { mockTestRow } from "../../src/lib/mocks/row";
 
 function loadEnv() {
@@ -212,7 +216,7 @@ async function fetchPaperRows(
   for (let from = 0; ; from += PAGE) {
     let q = db
       .from("questions")
-      .select("id, source_row, question_number, chapter_id, source_file, question_format, numeric_answer, options(label,is_correct)")
+      .select("id, source_row, question_number, chapter_id, source_file, question_format, numeric_answer, numeric_answer_max, options(label,is_correct)")
       .in("chapter_id", chapterIds)
       .eq("question_kind", "pyq")
       .eq("visibility", "PUBLIC");
@@ -239,7 +243,8 @@ async function fetchPaperRows(
         questionNumber: (r.question_number as string | null) ?? null,
         subjectName: chapterToSubject.get(r.chapter_id as string) ?? "?",
         sourceFile: (r.source_file as string | null) ?? undefined,
-        answer: readAnswerKey(r, opts),
+        format: paperFormat(r.question_format),
+        answer: answerKeyFromRow({ ...r, options: opts }),
       });
     }
     if (!data || data.length < PAGE) break;
@@ -247,27 +252,9 @@ async function fetchPaperRows(
   return out;
 }
 
-/**
- * The answer key for one fetched row.
- *
- * Which SHAPE a question uses is decided by its own `question_format`, never by
- * whether options happen to exist: a numeric (JEE Section-B) question carries
- * zero option rows, and inferring "no options therefore numeric" would turn a
- * failed options read into a silently numeric question. Mirrors loadAnswerKey in
- * src/lib/mocks/query.ts — the build and the grader must agree about what the
- * answer IS, or a paper validates at build time and mis-grades at delivery.
- */
-function readAnswerKey(
-  r: Record<string, unknown>,
-  opts: { label: string; is_correct: boolean }[]
-): MockAnswerKey | null {
-  if (r.question_format === "numeric") {
-    const v = r.numeric_answer;
-    if (v === null || v === undefined || !Number.isFinite(Number(v))) return null;
-    return { kind: "numeric", value: Number(v) };
-  }
-  const label = opts.find((o) => o.is_correct)?.label;
-  return label ? { kind: "mcq", label: label as OptionLabel } : null;
+/** A row's question type as a paper section reads it (UCEED sections by type). */
+function paperFormat(f: unknown): PaperFormat {
+  return f === "numeric" || f === "msq" ? f : "mcq";
 }
 
 /** One sitting's rows, pinned by year + month (NDA). */
@@ -764,6 +751,31 @@ function spiMockSittings(): SourceFileSitting[] {
   }));
 }
 
+/**
+ * UCEED Part A, one blueprint per year (uceedPaper: the sections, marking and time changed
+ * in 2020, 2022 and 2024). IIT Bombay's cancelled questions ride as grace; the flawed list
+ * adds the rest (mockTestRow).
+ */
+async function buildUceed(db: SupabaseClient, run: RunState) {
+  for (const s of uceedSittings()) {
+    const grace = new Set(s.graceNumbers);
+    await buildFromSourceFiles(
+      db,
+      uceedPaper(s.year),
+      [{
+        key: s.key,
+        sourceFile: s.sourceFile,
+        year: s.year,
+        slug: s.slug,
+        title: s.title,
+        prepare: (rows) => rows.map((r) => (grace.has(Number(r.questionNumber)) ? { ...r, grace: true } : r)),
+      }],
+      run,
+      "uceedSittings.ts"
+    );
+  }
+}
+
 /** IMAT ministry papers (imatSittings.ts); a question that cannot be solved as printed rides as grace. */
 function imatMockSittings(): SourceFileSitting[] {
   return imatSittings().map((s) => ({
@@ -853,9 +865,11 @@ async function main() {
   // Opt-in ONLY: the Mains rows are PRIVATE until those exams go public, and the
   // builder reads PUBLIC rows, so a default run would report every one as a failure.
   const runMpscMains = paperFilter === "mpsc-mains";
-  if (paperFilter && !runNda && !runNeet && !runCds && !runMhtCet && !runJee && !runIpmat && !runMpsc && !runJipmat && !runUpsc && !runSsc && !runSscT2 && !runSpi && !runImat && !runMpscMains) {
+  // Opt-in too until UCEED's multiple-select and range rows are PUBLIC (migration 0214).
+  const runUceed = paperFilter === "uceed";
+  if (paperFilter && !runUceed && !runNda && !runNeet && !runCds && !runMhtCet && !runJee && !runIpmat && !runMpsc && !runJipmat && !runUpsc && !runSsc && !runSscT2 && !runSpi && !runImat && !runMpscMains) {
     throw new Error(
-      `no paper matches --paper=${paperFilter} (known: maths, gat, neet, cds, mht-cet, jee, ipmat-indore, jipmat, mpsc, upsc, ssc-cgl, ssc-cgl-tier-2, spi, imat, mpsc-mains)`
+      `no paper matches --paper=${paperFilter} (known: maths, gat, neet, cds, mht-cet, jee, ipmat-indore, jipmat, mpsc, upsc, ssc-cgl, ssc-cgl-tier-2, spi, imat, mpsc-mains, uceed)`
     );
   }
 
@@ -927,6 +941,7 @@ async function main() {
   if (runSpi) await buildFromSourceFiles(db, SPI_PAPER, spiMockSittings(), run, "spiSittings.ts");
   if (runImat) await buildFromSourceFiles(db, IMAT_PAPER, imatMockSittings(), run, "imatSittings.ts");
   if (runMpscMains) await buildMpscMains(db, run);
+  if (runUceed) await buildUceed(db, run);
 
   console.log(`\n${apply ? "Upserted" : "Would build"} ${run.built.n} mock(s)${publish ? " (published)" : apply ? " (draft)" : ""}.`);
   if (run.held.n) console.log(`${run.held.n} paper(s) held — cannot reconstruct whole (see ⊘ lines above).`);

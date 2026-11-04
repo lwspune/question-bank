@@ -16,7 +16,7 @@
  */
 
 import { slugToUuid } from "../quiz/quizPayload";
-import type { MockAnswerKey, OptionLabel } from "./answers";
+import type { MockAnswerKey, MsqScheme, OptionLabel } from "./answers";
 import {
   sectionMarking,
   totalQuestions,
@@ -44,6 +44,12 @@ export type PaperQuestionRow = {
    */
   answer: MockAnswerKey | null;
   /**
+   * The question's type (its question_format). Read by a section that is picked by type
+   * (UCEED: NAT, MSQ, MCQ). Absent = the key's kind, so older loaders need not set it;
+   * a grace row with no key needs it, or it maps to no typed section.
+   */
+  format?: PaperFormat;
+  /**
    * Officially dropped / bonus question (e.g. NTA awarded full marks to all).
    * It appeared on the real paper, so a faithful mock includes it — but it has
    * no valid key, so it's graded as GRACE: full marks to everyone, no penalty.
@@ -58,6 +64,14 @@ export type PaperQuestionRow = {
   noPenalty?: boolean;
 };
 
+/** A question's type as a paper section reads it. */
+export type PaperFormat = MockAnswerKey["kind"];
+
+/** A row's type: its own format, else its key's kind, else unknown. */
+export function rowFormat(r: Pick<PaperQuestionRow, "format" | "answer">): PaperFormat | null {
+  return r.format ?? r.answer?.kind ?? null;
+}
+
 export type MockQuestionSnapshot = {
   position: number;
   questionId: string;
@@ -68,6 +82,8 @@ export type MockQuestionSnapshot = {
   grace?: boolean;
   /** Marks per option, scored by gradeMock (see PaperQuestionRow.optionMarks). */
   optionMarks?: Partial<Record<OptionLabel, number>>;
+  /** How a multiple-select question is marked (its section's msqScheme), read by gradeMock. */
+  msqScheme?: MsqScheme;
 };
 
 export type MockPaperSnapshot = {
@@ -186,9 +202,13 @@ export function dedupeMergedRows(
 export function assignSection(
   bp: MockPaperBlueprint,
   subjectName: string,
-  sourceFile?: string | null
+  sourceFile?: string | null,
+  format?: PaperFormat | null
 ): string | null {
-  const candidates = bp.sections.filter((s) => s.subjects.includes(subjectName));
+  // A section picked by type takes only rows of that type; an unknown type joins none.
+  const candidates = bp.sections.filter(
+    (s) => s.subjects.includes(subjectName) && (!s.formats || (format != null && s.formats.includes(format)))
+  );
   if (candidates.length === 0) return null;
   // Unambiguous by subject, and the section asks for no suffix: done.
   if (candidates.length === 1 && !candidates[0].sourceFileSuffix) return candidates[0].key;
@@ -386,7 +406,7 @@ export function validatePaperRows(
   // Section membership + per-section counts.
   const perSection = new Map<string, number>();
   for (const r of rows) {
-    const key = assignSection(bp, r.subjectName, r.sourceFile);
+    const key = assignSection(bp, r.subjectName, r.sourceFile, rowFormat(r));
     if (!key) {
       issues.push(
         `Question ${r.id} (subject "${r.subjectName}") maps to no section in this paper`
@@ -423,7 +443,7 @@ export function validatePaperRows(
   // Duplicate ordering keys within a section would make the order ambiguous.
   const keys = new Map<string, Set<number>>();
   for (const r of rows) {
-    const sec = assignSection(bp, r.subjectName, r.sourceFile) ?? "?";
+    const sec = assignSection(bp, r.subjectName, r.sourceFile, rowFormat(r)) ?? "?";
     const set = keys.get(sec) ?? new Set<number>();
     const k = orderKey(r);
     if (set.has(k)) {
@@ -466,7 +486,7 @@ export function buildMockPaper(
   let position = 0;
   for (const section of bp.sections) {
     const sectionRows = orderPaperRows(
-      rows.filter((r) => assignSection(bp, r.subjectName, r.sourceFile) === section.key)
+      rows.filter((r) => assignSection(bp, r.subjectName, r.sourceFile, rowFormat(r)) === section.key)
     );
     // Per-SECTION marking, falling back to the paper's. Grading reads these
     // per-question values, so a section's scheme reaches the score without the
@@ -484,6 +504,7 @@ export function buildMockPaper(
         negMarks: r.noPenalty || r.optionMarks ? 0 : marking.wrong,
         ...(r.grace ? { grace: true } : {}),
         ...(r.optionMarks ? { optionMarks: r.optionMarks } : {}),
+        ...(section.msqScheme && rowFormat(r) === "msq" ? { msqScheme: section.msqScheme } : {}),
       });
     }
   }

@@ -19,6 +19,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { publicImageUrl } from "@/lib/storage/imageUrl";
 import { remainingSecs, paletteState, type PaletteState } from "@/lib/mocks/attempt";
+import { msqInstruction, toggleTick } from "@/lib/questions/msq";
 import LanguageSwitch from "@/components/i18n/LanguageSwitch";
 import { hasMarathi, optionVersions, stemVersions } from "@/lib/i18n/bilingual";
 import { useQuestionLang } from "@/lib/i18n/useQuestionLang";
@@ -30,6 +31,7 @@ type Answers = Record<string, SavedAnswer>;
 const EMPTY_ROW: SavedAnswer = {
   selectedLabel: null,
   numericResponse: null,
+  selectedLabels: null,
   isFlagged: false,
   timeSpentSecs: 0,
 };
@@ -102,6 +104,7 @@ export default function MockRunner({
             questionId: qid,
             selectedLabel: row.selectedLabel,
             numericResponse: row.numericResponse,
+            selectedLabels: row.selectedLabels ?? null,
             isFlagged: row.isFlagged,
             timeSpentSecs: row.timeSpentSecs,
           }),
@@ -223,6 +226,7 @@ export default function MockRunner({
 
   // The box shows the student's in-progress text when there is one, else the
   // saved value (so a resumed attempt renders what was stored).
+  const isMsq = q.format === "msq";
   const numericDraft =
     numericDrafts[q.questionId] ??
     (row.numericResponse === null ? "" : String(row.numericResponse));
@@ -360,15 +364,25 @@ export default function MockRunner({
                 />
               </div>
             ) : (
-            <ol className="mt-4 space-y-2">
+            <>
+            {isMsq && (
+              <p className="mt-4 text-xs text-muted-foreground">
+                {msqInstruction(q.msqScheme ?? "exact", q.marks, q.negMarks)}
+              </p>
+            )}
+            <ol className={cn(isMsq ? "mt-2" : "mt-4", "space-y-2")}>
               {q.options.map((opt) => {
-                const selected = row.selectedLabel === opt.label;
+                const selected = isMsq ? (row.selectedLabels ?? []).includes(opt.label) : row.selectedLabel === opt.label;
                 return (
                   <li key={opt.label}>
                     <button
                       type="button"
-                      onClick={() => update({ selectedLabel: opt.label })}
-                      aria-pressed={selected}
+                      onClick={() =>
+                        isMsq
+                          ? update({ selectedLabels: toggleTick(row.selectedLabels ?? null, opt.label) })
+                          : update({ selectedLabel: opt.label })
+                      }
+                      {...(isMsq ? { role: "checkbox", "aria-checked": selected } : { "aria-pressed": selected })}
                       className={cn(
                         "flex w-full items-start gap-3 rounded-md border p-2.5 text-left text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring",
                         selected
@@ -378,7 +392,9 @@ export default function MockRunner({
                     >
                       <span
                         className={cn(
-                          "inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-xs font-bold",
+                          // A square box for "tick any number", a circle for "pick one".
+                          "inline-flex h-7 w-7 shrink-0 items-center justify-center text-xs font-bold",
+                          isMsq ? "rounded-md" : "rounded-full",
                           selected ? "bg-brand text-brand-foreground" : "bg-muted text-foreground"
                         )}
                       >
@@ -404,6 +420,7 @@ export default function MockRunner({
                 );
               })}
             </ol>
+            </>
             )}
 
             <div className="mt-4 flex flex-wrap items-center gap-2 border-t pt-3">
@@ -420,9 +437,9 @@ export default function MockRunner({
                 size="sm"
                 onClick={() => {
                   setNumericDrafts((d) => ({ ...d, [q.questionId]: "" }));
-                  update({ selectedLabel: null, numericResponse: null });
+                  update({ selectedLabel: null, numericResponse: null, selectedLabels: null });
                 }}
-                disabled={row.selectedLabel === null && row.numericResponse === null}
+                disabled={row.selectedLabel === null && row.numericResponse === null && !row.selectedLabels}
               >
                 <Eraser className="h-3.5 w-3.5" aria-hidden />
                 Clear

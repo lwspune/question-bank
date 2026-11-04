@@ -22,6 +22,8 @@
 
 export type ResultHeadlineInput = {
   correct: number;
+  /** Multiple-select answers with partial credit: attempted, not right (UCEED). */
+  partial?: number;
   wrong: number;
   skipped: number;
   score: number;
@@ -43,7 +45,8 @@ export type ResultHeadline = {
 };
 
 export function buildResultHeadline(s: ResultHeadlineInput): ResultHeadline {
-  const attempted = s.correct + s.wrong;
+  const partial = s.partial ?? 0;
+  const attempted = s.correct + s.wrong + partial;
   const unanswered = Math.max(0, s.skipped);
   const accuracyPct = attempted > 0 ? Math.round((s.correct / attempted) * 100) : null;
 
@@ -63,7 +66,10 @@ export function buildResultHeadline(s: ResultHeadlineInput): ResultHeadline {
     };
   }
 
-  const lead = `${s.correct} of the ${attempted} you attempted were right.`;
+  const lead =
+    partial > 0
+      ? `${s.correct} of the ${attempted} you attempted were right, and ${partial} partly right.`
+      : `${s.correct} of the ${attempted} you attempted were right.`;
   const primaryAction: PrimaryAction = s.wrong > 0 ? "fix" : "another";
 
   return { attempted, accuracyPct, unanswered, lead, detail, primaryAction };

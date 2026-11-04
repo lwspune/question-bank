@@ -108,6 +108,16 @@ describe("buildMockReport — easy questions left blank", () => {
     expect(r!.easyLeft.map((x) => x.questionId)).toEqual(["seen"]);
   });
 
+  it("never names a multiple-select question (its tick set is not in the facts, so it would read as blank)", () => {
+    const r = buildMockReport(
+      payload([fact({ q: "seen", p: 1, r: null, rc: true }), fact({ q: "ticks", p: 2, f: "msq", r: null, rc: true })]),
+      ATTEMPT,
+      new Map(),
+      new Date()
+    );
+    expect(r!.easyLeft.map((x) => x.questionId)).toEqual(["seen"]);
+  });
+
   it("reports never-reached as PACING instead, once past the floor", () => {
     const facts = Array.from({ length: PACING_FLOOR }, (_, i) =>
       fact({ q: `n${i}`, p: i + 1, r: null, rc: false })

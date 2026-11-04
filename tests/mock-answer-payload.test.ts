@@ -28,3 +28,29 @@ describe("AnswerBodySchema (PATCH /api/mock/attempt/[id]/answer)", () => {
     expect(AnswerBodySchema.safeParse(body(null)).success).toBe(true);
   });
 });
+
+describe("AnswerBodySchema: a multiple-select tick set (migration 0215)", () => {
+  const ticks = (selectedLabels: unknown) => ({ ...body(null), selectedLabels });
+
+  it("accepts a set of A to E", () => {
+    const r = AnswerBodySchema.safeParse(ticks(["A", "C"]));
+    expect(r.success && r.data.selectedLabels).toEqual(["A", "C"]);
+  });
+
+  it("stores an emptied set as unanswered (null), the meaning the table gives it", () => {
+    const r = AnswerBodySchema.safeParse(ticks([]));
+    expect(r.success && r.data.selectedLabels).toBeNull();
+  });
+
+  it("defaults to null when the field is absent (every MCQ and numeric save)", () => {
+    const r = AnswerBodySchema.safeParse(body("B"));
+    expect(r.success && r.data.selectedLabels).toBeNull();
+  });
+
+  it("refuses a repeated letter, a letter past E, and a set beside another response", () => {
+    expect(AnswerBodySchema.safeParse(ticks(["A", "A"])).success).toBe(false);
+    expect(AnswerBodySchema.safeParse(ticks(["F"])).success).toBe(false);
+    expect(AnswerBodySchema.safeParse({ ...ticks(["A"]), selectedLabel: "B" }).success).toBe(false);
+    expect(AnswerBodySchema.safeParse({ ...ticks(["A"]), numericResponse: 3 }).success).toBe(false);
+  });
+});

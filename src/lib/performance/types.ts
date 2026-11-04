@@ -61,7 +61,7 @@ export type PerfFact = {
   c: number;
   t: number;
   d: PerfDifficulty;
-  f: "mcq" | "subjective" | "numeric";
+  f: "mcq" | "subjective" | "numeric" | "msq";
   k: OptionLabel | null;
   kn: number | null;
   r: OptionLabel | null;

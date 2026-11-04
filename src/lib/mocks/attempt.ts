@@ -7,8 +7,11 @@
 
 import {
   isAnswered,
+  msqMarks,
+  msqOutcome,
   verdictFor,
   type MockAnswerKey,
+  type MsqScheme,
   type OptionLabel,
   type SavedResponse,
 } from "./answers";
@@ -63,10 +66,18 @@ export type MockGradeQuestion = {
    * option) counts as correct, so the verdict stays verdictFor's.
    */
   optionMarks?: Partial<Record<OptionLabel, number>>;
+  /**
+   * How a multiple-select question (answer kind "msq") is marked: "exact" (UCEED 2019-2021:
+   * the whole set or the penalty) or "partial" (IIT Bombay from 2022: +1 per correct tick
+   * when some are missing and none is wrong). Absent = "exact".
+   */
+  msqScheme?: MsqScheme;
 };
 
 export type SectionScore = {
   correct: number;
+  /** Multiple-select answers that earned partial credit: some right options, no wrong one. */
+  partial: number;
   wrong: number;
   skipped: number;
   score: number;
@@ -75,17 +86,21 @@ export type SectionScore = {
 
 export type MockGradeResult = {
   correct: number;
+  /** Multiple-select answers that earned partial credit (only under msqScheme "partial"). */
+  partial: number;
   wrong: number;
   skipped: number;
   score: number;
   maxScore: number;
-  /** Per-question verdict keyed by questionId: 1 right, -1 wrong, 0 blank. */
+  /** Per-question verdict keyed by questionId: 1 right, -1 wrong, 0 blank. A partly right
+   *  multiple-select answer is -1 here (not fully right); its credit is in `partial` + score. */
   verdicts: Record<string, 1 | -1 | 0>;
   sectionScores: Record<string, SectionScore>;
 };
 
 const emptySection = (): SectionScore => ({
   correct: 0,
+  partial: 0,
   wrong: 0,
   skipped: 0,
   score: 0,
@@ -95,6 +110,33 @@ const emptySection = (): SectionScore => ({
 /** The picked option's letter, normalised as verdictFor compares it. */
 function pickedLabel(r: SavedResponse | undefined): OptionLabel {
   return String(r?.selectedLabel ?? "").trim().toUpperCase() as OptionLabel;
+}
+
+/**
+ * One question's verdict and the marks it earns: the judgement gradeMock sums and the
+ * review list shows, so the two cannot disagree. `partial` is a multiple-select answer
+ * that earned partial credit (some right options, none wrong, under msqScheme "partial");
+ * its verdict stays -1, not fully right.
+ *
+ * Grace (officially dropped / bonus) is decided inside verdictFor: full marks for everyone,
+ * answered or not. Per-option marks (MPSC Decision Making) score the picked option's own
+ * marks, right or not.
+ */
+export function questionOutcome(
+  q: MockGradeQuestion,
+  r: SavedResponse | undefined
+): { verdict: 1 | -1 | 0; partial: boolean; marks: number } {
+  const verdict = verdictFor(q.answer, r, q.grace === true);
+  if (verdict === 0) return { verdict, partial: false, marks: 0 };
+  if (q.grace) return { verdict, partial: false, marks: q.marks };
+  if (q.answer?.kind === "msq") {
+    const scheme = q.msqScheme ?? "exact";
+    const marks = msqMarks(scheme, q.answer.labels, r, q.marks, q.negMarks);
+    const partial = verdict === -1 && scheme === "partial" && msqOutcome(q.answer.labels, r) === "partial";
+    return { verdict, partial, marks };
+  }
+  if (q.optionMarks) return { verdict, partial: false, marks: q.optionMarks[pickedLabel(r)] ?? 0 };
+  return { verdict, partial: false, marks: verdict === 1 ? q.marks : q.negMarks };
 }
 
 /**
@@ -110,6 +152,7 @@ export function gradeMock(
   responses: Record<string, SavedResponse | undefined>
 ): MockGradeResult {
   let correct = 0;
+  let partial = 0;
   let wrong = 0;
   let skipped = 0;
   let score = 0;
@@ -122,28 +165,19 @@ export function gradeMock(
     maxScore += q.marks;
     sec.maxScore += q.marks;
 
-    // Grace (officially dropped / bonus) is handled inside verdictFor: everyone
-    // gets full marks, no penalty, regardless of what — or whether — they
-    // answered.
-    const verdict = verdictFor(q.answer, responses?.[q.questionId], q.grace === true);
-    verdicts[q.questionId] = verdict;
-
-    // Per-option marks: the picked option's own marks, right or not. Grace has
-    // already decided the verdict above and keeps its full marks below.
-    const earned = verdict !== 0 && q.optionMarks && !q.grace
-      ? q.optionMarks[pickedLabel(responses?.[q.questionId])] ?? 0
-      : null;
-
-    if (verdict === 1) {
+    const o = questionOutcome(q, responses?.[q.questionId]);
+    verdicts[q.questionId] = o.verdict;
+    score += o.marks;
+    sec.score += o.marks;
+    if (o.verdict === 1) {
       correct++;
       sec.correct++;
-      score += earned ?? q.marks;
-      sec.score += earned ?? q.marks;
-    } else if (verdict === -1) {
+    } else if (o.partial) {
+      partial++;
+      sec.partial++;
+    } else if (o.verdict === -1) {
       wrong++;
       sec.wrong++;
-      score += earned ?? q.negMarks;
-      sec.score += earned ?? q.negMarks;
     } else {
       skipped++;
       sec.skipped++;
@@ -162,5 +196,5 @@ export function gradeMock(
     sec.maxScore = round2(sec.maxScore);
   }
 
-  return { correct, wrong, skipped, score, maxScore, verdicts, sectionScores };
+  return { correct, partial, wrong, skipped, score, maxScore, verdicts, sectionScores };
 }

@@ -7,7 +7,7 @@
  */
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { translationsFromRows, type Translation } from "@/lib/i18n/bilingual";
-import type { MockAnswerKey, OptionLabel } from "./answers";
+import { answerKeyFromRow, type AnswerKeyRow, type MockAnswerKey, type MsqScheme, type OptionLabel } from "./answers";
 import { getExamByName } from "@/lib/exam/examContext";
 import { readAllPages } from "@/lib/supabase/readAllPages";
 import { usableVisual } from "@/lib/visuals/visual";
@@ -22,6 +22,8 @@ export type MockSnapshotQuestion = {
   grace?: boolean;
   /** Marks per option (MPSC CSAT Decision Making), scored by gradeMock. Never sent to the runner. */
   optionMarks?: Partial<Record<OptionLabel, number>>;
+  /** How a multiple-select question is marked (its section's msqScheme). Never sent to the runner. */
+  msqScheme?: MsqScheme;
 };
 
 export type MockSection = { key: string; label: string; count: number };
@@ -248,8 +250,11 @@ export type MockQuestionView = {
    * those two are not the same thing - an options-less row is also what a failed
    * content load looks like, and rendering a numeric keypad for a question whose
    * options merely failed to arrive would hide the defect behind a plausible UI.
+   * "msq" (UCEED, 0214): tick every correct option.
    */
-  format: "mcq" | "numeric";
+  format: "mcq" | "numeric" | "msq";
+  /** How a multiple-select question is marked, so the runner can say so. Absent otherwise. */
+  msqScheme?: MsqScheme;
 };
 
 /**
@@ -269,7 +274,7 @@ export async function loadMockQuestionViews(
       context: string | null;
       imageUrl: string | null;
       options: MockOptionView[];
-      format: "mcq" | "numeric";
+      format: "mcq" | "numeric" | "msq";
       translations?: { mr?: Translation };
     }
   >();
@@ -294,7 +299,7 @@ export async function loadMockQuestionViews(
         context: (row.context as string | null) ?? null,
         imageUrl: (row.image_url as string | null) ?? null,
         options: opts,
-        format: row.question_format === "numeric" ? "numeric" : "mcq",
+        format: row.question_format === "numeric" || row.question_format === "msq" ? row.question_format : "mcq",
         translations: translationsFromRows(
           row.question_translations as Parameters<typeof translationsFromRows>[0],
           row.options as Parameters<typeof translationsFromRows>[1]
@@ -318,6 +323,7 @@ export async function loadMockQuestionViews(
         imageUrl: content?.imageUrl ?? null,
         options: content?.options ?? [],
         format: content?.format ?? "mcq",
+        ...(s.msqScheme && content?.format === "msq" ? { msqScheme: s.msqScheme } : {}),
         ...(content?.translations ? { translations: content.translations } : {}),
       };
     });
@@ -417,9 +423,11 @@ export type ReviewQuestionContent = {
   /** Animated solution (0184), already through usableVisual(); null when there is none that checks. */
   solutionVisual?: unknown | null;
   options: ReviewOption[];
-  format: "mcq" | "numeric";
+  format: "mcq" | "numeric" | "msq";
   /** The correct value for a numeric (JEE Section-B) question; null otherwise. */
   numericAnswer: number | null;
+  /** The key as the grader reads it (answerKeyFromRow): the review judges with the same one. */
+  key: MockAnswerKey | null;
   /** Marathi presentation, when the paper printed one (migration 0118). */
   translations?: { mr?: Translation };
   /** Officially cancelled by the exam body — the notice (migration 0119). */
@@ -439,7 +447,7 @@ export async function loadReviewQuestions(
     const chunk = ids.slice(i, i + PAGE);
     const { data, error } = await db
       .from("questions")
-      .select("id, text, context, image_url, solution, solution_image_url, solution_visual, question_format, numeric_answer, cancelled_note, options(label, text, image_url, is_correct, option_translations(lang, text)), question_translations(lang, text, context, solution)")
+      .select("id, text, context, image_url, solution, solution_image_url, solution_visual, question_format, numeric_answer, numeric_answer_max, cancelled_note, options(label, text, image_url, is_correct, option_translations(lang, text)), question_translations(lang, text, context, solution)")
       .in("id", chunk);
     if (error) throw new Error(`loadReviewQuestions: ${error.message}`);
     for (const row of (data ?? []) as Record<string, unknown>[]) {
@@ -459,11 +467,12 @@ export async function loadReviewQuestions(
         solutionImageUrl: (row.solution_image_url as string | null) ?? null,
         solutionVisual: usableVisual(row.solution_visual),
         options: opts,
-        format: row.question_format === "numeric" ? "numeric" : "mcq",
+        format: row.question_format === "numeric" || row.question_format === "msq" ? row.question_format : "mcq",
         numericAnswer:
           row.numeric_answer === null || row.numeric_answer === undefined
             ? null
             : Number(row.numeric_answer),
+        key: answerKeyFromRow(row as AnswerKeyRow),
         cancelledNote: (row.cancelled_note as string | null) ?? null,
         translations: translationsFromRows(
           row.question_translations as Parameters<typeof translationsFromRows>[0],
@@ -500,22 +509,12 @@ export async function loadAnswerKey(
     const chunk = questionIds.slice(i, i + PAGE);
     const { data, error } = await db
       .from("questions")
-      .select("id, question_format, numeric_answer, options(label, is_correct)")
+      .select("id, question_format, numeric_answer, numeric_answer_max, options(label, is_correct)")
       .in("id", chunk);
     if (error) throw new Error(`loadAnswerKey: ${error.message}`);
-    for (const row of (data ?? []) as Record<string, unknown>[]) {
-      const id = row.id as string;
-      if (row.question_format === "numeric") {
-        const v = row.numeric_answer;
-        if (v !== null && v !== undefined && Number.isFinite(Number(v))) {
-          key[id] = { kind: "numeric", value: Number(v) };
-        }
-        continue;
-      }
-      const correct = ((row.options as Record<string, unknown>[]) ?? []).find(
-        (o) => o.is_correct
-      );
-      if (correct) key[id] = { kind: "mcq", label: correct.label as OptionLabel };
+    for (const row of (data ?? []) as (AnswerKeyRow & { id: string })[]) {
+      const k = answerKeyFromRow(row);
+      if (k) key[row.id] = k;
     }
   }
   return key;
