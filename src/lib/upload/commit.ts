@@ -138,8 +138,10 @@ export async function commitStaged(
     text: string;
     difficulty: ParsedRowPayload["difficulty"];
     solution: string | null;
-    question_format: "mcq" | "subjective" | "numeric";
+    question_format: "mcq" | "subjective" | "numeric" | "msq";
     numeric_answer: number | null;
+    /** Only sent for a range-keyed NAT, so every other insert never names the column (0214). */
+    numeric_answer_max?: number;
     content_hash: string;
     source_file: string;
     source_row: number;
@@ -214,6 +216,9 @@ export async function commitStaged(
           solution: row.solution ?? null,
           question_format: row.questionFormat ?? "mcq",
           numeric_answer: row.questionFormat === "numeric" ? row.numericAnswer ?? null : null,
+          ...(row.questionFormat === "numeric" && row.numericAnswerMax !== undefined
+            ? { numeric_answer_max: row.numericAnswerMax }
+            : {}),
           content_hash: row.contentHash,
           source_file: filename,
           source_row: row.sourceRow,

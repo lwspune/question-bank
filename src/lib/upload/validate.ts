@@ -1,4 +1,4 @@
-import { contentHash } from "./hash";
+import { contentHash, msqContentHash } from "./hash";
 
 export type RawRow = {
   sourceRow: number;
@@ -22,6 +22,11 @@ export type RawRow = {
    * without a key must carry the reason it has none (migration 0119).
    */
   cancelledNote?: string;
+  /**
+   * "msq": a multiple-select question (migration 0214). Its Answer lists ONE OR MORE letters
+   * ("A, C"); every listed option is marked correct. Absent = an ordinary single-answer MCQ.
+   */
+  questionFormat?: "msq";
 };
 
 export type Difficulty = "EASY" | "MODERATE" | "HARD";
@@ -46,9 +51,11 @@ export type ParsedRowPayload = {
    *  array and its model answer in `solution` (migration 0041); 'numeric' (NAT)
    *  has an empty options array and its exact answer in `numericAnswer`
    *  (migration 0061). */
-  questionFormat?: "mcq" | "subjective" | "numeric";
+  questionFormat?: "mcq" | "subjective" | "numeric" | "msq";
   /** The single correct value for a 'numeric' (NAT) question; ignored otherwise. */
   numericAnswer?: number;
+  /** Top of an accepted range for a 'numeric' question; `numericAnswer` is then the bottom (0214). */
+  numericAnswerMax?: number;
   options: { label: StoredOptionLabel; text: string; isCorrect: boolean }[];
   contentHash: string;
   /** Set only for an officially cancelled question — every option is then incorrect. */
@@ -80,6 +87,8 @@ export function validateRow(row: RawRow): ValidatedRow {
   if (!row.optionD) errors.push("OptionD is required");
 
   let answer: OptionLabel | "CANCELLED" | undefined;
+  let correctSet: OptionLabel[] | undefined;
+  const msq = row.questionFormat === "msq";
   const note = row.cancelledNote?.trim() || undefined;
   if (!row.answer) {
     errors.push("Answer is required");
@@ -90,6 +99,16 @@ export function validateRow(row: RawRow): ValidatedRow {
     const ans = row.answer.trim().toUpperCase();
     if (note) {
       errors.push("cancelledNote is only allowed with Answer = CANCELLED");
+    } else if (msq) {
+      const letters = ans.split(/[\s,]+/).filter(Boolean);
+      if (letters.length === 0 || letters.some((l) => !["A", "B", "C", "D"].includes(l))) {
+        errors.push(`Answer must list one or more of A/B/C/D (got "${row.answer}")`);
+      } else if (new Set(letters).size !== letters.length) {
+        errors.push(`Answer lists a letter twice (got "${row.answer}")`);
+      } else {
+        correctSet = (letters as OptionLabel[]).sort();
+        answer = correctSet[0];
+      }
     } else if (!["A", "B", "C", "D"].includes(ans)) {
       errors.push(`Answer must be A/B/C/D (got "${row.answer}")`);
     } else {
@@ -115,18 +134,18 @@ export function validateRow(row: RawRow): ValidatedRow {
     return { sourceRow: row.sourceRow, raw: row, errors };
   }
 
+  const correct = (l: OptionLabel) => (correctSet ? correctSet.includes(l) : answer === l);
   const options: ParsedRowPayload["options"] = [
-    { label: "A", text: row.optionA, isCorrect: answer === "A" },
-    { label: "B", text: row.optionB, isCorrect: answer === "B" },
-    { label: "C", text: row.optionC, isCorrect: answer === "C" },
-    { label: "D", text: row.optionD, isCorrect: answer === "D" },
+    { label: "A", text: row.optionA, isCorrect: correct("A") },
+    { label: "B", text: row.optionB, isCorrect: correct("B") },
+    { label: "C", text: row.optionC, isCorrect: correct("C") },
+    { label: "D", text: row.optionD, isCorrect: correct("D") },
   ];
 
-  const hash = contentHash(
-    row.question,
-    [row.optionA, row.optionB, row.optionC, row.optionD],
-    answer
-  );
+  const optionTexts = [row.optionA, row.optionB, row.optionC, row.optionD];
+  const hash = msq
+    ? msqContentHash(row.question, optionTexts, correctSet ?? [answer])
+    : contentHash(row.question, optionTexts, answer);
 
   return {
     sourceRow: row.sourceRow,
@@ -145,6 +164,7 @@ export function validateRow(row: RawRow): ValidatedRow {
       solution: row.solution,
       options,
       contentHash: hash,
+      ...(msq ? { questionFormat: "msq" as const } : {}),
       ...(answer === "CANCELLED" ? { cancelledNote: note } : {}),
     },
   };

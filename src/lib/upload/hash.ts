@@ -58,3 +58,14 @@ export function numericContentHash(
     .update(`NUMERIC\n${ctx}\n${q}`)
     .digest("hex");
 }
+
+/**
+ * Dedup hash for a MULTIPLE-SELECT question (migration 0214): one or more of the options are
+ * correct. The MCQ hash over the SORTED set of correct letters, so the order a source lists
+ * them in never matters, and namespaced (`MSQ ...` as the answer) so an MSQ with one correct
+ * option can never collide with the MCQ hash of the same stem and options.
+ */
+export function msqContentHash(question: string, options: string[], correct: string[]): string {
+  const set = [...new Set(correct.map((l) => l.trim().toUpperCase()))].sort();
+  return contentHash(question, options, `MSQ ${set.join(",")}`);
+}
