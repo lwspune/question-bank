@@ -148,12 +148,31 @@ def main(year: str) -> None:
           f"{sum(d['pictures'] for d in drafts)} pictures -> {work}")
 
 
+def load_picture(pdf, xref):
+    """The picture as the printed page shows it. A picture with a soft mask (13 across
+    2015-2026, e.g. 2023 Q43's footprint options) is drawn by the page through that mask, but
+    the raw object reads back fully opaque: 2023 Q43's options came out as black on black. So
+    a masked picture is taken from the page render, clipped to the picture's own rectangle at
+    its native width (no page text can enter: the clip is the picture). An unmasked picture is
+    the raw object, untouched, so its bytes (and content_hash) never move."""
+    if not (pdf.extract_image(xref).get("smask") or 0):
+        return fitz.Pixmap(pdf, xref)
+    width = fitz.Pixmap(pdf, xref).width
+    for page in pdf:
+        rects = page.get_image_rects(xref)
+        if rects:
+            r = rects[0]
+            zoom = width / r.width
+            return page.get_pixmap(matrix=fitz.Matrix(zoom, zoom), clip=r, alpha=False)
+    raise ValueError(f"picture {xref} is on no page")
+
+
 def save_figure(pdf, xrefs, path):
     if not xrefs:
         if os.path.exists(path):
             os.remove(path)
         return None
-    pix = [fitz.Pixmap(pdf, x) for x in dict.fromkeys(xrefs)]
+    pix = [load_picture(pdf, x) for x in dict.fromkeys(xrefs)]
     pix = [fitz.Pixmap(fitz.csRGB, p) if p.n - p.alpha != 3 or p.alpha else p for p in pix]
     if len(pix) == 1:
         pix[0].save(path)
