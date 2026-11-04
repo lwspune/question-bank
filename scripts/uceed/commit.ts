@@ -51,7 +51,7 @@ async function main() {
     if (wm) issues.push(wm);
   }
 
-  const mcq = plan.rows.filter((r) => r.format === "mcq");
+  const mcq = plan.rows.filter((r) => r.format !== "numeric"); // MCQ and MSQ share the option path
   const { parsed, errs } = parseCommitRows(mcq.map((r) => toCommitRow(r, fig(r))));
   issues.push(...errs);
   const payload: ParsedRowPayload[] = [
@@ -64,7 +64,7 @@ async function main() {
   console.log(`  mcq ${parsed.length} | numeric ${payload.length - parsed.length} | with figure ${plan.rows.filter((r) => r.figure).length}`);
   console.log(`  held: ${plan.held.map((h) => `Q${h.n} (${h.reason}${h.unsettled ? ", unsettled" : ""})`).join(", ") || "none"}`);
   const noticed = plan.rows.filter((r) => r.notice);
-  const cancelled = plan.rows.filter((r) => r.format === "mcq" && r.answer === "CANCELLED");
+  const cancelled = plan.rows.filter((r) => "cancelledNote" in r && r.cancelledNote);
   console.log(`  note + grace in mocks (two answers accepted, or defective as printed): ${noticed.map((r) => `Q${r.n}`).join(", ") || "none"}`);
   console.log(`  cancelled by IIT Bombay (no key, notice): ${cancelled.map((r) => `Q${r.n}`).join(", ") || "none"}`);
   const hashes = new Set(payload.map((p) => p.contentHash));

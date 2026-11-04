@@ -45,31 +45,37 @@ describe("planPaper", () => {
     expect(plan.rows[0]).toMatchObject({ n: 12, format: "numeric", numericAnswer: 16.8 });
   });
 
-  it("holds a NAT keyed as a range: the bank stores one exact value", () => {
+  it("commits a NAT keyed as a range with both ends (migration 0214)", () => {
     const plan = planPaper(paper(q({ n: 14, type: "NAT", options: [] })), key({ n: 14, type: "NAT", range: [470, 480] }));
-    expect(plan.rows).toEqual([]);
-    expect(plan.held).toEqual([{ n: 14, reason: "range" }]);
     expect(plan.issues).toEqual([]);
+    expect(plan.held).toEqual([]);
+    expect(plan.rows[0]).toMatchObject({ n: 14, format: "numeric", numericAnswer: 470, numericAnswerMax: 480 });
+    expect(numericPayload(plan.rows[0], null)).toMatchObject({ numericAnswer: 470, numericAnswerMax: 480 });
   });
 
-  it("holds every MSQ: the bank has no multiple-select format", () => {
-    const plan = planPaper(paper(q({ n: 15, type: "MSQ" })), key({ n: 15, type: "MSQ", sets: [["A", "B"]] }));
-    expect(plan.rows).toEqual([]);
-    expect(plan.held).toEqual([{ n: 15, reason: "msq" }]);
-  });
-
-  it("holds an MSQ whose solution is not settled yet, and says so: it is settled when MSQ ships", () => {
-    const plan = planPaper(
-      paper(q({ n: 22, type: "MSQ", solution: null, chapter: null })),
-      key({ n: 22, type: "MSQ", sets: [["A", "B", "D"]] }),
-    );
+  it("commits an MSQ with its whole correct set (migration 0214)", () => {
+    const plan = planPaper(paper(q({ n: 15, type: "MSQ" })), key({ n: 15, type: "MSQ", sets: [["B", "A"]] }));
     expect(plan.issues).toEqual([]);
-    expect(plan.held).toEqual([{ n: 22, reason: "msq", unsettled: true }]);
+    expect(plan.held).toEqual([]);
+    expect(plan.rows[0]).toMatchObject({ n: 15, format: "msq", answers: ["A", "B"] });
+    expect(toCommitRow(plan.rows[0], null)).toMatchObject({ questionFormat: "msq", answer: "A, B", flawed: false });
   });
 
-  it("still refuses a held row whose options are malformed: transcription is checked now", () => {
+  it("refuses an MSQ with no solution: it ships now, so it must be settled", () => {
+    const plan = planPaper(paper(q({ n: 22, type: "MSQ", solution: null })), key({ n: 22, type: "MSQ", sets: [["A", "B", "D"]] }));
+    expect(plan.issues).toEqual(["Q22: no solution"]);
+  });
+
+  it("refuses an MSQ whose options are malformed", () => {
     const plan = planPaper(paper(q({ n: 22, type: "MSQ", options: [] })), key({ n: 22, type: "MSQ", sets: [["A"]] }));
     expect(plan.issues).toEqual(["Q22: options must be A, B, C, D"]);
+  });
+
+  it("keeps the first of two accepted MSQ sets, with a note and grace (owner, 2026-11-04)", () => {
+    const [row] = planPaper(paper(q({ n: 18, type: "MSQ" })), key({ n: 18, type: "MSQ", sets: [["B", "C"], ["B", "C", "D"]] })).rows;
+    expect(row).toMatchObject({ format: "msq", answers: ["B", "C"] });
+    expect(row.notice).toBe("IIT Bombay's final key accepts both B, C and B, C, D, so either earns full marks. The answer marked here is B, C.");
+    expect(toCommitRow(row, null).flawed).toBe(true);
   });
 
   it("refuses a picture-option question that has no figure to show the options", () => {
@@ -182,14 +188,17 @@ describe("keys IIT Bombay marks as defective (owner policy, 2026-10-29)", () => 
     expect(toCommitRow(row, null)).toMatchObject({ answer: "CANCELLED", cancelledNote: note, flawed: false });
   });
 
-  it("still holds a cancelled MSQ, and a range that also accepts a single value", () => {
+  it("commits a cancelled MSQ with no key, and a range that also accepts a single value with a note", () => {
     const plan = planPaper(
       paper(q({ n: 36, type: "MSQ" }), q({ n: 12, type: "NAT", options: [] })),
       key({ n: 36, type: "MSQ", cancelled: "Full marks to all." }, { n: 12, type: "NAT", range: [1.12, 1.14], also: [65] }),
     );
-    expect(plan.rows).toEqual([]);
-    expect(plan.held).toEqual([{ n: 36, reason: "msq" }, { n: 12, reason: "range" }]);
     expect(plan.issues).toEqual([]);
+    expect(plan.held).toEqual([]);
+    expect(plan.rows[0]).toMatchObject({ n: 36, format: "msq", answers: [], cancelledNote: "Full marks to all." });
+    expect(toCommitRow(plan.rows[0], null)).toMatchObject({ questionFormat: "msq", answer: "CANCELLED" });
+    expect(plan.rows[1]).toMatchObject({ n: 12, format: "numeric", numericAnswer: 1.12, numericAnswerMax: 1.14 });
+    expect(plan.rows[1].notice).toBe("IIT Bombay's final key accepts both 1.12 to 1.14 and 65, so either earns full marks. The answer marked here is 1.12 to 1.14.");
   });
 
   it("refuses an accepted alternative that is not A-D, or repeats the key", () => {
