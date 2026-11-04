@@ -14,6 +14,7 @@ import { useBoardReveal } from "./useBoardReveal";
 import { reportRevisionOpened } from "./revisionBeacon";
 import type { HomeworkSlot } from "@/lib/homework/dayView";
 import HomeworkSlotList from "@/app/homework/_components/HomeworkSlotList";
+import type { ChapterTopPyqs } from "@/lib/homework/chapterTop";
 import PaperDownload from "@/app/mock/_components/PaperDownload";
 import {
   defaultOpenGroups,
@@ -25,17 +26,8 @@ import {
   type SectionKind,
 } from "@/lib/board/query";
 
-/**
- * A chapter's Top 10 PYQs (2026-10-13): the first ten questions of the chapter
- * in its subject's homework plan, which is the ranking (lib/homework/topPyqs.ts).
- */
-export type BoardTopPyqs = {
-  planSlug: string;
-  chapterId: string;
-  /** "Top 10 PYQs: <chapter> (<plan>)", the download's title too. */
-  title: string;
-  slots: HomeworkSlot<BoardQuestion>[];
-};
+/** A chapter's Top 10 PYQs (2026-10-13), loaded by lib/homework/chapterTop.ts. */
+export type BoardTopPyqs = ChapterTopPyqs;
 
 /**
  * A chapter's quick-revision sheet (2026-11-03): rendered on the SERVER and

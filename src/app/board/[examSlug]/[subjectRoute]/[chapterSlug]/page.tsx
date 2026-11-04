@@ -17,10 +17,7 @@ import {
   type BoardPyqSitting,
 } from "@/lib/board/query";
 import BoardReader, { type BoardTopPyqs } from "@/app/board/BoardReader";
-import { getSubjectChapterTop } from "@/lib/homework/query";
-import { homeworkDayView } from "@/lib/homework/dayView";
-import { topPyqsTitle } from "@/lib/homework/topPyqs";
-import { loadBoardQuestions } from "@/lib/questionPapers/query";
+import { loadChapterTopPyqs } from "@/lib/homework/chapterTop";
 import { LearnChapterLink } from "@/components/learn/LearnChapterLink";
 import { loadRevisionSheet } from "@/lib/board/revision/registry";
 import type { RevisionSheet } from "@/lib/board/revision/types";
@@ -74,36 +71,6 @@ type Loaded = {
   revision: RevisionSheet | null;
 };
 
-/**
- * The chapter's Top 10 PYQs from its subject's homework plan (2026-10-13).
- * A failed read drops the tab, never the page: the textbook and the board
- * questions are the page, the Top 10 is a view of the second.
- */
-async function loadTop(
-  client: ReturnType<typeof createSupabaseAnonClient>,
-  ids: { examId: string; subjectId: string; chapterId: string }
-): Promise<BoardTopPyqs | null> {
-  try {
-    const top = await getSubjectChapterTop(client, ids);
-    if (!top || top.items.length === 0) return null;
-    const questions = await loadBoardQuestions(client, top.items.map((it) => it.questionId));
-    const view = homeworkDayView(top.items, questions);
-    if (!view.ok) {
-      console.error("board top pyqs: questions unavailable", top.planSlug, ids.chapterId, view.missing);
-      return null;
-    }
-    return {
-      planSlug: top.planSlug,
-      chapterId: ids.chapterId,
-      title: topPyqsTitle(view.slots.length, top.chapterName, top.planTitle),
-      slots: view.slots,
-    };
-  } catch (err) {
-    console.error("board top pyqs: read failed", ids.chapterId, err);
-    return null;
-  }
-}
-
 async function load(params: Params): Promise<Loaded | null> {
   const exam = getExamBySlug(params.examSlug);
   if (!exam?.boardExam) return null;
@@ -125,7 +92,9 @@ async function load(params: Params): Promise<Loaded | null> {
       subjectId: resolved.subjectId,
       examName: exam.examName,
     }),
-    loadTop(client, { examId: resolved.examId, subjectId: resolved.subjectId, chapterId: resolved.chapterId }),
+    // A failed read drops the tab, never the page: the textbook and the board
+    // questions are the page, the Top 10 is a view of the second.
+    loadChapterTopPyqs(client, { examId: resolved.examId, subjectId: resolved.subjectId, chapterId: resolved.chapterId }, "board"),
     loadRevisionSheet({ examSlug: params.examSlug, subjectRoute: params.subjectRoute, chapterSlug: params.chapterSlug }),
   ]);
 
