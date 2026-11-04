@@ -79,6 +79,20 @@ describe("planFix", () => {
     expect(p.problems.join()).toMatch(/duplicate/i);
   });
 
+  it("allows a solution-only fix on a row whose paper prints two options the same", () => {
+    const printed = base();
+    printed.options[2].text = "two";
+    const p = planFix(printed, fix({ solution: "**Note:** B and C are printed the same." }));
+    expect(p.problems).toEqual([]);
+  });
+
+  it("still reports an option edit that leaves a printed duplicate in place", () => {
+    const printed = base();
+    printed.options[2].text = "two";
+    const p = planFix(printed, fix({ options: { D: "five" } }));
+    expect(p.problems.join()).toMatch(/duplicate/i);
+  });
+
   it("reports a problem when the fix names an option label that does not exist", () => {
     const p = planFix(base(), fix({ options: { Z: "nope" } }));
     expect(p.problems.join()).toMatch(/unknown option label Z/i);
