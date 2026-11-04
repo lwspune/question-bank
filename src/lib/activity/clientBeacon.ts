@@ -11,6 +11,7 @@
  */
 import type { Surface } from "./views";
 import type { DownloadBox, PaywallGate, VIEW_BROWSERS } from "./clientEvents";
+import type { DeclineReason } from "@/lib/billing/declineReasons";
 
 const ENDPOINT = "/api/activity/event";
 const sent = new Set<string>();
@@ -29,6 +30,15 @@ type ClientEvent =
       kind: "paywall_event";
       step: "shown" | "checkout_dismissed";
       gate: PaywallGate;
+      planId?: string;
+      box?: DownloadBox;
+    }
+  | {
+      kind: "paywall_event";
+      step: "declined";
+      gate: PaywallGate;
+      reason: DeclineReason;
+      afterCheckout: boolean;
       planId?: string;
       box?: DownloadBox;
     };

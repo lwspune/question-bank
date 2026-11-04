@@ -9,6 +9,7 @@
  * parse time, so a page that re-renders cannot count twice.
  */
 import { istDayKey } from "@/lib/email/dueNudge";
+import { AFTER_CHECKOUT_ONLY, isDeclineReason, type DeclineReason } from "@/lib/billing/declineReasons";
 import type { ActivityEvent } from "./events";
 import { boardChapterPath, isReadingSurface, isSurface, learnLessonPath, readingViewFor, viewDedupeKey } from "./views";
 
@@ -45,8 +46,17 @@ export const PAYWALL_GATES = [
 export type PaywallGate = (typeof PAYWALL_GATES)[number];
 
 /** checkout_opened is a PASS order; a book order is book_checkout_opened
- *  (2026-10-28), so the pass funnel's counts never include a book. */
-export const PAYWALL_STEPS = ["shown", "checkout_opened", "book_checkout_opened", "checkout_dismissed", "verify_failed"] as const;
+ *  (2026-10-28), so the pass funnel's counts never include a book. "declined"
+ *  is the student's one-tap reason for not buying (2026-11-05,
+ *  lib/billing/declineReasons). */
+export const PAYWALL_STEPS = [
+  "shown",
+  "checkout_opened",
+  "book_checkout_opened",
+  "checkout_dismissed",
+  "verify_failed",
+  "declined",
+] as const;
 export type PaywallStep = (typeof PAYWALL_STEPS)[number];
 
 /**
@@ -64,7 +74,7 @@ export function checkoutBox(v: unknown): DownloadBox | undefined {
 }
 
 /** Steps a client may report. The others are written by the billing routes. */
-const CLIENT_STEPS: ReadonlySet<string> = new Set<PaywallStep>(["shown", "checkout_dismissed"]);
+const CLIENT_STEPS: ReadonlySet<string> = new Set<PaywallStep>(["shown", "checkout_dismissed", "declined"]);
 const GATE_SET: ReadonlySet<string> = new Set(PAYWALL_GATES);
 const MAX_PLAN_ID = 64;
 
@@ -102,6 +112,32 @@ export function paywallEvent(
     // One impression per box per day when the box is named, so a student who
     // met the gate on /browse first is still counted on a past paper.
     event.dedupeKey = `paywall:shown:${gate}:${box ? `${box}:` : ""}${dedupe.userId}:${istDayKey(dedupe.now)}`;
+  }
+  return event;
+}
+
+/**
+ * A student's reason for not buying (2026-11-05). One answer per student per
+ * offer (gate, and box when named) per IST day: the first tap stands.
+ */
+export function paywallDeclinedEvent(
+  gate: PaywallGate,
+  reason: DeclineReason,
+  afterCheckout: boolean,
+  dedupe: { userId: string; now: Date },
+  planId?: string,
+  box?: DownloadBox
+): ActivityEvent {
+  const event: ActivityEvent = {
+    kind: "paywall_event",
+    metadata: box
+      ? { step: "declined", gate, box, reason, afterCheckout }
+      : { step: "declined", gate, reason, afterCheckout },
+    dedupeKey: `paywall:declined:${gate}:${box ? `${box}:` : ""}${dedupe.userId}:${istDayKey(dedupe.now)}`,
+  };
+  if (planId) {
+    event.refId = planId;
+    event.refKind = "plan";
   }
   return event;
 }
@@ -180,6 +216,23 @@ export function parseClientEvent(raw: unknown, userId: string, now: Date): Parse
     }
     const box = checkoutBox(raw.box);
     if (raw.box !== undefined && !box) return { ok: false, error: "Unknown download box." };
+    if (raw.step === "declined") {
+      if (!isDeclineReason(raw.reason)) return { ok: false, error: "Unknown reason." };
+      if (raw.afterCheckout !== undefined && typeof raw.afterCheckout !== "boolean") {
+        return { ok: false, error: "Invalid afterCheckout." };
+      }
+      const afterCheckout = raw.afterCheckout === true;
+      if (AFTER_CHECKOUT_ONLY.has(raw.reason) && !afterCheckout) {
+        return { ok: false, error: "That reason needs a checkout first." };
+      }
+      return {
+        ok: true,
+        value: paywallDeclinedEvent(raw.gate as PaywallGate, raw.reason, afterCheckout, { userId, now }, planId, box),
+      };
+    }
+    if (raw.reason !== undefined || raw.afterCheckout !== undefined) {
+      return { ok: false, error: "A reason belongs to a declined offer only." };
+    }
     return {
       ok: true,
       value: paywallEvent(raw.step as PaywallStep, raw.gate as PaywallGate, planId, { userId, now }, box),

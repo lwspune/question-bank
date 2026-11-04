@@ -9,7 +9,8 @@ import { Button } from "@/components/ui/button";
 import { DialogFooter } from "@/components/ui/dialog";
 import GoogleSignInButton from "@/components/GoogleSignInButton";
 import { googleButtonAvailable, renderGoogleButton } from "@/components/auth/useGoogleOneTap";
-import { useCheckout, type CheckoutOutcome, type CheckoutSurface } from "@/components/billing/useCheckout";
+import { GATE, useCheckout, type CheckoutOutcome, type CheckoutSurface } from "@/components/billing/useCheckout";
+import WhyNotNow from "@/components/billing/WhyNotNow";
 import { trackFunnel, trackFunnelOnce } from "@/lib/analytics/trackFunnel";
 import { offerPriceLine, perMonthLine, splitOfferPerks } from "@/lib/billing/offerCopy";
 import { alsoIncludedPerks, type PassOfferLead } from "@/lib/billing/passOfferLead";
@@ -87,7 +88,7 @@ export default function PassOffer({
     },
     [onBought, router]
   );
-  const { start, busy } = useCheckout({ planId: pass.planId, surface, box, onDone });
+  const { start, busy, dismissed } = useCheckout({ planId: pass.planId, surface, box, onDone });
   // Stable, so Google's button is drawn once rather than on every render.
   const refresh = useCallback(() => (onSignedIn ? onSignedIn() : router.refresh()), [onSignedIn, router]);
 
@@ -133,6 +134,15 @@ export default function PassOffer({
                 One-time payment, no auto-renewal. Pay by UPI, card or netbanking.
               </span>
             </p>
+            {isSignedIn && (
+              <WhyNotNow
+                gate={GATE[surface]}
+                box={box}
+                planId={pass.planId}
+                afterCheckout={dismissed}
+                className="border-t pt-3"
+              />
+            )}
           </>
         )}
       </div>
