@@ -13,6 +13,7 @@ import { dayHref, parseDayParam, planHref } from "@/lib/homework/links";
 import { loadBoardQuestions } from "@/lib/questionPapers/query";
 import HomeworkDownload from "../../../_components/HomeworkDownload";
 import HomeworkDayReader from "../../../_components/HomeworkDayReader";
+import { planWording } from "@/lib/homework/display";
 
 type Params = { planSlug: string; day: string };
 
@@ -47,7 +48,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   if (!data) return { title: "Daily homework" };
   return {
     title: `${data.plan.title} Daily Homework, Day ${data.day}`,
-    description: `Day ${data.day} of ${data.plan.title} daily homework: board questions with model answers.`,
+    description: `Day ${data.day} of ${data.plan.title} daily homework: ${planWording(data.plan.examName).questions} with ${data.plan.examName === "NDA" ? "worked solutions" : "model answers"}.`,
     // The same questions are indexed on their own pages (/board, /questions,
     // /question-papers); ~1,850 more copies would be duplicates. Followed, so
     // a crawler still reaches the plan and its other days.

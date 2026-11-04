@@ -24,6 +24,8 @@ export type PaperOfferFacts = {
 };
 
 export type HomeworkOfferFacts = {
+  /** The DB exams.name: NDA's papers are not board papers. */
+  examName?: string;
   subject: string;
   days: number;
   perDay: number;
@@ -86,6 +88,7 @@ export function homeworkOfferFacts(
   plans: readonly { slug: string; examName: string; subjectName: string }[]
 ): HomeworkOfferFacts {
   return {
+    examName: plan.examName,
     subject: plan.subjectName,
     days: plan.days,
     perDay: plan.perDay,
@@ -98,7 +101,8 @@ export function homeworkOfferFacts(
 /** Null below two days, like a single paper. */
 export function homeworkOfferLead(f: HomeworkOfferFacts): PassOfferLead | null {
   if (f.days < 2) return null;
-  const perDay = `${f.perDay} past board ${f.perDay === 1 ? "question" : "questions"} a day.`;
+  const kind = f.examName === "NDA" ? "NDA" : "board";
+  const perDay = `${f.perDay} past ${kind} ${f.perDay === 1 ? "question" : "questions"} a day.`;
   return {
     title: `Download all ${f.days} days of homework`,
     lead: `All ${f.days} days of ${f.subject} homework`,

@@ -10,9 +10,9 @@ import { listPublishedPlans } from "@/lib/homework/query";
 export const revalidate = 86400;
 
 export const metadata: Metadata = {
-  title: "Daily Homework from Board Papers",
+  title: "Daily Homework from Past Papers",
   description:
-    "Five past board questions a day, as a Word or PDF file to hand out. The questions the board asked again come first, highest count first.",
+    "Five past exam questions a day, as a Word or PDF file to hand out. The questions asked again come first, highest count first.",
   alternates: { canonical: "/homework" },
 };
 
@@ -34,8 +34,8 @@ export default async function HomeworkIndex() {
     >
       <GuideHero
         eyebrow="Daily homework"
-        title="Daily homework from board papers"
-        subtitle="Five past board questions a day, as a file to hand out. The questions the board asked again come first, highest count first."
+        title="Daily homework from past papers"
+        subtitle="Five past exam questions a day, as a file to hand out. The questions asked again come first, highest count first."
       />
 
       {plans.length === 0 ? (

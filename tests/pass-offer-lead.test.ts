@@ -118,6 +118,12 @@ describe("homeworkOfferLead", () => {
   it("is null below two days", () => {
     expect(homeworkOfferLead({ ...maths, days: 1 })).toBeNull();
   });
+
+  it("calls NDA questions past NDA questions, not board questions", () => {
+    expect(homeworkOfferLead({ ...maths, examName: "NDA", otherSubjects: [] })?.body).toBe(
+      "5 past NDA questions a day."
+    );
+  });
 });
 
 describe("homeworkOfferFacts", () => {
@@ -131,6 +137,7 @@ describe("homeworkOfferFacts", () => {
 
   it("takes the plan's own size and the same exam's other plans, alphabetically", () => {
     expect(homeworkOfferFacts(plan, plans)).toEqual({
+      examName: "MH HSC 12",
       subject: "Mathematics",
       days: 81,
       perDay: 5,

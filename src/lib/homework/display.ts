@@ -30,3 +30,13 @@ export function sectionsOf<D extends { day: number; items: { part: 1 | 2 | 3 }[]
   }
   return out;
 }
+
+/**
+ * Who set a plan's papers, and what to call its questions (2026-11-04). The
+ * plans were all board subjects until NDA Maths, whose papers UPSC sets.
+ */
+export function planWording(examName: string): { asker: string; questions: string } {
+  return examName === "NDA"
+    ? { asker: "UPSC", questions: "past questions" }
+    : { asker: "the board", questions: "board questions" };
+}
