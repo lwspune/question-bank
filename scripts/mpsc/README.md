@@ -239,7 +239,7 @@ From 2025 the CSAT key's page 2 runs its left column longer than the right
 from the page image as before. Group C 2026 (scheduled 12 Jul 2026) was not on
 the site on 2026-11-04.
 
-All five committed PRIVATE on 2026-11-04 (480 rows), each solved blind before the
+All five committed on 2026-11-04 (480 rows) and, at the owner's word the same day, flipped **PUBLIC** (`flip-public.ts gbc|ssp`) with five whole-paper mocks published (`build.ts --paper=mpsc --only=<id> --apply --publish`: mpsc-ssp-2026, mpsc-ssp-csat-2026, mpsc-2025-b, mpsc-2025-c, mpsc-2026-b; grace 8, 4, 3, 1, 2). Each paper was solved blind before the
 key was read; every disagreement read again by the main session:
 
 | paper | blind vs final key | notices (notice + grace, key kept) | other |
