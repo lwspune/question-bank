@@ -1,6 +1,7 @@
 /**
  * UCEED lane constants. README.md has the method; lib.ts the pure core.
  */
+import { existsSync } from "node:fs";
 import { join } from "node:path";
 
 export { ORG_ID, CREATED_BY } from "../practice/config";
@@ -17,7 +18,11 @@ export const PYQ_NOTE = "IIT Bombay";
 
 /** Sources, figures and blind-solve scratch live outside the repo (nothing here is committed). */
 export const ROOT = "C:\\tmp\\PYQPs\\UCEED";
-export const figurePath = (year: number, n: number) => join(ROOT, "figures", String(year), `Q${String(n).padStart(2, "0")}.png`);
+/** A question's figure: Q<nn>.png, or Q<nn>.jpg when the PNG was over storage's 1 MB (extract.py fit_storage). */
+export const figurePath = (year: number, n: number) => {
+  const stem = join(ROOT, "figures", String(year), `Q${String(n).padStart(2, "0")}`);
+  return existsSync(`${stem}.jpg`) ? `${stem}.jpg` : `${stem}.png`;
+};
 export const DATA = join(__dirname, "data");
 
 /** The seven Part A areas of the official syllabus (UCEED 2027 brochure, section 16), in its order. */

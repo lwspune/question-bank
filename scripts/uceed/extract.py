@@ -168,6 +168,9 @@ def load_picture(pdf, xref):
 
 
 def save_figure(pdf, xrefs, path):
+    jpg = os.path.splitext(path)[0] + ".jpg"
+    if os.path.exists(jpg):
+        os.remove(jpg)  # a JPEG from an earlier run (fit_storage) is rebuilt below
     if not xrefs:
         if os.path.exists(path):
             os.remove(path)
@@ -203,8 +206,17 @@ def fit_storage(path):
     if os.path.getsize(path) <= MAX_FIGURE_BYTES:
         return path
     p = fitz.Pixmap(path)
-    fitz.Pixmap(p, 800, round(p.height * 800 / p.width)).save(path)
-    return path
+    if p.width > 800:
+        p = fitz.Pixmap(p, 800, round(p.height * 800 / p.width))
+        p.save(path)
+        if os.path.getsize(path) <= MAX_FIGURE_BYTES:
+            return path
+    # Still too big: a tall colour illustration (2023 Q9, two cartoons stacked: 2.4 MB as PNG,
+    # 0.38 MB as JPEG). Saved as Q<nn>.jpg instead; config.figurePath finds either.
+    jpg = os.path.splitext(path)[0] + ".jpg"
+    p.save(jpg, jpg_quality=90)
+    os.remove(path)
+    return jpg
 
 
 def contact_sheets(figs, work, drafts, per_sheet=12):

@@ -159,7 +159,7 @@ async function syncRows(
     const update: Record<string, string> = { solution: p.solution!, difficulty: p.difficulty };
     const f = fig(row);
     if (f && !q.image_url) {
-      update.image_url = await uploadImage(client, ORG_ID, readFileSync(f), "image/png");
+      update.image_url = await uploadImage(client, ORG_ID, readFileSync(f), f.endsWith(".jpg") ? "image/jpeg" : "image/png");
       uploaded++;
     }
     const { error: uErr } = await client.from("questions").update(update).eq("id", q.id);
