@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { shortNote, sectionsOf } from "@/lib/homework/display";
+import { shortNote, sectionsOf, planWording } from "@/lib/homework/display";
 
 describe("shortNote", () => {
   it("shortens each kind of note the plan builder writes", () => {
@@ -22,5 +22,17 @@ describe("sectionsOf", () => {
       { part: 2, from: 3, to: 3, days: [day(3, 2)] },
       { part: 3, from: 4, to: 5, days: [day(4, 3), day(5, 3)] },
     ]);
+  });
+});
+
+describe("planWording", () => {
+  it("names UPSC and past questions for NDA", () => {
+    expect(planWording("NDA")).toEqual({ asker: "UPSC", questions: "past questions" });
+  });
+
+  it("keeps the board wording for every board exam", () => {
+    for (const exam of ["CBSE Class 12", "Maharashtra HSC Class 12", "Maharashtra SSC Class 10", "CBSE Class 10"]) {
+      expect(planWording(exam)).toEqual({ asker: "the board", questions: "board questions" });
+    }
   });
 });

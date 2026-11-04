@@ -41,6 +41,7 @@ import { fitTitle } from "@/lib/seo/title";
 import { withArticle } from "@/lib/text/article";
 import Breadcrumbs from "@/components/nav/Breadcrumbs";
 import { canonicalFor } from "@/lib/sites/intl";
+import { planWording } from "@/lib/homework/display";
 
 
 export const revalidate = 86400;
@@ -133,7 +134,7 @@ export default async function ExamHomePage({ params }: Params) {
     },
     homeworkHref && {
       href: homeworkHref,
-      label: "Daily homework: 5 board questions a day",
+      label: `Daily homework: 5 ${planWording(exam?.examName ?? "").questions} a day`,
       Icon: CalendarDays,
     },
     model.links.mocks && {

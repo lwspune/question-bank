@@ -2,13 +2,14 @@
 // study's parts together), one evidence file per chapter, and a slots.json.
 //   npx tsx scripts/homework/prep.ts [--exam="Maharashtra HSC Class 12"] <Subject> generated-papers/homework/<slug>
 // The exam defaults to CBSE Class 12, whose sittings are YEARS; a Maharashtra
-// paper is its own sitting ("Feb 2024", "Jul 2024"), labelled by mhSittingLabel.
+// paper is its own sitting ("Feb 2024", "Jul 2024"), labelled by mhSittingLabel;
+// so is an NDA paper (--exam="NDA": "NDA 1 2024"), labelled by ndaSittingLabel.
 // Then the review follows scripts/homework/REVIEW_BRIEF.md, and scripts/homework/assemble.ts builds the plan file.
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
 import { isHomeworkPassage } from "@/lib/homework/slotContext";
-import { compareSittings, mhSittingLabel } from "@/lib/homework/sittings";
+import { compareSittings, mhSittingLabel, ndaSittingLabel } from "@/lib/homework/sittings";
 
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 
@@ -28,7 +29,9 @@ async function main() {
   const [subject, out] = process.argv.slice(2).filter((a) => !a.startsWith("--"));
   const examName = process.argv.find((a) => a.startsWith("--exam="))?.slice("--exam=".length) ?? "CBSE Class 12";
   const isMh = examName.startsWith("Maharashtra");
-  const sittingOf = (r: Row) => (isMh ? mhSittingLabel(r.pyq_year, r.pyq_month) : String(r.pyq_year));
+  const isNda = examName === "NDA";
+  const sittingOf = (r: Row) =>
+    isMh ? mhSittingLabel(r.pyq_year, r.pyq_month) : isNda ? ndaSittingLabel(r.pyq_year, r.pyq_month) : String(r.pyq_year);
   const c = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!, { auth: { persistSession: false } });
   const { data: ex } = await c.from("exams").select("id").eq("name", examName).single();
   const { data: sub } = await c.from("subjects").select("id").eq("exam_id", ex!.id).eq("name", subject).single();
@@ -53,7 +56,7 @@ async function main() {
     (slots.get(key) ?? slots.set(key, []).get(key)!).push(r);
   }
   const paperOf = (r: Row) =>
-    isMh ? sittingOf(r) : /question paper ([\d/A-Z-]+)/.exec(r.pyq_note ?? "")?.[1] ?? r.source_file ?? "?";
+    isMh || isNda ? sittingOf(r) : /question paper ([\d/A-Z-]+)/.exec(r.pyq_note ?? "")?.[1] ?? r.source_file ?? "?";
   const slotList = [...slots.values()].map((rs) => {
     rs.sort((a, b) => qnum(a.question_number) - qnum(b.question_number) || (a.question_number ?? "").localeCompare(b.question_number ?? ""));
     const lead = rs[0];

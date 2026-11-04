@@ -11,6 +11,7 @@ import Link from "next/link";
 import { Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { dayHref } from "@/lib/homework/links";
+import { planWording } from "@/lib/homework/display";
 
 // Plans change only when the plan builder runs; a day is plenty.
 export const revalidate = 86400;
@@ -29,17 +30,17 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const plan = await getPlanBySlug(createSupabaseAnonClient(), params.planSlug);
   if (!plan) return {};
   return {
-    title: `${plan.title} Daily Homework from Board Papers`,
-    description: `${plan.examName} ${plan.subjectName} board questions, ${plan.perDay} a day, as a file to hand out. The questions the board asked again come first.`,
+    title: `${plan.title} Daily Homework from ${plan.examName === "NDA" ? "Past" : "Board"} Papers`,
+    description: `${plan.examName} ${plan.subjectName} ${planWording(plan.examName).questions}, ${plan.perDay} a day, as a file to hand out. The questions ${planWording(plan.examName).asker} asked again come first.`,
     alternates: { canonical: `/homework/${plan.slug}` },
   };
 }
 
-const PART_TITLE: Record<1 | 2 | 3, string> = {
-  1: "Questions the board asked again",
-  2: "Question types the board keeps asking",
+const partTitle = (asker: string): Record<1 | 2 | 3, string> => ({
+  1: `Questions ${asker} asked again`,
+  2: `Question types ${asker} keeps asking`,
   3: "Questions asked once",
-};
+});
 
 const PART_HELP: Record<1 | 2 | 3, string> = {
   1: "Each printed once, in its latest wording, highest count first.",
@@ -79,7 +80,7 @@ export default async function HomeworkPlanPage({ params }: { params: Params }) {
         {sections.map((s) => (
           <section key={s.from} aria-labelledby={`part-${s.from}`}>
             <h2 id={`part-${s.from}`} className="section-title text-lg font-semibold">
-              {PART_TITLE[s.part]}
+              {partTitle(planWording(plan.examName).asker)[s.part]}
             </h2>
             <p className="mt-1 text-sm text-muted-foreground">
               <span className="font-medium text-foreground tabular-nums">
