@@ -37,6 +37,7 @@ FOOTER_Y = 780  # "UCEED 2026 / Page n of N" sits at y >= 790 on every page
 Q_MARKER = re.compile(r"^\s*Q\.?\s?(\d{1,3})\b\.?")
 BARE_MARKER = re.compile(r"^\s*(\d{1,3})(?:\.(?!\d)|\))")
 OPTION = re.compile(r"^\s*\(?([A-D])[.)]\s+(.*)$")
+MAX_FIGURE_BYTES = 1000 * 1000  # under storage's 1 MiB limit
 TINY = 40  # px: bullets and icons, not figures
 SCANNED_PAGE = 0.6  # a picture covering more of the page than this is a scanned page, not a figure
 INSTRUCTIONS_MAX = 15  # a numbered instruction list is shorter than this
@@ -156,7 +157,7 @@ def save_figure(pdf, xrefs, path):
     pix = [fitz.Pixmap(fitz.csRGB, p) if p.n - p.alpha != 3 or p.alpha else p for p in pix]
     if len(pix) == 1:
         pix[0].save(path)
-        return path
+        return fit_storage(path)
     # Several pictures in one question: stack them, scaled to one width, 12px apart. Each is
     # flattened to plain RGB first (2018 mixes pictures with and without transparency). Only
     # here, so a single picture's bytes, and so its content_hash, never change.
@@ -173,6 +174,17 @@ def save_figure(pdf, xrefs, path):
         out.copy(p, p.irect)
         y += p.height + 12
     out.save(path)
+    return fit_storage(path)
+
+
+def fit_storage(path):
+    """Bank storage refuses a file over 1 MB (src/lib/storage/images.ts). A picture past that
+    (2024 Q4: a 1234 px photograph, 1.9 MB) is scaled to 800 px wide, the width UCEED draws its
+    pictures at. Smaller pictures are left byte for byte, so their content_hash never moves."""
+    if os.path.getsize(path) <= MAX_FIGURE_BYTES:
+        return path
+    p = fitz.Pixmap(path)
+    fitz.Pixmap(p, 800, round(p.height * 800 / p.width)).save(path)
     return path
 
 
