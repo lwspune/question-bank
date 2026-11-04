@@ -22,6 +22,8 @@ import KatexRenderer from "@/components/math/KatexRenderer";
 import BlockText from "@/components/math/BlockText";
 import { cn } from "@/lib/utils";
 import { optionMark } from "@/lib/questions/optionMark";
+import { msqOptionMark, msqVerdict, msqVerdictLine } from "@/lib/questions/msq";
+import { formatNumericKey } from "@/lib/questions/formatKey";
 import { publicImageUrl } from "@/lib/storage/imageUrl";
 import {
   Dialog,
@@ -126,7 +128,13 @@ export default function QuestionCard({
   // Click-to-reveal: every viewer (including admin) picks an option to
   // unlock the answer. Admins audit content via the Edit page.
   const [picked, setPicked] = useState<OptionLabel | null>(null);
-  const revealed = picked !== null;
+  // Multiple-select (migration 0214): taps tick options, Check answer reveals. The check
+  // spends a reveal like Show answer and sends no pick, so nothing reaches the drill or the
+  // answer history, which are built on one letter (lib/questions/msq).
+  const isMsq = question.questionFormat === "msq";
+  const [ticks, setTicks] = useState<OptionLabel[]>([]);
+  const [msqChecked, setMsqChecked] = useState(false);
+  const revealed = isMsq ? msqChecked : picked !== null;
   // Subjective (free-response) and numeric (NAT) questions have no options.
   // Subjective's answer is the model answer in `solution`; numeric's answer is
   // the exact value in `numericAnswer`. Both reveal via the button below.
@@ -186,6 +194,17 @@ export default function QuestionCard({
       openSolution();
     }
   }
+  function toggleTick(label: OptionLabel) {
+    if (msqChecked) return;
+    setTicks((t) => (t.includes(label) ? t.filter((l) => l !== label) : [...t, label].sort()));
+  }
+  function checkMsq() {
+    if (ticks.length === 0 || !tryReveal()) return;
+    setMsqChecked(true);
+    const right = msqVerdict(ticks, correctLabels).kind === "all";
+    if (!right && !showSolution && question.solution && !cancelled) openSolution();
+  }
+  const correctLabels = question.options.filter((o) => o.isCorrect).map((o) => o.label);
   const pathname = usePathname();
   const hasChips = Boolean(resources?.guide || resources?.notes || resources?.lesson);
   function toggleSolution() {
@@ -447,8 +466,15 @@ export default function QuestionCard({
             {!isOpenFormat && (
             <ol className="space-y-2">
               {question.options.map((opt) => {
-                const isPickedByUser = picked === opt.label;
-                const mark = optionMark({ revealed, picked: isPickedByUser, isCorrect: opt.isCorrect, cancelled });
+                const isPickedByUser = isMsq ? ticks.includes(opt.label) : picked === opt.label;
+                const msqMark = isMsq
+                  ? msqOptionMark({ checked: msqChecked, ticked: isPickedByUser, isCorrect: opt.isCorrect, cancelled })
+                  : null;
+                const mark = isMsq
+                  ? msqMark === "right" || msqMark === "missed" ? "correct" : msqMark === "wrong" ? "wrong" : "none"
+                  : optionMark({ revealed, picked: isPickedByUser, isCorrect: opt.isCorrect, cancelled });
+                const missed = msqMark === "missed";
+                const tickedBeforeCheck = isMsq && !msqChecked && isPickedByUser;
                 const showCorrect = mark === "correct";
                 const showWrong = mark === "wrong";
                 // Once answered, the options that are neither the key nor the
@@ -459,16 +485,24 @@ export default function QuestionCard({
                   <>
                     <span
                       className={cn(
-                        "inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full font-sans text-xs font-bold",
-                        showCorrect
+                        "inline-flex h-7 w-7 shrink-0 items-center justify-center font-sans text-xs font-bold",
+                        // Square markers say "tick boxes": more than one may be right.
+                        isMsq ? "rounded-md" : "rounded-full",
+                        // A missed MSQ option is right but was NOT ticked: outlined, so it never
+                        // looks like a tick the student made.
+                        showCorrect && missed
+                          ? "border-2 border-emerald-600 text-emerald-700 dark:border-emerald-400 dark:text-emerald-300"
+                          : showCorrect
                           ? "bg-emerald-600 text-white"
                           : showWrong
                             ? "bg-red-600 text-white"
-                            : "bg-brand-accent/10 text-brand-accent"
+                            : tickedBeforeCheck
+                              ? "bg-brand text-white"
+                              : "bg-brand-accent/10 text-brand-accent"
                       )}
                     >
-                      {showCorrect ? <Check className="h-4 w-4" aria-hidden /> : opt.label}
-                      {showCorrect && <span className="sr-only">{opt.label}</span>}
+                      {(showCorrect && !missed) || tickedBeforeCheck ? <Check className="h-4 w-4" aria-hidden /> : opt.label}
+                      {((showCorrect && !missed) || tickedBeforeCheck) && <span className="sr-only">{opt.label}</span>}
                     </span>
                     <div className="min-w-0 flex-1 overflow-x-auto [&_.katex]:max-w-full">
                       {optionVersions(question, opt, langPref).map((v, i) => (
@@ -480,7 +514,7 @@ export default function QuestionCard({
                     {showCorrect && (
                       <span className="inline-flex shrink-0 items-center gap-1 font-sans text-xs font-semibold text-emerald-700 dark:text-emerald-300">
                         <Check className="h-3.5 w-3.5" aria-hidden />
-                        Correct
+                        {missed ? "Missed" : "Correct"}
                       </span>
                     )}
                     {showWrong && (
@@ -497,14 +531,15 @@ export default function QuestionCard({
                     key={opt.label}
                     className={cn(
                       "overflow-hidden rounded-xl border-[1.5px] bg-card transition-colors",
-                      showCorrect && "border-emerald-400 bg-emerald-50 dark:border-emerald-500 dark:bg-emerald-500/10",
+                      showCorrect && !missed && "border-emerald-400 bg-emerald-50 dark:border-emerald-500 dark:bg-emerald-500/10",
+                      missed && "border-dashed border-emerald-500 dark:border-emerald-400",
                       showWrong && "border-red-400 bg-red-50 dark:border-red-500 dark:bg-red-500/10",
                       dimmed && "opacity-60"
                     )}
                   >
                     <button
                       type="button"
-                      onClick={() => pickOption(opt.label)}
+                      onClick={() => (isMsq ? toggleTick(opt.label) : pickOption(opt.label))}
                       aria-pressed={isPickedByUser}
                       className="flex w-full items-center gap-3 px-3 py-2.5 text-left text-[15px] transition-colors hover:bg-accent/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
                     >
@@ -526,6 +561,24 @@ export default function QuestionCard({
               })}
             </ol>
             )}
+            {isMsq && !cancelled && !locked &&
+              (msqChecked ? (
+                <p role="status" className="font-sans text-sm font-medium text-foreground">
+                  {msqVerdictLine(msqVerdict(ticks, correctLabels))}
+                </p>
+              ) : (
+                <div className="flex flex-wrap items-center justify-between gap-2 font-sans">
+                  <p className="text-xs text-muted-foreground">More than one option may be right. Select all that apply.</p>
+                  <button
+                    type="button"
+                    onClick={checkMsq}
+                    disabled={ticks.length === 0}
+                    className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-lg bg-primary px-3 py-1.5 text-sm font-semibold text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                  >
+                    Check answer
+                  </button>
+                </div>
+              ))}
             {/* No "tap an option" hint: the options read as buttons. The one
                 line that stays is the signed-out wall, because there a tap does
                 nothing and, unexplained, earns repeated angry taps. */}
@@ -571,7 +624,9 @@ export default function QuestionCard({
                   lead={
                     isNumeric && (
                       <p className="mt-1.5 font-sans">
-                        <span className="text-lg font-semibold tabular-nums">{question.numericAnswer}</span>
+                        <span className="text-lg font-semibold tabular-nums">
+                          {formatNumericKey(question.numericAnswer ?? null, question.numericAnswerMax ?? null)}
+                        </span>
                       </p>
                     )
                   }

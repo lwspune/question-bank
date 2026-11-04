@@ -20,6 +20,7 @@
  * pinching; one column with room to breathe is what reads well on a phone.
  * Short options sit four to a line or two by two, as printed papers set them.
  */
+import { formatKey } from "@/lib/questions/formatKey";
 import { brandingParts, type BrandingParts } from "@/lib/export/branding";
 import katex from "katex";
 import "katex/contrib/mhchem";
@@ -331,9 +332,10 @@ export function paperBodyHtml(input: PaperHtmlInput): string {
 export function answerOf(q: QuestionRow): string {
   if (q.cancelledNote) return "Cancelled";
   if (q.questionFormat === "subjective") return "Written";
-  if (q.questionFormat === "numeric") return q.numericAnswer != null ? String(q.numericAnswer) : "Pending";
-  const correct = q.options.find((o) => o.isCorrect);
-  return `(${correct?.label.toLowerCase() ?? "?"})`;
+  // One printer for MCQ, multiple-select ("(a), (c)") and numeric ranges (lib/questions/formatKey).
+  const key = formatKey(q, { style: "paper" });
+  if (q.questionFormat === "numeric") return key ?? "Pending";
+  return key ?? "(?)";
 }
 
 export function buildKeyHtml(input: KeyHtmlInput): string {

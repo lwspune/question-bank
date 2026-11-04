@@ -24,7 +24,7 @@ export type VQuestion = {
   /** A figure goes with the stem; V cannot see it. */
   hasFigure: boolean;
   solution: string | null;
-  format: "mcq" | "subjective" | "numeric";
+  format: "mcq" | "subjective" | "numeric" | "msq";
   numericAnswer: number | null;
   options: { label: string; text: string; isCorrect: boolean }[];
   exam: string;
@@ -104,6 +104,14 @@ export function firstStep(solution: string | null): string | null {
 export function answerText(q: VQuestion): string {
   if (q.format === "numeric") return q.numericAnswer === null ? "not recorded" : String(q.numericAnswer);
   if (q.format === "subjective") return "the model answer in the solution";
+  if (q.format === "msq") {
+    // Every correct option, never one: V must not tell a student a multiple-select key is a single letter.
+    const right = q.options.filter((o) => o.isCorrect).map((o) => `(${o.label}) ${o.text}`);
+    if (right.length === 0) return "not recorded";
+    return right.length === 1
+      ? `${right[0]} (the only correct option in this multiple-select question)`
+      : `${right.join(" and ")} (more than one option is correct)`;
+  }
   const right = q.options.find((o) => o.isCorrect);
   return right ? `(${right.label}) ${right.text}` : "not recorded";
 }

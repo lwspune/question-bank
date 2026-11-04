@@ -112,3 +112,24 @@ describe("numericContentHash", () => {
     expect(numericContentHash(stem, null)).not.toBe(subjectiveContentHash(stem, null));
   });
 });
+
+describe("msqContentHash (multiple-select, migration 0214)", () => {
+  it("is the same whatever order the correct letters are given in", async () => {
+    const { msqContentHash } = await import("@/lib/upload/hash");
+    expect(msqContentHash("Which?", ["a", "b", "c", "d"], ["C", "A"])).toBe(
+      msqContentHash("Which?", ["a", "b", "c", "d"], ["A", "C"]),
+    );
+  });
+
+  it("never equals the MCQ hash of the same stem, even with one correct letter", async () => {
+    const { msqContentHash } = await import("@/lib/upload/hash");
+    expect(msqContentHash("Which?", ["a", "b", "c", "d"], ["A"])).not.toBe(contentHash("Which?", ["a", "b", "c", "d"], "A"));
+  });
+
+  it("differs when the set of correct letters differs", async () => {
+    const { msqContentHash } = await import("@/lib/upload/hash");
+    expect(msqContentHash("Which?", ["a", "b", "c", "d"], ["A", "C"])).not.toBe(
+      msqContentHash("Which?", ["a", "b", "c", "d"], ["A", "C", "D"]),
+    );
+  });
+});

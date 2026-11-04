@@ -29,6 +29,7 @@ const FORMAT_LABEL: Record<Exclude<Filters["format"], "all">, string> = {
   mcq: "MCQ",
   subjective: "Written",
   numeric: "Numeric",
+  msq: "Multi-select",
 };
 
 export function buildActiveChips(

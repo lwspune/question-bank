@@ -102,3 +102,44 @@ describe("validateRow — officially cancelled questions (migration 0119)", () =
     ]);
   });
 });
+
+describe("validateRow — multiple-select questions (migration 0214)", () => {
+  const msq: RawRow = { ...baseRow, questionFormat: "msq", answer: "A, C" };
+
+  it("marks every listed letter correct and stores the format", () => {
+    const r = validateRow(msq);
+    expect(r.errors).toEqual([]);
+    expect(r.parsed!.questionFormat).toBe("msq");
+    expect(r.parsed!.options.filter((o) => o.isCorrect).map((o) => o.label)).toEqual(["A", "C"]);
+  });
+
+  it("reads the letters in any order and separator, and allows a single correct option", () => {
+    expect(validateRow({ ...msq, answer: "c a" }).parsed!.options.filter((o) => o.isCorrect).map((o) => o.label)).toEqual(["A", "C"]);
+    expect(validateRow({ ...msq, answer: "D" }).parsed!.options.filter((o) => o.isCorrect).map((o) => o.label)).toEqual(["D"]);
+    expect(validateRow({ ...msq, answer: "A,B,C,D" }).errors).toEqual([]);
+  });
+
+  it("hashes with the order-free MSQ hash", async () => {
+    const { msqContentHash } = await import("@/lib/upload/hash");
+    expect(validateRow(msq).parsed!.contentHash).toBe(
+      msqContentHash(msq.question, [msq.optionA, msq.optionB, msq.optionC, msq.optionD], ["A", "C"]),
+    );
+  });
+
+  it("refuses an empty set, a letter outside A-D and a repeated letter", () => {
+    expect(validateRow({ ...msq, answer: "," }).errors).toEqual(['Answer must list one or more of A/B/C/D (got ",")']);
+    expect(validateRow({ ...msq, answer: "A,E" }).errors).toEqual(['Answer must list one or more of A/B/C/D (got "A,E")']);
+    expect(validateRow({ ...msq, answer: "A,A" }).errors).toEqual(['Answer lists a letter twice (got "A,A")']);
+  });
+
+  it("can be cancelled like an MCQ (IIT Bombay gave full marks)", () => {
+    const r = validateRow({ ...msq, answer: "CANCELLED", cancelledNote: "Full marks to all." });
+    expect(r.errors).toEqual([]);
+    expect(r.parsed!.options.every((o) => !o.isCorrect)).toBe(true);
+    expect(r.parsed!.questionFormat).toBe("msq");
+  });
+
+  it("leaves a plain MCQ exactly as before (no format written)", () => {
+    expect(validateRow(baseRow).parsed!.questionFormat).toBeUndefined();
+  });
+});

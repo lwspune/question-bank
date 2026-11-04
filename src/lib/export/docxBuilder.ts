@@ -1,4 +1,5 @@
 import { brandingParts, type BrandingParts } from "@/lib/export/branding";
+import { formatKey, formatNumericKey } from "@/lib/questions/formatKey";
 import {
   Document,
   ImageRun,
@@ -428,7 +429,7 @@ export async function buildAnswerKey(input: AnswerKeyInput): Promise<Buffer> {
           children: [
             ...lead.runs,
             new TextRun({ text: "Answer: ", italics: true, bold: true }),
-            new TextRun({ text: q.numericAnswer != null ? String(q.numericAnswer) : "(pending)" }),
+            new TextRun({ text: formatNumericKey(q.numericAnswer ?? null, q.numericAnswerMax ?? null) ?? "(pending)" }),
           ],
         })
       );
@@ -445,14 +446,14 @@ export async function buildAnswerKey(input: AnswerKeyInput): Promise<Buffer> {
       continue;
     }
 
-    const correct = q.options.find((o) => o.isCorrect);
     children.push(
       new Paragraph({
         ...lead.props,
         children: [
           ...lead.runs,
           new TextRun({
-            text: `(${correct?.label?.toLowerCase() ?? "?"})`,
+            // Every correct letter of a multiple-select question, one of an MCQ (lib/questions/formatKey).
+            text: formatKey(q, { style: "paper" }) ?? "(?)",
             bold: true,
           }),
         ],

@@ -174,6 +174,13 @@ describe("answerText", () => {
     expect(answerText(q({ format: "subjective", options: [] }))).toBe("the model answer in the solution");
   });
 
+  it("names every correct option of a multiple-select question and says so", () => {
+    const opts = q().options.map((o) => ({ ...o, isCorrect: o.label === "A" || o.label === "B" }));
+    expect(answerText(q({ format: "msq", options: opts }))).toBe("(A) -3 and (B) 3 (more than one option is correct)");
+    const one = q().options.map((o) => ({ ...o, isCorrect: o.label === "C" }));
+    expect(answerText(q({ format: "msq", options: one }))).toBe("(C) 9 (the only correct option in this multiple-select question)");
+  });
+
   it("does not invent a key when an MCQ has none marked", () => {
     expect(answerText(q({ options: q().options.map((o) => ({ ...o, isCorrect: false })) }))).toBe("not recorded");
   });

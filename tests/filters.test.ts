@@ -375,3 +375,9 @@ describe("syllabus fit (JEE → NDA+CET screen)", () => {
     ).toBe("answerable");
   });
 });
+
+describe("parseFilters: the multiple-select format (migration 0214)", () => {
+  it("reads ?format=msq, so a link to UCEED's multiple-select questions filters to them", () => {
+    expect(parseFilters(new URLSearchParams("format=msq")).format).toBe("msq");
+  });
+});

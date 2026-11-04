@@ -8,7 +8,8 @@ export type QuestionKind = "pyq" | "practice" | "all";
 
 /** Question shape (migration 0041). 'mcq' has 4 options + one correct; 'subjective'
  *  has zero options and its model answer lives in `questions.solution`. */
-export type QuestionFormat = "mcq" | "subjective" | "numeric";
+/** "msq": one or more options correct (migration 0214, UCEED). */
+export type QuestionFormat = "mcq" | "subjective" | "numeric" | "msq";
 
 /** The question_format axis as a FILTER — the three real formats plus the
  *  'all' default. Kept distinct from `QuestionFormat` (the column's own type)
@@ -58,7 +59,7 @@ const KINDS: QuestionKind[] = ["pyq", "practice", "all"];
 // Allow-list, not a regex. The parsed value reaches `.eq("question_format", …)`
 // verbatim, and an unrecognised literal makes Postgres raise `invalid input
 // value for enum question_format` — a 500 rather than an empty result set.
-const FORMATS: FormatFilter[] = ["all", "mcq", "subjective", "numeric"];
+const FORMATS: FormatFilter[] = ["all", "mcq", "subjective", "numeric", "msq"];
 
 /** Narrow an untrusted value to a FormatFilter, defaulting to 'all'.
  *
