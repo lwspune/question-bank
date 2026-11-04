@@ -32,7 +32,7 @@ export function pickTopSlots(rows: readonly PlanChapterRow[], n: number = TOP_PY
       slot += 1;
       last = key;
     }
-    out.push({ position: slot, sub: r.sub, questionId: r.questionId, chapter: r.chapter, note: r.note });
+    out.push({ position: slot, sub: r.sub, questionId: r.questionId, chapter: r.chapter, note: r.note, group: r.group ?? null });
   }
   return out;
 }

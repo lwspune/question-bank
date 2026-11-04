@@ -14,6 +14,8 @@ export type HomeworkSlot<Q> = {
   position: number;
   chapter: string;
   note: string;
+  /** The plan group (numbered from 1) the slot stands for, or null. */
+  group: number | null;
   /** Shown once above the slot: the case study's passage, or a question's directions. */
   passage: string | null;
   /** In part order. A part keeps its own context only when the parts do not share one. */
@@ -43,6 +45,7 @@ export function homeworkDayView<Q extends { id: string; context: string | null }
       position,
       chapter: parts[0].chapter,
       note: parts[0].note,
+      group: parts[0].group ?? null,
       passage: shared ? first : null,
       questions: shared ? qs.map((x) => ({ ...x, context: null })) : qs,
     };

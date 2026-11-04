@@ -4,6 +4,12 @@
  *   npx tsx scripts/homework/build-plan.ts scripts/homework/data/mh-hsc-12-maths.json            # dry run
  *   npx tsx scripts/homework/build-plan.ts scripts/homework/data/mh-hsc-12-maths.json --apply    # write
  *   ... --apply --publish     also make the plan public (the page lists published plans only)
+ *   ... --chapter=Matrices    the dry run also prints that chapter's new Top 10 (its first ten slots)
+ *
+ * The dry run compares the new order with the plan as stored: how many days
+ * hold different questions. Since 2026-11-04 the plan's groups are written too
+ * (homework_plan_groups, migration 0216), each slot naming the group it stands
+ * for, so a page can list every question of a repeat or a type.
  *
  * The data file names every question of the subject (a case study as ONE entry
  * whose `rows` list its parts, the entry's own id first) and the groups a reviewer
@@ -79,6 +85,7 @@ async function main() {
   if (!file) throw new Error("usage: build-plan.ts <data file> [--apply] [--publish]");
   const apply = args.includes("--apply");
   const publish = args.includes("--publish");
+  const chapterArg = args.find((a) => a.startsWith("--chapter="))?.slice("--chapter=".length);
   const plan = JSON.parse(readFileSync(file, "utf8")) as PlanFile;
 
   const client = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!, {
@@ -128,6 +135,19 @@ async function main() {
   for (const i of items.filter((x) => x.day === 1)) {
     console.log(`  day 1 #${i.position}: ${bank.get(i.questionId)!.chapter!.name} | ${i.note}`);
   }
+  for (const g of plan.groups) {
+    if (g.label.trim().length > 300) problems.push(`group label over 300 characters: ${g.label.slice(0, 60)}`);
+  }
+  if (problems.length) {
+    console.error(`REFUSED: ${problems.join("; ")}`);
+    process.exit(1);
+  }
+  if (chapterArg) {
+    const mine = items.filter((i) => bank.get(i.questionId)!.chapter!.name === chapterArg).slice(0, 10);
+    console.log(`  new Top 10 of ${chapterArg}:`);
+    mine.forEach((i, k) => console.log(`    ${k + 1}. day ${i.day} | ${i.note}`));
+  }
+  await compareWithStored(client, plan.slug, items);
   if (!apply) {
     console.log("dry run: nothing written. Add --apply to write.");
     return;
@@ -150,11 +170,71 @@ async function main() {
     .select("id, published")
     .single();
   if (upErr || !saved) throw new Error(`plan: ${upErr?.message}`);
-  // One database row per part; a plain question is part 1 of its slot.
-  const rows = items.flatMap((i) => i.rows.map((questionId, k) => ({ ...i, questionId, sub: k + 1 })));
-  const { data: written, error } = await client.rpc("homework_replace_items", { p_plan_id: saved.id, p_items: rows });
+  // One database row per part; a plain question is part 1 of its slot. Groups
+  // are numbered from 1 by their place in the file.
+  const rows = items.flatMap((i) =>
+    i.rows.map((questionId, k) => ({ ...i, questionId, sub: k + 1, group: i.group === undefined ? null : i.group + 1 }))
+  );
+  const { data: written, error } = await client.rpc("homework_replace_items", {
+    p_plan_id: saved.id,
+    p_items: rows,
+    p_groups: groupRows(plan),
+  });
   if (error) throw new Error(`items: ${error.message}`);
   console.log(`wrote ${written} items; plan is ${saved.published ? "PUBLISHED" : "not published (add --publish)"}`);
+}
+
+/** Each group with every question in it, oldest paper first, a case study's parts numbered by `sub`. */
+function groupRows(plan: PlanFile) {
+  const rank = new Map(plan.sittings.map((x, i) => [x, i]));
+  const byId = new Map(plan.questions.map((q) => [q.id, q]));
+  return plan.groups.map((g, i) => {
+    const members = [...g.questionIds].sort((a, b) => rank.get(byId.get(a)!.sitting)! - rank.get(byId.get(b)!.sitting)!);
+    return {
+      n: i + 1,
+      tier: g.tier,
+      label: g.label.trim(),
+      sittings: g.sittings,
+      members: members.flatMap((id, k) => {
+        const q = byId.get(id)!;
+        return (q.rows ?? [id]).map((questionId, j) => ({ position: k + 1, sub: j + 1, questionId, sitting: q.sitting }));
+      }),
+    };
+  });
+}
+
+/** How many days of the stored plan hold different questions under the new order. */
+async function compareWithStored(client: SupabaseClient, slug: string, items: { day: number; questionId: string }[]) {
+  const { data: stored } = await client.from("homework_plans").select("id").eq("slug", slug).maybeSingle();
+  if (!stored) {
+    console.log("  not stored yet: every day is new");
+    return;
+  }
+  const old: { day: number; question_id: string }[] = [];
+  for (let from = 0; ; from += 1000) {
+    const { data, error } = await client
+      .from("homework_plan_items")
+      .select("day, question_id")
+      .eq("plan_id", stored.id)
+      .eq("sub", 1)
+      .order("day")
+      .order("position")
+      .range(from, from + 999);
+    if (error) throw new Error(`stored items: ${error.message}`);
+    old.push(...((data ?? []) as { day: number; question_id: string }[]));
+    if (!data || data.length < 1000) break;
+  }
+  const dayKey = (rows: { day: number; id: string }[]) => {
+    const m = new Map<number, string[]>();
+    for (const r of rows) m.set(r.day, [...(m.get(r.day) ?? []), r.id]);
+    return new Map([...m].map(([d, ids]) => [d, ids.sort().join(",")]));
+  };
+  const before = dayKey(old.map((r) => ({ day: r.day, id: r.question_id })));
+  const after = dayKey(items.map((i) => ({ day: i.day, id: i.questionId })));
+  const days = new Set([...before.keys(), ...after.keys()]);
+  const changed = [...days].filter((d) => before.get(d) !== after.get(d)).length;
+  const firstChanged = [...days].sort((a, b) => a - b).find((d) => before.get(d) !== after.get(d));
+  console.log(`  vs stored: ${changed} of ${days.size} days change${firstChanged ? `, the first on day ${firstChanged}` : ""}`);
 }
 
 main().catch((e) => {

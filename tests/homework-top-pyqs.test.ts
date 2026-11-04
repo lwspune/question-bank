@@ -30,6 +30,11 @@ describe("pickTopSlots", () => {
     expect(out[0].note).toBe("note a");
   });
 
+  it("keeps the group each slot stands for, for its See all link (2026-11-04)", () => {
+    const out = pickTopSlots([{ ...row(1, 1, "a"), group: 4 }, row(2, 1, "b")]);
+    expect(out.map((it) => it.group ?? null)).toEqual([4, null]);
+  });
+
   it("stops at ten questions", () => {
     const rows = Array.from({ length: 14 }, (_, i) => row(i + 1, 1, `q${i + 1}`));
     const out = pickTopSlots(rows);

@@ -10,7 +10,15 @@ import type { QuestionRow } from "@/lib/questions/query";
 import { chapterTestContext } from "@/lib/mocks/instructionContext";
 
 /** One bank row of a day. A case study's parts share a position, numbered by `sub`. */
-export type HomeworkDayItem = { position: number; sub: number; questionId: string; chapter: string; note: string };
+export type HomeworkDayItem = {
+  position: number;
+  sub: number;
+  questionId: string;
+  chapter: string;
+  note: string;
+  /** The plan group (numbered from 1) the slot stands for, for its See all link. */
+  group?: number | null;
+};
 
 export type HomeworkDayExport =
   | {

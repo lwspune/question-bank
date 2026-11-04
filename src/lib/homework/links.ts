@@ -21,6 +21,8 @@ export const examHomeworkPageHref = (examSlug: string) => `/homework/exam/${exam
 /** A plan's chapters, each opening its Top 10 PYQs (2026-11-04). */
 export const topListHref = (planSlug: string) => `/homework/${planSlug}/top`;
 export const topChapterHref = (planSlug: string, chapterSlug: string) => `/homework/${planSlug}/top/${chapterSlug}`;
+/** Every question of one repeat or type in a plan (2026-11-04), numbered from 1. */
+export const groupHref = (planSlug: string, n: number) => `/homework/${planSlug}/group/${n}`;
 
 /** The homework card on a board subject tab, or null when that subject has no plan. */
 export function subjectHomework(

@@ -49,6 +49,7 @@ type ItemRow = {
   part: 1 | 2 | 3;
   note: string;
   question_id: string;
+  group_n: number | null;
   question: { chapter: { name: string } | null } | null;
 };
 
@@ -60,7 +61,7 @@ async function loadItems(client: SupabaseClient, planId: string, day?: number): 
   for (let from = 0; ; from += PAGE) {
     let q = client
       .from("homework_plan_items")
-      .select("day, position, sub, part, note, question_id, question:questions(chapter:chapters(name))")
+      .select("day, position, sub, part, note, question_id, group_n, question:questions(chapter:chapters(name))")
       .eq("plan_id", planId);
     if (day !== undefined) q = q.eq("day", day);
     const { data, error } = await q.order("day").order("position").order("sub").range(from, from + PAGE - 1);
@@ -100,6 +101,7 @@ function toDays(items: ItemRow[]): HomeworkDay[] {
       chapter: it.question?.chapter?.name ?? "",
       note: it.note,
       part: it.part,
+      group: it.group_n,
     });
     days.set(it.day, d);
   }
@@ -274,6 +276,7 @@ type ChapterItemRow = {
   sub: number;
   note: string;
   question_id: string;
+  group_n: number | null;
   question: { chapter: { name: string } | null } | null;
 };
 
@@ -286,7 +289,7 @@ type ChapterItemRow = {
 async function loadChapterTop(client: SupabaseClient, plan: PlanRef, chapterId: string): Promise<PlanChapterTop> {
   const owned = await client
     .from("homework_plan_items")
-    .select("day, position, sub, note, question_id, question:questions!inner(chapter_id, chapter:chapters(name))")
+    .select("day, position, sub, note, question_id, group_n, question:questions!inner(chapter_id, chapter:chapters(name))")
     .eq("plan_id", plan.id)
     .eq("sub", 1)
     .eq("question.chapter_id", chapterId)
@@ -303,6 +306,7 @@ async function loadChapterTop(client: SupabaseClient, plan: PlanRef, chapterId: 
     questionId: r.question_id,
     chapter: chapterName,
     note: r.note,
+    group: r.group_n,
   });
   const keys = topSlotKeys(firsts.map(toRow));
   const base = { planId: plan.id, planSlug: plan.slug, planTitle: plan.title, chapterName };
@@ -311,7 +315,7 @@ async function loadChapterTop(client: SupabaseClient, plan: PlanRef, chapterId: 
   const wanted = new Set(keys.map((k) => `${k.day}:${k.position}`));
   const all = await client
     .from("homework_plan_items")
-    .select("day, position, sub, note, question_id")
+    .select("day, position, sub, note, question_id, group_n")
     .eq("plan_id", plan.id)
     .in("day", [...new Set(keys.map((k) => k.day))])
     .order("day")
@@ -356,4 +360,45 @@ export async function getSubjectChapterTop(
   if (error) throw new Error(`homework plan for subject: ${error.message}`);
   const plan = (data ?? [])[0] as PlanRef | undefined;
   return plan ? loadChapterTop(client, plan, opts.chapterId) : null;
+}
+
+export type PlanGroupPage = {
+  plan: { id: string; slug: string; title: string; examName: string; subjectName: string };
+  group: { n: number; tier: "repeat" | "type"; label: string; sittings: string[] };
+  /** Every question of the group in print order, a case study's parts numbered by `sub`. */
+  members: { position: number; sub: number; questionId: string; sitting: string }[];
+};
+
+/**
+ * One repeat or type of a plan with every question in it (2026-11-04), for its
+ * "See all" page. Null for a plan or group the reader cannot see.
+ */
+export async function getPlanGroup(client: SupabaseClient, slug: string, n: number): Promise<PlanGroupPage | null> {
+  const { data, error } = await client.from("homework_plans").select(PLAN_COLS).eq("slug", slug).maybeSingle();
+  if (error) throw new Error(`homework plan ${slug}: ${error.message}`);
+  if (!data) return null;
+  const plan = data as unknown as PlanRow;
+  const [g, m] = await Promise.all([
+    client.from("homework_plan_groups").select("n, tier, label, sittings").eq("plan_id", plan.id).eq("n", n).maybeSingle(),
+    client
+      .from("homework_plan_group_questions")
+      .select("position, sub, question_id, sitting")
+      .eq("plan_id", plan.id)
+      .eq("n", n)
+      .order("position")
+      .order("sub"),
+  ]);
+  if (g.error) throw new Error(`homework group ${slug}/${n}: ${g.error.message}`);
+  if (m.error) throw new Error(`homework group ${slug}/${n} questions: ${m.error.message}`);
+  if (!g.data) return null;
+  return {
+    plan: { id: plan.id, slug: plan.slug, title: plan.title, examName: plan.exam?.name ?? "", subjectName: plan.subject?.name ?? "" },
+    group: g.data as PlanGroupPage["group"],
+    members: ((m.data ?? []) as { position: number; sub: number; question_id: string; sitting: string }[]).map((r) => ({
+      position: r.position,
+      sub: r.sub,
+      questionId: r.question_id,
+      sitting: r.sitting,
+    })),
+  };
 }

@@ -6,6 +6,7 @@ import { describe, expect, it } from "vitest";
 import {
   HOMEWORK_HUB,
   examHomeworkPageHref,
+  groupHref,
   topChapterHref,
   topListHref,
 } from "@/lib/homework/links";
@@ -15,6 +16,10 @@ describe("homework addresses", () => {
   it("gives every exam its own homework page, and the hub lists every plan", () => {
     expect(HOMEWORK_HUB).toBe("/homework");
     expect(examHomeworkPageHref("mh-hsc-12")).toBe("/homework/exam/mh-hsc-12");
+  });
+
+  it("numbers a plan's groups from 1 in their address", () => {
+    expect(groupHref("nda-maths", 12)).toBe("/homework/nda-maths/group/12");
   });
 
   it("puts a plan's Top 10 list and each chapter's Top 10 under the plan", () => {
