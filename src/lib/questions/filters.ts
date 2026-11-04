@@ -59,7 +59,7 @@ const KINDS: QuestionKind[] = ["pyq", "practice", "all"];
 // Allow-list, not a regex. The parsed value reaches `.eq("question_format", …)`
 // verbatim, and an unrecognised literal makes Postgres raise `invalid input
 // value for enum question_format` — a 500 rather than an empty result set.
-const FORMATS: FormatFilter[] = ["all", "mcq", "subjective", "numeric"];
+const FORMATS: FormatFilter[] = ["all", "mcq", "subjective", "numeric", "msq"];
 
 /** Narrow an untrusted value to a FormatFilter, defaulting to 'all'.
  *

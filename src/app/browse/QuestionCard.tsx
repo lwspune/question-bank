@@ -488,7 +488,11 @@ export default function QuestionCard({
                         "inline-flex h-7 w-7 shrink-0 items-center justify-center font-sans text-xs font-bold",
                         // Square markers say "tick boxes": more than one may be right.
                         isMsq ? "rounded-md" : "rounded-full",
-                        showCorrect
+                        // A missed MSQ option is right but was NOT ticked: outlined, so it never
+                        // looks like a tick the student made.
+                        showCorrect && missed
+                          ? "border-2 border-emerald-600 text-emerald-700 dark:border-emerald-400 dark:text-emerald-300"
+                          : showCorrect
                           ? "bg-emerald-600 text-white"
                           : showWrong
                             ? "bg-red-600 text-white"
@@ -497,8 +501,8 @@ export default function QuestionCard({
                               : "bg-brand-accent/10 text-brand-accent"
                       )}
                     >
-                      {showCorrect || tickedBeforeCheck ? <Check className="h-4 w-4" aria-hidden /> : opt.label}
-                      {(showCorrect || tickedBeforeCheck) && <span className="sr-only">{opt.label}</span>}
+                      {(showCorrect && !missed) || tickedBeforeCheck ? <Check className="h-4 w-4" aria-hidden /> : opt.label}
+                      {((showCorrect && !missed) || tickedBeforeCheck) && <span className="sr-only">{opt.label}</span>}
                     </span>
                     <div className="min-w-0 flex-1 overflow-x-auto [&_.katex]:max-w-full">
                       {optionVersions(question, opt, langPref).map((v, i) => (
@@ -527,7 +531,8 @@ export default function QuestionCard({
                     key={opt.label}
                     className={cn(
                       "overflow-hidden rounded-xl border-[1.5px] bg-card transition-colors",
-                      showCorrect && "border-emerald-400 bg-emerald-50 dark:border-emerald-500 dark:bg-emerald-500/10",
+                      showCorrect && !missed && "border-emerald-400 bg-emerald-50 dark:border-emerald-500 dark:bg-emerald-500/10",
+                      missed && "border-dashed border-emerald-500 dark:border-emerald-400",
                       showWrong && "border-red-400 bg-red-50 dark:border-red-500 dark:bg-red-500/10",
                       dimmed && "opacity-60"
                     )}
