@@ -90,4 +90,9 @@ survives:
   figure on the wrong question), else null.
 
 Keep tool output small: never print the draft or long files back; open figures one at a time.
+
+**Your scratch files** (scripts, partial JSON, crops) go ONLY under `C:/tmp/PYQPs/UCEED/blind/<year>/tmp/`,
+never in a shared temp or scratchpad folder: several helpers run at once, and on 2026-11-04 one
+helper's `merge.py` overwrote another's there and two runs emptied a third paper's `derived.json`.
+Never read, write or run anything under another year's folder.
 When done, reply with ONLY: how many questions, the low-confidence numbers, and any `notes`.
