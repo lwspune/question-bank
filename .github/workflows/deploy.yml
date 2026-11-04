@@ -97,10 +97,14 @@ jobs:
       # does: next.config.mjs renders 4 pages at a time, and every notes page is
       # prebuilt (src/lib/notes/prerender.ts). Set explicitly rather than trusting
       # the CLI to set it.
+      # NODE_OPTIONS: Node's default heap (~4 GB) ran out compiling on
+      # 2026-11-04, once 203 board revision sheets joined the build (died at
+      # 3.59 GB). The runner has 16 GB; 8 GB leaves room for the page workers.
       - name: Build
         env:
           VERCEL: "1"
           NOTES_FULL_PRERENDER: "1"
+          NODE_OPTIONS: --max-old-space-size=8192
         run: npx --yes "$VERCEL_CLI" build --prod --token=${{ secrets.VERCEL_TOKEN }}
 
       # The last line of defence: a placeholder that reached a page, a script or
