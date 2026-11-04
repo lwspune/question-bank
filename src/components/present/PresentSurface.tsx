@@ -1,5 +1,6 @@
 "use client";
 
+import { formatNumericKey } from "@/lib/questions/formatKey";
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
   ChevronLeft,
@@ -249,7 +250,8 @@ export default function PresentSurface({
         {question.options.length > 0 && (
           <ul className="mt-4 grid list-none grid-cols-1 gap-x-10 gap-y-2 sm:grid-cols-2">
             {question.options.map((o) => {
-              const isKey = showAnswer && answer?.correctLabel === o.label;
+              const isKey =
+                showAnswer && (answer?.correctLabel === o.label || Boolean(answer?.correctLabels?.includes(o.label)));
               return (
                 <li
                   key={o.label}
@@ -300,12 +302,17 @@ export default function PresentSurface({
                 ({answer.correctLabel.toLowerCase()})
               </span>
             )}
-            {answer.numericAnswer !== null && (
+            {Boolean(answer.correctLabels?.length) && (
               <span className="font-sans text-xl font-bold text-emerald-700 dark:text-emerald-400">
-                {answer.numericAnswer}
+                {answer.correctLabels!.map((l) => `(${l.toLowerCase()})`).join(", ")}
               </span>
             )}
-            {!answer.correctLabel && answer.numericAnswer === null && (
+            {answer.numericAnswer !== null && (
+              <span className="font-sans text-xl font-bold text-emerald-700 dark:text-emerald-400">
+                {formatNumericKey(answer.numericAnswer, answer.numericAnswerMax ?? null)}
+              </span>
+            )}
+            {!answer.correctLabel && !answer.correctLabels?.length && answer.numericAnswer === null && (
               // Subjective questions, and the two defect classes the view model
               // refuses to guess at (no correct option, or two).
               <span className="font-sans text-sm text-muted-foreground">

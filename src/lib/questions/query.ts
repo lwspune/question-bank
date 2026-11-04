@@ -31,6 +31,8 @@ export type QuestionRow = {
   questionFormat?: QuestionFormat;
   /** The exact answer for a `numeric` (NAT) question; null for mcq/subjective. Migration 0061. */
   numericAnswer?: number | null;
+  /** Top of an accepted range for a numeric answer; null = numericAnswer is exact. Migration 0214. */
+  numericAnswerMax?: number | null;
   /** Original Q-number from the source PYQ paper's Excel "Q" column (nullable for the 150 pre-migration MHT-CET seed rows). */
   questionNumber: string | null;
   /** PYQ metadata — surfaced as the `[Q# · disambiguator · year]` provenance chip on the question card. */
@@ -340,7 +342,7 @@ export async function queryQuestionsByIds(
     .from("questions")
     .select(
       `
-      id, text, context, difficulty, solution, image_url, solution_image_url, solution_visual, set_id, question_format, numeric_answer,
+      id, text, context, difficulty, solution, image_url, solution_image_url, solution_visual, set_id, question_format, numeric_answer, numeric_answer_max,
       question_number, pyq_year, pyq_month, pyq_note, question_kind, cancelled_note,
       exam:exams!exam_id(id, name),
       subject:subjects!subject_id(id, name),
@@ -374,6 +376,7 @@ export async function queryQuestionsByIds(
     set_id: string | null;
     question_format: QuestionFormat;
     numeric_answer: number | null;
+    numeric_answer_max: number | null;
     question_number: string | null;
     pyq_year: number | null;
     pyq_month: string | null;
@@ -405,6 +408,7 @@ export async function queryQuestionsByIds(
       setId: r.set_id,
       questionFormat: r.question_format,
       numericAnswer: r.numeric_answer,
+      numericAnswerMax: r.numeric_answer_max,
       questionNumber: r.question_number,
       pyqYear: r.pyq_year,
       pyqMonth: r.pyq_month,

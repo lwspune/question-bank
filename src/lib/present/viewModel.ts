@@ -42,8 +42,12 @@ export type PresentOption = {
 export type PresentAnswer = {
   /** The single correct option label, or null when we cannot name one. */
   correctLabel: string | null;
-  /** The exact value for a numeric (NAT) question. */
+  /** Every correct option of a multiple-select question (migration 0214); absent otherwise. */
+  correctLabels?: string[];
+  /** The exact value for a numeric (NAT) question (the bottom of a range). */
   numericAnswer: number | null;
+  /** The top of a numeric answer keyed as a range; absent or null when exact. */
+  numericAnswerMax?: number | null;
   solution: string | null;
   solutionImageUrl: string | null;
 };
@@ -75,6 +79,7 @@ function soleCorrectLabel(options: { label: string; isCorrect: boolean }[]): str
 function answerOrNull(a: PresentAnswer): PresentAnswer | null {
   const empty =
     a.correctLabel === null &&
+    !a.correctLabels?.length &&
     a.numericAnswer === null &&
     !a.solution &&
     !a.solutionImageUrl;
@@ -119,8 +124,14 @@ export function fromQuestionRow(q: QuestionRow): PresentableQuestion {
       isCorrect: o.isCorrect,
     })),
     answer: answerOrNull({
-      correctLabel: soleCorrectLabel(q.options),
+      // A multiple-select key is a SET: correctLabel stays null (no single letter) and every
+      // correct option is named in correctLabels, so the projector never shows one as "the" answer.
+      correctLabel: q.questionFormat === "msq" ? null : soleCorrectLabel(q.options),
+      ...(q.questionFormat === "msq"
+        ? { correctLabels: q.options.filter((o) => o.isCorrect).map((o) => o.label).sort() }
+        : {}),
       numericAnswer: q.numericAnswer ?? null,
+      numericAnswerMax: q.numericAnswerMax ?? null,
       solution: q.solution,
       solutionImageUrl: q.solutionImageUrl ?? null,
     }),

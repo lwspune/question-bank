@@ -291,3 +291,21 @@ describe("fromReviewItem (/mock review)", () => {
     expect(JSON.stringify(p)).not.toContain("selected");
   });
 });
+
+describe("fromQuestionRow: multiple-select and range answers (migration 0214)", () => {
+  it("names every correct option of a multiple-select question, never just one", () => {
+    const row = makeQuestionRow({
+      questionFormat: "msq",
+      options: ["A", "B", "C", "D"].map((label) => ({ label, text: label, imageUrl: null, isCorrect: label === "A" || label === "C" })) as QuestionRow["options"],
+    });
+    const p = fromQuestionRow(row);
+    expect(p.answer?.correctLabel).toBeNull();
+    expect(p.answer?.correctLabels).toEqual(["A", "C"]);
+  });
+
+  it("carries the top of a numeric range", () => {
+    const p = fromQuestionRow(makeQuestionRow({ questionFormat: "numeric", options: [], numericAnswer: 132.8, numericAnswerMax: 133.1 }));
+    expect(p.answer?.numericAnswer).toBe(132.8);
+    expect(p.answer?.numericAnswerMax).toBe(133.1);
+  });
+});
