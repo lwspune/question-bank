@@ -15,8 +15,8 @@ nothing is committed on anything else.
 | 2023 | 68 q (18 / 18 / 32) | **PUBLIC 2026-11-04**: 46 rows; 18 MSQ + 4 range held. Five picture-only stems |
 | 2022 | 68 q (18 / 18 / 32) | **PUBLIC 2026-11-04**: 49 rows; 18 MSQ + 1 range held. Q6, Q39 animations (note + grace) |
 | 2021 | 68 q (18 / 18 / 32) | **PUBLIC 2026-11-04**: 49 rows; 18 MSQ + 1 range held. Q1 key not reproducible from the figure, Q15 two answers (note + grace) |
-| 2020 | 68 q (18 / 18 / 32) | in progress |
-| 2019 | 85 q (20 / 20 / 45) | in progress |
+| 2020 | 68 q (18 / 18 / 32) | **PUBLIC 2026-11-04**: 50 rows (2 cancelled by IIT Bombay: Q64, Q65); 18 MSQ held |
+| 2019 | 85 q (20 / 20 / 45) | **PUBLIC 2026-11-04**: 65 rows; 20 MSQ held. Q3, Q17 two answers; Q20's key (160) not reproducible from the sketch (note + grace) |
 | 2015-2018 | 2015: 100 (20/30/50) · 2016: 80 (20/20/40) · 2017-18: 85 (20/25/40) | **ON HOLD (owner, 2026-11-04): ingest only after demand for UCEED is evaluated.** Keys transcribed and committed (`data/<year>.key.json`), papers extract cleanly; start at the helper step |
 
 **Blind measurement (2026):** a helper solving from questions + figures alone agreed with IIT
