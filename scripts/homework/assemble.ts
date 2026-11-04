@@ -116,7 +116,9 @@ function main() {
     examName,
     subjectName,
     title,
-    summary: isPapers
+    summary: examName === "NDA"
+      ? `NDA ${subjectName} past questions, ${sittings[0]} to ${sittings[sittings.length - 1]}, five a day. Questions UPSC asked again come first, highest count first, then the question types it keeps asking, then every other question. A set of linked items counts as one question.`
+      : isPapers
       ? `${examName} ${subjectName} board questions, ${sittings[0].slice(-4)} to ${sittings[sittings.length - 1].slice(-4)}, five a day. Questions the board asked again come first, highest count first, then the question types it keeps asking, then every other question.`
       : `${examName} ${subjectName} board questions, ${sittings[0]} to ${sittings[sittings.length - 1]}, five a day. Questions the board asked again in another year come first, highest count first, then the question types it keeps asking, then every other question. A case study counts as one question.`,
     perDay: 5,

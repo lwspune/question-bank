@@ -46,6 +46,16 @@ import ChapterShareCard from "@/components/ChapterShareCard";
 import { mockCtaCopy, withChapterTest } from "@/lib/mocks/chapterTests";
 import { listChapterTests } from "@/lib/mocks/chapterTestsQuery";
 import { canonicalFor } from "@/lib/sites/intl";
+import { loadChapterTopPyqs } from "@/lib/homework/chapterTop";
+import NotesTopPyqs from "./NotesTopPyqs";
+
+/**
+ * Notes subjects that show the chapter's Top 10 PYQs (2026-11-04). The list
+ * comes from the subject's homework plan, so a subject needs a reviewed,
+ * published plan first; NDA Maths is the first. Adding a subject changes its
+ * shipped notes pages, so it is the owner's call each time.
+ */
+const TOP_PYQS_SUBJECTS: ReadonlySet<string> = new Set(["nda-maths"]);
 
 /**
  * Chapter-agnostic renderer for a /notes chapter landing page. Each chapter's
@@ -113,6 +123,16 @@ export default async function NotesChapterLanding({ chapter }: Props) {
     chapterTax ? (await listChapterTests()).get(chapterTax.id) : undefined,
     meta.chapterName
   );
+
+  // The chapter's Top 10 PYQs. A failed read drops the section, never the page.
+  const top =
+    chapterTax && TOP_PYQS_SUBJECTS.has(chapter.subjectRoute)
+      ? await loadChapterTopPyqs(
+          supabase,
+          { examId: taxonomy.examId, subjectId: taxonomy.subjectId, chapterId: chapterTax.id },
+          "notes"
+        )
+      : null;
 
   const subtopicIds = meta.subtopicOrder
     .map((slug) => chapter.notes[slug]?.subtopicName)
@@ -394,6 +414,15 @@ export default async function NotesChapterLanding({ chapter }: Props) {
           })}
         </ul>
       </section>
+
+      {top && (
+        <NotesTopPyqs
+          top={top}
+          examName={chapter.examName}
+          chapterName={meta.chapterName}
+          supabaseUrl={process.env.NEXT_PUBLIC_SUPABASE_URL!}
+        />
+      )}
 
       {/* The chapter's two study tools, as cards rather than grey rows. The
           revision sheet leads: it is the one a student comes back for. */}
