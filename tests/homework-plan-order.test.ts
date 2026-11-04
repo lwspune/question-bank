@@ -25,11 +25,47 @@ function input(over: Partial<PlanInput> = {}): PlanInput {
 }
 
 describe("buildPlanOrder", () => {
-  it("puts questions asked again first, highest count first, in their latest wording", () => {
+  it("ranks repeats and types together by how often they were asked, an exact repeat first on a tie (2026-11-04)", () => {
+    // A is a repeat asked 3 times, T a type asked 3 times, B a repeat asked twice.
     const items = buildPlanOrder(input());
-    expect(items.slice(0, 2).map((i) => [i.questionId, i.part])).toEqual([["a3", 1], ["b2", 1]]);
+    expect(items.slice(0, 3).map((i) => [i.questionId, i.part])).toEqual([["a3", 1], ["t2", 2], ["b2", 1]]);
     expect(items[0].note).toBe("Asked 3 times: Mar 2015, Mar 2017, Mar 2018");
-    expect(items[1].note).toBe("Asked 2 times: Mar 2016, Mar 2018* (* = numbers or wording changed that year)");
+    expect(items[2].note).toBe("Asked 2 times: Mar 2016, Mar 2018* (* = numbers or wording changed that year)");
+  });
+
+  it("puts a type asked more often ahead of a repeat asked less often", () => {
+    // The NDA Matrices case: a type asked 8 times sat behind repeats asked twice.
+    const inp = input();
+    inp.groups[2].sittings = ["Mar 2015", "Mar 2016", "Mar 2017", "Mar 2018"];
+    expect(buildPlanOrder(inp)[0].questionId).toBe("t2");
+  });
+
+  it("prints a repeat once, as its type's example, when the type is asked more often", () => {
+    // Its other wordings are never printed, and it gets no slot of its own.
+    const items = buildPlanOrder(
+      input({
+        questions: [q("m1", "Mar 2015"), q("r1", "Mar 2016"), q("m3", "Mar 2017"), q("r2", "Mar 2018")],
+        groups: [
+          { tier: "repeat", label: "R", sittings: ["Mar 2016", "Mar 2018*"], questionIds: ["r1", "r2"] },
+          { tier: "type", label: "M", sittings: ["Mar 2015", "Mar 2016", "Mar 2017", "Mar 2018"], questionIds: ["m1", "r1", "m3", "r2"] },
+        ],
+      })
+    );
+    expect(items[0]).toMatchObject({ questionId: "r2", part: 2, note: "This type asked 4 times: Mar 2015, Mar 2016, Mar 2017, Mar 2018. This one: Mar 2018" });
+    const ids = items.map((i) => i.questionId);
+    expect(ids).not.toContain("r1");
+    expect(items.filter((i) => i.part === 1)).toEqual([]);
+    expect([...ids].sort()).toEqual(["m1", "m3", "r2"]);
+  });
+
+  it("records the group each slot stands for, by its place in the input", () => {
+    // groups[0] = repeat B, groups[1] = repeat A, groups[2] = type T.
+    const byId = new Map(buildPlanOrder(input()).map((i) => [i.questionId, i.group]));
+    expect(byId.get("a3")).toBe(1);
+    expect(byId.get("b2")).toBe(0);
+    expect(byId.get("t2")).toBe(2);
+    expect(byId.get("t1")).toBe(2); // asked once, of type T
+    expect(byId.get("s1")).toBeUndefined(); // asked once, no type
   });
 
   it("never prints another wording of a question already printed", () => {
