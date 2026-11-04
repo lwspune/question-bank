@@ -39,7 +39,14 @@ BARE_MARKER = re.compile(r"^\s*(\d{1,3})(?:\.(?!\d)|\))")
 OPTION = re.compile(r"^\s*\(?([A-D])[.)]\s+(.*)$")
 TINY = 40  # px: bullets and icons, not figures
 SCANNED_PAGE = 0.6  # a picture covering more of the page than this is a scanned page, not a figure
+INSTRUCTIONS_MAX = 15  # a numbered instruction list is shorter than this
 MAX_GAP = 3  # question numbers that may go missing in a row (scanned pages)
+# Part A's question count per year, from IIT Bombay's key. Part B (drawing) follows and is
+# numbered too: "Q.69" in 2022, a fresh "1." in 2015, which the restart rule above would read
+# as instructions and so throw away all of Part A. The first marker after the last Part A
+# question therefore ends the stream.
+PART_A = {2015: 100, 2016: 80, 2017: 85, 2018: 85, 2019: 85, 2020: 68, 2021: 68, 2022: 68,
+          2023: 68, 2024: 57, 2025: 57, 2026: 57}
 
 
 def main(year: str) -> None:
@@ -78,12 +85,21 @@ def main(year: str) -> None:
     marker = Q_MARKER if q_style else BARE_MARKER
     questions: dict[int, dict] = {}
     current = None
+    last = PART_A[int(year)]
     for pno, _y, _x, kind, payload in items:
         if kind == "text":
             m = marker.match(payload)
+            if m and current is not None and current["n"] == last:
+                break  # Part B begins
             expected = (current["n"] + 1) if current else 1
-            if m and not q_style and int(m.group(1)) == 1 and current is not None:
-                questions, current, expected = {}, None, 1  # a list that came before the questions
+            # A list that came before the questions. Only an instruction list restarts the count:
+            # short, and with no picture in any of its items (a cover logo comes before them all).
+            # A "1." in a list INSIDE a question (2015 has several) would otherwise throw the
+            # paper away.
+            if (m and not q_style and int(m.group(1)) == 1 and current is not None
+                    and current["n"] <= INSTRUCTIONS_MAX
+                    and not any(q["xrefs"] for q in questions.values())):
+                questions, current, expected = {}, None, 1
             # A small jump is allowed: a question printed only on a scanned page has no text marker.
             if m and expected <= int(m.group(1)) <= expected + MAX_GAP:
                 n = int(m.group(1))
