@@ -44,7 +44,7 @@ export const ISOMERISM_NOTE: SubtopicNote = {
         { prompt: "Ligand that can form linkage isomers: SCN⁻, H₂O, C₂O₄²⁻?", answer: "SCN⁻" },
         { prompt: "Isomerism of [Fe(H₂O)₅SCN]²⁺ and [Fe(H₂O)₅NCS]²⁺?", answer: "Linkage" },
       ],
-      pyqExampleId: "b8bc795a-b946-45cd-8388-ba21e65e6e24",
+      pyqExampleId: "7b3b67e3-fdc2-444d-8a5b-b87714a96d24",
       traps: [
         {
           title: "Calling a water swap 'ionisation'",

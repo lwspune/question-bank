@@ -47,7 +47,7 @@ export const PHYSICAL_PROPERTIES_NOTE: SubtopicNote = {
         { prompt: "Lowest b.p.: CH₃OC₂H₅, CH₃COOH, n-butane, propan-1-ol?", answer: "n-Butane" },
         { prompt: "Gaseous ether at room temperature?", answer: "Methoxyethane" },
       ],
-      pyqExampleId: "46507e18-58aa-46f1-a521-b63eed13352a",
+      pyqExampleId: "b6aa52c5-283a-4c6d-b50f-df98368d33e7",
       traps: [
         {
           title: "Ranking iso-butyl above sec-butyl",
