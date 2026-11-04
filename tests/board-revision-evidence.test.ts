@@ -63,6 +63,13 @@ describe("checkSourceChapter", () => {
     expect(checkSourceChapter("NCERT Mathematics Part II (CBSE Class 12), Chapter 8", short, "Application of Integrals")).toEqual([]);
   });
 
+  // Balbharati's Class 10 Maths books head a chapter "2 Quadratic Equations", no dot.
+  it("reads a heading with no dot after the number", () => {
+    const maths = "2 Quadratic Equations\r\n\r\nLet's study.\r\nPractice Set 2.1 1. Write any two quadratic equations.\r\n30";
+    expect(checkSourceChapter("Balbharati Mathematics Part I Std X (Maharashtra State Board), Chapter 2", maths, "Quadratic Equations")).toEqual([]);
+    expect(checkSourceChapter("Balbharati Mathematics Part I Std X, Chapter 3", maths, "Quadratic Equations").join()).toMatch(/3.*2/);
+  });
+
   it("says so when either number is missing", () => {
     expect(checkSourceChapter("Balbharati Chemistry Std XII", sections, "Halogen Derivatives").join()).toMatch(/source/);
     expect(checkSourceChapter("Balbharati, Chapter 10", "no numbers here", "Halogen Derivatives").join()).toMatch(/book/);

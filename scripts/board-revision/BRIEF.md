@@ -25,8 +25,9 @@ Your brief names a chapter folder written by `npm run revision:prepare`:
   statements from the prose in the book's own words; rebuild formulas from the
   subject and cross-check them against the garbled text.
 - `pyqs.txt`: every board past-paper question of the chapter, one a line:
-  `<year> <month> [<format>] [<n> marks] <text>`, newest first. HSC lines have
-  a month and no marks; CBSE lines have marks and no month. A CBSE year has
+  `<year> <month> [<format>] [<n> marks] <text>`, newest first. HSC 12 lines have
+  a month and no marks; CBSE lines have marks and no month; MH SSC 10 lines
+  have both (a few have no marks). A CBSE year has
   several sets, so the same idea often appears more than once in one year, and
   a case-study part is listed without its passage. A line ending
   `[has a figure, not shown here]` refers to a diagram you cannot see: group
@@ -44,12 +45,21 @@ Search with grep; never print a whole file.
   derivation and its numerical may share a topic if the topic says so: "Angle of
   banking: formula or a numerical"). `years` = every distinct year of the lines
   in that group, newest first, each once. Order topics by how many questions
-  each groups. **`marks`:** HSC never (our HSC data records none). CBSE: give
-  the marks the topic's cited lines carry most often (the checker refuses any
-  other number); leave it out when the group mixes marks evenly.
+  each groups. **`marks`:** HSC 12 never (our HSC data records none). CBSE and
+  MH SSC 10: give the marks the topic's cited lines carry most often (the
+  checker refuses any other number); leave it out when the group mixes marks
+  evenly.
 - **Old syllabus stays out.** A past-paper question on something the current
   book does not teach (grep `book.txt` to be sure) goes in no topic and nowhere
   in the sheet. Say so in your report.
+  **CBSE:** a topic CBSE set in 2025 or 2026 stays even when the rationalised
+  NCERT book dropped it; write it from the standard result and say so in your
+  report. Drop only topics last set before 2024 that the book no longer teaches.
+  **MH SSC 10:** the 2016 to 2018 papers were set on the OLD Class 10 books;
+  the current ones arrived in 2018-19. Some old topics are now taught in
+  Class 9 (standard-position trigonometry, resistors in series, transport and
+  excretion), so `book.txt` is the test: a topic it does not teach is out,
+  however often 2016 to 2018 asked it.
 - **Everything else must be taught in `book.txt`.** If the board asks it, it
   should be in the sheet.
 - **Diagrams:** name the book's figure and list the labels an examiner looks
@@ -62,7 +72,13 @@ Search with grep; never print a whole file.
   check.
 - **Wording:** plain, simple English; for definitions and laws, the book's own
   wording, trimmed. No em dashes anywhere in your words.
-- `examSlug` is as given in your brief (`mh-hsc-12` or `cbse-12`);
+- **MH SSC 10 Maths and Science `book.txt` loses notation:** powers print flat
+  (`x2` is \(x^2\)), roots and many symbols vanish, and the text still reads
+  like clean English. Never copy a formula or equation from it; rebuild it
+  from the subject and use the text only to see which results the book
+  teaches. Quote prose only.
+- `examSlug` is as given in your brief (`mh-hsc-12`, `cbse-12`, `mh-ssc-10`
+  or `cbse-10`);
   `subjectName` and `chapterName` are as given in your brief (they must match
   the database exactly). For **CBSE 12**, `source` is
   `NCERT <Subject> Part <I or II> (CBSE Class 12), Chapter <n>` (Biology is one
@@ -79,6 +95,14 @@ Search with grep; never print a whole file.
   `Balbharati Mathematics and Statistics Part I Std XII (Maharashtra State Board), Chapter <n>`
   (Mathematical Logic to Linear Programming) and `... Part II ...` (Differentiation
   to Binomial Distribution).
+  For **MH SSC 10**, `source` is `Balbharati <Book> Std X (Maharashtra State Board), Chapter <n>`
+  with `<Book>` one of `Mathematics Part I` (Algebra), `Mathematics Part II`
+  (Geometry), `Science and Technology Part 1`, `Science and Technology Part 2`,
+  `Geography`, and for the shared History and Political Science book
+  `History and Political Science Std X (Maharashtra State Board), History Chapter <n>`
+  (or `Political Science Chapter <n>`; each part numbers from 1). For
+  **CBSE 10**, `source` is `NCERT <Mathematics or Science> (CBSE Class 10), Chapter <n>`.
+  Class 10 sheets are read by 15-year-olds: keep every line short and plain.
 
 ## Evidence (required)
 

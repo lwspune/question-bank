@@ -52,9 +52,11 @@ export function bookChapterNumber(bookText: string, chapterName: string): string
   // close with "Miscellaneous Exercise on Chapter 8".
   const misc = bookText.match(/Miscellaneous Exercise on Chapter\s+(\d{1,2})\b/i);
   if (misc) return misc[1];
+  // The heading carrying the chapter's name: "4. Primary Economic Activities"
+  // (Geography XII), or with no dot, "2 Quadratic Equations" (Maths X).
   const want = norm(chapterName);
   for (const line of bookText.split(/\r?\n/)) {
-    const m = line.match(/^\s*(\d{1,2})\s*\.\s*(.+)$/);
+    const m = line.match(/^\s*(\d{1,2})\s*\.?\s+(.+)$/);
     if (m && norm(m[2]).startsWith(want)) return m[1];
   }
   return null;
