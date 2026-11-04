@@ -122,9 +122,10 @@ describe("deriveMpscSittings", () => {
     // Measured: 24 cancelled across the 2013-2022 final keys, plus 2023's Q38 and Q75.
     // 2023 adds Q38 and Q75 (cancelled) and Q17, Q50 (owner notices, 2026-11-03); 2025 adds Q84 (notice).
     expect(got.find((s) => s.key === "ssp-2023")?.graceNumbers).toEqual([17, 38, 50, 75]);
-    expect(got.find((s) => s.key === "ssp-2025")?.graceNumbers).toEqual([15, 47, 50, 84, 87, 89]);
+    expect(got.find((s) => s.key === "ssp-2025")?.graceNumbers).toEqual([15, 36, 39, 47, 50, 87, 89, 90]); // final key: 36 + 90 cancelled, 39 a new doubt, 84 settled
     // 29 before the 2026-11-03 key-doubt ruling, which adds 34 GS questions.
-    expect(got.reduce((n, s) => n + s.graceNumbers.length, 0)).toBe(63);
+    // 2026-11-04: ssp-2025 moved to MPSC's final key (+Q36, Q90 cancelled, +Q39 doubt, -Q84 settled).
+    expect(got.reduce((n, s) => n + s.graceNumbers.length, 0)).toBe(73); // + ssp-2026 final key: Q14, Q22, Q25, Q50, Q51, Q70 cancelled; Q60, Q77 notices
   });
 
   it("covers every configured paper with a distinct slug", () => {
@@ -132,7 +133,7 @@ describe("deriveMpscSittings", () => {
     expect(got).toHaveLength(PAPERS.length);
     expect(new Set(got.map((s) => s.slug)).size).toBe(PAPERS.length);
     // Measured: 35 cancelled questions across the 14 official keys, plus 31 key-doubt notices (2026-11-03).
-    expect(got.reduce((n, s) => n + s.graceNumbers.length, 0)).toBe(66);
+    expect(got.reduce((n, s) => n + s.graceNumbers.length, 0)).toBe(72); // + 2025-c Q20 and 2026-b Q66 cancelled; 2025-b Q1, Q20, Q87 and 2026-b Q50 notices
   });
 });
 
@@ -237,7 +238,7 @@ describe("State Services CSAT (Paper II): every cover, 80 questions, 200 marks, 
   });
 
   it("mocks every sitting but 2022 (dropped by the owner)", () => {
-    expect(CSAT_MOCK_PAPERS.map((p) => p.pyqYear).sort()).toEqual([2013, 2014, 2015, 2016, 2018, 2019, 2020, 2021, 2023, 2024, 2025]);
+    expect(CSAT_MOCK_PAPERS.map((p) => p.pyqYear).sort()).toEqual([2013, 2014, 2015, 2016, 2018, 2019, 2020, 2021, 2023, 2024, 2025, 2026]);
   });
 
   const got = deriveMpscSittings(CSAT_MOCK_PAPERS, undefined, sspCsatMockTitle);
@@ -252,7 +253,7 @@ describe("State Services CSAT (Paper II): every cover, 80 questions, 200 marks, 
     expect(sit(2024).graceNumbers).toEqual([40, 42, 64]);
     expect(sit(2025).graceNumbers).toEqual([58]);
     // 20 before the key-doubt ruling, which adds 47 CSAT questions.
-    expect(got.reduce((n, s) => n + s.graceNumbers.length, 0)).toBe(67);
+    expect(got.reduce((n, s) => n + s.graceNumbers.length, 0)).toBe(71); // + ssp-csat-2026 notices Q13, Q57, Q58, Q70
   });
 
   it("carries the final key's per-option marks for every Decision Making question", () => {
@@ -261,7 +262,7 @@ describe("State Services CSAT (Paper II): every cover, 80 questions, 200 marks, 
     // Read from the booklet's own set: 2023 is a Set-D booklet.
     expect(sit(2023).optionMarks?.[76]).toEqual({ A: 1.5, B: 0, C: 1, D: 2.5 });
     // 2013 prints seven, every later booklet five.
-    expect(got.reduce((n, s) => n + Object.keys(s.optionMarks ?? {}).length, 0)).toBe(57);
+    expect(got.reduce((n, s) => n + Object.keys(s.optionMarks ?? {}).length, 0)).toBe(62); // + ssp-csat-2026 Q76-80
   });
 
   it("drops the penalty on the fifteen questions 2015's final key exempts (key p.3)", () => {
@@ -279,8 +280,8 @@ describe("State Services 2023-2025 key notices (owner 2026-11-03: notice + grace
       .map((n) => `${p.id} Q${n}`)
   );
 
-  it("carries exactly the five questions the owner settled", () => {
-    expect(noticed.sort()).toEqual(["ssp-2023 Q17", "ssp-2023 Q50", "ssp-2025 Q84", "ssp-csat-2024 Q64", "ssp-csat-2025 Q58"].sort());
+  it("carries exactly the four questions the owner settled (ssp-2025 Q84 dropped: the final key agrees)", () => {
+    expect(noticed.sort()).toEqual(["ssp-2023 Q17", "ssp-2023 Q50", "ssp-csat-2024 Q64", "ssp-csat-2025 Q58"].sort());
   });
 
   it("gives every notice both languages, balanced maths and no control characters", () => {

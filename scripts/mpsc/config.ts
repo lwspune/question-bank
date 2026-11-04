@@ -51,9 +51,21 @@ export const SSP_CSAT_DIR = "C:/Users/vilas/Downloads/mpsc-ssp-csat";
  * key-<gs|csat>-<year>.pdf. The 2024 booklets are a candidate's used copies,
  * photographed (ticks and circles on options, an "@SPOTLESS_MPSC" mark, some
  * pages sideways): the marks are a cross-check at most, never the key. The 2025
- * keys are MPSC's FIRST keys (objections until 18 Nov 2025); no final key found.
+ * papers shipped on MPSC's FIRST keys and moved to the FINAL keys on 2026-11-04
+ * (MPSC_2026_DIR).
  */
 export const SSP_2023_DIR = "C:/Users/vilas/Downloads/mpsc-ssp-2023-2025";
+/**
+ * MPSC's own files from mpsc.gov.in (2026-11-04): the 2026 sittings' booklets and
+ * FINAL keys, and the FINAL keys of both 2025 State Services papers (published
+ * 2 Jan 2026), which replaced the first keys those papers shipped on. The site's
+ * file links only work through its own pages; see README "Sources".
+ */
+export const MPSC_2026_DIR = "C:/Users/vilas/Downloads/mpsc-2026";
+const FINAL_KEY_2025: Record<string, string> = {
+  gs: `${MPSC_2026_DIR}/key-gs-2025-final.pdf`,
+  csat: `${MPSC_2026_DIR}/key-csat-2025-final.pdf`,
+};
 
 /** The exams this pipeline writes to. Ids are printed by seed.ts --apply. */
 export type ExamKey = "gbc" | "ssp" | "fsp" | "asp";
@@ -176,6 +188,18 @@ export const PAPERS: Paper[] = [
   paper("2023-bc", "B+C", 2023, "2023-04-30", "J17", [432, 471], [472, 473], "Group B & C · 30 Apr 2023"),
   paper("2024-b", "B", 2024, "2025-02-02", "H19", [474, 513], [514, 515], "Group B · 2 Feb 2025"),
   paper("2024-c", "C", 2024, "2025-06-01", "R19", [516, 555], [556, 557], "Group C · 1 Jun 2025"),
+  // From mpsc.gov.in (2026-11-04): each booklet and final key its own file in MPSC_2026_DIR.
+  ...([
+    ["2025-b", "B", 2025, "2026-01-04", "M21", "gb-2025", "Group B · 4 Jan 2026"],
+    ["2025-c", "C", 2025, "2026-01-11", "P21", "gc-2025", "Group C · 11 Jan 2026"],
+    ["2026-b", "B", 2026, "2026-06-14", "H25", "gb-2026", "Group B · 14 Jun 2026"],
+  ] as const).map(([id, group, year, date, code, file, label]) =>
+    paper(id, group, year, date, code, [1, 40], [1, 2], label, {
+      sourcePdf: `${MPSC_2026_DIR}/paper-${file}.pdf`,
+      keyPdf: `${MPSC_2026_DIR}/key-${file}.pdf`,
+      bookletSet: "A",
+    })
+  ),
 ];
 
 /**
@@ -244,12 +268,8 @@ const SSP_2023_2025_NOTICES: Record<string, Record<number, { en: string; mr: str
       "आयोगाच्या उत्तरतालिकेत पर्याय C बरोबर दिला आहे. प्रत्येक घराला नळजोडणी व मलनिःसारण जोडणी देणे हे अमृत योजनेचे पहिले उद्दिष्ट आहे, म्हणून विधान C बरोबर आहे. चुकीचे विधान बहुधा B आहे: अमृत योजना 2015 मध्ये नगरविकास मंत्रालयाने सुरू केली; त्याचे गृहनिर्माण व नागरी व्यवहार मंत्रालय 2017 मध्ये झाले."
     ),
   },
-  "ssp-2025": {
-    84: notice(
-      "MPSC's key gives option A, 1990. That is the year of the National Commission for Women Act; the Commission itself was set up on 31 January 1992, option C.",
-      "आयोगाच्या उत्तरतालिकेत पर्याय A, 1990, बरोबर दिला आहे. 1990 हे राष्ट्रीय महिला आयोग कायद्याचे वर्ष आहे; आयोग प्रत्यक्ष 31 जानेवारी 1992 रोजी स्थापन झाला, म्हणजे पर्याय C."
-    ),
-  },
+  // ssp-2025 Q84's notice (key 1990 vs 1992) was dropped 2026-11-04: MPSC's
+  // FINAL key gives C, 1992.
   "ssp-csat-2024": {
     64: notice(
       "MPSC's key gives option B. The passage says we are surrounded by people who enjoy the suffering of others; it does not say that most people become happy that way. Option A follows the whole paragraph: empathy brings kind acts and happiness, while jealousy and greed poison social life and lower the self-esteem of others.",
@@ -284,10 +304,15 @@ export const SSP_PAPERS: Paper[] = [
     ...ssp(y, date, code, [1, n], label),
     ...notices2023(`ssp-${y}`),
     sourcePdf: `${SSP_2023_DIR}/paper-gs-${y}.pdf`,
-    keyPdf: `${SSP_2023_DIR}/key-gs-${y}.pdf`,
+    keyPdf: y === 2025 ? FINAL_KEY_2025.gs : `${SSP_2023_DIR}/key-gs-${y}.pdf`,
     bookletSet: set,
-    ...(y === 2025 ? { provisionalKey: true } : {}),
   })),
+  {
+    ...ssp(2026, "2026-05-31", "D25", [1, 48], "31 May 2026"),
+    sourcePdf: `${MPSC_2026_DIR}/paper-gs-2026.pdf`,
+    keyPdf: `${MPSC_2026_DIR}/key-gs-2026.pdf`,
+    bookletSet: "A",
+  },
 ];
 
 /**
@@ -345,11 +370,17 @@ export const SSP_CSAT_PAPERS: Paper[] = [
     ...csat(y, date, code, n, label),
     ...notices2023(`ssp-csat-${y}`),
     sourcePdf: `${SSP_2023_DIR}/paper-csat-${y}.pdf`,
-    keyPdf: `${SSP_2023_DIR}/key-csat-${y}.pdf`,
+    keyPdf: y === 2025 ? FINAL_KEY_2025.csat : `${SSP_2023_DIR}/key-csat-${y}.pdf`,
     keyPages: [1, 2],
     bookletSet: set,
-    ...(y === 2025 ? { provisionalKey: true } : {}),
   })),
+  {
+    ...csat(2026, "2026-05-31", "E25", 40, "31 May 2026"),
+    sourcePdf: `${MPSC_2026_DIR}/paper-csat-2026.pdf`,
+    keyPdf: `${MPSC_2026_DIR}/key-csat-2026.pdf`,
+    keyPages: [1, 2],
+    bookletSet: "A",
+  },
 ];
 
 /**

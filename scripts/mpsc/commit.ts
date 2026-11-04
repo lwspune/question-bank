@@ -31,6 +31,7 @@ import { checkFigureFile, figureWatermarkIssue } from "../lib/figures/watermark"
 import { normalizeNewlines } from "../../src/lib/text/normalizeNewlines";
 import { validateRow } from "../../src/lib/upload/validate";
 import { CREATED_BY, DATA_DIR, ORG_ID, dataPath, examIdFor, expectedNumbers, requirePaper } from "./config";
+import { cancelledNoteFor } from "./finalKey";
 import { buildRecords, parityIssues, questionSolution, type BilingualQuestion, type KeyLetter } from "./lib";
 
 const BUCKET = "question-images";
@@ -55,9 +56,7 @@ async function main() {
 
   // The notice a cancelled question carries (migration 0119). It names the
   // sitting, because "cancelled" is a fact about one paper's final key.
-  const cancelledNote =
-    `Cancelled by MPSC in the final answer key for this paper (${paper.pyqNote}). ` +
-    `No option is correct. In PYQ Vault mocks it is awarded to every candidate.`;
+  const cancelledNote = cancelledNoteFor(paper.pyqNote);
   // Owner-settled doubtful keys (config.ts Paper.notices): MPSC's key is kept,
   // the notice heads the solution, and the mock builder graces the question.
   const notices = paper.notices ?? {};

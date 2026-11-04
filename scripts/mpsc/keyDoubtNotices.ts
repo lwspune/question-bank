@@ -11,6 +11,27 @@ import { notice } from "./notice";
 type Notice = { en: string; mr: string };
 
 export const KEY_DOUBT_NOTICES: Record<string, Record<number, Notice>> = {
+  // From MPSC's FINAL keys of the 2025-26 papers, found when the blind solve disagreed (2026-11-04).
+  "2025-b": {
+    1: notice(
+      "MPSC's key gives option C, Shivrampant Paranjape. Paranjape was tried for sedition in 1908 for his articles in Kal, but the sedition case brought over writing on the Muzaffarpur bomb case was against Lokmanya Tilak, for his Kesari articles of May and June 1908: option A.",
+      "आयोगाच्या उत्तरतालिकेत पर्याय C, शिवरामपंत परांजपे, बरोबर दिला आहे. परांजपे यांच्यावर 1908 मध्ये 'काळ' मधील लेखांबद्दल राजद्रोहाचा खटला झाला; पण मुजफ्फरपूर बॉम्ब प्रकरणावरील लेखनाबद्दलचा राजद्रोहाचा खटला लोकमान्य टिळकांवर, मे व जून 1908 मधील केसरीतील लेखांबद्दल, भरला गेला: पर्याय A."
+    ),
+    20: notice(
+      "MPSC's key gives option D, statements (b) and (c). Statement (a) is not correct (the Tansa flows into the Vaitarna, and the Vaitarna reaches the sea on its own), but (c) is doubtful too: the Manyad is a tributary of the Girna, which belongs to the Tapi basin, not the Godavari. On that reading only (b) is true, and no option says so.",
+      "आयोगाच्या उत्तरतालिकेत पर्याय D, विधाने (b) व (c), बरोबर दिला आहे. विधान (a) बरोबर नाही (तानसा वैतरणेला मिळते आणि वैतरणा स्वतंत्रपणे समुद्राला मिळते), पण (c) सुद्धा संशयास्पद आहे: मन्याड ही गिरणेची उपनदी आहे आणि गिरणा तापी खोऱ्यात आहे, गोदावरी खोऱ्यात नाही. त्यानुसार फक्त (b) बरोबर ठरते, आणि असा पर्याय दिलेला नाही."
+    ),
+    87: notice(
+      "No option is right as printed. 52 : 13 is 4 : 1, so the states outnumber the union territories by \\(\\frac{52 - 13}{13} \\times 100 = 300\\%\\), which is not an option. MPSC's key gives option C, 60.",
+      "छापलेल्या स्वरूपात कोणताही पर्याय बरोबर नाही. 52 : 13 म्हणजे 4 : 1, म्हणून राज्यांची संख्या केंद्रशासित प्रदेशांपेक्षा \\(\\frac{52 - 13}{13} \\times 100 = 300\\%\\) ने जास्त आहे; हे उत्तर पर्यायांमध्ये नाही. आयोगाच्या उत्तरतालिकेत पर्याय C, 60, दिला आहे."
+    ),
+  },
+  "2026-b": {
+    50: notice(
+      "MPSC's key gives option C, both statements correct. Statement A is right (Manohar Joshi and Pankaj Udhas received the Padma Bhushan in 2025, posthumously), but in B Ashok Saraf's 2025 award was the Padma Bhushan, not the Padma Shri; Achyut Palav's was the Padma Shri. That makes the answer only A, option A.",
+      "आयोगाच्या उत्तरतालिकेत पर्याय C, दोन्ही विधाने बरोबर, दिला आहे. विधान A बरोबर आहे (मनोहर जोशी व पंकज उधास यांना 2025 मध्ये मरणोत्तर पद्मभूषण मिळाला), पण B मध्ये अशोक सराफ यांना 2025 मध्ये पद्मश्री नव्हे तर पद्मभूषण मिळाला; अच्युत पालव यांना पद्मश्री मिळाला. त्यामुळे उत्तर फक्त A, पर्याय A, ठरते."
+    ),
+  },
   "2017-b": {
     60: notice(
       "MPSC's key gives option A, only (a). Statement (c) is not correct either: the 2013-14 budget put the fiscal deficit at 4.8% of GDP, not 2.5%. So the key leaves out a second statement that is not correct, and no option names both (a) and (c).",
@@ -434,6 +455,11 @@ export const KEY_DOUBT_NOTICES: Record<string, Record<number, Notice>> = {
       "MPSC's key gives option C, Prarthana Samaj. The initiation rite of eating bread made by a Christian and drinking water from a Muslim belongs to the Paramahansa Mandali, the forerunner of the Prarthana Samaj, not to any of the Samajs listed.",
       "आयोगाच्या उत्तरतालिकेत पर्याय C, प्रार्थना समाज, बरोबर दिला आहे. ख्रिश्चनाने बनवलेला पाव खाणे व मुसलमानाच्या हातचे पाणी पिणे हा दीक्षाविधी परमहंस मंडळीचा होता, जी प्रार्थना समाजाची पूर्वसूरी होती; दिलेल्या कोणत्याही समाजाचा तो विधी नव्हता."
     ),
+    // Q39 and Q89: MPSC's FINAL key (2 Jan 2026) changed the first key's answer.
+    39: notice(
+      "MPSC's final key gives option B, both statements incorrect (its first key gave A). The National Food Security Act, 2013 covers up to 75% of the rural and 50% of the urban population, and prices grain at Rs 3 a kg for rice, Rs 2 for wheat and Re 1 for coarse grains, so both statements read as correct: option A.",
+      "आयोगाच्या अंतिम उत्तरतालिकेत पर्याय B, दोन्ही विधाने चूक, बरोबर दिला आहे (पहिल्या उत्तरतालिकेत A होता). राष्ट्रीय अन्न सुरक्षा कायदा, 2013 ग्रामीण भागातील 75% पर्यंत व शहरी भागातील 50% पर्यंत लोकसंख्येला लागू आहे, आणि तांदूळ प्रति किलो रु. 3, गहू रु. 2 व भरड धान्य रु. 1 या दराने मिळते; म्हणून दोन्ही विधाने बरोबर वाटतात: पर्याय A."
+    ),
     47: notice(
       "MPSC's key gives option C, A and B. ICDS also trains its anganwadi workers, so whether worker's training counts as one of its programmes is arguable: option D, A, B and C, can also be defended.",
       "आयोगाच्या उत्तरतालिकेत पर्याय C, A आणि B, बरोबर दिला आहे. एकात्मिक बालविकास सेवा योजनेत अंगणवाडी सेविकांचे प्रशिक्षणही होते, म्हणून कर्मचारी प्रशिक्षण हा तिचा कार्यक्रम मानावा की नाही हे वादग्रस्त आहे: पर्याय D, A, B आणि C, सुद्धा समर्थनीय आहे."
@@ -447,8 +473,36 @@ export const KEY_DOUBT_NOTICES: Record<string, Record<number, Notice>> = {
       "आयोगाच्या उत्तरतालिकेत पर्याय A, फक्त A, बरोबर दिला आहे. विधान B बरोबर नाही (आयएनएस विक्रांत कोचीन शिपयार्ड, केरळ येथे बांधली गेली), आणि A मधील ऑगस्ट 2024 ही तारीख संशयास्पद आहे (ही नौका 20 सप्टेंबर 2024 रोजी पश्चिमी ताफ्यात दाखल झाल्याचे वृत्त आहे); म्हणून कदाचित दोन्ही विधाने चूक आहेत, पर्याय D."
     ),
     89: notice(
-      "MPSC's key gives option C, A and B. The Sixth National Water Awards were launched in October 2024, so A is doubtful; there are nine categories, B; and the awards began in 2018, so C is not correct. No option is only B.",
-      "आयोगाच्या उत्तरतालिकेत पर्याय C, A आणि B, बरोबर दिला आहे. सहाव्या राष्ट्रीय जल पुरस्कारांची घोषणा ऑक्टोबर 2024 मध्ये झाली, म्हणून A संशयास्पद आहे; पुरस्कार नऊ श्रेणींमध्ये आहेत, B; आणि हे पुरस्कार 2018 पासून दिले जातात, म्हणून C बरोबर नाही. फक्त B असा पर्याय नाही."
+      "MPSC's final key gives option B, all three statements incorrect (its first key gave C). The awards began in 2018, so C is not correct, and the Sixth National Water Awards were launched in October 2024, so A is doubtful. But the awards are given in nine categories, so B looks correct, and no option is only B.",
+      "आयोगाच्या अंतिम उत्तरतालिकेत पर्याय B, तिन्ही विधाने चूक, बरोबर दिला आहे (पहिल्या उत्तरतालिकेत C होता). हे पुरस्कार 2018 पासून दिले जातात, म्हणून C बरोबर नाही, आणि सहाव्या राष्ट्रीय जल पुरस्कारांची घोषणा ऑक्टोबर 2024 मध्ये झाली, म्हणून A संशयास्पद आहे. पण पुरस्कार नऊ श्रेणींमध्ये दिले जातात, म्हणून B बरोबर वाटते, आणि फक्त B असा पर्याय नाही."
+    ),
+  },
+  "ssp-2026": {
+    60: notice(
+      "MPSC's key gives option D, all of the above. Statements (a) and (b) are right, but (c) is not: Barbara McClintock found jumping genes in maize in the late 1940s and published in 1950 (Nobel Prize, 1983), not in 1965. That makes the answer (a) and (b), option A.",
+      "आयोगाच्या उत्तरतालिकेत पर्याय D, वरील सर्व, बरोबर दिला आहे. विधाने (a) व (b) बरोबर आहेत, पण (c) नाही: बार्बरा मॅक्लिंटॉक यांनी मक्यातील उड्या मारणारी जनुके 1940 च्या दशकाच्या उत्तरार्धात शोधली व 1950 मध्ये प्रसिद्ध केली (नोबेल पुरस्कार, 1983); 1965 मध्ये नव्हे. त्यामुळे उत्तर (a) व (b), पर्याय A, ठरते."
+    ),
+    77: notice(
+      "MPSC's key gives option A, only (a) and (b). The National Commission to Review the Working of the Constitution (2002) also recommended the duty to foster family values and responsible parenthood (d) and the duty of industrial undertakings to educate their employees' children (c), which would make the answer all of the above, option D.",
+      "आयोगाच्या उत्तरतालिकेत पर्याय A, फक्त (a) व (b), बरोबर दिला आहे. संविधानाच्या कार्यपद्धतीचा आढावा घेणाऱ्या राष्ट्रीय आयोगाने (2002) कौटुंबिक मूल्ये व जबाबदार पालकत्व जोपासण्याचे कर्तव्य (d) आणि औद्योगिक संस्थांनी आपल्या कर्मचाऱ्यांच्या मुलांना शिक्षण देण्याचे कर्तव्य (c) यांचीही शिफारस केली होती; त्यानुसार उत्तर वरील सर्व, पर्याय D, ठरते."
+    ),
+  },
+  "ssp-csat-2026": {
+    13: notice(
+      "MPSC's key gives option B, that statements (a) and (c) are not correct. But (a) repeats the passage word for word (more than 28 trillion tonnes of ice lost since the 1990s), and (b) matches it too (Arctic sea ice 40% smaller than in 1980); only (c) misstates the passage's reason. On the passage, (a) and (b) are correct: option A.",
+      "आयोगाच्या उत्तरतालिकेत पर्याय B, विधाने (a) व (c) बरोबर नाहीत, दिला आहे. पण (a) उताऱ्यातील वाक्य जसेच्या तसे आहे (1990 पासून 28 ट्रिलियन टनांहून अधिक बर्फ नष्ट), आणि (b) सुद्धा उताऱ्याशी जुळते (आर्क्टिकमधील सागरी बर्फ 1980 पेक्षा 40% कमी); फक्त (c) उताऱ्यातील कारण चुकीचे सांगते. उताऱ्यानुसार (a) व (b) बरोबर आहेत: पर्याय A."
+    ),
+    57: notice(
+      "MPSC's key gives option B, 32. The rule (left x bottom) - right - 2 fits both given triangles (5 x 4 - 6 - 2 = 12; 6 x 5 - 7 - 2 = 21) and gives 4 x 10 - 8 - 2 = 30, option A; we found no rule that fits both and gives 32.",
+      "आयोगाच्या उत्तरतालिकेत पर्याय B, 32, दिला आहे. (डावी संख्या x खालची संख्या) - उजवी संख्या - 2 हा नियम दोन्ही दिलेल्या त्रिकोणांना लागू पडतो (5 x 4 - 6 - 2 = 12; 6 x 5 - 7 - 2 = 21) आणि त्यानुसार 4 x 10 - 8 - 2 = 30, पर्याय A, येतो; दोन्हींना लागू पडून 32 देणारा नियम आम्हाला आढळला नाही."
+    ),
+    58: notice(
+      "MPSC's key gives option B, only conclusion II. Neither conclusion follows: \"All artists are smokers\" does not make all smokers artists (I), and \"Some smokers are drunkards\" says nothing about drunkards who are not smokers (II). The answer is option C, neither follows.",
+      "आयोगाच्या उत्तरतालिकेत पर्याय B, फक्त निष्कर्ष II, दिला आहे. कोणताही निष्कर्ष निघत नाही: \"सर्व कलाकार धूम्रपान करणारे आहेत\" यावरून सर्व धूम्रपान करणारे कलाकार ठरत नाहीत (I), आणि \"काही धूम्रपान करणारे मद्यपी आहेत\" यावरून धूम्रपान न करणाऱ्या मद्यपींबद्दल काहीच कळत नाही (II). उत्तर पर्याय C, एकही निष्कर्ष निघत नाही."
+    ),
+    70: notice(
+      "MPSC's key gives option C, both conclusions definitely correct. They contradict each other (some laws are not permanent; all laws are permanent), so both cannot be true, and neither follows: the flexible rules need not be laws. The answer is option D.",
+      "आयोगाच्या उत्तरतालिकेत पर्याय C, दोन्ही निष्कर्ष निश्चितपणे बरोबर, दिला आहे. हे दोन निष्कर्ष परस्परविरोधी आहेत (काही कायदे कायमस्वरूपी नाहीत; सर्व कायदे कायमस्वरूपी आहेत), त्यामुळे दोन्ही खरे असू शकत नाहीत, आणि कोणताही निष्कर्ष निघत नाही: लवचिक नियम कायदेच असतील असे नाही. उत्तर पर्याय D."
     ),
   },
   "ssp-csat-2013": {

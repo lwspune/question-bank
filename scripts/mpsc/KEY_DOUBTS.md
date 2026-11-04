@@ -2,7 +2,7 @@
 
 Read 2026-11-03, while backfilling worked solutions (SOLUTIONS_BACKFILL_SPEC.md, b44). Two solvers, or one solver and the main session, reached an answer other than MPSC's key, or found no option that holds. Each row was then read again by the main session against the question, the passage and, for facts, a source.
 
-**203 questions: about 73 defective as printed** (no option right, or two right, or a false premise) **and 130 with a doubtful key.** None has a worked solution: `apply.ts` never writes a solution that disagrees with the key.
+**204 questions (203 found 2026-11-03, plus ssp-2025 Q39 when the final key changed it on 2026-11-04): about 73 defective as printed** (no option right, or two right, or a false premise) **and 130 with a doubtful key.** None has a worked solution: `apply.ts` never writes a solution that disagrees with the key.
 
 **Status: SETTLED 2026-11-03, owner: notice + grace on all 203, MPSC's key kept.** Each question's notice is in `keyDoubtNotices.ts` (Prelims) or `../mpsc-mains/keyDoubtNotices.ts` (Mains), written onto the live rows by `apply-notices.ts`, and graced in its whole-paper mock (README, "Key doubts found by the solutions backfill").
 
@@ -403,11 +403,12 @@ A finding is a question, not a verdict. Several are matters of grammar-book trad
 
 | Q | key | finding | id |
 |---|---|---|---|
+| 39 | B | FINAL key (2 Jan 2026) changed A to B, "both incorrect"; the NFSA 2013 covers up to 75% rural / 50% urban and prices rice Rs 3, wheat Rs 2, coarse grains Re 1 a kg, so both statements read as correct (A) | 2de7f01c |
 | 15 | C | the bread-and-water initiation belongs to the Paramahansa Mandali (forerunner of the Prarthana Samaj), not to any Samaj listed | 2f996d42 |
 | 47 | C | ICDS also runs training of its anganwadi workers; whether "worker's training" counts as a programme under the scheme is arguable (A, B and C vs A and B) | 35a9650b |
 | 50 | D | NPP 2000 aims at universal immunisation (B) and IMR below 30 per 1,000 (C); population stabilisation is set for 2045. No option is B and C | 81b04be7 |
 | 87 | A | B is wrong (Vikrant was built at Cochin Shipyard, Kerala); A's "August 2024" is doubtful (a web-checked solver found 20 September 2024): possibly neither (D) | 487dabcb |
-| 89 | C | the 6th National Water Awards were launched in October 2024 (A doubtful) with nine categories (B); the awards began in 2018 (C false). No option is "only B" | 0d2937a3 |
+| 89 | B | FINAL key changed C to B, "all three incorrect". The 6th awards were launched in October 2024 (A doubtful) and began in 2018 (C false), but there are nine categories (B looks true). No option is "only B" | 0d2937a3 |
 
 ## MPSC-ssp-csat-2013-Y01
 
@@ -506,3 +507,41 @@ A finding is a question, not a verdict. Several are matters of grammar-book trad
 | 40 | D | defective: the passage names communal, authoritarian and military strains but not feudalism; no option is (a), (c), (d) | 793d3e08 |
 | 42 | C | (ड) reverses cause and effect (experiences shape art, art does not cause experiences) and (क) is not clearly stated: no option is clean | 0abd252f |
 
+
+## MPSC-2025-b-M21
+
+Found 2026-11-04 when the blind solve disagreed with MPSC's final key (26 Feb 2026). Notice + grace, key kept (the owner's 2026-11-03 rule).
+
+| Q | key | finding | id |
+|---|---|---|---|
+| 1 | C | the sedition case over writing on the Muzaffarpur bomb case was against Tilak (Kesari, 1908) (A); Paranjape's 1908 trial was for his Kal articles | 9aa463bf |
+| 20 | D | (a) is false (Tansa joins the Vaitarna), but (c) is doubtful too: the Manyad is a Girna tributary, in the Tapi basin. Only (b) holds; no option says so | 833b1356 |
+| 87 | C | defective: 52 : 13 = 4 : 1, so states exceed union territories by 300%; no option | 5887e93a |
+
+## MPSC-ssp-2026-D25
+
+Found 2026-11-04 against MPSC's final key (17 Jun 2026). Notice + grace, key kept.
+
+| Q | key | finding | id |
+|---|---|---|---|
+| 60 | D | McClintock found jumping genes in the late 1940s (published 1950), not 1965, so (c) is false: (a) and (b) (A) | 532026f9 |
+| 77 | A | the NCRWC (2002) also recommended the family-values duty (d) and industry's duty to educate employees' children (c): all of the above (D) | 4b3cb4fd |
+
+## MPSC-2026-b-H25
+
+Found 2026-11-04 against MPSC's final key (28 Jun 2026). Notice + grace, key kept.
+
+| Q | key | finding | id |
+|---|---|---|---|
+| 50 | C | Ashok Saraf's 2025 award was the Padma Bhushan, not the Padma Shri, so B is false: only A (A) | 8ea07f93 |
+
+## MPSC-ssp-csat-2026-E25
+
+Found 2026-11-04 against MPSC's final key (17 Jun 2026). Notice + grace, key kept.
+
+| Q | key | finding | id |
+|---|---|---|---|
+| 13 | B | (a) repeats the passage and (b) matches it; only (c) is wrong: (a) and (b) (A) | e307ad91 |
+| 57 | B | (left x bottom) - right - 2 fits both triangles and gives 30 (A); no rule found giving 32 | b16933bf |
+| 58 | B | neither conclusion follows (C) | effb1419 |
+| 70 | C | the two conclusions contradict each other and neither follows (D) | 6d9bb8b4 |
