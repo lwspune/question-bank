@@ -1048,6 +1048,7 @@ export const questionsJsonPath = (id: string) => join(DATA, `${id}.questions.jso
 export const WITHHELD: Record<string, string> = {
   "583825fa-381f-4a08-9f9d-a2fc28e98432": "Mar 2014 calcination vs roasting: metallurgy, off the current syllabus",
   "d8be09a9-c6c9-4263-8d12-7fb2ecb95476": "Mar 2017 nitrogen pentahalides: group 15, off the current syllabus",
+  "b96a7ef6-4e92-436b-9a43-891e93fbbbdc": "reworded copy of Mar 2022 Q.21 (993c6a85, kept): the paper prints no such Q.22 wording",
 };
 
 export function requireChapter(id: string | undefined): Chapter {
