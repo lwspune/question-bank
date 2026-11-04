@@ -982,7 +982,14 @@ export const READINGS: Record<ReadingMetric, { label: string; source: string; en
     label: "ChatGPT paper prompts (of 5) that name PYQ Vault",
     source:
       "Ask ChatGPT, logged out: best free website for MHT CET previous year questions; MHT CET previous year question papers with solutions; JEE Main previous year papers with solutions free; NDA previous year question papers with answers; NEET previous year question papers free",
-    entries: [{ on: "2026-10-15", value: 0, note: "Owner's screenshot of the first prompt: AglaSem, ConceptFirst, SelfStudys" }],
+    entries: [
+      { on: "2026-10-15", value: 0, note: "Owner's screenshot of the first prompt: AglaSem, ConceptFirst, SelfStudys" },
+      {
+        on: "2026-11-04",
+        value: 0,
+        note: "All 5 asked once (owner's account, temporary chat, Unpersonalized). ExamSIDE named in 3 of 5; also AglaSem, Careers360, Testbook, Vedclass, PracBee, eSaral, Prepp. Chapter prompts differ: HSC 12 Rotational Dynamics cites our page as its first link, CBSE 12 Integrals does not. ChatGPT now writes solved questions in the chat and links last",
+      },
+    ],
   },
   "box-sales-per-100": {
     label: "Passes sold per 100 download-gate visitors",
