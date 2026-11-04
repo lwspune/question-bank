@@ -10,7 +10,7 @@
  */
 import { istDayKey } from "@/lib/email/dueNudge";
 import type { ActivityEvent } from "./events";
-import { isReadingSurface, isSurface, learnLessonPath, readingViewFor, viewDedupeKey } from "./views";
+import { boardChapterPath, isReadingSurface, isSurface, learnLessonPath, readingViewFor, viewDedupeKey } from "./views";
 
 /**
  * Which kind of browser recorded a view. Only the handout sends it: in-app
@@ -54,7 +54,7 @@ export type PaywallStep = (typeof PAYWALL_STEPS)[number];
  * gate on several boxes, so without this the offer's pages could not be told
  * apart (the free paper's `set_key` was the only clue).
  */
-export const DOWNLOAD_BOXES = ["browse", "mock", "board_paper", "homework", "top_pyqs", "formula"] as const;
+export const DOWNLOAD_BOXES = ["browse", "mock", "board_paper", "homework", "top_pyqs", "formula", "revision"] as const;
 export type DownloadBox = (typeof DOWNLOAD_BOXES)[number];
 const BOX_SET: ReadonlySet<string> = new Set(DOWNLOAD_BOXES);
 
@@ -144,6 +144,11 @@ export function parseClientEvent(raw: unknown, userId: string, now: Date): Parse
       const lesson = typeof raw.path === "string" ? learnLessonPath(raw.path) : null;
       if (!lesson) return { ok: false, error: "Invalid lesson address." };
       path = lesson;
+    } else if (raw.surface === "board_revision") {
+      // A revision sheet opened names its /board chapter (2026-11-03).
+      const chapterPath = typeof raw.path === "string" ? boardChapterPath(raw.path) : null;
+      if (!chapterPath) return { ok: false, error: "Invalid chapter address." };
+      path = chapterPath;
     } else if (raw.path !== undefined) {
       return { ok: false, error: "No page address on this surface." };
     }

@@ -62,6 +62,11 @@ describe("offerLine", () => {
     expect(offerLine("homework")).toBe(plural);
   });
 
+  it("names the board revision sheet and says what it is for", () => {
+    expect(offerTitle("revision")).toBe("Get this revision sheet as a PDF");
+    expect(offerLine("revision")).toBe("This chapter's most-asked questions, formulas and derivations, to print and revise from.");
+  });
+
   it("says what a formula sheet is for", () => {
     expect(offerLine("formula")).toBe("Every formula in this chapter on one A4 page, to print and revise from.");
   });

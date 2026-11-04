@@ -1,0 +1,281 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "2ac18aba-b354-4297-83b0-68d8570eceb2",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "8 + 7 = 15",
+              "f": "8+7",
+              "value": "15",
+              "note": "differences: consecutive primes"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "15 + 11 = 26",
+              "f": "15+11",
+              "value": "26"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "26 + {{1:13}} = {{2:39}}",
+              "f": "26+13",
+              "value": "39"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "{{2:39}} + 17 = 56",
+              "f": "39+17",
+              "value": "56"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "56 + 19 = 75",
+              "f": "56+19",
+              "value": "75"
+            }
+          ],
+          "answer": "26+13"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3",
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "f8dde2cc",
+        "answer": {
+          "value": 39,
+          "label": "39"
+        }
+      }
+    },
+    {
+      "id": "2f7bde2b-0b99-4a38-8fd0-c920a83a9d78",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "45 + 7 = 52",
+              "f": "45+7",
+              "value": "52",
+              "note": "differences: consecutive primes"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "52 + 11 = 63",
+              "f": "52+11",
+              "value": "63"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "63 + 13 = 76",
+              "f": "63+13",
+              "value": "76"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "76 + 17 = 93",
+              "f": "76+17",
+              "value": "93"
+            },
+            {
+              "step": "s5",
+              "kind": "note",
+              "tex": "\\text{next prime after } 17 = {{1:19}}"
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "93 + {{1:19}} = 112",
+              "f": "93+19",
+              "value": "112"
+            }
+          ],
+          "answer": "93+19"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "746a06a1",
+        "answer": {
+          "value": 112,
+          "label": "112"
+        }
+      }
+    },
+    {
+      "id": "3461eae1-18ed-4891-ae4f-def4499c0ff0",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "1 + 1 = 2",
+              "f": "1+1",
+              "value": "2",
+              "note": "each term = sum of the two before"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "1 + 2 = 3",
+              "f": "1+2",
+              "value": "3"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "2 + 3 = 5",
+              "f": "2+3",
+              "value": "5"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "3 + 5 = {{1:8}}",
+              "f": "3+5",
+              "value": "8"
+            }
+          ],
+          "answer": "3+5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "de890bd8",
+        "answer": {
+          "value": 8,
+          "label": "8"
+        }
+      }
+    },
+    {
+      "id": "45c35e3b-1166-43f9-97df-8802cbb0bc07",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "3 \\times 6 = 18",
+              "f": "3*6",
+              "value": "18",
+              "note": "each term = product of the two before"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "6 \\times 18 = 108",
+              "f": "6*18",
+              "value": "108"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "18 \\times 108 = {{1:1944}}",
+              "f": "18*108",
+              "value": "1944"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "108 \\times 18 = {{1:1944}}",
+              "f": "108*18",
+              "value": "1944",
+              "note": "multiplier 3 × 6 = 18"
+            }
+          ],
+          "answer": "18*108"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "f1b05c87",
+        "answer": {
+          "value": 1944,
+          "label": "1944"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

@@ -213,6 +213,23 @@ kept) into the batches by the main session, every doubtful word checked on the p
 | ssp-csat-2024 (X18, D) | 77/80 final | none | used copy; 6 English passages by OCR; Q72's grid kept as photographed (`watermark: "none"`) |
 | ssp-csat-2025 (F21, C) | 75/80 FIRST | none | 5 English passages by OCR |
 
+### Key doubts found by the solutions backfill (all MPSC exams): SETTLED 2026-11-03
+
+**Owner: notice + grace on all 203, MPSC's key kept.** The list, by paper and
+question with each finding, is `KEY_DOUBTS.md` (about 73 defective as printed,
+130 with a doubtful key). The notices are in `keyDoubtNotices.ts` (Prelims,
+English and Marathi) and `../mpsc-mains/keyDoubtNotices.ts` (Mains, in the
+language the question is printed in; a joint paper's notice covers each exam's
+copy). Both configs fold them into each paper's `notices`, which grace the
+question in its whole-paper mock; Mains gained a `notices` field for this.
+
+These papers were already PUBLIC, so the notices went onto the rows with
+`apply-notices.ts` (dry run first; it touches `solution` only and skips a row
+already headed by its notice), never by re-running `commit.ts`, which sets a
+paper PRIVATE. `tests/mpsc-key-doubt-notices.test.ts` checks the ledger and
+the notices both ways. **Not graced in chapter tests**, the same as the earlier
+notices: only `src/lib/mocks/flawed.json` reaches those.
+
 ### Key doubts (State Services 2023-2025): SETTLED 2026-11-03
 
 **Owner: notice + grace on all five, MPSC's key kept** (config.ts

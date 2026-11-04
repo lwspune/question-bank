@@ -1,12 +1,13 @@
 "use client";
 
-import type { ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Lock, LogIn } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { practiceGateState } from "@/lib/notes/access";
 import { useSignedIn } from "@/components/auth/useSignedIn";
+import { trackFunnel, trackFunnelOnce } from "@/lib/analytics/trackFunnel";
 
 /**
  * Client-side gate for the interactive practice on /notes — self-check, Level-1
@@ -70,15 +71,39 @@ function PracticeSignInWall({
   const loginHref = `/login?next=${next}`;
   const signupHref = `/signup?next=${next}`;
 
+  // Count the wall when a reader REACHES it, not when it mounts: the checkpoint
+  // wall mounts at the foot of every anon page and the compact one inside a
+  // closed <details>, where it has no layout and so never intersects.
+  const ref = useRef<HTMLElement & HTMLDivElement>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || typeof IntersectionObserver === "undefined") return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          trackFunnelOnce("notes_practice_wall_shown", `${pathname ?? ""}:${variant}`, { variant });
+          io.disconnect();
+        }
+      },
+      { threshold: 0.5 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [pathname, variant]);
+
   if (variant === "compact") {
     return (
-      <div className="flex flex-wrap items-center gap-2 rounded-md border border-dashed border-brand/30 bg-brand/5 px-3 py-2 text-sm">
+      <div
+        ref={ref}
+        className="flex flex-wrap items-center gap-2 rounded-md border border-dashed border-brand/30 bg-brand/5 px-3 py-2 text-sm"
+      >
         <Lock className="h-3.5 w-3.5 shrink-0 text-brand-accent" aria-hidden />
         <span className="text-muted-foreground">
           Sign in to {label} — free, and it tracks your progress.
         </span>
         <Link
           href={loginHref}
+          onClick={() => trackFunnel("notes_practice_wall_signin_click", { variant, button: "login" })}
           className="ml-auto font-medium text-brand-accent hover:underline"
         >
           Sign in
@@ -104,10 +129,12 @@ function PracticeSignInWall({
       </div>
       <div className="flex flex-wrap items-center justify-center gap-2">
         <Button asChild>
-          <Link href={signupHref}>Create a free account</Link>
+          <Link href={signupHref} onClick={() => trackFunnel("notes_practice_wall_signin_click", { variant, button: "signup" })}>
+            Create a free account
+          </Link>
         </Button>
         <Button asChild variant="outline">
-          <Link href={loginHref}>
+          <Link href={loginHref} onClick={() => trackFunnel("notes_practice_wall_signin_click", { variant, button: "login" })}>
             <LogIn className="h-4 w-4" aria-hidden />
             Sign in
           </Link>
@@ -118,6 +145,7 @@ function PracticeSignInWall({
 
   return (
     <section
+      ref={ref}
       aria-label="Sign in to practice"
       className="relative my-8 overflow-hidden rounded-2xl border bg-card shadow-sm"
     >

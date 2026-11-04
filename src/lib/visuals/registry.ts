@@ -14,6 +14,7 @@ import { rotation } from "./scenes/rotation";
 import { letterStrip } from "./scenes/letterStrip";
 import { lpRegion } from "./scenes/lpRegion";
 import { sketch } from "./scenes/sketch";
+import { series } from "./scenes/series";
 import { setClaim } from "./scenes/setClaim";
 import { switchCircuit } from "./scenes/switchCircuit";
 import { slab } from "./scenes/slab";
@@ -39,6 +40,7 @@ export const SCENES: Record<string, Scene<any>> = {
   letterStrip,
   familyTree,
   circles,
+  series,
 };
 
 export function getScene(id: string): Scene<any> | undefined {

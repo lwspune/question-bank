@@ -211,6 +211,10 @@ solutions it rejected, so the pilot shows how often it happens.
 - `apply.ts` dry run clean, then `--apply`; counts recorded in the batch's
   commit message (or the progress log below for DB-only batches).
 - 10% of the batch read by the main session before applying.
+- Every Marathi draft that reaches the key read in full before applying
+  (b31, b36: about one in eight has a wrong grammar term or gloss).
+- A picture question the solver skipped without opening its picture goes
+  back as its own small batch (b35b: one solver skipped 19 unopened).
 - `npm run audit:text -- <source substring>` shows no new hits. Its argument
   is a `source_file` substring, not an exam name: an exam name scans nothing,
   prints "NOTHING SCANNED" and still exits 0.
@@ -424,3 +428,61 @@ One line per batch: date, exam, written, disputed, skipped.
   new questions in the MPSC Mains Marathi booklets: what is left there is
   only questions the agents skipped (a second pass is the owner's call).
   Running total 8,387.
+- 2026-11-03, b35 MPSC Forest Service Prelims (383 exported, 11
+  cancelled left out): written 213, plus 3 of the 23 picture questions
+  sent back in b35b (one solver had skipped 19 pictures unopened).
+  Disputed 7 (key right 4: a proverb, two passages, the 2016 paper's T20
+  count; judgement 3). Skipped 160+20, nearly all current affairs and
+  close options. Read 40 + all 53 Marathi: 5 English fixed before
+  writing (3 Unicode maths), 4 Marathi corrected in place after (किरकिर
+  is अनुकरणवाचक; a garbled option line; an unexplained option; quote
+  marks).
+- 2026-11-03, b36 MPSC Agriculture Service Prelims (672 exported, 9
+  cancelled left out): written 400. Disputed 8 (key right 4, key
+  doubtful 4: "King Solomon" as a period, two right adverb positions, a
+  passage subject, जिवाची उलघाल). Skipped 264, mostly facts and dates
+  Haiku does not know. Read 70 + all 88 matched Marathi: 18 fixed before
+  writing (wrong grammar terms: जेथे is not a pronoun, परीस is the
+  शब्दयोगी अव्यय, तज्ज्ञ is tat + jña, भावकर्तृक; figs ARE grown in the
+  peninsula; a "same date as above"). Running total 9,003.
+- 2026-11-03, b37 MPSC State Services Prelims (1,047 exported: the new
+  CSAT and 2023-2025 GS, plus what no batch had tried) and b38 (20 Group
+  B Combined Mains GK): written 668 + 9. Disputed 30. Read about 160
+  and every Marathi match; 3 wording fixes and 29 drafts whose answer
+  line was not last (moved by script before writing).
+- 2026-11-03, b39 + b40, the RETRY pass (owner: "complete whole mpsc
+  remaining solutions end to end"): every MPSC question an earlier batch
+  had skipped, 1,664 + 766, drafted by Sonnet 5.5 agents because Haiku
+  had already declined them. Written 450 + 152; disputed 55 + 22; about
+  1 in 4 solved, nearly all of the rest current affairs, dates and
+  Maharashtra facts no solver could confirm. Read all 150 Marathi
+  matches: 12 fixed (a misglossed word, a made-up word "पडवले",
+  grammar-term slips) and 3 turned to skips (two settled by
+  elimination, one with a second fair answer).
+- 2026-11-03, b41: 56 picture questions solvers had skipped without
+  opening the picture, sent back on their own: written 10. Two drafts
+  had lost every LaTeX backslash ("(60^circ)", "8 div 2"), which no
+  check caught; `solutionProblems` now refuses it (commit 8ca624baf and
+  after). MPSC now 5,223 of 7,179 PUBLIC with a solution, up from 3,318
+  this morning; about 1,820 remain, each declined by two solvers.
+  Running total 10,292.
+- 2026-11-03, b42 + b43: the ~1,820 left, sent to web-checked agents
+  (search the fact, never the question; no quiz or key sites). Sonnet
+  agents barely searched and one ignored the source rule, so the rest
+  went to Opus, which settled half to three quarters of each fact
+  group. Written 660 + 130. Eight drafts turned to skips on thin or
+  single sources, two settled only by elimination.
+- 2026-11-03, b44: every remaining disagreement (144 drafts that
+  reached another answer, 83 "no option fits" skips) read by the main
+  session: 24 keys hold and got a solution; the other 203 are listed by
+  paper in `scripts/mpsc/KEY_DOUBTS.md` for the owner (about 73
+  defective as printed, 130 with a doubtful key). MPSC now 6,037 of
+  7,179 PUBLIC with a solution; 1,142 without: those 203 plus about
+  940 no solver could settle (mostly current affairs, dates and
+  Maharashtra facts). Running total 11,106.
+- 2026-11-03, owner ruled on KEY_DOUBTS.md: notice + grace on all 203,
+  MPSC's key kept. Each notice now heads its question's solution (204
+  rows, 113 Marathi translations; `scripts/mpsc/apply-notices.ts`), so
+  those 203 are no longer without a solution; the whole-paper mocks grace
+  them. MPSC now 6,240 of 7,179 with a solution; the ~940 left are the
+  questions no solver could settle.

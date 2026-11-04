@@ -1,0 +1,189 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "c9052ead-a7d7-4b02-94e0-5b74ad0b166c",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "3 \\times 6 = 18",
+              "f": "3*6",
+              "value": "18",
+              "note": "each term = product of the two before"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "6 \\times 18 = 108",
+              "f": "6*18",
+              "value": "108"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "18 \\times 108 = {{1:1944}}",
+              "f": "18*108",
+              "value": "1944"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "3 \\times 6 = 18",
+              "f": "3*6",
+              "value": "18",
+              "note": "multipliers 2, 3, 6: next 3 × 6"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "108 \\times 18 = {{1:1944}}",
+              "f": "108*18",
+              "value": "1944"
+            }
+          ],
+          "answer": "18*108"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "945308a0",
+        "answer": {
+          "value": 1944,
+          "label": "1944"
+        }
+      }
+    },
+    {
+      "id": "d1b99a8d-40c8-4993-a813-b226a9b80cd7",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{60}{6} = 10",
+              "f": "60/6",
+              "value": "10",
+              "note": "terms are 60 ÷ 1, 2, 3, 4, 5, 6"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{60}{7} \\approx {{1:8.57}}",
+              "f": "60/7",
+              "value": "8.57",
+              "dp": 2
+            }
+          ],
+          "answer": "8.57"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "4c4a8c69",
+        "answer": {
+          "value": 8.57,
+          "label": "8.57"
+        }
+      }
+    },
+    {
+      "id": "d32395ca-4856-4bb0-bbb1-d39201f10602",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "1.5^2 = {{1:2.25}}",
+              "f": "1.5^2",
+              "value": "2.25",
+              "note": "3rd term = a × r²"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "3.6 \\times {{1:2.25}} = {{2:8.1}}",
+              "f": "3.6*2.25",
+              "value": "8.1"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "3.6 \\times 1.5 = 5.4",
+              "f": "3.6*1.5",
+              "value": "5.4"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "5.4 \\times 1.5 = {{2:8.1}}",
+              "f": "5.4*1.5",
+              "value": "8.1"
+            }
+          ],
+          "answer": "8.1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "51100bb5",
+        "answer": {
+          "value": 8.1,
+          "label": "8.1"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

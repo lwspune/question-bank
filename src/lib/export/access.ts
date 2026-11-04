@@ -49,7 +49,7 @@ export const DOWNLOAD_PASS_SCOPE = SCOPE_DOWNLOADS;
  * the paper and key, plus ONE free sheet per account apart from the one free
  * paper (the owner's call). Only ever a PDF, so staff take the PDF too, clean.
  */
-export type ExportKind = "paper" | "key" | "tags" | "ppt" | "formula";
+export type ExportKind = "paper" | "key" | "tags" | "ppt" | "formula" | "revision";
 
 /** The file a paper or key is served as; absent for slides and the tags sheet. */
 export type PaperFormat = "pdf" | "docx";
@@ -73,24 +73,30 @@ export function resolveExportAccess(input: {
   const { kind, isSignedIn, isStaff, hasDownloadPass = false, freeDownloadLeft } = input;
   const paperOrKey = kind === "paper" || kind === "key";
   const sheet = kind === "formula";
+  // A /board chapter's revision sheet (2026-11-03): the pass's, with NO free
+  // first copy (owner). The page itself is free to read.
+  const revision = kind === "revision";
   // What the pass (or the free download of that kind) unlocks.
-  const passUnlocks = paperOrKey || sheet;
+  const passUnlocks = paperOrKey || sheet || revision;
 
   if (!isSignedIn) {
     return { allowed: false, status: 401, message: "Sign in to download." };
   }
   if (isStaff) {
     if (paperOrKey) return { allowed: true, branded: false, format: "docx" };
-    if (sheet) return { allowed: true, branded: false, format: "pdf" };
+    if (sheet || revision) return { allowed: true, branded: false, format: "pdf" };
     return { allowed: true, branded: false };
   }
   if (hasDownloadPass && passUnlocks) return { allowed: true, branded: true, format: "pdf" };
-  if (freeDownloadLeft === true && passUnlocks) return { allowed: true, branded: true, format: "pdf", free: true };
+  if (freeDownloadLeft === true && passUnlocks && !revision)
+    return { allowed: true, branded: true, format: "pdf", free: true };
   return {
     allowed: false,
     status: 403,
     message: !passUnlocks
       ? "This download is for institute staff accounts."
+      : revision
+      ? "Revision sheet downloads come with the Premium Pass."
       : sheet
       ? freeDownloadLeft === false
         ? "You've had your free formula sheet. Every chapter's formula sheet comes with the Premium Pass."
