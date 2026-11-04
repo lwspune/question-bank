@@ -351,7 +351,8 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 - **2026-11-04 (second) — Homework replaces Learn in the nav at every width; each plan gets a Top 10 PYQs tab (no migration).**
   - **Why:** Learn's first week as phone slot 2: 284 visitors, 256 saw only its hub, 1 Class 12 student answered a lesson question. Homework, with no tab, had as many open a day (34) as Learn had open a lesson (29).
   - **For every visitor, not only exams with a plan:** plans for the rest are coming; `/homework/exam/<slug>` says when they are not.
-  - **Top 10 is a tab, not a list above the days** (owner saw a 31-chapter list push the days down): `/homework/<plan>/top` → `/top/<chapter>`, read from that plan, same list and limit as /board. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
+  - **Top 10 is a tab, not a list above the days** (owner saw a 31-chapter list push the days down): `/homework/<plan>/top` → `/top/<chapter>`, read from that plan, same list and limit as /board.
+  - **Repeats and types ranked together by count (all 18 plans rebuilt), with a See all page per group (0216):** NDA rarely reprints, so a type asked 8 times sat behind repeats asked twice. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-11-04 — NDA Maths Top 10 PYQs on every /notes chapter, from a new NDA Maths homework plan (published on /homework); no migration.**
   - **Same machinery as the board tab:** the Top 10 is a chapter's first ten plan slots, so NDA needed only a reviewed plan; the loader moved to `lib/homework/chapterTop.ts` for both pages.
   - **UPSC rarely reprints (4 verbatim repeats in 2,280),** so types carry the ranking (397 types, 80 repeats). Sittings are papers, "NDA 1 2024" (`ndaSittingLabel`).
