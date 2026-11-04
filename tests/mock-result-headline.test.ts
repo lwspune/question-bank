@@ -63,3 +63,16 @@ describe("buildResultHeadline", () => {
     expect(`${h.lead} ${h.detail ?? ""}`).not.toMatch(/\b11%/);
   });
 });
+
+describe("buildResultHeadline with partly right multiple-select answers (UCEED)", () => {
+  it("counts them as attempted and names them, without calling them right", () => {
+    const h = buildResultHeadline({ ...summary(5, 3, 2), partial: 2 });
+    expect(h.attempted).toBe(10);
+    expect(h.lead).toBe("5 of the 10 you attempted were right, and 2 partly right.");
+    expect(h.accuracyPct).toBe(50);
+  });
+
+  it("reads as before when there are none", () => {
+    expect(buildResultHeadline({ ...summary(5, 3, 2), partial: 0 }).lead).toBe("5 of the 8 you attempted were right.");
+  });
+});

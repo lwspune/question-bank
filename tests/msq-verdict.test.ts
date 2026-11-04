@@ -49,3 +49,34 @@ describe("msqVerdictLine", () => {
     expect(msqVerdictLine(msqVerdict(["A", "B", "D"], ["A", "C"]))).toBe("Not quite: B and D are not correct.");
   });
 });
+
+describe("toggleTick: one tap on an option of a multiple-select question", () => {
+  it("adds an unticked option and keeps the set in letter order", async () => {
+    const { toggleTick } = await import("@/lib/questions/msq");
+    expect(toggleTick(["C"], "A")).toEqual(["A", "C"]);
+    expect(toggleTick([], "B")).toEqual(["B"]);
+  });
+
+  it("removes a ticked option, and an emptied set is null (unanswered)", async () => {
+    const { toggleTick } = await import("@/lib/questions/msq");
+    expect(toggleTick(["A", "C"], "C")).toEqual(["A"]);
+    expect(toggleTick(["A"], "A")).toBeNull();
+    expect(toggleTick(null, "D")).toEqual(["D"]);
+  });
+});
+
+describe("msqInstruction: how the question is marked, in one line", () => {
+  it("states partial credit as the paper prints it", async () => {
+    const { msqInstruction } = await import("@/lib/questions/msq");
+    expect(msqInstruction("partial", 4, -1)).toBe(
+      "Tick every correct option. All correct and no wrong one: +4. Some correct and no wrong one: +1 for each. Any wrong tick: -1."
+    );
+  });
+
+  it("states all-or-nothing marking", async () => {
+    const { msqInstruction } = await import("@/lib/questions/msq");
+    expect(msqInstruction("exact", 3, -0.19)).toBe(
+      "Tick every correct option. All correct and no wrong one: +3. Anything else: -0.19. No partial marks."
+    );
+  });
+});

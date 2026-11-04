@@ -175,6 +175,29 @@ describe("buildPaperSections", () => {
     expect(q.solution).toBe("**Answer: 42**\n\nBecause.");
   });
 
+  it("prints a numeric key given as a range as the range", () => {
+    const numeric = mcq({ format: "numeric", options: [], numericAnswer: 132.8, key: { kind: "numeric", value: 132.8, max: 133.1 }, solution: "Because." });
+    const q = buildPaperSections([snap(1, "phy")], new Map([["q1", numeric]]), sections).sections[0].items[0].question;
+    expect(q.solution).toBe("**Answer: 132.8 to 133.1**\n\nBecause.");
+  });
+
+  it("names every correct option of a multiple-select question in the reveal", () => {
+    const msq = mcq({
+      format: "msq",
+      options: [
+        { label: "A", text: "x", imageUrl: null, isCorrect: true },
+        { label: "B", text: "y", imageUrl: null, isCorrect: false },
+        { label: "C", text: "z", imageUrl: null, isCorrect: true },
+      ],
+      key: { kind: "msq", labels: ["A", "C"] },
+      solution: "Because.",
+    });
+    const q = buildPaperSections([snap(1, "phy")], new Map([["q1", msq]]), sections).sections[0].items[0].question;
+    expect(q.format).toBe("mcq");
+    expect(q.options.filter((o) => o.isCorrect).map((o) => o.label)).toEqual(["A", "C"]);
+    expect(q.solution).toBe("**Answer: A, C** (more than one option is correct)\n\nBecause.");
+  });
+
   it("puts a cancelled question's notice ahead of its solution", () => {
     const out = buildPaperSections(
       [snap(1, "phy")],

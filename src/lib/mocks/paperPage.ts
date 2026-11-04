@@ -10,6 +10,7 @@
  *
  * Pure: no React, no DB. Spec: tests/mock-paper-page.test.ts.
  */
+import { formatNumericKey } from "@/lib/questions/formatKey";
 import type { BoardQuestion } from "@/lib/board/query";
 import { mockDownloadHref, mockTypeOf } from "./catalogue";
 import type { MockScope, MockSection, MockSnapshotQuestion, MockSource, ReviewQuestionContent } from "./query";
@@ -79,7 +80,12 @@ function solutionText(c: ReviewQuestionContent, grace: boolean): string | null {
   // A dropped question has no correct option; without this line its reveal
   // would show nothing marked right and no reason why.
   else if (grace) parts.push("**Dropped:** this question was dropped from scoring, so every candidate got its marks.");
-  if (c.format === "numeric" && c.numericAnswer !== null) parts.push(`**Answer: ${c.numericAnswer}**`);
+  // The key as every display prints it (formatKey): a range as a range, every correct
+  // option of a multiple-select question.
+  const key = c.key;
+  if (c.format === "numeric" && key?.kind === "numeric") parts.push(`**Answer: ${formatNumericKey(key.value, key.max ?? null)}**`);
+  else if (c.format === "numeric" && c.numericAnswer !== null) parts.push(`**Answer: ${c.numericAnswer}**`);
+  if (c.format === "msq" && key?.kind === "msq") parts.push(`**Answer: ${key.labels.join(", ")}** (more than one option is correct)`);
   if (c.solution) parts.push(c.solution);
   return parts.length ? parts.join("\n\n") : null;
 }

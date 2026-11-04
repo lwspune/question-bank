@@ -220,7 +220,10 @@ export function fromReviewItem(item: ReviewItem): PresentableQuestion {
     })),
     answer: answerOrNull({
       correctLabel: item.grace ? null : item.correctLabel,
+      // A multiple-select item names every correct option, never one as "the" answer.
+      ...(item.format === "msq" && !item.grace ? { correctLabels: item.correctLabels } : {}),
       numericAnswer: item.grace ? null : item.correctNumeric,
+      numericAnswerMax: item.grace ? null : item.correctNumericMax,
       solution: item.solution,
       solutionImageUrl: item.solutionImageUrl,
     }),

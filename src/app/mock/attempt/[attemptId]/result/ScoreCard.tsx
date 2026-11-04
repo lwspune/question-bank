@@ -11,6 +11,8 @@ type Props = {
   score: number;
   maxScore: number;
   correct: number;
+  /** Multiple-select answers with partial credit (UCEED); shown only when there are some. */
+  partial?: number;
   wrong: number;
   skipped: number;
   sections: Section[];
@@ -40,7 +42,8 @@ function fmt(n: number): string {
  */
 export default function ScoreCard(p: Props) {
   const { headline } = p;
-  const total = p.correct + p.wrong + p.skipped || 1;
+  const partial = p.partial ?? 0;
+  const total = p.correct + partial + p.wrong + p.skipped || 1;
   const pct = headline.accuracyPct;
   const R = 20;
   const C = 2 * Math.PI * R;
@@ -86,13 +89,17 @@ export default function ScoreCard(p: Props) {
       <div
         className="mt-4 flex h-2.5 overflow-hidden rounded-full bg-muted"
         role="img"
-        aria-label={`${p.correct} right, ${p.wrong} wrong, ${p.skipped} left`}
+        aria-label={`${p.correct} right, ${partial > 0 ? `${partial} partly right, ` : ""}${p.wrong} wrong, ${p.skipped} left`}
       >
         <span className="bg-emerald-500" style={{ width: `${(p.correct / total) * 100}%` }} />
+        {partial > 0 && <span className="bg-amber-500" style={{ width: `${(partial / total) * 100}%` }} />}
         <span className="bg-red-500" style={{ width: `${(p.wrong / total) * 100}%` }} />
       </div>
       <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground" aria-hidden>
         <span><span className="mr-1.5 inline-block h-2 w-2 rounded-full bg-emerald-500" /><b className="font-semibold text-foreground tabular-nums">{p.correct}</b> right</span>
+        {partial > 0 && (
+          <span><span className="mr-1.5 inline-block h-2 w-2 rounded-full bg-amber-500" /><b className="font-semibold text-foreground tabular-nums">{partial}</b> partly right</span>
+        )}
         <span><span className="mr-1.5 inline-block h-2 w-2 rounded-full bg-red-500" /><b className="font-semibold text-foreground tabular-nums">{p.wrong}</b> wrong</span>
         <span><span className="mr-1.5 inline-block h-2 w-2 rounded-full bg-muted-foreground/40" /><b className="font-semibold text-foreground tabular-nums">{p.skipped}</b> left</span>
       </div>

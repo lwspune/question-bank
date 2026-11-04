@@ -140,6 +140,7 @@ export default async function MockResultPage({ params }: { params: Params }) {
           score={summary.score}
           maxScore={summary.maxScore}
           correct={summary.correct}
+          partial={summary.partial}
           wrong={summary.wrong}
           skipped={summary.skipped}
           sections={sections}
@@ -196,7 +197,7 @@ export default async function MockResultPage({ params }: { params: Params }) {
         )}
 
         <h2 className="mt-8 text-lg font-semibold">Review your answers</h2>
-        <ReviewFilterShell items={res.review!.items.map((i) => ({ position: i.position, verdict: i.verdict }))}>
+        <ReviewFilterShell items={res.review!.items.map((i) => ({ position: i.position, verdict: i.verdict, partial: i.partial }))}>
           <AttemptReviewList items={res.review!.items} supabaseUrl={supabaseUrl} />
         </ReviewFilterShell>
       </main>

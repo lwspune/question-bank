@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { createSupabaseAnonClient, createSupabaseServerClient } from "@/lib/supabase/server";
 import { getSessionUser, getSessionMember } from "@/lib/auth";
 import { getMockBySlug, getUserAttempts } from "@/lib/mocks/query";
-import { markingCopy } from "@/lib/mocks/marking";
+import { markingCopy, sectionMarkingLines } from "@/lib/mocks/marking";
 import { mockKindNote } from "@/lib/mocks/catalogue";
 import StartMock from "./StartMock";
 import { getMockQuota } from "@/lib/mocks/service";
@@ -138,6 +138,8 @@ export default async function MockInstructions({
   // old wording asserted a penalty and told the reader to "skip if unsure" —
   // advice that costs marks when a blank scores the same as a wrong answer.
   const marking = markingCopy(mock.marking);
+  // A paper whose sections are marked differently (UCEED, IPMAT Indore) states each one.
+  const bySection = sectionMarkingLines(mock.sections, mock.questions);
   // Stated for EVERY type, past papers included — see mockKindNote. This is the
   // screen someone reaches from a shared link, with no route to tell them what
   // they are about to sit.
@@ -190,21 +192,43 @@ export default async function MockInstructions({
         <section className="mt-6 rounded-lg border bg-card p-5">
           <h2 className="text-sm font-semibold">Instructions</h2>
           <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
-            <li className="flex items-start gap-2">
-              <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" aria-hidden />
-              <span><strong className="text-foreground">{marking.correctValue}</strong> marks for every correct answer.</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <XCircle
-                className={`mt-0.5 h-4 w-4 shrink-0 ${marking.hasPenalty ? "text-red-600" : "text-muted-foreground"}`}
-                aria-hidden
-              />
-              <span><strong className="text-foreground">{marking.wrongValue}</strong> {marking.wrongNote}</span>
-            </li>
-            <li className="flex items-start gap-2">
-              <MinusCircle className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground" aria-hidden />
-              <span><strong className="text-foreground">0</strong> {marking.unattemptedAdvice}</span>
-            </li>
+            {bySection ? (
+              <>
+                {bySection.map((line) => (
+                  <li key={line.label} className="flex items-start gap-2">
+                    <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" aria-hidden />
+                    <span>
+                      <strong className="text-foreground">
+                        {line.label} ({line.count} {line.count === 1 ? "question" : "questions"}):
+                      </strong>{" "}
+                      {line.text}
+                    </span>
+                  </li>
+                ))}
+                <li className="flex items-start gap-2">
+                  <MinusCircle className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground" aria-hidden />
+                  <span><strong className="text-foreground">0</strong> marks for a question you leave blank.</span>
+                </li>
+              </>
+            ) : (
+              <>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" aria-hidden />
+                  <span><strong className="text-foreground">{marking.correctValue}</strong> marks for every correct answer.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <XCircle
+                    className={`mt-0.5 h-4 w-4 shrink-0 ${marking.hasPenalty ? "text-red-600" : "text-muted-foreground"}`}
+                    aria-hidden
+                  />
+                  <span><strong className="text-foreground">{marking.wrongValue}</strong> {marking.wrongNote}</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <MinusCircle className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground" aria-hidden />
+                  <span><strong className="text-foreground">0</strong> {marking.unattemptedAdvice}</span>
+                </li>
+              </>
+            )}
             <li className="flex items-start gap-2">
               <Clock className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground" aria-hidden />
               <span>The <strong className="text-foreground">{mins}-minute</strong> timer starts when you begin and auto-submits at zero. You can jump between questions and flag them for review.</span>

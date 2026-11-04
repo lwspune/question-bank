@@ -250,8 +250,11 @@ export type MockQuestionView = {
    * those two are not the same thing - an options-less row is also what a failed
    * content load looks like, and rendering a numeric keypad for a question whose
    * options merely failed to arrive would hide the defect behind a plausible UI.
+   * "msq" (UCEED, 0214): tick every correct option.
    */
-  format: "mcq" | "numeric";
+  format: "mcq" | "numeric" | "msq";
+  /** How a multiple-select question is marked, so the runner can say so. Absent otherwise. */
+  msqScheme?: MsqScheme;
 };
 
 /**
@@ -271,7 +274,7 @@ export async function loadMockQuestionViews(
       context: string | null;
       imageUrl: string | null;
       options: MockOptionView[];
-      format: "mcq" | "numeric";
+      format: "mcq" | "numeric" | "msq";
       translations?: { mr?: Translation };
     }
   >();
@@ -296,7 +299,7 @@ export async function loadMockQuestionViews(
         context: (row.context as string | null) ?? null,
         imageUrl: (row.image_url as string | null) ?? null,
         options: opts,
-        format: row.question_format === "numeric" ? "numeric" : "mcq",
+        format: row.question_format === "numeric" || row.question_format === "msq" ? row.question_format : "mcq",
         translations: translationsFromRows(
           row.question_translations as Parameters<typeof translationsFromRows>[0],
           row.options as Parameters<typeof translationsFromRows>[1]
@@ -320,6 +323,7 @@ export async function loadMockQuestionViews(
         imageUrl: content?.imageUrl ?? null,
         options: content?.options ?? [],
         format: content?.format ?? "mcq",
+        ...(s.msqScheme && content?.format === "msq" ? { msqScheme: s.msqScheme } : {}),
         ...(content?.translations ? { translations: content.translations } : {}),
       };
     });

@@ -4,7 +4,9 @@ import { useEffect, useState, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import { matchesReviewFilter, reviewFilterCounts, type ReviewFilter } from "@/lib/mocks/reviewFilter";
 
-type Item = { position: number; verdict: 1 | -1 | 0 };
+/** `partial`: a multiple-select answer with partial credit. Its verdict is -1, so it sits
+ *  under Wrong (still to review), drawn amber like its card. */
+type Item = { position: number; verdict: 1 | -1 | 0; partial?: boolean };
 
 const LABEL: Record<ReviewFilter, string> = { all: "All", wrong: "Wrong", left: "Left", right: "Right" };
 const VERDICT_NAME = { 1: "right", [-1]: "wrong", 0: "left" } as const;
@@ -68,11 +70,12 @@ export default function ReviewFilterShell({ items, children }: { items: Item[]; 
             <a
               key={i.position}
               href={`#q${i.position}`}
-              aria-label={`Question ${i.position}, ${VERDICT_NAME[i.verdict]}`}
+              aria-label={`Question ${i.position}, ${i.partial ? "partly right" : VERDICT_NAME[i.verdict]}`}
               className={cn(
                 "flex h-7 items-center justify-center rounded-md text-[11px] font-semibold tabular-nums focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
                 i.verdict === 1 && "bg-emerald-50 text-emerald-800 dark:bg-emerald-950/40 dark:text-emerald-300",
-                i.verdict === -1 && "bg-red-50 text-red-700 dark:bg-red-950/40 dark:text-red-300",
+                i.verdict === -1 && !i.partial && "bg-red-50 text-red-700 dark:bg-red-950/40 dark:text-red-300",
+                i.partial && "bg-amber-50 text-amber-800 dark:bg-amber-950/40 dark:text-amber-300",
                 i.verdict === 0 && "bg-muted text-muted-foreground"
               )}
             >

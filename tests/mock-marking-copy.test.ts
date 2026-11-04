@@ -67,3 +67,50 @@ describe("markingCopy", () => {
     expect(markingCopy({ correct: 2.5, wrong: -0.83 }).correctValue).toBe("+2.5");
   });
 });
+
+describe("sectionMarkingLines: marking per section, when the sections differ", () => {
+  const q = (sectionKey: string, marks: number, negMarks: number, msqScheme?: "exact" | "partial") => ({
+    sectionKey,
+    marks,
+    negMarks,
+    ...(msqScheme ? { msqScheme } : {}),
+  });
+
+  it("returns null for a paper marked the same throughout (the one-line copy stays)", async () => {
+    const { sectionMarkingLines } = await import("@/lib/mocks/marking");
+    const sections = [{ key: "a", label: "English", count: 2 }, { key: "b", label: "GK", count: 1 }];
+    expect(sectionMarkingLines(sections, [q("a", 4, -1.33), q("a", 4, -1.33), q("b", 4, -1.33)])).toBeNull();
+  });
+
+  it("returns null when a section is itself mixed (no one line would be true for it)", async () => {
+    const { sectionMarkingLines } = await import("@/lib/mocks/marking");
+    const sections = [{ key: "a", label: "Paper", count: 2 }, { key: "b", label: "Other", count: 1 }];
+    expect(sectionMarkingLines(sections, [q("a", 2.5, -0.83), q("a", 2.5, 0), q("b", 1, 0)])).toBeNull();
+  });
+
+  it("states each UCEED section as its paper prints it", async () => {
+    const { sectionMarkingLines } = await import("@/lib/mocks/marking");
+    const sections = [
+      { key: "nat", label: "Numerical answer", count: 1 },
+      { key: "msq", label: "Multiple select", count: 1 },
+      { key: "mcq", label: "Multiple choice", count: 1 },
+    ];
+    expect(sectionMarkingLines(sections, [q("nat", 4, 0), q("msq", 4, -1, "partial"), q("mcq", 3, -0.71)])).toEqual([
+      { label: "Numerical answer", count: 1, text: "+4 for a correct answer, no negative marking." },
+      {
+        label: "Multiple select",
+        count: 1,
+        text: "+4 when you tick every correct option and no wrong one; +1 for each correct option ticked when some are missing and none is wrong; -1 otherwise.",
+      },
+      { label: "Multiple choice", count: 1, text: "+3 for a correct answer, -0.71 for a wrong one." },
+    ]);
+  });
+
+  it("says when multiple-select has no partial marks", async () => {
+    const { sectionMarkingLines } = await import("@/lib/mocks/marking");
+    const sections = [{ key: "msq", label: "Multiple select", count: 1 }, { key: "mcq", label: "Multiple choice", count: 1 }];
+    expect(sectionMarkingLines(sections, [q("msq", 3, -0.19, "exact"), q("mcq", 4, -1.32)])?.[0].text).toBe(
+      "+3 when you tick every correct option and no wrong one; -0.19 otherwise. No partial marks."
+    );
+  });
+});

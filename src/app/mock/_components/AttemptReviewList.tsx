@@ -1,4 +1,5 @@
-import { Check, X, Minus, Gift } from "lucide-react";
+import { Check, CircleDot, X, Minus, Gift } from "lucide-react";
+import { formatNumericKey } from "@/lib/questions/formatKey";
 import KatexRenderer from "@/components/math/KatexRenderer";
 import { cn } from "@/lib/utils";
 import { publicImageUrl } from "@/lib/storage/imageUrl";
@@ -58,9 +59,12 @@ export default function AttemptReviewList({
 }
 
 function ReviewCard({ item, supabaseUrl }: { item: ReviewItem; supabaseUrl: string }) {
+  const isMsq = item.format === "msq";
   const border = item.grace
     ? "border-l-amber-500"
-    : item.verdict === 1
+    : item.partial
+      ? "border-l-amber-500"
+      : item.verdict === 1
       ? "border-l-emerald-500"
       : item.verdict === -1
         ? "border-l-red-500"
@@ -84,15 +88,15 @@ function ReviewCard({ item, supabaseUrl }: { item: ReviewItem; supabaseUrl: stri
             Grace: awarded to all
           </span>
         ) : (
-          <VerdictBadge verdict={item.verdict} />
+          <VerdictBadge verdict={item.verdict} partial={item.partial} marks={item.marksEarned} />
         )}
       </div>
       {item.cancelledNote && <CancelledNotice note={item.cancelledNote} className="mt-2" />}
       {item.grace && !item.cancelledNote && (
         <p className="mt-2 rounded-md border border-amber-300 bg-amber-50 px-3 py-2 text-xs text-amber-800 dark:border-amber-800 dark:bg-amber-950/30 dark:text-amber-300">
-          This question was officially dropped (or marked bonus) by NTA. Every candidate was
-          awarded full marks regardless of their answer, so there is no correct option. See the
-          note in the solution for the reason.
+          Every candidate gets full marks for this question, whatever they answered: the exam
+          body dropped it, marked it bonus, or accepted more than one answer. The note in the
+          solution says which.
         </p>
       )}
       {item.context && (
@@ -135,7 +139,7 @@ function ReviewCard({ item, supabaseUrl }: { item: ReviewItem; supabaseUrl: stri
               {item.correctNumeric === null ? (
                 <span className="text-muted-foreground">—</span>
               ) : (
-                item.correctNumeric
+                formatNumericKey(item.correctNumeric, item.correctNumericMax)
               )}
             </dd>
           </div>
@@ -146,7 +150,7 @@ function ReviewCard({ item, supabaseUrl }: { item: ReviewItem; supabaseUrl: stri
           // Grace questions have no valid key (NTA awarded all) — never paint an
           // option correct/wrong; just neutrally mark what the student picked.
           const isCorrect = !item.grace && opt.isCorrect;
-          const isPicked = item.selectedLabel === opt.label;
+          const isPicked = isMsq ? item.selectedLabels.includes(opt.label) : item.selectedLabel === opt.label;
           return (
             <li
               key={opt.label}
@@ -163,9 +167,16 @@ function ReviewCard({ item, supabaseUrl }: { item: ReviewItem; supabaseUrl: stri
               <div className="min-w-0 flex-1 overflow-x-auto font-serif [&_.katex]:max-w-full">
                 <BilingualOption q={item} opt={opt} />
               </div>
-              {isCorrect && <span className="shrink-0 text-xs font-medium text-emerald-700 dark:text-emerald-400">Correct</span>}
+              {isCorrect && (
+                <span className="shrink-0 text-xs font-medium text-emerald-700 dark:text-emerald-400">
+                  {/* A multiple-select answer can miss a correct option: say which were ticked. */}
+                  {isMsq ? (isPicked ? "Correct, ticked" : "Correct, not ticked") : "Correct"}
+                </span>
+              )}
               {isPicked && !isCorrect && (
-                <span className={cn("shrink-0 text-xs font-medium", item.grace ? "text-amber-700 dark:text-amber-400" : "text-red-700 dark:text-red-400")}>Your pick</span>
+                <span className={cn("shrink-0 text-xs font-medium", item.grace ? "text-amber-700 dark:text-amber-400" : "text-red-700 dark:text-red-400")}>
+                  {isMsq ? "Your tick" : "Your pick"}
+                </span>
               )}
             </li>
           );
@@ -203,7 +214,15 @@ function ReviewCard({ item, supabaseUrl }: { item: ReviewItem; supabaseUrl: stri
   );
 }
 
-function VerdictBadge({ verdict }: { verdict: 1 | -1 | 0 }) {
+function VerdictBadge({ verdict, partial, marks }: { verdict: 1 | -1 | 0; partial: boolean; marks: number }) {
+  // A multiple-select answer with some right options and no wrong one (partial credit).
+  if (partial)
+    return (
+      <span className="inline-flex items-center gap-1 text-xs font-medium text-amber-700 dark:text-amber-400">
+        <CircleDot className="h-3.5 w-3.5" aria-hidden />
+        Partly right (+{marks})
+      </span>
+    );
   if (verdict === 1)
     return <span className="inline-flex items-center gap-1 text-xs font-medium text-emerald-700 dark:text-emerald-400"><Check className="h-3.5 w-3.5" aria-hidden />Correct</span>;
   if (verdict === -1)

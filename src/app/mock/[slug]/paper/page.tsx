@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { getMockBySlug, loadReviewQuestions } from "@/lib/mocks/query";
 import { mockDownloadHref } from "@/lib/mocks/catalogue";
-import { markingCopy } from "@/lib/mocks/marking";
+import { markingCopy, sectionMarkingLines } from "@/lib/mocks/marking";
 import { getExamByName } from "@/lib/exam/examContext";
 import {
   buildPaperSections,
@@ -77,6 +77,7 @@ export default async function MockPaperPage({ params }: { params: Params }) {
   const exam = getExamByName(mock.examName);
   const name = plainPaperTitle(mock.title);
   const marking = markingCopy(mock.marking);
+  const bySection = sectionMarkingLines(mock.sections, mock.questions);
   const bilingual = exam?.bilingual === true;
 
   return (
@@ -100,8 +101,19 @@ export default async function MockPaperPage({ params }: { params: Params }) {
           <h1 className="text-2xl font-bold tracking-tight text-foreground">{name} question paper</h1>
           <p className="mt-1.5 text-sm text-muted-foreground">
             {mock.totalQuestions} questions · {mock.totalMarks} marks · {Math.round(mock.durationSecs / 60)} minutes ·{" "}
-            {marking.correctValue} per correct answer, {marking.hasPenalty ? `${marking.wrongValue} per wrong one` : "no negative marking"}
+            {bySection
+              ? "each section marked as below"
+              : `${marking.correctValue} per correct answer, ${marking.hasPenalty ? `${marking.wrongValue} per wrong one` : "no negative marking"}`}
           </p>
+          {bySection && (
+            <ul className="mt-2 space-y-1 text-sm text-muted-foreground">
+              {bySection.map((line) => (
+                <li key={line.label}>
+                  <strong className="text-foreground">{line.label}:</strong> {line.text}
+                </li>
+              ))}
+            </ul>
+          )}
           <p className="mt-2 text-sm text-muted-foreground">
             Every question in the order it was set, free to read. Tap an option to check it, or open the answer
             {withSolutions ? " and worked solution" : ""}. Answers open as you go; sign in free to keep opening them.
