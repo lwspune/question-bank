@@ -6,8 +6,9 @@ const [evidencePath, outPath] = process.argv.slice(2);
 const evidence = readFileSync(evidencePath, "utf8");
 const header = /^# [^|]+\| (.+?) \| \d+ items/m.exec(evidence);
 const yearOf = new Map();
-// A sitting: a CBSE year ("2024"), a Maharashtra paper ("Feb 2024") or an NDA paper ("NDA 1 2024").
-for (const m of evidence.matchAll(/^### ([0-9a-f-]{36}) \| (\d{4}|[A-Z][a-z]{2} \d{4}|NDA [12] \d{4}) \|/gm)) yearOf.set(m[1], m[2]);
+// A sitting: a CBSE year ("2024"), a Maharashtra paper ("Feb 2024"), an NDA paper ("NDA 1 2024")
+// or an MHT-CET shift ("10 May 2023 S1", "May 2021 S1"; lib/homework/sittings.ts cetSittingLabel).
+for (const m of evidence.matchAll(/^### ([0-9a-f-]{36}) \| ((?:\d{1,2} )?[A-Z][a-z]{2} \d{4} S[12]|\d{4}|[A-Z][a-z]{2} \d{4}|NDA [12] \d{4}) \|/gm)) yearOf.set(m[1], m[2]);
 
 const errors = [];
 let out;
