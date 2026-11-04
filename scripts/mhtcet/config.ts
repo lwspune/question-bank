@@ -157,12 +157,31 @@ export function shiftDataPath(shiftId: string): string {
   return join(SHIFTS_DIR, `${shiftId}.json`);
 }
 
+/**
+ * A shift's source_file must be its own paper's name, never a spreadsheet's.
+ * commit.ts makes EVERY row with that source_file PRIVATE and flip-public.ts
+ * makes every PRIVATE one PUBLIC, so a shift file naming a sitting's existing
+ * .xlsx would hide that whole live sitting, or publish its withheld rows
+ * (found 2026-11-04 before it ran). Rows added to an .xlsx sitting join it by
+ * SQL after the flip: source_file, and source_row = question_number + 1.
+ */
+export function checkShiftSourceFile(name: string): void {
+  if (/\.xlsx$/i.test(name)) {
+    throw new Error(
+      `shift source_file "${name}" is a spreadsheet name: commit/flip-public would touch every row of that sitting. ` +
+        `Use the paper's own .docx name, then move the added rows into the sitting by SQL.`
+    );
+  }
+}
+
 export function loadShift(shiftId: string): ShiftData {
   const p = shiftDataPath(shiftId);
   if (!existsSync(p)) {
     throw new Error(`shift data not found: ${p}\n(author it after extract — classify + derive each of the 150 questions)`);
   }
-  return JSON.parse(readFileSync(p, "utf8")) as ShiftData;
+  const shift = JSON.parse(readFileSync(p, "utf8")) as ShiftData;
+  checkShiftSourceFile(shift.sourceFile);
+  return shift;
 }
 
 /** Resolve the shiftId argument (argv[N]); throws with usage if missing. */

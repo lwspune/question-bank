@@ -143,12 +143,12 @@ describe("MHT-CET sitting registry", () => {
    * PRIVATE and one (11 Apr S2 Q34) also absent, absorbed by content_hash dedup
    * into its 2025 twin. So 106 of 136 ship.
    */
-  it("holds exactly 27 papers, leaving 109 to ship", () => {
+  it("holds exactly 24 papers, leaving 112 to ship", () => {
     const heldMaths = sittings.filter((s) => s.hold?.maths).length;
     const heldPhyChem = sittings.filter((s) => s.hold?.phyChem).length;
     expect(heldMaths).toBe(10);
-    expect(heldPhyChem).toBe(17);
-    expect(136 - heldMaths - heldPhyChem).toBe(109);
+    expect(heldPhyChem).toBe(14);
+    expect(136 - heldMaths - heldPhyChem).toBe(112);
   });
 
   /**
