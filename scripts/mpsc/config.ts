@@ -188,6 +188,18 @@ export const PAPERS: Paper[] = [
   paper("2023-bc", "B+C", 2023, "2023-04-30", "J17", [432, 471], [472, 473], "Group B & C · 30 Apr 2023"),
   paper("2024-b", "B", 2024, "2025-02-02", "H19", [474, 513], [514, 515], "Group B · 2 Feb 2025"),
   paper("2024-c", "C", 2024, "2025-06-01", "R19", [516, 555], [556, 557], "Group C · 1 Jun 2025"),
+  // From mpsc.gov.in (2026-11-04): each booklet and final key its own file in MPSC_2026_DIR.
+  ...([
+    ["2025-b", "B", 2025, "2026-01-04", "M21", "gb-2025", "Group B · 4 Jan 2026"],
+    ["2025-c", "C", 2025, "2026-01-11", "P21", "gc-2025", "Group C · 11 Jan 2026"],
+    ["2026-b", "B", 2026, "2026-06-14", "H25", "gb-2026", "Group B · 14 Jun 2026"],
+  ] as const).map(([id, group, year, date, code, file, label]) =>
+    paper(id, group, year, date, code, [1, 40], [1, 2], label, {
+      sourcePdf: `${MPSC_2026_DIR}/paper-${file}.pdf`,
+      keyPdf: `${MPSC_2026_DIR}/key-${file}.pdf`,
+      bookletSet: "A",
+    })
+  ),
 ];
 
 /**
@@ -295,6 +307,12 @@ export const SSP_PAPERS: Paper[] = [
     keyPdf: y === 2025 ? FINAL_KEY_2025.gs : `${SSP_2023_DIR}/key-gs-${y}.pdf`,
     bookletSet: set,
   })),
+  {
+    ...ssp(2026, "2026-05-31", "D25", [1, 48], "31 May 2026"),
+    sourcePdf: `${MPSC_2026_DIR}/paper-gs-2026.pdf`,
+    keyPdf: `${MPSC_2026_DIR}/key-gs-2026.pdf`,
+    bookletSet: "A",
+  },
 ];
 
 /**
@@ -356,6 +374,13 @@ export const SSP_CSAT_PAPERS: Paper[] = [
     keyPages: [1, 2],
     bookletSet: set,
   })),
+  {
+    ...csat(2026, "2026-05-31", "E25", 40, "31 May 2026"),
+    sourcePdf: `${MPSC_2026_DIR}/paper-csat-2026.pdf`,
+    keyPdf: `${MPSC_2026_DIR}/key-csat-2026.pdf`,
+    keyPages: [1, 2],
+    bookletSet: "A",
+  },
 ];
 
 /**

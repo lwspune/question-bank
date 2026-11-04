@@ -125,7 +125,7 @@ describe("deriveMpscSittings", () => {
     expect(got.find((s) => s.key === "ssp-2025")?.graceNumbers).toEqual([15, 36, 39, 47, 50, 87, 89, 90]); // final key: 36 + 90 cancelled, 39 a new doubt, 84 settled
     // 29 before the 2026-11-03 key-doubt ruling, which adds 34 GS questions.
     // 2026-11-04: ssp-2025 moved to MPSC's final key (+Q36, Q90 cancelled, +Q39 doubt, -Q84 settled).
-    expect(got.reduce((n, s) => n + s.graceNumbers.length, 0)).toBe(65);
+    expect(got.reduce((n, s) => n + s.graceNumbers.length, 0)).toBe(71); // + ssp-2026 final key: Q14, Q22, Q25, Q50, Q51, Q70 cancelled
   });
 
   it("covers every configured paper with a distinct slug", () => {
@@ -133,7 +133,7 @@ describe("deriveMpscSittings", () => {
     expect(got).toHaveLength(PAPERS.length);
     expect(new Set(got.map((s) => s.slug)).size).toBe(PAPERS.length);
     // Measured: 35 cancelled questions across the 14 official keys, plus 31 key-doubt notices (2026-11-03).
-    expect(got.reduce((n, s) => n + s.graceNumbers.length, 0)).toBe(66);
+    expect(got.reduce((n, s) => n + s.graceNumbers.length, 0)).toBe(68); // + 2025-c Q20 and 2026-b Q66, cancelled in their final keys
   });
 });
 
@@ -238,7 +238,7 @@ describe("State Services CSAT (Paper II): every cover, 80 questions, 200 marks, 
   });
 
   it("mocks every sitting but 2022 (dropped by the owner)", () => {
-    expect(CSAT_MOCK_PAPERS.map((p) => p.pyqYear).sort()).toEqual([2013, 2014, 2015, 2016, 2018, 2019, 2020, 2021, 2023, 2024, 2025]);
+    expect(CSAT_MOCK_PAPERS.map((p) => p.pyqYear).sort()).toEqual([2013, 2014, 2015, 2016, 2018, 2019, 2020, 2021, 2023, 2024, 2025, 2026]);
   });
 
   const got = deriveMpscSittings(CSAT_MOCK_PAPERS, undefined, sspCsatMockTitle);
@@ -262,7 +262,7 @@ describe("State Services CSAT (Paper II): every cover, 80 questions, 200 marks, 
     // Read from the booklet's own set: 2023 is a Set-D booklet.
     expect(sit(2023).optionMarks?.[76]).toEqual({ A: 1.5, B: 0, C: 1, D: 2.5 });
     // 2013 prints seven, every later booklet five.
-    expect(got.reduce((n, s) => n + Object.keys(s.optionMarks ?? {}).length, 0)).toBe(57);
+    expect(got.reduce((n, s) => n + Object.keys(s.optionMarks ?? {}).length, 0)).toBe(62); // + ssp-csat-2026 Q76-80
   });
 
   it("drops the penalty on the fifteen questions 2015's final key exempts (key p.3)", () => {

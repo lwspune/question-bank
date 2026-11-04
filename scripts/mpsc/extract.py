@@ -119,6 +119,14 @@ SSP_2023_PAPERS = {
 # keys, and the FINAL keys of the 2025 papers, which shipped on the first key.
 MPSC_2026_DIR = r"C:/Users/vilas/Downloads/mpsc-2026"
 FINAL_KEY_2025 = {"ssp-2025": "key-gs-2025-final.pdf", "ssp-csat-2025": "key-csat-2025-final.pdf"}
+# The 2026 sittings (and Group B/C 2025, sat Jan 2026): (booklet file, pages, key file).
+MPSC_2026_PAPERS = {
+    "ssp-2026": ("paper-gs-2026.pdf", 48, "key-gs-2026.pdf"),
+    "ssp-csat-2026": ("paper-csat-2026.pdf", 40, "key-csat-2026.pdf"),
+    "2025-b": ("paper-gb-2025.pdf", 40, "key-gb-2025.pdf"),
+    "2025-c": ("paper-gc-2025.pdf", 40, "key-gc-2025.pdf"),
+    "2026-b": ("paper-gb-2026.pdf", 40, "key-gb-2026.pdf"),
+}
 IMAGE_ONLY_KEYS = {"2019-c", "ssp-2019"}
 # Pages photographed sideways: page number -> degrees CLOCKWISE to stand them
 # up. Applied on render and on figure crops, so a figure box is always read
@@ -143,6 +151,9 @@ def page_image(pid, n, dpi, clip=None):
 
 def source(pid):
     """(booklet doc path, booklet pages, key doc path, key pages) for a paper."""
+    if pid in MPSC_2026_PAPERS:
+        paper, n, key = MPSC_2026_PAPERS[pid]
+        return os.path.join(MPSC_2026_DIR, paper), (1, n), os.path.join(MPSC_2026_DIR, key), (1, 2)
     if pid in SSP_2023_PAPERS:
         kind, year, n = SSP_2023_PAPERS[pid]
         key = os.path.join(SSP_2023_DIR, f"key-{kind}-{year}.pdf")
@@ -173,7 +184,7 @@ def doc_for(path):
 
 def keys(only=None):
     os.makedirs(DATA, exist_ok=True)
-    for pid in [*PAPERS, *SSP_PAPERS, *SSP_CSAT_PAPERS, *SSP_2023_PAPERS, *MERGED_PAPERS]:
+    for pid in [*PAPERS, *SSP_PAPERS, *SSP_CSAT_PAPERS, *SSP_2023_PAPERS, *MERGED_PAPERS, *MPSC_2026_PAPERS]:
         if only and not pid.startswith(only):
             continue
         _, _, keypath, (k1, k2) = source(pid)

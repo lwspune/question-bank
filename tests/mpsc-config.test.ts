@@ -25,8 +25,8 @@ describe("MPSC paper registry", () => {
     expect(SSP_PAPERS.every((p) => p.exam === "ssp")).toBe(true);
   });
 
-  it("registers the thirteen State Services Prelims GS Paper I booklets, one per year 2013-2025", () => {
-    expect(SSP_PAPERS.map((p) => p.pyqYear).sort()).toEqual([2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025]);
+  it("registers the fourteen State Services Prelims GS Paper I booklets, one per year 2013-2026", () => {
+    expect(SSP_PAPERS.map((p) => p.pyqYear).sort()).toEqual([2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]);
   });
 
   it("reads 2023-2025 (both papers) from their own files, each booklet's set, every one on MPSC's FINAL key", () => {
@@ -77,9 +77,40 @@ describe("MPSC paper registry", () => {
   });
 });
 
+describe("MPSC papers from mpsc.gov.in (2026-11-04): booklet + FINAL key, each its own file", () => {
+  const cases = [
+    { id: "ssp-2026", code: "D25", date: "2026-05-31", note: "GS Paper I · 31 May 2026", paper: "paper-gs-2026.pdf", key: "key-gs-2026.pdf", pages: 48 },
+    { id: "ssp-csat-2026", code: "E25", date: "2026-05-31", note: "CSAT Paper II · 31 May 2026", paper: "paper-csat-2026.pdf", key: "key-csat-2026.pdf", pages: 40 },
+    { id: "2025-b", code: "M21", date: "2026-01-04", note: "Group B · 4 Jan 2026", paper: "paper-gb-2025.pdf", key: "key-gb-2025.pdf", pages: 40 },
+    { id: "2025-c", code: "P21", date: "2026-01-11", note: "Group C · 11 Jan 2026", paper: "paper-gc-2025.pdf", key: "key-gc-2025.pdf", pages: 40 },
+    { id: "2026-b", code: "H25", date: "2026-06-14", note: "Group B · 14 Jun 2026", paper: "paper-gb-2026.pdf", key: "key-gb-2026.pdf", pages: 40 },
+  ];
+  it.each(cases)("$id: $code, $note, Set A, read from its own booklet and final key", (c) => {
+    const p = requirePaper(c.id);
+    expect(p.code).toBe(c.code);
+    expect(p.date).toBe(c.date);
+    expect(p.pyqNote).toBe(c.note);
+    expect(p.bookletSet).toBe("A");
+    expect(p.sourcePdf).toBe(`${MPSC_2026_DIR}/${c.paper}`);
+    expect(p.keyPdf).toBe(`${MPSC_2026_DIR}/${c.key}`);
+    expect(p.pages).toEqual([1, c.pages]);
+    expect(p.keyPages).toEqual([1, 2]);
+    expect(p.sourceFile).toBe(c.id.startsWith("ssp") ? `MPSC-${c.id}-${c.code}` : `MPSC-${c.id}-${c.code}`);
+    expect(p.provisionalKey).toBeUndefined();
+  });
+
+  it("files the Group B and C papers under Group B & C (pyqYear = MPSC's exam year, the sitting in pyqNote)", () => {
+    expect(requirePaper("2025-b").exam).toBe("gbc");
+    expect(requirePaper("2025-b").pyqYear).toBe(2025);
+    expect(requirePaper("2025-c").group).toBe("C");
+    expect(requirePaper("2026-b").pyqYear).toBe(2026);
+    for (const id of ["2025-b", "2025-c", "2026-b"]) expect(PAPERS).toContain(requirePaper(id));
+  });
+});
+
 describe("MPSC State Services CSAT Paper II registry", () => {
   it("registers the twelve CSAT booklets on file — no 2017 booklet exists in the source", () => {
-    expect(SSP_CSAT_PAPERS.map((p) => p.pyqYear).sort()).toEqual([2013, 2014, 2015, 2016, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025]);
+    expect(SSP_CSAT_PAPERS.map((p) => p.pyqYear).sort()).toEqual([2013, 2014, 2015, 2016, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]);
   });
 
   it("puts CSAT under the State Services exam row, 80 questions, with its own chapter list", () => {
