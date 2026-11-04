@@ -65,7 +65,7 @@ async function main() {
   console.log(`  held: ${plan.held.map((h) => `Q${h.n} (${h.reason}${h.unsettled ? ", unsettled" : ""})`).join(", ") || "none"}`);
   const noticed = plan.rows.filter((r) => r.notice);
   const cancelled = plan.rows.filter((r) => r.format === "mcq" && r.answer === "CANCELLED");
-  console.log(`  two or more answers accepted (note + grace): ${noticed.map((r) => `Q${r.n}`).join(", ") || "none"}`);
+  console.log(`  note + grace in mocks (two answers accepted, or defective as printed): ${noticed.map((r) => `Q${r.n}`).join(", ") || "none"}`);
   console.log(`  cancelled by IIT Bombay (no key, notice): ${cancelled.map((r) => `Q${r.n}`).join(", ") || "none"}`);
   const hashes = new Set(payload.map((p) => p.contentHash));
   if (hashes.size !== payload.length) issues.push("two rows share a content_hash; one would be silently dropped");

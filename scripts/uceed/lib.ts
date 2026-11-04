@@ -28,6 +28,12 @@ export type UceedQuestion = {
   figure: boolean;
   /** "none" once a person has looked at a figure the watermark gate flags (blue by content). */
   watermark?: "none";
+  /**
+   * Set by the main session when the question is defective as printed (no answer can be worked
+   * out from the page, an option is unreadable, ...). The key is kept, the solution opens with
+   * this note and the row is grace in mocks (owner policy 2026-10-29).
+   */
+  defect?: string;
   subject: string | null;
   chapter: string | null;
   subtopic: string | null;
@@ -106,6 +112,7 @@ export function planPaper(paper: UceedPaper, key: UceedKey): Plan {
       issues.push(`Q${q.n}: difficulty must be Easy, Moderate or Hard`);
     }
     if (q.solution && DASH.test(q.solution)) issues.push(`Q${q.n}: solution has a dash, write a full stop or comma`);
+    if (q.defect && DASH.test(q.defect)) issues.push(`Q${q.n}: defect note has a dash, write a full stop or comma`);
     if (issues.length > before) continue;
 
     if (reason) {
@@ -140,7 +147,8 @@ export function planPaper(paper: UceedPaper, key: UceedKey): Plan {
     const repeat = also.find((a) => a === k.value);
     if (repeat !== undefined) issues.push(`Q${q.n}: also-accepted "${repeat}" repeats the key`);
     if (issues.length > before) continue;
-    const notice = also.length ? acceptsNotice([k.value, ...also]) : undefined;
+    const notes = [q.defect?.trim(), also.length ? acceptsNotice([k.value, ...also]) : undefined].filter(Boolean);
+    const notice = notes.length ? notes.join(" ") : undefined;
     const base = {
       n: q.n,
       text: q.text,

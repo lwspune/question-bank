@@ -200,3 +200,23 @@ describe("keys IIT Bombay marks as defective (owner policy, 2026-10-29)", () => 
     expect(plan.issues).toEqual(['Q30: also-accepted "E" is not A-D', 'Q31: also-accepted "A" repeats the key']);
   });
 });
+
+describe("a question defective as printed (owner policy, 2026-10-29)", () => {
+  it("keeps IIT Bombay's key, opens the solution with the defect, and is grace in mocks", () => {
+    const defect = "The printed figure shows one still frame of an animation the online test played, so the answer cannot be worked out from print.";
+    const [row] = planPaper(paper(q({ n: 31, defect })), key({ n: 31, type: "MCQ", value: "D" })).rows;
+    expect(row).toMatchObject({ format: "mcq", answer: "D", notice: defect });
+    expect(row.solution).toBe(`**Note:** ${defect}\n\n${editorial.solution}`);
+    expect(toCommitRow(row, null).flawed).toBe(true);
+  });
+
+  it("puts a defect and a two-answer key in one note", () => {
+    const [row] = planPaper(paper(q({ n: 31, defect: "The figure is faint." })), key({ n: 31, type: "MCQ", value: "A", also: ["B"] })).rows;
+    expect(row.notice).toBe("The figure is faint. IIT Bombay's final key accepts both A and B, so either earns full marks. The answer marked here is A.");
+  });
+
+  it("refuses a defect note with a dash", () => {
+    const plan = planPaper(paper(q({ n: 31, defect: "Faint — sorry." })), key({ n: 31, type: "MCQ", value: "A" }));
+    expect(plan.issues).toEqual(["Q31: defect note has a dash, write a full stop or comma"]);
+  });
+});
