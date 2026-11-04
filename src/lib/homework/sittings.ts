@@ -75,10 +75,13 @@ export function ndaSittingLabel(year: number, month: string | null): string {
  */
 export function cetSittingLabel(year: number, month: string | null, note: string | null): string {
   if (!month) throw new Error(`no month on a ${year} MHT-CET row`);
-  const m = MONTHS.find((x) => month.startsWith(x));
-  if (!m) throw new Error(`unknown month "${month}" on a ${year} MHT-CET row`);
-  const found = /^(?:(\d{1,2})(?:st|nd|rd|th)?\s+)?(?:[A-Za-z]+\s+)?Shift\s+(1|2|I|II)$/.exec((note ?? "").trim());
+  const found = /^(?:(\d{1,2})(?:st|nd|rd|th)?\s+)?(?:([A-Za-z]+)\s+)?Shift\s+(1|2|I|II)$/.exec((note ?? "").trim());
   if (!found) throw new Error(`cannot read the shift in "${note}" on a ${year} MHT-CET row`);
-  const shift = found[2] === "1" || found[2] === "I" ? 1 : 2;
+  // The note records the sitting, so a month it names wins: six 2025 rows say
+  // "19 April Shift II" with month May.
+  const fromNote = found[2] ? MONTHS.find((x) => found[2].startsWith(x)) : undefined;
+  const m = fromNote ?? MONTHS.find((x) => month.startsWith(x));
+  if (!m) throw new Error(`unknown month "${month}" on a ${year} MHT-CET row`);
+  const shift = found[3] === "1" || found[3] === "I" ? 1 : 2;
   return `${found[1] ? `${Number(found[1])} ` : ""}${m} ${year} S${shift}`;
 }

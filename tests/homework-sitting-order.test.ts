@@ -69,6 +69,10 @@ describe("cetSittingLabel", () => {
     expect(cetSittingLabel(2022, "May", "Shift 1")).toBe("May 2022 S1");
   });
 
+  it("takes the month from the note when the note names one (six 2025 rows carry month May for an April sitting)", () => {
+    expect(cetSittingLabel(2025, "May", "19 April Shift II")).toBe("19 Apr 2025 S2");
+  });
+
   it("refuses a note it cannot read, never guessing", () => {
     expect(() => cetSittingLabel(2024, "May", "Morning paper")).toThrow(/shift/);
     expect(() => cetSittingLabel(2024, null, "Shift 1")).toThrow(/month/);
