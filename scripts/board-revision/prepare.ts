@@ -1,16 +1,19 @@
 /**
- * Lay out what a revision-sheet drafter reads (2026-11-03; CBSE 12 2026-11-04):
- * `npm run revision:prepare -- --out=<dir> [--exam=mh-hsc-12|cbse-12] [--subject=Physics] [--chapter=<slug>]`.
+ * Lay out what a revision-sheet drafter reads (2026-11-03; CBSE 12, MH SSC 10
+ * and CBSE 10 2026-11-04):
+ * `npm run revision:prepare -- --out=<dir> [--exam=mh-hsc-12|cbse-12|mh-ssc-10|cbse-10] [--subject=Physics] [--chapter=<slug>]`.
  *
  * Per chapter, into <dir>/<subjectRoute>/<chapterSlug>/:
  *   book.txt  the textbook chapter as text (pdftotext, reading order), from the
  *             PDF the ingestion config already names (scripts/stateboard/config.ts
- *             for Balbharati, scripts/ncert/config.ts for NCERT); a whole-book
+ *             for Balbharati XII, scripts/mh-ssc-10-text/config.ts for Balbharati X,
+ *             scripts/ncert/config.ts for NCERT); a whole-book
  *             PDF is cut to the chapter's own pages.
  *   pyqs.txt  every PUBLIC board past-paper question of the chapter, one a line,
  *             "<year> <month> [<format>] [<n> marks] <text>", newest first. The
  *             marks are the ones a stored past paper prints for the question
- *             (CBSE); HSC rows sit in no paper with marks, so they carry none.
+ *             (CBSE, MH SSC 10); HSC 12 rows sit in no paper with marks, so they
+ *             carry none.
  *             The evidence check (revision:evidence) matches cited lines
  *             against this file.
  * Read-only on the database. Write the output to a scratch folder, never the repo.
@@ -21,7 +24,8 @@ import { join } from "node:path";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { slugify } from "@/lib/board/query";
 import { CHAPTERS as STATEBOARD_CHAPTERS } from "../stateboard/config";
-import { CHAPTERS as NCERT_CHAPTERS, EXAM_ID_CBSE_12 } from "../ncert/config";
+import { CHAPTERS as NCERT_CHAPTERS, EXAM_ID_CBSE_10, EXAM_ID_CBSE_12 } from "../ncert/config";
+import { CHAPTERS as SSC10_CHAPTERS } from "../mh-ssc-10-text/config";
 
 type BookChapter = { chapterName: string; subjectName: string; pdf: string; pages?: number[] };
 
@@ -29,6 +33,8 @@ type BookChapter = { chapterName: string; subjectName: string; pdf: string; page
 const EXAMS: Record<string, { name: string; chapters: BookChapter[] }> = {
   "mh-hsc-12": { name: "Maharashtra HSC Class 12", chapters: Object.values(STATEBOARD_CHAPTERS).filter((c) => c.subjectName) },
   "cbse-12": { name: "CBSE Class 12", chapters: Object.values(NCERT_CHAPTERS).filter((c) => c.examId === EXAM_ID_CBSE_12) },
+  "mh-ssc-10": { name: "Maharashtra State Board Class 10", chapters: Object.values(SSC10_CHAPTERS) },
+  "cbse-10": { name: "CBSE Class 10", chapters: Object.values(NCERT_CHAPTERS).filter((c) => c.examId === EXAM_ID_CBSE_10) },
 };
 
 function arg(name: string): string | undefined {
