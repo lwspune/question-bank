@@ -89,7 +89,11 @@ export function planFix(state: QuestionState, fix: Fix): FixPlan {
 
   const texts = finalOptions.map((o) => o.text.trim());
   const dupes = [...new Set(texts.filter((t, i) => texts.indexOf(t) !== i))];
-  if (dupes.length) problems.push(`duplicate option text after fix: ${dupes.join(" | ")}`);
+  // Checked only when the fix edits an option: a paper that prints two options
+  // the same keeps them (a defect noted above the solution), and a fix that
+  // touches only the stem or the solution must still go through.
+  const editsOptions = Object.keys(fix.options ?? {}).length > 0;
+  if (editsOptions && dupes.length) problems.push(`duplicate option text after fix: ${dupes.join(" | ")}`);
 
   const keyMoved = finalCorrect !== oldCorrect;
   if (keyMoved) changed.push(`key:${oldCorrect ?? "-"}->${finalCorrect ?? "-"}`);

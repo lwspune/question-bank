@@ -1,0 +1,60 @@
+[
+  {
+    "id": "5b7b71be-19ee-45db-b368-fdab840b77ad",
+    "label": "MHT-CET 2023 10 May S2 Q128",
+    "reason": "transcription: the printed paper (PYQPs/2023/10 may shift 2 (ques).docx Q128) reads \\int dx/\\sqrt{e^x - 1}; our stem had lost the square root. Key B and solution already match the printed question.",
+    "text": "If \\(\\int \\frac{dx}{\\sqrt{e^x - 1}} = 2\\tan^{-1}(f(x)) + c\\) where \\(x > 0\\), then \\(f(x)\\) is"
+  },
+  {
+    "id": "4f77c777-5517-4a62-a491-0fd93cb85d4b",
+    "label": "MHT-CET 2023 2 May S2 Q143",
+    "reason": "transcription: the printed paper (PYQPs/2023/2 may shift 2 (ques).docx Q143) reads F(x) = (f(x/2))^2 + (g(x/2))^2; our stem had f(x^2/2) + g(x^2/2). Key A (5) kept; solution rewritten for the printed question.",
+    "text": "If \\(F(x) = \\left(f\\!\\left(\\frac{x}{2}\\right)\\right)^2+\\left(g\\!\\left(\\frac{x}{2}\\right)\\right)^2\\), where \\(f''(x) = -f(x)\\) and \\(g(x) = f'(x)\\), and \\(F(5) = 5\\), then \\(F(10)\\) is equal to",
+    "solution": "\\(F'(x) = 2f\\!\\left(\\frac{x}{2}\\right)f'\\!\\left(\\frac{x}{2}\\right)\\cdot\\frac{1}{2} + 2g\\!\\left(\\frac{x}{2}\\right)g'\\!\\left(\\frac{x}{2}\\right)\\cdot\\frac{1}{2}\\).\n\nSince \\(f' = g\\) and \\(g' = f'' = -f\\), this is \\(f\\!\\left(\\frac{x}{2}\\right)g\\!\\left(\\frac{x}{2}\\right) - g\\!\\left(\\frac{x}{2}\\right)f\\!\\left(\\frac{x}{2}\\right) = 0\\).\n\nSo \\(F\\) is constant and \\(F(10) = F(5) = 5\\). Option A."
+  },
+  {
+    "id": "9b638de2-ab85-4890-804a-c7cf843a1297",
+    "label": "MHT-CET 2024 10 May S1 Q145",
+    "reason": "transcription: the printed paper (PYQPs/2024/10 May shift 1 (ques).docx Q145) reads \\int dx/(7 - 6x - x^2) with no square root; ours had added one, which made the log options wrong. Key B and solution already match the printed question.",
+    "text": "\\(\\int\\frac{dx}{7-6x-x^2}=\\)"
+  },
+  {
+    "id": "93a3f3f3-0b37-4f0a-9753-796ef092e98f",
+    "label": "MHT-CET 2024 10 May S1 Q134",
+    "reason": "transcription: the printed paper (PYQPs/2024/10 May shift 1 (ques).docx Q134) reads dy/dx = \\sqrt{1 - y^2}/y; our stem had lost the square root. Key D matches the printed question and the paper's answer key.",
+    "text": "Differential equation \\(\\frac{dy}{dx}=\\frac{\\sqrt{1-y^2}}{y}\\) determines family of circles with",
+    "solution": "Separate the variables: \\(\\frac{y\\,dy}{\\sqrt{1-y^2}} = dx\\). Integrating, \\(-\\sqrt{1-y^2} = x + c\\), so \\((x+c)^2 + y^2 = 1\\).\n\nThese are circles of fixed radius 1 with centre \\((-c, 0)\\), which moves along the X-axis. Option D."
+  },
+  {
+    "id": "7b746537-9bbf-470f-8bcc-b092e40b364a",
+    "label": "MHT-CET 2024 9 May S2 Q131",
+    "reason": "transcription: the printed paper (PYQPs/2024/9 May shift 2 (ques).docx Q131) reads \\int(\\sqrt{\\tan x} + \\sqrt{\\cot x})dx, and its option (d) is 2\\sin^{-1}(\\sin x - \\cos x) + c; ours had dropped both square roots and repeated option A as D. Key A kept; solution rewritten for the printed question.",
+    "text": "\\(\\int\\left(\\sqrt{\\tan x} + \\sqrt{\\cot x}\\right)dx =\\)",
+    "options": { "D": "\\(2\\sin^{-1}(\\sin x - \\cos x) + c\\)" },
+    "solution": "\\(\\sqrt{\\tan x} + \\sqrt{\\cot x} = \\frac{\\sin x + \\cos x}{\\sqrt{\\sin x\\cos x}}\\).\n\nPut \\(t = \\sin x - \\cos x\\), so \\(dt = (\\cos x + \\sin x)\\,dx\\) and \\(t^2 = 1 - 2\\sin x\\cos x\\), giving \\(\\sin x\\cos x = \\frac{1 - t^2}{2}\\).\n\nThe integral becomes \\(\\int \\frac{\\sqrt{2}\\,dt}{\\sqrt{1 - t^2}} = \\sqrt{2}\\sin^{-1}t + c = \\sqrt{2}\\sin^{-1}(\\sin x - \\cos x) + c\\). Option A."
+  },
+  {
+    "id": "669908ac-90a5-43f2-bc5e-56669291e9f2",
+    "label": "MHT-CET 2024 10 May S1 Q136",
+    "reason": "transcription + key: the printed paper (PYQPs/2024/10 May shift 1 (ques).docx Q136) reads y = \\cos^{-1}(a^2/\\sqrt{x^4 + a^4}), with options (b) 2a^2x^2/\\sqrt{x^4 + a^4} and (d) a^2x^2/(2\\sqrt{x^4 + a^4}); ours had lost the square roots. The paper's key (ans docx, entry 136) says (b), but dy/dx = 2a^2x/(x^4 + a^4) (checked with sympy), which is (a). Key corrected to A with a notice (owner policy 2026-10-29: source key wrong, maths certain).",
+    "text": "If \\(y=\\cos^{-1}\\!\\left(\\frac{a^2}{\\sqrt{x^4+a^4}}\\right)\\), then \\(\\frac{dy}{dx}\\) is",
+    "options": {
+      "B": "\\(\\frac{2a^2x^2}{\\sqrt{x^4+a^4}}\\)",
+      "D": "\\(\\frac{a^2x^2}{2\\sqrt{x^4+a^4}}\\)"
+    },
+    "correct": "A",
+    "solution": "**Note:** The paper's answer key gives option (b). The working below gives option (a), so (a) is shown as correct.\n\nIf \\(\\cos y = \\frac{a^2}{\\sqrt{x^4+a^4}}\\), then \\(\\sin y = \\frac{x^2}{\\sqrt{x^4+a^4}}\\) and \\(\\tan y = \\frac{x^2}{a^2}\\), so \\(y = \\tan^{-1}\\frac{x^2}{a^2}\\).\n\n\\(\\frac{dy}{dx} = \\frac{1}{1 + \\frac{x^4}{a^4}}\\cdot\\frac{2x}{a^2} = \\frac{2a^2x}{x^4+a^4}\\). Option A."
+  },
+  {
+    "id": "cae91631-2d9c-4182-bc7c-d59b28b6087e",
+    "label": "MHT-CET 2023 10 May S2 Q131",
+    "reason": "flawed as printed: the paper (PYQPs/2023/10 may shift 2 (ques).docx Q131) prints \\int_{-\\pi/4}^{\\pi/4}(\\sin x)^{-4}dx exactly as ours, and that integral diverges at x = 0. Key C (-8/3) kept as the paper's; notice added above the solution (owner policy 2026-10-29, defective as printed). Not in any mock.",
+    "solution": "**Note:** As printed, this integral does not exist: \\(\\csc^4 x\\) is unbounded at \\(x = 0\\), which lies inside the limits. The answer shown follows the paper's key, which comes from applying the antiderivative across \\(x = 0\\).\n\nThe antiderivative of \\(\\csc^4 x = (1 + \\cot^2 x)\\csc^2 x\\) is \\(-\\cot x - \\frac{\\cot^3 x}{3}\\) (put \\(t = \\cot x\\)). Evaluated end to end over \\([-\\frac{\\pi}{4}, \\frac{\\pi}{4}]\\) it gives \\(\\left(-1 - \\frac{1}{3}\\right) - \\left(1 + \\frac{1}{3}\\right) = -\\frac{8}{3}\\), the paper's key. The same question was set again on 25 April 2025 Shift II."
+  },
+  {
+    "id": "678336f0-cec0-4e01-8e8b-268f4f345932",
+    "label": "MHT-CET 2025 25 Apr S2 Q128",
+    "reason": "flawed as printed: the paper (PYQPs/2025/25th april shift II.docx Q128) prints \\int_{-\\pi/4}^{\\pi/4}\\sin^{-4}x\\,dx exactly as ours, and that integral diverges at x = 0. Key B (-8/3) kept as the paper's; notice added above the solution; grace in its full-paper mock (owner policy 2026-10-29).",
+    "solution": "**Note:** As printed, this integral does not exist: \\(\\csc^4 x\\) is unbounded at \\(x = 0\\), which lies inside the limits. The answer shown follows the paper's key, which comes from applying the antiderivative across \\(x = 0\\).\n\nThe antiderivative of \\(\\csc^4 x = (1 + \\cot^2 x)\\csc^2 x\\) is \\(-\\cot x - \\frac{\\cot^3 x}{3}\\) (put \\(t = \\cot x\\)). Evaluated end to end over \\([-\\frac{\\pi}{4}, \\frac{\\pi}{4}]\\) it gives \\(\\left(-1 - \\frac{1}{3}\\right) - \\left(1 + \\frac{1}{3}\\right) = -\\frac{8}{3}\\), the paper's key."
+  }
+]

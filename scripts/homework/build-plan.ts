@@ -163,7 +163,6 @@ async function main() {
         title: plan.title,
         summary: plan.summary,
         per_day: plan.perDay,
-        ...(publish ? { published: true } : {}),
       },
       { onConflict: "slug" }
     )
@@ -181,7 +180,15 @@ async function main() {
     p_groups: groupRows(plan),
   });
   if (error) throw new Error(`items: ${error.message}`);
-  console.log(`wrote ${written} items; plan is ${saved.published ? "PUBLISHED" : "not published (add --publish)"}`);
+  // Published only AFTER its items are written (2026-11-04): publishing in the
+  // upsert above left an empty plan public when the items write failed.
+  let published = saved.published as boolean;
+  if (publish && !published) {
+    const { error: pubErr } = await client.from("homework_plans").update({ published: true }).eq("id", saved.id);
+    if (pubErr) throw new Error(`publish: ${pubErr.message}`);
+    published = true;
+  }
+  console.log(`wrote ${written} items; plan is ${published ? "PUBLISHED" : "not published (add --publish)"}`);
 }
 
 /** Each group with every question in it, oldest paper first, a case study's parts numbered by `sub`. */

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { compareSittings, mhSittingLabel, ndaSittingLabel } from "@/lib/homework/sittings";
+import { cetSittingLabel, compareSittings, mhSittingLabel, ndaSittingLabel } from "@/lib/homework/sittings";
 
 describe("compareSittings", () => {
   it("orders MH papers by date, not alphabetically", () => {
@@ -50,5 +50,45 @@ describe("ndaSittingLabel", () => {
   it("refuses a row with no month or another month", () => {
     expect(() => ndaSittingLabel(2024, null)).toThrow(/2024/);
     expect(() => ndaSittingLabel(2024, "Jan")).toThrow(/Jan/);
+  });
+});
+
+// MHT-CET (2026-11-04): a paper is one SHIFT, named by its date and shift as
+// students know it. The bank's notes vary by year ("10th May Shift 1",
+// "19 April Shift II", and only "May Shift 1" / "Shift 1" for 2021-2022, which
+// held one paper each).
+describe("cetSittingLabel", () => {
+  it("names a shift by its day, month, year and shift number", () => {
+    expect(cetSittingLabel(2023, "May", "10th May Shift 1")).toBe("10 May 2023 S1");
+    expect(cetSittingLabel(2025, "April", "19 April Shift II")).toBe("19 Apr 2025 S2");
+    expect(cetSittingLabel(2026, "May", "12 May Shift I")).toBe("12 May 2026 S1");
+  });
+
+  it("names a year's only paper by its month when the note carries no day", () => {
+    expect(cetSittingLabel(2021, "May", "May Shift 1")).toBe("May 2021 S1");
+    expect(cetSittingLabel(2022, "May", "Shift 1")).toBe("May 2022 S1");
+  });
+
+  it("takes the month from the note when the note names one (six 2025 rows carry month May for an April sitting)", () => {
+    expect(cetSittingLabel(2025, "May", "19 April Shift II")).toBe("19 Apr 2025 S2");
+  });
+
+  it("refuses a note it cannot read, never guessing", () => {
+    expect(() => cetSittingLabel(2024, "May", "Morning paper")).toThrow(/shift/);
+    expect(() => cetSittingLabel(2024, null, "Shift 1")).toThrow(/month/);
+  });
+});
+
+describe("compareSittings with MHT-CET shifts", () => {
+  it("orders shifts by date, then shift, across months and years", () => {
+    const labels = ["12 May 2026 S1", "10 May 2023 S2", "May 2021 S1", "20 Apr 2026 S2", "10 May 2023 S1", "19 Apr 2025 S2", "9 May 2023 S1"];
+    expect([...labels].sort(compareSittings)).toEqual([
+      "May 2021 S1", "9 May 2023 S1", "10 May 2023 S1", "10 May 2023 S2", "19 Apr 2025 S2", "20 Apr 2026 S2", "12 May 2026 S1",
+    ]);
+  });
+
+  it("keeps the other exams' order as it was", () => {
+    expect(["2024", "2023"].sort(compareSittings)).toEqual(["2023", "2024"]);
+    expect(["NDA 2 2024", "NDA 1 2024"].sort(compareSittings)).toEqual(["NDA 1 2024", "NDA 2 2024"]);
   });
 });

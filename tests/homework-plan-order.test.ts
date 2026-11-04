@@ -165,3 +165,44 @@ describe("buildPlanOrder", () => {
     expect(() => buildPlanOrder(badS)).toThrow(/unknown sitting Jul 2099/);
   });
 });
+
+describe("buildPlanOrder notes for many papers (MHT-CET, 2026-11-04)", () => {
+  // The database caps a note at 300 characters (migration 0143). MHT-CET has
+  // 69 shifts, and a type asked in 19 of them listed every shift past the cap.
+  const shifts = Array.from({ length: 20 }, (_, i) => `${i + 1} May ${2023 + Math.floor(i / 5)} S1`);
+  const many = (n: number) => shifts.slice(0, n);
+
+  it("summarises a long list of papers by year, keeping the count and the paper shown", () => {
+    const qs = many(19).map((s, i) => q(`t${i}`, s));
+    const items = buildPlanOrder({
+      perDay: 5,
+      sittings: shifts,
+      questions: qs,
+      groups: [{ tier: "type", label: "T", sittings: many(19), questionIds: qs.map((x) => x.id) }],
+    });
+    expect(items[0].note).toBe("This type asked 19 times: 5 in 2023, 5 in 2024, 5 in 2025, 4 in 2026. This one: 19 May 2026 S1");
+  });
+
+  it("summarises a long repeat the same way and says some papers changed it", () => {
+    const qs = many(19).map((s, i) => q(`r${i}`, s));
+    const items = buildPlanOrder({
+      perDay: 5,
+      sittings: shifts,
+      questions: qs,
+      groups: [{ tier: "repeat", label: "R", sittings: [...many(18).map((s) => `${s}*`), shifts[18]], questionIds: qs.map((x) => x.id) }],
+    });
+    expect(items[0].note).toBe("Asked 19 times: 5 in 2023, 5 in 2024, 5 in 2025, 4 in 2026 (numbers or wording changed in some)");
+  });
+
+  it("keeps every note within 300 characters, and a short list as it was", () => {
+    const qs = many(3).map((s, i) => q(`s${i}`, s));
+    const items = buildPlanOrder({
+      perDay: 5,
+      sittings: shifts,
+      questions: qs,
+      groups: [{ tier: "type", label: "T", sittings: many(3), questionIds: qs.map((x) => x.id) }],
+    });
+    expect(items[0].note).toBe("This type asked 3 times: 1 May 2023 S1, 2 May 2023 S1, 3 May 2023 S1. This one: 3 May 2023 S1");
+    for (const it of items) expect(it.note.length).toBeLessThanOrEqual(300);
+  });
+});

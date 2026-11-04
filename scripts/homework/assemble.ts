@@ -116,11 +116,14 @@ function main() {
     examName,
     subjectName,
     title,
+    // Repeats and types are ranked together by count since 2026-11-04 (lib/homework/plan.ts).
     summary: examName === "NDA"
-      ? `NDA ${subjectName} past questions, ${sittings[0]} to ${sittings[sittings.length - 1]}, five a day. Questions UPSC asked again come first, highest count first, then the question types it keeps asking, then every other question. A set of linked items counts as one question.`
+      ? `NDA ${subjectName} past questions, ${sittings[0]} to ${sittings[sittings.length - 1]}, five a day. Questions UPSC asked again and the question types it keeps asking come first, ranked together by how often they were asked, then every other question. A set of linked items counts as one question.`
+      : examName === "MHT-CET"
+      ? `MHT-CET ${subjectName} past questions from ${sittings.length} shifts, ${sittings[0].slice(-7, -3)} to ${sittings[sittings.length - 1].slice(-7, -3)}, five a day. Questions asked again in another shift and the question types that keep coming back come first, ranked together by how often they were asked, then every other question.`
       : isPapers
-      ? `${examName} ${subjectName} board questions, ${sittings[0].slice(-4)} to ${sittings[sittings.length - 1].slice(-4)}, five a day. Questions the board asked again come first, highest count first, then the question types it keeps asking, then every other question.`
-      : `${examName} ${subjectName} board questions, ${sittings[0]} to ${sittings[sittings.length - 1]}, five a day. Questions the board asked again in another year come first, highest count first, then the question types it keeps asking, then every other question. A case study counts as one question.`,
+      ? `${examName} ${subjectName} board questions, ${sittings[0].slice(-4)} to ${sittings[sittings.length - 1].slice(-4)}, five a day. Questions the board asked again and the question types it keeps asking come first, ranked together by how often they were asked, then every other question.`
+      : `${examName} ${subjectName} board questions, ${sittings[0]} to ${sittings[sittings.length - 1]}, five a day. Questions the board asked again in another year and the question types it keeps asking come first, ranked together by how often they were asked, then every other question. A case study counts as one question.`,
     perDay: 5,
     note: arg("note") ?? "Repeats are counted across years: the bank keeps one row for a question that several sets of one year shared. Groups were found by a chapter-by-chapter reading (scripts/homework/REVIEW_BRIEF.md) and checked.",
     sittings,
