@@ -37,6 +37,10 @@ FOOTER_Y = 780  # "UCEED 2026 / Page n of N" sits at y >= 790 on every page
 Q_MARKER = re.compile(r"^\s*Q\.?\s?(\d{1,3})\b\.?")
 BARE_MARKER = re.compile(r"^\s*(\d{1,3})(?:\.(?!\d)|\))")
 OPTION = re.compile(r"^\s*\(?([A-D])[.)]\s+(.*)$")
+# Figures drawn as VECTORS, with no embedded picture to extract: rendered from the page,
+# clipped to the drawing (year -> question -> (page, x0, y0, x1, y1) in PDF points).
+# 2021 Q19's four rotations are line drawings.
+PAGE_CLIPS = {2021: {19: (11, 70, 354, 526, 606)}}
 MAX_FIGURE_BYTES = 1000 * 1000  # under storage's 1 MiB limit
 TINY = 40  # px: bullets and icons, not figures
 SCANNED_PAGE = 0.6  # a picture covering more of the page than this is a scanned page, not a figure
@@ -126,7 +130,11 @@ def main(year: str) -> None:
                 options[-1]["text"] += " " + line
             else:
                 stem.append(line)
-        files = save_figure(pdf, q["xrefs"], os.path.join(figs, f"Q{n:02d}.png"))
+        clip = PAGE_CLIPS.get(int(year), {}).get(n)
+        if clip:
+            files = save_clip(pdf, clip, os.path.join(figs, f"Q{n:02d}.png"))
+        else:
+            files = save_figure(pdf, q["xrefs"], os.path.join(figs, f"Q{n:02d}.png"))
         drafts.append({
             "n": n, "page": q["page"], "text": " ".join(stem), "options": options,
             "figure": os.path.basename(files) if files else None, "pictures": len(q["xrefs"]),
@@ -165,6 +173,15 @@ def load_picture(pdf, xref):
             zoom = width / r.width
             return page.get_pixmap(matrix=fitz.Matrix(zoom, zoom), clip=r, alpha=False)
     raise ValueError(f"picture {xref} is on no page")
+
+
+def save_clip(pdf, clip, path):
+    """A vector-drawn figure (PAGE_CLIPS) rendered from its page at 800 px wide."""
+    page, *rect = clip
+    r = fitz.Rect(*rect)
+    zoom = 800 / r.width
+    pdf[page - 1].get_pixmap(matrix=fitz.Matrix(zoom, zoom), clip=r, alpha=False).save(path)
+    return fit_storage(path)
 
 
 def save_figure(pdf, xrefs, path):
