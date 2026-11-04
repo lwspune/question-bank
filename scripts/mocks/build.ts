@@ -78,7 +78,7 @@ import {
   IMAT_PAPER,
   type MockPaperBlueprint,
 } from "../../src/lib/mocks/blueprints";
-import type { MockAnswerKey, OptionLabel } from "../../src/lib/mocks/answers";
+import { answerKeyFromRow, type MockAnswerKey, type OptionLabel } from "../../src/lib/mocks/answers";
 import {
   buildMockPaper,
   dedupeMergedRows,
@@ -90,6 +90,7 @@ import {
   jeeMockSlug,
   jeeMockTitle,
   type MockPaperSnapshot,
+  type PaperFormat,
   type PaperQuestionRow,
 } from "../../src/lib/mocks/reconstruct";
 import {
@@ -212,7 +213,7 @@ async function fetchPaperRows(
   for (let from = 0; ; from += PAGE) {
     let q = db
       .from("questions")
-      .select("id, source_row, question_number, chapter_id, source_file, question_format, numeric_answer, options(label,is_correct)")
+      .select("id, source_row, question_number, chapter_id, source_file, question_format, numeric_answer, numeric_answer_max, options(label,is_correct)")
       .in("chapter_id", chapterIds)
       .eq("question_kind", "pyq")
       .eq("visibility", "PUBLIC");
@@ -239,7 +240,8 @@ async function fetchPaperRows(
         questionNumber: (r.question_number as string | null) ?? null,
         subjectName: chapterToSubject.get(r.chapter_id as string) ?? "?",
         sourceFile: (r.source_file as string | null) ?? undefined,
-        answer: readAnswerKey(r, opts),
+        format: paperFormat(r.question_format),
+        answer: answerKeyFromRow({ ...r, options: opts }),
       });
     }
     if (!data || data.length < PAGE) break;
@@ -247,27 +249,9 @@ async function fetchPaperRows(
   return out;
 }
 
-/**
- * The answer key for one fetched row.
- *
- * Which SHAPE a question uses is decided by its own `question_format`, never by
- * whether options happen to exist: a numeric (JEE Section-B) question carries
- * zero option rows, and inferring "no options therefore numeric" would turn a
- * failed options read into a silently numeric question. Mirrors loadAnswerKey in
- * src/lib/mocks/query.ts — the build and the grader must agree about what the
- * answer IS, or a paper validates at build time and mis-grades at delivery.
- */
-function readAnswerKey(
-  r: Record<string, unknown>,
-  opts: { label: string; is_correct: boolean }[]
-): MockAnswerKey | null {
-  if (r.question_format === "numeric") {
-    const v = r.numeric_answer;
-    if (v === null || v === undefined || !Number.isFinite(Number(v))) return null;
-    return { kind: "numeric", value: Number(v) };
-  }
-  const label = opts.find((o) => o.is_correct)?.label;
-  return label ? { kind: "mcq", label: label as OptionLabel } : null;
+/** A row's question type as a paper section reads it (UCEED sections by type). */
+function paperFormat(f: unknown): PaperFormat {
+  return f === "numeric" || f === "msq" ? f : "mcq";
 }
 
 /** One sitting's rows, pinned by year + month (NDA). */

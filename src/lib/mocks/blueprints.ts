@@ -14,6 +14,11 @@
  * Pure data — unit-tested in tests/mock-blueprints.test.ts.
  */
 
+import type { MockAnswerKey, MsqScheme } from "./answers";
+
+/** A question's type as a section reads it (UCEED sections by type). */
+type PaperFormat = MockAnswerKey["kind"];
+
 export type MockSectionBlueprint = {
   /** Stable key stamped on every question in this section (grouping + palette). */
   key: string;
@@ -48,6 +53,14 @@ export type MockSectionBlueprint = {
    * records which section of the paper the exam itself printed the question in.
    */
   sourceFileSuffix?: string;
+  /**
+   * The question types this section takes, when the paper is sectioned by TYPE rather
+   * than subject (UCEED: NAT, then MSQ, then MCQ, each marked differently). A row joins
+   * only if its format is listed. Omitted everywhere else.
+   */
+  formats?: PaperFormat[];
+  /** How this section's multiple-select questions are marked (see MsqScheme). */
+  msqScheme?: MsqScheme;
 };
 
 /**
@@ -929,6 +942,61 @@ export const MH_SSC_10_HUMANITIES_MCQ_PAPER = boardPaper(
   [["history", "History"], ["political-science", "Political Science"], ["geography", "Geography"]]
 );
 
+/** UCEED Part A's seven syllabus areas (UCEED 2027 brochure, section 16), in its order. */
+export const UCEED_SUBJECTS = [
+  "Visualization and Spatial Reasoning",
+  "Practical and Scientific Knowledge",
+  "Observation and Design Sensitivity",
+  "Environment and Society",
+  "Analytical and Logical Reasoning",
+  "Language",
+  "Creativity",
+] as const;
+
+/**
+ * UCEED Part A for one year, as its paper's own instructions print it. The paper is
+ * sectioned by question TYPE (NAT, MSQ, MCQ), each with its own marking, so sections are
+ * picked by format; every area can appear in every section.
+ *
+ *   2019       85 q, 3 h:   NAT 20 x 3 | MSQ 20 x 3, -0.19, all-or-nothing | MCQ 45 x 4, -1.32
+ *   2020-2021  68 q, 2.5 h: NAT 18 x 4 | MSQ 18 x 4, -0.19, all-or-nothing | MCQ 32 x 3, -0.71
+ *   2022-2023  68 q, 2.5 h: NAT 18 x 4 | MSQ 18 x 4, partial credit, else -1 | MCQ 32 x 3, -0.71
+ *   2024-2026  57 q, 2 h:   NAT 14 x 4 | MSQ 15 x 4, partial credit, else -1 | MCQ 28 x 3, -0.71
+ *
+ * 2022's paper prints no scheme and no Part A time: it takes 2023's (owner, 2026-11-04), the
+ * same 68-question layout. 2025's text layer is clipped; its layout matches 2024 and 2026.
+ * NAT is never penalised.
+ */
+export function uceedPaper(year: number): MockPaperBlueprint {
+  if (year < 2019 || year > 2026) throw new Error(`No UCEED Part A blueprint for ${year}`);
+  const [nat, msq, mcq] = year === 2019 ? [20, 20, 45] : year <= 2023 ? [18, 18, 32] : [14, 15, 28];
+  const mcqMarking = year === 2019 ? { correct: 4, wrong: -1.32 } : { correct: 3, wrong: -0.71 };
+  const natMarks = year === 2019 ? 3 : 4;
+  const partial = year >= 2022;
+  const subjects = [...UCEED_SUBJECTS];
+  return {
+    code: "part-a",
+    examName: "UCEED",
+    examSlug: "uceed",
+    paperLabel: "Part A",
+    durationSecs: (year === 2019 ? 180 : year <= 2023 ? 150 : 120) * 60,
+    marking: mcqMarking,
+    sections: [
+      { key: "nat", label: "Numerical answer", subjects, formats: ["numeric"], count: nat, marking: { correct: natMarks, wrong: 0 } },
+      {
+        key: "msq",
+        label: "Multiple select",
+        subjects,
+        formats: ["msq"],
+        count: msq,
+        marking: { correct: natMarks, wrong: partial ? -1 : -0.19 },
+        msqScheme: partial ? "partial" : "exact",
+      },
+      { key: "mcq", label: "Multiple choice", subjects, formats: ["mcq"], count: mcq, marking: mcqMarking },
+    ],
+  };
+}
+
 /** The NDA blueprints the build script's year+month discovery loop iterates. */
 export const MOCK_BLUEPRINTS: readonly MockPaperBlueprint[] = [
   NDA_MATHS_PAPER,
@@ -975,6 +1043,8 @@ const ALL_BLUEPRINTS: readonly MockPaperBlueprint[] = [
   MH_HSC_12_CHAPTER_MCQ_PAPER,
   MH_SSC_10_CHAPTER_MCQ_PAPER,
   MH_SSC_10_HUMANITIES_MCQ_PAPER,
+  // One code for every year; the label is the same, the build picks the year's blueprint.
+  uceedPaper(2026),
 ];
 
 /** Sum of the DECLARED section counts (0 when a blueprint declares none). */
@@ -983,7 +1053,7 @@ export function totalQuestions(bp: MockPaperBlueprint): number {
 }
 
 /**
- * Total marks at full correct (uniform-per-paper marking), rounded to 2dp.
+ * Total marks at full correct, each section at its own marking, rounded to 2dp.
  *
  * The rounding is load-bearing for FRACTIONAL marking: CDS is 120 × 0.8333,
  * which floats to 99.99600000000001 and would render as "/ 99.996". Integer and
@@ -991,7 +1061,9 @@ export function totalQuestions(bp: MockPaperBlueprint): number {
  * buildMockPaper already applies to the snapshot's totalMarks.
  */
 export function totalMarks(bp: MockPaperBlueprint): number {
-  return Math.round(totalQuestions(bp) * bp.marking.correct * 100) / 100;
+  // Summed per section: UCEED marks its three sections differently.
+  const sum = bp.sections.reduce((n, s) => n + (s.count ?? 0) * sectionMarking(bp, s).correct, 0);
+  return Math.round(sum * 100) / 100;
 }
 
 /** Find a blueprint by exam slug + paper code; null when not registered. */

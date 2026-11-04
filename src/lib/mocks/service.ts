@@ -18,8 +18,8 @@ import {
   type MockScope,
   type ReviewOption,
 } from "./query";
-import { gradeMock, remainingSecs, type MockGradeQuestion } from "./attempt";
-import { verdictFor, type OptionLabel, type SavedResponse } from "./answers";
+import { gradeMock, questionOutcome, remainingSecs, type MockGradeQuestion } from "./attempt";
+import { type OptionLabel, type SavedResponse } from "./answers";
 import { logActivity, logActivityBatch } from "@/lib/activity/service";
 import {
   selectAnswerCorrectEvents,
@@ -179,6 +179,8 @@ export async function saveAnswer(
     selectedLabel: OptionLabel | null;
     /** JEE Section-B (NAT): the value the student typed. */
     numericResponse: number | null;
+    /** A multiple-select question's ticked set (migration 0215); null = nothing ticked. */
+    selectedLabels?: OptionLabel[] | null;
     isFlagged: boolean;
     timeSpentSecs: number;
   }
@@ -193,6 +195,7 @@ export async function saveAnswer(
       question_id: patch.questionId,
       selected_label: patch.selectedLabel,
       numeric_response: patch.numericResponse,
+      selected_labels: patch.selectedLabels && patch.selectedLabels.length > 0 ? patch.selectedLabels : null,
       is_flagged: patch.isFlagged,
       time_spent_secs: Math.max(0, Math.floor(patch.timeSpentSecs)),
       updated_at: new Date().toISOString(),
@@ -245,6 +248,7 @@ export async function regradeAttempt(
     answer: key[q.questionId] ?? null,
     ...(q.grace ? { grace: true } : {}),
     ...(q.optionMarks ? { optionMarks: q.optionMarks } : {}),
+    ...(q.msqScheme ? { msqScheme: q.msqScheme } : {}),
   }));
 
   const result = gradeMock(gradeQuestions, answers);
@@ -265,9 +269,12 @@ export type AttemptSummary = {
   score: number;
   maxScore: number;
   correct: number;
+  /** Multiple-select answers that earned partial credit (0 on every other paper). */
+  partial: number;
   wrong: number;
   skipped: number;
-  sectionScores: Record<string, { correct: number; wrong: number; skipped: number; score: number; maxScore: number }>;
+  /** `partial` is absent on attempts graded before migration 0215: read it as 0. */
+  sectionScores: Record<string, { correct: number; partial?: number; wrong: number; skipped: number; score: number; maxScore: number }>;
 };
 
 /**
@@ -313,6 +320,7 @@ export async function submitAttempt(
     answer: key[q.questionId] ?? null,
     ...(q.grace ? { grace: true } : {}),
     ...(q.optionMarks ? { optionMarks: q.optionMarks } : {}),
+    ...(q.msqScheme ? { msqScheme: q.msqScheme } : {}),
   }));
 
   const result = gradeMock(gradeQuestions, answers);
@@ -326,6 +334,7 @@ export async function submitAttempt(
       score: result.score,
       max_score: result.maxScore,
       correct_count: result.correct,
+      partial_count: result.partial,
       wrong_count: result.wrong,
       skipped_count: result.skipped,
       section_scores: result.sectionScores,
@@ -357,6 +366,7 @@ export async function submitAttempt(
         score: result.score,
         maxScore: result.maxScore,
         correct: result.correct,
+        partial: result.partial,
         wrong: result.wrong,
         skipped: result.skipped,
       },
@@ -367,6 +377,9 @@ export async function submitAttempt(
     // Nor is a per-option (decision-making) question: a 1.5-mark judgement is
     // not a mistake to drill, and the drill has no way to show its marks.
     if (gq.optionMarks) continue;
+    // Nor a multiple-select question: the drill serves one-answer questions and cannot
+    // show a tick set (migration 0215). The bank card's MSQ check is the place to practise it.
+    if (gq.answer?.kind === "msq") continue;
     // Read the verdict gradeMock already produced rather than re-deriving it.
     // Re-deriving was a second implementation of right-vs-wrong, and it silently
     // could not see a numeric (JEE Section-B) response at all.
@@ -409,6 +422,7 @@ export async function submitAttempt(
     score: result.score,
     maxScore: result.maxScore,
     correct: result.correct,
+    partial: result.partial,
     wrong: result.wrong,
     skipped: result.skipped,
     sectionScores: result.sectionScores,
@@ -461,7 +475,7 @@ async function loadSavedAnswers(
   const out: Record<string, SavedAnswer> = {};
   const { data, error } = await db
     .from("attempt_answers")
-    .select("question_id, selected_label, numeric_response, is_flagged, time_spent_secs")
+    .select("question_id, selected_label, numeric_response, selected_labels, is_flagged, time_spent_secs")
     .eq("attempt_id", attemptId);
   if (error) throw new MockError(500, `loadSavedAnswers: ${error.message}`);
   for (const r of (data ?? []) as Record<string, unknown>[]) {
@@ -471,6 +485,7 @@ async function loadSavedAnswers(
         r.numeric_response === null || r.numeric_response === undefined
           ? null
           : Number(r.numeric_response),
+      selectedLabels: Array.isArray(r.selected_labels) && r.selected_labels.length > 0 ? (r.selected_labels as OptionLabel[]) : null,
       isFlagged: Boolean(r.is_flagged),
       timeSpentSecs: (r.time_spent_secs as number) ?? 0,
     };
@@ -486,7 +501,7 @@ async function readAttemptSummary(
 ): Promise<AttemptSummary> {
   let q = db
     .from("mock_attempts")
-    .select("status, score, max_score, correct_count, wrong_count, skipped_count, section_scores")
+    .select("status, score, max_score, correct_count, partial_count, wrong_count, skipped_count, section_scores")
     .eq("id", attemptId);
   if (userId !== null) q = q.eq("user_id", userId);
   const { data, error } = await q.single();
@@ -497,6 +512,7 @@ async function readAttemptSummary(
     score: Number(data.score ?? 0),
     maxScore: Number(data.max_score ?? 0),
     correct: (data.correct_count as number) ?? 0,
+    partial: (data.partial_count as number) ?? 0,
     wrong: (data.wrong_count as number) ?? 0,
     skipped: (data.skipped_count as number) ?? 0,
     sectionScores: (data.section_scores as AttemptSummary["sectionScores"]) ?? {},
@@ -526,14 +542,23 @@ export type ReviewItem = {
   context: string | null;
   imageUrl: string | null;
   options: ReviewOption[];
-  /** "numeric" is JEE Section-B: no options, a typed answer. */
-  format: "mcq" | "numeric";
+  /** "numeric" is JEE Section-B: no options, a typed answer. "msq": tick every correct option. */
+  format: "mcq" | "numeric" | "msq";
   selectedLabel: OptionLabel | null;
   correctLabel: OptionLabel | null;
+  /** A multiple-select question: what the student ticked, and every correct option. */
+  selectedLabels: OptionLabel[];
+  correctLabels: OptionLabel[];
   /** What the student typed, and the key, for a numeric question. */
   numericResponse: number | null;
   correctNumeric: number | null;
+  /** The top of a numeric key printed as a range (migration 0214); null when exact. */
+  correctNumericMax: number | null;
   verdict: 1 | -1 | 0;
+  /** A multiple-select answer that earned partial credit (verdict stays -1). */
+  partial: boolean;
+  /** The marks this question earned, as the score counted them. */
+  marksEarned: number;
   solution: string | null;
   solutionImageUrl: string | null;
   /** Animated solution (0184), already checked; null when there is none. */
@@ -588,24 +613,28 @@ export async function getAttemptReview(
       const saved = answers[s.questionId];
       const selectedLabel = saved?.selectedLabel ?? null;
       const numericResponse = saved?.numericResponse ?? null;
+      const key = c?.key ?? null;
       // Grace questions have no valid key (NTA awarded all): suppress the correct
       // highlight and count the row as awarded (verdict 1) for everyone.
-      const correctLabel = grace ? null : c?.options.find((o) => o.isCorrect)?.label ?? null;
-      const correctNumeric = grace ? null : c?.numericAnswer ?? null;
+      const correctLabel = grace || key?.kind !== "mcq" ? null : key.label;
+      const correctLabels = grace || key?.kind !== "msq" ? [] : key.labels;
+      const correctNumeric = grace || key?.kind !== "numeric" ? null : key.value;
+      const correctNumericMax = grace || key?.kind !== "numeric" ? null : key.max ?? null;
       const format = c?.format ?? "mcq";
-      // The verdict comes from the SAME helper gradeMock uses. It used to be
-      // recomputed here, which meant the score and this list were two separate
-      // implementations of right-vs-wrong and free to disagree on screen.
-      const verdict = verdictFor(
-        format === "numeric"
-          ? correctNumeric === null
-            ? null
-            : { kind: "numeric", value: correctNumeric }
-          : correctLabel === null
-            ? null
-            : { kind: "mcq", label: correctLabel },
-        saved ?? null,
-        grace
+      // The verdict AND the marks come from the same function gradeMock sums, so the
+      // score and this list cannot disagree (they were two implementations once).
+      const outcome = questionOutcome(
+        {
+          questionId: s.questionId,
+          sectionKey: s.sectionKey,
+          marks: s.marks,
+          negMarks: s.negMarks,
+          answer: key,
+          ...(grace ? { grace: true } : {}),
+          ...(s.optionMarks ? { optionMarks: s.optionMarks } : {}),
+          ...(s.msqScheme ? { msqScheme: s.msqScheme } : {}),
+        },
+        saved
       );
       return {
         questionId: s.questionId,
@@ -618,9 +647,14 @@ export async function getAttemptReview(
         format,
         selectedLabel,
         correctLabel,
+        selectedLabels: saved?.selectedLabels ?? [],
+        correctLabels,
         numericResponse,
         correctNumeric,
-        verdict,
+        correctNumericMax,
+        verdict: outcome.verdict,
+        partial: outcome.partial,
+        marksEarned: outcome.marks,
         solution: c?.solution ?? null,
         solutionImageUrl: c?.solutionImageUrl ?? null,
         solutionVisual: c?.solutionVisual ?? null,

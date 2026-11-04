@@ -3,6 +3,7 @@
  */
 import { existsSync } from "node:fs";
 import { join } from "node:path";
+import { UCEED_SUBJECTS } from "../../src/lib/mocks/blueprints";
 
 export { ORG_ID, CREATED_BY } from "../practice/config";
 
@@ -25,15 +26,7 @@ export const figurePath = (year: number, n: number) => {
 };
 export const DATA = join(__dirname, "data");
 
-/** The seven Part A areas of the official syllabus (UCEED 2027 brochure, section 16), in its order. */
-export const SUBJECTS = [
-  "Visualization and Spatial Reasoning",
-  "Practical and Scientific Knowledge",
-  "Observation and Design Sensitivity",
-  "Environment and Society",
-  "Analytical and Logical Reasoning",
-  "Language",
-  "Creativity",
-] as const;
+/** The seven Part A areas of the official syllabus; one list, shared with the mock blueprint. */
+export const SUBJECTS = UCEED_SUBJECTS;
 
 export const sourceFile = (year: number) => `UCEED ${year} Part A (IIT Bombay)`;

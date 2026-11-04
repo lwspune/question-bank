@@ -42,6 +42,7 @@ const mcq = (over: Partial<ReviewQuestionContent> = {}): ReviewQuestionContent =
   ],
   format: "mcq",
   numericAnswer: null,
+  key: { kind: "mcq", label: "B" },
   ...over,
 });
 

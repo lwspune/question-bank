@@ -166,3 +166,32 @@ export function msqMarks(
   if (outcome === "partial" && scheme === "partial") return new Set(r?.selectedLabels ?? []).size;
   return negMarks;
 }
+
+/** The columns a question's key is read from (questions + its options). */
+export type AnswerKeyRow = {
+  question_format?: string | null;
+  numeric_answer?: number | string | null;
+  numeric_answer_max?: number | string | null;
+  options?: readonly { label: string; is_correct: boolean }[] | null;
+};
+
+/**
+ * A question's key, read the ONE way the mock build and the grader both use (build.ts
+ * readAnswerKey and query.ts loadAnswerKey were two copies until migration 0214 added
+ * two shapes). The SHAPE comes from the question's own `question_format`, never from
+ * whether options exist: a failed options read must not turn a question numeric.
+ * Null when no key is stored; validatePaperRows refuses such a paper unless it is grace.
+ */
+export function answerKeyFromRow(row: AnswerKeyRow): MockAnswerKey | null {
+  const num = (v: unknown) => (v === null || v === undefined || v === "" || !Number.isFinite(Number(v)) ? null : Number(v));
+  if (row.question_format === "numeric") {
+    const value = num(row.numeric_answer);
+    if (value === null) return null;
+    const max = num(row.numeric_answer_max);
+    return max !== null && max !== value ? { kind: "numeric", value, max } : { kind: "numeric", value };
+  }
+  const correct = (row.options ?? []).filter((o) => o.is_correct).map((o) => o.label as OptionLabel);
+  if (correct.length === 0) return null;
+  if (row.question_format === "msq") return { kind: "msq", labels: [...correct].sort() };
+  return { kind: "mcq", label: correct[0] };
+}

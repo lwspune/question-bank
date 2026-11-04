@@ -83,4 +83,9 @@ describe("askedFromReview", () => {
     expect(askedFromReview({ format: "numeric", selectedLabel: null, numericResponse: 7.5 })).toEqual({ chose: null, entered: 7.5, skipped: false });
     expect(askedFromReview({ format: "numeric", selectedLabel: null, numericResponse: null })).toEqual({ chose: null, entered: null, skipped: true });
   });
+
+  it("names no single pick for a multiple-select question, only whether it was skipped", () => {
+    expect(askedFromReview({ format: "msq", selectedLabel: null, numericResponse: null, selectedLabels: ["A", "C"] })).toEqual({ chose: null, entered: null, skipped: false });
+    expect(askedFromReview({ format: "msq", selectedLabel: null, numericResponse: null, selectedLabels: [] })).toEqual({ chose: null, entered: null, skipped: true });
+  });
 });

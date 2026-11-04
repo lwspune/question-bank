@@ -300,3 +300,19 @@ describe("gradeMock with multiple-select questions (UCEED, migration 0215)", () 
     expect(r.partial).toBe(0);
   });
 });
+
+describe("questionOutcome: one question's verdict and marks, shared by the score and the review", () => {
+  it("reports partial credit with its marks, and the verdict as not fully right", async () => {
+    const { questionOutcome } = await import("@/lib/mocks/attempt");
+    const q = { questionId: "q", sectionKey: "s", marks: 4, negMarks: -1, answer: { kind: "msq" as const, labels: ["A", "B", "C"] as OptionLabel[] }, msqScheme: "partial" as const };
+    expect(questionOutcome(q, { selectedLabel: null, numericResponse: null, selectedLabels: ["A", "B"] })).toEqual({ verdict: -1, partial: true, marks: 2 });
+    expect(questionOutcome(q, { selectedLabel: null, numericResponse: null, selectedLabels: ["C", "B", "A"] })).toEqual({ verdict: 1, partial: false, marks: 4 });
+    expect(questionOutcome(q, undefined)).toEqual({ verdict: 0, partial: false, marks: 0 });
+  });
+
+  it("scores an MCQ as before", async () => {
+    const { questionOutcome } = await import("@/lib/mocks/attempt");
+    const q = { questionId: "q", sectionKey: "s", marks: 3, negMarks: -0.71, answer: key("B") };
+    expect(questionOutcome(q, pick("C"))).toEqual({ verdict: -1, partial: false, marks: -0.71 });
+  });
+});
