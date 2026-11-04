@@ -36,11 +36,22 @@ import {
   deriveMhtCetSittingIdentities,
   type MhtCetSittingIdentity,
 } from "../../src/lib/mocks/mhtcetSittings";
+import { paperNumberOffset, type PaperQuestionRow } from "../../src/lib/mocks/reconstruct";
 
 /** Which of a sitting's two papers is held, and why. */
 export type MhtCetHold = { maths?: string; phyChem?: string };
 
-export type MhtCetSitting = MhtCetSittingIdentity & { hold?: MhtCetHold };
+/**
+ * A real question of this paper whose row sits under ANOTHER sitting, because
+ * content_hash dedup keeps one row for a question printed word for word twice.
+ * The mock borrows it at its own slot (NEET's include-override).
+ */
+export type MhtCetInclude = { questionNumber: number; questionId: string; subjectName: string; answer: "A" | "B" | "C" | "D" };
+
+export type MhtCetSitting = MhtCetSittingIdentity & {
+  hold?: MhtCetHold;
+  include?: { maths?: MhtCetInclude[]; phyChem?: MhtCetInclude[] };
+};
 
 /** Reconstruction shortfalls, keyed by sitting. Mock-only — a book prints what
  *  the bank holds and has no notion of a paper being short. */
@@ -61,20 +72,47 @@ const HOLDS: Record<string, MhtCetHold> = {
   "2025-apr-20-s1": { phyChem: "99/100 — 1 question absent from the bank" },
   "2025-apr-19-s1": { maths: "49/50 — 1 question withheld PRIVATE (flawed)", phyChem: "99/100 — 1 question withheld PRIVATE (flawed)" },
   "2024-may-14-s2": { phyChem: "99/100 — 1 question withheld PRIVATE (flawed)" },
-  "2024-may-11-s2": { phyChem: "99/100 — 1 question absent from the bank" },
   "2024-may-09-s1": { maths: "49/50 — 1 question withheld PRIVATE (flawed)" },
   "2023-may-15-s2": { phyChem: "98/100 — 2 questions absent from the bank" },
   "2023-may-15-s1": { phyChem: "98/100 — 2 questions withheld PRIVATE (flawed)" },
   "2023-may-10-s2": { maths: "49/50 — 1 question absent from the bank" },
   "2023-may-10-s1": { phyChem: "98/100 — 2 questions absent from the bank" },
-  "2023-may-09-s2": { maths: "49/50 — 1 question withheld PRIVATE (flawed)", phyChem: "99/100 — 1 question absent from the bank" },
+  "2023-may-09-s2": { maths: "49/50 — 1 question withheld PRIVATE (flawed)" },
   "2023-may-04-s2": { phyChem: "99/100 — 1 question absent from the bank" },
   "2023-may-03-s2": { maths: "49/50 — 1 question absent from the bank" },
-  "2023-may-02-s2": { phyChem: "97/100 — 3 questions absent from the bank" },
   "2022": { maths: "48/50 — 2 questions absent from the bank" },};
 
-const withHold = (s: MhtCetSittingIdentity): MhtCetSitting =>
-  HOLDS[s.key] ? { ...s, hold: HOLDS[s.key] } : { ...s };
+/** Borrowed rows, keyed by sitting (2026-11-04: found by the Chemistry bank repair). */
+const INCLUDES: Record<string, MhtCetSitting["include"]> = {
+  // Q38 (Carnot cycle) = 16 May 2023 S2 Q28; Q69 (barium meal) = 13 May 2026 S2 Q15. Word for word.
+  "2023-may-02-s2": {
+    phyChem: [
+      { questionNumber: 38, questionId: "8a67e06f-0344-4f2e-be3d-1b3dbb3d2838", subjectName: "Physics", answer: "A" },
+      { questionNumber: 69, questionId: "d7169a5f-0286-4856-9685-a3e17480916f", subjectName: "Chemistry", answer: "B" },
+    ],
+  },
+};
+
+const withHold = (s: MhtCetSittingIdentity): MhtCetSitting => ({
+  ...s,
+  ...(HOLDS[s.key] ? { hold: HOLDS[s.key] } : {}),
+  ...(INCLUDES[s.key] ? { include: INCLUDES[s.key] } : {}),
+});
+
+/**
+ * A sitting's borrowed rows as paper rows, at the paper number in the sitting
+ * file's own row numbering (an .xlsx runs source_row one ahead), so they sort
+ * into place beside the sitting's own rows.
+ */
+export function mhtCetIncludeRows(s: MhtCetSitting, paper: "maths" | "phyChem"): PaperQuestionRow[] {
+  return (s.include?.[paper] ?? []).map((i) => ({
+    id: i.questionId,
+    sourceRow: i.questionNumber + paperNumberOffset(s.sourceFile),
+    questionNumber: String(i.questionNumber),
+    subjectName: i.subjectName,
+    answer: { kind: "mcq", label: i.answer },
+  }));
+}
 
 /**
  * The 29 sittings with no ingestion config anywhere in the repo (2021-2024).
@@ -123,6 +161,9 @@ export function deriveMhtCetSittings(): MhtCetSitting[] {
 
   for (const key of Object.keys(HOLDS)) {
     if (!byKey.has(key)) throw new Error(`HOLDS names unknown sitting "${key}"`);
+  }
+  for (const key of Object.keys(INCLUDES)) {
+    if (!byKey.has(key)) throw new Error(`INCLUDES names unknown sitting "${key}"`);
   }
 
   return all.map(withHold);

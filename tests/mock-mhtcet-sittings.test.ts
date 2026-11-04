@@ -17,6 +17,7 @@ import { describe, it, expect } from "vitest";
 import {
   MHT_CET_SITTINGS,
   deriveMhtCetSittings,
+  mhtCetIncludeRows,
   mhtCetMockSlug,
   mhtCetMockTitle,
 } from "../scripts/mocks/mhtcetSittings";
@@ -142,12 +143,37 @@ describe("MHT-CET sitting registry", () => {
    * PRIVATE and one (11 Apr S2 Q34) also absent, absorbed by content_hash dedup
    * into its 2025 twin. So 106 of 136 ship.
    */
-  it("holds exactly 30 papers, leaving 106 to ship", () => {
+  it("holds exactly 27 papers, leaving 109 to ship", () => {
     const heldMaths = sittings.filter((s) => s.hold?.maths).length;
     const heldPhyChem = sittings.filter((s) => s.hold?.phyChem).length;
     expect(heldMaths).toBe(10);
-    expect(heldPhyChem).toBe(20);
-    expect(136 - heldMaths - heldPhyChem).toBe(106);
+    expect(heldPhyChem).toBe(17);
+    expect(136 - heldMaths - heldPhyChem).toBe(109);
+  });
+
+  /**
+   * 2 May 2023 S2 Q69 (barium meal) is printed word for word as 13 May 2026 S2
+   * Q15, and Q38 (Carnot cycle) as 16 May 2023 S2 Q28, so content_hash dedup
+   * kept one row of each, filed under the other sitting. The paper borrows
+   * it at its own slot (2026-11-04), the NEET include-override.
+   */
+  it("borrows the two deduplicated questions of 2 May 2023 S2", () => {
+    const s = sittings.find((x) => x.key === "2023-may-02-s2")!;
+    expect(s.hold?.phyChem).toBeUndefined();
+    expect(s.include?.phyChem).toEqual([
+      { questionNumber: 38, questionId: "8a67e06f-0344-4f2e-be3d-1b3dbb3d2838", subjectName: "Physics", answer: "A" },
+      { questionNumber: 69, questionId: "d7169a5f-0286-4856-9685-a3e17480916f", subjectName: "Chemistry", answer: "B" },
+    ]);
+  });
+
+  it("slots a borrowed row at its paper number in the file's own row numbering", () => {
+    const s = sittings.find((x) => x.key === "2023-may-02-s2")!;
+    // An .xlsx sitting runs source_row one ahead of the paper number.
+    expect(mhtCetIncludeRows(s, "phyChem")).toEqual([
+      { id: "8a67e06f-0344-4f2e-be3d-1b3dbb3d2838", sourceRow: 39, questionNumber: "38", subjectName: "Physics", answer: { kind: "mcq", label: "A" } },
+      { id: "d7169a5f-0286-4856-9685-a3e17480916f", sourceRow: 70, questionNumber: "69", subjectName: "Chemistry", answer: { kind: "mcq", label: "B" } },
+    ]);
+    expect(mhtCetIncludeRows(s, "maths")).toEqual([]);
   });
 
   /** A hold with no stated reason is indistinguishable from a mistake. */
