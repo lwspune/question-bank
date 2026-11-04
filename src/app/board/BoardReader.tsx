@@ -198,8 +198,8 @@ export default function BoardReader({
                   The {top.slots.length} board questions to practise first
                 </h2>
                 <p className="mt-0.5 text-xs text-muted-foreground">
-                  The questions the board asked again come first, most asked first. Each one says how often and
-                  when.
+                  The questions and kinds of question the board asked most often come first. Each one says how
+                  often and when.
                 </p>
               </div>
               <PaperDownload
@@ -211,6 +211,7 @@ export default function BoardReader({
             <HomeworkSlotList
               slots={top.slots}
               supabaseUrl={supabaseUrl}
+              planSlug={top.planSlug}
               showChapter={false}
               idPrefix="top"
               revealed={revealed}

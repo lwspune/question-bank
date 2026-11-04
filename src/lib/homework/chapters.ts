@@ -104,3 +104,22 @@ function subjectLabels(plans: readonly NavPlan[], examLabel: string): string[] {
     return rest || p.subjectName;
   });
 }
+
+/**
+ * A group's questions as homework slots (2026-11-04), for its See all page: one
+ * slot per question, headed by the paper it came from, a case study's parts in
+ * one slot. No group link: the page IS the group.
+ */
+export function groupItems(
+  members: readonly { position: number; sub: number; questionId: string; sitting: string }[]
+): { position: number; sub: number; questionId: string; chapter: string; note: string; group: null }[] {
+  return members.map((m) => ({ position: m.position, sub: m.sub, questionId: m.questionId, chapter: "", note: m.sitting, group: null }));
+}
+
+/** The line under a group page's title: what links the questions, and how many follow. */
+export function groupHeading(group: { tier: "repeat" | "type"; sittings: readonly string[] }, questions: number): string {
+  const asked = `asked ${group.sittings.length} times: ${group.sittings.join(", ")}`;
+  return group.tier === "repeat"
+    ? `The same question, ${asked}. Every wording below, oldest first.`
+    : `This type of question, ${asked}. All ${questions} questions below, oldest first.`;
+}

@@ -7,7 +7,11 @@
  * (2026-10-13), which keeps its reveal state with the rest of the board page,
  * so the reveal state comes in from the caller.
  */
+import Link from "next/link";
+import { ChevronRight } from "lucide-react";
 import BlockText from "@/components/math/BlockText";
+import { seeAllLabel } from "@/lib/homework/display";
+import { groupHref } from "@/lib/homework/links";
 import BoardPassage from "@/app/board/BoardPassage";
 import BoardLangSwitch from "@/app/board/BoardLangSwitch";
 import { fromBoardQuestion } from "@/lib/present/viewModel";
@@ -18,6 +22,7 @@ import BoardQuestionItem, { type RevealLock } from "@/app/board/BoardQuestionIte
 export default function HomeworkSlotList({
   slots,
   supabaseUrl,
+  planSlug,
   showChapter = true,
   idPrefix = "slot",
   revealed,
@@ -29,6 +34,9 @@ export default function HomeworkSlotList({
 }: {
   slots: HomeworkSlot<BoardQuestion>[];
   supabaseUrl: string;
+  /** The plan the slots come from: with it, a slot that stands for a repeat or
+   *  a type links every question of that group (2026-11-04). */
+  planSlug?: string;
   /** Name the chapter above each slot. Off where the page is one chapter. */
   showChapter?: boolean;
   /** Prefix of each slot heading's id, unique on the page. */
@@ -62,6 +70,22 @@ export default function HomeworkSlotList({
                 </>
               )}
               {s.note}
+              {(() => {
+                const label = planSlug && s.group != null ? seeAllLabel(s.note) : null;
+                return label ? (
+                  <>
+                    {" "}
+                    <Link
+                      href={groupHref(planSlug!, s.group!)}
+                      prefetch={false}
+                      className="inline-flex items-center gap-0.5 whitespace-nowrap font-medium text-brand-accent hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    >
+                      {label}
+                      <ChevronRight className="h-3.5 w-3.5" aria-hidden />
+                    </Link>
+                  </>
+                ) : null;
+              })()}
             </p>
             {s.passage && (
               <div className="mb-3 rounded-md border-l-2 border-brand-accent/40 bg-muted/30 px-3 py-2 font-serif text-sm text-muted-foreground">

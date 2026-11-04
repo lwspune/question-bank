@@ -10,7 +10,7 @@ import {
   topChapterHref,
   topListHref,
 } from "@/lib/homework/links";
-import { chapterNeighbours, groupPlansByExam, homeworkExamLabel, homeworkSideNav, planChapters } from "@/lib/homework/chapters";
+import { chapterNeighbours, groupItems, groupHeading, groupPlansByExam, homeworkExamLabel, homeworkSideNav, planChapters } from "@/lib/homework/chapters";
 
 describe("homework addresses", () => {
   it("gives every exam its own homework page, and the hub lists every plan", () => {
@@ -132,5 +132,32 @@ describe("homeworkExamLabel", () => {
   it("is the site's short exam name, or the database name off the registry", () => {
     expect(homeworkExamLabel("Maharashtra State Board Class 10")).toBe("MH SSC 10");
     expect(homeworkExamLabel("Some Board")).toBe("Some Board");
+  });
+});
+
+describe("groupItems", () => {
+  it("makes one slot per question of a group, headed by its paper, a case study's parts together", () => {
+    expect(
+      groupItems([
+        { position: 1, sub: 1, questionId: "a", sitting: "NDA 1 2017" },
+        { position: 2, sub: 1, questionId: "b", sitting: "NDA 2 2019" },
+        { position: 2, sub: 2, questionId: "b2", sitting: "NDA 2 2019" },
+      ])
+    ).toEqual([
+      { position: 1, sub: 1, questionId: "a", chapter: "", note: "NDA 1 2017", group: null },
+      { position: 2, sub: 1, questionId: "b", chapter: "", note: "NDA 2 2019", group: null },
+      { position: 2, sub: 2, questionId: "b2", chapter: "", note: "NDA 2 2019", group: null },
+    ]);
+  });
+});
+
+describe("groupHeading", () => {
+  it("says what the page lists: one question asked again, or one type of question", () => {
+    expect(groupHeading({ tier: "repeat", sittings: ["NDA 2 2022", "NDA 2 2024*"] }, 2)).toBe(
+      "The same question, asked 2 times: NDA 2 2022, NDA 2 2024*. Every wording below, oldest first."
+    );
+    expect(groupHeading({ tier: "type", sittings: ["NDA 1 2017", "NDA 2 2024"] }, 2)).toBe(
+      "This type of question, asked 2 times: NDA 1 2017, NDA 2 2024. All 2 questions below, oldest first."
+    );
   });
 });

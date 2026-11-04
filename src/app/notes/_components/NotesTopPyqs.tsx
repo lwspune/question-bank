@@ -55,8 +55,8 @@ export default function NotesTopPyqs({
             Top {top.slots.length} {examName} PYQs to practise first
           </h2>
           <p className="mt-1 text-sm text-muted-foreground">
-            Questions asked again come first, then the kinds of question asked most often. Each one
-            says how often and in which papers.
+            The questions and kinds of question asked most often come first. Each one says how often
+            and in which papers.
           </p>
         </div>
         <PaperDownload
@@ -69,6 +69,7 @@ export default function NotesTopPyqs({
         <HomeworkSlotList
           slots={top.slots}
           supabaseUrl={supabaseUrl}
+          planSlug={top.planSlug}
           showChapter={false}
           idPrefix="top"
           revealed={revealed}
