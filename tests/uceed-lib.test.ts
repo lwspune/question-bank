@@ -134,3 +134,55 @@ describe("numericPayload", () => {
     expect(a.contentHash).not.toBe(b.contentHash);
   });
 });
+
+describe("keys IIT Bombay marks as defective (owner policy, 2026-10-29)", () => {
+  it("keeps the first of two accepted MCQ answers, with a note above the solution and the row flawed", () => {
+    const [row] = planPaper(paper(q({ n: 79 })), key({ n: 79, type: "MCQ", value: "A", also: ["B"] })).rows;
+    expect(row).toMatchObject({ format: "mcq", answer: "A" });
+    expect(row.notice).toBe("IIT Bombay's final key accepts both A and B, so either earns full marks. The answer marked here is A.");
+    expect(row.solution).toBe(`**Note:** ${row.notice}\n\n${editorial.solution}`);
+    expect(toCommitRow(row, null)).toMatchObject({ answer: "A", flawed: true });
+  });
+
+  it("keeps the first of two accepted NAT values the same way", () => {
+    const [row] = planPaper(
+      paper(q({ n: 19, type: "NAT", options: [] })),
+      key({ n: 19, type: "NAT", value: 2, also: [4] }),
+    ).rows;
+    expect(row).toMatchObject({ format: "numeric", numericAnswer: 2 });
+    expect(row.notice).toBe("IIT Bombay's final key accepts both 2 and 4, so either earns full marks. The answer marked here is 2.");
+    expect(numericPayload(row, null).solution).toBe(`**Note:** ${row.notice}\n\n${editorial.solution}`);
+  });
+
+  it("lists three or more accepted answers in one sentence", () => {
+    const [row] = planPaper(paper(q({ n: 45 })), key({ n: 45, type: "MCQ", value: "B", also: ["C", "D"] })).rows;
+    expect(row.notice).toBe("IIT Bombay's final key accepts any of B, C and D, so each earns full marks. The answer marked here is B.");
+  });
+
+  it("commits a question IIT Bombay cancelled with no key and its notice (migration 0119)", () => {
+    const note = "IIT Bombay dropped this question in its final key and gave every candidate full marks.";
+    const [row] = planPaper(paper(q({ n: 67 })), key({ n: 67, type: "MCQ", cancelled: note })).rows;
+    expect(row).toMatchObject({ format: "mcq", answer: "CANCELLED", cancelledNote: note });
+    expect(row.notice).toBeUndefined();
+    expect(row.solution).toBe(editorial.solution);
+    expect(toCommitRow(row, null)).toMatchObject({ answer: "CANCELLED", cancelledNote: note, flawed: false });
+  });
+
+  it("still holds a cancelled MSQ, and a range that also accepts a single value", () => {
+    const plan = planPaper(
+      paper(q({ n: 36, type: "MSQ" }), q({ n: 12, type: "NAT", options: [] })),
+      key({ n: 36, type: "MSQ", cancelled: "Full marks to all." }, { n: 12, type: "NAT", range: [1.12, 1.14], also: [65] }),
+    );
+    expect(plan.rows).toEqual([]);
+    expect(plan.held).toEqual([{ n: 36, reason: "msq" }, { n: 12, reason: "range" }]);
+    expect(plan.issues).toEqual([]);
+  });
+
+  it("refuses an accepted alternative that is not A-D, or repeats the key", () => {
+    const plan = planPaper(
+      paper(q({ n: 30 }), q({ n: 31 })),
+      key({ n: 30, type: "MCQ", value: "A", also: ["E"] }, { n: 31, type: "MCQ", value: "A", also: ["A"] }),
+    );
+    expect(plan.issues).toEqual(['Q30: also-accepted "E" is not A-D', 'Q31: also-accepted "A" repeats the key']);
+  });
+});
