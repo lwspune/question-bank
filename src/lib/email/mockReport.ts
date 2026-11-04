@@ -218,7 +218,9 @@ export function buildMockReport(
   if (attempt.status === "in_progress") return null;
   if (attempt.score === null || attempt.maxScore === null) return null;
 
-  const mine = payload.facts.filter((f) => f.a === attemptId);
+  // Multiple-select questions (0215) are left out, as on the performance page: a fact
+  // carries one letter, so a ticked one would read as left blank.
+  const mine = payload.facts.filter((f) => f.a === attemptId && f.f !== "msq");
 
   let correct = 0;
   let wrong = 0;

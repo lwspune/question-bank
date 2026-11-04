@@ -596,7 +596,11 @@ export type Summary = {
 
 export type Performance = { summary: Summary; lanes: Lane[] };
 
-export function buildPerformance(payload: PerfInput, now: Date): Performance {
+export function buildPerformance(input: PerfInput, now: Date): Performance {
+  // Multiple-select questions (0215) are left out: a fact carries one picked letter and
+  // one key letter, and a tick set has several. Leaving them in would read every one as
+  // skipped and pull a UCEED attempt toward the engagement floor.
+  const payload = { ...input, facts: input.facts.filter((f) => f.f !== "msq") };
   const sel = selectAttempts(payload.attempts, payload.facts);
   const keptById = new Map(sel.kept.map((a) => [a.attemptId, a]));
   const facts = payload.facts.filter((f) => keptById.has(f.a));

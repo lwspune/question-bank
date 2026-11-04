@@ -18,6 +18,8 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import type { AttemptLite, MockLite, PriorSend, Recipient, StudentLite } from "./recommend";
 import { isIntlOnlyStudent } from "@/lib/sites/intl";
+import { answeredShape } from "@/lib/mocks/answeredShape";
+import { isAnswered } from "@/lib/mocks/answers";
 
 const PAGE = 1000;
 
@@ -82,12 +84,13 @@ async function readAnsweredCounts(db: SupabaseClient): Promise<Map<string, numbe
   for (let from = 0; ; from += PAGE) {
     const { data, error } = await db
       .from("attempt_answers")
-      .select("attempt_id, selected_label, numeric_response")
+      .select("attempt_id, selected_label, numeric_response, selected_labels")
       .range(from, from + PAGE - 1);
     if (error) throw new Error(`readAnsweredCounts: ${error.message}`);
     const rows = data ?? [];
     for (const r of rows as Record<string, unknown>[]) {
-      if (r.selected_label == null && r.numeric_response == null) continue;
+      // The grader's own rule (a tick set counts too, migration 0215).
+      if (!isAnswered(answeredShape(r))) continue;
       const id = r.attempt_id as string;
       counts.set(id, (counts.get(id) ?? 0) + 1);
     }
