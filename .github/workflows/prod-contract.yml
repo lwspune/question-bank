@@ -81,6 +81,19 @@ jobs:
         run: set -o pipefail; npm run smoke:live-counts 2>&1 | tee live-counts.log
       # Email the owner when any step above failed (TECH_DEBT_SPEC.md 1.2): GitHub's own
       # failure emails went unread while this check stayed red for 8 days in October.
+      # Weekly npm audit summary in the job summary, Mondays (and on a manual run). Report only:
+      # it never fails this job, so it can never trigger the failure email (TECH_DEBT_SPEC.md Phase 5).
+      - name: Weekly npm audit report
+        if: always()
+        continue-on-error: true
+        timeout-minutes: 2
+        run: |
+          if [ "$(date -u +%u)" = "1" ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            (npm audit --json || true) | npx tsx scripts/ops/audit-report.ts >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "Not Monday: skipped."
+          fi
+
       - name: Email the owner on failure
         if: ${{ failure() }}
         env:

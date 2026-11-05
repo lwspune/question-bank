@@ -110,13 +110,24 @@ jobs:
         # largest single process: the one that ran out on 2026-11-04) so the heap limit
         # above can be sized from a measurement (TECH_DEBT_SPEC.md 2.0). Used only if the
         # runner image has it; the build never fails for want of it.
+        # The output is also saved to build.log for the build report below (pipefail keeps a
+        # failed build failing through the tee).
         run: |
+          set -o pipefail
           if [ -x /usr/bin/time ]; then
-            /usr/bin/time -v npx --yes "$VERCEL_CLI" build --prod --token=${{ secrets.VERCEL_TOKEN }}
+            /usr/bin/time -v npx --yes "$VERCEL_CLI" build --prod --token=${{ secrets.VERCEL_TOKEN }} 2>&1 | tee build.log
           else
             echo "::notice::/usr/bin/time not on this runner; peak build memory not logged"
-            npx --yes "$VERCEL_CLI" build --prod --token=${{ secrets.VERCEL_TOKEN }}
+            npx --yes "$VERCEL_CLI" build --prod --token=${{ secrets.VERCEL_TOKEN }} 2>&1 | tee build.log
           fi
+
+      # What this build cost, in the job summary: build time, compile time, pages pre-built,
+      # routes, peak memory; a warning past a threshold (scripts/deploy/buildReportCore.ts).
+      # Report only: it never fails or holds a deploy (TECH_DEBT_SPEC.md Phase 5).
+      - name: Build report
+        if: always()
+        continue-on-error: true
+        run: npx tsx scripts/deploy/build-report.ts build.log >> "$GITHUB_STEP_SUMMARY"
 
       # The last line of defence: a placeholder that reached a page, a script or
       # a function's settings would break the live site quietly, so its
