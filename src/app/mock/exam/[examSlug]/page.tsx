@@ -40,7 +40,8 @@ export function generateStaticParams(): Params[] {
   return mockExamSlugs().map((examSlug) => ({ examSlug }));
 }
 
-export function generateMetadata({ params }: { params: Params }): Metadata {
+export async function generateMetadata(props: { params: Promise<Params> }): Promise<Metadata> {
+  const params = await props.params;
   const family = getMockFamily(params.examSlug);
   if (family) {
     return {
@@ -149,7 +150,8 @@ async function MockFamilyPage({ family }: { family: MockFamilyNav }) {
   );
 }
 
-export default async function MockExamTypePicker({ params }: { params: Params }) {
+export default async function MockExamTypePicker(props: { params: Promise<Params> }) {
+  const params = await props.params;
   const family = getMockFamily(params.examSlug);
   if (family) return <MockFamilyPage family={family} />;
 

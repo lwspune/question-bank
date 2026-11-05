@@ -10,7 +10,7 @@ import UploadHeaderActions from "./UploadHeaderActions";
 import QuestionListItem from "./QuestionListItem";
 import PyqMetadataControl from "./PyqMetadataControl";
 
-type PageProps = { params: { id: string } };
+type PageProps = { params: Promise<{ id: string }> };
 
 const STATUS_LABEL: Record<string, string> = {
   PENDING: "Pending",
@@ -19,7 +19,8 @@ const STATUS_LABEL: Record<string, string> = {
   FAILED: "Failed",
 };
 
-export default async function UploadDetailPage({ params }: PageProps) {
+export default async function UploadDetailPage(props: PageProps) {
+  const params = await props.params;
   const member = await getSessionMember();
   if (!member) redirect("/login");
   if (member.role !== "ADMIN") redirect("/dashboard");

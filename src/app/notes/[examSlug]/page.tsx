@@ -56,7 +56,8 @@ function chapterTotal(group: { subjects: { chapterCount: number }[] }): number {
   return group.subjects.reduce((n, s) => n + s.chapterCount, 0);
 }
 
-export function generateMetadata({ params }: { params: Params }): Metadata {
+export async function generateMetadata(props: { params: Promise<Params> }): Promise<Metadata> {
+  const params = await props.params;
   const group = getNotesExamGroup(params.examSlug);
   if (!group) return {};
   return {
@@ -103,7 +104,8 @@ async function loadHubSubjects(group: NotesExamGroup): Promise<HubSubject[]> {
   );
 }
 
-export default async function NotesExamHub({ params }: { params: Params }) {
+export default async function NotesExamHub(props: { params: Promise<Params> }) {
+  const params = await props.params;
   const group = getNotesExamGroup(params.examSlug);
   if (!group) notFound();
 

@@ -15,10 +15,8 @@ const MAX_YEAR = new Date().getFullYear() + 1;
 const MAX_MONTH_LEN = 20;
 const MAX_NOTE_LEN = 200;
 
-export async function DELETE(
-  _request: NextRequest,
-  { params }: { params: { id: string } }
-) {
+export async function DELETE(_request: NextRequest, props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   try {
     await requireSuperadmin();
     const member = await getSessionMember();
@@ -52,10 +50,8 @@ export async function DELETE(
   }
 }
 
-export async function PATCH(
-  request: NextRequest,
-  { params }: { params: { id: string } }
-) {
+export async function PATCH(request: NextRequest, props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   try {
     await requireSuperadmin();
     const member = await getSessionMember();

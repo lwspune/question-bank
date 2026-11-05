@@ -43,7 +43,8 @@ async function load(params: Params) {
   return { day, plan: page.plan, slots: view.slots };
 }
 
-export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+export async function generateMetadata(props: { params: Promise<Params> }): Promise<Metadata> {
+  const params = await props.params;
   const data = await load(params);
   if (!data) return { title: "Daily homework" };
   return {
@@ -56,7 +57,8 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   };
 }
 
-export default async function HomeworkDayPage({ params }: { params: Params }) {
+export default async function HomeworkDayPage(props: { params: Promise<Params> }) {
+  const params = await props.params;
   const data = await load(params);
   if (!data) notFound();
   const { day, plan, slots } = data;

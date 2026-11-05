@@ -16,11 +16,12 @@ import BookChapterReader from "./BookChapterReader";
 
 export const dynamic = "force-dynamic";
 
-export default async function BookChapterPage({
-  params,
-}: {
-  params: { bookSlug: string; chapterSlug: string };
-}) {
+export default async function BookChapterPage(
+  props: {
+    params: Promise<{ bookSlug: string; chapterSlug: string }>;
+  }
+) {
+  const params = await props.params;
   if (!(await getSessionSuperadmin())) redirect("/browse");
 
   const book = getBookBySlug(params.bookSlug);

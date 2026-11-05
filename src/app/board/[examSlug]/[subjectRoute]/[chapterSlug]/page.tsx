@@ -119,7 +119,8 @@ async function load(params: Params): Promise<Loaded | null> {
   };
 }
 
-export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+export async function generateMetadata(props: { params: Promise<Params> }): Promise<Metadata> {
+  const params = await props.params;
   const data = await load(params);
   if (!data) return { title: "Board textbook solutions" };
   const { chapter, pyqSittings } = data;
@@ -140,7 +141,8 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   };
 }
 
-export default async function BoardChapterPage({ params }: { params: Params }) {
+export default async function BoardChapterPage(props: { params: Promise<Params> }) {
+  const params = await props.params;
   const data = await load(params);
   if (!data) notFound();
   const { chapter } = data;

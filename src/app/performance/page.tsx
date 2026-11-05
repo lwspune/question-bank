@@ -46,7 +46,8 @@ export const metadata: Metadata = {
 
 type Search = { exam?: string; subject?: string };
 
-export default async function OwnPerformancePage({ searchParams }: { searchParams: Search }) {
+export default async function OwnPerformancePage(props: { searchParams: Promise<Search> }) {
+  const searchParams = await props.searchParams;
   const user = await getSessionUser();
   if (!user) redirect("/login?next=/performance");
 

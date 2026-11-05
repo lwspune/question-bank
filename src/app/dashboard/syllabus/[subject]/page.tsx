@@ -101,13 +101,14 @@ const EXAM_TABLES: { spine: string; short: string; note: React.ReactNode }[] = [
 ];
 
 
-export default async function SyllabusMapPage({
-  params,
-  searchParams,
-}: {
-  params: Params;
-  searchParams: Search;
-}) {
+export default async function SyllabusMapPage(
+  props: {
+    params: Promise<Params>;
+    searchParams: Promise<Search>;
+  }
+) {
+  const searchParams = await props.searchParams;
+  const params = await props.params;
   const member = await getSessionMember();
   if (!member) redirect("/login");
 

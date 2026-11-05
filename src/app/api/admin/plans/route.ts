@@ -96,7 +96,7 @@ export async function POST(request: NextRequest) {
 function revalidateQuotingPages() {
   for (const p of PAGES_QUOTING_PLANS) revalidatePath(p);
   // The price list /browse remembers (listActivePlansCached).
-  revalidateTag(PLANS_CACHE_TAG);
+  revalidateTag(PLANS_CACHE_TAG, { expire: 0 }); // expire now, as before Next 16 (TECH_DEBT_SPEC.md 4.1)
 }
 function bad(msg: string) {
   return NextResponse.json({ error: msg }, { status: 400 });

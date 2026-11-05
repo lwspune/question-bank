@@ -58,7 +58,8 @@ const load = cache(async (slug: string) => {
   return { mock, sections, missing, shown, withSolutions };
 });
 
-export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+export async function generateMetadata(props: { params: Promise<Params> }): Promise<Metadata> {
+  const params = await props.params;
   const data = await load(params.slug);
   if (!data) return { title: "Question paper not found" };
   const { mock, withSolutions } = data;
@@ -69,7 +70,8 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   };
 }
 
-export default async function MockPaperPage({ params }: { params: Params }) {
+export default async function MockPaperPage(props: { params: Promise<Params> }) {
+  const params = await props.params;
   const data = await load(params.slug);
   if (!data) notFound();
   const { mock, sections, missing, shown, withSolutions } = data;

@@ -9,7 +9,8 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { saveAnswer, MockError } from "@/lib/mocks/service";
 import { AnswerBodySchema } from "@/lib/mocks/answerPayload";
 
-export async function PATCH(req: NextRequest, { params }: { params: { id: string } }) {
+export async function PATCH(req: NextRequest, props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   const user = await getSessionUser();
   if (!user) return NextResponse.json({ error: "Not signed in." }, { status: 401 });
   let raw: unknown;

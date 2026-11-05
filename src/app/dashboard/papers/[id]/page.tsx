@@ -15,11 +15,12 @@ import PaperEditor from "./PaperEditor";
 
 export const dynamic = "force-dynamic";
 
-export default async function PaperEditorPage({
-  params,
-}: {
-  params: { id: string };
-}) {
+export default async function PaperEditorPage(
+  props: {
+    params: Promise<{ id: string }>;
+  }
+) {
+  const params = await props.params;
   const member = await getSessionMember();
   if (!member) redirect("/login");
 

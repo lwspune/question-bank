@@ -38,11 +38,12 @@ export const metadata: Metadata = {
 /** A uuid, loosely: enough to keep junk out of a query without a 400 page. */
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
-export default async function DrillPage({
-  searchParams,
-}: {
-  searchParams?: { attempt?: string; from?: string | string[] };
-}) {
+export default async function DrillPage(
+  props: {
+    searchParams?: Promise<{ attempt?: string; from?: string | string[] }>;
+  }
+) {
+  const searchParams = await props.searchParams;
   const user = await getSessionUser();
   if (!user) redirect("/login?next=/drill");
 

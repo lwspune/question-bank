@@ -24,7 +24,8 @@ export const contentType = "image/png";
  * beats a broken image in a group chat, and this route has no way to signal an
  * error to anyone who could fix it.
  */
-export default async function MockOpenGraphImage({ params }: { params: { slug: string } }) {
+export default async function MockOpenGraphImage({ params: paramsPromise }: { params: Promise<{ slug: string }> }) {
+  const params = await paramsPromise;
   let mock = null;
   try {
     mock = await getMockCardBySlug(createSupabaseAnonClient(), params.slug);

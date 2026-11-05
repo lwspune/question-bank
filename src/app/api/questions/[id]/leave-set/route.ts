@@ -10,10 +10,8 @@ import { requireSuperadmin, getSessionMember, HttpError } from "@/lib/auth";
  * Available to editors (ADMIN or TEACHER); org-scoped via the existing
  * RLS UPDATE policy on questions. Idempotent — clearing NULL is a no-op.
  */
-export async function POST(
-  _request: NextRequest,
-  { params }: { params: { id: string } }
-) {
+export async function POST(_request: NextRequest, props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   try {
     await requireSuperadmin();
     const member = await getSessionMember();

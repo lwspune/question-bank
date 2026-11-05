@@ -40,7 +40,8 @@ async function readSentTest(code: string) {
   return data;
 }
 
-export default async function SentPracticeTestPage({ params }: { params: Params }) {
+export default async function SentPracticeTestPage(props: { params: Promise<Params> }) {
+  const params = await props.params;
   if (!isPracticeCode(params.code)) notFound();
   const [test, user] = await Promise.all([readSentTest(params.code), getSessionUser().catch(() => null)]);
   if (!test) notFound();

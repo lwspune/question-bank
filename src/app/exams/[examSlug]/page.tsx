@@ -46,7 +46,7 @@ import { planWording } from "@/lib/homework/display";
 
 export const revalidate = 86400;
 
-type Params = { params: { examSlug: string } };
+type Params = { params: Promise<{ examSlug: string }> };
 
 /** Every exam with public content, except NDA (its own hand-built home). */
 export function generateStaticParams() {
@@ -75,7 +75,8 @@ async function loadModel(slug: string): Promise<ExamHomeModel | null> {
   });
 }
 
-export async function generateMetadata({ params }: Params): Promise<Metadata> {
+export async function generateMetadata(props: Params): Promise<Metadata> {
+  const params = await props.params;
   const model = await loadModel(params.examSlug);
   if (!model) return { title: "Exam not found" };
   const title = fitTitle(
@@ -90,7 +91,8 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   };
 }
 
-export default async function ExamHomePage({ params }: Params) {
+export default async function ExamHomePage(props: Params) {
+  const params = await props.params;
   if (params.examSlug === "nda") redirect("/nda");
   const model = await loadModel(params.examSlug);
   if (!model) notFound();

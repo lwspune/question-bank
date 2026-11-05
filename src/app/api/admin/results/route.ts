@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
       }
       examSlug = await reviewResult(body.id, action);
     }
-    revalidateTag(RESULTS_CACHE_TAG);
+    revalidateTag(RESULTS_CACHE_TAG, { expire: 0 }); // expire now, as before Next 16 (TECH_DEBT_SPEC.md 4.1)
     const paths = examSlug ? resultPagePaths(examSlug, mockFamilyOf(examSlug)?.slug ?? null) : ["/results", "/", "/pricing"];
     for (const path of paths) revalidatePath(path);
     return NextResponse.json({ ok: true });

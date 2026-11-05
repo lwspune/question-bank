@@ -20,13 +20,14 @@ export const metadata: Metadata = { robots: { index: false } };
 type Params = { id: string };
 type Search = { exam?: string; subject?: string };
 
-export default async function StudentPerformancePage({
-  params,
-  searchParams,
-}: {
-  params: Params;
-  searchParams: Search;
-}) {
+export default async function StudentPerformancePage(
+  props: {
+    params: Promise<Params>;
+    searchParams: Promise<Search>;
+  }
+) {
+  const searchParams = await props.searchParams;
+  const params = await props.params;
   // AUTHORIZATION MOVED INTO THE DATABASE (migration 0110). It used to be a
   // getSessionSuperadmin() check here in front of a service-role read; that
   // could not express the rule a teacher needs, because "which students may

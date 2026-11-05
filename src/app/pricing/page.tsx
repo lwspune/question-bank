@@ -38,18 +38,19 @@ export const metadata: Metadata = {
  * price or perk change is a save, not a deploy. `?plan=<urlKey>` highlights
  * one card — the four CTAs around the site link by that key.
  */
-export default async function PricingPage({
-  searchParams,
-}: {
-  searchParams: { plan?: string; next?: string };
-}) {
+export default async function PricingPage(
+  props: {
+    searchParams: Promise<{ plan?: string; next?: string }>;
+  }
+) {
+  const searchParams = await props.searchParams;
   const anon = createSupabaseAnonClient();
   const [member, user, allPlans] = await Promise.all([getSessionMember(), getSessionUser(), listActivePlans(anon)]);
   // intl.pyqvault.com sells its own pass, in USD (migration 0203); www sells in INR.
-  const site = planSiteForHost(headers().get("host"));
+  const site = planSiteForHost((await headers()).get("host"));
   // At the buyer's country price where one is set (0206): a visitor in India
   // sees the rupee IMAT pass in place of the dollar one.
-  const plans = plansForBuyer(allPlans, site, readCountry(headers()));
+  const plans = plansForBuyer(allPlans, site, readCountry(await headers()));
   const rows = user && !member ? await loadEntitlements(createSupabaseServerClient(), user.id) : [];
   if (user) {
     await logActivityOnce(createSupabaseServerClient(), user.id, surfaceViewedEvent(user.id, "pricing", new Date()));
@@ -231,7 +232,7 @@ async function passLineForViewer(userId: string | null): Promise<string | null> 
   try {
     const slug = userId
       ? (await getOnboardingState(createSupabaseServerClient(), userId)).targetExams[0] ?? null
-      : cookies().get("qb_exam")?.value ?? null;
+      : (await cookies()).get("qb_exam")?.value ?? null;
     if (!isExamSlug(slug) || passScopeForExam(slug) !== SCOPE_MOCKS) return null;
     const cards = await getMockExamCardsCached();
     return passLineForExam(cards.find((c) => c.slug === slug));

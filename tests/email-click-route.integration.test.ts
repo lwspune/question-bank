@@ -101,7 +101,7 @@ describe.skipIf(!HAS_ENV)("email click redirect", () => {
 
   it("records one click for the send, signs the student in, and redirects to the same-site path", async () => {
     jar.clear();
-    const res = await GET(req(token, "/drill?from=nudge"), { params: { token } });
+    const res = await GET(req(token, "/drill?from=nudge"), { params: Promise.resolve({ token }) });
     expect(res.status).toBe(302);
     expect(res.headers.get("location")).toBe("https://www.pyqvault.com/drill?from=nudge");
 
@@ -123,7 +123,7 @@ describe.skipIf(!HAS_ENV)("email click redirect", () => {
     jar.clear();
     const stale = newClickToken();
     const id = await insertSend(stale, new Date(Date.now() - (SIGNED_LINK_DAYS + 1) * DAY));
-    const res = await GET(req(stale, "/drill"), { params: { token: stale } });
+    const res = await GET(req(stale, "/drill"), { params: Promise.resolve({ token: stale }) });
     expect(res.headers.get("location")).toBe("https://www.pyqvault.com/drill");
     expect(hasSession()).toBe(false);
     expect(await clickMeta(id)).toMatchObject({ signIn: "expired" });
@@ -133,19 +133,19 @@ describe.skipIf(!HAS_ENV)("email click redirect", () => {
     jar.clear();
     const first = newClickToken();
     await insertSend(first);
-    await GET(req(first, "/drill"), { params: { token: first } });
+    await GET(req(first, "/drill"), { params: Promise.resolve({ token: first }) });
     expect(hasSession()).toBe(true);
     const before = new Map(jar);
 
     const second = newClickToken();
     const id = await insertSend(second);
-    await GET(req(second, "/drill"), { params: { token: second } });
+    await GET(req(second, "/drill"), { params: Promise.resolve({ token: second }) });
     expect(new Map(jar)).toEqual(before);
     expect(await clickMeta(id)).toMatchObject({ signIn: "session-present" });
   });
 
   it("a second click on the same send adds nothing", async () => {
-    await GET(req(token, "/drill"), { params: { token } });
+    await GET(req(token, "/drill"), { params: Promise.resolve({ token }) });
     const { count } = await admin
       .from("user_activity")
       .select("id", { count: "exact", head: true })
@@ -154,15 +154,15 @@ describe.skipIf(!HAS_ENV)("email click redirect", () => {
   });
 
   it("an unknown token still redirects and records nothing", async () => {
-    const res = await GET(req(newClickToken(), "/start"), { params: { token: newClickToken() } });
+    const res = await GET(req(newClickToken(), "/start"), { params: Promise.resolve({ token: newClickToken() }) });
     expect(res.status).toBe(302);
     expect(res.headers.get("location")).toBe("https://www.pyqvault.com/start");
   });
 
   it("refuses to leave the site", async () => {
-    const res = await GET(req(token, "https://evil.example/x"), { params: { token } });
+    const res = await GET(req(token, "https://evil.example/x"), { params: Promise.resolve({ token }) });
     expect(res.headers.get("location")).toBe("https://www.pyqvault.com/");
-    const res2 = await GET(req(token, "//evil.example/x"), { params: { token } });
+    const res2 = await GET(req(token, "//evil.example/x"), { params: Promise.resolve({ token }) });
     expect(res2.headers.get("location")).toBe("https://www.pyqvault.com/");
   });
 
@@ -183,8 +183,8 @@ describe.skipIf(!HAS_ENV)("email click redirect", () => {
     if (error) throw new Error(error.message);
     const pushId = data.id as string;
 
-    const res = await GET(req(pushToken, "/drill"), { params: { token: pushToken } });
-    await GET(req(pushToken, "/drill"), { params: { token: pushToken } });
+    const res = await GET(req(pushToken, "/drill"), { params: Promise.resolve({ token: pushToken }) });
+    await GET(req(pushToken, "/drill"), { params: Promise.resolve({ token: pushToken }) });
     expect(res.headers.get("location")).toBe("https://www.pyqvault.com/drill");
 
     const { data: rows } = await admin

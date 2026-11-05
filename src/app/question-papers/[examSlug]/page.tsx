@@ -17,7 +17,8 @@ export function generateStaticParams(): Params[] {
   return BOARD_EXAMS.map((e) => ({ examSlug: e.slug }));
 }
 
-export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+export async function generateMetadata(props: { params: Promise<Params> }): Promise<Metadata> {
+  const params = await props.params;
   const exam = getExamBySlug(params.examSlug);
   if (!exam?.boardExam) return { title: "Question papers" };
   return {
@@ -27,7 +28,8 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   };
 }
 
-export default async function ExamPapers({ params }: { params: Params }) {
+export default async function ExamPapers(props: { params: Promise<Params> }) {
+  const params = await props.params;
   const exam = getExamBySlug(params.examSlug);
   if (!exam?.boardExam) notFound();
   // No published papers yet is NOT a 404: this page is built ahead and cached

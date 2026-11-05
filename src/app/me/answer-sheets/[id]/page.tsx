@@ -25,7 +25,8 @@ export const metadata: Metadata = {
 
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
-export default async function AnswerSheetReportPage({ params }: { params: { id: string } }) {
+export default async function AnswerSheetReportPage(props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   const user = await getSessionUser();
   if (!user) redirect(`/login?next=/me/answer-sheets/${params.id}`);
   if (!UUID.test(params.id)) notFound();

@@ -26,7 +26,8 @@ const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
 type Params = { id: string; sheetId: string };
 
-export default async function StudentAnswerSheetPage({ params }: { params: Params }) {
+export default async function StudentAnswerSheetPage(props: { params: Promise<Params> }) {
+  const params = await props.params;
   if (!(await getSessionSuperadmin())) redirect("/browse");
   if (!UUID.test(params.id) || !UUID.test(params.sheetId)) notFound();
 

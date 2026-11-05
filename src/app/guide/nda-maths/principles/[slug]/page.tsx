@@ -31,11 +31,12 @@ export function generateStaticParams(): Params[] {
   return DETAIL_SLUGS.map((slug) => ({ slug }));
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Params;
-}): Promise<Metadata> {
+export async function generateMetadata(
+  props: {
+    params: Promise<Params>;
+  }
+): Promise<Metadata> {
+  const params = await props.params;
   const principle = TOP_PRINCIPLES.find((p) => p.slug === params.slug);
   if (!principle) return { title: "Principle not found" };
   return {
@@ -45,7 +46,8 @@ export async function generateMetadata({
   };
 }
 
-export default async function PrincipleDetail({ params }: { params: Params }) {
+export default async function PrincipleDetail(props: { params: Promise<Params> }) {
+  const params = await props.params;
   const principle = TOP_PRINCIPLES.find((p) => p.slug === params.slug);
   const detail = PRINCIPLE_DETAILS[params.slug];
   if (!principle || !detail) notFound();

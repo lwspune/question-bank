@@ -23,7 +23,8 @@ export function generateStaticParams(): Params[] {
   return [];
 }
 
-export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+export async function generateMetadata(props: { params: Promise<Params> }): Promise<Metadata> {
+  const params = await props.params;
   const outline = await getOutline(params.course);
   const ch = outline?.chapters.find((c) => c.slug === params.chapter);
   if (!outline || !ch) return { title: "Learn" };
@@ -34,7 +35,8 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   };
 }
 
-export default async function LearnChapter({ params }: { params: Params }) {
+export default async function LearnChapter(props: { params: Promise<Params> }) {
+  const params = await props.params;
   const outline = await getOutline(params.course);
   const ch = outline?.chapters.find((c) => c.slug === params.chapter);
   if (!outline || !ch) notFound();

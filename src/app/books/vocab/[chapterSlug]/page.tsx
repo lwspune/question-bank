@@ -22,11 +22,12 @@ import { loadVocabChapter } from "@/lib/vocab/query";
 
 export const dynamic = "force-dynamic";
 
-export default async function VocabChapterPage({
-  params,
-}: {
-  params: { chapterSlug: string };
-}) {
+export default async function VocabChapterPage(
+  props: {
+    params: Promise<{ chapterSlug: string }>;
+  }
+) {
+  const params = await props.params;
   if (!(await getSessionSuperadmin())) redirect("/browse");
 
   const view = await loadVocabChapter(

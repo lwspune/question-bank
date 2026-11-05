@@ -30,7 +30,8 @@ function fmtDate(iso: string | null): string {
   });
 }
 
-export default async function MockAttemptsPage({ params }: { params: Params }) {
+export default async function MockAttemptsPage(props: { params: Promise<Params> }) {
+  const params = await props.params;
   // Platform-wide data (not org-scoped) — superadmin only.
   if (!(await getSessionSuperadmin())) redirect("/browse");
 

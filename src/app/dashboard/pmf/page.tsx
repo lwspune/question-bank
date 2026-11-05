@@ -69,11 +69,12 @@ function pctOf(rate: number | null): string {
   return rate === null ? "" : ` (${Math.round(rate * 100)}%)`;
 }
 
-export default async function PmfPage({
-  searchParams,
-}: {
-  searchParams: { acqDays?: string | string[]; acqExam?: string | string[] };
-}) {
+export default async function PmfPage(
+  props: {
+    searchParams: Promise<{ acqDays?: string | string[]; acqExam?: string | string[] }>;
+  }
+) {
+  const searchParams = await props.searchParams;
   // Platform-wide data (not org-scoped) — superadmin only.
   if (!(await getSessionSuperadmin())) redirect("/browse");
 

@@ -10,7 +10,8 @@ import { ebookSampleEvent } from "@/lib/activity/views";
  * whole chapter), open to everyone, so a student can judge the book before
  * paying. Sent as a redirect to a short-lived link into the private bucket.
  */
-export async function GET(_request: Request, { params }: { params: { slug: string } }) {
+export async function GET(_request: Request, props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params;
   const admin = createSupabaseAdminClient();
   const { data: book } = await admin
     .from("ebooks")

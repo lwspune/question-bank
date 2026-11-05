@@ -9,7 +9,8 @@ export const contentType = "image/png";
 // Per-quiz link-preview card. The whole reason the funnel lives in this Next.js
 // app — a rich card roughly doubles forum/WhatsApp click-through. nodejs runtime
 // (default) so it can reuse the admin client + getPublicQuizBySlug.
-export default async function QuizOpenGraphImage({ params }: { params: { slug: string } }) {
+export default async function QuizOpenGraphImage({ params: paramsPromise }: { params: Promise<{ slug: string }> }) {
+  const params = await paramsPromise;
   let quiz = null;
   try {
     quiz = await getPublicQuizBySlug(createSupabaseAdminClient(), params.slug);

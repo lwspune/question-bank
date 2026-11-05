@@ -73,7 +73,9 @@ export function makeNdaPlaybookRoute(s: NdaPlaybookSettings) {
       return s.playbooks.map((p) => ({ slug: p.slug }));
     },
 
-    async generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+    async generateMetadata({ params: paramsPromise }: { params: Promise<Params> }): Promise<Metadata> {
+
+      const params = await paramsPromise;
       const playbook = find(params.slug);
       if (!playbook) return { title: "Playbook not found" };
       return {
@@ -83,7 +85,9 @@ export function makeNdaPlaybookRoute(s: NdaPlaybookSettings) {
       };
     },
 
-    async Page({ params }: { params: Params }) {
+    async Page({ params: paramsPromise }: { params: Promise<Params> }) {
+
+      const params = await paramsPromise;
       const playbook = find(params.slug);
       const detail = s.details[params.slug];
       if (!playbook) notFound();

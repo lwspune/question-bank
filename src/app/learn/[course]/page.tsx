@@ -19,7 +19,8 @@ export function generateStaticParams(): Params[] {
   return [];
 }
 
-export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+export async function generateMetadata(props: { params: Promise<Params> }): Promise<Metadata> {
+  const params = await props.params;
   const outline = await getOutline(params.course);
   if (!outline) return { title: "Learn" };
   const name = courseName(outline);
@@ -30,7 +31,8 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   };
 }
 
-export default async function LearnCourse({ params }: { params: Params }) {
+export default async function LearnCourse(props: { params: Promise<Params> }) {
+  const params = await props.params;
   const outline = await getOutline(params.course);
   if (!outline) notFound();
   const name = courseName(outline);

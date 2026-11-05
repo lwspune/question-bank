@@ -26,7 +26,8 @@ export function generateStaticParams(): Params[] {
   return BOARD_EXAMS.map((e) => ({ examSlug: e.slug }));
 }
 
-export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+export async function generateMetadata(props: { params: Promise<Params> }): Promise<Metadata> {
+  const params = await props.params;
   const exam = getExamBySlug(params.examSlug);
   if (!exam?.boardExam) return { title: "Board" };
   return {
@@ -36,7 +37,8 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   };
 }
 
-export default async function BoardExamHub({ params }: { params: Params }) {
+export default async function BoardExamHub(props: { params: Promise<Params> }) {
+  const params = await props.params;
   const exam = getExamBySlug(params.examSlug);
   if (!exam?.boardExam) notFound();
 

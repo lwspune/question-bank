@@ -29,7 +29,8 @@ export async function generateStaticParams(): Promise<Params[]> {
   }
 }
 
-export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+export async function generateMetadata(props: { params: Promise<Params> }): Promise<Metadata> {
+  const params = await props.params;
   const plan = await getPlanBySlug(createSupabaseAnonClient(), params.planSlug);
   if (!plan) return {};
   return {
@@ -56,7 +57,8 @@ const SECTION_HELP: Record<"most" | "once", string> = {
  * how often each question was asked, with a download box. Cached: the box asks
  * the browser who is looking.
  */
-export default async function HomeworkPlanPage({ params }: { params: Params }) {
+export default async function HomeworkPlanPage(props: { params: Promise<Params> }) {
+  const params = await props.params;
   const client = createSupabaseAnonClient();
   const [plan, plans] = await Promise.all([getPlanBySlug(client, params.planSlug), listPublishedPlans(client)]);
   if (!plan) notFound();

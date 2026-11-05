@@ -31,7 +31,8 @@ export function generateStaticParams(): Params[] {
   return [];
 }
 
-export function generateMetadata({ params }: { params: Params }): Metadata {
+export async function generateMetadata(props: { params: Promise<Params> }): Promise<Metadata> {
+  const params = await props.params;
   const c = getNotesChapterBySlug(params.subjectRoute, params.chapterSlug);
   if (!c) return { title: "Handout not found", robots: { index: false, follow: false } };
   return {
@@ -40,7 +41,8 @@ export function generateMetadata({ params }: { params: Params }): Metadata {
   };
 }
 
-export default function Page({ params }: { params: Params }) {
+export default async function Page(props: { params: Promise<Params> }) {
+  const params = await props.params;
   const chapter = getNotesChapterBySlug(params.subjectRoute, params.chapterSlug);
   if (!chapter) notFound();
   return <NotesChapterPrint chapter={chapter} />;

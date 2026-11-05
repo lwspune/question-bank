@@ -11,7 +11,7 @@ import EditQuestionForm, {
   type SubjectTree,
 } from "./EditQuestionForm";
 
-type PageProps = { params: { id: string } };
+type PageProps = { params: Promise<{ id: string }> };
 
 type RawOption = {
   id: string;
@@ -49,7 +49,8 @@ type RawChapter = {
 };
 type RawSubject = { id: string; name: string; chapters: RawChapter[] };
 
-export default async function EditQuestionPage({ params }: PageProps) {
+export default async function EditQuestionPage(props: PageProps) {
+  const params = await props.params;
   const member = await getSessionMember();
   if (!member) redirect("/login");
   // Content editing is superadmin-only (migration 0056). The superadmin edits

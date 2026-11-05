@@ -25,7 +25,8 @@ export const metadata: Metadata = {
 
 export const dynamic = "force-dynamic";
 
-export default async function TutorPage({ searchParams }: { searchParams: { from?: string } }) {
+export default async function TutorPage(props: { searchParams: Promise<{ from?: string }> }) {
+  const searchParams = await props.searchParams;
   const user = await getSessionUser();
   const profile = user ? await getOwnProfile(createSupabaseServerClient(), user.id) : null;
   const from = normaliseFrom(searchParams.from);

@@ -36,7 +36,8 @@ async function load(params: Params) {
   return { lesson, pool, homes, outlines };
 }
 
-export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+export async function generateMetadata(props: { params: Promise<Params> }): Promise<Metadata> {
+  const params = await props.params;
   const data = await load(params);
   if (!data) return { title: "Learn" };
   const { lesson, homes } = data;
@@ -48,7 +49,8 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   };
 }
 
-export default async function LearnLesson({ params }: { params: Params }) {
+export default async function LearnLesson(props: { params: Promise<Params> }) {
+  const params = await props.params;
   const data = await load(params);
   if (!data) notFound();
   const { lesson, pool, homes, outlines } = data;

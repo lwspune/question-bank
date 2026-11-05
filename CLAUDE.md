@@ -64,7 +64,7 @@ npm run jee:matrix       # the JEE Mains Maths grid for /guide/jee-mains-maths (
 
 ## Stack
 
-- **Next.js 14** App Router · TypeScript · Tailwind 3 · shadcn-style UI primitives
+- **Next.js 16** App Router (Turbopack; React stays on 18, which Next 16 deprecates: React 19 must land before Next 17) · TypeScript · Tailwind 3 · shadcn-style UI primitives. Route `params`/`searchParams`/`cookies()`/`headers()` are PROMISES; `tests/next16-async-params.test.ts` fails any sync `params` in src/app
 - **Supabase** Auth + Postgres + RLS, accessed via `@supabase/supabase-js` (no Prisma, no ORM)
 - **Vitest 5** (Vite 7) for tests · `tsx` for scripts · **zod 4** for request validation
 - **Word export:** `temml` (LaTeX → MathML) → `mathml2omml` → `docx` + `jszip`

@@ -29,7 +29,8 @@ export const metadata: Metadata = { robots: { index: false } };
 
 type Params = { id: string; attemptId: string };
 
-export default async function AdminAttemptReviewPage({ params }: { params: Params }) {
+export default async function AdminAttemptReviewPage(props: { params: Promise<Params> }) {
+  const params = await props.params;
   if (!(await getSessionSuperadmin())) redirect("/browse");
 
   const db = createSupabaseAdminClient();

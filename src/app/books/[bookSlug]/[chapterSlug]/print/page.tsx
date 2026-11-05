@@ -27,11 +27,12 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-export default async function BookChapterPrintPage({
-  params,
-}: {
-  params: { bookSlug: string; chapterSlug: string };
-}) {
+export default async function BookChapterPrintPage(
+  props: {
+    params: Promise<{ bookSlug: string; chapterSlug: string }>;
+  }
+) {
+  const params = await props.params;
   if (!(await getSessionSuperadmin())) redirect("/browse");
 
   const book = getBookBySlug(params.bookSlug);

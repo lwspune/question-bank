@@ -36,7 +36,8 @@ const CHANNELS: Channel[] = [
   { table: "push_sends", kind: "push_clicked", refKind: "push_send", prefix: "push_click" },
 ];
 
-export async function GET(request: NextRequest, { params }: { params: { token: string } }) {
+export async function GET(request: NextRequest, props: { params: Promise<{ token: string }> }) {
+  const params = await props.params;
   const target = resolveClickTarget(request.nextUrl.searchParams.get("to"));
 
   if (CLICK_TOKEN_RE.test(params.token)) {

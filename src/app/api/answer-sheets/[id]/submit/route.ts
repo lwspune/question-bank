@@ -10,7 +10,8 @@ import { finishSubmission } from "@/lib/answerSheets/service";
 
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
-export async function POST(_request: NextRequest, { params }: { params: { id: string } }) {
+export async function POST(_request: NextRequest, props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   if (!UUID.test(params.id)) return NextResponse.json({ error: "Unknown answer sheet." }, { status: 404 });
   const { data } = await createSupabaseServerClient().auth.getUser();
   if (!data.user) return NextResponse.json({ error: "Please sign in." }, { status: 401 });

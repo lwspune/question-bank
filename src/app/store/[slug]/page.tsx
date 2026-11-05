@@ -25,7 +25,8 @@ export function generateStaticParams() {
   return [];
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata(props: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const params = await props.params;
   const book = await getStoreEbook(createSupabaseAnonClient(), params.slug);
   if (!book) return { title: "Book not found", robots: { index: false } };
   return { title: book.title, description: book.subtitle, alternates: { canonical: `/store/${book.slug}` } };
@@ -76,7 +77,8 @@ const INSIDE: Record<StoreEbook["kind"], string[]> = {
   ],
 };
 
-export default async function StoreBookPage({ params }: { params: { slug: string } }) {
+export default async function StoreBookPage(props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params;
   const book = await getStoreEbook(createSupabaseAnonClient(), params.slug);
   if (!book) notFound();
   // The exam or board line over the subject, as the cover prints it.

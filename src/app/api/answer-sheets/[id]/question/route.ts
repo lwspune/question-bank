@@ -9,7 +9,8 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
-export async function POST(request: NextRequest, { params }: { params: { id: string } }) {
+export async function POST(request: NextRequest, props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   if (!UUID.test(params.id)) return NextResponse.json({ error: "Unknown answer sheet." }, { status: 404 });
   const body = (await request.json().catch(() => null)) as { position?: unknown; message?: unknown } | null;
   const position = body?.position;

@@ -255,7 +255,7 @@ export default async function Home() {
   // Most-chosen exams first (lib/exam/demandOrder), not the registry's NDA-first order.
   // ...and the visitor's own exam (qb_exam, set by the chips below) before all.
   // This page already renders per request, so reading the cookie costs nothing.
-  const chosen = cookies().get("qb_exam")?.value;
+  const chosen = (await cookies()).get("qb_exam")?.value;
   const examNodes = withChosenExamFirst(
     sortByDemand(groupExamFamilies(catalog.exams, (e) => getExamBySlug(e.slug))),
     isExamSlug(chosen) ? chosen : null
