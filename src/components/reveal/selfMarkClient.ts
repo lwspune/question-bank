@@ -61,3 +61,17 @@ export function clearParkedSelfMark(): void {
     /* ignore */
   }
 }
+
+/** Fired on window after a tap is saved, so a page can update around it (the
+ *  homework day's progress bar, 2026-11-05) without the buttons knowing it. */
+export const SELF_MARK_SAVED_EVENT = "qb:self-mark-saved";
+
+export type SelfMarkSavedDetail = { questionId: string; mark: PendingSelfMark["mark"]; outcome: SelfMarkOutcome };
+
+export function announceSelfMark(detail: SelfMarkSavedDetail): void {
+  try {
+    window.dispatchEvent(new CustomEvent<SelfMarkSavedDetail>(SELF_MARK_SAVED_EVENT, { detail }));
+  } catch {
+    /* ignore: an old browser without CustomEvent just misses the live update */
+  }
+}

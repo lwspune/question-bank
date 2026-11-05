@@ -8,6 +8,7 @@ import { sectionsOf, shortNote } from "@/lib/homework/display";
 import { homeworkSideNav } from "@/lib/homework/chapters";
 import { homeworkOfferFacts, homeworkOfferLead } from "@/lib/billing/passOfferLead";
 import HomeworkDownload from "../_components/HomeworkDownload";
+import { HomeworkDayBadge, HomeworkProgressProvider, HomeworkProgressSummary } from "../_components/HomeworkProgress";
 import PlanTabs from "../_components/PlanTabs";
 import Link from "next/link";
 import { Eye } from "lucide-react";
@@ -77,6 +78,11 @@ export default async function HomeworkPlanPage({ params }: { params: Params }) {
 
       <PlanTabs planSlug={plan.slug} active="days" />
 
+      {/* Signed in: "Your progress" and each day's label, filled in by the
+          browser (the page is cached and shared). */}
+      <HomeworkProgressProvider planSlug={plan.slug}>
+        <HomeworkProgressSummary planSlug={plan.slug} />
+
       <div className="mt-8 space-y-10">
         {sections.map((s) => (
           <section key={s.from} aria-labelledby={`part-${s.from}`}>
@@ -93,11 +99,14 @@ export default async function HomeworkPlanPage({ params }: { params: Params }) {
               {s.days.map((d) => (
                 <li key={d.day} className="rounded-lg border bg-card p-4">
                   <div className="flex items-center justify-between gap-3">
-                    <h3 className="font-semibold">
-                      <Link href={dayHref(plan.slug, d.day)} prefetch={false} className="hover:underline">
-                        Day {d.day}
-                      </Link>
-                    </h3>
+                    <div className="flex min-w-0 flex-wrap items-center gap-2">
+                      <h3 className="font-semibold">
+                        <Link href={dayHref(plan.slug, d.day)} prefetch={false} className="hover:underline">
+                          Day {d.day}
+                        </Link>
+                      </h3>
+                      <HomeworkDayBadge day={d.day} />
+                    </div>
                     <div className="flex items-center gap-2">
                       {/* prefetch off: a plan page holds up to 262 days, and each
                           day page renders on first visit from the database. */}
@@ -133,6 +142,7 @@ export default async function HomeworkPlanPage({ params }: { params: Params }) {
           </section>
         ))}
       </div>
+      </HomeworkProgressProvider>
     </GuideShell>
   );
 }

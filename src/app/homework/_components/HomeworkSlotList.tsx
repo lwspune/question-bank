@@ -8,7 +8,7 @@
  * so the reveal state comes in from the caller.
  */
 import Link from "next/link";
-import { ChevronRight } from "lucide-react";
+import { Check, ChevronRight, Clock } from "lucide-react";
 import BlockText from "@/components/math/BlockText";
 import { seeAllLabel } from "@/lib/homework/display";
 import { groupHref } from "@/lib/homework/links";
@@ -18,6 +18,8 @@ import { fromBoardQuestion } from "@/lib/present/viewModel";
 import type { BoardQuestion } from "@/lib/board/query";
 import type { HomeworkSlot } from "@/lib/homework/dayView";
 import BoardQuestionItem, { type RevealLock } from "@/app/board/BoardQuestionItem";
+import type { QuestionMark } from "@/lib/homework/progress";
+import type { SelfMark } from "@/lib/questions/selfMark";
 
 export default function HomeworkSlotList({
   slots,
@@ -31,6 +33,8 @@ export default function HomeworkSlotList({
   onToggleReveal,
   picks,
   onPick,
+  marks,
+  due,
 }: {
   slots: HomeworkSlot<BoardQuestion>[];
   supabaseUrl: string;
@@ -47,6 +51,11 @@ export default function HomeworkSlotList({
   onToggleReveal: (id: string) => void;
   picks: Map<string, string>;
   onPick: (id: string, label: string) => void;
+  /** The signed-in student's mark per question (a homework day, 2026-11-05):
+   *  each finished slot gets a Done or To review label. Absent elsewhere. */
+  marks?: Readonly<Record<string, QuestionMark | undefined>>;
+  /** Questions waiting in Fix your mistakes. */
+  due?: ReadonlySet<string>;
 }) {
   let order = 0;
   return (
@@ -62,6 +71,7 @@ export default function HomeworkSlotList({
                   <span className="font-normal text-muted-foreground"> (case study, {s.questions.length} parts)</span>
                 )}
               </h2>
+              {marks && <SlotMark parts={s.questions.map((q) => q.id)} marks={marks} due={due} />}
             </div>
             <p className="mb-3 text-xs text-muted-foreground">
               {showChapter && (
@@ -116,6 +126,7 @@ export default function HomeworkSlotList({
                       onToggleReveal={() => onToggleReveal(q.id)}
                       pick={picks.get(q.id) ?? null}
                       onPick={(label) => onPick(q.id, label)}
+                      selfMarked={selfMarkOf(marks?.[q.id])}
                     />
                   </div>
                 );
@@ -125,5 +136,37 @@ export default function HomeworkSlotList({
         ))}
       </ol>
     </>
+  );
+}
+
+function selfMarkOf(m: QuestionMark | undefined): SelfMark | null {
+  return m === "understood" || m === "review" ? m : null;
+}
+
+/** "Done" once every part of the slot is marked; "To review" when a part is
+ *  waiting in Fix your mistakes. Nothing while a part is unmarked. */
+function SlotMark({
+  parts,
+  marks,
+  due,
+}: {
+  parts: string[];
+  marks: Readonly<Record<string, QuestionMark | undefined>>;
+  due?: ReadonlySet<string>;
+}) {
+  if (!parts.every((id) => marks[id])) return null;
+  if (parts.some((id) => due?.has(id))) {
+    return (
+      <span className="ml-auto inline-flex items-center gap-1 rounded-full bg-amber-100 px-2 py-0.5 text-xs font-semibold text-amber-900 dark:bg-amber-900/40 dark:text-amber-100">
+        <Clock className="h-3.5 w-3.5" aria-hidden />
+        To review
+      </span>
+    );
+  }
+  return (
+    <span className="ml-auto inline-flex items-center gap-1 rounded-full bg-brand/10 px-2 py-0.5 text-xs font-semibold text-brand-accent">
+      <Check className="h-3.5 w-3.5" aria-hidden />
+      Done
+    </span>
   );
 }

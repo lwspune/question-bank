@@ -27,6 +27,7 @@ export const DRILL_FROM = [
   "again", // "Another five" at the end of a drill
   "nav", // the Fix tab graduates get in place of Board (lib/nav/fifthTab)
   "review", // "Saved for review" under a written model answer (lib/questions/selfMark)
+  "homework", // the homework plan and day pages' review links (lib/homework/progress)
 ] as const;
 
 export type DrillFrom = (typeof DRILL_FROM)[number];

@@ -26,6 +26,7 @@ import { hasMarathi } from "@/lib/i18n/bilingual";
 import { BilingualOption, BilingualSolution, BilingualStem } from "@/components/i18n/BilingualText";
 import SolutionViews from "@/components/visuals/SolutionViews";
 import SelfMarkButtons from "@/components/reveal/SelfMarkButtons";
+import type { SelfMark } from "@/lib/questions/selfMark";
 
 function questionHasAnswer(q: BoardQuestion): boolean {
   return !!q.solution || q.options.some((o) => o.isCorrect);
@@ -47,6 +48,7 @@ export default function BoardQuestionItem({
   onPick,
   meta,
   marks,
+  selfMarked = null,
 }: {
   q: BoardQuestion;
   supabaseUrl: string;
@@ -68,6 +70,9 @@ export default function BoardQuestionItem({
   meta?: ReactNode;
   /** Printed marks, on a past paper (/question-papers). Absent on /board. */
   marks?: number;
+  /** The student's earlier Understood / Review later on this question, where
+   *  the page knows it (a homework day). */
+  selfMarked?: SelfMark | null;
 }) {
   const hasAnswer = questionHasAnswer(q);
   // The board's Marathi-medium print of the same question, when there is one
@@ -236,7 +241,7 @@ export default function BoardQuestionItem({
           {/* Understood / Review later: the student judges their own written
               answer, and Review later sends it to the drill (lib/questions/selfMark). */}
           {revealed && q.solution && q.format === "subjective" && (
-            <SelfMarkButtons questionId={q.id} surface="board" className="mt-3" />
+            <SelfMarkButtons questionId={q.id} surface="board" className="mt-3" marked={selfMarked} />
           )}
         </div>
       ) : (

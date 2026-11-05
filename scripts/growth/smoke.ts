@@ -171,6 +171,9 @@ async function main() {
       case "homework-tab":
         line = handRead(e.liveSince, ["homework-day-visitors"]);
         break;
+      case "homework-progress":
+        line = handRead(e.liveSince, []);
+        break;
       case "v-pay-offer":
         line = handRead(e.liveSince, ["v-pay-offer-shown", "v-pay-offer-checkout"]);
         break;
