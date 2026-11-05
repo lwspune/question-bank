@@ -143,7 +143,7 @@ export const CORE_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     slug: "structure-of-atom",
     trigger: "A Bohr orbit, an electron's wavelength or energy, a spectral line, quantum numbers, or isotopes and isoelectronic species.",
     story: [
-      "101 q at 1.08 a paper, 1% HARD. It HALVED in 2025 and stayed there: 2.00 a paper across 2023-24, 1.00 in 2025, 1.12 in 2026. Still set in almost every paper; give it half the hours 2023-24 papers suggest.",
+      "101 q at 1.08 a paper, 1% HARD. It HALVED in 2025 and stayed there: 2.07 a paper across 2023-24, 1.00 in 2025, 1.12 in 2026. Still set in almost every paper; give it half the hours 2023-24 papers suggest.",
       "Bohr's model (23 q, never HARD) is scaling: rₙ = 0.529n²/Z Å, Eₙ = −13.6Z²/n² eV. Radiation is E = hν = hc/λ. The quantum-number rules decide which set is allowed, and the particles page counts protons, neutrons and electrons.",
     ],
     subSkills: [

@@ -112,7 +112,7 @@ export const TAIL_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     slug: "elements-of-group-16-17-and-18",
     trigger: "Oxygen, sulphur or ozone; a halogen, interhalogen or oxoacid; a noble gas compound — or a trend down a group.",
     story: [
-      "81 q at 1.28 a paper, 4% HARD, and up from 1.00 a paper in 2023-24 to 1.38 in 2025 and 1.23 in 2026. Group 16 (37 q, never HARD): hydride trends (thermal stability falls and acidity rises from H₂O to H₂Te), allotropes of sulphur, ozone, and oleum.",
+      "81 q at 1.28 a paper, 4% HARD, and up from 1.04 a paper in 2023-24 to 1.38 in 2025 and 1.23 in 2026. Group 16 (37 q, never HARD): hydride trends (thermal stability falls and acidity rises from H₂O to H₂Te), allotropes of sulphur, ozone, and oleum.",
       "Group 17 (37 q, all three HARD): oxidising power (F₂ strongest), the oxoacids and their oxidation states, and interhalogens. Group 18 (7 q): xenon fluorides and their shapes.",
     ],
     subSkills: [

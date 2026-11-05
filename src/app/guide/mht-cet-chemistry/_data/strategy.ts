@@ -256,7 +256,7 @@ export const CALCULATE_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "1.08 q/paper · 1 mark",
       studyHours: 3,
       summary:
-        "101 q · 1% HARD, and HALVED in 2025 for good: 2.00 a paper across 2023-24, 1.00 in 2025, 1.12 in 2026. Bohr's radius and energy scaling, E = hc/λ and the quantum-number rules. Keep it, but on half the hours 2023-24 papers suggest.",
+        "101 q · 1% HARD, and HALVED in 2025 for good: 2.07 a paper across 2023-24, 1.00 in 2025, 1.12 in 2026. Bohr's radius and energy scaling, E = hc/λ and the quantum-number rules. Keep it, but on half the hours 2023-24 papers suggest.",
     },
   ],
 };
@@ -476,7 +476,7 @@ export const RECALL_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "1.28 q/paper · about 1 mark",
       studyHours: 3,
       summary:
-        "81 q · 4% HARD, and up from 1.00 a paper in 2023-24 to 1.38 in 2025 and 1.23 in 2026. Hydride stability and acidity trends, oxoacids of sulphur and chlorine, interhalogens, and xenon fluorides.",
+        "81 q · 4% HARD, and up from 1.04 a paper in 2023-24 to 1.38 in 2025 and 1.23 in 2026. Hydride stability and acidity trends, oxoacids of sulphur and chlorine, interhalogens, and xenon fluorides.",
     },
     {
       chapter: "Redox Reactions",
@@ -562,7 +562,7 @@ export const TAIL_CHAPTERS: TailChapter[] = [
     qPerPaper: 0.67,
     pctHard: 2,
     status: "live",
-    note: "Falling: 0.85 a paper in 2023-24, 0.77 in 2025, 0.62 in 2026. Hückel's rule, ortho/para against meta directors, and side-chain oxidation to benzoic acid; drill it with the Reactions strand.",
+    note: "Falling: 0.89 a paper in 2023-24, 0.77 in 2025, 0.62 in 2026. Hückel's rule, ortho/para against meta directors, and side-chain oxidation to benzoic acid; drill it with the Reactions strand.",
   },
   {
     chapter: "Alkanes",

@@ -341,7 +341,7 @@ export const CHAPTER_TABLE: ChapterRow[] = [
     focus:
       "Bohr's Atomic Model (23 · 0% HARD), Subatomic Particles, Isotopes, Isobars and Isoelectronic Species (22 · 0%), Quantum Mechanical Model, de Broglie, Heisenberg and Quantum Numbers (20 · 0%), Hydrogen Spectrum and Rydberg Equation (14 · 7%), Electromagnetic Radiation and Wave Properties (12 · 0%), Electronic Configuration and Pauli/Hund Rules (10 · 0%). One HARD question in 99.",
     note:
-      "Halved in 2025 and stayed there: 2.00 questions a paper across the 27 papers of 2023-24, then 1.00 across the 13 of 2025 and 1.12 across the 26 of 2026. Still set in almost every paper.",
+      "Halved in 2025 and stayed there: 2.07 questions a paper across the 27 papers of 2023-24, then 1.00 across the 13 of 2025 and 1.12 across the 26 of 2026. Still set in almost every paper.",
   },
   {
     chapter: "Surface Chemistry",
@@ -377,7 +377,7 @@ export const CHAPTER_TABLE: ChapterRow[] = [
     qPerPaper: 0.67,
     pctHard: 2,
     focus:
-      "Electrophilic Aromatic Substitution (21 · 0% HARD), Side-Chain Reactions, Oxidation and Other Transformations (19 · 5%), Structure, Aromaticity and Identification (12 · 0%). Reagent-to-product recognition around the benzene ring. Falling: 0.85 a paper in 2023-24, 0.77 in 2025, 0.62 in 2026.",
+      "Electrophilic Aromatic Substitution (21 · 0% HARD), Side-Chain Reactions, Oxidation and Other Transformations (19 · 5%), Structure, Aromaticity and Identification (12 · 0%). Reagent-to-product recognition around the benzene ring. Falling: 0.89 a paper in 2023-24, 0.77 in 2025, 0.62 in 2026.",
   },
   {
     chapter: "Alkanes",
