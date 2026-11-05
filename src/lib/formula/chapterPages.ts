@@ -17,7 +17,8 @@
  *
  * Spec: tests/formula-chapter-pages.test.ts.
  */
-import { NOTES_CHAPTERS, type NotesChapterRegistration } from "@/lib/notes/chapters";
+import type { NotesChapterRegistration } from "@/lib/notes/chapters";
+import { NOTES_CHAPTER_INDEX, type NotesChapterMeta } from "@/lib/notes/chapterIndex";
 import { deriveSummary } from "@/lib/notes/deriveSummary";
 import { legendSymbolText } from "@/lib/notes/printDoc";
 import { EXAM_REGISTRY, getExamByName } from "@/lib/exam/examContext";
@@ -75,21 +76,23 @@ export function formulaChapterHref(p: Pick<FormulaChapterPage, "examSlug" | "sub
   return `/formula/${p.examSlug}/${p.subjectSlug}/${p.chapterSlug}`;
 }
 
-function buildPages(chapters: readonly NotesChapterRegistration[]): FormulaChapterPage[] {
+// From the lean chapter index (counts precomputed by formulaPageCounts at generation), so the
+// notes chapter page that asks for its formula page never imports the corpus (TECH_DEBT_SPEC.md 2.2).
+function buildPages(chapters: readonly NotesChapterMeta[]): FormulaChapterPage[] {
   const out: FormulaChapterPage[] = [];
   const seen = new Set<string>();
   for (const c of chapters) {
     const exam = getExamByName(c.examName);
     if (!exam) continue;
-    const counts = formulaPageCounts(c);
+    const counts = c.formulaCounts;
     if (!qualifiesForFormulaPage(counts)) continue;
     const page: FormulaChapterPage = {
       examSlug: exam.slug,
       subjectSlug: slugifyName(c.subjectName),
-      chapterSlug: slugifyName(c.chapter.chapterName),
+      chapterSlug: slugifyName(c.chapterName),
       examName: c.examName,
       subjectName: c.subjectName,
-      chapterName: c.chapter.chapterName,
+      chapterName: c.chapterName,
       examDisplay: exam.displayName,
       subjectDisplay: c.subjectDisplay,
       subjectRoute: c.subjectRoute,
@@ -110,7 +113,7 @@ let cached: FormulaChapterPage[] | null = null;
 
 /** Every chapter formula page, in notes-registry order. */
 export function listFormulaChapterPages(): FormulaChapterPage[] {
-  if (!cached) cached = buildPages(NOTES_CHAPTERS);
+  if (!cached) cached = buildPages(NOTES_CHAPTER_INDEX);
   return cached;
 }
 

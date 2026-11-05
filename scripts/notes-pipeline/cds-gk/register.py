@@ -7,7 +7,7 @@ spec: {"route": "cds-chemistry", "subject": "Chemistry", "display": "CDS Chemist
        "prefix": "cdsch-ab", "cprefix": "cdschab", "blurb": "index.ts comment",
        "pages": [["cdsch-ab-theory", "theory", "CDS_CH_AB_THEORY_NOTE"], ...]}
 
-Writes the chapter's _data/index.ts, its page.tsx and [subtopicSlug]/page.tsx, the subject
+Writes the chapter's _data/index.ts, the subject's [chapterSlug] route files when the route is new, the subject
 landing page.tsx when the route is new, and the NOTES_CHAPTERS entry (after the route's last
 entry, else at the end). chapter.ts and the page files are authored by hand. Idempotent.
 """
@@ -38,11 +38,15 @@ lines += [f'  "{s}": {e},' for s, _, e in spec["pages"]]
 lines += ["};", "", f"export const {const}_SLUGS = Object.keys({const}_NOTES);", ""]
 write(os.path.join(d, "_data", "index.ts"), "\n".join(lines))
 
-model = os.path.join(notes, "cds-maths", "trigonometry")
+# No page file per chapter since 2026-11-05: each subject serves every chapter from its
+# [chapterSlug] routes (TECH_DEBT_SPEC.md 2.2). A NEW subject gets those two files, copied from
+# cds-maths with the subject swapped; an existing subject needs nothing here.
+model = os.path.join(notes, "cds-maths", "[chapterSlug]")
 for rel in ["page.tsx", os.path.join("[subtopicSlug]", "page.tsx")]:
-    tpl = io.open(os.path.join(model, rel), encoding="utf-8").read()
-    write(os.path.join(d, rel), tpl.replace('getNotesChapterBySlug("cds-maths", "trigonometry")',
-                                             f'getNotesChapterBySlug("{route}", "{slug}")'))
+    dst = os.path.join(notes, route, "[chapterSlug]", rel)
+    if not os.path.exists(dst):
+        tpl = io.open(os.path.join(model, rel), encoding="utf-8").read()
+        write(dst, tpl.replace('"cds-maths"', f'"{route}"').replace("Every cds-maths", f"Every {route}"))
 
 landing = os.path.join(notes, route, "page.tsx")
 if not os.path.exists(landing):

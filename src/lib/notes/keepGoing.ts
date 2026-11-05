@@ -13,7 +13,8 @@
  * `hasMocks` for the mock card — so every chapter gets it with no per-page
  * work. Pure; spec tests/notes-keep-going.test.ts.
  */
-import { NOTES_CHAPTERS, type NotesChapterRegistration } from "@/lib/notes/chapters";
+import type { NotesChapterRegistration } from "@/lib/notes/chapters";
+import { NOTES_CHAPTER_INDEX } from "@/lib/notes/chapterIndex";
 import { getExamByName } from "@/lib/exam/examContext";
 import { inBookOrder } from "@/lib/notes/bookOrder";
 
@@ -38,7 +39,9 @@ function topicLink(c: NotesChapterRegistration, slug: string, kicker: string): N
 export function topicNav(
   c: NotesChapterRegistration,
   slug: string,
-  all: readonly NotesChapterRegistration[] = NOTES_CHAPTERS
+  // The lean index, not the registry: this runs on every notes page, and the registry would
+  // pull the whole corpus into the route (TECH_DEBT_SPEC.md 2.2 part 2).
+  all: readonly { subjectRoute: string; chapterSlug: string; chapterName: string }[] = NOTES_CHAPTER_INDEX
 ): { next: NavLink | null; prev: NavLink | null } {
   const order = topicOrder(c);
   const i = order.indexOf(slug);
@@ -48,9 +51,9 @@ export function topicNav(
   // Book order where the subject has one (bookOrder.ts), so "Next chapter"
   // matches the subject page.
   const subject = inBookOrder(all.filter((x) => x.subjectRoute === c.subjectRoute));
-  const nextChapter = subject[subject.indexOf(c) + 1];
+  const nextChapter = subject[subject.findIndex((x) => x.chapterSlug === c.chapterSlug) + 1];
   const next = nextChapter
-    ? { href: chapterBase(nextChapter), label: nextChapter.chapter.chapterName, kicker: "Next chapter" }
+    ? { href: `/notes/${nextChapter.subjectRoute}/${nextChapter.chapterSlug}`, label: nextChapter.chapterName, kicker: "Next chapter" }
     : { href: `/notes/${c.subjectRoute}`, label: `All ${c.subjectDisplay} notes`, kicker: "Chapter done" };
   return { next, prev };
 }
