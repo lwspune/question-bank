@@ -20,7 +20,8 @@
  *
  * Pure (no DOM, no network). Spec: tests/chapter-share.test.ts.
  */
-import { SITE_URL, type ShareChannel } from "@/lib/mocks/share";
+import { type ShareChannel } from "@/lib/mocks/share";
+import { SITE_URL } from "@/lib/brand";
 
 /** Ties every chapter share to one rollup in student_profiles.acq_campaign. */
 export const CHAPTER_SHARE_CAMPAIGN = "chapter-share";

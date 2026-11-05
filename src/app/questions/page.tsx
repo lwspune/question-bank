@@ -6,6 +6,7 @@
  * and internal links are what actually distribute ranking signal between them.
  * It's also the fastest human path from "which exam am I studying" to a chapter.
  */
+import { SITE_URL } from "@/lib/brand";
 import Link from "next/link";
 import type { Metadata } from "next";
 import AppHeader from "@/components/AppHeader";
@@ -17,7 +18,6 @@ import {
 } from "@/lib/questions/landing";
 import { examHomeHref } from "@/lib/exam/examHome";
 
-const SITE_URL = "https://www.pyqvault.com";
 
 export const revalidate = 86400;
 

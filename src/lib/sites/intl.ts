@@ -16,11 +16,12 @@
  * the new origin), attach the new domain in Vercel and add its auth callback in
  * Supabase. Nothing else names the host.
  */
+import { SITE_URL } from "@/lib/brand";
 import { EXAM_REGISTRY, type ExamEntry, type ExamSlug } from "@/lib/exam/examContext";
 import type { PlanSite } from "@/lib/billing/plans";
 
 export const INTL_ORIGIN = "https://intl.pyqvault.com";
-export const WWW_ORIGIN = "https://www.pyqvault.com";
+export const WWW_ORIGIN = SITE_URL;
 
 /** Host names the intl site used to live on; each 301s to INTL_ORIGIN. */
 export const FORMER_INTL_HOSTS: readonly string[] = [];

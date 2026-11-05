@@ -13,6 +13,8 @@
  * Pure data + one formatter. No React, no DB.
  */
 
+import { SITE_URL } from "@/lib/brand";
+
 /** Read aloud or paraphrase; assumes students have phones and have signed up. */
 export const MOCK_SCRIPT: readonly string[] = [
   "Open PYQ Vault, tap Mocks, and sit the paper I assigned. It is the real paper from that year, timed. Answer what you can; leave the rest.",
@@ -54,6 +56,6 @@ export function classroomScriptText(): string {
     "For board classes, instead of steps 1 to 4:",
     ...board,
     "",
-    "https://www.pyqvault.com/start",
+    `${SITE_URL}/start`,
   ].join("\n");
 }

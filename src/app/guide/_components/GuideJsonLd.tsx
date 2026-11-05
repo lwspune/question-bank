@@ -6,7 +6,8 @@
  * Rich Results test reads this without executing JS.
  */
 
-const SITE_URL = "https://www.pyqvault.com";
+import { SITE_URL } from "@/lib/brand";
+
 const PUBLISHER_NAME = "PYQ Vault";
 const DATE_PUBLISHED = "2026-05-13";
 

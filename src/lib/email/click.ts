@@ -13,7 +13,7 @@
  * Pure except newClickToken (node:crypto randomness).
  */
 import { randomBytes } from "node:crypto";
-import { SITE_URL } from "./templates";
+import { SITE_URL } from "@/lib/brand";
 
 /** 24 random bytes, base64url: 32 chars, unguessable, safe in a URL path. */
 export const CLICK_TOKEN_RE = /^[A-Za-z0-9_-]{32}$/;

@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
-import { buildEmail, escapeHtml, formatDuration, SITE_URL, REPLY_TO } from "@/lib/email/templates";
+import { buildEmail, escapeHtml, formatDuration, REPLY_TO } from "@/lib/email/templates";
+import { SITE_URL } from "@/lib/brand";
 import { buildMockReportEmail, buildBatchInviteEmail } from "@/lib/email/templates";
 import { INVITE_LINES } from "@/lib/education/classroomScript";
 import type { MockReport, ReportQuestion, ReportSubtopic } from "@/lib/email/mockReport";

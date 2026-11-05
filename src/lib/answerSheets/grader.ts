@@ -12,7 +12,7 @@ import { ANSWER_SHEETS_BUCKET, isScanFile } from "./upload";
 import type { GradeFile, GradeOutcome } from "./grade";
 import { getExamByName } from "@/lib/exam/examContext";
 import { slugify } from "@/lib/board/query";
-import { SITE_URL } from "@/lib/email/templates";
+import { SITE_URL } from "@/lib/brand";
 
 export type QueuedSheet = {
   id: string;

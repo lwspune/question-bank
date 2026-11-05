@@ -8,10 +8,10 @@
  * is derived from the same data the pages render. Pure — spec in
  * tests/llms-txt.test.ts; the route handler is src/app/llms.txt/route.ts.
  */
+import { SITE_URL } from "@/lib/brand";
 import { examHomeHref } from "@/lib/exam/examHome";
 import { examKindPhrase } from "@/lib/exam/questionCounts";
 
-const SITE_URL = "https://www.pyqvault.com";
 
 export type LlmsExam = {
   slug: string;

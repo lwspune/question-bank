@@ -13,7 +13,8 @@
  *
  * Pure. Spec: tests/practice-friend.test.ts.
  */
-import { SITE_URL, type ShareChannel } from "@/lib/mocks/share";
+import { type ShareChannel } from "@/lib/mocks/share";
+import { SITE_URL } from "@/lib/brand";
 
 /** Every practice-test send rolls up under this campaign (migration 0106 reads it). */
 export const PRACTICE_SHARE_CAMPAIGN = "practice-share";

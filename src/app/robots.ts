@@ -1,6 +1,6 @@
+import { SITE_URL } from "@/lib/brand";
 import type { MetadataRoute } from "next";
 
-const SITE_URL = "https://www.pyqvault.com";
 
 /**
  * What every crawler may fetch. Shared by the wildcard group and the two

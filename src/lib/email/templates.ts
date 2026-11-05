@@ -16,7 +16,7 @@
  * and is staff-surface only). Short, honest, specific. The ask names the real
  * time cost up front rather than hiding it.
  */
-import { CONTACT_EMAIL } from "@/lib/brand";
+import { CONTACT_EMAIL, SITE_URL } from "@/lib/brand";
 import { formatMarks, formatWhere, type MockReport } from "./mockReport";
 import type { Recipient } from "./recommend";
 import type { DueSummary } from "./dueNudge";
@@ -24,7 +24,6 @@ import type { Loop } from "@/lib/education/howItWorks";
 import { INVITE_LINES } from "@/lib/education/classroomScript";
 import { drillHref } from "@/lib/drill/from";
 
-export const SITE_URL = "https://www.pyqvault.com";
 
 /** A CTA href: through /api/e/<token> when the send has a click token, else direct. */
 function ctaHref(path: string, clickToken: string | undefined): string {
