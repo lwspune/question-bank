@@ -99,6 +99,8 @@ export default async function HomeworkDayPage({ params }: { params: Params }) {
           dayTitle={`${plan.title}, day ${day}`}
           planSlug={plan.slug}
           supabaseUrl={process.env.NEXT_PUBLIC_SUPABASE_URL!}
+          day={day}
+          nextDay={next}
         />
 
         <nav aria-label="Other days" className="mt-10 flex items-center justify-between gap-3 border-t pt-4 text-sm">

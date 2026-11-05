@@ -309,6 +309,7 @@ export type Readout =
   | "v-pay-offer"
   | "visual-solutions"
   | "homework-tab"
+  | "homework-progress"
   | "why-not-buy";
 
 export type Experiment = {
@@ -570,6 +571,20 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-11-04",
     windowDays: 28,
     readout: "homework-tab",
+    status: "running",
+  },
+  {
+    id: "homework-progress",
+    title: "Homework progress: days done and Continue",
+    change:
+      "Signed in, a homework plan page shows \"Your progress\" (days done, Continue: Day N, questions waiting in Fix your mistakes) and a Done, \"3 of 5\" or Up next label on each day. A day page shows how many questions are marked, a Done or To review label on each, the earlier Understood / Review later pressed, and \"Day N done\" with Next: Day N+1 at the end. No completed button: a day is done when every question is marked (a written one by Understood / Review later, an MCQ once answered), read from rows the pages already write.",
+    why: "Owner, 2026-11-05: students should be able to track their homework. On the tab's first day 7 students opened homework pages and 5 opened a day, but nothing told them which days they had done or where to pick up.",
+    metric:
+      "Students who finish a homework day (every question of the day marked) and students who finish days on two or more different days; Fix your mistakes visits from homework (/drill?from=homework)",
+    rule: "No fixed bar (no baseline: nothing measured completion before). Keep it if students finish days and some come back for another; if days are opened but rarely finished, read which questions they stop on before changing it.",
+    liveSince: "2026-11-05",
+    windowDays: 28,
+    readout: "homework-progress",
     status: "running",
   },
   {

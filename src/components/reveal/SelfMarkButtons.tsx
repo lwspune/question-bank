@@ -10,10 +10,12 @@ import { useSignedIn } from "@/components/auth/useSignedIn";
 import { drillHref } from "@/lib/drill/from";
 import { invalidatePulse } from "@/lib/viewer/usePulse";
 import { selfMarkMessage, type SelfMark, type SelfMarkOutcome, type SelfMarkSurface } from "@/lib/questions/selfMark";
-import { parkSelfMark, postSelfMark } from "./selfMarkClient";
+import { announceSelfMark, parkSelfMark, postSelfMark } from "./selfMarkClient";
 
 const BUTTON =
   "inline-flex h-9 items-center gap-1.5 rounded-md border bg-background px-3 font-sans text-sm font-medium transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-60";
+
+const PRESSED = "border-brand-accent bg-brand/10";
 
 /**
  * "Understood / Review later" under a written model answer (2026-10-28). The
@@ -29,10 +31,15 @@ export default function SelfMarkButtons({
   questionId,
   surface,
   className,
+  marked = null,
 }: {
   questionId: string;
   surface: SelfMarkSurface;
   className?: string;
+  /** The student's earlier mark on this question, where the page knows it
+   *  (a homework day, 2026-11-05): that button shows pressed, and a tap still
+   *  changes it. */
+  marked?: SelfMark | null;
 }) {
   const { signedIn, loading } = useSignedIn();
   const [busy, setBusy] = useState<SelfMark | null>(null);
@@ -52,6 +59,7 @@ export default function SelfMarkButtons({
     if (res.ok) {
       setOutcome(res.outcome);
       toast.success(selfMarkMessage(res.outcome));
+      announceSelfMark({ questionId, mark: m, outcome: res.outcome });
       // The avatar badge counts the drill's pool, which this may have changed.
       invalidatePulse();
     } else if (res.signedOut) {
@@ -80,8 +88,19 @@ export default function SelfMarkButtons({
         </p>
       ) : (
         <>
+          {marked && (
+            <p className="mb-2 text-sm text-muted-foreground">
+              You marked this {marked === "understood" ? "Understood" : "Review later"} earlier.
+            </p>
+          )}
           <div role="group" aria-label="How did your answer compare with the model answer?" className="flex flex-wrap gap-2">
-            <button type="button" onClick={() => mark("understood")} disabled={busy !== null} className={BUTTON}>
+            <button
+              type="button"
+              onClick={() => mark("understood")}
+              disabled={busy !== null}
+              aria-pressed={marked ? marked === "understood" : undefined}
+              className={cn(BUTTON, marked === "understood" && PRESSED)}
+            >
               {busy === "understood" ? (
                 <Loader2 className="h-4 w-4 animate-spin" aria-hidden />
               ) : (
@@ -89,7 +108,13 @@ export default function SelfMarkButtons({
               )}
               Understood
             </button>
-            <button type="button" onClick={() => mark("review")} disabled={busy !== null} className={BUTTON}>
+            <button
+              type="button"
+              onClick={() => mark("review")}
+              disabled={busy !== null}
+              aria-pressed={marked ? marked === "review" : undefined}
+              className={cn(BUTTON, marked === "review" && PRESSED)}
+            >
               {busy === "review" ? (
                 <Loader2 className="h-4 w-4 animate-spin" aria-hidden />
               ) : (

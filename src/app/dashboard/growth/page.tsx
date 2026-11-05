@@ -549,6 +549,14 @@ export default async function GrowthPage() {
             <ReadingsList metric="mock-together-signups" />
           </div>
         );
+      case "homework-progress":
+        return (
+          <p className="text-sm text-muted-foreground">
+            Read by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))}: a day is finished when every question on it
+            is marked (lib/homework/progress), so count students with a finished day, and those finishing days on two
+            or more dates, from user_activity joined to homework_plan_items.
+          </p>
+        );
       case "homework-tab":
         return (
           <div className="space-y-3">
