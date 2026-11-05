@@ -44,10 +44,10 @@ export function makeChapterRoute(subjectRoute: string) {
 
 export function makeSubtopicRoute(subjectRoute: string) {
   return {
-    /** Same prerender rule as before: one subtopic per chapter locally, all on Vercel. */
+    /** One subtopic per chapter locally; on Vercel that one plus the pages people read (lib/notes/prerender.ts). */
     generateStaticParams(): SubtopicParams[] {
       return notesChapterMetasForSubject(subjectRoute).flatMap((c) =>
-        notesPrerenderParams(c.slugs).map((p) => ({ chapterSlug: c.chapterSlug, ...p }))
+        notesPrerenderParams(`${subjectRoute}/${c.chapterSlug}`, c.slugs).map((p) => ({ chapterSlug: c.chapterSlug, ...p }))
       );
     },
     async generateMetadata({ params }: { params: SubtopicParams }): Promise<Metadata> {

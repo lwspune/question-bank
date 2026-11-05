@@ -332,7 +332,7 @@ Found while drafting animated solutions (batch fg-jee-aod-1). Question `a751d0d5
 3. Re-measure one build: requests, peak per minute, duration. Target: the peak well under the level that toppled the database.
 4. If a build becomes cheap enough, decide with the owner whether the one-build-a-day rule can relax (an urgent second push would be harmless).
 
-**Status:** OPEN, analysis not started.
+**Status (2026-11-05):** steps 1-3 measured, no code needed (TECH_DEBT_SPEC.md 2.4). The 2026-11-04 deploy build sent about 21,400 requests; the largest exact repeat was 24 (446 in October), peak 1,972 a minute (about 2,600 in October). Since 2026-11-05 a deploy build also skips the notes, formula and board pages nobody reads (2.3), which removes more. Step 4, relaxing the one-build-a-day rule, is the owner's call after the next deploy's numbers.
 
 ## 2026-09-14
 
