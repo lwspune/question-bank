@@ -66,7 +66,8 @@ export default defineConfig({
     // global only because no naming convention separates the two kinds.
     // On low-core CI runners this is a near-no-op.
     pool: "forks",
-    poolOptions: { forks: { maxForks: 5, minForks: 1 } },
+    // Vitest 4+ took the worker cap out of poolOptions (TECH_DEBT_SPEC.md 4.3).
+    maxWorkers: 5,
     // One auto-retry still absorbs a rare transient pooler/network blip so the
     // gate self-heals; a genuinely broken test fails both attempts, so real
     // regressions are not masked.

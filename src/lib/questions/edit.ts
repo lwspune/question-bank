@@ -74,7 +74,7 @@ export function validateEditPayload(input: unknown): ValidationResult {
   if (!result.success) {
     return {
       ok: false,
-      errors: result.error.errors.map((e) =>
+      errors: result.error.issues.map((e) =>
         e.path.length > 0 ? `${e.path.join(".")}: ${e.message}` : e.message
       ),
     };
