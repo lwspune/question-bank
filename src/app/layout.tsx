@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/brand";
 import type { Metadata, Viewport } from "next";
 import { Inter, Noto_Serif_Devanagari, Source_Serif_4 } from "next/font/google";
 import { Toaster } from "sonner";
@@ -38,7 +39,6 @@ const devanagari = Noto_Serif_Devanagari({
   variable: "--font-devanagari",
 });
 
-const SITE_URL = "https://www.pyqvault.com";
 const SITE_NAME = "PYQ Vault";
 
 // Site-wide Organization + WebSite structured data (lib/seo/siteJsonLd.ts):

@@ -9,6 +9,7 @@
  *    questions use each, ordered by question count rather than teaching order,
  *    because the point is weight: which identities the chapter leans on.
  */
+import { SITE_URL } from "@/lib/brand";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { fitTitle } from "@/lib/seo/title";
@@ -20,7 +21,6 @@ import { FORMULA_CHAPTERS, topicsByWeight, type FormulaKind } from "@/lib/formul
 import { groupFormulaPagesForIndex, listFormulaChapterPages } from "@/lib/formula/chapterPages";
 import FormulaChapterList from "./_components/FormulaChapterList";
 
-const SITE_URL = "https://www.pyqvault.com";
 
 export const revalidate = 86400;
 

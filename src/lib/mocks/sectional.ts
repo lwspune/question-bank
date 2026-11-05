@@ -32,6 +32,7 @@
  * Pure — no I/O. Unit-tested in tests/mock-sectional.test.ts.
  */
 
+import { slugify } from "@/lib/slug";
 import { totalQuestions, type MockPaperBlueprint } from "./blueprints";
 
 export type SectionalDifficulty = "EASY" | "MODERATE" | "HARD";
@@ -306,12 +307,6 @@ export function sectionalSource(kinds: string[]): "pyq" | "practice" {
   return kinds.every((k) => k === "pyq") ? "pyq" : "practice";
 }
 
-function slugify(s: string): string {
-  return s
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
-}
 
 /**
  * `mht-cet-chapter-maths-01-vectors`. The `chapter` segment keeps these out of

@@ -5,7 +5,7 @@ import { logActivityOnce } from "@/lib/activity/service";
 import { CLICK_TOKEN_RE, resolveClickTarget } from "@/lib/email/click";
 import { decideSignIn } from "@/lib/email/signedLink";
 import { signInFromSend } from "@/lib/email/signedLinkService";
-import { SITE_URL } from "@/lib/email/templates";
+import { SITE_URL } from "@/lib/brand";
 
 export const dynamic = "force-dynamic";
 

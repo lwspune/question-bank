@@ -20,7 +20,8 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { sendEmail } from "@/lib/email/resend";
-import { buildBatchInviteEmail, SITE_URL } from "@/lib/email/templates";
+import { buildBatchInviteEmail } from "@/lib/email/templates";
+import { SITE_URL } from "@/lib/brand";
 import { parseInviteEmails, inviteState, type InviteState } from "./invites";
 import { generateJoinCode, normalizeJoinCode } from "./joinCode";
 import { listAllAuthUsers } from "@/lib/supabase/authUsers";

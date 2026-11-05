@@ -9,6 +9,7 @@
  * DATA still comes from the DB (getPublishedMocks); this only shapes the nav.
  */
 
+import { slugify } from "@/lib/slug";
 import { EXAM_REGISTRY, PYQVAULT_EXAMS, getExamBySlug, type ExamEntry, type ExamSlug } from "@/lib/exam/examContext";
 import { INTL_EXAMS } from "@/lib/sites/intl";
 import { MOCK_TYPES, mocksOfType, type MockTypeSlug } from "@/lib/mocks/catalogue";
@@ -59,7 +60,7 @@ export type MockFamilyNav = {
   stages: { stage: string | null; members: MockExamNav[] }[];
 };
 
-const urlSegment = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+const urlSegment = slugify;
 
 /**
  * A family page's slug: its name dashed ("SSC CGL" -> "ssc-cgl"). When that is already an

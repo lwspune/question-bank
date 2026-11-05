@@ -7,10 +7,10 @@
  * dates are wrong is worse than one with no dates at all, so the post's real
  * dates are required arguments here.
  */
+import { SITE_URL } from "@/lib/brand";
 import { listPosts, type BlogPost } from "@/lib/blog/posts";
 import { faqPageJsonLd } from "@/lib/blog/faq";
 
-const SITE_URL = "https://www.pyqvault.com";
 const PUBLISHER_NAME = "PYQ Vault";
 
 const publisher = {

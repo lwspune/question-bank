@@ -9,13 +9,13 @@
  * 2026-09-30). One template fixed by hand leaves the next one free to drift;
  * this test fails the day a builder adds a raw SITE_URL link.
  */
+import { SITE_URL } from "@/lib/brand";
 import { describe, it, expect } from "vitest";
 import {
   buildEmail,
   buildDueNudgeEmail,
   buildMockReportEmail,
   buildWelcomeEmail,
-  SITE_URL,
   type BuiltEmail,
 } from "@/lib/email/templates";
 import { loopFor } from "@/lib/education/howItWorks";

@@ -9,13 +9,13 @@
  *    (scripts/grading/notify.ts). The student was promised a report within 48
  *    hours, so it names the oldest wait and anything past 36 hours.
  */
+import { SITE_URL } from "@/lib/brand";
 import {
   ACCENT,
   BRAND,
   INK,
   MUTED,
   REPLY_TO,
-  SITE_URL,
   escapeHtml,
   greetingName,
   type BuiltEmail,

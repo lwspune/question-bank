@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/brand";
 import { readAllPages } from "@/lib/supabase/readAllPages";
 import type { MetadataRoute } from "next";
 import { ROUTES } from "@/app/guide/nda-maths/_data/nda-maths";
@@ -63,7 +64,6 @@ import {
   type ContentDateMap,
 } from "@/lib/seo/lastmod";
 
-const SITE_URL = "https://www.pyqvault.com";
 
 /**
  * Stamp each entry with the real date its CONTENT last changed, derived from its

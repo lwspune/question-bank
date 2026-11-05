@@ -19,9 +19,9 @@ import {
   FOUNDER_NAME,
   GITHUB_REPO_URL,
   LINKEDIN_COMPANY_URL,
+  SITE_URL,
 } from "@/lib/brand";
 
-const SITE_URL = "https://www.pyqvault.com";
 const SITE_NAME = "PYQ Vault";
 const ORG_ID = `${SITE_URL}/#organization`;
 

@@ -53,6 +53,13 @@
 export const CONTACT_EMAIL = "hello@pyqvault.com";
 
 /**
+ * The public site's origin, no trailing slash. The ONE place the address is written
+ * (tests/site-url.test.ts, TECH_DEBT_SPEC.md 3.5); it was a local constant in 15 files.
+ * An IMAT page's address is on the intl site: build those with canonicalFor (lib/sites/intl).
+ */
+export const SITE_URL = "https://www.pyqvault.com";
+
+/**
  * Genuine public profiles, for `sameAs` in the site-wide Organization JSON-LD
  * (lib/seo/siteJsonLd.ts) and the About page. Only profiles that actually
  * exist go here — a fabricated `sameAs` is worse than none.

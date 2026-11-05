@@ -12,6 +12,7 @@
  * Pure; the slug is validated HERE so the client island imports nothing heavy.
  * Spec: tests/home-exam-chips.test.ts.
  */
+import { slugify } from "@/lib/slug";
 import { isExamSlug, type ExamSlug } from "./examContext";
 import type { ExamFamilyNode } from "./examFamily";
 
@@ -34,7 +35,7 @@ const hasQuestions = (i: ChipItem) => i.counts.pyq + i.counts.practice > 0;
 
 /** The id a card carries so a family chip can jump to it. */
 export function examCardAnchor(key: string): string {
-  return `exam-${key.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "")}`;
+  return `exam-${slugify(key)}`;
 }
 
 export function homeExamChips<T extends ChipItem>(nodes: readonly ExamFamilyNode<T>[]): HomeExamChip[] {

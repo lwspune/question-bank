@@ -13,7 +13,8 @@
  *
  * Pure. Spec: tests/mock-together.test.ts.
  */
-import { SITE_URL, type ShareChannel } from "@/lib/mocks/share";
+import { type ShareChannel } from "@/lib/mocks/share";
+import { SITE_URL } from "@/lib/brand";
 
 /** Every send from the box rolls up under this campaign (migration 0106 reads it). */
 export const MOCK_TOGETHER_CAMPAIGN = "mock-together";

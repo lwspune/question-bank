@@ -6,12 +6,13 @@
  *
  * The service that creates the accounts is studentLoginsAdmin.ts.
  */
+import { SITE_URL } from "@/lib/brand";
 import { isValidEmail, isValidPassword, MIN_PASSWORD_LENGTH } from "@/lib/auth/credentials";
 
 /** A class list is tens of rows; each row is one account create (~0.3 s). */
 export const MAX_STUDENT_LOGINS_PER_REQUEST = 100;
 
-export const LOGIN_URL = "https://www.pyqvault.com/login";
+export const LOGIN_URL = `${SITE_URL}/login`;
 
 /**
  * Teachers read these out or copy them onto a slip, so the characters that get

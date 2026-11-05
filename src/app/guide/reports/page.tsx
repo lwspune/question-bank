@@ -7,6 +7,7 @@
  * runs through and when it was last updated — the shape another site, or an
  * AI search engine, needs to cite one. Registry: src/lib/guide/trendsReports.ts.
  */
+import { SITE_URL } from "@/lib/brand";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, CalendarDays } from "lucide-react";
@@ -17,7 +18,6 @@ import { buildGuideSideNav } from "@/lib/guide/guidesNav";
 import { TRENDS_REPORTS, reportUpdatedIso } from "@/lib/guide/trendsReports";
 import { fitTitle } from "@/lib/seo/title";
 
-const SITE_URL = "https://www.pyqvault.com";
 const PAGE_TITLE = "Trend reports — how each exam's papers changed";
 const PAGE_DESCRIPTION =
   "Year-by-year analyses of NDA and MHT-CET past papers, subject by subject: which chapters grew, which faded, and how hard each sitting was. Every count is a public question in the PYQ Vault bank.";

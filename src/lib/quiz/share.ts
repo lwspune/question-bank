@@ -20,9 +20,10 @@
  * product decision, not a defect, and it belongs in its own change.
  */
 
+import { SITE_URL } from "@/lib/brand";
+
 /** Hardcoded, never `window.location.origin`: a share from the apex or from a
  *  preview deploy must still emit the canonical URL. */
-const SITE_URL = "https://www.pyqvault.com";
 
 /** One campaign for the whole loop, so inbound arrivals read as one loop. */
 export const QUIZ_SHARE_CAMPAIGN = "quiz-result";

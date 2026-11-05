@@ -5,9 +5,9 @@
  * from `trendsFaq` (src/lib/guide/trendsInsights.ts), computed from the page's
  * own matrix.
  */
+import { SITE_URL } from "@/lib/brand";
 import { faqPageJsonLd, type FaqEntry } from "@/lib/blog/faq";
 
-const SITE_URL = "https://www.pyqvault.com";
 
 export default function TrendsFaq({ faq, path }: { faq: FaqEntry[]; path: string }) {
   const payload = faqPageJsonLd(faq, `${SITE_URL}${path}`);

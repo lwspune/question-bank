@@ -16,9 +16,10 @@
  * DM and Telegram post carry the direct /quiz/<slug> link and are unaffected.
  */
 
+import { SITE_URL } from "@/lib/brand";
+
 export type RotationQuiz = { publicSlug: string; title: string; chapter: string | null };
 
-const SITE_URL = "https://www.pyqvault.com";
 const DAY_MS = 86_400_000;
 const IST_OFFSET_MS = 5.5 * 3_600_000;
 

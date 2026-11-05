@@ -16,7 +16,8 @@ import {
   selectWelcomes,
 } from "@/lib/email/welcome";
 import type { StudentLite, PriorSend } from "@/lib/email/recommend";
-import { buildWelcomeEmail, SITE_URL } from "@/lib/email/templates";
+import { buildWelcomeEmail } from "@/lib/email/templates";
+import { SITE_URL } from "@/lib/brand";
 import { loopFor } from "@/lib/education/howItWorks";
 import { getExamBySlug } from "@/lib/exam/examContext";
 
