@@ -47,7 +47,11 @@ import { mockCtaCopy, withChapterTest } from "@/lib/mocks/chapterTests";
 import { listChapterTests } from "@/lib/mocks/chapterTestsQuery";
 import { canonicalFor } from "@/lib/sites/intl";
 import { loadChapterTopPyqs } from "@/lib/homework/chapterTop";
-import NotesTopPyqs from "./NotesTopPyqs";
+import dynamic from "next/dynamic";
+// Loaded only where it renders (TOP_PYQS_SUBJECTS): a static import of this client
+// component put 86 kB on every chapter page (325 -> 411 kB, 2026-11-04 deploy). SSR stays on,
+// so the HTML is unchanged. tests/notes-landing-top-pyqs-lazy.test.ts.
+const NotesTopPyqs = dynamic(() => import("./NotesTopPyqs"));
 
 /**
  * Notes subjects that show the chapter's Top 10 PYQs (2026-11-04). The list
