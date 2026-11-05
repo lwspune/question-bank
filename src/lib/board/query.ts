@@ -1,3 +1,4 @@
+import { slugify } from "@/lib/slug";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { paperKeyFor } from "./papers";
 import { translationsFromRows, type Bilingual, type Translation } from "@/lib/i18n/bilingual";
@@ -99,14 +100,8 @@ export type BoardChapter = {
   groups: BoardSectionGroup[];
 };
 
-/** URL slug from a taxonomy name. "Pair of Straight Lines" → "pair-of-straight-lines". */
-export function slugify(name: string): string {
-  return name
-    .toLowerCase()
-    .trim()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
-}
+/** URL slug from a taxonomy name (the shared rule in lib/slug, re-exported for this module's importers). */
+export { slugify };
 
 type SectionedQuestion = BoardQuestion & {
   sectionSeq: number;

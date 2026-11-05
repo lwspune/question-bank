@@ -4,6 +4,7 @@
  * library, so the store page can name a book's shelf and subject without it;
  * the catalog re-exports these. Pinned by tests/ebook-catalog.test.ts.
  */
+import { slugify } from "@/lib/slug";
 import type { BookPaperRule } from "./boardPapers";
 
 /**
@@ -53,7 +54,7 @@ const BOARD_PAPER_SUBJECTS: { examSlug: string; board: string; subject: string; 
   })),
 ];
 
-const slugPart = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+const slugPart = slugify;
 
 /**
  * A Repeated PYQs book (2026-10-26): from a subject's homework plan, every

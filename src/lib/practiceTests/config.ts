@@ -17,6 +17,7 @@
  *
  * Pure data. Spec: tests/practice-tests-builder.test.ts (PRACTICE_EXAMS).
  */
+import { slugify } from "@/lib/slug";
 import {
   CBSE_10_CHAPTER_MCQ_PAPER,
   CBSE_12_CHAPTER_MCQ_PAPER,
@@ -76,7 +77,7 @@ const subject = (
   label = bankSubject
 ): PracticeSubject => ({ key, bankSubject, label, paper, sectionKey });
 
-const slugOf = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+const slugOf = slugify;
 
 const GK = ["Physics", "Chemistry", "Biology", "History", "Geography", "Polity", "Economics"];
 

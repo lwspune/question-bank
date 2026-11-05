@@ -1,5 +1,6 @@
 "use client";
 
+import { slugify } from "@/lib/slug";
 import { useState } from "react";
 import Link from "next/link";
 import { ChevronRight, NotebookPen } from "lucide-react";
@@ -165,9 +166,3 @@ export default function ChapterBreakdownTable({ rows, notesHrefs }: Props) {
   );
 }
 
-function slugify(name: string): string {
-  return name
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-|-$/g, "");
-}

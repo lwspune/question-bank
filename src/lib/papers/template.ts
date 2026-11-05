@@ -7,6 +7,7 @@
  * from the bank, the section is DERIVED from the question's subject, so the GAT
  * default ("English" question -> "english" section) needs no manual filing.
  */
+import { slugify } from "@/lib/slug";
 import type { PaperSection, SectionTemplate } from "./types";
 
 /** Reserved bucket for questions whose subject matches no section. Never a real subject slug. */
@@ -29,12 +30,8 @@ export const DEFAULT_GAT_TEMPLATE: SectionTemplate = [
   { key: "current-affairs", label: "Current Affairs", targetCount: 5, assignedTo: [] },
 ];
 
-export function slugifySectionKey(label: string): string {
-  return label
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
-}
+/** A section key from its label: the shared slug rule (lib/slug). */
+export const slugifySectionKey = slugify;
 
 /** Append a section with a unique key derived from its label (numeric-suffixed on collision). */
 export function addSection(
