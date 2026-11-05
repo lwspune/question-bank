@@ -51,13 +51,18 @@ export function seeAllLabel(note: string): string | null {
 /** Exams whose papers UPSC sets (NDA Maths 2026-11-04, CDS Maths 2026-11-05). */
 const UPSC_EXAMS: ReadonlySet<string> = new Set(["NDA", "CDS"]);
 
+/** True for a plan whose papers UPSC sets, so its questions are not "board" questions. */
+export function isUpscPlanExam(examName: string | undefined): boolean {
+  return examName !== undefined && UPSC_EXAMS.has(examName);
+}
+
 /**
  * Who set a plan's papers, what to call its questions, its papers (a page
  * title's "Past Papers") and its answers (2026-11-04). The plans were all board
  * subjects until NDA Maths, whose papers UPSC sets.
  */
 export function planWording(examName: string): { asker: string; questions: string; papers: string; answers: string } {
-  return UPSC_EXAMS.has(examName)
+  return isUpscPlanExam(examName)
     ? { asker: "UPSC", questions: "past questions", papers: "Past", answers: "worked solutions" }
     : { asker: "the board", questions: "board questions", papers: "Board", answers: "model answers" };
 }
