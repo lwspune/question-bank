@@ -130,6 +130,12 @@ describe("homeworkOfferLead", () => {
       "5 past CDS questions a day."
     );
   });
+
+  it("calls MHT-CET questions past MHT-CET questions, not board questions", () => {
+    expect(homeworkOfferLead({ ...maths, examName: "MHT-CET", otherSubjects: [] })?.body).toBe(
+      "5 past MHT-CET questions a day."
+    );
+  });
 });
 
 describe("homeworkOfferFacts", () => {

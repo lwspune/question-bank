@@ -9,7 +9,7 @@
  * Pure. The facts come from lists the pages already load (the published-paper
  * list, the homework plans), so the offer costs no read of its own.
  */
-import { isUpscPlanExam } from "@/lib/homework/display";
+import { isBoardPlanExam } from "@/lib/homework/display";
 
 /** The lead box: a title for the dialog, then a bold line and one sentence. */
 export type PassOfferLead = { title: string; lead: string; body: string };
@@ -102,7 +102,7 @@ export function homeworkOfferFacts(
 /** Null below two days, like a single paper. */
 export function homeworkOfferLead(f: HomeworkOfferFacts): PassOfferLead | null {
   if (f.days < 2) return null;
-  const kind = isUpscPlanExam(f.examName) ? f.examName : "board";
+  const kind = isBoardPlanExam(f.examName) ? "board" : f.examName;
   const perDay = `${f.perDay} past ${kind} ${f.perDay === 1 ? "question" : "questions"} a day.`;
   return {
     title: `Download all ${f.days} days of homework`,

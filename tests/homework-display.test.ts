@@ -34,6 +34,15 @@ describe("planWording", () => {
     expect(planWording("CDS")).toEqual(upsc);
   });
 
+  it("names the CET Cell and past questions for MHT-CET, which no board sets", () => {
+    expect(planWording("MHT-CET")).toEqual({
+      asker: "the CET Cell",
+      questions: "past questions",
+      papers: "Past",
+      answers: "worked solutions",
+    });
+  });
+
   it("keeps the board wording for every board exam", () => {
     for (const exam of ["CBSE Class 12", "Maharashtra HSC Class 12", "Maharashtra SSC Class 10", "CBSE Class 10"]) {
       expect(planWording(exam)).toEqual(board);

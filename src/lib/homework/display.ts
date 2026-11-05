@@ -48,21 +48,30 @@ export function seeAllLabel(note: string): string | null {
   return null;
 }
 
-/** Exams whose papers UPSC sets (NDA Maths 2026-11-04, CDS Maths 2026-11-05). */
-const UPSC_EXAMS: ReadonlySet<string> = new Set(["NDA", "CDS"]);
+type PlanWording = { asker: string; questions: string; papers: string; answers: string };
 
-/** True for a plan whose papers UPSC sets, so its questions are not "board" questions. */
-export function isUpscPlanExam(examName: string | undefined): boolean {
-  return examName !== undefined && UPSC_EXAMS.has(examName);
+/**
+ * Plans whose papers no board sets (2026-11-04 on): UPSC sets NDA and CDS, the
+ * State CET Cell sets MHT-CET (2026-11-06; its plans said "board" until then).
+ */
+const NOT_BOARD: Readonly<Record<string, PlanWording>> = {
+  NDA: { asker: "UPSC", questions: "past questions", papers: "Past", answers: "worked solutions" },
+  CDS: { asker: "UPSC", questions: "past questions", papers: "Past", answers: "worked solutions" },
+  "MHT-CET": { asker: "the CET Cell", questions: "past questions", papers: "Past", answers: "worked solutions" },
+};
+
+const BOARD: PlanWording = { asker: "the board", questions: "board questions", papers: "Board", answers: "model answers" };
+
+/** True for a plan whose papers a board sets, so its questions are "board" questions. */
+export function isBoardPlanExam(examName: string | undefined): boolean {
+  return examName === undefined || !(examName in NOT_BOARD);
 }
 
 /**
  * Who set a plan's papers, what to call its questions, its papers (a page
  * title's "Past Papers") and its answers (2026-11-04). The plans were all board
- * subjects until NDA Maths, whose papers UPSC sets.
+ * subjects until NDA Maths.
  */
-export function planWording(examName: string): { asker: string; questions: string; papers: string; answers: string } {
-  return isUpscPlanExam(examName)
-    ? { asker: "UPSC", questions: "past questions", papers: "Past", answers: "worked solutions" }
-    : { asker: "the board", questions: "board questions", papers: "Board", answers: "model answers" };
+export function planWording(examName: string): PlanWording {
+  return NOT_BOARD[examName] ?? BOARD;
 }
