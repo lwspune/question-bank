@@ -349,6 +349,10 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 
 ### 2026-11
 
+- **2026-11-05 (third) — Class 9-10 downloads need the pass again, like every exam's (owner); no migration.**
+  - **Why:** the owner's 11-04 rule (every download needs a pass: each PDF is printed on the server) reached only the new revision sheets; the 0210 free downloads were never raised. One no-pass student took 46 SSC 10 homework papers in 4 minutes.
+  - **Only downloads change:** answers, mocks, tests, saves and V stay free for those exams; a Class 9-10 student gets the same one free paper and formula sheet as anyone.
+  - **`lib/export/freeExamDownload.ts` deleted** (no caller left); recover from git for MCAT's per-exam download pass. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-11-05 (second) — Tech debt Phase 1: a measured plan (TECH_DEBT_SPEC.md) and its first items; every claim cites a measurement.**
   - **The daily prod-contract alarm was off:** red 8 days, cancelled 6 before, emails unread. A failure now emails the admins the failing tests; step limits turn a hang into a failure (a cancelled job is not one).
   - **8 "stale" intros were a probe bug** ("1,036" read as 36, years as counts); the fix exposed real MHT-CET Chemistry drift from the 11-04 repair, now refreshed.
@@ -377,7 +381,7 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 - **2026-11-02 — The Class 9-10 exams need no pass (0210-0211): CBSE 10, ICSE 10, MH 9 and 10, SPI, Foundation Course.**
   - **Free EXAMS, not students:** a picked category can be claimed; an exam cannot. Why: 68 actives, 2 passes in 30 days.
   - **`pass_scope` `free`, held by everyone** (`user_has_pass`), so 0206's triggers pass free exams unchanged; their tests and saves don't use paid allowance; `entitlements` refuses `free`.
-  - **Answer wall:** 0211 `my_paid_reveals_today` drops free questions from the day's count. Downloads resolve each target's exam (`lib/export/freeExamDownload.ts`); a failed lookup is not free.
+  - **Answer wall:** 0211 `my_paid_reveals_today` drops free questions from the day's count. Downloads were free too until 11-05 (see that entry).
   - **Not free yet:** drill, projected score. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 
 ### 2026-10

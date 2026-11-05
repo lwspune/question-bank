@@ -18,7 +18,6 @@ import { PDF_CONTENT_TYPE } from "@/lib/export/fileType";
 import { getNotesChapterBySlug } from "@/lib/notes/chapters";
 import { checkAndIncrement } from "@/lib/rate-limit";
 import { getClientIp } from "@/lib/http";
-import { formulaSheetIsFree } from "@/lib/export/freeExamDownload";
 
 /**
  * POST /api/export/formula-sheet (2026-10-10): one /notes chapter's formula
@@ -99,17 +98,16 @@ export async function POST(request: NextRequest) {
     }
 
     const sheetKey = formulaSheetKey(target);
-    // A free exam's sheet (the Class 9-10 exams, 0210) downloads as a pass holder's.
-    const examFree = !isStaff && !hasDownloadPass && formulaSheetIsFree(target);
+    // A Class 9-10 exam's sheet needs the pass too (owner, 2026-11-05).
     const freeDownloadLeft =
-      user && !isStaff && !hasDownloadPass && !examFree
+      user && !isStaff && !hasDownloadPass
         ? await isFormulaSheetFree(createSupabaseServerClient(), user.id, sheetKey)
         : undefined;
     const access = resolveExportAccess({
       kind: "formula",
       isSignedIn,
       isStaff,
-      hasDownloadPass: hasDownloadPass || examFree,
+      hasDownloadPass,
       freeDownloadLeft,
     });
     if (!access.allowed) {
