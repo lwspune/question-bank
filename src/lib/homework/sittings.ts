@@ -14,13 +14,15 @@ const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "
 const NDA_MONTH: Record<string, number> = { "1": 3, "2": 8 };
 
 /**
- * A sortable date for a label, at shift precision: ((month index) x 32 + day) x 3
+ * A sortable date for a label, at shift precision: ((month index) x 32 + day) x 5
  * + shift. A year, an NDA paper or a month paper sits at day 0, shift 0 of its
  * month, so those exams keep their order; an MHT-CET shift sorts by its date
  * and shift (2026-11-04).
  */
 function dateKey(label: string): number {
-  const at = (year: number, month: number, day = 0, shift = 0) => ((year * 12 + month) * 32 + day) * 3 + shift;
+  // Five shift slots a day (0 for a whole-day paper, then S1-S4): SSC CGL holds
+  // up to four shifts a day (2026-11-06); three slots put its Shift 3 on the next day.
+  const at = (year: number, month: number, day = 0, shift = 0) => ((year * 12 + month) * 32 + day) * 5 + shift;
   const year = /^(\d{4})$/.exec(label);
   if (year) return at(Number(year[1]), 0);
   const nda = /^(?:NDA|CDS) (\d) (\d{4})$/.exec(label);
@@ -28,7 +30,7 @@ function dateKey(label: string): number {
     if (!(nda[1] in NDA_MONTH)) throw new Error(`cannot date sitting "${label}"`);
     return at(Number(nda[2]), NDA_MONTH[nda[1]]);
   }
-  const cet = /^(?:(\d{1,2}) )?([A-Z][a-z]{2}) (\d{4}) S([12])$/.exec(label);
+  const cet = /^(?:(\d{1,2}) )?([A-Z][a-z]{2}) (\d{4}) S([1-4])$/.exec(label);
   if (cet && MONTHS.includes(cet[2])) {
     return at(Number(cet[3]), MONTHS.indexOf(cet[2]), cet[1] ? Number(cet[1]) : 0, Number(cet[4]));
   }
@@ -98,4 +100,17 @@ export function cetSittingLabel(year: number, month: string | null, note: string
   if (!m) throw new Error(`unknown month "${month}" on a ${year} MHT-CET row`);
   const shift = found[3] === "1" || found[3] === "I" ? 1 : 2;
   return `${found[1] ? `${Number(found[1])} ` : ""}${m} ${year} S${shift}`;
+}
+
+/**
+ * An SSC CGL paper's label (2026-11-06): one shift, "14 Jul 2023 S3", read from
+ * the note the ingestion wrote ("Tier I, 14 Jul 2023, Shift 3"). SSC holds up
+ * to four shifts a day. Anything else is an error, never a guess.
+ */
+export function sscSittingLabel(note: string | null): string {
+  if (!note) throw new Error("no note on an SSC CGL row");
+  const found = /^Tier I, (\d{1,2}) ([A-Z][a-z]+) (\d{4}), Shift (\d)$/.exec(note.trim());
+  const m = found ? MONTHS.find((x) => found[2].startsWith(x)) : undefined;
+  if (!found || !m || !/^[1-4]$/.test(found[4])) throw new Error(`cannot read the SSC shift in "${note}"`);
+  return `${Number(found[1])} ${m} ${found[3]} S${found[4]}`;
 }
