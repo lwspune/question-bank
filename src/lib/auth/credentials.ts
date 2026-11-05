@@ -77,3 +77,21 @@ export function signInErrorMessage(error: SignInError): string {
   }
   return message || "Could not sign in. Please try again.";
 }
+
+/** The parts of a Supabase AuthError (AuthWeakPasswordError carries `reasons`) that signUpErrorMessage reads. */
+export type SignUpError = { code?: string; message?: string; reasons?: readonly string[] };
+
+/**
+ * What /signup shows when Supabase refuses a new account.
+ *
+ * Leaked-password protection is on since 2026-11-05: a password found in the
+ * HaveIBeenPwned list is refused with code "weak_password" and reason "pwned",
+ * and Supabase's own wording does not say what happened or what to do.
+ * Anything unrecognised passes through unchanged rather than being hidden.
+ */
+export function signUpErrorMessage(error: SignUpError): string {
+  if (error.code === "weak_password" && error.reasons?.includes("pwned")) {
+    return "This password has appeared in a data leak, so it is easy to guess. Please choose a different one.";
+  }
+  return error.message || "Could not create your account. Please try again.";
+}

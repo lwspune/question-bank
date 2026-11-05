@@ -8,6 +8,7 @@ import {
   isValidEmail,
   isValidPassword,
   signInErrorMessage,
+  signUpErrorMessage,
   validateSignup,
   MIN_PASSWORD_LENGTH,
 } from "@/lib/auth/credentials";
@@ -152,5 +153,30 @@ describe("signInErrorMessage — what /login says when a password sign-in fails"
     for (const e of [{ code: "invalid_credentials" }, { code: "email_not_confirmed" }, { status: 429 }, {}]) {
       expect(signInErrorMessage(e)).not.toMatch(/—| – | -- /);
     }
+  });
+});
+
+describe("signUpErrorMessage: what /signup says when Supabase refuses a new account", () => {
+  // Leaked-password protection was switched on 2026-11-05 (TECH_DEBT_SPEC.md D4).
+  // Supabase then refuses a password found in HaveIBeenPwned with code
+  // "weak_password" and reasons ["pwned"]; /signup used to show its raw text.
+  const LEAKED = "This password has appeared in a data leak, so it is easy to guess. Please choose a different one.";
+
+  it("explains a leaked password in plain words", () => {
+    expect(signUpErrorMessage({ code: "weak_password", reasons: ["pwned"], message: "Password is known to be weak" })).toBe(LEAKED);
+  });
+
+  it("passes a weak password for another reason through unchanged", () => {
+    expect(signUpErrorMessage({ code: "weak_password", reasons: ["length"], message: "Password should be at least 8 characters." })).toBe(
+      "Password should be at least 8 characters."
+    );
+  });
+
+  it("passes any other error through unchanged, so nothing is hidden", () => {
+    expect(signUpErrorMessage({ message: "User already registered" })).toBe("User already registered");
+  });
+
+  it("never shows an empty message", () => {
+    expect(signUpErrorMessage({})).toBe("Could not create your account. Please try again.");
   });
 });
