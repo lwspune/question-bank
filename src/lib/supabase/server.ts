@@ -1,6 +1,7 @@
-import { createClient } from "@supabase/supabase-js";
+import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { createServerClient, type CookieOptions } from "@supabase/ssr";
 import { cookies } from "next/headers";
+import type { Database } from "@/types/db";
 import { buildFetch } from "./buildFetch";
 
 type CookieToSet = { name: string; value: string; options?: CookieOptions };
@@ -15,35 +16,50 @@ type CookieToSet = { name: string; value: string; options?: CookieOptions };
  * `global.fetch` is undefined and supabase-js uses its own.
  */
 export function createSupabaseAnonClient() {
-  return createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    { auth: { persistSession: false }, global: { fetch: buildFetch() } }
-  );
+  return createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!, anonOptions());
+}
+
+/**
+ * The same anon client, typed from the schema (src/types/db.ts, TECH_DEBT_SPEC.md 3.3): rows come
+ * back with their real column types instead of `any`. Use it for new code.
+ */
+export function createTypedAnonClient() {
+  return createClient<Database>(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!, anonOptions());
+}
+
+function anonOptions() {
+  return { auth: { persistSession: false }, global: { fetch: buildFetch() } };
 }
 
 export function createSupabaseServerClient() {
+  return createServerClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!, serverOptions());
+}
+
+/**
+ * The same signed-in client, typed from the schema (src/types/db.ts). Use it for new code.
+ * The return type comes from supabase-js: @supabase/ssr 0.5.2's own generics predate the
+ * generated types' format and turn every row into `never` (tests/db-types.test.ts caught it).
+ */
+export function createTypedServerClient(): SupabaseClient<Database> {
+  return createServerClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!, serverOptions());
+}
+
+function serverOptions() {
   const cookieStore = cookies();
-  return createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    {
-      global: { fetch: buildFetch() },
-      cookies: {
-        getAll() {
-          return cookieStore.getAll();
-        },
-        setAll(cookiesToSet: CookieToSet[]) {
-          try {
-            cookiesToSet.forEach(({ name, value, options }) =>
-              cookieStore.set(name, value, options)
-            );
-          } catch {
-            // Called from a Server Component where cookies are read-only.
-            // The middleware refreshes the session cookie, so this can be ignored.
-          }
-        },
+  return {
+    global: { fetch: buildFetch() },
+    cookies: {
+      getAll() {
+        return cookieStore.getAll();
       },
-    }
-  );
+      setAll(cookiesToSet: CookieToSet[]) {
+        try {
+          cookiesToSet.forEach(({ name, value, options }) => cookieStore.set(name, value, options));
+        } catch {
+          // Called from a Server Component where cookies are read-only.
+          // The middleware refreshes the session cookie, so this can be ignored.
+        }
+      },
+    },
+  };
 }
