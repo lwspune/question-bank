@@ -5,7 +5,8 @@
  *
  * Rules pinned here (none needs the global paywall settings row):
  *   - the answer wall's day count leaves a free exam's questions out (0211)
- *   - a download knows when its paper is a free exam's
+ *   - a free exam's downloads still need the pass (owner, 2026-11-05):
+ *     free-exam-downloads-need-pass.test.ts
  *   - nobody can be sold, or hold, a 'free' pass: it is an exam setting only
  *
  * The mock and save limits on a free exam live in free-mock-limit and
@@ -17,7 +18,6 @@ import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { randomUUID } from "node:crypto";
 import { mustSignIn } from "./helpers/fixture";
 import { loadPaidRevealedToday, loadRevealedToday } from "@/lib/questions/revealQuota";
-import { downloadIsFree } from "@/lib/export/freeExamDownload";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -33,8 +33,6 @@ describe.skipIf(!HAS_ENV)("free exams (migration 0210)", () => {
   let studentId = "";
   let freeExamId = "";
   let paidExamId = "";
-  let freeMockId = "";
-  let paidMockId = "";
   const freeQuestionIds: string[] = [];
   let paidQuestionIds: string[] = [];
 
@@ -89,33 +87,9 @@ describe.skipIf(!HAS_ENV)("free exams (migration 0210)", () => {
       expect(error).toBeNull();
       freeQuestionIds.push(data!.id);
     }
-
-    const mock = (examId: string, tag: string) => ({
-      id: randomUUID(),
-      slug: `free-exams-${tag}-${RUN_ID}`,
-      scope: "full",
-      exam_id: examId,
-      paper_code: "maths",
-      pyq_year: 2099,
-      title: `Free exams ${tag} ${RUN_ID}`,
-      duration_secs: 9000,
-      marking: { correct: 1, wrong: 0 },
-      sections: [{ key: "mathematics", label: "Mathematics", count: 1 }],
-      questions: [{ position: 1, questionId: paidQuestionIds[0], sectionKey: "mathematics", marks: 1, negMarks: 0 }],
-      total_questions: 1,
-      total_marks: 1,
-      status: "published",
-    });
-    const rows = [mock(freeExamId, "free"), mock(paidExamId, "paid")];
-    const { error: mockErr } = await admin.from("mock_tests").insert(rows);
-    expect(mockErr).toBeNull();
-    freeMockId = rows[0].id;
-    paidMockId = rows[1].id;
   });
 
   afterAll(async () => {
-    const mocks = [freeMockId, paidMockId].filter(Boolean);
-    if (mocks.length) await admin.from("mock_tests").delete().in("id", mocks);
     if (studentId) await admin.auth.admin.deleteUser(studentId);
     if (freeQuestionIds.length) await admin.from("questions").delete().in("id", freeQuestionIds);
     const exams = [freeExamId, paidExamId].filter(Boolean);
@@ -136,20 +110,6 @@ describe.skipIf(!HAS_ENV)("free exams (migration 0210)", () => {
     expect(await loadPaidRevealedToday(student, since)).toEqual([paidQuestionIds[0]]);
     // The full list (V uses it to skip questions seen today) still has both.
     expect((await loadRevealedToday(student, studentId, since)).sort()).toEqual([freeQuestionIds[0], paidQuestionIds[0]].sort());
-  });
-
-  it("knows a download for a free exam, by every target a download names", async () => {
-    expect(await downloadIsFree(admin, { examId: freeExamId })).toBe(true);
-    expect(await downloadIsFree(admin, { examId: paidExamId })).toBe(false);
-    const { data: fm } = await admin.from("mock_tests").select("slug").eq("id", freeMockId).single();
-    const { data: pm } = await admin.from("mock_tests").select("slug").eq("id", paidMockId).single();
-    expect(await downloadIsFree(admin, { mockSlug: fm!.slug })).toBe(true);
-    expect(await downloadIsFree(admin, { mockSlug: pm!.slug })).toBe(false);
-    expect(await downloadIsFree(admin, { questionIds: freeQuestionIds })).toBe(true);
-    // Free only when EVERY selected question is: one paid question makes it paid.
-    expect(await downloadIsFree(admin, { questionIds: [...freeQuestionIds, paidQuestionIds[0]] })).toBe(false);
-    expect(await downloadIsFree(admin, { questionIds: [] })).toBe(false);
-    expect(await downloadIsFree(admin, { mockSlug: `no-such-paper-${RUN_ID}` })).toBe(false);
   });
 
   it("refuses a 'free' scope on a pass", async () => {

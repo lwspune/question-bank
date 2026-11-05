@@ -83,6 +83,7 @@ export default async function PricingPage({
         {site === "pyqvault" && (
           <p className="mx-auto mt-6 max-w-md rounded-md border border-brand-accent/30 bg-brand-accent/5 p-3 text-center text-sm">
             Free for Class 9 and 10: CBSE 10, ICSE 10, Maharashtra Class 9 and 10, SPI and Foundation Course.
+            PDF downloads need the Premium Pass, as for every exam.
           </p>
         )}
 
