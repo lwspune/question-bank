@@ -123,7 +123,7 @@ function main() {
     summary: examName === "NDA" || examName === "CDS"
       ? `${examName} ${subjectName} past questions, ${sittings[0]} to ${sittings[sittings.length - 1]}, five a day. Questions UPSC asked again and the question types it keeps asking come first, ranked together by how often they were asked, then every other question. A set of linked items counts as one question.`
       : examName === "SSC CGL"
-      ? `SSC CGL Tier I ${subjectName} past questions from ${sittings.length} shifts, ${sittings[0].slice(-7, -3)} to ${sittings[sittings.length - 1].slice(-7, -3)}, five a day. Questions SSC asked again and the question types it keeps asking come first, ranked together by how often they were asked, then every other question. A set of linked items counts as one question.`
+      ? `SSC CGL Tier I ${subjectName} past questions from ${sittings.length} shifts, ${sittings[0].slice(-7, -3)} to ${sittings[sittings.length - 1].slice(-7, -3)}, five a day. Questions SSC asked again and the question types it keeps asking come first, ranked together by how often they were asked, then every other question.${slots.some((s) => s.rows.length > 1) ? " A set of linked items counts as one question." : ""}`
       : examName === "MHT-CET"
       ? `MHT-CET ${subjectName} past questions from ${sittings.length} shifts, ${sittings[0].slice(-7, -3)} to ${sittings[sittings.length - 1].slice(-7, -3)}, five a day. Questions asked again in another shift and the question types that keep coming back come first, ranked together by how often they were asked, then every other question.`
       : isPapers
