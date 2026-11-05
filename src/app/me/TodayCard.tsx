@@ -11,7 +11,6 @@ import {
 } from "@/lib/goals/weekly";
 import { invalidatePulse, usePulse } from "@/lib/viewer/usePulse";
 import { examCountdownSentence } from "@/lib/exam/calendar";
-import { totalsLine } from "@/lib/pulse/cache";
 import { pickTodayAction } from "@/lib/me/today";
 
 /**
@@ -45,7 +44,6 @@ export default function TodayCard({
 
   const done = pulse?.week.done ?? initialDone;
   const p = weeklyProgress(done, goal);
-  const totals = pulse?.totals ? totalsLine(pulse.totals) : null;
   const action = pickTodayAction({ resume, due: pulse?.due ?? null, cont, mockHref });
 
   async function changeGoal(value: string) {
@@ -110,20 +108,21 @@ export default function TodayCard({
         <Ring pct={p.pct} met={p.met} done={p.done} goal={p.goal} />
         <div className="min-w-0 flex-1 text-sm">
           <p>{weeklyGoalSentence(p)}</p>
-          <p className="mt-0.5 text-xs text-muted-foreground">
-            {totals && <span className="tabular-nums">{totals}</span>}
-            {totals && pulse?.exam && " · "}
-            {pulse?.exam &&
-              examCountdownSentence({ ...pulse.exam, source: "calendar", exam: null, date: "" })}
-            {pulse?.exam && !pulse.exam.official && (
-              <>
-                {" · "}
-                <Link href="/account" className="text-brand-accent underline-offset-4 hover:underline">
-                  set your date
-                </Link>
-              </>
-            )}
-          </p>
+          {/* Answered · Right · Fixed moved to the progress row below
+              (ProgressTiles, 2026-11-05); the countdown stays here. */}
+          {pulse?.exam && (
+            <p className="mt-0.5 text-xs text-muted-foreground">
+              {examCountdownSentence({ ...pulse.exam, source: "calendar", exam: null, date: "" })}
+              {!pulse.exam.official && (
+                <>
+                  {" · "}
+                  <Link href="/account" className="text-brand-accent underline-offset-4 hover:underline">
+                    set your date
+                  </Link>
+                </>
+              )}
+            </p>
+          )}
           <div className="mt-1 text-xs text-muted-foreground">
             {editingGoal ? (
               <label className="inline-flex items-center gap-2">

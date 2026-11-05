@@ -15,12 +15,12 @@ import { summarizeUserMocks } from "@/lib/mocks/perf";
 import { listOwnNotesProgress } from "@/lib/notes/progressService";
 import { summarizeNotesProgress } from "@/lib/notes/progress";
 import { notesTopicTitles } from "@/lib/notes/topicTitles";
-import { listBookmarkIds } from "@/lib/bookmarks/service";
 import { getLastNpsAt } from "@/lib/feedback/service";
 import { needsNps } from "@/lib/feedback/nps";
 import AttemptsList from "../mock/_components/AttemptsList";
 import FeedbackCards from "./FeedbackCards";
 import TodayCard from "./TodayCard";
+import ProgressTiles from "./ProgressTiles";
 import HomeReminder from "./HomeReminder";
 import { greetingFor, greetingName } from "@/lib/me/today";
 import Greeting from "./Greeting";
@@ -67,11 +67,10 @@ export default async function MePage() {
 
   const db = createSupabaseServerClient();
   await logActivityOnce(db, user.id, surfaceViewedEvent(user.id, "me", new Date()));
-  const [attempts, notesRows, bookmarkIds, lastNpsAt, weekly, assigned, profile, examIds] =
+  const [attempts, notesRows, lastNpsAt, weekly, assigned, profile, examIds] =
     await Promise.all([
     getUserAttempts(db, user.id),
     listOwnNotesProgress(db, user.id),
-    listBookmarkIds(db, user.id),
     getLastNpsAt(db, user.id),
     getOwnWeekly(db, user.id),
     // Best-effort: a failed read costs the due list, never the dashboard.
@@ -85,7 +84,6 @@ export default async function MePage() {
 
   const mocks = summarizeUserMocks(attempts);
   const notes = summarizeNotesProgress(notesRows);
-  const savedCount = bookmarkIds.length;
   const showNps = needsNps({ completedMocks: mocks.completed, lastNpsAt, now: Date.now() });
 
   // Continue-where-you-left-off: an open mock beats a recently-read chapter.
@@ -180,26 +178,31 @@ export default async function MePage() {
         {assigned.length > 0 && <DueList items={assigned} />}
 
 
-        {/* Progress at a glance: one row of three tiles, each a link. They
-            replaced the saved card (a whole card for one number), the notes
-            counts and the mock card's boxed stat tiles. */}
-        <section aria-label="Your progress" className="grid grid-cols-3 gap-2 sm:gap-3">
-          <StatTile
-            href="/mock/attempts"
-            value={mocks.completed}
-            label={mocks.completed === 1 ? "mock sat" : "mocks sat"}
-            note={mocks.bestPct == null ? undefined : `best ${mocks.bestPct}%`}
-          />
-          <StatTile href={notesHref} value={notes.masteredCount} label="topics mastered" />
-          <StatTile href="/saved" value={savedCount} label={savedCount === 1 ? "question saved" : "questions saved"} />
-        </section>
+        {/* Answered · % right · fixed, across every surface (2026-11-05). The
+            row it replaced counted mocks, notes checkpoints and saves: 446 of
+            745 students saw three zeros there while practising in the bank. */}
+        <ProgressTiles />
 
-        {/* grid-cols-1 + min-w-0: a grid track defaults to its content's width,
-            so a long attempt title pushed these cards off a phone's screen. */}
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-          <RecentMocks mocks={mocks} attempts={attempts} browseHref={mockHref} />
-          <KeepReading notesHref={notesHref} recent={notes.recent} bookmarkedCount={notes.bookmarkedCount} />
-        </div>
+        {/* A card only when it has something in it: 363 of 745 students saw
+            "No mocks yet." beside "Nothing read yet." (2026-11-05), 236 of
+            them after answering questions in the bank. grid-cols-1 + min-w-0:
+            a grid track defaults to its content's width, so a long attempt
+            title pushed these cards off a phone's screen. */}
+        {attempts.length > 0 || notes.recent.length > 0 ? (
+          <div
+            className={cn(
+              "grid grid-cols-1 gap-6",
+              attempts.length > 0 && notes.recent.length > 0 && "lg:grid-cols-2"
+            )}
+          >
+            {attempts.length > 0 && <RecentMocks mocks={mocks} attempts={attempts} browseHref={mockHref} />}
+            {notes.recent.length > 0 && (
+              <KeepReading notesHref={notesHref} recent={notes.recent} bookmarkedCount={notes.bookmarkedCount} />
+            )}
+          </div>
+        ) : (
+          <AlsoHere mockHref={mockHref} notesHref={notesHref} />
+        )}
 
         <FeedbackCards showNps={showNps} />
       </main>
@@ -318,17 +321,23 @@ function NoTargetCard() {
 
 function SectionCard({
   title,
+  meta,
   action,
   children,
 }: {
   title: string;
+  /** A quiet fact beside the title, e.g. "3 sat · best 62%". */
+  meta?: string;
   action?: React.ReactNode;
   children: React.ReactNode;
 }) {
   return (
     <section className="min-w-0 rounded-2xl border bg-card p-4 sm:p-5">
       <div className="mb-3 flex items-center justify-between gap-2">
-        <h2 className="text-sm font-semibold tracking-tight">{title}</h2>
+        <h2 className="min-w-0 truncate text-sm font-semibold tracking-tight">
+          {title}
+          {meta && <span className="ml-2 font-normal tabular-nums text-muted-foreground">{meta}</span>}
+        </h2>
         {action}
       </div>
       {children}
@@ -349,30 +358,8 @@ function CardLink({ href, children }: { href: string; children: React.ReactNode 
   );
 }
 
-function StatTile({
-  href,
-  value,
-  label,
-  note,
-}: {
-  href: string;
-  value: number;
-  label: string;
-  note?: string;
-}) {
-  return (
-    <Link
-      href={href}
-      prefetch={false}
-      className="rounded-xl border bg-card p-3 transition-colors hover:border-brand/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:p-4"
-    >
-      <span className="block text-2xl font-bold tabular-nums tracking-tight text-brand-accent">{value}</span>
-      <span className="mt-0.5 block text-xs leading-snug text-muted-foreground">{label}</span>
-      {note && <span className="mt-0.5 block text-xs font-medium tabular-nums text-foreground">{note}</span>}
-    </Link>
-  );
-}
-
+/** Shown only when the student has sat a mock. The count and best score
+ *  moved here from the progress row (2026-11-05). */
 function RecentMocks({
   mocks,
   attempts,
@@ -384,9 +371,14 @@ function RecentMocks({
   browseHref: string;
 }) {
   const recent = attempts.slice(0, 3);
+  const meta =
+    mocks.completed > 0
+      ? `${mocks.completed} sat${mocks.bestPct == null ? "" : ` \u00b7 best ${mocks.bestPct}%`}`
+      : undefined;
   return (
     <SectionCard
       title="Recent mocks"
+      meta={meta}
       action={
         attempts.length > recent.length ? (
           <CardLink href="/mock/attempts">All {attempts.length}</CardLink>
@@ -395,24 +387,19 @@ function RecentMocks({
         )
       }
     >
-      {attempts.length === 0 ? (
-        <EmptyLine text="No mocks yet." href={browseHref} cta="Take your first mock" />
-      ) : (
-        <>
-          <AttemptsList attempts={recent} flush />
-          {/* The diagnosis needs one graded sitting to say anything. */}
-          {mocks.completed > 0 && (
-            <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 border-t pt-3">
-              <CardLink href="/me/map">Your map</CardLink>
-              <CardLink href="/performance">What to work on</CardLink>
-            </div>
-          )}
-        </>
+      <AttemptsList attempts={recent} flush />
+      {/* The diagnosis needs one graded sitting to say anything. */}
+      {mocks.completed > 0 && (
+        <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 border-t pt-3">
+          <CardLink href="/me/map">Your map</CardLink>
+          <CardLink href="/performance">What to work on</CardLink>
+        </div>
       )}
     </SectionCard>
   );
 }
 
+/** Shown only when the student has read a notes topic. */
 function KeepReading({
   notesHref,
   recent,
@@ -425,26 +412,22 @@ function KeepReading({
 }) {
   return (
     <SectionCard title="Keep reading" action={<CardLink href={notesHref}>All notes</CardLink>}>
-      {recent.length === 0 ? (
-        <EmptyLine text="Nothing read yet." href={notesHref} cta="Explore notes" />
-      ) : (
-        <ul className="-mx-2 space-y-0.5">
-          {recent.slice(0, 4).map((r) => {
-            const t = notesTopicTitles(r);
-            return (
-              <li key={r.subtopicSlug}>
-                <Link
-                  href={`/notes/${r.subjectRoute}/${r.chapterSlug}/${r.subtopicSlug}`}
-                  className="flex min-w-0 items-baseline gap-2 rounded-lg px-2 py-1.5 hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                >
-                  <span className="min-w-0 flex-1 truncate text-sm font-medium">{t.topic}</span>
-                  <span className="min-w-0 max-w-[40%] truncate text-xs text-muted-foreground">{t.chapter}</span>
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-      )}
+      <ul className="-mx-2 space-y-0.5">
+        {recent.slice(0, 4).map((r) => {
+          const t = notesTopicTitles(r);
+          return (
+            <li key={r.subtopicSlug}>
+              <Link
+                href={`/notes/${r.subjectRoute}/${r.chapterSlug}/${r.subtopicSlug}`}
+                className="flex min-w-0 items-baseline gap-2 rounded-lg px-2 py-1.5 hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              >
+                <span className="min-w-0 flex-1 truncate text-sm font-medium">{t.topic}</span>
+                <span className="min-w-0 max-w-[40%] truncate text-xs text-muted-foreground">{t.chapter}</span>
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
       {bookmarkedCount > 0 && (
         <p className="mt-3 flex items-center gap-1.5 border-t pt-3 text-xs text-muted-foreground">
           <Bookmark className="h-3.5 w-3.5" aria-hidden />
@@ -455,12 +438,19 @@ function KeepReading({
   );
 }
 
-function EmptyLine({ text, href, cta }: { text: string; href: string; cta: string }) {
+/** In place of the two cards when both would be empty: one quiet line. */
+function AlsoHere({ mockHref, notesHref }: { mockHref: string; notesHref: string }) {
+  const link =
+    "font-medium text-brand-accent underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring";
   return (
     <p className="text-sm text-muted-foreground">
-      {text}{" "}
-      <Link href={href} prefetch={false} className="font-medium text-brand-accent hover:underline">
-        {cta}
+      Also here:{" "}
+      <Link href={mockHref} prefetch={false} className={link}>
+        timed mocks
+      </Link>
+      {" \u00b7 "}
+      <Link href={notesHref} prefetch={false} className={link}>
+        notes
       </Link>
     </p>
   );
