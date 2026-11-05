@@ -9,6 +9,7 @@
  */
 import { NextResponse, type NextRequest } from "next/server";
 import { z } from "zod";
+import { boundedArray } from "@/lib/validation/boundedArray";
 import { getSessionUser } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { sanitizeProfileDetails } from "@/lib/profile/fields";
@@ -18,7 +19,7 @@ import { sanitizeWeeklyGoal } from "@/lib/goals/weekly";
 import { sanitizeExamDate } from "@/lib/exam/calendar";
 
 const BodySchema = z.object({
-  targetExams: z.array(z.string()).max(20).optional(),
+  targetExams: boundedArray(z.string(), 20).optional(),
   stage: z.string().nullable().optional(),
   medium: z.string().nullable().optional(),
   stream: z.string().nullable().optional(),
