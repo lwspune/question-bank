@@ -205,3 +205,7 @@ Phase 0 decisions
 | Date | Item | Result |
 |---|---|---|
 | 2026-11-05 | Plan written | approved; D1 = remove the chip |
+| 2026-11-05 | D4 leaked-password protection | on (owner); advisor warning gone. `/signup` maps `weak_password`/`pwned` to plain words. Owner's own sign-up test still to do |
+| 2026-11-05 | 1.1 chip removed | merged locally. Scope was ONE chapter (MHT-CET Circle, 71 PUBLIC questions), not "Class 12 Maths"; the site failed the daily check from 2026-11-02, not 10-28 |
+| 2026-11-05 | 1.2 prod contract | 14 of 14 original failures fixed: the 8 "stale intros" were a PROBE bug (thousands comma, years read as counts, per-year counts), fixed test-first; fixing it exposed 13 real stale MHT-CET Chemistry intro totals (the 2026-11-04 bank repair), updated with HARD counts re-measured; MPSC solution flags; MHT-CET Maths 147 -> 148; exam-card test made self-contained. A full prod-contract run then showed 2 NEW failures from the same repair (MHT-CET Chemistry guide overview 3,371 vs 3,389 live, matrix stale; the 2026-10-10 blog post's chapter table): content refresh, owner to decide |
+| 2026-11-05 | 1.2 "make it noisy" | NOT built: the repo has had 0 GitHub issues ever, so an issue has no evidence of being seen over the failure emails that went unread for 8 days. Owner to choose the channel |
