@@ -26,13 +26,17 @@ describe("sectionsOf", () => {
 });
 
 describe("planWording", () => {
-  it("names UPSC and past questions for NDA", () => {
-    expect(planWording("NDA")).toEqual({ asker: "UPSC", questions: "past questions" });
+  const upsc = { asker: "UPSC", questions: "past questions", papers: "Past", answers: "worked solutions" };
+  const board = { asker: "the board", questions: "board questions", papers: "Board", answers: "model answers" };
+
+  it("names UPSC and past questions for the UPSC exams, NDA and CDS", () => {
+    expect(planWording("NDA")).toEqual(upsc);
+    expect(planWording("CDS")).toEqual(upsc);
   });
 
   it("keeps the board wording for every board exam", () => {
     for (const exam of ["CBSE Class 12", "Maharashtra HSC Class 12", "Maharashtra SSC Class 10", "CBSE Class 10"]) {
-      expect(planWording(exam)).toEqual({ asker: "the board", questions: "board questions" });
+      expect(planWording(exam)).toEqual(board);
     }
   });
 });

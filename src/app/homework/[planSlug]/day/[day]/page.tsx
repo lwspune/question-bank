@@ -49,7 +49,7 @@ export async function generateMetadata(props: { params: Promise<Params> }): Prom
   if (!data) return { title: "Daily homework" };
   return {
     title: `${data.plan.title} Daily Homework, Day ${data.day}`,
-    description: `Day ${data.day} of ${data.plan.title} daily homework: ${planWording(data.plan.examName).questions} with ${data.plan.examName === "NDA" ? "worked solutions" : "model answers"}.`,
+    description: `Day ${data.day} of ${data.plan.title} daily homework: ${planWording(data.plan.examName).questions} with ${planWording(data.plan.examName).answers}.`,
     // The same questions are indexed on their own pages (/board, /questions,
     // /question-papers); ~1,850 more copies would be duplicates. Followed, so
     // a crawler still reaches the plan and its other days.

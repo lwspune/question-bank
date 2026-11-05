@@ -34,7 +34,7 @@ export async function generateMetadata(props: { params: Promise<Params> }): Prom
   const plan = await getPlanBySlug(createSupabaseAnonClient(), params.planSlug);
   if (!plan) return {};
   return {
-    title: `${plan.title} Daily Homework from ${plan.examName === "NDA" ? "Past" : "Board"} Papers`,
+    title: `${plan.title} Daily Homework from ${planWording(plan.examName).papers} Papers`,
     description: `${plan.examName} ${plan.subjectName} ${planWording(plan.examName).questions}, ${plan.perDay} a day, as a file to hand out. The questions ${planWording(plan.examName).asker} asked again come first.`,
     alternates: { canonical: `/homework/${plan.slug}` },
   };
