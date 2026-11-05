@@ -66,7 +66,7 @@ export async function POST(request: NextRequest) {
     const pool = chosen.flatMap((c) => c.items);
 
     const db = createSupabaseServerClient();
-    const seen = req.fresh ? await readAnsweredQuestionIds(db) : undefined;
+    const seen = req.fresh ? await readAnsweredQuestionIds(db, user.id) : undefined;
     const picked = pickPracticeQuestions(pool, req.length, {
       difficulty: req.difficulty,
       seed: randomInt(2 ** 31),

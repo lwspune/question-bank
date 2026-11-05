@@ -14,6 +14,7 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import type { DrillEvent, QuestionRef } from "./select";
 import { usableVisual } from "@/lib/visuals/visual";
+import { readOwnAnswerRows } from "@/lib/mocks/ownAnswers";
 
 /** PostgREST truncates a raw select at 1000 rows with no error. The heaviest
  *  student holds 629 answer events today and nobody is over the cap — but the
@@ -314,22 +315,14 @@ export async function loadWrittenAnswer(
  * Every question this student has already MET: reached in a timed paper (an
  * attempt_answers row exists — never-reached questions are genuinely unseen)
  * or recorded against in the activity log (answered, practised, bookmarked).
- * Both reads are own-row by RLS. Paged, because a heavy student has ~1,600
+ * Both reads are own-row by RLS and filtered by the student explicitly (the
+ * answers via lib/mocks/ownAnswers). Paged, because a heavy student has ~1,600
  * reached questions and the cap is silent.
  */
 export async function loadSeenQuestionIds(db: SupabaseClient, userId: string): Promise<Set<string>> {
   const seen = new Set<string>();
-  for (let from = 0; ; from += PAGE) {
-    const { data, error } = await db
-      .from("attempt_answers")
-      .select("question_id")
-      .order("question_id")
-      .range(from, from + PAGE - 1);
-    if (error) throw new Error(`loadSeenQuestionIds answers: ${error.message}`);
-    const rows = (data ?? []) as { question_id: string }[];
-    for (const r of rows) seen.add(r.question_id);
-    if (rows.length < PAGE) break;
-  }
+  // Through the student's own attempts, so the read never scans every student's answers.
+  for (const r of await readOwnAnswerRows<{ question_id: string }>(db, userId, "question_id")) seen.add(r.question_id);
   for (let from = 0; ; from += PAGE) {
     const { data, error } = await db
       .from("user_activity")
