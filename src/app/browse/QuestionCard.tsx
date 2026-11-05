@@ -9,7 +9,6 @@ import {
   Check,
   ChevronDown,
   ChevronUp,
-  GraduationCap,
   ImageIcon,
   Lightbulb,
   NotebookPen,
@@ -206,7 +205,7 @@ export default function QuestionCard({
   }
   const correctLabels = question.options.filter((o) => o.isCorrect).map((o) => o.label);
   const pathname = usePathname();
-  const hasChips = Boolean(resources?.guide || resources?.notes || resources?.lesson);
+  const hasChips = Boolean(resources?.guide || resources?.notes);
   function toggleSolution() {
     if (showSolution) {
       setShowSolution(false);
@@ -686,9 +685,6 @@ export default function QuestionCard({
                 {resources?.notes && (
                   <ResourceChip href={resources.notes.href} label={resources.notes.label.replace(/^Concept:\s*/, "")} title={resources.notes.label} Icon={NotebookPen} chip="notes" page={chipPage(pathname)} />
                 )}
-                {resources?.lesson && (
-                  <ResourceChip href={resources.lesson.href} label={resources.lesson.label} title={`${resources.lesson.label} on Concept Ladder`} Icon={GraduationCap} chip="lesson" page={chipPage(pathname)} external />
-                )}
               </div>
             )}
 
@@ -785,18 +781,15 @@ function ResourceChip({
   chip,
   page,
   fixed = false,
-  external = false,
 }: {
   href: string;
   label: string;
   title: string;
   Icon: typeof BookOpen;
-  chip: "guide" | "notes" | "lesson";
+  chip: "guide" | "notes";
   page: "browse" | "questions" | "other";
   /** Never shrink (the short "Strategy" chip); the other shortens with an ellipsis. */
   fixed?: boolean;
-  /** Another site (Concept Ladder): a plain link that opens a new tab. */
-  external?: boolean;
 }) {
   const className = cn(
     "group inline-flex min-w-0 items-center gap-1 rounded-full border border-input bg-card px-2.5 py-1 font-medium text-muted-foreground transition-colors hover:border-primary/40 hover:bg-primary/5 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1",
@@ -807,18 +800,13 @@ function ResourceChip({
     <>
       <Icon className="h-3 w-3 shrink-0" aria-hidden />
       <span className="truncate">{label}</span>
-      {external && <span className="sr-only"> (Concept Ladder, opens in a new tab)</span>}
       <ArrowUpRight
         className="h-3 w-3 shrink-0 opacity-60 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
         aria-hidden
       />
     </>
   );
-  return external ? (
-    <a href={href} title={title} target="_blank" rel="noopener noreferrer" onClick={onClick} className={className}>
-      {body}
-    </a>
-  ) : (
+  return (
     <Link href={href} title={title} onClick={onClick} className={className}>
       {body}
     </Link>

@@ -36,7 +36,7 @@ workflow run, each asked for first.
 
 | # | Decision | Data | Options |
 |---|---|---|---|
-| D1 | **Concept Ladder links are dead.** Question cards show a lesson chip (`src/lib/links/questionResources.ts:189` via `resolveLesson`) to conceptladder.in, which answers `HTTP 402`, `X-Vercel-Error: DEPLOYMENT_DISABLED` on every page (curl, 2026-11-05). | 9 prod-contract failures are this. | (a) re-enable the Concept Ladder Vercel deployment; (b) point the chip at the in-app Learn lessons (imported, migration 0192); (c) remove the chip. |
+| D1 | **Concept Ladder links are dead.** Question cards in MHT-CET Maths, Circle (71 PUBLIC questions) show a lesson chip (`src/lib/links/questionResources.ts:189` via `resolveLesson`) to conceptladder.in, which answers `HTTP 402`, `X-Vercel-Error: DEPLOYMENT_DISABLED` on every page (curl, 2026-11-05). The daily check passed all 9 links through 2026-11-01 and failed from 2026-11-02. | 9 prod-contract failures are this. | (a) re-enable the Concept Ladder Vercel deployment; (b) point the chip at the in-app Learn lessons (imported, migration 0192); (c) remove the chip. |
 | D2 | **Which pages to build ahead.** Prerender is 19 min for 5,187 pages: /notes 893, /questions 797, /formula 397, /board 390, /guide 189, /mock 119, plus ~523 chapter landings (route table). | Traffic per page family is **not measured**. Step 2.3 measures it (Vercel Analytics) before you decide. | Build ahead only pages with traffic above a cut-off you pick; the rest render on first visit and are then cached, as homework days and print handouts already are. |
 | D3 | **Where `xlsx` comes from.** npm's latest is 0.18.5 (no newer release on npm), flagged high twice: prototype pollution and ReDoS (`npm audit`). Used by `src/lib/upload/parser.ts` and `src/app/api/export/route.ts`. | SheetJS publishes fixed builds only from its own site. | (a) pin the SheetJS 0.20.x tarball by URL with its lockfile hash (same API); (b) replace with another library (a new dependency; your rules prefer not). |
 | D4 | **Leaked-password protection is off** (Supabase security advisor). | Dashboard switch, not code. | You switch it on (Auth settings), or decline. |
@@ -49,7 +49,7 @@ workflow run, each asked for first.
 ### 1.1 Concept Ladder chip: remove it (D1 decided 2026-11-05)
 - **Evidence:** above. **Fix:** remove the `lesson` chip from `getQuestionResources` and its renderer, delete `src/lib/links/conceptLadder.ts` and retire `tests/concept-ladder-urls.test.ts` with it (prodContractFiles too). Test first: a resources test asserting no lesson chip for a mapped Class 12 Maths chapter.
 - **Verify:** no `conceptladder.in` string left in `src/` (grep); a /browse card on a mapped chapter shows no chip (browser, phone width); prod-contract loses those 9 failures.
-- **360:** scope one resolver, its renderer and its test; blast radius every card on the Class 12 Maths chapters that mapped to a lesson, which today link to a dead page; reversible by revert.
+- **360:** scope one resolver, its renderer and its test; blast radius the 71 PUBLIC MHT-CET Circle questions (the only chapter mapped), whose chip links to a dead page since 2026-11-02; reversible by revert.
 
 ### 1.2 Prod-contract back to green, and make a failure noisy
 The latest run (41813110379) fails 14 of 370 tests, with these causes:

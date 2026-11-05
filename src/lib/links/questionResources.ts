@@ -33,7 +33,6 @@ import { PLAYBOOKS as JEE_MAINS_CHEMISTRY_PLAYBOOKS } from "@/app/guide/jee-main
 import { PLAYBOOKS as JEE_MAINS_PHYSICS_PLAYBOOKS } from "@/app/guide/jee-mains-physics/_data/playbooks";
 import { getSubtopicNotesEntry } from "@/lib/notes/subtopicSlugRegistry";
 import { getNotesChapterEntry } from "./notesIndex";
-import { resolveLesson } from "./conceptLadder";
 import { getPrincipleName, getConceptName } from "./tagNames";
 import type { ResourceTags } from "./getResourceTagsForQuestions";
 
@@ -45,8 +44,6 @@ export type ResourceLink = {
 export type QuestionResources = {
   guide: ResourceLink | null;
   notes: ResourceLink | null;
-  /** The Concept Ladder lesson that teaches it (an external link); see conceptLadder.ts. */
-  lesson: ResourceLink | null;
 };
 
 export type ResourceInput = {
@@ -186,7 +183,6 @@ export function getQuestionResources(
   return {
     guide: resolveGuide(input, tags),
     notes: resolveNotes(input, tags),
-    lesson: resolveLesson(input, tags),
   };
 }
 
