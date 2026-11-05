@@ -101,6 +101,7 @@ describe("EXPERIMENTS", () => {
       "v-reveal",
       "v-strategy",
       "visual-solutions",
+      "why-not-buy",
     ]);
   });
 });

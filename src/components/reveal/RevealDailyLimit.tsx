@@ -5,7 +5,8 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { Check, Loader2, Lock } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useCheckout, type CheckoutOutcome, type CheckoutSurface } from "@/components/billing/useCheckout";
+import { GATE, useCheckout, type CheckoutOutcome, type CheckoutSurface } from "@/components/billing/useCheckout";
+import WhyNotNow from "@/components/billing/WhyNotNow";
 import { trackFunnelOnce } from "@/lib/analytics/trackFunnel";
 import { sendActivityOnce } from "@/lib/activity/clientBeacon";
 import { pricingHref } from "@/lib/billing/checkoutReturn";
@@ -104,7 +105,7 @@ export function RevealDailyOffer({
     },
     [router, onPaid]
   );
-  const { start, busy } = useCheckout({ planId: pass.planId, surface: checkoutSurface, onDone });
+  const { start, busy, dismissed } = useCheckout({ planId: pass.planId, surface: checkoutSurface, onDone });
   const onPay = () => {
     trackFunnelOnce("reveal_daily_limit_pass_click", surface, { surface });
     void start();
@@ -150,9 +151,12 @@ export function RevealDailyOffer({
           One-time payment{perMonth ? `, ${perMonth}` : ""}. UPI, card or netbanking.
         </p>
       </div>
-      <p className="border-t border-brand-accent/20 pt-3 text-center text-xs text-muted-foreground">
-        Not now? {limit ? `${limit} more free answers` : "More free answers"} tomorrow.
-      </p>
+      <div className="space-y-3 border-t border-brand-accent/20 pt-3">
+        <p className="text-center text-xs text-muted-foreground">
+          Not now? {limit ? `${limit} more free answers` : "More free answers"} tomorrow.
+        </p>
+        <WhyNotNow gate={GATE[checkoutSurface]} planId={pass.planId} afterCheckout={dismissed} />
+      </div>
     </div>
   );
 }

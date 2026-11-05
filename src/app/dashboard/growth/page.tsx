@@ -67,6 +67,8 @@ import {
   VISUAL_STILL_MAX_PCT,
   SPECIFIC_OFFER_CHECKOUT_PCT,
   TUTOR_STUDENT_YES_KEEP,
+  WHY_NOT_BUY_LEAD_PCT,
+  WHY_NOT_BUY_MIN_ANSWERS,
   checkOn,
   type Experiment,
 } from "@/lib/growth/registry";
@@ -615,6 +617,23 @@ export default async function GrowthPage() {
             </p>
             <ReadingsList metric="v-explain-students" />
             <ReadingsList metric="v-explain-similar-right" />
+          </div>
+        );
+      case "why-not-buy":
+        return (
+          <div className="space-y-3">
+            <p className="text-sm text-muted-foreground">
+              Read on {fmtDate(checkOn(e.liveSince, e.windowDays))}: with {WHY_NOT_BUY_MIN_ANSWERS}+ answers, a reason
+              holding {WHY_NOT_BUY_LEAD_PCT}%+ of a group&apos;s answers decides that group&apos;s next change. Fewer: run
+              2 more weeks.
+            </p>
+            <Link
+              href="/dashboard/sales"
+              prefetch={false}
+              className="inline-flex items-center gap-1 text-sm font-medium text-brand-accent underline-offset-2 hover:underline"
+            >
+              The answers, by reason, group and offer <ArrowUpRight className="h-3.5 w-3.5" aria-hidden />
+            </Link>
           </div>
         );
       case "tutor-interest":

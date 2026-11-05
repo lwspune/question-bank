@@ -4,7 +4,13 @@ import { getSessionSuperadmin } from "@/lib/auth";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import AppHeader from "@/components/AppHeader";
 import { formatPrice, formatRupees } from "@/lib/billing/plans";
-import { loadFunnelStudents, loadSalesByPeriod } from "@/lib/sales/query";
+import { loadDeclines, loadFunnelStudents, loadSalesByPeriod } from "@/lib/sales/query";
+import {
+  DECLINE_GROUPS,
+  DECLINE_GROUP_LABELS,
+  summariseDeclines,
+  type DeclineSummary,
+} from "@/lib/billing/declineReasons";
 import {
   PERIODS_SHOWN,
   SALES_GRAINS,
@@ -59,6 +65,99 @@ function funnelLine(f: FunnelStudents | undefined, t: SalesTotals): string {
 
 const percent = (n: number | null) => (n === null ? "–" : `${n}%`);
 
+/** The day the "Tell us why" question went on the offers (IST). */
+const DECLINES_SINCE = "2026-11-05";
+
+/**
+ * "Why students didn't buy": the one-tap answers under the answer-limit and
+ * download-box offers (2026-11-05), by reason, student group and offer.
+ */
+function DeclinesCard({ summary }: { summary: DeclineSummary | null }) {
+  return (
+    <section aria-labelledby="declines-heading" className="space-y-3 rounded-lg border bg-card p-4">
+      <div>
+        <h2 id="declines-heading" className="text-base font-semibold">
+          Why students didn&apos;t buy
+        </h2>
+        <p className="mt-1 text-xs text-muted-foreground">
+          Answers to &ldquo;Not buying today? Tell us why&rdquo; under the answer-limit offer and the download boxes,
+          since 5 Nov 2026. One answer per student per offer per day; staff left out.
+        </p>
+      </div>
+      {!summary ? (
+        <p role="alert" className="text-sm text-destructive">
+          Could not load the answers. Reload the page; the server log says why.
+        </p>
+      ) : summary.answers === 0 ? (
+        <p className="text-sm text-muted-foreground">No answers yet.</p>
+      ) : (
+        <>
+          <p className="text-sm">
+            {summary.answers} {summary.answers === 1 ? "answer" : "answers"} from {summary.students}{" "}
+            {summary.students === 1 ? "student" : "students"}
+            {summary.afterCheckout > 0 && `, ${summary.afterCheckout} after closing a checkout`}.
+          </p>
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-[40rem] text-sm">
+              <caption className="sr-only">Reasons for not buying, by student group and by offer</caption>
+              <thead>
+                <tr className="border-b text-left text-xs text-muted-foreground">
+                  <th scope="col" className="py-1.5 pr-3 font-medium">Reason</th>
+                  <th scope="col" className="py-1.5 pr-3 text-right font-medium">All</th>
+                  {DECLINE_GROUPS.map((g) => (
+                    <th key={g} scope="col" className="py-1.5 pr-3 text-right font-medium">
+                      {DECLINE_GROUP_LABELS[g]}
+                    </th>
+                  ))}
+                  <th scope="col" className="py-1.5 pr-3 text-right font-medium">Answer limit</th>
+                  <th scope="col" className="py-1.5 text-right font-medium">Downloads</th>
+                </tr>
+              </thead>
+              <tbody className="tabular-nums">
+                {summary.reasons.map((r) => (
+                  <tr key={r.reason} className={cn("border-b last:border-0", r.total === 0 && "text-muted-foreground")}>
+                    <th scope="row" className="py-1.5 pr-3 text-left font-normal">
+                      {r.label}
+                    </th>
+                    <td className="py-1.5 pr-3 text-right font-medium">{r.total}</td>
+                    {DECLINE_GROUPS.map((g) => (
+                      <td key={g} className="py-1.5 pr-3 text-right">
+                        {r.byGroup[g]}
+                      </td>
+                    ))}
+                    <td className="py-1.5 pr-3 text-right">{r.byOffer.answers}</td>
+                    <td className="py-1.5 text-right">{r.byOffer.downloads}</td>
+                  </tr>
+                ))}
+              </tbody>
+              <tfoot className="tabular-nums">
+                <tr className="border-t font-medium">
+                  <th scope="row" className="py-1.5 pr-3 text-left">Total</th>
+                  <td className="py-1.5 pr-3 text-right">{summary.answers}</td>
+                  {DECLINE_GROUPS.map((g) => (
+                    <td key={g} className="py-1.5 pr-3 text-right">
+                      {summary.groups[g]}
+                    </td>
+                  ))}
+                  <td className="py-1.5 pr-3 text-right">
+                    {summary.reasons.reduce((s, r) => s + r.byOffer.answers, 0)}
+                  </td>
+                  <td className="py-1.5 text-right">{summary.reasons.reduce((s, r) => s + r.byOffer.downloads, 0)}</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+          <p className="text-xs text-muted-foreground">
+            Group comes from the student&apos;s profile: their stated stage, else the exams they chose. Class 9-12
+            takes school and Class 11-12 exams; Not known means no stage and no exam on the profile. &ldquo;Payment
+            didn&apos;t work&rdquo; is offered only after a student closes the Razorpay checkout.
+          </p>
+        </>
+      )}
+    </section>
+  );
+}
+
 /**
  * /dashboard/sales: passes and books sold, and the money kept, per day, week
  * or month (2026-10-28). Platform-wide money, so superadmin only, like
@@ -99,6 +198,14 @@ export default async function SalesPage({ searchParams }: { searchParams?: { vie
   } catch (err) {
     console.error("dashboard/sales:", err);
     loaded = null;
+  }
+
+  // Apart from the sales reads, so a failure here leaves the rest of the page.
+  let declines: DeclineSummary | null = null;
+  try {
+    declines = summariseDeclines(await loadDeclines(admin, DECLINES_SINCE));
+  } catch (err) {
+    console.error("dashboard/sales declines:", err);
   }
 
   const rows = loaded ? fillPeriods(loaded[0], grain, today, shown) : [];
@@ -262,6 +369,8 @@ export default async function SalesPage({ searchParams }: { searchParams?: { vie
                 store section of <Link href="/dashboard/growth" className="underline underline-offset-2">Growth</Link>.
               </p>
             </section>
+
+            <DeclinesCard summary={declines} />
           </>
         )}
       </main>

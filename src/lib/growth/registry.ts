@@ -259,6 +259,10 @@ export const V_REVEAL_FOLLOWUP_BASELINE_PCT = 48;
 /** A fall of this many points in that share is looked into before anything else changes in V. */
 export const V_REVEAL_FOLLOWUP_MAX_DROP = 5;
 export const ANSWER_LIMIT_RETURN_MAX_DROP = 10;
+/** "why-not-buy": answers needed before a reason is read as the answer (below it, run 2 more weeks). */
+export const WHY_NOT_BUY_MIN_ANSWERS = 30;
+/** "why-not-buy": a reason holding this share of a group's answers decides that group's next change (%). */
+export const WHY_NOT_BUY_LEAD_PCT = 40;
 /** "tutor-interest": student Yes answers (looking for 1:1 tutoring) that take tutoring further. */
 export const TUTOR_STUDENT_YES_KEEP = 20;
 
@@ -304,7 +308,8 @@ export type Readout =
   | "self-mark"
   | "v-pay-offer"
   | "visual-solutions"
-  | "homework-tab";
+  | "homework-tab"
+  | "why-not-buy";
 
 export type Experiment = {
   id: string;
@@ -742,6 +747,20 @@ export const EXPERIMENTS: readonly Experiment[] = [
     rule: `Keep both passes if a week's revenue beats Rs ${PASS_TIERS_BASELINE_WEEKLY_REVENUE} (the single Rs 499 pass) at 14 days. If Premium sells none in 4 weeks, try it nearer Rs 299 before folding downloads back in.`,
     liveSince: "2026-11-03",
     readout: "pass-tiers",
+    status: "running",
+  },
+  {
+    id: "why-not-buy",
+    title: "Ask students who don't buy what stopped them",
+    change:
+      "Under the answer-limit offer and every download box, signed-in students see \"Not buying today? Tell us why:\" with four one-tap answers (Too expensive, Need to ask a parent, Free is enough for me, Not sure it's worth it), and \"Payment didn't work\" after closing a checkout.",
+    why: "From 7 Oct to 4 Nov about 85% of the students an offer met closed it without opening checkout, and nothing recorded why. Whether the fix is price, the parent who pays, or a pass that is not worth enough decides what to build next. The owner asked, 2026-11-05.",
+    metric:
+      "Answers by reason, student group (Class 9-12, Graduate) and offer, on /dashboard/sales \"Why students didn't buy\"; the share of offers answered; and pass sales against the Rs 199 week (14 in 23 to 28 Oct), in case the question costs a sale",
+    rule: `Read on the check date. With ${WHY_NOT_BUY_MIN_ANSWERS}+ answers, a reason holding ${WHY_NOT_BUY_LEAD_PCT}%+ of a group's answers decides that group's next change (price, a parent-facing offer, or a pass that sells an outcome). Fewer answers: run 2 more weeks. If sales fall below the Practice baseline while it runs, take it off.`,
+    liveSince: "2026-11-05",
+    windowDays: 14,
+    readout: "why-not-buy",
     status: "running",
   },
   {

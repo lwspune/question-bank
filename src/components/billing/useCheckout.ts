@@ -51,7 +51,7 @@ export type CheckoutSurface =
   | "v_chat";
 
 /** The paywall gate the server logs for each surface (see checkoutGate). */
-const GATE: Record<CheckoutSurface, "teacher" | "pricing" | "reveals"> = {
+export const GATE: Record<CheckoutSurface, "teacher" | "pricing" | "reveals"> = {
   download_box: "teacher",
   paper_download: "teacher",
   formula_sheet: "teacher",
@@ -109,8 +109,11 @@ export function useCheckout({
   /** Which download box the checkout started from, for the paywall_event rows. */
   box?: DownloadBox;
   onDone: (outcome: CheckoutOutcome) => void;
-}): { start: () => Promise<void>; busy: boolean } {
+}): { start: () => Promise<void>; busy: boolean; dismissed: boolean } {
   const [busy, setBusy] = useState(false);
+  // The buyer closed Razorpay without paying (2026-11-05): the offer's
+  // "Tell us why" then also offers "Payment didn't work".
+  const [dismissed, setDismissed] = useState(false);
 
   // Warm the script while the buyer reads the offer, so the tap opens fast.
   useEffect(() => {
@@ -195,6 +198,7 @@ export function useCheckout({
         modal: {
           ondismiss: () => {
             setBusy(false);
+            setDismissed(true);
             trackFunnel("checkout_dismissed", funnelProps);
             // The paywall funnel is the pass's; an ebook's dismissals are the Vercel event alone.
             if (planId) sendActivity({ kind: "paywall_event", step: "checkout_dismissed", gate: GATE[surface], planId, box });
@@ -208,5 +212,5 @@ export function useCheckout({
     }
   }, [planId, ebookSlug, surface, onDone]);
 
-  return { start, busy };
+  return { start, busy, dismissed };
 }

@@ -1,10 +1,15 @@
 /**
  * Reads public.sales_by_period and sales_funnel_students (migrations 0197, 0199, 0200) for
- * /dashboard/sales.
+ * /dashboard/sales, and the students' "why I didn't buy" answers (2026-11-05).
  * Service-role only: the page checks for a superadmin first.
  */
 import type { SupabaseClient } from "@supabase/supabase-js";
 import type { DayWindow, FunnelStudents, SalesGrain, SalesPeriodRow } from "./summary";
+import { PAYWALL_GATES, type PaywallGate } from "@/lib/activity/clientEvents";
+import { isDeclineReason, type DeclineRow } from "@/lib/billing/declineReasons";
+import { EXAM_REGISTRY, type ExamTier } from "@/lib/exam/examContext";
+import { resolveStudentTier } from "@/lib/exam/examFeed";
+import { isStage, sanitizeTargetExams } from "@/lib/profile/onboarding";
 
 type Row = {
   period: string;
@@ -48,6 +53,75 @@ export async function loadSalesByPeriod(
     passUsdCents: Number(r.pass_usd_cents ?? 0),
     practiceSold: r.practice_sold ?? 0,
   }));
+}
+
+const PAGE = 1000;
+/** `.in()` puts the ids in the URL; a few hundred uuids overflow it. */
+const IN_CHUNK = 200;
+
+/**
+ * Every "Not buying today? Tell us why" answer from the IST day `since`
+ * (2026-11-05), staff left out, each with the student's tier from their
+ * profile (stated stage first, else their target exams).
+ */
+export async function loadDeclines(admin: SupabaseClient, since: string): Promise<DeclineRow[]> {
+  const [members, admins] = await Promise.all([
+    admin.from("org_members").select("user_id"),
+    admin.from("platform_admins").select("user_id"),
+  ]);
+  if (members.error) throw new Error(`loadDeclines org_members: ${members.error.message}`);
+  if (admins.error) throw new Error(`loadDeclines platform_admins: ${admins.error.message}`);
+  const staff = new Set([...(members.data ?? []), ...(admins.data ?? [])].map((r) => r.user_id as string));
+
+  const events: { user_id: string; metadata: Record<string, unknown> | null }[] = [];
+  for (let from = 0; ; from += PAGE) {
+    const { data, error } = await admin
+      .from("user_activity")
+      .select("user_id, metadata")
+      .eq("kind", "paywall_event")
+      .eq("metadata->>step", "declined")
+      .gte("created_at", `${since}T00:00:00+05:30`)
+      .order("created_at", { ascending: true })
+      .range(from, from + PAGE - 1);
+    if (error) throw new Error(`loadDeclines user_activity: ${error.message}`);
+    const rows = (data ?? []) as typeof events;
+    events.push(...rows.filter((r) => !staff.has(r.user_id)));
+    if (rows.length < PAGE) break;
+  }
+
+  const ids = [...new Set(events.map((e) => e.user_id))];
+  const tierById = new Map<string, ExamTier | null>();
+  for (let i = 0; i < ids.length; i += IN_CHUNK) {
+    const chunk = ids.slice(i, i + IN_CHUNK);
+    const { data, error } = await admin.from("student_profiles").select("user_id, stage, target_exams").in("user_id", chunk);
+    if (error) throw new Error(`loadDeclines student_profiles: ${error.message}`);
+    for (const p of (data ?? []) as { user_id: string; stage: unknown; target_exams: unknown }[]) {
+      tierById.set(
+        p.user_id,
+        resolveStudentTier(
+          { stage: isStage(p.stage) ? p.stage : null, targetExams: sanitizeTargetExams(p.target_exams) },
+          EXAM_REGISTRY
+        )
+      );
+    }
+  }
+
+  const out: DeclineRow[] = [];
+  for (const e of events) {
+    const m = e.metadata ?? {};
+    const gate = m.gate;
+    if (!isDeclineReason(m.reason) || typeof gate !== "string" || !(PAYWALL_GATES as readonly string[]).includes(gate)) {
+      continue;
+    }
+    out.push({
+      userId: e.user_id,
+      reason: m.reason,
+      gate: gate as PaywallGate,
+      afterCheckout: m.afterCheckout === true,
+      tier: tierById.get(e.user_id) ?? null,
+    });
+  }
+  return out;
 }
 
 /** Distinct students who met a paywall, and who started a pass checkout, over `window`. */

@@ -202,6 +202,10 @@ async function main() {
         // Live counts from tutor_interest, rendered on the page (lib/tutor/readout).
         line = "live table on the page (tutor_interest)";
         break;
+      case "why-not-buy":
+        // Live answers on /dashboard/sales (lib/sales/query loadDeclines).
+        line = "live table on /dashboard/sales (user_activity paywall_event step declined)";
+        break;
       default: {
         // A new readout must be added here; this fails the typecheck until it is.
         const unhandled: never = e.readout;
