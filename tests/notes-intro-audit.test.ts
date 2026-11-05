@@ -31,6 +31,22 @@ describe("extractCountClaims", () => {
     expect(extractCountClaims("roughly one to two questions on every shift")).toEqual([]);
     expect(extractCountClaims("5 questions")).toEqual([]);
   });
+
+  // Found 2026-11-05 on the SSC CGL chapters (TECH_DEBT_SPEC.md 1.2): all 8 "stale"
+  // intros were the probe misreading true text.
+  it("reads a count with a thousands comma whole", () => {
+    // "1,036 questions" was read as 36.
+    expect(extractCountClaims("Vocabulary has 1,036 questions in the bank")).toEqual([1036]);
+  });
+
+  it("does not read a year as a count", () => {
+    // "The 2025 questions were mostly on radioactive decay" names a year. The
+    // largest chapter held 1,036 questions on 2026-11-05, and the gate asserts no
+    // chapter reaches YEAR_LIKE_MIN, so this can never hide a real count.
+    expect(extractCountClaims("The 2025 questions were mostly on decay")).toEqual([]);
+    expect(extractCountClaims("seven from the 2025 shifts, 13 questions in all")).toEqual([13]);
+  });
+
 });
 
 describe("allowedCounts", () => {
@@ -65,6 +81,18 @@ describe("allowedCounts", () => {
     expect(allowedCounts(20, [8, 12]).has(16)).toBe(false);
     expect(allowedCounts(20, [8, 12]).has(20)).toBe(true); // total, and 8 + 12
   });
+
+  it("accepts a per-year count of the chapter or of one subtopic, never summed", () => {
+    // "Thirty-two of their 53 questions" (the chapter's 2025 shifts) and "26
+    // questions on the three criminal laws" (one subtopic's 2025 count) are true
+    // statements about the bank; per-year counts are not paired, since no intro
+    // adds two of them.
+    const ok = allowedCounts(148, [36, 32], [41, 48, 59, 26, 10]);
+    expect(ok.has(59)).toBe(true);
+    expect(ok.has(26)).toBe(true);
+    expect(ok.has(41 + 48)).toBe(false);
+  });
+
 });
 
 describe("enumeratedItems", () => {

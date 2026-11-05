@@ -19,11 +19,22 @@
  * rows. Requiring two digits costs a real claim only for chapters under ten
  * questions, which are too thin to have notes at all.
  */
-const COUNT_CLAIM = /(\d{2,4})[\s-]+(?:past-year[\s-]+)?(?:PYQs?|questions)/gi;
+const COUNT_CLAIM = /(\d{1,3}(?:,\d{3})+|\d{2,4})[\s-]+(?:past-year[\s-]+)?(?:PYQs?|questions)/gi;
+
+/**
+ * Numbers from here to YEAR_LIKE_MAX read as years ("The 2025 questions were mostly
+ * on decay"), not counts. Safe because no chapter comes near: the largest held
+ * 1,036 PUBLIC questions on 2026-11-05, and tests/notes-intro-counts.test.ts fails
+ * if a live chapter ever reaches YEAR_LIKE_MIN, so this can never hide a real count.
+ */
+export const YEAR_LIKE_MIN = 1990;
+export const YEAR_LIKE_MAX = 2099;
 
 /** Every bank-size claim stated in `text`, in the order they appear. */
 export function extractCountClaims(text: string): number[] {
-  return [...text.matchAll(COUNT_CLAIM)].map((m) => Number(m[1]));
+  return [...text.matchAll(COUNT_CLAIM)]
+    .map((m) => Number(m[1].replace(/,/g, "")))
+    .filter((n) => n < YEAR_LIKE_MIN || n > YEAR_LIKE_MAX);
 }
 
 /**
@@ -35,12 +46,17 @@ export function extractCountClaims(text: string): number[] {
  * questions" (14 + 16), and Indefinite Integration refers to "the chapter's 47
  * trig integrals" (12 + 35). Without it, a backfill would "correct" a right
  * number into a wrong one. A subtopic is never paired with itself.
+ *
+ * `yearCounts` are the chapter's and each subtopic's count for one PYQ year
+ * ("Thirty-two of their 53 questions" about the 2025 shifts). They are accepted
+ * singly and never summed: no intro adds two years' counts.
  */
 export function allowedCounts(
   chapterTotal: number,
-  subtopicCounts: readonly number[]
+  subtopicCounts: readonly number[],
+  yearCounts: readonly number[] = []
 ): Set<number> {
-  const allowed = new Set<number>([chapterTotal, ...subtopicCounts]);
+  const allowed = new Set<number>([chapterTotal, ...subtopicCounts, ...yearCounts]);
   for (let i = 0; i < subtopicCounts.length; i++) {
     for (let j = i + 1; j < subtopicCounts.length; j++) {
       allowed.add(subtopicCounts[i] + subtopicCounts[j]);

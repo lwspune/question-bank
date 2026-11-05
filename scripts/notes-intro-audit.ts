@@ -71,6 +71,7 @@ function loadEnv() {
 async function loadLive(db: SupabaseClient) {
   const chapter = new Map<string, number>();
   const perSub = new Map<string, Map<string, number>>();
+  const perYear = new Map<string, Map<string, number>>();
   // Paged in 1000-row windows — PostgREST silently truncates a raw select at
   // 1000 and this derives counts FROM THE PAYLOAD, the documented trap.
   // Past-year rows for every exam, plus the practice rows of an exam whose
@@ -87,7 +88,7 @@ async function loadLive(db: SupabaseClient) {
   for (let from = 0; ; from += 1000) {
     let q = db
       .from("questions")
-      .select("question_kind, subtopics(name), chapters(name, subjects(name, exams(name)))")
+      .select("question_kind, pyq_year, subtopics(name), chapters(name, subjects(name, exams(name)))")
       .eq("visibility", "PUBLIC")
       .eq("question_kind", scan.kind);
     if (scan.examIds) q = q.in("exam_id", scan.examIds);
@@ -113,10 +114,16 @@ async function loadLive(db: SupabaseClient) {
       if (!perSub.has(k)) perSub.set(k, new Map());
       const sn = r.subtopics?.name ?? "?";
       perSub.get(k)!.set(sn, (perSub.get(k)!.get(sn) ?? 0) + 1);
+      if (r.pyq_year) {
+        // The chapter's and each subtopic's per-year counts (allowedCounts' yearCounts).
+        if (!perYear.has(k)) perYear.set(k, new Map());
+        const y = perYear.get(k)!;
+        for (const who of ["*", sn]) y.set(`${who}	${r.pyq_year}`, (y.get(`${who}	${r.pyq_year}`) ?? 0) + 1);
+      }
     }
     if (rows.length < 1000) break;
   }
-  return { chapter, perSub };
+  return { chapter, perSub, perYear };
 }
 
 async function main() {
@@ -130,7 +137,7 @@ async function main() {
   }
   const filter = (process.argv[2] ?? "").toLowerCase();
   const db = createClient(url, apiKey, { auth: { persistSession: false } });
-  const { chapter: liveChapter, perSub } = await loadLive(db);
+  const { chapter: liveChapter, perSub, perYear } = await loadLive(db);
 
   const stale: string[] = [];
   const duplicated: string[] = [];
@@ -146,7 +153,7 @@ async function main() {
     const k = key(c.examName, c.subjectName, c.chapter.chapterName);
     const total = liveChapter.get(k);
     const subCounts = [...(perSub.get(k) ?? new Map()).values()];
-    const ok = total === undefined ? null : allowedCounts(total, subCounts);
+    const ok = total === undefined ? null : allowedCounts(total, subCounts, [...(perYear.get(k)?.values() ?? [])]);
 
     // 1. STALE COUNT — intro/cardBlurb (gated elsewhere) + subtopic prose (not).
     const texts: [string, string][] = [
