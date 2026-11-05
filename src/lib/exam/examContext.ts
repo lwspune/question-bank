@@ -758,7 +758,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     tier: "graduate",
     displayName: "MPSC Forest Service Prelims",
     examName: "MPSC Forest Service Prelims", // must match the `exams` DB row exactly
-    solutionCoverage: "none", // answers + key notices only (2026-11-02)
+    solutionCoverage: "some", // 336/399 = 84% solved (measured 2026-11-05)
     family: "MPSC",
     familyStage: "Prelims",
     familyLabel: "Forest Service",
@@ -777,7 +777,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     tier: "graduate",
     displayName: "MPSC Agriculture Service Prelims",
     examName: "MPSC Agriculture Service Prelims", // must match the `exams` DB row exactly
-    solutionCoverage: "none", // answers + key notices only (2026-11-02)
+    solutionCoverage: "some", // 590/700 = 84% solved (measured 2026-11-05)
     family: "MPSC",
     familyStage: "Prelims",
     familyLabel: "Agriculture Service",
@@ -794,7 +794,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     tier: "graduate",
     displayName: "MPSC State Services Mains",
     examName: "MPSC State Services Mains", // must match the `exams` DB row exactly
-    solutionCoverage: "some", // 33% solved (2026-10-23)
+    pastPaperSolutions: true, // 276/300 = 92% of past-paper questions solved (measured 2026-11-05); solutionCoverage absent = "all"
     family: "MPSC",
     familyStage: "Mains",
     familyLabel: "State Services",
