@@ -8,7 +8,11 @@ the first step. Sizes (S/M/L) are estimates from the counted files, not measurem
 
 How each item runs: its own branch, test first where there is logic, `npm run gate`, a
 before/after sheet for anything a user can see, then merge. Approving a phase approves its
-items; the **decision points** marked below still stop for the owner. Builds follow the owner's
+items; the **decision points** marked below still stop for the owner.
+
+**Measurement (owner, 2026-11-05): all build and deploy measurements happen ONCE, after every phase is built and deployed.** Each item is verified without a build (typecheck, lint, tests, a dev-server check); the Baseline table is the "before". Moved to after that deploy: 2.5 (the heap limit) and every before/after comparison. Not builds, so still done in place: 2.3's traffic per page family (Vercel Analytics) and 4.0's advisory counts (scratch installs). Each phase stays in separate commits so a failing deploy build can be bisected; the deploy does not publish a failed build.
+
+Builds follow the owner's
 rule (no casual local builds): measurement builds are the normal deploy build or one `staged`
 workflow run, each asked for first.
 
@@ -214,3 +218,4 @@ Phase 0 decisions
 | 2026-11-05 | 1.3 Top 10 PYQs lazy | `next/dynamic` in NotesChapterLanding (TDD source guard). Dev: NDA Statistics keeps the section and answers a tap; AFCAT Average has none. The kB saving is UNMEASURED until the next deploy route table (baseline 411 kB, expected ~325) |
 | 2026-11-05 | 1.4 packages | merged: xlsx 0.20.3 vendored as a file dependency (both advisories fixed; `npm audit` 29 -> 28, high 13 -> 12); jszip and xlsx moved to dependencies (jszip kept at 3.10.1). zod: measured that zod 3 parses every element despite `.max()` (4 MB body -> 634 MB heap, 0.9 s on /api/profile); `boundedArray` caps it first (22 ms, one issue) on the 2 routes the public reaches; editor and sync authenticate first. zod 4 stays in Phase 4 |
 | 2026-11-05 | 1.5 database | migration 0217 pins search_path on record_quiz_lead and organizations_protect (replayed on the test project; 14 covering tests green; applied to prod; advisor warning gone). SECURITY DEFINER review: all 18 pin search_path; each scopes by auth.uid(), checks a role, or returns public settings/lessons; v_search_answers filters PUBLIC and all 760 publish_blocked IMAT rows are PRIVATE: no leak. The backup table is KEPT (see 1.5) |
+| 2026-11-05 | 2.0-2.2 (part 1) | 2.0: deploy build logs peak memory (GNU time). 2.1 trial on nda-maths passed: chapter folders holding only `_data` do not shadow the `[chapterSlug]` route; 4 pages identical in head tags + visible text; unknown chapter 404 (dev shows Next's error shell, the browser shows the full site 404; `dynamicParams = false` added; check the prod HTML after deploy). 2.2: all 47 subjects moved, 1,046 page files -> 94; 140 sampled URLs (first/last chapter + a subtopic per subject) all 200 (IMAT on the intl host). Found: the DEV server ran out of its default heap after ~22 compiled notes routes (each carries the whole registry); not compared with before. That registry-per-route load is what 2.2 part 2 (lazy chapter loaders) targets |

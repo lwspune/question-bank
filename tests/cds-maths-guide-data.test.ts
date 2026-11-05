@@ -12,6 +12,7 @@ import { FORMULA_GROUPS } from "@/app/guide/cds-maths/_data/formulas";
 import { TRAP_SHAPES } from "@/app/guide/cds-maths/_data/traps";
 import { CHAPTER_TABLE, OVERVIEW } from "@/app/guide/cds-maths/_data/cds-maths";
 import { STRATEGY_STRANDS, TAIL_CHAPTERS } from "@/app/guide/cds-maths/_data/strategy";
+import { appPageExists } from "./helpers/appRoutes";
 
 const slugs = new Set(PLAYBOOK_SLUGS);
 
@@ -59,7 +60,7 @@ describe("cds-maths guide data", () => {
   it("every notes link points at a shipped notes page", () => {
     for (const p of PLAYBOOKS) {
       if (!p.notesHref) continue;
-      expect(existsSync(path.join(process.cwd(), "src", "app", ...p.notesHref.split("/").filter(Boolean), "page.tsx")), p.notesHref).toBe(true);
+      expect(appPageExists(p.notesHref), p.notesHref).toBe(true);
     }
   });
 });

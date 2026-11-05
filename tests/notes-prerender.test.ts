@@ -72,9 +72,10 @@ describe("notesPrerenderParams", () => {
   });
 });
 
-// Every chapter's route file is a copy of another (the notes-pipeline scripts
-// clone an existing one), so one file on the old pattern would spread to every
-// chapter registered after it and the build load would creep back.
+// Every subject's route file is a copy of another (a new subject copies
+// nda-maths/[chapterSlug]), so one file on the old pattern would spread to every
+// subject added after it and the build load would creep back. Since 2026-11-05
+// there is one subtopic route per SUBJECT (TECH_DEBT_SPEC.md 2.2), not per chapter.
 describe("every notes subtopic route uses the helper", () => {
   const root = path.join(process.cwd(), "src/app/notes");
 
@@ -95,8 +96,15 @@ describe("every notes subtopic route uses the helper", () => {
 
   const routes = subtopicRoutes(root);
 
-  it("finds the subtopic routes", () => {
-    expect(routes.length).toBeGreaterThan(200);
+  it("finds one subtopic route per notes subject", () => {
+    expect(routes.length).toBeGreaterThanOrEqual(40);
+    for (const file of routes) expect(file, file).toMatch(/\[chapterSlug\][\\/]\[subtopicSlug\]/);
+  });
+
+  it("every subject route builds its params through the shared helper", () => {
+    const helper = fs.readFileSync(path.join(root, "_components", "notesRoutes.tsx"), "utf8");
+    expect(helper).toMatch(/notesPrerenderParams\(c\.slugs\)/);
+    for (const file of routes) expect(fs.readFileSync(file, "utf8"), file).toMatch(/makeSubtopicRoute\(/);
   });
 
   it("no route prerenders every subtopic directly", () => {

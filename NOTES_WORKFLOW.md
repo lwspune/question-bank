@@ -107,7 +107,7 @@ Under `src/app/notes/<exam>/<chapter>/_data/`:
 - **Markup in body fields** (2026-05-29): use `**bold**` for key terms (renders via KatexRenderer / RichText), and in the `definition` field use `- ` line-prefixed **bullets** when the definition is list-shaped (enumerates terms/types/properties) — `RichText` renders them as a `<ul>`. Keep narrative definitions as prose; don't force single statements into bullets. `**`/`- ` are literal in the plain-text fields above — never use them there.
 - `index.ts` re-exports the union as `<CHAPTER>_NOTES: Record<slug, SubtopicNote>` and `<CHAPTER>_SLUGS: string[]`.
 
-**No page files to write.** The chapter's `page.tsx` + `[subtopicSlug]/page.tsx` are thin wrappers — clone the Statistics pair, swap the two `getNotesChapterBySlug(...)` args. ALL data-loading + layout lives in the shared `NotesChapterLanding` / `NotesSubtopicPage`.
+**No page files to write (since 2026-11-05).** Every chapter of a subject is served by that subject's `[chapterSlug]/page.tsx` + `[chapterSlug]/[subtopicSlug]/page.tsx`, so registering the chapter in `src/lib/notes/chapters.ts` (below) is what publishes it; do NOT add a `page.tsx` in the chapter folder (`tests/notes-shared-routes.test.ts` fails on one). A NEW subject needs its two route files: copy `src/app/notes/nda-maths/[chapterSlug]/` and change the subject string in both. ALL data-loading + layout lives in `_components/notesRoutes.tsx` and the shared `NotesChapterLanding` / `NotesSubtopicPage`. Why: TECH_DEBT_SPEC.md 2.2.
 
 **The slug is the stable contract** — once a chapter ships, never rename a concept `slug` without a matching UPDATE on `question_concept_tags`. Notes-lint flags orphan slugs as errors but only after they've already broken pages.
 

@@ -7,6 +7,7 @@ import {
   getNotesChapterBySlug,
   getNotesChaptersForSubject,
 } from "@/lib/notes/chapters";
+import { appPageExists } from "./helpers/appRoutes";
 
 describe("NOTES_CHAPTERS registry shape", () => {
   it("registers at least the two shipped chapters (Statistics + Vectors)", () => {
@@ -44,7 +45,7 @@ describe("NOTES_CHAPTERS registry shape", () => {
   // 2026-09-29 (the subtopic pages existed; the chapter landing did not) and no gate noticed.
   it("every registered chapter has a chapter landing page", () => {
     const missing = NOTES_CHAPTERS.filter(
-      (c) => !existsSync(path.join(process.cwd(), "src", "app", "notes", c.subjectRoute, c.chapterSlug, "page.tsx"))
+      (c) => !appPageExists(`/notes/${c.subjectRoute}/${c.chapterSlug}`)
     ).map((c) => `${c.subjectRoute}/${c.chapterSlug}`);
     expect(missing).toEqual([]);
   });

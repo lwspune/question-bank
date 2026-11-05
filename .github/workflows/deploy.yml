@@ -105,7 +105,17 @@ jobs:
           VERCEL: "1"
           NOTES_FULL_PRERENDER: "1"
           NODE_OPTIONS: --max-old-space-size=8192
-        run: npx --yes "$VERCEL_CLI" build --prod --token=${{ secrets.VERCEL_TOKEN }}
+        # GNU time logs the build's peak memory ("Maximum resident set size", of the
+        # largest single process: the one that ran out on 2026-11-04) so the heap limit
+        # above can be sized from a measurement (TECH_DEBT_SPEC.md 2.0). Used only if the
+        # runner image has it; the build never fails for want of it.
+        run: |
+          if [ -x /usr/bin/time ]; then
+            /usr/bin/time -v npx --yes "$VERCEL_CLI" build --prod --token=${{ secrets.VERCEL_TOKEN }}
+          else
+            echo "::notice::/usr/bin/time not on this runner; peak build memory not logged"
+            npx --yes "$VERCEL_CLI" build --prod --token=${{ secrets.VERCEL_TOKEN }}
+          fi
 
       # The last line of defence: a placeholder that reached a page, a script or
       # a function's settings would break the live site quietly, so its
