@@ -120,9 +120,19 @@ describe.skipIf(!HAS_ENV)("filter facets RPCs", () => {
     });
 
     it("narrows counts when a pyq_year filter is applied", async () => {
-      // Pick the most recent year in the bank
-      const { data: years } = await client.rpc("get_pyq_years");
-      const recentYear = (years as number[])[0];
+      // The most recent year among NDA Maths questions. Not get_pyq_years()[0]: that spans every
+      // exam, and other suites' fixtures carry year 2099 while they run, which made this count 0
+      // whenever the two overlapped (seen twice after the Vitest 5 upgrade, 2026-11-05).
+      const { data: latest } = await client
+        .from("questions")
+        .select("pyq_year")
+        .eq("exam_id", ndaExamId)
+        .eq("subject_id", mathsSubjectId)
+        .not("pyq_year", "is", null)
+        .order("pyq_year", { ascending: false })
+        .limit(1)
+        .single();
+      const recentYear = (latest as { pyq_year: number }).pyq_year;
 
       const { data: unfiltered } = await client.rpc("get_chapter_facets", {
         p_exam_id: ndaExamId,

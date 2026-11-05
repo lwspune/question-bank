@@ -76,7 +76,10 @@ describe.skipIf(!HAS_ENV)("queryQuestions (against LWS Pune seed)", () => {
     // holds, not the exact total.
     expect(result.totalCount).toBeGreaterThanOrEqual(150);
     expect(result.rows).toHaveLength(25);
-    expect(result.rows[0].options).toHaveLength(4);
+    // Rows come newest first, so rows[0] can be a fixture another suite inserted a moment ago
+    // with no options yet (it failed that way twice after the Vitest 5 upgrade, 2026-11-05).
+    // What this checks is that a page's MCQs arrive with their options attached.
+    expect(result.rows.filter((r) => r.options.length === 4).length).toBeGreaterThan(0);
   });
 
   it("hands onPageIds the page's ids, in page order, before the rows come back", async () => {
