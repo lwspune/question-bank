@@ -5,7 +5,7 @@
  * already checked requireSuperadmin.
  */
 import "server-only";
-import { createSupabaseAdminClient } from "@/lib/supabase/admin";
+import { createTypedAdminClient } from "@/lib/supabase/admin";
 import { getExamByName, getExamBySlug } from "@/lib/exam/examContext";
 import type { StaffMark } from "./mark";
 import { tallyOutcomes, type ResultOutcome } from "./check";
@@ -43,7 +43,7 @@ type RawResult = {
 };
 
 export async function listResultsForReview(): Promise<ReviewAnnouncement[]> {
-  const db = createSupabaseAdminClient();
+  const db = createTypedAdminClient();
   const { data: anns, error: aErr } = await db
     .from("result_announcements")
     .select("id, sitting, stage, announced_on, ask_until, exams(name)")
@@ -63,7 +63,7 @@ export async function listResultsForReview(): Promise<ReviewAnnouncement[]> {
     if (!data || data.length < 1000) break;
   }
 
-  return ((anns ?? []) as unknown as RawAnnouncement[]).map((a) => {
+  return ((anns ?? []) as RawAnnouncement[]).map((a) => {
     const mine = rows.filter((r) => r.announcement_id === a.id);
     const named = (r: RawResult): ReviewName => ({ id: r.id, name: r.display_name ?? "", source: r.source });
     return {
@@ -84,7 +84,7 @@ export async function listResultsForReview(): Promise<ReviewAnnouncement[]> {
  * Returns the exam's slug, so the caller can refresh that exam's pages.
  */
 export async function reviewResult(id: string, action: "publish" | "unpublish" | "decline"): Promise<string | null> {
-  const db = createSupabaseAdminClient();
+  const db = createTypedAdminClient();
   const patch =
     action === "publish"
       ? { published: true }
@@ -98,8 +98,7 @@ export async function reviewResult(id: string, action: "publish" | "unpublish" |
     .select("result_announcements(exams(name))")
     .single();
   if (error) throw new Error(`student results review: ${error.message}`);
-  const name = (data as unknown as { result_announcements: { exams: { name: string } | null } | null })
-    .result_announcements?.exams?.name;
+  const name = data.result_announcements?.exams?.name;
   return getExamByName(name)?.slug ?? null;
 }
 
@@ -107,14 +106,14 @@ export async function reviewResult(id: string, action: "publish" | "unpublish" |
 export type AnnouncementOption = { id: string; label: string; examSlug: string };
 
 export async function listAnnouncementOptions(): Promise<AnnouncementOption[]> {
-  const db = createSupabaseAdminClient();
+  const db = createTypedAdminClient();
   const { data, error } = await db
     .from("result_announcements")
     .select("id, sitting, stage, announced_on, exams(name)")
     .order("announced_on", { ascending: false })
     .limit(200);
   if (error) throw new Error(`result announcements: ${error.message}`);
-  return ((data ?? []) as unknown as RawAnnouncement[]).flatMap((a) => {
+  return ((data ?? []) as RawAnnouncement[]).flatMap((a) => {
     const exam = getExamByName(a.exams?.name);
     if (!exam) return [];
     return [{ id: a.id, label: `${a.sitting} · ${STAGE_LABEL[a.stage]}`, examSlug: exam.slug }];
@@ -125,15 +124,18 @@ export async function listAnnouncementOptions(): Promise<AnnouncementOption[]> {
 export type StudentResultRow = { id: string; label: string; name: string | null; published: boolean; source: "self" | "staff"; outcome: ResultOutcome };
 
 export async function listStudentResults(userId: string): Promise<StudentResultRow[]> {
-  const db = createSupabaseAdminClient();
+  const db = createTypedAdminClient();
   const { data, error } = await db
     .from("student_results")
     .select("id, outcome, display_name, published, source, result_announcements(sitting, stage, exams(name))")
     .eq("user_id", userId)
     .order("created_at", { ascending: false });
   if (error) throw new Error(`student results: ${error.message}`);
-  type Row = RawResult & { result_announcements: { sitting: string; stage: ResultStage } | null };
-  return ((data ?? []) as unknown as Row[]).map((r) => ({
+  // Only the columns this query selects (the typed client caught the old type claiming two more).
+  type Row = Pick<RawResult, "id" | "outcome" | "display_name" | "published" | "source"> & {
+    result_announcements: { sitting: string; stage: ResultStage } | null;
+  };
+  return ((data ?? []) as Row[]).map((r) => ({
     id: r.id,
     label: r.result_announcements ? `${r.result_announcements.sitting} · ${STAGE_LABEL[r.result_announcements.stage]}` : "?",
     name: r.display_name,
@@ -156,7 +158,7 @@ function addDays(iso: string, days: number): string {
  * on /me for three weeks. Returns the exam's slug for the caller's refresh.
  */
 export async function markStudentResult(mark: StaffMark, todayIso: string): Promise<string> {
-  const db = createSupabaseAdminClient();
+  const db = createTypedAdminClient();
   let announcementId: string;
   let examSlug: string;
 
@@ -167,7 +169,7 @@ export async function markStudentResult(mark: StaffMark, todayIso: string): Prom
       .eq("id", mark.target.id)
       .single();
     if (error || !data) throw new Error("That result no longer exists.");
-    const exam = getExamByName((data as unknown as { exams: { name: string } | null }).exams?.name);
+    const exam = getExamByName(data.exams?.name);
     if (!exam) throw new Error("That result's exam is not on the site.");
     announcementId = data.id as string;
     examSlug = exam.slug;

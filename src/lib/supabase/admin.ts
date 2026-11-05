@@ -1,4 +1,5 @@
 import { createClient } from "@supabase/supabase-js";
+import type { Database } from "@/types/db";
 import { buildFetch } from "./buildFetch";
 
 /**
@@ -10,15 +11,21 @@ import { buildFetch } from "./buildFetch";
  * supabase-js uses its own.
  */
 export function createSupabaseAdminClient() {
+  return createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, serviceRoleKey(), adminOptions());
+}
+
+/** The same service-role client, typed from the schema (src/types/db.ts). Use it for new code. */
+export function createTypedAdminClient() {
+  return createClient<Database>(process.env.NEXT_PUBLIC_SUPABASE_URL!, serviceRoleKey(), adminOptions());
+}
+
+function serviceRoleKey(): string {
   if (!process.env.SUPABASE_SERVICE_ROLE_KEY) {
     throw new Error("SUPABASE_SERVICE_ROLE_KEY is not set");
   }
-  return createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.SUPABASE_SERVICE_ROLE_KEY,
-    {
-      auth: { persistSession: false, autoRefreshToken: false },
-      global: { fetch: buildFetch() },
-    }
-  );
+  return process.env.SUPABASE_SERVICE_ROLE_KEY;
+}
+
+function adminOptions() {
+  return { auth: { persistSession: false, autoRefreshToken: false }, global: { fetch: buildFetch() } };
 }

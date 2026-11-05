@@ -12,7 +12,7 @@
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
     "db:seed": "tsx scripts/seed.ts",
-    "db:types": "supabase gen types typescript --project-id $SUPABASE_PROJECT_REF --schema public > src/types/db.ts",
+    "db:types": "tsx scripts/db/gen-types.ts",
     "extract:taxonomy": "tsx scripts/extract-taxonomy.ts",
     "notes:lint": "tsx scripts/notes-lint.ts",
     "notes:latex": "tsx scripts/notes-latex-audit.ts",
