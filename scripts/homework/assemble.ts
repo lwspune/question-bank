@@ -23,9 +23,10 @@
  */
 import { readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
+import { addReprints, type AssembledGroup } from "@/lib/homework/reprints";
 import { compareSittings } from "@/lib/homework/sittings";
 
-type Slot = { id: string; rows: string[]; year: string; chapter: string };
+type Slot = { id: string; rows: string[]; year: string; chapter: string; also?: string[] };
 type Review = {
   chapter: string;
   repeats: { label: string; members: { id: string; changed: boolean }[] }[];
@@ -67,7 +68,7 @@ function main() {
   const errors: string[] = [];
   const inRepeat = new Map<string, string>();
   const inType = new Map<string, string>();
-  const groups: object[] = [];
+  let groups: AssembledGroup[] = [];
   const files = readdirSync(join(dir, "out")).filter((f) => f.endsWith(".json")).sort();
   // A review of an excluded chapter is ignored, not merged.
 
@@ -106,6 +107,8 @@ function main() {
       groups.push({ tier: "type", label: g.label, sittings: [...years].sort(compareSittings), questionIds: g.members });
     }
   }
+  // A question a later shift reprinted counts those shifts too (SSC CGL repeats.json).
+  groups = addReprints(groups, new Map(slots.filter((s) => s.also).map((s) => [s.id, s.also!])), (id) => byId.get(id)!.year);
   if (errors.length) {
     console.error(`REFUSED: ${errors.length} problem(s)\n  ${errors.slice(0, 40).join("\n  ")}`);
     process.exit(1);
@@ -119,6 +122,8 @@ function main() {
     // Repeats and types are ranked together by count since 2026-11-04 (lib/homework/plan.ts).
     summary: examName === "NDA" || examName === "CDS"
       ? `${examName} ${subjectName} past questions, ${sittings[0]} to ${sittings[sittings.length - 1]}, five a day. Questions UPSC asked again and the question types it keeps asking come first, ranked together by how often they were asked, then every other question. A set of linked items counts as one question.`
+      : examName === "SSC CGL"
+      ? `SSC CGL Tier I ${subjectName} past questions from ${sittings.length} shifts, ${sittings[0].slice(-7, -3)} to ${sittings[sittings.length - 1].slice(-7, -3)}, five a day. Questions SSC asked again and the question types it keeps asking come first, ranked together by how often they were asked, then every other question. A set of linked items counts as one question.`
       : examName === "MHT-CET"
       ? `MHT-CET ${subjectName} past questions from ${sittings.length} shifts, ${sittings[0].slice(-7, -3)} to ${sittings[sittings.length - 1].slice(-7, -3)}, five a day. Questions asked again in another shift and the question types that keep coming back come first, ranked together by how often they were asked, then every other question.`
       : isPapers
