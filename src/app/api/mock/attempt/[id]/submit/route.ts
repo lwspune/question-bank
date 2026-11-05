@@ -11,7 +11,8 @@ import { submitAttempt, MockError } from "@/lib/mocks/service";
 
 const BodySchema = z.object({ reason: z.enum(["manual", "expired"]).optional() });
 
-export async function POST(req: NextRequest, { params }: { params: { id: string } }) {
+export async function POST(req: NextRequest, props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   const user = await getSessionUser();
   if (!user) return NextResponse.json({ error: "Not signed in." }, { status: 401 });
   let reason: "manual" | "expired" = "manual";

@@ -204,7 +204,8 @@ function ChapterBlock({ chapter, ctx }: { chapter: PlannedChapter; ctx: PlanCont
   );
 }
 
-export default async function PlannerPage({ params }: { params: Params }) {
+export default async function PlannerPage(props: { params: Promise<Params> }) {
+  const params = await props.params;
   const member = await getSessionMember();
   if (!member) redirect("/login");
 

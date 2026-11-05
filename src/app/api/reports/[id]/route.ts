@@ -17,10 +17,8 @@ import { recordTriageReview } from "@/lib/reviews/emit";
  * Auth: ADMIN only (their own-org reports by RLS). Used by the
  * /dashboard/reports triage page to mark status transitions.
  */
-export async function PATCH(
-  request: NextRequest,
-  { params }: { params: { id: string } }
-) {
+export async function PATCH(request: NextRequest, props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   try {
     const member = await requireAdmin();
     const body = await request.json().catch(() => null);

@@ -22,7 +22,8 @@ const DAY_MS = 24 * 60 * 60 * 1000;
 /** Papers a student may start from friends' invites in a day (each one is free). */
 const JOIN_LIMIT = 20;
 
-export async function POST(req: NextRequest, { params }: { params: { slug: string } }) {
+export async function POST(req: NextRequest, props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params;
   const user = await getSessionUser();
   if (!user) return NextResponse.json({ error: "Sign in to start a mock test." }, { status: 401 });
 

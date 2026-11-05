@@ -29,7 +29,8 @@ async function load(params: Params) {
   return { exam, subjectName: papers[0].subjectName, years: subjectListing(papers), count: papers.length };
 }
 
-export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+export async function generateMetadata(props: { params: Promise<Params> }): Promise<Metadata> {
+  const params = await props.params;
   const data = await load(params);
   if (!data) return { title: "Question papers" };
   return {
@@ -39,7 +40,8 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   };
 }
 
-export default async function SubjectPapers({ params }: { params: Params }) {
+export default async function SubjectPapers(props: { params: Promise<Params> }) {
+  const params = await props.params;
   const data = await load(params);
   if (!data) notFound();
   const { exam, subjectName, years } = data;

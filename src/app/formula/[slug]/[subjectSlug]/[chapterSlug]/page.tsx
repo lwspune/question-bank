@@ -42,7 +42,7 @@ import { canonicalFor } from "@/lib/sites/intl";
 
 export const revalidate = 86400;
 
-type Params = { params: { slug: string; subjectSlug: string; chapterSlug: string } };
+type Params = { params: Promise<{ slug: string; subjectSlug: string; chapterSlug: string }> };
 
 /**
  * Called once per parent [slug] when the parent pre-builds; returns this
@@ -62,7 +62,8 @@ export function generateStaticParams({ params }: { params: { slug?: string } }) 
     );
 }
 
-export function generateMetadata({ params }: Params): Metadata {
+export async function generateMetadata(props: Params): Promise<Metadata> {
+  const params = await props.params;
   const page = findFormulaChapterPage(params.slug, params.subjectSlug, params.chapterSlug);
   if (!page) return { title: "Formulas not found" };
   const title = formulaChapterTitle({
@@ -79,7 +80,8 @@ export function generateMetadata({ params }: Params): Metadata {
   };
 }
 
-export default function ChapterFormulaPage({ params }: Params) {
+export default async function ChapterFormulaPage(props: Params) {
+  const params = await props.params;
   const page = findFormulaChapterPage(params.slug, params.subjectSlug, params.chapterSlug);
   if (!page) notFound();
   const chapter = getNotesChapterBySlug(page.subjectRoute, page.notesChapterSlug);

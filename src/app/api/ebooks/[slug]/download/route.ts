@@ -12,7 +12,8 @@ export const maxDuration = 120;
  * stamped copy. Every rule (owns it, five downloads, stamped once per master)
  * lives in lib/ebooks/download.ts.
  */
-export async function POST(_request: Request, { params }: { params: { slug: string } }) {
+export async function POST(_request: Request, props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params;
   const user = await getSessionUser();
   if (!user?.email) return NextResponse.json({ error: "Sign in to download your book" }, { status: 401 });
   const result = await prepareEbookDownload({

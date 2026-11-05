@@ -7,10 +7,8 @@ import { deleteQuestion } from "@/lib/questions/deleteQuestion";
 
 export const maxDuration = 60;
 
-export async function PUT(
-  request: NextRequest,
-  { params }: { params: { id: string } }
-) {
+export async function PUT(request: NextRequest, props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   try {
     // Content editing is superadmin-only (migration 0056). The superadmin uses
     // their org membership for the org-scoped edit; cross-org edits go through
@@ -97,10 +95,8 @@ export async function PUT(
   }
 }
 
-export async function DELETE(
-  _request: NextRequest,
-  { params }: { params: { id: string } }
-) {
+export async function DELETE(_request: NextRequest, props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   try {
     await requireSuperadmin();
     const member = await getSessionMember();

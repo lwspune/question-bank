@@ -26,11 +26,12 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-export default async function VocabChapterPrintPage({
-  params,
-}: {
-  params: { chapterSlug: string };
-}) {
+export default async function VocabChapterPrintPage(
+  props: {
+    params: Promise<{ chapterSlug: string }>;
+  }
+) {
+  const params = await props.params;
   if (!(await getSessionSuperadmin())) redirect("/browse");
 
   const view = await loadVocabChapter(

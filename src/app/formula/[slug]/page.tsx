@@ -50,7 +50,7 @@ export function generateStaticParams() {
   return [...allFormulaSlugs(), ...formulaExamSlugs()].map((slug) => ({ slug }));
 }
 
-type Params = { params: { slug: string } };
+type Params = { params: Promise<{ slug: string }> };
 
 const KIND_LABEL: Record<FormulaKind, string> = {
   formula: "Formula",
@@ -58,7 +58,8 @@ const KIND_LABEL: Record<FormulaKind, string> = {
   technique: "Technique",
 };
 
-export async function generateMetadata({ params }: Params): Promise<Metadata> {
+export async function generateMetadata(props: Params): Promise<Metadata> {
+  const params = await props.params;
   const hub = formulaExamGroup(params.slug);
   if (hub) return formulaExamHubMetadata(hub);
   const entry = formulaBySlug(params.slug);
@@ -98,7 +99,8 @@ function Stat({ value, label }: { value: string; label: string }) {
   );
 }
 
-export default async function FormulaPage({ params }: Params) {
+export default async function FormulaPage(props: Params) {
+  const params = await props.params;
   const hub = formulaExamGroup(params.slug);
   if (hub) return <FormulaExamHub group={hub} />;
   const entry = formulaBySlug(params.slug);

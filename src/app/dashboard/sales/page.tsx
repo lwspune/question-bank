@@ -165,7 +165,8 @@ function DeclinesCard({ summary }: { summary: DeclineSummary | null }) {
  * created on Razorpay since 0199; the pass funnel in students since 0200) and,
  * for distinct students over a card's days, public.sales_funnel_students.
  */
-export default async function SalesPage({ searchParams }: { searchParams?: { view?: string } }) {
+export default async function SalesPage(props: { searchParams?: Promise<{ view?: string }> }) {
+  const searchParams = await props.searchParams;
   if (!(await getSessionSuperadmin())) redirect("/browse");
 
   const grain = parseGrain(searchParams?.view);

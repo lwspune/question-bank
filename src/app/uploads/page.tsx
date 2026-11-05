@@ -20,10 +20,11 @@ export const metadata = {
 };
 
 type PageProps = {
-  searchParams: { page?: string };
+  searchParams: Promise<{ page?: string }>;
 };
 
-export default async function UploadsIndexPage({ searchParams }: PageProps) {
+export default async function UploadsIndexPage(props: PageProps) {
+  const searchParams = await props.searchParams;
   const member = await getSessionMember();
   if (!member) redirect("/login");
   if (member.role !== "ADMIN") redirect("/dashboard");

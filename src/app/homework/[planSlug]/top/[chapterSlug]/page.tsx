@@ -38,7 +38,8 @@ async function load(params: Params) {
   return { plan: page.plan, chapters: page.chapters, chapter, top };
 }
 
-export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+export async function generateMetadata(props: { params: Promise<Params> }): Promise<Metadata> {
+  const params = await props.params;
   const data = await load(params);
   if (!data) return { title: "Top 10 PYQs" };
   const { plan, chapter } = data;
@@ -51,7 +52,8 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   };
 }
 
-export default async function HomeworkTopChapterPage({ params }: { params: Params }) {
+export default async function HomeworkTopChapterPage(props: { params: Promise<Params> }) {
+  const params = await props.params;
   const data = await load(params);
   if (!data) notFound();
   const { plan, chapters, chapter, top } = data;

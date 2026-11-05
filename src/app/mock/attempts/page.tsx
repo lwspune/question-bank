@@ -14,7 +14,8 @@ import AttemptsTrend from "./AttemptsTrend";
 
 export const metadata: Metadata = { title: "My mock attempts", robots: { index: false } };
 
-export default async function MyAttemptsPage({ searchParams }: { searchParams: { subject?: string } }) {
+export default async function MyAttemptsPage(props: { searchParams: Promise<{ subject?: string }> }) {
+  const searchParams = await props.searchParams;
   const user = await getSessionUser();
   if (!user) redirect("/login?next=/mock/attempts");
 

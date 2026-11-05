@@ -28,7 +28,8 @@ function examFor(slug: string) {
   return PYQVAULT_EXAMS.find((e) => e.slug === slug) ?? null;
 }
 
-export function generateMetadata({ params }: { params: Params }): Metadata {
+export async function generateMetadata(props: { params: Promise<Params> }): Promise<Metadata> {
+  const params = await props.params;
   const exam = examFor(params.examSlug);
   if (!exam) return { title: "Daily homework" };
   return {
@@ -38,7 +39,8 @@ export function generateMetadata({ params }: { params: Params }): Metadata {
   };
 }
 
-export default async function HomeworkExamPage({ params }: { params: Params }) {
+export default async function HomeworkExamPage(props: { params: Promise<Params> }) {
+  const params = await props.params;
   const exam = examFor(params.examSlug);
   if (!exam) notFound();
   const plans = await listPublishedPlans(createSupabaseAnonClient(), { examName: exam.examName });

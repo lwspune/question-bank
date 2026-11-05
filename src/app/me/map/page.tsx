@@ -52,7 +52,8 @@ const BAND_LABEL: Record<Band, string> = {
   unknown: "not tested yet",
 };
 
-export default async function MasteryMapPage({ searchParams }: { searchParams: Search }) {
+export default async function MasteryMapPage(props: { searchParams: Promise<Search> }) {
+  const searchParams = await props.searchParams;
   const user = await getSessionUser();
   if (!user) redirect("/login?next=/me/map");
 

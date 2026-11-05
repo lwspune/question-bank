@@ -24,7 +24,8 @@ export const dynamic = "force-dynamic";
  * at another branch's batch — and loadRoster reads enrollments and attempts the
  * same way, so a mistake on this page cannot widen what it shows.
  */
-export default async function RosterPage({ params }: { params: { id: string } }) {
+export default async function RosterPage(props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   const member = await getSessionMember();
   if (!member) redirect("/login");
 

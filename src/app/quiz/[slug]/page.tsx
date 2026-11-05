@@ -12,7 +12,8 @@ export const revalidate = 86400;
 
 type Params = { slug: string };
 
-export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+export async function generateMetadata(props: { params: Promise<Params> }): Promise<Metadata> {
+  const params = await props.params;
   const quiz = await getPublicQuizBySlug(createSupabaseAdminClient(), params.slug);
   if (!quiz) return { title: "Quiz not found" };
   const subject = [quiz.exam, quiz.subject].filter(Boolean).join(" ");
@@ -28,7 +29,8 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   };
 }
 
-export default async function PublicQuizPage({ params }: { params: Params }) {
+export default async function PublicQuizPage(props: { params: Promise<Params> }) {
+  const params = await props.params;
   const quiz = await getPublicQuizBySlug(createSupabaseAdminClient(), params.slug);
   if (!quiz) notFound();
   return (

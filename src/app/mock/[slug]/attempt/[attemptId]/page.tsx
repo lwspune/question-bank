@@ -9,7 +9,8 @@ export const metadata: Metadata = { robots: { index: false } };
 
 type Params = { slug: string; attemptId: string };
 
-export default async function MockAttemptPage({ params }: { params: Params }) {
+export default async function MockAttemptPage(props: { params: Promise<Params> }) {
+  const params = await props.params;
   const user = await getSessionUser();
   if (!user) redirect(`/login?next=/mock/${params.slug}`);
 

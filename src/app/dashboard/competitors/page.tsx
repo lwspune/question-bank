@@ -19,7 +19,8 @@ export const dynamic = "force-dynamic";
 
 export const metadata = { title: "Competitors", robots: { index: false } };
 
-export default async function CompetitorsPage({ searchParams }: { searchParams: { audience?: string } }) {
+export default async function CompetitorsPage(props: { searchParams: Promise<{ audience?: string }> }) {
+  const searchParams = await props.searchParams;
   if (!(await getSessionSuperadmin())) redirect("/browse");
 
   const current = AUDIENCES.find((a) => a.id === searchParams.audience) ?? AUDIENCES[0];

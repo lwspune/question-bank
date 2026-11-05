@@ -22,11 +22,12 @@ function safeNext(raw: string | string[] | undefined): string {
   return typeof v === "string" && v.startsWith("/") && !v.startsWith("//") ? v : "/browse";
 }
 
-export default async function WelcomePage({
-  searchParams,
-}: {
-  searchParams: { next?: string | string[] };
-}) {
+export default async function WelcomePage(
+  props: {
+    searchParams: Promise<{ next?: string | string[] }>;
+  }
+) {
+  const searchParams = await props.searchParams;
   const next = safeNext(searchParams.next);
 
   const user = await getSessionUser();
@@ -39,7 +40,7 @@ export default async function WelcomePage({
 
   // Pre-select the exam they were already browsing (the qb_exam cookie), so the
   // first real ask is a confirm, not a cold question.
-  const cookieExam = cookies().get("qb_exam")?.value;
+  const cookieExam = (await cookies()).get("qb_exam")?.value;
   const initialExam = isExamSlug(cookieExam) ? cookieExam : null;
 
   return (

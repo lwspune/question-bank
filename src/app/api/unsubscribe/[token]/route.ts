@@ -20,7 +20,8 @@ import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
-export async function POST(_request: Request, { params }: { params: { token: string } }) {
+export async function POST(_request: Request, props: { params: Promise<{ token: string }> }) {
+  const params = await props.params;
   const token = params.token;
   // Shape-check before touching the DB: `unsubscribe_token` is uuid, so a
   // non-uuid would be a 22P02 cast error rather than a clean miss.

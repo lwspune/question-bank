@@ -7,7 +7,8 @@ import { ebookStatus } from "@/lib/ebooks/status";
 export const dynamic = "force-dynamic";
 
 /** GET /api/ebooks/<slug>/status: the buy box's per-visitor state (lib/ebooks/status). */
-export async function GET(_request: Request, { params }: { params: { slug: string } }) {
+export async function GET(_request: Request, props: { params: Promise<{ slug: string }> }) {
+  const params = await props.params;
   const user = await getSessionUser();
   const status = await ebookStatus(
     createSupabaseServerClient(),

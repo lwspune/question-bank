@@ -36,7 +36,8 @@ export function generateStaticParams(): Params[] {
   );
 }
 
-export function generateMetadata({ params }: { params: Params }): Metadata {
+export async function generateMetadata(props: { params: Promise<Params> }): Promise<Metadata> {
+  const params = await props.params;
   const exam = getMockExam(params.examSlug);
   const type = parseMockType(params.type);
   if (!exam || !type) return {};
@@ -60,7 +61,8 @@ export function generateMetadata({ params }: { params: Params }): Metadata {
  * (useSearchParams) or make the route dynamic (server searchParams) — and these
  * pages are ISR-cached, indexable, and among the ones the sitemap points at.
  */
-export default async function MockTypeList({ params }: { params: Params }) {
+export default async function MockTypeList(props: { params: Promise<Params> }) {
+  const params = await props.params;
   const exam = getMockExam(params.examSlug);
   const type = parseMockType(params.type);
   // An unknown type 404s rather than falling back to past papers: a fallback

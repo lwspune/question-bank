@@ -33,7 +33,8 @@ const pastPapersOf = cache(async (examName: string) => {
   );
 });
 
-export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+export async function generateMetadata(props: { params: Promise<Params> }): Promise<Metadata> {
+  const params = await props.params;
   const exam = getMockExam(params.examSlug);
   if (!exam) return {};
   // The words students search (2026-10-15): "previous year question papers",
@@ -53,7 +54,8 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
  * is the only per-viewer part, and it asks the browser, so this page stays a
  * cached copy that search engines can read.
  */
-export default async function MockDownloadList({ params }: { params: Params }) {
+export default async function MockDownloadList(props: { params: Promise<Params> }) {
+  const params = await props.params;
   const exam = getMockExam(params.examSlug);
   if (!exam) notFound();
 

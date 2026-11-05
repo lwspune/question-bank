@@ -45,16 +45,21 @@ export function createTypedServerClient(): SupabaseClient<Database> {
 }
 
 function serverOptions() {
+  // Next 16: cookies() returns a promise; the callbacks await it, so the factories above stay
+  // synchronous for their callers. It is CALLED here, at creation, on purpose: outside a request
+  // it throws right away, where the caller's try/catch sees it, as before Next 16. Called inside
+  // the callbacks, the same error surfaced later as an unhandled rejection (TECH_DEBT_SPEC.md 4.1).
   const cookieStore = cookies();
   return {
     global: { fetch: buildFetch() },
     cookies: {
-      getAll() {
-        return cookieStore.getAll();
+      async getAll() {
+        return (await cookieStore).getAll();
       },
-      setAll(cookiesToSet: CookieToSet[]) {
+      async setAll(cookiesToSet: CookieToSet[]) {
         try {
-          cookiesToSet.forEach(({ name, value, options }) => cookieStore.set(name, value, options));
+          const store = await cookieStore;
+          cookiesToSet.forEach(({ name, value, options }) => store.set(name, value, options));
         } catch {
           // Called from a Server Component where cookies are read-only.
           // The middleware refreshes the session cookie, so this can be ignored.

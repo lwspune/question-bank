@@ -81,7 +81,9 @@ export function makeCetPlaybookRoute(s: CetPlaybookSettings) {
       return s.playbooks.map((p) => ({ slug: p.slug }));
     },
 
-    async generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+    async generateMetadata({ params: paramsPromise }: { params: Promise<Params> }): Promise<Metadata> {
+
+      const params = await paramsPromise;
       const playbook = find(params.slug);
       if (!playbook) return { title: "Playbook not found" };
       return {
@@ -91,7 +93,9 @@ export function makeCetPlaybookRoute(s: CetPlaybookSettings) {
       };
     },
 
-    async Page({ params }: { params: Params }) {
+    async Page({ params: paramsPromise }: { params: Promise<Params> }) {
+
+      const params = await paramsPromise;
       const playbook = find(params.slug);
       const detail = s.details[params.slug];
       // Every playbook has a deep dive; a half-populated page would be worse than a 404.

@@ -30,11 +30,13 @@ export function makeChapterRoute(subjectRoute: string) {
     generateStaticParams(): ChapterParams[] {
       return notesChapterMetasForSubject(subjectRoute).map((c) => ({ chapterSlug: c.chapterSlug }));
     },
-    async generateMetadata({ params }: { params: ChapterParams }): Promise<Metadata> {
+    async generateMetadata({ params: paramsPromise }: { params: Promise<ChapterParams> }): Promise<Metadata> {
+      const params = await paramsPromise;
       const chapter = await loadNotesChapter(subjectRoute, params.chapterSlug);
       return chapter ? buildChapterMetadata(chapter) : {};
     },
-    async Page({ params }: { params: ChapterParams }) {
+    async Page({ params: paramsPromise }: { params: Promise<ChapterParams> }) {
+      const params = await paramsPromise;
       const chapter = await loadNotesChapter(subjectRoute, params.chapterSlug);
       if (!chapter) notFound();
       return <NotesChapterLanding chapter={chapter} />;
@@ -50,11 +52,13 @@ export function makeSubtopicRoute(subjectRoute: string) {
         notesPrerenderParams(`${subjectRoute}/${c.chapterSlug}`, c.slugs).map((p) => ({ chapterSlug: c.chapterSlug, ...p }))
       );
     },
-    async generateMetadata({ params }: { params: SubtopicParams }): Promise<Metadata> {
+    async generateMetadata({ params: paramsPromise }: { params: Promise<SubtopicParams> }): Promise<Metadata> {
+      const params = await paramsPromise;
       const chapter = await loadNotesChapter(subjectRoute, params.chapterSlug);
       return chapter ? buildSubtopicMetadata(chapter, params.subtopicSlug) : {};
     },
-    async Page({ params }: { params: SubtopicParams }) {
+    async Page({ params: paramsPromise }: { params: Promise<SubtopicParams> }) {
+      const params = await paramsPromise;
       const chapter = await loadNotesChapter(subjectRoute, params.chapterSlug);
       if (!chapter) notFound();
       return <NotesSubtopicPage chapter={chapter} subtopicSlug={params.subtopicSlug} />;

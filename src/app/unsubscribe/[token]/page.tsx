@@ -17,7 +17,8 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-export default function UnsubscribePage({ params }: { params: { token: string } }) {
+export default async function UnsubscribePage(props: { params: Promise<{ token: string }> }) {
+  const params = await props.params;
   return (
     <>
       <AppHeader />

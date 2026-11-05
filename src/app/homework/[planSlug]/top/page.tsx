@@ -28,7 +28,8 @@ async function load(slug: string) {
   return getPlanChapters(createSupabaseAnonClient(), slug);
 }
 
-export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+export async function generateMetadata(props: { params: Promise<Params> }): Promise<Metadata> {
+  const params = await props.params;
   const data = await load(params.planSlug);
   if (!data) return { title: "Top 10 PYQs" };
   const { plan } = data;
@@ -39,7 +40,8 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   };
 }
 
-export default async function HomeworkTopListPage({ params }: { params: Params }) {
+export default async function HomeworkTopListPage(props: { params: Promise<Params> }) {
+  const params = await props.params;
   const data = await load(params.planSlug);
   if (!data) notFound();
   const { plan, chapters } = data;

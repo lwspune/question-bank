@@ -90,7 +90,7 @@ export async function getSessionMember(): Promise<SessionMember | null> {
 export async function getPageIdentity(): Promise<PageIdentity> {
   // No Supabase cookie ⇒ no session ⇒ nothing to ask Supabase about. This is the
   // path the overwhelming majority of /browse traffic takes.
-  if (!hasSupabaseAuthCookie(cookies().getAll().map((c) => c.name))) {
+  if (!hasSupabaseAuthCookie((await cookies()).getAll().map((c) => c.name))) {
     return ANON_IDENTITY;
   }
 
@@ -127,7 +127,7 @@ export async function getPageIdentity(): Promise<PageIdentity> {
  */
 export async function getHeaderSession(): Promise<HeaderSession | null> {
   // Anon short-circuit: no Supabase cookie ⇒ no session to resolve.
-  if (!hasSupabaseAuthCookie(cookies().getAll().map((c) => c.name))) {
+  if (!hasSupabaseAuthCookie((await cookies()).getAll().map((c) => c.name))) {
     return null;
   }
 

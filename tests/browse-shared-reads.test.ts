@@ -37,7 +37,8 @@ describe("the remembered price list is cleared on every price save", () => {
 
   it("the plans route clears PLANS_CACHE_TAG in the helper every write calls", () => {
     const route = read("src/app/api/admin/plans/route.ts");
-    expect(route).toMatch(/function revalidateQuotingPages\(\)\s*\{[^}]*revalidateTag\(PLANS_CACHE_TAG\)/);
+    // Next 16: `{ expire: 0 }` keeps the Next 14 behaviour, the next view reads the new price.
+    expect(route).toMatch(/function revalidateQuotingPages\(\)\s*\{[^}]*revalidateTag\(PLANS_CACHE_TAG, \{ expire: 0 \}\)/);
     // Every write branch calls that helper: upsert, setActive, saveSettings.
     expect(route.match(/revalidateQuotingPages\(\);/g)?.length).toBe(3);
   });

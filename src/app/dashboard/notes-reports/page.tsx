@@ -24,11 +24,12 @@ const STATUS_OPTIONS: { value: "all" | ReportStatus; label: string }[] = [
   ...REPORT_STATUSES.map((s) => ({ value: s, label: REPORT_STATUS_LABELS[s] })),
 ];
 
-export default async function ConceptReportsTriagePage({
-  searchParams,
-}: {
-  searchParams: Search;
-}) {
+export default async function ConceptReportsTriagePage(
+  props: {
+    searchParams: Promise<Search>;
+  }
+) {
+  const searchParams = await props.searchParams;
   const member = await getSessionMember();
   if (!member) redirect("/login");
   if (member.role !== "ADMIN") notFound();

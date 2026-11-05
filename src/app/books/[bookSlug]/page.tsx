@@ -17,11 +17,12 @@ import { loadBookOverview } from "@/lib/books/query";
 
 export const dynamic = "force-dynamic";
 
-export default async function BookTocPage({
-  params,
-}: {
-  params: { bookSlug: string };
-}) {
+export default async function BookTocPage(
+  props: {
+    params: Promise<{ bookSlug: string }>;
+  }
+) {
+  const params = await props.params;
   if (!(await getSessionSuperadmin())) redirect("/browse");
 
   const book = getBookBySlug(params.bookSlug);

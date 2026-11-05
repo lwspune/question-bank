@@ -32,11 +32,12 @@ const SOURCE_LABEL: Record<string, string> = {
  *
  * See ITEM_STATS.md.
  */
-export default async function ItemStatsPage({
-  searchParams,
-}: {
-  searchParams?: { ratio?: string };
-}) {
+export default async function ItemStatsPage(
+  props: {
+    searchParams?: Promise<{ ratio?: string }>;
+  }
+) {
+  const searchParams = await props.searchParams;
   if (!(await getSessionSuperadmin())) redirect("/browse");
 
   const parsed = Number(searchParams?.ratio);

@@ -40,7 +40,8 @@ export const metadata: Metadata = { robots: { index: false } };
 
 type Params = { attemptId: string };
 
-export default async function MockResultPage({ params }: { params: Params }) {
+export default async function MockResultPage(props: { params: Promise<Params> }) {
+  const params = await props.params;
   const user = await getSessionUser();
   if (!user) redirect("/login?next=/mock");
 

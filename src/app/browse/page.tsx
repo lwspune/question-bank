@@ -107,7 +107,8 @@ function paramsFromSearch(
   return sp;
 }
 
-export default async function BrowsePage({ searchParams }: PageProps) {
+export default async function BrowsePage(props: PageProps) {
+  const searchParams = await props.searchParams;
   // Public page: anon users are welcome. RLS scopes the question list.
   // isStaff (org member) unlocks the tagged sheet + "Add to paper"; any signed-in
   // account unlocks the paper/key downloads. Only resolve the user when not staff
@@ -123,7 +124,7 @@ export default async function BrowsePage({ searchParams }: PageProps) {
   // account with no org. Only a signed-in non-staff viewer needs the lookup.
   // Each host asks for its own passes (0206): www the Premium Pass (not the
   // Practice Pass, 2026-11-03), intl its exams'.
-  const passSite = isIntlHost(headers().get("host")) ? "intl" : "pyqvault";
+  const passSite = isIntlHost((await headers()).get("host")) ? "intl" : "pyqvault";
   const hasDownloadPass =
     isSignedIn && !isStaff ? await sessionHasAnyScope(downloadScopesFor(passSite)) : false;
 
@@ -133,7 +134,7 @@ export default async function BrowsePage({ searchParams }: PageProps) {
   // intl.pyqvault.com (2026-10-30): each host shows only its own exams. A bank
   // view of the other host's exam moves there, and a bare /browse on intl opens
   // its exam, since PYQ Vault's landing lists Indian exams.
-  const host = headers().get("host");
+  const host = (await headers()).get("host");
   const intl = isIntlHost(host);
   if (intl && !filters.examId && INTL_EXAMS[0]) {
     const examId = await getExamIdByName(INTL_EXAMS[0].examName);
@@ -168,7 +169,7 @@ export default async function BrowsePage({ searchParams }: PageProps) {
   // a practice-only exam, scope to it + default to Practice — mirroring what the
   // header "PYQs" tab does. A PYQ-first cookie leaves bare /browse untouched.
   else if (!filters.examId && !rawParams.has("kind")) {
-    const raw = cookies().get("qb_exam")?.value;
+    const raw = (await cookies()).get("qb_exam")?.value;
     const entry = isExamSlug(raw) ? getExamBySlug(raw) : null;
     if (
       shouldScopeToPracticeOnlyCookieExam({
@@ -313,7 +314,7 @@ export default async function BrowsePage({ searchParams }: PageProps) {
   const paperLinks = paperLinkMap(await papersPromise, yearsOf(questionsResult.rows));
 
   const downloadPass = plansPromise
-    ? passCta(offerForNeed(await plansPromise, downloadScopesFor(passSite)[0], passSite, readCountry(headers())))
+    ? passCta(offerForNeed(await plansPromise, downloadScopesFor(passSite)[0], passSite, readCountry(await headers())))
     : null;
   const freeDownloadLeft = freePromise ? await freePromise : false;
 
@@ -477,7 +478,7 @@ export default async function BrowsePage({ searchParams }: PageProps) {
                 exams={landing.exams}
                 chapters={landing.chapters}
                 chapterDirectoryCount={landing.chapterDirectoryCount}
-                chosenSlug={chosenExamSlug()}
+                chosenSlug={await chosenExamSlug()}
               />
             ) : questionsResult.rows.length === 0 ? (
               <EmptyState filtered={filtered} />
@@ -586,8 +587,8 @@ async function loadLandingPanel() {
 }
 
 /** The visitor's chosen exam from the qb_exam cookie, or null. */
-function chosenExamSlug(): string | null {
-  const raw = cookies().get("qb_exam")?.value;
+async function chosenExamSlug(): Promise<string | null> {
+  const raw = (await cookies()).get("qb_exam")?.value;
   return isExamSlug(raw) ? raw : null;
 }
 

@@ -51,7 +51,8 @@ async function load(params: Params) {
   return { exam, sets, first, name, offer };
 }
 
-export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+export async function generateMetadata(props: { params: Promise<Params> }): Promise<Metadata> {
+  const params = await props.params;
   const data = await load(params);
   if (!data) return { title: "Question paper" };
   const { first, name, sets } = data;
@@ -70,7 +71,8 @@ function hours(minutes: number): string {
   return `${h} ${h === 1 ? "hour" : "hours"}`;
 }
 
-export default async function PaperPage({ params }: { params: Params }) {
+export default async function PaperPage(props: { params: Promise<Params> }) {
+  const params = await props.params;
   const data = await load(params);
   if (!data) notFound();
   const { exam, sets, first, name, offer } = data;

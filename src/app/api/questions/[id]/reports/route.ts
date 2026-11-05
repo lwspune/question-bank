@@ -12,10 +12,8 @@ import { isReportCategory, REPORT_DETAILS_MAX } from "@/lib/reports/types";
  * Auth: signed-in user required. Anon → 401. The user's JWT scopes both the
  * question visibility check and the INSERT (RLS enforces reported_by = auth.uid()).
  */
-export async function POST(
-  request: NextRequest,
-  { params }: { params: { id: string } }
-) {
+export async function POST(request: NextRequest, props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   try {
     const member = await getSessionMember();
     if (!member) {

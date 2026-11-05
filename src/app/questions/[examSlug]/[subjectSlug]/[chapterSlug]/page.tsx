@@ -114,10 +114,11 @@ export async function generateStaticParams() {
 }
 
 type Params = {
-  params: { examSlug: string; subjectSlug: string; chapterSlug: string };
+  params: Promise<{ examSlug: string; subjectSlug: string; chapterSlug: string }>;
 };
 
-export async function generateMetadata({ params }: Params): Promise<Metadata> {
+export async function generateMetadata(props: Params): Promise<Metadata> {
+  const params = await props.params;
   const landing = await getChapterLanding(
     params.examSlug,
     params.subjectSlug,
@@ -172,7 +173,8 @@ function SiblingLinks({ siblings }: { siblings: ChapterLanding[] }) {
   );
 }
 
-export default async function ChapterQuestionsPage({ params }: Params) {
+export default async function ChapterQuestionsPage(props: Params) {
+  const params = await props.params;
   const landing = await getChapterLanding(
     params.examSlug,
     params.subjectSlug,

@@ -35,7 +35,8 @@ import { canonicalFor, planSiteForPath } from "@/lib/sites/intl";
 
 type Params = { slug: string };
 
-export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+export async function generateMetadata(props: { params: Promise<Params> }): Promise<Metadata> {
+  const params = await props.params;
   const mock = await getMockBySlug(createSupabaseAnonClient(), params.slug);
   if (!mock) return { title: "Mock test not found" };
   return {
@@ -45,13 +46,14 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   };
 }
 
-export default async function MockInstructions({
-  params,
-  searchParams,
-}: {
-  params: Params;
-  searchParams?: Record<string, string | string[] | undefined>;
-}) {
+export default async function MockInstructions(
+  props: {
+    params: Promise<Params>;
+    searchParams?: Promise<Record<string, string | string[] | undefined>>;
+  }
+) {
+  const searchParams = await props.searchParams;
+  const params = await props.params;
   const mock = await getMockBySlug(createSupabaseAnonClient(), params.slug);
   if (!mock) notFound();
   const [user, member] = await Promise.all([getSessionUser(), getSessionMember()]);
@@ -109,7 +111,7 @@ export default async function MockInstructions({
             // An international paper is sold on intl.pyqvault.com (0203), at the
             // buyer's country price where one is set (0206).
             planSiteForPath(`/mock/${params.slug}`),
-            readCountry(headers())
+            readCountry(await headers())
           )
         );
   if (user) {
