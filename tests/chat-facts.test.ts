@@ -21,6 +21,7 @@ import { ABUSE_REPLY } from "@/lib/chat/abuse";
 import { NOT_UNDERSTOOD } from "@/lib/chat/understood";
 import { EXAM_REGISTRY } from "@/lib/exam/examContext";
 import { getNotesExamGroups } from "@/lib/notes/notesNav";
+import { appPageExists } from "./helpers/appRoutes";
 
 const EM_DASH = String.fromCharCode(0x2014);
 
@@ -220,7 +221,7 @@ describe("NAV_FACTS", () => {
     const paths = pathsInReply(NAV_FACTS.join(" "));
     expect(paths.length).toBeGreaterThan(5);
     for (const path of paths) {
-      expect(existsSync(join(process.cwd(), "src/app", path, "page.tsx")), path).toBe(true);
+      expect(appPageExists(path), path).toBe(true);
     }
   });
 
@@ -253,8 +254,8 @@ describe("buildNotesFacts", () => {
     // A subject's page is hand-written; an exam hub is the shared /notes/[examSlug] route.
     const hubs = new Set(groups.map((g) => `/notes/${g.slug}`));
     for (const path of pathsInReply(facts.join(" "))) {
-      const page = hubs.has(path) ? "src/app/notes/[examSlug]/page.tsx" : join("src/app", path, "page.tsx");
-      expect(existsSync(join(process.cwd(), page)), path).toBe(true);
+      const ok = hubs.has(path) ? existsSync(join(process.cwd(), "src/app/notes/[examSlug]/page.tsx")) : appPageExists(path);
+      expect(ok, path).toBe(true);
     }
   });
 

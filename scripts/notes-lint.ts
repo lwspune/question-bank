@@ -112,14 +112,12 @@ async function main() {
   for (const c of NOTES_CHAPTERS) {
     if (c.tier !== "paid") continue;
     const owner = `${c.subjectRoute}/${c.chapterSlug}`;
-    const wrapper = path.join(
-      process.cwd(),
-      "src/app/notes",
-      c.subjectRoute,
-      c.chapterSlug,
-      "[subtopicSlug]",
-      "page.tsx"
-    );
+    // Since TECH_DEBT_SPEC.md 2.2 a subject serves every chapter from one shared route, so a
+    // paid chapter makes that SUBJECT's subtopic route the one that must stay uncached. A
+    // chapter that still has its own wrapper is checked there instead.
+    const own = path.join(process.cwd(), "src/app/notes", c.subjectRoute, c.chapterSlug, "[subtopicSlug]", "page.tsx");
+    const shared = path.join(process.cwd(), "src/app/notes", c.subjectRoute, "[chapterSlug]", "[subtopicSlug]", "page.tsx");
+    const wrapper = fs.existsSync(own) ? own : shared;
     if (!fs.existsSync(wrapper)) {
       issues.push({
         severity: "error",

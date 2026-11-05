@@ -21,6 +21,7 @@ import { IMAT_NOTES_CHAPTERS, IMAT_NOTES_SUBJECTS } from "@/lib/sites/imat/notes
 import { checkImatChapter } from "@/lib/sites/imat/notes/checks";
 import { buildOriginalityIndex, checkOriginality, notesCandidates, unreviewed } from "@/lib/sites/imat/originality";
 import { loadBankChapters, loadPastQuestions, loadReviews } from "../scripts/imat/notes/bank";
+import { appPageExists } from "./helpers/appRoutes";
 
 const ROOT = process.cwd();
 const BANK = loadBankChapters(join(ROOT, "scripts", "imat", "data"));
@@ -39,9 +40,9 @@ describe("IMAT notes are part of PYQ Vault's notes", () => {
 
   it("has a chapter page and a subtopic page for every IMAT chapter", () => {
     for (const c of IMAT_NOTES_CHAPTERS) {
-      const dir = join(ROOT, "src", "app", "notes", c.subjectRoute, c.chapterSlug);
-      expect(statSync(join(dir, "page.tsx")).isFile(), relative(ROOT, dir)).toBe(true);
-      expect(statSync(join(dir, "[subtopicSlug]", "page.tsx")).isFile(), relative(ROOT, dir)).toBe(true);
+      const base = `/notes/${c.subjectRoute}/${c.chapterSlug}`;
+      expect(appPageExists(base), base).toBe(true);
+      for (const slug of c.slugs) expect(appPageExists(`${base}/${slug}`), `${base}/${slug}`).toBe(true);
     }
   });
 });
