@@ -18,6 +18,7 @@ export const DRILL_FROM = [
   "bank", // the "5 wrong today" line on a bank card
   "menu", // the avatar menu's "Fix your mistakes"
   "today", // the /me Today card
+  "me_tile", // the /me progress row's "fixed" tile (2026-11-05)
   "result", // the mock result page's headline button
   "findings", // the result page's findings card
   "map", // /me/map
