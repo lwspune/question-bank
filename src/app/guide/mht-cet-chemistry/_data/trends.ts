@@ -1,7 +1,7 @@
 /**
  * Content for /guide/mht-cet-chemistry/trends.
  *
- * Bank window: 3,371 PUBLIC PYQ across 68 papers, 2021-2026, 30 chapters.
+ * Bank window: 3,389 PUBLIC PYQ across 68 papers, 2021-2026, 30 chapters.
  * Every column of the grid is one real sitting (`npm run mhtcet:matrix --
  * --subject=Chemistry`, paper-keyed); the 2026 difficulty labels were
  * re-graded onto the 2021-2025 scale before they went public, so a 2026 row
@@ -159,7 +159,7 @@ export const DRIFT_CALLOUTS: DriftCallout[] = [
       chapter: "Basic Principles of Organic Chemistry",
       subtopic: "Isomerism and Stereochemistry",
       qCount: 23,
-      label: "Drill isomerism (23 q, the chapter's HARD page)",
+      label: "Drill isomerism (24 q, the chapter's HARD page)",
     },
   },
 ];

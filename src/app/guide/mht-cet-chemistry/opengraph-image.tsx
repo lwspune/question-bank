@@ -89,7 +89,7 @@ export default function MhtCetChemistryOpenGraphImage() {
               lineHeight: 1.4,
             }}
           >
-            A 3,371-question analysis of 68 papers from 2021 to 2026. No
+            A 3,389-question analysis of 68 papers from 2021 to 2026. No
             negative marking, 3% HARD, 22 chapter playbooks.
           </div>
         </div>

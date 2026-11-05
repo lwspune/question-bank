@@ -19,9 +19,9 @@
  * organic principles they lean on); RECALL is the descriptive chapters
  * (names, structures, uses, trends).
  *
- * NUMBERS: lifetime counts over 3,371 PUBLIC PYQs (68 papers, 30 chapters);
- * q/paper is the 2025-2026 rate (39 papers). Strands + tail reconcile to 3,371
- * (1,394 + 733 + 935 + 309) and to 49.8 questions a paper.
+ * NUMBERS: lifetime counts over 3,389 PUBLIC PYQs (68 papers, 30 chapters);
+ * q/paper is the 2025-2026 rate (39 papers). Strands + tail reconcile to 3,389
+ * (1,400 + 741 + 939 + 309) and to 49.8 questions a paper.
  *
  * 2026-10-13 refresh: on the 2025-2026 rate Basic Principles of Organic
  * Chemistry (1.15) and Green Chemistry (1.10) crossed the 0.9 line and became
@@ -102,8 +102,8 @@ export const TIME_SPLIT = {
 export const CALCULATE_STRAND: StrategyStrand = {
   id: "calculate",
   label:
-    "Calculate: Chemical Kinetics · Ionic Equilibria · Thermodynamics · Solutions · Solid State · Electrochemistry · Some Basic Concepts · Structure of Atom (1,394 q · 41% of bank)",
-  qCount: 1394,
+    "Calculate: Chemical Kinetics · Ionic Equilibria · Thermodynamics · Solutions · Solid State · Electrochemistry · Some Basic Concepts · Structure of Atom (1,400 q · 41% of bank)",
+  qCount: 1400,
   pctOfBank: 41,
   pitch:
     "The eight physical-chemistry chapters: 20.2 questions a paper, and 56-83% of their answers are numbers. They are not hard (together about 4% HARD) but they take arithmetic, so they take time. Six of them run at about three questions every paper, and each chapter turns on one or two formulas used over and over. Know those cold and a calculation is a minute; half-know them and it is three.",
@@ -117,7 +117,7 @@ export const CALCULATE_STRAND: StrategyStrand = {
   chapters: [
     {
       chapter: "Chemical Kinetics",
-      qCount: 205,
+      qCount: 206,
       pctHard: 3,
       posture: "second-sweep",
       mustDrill: [
@@ -132,11 +132,11 @@ export const CALCULATE_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "3.05 q/paper · 3 marks",
       studyHours: 5,
       summary:
-        "205 q · 3% HARD · three questions every paper. 167 of them sit on three pages that have never produced a HARD question: rate and stoichiometry, rate law and order, and first-order kinetics (k = 2.303/t × log(a/(a − x)), t½ = 0.693/k). The Arrhenius page is small (18 q) and holds all six HARD.",
+        "206 q · 3% HARD · three questions every paper. 167 of them sit on three pages that have never produced a HARD question: rate and stoichiometry, rate law and order, and first-order kinetics (k = 2.303/t × log(a/(a − x)), t½ = 0.693/k). The Arrhenius page is small (18 q) and holds all six HARD.",
     },
     {
       chapter: "Ionic Equilibria",
-      qCount: 201,
+      qCount: 202,
       pctHard: 3,
       posture: "second-sweep",
       mustDrill: [
@@ -150,11 +150,11 @@ export const CALCULATE_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "3.03 q/paper · 3 marks",
       studyHours: 6,
       summary:
-        "201 q · 3% HARD. The acid-base theories and salt hydrolysis (48 q) are recall: answer them on the first sweep. The rest is log arithmetic: pH = −log[H⁺], α = √(K/c), Henderson's equation, and Ksp by salt type (AB: s², AB₂: 4s³), the largest page at 46 questions.",
+        "202 q · 3% HARD. The acid-base theories and salt hydrolysis (49 q) are recall: answer them on the first sweep. The rest is log arithmetic: pH = −log[H⁺], α = √(K/c), Henderson's equation, and Ksp by salt type (AB: s², AB₂: 4s³), the largest page at 46 questions.",
     },
     {
       chapter: "Chemical Thermodynamics and Energetics",
-      qCount: 199,
+      qCount: 200,
       pctHard: 3,
       posture: "second-sweep",
       mustDrill: [
@@ -168,7 +168,7 @@ export const CALCULATE_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "3.00 q/paper · 3 marks",
       studyHours: 5,
       summary:
-        "199 q · 3% HARD. The first-law page is 76 questions: ΔU = q + w with the chemist's sign convention, w = −P_ext ΔV, and 1 dm³ bar = 100 J. ΔH = ΔU + Δn_gRT, Hess's law and the ΔG sign table carry most of the rest.",
+        "200 q · 3% HARD. The first-law page is 76 questions: ΔU = q + w with the chemist's sign convention, w = −P_ext ΔV, and 1 dm³ bar = 100 J. ΔH = ΔU + Δn_gRT, Hess's law and the ΔG sign table carry most of the rest.",
     },
     {
       chapter: "Solutions and Colligative Properties",
@@ -190,7 +190,7 @@ export const CALCULATE_STRAND: StrategyStrand = {
     },
     {
       chapter: "Solid State",
-      qCount: 205,
+      qCount: 204,
       pctHard: 6,
       posture: "second-sweep",
       mustDrill: [
@@ -204,11 +204,11 @@ export const CALCULATE_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "2.92 q/paper · about 3 marks",
       studyHours: 6,
       summary:
-        "205 q · 6% HARD. The density page (61 q) is ρ = zM/(a³N_A) solved for a different unknown each time; the radius page is r = a/2, a√2/4 or a√3/4 by cell type. The density and packing pages hold all twelve HARD questions. The types and defects pages are recall.",
+        "204 q · 6% HARD. The density page (61 q) is ρ = zM/(a³N_A) solved for a different unknown each time; the radius page is r = a/2, a√2/4 or a√3/4 by cell type. The density and packing pages hold all twelve HARD questions. The types and defects pages are recall.",
     },
     {
       chapter: "Electrochemistry",
-      qCount: 197,
+      qCount: 199,
       pctHard: 7,
       posture: "second-sweep",
       mustDrill: [
@@ -222,7 +222,7 @@ export const CALCULATE_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "2.90 q/paper · about 3 marks",
       studyHours: 6,
       summary:
-        "197 q · 7% HARD, the Chemistry chapter with the most HARD questions (13), and nearly all of them on one page: ten of the galvanic-cell page's 73 questions are HARD Nernst arithmetic. Faraday's laws, conductivity and batteries are either one division or recall.",
+        "199 q · 7% HARD, the Chemistry chapter with the most HARD questions (13), and nearly all of them on one page: ten of the galvanic-cell page's 73 questions are HARD Nernst arithmetic. Faraday's laws, conductivity and batteries are either one division or recall.",
     },
     {
       chapter: "Some Basic Concepts of Chemistry",
@@ -242,7 +242,7 @@ export const CALCULATE_STRAND: StrategyStrand = {
     },
     {
       chapter: "Structure of Atom",
-      qCount: 99,
+      qCount: 101,
       pctHard: 1,
       posture: "second-sweep",
       mustDrill: [
@@ -256,7 +256,7 @@ export const CALCULATE_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "1.08 q/paper · 1 mark",
       studyHours: 3,
       summary:
-        "99 q · 1% HARD, and HALVED in 2025 for good: 2.00 a paper across 2023-24, 1.00 in 2025, 1.12 in 2026. Bohr's radius and energy scaling, E = hc/λ and the quantum-number rules. Keep it, but on half the hours 2023-24 papers suggest.",
+        "101 q · 1% HARD, and HALVED in 2025 for good: 2.00 a paper across 2023-24, 1.00 in 2025, 1.12 in 2026. Bohr's radius and energy scaling, E = hc/λ and the quantum-number rules. Keep it, but on half the hours 2023-24 papers suggest.",
     },
   ],
 };
@@ -264,8 +264,8 @@ export const CALCULATE_STRAND: StrategyStrand = {
 export const REACTIONS_STRAND: StrategyStrand = {
   id: "reactions",
   label:
-    "Reactions: Alcohols, Phenols and Ethers · Aldehydes, Ketones and Carboxylic Acids · Halogen Derivatives · Amines · Basic Principles of Organic Chemistry (733 q · 22% of bank)",
-  qCount: 733,
+    "Reactions: Alcohols, Phenols and Ethers · Aldehydes, Ketones and Carboxylic Acids · Halogen Derivatives · Amines · Basic Principles of Organic Chemistry (741 q · 22% of bank)",
+  qCount: 741,
   pctOfBank: 22,
   pitch:
     "The organic chapters: 11.2 questions a paper, answered by recognising a reagent, a named reaction or a naming rule, not by calculating. They are fast once the reactions are known, and slow only when a reagent has to be worked out from scratch. The prep is a list, learned in both directions: reagent to product and product to reagent.",
@@ -278,7 +278,7 @@ export const REACTIONS_STRAND: StrategyStrand = {
   chapters: [
     {
       chapter: "Alcohols, Phenols and Ethers",
-      qCount: 198,
+      qCount: 197,
       pctHard: 5,
       posture: "first-sweep",
       mustDrill: [
@@ -292,11 +292,11 @@ export const REACTIONS_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "2.92 q/paper · about 3 marks",
       studyHours: 5,
       summary:
-        "198 q · 5% HARD · the largest organic chapter. Half of it is naming, classifying and physical properties: primary, secondary, tertiary; the named phenols; an IUPAC name off a drawing. The reaction pages add Lucas' test, the Reimer–Tiemann and Kolbe reactions, and phenol's acidity order.",
+        "197 q · 5% HARD · the largest organic chapter. Half of it is naming, classifying and physical properties: primary, secondary, tertiary; the named phenols; an IUPAC name off a drawing. The reaction pages add Lucas' test, the Reimer–Tiemann and Kolbe reactions, and phenol's acidity order.",
     },
     {
       chapter: "Aldehydes, Ketones and Carboxylic Acids",
-      qCount: 192,
+      qCount: 195,
       pctHard: 2,
       posture: "first-sweep",
       mustDrill: [
@@ -309,11 +309,11 @@ export const REACTIONS_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "2.92 q/paper · about 3 marks",
       studyHours: 5,
       summary:
-        "192 q · 2% HARD, and up to 3.19 a paper in 2026. The named-reaction chapter: Rosenmund, Etard, Stephen and Gattermann–Koch make aldehydes; Clemmensen and Wolff–Kishner remove the C=O; Tollens', Fehling's and the iodoform test identify them; Cannizzaro needs no α-hydrogen.",
+        "195 q · 2% HARD, and up to 3.19 a paper in 2026. The named-reaction chapter: Rosenmund, Etard, Stephen and Gattermann–Koch make aldehydes; Clemmensen and Wolff–Kishner remove the C=O; Tollens', Fehling's and the iodoform test identify them; Cannizzaro needs no α-hydrogen.",
     },
     {
       chapter: "Halogen Derivatives of Alkanes",
-      qCount: 137,
+      qCount: 140,
       pctHard: 1,
       posture: "first-sweep",
       mustDrill: [
@@ -326,11 +326,11 @@ export const REACTIONS_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "2.18 q/paper · about 2 marks",
       studyHours: 4,
       summary:
-        "137 q · 1% HARD. Finkelstein and Swarts, Wurtz and Fittig, SN1 against SN2 (tertiary halides go SN1, primary SN2; the largest page at 36 q), Saytzeff's rule for elimination, and a table of polyhalogen compounds: Freon-12, DDT, the war gases.",
+        "140 q · 1% HARD. Finkelstein and Swarts, Wurtz and Fittig, SN1 against SN2 (tertiary halides go SN1, primary SN2; the largest page at 37 q), Saytzeff's rule for elimination, and a table of polyhalogen compounds: Freon-12, DDT, the war gases.",
     },
     {
       chapter: "Amines",
-      qCount: 134,
+      qCount: 136,
       pctHard: 4,
       posture: "first-sweep",
       mustDrill: [
@@ -343,11 +343,11 @@ export const REACTIONS_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "2.05 q/paper · about 2 marks",
       studyHours: 4,
       summary:
-        "134 q · 4% HARD. Basicity order (in water: 2° > 1° > 3° > NH₃ for methylamines), Hinsberg's and the carbylamine test, Hofmann bromamide, and diazotisation to phenol or Sandmeyer products.",
+        "136 q · 4% HARD. Basicity order (in water: 2° > 1° > 3° > NH₃ for methylamines), Hinsberg's and the carbylamine test, Hofmann bromamide, and diazotisation to phenol or Sandmeyer products.",
     },
     {
       chapter: "Basic Principles of Organic Chemistry",
-      qCount: 72,
+      qCount: 73,
       pctHard: 10,
       posture: "first-sweep",
       mustDrill: [
@@ -359,7 +359,7 @@ export const REACTIONS_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "1.15 q/paper · 1 mark",
       studyHours: 3,
       summary:
-        "72 q · 10% HARD, the hardest chapter of any size, and a playbook since 2026 lifted it from 0.85 to 1.31 a paper. Functional-group priority and homologous series, inductive and resonance effects with carbocation stability, and isomer counting, where the HARD sits.",
+        "73 q · 10% HARD, the hardest chapter of any size, and a playbook since 2026 lifted it from 0.85 to 1.31 a paper. Functional-group priority and homologous series, inductive and resonance effects with carbocation stability, and isomer counting, where the HARD sits.",
     },
   ],
 };
@@ -367,8 +367,8 @@ export const REACTIONS_STRAND: StrategyStrand = {
 export const RECALL_STRAND: StrategyStrand = {
   id: "recall",
   label:
-    "Recall: Biomolecules · Polymers · Coordination Compounds · Transition Elements · Chemical Bonding · Groups 16-18 · Redox · Green Chemistry · Surface Chemistry (935 q · 28% of bank)",
-  qCount: 935,
+    "Recall: Biomolecules · Polymers · Coordination Compounds · Transition Elements · Chemical Bonding · Groups 16-18 · Redox · Green Chemistry · Surface Chemistry (939 q · 28% of bank)",
+  qCount: 939,
   pctOfBank: 28,
   pitch:
     "The descriptive chapters: 14.2 questions a paper, answered from memory or by counting: a name, a monomer, a use, a trend, a shape, an oxidation state. Together they are about 2% HARD, and Surface Chemistry and Green Chemistry have never produced a HARD question. These are the fastest marks on Paper II, and the ones that fund the Physics minutes.",
@@ -381,7 +381,7 @@ export const RECALL_STRAND: StrategyStrand = {
   chapters: [
     {
       chapter: "Biomolecules",
-      qCount: 150,
+      qCount: 149,
       pctHard: 1,
       posture: "first-sweep",
       mustDrill: [
@@ -394,11 +394,11 @@ export const RECALL_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "2.31 q/paper · about 2 marks",
       studyHours: 4,
       summary:
-        "150 q · 1% HARD. Reducing and non-reducing sugars, the glycosidic linkages (sucrose α1–β2, maltose α1–4, lactose β1–4), essential amino acids and peptide bonds (the largest page at 46 q), and the bases of DNA and RNA.",
+        "149 q · 1% HARD. Reducing and non-reducing sugars, the glycosidic linkages (sucrose α1–β2, maltose α1–4, lactose β1–4), essential amino acids and peptide bonds (the largest page at 46 q), and the bases of DNA and RNA.",
     },
     {
       chapter: "Introduction to Polymer Chemistry",
-      qCount: 139,
+      qCount: 142,
       pctHard: 1,
       posture: "first-sweep",
       mustDrill: [
@@ -410,11 +410,11 @@ export const RECALL_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "2.08 q/paper · about 2 marks",
       studyHours: 3,
       summary:
-        "139 q · one HARD question in all of them. A monomer table (nylon 6,6: hexamethylenediamine + adipic acid; Buna-S: butadiene + styrene; Terylene: ethylene glycol + terephthalic acid) and a uses table.",
+        "142 q · one HARD question in all of them. A monomer table (nylon 6,6: hexamethylenediamine + adipic acid; Buna-S: butadiene + styrene; Terylene: ethylene glycol + terephthalic acid) and a uses table.",
     },
     {
       chapter: "Coordination Compounds",
-      qCount: 140,
+      qCount: 139,
       pctHard: 2,
       posture: "first-sweep",
       mustDrill: [
@@ -427,11 +427,11 @@ export const RECALL_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "2.03 q/paper · about 2 marks",
       studyHours: 4,
       summary:
-        "140 q · 2% HARD. Counting: donor atoms and denticity (EDTA hexadentate), the metal's oxidation state and coordination number, EAN, and unpaired electrons for the magnetic moment.",
+        "139 q · 2% HARD. Counting: donor atoms and denticity (EDTA hexadentate), the metal's oxidation state and coordination number, EAN, and unpaired electrons for the magnetic moment.",
     },
     {
       chapter: "Transition and Inner Transition Elements",
-      qCount: 126,
+      qCount: 127,
       pctHard: 2,
       posture: "first-sweep",
       mustDrill: [
@@ -444,11 +444,11 @@ export const RECALL_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "1.87 q/paper · about 2 marks",
       studyHours: 3,
       summary:
-        "126 q · 2% HARD. Configurations (Cr and Cu break the pattern), the spin-only moment μ = √(n(n + 2)) BM, lanthanoid contraction, and which ion is coloured.",
+        "127 q · 2% HARD. Configurations (Cr and Cu break the pattern), the spin-only moment μ = √(n(n + 2)) BM, lanthanoid contraction, and which ion is coloured.",
     },
     {
       chapter: "Chemical Bonding and Molecular Structure",
-      qCount: 96,
+      qCount: 95,
       pctHard: 2,
       posture: "first-sweep",
       mustDrill: [
@@ -461,11 +461,11 @@ export const RECALL_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "1.28 q/paper · about 1 mark",
       studyHours: 3,
       summary:
-        "96 q · 2% HARD. Count electron pairs for a shape, count bonding minus antibonding electrons for a bond order, and learn which molecules have zero dipole moment.",
+        "95 q · 2% HARD. Count electron pairs for a shape, count bonding minus antibonding electrons for a bond order, and learn which molecules have zero dipole moment.",
     },
     {
       chapter: "Elements of Group 16, 17 and 18",
-      qCount: 80,
+      qCount: 81,
       pctHard: 4,
       posture: "first-sweep",
       mustDrill: [
@@ -476,7 +476,7 @@ export const RECALL_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "1.28 q/paper · about 1 mark",
       studyHours: 3,
       summary:
-        "80 q · 4% HARD, and up from 1.00 a paper in 2023-24 to 1.38 in 2025 and 1.23 in 2026. Hydride stability and acidity trends, oxoacids of sulphur and chlorine, interhalogens, and xenon fluorides.",
+        "81 q · 4% HARD, and up from 1.00 a paper in 2023-24 to 1.38 in 2025 and 1.23 in 2026. Hydride stability and acidity trends, oxoacids of sulphur and chlorine, interhalogens, and xenon fluorides.",
     },
     {
       chapter: "Redox Reactions",
@@ -509,7 +509,7 @@ export const RECALL_STRAND: StrategyStrand = {
     },
     {
       chapter: "Surface Chemistry",
-      qCount: 68,
+      qCount: 70,
       pctHard: 0,
       posture: "first-sweep",
       mustDrill: [
@@ -520,7 +520,7 @@ export const RECALL_STRAND: StrategyStrand = {
       expectedYieldPerPaper: "1.08 q/paper · 1 mark",
       studyHours: 2,
       summary:
-        "68 q · never a HARD question. Physisorption against chemisorption, colloid types, and the Hardy–Schulze rule: the coagulating ion carries the charge opposite to the sol's.",
+        "70 q · never a HARD question. Physisorption against chemisorption, colloid types, and the Hardy–Schulze rule: the coagulating ion carries the charge opposite to the sol's.",
     },
   ],
 };
@@ -558,7 +558,7 @@ export const TAIL_CHAPTERS: TailChapter[] = [
   },
   {
     chapter: "Aromatic Compounds",
-    qCount: 51,
+    qCount: 52,
     qPerPaper: 0.67,
     pctHard: 2,
     status: "live",
@@ -574,7 +574,7 @@ export const TAIL_CHAPTERS: TailChapter[] = [
   },
   {
     chapter: "Alkenes",
-    qCount: 48,
+    qCount: 47,
     qPerPaper: 0.59,
     pctHard: 0,
     status: "live",

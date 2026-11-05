@@ -254,7 +254,7 @@ describe.skipIf(!HAS_ENV)("mht-cet-chemistry — live taxonomy and bank", () => 
     ).toBe(10);
     const kineticsFree = ["First-Order Kinetics, Rate Constant and Half-Life", "Rate Law, Order, Molecularity and Rate Expression", "Rate of Reaction, Stoichiometry and Average Rate"];
     const onThree = rows.filter((r) => r.chapters?.name === "Chemical Kinetics" && kineticsFree.includes(r.subtopics?.name ?? ""));
-    expect(onThree.length, "Kinetics' three HARD-free pages").toBe(167);
+    expect(onThree.length, "Kinetics' three HARD-free pages").toBe(168);
     expect(onThree.filter((r) => r.difficulty === "HARD")).toHaveLength(0);
   });
 });

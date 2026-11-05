@@ -145,7 +145,7 @@ export default function PlaybooksIndex() {
         </p>
         <p className="mt-3 font-serif text-base leading-relaxed text-muted-foreground">
           They disagree because the 2025 and 2026 papers moved a few
-          chapters. Structure of Atom carries 99 questions lifetime but has
+          chapters. Structure of Atom carries 101 questions lifetime but has
           set about one a paper since 2025, half its old rate; Green
           Chemistry carries 63 and has risen two years running, to 1.15 a
           paper in 2026. A lifetime average hides both, which is why the
