@@ -34,7 +34,7 @@ export const revalidate = 86400;
 export const metadata: Metadata = {
   title: { absolute: fitTitle("MHT-CET Chemistry Strategy — Fast Questions First, Never Attempt-vs-Skip") },
   description:
-    "MHT-CET Chemistry is 50 questions sharing a 90-minute paper with Physics, with NO negative marking and only 3% HARD — so the strategy is speed and order: answer on sight first, calculate second, and bank minutes for Physics. Three strands by how a question is answered, with must-drill subtopics and study hours per chapter. Backed by 3,371 past-year questions across 68 papers.",
+    "MHT-CET Chemistry is 50 questions sharing a 90-minute paper with Physics, with NO negative marking and only 3% HARD — so the strategy is speed and order: answer on sight first, calculate second, and bank minutes for Physics. Three strands by how a question is answered, with must-drill subtopics and study hours per chapter. Backed by 3,389 past-year questions across 68 papers.",
   alternates: { canonical: "/guide/mht-cet-chemistry/strategy" },
 };
 

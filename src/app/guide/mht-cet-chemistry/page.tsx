@@ -19,7 +19,7 @@ export const revalidate = 86400;
 export const metadata: Metadata = {
   title: "MHT-CET Chemistry — Strategy Guide",
   description:
-    "How MHT-CET Chemistry actually works. A 3,371-question analysis of every paper from 2021 to 2026: 50 questions sharing 90 minutes with Physics, no negative marking, 3% HARD, three strands by how a question is answered, 22 chapter playbooks, a reactions-and-formulas reference, trends and traps.",
+    "How MHT-CET Chemistry actually works. A 3,389-question analysis of every paper from 2021 to 2026: 50 questions sharing 90 minutes with Physics, no negative marking, 3% HARD, three strands by how a question is answered, 22 chapter playbooks, a reactions-and-formulas reference, trends and traps.",
   alternates: { canonical: "/guide/mht-cet-chemistry" },
 };
 
@@ -89,7 +89,7 @@ export default async function MhtCetChemistryLanding() {
         type="CollectionPage"
         path="/guide/mht-cet-chemistry"
         headline="MHT-CET Chemistry — Strategy Guide"
-        description="A 3,371-question analysis of every MHT-CET Chemistry paper from 2021 to 2026. No negative marking, a 90-minute paper shared with Physics, 22 chapter playbooks, a reactions-and-formulas reference, trends and traps."
+        description="A 3,389-question analysis of every MHT-CET Chemistry paper from 2021 to 2026. No negative marking, a 90-minute paper shared with Physics, 22 chapter playbooks, a reactions-and-formulas reference, trends and traps."
       />
       <GuideHero
         eyebrow="MHT-CET Chemistry Guide"

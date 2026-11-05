@@ -239,8 +239,8 @@ const MHT_CET_GUIDES: SubjectGuideCard[] = [
     exam: "MHT-CET Chemistry",
     title: "How MHT-CET Chemistry actually works",
     blurb:
-      "Every Chemistry paper from 2021 to 2026, all 3,371 questions. Only 3% of them are HARD, so the axis is speed: answer the recall and reaction questions on sight, calculate after, and hand the saved minutes to Physics.",
-    qCount: 3371,
+      "Every Chemistry paper from 2021 to 2026, all 3,389 questions. Only 3% of them are HARD, so the axis is speed: answer the recall and reaction questions on sight, calculate after, and hand the saved minutes to Physics.",
+    qCount: 3389,
     yearWindow: "2021-2026 · 68 papers",
     highlights: [
       "Three strands by how a question is answered: Recall, Reactions, Calculate",

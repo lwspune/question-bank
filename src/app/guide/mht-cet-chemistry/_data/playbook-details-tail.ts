@@ -10,7 +10,7 @@ export const TAIL_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     slug: "biomolecules",
     trigger: "A sugar, its linkage or whether it reduces Fehling's; an amino acid or peptide; a DNA or RNA base; a vitamin or enzyme.",
     story: [
-      "150 q at 2.31 a paper, 1% HARD. Amino acids and proteins (46 q, never HARD): essential amino acids, the peptide bond, and protein structure levels. Carbohydrates (35 q) and glycosidic linkages (28 q): which sugars reduce Fehling's and Tollens', and which link joins which units.",
+      "149 q at 2.31 a paper, 1% HARD. Amino acids and proteins (46 q, never HARD): essential amino acids, the peptide bond, and protein structure levels. Carbohydrates (35 q) and glycosidic linkages (28 q): which sugars reduce Fehling's and Tollens', and which link joins which units.",
       "Nucleic acids (25 q) are the bases — adenine, guanine, cytosine in both; thymine in DNA, uracil in RNA — and the sugar, deoxyribose or ribose.",
     ],
     subSkills: [
@@ -30,7 +30,7 @@ export const TAIL_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     slug: "coordination-compounds",
     trigger: "A complex ion — its ligands, oxidation state, coordination number, name, isomers, hybridisation or magnetism.",
     story: [
-      "140 q at 2.03 a paper, 2% HARD, and most of it is counting rather than memory. Bonding theories, EAN and magnetism (48 q) is the largest page, then ligands and denticity (39 q): en is bidentate, EDTA hexadentate, and ambidentate ligands (NO₂⁻, SCN⁻) bind through either atom.",
+      "139 q at 2.03 a paper, 2% HARD, and most of it is counting rather than memory. Bonding theories, EAN and magnetism (48 q) is the largest page, then ligands and denticity (39 q): en is bidentate, EDTA hexadentate, and ambidentate ligands (NO₂⁻, SCN⁻) bind through either atom.",
       "Oxidation state is the metal's charge after subtracting the ligands'. EAN = atomic number − oxidation state + 2 × coordination number. Magnetism counts unpaired electrons after the ligand has (or has not) forced pairing.",
     ],
     subSkills: [
@@ -51,8 +51,8 @@ export const TAIL_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     slug: "introduction-to-polymer-chemistry",
     trigger: "A polymer's monomers, its class, how it is made, or what it is used for.",
     story: [
-      "139 q at 2.08 a paper, and one HARD question in all of them. Two tables do nearly everything: monomers (49 q) and uses (37 q).",
-      "Classification (39 q) sorts the same polymers three ways — addition against condensation, homopolymer against copolymer, thermoplastic against thermosetting — so one polymer learned properly answers three kinds of question. Polymerisation methods (14 q) are free-radical, ionic and condensation mechanisms by name.",
+      "142 q at 2.08 a paper, and one HARD question in all of them. Two tables do nearly everything: monomers (49 q) and uses (38 q).",
+      "Classification (41 q) sorts the same polymers three ways — addition against condensation, homopolymer against copolymer, thermoplastic against thermosetting — so one polymer learned properly answers three kinds of question. Polymerisation methods (14 q) are free-radical, ionic and condensation mechanisms by name.",
     ],
     subSkills: [
       { name: "Monomers", description: "Nylon 6,6: hexamethylenediamine + adipic acid. Nylon 6: caprolactam. Buna-S: butadiene + styrene. Buna-N: butadiene + acrylonitrile. Terylene: ethylene glycol + terephthalic acid. Bakelite: phenol + formaldehyde." },
@@ -71,7 +71,7 @@ export const TAIL_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     slug: "transition-and-inner-transition-elements",
     trigger: "A d- or f-block element's configuration, oxidation states, colour, magnetic moment, or a lanthanoid trend.",
     story: [
-      "126 q at 1.87 a paper, 2% HARD. Configurations carry the chapter — and chromium (3d⁵4s¹) and copper (3d¹⁰4s¹) break the filling pattern. Colour comes from unpaired d electrons, so Sc³⁺, Ti⁴⁺ and Zn²⁺ are colourless.",
+      "127 q at 1.87 a paper, 2% HARD. Configurations carry the chapter — and chromium (3d⁵4s¹) and copper (3d¹⁰4s¹) break the filling pattern. Colour comes from unpaired d electrons, so Sc³⁺, Ti⁴⁺ and Zn²⁺ are colourless.",
       "The spin-only formula μ = √(n(n + 2)) BM turns unpaired electrons into a moment (Mn²⁺, five unpaired, 5.92 BM). Lanthanoids and actinoids (41 q, the largest page): the lanthanoid contraction and +3 as the common oxidation state.",
     ],
     subSkills: [
@@ -92,7 +92,7 @@ export const TAIL_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     slug: "chemical-bonding",
     trigger: "A molecule's shape, hybridisation, bond order, dipole moment or bond type.",
     story: [
-      "96 q at 1.28 a paper, 2% HARD. VSEPR (30 q) is counting electron pairs: bond pairs plus lone pairs around the central atom give the geometry, lone pairs bend it — NH₃ pyramidal, H₂O bent, XeF₄ square planar.",
+      "95 q at 1.28 a paper, 2% HARD. VSEPR (30 q) is counting electron pairs: bond pairs plus lone pairs around the central atom give the geometry, lone pairs bend it — NH₃ pyramidal, H₂O bent, XeF₄ square planar.",
       "Molecular orbital theory (18 q) is bond order = (bonding − antibonding)/2: O₂ has 2 and two unpaired electrons, so it is paramagnetic. Dipole moment (18 q) is zero for symmetric molecules — CO₂, BF₃, CH₄, CCl₄.",
     ],
     subSkills: [
@@ -112,8 +112,8 @@ export const TAIL_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     slug: "elements-of-group-16-17-and-18",
     trigger: "Oxygen, sulphur or ozone; a halogen, interhalogen or oxoacid; a noble gas compound — or a trend down a group.",
     story: [
-      "80 q at 1.28 a paper, 4% HARD, and up from 1.00 a paper in 2023-24 to 1.38 in 2025 and 1.23 in 2026. Group 16 (37 q, never HARD): hydride trends (thermal stability falls and acidity rises from H₂O to H₂Te), allotropes of sulphur, ozone, and oleum.",
-      "Group 17 (36 q, all three HARD): oxidising power (F₂ strongest), the oxoacids and their oxidation states, and interhalogens. Group 18 (7 q): xenon fluorides and their shapes.",
+      "81 q at 1.28 a paper, 4% HARD, and up from 1.04 a paper in 2023-24 to 1.38 in 2025 and 1.23 in 2026. Group 16 (37 q, never HARD): hydride trends (thermal stability falls and acidity rises from H₂O to H₂Te), allotropes of sulphur, ozone, and oleum.",
+      "Group 17 (37 q, all three HARD): oxidising power (F₂ strongest), the oxoacids and their oxidation states, and interhalogens. Group 18 (7 q): xenon fluorides and their shapes.",
     ],
     subSkills: [
       { name: "Hydride trends", description: "H₂O → H₂Te: stability falls, acidity rises, boiling point lowest at H₂S (water is high from hydrogen bonding)." },
@@ -152,7 +152,7 @@ export const TAIL_PLAYBOOK_DETAILS: Record<string, PlaybookDetail> = {
     slug: "surface-chemistry",
     trigger: "Adsorption and its types, a colloid and its class, coagulation by an electrolyte, or a catalyst.",
     story: [
-      "68 q at 1.08 a paper, and never a HARD question. Colloids (41 q): lyophilic against lyophobic, the dispersed phase and medium, and the Hardy–Schulze rule — the ion with the charge OPPOSITE to the sol's coagulates it, more strongly the higher its charge.",
+      "70 q at 1.08 a paper, and never a HARD question. Colloids (43 q): lyophilic against lyophobic, the dispersed phase and medium, and the Hardy–Schulze rule — the ion with the charge OPPOSITE to the sol's coagulates it, more strongly the higher its charge.",
       "Adsorption (18 q): physisorption (van der Waals, reversible, falls with temperature) against chemisorption (chemical bonds, specific), and the Freundlich isotherm.",
     ],
     subSkills: [

@@ -71,7 +71,7 @@ const RISING = DRIFT_ROWS.filter((r) => r.direction === "up");
 
 export const metadata: Metadata = {
   title: `MHT-CET Chemistry Trends: what 2025 and 2026 moved (${YEARS[0]}–${YEARS[YEARS.length - 1]})`,
-  description: `What changed across ${TOTAL_PAPERS} MHT-CET papers and ${TOTAL_Q} past-year Chemistry questions. HARD stayed at 2-4% a year; EASY fell from 56-60% to 42% in 2025 and came back to 63% in 2026. Structure of Atom halved and stayed down, while Groups 16-18, Green Chemistry and Basic Principles of Organic Chemistry rose. Every comparison is a per-paper rate, not a raw count.`,
+  description: `What changed across ${TOTAL_PAPERS} MHT-CET papers and ${TOTAL_Q} past-year Chemistry questions. HARD stayed at 2-4% a year; EASY fell from 57-61% to 42% in 2025 and came back to 63% in 2026. Structure of Atom halved and stayed down, while Groups 16-18, Green Chemistry and Basic Principles of Organic Chemistry rose. Every comparison is a per-paper rate, not a raw count.`,
   alternates: { canonical: "/guide/mht-cet-chemistry/trends" },
 };
 
@@ -456,7 +456,7 @@ export default async function Trends() {
             HARD barely moved; EASY did.
           </strong>{" "}
           Across the years with real paper counts HARD ran {TREND_RUN}. The
-          EASY column is where 2025 changed: 56% and 60% in 2023 and 2024, 42%
+          EASY column is where 2025 changed: 57% and 61% in 2023 and 2024, 42%
           in 2025, as one-glance recall questions gave way to MODERATE ones.
           2026 went back to 63%, so 2025 was one slow year, not a new normal.
           Time your mocks on 2025 papers anyway: a budget that fits the
