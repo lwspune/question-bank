@@ -17,8 +17,9 @@ name: Prod contract
 #
 # A failure here means DRIFT (or, rarely, a still-stalled database — the two
 # historically flaky suites retry statement timeouts with backoff, see
-# tests/helpers/retryTimeout.ts, so a red run is worth reading). GitHub emails
-# the repo owner on failure; the log names the exact mismatch and the edit.
+# tests/helpers/retryTimeout.ts, so a red run is worth reading). A failure also
+# sends the owner a PYQ Vault email naming the failing tests (last step); the
+# log names the exact mismatch and the edit.
 #
 # 03:00 UTC = 08:30 IST — half an hour after the db-health snapshot
 # (db-health.yml, 02:30 UTC) so the two daily jobs never hit the database at
@@ -46,26 +47,45 @@ jobs:
 
       - run: npm ci
 
+      # Step limits (12 + 6 + 2 min, inside the job's 25) turn a hang into a FAILED step,
+      # so the email below still goes out: from 2026-10-21 to 10-26 the job hit its 25-min
+      # limit and was CANCELLED, which no failure() step would report. Slowest of the
+      # last six runs: tests 254 s, notes:lint 70 s, live counts 2 s.
       - name: Prod-contract tests (read-only against production)
+        timeout-minutes: 12
         env:
           NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
           NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
-        run: npm run test:prod-contract
+        # Tee to a log so the failure email can name the failing tests. pipefail keeps
+        # the step red when the tests fail: an unset shell does not set it.
+        run: set -o pipefail; npm run test:prod-contract 2>&1 | tee contract.log
       # notes:lint once a day (2026-10-04). It checks the /notes editorial
       # modules against LIVE taxonomy and concept tags, so an ingest or a
       # chapter rename can break it with no code diff. The push gate runs it
       # only when a push touches notes; this run catches the data side.
       - name: Notes lint (read-only against production)
         if: ${{ !cancelled() }}
+        timeout-minutes: 6
         env:
           NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
           NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
-        run: npm run notes:lint
+        run: set -o pipefail; npm run notes:lint 2>&1 | tee notes-lint.log
       # The live homepage and /browse must never say the bank holds 0
       # questions (2026-10-08: a failed load was cached as zeros for 9+ hours
       # while every build and test passed). Two GETs, no secrets.
       - name: Live pages show real question counts
         if: ${{ !cancelled() }}
-        run: npm run smoke:live-counts
+        timeout-minutes: 2
+        run: set -o pipefail; npm run smoke:live-counts 2>&1 | tee live-counts.log
+      # Email the owner when any step above failed (TECH_DEBT_SPEC.md 1.2): GitHub's own
+      # failure emails went unread while this check stayed red for 8 days in October.
+      - name: Email the owner on failure
+        if: ${{ failure() }}
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+        run: npm run ops:notify-check-failure -- --workflow="Prod contract" --log=contract.log --log=notes-lint.log --log=live-counts.log --apply
