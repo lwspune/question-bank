@@ -22,6 +22,8 @@ import { LearnChapterLink } from "@/components/learn/LearnChapterLink";
 import { loadRevisionSheet } from "@/lib/board/revision/registry";
 import type { RevisionSheet } from "@/lib/board/revision/types";
 import BoardRevisionSheet from "@/app/board/_components/BoardRevisionSheet";
+import { hotOnly } from "@/lib/seo/prerenderBudget";
+import { HOT_BOARD_CHAPTERS } from "@/lib/seo/prerenderHotPaths";
 
 type Params = { examSlug: string; subjectRoute: string; chapterSlug: string };
 
@@ -34,6 +36,8 @@ type Params = { examSlug: string; subjectRoute: string; chapterSlug: string };
  *
  * A chapter added after a build renders on its first request and is cached from
  * then on (dynamicParams stays true), and joins the list at the next build.
+ * On Vercel only chapters people read are built ahead (179 of 390 had 2+ views in
+ * 18 days); the rest render on first visit the same way (TECH_DEBT_SPEC.md 2.3).
  */
 export const revalidate = 86400;
 
@@ -49,7 +53,7 @@ export async function generateStaticParams(): Promise<Params[]> {
         }
       }
     }
-    return out;
+    return hotOnly(out, (p) => `${p.examSlug}/${p.subjectRoute}/${p.chapterSlug}`, HOT_BOARD_CHAPTERS);
     // A Supabase blip during a build must not fail the deploy; the pages then
     // render on first request instead (the /questions landings' guard).
   } catch {

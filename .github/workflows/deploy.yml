@@ -94,16 +94,17 @@ jobs:
         run: npx tsx scripts/deploy/fill-vercel-env.ts
 
       # VERCEL=1 makes the build produce exactly what a Vercel-hosted build
-      # does: next.config.mjs renders 4 pages at a time, and every notes page is
-      # prebuilt (src/lib/notes/prerender.ts). Set explicitly rather than trusting
-      # the CLI to set it.
+      # does: next.config.mjs renders 4 pages at a time, and the notes, formula and
+      # board pages people read are prebuilt, the rest on first visit
+      # (src/lib/seo/prerenderBudget.ts, TECH_DEBT_SPEC.md 2.3). Set explicitly
+      # rather than trusting the CLI to set it. To build every page again, add
+      # PRERENDER_ALL: "1" here.
       # NODE_OPTIONS: Node's default heap (~4 GB) ran out compiling on
       # 2026-11-04, once 203 board revision sheets joined the build (died at
       # 3.59 GB). The runner has 16 GB; 8 GB leaves room for the page workers.
       - name: Build
         env:
           VERCEL: "1"
-          NOTES_FULL_PRERENDER: "1"
           NODE_OPTIONS: --max-old-space-size=8192
         # GNU time logs the build's peak memory ("Maximum resident set size", of the
         # largest single process: the one that ran out on 2026-11-04) so the heap limit

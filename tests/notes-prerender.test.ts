@@ -3,21 +3,22 @@ import fs from "node:fs";
 import path from "node:path";
 import { notesPrerenderParams } from "@/lib/notes/prerender";
 
-// A local build prerenders ONE subtopic page per notes chapter. The full set
-// is built when the push changes notes (the pre-push hook sets
-// NOTES_FULL_PRERENDER=1) and always on Vercel. Why: on 2026-10-04 two
-// back-to-back local builds took the production database down, and the 1,352
-// notes subtopic pages were the bulk of every build's queries.
+// A local build prerenders ONE subtopic page per notes chapter; a Vercel build
+// prerenders that one plus every subtopic read 2+ times in the measured window
+// (tests/prerender-budget.test.ts); NOTES_FULL_PRERENDER=1 or PRERENDER_ALL=1
+// builds them all. Why the local sample: on 2026-10-04 two back-to-back local
+// builds took the production database down, and the notes subtopic pages were
+// the bulk of every build's queries.
 
 describe("notesPrerenderParams", () => {
   const slugs = ["fundamentals", "mean", "median"] as const;
 
   it("returns only the first subtopic on a normal build", () => {
-    expect(notesPrerenderParams(slugs, false)).toEqual([{ subtopicSlug: "fundamentals" }]);
+    expect(notesPrerenderParams("s/c", slugs, "sample")).toEqual([{ subtopicSlug: "fundamentals" }]);
   });
 
   it("returns every subtopic on a full build", () => {
-    expect(notesPrerenderParams(slugs, true)).toEqual([
+    expect(notesPrerenderParams("s/c", slugs, "all")).toEqual([
       { subtopicSlug: "fundamentals" },
       { subtopicSlug: "mean" },
       { subtopicSlug: "median" },
@@ -25,49 +26,43 @@ describe("notesPrerenderParams", () => {
   });
 
   it("returns nothing for a chapter with no subtopics", () => {
-    expect(notesPrerenderParams([], false)).toEqual([]);
-    expect(notesPrerenderParams([], true)).toEqual([]);
+    for (const mode of ["sample", "hot", "all"] as const) expect(notesPrerenderParams("s/c", [], mode)).toEqual([]);
   });
 
-  describe("reads the environment when no flag is passed", () => {
-    const saved = {
-      full: process.env.NOTES_FULL_PRERENDER,
-      vercel: process.env.VERCEL,
-    };
-    function restore(name: string, value: string | undefined) {
-      if (value === undefined) delete process.env[name];
-      else process.env[name] = value;
-    }
+  describe("reads the environment when no mode is passed", () => {
+    const names = ["NOTES_FULL_PRERENDER", "VERCEL", "PRERENDER_ALL"] as const;
+    const saved = Object.fromEntries(names.map((n) => [n, process.env[n]]));
     beforeEach(() => {
-      delete process.env.NOTES_FULL_PRERENDER;
-      delete process.env.VERCEL;
+      for (const n of names) delete process.env[n];
     });
     afterEach(() => {
-      restore("NOTES_FULL_PRERENDER", saved.full);
-      restore("VERCEL", saved.vercel);
+      for (const n of names) {
+        if (saved[n] === undefined) delete process.env[n];
+        else process.env[n] = saved[n];
+      }
     });
 
     it("is full when NOTES_FULL_PRERENDER is 1", () => {
       process.env.NOTES_FULL_PRERENDER = "1";
-      expect(notesPrerenderParams(slugs)).toHaveLength(3);
+      expect(notesPrerenderParams("s/c", slugs)).toHaveLength(3);
     });
 
-    it("is the sample when neither variable is set", () => {
-      expect(notesPrerenderParams(slugs)).toHaveLength(1);
+    it("is the sample when no variable is set", () => {
+      expect(notesPrerenderParams("s/c", slugs)).toHaveLength(1);
     });
 
     it("is the sample for any other NOTES_FULL_PRERENDER value", () => {
       process.env.NOTES_FULL_PRERENDER = "true";
-      expect(notesPrerenderParams(slugs)).toHaveLength(1);
+      expect(notesPrerenderParams("s/c", slugs)).toHaveLength(1);
     });
 
-    // The live site keeps every page prebuilt: a page built on first visit
-    // costs that visitor ~2-2.6 s, and Vercel drops those copies on every
-    // deploy, so Google would nearly always be the slow first visitor (the
-    // /questions finding of 2026-09-17).
-    it("is full on a Vercel build", () => {
+    // Since 2026-11-05 a Vercel build keeps only pages people read (TECH_DEBT_SPEC.md 2.3):
+    // the first subtopic of every chapter plus the hot list. This chapter is not on it.
+    it("is the first subtopic plus hot pages on a Vercel build", () => {
       process.env.VERCEL = "1";
-      expect(notesPrerenderParams(slugs)).toHaveLength(3);
+      expect(notesPrerenderParams("s/c", slugs)).toHaveLength(1);
+      process.env.PRERENDER_ALL = "1";
+      expect(notesPrerenderParams("s/c", slugs)).toHaveLength(3);
     });
   });
 });
@@ -103,7 +98,7 @@ describe("every notes subtopic route uses the helper", () => {
 
   it("every subject route builds its params through the shared helper", () => {
     const helper = fs.readFileSync(path.join(root, "_components", "notesRoutes.tsx"), "utf8");
-    expect(helper).toMatch(/notesPrerenderParams\(c\.slugs\)/);
+    expect(helper).toMatch(/notesPrerenderParams\(`\$\{subjectRoute\}\/\$\{c\.chapterSlug\}`, c\.slugs\)/);
     for (const file of routes) expect(fs.readFileSync(file, "utf8"), file).toMatch(/makeSubtopicRoute\(/);
   });
 

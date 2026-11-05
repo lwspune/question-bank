@@ -15,6 +15,8 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { hotOnly } from "@/lib/seo/prerenderBudget";
+import { HOT_FORMULA_PAGES } from "@/lib/seo/prerenderHotPaths";
 import { BookOpen, Sigma } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import Footer from "@/components/Footer";
@@ -49,7 +51,9 @@ type Params = { params: { slug: string; subjectSlug: string; chapterSlug: string
  */
 export function generateStaticParams({ params }: { params: { slug?: string } }) {
   const slug = params?.slug;
-  return listFormulaChapterPages()
+  // On Vercel only the pages people read are built ahead; the rest on first visit (TECH_DEBT_SPEC.md 2.3).
+  const pages = hotOnly(listFormulaChapterPages(), (p) => `${p.examSlug}/${p.subjectSlug}/${p.chapterSlug}`, HOT_FORMULA_PAGES);
+  return pages
     .filter((p) => !slug || p.examSlug === slug)
     .map((p) =>
       slug
