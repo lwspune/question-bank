@@ -58,6 +58,17 @@ describe("buildPlanOrder", () => {
     expect([...ids].sort()).toEqual(["m1", "m3", "r2"]);
   });
 
+  it("counts a one-question repeat (a reprint the bank holds once) but links no See all page", () => {
+    // SSC CGL 2026-11-06: one row, reprinted in a later shift (lib/homework/reprints.ts).
+    const inp = input({
+      groups: [{ tier: "repeat", label: "Reprinted word for word", sittings: ["Mar 2016", "Mar 2018"], questionIds: ["s1"] }],
+    });
+    const item = buildPlanOrder(inp).find((i) => i.questionId === "s1")!;
+    expect(item.part).toBe(1);
+    expect(item.note).toBe("Asked 2 times: Mar 2016, Mar 2018");
+    expect(item.group).toBeUndefined();
+  });
+
   it("records the group each slot stands for, by its place in the input", () => {
     // groups[0] = repeat B, groups[1] = repeat A, groups[2] = type T.
     const byId = new Map(buildPlanOrder(input()).map((i) => [i.questionId, i.group]));
