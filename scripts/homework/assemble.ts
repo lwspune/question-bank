@@ -117,8 +117,8 @@ function main() {
     subjectName,
     title,
     // Repeats and types are ranked together by count since 2026-11-04 (lib/homework/plan.ts).
-    summary: examName === "NDA"
-      ? `NDA ${subjectName} past questions, ${sittings[0]} to ${sittings[sittings.length - 1]}, five a day. Questions UPSC asked again and the question types it keeps asking come first, ranked together by how often they were asked, then every other question. A set of linked items counts as one question.`
+    summary: examName === "NDA" || examName === "CDS"
+      ? `${examName} ${subjectName} past questions, ${sittings[0]} to ${sittings[sittings.length - 1]}, five a day. Questions UPSC asked again and the question types it keeps asking come first, ranked together by how often they were asked, then every other question. A set of linked items counts as one question.`
       : examName === "MHT-CET"
       ? `MHT-CET ${subjectName} past questions from ${sittings.length} shifts, ${sittings[0].slice(-7, -3)} to ${sittings[sittings.length - 1].slice(-7, -3)}, five a day. Questions asked again in another shift and the question types that keep coming back come first, ranked together by how often they were asked, then every other question.`
       : isPapers

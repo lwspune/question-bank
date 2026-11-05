@@ -7,7 +7,10 @@
  */
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-/** NDA sits twice a year: NDA 1 in April, NDA 2 in September. */
+/**
+ * NDA and CDS sit twice a year; the bank files paper 1 under April and paper 2
+ * under September, for both exams.
+ */
 const NDA_MONTH: Record<string, number> = { "1": 3, "2": 8 };
 
 /**
@@ -20,7 +23,7 @@ function dateKey(label: string): number {
   const at = (year: number, month: number, day = 0, shift = 0) => ((year * 12 + month) * 32 + day) * 3 + shift;
   const year = /^(\d{4})$/.exec(label);
   if (year) return at(Number(year[1]), 0);
-  const nda = /^NDA (\d) (\d{4})$/.exec(label);
+  const nda = /^(?:NDA|CDS) (\d) (\d{4})$/.exec(label);
   if (nda) {
     if (!(nda[1] in NDA_MONTH)) throw new Error(`cannot date sitting "${label}"`);
     return at(Number(nda[2]), NDA_MONTH[nda[1]]);
@@ -64,6 +67,17 @@ export function ndaSittingLabel(year: number, month: string | null): string {
   if (month.startsWith("Apr")) return `NDA 1 ${year}`;
   if (month.startsWith("Sep")) return `NDA 2 ${year}`;
   throw new Error(`unknown NDA month "${month}" on a ${year} row`);
+}
+
+/**
+ * A CDS paper's label (2026-11-05), "CDS 1 2024": the bank files CDS 1 under
+ * April and CDS 2 under September, like NDA. Any other month is an error.
+ */
+export function cdsSittingLabel(year: number, month: string | null): string {
+  if (!month) throw new Error(`no month on a ${year} CDS row`);
+  if (month.startsWith("Apr")) return `CDS 1 ${year}`;
+  if (month.startsWith("Sep")) return `CDS 2 ${year}`;
+  throw new Error(`unknown CDS month "${month}" on a ${year} row`);
 }
 
 /**

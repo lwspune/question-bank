@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { cetSittingLabel, compareSittings, mhSittingLabel, ndaSittingLabel } from "@/lib/homework/sittings";
+import { cdsSittingLabel, cetSittingLabel, compareSittings, mhSittingLabel, ndaSittingLabel } from "@/lib/homework/sittings";
 
 describe("compareSittings", () => {
   it("orders MH papers by date, not alphabetically", () => {
@@ -18,6 +18,15 @@ describe("compareSittings", () => {
 
   it("refuses an NDA paper number other than 1 or 2", () => {
     expect(() => ["NDA 3 2024", "NDA 1 2024"].sort(compareSittings)).toThrow(/NDA 3 2024/);
+  });
+
+  it("orders CDS papers by year, then CDS 1 before CDS 2", () => {
+    const got = ["CDS 2 2024", "CDS 1 2026", "CDS 2 2016", "CDS 1 2024", "CDS 1 2017"].sort(compareSittings);
+    expect(got).toEqual(["CDS 2 2016", "CDS 1 2017", "CDS 1 2024", "CDS 2 2024", "CDS 1 2026"]);
+  });
+
+  it("refuses a CDS paper number other than 1 or 2", () => {
+    expect(() => ["CDS 3 2024", "CDS 1 2024"].sort(compareSittings)).toThrow(/CDS 3 2024/);
   });
 
   it("refuses a label it cannot date", () => {
@@ -50,6 +59,18 @@ describe("ndaSittingLabel", () => {
   it("refuses a row with no month or another month", () => {
     expect(() => ndaSittingLabel(2024, null)).toThrow(/2024/);
     expect(() => ndaSittingLabel(2024, "Jan")).toThrow(/Jan/);
+  });
+});
+
+describe("cdsSittingLabel", () => {
+  it("names the April paper CDS 1 and the September paper CDS 2", () => {
+    expect(cdsSittingLabel(2024, "April")).toBe("CDS 1 2024");
+    expect(cdsSittingLabel(2016, "September")).toBe("CDS 2 2016");
+  });
+
+  it("refuses a row with no month or another month", () => {
+    expect(() => cdsSittingLabel(2024, null)).toThrow(/2024/);
+    expect(() => cdsSittingLabel(2024, "Feb")).toThrow(/Feb/);
   });
 });
 

@@ -124,6 +124,12 @@ describe("homeworkOfferLead", () => {
       "5 past NDA questions a day."
     );
   });
+
+  it("calls CDS questions past CDS questions, not board questions", () => {
+    expect(homeworkOfferLead({ ...maths, examName: "CDS", otherSubjects: [] })?.body).toBe(
+      "5 past CDS questions a day."
+    );
+  });
 });
 
 describe("homeworkOfferFacts", () => {
