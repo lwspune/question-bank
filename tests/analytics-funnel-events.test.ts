@@ -24,17 +24,12 @@ describe("FUNNEL_EVENTS", () => {
       "notes_mock_card_click",
       "chat_launcher_click",
       "chapter_share_click",
-      "v_hello_shown",
-      "v_hello_click",
-      "next_step_card_shown",
-      "next_step_card_click",
       "download_box_signin",
       "checkout_opened",
       "checkout_paid",
       "checkout_failed",
       "checkout_dismissed",
       "free_download_used",
-      "slow_tap",
       "resource_chips_shown",
       "resource_chips_click",
       "performance_starter_click",
@@ -67,6 +62,14 @@ describe("FUNNEL_EVENTS", () => {
 describe("isFunnelEvent", () => {
   it("accepts every declared name", () => {
     for (const n of FUNNEL_EVENTS) expect(isFunnelEvent(n)).toBe(true);
+  });
+
+  it("rejects the events retired on 2026-11-05 (nothing read them)", () => {
+    // 38,053 of 60,387 custom events in the 30 days before, with no recorded reading.
+    for (const n of ["slow_tap", "next_step_card_shown", "next_step_card_click", "v_hello_shown", "v_hello_click"]) {
+      expect(isFunnelEvent(n), n).toBe(false);
+      expect(buildFunnelEvent(n).ok, n).toBe(false);
+    }
   });
 
   it("rejects an undeclared name and non-strings", () => {
