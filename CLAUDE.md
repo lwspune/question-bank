@@ -66,7 +66,7 @@ npm run jee:matrix       # the JEE Mains Maths grid for /guide/jee-mains-maths (
 
 - **Next.js 14** App Router · TypeScript · Tailwind 3 · shadcn-style UI primitives
 - **Supabase** Auth + Postgres + RLS, accessed via `@supabase/supabase-js` (no Prisma, no ORM)
-- **Vitest 2** for tests · `tsx` for scripts
+- **Vitest 5** (Vite 7) for tests · `tsx` for scripts · **zod 4** for request validation
 - **Word export:** `temml` (LaTeX → MathML) → `mathml2omml` → `docx` + `jszip`
 - **Browser math preview:** `katex` + `react-katex`
 - **Deploy:** Vercel, git-integrated

@@ -1,3 +1,5 @@
+// Ids are well-formed v4 UUIDs: zod 4's .uuid() rejects "1111...-1111" (TECH_DEBT_SPEC.md 4.3);
+// every real id in production passes it (141,765 rows checked 2026-11-05).
 import { describe, it, expect } from "vitest";
 import { validateEditPayload } from "@/lib/questions/edit";
 import { contentHash } from "@/lib/upload/hash";
@@ -8,9 +10,9 @@ const VALID = {
   difficulty: "EASY" as const,
   solution: "Two.",
   imageUrl: null,
-  subjectId: "11111111-1111-1111-1111-111111111111",
-  chapterId: "22222222-2222-2222-2222-222222222222",
-  subtopicId: "33333333-3333-3333-3333-333333333333",
+  subjectId: "11111111-1111-4111-8111-111111111111",
+  chapterId: "22222222-2222-4222-8222-222222222222",
+  subtopicId: "33333333-3333-4333-8333-333333333333",
   visibility: "PRIVATE" as const,
   correct: "A" as const,
   options: [

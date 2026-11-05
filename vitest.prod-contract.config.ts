@@ -25,7 +25,8 @@ export default defineConfig({
     testTimeout: 30000,
     hookTimeout: 90000,
     pool: "forks",
-    poolOptions: { forks: { maxForks: 2, minForks: 1 } },
+    // Vitest 4+ took the worker cap out of poolOptions (TECH_DEBT_SPEC.md 4.3).
+    maxWorkers: 2,
     retry: 1,
   },
 });
