@@ -8,7 +8,11 @@ the first step. Sizes (S/M/L) are estimates from the counted files, not measurem
 
 How each item runs: its own branch, test first where there is logic, `npm run gate`, a
 before/after sheet for anything a user can see, then merge. Approving a phase approves its
-items; the **decision points** marked below still stop for the owner. Builds follow the owner's
+items; the **decision points** marked below still stop for the owner.
+
+**Measurement (owner, 2026-11-05): all build and deploy measurements happen ONCE, after every phase is built and deployed.** Each item is verified without a build (typecheck, lint, tests, a dev-server check); the Baseline table is the "before". Moved to after that deploy: 2.5 (the heap limit) and every before/after comparison. Not builds, so still done in place: 2.3's traffic per page family (Vercel Analytics) and 4.0's advisory counts (scratch installs). Each phase stays in separate commits so a failing deploy build can be bisected; the deploy does not publish a failed build.
+
+Builds follow the owner's
 rule (no casual local builds): measurement builds are the normal deploy build or one `staged`
 workflow run, each asked for first.
 
