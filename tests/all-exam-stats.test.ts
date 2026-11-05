@@ -39,8 +39,9 @@ describe("pickExamCardHref", () => {
   });
 
   it("falls back to the bank for an exam with no public content (its exam home 404s)", () => {
-    const empty = EXAM_REGISTRY.find((e) => e.noPublicContent)!;
-    expect(empty).toBeDefined();
+    // A made-up entry: whether any REAL exam has no public content changes as
+    // exams launch (none did on 2026-11-05, which failed the old version of this).
+    const empty = { ...neet, noPublicContent: true };
     expect(pickExamCardHref(empty, "uuid-x", false)).toBe("/browse?examId=uuid-x");
     expect(pickExamCardHref(empty, null, false)).toBe("/browse");
   });

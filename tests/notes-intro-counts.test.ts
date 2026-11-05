@@ -60,6 +60,7 @@ import {
   extractCountClaims,
   allowedCounts,
   isExemptCount,
+  YEAR_LIKE_MIN,
 } from "@/lib/notes/introAudit";
 
 const HAS_ENV =
@@ -108,6 +109,8 @@ const key = (exam: string, subject: string, chapter: string) =>
 async function loadLive(db: SupabaseClient): Promise<Live> {
   const chapter = new Map<string, number>();
   const perSub = new Map<string, Map<string, number>>();
+  /** Per chapter: counts by "<subtopic or *>	<year>", the chapter's and each subtopic's per-year counts. */
+  const perYear = new Map<string, Map<string, number>>();
   const maxYear = new Map<string, number>();
 
   // Paged in 1000-row windows — PostgREST silently truncates a raw select at
@@ -151,7 +154,12 @@ async function loadLive(db: SupabaseClient): Promise<Live> {
         if (!perSub.has(k)) perSub.set(k, new Map());
         const sn = r.subtopics?.name ?? "?";
         perSub.get(k)!.set(sn, (perSub.get(k)!.get(sn) ?? 0) + 1);
-        if (r.pyq_year) maxYear.set(k, Math.max(maxYear.get(k) ?? 0, r.pyq_year));
+        if (r.pyq_year) {
+          maxYear.set(k, Math.max(maxYear.get(k) ?? 0, r.pyq_year));
+          if (!perYear.has(k)) perYear.set(k, new Map());
+          const y = perYear.get(k)!;
+          for (const who of ["*", sn]) y.set(`${who}	${r.pyq_year}`, (y.get(`${who}	${r.pyq_year}`) ?? 0) + 1);
+        }
       }
       if (rows.length < 1000) break;
     }
@@ -160,7 +168,7 @@ async function loadLive(db: SupabaseClient): Promise<Live> {
   // Singles AND pair sums, via the shared core.
   const subtopic = new Map<string, Set<number>>();
   for (const [k, m] of perSub) {
-    subtopic.set(k, allowedCounts(chapter.get(k) ?? 0, [...m.values()]));
+    subtopic.set(k, allowedCounts(chapter.get(k) ?? 0, [...m.values()], [...(perYear.get(k)?.values() ?? [])]));
   }
   return { chapter, subtopic, maxYear };
 }
@@ -176,6 +184,13 @@ describe.skipIf(!HAS_ENV)("/notes chapter intros state live bank counts", () => 
     );
     live = await loadLive(db);
   }, 120_000);
+
+  it("no chapter is big enough for a year-shaped number to be its count", () => {
+    // extractCountClaims drops YEAR_LIKE_MIN..YEAR_LIKE_MAX as years. That is only
+    // safe while every chapter stays below YEAR_LIKE_MIN (largest 1,036 on 2026-11-05).
+    const tooBig = [...live.chapter].filter(([, n]) => n >= YEAR_LIKE_MIN).map(([k, n]) => `${k}: ${n}`);
+    expect(tooBig).toEqual([]);
+  });
 
   it("every count claimed in an intro matches the chapter or one of its subtopics", () => {
     const bad: string[] = [];
