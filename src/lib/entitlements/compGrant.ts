@@ -77,7 +77,10 @@ export function activeGrants(rows: readonly GrantRow[], nowMs: number): ActiveGr
     .map(({ id, scope, source, expiresAt }) => ({ id, scope, source, expiresAt }));
 }
 
-/** A paid pass ends through a refund, never a profile-page button. */
-export function canRevokeFromProfile(grant: Pick<ActiveGrant, "source">): boolean {
-  return grant.source !== "razorpay";
+/**
+ * A pass the student paid for. It can still be revoked from the profile, but the
+ * confirm says so: revoking ends access and does NOT refund the payment.
+ */
+export function isPaidGrant(grant: Pick<ActiveGrant, "source">): boolean {
+  return grant.source === "razorpay";
 }

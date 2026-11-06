@@ -3,7 +3,7 @@ import {
   COMP_SCOPE_OPTIONS,
   compExpiryIso,
   activeGrants,
-  canRevokeFromProfile,
+  isPaidGrant,
 } from "@/lib/entitlements/compGrant";
 import { SCOPE_ALL, SCOPE_MOCKS, SCOPE_TEACHER } from "@/lib/entitlements/access";
 
@@ -69,14 +69,14 @@ describe("activeGrants", () => {
   });
 });
 
-describe("canRevokeFromProfile", () => {
-  it("allows revoking comp and manual grants", () => {
-    expect(canRevokeFromProfile({ source: "comp" })).toBe(true);
-    expect(canRevokeFromProfile({ source: "manual" })).toBe(true);
+// Every active grant can be revoked from the profile (as on /dashboard/entitlements);
+// a paid one gets a stronger confirm, because revoking does not refund the payment.
+describe("isPaidGrant", () => {
+  it("is true for a Razorpay pass", () => {
+    expect(isPaidGrant({ source: "razorpay" })).toBe(true);
   });
-  // A paid pass is ended by a refund (refund.processed revokes it), not by a
-  // one-click button on the profile page.
-  it("does not offer revoke on a paid grant", () => {
-    expect(canRevokeFromProfile({ source: "razorpay" })).toBe(false);
+  it("is false for comp and manual grants", () => {
+    expect(isPaidGrant({ source: "comp" })).toBe(false);
+    expect(isPaidGrant({ source: "manual" })).toBe(false);
   });
 });
