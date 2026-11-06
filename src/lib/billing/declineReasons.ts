@@ -44,6 +44,18 @@ export function reasonsOffered(afterCheckout: boolean): DeclineReason[] {
 }
 
 /**
+ * When the question shows (2026-11-06). Hidden from the tap on Pay until
+ * checkout ends (`busy` stays on while Razorpay is open): a buyer once
+ * answered "Free is enough for me" 5 s after their checkout opened and paid
+ * 90 s later. "after" = Razorpay was closed without paying.
+ */
+export type WhyNotNowPrompt = "hidden" | "before" | "after";
+export function whyNotNowPrompt({ busy, dismissed }: { busy: boolean; dismissed: boolean }): WhyNotNowPrompt {
+  if (busy) return "hidden";
+  return dismissed ? "after" : "before";
+}
+
+/**
  * Who answered. Class 9-12 students mostly cannot pay without a parent and
  * graduates pay for themselves, so the two are read apart; school and senior
  * tiers go together.
@@ -77,7 +89,21 @@ export type DeclineRow = {
   afterCheckout: boolean;
   /** The student's tier (resolveStudentTier on their profile), null when unknown. */
   tier: ExamTier | null;
+  /** The IST day the answer was given (YYYY-MM-DD). */
+  day: string;
 };
+
+/** A pass bought: who, and on which IST day (YYYY-MM-DD). */
+export type PassPurchaseDay = { userId: string; day: string };
+
+/**
+ * Leave out an answer from a student who bought a pass the same IST day: they
+ * did buy, so their "not buying" is not a lost sale.
+ */
+export function withoutSameDayBuyers(rows: readonly DeclineRow[], purchases: readonly PassPurchaseDay[]): DeclineRow[] {
+  const bought = new Set(purchases.map((p) => `${p.userId}|${p.day}`));
+  return rows.filter((r) => !bought.has(`${r.userId}|${r.day}`));
+}
 
 export type DeclineReasonCount = {
   reason: DeclineReason;

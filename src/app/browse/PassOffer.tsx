@@ -139,7 +139,8 @@ export default function PassOffer({
                 gate={GATE[surface]}
                 box={box}
                 planId={pass.planId}
-                afterCheckout={dismissed}
+                busy={busy}
+                dismissed={dismissed}
                 className="border-t pt-3"
               />
             )}

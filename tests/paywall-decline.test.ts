@@ -13,6 +13,8 @@ import {
   declineGroupOf,
   reasonsOffered,
   summariseDeclines,
+  whyNotNowPrompt,
+  withoutSameDayBuyers,
   type DeclineRow,
 } from "@/lib/billing/declineReasons";
 
@@ -118,6 +120,7 @@ describe("summariseDeclines", () => {
     gate: "reveals",
     afterCheckout: false,
     tier: "senior",
+    day: "2026-11-05",
     ...over,
   });
 
@@ -154,5 +157,46 @@ describe("summariseDeclines", () => {
   it("files gates other than the answer limit and the download box under 'other'", () => {
     const s = summariseDeclines([row({ gate: "pricing" })]);
     expect(s.reasons.find((r) => r.reason === "too_expensive")!.byOffer).toEqual({ answers: 0, downloads: 0, other: 1 });
+  });
+});
+
+describe("whyNotNowPrompt: when the question shows", () => {
+  it("asks before a checkout, and asks 'didn't pay?' once Razorpay was closed", () => {
+    expect(whyNotNowPrompt({ busy: false, dismissed: false })).toBe("before");
+    expect(whyNotNowPrompt({ busy: false, dismissed: true })).toBe("after");
+  });
+
+  it("hides from the tap on Pay until checkout ends, so a buyer cannot answer 'not buying' mid-payment", () => {
+    // 6 Nov 2026: a buyer's "Free is enough for me" was recorded 5 s after
+    // their checkout opened, and they paid 90 s later.
+    expect(whyNotNowPrompt({ busy: true, dismissed: false })).toBe("hidden");
+    expect(whyNotNowPrompt({ busy: true, dismissed: true })).toBe("hidden");
+  });
+});
+
+describe("withoutSameDayBuyers", () => {
+  const row = (over: Partial<DeclineRow>): DeclineRow => ({
+    userId: "u1",
+    reason: "free_enough",
+    gate: "teacher",
+    afterCheckout: false,
+    tier: "senior",
+    day: "2026-11-06",
+    ...over,
+  });
+
+  it("drops an answer from a student who bought a pass the same IST day", () => {
+    const rows = [row({ userId: "buyer" }), row({ userId: "other" })];
+    const kept = withoutSameDayBuyers(rows, [{ userId: "buyer", day: "2026-11-06" }]);
+    expect(kept.map((r) => r.userId)).toEqual(["other"]);
+  });
+
+  it("keeps an answer from a day the student did not buy", () => {
+    const rows = [row({ userId: "buyer", day: "2026-11-05" })];
+    expect(withoutSameDayBuyers(rows, [{ userId: "buyer", day: "2026-11-06" }])).toHaveLength(1);
+  });
+
+  it("keeps everything when nobody bought", () => {
+    expect(withoutSameDayBuyers([row({})], [])).toHaveLength(1);
   });
 });
