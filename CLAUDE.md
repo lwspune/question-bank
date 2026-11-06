@@ -352,7 +352,7 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 - **2026-11-06 — "Asked in NDA" under board questions: exam twins (0220), pilot NDA Matrices.**
   - **Why:** the owner wanted "board is the foundation" shown with evidence on the question a student studies; syllabus rulings count topics, not questions.
   - **Pilot:** 177 hand-settled pairs; 60 of NDA's 181 Matrices questions (33%) have a board twin. "Similar" never counts as asked; one line per card, own exam first; no answer in the panel (reveal limit).
-  - **Scale:** ~72k comparisons for CET/JEE/NEET x CBSE/SB, so two agents per slice, calibrated on the Matrices file first; finish NDA Maths first. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
+  - **Scale:** ~72k comparisons for CET/JEE/NEET x CBSE/SB, so two agents per slice, calibrated on the Matrices file first. **NDA Maths done 11-06:** 357 of 2,280 (16%) asked as a board question, 770 (34%) with any twin. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-11-05 (third) — Class 9-10 downloads need the pass again, like every exam's (owner); no migration.**
   - **Why:** the owner's 11-04 rule (every download needs a pass: each PDF is printed on the server) reached only the new revision sheets; the 0210 free downloads were never raised. One no-pass student took 46 SSC 10 homework papers in 4 minutes.
   - **Only downloads change:** answers, mocks, tests, saves and V stay free for those exams; a Class 9-10 student gets the same one free paper and formula sheet as anyone.
