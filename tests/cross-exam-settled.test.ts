@@ -19,6 +19,7 @@ const file = (pairs: unknown[], over: Record<string, unknown> = {}) => ({
   targets: [{ exam: "NDA", subject: "Mathematics", chapter: "Matrices & Determinants" }],
   board: [{ exam: "Maharashtra HSC Class 12", subject: "Mathematics", chapter: "Matrices" }],
   pairs,
+  reviewed: { targets: [B, C], board: [A] },
   ...over,
 });
 
@@ -68,6 +69,21 @@ describe("validateSettled", () => {
 
   it("refuses a file without pairs", () => {
     expect(validateSettled({ run: "x" })).not.toEqual([]);
+  });
+
+  it("keeps a run that matched nothing, so the questions it read still count as read", () => {
+    expect(validateSettled(file([]))).toEqual([]);
+  });
+
+  it("refuses a file that does not say which questions the run read", () => {
+    expect(validateSettled(file([{ source: A, target: B, kind: "exact", why: "x" }], { reviewed: undefined })).join()).toMatch(/reviewed/);
+    expect(validateSettled(file([], { reviewed: { targets: [], board: [A] } })).join()).toMatch(/reviewed\.targets/);
+    expect(validateSettled(file([], { reviewed: { targets: [B], board: ["nope"] } })).join()).toMatch(/reviewed\.board/);
+  });
+
+  it("refuses a pair whose questions the run did not read", () => {
+    const errors = validateSettled(file([{ source: C, target: B, kind: "exact", why: "x" }], { reviewed: { targets: [B], board: [A] } }));
+    expect(errors.join()).toMatch(/pairs\[0\].*source.*not among the board questions read/);
   });
 });
 

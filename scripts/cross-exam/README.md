@@ -22,29 +22,123 @@ A target that is not a past-paper question (`question_kind = 'pyq'`), two questi
 either question not PUBLIC. Readers see a link only while both questions are PUBLIC. A deleted
 question takes its links with it. Writes are service-role only.
 
-## One run, start to finish
+## Runbook
 
-A run = one exam chapter against the board chapters that teach it.
+Words used below:
+- A **plan** (`pairs/<exam>-<subject>-<board>.json`, e.g. `pairs/nda-maths-sb.json`) lists the
+  **runs** for one exam subject against one board family.
+- A **run** is one or more exam chapters against the board chapters that teach them. It is named
+  by a slug (`nda-maths-circles`).
+- A **settled file** (`data/<slug>-<date>.json`) is one finished pass over a run. It holds the
+  pairs, plus `reviewed`: the id of every exam and board question that run read, matched or not.
+- A **comparison** is one board question read against one exam question. A settled file has made
+  every comparison between its `reviewed.board` and its `reviewed.targets`.
 
-1. **Pick the chapters.** The syllabus map says which book sections teach each exam subtopic
-   (`scripts/syllabus/data/<subject>-<exam>-rulings.json`, `coveredBy`); NEET has none yet, match
-   chapters by name.
-2. **Evidence.**
-   `npx tsx scripts/cross-exam/prep.ts --target="NDA|Mathematics|<chapter>" --board="Maharashtra HSC Class 12|Mathematics|<chapter>" [--board=...] --out=generated-papers/cross-exam/<run>`
-   Slices of about 135 board questions each (`--slices=N`).
-3. **Agents** (at most 3 at once, owner rule). Brief each: "read scripts/cross-exam/BRIEF.md and
-   follow it; your run dir is ..., you are slice N; keep tool output small". They write
-   `out/board-<n>.json` and pass `validate.ts`.
-4. **Settle (main session).** Read every proposed pair against both stems, and every "unsure" one.
-   Re-label or reject; then read the exam questions NOBODY matched and check the board text for
-   misses (the pilot found 2 in 116). Write `scripts/cross-exam/data/<run>.json`
-   (`src/lib/crossExam/settled.ts` is its shape; `tests/cross-exam-settled.test.ts` checks every
-   committed file).
-5. **Commit.** `npx tsx scripts/cross-exam/commit.ts <run>` (dry run: every rule checked, the
-   change counted), then `--apply`. The file is the record of its run: re-running writes nothing
-   new, and a pair removed from the file is removed from the table.
-6. **Check the page.** The `/board` chapter shows the count in its header box; the pages are cached
-   for a day, so a live page shows the new links the next day (or after a deploy).
+**No comparison is ever made twice.** `src/lib/crossExam/pending.ts` subtracts what the settled
+files read from what the chapters hold now. After a new NDA paper is ingested, only its questions
+are read, against every board question. After a new board paper, only its questions are read,
+against every NDA question. The old papers are never read again.
+
+### A. After any ingest (the usual case)
+
+1. `npm run twins:pending`. For each run with comparisons still to make, it prints the work
+   (e.g. `nda-maths-circles: 3 exam x 81 board`) and the prep command to run. "all N runs up to
+   date" means there is nothing to do.
+2. For each run listed, do **C. One run** below.
+3. Run `npm run twins:pending` again. When both sides gained questions, a run comes in two parts:
+   the new exam questions against every board question, then the old exam questions against the
+   new board questions. prep does part 1; commit it, then prep the same run again for part 2.
+
+A question moved into a chapter counts as new. A question deleted, made PRIVATE or moved out takes
+its links with it (0220), and nothing is re-read for it.
+
+### B. Mapping a new exam or subject (the first time)
+
+1. **Write the plan.** The syllabus map says which book sections teach each exam subtopic
+   (`scripts/syllabus/data/<subject>-<exam>-rulings.json`, `coveredBy`); NEET has none yet, so
+   match chapters by name. Use the bank's chapter names, which are not always the spine's. When one
+   board chapter teaches several exam chapters, put them in ONE run, so each board question is read
+   once against all of them. In the plan's `note`, list the exam chapters with no board chapter and
+   so not run (for NDA Maths: Binary Numbers, Quadratic Equations, Height & Distance; the last two
+   are Class 10 topics).
+2. For Chemistry or Biology, pilot one chapter first: "numbers" and "same question" need their own
+   meaning there (see Scaling below).
+3. `npm run twins:pending -- scripts/cross-exam/pairs/<plan>.json` lists every run as "never run".
+   Do **C** for each.
+
+### C. One run, start to finish
+
+1. **Prepare.**
+   `npx tsx scripts/cross-exam/prep.ts --plan=scripts/cross-exam/pairs/<plan>.json --run=<slug>`
+   This writes the same evidence to `generated-papers/cross-exam/<slug>-a` and `-b` (the two
+   passes): `evidence/target.md`, `evidence/board-<n>.md` (about 135 board questions per slice;
+   `--slices=N` to change) and `evidence/ids.json`, which records what the run read. It refuses to
+   overwrite a folder that already holds agent drafts; pass `--force` to start over.
+2. **Agents.** There is one agent per slice per pass, so 2 slices means 4 agents, at most 3 running
+   at once (owner rule). Pass A and pass B never see each other's work. Brief each agent: "read
+   scripts/cross-exam/BRIEF.md and follow it; your run dir is generated-papers/cross-exam/<slug>-a
+   (or -b), you are slice N; keep tool output small". Each writes `out/board-<n>.json`, and each
+   draft must pass `npx tsx scripts/cross-exam/validate.ts generated-papers/cross-exam/<slug>-a <n>`.
+3. **Review sheet.** `npx tsx scripts/cross-exam/settle.ts scripts/cross-exam/pairs/<plan>.json <slug>`
+   accepts the pairs both passes marked firm with the same kind, and drops pairs only ever marked
+   "unsure". The rest go to `generated-papers/cross-exam/<slug>-review.md`, numbered and grouped
+   under their exam question. These are the firm pairs only one pass found, and the pairs the
+   passes labelled differently.
+4. **Decide (main session).** Read each item: the board question and the exam question in full,
+   and the source paper when the stored text looks wrong. Answer in
+   `generated-papers/cross-exam/<slug>-decisions.json`: `{ "1": "numbers", "2": "reject", ... }`,
+   choosing from exact, numbers, similar or reject, and answering every item. Use the calls in **D**.
+5. **Settle.** Run the same settle command with `--write`. This writes
+   `scripts/cross-exam/data/<slug>-<today>.json`; a second run of the same slug that day gets
+   `-2`, `-3` and so on. A run that matched nothing is still written: what it read must count as
+   read.
+6. **Commit.** `npx tsx scripts/cross-exam/commit.ts <slug>-<date>` is a dry run: it checks every
+   rule and counts the change. Add `--apply` to write it. The file is the record of its run:
+   re-running writes nothing new, and a pair removed from the file is removed from the table.
+   Then commit the file in git (`feat: NDA <chapter> exam twins`). An earlier run's file is never
+   edited by a later run.
+7. **Update the record.** Add the run's row to "Runs so far" below, and the totals line.
+8. **Check the page.** The `/board` chapter shows the count in its header box. Pages are cached for
+   a day, so a live page shows new links the next day, or after a deploy.
+
+### D. Calls made while settling (NDA Maths, 2026-11-06)
+
+Rules that came up again and again. Apply them the same way, so a chapter's counts mean the same
+thing as the last one's.
+- **Doubt goes to the weaker kind.** Decide each pair on its own reading; when still unsure
+  between numbers and similar, choose similar: a false "Asked in NDA" line is worse than an
+  understated one.
+- **A multi-part board item that prints the exam's single ask is numbers.** A book question asks
+  for "(i) axes (ii) foci (iii) eccentricity ..." and the exam asks only for the distance between
+  the foci: if the part the exam asks is printed in the board question, it is numbers; if the exam
+  asks something the board question never prints, it is similar.
+- **Probability: the experiment decides.** When the probability is given outright ("a ship sinks
+  with probability 1/5"), the setting is only a label, so a change of setting is still numbers.
+  When it is worked out from the experiment (coins, dice, cards, balls), a different experiment is
+  similar, however alike the counting.
+- **One step of the exam question is not a match.** A board question that does only one step of
+  what the exam question needs (finding the foci, when the exam needs a tangent at a focus) is
+  rejected, not "similar".
+- **A wrong stored question is fixed in the bank, not worked around.** Check it against the printed
+  paper, correct it in place (an MCQ's `content_hash` does not include its passage), and judge the
+  pair on the corrected text. Example: NDA 1 2025 Q91-92 had the passage
+  sin⁻¹((x − 4x³)/27) where the paper prints sin⁻¹(x − 4x³/27); fixed 2026-11-06.
+
+### E. What this does not cover
+
+- **A question whose wording is corrected after a run.** Its pairs were judged on the old text and
+  are not re-read automatically. When a correction changes what the question asks, re-read its
+  pairs by hand: edit the settled file of the run that made them and commit it again.
+- **A change to the plan.** A board chapter added to a run shows up in `twins:pending` as new
+  work, so nothing extra is needed. A board chapter removed from a run keeps its old pairs until
+  they are removed from the settled files by hand.
+
+### F. Cleanup
+
+The working folders (`generated-papers/cross-exam/<slug>-a`, `-b`, the review sheets and the
+decisions files) are only needed until the run is committed. Delete them after the push, as the
+owner's cleanup rule asks. The settled files in `data/` are the permanent record, and
+`twins:pending` reads only them.
 
 ## Scaling (owner, 2026-11-06)
 

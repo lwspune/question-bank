@@ -1,26 +1,29 @@
 // Settle one two-pass exam-twin run by the calibrated method (README.md, "Calibration").
 //
-//   npx tsx scripts/cross-exam/settle.ts <pairs file> <slug>              # write the review sheet
-//   npx tsx scripts/cross-exam/settle.ts <pairs file> <slug> --write      # write the settled run
+//   npx tsx scripts/cross-exam/settle.ts <plan file> <slug>              # write the review sheet
+//   npx tsx scripts/cross-exam/settle.ts <plan file> <slug> --write      # write the settled run
 //
-// Reads generated-papers/cross-exam/<slug>-a and -b (both passes, all slices validated).
+// Reads generated-papers/cross-exam/<slug>-a and -b (both passes, all slices validated,
+// both prepared by prep.ts from the same evidence).
 //   * firm in both passes with the same kind: accepted as is;
-//   * firm in both with different kinds, or firm in one pass only: listed, numbered, in
-//     generated-papers/cross-exam/<slug>-review.md with both questions printed, for a person;
+//   * firm in both with different kinds, or firm in one pass only: listed, numbered and
+//     grouped under their exam question in generated-papers/cross-exam/<slug>-review.md,
+//     with both questions printed, for a person;
 //   * "unsure" only: dropped.
 // The person answers in generated-papers/cross-exam/<slug>-decisions.json:
 //   { "1": "numbers", "2": "reject", ... }  (exact | numbers | similar | reject; every item answered)
-// and --write produces scripts/cross-exam/data/<slug>-<today>.json for commit.ts.
+// and --write produces scripts/cross-exam/data/<slug>-<today>.json (-2, -3 ... for a second
+// run that day) for commit.ts. The file records every question the run READ (evidence/ids.json),
+// matched or not, so a later run never reads those comparisons again.
 import { existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
+import { nextRunName, type IdSets } from "@/lib/crossExam/pending";
 import { validateSettled, type SettledFile, type SettledPair } from "@/lib/crossExam/settled";
 import type { TwinKind } from "@/lib/crossExam/summary";
+import { DATA_DIR, WORK_DIR, dataFileNames, planRun, readPlan, runRefs } from "./bank";
 
 type Draft = { matches: { board: string; target: string; kind: TwinKind; why: string }[] };
-type Run = { slug: string; targets: string[]; board: string[] };
-type PairsFile = { exam: string; subject: string; boardExams: Record<string, string>; runs: Run[] };
 
-const DIR = "generated-papers/cross-exam";
 const KINDS = ["exact", "numbers", "similar", "reject"] as const;
 
 function readPass(dir: string): Map<string, { kind: TwinKind; why: string }> {
@@ -34,6 +37,14 @@ function readPass(dir: string): Map<string, { kind: TwinKind; why: string }> {
   }
   return out;
 }
+
+function readIds(dir: string): IdSets {
+  const path = join(dir, "evidence/ids.json");
+  if (!existsSync(path)) throw new Error(`${path} is missing: prepare the run with prep.ts --plan`);
+  return JSON.parse(readFileSync(path, "utf8")) as IdSets;
+}
+
+const sameSet = (a: string[], b: string[]) => a.length === b.length && [...a].sort().join() === [...b].sort().join();
 
 /** "### <id> | header\nbody" -> id -> one line of text for the review sheet. */
 function questions(dir: string): Map<string, string> {
@@ -49,69 +60,74 @@ function questions(dir: string): Map<string, string> {
 }
 
 function main() {
-  const [pairsPath, slug] = process.argv.slice(2).filter((a) => !a.startsWith("--"));
+  const [planPath, slug] = process.argv.slice(2).filter((a) => !a.startsWith("--"));
   const write = process.argv.includes("--write");
-  if (!pairsPath || !slug) throw new Error("usage: settle.ts <pairs file> <slug> [--write]");
-  const P = JSON.parse(readFileSync(pairsPath, "utf8")) as PairsFile;
-  const run = P.runs.find((r) => r.slug === slug);
-  if (!run) throw new Error(`no run ${slug} in ${pairsPath}`);
+  if (!planPath || !slug) throw new Error("usage: settle.ts <plan file> <slug> [--write]");
+  const plan = readPlan(planPath);
+  const refs = runRefs(plan, planRun(plan, slug));
 
-  const A = readPass(join(DIR, `${slug}-a`));
-  const B = readPass(join(DIR, `${slug}-b`));
+  const dirA = join(WORK_DIR, `${slug}-a`);
+  const dirB = join(WORK_DIR, `${slug}-b`);
+  const read = readIds(dirA);
+  const readB = readIds(dirB);
+  if (!sameSet(read.targets, readB.targets) || !sameSet(read.board, readB.board))
+    throw new Error(`${slug}: the two passes read different questions; prepare both with one prep.ts run`);
+
+  const A = readPass(dirA);
+  const B = readPass(dirB);
   const accepted: SettledPair[] = [];
-  const review: { key: string; a?: TwinKind; b?: TwinKind; why: string }[] = [];
+  const review: { source: string; target: string; a?: TwinKind; b?: TwinKind; why: string }[] = [];
   for (const key of new Set([...A.keys(), ...B.keys()])) {
     const a = A.get(key);
     const b = B.get(key);
     const [source, target] = key.split(">");
     if (a && b && a.kind === b.kind) accepted.push({ source, target, kind: a.kind, why: a.why });
-    else review.push({ key, a: a?.kind, b: b?.kind, why: (a ?? b)!.why });
+    else review.push({ source, target, a: a?.kind, b: b?.kind, why: (a ?? b)!.why });
   }
-  review.sort((x, y) => x.key.localeCompare(y.key));
+  // Grouped by exam question, so every board question proposed for one exam question is read together.
+  review.sort((x, y) => x.target.localeCompare(y.target) || x.source.localeCompare(y.source));
 
   if (!write) {
-    const q = questions(join(DIR, `${slug}-a`));
+    const q = questions(dirA);
     let s = `# ${slug}: ${accepted.length} accepted (both passes, same kind); ${review.length} to read\n\n`;
-    s += `Answer in ${DIR}/${slug}-decisions.json: { "1": "numbers", ... } with exact | numbers | similar | reject.\n\n`;
+    s += `Answer in ${WORK_DIR}/${slug}-decisions.json: { "1": "numbers", ... } with exact | numbers | similar | reject.\n`;
+    let last = "";
     review.forEach((r, i) => {
-      const [source, target] = r.key.split(">");
-      s += `[${i + 1}] A: ${r.a ?? "-"} · B: ${r.b ?? "-"} · ${r.why}\n  BOARD ${q.get(source)}\n  EXAM  ${q.get(target)}\n\n`;
+      if (r.target !== last) s += `\n=== EXAM ${q.get(r.target)}\n`;
+      last = r.target;
+      s += `  [${i + 1}] A: ${r.a ?? "-"} · B: ${r.b ?? "-"} · ${r.why}\n      BOARD ${q.get(r.source)}\n`;
     });
-    writeFileSync(join(DIR, `${slug}-review.md`), s);
-    console.log(`${slug}: ${accepted.length} accepted, ${review.length} to read -> ${DIR}/${slug}-review.md`);
+    writeFileSync(join(WORK_DIR, `${slug}-review.md`), s);
+    console.log(`${slug}: ${accepted.length} accepted, ${review.length} to read -> ${WORK_DIR}/${slug}-review.md`);
     return;
   }
 
-  const decisionsPath = join(DIR, `${slug}-decisions.json`);
+  const decisionsPath = join(WORK_DIR, `${slug}-decisions.json`);
   const decisions = review.length ? (JSON.parse(readFileSync(decisionsPath, "utf8")) as Record<string, string>) : {};
   const pairs = [...accepted];
   review.forEach((r, i) => {
     const d = decisions[String(i + 1)];
     if (!KINDS.includes(d as (typeof KINDS)[number])) throw new Error(`decision ${i + 1} missing or not one of ${KINDS.join(", ")}`);
     if (d === "reject") return;
-    const [source, target] = r.key.split(">");
-    pairs.push({ source, target, kind: d as TwinKind, why: r.why });
+    pairs.push({ source: r.source, target: r.target, kind: d as TwinKind, why: r.why });
   });
   pairs.sort((x, y) => (x.source + x.target).localeCompare(y.source + y.target));
   const today = new Date().toISOString().slice(0, 10);
   const file: SettledFile = {
-    run: `${slug}-${today}`,
+    run: nextRunName(slug, today, dataFileNames()),
     settledOn: today,
-    targets: run.targets.map((chapter) => ({ exam: P.exam, subject: P.subject, chapter })),
-    board: run.board.map((b) => {
-      const [cls, chapter] = b.split("|");
-      return { exam: P.boardExams[cls], subject: P.subject, chapter };
-    }),
+    targets: refs.targets,
+    board: refs.board,
+    reviewed: { targets: [...read.targets].sort(), board: [...read.board].sort() },
     pairs,
   };
   const errors = validateSettled(file);
   if (errors.length) throw new Error(errors.join("\n"));
-  const out = join("scripts/cross-exam/data", `${file.run}.json`);
-  if (existsSync(out)) throw new Error(`${out} exists; settle each run once a day`);
+  const out = join(DATA_DIR, `${file.run}.json`);
   writeFileSync(out, `${JSON.stringify(file, null, 1)}\n`);
   const kinds: Record<string, number> = {};
   pairs.forEach((p) => (kinds[p.kind] = (kinds[p.kind] ?? 0) + 1));
-  console.log(`${out}: ${pairs.length} pairs ${JSON.stringify(kinds)}`);
+  console.log(`${out}: ${pairs.length} pairs ${JSON.stringify(kinds)}; read ${read.targets.length} exam x ${read.board.length} board`);
 }
 
 main();
