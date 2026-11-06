@@ -21,7 +21,7 @@
  * Refuses, writing nothing, when a review names an id that is not a slot, puts
  * a slot in two repeat groups (across chapters too), or a group spans one year.
  */
-import { readFileSync, readdirSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { addReprints, type AssembledGroup } from "@/lib/homework/reprints";
 import { compareSittings } from "@/lib/homework/sittings";
@@ -58,9 +58,13 @@ function main() {
     if (!allSlots.some((s) => s.id === id)) throw new Error(`no question ${id} to exclude`);
     if (!why) throw new Error(`--exclude-id=${id} needs a reason after a colon`);
   }
+  // Rows prep.ts left out before review (JEE's pre-2021 coaching reprints) are
+  // excluded too, with prep's reason, so the build knows they were left out on purpose.
+  const leftOutPath = join(dir, "left-out.json");
+  const leftOut: { id: string; reason: string }[] = existsSync(leftOutPath) ? JSON.parse(readFileSync(leftOutPath, "utf8")) : [];
   const dropped = (s: Slot) => excludeChapters.has(s.chapter) || excludeIds.has(s.id);
   const slots = allSlots.filter((s) => !dropped(s));
-  const excluded = allSlots.filter(dropped).flatMap((s) => s.rows);
+  const excluded = [...allSlots.filter(dropped).flatMap((s) => s.rows), ...leftOut.map((l) => l.id)];
   const byId = new Map(slots.map((s) => [s.id, s]));
   // Date order: a Maharashtra sitting is a paper ("Feb 2024"), which sorts wrong as text.
   const sittings = [...new Set(slots.map((s) => s.year))].sort(compareSittings);
@@ -126,6 +130,9 @@ function main() {
       ? `SSC CGL Tier II ${subjectName} past questions from ${sittings.length} papers, ${sittings[0].slice(-12, -8)} to ${sittings[sittings.length - 1].slice(-12, -8)}, five a day. Questions SSC asked again and the question types it keeps asking come first, ranked together by how often they were asked, then every other question.${slots.some((s) => s.rows.length > 1) ? " A set of linked items counts as one question." : ""}`
       : examName === "SSC CGL"
       ? `SSC CGL Tier I ${subjectName} past questions from ${sittings.length} shifts, ${sittings[0].slice(-7, -3)} to ${sittings[sittings.length - 1].slice(-7, -3)}, five a day. Questions SSC asked again and the question types it keeps asking come first, ranked together by how often they were asked, then every other question.${slots.some((s) => s.rows.length > 1) ? " A set of linked items counts as one question." : ""}`
+      : examName === "JEE Mains"
+      // Sittings mix 2021 papers, 2022-2025 days and 2026 shifts, so the summary names years only.
+      ? `JEE Mains ${subjectName} past questions, ${/\d{4}/.exec(sittings[0])![0]} to ${/\d{4}/.exec(sittings[sittings.length - 1])![0]}, five a day. Questions NTA asked again and the question types it keeps asking come first, ranked together by how often they were asked, then every other question.`
       : examName === "MHT-CET"
       ? `MHT-CET ${subjectName} past questions from ${sittings.length} shifts, ${sittings[0].slice(-7, -3)} to ${sittings[sittings.length - 1].slice(-7, -3)}, five a day. Questions asked again in another shift and the question types that keep coming back come first, ranked together by how often they were asked, then every other question.`
       : isPapers
@@ -137,7 +144,7 @@ function main() {
     ...(excluded.length
       ? {
           excludedChapters: [...excludeChapters],
-          excludedQuestions: [...excludeIds].map(([id, reason]) => ({ id, reason })),
+          excludedQuestions: [...[...excludeIds].map(([id, reason]) => ({ id, reason })), ...leftOut],
           excluded,
         }
       : {}),

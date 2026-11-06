@@ -81,10 +81,15 @@ async function main() {
   }
   // JEE Mains: the bank's pre-2021 rows are year-only reprints from a coaching
   // module, with no paper behind them, so they stay out of the plan (2026-11-06).
+  // They are written to left-out.json, which assemble.ts carries into the plan's
+  // exclusions, so the build knows they were left out on purpose.
+  const leftOut: { id: string; reason: string }[] = [];
   if (isJee) {
-    const before = rows.length;
+    for (const r of rows.filter((r) => r.pyq_year < 2021)) {
+      leftOut.push({ id: r.id, reason: `a ${r.pyq_year} question reprinted in a coaching module, with no paper or shift` });
+    }
     rows.splice(0, rows.length, ...rows.filter((r) => r.pyq_year >= 2021));
-    if (rows.length < before) console.log(`left out ${before - rows.length} pre-2021 reprint rows`);
+    if (leftOut.length) console.log(`left out ${leftOut.length} pre-2021 reprint rows`);
   }
 
   // A case study = rows of one paper sharing a real passage (not an instruction,
@@ -132,6 +137,7 @@ async function main() {
     writeFileSync(join(out, "evidence", file), md);
     index.push({ chapter: ch, file, slots: list.length });
   }
+  writeFileSync(join(out, "left-out.json"), JSON.stringify(leftOut, null, 1));
   writeFileSync(join(out, "slots.json"), JSON.stringify(slotList.map(({ rs, ...s }) => s), null, 1));
   writeFileSync(join(out, "index.json"), JSON.stringify(index, null, 1));
   const years: Record<string, number> = {};
