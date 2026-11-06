@@ -14,9 +14,10 @@ export type ChapterRef = { exam: string; subject: string; chapter: string };
 export type SettledFile = {
   run: string;
   settledOn: string;
-  /** The exam chapter whose past questions were matched. */
-  target: ChapterRef;
-  /** The board chapters whose questions were matched against it. */
+  /** The exam chapters whose past questions were matched: several when one board chapter
+   *  teaches more than one of them, so one read of the board serves all. */
+  targets: ChapterRef[];
+  /** The board chapters whose questions were matched against them. */
   board: ChapterRef[];
   pairs: SettledPair[];
 };
@@ -34,7 +35,8 @@ export function validateSettled(data: unknown): string[] {
   const errors: string[] = [];
   if (typeof f?.run !== "string" || f.run.trim().length === 0 || f.run.length > 80) errors.push("run: 1-80 characters");
   if (typeof f?.settledOn !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(f.settledOn)) errors.push("settledOn: YYYY-MM-DD");
-  if (!isChapterRef(f?.target)) errors.push("target: { exam, subject, chapter }");
+  if (!Array.isArray(f?.targets) || f.targets.length === 0 || !f.targets.every(isChapterRef))
+    errors.push("targets: one or more { exam, subject, chapter }");
   if (!Array.isArray(f?.board) || f.board.length === 0 || !f.board.every(isChapterRef))
     errors.push("board: one or more { exam, subject, chapter }");
   if (!Array.isArray(f?.pairs) || f.pairs.length === 0) {

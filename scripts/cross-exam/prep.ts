@@ -78,25 +78,31 @@ function item(r: Row, header: string): string {
 async function main() {
   const args = process.argv.slice(2);
   const value = (k: string) => args.find((a) => a.startsWith(`--${k}=`))?.slice(k.length + 3);
-  const targetArg = value("target");
+  // Several --target chapters when one board chapter teaches more than one of them.
+  const targets = args.filter((a) => a.startsWith("--target=")).map((a) => parseRef(a.slice(9)));
   const boardArgs = args.filter((a) => a.startsWith("--board=")).map((a) => a.slice(8));
-  if (!targetArg || boardArgs.length === 0) throw new Error("usage: prep.ts --target=Exam|Subject|Chapter --board=Exam|Subject|Chapter [...] [--slices=3] [--out=dir]");
-  const target = parseRef(targetArg);
+  if (targets.length === 0 || boardArgs.length === 0)
+    throw new Error("usage: prep.ts --target=Exam|Subject|Chapter [...] --board=Exam|Subject|Chapter [...] [--slices=3] [--out=dir]");
+  const target = targets[0];
   const boards = boardArgs.map(parseRef);
-  const slices = Number(value("slices") ?? 3);
+  const slices = Number(value("slices") ?? 0) || 0;
   const out = value("out") ?? join("generated-papers/cross-exam", `${target.exam}-${target.chapter}`.toLowerCase().replace(/[^a-z0-9]+/g, "-"));
   mkdirSync(join(out, "evidence"), { recursive: true });
   mkdirSync(join(out, "out"), { recursive: true });
 
   const c = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!, { auth: { persistSession: false } });
 
-  // The exam side: past questions only, grouped by subtopic, oldest first.
-  const tq = await chapterRows(c, target, true);
-  tq.sort((a, b) => (a.subtopic?.name ?? "").localeCompare(b.subtopic?.name ?? "") || (a.pyq_year ?? 0) - (b.pyq_year ?? 0));
-  let t = `# ${target.exam} | ${target.subject} | ${target.chapter} | ${tq.length} past questions (reference)\n\n`;
-  for (const r of tq) {
+  // The exam side: past questions only, chapter by chapter, grouped by subtopic, oldest first.
+  const tq: { r: Row; chapter: string }[] = [];
+  for (const ref of targets) {
+    const rows = await chapterRows(c, ref, true);
+    rows.sort((a, b) => (a.subtopic?.name ?? "").localeCompare(b.subtopic?.name ?? "") || (a.pyq_year ?? 0) - (b.pyq_year ?? 0));
+    tq.push(...rows.map((r) => ({ r, chapter: ref.chapter })));
+  }
+  let t = `# ${target.exam} | ${target.subject} | ${targets.map((x) => x.chapter).join(" + ")} | ${tq.length} past questions (reference)\n\n`;
+  for (const { r, chapter } of tq) {
     const paper = twinPaper(target.exam, r.pyq_year ?? 0, r.pyq_month, r.pyq_note).paper;
-    t += `${item(r, `${paper} | ${r.subtopic?.name ?? "-"}`)}\n`;
+    t += `${item(r, `${paper} | ${targets.length > 1 ? `${chapter}: ` : ""}${r.subtopic?.name ?? "-"}`)}\n`;
   }
   writeFileSync(join(out, "evidence/target.md"), t);
 
@@ -109,14 +115,16 @@ async function main() {
     for (const r of book) board.push({ r, src: `${ref.exam} textbook | ${r.section_label ?? "-"} ${r.question_number ?? "?"}` });
     for (const r of papers) board.push({ r, src: `${ref.exam} board paper ${r.pyq_month ?? ""} ${r.pyq_year} ${r.question_number ?? "?"}` });
   }
-  const size = Math.ceil(board.length / slices);
-  for (let i = 0; i < slices; i++) {
+  // --slices=N, or about 135 board questions a slice (one agent each; the calibration's size).
+  const n = slices > 0 ? slices : Math.max(1, Math.ceil(board.length / 135));
+  const size = Math.ceil(board.length / n);
+  for (let i = 0; i < n; i++) {
     const part = board.slice(i * size, (i + 1) * size);
-    let s = `# Board ${target.subject} | slice ${i + 1} of ${slices} | ${part.length} questions\n\n`;
+    let s = `# Board ${target.subject} | slice ${i + 1} of ${n} | ${part.length} questions\n\n`;
     for (const { r, src } of part) s += `${item(r, `${src} | ${r.question_format}`)}\n`;
     writeFileSync(join(out, `evidence/board-${i + 1}.md`), s);
   }
-  console.log(`${out}: ${tq.length} ${target.exam} past questions; ${board.length} board questions in ${slices} slices`);
+  console.log(`${out}: ${tq.length} ${target.exam} past questions; ${board.length} board questions in ${n} slices`);
 }
 
 main().catch((e) => {
