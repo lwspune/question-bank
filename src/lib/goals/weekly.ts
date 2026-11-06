@@ -27,7 +27,19 @@ export const DEFAULT_WEEKLY_GOAL = 3;
 export const WEEKLY_GOAL_CHOICES = [2, 3, 5, 7] as const;
 
 export const MIN_WEEKLY_GOAL = 1;
-export const MAX_WEEKLY_GOAL = 14;
+/** Study DAYS a week since 2026-11-06, so seven at most. Mirrored by the
+ *  student_profiles_weekly_goal_chk CHECK (migration 0219). */
+export const MAX_WEEKLY_GOAL = 7;
+
+/**
+ * STUDY DAYS (2026-11-06). The goal counts days, not sittings: an IST day is a
+ * study day when it holds a finished sitting (WEEK_SITTING_KINDS) or at least
+ * this many answers, a bank or /board pick with a verdict or a drill answer.
+ * A bare reveal still never counts. Counted in SQL by get_own_week_study_days
+ * (migration 0219), which takes these two from here. Why: the ring showed 0 to
+ * 178 of 219 /me visitors one week, 99 of whom had practised.
+ */
+export const STUDY_DAY_MIN_ANSWERS = 10;
 
 export const WEEK_SITTING_KINDS: readonly ActivityKind[] = [
   "mock_submitted",
@@ -80,8 +92,8 @@ export function weeklyProgress(done: number, goal: number | null): WeeklyProgres
  */
 export function weeklyGoalSentence(p: WeeklyProgress): string {
   if (p.met) return "That's this week's goal done. Anything from here is a bonus.";
-  if (p.done === 0) return `A ${p.goal}-sitting week starts with one. A five-question drill counts.`;
-  if (p.remaining === 1) return "One more sitting and this week's goal is met.";
+  if (p.done === 0) return `A ${p.goal}-day week starts with one. ${STUDY_DAY_MIN_ANSWERS} answers or a five-question drill counts.`;
+  if (p.remaining === 1) return "One more study day and this week's goal is met.";
   return `${p.done} down, ${p.remaining} to go this week.`;
 }
 

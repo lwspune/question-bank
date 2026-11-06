@@ -59,7 +59,7 @@ export default function TodayCard({
       setGoal(next);
       setEditingGoal(false);
       invalidatePulse();
-      toast.success(`Goal set: ${next} sittings a week`);
+      toast.success(`Goal set: ${next} study days a week`);
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Could not save your goal.");
     } finally {
@@ -126,9 +126,9 @@ export default function TodayCard({
           <div className="mt-1 text-xs text-muted-foreground">
             {editingGoal ? (
               <label className="inline-flex items-center gap-2">
-                <span>Sittings a week</span>
+                <span>Study days a week</span>
                 <select
-                  aria-label="Sittings per week"
+                  aria-label="Study days per week"
                   value={p.goal}
                   disabled={saving}
                   autoFocus
@@ -137,14 +137,14 @@ export default function TodayCard({
                 >
                   {WEEKLY_GOAL_CHOICES.map((c) => (
                     <option key={c} value={c}>
-                      {c} a week
+                      {c} days a week
                     </option>
                   ))}
                 </select>
               </label>
             ) : (
               <>
-                {p.chosen ? "Your goal" : "Suggested goal"}: {p.goal} a week ·{" "}
+                {p.chosen ? "Your goal" : "Suggested goal"}: {p.goal} study days a week ·{" "}
                 <button
                   type="button"
                   onClick={() => setEditingGoal(true)}

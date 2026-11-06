@@ -8,33 +8,14 @@
  * to get wrong.
  */
 import type { SupabaseClient } from "@supabase/supabase-js";
-import { WEEK_SITTING_KINDS, weekStartIst } from "./weekly";
+import { STUDY_DAY_MIN_ANSWERS, WEEK_SITTING_KINDS, weekStartIst } from "./weekly";
 
 export type OwnWeekly = {
-  /** Finished sittings since Monday 00:00 IST. */
+  /** Study days since Monday 00:00 IST (2026-11-06; was finished sittings). */
   done: number;
   /** The student's chosen goal, or null when they have not picked one. */
   goal: number | null;
 };
-
-/**
- * `count: "exact", head: true` — a SQL aggregate, never a row payload, so the
- * PostgREST 1000-row cap that has bitten this repo five times cannot touch it.
- */
-export async function countWeekSittings(
-  db: SupabaseClient,
-  userId: string,
-  now: Date = new Date()
-): Promise<number> {
-  const { count, error } = await db
-    .from("user_activity")
-    .select("id", { count: "exact", head: true })
-    .eq("user_id", userId)
-    .in("kind", [...WEEK_SITTING_KINDS])
-    .gte("created_at", weekStartIst(now).toISOString());
-  if (error) throw new Error(`countWeekSittings: ${error.message}`);
-  return count ?? 0;
-}
 
 export async function readWeeklyGoal(db: SupabaseClient, userId: string): Promise<number | null> {
   const { data, error } = await db
@@ -47,13 +28,27 @@ export async function readWeeklyGoal(db: SupabaseClient, userId: string): Promis
   return typeof g === "number" ? g : null;
 }
 
+/**
+ * Study days since Monday 00:00 IST, counted in SQL (migration 0219) under the
+ * caller's own JWT. The rule's two inputs come from weekly.ts.
+ */
+export async function countWeekStudyDays(db: SupabaseClient, now: Date = new Date()): Promise<number> {
+  const { data, error } = await db.rpc("get_own_week_study_days", {
+    p_since: weekStartIst(now).toISOString(),
+    p_sitting_kinds: [...WEEK_SITTING_KINDS],
+    p_min_answers: STUDY_DAY_MIN_ANSWERS,
+  });
+  if (error) throw new Error(`countWeekStudyDays: ${error.message}`);
+  return typeof data === "number" ? data : 0;
+}
+
 export async function getOwnWeekly(
   db: SupabaseClient,
   userId: string,
   now: Date = new Date()
 ): Promise<OwnWeekly> {
   const [done, goal] = await Promise.all([
-    countWeekSittings(db, userId, now),
+    countWeekStudyDays(db, now),
     readWeeklyGoal(db, userId),
   ]);
   return { done, goal };

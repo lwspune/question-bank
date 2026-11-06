@@ -27,7 +27,7 @@ export default function UserMenu({
   /** Holds an org_members row — same source PrimaryNav uses for the Papers tab. */
   isStaff?: boolean;
   isSuperadmin?: boolean;
-  /** Due drill count + this week's sittings (usePulse). Null until resolved,
+  /** Due drill count + this week's study days (usePulse). Null until resolved,
    *  and then the badge and the two lines below render; nothing is shown for
    *  a zero due count, because an empty badge is noise. */
   pulse?: Pulse | null;

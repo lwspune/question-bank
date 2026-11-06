@@ -12,6 +12,7 @@ import {
   weeklyProgress,
   weeklyGoalSentence,
   sanitizeWeeklyGoal,
+  STUDY_DAY_MIN_ANSWERS,
 } from "@/lib/goals/weekly";
 import { ACTIVITY_KINDS } from "@/lib/activity/events";
 
@@ -88,18 +89,37 @@ describe("weeklyGoalSentence — growth-framed", () => {
     const s = weeklyGoalSentence(weeklyProgress(0, 3));
     expect(s).not.toMatch(/miss|behind|only/i);
   });
+
+  // 2026-11-06: the goal counts study DAYS, and a day of practice counts, so
+  // the sentences say what makes a day (99 of 178 students who saw 0 that
+  // week had practised).
+  it("at zero, says what makes a day count", () => {
+    expect(weeklyGoalSentence(weeklyProgress(0, 3))).toBe(
+      `A 3-day week starts with one. ${STUDY_DAY_MIN_ANSWERS} answers or a five-question drill counts.`
+    );
+  });
+
+  it("one short of the goal: one more study day", () => {
+    expect(weeklyGoalSentence(weeklyProgress(2, 3))).toBe("One more study day and this week's goal is met.");
+  });
+
+  it("a day takes ten answers", () => {
+    expect(STUDY_DAY_MIN_ANSWERS).toBe(10);
+  });
 });
 
 describe("sanitizeWeeklyGoal", () => {
-  it("accepts an integer in 1..14", () => {
+  // Study DAYS a week since 2026-11-06, so a week holds seven at most.
+  it("accepts an integer in 1..7", () => {
     expect(sanitizeWeeklyGoal(3)).toBe(3);
     expect(sanitizeWeeklyGoal("5")).toBe(5);
-    expect(sanitizeWeeklyGoal(14)).toBe(14);
+    expect(sanitizeWeeklyGoal(7)).toBe(7);
   });
 
   it("rejects everything else as null", () => {
     expect(sanitizeWeeklyGoal(0)).toBeNull();
-    expect(sanitizeWeeklyGoal(15)).toBeNull();
+    expect(sanitizeWeeklyGoal(8)).toBeNull();
+    expect(sanitizeWeeklyGoal(14)).toBeNull();
     expect(sanitizeWeeklyGoal(2.5)).toBeNull();
     expect(sanitizeWeeklyGoal("lots")).toBeNull();
     expect(sanitizeWeeklyGoal(null)).toBeNull();
