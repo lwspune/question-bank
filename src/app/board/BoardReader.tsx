@@ -11,6 +11,7 @@ import { cn } from "@/lib/utils";
 import { boardPyqPaperStats } from "@/lib/board/papers";
 import BoardQuestionItem, { type RevealLock } from "./BoardQuestionItem";
 import { useBoardReveal } from "./useBoardReveal";
+import { ExamTwinLine } from "@/components/crossExam/ExamTwins";
 import { reportRevisionOpened } from "./revisionBeacon";
 import type { HomeworkSlot } from "@/lib/homework/dayView";
 import HomeworkSlotList from "@/app/homework/_components/HomeworkSlotList";
@@ -489,12 +490,15 @@ function PyqSitting({
                 // ONE subtopic; a book section spans several, so the link only
                 // works in this direction.
                 meta={
-                  q.subtopicName ? (
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-muted px-2 py-0.5 text-[11px] text-muted-foreground">
-                      <BookOpen className="h-3 w-3 text-brand-accent" aria-hidden />
-                      {q.subtopicName}
-                    </span>
-                  ) : null
+                  <div className="space-y-2 empty:hidden">
+                    {q.subtopicName && (
+                      <span className="inline-flex items-center gap-1.5 rounded-full bg-muted px-2 py-0.5 text-[11px] text-muted-foreground">
+                        <BookOpen className="h-3 w-3 text-brand-accent" aria-hidden />
+                        {q.subtopicName}
+                      </span>
+                    )}
+                    <ExamTwinLine questionId={q.id} />
+                  </div>
                 }
               />
             </li>
@@ -613,6 +617,7 @@ function BlockSection({
               onToggleReveal={() => onToggleReveal(q.id)}
               pick={picks.get(q.id) ?? null}
               onPick={(label) => onPick(q.id, label)}
+              meta={<ExamTwinLine questionId={q.id} />}
             />
           </li>
         );

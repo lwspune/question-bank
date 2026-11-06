@@ -18,6 +18,7 @@ import { fromBoardQuestion } from "@/lib/present/viewModel";
 import type { BoardQuestion } from "@/lib/board/query";
 import type { HomeworkSlot } from "@/lib/homework/dayView";
 import BoardQuestionItem, { type RevealLock } from "@/app/board/BoardQuestionItem";
+import { ExamTwinLine } from "@/components/crossExam/ExamTwins";
 import type { QuestionMark } from "@/lib/homework/progress";
 import type { SelfMark } from "@/lib/questions/selfMark";
 
@@ -127,6 +128,7 @@ export default function HomeworkSlotList({
                       pick={picks.get(q.id) ?? null}
                       onPick={(label) => onPick(q.id, label)}
                       selfMarked={selfMarkOf(marks?.[q.id])}
+                      meta={<ExamTwinLine questionId={q.id} />}
                     />
                   </div>
                 );

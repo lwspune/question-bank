@@ -189,6 +189,13 @@ export function parseClientEvent(raw: unknown, userId: string, now: Date): Parse
       const chapterPath = typeof raw.path === "string" ? boardChapterPath(raw.path) : null;
       if (!chapterPath) return { ok: false, error: "Invalid chapter address." };
       path = chapterPath;
+    } else if (raw.surface === "exam_twin") {
+      // An exam twin opened names its page: a /board chapter or a homework page (2026-11-06).
+      const address = typeof raw.path === "string" ? raw.path : "";
+      const view = readingViewFor(address);
+      const twinPath = boardChapterPath(address) ?? (view?.surface === "homework" ? view.path : null);
+      if (!twinPath) return { ok: false, error: "Invalid page address." };
+      path = twinPath;
     } else if (raw.path !== undefined) {
       return { ok: false, error: "No page address on this surface." };
     }

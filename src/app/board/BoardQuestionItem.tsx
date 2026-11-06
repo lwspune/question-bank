@@ -176,7 +176,9 @@ export default function BoardQuestionItem({
         </>
       )}
 
-      {meta && <div className="mt-2.5">{meta}</div>}
+      {/* empty:hidden: a slot whose content renders nothing (a question with no
+          exam twin) must not leave its margin behind on every card. */}
+      {meta && <div className="mt-2.5 empty:hidden">{meta}</div>}
 
       {hasAnswer ? (
         <div className="mt-3">
@@ -251,7 +253,7 @@ export default function BoardQuestionItem({
   );
 }
 
-function ZoomableImage({ src, alt }: { src: string; alt: string }) {
+export function ZoomableImage({ src, alt }: { src: string; alt: string }) {
   return (
     <Dialog>
       <DialogTrigger asChild>

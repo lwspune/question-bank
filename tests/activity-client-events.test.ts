@@ -314,3 +314,40 @@ describe("parseClientEvent - a board revision sheet opened", () => {
     }
   });
 });
+
+// "See it" opened on an exam twin (2026-11-06, migration 0220's line): whether
+// students open the matched past question at all. Names the page it was on, a
+// /board chapter or a homework page, once per page per student per IST day.
+describe("parseClientEvent - an exam twin opened", () => {
+  it("accepts a /board chapter's address", () => {
+    const r = parseClientEvent(
+      { kind: "surface_viewed", surface: "exam_twin", path: "/board/mh-hsc-12/mathematics/matrices" },
+      "u1",
+      NOW
+    );
+    expect(r).toEqual({
+      ok: true,
+      value: {
+        kind: "surface_viewed",
+        metadata: { surface: "exam_twin", path: "/board/mh-hsc-12/mathematics/matrices" },
+        dedupeKey: "view:exam_twin:/board/mh-hsc-12/mathematics/matrices:u1:2026-09-27",
+      },
+    });
+  });
+
+  it("accepts a homework page's address", () => {
+    const r = parseClientEvent(
+      { kind: "surface_viewed", surface: "exam_twin", path: "/homework/mh-hsc-12-maths/day/3" },
+      "u1",
+      NOW
+    );
+    expect(r.ok && r.value.metadata).toEqual({ surface: "exam_twin", path: "/homework/mh-hsc-12-maths/day/3" });
+  });
+
+  it("refuses it without an address, or on any other page", () => {
+    expect(parseClientEvent({ kind: "surface_viewed", surface: "exam_twin" }, "u1", NOW).ok).toBe(false);
+    for (const path of ["/board/mh-hsc-12", "/notes/nda-maths/vectors", "/browse"]) {
+      expect(parseClientEvent({ kind: "surface_viewed", surface: "exam_twin", path }, "u1", NOW).ok).toBe(false);
+    }
+  });
+});
