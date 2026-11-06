@@ -42,7 +42,15 @@ OPTION = re.compile(r"^\s*\(?([A-D])[.)]\s+(.*)$")
 # 2021 Q19's four rotations are line drawings.
 # 2020 Q18's picture runs off both sides of the page (x -172 to 775), so only its on-page part
 # prints; that part is rendered here.
-PAGE_CLIPS = {2020: {18: (10, 0, 381, 595, 760)}, 2021: {19: (11, 70, 354, 526, 606)}}
+# 2018 page 8 is a SCANNED page: Q15 (text + floor plan) exists only as the page picture, so no
+# marker reaches the stream; its clip seeds the question. 2018 Q55's Tamil letters are text in
+# a font the PDF does not map, so they are clipped too.
+PAGE_CLIPS = {2020: {18: (10, 0, 381, 595, 760)}, 2021: {19: (11, 70, 354, 526, 606)},
+              2018: {15: (8, 66, 183, 532, 546), 55: (26, 75, 470, 515, 688)}}
+# A question printed with a bare number in a "Q.nn" paper (2018 prints "55", not "Q.55"):
+# accepted only as that exact number, and only when it is the next one in sequence.
+BARE_OK = {2018: {55}}
+BARE_NUMBER = re.compile(r"^\s*(\d{1,3})\b")
 # A picture printed at the foot of a page, above the question it belongs to on the next page,
 # is read as the previous question's (its marker comes later). year -> {from: to}: the LAST
 # picture of `from` moves to `to`. 2020 Q39 and Q67 sit below Q38 and Q66.
@@ -100,6 +108,11 @@ def main(year: str) -> None:
     for pno, _y, _x, kind, payload in items:
         if kind == "text":
             m = marker.match(payload)
+            if not m and q_style:
+                b = BARE_NUMBER.match(payload)
+                if (b and int(b.group(1)) in BARE_OK.get(int(year), set())
+                        and current is not None and int(b.group(1)) == current["n"] + 1):
+                    m = b
             if m and current is not None and current["n"] == last:
                 break  # Part B begins
             expected = (current["n"] + 1) if current else 1
@@ -123,6 +136,10 @@ def main(year: str) -> None:
                 current["lines"].append(payload.strip())
         elif current is not None:
             current["xrefs"].append(payload)
+
+    # A question printed only on a scanned page has no marker: its clip makes it a question.
+    for n, clip in PAGE_CLIPS.get(int(year), {}).items():
+        questions.setdefault(n, {"n": n, "page": clip[0], "lines": [], "xrefs": []})
 
     for src, dst in MOVE_LAST_PICTURE.get(int(year), {}).items():
         if questions.get(src, {}).get("xrefs") and dst in questions:
