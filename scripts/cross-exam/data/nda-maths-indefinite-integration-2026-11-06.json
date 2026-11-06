@@ -1,0 +1,602 @@
+{
+ "run": "nda-maths-indefinite-integration-2026-11-06",
+ "settledOn": "2026-11-06",
+ "targets": [
+  {
+   "exam": "NDA",
+   "subject": "Mathematics",
+   "chapter": "Indefinite Integration"
+  }
+ ],
+ "board": [
+  {
+   "exam": "Maharashtra HSC Class 12",
+   "subject": "Mathematics",
+   "chapter": "Indefinite Integration"
+  }
+ ],
+ "pairs": [
+  {
+   "source": "0131416b-11df-4130-b15b-910bd4316157",
+   "target": "76e0bc51-d3a8-43c5-b01f-353dc662f716",
+   "kind": "similar",
+   "why": "integrate a 1 plus or minus sin/cos denominator by multiplying by the conjugate"
+  },
+  {
+   "source": "04b9ebdd-4e97-4d74-9a52-bb7e51099c67",
+   "target": "6ed95dee-7fc5-4d66-8750-f491a000e4a9",
+   "kind": "exact",
+   "why": "same integrand: sqrt(tan x)/(sin x cos x) equals (sin x)^(-1/2)(cos x)^(-3/2); answer 2 sqrt(tan x)"
+  },
+  {
+   "source": "14118076-d2c9-4cce-850b-79c10732eb90",
+   "target": "4f04640f-c90c-4b75-a8f3-009943028f1e",
+   "kind": "numbers",
+   "why": "both: integral of 1/(x(x^k+1)); power 5 vs 2"
+  },
+  {
+   "source": "14118076-d2c9-4cce-850b-79c10732eb90",
+   "target": "54e985e5-1981-45b0-b53f-9dd59c37dd04",
+   "kind": "numbers",
+   "why": "both: integral of 1/(x(x^k+1)); power 5 vs general n"
+  },
+  {
+   "source": "14118076-d2c9-4cce-850b-79c10732eb90",
+   "target": "b165a2bb-3e31-4f83-92c9-e4a3393dd5f9",
+   "kind": "numbers",
+   "why": "both: integral of 1/(x(x^k+1)) by substituting t = x^k; power 5 vs 7"
+  },
+  {
+   "source": "186d0964-b245-4007-b30b-7db997f456ca",
+   "target": "450c847a-0715-48d7-a48d-916d0d94065e",
+   "kind": "numbers",
+   "why": "integrate sqrt(1 plus or minus sin kx) by writing it as (sin + cos of half angle) squared"
+  },
+  {
+   "source": "1ab2b49a-f3e5-4463-a200-1fcc5b2aac2b",
+   "target": "9d1e2c15-a96c-4f92-bdce-bb48e2ecfe06",
+   "kind": "numbers",
+   "why": "both: integrate 1/(a sin^2 x + b cos^2 x) by dividing by cos^2 x and putting t = tan x (board denominator is cos^2 x + 2 sin^2 x)"
+  },
+  {
+   "source": "1cf4add7-a04b-4490-b409-0bc484e6c763",
+   "target": "0f3dcb59-2fbc-4272-be25-741c26eb225a",
+   "kind": "numbers",
+   "why": "integrate a constant over a difference of square roots of linear terms by rationalising"
+  },
+  {
+   "source": "1cf4add7-a04b-4490-b409-0bc484e6c763",
+   "target": "8159f858-db5d-49a5-aa8f-acd667a76633",
+   "kind": "numbers",
+   "why": "integrate a constant over a difference of square roots of linear terms by rationalising"
+  },
+  {
+   "source": "1d9270fa-cb06-4301-938f-ceed7959be2e",
+   "target": "84d75bd9-9a30-466b-b5e1-1f6fa555068b",
+   "kind": "similar",
+   "why": "both: integrate 1 over a quadratic with a linear term by completing the square, then a standard form"
+  },
+  {
+   "source": "1ed8526d-e598-4871-9c2f-4befccfc6eb5",
+   "target": "4f04640f-c90c-4b75-a8f3-009943028f1e",
+   "kind": "numbers",
+   "why": "integrate 1/(x(x^n +/- 1)) by putting t = x^n and partial fractions"
+  },
+  {
+   "source": "1ed8526d-e598-4871-9c2f-4befccfc6eb5",
+   "target": "54e985e5-1981-45b0-b53f-9dd59c37dd04",
+   "kind": "numbers",
+   "why": "integrate 1/(x(x^n +/- 1)) by putting t = x^n and partial fractions"
+  },
+  {
+   "source": "1ed8526d-e598-4871-9c2f-4befccfc6eb5",
+   "target": "b165a2bb-3e31-4f83-92c9-e4a3393dd5f9",
+   "kind": "numbers",
+   "why": "integrate 1/(x(x^n +/- 1)) by putting t = x^n and partial fractions"
+  },
+  {
+   "source": "276f61f8-67a5-4e03-a064-8835a8939116",
+   "target": "84d75bd9-9a30-466b-b5e1-1f6fa555068b",
+   "kind": "similar",
+   "why": "both: integrate 1 over a quadratic with a linear term by completing the square, then a standard form"
+  },
+  {
+   "source": "2908db3d-2e20-4167-8923-202ffa25e5f6",
+   "target": "cac3fdb6-2abf-4adb-be2a-571533694f7f",
+   "kind": "numbers",
+   "why": "power of (log x) times 1/x: put t = log x and use the power rule"
+  },
+  {
+   "source": "2cb0be6e-ce65-4136-b93d-79e88cde3718",
+   "target": "0373d669-a59a-4bba-9115-49c57c0ac893",
+   "kind": "similar",
+   "why": "both: e^x (f + f') with f built from log x; answer e^x f"
+  },
+  {
+   "source": "2d9c9c12-3346-41d8-924e-ea4e95d83d36",
+   "target": "c13e6811-e6bf-442e-a695-92dc41d589bf",
+   "kind": "numbers",
+   "why": "both: integral of (x^x)^k (1+ln x) by substituting t = x^x; k = 1 vs 2"
+  },
+  {
+   "source": "2dc5dc41-7fdf-4612-852c-8e9dfd6cf049",
+   "target": "56e103c2-53a7-4969-97fe-3fd2c02b34f2",
+   "kind": "numbers",
+   "why": "numerator is the derivative of x^a + a^x in the denominator, so the integral is a log"
+  },
+  {
+   "source": "2dfcd36c-4e96-4da2-8f1e-84c0249fdbe7",
+   "target": "84d75bd9-9a30-466b-b5e1-1f6fa555068b",
+   "kind": "similar",
+   "why": "both: integrate 1 over a quadratic with a linear term by completing the square, then a standard form"
+  },
+  {
+   "source": "2f364d51-b419-450f-91e5-a62e1653252d",
+   "target": "33422d7f-1d48-4725-9d73-a6f9b5faf897",
+   "kind": "similar",
+   "why": "simplify a trig function of an inverse trig function to algebra in x, then integrate"
+  },
+  {
+   "source": "2feda0b0-b51c-427d-a0b6-84c1d7113b47",
+   "target": "0373d669-a59a-4bba-9115-49c57c0ac893",
+   "kind": "similar",
+   "why": "both: write the integrand as e^x (f + f') and give e^x f"
+  },
+  {
+   "source": "30c7a926-5512-4a9a-8993-bb6bceef7fae",
+   "target": "9d1e2c15-a96c-4f92-bdce-bb48e2ecfe06",
+   "kind": "numbers",
+   "why": "1/(p sin^2 x + q cos^2 x): divide by cos^2 x, put t = tan x, inverse tangent"
+  },
+  {
+   "source": "3141e4c0-ad28-4c1e-920b-9b470374dba4",
+   "target": "0c3b7c54-a1d8-4992-9dd2-f460fbfd264a",
+   "kind": "numbers",
+   "why": "both: inverse trig of (1+sin x)/cos x = sec x + tan x, simplify to linear in x then integrate; cot^-1 vs tan^-1"
+  },
+  {
+   "source": "3dd675a5-c537-43ce-bd00-21fd78c5b146",
+   "target": "0f3dcb59-2fbc-4272-be25-741c26eb225a",
+   "kind": "numbers",
+   "why": "integrate a constant over a difference of square roots of linear terms by rationalising"
+  },
+  {
+   "source": "3dd675a5-c537-43ce-bd00-21fd78c5b146",
+   "target": "8159f858-db5d-49a5-aa8f-acd667a76633",
+   "kind": "numbers",
+   "why": "integrate a constant over a difference of square roots of linear terms by rationalising"
+  },
+  {
+   "source": "4041ebfb-f7f8-4804-822f-12867c48a5de",
+   "target": "56e103c2-53a7-4969-97fe-3fd2c02b34f2",
+   "kind": "similar",
+   "why": "numerator is the derivative of the denominator, integral is log of the denominator"
+  },
+  {
+   "source": "41a3e5cd-bd17-40a0-96a6-672140a4e0ac",
+   "target": "ae67c797-20df-466e-99de-0940e7cada03",
+   "kind": "numbers",
+   "why": "both: x^p / sqrt(1 - x^q) with substitution t = x^(q/2) giving arcsin"
+  },
+  {
+   "source": "492e0091-8c93-4f24-a5d1-0dde19da16a5",
+   "target": "0c3b7c54-a1d8-4992-9dd2-f460fbfd264a",
+   "kind": "similar",
+   "why": "inverse trig of a trig function reduces to a linear function of x, then integrate"
+  },
+  {
+   "source": "4dd90813-3be3-4c37-8b47-45b08412ee00",
+   "target": "6ed95dee-7fc5-4d66-8750-f491a000e4a9",
+   "kind": "numbers",
+   "why": "both: sin^m x cos^n x with m+n = -2, substitute t = tan x"
+  },
+  {
+   "source": "4ed45b18-217b-4f53-9f9b-16ebedd04b80",
+   "target": "0373d669-a59a-4bba-9115-49c57c0ac893",
+   "kind": "similar",
+   "why": "both: write the integrand as e^x (f + f') and give e^x f"
+  },
+  {
+   "source": "5126cad7-3480-42b6-bf75-5a5838e098e6",
+   "target": "450c847a-0715-48d7-a48d-916d0d94065e",
+   "kind": "numbers",
+   "why": "integrate sqrt(1 plus or minus sin kx) by writing it as (sin + cos of half angle) squared"
+  },
+  {
+   "source": "51ec4c36-50f7-4a30-aec6-6dec6f92b3f7",
+   "target": "0373d669-a59a-4bba-9115-49c57c0ac893",
+   "kind": "similar",
+   "why": "both: e^x (f + f') integrates to e^x f"
+  },
+  {
+   "source": "544d730e-da6c-442c-9849-db23f03e4721",
+   "target": "0f3dcb59-2fbc-4272-be25-741c26eb225a",
+   "kind": "numbers",
+   "why": "integrate 1 over a difference of square roots of linear terms by rationalising"
+  },
+  {
+   "source": "544d730e-da6c-442c-9849-db23f03e4721",
+   "target": "8159f858-db5d-49a5-aa8f-acd667a76633",
+   "kind": "numbers",
+   "why": "integrate 1 over a difference of square roots of linear terms by rationalising"
+  },
+  {
+   "source": "5e021c1b-b39b-407c-bcb4-aa07bec607cb",
+   "target": "0373d669-a59a-4bba-9115-49c57c0ac893",
+   "kind": "similar",
+   "why": "spot the exponential times [f + f'] form with f involving log x, answer exponential times f"
+  },
+  {
+   "source": "5eca01d4-a982-4c4c-942d-cdb207e48c4d",
+   "target": "4f04640f-c90c-4b75-a8f3-009943028f1e",
+   "kind": "similar",
+   "why": "1/(x times a polynomial in x^n): multiply by x^(n-1), t = x^n, partial fractions"
+  },
+  {
+   "source": "5eca01d4-a982-4c4c-942d-cdb207e48c4d",
+   "target": "54e985e5-1981-45b0-b53f-9dd59c37dd04",
+   "kind": "similar",
+   "why": "1/(x times a polynomial in x^n): multiply by x^(n-1), t = x^n, partial fractions"
+  },
+  {
+   "source": "5eca01d4-a982-4c4c-942d-cdb207e48c4d",
+   "target": "b165a2bb-3e31-4f83-92c9-e4a3393dd5f9",
+   "kind": "similar",
+   "why": "1/(x times a polynomial in x^n): multiply by x^(n-1), t = x^n, partial fractions"
+  },
+  {
+   "source": "6029f6ff-ecf5-4cee-b28c-8a62e5736b21",
+   "target": "ae67c797-20df-466e-99de-0940e7cada03",
+   "kind": "numbers",
+   "why": "x^p over sqrt(a - x^q): put t = a power of x, giving an inverse sine"
+  },
+  {
+   "source": "61bbe000-ed3b-4a65-be86-d02b4d1045ae",
+   "target": "76e0bc51-d3a8-43c5-b01f-353dc662f716",
+   "kind": "similar",
+   "why": "cos x/(1 - cos x) = -1 + 1/(1 - cos x); integrate 1/(1 - cos x) via conjugate"
+  },
+  {
+   "source": "62d024b9-0e15-4593-8f24-4c00112b028a",
+   "target": "0373d669-a59a-4bba-9115-49c57c0ac893",
+   "kind": "similar",
+   "why": "both: write the integrand as e^x (f + f') and give e^x f"
+  },
+  {
+   "source": "62fb7926-ff3e-4142-ba4c-6dfa08ae4125",
+   "target": "9d1e2c15-a96c-4f92-bdce-bb48e2ecfe06",
+   "kind": "similar",
+   "why": "both: integrate 1/(a sin^2 x + b cos^2 x) via t = tan x (board 4 + 3cos^2 x = 4 sin^2 x + 7 cos^2 x)"
+  },
+  {
+   "source": "64f59a82-b260-4d70-ad3a-6e04118d0980",
+   "target": "451c6853-8a5e-430b-a78d-13c0143e26d2",
+   "kind": "similar",
+   "why": "simplify e raised to log terms into powers of x, then integrate by the power rule"
+  },
+  {
+   "source": "6687ccbc-0c2e-4947-81ba-e8fc8b645eb7",
+   "target": "62d35f02-7169-4776-95ba-a51db0b6cb69",
+   "kind": "similar",
+   "why": "1/(a^x +/- 1) type: multiply by a power of a^x so the numerator is the derivative of the denominator"
+  },
+  {
+   "source": "669f77f0-2363-4e51-b772-759f20ca1259",
+   "target": "c26d866b-7e2d-48ee-a4c8-7a6cd46b1281",
+   "kind": "similar",
+   "why": "both: integrate 1/log x by parts so the 1/(log x)^2 term cancels"
+  },
+  {
+   "source": "6bbb4ac4-55e8-4f33-8285-99ec7fdb9319",
+   "target": "8501bf79-09e0-4714-a8c5-0ebfbee2ac82",
+   "kind": "similar",
+   "why": "trig integrand f'(x) R(f(x)): t = sin x or cos x, then partial fractions on linear factors"
+  },
+  {
+   "source": "6bbb4ac4-55e8-4f33-8285-99ec7fdb9319",
+   "target": "d3d75ba0-4e0f-484f-918b-4d740bd2338a",
+   "kind": "similar",
+   "why": "trig integrand f'(x) R(f(x)): t = sin x or cos x, then partial fractions on linear factors"
+  },
+  {
+   "source": "6c455f4e-e59a-4348-85c5-a216fc5f148b",
+   "target": "2e67fa84-a49a-4b6d-be0f-dab7143a5c87",
+   "kind": "similar",
+   "why": "ratio of linear expressions: write numerator as A denominator + B derivative of denominator"
+  },
+  {
+   "source": "6c455f4e-e59a-4348-85c5-a216fc5f148b",
+   "target": "3c2193c7-9693-43da-993c-bbac6539c98f",
+   "kind": "similar",
+   "why": "ratio of linear expressions: write numerator as A denominator + B derivative of denominator"
+  },
+  {
+   "source": "6e49f7d4-090e-4a19-8cb1-a8e99ef26d6f",
+   "target": "855c908a-8cf2-4ed3-8504-0fc0cff9773d",
+   "kind": "similar",
+   "why": "both: integrate an exponential with a composite constant base, a^x / ln a"
+  },
+  {
+   "source": "6e49f7d4-090e-4a19-8cb1-a8e99ef26d6f",
+   "target": "96698925-b52a-4f64-92e1-beb3d189d5b5",
+   "kind": "numbers",
+   "why": "both: combine two exponentials into one base a^x and integrate as a^x / ln a"
+  },
+  {
+   "source": "6e49f7d4-090e-4a19-8cb1-a8e99ef26d6f",
+   "target": "feb5042e-22d3-4ea3-ab17-6e038072f2bc",
+   "kind": "similar",
+   "why": "rewrite as a single constant base a^x and integrate to a^x / ln a"
+  },
+  {
+   "source": "6fd12a3a-1f39-42f2-b44a-0ab3d3f939c5",
+   "target": "0c3b7c54-a1d8-4992-9dd2-f460fbfd264a",
+   "kind": "similar",
+   "why": "inverse tan of a trig expression reduces to a linear function of x, then integrate"
+  },
+  {
+   "source": "7bc4cdb5-6fdf-4b53-ac70-c0bc8c543e16",
+   "target": "0373d669-a59a-4bba-9115-49c57c0ac893",
+   "kind": "similar",
+   "why": "both: write the integrand as e^x (f + f') and give e^x f"
+  },
+  {
+   "source": "7c064892-0979-4638-b0a2-bf9da81a1c95",
+   "target": "9d1e2c15-a96c-4f92-bdce-bb48e2ecfe06",
+   "kind": "numbers",
+   "why": "both: 1/(a sin^2 x + b cos^2 x), divide by cos^2 x and substitute tan x"
+  },
+  {
+   "source": "800470e5-2e9e-4a5c-b6fb-27976f0b63a5",
+   "target": "6ed95dee-7fc5-4d66-8750-f491a000e4a9",
+   "kind": "exact",
+   "why": "same integrand: sqrt(tan x)/(sin x cos x) = sin^(-1/2) x cos^(-3/2) x, answer 2 sqrt(tan x)"
+  },
+  {
+   "source": "800bc7e9-9c95-4cec-bab7-427d47363f02",
+   "target": "76e0bc51-d3a8-43c5-b01f-353dc662f716",
+   "kind": "similar",
+   "why": "integrate 1/(1 - sin x) vs 1/(1 - cos x): multiply by the conjugate or use half angles"
+  },
+  {
+   "source": "82eb8898-90e9-412f-b688-9db1b33e41fc",
+   "target": "9d1e2c15-a96c-4f92-bdce-bb48e2ecfe06",
+   "kind": "numbers",
+   "why": "both: integrate 1/(a sin^2 x + b cos^2 x) via t = tan x (board 3 - 2cos 2x = 5 sin^2 x + cos^2 x)"
+  },
+  {
+   "source": "84fd3dd8-1975-48ec-8b1d-2cc1934e4b07",
+   "target": "0373d669-a59a-4bba-9115-49c57c0ac893",
+   "kind": "similar",
+   "why": "both: write the integrand as e^x (f + f') and give e^x f"
+  },
+  {
+   "source": "967bf017-f1f2-4801-ac2b-2d2523e6f094",
+   "target": "450c847a-0715-48d7-a48d-916d0d94065e",
+   "kind": "numbers",
+   "why": "both: sqrt(1 +/- sin 2x) as |sin x +/- cos x|, integrate to A sin x + B cos x"
+  },
+  {
+   "source": "9a941c1a-1f61-4054-bd6b-5047c89e2265",
+   "target": "2e67fa84-a49a-4b6d-be0f-dab7143a5c87",
+   "kind": "similar",
+   "why": "ratio of linear expressions: write numerator as A denominator + B derivative of denominator"
+  },
+  {
+   "source": "9a941c1a-1f61-4054-bd6b-5047c89e2265",
+   "target": "3c2193c7-9693-43da-993c-bbac6539c98f",
+   "kind": "similar",
+   "why": "ratio of linear expressions: write numerator as A denominator + B derivative of denominator"
+  },
+  {
+   "source": "9b3b5bbe-21c3-428a-bea6-57922fc0d44c",
+   "target": "c26d866b-7e2d-48ee-a4c8-7a6cd46b1281",
+   "kind": "similar",
+   "why": "both: 1/u - 1/u^2 with u a log expression integrates to x/u"
+  },
+  {
+   "source": "a57c700b-0633-4179-a4f3-9172ef5fe64f",
+   "target": "cac3fdb6-2abf-4adb-be2a-571533694f7f",
+   "kind": "numbers",
+   "why": "both: (1+ln x)^k / x by substituting t = 1 + ln x; k = 3 vs -n"
+  },
+  {
+   "source": "abc21d61-84b7-44e0-ab91-210aab7014f2",
+   "target": "0373d669-a59a-4bba-9115-49c57c0ac893",
+   "kind": "similar",
+   "why": "both: write the integrand as e^x (f + f') and give e^x f"
+  },
+  {
+   "source": "ae059d8b-0d91-41b5-b4ee-354dcd22d35f",
+   "target": "0c3b7c54-a1d8-4992-9dd2-f460fbfd264a",
+   "kind": "numbers",
+   "why": "inverse tan of an expression in sin x or sec x reduces to pi/4 +/- x/2, then integrate"
+  },
+  {
+   "source": "b0d0c2a0-d9b5-4674-a2d4-fb8e9179a99a",
+   "target": "4ce9c717-6aaa-4ec5-9bc4-4ef285ee842e",
+   "kind": "similar",
+   "why": "integrand over (sec x + tan x): multiply by (sec x - tan x) using sec^2 - tan^2 = 1"
+  },
+  {
+   "source": "b35c1a0d-27dc-4630-ad5f-d72895ea4041",
+   "target": "2e67fa84-a49a-4b6d-be0f-dab7143a5c87",
+   "kind": "similar",
+   "why": "ratio of linear expressions: write numerator as A denominator + B derivative of denominator"
+  },
+  {
+   "source": "b35c1a0d-27dc-4630-ad5f-d72895ea4041",
+   "target": "3c2193c7-9693-43da-993c-bbac6539c98f",
+   "kind": "similar",
+   "why": "ratio of linear expressions: write numerator as A denominator + B derivative of denominator"
+  },
+  {
+   "source": "b5b063a9-073f-4f98-b01f-f46eb196226e",
+   "target": "0373d669-a59a-4bba-9115-49c57c0ac893",
+   "kind": "similar",
+   "why": "both: e^x (f + f') integrates to e^x f"
+  },
+  {
+   "source": "b6df9dd1-fda3-4572-a2cf-84ee59fc42f2",
+   "target": "84d75bd9-9a30-466b-b5e1-1f6fa555068b",
+   "kind": "similar",
+   "why": "both: integrate 1 over a quadratic with a linear term by completing the square, then a standard form"
+  },
+  {
+   "source": "b85e9a6b-664d-430e-91fd-2279ee2eb9e2",
+   "target": "cac3fdb6-2abf-4adb-be2a-571533694f7f",
+   "kind": "similar",
+   "why": "a power of log x times 1/x: put t = log x (or 1 + log x) and integrate the power"
+  },
+  {
+   "source": "b91f96ce-ed77-4b3c-b77f-f734a1ac32cd",
+   "target": "84d75bd9-9a30-466b-b5e1-1f6fa555068b",
+   "kind": "similar",
+   "why": "both: integrate 1 over a quadratic with a linear term by completing the square, then a standard form"
+  },
+  {
+   "source": "b959c1c2-a269-440d-99b9-ce57499bc6c0",
+   "target": "2e67fa84-a49a-4b6d-be0f-dab7143a5c87",
+   "kind": "similar",
+   "why": "1/(2 + 3 tan x) becomes cos x/(2 cos x + 3 sin x), then numerator = A(denominator) + B(its derivative)"
+  },
+  {
+   "source": "b959c1c2-a269-440d-99b9-ce57499bc6c0",
+   "target": "3c2193c7-9693-43da-993c-bbac6539c98f",
+   "kind": "similar",
+   "why": "1/(2 + 3 tan x) becomes cos x/(2 cos x + 3 sin x), then numerator = A(denominator) + B(its derivative)"
+  },
+  {
+   "source": "c00ac69f-c2dc-408a-88d3-873da2e9902c",
+   "target": "8501bf79-09e0-4714-a8c5-0ebfbee2ac82",
+   "kind": "similar",
+   "why": "both: put t = cos theta, then partial fractions in t with a (a + b cos theta) factor"
+  },
+  {
+   "source": "c00ac69f-c2dc-408a-88d3-873da2e9902c",
+   "target": "d3d75ba0-4e0f-484f-918b-4d740bd2338a",
+   "kind": "similar",
+   "why": "both: put t = cos theta, then partial fractions in t with a (a + b cos theta) factor"
+  },
+  {
+   "source": "cefbff66-c4ff-43d5-8dcf-f4c31d6e633d",
+   "target": "0373d669-a59a-4bba-9115-49c57c0ac893",
+   "kind": "similar",
+   "why": "both: e^x (f + f') integrates to e^x f"
+  },
+  {
+   "source": "d257677b-b158-4416-bc68-f060d30ce3d1",
+   "target": "0373d669-a59a-4bba-9115-49c57c0ac893",
+   "kind": "similar",
+   "why": "both: write the integrand as e^x (f + f') and give e^x f"
+  },
+  {
+   "source": "d3484ba5-8ab7-4a19-9944-fcf7be18b0dc",
+   "target": "450c847a-0715-48d7-a48d-916d0d94065e",
+   "kind": "similar",
+   "why": "integrate sqrt(1 minus a trig function of 2x) by writing it as a perfect square"
+  },
+  {
+   "source": "d73d3087-6501-4518-b532-8884990c4b53",
+   "target": "c13e6811-e6bf-442e-a695-92dc41d589bf",
+   "kind": "numbers",
+   "why": "both: integral of (x^x)^k (1+ln x) by substituting t = x^x; k = 1 vs 2"
+  },
+  {
+   "source": "da43c329-0b35-4e97-ba7d-b4a762cdd566",
+   "target": "450c847a-0715-48d7-a48d-916d0d94065e",
+   "kind": "numbers",
+   "why": "sqrt(1 + sin 2x) vs sqrt(1 - sin 2x): write as (sin x +/- cos x) squared, integrate"
+  },
+  {
+   "source": "dad598be-fd13-4b43-844f-3728b31503d0",
+   "target": "07c2a908-c509-47d7-891a-91ecccf3c9df",
+   "kind": "numbers",
+   "why": "both: integral of log x by parts; exam has ln(x^2) = 2 ln x"
+  },
+  {
+   "source": "dbcd1fdb-288f-4ed8-8f40-2cd32a02b75c",
+   "target": "855c908a-8cf2-4ed3-8504-0fc0cff9773d",
+   "kind": "similar",
+   "why": "rewrite exponentials as a single base a^x, then integrate as a^x/ln a"
+  },
+  {
+   "source": "dbcd1fdb-288f-4ed8-8f40-2cd32a02b75c",
+   "target": "96698925-b52a-4f64-92e1-beb3d189d5b5",
+   "kind": "similar",
+   "why": "combine exponentials into a single base a^x, then integrate as a^x/ln a"
+  },
+  {
+   "source": "e3fd1a74-7c9d-4256-9f2e-00e7985ce638",
+   "target": "6ed95dee-7fc5-4d66-8750-f491a000e4a9",
+   "kind": "numbers",
+   "why": "both: sin^m x cos^n x with m+n = -2, written as tan power times sec^2, substitute tan or cot"
+  },
+  {
+   "source": "e5380579-8114-4631-9fc1-a0b864e7125b",
+   "target": "2e67fa84-a49a-4b6d-be0f-dab7143a5c87",
+   "kind": "similar",
+   "why": "1/(1 - tan x) becomes cos x/(cos x - sin x), then numerator = A(denominator) + B(its derivative)"
+  },
+  {
+   "source": "e5380579-8114-4631-9fc1-a0b864e7125b",
+   "target": "3c2193c7-9693-43da-993c-bbac6539c98f",
+   "kind": "similar",
+   "why": "1/(1 - tan x) becomes cos x/(cos x - sin x), then numerator = A(denominator) + B(its derivative)"
+  },
+  {
+   "source": "ec5abd41-81b5-441c-87b7-fe7b2e5fe9de",
+   "target": "6ed95dee-7fc5-4d66-8750-f491a000e4a9",
+   "kind": "numbers",
+   "why": "both: sin^m x / cos^(m+2) x = tan^m x sec^2 x, substitute t = tan x"
+  },
+  {
+   "source": "ede9d4d8-e539-44fa-b4b4-37846253ee17",
+   "target": "2e67fa84-a49a-4b6d-be0f-dab7143a5c87",
+   "kind": "numbers",
+   "why": "(a sin x + b cos x)/(c sin x + d cos x): numerator = A(denominator) + B(its derivative)"
+  },
+  {
+   "source": "ede9d4d8-e539-44fa-b4b4-37846253ee17",
+   "target": "3c2193c7-9693-43da-993c-bbac6539c98f",
+   "kind": "numbers",
+   "why": "(a sin x + b cos x)/(c sin x + d cos x): numerator = A(denominator) + B(its derivative)"
+  },
+  {
+   "source": "f50818d2-9abb-4f94-84b0-83564c0168f9",
+   "target": "4f04640f-c90c-4b75-a8f3-009943028f1e",
+   "kind": "numbers",
+   "why": "both: integral of 1/(x(x^k+1)); power 5 vs 2"
+  },
+  {
+   "source": "f50818d2-9abb-4f94-84b0-83564c0168f9",
+   "target": "54e985e5-1981-45b0-b53f-9dd59c37dd04",
+   "kind": "numbers",
+   "why": "both: integral of 1/(x(x^k+1)); power 5 vs general n"
+  },
+  {
+   "source": "f50818d2-9abb-4f94-84b0-83564c0168f9",
+   "target": "b165a2bb-3e31-4f83-92c9-e4a3393dd5f9",
+   "kind": "numbers",
+   "why": "both: integral of 1/(x(x^k+1)) by substituting t = x^k; power 5 vs 7"
+  },
+  {
+   "source": "f6472a04-9922-4b7b-b2ee-94a17a10d53f",
+   "target": "f9259cbb-a646-4218-a4fb-dc29de24e029",
+   "kind": "similar",
+   "why": "difference of sin and cos powers over a product of their powers: split into two terms, integrate each"
+  },
+  {
+   "source": "fd4b3dfb-6e17-44bf-bc0f-eeff952b165f",
+   "target": "8501bf79-09e0-4714-a8c5-0ebfbee2ac82",
+   "kind": "similar",
+   "why": "both: substitute a trig function as t, then partial fractions over two linear factors in t"
+  },
+  {
+   "source": "fd4b3dfb-6e17-44bf-bc0f-eeff952b165f",
+   "target": "d3d75ba0-4e0f-484f-918b-4d740bd2338a",
+   "kind": "similar",
+   "why": "both: substitute a trig function as t, then partial fractions over two linear factors in t"
+  }
+ ]
+}
