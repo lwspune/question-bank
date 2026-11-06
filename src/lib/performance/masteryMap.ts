@@ -53,6 +53,10 @@ export type MapTile = {
   label: string;
   /** Link C for the whole chapter. */
   href: string;
+  /** Judged answers behind the tile's dots, by where they were given: so the
+   *  student can see the map is not only their papers (2026-11-06). */
+  fromPapers: number;
+  fromPractice: number;
 };
 
 export type MasteryMap = {
@@ -102,9 +106,13 @@ function tileOf(lane: Lane, ch: ChapterRow): MapTile {
       href: goPracticeHref(lane.exam, lane.subject, ch.chapter, s.subtopic),
     };
   });
+  const judged = ch.subtopics.reduce((n, s) => n + s.judged, 0);
+  const fromPractice = ch.subtopics.reduce((n, s) => n + (s.practiceJudged ?? 0), 0);
   return {
     chapter: ch.chapter,
     dots,
+    fromPapers: judged - fromPractice,
+    fromPractice,
     counts,
     label: labelFor(counts),
     href: goPracticeHref(lane.exam, lane.subject, ch.chapter),
@@ -123,4 +131,19 @@ export function buildMasteryMap(lane: Lane): MasteryMap {
     subtopics += t.dots.length;
   }
   return { exam: lane.exam, subject: lane.subject, tiles, totals, subtopics };
+}
+
+/**
+ * Where a tile's answers came from, in plain words, or null when it has none
+ * judged. Shown inside the opened tile, so a student who has only practised
+ * can see the map is built from their practice, not waiting on a paper.
+ */
+export function sourceLine(t: Pick<MapTile, "fromPapers" | "fromPractice">): string | null {
+  const answers = (n: number) => `${n} ${n === 1 ? "answer" : "answers"}`;
+  if (t.fromPapers > 0 && t.fromPractice > 0) {
+    return `From ${answers(t.fromPapers)} in papers and ${t.fromPractice} in practice.`;
+  }
+  if (t.fromPapers > 0) return `From ${answers(t.fromPapers)} in papers.`;
+  if (t.fromPractice > 0) return `From ${answers(t.fromPractice)} in practice.`;
+  return null;
 }

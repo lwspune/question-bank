@@ -64,7 +64,7 @@ function mockLoop(exam: ExamEntry | null): Loop {
       },
       {
         title: "Watch your map fill.",
-        body: "Every subtopic a paper touched, coloured by how you did. It changes because of what you fix, not because of how often you log in.",
+        body: "Every subtopic you answer, in a paper or in practice, coloured by how you did. It changes because of what you fix, not because of how often you log in.",
         href: "/me/map",
         cta: "See your map",
       },

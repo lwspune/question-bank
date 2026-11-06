@@ -256,7 +256,7 @@ function pct(numerator: number, denominator: number): number | null {
 
 // ── roll-up shapes ──────────────────────────────────────────────────────────
 
-type Tally = {
+export type Tally = {
   total: number;
   answered: number;
   correct: number;
@@ -279,13 +279,13 @@ type Tally = {
   perAttempt: Map<string, { correct: number; total: number; at: string }>;
 };
 
-const emptyTally = (): Tally => ({
+export const emptyTally = (): Tally => ({
   total: 0, answered: 0, correct: 0, wrong: 0, seenBlank: 0, neverReached: 0,
   weightedSum: 0, weightTotal: 0, markTotal: 0, secs: [], wrongIds: [], seenBlankIds: [],
   perAttempt: new Map(),
 });
 
-function addToTally(t: Tally, f: PerfFact, verdict: 1 | -1 | 0, weight: number, at: string) {
+export function addToTally(t: Tally, f: PerfFact, verdict: 1 | -1 | 0, weight: number, at: string) {
   t.total++;
   if (!f.rc) {
     t.neverReached++;
@@ -364,11 +364,15 @@ export type SubtopicRow = {
    *  list always holds exactly `seenBlank` entries. A count and a link that
    *  can disagree is how a badge reading 7 opens five questions. */
   seenBlankQuestionIds: string[];
+  /** How many of `judged` came from PRACTICE (bank, board, question of the
+   *  day, drill) rather than a mock. Absent on a mock-only row; set by
+   *  practice.ts's withPractice, which only the mastery map applies. */
+  practiceJudged?: number;
 };
 
 export type ChapterRow = Omit<SubtopicRow, "subtopic"> & { subtopics: SubtopicRow[] };
 
-function finishRow(t: Tally, chapter: string, subtopic: string): SubtopicRow {
+export function finishRow(t: Tally, chapter: string, subtopic: string): SubtopicRow {
   return {
     chapter,
     subtopic,
@@ -596,7 +600,17 @@ export type Summary = {
 
 export type Performance = { summary: Summary; lanes: Lane[] };
 
-export function buildPerformance(input: PerfInput, now: Date): Performance {
+/**
+ * The facts that count, and the attempts they belong to: the intake every
+ * reader of the mock evidence must share (buildPerformance, and practice.ts's
+ * withPractice), so the two can never disagree about which answers are in.
+ */
+export function countedFacts(input: PerfInput): {
+  payload: PerfInput;
+  sel: AttemptSelection;
+  keptById: Map<string, PerfAttempt>;
+  facts: PerfFact[];
+} {
   // Multiple-select questions (0215) are left out: a fact carries one picked letter and
   // one key letter, and a tick set has several. Leaving them in would read every one as
   // skipped and pull a UCEED attempt toward the engagement floor.
@@ -604,6 +618,28 @@ export function buildPerformance(input: PerfInput, now: Date): Performance {
   const sel = selectAttempts(payload.attempts, payload.facts);
   const keptById = new Map(sel.kept.map((a) => [a.attemptId, a]));
   const facts = payload.facts.filter((f) => keptById.has(f.a));
+  return { payload, sel, keptById, facts };
+}
+
+/** The same chapter sort buildLane uses: weakest MEASURED first, unjudged last. */
+export function byWeakestMeasured(a: { judged: number; weightedScore: number }, b: { judged: number; weightedScore: number }): number {
+  return Number(a.judged === 0) - Number(b.judged === 0) || a.weightedScore - b.weightedScore;
+}
+
+/** A lane with no mock evidence at all: zeros and nulls, never an absent block. */
+export function emptyLane(exam: string, subject: string, now: Date): Lane {
+  const none: PerfInput = {
+    userId: "",
+    attempts: [],
+    facts: [],
+    dims: { subjects: [], chapters: [], subtopics: [] },
+    weightage: [],
+  };
+  return { ...buildLane(exam, subject, [], new Map(), none, now), projection: null };
+}
+
+export function buildPerformance(input: PerfInput, now: Date): Performance {
+  const { payload, sel, keptById, facts } = countedFacts(input);
 
   // ── summary ──
   const ordered = [...sel.kept].sort((a, b) => a.startedAt.localeCompare(b.startedAt));
@@ -766,11 +802,7 @@ function buildLane(
       const row = finishRow(tally, name, name);
       const subtopics = [...subs.entries()]
         .map(([sName, sTally]) => finishRow(sTally, name, sName))
-        .sort(
-          (a, b) =>
-            Number(a.judged === 0) - Number(b.judged === 0) ||
-            a.weightedScore - b.weightedScore
-        );
+        .sort(byWeakestMeasured);
       const { subtopic: _drop, ...rest } = row;
       return { ...rest, subtopics };
     })
@@ -778,11 +810,7 @@ function buildLane(
     // to the bottom. Sorting purely by weightedScore floats a never-attempted
     // chapter to the top as "0%", which reads as the student's worst topic when
     // it is really a coverage gap — that belongs to the skip audit, not here.
-    .sort(
-      (a, b) =>
-        Number(a.judged === 0) - Number(b.judged === 0) ||
-        a.weightedScore - b.weightedScore
-    );
+    .sort(byWeakestMeasured);
 
   const allSubs = chapters.flatMap((c) => c.subtopics);
   const laneCorrect = chapters.reduce((s, c) => s + c.correct, 0);
