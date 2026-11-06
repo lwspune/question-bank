@@ -49,7 +49,7 @@ export function pickTodayAction(input: {
     };
   }
   if (cont) {
-    return { kind: "continue", eyebrow: "Continue reading", title: cont.title, subtitle: cont.chapter, cta: "Continue", href: cont.href };
+    return { kind: "continue", eyebrow: "Continue", title: cont.title, subtitle: cont.chapter, cta: "Continue", href: cont.href };
   }
   return {
     kind: "mock",
