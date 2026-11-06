@@ -699,15 +699,16 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
   {
     slug: "uceed",
     // IIT Bombay's B.Des design entrance, sat after Class 12. Part A past papers
-    // with IIT Bombay's final keys; 2026 PUBLIC first (scripts/uceed/). MSQ rows
-    // are held until the bank has a multiple-select format, so no mocks yet.
+    // with IIT Bombay's final keys, 2015-2026 (scripts/uceed/), including the
+    // multiple-select (msq) and range-keyed NAT rows since migration 0214.
     tier: "senior",
     displayName: "UCEED",
     examName: "UCEED", // must match the `exams` DB row exactly
     guidesPath: null,
     notesPath: null,
-    mixedFormats: true, // 2026: 28 MCQ + 13 NAT
+    mixedFormats: true, // MCQ, MSQ and NAT
     noImageIndex: true,
+    hasMocks: true, // 12 Part A mocks (2015-2026) published 2026-11-06, MOCKS.md
   },
   // ── MPSC ──────────────────────────────────────────────────────────────────
   // One family with a stage level: MPSC -> Prelims / Mains -> exam. Prelims
