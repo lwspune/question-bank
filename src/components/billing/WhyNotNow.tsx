@@ -3,8 +3,9 @@
 import { useState } from "react";
 import { sendActivity } from "@/lib/activity/clientBeacon";
 import type { DownloadBox, PaywallGate } from "@/lib/activity/clientEvents";
-import { DECLINE_REASON_LABELS, reasonsOffered, type DeclineReason } from "@/lib/billing/declineReasons";
+import { DECLINE_REASON_LABELS, reasonsOffered, whyNotNowPrompt, type DeclineReason } from "@/lib/billing/declineReasons";
 import { cn } from "@/lib/utils";
+import { markWhyHandled } from "./WhyNotNowToast";
 
 /**
  * "Not buying today? Tell us why": one tap under a pass offer (2026-11-05).
@@ -12,24 +13,30 @@ import { cn } from "@/lib/utils";
  * and nothing said why; the answer goes to /dashboard/sales. Small and below
  * the pay button, so it never competes with it. Signed-in students only (the
  * beacon drops anonymous pings). After a closed checkout it asks "Didn't pay?"
- * and adds "Payment didn't work".
+ * and adds "Payment didn't work". Hidden while a checkout is in progress.
  */
 export default function WhyNotNow({
   gate,
   box,
   planId,
-  afterCheckout,
+  busy,
+  dismissed,
   className,
 }: {
   gate: PaywallGate;
   box?: DownloadBox;
   planId?: string;
+  /** A checkout is in progress (from the tap on Pay until Razorpay closes or the payment clears). */
+  busy: boolean;
   /** The student opened Razorpay and closed it. */
-  afterCheckout: boolean;
+  dismissed: boolean;
   className?: string;
 }) {
   const [answered, setAnswered] = useState<DeclineReason | null>(null);
+  const prompt = whyNotNowPrompt({ busy, dismissed });
+  const afterCheckout = prompt === "after";
 
+  if (prompt === "hidden") return null;
   if (answered) {
     return (
       <p role="status" className={cn("text-center text-xs text-muted-foreground", className)}>
@@ -40,6 +47,7 @@ export default function WhyNotNow({
 
   const onTap = (reason: DeclineReason) => {
     setAnswered(reason);
+    markWhyHandled(gate, box);
     sendActivity({ kind: "paywall_event", step: "declined", gate, box, planId, reason, afterCheckout });
   };
 

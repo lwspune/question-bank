@@ -39,6 +39,8 @@ type ClientEvent =
       gate: PaywallGate;
       reason: DeclineReason;
       afterCheckout: boolean;
+      /** Answered in the toast after the offer closed. */
+      onClose?: boolean;
       planId?: string;
       box?: DownloadBox;
     };

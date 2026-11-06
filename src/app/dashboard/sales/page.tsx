@@ -81,7 +81,8 @@ function DeclinesCard({ summary }: { summary: DeclineSummary | null }) {
         </h2>
         <p className="mt-1 text-xs text-muted-foreground">
           Answers to &ldquo;Not buying today? Tell us why&rdquo; under the answer-limit offer and the download boxes,
-          since 5 Nov 2026. One answer per student per offer per day; staff left out.
+          since 5 Nov 2026, and from 6 Nov again in a short message after the offer is closed. One answer per student
+          per offer per day; staff, and students who bought a pass that day, left out.
         </p>
       </div>
       {!summary ? (
@@ -95,7 +96,8 @@ function DeclinesCard({ summary }: { summary: DeclineSummary | null }) {
           <p className="text-sm">
             {summary.answers} {summary.answers === 1 ? "answer" : "answers"} from {summary.students}{" "}
             {summary.students === 1 ? "student" : "students"}
-            {summary.afterCheckout > 0 && `, ${summary.afterCheckout} after closing a checkout`}.
+            {summary.afterCheckout > 0 && `, ${summary.afterCheckout} after closing a checkout`}
+            {summary.onClose > 0 && `, ${summary.onClose} from the message after closing the offer`}.
           </p>
           <div className="overflow-x-auto">
             <table className="w-full min-w-[40rem] text-sm">

@@ -126,13 +126,17 @@ export function paywallDeclinedEvent(
   afterCheckout: boolean,
   dedupe: { userId: string; now: Date },
   planId?: string,
-  box?: DownloadBox
+  box?: DownloadBox,
+  onClose = false
 ): ActivityEvent {
+  const metadata: Record<string, unknown> = box
+    ? { step: "declined", gate, box, reason, afterCheckout }
+    : { step: "declined", gate, reason, afterCheckout };
+  // Asked in the toast after the offer closed (2026-11-06); absent = in the box.
+  if (onClose) metadata.onClose = true;
   const event: ActivityEvent = {
     kind: "paywall_event",
-    metadata: box
-      ? { step: "declined", gate, box, reason, afterCheckout }
-      : { step: "declined", gate, reason, afterCheckout },
+    metadata,
     dedupeKey: `paywall:declined:${gate}:${box ? `${box}:` : ""}${dedupe.userId}:${istDayKey(dedupe.now)}`,
   };
   if (planId) {
@@ -225,12 +229,23 @@ export function parseClientEvent(raw: unknown, userId: string, now: Date): Parse
       if (AFTER_CHECKOUT_ONLY.has(raw.reason) && !afterCheckout) {
         return { ok: false, error: "That reason needs a checkout first." };
       }
+      if (raw.onClose !== undefined && typeof raw.onClose !== "boolean") {
+        return { ok: false, error: "Invalid onClose." };
+      }
       return {
         ok: true,
-        value: paywallDeclinedEvent(raw.gate as PaywallGate, raw.reason, afterCheckout, { userId, now }, planId, box),
+        value: paywallDeclinedEvent(
+          raw.gate as PaywallGate,
+          raw.reason,
+          afterCheckout,
+          { userId, now },
+          planId,
+          box,
+          raw.onClose === true
+        ),
       };
     }
-    if (raw.reason !== undefined || raw.afterCheckout !== undefined) {
+    if (raw.reason !== undefined || raw.afterCheckout !== undefined || raw.onClose !== undefined) {
       return { ok: false, error: "A reason belongs to a declined offer only." };
     }
     return {
