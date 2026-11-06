@@ -26,7 +26,7 @@ import {
   loadDrillQuestions,
   loadQuestionRefs,
 } from "@/lib/drill/query";
-import { attachRefs, dueQuestions, selectDrill, DRILL_SIZE } from "@/lib/drill/select";
+import { attachRefs, dueQuestions, scopeToChapter, selectDrill, weakChapters, DRILL_SIZE } from "@/lib/drill/select";
 import { fillUnseen } from "@/lib/drill/compose";
 
 const LIMIT = Number(process.argv[2] ?? 8);
@@ -81,6 +81,26 @@ async function main() {
     }
     for (const q of questions) {
       console.log(`     ${q.chapter} · ${q.subtopic}  (${q.options.length} options)`);
+    }
+
+    // /me's Weak spots (2026-11-06): each row names its chapter and where it
+    // sits, and its count is exactly what its chapter-scoped drill serves from.
+    const weak = weakChapters(drillable);
+    for (const w of weak) {
+      const scoped = scopeToChapter(drillable, w.chapterId).length;
+      console.log(`     weak: ${w.name} (${w.place}) ${w.due} to fix, chapter drill pool ${scoped}`);
+      if (scoped !== w.due) {
+        console.error("  !! a weak-spot count differs from what its Fix button serves");
+        process.exitCode = 1;
+      }
+      if (!w.name || !w.place) {
+        console.error("  !! a weak spot has no chapter name or subject");
+        process.exitCode = 1;
+      }
+    }
+    if (drillable.length > 0 && weak.length === 0) {
+      console.error("  !! mistakes are due but no weak spot resolved a chapter");
+      process.exitCode = 1;
     }
 
     // The two properties worth failing on rather than eyeballing.

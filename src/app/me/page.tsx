@@ -21,6 +21,7 @@ import AttemptsList from "../mock/_components/AttemptsList";
 import FeedbackCards from "./FeedbackCards";
 import TodayCard from "./TodayCard";
 import ProgressTiles from "./ProgressTiles";
+import WeakSpots from "./WeakSpots";
 import HomeReminder from "./HomeReminder";
 import { greetingFor, greetingName } from "@/lib/me/today";
 import Greeting from "./Greeting";
@@ -182,6 +183,10 @@ export default async function MePage() {
             row it replaced counted mocks, notes checkpoints and saves: 446 of
             745 students saw three zeros there while practising in the bank. */}
         <ProgressTiles />
+
+        {/* The chapters holding most waiting mistakes, each with its own Fix
+            (2026-11-06): 448 of 745 /me visitors had misses waiting. */}
+        <WeakSpots />
 
         {/* A card only when it has something in it: 363 of 745 students saw
             "No mocks yet." beside "Nothing read yet." (2026-11-05), 236 of

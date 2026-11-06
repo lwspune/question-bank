@@ -15,7 +15,7 @@ describe("parseDrillFrom", () => {
 
   it("covers every link we ship", () => {
     expect([...DRILL_FROM].sort()).toEqual(
-      ["again", "bank", "email", "findings", "homework", "map", "me_tile", "menu", "nav", "push", "result", "review", "start", "today"].sort()
+      ["again", "bank", "email", "findings", "homework", "map", "me_tile", "me_weak", "menu", "nav", "push", "result", "review", "start", "today"].sort()
     );
   });
 

@@ -15,7 +15,8 @@ import { getOnboardingState } from "@/lib/profile/service";
 import { primaryExam, sanitizeTargetExams } from "@/lib/profile/onboarding";
 import { getExamIdMap } from "@/lib/exam/examIdMap";
 import { composeDailySet, fillUnseen, loadOwnPool } from "./compose";
-import { fixedCount, questionState, scopeToAttempt, selectDrill, DRILL_SIZE, type DueQuestion } from "./select";
+import { fixedCount, questionState, scopeToAttempt, scopeToChapter, selectDrill, DRILL_SIZE, type DueQuestion } from "./select";
+import type { DrillScope } from "./scope";
 import { answerProgress, type AnswerProgress } from "./progress";
 import { awardAnsweredMilestone } from "@/lib/celebrate/service";
 import { crowdTiers } from "@/lib/celebrate/crowdService";
@@ -57,7 +58,7 @@ export type OwnDrill = {
   dueTotal: number;
   /** Set when the drill was scoped to one attempt ("Fix these mistakes" from a
    *  result page): the paper's name for the header, and its due count. */
-  scope: { attemptId: string; mockTitle: string; mockSlug: string } | null;
+  scope: DrillScope | null;
   /** Today's free allowance (2026-10-05): "open" with a pass or the limit off. */
   allowance: DrillAllowance;
 };
@@ -90,7 +91,7 @@ async function readDrillAllowanceInput(
 }
 
 export async function getOwnDrill(
-  opts: { attemptId?: string | null; now?: Date } = {}
+  opts: { attemptId?: string | null; chapterId?: string | null; now?: Date } = {}
 ): Promise<OwnDrill | null> {
   const now = opts.now ?? new Date();
   const db = createSupabaseServerClient();
@@ -123,9 +124,20 @@ export async function getOwnDrill(
           .map(([id]) => id)
       );
       drillable = scopeToAttempt(drillable, wrong);
-      scope = { attemptId: opts.attemptId, mockTitle: graded.mock.title, mockSlug: graded.mock.slug };
+      scope = { kind: "attempt", attemptId: opts.attemptId, title: graded.mock.title, mockSlug: graded.mock.slug };
     } catch (e) {
       if (!(e instanceof MockError)) throw e;
+    }
+  } else if (opts.chapterId) {
+    // A chapter's Fix button in /me's Weak spots (2026-11-06): the same
+    // narrowing, to one chapter. Its name comes from the pool itself; a
+    // chapter with nothing due keeps the scope (so the page says "nothing
+    // left in this chapter") only if it can still be named.
+    const chapterId = opts.chapterId;
+    const named = pool.drillable.find((q) => q.chapterId === chapterId)?.chapter ?? (await chapterName(db, chapterId));
+    if (named) {
+      drillable = scopeToChapter(drillable, chapterId);
+      scope = { kind: "chapter", chapterId, title: named };
     }
   }
 
@@ -373,4 +385,15 @@ export async function recordDrillCompleted(questionIds: readonly string[]): Prom
     // if the student abandoned it half way.
     metadata: { surface: DRILL_SURFACE, size: questionIds.length },
   });
+}
+
+/** A chapter's name, for a chapter-scoped drill with nothing left due. Null
+ *  for an id that names no chapter: the page then serves the general drill. */
+async function chapterName(db: ReturnType<typeof createSupabaseServerClient>, chapterId: string): Promise<string | null> {
+  const { data, error } = await db.from("chapters").select("name").eq("id", chapterId).maybeSingle();
+  if (error) {
+    console.error("drill chapter name read failed", error.message);
+    return null;
+  }
+  return (data?.name as string | undefined) ?? null;
 }
