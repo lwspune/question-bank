@@ -8,7 +8,7 @@ import GuideJsonLd from "@/app/guide/_components/GuideJsonLd";
 import ExamFeedList from "@/components/exam/ExamFeedList";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { getPublishedMocks } from "@/lib/mocks/query";
-import { mockSideNav, mockExamNames, buildMockCatalogueEntries, mockCardMetaLine, type MockExamCard } from "@/lib/mocks/mocksNav";
+import { mockSideNav, mockExamNames, buildMockCatalogueEntries, mockCardMetaLine, mockCardFallbackCopy } from "@/lib/mocks/mocksNav";
 
 // Public catalogue — anon + stable, cacheable. New mocks appear on revalidation.
 export const revalidate = 3600;
@@ -82,7 +82,7 @@ const COPY: Record<string, ExamCopy> = {
   mpsc: {
     tagline: "Prelims & Mains",
     blurb:
-      "Maharashtra Public Service Commission papers (the Group B & C Prelims General Ability Test and the Mains language papers) on each paper's own printed marking scheme.",
+      "Maharashtra Public Service Commission papers (the State Services, Group B & C, Forest and Agriculture Service Prelims, and the Mains language papers) on each paper's own printed marking scheme.",
     icon: Landmark,
   },
 };
@@ -123,8 +123,10 @@ export default async function MockCatalogue() {
         items={entries.map((entry) => {
           const card = entry.card;
           const slug = entry.kind === "family" ? entry.family.slug : card.slug;
-          const copy = COPY[slug];
-          const Icon = copy?.icon ?? Timer;
+          // Hand-written copy where there is some, else wording read off the
+          // card's own mock types (a board exam's are chapter tests).
+          const copy = COPY[slug] ?? { ...mockCardFallbackCopy(card), icon: Timer };
+          const Icon = copy.icon;
           return {
             key: slug,
             // A family card orders by ANY of its members, so a student whose
@@ -141,7 +143,7 @@ export default async function MockCatalogue() {
                   </span>
                   <div>
                     <p className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
-                      {copy?.tagline ?? "Full-length papers"}
+                      {copy.tagline}
                     </p>
                     <h2 className="text-lg font-semibold leading-tight">
                       {card.displayName} mock tests
@@ -150,8 +152,7 @@ export default async function MockCatalogue() {
                 </div>
 
                 <p className="mt-4 flex-1 text-sm text-muted-foreground">
-                  {copy?.blurb ??
-                    `Full ${card.examName} papers as timed tests, marked the way the exam marks them.`}
+                  {copy.blurb}
                 </p>
 
                 <p className="mt-4 text-xs font-medium text-muted-foreground tabular-nums">

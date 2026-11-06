@@ -40,8 +40,9 @@ describe("footerLinks", () => {
   });
 
   // /learn since 2026-11-04: Homework took its tab, and a signed-out reader has no
-  // account menu, so the footer is their way to the lessons.
-  it.each(["/browse", "/questions", "/mock", "/board", "/homework", "/learn", "/formula"])(
+  // account menu, so the footer is their way to the lessons. /question-papers
+  // since 2026-11-07: the homepage listed it and the footer did not.
+  it.each(["/browse", "/questions", "/mock", "/board", "/question-papers", "/homework", "/learn", "/formula"])(
     "Explore carries the content surface %s",
     (href) => {
       expect(byTitle("Explore").links.map((l) => l.href)).toContain(href);

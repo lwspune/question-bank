@@ -21,7 +21,7 @@ import type { NotesChapterRegistration } from "@/lib/notes/chapters";
 import { NOTES_CHAPTER_INDEX, type NotesChapterMeta } from "@/lib/notes/chapterIndex";
 import { deriveSummary } from "@/lib/notes/deriveSummary";
 import { legendSymbolText } from "@/lib/notes/printDoc";
-import { EXAM_REGISTRY, getExamByName } from "@/lib/exam/examContext";
+import { EXAM_REGISTRY, getExamByName, type ExamEntry } from "@/lib/exam/examContext";
 import { slugifyName } from "@/lib/questions/slugs";
 import type { FormulaSpec, ReferenceTable } from "@/app/notes/_types";
 
@@ -209,9 +209,14 @@ export type FormulaIndexGroup = {
 };
 
 /** The /formula index: exams in registry order, subjects in first-seen order, chapters A to Z. */
-export function groupFormulaPagesForIndex(pages: readonly FormulaChapterPage[]): FormulaIndexGroup[] {
+export function groupFormulaPagesForIndex(
+  pages: readonly FormulaChapterPage[],
+  // Every exam by default, so formulaExamSlugs prerenders the intl hubs too;
+  // www's /formula index passes PYQVAULT_EXAMS (the intl exams live on intl).
+  registry: readonly ExamEntry[] = EXAM_REGISTRY
+): FormulaIndexGroup[] {
   const groups: FormulaIndexGroup[] = [];
-  for (const exam of EXAM_REGISTRY) {
+  for (const exam of registry) {
     const mine = pages.filter((p) => p.examSlug === exam.slug);
     if (mine.length === 0) continue;
     const subjects: FormulaIndexGroup["subjects"] = [];

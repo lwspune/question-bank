@@ -4,6 +4,7 @@ import {
   ArrowRight,
   BookMarked,
   BookOpen,
+  CalendarDays,
   Compass,
   FileText,
   FlaskConical,
@@ -29,7 +30,7 @@ import HowItWorks from "@/components/HowItWorks";
 import ContinueCard from "@/components/visits/ContinueCard";
 import ResultsStrip from "@/components/results/ResultsStrip";
 import { loopFor } from "@/lib/education/howItWorks";
-import { NOTES_CHAPTERS } from "@/lib/notes/chapters";
+import { wwwNotesChapterCount } from "@/lib/notes/notesNav";
 import { getExamBySlug, type ExamSlug } from "@/lib/exam/examContext";
 import { groupExamFamilies, familyTotal, membersByStage } from "@/lib/exam/examFamily";
 import { sortByDemand, withChosenExamFirst } from "@/lib/exam/demandOrder";
@@ -112,6 +113,10 @@ const EXAM_META: Record<
     Icon: School,
     blurb: "Services Preparatory Institute entrance (Class 10): the 2022 paper and ten practice papers.",
   },
+  uceed: {
+    Icon: Compass,
+    blurb: "UCEED, IIT Bombay's design entrance: every Part A paper from 2015 to 2026, each one also a timed mock.",
+  },
 };
 
 const DEFAULT_EXAM_META = { Icon: BookOpen, blurb: "Previous year question bank." };
@@ -119,10 +124,10 @@ const DEFAULT_EXAM_META = { Icon: BookOpen, blurb: "Previous year question bank.
 // Board-family cards. The six (board, class) exams render as two cards with
 // their classes as links inside, rather than six competing tiles.
 //
-// A family card deliberately gets NO single destination: pickExamCardHref
-// resolves guide -> notes -> bank PER EXAM, so a family href would either pick
-// a class silently or drop the visitor in the unfiltered bank. Keeping the
-// class links means every destination is exactly what it was before.
+// A family card deliberately gets NO single destination: each member has its
+// own exam home (pickExamCardHref), so a family href would either pick a class
+// silently or drop the visitor in the unfiltered bank. The class links inside
+// the card each open that class's home.
 //
 // No "Textbook"/"Worksheets" tag either — the members disagree (mh-ssc-10 is
 // board PYQs, not a textbook corpus), so one tag for the card would be false.
@@ -140,7 +145,7 @@ const FAMILY_META: Record<string, { Icon: typeof BookOpen; blurb: string }> = {
   MPSC: {
     Icon: Landmark,
     blurb:
-      "Maharashtra PSC: Group B & C Prelims, plus the Mains Marathi & English papers, with MPSC's final keys.",
+      "Maharashtra PSC: State Services, Group B & C, Forest and Agriculture Service Prelims, plus the Mains language papers, keyed from MPSC's own answer keys.",
   },
   CISCE: {
     Icon: Library,
@@ -163,7 +168,7 @@ type SurfacePreview = {
   Icon: typeof BookOpen;
 };
 
-// These eight render side by side in one grid, so a reader takes them in at a
+// These nine render side by side in one grid, so a reader takes them in at a
 // glance. They are therefore written in DELIBERATELY DIFFERENT shapes — a
 // declarative pair, a question, a colon-list, a short pair, a contrast, an
 // instruction. The original set were all "noun phrase — tricolon of features",
@@ -192,9 +197,10 @@ const SURFACES: SurfacePreview[] = [
   {
     href: "/notes",
     title: "Teaching notes",
-    // Chapter count is read from the registry, never typed.
+    // Chapter count is read from the nav index, never typed: www's chapters
+    // only, the count /notes lists (the intl exams' notes live on intl).
     blurb:
-      `One page per subtopic: the idea in plain language, the formula, a solved previous year question, and the traps that catch people. ${NOTES_CHAPTERS.length} chapters so far.`,
+      `One page per subtopic: the idea in plain language, the formula, a solved previous year question, and the traps that catch people. ${wwwNotesChapterCount()} chapters so far.`,
     Icon: NotebookPen,
   },
   {
@@ -228,6 +234,14 @@ const SURFACES: SurfacePreview[] = [
     blurb:
       "Each paper as the board set it, section by section. Every question has a model answer you can open under it.",
     Icon: FileText,
+  },
+  {
+    href: "/homework",
+    title: "Daily homework",
+    // Shape: a routine, then the extra it comes with.
+    blurb:
+      "A short set every day, chapter by chapter, until the subject is done. Every plan also lists each chapter's ten most-asked questions.",
+    Icon: CalendarDays,
   },
   {
     href: "/drill",
@@ -362,8 +376,8 @@ export default async function HomeLanding({ chosen }: { chosen: ExamSlug | null 
           <HowItWorks loop={loopFor(null)} compact />
         </section>
 
-        {/* Exam catalog — the pick-your-exam front door */}
-        <section className="mb-12">
+        {/* Exam catalog — the pick-your-exam front door. `/exams` lands here. */}
+        <section id="exams" className="mb-12 scroll-mt-20">
           <div className="mb-4 flex flex-wrap items-baseline justify-between gap-2">
             <h2 className="section-title text-xl font-semibold tracking-tight sm:text-2xl">
               Choose your exam

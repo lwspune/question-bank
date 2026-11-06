@@ -158,6 +158,23 @@ export function mockExamNames(): string {
   return `${names.slice(0, -1).join(", ")} and ${names[names.length - 1]}`;
 }
 
+/**
+ * /start's "For an entrance exam" line: the exams whose loop is the mock loop,
+ * each collapsed family named once. Board exams are left out (their loop is the
+ * book, and their mocks are chapter tests), as are exams with no mocks. Derived,
+ * because the hand-typed "NDA, CDS, NEET, MHT-CET, JEE Mains, IPMAT" had missed
+ * six exams by 2026-11-07.
+ */
+export function entranceMockExamNames(): string[] {
+  const out: string[] = [];
+  for (const e of getMockExams()) {
+    if (getExamBySlug(e.slug)?.boardExam) continue;
+    const name = mockFamilyOf(e.slug)?.name ?? e.displayName;
+    if (!out.includes(name)) out.push(name);
+  }
+  return out;
+}
+
 /** One exam's card on the /mock picker. Every number is DERIVED from the rows
  *  /mock already fetches, so a new sitting updates the card by itself. */
 export type MockExamCard = MockExamNav & {
@@ -293,8 +310,44 @@ export function mockCardMetaLine(card: MockExamCard): string {
     parts.push(`${past} past ${past === 1 ? "paper" : "papers"}${span}`);
   }
   if (card.byType["practice"] > 0) parts.push(`${card.byType["practice"]} practice`);
-  if (card.byType["sectional"] > 0) parts.push(`${card.byType["sectional"]} sectional`);
+  const sectional = card.byType["sectional"];
+  if (sectional > 0) {
+    // A board exam's sectional mocks are chapter tests (its card says so).
+    parts.push(
+      getExamBySlug(card.slug)?.boardExam
+        ? `${sectional} chapter ${sectional === 1 ? "test" : "tests"}`
+        : `${sectional} sectional`
+    );
+  }
   return parts.join(" · ");
+}
+
+/**
+ * The /mock card's tagline and blurb for an exam with no hand-written copy.
+ *
+ * Only an exam with whole papers (past or practice) is promised full papers.
+ * One with sectional mocks alone gets "Sectional tests", and a board exam's are
+ * chapter tests: until 2026-11-07 the four board exams' cards read "Full-length
+ * papers" over 15-55 chapter tests and no paper at all.
+ */
+export function mockCardFallbackCopy(card: MockExamCard): { tagline: string; blurb: string } {
+  const whole = card.byType["past-papers"] + card.byType["practice"];
+  if (whole === 0 && card.byType["sectional"] > 0) {
+    if (getExamBySlug(card.slug)?.boardExam) {
+      return {
+        tagline: "Chapter tests",
+        blurb: `Timed chapter tests from ${card.examName} questions, marked for you.`,
+      };
+    }
+    return {
+      tagline: "Sectional tests",
+      blurb: `Timed ${card.examName} sectional tests, marked the way the exam marks them.`,
+    };
+  }
+  return {
+    tagline: "Full-length papers",
+    blurb: `Full ${card.examName} papers as timed tests, marked the way the exam marks them.`,
+  };
 }
 
 /**

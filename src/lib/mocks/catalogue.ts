@@ -155,6 +155,35 @@ export function comingSoonLine(comingSoon: MockTypeCard[], examName: string): st
   return `${list} are coming soon for ${examName}.`;
 }
 
+/**
+ * The /mock/exam/<slug> subtitle, built from the types the exam HAS. It used to
+ * promise "full past papers, plus practice papers" on every exam, including the
+ * board exams with chapter tests alone, two lines above "Past papers and
+ * practice mocks are coming soon" (2026-11-07).
+ */
+export function mockHubSubtitle(
+  examName: string,
+  openTypes: readonly MockTypeSlug[],
+  boardExam: boolean
+): string {
+  const has = (t: MockTypeSlug) => openTypes.includes(t);
+  const sectional = boardExam ? "chapter tests" : "sectional tests";
+  if (!has("past-papers") && !has("practice")) {
+    return `Timed ${examName} ${sectional}, marked for you.`;
+  }
+  const parts: string[] = [];
+  if (has("past-papers")) parts.push("full past papers");
+  if (has("practice")) parts.push("practice papers with the same number of questions per subject");
+  if (has("sectional")) parts.push(`shorter ${sectional}`);
+  const list =
+    parts.length === 1
+      ? parts[0]
+      : parts.length === 2
+        ? `${parts[0]} and ${parts[1]}`
+        : `${parts.slice(0, -1).join(", ")}, and ${parts[parts.length - 1]}`;
+  return `Sit ${examName} papers online, timed and marked for you: ${list}.`;
+}
+
 /** One card per type for the exam page's picker, in MOCK_TYPES order. */
 export function buildMockTypeCards(mocks: MockListItem[]): MockTypeCard[] {
   return MOCK_TYPES.map((t) => {

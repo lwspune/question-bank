@@ -65,6 +65,13 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        // 2026-11-07: every exam has /exams/<slug>, but /exams itself was a
+        // 404. The list of exams is the homepage's "Choose your exam".
+        source: "/exams",
+        destination: "/#exams",
+        permanent: false,
+      },
+      {
         // 2026-09-27: teacher access is bought, not requested. The lead form is
         // gone; the old URL (linked from emails, the sitemap and past gates)
         // lands on the pass card, which handles sign-in → payment. Since

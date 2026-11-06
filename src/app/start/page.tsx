@@ -17,13 +17,14 @@
  */
 import type { Metadata } from "next";
 import Link from "next/link";
-import { BookOpen, Compass, Library, NotebookPen, Timer } from "lucide-react";
+import { BookOpen, CalendarDays, Compass, Library, NotebookPen, Timer } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import ViewBeacon from "@/components/ViewBeacon";
 import Footer from "@/components/Footer";
 import HowItWorks from "@/components/HowItWorks";
 import { loopFor } from "@/lib/education/howItWorks";
 import { getExamBySlug } from "@/lib/exam/examContext";
+import { entranceMockExamNames } from "@/lib/mocks/mocksNav";
 
 export const revalidate = 86400;
 
@@ -52,6 +53,12 @@ const TABS = [
     label: "Mocks",
     href: "/mock",
     line: "Full past papers as timed tests. See your score, how each section went, and every question afterwards.",
+  },
+  {
+    Icon: CalendarDays,
+    label: "Homework",
+    href: "/homework",
+    line: "A short set of questions a day, chapter by chapter, plus each chapter's ten most-asked questions.",
   },
   {
     Icon: NotebookPen,
@@ -96,7 +103,7 @@ export default function StartPage() {
             For an entrance exam
           </h2>
           <p className="mt-1 text-sm text-muted-foreground">
-            NDA, CDS, NEET, MHT-CET, JEE Mains, IPMAT.
+            {entranceMockExamNames().join(", ")}.
           </p>
           <div className="mt-4">
             <HowItWorks loop={mock} />
@@ -108,8 +115,8 @@ export default function StartPage() {
             For a board or school exam
           </h2>
           <p className="mt-1 text-sm text-muted-foreground">
-            Maharashtra State Board, CBSE, the Foundation course and the worksheets. No
-            mocks here, so the loop is the book.
+            Maharashtra State Board, CBSE, the Foundation course and the worksheets. Some
+            have chapter tests and whole past papers too, but here the loop is the book.
           </p>
           <div className="mt-4">
             <HowItWorks loop={board} />
@@ -148,12 +155,8 @@ export default function StartPage() {
         <section className="mt-10 rounded-xl border bg-card p-6">
           <p className="font-semibold">Free to use</p>
           <p className="mt-1 font-serif text-sm leading-relaxed text-muted-foreground">
-            Browsing, mocks, the drill and the map need only a free account. PDF downloads
-            of a paper and its answer key come with the{" "}
-            <Link href="/pricing?plan=mocks" className="text-brand-accent underline">
-              Premium Pass
-            </Link>
-            .
+            Browsing needs no account. Mocks, the drill and the map need a free one, so
+            your scores and your mistakes are kept for you.
           </p>
         </section>
       </main>

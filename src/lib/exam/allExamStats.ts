@@ -6,7 +6,6 @@ import {
   resolveBankHref,
   type ExamEntry,
 } from "./examContext";
-import { getNotesExamGroups } from "@/lib/notes/notesNav";
 import { examHomeHref } from "./examHome";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import type { KindCounts } from "./questionCounts";
@@ -33,7 +32,7 @@ export type ExamCatalogItem = {
   counts: KindCounts;
   practiceOnly: boolean;
   boardExam: boolean;
-  /** Best landing for this exam's card (guide → shipped notes → exam home → bank). */
+  /** Where this exam's card goes: its exam home, or the bank when it has none. */
   href: string;
   /** DB UUID, or null when the exam is registered in code but not seeded. */
   examId: string | null;
@@ -47,24 +46,18 @@ export type ExamCatalog = {
 };
 
 /**
- * Best landing href for an exam card:
- *   1. its `/guide` subtree, if one has shipped;
- *   2. else its `/notes/<slug>` hub, if that exam has at least one notes chapter
- *      (a bare "coming soon" hub is a dead end, so we skip it);
- *   3. else its exam home (`/exams/<slug>`), which lists every chapter page;
- *   4. else, for an exam with no public content (its exam home 404s), the
- *      question bank (`/browse?examId=…`).
- * Step 3 replaced the bank on 2026-10-01: robots.ts disallows `/browse?*`, so
- * for Google a card pointing there led nowhere.
+ * Where an exam's homepage card and chip go: its exam home (`/nda`,
+ * `/exams/<slug>`), which links on to the exam's guide, notes, mocks and
+ * homework. For an exam with no public content (its exam home 404s), the
+ * question bank (`/browse?examId=…`).
+ *
+ * Until 2026-11-07 a card went to the exam's guide, else its notes hub, else
+ * its exam home, so neighbouring cards opened different kinds of page (SSC CGL
+ * Tier I a guide, Tier II a hub). The site-coherence review sent them all to
+ * the one page every exam has.
  * Pure — unit-tested.
  */
-export function pickExamCardHref(
-  exam: ExamEntry,
-  examId: string | null,
-  hasShippedNotes: boolean
-): string {
-  if (exam.guidesPath) return exam.guidesPath;
-  if (hasShippedNotes && exam.notesPath) return exam.notesPath;
+export function pickExamCardHref(exam: ExamEntry, examId: string | null): string {
   if (!exam.noPublicContent) return examHomeHref(exam.slug);
   return resolveBankHref(examId);
 }
@@ -75,12 +68,10 @@ export function pickExamCardHref(
  *
  * @param countsByExamName  exam DB name → PUBLIC question count
  * @param idsBySlug         exam slug → DB UUID (for the bank-href fallback)
- * @param notesSlugs        exam slugs that have at least one shipped notes chapter
  */
 export function shapeExamCatalog(
   countsByExamName: Map<string, KindCounts>,
   idsBySlug: Map<string, string>,
-  notesSlugs: Set<string>,
   // www's exams by default: the homepage, /about, llms.txt and V list these.
   // /exams/[examSlug] passes the full registry so an intl exam finds itself.
   registry: readonly ExamEntry[] = PYQVAULT_EXAMS
@@ -96,7 +87,7 @@ export function shapeExamCatalog(
       counts,
       practiceOnly: exam.practiceOnly === true,
       boardExam: exam.boardExam === true,
-      href: pickExamCardHref(exam, examId, notesSlugs.has(exam.slug)),
+      href: pickExamCardHref(exam, examId),
       examId,
     };
   });
@@ -238,10 +229,9 @@ export function examCatalogCacheKey(now: Date): string[] {
 /**
  * The homepage exam catalog.
  *
- * Only the DB half is cached. The registry order, the flags, the card hrefs and
- * the notes lookup are all recomputed per call from build-time constants — so
- * adding an exam or shipping a notes chapter shows up on the next deploy rather
- * than waiting out a 24-hour cache entry.
+ * Only the DB half is cached. The registry order, the flags and the card hrefs
+ * are all recomputed per call from build-time constants, so adding an exam
+ * shows up on the next deploy rather than waiting out a 24-hour cache entry.
  */
 export async function getCachedExamCatalog(
   registry: readonly ExamEntry[] = PYQVAULT_EXAMS
@@ -250,7 +240,6 @@ export async function getCachedExamCatalog(
   return shapeExamCatalog(
     new Map(counts),
     new Map(ids),
-    new Set(getNotesExamGroups(EXAM_REGISTRY).map((g) => g.slug)),
     registry
   );
 }
@@ -276,8 +265,7 @@ export async function getExamCatalogForRender(): Promise<{
     return {
       catalog: shapeExamCatalog(
         new Map(),
-        new Map(),
-        new Set(getNotesExamGroups().map((g) => g.slug))
+        new Map()
       ),
       countsKnown: false,
     };

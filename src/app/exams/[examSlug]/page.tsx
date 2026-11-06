@@ -35,6 +35,7 @@ import {
   buildExamHome,
   examHomeDescription,
   examHomeHref,
+  unlistedQuestions,
   type ExamHomeModel,
 } from "@/lib/exam/examHome";
 import { fitTitle } from "@/lib/seo/title";
@@ -71,6 +72,7 @@ async function loadModel(slug: string): Promise<ExamHomeModel | null> {
     // this page used to call "past-year questions" (UX_REVIEW_TRIAGE.md A1).
     totalPublicQuestions: item ? defaultViewCount(item.counts, item.practiceOnly) : 0,
     pastYearQuestions: item?.practiceOnly ? item.counts.pyq : 0,
+    practiceQuestions: item && !item.practiceOnly ? item.counts.practice : 0,
     hasShippedNotes: (notes?.subjects.length ?? 0) > 0,
   });
 }
@@ -114,7 +116,7 @@ export default async function ExamHomePage(props: Params) {
     console.error("exam home: homework plans unavailable", err);
     return [];
   });
-  const homeworkHref = exam ? examHomeworkHref(plans, exam.examName) : null;
+  const homeworkHref = exam ? examHomeworkHref(plans, exam.examName, exam.slug) : null;
   // Whole entrance past papers, free to read (/mock/<slug>/paper, 2026-10-15).
   // A failed read only drops the link, like the two above.
   const mocks = await getPublishedMocks(createSupabaseAnonClient()).catch((err) => {
@@ -208,9 +210,9 @@ export default async function ExamHomePage(props: Params) {
               <h2 className="text-xl font-semibold tracking-tight">
                 {subject.name}
                 <span className="ml-2 text-sm font-normal text-muted-foreground">
-                  {subject.questionCount.toLocaleString("en-IN")} {kind} across{" "}
+                  {subject.questionCount.toLocaleString("en-IN")} {kind} in{" "}
                   {subject.chapters.length}{" "}
-                  {subject.chapters.length === 1 ? "chapter" : "chapters"}
+                  {subject.chapters.length === 1 ? "chapter page" : "chapter pages"}
                 </span>
               </h2>
               <ul className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
@@ -230,6 +232,16 @@ export default async function ExamHomePage(props: Params) {
               </ul>
             </section>
           ))
+        )}
+        {model.subjects.length > 0 && unlistedQuestions(model) > 0 && (
+          <p className="mt-8 text-sm text-muted-foreground">
+            A chapter gets its own page once it holds 15 questions. The other{" "}
+            {unlistedQuestions(model).toLocaleString("en-IN")} {kind} are in{" "}
+            <Link href={model.links.bank} className="text-brand-accent underline underline-offset-4">
+              the full bank
+            </Link>
+            .
+          </p>
         )}
       </main>
       <Footer />

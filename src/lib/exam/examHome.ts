@@ -38,6 +38,10 @@ export type ExamHomeModel = {
   /** A practice-only exam's PUBLIC past-year questions (CBSE Class 10 since
    *  2026-10-15), named beside the practice count; 0 for every other exam. */
   pastYearQuestions: number;
+  /** The practice questions of an exam that is NOT practice-only (AFCAT holds
+   *  4,689 beside 133 past-year ones), named in the description; 0 for a
+   *  practice-only exam, whose practice count is `totalQuestions`. */
+  practiceQuestions: number;
   /** How many of its questions carry worked solutions: what the description may promise. */
   solutionCoverage: SolutionCoverage;
   /** Chapters with a landing page (≥15 PUBLIC questions). */
@@ -57,7 +61,13 @@ export type ExamHomeModel = {
 export function buildExamHome(
   entry: ExamEntry,
   landings: readonly ChapterLanding[],
-  opts: { examId: string | null; totalPublicQuestions: number; pastYearQuestions?: number; hasShippedNotes: boolean }
+  opts: {
+    examId: string | null;
+    totalPublicQuestions: number;
+    pastYearQuestions?: number;
+    practiceQuestions?: number;
+    hasShippedNotes: boolean;
+  }
 ): ExamHomeModel {
   const mine = landings.filter((l) => l.examSlug === entry.slug);
 
@@ -94,6 +104,7 @@ export function buildExamHome(
     practiceOnly: entry.practiceOnly === true,
     totalQuestions: opts.totalPublicQuestions,
     pastYearQuestions: entry.practiceOnly ? (opts.pastYearQuestions ?? 0) : 0,
+    practiceQuestions: entry.practiceOnly ? 0 : (opts.practiceQuestions ?? 0),
     solutionCoverage: solutionCoverageOf(entry),
     chapterCount: mine.length,
     years,
@@ -112,14 +123,17 @@ export function buildExamHome(
 export function examHomeDescription(m: ExamHomeModel): string {
   const counts = m.practiceOnly
     ? { pyq: m.pastYearQuestions, practice: m.totalQuestions }
-    : { pyq: m.totalQuestions, practice: 0 };
+    : { pyq: m.totalQuestions, practice: m.practiceQuestions };
+  // Both kinds named whenever both exist, whichever the exam opens on.
+  const kinds = examKindPhrase(counts, m.practiceOnly || counts.practice > 0);
   const span = m.years ? ` from ${m.years.min} to ${m.years.max}` : "";
   const shape =
     m.subjects.length > 0 && m.chapterCount > 0
-      ? ` across ${m.subjects.length} ${m.subjects.length === 1 ? "subject" : "subjects"} and ${m.chapterCount} ${m.chapterCount === 1 ? "chapter" : "chapters"}`
+      ? ` across ${m.subjects.length} ${m.subjects.length === 1 ? "subject" : "subjects"} and ${m.chapterCount} ${m.chapterCount === 1 ? "chapter page" : "chapter pages"}`
       : "";
   const extras: string[] = [];
-  if (m.links.mocks) extras.push("timed mocks of real papers");
+  // A board exam's mocks are chapter tests (2026-11-07), not whole papers.
+  if (m.links.mocks) extras.push(m.links.board ? "timed chapter tests" : "timed mocks of real papers");
   if (m.links.notes) extras.push("chapter notes");
   if (m.links.board) extras.push("a textbook-solutions reader");
   // "Some" joins the list as an item, so the sentence reads "with answers,
@@ -134,5 +148,16 @@ export function examHomeDescription(m: ExamHomeModel): string {
       : items.length === 1
         ? ` and ${items[0]}`
         : `, ${items.slice(0, -1).join(", ")}, and ${items[items.length - 1]}`;
-  return `${m.displayName} on PYQ Vault: ${examKindPhrase(counts, m.practiceOnly)}${span}${shape}, ${answers}${tail}. Free to browse.`;
+  return `${m.displayName} on PYQ Vault: ${kinds}${span}${shape}, ${answers}${tail}. Free to browse.`;
+}
+
+/**
+ * Questions the chapter list leaves out: a chapter gets its own page only at
+ * 15 questions (MIN_QUESTIONS_FOR_LANDING), so the listed counts can fall far
+ * short of the page's total (AFCAT: 133 past-year, 42 listed). The page says
+ * so when this is above 0.
+ */
+export function unlistedQuestions(m: ExamHomeModel): number {
+  const listed = m.subjects.reduce((n, s) => n + s.questionCount, 0);
+  return Math.max(0, m.totalQuestions - listed);
 }
