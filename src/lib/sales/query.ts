@@ -4,9 +4,9 @@
  * Service-role only: the page checks for a superadmin first.
  */
 import type { SupabaseClient } from "@supabase/supabase-js";
-import type { DayWindow, FunnelStudents, SalesGrain, SalesPeriodRow } from "./summary";
+import { istDate, type DayWindow, type FunnelStudents, type SalesGrain, type SalesPeriodRow } from "./summary";
 import { PAYWALL_GATES, type PaywallGate } from "@/lib/activity/clientEvents";
-import { isDeclineReason, type DeclineRow } from "@/lib/billing/declineReasons";
+import { isDeclineReason, withoutSameDayBuyers, type DeclineRow, type PassPurchaseDay } from "@/lib/billing/declineReasons";
 import { EXAM_REGISTRY, type ExamTier } from "@/lib/exam/examContext";
 import { resolveStudentTier } from "@/lib/exam/examFeed";
 import { isStage, sanitizeTargetExams } from "@/lib/profile/onboarding";
@@ -62,7 +62,8 @@ const IN_CHUNK = 200;
 /**
  * Every "Not buying today? Tell us why" answer from the IST day `since`
  * (2026-11-05), staff left out, each with the student's tier from their
- * profile (stated stage first, else their target exams).
+ * profile (stated stage first, else their target exams). An answer from a
+ * student who bought a pass the same IST day is left out: they did buy.
  */
 export async function loadDeclines(admin: SupabaseClient, since: string): Promise<DeclineRow[]> {
   const [members, admins] = await Promise.all([
@@ -73,11 +74,11 @@ export async function loadDeclines(admin: SupabaseClient, since: string): Promis
   if (admins.error) throw new Error(`loadDeclines platform_admins: ${admins.error.message}`);
   const staff = new Set([...(members.data ?? []), ...(admins.data ?? [])].map((r) => r.user_id as string));
 
-  const events: { user_id: string; metadata: Record<string, unknown> | null }[] = [];
+  const events: { user_id: string; metadata: Record<string, unknown> | null; created_at: string }[] = [];
   for (let from = 0; ; from += PAGE) {
     const { data, error } = await admin
       .from("user_activity")
-      .select("user_id, metadata")
+      .select("user_id, metadata, created_at")
       .eq("kind", "paywall_event")
       .eq("metadata->>step", "declined")
       .gte("created_at", `${since}T00:00:00+05:30`)
@@ -119,9 +120,25 @@ export async function loadDeclines(admin: SupabaseClient, since: string): Promis
       gate: gate as PaywallGate,
       afterCheckout: m.afterCheckout === true,
       tier: tierById.get(e.user_id) ?? null,
+      day: istDate(new Date(e.created_at)),
     });
   }
-  return out;
+
+  const purchases: PassPurchaseDay[] = [];
+  for (let i = 0; i < ids.length; i += IN_CHUNK) {
+    const chunk = ids.slice(i, i + IN_CHUNK);
+    const { data, error } = await admin
+      .from("entitlements")
+      .select("user_id, granted_at")
+      .eq("source", "razorpay")
+      .gte("granted_at", `${since}T00:00:00+05:30`)
+      .in("user_id", chunk);
+    if (error) throw new Error(`loadDeclines entitlements: ${error.message}`);
+    for (const g of (data ?? []) as { user_id: string; granted_at: string }[]) {
+      purchases.push({ userId: g.user_id, day: istDate(new Date(g.granted_at)) });
+    }
+  }
+  return withoutSameDayBuyers(out, purchases);
 }
 
 /** Distinct students who met a paywall, and who started a pass checkout, over `window`. */
