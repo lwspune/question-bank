@@ -60,7 +60,10 @@ describe("middleware matcher on www", () => {
   });
 
   it("does NOT run on PYQ Vault's public pages, which pay for every middleware call", () => {
-    for (const p of ["/", "/notes/nda-maths", "/mock/nda-2024-i", "/browse", "/questions/jee-mains/maths/x", "/exams/ipmat-indore"]) {
+    // "/" is the one public page matched (2026-11-06, routeHome): it lets the
+    // homepage be CACHED, and its signed-out requests make no auth call.
+    // tests/home-middleware.test.ts covers it.
+    for (const p of ["/notes/nda-maths", "/mock/nda-2024-i", "/browse", "/questions/jee-mains/maths/x", "/exams/ipmat-indore"]) {
       expect(runsOnWww(p), p).toBe(false);
     }
   });

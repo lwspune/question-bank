@@ -39,7 +39,8 @@ import { footerLinks } from "@/lib/nav/footerLinks";
 
 // PYQ Vault's footer; Footer.tsx shows it on every www page (and the intl one on intl.pyqvault.com).
 const FOOTER = join(process.cwd(), "src", "components", "PyqVaultFooter.tsx");
-const HOME = join(process.cwd(), "src", "app", "page.tsx");
+// The homepage body moved here on 2026-11-06 (src/app/page.tsx only renders it).
+const HOME = join(process.cwd(), "src", "components", "home", "HomeLanding.tsx");
 const footerHrefs = footerLinks().flatMap((g) => g.links.map((l) => l.href));
 
 /**

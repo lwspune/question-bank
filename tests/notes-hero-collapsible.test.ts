@@ -86,7 +86,7 @@ describe("notes chapter hero — the opt-in is wired where it belongs", () => {
       ["src", "app", "notes", "_components", "NotesSubtopicPage.tsx"],
       ["src", "app", "notes", "page.tsx"],
       ["src", "app", "guide", "page.tsx"],
-      ["src", "app", "page.tsx"],
+      ["src", "components", "home", "HomeLanding.tsx"], // the homepage body
     ];
     for (const c of callers) {
       expect({ file: c.join("/"), optedIn: read(...c).includes("collapsibleSubtitle") })

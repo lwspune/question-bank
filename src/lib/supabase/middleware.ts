@@ -1,6 +1,8 @@
 import { createServerClient, type CookieOptions } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
-import { signedInAuthPageRedirect } from "@/lib/auth/redirect";
+import { signedInAuthPageRedirect, signedInHome } from "@/lib/auth/redirect";
+import { hasSupabaseAuthCookie } from "@/lib/auth-identity";
+import { isExamSlug } from "@/lib/exam/examContext";
 
 type CookieToSet = { name: string; value: string; options?: CookieOptions };
 
@@ -60,5 +62,64 @@ export async function updateSession(request: NextRequest): Promise<NextResponse>
     return NextResponse.redirect(new URL(authPageTarget, request.url));
   }
 
+  return response;
+}
+
+/**
+ * The homepage `/` (2026-11-06). The page is cached and reads nothing about the
+ * request, so the choice it used to make during render is made here:
+ *
+ * - No Supabase cookie (nearly all traffic, every crawler): the cached page, or
+ *   its cached per-exam copy when qb_exam names an exam. No auth call at all.
+ * - A Supabase cookie and a live user: a redirect to their own home, the same
+ *   signedInHome the page used (admin /dashboard, teacher /browse, student /me).
+ * - A Supabase cookie that is no longer a session: as signed out.
+ *
+ * A rewrite, not a redirect, so the address bar stays `/`.
+ */
+export async function routeHome(request: NextRequest): Promise<NextResponse> {
+  const chosen = request.cookies.get("qb_exam")?.value;
+  const examPath = isExamSlug(chosen) ? `/home-exam/${chosen}` : null;
+  const signedOut = () =>
+    examPath ? NextResponse.rewrite(new URL(examPath, request.url)) : NextResponse.next({ request });
+
+  if (!hasSupabaseAuthCookie(request.cookies.getAll().map((c) => c.name))) {
+    return signedOut();
+  }
+
+  // A refreshed session's cookies must ride on whatever response goes back.
+  const refreshed: CookieToSet[] = [];
+  const supabase = createServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    {
+      cookies: {
+        getAll() {
+          return request.cookies.getAll();
+        },
+        setAll(cookiesToSet: CookieToSet[]) {
+          refreshed.push(...cookiesToSet);
+        },
+      },
+    }
+  );
+
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  let response: NextResponse;
+  if (user) {
+    const { data: membership } = await supabase
+      .from("org_members")
+      .select("role")
+      .eq("user_id", user.id)
+      .maybeSingle();
+    const role = membership?.role === "ADMIN" || membership?.role === "TEACHER" ? membership.role : null;
+    response = NextResponse.redirect(new URL(signedInHome(role), request.url));
+  } else {
+    response = signedOut();
+  }
+  for (const { name, value, options } of refreshed) response.cookies.set(name, value, options);
   return response;
 }

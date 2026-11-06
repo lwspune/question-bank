@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { updateSession } from "@/lib/supabase/middleware";
+import { routeHome, updateSession } from "@/lib/supabase/middleware";
 import {
   INTL_ORIGIN,
   intlHostDecision,
@@ -42,6 +42,9 @@ export async function middleware(request: NextRequest) {
   const moved = apply(request, decision);
   if (moved) return moved;
 
+  // The homepage is cached; who sees which copy is decided here (routeHome).
+  if (pathname === "/") return routeHome(request);
+
   return needsSession(pathname) ? updateSession(request) : NextResponse.next();
 }
 
@@ -59,6 +62,10 @@ export async function middleware(request: NextRequest) {
 // into the site instead of being shown the form (signedInAuthPageRedirect).
 // Both are low-traffic and noindex, so the extra getUser() costs little.
 //
+// "/" (2026-11-06) is matched so the cached homepage can still send signed-in
+// visitors to their own home and put a signed-out visitor's chosen exam first
+// (routeHome). Signed-out requests make no auth call there.
+//
 // intl.pyqvault.com (2026-10-30) adds two kinds of entry, and neither refreshes
 // a session (needsSession still decides that):
 // - On production www, the paths of the INTERNATIONAL exams, so they 308 to
@@ -69,6 +76,7 @@ export async function middleware(request: NextRequest) {
 //   traffic is small, and production www is excluded by name.
 export const config = {
   matcher: [
+    "/",
     "/dashboard",
     "/dashboard/:path*",
     "/account",
