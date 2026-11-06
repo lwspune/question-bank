@@ -43,6 +43,10 @@ describe("planWording", () => {
     });
   });
 
+  it("names SSC and past questions for SSC CGL Tier II", () => {
+    expect(planWording("SSC CGL Tier II")).toEqual({ asker: "SSC", questions: "past questions", papers: "Past", answers: "worked solutions" });
+  });
+
   it("names SSC and past questions for SSC CGL", () => {
     expect(planWording("SSC CGL")).toEqual({ asker: "SSC", questions: "past questions", papers: "Past", answers: "worked solutions" });
   });
