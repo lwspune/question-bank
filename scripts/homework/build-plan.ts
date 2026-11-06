@@ -20,7 +20,10 @@
  * REFUSES, before writing anything, when the file and the bank disagree in
  * EITHER direction: a question in the file that is gone, private or in another
  * subject, or a PUBLIC past-year question of the subject that the file never
- * saw (a later ingest: review it, add it to the file, then rebuild).
+ * saw (a later ingest: `npm run homework:new` reviews only the new paper and
+ * `npm run homework:add-new` folds it into the file; then rebuild). A rebuild
+ * re-ranks the whole plan (owner, 2026-11-06: rebuild freely), so a day's
+ * questions can change; marks are per question, so no student's work is lost.
  *
  * The items are replaced in one transaction (homework_replace_items), so a
  * plan is never half old, half new. Re-running is safe.
@@ -29,6 +32,7 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { buildPlanOrder, type PlanGroup } from "@/lib/homework/plan";
+import { unplannedIds } from "@/lib/homework/newQuestions";
 
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 
@@ -113,9 +117,9 @@ async function main() {
     else if (r.exam_id !== exam.id || r.subject_id !== subject.id) problems.push(`${id}: another exam or subject`);
     else if (!r.chapter?.name) problems.push(`${id}: no chapter`);
   }
-  const inFile = new Set([...fileIds, ...(plan.excluded ?? [])]);
-  const unseen = (await publicPyqIds(client, exam.id, subject.id)).filter((id) => !inFile.has(id));
-  for (const id of unseen) problems.push(`${id}: PUBLIC past-year question the file has not reviewed`);
+  // The same comparison the daily prod check makes (lib/homework/newQuestions).
+  const unseen = unplannedIds(plan, await publicPyqIds(client, exam.id, subject.id));
+  for (const id of unseen) problems.push(`${id}: PUBLIC past-year question the file has not reviewed (a new paper: npm run homework:new)`);
   if (problems.length) {
     console.error(`REFUSED: ${problems.length} problem(s)\n  ${problems.slice(0, 30).join("\n  ")}`);
     process.exit(1);

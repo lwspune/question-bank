@@ -28,6 +28,7 @@ export const PROD_CONTRACT_FILES: string[] = [
   "tests/mock-questions-visible.test.ts", // published mocks reference only live PUBLIC questions
   "tests/books-registry.test.ts", // book registry chapter/subject names vs live taxonomy
   "tests/planner-data.test.ts", // session-plan section refs vs the live syllabus spine
+  "tests/homework-plan-coverage.test.ts", // homework plans cover every PUBLIC past question of their subject (a new paper)
   "tests/blog-nda2-2026-stats.test.ts", // blog post figures vs the live NDA Maths corpus
   "tests/blog-nda2-2026-gat-stats.test.ts", // GAT post figures vs the live NDA GAT corpus
   "tests/blog-mhtcet-2027-stats.test.ts", // MHT-CET 2027 dates post: Std XI/XII split vs the live CET corpus
