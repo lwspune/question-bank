@@ -94,3 +94,38 @@ describe("BOARD_QUESTION_COLUMNS", () => {
     expect(BOARD_QUESTION_COLUMNS).toMatch(/\bsolution_visual\b/);
   });
 });
+
+// JEE Mains homework (2026-11-06): a numeric (Section B) question has no
+// options. The reader has no number input, so like the mock paper page
+// (lib/mocks/paperPage.ts) it shows as a written question whose reveal leads
+// with the value, then the worked solution.
+describe("mapBoardQuestion on a numeric question", () => {
+  const numeric = (over: Partial<RawBoardQuestion> = {}) =>
+    raw({ question_format: "numeric", options: [], solution: "Work it out.", numeric_answer: 12, numeric_answer_max: null, ...over });
+
+  it("shows as a written question with no options", () => {
+    const q = mapBoardQuestion(numeric());
+    expect(q.format).toBe("subjective");
+    expect(q.options).toEqual([]);
+  });
+
+  it("leads the reveal with the value, then the solution", () => {
+    expect(mapBoardQuestion(numeric()).solution).toBe("**Answer: 12**\n\nWork it out.");
+  });
+
+  it("prints a range key as a range", () => {
+    expect(mapBoardQuestion(numeric({ numeric_answer: 2.5, numeric_answer_max: 2.7 })).solution).toBe("**Answer: 2.5 to 2.7**\n\nWork it out.");
+  });
+
+  it("shows the value alone when there is no worked solution", () => {
+    expect(mapBoardQuestion(numeric({ solution: null })).solution).toBe("**Answer: 12**");
+  });
+
+  it("loads the value with every reader's columns", () => {
+    expect(BOARD_QUESTION_COLUMNS).toMatch(/numeric_answer, numeric_answer_max/);
+  });
+
+  it("leaves an MCQ's solution untouched", () => {
+    expect(mapBoardQuestion(raw()).solution).toBe("Exempt, so 0%. Correct option: C.");
+  });
+});

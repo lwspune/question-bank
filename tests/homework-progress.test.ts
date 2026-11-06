@@ -41,7 +41,14 @@ describe("markOf: one question's mark", () => {
     expect(markOf(M, [])).toBeNull();
     expect(markOf(M, [ev("q", "question_practiced", "2026-11-05T10:00:00Z")])).toBe("answered");
     expect(markOf(M, [ev("q", "answer_wrong", "2026-11-05T10:00:00Z")])).toBe("answered");
-    expect(markOf("numeric", [ev("q", "question_practiced", "2026-11-05T10:00:00Z")])).toBe("answered");
+  });
+
+  // JEE Mains homework (2026-11-06): a numeric question is shown as written (no
+  // number input), with Understood / Review later, so it is marked like one; a
+  // reveal alone would let the plan page call a day done that the day page does not.
+  it("a numeric question is marked like a written one", () => {
+    expect(markOf("numeric", [ev("q", "question_practiced", "2026-11-05T10:00:00Z")])).toBeNull();
+    expect(markOf("numeric", [ev("q", "self_mark", "2026-11-05T10:00:00Z", "review")])).toBe("review");
   });
 });
 

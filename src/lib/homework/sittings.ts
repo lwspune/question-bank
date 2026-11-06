@@ -36,6 +36,12 @@ function dateKey(label: string): number {
   if (cet && MONTHS.includes(cet[2])) {
     return at(Number(cet[3]), MONTHS.indexOf(cet[2]), cet[1] ? Number(cet[1]) : 0, Number(cet[4]));
   }
+  // JEE Mains (2026-11-06): a 2021 paper has no date, so it sorts in its year by
+  // its number; a 2022-2025 day holds both shifts, so it sits at shift 0.
+  const jee2021 = /^(\d{4}) Paper (\d{1,2})$/.exec(label);
+  if (jee2021) return at(Number(jee2021[1]), 0, Number(jee2021[2]));
+  const day = /^(\d{1,2}) ([A-Z][a-z]{2}) (\d{4})$/.exec(label);
+  if (day && MONTHS.includes(day[2])) return at(Number(day[3]), MONTHS.indexOf(day[2]), Number(day[1]));
   const paper = /^([A-Z][a-z]{2}) (\d{4})$/.exec(label);
   const month = paper ? MONTHS.indexOf(paper[1]) : -1;
   if (!paper || month < 0) throw new Error(`cannot date sitting "${label}"`);
@@ -128,4 +134,32 @@ export function sscTier2SittingLabel(note: string | null): string {
   const m = found ? MONTHS.find((x) => found[2].startsWith(x)) : undefined;
   if (!found || !m) throw new Error(`cannot read the SSC Tier II paper in "${note}"`);
   return `${Number(found[1])} ${m} ${found[3]} Tier II`;
+}
+
+/**
+ * A JEE Mains sitting's label (2026-11-06), from a row's year and note. The bank
+ * stores 2026 per shift ("2 Apr 2026 Shift 1" -> "2 Apr 2026 S1"), 2022-2025 one
+ * file per DAY with both shifts together ("14 June 2022", "JEE Mains 2022 - 25 June"
+ * -> "14 Jun 2022"), and 2021 as numbered papers with no date ("Paper 7",
+ * "2021 Compilation Paper 13" -> "2021 Paper 13"). Anything else is an error,
+ * never a guess (the year-only Allen reprints of 2012-2020 among them).
+ */
+export function jeeSittingLabel(year: number, note: string | null): string {
+  if (!note) throw new Error(`no note on a ${year} JEE Mains row`);
+  const n = note.trim();
+  const monthOf = (word: string) => MONTHS.find((x) => word.startsWith(x));
+  const shift = /^(\d{1,2}) ([A-Za-z]+) (\d{4}) Shift ([12])$/.exec(n);
+  const day = /^(\d{1,2}) ([A-Za-z]+) (\d{4})$/.exec(n) ?? (() => {
+    const m = /^JEE Mains (\d{4}) \S+ (\d{1,2}) ([A-Za-z]+)$/.exec(n);
+    return m ? [m[0], m[2], m[3], m[1]] : null;
+  })();
+  const paper = /^(?:(\d{4}) )?(?:Compilation )?Paper (\d{1,2})$/.exec(n);
+  if (shift || day) {
+    const [, d, mon, y] = (shift ?? day)!;
+    const m = monthOf(mon);
+    if (!m || Number(y) !== year) throw new Error(`cannot read the JEE sitting in "${note}" on a ${year} row`);
+    return `${Number(d)} ${m} ${y}${shift ? ` S${shift[4]}` : ""}`;
+  }
+  if (paper && year === 2021 && (!paper[1] || Number(paper[1]) === year)) return `${year} Paper ${Number(paper[2])}`;
+  throw new Error(`cannot read the JEE sitting in "${note}" on a ${year} row`);
 }

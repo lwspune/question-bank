@@ -8,9 +8,11 @@
  *   - a written question is MARKED by Understood / Review later (`self_mark`,
  *     or the drill's `answer_wrong` / `answer_correct` for the same question);
  *     opening its model answer alone is not a mark;
- *   - an MCQ or numeric question is marked once its answer is revealed or an
- *     option picked (`question_practiced`, or a drill row). Those have no
- *     buttons, so the reveal is the only act there is.
+ *   - an MCQ is marked once its answer is revealed or an option picked
+ *     (`question_practiced`, or a drill row). It has no buttons, so the reveal
+ *     is the only act there is;
+ *   - a numeric question (JEE Section B, 2026-11-06) is marked like a written
+ *     one: the readers show it as written, with Understood / Review later.
  * A mark made anywhere counts (the bank, /board, the drill): it is the same
  * question. "To review" is the drill's own rule (lib/drill/select
  * questionState), so the plan page and the drill cannot disagree.
@@ -56,7 +58,7 @@ const byTime = (a: ProgressEvent, b: ProgressEvent) => (a.at < b.at ? -1 : a.at 
 
 /** One question's mark from everything recorded about it. */
 export function markOf(format: QuestionFormat, events: readonly ProgressEvent[]): QuestionMark {
-  if (format !== "subjective") return events.length > 0 ? "answered" : null;
+  if (format === "mcq") return events.length > 0 ? "answered" : null;
   let mark: QuestionMark = null;
   for (const e of [...events].sort(byTime)) {
     if (e.kind === "self_mark" && e.mark) mark = e.mark;

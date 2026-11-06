@@ -47,6 +47,10 @@ describe("planWording", () => {
     expect(planWording("SSC CGL Tier II")).toEqual({ asker: "SSC", questions: "past questions", papers: "Past", answers: "worked solutions" });
   });
 
+  it("names NTA and past questions for JEE Mains, which no board sets", () => {
+    expect(planWording("JEE Mains")).toEqual({ asker: "NTA", questions: "past questions", papers: "Past", answers: "worked solutions" });
+  });
+
   it("names SSC and past questions for SSC CGL", () => {
     expect(planWording("SSC CGL")).toEqual({ asker: "SSC", questions: "past questions", papers: "Past", answers: "worked solutions" });
   });

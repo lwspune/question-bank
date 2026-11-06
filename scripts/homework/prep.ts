@@ -6,7 +6,9 @@
 // so is an NDA paper (--exam="NDA": "NDA 1 2024"), labelled by ndaSittingLabel,
 // an MHT-CET shift (--exam="MHT-CET": "10 May 2023 S1"), by cetSittingLabel,
 // a CDS paper (--exam="CDS": "CDS 1 2024"), by cdsSittingLabel, and an SSC CGL
-// shift (--exam="SSC CGL": "14 Jul 2023 S3", up to four a day), by sscSittingLabel.
+// shift (--exam="SSC CGL": "14 Jul 2023 S3", up to four a day), by sscSittingLabel, and
+// a JEE Mains sitting (--exam="JEE Mains": "2 Apr 2026 S1", a 2022-2025 day "14 Jun 2022",
+// a 2021 paper "2021 Paper 7"), by jeeSittingLabel.
 // Then the review follows scripts/homework/REVIEW_BRIEF.md, and scripts/homework/assemble.ts builds the plan file.
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
@@ -14,7 +16,7 @@ import { createClient } from "@supabase/supabase-js";
 import { reprintSittings } from "@/lib/homework/reprints";
 import { isHomeworkPassage } from "@/lib/homework/slotContext";
 import { SHIFTS } from "../ssc-cgl/config";
-import { cdsSittingLabel, cetSittingLabel, compareSittings, mhSittingLabel, ndaSittingLabel, sscSittingLabel, sscTier2SittingLabel } from "@/lib/homework/sittings";
+import { cdsSittingLabel, cetSittingLabel, compareSittings, jeeSittingLabel, mhSittingLabel, ndaSittingLabel, sscSittingLabel, sscTier2SittingLabel } from "@/lib/homework/sittings";
 
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 
@@ -39,6 +41,7 @@ async function main() {
   const isCds = examName === "CDS";
   const isSsc = examName === "SSC CGL";
   const isSscT2 = examName === "SSC CGL Tier II";
+  const isJee = examName === "JEE Mains";
   const sittingOf = (r: Row) =>
     isMh
       ? mhSittingLabel(r.pyq_year, r.pyq_month)
@@ -52,7 +55,9 @@ async function main() {
               ? sscSittingLabel(r.pyq_note)
               : isSscT2
                 ? sscTier2SittingLabel(r.pyq_note)
-                : String(r.pyq_year);
+                : isJee
+                  ? jeeSittingLabel(r.pyq_year, r.pyq_note)
+                  : String(r.pyq_year);
   // SSC CGL keeps one row for a question a later shift reprinted; repeats.json
   // names the reprints, so they count as sittings (lib/homework/reprints.ts).
   const reprints = isSsc
@@ -74,6 +79,18 @@ async function main() {
     rows.push(...(data as unknown as Row[]));
     if (data.length < 1000) break;
   }
+  // JEE Mains: the bank's pre-2021 rows are year-only reprints from a coaching
+  // module, with no paper behind them, so they stay out of the plan (2026-11-06).
+  // They are written to left-out.json, which assemble.ts carries into the plan's
+  // exclusions, so the build knows they were left out on purpose.
+  const leftOut: { id: string; reason: string }[] = [];
+  if (isJee) {
+    for (const r of rows.filter((r) => r.pyq_year < 2021)) {
+      leftOut.push({ id: r.id, reason: `a ${r.pyq_year} question reprinted in a coaching module, with no paper or shift` });
+    }
+    rows.splice(0, rows.length, ...rows.filter((r) => r.pyq_year >= 2021));
+    if (leftOut.length) console.log(`left out ${leftOut.length} pre-2021 reprint rows`);
+  }
 
   // A case study = rows of one paper sharing a real passage (not an instruction,
   // including a board section instruction such as Geography's "Give geographical
@@ -85,7 +102,7 @@ async function main() {
     (slots.get(key) ?? slots.set(key, []).get(key)!).push(r);
   }
   const paperOf = (r: Row) =>
-    isMh || isNda || isCet || isSsc || isSscT2 ? sittingOf(r) : /question paper ([\d/A-Z-]+)/.exec(r.pyq_note ?? "")?.[1] ?? r.source_file ?? "?";
+    isMh || isNda || isCet || isSsc || isSscT2 || isJee ? sittingOf(r) : /question paper ([\d/A-Z-]+)/.exec(r.pyq_note ?? "")?.[1] ?? r.source_file ?? "?";
   const slotList = [...slots.values()].map((rs) => {
     rs.sort((a, b) => qnum(a.question_number) - qnum(b.question_number) || (a.question_number ?? "").localeCompare(b.question_number ?? ""));
     const lead = rs[0];
@@ -120,6 +137,7 @@ async function main() {
     writeFileSync(join(out, "evidence", file), md);
     index.push({ chapter: ch, file, slots: list.length });
   }
+  writeFileSync(join(out, "left-out.json"), JSON.stringify(leftOut, null, 1));
   writeFileSync(join(out, "slots.json"), JSON.stringify(slotList.map(({ rs, ...s }) => s), null, 1));
   writeFileSync(join(out, "index.json"), JSON.stringify(index, null, 1));
   const years: Record<string, number> = {};

@@ -7,8 +7,9 @@ const evidence = readFileSync(evidencePath, "utf8");
 const header = /^# [^|]+\| (.+?) \| \d+ items/m.exec(evidence);
 const yearOf = new Map();
 // A sitting: a CBSE year ("2024"), a Maharashtra paper ("Feb 2024"), an NDA or CDS paper ("NDA 1 2024", "CDS 1 2024")
-// or an MHT-CET or SSC CGL shift ("10 May 2023 S1", "May 2021 S1", "14 Jul 2023 S4"; lib/homework/sittings.ts).
-for (const m of evidence.matchAll(/^### ([0-9a-f-]{36}) \| ((?:\d{1,2} )?[A-Z][a-z]{2} \d{4} S[1-4]|\d{4}|[A-Z][a-z]{2} \d{4}|(?:NDA|CDS) [12] \d{4}|\d{1,2} [A-Z][a-z]{2} \d{4} Tier II) \|/gm)) yearOf.set(m[1], m[2]);
+// or an MHT-CET or SSC CGL shift ("10 May 2023 S1", "May 2021 S1", "14 Jul 2023 S4"), or a JEE Mains
+// day or 2021 paper ("14 Jun 2022", "2021 Paper 7"; lib/homework/sittings.ts).
+for (const m of evidence.matchAll(/^### ([0-9a-f-]{36}) \| ((?:\d{1,2} )?[A-Z][a-z]{2} \d{4} S[1-4]|\d{4}|[A-Z][a-z]{2} \d{4}|(?:NDA|CDS) [12] \d{4}|\d{1,2} [A-Z][a-z]{2} \d{4} Tier II|\d{1,2} [A-Z][a-z]{2} \d{4}|\d{4} Paper \d{1,2}) \|/gm)) yearOf.set(m[1], m[2]);
 
 const errors = [];
 let out;
