@@ -24,6 +24,7 @@ const DOWNLOAD_GATES = [
   "src/app/api/export/access/route.ts",
   "src/app/api/export/formula-sheet/route.ts",
   "src/app/browse/page.tsx",
+  "src/app/browse/renderBrowse.tsx",
 ];
 
 const FREE_EXAM_UNLOCK = /\b(examFree|downloadIsFree|formulaSheetIsFree|isFreeExamName)\b/;

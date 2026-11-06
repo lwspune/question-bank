@@ -63,7 +63,9 @@ describe("middleware matcher on www", () => {
     // "/" is the one public page matched (2026-11-06, routeHome): it lets the
     // homepage be CACHED, and its signed-out requests make no auth call.
     // tests/home-middleware.test.ts covers it.
-    for (const p of ["/notes/nda-maths", "/mock/nda-2024-i", "/browse", "/questions/jee-mains/maths/x", "/exams/ipmat-indore"]) {
+    // "/browse" too (2026-11-07): its bare landing is served from cache
+    // (browseLandingRewrite, tests/browse-landing-cache.test.ts).
+    for (const p of ["/notes/nda-maths", "/mock/nda-2024-i", "/questions/jee-mains/maths/x", "/exams/ipmat-indore"]) {
       expect(runsOnWww(p), p).toBe(false);
     }
   });

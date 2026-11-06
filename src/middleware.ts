@@ -1,5 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { routeHome, updateSession } from "@/lib/supabase/middleware";
+import { browseLandingRewrite } from "@/lib/questions/browseLandingRoute";
+import { readCountry } from "@/lib/acquisition/country";
 import {
   INTL_ORIGIN,
   intlHostDecision,
@@ -45,6 +47,19 @@ export async function middleware(request: NextRequest) {
   // The homepage is cached; who sees which copy is decided here (routeHome).
   if (pathname === "/") return routeHome(request);
 
+  // The bare /browse landing is cached for signed-out visitors in India
+  // (browseLandingRewrite); every other /browse request is the live page.
+  if (pathname === "/browse") {
+    const cached = browseLandingRewrite({
+      search,
+      cookieNames: request.cookies.getAll().map((c) => c.name),
+      qbExam: request.cookies.get("qb_exam")?.value,
+      country: readCountry(request.headers),
+      intlHost: isIntlHost(host),
+    });
+    return cached ? NextResponse.rewrite(new URL(cached, request.url)) : NextResponse.next();
+  }
+
   return needsSession(pathname) ? updateSession(request) : NextResponse.next();
 }
 
@@ -62,6 +77,10 @@ export async function middleware(request: NextRequest) {
 // into the site instead of being shown the form (signedInAuthPageRedirect).
 // Both are low-traffic and noindex, so the extra getUser() costs little.
 //
+// "/browse" (2026-11-07) is matched so its bare landing can be served from
+// cache (browseLandingRewrite). No auth call there at all: a sign-in cookie
+// just means the live page.
+//
 // "/" (2026-11-06) is matched so the cached homepage can still send signed-in
 // visitors to their own home and put a signed-out visitor's chosen exam first
 // (routeHome). Signed-out requests make no auth call there.
@@ -77,6 +96,7 @@ export async function middleware(request: NextRequest) {
 export const config = {
   matcher: [
     "/",
+    "/browse",
     "/dashboard",
     "/dashboard/:path*",
     "/account",

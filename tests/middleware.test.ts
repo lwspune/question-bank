@@ -115,7 +115,9 @@ describe("middleware matcher scope", () => {
       // "/" exactly (2026-11-06): the homepage is cached and middleware routes
       // signed-in visitors off it (routeHome). A signed-out request makes no
       // auth call there, and it replaces a full page render per visit.
-      const homepage = entry === "/";
+      // "/browse" exactly (2026-11-07): its bare landing is cached; the
+      // middleware there only reads cookie names (browseLandingRewrite).
+      const homepage = entry === "/" || entry === "/browse";
       expect(
         homepage ||
           intlPage ||
