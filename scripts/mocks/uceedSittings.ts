@@ -1,8 +1,7 @@
 /**
- * UCEED sittings for the mock builder: one Part A mock per year in the bank (2019-2026;
- * 2015-2018 are on hold, scripts/uceed/README.md). Each year has its own blueprint
- * (uceedPaper in src/lib/mocks/blueprints.ts): the section sizes, marking and time
- * changed in 2020, 2022 and 2024.
+ * UCEED sittings for the mock builder: one Part A mock per year in the bank (2015-2026).
+ * Each year has its own blueprint (uceedPaper in src/lib/mocks/blueprints.ts): the section
+ * sizes, marking and time changed in 2016, 2017, 2019, 2020, 2022 and 2024.
  *
  * Grace: IIT Bombay's final key gave every candidate full marks for three 2020 questions
  * ("FULL MARKS"); they carry no key (cancelled_note, migration 0119), so they ride as
@@ -26,7 +25,7 @@ export type UceedSitting = {
 };
 
 /** The years whose Part A is in the bank. */
-export const UCEED_MOCK_YEARS = [2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026] as const;
+export const UCEED_MOCK_YEARS = [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026] as const;
 
 export function deriveUceedSittings(years: readonly number[], cancelled: (year: number) => number[]): UceedSitting[] {
   return [...years]

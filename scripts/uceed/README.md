@@ -17,7 +17,15 @@ nothing is committed on anything else.
 | 2021 | 68 q (18 / 18 / 32) | **PUBLIC 2026-11-04**: 49 rows; 18 MSQ + 1 range held. Q1 key not reproducible from the figure, Q15 two answers (note + grace) |
 | 2020 | 68 q (18 / 18 / 32) | **PUBLIC 2026-11-04**: 50 rows (2 cancelled by IIT Bombay: Q64, Q65); 18 MSQ held |
 | 2019 | 85 q (20 / 20 / 45) | **PUBLIC 2026-11-04**: 65 rows; 20 MSQ held. Q3, Q17 two answers; Q20's key (160) not reproducible from the sketch (note + grace) |
-| 2015-2018 | 2015: 100 (20/30/50) · 2016: 80 (20/20/40) · 2017-18: 85 (20/25/40) | **ON HOLD (owner, 2026-11-04): ingest only after demand for UCEED is evaluated.** Keys transcribed and committed (`data/<year>.key.json`), papers extract cleanly; start at the helper step |
+| 2018 | 85 q (20 / 25 / 40) | **PUBLIC 2026-11-06**: 59 rows; 25 MSQ + 1 range PRIVATE. Q15 from a scanned page and Q55 a bare "55" (`extract.py` PAGE_CLIPS, BARE_OK); Q12, Q19, Q33, Q34, Q45, Q64, Q78, Q84 two answers (note + grace) |
+| 2017 | 85 q (20 / 25 / 40) | **PUBLIC 2026-11-06**: 58 rows; 25 MSQ + 2 range PRIVATE. Q35's statement C is false as printed (ozone), Q42 two answer sets (note + grace) |
+| 2016 | 80 q (20 / 20 / 40) | **PUBLIC 2026-11-06**: 57 rows; 20 MSQ + 3 range PRIVATE. Q6 two answer forms, Q27 no net fits, Q62 and Q75 no option right as printed, Q79 two answers (note + grace) |
+| 2015 | 100 q (20 / 30 / 50) | **PUBLIC 2026-11-06**: 70 rows; 30 MSQ PRIVATE. Q67 dropped by IIT Bombay; Q68, Q76 keys not reproducible from the figure, Q78 two answers (note + grace) |
+
+2015-2018 were drafted by helpers in slices of 25-29 questions and agreed with IIT Bombay's key
+on **82/99, 63/80, 69/85 and 74/85** (2015 excludes its dropped Q67). Every disagreement was settled
+by the main session against the figure; the key stands unless the figure contradicts it (then a
+defect note + grace).
 
 **Blind measurement (2026):** a helper solving from questions + figures alone agreed with IIT
 Bombay's key on **53 of 57** (NAT 14/14, MSQ 14/15, MCQ 25/28), and on **29 of 29** of the answers
@@ -44,24 +52,17 @@ no model solution exists (section 17.2), so there is nothing to show under it.
   3. **Takedown on request.** A figure can be removed by flipping its question PRIVATE; the
      text stays in the bank.
 
-## Held rows
+## Multiple-select and range rows
 
-`planPaper` (lib.ts) HOLDS two kinds of row, keeps them in the transcription, and never
-writes them, because the bank cannot store them today:
+Since migration 0214 the bank stores both: MSQ as `question_format = 'msq'` (one or more correct
+options) and a NAT keyed as a range in `numeric_answer` + `numeric_answer_max`. They are committed
+like any other row but stay **PRIVATE until the MSQ code is deployed**:
+`publish.ts <year> --skip-msq --apply` publishes only the MCQ and exact-NAT rows; after the deploy,
+`publish.ts <year> --apply` (no flag) publishes the rest. Mock marking per year, including each
+MSQ scheme, is `uceedPaper` in src/lib/mocks/blueprints.ts.
 
-- **MSQ** (multiple-select, 15 a paper since 2024): `question_format` is `mcq | subjective |
-  numeric` and every grader assumes one correct option. Needs a format, a per-year marking
-  scheme (2015: no partial, no negative; 2019: negative; 2024+: partial +1/+2/+3, -1), a tick-box
-  mock runner and keys in the downloads.
-- **NAT keyed as a range** (2026 Q14: 470-480): `numeric_answer` holds one exact value.
-
-A held row's transcription is checked like any other, but its classification and solution may
-wait: where a helper's blind answer disagrees with the key on a held row, the merge leaves the
-solution empty and `commit.ts` lists the row as `unsettled`. Settle those (figure + key) when MSQ
-ships, before anything else.
-
-One MSQ key gives **two** accepted answers (2026 Q18: "B,C or B,C,D"); `key.json` records both
-sets so the MSQ build can grade either as full marks.
+An MSQ key that accepts **two** sets (2026 Q18: "B,C or B,C,D") stores the first; the row opens
+its solution with a note and rides as grace in mocks.
 
 ## Method
 

@@ -67,8 +67,44 @@ describe("uceedPaper: Part A as each year's paper prints it", () => {
     }
   });
 
-  it("has no paper before 2019 (those years are not in the bank)", () => {
-    expect(() => uceedPaper(2018)).toThrow();
+  it("2015: 20 NAT +3/-1, 30 MSQ +3 all-or-nothing with no penalty, 50 MCQ +3/-1, 3 hours, 300 marks", () => {
+    const bp = uceedPaper(2015);
+    expect(bp.durationSecs).toBe(180 * 60);
+    expect(bp.sections.map((s) => [s.key, s.count, s.marking, s.msqScheme])).toEqual([
+      ["nat", 20, { correct: 3, wrong: -1 }, undefined],
+      ["msq", 30, { correct: 3, wrong: 0 }, "exact"],
+      ["mcq", 50, { correct: 3, wrong: -1 }, undefined],
+    ]);
+    expect(totalMarks(bp)).toBe(300);
+  });
+
+  it("2016: 20 NAT +4/-1, 20 MSQ +5/-0.5 all-or-nothing, 40 MCQ +3/-1, 300 marks", () => {
+    const bp = uceedPaper(2016);
+    expect(bp.durationSecs).toBe(180 * 60);
+    expect(bp.sections.map((s) => [s.key, s.count, s.marking, s.msqScheme])).toEqual([
+      ["nat", 20, { correct: 4, wrong: -1 }, undefined],
+      ["msq", 20, { correct: 5, wrong: -0.5 }, "exact"],
+      ["mcq", 40, { correct: 3, wrong: -1 }, undefined],
+    ]);
+    expect(totalMarks(bp)).toBe(300);
+  });
+
+  it("2017 and 2018: 20 NAT +4, 25 MSQ +4 all-or-nothing, neither penalised; 40 MCQ +3/-1; 300 marks", () => {
+    for (const y of [2017, 2018]) {
+      const bp = uceedPaper(y);
+      expect(bp.durationSecs).toBe(180 * 60);
+      expect(bp.sections.map((s) => [s.key, s.count, s.marking, s.msqScheme])).toEqual([
+        ["nat", 20, { correct: 4, wrong: 0 }, undefined],
+        ["msq", 25, { correct: 4, wrong: 0 }, "exact"],
+        ["mcq", 40, { correct: 3, wrong: -1 }, undefined],
+      ]);
+      expect(totalMarks(bp)).toBe(300);
+    }
+  });
+
+  it("has no paper before 2015 or after 2026", () => {
+    expect(() => uceedPaper(2014)).toThrow();
+    expect(() => uceedPaper(2027)).toThrow();
   });
 });
 

@@ -19,9 +19,9 @@ describe("UCEED sittings: one Part A mock per year in the bank", () => {
     expect(s.graceNumbers).toEqual([36, 64, 65]);
   });
 
-  it("reads 2019 to 2026 from the committed keys, with 2020's three cancellations", () => {
+  it("reads 2015 to 2026 from the committed keys, with 2020's three cancellations", () => {
     const all = uceedSittings();
-    expect(all.map((s) => s.year)).toEqual([2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]);
+    expect(all.map((s) => s.year)).toEqual([2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]);
     expect(all.find((s) => s.year === 2020)?.graceNumbers).toEqual([36, 64, 65]);
   });
 });

@@ -967,32 +967,41 @@ export const UCEED_SUBJECTS = [
  * same 68-question layout. 2025's text layer is clipped; its layout matches 2024 and 2026.
  * NAT is never penalised.
  */
+type UceedMarking = { correct: number; wrong: number };
+type UceedYear = {
+  minutes: number;
+  nat: [count: number, marking: UceedMarking];
+  msq: [count: number, marking: UceedMarking, scheme: MsqScheme];
+  mcq: [count: number, marking: UceedMarking];
+};
+
+/** Each year's Part A as its paper's instructions print it (2015-2018 read 2026-11-06). */
+function uceedYear(year: number): UceedYear {
+  const m = (correct: number, wrong: number): UceedMarking => ({ correct, wrong });
+  if (year === 2015) return { minutes: 180, nat: [20, m(3, -1)], msq: [30, m(3, 0), "exact"], mcq: [50, m(3, -1)] };
+  if (year === 2016) return { minutes: 180, nat: [20, m(4, -1)], msq: [20, m(5, -0.5), "exact"], mcq: [40, m(3, -1)] };
+  if (year === 2017 || year === 2018) return { minutes: 180, nat: [20, m(4, 0)], msq: [25, m(4, 0), "exact"], mcq: [40, m(3, -1)] };
+  if (year === 2019) return { minutes: 180, nat: [20, m(3, 0)], msq: [20, m(3, -0.19), "exact"], mcq: [45, m(4, -1.32)] };
+  if (year === 2020 || year === 2021) return { minutes: 150, nat: [18, m(4, 0)], msq: [18, m(4, -0.19), "exact"], mcq: [32, m(3, -0.71)] };
+  if (year === 2022 || year === 2023) return { minutes: 150, nat: [18, m(4, 0)], msq: [18, m(4, -1), "partial"], mcq: [32, m(3, -0.71)] };
+  if (year >= 2024 && year <= 2026) return { minutes: 120, nat: [14, m(4, 0)], msq: [15, m(4, -1), "partial"], mcq: [28, m(3, -0.71)] };
+  throw new Error(`No UCEED Part A blueprint for ${year}`);
+}
+
 export function uceedPaper(year: number): MockPaperBlueprint {
-  if (year < 2019 || year > 2026) throw new Error(`No UCEED Part A blueprint for ${year}`);
-  const [nat, msq, mcq] = year === 2019 ? [20, 20, 45] : year <= 2023 ? [18, 18, 32] : [14, 15, 28];
-  const mcqMarking = year === 2019 ? { correct: 4, wrong: -1.32 } : { correct: 3, wrong: -0.71 };
-  const natMarks = year === 2019 ? 3 : 4;
-  const partial = year >= 2022;
+  const y = uceedYear(year);
   const subjects = [...UCEED_SUBJECTS];
   return {
     code: "part-a",
     examName: "UCEED",
     examSlug: "uceed",
     paperLabel: "Part A",
-    durationSecs: (year === 2019 ? 180 : year <= 2023 ? 150 : 120) * 60,
-    marking: mcqMarking,
+    durationSecs: y.minutes * 60,
+    marking: y.mcq[1],
     sections: [
-      { key: "nat", label: "Numerical answer", subjects, formats: ["numeric"], count: nat, marking: { correct: natMarks, wrong: 0 } },
-      {
-        key: "msq",
-        label: "Multiple select",
-        subjects,
-        formats: ["msq"],
-        count: msq,
-        marking: { correct: natMarks, wrong: partial ? -1 : -0.19 },
-        msqScheme: partial ? "partial" : "exact",
-      },
-      { key: "mcq", label: "Multiple choice", subjects, formats: ["mcq"], count: mcq, marking: mcqMarking },
+      { key: "nat", label: "Numerical answer", subjects, formats: ["numeric"], count: y.nat[0], marking: y.nat[1] },
+      { key: "msq", label: "Multiple select", subjects, formats: ["msq"], count: y.msq[0], marking: y.msq[1], msqScheme: y.msq[2] },
+      { key: "mcq", label: "Multiple choice", subjects, formats: ["mcq"], count: y.mcq[0], marking: y.mcq[1] },
     ],
   };
 }
