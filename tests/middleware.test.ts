@@ -112,8 +112,13 @@ describe("middleware matcher scope", () => {
       // A plain entry is a signed-in surface, or an intl page www must move
       // (lib/sites/intl; tests/intl-middleware.test.ts checks those in full).
       const intlPage = entry === "/intl" || entry.startsWith("/intl/") || /imat/.test(entry);
+      // "/" exactly (2026-11-06): the homepage is cached and middleware routes
+      // signed-in visitors off it (routeHome). A signed-out request makes no
+      // auth call there, and it replaces a full page render per visit.
+      const homepage = entry === "/";
       expect(
-        intlPage ||
+        homepage ||
+          intlPage ||
           AUTH_PAGES.includes(entry) ||
           AUTH_PREFIXES.some(
             (p) => entry === p || entry.startsWith(p + "/")

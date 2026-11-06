@@ -1,13 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import AppHeader from "@/components/AppHeader";
 import Footer from "@/components/Footer";
-import { Button } from "@/components/ui/button";
-import { getSessionUser } from "@/lib/auth";
-import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { getOwnProfile } from "@/lib/profile/service";
-import { normaliseFrom } from "@/lib/tutor/interest";
-import TutorInterestForm from "./TutorInterestForm";
+import TutorGate from "./TutorGate";
 
 /**
  * The 1:1 tutoring interest check (owner, 2026-10-27; migration 0190): a few
@@ -23,15 +17,11 @@ export const metadata: Metadata = {
   alternates: { canonical: "/tutor" },
 };
 
-export const dynamic = "force-dynamic";
+// Cached (2026-11-06): the page reads nothing about the visitor; TutorGate asks
+// from the browser. Crawlers fetched it ~2.7K times a day as a fresh render.
+export const revalidate = 86400;
 
-export default async function TutorPage(props: { searchParams: Promise<{ from?: string }> }) {
-  const searchParams = await props.searchParams;
-  const user = await getSessionUser();
-  const profile = user ? await getOwnProfile(createSupabaseServerClient(), user.id) : null;
-  const from = normaliseFrom(searchParams.from);
-  const here = encodeURIComponent(from ? `/tutor?from=${from}` : "/tutor");
-
+export default function TutorPage() {
   return (
     <>
       <AppHeader />
@@ -42,24 +32,7 @@ export default async function TutorPage(props: { searchParams: Promise<{ from?: 
             We are thinking of adding one-to-one tutoring. A few quick taps tell us whether to build it.
           </p>
         </header>
-        {user ? (
-          <TutorInterestForm hasMobile={!!profile?.mobile} hasCity={!!profile?.city} />
-        ) : (
-          <section className="mt-6 rounded-xl border bg-card p-6 text-center">
-            <h2 className="text-lg font-semibold">Sign in to answer</h2>
-            <p className="mx-auto mt-2 max-w-sm text-sm leading-relaxed text-muted-foreground">
-              We ask you to sign in so we can tell you if 1:1 tutoring opens.
-            </p>
-            <div className="mt-5 grid gap-3">
-              <Button asChild variant="brand" className="h-12 w-full text-base">
-                <Link href={`/login?next=${here}`}>Sign in</Link>
-              </Button>
-              <Button asChild variant="outline" className="h-12 w-full text-base">
-                <Link href={`/signup?next=${here}`}>Create a free account</Link>
-              </Button>
-            </div>
-          </section>
-        )}
+        <TutorGate />
       </main>
       <Footer />
     </>
