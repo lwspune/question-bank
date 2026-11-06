@@ -50,6 +50,7 @@ export function footerLinks(): FooterGroup[] {
         { href: "/questions", label: "Questions by chapter" },
         { href: "/mock", label: "Mock tests" },
         { href: "/board", label: "Board textbook reader" },
+        { href: "/question-papers", label: "Board past papers" },
         { href: "/homework", label: "Daily homework" },
         // Learn left the nav for Homework (2026-11-04); a signed-out reader has
         // no account menu, so this is their way to the lessons.
