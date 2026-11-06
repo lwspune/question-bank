@@ -5,6 +5,7 @@ import { getSessionSuperadmin } from "@/lib/auth";
 import { AUDIENCES, WATCH_LIST } from "@/lib/competitors";
 import AudienceView, { linkClass } from "./AudienceView";
 import WatchListView from "./WatchListView";
+import BackToDashboard from "@/app/dashboard/BackToDashboard";
 
 /**
  * /dashboard/competitors: the competitor analysis, one audience at a time.
@@ -29,6 +30,7 @@ export default async function CompetitorsPage(props: { searchParams: Promise<{ a
     <>
       <AppHeader />
       <main className="mx-auto max-w-5xl space-y-6 px-4 py-8 sm:px-6">
+        <BackToDashboard />
         <header>
           <h1 className="text-2xl font-semibold tracking-tight">Competitors</h1>
           <p className="mt-1 text-sm text-muted-foreground">

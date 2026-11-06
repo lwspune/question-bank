@@ -29,6 +29,7 @@ import {
   type SalesTotals,
 } from "@/lib/sales/summary";
 import { cn } from "@/lib/utils";
+import BackToDashboard from "@/app/dashboard/BackToDashboard";
 
 export const dynamic = "force-dynamic";
 
@@ -221,6 +222,7 @@ export default async function SalesPage(props: { searchParams?: Promise<{ view?:
     <>
       <AppHeader />
       <main className="mx-auto max-w-5xl space-y-6 px-4 py-8 sm:px-6">
+        <BackToDashboard />
         <header>
           <h1 className="text-2xl font-semibold tracking-tight">Sales</h1>
           <p className="mt-1 text-sm text-muted-foreground">

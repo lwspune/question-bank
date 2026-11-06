@@ -5,6 +5,7 @@ import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { readGradingOverview, type OverviewRow } from "@/lib/answerSheets/grader";
 import { OVERDUE_HOURS } from "@/lib/answerSheets/emails";
 import { cn } from "@/lib/utils";
+import BackToDashboard from "@/app/dashboard/BackToDashboard";
 
 export const dynamic = "force-dynamic";
 
@@ -32,6 +33,7 @@ export default async function AnswerSheetsQueuePage() {
     <>
       <AppHeader />
       <main className="mx-auto max-w-4xl space-y-6 px-6 py-8">
+        <BackToDashboard />
         <header>
           <h1 className="text-2xl font-semibold tracking-tight">Answer sheets</h1>
           <p className="mt-1 text-sm text-muted-foreground">

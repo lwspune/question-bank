@@ -9,6 +9,7 @@ import { getExamBySlug } from "@/lib/exam/examContext";
 import { formatMobile } from "@/lib/students/roster";
 import { whatsappHref } from "@/lib/profile/mobile";
 import { EXPERIMENTS, TUTOR_STUDENT_YES_KEEP, checkOn } from "@/lib/growth/registry";
+import BackToDashboard from "@/app/dashboard/BackToDashboard";
 
 export const dynamic = "force-dynamic";
 
@@ -40,6 +41,7 @@ export default async function TutorInterestPage() {
     <>
       <AppHeader />
       <main className="mx-auto max-w-5xl space-y-6 px-4 py-8 sm:px-6">
+        <BackToDashboard />
         <header>
           <h1 className="text-2xl font-semibold tracking-tight">Tutor interest</h1>
           <p className="mt-1 text-sm text-muted-foreground">

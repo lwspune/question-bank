@@ -4,6 +4,7 @@ import AppHeader from "@/components/AppHeader";
 import StatCard from "@/app/dashboard/StatCard";
 import { getQuizPoolStats, listAssembledQuizzes, countAssembledQuizzes } from "@/lib/quiz/admin";
 import QuizBrowser from "./QuizBrowser";
+import BackToDashboard from "@/app/dashboard/BackToDashboard";
 
 export const dynamic = "force-dynamic";
 
@@ -21,6 +22,7 @@ export default async function QuizzesPage() {
     <>
       <AppHeader />
       <main className="mx-auto max-w-4xl space-y-6 overflow-x-hidden px-6 py-8">
+        <BackToDashboard />
         <header>
           <h1 className="text-2xl font-semibold tracking-tight">Daily Quizzes</h1>
           <p className="mt-1 text-sm text-muted-foreground">

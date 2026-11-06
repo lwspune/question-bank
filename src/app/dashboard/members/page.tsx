@@ -6,6 +6,7 @@ import { listMembers } from "@/lib/members/admin";
 import { listBranches } from "@/lib/branches/admin";
 import { splitBranches } from "@/lib/branches/validate";
 import MembersClient from "./MembersClient";
+import BackToDashboard from "@/app/dashboard/BackToDashboard";
 
 export const dynamic = "force-dynamic";
 
@@ -26,6 +27,7 @@ export default async function MembersPage() {
     <>
       <AppHeader />
       <main className="mx-auto max-w-4xl space-y-6 px-6 py-8">
+        <BackToDashboard />
         <header>
           <h1 className="text-2xl font-semibold tracking-tight">Members</h1>
           <p className="mt-1 text-sm text-muted-foreground">

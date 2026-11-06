@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { AlertTriangle, ChevronRight } from "lucide-react";
+import { AlertTriangle } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import StatCard from "@/app/dashboard/StatCard";
+import BackToDashboard from "@/app/dashboard/BackToDashboard";
 import KatexRenderer from "@/components/math/KatexRenderer";
 import { getSessionSuperadmin } from "@/lib/auth";
 import { loadItemStatOverview } from "@/lib/itemStats/admin";
@@ -49,13 +50,7 @@ export default async function ItemStatsPage(
     <>
       <AppHeader />
       <main className="mx-auto max-w-6xl p-8">
-        <nav className="mb-2 flex items-center gap-1 text-sm text-muted-foreground">
-          <Link href="/dashboard" className="hover:text-foreground">
-            Dashboard
-          </Link>
-          <ChevronRight className="h-3.5 w-3.5" aria-hidden />
-          <span className="text-foreground">Item statistics</span>
-        </nav>
+        <BackToDashboard />
 
         <h1 className="text-2xl font-semibold tracking-tight">Item statistics</h1>
         <p className="mt-1 max-w-3xl text-sm text-muted-foreground">

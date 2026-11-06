@@ -4,6 +4,7 @@ import AppHeader from "@/components/AppHeader";
 import { listAllPlans, readPaywallSettings } from "@/lib/billing/admin";
 import PricingAdminClient from "./PricingAdminClient";
 import { EMPTY_PAYWALL_SETTINGS } from "@/lib/billing/paywallSettings";
+import BackToDashboard from "@/app/dashboard/BackToDashboard";
 
 export const dynamic = "force-dynamic";
 
@@ -23,6 +24,7 @@ export default async function PricingAdminPage() {
     <>
       <AppHeader />
       <main className="mx-auto max-w-4xl space-y-6 px-6 py-8">
+        <BackToDashboard />
         <header>
           <h1 className="text-2xl font-semibold tracking-tight">Pricing</h1>
           <p className="mt-1 text-sm text-muted-foreground">

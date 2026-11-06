@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
-import { ArrowLeft, BookOpen, MessageSquare } from "lucide-react";
+import { BookOpen, MessageSquare } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
+import BackToDashboard from "@/app/dashboard/BackToDashboard";
 import { getSessionMember } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { listConceptReports } from "@/lib/notes-reports/listConceptReports";
@@ -50,14 +51,8 @@ export default async function ConceptReportsTriagePage(
       <AppHeader />
       <main className="mx-auto max-w-5xl space-y-6 px-4 py-8 sm:px-6">
         <div>
-          <Link
-            href="/dashboard"
-            className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground"
-          >
-            <ArrowLeft className="h-3 w-3" aria-hidden />
-            Back to dashboard
-          </Link>
-          <h1 className="mt-3 flex items-center gap-2 text-2xl font-semibold tracking-tight">
+          <BackToDashboard />
+          <h1 className="flex items-center gap-2 text-2xl font-semibold tracking-tight">
             <BookOpen className="h-5 w-5 text-brand-accent" aria-hidden />
             Concept reports
           </h1>
