@@ -35,6 +35,13 @@ when they lead to the same result.
   [[3,1],[5,2]] is" -> numbers.
   NOT numbers: a trick question whose numbers make it special (two rows proportional so any k works,
   a matrix that is its own inverse); call that similar at most.
+  Word problems whose situation shapes the setup (Bayes causes, what is drawn from what, committees,
+  arrangements, solvers and truth-tellers): numbers only when the SITUATION is the same too (machines
+  and defective items with other percentages; balls drawn from a bag with other counts). The same
+  structure in a different situation (a car-rental Bayes question against a bolt-factory one; cards
+  against a committee; letters of a word against people in a row) is similar: "new numbers" promises
+  the student it is the same question. Where the situation is only a label on given data (variance of
+  a list of marks or of patients; comparing CVs from given means and SDs), it does not matter.
 - **similar**: the same SPECIFIC task with different data, where one worked example teaches both.
   Narrow: you could write it in one line such as "value of k for which a 3x3 system has no unique
   solution", "det of kA given det A for a 3x3 A", "split a matrix into symmetric and skew-symmetric
