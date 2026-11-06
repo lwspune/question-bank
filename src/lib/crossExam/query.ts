@@ -8,13 +8,13 @@
  * never `is_correct`: the answer stays behind the practice link, where the
  * free daily answer limit applies.
  *
- * Two PostgREST limits (CLAUDE.md pitfalls): `.in()` puts ids in the URL, so
- * sources go in chunks; and a result stops at 1000 rows without an error, so
- * each chunk is paged.
+ * Both PostgREST limits (ids in the URL, the silent 1000-row cap) are handled
+ * by readInChunks.
  */
 import type { SupabaseClient } from "@supabase/supabase-js";
 import type { Database } from "@/types/db";
 import { twinPaper } from "@/lib/crossExam/paper";
+import { readInChunks } from "@/lib/supabase/readInChunks";
 import type { TwinKind, TwinLink } from "@/lib/crossExam/summary";
 
 export type TwinTarget = {
@@ -35,36 +35,25 @@ export type QuestionTwins = {
   targets: Record<string, TwinTarget>;
 };
 
-const CHUNK = 150;
-const PAGE = 1000;
-
 const SELECT =
   "source_question_id, kind, target:questions!exam_twins_target_question_id_fkey(id, text, context, image_url, pyq_year, pyq_month, pyq_note, exam_id, subject_id, chapter_id, exam:exams(name), chapter:chapters(name), options(label, text))";
 
 export async function getTwinsForQuestions(client: SupabaseClient<Database>, sourceIds: string[]): Promise<QuestionTwins> {
   const out: QuestionTwins = { links: {}, targets: {} };
-  const ids = Array.from(new Set(sourceIds));
-  for (let i = 0; i < ids.length; i += CHUNK) {
-    const chunk = ids.slice(i, i + CHUNK);
-    for (let from = 0; ; from += PAGE) {
-      const { data, error } = await page(client, chunk, from);
-      if (error) throw new Error(`exam twins query: ${error.message}`);
-      const rows = data ?? [];
-      for (const r of rows) add(out, r);
-      if (rows.length < PAGE) break;
-    }
-  }
+  // (source, target) is the primary key, so the order is unique, as paging needs.
+  const rows = await readInChunks(sourceIds, (ids, from, to) => page(client, ids, from, to));
+  for (const r of rows) add(out, r);
   return out;
 }
 
-function page(client: SupabaseClient<Database>, chunk: string[], from: number) {
+function page(client: SupabaseClient<Database>, ids: string[], from: number, to: number) {
   return client
     .from("exam_twins")
     .select(SELECT)
-    .in("source_question_id", chunk)
+    .in("source_question_id", ids)
     .order("source_question_id")
     .order("target_question_id")
-    .range(from, from + PAGE - 1);
+    .range(from, to);
 }
 
 type Row = NonNullable<Awaited<ReturnType<typeof page>>["data"]>[number];
