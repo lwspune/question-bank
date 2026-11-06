@@ -1,15 +1,15 @@
 import { describe, expect, it } from "vitest";
-import { toReportRows } from "@/lib/reports/listReports";
+import { toReportRows, type RawReportRow } from "@/lib/reports/listReports";
 
 // The triage page showed "(question deleted)" on EVERY report from 2026-05-18
 // to 2026-11-06: the mapper read the question embed as an array, and PostgREST
 // returns a many-to-one embed (question_reports.question_id -> questions) as a
 // single OBJECT. These fixtures use that real shape.
-const base = {
+const base: Omit<RawReportRow, "questions"> = {
   id: "r1",
   question_id: "q1",
   reported_by: "u1",
-  category: "incorrect_solution",
+  category: "incorrect-solution",
   details: "the sign is wrong",
   status: "open",
   created_at: "2026-11-05T04:25:00Z",
