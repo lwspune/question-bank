@@ -51,9 +51,9 @@ export default async function ActivityShapePage() {
         <header>
           <h1 className="text-2xl font-semibold tracking-tight">Usage shape</h1>
           <p className="mt-1 text-sm text-muted-foreground">
-            How signed-in students actually use the app, from the activity spine. We read this{" "}
-            <span className="font-medium">before</span> building any engagement mechanic — daily
-            streaks misfire on burst-shaped usage. Window: last {shape.windowDays} days.
+            How signed-in students actually use the app, from the activity spine. Read it before
+            adding or changing an engagement mechanic: daily streaks misfire on burst-shaped usage.
+            Window: last {shape.windowDays} days.
           </p>
         </header>
 
