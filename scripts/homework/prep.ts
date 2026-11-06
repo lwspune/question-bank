@@ -16,7 +16,7 @@ import { createClient } from "@supabase/supabase-js";
 import { reprintSittings } from "@/lib/homework/reprints";
 import { isHomeworkPassage } from "@/lib/homework/slotContext";
 import { SHIFTS } from "../ssc-cgl/config";
-import { cdsSittingLabel, cetSittingLabel, compareSittings, jeeSittingLabel, mhSittingLabel, ndaSittingLabel, sscSittingLabel, sscTier2SittingLabel } from "@/lib/homework/sittings";
+import { compareSittings, sittingFor, sscSittingLabel } from "@/lib/homework/sittings";
 
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 
@@ -38,26 +38,10 @@ async function main() {
   const isMh = examName.startsWith("Maharashtra");
   const isNda = examName === "NDA";
   const isCet = examName === "MHT-CET";
-  const isCds = examName === "CDS";
   const isSsc = examName === "SSC CGL";
   const isSscT2 = examName === "SSC CGL Tier II";
   const isJee = examName === "JEE Mains";
-  const sittingOf = (r: Row) =>
-    isMh
-      ? mhSittingLabel(r.pyq_year, r.pyq_month)
-      : isNda
-        ? ndaSittingLabel(r.pyq_year, r.pyq_month)
-        : isCds
-          ? cdsSittingLabel(r.pyq_year, r.pyq_month)
-          : isCet
-            ? cetSittingLabel(r.pyq_year, r.pyq_month, r.pyq_note)
-            : isSsc
-              ? sscSittingLabel(r.pyq_note)
-              : isSscT2
-                ? sscTier2SittingLabel(r.pyq_note)
-                : isJee
-                  ? jeeSittingLabel(r.pyq_year, r.pyq_note)
-                  : String(r.pyq_year);
+  const sittingOf = (r: Row) => sittingFor(examName, r);
   // SSC CGL keeps one row for a question a later shift reprinted; repeats.json
   // names the reprints, so they count as sittings (lib/homework/reprints.ts).
   const reprints = isSsc

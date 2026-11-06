@@ -163,3 +163,23 @@ export function jeeSittingLabel(year: number, note: string | null): string {
   if (paper && year === 2021 && (!paper[1] || Number(paper[1]) === year)) return `${year} Paper ${Number(paper[2])}`;
   throw new Error(`cannot read the JEE sitting in "${note}" on a ${year} row`);
 }
+
+/**
+ * A row's sitting label for the exam its plan belongs to (2026-11-06): the one
+ * dispatch prep.ts and the new-question tool (homework:new) share, so a new
+ * paper is labelled exactly as the plan's existing sittings are. A board or
+ * CBSE plan counts YEARS; every other exam counts papers or shifts.
+ */
+export function sittingFor(
+  examName: string,
+  r: { pyq_year: number; pyq_month: string | null; pyq_note: string | null }
+): string {
+  if (examName.startsWith("Maharashtra")) return mhSittingLabel(r.pyq_year, r.pyq_month);
+  if (examName === "NDA") return ndaSittingLabel(r.pyq_year, r.pyq_month);
+  if (examName === "CDS") return cdsSittingLabel(r.pyq_year, r.pyq_month);
+  if (examName === "MHT-CET") return cetSittingLabel(r.pyq_year, r.pyq_month, r.pyq_note);
+  if (examName === "SSC CGL") return sscSittingLabel(r.pyq_note);
+  if (examName === "SSC CGL Tier II") return sscTier2SittingLabel(r.pyq_note);
+  if (examName === "JEE Mains") return jeeSittingLabel(r.pyq_year, r.pyq_note);
+  return String(r.pyq_year);
+}
