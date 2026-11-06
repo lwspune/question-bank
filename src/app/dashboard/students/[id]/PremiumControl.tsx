@@ -18,8 +18,8 @@ import {
 import { SCOPE_ALL } from "@/lib/entitlements/access";
 import {
   COMP_SCOPE_OPTIONS,
-  canRevokeFromProfile,
   compExpiryIso,
+  isPaidGrant,
   type ActiveGrant,
 } from "@/lib/entitlements/compGrant";
 
@@ -35,8 +35,9 @@ function fmtDate(iso: string): string {
 }
 
 /**
- * Grant / revoke free premium from a student's profile. Writes through the
- * existing superadmin-only /api/admin/entitlements route (source = comp), then
+ * Grant free premium / revoke any active grant from a student's profile. A paid
+ * (Razorpay) pass gets a stronger confirm: revoking does not refund it. Writes
+ * through the existing superadmin-only /api/admin/entitlements route, then
  * re-renders the dynamic page so the Premium field reflects the change.
  */
 export default function PremiumControl({
@@ -95,6 +96,7 @@ export default function PremiumControl({
   }
 
   const selected = COMP_SCOPE_OPTIONS.find((o) => o.value === scope);
+  const paid = toRevoke ? isPaidGrant(toRevoke) : false;
 
   return (
     <div className="mt-4 space-y-3 border-t pt-4">
@@ -109,18 +111,16 @@ export default function PremiumControl({
                   · {g.source} · {g.expiresAt ? `until ${fmtDate(g.expiresAt)}` : "no expiry"}
                 </span>
               </span>
-              {canRevokeFromProfile(g) && (
-                <Button
-                  size="sm"
-                  variant="outline"
-                  onClick={() => setToRevoke(g)}
-                  disabled={busy}
-                  aria-label={`Revoke ${scopeLabel(g.scope)} for ${name}`}
-                >
-                  <Ban className="mr-1.5 h-4 w-4" aria-hidden />
-                  Revoke
-                </Button>
-              )}
+              <Button
+                size="sm"
+                variant="outline"
+                onClick={() => setToRevoke(g)}
+                disabled={busy}
+                aria-label={`Revoke ${scopeLabel(g.scope)} for ${name}`}
+              >
+                <Ban className="mr-1.5 h-4 w-4" aria-hidden />
+                Revoke
+              </Button>
             </li>
           ))}
         </ul>
@@ -205,10 +205,12 @@ export default function PremiumControl({
       <Dialog open={!!toRevoke} onOpenChange={(v) => !v && !busy && setToRevoke(null)}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Revoke access?</DialogTitle>
+            <DialogTitle>{paid ? "Revoke a paid pass?" : "Revoke access?"}</DialogTitle>
             <DialogDescription>
               {toRevoke
-                ? `${name} loses ${scopeLabel(toRevoke.scope)} straight away.`
+                ? paid
+                  ? `${name} paid for ${scopeLabel(toRevoke.scope)} through Razorpay. Revoking ends it now but does not refund the payment. To refund, do it in Razorpay: a full refund ends the pass by itself.`
+                  : `${name} loses ${scopeLabel(toRevoke.scope)} straight away.`
                 : null}
             </DialogDescription>
           </DialogHeader>
@@ -218,7 +220,7 @@ export default function PremiumControl({
             </Button>
             <Button variant="destructive" onClick={onRevoke} disabled={busy}>
               {busy && <Loader2 className="mr-1.5 h-4 w-4 animate-spin" aria-hidden />}
-              Revoke
+              {paid ? "Revoke paid pass" : "Revoke"}
             </Button>
           </DialogFooter>
         </DialogContent>
