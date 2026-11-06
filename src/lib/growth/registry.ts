@@ -404,7 +404,9 @@ export const EXPERIMENTS: readonly Experiment[] = [
     rule: `Keep each if ${SECOND_PAGE_KEEP_PCT}%+ of those who see it tap it by the check date; remove it otherwise. The two are judged separately.`,
     liveSince: "2026-10-04",
     readout: "second-page",
-    status: "running",
+    status: "decided",
+    decision:
+      "Both removed on 2026-11-05 under the rule, 4 days after the check date. Over 30 days (6 Oct to 5 Nov) V's hello got 97 taps from 3,944 visitors who saw it (2.5%) and the card 192 from 7,555 (2.5%), about 290 taps a month to the test, notes or bank together. Each started above 3% (hello 3.5%, card 3.3% in 8 to 14 Oct) and fell to 2.1% and 2.3% by 29 Oct to 4 Nov.",
   },
   {
     id: "box-buy",
@@ -938,13 +940,19 @@ export const READINGS: Record<ReadingMetric, { label: string; source: string; en
   },
   "hello-tap-rate": {
     label: "V hello tap rate (%)",
-    source: "Vercel → Analytics → Events → v_hello_click ÷ v_hello_shown",
-    entries: [],
+    source:
+      "Vercel → Analytics → Events → v_hello_click ÷ v_hello_shown, unique visitors. The hello and both events were removed on 2026-11-05",
+    entries: [
+      { on: "2026-11-05", value: 2.5, note: "30 days to 5 Nov: 97 of 3,944. By week from 8 Oct: 3.5, 2.5, 2.3, 2.1" },
+    ],
   },
   "card-tap-rate": {
     label: "Next-step card tap rate (%)",
-    source: "Vercel → Analytics → Events → next_step_card_click ÷ next_step_card_shown",
-    entries: [],
+    source:
+      "Vercel → Analytics → Events → next_step_card_click ÷ next_step_card_shown, unique visitors. The card and both events were removed on 2026-11-05",
+    entries: [
+      { on: "2026-11-05", value: 2.5, note: "30 days to 5 Nov: 192 of 7,555. By week from 8 Oct: 3.3, 3.1, 1.9, 2.3" },
+    ],
   },
   "limit-sales": {
     label: "Passes sold since the free limits went on",

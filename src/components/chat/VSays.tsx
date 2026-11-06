@@ -27,8 +27,6 @@ const FADE_MS = 500;
  * motion there is no animation, so it simply goes at the same moment.
  *
  * The live region is always mounted so a screen reader hears each message.
- * While a message shows, `data-v-says="open"` on <html> tells VHello's tip to
- * step aside, so the two bubbles never stack in the same corner.
  */
 export default function VSays() {
   const [message, setMessage] = useState<VMessage | null>(null);
@@ -57,15 +55,6 @@ export default function VSays() {
       if (timer.current) clearTimeout(timer.current);
     };
   }, []);
-
-  useEffect(() => {
-    const root = document.documentElement;
-    if (message) root.dataset.vSays = "open";
-    else delete root.dataset.vSays;
-    return () => {
-      delete root.dataset.vSays;
-    };
-  }, [message]);
 
   function close() {
     if (!leaving) leave();

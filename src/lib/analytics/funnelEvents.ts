@@ -79,18 +79,6 @@ export const FUNNEL_EVENTS = [
    */
   "chapter_share_click",
   /**
-   * V's one-time hello appeared (2026-10-04; growth registry "second-page");
-   * props: surface ("questions" | "notes"), target. Once per device, so the
-   * count is close to the number of first-time interested visitors.
-   */
-  "v_hello_shown",
-  /** …and its suggestion was tapped; same props. */
-  "v_hello_click",
-  /** The next-step card on a chapter questions page scrolled into view; prop: target (the first link). */
-  "next_step_card_shown",
-  /** …and one of its links was tapped; prop: target (which link). */
-  "next_step_card_click",
-  /**
    * A visitor signed in with the Google button inside the download box
    * (2026-10-04), so they can buy without leaving /browse. Its scale is
    * `teacher_gate_shown` with signedIn=false.
@@ -113,13 +101,6 @@ export const FUNNEL_EVENTS = [
    * funnel count beside teacher_gate_shown.
    */
   "free_download_used",
-  /**
-   * A tap took over 200 ms to paint (2026-10-04, DEAD_TAPS.md); props: kind
-   * (reveal | expand | nav | option | other) and timing ("<phase>:<bucket>",
-   * phase = waiting | working | painting). Once per page per kind. No partner:
-   * page views are its scale. Chrome/Edge only, so a floor.
-   */
-  "slow_tap",
   /**
    * The strategy/concept chips on a bank question card were shown (2026-10-04;
    * growth registry "resource-chips"): they appear only once the solution is

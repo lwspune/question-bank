@@ -7,7 +7,6 @@ import type { QuestionResources } from "@/lib/links/questionResources";
 import { PresentRegistry } from "@/components/present/PresentRegistry";
 import QuestionCard from "./QuestionCard";
 import type { ItemStatAggregate } from "@/lib/itemStats/types";
-import { insertAfterGroup } from "@/lib/growth/secondPage";
 
 type Props = {
   questions: QuestionRow[];
@@ -34,9 +33,6 @@ type Props = {
   /** The guide/notes backlinks per question id, resolved ON THE SERVER. A
    *  plain object so it can cross into a client component (a Map cannot). */
   resourcesById?: Record<string, QuestionResources>;
-  /** Something to place inside the list after `afterQuestions` questions (the
-   *  /questions next-step card). Never splits a passage set. */
-  insert?: { afterQuestions: number; node: React.ReactNode };
 };
 
 /**
@@ -71,15 +67,8 @@ export default function QuestionListView({
   resourcesById,
   itemStats,
   paperLinks,
-  insert,
 }: Props) {
   const groups = groupBySet(questions);
-  const insertAt = insert
-    ? insertAfterGroup(
-        groups.map((g) => (g.kind === "single" ? 1 : g.questions.length)),
-        insert.afterQuestions
-      )
-    : null;
   const idToIndex = new Map<string, number>();
   questions.forEach((q, i) => idToIndex.set(q.id, pageOffset + i + 1));
 
@@ -88,10 +77,7 @@ export default function QuestionListView({
     // list; see PresentRegistry for why the cards register rather than receive.
     <PresentRegistry>
       <ul className="space-y-3">
-        {groups.flatMap((group, gi) => {
-          const item = renderGroup(group, gi);
-          return gi === insertAt && insert ? [item, <li key="list-insert">{insert.node}</li>] : [item];
-        })}
+        {groups.map((group, gi) => renderGroup(group, gi))}
       </ul>
     </PresentRegistry>
   );
