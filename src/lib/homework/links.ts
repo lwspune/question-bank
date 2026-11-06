@@ -34,11 +34,15 @@ export function subjectHomework(
   return p ? { href: planHref(p.slug), perDay: p.perDay } : null;
 }
 
-/** The exam home's homework button: the plan itself, the list when there are several, or none. */
-export function examHomeworkHref(plans: readonly HomeworkPlanLink[], examName: string): string | null {
+/** The exam home's homework button: the plan itself, that exam's plans when there are several, or none. */
+export function examHomeworkHref(
+  plans: readonly HomeworkPlanLink[],
+  examName: string,
+  examSlug: string
+): string | null {
   const mine = plans.filter((p) => p.examName === examName);
   if (mine.length === 0) return null;
-  return mine.length === 1 ? planHref(mine[0].slug) : "/homework";
+  return mine.length === 1 ? planHref(mine[0].slug) : examHomeworkPageHref(examSlug);
 }
 
 /** A day segment from the URL: a whole number from 1, or null. */

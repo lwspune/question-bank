@@ -19,6 +19,7 @@ import Footer from "@/components/Footer";
 import KatexRenderer from "@/components/math/KatexRenderer";
 import { FORMULA_CHAPTERS, topicsByWeight, type FormulaKind } from "@/lib/formula";
 import { groupFormulaPagesForIndex, listFormulaChapterPages } from "@/lib/formula/chapterPages";
+import { PYQVAULT_EXAMS } from "@/lib/exam/examContext";
 import FormulaChapterList from "./_components/FormulaChapterList";
 
 
@@ -27,7 +28,9 @@ export const revalidate = 86400;
 const total = FORMULA_CHAPTERS.reduce((n, c) => n + c.topics.length, 0);
 
 const chapterPages = listFormulaChapterPages();
-const groups = groupFormulaPagesForIndex(chapterPages);
+// www's exams only: the intl exams' formula pages live on intl.pyqvault.com,
+// and their www links only redirect there.
+const groups = groupFormulaPagesForIndex(chapterPages, PYQVAULT_EXAMS);
 const examList = (() => {
   const names = groups.map((g) => g.examDisplay);
   return names.length > 1 ? `${names.slice(0, -1).join(", ")} and ${names[names.length - 1]}` : names[0];

@@ -29,15 +29,16 @@ describe("subjectHomework", () => {
 
 describe("examHomeworkHref", () => {
   it("opens the plan itself when the exam has one", () => {
-    expect(examHomeworkHref(PLANS, "Maharashtra HSC Class 12")).toBe("/homework/mh-hsc-12-maths");
+    expect(examHomeworkHref(PLANS, "Maharashtra HSC Class 12", "mh-hsc-12")).toBe("/homework/mh-hsc-12-maths");
   });
 
-  it("opens the list of plans when the exam has more than one", () => {
-    expect(examHomeworkHref(PLANS, "CBSE Class 12")).toBe("/homework");
+  // Was the every-exam /homework hub; that exam's own plans are the useful list.
+  it("opens that exam's list of plans when it has more than one", () => {
+    expect(examHomeworkHref(PLANS, "CBSE Class 12", "cbse-12")).toBe("/homework/exam/cbse-12");
   });
 
   it("gives no link to an exam with no plan", () => {
-    expect(examHomeworkHref(PLANS, "NEET")).toBeNull();
+    expect(examHomeworkHref(PLANS, "NEET", "neet")).toBeNull();
   });
 });
 

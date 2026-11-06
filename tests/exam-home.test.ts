@@ -10,6 +10,7 @@ import {
   buildExamHome,
   examHomeDescription,
   examHomeHref,
+  unlistedQuestions,
 } from "../src/lib/exam/examHome";
 import { getExamBySlug } from "../src/lib/exam/examContext";
 import type { ChapterLanding } from "../src/lib/questions/landing";
@@ -148,7 +149,7 @@ describe("examHomeDescription", () => {
       hasShippedNotes: true,
     });
     expect(examHomeDescription(model)).toBe(
-      "JEE Mains on PYQ Vault: 10,667 previous year questions from 2021 to 2026 across 2 subjects and 3 chapters, with answers and worked solutions, timed mocks of real papers, and chapter notes. Free to browse."
+      "JEE Mains on PYQ Vault: 10,667 previous year questions from 2021 to 2026 across 2 subjects and 3 chapter pages, with answers and worked solutions, timed mocks of real papers, and chapter notes. Free to browse."
     );
   });
 
@@ -159,7 +160,7 @@ describe("examHomeDescription", () => {
       hasShippedNotes: false,
     });
     expect(examHomeDescription(m)).toBe(
-      "CBSE Class 10 on PYQ Vault: 1,008 practice questions, with answers and worked solutions, timed mocks of real papers, and a textbook-solutions reader. Free to browse."
+      "CBSE Class 10 on PYQ Vault: 1,008 practice questions, with answers and worked solutions, timed chapter tests, and a textbook-solutions reader. Free to browse."
     );
   });
 
@@ -172,5 +173,45 @@ describe("examHomeDescription", () => {
     });
     expect(m.pastYearQuestions).toBe(3415);
     expect(examHomeDescription(m)).toMatch(/^CBSE Class 10 on PYQ Vault: 3,415 previous year and 1,416 practice questions, /);
+  });
+});
+
+// Site-coherence review (2026-11-07): AFCAT's hub said 133 past-year questions
+// at the top, 42 in its chapter list, and never mentioned its 4,689 practice
+// questions. Board exams' mocks were called "timed mocks of real papers".
+describe("exam home counts and wording", () => {
+  it("names the practice questions of an exam that is not practice-only", () => {
+    const m = buildExamHome(getExamBySlug("afcat")!, [], {
+      examId: null,
+      totalPublicQuestions: 133,
+      practiceQuestions: 4689,
+      hasShippedNotes: false,
+    });
+    expect(examHomeDescription(m)).toMatch(/^AFCAT on PYQ Vault: 133 previous year and 4,689 practice questions/);
+  });
+
+  it("calls a board exam's mocks chapter tests", () => {
+    const m = buildExamHome(getExamBySlug("mh-hsc-12")!, [], {
+      examId: null,
+      totalPublicQuestions: 343,
+      hasShippedNotes: false,
+    });
+    expect(examHomeDescription(m)).toContain("timed chapter tests");
+    expect(examHomeDescription(m)).not.toContain("mocks of real papers");
+  });
+
+  it("counts the questions the chapter list leaves out (chapters under 15)", () => {
+    const m = buildExamHome(jee, landings, {
+      examId: "exam-uuid",
+      totalPublicQuestions: 400,
+      hasShippedNotes: false,
+    });
+    // 115 + 130 + 90 listed.
+    expect(unlistedQuestions(m)).toBe(65);
+  });
+
+  it("never reports a negative remainder", () => {
+    const m = buildExamHome(jee, landings, { examId: null, totalPublicQuestions: 100, hasShippedNotes: false });
+    expect(unlistedQuestions(m)).toBe(0);
   });
 });

@@ -25,9 +25,11 @@ import {
   buildMockTypeCards,
   comingSoonLine,
   mockDownloadHref,
+  mockHubSubtitle,
   mockTypeHref,
   splitMockTypeCards,
 } from "@/lib/mocks/catalogue";
+import { getExamBySlug } from "@/lib/exam/examContext";
 import ResultsStrip from "@/components/results/ResultsStrip";
 import { canonicalFor } from "@/lib/sites/intl";
 
@@ -52,9 +54,19 @@ export async function generateMetadata(props: { params: Promise<Params> }): Prom
   }
   const exam = getMockExam(params.examSlug);
   if (!exam) return {};
+  // Read off the registry, not the mocks (metadata makes no DB read): a board
+  // exam's mocks are chapter tests, and most exams have no practice papers, so
+  // neither is promised here (2026-11-07).
+  if (getExamBySlug(exam.slug)?.boardExam) {
+    return {
+      title: { absolute: fitTitle(`${exam.examName} Mock Tests`, [{ text: "chapter tests, timed & auto-graded", optional: true }]) },
+      description: `Sit ${exam.examName} chapter tests online: timed, marked for you and scored the moment you finish. Free, from PYQ Vault.`,
+      alternates: { canonical: canonicalFor(`/mock/exam/${exam.slug}`) },
+    };
+  }
   return {
     title: { absolute: fitTitle(`${exam.examName} Mock Tests`, [{ text: "past papers & practice, timed & auto-graded", optional: true }]) },
-    description: `Sit ${exam.examName} mock tests online: real past papers served whole, plus full-length practice papers built to the exam blueprint. Official marking, live timer, instant scoring. Free, from PYQ Vault.`,
+    description: `Sit ${exam.examName} mock tests online: real past papers served whole, on the official marking scheme, with a live timer and instant scoring. Free, from PYQ Vault.`,
     alternates: { canonical: canonicalFor(`/mock/exam/${exam.slug}`) },
   };
 }
@@ -195,7 +207,11 @@ export default async function MockExamTypePicker(props: { params: Promise<Params
       <GuideHero
         eyebrow={`${exam.displayName} · Timed mock tests`}
         title={`${exam.examName} Mock Tests`}
-        subtitle={`Sit ${exam.examName} papers online, timed and marked for you: full past papers, plus practice papers with the same number of questions per subject.`}
+        subtitle={mockHubSubtitle(
+          exam.examName,
+          open.map((c) => c.slug),
+          getExamBySlug(exam.slug)?.boardExam === true
+        )}
       >
         <div className="flex flex-wrap gap-2">
           <Link

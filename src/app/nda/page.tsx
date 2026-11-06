@@ -6,6 +6,7 @@ import {
   Atom,
   Timer,
   BookOpen,
+  CalendarDays,
   Compass,
   Files,
   FlaskConical,
@@ -27,6 +28,8 @@ import { getExamHomeStats } from "@/lib/exam/examHomeStats";
 import { resolveBankHref } from "@/lib/exam/examContext";
 import { mockCatalogueHref } from "@/lib/exam/examLinks";
 import { mockDownloadHref } from "@/lib/mocks/catalogue";
+import { getPlanLinks } from "@/lib/homework/query";
+import { examHomeworkHref } from "@/lib/homework/links";
 import Breadcrumbs from "@/components/nav/Breadcrumbs";
 import ResultsStrip from "@/components/results/ResultsStrip";
 
@@ -117,6 +120,13 @@ export default async function NdaHomePage() {
   const stats = await getExamHomeStats(supabase, "NDA");
   const bankHref = resolveBankHref(stats.examId);
   const mockHref = mockCatalogueHref("nda");
+  // Daily homework, the same button every other exam home has. A failed read
+  // only drops the link.
+  const plans = await getPlanLinks().catch((err) => {
+    console.error("nda home: homework plans unavailable", err);
+    return [];
+  });
+  const homeworkHref = examHomeworkHref(plans, "NDA", "nda");
 
   return (
     <>
@@ -181,6 +191,15 @@ export default async function NdaHomePage() {
               <Files className="h-4 w-4" aria-hidden />
               Previous year question papers
             </Link>
+            {homeworkHref && (
+              <Link
+                href={homeworkHref}
+                className="inline-flex items-center gap-2 rounded-md border border-input bg-background px-4 py-2.5 text-sm font-semibold transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              >
+                <CalendarDays className="h-4 w-4" aria-hidden />
+                Daily homework
+              </Link>
+            )}
           </div>
         </section>
 
@@ -238,18 +257,17 @@ export default async function NdaHomePage() {
               Free chapter notes
             </h2>
             <Link
-              href="/notes/nda-maths"
+              href="/notes/nda"
               className="inline-flex items-center gap-1 text-sm font-medium text-primary hover:underline"
             >
-              All chapters
+              All NDA notes
               <ArrowRight className="h-3.5 w-3.5" aria-hidden />
             </Link>
           </div>
           <p className="mb-5 max-w-2xl font-serif text-sm leading-relaxed text-muted-foreground">
-            Concept-by-concept notes built for both digital-board lectures and
-            student self-study. Each subtopic carries intuition, formula,
-            worked PYQ, and a one-click drill of every previous year question on
-            that subtopic.
+            One page per subtopic: the idea, the formula, a worked past question,
+            and a drill of every NDA question on that subtopic. Four to start
+            with:
           </p>
           <ul className="grid gap-4 sm:grid-cols-2">
             {NOTES_PREVIEWS.map(({ href, subject, chapter, blurb, conceptCount }) => (

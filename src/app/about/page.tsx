@@ -35,7 +35,7 @@ export const revalidate = 86400;
 const PAGE_TITLE = "About PYQ Vault";
 const PAGE_DESCRIPTION =
   "PYQ Vault is a free previous year question bank for Indian entrance and board exams, " +
-  "built and maintained by Vilas Shinde in Pune. What the site costs to use, how to " +
+  "built and maintained by Vilas Shinde in Pune. What needs an account, how to " +
   "report a wrong answer, and how to get in touch.";
 
 export const metadata: Metadata = {
@@ -148,12 +148,10 @@ export default async function AboutPage() {
           are still here, timed and auto-graded, for when you want them.
         </P>
 
-        <H2>What is free, and what needs an account</H2>
+        <H2>What needs an account</H2>
         <P>
-          Reading is free and needs no account at all: the whole question bank,
-          every answer and explanation, all the strategy guides, all the notes,
-          and the textbook reader. You can use the site indefinitely without
-          telling us anything about yourself.
+          Reading needs no account: the question bank, the strategy guides, the
+          notes and the textbook reader are open to anyone who lands here.
         </P>
         <P>
           A free account exists for the things that have to remember you, which
@@ -163,13 +161,7 @@ export default async function AboutPage() {
           <Link href="/start" className="text-brand-accent underline">
             how it all fits together
           </Link>
-          ). The one genuinely
-          restricted thing is downloading a question paper and answer key as
-          PDF files, which comes with the{" "}
-          <Link href="/pricing?plan=mocks" className="text-brand-accent underline">
-            Premium Pass
-          </Link>
-          , for students and teachers alike.
+          ).
         </P>
 
         <H2>Corrections</H2>

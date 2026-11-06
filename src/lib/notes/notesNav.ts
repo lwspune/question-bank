@@ -63,6 +63,18 @@ export function getNotesExamGroups(registry: readonly ExamEntry[] = PYQVAULT_EXA
 }
 
 /**
+ * How many notes chapters www lists: the homepage's "N chapters so far". The
+ * same count /notes shows, so it leaves out the intl exams, whose notes live on
+ * intl.pyqvault.com (the homepage once counted IMAT's 46 into it).
+ */
+export function wwwNotesChapterCount(): number {
+  return getNotesExamGroups(PYQVAULT_EXAMS).reduce(
+    (n, g) => n + g.subjects.reduce((m, s) => m + s.chapterCount, 0),
+    0
+  );
+}
+
+/**
  * One exam's group by slug. Returns the entry even when it has zero notes
  * subjects (so /notes/<slug> can show an honest "coming soon" instead of
  * 404). Returns null only for an unknown slug.
