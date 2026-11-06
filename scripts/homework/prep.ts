@@ -5,13 +5,16 @@
 // paper is its own sitting ("Feb 2024", "Jul 2024"), labelled by mhSittingLabel;
 // so is an NDA paper (--exam="NDA": "NDA 1 2024"), labelled by ndaSittingLabel,
 // an MHT-CET shift (--exam="MHT-CET": "10 May 2023 S1"), by cetSittingLabel,
-// and a CDS paper (--exam="CDS": "CDS 1 2024"), by cdsSittingLabel.
+// a CDS paper (--exam="CDS": "CDS 1 2024"), by cdsSittingLabel, and an SSC CGL
+// shift (--exam="SSC CGL": "14 Jul 2023 S3", up to four a day), by sscSittingLabel.
 // Then the review follows scripts/homework/REVIEW_BRIEF.md, and scripts/homework/assemble.ts builds the plan file.
-import { mkdirSync, writeFileSync } from "node:fs";
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { createClient } from "@supabase/supabase-js";
+import { reprintSittings } from "@/lib/homework/reprints";
 import { isHomeworkPassage } from "@/lib/homework/slotContext";
-import { cdsSittingLabel, cetSittingLabel, compareSittings, mhSittingLabel, ndaSittingLabel } from "@/lib/homework/sittings";
+import { SHIFTS } from "../ssc-cgl/config";
+import { cdsSittingLabel, cetSittingLabel, compareSittings, mhSittingLabel, ndaSittingLabel, sscSittingLabel } from "@/lib/homework/sittings";
 
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 
@@ -34,6 +37,7 @@ async function main() {
   const isNda = examName === "NDA";
   const isCet = examName === "MHT-CET";
   const isCds = examName === "CDS";
+  const isSsc = examName === "SSC CGL";
   const sittingOf = (r: Row) =>
     isMh
       ? mhSittingLabel(r.pyq_year, r.pyq_month)
@@ -43,7 +47,17 @@ async function main() {
           ? cdsSittingLabel(r.pyq_year, r.pyq_month)
           : isCet
             ? cetSittingLabel(r.pyq_year, r.pyq_month, r.pyq_note)
-            : String(r.pyq_year);
+            : isSsc
+              ? sscSittingLabel(r.pyq_note)
+              : String(r.pyq_year);
+  // SSC CGL keeps one row for a question a later shift reprinted; repeats.json
+  // names the reprints, so they count as sittings (lib/homework/reprints.ts).
+  const reprints = isSsc
+    ? reprintSittings(
+        JSON.parse(readFileSync(join(process.cwd(), "scripts/ssc-cgl/repeats.json"), "utf8")),
+        (key) => (SHIFTS[key] ? sscSittingLabel(SHIFTS[key].pyqNote) : undefined)
+      )
+    : new Map<string, string[]>();
   const c = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!, { auth: { persistSession: false } });
   const { data: ex } = await c.from("exams").select("id").eq("name", examName).single();
   const { data: sub } = await c.from("subjects").select("id").eq("exam_id", ex!.id).eq("name", subject).single();
@@ -68,14 +82,15 @@ async function main() {
     (slots.get(key) ?? slots.set(key, []).get(key)!).push(r);
   }
   const paperOf = (r: Row) =>
-    isMh || isNda || isCet ? sittingOf(r) : /question paper ([\d/A-Z-]+)/.exec(r.pyq_note ?? "")?.[1] ?? r.source_file ?? "?";
+    isMh || isNda || isCet || isSsc ? sittingOf(r) : /question paper ([\d/A-Z-]+)/.exec(r.pyq_note ?? "")?.[1] ?? r.source_file ?? "?";
   const slotList = [...slots.values()].map((rs) => {
     rs.sort((a, b) => qnum(a.question_number) - qnum(b.question_number) || (a.question_number ?? "").localeCompare(b.question_number ?? ""));
     const lead = rs[0];
     return {
       id: lead.id, rows: rs.map((r) => r.id), year: sittingOf(lead), paper: paperOf(lead),
       qno: lead.question_number ?? "", chapter: lead.chapter?.name ?? "(none)", subtopic: lead.subtopic?.name ?? "",
-      caseStudy: rs.length > 1 || isHomeworkPassage(lead.context), rs,
+      caseStudy: rs.length > 1 || isHomeworkPassage(lead.context),
+      ...(reprints.has(lead.id) ? { also: reprints.get(lead.id)! } : {}), rs,
     };
   });
 
@@ -89,7 +104,7 @@ async function main() {
     let md = `# ${subject} | ${ch} | ${list.length} items\n\n`;
     for (const s of list) {
       const fig = s.rs.some((r) => r.image_url) ? " | [has a figure you cannot see]" : "";
-      md += `### ${s.id} | ${s.year} | paper ${s.paper} Q.${s.qno} | ${s.subtopic}${s.caseStudy ? " | CASE STUDY" : ""}${fig}\n`;
+      md += `### ${s.id} | ${s.year} | paper ${s.paper} Q.${s.qno} | ${s.subtopic}${s.caseStudy ? " | CASE STUDY" : ""}${fig}${"also" in s && s.also ? ` | reprinted word for word in ${s.also.join(", ")}` : ""}\n`;
       if (s.caseStudy && s.rs[0].context) md += `Passage: ${s.rs[0].context.replace(/\s+/g, " ").trim()}\n`;
       // An instruction decides what is asked ("Differentiate between" vs "Write short notes on").
       else if (s.rs[0].context?.trim()) md += `Instruction: ${s.rs[0].context.replace(/\s+/g, " ").trim()}\n`;

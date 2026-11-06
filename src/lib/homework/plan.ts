@@ -137,7 +137,9 @@ export function buildPlanOrder(input: PlanInput): PlanItem[] {
       if (note.length > NOTE_MAX) {
         note = `Asked ${list.length} times: ${byYear(list)}${changed ? " (numbers or wording changed in some)" : ""}`;
       }
-      order.push({ questionId: pick, part: 1, note, group: indexOf.get(g)! });
+      // A repeat of one question (a reprint the bank holds once, lib/homework/reprints.ts)
+      // has nothing more to show, so it links no See all page.
+      order.push({ questionId: pick, part: 1, note, ...(g.questionIds.length > 1 ? { group: indexOf.get(g)! } : {}) });
       // Its other wordings are never printed.
       for (const id of g.questionIds) used.add(id);
     } else {

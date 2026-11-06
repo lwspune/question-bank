@@ -136,6 +136,12 @@ describe("homeworkOfferLead", () => {
       "5 past MHT-CET questions a day."
     );
   });
+
+  it("calls SSC CGL questions past SSC CGL questions", () => {
+    expect(homeworkOfferLead({ ...maths, examName: "SSC CGL", otherSubjects: [] })?.body).toBe(
+      "5 past SSC CGL questions a day."
+    );
+  });
 });
 
 describe("homeworkOfferFacts", () => {

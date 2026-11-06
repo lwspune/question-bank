@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { cdsSittingLabel, cetSittingLabel, compareSittings, mhSittingLabel, ndaSittingLabel } from "@/lib/homework/sittings";
+import { cdsSittingLabel, cetSittingLabel, compareSittings, mhSittingLabel, ndaSittingLabel, sscSittingLabel } from "@/lib/homework/sittings";
 
 describe("compareSittings", () => {
   it("orders MH papers by date, not alphabetically", () => {
@@ -111,5 +111,33 @@ describe("compareSittings with MHT-CET shifts", () => {
   it("keeps the other exams' order as it was", () => {
     expect(["2024", "2023"].sort(compareSittings)).toEqual(["2023", "2024"]);
     expect(["NDA 2 2024", "NDA 1 2024"].sort(compareSittings)).toEqual(["NDA 1 2024", "NDA 2 2024"]);
+  });
+});
+
+// SSC CGL (2026-11-06): a paper is one shift, up to four a day, named like an
+// MHT-CET shift ("14 Jul 2023 S3") from the note the ingestion wrote.
+describe("sscSittingLabel", () => {
+  it("names a shift by its date and shift from the note", () => {
+    expect(sscSittingLabel("Tier I, 14 Jul 2023, Shift 1")).toBe("14 Jul 2023 S1");
+    expect(sscSittingLabel("Tier I, 9 Sep 2024, Shift 4")).toBe("9 Sep 2024 S4");
+  });
+
+  it("refuses a note it cannot read, never guessing", () => {
+    expect(() => sscSittingLabel("Tier I, 14 Jul 2023")).toThrow(/14 Jul 2023/);
+    expect(() => sscSittingLabel(null)).toThrow(/note/);
+    expect(() => sscSittingLabel("Tier I, 14 Jul 2023, Shift 5")).toThrow(/Shift 5/);
+  });
+});
+
+describe("compareSittings with four shifts a day", () => {
+  it("keeps every shift of a day before the next day's first shift", () => {
+    const labels = ["15 Jul 2023 S1", "14 Jul 2023 S4", "14 Jul 2023 S3", "14 Jul 2023 S1", "14 Jul 2023 S2"];
+    expect([...labels].sort(compareSittings)).toEqual([
+      "14 Jul 2023 S1", "14 Jul 2023 S2", "14 Jul 2023 S3", "14 Jul 2023 S4", "15 Jul 2023 S1",
+    ]);
+  });
+
+  it("keeps the last day of a month before the next month", () => {
+    expect(["1 Aug 2023 S1", "31 Jul 2023 S4"].sort(compareSittings)).toEqual(["31 Jul 2023 S4", "1 Aug 2023 S1"]);
   });
 });

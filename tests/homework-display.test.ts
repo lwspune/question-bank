@@ -43,6 +43,10 @@ describe("planWording", () => {
     });
   });
 
+  it("names SSC and past questions for SSC CGL", () => {
+    expect(planWording("SSC CGL")).toEqual({ asker: "SSC", questions: "past questions", papers: "Past", answers: "worked solutions" });
+  });
+
   it("keeps the board wording for every board exam", () => {
     for (const exam of ["CBSE Class 12", "Maharashtra HSC Class 12", "Maharashtra SSC Class 10", "CBSE Class 10"]) {
       expect(planWording(exam)).toEqual(board);
