@@ -9,18 +9,18 @@ nothing is committed on anything else.
 
 | Year | Part A | State |
 |---|---|---|
-| 2026 | 57 q (14 NAT, 15 MSQ, 28 MCQ) | **PUBLIC 2026-11-03**: 41 rows (28 MCQ, 13 NAT); 16 held (15 MSQ + Q14 range) |
-| 2025 | 57 q (14 / 15 / 28) | **PUBLIC 2026-11-04**: 42 rows; 15 MSQ held |
-| 2024 | 57 q (14 / 15 / 28) | **PUBLIC 2026-11-04**: 39 rows; 15 MSQ + 3 range held. Q14 two answers, Q31 animation (note + grace) |
-| 2023 | 68 q (18 / 18 / 32) | **PUBLIC 2026-11-04**: 46 rows; 18 MSQ + 4 range held. Five picture-only stems |
-| 2022 | 68 q (18 / 18 / 32) | **PUBLIC 2026-11-04**: 49 rows; 18 MSQ + 1 range held. Q6, Q39 animations (note + grace) |
-| 2021 | 68 q (18 / 18 / 32) | **PUBLIC 2026-11-04**: 49 rows; 18 MSQ + 1 range held. Q1 key not reproducible from the figure, Q15 two answers (note + grace) |
-| 2020 | 68 q (18 / 18 / 32) | **PUBLIC 2026-11-04**: 50 rows (2 cancelled by IIT Bombay: Q64, Q65); 18 MSQ held |
-| 2019 | 85 q (20 / 20 / 45) | **PUBLIC 2026-11-04**: 65 rows; 20 MSQ held. Q3, Q17 two answers; Q20's key (160) not reproducible from the sketch (note + grace) |
-| 2018 | 85 q (20 / 25 / 40) | **PUBLIC 2026-11-06**: 59 rows; 25 MSQ + 1 range PRIVATE. Q15 from a scanned page and Q55 a bare "55" (`extract.py` PAGE_CLIPS, BARE_OK); Q12, Q19, Q33, Q34, Q45, Q64, Q78, Q84 two answers (note + grace) |
-| 2017 | 85 q (20 / 25 / 40) | **PUBLIC 2026-11-06**: 58 rows; 25 MSQ + 2 range PRIVATE. Q35's statement C is false as printed (ozone), Q42 two answer sets (note + grace) |
-| 2016 | 80 q (20 / 20 / 40) | **PUBLIC 2026-11-06**: 57 rows; 20 MSQ + 3 range PRIVATE. Q6 two answer forms, Q27 no net fits, Q62 and Q75 no option right as printed, Q79 two answers (note + grace) |
-| 2015 | 100 q (20 / 30 / 50) | **PUBLIC 2026-11-06**: 70 rows; 30 MSQ PRIVATE. Q67 dropped by IIT Bombay; Q68, Q76 keys not reproducible from the figure, Q78 two answers (note + grace) |
+| 2026 | 57 q (14 NAT, 15 MSQ, 28 MCQ) | **PUBLIC 2026-11-03**: 41 rows (28 MCQ, 13 NAT); its 15 MSQ + Q14 range PUBLIC 2026-11-06 |
+| 2025 | 57 q (14 / 15 / 28) | **PUBLIC 2026-11-04**: 42 rows; 15 MSQ PUBLIC 2026-11-06 |
+| 2024 | 57 q (14 / 15 / 28) | **PUBLIC 2026-11-04**: 39 rows; 15 MSQ + 3 range PUBLIC 2026-11-06. Q14 two answers, Q31 animation (note + grace) |
+| 2023 | 68 q (18 / 18 / 32) | **PUBLIC 2026-11-04**: 46 rows; 18 MSQ + 4 range PUBLIC 2026-11-06. Five picture-only stems |
+| 2022 | 68 q (18 / 18 / 32) | **PUBLIC 2026-11-04**: 49 rows; 18 MSQ + 1 range PUBLIC 2026-11-06. Q6, Q39 animations (note + grace) |
+| 2021 | 68 q (18 / 18 / 32) | **PUBLIC 2026-11-04**: 49 rows; 18 MSQ + 1 range PUBLIC 2026-11-06. Q1 key not reproducible from the figure, Q15 two answers (note + grace) |
+| 2020 | 68 q (18 / 18 / 32) | **PUBLIC 2026-11-04**: 50 rows (2 cancelled by IIT Bombay: Q64, Q65); 18 MSQ PUBLIC 2026-11-06 |
+| 2019 | 85 q (20 / 20 / 45) | **PUBLIC 2026-11-04**: 65 rows; 20 MSQ PUBLIC 2026-11-06. Q3, Q17 two answers; Q20's key (160) not reproducible from the sketch (note + grace) |
+| 2018 | 85 q (20 / 25 / 40) | **PUBLIC 2026-11-06**: all 85. Q15 from a scanned page and Q55 a bare "55" (`extract.py` PAGE_CLIPS, BARE_OK); Q12, Q19, Q33, Q34, Q45, Q64, Q78, Q84 two answers (note + grace) |
+| 2017 | 85 q (20 / 25 / 40) | **PUBLIC 2026-11-06**: all 85. Q35's statement C is false as printed (ozone), Q42 two answer sets (note + grace) |
+| 2016 | 80 q (20 / 20 / 40) | **PUBLIC 2026-11-06**: all 80. Q6 two answer forms, Q27 no net fits, Q62 and Q75 no option right as printed, Q79 two answers (note + grace) |
+| 2015 | 100 q (20 / 30 / 50) | **PUBLIC 2026-11-06**: all 100. Q67 dropped by IIT Bombay; Q68, Q76 keys not reproducible from the figure, Q78 two answers (note + grace) |
 
 2015-2018 were drafted by helpers in slices of 25-29 questions and agreed with IIT Bombay's key
 on **82/99, 63/80, 69/85 and 74/85** (2015 excludes its dropped Q67). Every disagreement was settled
@@ -56,9 +56,9 @@ no model solution exists (section 17.2), so there is nothing to show under it.
 
 Since migration 0214 the bank stores both: MSQ as `question_format = 'msq'` (one or more correct
 options) and a NAT keyed as a range in `numeric_answer` + `numeric_answer_max`. They are committed
-like any other row but stay **PRIVATE until the MSQ code is deployed**:
-`publish.ts <year> --skip-msq --apply` publishes only the MCQ and exact-NAT rows; after the deploy,
-`publish.ts <year> --apply` (no flag) publishes the rest. Mock marking per year, including each
+like any other row; all of them are PUBLIC since 2026-11-06, with 12 Part A mocks (MOCKS.md).
+`publish.ts <year> --skip-msq --apply` publishes only the MCQ and exact-NAT rows, for a time when
+the live site cannot show multiple-select rows; normally `publish.ts <year> --apply` publishes all. Mock marking per year, including each
 MSQ scheme, is `uceedPaper` in src/lib/mocks/blueprints.ts.
 
 An MSQ key that accepts **two** sets (2026 Q18: "B,C or B,C,D") stores the first; the row opens
@@ -73,7 +73,7 @@ src/<year>-paper.pdf ──extract.py──> work/<year>/draft.json + figures/<y
                      data/<year>.questions.json (text, options, figure, classification, solution)
 src/<year>-key.pdf ──(read, checked against the rendered page)──> data/<year>.key.json
                                        ▼
-                     commit.ts <year>  (planPaper: refuses on any issue; MSQ + range NAT held)
+                     commit.ts <year>  (planPaper: refuses on any issue)
 ```
 
 - **Figures are the embedded image objects, not crops.** Each UCEED question's picture is ONE
@@ -98,7 +98,7 @@ holds the transcriptions and keys.
 
 ```sh
 python -I scripts/uceed/extract.py 2026              # draft + figures + contact sheets
-npx tsx scripts/uceed/commit.ts 2026                  # dry run: plan, checks, hashes, held rows
+npx tsx scripts/uceed/commit.ts 2026                  # dry run: plan, checks, hashes
 npx tsx scripts/uceed/seed.ts 2026 --apply            # exam + the subjects this paper uses, right before:
 npx tsx scripts/uceed/commit.ts 2026 --apply          # PRIVATE
 ```
