@@ -2,6 +2,8 @@
 
 *Written 2026-10-04. Data: Clarity recordings from 2026-10-01 to 2026-10-03 (four pulls, real visitors only), plus the code paths behind each element. Status (2026-10-04): steps 1 and 2 of the plan BUILT (branch `perf/dead-taps`), going live with the next push; step 3, the re-check, is due about 3 days after that.*
 
+*Closed 2026-11-05: the `slow_tap` event and `SlowTapReporter` were removed. Nothing had recorded a reading of it since the October re-check, and it was 41% of all custom Vercel events (24,613 of 60,387 in the 30 days to 5 Nov). Last figures, visitors with at least one slow tap ÷ all visitors, by week from 8 Oct: 32%, 15%, 35%, 36%. To measure again, restore both from git (`git log --diff-filter=D -- src/lib/analytics/slowTap.ts`).*
+
 A **dead tap** is Clarity's name for a tap after which nothing visible changes. Visitors then tap again, and sometimes rage-tap. They have become the most common complaint in the recordings.
 
 ## The numbers

@@ -14,7 +14,7 @@ import { createClient } from "@supabase/supabase-js";
 import { reprintSittings } from "@/lib/homework/reprints";
 import { isHomeworkPassage } from "@/lib/homework/slotContext";
 import { SHIFTS } from "../ssc-cgl/config";
-import { cdsSittingLabel, cetSittingLabel, compareSittings, mhSittingLabel, ndaSittingLabel, sscSittingLabel } from "@/lib/homework/sittings";
+import { cdsSittingLabel, cetSittingLabel, compareSittings, mhSittingLabel, ndaSittingLabel, sscSittingLabel, sscTier2SittingLabel } from "@/lib/homework/sittings";
 
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 
@@ -38,6 +38,7 @@ async function main() {
   const isCet = examName === "MHT-CET";
   const isCds = examName === "CDS";
   const isSsc = examName === "SSC CGL";
+  const isSscT2 = examName === "SSC CGL Tier II";
   const sittingOf = (r: Row) =>
     isMh
       ? mhSittingLabel(r.pyq_year, r.pyq_month)
@@ -49,7 +50,9 @@ async function main() {
             ? cetSittingLabel(r.pyq_year, r.pyq_month, r.pyq_note)
             : isSsc
               ? sscSittingLabel(r.pyq_note)
-              : String(r.pyq_year);
+              : isSscT2
+                ? sscTier2SittingLabel(r.pyq_note)
+                : String(r.pyq_year);
   // SSC CGL keeps one row for a question a later shift reprinted; repeats.json
   // names the reprints, so they count as sittings (lib/homework/reprints.ts).
   const reprints = isSsc
@@ -82,7 +85,7 @@ async function main() {
     (slots.get(key) ?? slots.set(key, []).get(key)!).push(r);
   }
   const paperOf = (r: Row) =>
-    isMh || isNda || isCet || isSsc ? sittingOf(r) : /question paper ([\d/A-Z-]+)/.exec(r.pyq_note ?? "")?.[1] ?? r.source_file ?? "?";
+    isMh || isNda || isCet || isSsc || isSscT2 ? sittingOf(r) : /question paper ([\d/A-Z-]+)/.exec(r.pyq_note ?? "")?.[1] ?? r.source_file ?? "?";
   const slotList = [...slots.values()].map((rs) => {
     rs.sort((a, b) => qnum(a.question_number) - qnum(b.question_number) || (a.question_number ?? "").localeCompare(b.question_number ?? ""));
     const lead = rs[0];

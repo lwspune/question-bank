@@ -60,6 +60,7 @@ const NOT_BOARD: Readonly<Record<string, PlanWording>> = {
   CDS: { asker: "UPSC", questions: "past questions", papers: "Past", answers: "worked solutions" },
   "MHT-CET": { asker: "the CET Cell", questions: "past questions", papers: "Past", answers: "worked solutions" },
   "SSC CGL": { asker: "SSC", questions: "past questions", papers: "Past", answers: "worked solutions" },
+  "SSC CGL Tier II": { asker: "SSC", questions: "past questions", papers: "Past", answers: "worked solutions" },
 };
 
 const BOARD: PlanWording = { asker: "the board", questions: "board questions", papers: "Board", answers: "model answers" };

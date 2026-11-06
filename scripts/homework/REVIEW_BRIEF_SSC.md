@@ -26,6 +26,14 @@ its header says `reprinted word for word in <shifts>`. Those shifts are already 
 Do not look for its twin (there is none in the file). It may still join a repeat group with
 other items that ask the same question with changed numbers.
 
+## Tier II (if your evidence is SSC CGL Tier II)
+
+Tier II has 12 papers, one a day, named by the day sat: `18 Jan 2025 Tier II`. CGL 2019 to 2021
+(4 papers, 2020-2022) were Quantitative Aptitude only; from CGL 2022 (8 papers, Mar 2023 on) each
+paper also has Reasoning, English, General Awareness and Computer Knowledge. So Quant spans 12
+papers and the other sections 8. Count repeats and types across these Tier II papers only; do not
+compare with Tier I. Everything else in this brief applies unchanged.
+
 ## What SSC does
 
 SSC writes fresh questions for almost every shift: in 113 shifts only about 14 questions were
