@@ -1,12 +1,13 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { Check, Loader2, Lock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { GATE, useCheckout, type CheckoutOutcome, type CheckoutSurface } from "@/components/billing/useCheckout";
 import WhyNotNow from "@/components/billing/WhyNotNow";
+import { useAskWhyOnClose } from "@/components/billing/WhyNotNowToast";
 import { trackFunnelOnce } from "@/lib/analytics/trackFunnel";
 import { sendActivityOnce } from "@/lib/activity/clientBeacon";
 import { pricingHref } from "@/lib/billing/checkoutReturn";
@@ -98,14 +99,25 @@ export function RevealDailyOffer({
   const [showOthers, setShowOthers] = useState(false);
   const others = otherBenefits(pass.perks);
   const perMonth = perMonthLine(pass);
+  const bought = useRef(false);
   const onDone = useCallback(
     (outcome: CheckoutOutcome) => {
+      bought.current = true;
       if (outcome === "paid") onPaid();
       else router.push("/account");
     },
     [router, onPaid]
   );
   const { start, busy, dismissed } = useCheckout({ planId: pass.planId, surface: checkoutSurface, onDone });
+  // Left without paying: ask once more, in a toast (2026-11-06). The daily limit only meets signed-in students.
+  useAskWhyOnClose({
+    gate: GATE[checkoutSurface],
+    planId: pass.planId,
+    isSignedIn: true,
+    busy,
+    dismissed,
+    bought,
+  });
   const onPay = () => {
     trackFunnelOnce("reveal_daily_limit_pass_click", surface, { surface });
     void start();

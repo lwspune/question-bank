@@ -121,6 +121,7 @@ export async function loadDeclines(admin: SupabaseClient, since: string): Promis
       afterCheckout: m.afterCheckout === true,
       tier: tierById.get(e.user_id) ?? null,
       day: istDate(new Date(e.created_at)),
+      onClose: m.onClose === true,
     });
   }
 

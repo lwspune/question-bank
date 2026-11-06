@@ -11,6 +11,7 @@ import GoogleSignInButton from "@/components/GoogleSignInButton";
 import { googleButtonAvailable, renderGoogleButton } from "@/components/auth/useGoogleOneTap";
 import { GATE, useCheckout, type CheckoutOutcome, type CheckoutSurface } from "@/components/billing/useCheckout";
 import WhyNotNow from "@/components/billing/WhyNotNow";
+import { useAskWhyOnClose } from "@/components/billing/WhyNotNowToast";
 import { trackFunnel, trackFunnelOnce } from "@/lib/analytics/trackFunnel";
 import { offerPriceLine, perMonthLine, splitOfferPerks } from "@/lib/billing/offerCopy";
 import { alsoIncludedPerks, type PassOfferLead } from "@/lib/billing/passOfferLead";
@@ -76,9 +77,12 @@ export default function PassOffer({
   const perks = lead ? alsoIncludedPerks(pass.perks) : split.main;
   const perMonth = perMonthLine(pass);
   const router = useRouter();
+  // Set when the checkout reports a payment, so the ask-on-close below never fires for a buyer.
+  const bought = useRef(false);
 
   const onDone = useCallback(
     (outcome: CheckoutOutcome) => {
+      bought.current = true;
       if (outcome === "paid") {
         onBought();
         router.refresh();
@@ -89,6 +93,8 @@ export default function PassOffer({
     [onBought, router]
   );
   const { start, busy, dismissed } = useCheckout({ planId: pass.planId, surface, box, onDone });
+  // Closed without a sale: ask once more, in a toast (2026-11-06).
+  useAskWhyOnClose({ gate: GATE[surface], box, planId: pass.planId, isSignedIn, busy, dismissed, bought });
   // Stable, so Google's button is drawn once rather than on every render.
   const refresh = useCallback(() => (onSignedIn ? onSignedIn() : router.refresh()), [onSignedIn, router]);
 

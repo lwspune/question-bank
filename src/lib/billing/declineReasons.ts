@@ -56,6 +56,33 @@ export function whyNotNowPrompt({ busy, dismissed }: { busy: boolean; dismissed:
 }
 
 /**
+ * Asking again when the offer is closed (2026-11-06). 1 in 9 students the
+ * offer met answered the question in the box (5 Nov); the rest closed it. On
+ * close a small toast asks once, without holding the exit. Not a buyer, not
+ * mid-checkout, not after a closed Razorpay (the box asked "Didn't pay?"
+ * there), not twice for one offer in a day, and not someone who closed it
+ * within MIN_LOOK_MS (an accidental open).
+ */
+export const MIN_LOOK_MS = 2000;
+export function shouldAskOnClose(s: {
+  signedIn: boolean;
+  bought: boolean;
+  busy: boolean;
+  dismissed: boolean;
+  /** Answered in the box, or already asked on close, today. */
+  handledToday: boolean;
+  /** How long the offer was on screen. */
+  shownMs: number;
+}): boolean {
+  return s.signedIn && !s.bought && !s.busy && !s.dismissed && !s.handledToday && s.shownMs >= MIN_LOOK_MS;
+}
+
+/** The browser-storage key for "handled today": one offer (gate, and box when named) on one IST day. */
+export function whyAskedKey(gate: PaywallGate, box: string | undefined, day: string): string {
+  return `why-asked:${gate}:${box ? `${box}:` : ""}${day}`;
+}
+
+/**
  * Who answered. Class 9-12 students mostly cannot pay without a parent and
  * graduates pay for themselves, so the two are read apart; school and senior
  * tiers go together.
@@ -91,6 +118,8 @@ export type DeclineRow = {
   tier: ExamTier | null;
   /** The IST day the answer was given (YYYY-MM-DD). */
   day: string;
+  /** Answered in the toast after closing the offer, not in the box. */
+  onClose: boolean;
 };
 
 /** A pass bought: who, and on which IST day (YYYY-MM-DD). */
@@ -120,6 +149,8 @@ export type DeclineSummary = {
   students: number;
   /** Answers given after closing a checkout. */
   afterCheckout: number;
+  /** Answers given in the toast after closing the offer. */
+  onClose: number;
   /** Answers by student group. */
   groups: Record<DeclineGroup, number>;
   /** Every reason, in DECLINE_REASONS order, zeros included. */
@@ -139,6 +170,7 @@ export function summariseDeclines(rows: readonly DeclineRow[]): DeclineSummary {
   const groups = zeroGroups();
   const students = new Set<string>();
   let afterCheckout = 0;
+  let onClose = 0;
 
   for (const r of rows) {
     const group = declineGroupOf(r.tier);
@@ -150,12 +182,14 @@ export function summariseDeclines(rows: readonly DeclineRow[]): DeclineSummary {
     groups[group] += 1;
     students.add(r.userId);
     if (r.afterCheckout) afterCheckout += 1;
+    if (r.onClose) onClose += 1;
   }
 
   return {
     answers: rows.filter((r) => reasons.has(r.reason)).length,
     students: students.size,
     afterCheckout,
+    onClose,
     groups,
     reasons: [...reasons.values()],
   };

@@ -5,6 +5,7 @@ import { sendActivity } from "@/lib/activity/clientBeacon";
 import type { DownloadBox, PaywallGate } from "@/lib/activity/clientEvents";
 import { DECLINE_REASON_LABELS, reasonsOffered, whyNotNowPrompt, type DeclineReason } from "@/lib/billing/declineReasons";
 import { cn } from "@/lib/utils";
+import { markWhyHandled } from "./WhyNotNowToast";
 
 /**
  * "Not buying today? Tell us why": one tap under a pass offer (2026-11-05).
@@ -46,6 +47,7 @@ export default function WhyNotNow({
 
   const onTap = (reason: DeclineReason) => {
     setAnswered(reason);
+    markWhyHandled(gate, box);
     sendActivity({ kind: "paywall_event", step: "declined", gate, box, planId, reason, afterCheckout });
   };
 

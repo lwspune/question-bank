@@ -15,6 +15,9 @@ import {
   summariseDeclines,
   whyNotNowPrompt,
   withoutSameDayBuyers,
+  shouldAskOnClose,
+  whyAskedKey,
+  MIN_LOOK_MS,
   type DeclineRow,
 } from "@/lib/billing/declineReasons";
 
@@ -121,6 +124,7 @@ describe("summariseDeclines", () => {
     afterCheckout: false,
     tier: "senior",
     day: "2026-11-05",
+    onClose: false,
     ...over,
   });
 
@@ -182,6 +186,7 @@ describe("withoutSameDayBuyers", () => {
     afterCheckout: false,
     tier: "senior",
     day: "2026-11-06",
+    onClose: false,
     ...over,
   });
 
@@ -198,5 +203,66 @@ describe("withoutSameDayBuyers", () => {
 
   it("keeps everything when nobody bought", () => {
     expect(withoutSameDayBuyers([row({})], [])).toHaveLength(1);
+  });
+});
+
+describe("asking again when the offer is closed (2026-11-06)", () => {
+  it("records an answer from the closing question as onClose", () => {
+    const r = parseClientEvent(
+      { kind: "paywall_event", step: "declined", gate: "teacher", box: "mock", reason: "ask_parent", afterCheckout: false, onClose: true },
+      "u1",
+      NOW
+    );
+    expect(r.ok && r.value.metadata).toEqual({
+      step: "declined",
+      gate: "teacher",
+      box: "mock",
+      reason: "ask_parent",
+      afterCheckout: false,
+      onClose: true,
+    });
+    // Same once-a-day key as the question in the box: one answer per offer per day.
+    expect(r.ok && r.value.dedupeKey).toBe("paywall:declined:teacher:mock:u1:2026-11-05");
+  });
+
+  it("refuses an onClose that is not a boolean, or on any other step", () => {
+    expect(
+      parseClientEvent({ kind: "paywall_event", step: "declined", gate: "reveals", reason: "too_expensive", onClose: "yes" }, "u1", NOW).ok
+    ).toBe(false);
+    expect(parseClientEvent({ kind: "paywall_event", step: "shown", gate: "reveals", onClose: true }, "u1", NOW).ok).toBe(false);
+  });
+
+  const base = { signedIn: true, bought: false, busy: false, dismissed: false, handledToday: false, shownMs: 5000 };
+
+  it("asks a signed-in student who looked at the offer and left without buying", () => {
+    expect(shouldAskOnClose(base)).toBe(true);
+  });
+
+  it("does not ask a buyer, mid-checkout, after a closed Razorpay, or twice in a day", () => {
+    expect(shouldAskOnClose({ ...base, bought: true })).toBe(false);
+    expect(shouldAskOnClose({ ...base, busy: true })).toBe(false);
+    // The box already asks "Didn't pay? What stopped you?" there.
+    expect(shouldAskOnClose({ ...base, dismissed: true })).toBe(false);
+    // Answered in the box, or already asked on close today.
+    expect(shouldAskOnClose({ ...base, handledToday: true })).toBe(false);
+  });
+
+  it("does not ask a signed-out visitor, or one who closed it at a glance", () => {
+    expect(shouldAskOnClose({ ...base, signedIn: false })).toBe(false);
+    expect(shouldAskOnClose({ ...base, shownMs: MIN_LOOK_MS - 1 })).toBe(false);
+    expect(shouldAskOnClose({ ...base, shownMs: MIN_LOOK_MS })).toBe(true);
+  });
+
+  it("keys 'handled today' by offer and IST day", () => {
+    expect(whyAskedKey("teacher", "mock", "2026-11-06")).toBe("why-asked:teacher:mock:2026-11-06");
+    expect(whyAskedKey("reveals", undefined, "2026-11-06")).toBe("why-asked:reveals:2026-11-06");
+  });
+
+  it("counts on the dashboard how many answers came from the closing question", () => {
+    const row = (over: Partial<DeclineRow>): DeclineRow => ({
+      userId: "u1", reason: "too_expensive", gate: "teacher", afterCheckout: false, tier: "senior", day: "2026-11-06", onClose: false, ...over,
+    });
+    const s = summariseDeclines([row({ userId: "a" }), row({ userId: "b", onClose: true }), row({ userId: "c", onClose: true })]);
+    expect(s.onClose).toBe(2);
   });
 });
