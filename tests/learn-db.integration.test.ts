@@ -266,11 +266,16 @@ describe.skipIf(!HAS_ENV)("Learn tables (0192)", () => {
       expect(second.route).toEqual({ kind: "refresher", chapter: CHAPTER, concept: "concept-c01", title: "Concept C01" });
       const { data } = await admin
         .from("learn_concept_state")
-        .select("next_review_at, learn_concepts!inner(code)")
+        .select("next_review_at, updated_at, learn_concepts!inner(code)")
         .eq("user_id", aliceId)
         .eq("learn_concepts.code", "C01")
         .single();
-      expect(Date.parse(data!.next_review_at)).toBeLessThanOrEqual(Date.now());
+      // "Due now" against the database's own clock: the routing writes both
+      // columns from now() in one statement. Comparing with this machine's
+      // Date.now() failed whenever the local clock ran behind the database's
+      // (0.83 s on 2026-11-06), and the retry then doubled the answers above.
+      // Unrouted, next_review_at would be a day past updated_at.
+      expect(Date.parse(data!.next_review_at)).toBeLessThanOrEqual(Date.parse(data!.updated_at));
     });
 
     it("an outside-topic fallback routes to a revise note", async () => {
