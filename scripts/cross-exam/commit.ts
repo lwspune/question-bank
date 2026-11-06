@@ -70,7 +70,7 @@ async function main() {
     if (s.visibility !== "PUBLIC" || t.visibility !== "PUBLIC") errors.push(`${at}: both questions must be PUBLIC`);
     if (t.question_kind !== "pyq") errors.push(`${at}: target is not a past-paper question`);
     if (s.exam_id === t.exam_id) errors.push(`${at}: both questions are in ${s.exam?.name}`);
-    if (!inChapter(t, file.target)) errors.push(`${at}: target is in ${t.exam?.name} / ${t.chapter?.name}, not the file's target chapter`);
+    if (!file.targets.some((c) => inChapter(t, c))) errors.push(`${at}: target is in ${t.exam?.name} / ${t.chapter?.name}, not one of the file's target chapters`);
     if (!file.board.some((b) => inChapter(s, b))) errors.push(`${at}: source is in ${s.exam?.name} / ${s.chapter?.name}, not one of the file's board chapters`);
   });
   if (errors.length) throw new Error(`refusing ${file.run}:\n  ${errors.slice(0, 30).join("\n  ")}${errors.length > 30 ? `\n  ...${errors.length - 30} more` : ""}`);
@@ -92,7 +92,7 @@ async function main() {
   const kinds: Record<string, number> = {};
   for (const p of file.pairs) kinds[p.kind] = (kinds[p.kind] ?? 0) + 1;
   console.log(`${file.run}: ${file.pairs.length} pairs (${Object.entries(kinds).map(([k, n]) => `${n} ${k}`).join(", ")})`);
-  console.log(`  ${new Set(file.pairs.map((p) => p.source)).size} board questions -> ${new Set(file.pairs.map((p) => p.target)).size} ${file.target.exam} questions`);
+  console.log(`  ${new Set(file.pairs.map((p) => p.source)).size} board questions -> ${new Set(file.pairs.map((p) => p.target)).size} ${file.targets[0].exam} questions`);
   console.log(`  new ${added.length} · kind changed ${changed.length} · dropped from this run ${stale.length}`);
   if (!apply) {
     console.log("DRY RUN: nothing written. Add --apply to write.");

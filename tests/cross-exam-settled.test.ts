@@ -16,7 +16,7 @@ const C = "33333333-3333-4333-8333-333333333333";
 const file = (pairs: unknown[], over: Record<string, unknown> = {}) => ({
   run: "nda-maths-matrices-2026-11-06",
   settledOn: "2026-11-06",
-  target: { exam: "NDA", subject: "Mathematics", chapter: "Matrices & Determinants" },
+  targets: [{ exam: "NDA", subject: "Mathematics", chapter: "Matrices & Determinants" }],
   board: [{ exam: "Maharashtra HSC Class 12", subject: "Mathematics", chapter: "Matrices" }],
   pairs,
   ...over,
@@ -50,6 +50,20 @@ describe("validateSettled", () => {
 
   it("refuses a why longer than the database allows", () => {
     expect(validateSettled(file([{ source: A, target: B, kind: "exact", why: "x".repeat(201) }]))).toHaveLength(1);
+  });
+
+  it("takes several exam chapters in one run (a board chapter teaching more than one)", () => {
+    const two = file([{ source: A, target: B, kind: "exact", why: "x" }], {
+      targets: [
+        { exam: "NDA", subject: "Mathematics", chapter: "Functions" },
+        { exam: "NDA", subject: "Mathematics", chapter: "Logarithms" },
+      ],
+    });
+    expect(validateSettled(two)).toEqual([]);
+  });
+
+  it("refuses a run with no exam chapter", () => {
+    expect(validateSettled(file([{ source: A, target: B, kind: "exact", why: "x" }], { targets: [] })).join()).toMatch(/targets/);
   });
 
   it("refuses a file without pairs", () => {

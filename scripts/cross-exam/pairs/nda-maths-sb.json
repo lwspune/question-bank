@@ -1,0 +1,30 @@
+{
+ "note": "NDA Mathematics chapters -> the MH State Board chapters that teach them, from scripts/syllabus/data/maths-nda-rulings.json (stateBoard.coveredBy), keeping a board chapter cited by 2+ subtopics or the only one cited. Runs that share a board chapter are grouped, so each board question is read once against every NDA chapter it may match (owner, 2026-11-06: 6,275 board-question comparisons -> 4,854). Bank chapter names (the spine's 'Applications of Derivatives', 'Line and Plane' and 'Methods of Induction and Binomial Theorem' are the bank's 'Application of Derivatives', 'Line and Planes', 'Binomial Theorem'). No State Board twin, so not run: Binary Numbers, Quadratic Equations, Height & Distance (every subtopic ruled 'not'). Run name = <slug>-<settled date>.",
+ "exam": "NDA",
+ "subject": "Mathematics",
+ "boardExams": { "XI": "Maharashtra State Board Class 11", "XII": "Maharashtra HSC Class 12" },
+ "runs": [
+  { "slug": "nda-maths-matrices", "targets": ["Matrices & Determinants"], "board": ["XI|Determinants and Matrices", "XII|Matrices"], "done": "nda-maths-matrices-2026-11-06" },
+  { "slug": "nda-maths-trigonometry", "targets": ["Trigonometric Identities", "Trigonometric Equations", "Inverse Trigonometry", "Properties of Triangle"], "board": ["XI|Trigonometry - I", "XI|Trigonometry - II", "XII|Trigonometric Functions"] },
+  { "slug": "nda-maths-functions", "targets": ["Functions", "Logarithms"], "board": ["XI|Functions"] },
+  { "slug": "nda-maths-definite-integration", "targets": ["Definite Integration", "Applications of Integration"], "board": ["XII|Definite Integration", "XII|Application of Definite Integration"] },
+  { "slug": "nda-maths-vectors-3d", "targets": ["Vectors", "3D Geometry"], "board": ["XII|Vectors", "XII|Line and Planes"] },
+  { "slug": "nda-maths-probability", "targets": ["Probability"], "board": ["XI|Probability"] },
+  { "slug": "nda-maths-statistics", "targets": ["Statistics"], "board": ["XI|Measures of Dispersion"] },
+  { "slug": "nda-maths-lines", "targets": ["Lines"], "board": ["XI|Straight Line"] },
+  { "slug": "nda-maths-sequence-series", "targets": ["Sequence & Series"], "board": ["XI|Sequences and Series"] },
+  { "slug": "nda-maths-differentiation", "targets": ["Differentiation"], "board": ["XII|Differentiation", "XI|Differentiation"] },
+  { "slug": "nda-maths-limits-continuity", "targets": ["Limits & Continuity"], "board": ["XI|Limits", "XI|Continuity"] },
+  { "slug": "nda-maths-permutation-combination", "targets": ["Permutation & Combination"], "board": ["XI|Permutations and Combination"] },
+  { "slug": "nda-maths-application-of-derivatives", "targets": ["Application of Derivatives"], "board": ["XII|Application of Derivatives"] },
+  { "slug": "nda-maths-complex-numbers", "targets": ["Complex Numbers"], "board": ["XI|Complex Numbers"] },
+  { "slug": "nda-maths-sets-relations", "targets": ["Sets & Relations"], "board": ["XI|Sets and Relations"] },
+  { "slug": "nda-maths-differential-equations", "targets": ["Differential Equations"], "board": ["XII|Differential Equations"] },
+  { "slug": "nda-maths-binomial-theorem", "targets": ["Binomial Theorem"], "board": ["XI|Binomial Theorem"] },
+  { "slug": "nda-maths-indefinite-integration", "targets": ["Indefinite Integration"], "board": ["XII|Indefinite Integration"] },
+  { "slug": "nda-maths-conics", "targets": ["Conics"], "board": ["XI|Conic Sections"] },
+  { "slug": "nda-maths-binomial-distribution", "targets": ["Binomial Distribution"], "board": ["XII|Binomial Distribution"] },
+  { "slug": "nda-maths-circles", "targets": ["Circles"], "board": ["XI|Circle"] },
+  { "slug": "nda-maths-linear-inequalities", "targets": ["Linear Inequalities"], "board": ["XII|Linear Programming"] }
+ ]
+}

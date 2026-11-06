@@ -87,7 +87,30 @@ slice of about 135 board questions, so about 1.2 million per pass pair for a 400
 
 | run | exam chapter | board chapters | pairs | board q matched | exam q with a twin |
 |---|---|---|---|---|---|
-| `nda-maths-matrices-2026-11-06` | NDA Matrices & Determinants (181) | SB XI Determinants and Matrices, HSC XII Matrices (406) | 186 (8 exact, 74 numbers, 104 similar) | 143 / 406 | 62 / 181 (26 exact or numbers) |
+| `nda-maths-application-of-derivatives-2026-11-06` | Application of Derivatives | HSC XII Application of Derivatives | 97 (3 exact, 38 numbers, 56 similar) | 49 | 22 (12 exact or numbers) |
+| `nda-maths-binomial-distribution-2026-11-06` | Binomial Distribution | HSC XII Binomial Distribution | 185 (1 exact, 112 numbers, 72 similar) | 77 | 25 (23 exact or numbers) |
+| `nda-maths-binomial-theorem-2026-11-06` | Binomial Theorem | SB XI Binomial Theorem | 70 (7 exact, 29 numbers, 34 similar) | 53 | 16 (13 exact or numbers) |
+| `nda-maths-circles-2026-11-06` | Circles | SB XI Circle | 33 (0 exact, 15 numbers, 18 similar) | 24 | 13 (6 exact or numbers) |
+| `nda-maths-complex-numbers-2026-11-06` | Complex Numbers | SB XI Complex Numbers | 109 (1 exact, 44 numbers, 64 similar) | 77 | 27 (14 exact or numbers) |
+| `nda-maths-conics-2026-11-06` | Conics | SB XI Conic Sections | 59 (2 exact, 21 numbers, 36 similar) | 45 | 11 (8 exact or numbers) |
+| `nda-maths-definite-integration-2026-11-06` | Definite Integration, Applications of Integration | HSC XII Definite Integration, HSC XII Application of Definite Integration | 144 (2 exact, 32 numbers, 110 similar) | 75 | 39 (12 exact or numbers) |
+| `nda-maths-differential-equations-2026-11-06` | Differential Equations | HSC XII Differential Equations | 145 (6 exact, 42 numbers, 97 similar) | 84 | 40 (24 exact or numbers) |
+| `nda-maths-differentiation-2026-11-06` | Differentiation | HSC XII Differentiation, SB XI Differentiation | 140 (4 exact, 15 numbers, 121 similar) | 123 | 34 (11 exact or numbers) |
+| `nda-maths-functions-2026-11-06` | Functions, Logarithms | SB XI Functions | 58 (3 exact, 16 numbers, 39 similar) | 49 | 30 (10 exact or numbers) |
+| `nda-maths-indefinite-integration-2026-11-06` | Indefinite Integration | HSC XII Indefinite Integration | 97 (2 exact, 39 numbers, 56 similar) | 74 | 30 (17 exact or numbers) |
+| `nda-maths-limits-continuity-2026-11-06` | Limits & Continuity | SB XI Limits, SB XI Continuity | 157 (3 exact, 28 numbers, 126 similar) | 124 | 43 (13 exact or numbers) |
+| `nda-maths-linear-inequalities-2026-11-06` | Linear Inequalities | HSC XII Linear Programming | 6 (0 exact, 0 numbers, 6 similar) | 6 | 2 (0 exact or numbers) |
+| `nda-maths-lines-2026-11-06` | Lines | SB XI Straight Line | 113 (0 exact, 27 numbers, 86 similar) | 58 | 35 (13 exact or numbers) |
+| `nda-maths-matrices-2026-11-06` | Matrices & Determinants | SB XI Determinants and Matrices, HSC XII Matrices | 186 (8 exact, 74 numbers, 104 similar) | 143 | 62 (26 exact or numbers) |
+| `nda-maths-permutation-combination-2026-11-06` | Permutation & Combination | SB XI Permutations and Combination | 130 (2 exact, 59 numbers, 69 similar) | 86 | 46 (26 exact or numbers) |
+| `nda-maths-probability-2026-11-06` | Probability | SB XI Probability | 244 (2 exact, 33 numbers, 209 similar) | 107 | 72 (25 exact or numbers) |
+| `nda-maths-sequence-series-2026-11-06` | Sequence & Series | SB XI Sequences and Series | 45 (1 exact, 23 numbers, 21 similar) | 40 | 13 (5 exact or numbers) |
+| `nda-maths-sets-relations-2026-11-06` | Sets & Relations | SB XI Sets and Relations | 25 (1 exact, 7 numbers, 17 similar) | 21 | 18 (7 exact or numbers) |
+| `nda-maths-statistics-2026-11-06` | Statistics | SB XI Measures of Dispersion | 37 (0 exact, 24 numbers, 13 similar) | 31 | 14 (7 exact or numbers) |
+| `nda-maths-trigonometry-2026-11-06` | Trigonometric Identities, Trigonometric Equations, Inverse Trigonometry, Properties of Triangle | SB XI Trigonometry - I, SB XI Trigonometry - II, HSC XII Trigonometric Functions | 282 (22 exact, 59 numbers, 201 similar) | 173 | 96 (39 exact or numbers) |
+| `nda-maths-vectors-3d-2026-11-06` | Vectors, 3D Geometry | HSC XII Vectors, HSC XII Line and Planes | 257 (7 exact, 107 numbers, 143 similar) | 181 | 82 (46 exact or numbers) |
+
+**NDA Mathematics, all 22 runs (2026-11-06):** 2,619 pairs (77 exact, 844 numbers, 1,698 similar) linking 1,700 board questions to 770 of NDA's 2,280 PUBLIC Maths questions (34%). **357 (16%) were asked as a board question, exact or with new numbers.** Three NDA chapters have no State Board chapter and were not run: Binary Numbers (14), Quadratic Equations (67), Height & Distance (26). Weakest by share: Statistics (14 of 165), Sequence & Series (13 of 93), Functions (26 of 115): NDA asks shortcuts and properties there, the books drill computation.
 
 Pilot method: 3 agents, then the main session read all 185 proposed pairs: kept all 163 firm
 matches (3 re-labelled numbers -> similar), settled the 22 unsure (12 kept, 10 rejected), added 2
