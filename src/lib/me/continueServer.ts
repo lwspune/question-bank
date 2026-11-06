@@ -5,9 +5,13 @@
  *
  * Read with the student's own JWT: `user_activity` is own-row by RLS, a
  * question resolves only when PUBLIC, and a homework plan only when published.
- * Best-effort: a failed read costs entries, never the page.
+ * Best-effort: a failed read costs entries, never the page. Takes the TYPED
+ * client (createTypedServerClient), so the joined rows need no cast.
  */
+
+type Db = SupabaseClient<Database>;
 import type { SupabaseClient } from "@supabase/supabase-js";
+import type { Database } from "@/types/db";
 import { EXAM_REGISTRY } from "@/lib/exam/examContext";
 import { landingHref, listChapterLandings } from "@/lib/questions/landing";
 import { planHref } from "@/lib/homework/links";
@@ -34,7 +38,7 @@ export type NotesRecent = {
 };
 
 export async function loadContinue(
-  db: SupabaseClient,
+  db: Db,
   userId: string,
   notes: readonly NotesRecent[],
   examIds: Record<string, string | null>
@@ -60,17 +64,8 @@ export async function loadContinue(
   return pickContinue([...practice, ...notesItems, ...(homework ? [homework] : [])]);
 }
 
-type QuestionChapterRow = {
-  id: string;
-  chapter_id: string | null;
-  chapter: {
-    name: string;
-    subject: { id: string; name: string; exam_id: string; exam: { name: string } | null } | null;
-  } | null;
-};
-
 async function loadPracticeItems(
-  db: SupabaseClient,
+  db: Db,
   userId: string,
   examIds: Record<string, string | null>
 ): Promise<ContinueItem[]> {
@@ -82,9 +77,10 @@ async function loadPracticeItems(
     .order("created_at", { ascending: false })
     .limit(RECENT_ANSWERS);
   if (error) throw new Error(error.message);
-  const rows: PracticeRow[] = ((data ?? []) as { ref_id: string | null; created_at: string; surface: string | null }[])
-    .filter((r) => r.ref_id)
-    .map((r) => ({ questionId: r.ref_id as string, at: r.created_at, surface: r.surface }));
+  const rows: PracticeRow[] = [];
+  for (const r of data ?? []) {
+    if (r.ref_id) rows.push({ questionId: r.ref_id, at: r.created_at, surface: typeof r.surface === "string" ? r.surface : null });
+  }
   const ids = [...new Set(rows.filter((r) => r.surface === "bank" || r.surface === "board").map((r) => r.questionId))];
   if (ids.length === 0) return [];
 
@@ -104,7 +100,7 @@ async function loadPracticeItems(
   for (const [slug, id] of Object.entries(examIds)) if (id) slugById.set(id, slug);
   const landingByChapter = new Map(landings.map((l) => [l.chapterId, landingHref(l)]));
   const chapterOf = new Map<string, ChapterInfo>();
-  for (const q of (qs.data ?? []) as unknown as QuestionChapterRow[]) {
+  for (const q of qs.data ?? []) {
     const s = q.chapter?.subject;
     if (!q.chapter_id || !q.chapter || !s) continue;
     chapterOf.set(q.id, {
@@ -124,7 +120,7 @@ async function loadPracticeItems(
 
 /** The homework plan the student last opened, from the day's first homework
  *  view (lib/activity/views: one row per day, with the page's address). */
-async function loadHomeworkItem(db: SupabaseClient, userId: string): Promise<ContinueItem | null> {
+async function loadHomeworkItem(db: Db, userId: string): Promise<ContinueItem | null> {
   const { data, error } = await db
     .from("user_activity")
     .select("created_at, path:metadata->>path")
@@ -136,8 +132,8 @@ async function loadHomeworkItem(db: SupabaseClient, userId: string): Promise<Con
   if (error) throw new Error(error.message);
   let slug: string | null = null;
   let at = "";
-  for (const r of (data ?? []) as { created_at: string; path: string | null }[]) {
-    slug = planSlugOf(r.path);
+  for (const r of data ?? []) {
+    slug = planSlugOf(typeof r.path === "string" ? r.path : null);
     if (slug) {
       at = r.created_at;
       break;
@@ -150,7 +146,7 @@ async function loadHomeworkItem(db: SupabaseClient, userId: string): Promise<Con
   return {
     key: `homework:${slug}`,
     kind: "homework",
-    title: plan.data.title as string,
+    title: plan.data.title,
     subtitle: "Homework",
     href: planHref(slug),
     at,

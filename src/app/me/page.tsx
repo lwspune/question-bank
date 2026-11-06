@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import { ArrowRight } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import { getSessionUser } from "@/lib/auth";
-import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { createSupabaseServerClient, createTypedServerClient } from "@/lib/supabase/server";
 import { logActivityOnce } from "@/lib/activity/service";
 import { surfaceViewedEvent } from "@/lib/activity/views";
 import { getUserAttempts } from "@/lib/mocks/query";
@@ -92,7 +92,7 @@ export default async function MePage() {
   // Where they were last working, across the bank, /board, notes and homework
   // (2026-11-06). Best effort: a failed read costs the card, never the page.
   const continueItems = await loadContinue(
-    db,
+    createTypedServerClient(),
     user.id,
     notes.recent.map((r) => ({ ...r, ...notesTopicTitles(r) })),
     examIds
