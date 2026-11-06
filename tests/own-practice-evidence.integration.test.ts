@@ -37,13 +37,17 @@ describe.skipIf(!HAS_ENV)("get_own_practice_evidence", () => {
     const url = process.env.NEXT_PUBLIC_SUPABASE_URL!;
     admin = createClient(url, process.env.SUPABASE_SERVICE_ROLE_KEY!, { auth: { persistSession: false } });
 
-    // Five real PUBLIC MCQs with a full taxonomy, from the seeded test bank.
+    // Five real PUBLIC MCQs with a full taxonomy, from the SEED (source_file
+    // 'testdb-seed'), never another file's fixtures: those are deleted by their
+    // own files mid-run, which emptied this test's rows in a full parallel run.
     const { data, error: qErr } = await admin
       .from("questions")
       .select("id, exams(name), subjects(name), chapters(name), subtopics(name)")
+      .eq("source_file", "testdb-seed")
       .eq("visibility", "PUBLIC")
       .eq("question_format", "mcq")
       .not("subtopic_id", "is", null)
+      .order("id")
       .limit(5);
     if (qErr) throw new Error(qErr.message);
     const name = (v: unknown) => (Array.isArray(v) ? v[0]?.name : (v as { name?: string } | null)?.name) ?? "";
