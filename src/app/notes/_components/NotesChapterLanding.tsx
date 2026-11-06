@@ -55,10 +55,18 @@ const NotesTopPyqs = dynamic(() => import("./NotesTopPyqs"));
  * Notes subjects that show the chapter's Top 10 PYQs (2026-11-04). The list
  * comes from the subject's homework plan, so a subject needs a reviewed,
  * published plan first; NDA Maths is the first, CDS Maths the second
- * (2026-11-05). Adding a subject changes its shipped notes pages, so it is the
- * owner's call each time.
+ * (2026-11-05), JEE Mains Maths, Physics and Chemistry next (2026-11-06; a JEE
+ * chapter left out of its plan, as off the 2024 syllabus, shows no section).
+ * Adding a subject changes its shipped notes pages, so it is the owner's call
+ * each time.
  */
-const TOP_PYQS_SUBJECTS: ReadonlySet<string> = new Set(["nda-maths", "cds-maths"]);
+const TOP_PYQS_SUBJECTS: ReadonlySet<string> = new Set([
+  "nda-maths",
+  "cds-maths",
+  "jee-mains-maths",
+  "jee-mains-physics",
+  "jee-mains-chemistry",
+]);
 
 /**
  * Chapter-agnostic renderer for a /notes chapter landing page. Each chapter's
