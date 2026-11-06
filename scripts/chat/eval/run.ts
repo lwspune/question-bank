@@ -38,7 +38,6 @@ import { answerWithV, type VContextOptions } from "../../../src/lib/chat/answer"
 import { readChatSettings } from "../../../src/lib/chat/settingsAdmin";
 import { readExamStrategyUncached } from "../../../src/lib/chat/examStrategyServer";
 import { loadExamCatalogPayload, shapeExamCatalog } from "../../../src/lib/exam/allExamStats";
-import { getNotesExamGroups } from "../../../src/lib/notes/notesNav";
 import { readChapterLandingsUncached } from "../../../src/lib/questions/landing";
 import { readSubtopicIndexUncached, withSubtopics } from "../../../src/lib/chat/subtopicIndex";
 import { loadSimilarId, loadVQuestion, searchVQuestions } from "../../../src/lib/chat/questionToolsServer";
@@ -131,8 +130,7 @@ async function main() {
   const catalogPayload = await loadExamCatalogPayload(anon);
   const catalog = shapeExamCatalog(
     new Map(catalogPayload.counts),
-    new Map(catalogPayload.ids),
-    new Set(getNotesExamGroups().map((g) => g.slug))
+    new Map(catalogPayload.ids)
   );
 
   function contextFor(c: Case, notesBrief: string | null): VContextOptions {

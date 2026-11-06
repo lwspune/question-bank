@@ -9,45 +9,30 @@ import type { KindCounts } from "@/lib/exam/questionCounts";
 
 describe("pickExamCardHref", () => {
   const nda = getExamBySlug("nda")!; // has a /guide subtree
-  const mhtcet = getExamBySlug("mht-cet")!; // gained a /guide subtree 2026-08-22
-  const neet = getExamBySlug("neet")!; // no guide, no shipped notes yet
+  const mhtcet = getExamBySlug("mht-cet")!; // has a guide AND notes
+  const neet = getExamBySlug("neet")!;
 
-  it("prefers the guide subtree when the exam has one", () => {
-    expect(pickExamCardHref(nda, "uuid-nda", true)).toBe("/guide/nda");
-  });
-
-  it("falls back to the notes hub when there's no guide but notes have shipped", () => {
-    // A synthetic entry: real exams kept gaining guides (mht-cet 2026-08-22,
-    // jee-mains 2026-09-30) and each one broke a test that named a real exam.
-    const notesOnly = { ...neet, guidesPath: null, notesPath: "/notes/neet" };
-    expect(pickExamCardHref(notesOnly, "uuid-neet", true)).toBe("/notes/neet");
-  });
-
-  it("prefers the guide over the notes hub for mht-cet, which now has both", () => {
-    expect(pickExamCardHref(mhtcet, "uuid-cet", true)).toBe("/guide/mht-cet");
-  });
-
-  // The exam home lists every chapter page and the mocks, and it is crawlable.
-  // The old fallback, /browse?examId=, is disallowed by robots.ts, so for
-  // Google the card led nowhere (2026-10-01).
-  it("falls back to the exam home when there's neither a guide nor shipped notes", () => {
-    expect(pickExamCardHref(neet, "uuid-neet", false)).toBe("/exams/neet");
+  // Site-coherence review (2026-11-07): the homepage's exam links used to go
+  // to a guide, a notes hub or an exam home depending on what each exam had,
+  // so SSC CGL Tier I and Tier II landed on different kinds of page. Every
+  // exam now has a home that links on to its guide, notes, mocks and homework,
+  // so every card goes there.
+  it("sends every exam to its exam home, even one with a guide", () => {
+    expect(pickExamCardHref(nda, "uuid-nda")).toBe("/nda");
+    expect(pickExamCardHref(mhtcet, "uuid-cet")).toBe("/exams/mht-cet");
+    expect(pickExamCardHref(neet, "uuid-neet")).toBe("/exams/neet");
   });
 
   it("uses the exam home even when the exam UUID is unresolved", () => {
-    expect(pickExamCardHref(neet, null, false)).toBe("/exams/neet");
+    expect(pickExamCardHref(neet, null)).toBe("/exams/neet");
   });
 
   it("falls back to the bank for an exam with no public content (its exam home 404s)", () => {
     // A made-up entry: whether any REAL exam has no public content changes as
     // exams launch (none did on 2026-11-05, which failed the old version of this).
     const empty = { ...neet, noPublicContent: true };
-    expect(pickExamCardHref(empty, "uuid-x", false)).toBe("/browse?examId=uuid-x");
-    expect(pickExamCardHref(empty, null, false)).toBe("/browse");
-  });
-
-  it("guide wins even when notes have also shipped", () => {
-    expect(pickExamCardHref(nda, "uuid-nda", true)).toBe("/guide/nda");
+    expect(pickExamCardHref(empty, "uuid-x")).toBe("/browse?examId=uuid-x");
+    expect(pickExamCardHref(empty, null)).toBe("/browse");
   });
 });
 
@@ -58,7 +43,6 @@ describe("shapeExamCatalog", () => {
       ["MHT-CET", { pyq: 6638, practice: 0 }],
       ["Maharashtra HSC Class 12", { pyq: 343, practice: 1092 }],
     ]);
-    const notesSlugs = new Set<string>(["nda", "mht-cet"]);
     const examIds = new Map<string, string>([
       ["nda", "id-nda"],
       ["mht-cet", "id-cet"],
@@ -67,8 +51,7 @@ describe("shapeExamCatalog", () => {
 
     const { exams, totalPublicQuestions, totals } = shapeExamCatalog(
       counts,
-      examIds,
-      notesSlugs
+      examIds
     );
 
     // Registry order: nda first.
@@ -76,7 +59,7 @@ describe("shapeExamCatalog", () => {
     expect(exams[0].totalPublicQuestions).toBe(8259);
     // Both kinds travel separately, so a surface can say which it shows (A1).
     expect(exams[0].counts).toEqual({ pyq: 5130, practice: 3129 });
-    expect(exams[0].href).toBe("/guide/nda");
+    expect(exams[0].href).toBe("/nda");
 
     const board = exams.find((e) => e.slug === "mh-hsc-12")!;
     expect(board.totalPublicQuestions).toBe(1435);
@@ -88,7 +71,7 @@ describe("shapeExamCatalog", () => {
     // Keep coverage of the TRUE case, which is what this assertion was for —
     // Class 9 is not a board year, so it can never acquire PYQs.
     expect(exams.find((e) => e.slug === "mh-sb-9")!.practiceOnly).toBe(true);
-    // No guide, no shipped notes → the exam home.
+    // Every card goes to the exam home.
     expect(board.href).toBe("/exams/mh-hsc-12");
 
     // Grand total sums every exam's count (missing → 0), and so does each kind.
@@ -99,8 +82,7 @@ describe("shapeExamCatalog", () => {
   it("treats a missing count as zero without throwing", () => {
     const { exams, totalPublicQuestions } = shapeExamCatalog(
       new Map(),
-      new Map(),
-      new Set()
+      new Map()
     );
     expect(exams.every((e) => e.totalPublicQuestions === 0)).toBe(true);
     expect(exams.every((e) => e.counts.pyq === 0 && e.counts.practice === 0)).toBe(true);
@@ -126,8 +108,7 @@ describe("ExamCatalogCachePayload — the unstable_cache serialisation contract"
     const revived = JSON.parse(JSON.stringify(payload)) as ExamCatalogCachePayload;
     const { exams, totalPublicQuestions } = shapeExamCatalog(
       new Map(revived.counts),
-      new Map(revived.ids),
-      new Set(["nda"])
+      new Map(revived.ids)
     );
 
     expect(exams.find((e) => e.examName === "NDA")!.totalPublicQuestions).toBe(9224);
@@ -140,6 +121,6 @@ describe("ExamCatalogCachePayload — the unstable_cache serialisation contract"
     const asMap = new Map<string, KindCounts>([["NDA", { pyq: 9224, practice: 0 }]]);
     expect(JSON.parse(JSON.stringify(asMap))).toEqual({});
     // …and rebuilding from that gives a catalog of zeroes, silently.
-    expect(shapeExamCatalog(new Map(), new Map(), new Set()).totalPublicQuestions).toBe(0);
+    expect(shapeExamCatalog(new Map(), new Map()).totalPublicQuestions).toBe(0);
   });
 });
