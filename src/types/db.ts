@@ -4859,6 +4859,7 @@ export type Database = {
           span: string
         }[]
       }
+      get_own_practice_evidence: { Args: never; Returns: Json }
       get_own_progress_card: { Args: { p_exam_id: string }; Returns: Json }
       get_own_week_study_days: {
         Args: {
@@ -4874,6 +4875,10 @@ export type Database = {
       get_signup_countries: { Args: { p_since: string }; Returns: Json }
       get_student_performance: { Args: { p_user_id: string }; Returns: Json }
       get_student_performance_for_staff: {
+        Args: { p_user_id: string }
+        Returns: Json
+      }
+      get_student_practice_evidence: {
         Args: { p_user_id: string }
         Returns: Json
       }
