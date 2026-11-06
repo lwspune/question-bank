@@ -17,8 +17,12 @@ const upsert = vi.fn(async () => ({ error: null }));
 const insert = vi.fn(async () => ({ error: null }));
 const from = vi.fn(() => ({ upsert, insert }));
 vi.mock("@/lib/supabase/admin", () => ({ createSupabaseAdminClient: vi.fn(() => ({ from })) }));
+vi.mock("@/lib/supabase/server", () => ({ createSupabaseServerClient: vi.fn(() => ({})) }));
+const profile = { current: null as null | { mobile: string | null; city: string | null } };
+const getOwnProfile = vi.fn(async () => profile.current);
+vi.mock("@/lib/profile/service", () => ({ getOwnProfile }));
 
-const { POST } = await import("@/app/api/tutor-interest/route");
+const { GET, POST } = await import("@/app/api/tutor-interest/route");
 
 const post = (body: unknown) =>
   new NextRequest("http://localhost/api/tutor-interest", {
@@ -30,6 +34,35 @@ const post = (body: unknown) =>
 beforeEach(() => {
   vi.clearAllMocks();
   user.current = null;
+  profile.current = null;
+});
+
+/**
+ * GET: what the cached /tutor page asks from the browser (2026-11-06), so the
+ * page itself reads no session. Per-user, so never cacheable.
+ */
+describe("GET /api/tutor-interest", () => {
+  it("answers signed-out without touching the profile", async () => {
+    const res = await GET();
+    expect(res.status).toBe(200);
+    expect(await res.json()).toEqual({ signedIn: false, hasMobile: false, hasCity: false });
+    expect(getOwnProfile).not.toHaveBeenCalled();
+    expect(res.headers.get("cache-control")).toContain("no-store");
+  });
+
+  it("says which follow-up questions a signed-in account still needs", async () => {
+    user.current = { id: "u1", email: "a@example.com" };
+    profile.current = { mobile: "9876543210", city: null };
+    const res = await GET();
+    expect(await res.json()).toEqual({ signedIn: true, hasMobile: true, hasCity: false });
+    expect(res.headers.get("cache-control")).toContain("no-store");
+  });
+
+  it("treats a missing profile as nothing on file", async () => {
+    user.current = { id: "u1", email: "a@example.com" };
+    const res = await GET();
+    expect(await res.json()).toEqual({ signedIn: true, hasMobile: false, hasCity: false });
+  });
 });
 
 describe("POST /api/tutor-interest", () => {

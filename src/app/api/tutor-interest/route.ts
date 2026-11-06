@@ -1,5 +1,6 @@
 /**
  * POST /api/tutor-interest — the /tutor interest check's write (migration 0190).
+ * GET — the visitor's sign-in and profile state for the cached /tutor page.
  *
  * Signed-in only (owner, 2026-10-28), so every answer belongs to someone we can
  * reach: session → rate-limit (IP) → validate (shared pure validator) →
@@ -11,6 +12,8 @@ import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { checkAndIncrement } from "@/lib/rate-limit";
 import { getClientIp } from "@/lib/http";
 import { getSessionUser } from "@/lib/auth";
+import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { getOwnProfile } from "@/lib/profile/service";
 import { readExamSlugFromCookieString } from "@/lib/exam/examNav";
 import { normaliseFrom, validateTutorInterest } from "@/lib/tutor/interest";
 
@@ -18,6 +21,29 @@ export const maxDuration = 15;
 
 const HOUR_MS = 60 * 60 * 1000;
 const SUBMIT_LIMIT = 10; // per IP per hour; a person answers once or twice
+
+const NO_STORE = { "Cache-Control": "no-store, private" };
+
+/**
+ * GET: what the cached /tutor page asks from the browser (2026-11-06), so the
+ * page reads no session itself: is the visitor signed in, and are their mobile
+ * and city already on file (each skips a follow-up question). Per-user, so
+ * never cached. The page only calls it when a sign-in cookie exists.
+ */
+export async function GET() {
+  try {
+    const user = await getSessionUser();
+    if (!user) return NextResponse.json({ signedIn: false, hasMobile: false, hasCity: false }, { headers: NO_STORE });
+    const profile = await getOwnProfile(createSupabaseServerClient(), user.id);
+    return NextResponse.json(
+      { signedIn: true, hasMobile: !!profile?.mobile, hasCity: !!profile?.city },
+      { headers: NO_STORE }
+    );
+  } catch (err) {
+    console.error("tutor interest status failed:", err instanceof Error ? err.message : err);
+    return NextResponse.json({ error: "Could not load your details." }, { status: 500, headers: NO_STORE });
+  }
+}
 
 export async function POST(request: NextRequest) {
   try {
