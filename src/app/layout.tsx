@@ -3,7 +3,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter, Noto_Serif_Devanagari, Source_Serif_4 } from "next/font/google";
 import { Toaster } from "sonner";
 import OfflineBanner from "@/components/OfflineBanner";
-import { Analytics } from "@vercel/analytics/next";
+import VercelAnalytics from "@/components/analytics/VercelAnalytics";
 import AcquisitionCapture from "@/components/acquisition/AcquisitionCapture";
 import ClarityScript from "@/components/analytics/ClarityScript";
 import NavigationProgress from "@/components/NavigationProgress";
@@ -51,7 +51,7 @@ const SITE_DESCRIPTION =
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${SITE_NAME} — Previous year questions (PYQs) for Indian entrance & board exams`,
+    default: `${SITE_NAME}: Previous year questions (PYQs) for Indian entrance & board exams`,
     template: `%s · ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
@@ -76,12 +76,12 @@ export const metadata: Metadata = {
     type: "website",
     url: SITE_URL,
     siteName: SITE_NAME,
-    title: `${SITE_NAME} — Previous year questions (PYQs) for Indian entrance & board exams`,
+    title: `${SITE_NAME}: Previous year questions (PYQs) for Indian entrance & board exams`,
     description: SITE_DESCRIPTION,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${SITE_NAME} — Previous year questions (PYQs) for Indian entrance & board exams`,
+    title: `${SITE_NAME}: Previous year questions (PYQs) for Indian entrance & board exams`,
     description: SITE_DESCRIPTION,
   },
   robots: {
@@ -125,7 +125,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             closeButton
             toastOptions={{ duration: 3500 }}
           />
-          <Analytics />
+          <VercelAnalytics />
           {/* Client island: parks first-touch attribution in a cookie. Touches no
               server API, so prerendered routes stay prerendered. */}
           <AcquisitionCapture />

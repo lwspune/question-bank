@@ -46,7 +46,7 @@ import { sortByDemand, withChosenExamFirst } from "@/lib/exam/demandOrder";
 // Title <= 70 and description <= 160 characters: Bing flags both past those
 // lengths ("Title too long", "Meta Description too long or too short"), and
 // search results cut the rest. The old description was 295 characters.
-export const PAGE_TITLE = "PYQ Vault — Previous Year Question Papers for Entrance & Board Exams";
+export const PAGE_TITLE = "PYQ Vault: Previous Year Question Papers for Entrance & Board Exams";
 export const PAGE_DESCRIPTION =
   "Free previous year questions (PYQs) for NDA, MHT-CET, JEE, NEET, CDS, MPSC and Maharashtra " +
   "boards, with worked answers, chapter notes and timed mock tests.";
