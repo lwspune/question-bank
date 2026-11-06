@@ -61,6 +61,10 @@ export const SURFACES = [
   // A /board chapter's Revision tab opened (2026-11-03), with the chapter's
   // address: whether board students read the quick-revision sheets at all.
   "board_revision",
+  // "See it" opened under a board question's "Asked in NDA" line (2026-11-06,
+  // migration 0220), with the /board chapter's or homework page's address:
+  // whether students open the matched past question at all.
+  "exam_twin",
 ] as const;
 
 export type Surface = (typeof SURFACES)[number];

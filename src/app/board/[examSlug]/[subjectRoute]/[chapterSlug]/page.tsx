@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import AppHeader from "@/components/AppHeader";
 import Breadcrumbs from "@/components/nav/Breadcrumbs";
 import Footer from "@/components/Footer";
-import { createSupabaseAnonClient } from "@/lib/supabase/server";
+import { createSupabaseAnonClient, createTypedAnonClient } from "@/lib/supabase/server";
 import { BOARD_EXAMS, getExamBySlug } from "@/lib/exam/examContext";
 import { boardChapterTitle } from "@/lib/seo/pageTitles";
 import {
@@ -23,6 +23,8 @@ import { loadRevisionSheet } from "@/lib/board/revision/registry";
 import type { RevisionSheet } from "@/lib/board/revision/types";
 import BoardRevisionSheet from "@/app/board/_components/BoardRevisionSheet";
 import { hotOnly } from "@/lib/seo/prerenderBudget";
+import { getTwinsForQuestions, type QuestionTwins } from "@/lib/crossExam/query";
+import { ExamTwinChapterLine, ExamTwinsProvider } from "@/components/crossExam/ExamTwins";
 import { HOT_BOARD_CHAPTERS } from "@/lib/seo/prerenderHotPaths";
 
 type Params = { examSlug: string; subjectRoute: string; chapterSlug: string };
@@ -141,6 +143,20 @@ export async function generateMetadata(props: { params: Promise<Params> }): Prom
   };
 }
 
+/**
+ * The page's exam twins ("Asked in NDA", migration 0220). Loaded here, not in
+ * load(), which generateMetadata also runs. A failed read drops the line, never
+ * the page: the book is the page, the line is a note on it.
+ */
+async function loadTwins(questionIds: string[]): Promise<QuestionTwins> {
+  try {
+    return await getTwinsForQuestions(createTypedAnonClient(), questionIds);
+  } catch (e) {
+    console.error("board chapter exam twins:", e instanceof Error ? e.message : e);
+    return { links: {}, targets: {} };
+  }
+}
+
 export default async function BoardChapterPage(props: { params: Promise<Params> }) {
   const params = await props.params;
   const data = await load(params);
@@ -148,6 +164,13 @@ export default async function BoardChapterPage(props: { params: Promise<Params> 
   const { chapter } = data;
   const pyqCount = data.pyqSittings.reduce((n, s) => n + s.questions.length, 0);
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+  // Every question on the page: the book's, then the board papers'. The Top 10
+  // tab shows a subset of the board papers' questions.
+  const questionIds = [
+    ...chapter.groups.flatMap((g) => g.blocks.flatMap((b) => b.questions.map((q) => q.id))),
+    ...data.pyqSittings.flatMap((s) => s.questions.map((q) => q.id)),
+  ];
+  const twins = await loadTwins(questionIds);
 
   return (
     <>
@@ -174,18 +197,25 @@ export default async function BoardChapterPage(props: { params: Promise<Params> 
           </p>
         </header>
 
-        <LearnChapterLink examSlug={params.examSlug} subjectName={chapter.subjectName} chapterName={chapter.chapterName} />
+        <ExamTwinsProvider twins={twins} supabaseUrl={supabaseUrl}>
+          <ExamTwinChapterLine
+            questionIds={questionIds}
+            noun={pyqCount > 0 ? "textbook and board-paper questions" : "textbook questions"}
+          />
 
-        <BoardReader
-          groups={chapter.groups}
-          pyqSittings={data.pyqSittings}
-          paperCounts={data.paperCounts}
-          top={data.top}
-          revision={data.revision ? { node: <BoardRevisionSheet sheet={data.revision} /> } : null}
-          supabaseUrl={supabaseUrl}
-          chapterName={chapter.chapterName}
-          examName={data.examName}
-        />
+          <LearnChapterLink examSlug={params.examSlug} subjectName={chapter.subjectName} chapterName={chapter.chapterName} />
+
+          <BoardReader
+            groups={chapter.groups}
+            pyqSittings={data.pyqSittings}
+            paperCounts={data.paperCounts}
+            top={data.top}
+            revision={data.revision ? { node: <BoardRevisionSheet sheet={data.revision} /> } : null}
+            supabaseUrl={supabaseUrl}
+            chapterName={chapter.chapterName}
+            examName={data.examName}
+          />
+        </ExamTwinsProvider>
       </main>
       <Footer />
     </>

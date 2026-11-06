@@ -5,7 +5,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import Footer from "@/components/Footer";
 import Breadcrumbs from "@/components/nav/Breadcrumbs";
-import { createSupabaseAnonClient } from "@/lib/supabase/server";
+import { createSupabaseAnonClient, createTypedAnonClient } from "@/lib/supabase/server";
 import { getPlanDayPage, getPlanLinks } from "@/lib/homework/query";
 import { homeworkOfferFacts, homeworkOfferLead } from "@/lib/billing/passOfferLead";
 import { adjacentDays, homeworkDayView } from "@/lib/homework/dayView";
@@ -14,6 +14,8 @@ import { loadBoardQuestions } from "@/lib/questionPapers/query";
 import HomeworkDownload from "../../../_components/HomeworkDownload";
 import HomeworkDayReader from "../../../_components/HomeworkDayReader";
 import { planWording } from "@/lib/homework/display";
+import { getTwinsForQuestions } from "@/lib/crossExam/query";
+import { ExamTwinsProvider } from "@/components/crossExam/ExamTwins";
 
 type Params = { planSlug: string; day: string };
 
@@ -69,6 +71,15 @@ export default async function HomeworkDayPage(props: { params: Promise<Params> }
   const own = links.find((l) => l.slug === plan.slug);
   const offer = own ? homeworkOfferLead(homeworkOfferFacts({ ...plan, perDay: own.perDay }, links)) : null;
   const parts = slots.reduce((n, s) => n + s.questions.length, 0);
+  // "Asked in NDA" under a board question (migration 0220). Same rule as the
+  // offer above: a failed read drops the line, never the page.
+  const twins = await getTwinsForQuestions(
+    createTypedAnonClient(),
+    slots.flatMap((s) => s.questions.map((q) => q.id))
+  ).catch((e: unknown) => {
+    console.error("homework day exam twins:", e instanceof Error ? e.message : e);
+    return { links: {}, targets: {} };
+  });
 
   return (
     <>
@@ -95,15 +106,17 @@ export default async function HomeworkDayPage(props: { params: Promise<Params> }
           <HomeworkDownload planSlug={plan.slug} day={day} planTitle={plan.title} offer={offer} />
         </header>
 
-        <HomeworkDayReader
-          slots={slots}
-          examName={plan.examName}
-          dayTitle={`${plan.title}, day ${day}`}
-          planSlug={plan.slug}
-          supabaseUrl={process.env.NEXT_PUBLIC_SUPABASE_URL!}
-          day={day}
-          nextDay={next}
-        />
+        <ExamTwinsProvider twins={twins} supabaseUrl={process.env.NEXT_PUBLIC_SUPABASE_URL!}>
+          <HomeworkDayReader
+            slots={slots}
+            examName={plan.examName}
+            dayTitle={`${plan.title}, day ${day}`}
+            planSlug={plan.slug}
+            supabaseUrl={process.env.NEXT_PUBLIC_SUPABASE_URL!}
+            day={day}
+            nextDay={next}
+          />
+        </ExamTwinsProvider>
 
         <nav aria-label="Other days" className="mt-10 flex items-center justify-between gap-3 border-t pt-4 text-sm">
           {prev ? (
