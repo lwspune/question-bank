@@ -55,6 +55,15 @@ recent member"; the most recent member itself is `false`).
 - A "Consider the following statements" or "Which of the following is correct?" item repeats only
   if the statements test the same facts (order may differ).
 - A group must span at least 2 different sittings (two shifts of one 2022-2025 day are one).
+- **A standard task asked with fresh numbers is a TYPE, not a repeat**, even when the wording is
+  near-identical ("shortest distance between two given lines", "rank of a given word in a
+  dictionary", "number of solutions of a trig equation in an interval"). In the plan a repeat
+  prints only its newest member and never prints the others, so a big repeat group of fresh-number
+  instances hides practice. Keep repeats for the same SPECIFIC question coming back: the same
+  setup, expression or configuration, a few numbers changed.
+- Two items that share a method but where one must first find its own object (one is given the
+  curve, the other derives it from a condition), or whose givens are set up differently (an extra
+  bound, a second function), or that ask different quantities, are a TYPE, not a repeat.
 
 **type**: the same specific task with different data, so that ONE worked example teaches every
 member. Keep it NARROW:
