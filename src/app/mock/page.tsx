@@ -82,7 +82,7 @@ const COPY: Record<string, ExamCopy> = {
   mpsc: {
     tagline: "Prelims & Mains",
     blurb:
-      "Maharashtra Public Service Commission papers (the Group B & C Prelims General Ability Test and the Mains language papers) on each paper's own printed marking scheme.",
+      "Maharashtra Public Service Commission papers (the State Services, Group B & C, Forest and Agriculture Service Prelims, and the Mains language papers) on each paper's own printed marking scheme.",
     icon: Landmark,
   },
 };
