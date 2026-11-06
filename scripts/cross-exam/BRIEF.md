@@ -7,7 +7,8 @@ something false about a real exam, so when unsure, leave it out or list it under
 
 ## Input (read only)
 
-- `evidence/target.md`: every past question of the exam chapter(s) in this run. Header:
+- `evidence/target.md`: the exam's past questions to match in this run: the whole chapter the
+  first time, only the newly added ones after an ingest. Header:
   `### <id> | <paper> | <subtopic>`, or `### <id> | <paper> | <chapter>: <subtopic>` when the run
   covers several chapters (one board chapter can teach more than one exam chapter: match against
   all of them).
