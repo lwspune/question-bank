@@ -16,8 +16,26 @@ import {
 } from "@/components/ui/dialog";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { SCOPE_ALL } from "@/lib/entitlements/access";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { GRANTABLE_SCOPES, SCOPE_ALL } from "@/lib/entitlements/access";
 import type { EntitlementAdminRow } from "@/lib/entitlements/admin";
+
+/** What each grantable scope unlocks, for the scope picker. A scope missing
+ *  here still lists, under its bare name. */
+const SCOPE_LABELS: Record<string, string> = {
+  all: "Everything (all)",
+  mocks: "Premium Pass (mocks)",
+  practice: "Practice Pass (practice)",
+  teacher: "Teacher Pass (teacher)",
+  imat: "IMAT pass (imat)",
+  mcat: "MCAT pass (mcat)",
+};
 
 type Props = {
   initialRows: EntitlementAdminRow[];
@@ -136,16 +154,20 @@ export default function EntitlementsClient({ initialRows, loadError }: Props) {
             </div>
             <div className="space-y-1.5">
               <Label htmlFor="e-scope">Scope</Label>
-              <Input
-                id="e-scope"
-                value={scope}
-                onChange={(ev) => setScope(ev.target.value)}
-                disabled={busy}
-                autoComplete="off"
-              />
+              <Select value={scope} onValueChange={setScope} disabled={busy}>
+                <SelectTrigger id="e-scope">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  {GRANTABLE_SCOPES.map((s) => (
+                    <SelectItem key={s} value={s}>
+                      {SCOPE_LABELS[s] ?? s}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
               <p className="text-xs text-muted-foreground">
-                <code>all</code> = full premium. Leave as-is unless granting a
-                single item.
+                Everything unlocks every pass. Pick one pass to give just that.
               </p>
             </div>
             <div className="space-y-1.5">

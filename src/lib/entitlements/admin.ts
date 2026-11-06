@@ -13,7 +13,7 @@
  */
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { isValidEmail } from "@/lib/auth/credentials";
-import { SCOPE_ALL } from "./access";
+import { GRANTABLE_SCOPES, SCOPE_ALL } from "./access";
 
 export type GrantInput = {
   email: string;
@@ -36,6 +36,9 @@ export function validateGrant(input: GrantInput, nowMs: number): GrantValidation
   }
   if (!input.scope || !input.scope.trim()) {
     return { ok: false, field: "scope", message: "Scope is required." };
+  }
+  if (!GRANTABLE_SCOPES.includes(input.scope.trim())) {
+    return { ok: false, field: "scope", message: `Unknown scope. Use one of: ${GRANTABLE_SCOPES.join(", ")}.` };
   }
   if (input.expiresAt !== null) {
     const t = new Date(input.expiresAt).getTime();
