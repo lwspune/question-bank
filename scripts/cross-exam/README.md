@@ -50,21 +50,47 @@ A run = one exam chapter against the board chapters that teach it.
 
 Full mapping (NDA, MHT-CET, JEE, NEET against CBSE and State Board, Class 11 and 12) is about
 72,000 board-question-by-exam comparisons and about 33,000 proposed pairs: too many for the main
-session to read each. Agreed method: **two agents per slice, independently**; pairs both propose
-with the same kind are accepted; the main session settles every disagreement and reads a random
-sample of the agreed pairs per subject. **Calibrate it first** on the pilot: re-run NDA Matrices
-with two agents and compare against the hand-settled `nda-maths-matrices-2026-11-06.json`
-(precision and recall of the agreed set); scale only if both hold up. Order: finish NDA Maths, then
-the other exams. Chemistry and Biology get a one-chapter pilot each first: "numbers" and "same
-question" need their own definitions there (NEET Biology tests NCERT facts).
+session to read each. Order: finish NDA Maths, then the other exams. Chemistry and Biology get a
+one-chapter pilot each first: "numbers" and "same question" need their own definitions there (NEET
+Biology tests NCERT facts), and the calibration below is for Maths only.
+
+### Calibration (2026-11-06, NDA Matrices, `calibrate.ts`)
+
+Two independent passes (A, B: 3 agents each, same BRIEF, no access to the settled file), scored
+against the hand-settled run:
+
+| | firm pairs | precision vs the settled set | recall |
+|---|---|---|---|
+| pass A | 128 | 93.8% | 67.8% |
+| pass B | 124 | 97.6% | 68.4% |
+| firm in BOTH (any kind) | 113 | 98.2% | 60.8% |
+
+The 9 firm pairs outside the settled set were read: **all 9 are real matches the pilot missed**
+(added to the run). So a pair that EITHER pass marks firm was right every time here (139 of 139).
+What the passes miss is almost only "similar" (32 of the 34 settled pairs neither raised): boundary
+cases like a 2x2 "is it invertible" vs a 3x3 statement question. **The kind is the weak point:** the
+passes disagreed on it for 31 of the 113; taking the weaker kind gave 1 false "Asked" line but
+understated 26 real "new numbers" matches as "similar".
+
+**The method, from this:**
+1. Two passes per slice.
+2. Firm in both, same kind: accept as is.
+3. Firm in both, kinds differ: the main session picks the kind (reads the pair).
+4. Firm in one pass only: the main session reads it (all 26 were right here; keep reading until
+   another subject confirms that).
+5. Unsure only: drop. No sweep of unmatched exam questions (what it finds is "similar").
+
+Here that is 57 pairs read instead of 185, about 70% less. Cost: about 190,000 agent tokens per
+slice of about 135 board questions, so about 1.2 million per pass pair for a 400-question chapter.
 
 ## Runs so far
 
 | run | exam chapter | board chapters | pairs | board q matched | exam q with a twin |
 |---|---|---|---|---|---|
-| `nda-maths-matrices-2026-11-06` | NDA Matrices & Determinants (181) | SB XI Determinants and Matrices, HSC XII Matrices (406) | 177 (8 exact, 75 numbers, 94 similar) | 139 / 406 | 60 / 181 (26 exact or numbers) |
+| `nda-maths-matrices-2026-11-06` | NDA Matrices & Determinants (181) | SB XI Determinants and Matrices, HSC XII Matrices (406) | 186 (8 exact, 74 numbers, 104 similar) | 143 / 406 | 62 / 181 (26 exact or numbers) |
 
 Pilot method: 3 agents, then the main session read all 185 proposed pairs: kept all 163 firm
 matches (3 re-labelled numbers -> similar), settled the 22 unsure (12 kept, 10 rejected), added 2
-missed pairs. What NDA asks that the board books do not drill: property shortcuts (|adj A|,
+missed pairs. The calibration then added 9 more and moved one numbers -> similar (a matrix that is
+its own inverse). What NDA asks that the board books do not drill: property shortcuts (|adj A|,
 det(kA), cyclic determinants, triangle-trig determinants, counting matrices).

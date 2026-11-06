@@ -80,6 +80,12 @@
    "why": "both: adjoint of a 3x3 numeric matrix"
   },
   {
+   "source": "15fed002-4246-4307-8491-20a6165382a1",
+   "target": "13717c35-3372-413e-8ce6-0ca5e3502c22",
+   "kind": "similar",
+   "why": "value of the unknown that makes a 2x2 determinant zero"
+  },
+  {
    "source": "169aa78b-93fa-467c-97f6-6aadd8ea95bc",
    "target": "21209e31-0e48-4d2a-8703-4d6dd3f5d06a",
    "kind": "similar",
@@ -136,14 +142,20 @@
   {
    "source": "274ca62d-8261-4b47-9894-4711669c2c38",
    "target": "6238e554-e98a-4a3e-b735-1496a72da7b7",
-   "kind": "numbers",
-   "why": "both: inverse of a 2x2 numeric matrix"
+   "kind": "similar",
+   "why": "both: inverse of a 2x2 matrix; the board matrix is its own inverse"
   },
   {
    "source": "290a1bbc-f617-4aa3-ab2a-12a01eb8d084",
    "target": "1e76ff0d-9c2a-42c2-8dc6-984703d7544b",
    "kind": "similar",
    "why": "which rearrangement of rows and columns (interchange, transpose) gives the same determinant"
+  },
+  {
+   "source": "290a1bbc-f617-4aa3-ab2a-12a01eb8d084",
+   "target": "64652e86-38c8-48d8-b9d7-c37cf79b027c",
+   "kind": "similar",
+   "why": "determinant unchanged by transposing and reordering rows and columns"
   },
   {
    "source": "2a86c8e4-f8fa-4d02-8d0d-c9f42bbf0604",
@@ -222,6 +234,12 @@
    "target": "6b28b013-e38f-42a3-b184-9bf040dd0102",
    "kind": "similar",
    "why": "consistency of three linear equations in two unknowns by the 3x3 determinant test"
+  },
+  {
+   "source": "3c8b5c66-61bd-4242-a25d-f91d2944cceb",
+   "target": "de0e9002-1c3f-4165-a5a8-575b68daf59f",
+   "kind": "similar",
+   "why": "3x3 determinant whose rows are in arithmetic progression is zero"
   },
   {
    "source": "3def8024-a681-4ec7-9661-4a7af8167083",
@@ -416,10 +434,22 @@
    "why": "values of k for which a 3x3 matrix is singular"
   },
   {
+   "source": "6a11a697-4f62-48b0-aef2-0157dd2de166",
+   "target": "f4b151c6-1a58-437a-a334-6bda01c0f2cd",
+   "kind": "similar",
+   "why": "expansion of a 3x3 determinant along a row with its cofactors"
+  },
+  {
    "source": "6a5274d3-873d-4c2e-bc86-dd32b9d8104e",
    "target": "486a9fce-2497-49e3-a827-32ccec6085ed",
    "kind": "numbers",
    "why": "both: inverse of a 3x3 numeric matrix"
+  },
+  {
+   "source": "6b92573b-6866-4b65-b40c-983cf74337e6",
+   "target": "1f144181-e08f-47aa-9329-27b52b43e2ec",
+   "kind": "similar",
+   "why": "A(adj A) = |A| I for a given matrix"
   },
   {
    "source": "6b92573b-6866-4b65-b40c-983cf74337e6",
@@ -492,6 +522,18 @@
    "target": "6b28b013-e38f-42a3-b184-9bf040dd0102",
    "kind": "numbers",
    "why": "find k so that three linear equations in two unknowns are consistent"
+  },
+  {
+   "source": "77ebc09d-ae98-4849-ad96-52bed318ab1a",
+   "target": "de0e9002-1c3f-4165-a5a8-575b68daf59f",
+   "kind": "similar",
+   "why": "3x3 determinant whose rows are in arithmetic progression is zero"
+  },
+  {
+   "source": "785e1811-563e-4ad4-b36e-ff46939eebc3",
+   "target": "1f144181-e08f-47aa-9329-27b52b43e2ec",
+   "kind": "similar",
+   "why": "A(adj A) = |A| I for a given matrix"
   },
   {
    "source": "785e1811-563e-4ad4-b36e-ff46939eebc3",
@@ -570,6 +612,12 @@
    "target": "18f89674-848b-4bae-903d-a5a7a870544f",
    "kind": "similar",
    "why": "roots of a 3x3 determinant equation in x, found by taking out the row sum"
+  },
+  {
+   "source": "831648af-8a02-47ec-8500-9f37fd491889",
+   "target": "b030202b-f60b-46d8-b0a4-d6dd23e10ceb",
+   "kind": "similar",
+   "why": "roots of a 3x3 determinant equation by adding all rows"
   },
   {
    "source": "841e10bb-3ceb-4e76-8491-a2e73db8a720",
@@ -1044,6 +1092,12 @@
    "target": "c0398a94-8ff3-43ba-8ac2-85f4ac761442",
    "kind": "similar",
    "why": "both: A(adj A) for a given numeric matrix equals |A| I (2x2 on board, 3x3 in NDA)"
+  },
+  {
+   "source": "f718cb00-ab67-438f-9b39-e26a1177fbda",
+   "target": "1f144181-e08f-47aa-9329-27b52b43e2ec",
+   "kind": "similar",
+   "why": "A(adj A) = |A| I for a given matrix"
   },
   {
    "source": "f718cb00-ab67-438f-9b39-e26a1177fbda",
