@@ -10,7 +10,7 @@
  */
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
-import { mustSignIn } from "./helpers/fixture";
+import { mustSignIn, SIGN_IN_TEST_TIMEOUT_MS } from "./helpers/fixture";
 import { fetchOwnPracticeEvidence } from "@/lib/performance/practiceQuery";
 
 const HAS_ENV =
@@ -138,7 +138,7 @@ describe.skipIf(!HAS_ENV)("get_own_practice_evidence", () => {
     // The other student has one bank answer of their own; it is theirs alone.
     const ev = await fetchOwnPracticeEvidence(other);
     expect(ev.rows.map((r) => r.q)).toEqual([qs[4].id]);
-  });
+  }, SIGN_IN_TEST_TIMEOUT_MS);
 
   it("refuses a student who asks for someone else's evidence by id", async () => {
     const { error } = await student.rpc("get_student_practice_evidence", { p_user_id: otherId });
