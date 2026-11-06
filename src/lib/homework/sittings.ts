@@ -30,6 +30,8 @@ function dateKey(label: string): number {
     if (!(nda[1] in NDA_MONTH)) throw new Error(`cannot date sitting "${label}"`);
     return at(Number(nda[2]), NDA_MONTH[nda[1]]);
   }
+  const tier2 = /^(\d{1,2}) ([A-Z][a-z]{2}) (\d{4}) Tier II$/.exec(label);
+  if (tier2 && MONTHS.includes(tier2[2])) return at(Number(tier2[3]), MONTHS.indexOf(tier2[2]), Number(tier2[1]));
   const cet = /^(?:(\d{1,2}) )?([A-Z][a-z]{2}) (\d{4}) S([1-4])$/.exec(label);
   if (cet && MONTHS.includes(cet[2])) {
     return at(Number(cet[3]), MONTHS.indexOf(cet[2]), cet[1] ? Number(cet[1]) : 0, Number(cet[4]));
@@ -113,4 +115,17 @@ export function sscSittingLabel(note: string | null): string {
   const m = found ? MONTHS.find((x) => found[2].startsWith(x)) : undefined;
   if (!found || !m || !/^[1-4]$/.test(found[4])) throw new Error(`cannot read the SSC shift in "${note}"`);
   return `${Number(found[1])} ${m} ${found[3]} S${found[4]}`;
+}
+
+/**
+ * An SSC CGL Tier II paper's label (2026-11-06): one paper a day, "18 Jan 2025 Tier II",
+ * read from the note the ingestion wrote ("Tier II (CGL 2024), 18 Jan 2025"). The date is
+ * the day it was sat, not the CGL cycle. Anything else is an error, never a guess.
+ */
+export function sscTier2SittingLabel(note: string | null): string {
+  if (!note) throw new Error("no note on an SSC CGL Tier II row");
+  const found = /^Tier II \(CGL \d{4}\), (\d{1,2}) ([A-Z][a-z]+) (\d{4})$/.exec(note.trim());
+  const m = found ? MONTHS.find((x) => found[2].startsWith(x)) : undefined;
+  if (!found || !m) throw new Error(`cannot read the SSC Tier II paper in "${note}"`);
+  return `${Number(found[1])} ${m} ${found[3]} Tier II`;
 }

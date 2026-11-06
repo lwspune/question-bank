@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { cdsSittingLabel, cetSittingLabel, compareSittings, mhSittingLabel, ndaSittingLabel, sscSittingLabel } from "@/lib/homework/sittings";
+import { cdsSittingLabel, cetSittingLabel, compareSittings, mhSittingLabel, ndaSittingLabel, sscSittingLabel, sscTier2SittingLabel } from "@/lib/homework/sittings";
 
 describe("compareSittings", () => {
   it("orders MH papers by date, not alphabetically", () => {
@@ -139,5 +139,23 @@ describe("compareSittings with four shifts a day", () => {
 
   it("keeps the last day of a month before the next month", () => {
     expect(["1 Aug 2023 S1", "31 Jul 2023 S4"].sort(compareSittings)).toEqual(["31 Jul 2023 S4", "1 Aug 2023 S1"]);
+  });
+});
+
+// SSC CGL Tier II (2026-11-06): one paper a day, named by its date, "18 Jan 2025 Tier II".
+describe("sscTier2SittingLabel", () => {
+  it("names a Tier II paper by its date from the note", () => {
+    expect(sscTier2SittingLabel("Tier II (CGL 2024), 18 Jan 2025")).toBe("18 Jan 2025 Tier II");
+    expect(sscTier2SittingLabel("Tier II (CGL 2019), 15 Nov 2020")).toBe("15 Nov 2020 Tier II");
+  });
+
+  it("refuses a note it cannot read, never guessing", () => {
+    expect(() => sscTier2SittingLabel("Tier I, 14 Jul 2023, Shift 1")).toThrow(/Tier I, 14 Jul 2023/);
+    expect(() => sscTier2SittingLabel(null)).toThrow(/note/);
+  });
+
+  it("sorts Tier II papers by date, the CGL 2022 papers of March 2023 in order", () => {
+    const got = ["18 Jan 2026 Tier II", "7 Mar 2023 Tier II", "15 Nov 2020 Tier II", "2 Mar 2023 Tier II", "26 Oct 2023 Tier II"].sort(compareSittings);
+    expect(got).toEqual(["15 Nov 2020 Tier II", "2 Mar 2023 Tier II", "7 Mar 2023 Tier II", "26 Oct 2023 Tier II", "18 Jan 2026 Tier II"]);
   });
 });
