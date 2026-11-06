@@ -131,6 +131,9 @@ export type QuestionRef = {
   subtopicId?: string | null;
   chapterId?: string | null;
   place?: string;
+  /** The question's exam by name, which decides the site it is drilled on
+   *  (lib/sites/siteScope, 2026-11-06). */
+  exam?: string;
 };
 
 /**

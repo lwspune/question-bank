@@ -73,3 +73,13 @@ export function downloadScopesFor(site: PlanSite): string[] {
 export function passScopesFor(site: PlanSite, examSlug?: string | null): string[] {
   return examSlug && getExamBySlug(examSlug) ? [passScopeForExam(examSlug)] : sitePassScopes(site);
 }
+
+/**
+ * True when the student holds the pass that lifts THIS site's free limits
+ * (2026-11-06): on www the www pass (`hasPass`, as every www limit has always
+ * read it), on intl a pass for one of its exams. Without this an IMAT pass
+ * holder hit the drill's free limit on intl, because `hasPass` is www's.
+ */
+export function holdsSitePass(summary: PassSummary, site: PlanSite): boolean {
+  return site === "pyqvault" ? summary.hasPass : holdsPassFor(summary, sitePassScopes(site));
+}

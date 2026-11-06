@@ -182,6 +182,12 @@ describe("intlHostDecision (the intl host)", () => {
     }
   });
 
+  it("serves a student's progress: the map, the drill, and the practise link the map's dots use (2026-11-06)", () => {
+    for (const p of ["/me/map", "/drill", "/go/practice"]) {
+      expect(intlHostDecision(p, "?x=1"), p).toEqual({ kind: "next" });
+    }
+  });
+
   it("serves static files and Next's own assets", () => {
     for (const p of ["/icon.png", "/icons/mark-96.png", "/favicon.ico", "/manifest.webmanifest", "/_next/data/x.json"]) {
       expect(intlHostDecision(p, ""), p).toEqual({ kind: "next" });
@@ -212,9 +218,9 @@ describe("intlHostDecision (the intl host)", () => {
       url: "https://www.pyqvault.com/notes/nda-maths?q=1",
       permanent: true,
     });
-    expect(intlHostDecision("/drill", "")).toEqual({
+    expect(intlHostDecision("/performance", "")).toEqual({
       kind: "redirect",
-      url: "https://www.pyqvault.com/drill",
+      url: "https://www.pyqvault.com/performance",
       permanent: true,
     });
   });
@@ -278,6 +284,23 @@ describe("intlNavFor", () => {
     const nav = intlNavFor("/pricing");
     expect(nav.map((l) => l.href)).toEqual(["/notes/imat", "/mock/exam/imat", "/browse"]);
     expect(nav.some((l) => l.active)).toBe(false);
+  });
+
+  it("adds Progress for a signed-in student, active on the map and the drill", () => {
+    expect(intlNavFor("/pricing", { signedIn: true }).map((l) => l.label)).toEqual([
+      "Notes",
+      "Mocks",
+      "Questions",
+      "Progress",
+    ]);
+    expect(intlNavFor("/pricing", { signedIn: true }).find((l) => l.label === "Progress")?.href).toBe("/me/map");
+    expect(intlNavFor("/me/map", { signedIn: true }).find((l) => l.active)?.label).toBe("Progress");
+    expect(intlNavFor("/drill", { signedIn: true }).find((l) => l.active)?.label).toBe("Progress");
+  });
+
+  it("leaves Progress out for a visitor who is not signed in", () => {
+    expect(intlNavFor("/me/map").map((l) => l.label)).not.toContain("Progress");
+    expect(intlNavFor("/me/map", { signedIn: false }).map((l) => l.label)).not.toContain("Progress");
   });
 });
 

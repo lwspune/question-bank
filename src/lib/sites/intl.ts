@@ -108,6 +108,12 @@ const SHARED_EXACT = new Set([
   "/contact",
   "/unsubscribe",
   "/opengraph-image",
+  // A student's progress (2026-11-06). Site-aware rather than identical: on
+  // intl the map and the drill hold the international exams alone
+  // (lib/sites/siteScope). /go/practice only redirects to /browse.
+  "/me/map",
+  "/drill",
+  "/go/practice",
 ]);
 const SHARED_PREFIXES = ["/account", "/mock/attempt", "/api", "/_next", "/intl"];
 
@@ -198,7 +204,7 @@ export function isIntlPagePath(pathname: string): boolean {
 export type IntlNavLink = { label: string; href: string; active: boolean };
 
 /** The intl header's tabs: the current exam's notes, mocks and bank (the first intl exam on a shared page). */
-export function intlNavFor(pathname: string): IntlNavLink[] {
+export function intlNavFor(pathname: string, opts: { signedIn?: boolean } = {}): IntlNavLink[] {
   const slug = intlExamOfPath(pathname);
   const exam = INTL_EXAMS.find((e) => e.slug === slug) ?? INTL_EXAMS[0];
   if (!exam) return [];
@@ -220,6 +226,10 @@ export function intlNavFor(pathname: string): IntlNavLink[] {
       href: "/browse",
       active: section("/browse") || section(`/questions/${exam.slug}`),
     },
+    // A signed-in student's map and drill (2026-11-06); a visitor has neither.
+    ...(opts.signedIn
+      ? [{ label: "Progress", href: "/me/map", active: section("/me/map") || section("/drill") }]
+      : []),
   ];
 }
 

@@ -18,6 +18,7 @@ import {
   loadSeenQuestionIds,
   loadUnseenCandidates,
 } from "./query";
+import { onSite } from "@/lib/sites/siteScope";
 
 export type OwnPool = {
   /** Every answer event on record — the fill ranks weak subtopics from it. */
@@ -33,14 +34,22 @@ export type OwnPool = {
  * reads. That sharing is the point: the count a student sees is the count the
  * drill will serve from, because it is the same read, not an approximation.
  */
-export async function loadOwnPool(db: SupabaseClient, userId: string, now: Date): Promise<OwnPool> {
+export async function loadOwnPool(
+  db: SupabaseClient,
+  userId: string,
+  now: Date,
+  intl = false
+): Promise<OwnPool> {
   const events = await loadDrillEvents(db, userId);
   const due = dueQuestions(events, now);
   if (due.length === 0) return { events, drillable: [] };
   // Taxonomy for the whole pool: it is what the interleaver groups on, AND the
-  // eligibility filter (a question that no longer resolves is dropped).
+  // eligibility filter (a question that no longer resolves is dropped), AND
+  // the site filter: intl drills international exams alone, www the rest
+  // (lib/sites/siteScope, 2026-11-06).
   const refs = await loadQuestionRefs(db, due.map((d) => d.questionId));
-  return { events, drillable: attachRefs(due, refs) };
+  const here = new Map([...refs].filter(([, r]) => onSite(r.exam, intl)));
+  return { events, drillable: attachRefs(due, here) };
 }
 
 /**
@@ -58,7 +67,8 @@ export async function fillUnseen(
   userId: string,
   events: readonly DrillEvent[],
   need: number,
-  examId: string | null
+  examId: string | null,
+  intl = false
 ): Promise<string[]> {
   if (need <= 0) return [];
   const seen = await loadSeenQuestionIds(db, userId);
@@ -67,8 +77,10 @@ export async function fillUnseen(
   const wrongIds = [...new Set(events.filter((e) => !e.correct).map((e) => e.questionId))];
   if (wrongIds.length > 0) {
     const refs = await loadQuestionRefs(db, wrongIds);
+    // Weak subtopics on THIS site only, so intl never tops up with an Indian exam.
+    const here = wrongIds.filter((id) => refs.has(id) && onSite(refs.get(id)!.exam, intl));
     const weak = rankWeakSubtopics(
-      wrongIds.map((id) => ({ questionId: id, subtopicId: refs.get(id)?.subtopicId ?? null })),
+      here.map((id) => ({ questionId: id, subtopicId: refs.get(id)?.subtopicId ?? null })),
       WEAK_SUBTOPICS
     );
     if (weak.length > 0) {
