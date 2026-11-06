@@ -1,13 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import {
-  ArrowRight,
-  Bookmark,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import { getSessionUser } from "@/lib/auth";
-import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { createSupabaseServerClient, createTypedServerClient } from "@/lib/supabase/server";
 import { logActivityOnce } from "@/lib/activity/service";
 import { surfaceViewedEvent } from "@/lib/activity/views";
 import { getUserAttempts } from "@/lib/mocks/query";
@@ -21,6 +18,10 @@ import AttemptsList from "../mock/_components/AttemptsList";
 import FeedbackCards from "./FeedbackCards";
 import TodayCard from "./TodayCard";
 import ProgressTiles from "./ProgressTiles";
+import WeakSpots from "./WeakSpots";
+import ContinueCard from "./ContinueCard";
+import { loadContinue } from "@/lib/me/continueServer";
+import type { ContinueItem } from "@/lib/me/continue";
 import HomeReminder from "./HomeReminder";
 import { greetingFor, greetingName } from "@/lib/me/today";
 import Greeting from "./Greeting";
@@ -88,8 +89,18 @@ export default async function MePage() {
 
   // Continue-where-you-left-off: an open mock beats a recently-read chapter.
   const resume = mocks.resumeAttempt;
-  const cont = notes.recent[0];
-  const contTitles = cont ? notesTopicTitles(cont) : null;
+  // Where they were last working, across the bank, /board, notes and homework
+  // (2026-11-06). Best effort: a failed read costs the card, never the page.
+  const continueItems = await loadContinue(
+    createTypedServerClient(),
+    user.id,
+    notes.recent.map((r) => ({ ...r, ...notesTopicTitles(r) })),
+    examIds
+  ).catch((e) => {
+    console.error("continue read failed", e instanceof Error ? e.message : e);
+    return [] as ContinueItem[];
+  });
+  const cont = continueItems[0];
 
   // The exam-scoped home (EXAM_TIER_SPEC.md §4.2): the student's target exams
   // and the per-exam destinations they unlock.
@@ -154,15 +165,7 @@ export default async function MePage() {
               ? { title: resume.mockTitle, href: `/mock/${resume.mockSlug}/attempt/${resume.attemptId}` }
               : undefined
           }
-          cont={
-            cont && contTitles
-              ? {
-                  title: contTitles.topic,
-                  chapter: contTitles.chapter,
-                  href: `/notes/${cont.subjectRoute}/${cont.chapterSlug}/${cont.subtopicSlug}`,
-                }
-              : undefined
-          }
+          cont={cont ? { title: cont.title, chapter: cont.subtitle, href: cont.href } : undefined}
           mockHref={mockHref}
           initialDone={weekly.done}
           initialGoal={weekly.goal}
@@ -183,22 +186,24 @@ export default async function MePage() {
             745 students saw three zeros there while practising in the bank. */}
         <ProgressTiles />
 
+        {/* The chapters holding most waiting mistakes, each with its own Fix
+            (2026-11-06): 448 of 745 /me visitors had misses waiting. */}
+        <WeakSpots />
+
         {/* A card only when it has something in it: 363 of 745 students saw
             "No mocks yet." beside "Nothing read yet." (2026-11-05), 236 of
             them after answering questions in the bank. grid-cols-1 + min-w-0:
             a grid track defaults to its content's width, so a long attempt
             title pushed these cards off a phone's screen. */}
-        {attempts.length > 0 || notes.recent.length > 0 ? (
+        {attempts.length > 0 || continueItems.length > 0 ? (
           <div
             className={cn(
               "grid grid-cols-1 gap-6",
-              attempts.length > 0 && notes.recent.length > 0 && "lg:grid-cols-2"
+              attempts.length > 0 && continueItems.length > 0 && "lg:grid-cols-2"
             )}
           >
             {attempts.length > 0 && <RecentMocks mocks={mocks} attempts={attempts} browseHref={mockHref} />}
-            {notes.recent.length > 0 && (
-              <KeepReading notesHref={notesHref} recent={notes.recent} bookmarkedCount={notes.bookmarkedCount} />
-            )}
+            {continueItems.length > 0 && <ContinueCard items={continueItems} notesHref={notesHref} />}
           </div>
         ) : (
           <AlsoHere mockHref={mockHref} notesHref={notesHref} />
@@ -394,45 +399,6 @@ function RecentMocks({
           <CardLink href="/me/map">Your map</CardLink>
           <CardLink href="/performance">What to work on</CardLink>
         </div>
-      )}
-    </SectionCard>
-  );
-}
-
-/** Shown only when the student has read a notes topic. */
-function KeepReading({
-  notesHref,
-  recent,
-  bookmarkedCount,
-}: {
-  /** The first target exam's notes hub, else /notes. */
-  notesHref: string;
-  recent: ReturnType<typeof summarizeNotesProgress>["recent"];
-  bookmarkedCount: number;
-}) {
-  return (
-    <SectionCard title="Keep reading" action={<CardLink href={notesHref}>All notes</CardLink>}>
-      <ul className="-mx-2 space-y-0.5">
-        {recent.slice(0, 4).map((r) => {
-          const t = notesTopicTitles(r);
-          return (
-            <li key={r.subtopicSlug}>
-              <Link
-                href={`/notes/${r.subjectRoute}/${r.chapterSlug}/${r.subtopicSlug}`}
-                className="flex min-w-0 items-baseline gap-2 rounded-lg px-2 py-1.5 hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-              >
-                <span className="min-w-0 flex-1 truncate text-sm font-medium">{t.topic}</span>
-                <span className="min-w-0 max-w-[40%] truncate text-xs text-muted-foreground">{t.chapter}</span>
-              </Link>
-            </li>
-          );
-        })}
-      </ul>
-      {bookmarkedCount > 0 && (
-        <p className="mt-3 flex items-center gap-1.5 border-t pt-3 text-xs text-muted-foreground">
-          <Bookmark className="h-3.5 w-3.5" aria-hidden />
-          {bookmarkedCount} bookmarked
-        </p>
       )}
     </SectionCard>
   );

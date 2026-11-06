@@ -29,7 +29,7 @@ describe("parsePulseEntry", () => {
     const e = parsePulseEntry(JSON.stringify(entry(0)));
     // `exam` is always present on the parsed shape (null when absent) so a
     // consumer never has to distinguish undefined from null.
-    expect(e).toEqual({ ...entry(0), exam: null, totals: null });
+    expect(e).toEqual({ ...entry(0), exam: null, totals: null, weak: [] });
   });
 
   it("rejects junk, partial shapes and negative counts", () => {
@@ -74,6 +74,29 @@ describe("parsePulseEntry — answered / right / fixed totals (2026-10-04)", () 
 
   it("refuses totals where more are right than were answered", () => {
     expect(parsePulseEntry(JSON.stringify({ ...entry(0), totals: { answered: 5, right: 6, fixed: 0 } }))).toBeNull();
+  });
+});
+
+describe("parsePulseEntry: weak chapters for /me (2026-11-06)", () => {
+  const weak = [{ chapterId: "c1", name: "Matrices", place: "Mathematics · NDA", due: 3 }];
+
+  it("is an empty list when absent (an entry cached before it existed)", () => {
+    expect(parsePulseEntry(JSON.stringify(entry(0)))?.weak).toEqual([]);
+  });
+
+  it("carries well-formed rows through", () => {
+    expect(parsePulseEntry(JSON.stringify({ ...entry(0), weak }))?.weak).toEqual(weak);
+  });
+
+  it("refuses the whole entry when a row is malformed", () => {
+    for (const bad of [
+      "x",
+      [{ chapterId: "c1", name: "M", place: "P" }],
+      [{ chapterId: "c1", name: "M", place: "P", due: 0 }],
+      [{ chapterId: 5, name: "M", place: "P", due: 1 }],
+    ]) {
+      expect(parsePulseEntry(JSON.stringify({ ...entry(0), weak: bad })), JSON.stringify(bad)).toBeNull();
+    }
   });
 });
 

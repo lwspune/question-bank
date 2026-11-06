@@ -47,7 +47,7 @@ export const ACTIVITY_KINDS = [
   // would only inflate (a view per surface per IST day; an impression per day).
   "surface_viewed", // opened a surface (metadata.surface — see lib/activity/views.ts); also the day's heartbeat
   "drill_started", // /drill served at least one question (metadata: count, scoped)
-  "goal_set", // chose or changed the weekly sittings goal (metadata: goal)
+  "goal_set", // chose or changed the weekly goal, study days since 2026-11-06 (metadata: goal)
   "paywall_event", // a gate was shown / checkout opened / dismissed / verify failed (metadata: step, gate)
   "email_clicked", // followed a link in one of our emails (refId = email_sends.id, metadata: kind)
   // ── Celebrations (2026-10-04, migration 0132). The server's record that a

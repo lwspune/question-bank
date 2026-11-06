@@ -19,6 +19,7 @@ export const DRILL_FROM = [
   "menu", // the avatar menu's "Fix your mistakes"
   "today", // the /me Today card
   "me_tile", // the /me progress row's "fixed" tile (2026-11-05)
+  "me_weak", // a chapter's Fix button in /me's Weak spots (2026-11-06)
   "result", // the mock result page's headline button
   "findings", // the result page's findings card
   "map", // /me/map
@@ -44,4 +45,9 @@ export function parseDrillFrom(raw: unknown): DrillFrom | "other" | "direct" {
 /** A tagged link into the drill, optionally scoped to one mock attempt. */
 export function drillHref(from: DrillFrom, attemptId?: string): string {
   return attemptId ? `/drill?attempt=${attemptId}&from=${from}` : `/drill?from=${from}`;
+}
+
+/** A tagged link into the drill narrowed to one chapter (/me's Weak spots). */
+export function drillChapterHref(from: DrillFrom, chapterId: string): string {
+  return `/drill?chapter=${chapterId}&from=${from}`;
 }

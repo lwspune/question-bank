@@ -4818,6 +4818,14 @@ export type Database = {
         }[]
       }
       get_own_progress_card: { Args: { p_exam_id: string }; Returns: Json }
+      get_own_week_study_days: {
+        Args: {
+          p_min_answers: number
+          p_since: string
+          p_sitting_kinds: string[]
+        }
+        Returns: number
+      }
       get_pmf_snapshot: { Args: { p_weeks?: number }; Returns: Json }
       get_pyq_years: { Args: never; Returns: number[] }
       get_share_snapshot: { Args: { p_since: string }; Returns: Json }

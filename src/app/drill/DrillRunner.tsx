@@ -11,10 +11,12 @@ import { cn } from "@/lib/utils";
 import type { AnswerOutcome, ServedQuestion } from "@/lib/drill/service";
 import { invalidatePulse } from "@/lib/viewer/usePulse";
 import { drillVSays, progressLine } from "@/lib/drill/progress";
+import { scopeCopy, type DrillScope as Scope } from "@/lib/drill/scope";
 import { drillHref } from "@/lib/drill/from";
 import PushOptIn from "@/components/push/PushOptIn";
 
-export type DrillScope = { attemptId: string; mockTitle: string; mockSlug: string } | null;
+// The scope's shape and every line about it live in lib/drill/scope (2026-11-06).
+export type DrillScope = Scope | null;
 
 /**
  * The drill runner — ONE QUESTION PER SCREEN, built for a phone first.
@@ -154,7 +156,7 @@ export default function DrillRunner({
           {index + 1} <span className="text-muted-foreground">of {questions.length}</span>
         </span>
         <span className="text-xs text-muted-foreground">
-          {dueTotal > 0 ? `${dueTotal} to fix ${scope ? "from this paper" : "in all"}` : ""}
+          {dueTotal > 0 ? `${dueTotal} to fix ${scope ? scopeCopy(scope).unit : "in all"}` : ""}
           {dueTotal > 0 && fresh > 0 ? " \u00b7 " : ""}
           {fresh > 0 ? `${fresh} new` : ""}
         </span>
@@ -460,14 +462,10 @@ function Summary({
 }) {
   // A scoped drill keeps offering this paper's mistakes while any remain, then
   // hands over to the general pool, which may hold more from other papers.
-  const anotherHref = scope && remaining > 0 ? drillHref("again", scope.attemptId) : drillHref("again");
+  const copy = scope ? scopeCopy(scope) : null;
+  const anotherHref = copy && remaining > 0 ? copy.again : drillHref("again");
   const [leaving, setLeaving] = useState(false);
-  const anotherLabel =
-    scope && remaining > 0
-      ? "Another five from this paper"
-      : scope
-        ? "Fix mistakes from other papers"
-        : "Another five";
+  const anotherLabel = copy && remaining > 0 ? copy.anotherLabel : copy ? copy.otherLabel : "Another five";
   return (
     <div className="rounded-2xl border bg-card p-6 text-center">
       <p className="text-sm text-muted-foreground">Drill complete</p>
@@ -519,7 +517,7 @@ function Summary({
 
       {remaining > 0 && (
         <p className="mt-4 text-xs text-muted-foreground">
-          {remaining} still to fix{scope ? " from this paper" : ""}
+          {remaining} still to fix{copy ? ` ${copy.unit}` : ""}
         </p>
       )}
     </div>

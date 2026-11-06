@@ -121,7 +121,9 @@ export async function loadQuestionRefs(
     for (let from = 0; ; from += PAGE) {
       const { data, error } = await db
         .from("questions")
-        .select("id, question_format, subtopic_id, chapter:chapters!chapter_id(name), subtopic:subtopics!subtopic_id(name)")
+        .select(
+          "id, question_format, subtopic_id, chapter_id, chapter:chapters!chapter_id(name, subject:subjects!subject_id(name, exam:exams!exam_id(name))), subtopic:subtopics!subtopic_id(name)"
+        )
         .in("id", slice)
         .eq("visibility", "PUBLIC")
         .range(from, from + PAGE - 1);
@@ -130,7 +132,8 @@ export async function loadQuestionRefs(
         id: string;
         question_format: string | null;
         subtopic_id: string | null;
-        chapter: { name: string } | null;
+        chapter_id: string | null;
+        chapter: { name: string; subject: { name: string; exam: { name: string } | null } | null } | null;
         subtopic: { name: string } | null;
       }[];
       for (const r of rows) {
@@ -143,6 +146,8 @@ export async function loadQuestionRefs(
           chapter: r.chapter?.name ?? "",
           subtopic: r.subtopic?.name ?? "",
           subtopicId: r.subtopic_id,
+          chapterId: r.chapter_id,
+          place: placeOf(r.chapter?.subject ?? null),
         });
       }
       if (rows.length < PAGE) break;
@@ -407,4 +412,10 @@ export async function hasPriorWrong(db: SupabaseClient, userId: string, question
     .eq("ref_id", questionId);
   if (error) throw new Error(`hasPriorWrong: ${error.message}`);
   return (count ?? 0) > 0;
+}
+
+/** "Mathematics · NDA": where a chapter sits, for a row that shows its name. */
+function placeOf(subject: { name: string; exam: { name: string } | null } | null): string {
+  if (!subject) return "";
+  return subject.exam?.name ? `${subject.name} · ${subject.exam.name}` : subject.name;
 }

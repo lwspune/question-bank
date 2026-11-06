@@ -30,7 +30,7 @@ const BodySchema = z.object({
   whatsappOptIn: z.boolean().optional(),
   /** The browser-push ask was answered, either way (PUSH_SPEC.md §3). */
   pushPrompted: z.literal(true).optional(),
-  /** Weekly sittings goal (ENGAGEMENT_SPEC.md §A3): 1..14, or null to clear. */
+  /** Weekly study-days goal (ENGAGEMENT_SPEC.md §A3; days since 2026-11-06): 1..7, or null to clear. */
   weeklyGoal: z.union([z.number(), z.string(), z.null()]).optional(),
   /** Own exam date (ENGAGEMENT_SPEC.md C3): YYYY-MM-DD, or null to clear. */
   examDate: z.string().max(10).nullable().optional(),

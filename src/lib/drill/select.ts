@@ -59,6 +59,12 @@ export type QuestionState =
 export type DueQuestion = {
   questionId: string;
   chapter: string;
+  /** The chapter's id, for a link to it (/me Weak spots). Optional so the
+   *  pure spec fixtures and older callers stay small. */
+  chapterId?: string | null;
+  /** "Mathematics · NDA": the subject and exam a chapter name alone does not
+   *  say ("Probability" is in NDA and in MHT-CET). */
+  place?: string;
   subtopic: string;
   /** When they last got it wrong — the ranking key, oldest first. */
   lastWrongAt: string;
@@ -119,7 +125,13 @@ export function fixedCount(events: readonly DrillEvent[], now: Date): number {
 
 /** Taxonomy for a question, supplied by the read layer. `subtopicId` feeds
  *  the daily-set fill (fill.ts); optional so the pure spec fixtures stay small. */
-export type QuestionRef = { chapter: string; subtopic: string; subtopicId?: string | null };
+export type QuestionRef = {
+  chapter: string;
+  subtopic: string;
+  subtopicId?: string | null;
+  chapterId?: string | null;
+  place?: string;
+};
 
 /**
  * Every question currently due, oldest miss first.
@@ -259,7 +271,7 @@ export function attachRefs(
   for (const q of due) {
     const ref = refs.get(q.questionId);
     if (!ref) continue;
-    out.push({ ...q, chapter: ref.chapter, subtopic: ref.subtopic });
+    out.push({ ...q, chapter: ref.chapter, chapterId: ref.chapterId ?? null, place: ref.place ?? "", subtopic: ref.subtopic });
   }
   return out;
 }
@@ -279,4 +291,42 @@ export function scopeToAttempt(
   wrongInAttempt: ReadonlySet<string>
 ): DueQuestion[] {
   return due.filter((q) => wrongInAttempt.has(q.questionId));
+}
+
+/**
+ * Narrow the due pool to one chapter: the Fix button beside a chapter in /me's
+ * Weak spots (2026-11-06). The same intersection as scopeToAttempt, in the
+ * pool's own order.
+ */
+export function scopeToChapter(due: readonly DueQuestion[], chapterId: string): DueQuestion[] {
+  return due.filter((q) => q.chapterId === chapterId);
+}
+
+/** One row of /me's Weak spots. */
+export type WeakChapter = { chapterId: string; name: string; place: string; due: number };
+
+export const WEAK_CHAPTERS = 3;
+
+/**
+ * The chapters where most of the due pool sits, most mistakes first, a tie to
+ * the most recent miss. Keyed by chapter ID, never name, so NDA's and
+ * MHT-CET's "Probability" stay two rows. A question with no chapter id is left
+ * out: there is nothing to link it to. Spec: tests/drill-weak-chapters.test.ts.
+ */
+export function weakChapters(due: readonly DueQuestion[], limit = WEAK_CHAPTERS): WeakChapter[] {
+  const groups = new Map<string, WeakChapter & { last: string }>();
+  for (const q of due) {
+    if (!q.chapterId) continue;
+    const g = groups.get(q.chapterId);
+    if (g) {
+      g.due += 1;
+      if (q.lastWrongAt > g.last) g.last = q.lastWrongAt;
+    } else {
+      groups.set(q.chapterId, { chapterId: q.chapterId, name: q.chapter, place: q.place ?? "", due: 1, last: q.lastWrongAt });
+    }
+  }
+  return [...groups.values()]
+    .sort((a, b) => b.due - a.due || (a.last < b.last ? 1 : a.last > b.last ? -1 : 0))
+    .slice(0, limit)
+    .map(({ chapterId, name, place, due }) => ({ chapterId, name, place, due }));
 }

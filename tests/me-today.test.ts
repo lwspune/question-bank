@@ -40,6 +40,9 @@ describe("pickTodayAction", () => {
   it("then the topic being read, with no duplicate link", () => {
     const a = pickTodayAction({ due: 0, cont, mockHref: "/mock" });
     expect(a).toMatchObject({ kind: "continue", title: cont.title, subtitle: "Vectors", href: cont.href });
+    // Since 2026-11-06 the place can be a bank or /board chapter, not only a
+    // notes topic, so the eyebrow no longer says "reading".
+    expect(a.eyebrow).toBe("Continue");
     expect(a.secondary).toBeUndefined();
   });
 

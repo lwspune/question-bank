@@ -28,6 +28,7 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { logActivityOnce } from "@/lib/activity/service";
 import { surfaceViewedEvent } from "@/lib/activity/views";
 import { getOwnLadder } from "@/lib/drill/service";
+import { weakChapters } from "@/lib/drill/select";
 import { getOwnAnswerTotals } from "@/lib/celebrate/service";
 import { getOwnWeekly } from "@/lib/goals/service";
 import { getOwnProfile } from "@/lib/profile/service";
@@ -64,7 +65,10 @@ export async function GET() {
       ? { label: countdown.label, daysLeft: countdown.daysLeft, official: countdown.official }
       : null;
     const totals = answers ? { answered: answers.answered, right: answers.right, fixed: ladder.fixed } : null;
-    return NextResponse.json({ due: ladder.due.length, week, exam, totals }, { headers: NO_STORE });
+    // /me's Weak spots (2026-11-06): grouped from the same due pool, so a
+    // chapter's count is the number its Fix button will serve from.
+    const weak = weakChapters(ladder.due);
+    return NextResponse.json({ due: ladder.due.length, week, exam, totals, weak }, { headers: NO_STORE });
   } catch (e) {
     // A wrong number is worse than no badge: fail and let the client render
     // nothing rather than a zero that reads as "nothing to fix".

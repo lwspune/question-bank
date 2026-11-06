@@ -26,7 +26,12 @@ export type Pulse = {
   /** Answered · Right · Fixed, across every surface (2026-10-04). Optional for
    *  the same reason as `exam`. */
   totals?: PulseTotals | null;
+  /** Up to three chapters where most due mistakes sit, for /me's Weak spots
+   *  (2026-11-06). Optional for the same reason as `exam`. */
+  weak?: PulseWeak[];
 };
+
+export type PulseWeak = { chapterId: string; name: string; place: string; due: number };
 
 export type PulseTotals = {
   /** Graded answers: mocks, bank, board, question of the day, drill. */
@@ -89,7 +94,18 @@ export function parsePulseEntry(raw: string | null): PulseEntry | null {
     if (t.right > t.answered) return null;
     totals = { answered: t.answered, right: t.right, fixed: t.fixed };
   }
-  return { at: o.at, due: o.due, week: { done: week.done, goal: week.goal as number | null }, exam, totals };
+  const weak: PulseWeak[] = [];
+  if (o.weak !== undefined && o.weak !== null) {
+    if (!Array.isArray(o.weak)) return null;
+    for (const r of o.weak as unknown[]) {
+      if (typeof r !== "object" || r === null) return null;
+      const w = r as Record<string, unknown>;
+      if (typeof w.chapterId !== "string" || typeof w.name !== "string" || typeof w.place !== "string") return null;
+      if (!isCount(w.due) || w.due === 0) return null;
+      weak.push({ chapterId: w.chapterId, name: w.name, place: w.place, due: w.due });
+    }
+  }
+  return { at: o.at, due: o.due, week: { done: week.done, goal: week.goal as number | null }, exam, totals, weak };
 }
 
 /** "Answered 1,240 · Right 780 · Fixed 23" — the three together, so a total is
