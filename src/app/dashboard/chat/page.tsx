@@ -12,6 +12,7 @@ import { namesForUsers } from "@/lib/supabase/authUsers";
 import ChatSettingsForm from "./ChatSettingsForm";
 import ConversationThread from "./ConversationThread";
 import MathText from "@/components/chat/MathText";
+import BackToDashboard from "@/app/dashboard/BackToDashboard";
 
 export const dynamic = "force-dynamic";
 
@@ -25,14 +26,21 @@ function usdPerAnswer(v: number): string {
   return `$${v.toFixed(5)}`;
 }
 
-/** "$0.00045, 12% up on the week before", flagged past COST_RISE_FLAG (lib/chat/interactions compareCostWeeks). */
-function weekLine(usage: AiUsageSummary | null): string {
+/** The tile's big number: "$0.00045". The week-on-week change goes in the
+ *  label (weekLabel): as one string in the tile's 3xl type it wrapped to three lines. */
+function weekAmount(usage: AiUsageSummary | null): string {
   if (!usage || usage.weeks.thisWeek.perAnswerUsd === null) return "—";
-  const { thisWeek, change, flagged } = usage.weeks;
-  const amount = usdPerAnswer(thisWeek.perAnswerUsd!);
-  if (change === null) return amount;
+  return usdPerAnswer(usage.weeks.thisWeek.perAnswerUsd);
+}
+
+/** "Cost per answer, last 7 days · 12% up on the week before", flagged past
+ *  COST_RISE_FLAG (lib/chat/interactions compareCostWeeks). */
+function weekLabel(usage: AiUsageSummary | null): string {
+  const base = "Cost per answer, last 7 days";
+  if (!usage || usage.weeks.thisWeek.perAnswerUsd === null || usage.weeks.change === null) return base;
+  const { change, flagged } = usage.weeks;
   const pct = Math.round(Math.abs(change) * 100);
-  return `${amount}, ${pct}% ${change >= 0 ? "up" : "down"} on the week before${flagged ? " (look into it)" : ""}`;
+  return `${base} · ${pct}% ${change >= 0 ? "up" : "down"} on the week before${flagged ? " (look into it)" : ""}`;
 }
 
 export default async function ChatUsagePage() {
@@ -70,6 +78,7 @@ export default async function ChatUsagePage() {
     <>
       <AppHeader />
       <main className="mx-auto max-w-4xl space-y-6 px-6 py-8">
+        <BackToDashboard />
         <header>
           <h1 className="text-2xl font-semibold tracking-tight">V usage</h1>
           <p className="mt-1 text-sm text-muted-foreground">
@@ -86,7 +95,7 @@ export default async function ChatUsagePage() {
           <StatCard kind="numeric" value={summary.totalTyped} label="Typed questions" />
           <StatCard kind="text" value={usage ? String(usage.total.answers) : "—"} label="AI answers" />
           <StatCard kind="text" value={usage ? usd(usage.total.costUsd) : "—"} label="AI cost so far" />
-          <StatCard kind="text" value={weekLine(usage)} label="Cost per answer, last 7 days" />
+          <StatCard kind="text" value={weekAmount(usage)} label={weekLabel(usage)} />
           <StatCard kind="numeric" value={conversations.length} label="Conversations" />
           <StatCard kind="numeric" value={helpful} label="Replies marked helpful" />
           <StatCard kind="numeric" value={notHelpful} label="Replies marked not helpful" />

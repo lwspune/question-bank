@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { ClipboardCheck, Lightbulb, MessageSquareHeart } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import StatCard from "@/app/dashboard/StatCard";
+import BackToDashboard from "@/app/dashboard/BackToDashboard";
 import { getSessionSuperadmin } from "@/lib/auth";
 import { getFeedbackOverview, type FeedbackItem, type MockRatingItem } from "@/lib/feedback/adminStats";
 import { RATINGS, RATING_LABELS, isRating, type RatingDistribution } from "@/lib/mocks/feedback";
@@ -33,10 +34,8 @@ export default async function FeedbackDashboardPage() {
       <AppHeader />
       <main className="mx-auto max-w-4xl space-y-8 px-6 py-8">
         <div>
-          <Link href="/dashboard" className="text-sm text-muted-foreground hover:text-foreground">
-            ← Dashboard
-          </Link>
-          <h1 className="mt-2 flex items-center gap-2 text-2xl font-semibold tracking-tight">
+          <BackToDashboard />
+          <h1 className="flex items-center gap-2 text-2xl font-semibold tracking-tight">
             <MessageSquareHeart className="h-6 w-6 text-brand-accent" aria-hidden />
             Feedback
           </h1>

@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
-import { ArrowLeft, Table2 } from "lucide-react";
+import { Table2 } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
+import BackToDashboard from "@/app/dashboard/BackToDashboard";
 import { getSessionMember } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import {
@@ -202,13 +203,7 @@ export default async function SyllabusMapPage(
     <>
       <AppHeader />
       <main className="mx-auto w-full max-w-6xl p-8">
-        <Link
-          href="/dashboard"
-          className="mb-4 inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded"
-        >
-          <ArrowLeft className="h-3.5 w-3.5" aria-hidden />
-          Dashboard
-        </Link>
+        <BackToDashboard />
 
         <div className="mb-2 flex flex-wrap items-center gap-2">
           <Table2 className="h-5 w-5 text-brand-accent" aria-hidden />

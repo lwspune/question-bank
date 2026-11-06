@@ -3,6 +3,7 @@ import AppHeader from "@/components/AppHeader";
 import { getSessionSuperadmin } from "@/lib/auth";
 import { listStudentRoster } from "@/lib/students/admin";
 import StudentRosterClient from "./StudentRosterClient";
+import BackToDashboard from "@/app/dashboard/BackToDashboard";
 
 export const dynamic = "force-dynamic";
 
@@ -16,6 +17,7 @@ export default async function StudentsPage() {
     <>
       <AppHeader />
       <main className="mx-auto max-w-7xl space-y-6 px-6 py-8">
+        <BackToDashboard />
         <header>
           <h1 className="text-2xl font-semibold tracking-tight">Registered Students</h1>
           <p className="mt-1 text-sm text-muted-foreground">

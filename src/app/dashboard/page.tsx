@@ -1,37 +1,6 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import {
-  Activity,
-  AlertTriangle,
-  BarChart3,
-  HeartPulse,
-  ArrowRight,
-  BookOpen,
-  Building2,
-  CalendarClock,
-  ChevronRight,
-  FileSpreadsheet,
-  FileText,
-  FlaskConical,
-  Flag,
-  Gem,
-  GraduationCap,
-  HandHelping,
-  IndianRupee,
-  ListChecks,
-  MessageCircle,
-  MessageSquareHeart,
-  PenLine,
-  Search,
-  Swords,
-  Table2,
-  Timer,
-  TrendingUp,
-  Upload,
-  Users,
-  Target,
-  Trophy,
-} from "lucide-react";
+import { AlertTriangle, ArrowRight, ChevronRight, FileSpreadsheet } from "lucide-react";
 import { getSessionMember, getSessionUser, getSessionSuperadmin } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
@@ -47,6 +16,7 @@ import {
   type RecentUpload,
 } from "@/lib/dashboard/activity";
 import StatCard from "./StatCard";
+import { visibleSections, type HubCard, type HubContext } from "./hubCards";
 
 export default async function DashboardPage() {
   const [member, user, superadmin] = await Promise.all([
@@ -104,6 +74,16 @@ export default async function DashboardPage() {
   // questions, and without it this page would show the new-org onboarding
   // screen to an org holding 57k rows.
   const isFresh = stats.totalQuestions === 0 && !stats.unavailable;
+  const hub: HubContext = {
+    isFresh,
+    openReports: openReportCount,
+    openConceptReports: openConceptReportCount,
+    sheetsWaiting,
+  };
+  // The cards live in ./hubCards, grouped into sections; a test there fails if
+  // a /dashboard page is not linked.
+  const sections = visibleSections({ isAdmin, isSuperadmin: !!superadmin });
+  const roleLabel = superadmin ? "Superadmin" : isAdmin ? "Admin" : "Teacher";
 
   return (
     <>
@@ -114,18 +94,19 @@ export default async function DashboardPage() {
             Welcome back
           </h1>
           <p className="mt-1 text-sm text-muted-foreground">
-            {member.orgName} · {isAdmin ? "Admin" : "Teacher"}
+            {member.orgName} · {roleLabel}
           </p>
         </header>
 
-        <QuickActions
-          isAdmin={isAdmin}
-          isSuperadmin={!!superadmin}
-          isFresh={isFresh}
-          openReportCount={openReportCount}
-          openConceptReportCount={openConceptReportCount}
-          sheetsWaiting={sheetsWaiting}
-        />
+        {sections.map((s) => (
+          <Section key={s.id} heading={s.heading}>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {s.cards.map((c) => (
+                <ActionCard key={c.href} card={c} hub={hub} />
+              ))}
+            </div>
+          </Section>
+        ))}
 
         {stats.unavailable && (
           <p className="flex items-start gap-2 rounded-md border border-amber-500/40 bg-amber-500/5 px-4 py-3 text-sm text-muted-foreground">
@@ -206,313 +187,41 @@ function Section({
   );
 }
 
-function QuickActions({
-  isAdmin,
-  isSuperadmin,
-  isFresh,
-  openReportCount,
-  openConceptReportCount,
-  sheetsWaiting,
-}: {
-  isAdmin: boolean;
-  isSuperadmin: boolean;
-  isFresh: boolean;
-  openReportCount: number;
-  openConceptReportCount: number;
-  sheetsWaiting: number;
-}) {
-  return (
-    <div
-      className={cn(
-        "grid gap-4",
-        isAdmin ? "sm:grid-cols-2 lg:grid-cols-4" : "sm:grid-cols-1"
-      )}
-    >
-      <ActionCard
-        href="/browse"
-        icon={<Search className="h-5 w-5" aria-hidden />}
-        title="Browse questions"
-        description={
-          isFresh
-            ? "Once questions are uploaded, you'll filter and download them here."
-            : "Filter by exam, chapter, difficulty — then download a question paper."
-        }
-        primary
-      />
-      {isSuperadmin && (
-        <ActionCard
-          href="/upload"
-          icon={<Upload className="h-5 w-5" aria-hidden />}
-          title={isFresh ? "Add your first questions" : "Upload questions"}
-          description="Add a new batch from an Excel file."
-        />
-      )}
-      {isAdmin && (
-        <ActionCard
-          href="/dashboard/reports"
-          icon={<Flag className="h-5 w-5" aria-hidden />}
-          title="Question reports"
-          description={
-            openReportCount > 0
-              ? `${openReportCount} open report${openReportCount === 1 ? "" : "s"} need review.`
-              : "Triage user-filed reports on your questions."
-          }
-          badge={
-            openReportCount > 0 ? String(openReportCount) : undefined
-          }
-        />
-      )}
-      <ActionCard
-        href="/dashboard/syllabus"
-        icon={<Table2 className="h-5 w-5" aria-hidden />}
-        title="Syllabus map"
-        description="Which Std XI/XII Chemistry concepts each exam requires."
-      />
-      {/* Unconditional, like the syllabus map: teachers are the audience, and
-          a TEACHER has no `isAdmin`. */}
-      <ActionCard
-        href="/dashboard/planner"
-        icon={<CalendarClock className="h-5 w-5" aria-hidden />}
-        title="Session plan"
-        description="The Std XI Maths book cut into one-hour classes, with NDA and CBSE gaps folded in."
-      />
-      {isAdmin && (
-        <ActionCard
-          href="/dashboard/notes-reports"
-          icon={<BookOpen className="h-5 w-5" aria-hidden />}
-          title="Concept reports"
-          description={
-            openConceptReportCount > 0
-              ? `${openConceptReportCount} open report${openConceptReportCount === 1 ? "" : "s"} on notes concepts.`
-              : "Triage user-filed reports on /notes concepts."
-          }
-          badge={
-            openConceptReportCount > 0
-              ? String(openConceptReportCount)
-              : undefined
-          }
-        />
-      )}
-      {isAdmin && (
-        <ActionCard
-          href="/dashboard/members"
-          icon={<Users className="h-5 w-5" aria-hidden />}
-          title="Members"
-          description="Add admins and teachers, reset passwords, manage roles."
-        />
-      )}
-      {isSuperadmin && (
-        <ActionCard
-          href="/dashboard/answer-sheets"
-          icon={<PenLine className="h-5 w-5" aria-hidden />}
-          title="Answer sheets"
-          description={
-            sheetsWaiting > 0
-              ? `${sheetsWaiting} answer sheet${sheetsWaiting === 1 ? "" : "s"} waiting to be checked.`
-              : "Board papers students sent for checking. Nothing waiting."
-          }
-          badge={sheetsWaiting > 0 ? String(sheetsWaiting) : undefined}
-        />
-      )}
-      {isSuperadmin && (
-        <ActionCard
-          href="/dashboard/students"
-          icon={<GraduationCap className="h-5 w-5" aria-hidden />}
-          title="Registered Students"
-          description="Who has signed up and how they use the app — mocks, notes, scores. Filter by exam and activity."
-        />
-      )}
-      {isSuperadmin && (
-        <ActionCard
-          href="/dashboard/entitlements"
-          icon={<Gem className="h-5 w-5" aria-hidden />}
-          title="Access"
-          description="Grant or revoke free premium access for students by email."
-        />
-      )}
-      {isSuperadmin && (
-        <ActionCard
-          href="/dashboard/pricing"
-          icon={<IndianRupee className="h-5 w-5" aria-hidden />}
-          title="Pricing"
-          description="The passes on sale (price, length, copy) and the free-mock limit. No deploy needed."
-        />
-      )}
-      {isSuperadmin && (
-        <ActionCard
-          href="/dashboard/sales"
-          icon={<BarChart3 className="h-5 w-5" aria-hidden />}
-          title="Sales"
-          description="Passes and books sold, and the money taken, by day, week and month."
-        />
-      )}
-      {isSuperadmin && (
-        <ActionCard
-          href="/dashboard/results"
-          icon={<Trophy className="h-5 w-5" aria-hidden />}
-          title="Student results"
-          description="Who cleared which exam, and the names waiting to go on /results."
-        />
-      )}
-      {isSuperadmin && (
-        <ActionCard
-          href="/dashboard/quizzes"
-          icon={<ListChecks className="h-5 w-5" aria-hidden />}
-          title="Daily Quizzes"
-          description="View quizzes assembled from the /notes question pool and their status."
-        />
-      )}
-      {isSuperadmin && (
-        <ActionCard
-          href="/dashboard/mocks"
-          icon={<Timer className="h-5 w-5" aria-hidden />}
-          title="Mock Performance"
-          description="See how students scored on each timed mock test, attempt by attempt."
-        />
-      )}
-      {isSuperadmin && (
-        <ActionCard
-          href="/dashboard/item-stats"
-          icon={<Target className="h-5 w-5" aria-hidden />}
-          title="Item statistics"
-          description="How hard each question really is, and where a distractor outpulls the key."
-        />
-      )}
-      {isSuperadmin && (
-        <ActionCard
-          href="/dashboard/feedback"
-          icon={<MessageSquareHeart className="h-5 w-5" aria-hidden />}
-          title="Feedback"
-          description="Mock ratings, NPS and student suggestions — what to build next."
-        />
-      )}
-      {isSuperadmin && (
-        <ActionCard
-          href="/dashboard/activity"
-          icon={<Activity className="h-5 w-5" aria-hidden />}
-          title="Usage shape"
-          description="How students actually use the app — daily or in bursts — before we build engagement mechanics."
-        />
-      )}
-      {isSuperadmin && (
-        <ActionCard
-          href="/dashboard/chat"
-          icon={<MessageCircle className="h-5 w-5" aria-hidden />}
-          title="V usage"
-          description="How often visitors open V, the FAQ helper, and which questions they ask."
-        />
-      )}
-      {isSuperadmin && (
-        <ActionCard
-          href="/dashboard/pmf"
-          icon={<TrendingUp className="h-5 w-5" aria-hidden />}
-          title="Product/market fit"
-          description="Cohort retention, feature adoption and which exam segment is actually sticking — plus what we still cannot see."
-        />
-      )}
-      {isSuperadmin && (
-        <ActionCard
-          href="/dashboard/growth"
-          icon={<FlaskConical className="h-5 w-5" aria-hidden />}
-          title="Growth"
-          description="The North Star, signups by week, and each growth experiment against its own decision rule."
-        />
-      )}
-      {isSuperadmin && (
-        <ActionCard
-          href="/dashboard/tutor"
-          icon={<HandHelping className="h-5 w-5" aria-hidden />}
-          title="Tutor interest"
-          description="Who wants 1:1 tutoring or would teach it: Online or Offline, by city, with their contact details."
-        />
-      )}
-      {isSuperadmin && (
-        <ActionCard
-          href="/dashboard/competitors"
-          icon={<Swords className="h-5 w-5" aria-hidden />}
-          title="Competitors"
-          description="What rival apps and sites offer, where we stand on each feature, and the gaps worth closing."
-        />
-      )}
-      {isSuperadmin && (
-        <ActionCard
-          href="/dashboard/health"
-          icon={<HeartPulse className="h-5 w-5" aria-hidden />}
-          title="Database health"
-          description="Daily snapshots: disk spill, capacity against the plan caps, and the busiest queries this window."
-        />
-      )}
-      <ActionCard
-        href="/dashboard/papers"
-        icon={<FileText className="h-5 w-5" aria-hidden />}
-        title="Papers"
-        description="Build an exam paper together — each teacher fills their subject's section."
-      />
-      <ActionCard
-        href="/dashboard/batches"
-        icon={<Users className="h-5 w-5" aria-hidden />}
-        title="Batches"
-        description="Manage student cohorts, then build papers that don't repeat questions for a batch."
-      />
-      {isAdmin && (
-        <ActionCard
-          href="/dashboard/branches"
-          icon={<Building2 className="h-5 w-5" aria-hidden />}
-          title="Branches"
-          description="Manage your campuses. Batches file under a branch; teachers are assigned to branches."
-        />
-      )}
-    </div>
-  );
-}
-
-function ActionCard({
-  href,
-  icon,
-  title,
-  description,
-  primary,
-  badge,
-}: {
-  href: string;
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-  primary?: boolean;
-  badge?: string;
-}) {
+function ActionCard({ card, hub }: { card: HubCard; hub: HubContext }) {
+  const Icon = card.icon;
+  const badge = card.badge?.(hub) ?? 0;
   return (
     <Link
-      href={href}
+      href={card.href}
       className="group block rounded-lg border bg-card p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-md"
     >
       <div className="flex items-start gap-4">
         <div
           className={cn(
             "rounded-md p-2.5",
-            primary
+            card.primary
               ? "bg-primary/10 text-primary"
               : "bg-muted text-foreground"
           )}
         >
-          {icon}
+          <Icon className="h-5 w-5" aria-hidden />
         </div>
         <div className="min-w-0 flex-1">
           <h3 className="flex items-center gap-2 font-semibold">
             <span className="flex items-center gap-1">
-              {title}
+              {card.title(hub)}
               <ArrowRight
                 className="h-4 w-4 opacity-0 transition-all group-hover:translate-x-0.5 group-hover:opacity-100"
                 aria-hidden
               />
             </span>
-            {badge && (
+            {badge > 0 && (
               <span className="inline-flex h-5 min-w-[1.25rem] items-center justify-center rounded-full bg-red-500 px-1.5 text-[10px] font-semibold text-white tabular-nums">
                 {badge}
               </span>
             )}
           </h3>
-          <p className="mt-0.5 text-sm text-muted-foreground">{description}</p>
+          <p className="mt-0.5 text-sm text-muted-foreground">{card.describe(hub)}</p>
         </div>
       </div>
     </Link>

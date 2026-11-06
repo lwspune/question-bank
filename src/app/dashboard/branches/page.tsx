@@ -5,6 +5,7 @@ import AppHeader from "@/components/AppHeader";
 import { listBranches } from "@/lib/branches/admin";
 import { splitBranches } from "@/lib/branches/validate";
 import BranchesClient from "./BranchesClient";
+import BackToDashboard from "@/app/dashboard/BackToDashboard";
 
 export const dynamic = "force-dynamic";
 
@@ -21,6 +22,7 @@ export default async function BranchesPage() {
     <>
       <AppHeader />
       <main className="mx-auto max-w-3xl space-y-6 px-6 py-8">
+        <BackToDashboard />
         <header>
           <h1 className="text-2xl font-semibold tracking-tight">Branches</h1>
           <p className="mt-1 text-sm text-muted-foreground">

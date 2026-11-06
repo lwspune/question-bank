@@ -5,6 +5,7 @@ import StatCard from "@/app/dashboard/StatCard";
 import { listLeads } from "@/lib/quiz/leadsAdmin";
 import { rollupLeadsByMobile } from "@/lib/quiz/leads";
 import LeadsBrowser from "./LeadsBrowser";
+import BackToDashboard from "@/app/dashboard/BackToDashboard";
 
 export const dynamic = "force-dynamic";
 
@@ -20,6 +21,7 @@ export default async function LeadsPage() {
     <>
       <AppHeader />
       <main className="mx-auto max-w-4xl space-y-6 px-6 py-8">
+        <BackToDashboard />
         <header>
           <h1 className="text-2xl font-semibold tracking-tight">Quiz Leads</h1>
           <p className="mt-1 text-sm text-muted-foreground">

@@ -1,7 +1,7 @@
-import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
-import { ArrowLeft, CalendarClock } from "lucide-react";
+import { CalendarClock } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
+import BackToDashboard from "@/app/dashboard/BackToDashboard";
 import { getSessionMember } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import CollapsibleSection from "../../syllabus/CollapsibleSection";
@@ -219,13 +219,7 @@ export default async function PlannerPage(props: { params: Promise<Params> }) {
     <>
       <AppHeader />
       <main className="mx-auto max-w-6xl p-8">
-        <Link
-          href="/dashboard"
-          className="mb-4 inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground"
-        >
-          <ArrowLeft className="h-3.5 w-3.5" />
-          Dashboard
-        </Link>
+        <BackToDashboard />
 
         <div className="mb-2 flex items-center gap-2">
           <CalendarClock className="h-5 w-5 text-brand-accent" aria-hidden="true" />

@@ -54,6 +54,21 @@ export const SCOPE_MCAT = "mcat";
 export const SCOPE_FREE = "free";
 
 /**
+ * Scopes /dashboard/entitlements may grant by hand: `all`, plus every scope a
+ * pass sells (lib/billing/plans SELLABLE_SCOPES; a test keeps the two equal).
+ * Kept here, not derived from plans.ts, because the grant form is a client
+ * component and this module is safe to import anywhere.
+ */
+export const GRANTABLE_SCOPES: readonly string[] = [
+  SCOPE_ALL,
+  SCOPE_MOCKS,
+  SCOPE_PRACTICE,
+  SCOPE_TEACHER,
+  SCOPE_IMAT,
+  SCOPE_MCAT,
+];
+
+/**
  * Scopes a grant carries beyond its own name. Not transitive: Practice covers
  * the online request (`mocks`) and stops there, so it never reaches
  * downloads. Mirrored in SQL by private.user_has_pass and

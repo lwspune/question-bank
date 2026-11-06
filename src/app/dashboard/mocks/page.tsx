@@ -5,6 +5,7 @@ import AppHeader from "@/components/AppHeader";
 import StatCard from "@/app/dashboard/StatCard";
 import { getSessionSuperadmin } from "@/lib/auth";
 import { getMockPerformance } from "@/lib/mocks/adminStats";
+import BackToDashboard from "@/app/dashboard/BackToDashboard";
 
 export const dynamic = "force-dynamic";
 
@@ -20,6 +21,7 @@ export default async function MockPerformancePage() {
     <>
       <AppHeader />
       <main className="mx-auto max-w-4xl space-y-6 px-6 py-8">
+        <BackToDashboard />
         <header>
           <h1 className="text-2xl font-semibold tracking-tight">Mock Performance</h1>
           <p className="mt-1 text-sm text-muted-foreground">

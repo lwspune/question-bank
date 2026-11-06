@@ -80,40 +80,50 @@ export async function listReports(
     throw new Error(`listReports: ${error.message}`);
   }
 
-  // PostgREST returns nested relations as ARRAYS even for many-to-one FKs,
-  // so the embedded `questions` / `exam` / etc. arrive as `T[]`. Flatten
-  // by taking the first element (always 0 or 1 for these FK joins).
-  type NestedName = { name: string }[] | null;
-  type Raw = {
-    id: string;
-    question_id: string;
-    reported_by: string | null;
-    category: ReportCategory;
-    details: string | null;
-    status: ReportStatus;
-    created_at: string;
-    resolved_at: string | null;
-    resolution_note: string | null;
-    questions:
-      | {
-          text: string;
-          exam: NestedName;
-          subject: NestedName;
-          chapter: NestedName;
-          subtopic: NestedName;
-        }[]
-      | null;
-  };
+  return toReportRows((data ?? []) as unknown as RawReportRow[]);
+}
 
-  const rows = (data ?? []) as unknown as Raw[];
+/** A PostgREST embed. A many-to-one embed (every one here) arrives as a single
+ *  object or null. The array form is accepted too, so a client that returns one
+ *  cannot blank the page again: until 2026-11-06 this file read ONLY the array
+ *  form, and every report rendered as "(question deleted)" with no breadcrumb. */
+type Embed<T> = T | T[] | null | undefined;
 
-  function pickName(rel: NestedName): string {
-    if (!rel || rel.length === 0) return "";
-    return rel[0].name ?? "";
-  }
+type NameEmbed = Embed<{ name: string | null }>;
 
+export type RawReportRow = {
+  id: string;
+  question_id: string;
+  reported_by: string | null;
+  category: ReportCategory;
+  details: string | null;
+  status: ReportStatus;
+  created_at: string;
+  resolved_at: string | null;
+  resolution_note: string | null;
+  questions: Embed<{
+    text: string | null;
+    exam: NameEmbed;
+    subject: NameEmbed;
+    chapter: NameEmbed;
+    subtopic: NameEmbed;
+  }>;
+};
+
+function one<T>(embed: Embed<T>): T | null {
+  if (Array.isArray(embed)) return embed[0] ?? null;
+  return embed ?? null;
+}
+
+function nameOf(embed: NameEmbed): string | null {
+  return one(embed)?.name ?? null;
+}
+
+/** Shapes raw `question_reports` rows (with the question embed) for the triage
+ *  page. Pure, so the embed shape is pinned by a test. */
+export function toReportRows(rows: readonly RawReportRow[]): ReportRow[] {
   return rows.map((r) => {
-    const q = Array.isArray(r.questions) && r.questions.length > 0 ? r.questions[0] : null;
+    const q = one(r.questions);
     return {
       id: r.id,
       questionId: r.question_id,
@@ -127,10 +137,10 @@ export async function listReports(
       resolutionNote: r.resolution_note,
       question: {
         text: q?.text ?? "",
-        examName: pickName(q?.exam ?? null),
-        subjectName: pickName(q?.subject ?? null),
-        chapterName: pickName(q?.chapter ?? null),
-        subtopicName: q?.subtopic && q.subtopic.length > 0 ? q.subtopic[0].name : null,
+        examName: nameOf(q?.exam) ?? "",
+        subjectName: nameOf(q?.subject) ?? "",
+        chapterName: nameOf(q?.chapter) ?? "",
+        subtopicName: nameOf(q?.subtopic),
       },
     };
   });

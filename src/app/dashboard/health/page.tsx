@@ -4,6 +4,7 @@ import { getSessionSuperadmin } from "@/lib/auth";
 import { getHealthPageData } from "@/lib/dbhealth/adminStats";
 import { THRESHOLDS, type FlagLevel } from "@/lib/dbhealth/flags";
 import { bytes } from "@/lib/dbhealth/format";
+import BackToDashboard from "@/app/dashboard/BackToDashboard";
 
 export const dynamic = "force-dynamic";
 
@@ -61,6 +62,7 @@ export default async function DatabaseHealthPage() {
     <>
       <AppHeader />
       <main className="mx-auto w-full max-w-5xl p-8">
+        <BackToDashboard />
         <h1 className="text-2xl font-semibold">Database health</h1>
         <p className="mt-1 text-sm text-muted-foreground">
           Postgres reports load as running totals with no dates in them, so a single reading cannot tell
