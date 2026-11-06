@@ -1347,6 +1347,48 @@ export type Database = {
         }
         Relationships: []
       }
+      exam_twins: {
+        Row: {
+          created_at: string
+          kind: string
+          review_run: string
+          source_question_id: string
+          target_question_id: string
+          why: string
+        }
+        Insert: {
+          created_at?: string
+          kind: string
+          review_run: string
+          source_question_id: string
+          target_question_id: string
+          why: string
+        }
+        Update: {
+          created_at?: string
+          kind?: string
+          review_run?: string
+          source_question_id?: string
+          target_question_id?: string
+          why?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "exam_twins_source_question_id_fkey"
+            columns: ["source_question_id"]
+            isOneToOne: false
+            referencedRelation: "questions"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "exam_twins_target_question_id_fkey"
+            columns: ["target_question_id"]
+            isOneToOne: false
+            referencedRelation: "questions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       exams: {
         Row: {
           id: string
