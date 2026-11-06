@@ -120,6 +120,36 @@ export const EMPTY_PERFORMANCE: Omit<StudentPerformancePayload, "userId"> = {
   weightage: [],
 };
 
+/**
+ * One question the student has ANSWERED in practice (migration 0221,
+ * get_own_practice_evidence): its latest graded answer on the bank, the board
+ * reader, the question of the day or the drill. An answer read without picking
+ * an option is not here: it says nothing about whether they knew it.
+ *
+ *   q  questionId      e/s/c/t  index into dims.exams/subjects/chapters/subtopics
+ *   ok right or wrong  at       when (ISO)
+ */
+export type PracticeRow = {
+  q: string;
+  e: number;
+  s: number;
+  c: number;
+  t: number;
+  ok: boolean;
+  at: string;
+};
+
+export type PracticeEvidence = {
+  dims: { exams: string[]; subjects: string[]; chapters: string[]; subtopics: string[] };
+  rows: PracticeRow[];
+};
+
+/** No practice yet. Lists present and empty, as EMPTY_PERFORMANCE. */
+export const EMPTY_PRACTICE: PracticeEvidence = {
+  dims: { exams: [], subjects: [], chapters: [], subtopics: [] },
+  rows: [],
+};
+
 /** Readable view of a fact's taxonomy. Throws nothing: an index the dims array
  *  doesn't cover yields "" rather than undefined, so a payload/dims mismatch
  *  surfaces as a blank label instead of a render crash. */

@@ -17,7 +17,13 @@ import "server-only";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { fetchStudentPerformance } from "./query";
-import { EMPTY_PERFORMANCE, type StudentPerformancePayload } from "./types";
+import { fetchOwnPracticeEvidence } from "./practiceQuery";
+import {
+  EMPTY_PERFORMANCE,
+  EMPTY_PRACTICE,
+  type PracticeEvidence,
+  type StudentPerformancePayload,
+} from "./types";
 
 export async function getStudentPerformance(
   userId: string
@@ -44,6 +50,23 @@ export async function getOwnPerformance(): Promise<StudentPerformancePayload | n
   };
   if (error) throw new Error(`getOwnPerformance: ${error.message}`);
   return data ?? { userId: user.id, ...EMPTY_PERFORMANCE };
+}
+
+/**
+ * The STUDENT'S OWN practice answers for the mastery map, read with their own
+ * JWT through get_own_practice_evidence() (migration 0221; no argument, the
+ * identity is auth.uid()).
+ *
+ * A failed read returns no practice rather than throwing: the map then shows
+ * what the mocks alone show, as it did before 0221, instead of an error page.
+ */
+export async function getOwnPracticeEvidence(): Promise<PracticeEvidence> {
+  try {
+    return await fetchOwnPracticeEvidence(createSupabaseServerClient());
+  } catch (e) {
+    console.error("getOwnPracticeEvidence", e);
+    return EMPTY_PRACTICE;
+  }
 }
 
 /**

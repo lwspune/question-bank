@@ -10,6 +10,7 @@ import { describe, it, expect } from "vitest";
 import {
   bandOf,
   buildMasteryMap,
+  sourceLine,
   BAND_ORDER,
   type Band,
 } from "@/lib/performance/masteryMap";
@@ -139,6 +140,23 @@ describe("buildMasteryMap", () => {
     expect(by("Trigonometry")).toMatch(/1 to fix/);
     expect(by("Algebra")).toMatch(/mastered/i);
     expect(by("Statistics")).toMatch(/not tested yet/i);
+  });
+
+  it("says how many answers came from papers and how many from practice", () => {
+    const mixed = chapter("Matrices", [
+      sub({ chapter: "Matrices", subtopic: "Determinants", judged: 8, practiceJudged: 5 }),
+      sub({ chapter: "Matrices", subtopic: "Inverse", judged: 4 }),
+    ]);
+    const t = buildMasteryMap(lane([mixed])).tiles[0];
+    expect(t.fromPractice).toBe(5);
+    expect(t.fromPapers).toBe(7);
+  });
+
+  it("puts the sources in plain words, naming only the ones present", () => {
+    expect(sourceLine({ fromPapers: 6, fromPractice: 14 })).toBe("From 6 answers in papers and 14 in practice.");
+    expect(sourceLine({ fromPapers: 1, fromPractice: 0 })).toBe("From 1 answer in papers.");
+    expect(sourceLine({ fromPapers: 0, fromPractice: 3 })).toBe("From 3 answers in practice.");
+    expect(sourceLine({ fromPapers: 0, fromPractice: 0 })).toBeNull();
   });
 
   it("is empty, not absent, for a lane with no chapters", () => {

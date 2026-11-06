@@ -7,20 +7,24 @@ import { getSessionUser } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { logActivityOnce } from "@/lib/activity/service";
 import { surfaceViewedEvent } from "@/lib/activity/views";
-import { getOwnPerformance } from "@/lib/performance/service";
+import { getOwnPerformance, getOwnPracticeEvidence } from "@/lib/performance/service";
 import { buildPerformance } from "@/lib/performance/compute";
+import { latestEvidenceExam, withPractice } from "@/lib/performance/practice";
 import { buildLaneNav } from "@/lib/performance/laneNav";
-import { buildMasteryMap, BAND_ORDER, type Band, type MapTile } from "@/lib/performance/masteryMap";
+import { buildMasteryMap, sourceLine, BAND_ORDER, type Band, type MapTile } from "@/lib/performance/masteryMap";
 import { cn } from "@/lib/utils";
 import { drillHref } from "@/lib/drill/from";
 
 /**
  * `/me/map` — the mastery map. ENGAGEMENT_SPEC.md B1.
  *
- * The same numbers as /performance's chapter accordion, shaped to be SEEN on a
- * phone: chapter tiles in a two-column grid, one dot per subtopic, coloured by
- * the band the performance core computes. The drill retiring a question is
- * what moves a dot, so the drill's end screen links here.
+ * Chapter tiles in a two-column grid, one dot per subtopic, coloured by the
+ * band the performance core computes, shaped to be SEEN on a phone. Since
+ * 2026-11-06 (migration 0221) the bands count PRACTICE answers too (bank,
+ * board, question of the day, drill), the latest answer per question, so a
+ * fixed mistake moves its dot and a student who has only practised has a map.
+ * /performance stays the report on papers alone (lib/performance/practice.ts
+ * says why). The drill's end screen links here.
  *
  * ONE EXAM AND ONE SUBJECT AT A TIME, chosen by the same `?exam=&subject=`
  * links /performance uses (buildLaneNav), so the two pages agree on what is
@@ -57,12 +61,13 @@ export default async function MasteryMapPage(props: { searchParams: Promise<Sear
   const user = await getSessionUser();
   if (!user) redirect("/login?next=/me/map");
 
-  const payload = await getOwnPerformance();
+  const [payload, practice] = await Promise.all([getOwnPerformance(), getOwnPracticeEvidence()]);
   if (!payload) redirect("/login?next=/me/map");
-  await logActivityOnce(createSupabaseServerClient(), user.id, surfaceViewedEvent(user.id, "map", new Date()));
+  const now = new Date();
+  await logActivityOnce(createSupabaseServerClient(), user.id, surfaceViewedEvent(user.id, "map", now));
 
-  const perf = buildPerformance(payload, new Date());
-  const nav = buildLaneNav(perf.lanes, perf.summary.latest?.exam ?? null, searchParams);
+  const perf = withPractice(payload, buildPerformance(payload, now), practice, now);
+  const nav = buildLaneNav(perf.lanes, latestEvidenceExam(perf, practice), searchParams);
   const map = nav.selected ? buildMasteryMap(nav.selected) : null;
 
   return (
@@ -76,7 +81,7 @@ export default async function MasteryMapPage(props: { searchParams: Promise<Sear
           <div className="min-w-0">
             <h1 className="text-xl font-semibold tracking-tight sm:text-2xl">Your map</h1>
             <p className="text-sm text-muted-foreground">
-              Every subtopic your timed papers have touched. Fixing mistakes moves the dots.
+              Every subtopic you have answered questions on, in papers or in practice. Fixing mistakes moves the dots.
             </p>
           </div>
         </header>
@@ -131,7 +136,8 @@ export default async function MasteryMapPage(props: { searchParams: Promise<Sear
 
             <p className="text-xs text-muted-foreground">
               Bands use the same thresholds as your performance page: under 50% is to fix, 70% and above is
-              mastered, and a subtopic needs three judged answers before it is called either.
+              mastered, and a subtopic needs three judged answers before it is called either. A question you
+              answer more than once counts by your latest answer, and recent answers count more.
             </p>
           </>
         )}
@@ -206,6 +212,7 @@ function Tile({ tile }: { tile: MapTile }) {
             </Link>
           </li>
         ))}
+        {sourceLine(tile) && <li className="pt-1 text-xs text-muted-foreground">{sourceLine(tile)}</li>}
       </ul>
     </details>
   );
@@ -216,7 +223,8 @@ function EmptyState() {
     <div className="rounded-2xl border bg-card p-6 text-center">
       <p className="font-semibold">No map yet</p>
       <p className="mx-auto mt-2 max-w-sm text-sm text-muted-foreground">
-        The map is drawn from your timed papers. Sit one and every subtopic it touched appears here.
+        The map is drawn from the questions you answer, in papers and in practice. Answer a few and their
+        subtopics appear here.
       </p>
       <div className="mt-6 flex flex-col gap-2 sm:flex-row sm:justify-center">
         <Link
