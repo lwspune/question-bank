@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { cdsSittingLabel, cetSittingLabel, compareSittings, mhSittingLabel, ndaSittingLabel, sscSittingLabel, sscTier2SittingLabel } from "@/lib/homework/sittings";
+import { cdsSittingLabel, cetSittingLabel, compareSittings, jeeSittingLabel, mhSittingLabel, ndaSittingLabel, sscSittingLabel, sscTier2SittingLabel } from "@/lib/homework/sittings";
 
 describe("compareSittings", () => {
   it("orders MH papers by date, not alphabetically", () => {
@@ -157,5 +157,38 @@ describe("sscTier2SittingLabel", () => {
   it("sorts Tier II papers by date, the CGL 2022 papers of March 2023 in order", () => {
     const got = ["18 Jan 2026 Tier II", "7 Mar 2023 Tier II", "15 Nov 2020 Tier II", "2 Mar 2023 Tier II", "26 Oct 2023 Tier II"].sort(compareSittings);
     expect(got).toEqual(["15 Nov 2020 Tier II", "2 Mar 2023 Tier II", "7 Mar 2023 Tier II", "26 Oct 2023 Tier II", "18 Jan 2026 Tier II"]);
+  });
+});
+
+// JEE Mains (2026-11-06): the bank stores 2022-2025 one file per DAY (both
+// shifts together), 2026 per shift, and 2021 as numbered papers with no date.
+describe("jeeSittingLabel", () => {
+  it("names a 2026 shift by its date and shift", () => {
+    expect(jeeSittingLabel(2026, "2 Apr 2026 Shift 1")).toBe("2 Apr 2026 S1");
+    expect(jeeSittingLabel(2026, "28 Jan 2026 Shift 2")).toBe("28 Jan 2026 S2");
+  });
+
+  it("names a 2022-2025 day by its date, whatever the note's spelling", () => {
+    expect(jeeSittingLabel(2022, "14 June 2022")).toBe("14 Jun 2022");
+    expect(jeeSittingLabel(2023, "29 January 2023")).toBe("29 Jan 2023");
+    expect(jeeSittingLabel(2023, "8 Apr 2023")).toBe("8 Apr 2023");
+    expect(jeeSittingLabel(2022, "JEE Mains 2022 — 25 June")).toBe("25 Jun 2022");
+  });
+
+  it("names a 2021 paper by its number, compilations included", () => {
+    expect(jeeSittingLabel(2021, "Paper 7")).toBe("2021 Paper 7");
+    expect(jeeSittingLabel(2021, "2021 Paper 24")).toBe("2021 Paper 24");
+    expect(jeeSittingLabel(2021, "2021 Compilation Paper 13")).toBe("2021 Paper 13");
+  });
+
+  it("refuses a note it cannot read, never guessing", () => {
+    expect(() => jeeSittingLabel(2019, "JEE Main 2019 past-year question, as reprinted in Allen's module")).toThrow(/JEE Main 2019/);
+    expect(() => jeeSittingLabel(2024, null)).toThrow(/note/);
+    expect(() => jeeSittingLabel(2024, "8 Apr 2023")).toThrow(/2024/);
+  });
+
+  it("sorts 2021 papers, days and shifts by date", () => {
+    const got = ["2 Apr 2026 S2", "14 Jun 2022", "2021 Paper 12", "2 Apr 2026 S1", "29 Jan 2023", "2021 Paper 3", "21 Jan 2026 S1"].sort(compareSittings);
+    expect(got).toEqual(["2021 Paper 3", "2021 Paper 12", "14 Jun 2022", "29 Jan 2023", "21 Jan 2026 S1", "2 Apr 2026 S1", "2 Apr 2026 S2"]);
   });
 });
