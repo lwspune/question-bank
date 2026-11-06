@@ -349,6 +349,10 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 
 ### 2026-11
 
+- **2026-11-06 (second) — Practice answers colour /me/map (0221); IMAT gets map + drill on intl.**
+  - **Why:** the map read first mock sittings only: 596 practisers had never sat a mock, and "Fixing mistakes moves the dots" was false (drill answers never reached it).
+  - **Owner:** latest answer per question counts, wherever given; practice weighs as a mock answer. /performance stays papers-only (its other cards are paper-only), so only the map applies it.
+  - **Intl:** map, drill and /go/practice served there with intl exams alone (`lib/sites/siteScope`); an IMAT pass now lifts the drill limit there (it read www's `hasPass`). Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-11-06 — "Asked in NDA" under board questions: exam twins (0220), pilot NDA Matrices.**
   - **Why:** the owner wanted "board is the foundation" shown with evidence on the question a student studies; syllabus rulings count topics, not questions.
   - **Pilot:** 177 hand-settled pairs; 60 of NDA's 181 Matrices questions (33%) have a board twin. "Similar" never counts as asked; one line per card, own exam first; no answer in the panel (reveal limit).

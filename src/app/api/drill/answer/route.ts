@@ -25,6 +25,7 @@ import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { checkAndIncrement } from "@/lib/rate-limit";
 import { parseDrillAnswer } from "@/lib/drill/parse";
 import { recordDrillAnswer } from "@/lib/drill/service";
+import { isIntlHost } from "@/lib/sites/intl";
 
 /** One answer is one request, so the budget is in questions, not drills — 200
  *  an hour is 40 full drills, far past a real session and tight enough to bound
@@ -69,7 +70,9 @@ export async function POST(request: NextRequest) {
   // A written question carries the student's own verdict instead of a label
   // (2026-10-28): there is no key to grade a written answer against.
   const answer = parsed.selfMark !== undefined ? { selfMark: parsed.selfMark } : parsed.label;
-  const outcome = await recordDrillAnswer(user.id, parsed.questionId, answer, { allowed });
+  // On intl an IMAT pass lifts the drill's free limit (lib/billing/passScope).
+  const intl = isIntlHost(request.headers.get("host"));
+  const outcome = await recordDrillAnswer(user.id, parsed.questionId, answer, { allowed, intl });
   if (outcome && "rateLimited" in outcome) {
     return NextResponse.json({ error: "Slow down a moment." }, { status: 429 });
   }

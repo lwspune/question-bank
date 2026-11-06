@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { ArrowRight, Map as MapIcon, Target, Timer } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
@@ -14,6 +15,8 @@ import { buildLaneNav } from "@/lib/performance/laneNav";
 import { buildMasteryMap, sourceLine, BAND_ORDER, type Band, type MapTile } from "@/lib/performance/masteryMap";
 import { cn } from "@/lib/utils";
 import { drillHref } from "@/lib/drill/from";
+import { isIntlHost } from "@/lib/sites/intl";
+import { forSite } from "@/lib/sites/siteScope";
 
 /**
  * `/me/map` — the mastery map. ENGAGEMENT_SPEC.md B1.
@@ -67,7 +70,11 @@ export default async function MasteryMapPage(props: { searchParams: Promise<Sear
   await logActivityOnce(createSupabaseServerClient(), user.id, surfaceViewedEvent(user.id, "map", now));
 
   const perf = withPractice(payload, buildPerformance(payload, now), practice, now);
-  const nav = buildLaneNav(perf.lanes, latestEvidenceExam(perf, practice), searchParams);
+  // intl.pyqvault.com holds the international exams alone, www every other
+  // exam (lib/sites/siteScope): each site's map is that site's lanes.
+  const intl = isIntlHost((await headers()).get("host"));
+  const lanes = forSite(perf.lanes, (l) => l.exam, intl);
+  const nav = buildLaneNav(lanes, latestEvidenceExam(perf, practice), searchParams);
   const map = nav.selected ? buildMasteryMap(nav.selected) : null;
 
   return (

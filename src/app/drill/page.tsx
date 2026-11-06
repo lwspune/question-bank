@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { Sparkles, Target, Timer } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
@@ -16,6 +17,8 @@ import { drillHref, parseDrillFrom } from "@/lib/drill/from";
 import PremiumLimitCard from "@/components/premium/PremiumLimitCard";
 import { premiumPassCta } from "@/lib/billing/premiumLimits";
 import { paywallEvent } from "@/lib/activity/clientEvents";
+import { isIntlHost } from "@/lib/sites/intl";
+import { readCountry } from "@/lib/acquisition/country";
 
 /**
  * `/drill` — five questions this student has already got wrong, served back.
@@ -61,8 +64,10 @@ export default async function DrillPage(
   // Which link brought them (lib/drill/from): recorded, never acted on.
   const from = parseDrillFrom(searchParams?.from);
 
+  // On intl.pyqvault.com the drill holds the international exams alone.
+  const intl = isIntlHost((await headers()).get("host"));
   const [drill, profile] = await Promise.all([
-    getOwnDrill({ attemptId, chapterId }),
+    getOwnDrill({ attemptId, chapterId, intl }),
     getOnboardingState(createSupabaseServerClient(), user.id),
   ]);
   if (!drill) redirect("/login?next=/drill");
@@ -88,7 +93,10 @@ export default async function DrillPage(
 
   // Today's free questions are used (migration 0134): the pass card, and the
   // impression, once a day.
-  const pass = drill.allowance.kind === "locked" ? await premiumPassCta() : null;
+  const pass =
+    drill.allowance.kind === "locked"
+      ? await premiumPassCta(intl ? "intl" : "pyqvault", intl ? readCountry(await headers()) : null)
+      : null;
   if (drill.allowance.kind === "locked") {
     await logActivityOnce(
       createSupabaseServerClient(),

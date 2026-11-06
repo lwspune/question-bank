@@ -8,7 +8,8 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { SCOPE_MOCKS } from "@/lib/entitlements/access";
-import { offerForNeed, passCta, type PassCta } from "./plans";
+import { offerForNeed, passCta, type PassCta, type PlanSite } from "./plans";
+import { sitePassScopes } from "./passScope";
 import { listActivePlans } from "./plansQuery";
 
 export type PremiumLimits = {
@@ -34,6 +35,8 @@ export async function getPremiumLimits(db: SupabaseClient): Promise<PremiumLimit
 }
 
 /** The pass a limit card offers (null = none on sale; the card links to /pricing). */
-export async function premiumPassCta(): Promise<PassCta | null> {
-  return passCta(offerForNeed(await listActivePlans(createSupabaseAnonClient()), SCOPE_MOCKS, "pyqvault", null));
+export async function premiumPassCta(site: PlanSite = "pyqvault", country: string | null = null): Promise<PassCta | null> {
+  // intl offers its exam's pass at the visitor's country price (2026-11-06).
+  const need = site === "intl" ? (sitePassScopes("intl")[0] ?? SCOPE_MOCKS) : SCOPE_MOCKS;
+  return passCta(offerForNeed(await listActivePlans(createSupabaseAnonClient()), need, site, country));
 }

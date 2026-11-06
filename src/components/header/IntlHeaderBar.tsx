@@ -13,9 +13,10 @@ import { intlNavFor } from "@/lib/sites/intl";
 
 /**
  * The header on intl.pyqvault.com (2026-10-30): the brand, the current exam's
- * Notes · Mocks · Questions, and sign-in. None of PYQ Vault's Indian surfaces
- * (Guides, Board, drill, ebooks, tutor) appear here; the owner's rule is that
- * an international student sees no Indian exam.
+ * Notes · Mocks · Questions, Progress once signed in (the map and the drill,
+ * holding international exams alone since 2026-11-06), and sign-in. None of
+ * PYQ Vault's Indian surfaces (Guides, Board, ebooks, tutor) appear here; the
+ * owner's rule is that an international student sees no Indian exam.
  */
 export default function IntlHeaderBar({
   email,
@@ -25,7 +26,7 @@ export default function IntlHeaderBar({
   sessionLoading: boolean;
 }) {
   const pathname = usePathname() ?? "/";
-  const links = intlNavFor(pathname);
+  const links = intlNavFor(pathname, { signedIn: Boolean(email) });
 
   const tabs = (
     <nav aria-label="Main" className="flex items-center gap-1">

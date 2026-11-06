@@ -12,7 +12,8 @@ import { logActivity, logActivityOnce } from "@/lib/activity/service";
 import { selfMarkDedupeKey, type SelfMark } from "@/lib/questions/selfMark";
 import { regradeAttempt, MockError } from "@/lib/mocks/service";
 import { getOnboardingState } from "@/lib/profile/service";
-import { primaryExam, sanitizeTargetExams } from "@/lib/profile/onboarding";
+import { siteFillExam } from "@/lib/sites/siteScope";
+import { holdsSitePass } from "@/lib/billing/passScope";
 import { getExamIdMap } from "@/lib/exam/examIdMap";
 import { composeDailySet, fillUnseen, loadOwnPool } from "./compose";
 import { fixedCount, questionState, scopeToAttempt, scopeToChapter, selectDrill, DRILL_SIZE, type DueQuestion } from "./select";
@@ -68,7 +69,8 @@ export type OwnDrill = {
 async function readDrillAllowanceInput(
   db: ReturnType<typeof createSupabaseServerClient>,
   userId: string,
-  now: Date
+  now: Date,
+  intl = false
 ): Promise<DrillAllowanceInput> {
   // Both reads at once: the server is a long way from the database, so a read
   // that waits for another costs a full round trip. Today's answers are read
@@ -80,8 +82,10 @@ async function readDrillAllowanceInput(
       (e: unknown) => ({ ok: false as const, e })
     ),
   ]);
-  if (!limits || limits.hasPass || limits.drillPerDay === null) {
-    return { limit: null, hasPass: limits?.hasPass ?? false, answeredToday: [] };
+  // The pass that lifts THIS site's limit: on intl an IMAT pass, not www's.
+  const hasPass = limits ? holdsSitePass(limits, intl ? "intl" : "pyqvault") : false;
+  if (!limits || hasPass || limits.drillPerDay === null) {
+    return { limit: null, hasPass, answeredToday: [] };
   }
   if (!today.ok) {
     console.error("drill allowance read failed", today.e);
@@ -91,8 +95,10 @@ async function readDrillAllowanceInput(
 }
 
 export async function getOwnDrill(
-  opts: { attemptId?: string | null; chapterId?: string | null; now?: Date } = {}
+  opts: { attemptId?: string | null; chapterId?: string | null; now?: Date; intl?: boolean } = {}
 ): Promise<OwnDrill | null> {
+  // intl.pyqvault.com drills the international exams alone (2026-11-06).
+  const intl = opts.intl ?? false;
   const now = opts.now ?? new Date();
   const db = createSupabaseServerClient();
   const {
@@ -101,8 +107,8 @@ export async function getOwnDrill(
   if (!user) return null;
 
   const [pool, allowanceInput] = await Promise.all([
-    loadOwnPool(db, user.id, now),
-    readDrillAllowanceInput(db, user.id, now),
+    loadOwnPool(db, user.id, now, intl),
+    readDrillAllowanceInput(db, user.id, now, intl),
   ]);
   const allowance = drillAllowance(allowanceInput);
   // Today's free questions decide the set size: five, or what is left.
@@ -152,9 +158,9 @@ export async function getOwnDrill(
   let fresh: string[] = [];
   if (!scope && picked.length < size) {
     const { targetExams } = await getOnboardingState(db, user.id);
-    const slug = primaryExam(sanitizeTargetExams(targetExams));
+    const slug = siteFillExam(targetExams, intl);
     const examId = slug ? ((await getExamIdMap())[slug] ?? null) : null;
-    fresh = await fillUnseen(db, user.id, pool.events, size - picked.length, examId);
+    fresh = await fillUnseen(db, user.id, pool.events, size - picked.length, examId, intl);
   }
 
   const set = composeDailySet(picked, fresh, size);
@@ -220,7 +226,7 @@ export async function recordDrillAnswer(
   /** The tapped option's label, or on a WRITTEN question the student's own
    *  verdict (2026-10-28): Understood counts as right, Review later as wrong. */
   answer: string | { selfMark: SelfMark },
-  opts: { allowed?: Promise<boolean> } = {}
+  opts: { allowed?: Promise<boolean>; intl?: boolean } = {}
 ): Promise<AnswerOutcome | DrillLimitReached | DrillRateLimited | null> {
   const db = createSupabaseServerClient();
   const now = new Date();
@@ -239,7 +245,7 @@ export async function recordDrillAnswer(
     // Today's free allowance, checked BEFORE the verdict leaves the server:
     // the key first reaches the browser in this answer's reply, so refusing
     // here is a real limit.
-    readDrillAllowanceInput(db, userId, now),
+    readDrillAllowanceInput(db, userId, now, opts.intl ?? false),
     typeof answer === "string"
       ? gradeDrillAnswer(db, questionId, answer)
       : selfMarkVerdict(db, questionId, answer.selfMark),
