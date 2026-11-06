@@ -310,7 +310,15 @@ export function mockCardMetaLine(card: MockExamCard): string {
     parts.push(`${past} past ${past === 1 ? "paper" : "papers"}${span}`);
   }
   if (card.byType["practice"] > 0) parts.push(`${card.byType["practice"]} practice`);
-  if (card.byType["sectional"] > 0) parts.push(`${card.byType["sectional"]} sectional`);
+  const sectional = card.byType["sectional"];
+  if (sectional > 0) {
+    // A board exam's sectional mocks are chapter tests (its card says so).
+    parts.push(
+      getExamBySlug(card.slug)?.boardExam
+        ? `${sectional} chapter ${sectional === 1 ? "test" : "tests"}`
+        : `${sectional} sectional`
+    );
+  }
   return parts.join(" · ");
 }
 

@@ -31,6 +31,7 @@ const chapterPages = listFormulaChapterPages();
 // www's exams only: the intl exams' formula pages live on intl.pyqvault.com,
 // and their www links only redirect there.
 const groups = groupFormulaPagesForIndex(chapterPages, PYQVAULT_EXAMS);
+const wwwPageCount = groups.reduce((n, g) => n + g.subjects.reduce((m, s) => m + s.pages.length, 0), 0);
 const examList = (() => {
   const names = groups.map((g) => g.examDisplay);
   return names.length > 1 ? `${names.slice(0, -1).join(", ")} and ${names[names.length - 1]}` : names[0];
@@ -65,7 +66,7 @@ export default function FormulaIndexPage() {
         </p>
         <h1 className="mt-1 text-3xl font-semibold tracking-tight">Formula sheets by chapter</h1>
         <p className="mt-3 max-w-3xl text-muted-foreground">
-          {chapterPages.length} chapters across {examList}, each with its formulas, reference tables and
+          {wwwPageCount} chapters across {examList}, each with its formulas, reference tables and
           common traps on one page.
         </p>
 
