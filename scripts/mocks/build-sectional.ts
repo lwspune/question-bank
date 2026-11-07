@@ -82,6 +82,7 @@ import {
   pickSectionalSets,
   sectionalBlueprint,
   sectionalSize,
+  wholePoolTestSize,
   sectionalSlug,
   sectionalSource,
   sectionalTitle,
@@ -125,6 +126,12 @@ type SubjectPlan = {
    * scripts/ncert/config.ts and scripts/stateboard/config.ts.
    */
   chapterOrder?: string[];
+  /**
+   * Thin chapters tested on their whole pool (7+ questions) when the floor
+   * would leave them out: the mentor path needs a test on every Class 12 PCM
+   * chapter (MENTOR_SPEC.md §14, owner 2026-11-07). See wholePoolTestSize.
+   */
+  wholePoolChapters?: Set<string>;
 };
 
 type QuestionKind = "pyq" | "practice";
@@ -505,8 +512,13 @@ const EXAMS: Record<string, ExamPlan> = {
     numericShare: 0,
     // Geography is left out: none of its 8 chapters has 10 MCQs (2026-10-05).
     subjects: [
-      { bankSubject: "Physics", code: "physics", paper: MH_HSC_12_CHAPTER_MCQ_PAPER, sectionKey: "physics", weights: NONE, chapterOrder: BALBHARATI_12_PHYSICS },
-      { bankSubject: "Chemistry", code: "chemistry", paper: MH_HSC_12_CHAPTER_MCQ_PAPER, sectionKey: "chemistry", weights: NONE, chapterOrder: BALBHARATI_12_CHEMISTRY },
+      // The four PCM chapters under 10 MCQs get a short test on their whole
+      // pool (owner, 2026-11-07, for the mentor path). Biology's thin ones don't:
+      // Biology is not on the path yet.
+      { bankSubject: "Physics", code: "physics", paper: MH_HSC_12_CHAPTER_MCQ_PAPER, sectionKey: "physics", weights: NONE, chapterOrder: BALBHARATI_12_PHYSICS,
+        wholePoolChapters: new Set(["Magnetic Fields due to Electric Current", "Magnetic Materials", "Structure of Atoms and Nuclei"]) },
+      { bankSubject: "Chemistry", code: "chemistry", paper: MH_HSC_12_CHAPTER_MCQ_PAPER, sectionKey: "chemistry", weights: NONE, chapterOrder: BALBHARATI_12_CHEMISTRY,
+        wholePoolChapters: new Set(["Green Chemistry and Nanochemistry"]) },
       { bankSubject: "Mathematics", code: "maths", paper: MH_HSC_12_CHAPTER_MCQ_PAPER, sectionKey: "mathematics", weights: NONE },
       // Biology joined 2026-10-14 with its Balbharati textbook MCQs; its chapters were
       // seeded in book order, so order_index needs no list.
@@ -758,7 +770,9 @@ async function plan(db: SupabaseClient, exam: ExamPlan): Promise<void> {
       if (sp.mode === "sets") {
         picked = pickSectionalSets(setsOf(c.rows, exam));
       } else {
-        const size = sectionalSize(c.eligible.length, exam.minPool);
+        const size = sp.wholePoolChapters?.has(c.name)
+          ? wholePoolTestSize(c.eligible.length, exam.minPool)
+          : sectionalSize(c.eligible.length, exam.minPool);
         picked = size === null ? null : pickSectionalQuestions(c.eligible, size, { numericShare: exam.numericShare });
       }
       if (picked === null) {

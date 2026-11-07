@@ -70,6 +70,22 @@ export function sectionalSize(poolCount: number, minPool = SHORT_TEST_MIN_POOL):
   return null;
 }
 
+/** The smallest pool a named thin chapter is tested on whole. */
+export const WHOLE_POOL_MIN = 7;
+
+/**
+ * The test length for a chapter the exam NAMES as thin: the normal size when
+ * the pool carries one, else every question it has from 7 up; null below 7.
+ *
+ * The one exception to "a thin chapter gets no test rather than a test that IS
+ * the chapter". The mentor path (MENTOR_SPEC.md §14) counts a chapter done only
+ * after its test, and four HSC PCM chapters hold 7-9 MCQs, so the owner chose a
+ * short test on their whole pool (2026-11-07). Only listed chapters get it.
+ */
+export function wholePoolTestSize(poolCount: number, minPool = SHORT_TEST_MIN_POOL): number | null {
+  return sectionalSize(poolCount, minPool) ?? (poolCount >= WHOLE_POOL_MIN ? poolCount : null);
+}
+
 /**
  * Seconds for an n-question test at the real paper's own rate, rounded UP to a
  * whole minute. Rounding down would make a chapter test stricter than the exam.
