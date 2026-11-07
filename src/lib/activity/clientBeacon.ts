@@ -12,6 +12,7 @@
 import type { Surface } from "./views";
 import type { DownloadBox, PaywallGate, VIEW_BROWSERS } from "./clientEvents";
 import type { DeclineReason } from "@/lib/billing/declineReasons";
+import type { ChapterFixFrom } from "@/lib/drill/from";
 
 const ENDPOINT = "/api/activity/event";
 const sent = new Set<string>();
@@ -25,6 +26,13 @@ type ClientEvent =
       chapter?: string;
       /** The page address, reading surfaces only (lib/activity/views readingViewFor). */
       path?: string;
+    }
+  | {
+      /** The chapter pages' Fix line seen (lib/drill/chapterFix). */
+      kind: "surface_viewed";
+      surface: "chapter_fix";
+      chapterId: string;
+      from: ChapterFixFrom;
     }
   | {
       kind: "paywall_event";

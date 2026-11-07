@@ -48,6 +48,8 @@ import ChapterShareCard from "@/components/ChapterShareCard";
 import Breadcrumbs from "@/components/nav/Breadcrumbs";
 import RememberVisit from "@/components/visits/RememberVisit";
 import { canonicalFor } from "@/lib/sites/intl";
+import ChapterFixLine from "@/components/drill/ChapterFixLine";
+import { CHAPTER_FIX_FROM } from "@/lib/drill/from";
 
 
 /** Rebuilt daily; new chapters appear without a deploy. */
@@ -297,6 +299,10 @@ export default async function ChapterQuestionsPage(props: Params) {
             </span>
           </p>
         )}
+
+        {/* Signed in with mistakes waiting from this chapter: one line to fix
+            them (2026-11-07). Browser-only, so the page stays cached. */}
+        <ChapterFixLine chapterId={landing.chapterId} from={CHAPTER_FIX_FROM.questions} className="mt-4" />
 
         <div className="mt-4">
           {questions.rows.length === 0 ? (

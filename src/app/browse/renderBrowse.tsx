@@ -64,6 +64,8 @@ import CartPill from "./CartPill";
 import BackToNotes from "./BackToNotes";
 import Hero from "./Hero";
 import ActiveFilterChips from "./ActiveFilterChips";
+import ChapterFixLine from "@/components/drill/ChapterFixLine";
+import { CHAPTER_FIX_FROM } from "@/lib/drill/from";
 import FitCoverageNote from "./FitCoverageNote";
 import { fitCoverage } from "@/lib/relevance/fit";
 import { TOP_PRINCIPLES } from "@/app/guide/nda-maths/_data/principles";
@@ -480,6 +482,12 @@ export default async function renderBrowse(req: BrowseRequest) {
             ) : questionsResult.rows.length === 0 ? (
               <EmptyState filtered={filtered} />
             ) : (
+              <>
+              {/* Filtered to one chapter, signed in, mistakes waiting there
+                  (2026-11-07): one line to fix them. Browser-only. */}
+              {filters.chapterIds.length === 1 && (
+                <ChapterFixLine chapterId={filters.chapterIds[0]} from={CHAPTER_FIX_FROM.browse} className="mb-4" />
+              )}
               <QuestionList
                 questions={questionsResult.rows}
                 pageOffset={(filters.page - 1) * DEFAULT_PAGE_SIZE}
@@ -499,6 +507,7 @@ export default async function renderBrowse(req: BrowseRequest) {
                 itemStats={itemStats}
                 paperLinks={paperLinks}
               />
+              </>
             )}
 
             {!landing && totalPages > 1 && (

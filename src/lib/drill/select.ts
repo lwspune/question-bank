@@ -305,6 +305,22 @@ export function scopeToChapter(due: readonly DueQuestion[], chapterId: string): 
   return due.filter((q) => q.chapterId === chapterId);
 }
 
+/**
+ * How many due questions sit in each chapter, keyed by chapter ID: the count
+ * a chapter page's "Fix N mistakes in this chapter" line shows (2026-11-07),
+ * which is what its button's scopeToChapter will serve. Same grouping as
+ * weakChapters, so /me and the chapter page never disagree. A question with
+ * no chapter id is left out. Spec: tests/drill-chapter-fix.test.ts.
+ */
+export function dueByChapter(due: readonly DueQuestion[]): Record<string, number> {
+  const counts: Record<string, number> = {};
+  for (const q of due) {
+    if (!q.chapterId) continue;
+    counts[q.chapterId] = (counts[q.chapterId] ?? 0) + 1;
+  }
+  return counts;
+}
+
 /** One row of /me's Weak spots. */
 export type WeakChapter = { chapterId: string; name: string; place: string; due: number };
 

@@ -30,7 +30,21 @@ export const DRILL_FROM = [
   "nav", // the Fix tab graduates get in place of Board (lib/nav/fifthTab)
   "review", // "Saved for review" under a written model answer (lib/questions/selfMark)
   "homework", // the homework plan and day pages' review links (lib/homework/progress)
+  // "Fix N mistakes in this chapter" above a chapter's questions (2026-11-07,
+  // lib/drill/chapterFix), one tag per page so each can be read apart.
+  "chapter", // a /questions chapter page
+  "board_chapter", // a /board chapter page
+  "browse_chapter", // /browse filtered to one chapter
 ] as const;
+
+/** The chapter line's tag on each page it sits on. */
+export const CHAPTER_FIX_FROM = {
+  questions: "chapter",
+  board: "board_chapter",
+  browse: "browse_chapter",
+} as const satisfies Record<string, DrillFrom>;
+
+export type ChapterFixFrom = (typeof CHAPTER_FIX_FROM)[keyof typeof CHAPTER_FIX_FROM];
 
 export type DrillFrom = (typeof DRILL_FROM)[number];
 

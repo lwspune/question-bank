@@ -351,3 +351,43 @@ describe("parseClientEvent - an exam twin opened", () => {
     }
   });
 });
+
+describe("parseClientEvent - the chapter page's Fix line seen (2026-11-07)", () => {
+  const CH = "c0ffee00-1b2c-4d3e-9f00-112233445566";
+
+  it("records the chapter and the page, once per chapter per day", () => {
+    const r = parseClientEvent({ kind: "surface_viewed", surface: "chapter_fix", chapterId: CH, from: "board_chapter" }, "u1", NOW);
+    expect(r).toEqual({
+      ok: true,
+      value: {
+        kind: "surface_viewed",
+        metadata: { surface: "chapter_fix", chapterId: CH, from: "board_chapter" },
+        dedupeKey: `view:chapter_fix:${CH}:u1:2026-09-27`,
+      },
+    });
+  });
+
+  it("accepts each page's tag", () => {
+    for (const from of ["chapter", "board_chapter", "browse_chapter"]) {
+      expect(parseClientEvent({ kind: "surface_viewed", surface: "chapter_fix", chapterId: CH, from }, "u1", NOW).ok).toBe(true);
+    }
+  });
+
+  it("refuses a missing or malformed chapter id, or an unknown page", () => {
+    for (const bad of [
+      { from: "chapter" },
+      { chapterId: "not-a-uuid", from: "chapter" },
+      { chapterId: `${CH}x`, from: "chapter" },
+      { chapterId: CH },
+      { chapterId: CH, from: "menu" },
+      { chapterId: CH, from: "chapter", path: "/questions/nda/mathematics/matrices" },
+    ]) {
+      expect(parseClientEvent({ kind: "surface_viewed", surface: "chapter_fix", ...bad }, "u1", NOW).ok, JSON.stringify(bad)).toBe(false);
+    }
+  });
+
+  it("refuses a chapter id or page tag on any other surface", () => {
+    expect(parseClientEvent({ kind: "surface_viewed", surface: "drill", chapterId: CH }, "u1", NOW).ok).toBe(false);
+    expect(parseClientEvent({ kind: "surface_viewed", surface: "drill", from: "chapter" }, "u1", NOW).ok).toBe(false);
+  });
+});
