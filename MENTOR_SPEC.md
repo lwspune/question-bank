@@ -396,7 +396,7 @@ plan asks (Phase 2's acceptance set).
    date, on track / behind by N days) · today (2-4 tasks from the queue
    furthest behind its pace + the Fix task; stable through the IST day, done
    tasks stay shown as done).
-2. Migration 0223: `study_paths` (one active per student, own-row RLS, CHECKs
+2. Migration 0225 (0223-0224 went to the tutor price): `study_paths` (one active per student, own-row RLS, CHECKs
    on exam, subjects, pace) · `study_path_deferrals` · `study_path_test_grants`
    (service-role writes; `private.enforce_free_mock_limit` lets a granted test
    through and leaves it out of the free count, the `mock_invite_joins`
