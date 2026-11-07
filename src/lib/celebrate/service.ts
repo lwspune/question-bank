@@ -24,13 +24,29 @@ export async function getOwnAnswerTotals(db: SupabaseClient): Promise<AnswerTota
       console.error("get_own_answer_totals failed", error.message);
       return null;
     }
-    const row = (data as { answered: number | string; right_answers: number | string }[] | null)?.[0];
-    if (!row) return null;
-    return { answered: Number(row.answered), right: Number(row.right_answers) };
+    return totalsOf(data);
   } catch (e) {
     console.error("get_own_answer_totals threw", e);
     return null;
   }
+}
+
+/**
+ * The same totals for a NAMED student, for the staff view of their /me
+ * (migration 0222). Call it with the superadmin's own session client. Unlike
+ * the own read it THROWS on a refusal (42501): a refused read shown as "no
+ * totals" would hide that the gate said no.
+ */
+export async function getStudentAnswerTotals(db: SupabaseClient, userId: string): Promise<AnswerTotals | null> {
+  const { data, error } = await db.rpc("get_student_answer_totals_for_staff", { p_user_id: userId });
+  if (error) throw new Error(`get_student_answer_totals_for_staff: ${error.message}`);
+  return totalsOf(data);
+}
+
+function totalsOf(data: unknown): AnswerTotals | null {
+  const row = (data as { answered: number | string; right_answers: number | string }[] | null)?.[0];
+  if (!row) return null;
+  return { answered: Number(row.answered), right: Number(row.right_answers) };
 }
 
 /**
