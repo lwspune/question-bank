@@ -10,6 +10,7 @@
  */
 import { istDayKey } from "@/lib/email/dueNudge";
 import { AFTER_CHECKOUT_ONLY, isDeclineReason, type DeclineReason } from "@/lib/billing/declineReasons";
+import { CHAPTER_FIX_FROM } from "@/lib/drill/from";
 import type { ActivityEvent } from "./events";
 import { boardChapterPath, isReadingSurface, isSurface, learnLessonPath, readingViewFor, viewDedupeKey } from "./views";
 
@@ -28,6 +29,10 @@ const BROWSER_SET: ReadonlySet<string> = new Set(VIEW_BROWSERS);
  */
 const CHAPTER_SURFACES: ReadonlySet<string> = new Set(["handout", "handout_request"]);
 const CHAPTER_RE = /^[a-z0-9-]{1,60}\/[a-z0-9-]{1,100}$/;
+
+/** The chapter line's page tags (lib/drill/from CHAPTER_FIX_FROM). */
+const CHAPTER_FIX_FROM_SET: ReadonlySet<string> = new Set<string>(Object.values(CHAPTER_FIX_FROM));
+const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
 
 /** Where a paywall met the student. Five are the 0134 limits (2026-10-05):
  *  chapter tests, the drill, daily answers, saves, the projected score.
@@ -198,6 +203,28 @@ export function parseClientEvent(raw: unknown, userId: string, now: Date): Parse
       path = twinPath;
     } else if (raw.path !== undefined) {
       return { ok: false, error: "No page address on this surface." };
+    }
+    // The chapter line seen (2026-11-07) names its chapter and its page's
+    // drill tag, and is counted once per chapter per day, the same grain as
+    // the experiment's baseline (chapter-days). Nothing else carries either.
+    if (raw.surface === "chapter_fix") {
+      if (typeof raw.chapterId !== "string" || !UUID_RE.test(raw.chapterId)) {
+        return { ok: false, error: "Invalid chapter id." };
+      }
+      if (typeof raw.from !== "string" || !CHAPTER_FIX_FROM_SET.has(raw.from)) {
+        return { ok: false, error: "Unknown page." };
+      }
+      return {
+        ok: true,
+        value: {
+          kind: "surface_viewed",
+          metadata: { surface: "chapter_fix", chapterId: raw.chapterId, from: raw.from },
+          dedupeKey: `view:chapter_fix:${raw.chapterId}:${userId}:${istDayKey(now)}`,
+        },
+      };
+    }
+    if (raw.chapterId !== undefined || raw.from !== undefined) {
+      return { ok: false, error: "No chapter id on this surface." };
     }
     const metadata: Record<string, string> = { surface: raw.surface };
     if (raw.browser) metadata.browser = raw.browser;

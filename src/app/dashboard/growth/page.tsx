@@ -550,6 +550,13 @@ export default async function GrowthPage() {
             <ReadingsList metric="mock-together-signups" />
           </div>
         );
+      case "chapter-fix":
+        return (
+          <p className="text-sm text-muted-foreground">
+            Read by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))} with scripts/drill/chapter-fix-readout.sql, the
+            same query that measured the 30% baseline: keep at 40%+ of chapter-days fixing an old mistake that day.
+          </p>
+        );
       case "homework-progress":
         return (
           <p className="text-sm text-muted-foreground">

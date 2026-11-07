@@ -26,6 +26,8 @@ import { hotOnly } from "@/lib/seo/prerenderBudget";
 import { getTwinsForQuestions, type QuestionTwins } from "@/lib/crossExam/query";
 import { ExamTwinChapterLine, ExamTwinsProvider } from "@/components/crossExam/ExamTwins";
 import { HOT_BOARD_CHAPTERS } from "@/lib/seo/prerenderHotPaths";
+import ChapterFixLine from "@/components/drill/ChapterFixLine";
+import { CHAPTER_FIX_FROM } from "@/lib/drill/from";
 
 type Params = { examSlug: string; subjectRoute: string; chapterSlug: string };
 
@@ -64,6 +66,8 @@ export async function generateStaticParams(): Promise<Params[]> {
 }
 
 type Loaded = {
+  /** For the "Fix N mistakes in this chapter" line (2026-11-07). */
+  chapterId: string;
   examName: string;
   displayName: string;
   chapter: BoardChapter;
@@ -111,6 +115,7 @@ async function load(params: Params): Promise<Loaded | null> {
   // hand-maintained exclusion list. They stay reachable on /browse.
   if (!chapter) return null;
   return {
+    chapterId: resolved.chapterId,
     examName: exam.examName,
     displayName: exam.displayName,
     chapter,
@@ -204,6 +209,9 @@ export default async function BoardChapterPage(props: { params: Promise<Params> 
           />
 
           <LearnChapterLink examSlug={params.examSlug} subjectName={chapter.subjectName} chapterName={chapter.chapterName} />
+
+          {/* Signed in with mistakes waiting from this chapter (2026-11-07). Browser-only. */}
+          <ChapterFixLine chapterId={data.chapterId} from={CHAPTER_FIX_FROM.board} className="mb-6" />
 
           <BoardReader
             groups={chapter.groups}

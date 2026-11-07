@@ -205,6 +205,10 @@ async function main() {
         // Live counts from tutor_interest, rendered on the page (lib/tutor/readout).
         line = "live table on the page (tutor_interest)";
         break;
+      case "chapter-fix":
+        // Read by hand with the committed query (lib/drill/chapterFix).
+        line = "by hand: scripts/drill/chapter-fix-readout.sql";
+        break;
       case "why-not-buy":
         // Live answers on /dashboard/sales (lib/sales/query loadDeclines).
         line = "live table on /dashboard/sales (user_activity paywall_event step declined)";

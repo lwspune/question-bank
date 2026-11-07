@@ -29,6 +29,10 @@ export type Pulse = {
   /** Up to three chapters where most due mistakes sit, for /me's Weak spots
    *  (2026-11-06). Optional for the same reason as `exam`. */
   weak?: PulseWeak[];
+  /** Due questions per chapter ID, for the chapter pages' "Fix N mistakes in
+   *  this chapter" line (2026-11-07, lib/drill/chapterFix). Optional for the
+   *  same reason as `exam`: an older entry shows no line until it expires. */
+  chapterDue?: Record<string, number>;
 };
 
 export type PulseWeak = { chapterId: string; name: string; place: string; due: number };
@@ -56,6 +60,9 @@ export function isPulseFresh(entry: PulseEntry, nowMs: number): boolean {
   // future-stamped write; either way it is not evidence of freshness.
   return age >= 0 && age < PULSE_TTL_MS;
 }
+
+/** A chapter id is a uuid (36); anything far longer is not one. */
+const MAX_CHAPTER_ID = 64;
 
 function isCount(v: unknown): v is number {
   return typeof v === "number" && Number.isInteger(v) && v >= 0;
@@ -105,8 +112,18 @@ export function parsePulseEntry(raw: string | null): PulseEntry | null {
       weak.push({ chapterId: w.chapterId, name: w.name, place: w.place, due: w.due });
     }
   }
-  return { at: o.at, due: o.due, week: { done: week.done, goal: week.goal as number | null }, exam, totals, weak };
+  const chapterDue: Record<string, number> = {};
+  if (o.chapterDue !== undefined && o.chapterDue !== null) {
+    if (typeof o.chapterDue !== "object" || Array.isArray(o.chapterDue)) return null;
+    for (const [id, count] of Object.entries(o.chapterDue as Record<string, unknown>)) {
+      if (id.length === 0 || id.length > MAX_CHAPTER_ID) return null;
+      if (!isCount(count) || count === 0) return null;
+      chapterDue[id] = count;
+    }
+  }
+  return { at: o.at, due: o.due, week: { done: week.done, goal: week.goal as number | null }, exam, totals, weak, chapterDue };
 }
+
 
 /** "Answered 1,240 · Right 780 · Fixed 23" — the three together, so a total is
  *  never shown as a bare count. Null before the first answer. */

@@ -65,6 +65,10 @@ export const SURFACES = [
   // migration 0220), with the /board chapter's or homework page's address:
   // whether students open the matched past question at all.
   "exam_twin",
+  // "Fix N mistakes in this chapter" shown above a chapter's questions
+  // (2026-11-07, lib/drill/chapterFix), with metadata.chapterId and
+  // metadata.from (the page's drill tag): the denominator for its drill starts.
+  "chapter_fix",
 ] as const;
 
 export type Surface = (typeof SURFACES)[number];

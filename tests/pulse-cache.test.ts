@@ -29,7 +29,7 @@ describe("parsePulseEntry", () => {
     const e = parsePulseEntry(JSON.stringify(entry(0)));
     // `exam` is always present on the parsed shape (null when absent) so a
     // consumer never has to distinguish undefined from null.
-    expect(e).toEqual({ ...entry(0), exam: null, totals: null, weak: [] });
+    expect(e).toEqual({ ...entry(0), exam: null, totals: null, weak: [], chapterDue: {} });
   });
 
   it("rejects junk, partial shapes and negative counts", () => {
@@ -96,6 +96,23 @@ describe("parsePulseEntry: weak chapters for /me (2026-11-06)", () => {
       [{ chapterId: 5, name: "M", place: "P", due: 1 }],
     ]) {
       expect(parsePulseEntry(JSON.stringify({ ...entry(0), weak: bad })), JSON.stringify(bad)).toBeNull();
+    }
+  });
+});
+
+describe("parsePulseEntry: due per chapter for the chapter-page line (2026-11-07)", () => {
+  it("is an empty map when absent (an entry cached before it existed)", () => {
+    expect(parsePulseEntry(JSON.stringify(entry(0)))?.chapterDue).toEqual({});
+  });
+
+  it("carries well-formed counts through", () => {
+    const chapterDue = { "c0ffee00-1b2c-4d3e-9f00-112233445566": 3, c2: 1 };
+    expect(parsePulseEntry(JSON.stringify({ ...entry(0), chapterDue }))?.chapterDue).toEqual(chapterDue);
+  });
+
+  it("refuses the whole entry when a count is malformed", () => {
+    for (const bad of ["x", [1, 2], { c1: 0 }, { c1: -1 }, { c1: 1.5 }, { c1: "2" }, { ["x".repeat(65)]: 1 }]) {
+      expect(parsePulseEntry(JSON.stringify({ ...entry(0), chapterDue: bad })), JSON.stringify(bad)).toBeNull();
     }
   });
 });

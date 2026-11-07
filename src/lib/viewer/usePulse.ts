@@ -40,7 +40,14 @@ function readCache(nowMs: number): Pulse | null {
     // Every field the entry carries. This returned only due + week until
     // 2026-10-04, so the exam countdown vanished on every cached read.
     if (entry && isPulseFresh(entry, nowMs)) {
-      return { due: entry.due, week: entry.week, exam: entry.exam, totals: entry.totals, weak: entry.weak };
+      return {
+        due: entry.due,
+        week: entry.week,
+        exam: entry.exam,
+        totals: entry.totals,
+        weak: entry.weak,
+        chapterDue: entry.chapterDue,
+      };
     }
   } catch {
     /* private mode / blocked storage — fall through to a fetch */

@@ -6,7 +6,7 @@
  * recorded. Pure core: src/lib/drill/from.ts.
  */
 import { describe, it, expect } from "vitest";
-import { DRILL_FROM, parseDrillFrom, drillHref } from "@/lib/drill/from";
+import { DRILL_FROM, parseDrillFrom, drillHref, drillChapterHref, CHAPTER_FIX_FROM } from "@/lib/drill/from";
 
 describe("parseDrillFrom", () => {
   it("keeps every listed source", () => {
@@ -15,7 +15,7 @@ describe("parseDrillFrom", () => {
 
   it("covers every link we ship", () => {
     expect([...DRILL_FROM].sort()).toEqual(
-      ["again", "bank", "email", "findings", "homework", "map", "me_tile", "me_weak", "menu", "nav", "push", "result", "review", "start", "today"].sort()
+      ["again", "bank", "board_chapter", "browse_chapter", "chapter", "email", "findings", "homework", "map", "me_tile", "me_weak", "menu", "nav", "push", "result", "review", "start", "today"].sort()
     );
   });
 
@@ -37,9 +37,22 @@ describe("drillHref", () => {
     expect(drillHref("menu")).toBe("/drill?from=menu");
   });
 
+  it("scopes a chapter link ahead of the tag", () => {
+    expect(drillChapterHref("chapter", "c0ffee00-1b2c-4d3e-9f00-112233445566")).toBe(
+      "/drill?chapter=c0ffee00-1b2c-4d3e-9f00-112233445566&from=chapter"
+    );
+  });
+
   it("keeps the attempt scope ahead of the tag", () => {
     expect(drillHref("result", "8f0c2a4e-1b2c-4d3e-9f00-112233445566")).toBe(
       "/drill?attempt=8f0c2a4e-1b2c-4d3e-9f00-112233445566&from=result"
     );
+  });
+});
+
+describe("CHAPTER_FIX_FROM", () => {
+  it("is one tag per page the chapter line sits on, each a drill source", () => {
+    expect({ ...CHAPTER_FIX_FROM }).toEqual({ questions: "chapter", board: "board_chapter", browse: "browse_chapter" });
+    for (const f of Object.values(CHAPTER_FIX_FROM)) expect(parseDrillFrom(f)).toBe(f);
   });
 });

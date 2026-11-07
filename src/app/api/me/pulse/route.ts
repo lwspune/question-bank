@@ -28,7 +28,7 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { logActivityOnce } from "@/lib/activity/service";
 import { surfaceViewedEvent } from "@/lib/activity/views";
 import { getOwnLadder } from "@/lib/drill/service";
-import { weakChapters } from "@/lib/drill/select";
+import { dueByChapter, weakChapters } from "@/lib/drill/select";
 import { getOwnAnswerTotals } from "@/lib/celebrate/service";
 import { getOwnWeekly } from "@/lib/goals/service";
 import { getOwnProfile } from "@/lib/profile/service";
@@ -68,7 +68,11 @@ export async function GET() {
     // /me's Weak spots (2026-11-06): grouped from the same due pool, so a
     // chapter's count is the number its Fix button will serve from.
     const weak = weakChapters(ladder.due);
-    return NextResponse.json({ due: ladder.due.length, week, exam, totals, weak }, { headers: NO_STORE });
+    // The chapter pages' "Fix N mistakes in this chapter" line (2026-11-07):
+    // every chapter's count from the same pool, so the line's number is what
+    // /drill?chapter= serves. One small object; no extra read.
+    const chapterDue = dueByChapter(ladder.due);
+    return NextResponse.json({ due: ladder.due.length, week, exam, totals, weak, chapterDue }, { headers: NO_STORE });
   } catch (e) {
     // A wrong number is worse than no badge: fail and let the client render
     // nothing rather than a zero that reads as "nothing to fix".
