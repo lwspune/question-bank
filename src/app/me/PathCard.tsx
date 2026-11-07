@@ -122,7 +122,8 @@ function PathToday({
                       <span className="ml-2 font-normal tabular-nums text-muted-foreground">{t.progress}</span>
                     )}
                   </span>
-                  <span className="block truncate text-xs text-muted-foreground">{t.detail}</span>
+                  {/* Wraps, never truncates: on a phone the chapter's name is the point of the line. */}
+                  <span className="block text-xs text-muted-foreground">{t.detail}</span>
                 </span>
                 <span className="shrink-0 text-xs tabular-nums text-muted-foreground">{t.minutes} min</span>
                 {lead === t ? (
