@@ -28,6 +28,37 @@ export type TeacherRate = (typeof TEACHER_RATES)[number];
 /** The lower amounts a student can pick after "only if it cost less". */
 const LOWER_AMOUNTS = [200, 300, 400, 500, 600, 800] as const;
 
+/** Where a price answer was given (migration 0224): /tutor, or the /me card. */
+export const ANSWER_PLACES = ["tutor", "me"] as const;
+export type AnswerPlace = (typeof ANSWER_PLACES)[number];
+
+/** "Not now" on the /me card puts it away for this many days. */
+export const PRICE_SNOOZE_DAYS = 7;
+
+/** "₹1,000". */
+export const rupees = (n: number) => `₹${n.toLocaleString("en-IN")}`;
+
+/** The question, the same words on /tutor and on the /me card. */
+export const priceQuestion = (price: number) => `Would you book a 1-hour 1:1 session for ${rupees(price)}?`;
+
+export const PRICE_CHOICES: readonly { answer: PriceAnswer; label: string }[] = [
+  { answer: "yes", label: "Yes, I would book" },
+  { answer: "cheaper", label: "Only if it cost less" },
+  { answer: "no", label: "No" },
+];
+
+export const TEACHER_RATE_LABEL: Record<TeacherRate, string> = {
+  "under-500": "Under ₹500",
+  "500-750": "₹500 to ₹750",
+  "750-1000": "₹750 to ₹1,000",
+  "over-1000": "Over ₹1,000",
+};
+
+/** The place an answer came from: "me" only when the /me card says so. */
+export function normaliseAnsweredFrom(raw: unknown): AnswerPlace {
+  return raw === "me" ? "me" : "tutor";
+}
+
 /** The account's price: FNV-1a over the id, so it is the same on every visit and on server and browser. */
 export function priceForUser(userId: string): TutorPrice {
   let h = 0x811c9dc5;
@@ -91,6 +122,23 @@ export function pendingPriceStep(row: StoredTutorAnswer): "price" | "rate" | nul
   return row.teacher_rate === null ? "rate" : null;
 }
 
+/**
+ * Whether /me shows the price card (2026-11-07): a student Yes that owes a
+ * price answer, unless "Not now" was tapped and has not run out yet.
+ */
+export function priceAskDue(
+  row: {
+    role: TutorRole;
+    wants: boolean;
+    price_answer: string | null;
+    price_snoozed_until: string | null;
+  } | null,
+  now: Date
+): boolean {
+  if (!row || row.role !== "student" || !row.wants || row.price_answer !== null) return false;
+  return row.price_snoozed_until === null || new Date(row.price_snoozed_until).getTime() <= now.getTime();
+}
+
 /** One stored answer, as the readout reads it. */
 export type TutorPriceRow = {
   role: TutorRole;
@@ -99,6 +147,7 @@ export type TutorPriceRow = {
   price_answer: string | null;
   price_would_pay: number | null;
   teacher_rate: string | null;
+  price_answered_from: string | null;
 };
 
 export type TutorPriceArm = {
@@ -122,6 +171,8 @@ export type TutorPriceSummary = {
   studentYesNotAsked: number;
   teacherRates: { rate: TeacherRate; count: number }[];
   teacherYesNotAsked: number;
+  /** Student price answers by where they were given (migration 0224; earlier answers were all on /tutor). */
+  answeredFrom: Record<AnswerPlace, number>;
 };
 
 export function summariseTutorPrices(rows: readonly TutorPriceRow[]): TutorPriceSummary {
@@ -138,6 +189,7 @@ export function summariseTutorPrices(rows: readonly TutorPriceRow[]): TutorPrice
   const rates = new Map<TeacherRate, number>(TEACHER_RATES.map((r) => [r, 0]));
   let studentYesNotAsked = 0;
   let teacherYesNotAsked = 0;
+  const answeredFrom: Record<AnswerPlace, number> = { tutor: 0, me: 0 };
 
   for (const r of rows) {
     if (!r.wants) continue;
@@ -152,6 +204,7 @@ export function summariseTutorPrices(rows: readonly TutorPriceRow[]): TutorPrice
       continue;
     }
     arm.shown++;
+    if (r.price_answer !== null) answeredFrom[r.price_answered_from === "me" ? "me" : "tutor"]++;
     if (r.price_answer === "yes") arm.yes++;
     else if (r.price_answer === "no") arm.no++;
     else if (r.price_answer === "cheaper") {
@@ -169,5 +222,6 @@ export function summariseTutorPrices(rows: readonly TutorPriceRow[]): TutorPrice
     studentYesNotAsked,
     teacherRates: TEACHER_RATES.map((rate) => ({ rate, count: rates.get(rate) ?? 0 })),
     teacherYesNotAsked,
+    answeredFrom,
   };
 }

@@ -33,6 +33,7 @@ import { isStage, needsStageNudge, sanitizeTargetExams, type Stage } from "@/lib
 import { getExamIdMap } from "@/lib/exam/examIdMap";
 import { getNotesExamGroups } from "@/lib/notes/notesNav";
 import { firstMockHref, firstNotesHref, yourExamLinks, type ExamLink } from "@/lib/exam/examLinks";
+import { loadTutorPriceAsk } from "@/lib/tutor/priceAsk";
 
 export type MeData = {
   greeting: string;
@@ -54,6 +55,8 @@ export type MeData = {
   mocks: ReturnType<typeof summarizeUserMocks>;
   continueItems: ContinueItem[];
   showNps: boolean;
+  /** The 1:1 tutoring price question, for a student Yes that owes an answer (migration 0224). */
+  tutorPriceAsk: { price: number } | null;
 };
 
 export async function loadMe(
@@ -108,6 +111,11 @@ export async function loadMe(
     return [] as OpenAnnouncement[];
   });
   const suggestedName = resultCheck ? await loadSuggestedName(user.id).catch(() => "") : "";
+  // The tutoring price question (2026-11-07). Best effort, like the cards above.
+  const tutorPriceAsk = await loadTutorPriceAsk(user.id, now).catch((e) => {
+    console.error("tutor price ask read failed", e instanceof Error ? e.message : e);
+    return null;
+  });
   // No exam chosen: offer the one their practice or first page points to.
   const suggestedSlug = targets.length === 0 ? await loadSuggestedExam(db, user.id, examIds) : null;
   const suggested = suggestedSlug ? getExamBySlug(suggestedSlug) : null;
@@ -137,6 +145,7 @@ export async function loadMe(
     mocks,
     continueItems,
     showNps,
+    tutorPriceAsk,
   };
 }
 

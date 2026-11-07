@@ -133,6 +133,8 @@ describe("POST /api/tutor-interest", () => {
         price_would_pay: null,
         teacher_rate: null,
         price_answered_at: null,
+        price_snoozed_until: null,
+        price_answered_from: null,
       }),
       { onConflict: "user_id" }
     );
@@ -179,6 +181,37 @@ describe("PATCH /api/tutor-interest (the price question)", () => {
       expect.objectContaining({ price_shown: priceForUser("u1"), price_answer: "no", price_would_pay: null })
     );
     expect(updateEq).toHaveBeenCalledWith("user_id", "u1");
+    // No `from`: answered on /tutor.
+    expect(update).toHaveBeenCalledWith(expect.objectContaining({ price_answered_from: "tutor" }));
+  });
+
+  it("records an answer given on the /me card as from 'me'", async () => {
+    user.current = { id: "u1", email: "a@example.com" };
+    stored.current = { role: "student", wants: true, price_answer: null, teacher_rate: null };
+    const res = await PATCH(patch({ answer: "yes", from: "me" }));
+    expect(res.status).toBe(200);
+    expect(update).toHaveBeenCalledWith(expect.objectContaining({ price_answer: "yes", price_answered_from: "me" }));
+  });
+
+  it("puts the /me card away for a week on Not now, saving no answer", async () => {
+    user.current = { id: "u1", email: "a@example.com" };
+    stored.current = { role: "student", wants: true, price_answer: null, teacher_rate: null };
+    const before = Date.now();
+    const res = await PATCH(patch({ snooze: true }));
+    expect(res.status).toBe(200);
+    const changes = (update.mock.calls as unknown as [Record<string, unknown>][])[0][0];
+    expect(Object.keys(changes).sort()).toEqual(["price_snoozed_until", "updated_at"]);
+    const until = new Date(changes.price_snoozed_until as string).getTime();
+    expect(until - before).toBeGreaterThanOrEqual(7 * 86_400_000 - 1000);
+    expect(until - before).toBeLessThanOrEqual(7 * 86_400_000 + 5000);
+  });
+
+  it("refuses a Not now from a teacher (there is no card for them)", async () => {
+    user.current = { id: "u1", email: "a@example.com" };
+    stored.current = { role: "teacher", wants: true, price_answer: null, teacher_rate: null };
+    const res = await PATCH(patch({ snooze: true }));
+    expect(res.status).toBe(400);
+    expect(update).not.toHaveBeenCalled();
   });
 
   it("refuses an amount that was not offered at the account's price", async () => {

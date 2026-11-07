@@ -29,7 +29,7 @@ export async function loadTutorPriceReadout(admin: SupabaseClient): Promise<Tuto
   const rows = await readAllPages<TutorPriceRow>((from, to) =>
     admin
       .from("tutor_interest")
-      .select("role, wants, price_shown, price_answer, price_would_pay, teacher_rate")
+      .select("role, wants, price_shown, price_answer, price_would_pay, teacher_rate, price_answered_from")
       .eq("wants", true)
       .order("id")
       .range(from, to)

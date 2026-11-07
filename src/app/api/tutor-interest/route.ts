@@ -18,6 +18,8 @@ import { getOwnProfile } from "@/lib/profile/service";
 import { readExamSlugFromCookieString } from "@/lib/exam/examNav";
 import { normaliseFrom, validateTutorInterest } from "@/lib/tutor/interest";
 import {
+  PRICE_SNOOZE_DAYS,
+  normaliseAnsweredFrom,
   pendingPriceStep,
   priceForUser,
   validateStudentPrice,
@@ -117,6 +119,8 @@ export async function POST(request: NextRequest) {
       price_would_pay: null,
       teacher_rate: null,
       price_answered_at: null,
+      price_snoozed_until: null,
+      price_answered_from: null,
       updated_at: new Date().toISOString(),
     };
 
@@ -136,7 +140,8 @@ export async function POST(request: NextRequest) {
  * PATCH: the price question (owner, 2026-11-07; migration 0223). A student
  * answers the price fixed for their account (never a price from the body); a
  * teacher gives a rate. Only an account whose stored answer is a Yes can
- * answer, and the role comes from that row, not the request.
+ * answer, and the role comes from that row, not the request. The /me card
+ * (migration 0224) sends `from: "me"`, and `{ snooze: true }` for "Not now".
  */
 export async function PATCH(request: NextRequest) {
   try {
@@ -169,8 +174,17 @@ export async function PATCH(request: NextRequest) {
     }
 
     const now = new Date().toISOString();
+    const body = (raw && typeof raw === "object" ? raw : {}) as Record<string, unknown>;
+    const from = normaliseAnsweredFrom(body.from);
     let changes: Record<string, unknown>;
-    if (stored.role === "student") {
+    if (body.snooze === true) {
+      // "Not now" on the /me card (2026-11-07): put it away for a week, save no answer.
+      if (stored.role !== "student") {
+        return NextResponse.json({ error: "Only a student is asked this question." }, { status: 400 });
+      }
+      const until = new Date(Date.now() + PRICE_SNOOZE_DAYS * 86_400_000).toISOString();
+      changes = { price_snoozed_until: until, updated_at: now };
+    } else if (stored.role === "student") {
       const price = priceForUser(user.id);
       const v = validateStudentPrice(raw, price);
       if (!v.ok) return NextResponse.json({ error: v.error }, { status: 400 });
@@ -179,12 +193,13 @@ export async function PATCH(request: NextRequest) {
         price_answer: v.value.answer,
         price_would_pay: v.value.wouldPay,
         price_answered_at: now,
+        price_answered_from: from,
         updated_at: now,
       };
     } else {
       const v = validateTeacherRate(raw);
       if (!v.ok) return NextResponse.json({ error: v.error }, { status: 400 });
-      changes = { teacher_rate: v.value, price_answered_at: now, updated_at: now };
+      changes = { teacher_rate: v.value, price_answered_at: now, price_answered_from: from, updated_at: now };
     }
 
     const { error } = await admin.from("tutor_interest").update(changes).eq("user_id", user.id);

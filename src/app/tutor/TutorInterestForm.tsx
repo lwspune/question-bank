@@ -9,7 +9,16 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { isValidIndianMobile } from "@/lib/profile/mobile";
 import { stepsAfterYes, type TutorFollowUp, type TutorMode, type TutorRole } from "@/lib/tutor/interest";
-import { TEACHER_RATES, cheaperOptions, type PriceAnswer, type TeacherRate } from "@/lib/tutor/price";
+import {
+  PRICE_CHOICES,
+  TEACHER_RATES,
+  TEACHER_RATE_LABEL,
+  cheaperOptions,
+  priceQuestion,
+  rupees,
+  type PriceAnswer,
+  type TeacherRate,
+} from "@/lib/tutor/price";
 
 /**
  * Three one-tap questions (migration 0190). Student or Teacher first, because
@@ -37,23 +46,8 @@ const QUESTION: Record<"role" | "wants" | "mode" | TutorFollowUp, Record<TutorRo
   contact: { student: "How can we reach you?", teacher: "How can we reach you?" },
 };
 
-const rupees = (n: number) => `₹${n.toLocaleString("en-IN")}`;
-
-const PRICE_CHOICES: { answer: PriceAnswer; label: string }[] = [
-  { answer: "yes", label: "Yes, I would book" },
-  { answer: "cheaper", label: "Only if it cost less" },
-  { answer: "no", label: "No" },
-];
-
-const RATE_LABEL: Record<TeacherRate, string> = {
-  "under-500": "Under ₹500",
-  "500-750": "₹500 to ₹750",
-  "750-1000": "₹750 to ₹1,000",
-  "over-1000": "Over ₹1,000",
-};
-
 function heading(step: Exclude<Step, "done">, role: TutorRole, price: number): string {
-  if (step === "price") return `Would you book a 1-hour 1:1 session for ${rupees(price)}?`;
+  if (step === "price") return priceQuestion(price);
   if (step === "cheaper") return "What would you pay for a 1-hour session?";
   if (step === "rate") return "What would you charge for a 1-hour 1:1 session?";
   return QUESTION[step][role];
@@ -329,7 +323,7 @@ export default function TutorInterestForm({
               disabled={saving}
               onClick={() => savePrice({ rate })}
             >
-              {RATE_LABEL[rate]}
+              {TEACHER_RATE_LABEL[rate]}
             </Button>
           ))}
         </div>

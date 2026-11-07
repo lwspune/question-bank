@@ -17,6 +17,7 @@ import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { readFileSync } from "node:fs";
 import MeView from "@/app/me/MeView";
+import TutorPriceCard from "@/app/me/TutorPriceCard";
 import type { MeData } from "@/lib/me/load";
 import type { Pulse } from "@/lib/pulse/cache";
 import { summarizeUserMocks } from "@/lib/mocks/perf";
@@ -73,6 +74,7 @@ const data: MeData = {
   mocks: summarizeUserMocks([attempt]),
   continueItems: [],
   showNps: true,
+  tutorPriceAsk: { price: 749 },
 };
 
 /** Numbers no viewer's own pulse would carry by accident. */
@@ -115,6 +117,7 @@ describe("MeView, staff view of a student's /me", () => {
     expect(out).toContain("including the 0 to 10 rating question");
     expect(out).toContain("turn on reminders");
     expect(out).toContain("Update your stage");
+    expect(out).toContain("1:1 tutoring price question (₹749)");
   });
 
   it("points the student's own-row links at their staff pages", () => {
@@ -124,6 +127,32 @@ describe("MeView, staff view of a student's /me", () => {
     expect(out).not.toContain("/mock/attempt/");
     expect(out).not.toContain('href="/me/map"');
     expect(out).not.toContain('href="/performance"');
+  });
+});
+
+/**
+ * The tutoring price question on /me (2026-11-07). The student's own MeView
+ * needs the app router, so the card is rendered on its own; whether it shows
+ * at all is read through the staff view, which renders the same condition.
+ */
+describe("the /me tutoring price card", () => {
+  it("asks at the student's own price, with the three answers and Not now", () => {
+    const out = renderToStaticMarkup(createElement(TutorPriceCard, { price: 749 }));
+    expect(out).toContain("Would you book a 1-hour 1:1 session for ₹749?");
+    expect(out).toContain("Yes, I would book");
+    expect(out).toContain("Only if it cost less");
+    expect(out).toContain("Not now");
+  });
+
+  it("is not there when the student owes no price answer", () => {
+    const out = renderToStaticMarkup(
+      createElement(MeView, {
+        data: { ...data, tutorPriceAsk: null },
+        vapidKey: "",
+        viewAs: { studentId: STUDENT, pulse: PULSE },
+      })
+    );
+    expect(out).not.toContain("tutoring price question");
   });
 });
 
