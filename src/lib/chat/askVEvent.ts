@@ -120,7 +120,7 @@ function sameCard(a: AskedCard, b: AskedCard): boolean {
  * message (a pick, a number entered) is a new ask, since V's answer turns on it.
  */
 export function explainedTap(
-  turns: readonly ({ role: "user"; text: string; asked?: unknown } | { role: "assistant"; explained?: boolean })[],
+  turns: readonly ({ role: "user"; text: string; asked?: unknown } | { role: "assistant"; text?: string; explained?: boolean })[],
   card: AskedCard | null,
   text: string
 ): number {
