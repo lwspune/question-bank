@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, type ReactNode } from "react";
 import Link from "next/link";
 import { Target } from "lucide-react";
 import { useViewerSession } from "@/lib/viewer/useViewerSession";
@@ -19,15 +19,22 @@ import { drillChapterHref, type ChapterFixFrom } from "@/lib/drill/from";
  * and an anonymous visitor or a chapter with nothing waiting renders nothing.
  * The count is rechecked by the drill itself, and the pulse refreshes when a
  * drill answer is recorded.
+ *
+ * `children` is what the line REPLACES (2026-11-07): rendered until there is
+ * something to fix, so on /questions the sign-in sentence and the Fix line
+ * share one slot instead of stacking. The cached HTML is always the fallback.
  */
 export default function ChapterFixLine({
   chapterId,
   from,
   className = "",
+  children,
 }: {
   chapterId: string;
   from: ChapterFixFrom;
   className?: string;
+  /** Shown instead of the line while nothing is waiting (and before the pulse arrives). */
+  children?: ReactNode;
 }) {
   const { session } = useViewerSession();
   const pulse = usePulse(!!session);
@@ -39,7 +46,7 @@ export default function ChapterFixLine({
     }
   }, [count, chapterId, from]);
 
-  if (count === 0) return null;
+  if (count === 0) return <>{children}</>;
 
   return (
     <div className={`flex items-center gap-3 rounded-md border bg-card px-3 py-2.5 ${className}`}>

@@ -51,3 +51,19 @@ describe("the three pages carry the line, each with its own tag", () => {
     expect(page).toContain(tag);
   });
 });
+
+describe("on /questions the Fix line takes the place of the sign-in sentence (2026-11-07)", () => {
+  it("passes the sentence as the line's fallback, so a signed-in student with mistakes sees one, not both", () => {
+    const page = read("src", "app", "questions", "[examSlug]", "[subjectSlug]", "[chapterSlug]", "page.tsx");
+    const open = page.indexOf("<ChapterFixLine");
+    const sentence = page.indexOf("Try each question before you open its answer");
+    const close = page.indexOf("</ChapterFixLine>");
+    expect(open).toBeGreaterThan(-1);
+    expect(sentence).toBeGreaterThan(open);
+    expect(close).toBeGreaterThan(sentence);
+  });
+
+  it("the line renders its fallback when nothing is waiting", () => {
+    expect(read(...COMPONENT)).toMatch(/if \(count === 0\) return <>\{children\}<\/>;/);
+  });
+});
