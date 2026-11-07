@@ -156,8 +156,13 @@ export default async function TutorInterestPage() {
             <span className="text-muted-foreground">Teachers would charge: </span>
             {price.teacherRates.map((t) => `${TEACHER_RATE_LABEL[t.rate]} ${t.count}`).join(" · ")}
           </p>
+          <p className="mt-2 text-sm">
+            <span className="text-muted-foreground">Price answers given on: </span>
+            /tutor {price.answeredFrom.tutor} · the /me card {price.answeredFrom.me}
+          </p>
           <p className="mt-2 text-xs text-muted-foreground">
-            Not asked yet (said Yes before 7 Nov and not back on /tutor): {price.studentYesNotAsked}{" "}
+            Not asked yet (said Yes before 7 Nov, and have not answered on /tutor or the /me card that asks them):{" "}
+            {price.studentYesNotAsked}{" "}
             {price.studentYesNotAsked === 1 ? "student" : "students"}, {price.teacherYesNotAsked}{" "}
             {price.teacherYesNotAsked === 1 ? "teacher" : "teachers"}.
           </p>

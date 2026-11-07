@@ -11,6 +11,8 @@ import Greeting from "./Greeting";
 import SuggestExamCard from "./SuggestExamCard";
 import StageNudge from "./StageNudge";
 import ResultCheckCard from "./ResultCheckCard";
+import TutorPriceCard from "./TutorPriceCard";
+import { rupees } from "@/lib/tutor/price";
 import type { MeData } from "@/lib/me/load";
 import type { Pulse } from "@/lib/pulse/cache";
 import type { StudentAssignmentView } from "@/lib/assignments/core";
@@ -87,6 +89,17 @@ export default function MeView({
             suggestedName={data.suggestedName}
             practiseHref={mockCatalogueHref(data.resultCheck.examSlug)}
           />
+        ))}
+
+      {/* The 1:1 tutoring price question, for a student Yes that owes an
+          answer (2026-11-07). Answered here; "Not now" puts it away a week. */}
+      {data.tutorPriceAsk &&
+        (staff ? (
+          <HiddenNote>
+            Here they see the 1:1 tutoring price question ({rupees(data.tutorPriceAsk.price)}) for a 1-hour session.
+          </HiddenNote>
+        ) : (
+          <TutorPriceCard price={data.tutorPriceAsk.price} />
         ))}
 
       {data.showStageNudge &&

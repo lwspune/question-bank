@@ -138,4 +138,26 @@ describe.skipIf(!HAS_ENV)("tutor_interest table", () => {
     expect((await insert({ ...yes, teacher_rate: "500-750" })).error?.code).toBe("23514");
     expect((await insert({ role: "teacher", wants: true, mode: "online", teacher_rate: "cheap" })).error?.code).toBe("23514");
   });
+
+  // The /me card (migration 0224): where a price answer was given, and a Not now.
+  it("keeps where a price answer was given and a Not now", async () => {
+    const { error } = await insert({
+      role: "student",
+      wants: true,
+      mode: "online",
+      price_shown: 999,
+      price_answer: "no",
+      price_answered_from: "me",
+      price_snoozed_until: new Date().toISOString(),
+    });
+    expect(error).toBeNull();
+  });
+
+  it("refuses an unknown answer place, or one with nothing answered", async () => {
+    const yes = { role: "student", wants: true, mode: "online" };
+    expect((await insert({ ...yes, price_shown: 499, price_answer: "no", price_answered_from: "app" })).error?.code).toBe(
+      "23514"
+    );
+    expect((await insert({ ...yes, price_answered_from: "me" })).error?.code).toBe("23514");
+  });
 });

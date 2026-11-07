@@ -4352,7 +4352,9 @@ export type Database = {
           mode: string | null
           price_answer: string | null
           price_answered_at: string | null
+          price_answered_from: string | null
           price_shown: number | null
+          price_snoozed_until: string | null
           price_would_pay: number | null
           role: string
           teacher_rate: string | null
@@ -4368,7 +4370,9 @@ export type Database = {
           mode?: string | null
           price_answer?: string | null
           price_answered_at?: string | null
+          price_answered_from?: string | null
           price_shown?: number | null
+          price_snoozed_until?: string | null
           price_would_pay?: number | null
           role: string
           teacher_rate?: string | null
@@ -4384,7 +4388,9 @@ export type Database = {
           mode?: string | null
           price_answer?: string | null
           price_answered_at?: string | null
+          price_answered_from?: string | null
           price_shown?: number | null
+          price_snoozed_until?: string | null
           price_would_pay?: number | null
           role?: string
           teacher_rate?: string | null

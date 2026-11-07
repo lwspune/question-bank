@@ -7,6 +7,9 @@ import {
   validateStudentPrice,
   validateTeacherRate,
   pendingPriceStep,
+  priceAskDue,
+  normaliseAnsweredFrom,
+  PRICE_SNOOZE_DAYS,
   summariseTutorPrices,
   type TutorPriceRow,
 } from "@/lib/tutor/price";
@@ -124,6 +127,7 @@ describe("summariseTutorPrices", () => {
     price_answer: null,
     price_would_pay: null,
     teacher_rate: null,
+    price_answered_from: null,
     ...x,
   });
 
@@ -146,6 +150,16 @@ describe("summariseTutorPrices", () => {
     expect(s.studentYesNotAsked).toBe(1);
   });
 
+  it("counts where the price answers were given: /tutor or the /me card", () => {
+    const s = summariseTutorPrices([
+      r({ price_shown: 499, price_answer: "yes", price_answered_from: "me" }),
+      r({ price_shown: 749, price_answer: "no", price_answered_from: "tutor" }),
+      r({ price_shown: 999, price_answer: "yes", price_answered_from: "me" }),
+      r({ price_shown: 999 }), // left at the price: answered nowhere
+    ]);
+    expect(s.answeredFrom).toEqual({ tutor: 1, me: 2 });
+  });
+
   it("tallies teacher rates in band order, every band shown", () => {
     const s = summariseTutorPrices([
       r({ role: "teacher", teacher_rate: "750-1000" }),
@@ -160,5 +174,49 @@ describe("summariseTutorPrices", () => {
       { rate: "over-1000", count: 0 },
     ]);
     expect(s.teacherYesNotAsked).toBe(1);
+  });
+});
+
+/**
+ * The /me card (2026-11-07): it asks a student who said Yes and owes a price
+ * answer, unless they tapped "Not now" in the last week.
+ */
+describe("priceAskDue", () => {
+  const now = new Date("2026-11-07T10:00:00Z");
+  const row = (r: Partial<NonNullable<Parameters<typeof priceAskDue>[0]>>) => ({
+    role: "student" as const,
+    wants: true,
+    price_answer: null,
+    price_snoozed_until: null,
+    ...r,
+  });
+
+  it("asks a student Yes with no price answer", () => {
+    expect(priceAskDue(row({}), now)).toBe(true);
+  });
+
+  it("waits while a Not now is in force, and asks again once it runs out", () => {
+    expect(priceAskDue(row({ price_snoozed_until: "2026-11-10T00:00:00Z" }), now)).toBe(false);
+    expect(priceAskDue(row({ price_snoozed_until: "2026-11-07T09:59:59Z" }), now)).toBe(true);
+  });
+
+  it("never asks a teacher, a No, an answered row, or nobody", () => {
+    expect(priceAskDue(row({ role: "teacher" }), now)).toBe(false);
+    expect(priceAskDue(row({ wants: false }), now)).toBe(false);
+    expect(priceAskDue(row({ price_answer: "no" }), now)).toBe(false);
+    expect(priceAskDue(null, now)).toBe(false);
+  });
+
+  it("snoozes for a week", () => {
+    expect(PRICE_SNOOZE_DAYS).toBe(7);
+  });
+});
+
+describe("normaliseAnsweredFrom", () => {
+  it("is 'me' only when the /me card says so, else /tutor", () => {
+    expect(normaliseAnsweredFrom("me")).toBe("me");
+    expect(normaliseAnsweredFrom("tutor")).toBe("tutor");
+    expect(normaliseAnsweredFrom(undefined)).toBe("tutor");
+    expect(normaliseAnsweredFrom("<x>")).toBe("tutor");
   });
 });
