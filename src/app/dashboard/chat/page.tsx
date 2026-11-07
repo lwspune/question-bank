@@ -93,6 +93,7 @@ export default async function ChatUsagePage() {
           <StatCard kind="numeric" value={summary.totalClicks} label="Questions asked" />
           <StatCard kind="text" value={askRate} label="Questions per open" />
           <StatCard kind="numeric" value={summary.totalTyped} label="Typed questions" />
+          <StatCard kind="numeric" value={summary.totalHourlyLimited} label="Stopped by the hourly limit (since 7 Nov)" />
           <StatCard kind="text" value={usage ? String(usage.total.answers) : "—"} label="AI answers" />
           <StatCard kind="text" value={usage ? usd(usage.total.costUsd) : "—"} label="AI cost so far" />
           <StatCard kind="text" value={weekAmount(usage)} label={weekLabel(usage)} />
