@@ -86,6 +86,9 @@ import { loadCurrentPlan, loadPlanActivity, saveStudyPlan } from "@/lib/chat/wee
 import { getOwnProfile, updateOwnProfile } from "@/lib/profile/service";
 import { getOwnLadder } from "@/lib/drill/service";
 import { passOnSale } from "@/lib/billing/passOnSale";
+import { hourlyLimitLine, hourlyOutcome, vPassTier } from "@/lib/chat/hourlyLimit";
+import { loadEntitlements } from "@/lib/entitlements/query";
+import { SCOPE_DOWNLOADS } from "@/lib/entitlements/access";
 import type { Performance } from "@/lib/performance/compute";
 
 // One AI answer can take two model calls (a chapter search, then the reply).
@@ -185,22 +188,50 @@ export async function POST(request: NextRequest) {
       userId = null;
     }
 
-    const rl = await checkAndIncrement(admin, personBucket({ userId, ip: getClientIp(request) }), {
-      limit: settings.perPersonPerHour,
-      windowMs: HOUR_MS,
-    });
-    if (!rl.ok) {
-      return NextResponse.json(
-        { error: "Too many questions. Please try again later.", retryAfter: rl.retryAfter },
-        { status: 429, headers: { "Retry-After": String(rl.retryAfter) } }
-      );
-    }
-
     let raw: { message?: unknown; conversationId?: unknown; pagePath?: unknown; question?: unknown; replyTo?: unknown };
     try {
       raw = (await request.json()) as typeof raw;
     } catch {
       return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 });
+    }
+
+    const rl = await checkAndIncrement(admin, personBucket({ userId, ip: getClientIp(request) }), {
+      limit: settings.perPersonPerHour,
+      windowMs: HOUR_MS,
+    });
+    if (!rl.ok) {
+      // Past the free limit (2026-11-07, 0226): a Premium Pass holder goes on to the Premium limit.
+      // The pass is read only here, so a message within the free limit costs no extra read.
+      const tier = userId ? vPassTier(await loadEntitlements(admin, userId), Date.now()) : "none";
+      const outcome = hourlyOutcome({
+        used: rl.used,
+        freeLimit: settings.perPersonPerHour,
+        premiumLimit: settings.premiumPerPersonPerHour,
+        tier,
+        signedIn: userId !== null,
+      });
+      if (!outcome.allowed) {
+        const stopped = validateChatMessage({ message: typeof raw.message === "string" ? raw.message : "" });
+        if (stopped.ok) {
+          await recordChatInteraction(admin, {
+            eventType: "hourly_limit",
+            message: maskPersonal(stopped.value),
+            userId,
+            conversationId: isConversationId(raw.conversationId) ? raw.conversationId : null,
+            pagePath: cleanPagePath(raw.pagePath),
+          });
+        }
+        const line = hourlyLimitLine(outcome.limit, rl.retryAfter);
+        const pass = outcome.offerPremium ? await passOnSale("pyqvault", { scope: SCOPE_DOWNLOADS }) : null;
+        return NextResponse.json(
+          {
+            error: line,
+            retryAfter: rl.retryAfter,
+            hourlyLimit: { line, limit: outcome.limit, offer: outcome.offerPremium, pass, premiumLimit: settings.premiumPerPersonPerHour },
+          },
+          { status: 429, headers: { "Retry-After": String(rl.retryAfter) } }
+        );
+      }
     }
 
     const v = validateChatMessage({ message: typeof raw.message === "string" ? raw.message : "" });
