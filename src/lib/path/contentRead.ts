@@ -9,16 +9,13 @@
  * code; ./content.ts caches it for the app.
  */
 import type { SupabaseClient } from "@supabase/supabase-js";
+import { readInChunks } from "@/lib/supabase/readInChunks";
 import { getSubjectChapterTop } from "@/lib/homework/query";
 import type { ChapterTest } from "@/lib/mocks/chapterTests";
 import { EXAM_REGISTRY } from "@/lib/exam/examContext";
 import type { QuestionFormat } from "@/lib/homework/progress";
 import { revisionPath } from "./done";
 import { PATH_SUBJECTS, SUBJECT_NAME, queueOf, type PathChapter, type PathExam, type PathSubject } from "./model";
-
-const CHUNK = 200;
-const chunks = <T,>(xs: readonly T[]) =>
-  Array.from({ length: Math.ceil(xs.length / CHUNK) }, (_, i) => xs.slice(i * CHUNK, (i + 1) * CHUNK));
 
 export async function readPathContent(
   db: SupabaseClient,
@@ -69,19 +66,16 @@ export async function readPathContent(
 
   const ids = [...new Set([...tops.values()].flat().map((i) => i.questionId))];
   const formats = new Map<string, QuestionFormat>();
-  for (const part of chunks(ids)) {
-    const { data, error } = await db.from("questions").select("id, question_format").in("id", part);
-    if (error) throw new Error(`path content: question formats: ${error.message}`);
-    for (const q of data ?? []) formats.set(q.id as string, ((q.question_format as string) ?? "mcq") as QuestionFormat);
-  }
+  const formatRows = await readInChunks<{ id: string; question_format: string | null }>(ids, (part, f, t) =>
+    db.from("questions").select("id, question_format").in("id", part).order("id").range(f, t)
+  );
+  for (const q of formatRows) formats.set(q.id, ((q.question_format ?? "mcq") as QuestionFormat));
 
   const slugs = raw.flatMap((c) => (tests.get(c.id) ? [tests.get(c.id)!.slug] : []));
-  const mockIdBySlug = new Map<string, string>();
-  for (const part of chunks(slugs)) {
-    const { data, error } = await db.from("mock_tests").select("id, slug").in("slug", part);
-    if (error) throw new Error(`path content: mock ids: ${error.message}`);
-    for (const r of data ?? []) mockIdBySlug.set(r.slug as string, r.id as string);
-  }
+  const mockRows = await readInChunks<{ id: string; slug: string }>(slugs, (part, f, t) =>
+    db.from("mock_tests").select("id, slug").in("slug", part).order("id").range(f, t)
+  );
+  const mockIdBySlug = new Map(mockRows.map((r) => [r.slug, r.id]));
 
   return raw.map((c) => {
     const bySlot = new Map<number, { id: string; format: QuestionFormat }[]>();

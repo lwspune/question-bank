@@ -9,27 +9,13 @@
  * Reads are chunked at 200 ids and paged at 1000 rows.
  */
 import type { SupabaseClient } from "@supabase/supabase-js";
+import { readAllPages } from "@/lib/supabase/readAllPages";
+import { readInChunks } from "@/lib/supabase/readInChunks";
 import type { ProgressEvent } from "@/lib/homework/progress";
 import { isFinishedTest, topWorked } from "./done";
 import type { ChapterState, PathChapter } from "./model";
 
-const CHUNK = 200;
-const PAGE = 1000;
-export const chunks = <T,>(xs: readonly T[]) =>
-  Array.from({ length: Math.ceil(xs.length / CHUNK) }, (_, i) => xs.slice(i * CHUNK, (i + 1) * CHUNK));
-
 type MarkRow = { ref_id: string; kind: ProgressEvent["kind"]; created_at: string; mark: string | null };
-
-export async function readAll<T>(page: (from: number, to: number) => PromiseLike<{ data: unknown; error: { message: string } | null }>, what: string): Promise<T[]> {
-  const out: T[] = [];
-  for (let from = 0; ; from += PAGE) {
-    const { data, error } = await page(from, from + PAGE - 1);
-    if (error) throw new Error(`${what}: ${error.message}`);
-    const rows = (data ?? []) as T[];
-    out.push(...rows);
-    if (rows.length < PAGE) return out;
-  }
-}
 
 /**
  * Each chapter's state, folded from the student's own records: the Top 10
@@ -47,25 +33,18 @@ export async function readChapterStates(
   const byPath = new Map(chapters.map((c) => [c.boardPath, c.id]));
   const byMock = new Map(chapters.flatMap((c) => (c.test ? [[c.test.mockId, c.id] as const] : [])));
 
-  const marks: MarkRow[] = [];
-  for (const part of chunks([...chapterOfQuestion.keys()])) {
-    marks.push(
-      ...(await readAll<MarkRow>(
-        (f, t) =>
-          db
-            .from("user_activity")
-            .select("ref_id, kind, created_at, mark:metadata->>mark")
-            .eq("user_id", userId)
-            .in("kind", ["self_mark", "question_practiced", "answer_wrong", "answer_correct"])
-            .in("ref_id", part)
-            .order("id")
-            .range(f, t),
-        "path marks"
-      ))
-    );
-  }
+  const marks = await readInChunks<MarkRow>([...chapterOfQuestion.keys()], (part, f, t) =>
+    db
+      .from("user_activity")
+      .select("ref_id, kind, created_at, mark:metadata->>mark")
+      .eq("user_id", userId)
+      .in("kind", ["self_mark", "question_practiced", "answer_wrong", "answer_correct"])
+      .in("ref_id", part)
+      .order("id")
+      .range(f, t)
+  );
   const [views, doneRows, attempts] = await Promise.all([
-    readAll<{ path: string | null; created_at: string }>(
+    readAllPages<{ path: string | null; created_at: string }>(
       (f, t) =>
         db
           .from("user_activity")
@@ -74,16 +53,14 @@ export async function readChapterStates(
           .eq("kind", "surface_viewed")
           .eq("metadata->>surface", "board_revision")
           .order("id")
-          .range(f, t),
-      "path revision views"
+          .range(f, t)
     ),
-    readAll<{ ref_id: string | null }>(
-      (f, t) => db.from("user_activity").select("ref_id").eq("user_id", userId).eq("kind", "path_chapter_done").order("id").range(f, t),
-      "path chapters done"
+    readAllPages<{ ref_id: string | null }>(
+      (f, t) => db.from("user_activity").select("ref_id").eq("user_id", userId).eq("kind", "path_chapter_done").order("id").range(f, t)
     ),
     byMock.size === 0
       ? Promise.resolve([])
-      : readAll<{ mock_id: string; status: string; started_at: string; correct_count: number | null; wrong_count: number | null; partial_count: number | null }>(
+      : readAllPages<{ mock_id: string; status: string; started_at: string; correct_count: number | null; wrong_count: number | null; partial_count: number | null }>(
           (f, t) =>
             db
               .from("mock_attempts")
@@ -91,8 +68,7 @@ export async function readChapterStates(
               .eq("user_id", userId)
               .in("mock_id", [...byMock.keys()])
               .order("id")
-              .range(f, t),
-          "path tests"
+              .range(f, t)
         ),
   ]);
 

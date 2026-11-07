@@ -31,7 +31,8 @@ import { istDayKey, istDayStartIso } from "@/lib/email/dueNudge";
 import { resolveExamDate } from "@/lib/exam/calendar";
 import { getOwnProfile } from "@/lib/profile/service";
 import { getPathContent } from "./content";
-import { readAll, readChapterStates } from "./stateRead";
+import { readChapterStates } from "./stateRead";
+import { readAllPages } from "@/lib/supabase/readAllPages";
 import { activeDeferrals, type Deferral } from "./deferrals";
 import {
   PATH_SUBJECTS,
@@ -88,9 +89,8 @@ export function boardDateFor(
 }
 
 async function readDeferrals(db: SupabaseClient, pathId: string): Promise<Deferral[]> {
-  const rows = await readAll<{ chapter_id: string; deferred_at: string }>(
-    (f, t) => db.from("study_path_deferrals").select("chapter_id, deferred_at").eq("path_id", pathId).order("id").range(f, t),
-    "path deferrals"
+  const rows = await readAllPages<{ chapter_id: string; deferred_at: string }>(
+    (f, t) => db.from("study_path_deferrals").select("chapter_id, deferred_at").eq("path_id", pathId).order("id").range(f, t)
   );
   return rows.map((r) => ({ chapterId: r.chapter_id, at: r.deferred_at }));
 }
