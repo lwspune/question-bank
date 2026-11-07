@@ -4,10 +4,16 @@
  * 2 to 4 tasks, about the day's minutes:
  *   - the Fix task first when mistakes from path chapters wait (at most 5,
  *     made on an EARLIER day, so each fix is a spaced retrieval, D9);
- *   - then, one at a time, the next part of the next chapter from the queue
- *     furthest behind its own pace (share of its minutes done), so the
- *     subjects interleave on their own. A deferred chapter is skipped while
- *     its queue has another; with nothing else left it is served anyway.
+ *   - then a chapter worked through its parts in order (the sheet, then its
+ *     Top 10 while the summary is fresh, then its test), and when it is done
+ *     the next chapter from the queue furthest behind its own pace (share of
+ *     its minutes done), so the subjects interleave across days. Switching
+ *     subject after every 10-minute sheet gave an HSC student four sheets and
+ *     no questions on day one (path:smoke, 2026-11-07).
+ *   - A deferred chapter is skipped while its queue has another; with nothing
+ *     else left it is served anyway.
+ *   - The day stops at 80% of its minutes once it holds two tasks, so it does
+ *     not overrun by a whole chapter test.
  *
  * The server stores the day's pick (study_path_days) so the card stays the
  * same all day and the free-limit exemptions are read from it; a replan
@@ -32,6 +38,8 @@ export const MIN_TASKS = 2;
 export const MAX_TASKS = 4;
 export const FIX_MAX = 5;
 export const FIX_MINUTES_PER_QUESTION = 1.5;
+/** A day with two tasks stops once it reaches this share of its minutes. */
+export const STOP_SHARE = 0.8;
 
 export type PathTask =
   | { kind: ChapterPart; chapterId: string; minutes: number }
@@ -92,13 +100,30 @@ export function pickToday(input: {
     queues.map((q) => [q, input.chapters.filter((c) => c.queue === q).reduce((s, c) => s + totalMinutes(c), 0)])
   );
 
-  while (tasks.length < MAX_TASKS && !(spent >= input.budget && tasks.length >= MIN_TASKS)) {
-    const next = nextCandidate(input.chapters, sim, input.deferred, queues, totals) ??
+  while (tasks.length < MAX_TASKS && !(tasks.length >= MIN_TASKS && spent >= STOP_SHARE * input.budget)) {
+    const next =
+      continueChapter(tasks, input.chapters, sim, input.deferred) ??
+      nextCandidate(input.chapters, sim, input.deferred, queues, totals) ??
       nextCandidate(input.chapters, sim, new Set(), queues, totals);
     if (!next) break;
     add({ kind: next.part, chapterId: next.chapter.id, minutes: partMinutes(next.chapter, stateOf(sim, next.chapter.id), next.part) });
   }
   return tasks;
+}
+
+/** The next part of the chapter the day is already on, if it has one. */
+function continueChapter(
+  tasks: readonly PathTask[],
+  chapters: readonly PathChapter[],
+  sim: ReadonlyMap<string, ChapterState>,
+  deferred: ReadonlySet<string>
+): { chapter: PathChapter; part: ChapterPart } | null {
+  const last = [...tasks].reverse().find(isChapterTask);
+  if (!last || deferred.has(last.chapterId)) return null;
+  const chapter = chapters.find((c) => c.id === last.chapterId);
+  if (!chapter) return null;
+  const part = nextPart(chapter, stateOf(sim, chapter.id));
+  return part ? { chapter, part } : null;
 }
 
 function nextCandidate(

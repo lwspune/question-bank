@@ -159,14 +159,22 @@ describe("today: the tasks (§4)", () => {
   const all = [...physics, ...chem];
   const none = new Map<string, ChapterState>();
 
-  it("starts at the first chapter's sheet and interleaves the subjects by how far behind each is", () => {
+  const ids = (tasks: PathTask[]) => tasks.map((t) => (t.kind === "fix" ? "fix" : `${t.chapterId}:${t.kind}`));
+
+  it("works one chapter through its parts in order: the sheet, then its Top 10 while it is fresh", () => {
     const tasks = pickToday({ chapters: all, states: none, deferred: new Set(), budget: 55, fix: [] });
-    expect(tasks.map((t) => (t.kind === "fix" ? "fix" : `${t.chapterId}:${t.kind}`))).toEqual([
-      "p1:sheet",
-      "c1:sheet",
-      "p1:top",
-      "c1:top",
-    ]);
+    expect(ids(tasks)).toEqual(["p1:sheet", "p1:top", "p1:test"]);
+  });
+
+  it("then turns to the subject furthest behind, so subjects interleave across days", () => {
+    const states = new Map<string, ChapterState>([["p1", { sheet: true, topWorked: 10, test: false, recordedDone: false }]]);
+    const tasks = pickToday({ chapters: all, states, deferred: new Set(), budget: 40, fix: [] });
+    expect(ids(tasks)).toEqual(["c1:sheet", "c1:top"]);
+  });
+
+  it("stops at 80% of the day's minutes once it has two tasks, rather than overrun by a whole test", () => {
+    const tasks = pickToday({ chapters: all, states: none, deferred: new Set(), budget: 45, fix: [] });
+    expect(ids(tasks)).toEqual(["p1:sheet", "p1:top"]);
   });
 
   it("serves the subject furthest behind first", () => {
@@ -209,10 +217,10 @@ describe("today: the tasks (§4)", () => {
   });
 
   it("keeps the tasks already on the card when it replans, and fills after them", () => {
-    const keep: PathTask[] = [{ kind: "sheet", chapterId: "p1", minutes: 10 }];
+    const keep: PathTask[] = [{ kind: "sheet", chapterId: "c1", minutes: 10 }];
     const tasks = pickToday({ chapters: all, states: none, deferred: new Set(), budget: 5, fix: [], keep });
     expect(tasks[0]).toEqual(keep[0]);
-    expect(tasks[1]).toMatchObject({ kind: "sheet", chapterId: "c1" });
+    expect(tasks[1]).toMatchObject({ kind: "top", chapterId: "c1" });
   });
 });
 
@@ -257,5 +265,46 @@ describe("today: done, Fix and exemptions", () => {
     expect(ex.revealIds).toContain("p1-q0");
     expect(ex.drillIds).toEqual(["f1"]);
     expect(ex.testMockIds).toEqual(["m-p1"]);
+  });
+});
+
+describe("the promise holds: a student who does every day's card finishes before the buffer", () => {
+  function board(counts: Record<string, number>, testMinutes: number): PathChapter[] {
+    return Object.entries(counts).flatMap(([queue, n]) =>
+      Array.from({ length: n }, (_, i) =>
+        ch(`${queue}-${i + 1}`, (queue.startsWith("mathematics") ? "mathematics" : queue) as PathChapter["subject"], queue, i + 1, testMinutes)
+      )
+    );
+  }
+
+  function simulate(chapters: PathChapter[], start: string, buffer: string) {
+    const states = new Map<string, ChapterState>();
+    const remaining = () => chapters.reduce((s, c) => s + remainingMinutes(c, states.get(c.id) ?? fresh) + (chapterDone(c, states.get(c.id) ?? fresh) ? 0 : 10), 0);
+    const budget = startingDailyMinutes(remaining(), start, buffer);
+    let day = start;
+    let dayIndex = 0;
+    while (chapters.some((c) => !chapterDone(c, states.get(c.id) ?? fresh))) {
+      if (dayIndex % 7 !== 6) {
+        for (const t of pickToday({ chapters, states, deferred: new Set(), budget, fix: [] })) {
+          if (t.kind === "fix") continue;
+          const s = states.get(t.chapterId) ?? fresh;
+          states.set(t.chapterId, t.kind === "sheet" ? { ...s, sheet: true } : t.kind === "top" ? { ...s, topWorked: 10 } : { ...s, test: true });
+        }
+      }
+      day = addDays(day, 1);
+      dayIndex++;
+    }
+    return { finished: day, budget };
+  }
+
+  it("CBSE 12 from 25 Nov: 37 chapters done by 25 Jan", () => {
+    const { finished, budget } = simulate(board({ physics: 14, chemistry: 10, mathematics: 13 }, 23), "2026-11-25", "2027-01-25");
+    expect(budget).toBeLessThanOrEqual(90);
+    expect(finished <= "2027-01-25").toBe(true);
+  });
+
+  it("HSC 12 from 25 Nov: 47 chapters, Maths in two books, done by 21 Jan", () => {
+    const { finished } = simulate(board({ physics: 16, chemistry: 16, "mathematics-1": 7, "mathematics-2": 8 }, 15), "2026-11-25", "2027-01-21");
+    expect(finished <= "2027-01-21").toBe(true);
   });
 });
