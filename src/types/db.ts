@@ -4873,6 +4873,13 @@ export type Database = {
       get_pyq_years: { Args: never; Returns: number[] }
       get_share_snapshot: { Args: { p_since: string }; Returns: Json }
       get_signup_countries: { Args: { p_since: string }; Returns: Json }
+      get_student_answer_totals_for_staff: {
+        Args: { p_user_id: string }
+        Returns: {
+          answered: number
+          right_answers: number
+        }[]
+      }
       get_student_performance: { Args: { p_user_id: string }; Returns: Json }
       get_student_performance_for_staff: {
         Args: { p_user_id: string }
@@ -4907,6 +4914,15 @@ export type Database = {
           user_id: string
           whatsapp_opt_in: boolean
         }[]
+      }
+      get_student_week_study_days_for_staff: {
+        Args: {
+          p_min_answers: number
+          p_since: string
+          p_sitting_kinds: string[]
+          p_user_id: string
+        }
+        Returns: number
       }
       get_subtopic_facets: {
         Args: {

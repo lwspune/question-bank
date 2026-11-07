@@ -27,12 +27,9 @@ import { getSessionUser } from "@/lib/auth";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { logActivityOnce } from "@/lib/activity/service";
 import { surfaceViewedEvent } from "@/lib/activity/views";
-import { getOwnLadder } from "@/lib/drill/service";
-import { dueByChapter, weakChapters } from "@/lib/drill/select";
 import { getOwnAnswerTotals } from "@/lib/celebrate/service";
 import { getOwnWeekly } from "@/lib/goals/service";
-import { getOwnProfile } from "@/lib/profile/service";
-import { resolveExamDate } from "@/lib/exam/calendar";
+import { buildPulse } from "@/lib/pulse/build";
 
 export const dynamic = "force-dynamic";
 
@@ -54,25 +51,13 @@ export async function GET() {
     // row a day here is "this student was on the site today" — the count the
     // engagement read lacked (51 of 265 sign-ins in a month left no row).
     await logActivityOnce(db, user.id, surfaceViewedEvent(user.id, "site", now));
-    const [ladder, week, profile, answers] = await Promise.all([
-      getOwnLadder(db, user.id, now),
-      getOwnWeekly(db, user.id, now),
-      getOwnProfile(db, user.id),
-      getOwnAnswerTotals(db),
-    ]);
-    const countdown = resolveExamDate(profile, now);
-    const exam = countdown
-      ? { label: countdown.label, daysLeft: countdown.daysLeft, official: countdown.official }
-      : null;
-    const totals = answers ? { answered: answers.answered, right: answers.right, fixed: ladder.fixed } : null;
-    // /me's Weak spots (2026-11-06): grouped from the same due pool, so a
-    // chapter's count is the number its Fix button will serve from.
-    const weak = weakChapters(ladder.due);
-    // The chapter pages' "Fix N mistakes in this chapter" line (2026-11-07):
-    // every chapter's count from the same pool, so the line's number is what
-    // /drill?chapter= serves. One small object; no extra read.
-    const chapterDue = dueByChapter(ladder.due);
-    return NextResponse.json({ due: ladder.due.length, week, exam, totals, weak, chapterDue }, { headers: NO_STORE });
+    // The pulse itself is built in lib/pulse/build.ts, shared with the staff
+    // view of a student's /me; here the two "caller" counts are the student's own.
+    const pulse = await buildPulse(db, user.id, now, {
+      week: getOwnWeekly(db, user.id, now),
+      answers: getOwnAnswerTotals(db),
+    });
+    return NextResponse.json(pulse, { headers: NO_STORE });
   } catch (e) {
     // A wrong number is worse than no badge: fail and let the client render
     // nothing rather than a zero that reads as "nothing to fix".

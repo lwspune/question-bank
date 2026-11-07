@@ -42,6 +42,27 @@ export async function countWeekStudyDays(db: SupabaseClient, now: Date = new Dat
   return typeof data === "number" ? data : 0;
 }
 
+/**
+ * The same count for a NAMED student, for the staff view of their /me
+ * (migration 0222). Call it with the superadmin's own session client: the
+ * function checks the caller and throws for anyone else (42501), so a refusal
+ * never reads as a student with no study days.
+ */
+export async function countStudentWeekStudyDays(
+  db: SupabaseClient,
+  userId: string,
+  now: Date = new Date()
+): Promise<number> {
+  const { data, error } = await db.rpc("get_student_week_study_days_for_staff", {
+    p_user_id: userId,
+    p_since: weekStartIst(now).toISOString(),
+    p_sitting_kinds: [...WEEK_SITTING_KINDS],
+    p_min_answers: STUDY_DAY_MIN_ANSWERS,
+  });
+  if (error) throw new Error(`countStudentWeekStudyDays: ${error.message}`);
+  return typeof data === "number" ? data : 0;
+}
+
 export async function getOwnWeekly(
   db: SupabaseClient,
   userId: string,

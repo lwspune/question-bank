@@ -10,6 +10,7 @@ import {
   weeklyProgress,
 } from "@/lib/goals/weekly";
 import { invalidatePulse, usePulse } from "@/lib/viewer/usePulse";
+import type { Pulse } from "@/lib/pulse/cache";
 import { examCountdownSentence } from "@/lib/exam/calendar";
 import { pickTodayAction } from "@/lib/me/today";
 
@@ -30,14 +31,22 @@ export default function TodayCard({
   mockHref,
   initialDone,
   initialGoal,
+  pulse: given,
+  readOnly = false,
 }: {
   resume?: { title: string; href: string };
   cont?: { title: string; chapter: string; href: string };
   mockHref: string;
   initialDone: number;
   initialGoal: number | null;
+  /** The staff view of a student's /me passes the STUDENT's pulse, built on
+   *  the server; left to fetch, this card would show the viewer's own. */
+  pulse?: Pulse;
+  /** Staff view: nothing on the card may save as the student. */
+  readOnly?: boolean;
 }) {
-  const pulse = usePulse(true);
+  const live = usePulse(!given);
+  const pulse = given ?? live;
   const [goal, setGoal] = useState<number | null>(initialGoal);
   const [saving, setSaving] = useState(false);
   const [editingGoal, setEditingGoal] = useState(false);
@@ -113,7 +122,7 @@ export default function TodayCard({
           {pulse?.exam && (
             <p className="mt-0.5 text-xs text-muted-foreground">
               {examCountdownSentence({ ...pulse.exam, source: "calendar", exam: null, date: "" })}
-              {!pulse.exam.official && (
+              {!pulse.exam.official && !readOnly && (
                 <>
                   {" · "}
                   <Link href="/account" className="text-brand-accent underline-offset-4 hover:underline">
@@ -144,14 +153,19 @@ export default function TodayCard({
               </label>
             ) : (
               <>
-                {p.chosen ? "Your goal" : "Suggested goal"}: {p.goal} study days a week ·{" "}
-                <button
-                  type="button"
-                  onClick={() => setEditingGoal(true)}
-                  className="font-medium text-brand-accent underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                >
-                  change
-                </button>
+                {p.chosen ? "Your goal" : "Suggested goal"}: {p.goal} study days a week
+                {!readOnly && (
+                  <>
+                    {" · "}
+                    <button
+                      type="button"
+                      onClick={() => setEditingGoal(true)}
+                      className="font-medium text-brand-accent underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    >
+                      change
+                    </button>
+                  </>
+                )}
               </>
             )}
           </div>
