@@ -56,6 +56,7 @@ import {
   V_STRATEGY_ANSWERS_KEEP,
   V_PLAN_STUDENTS_KEEP,
   V_REVEAL_FOLLOWUP_BASELINE_PCT,
+  V_PREMIUM_HOURLY_CHECKOUT_KEEP_PCT,
   V_REVEAL_FOLLOWUP_MAX_DROP,
   V_PLAN_DAYS_DONE_KEEP_PCT,
   V_PROGRESS_NEXT_STEP_KEEP_PCT,
@@ -740,6 +741,17 @@ export default async function GrowthPage() {
             </p>
             <ReadingsList metric="v-pay-offer-shown" />
             <ReadingsList metric="v-pay-offer-checkout" />
+          </div>
+        );
+      case "v-premium-hourly":
+        return (
+          <div className="space-y-3">
+            <p className="text-sm text-muted-foreground">
+              Judged by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))}: keep it if {V_PREMIUM_HOURLY_CHECKOUT_KEEP_PCT}%+
+              of the free students shown the card open checkout, or Premium&apos;s share of sales rises.
+            </p>
+            <ReadingsList metric="v-hourly-stopped" />
+            <ReadingsList metric="v-hourly-checkout" />
           </div>
         );
       case "self-mark":

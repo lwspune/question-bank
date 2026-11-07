@@ -223,6 +223,13 @@ export const V_PROGRESS_NEXT_STEP_KEEP_PCT = 25;
 export const V_PAY_OFFER_CHECKOUT_KEEP_PCT = 10;
 
 /**
+ * "v-premium-hourly": keep the Premium offer at V's hourly limit if at least
+ * this share of the free students shown it open checkout (%), the same bar as
+ * the daily-answer offer in V (V_PAY_OFFER_CHECKOUT_KEEP_PCT).
+ */
+export const V_PREMIUM_HOURLY_CHECKOUT_KEEP_PCT = 10;
+
+/**
  * "self-mark": keep Understood / Review later under written model answers if
  * at least this share of signed-in written-answer reveals get a tap (%)...
  */
@@ -314,6 +321,7 @@ export type Readout =
   | "v-progress"
   | "self-mark"
   | "v-pay-offer"
+  | "v-premium-hourly"
   | "visual-solutions"
   | "homework-tab"
   | "homework-progress"
@@ -734,6 +742,20 @@ export const EXPERIMENTS: readonly Experiment[] = [
     status: "running",
   },
   {
+    id: "v-premium-hourly",
+    title: "Premium Pass lifts V's hourly limit",
+    change:
+      "Premium Pass holders may ask V up to 50 messages an hour (chat_settings.premium_per_person_per_hour, migration 0226); everyone else stays at 5. At the limit V says how long until the student can ask again, in its own bubble instead of an error, and a signed-in free student gets the Premium Pass card under it (Practice Pass holders get the line only: no upgrade price yet). Every stopped message is now kept (chat_interactions 'hourly_limit').",
+    why: "The owner asked whether V should make the ₹499 pass more attractive (2026-11-07). 17 of the 32 people holding a paid pass use V, and 33 students sent 5 messages inside an hour (19 Oct to 7 Nov), 5 of them paying; the ₹199 Practice Pass keeps V's explanations, since it promises unlimited answers.",
+    metric:
+      "Messages stopped by the hourly limit (chat_interactions event_type 'hourly_limit', and the students behind them); free students shown the card (Vercel v_hourly_limit_hit) and the share who opened checkout (checkout_opened, surface 'v_hourly'), passes paid from it; Premium's share of pass sales against the Practice Pass, before and after",
+    rule: `Keep it if ${V_PREMIUM_HOURLY_CHECKOUT_KEEP_PCT}%+ of the free students shown the card open checkout over the window, or Premium's share of sales rises; read the stopped messages before changing the limit.`,
+    liveSince: "2026-11-07",
+    windowDays: 14,
+    readout: "v-premium-hourly",
+    status: "running",
+  },
+  {
     id: "visual-solutions",
     title: "Animated solutions",
     change:
@@ -943,6 +965,8 @@ export type ReadingMetric =
   | "self-mark-tap-share"
   | "self-mark-review-fixed"
   | "v-pay-offer-shown"
+  | "v-hourly-stopped"
+  | "v-hourly-checkout"
   | "v-pay-offer-checkout"
   | "price-weekly-revenue"
   | "price-checkout-paid"
@@ -1182,6 +1206,16 @@ export const READINGS: Record<ReadingMetric, { label: string; source: string; en
   "v-pay-offer-checkout": {
     label: "V: students shown the offer who opened checkout (%)",
     source: "Vercel Analytics checkout_opened with surface 'v_chat' over v-pay-offer-shown; passes paid = checkout_paid, surface 'v_chat'",
+    entries: [],
+  },
+  "v-hourly-stopped": {
+    label: "V: messages stopped by the hourly limit, a week (students)",
+    source: "chat_interactions event_type 'hourly_limit' over the 7 days before the reading (migration 0226), staff left out; the students behind them in brackets",
+    entries: [],
+  },
+  "v-hourly-checkout": {
+    label: "V: free students shown the Premium card at the hourly limit who opened checkout (%)",
+    source: "Vercel Analytics checkout_opened with surface 'v_hourly' over v_hourly_limit_hit; passes paid = checkout_paid, surface 'v_hourly'",
     entries: [],
   },
   "v-false-not-found": {

@@ -101,6 +101,7 @@ describe("EXPERIMENTS", () => {
       "v-finder",
       "v-pay-offer",
       "v-plan",
+      "v-premium-hourly",
       "v-progress",
       "v-reveal",
       "v-strategy",
