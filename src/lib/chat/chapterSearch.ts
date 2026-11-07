@@ -47,6 +47,11 @@ const NAME_STOPWORDS = new Set(["and", "of", "the", "in", "to", "a", "an", "for"
 const ROMAN: Record<string, string> = { i: "1", ii: "2", iii: "3", iv: "4" };
 // Short forms the word-start rule cannot reach ("maths" is not the start of "mathematics").
 const ALIASES: Record<string, string> = { maths: "math", sst: "social" };
+// Subjects that ARE maths under another name (2026-11-07): "ssc maths" found nothing.
+const SUBJECT_ALSO: Record<string, readonly string[]> = {
+  "quantitative aptitude": ["math"],
+  "numerical ability": ["math"],
+};
 // Words about what the student wants rather than which chapter, dropped so they cannot fail a search.
 const FILLER = new Set([
   "imp", "important", "question", "questions", "pyq", "pyqs", "mcq", "mcqs",
@@ -134,7 +139,7 @@ function strictSearch(pool: readonly ChapterSearchRow[], queryWords: readonly st
   const scored: { hit: ChapterHit; score: number }[] = [];
   for (const row of pool) {
     const chapterWords = words(row.chapterName);
-    const subjectWords = words(row.subjectName);
+    const subjectWords = [...words(row.subjectName), ...(SUBJECT_ALSO[row.subjectName.toLowerCase()] ?? [])];
     const examText = examWordsOf(row);
     const subtopics = (row.subtopicNames ?? []).map((name) => ({ name, words: words(name) }));
     let score = 0;
