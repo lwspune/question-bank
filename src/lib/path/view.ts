@@ -37,6 +37,14 @@ export function dayLabel(day: string): string {
   return `${d} ${MONTHS[m - 1]}`;
 }
 
+/** Minutes left on a path: each unfinished chapter's work plus its Fix allowance. */
+export function pathRemainingMinutes(chapters: readonly PathChapter[], states: ReadonlyMap<string, ChapterState>): number {
+  return chapters.reduce((sum, c) => {
+    const s = states.get(c.id) ?? NOTHING_DONE;
+    return chapterDone(c, s) ? sum : sum + remainingMinutes(c, s) + FIX_ALLOWANCE_PER_CHAPTER;
+  }, 0);
+}
+
 export type SubjectProgress = { subject: PathSubject; label: string; done: number; of: number };
 
 export function statusLine(subjects: readonly SubjectProgress[], pace: Pick<PaceStatus, "onTrack" | "behindDays">): string {
@@ -105,10 +113,7 @@ export function buildPathView(p: {
     return { subject, label: SUBJECT_LABEL[subject], done: mine.filter((c) => chapterDone(c, stateOf(c.id))).length, of: mine.length };
   });
 
-  const remaining = p.chapters.reduce(
-    (sum, c) => sum + remainingMinutes(c, stateOf(c.id)) + (chapterDone(c, stateOf(c.id)) ? 0 : FIX_ALLOWANCE_PER_CHAPTER),
-    0
-  );
+  const remaining = pathRemainingMinutes(p.chapters, p.states);
   const buffer = bufferStart(p.examDate);
   const pace = paceStatus({ remaining, daily: p.dailyMinutes, today: p.today, buffer });
 
