@@ -20,7 +20,14 @@ export const FREE_REVEAL_LIMIT = 10;
  * signed-in student is never walled. `todayIds` is every question they revealed
  * since midnight IST, so re-opening one of them is free.
  */
-export type DailyReveals = { limit: number; todayIds: readonly string[] };
+export type DailyReveals = {
+  limit: number;
+  todayIds: readonly string[];
+  /** Today's board-path questions (MENTOR_SPEC.md §6, migration 0225): never
+   *  counted, never walled. Read by the server from its own pick of today's
+   *  tasks, never sent by the browser. */
+  exemptIds?: readonly string[];
+};
 
 /** Which wall a refused reveal met: the signed-out one, or today's limit. */
 export type RevealWall = "signin" | "daily";
@@ -49,6 +56,9 @@ export function revealDecision(input: {
   if (signedIn) {
     const daily = input.daily;
     if (!daily) return { allow: true, nextIds: [...revealedIds], remaining: Infinity };
+    if (daily.exemptIds?.includes(questionId)) {
+      return { allow: true, nextIds: [...daily.todayIds], remaining: Math.max(0, daily.limit - daily.todayIds.length) };
+    }
     return spend(daily.todayIds, questionId, daily.limit, "daily");
   }
   return spend(revealedIds, questionId, limit, "signin");

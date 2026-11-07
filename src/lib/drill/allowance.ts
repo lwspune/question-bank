@@ -16,6 +16,9 @@ export type DrillAllowanceInput = {
   hasPass: boolean;
   /** Question ids answered in the drill since midnight IST (repeats allowed). */
   answeredToday: readonly string[];
+  /** Today's board-path Fix questions (MENTOR_SPEC.md §6): never counted,
+   *  always allowed. From the server's own pick of today's tasks. */
+  exempt?: readonly string[];
 };
 
 export type DrillAllowance =
@@ -25,7 +28,8 @@ export type DrillAllowance =
 
 export function drillAllowance(input: DrillAllowanceInput): DrillAllowance {
   if (input.limit === null || input.hasPass) return { kind: "open" };
-  const left = input.limit - new Set(input.answeredToday).size;
+  const exempt = new Set(input.exempt ?? []);
+  const left = input.limit - new Set(input.answeredToday.filter((id) => !exempt.has(id))).size;
   return left > 0 ? { kind: "free", left, limit: input.limit } : { kind: "locked", limit: input.limit };
 }
 
@@ -38,6 +42,6 @@ export function servedCount(allowance: DrillAllowance, size: number = DRILL_SIZE
 
 /** May this answer be graded? A question already answered today always may. */
 export function canAnswerDrillQuestion(input: DrillAllowanceInput, questionId: string): boolean {
-  if (input.answeredToday.includes(questionId)) return true;
+  if (input.answeredToday.includes(questionId) || input.exempt?.includes(questionId)) return true;
   return drillAllowance(input).kind !== "locked";
 }

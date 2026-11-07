@@ -144,3 +144,17 @@ describe("isRevealLocked: signed-in daily limit", () => {
     expect(isRevealLocked({ signedIn: true, loading: false, revealedIds: [], questionId: "c", daily: null })).toBe(false);
   });
 });
+
+describe("the board path's questions (MENTOR_SPEC.md §6): exempt from the daily limit", () => {
+  const daily = { limit: 2, todayIds: ["a", "b"], exemptIds: ["p1", "p2"] };
+
+  it("never locks today's path questions, even with the day's answers used", () => {
+    expect(isRevealLocked({ signedIn: true, loading: false, revealedIds: [], questionId: "p1", daily })).toBe(false);
+    expect(isRevealLocked({ signedIn: true, loading: false, revealedIds: [], questionId: "c", daily })).toBe(true);
+  });
+  it("does not spend an answer on a path question", () => {
+    const d = revealDecision({ signedIn: true, revealedIds: [], questionId: "p2", daily: { limit: 5, todayIds: ["a"], exemptIds: ["p2"] } });
+    expect(d.allow).toBe(true);
+    expect(d.nextIds).toEqual(["a"]);
+  });
+});

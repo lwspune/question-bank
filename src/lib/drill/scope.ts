@@ -10,7 +10,9 @@ import { drillChapterHref, drillHref } from "./from";
 
 export type DrillScope =
   | { kind: "attempt"; attemptId: string; title: string; mockSlug: string }
-  | { kind: "chapter"; chapterId: string; title: string };
+  | { kind: "chapter"; chapterId: string; title: string }
+  // Today's Fix task on the board path (MENTOR_SPEC.md §4, 2026-11-07).
+  | { kind: "path" };
 
 export type ScopeCopy = {
   /** Under the page heading: "From <paper or chapter>". */
@@ -26,6 +28,16 @@ export type ScopeCopy = {
 }
 
 export function scopeCopy(scope: DrillScope): ScopeCopy {
+  if (scope.kind === "path") {
+    return {
+      from: "From today's path",
+      unit: "from today's path",
+      again: "/me",
+      anotherLabel: "Back to today's tasks",
+      otherLabel: "Fix mistakes from other chapters",
+      emptyTitle: "Today's mistakes are fixed",
+    };
+  }
   if (scope.kind === "chapter") {
     return {
       from: `From ${scope.title}`,

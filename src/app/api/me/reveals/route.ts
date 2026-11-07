@@ -10,6 +10,10 @@
  * day's list is read only when there is a limit to count against, and so is
  * `pass`, the pass on sale, which the wall sells in place (2026-10-25); null
  * when none is on sale or the read failed, and the wall then links to /pricing.
+ *
+ * `exemptIds` (2026-11-07, migration 0225): today's board-path questions, from
+ * the server's own pick of the student's tasks. They are left out of
+ * `todayIds` and the meter never walls them (MENTOR_SPEC.md §6).
  */
 import { NextResponse, type NextRequest } from "next/server";
 import { planSiteForHost } from "@/lib/sites/intl";
@@ -21,6 +25,7 @@ import { loadPaidRevealedToday } from "@/lib/questions/revealQuota";
 import { istDayStartIso } from "@/lib/email/dueNudge";
 import { holdsPassFor, passScopesFor } from "@/lib/billing/passScope";
 import { readCountry } from "@/lib/acquisition/country";
+import { readTodayExemptions, revealCountWithout } from "@/lib/path/exemptions";
 
 export const dynamic = "force-dynamic";
 
@@ -45,12 +50,19 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ limit: null, todayIds: [] }, { headers: NO_STORE });
   }
   try {
-    const [todayIds, pass] = await Promise.all([
+    const [counted, pass, exempt] = await Promise.all([
       // A free exam's answers (the Class 9-10 exams, 0210) are not counted (0211).
       loadPaidRevealedToday(db, istDayStartIso(new Date())),
       passOnSale(site, { scope: scopes[0], country: readCountry(request.headers) }),
+      // Today's board-path questions (0225): read from the server's own pick,
+      // neither counted nor walled. Fails to "none", never to a wall.
+      readTodayExemptions(db, user.id),
     ]);
-    return NextResponse.json({ limit: limits.revealsPerDay, todayIds, pass }, { headers: NO_STORE });
+    const todayIds = revealCountWithout(counted, exempt.revealIds);
+    return NextResponse.json(
+      { limit: limits.revealsPerDay, todayIds, exemptIds: exempt.revealIds, pass },
+      { headers: NO_STORE }
+    );
   } catch (e) {
     // No limit is the safe direction: a student is never walled by our error.
     console.error("reveal quota read failed", e);

@@ -76,3 +76,15 @@ describe("canAnswerDrillQuestion", () => {
     expect(canAnswerDrillQuestion({ ...input(40), limit: null }, "new")).toBe(true);
   });
 });
+
+describe("the board path's Fix task (MENTOR_SPEC.md §6): exempt from the drill limit", () => {
+  const input = { limit: 15, hasPass: false, answeredToday: [...ids(15), "fix1"], exempt: ["fix1", "fix2"] };
+
+  it("always allows today's Fix questions", () => {
+    expect(canAnswerDrillQuestion(input, "fix2")).toBe(true);
+    expect(canAnswerDrillQuestion(input, "new")).toBe(false);
+  });
+  it("leaves Fix questions out of the day's count", () => {
+    expect(drillAllowance({ ...input, answeredToday: [...ids(14), "fix1"] })).toEqual({ kind: "free", left: 1, limit: 15 });
+  });
+});

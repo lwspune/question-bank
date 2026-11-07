@@ -32,4 +32,15 @@ describe("scopeCopy", () => {
       emptyTitle: "Nothing left to fix in this chapter",
     });
   });
+
+  it("today's path: its own words, and back to /me rather than another five", () => {
+    expect(scopeCopy({ kind: "path" })).toEqual({
+      from: "From today's path",
+      unit: "from today's path",
+      again: "/me",
+      anotherLabel: "Back to today's tasks",
+      otherLabel: "Fix mistakes from other chapters",
+      emptyTitle: "Today's mistakes are fixed",
+    });
+  });
 });
