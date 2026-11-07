@@ -19,21 +19,16 @@ export async function LearnChapterLink({ examSlug, subjectName, chapterName }: {
   });
   const ch = outline && learnChapterFor(course, outline.chapters, chapterName);
   if (!ch) return null;
+  // One line (2026-11-07; was a ~120 px card above the questions on a phone).
   return (
     <Link
       href={chapterHref(course, ch.slug)}
-      className="group mb-6 flex items-center gap-3 rounded-2xl border border-brand/40 bg-brand/5 p-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+      aria-label={`Learn the ideas first: ${ch.title} one concept at a time`}
+      className="group mb-4 inline-flex items-center gap-1.5 rounded text-sm font-medium text-brand-accent hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
     >
-      <span className="icon-tile grid h-10 w-10 shrink-0 place-items-center rounded-xl">
-        <GraduationCap className="h-5 w-5 text-brand-accent" aria-hidden="true" />
-      </span>
-      <span className="min-w-0 flex-1">
-        <span className="block font-semibold text-foreground">Learn the ideas first</span>
-        <span className="block text-sm text-muted-foreground">
-          {ch.title} one concept at a time: a short lesson, then questions until you have it.
-        </span>
-      </span>
-      <ArrowRight className="h-4 w-4 shrink-0 text-brand-accent transition-transform group-hover:translate-x-0.5 motion-reduce:transition-none" aria-hidden="true" />
+      <GraduationCap className="h-4 w-4 shrink-0" aria-hidden="true" />
+      Learn the ideas first
+      <ArrowRight className="h-3.5 w-3.5 shrink-0 transition-transform group-hover:translate-x-0.5 motion-reduce:transition-none" aria-hidden="true" />
     </Link>
   );
 }

@@ -203,15 +203,12 @@ export default async function BoardChapterPage(props: { params: Promise<Params> 
         </header>
 
         <ExamTwinsProvider twins={twins} supabaseUrl={supabaseUrl}>
-          <ExamTwinChapterLine
-            questionIds={questionIds}
-            noun={pyqCount > 0 ? "textbook and board-paper questions" : "textbook questions"}
-          />
+          <ExamTwinChapterLine questionIds={questionIds} />
 
           <LearnChapterLink examSlug={params.examSlug} subjectName={chapter.subjectName} chapterName={chapter.chapterName} />
 
           {/* Signed in with mistakes waiting from this chapter (2026-11-07). Browser-only. */}
-          <ChapterFixLine chapterId={data.chapterId} from={CHAPTER_FIX_FROM.board} className="mb-6" />
+          <ChapterFixLine chapterId={data.chapterId} from={CHAPTER_FIX_FROM.board} className="mb-4" />
 
           <BoardReader
             groups={chapter.groups}

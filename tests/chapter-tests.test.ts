@@ -93,6 +93,7 @@ describe("mockCtaCopy", () => {
       button: "Sit an MHT-CET past paper",
       bar: "Sit a real MHT-CET paper, timed.",
       short: "Sit an MHT-CET paper as a timed mock",
+      chip: "Timed mock",
     });
   });
 
@@ -109,6 +110,7 @@ describe("mockCtaCopy", () => {
       button: "Take the Line and Plane chapter test",
       bar: "Line and Plane chapter test: 20 questions, 36 minutes.",
       short: "Take the Line and Plane chapter test",
+      chip: "Chapter test",
     });
   });
 });

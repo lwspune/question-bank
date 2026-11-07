@@ -149,3 +149,35 @@ export function tallyChapterTwins(byQuestion: TwinLink[][], preferredExam?: stri
     return b.asked - a.asked || b.similar - a.similar || a.examLabel.localeCompare(b.examLabel);
   });
 }
+
+export type LinePart = { text: string; bold?: boolean };
+
+/**
+ * The /board chapter page's one-line summary (2026-11-07, owner OK'd on a
+ * mockup; it replaced a ~130 px box). Names the total ("of the 142 questions
+ * here") because the header above counts the textbook alone. "Similar" is
+ * never called asked, and similar counts are never added across exams: one
+ * question can resemble two. Empty when nothing matched.
+ * Spec: tests/cross-exam-summary.test.ts.
+ */
+export function chapterTwinLine(tally: readonly ChapterTwinTally[], total: number): LinePart[] {
+  const of = `the ${total} questions here`;
+  if (tally.length === 0) return [];
+  if (tally.length === 1) {
+    const t = tally[0];
+    if (t.asked === 0) {
+      return [{ text: String(t.similar), bold: true }, { text: ` of ${of} are similar to ${t.examLabel} questions` }];
+    }
+    const parts: LinePart[] = [{ text: String(t.asked), bold: true }, { text: ` of ${of} were asked in ${t.examLabel}` }];
+    if (t.similar > 0) parts.push({ text: " · " }, { text: String(t.similar), bold: true }, { text: " similar" });
+    return parts;
+  }
+  const asked = tally.filter((t) => t.asked > 0);
+  const list = asked.length > 0 ? asked : tally;
+  const parts: LinePart[] = [{ text: `Of ${of}, ${asked.length > 0 ? "asked in" : "similar to"} ` }];
+  list.forEach((t, i) => {
+    if (i > 0) parts.push({ text: " · " });
+    parts.push({ text: `${t.examLabel} ` }, { text: String(asked.length > 0 ? t.asked : t.similar), bold: true });
+  });
+  return parts;
+}

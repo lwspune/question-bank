@@ -49,6 +49,7 @@ import Breadcrumbs from "@/components/nav/Breadcrumbs";
 import RememberVisit from "@/components/visits/RememberVisit";
 import { canonicalFor } from "@/lib/sites/intl";
 import ChapterFixLine from "@/components/drill/ChapterFixLine";
+import { chipLabel } from "@/lib/links/chipLabel";
 import { CHAPTER_FIX_FROM } from "@/lib/drill/from";
 
 
@@ -172,6 +173,23 @@ function SiblingLinks({ siblings }: { siblings: ChapterLanding[] }) {
   );
 }
 
+/**
+ * On a phone the chapter's buttons are compact pills (2026-11-07, owner OK'd
+ * on a mockup): three full-width buttons took three rows above the questions.
+ * From sm up they are the usual buttons.
+ */
+const PHONE_CHIP = "max-sm:min-h-9 max-sm:rounded-full max-sm:px-3 max-sm:py-1.5 max-sm:text-[13px]";
+
+/** The short label on a phone, the full one from sm up (the link's aria-label carries the full one). */
+function ChipText({ full, short }: { full: string; short: string }) {
+  return (
+    <>
+      <span className="sm:hidden">{short}</span>
+      <span className="hidden sm:inline">{full}</span>
+    </>
+  );
+}
+
 export default async function ChapterQuestionsPage(props: Params) {
   const params = await props.params;
   const landing = await getChapterLanding(
@@ -255,33 +273,33 @@ export default async function ChapterQuestionsPage(props: Params) {
         )}
 
         <div className="mt-5 flex flex-wrap gap-2">
-          <Button asChild variant="brand" size="wrap">
+          <Button asChild variant="brand" size="wrap" className={PHONE_CHIP}>
             <Link href={browseHrefFor(landing)}>
               Filter all {landing.questionCount} in the question bank
               <ArrowRight className="ml-1.5 h-4 w-4 shrink-0" />
             </Link>
           </Button>
           {resources.notes && (
-            <Button asChild variant="outline" size="wrap">
-              <Link href={resources.notes.href}>
+            <Button asChild variant="outline" size="wrap" className={PHONE_CHIP}>
+              <Link href={resources.notes.href} aria-label={resources.notes.label}>
                 <BookOpen className="mr-1.5 h-4 w-4 shrink-0" />
-                {resources.notes.label}
+                <ChipText full={resources.notes.label} short={chipLabel(resources.notes.label)} />
               </Link>
             </Button>
           )}
           {resources.guide && (
-            <Button asChild variant="outline" size="wrap">
-              <Link href={resources.guide.href}>
+            <Button asChild variant="outline" size="wrap" className={PHONE_CHIP}>
+              <Link href={resources.guide.href} aria-label={resources.guide.label}>
                 <Compass className="mr-1.5 h-4 w-4 shrink-0" />
-                {resources.guide.label}
+                <ChipText full={resources.guide.label} short={chipLabel(resources.guide.label)} />
               </Link>
             </Button>
           )}
           {mock && (
-            <Button asChild variant="outline" size="wrap">
-              <Link href={mock.href}>
+            <Button asChild variant="outline" size="wrap" className={PHONE_CHIP}>
+              <Link href={mock.href} aria-label={mockCtaCopy(mock).short}>
                 <ClipboardCheck className="mr-1.5 h-4 w-4 shrink-0" />
-                {mockCtaCopy(mock).short}
+                <ChipText full={mockCtaCopy(mock).short} short={mockCtaCopy(mock).chip} />
               </Link>
             </Button>
           )}
@@ -289,20 +307,21 @@ export default async function ChapterQuestionsPage(props: Params) {
 
         {/* The product's promise, where most new students first land (54% of
             sign-ups in October 2026 started on a chapter page). Same for every
-            visitor, so the page stays cached. */}
+            visitor, so the page stays cached. A signed-in student with mistakes
+            waiting from this chapter sees the Fix line IN ITS PLACE (2026-11-07):
+            the sentence asks them to sign in, which they have. Swapped in the
+            browser, so the cached copy is the sentence for everyone. */}
         {questions.rows.length > 0 && (
-          <p className="mt-6 flex items-start gap-2 text-sm text-muted-foreground">
-            <Target className="mt-0.5 h-4 w-4 shrink-0 text-brand-accent" aria-hidden />
-            <span>
-              Try each question before you open its answer. Sign in, and the ones you get wrong
-              come back in Fix your mistakes until you get them right.
-            </span>
-          </p>
+          <ChapterFixLine chapterId={landing.chapterId} from={CHAPTER_FIX_FROM.questions} className="mt-6">
+            <p className="mt-6 flex items-start gap-2 text-sm text-muted-foreground">
+              <Target className="mt-0.5 h-4 w-4 shrink-0 text-brand-accent" aria-hidden />
+              <span>
+                Try each question before you open its answer. Sign in, and the ones you get wrong
+                come back in Fix your mistakes until you get them right.
+              </span>
+            </p>
+          </ChapterFixLine>
         )}
-
-        {/* Signed in with mistakes waiting from this chapter: one line to fix
-            them (2026-11-07). Browser-only, so the page stays cached. */}
-        <ChapterFixLine chapterId={landing.chapterId} from={CHAPTER_FIX_FROM.questions} className="mt-4" />
 
         <div className="mt-4">
           {questions.rows.length === 0 ? (

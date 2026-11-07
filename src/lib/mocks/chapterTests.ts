@@ -103,6 +103,8 @@ export type MockCtaCopy = {
   bar: string;
   /** The /questions chapter page's button. */
   short: string;
+  /** The same button on a phone, a compact pill (2026-11-07). */
+  chip: string;
 };
 
 const AFTER = "You see your score and every answer the moment you finish. Free to start.";
@@ -115,6 +117,7 @@ export function mockCtaCopy(cta: MockCta): MockCtaCopy {
       button: `Sit ${withArticle(cta.examDisplay)} past paper`,
       bar: `Sit a real ${cta.examDisplay} paper, timed.`,
       short: `Sit ${withArticle(cta.examDisplay)} paper as a timed mock`,
+      chip: "Timed mock",
     };
   }
   return {
@@ -123,5 +126,6 @@ export function mockCtaCopy(cta: MockCta): MockCtaCopy {
     button: `Take the ${cta.chapterName} chapter test`,
     bar: `${cta.chapterName} chapter test: ${cta.questions} questions, ${cta.minutes} minutes.`,
     short: `Take the ${cta.chapterName} chapter test`,
+    chip: "Chapter test",
   };
 }

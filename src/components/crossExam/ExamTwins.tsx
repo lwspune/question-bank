@@ -23,7 +23,7 @@ import { publicImageUrl } from "@/lib/storage/imageUrl";
 import { cn } from "@/lib/utils";
 import { getExamBySlug } from "@/lib/exam/examContext";
 import { readExamSlugFromCookieString } from "@/lib/exam/examNav";
-import { summariseTwins, tallyChapterTwins, type TwinKind, type TwinLink } from "@/lib/crossExam/summary";
+import { chapterTwinLine, summariseTwins, tallyChapterTwins, type TwinKind, type TwinLink } from "@/lib/crossExam/summary";
 import type { QuestionTwins } from "@/lib/crossExam/query";
 import { reportTwinOpened } from "./twinBeacon";
 
@@ -160,58 +160,27 @@ export function ExamTwinLine({ questionId }: { questionId: string }) {
 }
 
 /**
- * The chapter's count. One exam: "52 of the 142 questions here were asked in
- * NDA, the same or with new numbers. 20 more are similar to NDA questions."
- * Several: one number per exam. "Similar" never counts as asked.
+ * The chapter's count, one line (2026-11-07; was a ~130 px box): "51 of the
+ * 142 questions here were asked in NDA · 21 similar". Several exams: one
+ * number per exam. "Similar" never counts as asked (lib/crossExam/summary
+ * chapterTwinLine). The total counts every question on the page, textbook and
+ * board papers, which is why the line names it.
  */
-export function ExamTwinChapterLine({
-  questionIds,
-  noun = "questions",
-}: {
-  questionIds: string[];
-  /** What the count is out of, so it cannot be read against a different total
-   *  on the page (the /board header counts the textbook alone). */
-  noun?: string;
-}) {
+export function ExamTwinChapterLine({ questionIds }: { questionIds: string[] }) {
   const ctx = useContext(ExamTwinsContext);
   const tally = useMemo(
     () => (ctx ? tallyChapterTwins(questionIds.map((id) => ctx.twins.links[id] ?? []), ctx.preferred) : []),
     [ctx, questionIds]
   );
-  if (tally.length === 0) return null;
-  const total = questionIds.length;
+  const parts = chapterTwinLine(tally, questionIds.length);
+  if (parts.length === 0) return null;
 
   return (
-    <div className="mb-6 rounded-lg border bg-brand/5 px-4 py-3 text-sm">
-      <p className="flex items-center gap-1.5 font-semibold text-brand-accent">
-        <Target className="h-4 w-4" aria-hidden />
-        {tally.length === 1 ? `This chapter in ${tally[0].examLabel}` : "This chapter in other exams"}
-      </p>
-      {tally.length === 1 ? (
-        <p className="mt-1 text-foreground">
-          {tally[0].asked > 0 && (
-            <>
-              <b>{tally[0].asked}</b> of the {total} {noun} here were asked in {tally[0].examLabel}, the same or with new
-              numbers.{" "}
-            </>
-          )}
-          {tally[0].similar > 0 && (
-            <>
-              <b>{tally[0].similar}</b> {tally[0].asked > 0 ? "more are" : `of the ${total} ${noun} here are`} similar to{" "}
-              {tally[0].examLabel} questions.
-            </>
-          )}
-        </p>
-      ) : (
-        <p className="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-foreground">
-          {tally.map((t) => (
-            <span key={t.examName}>
-              {t.examLabel} <b>{t.asked}</b>
-            </span>
-          ))}
-          <span className="text-muted-foreground">asked, of {total} {noun}</span>
-        </p>
-      )}
-    </div>
+    <p className="mb-3 flex items-start gap-1.5 text-sm text-foreground">
+      <Target className="mt-0.5 h-4 w-4 shrink-0 text-brand-accent" aria-hidden />
+      <span>
+        {parts.map((p, i) => (p.bold ? <b key={i}>{p.text}</b> : <span key={i}>{p.text}</span>))}
+      </span>
+    </p>
   );
 }

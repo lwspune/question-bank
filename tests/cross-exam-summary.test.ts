@@ -7,7 +7,7 @@
  * never counts as "asked"; the student's own exam is named first.
  */
 import { describe, it, expect } from "vitest";
-import { summariseTwins, tallyChapterTwins, type TwinLink } from "@/lib/crossExam/summary";
+import { chapterTwinLine, summariseTwins, tallyChapterTwins, type TwinLink } from "@/lib/crossExam/summary";
 
 let n = 0;
 function link(over: Partial<TwinLink> & Pick<TwinLink, "kind" | "paper">): TwinLink {
@@ -177,5 +177,48 @@ describe("tallyChapterTwins", () => {
 
   it("returns nothing for a chapter with no links", () => {
     expect(tallyChapterTwins([[], []])).toEqual([]);
+  });
+});
+
+/**
+ * The /board chapter page's one-line summary (2026-11-07, owner OK'd on a
+ * mockup): the box it replaces took ~130 px of a phone screen, so the line
+ * says the count and the total in one sentence. The total is named ("of the
+ * 142 questions here") because the header above counts the textbook alone.
+ */
+describe("chapterTwinLine", () => {
+  const show = (parts: { text: string; bold?: boolean }[]) => parts.map((p) => (p.bold ? `**${p.text}**` : p.text)).join("");
+  const t = (examLabel: string, asked: number, similar: number) => ({ examName: examLabel, examLabel, asked, similar });
+
+  it("one exam, asked and similar", () => {
+    expect(show(chapterTwinLine([t("NDA", 51, 21)], 142))).toBe("**51** of the 142 questions here were asked in NDA · **21** similar");
+  });
+
+  it("one exam, asked only", () => {
+    expect(show(chapterTwinLine([t("NDA", 51, 0)], 142))).toBe("**51** of the 142 questions here were asked in NDA");
+  });
+
+  it("one exam, similar only: never called asked", () => {
+    expect(show(chapterTwinLine([t("NDA", 0, 21)], 142))).toBe("**21** of the 142 questions here are similar to NDA questions");
+  });
+
+  it("several exams: each exam's asked count, the student's exam first as tallied", () => {
+    expect(show(chapterTwinLine([t("NDA", 51, 3), t("JEE Main", 12, 0), t("CDS", 0, 4)], 142))).toBe(
+      "Of the 142 questions here, asked in NDA **51** · JEE Main **12**"
+    );
+  });
+
+  it("several exams, none asked: each exam's similar count, never summed (one question can match two exams)", () => {
+    expect(show(chapterTwinLine([t("NDA", 0, 3), t("CDS", 0, 4)], 142))).toBe(
+      "Of the 142 questions here, similar to NDA **3** · CDS **4**"
+    );
+  });
+
+  it("nothing matched: nothing to show", () => {
+    expect(chapterTwinLine([], 142)).toEqual([]);
+  });
+
+  it("carries no dash", () => {
+    expect(show(chapterTwinLine([t("NDA", 51, 21)], 142))).not.toMatch(/[\u2013\u2014]|--/);
   });
 });
