@@ -65,6 +65,12 @@ export const ACTIVITY_KINDS = [
   // metadata: surface, action, scene) — 0208. Telemetry for the visuals; see
   // lib/visuals/usage.
   "solution_visual",
+  // A chapter of a student's board path turned done (refId = chapterId,
+  // metadata: exam, subject) — 0225. Written once per student and chapter
+  // (dedupe key `path_chapter_done:<user>:<chapter>`), so a Top 10 rebuild
+  // cannot un-do it. A genuine learning achievement: sheet + Top 10 + test.
+  // See lib/path.
+  "path_chapter_done",
 ] as const;
 
 export type ActivityKind = (typeof ACTIVITY_KINDS)[number];

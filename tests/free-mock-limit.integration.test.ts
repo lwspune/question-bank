@@ -42,7 +42,7 @@ const RUN_ID = randomUUID().slice(0, 8);
 const FUTURE = new Date(Date.now() + 3600_000).toISOString();
 const ROLES = [
   "student", "early", "mockpass", "teacherpass", "staff", "off", "invited", "inviter", "imatpass", "mocksonimat",
-  "freeexam", "practicepass",
+  "freeexam", "practicepass", "pathstudent",
 ] as const;
 type Role = (typeof ROLES)[number];
 
@@ -440,6 +440,31 @@ describe.skipIf(!HAS_ENV)("free-mock limit (migration 0120)", () => {
   it("frees only the student who joined, never anyone else", async () => {
     // "student" is at the mock limit and was refused mock 3 earlier.
     expect((await start("student", 3)).error?.code).toBe("PT402");
+  });
+
+  it("starts a chapter test the student's board path served past the limit, and does not count it (0225)", async () => {
+    expect((await startChapter("pathstudent", 0)).error).toBeNull();
+    expect((await startChapter("pathstudent", 1)).error?.code).toBe("PT402");
+
+    const { data: path, error: pathErr } = await admin
+      .from("study_paths")
+      .insert({ user_id: ids.pathstudent, exam_slug: "cbse-12", subjects: ["physics"], daily_minutes: 55 })
+      .select("id")
+      .single();
+    expect(pathErr).toBeNull();
+    const { error: grantErr } = await admin
+      .from("study_path_test_grants")
+      .insert({ user_id: ids.pathstudent, mock_id: chapterIds[1], path_id: path!.id });
+    expect(grantErr).toBeNull();
+
+    expect((await startChapter("pathstudent", 1)).error).toBeNull();
+    const { data } = await clients.pathstudent.rpc("my_mock_quota");
+    expect(data).toMatchObject({ chapterUsed: 1 });
+  });
+
+  it("frees only the student the path granted the test to (0225)", async () => {
+    // "student" used their one free chapter test earlier and holds no grant.
+    expect((await startChapter("student", 1)).error?.code).toBe("PT402");
   });
 
   it("hides the settings row from a signed-in student", async () => {

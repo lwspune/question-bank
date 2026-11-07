@@ -183,6 +183,10 @@ export const TELEMETRY_KINDS: readonly string[] = [
   // What the student did with an animated solution (2026-10-31, migration
   // 0208). Always beside the reveal, review or reply that showed it.
   "solution_visual",
+  // A board-path chapter turned done (2026-11-07, migration 0225). Always
+  // beside the sheet view, Top 10 marks and chapter test that earned it, so
+  // counting it as adoption would count that work twice.
+  "path_chapter_done",
 ];
 
 export const FEATURE_LABELS: Partial<Record<ActivityKind, string>> = {
@@ -841,6 +845,13 @@ export const SURFACE_COVERAGE: SurfaceCoverage[] = [
     kinds: ["milestone_reached"],
     tracked: "partial",
     lost: "Only the answered-questions milestone writes a row. A 'right in a row' message is not recorded: for a signed-in student it can be rebuilt from the graded reveal rows in order, and an anonymous one is not tracked by design. A 'fixed' message is the drill ladder's own state change, already in answer_correct.",
+  },
+  {
+    surface: "Board path (/me Today card)",
+    via: "study_paths + study_path_days (migration 0225); a chapter turning done writes user_activity path_chapter_done once; the work itself is the sheet view, Top 10 and test rows already counted on their own surfaces",
+    kinds: ["path_chapter_done"],
+    tracked: "partial",
+    lost: "Shown tasks are stored per day (study_path_days), so task completion can be measured; a task opened but not finished leaves only the page view on its own surface. npm run path:readout is the readout.",
   },
   {
     surface: "Blog (/blog)",
