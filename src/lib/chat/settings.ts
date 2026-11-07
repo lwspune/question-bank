@@ -17,14 +17,20 @@ export type ChatSettings = {
   progressEnabled: boolean;
   /** Messages one person may type per hour (signed in: per account; signed out: per connection). */
   perPersonPerHour: number;
+  /**
+   * Messages a Premium Pass holder may type per hour (0226, owner 2026-11-07):
+   * the hourly limit lifted for Premium, kept as a guard. Never below perPersonPerHour.
+   */
+  premiumPerPersonPerHour: number;
   /** AI answers per IST day for the whole site. */
   aiAnswersPerDay: number;
 };
 
 /** Mirrors the table's defaults: nothing that calls the AI changes until the owner switches it on. */
-export const DEFAULT_CHAT_SETTINGS: ChatSettings = { aiEnabled: false, explainEnabled: false, planEnabled: false, progressEnabled: true, perPersonPerHour: 15, aiAnswersPerDay: 300 };
+export const DEFAULT_CHAT_SETTINGS: ChatSettings = { aiEnabled: false, explainEnabled: false, planEnabled: false, progressEnabled: true, perPersonPerHour: 15, premiumPerPersonPerHour: 50, aiAnswersPerDay: 300 };
 
 export const PER_HOUR_RANGE = { min: 1, max: 200 } as const;
+export const PREMIUM_PER_HOUR_RANGE = { min: 1, max: 500 } as const;
 export const PER_DAY_RANGE = { min: 0, max: 5000 } as const;
 
 function wholeIn(v: unknown, range: { min: number; max: number }): v is number {
@@ -42,6 +48,15 @@ export function parseChatSettingsInput(
   if (!wholeIn(b.perPersonPerHour, PER_HOUR_RANGE)) {
     return { ok: false, message: `Messages per hour must be a whole number from ${PER_HOUR_RANGE.min} to ${PER_HOUR_RANGE.max}` };
   }
+  if (!wholeIn(b.premiumPerPersonPerHour, PREMIUM_PER_HOUR_RANGE)) {
+    return {
+      ok: false,
+      message: `Premium messages per hour must be a whole number from ${PREMIUM_PER_HOUR_RANGE.min} to ${PREMIUM_PER_HOUR_RANGE.max}`,
+    };
+  }
+  if (b.premiumPerPersonPerHour < b.perPersonPerHour) {
+    return { ok: false, message: "Premium messages per hour can't be below the free limit" };
+  }
   if (!wholeIn(b.aiAnswersPerDay, PER_DAY_RANGE)) {
     return { ok: false, message: `AI answers per day must be a whole number from ${PER_DAY_RANGE.min} to ${PER_DAY_RANGE.max}` };
   }
@@ -53,6 +68,7 @@ export function parseChatSettingsInput(
       planEnabled: b.planEnabled,
       progressEnabled: b.progressEnabled,
       perPersonPerHour: b.perPersonPerHour,
+      premiumPerPersonPerHour: b.premiumPerPersonPerHour,
       aiAnswersPerDay: b.aiAnswersPerDay,
     },
   };

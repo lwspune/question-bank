@@ -47,6 +47,8 @@ export type RecordChatInteraction = InConversation &
       }
     /** Migration 0157: one step of the practice-test builder. */
     | { eventType: "builder_step"; step: BuilderStepId; userId: string | null }
+    /** Migration 0226: a message V's hourly limit stopped, kept with no reply. */
+    | { eventType: "hourly_limit"; message: string; userId: string | null }
   );
 
 /**
@@ -80,7 +82,7 @@ export async function recordChatInteraction(
             : input.eventType === "builder_step"
               ? input.step
               : null,
-        message: input.eventType === "typed_question" ? input.message : null,
+        message: input.eventType === "typed_question" || input.eventType === "hourly_limit" ? input.message : null,
         asked_question_id: input.eventType === "typed_question" ? (input.askedQuestionId ?? null) : null,
         asked_notes_item: input.eventType === "typed_question" ? (input.askedNotesItem ?? null) : null,
         reply_to_id: input.eventType === "typed_question" ? (input.replyToId ?? null) : null,
