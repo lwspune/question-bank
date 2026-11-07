@@ -326,7 +326,8 @@ export type Readout =
   | "homework-tab"
   | "homework-progress"
   | "why-not-buy"
-  | "chapter-fix";
+  | "chapter-fix"
+  | "board-path";
 
 export type Experiment = {
   id: string;
@@ -589,6 +590,20 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-11-04",
     windowDays: 28,
     readout: "homework-tab",
+    status: "running",
+  },
+  {
+    id: "board-path",
+    title: "Board path: today's tasks to every chapter done before the boards",
+    change:
+      "A Class 12 student (CBSE 12 or HSC 12) sees a start card on /me: Physics, Chemistry and Maths in book order, each chapter done by its revision sheet, its Top 10 PYQs and its chapter test, about N minutes a day set from the board date. Once started, a Today card replaces the week ring with 2-4 tasks a day, a Fix task for older mistakes, \"Not taught yet\", and an on-track line. Today's tasks are free of the answer, drill and chapter-test limits.",
+    why: "Owner, 2026-11-07: students do not know what to study or in what order, and a plan alone did not help (V's week plans: 6 of 68 chapter tasks done). MENTOR_SPEC.md.",
+    metric:
+      "Starters (target 150), starters active on 4+ days in their first 28 days (target 50%), on track at week 4 (40%), median chapters done (8), today's tasks done of tasks shown (35%), fixing mistakes on 2+ days (30%). Also chapter tests granted, the free-limit cost.",
+    rule: "Baselines (Class 12, 2026-11-07, npm run path:readout): no active student had a chapter done; 4+ active days CBSE 32%, HSC 28%; fixing on 2+ days 4%. Keep and build Phase 2 if starters beat the 4-day and chapters-done targets; if few start, read the start card first; if starters stop within a week, read which task they stop on.",
+    liveSince: "2026-11-07",
+    windowDays: 28,
+    readout: "board-path",
     status: "running",
   },
   {

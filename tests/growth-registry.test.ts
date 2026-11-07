@@ -68,6 +68,7 @@ describe("EXPERIMENTS", () => {
     const readouts = EXPERIMENTS.map((e) => e.readout).sort();
     expect(readouts).toEqual([
       "answer-limit",
+      "board-path",
       "box-buy",
       "chapter-fix",
       "chapter-share",

@@ -220,6 +220,10 @@ async function main() {
         // Read by hand with the committed query (lib/drill/chapterFix).
         line = "by hand: scripts/drill/chapter-fix-readout.sql";
         break;
+      case "board-path":
+        // Read by hand with the path's own readout (lib/path).
+        line = "by hand: npm run path:readout";
+        break;
       case "why-not-buy":
         // Live answers on /dashboard/sales (lib/sales/query loadDeclines).
         line = "live table on /dashboard/sales (user_activity paywall_event step declined)";
