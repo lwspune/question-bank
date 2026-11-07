@@ -174,6 +174,9 @@ async function main() {
       case "homework-progress":
         line = handRead(e.liveSince, []);
         break;
+      case "v-premium-hourly":
+        line = handRead(e.liveSince, ["v-hourly-stopped", "v-hourly-checkout"]);
+        break;
       case "v-pay-offer":
         line = handRead(e.liveSince, ["v-pay-offer-shown", "v-pay-offer-checkout"]);
         break;

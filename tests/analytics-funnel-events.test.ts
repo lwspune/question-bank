@@ -15,6 +15,8 @@ describe("FUNNEL_EVENTS", () => {
       "reveal_wall_signin_click",
       "reveal_daily_limit_hit",
       "reveal_daily_limit_pass_click",
+      "v_hourly_limit_hit",
+      "v_hourly_limit_pass_click",
       "teacher_gate_shown",
       "teacher_gate_cta_click",
       "quiz_gate_shown",

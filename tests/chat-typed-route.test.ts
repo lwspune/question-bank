@@ -21,6 +21,33 @@ vi.mock("@/lib/chat/anthropic", async (orig) => ({
   askV: (...args: unknown[]) => askV(...args),
 }));
 
+// Signed-in tests set these (2026-11-07, V's hourly limit by pass); everyone else stays signed out.
+let sessionUser: { id: string } | null = null;
+vi.mock("@/lib/auth", async (orig) => ({
+  ...(await orig<typeof import("@/lib/auth")>()),
+  getSessionUser: async () => {
+    if (sessionUser) return sessionUser;
+    throw new Error("outside a request scope");
+  },
+}));
+let grants: { scope: string }[] = [];
+vi.mock("@/lib/entitlements/query", async (orig) => ({
+  ...(await orig<typeof import("@/lib/entitlements/query")>()),
+  loadEntitlements: async (_db: unknown, userId: string) =>
+    grants.map((g, i) => ({
+      id: `g${i}`,
+      userId,
+      scope: g.scope,
+      source: "razorpay",
+      status: "active",
+      grantedAt: "2026-10-01T00:00:00Z",
+      expiresAt: "2099-01-01T00:00:00Z",
+      providerRef: null,
+      note: null,
+      grantedBy: null,
+    })),
+}));
+
 const RUN = randomUUID().slice(0, 8);
 const HAS_ENV = !!process.env.NEXT_PUBLIC_SUPABASE_URL && !!process.env.SUPABASE_SERVICE_ROLE_KEY;
 
@@ -42,12 +69,18 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
     ai_enabled: boolean;
     per_person_per_hour: number;
     ai_answers_per_day: number;
+    premium_per_person_per_hour?: number;
     explain_enabled?: boolean;
     plan_enabled?: boolean;
     progress_enabled?: boolean;
   }) {
     // Explanations (0168) and plans (0170) off unless a test turns them on, so one test's switch cannot leak into the next.
-    const { error } = await admin.from("chat_settings").update({ explain_enabled: false, plan_enabled: false, progress_enabled: true, ...s }).eq("id", true);
+    // The Premium limit may not sit below the free one (0226): 50 unless a test sets it.
+    const premium = s.premium_per_person_per_hour ?? Math.max(50, s.per_person_per_hour);
+    const { error } = await admin
+      .from("chat_settings")
+      .update({ explain_enabled: false, plan_enabled: false, progress_enabled: true, ...s, premium_per_person_per_hour: premium })
+      .eq("id", true);
     if (error) throw new Error(error.message);
   }
 
@@ -57,7 +90,7 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
     });
     const { data } = await admin
       .from("chat_settings")
-      .select("ai_enabled, explain_enabled, plan_enabled, progress_enabled, per_person_per_hour, ai_answers_per_day")
+      .select("ai_enabled, explain_enabled, plan_enabled, progress_enabled, per_person_per_hour, premium_per_person_per_hour, ai_answers_per_day")
       .eq("id", true)
       .single();
     saved = data;
@@ -551,6 +584,58 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
     expect((await POST(post({ message: `route-${RUN}-lim 1` }, ip))).status).toBe(200);
     expect((await POST(post({ message: `route-${RUN}-lim 2` }, ip))).status).toBe(200);
     expect((await POST(post({ message: `route-${RUN}-lim 3` }, ip))).status).toBe(429);
+  });
+
+  describe("the hourly limit by pass (0226, 2026-11-07)", () => {
+    type Limited = { error?: string; hourlyLimit?: { line: string; limit: number; offer: boolean } };
+    afterAll(() => {
+      sessionUser = null;
+      grants = [];
+    });
+
+    async function sendAs(user: string | null, scopes: string[], n: number, tag: string) {
+      sessionUser = user ? { id: user } : null;
+      grants = scopes.map((scope) => ({ scope }));
+      const { POST } = await import("@/app/api/chat/typed/route");
+      const ip = `typed-${RUN}-${tag}`;
+      const out: { status: number; body: Limited }[] = [];
+      for (let i = 1; i <= n; i++) {
+        const res = await POST(post({ message: `route-${RUN}-${tag} ${i}`, pagePath: "/browse" }, ip));
+        out.push({ status: res.status, body: (await res.json()) as Limited });
+      }
+      return out;
+    }
+
+    it("stops a signed-out visitor with the wait line, no offer, and keeps the stopped message", async () => {
+      await setSettings({ ai_enabled: false, per_person_per_hour: 2, premium_per_person_per_hour: 3, ai_answers_per_day: 300 });
+      const out = await sendAs(null, [], 3, "hl-anon");
+      expect(out.map((o) => o.status)).toEqual([200, 200, 429]);
+      expect(out[2].body.hourlyLimit).toMatchObject({ limit: 2, offer: false });
+      expect(out[2].body.hourlyLimit?.line).toMatch(/^You've asked 2 questions this hour\. You can ask again in \d+ minutes?\.$/);
+      const { data } = await admin.from("chat_interactions").select("event_type, reply, page_path").eq("message", `route-${RUN}-hl-anon 3`);
+      expect(data).toEqual([{ event_type: "hourly_limit", reply: null, page_path: "/browse" }]);
+    });
+
+    it("offers Premium to a signed-in free student at the free limit", async () => {
+      await setSettings({ ai_enabled: false, per_person_per_hour: 2, premium_per_person_per_hour: 3, ai_answers_per_day: 300 });
+      const out = await sendAs(randomUUID(), [], 3, "hl-free");
+      expect(out.map((o) => o.status)).toEqual([200, 200, 429]);
+      expect(out[2].body.hourlyLimit).toMatchObject({ limit: 2, offer: true });
+    });
+
+    it("gives a Practice Pass holder the wait line only", async () => {
+      await setSettings({ ai_enabled: false, per_person_per_hour: 2, premium_per_person_per_hour: 3, ai_answers_per_day: 300 });
+      const out = await sendAs(randomUUID(), ["practice"], 3, "hl-practice");
+      expect(out.map((o) => o.status)).toEqual([200, 200, 429]);
+      expect(out[2].body.hourlyLimit).toMatchObject({ limit: 2, offer: false });
+    });
+
+    it("lets a Premium Pass holder past the free limit up to the Premium one", async () => {
+      await setSettings({ ai_enabled: false, per_person_per_hour: 2, premium_per_person_per_hour: 3, ai_answers_per_day: 300 });
+      const out = await sendAs(randomUUID(), ["mocks"], 4, "hl-premium");
+      expect(out.map((o) => o.status)).toEqual([200, 200, 200, 429]);
+      expect(out[3].body.hourlyLimit).toMatchObject({ limit: 3, offer: false });
+    });
   });
 it("keeps the conversation: stores its id and page, returns the row id, and gives V the earlier exchange", async () => {
     await setSettings({ ai_enabled: true, per_person_per_hour: 15, ai_answers_per_day: 300 });

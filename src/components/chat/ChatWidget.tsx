@@ -69,7 +69,9 @@ import ReplyText from "./VReplyText";
 import VRevealReply from "./VRevealReply";
 import VPlanCard from "./VPlanCard";
 import VPassOffer from "./VPassOffer";
+import VHourlyOffer from "./VHourlyOffer";
 import { parseVPassOffer, type VPassOffer as PassOffer } from "@/lib/chat/passOffer";
+import { parseHourlyLimit, type HourlyLimitReply } from "@/lib/chat/hourlyLimit";
 import { liftDailyLimit } from "@/components/reveal/useRevealMeter";
 import VProgressCard from "./VProgressCard";
 import {
@@ -113,6 +115,8 @@ type ChatTurn = HistoryTurn & {
    * Never kept: tomorrow, or once paid, an old offer would be wrong.
    */
   offer?: PassOffer;
+  /** The Premium Pass under V's hourly-limit line (2026-11-07). On a transient turn, so never kept. */
+  hourlyOffer?: { pass: NonNullable<HourlyLimitReply["pass"]>; premiumLimit: number | null };
 };
 
 /** What the device keeps of a turn: no face, no errors. */
@@ -120,7 +124,7 @@ function keepable(turns: readonly ChatTurn[]): HistoryTurn[] {
   return turns
     .filter((t) => !t.transient)
     .map((t) => {
-      const { avatar: _avatar, transient: _transient, reveal: _reveal, offer: _offer, ...rest } = t;
+      const { avatar: _avatar, transient: _transient, reveal: _reveal, offer: _offer, hourlyOffer: _hourly, ...rest } = t;
       return rest as HistoryTurn;
     });
 }
@@ -556,7 +560,7 @@ export default function ChatWidget() {
    */
   function afterPassBought(index: number) {
     liftDailyLimit();
-    setTurns((all) => all.map((t, i) => (i === index && t.role === "assistant" ? { ...t, offer: undefined } : t)));
+    setTurns((all) => all.map((t, i) => (i === index && t.role === "assistant" ? { ...t, offer: undefined, hourlyOffer: undefined } : t)));
     const asked = turnsRef.current[index - 1];
     if (asked?.role === "user") void askTyped(asked.text);
   }
@@ -638,9 +642,23 @@ export default function ChatWidget() {
         passOffer?: unknown;
         /** Abuse after the calm line (lib/chat/abuse.ts): V says nothing. */
         silent?: boolean;
+        /** V's hourly limit (2026-11-07, 0226): the wait line, and Premium for a free student. */
+        hourlyLimit?: unknown;
         error?: string;
       };
       if (res.ok && data.ok && data.silent) return;
+      // The hourly limit is V speaking, not an error: its line in V's bubble, no toast.
+      const hourly = res.status === 429 ? parseHourlyLimit(data.hourlyLimit) : null;
+      if (hourly) {
+        addTurn({
+          role: "assistant",
+          avatar: "idle",
+          text: hourly.line,
+          transient: true,
+          ...(hourly.pass ? { hourlyOffer: { pass: hourly.pass, premiumLimit: hourly.premiumLimit } } : {}),
+        });
+        return;
+      }
       if (data.signInToContinue || data.signInRequired) setSignInNeeded(true);
       if (!res.ok || !data.ok || !data.reply) {
         const errorText = data.error || "V couldn't take that question. Please try again.";
@@ -891,6 +909,15 @@ export default function ChatWidget() {
                   {t.offer && !t.reveal && (
                     <div className="ml-9 max-w-[calc(100%-2.25rem)]">
                       <VPassOffer offer={t.offer} onPaid={() => afterPassBought(i)} onNavigate={close} />
+                    </div>
+                  )}
+                  {t.hourlyOffer && (
+                    <div className="ml-9 max-w-[calc(100%-2.25rem)]">
+                      <VHourlyOffer
+                        pass={t.hourlyOffer.pass}
+                        premiumLimit={t.hourlyOffer.premiumLimit}
+                        onPaid={() => afterPassBought(i)}
+                      />
                     </div>
                   )}
                   {t.card && !t.reveal && <VQuestionCard id={t.card.id} kind={t.card.kind} onNavigate={close} />}

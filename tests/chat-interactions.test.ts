@@ -55,6 +55,19 @@ describe("summarizeChatInteractions", () => {
   });
 });
 
+describe("summarizeChatInteractions: messages the hourly limit stopped (0226)", () => {
+  it("counts them apart, never as button taps", () => {
+    const s = summarizeChatInteractions([
+      { ...row("faq_click", "exams") },
+      { eventType: "hourly_limit", questionId: null, createdAt: "2026-11-07T10:00:00Z", message: "explain this" },
+      { eventType: "hourly_limit", questionId: null, createdAt: "2026-11-07T10:01:00Z", message: "and this" },
+    ]);
+    expect(s.totalClicks).toBe(1);
+    expect(s.totalHourlyLimited).toBe(2);
+    expect(s.totalTyped).toBe(0);
+  });
+});
+
 describe("summarizeChatInteractions: typed questions (migration 0145)", () => {
   const typed = (message: string, createdAt: string, signedIn: boolean, userId: string | null = null): ChatInteractionRow => ({
     eventType: "typed_question",

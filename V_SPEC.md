@@ -253,3 +253,11 @@ reads everything else from the stored row.
   Quantitative Aptitude (SSC) and Numerical Ability (AFCAT). Run d7a3b608: the
   3 app cases that failed now pass, plus 2 new cases (bbae8896, 82b9f130), 5/5
   read, $0.0096.
+- 2026-11-07: Premium Pass holders may ask V 50 messages an hour, everyone
+  else 5 (owner; migration 0226, `lib/chat/hourlyLimit.ts`). The ₹199
+  Practice Pass keeps V's explanations (it promises unlimited answers). At the
+  limit V says when to ask again in its own bubble, and a free student gets the
+  Premium card; a Practice holder only the line, until an upgrade price exists
+  (owner: prorated by days left, to think through). Stopped messages are now
+  kept (`hourly_limit`). No change to V's text, so no v:eval case moves.
+  Growth experiment `v-premium-hourly`.

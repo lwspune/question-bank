@@ -12,9 +12,9 @@ import {
 
 describe("parseChatSettingsInput", () => {
   it("accepts a valid set", () => {
-    expect(parseChatSettingsInput({ aiEnabled: true, explainEnabled: false, planEnabled: true, progressEnabled: false, perPersonPerHour: 20, aiAnswersPerDay: 500 })).toEqual({
+    expect(parseChatSettingsInput({ aiEnabled: true, explainEnabled: false, planEnabled: true, progressEnabled: false, perPersonPerHour: 20, premiumPerPersonPerHour: 60, aiAnswersPerDay: 500 })).toEqual({
       ok: true,
-      settings: { aiEnabled: true, explainEnabled: false, planEnabled: true, progressEnabled: false, perPersonPerHour: 20, aiAnswersPerDay: 500 },
+      settings: { aiEnabled: true, explainEnabled: false, planEnabled: true, progressEnabled: false, perPersonPerHour: 20, premiumPerPersonPerHour: 60, aiAnswersPerDay: 500 },
     });
   });
 
@@ -52,13 +52,27 @@ describe("parseChatSettingsInput", () => {
   });
 
   it("accepts a daily cap of 0 (AI on, but no answers today)", () => {
-    expect(parseChatSettingsInput({ aiEnabled: true, explainEnabled: true, planEnabled: false, progressEnabled: true, perPersonPerHour: 15, aiAnswersPerDay: 0 }).ok).toBe(true);
+    expect(parseChatSettingsInput({ aiEnabled: true, explainEnabled: true, planEnabled: false, progressEnabled: true, perPersonPerHour: 15, premiumPerPersonPerHour: 50, aiAnswersPerDay: 0 }).ok).toBe(true);
+  });
+});
+
+describe("the Premium hourly limit (2026-11-07)", () => {
+  const base = { aiEnabled: true, explainEnabled: true, planEnabled: true, progressEnabled: true, perPersonPerHour: 5, aiAnswersPerDay: 300 };
+  it("is required, a whole number from 1 to 500", () => {
+    expect(parseChatSettingsInput(base).ok).toBe(false);
+    expect(parseChatSettingsInput({ ...base, premiumPerPersonPerHour: 501 }).ok).toBe(false);
+    expect(parseChatSettingsInput({ ...base, premiumPerPersonPerHour: 12.5 }).ok).toBe(false);
+    expect(parseChatSettingsInput({ ...base, premiumPerPersonPerHour: 500 }).ok).toBe(true);
+  });
+  it("may not be below the free limit", () => {
+    expect(parseChatSettingsInput({ ...base, premiumPerPersonPerHour: 4 }).ok).toBe(false);
+    expect(parseChatSettingsInput({ ...base, premiumPerPersonPerHour: 5 }).ok).toBe(true);
   });
 });
 
 describe("defaults", () => {
   it("ship with the AI, explanations and plans off, the progress card on, 15 an hour, 300 a day", () => {
-    expect(DEFAULT_CHAT_SETTINGS).toEqual({ aiEnabled: false, explainEnabled: false, planEnabled: false, progressEnabled: true, perPersonPerHour: 15, aiAnswersPerDay: 300 });
+    expect(DEFAULT_CHAT_SETTINGS).toEqual({ aiEnabled: false, explainEnabled: false, planEnabled: false, progressEnabled: true, perPersonPerHour: 15, premiumPerPersonPerHour: 50, aiAnswersPerDay: 300 });
   });
 });
 

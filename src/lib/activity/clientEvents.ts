@@ -47,6 +47,8 @@ export const PAYWALL_GATES = [
   "saves",
   "projection",
   "store",
+  /** V's hourly limit (0226, 2026-11-07): Premium offered in the chat window. */
+  "v_hourly",
 ] as const;
 export type PaywallGate = (typeof PAYWALL_GATES)[number];
 
@@ -98,7 +100,7 @@ function isPlainObject(v: unknown): v is Record<string, unknown> {
  * else is "pricing", the old assumption.
  */
 export function checkoutGate(v: unknown): PaywallGate {
-  return v === "teacher" || v === "reveals" ? v : "pricing";
+  return v === "teacher" || v === "reveals" || v === "v_hourly" ? v : "pricing";
 }
 
 export function paywallEvent(

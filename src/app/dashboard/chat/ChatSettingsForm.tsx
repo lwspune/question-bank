@@ -5,7 +5,7 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { PER_DAY_RANGE, PER_HOUR_RANGE, type ChatSettings } from "@/lib/chat/settings";
+import { PER_DAY_RANGE, PER_HOUR_RANGE, PREMIUM_PER_HOUR_RANGE, type ChatSettings } from "@/lib/chat/settings";
 
 /**
  * V's settings (migration 0158): the AI switch, messages per person per hour,
@@ -18,6 +18,7 @@ export default function ChatSettingsForm({ initial }: { initial: ChatSettings })
   const [planEnabled, setPlanEnabled] = useState(initial.planEnabled);
   const [progressEnabled, setProgressEnabled] = useState(initial.progressEnabled);
   const [perHour, setPerHour] = useState(String(initial.perPersonPerHour));
+  const [premiumPerHour, setPremiumPerHour] = useState(String(initial.premiumPerPersonPerHour));
   const [perDay, setPerDay] = useState(String(initial.aiAnswersPerDay));
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -36,6 +37,7 @@ export default function ChatSettingsForm({ initial }: { initial: ChatSettings })
           planEnabled,
           progressEnabled,
           perPersonPerHour: Number(perHour),
+          premiumPerPersonPerHour: Number(premiumPerHour),
           aiAnswersPerDay: Number(perDay),
         }),
       });
@@ -51,6 +53,7 @@ export default function ChatSettingsForm({ initial }: { initial: ChatSettings })
       setPlanEnabled(json.settings.planEnabled);
       setProgressEnabled(json.settings.progressEnabled);
       setPerHour(String(json.settings.perPersonPerHour));
+      setPremiumPerHour(String(json.settings.premiumPerPersonPerHour));
       setPerDay(String(json.settings.aiAnswersPerDay));
       toast.success("V's settings saved");
     } catch {
@@ -141,6 +144,23 @@ export default function ChatSettingsForm({ initial }: { initial: ChatSettings })
           />
           <p className="text-xs text-muted-foreground">
             Signed in: per account. Signed out: per internet connection.
+          </p>
+        </div>
+        <div className="space-y-1.5">
+          <Label htmlFor="v-premium-per-hour">Messages per hour, Premium Pass</Label>
+          <Input
+            id="v-premium-per-hour"
+            type="number"
+            inputMode="numeric"
+            min={PREMIUM_PER_HOUR_RANGE.min}
+            max={PREMIUM_PER_HOUR_RANGE.max}
+            step={1}
+            value={premiumPerHour}
+            onChange={(e) => setPremiumPerHour(e.target.value)}
+          />
+          <p className="text-xs text-muted-foreground">
+            Premium Pass holders go on to this limit; never below the one above. A free student at the limit is
+            offered the pass; a Practice Pass holder only sees when to ask again.
           </p>
         </div>
         <div className="space-y-1.5">

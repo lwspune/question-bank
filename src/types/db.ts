@@ -841,6 +841,7 @@ export type Database = {
           id: boolean
           per_person_per_hour: number
           plan_enabled: boolean
+          premium_per_person_per_hour: number
           progress_enabled: boolean
           updated_at: string
         }
@@ -851,6 +852,7 @@ export type Database = {
           id?: boolean
           per_person_per_hour?: number
           plan_enabled?: boolean
+          premium_per_person_per_hour?: number
           progress_enabled?: boolean
           updated_at?: string
         }
@@ -861,6 +863,7 @@ export type Database = {
           id?: boolean
           per_person_per_hour?: number
           plan_enabled?: boolean
+          premium_per_person_per_hour?: number
           progress_enabled?: boolean
           updated_at?: string
         }

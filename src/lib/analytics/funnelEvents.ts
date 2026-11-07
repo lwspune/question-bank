@@ -51,6 +51,10 @@ export const FUNNEL_EVENTS = [
   "reveal_daily_limit_hit",
   /** …and tapped the pass link from it. */
   "reveal_daily_limit_pass_click",
+  /** A signed-in free student met V's hourly limit and was offered the Premium Pass (0226, 2026-11-07). */
+  "v_hourly_limit_hit",
+  /** …and tapped the pass button from it. */
+  "v_hourly_limit_pass_click",
   /** A non-staff visitor opened the download dialog and saw the teacher gate. */
   "teacher_gate_shown",
   /** …and clicked the pass button (→ /pricing). Before 2026-09-27: → /request-access. Name kept for continuity. */
