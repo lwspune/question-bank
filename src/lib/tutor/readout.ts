@@ -13,6 +13,7 @@ import {
   type TutorInterestRow,
   type TutorInterestSummary,
 } from "./interest";
+import { summariseTutorPrices, type TutorPriceRow, type TutorPriceSummary } from "./price";
 
 type StoredRow = Omit<TutorInterestRow, "signed_in"> & { user_id: string | null };
 
@@ -21,6 +22,19 @@ export async function loadTutorInterestReadout(admin: SupabaseClient): Promise<T
     admin.from("tutor_interest").select("role, wants, mode, exam_slug, user_id").order("id").range(from, to)
   );
   return summariseTutorInterest(rows.map((r) => ({ ...r, signed_in: r.user_id !== null })));
+}
+
+/** The price test's numbers (migration 0223), for /dashboard/tutor and the growth one-liner. */
+export async function loadTutorPriceReadout(admin: SupabaseClient): Promise<TutorPriceSummary> {
+  const rows = await readAllPages<TutorPriceRow>((from, to) =>
+    admin
+      .from("tutor_interest")
+      .select("role, wants, price_shown, price_answer, price_would_pay, teacher_rate")
+      .eq("wants", true)
+      .order("id")
+      .range(from, to)
+  );
+  return summariseTutorPrices(rows);
 }
 
 const IN_CHUNK = 200; // ids per .in() filter: the list rides in the URL

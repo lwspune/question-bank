@@ -19,9 +19,16 @@ import TutorInterestForm from "./TutorInterestForm";
 type Gate =
   | { kind: "loading" }
   | { kind: "signedOut" }
-  | { kind: "form"; hasMobile: boolean; hasCity: boolean };
+  | { kind: "form"; hasMobile: boolean; hasCity: boolean; price: number; resume: "price" | "rate" | null };
 
-type Status = { signedIn: boolean; hasMobile: boolean; hasCity: boolean };
+type Status = {
+  signedIn: boolean;
+  hasMobile: boolean;
+  hasCity: boolean;
+  /** Signed in only: the account's price, and a price question a Yes from before the price test still owes. */
+  price?: number;
+  pending?: "price" | "rate" | null;
+};
 
 export default function TutorGate() {
   const [gate, setGate] = useState<Gate>({ kind: "loading" });
@@ -42,8 +49,14 @@ export default function TutorGate() {
         const status = res.ok ? ((await res.json()) as Status) : null;
         if (cancelled) return;
         setGate(
-          status?.signedIn
-            ? { kind: "form", hasMobile: status.hasMobile, hasCity: status.hasCity }
+          status?.signedIn && typeof status.price === "number"
+            ? {
+                kind: "form",
+                hasMobile: status.hasMobile,
+                hasCity: status.hasCity,
+                price: status.price,
+                resume: status.pending ?? null,
+              }
             : { kind: "signedOut" }
         );
       } catch {
@@ -58,7 +71,9 @@ export default function TutorGate() {
   }, []);
 
   if (gate.kind === "form") {
-    return <TutorInterestForm hasMobile={gate.hasMobile} hasCity={gate.hasCity} />;
+    return (
+      <TutorInterestForm hasMobile={gate.hasMobile} hasCity={gate.hasCity} price={gate.price} resume={gate.resume} />
+    );
   }
 
   if (gate.kind === "loading") {

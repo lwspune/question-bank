@@ -4350,7 +4350,12 @@ export type Database = {
           from_section: string | null
           id: string
           mode: string | null
+          price_answer: string | null
+          price_answered_at: string | null
+          price_shown: number | null
+          price_would_pay: number | null
           role: string
+          teacher_rate: string | null
           updated_at: string
           user_id: string | null
           wants: boolean
@@ -4361,7 +4366,12 @@ export type Database = {
           from_section?: string | null
           id?: string
           mode?: string | null
+          price_answer?: string | null
+          price_answered_at?: string | null
+          price_shown?: number | null
+          price_would_pay?: number | null
           role: string
+          teacher_rate?: string | null
           updated_at?: string
           user_id?: string | null
           wants: boolean
@@ -4372,7 +4382,12 @@ export type Database = {
           from_section?: string | null
           id?: string
           mode?: string | null
+          price_answer?: string | null
+          price_answered_at?: string | null
+          price_shown?: number | null
+          price_would_pay?: number | null
           role?: string
+          teacher_rate?: string | null
           updated_at?: string
           user_id?: string | null
           wants?: boolean
