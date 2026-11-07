@@ -153,6 +153,9 @@ reads everything else from the stored row.
    answerable, made-up apology), thumbs, and practice within 30 minutes of a
    reply. Read-only, free.
 2. **New failures become cases** (`v:eval:seed`).
+2a. **Follow-up line:** `npm run v:followups`: the share of V's replies the
+   student followed up within 30 minutes, a week at a time (repeat Ask V taps
+   on the same question left out). The owner's measure of V as a study partner.
 3. **Cost line:** `npm run v:cost`: cost per answer over the last 7 days
    against the 7 before (flagged above a 20% rise, once both weeks have 20+
    answers), and what the week's test runs cost. A flagged rise is looked into
@@ -238,3 +241,15 @@ reads everything else from the stored row.
   (so no v:eval case moves: V's text is not involved), its own switch at
   /dashboard/chat (0191). Typed plan asks still reach `plan_week`. Growth
   experiment `v-progress`.
+- 2026-11-07: gaps from the first review since 10-27 (V's tone and explanations
+  unchanged, owner: "keep it that way"). (1) A second Ask V tap on a question V
+  already explained in the session reopens that explanation, no new answer
+  (`explainedTap`): 104 of 440 taps were the same student re-tapping the same
+  question within a minute. (2) Follow-ups are counted without those repeats
+  (`npm run v:followups`); counted, they had held the share at 48%; without
+  them it is 39% before the reveal and 36%, 35%, 27% over the last three
+  weeks, while Ask V taps grew to most messages. (3) V answers "is there an
+  app?" with Add to Home screen (10 asks since October). (4) "maths" finds
+  Quantitative Aptitude (SSC) and Numerical Ability (AFCAT). Run d7a3b608: the
+  3 app cases that failed now pass, plus 2 new cases (bbae8896, 82b9f130), 5/5
+  read, $0.0096.
