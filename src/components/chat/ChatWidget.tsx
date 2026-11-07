@@ -563,11 +563,11 @@ export default function ChatWidget() {
 
   onAskRef.current = (d: AskVDetail) => {
     const message = d.notes ? askVMessage(null) : askVMessage(d.chose, d);
-    // Already explained in this session: reopen that explanation, no new answer (2026-11-07).
-    const live = Date.now() - lastAtRef.current <= SESSION_IDLE_MS;
-    const earlier = live ? explainedTap(turnsRef.current, askedCardOf(d, pathname), message) : -1;
     setMode("chat");
+    // Ends an idle session first (currentSessionId empties turnsRef), so only this session's taps match.
     openChat();
+    // Already explained in this session: reopen that explanation, no new answer (2026-11-07).
+    const earlier = explainedTap(turnsRef.current, askedCardOf(d, pathname), message);
     setAsked(d);
     setReplyingTo(null);
     if (earlier >= 0) {
