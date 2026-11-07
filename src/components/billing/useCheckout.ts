@@ -38,7 +38,8 @@ declare global {
  * "ebook" the buy box on a /store book page (2026-10-20); "reveal_wall" the
  * daily answer limit on the bank, board and guides (2026-10-25); "v_chat" the
  * same limit met inside V (2026-10-28); "revision_sheet" the /board chapter
- * revision-sheet box (2026-11-03).
+ * revision-sheet box (2026-11-03); "v_hourly" V's hourly limit, which sells
+ * the Premium Pass (2026-11-07, 0226).
  */
 export type CheckoutSurface =
   | "download_box"
@@ -48,10 +49,11 @@ export type CheckoutSurface =
   | "pricing"
   | "ebook"
   | "reveal_wall"
-  | "v_chat";
+  | "v_chat"
+  | "v_hourly";
 
 /** The paywall gate the server logs for each surface (see checkoutGate). */
-export const GATE: Record<CheckoutSurface, "teacher" | "pricing" | "reveals"> = {
+export const GATE: Record<CheckoutSurface, "teacher" | "pricing" | "reveals" | "v_hourly"> = {
   download_box: "teacher",
   paper_download: "teacher",
   formula_sheet: "teacher",
@@ -60,6 +62,7 @@ export const GATE: Record<CheckoutSurface, "teacher" | "pricing" | "reveals"> = 
   ebook: "pricing",
   reveal_wall: "reveals",
   v_chat: "reveals",
+  v_hourly: "v_hourly",
 };
 
 const SCRIPT_SRC = "https://checkout.razorpay.com/v1/checkout.js";

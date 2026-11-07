@@ -144,6 +144,10 @@ describe("checkoutGate", () => {
   it("accepts the reveal wall", () => {
     expect(checkoutGate("reveals")).toBe("reveals");
   });
+  // V's hourly limit sells Premium in place since 2026-11-07 (0226).
+  it("accepts V's hourly limit", () => {
+    expect(checkoutGate("v_hourly")).toBe("v_hourly");
+  });
   it("defaults to pricing for a missing or unknown value", () => {
     expect(checkoutGate(undefined)).toBe("pricing");
     expect(checkoutGate("mock_limit")).toBe("pricing");
