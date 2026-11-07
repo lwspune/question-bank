@@ -2,8 +2,8 @@
 
 What this document is: the plan for PYQ Vault's first step from a library
 (questions, notes, guides, homework) to a mentor that shows a student what to
-study each day and owns one promise. It is written before any code. Nothing
-here is built. The engagement principles gate in CLAUDE.md applies to every
+study each day and owns one promise. Written before any code; Phase 0 and
+Phase 1 are now built (§8, §14). The engagement principles gate in CLAUDE.md applies to every
 item, and each phase still goes plan → owner OK → test first → build.
 
 Scope, set by the owner on 2026-11-07: **Class 12 boards (CBSE 12 and MH HSC
@@ -226,17 +226,26 @@ by the browser. How each limit is exempted:
 - Pricing is not decided. Nothing in this spec adds a price, a pass check or
   pass copy.
 
-## 7. Data (proposal; exact shape decided in the Phase 1 plan)
+## 7. Data (as built in migration 0225)
 
 Follows the house rule from `weekly_goal` (0113) and `study_plans` (0169):
 **no done column**. What a student did lives in `user_activity`; the path only
-stores what the student chose.
+stores what the student chose, plus the server's pick of today.
 
 - `study_paths`: user, exam slug (CHECK cbse-12 / mh-hsc-12), subjects
-  (CHECK subset of physics / chemistry / mathematics), started_on, pace
-  (small integer for Lighter / More), ended_at. One active path per student
-  (partial unique index or a full one with ended_at handling, decided in the
-  plan). Own-row RLS.
+  (CHECK subset of physics / chemistry / mathematics), started_at,
+  **daily_minutes** (set at start from what is left over the study days to the
+  buffer, 30-90; Phase 3's Lighter / More change it), ended_at. One active path
+  per student (partial unique index on user where ended_at is null). Own-row RLS.
+- `study_path_days` (added in the Phase 1 build): the server's pick of each
+  day's tasks, stored on the first read of the IST day. It keeps the card the
+  same all day and is where the free-limit exemptions are read from (today's
+  Top 10 and Fix question ids), so the reveal and drill routes make one small
+  read instead of rebuilding the path. Service-role writes only; a student
+  reads their own.
+- `study_path_test_grants`: the chapter tests a student's path served
+  (service-role writes); `private.enforce_free_mock_limit` lets a granted test
+  start past the limit and `private.free_tests_used` leaves it out of the count.
 - `study_path_deferrals`: path, chapter, deferred_at. One row per "Not taught
   yet" tap; a deferral is active for 14 days or until the first work in that
   chapter after it, both read at view time (nothing to expire by job).
@@ -259,8 +268,8 @@ stores what the student chose.
 
 | # | Phase | What ships | Status |
 |---|---|---|---|
-| 0 | Ready | Chapter tests for the 4 HSC chapters that have none (Physics: Magnetic Fields due to Electric Current, Magnetic Materials, Structure of Atoms and Nuclei; Chemistry: Green Chemistry and Nanochemistry). They hold only 7-9 MCQs each, under the builder's 10-question minimum, so how to cover them is an owner call · ~~check every PCM chapter's Top 10~~ **checked 2026-11-07: all 84 PCM chapters have 10+ slots** · `npm run path:readout` with today's baselines (§9), measured before anything is visible · V eval cases for path asks | Not started |
-| 1 | Path + Today | Start tap and stream question · path computed from book order (HSC Maths as two queues) · Today card on /me replacing the weekly ring · done derived from work · "Not taught yet" with the 14-day return · Fix task · on-track line · free-limit exemption for today's tasks · `path_chapter_done` · stop / restart on /account | Not started |
+| 0 | Ready | Chapter tests for the 4 HSC chapters that have none (Physics: Magnetic Fields due to Electric Current, Magnetic Materials, Structure of Atoms and Nuclei; Chemistry: Green Chemistry and Nanochemistry). They hold only 7-9 MCQs each, under the builder's 10-question minimum, so how to cover them is an owner call · ~~check every PCM chapter's Top 10~~ **checked 2026-11-07: all 84 PCM chapters have 10+ slots** · `npm run path:readout` with today's baselines (§9), measured before anything is visible · V eval cases for path asks | **Done 2026-11-07**; the 4 short tests published with owner OK |
+| 1 | Path + Today | Start tap and stream question · path computed from book order (HSC Maths as two queues) · Today card on /me replacing the weekly ring · done derived from work · "Not taught yet" with the 14-day return · Fix task · on-track line · free-limit exemption for today's tasks · `path_chapter_done` · stop / restart on /account | **Built 2026-11-07** on `feat/mentor-path-phase1` (§14); 0225 on the test project only |
 | 2 | V as the voice | V reads and says the path; "plan my week" and "timetable" answered from it · weekly review · "Pick up here" after a gap · chapter-done celebration · a path line on /board chapter pages for Class 12 students (D8) | Not started |
 | 3 | Pace and the last weeks | Lighter / More with the honest finish date · behind handling · switch to board papers and revision three weeks before the exam | Not started; **must ship by ~2026-01-15** (HSC buffer starts 01-21) |
 | 4 | Proof, then decide | Readout at 4 weeks and after the boards · ask results (`results:announce`) · decide pricing and the next subjects or exams from what students used | After the boards |
@@ -355,7 +364,7 @@ answers · book order · pace set from the date · PCM only for now.
   /dashboard/growth so the owner sees what it costs in passes.
 - **Load estimates are guesses** until Phase 1 measures real task times.
 
-## 14. Build plan: Phase 0 and Phase 1 (agreed 2026-11-07; Phase 0 under way)
+## 14. Build plan: Phase 0 and Phase 1 (agreed 2026-11-07; both built)
 
 Owner decisions on the plan: the 4 HSC chapters get **short tests** (7-9
 questions from the MCQs they have; the HSC minimum is lowered for these
@@ -371,10 +380,10 @@ path:readout`, baselines written into §9 · 0.4 ~6 V eval cases for Class 12
 plan asks (Phase 2's acceptance set).
 
 **Phase 0 results (2026-11-07):**
-- 0.1: the four short tests are built as DRAFTS (Magnetic Fields due to
-  Electric Current 9 q, Magnetic Materials 9 q, Structure of Atoms and Nuclei
-  8 q, Green Chemistry and Nanochemistry 7 q; `wholePoolTestSize`). Publishing
-  waits for the owner's OK. They take the next free numbers (Physics 14-16,
+- 0.1: the four short tests (Magnetic Fields due to Electric Current 9 q,
+  Magnetic Materials 9 q, Structure of Atoms and Nuclei 8 q, Green Chemistry
+  and Nanochemistry 7 q; `wholePoolTestSize`), PUBLISHED with the owner's OK
+  on 2026-11-07, one slug at a time. They take the next free numbers (Physics 14-16,
   Chemistry 16), so the /mock catalogue lists them after that subject's other
   tests, not in book order; the path links by chapter, so it is not affected.
 - 0.3: `npm run path:readout` (pure core `src/lib/path/done.ts`, the first
@@ -418,3 +427,35 @@ plan asks (Phase 2's acceptance set).
    `npm run path:smoke` (real loaders, real Class 12 students, read-only) ·
    growth experiment `board-path` incl. chapter tests granted · full gate
    before merge · before/after sheet from the preview page.
+
+**Phase 1 results (2026-11-07, `feat/mentor-path-phase1`):** all five items
+built, test first. What changed from the plan, and why:
+- **Today's pick is stored** (`study_path_days`, §7), not recomputed: it
+  keeps the card stable through the day, and the reveal and drill routes read
+  the exemptions from it in one small read. Written by the service role only,
+  on the student's first read of the day; the staff view computes without
+  storing.
+- **The pace is minutes a day** (`daily_minutes`), set at start between 30
+  and 90 from what is left and the study days to the buffer. On track = the
+  finish date at that pace is on or before the buffer. From zero on
+  2026-11-07: CBSE about 45 min, HSC about 50 (`path:smoke`).
+- **A day works one chapter through its parts** (sheet, then its Top 10 while
+  the summary is fresh, then its test) and switches subject between chapters.
+  The first build switched after every task, and `path:smoke` showed an HSC
+  student four revision sheets and no questions on day one. A day stops at
+  80% of its minutes once it holds two tasks. A simulation test pins the
+  promise: following every day's card finishes both boards before their
+  buffers.
+- **The Fix task is done when each of its questions is answered today on any
+  page**, not only in the drill, so a mistake fixed in the bank first does not
+  hold the task open.
+- Exemptions are decided on the server: the reveal and drill routes read
+  `study_path_days`, which a student cannot write (RLS test). A Top 10 page
+  opened before /me on a new day has no exemption yet: the pick is made on the
+  first /me or /api/path read of the day, and the task links come from /me.
+- `npm run path:smoke` (read-only, real content and 8 students per board):
+  every PCM chapter has its Top 10 and a published test; HSC Maths queues are
+  7 and 8 chapters. `npm run path:readout` gains the STARTERS section.
+- **Still to do before it is live:** apply 0225 to production (owner OK), then
+  the golden path in a browser on a real account (start, a task, Not taught
+  yet, stop on /account) and the owner's phone check after the push.
