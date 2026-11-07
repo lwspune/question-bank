@@ -39,7 +39,13 @@ export async function loadSuggestedExam(
     );
     const practice: Record<string, number> = {};
     for (let i = 0; i < ids.length; i += ID_CHUNK) {
-      const { data, error } = await db.from("questions").select("exam_id").in("id", ids.slice(i, i + ID_CHUNK));
+      // PUBLIC is RLS's rule for a student; said here too for the staff view
+      // of a student's /me, which reads with the service role.
+      const { data, error } = await db
+        .from("questions")
+        .select("exam_id")
+        .in("id", ids.slice(i, i + ID_CHUNK))
+        .eq("visibility", "PUBLIC");
       if (error) throw error;
       for (const q of data ?? []) {
         const slug = slugById.get(q.exam_id as string);

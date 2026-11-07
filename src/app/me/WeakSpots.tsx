@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Target } from "lucide-react";
 import { usePulse } from "@/lib/viewer/usePulse";
 import { drillChapterHref } from "@/lib/drill/from";
+import type { Pulse } from "@/lib/pulse/cache";
 
 /**
  * /me "Weak spots" (2026-11-06): the chapters where most of the student's
@@ -15,8 +16,10 @@ import { drillChapterHref } from "@/lib/drill/from";
  * Renders nothing until the pulse arrives or when nothing is due: the Today
  * card already says so, and an empty section is noise.
  */
-export default function WeakSpots() {
-  const pulse = usePulse(true);
+export default function WeakSpots({ pulse: given }: { pulse?: Pulse } = {}) {
+  // The staff view of a student's /me passes the STUDENT's pulse.
+  const fetched = usePulse(!given);
+  const pulse = given ?? fetched;
   const weak = pulse?.weak ?? [];
   if (weak.length === 0) return null;
 

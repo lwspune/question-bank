@@ -3,8 +3,10 @@
  * lib/me/continue.ts; this fetches the student's last answers and their
  * chapters, and the homework plan they last opened.
  *
- * Read with the student's own JWT: `user_activity` is own-row by RLS, a
- * question resolves only when PUBLIC, and a homework plan only when published.
+ * Read with the student's own JWT on /me, or the service role on the staff
+ * view of a student's /me: every read filters on the student, a question
+ * resolves only when PUBLIC and a homework plan only when published, in the
+ * query itself and not only by RLS.
  * Best-effort: a failed read costs entries, never the page. Takes the TYPED
  * client (createTypedServerClient), so the joined rows need no cast.
  */
@@ -89,7 +91,10 @@ async function loadPracticeItems(
     db
       .from("questions")
       .select("id, chapter_id, chapter:chapters!chapter_id(name, subject:subjects!subject_id(id, name, exam_id, exam:exams!exam_id(name)))")
-      .in("id", ids),
+      .in("id", ids)
+      // RLS already limits a student to PUBLIC; said here too because the
+      // staff view of a student's /me reads with the service role.
+      .eq("visibility", "PUBLIC"),
     // Cached site-wide (the /questions pages' own index); a miss falls back to
     // a /browse link rather than costing the page.
     listChapterLandings().catch(() => []),
@@ -140,7 +145,14 @@ async function loadHomeworkItem(db: Db, userId: string): Promise<ContinueItem | 
     }
   }
   if (!slug) return null;
-  const plan = await db.from("homework_plans").select("slug, title").eq("slug", slug).maybeSingle();
+  // `published` is RLS's rule for a student; repeated for the staff view's
+  // service-role read.
+  const plan = await db
+    .from("homework_plans")
+    .select("slug, title")
+    .eq("slug", slug)
+    .eq("published", true)
+    .maybeSingle();
   if (plan.error) throw new Error(plan.error.message);
   if (!plan.data) return null;
   return {

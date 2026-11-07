@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { fetchPulse, usePulse } from "@/lib/viewer/usePulse";
 import { progressTiles, type ProgressTile } from "@/lib/me/stats";
+import type { Pulse } from "@/lib/pulse/cache";
 
 /**
  * The /me progress row: answered, % right, fixed (2026-11-05), from the shared
@@ -14,11 +15,15 @@ import { progressTiles, type ProgressTile } from "@/lib/me/stats";
  * reads as "you did nothing", and a failed read is not a zero. `fetchPulse`
  * returns the request already in flight, so waiting on it costs no fetch.
  */
-export default function ProgressTiles() {
-  const pulse = usePulse(true);
-  const [settled, setSettled] = useState(false);
+export default function ProgressTiles({ pulse: given }: { pulse?: Pulse } = {}) {
+  // The staff view of a student's /me passes the STUDENT's pulse; fetching
+  // here would show the viewer's own numbers.
+  const fetched = usePulse(!given);
+  const pulse = given ?? fetched;
+  const [settled, setSettled] = useState(!!given);
 
   useEffect(() => {
+    if (given) return;
     let live = true;
     void fetchPulse().finally(() => {
       if (live) setSettled(true);
@@ -26,7 +31,7 @@ export default function ProgressTiles() {
     return () => {
       live = false;
     };
-  }, []);
+  }, [given]);
 
   const tiles = progressTiles(pulse?.totals, pulse?.due ?? null);
 
