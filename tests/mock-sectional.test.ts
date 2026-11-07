@@ -16,6 +16,7 @@
 import { describe, it, expect } from "vitest";
 import {
   sectionalSize,
+  wholePoolTestSize,
   sectionalDurationSecs,
   sectionalBlueprint,
   isSectionalEligible,
@@ -84,6 +85,33 @@ describe("sectionalSize — the test length a chapter's pool can carry", () => {
   it("a lowered floor leaves the larger sizes alone", () => {
     expect(sectionalSize(30, 20)).toBe(15);
     expect(sectionalSize(60, 20)).toBe(20);
+  });
+});
+
+describe("wholePoolTestSize — a named thin chapter tested on every MCQ it has", () => {
+  // The mentor path (MENTOR_SPEC.md §14) needs a test on every Class 12 PCM
+  // chapter. Four HSC chapters hold 7-9 MCQs, under the 10-question floor, so
+  // the owner chose a short test on the whole pool for THOSE chapters only.
+  it("takes the whole pool from 7 to 9", () => {
+    expect(wholePoolTestSize(7)).toBe(7);
+    expect(wholePoolTestSize(8)).toBe(8);
+    expect(wholePoolTestSize(9)).toBe(9);
+  });
+  it("gives no test below 7", () => {
+    expect(wholePoolTestSize(6)).toBeNull();
+    expect(wholePoolTestSize(0)).toBeNull();
+  });
+  it("leaves a pool the normal sizes can carry to sectionalSize", () => {
+    expect(wholePoolTestSize(10, 10)).toBe(10);
+    expect(wholePoolTestSize(30, 10)).toBe(15);
+    expect(wholePoolTestSize(60, 10)).toBe(20);
+  });
+  it("a whole-pool pick returns every question, easy first", () => {
+    const pool = [cand("c", "HARD"), cand("a", "EASY"), cand("b", "MODERATE", "T"), cand("d", "EASY", "T"),
+      cand("e", "MODERATE"), cand("f", "EASY"), cand("g", "HARD", "T")];
+    const picked = pickSectionalQuestions(pool, wholePoolTestSize(pool.length)!)!;
+    expect(picked.map((q) => q.id).sort()).toEqual(["a", "b", "c", "d", "e", "f", "g"]);
+    expect(picked.map((q) => q.difficulty)).toEqual(["EASY", "EASY", "EASY", "MODERATE", "MODERATE", "HARD", "HARD"]);
   });
 });
 
