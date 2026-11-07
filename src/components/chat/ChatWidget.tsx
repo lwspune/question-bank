@@ -75,6 +75,7 @@ import VProgressCard from "./VProgressCard";
 import {
   ASK_V_EVENT,
   askedCardOf,
+  explainedTap,
   askVMessage,
   isAskVDetail,
   parseAskedCard,
@@ -329,6 +330,16 @@ export default function ChatWidget() {
   const cart = useCart();
   const placement = vPlacement(pathname, cart);
 
+  // A repeat Ask V tap (2026-11-07) shows the explanation already given: the list
+  // scrolls to that tap rather than to the bottom, until the next message.
+  const focusTurnRef = useRef<number | null>(null);
+  function scrollList() {
+    const i = focusTurnRef.current;
+    const el = i === null ? null : listRef.current?.querySelector(`[data-turn="${i}"]`);
+    if (el) el.scrollIntoView({ block: "start" });
+    else listRef.current?.scrollTo({ top: listRef.current.scrollHeight });
+  }
+
   useEffect(() => {
     listRef.current?.scrollTo({ top: listRef.current.scrollHeight });
   }, [turns]);
@@ -341,7 +352,7 @@ export default function ChatWidget() {
     const phone = window.matchMedia("(max-width: 639px)");
     const update = () => {
       setBox(panelBox(vv, phone.matches));
-      listRef.current?.scrollTo({ top: listRef.current.scrollHeight });
+      scrollList();
     };
     update();
     vv.addEventListener("resize", update);
@@ -551,11 +562,21 @@ export default function ChatWidget() {
   }
 
   onAskRef.current = (d: AskVDetail) => {
+    const message = d.notes ? askVMessage(null) : askVMessage(d.chose, d);
+    // Already explained in this session: reopen that explanation, no new answer (2026-11-07).
+    const live = Date.now() - lastAtRef.current <= SESSION_IDLE_MS;
+    const earlier = live ? explainedTap(turnsRef.current, askedCardOf(d, pathname), message) : -1;
     setMode("chat");
     openChat();
     setAsked(d);
     setReplyingTo(null);
-    void askTyped(d.notes ? askVMessage(null) : askVMessage(d.chose, d), d);
+    if (earlier >= 0) {
+      focusTurnRef.current = earlier;
+      requestAnimationFrame(scrollList);
+      return;
+    }
+    focusTurnRef.current = null;
+    void askTyped(message, d);
   };
 
   function startReply(id: string, text: string) {
@@ -567,6 +588,7 @@ export default function ChatWidget() {
   async function askTyped(override?: string, about?: AskVDetail | null) {
     const text = (override ?? draft).trim();
     if (sending || !text) return;
+    focusTurnRef.current = null;
     const { id: sessionId, fresh } = currentSessionId();
     // A new session drops the old tapped question and reply; a button send never carries a reply.
     const question = about ?? (fresh ? null : asked);
@@ -737,7 +759,7 @@ export default function ChatWidget() {
                 // A turn may come from the device's saved chat, so its card is checked first.
                 const asked = parseAskedCard(t.asked);
                 return (
-                  <div key={n} className={`flex flex-col ${MESSAGE_IN}`}>
+                  <div key={n} data-turn={i} className={`flex flex-col ${MESSAGE_IN}`}>
                     {asked && <VAskedCard asked={asked} />}
                     <div className={USER_BUBBLE}>
                       {typeof t.quote === "string" && t.quote && (

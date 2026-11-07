@@ -4,7 +4,16 @@
  * in the notes by concept and position.
  */
 import { describe, it, expect } from "vitest";
-import { answerIn, askedFromReview, askVMessage, chosenIn, isAskVDetail, isAskVMessage, questionForRequest } from "@/lib/chat/askVEvent";
+import {
+  answerIn,
+  askedFromReview,
+  askVMessage,
+  chosenIn,
+  explainedTap,
+  isAskVDetail,
+  isAskVMessage,
+  questionForRequest,
+} from "@/lib/chat/askVEvent";
 
 const ID = "11111111-1111-4111-8111-111111111111";
 
@@ -87,5 +96,58 @@ describe("askedFromReview", () => {
   it("names no single pick for a multiple-select question, only whether it was skipped", () => {
     expect(askedFromReview({ format: "msq", selectedLabel: null, numericResponse: null, selectedLabels: ["A", "C"] })).toEqual({ chose: null, entered: null, skipped: false });
     expect(askedFromReview({ format: "msq", selectedLabel: null, numericResponse: null, selectedLabels: [] })).toEqual({ chose: null, entered: null, skipped: true });
+  });
+});
+
+/**
+ * A second tap on a question V has already explained in this session reopens
+ * that explanation instead of asking again (2026-11-07): 104 of 440 taps were
+ * the same student re-tapping the same question within a minute, each a new
+ * paid answer.
+ */
+describe("explainedTap", () => {
+  const card = { questionId: ID, chose: null };
+  const ask = { role: "user" as const, text: "Explain this question.", asked: card };
+  const explained = { role: "assistant" as const, text: "Step 1 ...", explained: true };
+
+  it("finds the tap V already explained", () => {
+    const turns = [{ role: "user" as const, text: "hi" }, { role: "assistant" as const, text: "Hi!" }, ask, explained];
+    expect(explainedTap(turns, card, "Explain this question.")).toBe(2);
+  });
+
+  it("finds a notes question by concept, item and page", () => {
+    const notes = { notes: { concept: "ohms-law", item: "practice" as const, index: 2 }, page: "/notes/nda-physics/current/ohms-law" };
+    const turns = [{ role: "user" as const, text: "Explain this question.", asked: notes }, explained];
+    expect(explainedTap(turns, { ...notes, notes: { ...notes.notes } }, "Explain this question.")).toBe(0);
+    expect(explainedTap(turns, { ...notes, notes: { concept: "ohms-law", item: "practice", index: 3 } }, "Explain this question.")).toBe(-1);
+    expect(explainedTap(turns, { ...notes, page: "/notes/nda-physics/current/other" }, "Explain this question.")).toBe(-1);
+  });
+
+  it("asks again when the message differs: a pick changes what V says", () => {
+    const turns = [ask, explained];
+    expect(explainedTap(turns, { questionId: ID, chose: "B" }, "I picked (B). Explain this question.")).toBe(-1);
+  });
+
+  it("asks again about another question", () => {
+    const other = "22222222-2222-4222-8222-222222222222";
+    expect(explainedTap([ask, explained], { questionId: other, chose: null }, "Explain this question.")).toBe(-1);
+  });
+
+  it("asks again when the reply was not an explanation (an error, a sign-in or pass offer)", () => {
+    expect(explainedTap([ask, { role: "assistant" as const, text: "Please try again." }], card, "Explain this question.")).toBe(-1);
+    expect(explainedTap([ask], card, "Explain this question.")).toBe(-1);
+  });
+
+  it("ignores a card that fails its check (saved on the device)", () => {
+    const bad = { role: "user" as const, text: "Explain this question.", asked: { questionId: "not-a-uuid", chose: null } };
+    expect(explainedTap([bad, explained], { questionId: "not-a-uuid", chose: null }, "Explain this question.")).toBe(-1);
+  });
+
+  it("returns the latest of two explained taps", () => {
+    expect(explainedTap([ask, explained, ask, explained], card, "Explain this question.")).toBe(2);
+  });
+
+  it("never matches without a card", () => {
+    expect(explainedTap([ask, explained], null, "Explain this question.")).toBe(-1);
   });
 });
