@@ -194,6 +194,14 @@ describe("NAV_FACTS", () => {
     expect(NAV_FACTS.some((f) => f.includes("/mock"))).toBe(true);
   });
 
+  it("answers 'is there an app?' with Add to Home screen (2026-11-07)", () => {
+    // 10 app asks since October; V said it had no information about an app.
+    const app = NAV_FACTS.find((f) => /\bapp\b/i.test(f));
+    expect(app).toBeDefined();
+    expect(app).toMatch(/Add to Home screen/);
+    expect(app).toMatch(/Play Store|App Store/);
+  });
+
   it("names the pages students asked V for", () => {
     const all = NAV_FACTS.join(" ");
     for (const path of ["/pricing", "/question-papers", "/board", "/guide", "/notes", "/signup"]) {

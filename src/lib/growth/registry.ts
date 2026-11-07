@@ -254,8 +254,12 @@ export const PASS_TIERS_BASELINE_WEEKLY_REVENUE = 1397;
  * later day within 7 days falls more than this many points below the 65% before.
  */
 export const ANSWER_LIMIT_RETURN_BASELINE_PCT = 65;
-/** V's AI replies followed by another typed message within 30 minutes, before the line-by-line reveal (%). */
-export const V_REVEAL_FOLLOWUP_BASELINE_PCT = 48;
+/**
+ * V's AI replies followed by another message within 30 minutes, before the
+ * line-by-line reveal (%), repeat Ask V taps on the same question left out
+ * (2026-11-07; counted, they had made it 48%). `npm run v:followups`.
+ */
+export const V_REVEAL_FOLLOWUP_BASELINE_PCT = 39;
 /** A fall of this many points in that share is looked into before anything else changes in V. */
 export const V_REVEAL_FOLLOWUP_MAX_DROP = 5;
 export const ANSWER_LIMIT_RETURN_MAX_DROP = 10;
@@ -818,7 +822,7 @@ export const EXPERIMENTS: readonly Experiment[] = [
       "A new reply from V grows in its bubble one line at a time (the first at once, then a pause long enough to read each line, about 5 seconds for 8 lines), instead of landing as one block; a tap shows the rest. Replies from history show whole.",
     why: "The owner, 2026-10-23: one block is heavy to take in, one line after another helps students digest it, and it is how they are used to reading chats.",
     metric:
-      "Share of V's AI replies followed by another typed message in the same conversation within 30 minutes (chat_interactions), against 48% (111 of 233, 15 to 23 Oct). Thumbs are too few to read",
+      "Share of V's AI replies followed by another message in the same conversation within 30 minutes, a repeat Ask V tap on the same question not counted (npm run v:followups), against 39% (77 of 195, 15 to 22 Oct). Thumbs are too few to read. Until 2026-11-07 repeat taps counted, which read 48% (111 of 233, 15 to 23 Oct)",
     rule: `Keep it if the follow-up share holds at ${V_REVEAL_FOLLOWUP_BASELINE_PCT}% or rises over two weeks; if it falls ${V_REVEAL_FOLLOWUP_MAX_DROP}+ points, read the conversations for replies left unread before changing the pace.`,
     liveSince: "2026-10-23",
     windowDays: 14,
@@ -1247,8 +1251,15 @@ export const READINGS: Record<ReadingMetric, { label: string; source: string; en
   "v-follow-up": {
     label: "V's AI replies followed up within 30 minutes (%)",
     source:
-      "chat_interactions: typed_question rows with reply_source 'ai' in the window, and the share with another typed_question in the same conversation_id within 30 minutes after",
-    entries: [{ on: "2026-10-23", value: 48, note: "Before the line-by-line reveal: 111 of 233 AI replies, 15 to 23 Oct" }],
+      "npm run v:followups (lib/chat/followUpShare.ts): typed_question rows with reply_source 'ai' in the window, staff left out, and the share with another typed_question in the same conversation_id within 30 minutes after. A repeat Ask V tap on the same question is not a follow-up (since 2026-11-07)",
+    entries: [
+      { on: "2026-10-23", value: 48, note: "Before the line-by-line reveal: 111 of 233 AI replies, 15 to 23 Oct. Repeat taps counted (the old measure)" },
+      {
+        on: "2026-11-07",
+        value: 27,
+        note: "Repeat taps left out: 65 of 239, 31 Oct to 7 Nov (36% and 35% the two weeks before; 39% before the reveal, 15 to 22 Oct). Ask V taps grew from a few to most messages over the same weeks, so the fall is not the reveal's alone",
+      },
+    ],
   },
   "visual-finished": {
     label: "Animated solutions: shown animations played to the end (%)",

@@ -104,6 +104,37 @@ export function parseAskedCard(raw: unknown): AskedCard | null {
   return { notes, page: o.page };
 }
 
+function sameCard(a: AskedCard, b: AskedCard): boolean {
+  if ("questionId" in a) return "questionId" in b && a.questionId === b.questionId;
+  if ("questionId" in b) return false;
+  const ia = a.notes.item === "practice" ? a.notes.index : -1;
+  const ib = b.notes.item === "practice" ? b.notes.index : -1;
+  return a.page === b.page && a.notes.concept === b.notes.concept && a.notes.item === b.notes.item && ia === ib;
+}
+
+/**
+ * The index of the latest tap in `turns` that sent the same message about the
+ * same question and got an explanation back, or -1 (2026-11-07). A repeat tap
+ * then reopens that explanation instead of asking again: 104 of 440 taps were
+ * the same student re-tapping the same question within a minute. A different
+ * message (a pick, a number entered) is a new ask, since V's answer turns on it.
+ */
+export function explainedTap(
+  turns: readonly ({ role: "user"; text: string; asked?: unknown } | { role: "assistant"; text?: string; explained?: boolean })[],
+  card: AskedCard | null,
+  text: string
+): number {
+  if (!card) return -1;
+  for (let i = turns.length - 2; i >= 0; i--) {
+    const t = turns[i];
+    const next = turns[i + 1];
+    if (t.role !== "user" || t.text !== text || next.role !== "assistant" || next.explained !== true) continue;
+    const asked = parseAskedCard(t.asked);
+    if (asked && sameCard(asked, card)) return i;
+  }
+  return -1;
+}
+
 /** The query string /api/chat/question reads the card's question from. */
 export function cardQuery(c: AskedCard): string {
   if ("questionId" in c) return `id=${c.questionId}`;

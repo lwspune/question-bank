@@ -133,6 +133,19 @@ describe("searchChapters: what students typed (2026-10-16)", () => {
     expect(hits.map((h) => h.chapterName)).toEqual(["Matrices and Determinants", "Probability"]);
   });
 
+  it("knows maths means Quantitative Aptitude in SSC and Numerical Ability in AFCAT (2026-11-07)", () => {
+    // "ssc cgl tier 2 maths chapter 1" came back "no Maths chapters" on 2026-11-05.
+    const rows = [
+      row("ssc-cgl-tier-2", "SSC CGL Tier II", "Quantitative Aptitude", "Percentage, Profit and Loss", 71),
+      row("ssc-cgl-tier-2", "SSC CGL Tier II", "Reasoning", "Coding-Decoding", 40),
+      row("afcat", "AFCAT", "Numerical Ability", "Time and Work", 200),
+    ];
+    expect(searchChapters(rows, { query: "maths", exam: "SSC CGL Tier II" }).map((h) => h.subjectName)).toEqual(["Quantitative Aptitude"]);
+    expect(searchChapters(rows, { query: "math", exam: "AFCAT" }).map((h) => h.subjectName)).toEqual(["Numerical Ability"]);
+    // The subject's own words still find it.
+    expect(searchChapters(rows, { query: "quant" }).map((h) => h.subjectName)).toEqual(["Quantitative Aptitude"]);
+  });
+
   it("ignores filler words such as chapter numbers, imp and questions", () => {
     const hits = searchChapters(REAL, {
       query: "imp questions chapter 7 introduction to microbiology",

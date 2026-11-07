@@ -5,6 +5,7 @@ import {
   NORTH_STAR_KINDS,
   READINGS,
   checkOn,
+  V_REVEAL_FOLLOWUP_BASELINE_PCT,
 } from "@/lib/growth/registry";
 import { ACTIVITY_KINDS } from "@/lib/activity/events";
 import { EXAM_REGISTRY } from "@/lib/exam/examContext";
@@ -135,6 +136,13 @@ describe("READINGS", () => {
   it("starts the line-by-line reply experiment with the follow-up share from before it", () => {
     // V's replies shown a line at a time (2026-10-23): judged on follow-up questions, the owner's measure.
     expect(READINGS["v-follow-up"].entries[0]).toMatchObject({ on: "2026-10-23", value: 48 });
+  });
+
+  it("judges the reveal on follow-ups with repeat Ask V taps left out (2026-11-07)", () => {
+    // 104 of 440 taps were repeats of the same question; counted, they held the share at 48%.
+    expect(V_REVEAL_FOLLOWUP_BASELINE_PCT).toBe(39);
+    expect(READINGS["v-follow-up"].source).toContain("repeat");
+    expect(READINGS["v-follow-up"].entries.at(-1)).toMatchObject({ on: "2026-11-07", value: 27 });
   });
 
   it("keeps each metric's entries dated and oldest first", () => {
