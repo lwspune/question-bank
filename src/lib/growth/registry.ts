@@ -265,6 +265,8 @@ export const WHY_NOT_BUY_MIN_ANSWERS = 30;
 export const WHY_NOT_BUY_LEAD_PCT = 40;
 /** "tutor-interest": student Yes answers (looking for 1:1 tutoring) that take tutoring further. */
 export const TUTOR_STUDENT_YES_KEEP = 20;
+/** "tutor-price": answers each price needs before the three are compared (below it, run 2 more weeks). */
+export const TUTOR_PRICE_MIN_ANSWERS = 15;
 
 /** The ISO date `days` (by default `EXPERIMENT_WINDOW_DAYS`) after `liveSince`. */
 export function checkOn(liveSince: string, days: number = EXPERIMENT_WINDOW_DAYS): string {
@@ -304,6 +306,7 @@ export type Readout =
   | "answer-limit"
   | "v-reveal"
   | "tutor-interest"
+  | "tutor-price"
   | "v-progress"
   | "self-mark"
   | "v-pay-offer"
@@ -834,6 +837,20 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-10-27",
     windowDays: 21,
     readout: "tutor-interest",
+    status: "running",
+  },
+  {
+    id: "tutor-price",
+    title: "1:1 tutoring: what price?",
+    change:
+      "After a Yes on /tutor, a student sees ONE price for a 1-hour 1:1 session, ₹499, ₹749 or ₹999 (fixed per account), and answers \"Yes, I would book\", \"Only if it cost less\" (then picks a lower amount or Not sure) or No. A teacher says what they would charge, in four bands. Yes answers from before this are asked when they come back to /tutor. Nothing is sold; the page says bookings are not open.",
+    why: "52 students said Yes to tutoring in 10 days, but a Yes cost them nothing. The owner will not contact them, so the price is asked where they already answer. One price each, never a menu, because a menu pulls every answer to the cheapest.",
+    metric:
+      "Per price: students shown it, and how many answered Yes, Only if cheaper (with the amount) and No, plus new Yes answers who left at the price (tutor_interest, migration 0223). Teacher rates by band. Read the prices against each other: saying \"I would book\" runs well ahead of paying",
+    rule: `Once each price has ${TUTOR_PRICE_MIN_ANSWERS}+ answers (else run 2 more weeks): the highest price whose Yes share is at least half of ₹499's is the price to try first; if even ₹499 gets under a third Yes, the demand is for something cheaper, so look at the "would pay" amounts before building anything.`,
+    liveSince: "2026-11-07",
+    windowDays: 21,
+    readout: "tutor-price",
     status: "running",
   },
 ];

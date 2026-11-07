@@ -3,8 +3,9 @@ import { redirect } from "next/navigation";
 import AppHeader from "@/components/AppHeader";
 import { getSessionSuperadmin } from "@/lib/auth";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
-import { loadTutorContacts, loadTutorInterestReadout } from "@/lib/tutor/readout";
+import { loadTutorContacts, loadTutorInterestReadout, loadTutorPriceReadout } from "@/lib/tutor/readout";
 import { tallyYesByCity } from "@/lib/tutor/interest";
+import type { TeacherRate } from "@/lib/tutor/price";
 import { getExamBySlug } from "@/lib/exam/examContext";
 import { formatMobile } from "@/lib/students/roster";
 import { whatsappHref } from "@/lib/profile/mobile";
@@ -12,6 +13,13 @@ import { EXPERIMENTS, TUTOR_STUDENT_YES_KEEP, checkOn } from "@/lib/growth/regis
 import BackToDashboard from "@/app/dashboard/BackToDashboard";
 
 export const dynamic = "force-dynamic";
+
+const TEACHER_RATE_LABEL: Record<TeacherRate, string> = {
+  "under-500": "under ₹500",
+  "500-750": "₹500 to ₹750",
+  "750-1000": "₹750 to ₹1,000",
+  "over-1000": "over ₹1,000",
+};
 
 /** "28 Oct". Dates here are YYYY-MM-DD, so format them as UTC. */
 function fmtDate(iso: string): string {
@@ -30,9 +38,10 @@ export default async function TutorInterestPage() {
   if (!(await getSessionSuperadmin())) redirect("/browse");
 
   const admin = createSupabaseAdminClient();
-  const [tutor, { contacts, unreachableYes }] = await Promise.all([
+  const [tutor, { contacts, unreachableYes }, price] = await Promise.all([
     loadTutorInterestReadout(admin),
     loadTutorContacts(admin),
+    loadTutorPriceReadout(admin),
   ]);
   const byCity = tallyYesByCity(contacts);
   const experiment = EXPERIMENTS.find((e) => e.id === "tutor-interest");
@@ -96,6 +105,62 @@ export default async function TutorInterestPage() {
               {tutor.studentYesByExam.map((x) => `${examName(x.exam) ?? "no exam chosen"} ${x.count}`).join(" · ")}
             </p>
           )}
+        </section>
+
+        <section className="rounded-xl border bg-card p-6">
+          <h2 className="text-sm font-semibold">Price test</h2>
+          <p className="mt-1 text-xs text-muted-foreground">
+            Since 7 Nov, each student who says Yes sees one price for a 1-hour 1:1 session, fixed per account, and says
+            whether they would book. Compare the prices with each other: saying &ldquo;I would book&rdquo; runs well
+            ahead of paying. &ldquo;Left&rdquo; is a new Yes who saw the price and closed the page; a Yes from before
+            7 Nov is counted only once they answer.
+          </p>
+          <div className="mt-3 overflow-x-auto">
+            <table className="w-full text-sm">
+              <thead className="text-left text-xs text-muted-foreground">
+                <tr>
+                  <th scope="col" className="py-1 pr-3 font-medium">Price</th>
+                  <th scope="col" className="py-1 pr-3 text-right font-medium">Would book</th>
+                  <th scope="col" className="py-1 pr-3 text-right font-medium">Yes</th>
+                  <th scope="col" className="py-1 pr-3 text-right font-medium">If cheaper</th>
+                  <th scope="col" className="py-1 pr-3 text-right font-medium">No</th>
+                  <th scope="col" className="py-1 pr-3 text-right font-medium">Left</th>
+                  <th scope="col" className="py-1 font-medium">Would pay instead</th>
+                </tr>
+              </thead>
+              <tbody className="tabular-nums">
+                {price.arms.map((a) => {
+                  const answered = a.yes + a.cheaper + a.no;
+                  const pay = [
+                    ...a.wouldPay.map((w) => `₹${w.amount} × ${w.count}`),
+                    ...(a.notSure ? [`not sure × ${a.notSure}`] : []),
+                  ];
+                  return (
+                    <tr key={a.price} className="border-t">
+                      <td className="py-1.5 pr-3 font-medium">₹{a.price}</td>
+                      <td className="py-1.5 pr-3 text-right font-semibold">
+                        {answered ? `${Math.round((a.yes / answered) * 100)}%` : "-"}
+                      </td>
+                      <td className="py-1.5 pr-3 text-right">{a.yes}</td>
+                      <td className="py-1.5 pr-3 text-right">{a.cheaper}</td>
+                      <td className="py-1.5 pr-3 text-right">{a.no}</td>
+                      <td className="py-1.5 pr-3 text-right">{a.left}</td>
+                      <td className="py-1.5">{pay.length ? pay.join(", ") : "-"}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+          <p className="mt-3 text-sm">
+            <span className="text-muted-foreground">Teachers would charge: </span>
+            {price.teacherRates.map((t) => `${TEACHER_RATE_LABEL[t.rate]} ${t.count}`).join(" · ")}
+          </p>
+          <p className="mt-2 text-xs text-muted-foreground">
+            Not asked yet (said Yes before 7 Nov and not back on /tutor): {price.studentYesNotAsked}{" "}
+            {price.studentYesNotAsked === 1 ? "student" : "students"}, {price.teacherYesNotAsked}{" "}
+            {price.teacherYesNotAsked === 1 ? "teacher" : "teachers"}.
+          </p>
         </section>
 
         <section className="rounded-xl border bg-card p-6">

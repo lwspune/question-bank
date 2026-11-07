@@ -101,4 +101,41 @@ describe.skipIf(!HAS_ENV)("tutor_interest table", () => {
     const { data } = await admin.from("tutor_interest").select("role, wants, mode").eq("user_id", userId);
     expect(data).toEqual([{ role: "teacher", wants: true, mode: "either" }]);
   });
+
+  // The price test (migration 0223): a price only for a student Yes, an answer
+  // only to a price shown, a lower amount only below it, a rate only from a teacher Yes.
+  it("keeps a student's price answer", async () => {
+    const { error } = await insert({
+      role: "student",
+      wants: true,
+      mode: "online",
+      price_shown: 749,
+      price_answer: "cheaper",
+      price_would_pay: 500,
+      price_answered_at: new Date().toISOString(),
+    });
+    expect(error).toBeNull();
+  });
+
+  it("keeps a teacher's rate", async () => {
+    const { error } = await insert({ role: "teacher", wants: true, mode: "either", teacher_rate: "750-1000" });
+    expect(error).toBeNull();
+  });
+
+  it("refuses a price answer that breaks the rules", async () => {
+    const yes = { role: "student", wants: true, mode: "online" };
+    // an unknown price, or a price shown to a teacher or after a No
+    expect((await insert({ ...yes, price_shown: 600 })).error?.code).toBe("23514");
+    expect((await insert({ role: "teacher", wants: true, mode: "online", price_shown: 499 })).error?.code).toBe("23514");
+    expect((await insert({ role: "student", wants: false, price_shown: 499 })).error?.code).toBe("23514");
+    // an answer with no price, or an unknown answer
+    expect((await insert({ ...yes, price_answer: "yes" })).error?.code).toBe("23514");
+    expect((await insert({ ...yes, price_shown: 499, price_answer: "maybe" })).error?.code).toBe("23514");
+    // a lower amount on a Yes, or not below the price shown
+    expect((await insert({ ...yes, price_shown: 499, price_answer: "yes", price_would_pay: 300 })).error?.code).toBe("23514");
+    expect((await insert({ ...yes, price_shown: 499, price_answer: "cheaper", price_would_pay: 600 })).error?.code).toBe("23514");
+    // a rate from a student, or an unknown rate
+    expect((await insert({ ...yes, teacher_rate: "500-750" })).error?.code).toBe("23514");
+    expect((await insert({ role: "teacher", wants: true, mode: "online", teacher_rate: "cheap" })).error?.code).toBe("23514");
+  });
 });

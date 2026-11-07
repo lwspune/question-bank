@@ -8,7 +8,7 @@ import { getGrowthSnapshot } from "@/lib/growth/adminStats";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { loadEbookStoreReadout } from "@/lib/ebooks/readout";
 import { loadLearnReadout } from "@/lib/learn/readout";
-import { loadTutorInterestReadout } from "@/lib/tutor/readout";
+import { loadTutorInterestReadout, loadTutorPriceReadout } from "@/lib/tutor/readout";
 import { formatRupees } from "@/lib/billing/plans";
 import {
   INSIGHTS,
@@ -67,6 +67,7 @@ import {
   VISUAL_STILL_MAX_PCT,
   SPECIFIC_OFFER_CHECKOUT_PCT,
   TUTOR_STUDENT_YES_KEEP,
+  TUTOR_PRICE_MIN_ANSWERS,
   WHY_NOT_BUY_LEAD_PCT,
   WHY_NOT_BUY_MIN_ANSWERS,
   checkOn,
@@ -365,10 +366,11 @@ export default async function GrowthPage() {
 
   const admin = createSupabaseAdminClient();
   const learnSince = EXPERIMENTS.find((e) => e.readout === "learn")?.liveSince ?? "2026-10-28";
-  const [raw, ebookRows, tutor, learn] = await Promise.all([
+  const [raw, ebookRows, tutor, tutorPrice, learn] = await Promise.all([
     getGrowthSnapshot(),
     loadEbookStoreReadout(admin),
     loadTutorInterestReadout(admin),
+    loadTutorPriceReadout(admin),
     loadLearnReadout(admin, learnSince),
   ]);
   const today = todayIst();
@@ -673,6 +675,29 @@ export default async function GrowthPage() {
             </Link>
           </div>
         );
+      case "tutor-price": {
+        const answered = (a: (typeof tutorPrice.arms)[number]) => a.yes + a.cheaper + a.no;
+        return (
+          <div className="space-y-3">
+            <p className="text-sm text-muted-foreground">
+              Check on {fmtDate(checkOn(e.liveSince, e.windowDays))}, once each price has {TUTOR_PRICE_MIN_ANSWERS}+
+              answers.
+            </p>
+            <p className="text-sm tabular-nums">
+              {tutorPrice.arms
+                .map((a) => `₹${a.price}: ${a.yes} of ${answered(a)} would book`)
+                .join(" · ")}
+            </p>
+            <Link
+              href="/dashboard/tutor"
+              prefetch={false}
+              className="inline-flex items-center gap-1 text-sm font-medium text-brand-accent underline-offset-2 hover:underline"
+            >
+              Every price, what they would pay, teacher rates <ArrowUpRight className="h-3.5 w-3.5" aria-hidden />
+            </Link>
+          </div>
+        );
+      }
       case "v-reveal":
         return (
           <div className="space-y-3">

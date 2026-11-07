@@ -15,14 +15,22 @@ const checkAndIncrement = vi.fn(async () => ({ ok: true }));
 vi.mock("@/lib/rate-limit", () => ({ checkAndIncrement }));
 const upsert = vi.fn(async () => ({ error: null }));
 const insert = vi.fn(async () => ({ error: null }));
-const from = vi.fn(() => ({ upsert, insert }));
+// The account's stored answer, as GET and PATCH read it.
+const stored = { current: null as null | Record<string, unknown> };
+const maybeSingle = vi.fn(async () => ({ data: stored.current, error: null }));
+const selectEq = vi.fn(() => ({ maybeSingle }));
+const select = vi.fn(() => ({ eq: selectEq }));
+const updateEq = vi.fn(async () => ({ error: null }));
+const update = vi.fn(() => ({ eq: updateEq }));
+const from = vi.fn(() => ({ upsert, insert, select, update }));
 vi.mock("@/lib/supabase/admin", () => ({ createSupabaseAdminClient: vi.fn(() => ({ from })) }));
 vi.mock("@/lib/supabase/server", () => ({ createSupabaseServerClient: vi.fn(() => ({})) }));
 const profile = { current: null as null | { mobile: string | null; city: string | null } };
 const getOwnProfile = vi.fn(async () => profile.current);
 vi.mock("@/lib/profile/service", () => ({ getOwnProfile }));
 
-const { GET, POST } = await import("@/app/api/tutor-interest/route");
+const { GET, POST, PATCH } = await import("@/app/api/tutor-interest/route");
+const { priceForUser } = await import("@/lib/tutor/price");
 
 const post = (body: unknown) =>
   new NextRequest("http://localhost/api/tutor-interest", {
@@ -35,7 +43,15 @@ beforeEach(() => {
   vi.clearAllMocks();
   user.current = null;
   profile.current = null;
+  stored.current = null;
 });
+
+const patch = (body: unknown) =>
+  new NextRequest("http://localhost/api/tutor-interest", {
+    method: "PATCH",
+    body: JSON.stringify(body),
+    headers: { "content-type": "application/json" },
+  });
 
 /**
  * GET: what the cached /tutor page asks from the browser (2026-11-06), so the
@@ -54,14 +70,34 @@ describe("GET /api/tutor-interest", () => {
     user.current = { id: "u1", email: "a@example.com" };
     profile.current = { mobile: "9876543210", city: null };
     const res = await GET();
-    expect(await res.json()).toEqual({ signedIn: true, hasMobile: true, hasCity: false });
+    expect(await res.json()).toEqual({
+      signedIn: true,
+      hasMobile: true,
+      hasCity: false,
+      price: priceForUser("u1"),
+      pending: null,
+    });
     expect(res.headers.get("cache-control")).toContain("no-store");
   });
 
   it("treats a missing profile as nothing on file", async () => {
     user.current = { id: "u1", email: "a@example.com" };
     const res = await GET();
-    expect(await res.json()).toEqual({ signedIn: true, hasMobile: false, hasCity: false });
+    expect(await res.json()).toEqual({
+      signedIn: true,
+      hasMobile: false,
+      hasCity: false,
+      price: priceForUser("u1"),
+      pending: null,
+    });
+  });
+
+  it("names the price question a returning Yes has not answered yet", async () => {
+    user.current = { id: "u1", email: "a@example.com" };
+    stored.current = { role: "student", wants: true, price_answer: null, teacher_rate: null };
+    const res = await GET();
+    expect(await res.json()).toMatchObject({ signedIn: true, pending: "price", price: priceForUser("u1") });
+    expect(selectEq).toHaveBeenCalledWith("user_id", "u1");
   });
 });
 
@@ -86,10 +122,78 @@ describe("POST /api/tutor-interest", () => {
     expect(insert).not.toHaveBeenCalled();
   });
 
+  it("fixes the account's price on a student Yes and clears any earlier price answer", async () => {
+    user.current = { id: "u1", email: "a@example.com" };
+    const res = await POST(post({ role: "student", wants: true, mode: "online" }));
+    expect(await res.json()).toEqual({ ok: true, price: priceForUser("u1") });
+    expect(upsert).toHaveBeenCalledWith(
+      expect.objectContaining({
+        price_shown: priceForUser("u1"),
+        price_answer: null,
+        price_would_pay: null,
+        teacher_rate: null,
+        price_answered_at: null,
+      }),
+      { onConflict: "user_id" }
+    );
+  });
+
+  it("shows no price after a No or to a teacher", async () => {
+    user.current = { id: "u1", email: "a@example.com" };
+    await POST(post({ role: "student", wants: false, mode: null }));
+    await POST(post({ role: "teacher", wants: true, mode: "online" }));
+    for (const call of upsert.mock.calls as unknown as [Record<string, unknown>][]) {
+      expect(call[0]).toMatchObject({ price_shown: null, teacher_rate: null });
+    }
+  });
+
   it("refuses a malformed answer before writing", async () => {
     user.current = { id: "u1", email: "a@example.com" };
     const res = await POST(post({ role: "student", wants: true }));
     expect(res.status).toBe(400);
     expect(upsert).not.toHaveBeenCalled();
+  });
+});
+
+describe("PATCH /api/tutor-interest (the price question)", () => {
+  it("refuses a signed-out answer", async () => {
+    const res = await PATCH(patch({ answer: "yes" }));
+    expect(res.status).toBe(401);
+    expect(update).not.toHaveBeenCalled();
+  });
+
+  it("refuses a price answer from an account that has not said Yes", async () => {
+    user.current = { id: "u1", email: "a@example.com" };
+    stored.current = { role: "student", wants: false, price_answer: null, teacher_rate: null };
+    const res = await PATCH(patch({ answer: "yes" }));
+    expect(res.status).toBe(409);
+    expect(update).not.toHaveBeenCalled();
+  });
+
+  it("saves a student's answer against the account's own price, never one from the body", async () => {
+    user.current = { id: "u1", email: "a@example.com" };
+    stored.current = { role: "student", wants: true, price_answer: null, teacher_rate: null };
+    const res = await PATCH(patch({ answer: "no", price: 1 }));
+    expect(res.status).toBe(200);
+    expect(update).toHaveBeenCalledWith(
+      expect.objectContaining({ price_shown: priceForUser("u1"), price_answer: "no", price_would_pay: null })
+    );
+    expect(updateEq).toHaveBeenCalledWith("user_id", "u1");
+  });
+
+  it("refuses an amount that was not offered at the account's price", async () => {
+    user.current = { id: "u1", email: "a@example.com" };
+    stored.current = { role: "student", wants: true, price_answer: null, teacher_rate: null };
+    const res = await PATCH(patch({ answer: "cheaper", wouldPay: 450 }));
+    expect(res.status).toBe(400);
+    expect(update).not.toHaveBeenCalled();
+  });
+
+  it("saves a teacher's rate", async () => {
+    user.current = { id: "u1", email: "a@example.com" };
+    stored.current = { role: "teacher", wants: true, price_answer: null, teacher_rate: null };
+    const res = await PATCH(patch({ rate: "750-1000" }));
+    expect(res.status).toBe(200);
+    expect(update).toHaveBeenCalledWith(expect.objectContaining({ teacher_rate: "750-1000" }));
   });
 });

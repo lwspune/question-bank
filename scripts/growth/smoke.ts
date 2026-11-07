@@ -205,6 +205,14 @@ async function main() {
         // Live counts from tutor_interest, rendered on the page (lib/tutor/readout).
         line = "live table on the page (tutor_interest)";
         break;
+      case "tutor-price": {
+        // Drive the page's own loader (lib/tutor/readout, migration 0223) so a broken column list fails here.
+        const { loadTutorPriceReadout } = await import("../../src/lib/tutor/readout");
+        const p = await loadTutorPriceReadout(db);
+        const shown = p.arms.reduce((n, a) => n + a.shown, 0);
+        line = `${shown} students shown a price, ${p.studentYesNotAsked} Yes not asked yet (tutor_interest)`;
+        break;
+      }
       case "chapter-fix":
         // Read by hand with the committed query (lib/drill/chapterFix).
         line = "by hand: scripts/drill/chapter-fix-readout.sql";
