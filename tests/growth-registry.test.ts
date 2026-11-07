@@ -68,6 +68,7 @@ describe("EXPERIMENTS", () => {
     expect(readouts).toEqual([
       "answer-limit",
       "box-buy",
+      "chapter-fix",
       "chapter-share",
       "chapter-tests",
       "ebook-store",

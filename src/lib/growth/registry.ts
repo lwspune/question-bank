@@ -310,7 +310,8 @@ export type Readout =
   | "visual-solutions"
   | "homework-tab"
   | "homework-progress"
-  | "why-not-buy";
+  | "why-not-buy"
+  | "chapter-fix";
 
 export type Experiment = {
   id: string;
@@ -573,6 +574,20 @@ export const EXPERIMENTS: readonly Experiment[] = [
     liveSince: "2026-11-04",
     windowDays: 28,
     readout: "homework-tab",
+    status: "running",
+  },
+  {
+    id: "chapter-fix",
+    title: "Fix N mistakes in this chapter",
+    change:
+      "Signed in, a student who opens a chapter (/questions, /board, or /browse filtered to one chapter) where their drill holds mistakes sees one line above the questions, \"Fix 2 mistakes in this chapter\", with a Fix them button that opens the drill for that chapter alone.",
+    why: "Students come back to the bank but rarely to the drill: in the 30 days to 2026-11-07, 534 of 947 students with a miss returned on 2+ days, but 41 drilled on 2+ days. So the drill goes to the chapter they already chose. Review of a ChatGPT mentorship plan, 2026-11-07.",
+    metric:
+      "Of chapter-days where a student practised a chapter while holding older unfixed mistakes there: the share fixing one of them that day. Also drill starts tagged chapter / board_chapter / browse_chapter against chapter_fix views.",
+    rule: "Baseline (30 days to 2026-11-07): 30% (160 of 529 chapter-days, 191 students). Keep if 40%+. Drop if under 10% of chapter_fix views lead to a drill start that day. The /me redesign went live 2026-11-06, so part of any rise may be its.",
+    liveSince: "2026-11-07",
+    windowDays: 21,
+    readout: "chapter-fix",
     status: "running",
   },
   {
