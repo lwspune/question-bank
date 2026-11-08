@@ -9,7 +9,8 @@ import type { ExamLink } from "@/lib/exam/examLinks";
 
 export type MeTab = "home" | "performance" | "account";
 
-const TABS: readonly Tab<MeTab>[] = [
+/** The student's three pages, shared with their loading screens (MeLoading). */
+export const ME_TABS: readonly Tab<MeTab>[] = [
   { key: "home", label: "Home", href: "/me" },
   { key: "performance", label: "Performance", href: "/performance" },
   { key: "account", label: "Account", href: "/account" },
@@ -76,7 +77,7 @@ export default function MeHeader({
         )}
       </div>
 
-      {active && !readOnly && <TabStrip label="Your pages" tabs={TABS} active={active} />}
+      {active && !readOnly && <TabStrip label="Your pages" tabs={ME_TABS} active={active} />}
     </header>
   );
 }

@@ -58,8 +58,9 @@ export default async function AccountPage() {
   if (!user) redirect("/login?next=/account");
 
   const db = createSupabaseServerClient();
-  const freeMocks = await readFreeMockLimit(db);
-  const [rows, profile, invites, myBatches, { data: books }, pathSettings, header] = await Promise.all([
+  // One batch of reads (2026-11-08: the free-mock limit used to be read first, on its own).
+  const [freeMocks, rows, profile, invites, myBatches, { data: books }, pathSettings, header] = await Promise.all([
+    readFreeMockLimit(db),
     loadEntitlements(db, user.id),
     getOwnProfile(db, user.id),
     // Resolved by VERIFIED email on read — there is no binding step at signup,

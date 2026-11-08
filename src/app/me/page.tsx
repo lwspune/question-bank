@@ -26,8 +26,11 @@ export default async function MePage() {
   if (!user) redirect("/login?next=/me");
 
   const db = createSupabaseServerClient();
-  await logActivityOnce(db, user.id, surfaceViewedEvent(user.id, "me", new Date()));
-  const data = await loadMe(db, createTypedServerClient(), user, getOwnWeekly(db, user.id));
+  // The once-a-day view record goes alongside the reads, not before them.
+  const [, data] = await Promise.all([
+    logActivityOnce(db, user.id, surfaceViewedEvent(user.id, "me", new Date())),
+    loadMe(db, createTypedServerClient(), user, getOwnWeekly(db, user.id)),
+  ]);
 
   return (
     <>

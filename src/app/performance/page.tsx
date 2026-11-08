@@ -58,22 +58,27 @@ export default async function OwnPerformancePage(props: { searchParams: Promise<
 
   const now = new Date();
   const db = createSupabaseServerClient();
-  // The header (greeting, exams, focus) is read alongside the papers.
-  const [payload, header] = await Promise.all([
+  // ROUND 1: every read that needs nothing from another, at once (2026-11-08:
+  // the page ran them one after another, six database round trips).
+  const [payload, header, , limits, ownSheets] = await Promise.all([
     getOwnPerformance(),
+    // The header (greeting, exams, focus).
     getExamIdMap().then((ids) => loadMeHeader(db, user, ids, { now })),
+    // Who has opened this page was never recorded; now once a day.
+    logActivityOnce(db, user.id, surfaceViewedEvent(user.id, "performance", now)),
+    // The projected score's free trial (migration 0134, owner 2026-10-05).
+    getPremiumLimits(db),
+    // Board papers written on paper and checked by hand (migration 0153). Read
+    // with the student's own session: the tables only return their own sheets.
+    listOwnSubmissions(db),
   ]);
   if (!payload) redirect("/login?next=/performance");
 
-  // Who has opened this page was never recorded; now once a day.
-  await logActivityOnce(db, user.id, surfaceViewedEvent(user.id, "performance", now));
-
   const built = buildPerformance(payload, now);
 
-  // The projected score's free trial (migration 0134, owner 2026-10-05). Past
-  // it, or before it is revealed, the projection is LEFT OUT of what this page
-  // renders, so it never reaches the browser: a real lock, not a hidden card.
-  const limits = await getPremiumLimits(db);
+  // Past the trial, or before it is revealed, the projection is LEFT OUT of
+  // what this page renders, so it never reaches the browser: a real lock, not
+  // a hidden card.
   const access = projectionAccess({
     trialDays: limits?.projectionTrialDays ?? null,
     hasPass: limits?.hasPass ?? false,
@@ -101,26 +106,25 @@ export default async function OwnPerformancePage(props: { searchParams: Promise<
   const hadProjection = locked
     ? built.lanes.some((l) => l.exam === nav.selected?.exam && l.subject === nav.selected?.subject && l.projection)
     : false;
-  const projectionLocked =
-    hadProjection && (access.kind === "not_started" || access.kind === "expired") ? (
-      <ProjectionGate state={access} pass={access.kind === "expired" ? await premiumPassCta() : null} />
-    ) : undefined;
+  const showGate = hadProjection && (access.kind === "not_started" || access.kind === "expired");
   const projectionNote =
     access.kind === "trial"
       ? `Free for ${access.daysLeft === 1 ? "1 more day" : `${access.daysLeft} more days`}.`
       : undefined;
 
-  const links: TaxonomyLinks = nav.selected
-    ? await getTaxonomyLinks(nav.selected.exam, nav.selected.subject)
-    : EMPTY_TAXONOMY_LINKS;
+  // ROUND 2: the reads that need round 1, at once.
+  const [pass, links, starter] = await Promise.all([
+    showGate && access.kind === "expired" ? premiumPassCta() : Promise.resolve(null),
+    nav.selected
+      ? getTaxonomyLinks(nav.selected.exam, nav.selected.subject)
+      : Promise.resolve<TaxonomyLinks>(EMPTY_TAXONOMY_LINKS),
+    // Two in three active students have no graded paper (2026-10-06); for them
+    // the page offers one short test instead of a blank box. Read only then.
+    built.summary.graded === 0 ? loadStarterCard(db, user.id) : Promise.resolve(undefined),
+  ]);
+  const projectionLocked = showGate ? <ProjectionGate state={access} pass={pass} /> : undefined;
 
-  // Two in three active students have no graded paper (2026-10-06); for them
-  // the page offers one short test instead of a blank box. Read only then.
-  const starter = built.summary.graded === 0 ? await loadStarterCard(db, user.id) : undefined;
-
-  // Board papers written on paper and checked by hand (migration 0153). Read
-  // with the student's own session: the tables only return their own sheets.
-  const sheets = cardSheetRows(await listOwnSubmissions(db), { kind: "self" });
+  const sheets = cardSheetRows(ownSheets, { kind: "self" });
 
   return (
     <>
