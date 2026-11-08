@@ -100,6 +100,7 @@ async function main() {
     rollbacks: current.rollbacks,
     tables: current.tables,
     queries: current.queries,
+    blocks_total: current.blocksTotal ?? null,
   });
   if (insErr) throw new Error(`store snapshot: ${insErr.message}`);
   console.log(`\nSnapshot stored (${current.capturedAt}).`);

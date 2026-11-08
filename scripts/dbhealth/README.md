@@ -42,6 +42,7 @@ Each rule exists because the thing it watches has already broken this project.
 
 | Watched | Why |
 |---|---|
+| **Data read per query** (since 2026-11-08, migration 0240) | An audit found 516 GB read in 36 hours, mostly by statements that no ranking by time or calls flagged: a daily test at 730 MB a call, a dashboard function at 958 MB a call, a homework read at 21% of everything read. The report lists the BIGGEST READERS each window and flags `query-heavy-read` (100 MB a call warn, 500 MB critical, at least 1 GB in the window) and `query-read-share` (one statement 15% or more of all reads). To fix what it flags, run `/tech-debt queries`. The first two snapshots after 0240 print "not recorded": both ends of a window need buffers. |
 | **Disk spill per query** | The `/browse` regression wrote 13.9 MB per call to return 25 rows — 99.4% of the whole database's temp writes, and what drained the disk-IO budget. A healthy query spills nothing. |
 | **Calls per query per window** | Catches a new hot path on the day it appears rather than after a 91-day total looks alarming. |
 | **Distance to the PostgREST 1000-row cap** | A plain `.select()` truncates at 1000 rows **silently** — no error, just undercounted results. Has caused at least five separate bugs here. Measured as the largest number of PUBLIC questions in one chapter. |
