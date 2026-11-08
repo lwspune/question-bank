@@ -160,11 +160,16 @@ describe.skipIf(!HAS_ENV)("study paths (migration 0225)", () => {
     expect((await clients.riya.from("study_path_test_grants").select("mock_id")).data ?? []).toHaveLength(0);
   });
 
-  it("caps the Fix task at 5 questions", async () => {
-    const six = Array.from({ length: 6 }, () => randomUUID());
+  it("caps the Fix task at 10 questions, the revision weeks' daily most (0229)", async () => {
+    const ten = Array.from({ length: 10 }, () => randomUUID());
+    const ok = await admin
+      .from("study_path_days")
+      .insert({ user_id: ids.sam, day: "2026-11-27", path_id: samPath, tasks: [], fix_question_ids: ten });
+    expect(ok.error).toBeNull();
+    const eleven = Array.from({ length: 11 }, () => randomUUID());
     const { error } = await admin
       .from("study_path_days")
-      .insert({ user_id: ids.sam, day: "2026-11-26", path_id: samPath, tasks: [], fix_question_ids: six });
+      .insert({ user_id: ids.sam, day: "2026-11-26", path_id: samPath, tasks: [], fix_question_ids: eleven });
     expect(error?.code).toBe("23514");
   });
 
