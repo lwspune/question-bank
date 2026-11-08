@@ -1,0 +1,3342 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "00bdb7fc-155d-43ef-b7bc-da7f72b75ff7",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "R = R_0A^{1/3},\\qquad \\rho = \\dfrac{m}{V},\\ m = A\\,u"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "A=8:\\ V = \\dfrac43\\pi\\left(R_0 8^{1/3}\\right)^3 = \\dfrac43\\pi R_0^3\\times8",
+              "f": "(4/3)*pi*(R0*8^(1/3))^3",
+              "value": "(4/3)*pi*R0^3*8"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\rho = \\dfrac{8u}{\\frac43\\pi R_0^3\\times8} = \\dfrac{3u}{4\\pi R_0^3}",
+              "f": "8/((4/3)*pi*R0^3*8)",
+              "value": "3/(4*pi*R0^3)",
+              "note": "A cancels"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\dfrac{\\rho_8}{\\rho_1} = \\dfrac{3u/4\\pi R_0^3}{3u/4\\pi R_0^3} = 1",
+              "f": "(8/((4/3)*pi*R0^3*8))/(1/((4/3)*pi*R0^3*1))",
+              "value": "1",
+              "note": "equal densities: option D"
+            }
+          ],
+          "answer": "(8/((4/3)*pi*R0^3*8))/(1/((4/3)*pi*R0^3*1))",
+          "vars": {
+            "R0": 1.2
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "9d215356",
+        "answer": {
+          "value": 1,
+          "label": "ρ₁ : ρ₂ = 1 : 1 (option D)"
+        }
+      }
+    },
+    {
+      "id": "02bbcbb0-8518-44da-90cd-61a6990e568c",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "2+2 = A+1\\ \\Rightarrow\\ A = 3",
+              "f": "2+2-1",
+              "value": "3",
+              "dp": 0
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\Delta M = (2\\times2.014102)-(3.016049+1.008665) = 0.003490\\ \\text{u}",
+              "f": "2*2.014102-(3.016049+1.008665)",
+              "value": "0.003490",
+              "dp": 6
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "E = 0.003490\\times931.5 = 3.25\\ \\text{MeV}",
+              "f": "0.00349*931.5",
+              "value": "3.25",
+              "dp": 2
+            }
+          ],
+          "answer": "2+2-1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 10,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "78c0048e",
+        "answer": {
+          "value": 3,
+          "label": "A = 3; E = 3.25 MeV"
+        }
+      }
+    },
+    {
+      "id": "04d3f5d6-c10e-414e-be97-dc0e7e36d355",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\Delta m = Zm_H + (A-Z)m_n - m,\\quad E_b = \\Delta m\\times931.5"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{Fe: } \\Delta m = 26(1.007825)+30(1.008665)-55.934939 = 0.528461\\ \\text{u}",
+              "f": "26*1.007825+30*1.008665-55.934939",
+              "value": "0.528461",
+              "dp": 6
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "E_b = 0.528461\\times931.5 = 492.26\\ \\text{MeV}",
+              "f": "0.528461*931.5",
+              "value": "492.26",
+              "dp": 2
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\dfrac{492.26}{56} = 8.79\\ \\text{MeV per nucleon}",
+              "f": "492.26/56",
+              "value": "8.79",
+              "dp": 2
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\text{Bi: } \\Delta m = 83(1.007825)+126(1.008665)-208.980388 = 1.760877\\ \\text{u}",
+              "f": "83*1.007825+126*1.008665-208.980388",
+              "value": "1.760877",
+              "dp": 6
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "E_b = 1.760877\\times931.5 = 1640.26\\ \\text{MeV}",
+              "f": "1.760877*931.5",
+              "value": "1640.26",
+              "dp": 2
+            },
+            {
+              "step": "s7",
+              "kind": "calc",
+              "tex": "\\dfrac{1640.26}{209} = 7.85\\ \\text{MeV per nucleon}",
+              "f": "1640.26/209",
+              "value": "7.85",
+              "dp": 2
+            }
+          ],
+          "answer": "0.528461*931.5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s6"
+            ]
+          },
+          {
+            "from": 10,
+            "beats": [
+              "s7"
+            ]
+          }
+        ],
+        "fingerprint": "211c4775",
+        "answer": {
+          "value": 492.2614215,
+          "label": "492.26 MeV; 1640.26 MeV"
+        }
+      }
+    },
+    {
+      "id": "082c7c6e-8788-4619-b844-01609d28cac2",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "n = \\dfrac{1000}{239} = 4.184\\ \\text{mol}",
+              "f": "1000/239",
+              "value": "4.184",
+              "dp": 3
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "N = nN_A = (4.184)(6.023\\times10^{23}) = 2.52\\times10^{24}",
+              "f": "4.184*6.023*10^23",
+              "value": "2.52*10^24",
+              "sf": 3
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "E = N\\times180 = (2.52\\times10^{24})(180) = 4.54\\times10^{26}\\ \\text{MeV}",
+              "f": "2.52*10^24*180",
+              "value": "4.54*10^26",
+              "sf": 3
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "E = (4.54\\times10^{26})(1.6\\times10^{-13}) = 7.26\\times10^{13}\\ \\text{J}",
+              "f": "4.54*10^26*1.6*10^(-13)",
+              "value": "7.26*10^13",
+              "sf": 3
+            }
+          ],
+          "answer": "2.52*10^24*180"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "3c4ebd72",
+        "answer": {
+          "value": 4.536e+26,
+          "label": "4.54 × 10²⁶ MeV"
+        }
+      }
+    },
+    {
+      "id": "08686ae7-8673-4952-a8d1-e1c0edbc3299",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\Delta m = [m(^2\\text{H})+m(^3\\text{H})]-[m(^4\\text{He})+m_n]"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\Delta m = 5.030151-5.011268 = 0.018883\\ \\text{u}",
+              "f": "(2.014102+3.016049)-(4.002603+1.008665)",
+              "value": "0.018883",
+              "dp": 6
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "E = 0.018883\\times931.5 = 17.59\\ \\text{MeV}",
+              "f": "0.018883*931.5",
+              "value": "17.59",
+              "dp": 2
+            }
+          ],
+          "answer": "0.018883*931.5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "e3dca9c7",
+        "answer": {
+          "value": 17.5895145,
+          "label": "17.59 MeV"
+        }
+      }
+    },
+    {
+      "id": "0d0cba06-29cf-4f41-bf89-19d11e7568b2",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "d = 2r = 4.0\\ \\text{fm} = 4.0\\times10^{-15}\\ \\text{m}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "U = \\dfrac{(9\\times10^{9})(1.6\\times10^{-19})^2}{4.0\\times10^{-15}} = 5.76\\times10^{-14}\\ \\text{J}",
+              "f": "9*10^9*(1.6*10^(-19))^2/(4.0*10^(-15))",
+              "value": "5.76*10^(-14)",
+              "sf": 3
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "U = \\dfrac{5.76\\times10^{-14}}{1.6\\times10^{-13}} = 0.36\\ \\text{MeV}",
+              "f": "5.76*10^(-14)/(1.6*10^(-13))",
+              "value": "0.36",
+              "dp": 2,
+              "note": "= 360 keV"
+            }
+          ],
+          "answer": "5.76*10^(-14)/(1.6*10^(-13))"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "80c25ce9",
+        "answer": {
+          "value": 0.35999999999999993,
+          "label": "0.36 MeV (360 keV)"
+        }
+      }
+    },
+    {
+      "id": "111022f7-30c6-4d34-8e20-a0ddf8b19572",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "^{238}\\text{U}+n\\to{}^{140}\\text{Ce}+{}^{99}\\text{Ru}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{reactants: } 238.05079+1.008665 = 239.059455\\ \\text{u}",
+              "f": "238.05079+1.008665",
+              "value": "239.059455",
+              "dp": 6
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{products: } 139.90543+98.90594 = 238.81137\\ \\text{u}",
+              "f": "139.90543+98.90594",
+              "value": "238.81137",
+              "dp": 5
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\Delta m = 239.059455-238.81137 = 0.248085\\ \\text{u}",
+              "f": "239.059455-238.81137",
+              "value": "0.248085",
+              "dp": 6
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "Q = 0.248085\\times931.5 = 231.09\\ \\text{MeV}",
+              "f": "0.248085*931.5",
+              "value": "231.09",
+              "dp": 2
+            }
+          ],
+          "answer": "0.248085*931.5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "edc43b90",
+        "answer": {
+          "value": 231.0911775,
+          "label": "Q = 231.09 MeV"
+        }
+      }
+    },
+    {
+      "id": "1986644e-cb06-441a-94f5-fc5e69ac1596",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "N = \\dfrac{6.023\\times10^{23}}{2}\\times100 = 3.0115\\times10^{25}",
+              "f": "6.023*10^23/2*100",
+              "value": "3.0115*10^25",
+              "sf": 5
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{energy per atom} = \\dfrac{3.27}{2} = 1.635\\ \\text{MeV}",
+              "f": "3.27/2",
+              "value": "1.635",
+              "dp": 3,
+              "note": "two nuclei per reaction"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "E = 3.0115\\times10^{25}\\times1.635\\times1.6\\times10^{-13} = 7.878\\times10^{12}\\ \\text{J}",
+              "f": "3.0115*10^25*1.635*1.6*10^(-13)",
+              "value": "7.878*10^12",
+              "sf": 4
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "t = \\dfrac{E}{P} = \\dfrac{7.878\\times10^{12}}{500} = 1.5756\\times10^{10}\\ \\text{s}",
+              "f": "7.878*10^12/500",
+              "value": "1.5756*10^10",
+              "sf": 5
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "t = \\dfrac{1.5756\\times10^{10}}{3.15\\times10^{7}} \\approx 500\\ \\text{years}",
+              "f": "1.5756*10^10/(3.15*10^7)",
+              "value": "500",
+              "sf": 2
+            }
+          ],
+          "answer": "1.5756*10^10/(3.15*10^7)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 10,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 12,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 15,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 17,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "79d23cca",
+        "answer": {
+          "value": 500.19047619047615,
+          "label": "≈ 500 years"
+        }
+      }
+    },
+    {
+      "id": "1dfb338b-0aeb-4d72-9b47-4d22a08b7263",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "N = \\dfrac{2000}{2.0}\\times6.023\\times10^{23} = 6.023\\times10^{26}",
+              "f": "2000/2.0*6.023*10^23",
+              "value": "6.023*10^26",
+              "sf": 4
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "N_f = \\dfrac N2 = 3.01\\times10^{26}",
+              "f": "6.023*10^26/2",
+              "value": "3.01*10^26",
+              "sf": 3,
+              "note": "two deuterons per event"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "E = (3.01\\times10^{26})(3.27) = 9.85\\times10^{26}\\ \\text{MeV}",
+              "f": "3.0115*10^26*3.27",
+              "value": "9.85*10^26",
+              "sf": 3
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "E = (9.85\\times10^{26})(1.6\\times10^{-13}) = 1.58\\times10^{14}\\ \\text{J}",
+              "f": "9.85*10^26*1.6*10^(-13)",
+              "value": "1.58*10^14",
+              "sf": 3
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "t = \\dfrac{E}{P} = \\dfrac{1.58\\times10^{14}}{100} = 1.58\\times10^{12}\\ \\text{s}",
+              "f": "1.58*10^14/100",
+              "value": "1.58*10^12",
+              "sf": 3
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "t = \\dfrac{1.58\\times10^{12}}{3.154\\times10^{7}} = 5.0\\times10^{4}\\ \\text{years}",
+              "f": "1.58*10^12/(3.154*10^7)",
+              "value": "5.0*10^4",
+              "sf": 2
+            }
+          ],
+          "answer": "1.58*10^12/(3.154*10^7)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 10,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 12,
+            "beats": [
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "99c1ef7a",
+        "answer": {
+          "value": 50095.11731135067,
+          "label": "≈ 5.0 × 10⁴ years"
+        }
+      }
+    },
+    {
+      "id": "20ca3fbe-6bc8-46bc-b065-fd0e14dce6df",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\Delta m = (2.014102+3.016049)-(4.002603+1.008665) = 0.018883\\ \\text{u}",
+              "f": "(2.014102+3.016049)-(4.002603+1.008665)",
+              "value": "0.018883",
+              "dp": 6
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "Q = 0.018883\\times931 = 17.58\\ \\text{MeV}",
+              "f": "0.018883*931",
+              "value": "17.58",
+              "dp": 2
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "\\rho = \\dfrac{mA}{\\frac43\\pi R^3},\\qquad R = R_0A^{1/3}"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\rho = \\dfrac{mA}{\\frac43\\pi R_0^3A} = \\dfrac{3m}{4\\pi R_0^3}",
+              "f": "m*A/((4/3)*pi*(R0*A^(1/3))^3)",
+              "value": "3*m/(4*pi*R0^3)",
+              "note": "A cancels: same for every nucleus"
+            }
+          ],
+          "answer": "0.018883*931",
+          "vars": {
+            "m": 1.67,
+            "R0": 1.2,
+            "A": 27
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 15,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 17,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "6a00a162",
+        "answer": {
+          "value": 17.580073,
+          "label": "Q = 17.58 MeV; ρ = 3m/(4πR₀³)"
+        }
+      }
+    },
+    {
+      "id": "2d686dd7-0cc6-4192-b60b-43991b7bd9a2",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "m_{\\text{Fe}} = 55.85\\ \\text{u} = 55.85\\times1.66\\times10^{-27} = 9.27\\times10^{-26}\\ \\text{kg}",
+              "f": "55.85*1.66*10^(-27)",
+              "value": "9.27*10^(-26)",
+              "sf": 3
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\rho = \\dfrac{9.27\\times10^{-26}}{\\frac{4\\pi}{3}(1.2\\times10^{-15})^3}\\times\\dfrac1{56} = 2.29\\times10^{17}\\ \\text{kg m}^{-3}",
+              "f": "9.27*10^(-26)/((4*pi/3)*(1.2*10^(-15))^3)/56",
+              "value": "2.29*10^17",
+              "sf": 3
+            }
+          ],
+          "answer": "9.27*10^(-26)/((4*pi/3)*(1.2*10^(-15))^3)/56"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "8f4b5db8",
+        "answer": {
+          "value": 228696416552249180,
+          "label": "2.29 × 10¹⁷ kg m⁻³"
+        }
+      }
+    },
+    {
+      "id": "3737aa93-bafc-424c-8f3b-1bd8ba87cd17",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "R = R_0A^{1/3},\\qquad \\rho = \\dfrac{Am_N}{\\frac43\\pi R^3}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "A=64:\\ \\rho = \\dfrac{64\\,m_N}{\\frac43\\pi R_0^3\\times64} = \\dfrac{3m_N}{4\\pi R_0^3}",
+              "f": "64/((4/3)*pi*(R0*64^(1/3))^3)",
+              "value": "3/(4*pi*R0^3)"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "A=125:\\ \\rho = \\dfrac{125\\,m_N}{\\frac43\\pi R_0^3\\times125} = \\dfrac{3m_N}{4\\pi R_0^3}",
+              "f": "125/((4/3)*pi*(R0*125^(1/3))^3)",
+              "value": "3/(4*pi*R0^3)"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\dfrac{\\rho_{64}}{\\rho_{125}} = 1",
+              "f": "(64/((4/3)*pi*(R0*64^(1/3))^3))/(125/((4/3)*pi*(R0*125^(1/3))^3))",
+              "value": "1",
+              "note": "option D"
+            }
+          ],
+          "answer": "(64/((4/3)*pi*(R0*64^(1/3))^3))/(125/((4/3)*pi*(R0*125^(1/3))^3))",
+          "vars": {
+            "R0": 1.2
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "c8f752df",
+        "answer": {
+          "value": 1.0000000000000002,
+          "label": "ρ₆₄ : ρ₁₂₅ = 1 : 1 (option D)"
+        }
+      }
+    },
+    {
+      "id": "4278f7de-0c8b-40a9-af7e-b5fb3d84a079",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "R = R_0A^{1/3}:\\quad \\dfrac{R_{Au}}{R_{Ag}} = \\left(\\dfrac{197}{107}\\right)^{1/3}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{197}{107} = 1.841",
+              "f": "197/107",
+              "value": "1.841",
+              "dp": 3
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "(1.841)^{1/3} = 1.226",
+              "f": "1.841^(1/3)",
+              "value": "1.226",
+              "dp": 3
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\dfrac{R_{Au}}{R_{Ag}} \\approx 1.23",
+              "f": "(197/107)^(1/3)",
+              "value": "1.23",
+              "dp": 2
+            }
+          ],
+          "answer": "(197/107)^(1/3)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "8dd6809c",
+        "answer": {
+          "value": 1.2256340452973082,
+          "label": "R_Au : R_Ag ≈ 1.23"
+        }
+      }
+    },
+    {
+      "id": "47b2cb36-a30b-4e66-b123-bdfad829c370",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "2m_H = 2\\times1.007825 = 2.015650\\ \\text{u}",
+              "f": "2*1.007825",
+              "value": "2.01565",
+              "dp": 5
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "2m_n = 2\\times1.008665 = 2.017330\\ \\text{u}",
+              "f": "2*1.008665",
+              "value": "2.01733",
+              "dp": 5
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\Delta m = 4.032980-4.002603 = 0.030377\\ \\text{u}",
+              "f": "2.01565+2.01733-4.002603",
+              "value": "0.030377",
+              "dp": 6
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "BE = 0.030377\\times931.5 = 28.30\\ \\text{MeV}",
+              "f": "0.030377*931.5",
+              "value": "28.30",
+              "dp": 2
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\dfrac{BE}{A} = \\dfrac{28.30}{4} = 7.07\\ \\text{MeV per nucleon}",
+              "f": "0.030377*931.5/4",
+              "value": "7.07",
+              "dp": 2
+            }
+          ],
+          "answer": "0.030377*931.5/4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 12,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 15,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "479174b0",
+        "answer": {
+          "value": 7.074043875,
+          "label": "7.07 MeV per nucleon"
+        }
+      }
+    },
+    {
+      "id": "4d28c927-bcf9-4df6-b633-53f349c66c2c",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "R = R_0A^{1/3}\\quad(\\text{no } Z)"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{R_Y}{R_X} = \\left(\\dfrac{125}{27}\\right)^{1/3} = \\dfrac53",
+              "f": "(125/27)^(1/3)",
+              "value": "5/3",
+              "note": "option A"
+            }
+          ],
+          "answer": "(125/27)^(1/3)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "77b1f771",
+        "answer": {
+          "value": 1.6666666666666667,
+          "label": "R_Y = (5/3)R (option A)"
+        }
+      }
+    },
+    {
+      "id": "4e4a549b-be61-4460-a9cf-ca402a11783a",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\Delta m = 2m(^{12}\\text{C}) - [m(^{20}\\text{Ne})+m(^{4}\\text{He})]"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{products} = 19.992439+4.002603 = 23.995042\\ \\text{u}",
+              "f": "19.992439+4.002603",
+              "value": "23.995042",
+              "dp": 6
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\Delta m = 24.000000-23.995042 = 0.004958\\ \\text{u}",
+              "f": "2*12.0-(19.992439+4.002603)",
+              "value": "0.004958",
+              "dp": 6
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "Q = 0.004958\\times931 = 4.62\\ \\text{MeV}",
+              "f": "0.004958*931",
+              "value": "4.62",
+              "dp": 2,
+              "note": "Δm > 0: energy released"
+            }
+          ],
+          "answer": "0.004958*931"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 11,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "7e58f791",
+        "answer": {
+          "value": 4.615898,
+          "label": "4.62 MeV released"
+        }
+      }
+    },
+    {
+      "id": "5620d241-0c9b-4fd8-b319-7fdb0132a858",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "m_R = 1.007825+3.016049 = 4.023874\\ \\text{u}",
+              "f": "1.007825+3.016049",
+              "value": "4.023874",
+              "dp": 6
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "m_P = 2\\times2.014102 = 4.028204\\ \\text{u}",
+              "f": "2*2.014102",
+              "value": "4.028204",
+              "dp": 6
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\Delta m = m_R-m_P = -0.004330\\ \\text{u}",
+              "f": "4.023874-4.028204",
+              "value": "-0.00433",
+              "dp": 6,
+              "note": "negative: energy absorbed"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "E = 0.004330\\times931.5 = 4.03\\ \\text{MeV}",
+              "f": "0.00433*931.5",
+              "value": "4.03",
+              "dp": 2
+            }
+          ],
+          "answer": "0.00433*931.5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 12,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "3cbfafe7",
+        "answer": {
+          "value": 4.033395,
+          "label": "4.03 MeV absorbed"
+        }
+      }
+    },
+    {
+      "id": "56d361ee-c4d0-4532-8ac0-f775a6730898",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "^{56}\\text{Fe}\\to2\\,{}^{28}\\text{Al}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "2\\times27.98191 = 55.96382\\ \\text{u}",
+              "f": "2*27.98191",
+              "value": "55.96382",
+              "dp": 5
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\Delta m = 55.93494-55.96382 = -0.02888\\ \\text{u}",
+              "f": "55.93494-55.96382",
+              "value": "-0.02888",
+              "dp": 5
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "Q = -0.02888\\times931.5 = -26.9\\ \\text{MeV}",
+              "f": "-0.02888*931.5",
+              "value": "-26.9",
+              "dp": 1,
+              "note": "Q < 0: not possible"
+            }
+          ],
+          "answer": "-0.02888*931.5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 13,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 14,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 16,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "432b6ced",
+        "answer": {
+          "value": -26.90172,
+          "label": "Q = −26.9 MeV: not possible"
+        }
+      }
+    },
+    {
+      "id": "584aa992-ee79-4949-825b-dcec7a91672a",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "M = Am,\\qquad R = R_0A^{1/3}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "V = \\dfrac43\\pi\\left(R_0A^{1/3}\\right)^3 = \\dfrac43\\pi R_0^3A",
+              "f": "(4/3)*pi*(R0*A^(1/3))^3",
+              "value": "(4/3)*pi*R0^3*A"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\rho = \\dfrac{Am}{\\frac43\\pi R_0^3A} = \\dfrac{3m}{4\\pi R_0^3}",
+              "f": "m*A/((4/3)*pi*R0^3*A)",
+              "value": "3*m/(4*pi*R0^3)",
+              "note": "A cancels"
+            }
+          ],
+          "answer": "3*m/(4*pi*R0^3)",
+          "vars": {
+            "m": 1.67,
+            "R0": 1.2,
+            "A": 27
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "bea98cc5",
+        "answer": {
+          "value": 0.23071940535023025,
+          "label": "ρ = 3m/(4πR₀³), same for all A"
+        }
+      }
+    },
+    {
+      "id": "5c6165b8-e9c2-4137-9507-ac936a734e54",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "R = R_0A^{1/3},\\quad R_0 = 1.2\\ \\text{fm}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "R = 1.2\\times(125)^{1/3} = 1.2\\times5 = 6.0\\ \\text{fm}",
+              "f": "1.2*125^(1/3)",
+              "value": "6.0",
+              "dp": 1,
+              "note": "option A"
+            }
+          ],
+          "answer": "1.2*125^(1/3)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "da768656",
+        "answer": {
+          "value": 5.999999999999999,
+          "label": "6.0 fm (option A)"
+        }
+      }
+    },
+    {
+      "id": "6b210256-3500-456b-8f68-ca48db740bf1",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "N = \\dfrac{3.0}{62.92960}\\times6.023\\times10^{23} = 2.871\\times10^{22}",
+              "f": "3.0/62.9296*6.023*10^23",
+              "value": "2.871*10^22",
+              "sf": 4
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\Delta m = 29(1.007825)+34(1.008665)-62.92960 = 0.591935\\ \\text{u}",
+              "f": "29*1.007825+34*1.008665-62.9296",
+              "value": "0.591935",
+              "dp": 6
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "E_b = 0.591935\\times931.5 = 551.39\\ \\text{MeV}",
+              "f": "0.591935*931.5",
+              "value": "551.39",
+              "dp": 2
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "E = NE_b = (2.871\\times10^{22})(551.39) = 1.58\\times10^{25}\\ \\text{MeV}",
+              "f": "2.871*10^22*551.39",
+              "value": "1.58*10^25",
+              "sf": 3
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "E = 1.58\\times10^{25}\\times1.6\\times10^{-13} = 2.5\\times10^{12}\\ \\text{J}",
+              "f": "1.58*10^25*1.6*10^(-13)",
+              "value": "2.5*10^12",
+              "sf": 2
+            }
+          ],
+          "answer": "2.871*10^22*551.39"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 10,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "e1ed0fd4",
+        "answer": {
+          "value": 1.5830406899999998e+25,
+          "label": "1.58×10²⁵ MeV = 2.5×10¹² J"
+        }
+      }
+    },
+    {
+      "id": "7010a441-bc9d-4e48-b440-d2badf08d59f",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\rho = \\dfrac{mA}{\\frac43\\pi R^3},\\quad R = R_0A^{1/3}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\rho = \\dfrac{mA}{\\frac43\\pi R_0^3A} = \\dfrac{3m}{4\\pi R_0^3}",
+              "f": "m*A/((4/3)*pi*(R0*A^(1/3))^3)",
+              "value": "3*m/(4*pi*R0^3)",
+              "note": "A cancels"
+            }
+          ],
+          "answer": "3*m/(4*pi*R0^3)",
+          "vars": {
+            "m": 1.67,
+            "R0": 1.2,
+            "A": 27
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "69786048",
+        "answer": {
+          "value": 0.23071940535023025,
+          "label": "ρ = 3m/(4πR₀³), independent of A"
+        }
+      }
+    },
+    {
+      "id": "758444c0-b9bf-4226-aac7-1aadb9daecc8",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\rho = \\dfrac{mA}{\\frac43\\pi R^3},\\quad R = R_0A^{1/3}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\rho = \\dfrac{Am}{\\frac43\\pi\\left(R_0A^{1/3}\\right)^3} = \\dfrac{3m}{4\\pi R_0^3}",
+              "f": "m*A/((4/3)*pi*(R0*A^(1/3))^3)",
+              "value": "3*m/(4*pi*R0^3)",
+              "note": "A cancels"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\rho = \\dfrac{3(1.67\\times10^{-27})}{4\\pi(1.2\\times10^{-15})^3} \\approx 2.3\\times10^{17}\\ \\text{kg m}^{-3}",
+              "f": "3*1.67*10^(-27)/(4*pi*(1.2*10^(-15))^3)",
+              "value": "2.3*10^17",
+              "sf": 2
+            }
+          ],
+          "answer": "3*1.67*10^(-27)/(4*pi*(1.2*10^(-15))^3)",
+          "vars": {
+            "m": 1.67,
+            "R0": 1.2,
+            "A": 27
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 13,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "dc538c44",
+        "answer": {
+          "value": 230719405350230240,
+          "label": "ρ = 3m/4πR₀³ ≈ 2.3×10¹⁷ kg/m³"
+        }
+      }
+    },
+    {
+      "id": "778d2247-85f5-42f6-b973-6040eb20e927",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "M = mA,\\qquad R = R_0A^{1/3}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\rho = \\dfrac{mA}{\\frac43\\pi R^3} = \\dfrac{mA}{\\frac43\\pi R_0^3A}",
+              "f": "m*A/((4/3)*pi*(R0*A^(1/3))^3)",
+              "value": "m*A/((4/3)*pi*R0^3*A)"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\rho = \\dfrac{3m}{4\\pi R_0^3}",
+              "f": "m*A/((4/3)*pi*R0^3*A)",
+              "value": "3*m/(4*pi*R0^3)",
+              "note": "A cancels"
+            }
+          ],
+          "answer": "3*m/(4*pi*R0^3)",
+          "vars": {
+            "m": 1.67,
+            "R0": 1.2,
+            "A": 27
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 11,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 13,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "e75bef95",
+        "answer": {
+          "value": 0.23071940535023025,
+          "label": "ρ = 3m/(4πR₀³), same for all A"
+        }
+      }
+    },
+    {
+      "id": "77a0da5a-f062-4658-a80c-c8ea769706a5",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "BE_{\\text{parent}} = 240\\times7.6 = 1824\\ \\text{MeV}",
+              "f": "240*7.6",
+              "value": "1824",
+              "dp": 0
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "BE_{\\text{fragments}} = 2\\times(120\\times8.5) = 2040\\ \\text{MeV}",
+              "f": "2*(120*8.5)",
+              "value": "2040",
+              "dp": 0
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "Q = 2040-1824 = 216\\ \\text{MeV}",
+              "f": "2040-1824",
+              "value": "216",
+              "dp": 0,
+              "note": "final minus initial"
+            }
+          ],
+          "answer": "2040-1824"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "c19d15dd",
+        "answer": {
+          "value": 216,
+          "label": "Q = 216 MeV"
+        }
+      }
+    },
+    {
+      "id": "7e746530-b231-4274-92ab-b55996551fd3",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "E = mc^2,\\qquad 1\\ \\text{u} = 1.6605\\times10^{-27}\\ \\text{kg}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "E = (1.6605\\times10^{-27})(8.9875\\times10^{16}) = 1.4924\\times10^{-10}\\ \\text{J}",
+              "f": "1.6605*10^(-27)*8.9875*10^16",
+              "value": "1.4924*10^(-10)",
+              "sf": 5
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "E = \\dfrac{1.4924\\times10^{-10}}{1.602\\times10^{-19}} = 9.316\\times10^{8}\\ \\text{eV}",
+              "f": "1.4924*10^(-10)/(1.602*10^(-19))",
+              "value": "9.316*10^8",
+              "sf": 4,
+              "note": "so 1 u ≈ 931.5 MeV"
+            }
+          ],
+          "answer": "1.4924*10^(-10)/(1.602*10^(-19))"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 18,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 20,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "ab021b3b",
+        "answer": {
+          "value": 931585518.102372,
+          "label": "1 u ≈ 931.5 MeV"
+        }
+      }
+    },
+    {
+      "id": "81afe5f6-df67-4e31-a78b-4edf88e61343",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "E = mc^2,\\qquad m = 1\\ \\text{g} = 10^{-3}\\ \\text{kg}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "E = 10^{-3}\\times(3\\times10^{8})^2 = 9\\times10^{13}\\ \\text{J}",
+              "f": "10^(-3)*(3*10^8)^2",
+              "value": "9*10^13",
+              "sf": 1
+            }
+          ],
+          "answer": "10^(-3)*(3*10^8)^2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "b2578487",
+        "answer": {
+          "value": 90000000000000,
+          "label": "9 × 10¹³ J"
+        }
+      }
+    },
+    {
+      "id": "91c2a8ed-cc19-46a1-ac60-71a9dc66170f",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "m_p+m_n = 1.007277+1.008665 = 2.015942\\ \\text{u}",
+              "f": "1.007277+1.008665",
+              "value": "2.015942",
+              "dp": 6
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\Delta m = 2.015942-2.013553 = 0.002389\\ \\text{u}",
+              "f": "2.015942-2.013553",
+              "value": "0.002389",
+              "dp": 6
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "E_b = 0.002389\\times931.5 = 2.23\\ \\text{MeV}",
+              "f": "0.002389*931.5",
+              "value": "2.23",
+              "dp": 2
+            }
+          ],
+          "answer": "0.002389*931.5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 14,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 16,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "714610ff",
+        "answer": {
+          "value": 2.2253535,
+          "label": "Δm = 0.002389 u; E = 2.23 MeV"
+        }
+      }
+    },
+    {
+      "id": "aab0d426-42fa-4434-a618-bed39e9e98ab",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "m_H+m_n = 1.007825+1.008665 = 2.016490\\ \\text{u}",
+              "f": "1.007825+1.008665",
+              "value": "2.01649",
+              "dp": 6
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\Delta m = 2.016490-2.014102 = 0.002388\\ \\text{u}",
+              "f": "2.01649-2.014102",
+              "value": "0.002388",
+              "dp": 6
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "E = 0.002388\\times931.5 = 2.224\\ \\text{MeV}",
+              "f": "0.002388*931.5",
+              "value": "2.224",
+              "dp": 3
+            }
+          ],
+          "answer": "0.002388*931.5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 10,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 12,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "f1534299",
+        "answer": {
+          "value": 2.224422,
+          "label": "E = 2.224 MeV"
+        }
+      }
+    },
+    {
+      "id": "ac322783-5944-4e02-b216-14709765002c",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "R = R_0A^{1/3},\\qquad M = Am"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "V = \\dfrac43\\pi\\left(R_0A^{1/3}\\right)^3 = \\dfrac43\\pi R_0^3A",
+              "f": "(4/3)*pi*(R0*A^(1/3))^3",
+              "value": "(4/3)*pi*R0^3*A"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\rho = \\dfrac{Am}{\\frac43\\pi R_0^3A} = \\dfrac{3m}{4\\pi R_0^3}",
+              "f": "m*A/((4/3)*pi*R0^3*A)",
+              "value": "3*m/(4*pi*R0^3)",
+              "note": "A cancels"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\rho = \\dfrac{5.01\\times10^{-27}}{2.17\\times10^{-44}} \\approx 2.3\\times10^{17}\\ \\text{kg m}^{-3}",
+              "f": "5.01*10^(-27)/(2.17*10^(-44))",
+              "value": "2.3*10^17",
+              "sf": 2
+            }
+          ],
+          "answer": "5.01*10^(-27)/(2.17*10^(-44))",
+          "vars": {
+            "m": 1.67,
+            "R0": 1.2,
+            "A": 27
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 12,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 17,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "74d44850",
+        "answer": {
+          "value": 230875576036866370,
+          "label": "ρ = 3m/4πR₀³ ≈ 2.3×10¹⁷ kg/m³"
+        }
+      }
+    },
+    {
+      "id": "ae7dae0a-6274-4485-80ff-53c5fd4661c5",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "R = R_0A^{1/3}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{r_A}{r_B} = \\left(\\dfrac{27}{64}\\right)^{1/3} = \\dfrac34",
+              "f": "(27/64)^(1/3)",
+              "value": "3/4",
+              "note": "option D"
+            }
+          ],
+          "answer": "(27/64)^(1/3)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "7f523b43",
+        "answer": {
+          "value": 0.75,
+          "label": "r_A : r_B = 3 : 4 (option D)"
+        }
+      }
+    },
+    {
+      "id": "af0e8fca-84bc-42fa-a521-4678f952c281",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\Delta m = 21.00\\ \\text{u},\\qquad A = 7"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{\\Delta m}{A} = \\dfrac{21.00}{7} = 3\\ \\text{u}",
+              "f": "21.00/7",
+              "value": "3",
+              "dp": 0,
+              "note": "option A"
+            }
+          ],
+          "answer": "21.00/7"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "1cb125e8",
+        "answer": {
+          "value": 3,
+          "label": "3 u (option A)"
+        }
+      }
+    },
+    {
+      "id": "b21cecd8-42e4-43a7-a41a-5bcb08d766d7",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "^{235}\\text{U}+n\\to{}^{140}\\text{Xe}+{}^{94}\\text{Sr}+2n"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\Delta m = 235.04393-139.92164-93.91536-1.00866 = 0.19827\\ \\text{u}",
+              "f": "235.04393-139.92164-93.91536-1.00866",
+              "value": "0.19827",
+              "dp": 5,
+              "note": "one neutron cancels"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "E = 0.19827\\times931 = 184.6\\ \\text{MeV}",
+              "f": "0.19827*931",
+              "value": "184.6",
+              "dp": 1
+            }
+          ],
+          "answer": "235.04393-139.92164-93.91536-1.00866"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 10,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "488fba86",
+        "answer": {
+          "value": 0.19826999999998574,
+          "label": "Δm = 0.19827 u; E = 184.6 MeV"
+        }
+      }
+    },
+    {
+      "id": "b41b31d4-e3e6-490c-9edb-02d82fa53e87",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "R = R_0A^{1/3},\\quad V = \\dfrac43\\pi R_0^3A,\\quad m = Am_N"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\rho = \\dfrac{Am_N}{\\frac43\\pi R_0^3A} = \\dfrac{3m_N}{4\\pi R_0^3}",
+              "f": "m*A/((4/3)*pi*(R0*A^(1/3))^3)",
+              "value": "3*m/(4*pi*R0^3)",
+              "note": "A cancels"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{\\rho(A=64)}{\\rho(A=27)} = 1",
+              "f": "(m*64/((4/3)*pi*(R0*64^(1/3))^3))/(m*27/((4/3)*pi*(R0*27^(1/3))^3))",
+              "value": "1",
+              "note": "independent of A: option D"
+            }
+          ],
+          "answer": "1",
+          "vars": {
+            "m": 1.67,
+            "R0": 1.2,
+            "A": 27
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "5237692b",
+        "answer": {
+          "value": 1,
+          "label": "ρ independent of A (option D)"
+        }
+      }
+    },
+    {
+      "id": "b76bc48e-b2db-44ba-bf38-c30cf6924bdd",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "1\\ \\text{u} = \\dfrac{1.9926\\times10^{-26}}{12} = 1.66\\times10^{-27}\\ \\text{kg}",
+              "f": "1.9926*10^(-26)/12",
+              "value": "1.66*10^(-27)",
+              "sf": 3
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "2m_e = \\dfrac{2\\times9.1\\times10^{-31}}{1.66\\times10^{-27}} = 1.09639\\times10^{-3}\\ \\text{u}",
+              "f": "2*9.1*10^(-31)/(1.66*10^(-27))",
+              "value": "1.09639*10^(-3)",
+              "sf": 6
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "m_\\alpha = 4.002603-0.00109639 = 4.0015\\ \\text{u}",
+              "f": "4.002603-0.00109639",
+              "value": "4.0015",
+              "dp": 4
+            }
+          ],
+          "answer": "4.002603-0.00109639"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "774dbf64",
+        "answer": {
+          "value": 4.00150661,
+          "label": "m(α) ≈ 4.0015 u"
+        }
+      }
+    },
+    {
+      "id": "bb85b96e-57fa-4a63-a6d0-f74b349e46fa",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "6m_p+6m_n = 6.046950+6.051990 = 12.098940\\ \\text{u}",
+              "f": "6*1.007825+6*1.008665",
+              "value": "12.09894",
+              "dp": 6
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\Delta m = 12.098940-12.000000 = 0.098940\\ \\text{u}",
+              "f": "6*1.007825+6*1.008665-12.0",
+              "value": "0.09894",
+              "dp": 6
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "E_b = 0.098940\\times931.5 = 92.16\\ \\text{MeV}",
+              "f": "0.09894*931.5",
+              "value": "92.16",
+              "dp": 2
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\dfrac{92.16}{12} = 7.68\\ \\text{MeV per nucleon}",
+              "f": "92.16/12",
+              "value": "7.68",
+              "dp": 2
+            }
+          ],
+          "answer": "0.09894*931.5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 11,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "4b76c6e6",
+        "answer": {
+          "value": 92.16261,
+          "label": "E_b = 92.16 MeV"
+        }
+      }
+    },
+    {
+      "id": "bba418fb-56f0-452f-8ccc-39c0225bb5ab",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "Z = 7,\\quad N = 14-7 = 7"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\Delta m = 7(1.007825)+7(1.008665)-14.00307 = 0.11236\\ \\text{u}",
+              "f": "7*1.007825+7*1.008665-14.00307",
+              "value": "0.11236",
+              "dp": 5
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "E_b = 0.11236\\times931.5 = 104.66\\ \\text{MeV}",
+              "f": "0.11236*931.5",
+              "value": "104.66",
+              "dp": 2
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\dfrac{104.66}{14} = 7.48\\ \\text{MeV per nucleon}",
+              "f": "104.66/14",
+              "value": "7.48",
+              "dp": 2
+            }
+          ],
+          "answer": "0.11236*931.5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "5a691cdb",
+        "answer": {
+          "value": 104.66334,
+          "label": "E_b = 104.66 MeV"
+        }
+      }
+    },
+    {
+      "id": "c344277e-821b-4bbb-9392-734bd8483983",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "1\\ \\text{u} = 1.6605\\times10^{-27}\\ \\text{kg},\\qquad E = mc^2"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "E = 1.6605\\times10^{-27}\\times(2.9979\\times10^{8})^2 = 1.4924\\times10^{-10}\\ \\text{J}",
+              "f": "1.6605*10^(-27)*(2.9979*10^8)^2",
+              "value": "1.4924*10^(-10)",
+              "sf": 5
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "E = \\dfrac{1.4924\\times10^{-10}}{1.602\\times10^{-19}} = 9.316\\times10^{8}\\ \\text{eV}",
+              "f": "1.4924*10^(-10)/(1.602*10^(-19))",
+              "value": "9.316*10^8",
+              "sf": 4,
+              "note": "so 1 u ≈ 931.5 MeV/c²"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\Delta M(^{16}\\text{O}) = 0.13691\\times931.5 = 127.5\\ \\text{MeV}/c^2",
+              "f": "0.13691*931.5",
+              "value": "127.5",
+              "dp": 1
+            }
+          ],
+          "answer": "1.6605*10^(-27)*(2.9979*10^8)^2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "58ea3d16",
+        "answer": {
+          "value": 1.4923585022805001e-10,
+          "label": "1.49×10⁻¹⁰ J, 931.5 MeV, 127.5"
+        }
+      }
+    },
+    {
+      "id": "c3dcc651-a99a-4379-9440-55e12e360ca7",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "M = Am_N,\\qquad R = R_0A^{1/3}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "V = \\dfrac43\\pi R_0^3A,\\quad \\rho = \\dfrac{Am_N}{\\frac43\\pi R_0^3A} = \\dfrac{3m_N}{4\\pi R_0^3}",
+              "f": "m*A/((4/3)*pi*(R0*A^(1/3))^3)",
+              "value": "3*m/(4*pi*R0^3)",
+              "note": "A cancels"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac43\\pi(1.2\\times10^{-15})^3 = 7.24\\times10^{-45}\\ \\text{m}^3",
+              "f": "4*pi*(1.2*10^(-15))^3/3",
+              "value": "7.24*10^(-45)",
+              "sf": 3
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\rho = \\dfrac{1.66\\times10^{-27}}{7.24\\times10^{-45}} = 2.29\\times10^{17}\\ \\text{kg m}^{-3}",
+              "f": "1.66*10^(-27)/(7.24*10^(-45))",
+              "value": "2.29*10^17",
+              "sf": 3
+            }
+          ],
+          "answer": "3*1.66*10^(-27)/(4*pi*(1.2*10^(-15))^3)",
+          "vars": {
+            "m": 1.66,
+            "R0": 1.2,
+            "A": 27
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 11,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 12,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "4c8ee800",
+        "answer": {
+          "value": 229337852024779740,
+          "label": "ρ = 3m/4πR₀³ ≈ 2.3×10¹⁷ kg/m³"
+        }
+      }
+    },
+    {
+      "id": "c9597f31-86bd-4f9f-980f-fa9d75a39fd7",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "Q = \\left[2m(^{12}\\text{C})-m(^{20}\\text{Ne})-m(^{4}\\text{He})\\right]c^2"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\Delta m = 24.000000-23.995042 = 0.004958\\ \\text{u}",
+              "f": "2*12.0-19.992439-4.002603",
+              "value": "0.004958",
+              "dp": 6
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "Q = 0.004958\\times931.5 = 4.62\\ \\text{MeV}",
+              "f": "0.004958*931.5",
+              "value": "4.62",
+              "dp": 2,
+              "note": "Q > 0: exothermic"
+            }
+          ],
+          "answer": "0.004958*931.5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "25e5df45",
+        "answer": {
+          "value": 4.618377,
+          "label": "Q = +4.62 MeV, exothermic"
+        }
+      }
+    },
+    {
+      "id": "d4dd5283-7533-441f-bbf3-f8248cf60faf",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "^{56}\\text{Fe}\\to2\\,{}^{28}\\text{Al}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\Delta m = 55.93494-2(27.98191) = 55.93494-55.96382 = -0.02888\\ \\text{u}",
+              "f": "55.93494-2*27.98191",
+              "value": "-0.02888",
+              "dp": 5
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "Q = (-0.02888)(931.5) = -26.9\\ \\text{MeV}",
+              "f": "-0.02888*931.5",
+              "value": "-26.9",
+              "dp": 1,
+              "note": "Q < 0: endothermic, not possible"
+            }
+          ],
+          "answer": "-0.02888*931.5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 10,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "f6893a7b",
+        "answer": {
+          "value": -26.90172,
+          "label": "Q = −26.9 MeV: not possible"
+        }
+      }
+    },
+    {
+      "id": "d672a600-2ea4-4a1c-88a3-132dfcebcb8a",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "R = R_0A^{1/3}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{r_1}{r_2} = \\left(\\dfrac{64}{27}\\right)^{1/3} = \\dfrac43",
+              "f": "(64/27)^(1/3)",
+              "value": "4/3",
+              "note": "option B"
+            }
+          ],
+          "answer": "(64/27)^(1/3)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "a221a06a",
+        "answer": {
+          "value": 1.3333333333333333,
+          "label": "r₁ : r₂ = 4 : 3 (option B)"
+        }
+      }
+    },
+    {
+      "id": "d97e81c7-f9aa-4a16-9b25-eee3b5fd9984",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "^{198}_{80}\\text{Hg}:\\ 198-80 = 118\\ \\text{neutrons}",
+              "f": "198-80",
+              "value": "118",
+              "dp": 0
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "^{197}_{79}\\text{Au}:\\ 197-79 = 118\\ \\text{neutrons}",
+              "f": "197-79",
+              "value": "118",
+              "dp": 0,
+              "note": "Hg and Au are isotones"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "R = R_0A^{1/3},\\qquad \\rho = \\dfrac{mA}{\\frac43\\pi R^3}"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\rho = \\dfrac{mA}{\\frac43\\pi R_0^3A} = \\dfrac{3m}{4\\pi R_0^3}",
+              "f": "m*A/((4/3)*pi*(R0*A^(1/3))^3)",
+              "value": "3*m/(4*pi*R0^3)",
+              "note": "A cancels"
+            }
+          ],
+          "answer": "198-80",
+          "vars": {
+            "m": 1.67,
+            "R0": 1.2,
+            "A": 27
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 13,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "b324ced1",
+        "answer": {
+          "value": 118,
+          "label": "118 n each; ρ = 3m/(4πR₀³)"
+        }
+      }
+    },
+    {
+      "id": "ddfdba78-a691-4d43-9870-d536a53d5923",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "m_R = 2\\times12.000000 = 24.000000\\ \\text{u}",
+              "f": "2*12.0",
+              "value": "24",
+              "dp": 6
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "m_P = 19.992439+4.002603 = 23.995042\\ \\text{u}",
+              "f": "19.992439+4.002603",
+              "value": "23.995042",
+              "dp": 6
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\Delta m = 24.000000-23.995042 = 0.004958\\ \\text{u}",
+              "f": "24.0-23.995042",
+              "value": "0.004958",
+              "dp": 6
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "Q = 0.004958\\times931 = 4.62\\ \\text{MeV}",
+              "f": "0.004958*931",
+              "value": "4.62",
+              "dp": 2,
+              "note": "Q > 0: exothermic"
+            }
+          ],
+          "answer": "0.004958*931"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 10,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 12,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "0175f7f5",
+        "answer": {
+          "value": 4.615898,
+          "label": "Q = 4.62 MeV, exothermic"
+        }
+      }
+    },
+    {
+      "id": "e7d33247-2cc4-4c34-a7f5-554c54cee672",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "E_{\\text{atom}} = \\dfrac{3.27}{2} = 1.635\\ \\text{MeV}",
+              "f": "3.27/2",
+              "value": "1.635",
+              "dp": 3,
+              "note": "two deuterons per reaction"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "E = 6.023\\times10^{23}\\times1.635 = 9.85\\times10^{23}\\ \\text{MeV}",
+              "f": "6.023*10^23*1.635",
+              "value": "9.85*10^23",
+              "sf": 3
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "E = 9.85\\times10^{23}\\times1.6\\times10^{-13} = 1.576\\times10^{11}\\ \\text{J}",
+              "f": "9.85*10^23*1.6*10^(-13)",
+              "value": "1.576*10^11",
+              "sf": 4
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "t = \\dfrac{E}{P} = \\dfrac{1.576\\times10^{11}}{200} = 7.88\\times10^{8}\\ \\text{s}",
+              "f": "1.576*10^11/200",
+              "value": "7.88*10^8",
+              "sf": 3
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "t = \\dfrac{7.88\\times10^{8}}{3.15\\times10^{7}} \\approx 25\\ \\text{years}",
+              "f": "7.88*10^8/(3.15*10^7)",
+              "value": "25",
+              "sf": 2
+            }
+          ],
+          "answer": "7.88*10^8/(3.15*10^7)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 13,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 16,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "ee4b2c47",
+        "answer": {
+          "value": 25.015873015873016,
+          "label": "t = 7.88×10⁸ s ≈ 25 years"
+        }
+      }
+    },
+    {
+      "id": "eba3e1cf-62cb-46b0-be21-95e2e6d24d9a",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "Q = [m_H+m(^3\\text{H})-2m(^2\\text{H})]c^2"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\Delta m = 4.023874-4.028204 = -0.004330\\ \\text{u}",
+              "f": "1.007825+3.016049-2*2.014102",
+              "value": "-0.00433",
+              "dp": 6
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "Q = -0.004330\\times931.5 = -4.03\\ \\text{MeV}",
+              "f": "-0.00433*931.5",
+              "value": "-4.03",
+              "dp": 2,
+              "note": "Q < 0: endothermic"
+            }
+          ],
+          "answer": "-0.00433*931.5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "2f7be82b",
+        "answer": {
+          "value": -4.033395,
+          "label": "Q = −4.03 MeV, endothermic"
+        }
+      }
+    },
+    {
+      "id": "ec54562b-470d-4b81-bab4-ffb2a4c1a107",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "E_P = 240\\times7.6 = 1824\\ \\text{MeV}",
+              "f": "240*7.6",
+              "value": "1824",
+              "dp": 0
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "E_Q = 110\\times8.5 = 935\\ \\text{MeV}",
+              "f": "110*8.5",
+              "value": "935",
+              "dp": 0
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "E_R = 130\\times8.4 = 1092\\ \\text{MeV}",
+              "f": "130*8.4",
+              "value": "1092",
+              "dp": 0
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "E_Q+E_R = 2027\\ \\text{MeV}",
+              "f": "110*8.5+130*8.4",
+              "value": "2027",
+              "dp": 0
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\Delta E = 2027-1824 = 203\\ \\text{MeV}",
+              "f": "2027-1824",
+              "value": "203",
+              "dp": 0,
+              "note": "final minus initial"
+            }
+          ],
+          "answer": "2027-1824"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 10,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "6489e77f",
+        "answer": {
+          "value": 203,
+          "label": "ΔE = 203 MeV"
+        }
+      }
+    },
+    {
+      "id": "eeb7b3f4-181f-4b92-8c5f-5ca2f0a8476b",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "2m_p = 2\\times1.007825 = 2.015650\\ \\text{u}",
+              "f": "2*1.007825",
+              "value": "2.01565",
+              "dp": 5
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "2m_n = 2\\times1.008665 = 2.017330\\ \\text{u}",
+              "f": "2*1.008665",
+              "value": "2.01733",
+              "dp": 5
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\Delta m = 4.032980-4.002800 = 0.030180\\ \\text{u}",
+              "f": "2.01565+2.01733-4.0028",
+              "value": "0.03018",
+              "dp": 6
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "E_b = 0.030180\\times931 = 28.1\\ \\text{MeV}",
+              "f": "0.03018*931",
+              "value": "28.1",
+              "dp": 1
+            }
+          ],
+          "answer": "0.03018*931"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "18621225",
+        "answer": {
+          "value": 28.097579999999997,
+          "label": "E_b = 28.1 MeV"
+        }
+      }
+    },
+    {
+      "id": "f1c6c239-b360-48ea-bdd3-6dcd5c9954a9",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "N = \\dfrac{6.023\\times10^{23}}{239} = 2.52\\times10^{21}",
+              "f": "6.023*10^23/239",
+              "value": "2.52*10^21",
+              "sf": 3
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "E = N\\times180 = 2.52\\times10^{21}\\times180 = 4.5\\times10^{23}\\ \\text{MeV}",
+              "f": "2.52*10^21*180",
+              "value": "4.5*10^23",
+              "sf": 2
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "E = 4.5\\times10^{23}\\times1.6\\times10^{-13} \\approx 7.2\\times10^{10}\\ \\text{J}",
+              "f": "4.5*10^23*1.6*10^(-13)",
+              "value": "7.2*10^10",
+              "sf": 2
+            }
+          ],
+          "answer": "2.52*10^21*180"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 12,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 14,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "6d5b988a",
+        "answer": {
+          "value": 4.536e+23,
+          "label": "4.5 × 10²³ MeV"
+        }
+      }
+    }
+  ],
+  "decided": []
+}
