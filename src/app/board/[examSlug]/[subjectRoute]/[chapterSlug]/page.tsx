@@ -18,7 +18,6 @@ import {
 } from "@/lib/board/query";
 import BoardReader, { type BoardTopPyqs } from "@/app/board/BoardReader";
 import { loadChapterTopPyqs } from "@/lib/homework/chapterTop";
-import { LearnChapterLink } from "@/components/learn/LearnChapterLink";
 import { loadRevisionSheet } from "@/lib/board/revision/registry";
 import type { RevisionSheet } from "@/lib/board/revision/types";
 import BoardRevisionSheet from "@/app/board/_components/BoardRevisionSheet";
@@ -206,8 +205,6 @@ export default async function BoardChapterPage(props: { params: Promise<Params> 
 
         <ExamTwinsProvider twins={twins} supabaseUrl={supabaseUrl}>
           <ExamTwinChapterLine questionIds={questionIds} />
-
-          <LearnChapterLink examSlug={params.examSlug} subjectName={chapter.subjectName} chapterName={chapter.chapterName} />
 
           {/* Signed in with mistakes waiting from this chapter (2026-11-07). Browser-only. */}
           <ChapterFixLine chapterId={data.chapterId} from={CHAPTER_FIX_FROM.board} className="mb-4" />

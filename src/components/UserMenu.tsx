@@ -154,7 +154,8 @@ export default function UserMenu({
             Guides
           </Link>
           {/* Learn, at EVERY width: Homework took its tab in both navs on
-              2026-11-04 (owner). Signed-out readers find it in the Footer. */}
+              2026-11-04 (owner). Since 2026-11-08 this is Learn's only way in
+              (the footer and board-chapter links went: few students used it). */}
           <Link
             href={learnHref}
             className="flex w-full items-center gap-2 rounded-sm px-3 py-2 text-left text-sm transition-colors hover:bg-accent focus-visible:bg-accent focus-visible:outline-none"
