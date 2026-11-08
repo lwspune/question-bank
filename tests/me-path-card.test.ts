@@ -168,6 +168,7 @@ describe("MeView, the path in the staff view", () => {
   it("says what the student sees in place of the start offer", () => {
     const out = render({ path: null, offer: { exam: "cbse-12", minutes: 55, stream: null } });
     expect(out).toContain("Here they see the board plan offer: about 55 minutes a day");
-    expect(out).toContain("study days a week");
+    // With no plan, the Today card is below it (its study-days ring went 2026-11-08).
+    expect(out).toContain("Today");
   });
 });

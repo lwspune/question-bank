@@ -62,10 +62,13 @@ describe("MeView, the student's own Home with the server's pulse", () => {
     expect(out).toContain("Fix 23 mistakes");
   });
 
-  it("puts the progress tiles and Weak spots in the HTML", () => {
-    expect(out).toContain("1,234");
+  it("puts Weak spots in the HTML", () => {
     expect(out).toContain("Probability");
-    expect(out).toContain("3/4");
+  });
+
+  it("keeps no number tiles or week ring on Home (they moved to Progress, 2026-11-08)", () => {
+    expect(out).not.toContain("1,234");
+    expect(out).not.toContain("3/4");
   });
 
   it("stays the student's own page: the controls that save are there", () => {
