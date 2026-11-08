@@ -148,6 +148,7 @@ export async function loadQuestionRefs(
           subtopicId: r.subtopic_id,
           chapterId: r.chapter_id,
           place: placeOf(r.chapter?.subject ?? null),
+          subject: r.chapter?.subject?.name ?? undefined,
           exam: r.chapter?.subject?.exam?.name ?? undefined,
         });
       }

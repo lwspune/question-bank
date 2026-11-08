@@ -11,6 +11,7 @@ import { describe, it, expect } from "vitest";
 import {
   buildFixList,
   chapterQuestions,
+  fixSubjects,
   latestMisses,
   parseReviewParams,
   reasonLabel,
@@ -29,11 +30,12 @@ const miss = (over: Partial<MissRow> = {}): MissRow => ({
   ...over,
 });
 
-const due = (questionId: string, chapterId: string, chapter: string, lastWrongAt: string): DueQuestion => ({
+const due = (questionId: string, chapterId: string, chapter: string, lastWrongAt: string, subject = "Mathematics"): DueQuestion => ({
   questionId,
   chapter,
   chapterId,
-  place: "Mathematics · NDA",
+  subject,
+  place: `${subject} · NDA`,
   exam: "NDA",
   subtopic: "",
   lastWrongAt,
@@ -159,20 +161,51 @@ describe("parseReviewParams: the page's address", () => {
   const C = "1f478ef1-4dcb-4cb2-a6d5-8b2a6e7b986b";
 
   it("opens To fix by default", () => {
-    expect(parseReviewParams({})).toEqual({ list: "fix", chapterId: null });
+    expect(parseReviewParams({})).toEqual({ list: "fix", chapterId: null, subject: null });
   });
 
   it("opens Saved with list=saved", () => {
-    expect(parseReviewParams({ list: "saved" })).toEqual({ list: "saved", chapterId: null });
+    expect(parseReviewParams({ list: "saved" })).toEqual({ list: "saved", chapterId: null, subject: null });
   });
 
   it("opens one chapter's questions, and ignores a chapter that is not a uuid", () => {
-    expect(parseReviewParams({ chapter: C.toUpperCase() })).toEqual({ list: "fix", chapterId: C });
-    expect(parseReviewParams({ chapter: "x' or 1=1" })).toEqual({ list: "fix", chapterId: null });
+    expect(parseReviewParams({ chapter: C.toUpperCase() })).toEqual({ list: "fix", chapterId: C, subject: null });
+    expect(parseReviewParams({ chapter: "x' or 1=1" })).toEqual({ list: "fix", chapterId: null, subject: null });
   });
 
   it("ignores anything else, including a repeated parameter", () => {
-    expect(parseReviewParams({ list: "nope" })).toEqual({ list: "fix", chapterId: null });
-    expect(parseReviewParams({ list: ["saved", "fix"] })).toEqual({ list: "fix", chapterId: null });
+    expect(parseReviewParams({ list: "nope" })).toEqual({ list: "fix", chapterId: null, subject: null });
+    expect(parseReviewParams({ list: ["saved", "fix"] })).toEqual({ list: "fix", chapterId: null, subject: null });
+  });
+});
+
+/**
+ * Subject chips on To fix (2026-11-09, step 4): shown when the waiting
+ * questions span more than one subject; a chip narrows the chapters, the total
+ * and the lead button to that subject.
+ */
+describe("subject chips", () => {
+  const pool = [
+    due("a", "c1", "Probability", "2026-11-01T00:00:00Z"),
+    due("b", "c1", "Probability", "2026-11-05T00:00:00Z"),
+    due("c", "c2", "Motion", "2026-11-06T00:00:00Z", "Physics"),
+  ];
+
+  it("lists each subject with its count, most first", () => {
+    expect(fixSubjects(pool)).toEqual([
+      { subject: "Mathematics", count: 2 },
+      { subject: "Physics", count: 1 },
+    ]);
+  });
+
+  it("narrows the list to one subject", () => {
+    const l = buildFixList(pool, new Map(), new Set(), "Physics");
+    expect(l.total).toBe(1);
+    expect(l.chapters.map((c) => c.name)).toEqual(["Motion"]);
+  });
+
+  it("reads a subject from the address, and ignores an overlong one", () => {
+    expect(parseReviewParams({ subject: "Physics" })).toEqual({ list: "fix", chapterId: null, subject: "Physics" });
+    expect(parseReviewParams({ subject: "x".repeat(200) })).toEqual({ list: "fix", chapterId: null, subject: null });
   });
 });

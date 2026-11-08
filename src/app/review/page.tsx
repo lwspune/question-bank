@@ -15,7 +15,7 @@ import { loadOwnPool } from "@/lib/drill/compose";
 import { scopeToExam } from "@/lib/drill/select";
 import { readTodayRow } from "@/lib/path/exemptions";
 import { isIntlHost } from "@/lib/sites/intl";
-import { buildFixList, chapterQuestions, latestMisses, parseReviewParams } from "@/lib/review/fixList";
+import { buildFixList, chapterQuestions, fixSubjects, latestMisses, parseReviewParams } from "@/lib/review/fixList";
 import { loadMissRows, loadMockTitles } from "@/lib/review/query";
 import ReviewSwitch from "./ReviewSwitch";
 import FixOverview from "./FixOverview";
@@ -109,7 +109,16 @@ export default async function ReviewPage(props: { searchParams: Promise<Search> 
         />
       );
     } else {
-      body = <FixOverview list={buildFixList(due, misses, planIds)} focusExam={focusExam} savedCount={savedIds.length} />;
+      body = (
+        <FixOverview
+          list={buildFixList(due, misses, planIds, params.subject)}
+          focusExam={focusExam}
+          savedCount={savedIds.length}
+          subjects={fixSubjects(due)}
+          subject={params.subject}
+          allCount={due.length}
+        />
+      );
     }
   }
 
