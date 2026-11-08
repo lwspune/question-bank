@@ -21,7 +21,7 @@ if (!scene || !files.length) {
 }
 
 // Phrases agents used for the program's checking that reached students' notes (CBSE 12 Physics, 2026-11-09).
-const CHECK_TALK = /\b(stands for|checked at|sample values?|for the check(ing)?|not shown|program checks?)\b/i;
+const CHECK_TALK = /\b(stands for|checked at|shown (here |at |for )+|for [a-zA-Z] ?= ?-?\d[^,;]*this gives|sample values?|for the check(ing)?|not shown|program checks?)/i;
 
 /** Every note, label and text string in a draft's params (not the maths). */
 function textsOf(x: unknown): string[] {
