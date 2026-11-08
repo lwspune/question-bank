@@ -1,6 +1,6 @@
 /**
  * The plain-English layer of /performance (2026-10-08): the band's trend line,
- * steadiness, "What went well", "Fix next", the clock advice and the pace line.
+ * "What went well", "Fix next", the clock advice and the pace line.
  * Every claim here is printed to a student as a fact about them, so each rule
  * is pinned with the case where it must stay SILENT as well as the case where
  * it speaks. Pure core: src/lib/performance/highlights.ts.
@@ -11,7 +11,6 @@ import {
   countingNote,
   fixNext,
   paceLine,
-  steadiness,
   trendLabel,
   trendLine,
   wentWell,
@@ -132,17 +131,6 @@ describe("trendLine", () => {
     expect(trendLine(summary({ deltaPoints: -4 }), "self")).toBeNull();
     expect(trendLine(summary({ deltaPoints: 0 }), "self")).toBeNull();
     expect(trendLine(summary({ deltaPoints: null }), "self")).toBeNull();
-  });
-});
-
-describe("steadiness", () => {
-  it("turns the spread into points between papers", () => {
-    expect(steadiness({ sd: 0.1, label: "Moderate" })).toBe("±10");
-    expect(steadiness({ sd: 0.064, label: "Consistent" })).toBe("±6");
-  });
-
-  it("is null until there are two papers to compare", () => {
-    expect(steadiness(null)).toBeNull();
   });
 });
 

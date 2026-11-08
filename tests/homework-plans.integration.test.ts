@@ -52,15 +52,23 @@ describe.skipIf(!HAS_ENV)("homework plans", () => {
     anon = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!, {
       auth: { persistSession: false },
     });
+    // The exam and subject with the most PUBLIC questions in an ORDERED sample:
+    // "the first row's subject" from an unordered read named one with fewer
+    // than three once other tests' rows moved the table about (2026-11-08).
     const { data: seed } = await admin
       .from("questions")
       .select("id, exam_id, subject_id, chapter_id")
       .eq("visibility", "PUBLIC")
-      .limit(200);
+      .order("id")
+      .limit(1000);
     const rows = (seed ?? []) as Q[];
-    const first = rows[0];
-    if (!first) throw new Error("no PUBLIC question in the test project");
-    qs = rows.filter((r) => r.exam_id === first.exam_id && r.subject_id === first.subject_id).slice(0, 3);
+    if (rows.length === 0) throw new Error("no PUBLIC question in the test project");
+    const group = (r: Q) => `${r.exam_id} ${r.subject_id}`;
+    const sizes = new Map<string, number>();
+    for (const r of rows) sizes.set(group(r), (sizes.get(group(r)) ?? 0) + 1);
+    const biggest = [...sizes].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))[0][0];
+    const first = rows.find((r) => group(r) === biggest)!;
+    qs = rows.filter((r) => group(r) === biggest).slice(0, 3);
     if (qs.length < 3) throw new Error("need 3 PUBLIC questions of one exam and subject in the test project");
     other = rows.find((r) => r.subject_id !== first.subject_id) ?? null;
 

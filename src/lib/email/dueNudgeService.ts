@@ -15,7 +15,7 @@
  * name a question the drill would not.
  */
 import type { SupabaseClient } from "@supabase/supabase-js";
-import { attachRefs, dueQuestions, type DrillEvent } from "@/lib/drill/select";
+import { attachRefs, dueQuestions, LADDER_KINDS, type DrillEvent } from "@/lib/drill/select";
 import { loadQuestionRefs } from "@/lib/drill/query";
 import type { NudgeCandidate } from "./dueNudge";
 
@@ -47,7 +47,7 @@ export async function readDueCandidates(
     const { data, error } = await db
       .from("user_activity")
       .select("user_id, kind, ref_id, created_at, surface:metadata->>surface")
-      .in("kind", ["answer_wrong", "answer_correct", "drill_completed"])
+      .in("kind", [...LADDER_KINDS, "drill_completed"])
       .order("created_at", { ascending: true })
       .order("id", { ascending: true })
       .range(from, from + PAGE - 1);

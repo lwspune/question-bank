@@ -28,6 +28,7 @@ import {
 import type { ActivityEvent } from "@/lib/activity/events";
 import { FREE_MOCK_LIMIT_CODE, type MockQuota } from "./quota";
 import { chapterTestContext } from "./instructionContext";
+import { MISS_KINDS } from "@/lib/drill/select";
 import { practiceUsedUpLine } from "@/lib/practiceTests/quotaCopy";
 
 export class MockError extends Error {
@@ -454,7 +455,7 @@ async function loadPreviouslyMissed(
       .from("user_activity")
       .select("ref_id")
       .eq("user_id", userId)
-      .eq("kind", "answer_wrong")
+      .in("kind", [...MISS_KINDS])
       .in("ref_id", chunk);
     // Best-effort, like the spine itself: failing to find past mistakes costs
     // one un-recorded recovery, which leaves the question DUE. Extra practice

@@ -1005,6 +1005,7 @@ export type Database = {
       }
       db_health_snapshots: {
         Row: {
+          blocks_total: number | null
           cache_hit_pct: number
           captured_at: string
           connections: number
@@ -1026,6 +1027,7 @@ export type Database = {
           work_mem_bytes: number | null
         }
         Insert: {
+          blocks_total?: number | null
           cache_hit_pct: number
           captured_at?: string
           connections: number
@@ -1047,6 +1049,7 @@ export type Database = {
           work_mem_bytes?: number | null
         }
         Update: {
+          blocks_total?: number | null
           cache_hit_pct?: number
           captured_at?: string
           connections?: number
@@ -2483,6 +2486,29 @@ export type Database = {
         Relationships: [
           {
             foreignKeyName: "mock_paper_downloads_mock_id_fkey"
+            columns: ["mock_id"]
+            isOneToOne: false
+            referencedRelation: "mock_tests"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      mock_question_papers: {
+        Row: {
+          mock_id: string
+          question_id: string
+        }
+        Insert: {
+          mock_id: string
+          question_id: string
+        }
+        Update: {
+          mock_id?: string
+          question_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "mock_question_papers_mock_id_fkey"
             columns: ["mock_id"]
             isOneToOne: false
             referencedRelation: "mock_tests"

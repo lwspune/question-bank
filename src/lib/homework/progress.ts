@@ -22,7 +22,7 @@
  *
  * Pure: no DB, no clock. Spec: tests/homework-progress.test.ts.
  */
-import { questionState, type DrillEvent } from "@/lib/drill/select";
+import { LADDER_KINDS, questionState, type DrillEvent } from "@/lib/drill/select";
 
 export type QuestionFormat = "mcq" | "subjective" | "numeric";
 
@@ -30,7 +30,9 @@ export type ProgressItem = { day: number; position: number; questionId: string; 
 
 export type ProgressEvent = {
   questionId: string;
-  kind: "self_mark" | "question_practiced" | "answer_wrong" | "answer_correct";
+  /** v_not_understood: a No to V's explanation (2026-11-08). On the ladder
+   *  (isDue), never a mark: the student answered nothing. */
+  kind: "self_mark" | "question_practiced" | "answer_wrong" | "answer_correct" | "v_not_understood";
   /** ISO timestamp. */
   at: string;
   /** self_mark only. */
@@ -57,7 +59,8 @@ export type PlanProgress = {
 const byTime = (a: ProgressEvent, b: ProgressEvent) => (a.at < b.at ? -1 : a.at > b.at ? 1 : 0);
 
 /** One question's mark from everything recorded about it. */
-export function markOf(format: QuestionFormat, events: readonly ProgressEvent[]): QuestionMark {
+export function markOf(format: QuestionFormat, all: readonly ProgressEvent[]): QuestionMark {
+  const events = all.filter((e) => e.kind !== "v_not_understood");
   if (format === "mcq") return events.length > 0 ? "answered" : null;
   let mark: QuestionMark = null;
   for (const e of [...events].sort(byTime)) {
@@ -71,7 +74,7 @@ export function markOf(format: QuestionFormat, events: readonly ProgressEvent[])
 /** Is the question waiting in the drill? */
 export function isDue(events: readonly ProgressEvent[]): boolean {
   const drill: DrillEvent[] = events
-    .filter((e) => e.kind === "answer_wrong" || e.kind === "answer_correct")
+    .filter((e) => (LADDER_KINDS as readonly string[]).includes(e.kind))
     .map((e) => ({ questionId: e.questionId, correct: e.kind === "answer_correct", at: e.at }));
   return questionState(drill, new Date(0)) === "due";
 }

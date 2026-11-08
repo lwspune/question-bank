@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
+  isDue,
   markOf,
   parseProgressQuery,
   planProgress,
@@ -170,5 +171,31 @@ describe("parseProgressQuery: the route's input", () => {
     expect(q("plan=Bad%20Slug").ok).toBe(false);
     expect(q(`plan=${"a".repeat(81)}`).ok).toBe(false);
     for (const d of ["0", "-1", "1.5", "abc", "10001"]) expect(q(`plan=cbse-12-physics&day=${d}`).ok).toBe(false);
+  });
+});
+
+/**
+ * A No to V's "Did you understand?" (v_not_understood, 2026-11-08) puts the
+ * question in the drill, so homework's "to review" (the drill's rule) shows it.
+ * It is NOT work on the question: the student answered nothing, so it must
+ * never mark a homework question, nor tick a Top 10 slot in the board plan
+ * (lib/path/done.ts reads marks by this same rule).
+ */
+describe("v_not_understood in homework progress", () => {
+  it("does not mark a question: an MCQ with only a No is not answered", () => {
+    expect(markOf(M, [ev("q", "v_not_understood", "2026-11-08T10:00:00Z")])).toBeNull();
+  });
+
+  it("does not change a written question's own mark", () => {
+    expect(
+      markOf(W, [ev("q", "self_mark", "2026-11-08T10:00:00Z", "understood"), ev("q", "v_not_understood", "2026-11-08T11:00:00Z")])
+    ).toBe("understood");
+  });
+
+  it("is waiting in the drill, like a miss, until a right answer fixes it", () => {
+    expect(isDue([ev("q", "v_not_understood", "2026-11-08T10:00:00Z")])).toBe(true);
+    expect(
+      isDue([ev("q", "v_not_understood", "2026-11-08T10:00:00Z"), ev("q", "answer_correct", "2026-11-08T12:00:00Z")])
+    ).toBe(false);
   });
 });

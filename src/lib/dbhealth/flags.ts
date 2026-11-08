@@ -10,6 +10,19 @@ import type { HealthDelta } from "./types";
  */
 export const THRESHOLDS = {
   /**
+   * Data READ per call and as a share of everything read (2026-11-08). The
+   * audit that day found 516 GB read in 36 hours: a daily test at 730 MB a
+   * call, a dashboard function at 958 MB, a script at 174 MB, and a homework
+   * read at only 76 MB a call but 21% of all reads. Per call catches the
+   * first three, share the last. The minimum total keeps a one-off script
+   * run from crying wolf.
+   */
+  heavyReadWarnBytes: 100 * 1024 * 1024,
+  heavyReadCriticalBytes: 500 * 1024 * 1024,
+  heavyReadTotalMinBytes: 1024 * 1024 * 1024,
+  readShareWarnFraction: 0.15,
+
+  /**
    * Disk spill per call. A well-shaped query writes ZERO — spill means Postgres
    * ran out of work_mem and went to disk. The /browse regression wrote 13.9 MB
    * per call to return 25 rows and produced 99.4% of the entire database's temp
@@ -170,6 +183,32 @@ export function evaluateFlags(delta: HealthDelta): Flag[] {
           `(${mb(q.tempBytesDelta)} total this window). A healthy query spills nothing — ` +
           `check for a sort or join over a wide row payload. ${q.label}`,
       });
+    }
+
+    // Data read: too much per call, or too much of the whole.
+    const dbRead = delta.readBytesDelta;
+    for (const q of delta.queries) {
+      if (!q.windowKnown || q.readBytesDelta === null) continue;
+      const perCall = q.readBytesPerCall;
+      if (perCall !== null && perCall >= THRESHOLDS.heavyReadWarnBytes && q.readBytesDelta >= THRESHOLDS.heavyReadTotalMinBytes) {
+        flags.push({
+          level: perCall >= THRESHOLDS.heavyReadCriticalBytes ? "critical" : "warn",
+          code: "query-heavy-read",
+          message:
+            `Query ${q.queryid} read ${mb(perCall)} per call across ${q.callsDelta} calls ` +
+            `(${mb(q.readBytesDelta)} this window). Look for OFFSET paging with an embed, counting from rows, ` +
+            `a stale visibility map or a whole-table walk: /tech-debt queries. ${q.label}`,
+        });
+      }
+      if (dbRead !== null && dbRead > 0 && q.readBytesDelta >= dbRead * THRESHOLDS.readShareWarnFraction) {
+        flags.push({
+          level: "warn",
+          code: "query-read-share",
+          message:
+            `Query ${q.queryid} read ${Math.round((q.readBytesDelta / dbRead) * 100)}% of everything the database ` +
+            `read this window (${mb(q.readBytesDelta)} of ${mb(dbRead)}, ${q.callsDelta} calls). ${q.label}`,
+        });
+      }
     }
 
     // Spill the collected queries do not explain. Staying silent here would

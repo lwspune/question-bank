@@ -138,6 +138,12 @@ async function loadEvents(db: SupabaseClient, users: string[]): Promise<Ev[]> {
           .from("user_activity")
           .select("user_id, kind, ref_id, created_at, surface:metadata->>surface, path:metadata->>path, mark:metadata->>mark")
           .in("user_id", part)
+          // By user and time, never by id alone: for 200 users, `order("id")`
+          // walked the whole table in id order, 174.6 MB a page against
+          // 13.4 MB this way (2026-11-08). The marks are sorted by time where
+          // they are read (lib/homework/progress.ts), so order changes nothing.
+          .order("user_id")
+          .order("created_at")
           .order("id")
           .range(f, to)
       ))
