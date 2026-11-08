@@ -35,6 +35,7 @@ import { execSync } from "node:child_process";
 import { mkdirSync, writeFileSync } from "node:fs";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { answerWithV, type VContextOptions } from "../../../src/lib/chat/answer";
+import { isPathExam } from "../../../src/lib/path/model";
 import { readChatSettings } from "../../../src/lib/chat/settingsAdmin";
 import { readExamStrategyUncached } from "../../../src/lib/chat/examStrategyServer";
 import { loadExamCatalogPayload, shapeExamCatalog } from "../../../src/lib/exam/allExamStats";
@@ -180,6 +181,21 @@ async function main() {
               loadPlan: async () => plan,
               loadPlanActivity: async () => ({ drills: 0, mocks: 0, chapterQuestions: {} }),
               onPlan: () => {},
+              // No case student has a board path: a Class 12 board case is offered one,
+              // as a real student without one is (MENTOR_SPEC.md Phase 2).
+              loadPath: async () => {
+                const exam = c.profile_exams.find(isPathExam);
+                return exam
+                  ? {
+                      kind: "offer",
+                      exam,
+                      minutes: 50,
+                      subjects: "Physics, Chemistry and Maths",
+                      examLine: `${exam === "cbse-12" ? "CBSE Class 12 boards from 15 Feb" : "HSC boards from 11 Feb"} (expected), revision from ${exam === "cbse-12" ? "25 Jan" : "21 Jan"}`,
+                    }
+                  : { kind: "none" };
+              },
+              onPath: () => {},
             }
           : null,
       loadOwnPractice: c.signed_in ? async () => ({ today: ZERO_SPAN, week: ZERO_SPAN, all: ZERO_SPAN }) : undefined,

@@ -83,6 +83,7 @@ import { conceptSources } from "@/lib/chat/conceptSearchServer";
 import { revealedToday, spendVReveal } from "@/lib/chat/questionReveal";
 import { weakFromPerformance, type PlanDeps } from "@/lib/chat/weekPlan";
 import { loadCurrentPlan, loadPlanActivity, saveStudyPlan } from "@/lib/chat/weekPlanServer";
+import { getPathForV } from "@/lib/path/service";
 import { getOwnProfile, updateOwnProfile } from "@/lib/profile/service";
 import { getOwnLadder } from "@/lib/drill/service";
 import { passOnSale } from "@/lib/billing/passOnSale";
@@ -142,7 +143,8 @@ function buildQuestionToolDeps(
 function buildPlanDeps(
   userId: string,
   loadProgress: () => Promise<Performance | null>,
-  onPlan: () => void
+  onPlan: () => void,
+  onPath: () => void
 ): Omit<PlanDeps, "signedIn" | "loadChapters" | "loadStrategy"> {
   const db = createSupabaseServerClient();
   return {
@@ -161,6 +163,9 @@ function buildPlanDeps(
     loadPlan: () => loadCurrentPlan(db, userId),
     loadPlanActivity: (plan) => loadPlanActivity(db, userId, plan),
     onPlan,
+    // The board path (MENTOR_SPEC.md Phase 2): a plan ask is answered from it.
+    loadPath: () => getPathForV(db, userId),
+    onPath,
   };
 }
 
@@ -301,6 +306,8 @@ export async function POST(request: NextRequest) {
     let limitHit: number | null = null;
     // Set when plan_week or my_plan ran: the chat window shows the plan under the reply.
     let planShown = false;
+    // Set when the plan tools answered from the board path: the chat window shows the path card.
+    let pathShown = false;
     let recorded: {
       text: string;
       source: "ai" | "ai_failed" | "fallback";
@@ -340,7 +347,12 @@ export async function POST(request: NextRequest) {
             // The student's own login does the reading (get_own_performance): no id is passed to the database.
             loadOwnProgress: ownId ? () => ownProgress(ownId) : undefined,
             planEnabled: settings.planEnabled,
-            plan: ownId && settings.planEnabled ? buildPlanDeps(ownId, () => ownProgress(ownId), () => (planShown = true)) : null,
+            plan: ownId && settings.planEnabled ? buildPlanDeps(
+                  ownId,
+                  () => ownProgress(ownId),
+                  () => (planShown = true),
+                  () => (pathShown = true)
+                ) : null,
             // Same login, not remembered: "today" should move between two questions.
             loadOwnPractice: ownId ? () => getOwnPracticeCounts(createSupabaseServerClient()) : undefined,
           };
@@ -422,6 +434,7 @@ export async function POST(request: NextRequest) {
             ...(similarQuestionId ? { similarQuestionId } : {}),
             ...(matchQuestionId ? { matchQuestionId } : {}),
             ...(planShown ? { planShown: true } : {}),
+            ...(pathShown ? { pathShown: true } : {}),
             // An explanation asks "Did you understand?" under it (0182).
             explained: isExplanation(recorded.toolCalls, message),
             ...(solutionFigure ? { solutionFigure } : {}),

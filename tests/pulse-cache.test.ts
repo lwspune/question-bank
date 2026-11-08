@@ -29,7 +29,7 @@ describe("parsePulseEntry", () => {
     const e = parsePulseEntry(JSON.stringify(entry(0)));
     // `exam` is always present on the parsed shape (null when absent) so a
     // consumer never has to distinguish undefined from null.
-    expect(e).toEqual({ ...entry(0), exam: null, totals: null, weak: [], chapterDue: {} });
+    expect(e).toEqual({ ...entry(0), exam: null, totals: null, weak: [], chapterDue: {}, path: null });
   });
 
   it("rejects junk, partial shapes and negative counts", () => {
@@ -113,6 +113,22 @@ describe("parsePulseEntry: due per chapter for the chapter-page line (2026-11-07
   it("refuses the whole entry when a count is malformed", () => {
     for (const bad of ["x", [1, 2], { c1: 0 }, { c1: -1 }, { c1: 1.5 }, { c1: "2" }, { ["x".repeat(65)]: 1 }]) {
       expect(parsePulseEntry(JSON.stringify({ ...entry(0), chapterDue: bad })), JSON.stringify(bad)).toBeNull();
+    }
+  });
+});
+
+describe("parsePulseEntry: the board path state (MENTOR_SPEC.md Phase 2)", () => {
+  it("is null when absent (an entry cached before it existed)", () => {
+    expect(parsePulseEntry(JSON.stringify(entry(0)))?.path).toBeNull();
+  });
+  it("carries 'on' and 'offer' with their board through", () => {
+    for (const path of [{ state: "on", exam: "cbse-12" }, { state: "offer", exam: "mh-hsc-12" }]) {
+      expect(parsePulseEntry(JSON.stringify({ ...entry(0), path }))?.path).toEqual(path);
+    }
+  });
+  it("refuses the whole entry when it is malformed", () => {
+    for (const bad of ["on", { state: "maybe", exam: "cbse-12" }, { state: "on", exam: "nda" }, { state: "on" }]) {
+      expect(parsePulseEntry(JSON.stringify({ ...entry(0), path: bad })), JSON.stringify(bad)).toBeNull();
     }
   });
 });

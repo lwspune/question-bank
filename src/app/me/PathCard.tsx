@@ -8,6 +8,8 @@ import { dayLabel, type PathView, type TaskRow } from "@/lib/path/view";
 import type { PathOffer } from "@/lib/path/service";
 import type { Stream } from "@/lib/path/model";
 import { cn } from "@/lib/utils";
+import CelebrateOnMount from "@/components/celebrate/CelebrateOnMount";
+import { invalidatePulse } from "@/lib/viewer/usePulse";
 
 type Card = { path: PathView | null; offer: PathOffer | null };
 
@@ -35,6 +37,8 @@ export default function PathCard({ initial, readOnly = false }: { initial: Card;
       if (!res.ok) throw new Error(data.error ?? "Couldn't save that. Try again.");
       setCard({ path: data.today ?? null, offer: data.offer ?? null });
       toast.success(done);
+      // The header's shared pulse carries the path state (V's button, the /board line).
+      invalidatePulse();
       // A start reloads /me so the week ring below gives way to the path at
       // once (D4: one pace on the page).
       if (reload) window.location.reload();
@@ -47,12 +51,16 @@ export default function PathCard({ initial, readOnly = false }: { initial: Card;
 
   if (card.path) {
     return (
-      <PathToday
+      <>
+        {/* A chapter newly done, said by V where it finished (Phase 2). Never in the staff view. */}
+        {!readOnly && <CelebrateOnMount messages={card.path.celebrate} />}
+        <PathToday
         view={card.path}
         readOnly={readOnly}
         busy={busy}
         onDefer={(t) => void post({ action: "defer", chapterId: t.chapterId }, "Moved later. Your card has the next one.")}
-      />
+        />
+      </>
     );
   }
   if (card.offer && !readOnly) {
@@ -90,6 +98,12 @@ function PathToday({
       {!view.pace.onTrack && (
         <p className="mt-0.5 text-sm text-muted-foreground">At this pace you finish on {dayLabel(view.pace.finish)}.</p>
       )}
+      {view.pickUp && (
+        <p className="mt-3 text-sm">
+          <span className="font-semibold">Welcome back.</span> Pick up here: {view.pickUp}
+        </p>
+      )}
+      {view.review && <WeekReview lines={view.review} />}
 
       {view.allDone ? (
         <p className="mt-4 rounded-xl border border-emerald-600/20 bg-emerald-600/5 px-4 py-3 text-sm">
@@ -156,6 +170,20 @@ function PathToday({
         {view.biologyNote && <p>Biology is not in the path yet.</p>}
       </div>
     </section>
+  );
+}
+
+/** The weekly review, the first days of a new path week (Phase 2). */
+export function WeekReview({ lines }: { lines: readonly string[] }) {
+  return (
+    <div className="mt-3 rounded-xl border border-brand/15 bg-card/60 px-4 py-3">
+      <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Your week</p>
+      <ul className="mt-1 space-y-0.5 text-sm">
+        {lines.map((l) => (
+          <li key={l}>{l}</li>
+        ))}
+      </ul>
+    </div>
   );
 }
 

@@ -24,7 +24,7 @@ import { crowdTiers } from "@/lib/celebrate/crowdService";
 import type { CrowdTier } from "@/lib/celebrate/crowd";
 import { getPremiumLimits } from "@/lib/billing/premiumLimits";
 import { istDayStartIso } from "@/lib/email/dueNudge";
-import { readTodayExemptions } from "@/lib/path/exemptions";
+import { ensureTodayExemptions } from "@/lib/path/service";
 import { canAnswerDrillQuestion, drillAllowance, servedCount, type DrillAllowance, type DrillAllowanceInput } from "./allowance";
 import {
   gradeDrillAnswer,
@@ -83,8 +83,8 @@ async function readDrillAllowanceInput(
       (e: unknown) => ({ ok: false as const, e })
     ),
     // Today's board-path Fix questions (migration 0225) are not counted. A
-    // failed read exempts nothing (readTodayExemptions logs and returns none).
-    readTodayExemptions(db, userId, now),
+    // failed read exempts nothing; with no pick yet, a path student gets today picked first.
+    ensureTodayExemptions(db, userId, now),
   ]);
   // The pass that lifts THIS site's limit: on intl an IMAT pass, not www's.
   const hasPass = limits ? holdsSitePass(limits, intl ? "intl" : "pyqvault") : false;

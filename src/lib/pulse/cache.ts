@@ -10,6 +10,8 @@
  * No I/O. Spec: tests/pulse-cache.test.ts.
  */
 
+import { isPathExam, type PathPulse } from "@/lib/path/model";
+
 export type PulseExam = {
   label: string;
   daysLeft: number;
@@ -33,6 +35,10 @@ export type Pulse = {
    *  this chapter" line (2026-11-07, lib/drill/chapterFix). Optional for the
    *  same reason as `exam`: an older entry shows no line until it expires. */
   chapterDue?: Record<string, number>;
+  /** The board path (MENTOR_SPEC.md Phase 2): "on" or "offer" with the board,
+   *  for V's "My plan for today" and the /board line. Optional for the same
+   *  reason as `exam`. */
+  path?: PathPulse;
 };
 
 export type PulseWeak = { chapterId: string; name: string; place: string; due: number };
@@ -121,7 +127,14 @@ export function parsePulseEntry(raw: string | null): PulseEntry | null {
       chapterDue[id] = count;
     }
   }
-  return { at: o.at, due: o.due, week: { done: week.done, goal: week.goal as number | null }, exam, totals, weak, chapterDue };
+  let path: PathPulse = null;
+  if (o.path !== undefined && o.path !== null) {
+    if (typeof o.path !== "object") return null;
+    const x = o.path as Record<string, unknown>;
+    if ((x.state !== "on" && x.state !== "offer") || !isPathExam(x.exam)) return null;
+    path = { state: x.state, exam: x.exam };
+  }
+  return { at: o.at, due: o.due, week: { done: week.done, goal: week.goal as number | null }, exam, totals, weak, chapterDue, path };
 }
 
 

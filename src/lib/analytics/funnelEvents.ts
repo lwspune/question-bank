@@ -153,6 +153,12 @@ export const FUNNEL_EVENTS = [
    */
   "v_progress_tap",
   /**
+   * V's "My plan for today" card (2026-11-08, MENTOR_SPEC.md Phase 2), for a
+   * student on the board path; prop: action (open). Against starters it says
+   * how many use V for the path rather than /me.
+   */
+  "v_path_tap",
+  /**
    * A Learn lesson was begun (2026-10-28): the visitor's first move through its slides (Start,
    * Next, a swipe). Props: signedIn, chapter. Once per lesson per page. Lesson page views are its
    * scale; a signed-in student's is also a row (surface_viewed 'learn_start').

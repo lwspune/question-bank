@@ -29,6 +29,7 @@ import { formatElapsed, previousComparable } from "@/lib/mocks/attemptHistory";
 import PulseRefresh from "./PulseRefresh";
 import CelebrateOnMount from "@/components/celebrate/CelebrateOnMount";
 import { awardAnsweredMilestone } from "@/lib/celebrate/service";
+import { pathCelebrationsAfterTest } from "@/lib/path/service";
 import { milestoneMessage } from "@/lib/celebrate/milestones";
 import { buildResultHeadline } from "@/lib/mocks/resultHeadline";
 import { getOwnPerformance } from "@/lib/performance/service";
@@ -111,6 +112,12 @@ export default async function MockResultPage(props: { params: Promise<Params> })
   // Awarded only past the mobile gate, where the result is actually seen;
   // once per milestone by the table's dedupe key, so a refresh shows nothing.
   const milestone = await awardAnsweredMilestone(db, user.id);
+  // A board-path chapter this test finished (MENTOR_SPEC.md Phase 2), said by V
+  // here, where it finished; once, by the event's dedupe key. Best effort.
+  const pathDone = await pathCelebrationsAfterTest(db, user.id, res.slug).catch((e) => {
+    console.error("path celebration failed", e);
+    return [] as string[];
+  });
   // Practise together (step 2): what this student and the friends who sat the
   // same test missed: a practice test's copies (0163), or on a published paper
   // the friends an invite links them to (0166). Service role, because a
@@ -134,7 +141,7 @@ export default async function MockResultPage(props: { params: Promise<Params> })
         )}
 
         <PulseRefresh />
-        <CelebrateOnMount message={milestone !== null ? milestoneMessage(milestone, "mock") : null} />
+        <CelebrateOnMount messages={pathDone} message={milestone !== null ? milestoneMessage(milestone, "mock") : null} />
 
         <ScoreCard
           headline={headline}
