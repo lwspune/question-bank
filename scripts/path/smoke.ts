@@ -31,8 +31,12 @@ import { readPathContent } from "@/lib/path/contentRead";
 import { readChapterStates } from "@/lib/path/stateRead";
 import { PATH_EXAMS, PATH_SUBJECTS, chapterDone, type PathExam } from "@/lib/path/model";
 import { bufferStart, startingDailyMinutes } from "@/lib/path/pace";
-import { MAX_TASKS, fixQuestions, pickToday, todayExemptions } from "@/lib/path/today";
-import { buildPathView, pathRemainingMinutes } from "@/lib/path/view";
+import { MAX_TASKS, fixQuestions, isChapterTask, pickToday, todayExemptions } from "@/lib/path/today";
+import { buildPathView, chapterLine, pathRemainingMinutes } from "@/lib/path/view";
+import { foldStates } from "@/lib/path/fold";
+import { buildWeekReview, reviewLines } from "@/lib/path/review";
+import { projectWeek, weekText } from "@/lib/path/week";
+import { addDays } from "@/lib/path/pace";
 
 const perBoard = Number(process.argv.find((a) => a.startsWith("--students="))?.split("=")[1] ?? 8);
 const failures: string[] = [];
@@ -96,7 +100,7 @@ async function main() {
     }
 
     for (const userId of recent) {
-      const { states } = await readChapterStates(db, userId, chapters);
+      const { states, facts } = await readChapterStates(db, userId, chapters);
       const pool = await loadOwnPool(db, userId, now);
       const fix = fixQuestions(pool.drillable, new Set(chapters.map((c) => c.id)), istDayStartIso(now));
       const daily = startingDailyMinutes(pathRemainingMinutes(chapters, states), today, buffer);
@@ -120,6 +124,29 @@ async function main() {
       check(!anyLeft || (tasks.length >= 2 && tasks.length <= MAX_TASKS), `${userId.slice(0, 8)}: ${tasks.length} tasks`);
       check(ex.revealIds.length <= 200 && ex.drillIds.length <= 5, `${userId.slice(0, 8)}: exemptions over the column caps`);
       check(view.tasks.every((t) => t.href.startsWith("/")), `${userId.slice(0, 8)}: a task without a link`);
+      // Phase 2 on live records: the dated fold agrees with the plain one as of
+      // now (Postgres writes +00:00, JavaScript Z), a week's review reads, the
+      // coming days never repeat a part, and the /board line has parts.
+      const asOfNow = foldStates(chapters, facts, now.toISOString());
+      check(
+        chapters.every((c) => JSON.stringify(asOfNow.get(c.id)) === JSON.stringify(states.get(c.id))),
+        `${userId.slice(0, 8)}: the dated fold disagrees with the plain one`
+      );
+      const review = reviewLines(
+        buildWeekReview({ chapters, facts, from: addDays(today, -7), to: today, daily, fixed: 0, next: null })
+      );
+      check(!/\b0 /.test(review.join(" ")), `${userId.slice(0, 8)}: a zero in the review`);
+      const week = projectWeek({ chapters, states, deferred: new Set(), budget: daily, today, todayTasks: tasks });
+      const parts = week.flatMap((d) => d.tasks.flatMap((t) => (t.kind === "fix" ? [] : [`${t.kind}:${t.chapterId}`])));
+      check(new Set(parts).size === parts.length, `${userId.slice(0, 8)}: the coming days repeat a part`);
+      const first = tasks.find(isChapterTask);
+      const firstChapter = first ? chapters.find((c) => c.id === first.chapterId) : undefined;
+      if (firstChapter) {
+        const line = chapterLine(firstChapter, states.get(firstChapter.id)!, tasks);
+        check(line.parts.length > 0 && line.today !== null, `${userId.slice(0, 8)}: the /board line for today's chapter is empty`);
+      }
+      console.log(`      last 7 days: ${review.join(" ")}`);
+      for (const l of weekText(week.slice(0, 3), chapters)) console.log(`      ${l}`);
       console.log(
         `  ${userId.slice(0, 8)}  done ${done}/${chapters.length} · ${daily} min/day · fix ${fix.length} · ` +
           `today ${tasks.map((t) => (t.kind === "fix" ? `fix${t.questionIds.length}` : t.kind)).join("+")} (${view.todayMinutes} min) · ${view.pace.onTrack ? "on track" : `behind ${view.pace.behindDays}d`}`

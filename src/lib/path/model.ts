@@ -125,3 +125,18 @@ export function totalMinutes(c: PathChapter): number {
 export function remainingMinutes(c: PathChapter, s: ChapterState): number {
   return PART_ORDER.reduce((sum, p) => sum + (partDone(c, s, p) ? 0 : partMinutes(c, s, p)), 0);
 }
+
+export type PathPulse = { state: "on" | "offer"; exam: PathExam } | null;
+
+/**
+ * The path state the header's shared pulse carries (Phase 2), so V's button
+ * and the /board line know without a read of their own: "on" with an active
+ * path, "offer" for a student whose exams include a Class 12 board and who has
+ * none. A path kept after the board left their exams shows nowhere, as on /me.
+ */
+export function pathPulseState(targetExams: readonly string[], activeExam: PathExam | null): PathPulse {
+  const board = targetExams.find(isPathExam);
+  if (!board) return null;
+  if (activeExam) return targetExams.includes(activeExam) ? { state: "on", exam: activeExam } : null;
+  return { state: "offer", exam: board };
+}

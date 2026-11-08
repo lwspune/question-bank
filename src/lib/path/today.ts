@@ -54,7 +54,7 @@ export function isChapterTask(t: PathTask): t is ChapterTask {
 const stateOf = (states: ReadonlyMap<string, ChapterState>, id: string) => states.get(id) ?? NOTHING_DONE;
 
 /** The state after a part is done, for picking the next task. */
-function withPartDone(c: PathChapter, s: ChapterState, part: ChapterPart): ChapterState {
+export function withPartDone(c: PathChapter, s: ChapterState, part: ChapterPart): ChapterState {
   if (part === "sheet") return { ...s, sheet: true };
   if (part === "top") return { ...s, topWorked: c.top.length };
   return { ...s, test: true };
