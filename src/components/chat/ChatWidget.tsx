@@ -26,7 +26,7 @@ import {
 } from "@/lib/chat/localChat";
 import { celebrate } from "@/components/celebrate/celebrate";
 import { fetchViewerSession, hasAuthCookie } from "@/lib/viewer/useViewerSession";
-import { usePulse } from "@/lib/viewer/usePulse";
+import { invalidatePulse, usePulse } from "@/lib/viewer/usePulse";
 import { anonAskedFromCookieHeader } from "@/lib/chat/anonLimit";
 import { Button } from "@/components/ui/button";
 
@@ -546,6 +546,9 @@ export default function ChatWidget() {
       toast.error("Couldn't save that. Please try again.");
       return;
     }
+    // A signed-in No sends the question to Fix your mistakes (2026-11-08):
+    // refresh the count the header badge and /me show.
+    if (!value && signedIn) invalidatePulse();
     if (!value) void askTyped(NOT_UNDERSTOOD);
   }
 

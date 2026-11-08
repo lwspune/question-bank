@@ -13,7 +13,7 @@
  *
  * Pure. Spec: tests/performance-highlights.test.ts.
  */
-import type { Consistency, Coverage, Lane, Summary, Trend } from "./compute";
+import type { Coverage, Lane, Summary, Trend } from "./compute";
 
 export type Viewer = "self" | "staff";
 
@@ -51,12 +51,6 @@ export function trendLine(summary: Summary, viewer: Viewer): string | null {
   const d = summary.deltaPoints;
   if (d === null || d <= 0) return null;
   return `${plural(d, "point")} up on ${your(viewer)} last paper`;
-}
-
-/** "±10": how far the score moves between papers, in percentage points. */
-export function steadiness(consistency: Consistency | null): string | null {
-  if (!consistency) return null;
-  return `±${Math.round(consistency.sd * 100)}`;
 }
 
 /** The chapter trend in everyday words; null when there is no trend to show. */

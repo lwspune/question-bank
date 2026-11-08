@@ -72,6 +72,7 @@ import {
 } from "@/lib/questions/bankVerdict";
 import { pickFixNudge, type FixNudge } from "@/lib/drill/fixNudge";
 import { getOwnLadder } from "@/lib/drill/service";
+import { MISS_KINDS } from "@/lib/drill/select";
 import { istDayStartIso } from "@/lib/email/dueNudge";
 import type { SupabaseClient } from "@supabase/supabase-js";
 
@@ -208,7 +209,7 @@ async function readPriorWrongIds(db: SupabaseClient, userId: string, ids: string
     .from("user_activity")
     .select("ref_id")
     .eq("user_id", userId)
-    .eq("kind", "answer_wrong")
+    .in("kind", [...MISS_KINDS])
     .in("ref_id", ids);
   if (error) throw new Error(`readPriorWrongIds: ${error.message}`);
   return new Set(((data ?? []) as { ref_id: string }[]).map((r) => r.ref_id));

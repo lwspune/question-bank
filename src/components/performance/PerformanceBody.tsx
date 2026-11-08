@@ -44,7 +44,6 @@ import {
   countingNote,
   fixNext,
   paceLine,
-  steadiness,
   trendLine,
   wentWell,
   type FixItem,
@@ -185,7 +184,6 @@ function Hero({
   headerAction?: ReactNode;
 }) {
   const trend = trendLine(summary, viewer);
-  const spread = steadiness(summary.consistency);
   const projection = lane?.projection ?? null;
   const topGap = projection?.rows[0];
   const laneName = lane ? `${lane.exam} ${lane.subject}` : null;
@@ -263,7 +261,9 @@ function Hero({
 
         <div>
           <p className="text-xs font-medium text-blue-100">All {viewer === "self" ? "your" : "their"} papers</p>
-          <dl className="mt-2 grid grid-cols-3 gap-2 sm:gap-3">
+          {/* Steadiness (the points between papers) was removed 2026-11-08:
+              it told a student nothing to do (owner). */}
+          <dl className="mt-2 grid grid-cols-2 gap-2 sm:gap-3">
             <HeroFact
               label="Last paper"
               value={summary.latest ? `${summary.latest.pct}%` : DASH}
@@ -273,11 +273,6 @@ function Hero({
               label="Answers right"
               value={summary.attemptQuality === null ? DASH : `${summary.attemptQuality}%`}
               note={`of the ones ${viewer === "self" ? "you" : "they"} tried`}
-            />
-            <HeroFact
-              label="Steadiness"
-              value={spread ?? DASH}
-              note={spread ? "points between papers" : "needs 2 papers"}
             />
           </dl>
           <p className="mt-3 text-[11px] text-blue-100 sm:text-xs">{countingNote(summary, viewer)}</p>

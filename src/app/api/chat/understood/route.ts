@@ -3,7 +3,10 @@
  * understand?" under one of V's explanations (migration 0182, 2026-10-23).
  * Ownership as for the thumbs (/api/chat/feedback): the conversation id the
  * device holds, and the same account when the reply was written signed in.
- * A No is also sent to V as a message by the chat window; this only keeps it.
+ * A No is also sent to V as a message by the chat window; this keeps it and,
+ * for a signed-in student, sends the question V explained to Fix your mistakes
+ * (owner, 2026-11-08): a `v_not_understood` row, which the drill reads as a
+ * miss (lib/drill/select MISS_KINDS). One per reply, by its dedupe key.
  */
 import { NextResponse, type NextRequest } from "next/server";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
@@ -11,6 +14,8 @@ import { checkAndIncrement } from "@/lib/rate-limit";
 import { getClientIp } from "@/lib/http";
 import { getSessionUser } from "@/lib/auth";
 import { setReplyUnderstood } from "@/lib/chat/interactionsAdmin";
+import { notUnderstoodQuestionId } from "@/lib/chat/understood";
+import { logActivityOnce } from "@/lib/activity/service";
 import { isConversationId } from "@/lib/chat/conversation";
 
 export const maxDuration = 10;
@@ -52,8 +57,20 @@ export async function POST(request: NextRequest) {
       userId = null;
     }
 
-    const ok = await setReplyUnderstood(admin, { id, conversationId: body.conversationId as string, userId, value });
-    if (!ok) return NextResponse.json({ error: "Reply not found." }, { status: 404 });
+    const reply = await setReplyUnderstood(admin, { id, conversationId: body.conversationId as string, userId, value });
+    if (!reply) return NextResponse.json({ error: "Reply not found." }, { status: 404 });
+
+    // Signed out, nothing to come back to: the drill is per account.
+    const questionId = !value && userId ? notUnderstoodQuestionId(reply) : null;
+    if (userId && questionId) {
+      await logActivityOnce(admin, userId, {
+        kind: "v_not_understood",
+        refId: questionId,
+        refKind: "question",
+        metadata: { surface: "v", interactionId: id },
+        dedupeKey: `v_not_understood:${id}`,
+      });
+    }
     return NextResponse.json({ ok: true });
   } catch (err) {
     console.error("chat/understood route error", err);

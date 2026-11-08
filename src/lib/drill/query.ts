@@ -12,7 +12,7 @@
  * route to get wrong.
  */
 import type { SupabaseClient } from "@supabase/supabase-js";
-import type { DrillEvent, QuestionRef } from "./select";
+import { LADDER_KINDS, MISS_KINDS, type DrillEvent, type QuestionRef } from "./select";
 import { usableVisual } from "@/lib/visuals/visual";
 import { readOwnAnswerRows } from "@/lib/mocks/ownAnswers";
 
@@ -51,7 +51,7 @@ export async function loadDrillEvents(
       .from("user_activity")
       .select("kind, ref_id, created_at")
       .eq("user_id", userId)
-      .in("kind", ["answer_wrong", "answer_correct"])
+      .in("kind", [...LADDER_KINDS])
       .not("ref_id", "is", null)
       .order("created_at", { ascending: true })
       .range(from, from + PAGE - 1);
@@ -394,7 +394,7 @@ export async function loadQuestionEvents(
     .select("kind, created_at")
     .eq("user_id", userId)
     .eq("ref_id", questionId)
-    .in("kind", ["answer_wrong", "answer_correct"])
+    .in("kind", [...LADDER_KINDS])
     .order("created_at", { ascending: true });
   if (error) throw new Error(`loadQuestionEvents: ${error.message}`);
   return ((data ?? []) as { kind: string; created_at: string }[]).map((r) => ({
@@ -409,7 +409,7 @@ export async function hasPriorWrong(db: SupabaseClient, userId: string, question
     .from("user_activity")
     .select("id", { count: "exact", head: true })
     .eq("user_id", userId)
-    .eq("kind", "answer_wrong")
+    .in("kind", [...MISS_KINDS])
     .eq("ref_id", questionId);
   if (error) throw new Error(`hasPriorWrong: ${error.message}`);
   return (count ?? 0) > 0;

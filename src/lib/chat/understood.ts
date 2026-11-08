@@ -38,3 +38,27 @@ function explained(c: ToolCallLog): boolean {
 export function isExplanation(toolCalls: readonly ToolCallLog[] | null | undefined, message?: string | null): boolean {
   return message === NOT_UNDERSTOOD || (toolCalls ?? []).some(explained);
 }
+
+const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
+/**
+ * The question a No belongs to, so it can go to Fix your mistakes (owner,
+ * 2026-11-08): the question V's explanation explained, or, on V's
+ * re-explanation (often from memory, no tool), the question the student
+ * tapped Ask V on. Null when the reply explained no question (a concept, or a
+ * refusal) or the id is not a uuid: the asked id comes from the browser.
+ * Every No in the 30 days to 2026-11-08 had one or the other.
+ */
+export function notUnderstoodQuestionId(input: {
+  toolCalls: readonly ToolCallLog[] | null | undefined;
+  message: string | null | undefined;
+  askedQuestionId: string | null | undefined;
+}): string | null {
+  const call = (input.toolCalls ?? []).find((c) => c.name === "explain_question" && explained(c));
+  const id = call
+    ? (call.input as { question_id?: unknown } | null)?.question_id
+    : input.message === NOT_UNDERSTOOD
+      ? input.askedQuestionId
+      : null;
+  return typeof id === "string" && UUID_RE.test(id) ? id.toLowerCase() : null;
+}

@@ -15,9 +15,12 @@ import {
   dueQuestions,
   selectDrill,
   attachRefs,
+  LADDER_KINDS,
+  MISS_KINDS,
   type DrillEvent,
   type DueQuestion,
 } from "@/lib/drill/select";
+import { isActivityKind } from "@/lib/activity/events";
 
 const NOW = new Date("2026-09-18T12:00:00Z");
 const day = (n: number) => new Date(NOW.getTime() - n * 86400000).toISOString();
@@ -228,5 +231,25 @@ describe("selectDrill — spreads across CHAPTERS, not just subtopics", () => {
     // one chapter still gets five questions.
     const pool = [...g("Grammar", "A", 3), ...g("Grammar", "B", 3)];
     expect(selectDrill(pool)).toHaveLength(DRILL_SIZE);
+  });
+});
+
+/**
+ * The rows every "was this missed?" read uses (2026-11-08). A No to V's "Did
+ * you understand?" is a miss without an answer: it has its own kind, so the
+ * readers that count WORK (homework marks, the plan's Top 10 and Fix task,
+ * answered totals) never see it, and only the ladder reads it.
+ */
+describe("the ladder's kinds", () => {
+  it("counts a No to V's explanation as a miss, beside a wrong answer", () => {
+    expect([...MISS_KINDS].sort()).toEqual(["answer_wrong", "v_not_understood"]);
+  });
+
+  it("is the misses plus the one kind that fixes a question", () => {
+    expect([...LADDER_KINDS].sort()).toEqual([...MISS_KINDS, "answer_correct"].sort());
+  });
+
+  it("names only kinds the activity log accepts", () => {
+    for (const k of LADDER_KINDS) expect(isActivityKind(k)).toBe(true);
   });
 });
