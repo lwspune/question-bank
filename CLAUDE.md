@@ -350,6 +350,10 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 
 ### 2026-11
 
+- **2026-11-08 (third) — Board path Phase 3: Lighter / More and the last three weeks (MENTOR_SPEC.md §16, 0229).**
+  - **Lighter / More** (10-minute steps, 20-120) replan today keeping what is done; behind says the finish date and what More would take, never shrinking "done" (D3).
+  - **Revision weeks:** chapters left smallest first, a whole timed paper on alternate days (done by the Top 10 rule, OR by either half), Review later rework, Fix up to 10 (0229).
+  - **`path:smoke` caught 19 papers in 20 days** with nothing to rework: in-between days now re-read the oldest sheets. Also fixed: Phase 1 called "nothing left" behind in the revision weeks. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-11-08 (second) — Board path Phase 2: V as the voice of the path (MENTOR_SPEC.md §15), no migration.**
   - **V's "My plan for today" card is built from numbers** (owner's button, like "How's my progress"): no message spent; plan asks from a path student are answered from the path, a Class 12 student without one is offered it.
   - **The eval caught V pacing the path to preboards and calling an offer "your plan is ready"**: the offer names the board date, and /me was added to V's linkable pages (its links were being dropped).
