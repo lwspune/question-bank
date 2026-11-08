@@ -190,6 +190,10 @@ export const TELEMETRY_KINDS: readonly string[] = [
   // Lighter / More on the board path (2026-11-08, migration 0230): a setting
   // changed, not a feature used; the path's own use is its tasks.
   "path_paced",
+  // A No to "Did you understand?" under V's explanation (2026-11-08, migration
+  // 0241): drill fuel, always beside the chat reply it answers. V's own use is
+  // measured in chat_interactions, not here.
+  "v_not_understood",
 ];
 
 export const FEATURE_LABELS: Partial<Record<ActivityKind, string>> = {
@@ -728,8 +732,8 @@ export const SURFACE_COVERAGE: SurfaceCoverage[] = [
   },
   {
     surface: "Weak-area drills (/drill)",
-    via: "user_activity — a view per day + drill_started on open, then server-graded: one row per answer plus one per drill",
-    kinds: ["surface_viewed", "drill_started", "drill_completed", "answer_correct", "answer_wrong"],
+    via: "user_activity — a view per day + drill_started on open, then server-graded: one row per answer plus one per drill; a No under V's explanation of a question puts it in the drill from 2026-11-08 (v_not_understood, migration 0241)",
+    kinds: ["surface_viewed", "drill_started", "drill_completed", "answer_correct", "answer_wrong", "v_not_understood"],
     tracked: "full",
     lost: "",
   },
