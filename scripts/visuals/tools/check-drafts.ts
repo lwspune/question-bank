@@ -52,6 +52,16 @@ for (const f of files) {
       bad++;
       continue;
     }
+    // A stacked fraction in a matrix cell: \dfrac rows are cut off by the frame, \tfrac rows crowd into each other
+    // (CBSE 12 Matrices, 21 drafts). Write the cell as 5/2.
+    const tallCell = ((d.params as { lines?: { tex?: string }[] })?.lines ?? []).find((l) =>
+      (l.tex?.match(/\\begin\{([pbv]?matrix)\}[\s\S]*?\\end\{\1\}/g) ?? []).some((m) => /\\[td]?frac/.test(m)),
+    );
+    if (tallCell) {
+      console.log(`${tag}: write a fraction inside a matrix as 5/2, not \\frac (stacked cells are cut off or crowd): ${tallCell.tex}`);
+      bad++;
+      continue;
+    }
     // A line or item whose step no beat plays never appears (2026-11-09: 10 of 11,991 stored visuals had one).
     const parts = ((d.params as { lines?: { step?: string }[]; items?: { step?: string }[] })?.lines ??
       (d.params as { items?: { step?: string }[] })?.items ??
