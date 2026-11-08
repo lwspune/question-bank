@@ -20,6 +20,18 @@ if (!scene || !files.length) {
   process.exit(2);
 }
 
+// Phrases agents used for the program's checking that reached students' notes (CBSE 12 Physics, 2026-11-09).
+const CHECK_TALK = /\b(stands for|checked at|sample values?|for the check(ing)?|not shown|program checks?)\b/i;
+
+/** Every note, label and text string in a draft's params (not the maths). */
+function textsOf(x: unknown): string[] {
+  if (Array.isArray(x)) return x.flatMap(textsOf);
+  if (!x || typeof x !== "object") return [];
+  return Object.entries(x as Record<string, unknown>).flatMap(([k, v]) =>
+    typeof v === "string" ? (["note", "label", "text"].includes(k) ? [v] : []) : textsOf(v),
+  );
+}
+
 let ok = 0;
 let bad = 0;
 for (const f of files) {
@@ -30,6 +42,13 @@ for (const f of files) {
     // The assembler's own limit: a longer label drops the draft there.
     if (typeof d.answer?.label !== "string" || !d.answer.label.trim() || d.answer.label.length > 32) {
       console.log(`${tag}: answer.label must be 1 to 32 characters`);
+      bad++;
+      continue;
+    }
+    // Students read every note and label; words about the checking ("x stands for v", "checked at u = -12") are not for them.
+    const aboutTheCheck = textsOf(d.params).find((t) => CHECK_TALK.test(t));
+    if (aboutTheCheck) {
+      console.log(`${tag}: a note or label talks about the checking, not the working: "${aboutTheCheck}"`);
       bad++;
       continue;
     }
