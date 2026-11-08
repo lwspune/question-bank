@@ -2490,6 +2490,29 @@ export type Database = {
           },
         ]
       }
+      mock_question_papers: {
+        Row: {
+          mock_id: string
+          question_id: string
+        }
+        Insert: {
+          mock_id: string
+          question_id: string
+        }
+        Update: {
+          mock_id?: string
+          question_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "mock_question_papers_mock_id_fkey"
+            columns: ["mock_id"]
+            isOneToOne: false
+            referencedRelation: "mock_tests"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       mock_tests: {
         Row: {
           created_at: string
