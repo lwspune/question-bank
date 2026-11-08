@@ -350,7 +350,9 @@ export type VisualizationSlug =
   | "af-area-change"
   // MHT-CET Maths — Mathematical Logic chapter
   | "logic-switch-series-parallel"
-  | "logic-circuit-simplification";
+  | "logic-circuit-simplification"
+  // IMAT Logical Reasoning: Data Interpretation
+  | "imat-chart-types";
 
 export type TrapCallout = {
   /** Short trap headline. KaTeX-aware. */

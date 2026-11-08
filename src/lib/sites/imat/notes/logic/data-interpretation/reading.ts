@@ -86,6 +86,7 @@ export const IMAT_LOG_DAT_READING_NOTE: SubtopicNote = {
         "- **Distance-time graph**: the slope is the speed. A flat section is a stop; a line going back down is the return journey.\n" +
         "- **Pie chart**: each sector's angle is its share of 360°. Equal values give equal sectors; a value twice as big gives an angle twice as big.\n" +
         "- **Matching a chart to data**: check the largest and smallest values, any equal pairs and any zeros first. Usually only one option survives.",
+      visualizationSlug: "imat-chart-types",
       formula: {
         label: "Angle of a pie-chart sector",
         latex: "\\text{angle} = \\frac{\\text{value}}{\\text{total}} \\times 360^\\circ",
