@@ -549,6 +549,14 @@ describe("buildSystemPrompt", () => {
     expect(p).toMatch(/A question from our bank is still checked against its solution and key/i);
   });
 
+  // 2026-11-07: "one more like question 4", then "17": V cannot see the page's numbering, and guessed.
+  it("sends a question named by its number on the page to Ask V and One more like this", () => {
+    const p = buildSystemPrompt({ ...base, explainEnabled: true });
+    expect(p).toMatch(/by its number on the page/);
+    expect(p).toMatch(/tap Ask V on that question/);
+    expect(p).toMatch(/One more like this/);
+  });
+
   it("tells V it cannot write new questions", () => {
     const p = buildSystemPrompt({ ...base, explainEnabled: true });
     expect(p).toMatch(/You cannot write new questions/);

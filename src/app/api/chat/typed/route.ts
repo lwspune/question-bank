@@ -459,6 +459,8 @@ export async function POST(request: NextRequest) {
             explained: isExplanation(recorded.toolCalls, message),
             ...(solutionFigure ? { solutionFigure } : {}),
             ...(solutionVisual ? { solutionVisual, solutionVisualQuestionId: explainedId } : {}),
+            // "One more like this" under the explanation picks from this question's subtopic (2026-11-08).
+            ...(explainedId ? { explainedQuestionId: explainedId } : {}),
             ...(passOffer ? { passOffer } : {}),
           }
         : {};
