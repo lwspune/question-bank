@@ -1,16 +1,15 @@
 /**
- * The free-answer check behind V's explain_question, and its record. Through
- * the student's own login: user_activity is own-row under RLS, and the count
- * is the one every reveal on the site uses (lib/questions/revealQuota.ts,
- * which counts the "v" surface since 2026-10-19). Server only: it writes.
+ * The free-answer check behind V's explain_question and question card, and its
+ * record. Through the student's own login. The decision is claim_reveal's
+ * (migration 0228), the one every reveal on the site uses; V's answers have
+ * counted as the "v" surface since 2026-10-19. Server only: it writes.
  */
 import type { SupabaseClient } from "@supabase/supabase-js";
-import { loadPaidRevealedToday, loadRevealedToday } from "@/lib/questions/revealQuota";
-import { isFreeExamName } from "@/lib/billing/passScope";
-import { getPremiumLimits } from "@/lib/billing/premiumLimits";
+import { loadRevealedToday } from "@/lib/questions/revealQuota";
+import { claimReveal } from "@/lib/questions/claimReveal";
 import { logActivityOnce } from "@/lib/activity/service";
 import { istDayKey, istDayStartIso } from "@/lib/email/dueNudge";
-import { revealCheck, type RevealCheck } from "./questionTools";
+import type { RevealCheck } from "./questionTools";
 
 /** The day's opened questions for this student, or none when it cannot be read. */
 export async function revealedToday(db: SupabaseClient, userId: string, now: Date): Promise<string[]> {
@@ -23,38 +22,31 @@ export async function revealedToday(db: SupabaseClient, userId: string, now: Dat
 }
 
 /**
- * The day's opened questions that count against the free answers: a free
- * exam's are left out (migration 0211). None when it cannot be read.
+ * One of V's answers against the daily limit (claim_reveal, migration 0228):
+ * decided and, when it counts, recorded by the server in one step. Shared by
+ * the explanation (spendVReveal) and the question card (POST
+ * /api/chat/question). When the server cannot be asked, this one answer goes
+ * ahead.
  */
-export async function paidRevealedToday(db: SupabaseClient, now: Date): Promise<string[]> {
-  try {
-    return await loadPaidRevealedToday(db, istDayStartIso(now));
-  } catch (e) {
-    console.error("V: paid revealed-today read failed", e);
-    return [];
+export async function claimVReveal(db: SupabaseClient, questionId: string): Promise<RevealCheck> {
+  const claim = await claimReveal((fn, args) => db.rpc(fn, args), questionId, "v");
+  if (!claim) {
+    console.error("V: claim_reveal failed; this answer goes ahead");
+    return { kind: "ok", counts: false };
   }
-}
-
-/** True when the question belongs to an exam that needs no pass (the Class 9-10 exams). */
-async function questionIsFree(db: SupabaseClient, questionId: string): Promise<boolean> {
-  const { data, error } = await db.from("questions").select("exams(name)").eq("id", questionId).maybeSingle();
-  if (error) {
-    console.error("V: question exam read failed", error);
-    return false;
-  }
-  const exam = (data as { exams: { name: string } | { name: string }[] | null } | null)?.exams;
-  return isFreeExamName(Array.isArray(exam) ? exam[0]?.name : exam?.name);
+  return claim.allowed ? { kind: "ok", counts: claim.reason === "counted" } : { kind: "limit", limit: claim.limit ?? 0 };
 }
 
 /**
  * Check the free answers and record the explanation as a reveal ("v" surface),
- * once per question per IST day. Limits that cannot be read mean no limit,
- * as GET /api/me/reveals treats them.
+ * once per question per IST day. Decided by claim_reveal (migration 0228), the
+ * one rule every surface uses: the question's own exam (a free exam, its pass),
+ * today's board-path questions, and the day's count, serialised per student.
+ * When the server cannot be asked, this one explanation goes ahead: a student
+ * is never walled by our error.
  */
 export async function spendVReveal(db: SupabaseClient, userId: string, questionId: string, now = new Date()): Promise<RevealCheck> {
-  const [limits, free] = await Promise.all([getPremiumLimits(db), questionIsFree(db, questionId)]);
-  const limit = free || !limits || limits.hasPass ? null : limits.revealsPerDay;
-  const check = revealCheck({ limit, todayIds: limit === null ? [] : await paidRevealedToday(db, now), questionId });
+  const check = await claimVReveal(db, questionId);
   if (check.kind === "ok") {
     await logActivityOnce(db, userId, {
       kind: "question_practiced",

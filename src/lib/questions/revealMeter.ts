@@ -27,6 +27,9 @@ export type DailyReveals = {
    *  counted, never walled. Read by the server from its own pick of today's
    *  tasks, never sent by the browser. */
   exemptIds?: readonly string[];
+  /** The server's count of today's answers (claim_reveal, migration 0228), which
+   *  can be more than this page saw: other tabs, V. The larger of the two counts. */
+  used?: number;
 };
 
 /** Which wall a refused reveal met: the signed-out one, or today's limit. */
@@ -59,25 +62,27 @@ export function revealDecision(input: {
     if (daily.exemptIds?.includes(questionId)) {
       return { allow: true, nextIds: [...daily.todayIds], remaining: Math.max(0, daily.limit - daily.todayIds.length) };
     }
-    return spend(daily.todayIds, questionId, daily.limit, "daily");
+    return spend(daily.todayIds, questionId, daily.limit, "daily", daily.used ?? 0);
   }
   return spend(revealedIds, questionId, limit, "signin");
 }
 
-/** One budget rule for both walls: a counted id is free, a new one spends. */
-function spend(revealedIds: readonly string[], questionId: string, limit: number, wall: RevealWall): RevealDecision {
+/** One budget rule for both walls: a counted id is free, a new one spends.
+ *  `known` is a count from elsewhere (the server's); the larger count holds. */
+function spend(revealedIds: readonly string[], questionId: string, limit: number, wall: RevealWall, known = 0): RevealDecision {
+  const count = Math.max(revealedIds.length, known);
   // Already counted → free re-reveal.
   if (revealedIds.includes(questionId)) {
     return {
       allow: true,
       nextIds: [...revealedIds],
-      remaining: Math.max(0, limit - revealedIds.length),
+      remaining: Math.max(0, limit - count),
     };
   }
   // New question, still under the budget → consume one.
-  if (revealedIds.length < limit) {
+  if (count < limit) {
     const nextIds = [...revealedIds, questionId];
-    return { allow: true, nextIds, remaining: Math.max(0, limit - nextIds.length) };
+    return { allow: true, nextIds, remaining: Math.max(0, limit - Math.max(nextIds.length, count + 1)) };
   }
   // Budget spent.
   return { allow: false, nextIds: [...revealedIds], remaining: 0, wall };

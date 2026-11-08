@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { Check, ChevronDown, Eye, Lightbulb, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useSignedIn } from "@/components/auth/useSignedIn";
@@ -44,11 +44,21 @@ export default function WorkedExampleCard({ rank, example }: Props) {
   const [showSolution, setShowSolution] = useState(false);
   const [blockedTaps, setBlockedTaps] = useState(0);
   const { signedIn, loading } = useSignedIn();
-  const dailyGate = useDailyRevealGate(signedIn, loading, "guide", example.examName);
+  const dailyGate = useDailyRevealGate(signedIn, loading, "guide");
+  // The server decides a new answer (claim_reveal, 0228); a tap meanwhile does nothing.
+  const pendingRef = useRef(false);
 
-  const reveal = (label: string | null) => {
+  const reveal = async (label: string | null) => {
     if (!revealed) {
-      if (!dailyGate(example.id)) {
+      if (pendingRef.current) return;
+      pendingRef.current = true;
+      let allowed: boolean;
+      try {
+        allowed = await dailyGate(example.id);
+      } finally {
+        pendingRef.current = false;
+      }
+      if (!allowed) {
         setBlockedTaps((n) => n + 1);
         return;
       }

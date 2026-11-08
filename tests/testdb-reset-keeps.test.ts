@@ -14,6 +14,7 @@ import { RESET_KEEPS } from "./helpers/testdb";
 /** Seeded on purpose but emptied on purpose: the row names an auth user the reset deletes anyway. */
 const SEEDED_BUT_RESET: Record<string, string> = {
   platform_admins: "0056 seeds the owner's account, which testdb:reset deletes with every auth user",
+  daily_reveals: "0228 backfills the day's answers of existing students, whose auth users testdb:reset deletes",
 };
 
 function seededTables(): Map<string, string[]> {

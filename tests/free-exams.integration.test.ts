@@ -17,7 +17,17 @@ import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { randomUUID } from "node:crypto";
 import { mustSignIn } from "./helpers/fixture";
-import { loadPaidRevealedToday, loadRevealedToday } from "@/lib/questions/revealQuota";
+import { loadRevealedToday } from "@/lib/questions/revealQuota";
+import { DAILY_REVEAL_SURFACES } from "@/lib/questions/revealQuota";
+
+// my_paid_reveals_today (0211/0227) is called by the deployed site until the
+// claim_reveal code (0228) ships; the app no longer calls it. Read it directly
+// until it is dropped (SUGGESTIONS.md backfill ledger).
+const loadPaidRevealedToday = async (db: SupabaseClient, since: string): Promise<string[]> => {
+  const { data, error } = await db.rpc("my_paid_reveals_today", { p_since: since, p_surfaces: [...DAILY_REVEAL_SURFACES] });
+  if (error) throw new Error(error.message);
+  return (data ?? []) as string[];
+};
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
