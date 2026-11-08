@@ -64,6 +64,7 @@ export default function PerformanceBody({
   projectionNote,
   starter,
   headerAction,
+  showExamRow = true,
 }: {
   perf: Performance;
   nav: LaneNav;
@@ -80,8 +81,12 @@ export default function PerformanceBody({
   starter?: ReactNode;
   /** A link in the band's top corner (the student page: "All your papers"). */
   headerAction?: ReactNode;
+  /** False when the exam focus picked the exam: the header's chips stand in
+   *  for this row (the student page, 2026-11-08). */
+  showExamRow?: boolean;
 }) {
   const { summary } = perf;
+  const examRow = showExamRow && nav.exams.length > 1;
   const selected = nav.selected;
   const hrefFor = (exam: string, subject?: string) => {
     const qs = new URLSearchParams({ exam });
@@ -110,13 +115,13 @@ export default function PerformanceBody({
         headerAction={headerAction}
       />
 
-      {(nav.exams.length > 1 || nav.subjects.length > 1) && (
+      {(examRow || nav.subjects.length > 1) && (
         <div className="space-y-3">
           {/* Exam first, subject second. The exam row appears only for a
               student who has sat more than one — 112 of the 124 students with
               submitted attempts have exactly one, and a single-option filter
               is furniture. */}
-          {nav.exams.length > 1 && (
+          {examRow && (
             <nav aria-label="Exam" className="inline-flex flex-wrap gap-1 rounded-full border bg-card p-1">
               {nav.exams.map((e) => (
                 <Pill
@@ -184,7 +189,8 @@ function Hero({
   const projection = lane?.projection ?? null;
   const topGap = projection?.rows[0];
   const laneName = lane ? `${lane.exam} ${lane.subject}` : null;
-  const Heading = viewer === "self" ? "h1" : "p";
+  // The student page's h1 is the greeting in its header (2026-11-08).
+  const Heading = viewer === "self" ? "h2" : "p";
 
   return (
     <section className="hero-brand rounded-3xl p-5 sm:p-8" aria-label="Summary">

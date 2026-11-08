@@ -25,6 +25,11 @@ import { getExamBySlug, isBoardExam, resolveBoardHref } from "@/lib/exam/examCon
 import AnswerSheetsCard from "@/components/answerSheets/AnswerSheetsCard";
 import { listOwnSubmissions } from "@/lib/answerSheets/query";
 import { cardSheetRows } from "@/lib/answerSheets/sheetRows";
+import MeHeader from "@/components/me/MeHeader";
+import { loadMeHeader } from "@/lib/me/header";
+import { performanceFocus } from "@/lib/me/focus";
+import { getExamIdMap } from "@/lib/exam/examIdMap";
+import { mockCatalogueHref } from "@/lib/exam/examLinks";
 
 /**
  * A student's own performance diagnosis — the same readout staff have had since
@@ -51,11 +56,15 @@ export default async function OwnPerformancePage(props: { searchParams: Promise<
   const user = await getSessionUser();
   if (!user) redirect("/login?next=/performance");
 
-  const payload = await getOwnPerformance();
-  if (!payload) redirect("/login?next=/performance");
-
   const now = new Date();
   const db = createSupabaseServerClient();
+  // The header (greeting, exams, focus) is read alongside the papers.
+  const [payload, header] = await Promise.all([
+    getOwnPerformance(),
+    getExamIdMap().then((ids) => loadMeHeader(db, user, ids, { now })),
+  ]);
+  if (!payload) redirect("/login?next=/performance");
+
   // Who has opened this page was never recorded; now once a day.
   await logActivityOnce(db, user.id, surfaceViewedEvent(user.id, "performance", now));
 
@@ -75,7 +84,19 @@ export default async function OwnPerformancePage(props: { searchParams: Promise<
   const perf = locked
     ? { ...built, lanes: built.lanes.map((l) => ({ ...l, projection: null })) }
     : built;
-  const nav = buildLaneNav(perf.lanes, perf.summary.latest?.exam ?? null, searchParams);
+  // The exam focus (2026-11-08): a two-exam student's chosen exam opens here,
+  // and the header's chips stand in for the page's own exam row. A link that
+  // names an exam still wins.
+  const pf = performanceFocus({
+    satExams: [...new Set(perf.lanes.map((l) => l.exam))],
+    filterExamName: header.focus.filterExamName,
+    urlExam: searchParams.exam,
+  });
+  const nav = buildLaneNav(perf.lanes, perf.summary.latest?.exam ?? null, {
+    exam: pf.exam,
+    subject: searchParams.subject,
+  });
+  const focusExam = header.focus.selected ? getExamBySlug(header.focus.selected) : null;
   // Offer the lock only on a lane that HAD a projection to hide.
   const hadProjection = locked
     ? built.lanes.some((l) => l.exam === nav.selected?.exam && l.subject === nav.selected?.subject && l.projection)
@@ -105,30 +126,65 @@ export default async function OwnPerformancePage(props: { searchParams: Promise<
     <>
       <AppHeader />
       <main className="mx-auto max-w-5xl space-y-8 px-4 py-6 sm:px-6 sm:py-8">
-        {/* With a marked paper, the band inside PerformanceBody carries the
-            page title and this link. Without one there is no band, so the
-            plain header stays. */}
-        {built.summary.graded === 0 && (
-          <div className="flex flex-wrap items-end justify-between gap-3">
-            <h1 className="text-2xl font-bold tracking-tight">Your performance</h1>
-            {allPapers("border hover:bg-accent")}
-          </div>
-        )}
+        <MeHeader data={header} active="performance" readOnly={false} />
 
-        <PerformanceBody
-          perf={perf}
-          nav={nav}
-          links={links}
-          basePath="/performance"
-          viewer="self"
-          projectionLocked={projectionLocked}
-          projectionNote={projectionNote}
-          starter={starter}
-          headerAction={allPapers("bg-white/10 text-white ring-1 ring-white/25 hover:bg-white/20")}
-        />
+        {/* The tab names the page now (2026-11-08). The chapter map lives
+            here too: it is the same evidence, drawn chapter by chapter. With a
+            marked paper the band also carries "All your papers"; without one,
+            it sits here. */}
+        <div className="flex flex-wrap items-center gap-3">
+          {built.summary.graded === 0 && allPapers("border hover:bg-accent")}
+          <Link
+            prefetch={false}
+            href="/me/map"
+            className="inline-flex items-center gap-1 text-sm font-medium text-brand-accent hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          >
+            See your chapter map
+            <ArrowRight className="h-3.5 w-3.5" aria-hidden />
+          </Link>
+        </div>
+
+        {pf.noPaperFor && focusExam ? (
+          <NoPaperFor examName={focusExam.displayName} href={mockCatalogueHref(focusExam.slug)} />
+        ) : (
+          <PerformanceBody
+            perf={perf}
+            nav={nav}
+            links={links}
+            basePath="/performance"
+            viewer="self"
+            projectionLocked={projectionLocked}
+            projectionNote={projectionNote}
+            starter={starter}
+            showExamRow={pf.showExamRow}
+            headerAction={allPapers("bg-white/10 text-white ring-1 ring-white/25 hover:bg-white/20")}
+          />
+        )}
         <AnswerSheetsCard rows={sheets.rows} more={sheets.more} />
       </main>
     </>
+  );
+}
+
+/** The focus exam has no marked paper, though another exam does: say so, and
+ *  offer that exam's papers. "All" in the header shows the others. */
+function NoPaperFor({ examName, href }: { examName: string; href: string }) {
+  return (
+    <section className="rounded-xl border bg-card p-6">
+      <h2 className="font-semibold">No marked {examName} paper yet</h2>
+      <p className="mt-1 text-sm text-muted-foreground">
+        Sit one {examName} paper and this page shows your score, chapters and mistakes for it. Tap All above to see
+        your other papers.
+      </p>
+      <Link
+        prefetch={false}
+        href={href}
+        className="mt-4 inline-flex h-10 items-center gap-1.5 rounded-md bg-brand px-4 text-sm font-medium text-brand-foreground transition-colors hover:bg-brand/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+      >
+        See {examName} papers
+        <ArrowRight className="h-4 w-4" aria-hidden />
+      </Link>
+    </section>
   );
 }
 

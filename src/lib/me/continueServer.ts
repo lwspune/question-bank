@@ -17,8 +17,9 @@ import type { Database } from "@/types/db";
 import { EXAM_REGISTRY } from "@/lib/exam/examContext";
 import { landingHref, listChapterLandings } from "@/lib/questions/landing";
 import { planHref } from "@/lib/homework/links";
+import { getNotesExamGroups } from "@/lib/notes/notesNav";
 import {
-  pickContinue,
+  focusContinue,
   planSlugOf,
   practiceContinue,
   type ChapterInfo,
@@ -43,18 +44,24 @@ export async function loadContinue(
   db: Db,
   userId: string,
   notes: readonly NotesRecent[],
-  examIds: Record<string, string | null>
+  examIds: Record<string, string | null>,
+  /** The exam focus on Home (lib/me/focus): that exam's entries only. */
+  focusSlug: string | null = null
 ): Promise<ContinueItem[]> {
   const [practice, homework] = await Promise.all([
     loadPracticeItems(db, userId, examIds).catch((e) => {
       console.error("continue: practice read failed", e instanceof Error ? e.message : e);
       return [] as ContinueItem[];
     }),
-    loadHomeworkItem(db, userId).catch((e) => {
+    loadHomeworkItem(db, userId, examIds).catch((e) => {
       console.error("continue: homework read failed", e instanceof Error ? e.message : e);
       return null;
     }),
   ]);
+  // A notes subject route belongs to one exam (lib/notes/notesNav).
+  const examOfNotesRoute = new Map(
+    getNotesExamGroups().flatMap((g) => g.subjects.map((s) => [s.subjectRoute, g.slug] as const))
+  );
   const notesItems: ContinueItem[] = notes.map((n) => ({
     key: `notes:${n.subtopicSlug}`,
     kind: "notes",
@@ -62,8 +69,9 @@ export async function loadContinue(
     subtitle: n.chapter,
     href: `/notes/${n.subjectRoute}/${n.chapterSlug}/${n.subtopicSlug}`,
     at: n.lastViewedAt,
+    examSlug: examOfNotesRoute.get(n.subjectRoute) ?? null,
   }));
-  return pickContinue([...practice, ...notesItems, ...(homework ? [homework] : [])]);
+  return focusContinue([...practice, ...notesItems, ...(homework ? [homework] : [])], focusSlug);
 }
 
 async function loadPracticeItems(
@@ -125,7 +133,11 @@ async function loadPracticeItems(
 
 /** The homework plan the student last opened, from the day's first homework
  *  view (lib/activity/views: one row per day, with the page's address). */
-async function loadHomeworkItem(db: Db, userId: string): Promise<ContinueItem | null> {
+async function loadHomeworkItem(
+  db: Db,
+  userId: string,
+  examIds: Record<string, string | null>
+): Promise<ContinueItem | null> {
   const { data, error } = await db
     .from("user_activity")
     .select("created_at, path:metadata->>path")
@@ -149,7 +161,7 @@ async function loadHomeworkItem(db: Db, userId: string): Promise<ContinueItem | 
   // service-role read.
   const plan = await db
     .from("homework_plans")
-    .select("slug, title")
+    .select("slug, title, exam_id")
     .eq("slug", slug)
     .eq("published", true)
     .maybeSingle();
@@ -163,5 +175,11 @@ async function loadHomeworkItem(db: Db, userId: string): Promise<ContinueItem | 
     href: planHref(slug),
     at,
     planSlug: slug,
+    examSlug: examSlugOf(examIds, plan.data.exam_id),
   };
+}
+
+/** The registry slug of an exam id, or null. */
+function examSlugOf(examIds: Record<string, string | null>, examId: string): string | null {
+  return Object.entries(examIds).find(([, id]) => id === examId)?.[0] ?? null;
 }

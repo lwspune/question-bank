@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, CalendarClock, Check, EyeOff, GraduationCap } from "lucide-react";
+import { ArrowRight, CalendarClock, Check, EyeOff } from "lucide-react";
 import AttemptsList from "../mock/_components/AttemptsList";
 import FeedbackCards from "./FeedbackCards";
 import TodayCard from "./TodayCard";
@@ -8,8 +8,6 @@ import ProgressTiles from "./ProgressTiles";
 import WeakSpots from "./WeakSpots";
 import ContinueCard from "./ContinueCard";
 import HomeReminder from "./HomeReminder";
-import Greeting from "./Greeting";
-import SuggestExamCard from "./SuggestExamCard";
 import StageNudge from "./StageNudge";
 import ResultCheckCard from "./ResultCheckCard";
 import TutorPriceCard from "./TutorPriceCard";
@@ -17,12 +15,12 @@ import { rupees } from "@/lib/tutor/price";
 import type { MeData } from "@/lib/me/load";
 import type { Pulse } from "@/lib/pulse/cache";
 import type { StudentAssignmentView } from "@/lib/assignments/core";
-import type { ExamLink } from "@/lib/exam/examLinks";
 import { checkQuestion } from "@/lib/results/check";
 import { mockCatalogueHref } from "@/lib/exam/examLinks";
 import { STAGE_LABELS } from "@/lib/profile/onboarding";
 import { homeReminderAsk } from "@/lib/profile/push";
 import { cn } from "@/lib/utils";
+import MeHeader, { type MeTab } from "@/components/me/MeHeader";
 
 /**
  * The body of /me, shared by the student's own /me and the staff view of a
@@ -44,10 +42,13 @@ export default function MeView({
   data,
   vapidKey,
   viewAs,
+  tab = "home",
 }: {
   data: MeData;
   vapidKey: string;
   viewAs?: ViewAs;
+  /** The open tab in the header's strip; the staff view shows none. */
+  tab?: MeTab;
 }) {
   const staff = !!viewAs;
   const now = new Date();
@@ -55,29 +56,9 @@ export default function MeView({
 
   return (
     <>
-      {/* A greeting, not "Your dashboard" over the student's own email. */}
-      <header className="space-y-2">
-        {staff ? (
-          <h1 className="text-2xl font-semibold tracking-tight sm:text-3xl">
-            {data.name ? `${data.greeting}, ${data.name}` : data.greeting}
-          </h1>
-        ) : (
-          <Greeting greeting={data.greeting} name={data.name} />
-        )}
-        {data.examLinks.length > 0 ? (
-          <YourExams links={data.examLinks} readOnly={staff} />
-        ) : data.suggestedExam ? (
-          staff ? (
-            <HiddenNote>
-              Here they see a card suggesting {data.suggestedExam.displayName} as their exam.
-            </HiddenNote>
-          ) : (
-            <SuggestExamCard slug={data.suggestedExam.slug} examName={data.suggestedExam.displayName} />
-          )
-        ) : (
-          <NoTargetCard readOnly={staff} />
-        )}
-      </header>
+      {/* Greeting, exams (the focus switch for a two-exam student) and the
+          Home · Performance · Account tabs: shared with the other two pages. */}
+      <MeHeader data={data} active={staff ? undefined : tab} readOnly={staff} />
 
       {data.resultCheck &&
         (staff ? (
@@ -275,60 +256,6 @@ function DueList({ items }: { items: StudentAssignmentView[] }) {
         </p>
       )}
     </section>
-  );
-}
-
-/* ------------------------------------------------------------ your exams */
-
-/** The student's target exams, in order, each to its best destination. */
-function YourExams({ links, readOnly }: { links: ExamLink[]; readOnly: boolean }) {
-  return (
-    <section aria-label="Your exams" className="flex flex-wrap items-center gap-2">
-      <span className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
-        Your exams
-      </span>
-      {links.map((l) => (
-        <Link
-          key={l.slug}
-          href={l.href}
-          prefetch={false}
-          className="inline-flex h-8 items-center rounded-full border px-3 text-sm font-medium transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-        >
-          {l.label}
-        </Link>
-      ))}
-      {!readOnly && (
-        <Link
-          href="/account"
-          prefetch={false}
-          className="text-xs font-medium text-brand-accent hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-        >
-          Change
-        </Link>
-      )}
-    </section>
-  );
-}
-
-/** Shown instead of the exam row when the student has no target exam: one
- *  quiet line, not a card with a full-width button. */
-function NoTargetCard({ readOnly }: { readOnly: boolean }) {
-  return (
-    <p className="text-sm text-muted-foreground">
-      <GraduationCap className="mr-1.5 inline h-4 w-4 align-[-3px] text-brand-accent" aria-hidden />
-      Tell us your exam and this page shows only what you need.{" "}
-      {readOnly ? (
-        <span className="font-medium">Choose your exam</span>
-      ) : (
-        <Link
-          href="/account"
-          prefetch={false}
-          className="font-medium text-brand-accent underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-        >
-          Choose your exam
-        </Link>
-      )}
-    </p>
   );
 }
 

@@ -25,6 +25,9 @@ export type ContinueItem = {
   at: string;
   /** Set on a homework entry: the browser fills in the day count. */
   planSlug?: string;
+  /** The entry's exam (registry slug), for the exam focus on Home
+   *  (2026-11-08). Null or absent: unknown, so never hidden by a focus. */
+  examSlug?: string | null;
 };
 
 export const CONTINUE_LIMIT = 3;
@@ -37,6 +40,21 @@ export function pickContinue(items: readonly ContinueItem[], limit = CONTINUE_LI
     if (!prev || i.at > prev.at) byKey.set(i.key, i);
   }
   return [...byKey.values()].sort((a, b) => (a.at < b.at ? 1 : a.at > b.at ? -1 : 0)).slice(0, limit);
+}
+
+/**
+ * The Continue list for Home: the focus exam's entries and those whose exam is
+ * unknown, filtered BEFORE the newest `limit` are picked, so an older entry of
+ * the focus exam is not lost behind newer ones of another exam. No focus: the
+ * newest of every exam, as before. Spec: tests/me-continue-focus.test.ts.
+ */
+export function focusContinue(
+  items: readonly ContinueItem[],
+  focusSlug: string | null,
+  limit = CONTINUE_LIMIT
+): ContinueItem[] {
+  const kept = focusSlug ? items.filter((i) => !i.examSlug || i.examSlug === focusSlug) : items;
+  return pickContinue(kept, limit);
 }
 
 /** One recent answer: `surface` is user_activity metadata.surface. */
@@ -77,11 +95,11 @@ export function practiceContinue(
       const href =
         c.landingHref ??
         `/browse?${new URLSearchParams({ examId: c.examId, subjectId: c.subjectId, chapterIds: c.chapterId }).toString()}`;
-      out.push({ key: `bank:${c.chapterId}`, kind: "bank", title: c.chapterName, subtitle, href, at: r.at });
+      out.push({ key: `bank:${c.chapterId}`, kind: "bank", title: c.chapterName, subtitle, href, at: r.at, examSlug: c.examSlug });
     } else {
       if (!c.examSlug || !boardExams.has(c.examSlug)) continue;
       const href = `/board/${c.examSlug}/${slugify(c.subjectName)}/${slugify(c.chapterName)}`;
-      out.push({ key: `board:${c.chapterId}`, kind: "board", title: c.chapterName, subtitle, href, at: r.at });
+      out.push({ key: `board:${c.chapterId}`, kind: "board", title: c.chapterName, subtitle, href, at: r.at, examSlug: c.examSlug });
     }
   }
   return pickContinue(out, Number.POSITIVE_INFINITY);
