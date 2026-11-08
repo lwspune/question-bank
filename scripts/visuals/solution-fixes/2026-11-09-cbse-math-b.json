@@ -1,0 +1,8 @@
+[
+  {
+    "id": "cf585abe-a325-45be-bf2d-13d3bd4d188f",
+    "before": "635373e8",
+    "solution": "Let \\(f(x) = \\sin^{-1}\\left(\\dfrac{2^{x+1}}{1+4^x}\\right)\\). To find the domain of this function we need to find all \\(x\\) such that \\(-1 \\le \\dfrac{2^{x+1}}{1+4^x} \\le 1\\). Since the quantity in the middle is always positive, we need to find all \\(x\\) such that \\(\\dfrac{2^{x+1}}{1+4^x} \\le 1\\), i.e., all \\(x\\) such that \\(2^{x+1} \\le 1+4^x\\). We may rewrite this as \\(2 \\le \\dfrac{1}{2^x} + 2^x\\) which is true for all \\(x\\). Hence the function is defined at every real number. By putting \\(2^x = \\tan\\theta\\), this function may be rewritten as\n\n\\(f(x) = \\sin^{-1}\\left[\\dfrac{2^{x+1}}{1+4^x}\\right]\\)\n\n\\(= \\sin^{-1}\\left[\\dfrac{2^x\\cdot 2}{1+\\left(2^x\\right)^2}\\right]\\)\n\n\\(= \\sin^{-1}\\left[\\dfrac{2\\tan\\theta}{1+\\tan^2\\theta}\\right]\\)\n\n\\(= \\sin^{-1}[\\sin 2\\theta] = 2\\theta = 2\\tan^{-1}(2^x)\\) when \\(2\\theta \\le \\dfrac{\\pi}{2}\\), that is \\(2^x \\le 1\\), \\(x \\le 0\\)\n\nThus \\(f'(x) = 2\\cdot\\dfrac{1}{1+\\left(2^x\\right)^2}\\cdot\\dfrac{d}{dx}(2^x)\\)\n\n\\(= \\dfrac{2}{1+4^x}\\cdot(2^x)\\log 2\\)\n\n\\(= \\dfrac{2^{x+1}\\log 2}{1+4^x}\\) for \\(x < 0\\). For \\(x > 0\\), \\(2\\theta > \\dfrac{\\pi}{2}\\), so \\(f(x) = \\pi - 2\\tan^{-1}(2^x)\\) and \\(f'(x) = -\\dfrac{2^{x+1}\\log 2}{1+4^x}\\); at \\(x = 0\\) the two one-sided derivatives differ, so \\(f\\) is not differentiable there. [NCERT's answer, \\(\\dfrac{2^{x+1}\\log 2}{1+4^x}\\), is the \\(x < 0\\) case.]",
+    "note": "sin^-1(sin 2t) = 2t needs 2t <= pi/2, i.e. x <= 0; for x > 0 it is pi - 2t and the derivative changes sign."
+  }
+]
