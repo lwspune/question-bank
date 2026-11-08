@@ -1,0 +1,4448 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "080b95db-76c3-4dc3-93e9-fc221cf3bb53",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "k_1 = 0.045,\\ k_2 = 0.6,\\ T_1 = 293,\\ T_2 = 313,\\ R = 8.314",
+              "note": "k in s⁻¹, T in K, R in J K⁻¹ mol⁻¹",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\log_{10}\\dfrac{0.6}{0.045} = \\log_{10} 13.33 = {{1:1.1248}}",
+              "f": "log10(13.33)",
+              "value": "1.1248",
+              "dp": 4,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "2.303 \\times 8.314 = {{2:19.15}}",
+              "f": "2.303*8.314",
+              "value": "19.15",
+              "dp": 2,
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{313-293}{293 \\times 313} = {{3:2.18 \\times 10^{-4}}}",
+              "f": "20/(293*313)",
+              "value": "2.18*10^(-4)",
+              "sf": 3,
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "E_a = \\dfrac{ {{1:1.1248}} \\times {{2:19.15}} }{ {{3:2.18 \\times 10^{-4}}} } = 98810\\ \\text{J mol}^{-1}",
+              "f": "1.1248*19.15/(2.18*10^(-4))",
+              "value": "98810",
+              "sf": 4,
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "E_a = 98.8\\ \\text{kJ mol}^{-1}",
+              "f": "98810/1000",
+              "value": "98.8",
+              "sf": 3,
+              "step": "s6"
+            }
+          ],
+          "answer": "98.8"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s2",
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "d9f4f8b8",
+        "answer": {
+          "value": 98.8,
+          "label": "98.8 kJ/mol"
+        }
+      }
+    },
+    {
+      "id": "09d5f7af-c72f-43da-827b-ec3d009b102e",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\mathrm{A} = 4 \\times 10^{13}\\ \\text{s}^{-1},\\ E_a = 98.6 \\times 10^{3}\\ \\text{J mol}^{-1}",
+              "note": "t½ = 10 min = 600 s",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "k = \\dfrac{0.693}{600} = 1.155 \\times 10^{-3}\\ \\text{s}^{-1}",
+              "f": "0.693/600",
+              "value": "1.155*10^(-3)",
+              "sf": 4,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{\\mathrm{A}}{k} = \\dfrac{4 \\times 10^{13}}{1.155 \\times 10^{-3}} = 3.463 \\times 10^{16}",
+              "f": "4*10^13/(1.155*10^(-3))",
+              "value": "3.463*10^16",
+              "sf": 4,
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\log_{10}\\dfrac{\\mathrm{A}}{k} = \\log_{10}(3.463 \\times 10^{16}) = 16.54",
+              "f": "log10(3.463*10^16)",
+              "value": "16.54",
+              "dp": 2,
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "T = \\dfrac{98.6 \\times 10^{3}}{2.303 \\times 8.314 \\times 16.54}",
+              "f": "98.6*10^3/(2.303*8.314*16.54)",
+              "value": "311.3",
+              "dp": 1,
+              "note": "T = Ea / (2.303 R log A/k)",
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{98.6 \\times 10^{3}}{316.7} = 311.3\\ \\text{K}",
+              "f": "98.6*10^3/316.7",
+              "value": "311.3",
+              "dp": 1,
+              "step": "s6"
+            }
+          ],
+          "answer": "311.3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 10,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "from": 12,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 14,
+            "beats": [
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "2b41333f",
+        "answer": {
+          "value": 311.3,
+          "label": "311.3 K (38.3 °C)"
+        }
+      }
+    },
+    {
+      "id": "0d71ba78-5910-4c09-8697-06c12182aa1d",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "-\\dfrac{d[\\mathrm{N_2O_5}]}{dt} = 0.02\\ \\text{mol dm}^{-3}\\text{s}^{-1}",
+              "note": "rate = −½ d[N₂O₅]/dt = ¼ d[NO₂]/dt",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\text{rate} = \\dfrac{1}{2} \\times 0.02 = 0.01",
+              "f": "1/2*0.02",
+              "value": "0.01",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{d[\\mathrm{O_2}]}{dt} = \\dfrac{1}{2} \\times 0.02 = 0.01",
+              "f": "1/2*0.02",
+              "value": "0.01",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{d[\\mathrm{NO_2}]}{dt} = \\dfrac{4}{2} \\times 0.02 = 0.04",
+              "f": "4/2*0.02",
+              "value": "0.04",
+              "step": "s4"
+            }
+          ],
+          "answer": "1/2*0.02"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "be439f9d",
+        "answer": {
+          "value": 0.01,
+          "label": "0.01; O₂ 0.01; NO₂ 0.04"
+        }
+      }
+    },
+    {
+      "id": "0f965c89-9363-410b-9a6d-4dfe05a0e4e7",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "t = 40\\ \\text{min},\\ [\\mathrm{A}]_0 = 100,\\ [\\mathrm{A}]_t = 70",
+              "note": "30% decomposed, 70% remains",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\log_{10}\\dfrac{100}{70} = {{1:0.1549}}",
+              "f": "log10(100/70)",
+              "value": "0.1549",
+              "dp": 4,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "k = \\dfrac{2.303 \\times {{1:0.1549}}}{40} = 8.918 \\times 10^{-3}\\ \\text{min}^{-1}",
+              "f": "2.303*0.1549/40",
+              "value": "8.918*10^(-3)",
+              "sf": 4,
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "t_{1/2} = \\dfrac{0.693}{8.918 \\times 10^{-3}} = 77.7\\ \\text{min}",
+              "f": "0.693/(8.918*10^(-3))",
+              "value": "77.7",
+              "dp": 1,
+              "step": "s4"
+            }
+          ],
+          "answer": "77.7"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "b2ca8941",
+        "answer": {
+          "value": 77.7,
+          "label": "77.7 min"
+        }
+      }
+    },
+    {
+      "id": "10c013cf-d342-4a8d-a1f2-7ae14daca406",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\text{rate} = k[\\mathrm{A}][\\mathrm{B}]^2",
+              "note": "k = rate / ([A][B]²)",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "[\\mathrm{B}]^2 = 0.1^2 = 0.01",
+              "f": "0.1^2",
+              "value": "0.01",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\text{denominator} = 0.2 \\times 0.01 = 0.002",
+              "f": "0.2*0.01",
+              "value": "0.002",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "k = \\dfrac{3.6 \\times 10^{-2}}{0.002} = 18\\ \\text{mol}^{-2}\\text{dm}^{6}\\text{s}^{-1}",
+              "f": "3.6*10^(-2)/0.002",
+              "value": "18",
+              "step": "s4"
+            }
+          ],
+          "answer": "18"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "e79b4581",
+        "answer": {
+          "value": 18,
+          "label": "18 mol⁻² dm⁶ s⁻¹"
+        }
+      }
+    },
+    {
+      "id": "118b315a-e3d2-45eb-ac6b-63b5082fbd90",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "-\\dfrac{d[\\mathrm{A}]}{dt} = k[\\mathrm{A}],\\quad \\dfrac{d[\\mathrm{A}]}{[\\mathrm{A}]} = -k\\,dt",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\ln[\\mathrm{A}]_t - \\ln[\\mathrm{A}]_0 = -k\\,t",
+              "f": "ln(At)-ln(A0)",
+              "value": "-k*t",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\ln\\dfrac{[\\mathrm{A}]_t}{[\\mathrm{A}]_0} = -k\\,t",
+              "f": "ln(At/A0)",
+              "value": "-k*t",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "k = \\dfrac{1}{t}\\ln\\dfrac{[\\mathrm{A}]_0}{[\\mathrm{A}]_t}",
+              "f": "ln(A0/At)/t",
+              "value": "k",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "k = \\dfrac{2.303}{t}\\log_{10}\\dfrac{[\\mathrm{A}]_0}{[\\mathrm{A}]_t}",
+              "f": "ln(10)*log10(A0/At)/t",
+              "value": "k",
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "k\\,t_{1/2} = 2.303\\log_{10}\\dfrac{[\\mathrm{A}]_0}{[\\mathrm{A}]_0/2}",
+              "f": "ln(10)*log10(A0/(A0/2))",
+              "value": "k*th",
+              "step": "s6"
+            },
+            {
+              "kind": "calc",
+              "tex": "k = \\dfrac{2.303 \\times 0.3010}{t_{1/2}} = \\dfrac{0.693}{t_{1/2}}",
+              "f": "ln(2)/th",
+              "value": "k",
+              "step": "s7"
+            }
+          ],
+          "answer": "0.693/k",
+          "vars": {
+            "A0": "5",
+            "k": "0.3",
+            "t": "2",
+            "At": "A0*exp(-k*t)",
+            "th": "ln(2)/k"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 10,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 11,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 13,
+            "beats": [
+              "s6"
+            ]
+          },
+          {
+            "from": 17,
+            "beats": [
+              "s7"
+            ]
+          }
+        ],
+        "fingerprint": "90e5bc29",
+        "answer": {
+          "value": 2.31,
+          "label": "t½ = 0.693/k"
+        }
+      }
+    },
+    {
+      "id": "13dd77d3-d478-4da3-b4ea-663ff660c327",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\text{rate} = k[\\mathrm{A}],\\quad \\text{rate} = 5.4 \\times 10^{-6},\\ [\\mathrm{A}] = 0.3",
+              "note": "M = mol dm⁻³",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "k = \\dfrac{5.4 \\times 10^{-6}}{0.3} = 1.8 \\times 10^{-5}\\ \\text{s}^{-1}",
+              "f": "5.4*10^(-6)/0.3",
+              "value": "1.8*10^(-5)",
+              "sf": 2,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "k[\\mathrm{A}] = 1.8 \\times 10^{-5} \\times 0.3 = 5.4 \\times 10^{-6}",
+              "f": "1.8*10^(-5)*0.3",
+              "value": "5.4*10^(-6)",
+              "sf": 2,
+              "note": "check against the given rate",
+              "step": "s3"
+            }
+          ],
+          "answer": "1.8*10^(-5)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "cfabf546",
+        "answer": {
+          "value": 0.000018,
+          "label": "1.8 × 10⁻⁵ s⁻¹"
+        }
+      }
+    },
+    {
+      "id": "154d5897-73a4-4ba3-9161-aa0693f1d5b3",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "k\\,t = [\\mathrm{A}]_0 - [\\mathrm{A}]_t,\\quad [\\mathrm{A}]_t = \\dfrac{[\\mathrm{A}]_0}{2}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "k\\,t_{1/2} = [\\mathrm{A}]_0 - \\dfrac{[\\mathrm{A}]_0}{2}",
+              "f": "A0-A0/2",
+              "value": "k*th",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "k\\,t_{1/2} = \\dfrac{[\\mathrm{A}]_0}{2}",
+              "f": "A0/2",
+              "value": "k*th",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "t_{1/2} = \\dfrac{[\\mathrm{A}]_0}{2k}",
+              "f": "A0/(2*k)",
+              "value": "th",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "k = \\dfrac{[\\mathrm{A}]_0}{2\\,t_{1/2}}",
+              "f": "A0/(2*th)",
+              "value": "k",
+              "step": "s5"
+            }
+          ],
+          "answer": "A0/(2*k)",
+          "vars": {
+            "A0": "4",
+            "k": "0.5",
+            "th": "A0/(2*k)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "90dace3c",
+        "answer": {
+          "value": 4,
+          "label": "t½ = [A]₀/2k"
+        }
+      }
+    },
+    {
+      "id": "1573c294-c00e-41f0-943c-8a1e68d3ae72",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "t_{1/2} = 1.7\\ \\text{h},\\quad [\\mathrm{A}]_0 = 100,\\ [\\mathrm{A}]_t = 80",
+              "note": "20% reacted, 80% remains",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "k = \\dfrac{0.693}{1.7} = 0.4076\\ \\text{h}^{-1}",
+              "f": "0.693/1.7",
+              "value": "0.4076",
+              "dp": 4,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\log_{10}\\dfrac{100}{80} = \\log_{10}1.25 = 0.0969",
+              "f": "log10(1.25)",
+              "value": "0.0969",
+              "dp": 4,
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "t = \\dfrac{2.303 \\times 0.0969}{0.4076} = 0.5475\\ \\text{h}",
+              "f": "2.303*0.0969/0.4076",
+              "value": "0.5475",
+              "dp": 4,
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "t = 0.5475 \\times 60 = 32.9\\ \\text{min}",
+              "f": "0.5475*60",
+              "value": "32.9",
+              "dp": 1,
+              "step": "s5"
+            }
+          ],
+          "answer": "32.9"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "d7475165",
+        "answer": {
+          "value": 32.9,
+          "label": "32.9 min"
+        }
+      }
+    },
+    {
+      "id": "1698da11-6a82-4574-a461-54d67d854f4d",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "t = 45\\ \\text{min},\\quad [\\mathrm{A}]_0 = 100,\\ [\\mathrm{A}]_t = 40",
+              "note": "60% decomposes, 40% remains",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{2.303}{45} = 0.05118",
+              "f": "2.303/45",
+              "value": "0.05118",
+              "dp": 5,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\log 2.5 = 0.3979",
+              "f": "log10(2.5)",
+              "value": "0.3979",
+              "dp": 4,
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "k = 0.05118 \\times 0.3979 = 0.02036\\ \\text{min}^{-1}",
+              "f": "0.05118*0.3979",
+              "value": "0.02036",
+              "sf": 4,
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "t_{1/2} = \\dfrac{0.693}{0.02036} = 34.04\\ \\text{min}",
+              "f": "0.693/0.02036",
+              "value": "34.04",
+              "dp": 2,
+              "step": "s5"
+            },
+            {
+              "kind": "note",
+              "tex": "\\text{zero order: } k\\,t = [\\mathrm{A}]_0 - [\\mathrm{A}]_t,\\ [\\mathrm{A}]_t = \\dfrac{[\\mathrm{A}]_0}{2}",
+              "step": "s6"
+            },
+            {
+              "kind": "calc",
+              "tex": "k\\,t_{1/2} = [\\mathrm{A}]_0 - \\dfrac{[\\mathrm{A}]_0}{2} = \\dfrac{[\\mathrm{A}]_0}{2}",
+              "f": "A0-A0/2",
+              "value": "k*th",
+              "step": "s7"
+            },
+            {
+              "kind": "calc",
+              "tex": "t_{1/2} = \\dfrac{[\\mathrm{A}]_0}{2k}",
+              "f": "A0/(2*k)",
+              "value": "th",
+              "step": "s8"
+            }
+          ],
+          "answer": "34.04",
+          "vars": {
+            "A0": "4",
+            "k": "0.5",
+            "th": "A0/(2*k)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 10,
+            "beats": [
+              "s6"
+            ]
+          },
+          {
+            "from": 12,
+            "beats": [
+              "s7",
+              "s8"
+            ]
+          }
+        ],
+        "fingerprint": "18f922ad",
+        "answer": {
+          "value": 34.04,
+          "label": "34.04 min; t½ = [A]₀/2k"
+        }
+      }
+    },
+    {
+      "id": "1b38ab87-e313-4a73-bb77-ef82c444a96f",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\text{rate} = k[\\mathrm{A}]^x[\\mathrm{B}]^y",
+              "note": "[B] doubled: rate doubled",
+              "step": "s1"
+            },
+            {
+              "kind": "eq",
+              "tex": "2 = 2^y,\\quad y = 1",
+              "lhs": "2",
+              "rhs": "2^x",
+              "roots": [
+                "1"
+              ],
+              "step": "s2"
+            },
+            {
+              "kind": "note",
+              "tex": "[\\mathrm{A}]\\ \\text{trebled},\\ [\\mathrm{B}]\\ \\text{doubled}:\\ \\text{rate} \\times 6",
+              "note": "divide (iii) by (i)",
+              "step": "s3"
+            },
+            {
+              "kind": "eq",
+              "tex": "6 = 3^x \\times 2^y = 3^x \\times 2,\\quad x = 1",
+              "lhs": "6",
+              "rhs": "3^x*2",
+              "roots": [
+                "1"
+              ],
+              "step": "s4"
+            },
+            {
+              "kind": "note",
+              "tex": "\\text{rate} = k[\\mathrm{A}][\\mathrm{B}]",
+              "step": "s5"
+            }
+          ],
+          "answer": "1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 12,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 16,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "e1c9082f",
+        "answer": {
+          "value": 1,
+          "label": "rate = k[A][B]"
+        }
+      }
+    },
+    {
+      "id": "1d1645ba-8ee3-431b-a34c-c79717c4d927",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\ln\\dfrac{[\\mathrm{A}]_t}{[\\mathrm{A}]_0} = -kt",
+              "note": "rearrange as y = mx + c",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\ln[\\mathrm{A}]_t = -k\\,t + \\ln[\\mathrm{A}]_0",
+              "f": "ln(A2)",
+              "value": "-k*t2+ln(A0)",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "m = \\dfrac{\\ln[\\mathrm{A}]_2 - \\ln[\\mathrm{A}]_1}{t_2 - t_1} = -k",
+              "f": "(ln(A2)-ln(A1))/(t2-t1)",
+              "value": "-k",
+              "step": "s3"
+            }
+          ],
+          "answer": "-k",
+          "vars": {
+            "k": "0.3",
+            "A0": "5",
+            "t1": "1",
+            "t2": "3",
+            "A1": "A0*exp(-k*t1)",
+            "A2": "A0*exp(-k*t2)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "fc6aa8dc",
+        "answer": {
+          "value": -0.3,
+          "label": "slope = −k"
+        }
+      }
+    },
+    {
+      "id": "1ec4dfe1-5c96-467e-a26a-e81038c1db21",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "k = \\dfrac{\\text{rate}}{[\\mathrm{A}]^n} \\to \\text{mol}^{1-n}\\,\\text{dm}^{3n-3}\\,\\text{s}^{-1}",
+              "note": "unit of k vs mol dm⁻³ s⁻¹",
+              "step": "s1"
+            },
+            {
+              "kind": "eq",
+              "tex": "1 - n = 1",
+              "lhs": "1-x",
+              "rhs": "1",
+              "roots": [
+                "0"
+              ],
+              "step": "s2"
+            },
+            {
+              "kind": "eq",
+              "tex": "3n - 3 = -3",
+              "lhs": "3*x-3",
+              "rhs": "-3",
+              "roots": [
+                "0"
+              ],
+              "step": "s3"
+            },
+            {
+              "kind": "note",
+              "tex": "\\therefore n = 0",
+              "step": "s4"
+            }
+          ],
+          "answer": "0"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "c428bad3",
+        "answer": {
+          "value": 0,
+          "label": "zero order"
+        }
+      }
+    },
+    {
+      "id": "2001a9d2-0fd4-471c-929d-b6a95f3bb743",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\log_{10}k = 14.34 - \\dfrac{1.25 \\times 10^{4}}{T},\\quad \\dfrac{E_a}{2.303\\,R} = 1.25 \\times 10^{4}",
+              "note": "compare with the Arrhenius line",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "2.303 \\times 8.314 = 19.15",
+              "f": "2.303*8.314",
+              "value": "19.15",
+              "dp": 2,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "E_a = 2.303 \\times 8.314 \\times 1.25 \\times 10^{4} = 2.393 \\times 10^{5}\\ \\text{J mol}^{-1}",
+              "f": "2.303*8.314*1.25*10^4",
+              "value": "2.393*10^5",
+              "sf": 4,
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "E_a = 239.3\\ \\text{kJ mol}^{-1}",
+              "f": "2.393*10^5/1000",
+              "value": "239.3",
+              "sf": 4,
+              "step": "s4"
+            }
+          ],
+          "answer": "239.3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 12,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 15,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "c1809986",
+        "answer": {
+          "value": 239.3,
+          "label": "239.3 kJ/mol"
+        }
+      }
+    },
+    {
+      "id": "2a3e7468-a0db-41ab-8cf4-e43668638594",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "t = 40\\ \\text{min},\\quad [\\mathrm{A}]_0 = 100,\\ [\\mathrm{A}]_t = 100 - 60 = 40",
+              "note": "the amount REMAINING goes below",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{2.303}{40} = 0.05758",
+              "f": "2.303/40",
+              "value": "0.05758",
+              "dp": 5,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\log\\dfrac{100}{40} = \\log 2.5 = 0.3979",
+              "f": "log10(2.5)",
+              "value": "0.3979",
+              "dp": 4,
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "k = 0.05758 \\times 0.3979 = 0.0229\\ \\text{min}^{-1}",
+              "f": "0.05758*0.3979",
+              "value": "0.0229",
+              "sf": 3,
+              "step": "s4"
+            }
+          ],
+          "answer": "0.0229"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "795f46e4",
+        "answer": {
+          "value": 0.0229,
+          "label": "0.0229 min⁻¹"
+        }
+      }
+    },
+    {
+      "id": "2dd2badd-f3ba-44da-b45b-e2e0a295c81b",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "E_a = 250 \\times 10^{3},\\ T_1 = 720,\\ T_2 = 820,\\ (t_{1/2})_2 = 900",
+              "note": "(t½)₁/(t½)₂ = k₂/k₁",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{250 \\times 10^{3}}{2.303 \\times 8.314} = 13057",
+              "f": "250*10^3/(2.303*8.314)",
+              "value": "13057",
+              "sf": 5,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{820 - 720}{820 \\times 720} = 1.694 \\times 10^{-4}",
+              "f": "100/(820*720)",
+              "value": "1.694*10^(-4)",
+              "sf": 4,
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\log_{10}\\dfrac{(t_{1/2})_1}{(t_{1/2})_2} = 13057 \\times 1.694 \\times 10^{-4} = 2.212",
+              "f": "250*10^3/(2.303*8.314)*100/(820*720)",
+              "value": "2.212",
+              "dp": 3,
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{(t_{1/2})_1}{(t_{1/2})_2} = \\text{antilog } 2.212 = 162.7",
+              "f": "10^(250*10^3/(2.303*8.314)*100/(820*720))",
+              "value": "162.7",
+              "dp": 1,
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "(t_{1/2})_1 = 900 \\times 162.7 = 1.464 \\times 10^{5}\\ \\text{min}",
+              "f": "900*162.7",
+              "value": "1.464*10^5",
+              "sf": 4,
+              "step": "s6"
+            }
+          ],
+          "answer": "900*162.7"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 12,
+            "beats": [
+              "s2",
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "from": 13,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 14,
+            "beats": [
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "76467e7c",
+        "answer": {
+          "value": 146430,
+          "label": "1.464 × 10⁵ min"
+        }
+      }
+    },
+    {
+      "id": "2df7556d-4402-4688-bf6b-3f05359e36f1",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\text{rate} = k[\\mathrm{A}]^0 = k,\\quad d[\\mathrm{A}] = -k\\,dt",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "k\\,t = [\\mathrm{A}]_0 - [\\mathrm{A}]_t,\\ \\text{at } t_{1/2}:\\ [\\mathrm{A}]_t = \\dfrac{[\\mathrm{A}]_0}{2}",
+              "f": "A0-A0/2",
+              "value": "k*th",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "k\\,t_{1/2} = [\\mathrm{A}]_0 - \\dfrac{[\\mathrm{A}]_0}{2} = \\dfrac{[\\mathrm{A}]_0}{2}",
+              "f": "A0/2",
+              "value": "k*th",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "t_{1/2} = \\dfrac{[\\mathrm{A}]_0}{2k}",
+              "f": "A0/(2*k)",
+              "value": "th",
+              "step": "s4"
+            }
+          ],
+          "answer": "A0/(2*k)",
+          "vars": {
+            "A0": "4",
+            "k": "0.5",
+            "th": "A0/(2*k)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 10,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "88552404",
+        "answer": {
+          "value": 4,
+          "label": "(A) [A]₀/2k"
+        }
+      }
+    },
+    {
+      "id": "2fa3edd6-b55d-4833-b4d4-b2513d723921",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "E_a = 104 \\times 10^{3},\\ T_1 = 298,\\ T_2 = 303,\\ k_1 = 3.7 \\times 10^{-5}",
+              "note": "R = 8.314 J K⁻¹ mol⁻¹",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{104 \\times 10^{3}}{2.303 \\times 8.314} = 5432",
+              "f": "104*10^3/(2.303*8.314)",
+              "value": "5432",
+              "sf": 4,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{303 - 298}{298 \\times 303} = \\dfrac{5}{90294} = 5.537 \\times 10^{-5}",
+              "f": "5/(298*303)",
+              "value": "5.537*10^(-5)",
+              "sf": 4,
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\log_{10}\\dfrac{k_2}{k_1} = 5432 \\times 5.537 \\times 10^{-5} = 0.3008",
+              "f": "5432*5.537*10^(-5)",
+              "value": "0.3008",
+              "dp": 4,
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{k_2}{k_1} = \\text{antilog } 0.3008 = 1.999 \\approx 2",
+              "f": "10^0.3008",
+              "value": "2",
+              "sf": 1,
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "k_2 = 2 \\times 3.7 \\times 10^{-5} = 7.4 \\times 10^{-5}\\ \\text{s}^{-1}",
+              "f": "2*3.7*10^(-5)",
+              "value": "7.4*10^(-5)",
+              "sf": 2,
+              "step": "s6"
+            }
+          ],
+          "answer": "7.4*10^(-5)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "ed855737",
+        "answer": {
+          "value": 0.00007400000000000001,
+          "label": "7.4 × 10⁻⁵ s⁻¹"
+        }
+      }
+    },
+    {
+      "id": "42b74075-83f8-4305-9ba6-69cf0a704f6b",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "k = \\dfrac{2.303}{t}\\log_{10}\\dfrac{[\\mathrm{A}]_0}{[\\mathrm{A}]_t},\\quad [\\mathrm{A}]_t = \\dfrac{[\\mathrm{A}]_0}{2}\\ \\text{at } t_{1/2}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "k = \\dfrac{2.303}{t}\\log_{10}\\dfrac{[\\mathrm{A}]_0}{[\\mathrm{A}]_t}",
+              "f": "ln(10)*log10(A0/At)/t",
+              "value": "k",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "k\\,t_{1/2} = 2.303\\log_{10}\\dfrac{[\\mathrm{A}]_0}{[\\mathrm{A}]_0/2}",
+              "f": "ln(10)*log10(A0/(A0/2))",
+              "value": "k*th",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "k\\,t_{1/2} = 2.303 \\times 0.3010",
+              "f": "ln(10)*log10(2)",
+              "value": "k*th",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "k = \\dfrac{0.693}{t_{1/2}}",
+              "f": "ln(2)/th",
+              "value": "k",
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "t_{1/2} = \\dfrac{0.693}{k}",
+              "f": "ln(2)/k",
+              "value": "th",
+              "step": "s6"
+            }
+          ],
+          "answer": "0.693/k",
+          "vars": {
+            "A0": "5",
+            "k": "0.3",
+            "t": "2",
+            "At": "A0*exp(-k*t)",
+            "th": "ln(2)/k"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "7a493a21",
+        "answer": {
+          "value": 2.31,
+          "label": "t½ = 0.693/k"
+        }
+      }
+    },
+    {
+      "id": "499b5f53-93c4-4b8d-bf51-2053eb4a6107",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\text{rate} = k[\\mathrm{A}]^x[\\mathrm{B}]^y",
+              "note": "expts 1, 2: [B] fixed at 0.05",
+              "step": "s1"
+            },
+            {
+              "kind": "eq",
+              "tex": "\\dfrac{0.30}{0.15} = \\left(\\dfrac{0.6}{0.3}\\right)^x,\\quad 2^x = 2",
+              "lhs": "2",
+              "rhs": "2^x",
+              "roots": [
+                "1"
+              ],
+              "step": "s2"
+            },
+            {
+              "kind": "note",
+              "tex": "\\text{expts 2, 3: } [\\mathrm{A}] \\text{ fixed at } 0.6",
+              "note": "[B] ×4 gives rate ×4",
+              "step": "s3"
+            },
+            {
+              "kind": "eq",
+              "tex": "\\dfrac{1.20}{0.30} = \\left(\\dfrac{0.2}{0.05}\\right)^y,\\quad 4^y = 4",
+              "lhs": "4",
+              "rhs": "4^x",
+              "roots": [
+                "1"
+              ],
+              "step": "s4"
+            },
+            {
+              "kind": "note",
+              "tex": "\\text{rate} = k[\\mathrm{A}][\\mathrm{B}]",
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "k = \\dfrac{0.15}{0.3 \\times 0.05} = 10\\ \\text{M}^{-1}\\text{s}^{-1}",
+              "f": "0.15/(0.3*0.05)",
+              "value": "10",
+              "step": "s6"
+            }
+          ],
+          "answer": "1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 11,
+            "beats": [
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "5f544842",
+        "answer": {
+          "value": 1,
+          "label": "rate = k[A][B]; k = 10"
+        }
+      }
+    },
+    {
+      "id": "4b4bc5d9-e286-42a2-97b6-f41b37d95bc2",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "[\\mathrm{A}]_0 = 20,\\ [\\mathrm{A}]_t = 8,\\ t = 38\\ \\text{min}",
+              "note": "only the ratio 20/8 is used",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\log_{10}\\dfrac{20}{8} = \\log_{10}2.5 = 0.3979",
+              "f": "log10(2.5)",
+              "value": "0.3979",
+              "dp": 4,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "k = \\dfrac{2.303 \\times 0.3979}{38} = 0.02411\\ \\text{min}^{-1}",
+              "f": "2.303*0.3979/38",
+              "value": "0.02411",
+              "sf": 4,
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "t_{1/2} = \\dfrac{0.693}{0.02411} = 28.7\\ \\text{min}",
+              "f": "0.693/0.02411",
+              "value": "28.7",
+              "dp": 1,
+              "step": "s4"
+            }
+          ],
+          "answer": "28.7"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "b2ab2681",
+        "answer": {
+          "value": 28.7,
+          "label": "28.7 min"
+        }
+      }
+    },
+    {
+      "id": "4ef2ec4c-1619-4ee8-8db3-b79bebdd8533",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\text{rate} = k[\\mathrm{CH_3Br}][\\mathrm{OH^{\\ominus}}]",
+              "note": "first order in each reactant",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\text{a. } [\\mathrm{OH^{\\ominus}}] \\div 5:\\ \\text{rate} \\times \\dfrac{1}{5} = 0.2",
+              "f": "1/5",
+              "value": "0.2",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\text{b. both doubled: } 2 \\times 2 = 4",
+              "f": "2*2",
+              "value": "4",
+              "step": "s3"
+            }
+          ],
+          "answer": "1/5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "42e9f9e1",
+        "answer": {
+          "value": 0.2,
+          "label": "a. ÷5 (×0.2); b. ×4"
+        }
+      }
+    },
+    {
+      "id": "5177a5c1-f352-4953-8197-5159a5857816",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "T = 300,\\ E_a = 50 \\times 10^{3},\\ R = 8.314,\\quad f = e^{-E_a/RT}",
+              "note": "fraction with energy at least Ea",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "RT = 8.314 \\times 300 = 2494.2",
+              "f": "8.314*300",
+              "value": "2494.2",
+              "dp": 1,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{E_a}{RT} = \\dfrac{50 \\times 10^{3}}{2494.2} = 20.05",
+              "f": "50*10^3/2494.2",
+              "value": "20.05",
+              "dp": 2,
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\log_{10} f = -\\dfrac{20.05}{2.303} = -8.705",
+              "f": "-(50*10^3/(8.314*300))/2.303",
+              "value": "-8.705",
+              "dp": 3,
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "f = \\text{antilog}(-8.705) = 1.97 \\times 10^{-9}",
+              "f": "10^(-8.705)",
+              "value": "1.97*10^(-9)",
+              "sf": 3,
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "f \\approx 2 \\times 10^{-9}",
+              "f": "10^(-8.705)",
+              "value": "2*10^(-9)",
+              "sf": 1,
+              "step": "s6"
+            }
+          ],
+          "answer": "2*10^(-9)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s5",
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "f19fc170",
+        "answer": {
+          "value": 2e-9,
+          "label": "2 × 10⁻⁹"
+        }
+      }
+    },
+    {
+      "id": "53aaf98b-edfb-4298-b584-1aff3fcb4f03",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "0.8 \\to 0.2\\ \\text{in } 12\\ \\text{h}",
+              "note": "a fall to one quarter",
+              "step": "s1"
+            },
+            {
+              "kind": "eq",
+              "tex": "\\dfrac{0.2}{0.8} = \\left(\\dfrac{1}{2}\\right)^n,\\quad n = 2\\ \\text{half lives}",
+              "lhs": "0.2/0.8",
+              "rhs": "(1/2)^x",
+              "roots": [
+                "2"
+              ],
+              "step": "s2"
+            },
+            {
+              "kind": "eq",
+              "tex": "2\\,t_{1/2} = 12\\ \\text{h}",
+              "lhs": "2*x",
+              "rhs": "12",
+              "roots": [
+                "6"
+              ],
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "t_{1/2} = \\dfrac{12}{2} = 6\\ \\text{h}",
+              "f": "12/2",
+              "value": "6",
+              "step": "s4"
+            }
+          ],
+          "answer": "6"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "c86b0ccc",
+        "answer": {
+          "value": 6,
+          "label": "(D) 6 h"
+        }
+      }
+    },
+    {
+      "id": "57d25571-a5fb-4006-9ca7-ef7f1f37ec55",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "k = \\mathrm{A}\\,e^{-E_a/RT}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\ln k = \\ln \\mathrm{A} - \\dfrac{E_a}{RT}",
+              "f": "ln(k1)",
+              "value": "ln(A)-Ea/(R*T1)",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\log_{10} k = \\log_{10}\\mathrm{A} - \\dfrac{E_a}{2.303\\,R\\,T}",
+              "f": "log10(k1)",
+              "value": "log10(A)-Ea/(ln(10)*R*T1)",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\log_{10} k_2 - \\log_{10} k_1 = \\dfrac{E_a}{2.303\\,R\\,T_1} - \\dfrac{E_a}{2.303\\,R\\,T_2}",
+              "f": "log10(k2)-log10(k1)",
+              "value": "Ea/(ln(10)*R*T1)-Ea/(ln(10)*R*T2)",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\log_{10}\\dfrac{k_2}{k_1} = \\dfrac{E_a}{2.303\\,R}\\left(\\dfrac{1}{T_1} - \\dfrac{1}{T_2}\\right)",
+              "f": "log10(k2/k1)",
+              "value": "Ea/(ln(10)*R)*(1/T1-1/T2)",
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\log_{10}\\dfrac{k_2}{k_1} = \\dfrac{E_a}{2.303\\,R}\\left(\\dfrac{T_2 - T_1}{T_1\\,T_2}\\right)",
+              "f": "log10(k2/k1)",
+              "value": "Ea/(ln(10)*R)*(T2-T1)/(T1*T2)",
+              "step": "s6"
+            }
+          ],
+          "answer": "Ea/(ln(10)*R)*(T2-T1)/(T1*T2)",
+          "vars": {
+            "A": "1000000",
+            "Ea": "50000",
+            "R": "8.314",
+            "T1": "300",
+            "T2": "320",
+            "k1": "A*exp(-Ea/(R*T1))",
+            "k2": "A*exp(-Ea/(R*T2))"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 18,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 20,
+            "beats": [
+              "s5",
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "a65175e6",
+        "answer": {
+          "value": 0.5441304851045072,
+          "label": "Ea(T₂−T₁)/(2.303 R T₁T₂)"
+        }
+      }
+    },
+    {
+      "id": "59b45dff-74fc-46c9-babe-9e2694b5ddd4",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "t_{1/2} = 6.0\\ \\text{h},\\quad k = \\dfrac{0.693}{t_{1/2}}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "k = \\dfrac{0.693}{6.0} = 0.1155\\ \\text{h}^{-1}",
+              "f": "0.693/6",
+              "value": "0.1155",
+              "dp": 4,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "t_{1/2} = 6.0 \\times 3600 = 2.16 \\times 10^{4}\\ \\text{s}",
+              "f": "6*3600",
+              "value": "2.16*10^4",
+              "sf": 3,
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "k = \\dfrac{0.693}{2.16 \\times 10^{4}} = 3.21 \\times 10^{-5}\\ \\text{s}^{-1}",
+              "f": "0.693/(2.16*10^4)",
+              "value": "3.21*10^(-5)",
+              "sf": 3,
+              "step": "s4"
+            }
+          ],
+          "answer": "0.1155"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "e4135b51",
+        "answer": {
+          "value": 0.1155,
+          "label": "0.1155 h⁻¹"
+        }
+      }
+    },
+    {
+      "id": "5d95360d-e338-48a6-84c2-125a4250bd71",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "T = 773\\ \\text{K},\\ k = 1.6 \\times 10^{3},\\ E_a = 56 \\times 10^{3}",
+              "note": "log A = log k + Ea/(2.303 R T)",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{E_a}{2.303\\,R\\,T} = \\dfrac{56 \\times 10^{3}}{2.303 \\times 8.314 \\times 773} = 3.784",
+              "f": "56*10^3/(2.303*8.314*773)",
+              "value": "3.784",
+              "dp": 3,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\log_{10}k = \\log_{10}(1.6 \\times 10^{3}) = 3.204",
+              "f": "log10(1.6*10^3)",
+              "value": "3.204",
+              "dp": 3,
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\log_{10}\\mathrm{A} = 3.204 + 3.784 = 6.988",
+              "f": "3.204+3.784",
+              "value": "6.988",
+              "dp": 3,
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\mathrm{A} = \\text{antilog } 6.988 = 9.72 \\times 10^{6}\\ \\text{M}^{-1}\\text{s}^{-1}",
+              "f": "10^(log10(1.6*10^3)+56*10^3/(2.303*8.314*773))",
+              "value": "9.72*10^6",
+              "sf": 3,
+              "step": "s5"
+            }
+          ],
+          "answer": "9.72*10^6"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "40c09351",
+        "answer": {
+          "value": 9720000,
+          "label": "9.72 × 10⁶ M⁻¹ s⁻¹"
+        }
+      }
+    },
+    {
+      "id": "5db2dcc7-7f64-463a-b70f-4b046eb309d9",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\text{rate} = -\\dfrac{d[\\mathrm{A}]}{dt} = k[\\mathrm{A}]^0 = k,\\quad d[\\mathrm{A}] = -k\\,dt",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "[\\mathrm{A}]_t - [\\mathrm{A}]_0 = -k\\,t",
+              "f": "At-A0",
+              "value": "-k*t",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "k\\,t = [\\mathrm{A}]_0 - [\\mathrm{A}]_t",
+              "f": "k*t",
+              "value": "A0-At",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "k = \\dfrac{[\\mathrm{A}]_0 - [\\mathrm{A}]_t}{t}",
+              "f": "(A0-At)/t",
+              "value": "k",
+              "step": "s4"
+            }
+          ],
+          "answer": "(A0-At)/t",
+          "vars": {
+            "A0": "4",
+            "k": "0.5",
+            "t": "2",
+            "At": "A0-k*t"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "23ad16d6",
+        "answer": {
+          "value": 0.5,
+          "label": "k = ([A]₀−[A]ₜ)/t"
+        }
+      }
+    },
+    {
+      "id": "6e46998c-2375-4e56-95a3-b45e228ed72a",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "-\\dfrac{d[\\mathrm{A}]}{dt} = k[\\mathrm{A}]",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\ln\\dfrac{[\\mathrm{A}]_t}{[\\mathrm{A}]_0} = -k\\,t",
+              "f": "ln(At/A0)",
+              "value": "-k*t",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "k = \\dfrac{2.303}{t}\\log_{10}\\dfrac{[\\mathrm{A}]_0}{[\\mathrm{A}]_t}",
+              "f": "ln(10)*log10(A0/At)/t",
+              "value": "k",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "k = \\dfrac{2.303}{t_{1/2}}\\log_{10}\\dfrac{[\\mathrm{A}]_0}{[\\mathrm{A}]_0/2}",
+              "f": "ln(10)*log10(A0/(A0/2))/th",
+              "value": "k",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "k = \\dfrac{2.303 \\times 0.3010}{t_{1/2}} = \\dfrac{0.693}{t_{1/2}}",
+              "f": "ln(2)/th",
+              "value": "k",
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "t_{1/2} = \\dfrac{0.693}{k}",
+              "f": "ln(2)/k",
+              "value": "th",
+              "step": "s6"
+            }
+          ],
+          "answer": "0.693/k",
+          "vars": {
+            "A0": "5",
+            "k": "0.3",
+            "t": "2",
+            "At": "A0*exp(-k*t)",
+            "th": "ln(2)/k"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 11,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 12,
+            "beats": [
+              "s5",
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "a90d54b3",
+        "answer": {
+          "value": 2.31,
+          "label": "t½ = 0.693/k"
+        }
+      }
+    },
+    {
+      "id": "752c5964-e8ce-48e8-86c2-7a4fe9a9fb01",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "t_{1/2} = 990\\ \\text{s},\\ [\\mathrm{A}]_0 = 0.08,\\ t = 35 \\times 60 = 2100\\ \\text{s}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "k = \\dfrac{0.693}{990} = 7 \\times 10^{-4}\\ \\text{s}^{-1}",
+              "f": "0.693/990",
+              "value": "7*10^(-4)",
+              "sf": 1,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\log_{10}\\dfrac{[\\mathrm{A}]_0}{[\\mathrm{A}]_t} = \\dfrac{7 \\times 10^{-4} \\times 2100}{2.303} = 0.6383",
+              "f": "7*10^(-4)*2100/2.303",
+              "value": "0.6383",
+              "dp": 4,
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{[\\mathrm{A}]_0}{[\\mathrm{A}]_t} = \\text{antilog } 0.6383 = 4.35",
+              "f": "10^0.6383",
+              "value": "4.35",
+              "dp": 2,
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "[\\mathrm{A}]_t = \\dfrac{0.08}{4.35} = 0.0184\\ \\text{mol dm}^{-3}",
+              "f": "0.08/4.35",
+              "value": "0.0184",
+              "dp": 4,
+              "step": "s5"
+            }
+          ],
+          "answer": "0.08/4.35"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "d5fedf9c",
+        "answer": {
+          "value": 0.018390804597701153,
+          "label": "0.0184 mol dm⁻³"
+        }
+      }
+    },
+    {
+      "id": "759a64cf-a632-4641-b1be-f1f2067178c6",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\mathrm{A(g)} \\to \\mathrm{B(g)} + \\mathrm{C(g)},\\quad P_A = P_i - x,\\ P_B = P_C = x",
+              "note": "P_i = initial pressure of A",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "P = (P_i - x) + x + x = P_i + x",
+              "f": "(P0-xa)+xa+xa",
+              "value": "P",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "x = P - P_i",
+              "f": "P-P0",
+              "value": "xa",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "P_A = P_i - (P - P_i) = 2P_i - P",
+              "f": "P0-(P-P0)",
+              "value": "2*P0-P",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "[\\mathrm{A}]_0 = P_i,\\quad [\\mathrm{A}]_t = P_A = 2P_i - P",
+              "f": "P0-xa",
+              "value": "2*P0-P",
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "k = \\dfrac{2.303}{t}\\log_{10}\\dfrac{P_i}{2P_i - P}",
+              "f": "ln(10)*log10(P0/(2*P0-P))/t",
+              "value": "k",
+              "step": "s6"
+            }
+          ],
+          "answer": "ln(10)*log10(P0/(2*P0-P))/t",
+          "vars": {
+            "P0": "2",
+            "k": "0.1",
+            "t": "3",
+            "xa": "P0-P0*exp(-k*t)",
+            "P": "P0+xa"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 11,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 14,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 16,
+            "beats": [
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "4ed8ac52",
+        "answer": {
+          "value": 0.10000000000000003,
+          "label": "k = (2.303/t) log Pi/(2Pi−P)"
+        }
+      }
+    },
+    {
+      "id": "7fe08536-7c74-4316-9bfc-f894b6f1938c",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "[\\mathrm{A}]_0 = 100,\\ [\\mathrm{A}]_t = 40,\\ t = 45\\ \\text{min}",
+              "note": "40% remains unreacted",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\log_{10}\\dfrac{100}{40} = \\log_{10}2.5 = 0.3979",
+              "f": "log10(2.5)",
+              "value": "0.3979",
+              "dp": 4,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "k = \\dfrac{2.303}{45} \\times 0.3979 = 0.0204\\ \\text{min}^{-1}",
+              "f": "2.303/45*0.3979",
+              "value": "0.0204",
+              "sf": 3,
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "k = \\dfrac{0.0204}{60} = 3.39 \\times 10^{-4}\\ \\text{s}^{-1}",
+              "f": "2.303/45*0.3979/60",
+              "value": "3.39*10^(-4)",
+              "sf": 3,
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "t_{1/2} = \\dfrac{0.693}{0.0204} = 34\\ \\text{min}",
+              "f": "0.693/0.0204",
+              "value": "34",
+              "sf": 2,
+              "step": "s5"
+            }
+          ],
+          "answer": "0.0204"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 10,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "cc5d0b0e",
+        "answer": {
+          "value": 0.0204,
+          "label": "0.0204 min⁻¹"
+        }
+      }
+    },
+    {
+      "id": "88c949bd-bb24-4ca0-a374-1114df343c68",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\text{rate} = k[\\mathrm{NOBr}]^2,\\quad k = \\dfrac{\\text{rate}}{[\\mathrm{NOBr}]^2}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "(2 \\times 10^{-3})^2 = 4 \\times 10^{-6}",
+              "f": "(2*10^(-3))^2",
+              "value": "4*10^(-6)",
+              "sf": 1,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "k = \\dfrac{6.5 \\times 10^{-6}}{4 \\times 10^{-6}} = 1.625\\ \\text{mol}^{-1}\\text{L s}^{-1}",
+              "f": "6.5*10^(-6)/(4*10^(-6))",
+              "value": "1.625",
+              "sf": 4,
+              "step": "s3"
+            }
+          ],
+          "answer": "1.625"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "065c4093",
+        "answer": {
+          "value": 1.625,
+          "label": "1.625 mol⁻¹ L s⁻¹"
+        }
+      }
+    },
+    {
+      "id": "8bf6b341-d5ac-45b4-bcd3-f6aed48dfe28",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\text{rate} = k[\\mathrm{A}][\\mathrm{B}]",
+              "note": "factor on [A][B] for each option",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\text{both doubled: } 2 \\times 2 = 4",
+              "f": "2*2",
+              "value": "4",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "[\\mathrm{A}]\\ \\text{doubled},\\ [\\mathrm{B}]\\ \\text{same: } 2 \\times 1 = 2",
+              "f": "2*1",
+              "value": "2",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "[\\mathrm{B}]\\ \\text{doubled},\\ [\\mathrm{A}]\\ \\text{halved: } \\tfrac{1}{2} \\times 2 = 1",
+              "f": "1/2*2",
+              "value": "1",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "[\\mathrm{B}]\\ \\text{halved},\\ [\\mathrm{A}]\\ \\text{same: } 1 \\times \\tfrac{1}{2}",
+              "f": "1*1/2",
+              "value": "0.5",
+              "step": "s5"
+            }
+          ],
+          "answer": "2*1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "ff97a7df",
+        "answer": {
+          "value": 2,
+          "label": "(B): rate doubles"
+        }
+      }
+    },
+    {
+      "id": "98bd5b0e-8936-4739-ba37-2202f5e3a2dc",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\text{rate} = k[\\mathrm{A}]^x[\\mathrm{B}]^y",
+              "note": "(i) and (ii): [B] fixed at 0.2",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{6 \\times 10^{-5}}{4 \\times 10^{-5}} = 1.5",
+              "f": "6*10^(-5)/(4*10^(-5))",
+              "value": "1.5",
+              "step": "s2"
+            },
+            {
+              "kind": "eq",
+              "tex": "1.5 = \\left(\\dfrac{0.6}{0.4}\\right)^x,\\quad x = 1",
+              "lhs": "1.5",
+              "rhs": "(0.6/0.4)^x",
+              "roots": [
+                "1"
+              ],
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{3.2 \\times 10^{-4}}{4 \\times 10^{-5}} = 8",
+              "f": "3.2*10^(-4)/(4*10^(-5))",
+              "value": "8",
+              "step": "s4"
+            },
+            {
+              "kind": "eq",
+              "tex": "8 = 2 \\times \\left(\\dfrac{0.4}{0.2}\\right)^y,\\quad 4 = 2^y,\\ y = 2",
+              "lhs": "8",
+              "rhs": "2*(0.4/0.2)^x",
+              "roots": [
+                "2"
+              ],
+              "step": "s5"
+            },
+            {
+              "kind": "note",
+              "tex": "\\text{rate} = k[\\mathrm{A}][\\mathrm{B}]^2",
+              "step": "s6"
+            }
+          ],
+          "answer": "1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 26,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 30,
+            "beats": [
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "e0ca7db5",
+        "answer": {
+          "value": 1,
+          "label": "rate = k[A][B]²"
+        }
+      }
+    },
+    {
+      "id": "9bd82382-69cd-484f-8119-f506e387ec3d",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\mathrm{A(g)} \\to \\mathrm{B(g)} + \\mathrm{C(g)},\\quad P_A = P_i - x,\\ P_B = P_C = x",
+              "note": "P_i = initial pressure of A",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "P = (P_i - x) + x + x = P_i + x",
+              "f": "(P0-xa)+xa+xa",
+              "value": "P",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "x = P - P_i",
+              "f": "P-P0",
+              "value": "xa",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "P_A = P_i - (P - P_i) = 2P_i - P",
+              "f": "P0-(P-P0)",
+              "value": "2*P0-P",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "[\\mathrm{A}]_0 = P_i,\\quad [\\mathrm{A}]_t = P_A = 2P_i - P",
+              "f": "P0-xa",
+              "value": "2*P0-P",
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "k = \\dfrac{2.303}{t}\\log_{10}\\dfrac{P_i}{2P_i - P}",
+              "f": "ln(10)*log10(P0/(2*P0-P))/t",
+              "value": "k",
+              "step": "s6"
+            }
+          ],
+          "answer": "ln(10)*log10(P0/(2*P0-P))/t",
+          "vars": {
+            "P0": "2",
+            "k": "0.1",
+            "t": "3",
+            "xa": "P0-P0*exp(-k*t)",
+            "P": "P0+xa"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 11,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 13,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 16,
+            "beats": [
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "1833a62a",
+        "answer": {
+          "value": 0.10000000000000003,
+          "label": "k = (2.303/t) log Pi/(2Pi−P)"
+        }
+      }
+    },
+    {
+      "id": "a1b0e360-304e-43dc-814d-61a97d1828f6",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\text{rate} = k[\\mathrm{A}]^x[\\mathrm{B}]^y",
+              "note": "[A] doubled: rate doubled",
+              "step": "s1"
+            },
+            {
+              "kind": "eq",
+              "tex": "2 = 2^x,\\quad x = 1",
+              "lhs": "2",
+              "rhs": "2^x",
+              "roots": [
+                "1"
+              ],
+              "step": "s2"
+            },
+            {
+              "kind": "note",
+              "tex": "[\\mathrm{A}]\\ \\text{tripled},\\ [\\mathrm{B}]\\ \\text{doubled}:\\ 6 = 3^x \\times 2^y",
+              "step": "s3"
+            },
+            {
+              "kind": "eq",
+              "tex": "6 = 3 \\times 2^y,\\quad 2 = 2^y,\\ y = 1",
+              "lhs": "6",
+              "rhs": "3*2^x",
+              "roots": [
+                "1"
+              ],
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\text{overall order} = x + y = 1 + 1 = 2",
+              "f": "1+1",
+              "value": "2",
+              "step": "s5"
+            }
+          ],
+          "answer": "1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "35c1213d",
+        "answer": {
+          "value": 1,
+          "label": "x = 1, y = 1; overall 2"
+        }
+      }
+    },
+    {
+      "id": "a8e0dd6f-42d6-4ade-98c8-34c849c5c25a",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "k = \\dfrac{\\text{rate}}{[A]^n} \\to (\\text{mol dm}^{-3})^{1-n}\\,\\text{s}^{-1}",
+              "note": "given unit: mol dm⁻³ s⁻¹",
+              "step": "s1"
+            },
+            {
+              "kind": "eq",
+              "tex": "1 - n = 1",
+              "lhs": "1-x",
+              "rhs": "1",
+              "roots": [
+                "0"
+              ],
+              "step": "s2"
+            },
+            {
+              "kind": "note",
+              "tex": "\\therefore n = 0,\\quad \\text{rate} = k[A]^0 = k",
+              "step": "s3"
+            }
+          ],
+          "answer": "0"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "63ed7639",
+        "answer": {
+          "value": 0,
+          "label": "(A) zero order"
+        }
+      }
+    },
+    {
+      "id": "b8e4deef-d9a8-435c-88b0-74ffc6113eef",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "T_1 = 303,\\ T_2 = 313,\\ \\dfrac{k_2}{k_1} = 2,\\ R = 8.314",
+              "note": "E_a = 2.303 R T₁T₂ log(k₂/k₁) / (T₂ − T₁)",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "T_1 T_2 = 303 \\times 313 = 94839",
+              "f": "303*313",
+              "value": "94839",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "E_a = \\dfrac{2.303 \\times 8.314 \\times 94839}{10} \\times \\log_{10}2 = 54664\\ \\text{J mol}^{-1}",
+              "f": "2.303*8.314*94839/10*log10(2)",
+              "value": "54664",
+              "sf": 5,
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "E_a = 54.66\\ \\text{kJ mol}^{-1}",
+              "f": "54664/1000",
+              "value": "54.66",
+              "dp": 2,
+              "step": "s4"
+            }
+          ],
+          "answer": "54.66"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "75ec3ec1",
+        "answer": {
+          "value": 54.66,
+          "label": "54.66 kJ/mol"
+        }
+      }
+    },
+    {
+      "id": "bd90677c-e721-4cd0-ab5b-382ab9209d65",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "-\\dfrac{d[\\mathrm{A}]}{dt} = k[\\mathrm{A}]^0 = k,\\quad d[\\mathrm{A}] = -k\\,dt",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "[\\mathrm{A}]_t - [\\mathrm{A}]_0 = -k\\,t",
+              "f": "At-A0",
+              "value": "-k*t",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "[\\mathrm{A}]_0 - [\\mathrm{A}]_t = k\\,t",
+              "f": "A0-At",
+              "value": "k*t",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "k = \\dfrac{[\\mathrm{A}]_0 - [\\mathrm{A}]_t}{t}",
+              "f": "(A0-At)/t",
+              "value": "k",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "[\\mathrm{A}]_t = -k\\,t + [\\mathrm{A}]_0",
+              "f": "At",
+              "value": "-k*t+A0",
+              "step": "s5"
+            }
+          ],
+          "answer": "(A0-At)/t",
+          "vars": {
+            "A0": "4",
+            "k": "0.5",
+            "t": "2",
+            "At": "A0-k*t"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 10,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "ebc62a67",
+        "answer": {
+          "value": 0.5,
+          "label": "k = ([A]₀−[A]ₜ)/t"
+        }
+      }
+    },
+    {
+      "id": "be1b4028-5e8c-4484-8216-dd93db0f412a",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\text{rate} = -\\dfrac{d[\\mathrm{A}]}{dt} = k[\\mathrm{A}],\\quad \\dfrac{d[\\mathrm{A}]}{[\\mathrm{A}]} = -k\\,dt",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\ln[\\mathrm{A}]_t - \\ln[\\mathrm{A}]_0 = -k\\,t",
+              "f": "ln(At)-ln(A0)",
+              "value": "-k*t",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\ln\\dfrac{[\\mathrm{A}]_t}{[\\mathrm{A}]_0} = -k\\,t",
+              "f": "ln(At/A0)",
+              "value": "-k*t",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "k = \\dfrac{1}{t}\\ln\\dfrac{[\\mathrm{A}]_0}{[\\mathrm{A}]_t}",
+              "f": "ln(A0/At)/t",
+              "value": "k",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "k = \\dfrac{2.303}{t}\\log_{10}\\dfrac{[\\mathrm{A}]_0}{[\\mathrm{A}]_t}",
+              "f": "ln(10)*log10(A0/At)/t",
+              "value": "k",
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "[\\mathrm{A}]_t = [\\mathrm{A}]_0\\,e^{-kt}",
+              "f": "A0*exp(-k*t)",
+              "value": "At",
+              "step": "s6"
+            }
+          ],
+          "answer": "ln(10)*log10(A0/At)/t",
+          "vars": {
+            "A0": "5",
+            "k": "0.3",
+            "t": "2",
+            "At": "A0*exp(-k*t)",
+            "th": "ln(2)/k"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 11,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 14,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 15,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 17,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 20,
+            "beats": [
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "ff1dd54a",
+        "answer": {
+          "value": 0.29999999999999993,
+          "label": "k = (2.303/t) log [A]₀/[A]ₜ"
+        }
+      }
+    },
+    {
+      "id": "be33f542-8194-46ad-a420-dc4dc9631070",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "-\\dfrac{d[\\mathrm{A}]}{dt} = k[\\mathrm{A}]^0 = k,\\quad d[\\mathrm{A}] = -k\\,dt",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "[\\mathrm{A}]_t - [\\mathrm{A}]_0 = -k\\,t",
+              "f": "At-A0",
+              "value": "-k*t",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "[\\mathrm{A}]_0 - [\\mathrm{A}]_t = k\\,t",
+              "f": "A0-At",
+              "value": "k*t",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "k = \\dfrac{[\\mathrm{A}]_0 - [\\mathrm{A}]_t}{t}",
+              "f": "(A0-At)/t",
+              "value": "k",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "[\\mathrm{A}]_t = -k\\,t + [\\mathrm{A}]_0",
+              "f": "At",
+              "value": "-k*t+A0",
+              "step": "s5"
+            }
+          ],
+          "answer": "(A0-At)/t",
+          "vars": {
+            "A0": "4",
+            "k": "0.5",
+            "t": "2",
+            "At": "A0-k*t"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 17,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 20,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 22,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "673a0015",
+        "answer": {
+          "value": 0.5,
+          "label": "k = ([A]₀−[A]ₜ)/t"
+        }
+      }
+    },
+    {
+      "id": "c04135ff-3ef2-47f8-abd9-020e7c8d6889",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "k = \\dfrac{\\text{rate}}{[\\mathrm{A}]^n} \\to \\text{mol}^{1-n}\\,\\text{dm}^{3n-3}\\,\\text{s}^{-1}",
+              "note": "given unit: mol dm⁻³ s⁻¹",
+              "step": "s1"
+            },
+            {
+              "kind": "eq",
+              "tex": "1 - n = 1",
+              "lhs": "1-x",
+              "rhs": "1",
+              "roots": [
+                "0"
+              ],
+              "step": "s2"
+            },
+            {
+              "kind": "eq",
+              "tex": "3n - 3 = -3",
+              "lhs": "3*x-3",
+              "rhs": "-3",
+              "roots": [
+                "0"
+              ],
+              "step": "s3"
+            },
+            {
+              "kind": "note",
+              "tex": "\\therefore n = 0",
+              "step": "s4"
+            }
+          ],
+          "answer": "0"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "5252650f",
+        "answer": {
+          "value": 0,
+          "label": "(C) zero order"
+        }
+      }
+    },
+    {
+      "id": "c8a433cc-8281-47da-ae2e-a62c0350bf55",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\ln\\dfrac{[\\mathrm{A}]_t}{[\\mathrm{A}]_0} = -k\\,t",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "k = \\dfrac{2.303}{t}\\log_{10}\\dfrac{[\\mathrm{A}]_0}{[\\mathrm{A}]_t}",
+              "f": "ln(10)*log10(A0/At)/t",
+              "value": "k",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "k = \\dfrac{2.303}{t_{1/2}}\\log_{10}\\dfrac{[\\mathrm{A}]_0}{[\\mathrm{A}]_0/2}",
+              "f": "ln(10)*log10(A0/(A0/2))/th",
+              "value": "k",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "k = \\dfrac{2.303 \\times 0.3010}{t_{1/2}} = \\dfrac{0.693}{t_{1/2}}",
+              "f": "ln(2)/th",
+              "value": "k",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "t_{1/2} = \\dfrac{0.693}{k}",
+              "f": "ln(2)/k",
+              "value": "th",
+              "step": "s5"
+            }
+          ],
+          "answer": "0.693/k",
+          "vars": {
+            "A0": "5",
+            "k": "0.3",
+            "t": "2",
+            "At": "A0*exp(-k*t)",
+            "th": "ln(2)/k"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 11,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 13,
+            "beats": [
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "dfaef188",
+        "answer": {
+          "value": 2.31,
+          "label": "t½ = 0.693/k"
+        }
+      }
+    },
+    {
+      "id": "c8faee2e-7a26-44ae-873d-4cf4e9e5debb",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "t = \\dfrac{2.303}{k}\\log_{10}\\dfrac{[\\mathrm{A}]_0}{[\\mathrm{A}]_t}",
+              "note": "time ∝ log of the fraction left",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "t_{90} = \\dfrac{2.303}{k}\\log_{10}\\dfrac{100}{10} = \\dfrac{2.303}{k}",
+              "f": "ln(10)*log10(100/10)/k",
+              "value": "ln(10)/k",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "t_{99.9} = \\dfrac{2.303}{k}\\log_{10}\\dfrac{100}{0.1} = \\dfrac{3 \\times 2.303}{k}",
+              "f": "ln(10)*log10(100/0.1)/k",
+              "value": "3*ln(10)/k",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{t_{99.9}}{t_{90}} = \\dfrac{\\log_{10}1000}{\\log_{10}10} = 3",
+              "f": "log10(1000)/log10(10)",
+              "value": "3",
+              "step": "s4"
+            }
+          ],
+          "answer": "3",
+          "vars": {
+            "k": "0.1"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "032017c0",
+        "answer": {
+          "value": 3,
+          "label": "(D) 3t"
+        }
+      }
+    },
+    {
+      "id": "cf0aa5ca-5d69-42e9-9f31-e62dc06716c1",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\log 2 = \\dfrac{E_a}{2.303\\,R}\\left[\\dfrac{T_2 - T_1}{T_1 T_2}\\right],\\quad T_1 = 303,\\ T_2 = 313",
+              "note": "only the ratio k₂/k₁ = 2 is needed",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "2.303 \\times 8.314 = 19.147",
+              "f": "2.303*8.314",
+              "value": "19.147",
+              "dp": 3,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "T_1 T_2 = 303 \\times 313 = 94839",
+              "f": "303*313",
+              "value": "94839",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "E_a = \\dfrac{0.3010 \\times 19.147 \\times 94839}{10} = 54658\\ \\text{J mol}^{-1}",
+              "f": "0.3010*19.147*94839/10",
+              "value": "54658",
+              "sf": 5,
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "E_a = 54.66\\ \\text{kJ mol}^{-1}",
+              "f": "54658/1000",
+              "value": "54.66",
+              "dp": 2,
+              "step": "s5"
+            }
+          ],
+          "answer": "54.66"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 10,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "753c22b1",
+        "answer": {
+          "value": 54.66,
+          "label": "54.66 kJ/mol"
+        }
+      }
+    },
+    {
+      "id": "d63f89ab-dc24-474b-9e16-48e1b49432ee",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "t = \\dfrac{2.303}{k}\\log_{10}\\dfrac{[\\mathrm{A}]_0}{[\\mathrm{A}]_t}",
+              "note": "90%: [A]t = 10; 99.9%: [A]t = 0.1",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "t_{90} = \\dfrac{2.303}{k}\\log_{10}\\dfrac{100}{10} = \\dfrac{2.303}{k}",
+              "f": "ln(10)*log10(100/10)/k",
+              "value": "ln(10)/k",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "t_{99.9} = \\dfrac{2.303}{k}\\log_{10}1000 = \\dfrac{3 \\times 2.303}{k}",
+              "f": "ln(10)*log10(100/0.1)/k",
+              "value": "3*ln(10)/k",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{t_{99.9}}{t_{90}} = \\dfrac{3 \\times 2.303/k}{2.303/k} = 3",
+              "f": "(3*ln(10)/k)/(ln(10)/k)",
+              "value": "3",
+              "step": "s4"
+            }
+          ],
+          "answer": "3",
+          "vars": {
+            "k": "0.1"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "0a16e201",
+        "answer": {
+          "value": 3,
+          "label": "t₉₉.₉ = 3 t₉₀"
+        }
+      }
+    },
+    {
+      "id": "d92cc074-52fc-4d4e-a41a-f9b863c1efdd",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "k = \\dfrac{\\text{rate}}{[A]^n} \\to (\\text{mol L}^{-1})^{1-n}\\,\\text{s}^{-1}",
+              "note": "unit is per second only",
+              "step": "s1"
+            },
+            {
+              "kind": "eq",
+              "tex": "1 - n = 0",
+              "lhs": "1-x",
+              "rhs": "0",
+              "roots": [
+                "1"
+              ],
+              "step": "s2"
+            },
+            {
+              "kind": "note",
+              "tex": "\\therefore n = 1:\\ \\text{first order}",
+              "step": "s3"
+            }
+          ],
+          "answer": "1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "73ce570b",
+        "answer": {
+          "value": 1,
+          "label": "(B) first order"
+        }
+      }
+    },
+    {
+      "id": "db2dcfc5-ac60-473a-bca3-ef8160eb76a7",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "[\\mathrm{A}]_0 = 100,\\ [\\mathrm{A}]_t = 100 - 60 = 40,\\ t = 45\\ \\text{min}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "k = \\dfrac{2.303}{45}\\log_{10}2.5 = \\dfrac{2.303}{45} \\times 0.3979 = 0.0204\\ \\text{min}^{-1}",
+              "f": "2.303/45*0.3979",
+              "value": "0.0204",
+              "sf": 3,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "t_{1/2} = \\dfrac{0.693}{0.0204} = 34\\ \\text{min}",
+              "f": "0.693/0.0204",
+              "value": "34",
+              "sf": 2,
+              "step": "s3"
+            }
+          ],
+          "answer": "34"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "5e539019",
+        "answer": {
+          "value": 34,
+          "label": "34 min"
+        }
+      }
+    },
+    {
+      "id": "de259d46-ac00-49f8-a8a0-76eea58eeea2",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\text{rate} = k[\\mathrm{NO}]^2[\\mathrm{H_2}]",
+              "note": "orders are the exponents",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\text{overall order} = 2 + 1 = 3",
+              "f": "2+1",
+              "value": "3",
+              "step": "s2"
+            }
+          ],
+          "answer": "2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "71bcd3de",
+        "answer": {
+          "value": 2,
+          "label": "NO 2; H₂ 1; overall 3"
+        }
+      }
+    },
+    {
+      "id": "df76de93-5bee-4348-b817-aaad1d3a6c1d",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "t = \\dfrac{2.303}{k}\\log_{10}\\dfrac{[\\mathrm{A}]_0}{[\\mathrm{A}]_t}",
+              "note": "90%: [A]t = 10; 99.9%: [A]t = 0.1",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "t_{90} = \\dfrac{2.303}{k}\\log_{10}\\dfrac{100}{10} = \\dfrac{2.303}{k}",
+              "f": "ln(10)*log10(100/10)/k",
+              "value": "ln(10)/k",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "t_{99.9} = \\dfrac{2.303}{k}\\log_{10}1000 = \\dfrac{3 \\times 2.303}{k}",
+              "f": "ln(10)*log10(100/0.1)/k",
+              "value": "3*ln(10)/k",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{t_{99.9}}{t_{90}} = \\dfrac{3 \\times 2.303/k}{2.303/k} = 3",
+              "f": "(3*ln(10)/k)/(ln(10)/k)",
+              "value": "3",
+              "step": "s4"
+            }
+          ],
+          "answer": "3",
+          "vars": {
+            "k": "0.1"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "791f39a1",
+        "answer": {
+          "value": 3,
+          "label": "t₉₉.₉ = 3 t₉₀"
+        }
+      }
+    },
+    {
+      "id": "ea5b6a46-22d3-4dc1-abdb-ca97d07385b8",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "E_a = 240 \\times 10^{3},\\ T = 600,\\ \\mathrm{A} = 1.6 \\times 10^{13}",
+              "note": "log(A/k) = Ea / (2.303 R T)",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\log_{10}\\dfrac{\\mathrm{A}}{k} = \\dfrac{240 \\times 10^{3}}{2.303 \\times 8.314 \\times 600} = 20.89",
+              "f": "240*10^3/(2.303*8.314*600)",
+              "value": "20.89",
+              "dp": 2,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{\\mathrm{A}}{k} = \\text{antilog } 20.89 = 7.78 \\times 10^{20}",
+              "f": "10^(240*10^3/(2.303*8.314*600))",
+              "value": "7.78*10^20",
+              "sf": 3,
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "k = \\dfrac{1.6 \\times 10^{13}}{7.78 \\times 10^{20}} = 2.057 \\times 10^{-8}\\ \\text{s}^{-1}",
+              "f": "1.6*10^13/(7.78*10^20)",
+              "value": "2.057*10^(-8)",
+              "sf": 4,
+              "step": "s4"
+            }
+          ],
+          "answer": "1.6*10^13/(7.78*10^20)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "3fdf36b5",
+        "answer": {
+          "value": 2.056555269922879e-8,
+          "label": "2.057 × 10⁻⁸ s⁻¹"
+        }
+      }
+    },
+    {
+      "id": "ec208f55-9f9f-43fb-acbd-f36a6697f935",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\text{rate} = k[A]^2[B],\\quad k = \\dfrac{\\text{rate}}{[A]^2[B]}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "(0.2)^2 = 0.04",
+              "f": "0.2^2",
+              "value": "0.04",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "0.04 \\times 0.1 = 4 \\times 10^{-3}",
+              "f": "0.04*0.1",
+              "value": "4*10^(-3)",
+              "sf": 1,
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "k = \\dfrac{3.6 \\times 10^{-2}}{4 \\times 10^{-3}} = 9\\ \\text{dm}^6\\text{mol}^{-2}\\text{s}^{-1}",
+              "f": "3.6*10^(-2)/(4*10^(-3))",
+              "value": "9",
+              "step": "s4"
+            }
+          ],
+          "answer": "9"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "3e97e85e",
+        "answer": {
+          "value": 9,
+          "label": "9 dm⁶ mol⁻² s⁻¹"
+        }
+      }
+    },
+    {
+      "id": "ed480fd1-0be3-4dd6-87e1-35c9000917a0",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "k = \\dfrac{2.303}{t}\\log\\dfrac{[A]_0}{[A]_t},\\quad [A]_t = \\dfrac{[A]_0}{2}\\ \\text{at } t_{1/2}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "k = \\dfrac{2.303}{t}\\log\\dfrac{[A]_0}{[A]_t}",
+              "f": "ln(10)*log10(A0/At)/t",
+              "value": "k",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "k = \\dfrac{2.303}{t_{1/2}}\\log\\dfrac{[A]_0}{[A]_0/2}",
+              "f": "ln(10)*log10(A0/(A0/2))/th",
+              "value": "k",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "k = \\dfrac{2.303 \\times 0.3010}{t_{1/2}} = \\dfrac{0.693}{t_{1/2}}",
+              "f": "ln(2)/th",
+              "value": "k",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "t_{1/2} = \\dfrac{0.693}{k}",
+              "f": "ln(2)/k",
+              "value": "th",
+              "step": "s5"
+            }
+          ],
+          "answer": "0.693/k",
+          "vars": {
+            "A0": "5",
+            "k": "0.3",
+            "t": "2",
+            "At": "A0*exp(-k*t)",
+            "th": "ln(2)/k"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "9becdbac",
+        "answer": {
+          "value": 2.31,
+          "label": "t½ = 0.693/k"
+        }
+      }
+    },
+    {
+      "id": "ee294af4-b149-4b6e-92be-5b22234dcc5f",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "P_i = 0.5,\\ P = 0.6,\\ t = 100\\ \\text{s}",
+              "note": "k = (2.303/t) log Pi/(2Pi − P)",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "2P_i - P = 2 \\times 0.5 - 0.6 = 0.4",
+              "f": "2*0.5-0.6",
+              "value": "0.4",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "k = \\dfrac{2.303}{100}\\log_{10}\\dfrac{0.5}{0.4} = 2.23 \\times 10^{-3}\\ \\text{s}^{-1}",
+              "f": "2.303/100*log10(0.5/0.4)",
+              "value": "2.23*10^(-3)",
+              "sf": 3,
+              "step": "s3"
+            }
+          ],
+          "answer": "2.23*10^(-3)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "a5568371",
+        "answer": {
+          "value": 0.00223,
+          "label": "2.23 × 10⁻³ s⁻¹"
+        }
+      }
+    },
+    {
+      "id": "f6aa8209-91fe-4f10-b39b-03bdd4b6c304",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "-\\dfrac{d[A]}{dt} = k",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "[A]_t - [A]_0 = -k\\,t",
+              "f": "At-A0",
+              "value": "-k*t",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "[A]_0 - [A]_t = kt",
+              "f": "A0-At",
+              "value": "k*t",
+              "step": "s3"
+            }
+          ],
+          "answer": "A0-At",
+          "vars": {
+            "A0": "4",
+            "k": "0.5",
+            "t": "2",
+            "At": "A0-k*t"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "7aa87964",
+        "answer": {
+          "value": 1,
+          "label": "(A) kt = [A]₀ − [A]ₜ"
+        }
+      }
+    },
+    {
+      "id": "faf3fbd6-1f13-4eec-8e46-7f25e3b49e05",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\text{rate} = k[\\mathrm{A}]^n,\\quad [\\mathrm{A}] \\times 4 \\Rightarrow \\text{rate} \\times 2",
+              "step": "s1"
+            },
+            {
+              "kind": "eq",
+              "tex": "2 = 4^n",
+              "lhs": "2",
+              "rhs": "4^x",
+              "roots": [
+                "0.5"
+              ],
+              "step": "s2"
+            },
+            {
+              "kind": "eq",
+              "tex": "2^1 = 2^{2n},\\quad 2n = 1",
+              "lhs": "2",
+              "rhs": "2^(2*x)",
+              "roots": [
+                "0.5"
+              ],
+              "step": "s3"
+            },
+            {
+              "kind": "note",
+              "tex": "\\therefore n = 0.5",
+              "step": "s4"
+            }
+          ],
+          "answer": "0.5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 10,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "79ea1aa0",
+        "answer": {
+          "value": 0.5,
+          "label": "(B) n = 0.5"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

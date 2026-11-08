@@ -1,0 +1,56 @@
+[
+  {
+    "id": "6a965a8e-f935-4e0a-b4f0-d612bf35d1e2",
+    "before": "baf5572f",
+    "solution": "The degree of dissociation is given by \\(\\alpha = \\sqrt{K_b / c}\\). Here,\n\n\\(K_b = 1.8 \\times 10^{-5}\\); \\(c = 0.01 = 1 \\times 10^{-2}\\ \\mathrm{M}\\)\n\nHence, \\(\\alpha = \\sqrt{\\frac{1.8 \\times 10^{-5}}{1 \\times 10^{-2}}} = \\sqrt{1.8 \\times 10^{-3}}\\)\n\n\\(= \\sqrt{18 \\times 10^{-4}} = 4.243 \\times 10^{-2} = 0.04243\\)",
+    "note": "sqrt(18e-4) = 0.042426 -> 0.04243, printed 0.04242."
+  },
+  {
+    "id": "2dd2badd-f3ba-44da-b45b-e2e0a295c81b",
+    "before": "cc2722dd",
+    "solution": "[Textbook misprint: the book writes the temperature-dependence relation with \\(2.303\\,RT\\) in the denominator, where \\(2.303\\,R\\) belongs: the temperature is already carried by the bracket \\((T_2 - T_1)/T_1T_2\\). The chapter's own Eq. (6.23) prints \\(E_a/(2.303\\,R)\\), and this example's own substitution divides by \\(2.303 \\times 8.314\\ \\mathrm{J\\ K^{-1}mol^{-1}}\\) with no \\(T\\), which is what gives its printed \\(2.212\\). The formula has been corrected here; the printed answer \\(1.464 \\times 10^{5}\\) min is correct.]\n\n\\(t_{1/2} = \\dfrac{0.693}{k}\\)\n\nRate constants at two different temperatures, \\(T_1\\) and \\(T_2\\) are \\(k_1\\) and \\(k_2\\) respectively, and the corresponding half lives \\((t_{1/2})_1\\) and \\((t_{1/2})_2\\).\n\n\\((t_{1/2})_1 = \\dfrac{0.693}{k_1}\\) and \\((t_{1/2})_2 = \\dfrac{0.693}{k_2}\\)\n\nHence, \\(\\dfrac{(t_{1/2})_1}{(t_{1/2})_2} = \\dfrac{k_2}{k_1}\\)\n\nThe equation, \\(\\log_{10}\\dfrac{k_2}{k_1} = \\dfrac{E_a}{2.303\\,R} \\times \\left[\\dfrac{T_2 - T_1}{T_1T_2}\\right]\\)\n\n\\(\\log_{10}\\dfrac{(t_{1/2})_1}{(t_{1/2})_2} = \\dfrac{E_a}{2.303\\,R}\\left[\\dfrac{T_2 - T_1}{T_1T_2}\\right]\\)\n\n\\(E_a = 250\\ \\mathrm{kJ\\ mol^{-1}}\\), \\(T_1 = 720\\ \\mathrm{K}\\),\n\n\\(T_2 = 820\\ \\mathrm{K}\\), \\((t_{1/2})_2 = 900\\) min\n\nThus, \\(\\log_{10}\\dfrac{(t_{1/2})_1}{(t_{1/2})_2} = \\dfrac{250 \\times 10^{3}\\ \\mathrm{J\\ mol^{-1}}}{2.303 \\times 8.314\\ \\mathrm{J\\ K^{-1}mol^{-1}}}\\left[\\dfrac{820\\ \\mathrm{K} - 720\\ \\mathrm{K}}{820\\ \\mathrm{K} \\times 720\\ \\mathrm{K}}\\right] = 2.212\\)\n\n\\(\\dfrac{(t_{1/2})_1}{(t_{1/2})_2} = \\text{antilog } 2.212 = 162.7\\)\n\n\\((t_{1/2})_1 = (t_{1/2})_2 \\times 162.7 = 900 \\times 162.7 = 1.464 \\times 10^{5}\\) min",
+    "note": "The two half-lives use k1 and k2, printed k for both."
+  },
+  {
+    "id": "4b4bc5d9-e286-42a2-97b6-f41b37d95bc2",
+    "before": "dd5a97c9",
+    "solution": "Given : \\([\\mathrm{A}]_0 = 20\\ \\mathrm{mmol\\ dm^{-3}}\\), \\([\\mathrm{A}]_t = 8\\ \\mathrm{mmol\\ dm^{-3}}\\), \\(t = 38\\) min, \\(t_{1/2} = ?\\)\n\nFor a first order reaction,\n\n\\(k = \\dfrac{2.303}{t}\\log_{10}\\dfrac{[\\mathrm{A}]_0}{[\\mathrm{A}]_t}\\)\n\n\\(= \\dfrac{2.303}{38\\ \\mathrm{min}}\\log_{10}\\dfrac{20}{8} = \\dfrac{2.303}{38}\\log_{10} 2.5\\)\n\n\\(= \\dfrac{2.303 \\times 0.3979}{38} = 0.02411\\ \\mathrm{min^{-1}}\\)\n\n(The concentrations may be left in \\(\\mathrm{mmol\\ dm^{-3}}\\) because only their ratio is used.)\n\nHence\n\n\\(t_{1/2} = \\dfrac{0.693}{k} = \\dfrac{0.693}{0.02411\\ \\mathrm{min^{-1}}} = 28.7\\ \\mathrm{min}\\)\n\nThe half life of the reaction is \\(28.7\\) minutes.",
+    "note": "2.303 x 0.3979 / 38 = 0.024115 -> 0.02411 (printed 0.02412); t1/2 = 28.7 min unchanged."
+  },
+  {
+    "id": "53aaf98b-edfb-4298-b584-1aff3fcb4f03",
+    "before": "c767e2e0",
+    "solution": "Going from \\(0.8\\ \\mathrm{M}\\) to \\(0.2\\ \\mathrm{M}\\) is a fall to one quarter of the initial concentration, and \\(\\tfrac{1}{4} = \\left(\\tfrac{1}{2}\\right)^2\\), so exactly two half lives have elapsed.\n\nSince the half life of a first order reaction does not depend on the initial concentration (Eq. 6.10), each of those halvings takes the same time. Hence \\(2\\,t_{1/2} = 12\\ \\mathrm{h}\\) and \\(t_{1/2} = 6\\ \\mathrm{h}\\).\n\nThis is confirmed by the integrated rate law: \\(k = \\dfrac{2.303}{12}\\log_{10}\\dfrac{0.8}{0.2} = \\dfrac{2.303 \\times 0.6021}{12} = 0.1156\\ \\mathrm{h^{-1}}\\), giving \\(t_{1/2} = \\dfrac{0.693}{0.1156} = 6\\ \\mathrm{h}\\).\n\nThe alternative \\(12\\ \\mathrm{h}\\) is the time for the whole change rather than for one halving, \\(3\\ \\mathrm{h}\\) would correspond to four half lives and \\(1.5\\ \\mathrm{h}\\) to eight, neither of which matches a fall to one quarter.",
+    "note": "2.303 x 0.6021 / 12 = 0.11555 -> 0.1156 (printed 0.1155); 6 h unchanged."
+  },
+  {
+    "id": "5d95360d-e338-48a6-84c2-125a4250bd71",
+    "before": "d0d496ee",
+    "solution": "Given : \\(T = 500\\ ^\\circ\\mathrm{C} = 500 + 273 = 773\\ \\mathrm{K}\\), \\(k = 1.6 \\times 10^{3}\\ \\mathrm{M^{-1}s^{-1}}\\), \\(E_a = 56\\ \\mathrm{kJ/mol} = 56 \\times 10^{3}\\ \\mathrm{J/mol}\\), frequency factor \\(\\mathrm{A} = ?\\)\n\nThe Arrhenius equation \\(k = \\mathrm{A}\\,e^{-E_a/RT}\\) in logarithmic form (Eq. 6.19 converted to base \\(10\\)) gives\n\n\\(\\log_{10}\\mathrm{A} = \\log_{10}k + \\dfrac{E_a}{2.303\\,RT}\\)\n\n\\(\\dfrac{E_a}{2.303\\,RT} = \\dfrac{56 \\times 10^{3}\\ \\mathrm{J\\ mol^{-1}}}{2.303 \\times 8.314\\ \\mathrm{J\\ K^{-1}mol^{-1}} \\times 773\\ \\mathrm{K}} = \\dfrac{56 \\times 10^{3}}{14801} = 3.784\\)\n\n\\(\\log_{10}k = \\log_{10}(1.6 \\times 10^{3}) = 3.204\\)\n\nHence\n\n\\(\\log_{10}\\mathrm{A} = 3.204 + 3.784 = 6.988\\)\n\n\\(\\mathrm{A} = \\text{antilog } 6.988 = 9.72 \\times 10^{6}\\ \\mathrm{M^{-1}\\ s^{-1}}\\)\n\nThe frequency factor is \\(9.72 \\times 10^{6}\\ \\mathrm{M^{-1}s^{-1}}\\). It carries the same units as \\(k\\), since the exponential factor is dimensionless.",
+    "note": "2.303 x 8.314 x 773 = 14801, printed 14802; 3.784 unchanged."
+  },
+  {
+    "id": "ea5b6a46-22d3-4dc1-abdb-ca97d07385b8",
+    "before": "ff4e205b",
+    "solution": "Arrhenius equation\n\n\\(k = \\mathrm{A}\\,e^{-E_a/RT}\\) is written as\n\n\\(\\log_{10}\\dfrac{\\mathrm{A}}{k} = \\dfrac{E_a}{2.303\\,RT}\\)\n\n\\(E_a = 240\\ \\mathrm{kJ\\ mol^{-1}} = 240 \\times 10^{3}\\ \\mathrm{J\\ mol^{-1}}\\),\n\n\\(T = 600\\ \\mathrm{K}\\), \\(\\mathrm{A} = 1.6 \\times 10^{13}\\ \\mathrm{s^{-1}}\\)\n\nHence \\(\\log_{10}\\dfrac{\\mathrm{A}}{k} = \\dfrac{240 \\times 10^{3}\\ \\mathrm{J\\ mol^{-1}}}{2.303 \\times 8.314\\ \\mathrm{J\\ mol^{-1}\\ K^{-1}} \\times 600\\ \\mathrm{K}} = 20.89\\)\n\n\\(\\dfrac{\\mathrm{A}}{k} = \\text{antilog } 20.89 = 7.78 \\times 10^{20}\\)\n\nand \\(k = \\dfrac{\\mathrm{A}}{7.78 \\times 10^{20}} = \\dfrac{1.6 \\times 10^{13}\\ \\mathrm{s^{-1}}}{7.78 \\times 10^{20}} = 2.057 \\times 10^{-8}\\ \\mathrm{s^{-1}}\\)",
+    "note": "1.6e13 / 7.78e20 = 2.0566e-8, printed 2.055e-8."
+  },
+  {
+    "id": "5d4d7d78-ed06-4b58-98eb-8a4660f44e77",
+    "before": "4688074c",
+    "solution": "(a) For fcc unit cell, \\(r = 0.3535\\,a\\)\n\n\\(r = 144.4\\ \\mathrm{pm} = 144.4 \\times 10^{-12}\\ \\mathrm{m} = 144.4 \\times 10^{-10}\\ \\mathrm{cm}\\)\n\n\\(a = \\dfrac{r}{0.3535} = \\dfrac{144.4 \\times 10^{-10}\\ \\mathrm{cm}}{0.3535} = 4.085 \\times 10^{-8}\\ \\mathrm{cm}\\)\n\n(b) Volume of Ag atom \\(= \\dfrac{4}{3}\\pi r^3 = \\dfrac{4}{3} \\times 3.142 \\times (144.4 \\times 10^{-10}\\ \\mathrm{cm})^3 = 1.261 \\times 10^{-23}\\ \\mathrm{cm^3}\\)\n\n(c) In fcc unit cell, there are 4 Ag atoms.\n\nVolume occupied by 4 Ag atoms \\(= 4 \\times 1.261 \\times 10^{-23}\\ \\mathrm{cm^3} = 5.044 \\times 10^{-23}\\ \\mathrm{cm^3}\\)\n\nTotal volume of unit cell \\(= a^3 = (4.085 \\times 10^{-8}\\ \\mathrm{cm})^3 = 6.817 \\times 10^{-23}\\ \\mathrm{cm^3}\\)\n\nPercent of volume occupied by Ag atoms \\(= \\dfrac{\\text{volume occupied by atoms in unit cell}}{\\text{total volume of unit cell}} \\times 100 = \\dfrac{5.044 \\times 10^{-23}\\ \\mathrm{cm^3}}{6.817 \\times 10^{-23}\\ \\mathrm{cm^3}} \\times 100 = 74\\%\\)\n\n(d) Percent empty space \\(= 100 - 74 = 26\\%\\)",
+    "note": "The line above gives 1.261e-23; 4 x 1.26 is 5.04, not the 5.044 printed."
+  },
+  {
+    "id": "b3037b8f-0b57-4aae-beae-e26df0f03d62",
+    "before": "1eaaaa12",
+    "solution": "**Step 1: radius of the sphere.** In a simple cubic unit cell the particles are at the corners and touch each other along the edge, so\n\n\\(a = 2r\\) and hence \\(r = \\dfrac{a}{2}\\)\n\n**Step 2: volume of one sphere.**\n\n\\(V = \\dfrac{4}{3}\\pi r^3 = \\dfrac{4}{3}\\pi \\left(\\dfrac{a}{2}\\right)^3 = \\dfrac{\\pi a^3}{6}\\)\n\n**Step 3: total volume of particles.** A simple cubic unit cell contains only 1 particle, so the volume occupied by particles in the unit cell is \\(\\dfrac{\\pi a^3}{6}\\).\n\n**Step 4: packing efficiency.**\n\n\\(\\text{Packing efficiency} = \\dfrac{\\text{volume occupied by particles in unit cell}}{\\text{total volume of unit cell}} \\times 100 = \\dfrac{\\pi a^3/6}{a^3} \\times 100 = \\dfrac{100\\pi}{6}\\)\n\n\\(= \\dfrac{100 \\times \\pi}{6} = \\mathbf{52.36\\%}\\)\n\nThus 52.36 % of the total space in a simple cubic lattice is occupied by particles and 47.64 % is empty (void) space.",
+    "note": "100 x 3.142 / 6 = 52.37; 52.36% is 100 pi / 6."
+  },
+  {
+    "id": "c05b1d9c-1dbe-419d-bc07-019d90b5f02f",
+    "before": "f8d68ac3",
+    "solution": "[Textbook misprint: in part (ii) the book's printed substitution keeps the \\(\\times\\,2\\) carried over from part (i), writing \\(0.5 \\times 2\\) in the numerator. That contradicts the formula printed immediately above it, \\(\\text{number of unit cells} = x/(\\rho a^3)\\), which has no factor \\(n\\), and it also contradicts the book's own printed answer: the expression as printed evaluates to \\(3.24 \\times 10^{21}\\), which is part (i)'s answer, whereas \\(0.5/(8.55 \\times (3.306 \\times 10^{-8})^3) = 1.62 \\times 10^{21}\\), which is what the book prints. The substitution is corrected below; the printed answers of both parts are correct as they stand.]\n\ni. Number of atoms in \\(x\\) g niobium \\(= \\dfrac{xn}{\\rho a^3}\\)\n\n\\(x = 0.5\\ \\mathrm{g}\\), \\(n = 2\\) (for bcc structure), \\(\\rho = 8.55\\ \\mathrm{g/cm^3}\\),\n\n\\(a = 330.6\\ \\mathrm{pm} = 3.306 \\times 10^{-8}\\ \\mathrm{cm}\\).\n\nNumber of atoms in 0.5 g of niobium\n\n\\(= \\dfrac{0.5\\ \\mathrm{g} \\times 2}{8.55\\ \\mathrm{g\\ cm^{-3}} \\times (3.306 \\times 10^{-8}\\ \\mathrm{cm})^3} = 3.24 \\times 10^{21}\\)\n\nii. Number of unit cells in \\(x\\) g \\(= \\dfrac{x}{\\rho a^3}\\)\n\nNumber of unit cells in 0.5 g of niobium\n\n\\(= \\dfrac{0.5\\ \\mathrm{g}}{8.55\\ \\mathrm{g\\ cm^{-3}} \\times (3.306 \\times 10^{-8}\\ \\mathrm{cm})^3} = 1.62 \\times 10^{21}\\)",
+    "note": "The expression gives 3.237e21 -> 3.24e21 (as the note above says), printed 3.25e21."
+  }
+]
