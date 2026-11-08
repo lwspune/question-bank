@@ -81,7 +81,9 @@ describe("the /me Today card on the path", () => {
   it("gives the honest finish date when behind, never a missed-day count (D3)", () => {
     const out = card({ path: view({ today: "2027-01-24" }), offer: null });
     expect(out).toMatch(/behind by \d+ days?/);
-    expect(out).toContain("At this pace you finish on");
+    // The day before revision starts no study day is left, so More cannot
+    // catch up: the line says the finish date even at the top pace (Phase 3).
+    expect(out).toMatch(/you finish on \d+ \w+/);
     expect(out).not.toMatch(/missed|streak/i);
   });
 

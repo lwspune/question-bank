@@ -19,7 +19,7 @@ import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { checkAndIncrement } from "@/lib/rate-limit";
 import { getOwnProfile } from "@/lib/profile/service";
 import { parsePathAction } from "@/lib/path/parse";
-import { PathError, deferChapter, getPathOffer, getPathToday, startPath, stopPath } from "@/lib/path/service";
+import { PathError, deferChapter, getPathOffer, getPathToday, setPace, startPath, stopPath } from "@/lib/path/service";
 
 export const dynamic = "force-dynamic";
 
@@ -82,6 +82,8 @@ export async function POST(request: NextRequest) {
       await startPath(db, user.id, { exam: action.exam, stream: action.stream }, profile);
     } else if (action.action === "stop") {
       await stopPath(db, user.id);
+    } else if (action.action === "pace") {
+      await setPace(db, user.id, action.direction);
     } else {
       await deferChapter(db, user.id, action.chapterId);
     }
