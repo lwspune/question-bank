@@ -8,7 +8,13 @@
  *           marked {{1:...}}, {{2:...}} or {{3:...}}; the same number in two
  *           lines links them by colour. Each line says how it is checked:
  *             expr  `f`, a formula; it must equal the previous expr line's f
- *                   at several values of x (a constant chain is just compared)
+ *                   at several values of x (a constant chain is just compared);
+ *                   `restart: true` starts a new chain (a second part)
+ *             deriv `f` must be the derivative of the previous expr line's f
+ *             integral  the derivative of `f` must be the previous expr line's f
+ *                   (an antiderivative; a constant of integration is free).
+ *                   Both are checked by a numerical slope at several x and then
+ *                   carry the chain on.
  *             eq    `lhs` and `rhs`, formulas in x; every root must satisfy it
  *             calc  `f` and `value`, formulas: the worked number must equal the
  *                   stated one (`dp`: the decimals shown, for a rounded "≈";
@@ -110,6 +116,12 @@ function fn(src: unknown, vars: Record<string, number>, field: string): (x: numb
 }
 
 const near = (a: number, b: number) => Math.abs(a - b) <= 1e-6 * (1 + Math.abs(a) + Math.abs(b));
+/** The slope of g at x by a central difference: enough to tell a right derivative from a wrong one. */
+const H = 1e-4;
+const slope = (g: (x: number) => number) => (x: number) => (g(x + H) - g(x - H)) / (2 * H);
+/** A numerical slope carries error near 1e-8 relative, so it is compared more loosely than a rewrite. */
+const nearSlope = (a: number, b: number) => Math.abs(a - b) <= 1e-5 * (1 + Math.abs(a) + Math.abs(b));
+
 /**
  * A stated value under 1e-3 (1.6 x 10^-19 C) is compared by its own size. Two
  * values both under 1e-14 are floating-point zeros (cos 90° = 6e-17) and keep
@@ -143,8 +155,24 @@ export const algebraSteps: Scene<AlgebraParams> = {
         if (/(^|[^\\a-zA-Z])(d?frac|tfrac|sqrt|cdot|times|Rightarrow|quad|text|left|right)(?![a-zA-Z])/.test(l.tex)) throw new ParamError(`${f}: tex has a TeX command without its backslash (frac, sqrt, text...)`);
         const tex = marks(l.tex, f);
         const note = l.note === undefined ? undefined : plainLabel(l.note, `${f} note`, 44);
+        if (l.kind === "deriv" || l.kind === "integral") {
+          // Calculus: this line is the derivative of the expr before it, or (integral) its
+          // derivative is the expr before it (so a constant of integration does not matter).
+          if (!prev) throw new ParamError(`${f}: a ${l.kind} line needs an expr line before it`);
+          const g = fn(l.f, vars, `${f} f`);
+          const [given, want] = l.kind === "deriv" ? [g, slope(prev)] : [slope(g), prev];
+          const pts = SAMPLES.filter((x) => Number.isFinite(given(x)) && Number.isFinite(want(x)));
+          if (pts.length < 3) throw new ParamError(`${f}: too few points to compare with the line before`);
+          if (!pts.every((x) => nearSlope(given(x), want(x))))
+            throw new ParamError(l.kind === "deriv" ? `${f} is not the derivative of the line before it` : `${f}: its derivative is not the integrand on the line before it`);
+          prev = g;
+          checked++;
+          return { step: l.step, tex, kind: "expr", note };
+        }
         if (l.kind === "expr") {
           const g = fn(l.f, vars, `${f} f`);
+          if (l.restart !== undefined && l.restart !== true) throw new ParamError(`${f}: restart must be true or left out`);
+          if (l.restart === true) prev = null;
           if (prev) {
             const p0 = prev;
             const pts = SAMPLES.filter((x) => Number.isFinite(p0(x)) && Number.isFinite(g(x)));
@@ -183,7 +211,7 @@ export const algebraSteps: Scene<AlgebraParams> = {
           return { step: l.step, tex, kind: "calc", note };
         }
         if (l.kind === "note") return { step: l.step, tex, kind: "note", note };
-        throw new ParamError(`${f}: kind must be expr, eq, calc or note`);
+        throw new ParamError(`${f}: kind must be expr, deriv, integral, eq, calc or note`);
       });
       if (!checked) throw new ParamError("at least one line must be an expr, eq or calc line, so something is checked");
       return { lines, answer: value(o.answer, vars, "answer"), checked };

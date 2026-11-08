@@ -47,6 +47,18 @@ at most 140 characters) and `kind`, which says how the program checks it:
   every equation solves for the same unknown, or on the line itself when a
   line solves for something else (p first, then c). Use it for the lines of
   "solve ... = 0" working, with `roots` the solutions the working reaches.
+- `deriv`: a differentiation step. `f` must be the derivative of the
+  previous `expr` (or deriv/integral) line's f, checked by a numerical slope
+  at several x. The chain carries on from it, so the next `expr` lines
+  simplify the derivative. Use it for every "dy/dx = ..." line.
+- `integral`: an integration step. The derivative of `f` must be the previous
+  line's f (the integrand), so a constant of integration does not matter.
+  Write the integrand as an `expr` line first ("\\int x e^x\\,dx" with f
+  "x*exp(x)"), then the result as `integral`. A substitution changes the
+  variable: start a new chain (below) in the new variable, or keep the
+  steps in x.
+- `restart: true` on an `expr` line starts a new chain: a second part, or a
+  new function, that is not equal to the line before it.
 - `note`: nothing to check (the set-up line, "hence proved", the final
   statement of a root set). At least one line must be checked.
 

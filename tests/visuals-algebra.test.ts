@@ -93,6 +93,50 @@ describe("algebraSteps scene", () => {
     expect(parse({ ...id, lines: [id.lines[0], { ...id.lines[1], f: "x^2+x+1" }] })).toHaveProperty("error");
   });
 
+  // Calculus (2026-11-08): a derivative or an antiderivative is not equal to the
+  // line before it, so a chain of expr lines cannot carry it.
+  it("checks a derivative line against the expression before it", () => {
+    const d = (f: string) => ({
+      lines: [
+        { step: "s1", kind: "expr", tex: "y = \\sin(x^2)", f: "sin(x^2)" },
+        { step: "s2", kind: "deriv", tex: "\\dfrac{dy}{dx} = 2x\\cos(x^2)", f },
+        { step: "s3", kind: "expr", tex: "= 2x\\cos x^2", f: "2*x*cos(x^2)" },
+      ],
+      answer: "2",
+    });
+    expect(parse(d("cos(x^2)*2*x"))).not.toHaveProperty("error");
+    expect(parse(d("cos(x^2)*x")).error).toMatch(/line 2.*derivative/);
+  });
+
+  it("checks an antiderivative line by differentiating it back to the integrand", () => {
+    const i = (f: string) => ({
+      lines: [
+        { step: "s1", kind: "expr", tex: "\\int x e^{x}\\,dx", f: "x*exp(x)" },
+        { step: "s2", kind: "integral", tex: "= x e^x - e^x + c", f },
+      ],
+      answer: "1",
+    });
+    expect(parse(i("x*exp(x)-exp(x)"))).not.toHaveProperty("error");
+    // A constant of integration does not matter.
+    expect(parse(i("x*exp(x)-exp(x)+5"))).not.toHaveProperty("error");
+    expect(parse(i("x*exp(x)+exp(x)")).error).toMatch(/line 2.*integrand/);
+  });
+
+  it("starts a new chain on restart, so a second part is not compared with the first", () => {
+    const two = {
+      lines: [
+        { step: "s1", kind: "expr", tex: "(a)\\ x^2 - 1", f: "x^2-1" },
+        { step: "s2", kind: "expr", tex: "= (x-1)(x+1)", f: "(x-1)*(x+1)" },
+        { step: "s3", kind: "expr", tex: "(b)\\ x^3", f: "x^3", restart: true },
+      ],
+      answer: "1",
+    };
+    expect(parse(two)).not.toHaveProperty("error");
+    expect(parse({ ...two, lines: [two.lines[0], two.lines[1], { ...two.lines[2], restart: undefined }] }).error).toMatch(/line 3/);
+    // deriv and integral need an expr before them.
+    expect(parse({ lines: [{ step: "s1", kind: "deriv", tex: "y'", f: "1" }, { step: "s2", kind: "note", tex: "x" }], answer: "1" }).error).toMatch(/line 1/);
+  });
+
   // Physics numbers (2026-11-08): 1.6 x 10^-19 C, 3.27 x 10^5 m/s. A fixed 1e-6
   // window passes any tiny wrong value and refuses any big rounded one.
   it("compares a tiny value by its own size, not to within 1e-6", () => {
