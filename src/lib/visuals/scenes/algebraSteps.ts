@@ -11,7 +11,9 @@
  *                   at several values of x (a constant chain is just compared)
  *             eq    `lhs` and `rhs`, formulas in x; every root must satisfy it
  *             calc  `f` and `value`, formulas: the worked number must equal the
- *                   stated one (`dp`: the decimals shown, for a rounded "≈")
+ *                   stated one (`dp`: the decimals shown, for a rounded "≈";
+ *                   `sf`: the significant figures, for 3.27 x 10^5; a stated
+ *                   value under 1e-3 is compared by its own size)
  *             note  no maths to check (the last "x = 2 or 3" line, a remark)
  *           and may carry a short plain `note` shown under it.
  *   roots   formulas: the values of the unknown the equations must hold at. An
@@ -108,6 +110,13 @@ function fn(src: unknown, vars: Record<string, number>, field: string): (x: numb
 }
 
 const near = (a: number, b: number) => Math.abs(a - b) <= 1e-6 * (1 + Math.abs(a) + Math.abs(b));
+/**
+ * A stated value under 1e-3 (1.6 x 10^-19 C) is compared by its own size. Two
+ * values both under 1e-14 are floating-point zeros (cos 90° = 6e-17) and keep
+ * the plain window; a real constant that small (h) is checked with `sf`.
+ */
+const nearCalc = (got: number, want: number) =>
+  want !== 0 && Math.abs(want) < 1e-3 && Math.max(Math.abs(got), Math.abs(want)) >= 1e-14 ?Math.abs(got - want) <= 1e-6 * Math.abs(want) : near(got, want);
 
 export const algebraSteps: Scene<AlgebraParams> = {
   id: "algebraSteps",
@@ -159,7 +168,16 @@ export const algebraSteps: Scene<AlgebraParams> = {
         if (l.kind === "calc") {
           const [got, want] = [value(l.f, vars, `${f} f`), value(l.value, vars, `${f} value`)];
           if (l.dp !== undefined && (typeof l.dp !== "number" || !Number.isInteger(l.dp) || l.dp < 0 || l.dp > 8)) throw new ParamError(`${f}: dp must be a whole number of decimals, 0 to 8`);
-          const ok = l.dp === undefined ? near(got, want) : Math.abs(got - want) <= 0.5 * 10 ** -(l.dp as number) + 1e-12;
+          if (l.sf !== undefined && (typeof l.sf !== "number" || !Number.isInteger(l.sf) || l.sf < 1 || l.sf > 6)) throw new ParamError(`${f}: sf must be a whole number of significant figures, 1 to 6`);
+          if (l.dp !== undefined && l.sf !== undefined) throw new ParamError(`${f}: give dp or sf, not both`);
+          // Under 1e-14 a real constant (1.6 x 10^-19) and a floating-point zero look alike to the plain window, so a power of ten must say its sf.
+          if (l.sf === undefined && want !== 0 && Math.abs(want) < 1e-14 && /10\s*\^/.test(String(l.value))) throw new ParamError(`${f}: a value this small needs sf (its significant figures)`);
+          const ok =
+            l.sf !== undefined
+              ? Math.abs(got - want) <= 0.5 * 10 ** (Math.floor(Math.log10(Math.abs(want) || 1)) - (l.sf as number) + 1) * (1 + 1e-9)
+              : l.dp !== undefined
+                ? Math.abs(got - want) <= 0.5 * 10 ** -(l.dp as number) + 1e-12
+                : nearCalc(got, want);
           if (!ok) throw new ParamError(`${f}: the worked value ${got} is not the stated ${want}`);
           checked++;
           return { step: l.step, tex, kind: "calc", note };
