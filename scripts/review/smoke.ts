@@ -17,7 +17,6 @@
  * and it renders no markup. Read-only. Exits 1 on any broken invariant.
  */
 import { join } from "node:path";
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 require("dotenv").config({ path: join(process.cwd(), ".env.local"), override: true });
 
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
@@ -32,16 +31,17 @@ import { loadMissRows } from "@/lib/review/query";
 const LIMIT = Number(process.argv[2] ?? 10);
 const DAY = 86_400_000;
 
+/** Who has a row of this kind since `sinceIso` (optionally with metadata.mark = `mark`), paged. */
 async function pagedUserIds(
   db: ReturnType<typeof createSupabaseAdminClient>,
   kind: string,
   sinceIso: string,
-  extra?: (q: ReturnType<ReturnType<typeof createSupabaseAdminClient>["from"]>) => unknown
+  mark?: string
 ): Promise<string[]> {
   const out: string[] = [];
   for (let from = 0; from < 20_000; from += 1000) {
     let q = db.from("user_activity").select("user_id").eq("kind", kind).gte("created_at", sinceIso);
-    if (extra) q = extra(q as never) as typeof q;
+    if (mark) q = q.eq("metadata->>mark", mark);
     const { data, error } = await q.order("id").range(from, from + 999);
     if (error) throw new Error(error.message);
     out.push(...(data ?? []).map((r) => r.user_id as string));
@@ -66,7 +66,7 @@ async function main() {
   const counts = new Map<string, number>();
   for (const u of await pagedUserIds(db, "answer_wrong", since)) counts.set(u, (counts.get(u) ?? 0) + 1);
   const heavy = [...counts.entries()].sort((a, b) => b[1] - a[1]).slice(0, LIMIT).map(([u]) => u);
-  const marked = await pagedUserIds(db, "self_mark", since, (q) => (q as { eq: (c: string, v: string) => unknown }).eq("metadata->>mark", "review"));
+  const marked = await pagedUserIds(db, "self_mark", since, "review");
   const unclear = await pagedUserIds(db, "v_not_understood", since);
   const users = [...new Set([...heavy, ...marked, ...unclear])];
   console.log(`students: ${heavy.length} heaviest + ${new Set(marked).size} Review later + ${new Set(unclear).size} V No = ${users.length}`);
