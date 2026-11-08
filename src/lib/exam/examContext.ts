@@ -710,6 +710,7 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     mixedFormats: true, // MCQ, MSQ and NAT
     noImageIndex: true,
     hasMocks: true, // 12 Part A mocks (2015-2026) published 2026-11-06, MOCKS.md
+    pastPaperSolutions: true, // 878/878 past-paper questions solved (measured 2026-11-08)
   },
   {
     slug: "iiser-iat",
