@@ -1,0 +1,14 @@
+[
+  {
+    "id": "7e791a82-46b1-42e9-8c9d-74ed37126c03",
+    "before": "5ab9755d",
+    "solution": "[Textbook misprint: the book concludes that \"the radius of the spherical ball is increasing at the rate of \\(\\frac{1}{36}\\) cc/sec\". The unit is wrong: \\(\\frac{dR}{dt}\\) is a length rate and should read cm/sec; cc/sec is the unit of the GIVEN \\(\\frac{dV}{dt}\\), evidently carried over. The value \\(\\frac{1}{36}\\) is correct and the downstream working is unaffected.]\n\nLet \\(R\\) be the radius, \\(S\\) be the surface area and \\(V\\) be the volume of the spherical ball.\n\\(V = \\frac{4}{3}\\pi R^{3}\\) . . . (I)\nDifferentiate w. r. t. \\(t\\)\n\\(\\frac{dV}{dt} = \\frac{4\\pi}{3} \\cdot \\frac{d}{dt}(R^{3})\\)\n\\(4\\pi = \\frac{4\\pi}{3} \\cdot 3R^{2} \\frac{dR}{dt}\\) . . . [Given \\(\\frac{dV}{dt} = 4\\pi\\) cc/sec ]\n\\(\\frac{dR}{dt} = \\frac{1}{R^{2}}\\) . . . (II)\nWhen volume is \\(288\\pi\\) cc.\ni.e. \\(\\frac{4}{3}\\pi \\cdot R^{3} = 288\\pi\\) we get, \\(R^{3} = 216 \\Rightarrow R = 6\\) . . . [From (I)]\nFrom (II) we get, \\(\\frac{dR}{dt} = \\frac{1}{36}\\)\nSo, the radius of the spherical ball is increasing at the rate of \\(\\frac{1}{36}\\) cm/sec.\nNow, \\(S = 4\\pi R^{2}\\)\nDifferentiate w. r. t. t.\n\\(\\frac{dS}{dt} = 4\\pi \\frac{d}{dt}(R^{2}) = 8\\pi R \\frac{dR}{dt}\\)\nSo, when \\(R = 6\\) cm\n\\(\\left[\\frac{dS}{dt}\\right]_{R = 6} = 8\\pi(6) \\frac{1}{36} = \\frac{4\\pi}{3}\\)\n\\(\\therefore\\) Surface area is increasing at the rate of \\(\\frac{4\\pi}{3}\\) cm\\(^{2}\\)/ sec.",
+    "note": "A radius changes in cm/sec; the line still printed cc/sec, which its own note calls wrong."
+  },
+  {
+    "id": "b0e94d46-69df-46fd-8d5e-78a78c3239bf",
+    "before": "a11e097f",
+    "solution": "The line \\(x+y=0\\) has slope \\(-1\\) (inclination \\(135^\\circ\\)). A required line through the origin makes angle \\(\\alpha\\) with it, so its slope is \\(m=\\tan(135^\\circ\\pm\\alpha)\\). Then \\(m\\) satisfies (with \\(m=y/x\\)) a quadratic whose sum and product give the pair. Sum of slopes \\(=\\tan(135^\\circ+\\alpha)+\\tan(135^\\circ-\\alpha)\\) and product \\(=\\tan(135^\\circ+\\alpha)\\tan(135^\\circ-\\alpha)\\). Using \\(\\tan(135^\\circ+\\alpha)=\\dfrac{-1+\\tan\\alpha}{1+\\tan\\alpha}\\) and \\(\\tan(135^\\circ-\\alpha)=\\dfrac{-1-\\tan\\alpha}{1-\\tan\\alpha}\\): the product is \\(\\dfrac{(-1+\\tan\\alpha)(-1-\\tan\\alpha)}{(1+\\tan\\alpha)(1-\\tan\\alpha)}=\\dfrac{1-\\tan^2\\alpha}{1-\\tan^2\\alpha}=1\\), and the sum is \\(\\dfrac{-(1-\\tan\\alpha)^2-(1+\\tan\\alpha)^2}{1-\\tan^2\\alpha}=\\dfrac{-2(1+\\tan^2\\alpha)}{1-\\tan^2\\alpha}=-2\\sec2\\alpha\\). Thus the pair is \\(y^2-(\\text{sum})xy+(\\text{product})x^2=0\\Rightarrow y^2+2\\sec2\\alpha\\,xy+x^2=0\\), i.e. \\(x^2+2(\\sec2\\alpha)xy+y^2=0\\). Hence proved.",
+    "note": "The degree signs on 135 were missing (the next line has them)."
+  }
+]
