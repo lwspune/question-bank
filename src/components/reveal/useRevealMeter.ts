@@ -13,6 +13,8 @@ import type { PassCta } from "@/lib/billing/plans";
 import { intlExamOfPath } from "@/lib/sites/intl";
 import { isFreeExamName } from "@/lib/billing/passScope";
 import { fetchDailyQuota } from "@/lib/questions/dailyQuotaFetch";
+import { applyClaim, claimReveal, needsClaim } from "@/lib/questions/claimReveal";
+import { createSupabaseBrowserClient } from "@/lib/supabase/client";
 
 /**
  * A reveal that came from tapping an option. `correct` is the page's own
@@ -95,20 +97,32 @@ function getSnapshot(): string[] {
 }
 
 /*
- * THE SIGNED-IN DAILY LIMIT (2026-10-05, migration 0134): 50 answers a day free
- * on the bank, the board reader and guides. A cached page carries nothing about
- * the student, so the browser asks /api/me/reveals ONCE per page load for the
- * limit and today's ids, then keeps the list itself as reveals happen. It is a
- * soft limit by construction: the answer is already in the page.
+ * THE SIGNED-IN DAILY LIMIT (2026-10-05, migration 0134): N answers a day free
+ * on the bank, the board readers, guides and V.
  *
- * Until that reply lands, `daily` is null and nothing is locked: a pass holder
- * must never see a lock flash, and neither must anyone while we are loading.
- * Same store and listeners as the signed-out list, so a card that subscribes
- * to "am I locked?" redraws when either changes.
+ * THE SERVER DECIDES (2026-11-08, migration 0228). A new answer is opened only
+ * after claim_reveal, called straight from the browser with the student's own
+ * login, says yes; it records the answer in the same step. Before, this page
+ * decided from a copy of the count fetched once per load, and a failed fetch
+ * left the student unlimited until a reload. One failure now costs one answer:
+ * when the server cannot be asked, that answer goes ahead (never walled by our
+ * error) and the next tap asks again.
+ *
+ * The copy from /api/me/reveals is kept for DISPLAY: which cards to draw
+ * locked before a tap, and the pass the wall sells. Until it lands nothing is
+ * drawn locked (a pass holder must never see a lock flash), and every claim
+ * reply updates it. A reply of "no limit" (a pass, or the limit off) is the one
+ * thing taken from it: `dailyUnlimited`, which skips the claim. Same store and
+ * listeners as the signed-out list, so a card that subscribes to "am I
+ * locked?" redraws when either changes.
  */
-type DailyQuota = { limit: number; todayIds: string[]; exemptIds: string[]; day: string; pass: PassCta | null };
+type DailyQuota = { limit: number; todayIds: string[]; exemptIds: string[]; used?: number; day: string; pass: PassCta | null };
 let dailyQuota: DailyQuota | null = null;
 let dailyFetch: Promise<void> | null = null;
+/** The server said this student has no limit (a pass, or the limit is off). */
+let dailyUnlimited = false;
+/** One claim per question at a time: a double tap asks once. */
+const claims = new Map<string, Promise<boolean>>();
 
 /** Today's quota, or null when unlimited / not loaded. Rolls over at midnight
  *  IST by starting an empty list, so a tab left open overnight is not walled. */
@@ -116,8 +130,58 @@ function currentDaily(): DailyReveals | null {
   if (!dailyQuota) return null;
   const today = istDayKey(new Date());
   // A new day: today's path questions are another day's, so they go too.
-  if (dailyQuota.day !== today) dailyQuota = { ...dailyQuota, todayIds: [], exemptIds: [], day: today };
+  if (dailyQuota.day !== today) dailyQuota = { ...dailyQuota, todayIds: [], exemptIds: [], used: 0, day: today };
   return dailyQuota;
+}
+
+/**
+ * May this signed-in student open this answer? Asks the server for a new one
+ * (lib/questions/claimReveal `needsClaim`); an answer already open today, a
+ * board-path question or a confirmed pass needs no question.
+ */
+function claimForPage(questionId: string, surface: PracticeSurface): Promise<boolean> {
+  const daily = currentDaily();
+  const ask = needsClaim({
+    signedIn: true,
+    surface,
+    unlimited: dailyUnlimited,
+    todayIds: daily?.todayIds ?? [],
+    exemptIds: daily?.exemptIds ?? [],
+    questionId,
+  });
+  if (!ask) return Promise.resolve(true);
+  const pending = claims.get(questionId);
+  if (pending) return pending;
+  const claim = (async () => {
+    const result = await claimReveal((fn, args) => createSupabaseBrowserClient().rpc(fn, args), questionId, surface);
+    // The server could not be asked: this one answer goes ahead.
+    if (!result) return true;
+    const before = currentDaily();
+    const next = applyClaim(before, questionId, result);
+    if (next && next !== before) {
+      dailyQuota = {
+        limit: next.limit,
+        todayIds: [...next.todayIds],
+        exemptIds: dailyQuota?.exemptIds ?? [],
+        used: next.used,
+        day: istDayKey(new Date()),
+        pass: dailyQuota?.pass ?? null,
+      };
+      notify();
+    }
+    return result.allowed;
+  })().finally(() => {
+    claims.delete(questionId);
+    notify();
+  });
+  claims.set(questionId, claim);
+  notify();
+  return claim;
+}
+
+/** True while this question's reveal waits on the server: for a busy cursor. */
+export function useRevealPending(questionId: string): boolean {
+  return useSyncExternalStore(subscribe, () => claims.has(questionId), () => false);
 }
 
 /** The day's free answers, for the copy on a locked card; null = no limit. */
@@ -135,6 +199,7 @@ export function dailyRevealPass(): PassCta | null {
  * page opens again. The quota is not asked for again on this page load.
  */
 export function liftDailyLimit(): void {
+  dailyUnlimited = true;
   if (!dailyQuota) return;
   dailyQuota = null;
   notify();
@@ -148,19 +213,25 @@ function ensureDailyQuota(): void {
     // An intl exam's page names its exam, so only that exam's pass lifts the
     // limit (migration 0206); a www page names none and the site's pass counts.
     const exam = intlExamOfPath(window.location.pathname);
-    // A failed read is asked for once more (2026-11-08); two failures mean no
-    // limit for this page load, the safe direction.
+    // A failed read is asked for once more (2026-11-08). Two failures leave no
+    // copy: cards draw open, and each new answer is still decided by the server.
     const data = await fetchDailyQuota(
       () => fetch(`/api/me/reveals${exam ? `?exam=${exam}` : ""}`, { cache: "no-store" }),
       (ms) => new Promise((resolve) => setTimeout(resolve, ms))
     );
     // Signed out while the retry waited: drop the answer.
     if (dailyFetch !== fetchAt) return;
-    // null = no limit (off, a pass, or both reads failed): stay unlimited.
-    if (!data || data.limit === null) return;
+    if (!data) return;
+    // The server's "no limit" (a pass, or the limit off): no claims needed.
+    if (data.limit === null) {
+      dailyUnlimited = true;
+      return;
+    }
     dailyQuota = {
       limit: data.limit,
-      todayIds: data.todayIds,
+      // A claim that landed first knows answers this reply may not (other tabs).
+      todayIds: [...new Set([...data.todayIds, ...(dailyQuota?.todayIds ?? [])])],
+      used: dailyQuota?.used,
       // Today's board-path questions (migration 0225): never counted or walled.
       exemptIds: data.exemptIds ?? [],
       day: istDayKey(new Date()),
@@ -171,23 +242,18 @@ function ensureDailyQuota(): void {
   dailyFetch = fetchAt;
 }
 
-function spendDaily(nextIds: string[]): void {
-  if (!dailyQuota) return;
-  dailyQuota = { ...dailyQuota, todayIds: nextIds };
-  notify();
-}
-
 /** Ask for today's quota once the viewer is known to be signed in. */
 function useDailyQuota(signedIn: boolean, loading: boolean): void {
   useEffect(() => {
     if (loading) return;
     if (signedIn) {
       ensureDailyQuota();
-    } else if (dailyQuota || dailyFetch) {
+    } else if (dailyQuota || dailyFetch || dailyUnlimited) {
       // Signed out mid-session: the signed-out wall applies again, and a
       // loaded quota is how the walls tell the two apart.
       dailyQuota = null;
       dailyFetch = null;
+      dailyUnlimited = false;
       notify();
     }
   }, [signedIn, loading]);
@@ -212,10 +278,11 @@ export function useRevealedIds(): string[] {
 }
 
 /**
- * Client-side answer-reveal meter, shared across /browse + /board. Anon viewers
- * get FREE_REVEAL_LIMIT (lib/questions/revealMeter) distinct-question reveals (persisted in localStorage);
- * signed-in viewers are unlimited. `attemptReveal(id)` returns whether the
- * reveal is allowed and consumes budget on the first reveal of a new question.
+ * Answer-reveal meter, shared across /browse + /board. Anon viewers get
+ * FREE_REVEAL_LIMIT (lib/questions/revealMeter) distinct-question reveals
+ * (persisted in localStorage); a signed-in viewer's new answers are decided by
+ * the server (claim_reveal, 0228). `attemptReveal(id)` resolves to whether the
+ * reveal may go ahead, after the server has answered when it had to be asked.
  *
  * `surface` is REQUIRED and has no default on purpose. It defaulted to the bank
  * for as long as this hook has existed, which is why /board spent from 0105 to
@@ -233,28 +300,36 @@ export function useRevealedIds(): string[] {
 function useAttemptReveal(surface: PracticeSurface, examName: string) {
   const { signedIn, loading } = useSignedIn();
   useDailyQuota(signedIn, loading);
-  // A free exam (the Class 9-10 exams, migration 0210) has no daily limit and
-  // spends none of it; the signed-out sign-in prompt still applies.
+  // A free exam (the Class 9-10 exams, migration 0210) is never drawn locked.
+  // Display only: whether its answers count is the server's call (0228), so
+  // the browser's copy of the free list can never open a paid exam.
   const free = isFreeExamName(examName);
 
   /** `pick`: the option tapped, when this reveal is an answer — graded on the
    *  server (bank verdicts, 2026-10-02). Omitted for a "Show solution" reveal.
    *  `topic` names the chapter in a "right in a row" message (2026-10-04). */
   const attemptReveal = useCallback(
-    (questionId: string, pick?: RevealPick, topic: string | null = null): boolean => {
-      // Don't gate before auth resolves — a signed-in user must never be walled
-      // by a brief loading window.
-      if (loading) return true;
-      const daily = signedIn && !free ? currentDaily() : null;
-      const decision = revealDecision({ signedIn, revealedIds: readIds(), questionId, daily });
-      if (decision.allow && !signedIn) writeIds(decision.nextIds);
-      if (decision.allow && daily) spendDaily(decision.nextIds);
+    async (questionId: string, pick?: RevealPick, topic: string | null = null): Promise<boolean> => {
+      let allow: boolean;
+      let wall: "daily" | "signin" | null = null;
+      if (loading) {
+        // Don't gate before auth resolves — a signed-in user must never be
+        // walled by a brief loading window.
+        allow = true;
+      } else if (!signedIn) {
+        const decision = revealDecision({ signedIn: false, revealedIds: readIds(), questionId });
+        allow = decision.allow;
+        if (allow) writeIds(decision.nextIds);
+        else wall = "signin";
+      } else {
+        allow = await claimForPage(questionId, surface);
+        if (!allow) wall = "daily";
+      }
       // Persist the reveal as a practice signal (migration 0105), tagged with
       // the surface that revealed it (0107/0108). Signed-in only — recordPractice
-      // no-ops for anon. This is the ONLY place the bank or the board reader
-      // tells the server it was used; everything else about /browse,
-      // /questions and /board is invisible by construction.
-      if (decision.allow) {
+      // no-ops for anon. The beacon feeds grading, the drill and milestones; the
+      // daily count itself was recorded by the claim above.
+      if (allow) {
         recordPractice(questionId, signedIn, surface, pick?.label);
         // Every allowed reveal goes to the run counter, a pick or not: a
         // "Show answer" first is what stops a later pick on the same question
@@ -267,11 +342,11 @@ function useAttemptReveal(surface: PracticeSurface, examName: string) {
       // recordPractice above no-ops for exactly the population this measures.
       // Anonymous + aggregate: a count, never a person. Once per session,
       // because clicking five more locked cards is one wall, not five.
-      if (!decision.allow && decision.wall === "daily") reportDailyWall(surface);
-      else if (!decision.allow) trackFunnelOnce("reveal_wall_hit", surface, { surface, exam: examName });
-      return decision.allow;
+      if (wall === "daily") reportDailyWall(surface);
+      else if (wall === "signin") trackFunnelOnce("reveal_wall_hit", surface, { surface, exam: examName });
+      return allow;
     },
-    [signedIn, loading, surface, examName, free]
+    [signedIn, loading, surface, examName]
   );
 
   return { attemptReveal, signedIn, loading, free };
@@ -327,27 +402,19 @@ export function useCardRevealMeter(surface: PracticeSurface, examName: string, q
  * The signed-in daily limit ALONE, for /guide and /notes worked examples
  * (2026-10-05). Those cards never had the signed-out wall (see
  * WorkedExampleCard) and still do not; a signed-in free student's reveals there
- * count toward, and are stopped by, the same 50 a day as the bank and board.
- * Returns whether this reveal may go ahead.
+ * count toward, and are stopped by, the same daily limit as the bank and
+ * board, decided by the server (0228; a free exam's example counts nothing
+ * there). Resolves to whether this reveal may go ahead.
  */
-export function useDailyRevealGate(
-  signedIn: boolean,
-  loading: boolean,
-  surface: PracticeSurface,
-  examName: string | null
-) {
+export function useDailyRevealGate(signedIn: boolean, loading: boolean, surface: PracticeSurface) {
   useDailyQuota(signedIn, loading);
-  // A free exam's example (the Class 9-10 exams, 0210) spends no daily answer.
-  const free = isFreeExamName(examName);
   return useCallback(
-    (questionId: string): boolean => {
-      if (loading || !signedIn || free) return true;
-      const daily = currentDaily();
-      const decision = revealDecision({ signedIn: true, revealedIds: [], questionId, daily });
-      if (decision.allow && daily) spendDaily(decision.nextIds);
-      if (!decision.allow) reportDailyWall(surface);
-      return decision.allow;
+    async (questionId: string): Promise<boolean> => {
+      if (loading || !signedIn) return true;
+      const allow = await claimForPage(questionId, surface);
+      if (!allow) reportDailyWall(surface);
+      return allow;
     },
-    [signedIn, loading, surface, free]
+    [signedIn, loading, surface]
   );
 }

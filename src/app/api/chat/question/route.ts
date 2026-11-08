@@ -20,15 +20,13 @@ import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { createSupabaseAnonClient, createSupabaseServerClient } from "@/lib/supabase/server";
 import { checkAndIncrement } from "@/lib/rate-limit";
 import { queryQuestionsByIds } from "@/lib/questions/query";
-import { getPremiumLimits } from "@/lib/billing/premiumLimits";
 import { passOnSale } from "@/lib/billing/passOnSale";
 import { logActivityOnce } from "@/lib/activity/service";
 import { istDayKey } from "@/lib/email/dueNudge";
 import { readChatSettings } from "@/lib/chat/settingsAdmin";
-import { parseAskedQuestion, revealCheck, toVQuestion } from "@/lib/chat/questionTools";
+import { parseAskedQuestion, toVQuestion } from "@/lib/chat/questionTools";
 import { cardView, gradeCard } from "@/lib/chat/questionCard";
-import { paidRevealedToday } from "@/lib/chat/questionReveal";
-import { isFreeExamName } from "@/lib/billing/passScope";
+import { claimVReveal } from "@/lib/chat/questionReveal";
 import { publicImageUrl } from "@/lib/storage/imageUrl";
 import { parseNotesItemRef } from "@/lib/chat/notesItem";
 import { loadNotesItemCard } from "@/lib/chat/notesItemServer";
@@ -101,10 +99,9 @@ export async function POST(request: NextRequest) {
     // The student's own login for the count and the record: user_activity is own-row under RLS.
     const db = createSupabaseServerClient();
     const now = new Date();
-    const limits = await getPremiumLimits(db);
-    // A free exam's question (the Class 9-10 exams, 0210) uses no free answer.
-    const limit = isFreeExamName(row?.exam?.name) || !limits || limits.hasPass ? null : limits.revealsPerDay;
-    const check = revealCheck({ limit, todayIds: limit === null ? [] : await paidRevealedToday(db, now), questionId: asked.id });
+    // The server decides (claim_reveal, 0228): the question's exam, its pass,
+    // today's path questions and the day's count, in one step.
+    const check = await claimVReveal(db, asked.id);
     // The card sells the pass in place, as the bank's wall does (2026-10-28).
     if (check.kind === "limit") {
       return NextResponse.json({ ok: false, limit: check.limit, pass: await passOnSale() }, { status: 200 });

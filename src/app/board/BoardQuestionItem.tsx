@@ -17,7 +17,7 @@ import { cleanRef } from "@/lib/board/cleanRef";
 import { Dialog, DialogClose, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 import { optionMark } from "@/lib/questions/optionMark";
-import { dailyRevealLimit } from "@/components/reveal/useRevealMeter";
+import { dailyRevealLimit, useRevealPending } from "@/components/reveal/useRevealMeter";
 import RevealSignInPrompt from "@/components/reveal/RevealSignInPrompt";
 import AskVButton from "@/components/chat/AskVButton";
 import { RevealDailyPrompt } from "@/components/reveal/RevealDailyLimit";
@@ -75,6 +75,8 @@ export default function BoardQuestionItem({
   selfMarked?: SelfMark | null;
 }) {
   const hasAnswer = questionHasAnswer(q);
+  // The server is deciding this new answer (claim_reveal, 0228): a busy cursor.
+  const pending = useRevealPending(q.id);
   // The board's Marathi-medium print of the same question, when there is one
   // (MH SSC 10). An English-only question takes the plain path, unchanged.
   const bi = hasMarathi(q) ? asBilingual(q) : null;
@@ -152,7 +154,11 @@ export default function BoardQuestionItem({
                       type="button"
                       onClick={() => onPick(o.label)}
                       aria-pressed={picked}
-                      className="flex w-full items-start gap-2 px-2.5 py-1.5 text-left transition-colors hover:bg-accent/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                      aria-busy={pending || undefined}
+                      className={cn(
+                        "flex w-full items-start gap-2 px-2.5 py-1.5 text-left transition-colors hover:bg-accent/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring",
+                        pending && "cursor-wait"
+                      )}
                     >
                       {content}
                     </button>
@@ -189,7 +195,8 @@ export default function BoardQuestionItem({
               type="button"
               onClick={onToggleReveal}
               aria-expanded={revealed}
-              className="text-xs font-medium text-brand-accent hover:underline"
+              aria-busy={pending || undefined}
+              className={cn("text-xs font-medium text-brand-accent hover:underline", pending && "cursor-wait")}
             >
               {revealed ? "Hide answer" : q.format === "subjective" ? "Show model answer" : "Show answer"}
             </button>

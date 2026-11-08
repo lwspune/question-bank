@@ -10,7 +10,7 @@
  * surface on both pages: a board paper is board practice, and a new surface
  * name would also have to be added to the PMF migrations (0108, 0112, 0132).
  */
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useRevealMeter, type RevealPick } from "@/components/reveal/useRevealMeter";
 import { gradePick } from "@/lib/questions/bankVerdict";
 import { toPickLabel } from "@/lib/questions/practiceBatch";
@@ -34,6 +34,10 @@ export function useBoardReveal(
   // The option a reader tapped, per question (2026-10-04). Board readers had
   // learned tap-to-check on /browse and tapped board options that did nothing.
   const [picks, setPicks] = useState<Map<string, string>>(new Map());
+  // Questions whose reveal is waiting on the server (claim_reveal, 0228). A
+  // tap on one of them is ignored until the answer comes back; the card draws
+  // its own busy cursor (useRevealPending).
+  const busy = useRef<Set<string>>(new Set());
   // "board", not the bank: a reveal here is the textbook reader being used, and
   // until 2026-09-18 it was recorded as a /browse reveal and measured as one.
   const meter = useRevealMeter("board", examName);
@@ -64,7 +68,19 @@ export function useBoardReveal(
     return { label: chose, correct: verdict?.correct ?? null };
   };
 
-  const toggleOne = (id: string) => {
+  /** Ask the meter, at most once at a time per question. Null = a tap ignored
+   *  because the last one is still waiting on the server. */
+  const attempt = async (id: string, pick?: RevealPick, topic?: string): Promise<boolean | null> => {
+    if (busy.current.has(id)) return null;
+    busy.current.add(id);
+    try {
+      return await meter.attemptReveal(id, pick, topic ?? null);
+    } finally {
+      busy.current.delete(id);
+    }
+  };
+
+  const toggleOne = async (id: string) => {
     // Hiding an already-revealed answer is always free, and clears the pick so
     // the reader can try again.
     if (revealed.has(id)) {
@@ -80,8 +96,11 @@ export function useBoardReveal(
       });
       return;
     }
-    // Revealing a new answer: the meter gates anon after the free budget.
-    if (!meter.attemptReveal(id)) {
+    // Revealing a new answer: the meter gates it (the device's wall signed out,
+    // the server's daily limit signed in).
+    const allowed = await attempt(id);
+    if (allowed === null) return;
+    if (!allowed) {
       setBlocked((prev) => new Set(prev).add(id));
       return;
     }
@@ -97,9 +116,11 @@ export function useBoardReveal(
   // a miss to the drill (2026-10-04, the owner's call). A tap after "Show
   // answer" or after hiding and re-showing is not an attempt: the beacon and
   // the run counter each admit one act per question per page session.
-  const pickOne = (id: string, label: string) => {
+  const pickOne = async (id: string, label: string) => {
     if (!revealed.has(id)) {
-      if (!meter.attemptReveal(id, pickFor(id, label), context)) {
+      const allowed = await attempt(id, pickFor(id, label), context);
+      if (allowed === null) return;
+      if (!allowed) {
         setBlocked((prev) => new Set(prev).add(id));
         return;
       }

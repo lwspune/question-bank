@@ -32,15 +32,20 @@ export async function loadRevealedToday(
 }
 
 /**
- * The same day's reveals, minus a free exam's questions (migration 0211): what
- * the daily answer limit counts, since the Class 9-10 exams need no pass
- * (2026-11-02). The caller's own rows only, through their login.
+ * What the daily answer limit counts today (migration 0228): the caller's
+ * daily_reveals rows that count (a free exam's never do, 0210). The same rows
+ * claim_reveal decides by, so the locks a page draws and the limit the server
+ * enforces cannot disagree. Own rows under RLS; at most the day's limit plus a
+ * few, far under the 1000-row page.
  */
-export async function loadPaidRevealedToday(db: SupabaseClient, sinceIso: string): Promise<string[]> {
-  const { data, error } = await db.rpc("my_paid_reveals_today", {
-    p_since: sinceIso,
-    p_surfaces: [...DAILY_REVEAL_SURFACES],
-  });
-  if (error) throw new Error(`loadPaidRevealedToday: ${error.message}`);
-  return (data ?? []) as string[];
+export async function loadCountedRevealsToday(db: SupabaseClient, userId: string, istDay: string): Promise<string[]> {
+  const { data, error } = await db
+    .from("daily_reveals")
+    .select("question_id")
+    .eq("user_id", userId)
+    .eq("ist_day", istDay)
+    .eq("counts", true)
+    .limit(1000);
+  if (error) throw new Error(`loadCountedRevealsToday: ${error.message}`);
+  return ((data ?? []) as { question_id: string }[]).map((r) => r.question_id);
 }

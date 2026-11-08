@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -156,11 +156,25 @@ export default function QuestionCard({
   const [revealBlocked, setRevealBlocked] = useState(false);
   // Re-keys the prompt on every refused tap so it visibly replays.
   const [blockedTaps, setBlockedTaps] = useState(0);
-  function tryReveal(chose?: OptionLabel): boolean {
+  // A signed-in student's new answer waits on the server (claim_reveal,
+  // migration 0228); a second tap meanwhile does nothing.
+  const [revealPending, setRevealPending] = useState(false);
+  const pendingRef = useRef(false);
+  async function tryReveal(chose?: OptionLabel): Promise<boolean> {
+    if (pendingRef.current) return false;
     // The page reads the key by the SAME rule the server grades by, for the
     // "right in a row" message only; the recorded verdict is the server's.
     const pick = chose ? { label: chose, correct: pickIsCorrect(chose) } : undefined;
-    if (meter.attemptReveal(question.id, pick, question.chapter.name)) {
+    pendingRef.current = true;
+    setRevealPending(true);
+    let allowed: boolean;
+    try {
+      allowed = await meter.attemptReveal(question.id, pick, question.chapter.name);
+    } finally {
+      pendingRef.current = false;
+      setRevealPending(false);
+    }
+    if (allowed) {
       setRevealBlocked(false);
       // Engagement signal for the soft mobile prompt (no-op unless signed-in
       // without a mobile; fires only once, at the reveal threshold).
@@ -171,12 +185,12 @@ export default function QuestionCard({
     setBlockedTaps((n) => n + 1);
     return false;
   }
-  function pickOption(label: OptionLabel) {
+  async function pickOption(label: OptionLabel) {
     // The tapped option travels with the reveal so the server can grade it.
     // Not for a cancelled question: no option is right, so there is no verdict
     // to record (the server refuses it too; this keeps the request honest).
     const first = picked === null;
-    if (!tryReveal(cancelled ? undefined : label)) return;
+    if (!(await tryReveal(cancelled ? undefined : label))) return;
     setPicked(label);
     // A wrong FIRST pick opens the solution at once (lib/questions/autoOpen).
     // Later taps only move the pick and leave the solution as the student set it.
@@ -197,8 +211,8 @@ export default function QuestionCard({
     if (msqChecked) return;
     setTicks((t) => (t.includes(label) ? t.filter((l) => l !== label) : [...t, label].sort()));
   }
-  function checkMsq() {
-    if (ticks.length === 0 || !tryReveal()) return;
+  async function checkMsq() {
+    if (ticks.length === 0 || !(await tryReveal())) return;
     setMsqChecked(true);
     const right = msqVerdict(ticks, correctLabels).kind === "all";
     if (!right && !showSolution && question.solution && !cancelled) openSolution();
@@ -206,12 +220,12 @@ export default function QuestionCard({
   const correctLabels = question.options.filter((o) => o.isCorrect).map((o) => o.label);
   const pathname = usePathname();
   const hasChips = Boolean(resources?.guide || resources?.notes);
-  function toggleSolution() {
+  async function toggleSolution() {
     if (showSolution) {
       setShowSolution(false);
       return;
     }
-    if (tryReveal()) openSolution();
+    if (await tryReveal()) openSolution();
   }
   function openSolution() {
     setShowSolution(true);
@@ -540,7 +554,11 @@ export default function QuestionCard({
                       type="button"
                       onClick={() => (isMsq ? toggleTick(opt.label) : pickOption(opt.label))}
                       aria-pressed={isPickedByUser}
-                      className="flex w-full items-center gap-3 px-3 py-2.5 text-left text-[15px] transition-colors hover:bg-accent/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring"
+                      aria-busy={revealPending || undefined}
+                      className={cn(
+                        "flex w-full items-center gap-3 px-3 py-2.5 text-left text-[15px] transition-colors hover:bg-accent/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring",
+                        revealPending && "cursor-wait"
+                      )}
                     >
                       {optionContent}
                     </button>
@@ -701,7 +719,11 @@ export default function QuestionCard({
                       type="button"
                       onClick={toggleSolution}
                       aria-expanded={showSolution}
-                      className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-lg border bg-card px-3 py-1.5 text-sm font-semibold text-foreground transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                      aria-busy={revealPending || undefined}
+                      className={cn(
+                        "inline-flex items-center gap-1.5 whitespace-nowrap rounded-lg border bg-card px-3 py-1.5 text-sm font-semibold text-foreground transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+                        revealPending && "cursor-wait"
+                      )}
                     >
                       {toggleLabel}
                       {showSolution ? <ChevronUp className="h-4 w-4" aria-hidden /> : <ChevronDown className="h-4 w-4" aria-hidden />}
