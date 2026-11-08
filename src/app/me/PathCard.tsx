@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { sendActivityOnce } from "@/lib/activity/clientBeacon";
 import Link from "next/link";
 import { toast } from "sonner";
 import { ArrowRight, CheckCircle2, ChevronRight, Circle } from "lucide-react";
@@ -96,6 +97,14 @@ function PathToday({
   const lead = view.tasks.find((t) => !t.done);
   // Lighter says the finish date it leads to before it is made (Phase 3).
   const [confirmLighter, setConfirmLighter] = useState(false);
+  // The readout's funnel (Phase 4): the review and "Pick up here" seen. Never in the staff view.
+  const showsReview = !!view.review;
+  const showsPickUp = !!view.pickUp;
+  useEffect(() => {
+    if (readOnly) return;
+    if (showsReview) sendActivityOnce("path_review", { kind: "surface_viewed", surface: "path_review" });
+    if (showsPickUp) sendActivityOnce("path_pickup", { kind: "surface_viewed", surface: "path_pickup" });
+  }, [readOnly, showsReview, showsPickUp]);
   return (
     <section aria-labelledby="path-heading" className="hero-soft rounded-2xl p-5 sm:p-6">
       <div className="flex items-baseline justify-between gap-3">
@@ -254,6 +263,10 @@ const STREAM_BUTTONS: { stream: Stream; label: string }[] = [
 ];
 
 function PathStart({ offer, busy, onStart }: { offer: PathOffer; busy: boolean; onStart: (s: Stream) => void }) {
+  // The readout's funnel (Phase 4): the offer seen on /me. Only a student sees it (never the staff view).
+  useEffect(() => {
+    sendActivityOnce("path_offer_me", { kind: "surface_viewed", surface: "path_offer_me" });
+  }, []);
   const pcb = offer.stream === "pcb";
   const button =
     "inline-flex h-11 items-center justify-center gap-2 rounded-xl px-5 text-sm font-medium transition-colors disabled:opacity-50 " + linkCls;

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { CalendarCheck, CheckCircle2, ChevronRight, Circle } from "lucide-react";
 import type { PathView } from "@/lib/path/view";
+import { sendActivityOnce } from "@/lib/activity/clientBeacon";
 
 /**
  * "My plan for today" inside V (MENTOR_SPEC.md Phase 2): today's board-path
@@ -22,8 +23,12 @@ export default function VPathCard({ onNavigate }: { onNavigate?: () => void }) {
       .then((r) => (r.ok ? r.json() : Promise.reject(new Error(String(r.status)))))
       .then((j: { today: PathView | null }) => {
         if (!live) return;
-        if (j.today) setView(j.today);
-        else setFailed(true);
+        if (j.today) {
+          setView(j.today);
+          // The readout's funnel (Phase 4): V's path card opened, and the review seen in it.
+          sendActivityOnce("v_path", { kind: "surface_viewed", surface: "v_path" });
+          if (j.today.review) sendActivityOnce("path_review", { kind: "surface_viewed", surface: "path_review" });
+        } else setFailed(true);
       })
       .catch(() => live && setFailed(true));
     return () => {

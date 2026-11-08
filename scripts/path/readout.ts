@@ -6,7 +6,9 @@
  * out, active in the last 30 days.
  *
  * PHASE 1 adds STARTERS (./starters.ts): students who started a path, judged
- * against the §9 targets, plus the chapter tests the path granted.
+ * against the §9 targets, plus the chapter tests the path granted. PHASE 4
+ * adds FUNNEL (./funnelReport.ts): the offer seen and taken, pace changes,
+ * the review, Pick up here, V's path card, the /board line, deferrals.
  *
  * What it reads, all through the path's own rules (lib/path/done):
  *   - active days: distinct IST days with any recorded activity, last 30 days;
@@ -32,6 +34,7 @@ import { istDayKey } from "@/lib/email/dueNudge";
 import type { ProgressEvent, QuestionFormat } from "@/lib/homework/progress";
 import { chapterParts, isFinishedTest, revisionPath, topWorked, type TopSlot } from "@/lib/path/done";
 import { reportStarters } from "./starters";
+import { reportFunnel } from "./funnelReport";
 
 const BOARDS = [
   { slug: "cbse-12", name: "CBSE Class 12" },
@@ -277,6 +280,7 @@ async function main() {
 
   // Phase 1: the students who started a path (./starters.ts).
   await reportStarters(db, { now, staff, cohort: new Set(users), chapters, events, attempts });
+  await reportFunnel(db, staff);
 }
 
 main().catch((e) => {

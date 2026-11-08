@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { sendActivityOnce } from "@/lib/activity/clientBeacon";
 import Link from "next/link";
 import { CheckCircle2, Circle, Route } from "lucide-react";
 import { useViewerSession } from "@/lib/viewer/useViewerSession";
@@ -52,8 +53,16 @@ export default function BoardPathLine({ chapterId, exam, className = "" }: { cha
     };
   }, [onHere, chapterId]);
 
-  if (p?.state === "offer" && p.exam === exam) return <BoardPathOffer className={className} />;
-  if (onHere && line) return <BoardPathLineView line={line} className={className} />;
+  const showsOffer = p?.state === "offer" && p.exam === exam;
+  const showsLine = onHere && !!line;
+  // The readout's funnel (Phase 4): the offer, or a path student's line, seen on /board.
+  useEffect(() => {
+    if (showsOffer) sendActivityOnce("path_offer_board", { kind: "surface_viewed", surface: "path_offer_board" });
+    if (showsLine) sendActivityOnce("path_board_line", { kind: "surface_viewed", surface: "path_board_line" });
+  }, [showsOffer, showsLine]);
+
+  if (showsOffer) return <BoardPathOffer className={className} />;
+  if (showsLine && line) return <BoardPathLineView line={line} className={className} />;
   return null;
 }
 
