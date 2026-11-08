@@ -14,7 +14,17 @@ Every row found up to 2026-10-29 is settled below. Of the 38 rows found on 2026-
 the SSC CGL Data Interpretation and Mensuration 3D animation run, 34 turned out to be
 settled already at ingestion (`flawed: yes` in the transcript, a notice above the
 solution, grace in mocks) and moved below on 2026-11-01. The 4 left were not defects either (rounded options,
-the key the nearest one) and were animated; settled below. Nothing is open.
+the key the nearest one) and were animated; settled below.
+
+## Open
+
+Found 2026-11-08 in the Maharashtra HSC Class 12 Physics run.
+
+| Question | Exam · chapter | Problem |
+|---|---|---|
+| `63fd9ed2` | Maharashtra HSC 12 · Thermodynamics (QSolved Ex.4.2) | **Stem incomplete.** "A gas enclosed in a cylinder is expanded to double its initial volume at a constant pressure of one atmosphere": no initial volume is given, yet the solution uses ΔV = 0.5 m³ and W = 5.05 × 10⁴ J. Check the Balbharati example for the volume it states. Not animated. |
+| `f2f7a399` | Maharashtra HSC 12 · Kinetic Theory of Gases (MCQ) | **Options in the wrong unit.** "Pressure rises 0.4% when heated by 1 °C; initial temperature?" The working gives 250 K (= −23 °C); every option is printed in °C and the key is B, "250 °C". The stored solution already explains it. Not animated. |
+| `c2164fe5` | Maharashtra HSC 12 · Thermodynamics (MCQ) | **Keyed option misprinted.** Pressure falls 10% isothermally: the volume rises 11.11%, but option D (keyed) prints 11.4%; the solution says the board's paper (J-531) prints it so. Not animated. |
 
 ## Settled
 
