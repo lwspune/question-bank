@@ -66,7 +66,10 @@ export async function loadMe(
   /** The staff view reads the path without storing today's pick or grants. */
   opts: { staffView?: boolean } = {}
 ): Promise<MeData> {
-  const [attempts, notesRows, lastNpsAt, week, assigned, profile, examIds, header] = await Promise.all([
+  // ROUND 1: every read that needs nothing from another, at once. Each read
+  // that waits for another costs a database round trip (2026-11-08: the page
+  // ran six in a row; the tabs' loading screens hide the rest of the wait).
+  const [attempts, notesRows, lastNpsAt, week, assigned, profile, examIds, header, tutorPriceAsk] = await Promise.all([
     getUserAttempts(db, user.id),
     listOwnNotesProgress(db, user.id),
     getLastNpsAt(db, user.id),
@@ -80,6 +83,11 @@ export async function loadMe(
     getExamIdMap(),
     // The header (greeting, exams, focus), shared with /performance and /account.
     getExamIdMap().then((ids) => loadMeHeader(db, user, ids, { now })),
+    // The tutoring price question (2026-11-07). Best effort, like the cards below.
+    loadTutorPriceAsk(user.id, now).catch((e) => {
+      console.error("tutor price ask read failed", e instanceof Error ? e.message : e);
+      return null;
+    }),
   ]);
 
   const focusSlug = header.focus.filterExamName ? header.focus.selected : null;
@@ -95,43 +103,49 @@ export async function loadMe(
 
   // Continue-where-you-left-off: an open mock beats a recently-read chapter.
   const resumeAttempt = allMocks.resumeAttempt;
-  // Where they were last working, across the bank, /board, notes and homework
-  // (2026-11-06). Best effort: a failed read costs the card, never the page.
-  const continueItems = await loadContinue(
-    typed,
-    user.id,
-    notes.recent.map((r) => ({ ...r, ...notesTopicTitles(r) })),
-    examIds,
-    focusSlug
-  ).catch((e) => {
-    console.error("continue read failed", e instanceof Error ? e.message : e);
-    return [] as ContinueItem[];
-  });
-  const cont = continueItems[0];
 
   // The exam-scoped home (EXAM_TIER_SPEC.md §4.2): the student's target exams
   // and the per-exam destinations they unlock.
   const targets = sanitizeTargetExams(profile.targetExams);
   const stage = isStage(profile.stage) ? profile.stage : null;
   const notesSlugs = new Set(getNotesExamGroups().map((g) => g.slug));
-  // "Did you clear it?" after a result is announced (migration 0149). Best
-  // effort: a failed read costs the card, never the dashboard.
-  const [resultCheck] = await loadPendingResultChecks(user.id, targets, istDayKey(now)).catch((e) => {
-    console.error("result checks read failed", e instanceof Error ? e.message : e);
-    return [] as OpenAnnouncement[];
-  });
-  const suggestedName = resultCheck ? await loadSuggestedName(user.id).catch(() => "") : "";
-  // The tutoring price question (2026-11-07). Best effort, like the cards above.
-  const tutorPriceAsk = await loadTutorPriceAsk(user.id, now).catch((e) => {
-    console.error("tutor price ask read failed", e instanceof Error ? e.message : e);
-    return null;
-  });
-  // The board path (2026-11-07), for students with a Class 12 board among
-  // their exams. Best effort: a failed read costs the card, never the page.
-  const pathCard = await loadPathCard(db, user.id, targets, { write: !opts.staffView, now }).catch((e) => {
-    console.error("path read failed", e instanceof Error ? e.message : e);
-    return { path: null, offer: null } as PathCard;
-  });
+
+  // ROUND 2: the reads that need round 1 (the focus, the exams), at once.
+  // Each is best effort: a failed read costs its card, never the page.
+  const [continueItems, resultChecked, pathCard] = await Promise.all([
+    // Where they were last working, across the bank, /board, notes and
+    // homework (2026-11-06).
+    loadContinue(
+      typed,
+      user.id,
+      notes.recent.map((r) => ({ ...r, ...notesTopicTitles(r) })),
+      examIds,
+      focusSlug
+    ).catch((e) => {
+      console.error("continue read failed", e instanceof Error ? e.message : e);
+      return [] as ContinueItem[];
+    }),
+    // "Did you clear it?" after a result is announced (migration 0149), with
+    // the name to suggest for it.
+    loadPendingResultChecks(user.id, targets, istDayKey(now))
+      .catch((e) => {
+        console.error("result checks read failed", e instanceof Error ? e.message : e);
+        return [] as OpenAnnouncement[];
+      })
+      .then(async ([check]) => ({
+        check,
+        suggestedName: check ? await loadSuggestedName(user.id).catch(() => "") : "",
+      })),
+    // The board path (2026-11-07), for students with a Class 12 board among
+    // their exams.
+    loadPathCard(db, user.id, targets, { write: !opts.staffView, now }).catch((e) => {
+      console.error("path read failed", e instanceof Error ? e.message : e);
+      return { path: null, offer: null } as PathCard;
+    }),
+  ]);
+  const cont = continueItems[0];
+  const resultCheck = resultChecked.check;
+  const suggestedName = resultChecked.suggestedName;
   // The focus exam first, so "Browse mocks" and notes links open on it.
   const linkOrder = focusSlug ? [focusSlug, ...targets.filter((t) => t !== focusSlug)] : targets;
 
