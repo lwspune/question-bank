@@ -1,0 +1,2432 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "0186bb41-b1a6-443e-bf31-aa09b992de33",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "y=mx\\ \\text{meets}\\ x^2+y^2=4\\ \\text{at}\\ x=a=\\dfrac{2}{\\sqrt{1+m^2}}"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\int_0^a mx\\,dx+\\int_a^2\\sqrt{4-x^2}\\,dx=\\dfrac{\\pi}{2}"
+            },
+            {
+              "step": "s3",
+              "kind": "eq",
+              "tex": "\\pi-2\\sin^{-1}\\dfrac{1}{\\sqrt{1+m^2}}=\\dfrac{\\pi}{2}",
+              "lhs": "pi-2*asin(1/sqrt(1+x^2))",
+              "rhs": "pi/2",
+              "roots": [
+                "1"
+              ],
+              "note": "the two 2m/(1 + m²) terms cancel"
+            },
+            {
+              "step": "s4",
+              "kind": "eq",
+              "tex": "\\sin^{-1}\\dfrac{1}{\\sqrt{1+m^2}}=\\dfrac{\\pi}{4}",
+              "lhs": "asin(1/sqrt(1+x^2))",
+              "rhs": "pi/4",
+              "roots": [
+                "1"
+              ]
+            },
+            {
+              "step": "s5",
+              "kind": "eq",
+              "tex": "1+m^2=2",
+              "lhs": "1+x^2",
+              "rhs": "2",
+              "roots": [
+                "1"
+              ]
+            },
+            {
+              "step": "s5",
+              "kind": "eq",
+              "tex": "m=1",
+              "lhs": "x",
+              "rhs": "1",
+              "roots": [
+                "1"
+              ],
+              "note": "m > 0"
+            }
+          ],
+          "answer": "1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "f0c5273e",
+        "answer": {
+          "value": 1,
+          "label": "m = 1"
+        }
+      }
+    },
+    {
+      "id": "0c60f4c2-1215-4172-b85a-0a213ab6b64d",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\dfrac{x^2}{16}+\\dfrac{y^2}{9}=1,\\quad a=4,\\ b=3"
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "y=\\dfrac{3}{4}\\sqrt{16-x^2}",
+              "f": "0.75*sqrt(16-x^2)",
+              "restart": true,
+              "domain": [
+                0.1,
+                3.9
+              ],
+              "note": "first quadrant"
+            },
+            {
+              "step": "s4",
+              "kind": "integral",
+              "tex": "\\int y\\,dx=\\dfrac{3}{4}\\left[\\dfrac{x}{2}\\sqrt{16-x^2}+8\\sin^{-1}\\dfrac{x}{4}\\right]",
+              "f": "0.75*(x/2*sqrt(16-x^2)+8*asin(x/4))"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\text{Area}=4\\cdot\\dfrac{3}{4}\\left[0+8\\cdot\\dfrac{\\pi}{2}\\right]=12\\pi",
+              "f": "4*0.75*(0+8*pi/2)",
+              "value": "12*pi"
+            }
+          ],
+          "answer": "12*pi"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "7ba90030",
+        "answer": {
+          "value": 37.69911184307752,
+          "label": "12π"
+        }
+      }
+    },
+    {
+      "id": "0fa12f83-66d3-4bb8-88a0-81a169c51de6",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y=2\\sqrt{x},\\quad 0\\le x\\le 1",
+              "f": "2*sqrt(x)",
+              "restart": true,
+              "domain": [
+                0.1,
+                1
+              ]
+            },
+            {
+              "step": "s2",
+              "kind": "integral",
+              "tex": "\\int 2\\sqrt{x}\\,dx=\\dfrac{4}{3}x^{3/2}",
+              "f": "4/3*x^(3/2)"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{4}{3}\\left[1-0\\right]=\\dfrac{4}{3}",
+              "f": "4/3*(1^(3/2)-0)",
+              "value": "4/3"
+            }
+          ],
+          "answer": "4/3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "9a093222",
+        "answer": {
+          "value": 1.3333333333333333,
+          "label": "4/3"
+        }
+      }
+    },
+    {
+      "id": "120b94e7-fea6-4464-b9f9-6241a6a2e855",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y=mx,\\quad 1\\le x\\le 2",
+              "f": "m*x",
+              "restart": true,
+              "domain": [
+                1,
+                2
+              ]
+            },
+            {
+              "step": "s3",
+              "kind": "integral",
+              "tex": "\\int mx\\,dx=\\dfrac{mx^2}{2}",
+              "f": "m*x^2/2"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "m\\left(\\dfrac{4}{2}-\\dfrac{1}{2}\\right)=\\dfrac{3m}{2}",
+              "f": "m*(4/2-1/2)",
+              "value": "3*m/2"
+            }
+          ],
+          "answer": "3*m/2",
+          "vars": {
+            "m": "2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "ec141e12",
+        "answer": {
+          "value": 3,
+          "label": "3m/2"
+        }
+      }
+    },
+    {
+      "id": "1235f0fb-aa2b-4f41-938e-531412db02f0",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y=\\sqrt{a^2-x^2},\\ \\ \\text{Area}=4\\int_0^a y\\,dx",
+              "f": "sqrt(a^2-x^2)",
+              "restart": true,
+              "domain": [
+                0.1,
+                1.9
+              ]
+            },
+            {
+              "step": "s5",
+              "kind": "integral",
+              "tex": "\\int\\sqrt{a^2-x^2}\\,dx=\\dfrac{x}{2}\\sqrt{a^2-x^2}+\\dfrac{a^2}{2}\\sin^{-1}\\dfrac{x}{a}",
+              "f": "x/2*sqrt(a^2-x^2)+a^2/2*asin(x/a)"
+            },
+            {
+              "step": "s7",
+              "kind": "calc",
+              "tex": "4\\left[0+\\dfrac{a^2}{2}\\sin^{-1}1\\right]=\\pi a^2",
+              "f": "4*(0+a^2/2*asin(1))",
+              "value": "pi*a^2"
+            }
+          ],
+          "answer": "pi*a^2",
+          "vars": {
+            "a": "2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s7"
+            ]
+          }
+        ],
+        "fingerprint": "54e882f5",
+        "answer": {
+          "value": 12.566370614359172,
+          "label": "πa²"
+        }
+      }
+    },
+    {
+      "id": "1346ef05-124c-4d78-851a-e58c846f4d5d",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "\\sqrt{x}-\\left(-\\sqrt{x}\\right)",
+              "f": "sqrt(x)-(-sqrt(x))",
+              "restart": true,
+              "domain": [
+                0.1,
+                1
+              ]
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "=2\\sqrt{x}",
+              "f": "2*sqrt(x)",
+              "domain": [
+                0.1,
+                1
+              ]
+            },
+            {
+              "step": "s2",
+              "kind": "integral",
+              "tex": "\\int 2\\sqrt{x}\\,dx=\\dfrac{4}{3}x^{3/2}",
+              "f": "4/3*x^(3/2)"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{4}{3}\\left[1-0\\right]=\\dfrac{4}{3}",
+              "f": "4/3*(1^(3/2)-0)",
+              "value": "4/3"
+            }
+          ],
+          "answer": "4/3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "8379f3ed",
+        "answer": {
+          "value": 1.3333333333333333,
+          "label": "4/3"
+        }
+      }
+    },
+    {
+      "id": "18bc979f-7202-4a20-87d6-b69a7a9c1169",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "eq",
+              "tex": "\\sqrt{3}x=\\sqrt{4-x^2}\\ \\Rightarrow\\ x=1",
+              "lhs": "sqrt(3)*x",
+              "rhs": "sqrt(4-x^2)",
+              "roots": [
+                "1"
+              ]
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "\\sqrt{4-x^2}-\\sqrt{3}\\,x",
+              "f": "sqrt(4-x^2)-sqrt(3)*x",
+              "restart": true,
+              "domain": [
+                0.05,
+                1
+              ]
+            },
+            {
+              "step": "s3",
+              "kind": "integral",
+              "tex": "\\int\\left(\\sqrt{4-x^2}-\\sqrt3x\\right)dx",
+              "f": "x/2*sqrt(4-x^2)+2*asin(x/2)-sqrt(3)/2*x^2",
+              "note": "circle part and line part"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\left(\\dfrac{\\sqrt3}{2}+\\dfrac{\\pi}{3}\\right)-\\dfrac{\\sqrt3}{2}=\\dfrac{\\pi}{3}",
+              "f": "(sqrt(3)/2+2*asin(1/2)-sqrt(3)/2*1)-(0)",
+              "value": "pi/3"
+            }
+          ],
+          "answer": "pi/3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "162a2a61",
+        "answer": {
+          "value": 1.0471975511965976,
+          "label": "π/3"
+        }
+      }
+    },
+    {
+      "id": "3a4999eb-d7ac-40ba-83b3-8905c382d414",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y=2\\sqrt{25-x^2}",
+              "f": "2*sqrt(25-x^2)",
+              "restart": true,
+              "domain": [
+                0.1,
+                4.9
+              ],
+              "note": "first quadrant"
+            },
+            {
+              "step": "s3",
+              "kind": "integral",
+              "tex": "\\int y\\,dx=2\\left[\\dfrac{x}{2}\\sqrt{25-x^2}+\\dfrac{25}{2}\\sin^{-1}\\dfrac{x}{5}\\right]",
+              "f": "2*(x/2*sqrt(25-x^2)+25/2*asin(x/5))"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{Area}=4\\cdot 2\\left[0+\\dfrac{25}{2}\\cdot\\dfrac{\\pi}{2}\\right]=50\\pi",
+              "f": "4*2*(0+25/2*pi/2)",
+              "value": "50*pi"
+            }
+          ],
+          "answer": "50*pi"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "78862df3",
+        "answer": {
+          "value": 157.07963267948966,
+          "label": "50π"
+        }
+      }
+    },
+    {
+      "id": "410334e9-5592-4a25-9a38-d2cd26cf7883",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y=x^2,\\quad 1\\le x\\le 2",
+              "f": "x^2",
+              "restart": true,
+              "domain": [
+                1,
+                2
+              ]
+            },
+            {
+              "step": "s2",
+              "kind": "integral",
+              "tex": "\\int x^2\\,dx=\\dfrac{x^3}{3}",
+              "f": "x^3/3"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{8}{3}-\\dfrac{1}{3}=\\dfrac{7}{3}",
+              "f": "8/3-1/3",
+              "value": "7/3"
+            }
+          ],
+          "answer": "7/3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "f37fe33c",
+        "answer": {
+          "value": 2.3333333333333335,
+          "label": "7/3"
+        }
+      }
+    },
+    {
+      "id": "47743aa7-2f8b-42ff-857a-fff54014cf8d",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "eq",
+              "tex": "x^2=16\\ \\Rightarrow\\ x=\\pm 4",
+              "lhs": "x^2",
+              "rhs": "16",
+              "roots": [
+                "4",
+                "-4"
+              ]
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "\\text{strip length}=2\\sqrt{y}",
+              "f": "2*sqrt(x)",
+              "restart": true,
+              "domain": [
+                0.1,
+                16
+              ]
+            },
+            {
+              "step": "s3",
+              "kind": "integral",
+              "tex": "2\\int\\sqrt{y}\\,dy=2\\cdot\\dfrac{2}{3}y^{3/2}",
+              "f": "4/3*x^(3/2)"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{4}{3}\\cdot 16^{3/2}=\\dfrac{256}{3}",
+              "f": "4/3*16^(3/2)",
+              "value": "256/3"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\int_{-4}^{4}\\left(16-x^2\\right)dx=\\dfrac{256}{3}",
+              "f": "2*(16*4-4^3/3)",
+              "value": "256/3"
+            }
+          ],
+          "answer": "256/3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "5e1b9a77",
+        "answer": {
+          "value": 85.33333333333333,
+          "label": "256/3"
+        }
+      }
+    },
+    {
+      "id": "49b53a3f-c947-452a-b47b-4d9a05a4751c",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y=5x+2,\\quad -2\\le x\\le 2",
+              "f": "5*x+2",
+              "restart": true,
+              "domain": [
+                -2,
+                2
+              ]
+            },
+            {
+              "step": "s1",
+              "kind": "eq",
+              "tex": "5x+2=0\\ \\Rightarrow\\ x=-\\dfrac{2}{5}",
+              "lhs": "5*x+2",
+              "rhs": "0",
+              "roots": [
+                "-2/5"
+              ]
+            },
+            {
+              "step": "s2",
+              "kind": "integral",
+              "tex": "\\int(5x+2)\\,dx=\\dfrac{(5x+2)^2}{10}",
+              "f": "(5*x+2)^2/10"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\left|0-\\dfrac{(-8)^2}{10}\\right|=\\dfrac{64}{10}",
+              "f": "abs(0-(-8)^2/10)",
+              "value": "64/10",
+              "note": "below the axis, so take the size"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{12^2}{10}-0=\\dfrac{144}{10}",
+              "f": "12^2/10-0",
+              "value": "144/10"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\dfrac{64}{10}+\\dfrac{144}{10}=\\dfrac{104}{5}",
+              "f": "64/10+144/10",
+              "value": "104/5"
+            }
+          ],
+          "answer": "104/5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "389081d3",
+        "answer": {
+          "value": 20.8,
+          "label": "104/5"
+        }
+      }
+    },
+    {
+      "id": "5d127f61-e60d-4e52-9f95-35ae9738ac4f",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y=\\dfrac{1}{2}\\sqrt{16-x^2}",
+              "f": "0.5*sqrt(16-x^2)",
+              "restart": true,
+              "domain": [
+                0.1,
+                1.9
+              ],
+              "note": "upper half"
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "\\text{Area}=2\\int_0^2\\sqrt{16-x^2}\\,dx",
+              "f": "sqrt(16-x^2)",
+              "restart": true,
+              "domain": [
+                0.1,
+                1.9
+              ]
+            },
+            {
+              "step": "s3",
+              "kind": "integral",
+              "tex": "\\int\\sqrt{16-x^2}\\,dx=\\dfrac{x}{2}\\sqrt{16-x^2}+8\\sin^{-1}\\dfrac{x}{4}",
+              "f": "x/2*sqrt(16-x^2)+8*asin(x/4)"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{at } x=2:\\ \\sqrt{12}+8\\cdot\\dfrac{\\pi}{6}=2\\sqrt{3}+\\dfrac{4\\pi}{3}",
+              "f": "sqrt(12)+8*asin(1/2)",
+              "value": "2*sqrt(3)+4*pi/3"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\text{Area}=2\\left(2\\sqrt{3}+\\dfrac{4\\pi}{3}\\right)=4\\sqrt{3}+\\dfrac{8\\pi}{3}",
+              "f": "2*(2*sqrt(3)+4*pi/3)",
+              "value": "4*sqrt(3)+8*pi/3"
+            }
+          ],
+          "answer": "4*sqrt(3)+8*pi/3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "b6f5bde2",
+        "answer": {
+          "value": 15.30578363984829,
+          "label": "4√3 + 8π/3"
+        }
+      }
+    },
+    {
+      "id": "62a3b426-9d43-4afc-bef6-6f96d5d499e1",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y=x^3,\\quad -2\\le x\\le 1",
+              "f": "x^3",
+              "restart": true,
+              "domain": [
+                -2,
+                1
+              ]
+            },
+            {
+              "step": "s1",
+              "kind": "integral",
+              "tex": "\\int x^3\\,dx=\\dfrac{x^4}{4}",
+              "f": "x^4/4"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\left|0-\\dfrac{16}{4}\\right|=4",
+              "f": "abs(0-(-2)^4/4)",
+              "value": "4",
+              "note": "below the axis, so take the size"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{1}{4}-0=\\dfrac{1}{4}",
+              "f": "1^4/4-0",
+              "value": "1/4"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "4+\\dfrac{1}{4}=\\dfrac{17}{4}",
+              "f": "4+1/4",
+              "value": "17/4"
+            }
+          ],
+          "answer": "17/4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "a11afa14",
+        "answer": {
+          "value": 4.25,
+          "label": "17/4"
+        }
+      }
+    },
+    {
+      "id": "6dbc9a95-b2c8-41d5-a068-28a7da99692c",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y=\\sqrt{64-x^2}",
+              "f": "sqrt(64-x^2)",
+              "restart": true,
+              "domain": [
+                0.1,
+                7.9
+              ]
+            },
+            {
+              "step": "s2",
+              "kind": "integral",
+              "tex": "\\int\\sqrt{64-x^2}\\,dx=\\dfrac{x}{2}\\sqrt{64-x^2}+32\\sin^{-1}\\dfrac{x}{8}",
+              "f": "x/2*sqrt(64-x^2)+32*asin(x/8)"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "4\\left[0+32\\cdot\\dfrac{\\pi}{2}\\right]=64\\pi",
+              "f": "4*(0+32*pi/2)",
+              "value": "64*pi"
+            }
+          ],
+          "answer": "64*pi"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "906cc8c8",
+        "answer": {
+          "value": 201.06192982974676,
+          "label": "64π"
+        }
+      }
+    },
+    {
+      "id": "6f0bae80-7fde-465f-85a4-7edb4e01a719",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y=\\dfrac{3}{2}\\sqrt{4-x^2}",
+              "f": "1.5*sqrt(4-x^2)",
+              "restart": true,
+              "domain": [
+                0.1,
+                1.9
+              ],
+              "note": "first quadrant"
+            },
+            {
+              "step": "s2",
+              "kind": "integral",
+              "tex": "\\int y\\,dx=\\dfrac{3}{2}\\left[\\dfrac{x}{2}\\sqrt{4-x^2}+2\\sin^{-1}\\dfrac{x}{2}\\right]",
+              "f": "1.5*(x/2*sqrt(4-x^2)+2*asin(x/2))"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{Area}=4\\cdot\\dfrac{3}{2}\\left[0+2\\cdot\\dfrac{\\pi}{2}\\right]=6\\pi",
+              "f": "4*1.5*(0+2*pi/2)",
+              "value": "6*pi"
+            }
+          ],
+          "answer": "6*pi"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "aa48a02a",
+        "answer": {
+          "value": 18.84955592153876,
+          "label": "6π"
+        }
+      }
+    },
+    {
+      "id": "7454c2ae-68ea-4195-b6ea-cceea7c7de6a",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y=\\dfrac{2}{3}\\sqrt{9-x^2}",
+              "f": "2/3*sqrt(9-x^2)",
+              "restart": true,
+              "domain": [
+                0.1,
+                2.9
+              ],
+              "note": "upper half"
+            },
+            {
+              "step": "s2",
+              "kind": "integral",
+              "tex": "\\int y\\,dx=\\dfrac{2}{3}\\left[\\dfrac{x}{2}\\sqrt{9-x^2}+\\dfrac{9}{2}\\sin^{-1}\\dfrac{x}{3}\\right]",
+              "f": "2/3*(x/2*sqrt(9-x^2)+9/2*asin(x/3))"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "A=2\\cdot\\dfrac{2}{3}\\left[0+\\dfrac{9}{2}\\cdot\\dfrac{\\pi}{2}\\right]=3\\pi",
+              "f": "2*2/3*(0+9/2*pi/2)",
+              "value": "3*pi"
+            }
+          ],
+          "answer": "3*pi"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "cb406942",
+        "answer": {
+          "value": 9.42477796076938,
+          "label": "3π"
+        }
+      }
+    },
+    {
+      "id": "7543c110-bf68-4ccb-9461-74ce81c0e7b6",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y=\\dfrac{b}{a}\\sqrt{a^2-x^2}",
+              "f": "b/a*sqrt(a^2-x^2)",
+              "restart": true,
+              "domain": [
+                0.1,
+                2.9
+              ],
+              "note": "first quadrant"
+            },
+            {
+              "step": "s5",
+              "kind": "integral",
+              "tex": "\\int y\\,dx=\\dfrac{b}{a}\\left[\\dfrac{x}{2}\\sqrt{a^2-x^2}+\\dfrac{a^2}{2}\\sin^{-1}\\dfrac{x}{a}\\right]",
+              "f": "b/a*(x/2*sqrt(a^2-x^2)+a^2/2*asin(x/a))"
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "4\\cdot\\dfrac{b}{a}\\left[0+\\dfrac{a^2}{2}\\cdot\\dfrac{\\pi}{2}\\right]=\\pi ab",
+              "f": "4*b/a*(0+a^2/2*pi/2)",
+              "value": "pi*a*b"
+            }
+          ],
+          "answer": "pi*a*b",
+          "vars": {
+            "a": "3",
+            "b": "2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "4dc5d9fd",
+        "answer": {
+          "value": 18.84955592153876,
+          "label": "πab"
+        }
+      }
+    },
+    {
+      "id": "7bc4a7ff-7384-4ee1-8c27-652d1b7aa65e",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{Area}=2\\int_0^{4a}\\sqrt{4ax}\\,dx"
+            },
+            {
+              "step": "s2",
+              "kind": "eq",
+              "tex": "\\dfrac{8\\sqrt{a}}{3}(4a)^{3/2}=\\dfrac{64a^2}{3}",
+              "lhs": "8*sqrt(x)/3*(4*x)^(3/2)",
+              "rhs": "64*x^2/3",
+              "roots": [
+                "2"
+              ]
+            },
+            {
+              "step": "s3",
+              "kind": "eq",
+              "tex": "\\dfrac{64a^2}{3}=\\dfrac{256}{3}",
+              "lhs": "64*x^2/3",
+              "rhs": "256/3",
+              "roots": [
+                "2"
+              ]
+            },
+            {
+              "step": "s3",
+              "kind": "eq",
+              "tex": "a^2=4",
+              "lhs": "x^2",
+              "rhs": "4",
+              "roots": [
+                "2",
+                "-2"
+              ]
+            },
+            {
+              "step": "s4",
+              "kind": "eq",
+              "tex": "a=2",
+              "lhs": "x",
+              "rhs": "2",
+              "roots": [
+                "2"
+              ],
+              "note": "a > 0"
+            }
+          ],
+          "answer": "2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "763734f0",
+        "answer": {
+          "value": 2,
+          "label": "a = 2"
+        }
+      }
+    },
+    {
+      "id": "a1cb2714-b98c-49b2-8c8f-f64b7a97973c",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y=\\dfrac{3}{4}\\sqrt{16-x^2}",
+              "f": "0.75*sqrt(16-x^2)",
+              "restart": true,
+              "domain": [
+                0.1,
+                3.9
+              ],
+              "note": "first quadrant"
+            },
+            {
+              "step": "s3",
+              "kind": "integral",
+              "tex": "\\int y\\,dx=\\dfrac{3}{4}\\left[\\dfrac{x}{2}\\sqrt{16-x^2}+8\\sin^{-1}\\dfrac{x}{4}\\right]",
+              "f": "0.75*(x/2*sqrt(16-x^2)+8*asin(x/4))"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{Area}=4\\cdot\\dfrac{3}{4}\\left[0+8\\cdot\\dfrac{\\pi}{2}\\right]=12\\pi",
+              "f": "4*0.75*(0+8*pi/2)",
+              "value": "12*pi"
+            }
+          ],
+          "answer": "12*pi"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "ce25eb3f",
+        "answer": {
+          "value": 37.69911184307752,
+          "label": "12π"
+        }
+      }
+    },
+    {
+      "id": "a8ac13c9-0db5-45a8-9926-247ae4aec0fe",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y=x^4,\\quad 1\\le x\\le 5",
+              "f": "x^4",
+              "restart": true,
+              "domain": [
+                1,
+                5
+              ]
+            },
+            {
+              "step": "s1",
+              "kind": "integral",
+              "tex": "\\int x^4\\,dx=\\dfrac{x^5}{5}",
+              "f": "x^5/5"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{3125}{5}-\\dfrac{1}{5}=\\dfrac{3124}{5}",
+              "f": "3125/5-1/5",
+              "value": "3124/5"
+            }
+          ],
+          "answer": "3124/5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "79d67676",
+        "answer": {
+          "value": 624.8,
+          "label": "3124/5"
+        }
+      }
+    },
+    {
+      "id": "aacf1721-c590-4464-97d4-129430750a91",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y=5x+4",
+              "f": "5*x+4",
+              "restart": true,
+              "domain": [
+                -1,
+                1
+              ]
+            },
+            {
+              "step": "s1",
+              "kind": "eq",
+              "tex": "5x+4=0\\ \\Rightarrow\\ x=-\\dfrac{4}{5}",
+              "lhs": "5*x+4",
+              "rhs": "0",
+              "roots": [
+                "-4/5"
+              ]
+            },
+            {
+              "step": "s4",
+              "kind": "integral",
+              "tex": "\\int(5x+4)\\,dx=\\dfrac{(5x+4)^2}{10}",
+              "f": "(5*x+4)^2/10"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "-\\left(0-\\dfrac{(-1)^2}{10}\\right)=\\dfrac{1}{10}",
+              "f": "-(0-(-1)^2/10)",
+              "value": "1/10",
+              "note": "below the axis, so take the size"
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "\\dfrac{9^2}{10}-0=\\dfrac{81}{10}",
+              "f": "9^2/10-0",
+              "value": "81/10"
+            },
+            {
+              "step": "s7",
+              "kind": "calc",
+              "tex": "\\dfrac{1}{10}+\\dfrac{81}{10}=\\dfrac{41}{5}",
+              "f": "1/10+81/10",
+              "value": "41/5"
+            }
+          ],
+          "answer": "41/5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s6"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s7"
+            ]
+          }
+        ],
+        "fingerprint": "8deb1bdc",
+        "answer": {
+          "value": 8.2,
+          "label": "41/5"
+        }
+      }
+    },
+    {
+      "id": "ae6685a3-33f9-4fa0-b19c-319e88139b6e",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{Area}=\\int_0^m\\left(mx-x^2\\right)dx=\\dfrac{m^3}{2}-\\dfrac{m^3}{3}"
+            },
+            {
+              "step": "s2",
+              "kind": "eq",
+              "tex": "\\dfrac{m^3}{2}-\\dfrac{m^3}{3}=\\dfrac{m^3}{6}",
+              "lhs": "x^3/2-x^3/3",
+              "rhs": "x^3/6",
+              "roots": [
+                "4"
+              ]
+            },
+            {
+              "step": "s3",
+              "kind": "eq",
+              "tex": "\\dfrac{m^3}{6}=\\dfrac{32}{3}",
+              "lhs": "x^3/6",
+              "rhs": "32/3",
+              "roots": [
+                "4"
+              ]
+            },
+            {
+              "step": "s3",
+              "kind": "eq",
+              "tex": "m^3=64",
+              "lhs": "x^3",
+              "rhs": "64",
+              "roots": [
+                "4"
+              ]
+            },
+            {
+              "step": "s4",
+              "kind": "eq",
+              "tex": "m=4",
+              "lhs": "x",
+              "rhs": "4",
+              "roots": [
+                "4"
+              ]
+            }
+          ],
+          "answer": "4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "19f35d64",
+        "answer": {
+          "value": 4,
+          "label": "m = 4"
+        }
+      }
+    },
+    {
+      "id": "b1e37945-fd99-4939-86b4-5474f614754b",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "x=y^2",
+              "f": "x^2",
+              "restart": true,
+              "domain": [
+                0.1,
+                3
+              ],
+              "note": "x written in terms of y"
+            },
+            {
+              "step": "s1",
+              "kind": "integral",
+              "tex": "\\int y^2\\,dy=\\dfrac{y^3}{3}",
+              "f": "x^3/3"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{27}{3}-0=9",
+              "f": "27/3-0",
+              "value": "9"
+            }
+          ],
+          "answer": "9"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          }
+        ],
+        "fingerprint": "0a76499a",
+        "answer": {
+          "value": 9,
+          "label": "9"
+        }
+      }
+    },
+    {
+      "id": "bfa459ca-839c-4873-8dc2-a82dac57d2cc",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y=\\dfrac{3}{5}\\sqrt{25-x^2}",
+              "f": "0.6*sqrt(25-x^2)",
+              "restart": true,
+              "domain": [
+                -1.9,
+                1.9
+              ],
+              "note": "upper half"
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "\\text{Area}=\\dfrac{6}{5}\\int_0^2\\sqrt{25-x^2}\\,dx",
+              "f": "sqrt(25-x^2)",
+              "restart": true,
+              "domain": [
+                0.1,
+                1.9
+              ]
+            },
+            {
+              "step": "s3",
+              "kind": "integral",
+              "tex": "\\int\\sqrt{25-x^2}\\,dx=\\dfrac{x}{2}\\sqrt{25-x^2}+\\dfrac{25}{2}\\sin^{-1}\\dfrac{x}{5}",
+              "f": "x/2*sqrt(25-x^2)+25/2*asin(x/5)"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "x=2:\\ \\sqrt{21}+\\dfrac{25}{2}\\sin^{-1}\\dfrac{2}{5}",
+              "f": "sqrt(21)+25/2*asin(2/5)",
+              "value": "sqrt(21)+25/2*asin(2/5)"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\text{Area}=\\dfrac{6}{5}\\left(\\sqrt{21}+\\dfrac{25}{2}\\sin^{-1}\\dfrac{2}{5}\\right)\\approx 11.67",
+              "f": "6/5*(sqrt(21)+25/2*asin(2/5))",
+              "value": "6*sqrt(21)/5+15*asin(2/5)",
+              "dp": 2
+            }
+          ],
+          "answer": "6*sqrt(21)/5+15*asin(2/5)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "7c83c469",
+        "answer": {
+          "value": 11.671843524959328,
+          "label": "6√21/5 + 15 sin⁻¹(2/5)"
+        }
+      }
+    },
+    {
+      "id": "c42b1f0a-33d4-46a7-9fd0-48b86acd126b",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y=\\sqrt{4-x^2}",
+              "f": "sqrt(4-x^2)",
+              "restart": true,
+              "domain": [
+                0.1,
+                1.9
+              ]
+            },
+            {
+              "step": "s2",
+              "kind": "integral",
+              "tex": "\\int\\sqrt{4-x^2}\\,dx=\\dfrac{x}{2}\\sqrt{4-x^2}+2\\sin^{-1}\\dfrac{x}{2}",
+              "f": "x/2*sqrt(4-x^2)+2*asin(x/2)"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "4\\left[0+2\\cdot\\dfrac{\\pi}{2}\\right]=4\\pi",
+              "f": "4*(0+2*pi/2)",
+              "value": "4*pi"
+            }
+          ],
+          "answer": "4*pi"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "c46c27ef",
+        "answer": {
+          "value": 12.566370614359172,
+          "label": "4π"
+        }
+      }
+    },
+    {
+      "id": "cf11a7e7-70cc-48fd-b14e-43d04b6e3e04",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y=2\\sqrt{9-x^2}",
+              "f": "2*sqrt(9-x^2)",
+              "restart": true,
+              "domain": [
+                0.1,
+                2.9
+              ],
+              "note": "first quadrant"
+            },
+            {
+              "step": "s5",
+              "kind": "integral",
+              "tex": "\\int y\\,dx=2\\left[\\dfrac{x}{2}\\sqrt{9-x^2}+\\dfrac{9}{2}\\sin^{-1}\\dfrac{x}{3}\\right]",
+              "f": "2*(x/2*sqrt(9-x^2)+9/2*asin(x/3))"
+            },
+            {
+              "step": "s7",
+              "kind": "calc",
+              "tex": "\\text{Area}=4\\cdot 2\\left[0+\\dfrac{9}{2}\\cdot\\dfrac{\\pi}{2}\\right]=18\\pi",
+              "f": "4*2*(0+9/2*pi/2)",
+              "value": "18*pi"
+            }
+          ],
+          "answer": "18*pi"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s7"
+            ]
+          }
+        ],
+        "fingerprint": "112e9aa1",
+        "answer": {
+          "value": 56.548667764616276,
+          "label": "18π"
+        }
+      }
+    },
+    {
+      "id": "ea9c554c-583c-4d08-be7c-71288b4bbe12",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y=\\dfrac{3}{4}\\sqrt{16-x^2}",
+              "f": "0.75*sqrt(16-x^2)",
+              "restart": true,
+              "domain": [
+                0.1,
+                3.9
+              ],
+              "note": "first quadrant"
+            },
+            {
+              "step": "s2",
+              "kind": "integral",
+              "tex": "\\int y\\,dx=\\dfrac{3}{4}\\left[\\dfrac{x}{2}\\sqrt{16-x^2}+8\\sin^{-1}\\dfrac{x}{4}\\right]",
+              "f": "0.75*(x/2*sqrt(16-x^2)+8*asin(x/4))"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{Area}=4\\cdot\\dfrac{3}{4}\\left[0+8\\cdot\\dfrac{\\pi}{2}\\right]=12\\pi",
+              "f": "4*0.75*(0+8*pi/2)",
+              "value": "12*pi"
+            }
+          ],
+          "answer": "12*pi"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "5f1b4d5f",
+        "answer": {
+          "value": 37.69911184307752,
+          "label": "12π"
+        }
+      }
+    },
+    {
+      "id": "ec219d17-ac65-4280-9b7a-0c1977c9ea16",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y=2\\sqrt{ax}",
+              "f": "2*sqrt(a*x)",
+              "restart": true,
+              "domain": [
+                0.1,
+                1.9
+              ]
+            },
+            {
+              "step": "s2",
+              "kind": "integral",
+              "tex": "\\int 2\\sqrt{ax}\\,dx=\\dfrac{4\\sqrt{a}}{3}x^{3/2}",
+              "f": "4*sqrt(a)/3*x^(3/2)"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{Area}=2\\cdot\\dfrac{4\\sqrt{a}}{3}\\,a^{3/2}=\\dfrac{8a^2}{3}",
+              "f": "2*(4*sqrt(a)/3*a^(3/2))",
+              "value": "8*a^2/3"
+            }
+          ],
+          "answer": "8*a^2/3",
+          "vars": {
+            "a": "2"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "3b0dc76b",
+        "answer": {
+          "value": 10.666666666666666,
+          "label": "8a²/3"
+        }
+      }
+    },
+    {
+      "id": "edc72cc9-044f-4a5e-833f-e3f1a0a83084",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "y=\\dfrac{b}{a}\\sqrt{a^2-x^2}",
+              "f": "b/a*sqrt(a^2-x^2)",
+              "restart": true,
+              "domain": [
+                0.1,
+                1.9
+              ],
+              "note": "first quadrant"
+            },
+            {
+              "step": "s2",
+              "kind": "integral",
+              "tex": "\\int y\\,dx=\\dfrac{b}{a}\\left[\\dfrac{x}{2}\\sqrt{a^2-x^2}+\\dfrac{a^2}{2}\\sin^{-1}\\dfrac{x}{a}\\right]",
+              "f": "b/a*(x/2*sqrt(a^2-x^2)+a^2/2*asin(x/a))"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "x=\\dfrac{a}{2}:\\ \\dfrac{a}{4}\\cdot\\dfrac{\\sqrt{3}a}{2}+\\dfrac{a^2}{2}\\cdot\\dfrac{\\pi}{6}=\\dfrac{\\sqrt{3}a^2}{8}+\\dfrac{\\pi a^2}{12}",
+              "f": "a/4*sqrt(3)*a/2+a^2/2*pi/6",
+              "value": "sqrt(3)*a^2/8+pi*a^2/12"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{Area}=\\dfrac{4b}{a}\\left[\\dfrac{\\sqrt{3}a^2}{8}+\\dfrac{\\pi a^2}{12}\\right]=ab\\left(\\dfrac{\\sqrt{3}}{2}+\\dfrac{\\pi}{3}\\right)",
+              "f": "4*b/a*(sqrt(3)*a^2/8+pi*a^2/12)",
+              "value": "a*b*(sqrt(3)/2+pi/3)"
+            }
+          ],
+          "answer": "a*b*(sqrt(3)/2+pi/3)",
+          "vars": {
+            "a": "4",
+            "b": "3"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "d0aaf1c7",
+        "answer": {
+          "value": 22.958675459772437,
+          "label": "ab(√3/2 + π/3)"
+        }
+      }
+    },
+    {
+      "id": "f29db34c-0526-450e-9b44-a413b741602c",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "eq",
+              "tex": "4x^2=8x+12\\ \\Rightarrow\\ x=-1,\\ 3",
+              "lhs": "4*x^2",
+              "rhs": "8*x+12",
+              "roots": [
+                "-1",
+                "3"
+              ]
+            },
+            {
+              "step": "s2",
+              "kind": "expr",
+              "tex": "(8x+12)-4x^2",
+              "f": "(8*x+12)-4*x^2",
+              "restart": true,
+              "domain": [
+                -1,
+                3
+              ]
+            },
+            {
+              "step": "s3",
+              "kind": "integral",
+              "tex": "\\int\\left(8x+12-4x^2\\right)dx=4x^2+12x-\\dfrac{4}{3}x^3",
+              "f": "4*x^2+12*x-4/3*x^3"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "x=3:\\ 36+36-36=36",
+              "f": "4*3^2+12*3-4/3*3^3",
+              "value": "36"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "x=-1:\\ 4-12+\\dfrac{4}{3}=-\\dfrac{20}{3}",
+              "f": "4*(-1)^2+12*(-1)-4/3*(-1)^3",
+              "value": "-20/3"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\text{Area}=36+\\dfrac{20}{3}=\\dfrac{128}{3}",
+              "f": "36+20/3",
+              "value": "128/3"
+            }
+          ],
+          "answer": "128/3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "27574c98",
+        "answer": {
+          "value": 42.666666666666664,
+          "label": "128/3"
+        }
+      }
+    },
+    {
+      "id": "32cbeab1-01fe-444c-abed-afe783fc2db7",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "y\\ge 2x,\\quad x+2y\\ge 100,\\quad 2x+y\\le 200"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "B(0,50),\\quad A(0,200)"
+            },
+            {
+              "step": "s3",
+              "kind": "eq",
+              "tex": "x+2(2x)=100\\ \\Rightarrow\\ C(20,40)",
+              "lhs": "x+2*(2*x)",
+              "rhs": "100",
+              "roots": [
+                "20"
+              ]
+            },
+            {
+              "step": "s4",
+              "kind": "eq",
+              "tex": "2x+2x=200\\ \\Rightarrow\\ D(50,100)",
+              "lhs": "2*x+2*x",
+              "rhs": "200",
+              "roots": [
+                "50"
+              ]
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "Z(A)=0+2(200)=400",
+              "f": "0+2*200",
+              "value": "400"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "Z(B)=0+2(50)=100",
+              "f": "0+2*50",
+              "value": "100"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "Z(C)=20+2(40)=100",
+              "f": "20+2*40",
+              "value": "100"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "Z(D)=50+2(100)=250",
+              "f": "50+2*100",
+              "value": "250"
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "\\max Z=400\\ \\text{at}\\ (0,200)",
+              "f": "max(max(400,100),max(100,250))",
+              "value": "400"
+            }
+          ],
+          "answer": "400"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "5a55d896",
+        "answer": {
+          "value": 400,
+          "label": "Max Z = 400 at (0, 200)"
+        }
+      }
+    },
+    {
+      "id": "99dce4b7-add8-4d0f-9941-b57e6b22e365",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "Z=ax+by"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "Z(0,2)=a\\cdot 0+b\\cdot 2=2b",
+              "f": "a*0+b*2",
+              "value": "2*b"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "Z(3,0)=a\\cdot 3+b\\cdot 0=3a",
+              "f": "a*3+b*0",
+              "value": "3*a"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "2b=3a",
+              "f": "2*b",
+              "value": "3*a",
+              "note": "equal at both corner points"
+            }
+          ],
+          "answer": "3*a",
+          "vars": {
+            "a": "2",
+            "b": "3"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "a1b49b57",
+        "answer": {
+          "value": 6,
+          "label": "3a = 2b"
+        }
+      }
+    },
+    {
+      "id": "f60ee6e9-9a8e-4530-be84-39c73f860e3f",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "eq",
+              "tex": "x+2(2x)=100\\ \\Rightarrow\\ (20,40)",
+              "lhs": "x+2*(2*x)",
+              "rhs": "100",
+              "roots": [
+                "20"
+              ]
+            },
+            {
+              "step": "s1",
+              "kind": "eq",
+              "tex": "2x+2x=200\\ \\Rightarrow\\ (50,100)",
+              "lhs": "2*x+2*x",
+              "rhs": "200",
+              "roots": [
+                "50"
+              ]
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "Z(0,50)=100,\\ \\ Z(20,40)=20+80=100",
+              "f": "20+2*40",
+              "value": "100"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "Z(50,100)=50+200=250",
+              "f": "50+2*100",
+              "value": "250"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "Z(0,200)=0+400=400",
+              "f": "0+2*200",
+              "value": "400"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\max Z=400,\\quad \\min Z=100",
+              "f": "max(max(100,100),max(250,400))",
+              "value": "400"
+            }
+          ],
+          "answer": "400"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "b0aaf268",
+        "answer": {
+          "value": 400,
+          "label": "Max 400; Min 100"
+        }
+      }
+    }
+  ],
+  "decided": []
+}
