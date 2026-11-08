@@ -244,10 +244,18 @@ export async function readLatestConversation(
  * The student's Yes or No to "Did you understand?" under one AI reply
  * (migration 0182). Ownership as for the thumbs below. False when no row matched.
  */
+export type UnderstoodReply = {
+  toolCalls: ToolCallLog[] | null;
+  message: string | null;
+  askedQuestionId: string | null;
+};
+
+/** Saves the answer and returns what the reply explained (for a No's question,
+ *  lib/chat/understood notUnderstoodQuestionId), or null when no row matched. */
 export async function setReplyUnderstood(
   db: SupabaseClient,
   input: { id: string; conversationId: string; userId: string | null; value: boolean }
-): Promise<boolean> {
+): Promise<UnderstoodReply | null> {
   let q = db
     .from("chat_interactions")
     .update({ understood: input.value, understood_at: new Date().toISOString() })
@@ -255,12 +263,15 @@ export async function setReplyUnderstood(
     .eq("conversation_id", input.conversationId)
     .eq("reply_source", "ai");
   q = input.userId ? q.or(`user_id.is.null,user_id.eq.${input.userId}`) : q.is("user_id", null);
-  const { data, error } = await q.select("id");
+  const { data, error } = await q.select("tool_calls, message, asked_question_id");
   if (error) {
     console.error("setReplyUnderstood:", error.message);
-    return false;
+    return null;
   }
-  return (data ?? []).length === 1;
+  const rows = (data ?? []) as { tool_calls: ToolCallLog[] | null; message: string | null; asked_question_id: string | null }[];
+  if (rows.length !== 1) return null;
+  const r = rows[0];
+  return { toolCalls: Array.isArray(r.tool_calls) ? r.tool_calls : null, message: r.message, askedQuestionId: r.asked_question_id };
 }
 
 /**

@@ -25,7 +25,7 @@ import {
 } from "./progress";
 
 const PAGE = 1000;
-const KINDS: ProgressEvent["kind"][] = ["self_mark", "question_practiced", "answer_wrong", "answer_correct"];
+const KINDS: ProgressEvent["kind"][] = ["self_mark", "question_practiced", "answer_wrong", "answer_correct", "v_not_understood"];
 
 type ItemRow = { day: number; position: number; question_id: string; question: { question_format: QuestionFormat } | null };
 type EventRow = { ref_id: string; kind: ProgressEvent["kind"]; created_at: string; mark: string | null };

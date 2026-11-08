@@ -17,6 +17,7 @@
  * Pure: no DB, no clock of its own (`now` is injected), no React.
  * Spec: tests/drill-select.test.ts.
  */
+import type { ActivityKind } from "@/lib/activity/events";
 
 /*
  * ONE correct answer after the last miss fixes a question (the user's call,
@@ -37,6 +38,17 @@ export const DRILL_SIZE = 5;
 /** Chapter and subtopic joined as a PAIR — a subtopic name is unique only
  *  within its chapter, the same reason performance/links.ts keys this way. */
 const groupKey = (chapter: string, subtopic: string) => `${chapter}||${subtopic}`;
+
+/**
+ * The activity kinds that put a question on the ladder (a miss) and take it
+ * off (`answer_correct`). A miss is a wrong answer, or a No to "Did you
+ * understand?" under V's explanation of the question (2026-11-08): a miss with
+ * no answer, kept as its own kind so that nothing counting WORK reads it.
+ * Every "was this missed?" read uses these lists, so a right answer anywhere
+ * later fixes a No the same way it fixes a wrong answer.
+ */
+export const MISS_KINDS = ["answer_wrong", "v_not_understood"] as const satisfies readonly ActivityKind[];
+export const LADDER_KINDS = [...MISS_KINDS, "answer_correct"] as const satisfies readonly ActivityKind[];
 
 /** One recorded answer to one question. Order does not matter — the fold sorts. */
 export type DrillEvent = {

@@ -75,6 +75,12 @@ export const ACTIVITY_KINDS = [
   // day) — 0230. One row per tap, no dedupe: two taps are two changes. The
   // path itself keeps only the current minutes. See lib/path/funnel.
   "path_paced",
+  // A No to "Did you understand?" under V's explanation of a question
+  // (refId = questionId, metadata: surface "v", interactionId) — 0241. A MISS
+  // with no answer: the drill's ladder reads it (lib/drill/select MISS_KINDS)
+  // and nothing that counts work does, so it never marks homework, a plan task
+  // or an answered total. One per V reply (dedupe `v_not_understood:<reply id>`).
+  "v_not_understood",
 ] as const;
 
 export type ActivityKind = (typeof ACTIVITY_KINDS)[number];
