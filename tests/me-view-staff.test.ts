@@ -98,11 +98,16 @@ const html = () =>
 describe("MeView, staff view of a student's /me", () => {
   it("shows the student's pulse, not a fetched one", () => {
     const out = html();
-    expect(out).toContain("4,321");
-    expect(out).toContain("37 to fix");
+    expect(out).toContain("Fix 37 mistakes");
     expect(out).toContain("Matrices and Determinants");
-    // The week ring reads the student's pulse too.
-    expect(out).toContain("3/4");
+  });
+
+  it("keeps Home to things to do (2026-11-08): no number tiles, no week ring, no recent mocks", () => {
+    const out = html();
+    expect(out).not.toContain("4,321"); // the answered tile
+    expect(out).not.toContain("3/4"); // the study-days ring
+    expect(out).not.toContain("study days");
+    expect(out).not.toContain("Recent mocks");
   });
 
   it("renders no control that saves as the student", () => {
@@ -125,8 +130,6 @@ describe("MeView, staff view of a student's /me", () => {
 
   it("points the student's own-row links at their staff pages", () => {
     const out = html();
-    expect(out).toContain(`/dashboard/students/${STUDENT}/attempt/${attempt.attemptId}`);
-    expect(out).toContain(`/dashboard/students/${STUDENT}/performance`);
     expect(out).not.toContain("/mock/attempt/");
     expect(out).not.toContain('href="/me/map"');
     expect(out).not.toContain('href="/performance"');

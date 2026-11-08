@@ -5,7 +5,7 @@ import { ArrowRight } from "lucide-react";
 import AppHeader from "@/components/AppHeader";
 import PerformanceBody from "@/components/performance/PerformanceBody";
 import { getSessionUser } from "@/lib/auth";
-import { getOwnPerformance } from "@/lib/performance/service";
+import { getOwnPerformance, getOwnPracticeEvidence } from "@/lib/performance/service";
 import { getTaxonomyLinks } from "@/lib/performance/taxonomy";
 import { EMPTY_TAXONOMY_LINKS, type TaxonomyLinks } from "@/lib/performance/links";
 import { buildPerformance } from "@/lib/performance/compute";
@@ -30,6 +30,14 @@ import { loadMeHeader } from "@/lib/me/header";
 import { performanceFocus } from "@/lib/me/focus";
 import { getExamIdMap } from "@/lib/exam/examIdMap";
 import { mockCatalogueHref } from "@/lib/exam/examLinks";
+import ProgressSwitch from "@/components/me/ProgressSwitch";
+import OutcomeTiles from "@/components/me/OutcomeTiles";
+import RecentPapers from "@/components/me/RecentPapers";
+import { withPractice } from "@/lib/performance/practice";
+import { masteredCount } from "@/lib/performance/masteryMap";
+import { forSite } from "@/lib/sites/siteScope";
+import { getUserAttempts } from "@/lib/mocks/query";
+import { summarizeUserMocks } from "@/lib/mocks/perf";
 
 /**
  * A student's own performance diagnosis — the same readout staff have had since
@@ -60,7 +68,7 @@ export default async function OwnPerformancePage(props: { searchParams: Promise<
   const db = createSupabaseServerClient();
   // ROUND 1: every read that needs nothing from another, at once (2026-11-08:
   // the page ran them one after another, six database round trips).
-  const [payload, header, , limits, ownSheets] = await Promise.all([
+  const [payload, header, , limits, ownSheets, practice, attempts] = await Promise.all([
     getOwnPerformance(),
     // The header (greeting, exams, focus).
     getExamIdMap().then((ids) => loadMeHeader(db, user, ids, { now })),
@@ -71,10 +79,24 @@ export default async function OwnPerformancePage(props: { searchParams: Promise<
     // Board papers written on paper and checked by hand (migration 0153). Read
     // with the student's own session: the tables only return their own sheets.
     listOwnSubmissions(db),
+    // The practice answers the map counts, for the "subtopics mastered" tile
+    // (2026-11-08). Its own read fails to nothing rather than to a wrong 0.
+    getOwnPracticeEvidence(),
+    // "Papers you sat" (moved from Home, 2026-11-08). A failed read shows none.
+    getUserAttempts(db, user.id).catch((e: unknown) => {
+      console.error("performance attempts read failed", e instanceof Error ? e.message : e);
+      return [];
+    }),
   ]);
   if (!payload) redirect("/login?next=/performance");
 
   const built = buildPerformance(payload, now);
+  // The map's green dots across every exam on this site (www; intl has no
+  // /performance), from the same evidence the map draws.
+  const mastered = masteredCount(forSite(withPractice(payload, built, practice, now).lanes, (l) => l.exam, false));
+  // The papers list follows the exam focus, as Home's did.
+  const focusSlug = header.focus.selected;
+  const shownAttempts = focusSlug ? attempts.filter((a) => a.examSlug === focusSlug) : attempts;
 
   // Past the trial, or before it is revealed, the projection is LEFT OUT of
   // what this page renders, so it never reaches the browser: a real lock, not
@@ -130,23 +152,9 @@ export default async function OwnPerformancePage(props: { searchParams: Promise<
     <>
       <AppHeader />
       <main className="mx-auto max-w-5xl space-y-8 px-4 py-6 sm:px-6 sm:py-8">
-        <MeHeader data={header} active="performance" readOnly={false} />
-
-        {/* The tab names the page now (2026-11-08). The chapter map lives
-            here too: it is the same evidence, drawn chapter by chapter. With a
-            marked paper the band also carries "All your papers"; without one,
-            it sits here. */}
-        <div className="flex flex-wrap items-center gap-3">
-          {built.summary.graded === 0 && allPapers("border hover:bg-accent")}
-          <Link
-            prefetch={false}
-            href="/me/map"
-            className="inline-flex items-center gap-1 text-sm font-medium text-brand-accent hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-          >
-            See your chapter map
-            <ArrowRight className="h-3.5 w-3.5" aria-hidden />
-          </Link>
-        </div>
+        <MeHeader data={header} active="progress" readOnly={false} />
+        <ProgressSwitch active="papers" />
+        <OutcomeTiles mastered={mastered} />
 
         {pf.noPaperFor && focusExam ? (
           <NoPaperFor examName={focusExam.displayName} href={mockCatalogueHref(focusExam.slug)} />
@@ -164,6 +172,11 @@ export default async function OwnPerformancePage(props: { searchParams: Promise<
             headerAction={allPapers("bg-white/10 text-white ring-1 ring-white/25 hover:bg-white/20")}
           />
         )}
+        <RecentPapers
+          mocks={summarizeUserMocks(shownAttempts)}
+          attempts={shownAttempts}
+          browseHref={focusSlug ? mockCatalogueHref(focusSlug) : "/mock"}
+        />
         <AnswerSheetsCard rows={sheets.rows} more={sheets.more} />
       </main>
     </>

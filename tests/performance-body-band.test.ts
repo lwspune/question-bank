@@ -1,5 +1,7 @@
 /**
- * The performance summary band (owner, 2026-11-08): Steadiness is removed. It
+ * The performance summary band (owner, 2026-11-08): Steadiness is removed,
+ * then (step 3, same day) Last paper and Answers right leave the band and five
+ * detail sections fold under "More detail". It
  * said how many points a student's papers spread ("±10 points between
  * papers"), which tells a student nothing to do. The band is shared by the
  * student's /performance and the staff view of a student, so both lose it:
@@ -81,9 +83,29 @@ describe("the performance summary band", () => {
     expect(html).not.toContain("between papers");
   });
 
-  it("keeps the other two facts (until the Progress tab rework)", () => {
+  it("keeps no paper facts in the band: Last paper is the papers list's first row, Answers right moved to the clock", () => {
     const html = render();
-    expect(html).toContain("Last paper");
-    expect(html).toContain("Answers right");
+    const band = html.slice(0, html.indexOf("</section>"));
+    expect(band).not.toContain("Last paper");
+    expect(band).not.toContain("Answers right");
+    expect(band).toContain("first try at 2 papers");
+  });
+
+  it("says how often an answer was right in the clock card, where it decides how much to attempt", () => {
+    const html = render();
+    const text = html.slice(html.indexOf("used the clock")).replace(/<!-- -->/g, "").replace(/<[^>]+>/g, "");
+    expect(text).toMatch(/When you answered, you were right \d+% of the time\./);
+  });
+
+  it("folds the five detail sections under one More detail", () => {
+    const html = render();
+    const fold = html.indexOf("<details");
+    expect(fold).toBeGreaterThan(-1);
+    expect(html.slice(fold)).toContain("More detail");
+    for (const title of ["Your chapters", "By difficulty"]) {
+      expect(html.indexOf(title), title).toBeGreaterThan(fold);
+    }
+    expect(html.indexOf("Fix next")).toBeLessThan(fold);
+    expect(html.indexOf("used the clock")).toBeLessThan(fold);
   });
 });

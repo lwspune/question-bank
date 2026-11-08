@@ -1,15 +1,8 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
-import { toast } from "sonner";
-import { ArrowRight, BookOpen } from "lucide-react";
-import {
-  WEEKLY_GOAL_CHOICES,
-  weeklyGoalSentence,
-  weeklyProgress,
-} from "@/lib/goals/weekly";
-import { invalidatePulse, usePulse } from "@/lib/viewer/usePulse";
+import { ArrowRight, BookOpen, CalendarDays } from "lucide-react";
+import { usePulse } from "@/lib/viewer/usePulse";
 import type { Pulse } from "@/lib/pulse/cache";
 import { examCountdownSentence } from "@/lib/exam/calendar";
 import { pickTodayAction } from "@/lib/me/today";
@@ -22,15 +15,17 @@ import { pickTodayAction } from "@/lib/me/today";
  *
  * The due count arrives from the shared pulse (the header badge's read), so
  * the lead can move from "Continue" to "Fix N mistakes" once it lands; the
- * button keeps its place, only its words change. The week numbers come from
- * the server so the ring never flashes.
+ * button keeps its place, only its words change.
+ *
+ * The study-days ring and its goal picker were removed 2026-11-08 (owner): the
+ * ring sat at 0 for about 6 in 10 visitors and 13 students ever chose a goal,
+ * and students here study in bursts, so a weekly count read as "you did
+ * nothing". The exam countdown stays: a deadline is the pace that matters.
  */
 export default function TodayCard({
   resume,
   cont,
   mockHref,
-  initialDone,
-  initialGoal,
   pulse: given,
   initialPulse,
   readOnly = false,
@@ -38,8 +33,6 @@ export default function TodayCard({
   resume?: { title: string; href: string };
   cont?: { title: string; chapter: string; href: string };
   mockHref: string;
-  initialDone: number;
-  initialGoal: number | null;
   /** The staff view of a student's /me passes the STUDENT's pulse, built on
    *  the server; left to fetch, this card would show the viewer's own. */
   pulse?: Pulse;
@@ -51,34 +44,7 @@ export default function TodayCard({
 }) {
   const live = usePulse(!given, initialPulse);
   const pulse = given ?? live;
-  const [goal, setGoal] = useState<number | null>(initialGoal);
-  const [saving, setSaving] = useState(false);
-  const [editingGoal, setEditingGoal] = useState(false);
-
-  const done = pulse?.week.done ?? initialDone;
-  const p = weeklyProgress(done, goal);
   const action = pickTodayAction({ resume, due: pulse?.due ?? null, cont, mockHref });
-
-  async function changeGoal(value: string) {
-    const next = Number(value);
-    setSaving(true);
-    try {
-      const res = await fetch("/api/profile", {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ weeklyGoal: next }),
-      });
-      if (!res.ok) throw new Error("Could not save your goal.");
-      setGoal(next);
-      setEditingGoal(false);
-      invalidatePulse();
-      toast.success(`Goal set: ${next} study days a week`);
-    } catch (err) {
-      toast.error(err instanceof Error ? err.message : "Could not save your goal.");
-    } finally {
-      setSaving(false);
-    }
-  }
 
   return (
     <section aria-labelledby="today-heading" className="hero-soft rounded-2xl p-5 sm:p-6">
@@ -116,91 +82,23 @@ export default function TodayCard({
         </p>
       )}
 
-      {/* The week, on quiet lines under a rule. */}
-      <div className="mt-4 flex items-center gap-3 border-t border-brand/15 pt-4">
-        <Ring pct={p.pct} met={p.met} done={p.done} goal={p.goal} />
-        <div className="min-w-0 flex-1 text-sm">
-          <p>{weeklyGoalSentence(p)}</p>
-          {/* Answered · Right · Fixed moved to the progress row below
-              (ProgressTiles, 2026-11-05); the countdown stays here. */}
-          {pulse?.exam && (
-            <p className="mt-0.5 text-xs text-muted-foreground">
-              {examCountdownSentence({ ...pulse.exam, source: "calendar", exam: null, date: "" })}
-              {!pulse.exam.official && !readOnly && (
-                <>
-                  {" · "}
-                  <Link href="/account" className="text-brand-accent underline-offset-4 hover:underline">
-                    set your date
-                  </Link>
-                </>
-              )}
-            </p>
-          )}
-          <div className="mt-1 text-xs text-muted-foreground">
-            {editingGoal ? (
-              <label className="inline-flex items-center gap-2">
-                <span>Study days a week</span>
-                <select
-                  aria-label="Study days per week"
-                  value={p.goal}
-                  disabled={saving}
-                  autoFocus
-                  onChange={(e) => void changeGoal(e.target.value)}
-                  className="h-8 rounded-md border bg-background px-2 text-xs font-medium text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50"
-                >
-                  {WEEKLY_GOAL_CHOICES.map((c) => (
-                    <option key={c} value={c}>
-                      {c} days a week
-                    </option>
-                  ))}
-                </select>
-              </label>
-            ) : (
+      {/* The exam countdown, on a quiet line under a rule. */}
+      {pulse?.exam && (
+        <p className="mt-4 flex items-center gap-2 border-t border-brand/15 pt-4 text-sm text-muted-foreground">
+          <CalendarDays className="h-4 w-4 shrink-0 text-brand-accent" aria-hidden />
+          <span>
+            {examCountdownSentence({ ...pulse.exam, source: "calendar", exam: null, date: "" })}
+            {!pulse.exam.official && !readOnly && (
               <>
-                {p.chosen ? "Your goal" : "Suggested goal"}: {p.goal} study days a week
-                {!readOnly && (
-                  <>
-                    {" · "}
-                    <button
-                      type="button"
-                      onClick={() => setEditingGoal(true)}
-                      className="font-medium text-brand-accent underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-                    >
-                      change
-                    </button>
-                  </>
-                )}
+                {" · "}
+                <Link href="/account" className="text-brand-accent underline-offset-4 hover:underline">
+                  set your date
+                </Link>
               </>
             )}
-          </div>
-        </div>
-      </div>
+          </span>
+        </p>
+      )}
     </section>
-  );
-}
-
-/** A progress ring. Decorative: the numbers it draws are in the text beside it. */
-function Ring({ pct, met, done, goal }: { pct: number; met: boolean; done: number; goal: number }) {
-  const r = 20;
-  const c = 2 * Math.PI * r;
-  const dash = (pct / 100) * c;
-  return (
-    <div className="relative h-12 w-12 shrink-0" aria-hidden>
-      <svg viewBox="0 0 48 48" className="h-12 w-12 -rotate-90">
-        <circle cx="24" cy="24" r={r} className="fill-none stroke-brand/15" strokeWidth="5" />
-        <circle
-          cx="24"
-          cy="24"
-          r={r}
-          className={met ? "fill-none stroke-emerald-500" : "fill-none stroke-brand-accent"}
-          strokeWidth="5"
-          strokeLinecap="round"
-          strokeDasharray={`${dash} ${c - dash}`}
-        />
-      </svg>
-      <span className="absolute inset-0 flex items-center justify-center text-xs font-semibold tabular-nums">
-        {done}/{goal}
-      </span>
-    </div>
   );
 }

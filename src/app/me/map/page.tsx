@@ -17,6 +17,13 @@ import { cn } from "@/lib/utils";
 import { drillHref } from "@/lib/drill/from";
 import { isIntlHost } from "@/lib/sites/intl";
 import { forSite } from "@/lib/sites/siteScope";
+import MeHeader from "@/components/me/MeHeader";
+import ProgressSwitch from "@/components/me/ProgressSwitch";
+import OutcomeTiles from "@/components/me/OutcomeTiles";
+import { getExamIdMap } from "@/lib/exam/examIdMap";
+import { loadMeHeader } from "@/lib/me/header";
+import { mapExamFor } from "@/lib/me/progress";
+import { masteredCount } from "@/lib/performance/masteryMap";
 
 /**
  * `/me/map` — the mastery map. ENGAGEMENT_SPEC.md B1.
@@ -64,41 +71,65 @@ export default async function MasteryMapPage(props: { searchParams: Promise<Sear
   const user = await getSessionUser();
   if (!user) redirect("/login?next=/me/map");
 
-  const [payload, practice] = await Promise.all([getOwnPerformance(), getOwnPracticeEvidence()]);
-  if (!payload) redirect("/login?next=/me/map");
   const now = new Date();
-  await logActivityOnce(createSupabaseServerClient(), user.id, surfaceViewedEvent(user.id, "map", now));
+  const db = createSupabaseServerClient();
+  // intl.pyqvault.com holds the international exams alone, www every other
+  // exam (lib/sites/siteScope): each site's map is that site's lanes. On www
+  // the map is the Progress tab's Chapters view (2026-11-08) under the
+  // student's header; intl has no Home or Papers, so it keeps its own header.
+  const intl = isIntlHost((await headers()).get("host"));
+  const [payload, practice, header] = await Promise.all([
+    getOwnPerformance(),
+    getOwnPracticeEvidence(),
+    intl ? Promise.resolve(null) : getExamIdMap().then((ids) => loadMeHeader(db, user, ids, { now })),
+  ]);
+  if (!payload) redirect("/login?next=/me/map");
+  await logActivityOnce(db, user.id, surfaceViewedEvent(user.id, "map", now));
 
   const perf = withPractice(payload, buildPerformance(payload, now), practice, now);
-  // intl.pyqvault.com holds the international exams alone, www every other
-  // exam (lib/sites/siteScope): each site's map is that site's lanes.
-  const intl = isIntlHost((await headers()).get("host"));
   const lanes = forSite(perf.lanes, (l) => l.exam, intl);
-  const nav = buildLaneNav(lanes, latestEvidenceExam(perf, practice), searchParams);
+  // Chapters follows the exam focus, as Papers does (lib/me/progress mapExamFor).
+  const mf = mapExamFor({
+    laneExams: [...new Set(lanes.map((l) => l.exam))],
+    focusExamName: header?.focus.filterExamName ?? null,
+    urlExam: searchParams.exam,
+  });
+  const nav = buildLaneNav(lanes, latestEvidenceExam(perf, practice), { exam: mf.exam, subject: searchParams.subject });
   const map = nav.selected ? buildMasteryMap(nav.selected) : null;
 
   return (
     <>
       <AppHeader />
       <main className="mx-auto max-w-3xl space-y-6 px-4 py-6 sm:px-6 sm:py-8">
-        <header className="flex items-start gap-3">
-          <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand/10 text-brand-accent">
-            <MapIcon className="h-5 w-5" aria-hidden />
-          </span>
-          <div className="min-w-0">
-            <h1 className="text-xl font-semibold tracking-tight sm:text-2xl">Your map</h1>
+        {header ? (
+          <>
+            <MeHeader data={header} active="progress" readOnly={false} />
+            <ProgressSwitch active="chapters" />
+            <OutcomeTiles mastered={masteredCount(lanes)} />
             <p className="text-sm text-muted-foreground">
               Every subtopic you have answered questions on, in papers or in practice. Fixing mistakes moves the dots.
             </p>
-          </div>
-        </header>
+          </>
+        ) : (
+          <header className="flex items-start gap-3">
+            <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand/10 text-brand-accent">
+              <MapIcon className="h-5 w-5" aria-hidden />
+            </span>
+            <div className="min-w-0">
+              <h1 className="text-xl font-semibold tracking-tight sm:text-2xl">Your map</h1>
+              <p className="text-sm text-muted-foreground">
+                Every subtopic you have answered questions on, in papers or in practice. Fixing mistakes moves the dots.
+              </p>
+            </div>
+          </header>
+        )}
 
         {!map ? (
           <EmptyState />
         ) : (
           <>
             {/* Exam, then subject — the same two-row picker /performance uses. */}
-            {nav.exams.length > 1 && (
+            {mf.showExamRow && nav.exams.length > 1 && (
               <nav aria-label="Exam" className="flex flex-wrap gap-2">
                 {nav.exams.map((e) => (
                   <PickLink

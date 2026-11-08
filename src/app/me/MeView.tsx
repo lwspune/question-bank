@@ -1,10 +1,8 @@
 import Link from "next/link";
-import { ArrowRight, CalendarClock, Check, EyeOff } from "lucide-react";
-import AttemptsList from "../mock/_components/AttemptsList";
+import { CalendarClock, Check, EyeOff } from "lucide-react";
 import FeedbackCards from "./FeedbackCards";
 import TodayCard from "./TodayCard";
 import PathCard from "./PathCard";
-import ProgressTiles from "./ProgressTiles";
 import WeakSpots from "./WeakSpots";
 import ContinueCard from "./ContinueCard";
 import HomeReminder from "./HomeReminder";
@@ -33,8 +31,8 @@ import MeHeader, { type MeTab } from "@/components/me/MeHeader";
  *  - every control that saves (goal, name, exam pick, reminder, result answer,
  *    feedback) becomes a grey note saying what the student sees there, so a
  *    click can never save as the student;
- *  - the links that open the student's own records (mock results, the map,
- *    /performance) point at their staff pages instead.
+ *  - Home links none of the student's own records since 2026-11-08 (Recent
+ *    mocks moved to the Progress tab), so no link needs a staff twin.
  */
 export type ViewAs = { studentId: string; pulse: Pulse };
 
@@ -57,7 +55,7 @@ export default function MeView({
 }) {
   const staff = !!viewAs;
   const now = new Date();
-  const { attempts, continueItems } = data;
+  const { continueItems } = data;
 
   return (
     <>
@@ -123,8 +121,6 @@ export default function MeView({
             resume={data.resume}
             cont={data.cont}
             mockHref={data.mockHref}
-            initialDone={data.weekly.done}
-            initialGoal={data.weekly.goal}
             pulse={viewAs?.pulse}
             initialPulse={initialPulse}
             readOnly={staff}
@@ -147,37 +143,14 @@ export default function MeView({
           so the page gains nothing for the 90% of students with no batch. */}
       {data.assigned.length > 0 && <DueList items={data.assigned} />}
 
-      {/* Answered · % right · fixed, across every surface (2026-11-05). The
-          row it replaced counted mocks, notes checkpoints and saves: 446 of
-          745 students saw three zeros there while practising in the bank. */}
-      <ProgressTiles pulse={viewAs?.pulse} initialPulse={initialPulse} />
-
       {/* The chapters holding most waiting mistakes, each with its own Fix
           (2026-11-06): 448 of 745 /me visitors had misses waiting. */}
       <WeakSpots pulse={viewAs?.pulse} initialPulse={initialPulse} />
 
-      {/* A card only when it has something in it: 363 of 745 students saw
-          "No mocks yet." beside "Nothing read yet." (2026-11-05), 236 of
-          them after answering questions in the bank. grid-cols-1 + min-w-0:
-          a grid track defaults to its content's width, so a long attempt
-          title pushed these cards off a phone's screen. */}
-      {attempts.length > 0 || continueItems.length > 0 ? (
-        <div
-          className={cn(
-            "grid grid-cols-1 gap-6",
-            attempts.length > 0 && continueItems.length > 0 && "lg:grid-cols-2"
-          )}
-        >
-          {attempts.length > 0 && (
-            <RecentMocks
-              mocks={data.mocks}
-              attempts={attempts}
-              browseHref={data.mockHref}
-              studentId={viewAs?.studentId}
-            />
-          )}
-          {continueItems.length > 0 && <ContinueCard items={continueItems} notesHref={data.notesHref} />}
-        </div>
+      {/* Home keeps things to DO (2026-11-08): the number tiles and Recent
+          mocks moved to the Progress tab (OutcomeTiles, Papers you sat). */}
+      {continueItems.length > 0 ? (
+        <ContinueCard items={continueItems} notesHref={data.notesHref} />
       ) : (
         <AlsoHere mockHref={data.mockHref} notesHref={data.notesHref} />
       )}
@@ -265,102 +238,7 @@ function DueList({ items }: { items: StudentAssignmentView[] }) {
   );
 }
 
-/* ------------------------------------------------------------------ cards */
-
-function SectionCard({
-  title,
-  meta,
-  action,
-  children,
-}: {
-  title: string;
-  /** A quiet fact beside the title, e.g. "3 sat · best 62%". */
-  meta?: string;
-  action?: React.ReactNode;
-  children: React.ReactNode;
-}) {
-  return (
-    <section className="min-w-0 rounded-2xl border bg-card p-4 sm:p-5">
-      <div className="mb-3 flex items-center justify-between gap-2">
-        <h2 className="min-w-0 truncate text-sm font-semibold tracking-tight">
-          {title}
-          {meta && <span className="ml-2 font-normal tabular-nums text-muted-foreground">{meta}</span>}
-        </h2>
-        {action}
-      </div>
-      {children}
-    </section>
-  );
-}
-
-function CardLink({ href, children }: { href: string; children: React.ReactNode }) {
-  return (
-    <Link
-      href={href}
-      prefetch={false}
-      className="inline-flex items-center gap-1 text-xs font-medium text-brand-accent hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-    >
-      {children}
-      <ArrowRight className="h-3 w-3" aria-hidden />
-    </Link>
-  );
-}
-
-/** Shown only when the student has sat a mock. The count and best score
- *  moved here from the progress row (2026-11-05).
- *
- *  `studentId` is the staff view: the student's own result pages, attempts
- *  list, map and /performance are own-row and would 404 (or show the viewer's
- *  own), so the links go to the student's staff pages. */
-function RecentMocks({
-  mocks,
-  attempts,
-  browseHref,
-  studentId,
-}: {
-  mocks: MeData["mocks"];
-  attempts: MeData["attempts"];
-  /** The first target exam's catalogue, else /mock. */
-  browseHref: string;
-  studentId?: string;
-}) {
-  const recent = attempts.slice(0, 3);
-  const meta =
-    mocks.completed > 0
-      ? `${mocks.completed} sat${mocks.bestPct == null ? "" : ` · best ${mocks.bestPct}%`}`
-      : undefined;
-  const staffBase = studentId ? `/dashboard/students/${studentId}` : null;
-  return (
-    <SectionCard
-      title="Recent mocks"
-      meta={meta}
-      action={
-        attempts.length > recent.length ? (
-          <CardLink href={staffBase ?? "/mock/attempts"}>All {attempts.length}</CardLink>
-        ) : (
-          <CardLink href={browseHref}>Browse mocks</CardLink>
-        )
-      }
-    >
-      <AttemptsList attempts={recent} flush reviewBase={staffBase ? `${staffBase}/attempt` : undefined} />
-      {/* The diagnosis needs one graded sitting to say anything. */}
-      {mocks.completed > 0 && (
-        <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 border-t pt-3">
-          {staffBase ? (
-            <CardLink href={`${staffBase}/performance`}>What to work on</CardLink>
-          ) : (
-            <>
-              <CardLink href="/me/map">Your map</CardLink>
-              <CardLink href="/performance">What to work on</CardLink>
-            </>
-          )}
-        </div>
-      )}
-    </SectionCard>
-  );
-}
-
-/** In place of the two cards when both would be empty: one quiet line. */
+/** In place of Continue when there is nothing to continue: one quiet line. */
 function AlsoHere({ mockHref, notesHref }: { mockHref: string; notesHref: string }) {
   const link =
     "font-medium text-brand-accent underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring";

@@ -86,9 +86,9 @@ export default async function AccountPage() {
     <>
       <AppHeader />
       <main className="mx-auto max-w-4xl px-4 py-6 sm:px-6 sm:py-8">
-        <MeHeader data={header} active="account" readOnly={false} />
-        {/* The tab names the page now (2026-11-08); the email stays. Settings
-            keep their narrow column under the wider header. */}
+        {/* No tab strip: Account lives in the avatar menu since 2026-11-08. */}
+        <MeHeader data={header} readOnly={false} />
+        {/* Settings keep their narrow column under the wider header; the email stays. */}
         <div className="max-w-2xl">
           <p className="mb-6 mt-6 text-sm text-muted-foreground">Signed in as {user.email}</p>
 

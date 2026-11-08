@@ -40,7 +40,7 @@ const one: MeHeaderData = {
   examLinks: [{ slug: "mht-cet", label: "MHT-CET", href: "/mock/exam/mht-cet" }],
 };
 
-const render = (data: MeHeaderData, props: { active?: "home" | "review" | "performance" | "account"; readOnly?: boolean }) =>
+const render = (data: MeHeaderData, props: { active?: "home" | "review" | "progress"; readOnly?: boolean }) =>
   renderToStaticMarkup(createElement(MeHeader, { data, active: props.active, readOnly: props.readOnly ?? false }));
 
 describe("MeHeader", () => {
@@ -63,12 +63,12 @@ describe("MeHeader", () => {
     expect(out).not.toContain("aria-pressed");
   });
 
-  it("shows Home · Review · Performance · Account with the open one marked", () => {
-    const out = render(two, { active: "performance" });
+  it("shows Home · Review · Progress with the open one marked, Account in the menu", () => {
+    const out = render(two, { active: "progress" });
     expect(out).toContain('href="/me"');
     expect(out).toContain('href="/review"');
-    expect(out).toContain('href="/account"');
-    expect(out).toMatch(/<a[^>]*aria-current="page"[^>]*href="\/performance"|<a[^>]*href="\/performance"[^>]*aria-current="page"/);
+    expect(out).not.toMatch(/<nav[^>]*>.*href="\/account"/s);
+    expect(out).toMatch(/<a[^>]*aria-current="page"[^>]*href="\/progress"|<a[^>]*href="\/progress"[^>]*aria-current="page"/);
     expect(out).not.toMatch(/aria-current="page"[^>]*href="\/me"/);
   });
 
