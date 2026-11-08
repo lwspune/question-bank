@@ -34,6 +34,7 @@ import { getExamIdMap } from "@/lib/exam/examIdMap";
 import { getNotesExamGroups } from "@/lib/notes/notesNav";
 import { firstMockHref, firstNotesHref, yourExamLinks, type ExamLink } from "@/lib/exam/examLinks";
 import { loadTutorPriceAsk } from "@/lib/tutor/priceAsk";
+import { loadPathCard, type PathCard } from "@/lib/path/service";
 
 export type MeData = {
   greeting: string;
@@ -57,6 +58,8 @@ export type MeData = {
   showNps: boolean;
   /** The 1:1 tutoring price question, for a student Yes that owes an answer (migration 0224). */
   tutorPriceAsk: { price: number } | null;
+  /** The board path (MENTOR_SPEC.md, migration 0225): today on it, or the start offer. */
+  pathCard: PathCard;
 };
 
 export async function loadMe(
@@ -64,7 +67,9 @@ export async function loadMe(
   typed: SupabaseClient<Database>,
   user: { id: string; name?: string | null; preferredName?: string | null },
   weekly: Promise<OwnWeekly>,
-  now: Date = new Date()
+  now: Date = new Date(),
+  /** The staff view reads the path without storing today's pick or grants. */
+  opts: { staffView?: boolean } = {}
 ): Promise<MeData> {
   const [attempts, notesRows, lastNpsAt, week, assigned, profile, examIds] = await Promise.all([
     getUserAttempts(db, user.id),
@@ -116,6 +121,12 @@ export async function loadMe(
     console.error("tutor price ask read failed", e instanceof Error ? e.message : e);
     return null;
   });
+  // The board path (2026-11-07), for students with a Class 12 board among
+  // their exams. Best effort: a failed read costs the card, never the page.
+  const pathCard = await loadPathCard(db, user.id, targets, { write: !opts.staffView, now }).catch((e) => {
+    console.error("path read failed", e instanceof Error ? e.message : e);
+    return { path: null, offer: null } as PathCard;
+  });
   // No exam chosen: offer the one their practice or first page points to.
   const suggestedSlug = targets.length === 0 ? await loadSuggestedExam(db, user.id, examIds) : null;
   const suggested = suggestedSlug ? getExamBySlug(suggestedSlug) : null;
@@ -146,6 +157,7 @@ export async function loadMe(
     continueItems,
     showNps,
     tutorPriceAsk,
+    pathCard,
   };
 }
 

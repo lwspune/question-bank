@@ -1,10 +1,12 @@
 /**
  * `npm run path:readout` — the mentor path's numbers (MENTOR_SPEC.md §9).
  *
- * PHASE 0 (2026-11-07): no path exists yet, so this measures the BASELINE on
- * the students the path is for: signed-in Class 12 students (target exam
- * cbse-12 or mh-hsc-12), staff left out, active in the last 30 days. Phase 1
- * adds the same numbers for students who started a path.
+ * PHASE 0 (2026-11-07): the BASELINE on the students the path is for:
+ * signed-in Class 12 students (target exam cbse-12 or mh-hsc-12), staff left
+ * out, active in the last 30 days.
+ *
+ * PHASE 1 adds STARTERS (./starters.ts): students who started a path, judged
+ * against the §9 targets, plus the chapter tests the path granted.
  *
  * What it reads, all through the path's own rules (lib/path/done):
  *   - active days: distinct IST days with any recorded activity, last 30 days;
@@ -29,6 +31,7 @@ import { readChapterTestEntries } from "@/lib/mocks/chapterTestsQuery";
 import { istDayKey } from "@/lib/email/dueNudge";
 import type { ProgressEvent, QuestionFormat } from "@/lib/homework/progress";
 import { chapterParts, isFinishedTest, revisionPath, topWorked, type TopSlot } from "@/lib/path/done";
+import { reportStarters } from "./starters";
 
 const BOARDS = [
   { slug: "cbse-12", name: "CBSE Class 12" },
@@ -141,13 +144,19 @@ async function loadEvents(db: SupabaseClient, users: string[]): Promise<Ev[]> {
 }
 
 async function loadAttempts(db: SupabaseClient, users: string[], mockIds: string[]) {
-  const out: { user_id: string; mock_id: string; status: string; answered: number }[] = [];
+  const out: { user_id: string; mock_id: string; status: string; answered: number; submitted_at: string | null }[] = [];
   for (const part of chunks(users)) {
-    const rows = await readAllPages<{ user_id: string; mock_id: string; status: string; correct_count: number | null; wrong_count: number | null; partial_count: number | null }>((f, to) =>
-      db.from("mock_attempts").select("user_id, mock_id, status, correct_count, wrong_count, partial_count").in("user_id", part).in("mock_id", mockIds).order("id").range(f, to)
+    const rows = await readAllPages<{ user_id: string; mock_id: string; status: string; submitted_at: string | null; correct_count: number | null; wrong_count: number | null; partial_count: number | null }>((f, to) =>
+      db.from("mock_attempts").select("user_id, mock_id, status, submitted_at, correct_count, wrong_count, partial_count").in("user_id", part).in("mock_id", mockIds).order("id").range(f, to)
     );
     for (const r of rows)
-      out.push({ user_id: r.user_id, mock_id: r.mock_id, status: r.status, answered: (r.correct_count ?? 0) + (r.wrong_count ?? 0) + (r.partial_count ?? 0) });
+      out.push({
+        user_id: r.user_id,
+        mock_id: r.mock_id,
+        status: r.status,
+        answered: (r.correct_count ?? 0) + (r.wrong_count ?? 0) + (r.partial_count ?? 0),
+        submitted_at: r.submitted_at,
+      });
   }
   return out;
 }
@@ -265,6 +274,9 @@ async function main() {
   const withMiss = active.filter((u) => missed30.has(u));
   const fixers = withMiss.filter((u) => (drillDays.get(u)?.size ?? 0) >= 2).length;
   console.log(`\nFIXING MISTAKES (30 days)  ${fixers} of ${withMiss.length} with a miss drilled on 2+ days (${pct(fixers, withMiss.length)})`);
+
+  // Phase 1: the students who started a path (./starters.ts).
+  await reportStarters(db, { now, staff, cohort: new Set(users), chapters, events, attempts });
 }
 
 main().catch((e) => {

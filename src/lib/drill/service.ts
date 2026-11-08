@@ -24,6 +24,7 @@ import { crowdTiers } from "@/lib/celebrate/crowdService";
 import type { CrowdTier } from "@/lib/celebrate/crowd";
 import { getPremiumLimits } from "@/lib/billing/premiumLimits";
 import { istDayStartIso } from "@/lib/email/dueNudge";
+import { readTodayExemptions } from "@/lib/path/exemptions";
 import { canAnswerDrillQuestion, drillAllowance, servedCount, type DrillAllowance, type DrillAllowanceInput } from "./allowance";
 import {
   gradeDrillAnswer,
@@ -75,27 +76,30 @@ async function readDrillAllowanceInput(
   // Both reads at once: the server is a long way from the database, so a read
   // that waits for another costs a full round trip. Today's answers are read
   // even when no limit applies; a small own-row read is cheaper than the wait.
-  const [limits, today] = await Promise.all([
+  const [limits, today, path] = await Promise.all([
     getPremiumLimits(db),
     loadDrillAnsweredToday(db, userId, istDayStartIso(now)).then(
       (rows) => ({ ok: true as const, rows }),
       (e: unknown) => ({ ok: false as const, e })
     ),
+    // Today's board-path Fix questions (migration 0225) are not counted. A
+    // failed read exempts nothing (readTodayExemptions logs and returns none).
+    readTodayExemptions(db, userId, now),
   ]);
   // The pass that lifts THIS site's limit: on intl an IMAT pass, not www's.
   const hasPass = limits ? holdsSitePass(limits, intl ? "intl" : "pyqvault") : false;
   if (!limits || hasPass || limits.drillPerDay === null) {
-    return { limit: null, hasPass, answeredToday: [] };
+    return { limit: null, hasPass, answeredToday: [], exempt: path.drillIds };
   }
   if (!today.ok) {
     console.error("drill allowance read failed", today.e);
-    return { limit: null, hasPass: false, answeredToday: [] };
+    return { limit: null, hasPass: false, answeredToday: [], exempt: path.drillIds };
   }
-  return { limit: limits.drillPerDay, hasPass: false, answeredToday: today.rows };
+  return { limit: limits.drillPerDay, hasPass: false, answeredToday: today.rows, exempt: path.drillIds };
 }
 
 export async function getOwnDrill(
-  opts: { attemptId?: string | null; chapterId?: string | null; now?: Date; intl?: boolean } = {}
+  opts: { attemptId?: string | null; chapterId?: string | null; path?: boolean; now?: Date; intl?: boolean } = {}
 ): Promise<OwnDrill | null> {
   // intl.pyqvault.com drills the international exams alone (2026-11-06).
   const intl = opts.intl ?? false;
@@ -112,16 +116,28 @@ export async function getOwnDrill(
   ]);
   const allowance = drillAllowance(allowanceInput);
   // Today's free questions decide the set size: five, or what is left.
-  const size = servedCount(allowance, DRILL_SIZE);
+  let size = servedCount(allowance, DRILL_SIZE);
   let drillable = pool.drillable;
   let scope: OwnDrill["scope"] = null;
+
+  // The board path's Fix task (2026-11-07): exactly today's Fix questions, the
+  // ones the server stored with today's tasks. They are free (§6), so the set
+  // is all of them whatever is left of the day's allowance.
+  if (opts.path) {
+    const fixIds = new Set(allowanceInput.exempt ?? []);
+    drillable = pool.drillable.filter((q) => fixIds.has(q.questionId));
+    scope = { kind: "path" };
+    size = drillable.length;
+  }
 
   // "Fix these mistakes" from a result page: NARROW the pool to that attempt's
   // wrong answers. Narrow only — a question fixed since stays out (see
   // scopeToAttempt). An attempt that is not this student's, or does not exist,
   // degrades to the general drill rather than 404ing a page whose only job is
   // to serve practice.
-  if (opts.attemptId) {
+  if (opts.path) {
+    // Narrowed above.
+  } else if (opts.attemptId) {
     try {
       const graded = await regradeAttempt(db, user.id, opts.attemptId);
       const wrong = new Set(

@@ -3,6 +3,7 @@ import { ArrowRight, CalendarClock, Check, EyeOff, GraduationCap } from "lucide-
 import AttemptsList from "../mock/_components/AttemptsList";
 import FeedbackCards from "./FeedbackCards";
 import TodayCard from "./TodayCard";
+import PathCard from "./PathCard";
 import ProgressTiles from "./ProgressTiles";
 import WeakSpots from "./WeakSpots";
 import ContinueCard from "./ContinueCard";
@@ -116,15 +117,33 @@ export default function MeView({
       {/* ONE brand card with ONE lead action (2026-10-05). It replaced the
           continue card, the welcome card and the week strip, which put three
           full-width blue buttons on a phone before any progress. */}
-      <TodayCard
-        resume={data.resume}
-        cont={data.cont}
-        mockHref={data.mockHref}
-        initialDone={data.weekly.done}
-        initialGoal={data.weekly.goal}
-        pulse={viewAs?.pulse}
-        readOnly={staff}
-      />
+      {/* The board path (MENTOR_SPEC.md, 2026-11-07): for a path student its
+          Today card takes the week ring's place (D4: one pace on the page);
+          a Class 12 student without one sees the start card above it. */}
+      {data.pathCard.path ? (
+        <PathCard initial={data.pathCard} readOnly={staff} />
+      ) : (
+        <>
+          {data.pathCard.offer &&
+            (staff ? (
+              <HiddenNote>
+                Here they see the board path offer: about {data.pathCard.offer.minutes} minutes a day, with a button to
+                start it.
+              </HiddenNote>
+            ) : (
+              <PathCard initial={data.pathCard} />
+            ))}
+          <TodayCard
+            resume={data.resume}
+            cont={data.cont}
+            mockHref={data.mockHref}
+            initialDone={data.weekly.done}
+            initialGoal={data.weekly.goal}
+            pulse={viewAs?.pulse}
+            readOnly={staff}
+          />
+        </>
+      )}
 
       {/* The reminder ask, one row, only while mistakes are waiting and
           only until it is answered on any screen (2026-10-05). */}

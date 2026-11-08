@@ -106,7 +106,7 @@ function getSnapshot(): string[] {
  * Same store and listeners as the signed-out list, so a card that subscribes
  * to "am I locked?" redraws when either changes.
  */
-type DailyQuota = { limit: number; todayIds: string[]; day: string; pass: PassCta | null };
+type DailyQuota = { limit: number; todayIds: string[]; exemptIds: string[]; day: string; pass: PassCta | null };
 let dailyQuota: DailyQuota | null = null;
 let dailyFetch: Promise<void> | null = null;
 
@@ -115,7 +115,8 @@ let dailyFetch: Promise<void> | null = null;
 function currentDaily(): DailyReveals | null {
   if (!dailyQuota) return null;
   const today = istDayKey(new Date());
-  if (dailyQuota.day !== today) dailyQuota = { ...dailyQuota, todayIds: [], day: today };
+  // A new day: today's path questions are another day's, so they go too.
+  if (dailyQuota.day !== today) dailyQuota = { ...dailyQuota, todayIds: [], exemptIds: [], day: today };
   return dailyQuota;
 }
 
@@ -157,7 +158,14 @@ function ensureDailyQuota(): void {
     if (dailyFetch !== fetchAt) return;
     // null = no limit (off, a pass, or both reads failed): stay unlimited.
     if (!data || data.limit === null) return;
-    dailyQuota = { limit: data.limit, todayIds: data.todayIds, day: istDayKey(new Date()), pass: data.pass ?? null };
+    dailyQuota = {
+      limit: data.limit,
+      todayIds: data.todayIds,
+      // Today's board-path questions (migration 0225): never counted or walled.
+      exemptIds: data.exemptIds ?? [],
+      day: istDayKey(new Date()),
+      pass: data.pass ?? null,
+    };
     notify();
   })();
   dailyFetch = fetchAt;

@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState, type ReactNode } from "react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { BookOpen, ChevronDown, ChevronRight } from "lucide-react";
 import BlockText from "@/components/math/BlockText";
 import BoardPassage from "@/app/board/BoardPassage";
@@ -13,6 +13,7 @@ import BoardQuestionItem, { type RevealLock } from "./BoardQuestionItem";
 import { useBoardReveal } from "./useBoardReveal";
 import { ExamTwinLine } from "@/components/crossExam/ExamTwins";
 import { reportRevisionOpened } from "./revisionBeacon";
+import { panelFromHash } from "@/lib/board/panelHash";
 import type { HomeworkSlot } from "@/lib/homework/dayView";
 import HomeworkSlotList from "@/app/homework/_components/HomeworkSlotList";
 import type { ChapterTopPyqs } from "@/lib/homework/chapterTop";
@@ -113,6 +114,19 @@ export default function BoardReader({
     0
   );
   const pyqTotal = pyqSittings.reduce((n, s) => n + s.questions.length, 0);
+
+  // The board path links straight to a tab (2026-11-07): `#top` or
+  // `#revision`. Read from the hash after mount, never from search params,
+  // which would make these cached pages dynamic. A revision sheet opened this
+  // way is recorded like a tap: it is the path's "sheet opened".
+  const hasTop = !!top && pyqTotal > 0;
+  const hasRevision = !!revision;
+  useEffect(() => {
+    const p = panelFromHash(window.location.hash, { hasTop, hasRevision });
+    if (!p) return;
+    setPanel(p);
+    if (p === "revision") reportRevisionOpened();
+  }, [hasTop, hasRevision]);
 
   return (
     <div className="space-y-6">

@@ -4113,6 +4113,152 @@ export type Database = {
           },
         ]
       }
+      study_path_days: {
+        Row: {
+          created_at: string
+          day: string
+          exempt_question_ids: string[]
+          fix_question_ids: string[]
+          path_id: string
+          tasks: Json
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          day: string
+          exempt_question_ids?: string[]
+          fix_question_ids?: string[]
+          path_id: string
+          tasks: Json
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          day?: string
+          exempt_question_ids?: string[]
+          fix_question_ids?: string[]
+          path_id?: string
+          tasks?: Json
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "study_path_days_path_id_fkey"
+            columns: ["path_id"]
+            isOneToOne: false
+            referencedRelation: "study_paths"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      study_path_deferrals: {
+        Row: {
+          chapter_id: string
+          deferred_at: string
+          id: string
+          path_id: string
+          user_id: string
+        }
+        Insert: {
+          chapter_id: string
+          deferred_at?: string
+          id?: string
+          path_id: string
+          user_id: string
+        }
+        Update: {
+          chapter_id?: string
+          deferred_at?: string
+          id?: string
+          path_id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "study_path_deferrals_chapter_id_fkey"
+            columns: ["chapter_id"]
+            isOneToOne: false
+            referencedRelation: "chapters"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "study_path_deferrals_path_id_fkey"
+            columns: ["path_id"]
+            isOneToOne: false
+            referencedRelation: "study_paths"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      study_path_test_grants: {
+        Row: {
+          granted_at: string
+          mock_id: string
+          path_id: string
+          user_id: string
+        }
+        Insert: {
+          granted_at?: string
+          mock_id: string
+          path_id: string
+          user_id: string
+        }
+        Update: {
+          granted_at?: string
+          mock_id?: string
+          path_id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "study_path_test_grants_mock_id_fkey"
+            columns: ["mock_id"]
+            isOneToOne: false
+            referencedRelation: "mock_tests"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "study_path_test_grants_path_id_fkey"
+            columns: ["path_id"]
+            isOneToOne: false
+            referencedRelation: "study_paths"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      study_paths: {
+        Row: {
+          daily_minutes: number
+          ended_at: string | null
+          exam_slug: string
+          id: string
+          started_at: string
+          subjects: string[]
+          user_id: string
+        }
+        Insert: {
+          daily_minutes: number
+          ended_at?: string | null
+          exam_slug: string
+          id?: string
+          started_at?: string
+          subjects: string[]
+          user_id: string
+        }
+        Update: {
+          daily_minutes?: number
+          ended_at?: string | null
+          exam_slug?: string
+          id?: string
+          started_at?: string
+          subjects?: string[]
+          user_id?: string
+        }
+        Relationships: []
+      }
       study_plans: {
         Row: {
           created_at: string

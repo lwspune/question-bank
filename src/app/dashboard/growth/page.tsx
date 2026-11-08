@@ -560,6 +560,14 @@ export default async function GrowthPage() {
             same query that measured the 30% baseline: keep at 40%+ of chapter-days fixing an old mistake that day.
           </p>
         );
+      case "board-path":
+        return (
+          <p className="text-sm text-muted-foreground">
+            Read by hand on {fmtDate(checkOn(e.liveSince, e.windowDays))} with npm run path:readout: starters, their
+            active days, chapters done, today&apos;s tasks done of those shown, and chapter tests granted (the free-limit
+            cost). Targets and baselines are in MENTOR_SPEC.md §9.
+          </p>
+        );
       case "homework-progress":
         return (
           <p className="text-sm text-muted-foreground">

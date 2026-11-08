@@ -59,7 +59,7 @@ export default async function StudentMeViewPage(props: { params: Promise<Params>
     ([done, goal]) => ({ done, goal })
   );
   const [data, pulse] = await Promise.all([
-    loadMe(admin, createTypedAdminClient(), student, weekly, now),
+    loadMe(admin, createTypedAdminClient(), student, weekly, now, { staffView: true }),
     buildPulse(admin, id, now, { week: weekly, answers: getStudentAnswerTotals(session, id) }),
   ]);
 

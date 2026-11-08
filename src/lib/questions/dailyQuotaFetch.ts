@@ -14,7 +14,13 @@
  */
 import type { PassCta } from "@/lib/billing/plans";
 
-export type QuotaReply = { limit: number | null; todayIds: string[]; pass?: PassCta | null };
+export type QuotaReply = {
+  limit: number | null;
+  todayIds: string[];
+  /** Today's board-path questions (migration 0225): never counted or walled. */
+  exemptIds?: string[];
+  pass?: PassCta | null;
+};
 
 export const QUOTA_RETRY_MS = 4000;
 

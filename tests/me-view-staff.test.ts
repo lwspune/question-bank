@@ -75,6 +75,7 @@ const data: MeData = {
   continueItems: [],
   showNps: true,
   tutorPriceAsk: { price: 749 },
+  pathCard: { path: null, offer: null },
 };
 
 /** Numbers no viewer's own pulse would carry by accident. */

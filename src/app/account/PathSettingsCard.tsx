@@ -1,0 +1,98 @@
+"use client";
+
+import { useState } from "react";
+import Link from "next/link";
+import { toast } from "sonner";
+import { Route } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { SUBJECT_LABEL, type PathExam, type PathSubject } from "@/lib/path/model";
+import { EXAM_LABEL } from "@/lib/path/view";
+
+/**
+ * Stop the board path, or find the way back to it (MENTOR_SPEC.md D7).
+ * Stopping returns /me to normal; starting again is the /me start card, and
+ * every chapter already done stays done, because done comes from work.
+ */
+export default function PathSettingsCard({
+  active,
+  stopped,
+}: {
+  active: { exam: PathExam; subjects: PathSubject[]; dailyMinutes: number } | null;
+  /** A path was stopped and none is active. */
+  stopped: boolean;
+}) {
+  const [current, setCurrent] = useState(active);
+  const [confirming, setConfirming] = useState(false);
+  const [saving, setSaving] = useState(false);
+
+  async function stop() {
+    setSaving(true);
+    try {
+      const res = await fetch("/api/path", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "stop" }),
+      });
+      if (!res.ok) throw new Error("Couldn't stop your path. Try again.");
+      setCurrent(null);
+      setConfirming(false);
+      toast.success("Your path is stopped. Chapters you finished stay done.");
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Couldn't stop your path. Try again.");
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  if (!current && !stopped && active === null) return null;
+
+  return (
+    <section aria-labelledby="path-settings-heading" className="mb-6 rounded-xl border bg-card p-6">
+      <h2 id="path-settings-heading" className="flex items-center gap-2 text-sm font-semibold tracking-tight">
+        <Route className="h-4 w-4 text-brand-accent" aria-hidden />
+        Your board path
+      </h2>
+      {current ? (
+        <>
+          <p className="mt-2 text-sm">
+            {EXAM_LABEL[current.exam]} · {subjectList(current.subjects)} · about {current.dailyMinutes} minutes a day.
+          </p>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Chapters you finish stay done, even if you stop and start again.
+          </p>
+          {confirming ? (
+            <div className="mt-4 flex flex-wrap items-center gap-2">
+              <span className="text-sm">Stop your path?</span>
+              <Button variant="destructive" size="sm" disabled={saving} onClick={() => void stop()}>
+                Yes, stop it
+              </Button>
+              <Button variant="outline" size="sm" disabled={saving} onClick={() => setConfirming(false)}>
+                Keep it
+              </Button>
+            </div>
+          ) : (
+            <Button variant="outline" size="sm" className="mt-4" onClick={() => setConfirming(true)}>
+              Stop the path
+            </Button>
+          )}
+        </>
+      ) : (
+        <p className="mt-2 text-sm text-muted-foreground">
+          Your path is stopped. Chapters you finished stay done.{" "}
+          <Link
+            href="/me"
+            className="font-medium text-brand-accent underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          >
+            Start it again
+          </Link>{" "}
+          from your dashboard.
+        </p>
+      )}
+    </section>
+  );
+}
+
+function subjectList(subjects: readonly PathSubject[]): string {
+  const names = subjects.map((s) => SUBJECT_LABEL[s]);
+  return names.length <= 1 ? names.join("") : `${names.slice(0, -1).join(", ")} and ${names[names.length - 1]}`;
+}

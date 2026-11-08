@@ -44,7 +44,7 @@ const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/
 
 export default async function DrillPage(
   props: {
-    searchParams?: Promise<{ attempt?: string; chapter?: string; from?: string | string[] }>;
+    searchParams?: Promise<{ attempt?: string; chapter?: string; scope?: string; from?: string | string[] }>;
   }
 ) {
   const searchParams = await props.searchParams;
@@ -61,13 +61,17 @@ export default async function DrillPage(
   const chapterId =
     !attemptId && searchParams?.chapter && UUID_RE.test(searchParams.chapter) ? searchParams.chapter : null;
 
+  // `?scope=path`: today's Fix task on the board path (2026-11-07). The
+  // questions are the server's stored pick, never taken from the URL.
+  const path = !attemptId && !chapterId && searchParams?.scope === "path";
+
   // Which link brought them (lib/drill/from): recorded, never acted on.
   const from = parseDrillFrom(searchParams?.from);
 
   // On intl.pyqvault.com the drill holds the international exams alone.
   const intl = isIntlHost((await headers()).get("host"));
   const [drill, profile] = await Promise.all([
-    getOwnDrill({ attemptId, chapterId, intl }),
+    getOwnDrill({ attemptId, chapterId, path, intl }),
     getOnboardingState(createSupabaseServerClient(), user.id),
   ]);
   if (!drill) redirect("/login?next=/drill");

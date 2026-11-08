@@ -350,6 +350,11 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 
 ### 2026-11
 
+- **2026-11-08 — The board path: a daily plan to finish Class 12 PCM before the boards (0225, MENTOR_SPEC.md Phase 1).**
+  - **Why:** a plan alone did not work (V's week plans: 6 of 68 tasks done); the loop around it is the product: one next step a day on /me, on track or behind said plainly.
+  - **Today's pick is stored** (`study_path_days`, service-role writes), so the card holds all day and the free-limit exemptions (today's Top 10, Fix questions, granted chapter tests) come from the server, never the browser.
+  - **A day works one chapter through** (sheet, Top 10, test): switching subject per task gave day one four sheets and no questions. Pace is minutes a day, finish date shown honestly.
+  - **UI click-through not run** (Chrome extension cannot open localhost); service flow checked on prod. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-11-06 (second) — Practice answers colour /me/map (0221); IMAT gets map + drill on intl.**
   - **Why:** the map read first mock sittings only: 596 practisers had never sat a mock, and "Fixing mistakes moves the dots" was false (drill answers never reached it).
   - **Owner:** latest answer per question counts, wherever given; practice weighs as a mock answer. /performance stays papers-only (its other cards are paper-only), so only the map applies it.
