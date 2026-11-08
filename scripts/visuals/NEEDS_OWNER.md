@@ -18,10 +18,15 @@ the key the nearest one) and were animated; settled below.
 
 ## Open
 
-Nothing open. The 29 Maharashtra HSC Class 12 rows found 2026-11-08 were settled 2026-11-09 (see below).
+Found 2026-11-09 in the CBSE Class 12 run (the HSC 12 rows above it are all settled, below).
 
 | Question | Exam · chapter | Problem |
 |---|---|---|
+| `64737453` | CBSE Class 12 · Physics · Current Electricity (board MCQ) | **Key wrong in CBSE's scheme.** Two wires of length L in series make one of length 2L, so the equivalent resistivity is ½(ρ₁ + ρ₂), option (A); CBSE keys (B) ρ₁ + ρ₂. Prepared: key to (A) with a notice above the solution (`scripts/reports/data/2026-11-09-cbse12-physics-key.json`, dry run OK). The write was blocked by the session's permission check; run `npx tsx scripts/reports/apply-fixes.ts scripts/reports/data/2026-11-09-cbse12-physics-key.json --apply`. In the Current Electricity chapter test. |
+| `276bece5` | CBSE Class 12 · Maths · Probability (board MCQ) | **Defective as printed.** The data force P(A∩B) = 2/5 > P(A) = 1/5; no such events exist. The solution already says so; key (D) is what the working gives. Policy: notice above the solution + grace (flawed.json, regrace). |
+| `28ce7e70` | CBSE Class 12 · Maths · Probability (board MCQ) | **Defective as printed.** P(A∩B) = 4/7 > P(A) = 1/7. Solution notes it; key (D) is what the working gives. Same treatment. |
+| `59a83c5d` | CBSE Class 12 · Maths · Probability (board MCQ) | **Defective as printed.** P(M∩N) = 0.5 > P(N) = 0.2. Solution notes it; key (A) is what the working gives. Same treatment. |
+| `1dd23817` | CBSE Class 12 · Maths · Probability (board, written) | **Defective as printed.** The data force P(A∩B) = 3/4 > P(A) = 1/2. Solution notes it. Notice above the solution; not an MCQ, so no grace. |
 
 ## Settled
 

@@ -1,0 +1,9 @@
+[
+ {
+  "id": "64737453-325f-4498-a80a-f72c23b321fb",
+  "label": "CBSE 12 Current Electricity board MCQ (equivalent resistivity in series)",
+  "reason": "key: CBSE marking scheme keys B (rho1 + rho2); the series combination has length 2L, so (rho1 + rho2)/2 = A. Key corrected with a notice (owner policy 2026-10-29).",
+  "solution": "**Note:** CBSE's marking scheme keys \\(\\rho_{1} + \\rho_{2}\\), option (B). Two wires each of length L joined in series make one conductor of length 2L, so the equivalent resistivity is \\(\\frac{1}{2}(\\rho_{1} + \\rho_{2})\\), option (A), which is the answer shown here.\n\nResistivity is defined through the resistance a conductor of given dimensions has, so first find the resistance and then ask what uniform wire of the SAME dimensions would match it.\nEach wire has length L and area A, so\n\\(R_{1} = \\dfrac{\\rho_{1}L}{A}, \\qquad R_{2} = \\dfrac{\\rho_{2}L}{A}\\)\nIn SERIES the resistances add:\n\\(R = R_{1} + R_{2} = \\dfrac{(\\rho_{1} + \\rho_{2})L}{A}\\)\nNow the combination itself. Joined end to end, the two wires form a single conductor of TOTAL LENGTH 2L and the same cross-section A. If it were made of one material of resistivity \\(\\rho_{eq}\\),\n\\(R = \\dfrac{\\rho_{eq}(2L)}{A}\\)\nEquating the two expressions for the same resistance, and cancelling the common \\(\\dfrac{L}{A}\\):\n\\(2\\rho_{eq} = \\rho_{1} + \\rho_{2} \\quad\\Longrightarrow\\quad \\rho_{eq} = \\dfrac{1}{2}(\\rho_{1} + \\rho_{2})\\)\nThe equivalent resistivity is the ARITHMETIC MEAN of the two resistivities.\nThe result is worth holding on to as a sanity check: taking \\(\\rho_{1} = \\rho_{2} = \\rho\\) must return \\(\\rho\\), since a wire joined to an identical wire is just a longer wire of the same material. The mean does; the sum would give \\(2\\rho\\), which would say that joining a copper wire to another copper wire doubles copper's resistivity.",
+  "correct": "A"
+ }
+]
