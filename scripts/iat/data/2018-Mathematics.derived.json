@@ -1,0 +1,127 @@
+{
+  "derivedBy": "Claude (Opus 5.5) subagent, independent solve with Python checks for Q6 and Q12",
+  "answers": [
+    {
+      "ref": "1",
+      "label": "C",
+      "value": "Circle.",
+      "working": "Take any \\(w\\) with \\(|w| = 1\\). Then \\(\\bar{w} = \\frac{1}{w}\\), so\n\n\\(|1 - \\bar{z}w| = |w| \\cdot |\\bar{w} - \\bar{z}| = |\\overline{w - z}| = |z - w|\\).\n\nSince \\(|z| < 1\\), the denominator \\(1 - \\bar{z}w\\) is never 0 (its modulus equals \\(|z - w| \\ge 1 - |z| > 0\\)). Hence every element of the set has modulus \\(\\frac{|z - w|}{|1 - \\bar{z}w|} = 1\\), so the set lies on the unit circle \\(|u| = 1\\).\n\nIt is the whole circle: given \\(|u| = 1\\), solving \\(u = \\frac{z - w}{1 - \\bar{z}w}\\) gives \\(w = \\frac{z - u}{1 - \\bar{z}u}\\), which again has modulus 1 by the same calculation. So the set is the **unit circle**.\n\nSo the answer is option (C).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "2",
+      "label": "A",
+      "value": "\\(f \\circ (g + h) = (f \\circ g) + (f \\circ h)\\).",
+      "working": "Check each option.\n\n(B) Composition is always associative: both sides send \\(x\\) to \\(f(g(h(x)))\\).\n\n(C) \\(((f.g) \\circ h)(x) = f(h(x))\\,g(h(x)) = ((f \\circ h).(g \\circ h))(x)\\), so it is always true.\n\n(D) \\((g^{-1} \\circ f^{-1}) \\circ (f \\circ g) = g^{-1} \\circ (f^{-1} \\circ f) \\circ g\\) is the identity, so \\((f \\circ g)^{-1} = g^{-1} \\circ f^{-1}\\) always.\n\n(A) \\(f(g(x) + h(x)) = f(g(x)) + f(h(x))\\) needs \\(f\\) to be additive. Take \\(f(x) = x^3\\) (invertible), \\(g(x) = h(x) = x\\): the left side is \\(8x^3\\) and the right side is \\(2x^3\\), which differ at \\(x = 1\\).\n\nSo the answer is option (A).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "3",
+      "label": "A",
+      "value": "10.",
+      "working": "Expand the determinant along the first row. Only the first entry is non-zero:\n\n\\(\\det A = 1 \\cdot (5x - 3y) = 5x - 3y\\).\n\nWe need \\(5x - 3y = -5\\), that is \\(3y = 5x + 5 = 5(x + 1)\\). Since 3 and 5 have no common factor, \\(y\\) must be a multiple of 5, with \\(x = \\frac{3y}{5} - 1\\).\n\nAmong the options only 10 is a multiple of 5. Check: \\(y = 10\\) gives \\(x = 5\\), and \\(5(5) - 3(10) = -5\\). For \\(y = 6, 8, 1\\), \\(x = \\frac{3y - 5}{5}\\) is not an integer.\n\nSo the answer is option (A).",
+      "difficulty": "Easy",
+      "confidence": "HIGH",
+      "flag": "Stem matrix has a stray full stop after y in row 2 (\"y.\"), a typesetting slip; it does not affect the question."
+    },
+    {
+      "ref": "4",
+      "label": "C",
+      "value": "\\(\\frac{\\pi}{2}\\).",
+      "working": "Split the fraction:\n\n\\(\\frac{(1 + \\sqrt{|x|})\\sin^2 x + \\sin x}{1 + \\sqrt{|x|}} = \\sin^2 x + \\frac{\\sin x}{1 + \\sqrt{|x|}}\\).\n\nThe second term is an **odd function** (\\(\\sin x\\) is odd and \\(1 + \\sqrt{|x|}\\) is even), so its integral over the symmetric interval \\([-\\frac{\\pi}{2}, \\frac{\\pi}{2}]\\) is 0.\n\nFor the first term use \\(\\sin^2 x = \\frac{1 - \\cos 2x}{2}\\):\n\n\\(\\int_{-\\pi/2}^{\\pi/2} \\sin^2 x\\, dx = \\left[\\frac{x}{2} - \\frac{\\sin 2x}{4}\\right]_{-\\pi/2}^{\\pi/2} = \\frac{\\pi}{4} + \\frac{\\pi}{4} = \\frac{\\pi}{2}\\).\n\nSo the answer is option (C).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "5",
+      "label": "C",
+      "value": "\\(\\hat{i} + 3\\hat{j} + 5\\hat{k} + \\mu(2\\hat{i} + 3\\hat{j} + 4\\hat{k})\\).",
+      "working": "A general point of \\(\\ell_0\\) is \\((1 + \\lambda, 2 + \\lambda, 3 + \\lambda)\\).\n\n(C) A general point is \\((1 + 2\\mu, 3 + 3\\mu, 5 + 4\\mu)\\). Equating x-coordinates gives \\(\\lambda = 2\\mu\\); then the y-coordinates give \\(2 + 2\\mu = 3 + 3\\mu\\), so \\(\\mu = -1\\), \\(\\lambda = -2\\). Check z: \\(3 + \\lambda = 1\\) and \\(5 + 4\\mu = 1\\). They agree, so the lines meet at \\((-1, 0, 1)\\).\n\n(A) Its z-coordinate is always 0, so \\(\\lambda = -3\\), point \\((-2, -1, 0)\\). Then \\(2 + \\mu = -2\\) gives \\(\\mu = -4\\), but \\(3 - \\mu = 7 \\ne -1\\). No intersection.\n\n(B) Its z-coordinate is always 1, so \\(\\lambda = -2\\), point \\((-1, 0, 1)\\). Then \\(3 - \\mu = -1\\) gives \\(\\mu = 4\\), but \\(-2 + \\mu = 2 \\ne 0\\). No intersection.\n\n(D) Its direction is parallel to \\(\\ell_0\\), and its point \\((-1, -2, -3)\\) is not on \\(\\ell_0\\) (\\(\\lambda = -2\\) from x gives y = 0, not -2). Two distinct parallel lines never meet.\n\nSo the answer is option (C).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "6",
+      "label": "B",
+      "value": "11.",
+      "working": "Look at the bottom-right entry \\(a_{33}\\). Since \\(R_3 = C_3 = 1\\), it is 0 or 1.\n\n**Case \\(a_{33} = 1\\).** The rest of row 3 and column 3 is 0. The top-left \\(2 \\times 2\\) block has all row and column sums 2, so it is \\(\\begin{pmatrix} a & 2 - a \\\\ 2 - a & a \\end{pmatrix}\\) with \\(a = 0, 1, 2\\): 3 matrices.\n\n**Case \\(a_{33} = 0\\).** The single 1 of row 3 is in column 1 or 2 (2 ways), and the single 1 of column 3 is in row 1 or 2 (2 ways): 4 placements. In each, the top-left block must have one row sum 1 and the other 2, and one column sum 1 and the other 2. Writing \\(a = a_{11}\\), the other three entries are fixed by the sums, and checking non-negativity leaves exactly 2 values of \\(a\\) every time. For example, rows (1, 2) and columns (1, 2) give \\(\\begin{pmatrix} a & 1 - a \\\\ 1 - a & 1 + a \\end{pmatrix}\\), \\(a = 0, 1\\). That is \\(4 \\times 2 = 8\\) matrices.\n\nTotal \\(3 + 8 = 11\\).\n\nSo the answer is option (B).",
+      "difficulty": "Hard",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "7",
+      "label": "B",
+      "value": "\\(P(n)\\) is false for at most finitely many values of \\(n\\).",
+      "working": "From \\(P(2018)\\) true and the rule \"\\(P(n)\\) true implies \\(P(n + 1)\\) true\", induction gives \\(P(n)\\) true for every \\(n \\ge 2018\\).\n\nWe know nothing about \\(n = 1, 2, \\ldots, 2017\\). So \\(P(n)\\) can be false only among these 2017 values: it is false for **at most finitely many** \\(n\\). This is always true.\n\n(A) is wrong because \\(P(n)\\) is true for infinitely many \\(n\\). (C) is wrong for the same reason. (D) need not hold: \\(P(n)\\) could be \"\\(n \\ge 2018\\)\", which satisfies the hypotheses but is false for \\(n = 1\\).\n\nSo the answer is option (B).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "8",
+      "label": "B",
+      "value": "passes through the point \\((2, \\log_e 4)\\).",
+      "working": "The slope is \\(\\frac{dy}{dx} = \\log_e x\\). Integrating by parts,\n\n\\(y = \\int \\log_e x\\, dx = x\\log_e x - x + C\\).\n\nThe curve passes through \\((1, 1)\\): \\(1 = 0 - 1 + C\\), so \\(C = 2\\) and \\(y = x\\log_e x - x + 2\\).\n\nAt \\(x = 2\\): \\(y = 2\\log_e 2 - 2 + 2 = 2\\log_e 2 = \\log_e 4\\). So the curve passes through \\((2, \\log_e 4)\\), not through \\((2, 3 + \\log_e 4)\\) or \\((2, 3 - \\log_e 4)\\).\n\nSo the answer is option (B).\n\nNote: as printed, option (D) \"does not pass through \\((2, -\\log_e 4)\\)\" is also a true statement, since \\(y(2) = \\log_e 4 \\ne -\\log_e 4\\). Option (B) is the one that states where the curve actually goes.",
+      "difficulty": "Easy",
+      "confidence": "MEDIUM",
+      "flag": "As printed, two options are true: B (passes through (2, ln 4)) and D (does not pass through (2, -ln 4)). Answered B as the intended positive statement; D is probably a misprint of a different point."
+    },
+    {
+      "ref": "9",
+      "label": "A",
+      "value": "2.",
+      "working": "Let \\(g(x) = f(x) - f(0)\\). Then \\(g(0) = 0\\) and \\(|g(x) - g(y)| = |x - y|\\). Putting \\(y = 0\\) gives \\(|g(x)| = |x|\\).\n\nSquare \\(|g(x) - g(y)|^2 = (x - y)^2\\) and use \\(g(x)^2 = x^2\\), \\(g(y)^2 = y^2\\): this leaves \\(g(x)g(y) = xy\\) for all \\(x, y\\).\n\nTake \\(y = 1\\): \\(g(1) = \\pm 1\\), and \\(g(x) = x\\,g(1)\\). So \\(g(x) = x\\) for all \\(x\\), or \\(g(x) = -x\\) for all \\(x\\). Hence \\(f(x) = x + c\\) or \\(f(x) = -x + c\\).\n\nNow \\(f(1) = 10\\) gives \\(f(x) = x + 9\\) or \\(f(x) = 11 - x\\). Both satisfy the condition, so there are exactly 2 such functions.\n\nSo the answer is option (A).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "10",
+      "label": "A",
+      "value": "\\((-1, \\infty)\\).",
+      "working": "Let \\(u = bx^2 + 2bx + c\\). By the chain rule,\n\n\\(f'(x) = \\frac{1}{1 + u^2} \\cdot (2bx + 2b) = \\frac{2b(x + 1)}{1 + u^2}\\).\n\nThe denominator is always positive and \\(b > 0\\), so \\(f'(x) > 0\\) exactly when \\(x > -1\\). Thus \\(f\\) is increasing on \\((-1, \\infty)\\) and decreasing on \\((-\\infty, -1)\\).\n\nOptions (B), (C) and (D) all contain points less than \\(-1\\) (for example \\(x = -1.5\\)), where \\(f\\) is decreasing.\n\nSo the answer is option (A).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "11",
+      "label": "C",
+      "value": "\\(\\frac{3439}{10000}\\).",
+      "working": "There are \\(99999 - 10000 + 1 = 90000\\) five-digit numbers.\n\nCount the complement: numbers with **no** digit 0. Each of the five places can be any of 1 to 9, giving \\(9^5 = 59049\\) numbers.\n\nSo the number with at least one 0 is \\(90000 - 59049 = 30951\\), and the probability is\n\n\\(\\frac{30951}{90000} = \\frac{3439}{10000}\\) (dividing top and bottom by 9).\n\nSo the answer is option (C).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "12",
+      "label": "D",
+      "value": "More than one but finitely many.",
+      "working": "Write \\(d = \\mathrm{hcf}(f(n), n)\\) and \\(L = \\mathrm{lcm}(f(n), n)\\). If \\(f(n) = n\\), then \\(L - d = 0 < 5\\), so \\(f(n) = n\\) always works. Hence at least one function exists.\n\nIf \\(f(n) \\ne n\\), then \\(L \\ne d\\), and since \\(d\\) divides \\(L\\), \\(d \\le \\frac{L}{2}\\). So \\(L - d \\ge \\frac{L}{2} \\ge \\frac{n}{2}\\). For \\(n \\ge 10\\) this is at least 5, so \\(f(n) = n\\) is **forced** for every \\(n \\ge 10\\).\n\nFor \\(n \\le 9\\) there are finitely many choices, because \\(L \\ge f(n)\\) forces \\(f(n) < n + 5\\). For example \\(n = 1\\) allows \\(f(1) = 1, 2, 3, 4, 5\\) (since \\(L - d = f(1) - 1\\)), and \\(n = 2\\) allows \\(f(2) = 1, 2, 4, 6\\).\n\nSo the functions are determined by finitely many choices at \\(n = 1, \\ldots, 9\\), and there is more than one choice at \\(n = 1\\). There are more than one but finitely many such functions.\n\nSo the answer is option (D).",
+      "difficulty": "Hard",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "13",
+      "label": "A",
+      "value": "\\(\\frac{199}{2}\\).",
+      "working": "Put \\(k = t - 100\\), so we need \\(\\frac{a^{k+1} + b^{k+1}}{a^k + b^k} = \\sqrt{ab}\\).\n\nTry \\(k = -\\frac{1}{2}\\): the left side is\n\n\\(\\frac{a^{1/2} + b^{1/2}}{a^{-1/2} + b^{-1/2}} = \\frac{\\sqrt{a} + \\sqrt{b}}{\\frac{\\sqrt{a} + \\sqrt{b}}{\\sqrt{ab}}} = \\sqrt{ab}\\).\n\nIt is the only value. Clearing denominators, the equation becomes \\(a^k\\sqrt{a}(\\sqrt{a} - \\sqrt{b}) = b^k\\sqrt{b}(\\sqrt{a} - \\sqrt{b})\\). Since \\(a \\ne b\\), cancel \\(\\sqrt{a} - \\sqrt{b}\\) to get \\(\\left(\\frac{a}{b}\\right)^{k + 1/2} = 1\\), and as \\(\\frac{a}{b} \\ne 1\\) this forces \\(k = -\\frac{1}{2}\\).\n\nSo \\(t = 100 - \\frac{1}{2} = \\frac{199}{2}\\).\n\nSo the answer is option (A).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "14",
+      "label": "B",
+      "value": "It is equal to 0.",
+      "working": "Rationalise \\(f\\):\n\n\\(f(x) = \\sqrt{x^2 + 1} - x = \\frac{1}{\\sqrt{x^2 + 1} + x}\\), which tends to 0 as \\(x \\to \\infty\\).\n\nFor \\(g\\): as \\(x \\to \\infty\\), \\(e^{1 - x} \\to 0\\), so \\(\\pi e^{1-x} \\to 0\\) and \\(g(x) = \\sin(\\pi e^{1-x}) \\to \\sin 0 = 0\\).\n\nSince both tend to 0, so does their maximum: \\(|h(x)| \\le |f(x)| + |g(x)| \\to 0\\). Hence \\(\\lim_{x \\to \\infty} h(x) = 0\\).\n\nSo the answer is option (B).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "15",
+      "label": "A",
+      "value": "2.",
+      "working": "Take the parabola \\(y^2 = 4ax\\) and a point \\(A = (at^2, 2at)\\) on it. A line through \\(A\\) meets the parabola in a point found by solving a quadratic, so it meets it in 2 points, 1 point (repeated or single root), or none besides \\(A\\).\n\nThe line \\(y = 2at\\) (parallel to the **axis**) gives \\(4a^2t^2 = 4ax\\), a linear equation in \\(x\\), so it meets the parabola only at \\(A\\).\n\nAny other line through \\(A\\) can be written \\(x - at^2 = m(y - 2at)\\). Substituting \\(x = \\frac{y^2}{4a}\\) gives a quadratic in \\(y\\) with roots \\(y = 2at\\) and \\(y = 4am - 2at\\). These coincide only when \\(m = t\\), which is the **tangent** at \\(A\\). For every other \\(m\\) there is a second point.\n\nSo exactly 2 lines meet the parabola only at \\(A\\): the tangent at \\(A\\) and the line through \\(A\\) parallel to the axis.\n\nSo the answer is option (A).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    }
+  ]
+}

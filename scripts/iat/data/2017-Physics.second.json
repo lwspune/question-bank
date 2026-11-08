@@ -1,0 +1,126 @@
+{
+  "derivedBy": "Independent second solver (Claude agent), worked from the payload and figures only",
+  "answers": [
+    {
+      "ref": "1",
+      "label": "C",
+      "value": "\\(\\mathrm{R}T\\ln\\frac{V_B}{V_C} - P_2(V_B - V_C)\\).",
+      "working": "The work done in a cycle is the sum of the work done in each of its three steps.\n\n**C to A** is at constant volume \\(V_C\\), so no work is done: \\(W_{CA} = 0\\).\n\n**A to B** is an isothermal expansion of one mole at temperature \\(T\\) from \\(V_C\\) to \\(V_B\\): \\(W_{AB} = \\mathrm{R}T\\ln\\frac{V_B}{V_C}\\), positive because the gas expands.\n\n**B to C** is a compression at constant pressure \\(P_2\\) from \\(V_B\\) back to \\(V_C\\): \\(W_{BC} = P_2(V_C - V_B) = -P_2(V_B - V_C)\\), negative because the gas is compressed.\n\nAdding: \\(W = \\mathrm{R}T\\ln\\frac{V_B}{V_C} - P_2(V_B - V_C)\\). This is positive, as it must be for a cycle traced clockwise on a PV diagram (it equals the area enclosed). The answer is not 0: only the change in internal energy over a full cycle is zero, not the work.\n\nSo the answer is option (C).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "2",
+      "label": "C",
+      "value": "\\(\\frac{\\pi d^2 Y_{\\mathrm{Cu}} Y_{\\mathrm{Al}} \\Delta L}{4 (Y_{\\mathrm{Cu}} L_{\\mathrm{Al}} + Y_{\\mathrm{Al}} L_{\\mathrm{Cu}})}\\).",
+      "working": "The two wires are joined end to end, so the same tension \\(F\\) (the load) acts in both, and the total elongation is the sum of the two elongations. Both wires have cross-section \\(A = \\frac{\\pi d^2}{4}\\).\n\nFrom \\(Y = \\frac{F L}{A\\,\\Delta l}\\), each wire stretches by \\(\\Delta l = \\frac{F L}{A Y}\\). So\n\n\\(\\Delta L = \\frac{F L_{\\mathrm{Cu}}}{A Y_{\\mathrm{Cu}}} + \\frac{F L_{\\mathrm{Al}}}{A Y_{\\mathrm{Al}}} = \\frac{F}{A}\\cdot\\frac{Y_{\\mathrm{Al}} L_{\\mathrm{Cu}} + Y_{\\mathrm{Cu}} L_{\\mathrm{Al}}}{Y_{\\mathrm{Cu}} Y_{\\mathrm{Al}}}\\).\n\nSolving for \\(F\\): \\(F = \\frac{\\pi d^2 Y_{\\mathrm{Cu}} Y_{\\mathrm{Al}} \\Delta L}{4 (Y_{\\mathrm{Cu}} L_{\\mathrm{Al}} + Y_{\\mathrm{Al}} L_{\\mathrm{Cu}})}\\). The wires behave like springs in series, so the load has the product of the stiffnesses over their sum, never a difference.\n\nSo the answer is option (C).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "3",
+      "label": "C",
+      "value": "\\(\\frac{3}{5}\\ln 2\\).",
+      "working": "For radioactive decay \\(R = R_0 e^{-\\lambda t}\\), so \\(\\ln R = \\ln R_0 - \\lambda t\\). A plot of \\(\\ln R\\) against \\(t\\) is a straight line whose slope is \\(-\\lambda\\).\n\nFrom the graph, \\(\\ln R\\) falls from 10 at \\(t = 0\\) to 0 at \\(t = 6\\) hours. The slope is \\(-\\frac{10}{6} = -\\frac{5}{3}\\) per hour, so \\(\\lambda = \\frac{5}{3}\\ \\text{h}^{-1}\\).\n\nThe half life is \\(T_{1/2} = \\frac{\\ln 2}{\\lambda} = \\frac{3}{5}\\ln 2\\) hours (about 0.42 hours). Option (D) is what you get by writing \\(\\lambda\\ln 2\\) instead of \\(\\frac{\\ln 2}{\\lambda}\\).\n\nSo the answer is option (C).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "4",
+      "label": "A",
+      "value": "\\(\\frac{1}{2} m_1 v_i^2 [1 - \\frac{m_1}{m_1 + m_2}]\\).",
+      "working": "Both particles move with the same velocity after the collision, so this is a **perfectly inelastic** collision. Momentum is conserved:\n\n\\(m_1 v_i = (m_1 + m_2) v_f\\), so \\(v_f = \\frac{m_1 v_i}{m_1 + m_2}\\).\n\nKinetic energy after: \\(\\frac{1}{2}(m_1 + m_2)v_f^2 = \\frac{1}{2}\\frac{m_1^2 v_i^2}{m_1 + m_2} = \\frac{1}{2}m_1 v_i^2 \\cdot \\frac{m_1}{m_1 + m_2}\\).\n\nEnergy lost = initial KE minus final KE \\(= \\frac{1}{2}m_1 v_i^2\\left[1 - \\frac{m_1}{m_1 + m_2}\\right]\\), which also equals \\(\\frac{1}{2}\\frac{m_1 m_2}{m_1 + m_2}v_i^2\\). Option (D) is the final kinetic energy, not the loss, and options (B) and (C) both reduce to \\(\\frac{1}{2}\\frac{m_2^2 v_i^2}{m_1 + m_2}\\), which matches only when \\(m_1 = m_2\\).\n\nSo the answer is option (A).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "5",
+      "label": "D",
+      "value": "0.",
+      "working": "Both particles start from the same point at \\(t = 0\\) and move with constant velocities. At time \\(t_0\\) the position of \\(m_2\\) relative to \\(m_1\\) is\n\n\\(\\vec{r} = \\vec{v_2}t_0 - \\vec{v_1}t_0 = (\\vec{v_2} - \\vec{v_1})t_0\\),\n\nand the velocity of \\(m_2\\) relative to \\(m_1\\) is \\(\\vec{v_2} - \\vec{v_1}\\).\n\nThe angular momentum about \\(m_1\\) is \\(\\vec{L} = \\vec{r} \\times m_2(\\vec{v_2} - \\vec{v_1}) = m_2 t_0 (\\vec{v_2} - \\vec{v_1}) \\times (\\vec{v_2} - \\vec{v_1}) = 0\\), because the cross product of a vector with itself is zero. Seen from \\(m_1\\), the other particle simply moves straight away along a line through it, which carries no angular momentum.\n\nSo the answer is option (D).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "6",
+      "label": "D",
+      "value": "\\(2\\cot^{-1}(2\\mu - \\sqrt{3})\\).",
+      "working": "At minimum deviation the prism formula is \\(\\mu = \\frac{\\sin\\left(\\frac{A + \\delta_m}{2}\\right)}{\\sin\\frac{A}{2}}\\). With \\(\\delta_m = \\frac{\\pi}{3}\\), the numerator is \\(\\sin\\left(\\frac{A}{2} + \\frac{\\pi}{6}\\right)\\).\n\nExpanding: \\(\\sin\\left(\\frac{A}{2} + \\frac{\\pi}{6}\\right) = \\frac{\\sqrt{3}}{2}\\sin\\frac{A}{2} + \\frac{1}{2}\\cos\\frac{A}{2}\\).\n\nDividing by \\(\\sin\\frac{A}{2}\\): \\(\\mu = \\frac{\\sqrt{3}}{2} + \\frac{1}{2}\\cot\\frac{A}{2}\\), so \\(\\cot\\frac{A}{2} = 2\\mu - \\sqrt{3}\\).\n\nHence \\(A = 2\\cot^{-1}(2\\mu - \\sqrt{3})\\).\n\nSo the answer is option (D).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "7",
+      "label": "A",
+      "value": "2/5 A",
+      "working": "The circuit is a single loop, so the same current flows through the 36 \\(\\Omega\\) resistor, both cells and the parallel group.\n\n**Parallel group:** \\(\\frac{1}{R_p} = \\frac{1}{12} + \\frac{1}{4} + \\frac{1}{3} = \\frac{1 + 3 + 4}{12} = \\frac{8}{12}\\), so \\(R_p = 1.5\\ \\Omega\\). Total resistance \\(= 36 + 1.5 = 37.5\\ \\Omega\\).\n\n**Net emf:** go round the loop clockwise (left to right along the top, right to left along the bottom). The 10 V cell is crossed from its + side to its \\(-\\) side, a fall of 10 V. The 25 V cell is crossed from its \\(-\\) side to its + side, a rise of 25 V. The two cells oppose each other, so the net emf is \\(25 - 10 = 15\\) V, driving a clockwise current.\n\nCurrent \\(= \\frac{15}{37.5} = 0.4 = \\frac{2}{5}\\) A. The tempting \\(\\frac{70}{75}\\) A comes from adding the emfs \\(\\left(\\frac{35}{37.5}\\right)\\), which ignores their opposite orientation.\n\nSo the answer is option (A).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "8",
+      "label": "C",
+      "value": "Frequency.",
+      "working": "The product \\(RC\\) is the **time constant** of an RC circuit, so it has the dimension of time. You can check this: \\(R = \\frac{V}{I}\\) and \\(C = \\frac{Q}{V}\\), so \\(RC = \\frac{Q}{I}\\), and charge divided by current is time.\n\nTherefore \\(\\frac{1}{RC}\\) has the dimension of \\(\\frac{1}{\\text{time}}\\), \\([\\mathrm{T}^{-1}]\\), which is the dimension of frequency.\n\nSo the answer is option (C).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "9",
+      "label": "A",
+      "value": "an AND Gate.",
+      "working": "The output node is joined to +10 V through the 100 \\(\\Omega\\) resistor, and each diode has its anode at the output node and its cathode at an input.\n\n- If an input is at 0 V, its diode is forward biased (anode pulled up towards 10 V, cathode at 0 V). It acts as a short circuit and pulls the output down to 0 V.\n- If both inputs are at 10 V, neither diode can conduct, no current flows through the resistor, and the output sits at 10 V.\n\n| P | Q | \\(V_0\\) |\n|---|---|---|\n| 0 | 0 | 0 |\n| 0 | 10 V | 0 |\n| 10 V | 0 | 0 |\n| 10 V | 10 V | 10 V |\n\nThe output is high only when both inputs are high, which is the truth table of an AND gate.\n\nSo the answer is option (A).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "10",
+      "label": "C",
+      "value": "6 km",
+      "working": "The escape speed from a body of mass \\(M\\) and radius \\(R\\) is \\(v_e = \\sqrt{\\frac{2GM}{R}}\\). Setting \\(v_e = c\\) gives \\(R = \\frac{2GM}{c^2}\\).\n\nHere \\(M = 2 \\times (2 \\times 10^{30}) = 4 \\times 10^{30}\\) kg. So\n\n\\(R = \\frac{2 \\times 7 \\times 10^{-11} \\times 4 \\times 10^{30}}{(3 \\times 10^8)^2} = \\frac{56 \\times 10^{19}}{9 \\times 10^{16}} \\approx 6.2 \\times 10^3\\) m.\n\nThat is about 6 km.\n\nSo the answer is option (C).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "11",
+      "label": "B",
+      "value": "\\(t_A = t_B > t_C\\)",
+      "working": "As a magnet falls through the copper loop, the magnetic flux through the loop changes, so a current is induced in the loop. By **Lenz's law** this current always opposes the change that causes it: the loop repels the magnet as it approaches and attracts it back as it leaves. Either way the force on the magnet points upward and slows its fall.\n\nThis is true whichever pole leads. Magnets A and B are the same except that one is upside down, so reversing the poles only reverses the direction of the induced current, and the retarding force on each is the same. Hence \\(t_A = t_B\\).\n\nBar C is not magnetic, so no current is induced and it falls freely. It reaches the ground first: \\(t_C < t_A = t_B\\).\n\nSo the answer is option (B).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "12",
+      "label": "D",
+      "value": "2/3",
+      "working": "The resistivity of a metal is \\(\\rho = \\frac{1}{n e \\mu_e}\\), where \\(\\mu_e\\) is the electron mobility. In a metal the number density \\(n\\) of free electrons hardly changes with temperature, so the mobility is inversely proportional to the resistivity: \\(\\mu_e \\propto \\frac{1}{\\rho}\\).\n\nThe resistivity changes as \\(\\rho_2 = \\rho_1[1 + \\alpha(T_2 - T_1)]\\). Taking 100 \\(^\\circ\\)C as the starting point:\n\n\\(\\frac{\\rho_2}{\\rho_1} = 1 + 5 \\times 10^{-4} \\times (1100 - 100) = 1 + 0.5 = \\frac{3}{2}\\).\n\nSo \\(\\frac{\\mu_2}{\\mu_1} = \\frac{\\rho_1}{\\rho_2} = \\frac{2}{3}\\). The mobility falls, because the hotter lattice vibrates more and scatters the electrons more often. (Taking 0 \\(^\\circ\\)C as the reference gives \\(\\frac{1.05}{1.55} \\approx 0.68\\), which is still closest to \\(\\frac{2}{3}\\).)\n\nSo the answer is option (D).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "13",
+      "label": "C",
+      "value": "\\(10^9\\) Hz",
+      "working": "The output is taken across the resistor in a series RC circuit, so\n\n\\(\\frac{V_{\\mathrm{out}}}{V_{\\mathrm{in}}} = \\frac{R}{\\sqrt{R^2 + X_C^2}}\\), where \\(X_C = \\frac{1}{\\omega C}\\).\n\nThis ratio equals \\(\\frac{1}{\\sqrt{2}}\\) when \\(X_C = R\\), that is \\(\\omega = \\frac{1}{RC}\\).\n\n\\(\\omega = \\frac{1}{1000 \\times \\frac{1}{6} \\times 10^{-12}} = 6 \\times 10^9\\) rad/s.\n\nThe frequency is \\(f = \\frac{\\omega}{2\\pi} = \\frac{6 \\times 10^9}{6.28} \\approx 0.96 \\times 10^9\\) Hz, which is about \\(10^9\\) Hz. Remember that 1 pF is \\(10^{-12}\\) F, and divide \\(\\omega\\) by \\(2\\pi\\) to get the frequency in hertz.\n\nSo the answer is option (C).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "14",
+      "label": "B",
+      "value": "Speed of wave propagation in the +ve \\(x\\)-direction is \\(4\\pi\\) cm/s.",
+      "working": "Compare \\(y = 3.0\\cos(\\pi x - 4\\pi t)\\) with \\(y = A\\cos(kx - \\omega t)\\): \\(A = 3\\) cm, \\(k = \\pi\\) per cm, \\(\\omega = 4\\pi\\) rad/s. The wave travels in the +\\(x\\) direction.\n\n- Wave speed \\(v = \\frac{\\omega}{k} = \\frac{4\\pi}{\\pi} = 4\\) cm/s, **not** \\(4\\pi\\) cm/s. So statement (B) is wrong: it mistakes \\(\\omega\\) for the speed.\n- Wavelength \\(\\lambda = \\frac{2\\pi}{k} = 2\\) cm \\(= 0.02\\) m.\n- Transverse velocity \\(\\frac{\\partial y}{\\partial t} = 12\\pi\\sin(\\pi x - 4\\pi t)\\), with maximum \\(A\\omega = 12\\pi\\) cm/s. At \\(t = 0\\), \\(x = 0.25\\) cm it is \\(12\\pi\\sin\\frac{\\pi}{4} = 6\\sqrt{2}\\pi\\) cm/s, so (C) is correct.\n- Maximum transverse acceleration \\(A\\omega^2 = 3 \\times 16\\pi^2 = 48\\pi^2\\) cm/s\\(^2\\), so (D) is correct.\n\nSo the answer is option (B).\n\nNote: as printed, option (A) is also wrong. Its maximum velocity of \\(12\\pi\\) cm/s is right, but the wavelength is 2 cm \\(= 0.02\\) m, not 0.2 m. Option (B) is the one whose whole claim is wrong.",
+      "difficulty": "Moderate",
+      "confidence": "MEDIUM",
+      "flag": "Two options are wrong as printed: (B) gives the wave speed as 4pi cm/s (true 4 cm/s), and (A) gives the wavelength as 0.2 m (true 2 cm = 0.02 m, though its max-velocity half is right). Chose (B) as the intended answer (classic v = omega/k trap; A's 0.2 m looks like a cm-to-m slip). Possibly a multiple-answer or bonus question."
+    },
+    {
+      "ref": "15",
+      "label": "B",
+      "value": "Electron moves along trajectory C with a maximum horizontal displacement given by \\((m_e v^2 \\sin 2\\theta)/eE\\).",
+      "working": "The field \\(E\\) points down, so the force on the negatively charged electron, \\(eE\\), points **up**, giving a constant upward acceleration \\(a = \\frac{eE}{m_e}\\). There is no horizontal force. This is projectile motion with \"gravity\" pointing upward.\n\nThe electron starts moving down at angle \\(\\theta\\) below the top plate. Its downward velocity component \\(v\\sin\\theta\\) is slowed, reversed, and the electron curves back to the top plate along a parabola: trajectory C (assuming it turns round before reaching the bottom plate, as drawn). It cannot go straight (trajectory A) because a force acts on it, and it cannot level off and stay parallel to the plates (trajectory B) because the upward force keeps acting.\n\nTime to return to the top plate: \\(t = \\frac{2v\\sin\\theta}{a} = \\frac{2 m_e v\\sin\\theta}{eE}\\), so option (A)'s \\(\\sin^2\\theta\\) form is wrong.\n\nHorizontal displacement in that time: \\(x = v\\cos\\theta \\cdot \\frac{2 m_e v\\sin\\theta}{eE} = \\frac{m_e v^2\\sin 2\\theta}{eE}\\), exactly like the range of a projectile.\n\nSo the answer is option (B).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    }
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "derivedBy": "Independent second solver (Claude agent), hand working checked by substitution",
+  "answers": [
+    {
+      "ref": "1",
+      "label": "D",
+      "value": "3.",
+      "working": "Put \\(s = \\sin x\\). The equation becomes \\(2s^2 - 3s + 1 = 0\\), which factors as \\((2s - 1)(s - 1) = 0\\), so \\(s = \\frac{1}{2}\\) or \\(s = 1\\).\n\nIn \\((0, \\pi)\\), \\(\\sin x = 1\\) gives \\(x = \\frac{\\pi}{2}\\), and \\(\\sin x = \\frac{1}{2}\\) gives \\(x = \\frac{\\pi}{6}\\) and \\(x = \\frac{5\\pi}{6}\\) (sine is positive in both the first and second quadrants).\n\nThat is 3 solutions in all. So the answer is option (D).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "2",
+      "label": "B",
+      "value": "\\(2^n - 2\\).",
+      "working": "Each of the \\(n\\) elements can go to 1 or to 2, so there are \\(2^n\\) functions in all.\n\nA function fails to be **onto** \\(\\{1, 2\\}\\) only if it misses one of the values, that is, it is constant. There are exactly 2 constant functions (everything to 1, or everything to 2).\n\nSo the number of onto functions is \\(2^n - 2\\). So the answer is option (B).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "3",
+      "label": "B",
+      "value": "Both \\(f\\) and \\(f'\\) are increasing functions.",
+      "working": "Differentiate \\(f(x + y) = f(x)f(y)\\) with respect to \\(y\\) and then put \\(y = 0\\): \\(f'(x) = f(x)f'(0) = f(x)\\).\n\nPutting \\(x = y = 0\\) in the equation gives \\(f(0) = f(0)^2\\), so \\(f(0) = 0\\) or \\(1\\). If \\(f(0) = 0\\) then \\(f(x) = f(x)f(0) = 0\\) for all \\(x\\), which contradicts \\(f'(0) = 1\\). So \\(f(0) = 1\\).\n\nSolving \\(f' = f\\) with \\(f(0) = 1\\) gives \\(f(x) = e^x\\), and then \\(f'(x) = e^x\\) too. The function \\(e^x\\) is increasing, so both \\(f\\) and \\(f'\\) are increasing. So the answer is option (B).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "4",
+      "label": "B",
+      "value": "4.",
+      "working": "Subtract the second equation from the first: \\((x^2 + 8y^2) - (x^2 + y^2) = 4 - 1\\), so \\(7y^2 = 3\\) and \\(y^2 = \\frac{3}{7}\\).\n\nThen \\(x^2 = 1 - \\frac{3}{7} = \\frac{4}{7}\\).\n\nBoth \\(x^2\\) and \\(y^2\\) are positive, so \\(x = \\pm\\frac{2}{\\sqrt{7}}\\) and \\(y = \\pm\\sqrt{\\frac{3}{7}}\\), and every sign combination works. That gives 4 points of intersection. So the answer is option (B).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "5",
+      "label": "C",
+      "value": "\\(-\\frac{28}{9}\\).",
+      "working": "The general term is \\(T_{r+1} = \\binom{9}{r}(x^2)^{9-r}\\left(-\\frac{1}{3x}\\right)^r = \\binom{9}{r}\\left(-\\frac{1}{3}\\right)^r x^{18 - 3r}\\).\n\nFor \\(x^9\\) we need \\(18 - 3r = 9\\), so \\(r = 3\\).\n\nThe coefficient is \\(\\binom{9}{3}\\left(-\\frac{1}{3}\\right)^3 = 84 \\times \\left(-\\frac{1}{27}\\right) = -\\frac{84}{27} = -\\frac{28}{9}\\). So the answer is option (C).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "6",
+      "label": "A",
+      "value": "6",
+      "working": "Take the roots as \\(a - d, a, a + d\\). Their sum is \\(3a = 39\\), so \\(a = 13\\).\n\nTheir product is \\((13 - d)(13)(13 + d) = 1729\\), so \\(169 - d^2 = \\frac{1729}{13} = 133\\), giving \\(d^2 = 36\\) and \\(d = \\pm 6\\).\n\nCheck with the middle coefficient: the roots are 7, 13, 19 and \\(7 \\cdot 13 + 13 \\cdot 19 + 7 \\cdot 19 = 91 + 247 + 133 = 471\\), as required. The common difference is 6 (or \\(-6\\)). Note that 13 is a root, not the common difference. So the answer is option (A).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "7",
+      "label": "B",
+      "value": "2.",
+      "working": "For \\(x > 0\\), factor the numerator: \\(e^{3x} - e^{x} - e^{2x} + 1 = e^{x}(e^{2x} - 1) - (e^{2x} - 1) = (e^{2x} - 1)(e^{x} - 1)\\).\n\nSo the right-hand limit is \\(\\lim\\limits_{x \\to 0^+} \\frac{e^{2x} - 1}{x} \\cdot \\frac{e^{x} - 1}{x} = 2 \\times 1 = 2\\).\n\nFor \\(x < 0\\), \\(1 - \\cos 2x = 2\\sin^2 x\\), so the left-hand limit is \\(\\lim\\limits_{x \\to 0^-} 2\\left(\\frac{\\sin x}{x}\\right)^2 = 2\\).\n\nBoth one-sided limits equal 2, so \\(f\\) is continuous at 0 exactly when \\(a = 2\\). So the answer is option (B).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "8",
+      "label": "C",
+      "value": "\\(\\frac{27}{64}\\)",
+      "working": "\\(S\\) has \\(2^3 = 8\\) subsets, so there are \\(8 \\times 8 = 64\\) ordered pairs \\((A, B)\\).\n\nFor \\(A\\) and \\(B\\) to be **disjoint**, each element of \\(S\\) has 3 choices: it is in \\(A\\) only, in \\(B\\) only, or in neither (it cannot be in both). So there are \\(3^3 = 27\\) disjoint pairs.\n\nThe probability is \\(\\frac{27}{64}\\). So the answer is option (C).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "9",
+      "label": "C",
+      "value": "circle.",
+      "working": "Differentiate \\(y_1^2 + y_2^2\\): \\(\\frac{d}{dx}(y_1^2 + y_2^2) = 2y_1\\frac{dy_1}{dx} + 2y_2\\frac{dy_2}{dx} = 2y_1(-y_2) + 2y_2(y_1) = 0\\).\n\nSo \\(y_1^2 + y_2^2\\) is constant, and at \\(x = 0\\) it equals \\(1^2 + 0^2 = 1\\). (In fact \\(y_1 = \\cos x\\) and \\(y_2 = \\sin x\\).)\n\nEvery point \\((y_1(x), y_2(x))\\) therefore lies on \\(X^2 + Y^2 = 1\\), a circle. So the answer is option (C).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "10",
+      "label": "C",
+      "value": "one-one and onto.",
+      "working": "**One-one:** if \\(f(a) = f(b)\\), apply \\(f\\) twice more to get \\(f(f(f(a))) = f(f(f(b)))\\), that is \\(a = b\\).\n\n**Onto:** for any real \\(y\\), take \\(x = f(f(y))\\). Then \\(f(x) = f(f(f(y))) = y\\), so every \\(y\\) is an image.\n\nSo \\(f\\) is one-one and onto (its inverse is \\(f \\circ f\\)). So the answer is option (C).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "11",
+      "label": "A",
+      "value": "local minima at \\(\\pi/2\\).",
+      "working": "Here \\(f'(x) = \\cos x - \\frac{\\cos x}{\\sin^2 x} = \\cos x\\left(1 - \\frac{1}{\\sin^2 x}\\right)\\).\n\nIn \\((0, \\pi)\\), \\(0 < \\sin x \\le 1\\), so \\(1 - \\frac{1}{\\sin^2 x} \\le 0\\), with equality only at \\(x = \\frac{\\pi}{2}\\). Also \\(\\cos x = 0\\) only at \\(x = \\frac{\\pi}{2}\\). So \\(\\frac{\\pi}{2}\\) is the only critical point, and \\(\\frac{\\pi}{3}, \\frac{\\pi}{4}, \\frac{\\pi}{6}\\) are not extrema at all.\n\nWith \\(t = \\sin x > 0\\), \\(t + \\frac{1}{t} \\ge 2\\), with equality when \\(t = 1\\). So \\(f(x) \\ge 2 = f\\left(\\frac{\\pi}{2}\\right)\\): the function has a local (indeed absolute) minimum at \\(\\frac{\\pi}{2}\\). So the answer is option (A).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "12",
+      "label": "D",
+      "value": "\\(p\\) has a root in the interval \\([0, 1]\\).",
+      "working": "Suppose \\(p\\) had no root in \\([0, 1]\\). A polynomial is continuous, so it would keep one sign on \\([0, 1]\\) (otherwise the intermediate value theorem gives a root). Then \\(\\int_0^1 p(t)\\,dt\\) would be strictly positive or strictly negative, not 0. So \\(p\\) must have a root in \\([0, 1]\\).\n\nThe other options can fail. \\(p(t) = 3t^2 - 1\\) has \\(\\int_0^1 p = 1 - 1 = 0\\), but its root \\(-\\frac{1}{\\sqrt{3}}\\) is outside \\([0, 1]\\), so (B) fails. \\(p(t) = 6t^2 - 6t + 1\\) has \\(\\int_0^1 p = 2 - 3 + 1 = 0\\) and two roots \\(\\frac{3 \\pm \\sqrt{3}}{6}\\), both in \\([0, 1]\\), so (C) fails. (A) is the opposite of what we proved.\n\nSo the answer is option (D).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "13",
+      "label": "D",
+      "value": "\\(5^{15}\\).",
+      "working": "Put \\(z = 2i\\). Then \\((1 + 2i)^{15} = \\sum_{k=0}^{15} a_k (2i)^k\\).\n\nThe even powers give \\((2i)^{2m} = (-4)^m\\), so the real part is \\(a_0 - 4a_2 + 16a_4 - \\cdots - 2^{14}a_{14}\\). The odd powers give \\((2i)^{2m+1} = 2i(-4)^m\\), so the imaginary part is \\(2a_1 - 8a_3 + 32a_5 - \\cdots - 2^{15}a_{15}\\). These are exactly the two brackets in the question.\n\nThe sum of their squares is \\(|(1 + 2i)^{15}|^2 = |1 + 2i|^{30} = (\\sqrt{5})^{30} = 5^{15}\\). So the answer is option (D).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "14",
+      "label": "D",
+      "value": "9.",
+      "working": "Expand \\((A - 2I)^2 = A^2 - 4A + 4I\\). From the given equation, \\(A^2 = 7A - 4I\\), so \\((A - 2I)^2 = 7A - 4I - 4A + 4I = 3A\\).\n\nTaking determinants, \\(\\left(\\det(A - 2I)\\right)^2 = \\det(3A) = 3^3 \\det A = 27 \\times 3 = 81\\) (for a \\(3 \\times 3\\) matrix, multiplying by 3 multiplies the determinant by \\(3^3\\)).\n\nSo \\(|\\det(A - 2I)| = 9\\). So the answer is option (D).\n\nNote: as printed, no matrix satisfies both conditions. Every eigenvalue of \\(A\\) must be a root of \\(t^2 - 7t + 4 = 0\\), namely \\(\\frac{7 \\pm \\sqrt{33}}{2}\\), and no product of three of these equals 3. The answer above is what the given relations force.",
+      "difficulty": "Moderate",
+      "confidence": "HIGH",
+      "flag": "Hypotheses inconsistent: eigenvalues of A must be (7 +/- sqrt33)/2 (product 4), and no product of three of them is 3 (possible dets ~258, ~25.5, ~2.51, ~0.247). The identity (A-2I)^2 = 3A gives |det(A-2I)| = 9 formally, clearly the intended answer."
+    },
+    {
+      "ref": "15",
+      "label": "A",
+      "value": "1/2.",
+      "working": "Take small \\(h > 0\\). On \\([1 - h, 1 + h]\\), \\(g = 1\\) on \\([1 - h, 1]\\) and \\(g = 0\\) on \\((1, 1 + h]\\). So \\(\\int_{1-h}^{1+h} g(y)\\,dy = h\\).\n\nThen \\(\\frac{1}{2h} \\cdot h = \\frac{1}{2}\\). For small \\(h < 0\\) the limits swap and the same calculation again gives \\(\\frac{1}{2}\\), so the limit is \\(\\frac{1}{2}\\).\n\nThis is the average of \\(g\\) over a tiny interval centred at 1: half of that interval lies where \\(g = 1\\) and half where \\(g = 0\\). The tempting answer 1 (the value \\(g(1)\\)) is not what the limit measures. So the answer is option (A).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    }
+  ]
+}

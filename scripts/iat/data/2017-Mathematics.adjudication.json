@@ -1,0 +1,11 @@
+{
+  "adjudications": [
+    {
+      "ref": "14",
+      "why": "Both solvers: D (9) by the intended method, and both found the data impossible: A^2 - 7A + 4I = 0 forces eigenvalues (7 +/- sqrt 33)/2, whose products are never 3. Defective as printed (impossible data): owner policy 2026-10-29 case 3, notice, grace.",
+      "notice": "As printed, no matrix fits this question: a matrix with \\(A^2 - 7A + 4I = O\\) cannot have determinant 3. The intended working below still gives option (D). In a PYQ Vault mock this question gives everyone its marks.",
+      "grace": true,
+      "solution": "From \\(A^2 - 7A + 4I = 0\\) we get \\(A^2 + 4I = 7A\\). Now \\((A - 2I)^2 = A^2 - 4A + 4I = 7A - 4A = 3A\\).\n\nTake determinants. For a \\(3 \\times 3\\) matrix, \\(\\det(3A) = 3^3 \\det A = 27 \\times 3 = 81\\). So \\((\\det(A - 2I))^2 = 81\\) and \\(|\\det(A - 2I)| = 9\\).\n\nSo the answer is option (D)."
+    }
+  ]
+}

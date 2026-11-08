@@ -1,0 +1,128 @@
+{
+  "derivedBy": "Independent second solver (Claude Opus 5.5), solved from the payload and figures only",
+  "answers": [
+    {
+      "ref": "1",
+      "label": "A",
+      "value": "1 minute and 48 seconds",
+      "working": "Water flows out only while the surface is above the hole, so the useful head starts at \\(h_0 = 20 - 5 = 15\\ \\mathrm{cm} = 0.15\\ \\mathrm{m}\\) and falls to zero.\n\nBy **Torricelli's law** the efflux speed is \\(v = \\sqrt{2gh}\\). Continuity gives \\(-A\\,\\dfrac{dh}{dt} = a\\sqrt{2gh}\\), where \\(A\\) is the area of the vessel and \\(a\\) that of the hole. Integrating from \\(h_0\\) to 0:\n\n\\(t = \\dfrac{A}{a}\\sqrt{\\dfrac{2h_0}{g}}\\).\n\nHere \\(\\dfrac{A}{a} = \\left(\\dfrac{5\\ \\mathrm{cm}}{0.2\\ \\mathrm{cm}}\\right)^2 = 625\\) and, with \\(g = 10\\ \\mathrm{m/s^2}\\), \\(\\sqrt{2 \\times 0.15/10} = \\sqrt{0.03} = 0.173\\ \\mathrm{s}\\).\n\nSo \\(t = 625 \\times 0.173 \\approx 108\\ \\mathrm{s}\\), which is 1 minute and 48 seconds (with \\(g = 9.8\\) it is about 109 s, still closest). So the answer is option (A).",
+      "difficulty": "Hard",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "2",
+      "label": "B",
+      "value": "2.1 s and 2.1 s.",
+      "working": "The period of a simple pendulum does not depend on the mass of the bob, so both pendulums have the same period.\n\nIn an elevator accelerating downward with \\(a = g/10\\), the bob feels an **effective gravity** \\(g_{\\text{eff}} = g - a = 10 - 1 = 9\\ \\mathrm{m/s^2}\\).\n\n\\(T = 2\\pi\\sqrt{\\dfrac{L}{g_{\\text{eff}}}} = 2\\pi\\sqrt{\\dfrac{1}{9}} = \\dfrac{2\\pi}{3} \\approx 2.1\\ \\mathrm{s}\\).\n\nOption (C), 1.9 s, is what you get by wrongly adding the acceleration (\\(g_{\\text{eff}} = 11\\)). So the answer is option (B).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "3",
+      "label": "D",
+      "value": "0.25",
+      "working": "After one half-life the chance that a nucleus has survived is \\(\\tfrac{1}{2}\\). Decay in the second half-life is independent of the first, so the chance of surviving two half-lives is \\(\\tfrac{1}{2} \\times \\tfrac{1}{2} = \\tfrac{1}{4}\\).\n\nEquivalently, \\(N/N_0 = (1/2)^{t/T_{1/2}} = (1/2)^2 = 0.25\\). So the answer is option (D).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "4",
+      "label": "B",
+      "value": "qdE/\\sqrt{2}",
+      "working": "In a uniform field the forces \\(+q\\mathbf{E}\\) and \\(-q\\mathbf{E}\\) cancel, but they form a couple. The **dipole moment** has magnitude \\(p = qd\\), and the torque is \\(\\tau = pE\\sin\\theta\\).\n\nWith \\(\\theta = 45^\\circ\\): \\(\\tau = qdE \\sin 45^\\circ = \\dfrac{qdE}{\\sqrt{2}}\\).\n\nOption (A), \\(qdE\\), is the maximum torque, reached only at \\(90^\\circ\\). So the answer is option (B).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "5",
+      "label": "C",
+      "value": "0.84 A",
+      "working": "Take the long plate of each cell as its positive terminal: the 6 V cell at the top drives \\(I_1\\) down through \\(R_1\\), and the three lower cells each have their positive terminal at the top.\n\n**Top loop:** \\(6 = 8I_1\\), so \\(I_1 = 0.75\\ \\mathrm{A}\\).\n\nLet \\(V\\) be the potential of the middle wire above the bottom wire. For each lower branch, \\(V = 10 - 10I_2\\), \\(V = 3 + 5I_3\\) and \\(V = 6 - 6I_4\\), so \\(I_2 = (10 - V)/10\\), \\(I_3 = (V - 3)/5\\), \\(I_4 = (6 - V)/6\\).\n\n**Junction rule** as intended, with \\(I_1\\) feeding the junction: \\(I_3 = I_1 + I_2 + I_4\\), that is \\(\\dfrac{V - 3}{5} = 0.75 + 1 - \\dfrac{V}{10} + 1 - \\dfrac{V}{6}\\). This gives \\(V\\left(\\tfrac{1}{5} + \\tfrac{1}{10} + \\tfrac{1}{6}\\right) = 3.35\\), so \\(V \\approx 7.18\\ \\mathrm{V}\\) and \\(I_3 = (7.18 - 3)/5 \\approx 0.84\\ \\mathrm{A}\\). So the answer is option (C).\n\nNote: as printed, the 6 V cell and \\(R_1\\) form a loop that touches the rest of the circuit at only one node (the whole middle wire), so \\(I_1\\) leaves the wire as it enters and cannot reach the lower branches. Treated strictly, \\(I_2 + I_4 = I_3\\) gives \\(V \\approx 5.57\\ \\mathrm{V}\\) and \\(I_3 \\approx 0.51\\ \\mathrm{A}\\), which is not among the options; 0.84 A is the value the options are built on.",
+      "difficulty": "Hard",
+      "confidence": "MEDIUM",
+      "flag": "Defective as printed: the 6 V + R1 loop shares only one node (the middle wire) with the lower network, so I1 = 0.75 A cannot enter it; strict Kirchhoff gives I3 = 0.514 A (V = 5.57 V), not an option. 0.84 A (0.836) results exactly from the junction equation I3 = I1 + I2 + I4 with I1 = 0.75 A, so C is the evident intended answer."
+    },
+    {
+      "ref": "6",
+      "label": "B",
+      "value": "\\frac{1}{\\sqrt{2}}(\\hat{y} + \\hat{z})",
+      "working": "For a plane electromagnetic wave, \\(\\mathbf{E}\\), \\(\\mathbf{B}\\) and the direction of travel are mutually perpendicular, and \\(\\mathbf{E} \\times \\mathbf{B}\\) points along the direction of travel. With travel along \\(\\hat{z}\\) and \\(\\mathbf{E}\\) along \\(\\hat{x}\\), the magnetic field must be along \\(\\hat{y}\\) (since \\(\\hat{x} \\times \\hat{y} = \\hat{z}\\)).\n\nThe one firm requirement, \\(\\mathbf{B} \\perp \\mathbf{E}\\), rules out every option with an \\(\\hat{x}\\) part: (A), (C) and (D) all have \\(\\mathbf{B} \\cdot \\hat{x} \\neq 0\\). Only (B), \\(\\tfrac{1}{\\sqrt{2}}(\\hat{y} + \\hat{z})\\), is perpendicular to \\(\\mathbf{E}\\), and its \\(\\hat{y}\\) part gives \\(\\mathbf{E} \\times \\mathbf{B}\\) a component along \\(+\\hat{z}\\). So the answer is option (B).\n\nNote: as printed, no option is exactly right. For a plane wave travelling along \\(z\\), \\(\\mathbf{B}\\) has no \\(z\\) component, so the only fully correct direction is \\(\\hat{y}\\) (or \\(-\\hat{y}\\)), which is not offered.",
+      "difficulty": "Moderate",
+      "confidence": "LOW",
+      "flag": "Defective as printed: with k along z and E along x, B must be along +/- y; no option is. B is the only option perpendicular to E (A, C, D all have an x component); D is the only one perpendicular to k. Chose B as the most defensible, but D is equally possible as the setter's intent."
+    },
+    {
+      "ref": "7",
+      "label": "B",
+      "value": "833\\ ^\\circ\\mathrm{C}",
+      "working": "The radius of a ring grows by **linear expansion**, and for an isotropic solid \\(\\alpha = \\gamma/3 = 3.6 \\times 10^{-5}/3 = 1.2 \\times 10^{-5}\\ \\mathrm{K^{-1}}\\).\n\nThe radius must grow from 2.1 m to 2.121 m: \\(\\Delta R = 0.021\\ \\mathrm{m}\\), so \\(\\dfrac{\\Delta R}{R} = \\dfrac{0.021}{2.1} = 0.01\\).\n\n\\(\\Delta T = \\dfrac{\\Delta R}{\\alpha R} = \\dfrac{0.01}{1.2 \\times 10^{-5}} \\approx 833\\ ^\\circ\\mathrm{C}\\).\n\nUsing the volume coefficient directly would give the wrong 278 \\(^\\circ\\mathrm{C}\\) of option (C). So the answer is option (B).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "8",
+      "label": "C",
+      "value": "10 m",
+      "working": "The slide is frictionless, so all the potential energy at A becomes kinetic energy at B: \\(\\tfrac{1}{2}mv^2 = mgh\\).\n\nOn the flat track, friction \\(\\mu mg\\) does work \\(\\mu mg d\\) until the object stops: \\(\\mu mg d = mgh\\).\n\nSo \\(d = \\dfrac{h}{\\mu} = \\dfrac{5}{0.5} = 10\\ \\mathrm{m}\\). The mass (100 g) cancels and is not needed. So the answer is option (C).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "9",
+      "label": "A",
+      "value": "5 mT",
+      "working": "The point is 3 mm from the axis, inside the solenoid (radius 1 cm), so the solenoid's field there is the uniform 4 mT along the axis.\n\nThe wire's field at \\(r = 3\\ \\mathrm{mm}\\) is \\(B_w = \\dfrac{\\mu_0 I}{2\\pi r} = \\dfrac{2 \\times 10^{-7} \\times 45}{3 \\times 10^{-3}} = 3 \\times 10^{-3}\\ \\mathrm{T} = 3\\ \\mathrm{mT}\\). It circles the wire, so it is perpendicular to the axis.\n\nThe two fields are at right angles: \\(B = \\sqrt{4^2 + 3^2} = 5\\ \\mathrm{mT}\\). Adding them directly (7 mT) or subtracting (1 mT) ignores their directions. So the answer is option (A).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "10",
+      "label": "B",
+      "value": "The normal diode has thicker depletion region and Zener diode has higher electric field across the junction.",
+      "working": "A **Zener diode** is made from heavily doped p and n regions. Heavy doping means the uncovered charge needed to set up the barrier sits in a very thin layer, so the depletion region is very thin.\n\nThe junction voltage is dropped across this thin layer, so the electric field \\(E \\approx V/d\\) is very large (of the order of \\(10^6\\ \\mathrm{V/m}\\) or more). That strong field is what causes Zener breakdown at a low reverse voltage.\n\nA normal diode is lightly doped, so it has the thicker depletion region and the weaker field. So the answer is option (B).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "11",
+      "label": "C",
+      "value": "p rises linearly from zero to a maximum, falls linearly through zero to a negative minimum, then rises linearly back to zero",
+      "working": "Momentum is \\(p = mv\\), and a constant force (constant acceleration) makes \\(p\\) change linearly with time.\n\nGoing out: \\(p\\) rises linearly from zero, then falls linearly back to zero at the momentary stop. Coming back, the car moves the other way, so \\(p\\) is negative: it falls linearly from zero to a negative minimum, then rises linearly back to zero as the car stops at its starting point.\n\nFrom the maximum to the negative minimum the force is the same constant backward force, so the line passes straight through zero. Graphs (A) and (D) never go negative, and (B) has an impossible sudden jump in momentum. So the answer is option (C).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "12",
+      "label": "C",
+      "value": "1.25",
+      "working": "For hydrogen, the photon that lifts the electron from \\(n = 1\\) to level \\(n\\) has \\(\\dfrac{1}{\\lambda} = R\\left(1 - \\dfrac{1}{n^2}\\right)\\), so \\(\\dfrac{\\lambda_2}{\\lambda_4} = \\dfrac{1 - 1/n_4^2}{1 - 1/n_2^2}\\).\n\nTaking the target levels as \\(n = 2\\) and \\(n = 4\\): \\(\\dfrac{\\lambda_2}{\\lambda_4} = \\dfrac{1 - 1/16}{1 - 1/4} = \\dfrac{15/16}{3/4} = 1.25\\). So the answer is option (C).\n\nNote: as printed, \"second and fourth excited states\" strictly means \\(n = 3\\) and \\(n = 5\\), which gives \\(\\dfrac{24/25}{8/9} = 1.08\\), not among the options. The options are built on levels \\(n = 2\\) and \\(n = 4\\).",
+      "difficulty": "Moderate",
+      "confidence": "MEDIUM",
+      "flag": "Wording: second/fourth EXCITED states are n = 3 and n = 5, giving 1.08 (not an option). Option C (1.25) follows from n = 2 and n = 4, the evident intent."
+    },
+    {
+      "ref": "13",
+      "label": "D",
+      "value": "50",
+      "working": "Let the chain have length \\(L\\), mass per unit length \\(\\lambda\\) and weight \\(W = \\lambda L g\\). When a length \\(x\\) has landed, the top of the chain has fallen freely through \\(x\\), so it moves at \\(v = \\sqrt{2gx}\\).\n\nThe scale feels two forces: the weight of the chain already on it, \\(\\lambda x g\\), and the force needed to stop the links arriving, which is the rate of momentum delivered, \\(\\lambda v \\cdot v = \\lambda v^2 = 2\\lambda g x\\).\n\nReading \\(= \\lambda x g + 2\\lambda x g = 3\\lambda g x\\), which is largest just as the last link lands (\\(x = L\\)): \\(3W\\).\n\nHalf of the maximum reading is \\(1.5W\\), so the customer pays for 1.5 times the true weight, that is **50%** more. So the answer is option (D).",
+      "difficulty": "Hard",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "14",
+      "label": "B",
+      "value": "\\left[2GM_s m^2 r_{\\text{max}} r_{\\text{min}} \\,/\\, (r_{\\text{max}} + r_{\\text{min}})\\right]^{1/2}",
+      "working": "At the nearest and farthest points the velocity is perpendicular to the radius, so the **angular momentum** is \\(L = m v_{\\max} r_{\\min} = m v_{\\min} r_{\\max}\\).\n\n**Energy conservation** between these points: \\(\\tfrac{1}{2}mv_{\\max}^2 - \\dfrac{GM_s m}{r_{\\min}} = \\tfrac{1}{2}mv_{\\min}^2 - \\dfrac{GM_s m}{r_{\\max}}\\).\n\nSubstituting \\(v = L/(mr)\\): \\(\\dfrac{L^2}{2m^2}\\left(\\dfrac{1}{r_{\\min}^2} - \\dfrac{1}{r_{\\max}^2}\\right) = GM_s\\left(\\dfrac{1}{r_{\\min}} - \\dfrac{1}{r_{\\max}}\\right)\\).\n\nDividing by \\(\\dfrac{1}{r_{\\min}} - \\dfrac{1}{r_{\\max}}\\): \\(\\dfrac{L^2}{2m^2}\\cdot\\dfrac{r_{\\max} + r_{\\min}}{r_{\\max} r_{\\min}} = GM_s\\), so \\(L = \\left[\\dfrac{2GM_s m^2 r_{\\max} r_{\\min}}{r_{\\max} + r_{\\min}}\\right]^{1/2}\\).\n\nA quick dimension check rules out (A) and (C), and for a circle (\\(r_{\\max} = r_{\\min} = r\\)) option (B) gives the correct \\(m\\sqrt{GM_s r}\\) while (D) blows up. So the answer is option (B).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "15",
+      "label": "C",
+      "value": "40 m",
+      "working": "Put the foot of the taller post at the origin: the crow starts at \\((0, 20)\\) and ends at \\((60, 10)\\), and the grain is at \\((x, 0)\\).\n\nUse the **mirror (reflection) trick**: the path from the grain to \\((60, 10)\\) has the same length as the path to the image point \\((60, -10)\\) below the ground. The total length is least when \\((0, 20)\\), the grain and \\((60, -10)\\) lie on one straight line.\n\nThat line falls 30 m over 60 m, so it reaches the ground where \\(20 - \\tfrac{30}{60}x = 0\\), that is \\(x = 40\\ \\mathrm{m}\\). Equivalently, the two flight segments make equal angles with the ground: \\(\\tfrac{20}{x} = \\tfrac{10}{60 - x}\\) gives \\(x = 40\\). So the answer is option (C).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    }
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "derivedBy": "Claude Opus 5.5, independent solve of the printed paper, arithmetic checked with sympy",
+  "answers": [
+    {
+      "ref": "1",
+      "label": "D",
+      "value": "3.",
+      "working": "Write the equation as a quadratic in \\(\\sin x\\): \\(2\\sin^2 x - 3\\sin x + 1 = 0\\), which factorises as \\((2\\sin x - 1)(\\sin x - 1) = 0\\). So \\(\\sin x = \\frac{1}{2}\\) or \\(\\sin x = 1\\).\n\nIn \\((0, \\pi)\\), \\(\\sin x = 1\\) gives \\(x = \\frac{\\pi}{2}\\), and \\(\\sin x = \\frac{1}{2}\\) gives \\(x = \\frac{\\pi}{6}\\) and \\(x = \\frac{5\\pi}{6}\\). That is 3 solutions in all.\n\nSo the answer is option (D).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "2",
+      "label": "B",
+      "value": "\\(2^n - 2\\).",
+      "working": "Each of the \\(n\\) elements can be sent to 1 or to 2, so there are \\(2^n\\) functions in all.\n\nA function is **onto** \\(\\{1, 2\\}\\) only if both 1 and 2 are hit. The only functions that fail are the two constant functions (everything to 1, or everything to 2). So the number of onto functions is \\(2^n - 2\\).\n\nSo the answer is option (B).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "3",
+      "label": "B",
+      "value": "Both \\(f\\) and \\(f'\\) are increasing functions.",
+      "working": "Differentiate \\(f(x + y) = f(x)f(y)\\) with respect to \\(y\\) and put \\(y = 0\\): \\(f'(x) = f(x)f'(0) = f(x)\\).\n\nAlso, putting \\(x = y = 0\\) gives \\(f(0) = f(0)^2\\), so \\(f(0) = 0\\) or \\(1\\). If \\(f(0) = 0\\) then \\(f(x) = f(x)f(0) = 0\\) for all \\(x\\), which contradicts \\(f'(0) = 1\\). So \\(f(0) = 1\\).\n\nThe solution of \\(f' = f\\) with \\(f(0) = 1\\) is \\(f(x) = e^x\\). Then \\(f'(x) = e^x\\) as well, and \\(e^x\\) is increasing. So both \\(f\\) and \\(f'\\) are increasing.\n\nSo the answer is option (B).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "4",
+      "label": "B",
+      "value": "4.",
+      "working": "Subtract the second equation from the first: \\((x^2 + 8y^2) - (x^2 + y^2) = 4 - 1\\), so \\(7y^2 = 3\\) and \\(y^2 = \\frac{3}{7}\\).\n\nThen \\(x^2 = 1 - \\frac{3}{7} = \\frac{4}{7}\\). Both \\(x^2\\) and \\(y^2\\) are positive, so \\(x = \\pm \\frac{2}{\\sqrt{7}}\\) and \\(y = \\pm \\sqrt{\\frac{3}{7}}\\), and every sign combination works.\n\nThat gives 4 points of intersection (the ellipse and the circle cross once in each quadrant).\n\nSo the answer is option (B).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "5",
+      "label": "C",
+      "value": "\\(-\\frac{28}{9}\\).",
+      "working": "The general term is \\(T_{r+1} = \\binom{9}{r}(x^2)^{9-r}\\left(-\\frac{1}{3x}\\right)^r = \\binom{9}{r}\\left(-\\frac{1}{3}\\right)^r x^{18 - 3r}\\).\n\nFor \\(x^9\\) we need \\(18 - 3r = 9\\), so \\(r = 3\\).\n\nThe coefficient is \\(\\binom{9}{3}\\left(-\\frac{1}{3}\\right)^3 = 84 \\times \\left(-\\frac{1}{27}\\right) = -\\frac{84}{27} = -\\frac{28}{9}\\).\n\nSo the answer is option (C).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "6",
+      "label": "A",
+      "value": "6",
+      "working": "Let the roots be \\(a - d\\), \\(a\\), \\(a + d\\). Their sum is \\(3a = 39\\), so \\(a = 13\\).\n\nTheir product is \\((13 - d)(13)(13 + d) = 1729\\), so \\(169 - d^2 = \\frac{1729}{13} = 133\\), giving \\(d^2 = 36\\) and \\(d = \\pm 6\\).\n\nCheck: the roots are 7, 13, 19, and \\(7 \\cdot 13 + 13 \\cdot 19 + 7 \\cdot 19 = 91 + 247 + 133 = 471\\), which matches. The options 7, 13 and 19 are roots, not the common difference.\n\nSo the answer is option (A).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "7",
+      "label": "B",
+      "value": "2.",
+      "working": "For continuity at 0 both one-sided limits must equal \\(a\\).\n\n**Left side:** \\(1 - \\cos(2x) = 2\\sin^2 x\\), so \\(\\frac{1 - \\cos(2x)}{x^2} = 2\\left(\\frac{\\sin x}{x}\\right)^2 \\to 2\\).\n\n**Right side:** the numerator factorises: \\(e^{3x} - e^{x} - e^{2x} + 1 = (e^{2x} - 1)(e^{x} - 1)\\). So \\(\\frac{(e^{2x} - 1)(e^{x} - 1)}{x^2} = \\frac{e^{2x} - 1}{x} \\cdot \\frac{e^{x} - 1}{x} \\to 2 \\times 1 = 2\\).\n\nBoth limits are 2, so \\(a = 2\\).\n\nSo the answer is option (B).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "8",
+      "label": "C",
+      "value": "\\(\\frac{27}{64}\\)",
+      "working": "S has \\(2^3 = 8\\) subsets, so there are \\(8 \\times 8 = 64\\) ordered pairs \\((A, B)\\). Equivalently, each element of S has 4 choices: in A only, in B only, in both, or in neither, giving \\(4^3 = 64\\).\n\nFor A and B to be **disjoint**, no element may be in both, so each element has only 3 choices. That gives \\(3^3 = 27\\) pairs.\n\nThe probability is \\(\\frac{27}{64}\\).\n\nSo the answer is option (C).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "9",
+      "label": "C",
+      "value": "circle.",
+      "working": "Look at \\(y_1^2 + y_2^2\\). Its derivative is \\(2y_1 \\frac{dy_1}{dx} + 2y_2 \\frac{dy_2}{dx} = 2y_1(-y_2) + 2y_2(y_1) = 0\\).\n\nSo \\(y_1^2 + y_2^2\\) is constant, and at \\(x = 0\\) it equals \\(1^2 + 0^2 = 1\\). Hence every point \\((y_1(x), y_2(x))\\) satisfies \\(y_1^2 + y_2^2 = 1\\). (In fact \\(y_1 = \\cos x\\) and \\(y_2 = \\sin x\\).)\n\nThe set lies on the unit circle.\n\nSo the answer is option (C).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "10",
+      "label": "C",
+      "value": "one-one and onto.",
+      "working": "**One-one:** if \\(f(a) = f(b)\\), apply \\(f\\) twice more to get \\(f(f(f(a))) = f(f(f(b)))\\), that is \\(a = b\\).\n\n**Onto:** for any real \\(y\\), take \\(x = f(f(y))\\). Then \\(f(x) = f(f(f(y))) = y\\), so every \\(y\\) is an image.\n\nSo \\(f\\) is one-one and onto (its inverse is \\(f \\circ f\\)).\n\nSo the answer is option (C).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "11",
+      "label": "A",
+      "value": "local minima at \\(\\pi/2\\).",
+      "working": "\\(f'(x) = \\cos x - \\frac{\\cos x}{\\sin^2 x} = \\cos x\\left(1 - \\frac{1}{\\sin^2 x}\\right)\\). In \\((0, \\pi)\\), \\(\\sin^2 x < 1\\) except at \\(\\frac{\\pi}{2}\\), so the bracket is negative there and \\(f'(x) = 0\\) only at \\(x = \\frac{\\pi}{2}\\).\n\nFor \\(x\\) just below \\(\\frac{\\pi}{2}\\), \\(\\cos x > 0\\) so \\(f' < 0\\); just above, \\(\\cos x < 0\\) so \\(f' > 0\\). So \\(f\\) has a local minimum at \\(\\frac{\\pi}{2}\\), with value \\(1 + 1 = 2\\).\n\nAnother way to see it: with \\(t = \\sin x \\in (0, 1]\\), \\(t + \\frac{1}{t} \\ge 2\\) with equality only at \\(t = 1\\). The points \\(\\frac{\\pi}{3}\\), \\(\\frac{\\pi}{6}\\), \\(\\frac{\\pi}{4}\\) are not critical points at all.\n\nSo the answer is option (A).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "12",
+      "label": "D",
+      "value": "\\(p\\) has a root in the interval \\([0, 1]\\).",
+      "working": "A polynomial is continuous. Suppose \\(p\\) had no root in \\([0, 1]\\). Then by the intermediate value theorem \\(p\\) would keep one sign on \\([0, 1]\\), always positive or always negative, and then \\(\\int_0^1 p(t)\\,dt\\) would be strictly positive or strictly negative, not 0. So \\(p\\) must have a root in \\([0, 1]\\).\n\nThe other options can fail. \\(p(t) = 6t^2 - 6t + 1\\) has \\(\\int_0^1 p = 2 - 3 + 1 = 0\\) but two roots, \\(\\frac{3 \\pm \\sqrt{3}}{6}\\), in \\([0, 1]\\), so (C) is false. \\(p(t) = (t - \\frac{1}{2})(t - \\frac{5}{2})(t + \\frac{3}{2})\\) is symmetric in sign about \\(t = \\frac{1}{2}\\), so its integral is 0, yet two of its roots lie outside \\([0, 1]\\), so (B) is false. Option (A) is the opposite of what we proved.\n\nSo the answer is option (D).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "13",
+      "label": "D",
+      "value": "\\(5^{15}\\).",
+      "working": "Put \\(z = 2i\\) in the expansion: \\((1 + 2i)^{15} = \\sum a_k (2i)^k\\).\n\nThe even powers give \\((2i)^{2m} = (-4)^m\\), so the real part is \\(a_0 - 4a_2 + 16a_4 - \\cdots - 2^{14}a_{14}\\). The odd powers give \\((2i)^{2m+1} = (-1)^m 2^{2m+1} i\\), so the imaginary part is \\(2a_1 - 8a_3 + 32a_5 - \\cdots - 2^{15}a_{15}\\).\n\nSo the given expression is (real part)\\(^2\\) + (imaginary part)\\(^2 = |(1 + 2i)^{15}|^2 = (|1 + 2i|^2)^{15} = 5^{15}\\).\n\nSo the answer is option (D).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "14",
+      "label": "D",
+      "value": "9.",
+      "working": "From \\(A^2 - 7A + 4I = 0\\) we get \\(A^2 + 4I = 7A\\). Now \\((A - 2I)^2 = A^2 - 4A + 4I = 7A - 4A = 3A\\).\n\nTake determinants. For a \\(3 \\times 3\\) matrix, \\(\\det(3A) = 3^3 \\det A = 27 \\times 3 = 81\\). So \\((\\det(A - 2I))^2 = 81\\) and \\(|\\det(A - 2I)| = 9\\).\n\nSo the answer is option (D).\n\nNote: as printed, the data are inconsistent. Every eigenvalue of such an \\(A\\) must be a root of \\(\\lambda^2 - 7\\lambda + 4 = 0\\), and no product of three such roots equals 3 (the possible determinants are about 0.25, 2.51, 25.5 and 258.8). So no such matrix exists, but the intended method above gives 9.",
+      "difficulty": "Moderate",
+      "confidence": "MEDIUM",
+      "flag": "Defective as printed: a 3x3 matrix with A^2 - 7A + 4I = 0 has eigenvalues (7 +/- sqrt33)/2, product 4, so det A is one of ~0.247, 2.511, 25.49, 258.75; det A = 3 is impossible. Answer D (9) follows from the intended route (A - 2I)^2 = 3A, det(3A) = 81."
+    },
+    {
+      "ref": "15",
+      "label": "A",
+      "value": "1/2.",
+      "working": "Take \\(h > 0\\) small. On \\([1 - h, 1]\\) we have \\(g = 1\\), and on \\((1, 1 + h]\\) we have \\(g = 0\\). So \\(\\int_{1-h}^{1+h} g(y)\\,dy = h\\), and \\(\\frac{1}{2h} \\cdot h = \\frac{1}{2}\\).\n\nFor \\(h < 0\\) the limits swap and the sign of the integral and of \\(2h\\) both change, so the ratio is again \\(\\frac{1}{2}\\). Hence \\(f(1) = \\frac{1}{2}\\).\n\nThis is the average of \\(g\\) over a tiny interval centred at 1: half of that interval sees the value 1 and half sees 0. Answering 1 (the value \\(g(1)\\)) is the tempting mistake.\n\nSo the answer is option (A).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    }
+  ]
+}
