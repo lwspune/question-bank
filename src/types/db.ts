@@ -4020,6 +4020,7 @@ export type Database = {
           created_at: string
           email_opt_out: boolean
           exam_date: string | null
+          focus_exam: string | null
           goal: string | null
           medium: string | null
           mobile: string | null
@@ -4048,6 +4049,7 @@ export type Database = {
           created_at?: string
           email_opt_out?: boolean
           exam_date?: string | null
+          focus_exam?: string | null
           goal?: string | null
           medium?: string | null
           mobile?: string | null
@@ -4076,6 +4078,7 @@ export type Database = {
           created_at?: string
           email_opt_out?: boolean
           exam_date?: string | null
+          focus_exam?: string | null
           goal?: string | null
           medium?: string | null
           mobile?: string | null
