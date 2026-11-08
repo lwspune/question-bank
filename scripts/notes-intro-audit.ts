@@ -39,7 +39,7 @@ import * as fs from "node:fs";
 import * as path from "node:path";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { NOTES_CHAPTERS } from "../src/lib/notes/chapters";
-import { notesCountKind } from "../src/lib/notes/countKind";
+import { liveKey as key, loadNotesLive } from "./lib/notesLiveCounts";
 import {
   extractCountClaims,
   allowedCounts,
@@ -60,70 +60,9 @@ const LONG_INTRO = 200;
  * subject names ("Maths" under MHT-CET and JEE Mains). A key missing either
  * axis does not fail; it quietly answers a different question.
  */
-const key = (exam: string, subject: string, chapter: string) =>
-  `${exam}\t${subject}\t${chapter}`;
-
 function loadEnv() {
   const local = path.join(process.cwd(), ".env.local");
   if (fs.existsSync(local)) require("dotenv").config({ path: local, override: true });
-}
-
-async function loadLive(db: SupabaseClient) {
-  const chapter = new Map<string, number>();
-  const perSub = new Map<string, Map<string, number>>();
-  const perYear = new Map<string, Map<string, number>>();
-  // Paged in 1000-row windows — PostgREST silently truncates a raw select at
-  // 1000 and this derives counts FROM THE PAYLOAD, the documented trap.
-  // Past-year rows for every exam, plus the practice rows of an exam whose
-  // notes count both kinds (lib/notes/countKind.ts), as the gate test does.
-  const allKindExams = [...new Set(NOTES_CHAPTERS.map((c) => c.examName))].filter(
-    (e) => notesCountKind(e) === "all"
-  );
-  const { data: examRows, error: examError } = await db.from("exams").select("id").in("name", allKindExams);
-  if (examError) throw new Error(examError.message);
-  const allKindExamIds = (examRows ?? []).map((r: any) => r.id as string);
-  const scans: { kind: "pyq" | "practice"; examIds?: string[] }[] = [{ kind: "pyq" }];
-  if (allKindExamIds.length) scans.push({ kind: "practice", examIds: allKindExamIds });
-  for (const scan of scans)
-  for (let from = 0; ; from += 1000) {
-    let q = db
-      .from("questions")
-      .select("question_kind, pyq_year, subtopics(name), chapters(name, subjects(name, exams(name)))")
-      .eq("visibility", "PUBLIC")
-      .eq("question_kind", scan.kind);
-    if (scan.examIds) q = q.in("exam_id", scan.examIds);
-    const { data, error } = await q
-      // ORDER BY is NOT optional here. Without a stable sort, PostgREST's
-      // 1000-row windows overlap and drop rows, so the same scan returns
-      // different totals run to run — two consecutive runs of this loader
-      // disagreed by five findings before the order was added. A count that
-      // is not reproducible cannot gate anything.
-      .order("id", { ascending: true })
-      .range(from, from + 999);
-    if (error) throw new Error(error.message);
-    const rows = (data ?? []) as any[];
-    for (const r of rows) {
-      // Past-year only, except the exams whose notes count practice too (countKind.ts).
-      if (r.question_kind !== "pyq" && notesCountKind(r.chapters?.subjects?.exams?.name) !== "all") continue;
-      const k = key(
-        r.chapters?.subjects?.exams?.name,
-        r.chapters?.subjects?.name,
-        r.chapters?.name
-      );
-      chapter.set(k, (chapter.get(k) ?? 0) + 1);
-      if (!perSub.has(k)) perSub.set(k, new Map());
-      const sn = r.subtopics?.name ?? "?";
-      perSub.get(k)!.set(sn, (perSub.get(k)!.get(sn) ?? 0) + 1);
-      if (r.pyq_year) {
-        // The chapter's and each subtopic's per-year counts (allowedCounts' yearCounts).
-        if (!perYear.has(k)) perYear.set(k, new Map());
-        const y = perYear.get(k)!;
-        for (const who of ["*", sn]) y.set(`${who}	${r.pyq_year}`, (y.get(`${who}	${r.pyq_year}`) ?? 0) + 1);
-      }
-    }
-    if (rows.length < 1000) break;
-  }
-  return { chapter, perSub, perYear };
 }
 
 async function main() {
@@ -137,7 +76,8 @@ async function main() {
   }
   const filter = (process.argv[2] ?? "").toLowerCase();
   const db = createClient(url, apiKey, { auth: { persistSession: false } });
-  const { chapter: liveChapter, perSub, perYear } = await loadLive(db);
+  // Shared with the prod-contract gate (scripts/lib/notesLiveCounts.ts).
+  const { chapter: liveChapter, perSub, perYear } = await loadNotesLive(db);
 
   const stale: string[] = [];
   const duplicated: string[] = [];
