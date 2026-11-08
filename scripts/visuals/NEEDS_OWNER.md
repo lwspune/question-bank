@@ -42,6 +42,8 @@ Found 2026-11-08 in the Maharashtra HSC Class 12 Physics run.
 | `b995dbd2` | Maharashtra HSC 12 · Differential Equations | **Stem false as printed.** The given function does not satisfy the stated equation (LHS − RHS = 2ae^x − 2be^(−x) + 6x − 2); the solution's note calls it a misprint. Not animated. |
 | `f67407eb` | Maharashtra HSC 12 · Differential Equations | **Stem false as printed.** "Show (x + y + 1) = c(1 − x − y − 2xy)" fails the equation; the working reaches y − x = c(2xy + x + y + 2), which does satisfy it, and the note names the book error. Not animated. |
 | `c23d6d3b` | Maharashtra HSC 12 · Definite Integration | **Stem misprinted.** ∫₀^{π/4} cot²x (no dx) diverges at 0; the solution says so and works the tan²x repair, 1 − π/4. Animated: it shows the divergence, then the repair. A stem edit changes content_hash. |
+| `10ef34e4` | Maharashtra HSC 12 · Probability Distributions | **Stem not a valid p.d.f.** f(x) = 3(1 − 2x²) on 0 < x < 1 is negative for x > 1/√2, and F(x) = 3x − 2x³ passes 1 (F(0.8) = 1.376). The stored solution does not say so (the same stem in `70ffa5a6` does). Animated as printed; it needs a notice or the book's intended interval. |
+| `495393dc` | Maharashtra HSC 12 · Probability Distributions | **Stem interval wrong.** f(x) = x³/4 on 0 < x < 4 has total area 16, not 1; the example it "returns to" uses 0 < x < 2. The solution's F(x) = x⁴/16 is right for 0 < x < 2. Animated as printed; check the Balbharati print. |
 | `d5c91a76` | Maharashtra HSC 12 · Definite Integration | **Stem misprinted.** "Show ∫₀^π log(1 + tan x) dx = (π/8) log 2": with upper limit π the integral does not exist; the stated value is the π/4 result, which the solution proves and says so. Animated on the π/4 reading. |
 
 ## Settled
