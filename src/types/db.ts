@@ -976,6 +976,33 @@ export type Database = {
         }
         Relationships: []
       }
+      daily_reveals: {
+        Row: {
+          counts: boolean
+          created_at: string
+          ist_day: string
+          question_id: string
+          surface: string
+          user_id: string
+        }
+        Insert: {
+          counts: boolean
+          created_at?: string
+          ist_day: string
+          question_id: string
+          surface: string
+          user_id: string
+        }
+        Update: {
+          counts?: boolean
+          created_at?: string
+          ist_day?: string
+          question_id?: string
+          surface?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       db_health_snapshots: {
         Row: {
           cache_hit_pct: number
@@ -4924,6 +4951,10 @@ export type Database = {
           tokens_out: number
         }[]
       }
+      claim_reveal: {
+        Args: { p_question_id: string; p_surface: string }
+        Returns: Json
+      }
       collect_db_health: { Args: never; Returns: Json }
       defence_leads_after: {
         Args: {
@@ -5219,6 +5250,14 @@ export type Database = {
         Returns: undefined
       }
       reset_statement_store: { Args: never; Returns: Json }
+      reveal_limit_overruns: {
+        Args: { p_day: string }
+        Returns: {
+          day_limit: number
+          used: number
+          user_id: string
+        }[]
+      }
       sales_by_period: {
         Args: { p_grain: string; p_since?: string }
         Returns: {
