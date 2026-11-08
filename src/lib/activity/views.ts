@@ -74,6 +74,11 @@ export const SURFACES = [
   // offer seen on /me and /board, a path student's /board line seen, the
   // weekly review and "Pick up here" seen, V's "My plan for today" opened.
   ...PATH_SURFACES,
+  // The Review tab (2026-11-08): "review" its To fix list (with
+  // metadata.chapterId when one chapter is open), "review_saved" the saved
+  // list. Before it, /saved recorded no visit at all.
+  "review",
+  "review_saved",
 ] as const;
 
 export type Surface = (typeof SURFACES)[number];

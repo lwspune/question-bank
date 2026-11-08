@@ -15,6 +15,7 @@ import { ME_TABS, type MeTab } from "./MeHeader";
  */
 const MAIN: Record<MeTab, string> = {
   home: "mx-auto max-w-4xl space-y-6 px-4 py-6 sm:space-y-8 sm:px-6 sm:py-8",
+  review: "mx-auto max-w-4xl space-y-6 px-4 py-6 sm:px-6 sm:py-8",
   performance: "mx-auto max-w-5xl space-y-8 px-4 py-6 sm:px-6 sm:py-8",
   account: "mx-auto max-w-4xl space-y-6 px-4 py-6 sm:px-6 sm:py-8",
 };
@@ -53,6 +54,14 @@ export default function MeLoading({ active }: { active: MeTab }) {
             <Skeleton className="h-[76px] rounded-xl sm:h-[92px]" />
           </div>
           <Skeleton className="h-40 w-full rounded-2xl" />
+        </>
+      )}
+
+      {active === "review" && (
+        <>
+          <Skeleton className="h-10 w-48 rounded-full" />
+          <Skeleton className="h-28 w-full rounded-2xl" />
+          <Skeleton className="h-48 w-full rounded-2xl" />
         </>
       )}
 
