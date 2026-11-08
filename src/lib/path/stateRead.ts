@@ -29,7 +29,13 @@ export async function readChapterStates(
   db: SupabaseClient,
   userId: string,
   chapters: readonly PathChapter[]
-): Promise<{ states: Map<string, ChapterState>; lastWorkAt: Map<string, string>; facts: ChapterFacts }> {
+): Promise<{
+  states: Map<string, ChapterState>;
+  lastWorkAt: Map<string, string>;
+  facts: ChapterFacts;
+  /** Each chapter's LATEST revision-sheet view (the revision weeks' re-reads, Phase 3). */
+  sheetLastAt: Map<string, string>;
+}> {
   const chapterOfQuestion = new Map<string, string>();
   for (const c of chapters) for (const p of c.top.flat()) chapterOfQuestion.set(p.id, c.id);
   const byPath = new Map(chapters.map((c) => [c.boardPath, c.id]));
@@ -105,10 +111,13 @@ export async function readChapterStates(
     touch(chapterId, m.created_at);
   }
   const sheetAt = new Map<string, string>();
+  const sheetLastAt = new Map<string, string>();
   for (const v of views) {
     const chapterId = v.path ? byPath.get(v.path) : undefined;
     if (!chapterId) continue;
     keepEarliest(sheetAt, chapterId, v.created_at);
+    const last = sheetLastAt.get(chapterId);
+    if (!last || Date.parse(v.created_at) > Date.parse(last)) sheetLastAt.set(chapterId, v.created_at);
     touch(chapterId, v.created_at);
   }
   const testAt = new Map<string, string>();
@@ -122,5 +131,5 @@ export async function readChapterStates(
   for (const r of doneRows) if (r.ref_id) keepEarliest(doneAt, r.ref_id, r.created_at);
 
   const facts: ChapterFacts = { marks: eventsByChapter, sheetAt, testAt, doneAt };
-  return { states: foldStates(chapters, facts), lastWorkAt, facts };
+  return { states: foldStates(chapters, facts), lastWorkAt, facts, sheetLastAt };
 }

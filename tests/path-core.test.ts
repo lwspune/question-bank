@@ -23,7 +23,7 @@ import {
 } from "@/lib/path/model";
 import { activeDeferrals, DEFER_DAYS } from "@/lib/path/deferrals";
 import { addDays, bufferStart, finishDate, paceStatus, startingDailyMinutes, studyDays } from "@/lib/path/pace";
-import { fixQuestions, pickToday, taskDone, todayExemptions, type PathTask } from "@/lib/path/today";
+import { fixQuestions, isChapterTask, pickToday, taskDone, todayExemptions, type PathTask } from "@/lib/path/today";
 
 const slot = (id: string) => [{ id, format: "mcq" as const }];
 const tenSlots = (p: string) => Array.from({ length: 10 }, (_, i) => slot(`${p}-q${i}`));
@@ -159,7 +159,7 @@ describe("today: the tasks (§4)", () => {
   const all = [...physics, ...chem];
   const none = new Map<string, ChapterState>();
 
-  const ids = (tasks: PathTask[]) => tasks.map((t) => (t.kind === "fix" ? "fix" : `${t.chapterId}:${t.kind}`));
+  const ids = (tasks: PathTask[]) => tasks.map((t) => (t.kind === "fix" || t.kind === "paper" ? t.kind : `${t.chapterId}:${t.kind}`));
 
   it("works one chapter through its parts in order: the sheet, then its Top 10 while it is fresh", () => {
     const tasks = pickToday({ chapters: all, states: none, deferred: new Set(), budget: 55, fix: [] });
@@ -203,7 +203,7 @@ describe("today: the tasks (§4)", () => {
 
   it("skips a deferred chapter for the next one in the same subject", () => {
     const tasks = pickToday({ chapters: physics, states: none, deferred: new Set(["p1"]), budget: 5, fix: [] });
-    expect(tasks.map((t) => t.kind !== "fix" && t.chapterId)).toEqual(["p2", "p2"]);
+    expect(tasks.map((t) => isChapterTask(t) && t.chapterId)).toEqual(["p2", "p2"]);
   });
 
   it("falls back to a deferred chapter when nothing else is left", () => {
@@ -286,7 +286,7 @@ describe("the promise holds: a student who does every day's card finishes before
     while (chapters.some((c) => !chapterDone(c, states.get(c.id) ?? fresh))) {
       if (dayIndex % 7 !== 6) {
         for (const t of pickToday({ chapters, states, deferred: new Set(), budget, fix: [] })) {
-          if (t.kind === "fix") continue;
+          if (!isChapterTask(t)) continue;
           const s = states.get(t.chapterId) ?? fresh;
           states.set(t.chapterId, t.kind === "sheet" ? { ...s, sheet: true } : t.kind === "top" ? { ...s, topWorked: 10 } : { ...s, test: true });
         }

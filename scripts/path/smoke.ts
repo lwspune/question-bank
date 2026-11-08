@@ -27,7 +27,8 @@ import { readChapterTestEntries } from "@/lib/mocks/chapterTestsQuery";
 import { loadOwnPool } from "@/lib/drill/compose";
 import { istDayKey, istDayStartIso } from "@/lib/email/dueNudge";
 import { nextSitting } from "@/lib/exam/calendar";
-import { readPathContent } from "@/lib/path/contentRead";
+import { readPathContent, readPathPapers } from "@/lib/path/contentRead";
+import { reviewPending } from "@/lib/path/revision";
 import { readChapterStates } from "@/lib/path/stateRead";
 import { PATH_EXAMS, PATH_SUBJECTS, chapterDone, type PathExam } from "@/lib/path/model";
 import { bufferStart, startingDailyMinutes } from "@/lib/path/pace";
@@ -83,6 +84,40 @@ async function main() {
     const startMinutes = startingDailyMinutes(pathRemainingMinutes(chapters, new Map()), today, buffer);
     console.log(`  from zero: about ${startMinutes} min a day`);
 
+    // Phase 3: the revision weeks' papers, read by the app's own code.
+    const papers = await readPathPapers(db, exam);
+    const bySubject = (["physics", "chemistry", "mathematics"] as const).map((sub) => `${sub} ${papers.filter((x) => x.subject === sub).length}`);
+    console.log(`  board papers (Set 1 of each sitting): ${bySubject.join(", ")}`);
+    check(papers.length > 0, `${exam}: no board papers for the revision weeks`);
+    for (const x of papers) {
+      const ids = x.slots.flat(2).length;
+      check(ids > 0 && ids <= 150, `${exam}: paper ${x.label} has ${ids} question ids`);
+      check(x.href.startsWith(`/question-papers/${exam}/`), `${exam}: paper ${x.label} links ${x.href}`);
+    }
+    // A student with every chapter done: 21 days of papers and rework.
+    const allDone = new Map(chapters.map((c) => [c.id, { sheet: true, topWorked: c.top.length, test: true, recordedDone: true }]));
+    const doneDays = projectWeek({
+      chapters,
+      states: allDone,
+      deferred: new Set(),
+      budget: 60,
+      today: buffer,
+      todayTasks: [],
+      days: 21,
+      revision: { buffer, papers, paperStates: new Map(), reviews: new Map([[chapters[0].id, chapters[0].top.flat().slice(0, 3).map((q) => q.id)]]) },
+    });
+    const doneServed = doneDays.flatMap((d) => d.tasks.flatMap((t) => (t.kind === "paper" ? [t.paperId] : [])));
+    check(new Set(doneServed).size === doneServed.length, `${exam}: a paper served twice for a student with every chapter done`);
+    for (const d of doneDays) {
+      const ex = todayExemptions(d.tasks, chapters, papers);
+      check(ex.revealIds.length <= 200, `${exam}: ${d.day} has ${ex.revealIds.length} free questions, over 200`);
+    }
+    const perSubject = (["physics", "chemistry", "mathematics"] as const).map(
+      (sub) => `${sub} ${doneServed.filter((id) => papers.find((x) => x.id === id)?.subject === sub).length}`
+    );
+    console.log(`  every chapter done: ${doneDays.length} days, ${doneServed.length} papers (${perSubject.join(", ")})`);
+    for (const l of weekText(doneDays.slice(0, 4), chapters, papers)) console.log(`      ${l}`);
+
     // Students: the most recently active of this board's Class 12 students.
     const profiles = await readAllPages<{ user_id: string }>((f, to) =>
       db.from("student_profiles").select("user_id").contains("target_exams", [exam]).order("user_id").range(f, to)
@@ -137,7 +172,7 @@ async function main() {
       );
       check(!/\b0 /.test(review.join(" ")), `${userId.slice(0, 8)}: a zero in the review`);
       const week = projectWeek({ chapters, states, deferred: new Set(), budget: daily, today, todayTasks: tasks });
-      const parts = week.flatMap((d) => d.tasks.flatMap((t) => (t.kind === "fix" ? [] : [`${t.kind}:${t.chapterId}`])));
+      const parts = week.flatMap((d) => d.tasks.flatMap((t) => (isChapterTask(t) ? [`${t.kind}:${t.chapterId}`] : [])));
       check(new Set(parts).size === parts.length, `${userId.slice(0, 8)}: the coming days repeat a part`);
       const first = tasks.find(isChapterTask);
       const firstChapter = first ? chapters.find((c) => c.id === first.chapterId) : undefined;
@@ -145,6 +180,27 @@ async function main() {
         const line = chapterLine(firstChapter, states.get(firstChapter.id)!, tasks);
         check(line.parts.length > 0 && line.today !== null, `${userId.slice(0, 8)}: the /board line for today's chapter is empty`);
       }
+      // The 21 revision days from the buffer, if each card is done: a paper is
+      // never served twice, and a day's free questions fit the stored caps.
+      const reviews = reviewPending(chapters, facts);
+      const revisionDays = projectWeek({
+        chapters,
+        states,
+        deferred: new Set(),
+        budget: daily,
+        today: buffer,
+        todayTasks: [],
+        days: 21,
+        revision: { buffer, papers, paperStates: new Map(), reviews },
+      });
+      const served = revisionDays.flatMap((d) => d.tasks.flatMap((t) => (t.kind === "paper" ? [t.paperId] : [])));
+      check(new Set(served).size === served.length, `${userId.slice(0, 8)}: a paper served twice in the revision weeks`);
+      for (const d of revisionDays) {
+        const ex = todayExemptions(d.tasks, chapters, papers);
+        check(ex.revealIds.length <= 200 && ex.drillIds.length <= 10, `${userId.slice(0, 8)}: ${d.day} over the stored caps`);
+      }
+      const reviewCount = [...reviews.values()].reduce((n, ids) => n + ids.length, 0);
+      console.log(`      revision weeks: ${served.length} papers, ${reviewCount} Review later questions to rework`);
       console.log(`      last 7 days: ${review.join(" ")}`);
       for (const l of weekText(week.slice(0, 3), chapters)) console.log(`      ${l}`);
       console.log(

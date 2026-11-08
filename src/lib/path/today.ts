@@ -32,6 +32,7 @@ import {
   type ChapterPart,
   type ChapterState,
   type PathChapter,
+  type PathPaper,
 } from "./model";
 
 export const MIN_TASKS = 2;
@@ -43,13 +44,23 @@ export const STOP_SHARE = 0.8;
 
 export type PathTask =
   | { kind: ChapterPart; chapterId: string; minutes: number }
-  | { kind: "fix"; questionIds: string[]; minutes: number };
+  | { kind: "fix"; questionIds: string[]; minutes: number }
+  /** The revision weeks (Phase 3): a whole past board paper, timed. */
+  | { kind: "paper"; paperId: string; minutes: number }
+  /** The revision weeks: a chapter's Review later questions, worked again. */
+  | { kind: "revise"; chapterId: string; questionIds: string[]; minutes: number }
+  /** The revision weeks, between papers with nothing to rework: a revision sheet read again. */
+  | { kind: "reread"; chapterId: string; minutes: number };
 
-export type ChapterTask = Extract<PathTask, { chapterId: string }>;
+/** A chapter's sheet, Top 10 or test: the three parts of "done". */
+export type ChapterTask = Extract<PathTask, { kind: ChapterPart }>;
 
 export function isChapterTask(t: PathTask): t is ChapterTask {
-  return t.kind !== "fix";
+  return t.kind === "sheet" || t.kind === "top" || t.kind === "test";
 }
+
+/** A paper's progress, read from its questions' records (revision.ts paperWorked). */
+export type PaperState = { served: boolean; worked: number; of: number; done: boolean };
 
 const stateOf = (states: ReadonlyMap<string, ChapterState>, id: string) => states.get(id) ?? NOTHING_DONE;
 
@@ -71,6 +82,10 @@ export function pickToday(input: {
   fix: readonly string[];
   /** Tasks already on today's card, kept first on a replan. */
   keep?: readonly PathTask[];
+  /** The revision weeks: the chapter with the least left first, not the queue furthest behind. */
+  smallestFirst?: boolean;
+  /** Fix questions a day: 5, or 10 in the revision weeks. */
+  fixMax?: number;
 }): PathTask[] {
   const sim = new Map(input.states);
   const tasks: PathTask[] = [];
@@ -87,7 +102,7 @@ export function pickToday(input: {
 
   for (const t of input.keep ?? []) add(t);
   if (!tasks.some((t) => t.kind === "fix") && input.fix.length > 0) {
-    const ids = input.fix.slice(0, FIX_MAX);
+    const ids = input.fix.slice(0, input.fixMax ?? FIX_MAX);
     // The Fix task goes first even on a replan.
     tasks.unshift({ kind: "fix", questionIds: [...ids], minutes: Math.ceil(ids.length * FIX_MINUTES_PER_QUESTION) });
     spent += tasks[0].minutes;
@@ -103,8 +118,10 @@ export function pickToday(input: {
   while (tasks.length < MAX_TASKS && !(tasks.length >= MIN_TASKS && spent >= STOP_SHARE * input.budget)) {
     const next =
       continueChapter(tasks, input.chapters, sim, input.deferred) ??
-      nextCandidate(input.chapters, sim, input.deferred, queues, totals) ??
-      nextCandidate(input.chapters, sim, new Set(), queues, totals);
+      (input.smallestFirst
+        ? smallestCandidate(input.chapters, sim, input.deferred) ?? smallestCandidate(input.chapters, sim, new Set())
+        : nextCandidate(input.chapters, sim, input.deferred, queues, totals) ??
+          nextCandidate(input.chapters, sim, new Set(), queues, totals));
     if (!next) break;
     add({ kind: next.part, chapterId: next.chapter.id, minutes: partMinutes(next.chapter, stateOf(sim, next.chapter.id), next.part) });
   }
@@ -149,14 +166,51 @@ function nextCandidate(
   return best && { chapter: best.chapter, part: best.part };
 }
 
-/** Is a task's work recorded? `fixAnswered`: question ids answered in the drill today. */
+/**
+ * The chapter with the least work left (the revision weeks: "chapters left
+ * come first, smallest first"), ties by subject then book order.
+ */
+function smallestCandidate(
+  chapters: readonly PathChapter[],
+  sim: ReadonlyMap<string, ChapterState>,
+  deferred: ReadonlySet<string>
+): { chapter: PathChapter; part: ChapterPart } | null {
+  let best: { chapter: PathChapter; part: ChapterPart; left: number } | null = null;
+  for (const c of chapters) {
+    if (deferred.has(c.id)) continue;
+    const s = stateOf(sim, c.id);
+    const part = nextPart(c, s);
+    if (!part) continue;
+    const left = remainingMinutes(c, s);
+    if (
+      !best ||
+      left < best.left ||
+      (left === best.left &&
+        (QUEUE_ORDER.indexOf(c.queue) < QUEUE_ORDER.indexOf(best.chapter.queue) ||
+          (c.queue === best.chapter.queue && c.rank < best.chapter.rank)))
+    ) {
+      best = { chapter: c, part, left };
+    }
+  }
+  return best && { chapter: best.chapter, part: best.part };
+}
+
+/**
+ * Is a task's work recorded? `fixAnswered`: question ids answered or marked
+ * today (the Fix and revise tasks); `paperStates`: the revision weeks' papers.
+ */
 export function taskDone(
   task: PathTask,
   chapters: readonly PathChapter[],
   states: ReadonlyMap<string, ChapterState>,
-  fixAnswered: ReadonlySet<string>
+  fixAnswered: ReadonlySet<string>,
+  paperStates: ReadonlyMap<string, PaperState> = new Map(),
+  /** Chapters whose revision sheet was opened today (a re-read). */
+  sheetsToday: ReadonlySet<string> = new Set()
 ): boolean {
-  if (task.kind === "fix") return task.questionIds.every((id) => fixAnswered.has(id));
+  if (task.kind === "fix" || task.kind === "revise") return task.questionIds.every((id) => fixAnswered.has(id));
+  if (task.kind === "reread") return sheetsToday.has(task.chapterId);
+  if (task.kind === "paper") return paperStates.get(task.paperId)?.done === true;
   const c = chapters.find((x) => x.id === task.chapterId);
   if (!c) return false;
   const s = stateOf(states, c.id);
@@ -191,14 +245,18 @@ export function fixQuestions(
  */
 export function todayExemptions(
   tasks: readonly PathTask[],
-  chapters: readonly PathChapter[]
+  chapters: readonly PathChapter[],
+  papers: readonly PathPaper[] = []
 ): { revealIds: string[]; drillIds: string[]; testMockIds: string[] } {
   const byId = new Map(chapters.map((c) => [c.id, c]));
+  const paperById = new Map(papers.map((p) => [p.id, p]));
   const revealIds: string[] = [];
   const drillIds: string[] = [];
   const testMockIds: string[] = [];
   for (const t of tasks) {
     if (t.kind === "fix") drillIds.push(...t.questionIds);
+    else if (t.kind === "revise") revealIds.push(...t.questionIds);
+    else if (t.kind === "paper") revealIds.push(...(paperById.get(t.paperId)?.slots.flat(2).map((q) => q.id) ?? []));
     else if (t.kind === "top") revealIds.push(...(byId.get(t.chapterId)?.top.flat().map((p) => p.id) ?? []));
     else if (t.kind === "test") {
       const id = byId.get(t.chapterId)?.test?.mockId;
