@@ -1,0 +1,125 @@
+{
+  "derivedBy": "Claude Opus 5.5 subagent, hand solve with numeric checks in Python",
+  "answers": [
+    {
+      "ref": "1",
+      "label": "D",
+      "value": "136",
+      "working": "A number divisible by 5 must end in 0 or 5, so count the two cases separately.\n\n**Last digit 0:** the hundreds digit can be any of 1 to 9 (9 choices) and the tens digit any of the remaining 8 digits. That gives \\(9 \\times 8 = 72\\) numbers.\n\n**Last digit 5:** the hundreds digit cannot be 0 or 5, so it has 8 choices. The tens digit can be any digit except 5 and the hundreds digit, so it also has 8 choices. That gives \\(8 \\times 8 = 64\\) numbers.\n\nTotal \\(= 72 + 64 = 136\\). So the answer is option (D).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "2",
+      "label": "A",
+      "value": "1",
+      "working": "A matrix is **symmetric** when \\(a_{ij} = a_{ji}\\) for every pair. Here \\(a_{12} = a_{21} = -1\\) and \\(a_{23} = a_{32} = 25\\) already hold, so the only condition is \\(a_{13} = a_{31}\\), that is \\(\\cos x = x^2 + 1\\).\n\nNow \\(x^2 + 1 \\ge 1\\) for every real \\(x\\), while \\(\\cos x \\le 1\\). The two can be equal only if both equal 1, which needs \\(x^2 = 0\\), so \\(x = 0\\). Check: \\(\\cos 0 = 1 = 0^2 + 1\\).\n\nSo exactly one value of \\(x\\) works. So the answer is option (A).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "3",
+      "label": "B",
+      "value": "\\(n\\) is divisible by 5",
+      "working": "Take \\(3^{20}\\) outside the sum, since it does not depend on \\(r\\):\n\n\\(n = 3^{20} \\sum_{r=0}^{10} {}^{10}C_r \\left(-\\frac{4}{9}\\right)^r = 3^{20} \\left(1 - \\frac{4}{9}\\right)^{10}\\) by the **binomial theorem**.\n\nSo \\(n = 3^{20} \\cdot \\frac{5^{10}}{9^{10}} = 3^{20} \\cdot \\frac{5^{10}}{3^{20}} = 5^{10}\\).\n\n\\(5^{10}\\) is odd and has no factor 3, so it is not divisible by 6, 8 or 9, but it is divisible by 5. So the answer is option (B).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "4",
+      "label": "C",
+      "value": "\\(f\\) is decreasing for \\(x > 0\\)",
+      "working": "Let \\(\\theta = \\tan^{-1} x\\), so \\(\\tan \\theta = x\\) with \\(-\\frac{\\pi}{2} < \\theta < \\frac{\\pi}{2}\\). In this range \\(\\cos \\theta > 0\\), so \\(\\cos \\theta = \\frac{1}{\\sqrt{1 + \\tan^2 \\theta}}\\), giving \\(f(x) = \\frac{1}{\\sqrt{1 + x^2}}\\).\n\nDifferentiating, \\(f'(x) = -\\frac{x}{(1 + x^2)^{3/2}}\\). This is negative for \\(x > 0\\) and positive for \\(x < 0\\).\n\nSo \\(f\\) increases for \\(x < 0\\) and decreases for \\(x > 0\\). It is therefore not decreasing on \\((-1, 1)\\) or on all of \\(\\mathbf{R}\\). So the answer is option (C).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "5",
+      "label": "A",
+      "value": "\\(A = (-2, 2]\\)",
+      "working": "The determinant is \\((3x - 1)(5) - (2)(-2) = 15x - 5 + 4 = 15x - 1\\).\n\nThe condition is \\(-31 < 15x - 1 \\le 29\\). Add 1 throughout: \\(-30 < 15x \\le 30\\). Divide by 15: \\(-2 < x \\le 2\\).\n\nThe left end is strict and the right end is included, so \\(A = (-2, 2]\\). So the answer is option (A).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "6",
+      "label": "C",
+      "value": "8",
+      "working": "From the conditions, \\(|z_1| = 1\\), \\(|z_2 - 1| = 2\\) and \\(|z_3 + 1| = 2\\).\n\nUse the fact that for any complex number \\(w\\), \\(w \\bar{w} = |w|^2\\), so \\(\\frac{1}{w} = \\frac{\\bar{w}}{|w|^2}\\). Hence\n\n\\(\\frac{1}{z_1} = \\bar{z_1}\\), \\(\\frac{1}{z_2 - 1} = \\frac{\\overline{z_2 - 1}}{4}\\), \\(\\frac{1}{z_3 + 1} = \\frac{\\overline{z_3 + 1}}{4}\\).\n\nAdding, the sum equals \\(\\frac{1}{4} \\overline{\\left(4z_1 + (z_2 - 1) + (z_3 + 1)\\right)} = \\frac{1}{4} \\overline{(4z_1 + z_2 + z_3)}\\).\n\nA conjugate has the same modulus, so the given condition says \\(\\frac{1}{4}|4z_1 + z_2 + z_3| = 2\\), which gives \\(|4z_1 + z_2 + z_3| = 8\\). So the answer is option (C).",
+      "difficulty": "Hard",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "7",
+      "label": "D",
+      "value": "Every non-zero integer is a point of discontinuity of \\(f\\)",
+      "working": "Both \\(|x^3 - 3x|\\) and \\([x]\\) are continuous at every non-integer, so \\(f\\) can only break at an integer \\(n\\).\n\nAt \\(x = n\\), as \\(x \\to n^-\\), \\([x] = n - 1\\), so the left limit is \\(|n^3 - 3n|(n - 1)\\). The value (and right limit) is \\(|n^3 - 3n| \\cdot n\\). These differ by \\(|n^3 - 3n|\\), so \\(f\\) is continuous at \\(n\\) only when \\(n^3 - 3n = 0\\), that is \\(n = 0\\) or \\(n = \\pm\\sqrt{3}\\).\n\nThe only integer among these is 0, so \\(f\\) is continuous at 0 but discontinuous at every non-zero integer (for example at 1, the jump is \\(|1 - 3| = 2\\)). The points \\(\\pm\\sqrt{3}\\) are not integers, so \\(f\\) is continuous there anyway. So the answer is option (D).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "8",
+      "label": "C",
+      "value": "\\(y = 4\\sqrt{3}(x - 2)\\)",
+      "working": "First check the point lies on the ellipse: \\(1 + 16 \\cdot \\frac{3}{16} = 4\\). Yes.\n\nThe tangent to \\(x^2 + 16y^2 = 4\\) at \\((x_1, y_1)\\) is \\(x x_1 + 16 y y_1 = 4\\). At \\(\\left(1, \\frac{\\sqrt{3}}{4}\\right)\\) this is \\(x + 4\\sqrt{3}\\, y = 4\\), with slope \\(-\\frac{1}{4\\sqrt{3}}\\).\n\nA perpendicular line has slope \\(4\\sqrt{3}\\) (the product of the slopes is \\(-1\\)). Through \\((2, 0)\\) it is \\(y = 4\\sqrt{3}(x - 2)\\).\n\nOption (B) has the slope \\(\\frac{1}{4\\sqrt{3}}\\), which is the reciprocal without the sign change, not the perpendicular slope. So the answer is option (C).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "9",
+      "label": "B",
+      "value": "\\(\\frac{3}{\\sqrt{2}}\\)",
+      "working": "Let \\(\\vec{c} = 3\\hat{i} - 4\\hat{j} + 5\\hat{k}\\). The condition \\(\\vec{a} \\times \\vec{c} = \\vec{c} \\times \\vec{b}\\) can be written as \\(\\vec{a} \\times \\vec{c} + \\vec{b} \\times \\vec{c} = \\vec{0}\\), since \\(\\vec{c} \\times \\vec{b} = -\\vec{b} \\times \\vec{c}\\). So \\((\\vec{a} + \\vec{b}) \\times \\vec{c} = \\vec{0}\\), which means \\(\\vec{a} + \\vec{b}\\) is **parallel** to \\(\\vec{c}\\).\n\nNow \\(|\\vec{c}| = \\sqrt{9 + 16 + 25} = 5\\sqrt{2}\\). Since \\(|\\vec{a} + \\vec{b}| = 15\\), we get \\(\\vec{a} + \\vec{b} = \\pm \\frac{15}{5\\sqrt{2}} \\vec{c} = \\pm \\frac{3}{\\sqrt{2}} \\vec{c}\\).\n\nAlso \\(\\vec{c} \\cdot (2\\hat{i} + 3\\hat{j} + \\hat{k}) = 6 - 12 + 5 = -1\\).\n\nSo \\(|(\\vec{a} + \\vec{b}) \\cdot (2\\hat{i} + 3\\hat{j} + \\hat{k})| = \\frac{3}{\\sqrt{2}} \\cdot |-1| = \\frac{3}{\\sqrt{2}}\\). So the answer is option (B).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "10",
+      "label": "D",
+      "value": "\\(2 \\operatorname{cosec} x\\)",
+      "working": "Put \\(u = \\sin x\\). Then \\(\\log(\\sin^2 x) = \\log(u^2) = 2 \\log u\\) (where \\(\\sin x > 0\\); in general \\(\\log(u^2) = 2\\log|u|\\), which has the same derivative).\n\nSo \\(\\frac{d}{du}\\left(2 \\log u\\right) = \\frac{2}{u} = \\frac{2}{\\sin x} = 2 \\operatorname{cosec} x\\).\n\nA common slip is to differentiate with respect to \\(x\\) instead, which gives \\(2\\cot x\\), not one of the choices. So the answer is option (D).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "11",
+      "label": "C",
+      "value": "13",
+      "working": "\\(S_{n+3} - S_n = a_{n+1} + a_{n+2} + a_{n+3}\\), the sum of three consecutive terms.\n\nTake \\(n = 10\\): \\(a_{11} + a_{12} + a_{13} = 13(10) + 7 = 137\\).\n\nTake \\(n = 9\\): \\(a_{10} + a_{11} + a_{12} = 13(9) + 7 = 124\\).\n\nSubtracting, \\(a_{13} - a_{10} = 137 - 124 = 13\\). (The value 137 in option (D) is just the first sum, a tempting trap.) So the answer is option (C).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "12",
+      "label": "A",
+      "value": "\\(\\frac{13}{16}\\)",
+      "working": "With 5 fair coins there are \\(2^5 = 32\\) equally likely outcomes. Use the **complement**: \"at least two heads\" fails only when there are 0 heads or exactly 1 head.\n\n0 heads: 1 outcome. 1 head: \\({}^5C_1 = 5\\) outcomes. So \\(P(\\text{fewer than 2 heads}) = \\frac{6}{32}\\).\n\nHence \\(P(\\text{at least 2 heads}) = 1 - \\frac{6}{32} = \\frac{26}{32} = \\frac{13}{16}\\). So the answer is option (A).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "13",
+      "label": "B",
+      "value": "\\(f\\) is onto but not one-one",
+      "working": "For \\(x \\ge 1\\): \\(f(x) = x^2 - 4x - 5 = (x - 2)^2 - 9\\). This falls from \\(f(1) = -8\\) to \\(f(2) = -9\\) and then rises without bound, so its range is \\([-9, \\infty)\\).\n\nFor \\(x < 1\\): \\(f(x) = 2x\\) takes every value in \\((-\\infty, 2)\\).\n\n**Onto:** the union \\((-\\infty, 2) \\cup [-9, \\infty)\\) is all of \\(\\mathbf{R}\\), so \\(f\\) is onto.\n\n**Not one-one:** \\(f(1) = -8\\) and \\(f(3) = 9 - 12 - 5 = -8\\), two different inputs with the same output. (Also \\(f(-4) = -8\\).)\n\nSo the answer is option (B).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "14",
+      "label": "A",
+      "value": "\\(12y = x^3 - \\frac{1}{x^9}\\)",
+      "working": "Divide by \\(x^2\\) (allowed since \\(x > 0\\)): \\(\\frac{dy}{dx} + \\frac{9}{x} y = x^2\\). This is a **linear** equation with \\(P = \\frac{9}{x}\\), \\(Q = x^2\\).\n\nIntegrating factor: \\(e^{\\int \\frac{9}{x} dx} = e^{9 \\log x} = x^9\\).\n\nSo \\(\\frac{d}{dx}(y x^9) = x^{11}\\), giving \\(y x^9 = \\frac{x^{12}}{12} + C\\).\n\nWith \\(y = 0\\) at \\(x = 1\\): \\(0 = \\frac{1}{12} + C\\), so \\(C = -\\frac{1}{12}\\). Then \\(y = \\frac{x^3}{12} - \\frac{1}{12 x^9}\\), that is \\(12y = x^3 - \\frac{1}{x^9}\\). So the answer is option (A).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "15",
+      "label": "C",
+      "value": "\\(\\frac{\\pi}{2}\\)",
+      "working": "Let \\(I = \\int_0^{\\pi} x |\\cos x| \\sin x \\, dx\\). Use the property \\(\\int_0^a f(x)\\, dx = \\int_0^a f(a - x)\\, dx\\) with \\(a = \\pi\\). Since \\(|\\cos(\\pi - x)| = |\\cos x|\\) and \\(\\sin(\\pi - x) = \\sin x\\),\n\n\\(I = \\int_0^{\\pi} (\\pi - x) |\\cos x| \\sin x \\, dx\\).\n\nAdding the two forms: \\(2I = \\pi \\int_0^{\\pi} |\\cos x| \\sin x \\, dx\\).\n\nThe integrand \\(|\\cos x| \\sin x\\) is symmetric about \\(\\frac{\\pi}{2}\\), so \\(\\int_0^{\\pi} |\\cos x| \\sin x \\, dx = 2 \\int_0^{\\pi/2} \\sin x \\cos x \\, dx = 2 \\cdot \\frac{1}{2} = 1\\).\n\nSo \\(2I = \\pi\\), giving \\(I = \\frac{\\pi}{2}\\). So the answer is option (C).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    }
+  ]
+}
