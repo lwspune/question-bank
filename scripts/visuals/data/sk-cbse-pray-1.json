@@ -1,0 +1,648 @@
+{
+  "//": "Assembled from agent drafts (sketch).",
+  "visuals": [
+    {
+      "id": "085cd91e-895a-483c-842b-b0d4bd02d9bb",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "s3": "sqrt(3)",
+            "Ay": "4",
+            "Cx": "Ay*s3",
+            "t": "0.1",
+            "Px": "Cx*t",
+            "Py": "Ay*(1-t)",
+            "Ex": "Px+0.6",
+            "Ey": "Py+s3*0.6",
+            "Qy": "Py-s3*Px",
+            "Rx": "Qy/s3",
+            "sl": "(Ay-Rx/s3)*s3/2",
+            "Sx": "Rx+0.5*sl",
+            "Sy": "s3/2*sl",
+            "Xx": "Sx+0.6",
+            "Xy": "Sy+s3*0.6",
+            "ic": "deg(asin(1/sqrt(2)))",
+            "d1": "180-2*60",
+            "d2": "180-2*30",
+            "dev": "d1+d2"
+          },
+          "view": {
+            "x": [
+              -1.5,
+              9.5
+            ],
+            "y": [
+              -1.8,
+              5.6
+            ]
+          },
+          "points": {
+            "A": [
+              0,
+              "Ay"
+            ],
+            "B": [
+              0,
+              0
+            ],
+            "C": [
+              "Cx",
+              0
+            ],
+            "E": [
+              "Ex",
+              "Ey"
+            ],
+            "P": [
+              "Px",
+              "Py"
+            ],
+            "Q": [
+              0,
+              "Qy"
+            ],
+            "R": [
+              "Rx",
+              0
+            ],
+            "S": [
+              "Sx",
+              "Sy"
+            ],
+            "X": [
+              "Xx",
+              "Xy"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "points": [
+                "A",
+                "B",
+                "C"
+              ],
+              "step": "s1"
+            },
+            {
+              "kind": "segment",
+              "from": "B",
+              "to": "C",
+              "step": "s1",
+              "tone": "brand",
+              "label": "mirror",
+              "labelAt": [
+                3.4,
+                -0.15
+              ],
+              "pos": "s"
+            },
+            {
+              "kind": "point",
+              "at": "A",
+              "step": "s1",
+              "label": "A",
+              "pos": "nw"
+            },
+            {
+              "kind": "point",
+              "at": "B",
+              "step": "s1",
+              "label": "B",
+              "pos": "sw"
+            },
+            {
+              "kind": "point",
+              "at": "C",
+              "step": "s1",
+              "label": "C",
+              "pos": "se"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -1.4,
+                -1
+              ],
+              "text": "critical angle = {ic} deg",
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "arrow",
+              "from": "E",
+              "to": "P",
+              "step": "s2",
+              "tone": "amber"
+            },
+            {
+              "kind": "arrow",
+              "from": "P",
+              "to": "Q",
+              "step": "s2",
+              "tone": "amber"
+            },
+            {
+              "kind": "arrow",
+              "from": "Q",
+              "to": "R",
+              "step": "s2",
+              "tone": "amber"
+            },
+            {
+              "kind": "point",
+              "at": "Q",
+              "step": "s2",
+              "label": "Q",
+              "pos": "w"
+            },
+            {
+              "kind": "label",
+              "at": [
+                4.4,
+                4.4
+              ],
+              "text": "AB: i = 60 deg, total reflection",
+              "step": "s2",
+              "tone": "muted"
+            },
+            {
+              "kind": "arrow",
+              "from": "R",
+              "to": "S",
+              "step": "s3",
+              "tone": "amber"
+            },
+            {
+              "kind": "arrow",
+              "from": "S",
+              "to": "X",
+              "step": "s3",
+              "tone": "amber"
+            },
+            {
+              "kind": "point",
+              "at": "R",
+              "step": "s3",
+              "label": "R",
+              "pos": "s"
+            },
+            {
+              "kind": "point",
+              "at": "S",
+              "step": "s3",
+              "label": "S",
+              "pos": "se"
+            },
+            {
+              "kind": "label",
+              "at": [
+                4.4,
+                5.1
+              ],
+              "text": "deviation = {d1} + {d2} = {dev} deg",
+              "step": "s4",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "ic = 45",
+            "Cx*(Px-Ex)+(0-Ay)*(Py-Ey) = 0",
+            "Sy = Ay - Sx/s3",
+            "Qy > 0",
+            "dev = 180",
+            "Cx*(Xx-Sx)+(0-Ay)*(Xy-Sy) = 0"
+          ],
+          "answer": "dev"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 11,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 15,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "83ff36fe",
+        "answer": {
+          "value": 180,
+          "label": "180 deg"
+        }
+      }
+    },
+    {
+      "id": "191e3355-54b8-4732-994e-af6b1170a9ec",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "s3": "sqrt(3)",
+            "Ay": "2*s3",
+            "t": "0.8",
+            "Px": "2*t",
+            "Py": "Ay*t",
+            "dx": "s3/2",
+            "dy": "-0.5",
+            "sl": "4*s3-s3*Px-Py",
+            "Qx": "Px+dx*sl",
+            "Qy": "Py+dy*sl",
+            "Ex": "Px-dx",
+            "Ey": "Py-dy",
+            "Yb": "-0.6",
+            "iAC": "deg(acos((dx*s3+dy)/2))",
+            "turn": "abs(deg(atan2(-1,0))-deg(atan2(dy,dx)))"
+          },
+          "view": {
+            "x": [
+              -1,
+              5.5
+            ],
+            "y": [
+              -2.2,
+              4.2
+            ]
+          },
+          "points": {
+            "A": [
+              2,
+              "Ay"
+            ],
+            "B": [
+              0,
+              0
+            ],
+            "C": [
+              4,
+              0
+            ],
+            "E": [
+              "Ex",
+              "Ey"
+            ],
+            "P": [
+              "Px",
+              "Py"
+            ],
+            "Q": [
+              "Qx",
+              "Qy"
+            ],
+            "R": [
+              "Qx",
+              0
+            ],
+            "X": [
+              "Qx",
+              "Yb"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "points": [
+                "A",
+                "B",
+                "C"
+              ],
+              "step": "s1"
+            },
+            {
+              "kind": "point",
+              "at": "A",
+              "step": "s1",
+              "label": "A",
+              "pos": "n"
+            },
+            {
+              "kind": "point",
+              "at": "B",
+              "step": "s1",
+              "label": "B",
+              "pos": "sw"
+            },
+            {
+              "kind": "point",
+              "at": "C",
+              "step": "s1",
+              "label": "C",
+              "pos": "se"
+            },
+            {
+              "kind": "arrow",
+              "from": "E",
+              "to": "P",
+              "step": "s1",
+              "tone": "amber"
+            },
+            {
+              "kind": "arrow",
+              "from": "P",
+              "to": "Q",
+              "step": "s2",
+              "tone": "amber"
+            },
+            {
+              "kind": "point",
+              "at": "Q",
+              "step": "s2",
+              "label": "Q",
+              "pos": "ne"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -0.9,
+                -1.2
+              ],
+              "text": "AC: i = {iAC} deg, above 24.5 deg",
+              "step": "s2",
+              "tone": "muted"
+            },
+            {
+              "kind": "arrow",
+              "from": "Q",
+              "to": "X",
+              "step": "s3",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -0.9,
+                -1.8
+              ],
+              "text": "total reflection, leaves BC normally",
+              "step": "s3",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                2.6,
+                4
+              ],
+              "text": "turned through {turn} deg",
+              "step": "s4",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "2*dx+2*s3*dy = 0",
+            "s3*Qx+Qy = 4*s3",
+            "abs(iAC-60) < 0.0001",
+            "Qx > 0",
+            "Qy > 0",
+            "turn = 60"
+          ],
+          "answer": "turn"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 10,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 12,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "94711076",
+        "answer": {
+          "value": 60,
+          "label": "60 deg"
+        }
+      }
+    },
+    {
+      "id": "ec0057d7-8aed-47d2-b024-d64c0ccec014",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "Ay": "4",
+            "Cx": "4",
+            "y0": "1.6",
+            "Qx": "Ay-y0",
+            "Ex": "-1.4",
+            "Xy": "-0.9",
+            "ic1": "deg(asin(1/sqrt(2)))",
+            "ic2": "deg(asin(1/sqrt(3)))",
+            "turn": "90"
+          },
+          "view": {
+            "x": [
+              -2,
+              6.4
+            ],
+            "y": [
+              -2.4,
+              4.8
+            ]
+          },
+          "points": {
+            "A": [
+              0,
+              "Ay"
+            ],
+            "B": [
+              0,
+              0
+            ],
+            "C": [
+              "Cx",
+              0
+            ],
+            "E": [
+              "Ex",
+              "y0"
+            ],
+            "N": [
+              0,
+              "y0"
+            ],
+            "Q": [
+              "Qx",
+              "y0"
+            ],
+            "R": [
+              "Qx",
+              0
+            ],
+            "X": [
+              "Qx",
+              "Xy"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "points": [
+                "A",
+                "B",
+                "C"
+              ],
+              "step": "s1"
+            },
+            {
+              "kind": "point",
+              "at": "A",
+              "step": "s1",
+              "label": "A",
+              "pos": "nw"
+            },
+            {
+              "kind": "point",
+              "at": "B",
+              "step": "s1",
+              "label": "B",
+              "pos": "sw"
+            },
+            {
+              "kind": "point",
+              "at": "C",
+              "step": "s1",
+              "label": "C",
+              "pos": "se"
+            },
+            {
+              "kind": "arrow",
+              "from": "E",
+              "to": "N",
+              "step": "s1",
+              "tone": "amber"
+            },
+            {
+              "kind": "segment",
+              "from": "N",
+              "to": "Q",
+              "step": "s2",
+              "tone": "amber"
+            },
+            {
+              "kind": "point",
+              "at": "Q",
+              "step": "s2",
+              "label": "i = 45 deg",
+              "pos": "ne"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -1.9,
+                -1.4
+              ],
+              "text": "mu = sqrt(2): ic = {ic1} deg, grazes AC",
+              "step": "s2",
+              "tone": "muted"
+            },
+            {
+              "kind": "arrow",
+              "from": "Q",
+              "to": "X",
+              "step": "s3",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -1.9,
+                -2
+              ],
+              "text": "mu = sqrt(3): TIR at AC, leaves BC",
+              "step": "s3",
+              "tone": "muted"
+            },
+            {
+              "kind": "label",
+              "at": [
+                2.4,
+                4.2
+              ],
+              "text": "turned through {turn} deg",
+              "step": "s4",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "Qx+y0 = Ay",
+            "ic1 = 45",
+            "ic2 < 45",
+            "Ay = Cx",
+            "turn = 90"
+          ],
+          "answer": "turn"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 12,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 18,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "934ddc74",
+        "answer": {
+          "value": 90,
+          "label": "90 deg (mu = sqrt(3))"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

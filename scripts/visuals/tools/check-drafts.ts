@@ -20,6 +20,18 @@ if (!scene || !files.length) {
   process.exit(2);
 }
 
+// Phrases agents used for the program's checking that reached students' notes (CBSE 12 Physics, 2026-11-09).
+const CHECK_TALK = /\b(stands for|checked at|shown (here |at |for )+|for [a-zA-Z] ?= ?-?\d[^,;]*this gives|sample values?|for the check(ing)?|not shown|program checks?)/i;
+
+/** Every note, label and text string in a draft's params (not the maths). */
+function textsOf(x: unknown): string[] {
+  if (Array.isArray(x)) return x.flatMap(textsOf);
+  if (!x || typeof x !== "object") return [];
+  return Object.entries(x as Record<string, unknown>).flatMap(([k, v]) =>
+    typeof v === "string" ? (["note", "label", "text"].includes(k) ? [v] : []) : textsOf(v),
+  );
+}
+
 let ok = 0;
 let bad = 0;
 for (const f of files) {
@@ -30,6 +42,51 @@ for (const f of files) {
     // The assembler's own limit: a longer label drops the draft there.
     if (typeof d.answer?.label !== "string" || !d.answer.label.trim() || d.answer.label.length > 32) {
       console.log(`${tag}: answer.label must be 1 to 32 characters`);
+      bad++;
+      continue;
+    }
+    // Students read every note and label; words about the checking ("x stands for v", "checked at u = -12") are not for them.
+    const aboutTheCheck = textsOf(d.params).find((t) => CHECK_TALK.test(t));
+    if (aboutTheCheck) {
+      console.log(`${tag}: a note or label talks about the checking, not the working: "${aboutTheCheck}"`);
+      bad++;
+      continue;
+    }
+    // A stacked fraction in a matrix cell: \dfrac rows are cut off by the frame, \tfrac rows crowd into each other
+    // (CBSE 12 Matrices, 21 drafts). Write the cell as 5/2.
+    const tallCell = ((d.params as { lines?: { tex?: string }[] })?.lines ?? []).find((l) =>
+      (l.tex?.match(/\\begin\{([pbv]?matrix)\}[\s\S]*?\\end\{\1\}/g) ?? []).some((m) => /\\[td]?frac/.test(m)),
+    );
+    if (tallCell) {
+      console.log(`${tag}: write a fraction inside a matrix as 5/2, not \\frac (stacked cells are cut off or crowd): ${tallCell.tex}`);
+      bad++;
+      continue;
+    }
+    // A calc line whose tex lost its multiplication signs: "23 + (-1)1" for f "2*3+(-1)*1" reads as twenty-three
+    // (146 lines in one CBSE 12 Determinants run). Write \cdot (or brackets) between numbers that multiply.
+    const merged = ((d.params as { lines?: { kind?: string; tex?: string; f?: string }[] })?.lines ?? []).find((l) => {
+      if (l.kind !== "calc" || typeof l.f !== "string" || typeof l.tex !== "string" || !l.f.includes("*")) return false;
+      const i = l.tex.indexOf("="), k = l.tex.lastIndexOf("=");
+      if (i < 0 || k <= i) return false;
+      const mid = l.tex.slice(i + 1, k);
+      if (/\\cdot|\\times|frac/.test(mid)) return false;
+      const strip = (s: string) => s.replace(/\\left|\\right/g, "").replace(/[^0-9()+\-.]/g, "");
+      const nums = (s: string) => (s.replace(/\\left|\\right/g, "").match(/\d+(\.\d+)?/g) ?? []).join(",");
+      return strip(mid) === strip(l.f) && nums(mid) !== nums(l.f);
+    });
+    if (merged) {
+      console.log(`${tag}: numbers that multiply run together in the tex (write \\cdot between them): ${merged.tex}`);
+      bad++;
+      continue;
+    }
+    // A line or item whose step no beat plays never appears (2026-11-09: 10 of 11,991 stored visuals had one).
+    const parts = ((d.params as { lines?: { step?: string }[]; items?: { step?: string }[] })?.lines ??
+      (d.params as { items?: { step?: string }[] })?.items ??
+      []) as { step?: string }[];
+    const played = new Set(((d as { steps?: { beats?: string[] }[] }).steps ?? []).flatMap((s) => s.beats ?? []));
+    const hidden = [...new Set(parts.map((l) => l.step).filter((s): s is string => !!s && !played.has(s)))];
+    if (hidden.length) {
+      console.log(`${tag}: no step plays ${hidden.join(", ")}, so those lines never appear; use the step ids the steps name`);
       bad++;
       continue;
     }

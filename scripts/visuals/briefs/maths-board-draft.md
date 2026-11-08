@@ -65,6 +65,32 @@ algebra-steps draft, a sketch draft, or a skip.
   console cannot show, not a damaged character: check its code point
   before reporting it (four false reports on Definite Integration).
 
+## Learned on CBSE 12 (2026-11-09, Continuity and Integrals)
+
+- Every line's `step` must be one a step's `beats` names, or the line never
+  appears. check-drafts now refuses it.
+- The values in `vars` stay hidden: no "shown here for c = 2", no "for b = 2
+  this gives". check-drafts refuses those phrases.
+- An odd/even property is shown as the rule, `f(x) + f(-x) = 0`, with `f` and
+  `value` evaluated at your sample x. Never print the sample point itself
+  (`f(-0.7) + f(0.7) = 0` reads as a mystery to a student).
+- A nested fraction inside a denominator is written stacked
+  (`\dfrac{\sqrt{n^2-1}}{n}`), not as `\sqrt{n^2-1}/n`, which reads as the
+  root of everything after it.
+- A square root over a tall radicand (a fraction or `\left(...\right)^2`
+  inside) as a denominator is clipped at the top: write
+  `1\Big/\sqrt{\left(x-\tfrac32\right)^2-\tfrac14}`, not
+  `\dfrac{1}{\sqrt{...}}`. Inside a matrix write fractions as `5/2`
+  (check-drafts refuses `\frac` there).
+- The last line is the answer the question asks for, never a comparison with
+  a wrong option.
+- A product of two numbers is written `2 \cdot 3` (or `(-1) \cdot 5`), never
+  `23` or `(-1)5`: run together they read as one number (146 lines in one
+  Determinants run). check-drafts refuses it.
+- An inverse-trig simplification (sin⁻¹(sin u) = u and the like) holds only
+  on the principal range: if the stored solution applies it without saying
+  where, flag it (two CBSE solutions claimed it for all x).
+
 ## Output, checks and report
 
 As in physics-draft.md: three files per slice (algebra, sketch, skip with a

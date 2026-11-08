@@ -1,0 +1,2387 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "62badccb-f8f4-4b83-8450-8a4885d5dbc8",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{Each cycle doubles the DNA molecules}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "2^{10} = 1024",
+              "f": "2^10",
+              "value": "1024"
+            }
+          ],
+          "answer": "2^10"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "2db499a9",
+        "answer": {
+          "value": 1024,
+          "label": "1024 molecules"
+        }
+      }
+    },
+    {
+      "id": "05993992-7b54-44bb-9a4d-9a7c6134bc8d",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "1\\ \\text{million} \\to 2\\ \\text{million in one hour}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{2 - 1}{1} = 1",
+              "f": "(2-1)/1",
+              "value": "1",
+              "note": "per bacterium per hour"
+            }
+          ],
+          "answer": "(2-1)/1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "a12220f8",
+        "answer": {
+          "value": 1,
+          "label": "1 per bacterium per hour"
+        }
+      }
+    },
+    {
+      "id": "1bb2989e-1d3e-461b-9920-15fe5ab5fefc",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "N_t = N_0\\, e^{rt},\\quad N_t = 2N_0,\\quad t = 3"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "3r = \\ln 2 = 0.6931",
+              "f": "log(2)",
+              "value": "0.6931",
+              "dp": 4
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "r = \\dfrac{0.6931}{3} = 0.2310",
+              "f": "0.6931/3",
+              "value": "0.2310",
+              "dp": 4
+            }
+          ],
+          "answer": "log(2)/3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 11,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "c7a93d4d",
+        "answer": {
+          "value": 0.23104906018664842,
+          "label": "r = 0.231 per year"
+        }
+      }
+    },
+    {
+      "id": "28704eb2-8111-4caf-8d31-19e656d4325a",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "N_{t+1} = N_t + [(B + I) - (D + E)]"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "(200 + 200) - (150 + 100) = 400 - 250 = 150",
+              "f": "(200+200)-(150+100)",
+              "value": "150"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "N_t = 800 - 150 = 650",
+              "f": "800-150",
+              "value": "650"
+            }
+          ],
+          "answer": "800-150"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "2203794f",
+        "answer": {
+          "value": 650,
+          "label": "650"
+        }
+      }
+    },
+    {
+      "id": "76c67f88-6e1f-4eba-bb87-85386f05a92c",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{Net increase} = (B + I) - (D + E)"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "(280 + 40) - (200 + 50) = 320 - 250 = 70",
+              "f": "(280+40)-(200+50)",
+              "value": "70"
+            }
+          ],
+          "answer": "(280+40)-(200+50)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "8c6573c5",
+        "answer": {
+          "value": 70,
+          "label": "70"
+        }
+      }
+    },
+    {
+      "id": "28e4a83d-e784-4208-804d-577a40b0d9da",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{each microspore mother cell}\\to 4\\ \\text{pollen grains}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "325 \\cdot 4 = 1300",
+              "f": "325*4",
+              "value": "1300"
+            }
+          ],
+          "answer": "325*4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "1b7a9387",
+        "answer": {
+          "value": 1300,
+          "label": "1300 pollen grains"
+        }
+      }
+    },
+    {
+      "id": "7058c624-29af-431c-8fa5-048a34b462db",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{Leaf cell: } 2n = 10"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "n = \\dfrac{10}{2} = 5",
+              "f": "10/2",
+              "value": "5"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{Endosperm } 3n = 3 \\cdot 5 = 15",
+              "f": "3*5",
+              "value": "15"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{Zygote } 2n = 2 \\cdot 5 = 10",
+              "f": "2*5",
+              "value": "10"
+            }
+          ],
+          "answer": "3*5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "6958e663",
+        "answer": {
+          "value": 15,
+          "label": "Endosperm 15; zygote 10"
+        }
+      }
+    },
+    {
+      "id": "7942de4e-8597-4043-a249-68d3812b5b7b",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "2 \\cdot 2 = 4\\ \\text{microsporangia}",
+              "f": "2*2",
+              "value": "4"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "4 \\cdot 200 = 800\\ \\text{mother cells}",
+              "f": "4*200",
+              "value": "800"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "800 \\cdot 4 = 3200\\ \\text{male gametophytes}",
+              "f": "800*4",
+              "value": "3200"
+            }
+          ],
+          "answer": "800*4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "fa3696ea",
+        "answer": {
+          "value": 3200,
+          "label": "3200 male gametophytes"
+        }
+      }
+    },
+    {
+      "id": "c787d513-99b0-429e-b27b-a0fb3cfc3603",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "2 \\cdot 2 = 4\\ \\text{microsporangia}",
+              "f": "2*2",
+              "value": "4"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "4 \\cdot 200 = 800\\ \\text{mother cells}",
+              "f": "4*200",
+              "value": "800"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "800 \\cdot 4 = 3200\\ \\text{male gametophytes}",
+              "f": "800*4",
+              "value": "3200"
+            }
+          ],
+          "answer": "800*4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "663dd29f",
+        "answer": {
+          "value": 3200,
+          "label": "3200 male gametophytes"
+        }
+      }
+    },
+    {
+      "id": "ef9b950c-3fb9-41cc-b9ad-23aa47969b00",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "50 \\cdot 4 = 200\\ \\text{pollen grains}",
+              "f": "50*4",
+              "value": "200"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\text{1 megaspore mother cell} \\to 1\\ \\text{ovule, so } 50\\ \\text{ovules}"
+            }
+          ],
+          "answer": "50*4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "fad5e031",
+        "answer": {
+          "value": 200,
+          "label": "200 pollen grains, 50 ovules"
+        }
+      }
+    },
+    {
+      "id": "fd613fa0-b54c-4657-a1c7-a4feebf6171a",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{Endosperm is triploid: } 3n = 24"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "n = \\dfrac{24}{3} = 8",
+              "f": "24/3",
+              "value": "8"
+            }
+          ],
+          "answer": "24/3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "dbdfb3f2",
+        "answer": {
+          "value": 8,
+          "label": "8 chromosomes"
+        }
+      }
+    },
+    {
+      "id": "3b9eea16-05a4-42fa-8801-7a1fb2557a21",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "46 - 2 = 44\\ \\text{autosomes}",
+              "f": "46-2",
+              "value": "44"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{44}{2} = 22\\ \\text{autosomes}",
+              "f": "44/2",
+              "value": "22"
+            }
+          ],
+          "answer": "44/2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "32bfe2bb",
+        "answer": {
+          "value": 22,
+          "label": "22 autosomes"
+        }
+      }
+    },
+    {
+      "id": "32db4bd7-a487-4d60-87fc-44fd1429832f",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{F}_2: 4\\ \\text{phenotypes in the ratio } 9:3:3:1"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "3 \\cdot 3 = 9\\ \\text{genotypes}",
+              "f": "3*3",
+              "value": "9",
+              "note": "3 genotypes per gene"
+            }
+          ],
+          "answer": "3*3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "8c51cc97",
+        "answer": {
+          "value": 9,
+          "label": "4 phenotypes; 9 genotypes"
+        }
+      }
+    },
+    {
+      "id": "369a66e0-67bf-4d84-b964-1d30a3ef9dc6",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "R\\text{-}S = 20\\%,\\quad S\\text{-}T = 15\\%,\\quad R\\text{-}T = 35\\%"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "20 + 15 = 35",
+              "f": "20+15",
+              "value": "35",
+              "note": "R-S plus S-T equals R-T"
+            }
+          ],
+          "answer": "20+15"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "b2306793",
+        "answer": {
+          "value": 35,
+          "label": "Order R, S, T"
+        }
+      }
+    },
+    {
+      "id": "36f5c347-6136-4a3e-9cf0-8476a4fc4bdd",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{Each heterozygous locus gives 2 kinds of gametes}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "2^4 = 2 \\cdot 2 \\cdot 2 \\cdot 2 = 16",
+              "f": "2^4",
+              "value": "16"
+            }
+          ],
+          "answer": "2^4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "7973ea54",
+        "answer": {
+          "value": 16,
+          "label": "16 types of gametes"
+        }
+      }
+    },
+    {
+      "id": "448abde1-404d-4ece-8645-2b7d7b7d3f3f",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{Each heterozygous locus gives 2 kinds of gametes}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "2^3 = 2 \\cdot 2 \\cdot 2 = 8",
+              "f": "2^3",
+              "value": "8"
+            }
+          ],
+          "answer": "2^3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "f0f16e19",
+        "answer": {
+          "value": 8,
+          "label": "8 types of gametes"
+        }
+      }
+    },
+    {
+      "id": "54102965-04ee-4c41-8bb4-24fcf77d2bc2",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{F}_2\\ \\text{ratio } 9:3:3:1,\\quad \\text{total } 2400"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{9+1}{16} = \\dfrac{10}{16}",
+              "f": "(9+1)/16",
+              "value": "10/16"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{10}{16} \\cdot 2400 = 1500",
+              "f": "10/16*2400",
+              "value": "1500"
+            }
+          ],
+          "answer": "10/16*2400"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "7456cdd7",
+        "answer": {
+          "value": 1500,
+          "label": "1500 plants"
+        }
+      }
+    },
+    {
+      "id": "78da154a-d2fe-4097-8459-dacbb4c40be8",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{Mother is a carrier } \\text{X}^{\\text{c}}\\text{X}: \\text{ half her eggs carry } \\text{X}^{\\text{c}}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{1}{2} \\cdot 100 = 50\\%",
+              "f": "1/2*100",
+              "value": "50",
+              "note": "half the sons are colour-blind"
+            }
+          ],
+          "answer": "1/2*100"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "d9675acd",
+        "answer": {
+          "value": 50,
+          "label": "50%"
+        }
+      }
+    },
+    {
+      "id": "9ab26796-557d-4e33-a83b-2eda47d01558",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{Male: ZZ, female: ZW}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "18 \\cdot 2 = 36\\ \\text{autosomes}",
+              "f": "18*2",
+              "value": "36"
+            }
+          ],
+          "answer": "18*2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "135e3ff1",
+        "answer": {
+          "value": 36,
+          "label": "36; ZZ; 36; ZW"
+        }
+      }
+    },
+    {
+      "id": "bfae8a24-2484-499b-a2d7-dbbc31553f5f",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{X}\\text{X}^{\\text{c}} \\times \\text{X}\\text{Y}\\ \\text{gives 4 equally likely progeny}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{1}{4} \\cdot 100 = 25\\%",
+              "f": "1/4*100",
+              "value": "25",
+              "note": "only X^cY is colour blind"
+            }
+          ],
+          "answer": "1/4*100"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "18102ae4",
+        "answer": {
+          "value": 25,
+          "label": "25%"
+        }
+      }
+    },
+    {
+      "id": "e404fa68-c38f-49b5-a4ee-69392a1a3b8d",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{Tt} \\times \\text{Tt}:\\ \\text{TT} : \\text{Tt} : \\text{tt} = 1 : 2 : 1"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{1}{1+2+1} \\cdot 100 = 25\\%",
+              "f": "1/(1+2+1)*100",
+              "value": "25"
+            }
+          ],
+          "answer": "1/(1+2+1)*100"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "7a8a9b12",
+        "answer": {
+          "value": 25,
+          "label": "25%"
+        }
+      }
+    },
+    {
+      "id": "e8ffea96-c978-4f2d-b3f4-e7ac5ef5f6a0",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{TtYy} \\times \\text{Ttyy}: \\text{Tt} \\times \\text{Tt}\\ \\text{and}\\ \\text{Yy} \\times \\text{yy}"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\text{Tall} = \\dfrac{3}{4},\\qquad \\text{green} = \\dfrac{1}{2}"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{3}{4} \\cdot \\dfrac{1}{2} = \\dfrac{3}{8}",
+              "f": "3/4*1/2",
+              "value": "3/8"
+            }
+          ],
+          "answer": "3/4*1/2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 11,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 12,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "033ff9dd",
+        "answer": {
+          "value": 0.375,
+          "label": "3/8"
+        }
+      }
+    },
+    {
+      "id": "eb1b21cc-fe8f-4f1d-b5c3-9cd24042623e",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{dwarf (tt)} = \\dfrac{1}{4}",
+              "f": "1/4",
+              "value": "1/4"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{green (yy)} = \\dfrac{1}{2}",
+              "f": "1/2",
+              "value": "1/2"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{1}{4} \\cdot \\dfrac{1}{2} = \\dfrac{1}{8}",
+              "f": "1/4*1/2",
+              "value": "1/8"
+            }
+          ],
+          "answer": "1/4*1/2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "5c4d561c",
+        "answer": {
+          "value": 0.125,
+          "label": "1/8"
+        }
+      }
+    },
+    {
+      "id": "00fc473e-b73d-4738-9bc6-b12de160de27",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "2 \\cdot 160 = 320\\ \\text{bases}",
+              "f": "2*160",
+              "value": "320"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{A} + \\text{T} = 100 - 2 \\cdot 30 = 40\\%",
+              "f": "100-2*30",
+              "value": "40"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{A} = \\dfrac{40}{2} = 20\\%",
+              "f": "40/2",
+              "value": "20"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\dfrac{20}{100} \\cdot 320 = 64",
+              "f": "20/100*320",
+              "value": "64"
+            }
+          ],
+          "answer": "20/100*320"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "eba89d4b",
+        "answer": {
+          "value": 64,
+          "label": "64 adenine bases"
+        }
+      }
+    },
+    {
+      "id": "0d6148bd-3ba0-4c5f-b930-38f68a1076a3",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{G} + \\text{C} = 240 + 240 = 480",
+              "f": "240+240",
+              "value": "480"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{A} + \\text{T} = 2500 - 480 = 2020",
+              "f": "2500-480",
+              "value": "2020"
+            }
+          ],
+          "answer": "2500-480"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "43d35cb5",
+        "answer": {
+          "value": 2020,
+          "label": "2020 bases"
+        }
+      }
+    },
+    {
+      "id": "1dc43b5e-2197-43be-8fb3-e1156ef85bf2",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "n = 1:\\ 12^1 = 12 < 96",
+              "f": "12^1",
+              "value": "12"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "n = 2:\\ 12^2 = 144 \\geq 96",
+              "f": "12^2",
+              "value": "144"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "\\text{A codon needs at least } n = 2\\ \\text{bases}"
+            }
+          ],
+          "answer": "2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "f58e0214",
+        "answer": {
+          "value": 2,
+          "label": "2 bases"
+        }
+      }
+    },
+    {
+      "id": "33c507b8-bcca-471a-a2f4-6ff7a121d353",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{A} + \\text{T} = 140 + 140 = 280",
+              "f": "140+140",
+              "value": "280"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{G} + \\text{C} = 2000 - 280 = 1720",
+              "f": "2000-280",
+              "value": "1720"
+            }
+          ],
+          "answer": "2000-280"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "c185254e",
+        "answer": {
+          "value": 1720,
+          "label": "1720 bases"
+        }
+      }
+    },
+    {
+      "id": "3f76350b-e84a-40f1-88e2-ed2b95512b86",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{G} + \\text{C} = 100 - 2 \\cdot 20 = 60\\%",
+              "f": "100-2*20",
+              "value": "60"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{G} = \\dfrac{60}{2} = 30\\%",
+              "f": "60/2",
+              "value": "30"
+            }
+          ],
+          "answer": "60/2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "fa014bdb",
+        "answer": {
+          "value": 30,
+          "label": "30%"
+        }
+      }
+    },
+    {
+      "id": "42e440dc-b1fb-407c-bb98-ef3f193bf0e3",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "1\\ \\text{nucleosome} = 200\\ \\text{bp}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "20 \\cdot 200 = 4000\\ \\text{bp}",
+              "f": "20*200",
+              "value": "4000"
+            }
+          ],
+          "answer": "20*200"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "966a692b",
+        "answer": {
+          "value": 4000,
+          "label": "4000 bp"
+        }
+      }
+    },
+    {
+      "id": "4f77030a-6c09-4604-84b6-e53c0a3e5286",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{G} + \\text{C} = 160 + 160 = 320",
+              "f": "160+160",
+              "value": "320"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{A} + \\text{T} = 3000 - 320 = 2680",
+              "f": "3000-320",
+              "value": "2680"
+            }
+          ],
+          "answer": "3000-320"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "0a35ef45",
+        "answer": {
+          "value": 2680,
+          "label": "2680 bases"
+        }
+      }
+    },
+    {
+      "id": "51eae2d4-ab61-4518-abe4-75ff4cccd125",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "2 \\cdot 140 = 280\\ \\text{bases}",
+              "f": "2*140",
+              "value": "280"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{T} = 0.20 \\cdot 280 = 56,\\quad \\text{A} = 56",
+              "f": "0.20*280",
+              "value": "56"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{G} + \\text{C} = 280 - 56 - 56 = 168",
+              "f": "280-56-56",
+              "value": "168"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{G} = \\dfrac{168}{2} = 84",
+              "f": "168/2",
+              "value": "84"
+            }
+          ],
+          "answer": "168/2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "45b73afb",
+        "answer": {
+          "value": 84,
+          "label": "84 guanine bases"
+        }
+      }
+    },
+    {
+      "id": "5cc0ee6c-847c-4e08-9a3f-f80f0d65ae59",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{Generation III: } 2^3 = 8\\ \\text{molecules}",
+              "f": "2^3",
+              "value": "8"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "8 - 2 = 6\\ \\text{light } (\\text{N}^{14}/\\text{N}^{14})",
+              "f": "8-2",
+              "value": "6"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "0 : 2 : 6 = 0 : 1 : 3",
+              "f": "6/2",
+              "value": "3",
+              "note": "2 hybrid, 6 light"
+            }
+          ],
+          "answer": "6/2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "4c54ded9",
+        "answer": {
+          "value": 3,
+          "label": "0 : 1 : 3"
+        }
+      }
+    },
+    {
+      "id": "6d53c0b7-fbd1-4dbc-ba8d-4281180f1230",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "2^2 = 4\\ \\text{bacteria after 2 generations}",
+              "f": "2^2",
+              "value": "4"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{2}{4} \\cdot 100 = 50\\%",
+              "f": "2/4*100",
+              "value": "50",
+              "note": "2 keep a radioactive strand"
+            }
+          ],
+          "answer": "2/4*100"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "986150db",
+        "answer": {
+          "value": 50,
+          "label": "50%"
+        }
+      }
+    },
+    {
+      "id": "7fb9cb47-4e3a-4276-9232-543d2eb7c18a",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "2^6 = 64\\ \\text{molecules}",
+              "f": "2^6",
+              "value": "64"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "64 - 2 = 62\\ \\text{heavy}",
+              "f": "64-2",
+              "value": "62",
+              "note": "2 hybrid"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{Hybrid : Heavy} = 2 : 62 = 1 : 31",
+              "f": "62/2",
+              "value": "31"
+            }
+          ],
+          "answer": "62/2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "d1de931f",
+        "answer": {
+          "value": 31,
+          "label": "Hybrid : Heavy = 1 : 31"
+        }
+      }
+    },
+    {
+      "id": "891cc9f4-716f-44a2-8696-760f3238e9c3",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{G} + \\text{C} = 100 - 2 \\cdot 20 = 60\\%",
+              "f": "100-2*20",
+              "value": "60"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{G} = \\dfrac{60}{2} = 30\\%",
+              "f": "60/2",
+              "value": "30"
+            }
+          ],
+          "answer": "60/2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "e3b2593a",
+        "answer": {
+          "value": 30,
+          "label": "30%"
+        }
+      }
+    },
+    {
+      "id": "c0172160-e72f-4753-9ad3-dd1775ee876a",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{A} + \\text{T} = 2 \\cdot 31 = 62\\%",
+              "f": "2*31",
+              "value": "62"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{G} + \\text{C} = 100 - 62 = 38\\%",
+              "f": "100-62",
+              "value": "38"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{C} = \\dfrac{38}{2} = 19\\%",
+              "f": "38/2",
+              "value": "19"
+            }
+          ],
+          "answer": "38/2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "c4bdf561",
+        "answer": {
+          "value": 19,
+          "label": "19% cytosine"
+        }
+      }
+    },
+    {
+      "id": "cf85401c-2f27-48ad-89e4-f95f049aa7a4",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "4 - 1 = 3\\ \\text{bonds per strand}",
+              "f": "4-1",
+              "value": "3"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "2 \\cdot 3 = 6\\ \\text{bonds in both strands}",
+              "f": "2*3",
+              "value": "6"
+            }
+          ],
+          "answer": "2*3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "aa19f890",
+        "answer": {
+          "value": 6,
+          "label": "6; 10 bp; 0.34 nm; stacking"
+        }
+      }
+    },
+    {
+      "id": "ef8c5abe-d33a-4fed-bb8f-4bcebc599116",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{C} = 20\\%,\\quad \\text{G} = 20\\%"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{G} + \\text{C} = 20 + 20 = 40\\%",
+              "f": "20+20",
+              "value": "40"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{A} + \\text{T} = 100 - 40 = 60\\%",
+              "f": "100-40",
+              "value": "60"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{A} = \\dfrac{60}{2} = 30\\%",
+              "f": "60/2",
+              "value": "30"
+            }
+          ],
+          "answer": "60/2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "eed2dad1",
+        "answer": {
+          "value": 30,
+          "label": "30%"
+        }
+      }
+    },
+    {
+      "id": "ffe95593-b3d7-4f9f-b512-697d791274fa",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{Part (iii): total } 1000,\\ \\text{A} = \\text{T} = 240"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{A} + \\text{T} = 240 + 240 = 480",
+              "f": "240+240",
+              "value": "480"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{G} + \\text{C} = 1000 - 480 = 520",
+              "f": "1000-480",
+              "value": "520"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{C} = \\dfrac{520}{2} = 260",
+              "f": "520/2",
+              "value": "260"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\text{T} + \\text{C} = 240 + 260 = 500",
+              "f": "240+260",
+              "value": "500",
+              "note": "pyrimidines"
+            }
+          ],
+          "answer": "240+260"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "from": 10,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "b799dc9e",
+        "answer": {
+          "value": 500,
+          "label": "500 pyrimidines"
+        }
+      }
+    },
+    {
+      "id": "1b90ebb8-52f0-4249-b873-15309d9119b1",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{P} = 22 + \\dfrac{1}{2} \\cdot 62 = 22 + 31 = 53\\%",
+              "f": "22+1/2*62",
+              "value": "53"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{p} = 16 + \\dfrac{1}{2} \\cdot 62 = 16 + 31 = 47\\%",
+              "f": "16+1/2*62",
+              "value": "47"
+            }
+          ],
+          "answer": "22+1/2*62"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "f160a02f",
+        "answer": {
+          "value": 53,
+          "label": "53%, 47%"
+        }
+      }
+    },
+    {
+      "id": "7a2a7ffe-fa61-4c69-b04e-32db1ec47b64",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "q = \\sqrt{0.36} = 0.6",
+              "f": "sqrt(0.36)",
+              "value": "0.6"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "p = 1 - 0.6 = 0.4",
+              "f": "1-0.6",
+              "value": "0.4"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "2pq = 2 \\cdot 0.4 \\cdot 0.6 = 0.48",
+              "f": "2*0.4*0.6",
+              "value": "0.48"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "p^2 = 0.4 \\cdot 0.4 = 0.16",
+              "f": "0.4*0.4",
+              "value": "0.16"
+            }
+          ],
+          "answer": "1-0.6"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "04e09789",
+        "answer": {
+          "value": 0.4,
+          "label": "0.4; 48%; 16%"
+        }
+      }
+    },
+    {
+      "id": "a218fb08-f390-4dfc-8c43-eda0abf4bc8b",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "q = 1 - 0.6 = 0.4",
+              "f": "1-0.6",
+              "value": "0.4"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "2pq = 2 \\cdot 0.6 \\cdot 0.4 = 0.48",
+              "f": "2*0.6*0.4",
+              "value": "0.48"
+            }
+          ],
+          "answer": "2*0.6*0.4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "60c405ed",
+        "answer": {
+          "value": 0.48,
+          "label": "0.48"
+        }
+      }
+    },
+    {
+      "id": "a53b4ade-1056-4f3c-bae9-e26fbce0849f",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "q = 1 - 0.8 = 0.2",
+              "f": "1-0.8",
+              "value": "0.2"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "2pq = 2 \\cdot 0.8 \\cdot 0.2 = 0.32",
+              "f": "2*0.8*0.2",
+              "value": "0.32"
+            }
+          ],
+          "answer": "2*0.8*0.2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "e3f54a04",
+        "answer": {
+          "value": 0.32000000000000006,
+          "label": "0.32"
+        }
+      }
+    },
+    {
+      "id": "a7d6a8b7-897a-49a2-8a05-76b9c1e0b870",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "q = 1 - 0.6 = 0.4",
+              "f": "1-0.6",
+              "value": "0.4"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "2pq = 2 \\cdot 0.6 \\cdot 0.4 = 0.48",
+              "f": "2*0.6*0.4",
+              "value": "0.48"
+            }
+          ],
+          "answer": "2*0.6*0.4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "4ced7651",
+        "answer": {
+          "value": 0.48,
+          "label": "0.48"
+        }
+      }
+    },
+    {
+      "id": "b0dfd0b5-362d-4144-8ca7-76a6dd63afe1",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "q = \\sqrt{0.09} = 0.3",
+              "f": "sqrt(0.09)",
+              "value": "0.3"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "p = 1 - 0.3 = 0.7",
+              "f": "1-0.3",
+              "value": "0.7"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "p^2 = 0.7 \\cdot 0.7 = 0.49",
+              "f": "0.7*0.7",
+              "value": "0.49"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "2pq = 2 \\cdot 0.7 \\cdot 0.3 = 0.42",
+              "f": "2*0.7*0.3",
+              "value": "0.42"
+            }
+          ],
+          "answer": "0.7*0.7"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "fe6b7ab7",
+        "answer": {
+          "value": 0.48999999999999994,
+          "label": "AA 49%; Aa 42%"
+        }
+      }
+    },
+    {
+      "id": "e6888236-8df6-4e98-930c-f517153e9fc3",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "q = 1 - 0.7 = 0.3",
+              "f": "1-0.7",
+              "value": "0.3"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "2pq = 2 \\cdot 0.7 \\cdot 0.3 = 0.42",
+              "f": "2*0.7*0.3",
+              "value": "0.42"
+            }
+          ],
+          "answer": "2*0.7*0.3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "2eb17797",
+        "answer": {
+          "value": 0.42,
+          "label": "0.42"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

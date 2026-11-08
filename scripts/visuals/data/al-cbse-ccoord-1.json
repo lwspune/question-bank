@@ -1,0 +1,2408 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "016db062-2bf7-4355-a1cb-885546111764",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{[Co(en)}_2\\text{Cl}_2]^{+}:\\ \\text{en is bidentate (2 donor atoms)}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{coordination number} = 2\\times2 + 2\\times1 = 6",
+              "f": "2*2+2*1",
+              "value": "6",
+              "note": "two en, two chlorido"
+            }
+          ],
+          "answer": "6"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "ae3d9fa8",
+        "answer": {
+          "value": 6,
+          "label": "coordination number = 6"
+        }
+      }
+    },
+    {
+      "id": "0634a03d-a752-4913-94d5-f2fc9cccd19b",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{one Cl}^-\\ \\text{free: } [\\text{Co(NH}_3)_4\\text{Cl}_2]\\text{Cl}",
+              "note": "1 mol AgCl: one chloride outside"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{secondary valency} = 4 + 2 = 6",
+              "f": "4+2",
+              "value": "6",
+              "note": "four NH₃ and two Cl⁻"
+            }
+          ],
+          "answer": "6"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "d98a7d93",
+        "answer": {
+          "value": 6,
+          "label": "secondary valency = 6"
+        }
+      }
+    },
+    {
+      "id": "0653c149-b53b-415a-b1f0-a493da6f534b",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "[\\text{Ni(H}_2\\text{O)}_6]\\text{Cl}_2",
+              "note": "2 mol AgCl: both chlorides outside"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{secondary valency} = 6\\times1 = 6",
+              "f": "6*1",
+              "value": "6",
+              "note": "six water molecules, one donor each"
+            }
+          ],
+          "answer": "6"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "847a4199",
+        "answer": {
+          "value": 6,
+          "label": "secondary valency = 6"
+        }
+      }
+    },
+    {
+      "id": "137a186b-551a-499a-99b7-090879d37814",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\mu = \\sqrt{n(n+2)}\\ \\text{B.M.}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "[\\text{NiCl}_4]^{2-}\\ \\text{(2 unpaired)}:\\ \\mu = \\sqrt{2\\times4} = 2.83\\ \\text{B.M.}",
+              "f": "sqrt(2*4)",
+              "value": "2.83",
+              "note": "Ni²⁺ is 3d⁸, weak field Cl⁻",
+              "dp": 2
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "[\\text{Co(NH}_3)_6]^{3+}\\ \\text{(0 unpaired)}:\\ \\mu = 0",
+              "f": "sqrt(0*2)",
+              "value": "0",
+              "note": "t₂g⁶, all paired"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "[\\text{FeF}_6]^{3-}\\ \\text{(5 unpaired)}:\\ \\mu = \\sqrt{5\\times7} = 5.92\\ \\text{B.M.}",
+              "f": "sqrt(5*7)",
+              "value": "5.92",
+              "note": "Fe³⁺ is 3d⁵, weak field F⁻",
+              "dp": 2
+            }
+          ],
+          "answer": "2.83"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 11,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "445425fe",
+        "answer": {
+          "value": 2.83,
+          "label": "2.83, 0, 5.92 B.M."
+        }
+      }
+    },
+    {
+      "id": "cbee72da-e96c-43c7-bb9e-d6cc8e06132a",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{three SO}_4^{2-}:\\ 3\\times(-2) = -6",
+              "f": "3*(-2)",
+              "value": "-6"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{two cations: each } +\\dfrac{6}{2} = +3",
+              "f": "6/2",
+              "value": "3",
+              "note": "en is neutral, so all of it is cobalt"
+            }
+          ],
+          "answer": "3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "614607f1",
+        "answer": {
+          "value": 3,
+          "label": "Co is +3"
+        }
+      }
+    },
+    {
+      "id": "d25ec95b-da34-4f19-860a-eba759dfec71",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "[\\text{Ni(H}_2\\text{O)}_6]\\text{Cl}_2",
+              "note": "2 mol AgCl: both chlorides outside"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{secondary valency} = 6\\times1 = 6",
+              "f": "6*1",
+              "value": "6",
+              "note": "six water molecules, one donor each"
+            }
+          ],
+          "answer": "6"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "b9dda3d5",
+        "answer": {
+          "value": 6,
+          "label": "(ii) secondary valency = 6"
+        }
+      }
+    },
+    {
+      "id": "d46445a7-1b88-4f90-ad68-eb09d1eb3575",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "[\\text{Fe(CN)}_6]:\\ 2 - 6 = -4",
+              "f": "2-6",
+              "value": "-4",
+              "note": "iron(II) with six cyanido ligands"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "4\\times(+3) + 3\\times(-4) = 0",
+              "f": "4*3+3*(-4)",
+              "value": "0",
+              "note": "four Fe³⁺, three anions"
+            }
+          ],
+          "answer": "4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "41eeae46",
+        "answer": {
+          "value": 4,
+          "label": "(1) Fe₄[Fe(CN)₆]₃"
+        }
+      }
+    },
+    {
+      "id": "dbeb8fa6-5679-4170-9809-3511ca8395ef",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{Co}^{3+}:\\ 3d^6,\\ \\text{F}^-\\ \\text{weak field}:\\ n = 4\\ \\text{unpaired}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\mu = \\sqrt{n(n+2)} = \\sqrt{4\\times6} = \\sqrt{24} = 4.90\\ \\text{B.M.}",
+              "f": "sqrt(4*6)",
+              "value": "4.90",
+              "dp": 2
+            }
+          ],
+          "answer": "4.90"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "8481fc1d",
+        "answer": {
+          "value": 4.9,
+          "label": "(i) μ = 4.90 B.M."
+        }
+      }
+    },
+    {
+      "id": "dd1691a3-badb-4faf-b85f-814a11f587af",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "[\\text{Ni(NH}_3)_4]\\text{Cl}_2",
+              "note": "2 mol AgCl: both chlorides outside"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{secondary valency} = 4\\times1 = 4",
+              "f": "4*1",
+              "value": "4",
+              "note": "four NH₃, one donor each"
+            }
+          ],
+          "answer": "4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "ce9a159d",
+        "answer": {
+          "value": 4,
+          "label": "secondary valency = 4"
+        }
+      }
+    },
+    {
+      "id": "e0955511-a033-4aab-a29f-3ab832e6c7b2",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{oxalate is bidentate: 2 donor atoms each}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{coordination number} = 3\\times2 = 6",
+              "f": "3*2",
+              "value": "6",
+              "note": "three oxalate ligands"
+            }
+          ],
+          "answer": "6"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "3fac6800",
+        "answer": {
+          "value": 6,
+          "label": "coordination number = 6"
+        }
+      }
+    },
+    {
+      "id": "e2cf6443-67bd-441a-860e-7d1c55e4d8f5",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{en is bidentate: 2 donor atoms each}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{secondary valency} = 2\\times2 + 2\\times1 = 6",
+              "f": "2*2+2*1",
+              "value": "6",
+              "note": "two en, two chlorido"
+            }
+          ],
+          "answer": "6"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "25e19741",
+        "answer": {
+          "value": 6,
+          "label": "secondary valency = 6"
+        }
+      }
+    },
+    {
+      "id": "e6e71677-7e83-4750-867c-03d00851271c",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{Na}_3[\\text{Cr(C}_2\\text{O}_4)_3]:\\ x + (-6) = -3\\ \\Rightarrow\\ x = +3",
+              "f": "-3+6",
+              "value": "3",
+              "note": "three Na⁺, so the ion is 3−"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{coordination number} = 3\\times2 = 6",
+              "f": "3*2",
+              "value": "6",
+              "note": "oxalate is bidentate"
+            }
+          ],
+          "answer": "3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "62694945",
+        "answer": {
+          "value": 3,
+          "label": "Cr: +3; coordination number 6"
+        }
+      }
+    },
+    {
+      "id": "fd09b1c4-88b5-4c49-8ed9-441ff039d351",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "x - 6 = -3\\ \\Rightarrow\\ \\text{Co}^{3+}:\\ 3d^6,\\ \\text{F}^-\\ \\text{weak field}: n = 4",
+              "f": "-3+6",
+              "value": "3"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\mu = \\sqrt{4(4+2)} = \\sqrt{24} = 4.90\\ \\text{B.M.}",
+              "f": "sqrt(4*6)",
+              "value": "4.90",
+              "note": "paramagnetic",
+              "dp": 2
+            }
+          ],
+          "answer": "4.90"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "e5d439bb",
+        "answer": {
+          "value": 4.9,
+          "label": "paramagnetic, μ = 4.90 B.M."
+        }
+      }
+    },
+    {
+      "id": "1c14d265-5985-499c-8f50-8c45126d23ba",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "x + 2(0) + 2(-1) = +2",
+              "note": "en is neutral, chlorido is −1"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "x = +2 - \\left[2(0) + 2(-1)\\right] = +4",
+              "f": "2-(2*0+2*(-1))",
+              "value": "4"
+            }
+          ],
+          "answer": "4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "1d0edb57",
+        "answer": {
+          "value": 4,
+          "label": "Pt is +4 in [Pt(en)₂Cl₂]²⁺"
+        }
+      }
+    },
+    {
+      "id": "1e639acb-f749-4ed4-96f6-3ab197732e12",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{Fe}^{2+}:\\ 3d^6\\ \\text{with 4 unpaired electrons (weak field H}_2\\text{O)}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\mu = \\sqrt{n(n+2)} = \\sqrt{4\\times6} = \\sqrt{24} = 4.90\\ \\text{B.M.}",
+              "f": "sqrt(4*6)",
+              "value": "4.90",
+              "dp": 2
+            }
+          ],
+          "answer": "4.90"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "e7a38163",
+        "answer": {
+          "value": 4.9,
+          "label": "μ = 4.90 B.M."
+        }
+      }
+    },
+    {
+      "id": "2327ea22-8019-43fc-b234-25cd0ea37d90",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{CO is neutral; the complex has no charge}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "x + 5(0) = 0\\ \\Rightarrow\\ x = 0",
+              "f": "0-5*0",
+              "value": "0"
+            }
+          ],
+          "answer": "0"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "1fe68df8",
+        "answer": {
+          "value": 0,
+          "label": "oxidation state of Fe = 0"
+        }
+      }
+    },
+    {
+      "id": "2b8eba7b-625d-445f-8530-fd323cd39676",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{en is bidentate: 2 donor atoms each}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{coordination number} = 2\\times2 + 2\\times1 = 6",
+              "f": "2*2+2*1",
+              "value": "6",
+              "note": "two en, two chlorido"
+            }
+          ],
+          "answer": "6"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "7ba8a4e9",
+        "answer": {
+          "value": 6,
+          "label": "coordination number = 6"
+        }
+      }
+    },
+    {
+      "id": "2c62a3c1-978f-4848-9f04-d92c965eafb8",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "x + 3(-2) = -3",
+              "note": "oxalate is −2, overall charge −3"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "x = -3 - 3(-2) = +3",
+              "f": "-3-3*(-2)",
+              "value": "3"
+            }
+          ],
+          "answer": "3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "9338750b",
+        "answer": {
+          "value": 3,
+          "label": "Fe is +3 in [Fe(C₂O₄)₃]³⁻"
+        }
+      }
+    },
+    {
+      "id": "386980a7-2ac7-440d-b10d-5075dc772f71",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "[\\text{Co(NH}_3)_5(\\text{NO}_2)]^{2+}:\\ 5\\ \\text{NH}_3\\ \\text{and}\\ 1\\ \\text{NO}_2"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{secondary valency} = 5\\times1 + 1\\times1 = 6",
+              "f": "5*1+1*1",
+              "value": "6",
+              "note": "one donor atom from each ligand"
+            }
+          ],
+          "answer": "6"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "9e2698fe",
+        "answer": {
+          "value": 6,
+          "label": "secondary valency = 6"
+        }
+      }
+    },
+    {
+      "id": "477f3bb1-4fa4-4672-ac2e-b1b1c51a8d51",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\mu = \\sqrt{n(n+2)}\\ \\text{B.M.},\\ \\text{water is a weak field ligand}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{Cr}^{3+}\\ (3d^3,\\ n=3):\\ \\mu = \\sqrt{15} = 3.87\\ \\text{B.M.}",
+              "f": "sqrt(3*5)",
+              "value": "3.87",
+              "dp": 2
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{Fe}^{2+}\\ (3d^6,\\ n=4):\\ \\mu = \\sqrt{24} = 4.90\\ \\text{B.M.}",
+              "f": "sqrt(4*6)",
+              "value": "4.90",
+              "dp": 2
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{Zn}^{2+}\\ (3d^{10},\\ n=0):\\ \\mu = 0",
+              "f": "sqrt(0*2)",
+              "value": "0"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\text{highest} = \\max(3.87,\\ 4.90,\\ 0) = 4.90\\ \\text{B.M.}",
+              "f": "max(max(sqrt(15),sqrt(24)),0)",
+              "value": "4.90",
+              "note": "the Fe²⁺ complex",
+              "dp": 2
+            }
+          ],
+          "answer": "4.90"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "e9936810",
+        "answer": {
+          "value": 4.9,
+          "label": "highest: Fe²⁺ ion, 4.90 B.M."
+        }
+      }
+    },
+    {
+      "id": "4997940d-1910-4e5b-b53f-c2f8de023fec",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{en is bidentate: 2 donor atoms each}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{coordination number} = 3\\times2 = 6",
+              "f": "3*2",
+              "value": "6",
+              "note": "three en ligands"
+            }
+          ],
+          "answer": "6"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "996aec21",
+        "answer": {
+          "value": 6,
+          "label": "coordination number = 6"
+        }
+      }
+    },
+    {
+      "id": "4bceac14-665b-4725-8516-95cfd0d0df0e",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "[\\text{Co(en)}_3]\\text{Cl}_3:\\ \\text{3 Cl}^-\\ \\text{outside, en is bidentate}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{primary valence} = 3\\ \\text{(three Cl}^-\\ \\text{outside)}",
+              "f": "3*1",
+              "value": "3",
+              "note": "cobalt is +3"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{secondary valence} = 3\\times2 = 6",
+              "f": "3*2",
+              "value": "6",
+              "note": "three en, two donor atoms each"
+            }
+          ],
+          "answer": "3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "edb783bd",
+        "answer": {
+          "value": 3,
+          "label": "primary 3, secondary 6"
+        }
+      }
+    },
+    {
+      "id": "5357a903-f57e-40ca-b94c-52db9cde343e",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "[\\text{Co(NH}_3)_6]\\text{Cl}_2 \\to [\\text{Co(NH}_3)_6]^{2+} + 2\\,\\text{Cl}^-",
+              "note": "NH₃ is neutral and stays bound"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{ions} = 1 + 2 = 3",
+              "f": "1+2",
+              "value": "3",
+              "note": "one complex cation, two chloride ions"
+            }
+          ],
+          "answer": "3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "95e4bc94",
+        "answer": {
+          "value": 3,
+          "label": "3 ions"
+        }
+      }
+    },
+    {
+      "id": "56042b34-5849-4130-8a21-93d8e823b816",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{Cr}^{3+}:\\ 3d^3\\ \\text{in}\\ t_{2g},\\ n = 3\\ \\text{unpaired}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\mu = \\sqrt{3(3+2)} = \\sqrt{15} = 3.87\\ \\text{B.M.}",
+              "f": "sqrt(3*5)",
+              "value": "3.87",
+              "note": "paramagnetic",
+              "dp": 2
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{Ni}^{2+}\\ (3d^8):\\ x - 4 = -2\\ \\Rightarrow\\ x = 2",
+              "f": "-2+4",
+              "value": "2",
+              "note": "cyanide is strong field, electrons pair"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "[\\text{Ni(CN)}_4]^{2-}:\\ n = 0,\\ \\mu = 0\\ \\text{B.M.}",
+              "f": "sqrt(0*2)",
+              "value": "0",
+              "note": "diamagnetic"
+            }
+          ],
+          "answer": "3.87"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "10381558",
+        "answer": {
+          "value": 3.87,
+          "label": "Cr 3.87 B.M.; Ni 0"
+        }
+      }
+    },
+    {
+      "id": "589d8ef0-b0f9-47aa-8d53-b1005f7fa6b8",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{Ni}^{2+}:\\ 3d^8,\\ \\text{Cl}^-\\ \\text{weak field}:\\ n = 2"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\mu = \\sqrt{n(n+2)} = \\sqrt{2\\times4} = \\sqrt8 = 2.83\\ \\text{B.M.}",
+              "f": "sqrt(2*4)",
+              "value": "2.83",
+              "dp": 2
+            }
+          ],
+          "answer": "2.83"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "855913ad",
+        "answer": {
+          "value": 2.83,
+          "label": "μ = 2.83 B.M."
+        }
+      }
+    },
+    {
+      "id": "59e2ea69-ca25-42f6-89c1-5d56038e389c",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "[\\text{Co(NH}_3)_4\\text{Cl}_2]^{+}:\\ \\text{4 NH}_3\\ \\text{and 2 Cl}^-\\ \\text{inside}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{secondary valence} = 4 + 2 = 6",
+              "f": "4+2",
+              "value": "6",
+              "note": "one donor atom from each ligand"
+            }
+          ],
+          "answer": "6"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "e56ec62c",
+        "answer": {
+          "value": 6,
+          "label": "secondary valence = 6"
+        }
+      }
+    },
+    {
+      "id": "5f78e0a7-0ba1-4c7f-aeb8-be5e4b2424ae",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{Fe}^{3+}:\\ 3d^5,\\ \\text{F}^-\\ \\text{weak field}:\\ n = 5"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\mu = \\sqrt{n(n+2)} = \\sqrt{5\\times7} = \\sqrt{35} = 5.92\\ \\text{B.M.}",
+              "f": "sqrt(5*7)",
+              "value": "5.92",
+              "dp": 2
+            }
+          ],
+          "answer": "5.92"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "6ba26a56",
+        "answer": {
+          "value": 5.92,
+          "label": "(i) μ = 5.92 B.M."
+        }
+      }
+    },
+    {
+      "id": "61744249-0121-4e6b-8349-aa15c163b0d3",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{1 mol AgCl: one Cl}^-\\ \\text{free};\\ [\\text{Cr(H}_2\\text{O)}_4\\text{Cl}_2]\\text{Cl}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{secondary valency} = 4 + 2 = 6",
+              "f": "4+2",
+              "value": "6",
+              "note": "four aqua, two chlorido"
+            }
+          ],
+          "answer": "6"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "4dce8cc7",
+        "answer": {
+          "value": 6,
+          "label": "(ii) secondary valency = 6"
+        }
+      }
+    },
+    {
+      "id": "65ca760d-e59e-4fbe-bcc2-f42737ee3401",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "x + 2(0) + 2(-1) = 0",
+              "note": "neutral complex, chlorido is −1"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "x = 0 - \\left[2(0) + 2(-1)\\right] = +2",
+              "f": "0-(2*0+2*(-1))",
+              "value": "2"
+            }
+          ],
+          "answer": "2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "f20a6ca8",
+        "answer": {
+          "value": 2,
+          "label": "Pt is +2 in [Pt(NH3)2Cl2]"
+        }
+      }
+    },
+    {
+      "id": "681eb7c8-1ba8-4f8f-b9f4-8f52400286ed",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{PdCl}_2\\cdot4\\text{NH}_3:\\ 4 + (2-2) = 4",
+              "f": "4+(2-2)",
+              "value": "4",
+              "note": "2 AgCl: both Cl free"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{NiCl}_2\\cdot6\\text{H}_2\\text{O}:\\ 6 + (2-2) = 6",
+              "f": "6+(2-2)",
+              "value": "6",
+              "note": "2 AgCl: both Cl free"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{PtCl}_4\\cdot2\\text{HCl}:\\ 6 - 0 = 6",
+              "f": "6-0",
+              "value": "6",
+              "note": "no AgCl: all six Cl inside"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{CoCl}_3\\cdot4\\text{NH}_3:\\ 4 + (3-1) = 6",
+              "f": "4+(3-1)",
+              "value": "6",
+              "note": "1 AgCl: one Cl free"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\text{PtCl}_2\\cdot2\\text{NH}_3:\\ 2 + (2-0) = 4",
+              "f": "2+(2-0)",
+              "value": "4",
+              "note": "no AgCl: both Cl inside"
+            }
+          ],
+          "answer": "4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "2b023023",
+        "answer": {
+          "value": 4,
+          "label": "4, 6, 6, 6, 4"
+        }
+      }
+    },
+    {
+      "id": "68923bc4-d10e-4f0d-9fc8-83c15e329e39",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{Co}^{3+}:\\ 3d^6,\\ \\text{F}^-\\ \\text{weak field}:\\ n = 4\\ \\text{unpaired}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{(a) }\\mu = \\sqrt{4\\times6} = 4.90\\ \\text{B.M.}",
+              "f": "sqrt(4*6)",
+              "value": "4.90",
+              "dp": 2
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{(c) }[\\text{Co(NH}_3)_6]\\text{Cl}_2 \\to [\\text{Co(NH}_3)_6]^{2+} + 2\\,\\text{Cl}^-:\\ 1 + 2 = 3",
+              "f": "1+2",
+              "value": "3",
+              "note": "one complex cation, two chlorides"
+            }
+          ],
+          "answer": "4.90"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "b982cd91",
+        "answer": {
+          "value": 4.9,
+          "label": "(a) 4.90 B.M.; (c) 3 ions"
+        }
+      }
+    },
+    {
+      "id": "7c2b45ff-1ca7-4d46-8a7d-9da2ce16b363",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "[\\text{Co(NH}_3)_3\\text{Cl}_3]:\\ \\text{all 3 Cl}^-\\ \\text{inside the brackets}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{free Cl}^- = 3 - 3 = 0\\ \\Rightarrow\\ 0\\ \\text{mol AgCl}",
+              "f": "3-3",
+              "value": "0",
+              "note": "AgCl forms only from free chloride"
+            }
+          ],
+          "answer": "0"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "0c22f38e",
+        "answer": {
+          "value": 0,
+          "label": "0 mol AgCl"
+        }
+      }
+    },
+    {
+      "id": "7cf735d7-3c5b-4690-b264-246981c7c9bc",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{en is bidentate: 2 donor atoms each}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{secondary valency} = 2\\times2 + 2\\times1 = 6",
+              "f": "2*2+2*1",
+              "value": "6",
+              "note": "two en, two chlorido"
+            }
+          ],
+          "answer": "6"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "069fd9c7",
+        "answer": {
+          "value": 6,
+          "label": "secondary valency = 6"
+        }
+      }
+    },
+    {
+      "id": "80dd9b07-3afc-4171-8fbd-a8eaa8384b9a",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "[\\text{Fe(CN)}_6]:\\ 2 - 6 = -4",
+              "f": "2-6",
+              "value": "-4",
+              "note": "iron(II) with six cyanido ligands"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "4\\times(+3) + 3\\times(-4) = 0",
+              "f": "4*3+3*(-4)",
+              "value": "0",
+              "note": "four Fe³⁺, three anions"
+            }
+          ],
+          "answer": "4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "16b273ba",
+        "answer": {
+          "value": 4,
+          "label": "Fe₄[Fe(CN)₆]₃"
+        }
+      }
+    },
+    {
+      "id": "816e3b11-83aa-45e5-a09e-7a3f1b9542d7",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "x + (-1) + 0 + 0 = +2\\ \\Rightarrow\\ x = +3",
+              "f": "2+1",
+              "value": "3",
+              "note": "only cyanido is charged (−1)"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{coordination number} = 1 + 1 + (2\\times2) = 6",
+              "f": "1+1+2*2",
+              "value": "6",
+              "note": "aqua, cyanido, two bidentate en"
+            }
+          ],
+          "answer": "3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "187e3b31",
+        "answer": {
+          "value": 3,
+          "label": "Co: +3; coordination number 6"
+        }
+      }
+    },
+    {
+      "id": "82d515af-46be-41d4-bd59-f61059c51ec3",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{en is bidentate: 2 donor atoms each}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{secondary valency} = 3\\times2 = 6",
+              "f": "3*2",
+              "value": "6",
+              "note": "three en ligands"
+            }
+          ],
+          "answer": "6"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "8ef2d855",
+        "answer": {
+          "value": 6,
+          "label": "secondary valency = 6"
+        }
+      }
+    },
+    {
+      "id": "8ddb0815-9c5e-4b83-9ccd-14c0ede1487a",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "x + \\text{(ligand charges)} = \\text{charge on the entity}",
+              "note": "neutral ligands add zero"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{(i) }x - 1 = +2\\ \\Rightarrow\\ x = +3",
+              "f": "2+1",
+              "value": "3"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{(ii) }x - 2 = +1\\ \\Rightarrow\\ x = +3",
+              "f": "1+2",
+              "value": "3"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{(iii) }x - 4 = -2\\ \\Rightarrow\\ x = +2",
+              "f": "-2+4",
+              "value": "2"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\text{(iv) }x - 6 = -3\\ \\Rightarrow\\ x = +3",
+              "f": "-3+6",
+              "value": "3",
+              "note": "three K⁺ outside, ion is 3−"
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "\\text{(v) }x - 3 = 0\\ \\Rightarrow\\ x = +3",
+              "f": "0+3",
+              "value": "3",
+              "note": "neutral complex"
+            }
+          ],
+          "answer": "3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "69173989",
+        "answer": {
+          "value": 3,
+          "label": "+3, +3, +2, +3, +3"
+        }
+      }
+    },
+    {
+      "id": "94016c35-d7f7-4af9-8a78-d333db9221df",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "x - 4 = -2\\ \\Rightarrow\\ x = +2,\\quad \\text{Pt}^{2+}: 5d^8",
+              "f": "-2+4",
+              "value": "2"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "8\\ \\text{electrons} = 4\\ \\text{pairs, so}\\ n = 8 - 2\\times4 = 0",
+              "f": "8-2*4",
+              "value": "0",
+              "note": "dsp² needs one d orbital vacant"
+            }
+          ],
+          "answer": "0"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "52b72cef",
+        "answer": {
+          "value": 0,
+          "label": "0 unpaired electrons"
+        }
+      }
+    },
+    {
+      "id": "9a56c5c6-1f3e-49a2-8a63-f3470e63e772",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "[\\text{Ni(NH}_3)_6]\\text{Cl}_2 \\to [\\text{Ni(NH}_3)_6]^{2+} + 2\\,\\text{Cl}^-",
+              "note": "only what is outside the brackets ionises"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{ions} = 1 + 2 = 3",
+              "f": "1+2",
+              "value": "3",
+              "note": "one complex cation, two chlorides"
+            }
+          ],
+          "answer": "3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "0c31bc4d",
+        "answer": {
+          "value": 3,
+          "label": "3 ions"
+        }
+      }
+    },
+    {
+      "id": "9afe7e73-6556-47f7-90d5-d4d007f0c94b",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "x + 2(0) + 2(-1) = +2",
+              "note": "en is neutral, chlorido is −1"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "x = +2 - \\left[2(0) + 2(-1)\\right] = +4",
+              "f": "2-(2*0+2*(-1))",
+              "value": "4"
+            }
+          ],
+          "answer": "4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "59072dde",
+        "answer": {
+          "value": 4,
+          "label": "Pt is +4"
+        }
+      }
+    },
+    {
+      "id": "aceb1a3f-eb6a-482b-9bf3-602d55ed0fbc",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{en is bidentate: 2 donor atoms each}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{secondary valency} = 3\\times2 = 6",
+              "f": "3*2",
+              "value": "6",
+              "note": "three en ligands"
+            }
+          ],
+          "answer": "6"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "8a0bc14a",
+        "answer": {
+          "value": 6,
+          "label": "secondary valency = 6"
+        }
+      }
+    },
+    {
+      "id": "ad4f2a02-ec2c-4b98-961b-009badb1cd29",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "[\\text{Co(en)}_2\\text{Cl}_2]^{+}:\\ \\text{cis (chiral)\\ and\\ trans}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{trans } 1 + \\text{cis pair } 2 = 3",
+              "f": "1+2",
+              "value": "3",
+              "note": "trans is one form, cis is d and l"
+            }
+          ],
+          "answer": "3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "8967a32b",
+        "answer": {
+          "value": 3,
+          "label": "3 stereoisomers"
+        }
+      }
+    },
+    {
+      "id": "afbaec28-072f-4c06-bf6e-3ce8c95c2914",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{cation} = +2\\ (\\text{SO}_4^{2-}\\ \\text{outside}),\\quad x + 5(0) + (-1) = +2"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "x = +2 - \\left[5(0) + (-1)\\right] = +3",
+              "f": "2-(5*0+(-1))",
+              "value": "3",
+              "note": "nitrito carries −1 either way"
+            }
+          ],
+          "answer": "3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "8d14d980",
+        "answer": {
+          "value": 3,
+          "label": "Co is +3"
+        }
+      }
+    },
+    {
+      "id": "b27b1077-9484-4497-a4f1-9ae11a89c432",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "[\\text{Co(NH}_3)_6]\\text{Cl}_3 \\to [\\text{Co(NH}_3)_6]^{3+} + 3\\,\\text{Cl}^-"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{free Cl}^- = 3\\ \\Rightarrow\\ 3\\ \\text{mol AgCl}",
+              "f": "3*1",
+              "value": "3",
+              "note": "all three chlorides are outside"
+            }
+          ],
+          "answer": "3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "169e06b9",
+        "answer": {
+          "value": 3,
+          "label": "3 mol AgCl"
+        }
+      }
+    },
+    {
+      "id": "b8c4421f-a8d7-44e1-beaa-6d7749704b21",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{(i) }x - 6 = -3\\ \\Rightarrow\\ \\text{Co}\\ +3",
+              "f": "-3+6",
+              "value": "3"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{(i) coordination number} = 3\\times2 = 6",
+              "f": "3*2",
+              "value": "6"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{(ii) }x - 2 = +1\\ \\Rightarrow\\ \\text{Cr}\\ +3",
+              "f": "1+2",
+              "value": "3"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{(ii) coordination number} = 2 + 4 = 6",
+              "f": "2+4",
+              "value": "6"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{(iii) }x - 4 = -2\\ \\Rightarrow\\ \\text{Co}\\ +2",
+              "f": "-2+4",
+              "value": "2"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{(iii) coordination number} = 4\\times1 = 4",
+              "f": "4*1",
+              "value": "4"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{(iv) }x + 0 = +2\\ \\Rightarrow\\ \\text{Mn}\\ +2",
+              "f": "2-0",
+              "value": "2",
+              "note": "sulphate is 2−, water neutral"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{(iv) coordination number} = 6\\times1 = 6",
+              "f": "6*1",
+              "value": "6"
+            }
+          ],
+          "answer": "3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 10,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "e1dd9fd6",
+        "answer": {
+          "value": 3,
+          "label": "+3, +3, +2, +2; CN 6, 6, 4, 6"
+        }
+      }
+    },
+    {
+      "id": "bc92b2b4-954e-4060-befc-8250db398f5e",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "x + 2(0) + 2(-1) = +2",
+              "note": "ammine neutral, chlorido −1"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "x = +2 - \\left[2(0) + 2(-1)\\right] = +4",
+              "f": "2-(2*0+2*(-1))",
+              "value": "4"
+            }
+          ],
+          "answer": "4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "98680364",
+        "answer": {
+          "value": 4,
+          "label": "Pt is +4"
+        }
+      }
+    },
+    {
+      "id": "c4d88ad6-cfbb-4b45-b1de-22672fd57385",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "[\\text{Co(NH}_3)_4\\text{Cl}_2]\\text{Cl}:\\ \\text{two Cl}^-\\ \\text{are ligands}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{free Cl}^- = 3 - 2 = 1\\ \\Rightarrow\\ 1\\ \\text{mol AgCl}",
+              "f": "3-2",
+              "value": "1",
+              "note": "only the chloride outside precipitates"
+            }
+          ],
+          "answer": "1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "4f5fef7a",
+        "answer": {
+          "value": 1,
+          "label": "1 mol AgCl"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

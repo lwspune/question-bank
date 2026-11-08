@@ -1,0 +1,713 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "0ecde490-bdee-44ad-bba7-0c0ea571375c",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "m = 0.48\\ \\text{J T}^{-1},\\ r = 0.10\\ \\text{m},\\ r^3 = 1.0\\times10^{-3}\\ \\text{m}^3,\\ \\dfrac{\\mu_0}{4\\pi} = 10^{-7}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "B_A = \\dfrac{\\mu_0}{4\\pi}\\dfrac{2m}{r^3} = 10^{-7}\\times\\dfrac{2\\times0.48}{1.0\\times10^{-3}} = 9.6\\times10^{-5}\\ \\text{T}",
+              "f": "10^(-7)*2*0.48/(1.0*10^(-3))",
+              "value": "9.6*10^(-5)",
+              "sf": 2,
+              "note": "on the axis, along the magnet"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "B_E = \\dfrac{\\mu_0}{4\\pi}\\dfrac{m}{r^3} = 10^{-7}\\times\\dfrac{0.48}{1.0\\times10^{-3}} = 4.8\\times10^{-5}\\ \\text{T}",
+              "f": "10^(-7)*0.48/(1.0*10^(-3))",
+              "value": "4.8*10^(-5)",
+              "sf": 2,
+              "note": "equatorial, opposite to the moment"
+            }
+          ],
+          "answer": "10^(-7)*2*0.48/(1.0*10^(-3))"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "e7eefd02",
+        "answer": {
+          "value": 0.00009599999999999999,
+          "label": "9.6×10⁻⁵ T; 4.8×10⁻⁵ T"
+        }
+      }
+    },
+    {
+      "id": "20a3ef9c-7e9e-49f7-b062-54fa171e2e76",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\tau = mB\\sin\\theta,\\quad \\tau = 4.5\\times10^{-2}\\ \\text{J},\\ B = 0.25\\ \\text{T},\\ \\theta = 30^\\circ"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "m = \\dfrac{\\tau}{B\\sin\\theta} = \\dfrac{4.5\\times10^{-2}}{0.25\\times0.5} = 0.36\\ \\text{J T}^{-1}",
+              "f": "4.5*10^(-2)/(0.25*sin(pi/6))",
+              "value": "0.36",
+              "dp": 2
+            }
+          ],
+          "answer": "4.5*10^(-2)/(0.25*sin(pi/6))"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "a5058c97",
+        "answer": {
+          "value": 0.36000000000000004,
+          "label": "0.36 J/T"
+        }
+      }
+    },
+    {
+      "id": "40d33cb3-02e5-4950-85a0-87c703a61e7a",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "U = -mB\\cos\\theta,\\quad m = 5\\ \\text{J/T},\\ B = 0.4\\ \\text{T},\\ \\theta = 0"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "U = -(5)(0.4)(1) = -2\\ \\text{J}",
+              "f": "-5*0.4*1",
+              "value": "-2",
+              "note": "aligned: the minimum energy"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "W = U_f - U_i = 2mB = 2(5)(0.4) = 4\\ \\text{J}",
+              "f": "2*5*0.4",
+              "value": "4",
+              "note": "turning through 180°"
+            }
+          ],
+          "answer": "-5*0.4*1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 12,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "6d773c38",
+        "answer": {
+          "value": -2,
+          "label": "U = −2 J; W = 4 J; min at θ = 0"
+        }
+      }
+    },
+    {
+      "id": "4892080f-f6da-407a-9534-3316d52e99ea",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "mB = 1.5\\times0.22 = 0.33\\ \\text{J}",
+              "f": "1.5*0.22",
+              "value": "0.33",
+              "dp": 2,
+              "note": "starts aligned, θ = 0°"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "W = mB(1 - \\cos90^\\circ) = 0.33\\ \\text{J}",
+              "f": "1.5*0.22*(1-cos(pi/2))",
+              "value": "0.33",
+              "dp": 2,
+              "note": "turn to 90°"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "W = mB(1 - \\cos180^\\circ) = 2mB = 0.66\\ \\text{J}",
+              "f": "1.5*0.22*(1-cos(pi))",
+              "value": "0.66",
+              "dp": 2,
+              "note": "turn to 180°"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\tau = mB\\sin90^\\circ = 0.33\\ \\text{N m}",
+              "f": "1.5*0.22*sin(pi/2)",
+              "value": "0.33",
+              "dp": 2
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\tau = mB\\sin180^\\circ = 0",
+              "f": "1.5*0.22*sin(pi)",
+              "value": "0",
+              "dp": 2
+            }
+          ],
+          "answer": "1.5*0.22*(1-cos(pi/2))"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "533704b6",
+        "answer": {
+          "value": 0.32999999999999996,
+          "label": "0.33 J, 0.66 J; 0.33 N m, 0"
+        }
+      }
+    },
+    {
+      "id": "5ef25336-b32a-4b54-bb2a-b6200f6eaa7b",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "N = 800,\\ I = 3.0\\ \\text{A},\\ A = 2.5\\times10^{-4}\\ \\text{m}^2,\\quad m = NIA"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "m = 800\\times3.0\\times2.5\\times10^{-4} = 0.60\\ \\text{J T}^{-1}",
+              "f": "800*3.0*2.5*10^(-4)",
+              "value": "0.60",
+              "dp": 2,
+              "note": "along the axis, south face to north"
+            }
+          ],
+          "answer": "800*3.0*2.5*10^(-4)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "72b6f205",
+        "answer": {
+          "value": 0.6,
+          "label": "0.60 J/T"
+        }
+      }
+    },
+    {
+      "id": "5f81a787-fb6f-4032-96ec-cd69453ba4d6",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "U = -mB\\cos\\theta:\\ \\text{stable } \\theta = 0^\\circ,\\ \\text{unstable } \\theta = 180^\\circ"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "mB = 0.32\\times0.15 = 0.048\\ \\text{J}",
+              "f": "0.32*0.15",
+              "value": "0.048",
+              "dp": 3
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\theta = 0^\\circ:\\ U = -mB = -4.8\\times10^{-2}\\ \\text{J}",
+              "f": "-0.32*0.15",
+              "value": "-4.8*10^(-2)",
+              "sf": 2,
+              "note": "stable equilibrium"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\theta = 180^\\circ:\\ U = +mB = +4.8\\times10^{-2}\\ \\text{J}",
+              "f": "0.32*0.15",
+              "value": "4.8*10^(-2)",
+              "sf": 2,
+              "note": "unstable equilibrium"
+            }
+          ],
+          "answer": "-0.32*0.15"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "f8331b8d",
+        "answer": {
+          "value": -0.048,
+          "label": "−4.8×10⁻² J; +4.8×10⁻² J"
+        }
+      }
+    },
+    {
+      "id": "611a8629-1f21-433c-8829-05690ef1e7e4",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\tau = MB\\sin\\theta,\\quad \\theta_1 = 90^\\circ:\\ \\tau_1 = MB"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\sin\\theta_2 = \\dfrac{1}{2}\\ \\Rightarrow\\ \\theta_2 = 30^\\circ",
+              "f": "deg(asin(0.5))",
+              "value": "30",
+              "dp": 0,
+              "note": "torque falls to half"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{angle turned} = 90^\\circ - 30^\\circ = 60^\\circ",
+              "f": "90-30",
+              "value": "60"
+            }
+          ],
+          "answer": "90-30"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "c81c7a78",
+        "answer": {
+          "value": 60,
+          "label": "60° (C)"
+        }
+      }
+    },
+    {
+      "id": "c6accba1-2da4-46f5-9705-986bdb8657e5",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "m = NIA = 2000\\times4.0\\times1.6\\times10^{-4} = 1.28\\ \\text{J T}^{-1}",
+              "f": "2000*4.0*1.6*10^(-4)",
+              "value": "1.28",
+              "dp": 2,
+              "note": "along the axis"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\text{uniform field: net force} = 0",
+              "note": "the ends feel equal and opposite forces"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\tau = mB\\sin\\theta = 1.28\\times7.5\\times10^{-2}\\times\\sin30^\\circ = 4.8\\times10^{-2}\\ \\text{N m}",
+              "f": "1.28*7.5*10^(-2)*sin(pi/6)",
+              "value": "4.8*10^(-2)",
+              "sf": 2,
+              "note": "turns the axis into line with the field"
+            }
+          ],
+          "answer": "2000*4.0*1.6*10^(-4)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "a9e534f8",
+        "answer": {
+          "value": 1.28,
+          "label": "1.28 J/T; 0 N; 4.8×10⁻² N m"
+        }
+      }
+    },
+    {
+      "id": "d78802f1-bf93-43e0-8706-43351ef0927e",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "mB = 2.5\\times0.32 = 0.8\\ \\text{J}",
+              "f": "2.5*0.32",
+              "value": "0.8",
+              "dp": 1,
+              "note": "starts aligned, θ = 0°"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "W_{(i)} = -mB(\\cos90^\\circ - \\cos0^\\circ) = mB = 0.8\\ \\text{J}",
+              "f": "-2.5*0.32*(cos(pi/2)-cos(0))",
+              "value": "0.8",
+              "dp": 1,
+              "note": "turn to 90°"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "W_{(ii)} = -mB(\\cos180^\\circ - \\cos0^\\circ) = 2mB = 1.6\\ \\text{J}",
+              "f": "-2.5*0.32*(cos(pi)-cos(0))",
+              "value": "1.6",
+              "dp": 1,
+              "note": "turn to 180°"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\tau_{(i)} = mB\\sin90^\\circ = 0.8\\ \\text{N m}",
+              "f": "2.5*0.32*sin(pi/2)",
+              "value": "0.8",
+              "dp": 1
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\tau_{(ii)} = mB\\sin180^\\circ = 0",
+              "f": "2.5*0.32*sin(pi)",
+              "value": "0",
+              "dp": 1,
+              "note": "work is largest, torque is zero"
+            }
+          ],
+          "answer": "2.5*0.32"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 12,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 16,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 18,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "2a1f36e3",
+        "answer": {
+          "value": 0.8,
+          "label": "0.8 J, 1.6 J; 0.8 N m, 0"
+        }
+      }
+    },
+    {
+      "id": "d8da14d1-0886-4c6d-8558-aa5fc13119e3",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "m = 0.60\\ \\text{J T}^{-1}\\ \\text{(the solenoid of Exercise 5.3)},\\ B = 0.25\\ \\text{T},\\ \\theta = 30^\\circ"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\tau = mB\\sin\\theta = 0.60\\times0.25\\times0.5 = 7.5\\times10^{-2}\\ \\text{N m}",
+              "f": "0.60*0.25*0.5",
+              "value": "7.5*10^(-2)",
+              "sf": 2,
+              "note": "uniform field: torque only"
+            }
+          ],
+          "answer": "0.60*0.25*0.5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "d81ea1b2",
+        "answer": {
+          "value": 0.075,
+          "label": "7.5 × 10⁻² N m"
+        }
+      }
+    },
+    {
+      "id": "f9bab09d-bb4f-4316-bb0a-f178ab4332e7",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "H = nI = 1000\\times2 = 2\\times10^{3}\\ \\text{A/m}",
+              "f": "1000*2",
+              "value": "2*10^3",
+              "sf": 1
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "B = \\mu_r\\mu_0H = 400\\times4\\pi\\times10^{-7}\\times2\\times10^{3} = 1.0\\ \\text{T}",
+              "f": "400*4*pi*10^(-7)*2*10^3",
+              "value": "1.0",
+              "dp": 1
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "M = (\\mu_r - 1)H = 399\\times2\\times10^{3} \\approx 8\\times10^{5}\\ \\text{A/m}",
+              "f": "399*2*10^3",
+              "value": "8*10^5",
+              "sf": 1
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "B = \\mu_0 n(I + I_M)\\ \\Rightarrow\\ I_M = \\dfrac{B}{\\mu_0 n} - I = 794\\ \\text{A}",
+              "f": "1.0/(4*pi*10^(-7)*1000)-2",
+              "value": "794",
+              "dp": 0,
+              "note": "B = 1 T, n = 1000 per metre"
+            }
+          ],
+          "answer": "1000*2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 11,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "e4c9bb7e",
+        "answer": {
+          "value": 2000,
+          "label": "2×10³; 8×10⁵ A/m; 1.0 T; 794 A"
+        }
+      }
+    }
+  ],
+  "decided": []
+}
