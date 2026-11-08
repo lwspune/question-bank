@@ -1,0 +1,1413 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "f775c41e-950c-4424-a412-7d86c2e6d9ca",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "n_i = 1.5 \\times 10^{16},\\quad n_h = 4.5 \\times 10^{22}\\ \\text{m}^{-3}"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "n_e n_h = n_i^{2}"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "n_i^{2} = (1.5 \\times 10^{16})^2 = 2.25 \\times 10^{32}",
+              "f": "(1.5*10^16)^2",
+              "value": "2.25*10^32",
+              "sf": 3
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "n_e = \\dfrac{2.25 \\times 10^{32}}{4.5 \\times 10^{22}} = 5 \\times 10^{9}\\ \\text{m}^{-3}",
+              "f": "(1.5*10^16)^2/(4.5*10^22)",
+              "value": "5*10^9",
+              "sf": 1
+            }
+          ],
+          "answer": "(1.5*10^16)^2/(4.5*10^22)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "bb67ed5d",
+        "answer": {
+          "value": 5000000000.000001,
+          "label": "5×10⁹ m⁻³"
+        }
+      }
+    },
+    {
+      "id": "fb6f862e-2ef8-4b53-b73b-e11df6a851db",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{p-side is terminal L: forward if } V_L > V_R"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "(\\text{A})\\ V_L - V_R = 5 - 10 = -5\\ \\text{V}",
+              "f": "5-10",
+              "value": "-5",
+              "note": "reverse"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "(\\text{C})\\ V_L - V_R = 0 - 1 = -1\\ \\text{V}",
+              "f": "0-1",
+              "value": "-1",
+              "note": "reverse"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "(\\text{D})\\ V_L - V_R = -2 - 0 = -2\\ \\text{V}",
+              "f": "-2-0",
+              "value": "-2",
+              "note": "reverse"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "(\\text{B})\\ V_L - V_R = -1.0 - (-1.5) = +0.5\\ \\text{V}",
+              "f": "-1.0-(-1.5)",
+              "value": "0.5",
+              "dp": 1,
+              "note": "forward"
+            }
+          ],
+          "answer": "-1.0-(-1.5)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s2",
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "b68abd47",
+        "answer": {
+          "value": 0.5,
+          "label": "(B): +0.5 V, forward"
+        }
+      }
+    },
+    {
+      "id": "255a18b9-df0b-4f55-80f8-abe55cd37089",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "V_0 = 0.7\\ \\text{V},\\ I = 15\\ \\text{mA} = 15 \\times 10^{-3}\\ \\text{A},\\ R = 1000\\ \\Omega"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "V = V_0 + IR",
+              "note": "Kirchhoff's loop rule"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "IR = (15 \\times 10^{-3})(1000) = 15\\ \\text{V}",
+              "f": "15*10^(-3)*1000",
+              "value": "15",
+              "note": "drop across the resistor"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "V = 0.7 + 15 = 15.7\\ \\text{V}",
+              "f": "0.7+15",
+              "value": "15.7",
+              "dp": 1
+            }
+          ],
+          "answer": "0.7+15"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "13be22ed",
+        "answer": {
+          "value": 15.7,
+          "label": "15.7 V"
+        }
+      }
+    },
+    {
+      "id": "43b80fdb-d83f-460f-8888-3f69ee8a987e",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "N_{\\text{Si}} = 5 \\times 10^{28}\\ \\text{m}^{-3},\\quad n_i = 1.5 \\times 10^{16}\\ \\text{m}^{-3}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "n_e \\approx N_D = 5 \\times 10^{28} \\times 10^{-6} = 5 \\times 10^{22}\\ \\text{m}^{-3}",
+              "f": "5*10^28*10^(-6)",
+              "value": "5*10^22",
+              "sf": 1,
+              "note": "1 ppm of the Si atoms"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "n_i^{2} = (1.5 \\times 10^{16})^2 = 2.25 \\times 10^{32}",
+              "f": "(1.5*10^16)^2",
+              "value": "2.25*10^32",
+              "sf": 3,
+              "note": "n_e n_h = n_i²"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "n_h = \\dfrac{2.25 \\times 10^{32}}{5 \\times 10^{22}} = 4.5 \\times 10^{9}\\ \\text{m}^{-3}",
+              "f": "(1.5*10^16)^2/(5*10^22)",
+              "value": "4.5*10^9",
+              "sf": 2
+            }
+          ],
+          "answer": "5*10^28*10^(-6)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "4cd473d0",
+        "answer": {
+          "value": 5e+22,
+          "label": "5×10²² m⁻³; 4.5×10⁹ m⁻³"
+        }
+      }
+    },
+    {
+      "id": "45950932-0066-494d-b4e6-794b7b941c3c",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "n_i = 1.5 \\times 10^{16},\\quad n_e = N_D = 5 \\times 10^{22}\\ \\text{m}^{-3}"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "n_h = \\dfrac{n_i^{2}}{n_e}",
+              "note": "n_e n_h = n_i²"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "n_i^{2} = (1.5 \\times 10^{16})^2 = 2.25 \\times 10^{32}",
+              "f": "(1.5*10^16)^2",
+              "value": "2.25*10^32",
+              "sf": 3
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "n_h = \\dfrac{2.25 \\times 10^{32}}{5 \\times 10^{22}} = 4.5 \\times 10^{9}\\ \\text{m}^{-3}",
+              "f": "(1.5*10^16)^2/(5*10^22)",
+              "value": "4.5*10^9",
+              "sf": 2
+            }
+          ],
+          "answer": "5*10^22"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 10,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 11,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "fdc39023",
+        "answer": {
+          "value": 5e+22,
+          "label": "5×10²², 4.5×10⁹ m⁻³"
+        }
+      }
+    },
+    {
+      "id": "50ad85e4-658e-4951-8361-78d3f6bc6899",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "n_i = 5 \\times 10^{8},\\quad n_e = 4 \\times 10^{12}\\ \\text{m}^{-3}"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "n_e n_h = n_i^{2}"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "n_i^{2} = (5 \\times 10^{8})^2 = 25 \\times 10^{16}",
+              "f": "(5*10^8)^2",
+              "value": "25*10^16",
+              "sf": 2
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "n_h = \\dfrac{25 \\times 10^{16}}{4 \\times 10^{12}} = 6.25 \\times 10^{4}\\ \\text{m}^{-3}",
+              "f": "(5*10^8)^2/(4*10^12)",
+              "value": "6.25*10^4",
+              "sf": 3
+            }
+          ],
+          "answer": "(5*10^8)^2/(4*10^12)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "b37efab9",
+        "answer": {
+          "value": 62500,
+          "label": "6.25×10⁴ m⁻³; n-type"
+        }
+      }
+    },
+    {
+      "id": "5db1f4eb-e48c-4f0d-a8b3-cc721862df2d",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "r_d = \\dfrac{\\Delta V}{\\Delta I}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\Delta V = 1.0 - 0.8 = 0.2\\ \\text{V}",
+              "f": "1.0-0.8",
+              "value": "0.2",
+              "dp": 1
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\Delta I = 2.0\\ \\text{mA} = 2.0 \\times 10^{-3}\\ \\text{A}",
+              "f": "2.0*10^(-3)",
+              "value": "2.0*10^(-3)",
+              "sf": 2
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "r_d = \\dfrac{0.2}{2.0 \\times 10^{-3}} = 100\\ \\Omega",
+              "f": "0.2/(2.0*10^(-3))",
+              "value": "100",
+              "sf": 3
+            }
+          ],
+          "answer": "0.2/(2.0*10^(-3))"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "a9bcb48f",
+        "answer": {
+          "value": 100,
+          "label": "100 Ω"
+        }
+      }
+    },
+    {
+      "id": "5e1ea73b-76af-465a-b5da-ca44d3f92b81",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "f_{\\text{in}} = 50\\ \\text{Hz}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "f_{\\text{half}} = f_{\\text{in}} = 50\\ \\text{Hz}",
+              "f": "50",
+              "value": "50",
+              "note": "one pulse per input cycle"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "f_{\\text{full}} = 2 f_{\\text{in}} = 2 \\times 50 = 100\\ \\text{Hz}",
+              "f": "2*50",
+              "value": "100",
+              "note": "two pulses per input cycle"
+            }
+          ],
+          "answer": "50"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "5a8fe26f",
+        "answer": {
+          "value": 50,
+          "label": "50 Hz; 100 Hz"
+        }
+      }
+    },
+    {
+      "id": "7c7d1a2e-0d63-400e-abc9-457604a9a727",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "n_h = 4 \\times 10^{20},\\quad n_i = 1.2 \\times 10^{15}\\ \\text{m}^{-3}"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "n_e n_h = n_i^{2}"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "n_i^{2} = (1.2 \\times 10^{15})^2 = 1.44 \\times 10^{30}",
+              "f": "(1.2*10^15)^2",
+              "value": "1.44*10^30",
+              "sf": 3
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "n_e = \\dfrac{1.44 \\times 10^{30}}{4 \\times 10^{20}} = 3.6 \\times 10^{9}\\ \\text{m}^{-3}",
+              "f": "(1.2*10^15)^2/(4*10^20)",
+              "value": "3.6*10^9",
+              "sf": 2
+            }
+          ],
+          "answer": "(1.2*10^15)^2/(4*10^20)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "31ada6a1",
+        "answer": {
+          "value": 3600000000,
+          "label": "3.6×10⁹ m⁻³"
+        }
+      }
+    },
+    {
+      "id": "7eb4a1dc-4b8c-4d1a-8585-31b5dd7a2142",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "n_e n_h = n_i^{2}"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "n_e = 5 \\times 10^{22},\\quad n_i = 1.5 \\times 10^{16}\\ \\text{m}^{-3}"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "n_i^{2} = (1.5 \\times 10^{16})^2 = 2.25 \\times 10^{32}",
+              "f": "(1.5*10^16)^2",
+              "value": "2.25*10^32",
+              "sf": 3
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "n_h = \\dfrac{2.25 \\times 10^{32}}{5 \\times 10^{22}} = 4.5 \\times 10^{9}\\ \\text{m}^{-3}",
+              "f": "(1.5*10^16)^2/(5*10^22)",
+              "value": "4.5*10^9",
+              "sf": 2
+            }
+          ],
+          "answer": "(1.5*10^16)^2/(5*10^22)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "43e8aa8d",
+        "answer": {
+          "value": 4500000000.000001,
+          "label": "4.5×10⁹ m⁻³"
+        }
+      }
+    },
+    {
+      "id": "8d1a0213-a53d-4cbd-b39f-e724b4643022",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "f_{\\text{in}} = 50\\ \\text{Hz}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "f_{\\text{out}} = 2 f_{\\text{in}} = 2 \\times 50 = 100\\ \\text{Hz}",
+              "f": "2*50",
+              "value": "100",
+              "note": "a pulse for each half cycle"
+            }
+          ],
+          "answer": "2*50"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "288bf06f",
+        "answer": {
+          "value": 100,
+          "label": "100 Hz"
+        }
+      }
+    },
+    {
+      "id": "96dd0256-326a-4ef1-bd8e-3ce718b8dd16",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "n_i = 2.0 \\times 10^{10},\\quad n_h = 8 \\times 10^{3}\\ \\text{cm}^{-3}",
+              "note": "n_e n_h = n_i²"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "n_e = \\dfrac{(2.0 \\times 10^{10})^2}{8 \\times 10^{3}} = 5 \\times 10^{16}\\ \\text{cm}^{-3}",
+              "f": "(2.0*10^10)^2/(8*10^3)",
+              "value": "5*10^16",
+              "sf": 1
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "n_e = 5 \\times 10^{16} \\times 10^{6} = 5 \\times 10^{22}\\ \\text{m}^{-3}",
+              "f": "5*10^16*10^6",
+              "value": "5*10^22",
+              "sf": 1,
+              "note": "1 cm⁻³ = 10⁶ m⁻³"
+            }
+          ],
+          "answer": "5*10^16*10^6"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "1aace231",
+        "answer": {
+          "value": 5e+22,
+          "label": "5×10²² m⁻³"
+        }
+      }
+    },
+    {
+      "id": "a1434086-5bcf-44f9-8084-d30660490823",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "N_{\\text{Si}} = 5 \\times 10^{28}\\ \\text{m}^{-3},\\ n_i = 1.5 \\times 10^{16}\\ \\text{m}^{-3}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "N_B = 5 \\times 10^{28} \\times 10^{-6} = 5 \\times 10^{22}\\ \\text{m}^{-3}",
+              "f": "5*10^28*10^(-6)",
+              "value": "5*10^22",
+              "sf": 1,
+              "note": "1 ppm boron"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "n_h \\approx N_B = 5 \\times 10^{22}\\ \\text{m}^{-3}",
+              "note": "boron is trivalent: one hole each"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "n_i^{2} = (1.5 \\times 10^{16})^2 = 2.25 \\times 10^{32}",
+              "f": "(1.5*10^16)^2",
+              "value": "2.25*10^32",
+              "sf": 3,
+              "note": "n_e n_h = n_i²"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "n_e = \\dfrac{2.25 \\times 10^{32}}{5 \\times 10^{22}} = 4.5 \\times 10^{9}\\ \\text{m}^{-3}",
+              "f": "(1.5*10^16)^2/(5*10^22)",
+              "value": "4.5*10^9",
+              "sf": 2
+            }
+          ],
+          "answer": "5*10^28*10^(-6)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "4bbe6eee",
+        "answer": {
+          "value": 5e+22,
+          "label": "n_h 5×10²², n_e 4.5×10⁹ m⁻³"
+        }
+      }
+    },
+    {
+      "id": "a8d671cb-414d-41c2-8889-52c79c01b403",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "r = \\dfrac{\\Delta V}{\\Delta I}",
+              "note": "straight line from 10 mA to 20 mA"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "I = 20\\ \\text{mA}: V = 0.8\\ \\text{V};\\quad I = 10\\ \\text{mA}: V = 0.7\\ \\text{V}"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "r_{fb} = \\dfrac{0.1\\ \\text{V}}{10\\ \\text{mA}} = 10\\ \\Omega",
+              "f": "(0.8-0.7)/(10*10^(-3))",
+              "value": "10",
+              "sf": 2
+            },
+            {
+              "step": "s4",
+              "kind": "note",
+              "tex": "V = -10\\ \\text{V}:\\ I = -1\\ \\mu\\text{A}"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "r_{rb} = \\dfrac{10\\ \\text{V}}{1\\ \\mu\\text{A}} = 1.0 \\times 10^{7}\\ \\Omega",
+              "f": "10/(1*10^(-6))",
+              "value": "1.0*10^7",
+              "sf": 2
+            }
+          ],
+          "answer": "(0.8-0.7)/(10*10^(-3))"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "f087c2b0",
+        "answer": {
+          "value": 10.000000000000009,
+          "label": "10 Ω; 1.0×10⁷ Ω"
+        }
+      }
+    },
+    {
+      "id": "ab1c1540-2994-4a6b-b301-5d2daa913aef",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "D_2\\ \\text{conducts (ideal: no drop)},\\ V_i = 12\\ \\text{V}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "R_{RB} = 3\\ \\text{k}\\Omega \\parallel 3\\ \\text{k}\\Omega = 1.5\\ \\text{k}\\Omega",
+              "f": "3000*3000/(3000+3000)",
+              "value": "1500",
+              "note": "the two routes from R to B"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "I = \\dfrac{12}{3000} = 4\\ \\text{mA}\\ \\text{in each branch}",
+              "f": "12/3000",
+              "value": "0.004"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "V_{RP} = 4 \\times 10^{-3} \\times 1000 = 4\\ \\text{V}",
+              "f": "4*10^(-3)*1000",
+              "value": "4"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "V_{PB} = 4 \\times 10^{-3} \\times 2000 = 8\\ \\text{V}",
+              "f": "4*10^(-3)*2000",
+              "value": "8",
+              "note": "4 V + 8 V = 12 V"
+            }
+          ],
+          "answer": "3000*(12/3000)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 11,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 14,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 17,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 18,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "64f3a571",
+        "answer": {
+          "value": 12,
+          "label": "12 V; 4 V; 8 V"
+        }
+      }
+    },
+    {
+      "id": "b1022a28-a350-435f-ba4e-6b2b82eefb1e",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "1\\ \\text{dopant per } 5 \\times 10^{7}\\ \\text{Si},\\quad N_{\\text{Si}} = 5 \\times 10^{28}\\ \\text{m}^{-3}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "n_h = \\dfrac{5 \\times 10^{28}}{5 \\times 10^{7}} = 10^{21}\\ \\text{m}^{-3}",
+              "f": "5*10^28/(5*10^7)",
+              "value": "1*10^21",
+              "sf": 1,
+              "note": "one hole per dopant atom"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "n_h = \\dfrac{10^{21}}{10^{6}} = 10^{15}\\ \\text{cm}^{-3}",
+              "f": "10^21/10^6",
+              "value": "1*10^15",
+              "sf": 1,
+              "note": "1 m³ = 10⁶ cm³"
+            }
+          ],
+          "answer": "10^21/10^6"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "aa91f461",
+        "answer": {
+          "value": 1000000000000000,
+          "label": "10¹⁵ per cm³; e.g. aluminium"
+        }
+      }
+    },
+    {
+      "id": "b4f4f4b7-df5e-44a0-b09d-a977070bad93",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "V = 0.5 \\sin(100\\pi t) \\Rightarrow \\omega = 100\\pi\\ \\text{rad/s}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "f = \\dfrac{\\omega}{2\\pi} = \\dfrac{100\\pi}{2\\pi} = 50\\ \\text{Hz}",
+              "f": "100*pi/(2*pi)",
+              "value": "50"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "f_{\\text{half}} = f = 50\\ \\text{Hz}",
+              "f": "50",
+              "value": "50",
+              "note": "one pulse per cycle"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "f_{\\text{full}} = 2f = 2 \\times 50 = 100\\ \\text{Hz}",
+              "f": "2*50",
+              "value": "100",
+              "note": "two pulses per cycle"
+            }
+          ],
+          "answer": "100*pi/(2*pi)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "f17f17b1",
+        "answer": {
+          "value": 50,
+          "label": "50 Hz, 100 Hz"
+        }
+      }
+    },
+    {
+      "id": "d3a1f346-67ee-40a1-8fc3-473a765e633d",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "n_h = 6 \\times 10^{10} \\gg n_i:\\ \\text{p-type}"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "n_e n_h = n_i^{2}"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "n_i = 3 \\times 10^{8}\\ \\text{m}^{-3}",
+              "note": "intrinsic: n_e = n_h = n_i"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "n_i^{2} = (3 \\times 10^{8})^2 = 9 \\times 10^{16}",
+              "f": "(3*10^8)^2",
+              "value": "9*10^16",
+              "sf": 1
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "n_e = \\dfrac{9 \\times 10^{16}}{6 \\times 10^{10}} = 1.5 \\times 10^{6}\\ \\text{m}^{-3}",
+              "f": "(3*10^8)^2/(6*10^10)",
+              "value": "1.5*10^6",
+              "sf": 2
+            }
+          ],
+          "answer": "(3*10^8)^2/(6*10^10)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "a44e974f",
+        "answer": {
+          "value": 1500000,
+          "label": "p-type; 1.5×10⁶ m⁻³"
+        }
+      }
+    },
+    {
+      "id": "dec8660f-d2bf-4f84-89c9-7f44e1e08637",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "n_i = 5 \\times 10^{8},\\quad n_h = 8 \\times 10^{12}\\ \\text{m}^{-3}",
+              "note": "more holes: p-type"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "n_e n_h = n_i^{2}"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "n_i^{2} = (5 \\times 10^{8})^2 = 25 \\times 10^{16}",
+              "f": "(5*10^8)^2",
+              "value": "25*10^16",
+              "sf": 2
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "n_e = \\dfrac{25 \\times 10^{16}}{8 \\times 10^{12}} = 3.125 \\times 10^{4}\\ \\text{m}^{-3}",
+              "f": "(5*10^8)^2/(8*10^12)",
+              "value": "3.125*10^4",
+              "sf": 4
+            }
+          ],
+          "answer": "(5*10^8)^2/(8*10^12)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "20b02797",
+        "answer": {
+          "value": 31250,
+          "label": "p-type; 3.125×10⁴ m⁻³"
+        }
+      }
+    },
+    {
+      "id": "e47e3d97-d488-4e99-9646-9c8e214dc329",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "N_{\\text{Si}} = 5 \\times 10^{28},\\ 1\\ \\text{ppm Sb},\\ n_h = 4.5 \\times 10^{9}\\ \\text{m}^{-3}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "n_e = \\dfrac{5 \\times 10^{28}}{10^{6}} = 5 \\times 10^{22}\\ \\text{m}^{-3}",
+              "f": "5*10^28/10^6",
+              "value": "5*10^22",
+              "sf": 1,
+              "note": "one electron per donor"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "n_e n_h = n_i^{2}"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "n_i^{2} = 5 \\times 10^{22} \\times 4.5 \\times 10^{9} = 2.25 \\times 10^{32}",
+              "f": "5*10^22*4.5*10^9",
+              "value": "2.25*10^32",
+              "sf": 3
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "n_i = \\sqrt{2.25 \\times 10^{32}} = 1.5 \\times 10^{16}\\ \\text{m}^{-3}",
+              "f": "sqrt(2.25*10^32)",
+              "value": "1.5*10^16",
+              "sf": 2
+            }
+          ],
+          "answer": "sqrt(5*10^22*4.5*10^9)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "fe9e5cef",
+        "answer": {
+          "value": 15000000000000000,
+          "label": "1.5×10¹⁶ m⁻³"
+        }
+      }
+    }
+  ],
+  "decided": []
+}
