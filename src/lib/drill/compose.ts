@@ -68,7 +68,9 @@ export async function fillUnseen(
   events: readonly DrillEvent[],
   need: number,
   examId: string | null,
-  intl = false
+  intl = false,
+  /** The exam focus (lib/me/focus): weak subtopics of that exam only. */
+  focusExamName: string | null = null
 ): Promise<string[]> {
   if (need <= 0) return [];
   const seen = await loadSeenQuestionIds(db, userId);
@@ -78,7 +80,9 @@ export async function fillUnseen(
   if (wrongIds.length > 0) {
     const refs = await loadQuestionRefs(db, wrongIds);
     // Weak subtopics on THIS site only, so intl never tops up with an Indian exam.
-    const here = wrongIds.filter((id) => refs.has(id) && onSite(refs.get(id)!.exam, intl));
+    const here = wrongIds.filter(
+      (id) => refs.has(id) && onSite(refs.get(id)!.exam, intl) && (!focusExamName || refs.get(id)!.exam === focusExamName)
+    );
     const weak = rankWeakSubtopics(
       here.map((id) => ({ questionId: id, subtopicId: refs.get(id)?.subtopicId ?? null })),
       WEAK_SUBTOPICS

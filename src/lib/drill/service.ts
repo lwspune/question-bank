@@ -15,8 +15,10 @@ import { getOnboardingState } from "@/lib/profile/service";
 import { siteFillExam } from "@/lib/sites/siteScope";
 import { holdsSitePass } from "@/lib/billing/passScope";
 import { getExamIdMap } from "@/lib/exam/examIdMap";
+import { loadFocus } from "@/lib/me/focusServer";
+import { getExamBySlug } from "@/lib/exam/examContext";
 import { composeDailySet, fillUnseen, loadOwnPool } from "./compose";
-import { fixedCount, questionState, scopeToAttempt, scopeToChapter, selectDrill, DRILL_SIZE, type DueQuestion } from "./select";
+import { fixedCount, questionState, scopeToAttempt, scopeToChapter, scopeToExam, selectDrill, DRILL_SIZE, type DueQuestion } from "./select";
 import type { DrillScope } from "./scope";
 import { answerProgress, type AnswerProgress } from "./progress";
 import { awardAnsweredMilestone } from "@/lib/celebrate/service";
@@ -63,6 +65,9 @@ export type OwnDrill = {
   scope: DrillScope | null;
   /** Today's free allowance (2026-10-05): "open" with a pass or the limit off. */
   allowance: DrillAllowance;
+  /** The general drill narrowed to the exam in focus on /me (2026-11-08):
+   *  its display name, for "MHT-CET only". Null with no focus or a scope. */
+  focusExam: string | null;
 };
 
 /** The inputs to the free daily allowance. A failed read is "no limit": a
@@ -110,15 +115,30 @@ export async function getOwnDrill(
   } = await db.auth.getUser();
   if (!user) return null;
 
-  const [pool, allowanceInput] = await Promise.all([
+  const unscoped = !opts.path && !opts.attemptId && !opts.chapterId;
+  const [pool, allowanceInput, focus] = await Promise.all([
     loadOwnPool(db, user.id, now, intl),
     readDrillAllowanceInput(db, user.id, now, intl),
+    // The exam focus on /me (2026-11-08), for the general drill on www only:
+    // a paper, chapter or path scope already names its questions. A failed
+    // read is no focus, the drill as it was.
+    unscoped && !intl
+      ? getExamIdMap()
+          .then((ids) => loadFocus(db, user.id, ids))
+          .catch((e: unknown) => {
+            console.error("drill focus read failed", e instanceof Error ? e.message : e);
+            return null;
+          })
+      : Promise.resolve(null),
   ]);
   const allowance = drillAllowance(allowanceInput);
   // Today's free questions decide the set size: five, or what is left.
   let size = servedCount(allowance, DRILL_SIZE);
-  let drillable = pool.drillable;
+  // Focused: the badge on /me counted this exam's mistakes, so serve those.
+  let drillable = scopeToExam(pool.drillable, focus?.filterExamName ?? null);
   let scope: OwnDrill["scope"] = null;
+  const focusExam =
+    focus?.selected && focus.filterExamName ? (getExamBySlug(focus.selected)?.displayName ?? null) : null;
 
   // The board path's Fix task (2026-11-07): exactly today's Fix questions, the
   // ones the server stored with today's tasks. They are free (§6), so the set
@@ -163,7 +183,7 @@ export async function getOwnDrill(
     }
   }
 
-  if (size === 0) return { questions: [], fresh: 0, dueTotal: drillable.length, scope, allowance };
+  if (size === 0) return { questions: [], fresh: 0, dueTotal: drillable.length, scope, allowance, focusExam };
 
   const picked = selectDrill(drillable, size);
 
@@ -173,14 +193,15 @@ export async function getOwnDrill(
   // filled — it promised that paper's mistakes and nothing else.
   let fresh: string[] = [];
   if (!scope && picked.length < size) {
-    const { targetExams } = await getOnboardingState(db, user.id);
+    // A focused drill tops up from the focus exam, never another one.
+    const { targetExams } = focus?.selected && focus.filterExamName ? { targetExams: [focus.selected] } : await getOnboardingState(db, user.id);
     const slug = siteFillExam(targetExams, intl);
     const examId = slug ? ((await getExamIdMap())[slug] ?? null) : null;
-    fresh = await fillUnseen(db, user.id, pool.events, size - picked.length, examId, intl);
+    fresh = await fillUnseen(db, user.id, pool.events, size - picked.length, examId, intl, focus?.filterExamName ?? null);
   }
 
   const set = composeDailySet(picked, fresh, size);
-  if (set.length === 0) return { questions: [], fresh: 0, dueTotal: drillable.length, scope, allowance };
+  if (set.length === 0) return { questions: [], fresh: 0, dueTotal: drillable.length, scope, allowance, focusExam };
 
   const loaded = await loadDrillQuestions(db, set.map((s) => s.questionId));
   const origin = new Map(set.map((s) => [s.questionId, s.origin]));
@@ -192,6 +213,7 @@ export async function getOwnDrill(
     dueTotal: drillable.length,
     scope,
     allowance,
+    focusExam,
   };
 }
 

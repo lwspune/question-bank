@@ -14,7 +14,9 @@
 import "server-only";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { getOwnLadder } from "@/lib/drill/service";
-import { dueByChapter, weakChapters } from "@/lib/drill/select";
+import { dueByChapter, scopeToExam, weakChapters } from "@/lib/drill/select";
+import { getExamIdMap } from "@/lib/exam/examIdMap";
+import { loadFocus } from "@/lib/me/focusServer";
 import type { AnswerTotals } from "@/lib/celebrate/service";
 import type { OwnWeekly } from "@/lib/goals/service";
 import { getOwnProfile } from "@/lib/profile/service";
@@ -28,11 +30,21 @@ export async function buildPulse(
   now: Date,
   counts: { week: Promise<OwnWeekly>; answers: Promise<AnswerTotals | null> }
 ): Promise<Required<Pulse>> {
-  const [ladder, week, profile, answers] = await Promise.all([
+  const [ladder, week, profile, answers, focusExam] = await Promise.all([
     getOwnLadder(db, userId, now),
     counts.week,
     getOwnProfile(db, userId),
     counts.answers,
+    // The exam focus (2026-11-08): a two-exam student focused on one exam is
+    // counted that exam's mistakes, the ones /drill will serve. A failed read
+    // is no focus: every mistake counted, as before.
+    getExamIdMap()
+      .then((ids) => loadFocus(db, userId, ids))
+      .then((f) => f.filterExamName)
+      .catch((e: unknown) => {
+        console.error("pulse focus read failed", e instanceof Error ? e.message : e);
+        return null;
+      }),
   ]);
   const countdown = resolveExamDate(profile, now);
   const exam = countdown
@@ -41,16 +53,18 @@ export async function buildPulse(
   const totals = answers ? { answered: answers.answered, right: answers.right, fixed: ladder.fixed } : null;
   // /me's Weak spots (2026-11-06): grouped from the same due pool, so a
   // chapter's count is the number its Fix button will serve from.
-  const weak = weakChapters(ladder.due);
+  const focused = scopeToExam(ladder.due, focusExam);
+  const weak = weakChapters(focused);
   // The chapter pages' "Fix N mistakes in this chapter" line (2026-11-07):
   // every chapter's count from the same pool, so the line's number is what
-  // /drill?chapter= serves. One small object; no extra read.
+  // /drill?chapter= serves. One small object; no extra read. NOT focused: a
+  // chapter belongs to one exam, and its own page asks about that chapter.
   const chapterDue = dueByChapter(ladder.due);
   // The board path (Phase 2): one indexed read, and only for a student with a
   // Class 12 board among their exams. A failed read shows no path line.
   const active = profile.targetExams.some(isPathExam) ? await activePathExam(db, userId) : undefined;
   const path = active === undefined ? null : pathPulseState(profile.targetExams, active);
-  return { due: ladder.due.length, week, exam, totals, weak, chapterDue, path };
+  return { due: focused.length, week, exam, totals, weak, chapterDue, path };
 }
 
 /** The active path's board, null with none, undefined when the read failed. */
