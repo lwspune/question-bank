@@ -16,49 +16,55 @@
  * So this asks the question directly, once per revalidate window, with the same
  * practice-only rule `/browse` itself applies.
  *
- * Head counts only (`head: true`): the row payload is never read, so this is
- * immune to the PostgREST 1000-row truncation trap that has bitten this
- * codebase five times.
+ * One grouped read for every exam (public_question_counts, migration 0237,
+ * 2026-11-08). It was one head count per exam, 25 at once, which queued
+ * behind each other (580 ms mean, 2.9 s worst, against anon's 3 s limit).
  */
 import { unstable_cache } from "next/cache";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import { EXAM_REGISTRY, isPracticeOnlyExam } from "@/lib/exam/examContext";
+import type { KindCounts } from "@/lib/exam/questionCounts";
+import { loadPublicQuestionCounts, tallyPublicCounts } from "@/lib/exam/publicCounts";
 
 /** exam slug → questions visible in that exam's default `/browse` view. */
 export type DefaultViewCounts = Record<string, number>;
 
+/**
+ * Each seeded exam's default-view count: practice for a practice-only exam,
+ * else PYQs, the rule browse/page.tsx applies with no `kind` in the URL. A
+ * seeded exam with no row is a genuine 0; an exam not yet seeded is left out.
+ * Pure. Spec: tests/public-question-counts.test.ts.
+ */
+export function defaultViewCountsFrom(
+  byExamId: ReadonlyMap<string, KindCounts>,
+  idByName: ReadonlyMap<string, string>
+): DefaultViewCounts {
+  const counts: DefaultViewCounts = {};
+  for (const exam of EXAM_REGISTRY) {
+    const examId = idByName.get(exam.examName);
+    if (!examId) continue; // In the registry, not yet seeded.
+    const kind = isPracticeOnlyExam(exam.examName) ? "practice" : "pyq";
+    counts[exam.slug] = byExamId.get(examId)?.[kind] ?? 0;
+  }
+  return counts;
+}
+
 export const getDefaultViewCountsByExam = unstable_cache(
   async (): Promise<DefaultViewCounts> => {
     const db = createSupabaseAnonClient();
-    const counts: DefaultViewCounts = {};
-
     try {
-      const { data: examRows } = await db.from("exams").select("id, name");
-      const idByName = new Map(
-        (examRows ?? []).map((e) => [e.name as string, e.id as string])
-      );
-
-      await Promise.all(
-        EXAM_REGISTRY.map(async (exam) => {
-          const examId = idByName.get(exam.examName);
-          if (!examId) return; // In the registry, not yet seeded.
-          // The same rule browse/page.tsx applies when no `kind` is in the URL.
-          const kind = isPracticeOnlyExam(exam.examName) ? "practice" : "pyq";
-          const { count } = await db
-            .from("questions")
-            .select("id", { count: "exact", head: true })
-            .eq("exam_id", examId)
-            .eq("question_kind", kind);
-          if (typeof count === "number") counts[exam.slug] = count;
-        })
-      );
+      const [{ data: examRows }, rows] = await Promise.all([
+        db.from("exams").select("id, name"),
+        loadPublicQuestionCounts(db),
+      ]);
+      const idByName = new Map((examRows ?? []).map((e) => [e.name as string, e.id as string]));
+      return defaultViewCountsFrom(tallyPublicCounts(rows).byExamId, idByName);
     } catch {
       // A DB blip must not 500 the bank's front door. An empty map drops every
       // pill, and the panel still renders its chapter row and the /questions
       // link — degraded, not broken. Same posture as getExamIdMap().
+      return {};
     }
-
-    return counts;
   },
   ["browse-default-view-counts"],
   { revalidate: 3600 }

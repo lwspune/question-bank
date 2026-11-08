@@ -1,37 +1,39 @@
 import { describe, it, expect } from "vitest";
 import type { SupabaseClient } from "@supabase/supabase-js";
-import { loadExamCatalogPayload } from "@/lib/exam/allExamStats";
+import { loadExamCatalogPayload, shapeExamCatalog } from "@/lib/exam/allExamStats";
 import { EXAM_REGISTRY } from "@/lib/exam/examContext";
 
 /**
  * A stand-in for the anon client, just wide enough for loadExamCatalogPayload:
- * `exams` is read with a bare select, `questions` with select + three .eq().
+ * `exams` is read with a bare select, the counts with one RPC (migration 0237,
+ * 2026-11-08; it was two head counts per exam, 50 at once).
  */
-type CountResult = { count: number | null; error: { message: string } | null };
+type Rows = { exam_id: string; question_kind: string; questions: number }[];
+type RpcResult = { data: Rows | null; error: { message: string } | null };
 function fakeClient(opts: {
   exams: { data: { id: string; name: string }[] | null; error: { message: string } | null };
-  count: (filters: Record<string, unknown>) => CountResult;
-}): SupabaseClient {
+  counts: RpcResult;
+}): SupabaseClient & { rpcCalls: string[] } {
+  const rpcCalls: string[] = [];
   return {
+    rpcCalls,
     from(table: string) {
       if (table === "exams") return { select: () => Promise.resolve(opts.exams) };
-      const filters: Record<string, unknown> = {};
-      const builder = {
-        select: () => builder,
-        eq: (col: string, val: unknown) => {
-          filters[col] = val;
-          return builder;
-        },
-        then: (resolve: (r: CountResult) => unknown, reject: (e: unknown) => unknown) =>
-          Promise.resolve(opts.count(filters)).then(resolve, reject),
-      };
-      return builder;
+      throw new Error(`unexpected read of ${table}: the counts come from the RPC`);
     },
-  } as unknown as SupabaseClient;
+    rpc(name: string) {
+      rpcCalls.push(name);
+      return Promise.resolve(opts.counts);
+    },
+  } as unknown as SupabaseClient & { rpcCalls: string[] };
 }
 
 const EXAM_ROWS = EXAM_REGISTRY.map((e, i) => ({ id: `id-${i}`, name: e.examName }));
-const ok = (n: number): CountResult => ({ count: n, error: null });
+const NDA = `id-${EXAM_REGISTRY.findIndex((e) => e.examName === "NDA")}`;
+const both = (examId: string, pyq: number, practice: number): Rows => [
+  { exam_id: examId, question_kind: "pyq", questions: pyq },
+  { exam_id: examId, question_kind: "practice", questions: practice },
+];
 
 describe("loadExamCatalogPayload — a failed read must never become a count of 0", () => {
   // 2026-10-08: the homepage printed "0 past-year questions" and "Coming soon"
@@ -39,54 +41,55 @@ describe("loadExamCatalogPayload — a failed read must never become a count of 
   // failed, `count ?? 0` turned the failure into zeros, and unstable_cache kept
   // them for a day. A THROWN result is never cached, so failing loudly is what
   // lets the next request try again.
-  it("returns both kinds per exam when every read succeeds", async () => {
-    const client = fakeClient({
-      exams: { data: EXAM_ROWS, error: null },
-      count: (f) => ok(f.question_kind === "pyq" ? 100 : 7),
-    });
+  it("returns both kinds per exam from one count read", async () => {
+    const client = fakeClient({ exams: { data: EXAM_ROWS, error: null }, counts: { data: both(NDA, 100, 7), error: null } });
     const payload = await loadExamCatalogPayload(client);
     expect(new Map(payload.counts).get("NDA")).toEqual({ pyq: 100, practice: 7 });
     expect(payload.ids.length).toBe(EXAM_REGISTRY.length);
+    expect(client.rpcCalls).toEqual(["public_question_counts"]);
   });
 
   it("throws when the exams read fails", async () => {
     const client = fakeClient({
       exams: { data: null, error: { message: "canceling statement due to statement timeout" } },
-      count: () => ok(1),
+      counts: { data: both(NDA, 1, 1), error: null },
     });
     await expect(loadExamCatalogPayload(client)).rejects.toThrow(/exams/);
   });
 
   it("throws when the exams read comes back empty (anon can always see the exam list)", async () => {
-    const client = fakeClient({ exams: { data: [], error: null }, count: () => ok(1) });
+    const client = fakeClient({ exams: { data: [], error: null }, counts: { data: both(NDA, 1, 1), error: null } });
     await expect(loadExamCatalogPayload(client)).rejects.toThrow(/exams/);
   });
 
-  it("throws when any one head-count errors, rather than recording that exam as 0", async () => {
-    const client = fakeClient({
-      exams: { data: EXAM_ROWS, error: null },
-      count: (f) =>
-        f.exam_id === "id-0" && f.question_kind === "practice"
-          ? { count: null, error: { message: "fetch failed" } }
-          : ok(5),
-    });
+  it("throws when the count read errors, rather than recording every exam as 0", async () => {
+    const client = fakeClient({ exams: { data: EXAM_ROWS, error: null }, counts: { data: null, error: { message: "fetch failed" } } });
     await expect(loadExamCatalogPayload(client)).rejects.toThrow(/count/);
   });
 
-  it("throws when a head-count returns no count at all", async () => {
-    const client = fakeClient({
-      exams: { data: EXAM_ROWS, error: null },
-      count: (f) => (f.exam_id === "id-1" ? { count: null, error: null } : ok(5)),
-    });
+  it("throws when the count read returns no rows (the bank is never empty)", async () => {
+    const client = fakeClient({ exams: { data: EXAM_ROWS, error: null }, counts: { data: [], error: null } });
     await expect(loadExamCatalogPayload(client)).rejects.toThrow(/count/);
   });
 
-  it("still allows a genuine 0 (an exam with no questions of one kind)", async () => {
+  it("still allows a genuine 0: an exam or kind with no row has no questions", async () => {
     const client = fakeClient({
       exams: { data: EXAM_ROWS, error: null },
-      count: (f) => ok(f.question_kind === "pyq" ? 0 : 12),
+      counts: { data: [{ exam_id: NDA, question_kind: "practice", questions: 12 }], error: null },
     });
     const payload = await loadExamCatalogPayload(client);
     expect(new Map(payload.counts).get("NDA")).toEqual({ pyq: 0, practice: 12 });
+    expect(new Map(payload.counts).get(EXAM_REGISTRY.find((e) => e.examName !== "NDA")!.examName)).toEqual({ pyq: 0, practice: 0 });
+  });
+
+  it("keeps the total over EVERY exam, registered or not, for V's bank figure", async () => {
+    const client = fakeClient({
+      exams: { data: EXAM_ROWS, error: null },
+      counts: { data: [...both(NDA, 100, 7), { exam_id: "not-in-registry", question_kind: "pyq", questions: 5 }], error: null },
+    });
+    const payload = await loadExamCatalogPayload(client);
+    expect(payload.allPublicTotal).toBe(112);
+    const catalog = shapeExamCatalog(new Map(payload.counts), new Map(payload.ids), undefined, payload.allPublicTotal);
+    expect(catalog.allPublicQuestions).toBe(112);
   });
 });

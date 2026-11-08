@@ -117,17 +117,17 @@ export async function loadVContext(
   } = {}
 ): Promise<VContext> {
   const loadChapters = opts.loadChapters ?? listChapterSearchRows;
-  const [plans, limits, bankCount, pyqBySlug] = await Promise.all([
+  // The bank total comes from the cached catalogue too (2026-11-08): it was its
+  // own uncached count of every PUBLIC question on every message.
+  const [plans, limits, catalog] = await Promise.all([
     listActivePlans(anon),
     readFreeLimits(anon),
-    anon.from("questions").select("*", { count: "exact", head: true }).eq("visibility", "PUBLIC"),
-    (opts.loadExamCatalog ?? getCachedExamCatalog)()
-      .then((c) => new Map(c.exams.map((e) => [e.slug, e.counts.pyq] as const)))
-      .catch((err) => {
-        console.error("V: exam catalogue unavailable", err);
-        return null;
-      }),
+    (opts.loadExamCatalog ?? getCachedExamCatalog)().catch((err) => {
+      console.error("V: exam catalogue unavailable", err);
+      return null;
+    }),
   ]);
+  const pyqBySlug = catalog ? new Map(catalog.exams.map((e) => [e.slug, e.counts.pyq] as const)) : null;
 
   const exams = buildExamFacts(PYQVAULT_EXAMS.map((e) => examFactFromEntry(e, pyqBySlug)));
   // Never an exam with nothing public: its notes would point a student at an exam we do not show.
@@ -139,7 +139,7 @@ export async function loadVContext(
     // V speaks to www's students: the intl site's USD pass is not theirs to buy (0203).
     plans: buildPlanFacts(plans.filter((p) => p.site === "pyqvault")),
     free: buildFreeFacts(limits),
-    bankTotal: bankCount.count ?? 0,
+    bankTotal: catalog?.allPublicQuestions ?? 0,
     nav: NAV_FACTS,
     guides: GUIDE_FACTS,
     notes,

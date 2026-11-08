@@ -132,7 +132,9 @@ async function main() {
   const catalogPayload = await loadExamCatalogPayload(anon);
   const catalog = shapeExamCatalog(
     new Map(catalogPayload.counts),
-    new Map(catalogPayload.ids)
+    new Map(catalogPayload.ids),
+    undefined,
+    catalogPayload.allPublicTotal
   );
 
   function contextFor(c: Case, notesBrief: string | null): VContextOptions {
