@@ -1,0 +1,415 @@
+{
+  "//": "Assembled from agent drafts (sketch).",
+  "visuals": [
+    {
+      "id": "4193a415-a13b-42ce-8fdb-640b8b832138",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "l": 4,
+            "R": "l/sqrt(3)",
+            "AD": "sqrt(3)/2*l",
+            "fl": 1.2,
+            "F2x": "fl*(l/2)/R",
+            "F2y": "fl*(R/2)/R",
+            "F1y": "-fl",
+            "F3x": "-F2x",
+            "F3y": "F2y",
+            "sx": "0+F2x+F3x",
+            "sy": "F1y+F2y+F3y"
+          },
+          "view": {
+            "x": [
+              -3.2,
+              3.2
+            ],
+            "y": [
+              -2.6,
+              2.6
+            ]
+          },
+          "points": {
+            "A": [
+              0,
+              "R"
+            ],
+            "B": [
+              "-l/2",
+              "-R/2"
+            ],
+            "C": [
+              "l/2",
+              "-R/2"
+            ],
+            "O": [
+              0,
+              0
+            ],
+            "P1": [
+              0,
+              "F1y"
+            ],
+            "P2": [
+              "F2x",
+              "F2y"
+            ],
+            "P3": [
+              "F3x",
+              "F3y"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "points": [
+                "A",
+                "B",
+                "C"
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "point",
+              "at": "A",
+              "label": "q",
+              "pos": "n",
+              "step": "s1"
+            },
+            {
+              "kind": "point",
+              "at": "B",
+              "label": "q",
+              "pos": "sw",
+              "step": "s1"
+            },
+            {
+              "kind": "point",
+              "at": "C",
+              "label": "q",
+              "pos": "se",
+              "step": "s1"
+            },
+            {
+              "kind": "point",
+              "at": "O",
+              "label": "Q",
+              "pos": "nw",
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "segment",
+              "from": "A",
+              "to": "O",
+              "dash": true,
+              "step": "s2"
+            },
+            {
+              "kind": "segment",
+              "from": "B",
+              "to": "O",
+              "dash": true,
+              "step": "s2"
+            },
+            {
+              "kind": "segment",
+              "from": "C",
+              "to": "O",
+              "dash": true,
+              "step": "s2"
+            },
+            {
+              "kind": "arrow",
+              "from": "O",
+              "to": "P1",
+              "label": "F1",
+              "labelAt": [
+                0.45,
+                -1
+              ],
+              "pos": "e",
+              "step": "s3",
+              "tone": "amber"
+            },
+            {
+              "kind": "arrow",
+              "from": "O",
+              "to": "P2",
+              "label": "F2",
+              "labelAt": [
+                1.3,
+                0.7
+              ],
+              "pos": "e",
+              "step": "s3",
+              "tone": "amber"
+            },
+            {
+              "kind": "arrow",
+              "from": "O",
+              "to": "P3",
+              "label": "F3",
+              "labelAt": [
+                -1.3,
+                0.7
+              ],
+              "pos": "w",
+              "step": "s3",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -3,
+                -2.2
+              ],
+              "text": "F1 + F2 + F3 = {sx}",
+              "step": "s4",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "R = 2/3*AD",
+            "F1y + F2y + F3y = 0",
+            "F2x + F3x = 0",
+            "F2x^2 + F2y^2 = fl^2"
+          ],
+          "answer": "sx"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "04f898f9",
+        "answer": {
+          "value": 0,
+          "label": "0 (net force)"
+        }
+      }
+    },
+    {
+      "id": "42b18d03-c1b2-4bc7-b74b-1e92ad606cc3",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "l": 1,
+            "q": 1,
+            "eps0": 1,
+            "kq": "q/(4*pi*eps0*l^2)",
+            "AB": "l*sqrt(2)",
+            "AM": "sqrt(AB^2-l^2)",
+            "s": 0.45,
+            "EA": "2*kq"
+          },
+          "view": {
+            "x": [
+              -1.9,
+              1.9
+            ],
+            "y": [
+              -1.4,
+              1.4
+            ]
+          },
+          "points": {
+            "A": [
+              0,
+              "AM"
+            ],
+            "B": [
+              "-l",
+              0
+            ],
+            "C": [
+              "l",
+              0
+            ],
+            "M": [
+              0,
+              0
+            ],
+            "PB": [
+              "-s",
+              0
+            ],
+            "PC": [
+              "s",
+              0
+            ],
+            "PA": [
+              0,
+              "-2*s"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "points": [
+                "A",
+                "B",
+                "C"
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "point",
+              "at": "A",
+              "label": "+2q",
+              "pos": "ne",
+              "step": "s1"
+            },
+            {
+              "kind": "point",
+              "at": "B",
+              "label": "−q",
+              "pos": "sw",
+              "step": "s1"
+            },
+            {
+              "kind": "point",
+              "at": "C",
+              "label": "−q",
+              "pos": "se",
+              "step": "s1"
+            },
+            {
+              "kind": "point",
+              "at": "M",
+              "label": "M",
+              "pos": "ne",
+              "step": "s1"
+            },
+            {
+              "kind": "segment",
+              "from": "A",
+              "to": "M",
+              "dash": true,
+              "label": "l",
+              "labelAt": [
+                0.12,
+                0.5
+              ],
+              "pos": "e",
+              "step": "s2"
+            },
+            {
+              "kind": "arrow",
+              "from": "M",
+              "to": "PB",
+              "label": "E_B",
+              "labelAt": [
+                -0.45,
+                0.12
+              ],
+              "pos": "n",
+              "step": "s3",
+              "tone": "amber"
+            },
+            {
+              "kind": "arrow",
+              "from": "M",
+              "to": "PC",
+              "label": "E_C",
+              "labelAt": [
+                0.45,
+                0.12
+              ],
+              "pos": "n",
+              "step": "s3",
+              "tone": "amber"
+            },
+            {
+              "kind": "arrow",
+              "from": "M",
+              "to": "PA",
+              "label": "E_A",
+              "labelAt": [
+                0.1,
+                -0.7
+              ],
+              "pos": "e",
+              "step": "s4",
+              "tone": "good"
+            },
+            {
+              "kind": "label",
+              "at": [
+                -1.85,
+                -1.15
+              ],
+              "text": "E = q/(2π ε0 l²) along AM",
+              "step": "s4",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "AM = l",
+            "EA = 2*kq"
+          ],
+          "answer": "EA"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 10,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "a9526429",
+        "answer": {
+          "value": 0.15915494309189535,
+          "label": "q/(2πε₀l²) along AM"
+        }
+      }
+    }
+  ],
+  "decided": []
+}
