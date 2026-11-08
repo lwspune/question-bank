@@ -61,6 +61,20 @@ describe("pickStartNext: the chapters to start", () => {
     expect(pickStartNext(weights, new Set(["b"])).map((c) => c.chapter)).toEqual(["Probability", "Statistics"]);
   });
 
+  it("lists a chapter once, at its highest weight, when it appears in two papers of one exam", () => {
+    // MPSC State Services Prelims and SSC CGL Tier II have more than one paper.
+    const twice = [
+      w({ chapterId: "x", chapter: "Environment and Science", paperCode: "gs1", marksPerPaper: 48, qPerPaper: 19, paperMarks: 200 }),
+      w({ chapterId: "x", chapter: "Environment and Science", paperCode: "csat", marksPerPaper: 43, qPerPaper: 17, paperMarks: 200 }),
+      w({ chapterId: "y", chapter: "Polity", marksPerPaper: 20, qPerPaper: 8, paperMarks: 200 }),
+    ];
+    const pick = pickStartNext(twice, new Set());
+    expect(pick.map((c) => [c.chapter, c.marksPerPaper])).toEqual([
+      ["Environment and Science", 48],
+      ["Polity", 20],
+    ]);
+  });
+
   it("shows at most two", () => {
     expect(pickStartNext(weights, new Set())).toHaveLength(2);
   });

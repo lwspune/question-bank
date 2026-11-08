@@ -60,13 +60,20 @@ export function questionsLine(w: Weight): string {
   return parts(w).questions;
 }
 
-/** Not started, worth at least a question a paper, most marks first. */
+/** Not started, worth at least a question a paper, most marks first. A
+ *  chapter that two papers of one exam both ask (MPSC State Services Prelims,
+ *  SSC CGL Tier II) is listed once, at its highest weight. */
 export function pickStartNext(
   weights: readonly ChapterWeight[],
   started: ReadonlySet<string>,
   limit = START_NEXT_LIMIT
 ): ChapterWeight[] {
-  return weights
+  const best = new Map<string, ChapterWeight>();
+  for (const w of weights) {
+    const have = best.get(w.chapterId);
+    if (!have || w.marksPerPaper > have.marksPerPaper) best.set(w.chapterId, w);
+  }
+  return [...best.values()]
     .filter((w) => !started.has(w.chapterId) && w.qPerPaper >= MIN_QUESTIONS_PER_PAPER)
     .sort((a, b) => b.marksPerPaper - a.marksPerPaper || a.chapter.localeCompare(b.chapter))
     .slice(0, limit);
