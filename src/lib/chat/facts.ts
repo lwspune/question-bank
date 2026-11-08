@@ -16,6 +16,7 @@ import { GUIDE_CATALOG } from "@/lib/guide/guideCatalog";
 import { MAX_CHAPTERS } from "@/lib/practiceTests/builder";
 import { ABUSE_REPLY } from "./abuse";
 import { NOT_UNDERSTOOD } from "./understood";
+import { languageLine, type VLanguage } from "./language";
 import type { ExamEntry } from "@/lib/exam/examContext";
 
 export type ChatExamFact = {
@@ -304,7 +305,7 @@ ${questionRule}
 8. A student's own results: when they ask about their scores, progress, how many questions they have answered or practised, weak or strong chapters, or what to study next, call my_progress and use only its numbers. Practice outside mocks counts as progress: give it even when they have no mock yet. Say what went well first, then the one or two chapters to work on next, and link /performance (or /drill for the questions they got wrong). Never compare them with other students. If it says they are signed out, tell them to sign in.${facts.planEnabled ? `\n${PLAN_RULE}` : ""}
 8b. The question on their screen ("this question", "Q 44", "the one I just did"): you cannot see their screen, so call recent_questions and ask whether they mean the first one, quoting its start; once they say which, you can explain it by its id. To remind them, retry later or keep a question, call save_question (after recent_questions if you need the id) and tell them it is in /saved. You cannot send reminders.
 9. For greetings, single words or text you cannot read, reply in one friendly line asking what exam or chapter they are studying.${facts.explainEnabled ? ' A single English word to define ("coruscate") is a concept (rule 7a), not a greeting; a chapter or topic name alone ("atoms", "vectors") is a request for that chapter (rule 3).' : ""} On /pricing or /account, ask instead whether they need help with the pass or a payment.
-10. Reply in the student's language: English, Hinglish, Hindi or Marathi, matching how they wrote.
+10. Reply in the student's language: English, Hinglish, Hindi or Marathi, matching how they wrote. When they ask for a language for every reply ("always Hinglish", "English please"), call set_language and do what it says. Never promise a language for later chats unless set_language saved it.
 10a. The language of the QUESTIONS is a different thing: each exam below says when its questions are also printed in Marathi or Hindi. Every other exam's questions are in English only for now; say so plainly, and name the exams that do have their language.
 11. Keep it short: 1 to 3 sentences${facts.explainEnabled ? ", except an explanation (rules 7 and 7a), which may take up to 8 short lines" : ""}. Plain text only, no markdown, no lists, no em dashes.
 12. You can see the earlier messages of this chat. Use them to understand short follow-ups ("other chapter", "yes?", "1,2,3 lessons"), and do not repeat what you already said. An earlier message that starts [About question <id>] was about that question, which may not be the one named at the end: answer about the one named at the end unless they point back to an earlier one. Never correct, take back or apologise for an earlier reply about another question. A message that starts [The student is replying to an earlier exchange] is about that exchange and its question.
@@ -361,8 +362,11 @@ export function buildSystemTail(who: {
   question?: { id: string; chose: string | null; entered?: number | null; skipped?: boolean } | null;
   /** Or a practice question in the notes, with its stored solution (lib/chat/notesItem.ts notesItemBrief). */
   notesBrief?: string | null;
+  /** The language the student saved for every reply (set_language, migration 0232). */
+  language?: VLanguage | null;
 }): string {
   const parts: string[] = [];
+  if (who.language) parts.push(languageLine(who.language));
   if (who.notesBrief) parts.push(who.notesBrief);
   if (who.question) {
     parts.push(

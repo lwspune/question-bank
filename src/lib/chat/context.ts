@@ -41,6 +41,7 @@ import { GUIDE_CATALOG } from "@/lib/guide/guideCatalog";
 import type { ExamSlug } from "@/lib/exam/examContext";
 import { conceptTool, type ConceptToolDeps } from "./conceptSearch";
 import { notesPageOf } from "./notesItem";
+import { languageTool, type VLanguage } from "./language";
 
 /** Profile slugs as the exam names V's facts use; a retired or unknown slug is dropped. */
 export function profileExamNames(slugs: readonly string[]): string[] {
@@ -109,6 +110,10 @@ export async function loadVContext(
     concepts?: Pick<ConceptToolDeps, "searchBank" | "loadNotesIndex" | "loadNotesConcept"> | null;
     /** The signed-in student's recent questions and saves (lib/chat/myQuestions.ts); absent when signed out. */
     myQuestions?: Omit<MyQuestionDeps, "signedIn"> | null;
+    /** The language the student saved for every reply (student_profiles.v_language, 0232). */
+    language?: VLanguage | null;
+    /** Saves a language asked for every reply (set_language); absent when signed out. */
+    saveLanguage?: ((lang: VLanguage) => Promise<boolean>) | null;
   } = {}
 ): Promise<VContext> {
   const loadChapters = opts.loadChapters ?? listChapterSearchRows;
@@ -158,6 +163,7 @@ export async function loadVContext(
     profileExams: profileExamNames(opts.profileExamSlugs ?? []),
     question: opts.questionTools ? (opts.question ?? null) : null,
     notesBrief: opts.questionTools ? (opts.notesBrief ?? null) : null,
+    language: opts.language ?? null,
   });
 
   const allowedPaths = new Set(pathsInReply([...NAV_FACTS, ...GUIDE_FACTS, ...exams, ...notes].join("\n")));
@@ -199,7 +205,9 @@ export async function loadVContext(
   const plan = opts.planEnabled ? planTools({ ...(opts.plan ?? SIGNED_OUT_PLAN), signedIn: Boolean(opts.plan), loadChapters, loadStrategy }) : [];
   // Always offered (the tool list is cached); signed out they say "sign in" and touch nothing.
   const mine = myQuestionTools({ ...(opts.myQuestions ?? SIGNED_OUT_QUESTIONS), signedIn: Boolean(opts.myQuestions) });
-  const tools = [findChaptersTool, progressTool(opts.loadOwnProgress, opts.loadOwnPractice), strategyTool, ...mine, ...plan];
+  // Always offered (the tool list is cached); signed out it saves nothing and says so.
+  const language = languageTool({ signedIn: Boolean(opts.saveLanguage), save: opts.saveLanguage ?? (async () => false) });
+  const tools = [findChaptersTool, progressTool(opts.loadOwnProgress, opts.loadOwnPractice), strategyTool, ...mine, ...plan, language];
   if (opts.questionTools) tools.push(...questionTools({ ...opts.questionTools, pageChapterId: pageInfo?.chapterId ?? null }));
   // V_SPEC.md step 2: concepts, with the question tools (the same switch), so the cached tool list depends on it alone.
   if (opts.questionTools && opts.concepts) {

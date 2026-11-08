@@ -418,6 +418,8 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
         "exam_strategy",
         "recent_questions",
         "save_question",
+        // 2026-11-08: a language asked for every reply is saved (migration 0232).
+        "set_language",
         "get_question",
         "explain_question",
         "similar_question",
@@ -543,7 +545,7 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
     const { POST } = await import("@/app/api/chat/typed/route");
     await POST(post({ message: `route-${RUN}-ask4 explain`, question: { id: askedId } }));
     const call = askV.mock.calls[0][0] as { tools: { name: string }[]; systemTail: string };
-    expect(call.tools.map((t) => t.name)).toEqual(["find_chapters", "my_progress", "exam_strategy", "recent_questions", "save_question"]);
+    expect(call.tools.map((t) => t.name)).toEqual(["find_chapters", "my_progress", "exam_strategy", "recent_questions", "save_question", "set_language"]);
     expect(call.systemTail).not.toContain("tapped Ask V");
   });
 
@@ -554,7 +556,7 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
     const { POST } = await import("@/app/api/chat/typed/route");
     await POST(post({ message: `route-${RUN}-prog how am I doing` }));
     const tools = askV.mock.calls[0][0].tools as { name: string; run: (i: unknown) => Promise<string> }[];
-    expect(tools.map((t) => t.name)).toEqual(["find_chapters", "my_progress", "exam_strategy", "recent_questions", "save_question"]);
+    expect(tools.map((t) => t.name)).toEqual(["find_chapters", "my_progress", "exam_strategy", "recent_questions", "save_question", "set_language"]);
     expect(await tools[1].run({})).toMatch(/signed out/i);
     // 2026-10-20: the student's recent questions and saves, which a signed-out visitor does not have.
     expect(await tools[3].run({})).toMatch(/signed out/i);
@@ -567,7 +569,7 @@ describe.skipIf(!HAS_ENV)("/api/chat/typed", () => {
     askV.mockReset();
     let said = "";
     askV.mockImplementation(async (input: { tools: { name: string; run: (i: unknown) => Promise<string> }[] }) => {
-      expect(input.tools.map((t) => t.name)).toEqual(["find_chapters", "my_progress", "exam_strategy", "recent_questions", "save_question", "plan_week", "my_plan"]);
+      expect(input.tools.map((t) => t.name)).toEqual(["find_chapters", "my_progress", "exam_strategy", "recent_questions", "save_question", "plan_week", "my_plan", "set_language"]);
       said = await input.tools.find((t) => t.name === "plan_week")!.run({ exam: "NDA" });
       return { ok: true, reply: "Sign in first.", tokensIn: 1, tokensOut: 1, cacheReadTokens: 0, cacheWriteTokens: 0, toolCalls: [] };
     });

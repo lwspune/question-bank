@@ -167,6 +167,8 @@ async function main() {
         : null,
       // A signed-in student with no mock results yet, as getOwnPerformance returns one (null means signed out).
       concepts: settings.explainEnabled ? conceptSources(anon) : null,
+      // Writes nothing: the tool is offered as live, so a case can see V save a language.
+      saveLanguage: c.signed_in ? async () => true : null,
       loadOwnProgress: c.signed_in
         ? async () => buildPerformance({ userId: "v-eval", ...EMPTY_PERFORMANCE }, new Date())
         : undefined,

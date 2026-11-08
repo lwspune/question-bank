@@ -112,6 +112,8 @@ export type ProfileUpdate = ProfileDetails & {
   weeklyGoal?: number | null;
   /** Own exam date (YYYY-MM-DD); null clears it so the calendar applies. */
   examDate?: string | null;
+  /** The language V answers in (set_language, migration 0232); null clears it. */
+  vLanguage?: "en" | "hinglish" | "hi" | "mr" | null;
 };
 
 /**
@@ -137,6 +139,7 @@ export async function updateOwnProfile(
   if (patch.consent !== undefined) row.consent = patch.consent;
   if (patch.weeklyGoal !== undefined) row.weekly_goal = patch.weeklyGoal;
   if (patch.examDate !== undefined) row.exam_date = patch.examDate;
+  if (patch.vLanguage !== undefined) row.v_language = patch.vLanguage;
   if (patch.whatsappOptIn !== undefined) {
     row.whatsapp_opt_in = patch.whatsappOptIn;
     row.whatsapp_prompted_at = new Date().toISOString(); // decided → ask once
