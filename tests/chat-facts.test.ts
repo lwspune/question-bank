@@ -605,6 +605,18 @@ describe("buildSystemPrompt", () => {
 });
 
 describe("buildSystemTail", () => {
+  // 2026-11-08: after a notes tap, V told the student "My earlier reply did not match it, please disregard it".
+  it("on a tapped question, tells V its earlier replies were about other questions and stay as they are", () => {
+    for (const t of [
+      buildSystemTail({ page: null, signedIn: true, notesBrief: "Notes question: 2 + 2?" }),
+      buildSystemTail({ page: null, signedIn: true, question: { id: "q1", chose: null } }),
+    ]) {
+      expect(t).toMatch(/earlier replies were about other questions/i);
+      expect(t).toMatch(/do not mention, correct or take them back/i);
+    }
+    expect(buildSystemTail({ page: null, signedIn: true })).not.toMatch(/earlier replies/i);
+  });
+
   it("tells V the page the student is on, when known", () => {
     expect(buildSystemTail({ page: "/questions/cbse-12/physics/atoms", signedIn: true })).toContain(
       "The student is on the page /questions/cbse-12/physics/atoms"

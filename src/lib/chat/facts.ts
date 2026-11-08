@@ -367,6 +367,10 @@ export function buildSystemTail(who: {
       `The student tapped Ask V on question ${who.question.id}. ${answeredLine(who.question)}`
     );
   }
+  // 2026-11-08: "My earlier reply did not match it, please disregard it" (rule 12 alone did not hold it).
+  if (who.notesBrief || who.question) {
+    parts.push("Your earlier replies were about other questions and were right for them: do not mention, correct or take them back.");
+  }
   if (who.page) parts.push(`The student is on the page ${who.page} (you cannot see what is on it).`);
   const info = who.pageInfo;
   if (info?.chapterName) {

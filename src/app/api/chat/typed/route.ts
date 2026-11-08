@@ -75,7 +75,7 @@ import { isExplanation } from "@/lib/chat/understood";
 import { fileVSolutionReport } from "@/lib/reports/fileVReport";
 import { loadNotesItemBrief } from "@/lib/chat/notesItemServer";
 import { buildMyQuestionDeps } from "@/lib/chat/myQuestionsServer";
-import type { QuestionToolDeps } from "@/lib/chat/questionToolSet";
+import { tappedFrom, type QuestionToolDeps } from "@/lib/chat/questionToolSet";
 import { loadSimilarId, loadVQuestion, searchVQuestions } from "@/lib/chat/questionToolsServer";
 import { explainedQuestionId } from "@/lib/chat/solutionFigure";
 import { loadSolutionFigures, loadSolutionVisuals } from "@/lib/chat/solutionFigureServer";
@@ -116,10 +116,12 @@ function ownProgress(userId: string): Promise<Performance | null> {
  */
 function buildQuestionToolDeps(
   userId: string | null,
+  tapped: QuestionToolDeps["tapped"],
   out: { onSimilar: (id: string) => void; onMatch: (id: string) => void; onLimit: (limit: number) => void }
 ): QuestionToolDeps {
   const anon = createSupabaseAnonClient();
   return {
+    tapped,
     loadQuestion: (id) => loadVQuestion(anon, id),
     spendReveal: userId ? (id) => spendVReveal(createSupabaseServerClient(), userId, id) : null,
     loadSimilar: async (q) =>
@@ -336,7 +338,7 @@ export async function POST(request: NextRequest) {
             notesBrief,
             myQuestions: ownId ? buildMyQuestionDeps(createSupabaseServerClient(), createSupabaseAnonClient(), ownId) : null,
             questionTools: settings.explainEnabled
-              ? buildQuestionToolDeps(ownId, {
+              ? buildQuestionToolDeps(ownId, tappedFrom(asked, message), {
                   onSimilar: (id) => (similarQuestionId = id),
                   onMatch: (id) => (matchQuestionId = id),
                   onLimit: (limit) => (limitHit = limit),

@@ -42,6 +42,7 @@ import { loadExamCatalogPayload, shapeExamCatalog } from "../../../src/lib/exam/
 import { readChapterLandingsUncached } from "../../../src/lib/questions/landing";
 import { readSubtopicIndexUncached, withSubtopics } from "../../../src/lib/chat/subtopicIndex";
 import { loadSimilarId, loadVQuestion, searchVQuestions } from "../../../src/lib/chat/questionToolsServer";
+import { tappedFrom } from "../../../src/lib/chat/questionToolSet";
 import { answerIn } from "../../../src/lib/chat/askVEvent";
 import { conceptSources } from "../../../src/lib/chat/conceptSearchServer";
 import { parseNotesRefKey } from "../../../src/lib/chat/notesItem";
@@ -136,6 +137,7 @@ async function main() {
 
   function contextFor(c: Case, notesBrief: string | null): VContextOptions {
     let plan: SavedPlan | null = null;
+    const question = c.asked_question_id ? { id: c.asked_question_id, chose: c.asked_chose, ...answerIn(c.message) } : null;
     return {
       loadChapters: async () => chapters,
       loadStrategy: readExamStrategyUncached,
@@ -143,13 +145,15 @@ async function main() {
       page: c.page_path,
       signedIn: c.signed_in,
       profileExamSlugs: c.profile_exams,
-      question: c.asked_question_id ? { id: c.asked_question_id, chose: c.asked_chose, ...answerIn(c.message) } : null,
+      question,
       notesBrief,
       myQuestions: c.signed_in
         ? { now: () => new Date(), loadRecent: async () => [], save: async () => ({ kind: "saved" as const }) }
         : null,
       questionTools: settings.explainEnabled
         ? {
+            // As live: an Ask V tap pins the question (2026-11-08).
+            tapped: tappedFrom(question, c.message),
             loadQuestion: (id) => loadVQuestion(anon, id),
             spendReveal: c.signed_in ? async () => ({ kind: "ok" as const, counts: false }) : null,
             loadSimilar: (vq) => loadSimilarId(anon, vq, []),
