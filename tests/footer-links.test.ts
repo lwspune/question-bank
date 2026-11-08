@@ -39,10 +39,9 @@ describe("footerLinks", () => {
     expect(groups.map((g) => g.title)).toEqual(["Explore", "Guides", "Notes", "About"]);
   });
 
-  // /learn since 2026-11-04: Homework took its tab, and a signed-out reader has no
-  // account menu, so the footer is their way to the lessons. /question-papers
-  // since 2026-11-07: the homepage listed it and the footer did not.
-  it.each(["/browse", "/questions", "/mock", "/board", "/question-papers", "/homework", "/learn", "/formula"])(
+  // /question-papers since 2026-11-07: the homepage listed it and the footer did
+  // not. /learn left on 2026-11-08 (tests/learn-entry-points.test.ts).
+  it.each(["/browse", "/questions", "/mock", "/board", "/question-papers", "/homework", "/formula"])(
     "Explore carries the content surface %s",
     (href) => {
       expect(byTitle("Explore").links.map((l) => l.href)).toContain(href);
