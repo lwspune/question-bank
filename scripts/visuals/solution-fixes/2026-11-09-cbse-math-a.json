@@ -1,0 +1,8 @@
+[
+  {
+    "id": "82fd0693-1de4-401d-b8a2-af01c4418fbd",
+    "before": "e35894f6",
+    "solution": "Let \\(f(x) = \\cos^{-1}(\\sin x)\\). Observe that this function is defined for all real numbers. We may rewrite this function as\n\n\\(f(x) = \\cos^{-1}(\\sin x)\\)\n\n\\(= \\cos^{-1}\\left[\\cos\\left(\\dfrac{\\pi}{2} - x\\right)\\right]\\)\n\n\\(= \\dfrac{\\pi}{2} - x\\) for \\(-\\dfrac{\\pi}{2} \\le x \\le \\dfrac{\\pi}{2}\\), since \\(\\cos^{-1}(\\cos t) = t\\) only for \\(0 \\le t \\le \\pi\\)\n\nThus \\(f'(x) = -1\\) for \\(-\\dfrac{\\pi}{2} < x < \\dfrac{\\pi}{2}\\) (on the next interval, \\(\\dfrac{\\pi}{2} < x < \\dfrac{3\\pi}{2}\\), the slope is \\(+1\\); in general \\(f'(x) = -\\dfrac{\\cos x}{|\\cos x|}\\)).",
+    "note": "cos^-1(cos(pi/2 - x)) = pi/2 - x only for -pi/2 <= x <= pi/2; the solution stated it for all x."
+  }
+]
