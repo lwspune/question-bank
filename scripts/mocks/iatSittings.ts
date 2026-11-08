@@ -24,7 +24,7 @@ export type IatSitting = {
 };
 
 /** The years committed to the bank. Add a year here when its commit lands. */
-export const IAT_MOCK_YEARS = [2025] as const;
+export const IAT_MOCK_YEARS = [2023, 2024, 2025, 2026] as const;
 
 export function deriveIatSittings(years: readonly number[], count: (year: number, subject: IatSubject) => number): IatSitting[] {
   return [...years]
