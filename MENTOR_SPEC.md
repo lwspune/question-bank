@@ -271,7 +271,7 @@ stores what the student chose, plus the server's pick of today.
 | 0 | Ready | Chapter tests for the 4 HSC chapters that have none (Physics: Magnetic Fields due to Electric Current, Magnetic Materials, Structure of Atoms and Nuclei; Chemistry: Green Chemistry and Nanochemistry). They hold only 7-9 MCQs each, under the builder's 10-question minimum, so how to cover them is an owner call · ~~check every PCM chapter's Top 10~~ **checked 2026-11-07: all 84 PCM chapters have 10+ slots** · `npm run path:readout` with today's baselines (§9), measured before anything is visible · V eval cases for path asks | **Done 2026-11-07**; the 4 short tests published with owner OK |
 | 1 | Path + Today | Start tap and stream question · path computed from book order (HSC Maths as two queues) · Today card on /me replacing the weekly ring · done derived from work · "Not taught yet" with the 14-day return · Fix task · on-track line · free-limit exemption for today's tasks · `path_chapter_done` · stop / restart on /account | **Built 2026-11-07**, merged to main 2026-11-08; 0225 applied to production 2026-11-08 (owner OK) |
 | 2 | V as the voice | V reads and says the path; "plan my week" and "timetable" answered from it · weekly review · "Pick up here" after a gap · chapter-done celebration · a path line on /board chapter pages for Class 12 students (D8) | **Built and merged 2026-11-08** (§15); no migration; owner phone check after the push |
-| 3 | Pace and the last weeks | Lighter / More with the honest finish date · behind handling · switch to board papers and revision three weeks before the exam | Not started; **must ship by ~2026-01-15** (HSC buffer starts 01-21) |
+| 3 | Pace and the last weeks | Lighter / More with the honest finish date · behind handling · switch to board papers and revision three weeks before the exam | **Built 2026-11-08** on `feat/mentor-path-phase3` (§16); migration 0229 |
 | 4 | Proof, then decide | Readout at 4 weeks and after the boards · ask results (`results:announce`) · decide pricing and the next subjects or exams from what students used | After the boards |
 
 Phase 1 is the whole bet; 2 and 3 make it hold. Phase 1 should ship by about
@@ -508,3 +508,49 @@ What shipped, and why each is shaped so:
 - **Not built:** a line after Top 10 marks on the same /board page re-checks
   only when the tab returns to view or the page reloads, so a chapter whose
   LAST part was a Top 10 mark is celebrated on the next view or on /me.
+
+## 16. Phase 3: pace and the last weeks (built 2026-11-08)
+
+Owner picks (2026-11-08): Lighter / More in **steps of 10 minutes between 20
+and 120** a day; in the revision weeks a **whole timed past paper on
+alternate days**; a paper is **done when every printed question is answered
+or marked** on its page; **Fix up to 10 a day** in the revision weeks
+(migration 0229 lifts the stored list's cap from 5).
+
+What shipped, and why each is shaped so:
+- **Lighter / More** on /me and /account (`path` action `pace`): the minutes
+  move by 10 and today's card refills at once, keeping what is done
+  (`replanToday`, shared with "Not taught yet"). On /me, Lighter first says
+  the date it leads to ("At 20 min a day you finish on 2 Mar, after revision
+  starts."); /account's toast gives the new pace and its finish date.
+- **Behind, said honestly (D3):** "At this pace you finish on 12 Feb. Tap More
+  to finish by 25 Jan (about 60 min a day)." When even 120 cannot make it:
+  "Even at 120 min a day you finish on ... Chapters left then come first,
+  smallest first." Found on the way: Phase 1's pace called a student with
+  nothing left "behind by N days" once revision had started; nothing left is
+  now on track.
+- **The revision weeks** (`revision.ts`), from three weeks before the board
+  exam: chapters not done first, smallest first (with "Not taught yet"
+  still honoured); then a whole past paper on alternate study days (Set 1 of
+  each sitting, an unfinished one first, then the subject with fewest served,
+  newest year first); between papers the chapters with the most Review later
+  questions, worked again; with none, the revision sheets read longest ago,
+  read again (subjects mixed); the Fix task up to 10. The status line reads
+  "revision weeks" once every chapter is done.
+- **The re-read is not in the plan as agreed; `path:smoke` asked for it.**
+  With nothing marked Review later, the first build served a paper on every
+  in-between day (19 papers in 20 days for a student with every chapter
+  done). Papers now stay on alternate days (10 in 20 days, 3-4 a subject;
+  HSC's 4 Maths papers cover it).
+- **A paper is done by the Top 10 rule** on its printed questions: an OR
+  choice by either half, a case study by all its parts (`paperWorked`,
+  `paperSlots` from `board_paper_items.part_of` / `alternative_to`). The
+  day's paper and rework questions are free answers, like a Top 10.
+- Papers are read by `readPathPapers` (cached a day) and per student only in
+  the revision weeks; which papers a path served is read back from its day
+  rows, so nothing new is stored.
+- **Live checks:** `path:smoke` reads the real papers (CBSE 26 sittings per
+  subject, HSC 7 / 7 / 4) and projects 21 revision days for every sampled
+  student and for a student with every chapter done: no paper twice, every
+  day's free questions within the stored caps.
+
