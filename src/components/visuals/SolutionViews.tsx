@@ -9,7 +9,7 @@
  * every other question looks exactly as before.
  *
  * With `track`, what the student does is recorded (lib/visuals/usage, signed-in
- * only): the player's shown / finished / replayed, a tap on the switch, and a
+ * only): the player's shown / reached / finished / replayed, a tap on the switch, and a
  * solution that opened in Still because the device remembered Still, counted
  * when its switch comes on screen (a closed mock-review solution is mounted but
  * never seen).
@@ -19,7 +19,7 @@
 import dynamic from "next/dynamic";
 import { useEffect, useRef, type ReactNode, type Ref } from "react";
 import { readSolutionView, useSolutionView, type SolutionView } from "@/lib/visuals/viewPref";
-import { sceneOf, type VisualAction } from "@/lib/visuals/usage";
+import { sceneOf, type VisualAction, type VisualDetail } from "@/lib/visuals/usage";
 import { reportVisual, type VisualTrack } from "@/lib/visuals/usageBeacon";
 import { cn } from "@/lib/utils";
 
@@ -44,8 +44,8 @@ export default function SolutionViews({ visual, solution, header, lead, still, t
   const [view, setView] = useSolutionView();
   const switchRef = useRef<HTMLDivElement>(null);
   const scene = sceneOf(visual);
-  const report = (action: VisualAction) => {
-    if (track) reportVisual(track, scene, action);
+  const report = (action: VisualAction, detail?: VisualDetail) => {
+    if (track) reportVisual(track, scene, action, detail);
   };
   const reportRef = useRef(report);
   reportRef.current = report;

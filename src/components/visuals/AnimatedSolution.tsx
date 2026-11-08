@@ -13,7 +13,9 @@ import { CheckCircle2, ChevronLeft, ChevronRight, Play } from "lucide-react";
 import BlockText from "@/components/math/BlockText";
 import { fitMathLines } from "@/lib/visuals/fitMath";
 import { easeInOut } from "@/lib/visuals/geometry";
+import { createProgress, type Progress, type StepRoute } from "@/lib/visuals/progress";
 import { getScene } from "@/lib/visuals/registry";
+import type { VisualDetail } from "@/lib/visuals/usage";
 import { checkVisual, parseSolutionVisual, stepTexts } from "@/lib/visuals/visual";
 import { cn } from "@/lib/utils";
 import SceneSvg from "./SceneSvg";
@@ -27,7 +29,8 @@ function prefersReducedMotion(): boolean {
 }
 
 /** What the player tells its host, for measuring use (lib/visuals/usage). */
-export type PlayerEvent = "shown" | "finished" | "replayed";
+export type PlayerEvent = "shown" | "reached" | "finished" | "replayed";
+export type PlayerEventHandler = (e: PlayerEvent, detail?: VisualDetail) => void;
 
 export default function AnimatedSolution({
   visual: raw,
@@ -36,7 +39,7 @@ export default function AnimatedSolution({
 }: {
   visual: unknown;
   solution: string | null;
-  onEvent?: (e: PlayerEvent) => void;
+  onEvent?: PlayerEventHandler;
 }) {
   // Parsed and checked again here: a chat turn kept on the device can be edited,
   // so the player never trusts that the server's check still holds.
@@ -55,7 +58,7 @@ function Player({
 }: {
   visual: Extract<ReturnType<typeof parseSolutionVisual>, { ok: true }>["visual"];
   solution: string | null;
-  onEvent?: (e: PlayerEvent) => void;
+  onEvent?: PlayerEventHandler;
 }) {
   const scene = getScene(visual.scene)!;
   const params = visual.params;
@@ -76,10 +79,13 @@ function Player({
   const playAllRef = useRef<() => Promise<void>>(async () => {});
   const onEventRef = useRef(onEvent);
   onEventRef.current = onEvent;
+  // How far the student got (lib/visuals/progress), set up with the motion setting below.
+  const progress = useRef<Progress | null>(null);
 
   useEffect(() => {
     // Reduced motion: show the finished picture, never animate unasked.
     const reduced = prefersReducedMotion();
+    progress.current = createProgress(steps.length, { reduced });
     if (reduced) {
       const last = steps.length - 1;
       setPos({ step: last, beat: steps[last].beats.length - 1, t: 1 });
@@ -87,9 +93,10 @@ function Player({
     // Play when at least 40% of the picture is on screen, so a visual lower down
     // (mock review, V's window) plays when the student reaches it, not unseen.
     // "shown" waits for the same moment: a closed mock-review solution is mounted
-    // but never seen.
+    // but never seen. It says whether animations are off, since that student
+    // only ever sees the final picture and so can never finish.
     const start = () => {
-      onEventRef.current?.("shown");
+      onEventRef.current?.("shown", { motion: reduced ? "reduced" : "full", steps: steps.length });
       if (!reduced) void playAllRef.current();
     };
     const el = frame.current;
@@ -160,26 +167,31 @@ function Player({
     });
   }
 
-  async function playStep(k: number, token: number): Promise<boolean> {
+  async function playStep(k: number, token: number, how: StepRoute): Promise<boolean> {
     for (let b = 0; b < steps[k].beats.length; b++) if (!(await animateBeat(k, b, token))) return false;
+    // Step k is fully drawn: record a new furthest step, and the finish on the
+    // last one, whether the run or a tap got here.
+    for (const r of progress.current?.stepDone(k, how) ?? []) {
+      if (r.action === "reached") onEventRef.current?.("reached", { step: r.step });
+      else onEventRef.current?.("finished", { how: r.how });
+    }
     return true;
   }
 
   function goTo(k: number) {
     const token = ++run.current;
     cancelAnimationFrame(raf.current);
-    void playStep(Math.max(0, Math.min(steps.length - 1, k)), token);
+    void playStep(Math.max(0, Math.min(steps.length - 1, k)), token, "tapped");
   }
 
   async function playAll(): Promise<void> {
     const token = ++run.current;
     cancelAnimationFrame(raf.current);
     for (let k = 0; k < steps.length; k++) {
-      if (!(await playStep(k, token))) return;
+      if (!(await playStep(k, token, "auto"))) return;
       if (k < steps.length - 1) await wait(prefersReducedMotion() ? 1200 : 600);
       if (run.current !== token) return;
     }
-    onEventRef.current?.("finished");
   }
 
   function replay() {

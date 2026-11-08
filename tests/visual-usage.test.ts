@@ -45,6 +45,54 @@ describe("parseVisualEvent", () => {
     expect(parseVisualEvent(null, "u1", NOW).ok).toBe(false);
     expect(parseVisualEvent([], "u1", NOW).ok).toBe(false);
   });
+
+  // 2026-11-08: the player now says whether animations were on, how many steps
+  // the solution has, each new step reached, and how a finish was reached.
+  const base = { questionId: Q, surface: "bank", scene: "space3d" };
+
+  it("keeps the motion setting and step count on shown", () => {
+    const r = parseVisualEvent({ ...base, action: "shown", motion: "reduced", steps: 3 }, "u1", NOW);
+    expect(r.ok && r.value.metadata).toEqual({ surface: "bank", action: "shown", scene: "space3d", motion: "reduced", steps: 3 });
+    expect(r.ok && r.value.dedupeKey).toBe(`visual:shown:${Q}:u1:2026-11-01`);
+  });
+
+  it("keeps a reached step as its own row per step, so steps 2 and 3 are both kept", () => {
+    const r2 = parseVisualEvent({ ...base, action: "reached", step: 2 }, "u1", NOW);
+    const r3 = parseVisualEvent({ ...base, action: "reached", step: 3 }, "u1", NOW);
+    expect(r2.ok && r2.value.metadata).toEqual({ surface: "bank", action: "reached", scene: "space3d", step: 2 });
+    expect(r2.ok && r2.value.dedupeKey).toBe(`visual:reached:2:${Q}:u1:2026-11-01`);
+    expect(r3.ok && r3.value.dedupeKey).toBe(`visual:reached:3:${Q}:u1:2026-11-01`);
+  });
+
+  it("keeps how a finish was reached", () => {
+    const r = parseVisualEvent({ ...base, action: "finished", how: "tapped" }, "u1", NOW);
+    expect(r.ok && r.value.metadata).toEqual({ surface: "bank", action: "finished", scene: "space3d", how: "tapped" });
+  });
+
+  it("still accepts the old shapes, sent by a page loaded before the deploy", () => {
+    expect(parseVisualEvent({ ...base, action: "shown" }, "u1", NOW).ok).toBe(true);
+    expect(parseVisualEvent({ ...base, action: "finished" }, "u1", NOW).ok).toBe(true);
+  });
+
+  it("refuses a detail on the wrong action, a bad value, and a reached step without its number", () => {
+    const bad = [
+      { action: "reached" },
+      { action: "reached", step: 1 },
+      { action: "reached", step: 51 },
+      { action: "reached", step: 2.5 },
+      { action: "reached", step: "2" },
+      { action: "shown", motion: "slow" },
+      { action: "shown", steps: 0 },
+      { action: "shown", steps: 51 },
+      { action: "finished", how: "skipped" },
+      { action: "finished", motion: "reduced" },
+      { action: "shown", how: "auto" },
+      { action: "shown", step: 2 },
+      { action: "replayed", steps: 3 },
+      { action: "chose_still", step: 2 },
+    ];
+    for (const b of bad) expect(parseVisualEvent({ ...base, ...b }, "u1", NOW).ok, JSON.stringify(b)).toBe(false);
+  });
 });
 
 describe("sceneOf", () => {
@@ -82,6 +130,12 @@ describe("summarizeVisualUsage", () => {
       choseAnimated: 0,
       finishedPct: 33,
       stillPct: 33,
+      tracked: 0,
+      animOff: 0,
+      trackedFinished: 0,
+      tapped: 0,
+      trackedFinishedPct: null,
+      stoppedAt: {},
     });
   });
 
@@ -108,5 +162,47 @@ describe("summarizeVisualUsage", () => {
     expect(days[1].finishedPct).toBeNull();
     expect(days[1].stillPct).toBeNull();
     expect(summarizeVisualUsage([], "all")).toEqual([]);
+  });
+
+  it("judges finishing only on the new player's rows, leaving out students with animations off", () => {
+    const rows = [
+      // old player: shown with no motion recorded
+      row("u0", "q0", "shown"),
+      // new player, animations on, auto finish
+      row("u1", "q1", "shown", { motion: "full", steps: 3 }),
+      row("u1", "q1", "reached", { step: 2 }),
+      row("u1", "q1", "reached", { step: 3 }),
+      row("u1", "q1", "finished", { how: "auto" }),
+      // new player, tapped to the end
+      row("u1", "q2", "shown", { motion: "full", steps: 2 }),
+      row("u1", "q2", "reached", { step: 2 }),
+      row("u1", "q2", "finished", { how: "tapped" }),
+      // new player, stopped at step 2 of 3
+      row("u2", "q1", "shown", { motion: "full", steps: 3 }),
+      row("u2", "q1", "reached", { step: 2 }),
+      // new player, stopped at step 1 of 3
+      row("u3", "q1", "shown", { motion: "full", steps: 3 }),
+      // new player, animations off: never in the finish share
+      row("u4", "q1", "shown", { motion: "reduced", steps: 3 }),
+    ];
+    const [all] = summarizeVisualUsage(rows, "all");
+    expect(all.shown).toBe(6);
+    expect(all.tracked).toBe(5);
+    expect(all.animOff).toBe(1);
+    expect(all.trackedFinished).toBe(2);
+    expect(all.tapped).toBe(1);
+    expect(all.trackedFinishedPct).toBe(50); // 2 of the 4 with animations on
+    expect(all.finishedPct).toBe(33); // the raw share still counts every pair
+    expect(all.stoppedAt).toEqual({ "1/3": 1, "2/3": 1 });
+  });
+
+  it("takes a pair as tracked when any day's shown came from the new player", () => {
+    const rows = [
+      row("u1", "q1", "shown", { day: "2026-11-01" }),
+      row("u1", "q1", "shown", { motion: "full", steps: 2, day: "2026-11-09" }),
+      row("u1", "q1", "finished", { how: "auto", day: "2026-11-09" }),
+    ];
+    const [all] = summarizeVisualUsage(rows, "all");
+    expect([all.shown, all.tracked, all.trackedFinished, all.trackedFinishedPct]).toEqual([1, 1, 1, 100]);
   });
 });
