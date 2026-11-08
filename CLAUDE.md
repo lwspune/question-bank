@@ -350,6 +350,10 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 
 ### 2026-11
 
+- **2026-11-08 (second) — The server decides the daily answer limit (0227-0229).**
+  - **Why:** 10 student-days without a pass went over in 30 days (~190 answers). The browser decided from a copy fetched once per load, and 3 failed reads (session, limits, count) each meant "no limit" until a reload.
+  - **`claim_reveal`** decides each new answer and records it in one locked step (two tabs can't both take the last one); bank, board, guides and V all call it. The free-exam list now lives only in the database. A trigger counts answers that old tabs record.
+  - **`/api/me/reveals` is display only; errors are 503, never "no limit".** If the server can't be asked, that one answer goes ahead, not the whole visit. A daily prod-contract test (0229) names anyone over the limit. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-11-08 — The board path: a daily plan to finish Class 12 PCM before the boards (0225, MENTOR_SPEC.md Phase 1).**
   - **Why:** a plan alone did not work (V's week plans: 6 of 68 tasks done); the loop around it is the product: one next step a day on /me, on track or behind said plainly.
   - **Today's pick is stored** (`study_path_days`, service-role writes), so the card holds all day and the free-limit exemptions (today's Top 10, Fix questions, granted chapter tests) come from the server, never the browser.
