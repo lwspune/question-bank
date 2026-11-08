@@ -352,6 +352,10 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 
 ### 2026-11
 
+- **2026-11-08 (ninth) — Home · Review · Progress: Papers and Chapters under one tab, Home keeps things to do (step 3; no migration).**
+  - **`/progress` opens Papers for a student with a marked paper, else Chapters:** 2 in 3 have none, and the map counts practice. Old URLs stay; intl's map keeps its own header.
+  - **Numbers cut by what they do for a student:** study-days ring (at 0 for ~6 in 10), answered and % right tiles, the band's Last paper and Answers right. Replaced by mistakes fixed + subtopics mastered.
+  - **Five detail sections fold under "More detail"**, staff too (shared body, never a kinder subset). Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-11-08 (eighth) — The Review tab: To fix by chapter with each question's reason, and the saved list (step 2; no migration).**
   - **Its list IS the drill's pool**, focused like the badge, so the total is the badge's number (`npm run review:smoke` checks the chapter counts add up).
   - **Reason = the newest miss** (wrong where, Review later, or a No to V). **No "ready today / later" split:** the drill has no waiting period since 10-05.
