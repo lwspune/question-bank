@@ -41,6 +41,8 @@ Found 2026-11-08 in the Maharashtra HSC Class 12 Physics run.
 | `af65db00` | Maharashtra HSC 12 · Differential Equations (MCQ) | **Keyed option misprinted.** Key B prints xy y″ + 2(y′)² − y y′ = 0; the working gives x(y′)² for 2(y′)², and the solution's note says so. Not animated. |
 | `b995dbd2` | Maharashtra HSC 12 · Differential Equations | **Stem false as printed.** The given function does not satisfy the stated equation (LHS − RHS = 2ae^x − 2be^(−x) + 6x − 2); the solution's note calls it a misprint. Not animated. |
 | `f67407eb` | Maharashtra HSC 12 · Differential Equations | **Stem false as printed.** "Show (x + y + 1) = c(1 − x − y − 2xy)" fails the equation; the working reaches y − x = c(2xy + x + y + 2), which does satisfy it, and the note names the book error. Not animated. |
+| `c23d6d3b` | Maharashtra HSC 12 · Definite Integration | **Stem misprinted.** ∫₀^{π/4} cot²x (no dx) diverges at 0; the solution says so and works the tan²x repair, 1 − π/4. Animated: it shows the divergence, then the repair. A stem edit changes content_hash. |
+| `d5c91a76` | Maharashtra HSC 12 · Definite Integration | **Stem misprinted.** "Show ∫₀^π log(1 + tan x) dx = (π/8) log 2": with upper limit π the integral does not exist; the stated value is the π/4 result, which the solution proves and says so. Animated on the π/4 reading. |
 
 ## Settled
 
