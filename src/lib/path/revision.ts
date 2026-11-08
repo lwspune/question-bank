@@ -5,15 +5,15 @@
  *
  *   1. chapters not done yet come first, smallest first (D3: "done" is never
  *      shrunk to fit the time, so what is left is finished first);
- *   2. then, on alternate study days, a WHOLE past board paper, timed (the
- *      real exam's practice; the paper day overruns the usual minutes), a
- *      paper started and not finished before a new one, subjects in turn,
- *      newest year first;
- *   3. between paper days, the chapters with the most "Review later"
- *      questions, worked again; with none left, the revision sheets read
- *      longest ago, read again (so papers stay on alternate days, as the
- *      owner picked, rather than filling every empty day: path:smoke found
- *      19 papers in 20 days before this);
+ *   2. then a WHOLE past board paper, timed, EVERY day (owner, 2026-11-08;
+ *      it was alternate days until the owner saw the in-between days): the
+ *      real exam's practice, the day overrunning the usual minutes. A paper
+ *      started and not finished comes before a new one; subjects in turn,
+ *      newest year first. After it, the one chapter most marked "Review
+ *      later", worked again;
+ *   3. once the papers run out (HSC has 18 for PCM), the chapters most marked
+ *      Review later, worked again; with none left, the revision sheets read
+ *      longest ago, read again, so no day is empty;
  *   4. the Fix task as a main daily item, up to REVISION_FIX_MAX mistakes.
  *
  * A paper is DONE when every printed question on it was answered or marked on
@@ -25,7 +25,7 @@
 import { markOf, type ProgressEvent } from "@/lib/homework/progress";
 import type { ChapterFacts } from "./fold";
 import { chapterDone, NOTHING_DONE, PATH_SUBJECTS, SHEET_MINUTES, type ChapterState, type PathChapter, type PathPaper } from "./model";
-import { bufferStart, daysBetween } from "./pace";
+import { bufferStart } from "./pace";
 import { FIX_MINUTES_PER_QUESTION, MAX_TASKS, MIN_TASKS, STOP_SHARE, pickToday, type PaperState, type PathTask } from "./today";
 
 export type { PaperState } from "./today";
@@ -131,26 +131,31 @@ export function pickRevisionDay(input: {
   // A day holds one paper at most.
   if (tasks.some((t) => t.kind === "paper")) return tasks;
 
-  const paper = nextPaper(input.papers, input.paperStates);
-  const paperTask = (p: PathPaper): PathTask => ({ kind: "paper", paperId: p.id, minutes: p.minutes });
-
-  // 2. A whole paper on alternate study days.
-  const paperDay = daysBetween(input.buffer, input.today) % 2 === 0;
-  if (paperDay && paper) return [...tasks, paperTask(paper)];
-
-  // 3. Between paper days, the chapters with the most Review later questions.
   const kept = new Set(tasks.flatMap((t) => (t.kind === "revise" ? [t.chapterId] : [])));
   const byCount = [...input.reviews.entries()]
     .filter(([id, ids]) => ids.length > 0 && !kept.has(id))
     .sort((a, b) => b[1].length - a[1].length || rankOf(input.chapters, a[0]) - rankOf(input.chapters, b[0]));
+  const reviseTask = ([chapterId, ids]: readonly [string, readonly string[]]): PathTask => {
+    const questionIds = ids.slice(0, REVISE_MAX_QUESTIONS);
+    return { kind: "revise", chapterId, questionIds: [...questionIds], minutes: questionIds.length * MINUTES_PER_REVISE_QUESTION };
+  };
+
+  // 2. A whole paper every day, then the chapter most marked Review later.
+  const paper = nextPaper(input.papers, input.paperStates);
+  if (paper) {
+    tasks.push({ kind: "paper", paperId: paper.id, minutes: paper.minutes });
+    if (byCount.length > 0 && kept.size === 0) tasks.push(reviseTask(byCount[0]));
+    return tasks;
+  }
+
+  // 3. The papers have run out: the chapters most marked Review later.
   let spent = tasks.reduce((s, t) => s + t.minutes, 0);
   let revised = kept.size;
-  for (const [chapterId, ids] of byCount) {
+  for (const entry of byCount) {
     if (tasks.length >= MAX_TASKS || (tasks.length >= MIN_TASKS && spent >= STOP_SHARE * input.budget)) break;
-    const questionIds = ids.slice(0, REVISE_MAX_QUESTIONS);
-    const minutes = questionIds.length * MINUTES_PER_REVISE_QUESTION;
-    tasks.push({ kind: "revise", chapterId, questionIds: [...questionIds], minutes });
-    spent += minutes;
+    const task = reviseTask(entry);
+    tasks.push(task);
+    spent += task.minutes;
     revised += 1;
   }
   // Nothing marked Review later: the sheets read longest ago, read again.
@@ -171,8 +176,6 @@ export function pickRevisionDay(input: {
       spent += SHEET_MINUTES;
     }
   }
-  // Nothing at all to do between papers: a paper rather than an empty day.
-  if (tasks.length === 0 && paper) return [paperTask(paper)];
   return tasks;
 }
 
