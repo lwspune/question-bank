@@ -49,6 +49,18 @@ def render(year: int, dpi: int = 150) -> None:
     print(f"{len(doc)} pages -> {out}")
 
 
+# Scanned years: the back of each sheet shows through as light grey mirror text.
+# Printed lines are dark, so anything lighter than SCAN_WHITE becomes white.
+SCANS = {2018}
+SCAN_WHITE = 190
+
+
+def clean_scan(img: Image.Image) -> Image.Image:
+    # what survives is darkened, so thin scanned lines stay legible
+    g = img.convert("L").point(lambda v: 255 if v > SCAN_WHITE else int(v * 0.45))
+    return g.convert("RGB")
+
+
 def trim(img: Image.Image, pad: int = 10) -> Image.Image:
     bg = Image.new(img.mode, img.size, (255, 255, 255))
     box = ImageChops.difference(img, bg).convert("L").point(lambda v: 255 if v > 40 else 0).getbbox()
@@ -58,13 +70,13 @@ def trim(img: Image.Image, pad: int = 10) -> Image.Image:
     return img.crop((max(0, l - pad), max(0, t - pad), min(img.width, r + pad), min(img.height, b + pad)))
 
 
-def cut(doc: fitz.Document, fig: dict, dest: Path) -> None:
+def cut(doc: fitz.Document, fig: dict, dest: Path, scan: bool = False) -> None:
     page = doc[int(fig["page"].lstrip("p")) - 1]
     w, h = page.rect.width, page.rect.height
     l, t, r, b = fig["region"]
     pix = page.get_pixmap(dpi=220, clip=fitz.Rect(l * w, t * h, r * w, b * h))
     img = Image.frombytes("RGB", (pix.width, pix.height), pix.samples)
-    trim(img).save(dest)
+    trim(clean_scan(img) if scan else img).save(dest)
 
 
 def crop(year: int, subject: str, refs: list[str]) -> None:
@@ -78,10 +90,10 @@ def crop(year: int, subject: str, refs: list[str]) -> None:
         if refs and row["ref"] not in refs:
             continue
         if row.get("figure"):
-            cut(doc, row["figure"], out / f"{row['ref']}.png")
+            cut(doc, row["figure"], out / f"{row['ref']}.png", year in SCANS)
             n += 1
         for i, fig in enumerate(row.get("optionFigures") or []):
-            cut(doc, fig, out / f"{row['ref']}-opt{i + 1}.png")
+            cut(doc, fig, out / f"{row['ref']}-opt{i + 1}.png", year in SCANS)
             n += 1
     print(f"{n} crop(s) -> {out}")
 

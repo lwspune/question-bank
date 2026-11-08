@@ -1,0 +1,11 @@
+{
+  "adjudications": [
+    {
+      "ref": "3",
+      "why": "Solver agreed with IISER (cot(theta/2)) but showed it needs N = mg sin(phi), dropping the centripetal term; solved exactly, the motion matches no option. Defective as printed: owner policy 2026-10-29 case 3, key kept, notice, grace.",
+      "notice": "IISER's answer, option (D), needs a simplification: it takes the normal force as \\(mg\\sin\\phi\\) and ignores the centripetal force the bowl must also supply. Solved exactly, none of the options is correct. In a PYQ Vault mock this question gives everyone its marks.",
+      "grace": true,
+      "solution": "Let the bowl have radius \\(R\\) and measure the angle \\(\\phi\\) at the centre from the starting point on the rim (where the radius is horizontal). At angle \\(\\phi\\) the object is \\(R\\sin\\phi\\) below the rim.\n\nThe object starts and ends at rest, so the loss of potential energy equals the work done against friction. Taking the normal force as the component of weight along the radius, \\(N = mg\\sin\\phi\\), the friction force is \\(\\mu mg \\sin\\phi\\) and it acts over a path element \\(R\\,d\\phi\\).\n\nWork against friction: \\(W = \\int_0^{\\theta} \\mu mg\\sin\\phi \\, R\\,d\\phi = \\mu mgR(1 - \\cos\\theta)\\).\n\nLoss of potential energy: \\(mgR\\sin\\theta\\).\n\nSetting them equal: \\(\\sin\\theta = \\mu(1 - \\cos\\theta)\\), so \\(\\mu = \\frac{\\sin\\theta}{1 - \\cos\\theta} = \\frac{2\\sin(\\theta/2)\\cos(\\theta/2)}{2\\sin^2(\\theta/2)} = \\cot(\\theta/2)\\).\n\nSo the answer is option (D)."
+    }
+  ]
+}

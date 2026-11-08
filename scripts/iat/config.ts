@@ -56,8 +56,10 @@ export const IAT_YEARS: readonly IatYear[] = [
   { year: 2017, file: "2017_Eng_IAT.pdf", keyMode: "none", keyConfirmed: false, note: "question paper, no key" },
   { year: 2018, file: "2018_Eng_IAT.pdf", keyMode: "none", keyConfirmed: false, note: "scanned question paper, no text layer, no key" },
   { year: 2019, file: "2019_Eng_IAT.pdf", keyMode: "none", keyConfirmed: false, note: "question paper, no key" },
-  { year: 2021, file: "2021_Eng_IAT.pdf", keyMode: "none", keyConfirmed: false, note: "question paper, no key" },
-  { year: 2022, file: "2022-eng-IAT.pdf", keyMode: "none", keyConfirmed: false, note: "question paper, no key" },
+  // 2021 and 2022 are posted as question papers but print IISER's answer as (a): a blind solve of
+  // 2021 Biology in printed order put 14 of 15 on A, and 2022 Maths Q1-5 are all (a) by hand.
+  { year: 2021, file: "2021_Eng_IAT.pdf", keyMode: "first-option", keyConfirmed: true, note: "key-file order; printed (a) measured 57/60 (shuffled blind solve)" },
+  { year: 2022, file: "2022-eng-IAT.pdf", keyMode: "first-option", keyConfirmed: true, note: "key-file order; printed (a) measured 60/60 (shuffled blind solve)" },
   // Confirmed 2026-11-08: a blind solve of the shuffled paper agreed with printed (a) on
   // 58 of 60 (chance: ~15); both splits were read and are defensible keys (adjudications).
   { year: 2023, file: "2023-eng-IAT.pdf", keyMode: "first-option", keyConfirmed: true, note: "key-file layout; printed (a) measured 58/60" },

@@ -153,7 +153,7 @@ export const IAT_TAXONOMY: Readonly<Record<IatSubject, readonly IatChapter[]>> =
     { name: "Wave Optics", subtopics: ["Huygens Principle", "Refraction and Reflection of Plane Waves", "Interference and Young's Experiment", "Diffraction", "Polarisation"] },
     { name: "Dual Nature of Radiation and Matter", subtopics: ["Electron Emission", "Photoelectric Effect and its Experimental Study", "Einstein's Photoelectric Equation and the Photon", "Wave Nature of Matter"] },
     { name: "Atoms", subtopics: ["Alpha-Particle Scattering and Rutherford's Model", "Atomic Spectra", "Bohr Model of the Hydrogen Atom", "Line Spectra of the Hydrogen Atom", "de Broglie's Explanation of Bohr's Postulate"] },
-    { name: "Nuclei", subtopics: ["Atomic Masses and Composition of the Nucleus", "Size of the Nucleus", "Mass-Energy and Nuclear Binding Energy", "Nuclear Force", "Nuclear Energy"] },
+    { name: "Nuclei", subtopics: ["Atomic Masses and Composition of the Nucleus", "Size of the Nucleus", "Mass-Energy and Nuclear Binding Energy", "Nuclear Force", "Radioactivity", "Nuclear Energy"] },
     { name: "Semiconductor Electronics: Materials, Devices and Simple Circuits", subtopics: ["Classification of Metals, Conductors and Semiconductors", "Intrinsic and Extrinsic Semiconductors", "p-n Junction and the Semiconductor Diode", "Application of Junction Diode as a Rectifier", "Special Purpose p-n Junction Diodes", "Junction Transistor", "Digital Electronics and Logic Gates"] },
     { name: "Communication Systems", legacy: true, subtopics: ["Elements of a Communication System", "Propagation of Electromagnetic Waves", "Modulation"] },
   ],

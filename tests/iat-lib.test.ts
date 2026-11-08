@@ -324,7 +324,10 @@ describe("config", () => {
   it("knows every year IISER posts; 2025 and 2026 are IISER's keys and 2023 and 2024 were measured to be", () => {
     expect([2017, 2018, 2019, 2021, 2022, 2023, 2024, 2025, 2026].map((y) => iatYear(y).year)).toHaveLength(9);
     expect(() => iatYear(2020)).toThrow(/2020/);
-    expect([2023, 2024, 2025, 2026].every((y) => iatYear(y).keyConfirmed)).toBe(true);
-    expect([2017, 2018, 2019, 2021, 2022].every((y) => iatYear(y).keyMode === "none")).toBe(true);
+    expect([2021, 2022, 2023, 2024, 2025, 2026].every((y) => iatYear(y).keyConfirmed)).toBe(true);
+    // 2017-2019 are real question papers (answers fall on B, C, D as printed);
+    // 2021 and 2022 are posted as question papers but print IISER's answer as (a).
+    expect([2017, 2018, 2019].every((y) => iatYear(y).keyMode === "none")).toBe(true);
+    expect([2021, 2022].every((y) => iatYear(y).keyMode === "first-option")).toBe(true);
   });
 });

@@ -1,0 +1,125 @@
+{
+  "derivedBy": "Claude (Opus 5.5) solving independently from the printed questions",
+  "answers": [
+    {
+      "ref": "1",
+      "label": "C",
+      "value": "Graph of \\(\\omega\\) against \\(x\\): a straight line rising from the origin to its highest value at \\(x = L\\), then dropping vertically to zero and staying at zero beyond \\(L\\).",
+      "working": "There is no external torque about the hinge (the hinge force acts through the axis), so **angular momentum about the hinge is conserved**.\n\nBefore impact the bullet's angular momentum about the axis is \\(mvx\\). After it embeds, the door plus bullet rotate together with moment of inertia \\(\\frac{1}{3}ML^2 + mx^2\\). So \\(mvx = \\left(\\frac{1}{3}ML^2 + mx^2\\right)\\omega\\).\n\nSince \\(m \\ll M\\), the term \\(mx^2\\) is negligible beside \\(\\frac{1}{3}ML^2\\), giving \\(\\omega = \\frac{3mv}{ML^2}\\,x\\). This is a straight line through the origin, largest at \\(x = L\\).\n\nFor \\(x > L\\) the bullet misses the door altogether, so \\(\\omega = 0\\). The curved graphs would need the \\(mx^2\\) term to matter, which it does not here.\n\nSo the answer is option (C).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "2",
+      "label": "B",
+      "value": "\\(\\frac{2\\sqrt{2}\\pi}{T}\\sqrt{\\frac{E}{m}}\\)",
+      "working": "In SHM with angular frequency \\(\\omega = \\frac{2\\pi}{T}\\) and amplitude \\(A\\), the total energy is \\(E = \\frac{1}{2}m\\omega^2A^2\\), so \\(\\omega A = \\sqrt{\\frac{2E}{m}}\\).\n\nThe maximum acceleration occurs at the extreme position: \\(a_{max} = \\omega^2 A = \\omega(\\omega A) = \\frac{2\\pi}{T}\\sqrt{\\frac{2E}{m}} = \\frac{2\\sqrt{2}\\pi}{T}\\sqrt{\\frac{E}{m}}\\).\n\nOption (D) forgets the factor \\(\\sqrt{2}\\) that comes from the \\(\\frac{1}{2}\\) in the energy.\n\nSo the answer is option (B).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "3",
+      "label": "D",
+      "value": "\\(81\\ \\mathrm{m}\\)",
+      "working": "Acceleration phase: \\(a = \\frac{9}{2} = 4.5\\ \\mathrm{m\\,s^{-2}}\\), lasting 2 s, distance \\(\\frac{1}{2}\\times 9\\times 2 = 9\\ \\mathrm{m}\\).\n\nDeceleration is half of this, \\(2.25\\ \\mathrm{m\\,s^{-2}}\\), so stopping from \\(9\\ \\mathrm{m\\,s^{-1}}\\) takes \\(\\frac{9}{2.25} = 4\\ \\mathrm{s}\\) and covers \\(\\frac{1}{2}\\times 9\\times 4 = 18\\ \\mathrm{m}\\).\n\nThe constant-speed phase lasts \\(12 - 2 - 4 = 6\\ \\mathrm{s}\\), covering \\(9\\times 6 = 54\\ \\mathrm{m}\\).\n\nTotal distance \\(= 9 + 54 + 18 = 81\\ \\mathrm{m}\\) (the area under the velocity-time trapezium).\n\nSo the answer is option (D).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "4",
+      "label": "B",
+      "value": "\\(2\\alpha \\Delta T C\\)",
+      "working": "For a parallel plate capacitor \\(C = \\frac{\\varepsilon_0 A}{d}\\). The gap \\(d\\) is fixed, so only the plate area changes.\n\nEach side of a plate grows by the factor \\((1 + \\alpha\\Delta T)\\), so the area becomes \\(A(1+\\alpha\\Delta T)^2 \\approx A(1 + 2\\alpha\\Delta T)\\) (the **areal expansion coefficient** is \\(2\\alpha\\)).\n\nHence the new capacitance is \\(C(1 + 2\\alpha\\Delta T)\\) and the change is \\(\\Delta C = 2\\alpha\\Delta T C\\), an increase.\n\nSo the answer is option (B).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "5",
+      "label": "C",
+      "value": "\\(8\\,\\mu\\mathrm{C}\\) and \\(8\\,\\mu\\mathrm{C}\\) respectively",
+      "working": "A long time after closing K, the capacitors are fully charged and carry no current. Current then flows round the outer loop: the 12 V cell, the bottom resistors (2 k and 4 k) and the top resistors (4 k and 2 k), a total of \\(12\\ \\mathrm{k\\Omega}\\). So \\(I = \\frac{12}{12000} = 1\\ \\mathrm{mA}\\).\n\nThe capacitor branch joins the same two vertical wires as the top branch, so it has the same voltage across it: \\(V = 1\\ \\mathrm{mA}\\times 6\\ \\mathrm{k\\Omega} = 6\\ \\mathrm{V}\\).\n\nThe \\(2\\,\\mu\\mathrm{F}\\) and \\(4\\,\\mu\\mathrm{F}\\) capacitors are in series, so \\(C_{eq} = \\frac{2\\times 4}{2+4} = \\frac{4}{3}\\,\\mu\\mathrm{F}\\) and the charge is \\(Q = \\frac{4}{3}\\times 6 = 8\\,\\mu\\mathrm{C}\\).\n\nCapacitors in series carry the same charge, so each holds \\(8\\,\\mu\\mathrm{C}\\).\n\nSo the answer is option (C).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "6",
+      "label": "D",
+      "value": "\\(E_x = v B_y, E_y = -v B_x\\)",
+      "working": "The charge moves with constant velocity, so the net **Lorentz force** on it is zero: \\(q(\\vec{E} + \\vec{v}\\times\\vec{B}) = 0\\).\n\nCompute \\(\\vec{v}\\times\\vec{B} = v\\hat{k}\\times(B_x\\hat{i} + B_y\\hat{j}) = vB_x\\hat{j} - vB_y\\hat{i}\\), using \\(\\hat{k}\\times\\hat{i} = \\hat{j}\\) and \\(\\hat{k}\\times\\hat{j} = -\\hat{i}\\).\n\nSetting each component of \\(\\vec{E} + \\vec{v}\\times\\vec{B}\\) to zero: \\(E_x - vB_y = 0\\) and \\(E_y + vB_x = 0\\). So \\(E_x = vB_y\\) and \\(E_y = -vB_x\\).\n\nOption (B) has the signs reversed, which would double the force instead of cancelling it.\n\nSo the answer is option (D).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "7",
+      "label": "A",
+      "value": "\\(-\\frac{15q^2}{4\\pi\\varepsilon_0 L}\\)",
+      "working": "The total energy is the sum of \\(\\frac{q_iq_j}{4\\pi\\varepsilon_0 r_{ij}}\\) over every pair.\n\n**Vertex pairs.** All six edges have length \\(L\\). The products of the charges (in units of \\(q^2\\)) are \\((1)(-2) = -2\\), \\((1)(-3) = -3\\), \\((1)(4) = 4\\), \\((-2)(-3) = 6\\), \\((-2)(4) = -8\\), \\((-3)(4) = -12\\). Their sum is \\(-15\\), giving \\(-\\frac{15q^2}{4\\pi\\varepsilon_0 L}\\).\n\n**Centre pairs.** The centre is the same distance \\(r\\) from every vertex, so these terms add to \\(\\frac{5q(q - 2q - 3q + 4q)}{4\\pi\\varepsilon_0 r} = 0\\), because the vertex charges sum to zero. We do not even need the value of \\(r\\).\n\nTotal energy \\(= -\\frac{15q^2}{4\\pi\\varepsilon_0 L}\\).\n\nSo the answer is option (A).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "8",
+      "label": "D",
+      "value": "3170 hours",
+      "working": "If \\(\\frac{2}{3}\\) of the nuclei decay, \\(\\frac{1}{3}\\) remain: \\(\\frac{N}{N_0} = \\left(\\frac{1}{2}\\right)^{t/T_{1/2}} = \\frac{1}{3}\\).\n\nSo \\(2^{t/T_{1/2}} = 3\\), giving \\(t = T_{1/2}\\frac{\\ln 3}{\\ln 2} = 2000\\times\\frac{1.0986}{0.6931} \\approx 2000\\times 1.585 \\approx 3170\\) hours.\n\nA quick check: this must be between one half life (2000 h, half left) and two half lives (4000 h, a quarter left), since one third lies between a half and a quarter.\n\nSo the answer is option (D).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "9",
+      "label": "B",
+      "value": "\\(P = 0,\\ Q = 1\\)",
+      "working": "The XOR gate has inputs 1 and \\(P\\): its output is \\(\\bar{1}P + 1\\bar{P} = \\bar{P}\\).\n\nThe AND gate has inputs 1 and \\(Q\\): its output is \\(Q\\).\n\nA NAND gate gives 0 only when **both** its inputs are 1. So we need \\(\\bar{P} = 1\\) and \\(Q = 1\\), that is \\(P = 0\\) and \\(Q = 1\\).\n\nSo the answer is option (B).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "10",
+      "label": "B",
+      "value": "\\(\\frac{h^2}{8m_e\\lambda_B^2}\\)",
+      "working": "By Einstein's photoelectric equation, the maximum kinetic energy of the electron is \\(K = h\\nu - \\phi = 5\\phi - \\phi = 4\\phi\\).\n\nThe de Broglie wavelength is \\(\\lambda_B = \\frac{h}{p} = \\frac{h}{\\sqrt{2m_eK}}\\), so \\(K = \\frac{h^2}{2m_e\\lambda_B^2}\\).\n\nSetting \\(4\\phi = \\frac{h^2}{2m_e\\lambda_B^2}\\) gives \\(\\phi = \\frac{h^2}{8m_e\\lambda_B^2}\\).\n\nOption (C) comes from wrongly taking \\(K = 5\\phi\\).\n\nSo the answer is option (B).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "11",
+      "label": "C",
+      "value": "\\(127.5\\ \\mathrm{Hz}\\)",
+      "working": "Use the Doppler formula \\(f' = f\\frac{v \\pm v_o}{v \\mp v_s}\\) with \\(v = 340\\), \\(v_o = v_s = 20\\ \\mathrm{m\\,s^{-1}}\\).\n\n**Approaching** each other: \\(f_1 = 540\\times\\frac{340 + 20}{340 - 20} = 540\\times\\frac{360}{320} = 607.5\\ \\mathrm{Hz}\\).\n\n**Moving apart** after crossing: \\(f_2 = 540\\times\\frac{340 - 20}{340 + 20} = 540\\times\\frac{320}{360} = 480\\ \\mathrm{Hz}\\).\n\nChange in detected frequency \\(= 607.5 - 480 = 127.5\\ \\mathrm{Hz}\\).\n\nSo the answer is option (C).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "12",
+      "label": "B",
+      "value": "\\(\\frac{3}{4}I_0\\)",
+      "working": "A path difference of \\(600\\ \\mathrm{nm}\\) equals one full wavelength, so that point is a bright fringe: \\(I_0\\) is the maximum intensity. In general \\(I = I_0\\cos^2\\left(\\frac{\\phi}{2}\\right)\\), where \\(\\phi = \\frac{2\\pi}{\\lambda}\\Delta x\\).\n\nFor \\(\\Delta x = 100\\ \\mathrm{nm}\\): \\(\\phi = \\frac{2\\pi\\times 100}{600} = \\frac{\\pi}{3}\\).\n\nSo \\(I = I_0\\cos^2\\left(\\frac{\\pi}{6}\\right) = I_0\\left(\\frac{\\sqrt{3}}{2}\\right)^2 = \\frac{3}{4}I_0\\).\n\nOption (D) forgets to square the cosine.\n\nSo the answer is option (B).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "13",
+      "label": "D",
+      "value": "RMS speed of \\(\\mathrm{O_2}\\) molecules \\(<\\) RMS speed of \\(\\mathrm{N_2}\\) molecules",
+      "working": "In a mixture both gases are at the same temperature. The average kinetic energy of a molecule depends only on temperature (and both are diatomic), so the two average kinetic energies are **equal**. This rules out options (A) and (C).\n\nThe RMS speed is \\(v_{rms} = \\sqrt{\\frac{3RT}{M}}\\). At the same \\(T\\), the heavier gas moves slower. Since \\(M(\\mathrm{O_2}) = 32\\) is greater than \\(M(\\mathrm{N_2}) = 28\\), oxygen molecules have the smaller RMS speed.\n\nSo the answer is option (D).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "14",
+      "label": "A",
+      "value": "\\(T > \\frac{T_A + T_B}{2}\\).",
+      "working": "Heat lost by A equals heat gained by B. With mass \\(m\\) and specific heat \\(c(T)\\): \\(\\int_{T}^{T_A} m\\,c\\,dT = \\int_{T_B}^{T} m\\,c\\,dT\\).\n\nA cools over the **hotter** temperature range, where \\(c\\) is larger, so each degree A drops releases more heat than each degree B rises absorbs. To balance, A needs to drop by fewer degrees than B rises: \\(T_A - T < T - T_B\\).\n\nRearranging gives \\(2T > T_A + T_B\\), that is \\(T > \\frac{T_A + T_B}{2}\\). The final temperature cannot exceed \\(T_A\\), so option (D) is impossible, and option (B) holds only when \\(c\\) is constant.\n\nSo the answer is option (A).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "15",
+      "label": "D",
+      "value": "\\(\\frac{h}{e^2}\\)",
+      "working": "Planck's constant has units of energy times time: \\(\\mathrm{J\\,s}\\). Write energy as charge times voltage, \\(\\mathrm{J} = \\mathrm{C\\,V}\\).\n\nThen \\(\\frac{h}{e^2}\\) has units \\(\\frac{\\mathrm{C\\,V\\,s}}{\\mathrm{C^2}} = \\frac{\\mathrm{V\\,s}}{\\mathrm{C}} = \\frac{\\mathrm{V}}{\\mathrm{A}} = \\Omega\\), since \\(\\mathrm{C/s} = \\mathrm{A}\\).\n\nBy contrast \\(\\frac{h}{e}\\) has units \\(\\mathrm{V\\,s}\\) (magnetic flux) and \\(\\frac{e^2}{h}\\) is a conductance. The quantity \\(\\frac{h}{e^2} \\approx 25.8\\ \\mathrm{k\\Omega}\\) is in fact the resistance quantum seen in the quantum Hall effect.\n\nSo the answer is option (D).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    }
+  ]
+}

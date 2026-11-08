@@ -1,0 +1,127 @@
+{
+  "derivedBy": "Independent solver (Claude Opus 5.5), solved from the printed questions and figures only",
+  "answers": [
+    {
+      "ref": "1",
+      "label": "D",
+      "value": "\\(\\mathrm{K_3[Fe(CN)_6]}\\) and \\(\\mathrm{KOH}\\)",
+      "working": "Hydrogen peroxide acts as an **oxidising agent** here. It oxidises iron(II) in potassium ferrocyanide to iron(III), giving potassium ferricyanide, and is itself reduced to hydroxide ions.\n\nThe balanced equation is \\(\\mathrm{2K_4[Fe(CN)_6] + H_2O_2 \\rightarrow 2K_3[Fe(CN)_6] + 2KOH}\\), that is, per mole of ferrocyanide, \\(\\mathrm{K_4[Fe(CN)_6] + \\frac{1}{2}H_2O_2 \\rightarrow K_3[Fe(CN)_6] + KOH}\\).\n\nEach Fe loses one electron, and the half mole of \\(\\mathrm{H_2O_2}\\) gains one electron (\\(\\mathrm{H_2O_2 + 2e^- \\rightarrow 2OH^-}\\)). The potassium ion released from \\(\\mathrm{K_4}\\) pairs with the \\(\\mathrm{OH^-}\\) formed, so KOH is a product. No \\(\\mathrm{O_2}\\) forms, since \\(\\mathrm{H_2O_2}\\) is not acting as a reducing agent, and option (B) leaves potassium and oxygen unbalanced.\n\nSo the answer is option (D).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "2",
+      "label": "A",
+      "value": "\\((t_{2g})^6(e_g)^4\\)",
+      "working": "The colour of a transition metal complex usually comes from **d-d transitions**, where an electron jumps from a \\(t_{2g}\\) orbital to an \\(e_g\\) orbital by absorbing visible light.\n\nA complex is colourless when no such jump is possible. That happens when the d subshell is empty (\\(d^0\\)) or completely full (\\(d^{10}\\)).\n\nOf the options, only \\((t_{2g})^6(e_g)^4\\) is a \\(d^{10}\\) configuration (for example \\(\\mathrm{[Zn(H_2O)_6]^{2+}}\\)). The other three, \\(d^8\\), \\(d^6\\) and \\(d^3\\), all have room for an electron to move up, so their aqua complexes are coloured (for example green \\(\\mathrm{Ni^{2+}}\\) and violet \\(\\mathrm{Cr^{3+}}\\)).\n\nSo the answer is option (A).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "3",
+      "label": "A",
+      "value": "5-membered rings are fused with 6-membered rings ONLY.",
+      "working": "\\(\\mathrm{C_{60}}\\) (buckminsterfullerene) is shaped like a soccer ball. It has **12 five-membered rings** and **20 six-membered rings**.\n\nEvery five-membered ring is surrounded on all five sides by six-membered rings, so no two pentagons share an edge. This is what makes the cage stable.\n\nEach six-membered ring, on the other hand, shares its six edges alternately with three pentagons and three hexagons. So options (C) and (D) are wrong, because hexagons are fused to both kinds of ring, and option (B) is wrong because pentagons never touch each other.\n\nSo the answer is option (A).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "4",
+      "label": "A",
+      "value": "3, 4",
+      "working": "Successive ionisation energies rise slowly while valence electrons are being removed, then jump sharply once an electron must be pulled from the inner (core) shell. The number of electrons removed before the big jump is the number of valence electrons.\n\nFor **X**: \\(\\mathrm{IE_3} = 28.4\\) eV but \\(\\mathrm{IE_4} = 120.0\\) eV, a jump of about four times. So X has **3** valence electrons (group 13; the values match gallium).\n\nFor **Y**: \\(\\mathrm{IE_4} = 45.1\\) eV but \\(\\mathrm{IE_5} = 166.7\\) eV, again a sharp jump. The earlier steps (8.2, 16.3, 33.5, 45.1) rise only gradually. So Y has **4** valence electrons (group 14; the values match silicon).\n\nSo the answer is option (A).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "5",
+      "label": "A",
+      "value": "\\(\\frac{1}{4\\sqrt{2\\pi}}\\left(\\frac{1}{a_0}\\right)^{3/2}\\left(2-\\frac{r}{a_0}\\right)e^{-r/2a_0}\\)",
+      "working": "Read two features from the graph: \\(\\psi\\) is **non-zero at \\(r = 0\\)**, and it crosses zero **once**, at about \\(r/a_0 = 2\\) (one radial node).\n\nA non-zero value at the nucleus rules out option (B), which has a factor of \\(r\\) and so is zero at \\(r = 0\\) (this is a 2p function). Option (D) is a pure exponential, which never changes sign, so it has no node.\n\nOption (C) is the 3s function. Setting \\(3 - \\frac{2r}{a_0} + \\frac{2r^2}{9a_0^2} = 0\\) gives two nodes, near \\(r = 1.9a_0\\) and \\(r = 7.1a_0\\), but the graph has only one.\n\nOption (A) is the 2s function. It is zero when \\(2 - \\frac{r}{a_0} = 0\\), that is at \\(r = 2a_0\\), exactly where the curve crosses. Its minimum is where \\(\\frac{d}{dx}\\left[(2-x)e^{-x/2}\\right] = 0\\) with \\(x = r/a_0\\), which gives \\(x = 4\\), matching the dip near \\(r/a_0 = 4\\), and it then rises back towards zero from below as in the graph.\n\nSo the answer is option (A).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH",
+      "flag": "The plot's vertical scale is arbitrary: option A gives about 0.20 at r = 0 in units of a0^(-3/2), while the curve starts near 0.7. The shape (node at 2a0, minimum at 4a0, depth ratio about -0.14) matches option A exactly, so only the scaling differs."
+    },
+    {
+      "ref": "6",
+      "label": "C",
+      "value": "**M**, **N** and **O** only",
+      "working": "A molecule is **aromatic** if it is cyclic, planar, fully conjugated (every ring atom has a p orbital in the ring's \\(\\pi\\) system) and has \\((4n+2)\\) \\(\\pi\\) electrons.\n\n**M (pyridine):** three double bonds in a six-membered ring give 6 \\(\\pi\\) electrons. The N lone pair lies in the ring plane and is not part of the \\(\\pi\\) system. Aromatic.\n\n**N (pyridinium ion):** protonation uses only that in-plane lone pair, so the 6 \\(\\pi\\) electrons are untouched. Aromatic.\n\n**O (pyrrole):** two double bonds give 4 \\(\\pi\\) electrons, and the N lone pair sits in a p orbital, adding 2 more: 6 \\(\\pi\\) electrons. Aromatic.\n\n**P (N-protonated pyrrole):** here the N lone pair has been used to bond the second H. The nitrogen becomes \\(sp^3\\) with no p orbital, so the ring conjugation is broken and only 4 \\(\\pi\\) electrons remain. Not aromatic.\n\nSo the answer is option (C).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "7",
+      "label": "B",
+      "value": "**N** and **P** only",
+      "working": "An **aryl halide** has the halogen bonded directly to an \\(sp^2\\) carbon of an aromatic ring.\n\n**N** (bromobenzene) and **P** (4-bromophenol) both have Br attached straight to a benzene ring carbon, so both are aryl bromides.\n\n**O** (benzyl bromide) has Br on the \\(\\mathrm{CH_2}\\) group, an \\(sp^3\\) carbon next to the ring. That makes it a **benzylic** halide, not an aryl halide.\n\n**M** has Br on the \\(sp^3\\) carbon of cyclopentadiene. That ring is not aromatic (cyclopentadiene itself has 4 \\(\\pi\\) electrons and an \\(sp^3\\) carbon), so this is an allylic halide.\n\nSo the answer is option (B).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "8",
+      "label": "C",
+      "value": "\\(\\mathrm{C_6H_6}\\)",
+      "working": "**Step 1 (Hofmann bromamide degradation):** an amide heated with \\(\\mathrm{Br_2}\\) and NaOH loses one carbon and gives a primary amine. So benzamide, \\(\\mathrm{C_6H_5CONH_2}\\), gives aniline, \\(\\mathrm{C_6H_5NH_2}\\). This is X.\n\n**Step 2 (diazotisation):** aniline with \\(\\mathrm{NaNO_2}\\) and HCl at \\(0\\) to \\(5\\ ^\\circ\\mathrm{C}\\) gives benzenediazonium chloride, \\(\\mathrm{C_6H_5N_2^+Cl^-}\\). This is Y.\n\n**Step 3:** ethanol is a mild reducing agent. It replaces the diazonium group by hydrogen: \\(\\mathrm{C_6H_5N_2^+Cl^- + CH_3CH_2OH \\rightarrow C_6H_6 + N_2 + CH_3CHO + HCl}\\). So Z is benzene.\n\nThe tempting choice is ethoxybenzene (option D), but with ethanol the main reaction is this reduction, not substitution by an ethoxy group.\n\nSo the answer is option (C).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "9",
+      "label": "B",
+      "value": "methoxybenzene; 1-(4-methoxyphenyl)ethan-1-one; sodium 4-methoxybenzoate",
+      "working": "**Step 1:** NaOH turns phenol into sodium phenoxide, and MeI then methylates the oxygen (Williamson synthesis). M is **methoxybenzene** (anisole), \\(\\mathrm{C_6H_5OCH_3}\\).\n\n**Step 2:** Friedel-Crafts acylation with \\(\\mathrm{CH_3COCl}\\) and anhydrous \\(\\mathrm{AlCl_3}\\). The \\(\\mathrm{-OCH_3}\\) group is an ortho/para director, and the bulky acyl group goes mainly to the para position. N is **1-(4-methoxyphenyl)ethan-1-one** (4-methoxyacetophenone).\n\n**Step 3:** NaOCl with a methyl ketone (\\(\\mathrm{-COCH_3}\\)) gives the **haloform reaction**. The \\(\\mathrm{CH_3}\\) is converted to chloroform, and the rest becomes the carboxylate salt: \\(\\mathrm{4\\text{-}CH_3OC_6H_4COCH_3 \\rightarrow 4\\text{-}CH_3OC_6H_4COONa + CHCl_3}\\). O is **sodium 4-methoxybenzoate**.\n\nOption (D) wrongly chlorinates the ring instead of carrying out the haloform reaction, and options (A) and (C) get M or N wrong.\n\nSo the answer is option (B).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "10",
+      "label": "B",
+      "value": "\\(\\mathrm{C_6H_5CHBrCH_2CH(CH_3)_2}\\)",
+      "working": "HBr adds to an alkene through a **carbocation**: \\(\\mathrm{H^+}\\) adds first, and it adds so that the most stable carbocation forms. \\(\\mathrm{Br^-}\\) then attaches to that carbon.\n\nIn \\(\\mathrm{C_6H_5CH{=}CHCH(CH_3)_2}\\), if \\(\\mathrm{H^+}\\) adds to the carbon away from the ring, the positive charge sits on the carbon attached to the benzene ring. This **benzylic carbocation** is strongly stabilised by resonance with the ring, far more than the ordinary secondary carbocation formed by the other choice.\n\nBromide then bonds to the benzylic carbon, giving \\(\\mathrm{C_6H_5CHBrCH_2CH(CH_3)_2}\\) (1-bromo-3-methyl-1-phenylbutane).\n\nOption (A) would need ring substitution and option (C) a substitution on the alkyl chain, neither of which HBr does here, and option (D) puts Br on the less stable carbocation's carbon.\n\nSo the answer is option (B).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "11",
+      "label": "C",
+      "value": "Only X",
+      "working": "At the cathode, the ion that is **easiest to reduce**, the one with the higher (more positive) actual reduction potential, deposits first. Concentrations matter, so use the Nernst equation at \\(25\\ ^\\circ\\mathrm{C}\\): \\(E = E^0 - \\frac{0.0591}{2}\\log\\frac{1}{[\\mathrm{M^{2+}}]}\\).\n\nFor X: \\([\\mathrm{X^{2+}}] = 1.0\\) M, so \\(E_X = 0.35\\) V.\n\nFor Y: \\(E_Y = 0.40 - 0.02955\\log\\frac{1}{0.001} = 0.40 - 0.02955 \\times 3 = 0.40 - 0.089 = 0.311\\) V.\n\nAlthough Y has the higher standard potential, its very low concentration makes its actual reduction potential (0.311 V) lower than that of X (0.35 V). So as the voltage is raised, current first flows when X can be reduced. Holding the voltage at that point deposits only X; Y would need a larger voltage.\n\nThe atomic weights are not needed. They only make option (B) look attractive (equal moles of X and Y give \\(\\frac{63}{263} = 24\\%\\) X by mass).\n\nSo the answer is option (C).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "12",
+      "label": "A",
+      "value": "\\(K_p/K_c\\) against T: a curve starting at the origin and rising ever more steeply (concave upward)",
+      "working": "For gases, \\(K_p = K_c(RT)^{\\Delta n_g}\\), where \\(\\Delta n_g\\) is moles of gaseous products minus moles of gaseous reactants.\n\nHere \\(\\Delta n_g = (2 + 3) - (1 + 2) = 2\\).\n\nSo \\(\\frac{K_p}{K_c} = (RT)^2 = R^2T^2\\). This is a parabola in T: it is zero at \\(T = 0\\) and rises more and more steeply as T increases.\n\nA horizontal line (D) would need \\(\\Delta n_g = 0\\), and a straight line (B or C) would need \\(\\Delta n_g = 1\\) and pass through the origin anyway.\n\nSo the answer is option (A).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "13",
+      "label": "A",
+      "value": "\\(\\mathrm{ML^2T^{-2}}\\)",
+      "working": "Quantities that are added together must have the same dimensions.\n\nIn \\(P + \\frac{a}{V^2}\\), the term \\(\\frac{a}{V^2}\\) must be a pressure, so \\(a = PV^2\\).\n\nIn \\(V - b\\), the constant b must be a volume.\n\nSo \\(\\frac{a}{b} = \\frac{PV^2}{V} = PV\\). Pressure times volume is energy (work), with dimensions \\(\\mathrm{[ML^{-1}T^{-2}][L^3] = ML^2T^{-2}}\\).\n\nSo the answer is option (A).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "14",
+      "label": "C",
+      "value": "0.605",
+      "working": "Use \\(\\Delta T_f = iK_f m\\), where m is the molality.\n\nMass of benzene \\(= 20 \\times 0.88 = 17.6\\) g \\(= 0.0176\\) kg.\n\nMoles of naphthoic acid \\(= \\frac{2}{172} = 0.01163\\) mol.\n\nMolality \\(m = \\frac{0.01163}{0.0176} = 0.661\\) mol kg\\(^{-1}\\).\n\nSo \\(i = \\frac{\\Delta T_f}{K_f m} = \\frac{2}{5 \\times 0.661} = \\frac{2}{3.30} = 0.605\\).\n\nA value below 1 makes sense: carboxylic acids **dimerise** through hydrogen bonding in benzene, so there are fewer particles than molecules dissolved. Options (A) and (D) come from forgetting to convert grams of benzene to kilograms, and (B) from a slip in the density step.\n\nSo the answer is option (C).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "15",
+      "label": "C",
+      "value": "1,4-difluorobenzene \\(<\\) 1,3-dichlorobenzene \\(<\\) 1,2-dichlorobenzene \\(<\\) 1,2-difluorobenzene",
+      "working": "Each C-X bond has a dipole pointing from C towards the halogen. The molecule's dipole moment is the vector sum of the two bond dipoles.\n\n**1,4-difluorobenzene:** the two C-F dipoles point in exactly opposite directions and cancel, so the dipole moment is **zero**. It must be the smallest. This alone rules out options (A), (B) and (D), which place it higher.\n\n**1,3 versus 1,2:** for two equal bond dipoles at angle \\(\\theta\\), the resultant is \\(2\\mu\\cos(\\theta/2)\\). At \\(120^\\circ\\) (meta) this is \\(\\mu\\), and at \\(60^\\circ\\) (ortho) it is \\(\\sqrt{3}\\mu\\). So 1,2-dichlorobenzene has a larger dipole moment than 1,3-dichlorobenzene.\n\n**1,2-dichloro versus 1,2-difluoro:** fluorine is more electronegative than chlorine, so the C-F bond is taken as the more polar one, placing 1,2-difluorobenzene at the top.\n\nThis gives 1,4-difluorobenzene \\(<\\) 1,3-dichlorobenzene \\(<\\) 1,2-dichlorobenzene \\(<\\) 1,2-difluorobenzene.\n\nSo the answer is option (C).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH",
+      "flag": "Measured dipole moments of 1,2-dichlorobenzene (about 2.3 to 2.5 D) and 1,2-difluorobenzene (about 2.4 to 2.6 D) are very close, so the last step of the order rests on the electronegativity argument. Option C is still the only option with 1,4-difluorobenzene (zero dipole) lowest, so the answer is not in doubt."
+    }
+  ]
+}

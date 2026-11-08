@@ -1,0 +1,128 @@
+{
+  "derivedBy": "Claude (Opus 5.5) solving independently from the printed questions, arithmetic checked by hand",
+  "answers": [
+    {
+      "ref": "1",
+      "label": "B",
+      "value": "\\(2\\)",
+      "working": "Write everything in terms of \\(c = \\cos x\\). Since \\(\\sin^2 x = 1 - c^2\\), the expression is \\(g(c) = c^4 - c^2 + c + 1\\), with \\(-1 \\le c \\le 1\\).\n\nThen \\(g'(c) = 4c^3 - 2c + 1\\). Its smallest value for \\(c \\ge 0\\) is at \\(c = \\frac{1}{\\sqrt{6}}\\), where it is about \\(0.46 > 0\\), so \\(g\\) is increasing on \\([0, 1]\\). For negative \\(c\\), \\(g(c) \\le c^4 - c^2 + 1 \\le 1\\) because \\(c < 0\\). So the largest value is at \\(c = 1\\): \\(g(1) = 1 - 1 + 1 + 1 = 2\\).\n\nThis value is reached at \\(x = 0\\) (allowed, since \\(x \\ge 0\\)), where \\(\\cos^4 0 + \\sin^2 0 + \\cos 0 = 1 + 0 + 1 = 2\\).\n\nSo the answer is option (B).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "2",
+      "label": "D",
+      "value": "\\(\\frac{1}{2}\\)",
+      "working": "The boy puts his card back, so the girl draws from all ten cards and her card is independent of his.\n\nGiven that \\(m\\) is even, \\(m\\) is one of \\(2, 4, 6, 8, 10\\), each with probability \\(\\frac{1}{5}\\). For a fixed \\(m\\), the girl's card is smaller with probability \\(\\frac{m-1}{10}\\).\n\nSo \\(P(m > n \\mid m \\text{ even}) = \\frac{1}{5}\\left(\\frac{1}{10} + \\frac{3}{10} + \\frac{5}{10} + \\frac{7}{10} + \\frac{9}{10}\\right) = \\frac{1}{5} \\cdot \\frac{25}{10} = \\frac{1}{2}\\).\n\n(If the boy kept his card out of the pack, the answer would be \\(\\frac{25}{45} = \\frac{5}{9}\\), which is not an option, so \"keeps it back\" means he returns it.)\n\nSo the answer is option (D).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH",
+      "flag": "\"keeps it back\" is ambiguous; read as with replacement (gives 1/2). Without replacement gives 5/9, not an option."
+    },
+    {
+      "ref": "3",
+      "label": "B",
+      "value": "exactly two values.",
+      "working": "The three points are collinear exactly when\n\n\\(\\begin{vmatrix} 1 & a & b \\\\ 1 & a^2 & b^2 \\\\ 1 & a^3 & b^3 \\end{vmatrix} = 0\\).\n\nSubtracting the first row from the others and expanding gives \\((a^2 - a)(b^3 - b) - (a^3 - a)(b^2 - b) = ab(a-1)(b-1)\\left[(b+1) - (a+1)\\right] = ab(a-1)(b-1)(b-a)\\).\n\nSo one of \\(a = 0\\), \\(a = 1\\), \\(b = 0\\), \\(b = 1\\), \\(a = b\\) must hold.\n\n- If \\(a = 0\\) or \\(a = 1\\), all three points have the same \\(x\\)-coordinate, so the line is parallel to the \\(y\\)-axis: not allowed.\n- If \\(b = 0\\) or \\(b = 1\\), all three points have the same \\(y\\)-coordinate, so the slope is \\(0\\) (for example \\(a = 2\\), \\(b = 0\\) gives distinct points).\n- If \\(a = b\\), all three points lie on \\(y = x\\), so the slope is \\(1\\) (for example \\(a = b = 2\\)).\n\nSo the slope can only be \\(0\\) or \\(1\\): exactly two values. So the answer is option (B).",
+      "difficulty": "Hard",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "4",
+      "label": "C",
+      "value": "\\(55\\).",
+      "working": "Each function \\(g_n(x) = n(1 - |x - (2n+1)|)\\) is a **tent**: it is \\(0\\) at \\(x = 2n\\) and \\(x = 2n + 2\\), rises to height \\(n\\) at \\(x = 2n + 1\\), and is negative outside \\([2n, 2n+2]\\).\n\nOn the interval \\([2n, 2n+2]\\), \\(g_n \\ge 0\\) while every other \\(g_m\\) is \\(\\le 0\\) there (its peak is at least \\(1\\) unit away). So on that interval \\(f = g_n\\). The intervals \\([2,4], [4,6], \\ldots, [20,22]\\) cover \\([2, 22]\\), so \\(f\\) is a row of ten triangles.\n\nThe \\(n\\)-th triangle has base \\(2\\) and height \\(n\\), so its area is \\(\\frac{1}{2} \\cdot 2 \\cdot n = n\\). The total area is \\(1 + 2 + \\cdots + 10 = 55\\).\n\nSo the answer is option (C).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "5",
+      "label": "A",
+      "value": "\\(e^2\\).",
+      "working": "Take the two factors separately.\n\nFirst factor: \\(\\ln\\left((\\sin x)^{\\sqrt{x}}\\right) = \\sqrt{x} \\ln(\\sin x)\\). As \\(x \\to 0+\\), \\(\\sin x\\) behaves like \\(x\\), and \\(\\sqrt{x} \\ln x \\to 0\\). So \\((\\sin x)^{\\sqrt{x}} \\to e^0 = 1\\).\n\nSecond factor: \\(\\ln\\left((e^x + x)^{1/x}\\right) = \\frac{\\ln(e^x + x)}{x}\\). This is a \\(\\frac{0}{0}\\) form; by L'Hospital's rule it tends to \\(\\frac{e^x + 1}{e^x + x}\\) at \\(x = 0\\), which is \\(\\frac{2}{1} = 2\\). So \\((e^x + x)^{1/x} \\to e^2\\).\n\nThe limit is \\(1 \\cdot e^2 = e^2\\). So the answer is option (A).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "6",
+      "label": "D",
+      "value": "\\(5 < f(\\sqrt{2}) < 6\\)",
+      "working": "Put \\(x = 0\\): \\(f(0) = 1 + 0 = 1\\). Differentiate both sides (the integral's derivative is \\(x f(x)\\)):\n\n\\(f'(x) = x e^{x^2/2} + x f(x)\\), that is \\(f' - x f = x e^{x^2/2}\\).\n\nThis is a linear equation with integrating factor \\(e^{-x^2/2}\\): \\(\\frac{d}{dx}\\left(f e^{-x^2/2}\\right) = x\\). Integrating, \\(f e^{-x^2/2} = \\frac{x^2}{2} + C\\), and \\(f(0) = 1\\) gives \\(C = 1\\).\n\nSo \\(f(x) = \\left(1 + \\frac{x^2}{2}\\right) e^{x^2/2}\\), and \\(f(\\sqrt{2}) = (1 + 1) e^{1} = 2e \\approx 5.44\\).\n\nHence \\(5 < f(\\sqrt{2}) < 6\\). So the answer is option (D).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "7",
+      "label": "C",
+      "value": "\\(p_a\\) has only non-real complex roots for all \\(a \\in \\mathbf{R}\\).",
+      "working": "Let \\(k = e^{a - e^a}\\), so \\(p_a(z) = z^2 + 2kz + k\\) with \\(k > 0\\). Its discriminant is \\(4k^2 - 4k = 4k(k - 1)\\), so there is a real root exactly when \\(k \\ge 1\\), i.e. when \\(a - e^a \\ge 0\\).\n\nBut \\(e^a \\ge 1 + a > a\\) for every real \\(a\\), so \\(a - e^a < 0\\) always. Hence \\(0 < k < 1\\) and the discriminant is always negative.\n\nSo \\(p_a\\) never has a real root: both roots are non-real for every \\(a\\). So the answer is option (C).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "8",
+      "label": "D",
+      "value": "\\(25\\).",
+      "working": "A function with \\(f(f(n)) = n\\) is a bijection that either fixes a number or swaps it with another one (an **involution**). So we count the ways to split \\(\\{1, 2, 3, 4, 5\\}\\) into swapped pairs and fixed points.\n\n- No pairs (the identity): \\(1\\) way.\n- One swapped pair: \\(\\binom{5}{2} = 10\\) ways.\n- Two swapped pairs: choose the fixed number (\\(5\\) ways), then pair up the other four (\\(3\\) ways): \\(15\\) ways.\n\nThe total is \\(1 + 10 + 15 = 26\\).\n\nNote: as printed, none of the options is \\(26\\). The closest option, \\(25\\), is the count if the identity function is left out, so option (D) is the best available choice.",
+      "difficulty": "Moderate",
+      "confidence": "LOW",
+      "flag": "Defective as printed: the correct count of involutions on 5 elements is 26, which is not an option. Chose 25 (D) as closest, = count excluding the identity. Possibly a misprint of 26 in the source."
+    },
+    {
+      "ref": "9",
+      "label": "B",
+      "value": "\\(y - z = 1\\)",
+      "working": "The line \\(L\\) lies in both planes, so its direction is perpendicular to both normals \\((1, 1, 1)\\) and \\((2, 1, 1)\\). Their cross product is\n\n\\((1, 1, 1) \\times (2, 1, 1) = (1 \\cdot 1 - 1 \\cdot 1,\\ 1 \\cdot 2 - 1 \\cdot 1,\\ 1 \\cdot 1 - 1 \\cdot 2) = (0, 1, -1)\\).\n\nA plane normal to \\(L\\) has normal vector \\((0, 1, -1)\\), so its equation is \\(y - z = d\\). It passes through \\((1, 2, 1)\\), so \\(d = 2 - 1 = 1\\).\n\nThe plane is \\(y - z = 1\\). So the answer is option (B).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "10",
+      "label": "A",
+      "value": "\\(\\frac{\\pi}{4}\\).",
+      "working": "Call the integral \\(I\\). Use the property \\(\\int_0^{a} g(\\theta)\\, d\\theta = \\int_0^{a} g(a - \\theta)\\, d\\theta\\) with \\(a = \\frac{\\pi}{2}\\). Replacing \\(\\theta\\) by \\(\\frac{\\pi}{2} - \\theta\\) swaps \\(\\sin\\theta\\) and \\(\\cos\\theta\\), so\n\n\\(I = \\int_0^{\\pi/2} \\frac{f(\\sqrt[3]{\\sin\\theta})}{f(\\sqrt[3]{\\sin\\theta}) + f(\\sqrt[3]{\\cos\\theta})}\\, d\\theta\\).\n\nAdding this to the original form, the numerators add up to the denominator, so \\(2I = \\int_0^{\\pi/2} 1\\, d\\theta = \\frac{\\pi}{2}\\). (The denominator is never zero, since \\(\\sqrt[3]{\\sin\\theta}\\) and \\(\\sqrt[3]{\\cos\\theta}\\) are never both \\(0\\).)\n\nSo \\(I = \\frac{\\pi}{4}\\), and the answer is option (A).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "11",
+      "label": "A",
+      "value": "\\(8 + 2\\pi\\).",
+      "working": "The upper curve \\(y = 1 + |\\sin x|\\) is always above the lower curve \\(y = -|\\sin x|\\). The vertical gap between them is \\(1 + 2|\\sin x|\\).\n\nSo the area is \\(\\int_0^{2\\pi} (1 + 2|\\sin x|)\\, dx = 2\\pi + 2\\int_0^{2\\pi} |\\sin x|\\, dx\\).\n\nSince \\(\\int_0^{\\pi} \\sin x\\, dx = 2\\), the integral of \\(|\\sin x|\\) over \\([0, 2\\pi]\\) is \\(2 + 2 = 4\\). The area is \\(2\\pi + 2 \\cdot 4 = 8 + 2\\pi\\).\n\nSo the answer is option (A).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "12",
+      "label": "C",
+      "value": "\\(f'\\) is differentiable but \\(f''\\) is not differentiable.",
+      "working": "We have \\(f(x) = x^3\\) for \\(x \\ge 0\\) and \\(f(x) = -x^3\\) for \\(x < 0\\).\n\nDifferentiating each piece: \\(f'(x) = 3x^2\\) for \\(x \\ge 0\\) and \\(-3x^2\\) for \\(x < 0\\), i.e. \\(f'(x) = 3x|x|\\). Both one-sided derivatives at \\(0\\) are \\(0\\), so \\(f\\) is differentiable everywhere.\n\nAgain: \\(f''(x) = 6x\\) for \\(x \\ge 0\\) and \\(-6x\\) for \\(x < 0\\), i.e. \\(f''(x) = 6|x|\\). The one-sided derivatives of \\(f'\\) at \\(0\\) are both \\(0\\), so \\(f'\\) is differentiable.\n\nBut \\(f''(x) = 6|x|\\) has a corner at \\(0\\): its left derivative is \\(-6\\) and its right derivative is \\(6\\). So \\(f''\\) is not differentiable at \\(0\\).\n\nOption (A) is wrong because \\(f'\\) is differentiable, and option (D) is wrong because \\(f''\\) is not. So the answer is option (C).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "13",
+      "label": "A",
+      "value": "Both \\(A\\) and \\(A + I\\) are invertible.",
+      "working": "Let \\(J = \\begin{pmatrix} 0 & 1 \\\\ 1 & 0 \\end{pmatrix}\\). The equation says \\(A^2 + A = -J\\), that is \\(A(A + I) = -J\\).\n\nTake determinants: \\(\\det A \\cdot \\det(A + I) = \\det(-J) = (-1)^2 \\det J = -1\\), since \\(\\det J = 0 - 1 = -1\\).\n\nThe product of the two determinants is \\(-1 \\ne 0\\), so neither \\(\\det A\\) nor \\(\\det(A + I)\\) can be zero. Hence both \\(A\\) and \\(A + I\\) are invertible.\n\nSo the answer is option (A).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH",
+      "flag": "Minor: no 2x2 matrix with REAL entries satisfies the equation (A must commute with J, so A = aI + bJ, which leads to u^2 - u + 4 = 0 with no real root). Complex solutions exist, and the answer (A) holds in every case, so the key is unaffected; not mentioned to students."
+    },
+    {
+      "ref": "14",
+      "label": "B",
+      "value": "\\(0\\).",
+      "working": "Since \\(a, b, c\\) are in arithmetic progression, \\(a + c = 2b\\), i.e. \\(a - 2b + c = 0\\).\n\nApply the column operation \\(C_3 \\to C_3 - 2C_2 + C_1\\), which does not change the determinant. The new third column is:\n\n- row 1: \\((x^2 + 5) - 2(x^2 + 4) + (x^2 + 3) = 0\\),\n- row 2: \\((x^2 + 6) - 2(x^2 + 5) + (x^2 + 4) = 0\\),\n- row 3: \\((x^2 + c) - 2(x^2 + b) + (x^2 + a) = a - 2b + c = 0\\).\n\nA determinant with a whole column of zeros is \\(0\\). So the answer is option (B).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "15",
+      "label": "B",
+      "value": "\\(m_2 = m_1 + 50,\\ v_2 = v_1\\).",
+      "working": "Compare the sets term by term: \\(51 = 1 + 50\\), \\(52 = 2 + 50\\), \\(54 = 4 + 50\\), and so on up to \\(83 = 33 + 50\\). So every value of \\(S_2\\) is the matching value of \\(S_1\\) plus \\(50\\).\n\nAdding a constant to every value adds that constant to the **mean**, so \\(m_2 = m_1 + 50\\).\n\nThe **variance** measures spread about the mean. Each deviation \\(x_i - m\\) is unchanged when both the value and the mean go up by \\(50\\), so the variance does not change: \\(v_2 = v_1\\). (Option (C) is the tempting mistake of shifting the variance too.)\n\nSo the answer is option (B).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    }
+  ]
+}

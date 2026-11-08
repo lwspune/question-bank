@@ -1,0 +1,126 @@
+{
+  "derivedBy": "Independent solver (Claude), worked from the printed questions and figures only",
+  "answers": [
+    {
+      "ref": "1",
+      "label": "A",
+      "value": "\\(\\frac{S_{13}}{S_{12}} = \\frac{\\exp[\\alpha(t_3 - t_1)] - 1}{\\exp[\\alpha(t_2 - t_1)] - 1}\\)",
+      "working": "Since \\(\\vec{a} = \\alpha \\vec{v}\\), the acceleration always points along the velocity, so the particle moves in a straight line and only its speed changes: \\(\\frac{dv}{dt} = \\alpha v\\).\n\nIntegrating from \\(t_1\\) (speed \\(v_1\\)) gives \\(v = v_1 e^{\\alpha (t - t_1)}\\).\n\nThe distance covered from \\(t_1\\) to a later time \\(t\\) is \\(S = \\int_{t_1}^{t} v_1 e^{\\alpha(t' - t_1)}\\,dt' = \\frac{v_1}{\\alpha}\\left(e^{\\alpha(t - t_1)} - 1\\right)\\).\n\nSo \\(S_{12} = \\frac{v_1}{\\alpha}\\left(e^{\\alpha(t_2 - t_1)} - 1\\right)\\) and \\(S_{13} = \\frac{v_1}{\\alpha}\\left(e^{\\alpha(t_3 - t_1)} - 1\\right)\\). Dividing, \\(\\frac{v_1}{\\alpha}\\) cancels and \\(\\frac{S_{13}}{S_{12}} = \\frac{e^{\\alpha(t_3 - t_1)} - 1}{e^{\\alpha(t_2 - t_1)} - 1}\\). Option (B) forgets the \\(-1\\) that comes from the lower limit of the integral.\n\nSo the answer is option (A).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "2",
+      "label": "B",
+      "value": "\\(\\sqrt{7gR}\\).",
+      "working": "In a vertical circle the tension is least at the top and the speed is greatest at the bottom.\n\nAt the top, tension and weight both point towards the centre: \\(T_{min} + mg = \\frac{m v_{top}^2}{R}\\). With \\(T_{min} = 2mg\\), this gives \\(3mg = \\frac{m v_{top}^2}{R}\\), so \\(v_{top}^2 = 3gR\\).\n\nFrom top to bottom the mass falls through \\(2R\\), and the tension does no work (it is always perpendicular to the motion). By energy conservation, \\(v_{bottom}^2 = v_{top}^2 + 2g(2R) = 3gR + 4gR = 7gR\\).\n\nSo the maximum speed is \\(\\sqrt{7gR}\\), and the answer is option (B).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "3",
+      "label": "D",
+      "value": "\\(\\mu = \\cot(\\theta/2)\\)",
+      "working": "Let the bowl have radius \\(R\\) and measure the angle \\(\\phi\\) at the centre from the starting point on the rim (where the radius is horizontal). At angle \\(\\phi\\) the object is \\(R\\sin\\phi\\) below the rim.\n\nThe object starts and ends at rest, so the loss of potential energy equals the work done against friction. Taking the normal force as the component of weight along the radius, \\(N = mg\\sin\\phi\\), the friction force is \\(\\mu mg \\sin\\phi\\) and it acts over a path element \\(R\\,d\\phi\\).\n\nWork against friction: \\(W = \\int_0^{\\theta} \\mu mg\\sin\\phi \\, R\\,d\\phi = \\mu mgR(1 - \\cos\\theta)\\).\n\nLoss of potential energy: \\(mgR\\sin\\theta\\).\n\nSetting them equal: \\(\\sin\\theta = \\mu(1 - \\cos\\theta)\\), so \\(\\mu = \\frac{\\sin\\theta}{1 - \\cos\\theta} = \\frac{2\\sin(\\theta/2)\\cos(\\theta/2)}{2\\sin^2(\\theta/2)} = \\cot(\\theta/2)\\).\n\nSo the answer is option (D).\n\nNote: as printed, this result needs the simplifying assumption \\(N = mg\\sin\\phi\\). While the object is moving, the bowl must also supply the centripetal force, so the true normal force is larger and the exact motion has no simple closed form; (D) is the intended answer under that approximation.",
+      "difficulty": "Hard",
+      "confidence": "MEDIUM",
+      "flag": "Intended answer D requires neglecting the centripetal part of the normal force (N = mg sin phi). The exact equation of motion gives 3 mu cos(theta) + (1 - 2 mu^2) sin(theta) = 3 mu exp(-2 mu theta), which matches none of the options (small-mu limit gives mu = cot(theta/2)/3). D chosen as the only option consistent with the standard energy-method approximation."
+    },
+    {
+      "ref": "4",
+      "label": "C",
+      "value": "\\(2/3\\)",
+      "working": "Let \\(\\omega = \\sqrt{k/m}\\), so the free period is \\(T = \\frac{2\\pi}{\\omega}\\).\n\n**Compressed by \\(d/2\\):** the amplitude is \\(d/2\\), less than the gap \\(d\\), so the block never reaches the wall. It does ordinary SHM with period \\(T = \\frac{2\\pi}{\\omega}\\).\n\n**Compressed by \\(2d\\):** the amplitude would be \\(2d\\), but the wall is only \\(d\\) to the right of equilibrium. Write the displacement as \\(x = -2d\\cos(\\omega t)\\). The block reaches the wall when \\(x = d\\), i.e. \\(\\cos(\\omega t) = -\\frac{1}{2}\\), so \\(\\omega t = \\frac{2\\pi}{3}\\).\n\nIn an elastic collision the velocity just reverses, so the block retraces its path and takes another \\(\\frac{2\\pi}{3\\omega}\\) to return to \\(x = -2d\\). Hence \\(T_0 = \\frac{4\\pi}{3\\omega} = \\frac{2}{3}T\\).\n\nSo \\(T_0/T = 2/3\\), and the answer is option (C).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "5",
+      "label": "B",
+      "value": "\\(W + \\rho g L^3\\)",
+      "working": "The liquid pushes the fully submerged cube up with the buoyant force \\(\\rho g L^3\\) (the weight of liquid it displaces). By Newton's third law the cube pushes the liquid down with an equal force \\(\\rho g L^3\\), and this downward push is passed through the liquid to the container and the scale.\n\nThe cube does not touch the container, so nothing else from the cube reaches the scale. The reading is therefore \\(W + \\rho g L^3\\).\n\nCheck with the whole system (container, liquid, cube): the scale must balance the weight \\(W\\), the cube's weight \\(\\rho_b g L^3\\) and the stick's push \\((\\rho - \\rho_b) g L^3\\) needed to hold the cube under. These add to \\(W + \\rho g L^3\\). Option (A) counts only the stick's push and option (D) only the cube's weight.\n\nSo the answer is option (B).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "6",
+      "label": "B",
+      "value": "\\(4P\\)",
+      "working": "For a monoatomic ideal gas \\(\\gamma = \\frac{5}{3}\\).\n\n**Adiabatic compression** from \\(V\\) to \\(\\frac{V}{8}\\): \\(PV^{\\gamma} = \\text{constant}\\), so \\(P_1 = P\\left(\\frac{V}{V/8}\\right)^{5/3} = P \\cdot 8^{5/3} = P \\cdot 2^5 = 32P\\).\n\n**Isothermal expansion** from \\(\\frac{V}{8}\\) back to \\(V\\): \\(PV = \\text{constant}\\), so \\(P_2 = 32P \\times \\frac{V/8}{V} = 4P\\).\n\nSo the answer is option (B).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "7",
+      "label": "B",
+      "value": "\\(f \\propto L^{-2}\\)",
+      "working": "The charges \\(q\\) and \\(-q\\) attract each other. Each pulls on its end of the string, so the tension in the string equals the Coulomb force between them. They are \\(L/2\\) apart, so \\(T = \\frac{1}{4\\pi\\epsilon_0}\\frac{q^2}{(L/2)^2} = \\frac{4}{4\\pi\\epsilon_0}\\frac{q^2}{L^2}\\), i.e. \\(T \\propto L^{-2}\\).\n\nThe vibrating part between the pulleys has length \\(L\\), so its fundamental frequency is \\(f = \\frac{1}{2L}\\sqrt{\\frac{T}{\\mu}}\\), where \\(\\mu\\) is the mass per unit length.\n\nThen \\(f \\propto \\frac{1}{L}\\sqrt{L^{-2}} = L^{-2}\\). Option (A) would be right only if the tension did not depend on \\(L\\).\n\nSo the answer is option (B).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "8",
+      "label": "A",
+      "value": "V constant from 0 to r1, then falling along a curve from r1 to zero at r2",
+      "working": "Use \\(V = \\frac{1}{4\\pi\\epsilon_0}\\frac{Q}{r}\\) outside a shell and \\(V = \\frac{1}{4\\pi\\epsilon_0}\\frac{Q}{R}\\) (constant) inside it, and add the two shells.\n\n**Outside both (\\(r > r_2\\)):** total charge is zero, so \\(V = 0\\).\n\n**Between the shells (\\(r_1 < r < r_2\\)):** \\(V = \\frac{Q}{4\\pi\\epsilon_0}\\left(\\frac{1}{r} - \\frac{1}{r_2}\\right)\\). This falls as \\(\\frac{1}{r}\\), a curve, not a straight line, and reaches zero at \\(r = r_2\\).\n\n**Inside both (\\(r < r_1\\)):** \\(V = \\frac{Q}{4\\pi\\epsilon_0}\\left(\\frac{1}{r_1} - \\frac{1}{r_2}\\right)\\), a positive constant equal to the value at \\(r_1\\).\n\nPotential is continuous (there is no jump at \\(r_1\\)), which rules out (C) and (D), and the middle part is a \\(\\frac{1}{r}\\) curve, which rules out (B).\n\nSo the answer is option (A).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "9",
+      "label": "A",
+      "value": "\\(\\frac{4}{3}a\\)",
+      "working": "Treat the hole as a full cylinder of density \\(+\\rho\\) plus a sphere of density \\(-\\rho\\) (radius \\(a\\)) placed on the axis. Along the line \\(x\\) the two fields are along the same line, so we can add them.\n\n**Outside the cylinder (\\(x \\ge a\\)):** the cylinder gives \\(\\frac{\\rho a^2}{2\\epsilon_0 x}\\) (Gauss's law, charge \\(\\rho \\pi a^2\\) per unit length) and the negative sphere gives \\(-\\frac{\\rho a^3}{3\\epsilon_0 x^2}\\). So \\(E = \\frac{\\rho}{\\epsilon_0}\\left(\\frac{a^2}{2x} - \\frac{a^3}{3x^2}\\right)\\).\n\nSet \\(\\frac{dE}{dx} = 0\\): \\(-\\frac{a^2}{2x^2} + \\frac{2a^3}{3x^3} = 0\\), giving \\(x = \\frac{4}{3}a\\). There \\(E = \\frac{\\rho}{\\epsilon_0}\\left(\\frac{3a}{8} - \\frac{3a}{16}\\right) = \\frac{3\\rho a}{16\\epsilon_0}\\).\n\n**Inside (\\(x < a\\)):** the field is \\(\\frac{\\rho x}{2\\epsilon_0} - \\frac{\\rho x}{3\\epsilon_0} = \\frac{\\rho x}{6\\epsilon_0}\\), which rises only to \\(\\frac{\\rho a}{6\\epsilon_0}\\) at \\(x = a\\). Since \\(\\frac{3}{16} > \\frac{1}{6}\\), the overall maximum is at \\(x = \\frac{4}{3}a\\).\n\nSo the answer is option (A).",
+      "difficulty": "Hard",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "10",
+      "label": "D",
+      "value": "\\(a_1\\) corresponds to a resistor, \\(a_2\\) corresponds to a capacitor, \\(a_3\\) corresponds to an inductor.",
+      "working": "Think about how each element behaves when the switch is closed in a DC circuit.\n\n**Resistor:** the current jumps at once to \\(\\frac{E}{R + R_B}\\) and stays constant. That is graph \\(a_1\\).\n\n**Capacitor:** an uncharged capacitor acts like a plain wire at \\(t = 0\\), so the current starts at \\(\\frac{E}{R}\\); as it charges the current dies away as \\(I = \\frac{E}{R}e^{-t/RC}\\). That is graph \\(a_2\\).\n\n**Inductor:** it opposes the change in current, so the current starts at zero and grows as \\(I = \\frac{E}{R}\\left(1 - e^{-Rt/L}\\right)\\) to a steady value. That is graph \\(a_3\\).\n\nSo the answer is option (D).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "11",
+      "label": "A",
+      "value": "\\(10\\ \\mu\\mathrm{C}\\)",
+      "working": "In the steady state no current flows through a capacitor, so remove the three capacitors (B-F, A-E, C-D) and find the potentials.\n\nThe edge G-H is a plain wire, so G and H are at the same potential. The resistors F-G, F-E and E-H form a loop G-F-E-H that starts and ends at this one potential and contains no cell, so no current flows in it: F and E are also at the potential of G.\n\nThe only current path is A-B-C-G-H-D: resistors A-B, B-C, C-G and H-D in series, \\(4\\ \\mathrm{k\\Omega}\\) in total. The current is \\(I = \\frac{5\\ \\mathrm{V}}{4\\ \\mathrm{k\\Omega}} = 1.25\\ \\mathrm{mA}\\), and each resistor drops \\(1.25\\ \\mathrm{V}\\).\n\nTaking D as \\(0\\ \\mathrm{V}\\) and A as \\(5\\ \\mathrm{V}\\): \\(V_B = 3.75\\ \\mathrm{V}\\), \\(V_C = 2.5\\ \\mathrm{V}\\), \\(V_G = V_H = V_F = 1.25\\ \\mathrm{V}\\).\n\nThe capacitor between B and F has \\(V_B - V_F = 2.5\\ \\mathrm{V}\\) across it, so \\(Q = CV = 4\\ \\mu\\mathrm{F} \\times 2.5\\ \\mathrm{V} = 10\\ \\mu\\mathrm{C}\\).\n\nSo the answer is option (A).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "12",
+      "label": "C",
+      "value": "At point B",
+      "working": "By the lens maker's formula, \\(\\frac{1}{f} = \\left(\\frac{n_l}{n_m} - 1\\right)\\left(\\frac{1}{R_1} - \\frac{1}{R_2}\\right)\\).\n\nFor this biconvex lens with \\(n_l > n_m\\), the focal length is positive: the lens is converging, which is why it forms a real image at I.\n\nIf \\(n_l < n_m\\), the factor \\(\\frac{n_l}{n_m} - 1\\) becomes negative, so the same biconvex lens becomes **diverging**. A diverging lens always forms a virtual, upright image of a real object, on the same side as the object and between the object and the lens.\n\nOf the marked points, only B lies between O and the lens. A is farther than the object (not possible for a diverging lens), and C and D are on the far side (real images, not possible either).\n\nSo the answer is option (C).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "13",
+      "label": "C",
+      "value": "\\(\\Phi = \\frac{4}{3\\epsilon_0}\\pi a^3 \\rho\\)",
+      "working": "The total charge on the sphere is \\(Q = \\frac{4}{3}\\pi a^3 \\rho\\). Because the sphere is a **conductor**, this charge soon moves to its outer surface, but the total stays the same.\n\nThe Gaussian surface has radius \\(2a\\) and its centre lies on the surface of the charged sphere. Every point of the charged sphere is at most \\(2a\\) from that centre (the farthest point is diametrically opposite, exactly \\(2a\\) away, touching the surface at one point only). So the whole charged sphere lies inside the Gaussian surface.\n\nBy Gauss's law, \\(\\Phi = \\frac{Q}{\\epsilon_0} = \\frac{4}{3\\epsilon_0}\\pi a^3 \\rho\\). Where the charge sits inside does not matter, only how much is enclosed.\n\nSo the answer is option (C).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "14",
+      "label": "B",
+      "value": "J is zero up to one threshold frequency shared by all three curves, then rises steeply to flat saturation levels; the highest level is labelled I3, the middle I2 and the lowest I1",
+      "working": "Two facts of the photoelectric effect decide this.\n\n1. The **threshold frequency** depends only on the material (its work function), not on the intensity. Below it there is no photocurrent at any intensity, so all three curves must start at the same frequency. This rules out (A) and (D).\n\n2. Above the threshold, the photocurrent is set by the number of photons arriving per second, which is proportional to the **intensity**. So the brightest beam \\(I_3\\) gives the largest current and \\(I_1\\) the smallest. This rules out (C).\n\nSo the answer is option (B).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "15",
+      "label": "B",
+      "value": "1 kg.",
+      "working": "Energy needed: \\(E = 20000 \\times 4.184 \\times 10^{9}\\ \\mathrm{J} = 8.368 \\times 10^{13}\\ \\mathrm{J}\\).\n\nEnergy per fission: \\(207\\ \\mathrm{MeV} = 207 \\times 10^{6} \\times 1.6 \\times 10^{-19}\\ \\mathrm{J} = 3.312 \\times 10^{-11}\\ \\mathrm{J}\\).\n\nNumber of fissions: \\(N = \\frac{8.368 \\times 10^{13}}{3.312 \\times 10^{-11}} \\approx 2.53 \\times 10^{24}\\).\n\nMoles of Pu-239: \\(\\frac{2.53 \\times 10^{24}}{6.022 \\times 10^{23}} \\approx 4.2\\ \\mathrm{mol}\\). Mass \\(= 4.2 \\times 239\\ \\mathrm{g} \\approx 1003\\ \\mathrm{g} \\approx 1\\ \\mathrm{kg}\\).\n\nSo the answer is option (B).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    }
+  ]
+}
