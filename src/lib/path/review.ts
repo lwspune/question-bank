@@ -115,7 +115,7 @@ export function reviewLines(r: WeekReview): string[] {
     if (parts.length > 0) went = `Last week: ${joinAnd(parts)} done${fixed ? `, ${fixed}` : ""}.`;
     else if (fixed) went = `Last week: ${fixed}.`;
   }
-  const lines = [went ?? "A new week on your path."];
+  const lines = [went ?? "A new week of your plan."];
   if (r.next) lines.push(`Next: ${r.next}.`);
   if (r.finish) lines.push(`Finish date now ${dayLabel(r.finish.now)} (was ${dayLabel(r.finish.was)}).`);
   return lines;

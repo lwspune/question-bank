@@ -16,7 +16,7 @@ describe("the /account path card", () => {
     expect(out).toContain("CBSE Class 12 boards");
     expect(out).toContain("Physics, Chemistry and Maths");
     expect(out).toContain("about 55 minutes a day");
-    expect(out).toContain("Stop the path");
+    expect(out).toContain("Stop the plan");
     expect(out).toContain("Chapters you finish stay done");
   });
 

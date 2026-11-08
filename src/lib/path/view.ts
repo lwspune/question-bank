@@ -281,7 +281,7 @@ export function buildPathView(p: {
         key: `fix-${i}`,
         kind: "fix",
         title: `Fix ${t.questionIds.length} ${t.questionIds.length === 1 ? "mistake" : "mistakes"}`,
-        detail: `From chapters on your path, ${answered} of ${t.questionIds.length} done`,
+        detail: `From chapters in your plan, ${answered} of ${t.questionIds.length} done`,
         href: PATH_FIX_HREF,
         minutes: t.minutes,
         done,

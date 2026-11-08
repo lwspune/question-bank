@@ -566,7 +566,7 @@ export default function ChatWidget() {
     if (sending) return;
     trackFunnel("v_path_tap", { action: "open" });
     addTurn({ role: "user", text: "My plan for today", transient: true });
-    addTurn({ role: "assistant", avatar: "idle", text: "Here's today on your path.", path: true, transient: true });
+    addTurn({ role: "assistant", avatar: "idle", text: "Here's today's plan.", path: true, transient: true });
   }
 
   /**

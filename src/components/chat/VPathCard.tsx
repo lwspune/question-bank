@@ -45,11 +45,11 @@ const linkCls = "rounded-md focus-visible:outline-none focus-visible:ring-2 focu
 
 export function VPathCardBody({ view, onNavigate }: { view: PathView; onNavigate?: () => void }) {
   return (
-    <section className="ml-9 mt-2 rounded-xl border bg-card p-3 text-sm shadow-sm" aria-label="Today on your path">
+    <section className="ml-9 mt-2 rounded-xl border bg-card p-3 text-sm shadow-sm" aria-label="Today's plan">
       <div className="mb-2 flex items-start gap-2">
         <CalendarCheck className="mt-0.5 h-4 w-4 shrink-0 text-brand-accent" aria-hidden />
         <div className="min-w-0">
-          <p className="font-semibold">Today on your path</p>
+          <p className="font-semibold">Today&apos;s plan</p>
           <p className="text-xs text-muted-foreground">{view.statusLine}</p>
         </div>
         {view.tasks.length > 0 && (
@@ -64,7 +64,7 @@ export function VPathCardBody({ view, onNavigate }: { view: PathView; onNavigate
       )}
 
       {view.tasks.length === 0 ? (
-        <p className="text-sm text-muted-foreground">Every chapter on your path is done.</p>
+        <p className="text-sm text-muted-foreground">Every chapter in your plan is done.</p>
       ) : (
         <ol className="space-y-1.5">
           {view.tasks.map((t) => (
@@ -102,7 +102,7 @@ export function VPathCardBody({ view, onNavigate }: { view: PathView; onNavigate
       )}
 
       <Link href="/me" prefetch={false} onClick={onNavigate} className={`mt-2 inline-block text-xs font-medium text-brand-accent underline-offset-4 hover:underline ${linkCls}`}>
-        See your full path
+        See your full plan
       </Link>
     </section>
   );

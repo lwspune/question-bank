@@ -35,14 +35,14 @@ export default function PathSettingsCard({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ action: "stop" }),
       });
-      if (!res.ok) throw new Error("Couldn't stop your path. Try again.");
+      if (!res.ok) throw new Error("Couldn't stop your plan. Try again.");
       setCurrent(null);
       setConfirming(false);
-      toast.success("Your path is stopped. Chapters you finished stay done.");
+      toast.success("Your plan is stopped. Chapters you finished stay done.");
       // V's button and the /board line read the path from the shared pulse.
       invalidatePulse();
     } catch (err) {
-      toast.error(err instanceof Error ? err.message : "Couldn't stop your path. Try again.");
+      toast.error(err instanceof Error ? err.message : "Couldn't stop your plan. Try again.");
     } finally {
       setSaving(false);
     }
@@ -76,7 +76,7 @@ export default function PathSettingsCard({
     <section aria-labelledby="path-settings-heading" className="mb-6 rounded-xl border bg-card p-6">
       <h2 id="path-settings-heading" className="flex items-center gap-2 text-sm font-semibold tracking-tight">
         <Route className="h-4 w-4 text-brand-accent" aria-hidden />
-        Your board path
+        Your board plan
       </h2>
       {current ? (
         <>
@@ -108,7 +108,7 @@ export default function PathSettingsCard({
           </p>
           {confirming ? (
             <div className="mt-4 flex flex-wrap items-center gap-2">
-              <span className="text-sm">Stop your path?</span>
+              <span className="text-sm">Stop your plan?</span>
               <Button variant="destructive" size="sm" disabled={saving} onClick={() => void stop()}>
                 Yes, stop it
               </Button>
@@ -118,13 +118,13 @@ export default function PathSettingsCard({
             </div>
           ) : (
             <Button variant="outline" size="sm" className="mt-4" onClick={() => setConfirming(true)}>
-              Stop the path
+              Stop the plan
             </Button>
           )}
         </>
       ) : (
         <p className="mt-2 text-sm text-muted-foreground">
-          Your path is stopped. Chapters you finished stay done.{" "}
+          Your plan is stopped. Chapters you finished stay done.{" "}
           <Link
             href="/me"
             className="font-medium text-brand-accent underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"

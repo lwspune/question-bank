@@ -89,7 +89,7 @@ describe("buildPathView", () => {
       "Take the chapter test",
     ]);
     expect(view.tasks[1].detail).toBe("Physics · Current Electricity");
-    expect(view.tasks[0].detail).toBe("From chapters on your path, 1 of 3 done");
+    expect(view.tasks[0].detail).toBe("From chapters in your plan, 1 of 3 done");
   });
 
   it("marks done by work and shows Top 10 progress", () => {

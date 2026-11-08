@@ -248,7 +248,7 @@ const NO_PATH: PathForV = { kind: "none" };
 
 function pathReply(p: Extract<PathForV, { kind: "on" }>, ask: "week" | "today"): string {
   return [
-    `The student is on the board path (${p.examLine}). ${p.status}.`,
+    `The student is on the board plan (${p.examLine}). ${p.status}.`,
     "Today's card:",
     ...p.today,
     ...(ask === "week" && p.week.length > 0 ? ["The coming days, if they do each day's card:", ...p.week] : []),
@@ -260,8 +260,8 @@ function pathReply(p: Extract<PathForV, { kind: "on" }>, ask: "week" | "today"):
 
 function offerReply(p: Extract<PathForV, { kind: "offer" }>): string {
   return [
-    `The student has a Class 12 board among their exams, no board path yet, and nothing was planned or saved by this call. The board path paces to the board exam (${p.examLine}): a few tasks a day, about ${p.minutes} minutes a day, 6 days a week, to finish every ${p.subjects} chapter (its revision sheet, Top 10 board questions and chapter test, in book order) before revision starts. A new card each day is on /me, where it starts with one tap.`,
-    "Offer it in one or two sentences and link /me; never call it a plan that is ready, and quote none of these lines. It is set to the board exam, not to a school test, a preboard or a coaching test: if they named an earlier test, say so and offer a one-week plan for that test instead, made by calling plan_week again with week_only true.",
+    `The student has a Class 12 board among their exams, no board plan yet, and nothing was planned or saved by this call. The board plan paces to the board exam (${p.examLine}): a few tasks a day, about ${p.minutes} minutes a day, 6 days a week, to finish every ${p.subjects} chapter (its revision sheet, Top 10 board questions and chapter test, in book order) before revision starts. A new card each day is on /me, where it starts with one tap.`,
+    "Offer it in one or two sentences and link /me; never say the board plan is ready or has started, and quote none of these lines. It is set to the board exam, not to a school test, a preboard or a coaching test: if they named an earlier test, say so and offer a one-week plan for that test instead, made by calling plan_week again with week_only true.",
   ].join("\n");
 }
 
@@ -297,7 +297,7 @@ export function planTools(deps: PlanDeps): [VTool, VTool] {
         exam_date: { type: "string", description: "Their exam date as YYYY-MM-DD, when they told you; it is saved to their profile." },
         date_unknown: { type: "boolean", description: "True when they said they do not know their exam date." },
         days_per_week: { type: "number", description: "How many days this week they can study, if they said (1 to 7)." },
-        week_only: { type: "boolean", description: "True when a board student wants a one-week plan rather than their board path (a coaching test, say)." },
+        week_only: { type: "boolean", description: "True when a board student wants a one-week plan rather than their board plan (a coaching test, say)." },
       },
     },
     run: async (input) => {

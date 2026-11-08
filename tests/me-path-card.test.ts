@@ -60,7 +60,7 @@ describe("the /me Today card on the path", () => {
   it("shows the status line and links each task straight to its work", () => {
     const v = view();
     const out = card({ path: v, offer: null });
-    expect(out).toContain("Today on your path");
+    expect(out).toContain("Today&#x27;s plan");
     expect(out).toContain("Physics 0 of 1 · Chemistry 0 of 1, on track");
     expect(out).toContain(`href="/board/cbse-12/physics/${CE}#top"`);
     expect(out).toContain(`href="/mock/cbse-12-chapter-${CE}"`);
@@ -95,7 +95,7 @@ describe("the /me Today card on the path", () => {
   });
 
   it("tells a PCB student Biology is not in the path yet (D1)", () => {
-    expect(card({ path: view({ stream: "pcb" }), offer: null })).toContain("Biology is not in the path yet");
+    expect(card({ path: view({ stream: "pcb" }), offer: null })).toContain("Biology is not in the plan yet");
   });
 
   it("is read-only in the staff view: no buttons", () => {
@@ -126,7 +126,7 @@ describe("the /me start card", () => {
   it("names Physics and Chemistry, and Biology's absence, for a PCB student", () => {
     const out = card({ path: null, offer: { exam: "cbse-12", minutes: 45, stream: "pcb" } });
     expect(out).toContain("Finish Physics and Chemistry before your boards");
-    expect(out).toContain("Biology is not in the path yet");
+    expect(out).toContain("Biology is not in the plan yet");
   });
 });
 
@@ -167,7 +167,7 @@ describe("MeView, the path in the staff view", () => {
 
   it("says what the student sees in place of the start offer", () => {
     const out = render({ path: null, offer: { exam: "cbse-12", minutes: 55, stream: null } });
-    expect(out).toContain("Here they see the board path offer: about 55 minutes a day");
+    expect(out).toContain("Here they see the board plan offer: about 55 minutes a day");
     expect(out).toContain("study days a week");
   });
 });
