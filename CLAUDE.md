@@ -351,6 +351,11 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 
 ### 2026-11
 
+- **2026-11-08 (seventh) — A No to V's "Did you understand?" sends the question to Fix your mistakes (0241); Steadiness leaves the performance band.**
+  - **Why:** a No was kept on the chat reply only (13 students, 21 taps in 30 days, each about a specific question). Step 1 of the Home · Review · Progress redesign.
+  - **Its own kind (`v_not_understood`), not answer_wrong:** homework, the plan's Top 10 and Fix task and answered totals read answer_wrong as work done, and a No answers nothing.
+  - **One list for "was this missed?" (`MISS_KINDS`, lib/drill/select)** used by the drill, badge, plan Fix pool, bank and mock prior-miss checks, due nudge and homework "to review", so a right answer anywhere fixes it.
+  - **Steadiness** told a student nothing to do (owner); gone for staff too (shared band). Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-11-08 (sixth) — IISER IAT added: nine years, 539 q, PUBLIC 2026-11-08 with nine mocks (`scripts/iat/`).**
   - **Why:** student feedback "cuet iat"; CUET skipped (NTA publishes no papers). IISER posts its own: 2017-2019, 2021-2025, 2026 key.
   - **IISER's key files print the answer as (a)**, and so do 2021-2024 though labelled question papers: options get a seeded order before anyone sees them. Shuffled blind solves vs printed (a): 57-60/60 each year; 2017-2019 are real papers, solved twice (59-60/60 agree).
