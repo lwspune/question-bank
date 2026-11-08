@@ -24,6 +24,8 @@ Found 2026-11-08 in the Maharashtra HSC Class 12 Physics run.
 |---|---|---|
 | `63fd9ed2` | Maharashtra HSC 12 · Thermodynamics (QSolved Ex.4.2) | **Stem incomplete.** "A gas enclosed in a cylinder is expanded to double its initial volume at a constant pressure of one atmosphere": no initial volume is given, yet the solution uses ΔV = 0.5 m³ and W = 5.05 × 10⁴ J. Check the Balbharati example for the volume it states. Not animated. |
 | `f2f7a399` | Maharashtra HSC 12 · Kinetic Theory of Gases (MCQ) | **Options in the wrong unit.** "Pressure rises 0.4% when heated by 1 °C; initial temperature?" The working gives 250 K (= −23 °C); every option is printed in °C and the key is B, "250 °C". The stored solution already explains it. Not animated. |
+| `c0121070` | Maharashtra HSC 12 · Magnetic Fields due to Electric Current (MCQ) | **No option right as printed.** A proton along +x in B into the page bends towards +y; keyed B prints "bending towards positive x axis" and C "negative y". The stored solution reads B as a misprint for +y and says so. Not animated. |
+| `833651ce` | Maharashtra HSC 12 · Magnetic Fields due to Electric Current | **Figure missing.** The stem shows v and B "as shown in the following figure, in three different situations" (panels a, b, c) but carries no image; the solution describes each panel in words. Needs the Balbharati figure cropped and attached. Not animated (direction-only question). |
 | `c2164fe5` | Maharashtra HSC 12 · Thermodynamics (MCQ) | **Keyed option misprinted.** Pressure falls 10% isothermally: the volume rises 11.11%, but option D (keyed) prints 11.4%; the solution says the board's paper (J-531) prints it so. Not animated. |
 
 ## Settled

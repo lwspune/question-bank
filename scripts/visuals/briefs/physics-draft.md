@@ -57,6 +57,22 @@ Take the FIRST that fits:
 - An MCQ: the answer is the keyed option's value. If the working gives a
   different option, skip with the reason and set `solutionWrong`.
 
+## Learned on the first chapters (2026-11-08)
+
+- A sketch with `axes: true` labels its axes x (across) and y (up), always.
+  A graph of displacement against time, or anything not y against x, would
+  be mislabelled: make it algebra steps instead.
+- A stored solution that answers a different question than the stem asks
+  (inserting a slab when the stem asks removing it), or stops before an
+  asked part (one of two points), is `solutionWrong`: say exactly what is
+  missing. Draft the full correct working; the main session fixes the text.
+- A last-digit slip (truncated instead of rounded, a different value of pi
+  than the line shows): draft the correct value and report it with the id,
+  what it prints and what it should be. Do not change the method.
+- `answer.value` must equal what the scene computes from `params.answer`
+  to the last float digit (0.45999999999999996, not 0.46); check-drafts
+  prints the exact value when they differ.
+
 ## Output: three files per slice
 
 - `slice-K.algebra.json`: algebra-steps drafts, in input order.
