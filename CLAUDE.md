@@ -351,11 +351,11 @@ The load-bearing choices made during the initial scaffold. Every later phase res
 
 ### 2026-11
 
-- **2026-11-08 (sixth) — IISER IAT added: nine years, 539 q, PRIVATE until the owner's OK (`scripts/iat/`).**
+- **2026-11-08 (sixth) — IISER IAT added: nine years, 539 q, PUBLIC 2026-11-08 with nine mocks (`scripts/iat/`).**
   - **Why:** student feedback "cuet iat"; CUET skipped (NTA publishes no papers). IISER posts its own: 2017-2019, 2021-2025, 2026 key.
   - **IISER's key files print the answer as (a)**, and so do 2021-2024 though labelled question papers: options get a seeded order before anyone sees them. Shuffled blind solves vs printed (a): 57-60/60 each year; 2017-2019 are real papers, solved twice (59-60/60 agree).
   - **IISER's answer is never overruled**; 17 defective or two-answer questions carry a Note and are grace in mocks (owner policy 10-29).
-  - **Publish blocked by the permission classifier**: `publish.ts`, registry flags, `build.ts --paper=iat` wait. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
+  - **Rows went PUBLIC on the owner's approval** (the permission classifier had refused it as a deploy); mocks built as drafts and published after the deploy. Long form in [DECISIONS_HISTORY.md](DECISIONS_HISTORY.md).
 - **2026-11-08 (fifth) — Home · Performance · Account tabs and an exam focus (0231).**
   - **One header on /me, /performance, /account** (greeting, exams, tabs), the staff view's look; the pages and URLs are unchanged.
   - **Only a student with 2+ exams is filtered**, with an All chip: 109 of 1,081 students with mistakes had them in two exams, and one chip could not reach the other. Default: their tap, else their latest answer's exam.
