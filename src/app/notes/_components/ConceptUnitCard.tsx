@@ -75,6 +75,7 @@ import ResistorsSeriesParallel from "./visualizations/ResistorsSeriesParallel";
 import EmfInternalResistance from "./visualizations/EmfInternalResistance";
 import MagneticFieldAroundWire from "./visualizations/MagneticFieldAroundWire";
 import FlemingsLeftHandRule from "./visualizations/FlemingsLeftHandRule";
+import ImatChartTypes from "./visualizations/ImatChartTypes";
 import MagneticForceTriad from "./visualizations/MagneticForceTriad";
 import BarMagnetFieldLines from "./visualizations/BarMagnetFieldLines";
 import SolenoidFieldLines from "./visualizations/SolenoidFieldLines";
@@ -703,6 +704,8 @@ export function renderVisualization(slug: VisualizationSlug) {
       return <LogicSwitchSeriesParallel />;
     case "logic-circuit-simplification":
       return <LogicCircuitSimplification />;
+    case "imat-chart-types":
+      return <ImatChartTypes />;
   }
 }
 
