@@ -77,6 +77,13 @@ algebra-steps draft, a sketch draft, or a skip.
 - A nested fraction inside a denominator is written stacked
   (`\dfrac{\sqrt{n^2-1}}{n}`), not as `\sqrt{n^2-1}/n`, which reads as the
   root of everything after it.
+- A square root over a tall radicand (a fraction or `\left(...\right)^2`
+  inside) as a denominator is clipped at the top: write
+  `1\Big/\sqrt{\left(x-\tfrac32\right)^2-\tfrac14}`, not
+  `\dfrac{1}{\sqrt{...}}`. Inside a matrix write fractions as `5/2`
+  (check-drafts refuses `\frac` there).
+- The last line is the answer the question asks for, never a comparison with
+  a wrong option.
 - An inverse-trig simplification (sin⁻¹(sin u) = u and the like) holds only
   on the principal range: if the stored solution applies it without saying
   where, flag it (two CBSE solutions claimed it for all x).
