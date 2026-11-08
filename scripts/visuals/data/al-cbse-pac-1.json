@@ -1,0 +1,4093 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "029fbdf3-fd96-4a24-994c-9815c481d63f",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "L = 27\\ \\text{mH} = 27\\times10^{-3}\\ \\text{H},\\ C = 30\\ \\mu\\text{F} = 30\\times10^{-6}\\ \\text{F}",
+              "note": "convert to SI first"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "LC = (27\\times10^{-3})(30\\times10^{-6}) = 8.1\\times10^{-7}\\ \\text{s}^2",
+              "f": "27*10^(-3)*30*10^(-6)",
+              "value": "8.1*10^(-7)",
+              "sf": 2
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\sqrt{LC} = 9.0\\times10^{-4}\\ \\text{s}",
+              "f": "sqrt(8.1*10^(-7))",
+              "value": "9.0*10^(-4)",
+              "sf": 2
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\omega_0 = \\dfrac{1}{\\sqrt{LC}} = \\dfrac{1}{9.0\\times10^{-4}} = 1.11\\times10^{3}\\ \\text{rad/s}",
+              "f": "1/(9.0*10^(-4))",
+              "value": "1.11*10^(3)",
+              "sf": 3
+            }
+          ],
+          "answer": "1/(9.0*10^(-4))"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "abd4ecf2",
+        "answer": {
+          "value": 1111.111111111111,
+          "label": "1.11 × 10³ rad/s"
+        }
+      }
+    },
+    {
+      "id": "0514e15b-dd4e-46dd-bef5-ca733677b376",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "vars": {
+            "R": 3,
+            "XL": 8,
+            "XC": 4,
+            "im": 2,
+            "vm": "im*sqrt(R^2+(XL-XC)^2)"
+          },
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "v_m^2 = (i_mR)^2 + (i_mX_L - i_mX_C)^2",
+              "f": "(im*R)^2+(im*XL-im*XC)^2",
+              "value": "vm^2",
+              "note": "V_L and V_C are in antiphase"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "v_m^2 = i_m^2\\left[R^2 + (X_L - X_C)^2\\right]",
+              "f": "im^2*(R^2+(XL-XC)^2)",
+              "value": "vm^2"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "Z = \\dfrac{v_m}{i_m} = \\sqrt{R^2 + (X_L - X_C)^2}",
+              "f": "vm/im",
+              "value": "sqrt(R^2+(XL-XC)^2)"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\tan\\phi = \\dfrac{V_L - V_C}{V_R} = \\dfrac{X_L - X_C}{R}",
+              "f": "(im*XL-im*XC)/(im*R)",
+              "value": "(XL-XC)/R"
+            }
+          ],
+          "answer": "sqrt(R^2+(XL-XC)^2)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 12,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 15,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 18,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "72dcb08a",
+        "answer": {
+          "value": 5,
+          "label": "Z = √(R²+(X_L−X_C)²)"
+        }
+      }
+    },
+    {
+      "id": "0ebcb482-3921-438d-893c-6aa89e6e852f",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "V = \\sqrt{V_R^2 + V_L^2},\\quad V_R = V_L = v,\\quad V = 100\\sqrt{2}\\ \\text{V}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "100\\sqrt{2} = \\sqrt{v^2 + v^2} = v\\sqrt{2}",
+              "f": "sqrt(100^2+100^2)",
+              "value": "100*sqrt(2)"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "v = \\dfrac{100\\sqrt{2}}{\\sqrt{2}} = 100\\ \\text{V}",
+              "f": "100*sqrt(2)/sqrt(2)",
+              "value": "100"
+            }
+          ],
+          "answer": "100"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "d57a8af2",
+        "answer": {
+          "value": 100,
+          "label": "100 V (B)"
+        }
+      }
+    },
+    {
+      "id": "1609b939-1808-4163-8529-ed7ff7770847",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "I_{rms} = 10\\ \\text{A (the ammeter reading)}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "I_0 = \\sqrt{2}\\,I_{rms} = 10\\sqrt{2}\\ \\text{A}",
+              "f": "sqrt(2)*10",
+              "value": "10*sqrt(2)"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "I_0 \\approx 14.1\\ \\text{A}",
+              "f": "10*sqrt(2)",
+              "value": "14.1",
+              "dp": 1
+            }
+          ],
+          "answer": "10*sqrt(2)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "85c6b4c3",
+        "answer": {
+          "value": 14.142135623730951,
+          "label": "10√2 A (A)"
+        }
+      }
+    },
+    {
+      "id": "16ab1479-2387-41c8-b75a-359678fb59e8",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "R = 3\\ \\Omega,\\ X_L = 8\\ \\Omega,\\ X_C = 4\\ \\Omega"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "X = X_L - X_C = 8 - 4 = 4\\ \\Omega",
+              "f": "8-4",
+              "value": "4",
+              "note": "they oppose, so subtract"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "Z = \\sqrt{R^2 + X^2} = \\sqrt{3^2 + 4^2} = 5\\ \\Omega",
+              "f": "sqrt(3^2+4^2)",
+              "value": "5"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\cos\\phi = \\dfrac{R}{Z} = \\dfrac{3}{5} = 0.60",
+              "f": "3/5",
+              "value": "0.60",
+              "dp": 2
+            }
+          ],
+          "answer": "3/5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "f759e05e",
+        "answer": {
+          "value": 0.6,
+          "label": "0.60 (D)"
+        }
+      }
+    },
+    {
+      "id": "1d95a2d7-7994-445d-8fac-5eb8a034ed78",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "R = \\dfrac{V_{DC}}{I_{DC}} = \\dfrac{100}{1} = 100\\ \\Omega",
+              "f": "100/1",
+              "value": "100",
+              "note": "DC sees only the resistance"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "Z = \\dfrac{V_{rms}}{I_{rms}} = \\dfrac{100}{0.5} = 200\\ \\Omega",
+              "f": "100/0.5",
+              "value": "200"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "X_L = \\sqrt{Z^2 - R^2} = \\sqrt{200^2 - 100^2} = 100\\sqrt{3} \\approx 173\\ \\Omega",
+              "f": "sqrt(200^2-100^2)",
+              "value": "173",
+              "dp": 0
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "L = \\dfrac{X_L}{\\omega} = \\dfrac{100\\sqrt{3}}{100} = \\sqrt{3} \\approx 1.73\\ \\text{H}",
+              "f": "100*sqrt(3)/100",
+              "value": "1.73",
+              "dp": 2
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\tan\\phi = \\dfrac{X_L}{R} = \\sqrt{3}\\ \\Rightarrow\\ \\phi = 60^\\circ",
+              "f": "deg(atan(sqrt(3)))",
+              "value": "60",
+              "note": "current lags the voltage"
+            }
+          ],
+          "answer": "100/0.5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 11,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 14,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 18,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "29e633ee",
+        "answer": {
+          "value": 200,
+          "label": "200 Ω; 1.73 H; 60°"
+        }
+      }
+    },
+    {
+      "id": "1f6e5f65-3398-40fd-9968-6731b73ea28f",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "X_L = \\omega L = 100\\pi\\times\\dfrac{5}{\\pi} = 500\\ \\Omega",
+              "f": "100*pi*5/pi",
+              "value": "500"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "X_C = \\dfrac{1}{\\omega C} = \\dfrac{10^6}{100\\times50} = 200\\ \\Omega",
+              "f": "1/(100*pi*50/pi*10^(-6))",
+              "value": "200"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "Z = \\sqrt{400^2 + (500-200)^2} = 500\\ \\Omega",
+              "f": "sqrt(400^2+(500-200)^2)",
+              "value": "500",
+              "note": "impedance"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "I_{rms} = \\dfrac{V_0}{\\sqrt{2}\\,Z} = \\dfrac{280}{1.4\\times500} = 0.4\\ \\text{A}",
+              "f": "280/(1.4*500)",
+              "value": "0.4",
+              "dp": 1,
+              "note": "taking √2 = 1.4"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\cos\\phi = \\dfrac{R}{Z} = \\dfrac{400}{500} = 0.8",
+              "f": "400/500",
+              "value": "0.8",
+              "dp": 1,
+              "note": "power factor"
+            }
+          ],
+          "answer": "sqrt(400^2+(500-200)^2)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 12,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 14,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 16,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 18,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "2b01e4ca",
+        "answer": {
+          "value": 500,
+          "label": "500 Ω; 0.4 A; 0.8"
+        }
+      }
+    },
+    {
+      "id": "200f0ddc-3c4a-42b2-b835-4c48744dc970",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "X_L = \\omega L\\ \\Rightarrow\\ \\text{slope} = L",
+              "note": "slopes read from the figure"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "L_1 = \\tan30^\\circ = \\dfrac{1}{\\sqrt{3}}",
+              "f": "tan(pi/6)",
+              "value": "1/sqrt(3)"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "L_2 = \\tan60^\\circ = \\sqrt{3}",
+              "f": "tan(pi/3)",
+              "value": "sqrt(3)"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\dfrac{L_1}{L_2} = \\dfrac{1/\\sqrt{3}}{\\sqrt{3}} = \\dfrac{1}{3}",
+              "f": "(1/sqrt(3))/sqrt(3)",
+              "value": "1/3"
+            }
+          ],
+          "answer": "1/3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "8d2975f9",
+        "answer": {
+          "value": 0.3333333333333333,
+          "label": "1/3 (D)"
+        }
+      }
+    },
+    {
+      "id": "206f0752-4567-4637-b19c-5dd25b36d332",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\omega_0 = \\dfrac{1}{\\sqrt{LC}} = \\dfrac{1}{\\sqrt{(5.0)(80\\times10^{-6})}} = 50\\ \\text{rad/s}",
+              "f": "1/sqrt(5.0*80*10^(-6))",
+              "value": "50"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\nu_0 = \\dfrac{\\omega_0}{2\\pi} = \\dfrac{50}{2\\pi} = 7.96\\ \\text{Hz}",
+              "f": "50/(2*pi)",
+              "value": "7.96",
+              "dp": 2
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "Z = R = 40\\ \\Omega",
+              "f": "40",
+              "value": "40",
+              "note": "X_L = X_C at resonance"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "i_m = \\dfrac{\\sqrt{2}\\,V}{R} = \\dfrac{1.414\\times230}{40} = 8.13\\ \\text{A}",
+              "f": "1.414*230/40",
+              "value": "8.13",
+              "dp": 2
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "I = \\dfrac{V}{R} = \\dfrac{230}{40} = 5.75\\ \\text{A}",
+              "f": "230/40",
+              "value": "5.75"
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "X_L = \\omega_0 L = 50\\times5.0 = 250\\ \\Omega = X_C",
+              "f": "50*5.0",
+              "value": "250",
+              "note": "X_C = 1/(ω₀C) is also 250 Ω"
+            },
+            {
+              "step": "s7",
+              "kind": "calc",
+              "tex": "V_R = IR = 5.75\\times40 = 230\\ \\text{V}",
+              "f": "5.75*40",
+              "value": "230"
+            },
+            {
+              "step": "s8",
+              "kind": "calc",
+              "tex": "V_L = V_C = IX = 5.75\\times250 = 1437.5\\ \\text{V}",
+              "f": "5.75*250",
+              "value": "1437.5",
+              "note": "V_LC = |V_L − V_C| = 0"
+            }
+          ],
+          "answer": "1/sqrt(5.0*80*10^(-6))"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 10,
+            "beats": [
+              "s6"
+            ]
+          },
+          {
+            "from": 14,
+            "beats": [
+              "s7"
+            ]
+          },
+          {
+            "from": 15,
+            "beats": [
+              "s8"
+            ]
+          }
+        ],
+        "fingerprint": "a7da1efb",
+        "answer": {
+          "value": 50,
+          "label": "50 rad/s; 7.96 Hz; 40 Ω"
+        }
+      }
+    },
+    {
+      "id": "21e92aae-2d35-4328-b706-7ecfbe802d36",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "V = 20\\ \\text{V},\\ V_R = 12\\ \\text{V},\\quad V^2 = V_R^2 + V_L^2",
+              "note": "the voltages add as phasors"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "V_L = \\sqrt{V^2 - V_R^2} = \\sqrt{20^2 - 12^2} = \\sqrt{256} = 16\\ \\text{V}",
+              "f": "sqrt(20^2-12^2)",
+              "value": "16"
+            }
+          ],
+          "answer": "sqrt(20^2-12^2)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "a6e96eff",
+        "answer": {
+          "value": 16,
+          "label": "16 V (D)"
+        }
+      }
+    },
+    {
+      "id": "21f0aec1-c086-4e6d-a168-35c66ef59f16",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "V = \\dfrac{v_m}{\\sqrt{2}} = \\dfrac{300}{1.414} = 212\\ \\text{V}",
+              "f": "300/1.414",
+              "value": "212",
+              "dp": 0,
+              "note": "rms = peak / √2"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "i_m = \\sqrt{2}\\,I = 1.414\\times10 = 14.1\\ \\text{A}",
+              "f": "1.414*10",
+              "value": "14.1",
+              "dp": 1
+            }
+          ],
+          "answer": "300/1.414"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "174ffeaa",
+        "answer": {
+          "value": 212.16407355021218,
+          "label": "212 V; 14.1 A"
+        }
+      }
+    },
+    {
+      "id": "2c58aea4-e014-4311-b2ec-c25e1486abb6",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "C = 60\\ \\mu\\text{F} = 60\\times10^{-6}\\ \\text{F},\\ V = 110\\ \\text{V},\\ \\nu = 60\\ \\text{Hz}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "X_C = \\dfrac{1}{2\\pi\\nu C} = \\dfrac{1}{2\\pi(60)(60\\times10^{-6})} = 44.2\\ \\Omega",
+              "f": "1/(2*pi*60*60*10^(-6))",
+              "value": "44.2",
+              "dp": 1
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "I = \\dfrac{V}{X_C} = \\dfrac{110}{44.2} = 2.49\\ \\text{A}",
+              "f": "110/44.2",
+              "value": "2.49",
+              "dp": 2
+            }
+          ],
+          "answer": "110/44.2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "38836b37",
+        "answer": {
+          "value": 2.48868778280543,
+          "label": "2.49 A"
+        }
+      }
+    },
+    {
+      "id": "2cda6c4e-695c-4706-8b1f-bde55764b7ff",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "vars": {
+            "R": 3,
+            "XL": 8,
+            "XC": 4,
+            "im": 2,
+            "vm": "im*sqrt(R^2+(XL-XC)^2)",
+            "Lc": 2,
+            "Cc": 0.5,
+            "w0": "1/sqrt(Lc*Cc)"
+          },
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "v_m^2 = (i_mR)^2 + (i_mX_L - i_mX_C)^2",
+              "f": "(im*R)^2+(im*XL-im*XC)^2",
+              "value": "vm^2",
+              "note": "V_L and V_C are in antiphase"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "v_m^2 = i_m^2\\left[R^2 + (X_L - X_C)^2\\right]",
+              "f": "im^2*(R^2+(XL-XC)^2)",
+              "value": "vm^2"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "Z = \\dfrac{v_m}{i_m} = \\sqrt{R^2 + (X_L - X_C)^2}",
+              "f": "vm/im",
+              "value": "sqrt(R^2+(XL-XC)^2)"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{resonance: } \\omega_0 L = \\dfrac{1}{\\omega_0 C}",
+              "f": "w0*Lc",
+              "value": "1/(w0*Cc)",
+              "note": "part (b), X_L = X_C"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\omega_0 = \\dfrac{1}{\\sqrt{LC}}",
+              "f": "sqrt(1/(Lc*Cc))",
+              "value": "w0"
+            }
+          ],
+          "answer": "sqrt(R^2+(XL-XC)^2)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 10,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 11,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 21,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 22,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "4c8910c0",
+        "answer": {
+          "value": 5,
+          "label": "Z = √(R²+(X_L−X_C)²)"
+        }
+      }
+    },
+    {
+      "id": "2e1e5ce6-4cca-4e51-935b-a4910aa46ec8",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "X_L = 2\\pi\\nu L = 2\\times3.14\\times50\\times25\\times10^{-3} = 7.85\\ \\Omega",
+              "f": "2*3.14*50*25*10^(-3)",
+              "value": "7.85",
+              "dp": 2
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "I = \\dfrac{V}{X_L} = \\dfrac{220}{7.85} = 28\\ \\text{A}",
+              "f": "220/7.85",
+              "value": "28",
+              "dp": 0
+            }
+          ],
+          "answer": "2*3.14*50*25*10^(-3)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "71bb5bcd",
+        "answer": {
+          "value": 7.8500000000000005,
+          "label": "7.85 Ω; 28 A"
+        }
+      }
+    },
+    {
+      "id": "2f69dbe6-3ec6-4a98-890a-e43f3f6847ef",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "X_L = \\dfrac{V}{I} = \\dfrac{220}{0.22} = 1000\\ \\Omega,\\quad R = 1000\\ \\Omega",
+              "f": "220/0.22",
+              "value": "1000",
+              "note": "X is an inductor, Y a resistor"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "Z = \\sqrt{R^2 + X_L^2} = \\sqrt{1000^2 + 1000^2} = 1000\\sqrt{2}\\ \\Omega",
+              "f": "sqrt(1000^2+1000^2)",
+              "value": "1000*sqrt(2)"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "I_{rms} = \\dfrac{220}{1000\\sqrt{2}} = \\dfrac{0.22}{\\sqrt{2}} \\approx 0.16\\ \\text{A}",
+              "f": "220/(1000*sqrt(2))",
+              "value": "0.16",
+              "dp": 2
+            }
+          ],
+          "answer": "220/(1000*sqrt(2))"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "64f99d90",
+        "answer": {
+          "value": 0.15556349186104046,
+          "label": "X inductor, Y resistor; 0.16 A"
+        }
+      }
+    },
+    {
+      "id": "332c4b85-e2b5-44ba-b6af-02a10be2a3ac",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "R = \\dfrac{V^2}{P} = \\dfrac{(220)^2}{100} = 484\\ \\Omega",
+              "f": "220^2/100",
+              "value": "484"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "v_m = \\sqrt{2}\\,V = 311\\ \\text{V}",
+              "f": "sqrt(2)*220",
+              "value": "311",
+              "dp": 0
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "I = \\dfrac{P}{V} = \\dfrac{100}{220} = 0.455\\ \\text{A}",
+              "f": "100/220",
+              "value": "0.455",
+              "dp": 3
+            }
+          ],
+          "answer": "220^2/100"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "74212d8f",
+        "answer": {
+          "value": 484,
+          "label": "484 Ω; 311 V; 0.455 A"
+        }
+      }
+    },
+    {
+      "id": "3e11df71-5593-4a1b-8540-bcc1c57f705a",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "X_L = \\omega L = 100\\pi\\times\\dfrac{100}{\\pi}\\times10^{-3} = 10\\ \\Omega",
+              "f": "100*pi*100/pi*10^(-3)",
+              "value": "10"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "Z = \\sqrt{R^2 + X_L^2} = \\sqrt{10^2 + 10^2} = 10\\sqrt{2} \\approx 14.1\\ \\Omega",
+              "f": "sqrt(10^2+10^2)",
+              "value": "14.1",
+              "dp": 1,
+              "note": "quadrature, not 20 Ω"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\tan\\phi = \\dfrac{X_L}{R} = 1\\ \\Rightarrow\\ \\phi = 45^\\circ",
+              "f": "deg(atan(10/10))",
+              "value": "45",
+              "note": "current lags the voltage"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "I_{rms} = \\dfrac{141/\\sqrt{2}}{10\\sqrt{2}} = \\dfrac{141}{20} = 7.05\\ \\text{A}",
+              "f": "141/20",
+              "value": "7.05",
+              "dp": 2
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "V_L = I_{rms}X_L = 7.05\\times10 = 70.5\\ \\text{V}",
+              "f": "7.05*10",
+              "value": "70.5",
+              "dp": 1
+            }
+          ],
+          "answer": "sqrt(10^2+10^2)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 12,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 16,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 17,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "6588086a",
+        "answer": {
+          "value": 14.142135623730951,
+          "label": "14.1 Ω; 45°; 70.5 V"
+        }
+      }
+    },
+    {
+      "id": "3ebe04cc-0057-4dde-95ba-e8ca69c1d5a4",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "X_L = 2\\pi\\nu L = 2\\times3.14\\times50\\times25.48\\times10^{-3} = 8\\ \\Omega",
+              "f": "2*3.14*50*25.48*10^(-3)",
+              "value": "8",
+              "dp": 0
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "X_C = \\dfrac{1}{2\\pi\\nu C} = \\dfrac{1}{2\\times3.14\\times50\\times796\\times10^{-6}} = 4\\ \\Omega",
+              "f": "1/(2*3.14*50*796*10^(-6))",
+              "value": "4",
+              "dp": 0
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "Z = \\sqrt{3^2 + (8-4)^2} = 5\\ \\Omega",
+              "f": "sqrt(3^2+(8-4)^2)",
+              "value": "5"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\phi = \\tan^{-1}\\dfrac{X_C - X_L}{R} = \\tan^{-1}\\left(\\dfrac{4-8}{3}\\right) = -53.1^\\circ",
+              "f": "deg(atan((4-8)/3))",
+              "value": "-53.1",
+              "dp": 1,
+              "note": "negative: current lags"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "I = \\dfrac{i_m}{\\sqrt{2}} = \\dfrac{1}{\\sqrt{2}}\\left(\\dfrac{283}{5}\\right) = 40\\ \\text{A}",
+              "f": "283/(sqrt(2)*5)",
+              "value": "40",
+              "dp": 0
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "P = I^2R = (40)^2\\times3 = 4800\\ \\text{W}",
+              "f": "40^2*3",
+              "value": "4800"
+            },
+            {
+              "step": "s7",
+              "kind": "calc",
+              "tex": "\\cos\\phi = \\dfrac{R}{Z} = \\dfrac{3}{5} = 0.6",
+              "f": "3/5",
+              "value": "0.6",
+              "dp": 1,
+              "note": "power factor"
+            }
+          ],
+          "answer": "sqrt(3^2+(8-4)^2)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 10,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 11,
+            "beats": [
+              "s6"
+            ]
+          },
+          {
+            "from": 12,
+            "beats": [
+              "s7"
+            ]
+          }
+        ],
+        "fingerprint": "c24dc3fb",
+        "answer": {
+          "value": 5,
+          "label": "5 Ω; −53.1°; 4800 W; 0.6"
+        }
+      }
+    },
+    {
+      "id": "3f91e50b-92c3-4286-9dc8-8fd3e030377a",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "vars": {
+            "R": 3,
+            "XL": 8,
+            "XC": 4,
+            "im": 2,
+            "vm": "im*sqrt(R^2+(XL-XC)^2)",
+            "Lc": 2,
+            "Cc": 0.5,
+            "w0": "1/sqrt(Lc*Cc)"
+          },
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "v_m^2 = (i_mR)^2 + (i_mX_L - i_mX_C)^2",
+              "f": "(im*R)^2+(im*XL-im*XC)^2",
+              "value": "vm^2",
+              "note": "V_L and V_C are antiparallel"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "Z = \\dfrac{v_m}{i_m} = \\sqrt{R^2 + (X_L - X_C)^2}",
+              "f": "vm/im",
+              "value": "sqrt(R^2+(XL-XC)^2)"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\tan\\phi = \\dfrac{X_L - X_C}{R}",
+              "f": "(im*XL-im*XC)/(im*R)",
+              "value": "(XL-XC)/R"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{minimum } Z:\\ \\omega L = \\dfrac{1}{\\omega C}",
+              "f": "w0*Lc",
+              "value": "1/(w0*Cc)",
+              "note": "X_L = X_C, so Z = R"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\omega = \\dfrac{1}{\\sqrt{LC}}",
+              "f": "sqrt(1/(Lc*Cc))",
+              "value": "w0"
+            }
+          ],
+          "answer": "sqrt(R^2+(XL-XC)^2)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 13,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 16,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 21,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 22,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "efae75c8",
+        "answer": {
+          "value": 5,
+          "label": "Z = √(R²+(X_L−X_C)²)"
+        }
+      }
+    },
+    {
+      "id": "48515a59-8e30-4329-bc82-03d7ba27dd9e",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "V_R = 8\\ \\text{V},\\ V_L = 6\\ \\text{V},\\quad V = \\sqrt{V_R^2 + V_L^2}",
+              "note": "the voltages add as phasors"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "V = \\sqrt{8^2 + 6^2} = \\sqrt{64 + 36} = \\sqrt{100} = 10\\ \\text{V}",
+              "f": "sqrt(8^2+6^2)",
+              "value": "10"
+            }
+          ],
+          "answer": "sqrt(8^2+6^2)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "3ca3a6bb",
+        "answer": {
+          "value": 10,
+          "label": "10 V (A)"
+        }
+      }
+    },
+    {
+      "id": "53d016c0-1aec-4bda-aca8-a200211f4ce0",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "V_p = \\dfrac{140}{\\sqrt{2}} = \\dfrac{140}{1.4} = 100\\ \\text{V (rms)}",
+              "f": "140/1.4",
+              "value": "100"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{N_s}{N_p} = \\dfrac{1000}{200} = 5",
+              "f": "1000/200",
+              "value": "5",
+              "note": "step-up transformer"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "V_s = \\dfrac{N_s}{N_p}V_p = 5\\times100 = 500\\ \\text{V (rms)}",
+              "f": "5*100",
+              "value": "500"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "v_s = 5\\times140\\sin(100\\pi t) = 700\\sin(100\\pi t)\\ \\text{V}",
+              "f": "5*140",
+              "value": "700",
+              "note": "peak value, same frequency"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "I_s = \\dfrac{P_s}{V_s} = \\dfrac{5000}{500} = 10\\ \\text{A}",
+              "f": "5000/500",
+              "value": "10",
+              "note": "ideal: P_s = P_p"
+            }
+          ],
+          "answer": "5*100"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 10,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 19,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "df2fdb9c",
+        "answer": {
+          "value": 500,
+          "label": "500 V; 700 sin100πt V; 10 A"
+        }
+      }
+    },
+    {
+      "id": "55d4b536-5d14-4df6-b09c-60cbfd6c3ff1",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "R = 20\\ \\Omega,\\ V = 200\\ \\text{V};\\ \\text{resonance: } X_L = X_C,\\ Z = R = 20\\ \\Omega"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "I = \\dfrac{V}{R} = \\dfrac{200}{20} = 10\\ \\text{A}",
+              "f": "200/20",
+              "value": "10"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "P = I^2R = (10)^2\\times20 = 2000\\ \\text{W}",
+              "f": "10^2*20",
+              "value": "2000",
+              "note": "cos φ = 1"
+            }
+          ],
+          "answer": "10^2*20"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "3f5bcaa4",
+        "answer": {
+          "value": 2000,
+          "label": "2000 W (2 kW)"
+        }
+      }
+    },
+    {
+      "id": "58110cc3-b7b9-415a-af50-e58f351fb794",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "I_{rms} = \\dfrac{I_0}{\\sqrt{2}} = \\dfrac{14}{1.4} = 10\\ \\text{A}",
+              "f": "14/1.4",
+              "value": "10",
+              "note": "taking √2 = 1.4"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "V_R = I_{rms}R = 10\\times30 = 300\\ \\text{V}",
+              "f": "10*30",
+              "value": "300"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "X_L = \\omega L = 100\\pi\\times\\dfrac{2}{5\\pi} = 40\\ \\Omega",
+              "f": "100*pi*2/(5*pi)",
+              "value": "40"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "V_L = I_{rms}X_L = 10\\times40 = 400\\ \\text{V}",
+              "f": "10*40",
+              "value": "400"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "Z = \\sqrt{30^2 + 40^2} = 50\\ \\Omega",
+              "f": "sqrt(30^2+40^2)",
+              "value": "50"
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "\\cos\\phi = \\dfrac{R}{Z} = \\dfrac{30}{50} = 0.6",
+              "f": "30/50",
+              "value": "0.6",
+              "dp": 1
+            }
+          ],
+          "answer": "10*30"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 11,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 12,
+            "beats": [
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "ec141280",
+        "answer": {
+          "value": 300,
+          "label": "300 V; 400 V; 0.6"
+        }
+      }
+    },
+    {
+      "id": "59a6051f-84db-4ab3-95c8-a8d35ecaca79",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "vars": {
+            "Np": 200,
+            "Ns": 1000,
+            "dphi": 0.5,
+            "Vp": "Np*dphi",
+            "Vs": "Ns*dphi"
+          },
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "V_p = N_p\\dfrac{d\\phi}{dt}",
+              "f": "Np*dphi",
+              "value": "Vp",
+              "note": "ideal: the same flux links both coils"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "V_s = N_s\\dfrac{d\\phi}{dt}",
+              "f": "Ns*dphi",
+              "value": "Vs"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{V_s}{V_p} = \\dfrac{N_s\\,d\\phi/dt}{N_p\\,d\\phi/dt} = \\dfrac{N_s}{N_p}",
+              "f": "Ns*dphi/(Np*dphi)",
+              "value": "Ns/Np",
+              "note": "dφ/dt cancels"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "V_s = \\dfrac{N_s}{N_p}V_p",
+              "f": "Ns/Np*Vp",
+              "value": "Vs"
+            }
+          ],
+          "answer": "Ns/Np*Vp"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 11,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "5675f3dd",
+        "answer": {
+          "value": 500,
+          "label": "V_s = (N_s/N_p) V_p"
+        }
+      }
+    },
+    {
+      "id": "5b018027-1916-4d26-9dbf-d2f86c248d5d",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "vars": {
+            "Cc": 2,
+            "Vm": 3,
+            "w": 4
+          },
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "expr",
+              "tex": "q = CV_m\\sin\\omega t",
+              "f": "Cc*Vm*sin(w*x)"
+            },
+            {
+              "step": "s2",
+              "kind": "deriv",
+              "tex": "i = \\dfrac{dq}{dt} = \\omega CV_m\\cos\\omega t",
+              "f": "Cc*Vm*w*cos(w*x)",
+              "note": "part (i)"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "I_m = \\dfrac{V_m}{1/\\omega C} = \\omega CV_m\\ \\Rightarrow\\ X_C = \\dfrac{1}{\\omega C}",
+              "f": "Vm/(1/(w*Cc))",
+              "value": "w*Cc*Vm",
+              "note": "part (ii)"
+            }
+          ],
+          "answer": "w*Cc*Vm"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "06327708",
+        "answer": {
+          "value": 24,
+          "label": "i = ωCVm cosωt; X = 1/ωC"
+        }
+      }
+    },
+    {
+      "id": "5c08bbbe-4ccc-4d5f-94a6-eb6ec1475ef7",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "L = 44\\ \\text{mH} = 44\\times10^{-3}\\ \\text{H},\\ V = 220\\ \\text{V},\\ \\nu = 50\\ \\text{Hz}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "X_L = 2\\pi\\nu L = 2\\pi(50)(44\\times10^{-3}) = 13.82\\ \\Omega",
+              "f": "2*pi*50*44*10^(-3)",
+              "value": "13.82",
+              "dp": 2
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "I = \\dfrac{V}{X_L} = \\dfrac{220}{13.82} = 15.9\\ \\text{A}",
+              "f": "220/13.82",
+              "value": "15.9",
+              "dp": 1
+            }
+          ],
+          "answer": "220/13.82"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "527ad4ef",
+        "answer": {
+          "value": 15.918958031837915,
+          "label": "15.9 A"
+        }
+      }
+    },
+    {
+      "id": "664de6dc-a1f9-45e0-a928-b49f86109417",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\langle v\\rangle = \\dfrac{2v_0}{\\pi}\\quad\\text{(half-cycle)},\\quad v_0 = 157\\ \\text{V}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\langle v\\rangle = \\dfrac{2\\times157}{\\pi} = \\dfrac{314}{3.1416} = 99.95\\ \\text{V}",
+              "f": "2*157/pi",
+              "value": "99.95",
+              "dp": 2
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\langle v\\rangle \\approx 100\\ \\text{V}",
+              "f": "2*157/pi",
+              "value": "100",
+              "dp": 0,
+              "note": "157 is about 50π"
+            }
+          ],
+          "answer": "100"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "d330c1fb",
+        "answer": {
+          "value": 100,
+          "label": "100 V (D)"
+        }
+      }
+    },
+    {
+      "id": "6ef90c13-81ab-4ea0-98a3-092332c7551d",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "N_p = 650,\\ N_s = 25,\\ V_p = 240\\ \\text{V},\\ I_p = 1.5\\ \\text{A}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "V_s = V_p\\dfrac{N_s}{N_p} = 240\\times\\dfrac{25}{650} = \\dfrac{120}{13} = 9.23\\ \\text{V}",
+              "f": "240*25/650",
+              "value": "120/13",
+              "dp": 2
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "I_s = I_p\\dfrac{N_p}{N_s} = 1.5\\times\\dfrac{650}{25} = 39\\ \\text{A}",
+              "f": "1.5*650/25",
+              "value": "39"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "P = V_sI_s = \\dfrac{120}{13}\\times39 = 360\\ \\text{W}",
+              "f": "120/13*39",
+              "value": "360",
+              "note": "same as V_p I_p = 240 × 1.5"
+            }
+          ],
+          "answer": "240*25/650"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 10,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "8375d161",
+        "answer": {
+          "value": 9.23076923076923,
+          "label": "9.23 V; 39 A; 360 W"
+        }
+      }
+    },
+    {
+      "id": "6f27c78f-b4a1-43f6-9d52-d00b030394aa",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "vars": {
+            "Np": 100,
+            "Ns": 5000,
+            "dphi": 0.5,
+            "Vp": "Np*dphi"
+          },
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "V_P = N_P\\dfrac{d\\phi}{dt},\\quad V_S = N_S\\dfrac{d\\phi}{dt}",
+              "f": "Np*dphi",
+              "value": "Vp",
+              "note": "the same flux links both coils"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{v_S}{v_P} = \\dfrac{N_S}{N_P}",
+              "f": "Ns*dphi/(Np*dphi)",
+              "value": "Ns/Np",
+              "note": "dφ/dt cancels"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "I_P = \\dfrac{P}{V_P} = \\dfrac{3.3\\times10^3}{220} = 15\\ \\text{A}",
+              "f": "3.3*10^3/220",
+              "value": "15",
+              "note": "part (ii)"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "v_S = v_P\\dfrac{N_S}{N_P} = 220\\times\\dfrac{5000}{100} = 11000\\ \\text{V}",
+              "f": "220*5000/100",
+              "value": "11000"
+            }
+          ],
+          "answer": "Ns/Np"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 13,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 17,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 21,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "9f4c2505",
+        "answer": {
+          "value": 50,
+          "label": "Vs/Vp = Ns/Np; 15 A; 11000 V"
+        }
+      }
+    },
+    {
+      "id": "72ca1996-26dc-4681-a987-46f37c589b91",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "vars": {
+            "R": 3
+          },
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\tan\\dfrac{\\pi}{4} = \\dfrac{X_L}{R} = 1\\ \\Rightarrow\\ X_L = R",
+              "f": "R*tan(pi/4)",
+              "value": "R",
+              "note": "first circuit: V leads I"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\tan\\dfrac{\\pi}{4} = \\dfrac{X_C}{R} = 1\\ \\Rightarrow\\ X_C = R",
+              "f": "R*tan(pi/4)",
+              "value": "R",
+              "note": "second circuit: I leads V"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "X = X_L - X_C = R - R = 0",
+              "f": "R*tan(pi/4)-R*tan(pi/4)",
+              "value": "0"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\tan\\phi = \\dfrac{X}{R} = 0\\ \\Rightarrow\\ \\phi = 0,\\ \\cos\\phi = 1",
+              "f": "cos(atan(0/R))",
+              "value": "1",
+              "note": "resonance: I = V/R, in phase"
+            }
+          ],
+          "answer": "cos(atan(0/R))"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 13,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 15,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "17153729",
+        "answer": {
+          "value": 1,
+          "label": "φ = 0, cos φ = 1"
+        }
+      }
+    },
+    {
+      "id": "7603a9ba-2426-4e36-9256-ebbeb6a4600b",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "vars": {
+            "Np": 200,
+            "Ns": 3000,
+            "dphi": 0.5
+          },
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{V_S}{V_P} = \\dfrac{N_S\\,d\\phi/dt}{N_P\\,d\\phi/dt} = \\dfrac{N_S}{N_P}",
+              "f": "Ns*dphi/(Np*dphi)",
+              "value": "Ns/Np"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "V_S = \\dfrac{N_S}{N_P}V_P = \\dfrac{3000}{200}\\times90 = 1350\\ \\text{V}",
+              "f": "3000/200*90",
+              "value": "1350",
+              "note": "part (iii)"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "I_P = \\dfrac{N_S}{N_P}I_S = \\dfrac{3000}{200}\\times2.0 = 30\\ \\text{A}",
+              "f": "3000/200*2.0",
+              "value": "30",
+              "note": "currents in the inverse ratio"
+            }
+          ],
+          "answer": "Ns/Np"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 27,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 30,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "33f32523",
+        "answer": {
+          "value": 15,
+          "label": "Vs/Vp = Ns/Np; 1350 V; 30 A"
+        }
+      }
+    },
+    {
+      "id": "766f2168-1d53-4543-a693-8aeab06dfdd1",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "vars": {
+            "Np": 1,
+            "Ns": 5,
+            "dphi": 0.5
+          },
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{V_s}{V_p} = \\dfrac{N_s\\,d\\phi/dt}{N_p\\,d\\phi/dt} = \\dfrac{N_s}{N_p}",
+              "f": "Ns*dphi/(Np*dphi)",
+              "value": "Ns/Np"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "P = V_pI_p\\ \\Rightarrow\\ I_p = \\dfrac{5000}{200} = 25\\ \\text{A}",
+              "f": "5000/200",
+              "value": "25",
+              "note": "part (b)"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "V_s = \\dfrac{N_s}{N_p}V_p = 5\\times200 = 1000\\ \\text{V}",
+              "f": "5*200",
+              "value": "1000"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "I_s = \\dfrac{P}{V_s} = \\dfrac{5000}{1000} = 5\\ \\text{A} = \\dfrac{I_p}{5}",
+              "f": "5000/1000",
+              "value": "5",
+              "note": "check: current stepped down"
+            }
+          ],
+          "answer": "Ns/Np"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 20,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 23,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 25,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "976936a4",
+        "answer": {
+          "value": 5,
+          "label": "Ns/Np; 25 A; 1000 V"
+        }
+      }
+    },
+    {
+      "id": "8745eb3f-bd4c-4756-b254-47bc5413c7b0",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "X_C = \\dfrac{1}{2\\pi\\nu C} = \\dfrac{1}{2\\pi\\times50\\times\\frac{50}{\\pi}\\times10^{-6}} = 200\\ \\Omega",
+              "f": "1/(2*pi*50*50/pi*10^(-6))",
+              "value": "200",
+              "note": "the π cancels"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "Z = \\sqrt{200^2 + 200^2} = 200\\sqrt{2} \\approx 283\\ \\Omega",
+              "f": "sqrt(200^2+200^2)",
+              "value": "283",
+              "dp": 0
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\tan\\phi = \\dfrac{X_C}{R} = 1\\ \\Rightarrow\\ \\phi = 45^\\circ",
+              "f": "deg(atan(200/200))",
+              "value": "45",
+              "note": "current leads the voltage"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "V_R = \\dfrac{V_{rms}}{Z}R = \\dfrac{100/\\sqrt{2}}{200\\sqrt{2}}\\times200 = 50\\ \\text{V}",
+              "f": "(100/sqrt(2))/(200*sqrt(2))*200",
+              "value": "50"
+            }
+          ],
+          "answer": "sqrt(200^2+200^2)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "396dc1c1",
+        "answer": {
+          "value": 282.842712474619,
+          "label": "283 Ω; 45°; 50 V"
+        }
+      }
+    },
+    {
+      "id": "988c587e-22bd-4183-a0c9-e710e6400f5d",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "E = 200\\cos\\left(\\omega t + \\dfrac{\\pi}{3}\\right) = 200\\sin\\left(\\omega t + \\dfrac{\\pi}{3} + \\dfrac{\\pi}{2}\\right)",
+              "note": "cos θ = sin(θ + π/2)"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{\\pi}{3} + \\dfrac{\\pi}{2} = \\dfrac{2\\pi + 3\\pi}{6} = \\dfrac{5\\pi}{6}",
+              "f": "pi/3+pi/2",
+              "value": "5*pi/6"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\Delta\\phi = \\dfrac{5\\pi}{6}\\quad(I = 5\\sin\\omega t,\\ E = 200\\sin(\\omega t + \\tfrac{5\\pi}{6}))",
+              "f": "5*pi/6",
+              "value": "5*pi/6",
+              "note": "voltage leads the current"
+            }
+          ],
+          "answer": "5*pi/6"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 11,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "0cbbc4b2",
+        "answer": {
+          "value": 2.6179938779914944,
+          "label": "5π/6 (A)"
+        }
+      }
+    },
+    {
+      "id": "98cd1402-e4ea-4707-9aa3-7482f0412da6",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "L = 2\\times10^{-3}\\ \\text{H},\\ C = 0.2\\ \\mu\\text{F} = 2\\times10^{-7}\\ \\text{F}",
+              "note": "R is not needed"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "LC = (2\\times10^{-3})(2\\times10^{-7}) = 4\\times10^{-10}",
+              "f": "2*10^(-3)*2*10^(-7)",
+              "value": "4*10^(-10)",
+              "sf": 1
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\sqrt{LC} = 2\\times10^{-5}\\ \\text{s}",
+              "f": "sqrt(4*10^(-10))",
+              "value": "2*10^(-5)",
+              "sf": 1
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "f = \\dfrac{1}{2\\pi\\sqrt{LC}} = \\dfrac{1}{2\\pi\\times2\\times10^{-5}} = \\dfrac{10^5}{4\\pi}\\ \\text{Hz}",
+              "f": "1/(2*pi*2*10^(-5))",
+              "value": "10^5/(4*pi)",
+              "sf": 6,
+              "note": "about 7960 Hz"
+            }
+          ],
+          "answer": "10^5/(4*pi)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 10,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 11,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "3b057529",
+        "answer": {
+          "value": 7957.747154594767,
+          "label": "10⁵/(4π) Hz (A)"
+        }
+      }
+    },
+    {
+      "id": "9dfaf9cf-fc56-41da-bef5-16cc928ef761",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "X_C = \\dfrac{1}{C}\\cdot\\dfrac{1}{\\omega}\\ \\Rightarrow\\ \\text{slope} = \\dfrac{1}{C}",
+              "note": "angles read from the figure"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{1}{C_1} = \\tan45^\\circ = 1",
+              "f": "tan(pi/4)",
+              "value": "1"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\dfrac{1}{C_2} = \\tan30^\\circ = \\dfrac{1}{\\sqrt{3}}",
+              "f": "tan(pi/6)",
+              "value": "1/sqrt(3)"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\dfrac{C_1}{C_2} = \\dfrac{\\tan30^\\circ}{\\tan45^\\circ} = \\dfrac{1}{\\sqrt{3}}",
+              "f": "tan(pi/6)/tan(pi/4)",
+              "value": "1/sqrt(3)"
+            }
+          ],
+          "answer": "1/sqrt(3)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "f1bafa9c",
+        "answer": {
+          "value": 0.5773502691896258,
+          "label": "1/√3 (D)"
+        }
+      }
+    },
+    {
+      "id": "acbe450d-ba02-4285-a06e-d45378a0cbd1",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "X_C = \\dfrac{1}{2\\pi\\nu C} = \\dfrac{1}{2\\times3.14\\times50\\times15.0\\times10^{-6}} = 212.3\\ \\Omega",
+              "f": "1/(2*3.14*50*15.0*10^(-6))",
+              "value": "212.3",
+              "dp": 1
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "Z = \\sqrt{200^2 + 212.3^2} = 291.67\\ \\Omega",
+              "f": "sqrt(200^2+212.3^2)",
+              "value": "291.67",
+              "dp": 2
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "I = \\dfrac{V}{Z} = \\dfrac{220}{291.67} = 0.754\\ \\text{A}",
+              "f": "220/291.67",
+              "value": "0.754",
+              "dp": 3
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "V_R = IR = 0.754\\times200 \\approx 151\\ \\text{V}",
+              "f": "220/291.67*200",
+              "value": "151",
+              "dp": 0
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "V_C = IX_C = 0.754\\times212.3 \\approx 160.1\\ \\text{V}",
+              "f": "220/291.67*212.3",
+              "value": "160.1",
+              "dp": 1,
+              "note": "the sum 311 V exceeds 220 V"
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "V_{R+C} = \\sqrt{V_R^2 + V_C^2} = 220\\ \\text{V}",
+              "f": "sqrt((220/291.67*200)^2+(220/291.67*212.3)^2)",
+              "value": "220",
+              "dp": 0,
+              "note": "out of phase by 90°, add as phasors"
+            }
+          ],
+          "answer": "220/291.67"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 10,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 12,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 13,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 20,
+            "beats": [
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "1d1bdc2f",
+        "answer": {
+          "value": 0.7542770939760688,
+          "label": "0.754 A; 151 V; 160.1 V"
+        }
+      }
+    },
+    {
+      "id": "ad31442b-947b-4836-94dc-e38c1e6d2715",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "vars": {
+            "R": 3
+          },
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "V_R = V_L = V_C = 10\\ \\text{V}\\ \\Rightarrow\\ X_L = X_C,\\ V = 10\\ \\text{V},\\ X_L = R",
+              "note": "at resonance"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "Z = \\sqrt{R^2 + X_L^2} = \\sqrt{R^2 + R^2} = R\\sqrt{2}",
+              "f": "sqrt(R^2+R^2)",
+              "value": "R*sqrt(2)",
+              "note": "capacitor shorted: series LR"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "I^{\\prime} = \\dfrac{V}{Z} = \\dfrac{10}{R\\sqrt{2}}",
+              "f": "10/(R*sqrt(2))",
+              "value": "10/(sqrt(2)*R)"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "V_L^{\\prime} = I^{\\prime}X_L = \\dfrac{10}{R\\sqrt{2}}\\times R = 5\\sqrt{2}\\ \\text{V}",
+              "f": "10/(R*sqrt(2))*R",
+              "value": "5*sqrt(2)",
+              "note": "about 7.07 V"
+            }
+          ],
+          "answer": "5*sqrt(2)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "2b4f8a4d",
+        "answer": {
+          "value": 7.0710678118654755,
+          "label": "5√2 V (B)"
+        }
+      }
+    },
+    {
+      "id": "b30b059e-2f9f-4e71-849f-f24eaf3ad813",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "X_L = \\omega L = 100\\pi\\times\\dfrac{5}{\\pi} = 500\\ \\Omega",
+              "f": "100*pi*5/pi",
+              "value": "500"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "X_C = \\dfrac{1}{\\omega C} = \\dfrac{10^6}{100\\times50} = 200\\ \\Omega",
+              "f": "1/(100*pi*50/pi*10^(-6))",
+              "value": "200"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "Z = \\sqrt{400^2 + (500-200)^2} = 500\\ \\Omega",
+              "f": "sqrt(400^2+(500-200)^2)",
+              "value": "500",
+              "note": "impedance"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "I_{rms} = \\dfrac{V_0}{\\sqrt{2}\\,Z} = \\dfrac{140}{1.4\\times500} = 0.2\\ \\text{A}",
+              "f": "140/(1.4*500)",
+              "value": "0.2",
+              "dp": 1,
+              "note": "taking √2 = 1.4"
+            }
+          ],
+          "answer": "sqrt(400^2+(500-200)^2)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 11,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 14,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 17,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "4ccc1581",
+        "answer": {
+          "value": 500,
+          "label": "500 Ω; 0.2 A"
+        }
+      }
+    },
+    {
+      "id": "b54b3a75-7cf0-489b-a1c9-a5f4b35c89c8",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "(V_i)_{rms} = \\dfrac{20}{\\sqrt{2}}\\ \\text{V},\\quad \\dfrac{V_o}{V_i} = \\dfrac{250}{50} = 5",
+              "f": "250/50",
+              "value": "5"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "I_P = \\dfrac{P}{(V_i)_{rms}} = \\dfrac{200\\sqrt{2}}{20} = 10\\sqrt{2} \\approx 14.1\\ \\text{A}",
+              "f": "200*sqrt(2)/20",
+              "value": "14.1",
+              "dp": 1,
+              "note": "part (I)"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "v_o = 5\\times20\\sin(100\\pi t) = 100\\sin(100\\pi t)\\ \\text{V}",
+              "f": "5*20",
+              "value": "100",
+              "note": "part (II)"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "(I_o)_{rms} = \\dfrac{200}{100/\\sqrt{2}} = 2\\sqrt{2}\\ \\text{A}",
+              "f": "200/(100/sqrt(2))",
+              "value": "2*sqrt(2)",
+              "note": "part (III)"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "I_o = (2\\sqrt{2})\\sqrt{2}\\sin(100\\pi t) = 4\\sin(100\\pi t)\\ \\text{A}",
+              "f": "2*sqrt(2)*sqrt(2)",
+              "value": "4"
+            }
+          ],
+          "answer": "200*sqrt(2)/20"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 23,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 27,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 31,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 34,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "c6f2f8b7",
+        "answer": {
+          "value": 14.142135623730951,
+          "label": "14.1 A; v₀ = 100 V; i₀ = 4 A"
+        }
+      }
+    },
+    {
+      "id": "bf8eef39-1271-405a-a25e-e84e953d2052",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "I = \\dfrac{V}{R} = \\dfrac{220}{100} = 2.20\\ \\text{A}",
+              "f": "220/100",
+              "value": "2.20",
+              "dp": 2
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "P = VI\\cos\\phi = (220)(2.20)(1) = 484\\ \\text{W}",
+              "f": "220*2.20*1",
+              "value": "484",
+              "note": "pure resistor: φ = 0"
+            }
+          ],
+          "answer": "220/100"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "ed05ae8a",
+        "answer": {
+          "value": 2.2,
+          "label": "2.20 A; 484 W"
+        }
+      }
+    },
+    {
+      "id": "c621653f-47ca-42d1-95c0-b28ffa4c5292",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "v_m = 310\\ \\text{V},\\ f = 50\\ \\text{Hz},\\ C = 15\\ \\mu\\text{F} = 15\\times10^{-6}\\ \\text{F},\\ \\omega = 100\\pi"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "X_C = \\dfrac{1}{\\omega C} = \\dfrac{1}{100\\pi\\times15\\times10^{-6}} = 212\\ \\Omega",
+              "f": "1/(100*pi*15*10^(-6))",
+              "value": "212",
+              "dp": 0
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "i_m = \\dfrac{v_m}{X_C} = \\dfrac{310}{212} = 1.46\\ \\text{A}",
+              "f": "310/212",
+              "value": "1.46",
+              "dp": 2,
+              "note": "i = 1.46 sin(100πt + π/2) A"
+            }
+          ],
+          "answer": "310/212"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "7668044f",
+        "answer": {
+          "value": 1.4622641509433962,
+          "label": "212 Ω; 1.46 A"
+        }
+      }
+    },
+    {
+      "id": "c84adeea-1f06-4005-9890-e1fc6d0c1618",
+      "option": "A",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "I = I_0\\cos\\omega t,\\quad \\omega = 100\\pi\\ \\text{rad/s}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "T = \\dfrac{2\\pi}{\\omega} = \\dfrac{2\\pi}{100\\pi} = \\dfrac{1}{50}\\ \\text{s}",
+              "f": "2*pi/(100*pi)",
+              "value": "1/50"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "t = \\dfrac{T}{4} = \\dfrac{1}{4}\\times\\dfrac{1}{50} = \\dfrac{1}{200}\\ \\text{s}",
+              "f": "1/4*1/50",
+              "value": "1/200",
+              "note": "cosine: maximum to zero in T/4"
+            }
+          ],
+          "answer": "1/200"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "28dae6b5",
+        "answer": {
+          "value": 0.005,
+          "label": "1/200 s (A)"
+        }
+      }
+    },
+    {
+      "id": "cc522896-f2eb-4b6a-a7ba-00771f05fcc2",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "X_C = \\dfrac{1}{2\\pi\\nu C} = \\dfrac{1}{2\\pi(50)(15.0\\times10^{-6})} = 212\\ \\Omega",
+              "f": "1/(2*pi*50*15.0*10^(-6))",
+              "value": "212",
+              "dp": 0
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "I = \\dfrac{V}{X_C} = \\dfrac{220}{212} = 1.04\\ \\text{A}",
+              "f": "220/212",
+              "value": "1.04",
+              "dp": 2
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "i_m = \\sqrt{2}\\,I = 1.41\\times1.04 = 1.47\\ \\text{A}",
+              "f": "1.41*1.04",
+              "value": "1.47",
+              "dp": 2,
+              "note": "peak current"
+            },
+            {
+              "step": "s4",
+              "kind": "note",
+              "tex": "\\nu \\to 2\\nu:\\ X_C \\to \\dfrac{X_C}{2},\\quad I \\to 2I",
+              "note": "frequency doubled"
+            }
+          ],
+          "answer": "1/(2*pi*50*15.0*10^(-6))"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "167d8957",
+        "answer": {
+          "value": 212.2065907891938,
+          "label": "212 Ω; 1.04 A; 1.47 A"
+        }
+      }
+    },
+    {
+      "id": "ce703ef0-9ec3-423c-89cb-f1fcab1851b6",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "X_L = \\omega L = 100\\pi\\times\\dfrac{4}{\\pi} = 400\\ \\Omega",
+              "f": "100*pi*4/pi",
+              "value": "400"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "X_C = \\dfrac{1}{\\omega C} = \\dfrac{1}{100\\pi\\times\\frac{25}{\\pi}\\times10^{-6}} = 400\\ \\Omega",
+              "f": "1/(100*pi*25/pi*10^(-6))",
+              "value": "400",
+              "note": "net reactance X = 0"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "Z = \\sqrt{50^2 + (400-400)^2} = 50\\ \\Omega",
+              "f": "sqrt(50^2+(400-400)^2)",
+              "value": "50",
+              "note": "resonance: Z = R"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "V_{rms} = \\dfrac{70}{\\sqrt{2}} = 49.5\\ \\text{V}",
+              "f": "70/sqrt(2)",
+              "value": "49.5",
+              "dp": 1
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "I_{rms} = \\dfrac{49.5}{50} \\approx 1\\ \\text{A}",
+              "f": "49.5/50",
+              "value": "1",
+              "dp": 0
+            }
+          ],
+          "answer": "400-400"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 14,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 15,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "5db662af",
+        "answer": {
+          "value": 0,
+          "label": "0; 50 Ω; 1 A"
+        }
+      }
+    },
+    {
+      "id": "d074e55c-0ac0-4b0c-bb8e-d166abe0aa82",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "X_C = \\dfrac{1}{\\omega C} = \\dfrac{1}{100\\pi\\times\\frac{250}{\\pi}\\times10^{-6}} = 40\\ \\Omega",
+              "f": "1/(100*pi*250/pi*10^(-6))",
+              "value": "40",
+              "note": "the π cancels"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "Z = \\sqrt{30^2 + 40^2} = 50\\ \\Omega",
+              "f": "sqrt(30^2+40^2)",
+              "value": "50"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "I_{rms} = \\dfrac{V_{rms}}{Z} = \\dfrac{200}{50} = 4\\ \\text{A}",
+              "f": "200/50",
+              "value": "4"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "V_R = I_{rms}R = 4\\times30 = 120\\ \\text{V}",
+              "f": "4*30",
+              "value": "120"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "V_C = I_{rms}X_C = 4\\times40 = 160\\ \\text{V}",
+              "f": "4*40",
+              "value": "160",
+              "note": "120 + 160 = 280 V, above 200 V"
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "V = \\sqrt{V_R^2 + V_C^2} = \\sqrt{120^2 + 160^2} = 200\\ \\text{V}",
+              "f": "sqrt(120^2+160^2)",
+              "value": "200",
+              "note": "90° apart: add as phasors"
+            }
+          ],
+          "answer": "200/50"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 11,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 12,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 16,
+            "beats": [
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "bf429711",
+        "answer": {
+          "value": 4,
+          "label": "4 A; 120 V; 160 V"
+        }
+      }
+    },
+    {
+      "id": "d20ae400-2832-46c7-8bfb-9d0e12986282",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "vars": {
+            "R": 3,
+            "XC": 4,
+            "im": 2,
+            "vm": "im*sqrt(R^2+XC^2)"
+          },
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "v_m^2 = (i_mR)^2 + (i_mX_C)^2 = i_m^2\\left[R^2 + X_C^2\\right]",
+              "f": "(im*R)^2+(im*XC)^2",
+              "value": "vm^2",
+              "note": "V_R and V_C are at right angles"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "Z = \\dfrac{v_m}{i_m} = \\sqrt{R^2 + X_C^2}",
+              "f": "vm/im",
+              "value": "sqrt(R^2+XC^2)"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "R = \\dfrac{110}{11} = 10\\ \\Omega",
+              "f": "110/11",
+              "value": "10",
+              "note": "part (iii): lamp resistance"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "X_L = \\sqrt{\\left(\\dfrac{220}{11}\\right)^2 - 10^2} = \\sqrt{300} = 10\\sqrt{3}\\ \\Omega",
+              "f": "sqrt((220/11)^2-10^2)",
+              "value": "10*sqrt(3)"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "L = \\dfrac{X_L}{2\\pi\\nu} = \\dfrac{10\\sqrt{3}}{2\\pi\\times50} \\approx 0.055\\ \\text{H}",
+              "f": "10*sqrt(3)/(2*pi*50)",
+              "value": "0.055",
+              "dp": 3
+            }
+          ],
+          "answer": "sqrt(R^2+XC^2)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 18,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 21,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 24,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "9b5e2c99",
+        "answer": {
+          "value": 5,
+          "label": "Z=√(R²+X_C²); L = 0.055 H"
+        }
+      }
+    },
+    {
+      "id": "d2d91d62-a831-4875-acf2-aa6772d86795",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\omega_0 = \\dfrac{1}{\\sqrt{LC}} = \\dfrac{1}{\\sqrt{25.48\\times10^{-3}\\times796\\times10^{-6}}} = 222.05\\ \\text{rad/s}",
+              "f": "1/sqrt(25.48*10^(-3)*796*10^(-6))",
+              "value": "222.05",
+              "dp": 2
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\nu_r = \\dfrac{\\omega_0}{2\\pi} = \\dfrac{222.05}{2\\times3.14} = 35.4\\ \\text{Hz}",
+              "f": "222.05/(2*3.14)",
+              "value": "35.4",
+              "dp": 1
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "Z = R = 3\\ \\Omega",
+              "note": "at resonance"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "I = \\dfrac{V}{R} = \\dfrac{283/\\sqrt{2}}{3} = 66.7\\ \\text{A}",
+              "f": "(283/sqrt(2))/3",
+              "value": "66.7",
+              "dp": 1
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "P = I^2R = (66.7)^2\\times3 = 13.35\\ \\text{kW}",
+              "f": "66.7^2*3/1000",
+              "value": "13.35",
+              "dp": 2
+            }
+          ],
+          "answer": "222.05/(2*3.14)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 11,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "258a9eb3",
+        "answer": {
+          "value": 35.35828025477707,
+          "label": "35.4 Hz; 3 Ω; 66.7 A; 13.35 kW"
+        }
+      }
+    },
+    {
+      "id": "de39d256-095f-449d-aa6b-26971bfb8b3c",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\dfrac{V_s}{V_p} = \\dfrac{N_s}{N_p} = \\dfrac{5000}{500} = 10",
+              "f": "5000/500",
+              "value": "10"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "V_s = 10\\times220 = 2200\\ \\text{V}",
+              "f": "10*220",
+              "value": "2200",
+              "note": "frequency stays 50 Hz"
+            }
+          ],
+          "answer": "10*220"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "078f0880",
+        "answer": {
+          "value": 2200,
+          "label": "2200 V – 50 Hz (D)"
+        }
+      }
+    },
+    {
+      "id": "e234c6b1-787d-4cec-a73a-8c6196a6b10c",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "I_{rms} = \\dfrac{V_{rms}}{R} = \\dfrac{200}{20} = 10\\ \\text{A}",
+              "f": "200/20",
+              "value": "10",
+              "note": "at resonance Z = R"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "I_0 = \\sqrt{2}\\,I_{rms} = 1.414\\times10 = 14.14\\ \\text{A}",
+              "f": "1.414*10",
+              "value": "14.14",
+              "dp": 2
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "P = I_{rms}^2R = (10)^2\\times20 = 2000\\ \\text{W}",
+              "f": "10^2*20",
+              "value": "2000"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\omega_r = \\dfrac{1}{\\sqrt{LC}} = \\dfrac{1}{\\sqrt{2\\times50\\times10^{-6}}} = 100\\ \\text{rad/s}",
+              "f": "1/sqrt(2*50*10^(-6))",
+              "value": "100"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "X_C = \\dfrac{1}{\\omega_r C} = \\dfrac{1}{100\\times50\\times10^{-6}} = 200\\ \\Omega",
+              "f": "1/(100*50*10^(-6))",
+              "value": "200"
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "V_C = I_{rms}X_C = 10\\times200 = 2000\\ \\text{V}",
+              "f": "10*200",
+              "value": "2000",
+              "note": "ten times the source voltage"
+            }
+          ],
+          "answer": "1.414*10"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 11,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 13,
+            "beats": [
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "3c5e1076",
+        "answer": {
+          "value": 14.139999999999999,
+          "label": "14.14 A; 2000 W; 2000 V"
+        }
+      }
+    },
+    {
+      "id": "e8bb491f-a2c1-4b43-a6fb-32352f425b48",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "V_s = V_p\\dfrac{N_s}{N_p} = \\dfrac{240}{20} = 12\\ \\text{V}",
+              "f": "240/20",
+              "value": "12",
+              "note": "step-down, 20 : 1"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "I_s = \\dfrac{V_s}{R} = \\dfrac{12}{6.0} = 2.0\\ \\text{A}",
+              "f": "12/6.0",
+              "value": "2.0",
+              "dp": 1
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "V_pI_p = V_sI_s:\\ I_p = \\dfrac{12\\times2.0}{240} = 0.10\\ \\text{A}",
+              "f": "12*2.0/240",
+              "value": "0.10",
+              "dp": 2,
+              "note": "ideal: power in = power out"
+            }
+          ],
+          "answer": "12*2.0/240"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "8255bb99",
+        "answer": {
+          "value": 0.1,
+          "label": "0.10 A (D)"
+        }
+      }
+    },
+    {
+      "id": "f29470cd-30d1-442b-a9de-3ae6b2663aa4",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\dfrac{V_s}{V_p} = \\dfrac{N_s}{N_p},\\ V_p = 200\\ \\text{V},\\ V_s = 3000\\ \\text{V},\\ N_p = 450"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\dfrac{3000}{200} = 15 = \\dfrac{N_s}{450}",
+              "f": "3000/200",
+              "value": "15"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "N_s = 15\\times450 = 6750",
+              "f": "15*450",
+              "value": "6750"
+            }
+          ],
+          "answer": "15*450"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "338fffec",
+        "answer": {
+          "value": 6750,
+          "label": "6750 turns (D)"
+        }
+      }
+    },
+    {
+      "id": "f6ce1752-dac2-47db-9977-78ec24bf1981",
+      "option": "C",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "V_0 = 14\\ \\text{V},\\ \\omega = 314\\ \\text{rad/s},\\quad V_{av} = 0\\ \\text{over a cycle}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "V_{rms} = \\dfrac{V_0}{\\sqrt{2}} = \\dfrac{14}{1.414} \\approx 10\\ \\text{V}",
+              "f": "14/1.414",
+              "value": "10",
+              "dp": 0,
+              "note": "average 0 V, effective 10 V"
+            }
+          ],
+          "answer": "10"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "72993ca6",
+        "answer": {
+          "value": 10,
+          "label": "0 and 10 (C)"
+        }
+      }
+    },
+    {
+      "id": "f7ba7998-124f-4f22-bee5-299823f65583",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "vars": {
+            "R": 3,
+            "XL": 8,
+            "XC": 4,
+            "im": 2,
+            "vm": "im*sqrt(R^2+(XC-XL)^2)",
+            "Z": "sqrt(R^2+(XC-XL)^2)"
+          },
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "V_m^2 = (i_mR)^2 + (i_mX_C - i_mX_L)^2",
+              "f": "(im*R)^2+(im*XC-im*XL)^2",
+              "value": "vm^2",
+              "note": "V_L and V_C are antiparallel"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "V_m^2 = i_m^2\\left[R^2 + (X_C - X_L)^2\\right]",
+              "f": "im^2*(R^2+(XC-XL)^2)",
+              "value": "vm^2"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "i_m = \\dfrac{V_m}{\\sqrt{R^2 + (X_C - X_L)^2}} = \\dfrac{V_m}{Z}",
+              "f": "vm/sqrt(R^2+(XC-XL)^2)",
+              "value": "vm/Z"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "Z = \\sqrt{R^2 + (X_C - X_L)^2}",
+              "f": "vm/im",
+              "value": "sqrt(R^2+(XC-XL)^2)",
+              "note": "the impedance"
+            }
+          ],
+          "answer": "sqrt(R^2+(XC-XL)^2)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 14,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 16,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 18,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "8b6ecdd8",
+        "answer": {
+          "value": 5,
+          "label": "Z = √(R²+(X_C−X_L)²)"
+        }
+      }
+    },
+    {
+      "id": "f9042afe-0aa6-4178-9424-27b407c26457",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "X_C = \\dfrac{1}{\\omega C} = \\dfrac{1}{100\\times1\\times10^{-6}} = 1\\times10^{4}\\ \\Omega",
+              "f": "1/(100*1*10^(-6))",
+              "value": "1*10^(4)",
+              "sf": 1
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "V_{rms} = \\dfrac{V_0}{\\sqrt{2}} = \\dfrac{282}{1.41} = 200\\ \\text{V}",
+              "f": "282/1.41",
+              "value": "200",
+              "dp": 0
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "I_{rms} = \\dfrac{V_{rms}}{X_C} = \\dfrac{200}{10^4} = 0.02\\ \\text{A}",
+              "f": "200/10^4",
+              "value": "0.02",
+              "dp": 2
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "I_{rms} = 20\\ \\text{mA}",
+              "f": "200/10^4*1000",
+              "value": "20"
+            }
+          ],
+          "answer": "200/10^4*1000"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "c05a55bb",
+        "answer": {
+          "value": 20,
+          "label": "20 mA (B)"
+        }
+      }
+    },
+    {
+      "id": "ffed42df-6736-4748-a279-64e75de3636c",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "vars": {
+            "Lc": 2,
+            "Cc": 0.5,
+            "w0": "1/sqrt(Lc*Cc)"
+          },
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "X_L = X_C:\\ \\omega_0 L = \\dfrac{1}{\\omega_0 C}",
+              "f": "w0*Lc",
+              "value": "1/(w0*Cc)",
+              "note": "no resistance: Z = |X_L − X_C|"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\omega_0 = \\dfrac{1}{\\sqrt{LC}}",
+              "f": "sqrt(1/(Lc*Cc))",
+              "value": "w0"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\nu = \\dfrac{\\omega_0}{2\\pi} = \\dfrac{1}{2\\pi\\sqrt{LC}}",
+              "f": "w0/(2*pi)",
+              "value": "1/(2*pi*sqrt(Lc*Cc))"
+            }
+          ],
+          "answer": "1/(2*pi*sqrt(Lc*Cc))"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 16,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 18,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "1bdc7bca",
+        "answer": {
+          "value": 0.15915494309189535,
+          "label": "ν = 1/(2π√LC)"
+        }
+      }
+    }
+  ],
+  "decided": []
+}
