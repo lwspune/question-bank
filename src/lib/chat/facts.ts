@@ -140,8 +140,10 @@ export const NAV_FACTS: readonly string[] = [
   "/saved: the questions a student saved to come back to (needs a free account).",
   "/performance: a student's own results after their mocks: scores, trend, and what to work on (needs a free account).",
   "/me/map: a student's mastery map, chapter by chapter (needs a free account).",
+  "/me: a student's own home page: what to do next, and for a Class 12 board student the board path (start it there, then a card of tasks each day) (needs a free account).",
   "Build a practice test: a button in this chat window; V builds a test from the chapters, length and difficulty the student picks.",
   "How's my progress: a button beside it in this chat window for a signed-in student who has practised; it shows a card of their own numbers (this week's answers, mistakes fixed, exam covered, mocks, chapters, notes read) with Fix my mistakes (/drill) and View full performance (/performance).",
+  "My plan for today: a button in this chat window for a student on the board path; it shows today's card of path tasks, each linked to its work.",
   "/signup: create a free account (Google or email).",
   "/pricing: the Premium Pass and how to buy it.",
   "/about: who runs PYQ Vault, and the contact form to write to the team about a payment, the pass or an account problem.",
@@ -246,7 +248,7 @@ const CONCEPT_RULE = `7a. Concepts (explain, define, derive, "what is", the diff
 - If it says the search failed, say so and ask them to try again in a minute.`;
 
 /** Rule 8a, while V's week plan is switched on (/dashboard/chat, migration 0170). */
-const PLAN_RULE = `8a. Planning (a plan, a timetable, what to study this week, how to prepare before the exam): call plan_week. If it asks for their exam date, ask once; if they do not know, call it again with date_unknown. If they say how many days they can study, pass days_per_week. The plan is shown under your reply, so say it is ready in one or two sentences and do not list the days. When they ask about their plan, what to do today, or how their week is going, call my_plan.`;
+const PLAN_RULE = `8a. Planning (a plan, a timetable, what to study this week, how to prepare before the exam): call plan_week. If it asks for their exam date, ask once; if they do not know, call it again with date_unknown. If they say how many days they can study, pass days_per_week. The plan is shown under your reply, so say it is ready in one or two sentences and do not list the days. When they ask about their plan, what to do today, what to do now, or how their week is going, call my_plan. When either answers from the student's board path, or offers it, do what it says.`;
 
 /** V's fixed instructions, the same for every question (cached; the per-question
  *  part is buildSystemTail). Answer-only-from-facts and the no-solving rule

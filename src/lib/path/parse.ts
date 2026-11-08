@@ -22,3 +22,11 @@ export function parsePathAction(raw: unknown): { ok: true; value: PathAction } |
   const r = schema.safeParse(raw);
   return r.success ? { ok: true, value: r.data } : { ok: false, error: "Invalid request." };
 }
+
+const chapterParam = z.string().uuid();
+
+/** GET /api/path/chapter's `chapterId` (Phase 2), or null. */
+export function parseChapterParam(raw: string | null): string | null {
+  const r = chapterParam.safeParse(raw);
+  return r.success ? r.data : null;
+}

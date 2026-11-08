@@ -5,7 +5,7 @@ import { useIntlSite } from "@/lib/sites/useIntlSite";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
-import { Check, ListChecks, Reply, RotateCcw, SendHorizontal, ThumbsDown, ThumbsUp, TrendingUp, X } from "lucide-react";
+import { CalendarCheck, Check, ListChecks, Reply, RotateCcw, SendHorizontal, ThumbsDown, ThumbsUp, TrendingUp, X } from "lucide-react";
 import { toast } from "sonner";
 import { trackFunnel, trackFunnelOnce } from "@/lib/analytics/trackFunnel";
 import { useVFeatures } from "@/lib/chat/useVExplain";
@@ -74,6 +74,7 @@ import { parseVPassOffer, type VPassOffer as PassOffer } from "@/lib/chat/passOf
 import { parseHourlyLimit, type HourlyLimitReply } from "@/lib/chat/hourlyLimit";
 import { liftDailyLimit } from "@/components/reveal/useRevealMeter";
 import VProgressCard from "./VProgressCard";
+import VPathCard from "./VPathCard";
 import {
   ASK_V_EVENT,
   askedCardOf,
@@ -108,6 +109,8 @@ type ChatTurn = HistoryTurn & {
   plan?: boolean;
   /** The "How's my progress" card (2026-10-27): the student's own numbers, read when shown. */
   progress?: boolean;
+  /** Today's board-path card (2026-11-08, MENTOR_SPEC.md Phase 2): the button, or V's plan tools answered from the path. */
+  path?: boolean;
   /** A fresh reply, shown a line at a time (2026-10-23). Never kept: a reply from history shows whole. */
   reveal?: boolean;
   /**
@@ -203,6 +206,8 @@ export default function ChatWidget() {
   // The header's shared read (no extra request): the button shows once there is something to show.
   const pulse = usePulse(signedIn && features.progress);
   const showProgress = !!pulse && ((pulse.totals?.answered ?? 0) > 0 || pulse.due > 0);
+  // "My plan for today" (Phase 2): only for a student on the board path, from the same shared read.
+  const showPath = pulse?.path?.state === "on";
   // "Ask V about this question" (2026-10-19): the question this conversation is about, sent with each message.
   const [asked, setAsked] = useState<AskVDetail | null>(null);
   // "Reply" on one of V's replies (0174): the message the next typed message answers.
@@ -554,6 +559,17 @@ export default function ChatWidget() {
   }
 
   /**
+   * "My plan for today" (2026-11-08, owner's name for it): today's board-path
+   * card, built from numbers like the progress card, so it costs no message.
+   */
+  function showPathCard() {
+    if (sending) return;
+    trackFunnel("v_path_tap", { action: "open" });
+    addTurn({ role: "user", text: "My plan for today", transient: true });
+    addTurn({ role: "assistant", avatar: "idle", text: "Here's today on your path.", path: true, transient: true });
+  }
+
+  /**
    * The pass was bought from the offer under reply `index`: the page's cards
    * open again, the offer goes, and the question that met the limit is asked
    * again, so the student gets their answer without leaving the chat.
@@ -631,6 +647,7 @@ export default function ChatWidget() {
         similarQuestionId?: string;
         matchQuestionId?: string;
         planShown?: boolean;
+        pathShown?: boolean;
         /** V explained something: "Did you understand?" goes under the reply (0182). */
         explained?: boolean;
         /** The explained question's stored solution figure, shown under the reply (2026-10-24). */
@@ -673,6 +690,7 @@ export default function ChatWidget() {
           ? { id: data.matchQuestionId, kind: "confirm" }
           : undefined;
       const plan = data.planShown === true ? true : undefined;
+      const path = data.pathShown === true ? true : undefined;
       const offer = parseVPassOffer(data.passOffer) ?? undefined;
       addTurn(
         data.source === "ai" && data.id
@@ -686,6 +704,7 @@ export default function ChatWidget() {
               feedback: null,
               card,
               plan,
+              path,
               offer,
               reveal: true,
               explained: data.explained === true,
@@ -694,7 +713,7 @@ export default function ChatWidget() {
               ...(data.solutionVisual && typeof data.solutionVisual === "object" ? { visual: data.solutionVisual } : {}),
               ...(typeof data.solutionVisualQuestionId === "string" ? { visualQuestionId: data.solutionVisualQuestionId } : {}),
             }
-          : { role: "assistant", avatar: "laugh", text: data.reply as string, links, card, plan, reveal: true }
+          : { role: "assistant", avatar: "laugh", text: data.reply as string, links, card, plan, path, reveal: true }
       );
     } catch {
       const errorText = "V is unavailable right now. Please try again.";
@@ -923,6 +942,7 @@ export default function ChatWidget() {
                   {t.card && !t.reveal && <VQuestionCard id={t.card.id} kind={t.card.kind} onNavigate={close} />}
                   {t.plan && !t.reveal && <VPlanCard onNavigate={close} />}
                   {t.progress && <VProgressCard onNavigate={close} />}
+                  {t.path && !t.reveal && <VPathCard onNavigate={close} />}
                 </div>
               );
             })}
@@ -951,6 +971,17 @@ export default function ChatWidget() {
                 <ListChecks className="h-3.5 w-3.5" aria-hidden />
                 Build a practice test
               </button>
+              {showPath && (
+                <button
+                  type="button"
+                  onClick={showPathCard}
+                  disabled={sending}
+                  className="inline-flex shrink-0 items-center gap-1 whitespace-nowrap rounded-full border border-brand-accent/25 bg-brand-accent/[0.06] px-3.5 py-1.5 text-xs font-semibold text-foreground transition-colors hover:border-brand-accent/45 hover:bg-brand-accent/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+                >
+                  <CalendarCheck className="h-3.5 w-3.5" aria-hidden />
+                  My plan for today
+                </button>
+              )}
               {showProgress && (
                 <button
                   type="button"

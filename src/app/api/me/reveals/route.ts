@@ -31,7 +31,8 @@ import { loadCountedRevealsToday } from "@/lib/questions/revealQuota";
 import { istDayKey } from "@/lib/email/dueNudge";
 import { holdsPassFor, passScopesFor } from "@/lib/billing/passScope";
 import { readCountry } from "@/lib/acquisition/country";
-import { readTodayExemptions, revealCountWithout } from "@/lib/path/exemptions";
+import { revealCountWithout } from "@/lib/path/exemptions";
+import { ensureTodayExemptions } from "@/lib/path/service";
 
 export const dynamic = "force-dynamic";
 
@@ -65,8 +66,8 @@ export async function GET(request: NextRequest) {
       loadCountedRevealsToday(db, user.id, istDayKey(new Date())),
       passOnSale(site, { scope: scopes[0], country: readCountry(request.headers) }),
       // Today's board-path questions (0225): read from the server's own pick,
-      // neither counted nor walled. Fails to "none", never to a wall.
-      readTodayExemptions(db, user.id),
+      // neither counted nor walled; picked first if a path student has no pick yet. Fails to "none", never to a wall.
+      ensureTodayExemptions(db, user.id),
     ]);
     const todayIds = revealCountWithout(counted, exempt.revealIds);
     return NextResponse.json(

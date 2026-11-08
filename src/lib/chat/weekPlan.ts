@@ -217,7 +217,53 @@ export type PlanDeps = {
   loadPlanActivity: (plan: SavedPlan) => Promise<PlanActivity>;
   /** The plan is shown as a card in the chat under this reply. */
   onPlan: () => void;
+  /**
+   * The student's board path (MENTOR_SPEC.md Phase 2), when the route can
+   * read it: a student on it is answered from it, a Class 12 board student
+   * without one is offered it. Absent = plans as before.
+   */
+  loadPath?: () => Promise<PathForV>;
+  /** The path card is shown in the chat under this reply. */
+  onPath?: () => void;
 };
+
+/** What V knows of the student's board path (lib/path/service getPathForV). */
+export type PathForV =
+  | {
+      kind: "on";
+      exam: string;
+      /** "HSC boards from 11 Feb (expected), revision from 21 Jan". */
+      examLine: string;
+      /** "Physics 2 of 16 · Chemistry 1 of 16 · Maths 1 of 15, on track". */
+      status: string;
+      /** Today's tasks, one line each, with the page to open. */
+      today: string[];
+      /** The coming days, if each day's card is done (lib/path/week). */
+      week: string[];
+    }
+  | { kind: "offer"; exam: string; minutes: number; subjects: string; examLine: string }
+  | { kind: "none" };
+
+const NO_PATH: PathForV = { kind: "none" };
+
+function pathReply(p: Extract<PathForV, { kind: "on" }>, ask: "week" | "today"): string {
+  return [
+    `The student is on the board path (${p.examLine}). ${p.status}.`,
+    "Today's card:",
+    ...p.today,
+    ...(ask === "week" && p.week.length > 0 ? ["The coming days, if they do each day's card:", ...p.week] : []),
+    ask === "week"
+      ? "Today's card is shown below this reply and every day's card is on /me. In two or three sentences say what today holds and which chapters the coming days cover; do not make a different plan."
+      : "Today's card is shown below this reply and on /me. Say what is done first, then the next task.",
+  ].join("\n");
+}
+
+function offerReply(p: Extract<PathForV, { kind: "offer" }>): string {
+  return [
+    `The student has a Class 12 board among their exams, no board path yet, and nothing was planned or saved by this call. The board path paces to the board exam (${p.examLine}): a few tasks a day, about ${p.minutes} minutes a day, 6 days a week, to finish every ${p.subjects} chapter (its revision sheet, Top 10 board questions and chapter test, in book order) before revision starts. A new card each day is on /me, where it starts with one tap.`,
+    "Offer it in one or two sentences and link /me; never call it a plan that is ready, and quote none of these lines. It is set to the board exam, not to a school test, a preboard or a coaching test: if they named an earlier test, say so and offer a one-week plan for that test instead, made by calling plan_week again with week_only true.",
+  ].join("\n");
+}
 
 const SIGN_IN = "The student is signed out. Tell them to sign in (free, /signup) and V will plan their week.";
 const SHOWN =
@@ -251,16 +297,23 @@ export function planTools(deps: PlanDeps): [VTool, VTool] {
         exam_date: { type: "string", description: "Their exam date as YYYY-MM-DD, when they told you; it is saved to their profile." },
         date_unknown: { type: "boolean", description: "True when they said they do not know their exam date." },
         days_per_week: { type: "number", description: "How many days this week they can study, if they said (1 to 7)." },
+        week_only: { type: "boolean", description: "True when a board student wants a one-week plan rather than their board path (a coaching test, say)." },
       },
     },
     run: async (input) => {
       if (!deps.signedIn) return SIGN_IN;
       const i = (input ?? {}) as Record<string, unknown>;
       const now = deps.now();
+      const examAsked = typeof i.exam === "string" ? i.exam.trim() : "";
+      // The board path answers a plan ask for its board (Phase 2).
+      const path = i.week_only !== true && deps.loadPath ? await softly("path", deps.loadPath, NO_PATH) : NO_PATH;
+      if (path.kind === "on" && !examAsked) {
+        deps.onPath?.();
+        return pathReply(path, "week");
+      }
       const [rows, profile] = await Promise.all([deps.loadChapters(), deps.loadProfile()]);
 
       let slug: string | null = null;
-      const examAsked = typeof i.exam === "string" ? i.exam.trim() : "";
       if (examAsked) {
         const exams = examsNamed(rows, examAsked);
         if (exams.length === 0) return `No exam matched "${examAsked}". Ask which exam they are preparing for.`;
@@ -270,6 +323,11 @@ export function planTools(deps: PlanDeps): [VTool, VTool] {
         slug = profile.targetExams.find((s) => EXAM_REGISTRY.some((e) => e.slug === s)) ?? null;
       }
       if (!slug) return "Ask which exam they are preparing for, then call again with it.";
+      if (path.kind === "on" && slug === path.exam) {
+        deps.onPath?.();
+        return pathReply(path, "week");
+      }
+      if (path.kind === "offer" && slug === path.exam) return offerReply(path);
       const entry = EXAM_REGISTRY.find((e) => e.slug === slug)!;
 
       let examDate = profile.examDate;
@@ -350,6 +408,11 @@ export function planTools(deps: PlanDeps): [VTool, VTool] {
     input_schema: { type: "object", properties: {} },
     run: async () => {
       if (!deps.signedIn) return SIGN_IN;
+      const path = deps.loadPath ? await softly("path", deps.loadPath, NO_PATH) : NO_PATH;
+      if (path.kind === "on") {
+        deps.onPath?.();
+        return pathReply(path, "today");
+      }
       const plan = await deps.loadPlan();
       if (!plan) return "No plan this week yet. Offer to make one.";
       const activity = await softly("activity", () => deps.loadPlanActivity(plan), { drills: 0, mocks: 0, chapterQuestions: {} });

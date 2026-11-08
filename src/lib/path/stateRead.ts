@@ -12,7 +12,8 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import { readAllPages } from "@/lib/supabase/readAllPages";
 import { readInChunks } from "@/lib/supabase/readInChunks";
 import type { ProgressEvent } from "@/lib/homework/progress";
-import { isFinishedTest, topWorked } from "./done";
+import { isFinishedTest } from "./done";
+import { foldStates, keepEarliest, type ChapterFacts } from "./fold";
 import type { ChapterState, PathChapter } from "./model";
 
 type MarkRow = { ref_id: string; kind: ProgressEvent["kind"]; created_at: string; mark: string | null };
@@ -21,13 +22,14 @@ type MarkRow = { ref_id: string; kind: ProgressEvent["kind"]; created_at: string
  * Each chapter's state, folded from the student's own records: the Top 10
  * marks (homework rule), the Revision tab views, finished chapter tests and
  * any `path_chapter_done` already written. `lastWorkAt` is the latest of
- * those per chapter, which ends a "Not taught yet".
+ * those per chapter, which ends a "Not taught yet". `facts` are the same
+ * records with their moments, for a state as of an earlier day (fold.ts).
  */
 export async function readChapterStates(
   db: SupabaseClient,
   userId: string,
   chapters: readonly PathChapter[]
-): Promise<{ states: Map<string, ChapterState>; lastWorkAt: Map<string, string> }> {
+): Promise<{ states: Map<string, ChapterState>; lastWorkAt: Map<string, string>; facts: ChapterFacts }> {
   const chapterOfQuestion = new Map<string, string>();
   for (const c of chapters) for (const p of c.top.flat()) chapterOfQuestion.set(p.id, c.id);
   const byPath = new Map(chapters.map((c) => [c.boardPath, c.id]));
@@ -55,16 +57,25 @@ export async function readChapterStates(
           .order("id")
           .range(f, t)
     ),
-    readAllPages<{ ref_id: string | null }>(
-      (f, t) => db.from("user_activity").select("ref_id").eq("user_id", userId).eq("kind", "path_chapter_done").order("id").range(f, t)
+    readAllPages<{ ref_id: string | null; created_at: string }>(
+      (f, t) =>
+        db.from("user_activity").select("ref_id, created_at").eq("user_id", userId).eq("kind", "path_chapter_done").order("id").range(f, t)
     ),
     byMock.size === 0
       ? Promise.resolve([])
-      : readAllPages<{ mock_id: string; status: string; started_at: string; correct_count: number | null; wrong_count: number | null; partial_count: number | null }>(
+      : readAllPages<{
+          mock_id: string;
+          status: string;
+          started_at: string;
+          submitted_at: string | null;
+          correct_count: number | null;
+          wrong_count: number | null;
+          partial_count: number | null;
+        }>(
           (f, t) =>
             db
               .from("mock_attempts")
-              .select("mock_id, status, started_at, correct_count, wrong_count, partial_count")
+              .select("mock_id, status, started_at, submitted_at, correct_count, wrong_count, partial_count")
               .eq("user_id", userId)
               .in("mock_id", [...byMock.keys()])
               .order("id")
@@ -93,30 +104,23 @@ export async function readChapterStates(
     eventsByChapter.set(chapterId, list);
     touch(chapterId, m.created_at);
   }
-  const sheetSeen = new Set<string>();
+  const sheetAt = new Map<string, string>();
   for (const v of views) {
     const chapterId = v.path ? byPath.get(v.path) : undefined;
     if (!chapterId) continue;
-    sheetSeen.add(chapterId);
+    keepEarliest(sheetAt, chapterId, v.created_at);
     touch(chapterId, v.created_at);
   }
-  const tested = new Set<string>();
+  const testAt = new Map<string, string>();
   for (const a of attempts) {
     const chapterId = byMock.get(a.mock_id);
     touch(chapterId, a.started_at);
     const answered = (a.correct_count ?? 0) + (a.wrong_count ?? 0) + (a.partial_count ?? 0);
-    if (chapterId && isFinishedTest({ status: a.status, answered })) tested.add(chapterId);
+    if (chapterId && isFinishedTest({ status: a.status, answered })) keepEarliest(testAt, chapterId, a.submitted_at ?? a.started_at);
   }
-  const recorded = new Set(doneRows.map((r) => r.ref_id).filter((x): x is string => !!x));
+  const doneAt = new Map<string, string>();
+  for (const r of doneRows) if (r.ref_id) keepEarliest(doneAt, r.ref_id, r.created_at);
 
-  const states = new Map<string, ChapterState>();
-  for (const c of chapters) {
-    states.set(c.id, {
-      sheet: sheetSeen.has(c.id),
-      topWorked: topWorked(c.top, eventsByChapter.get(c.id) ?? []).worked,
-      test: tested.has(c.id),
-      recordedDone: recorded.has(c.id),
-    });
-  }
-  return { states, lastWorkAt };
+  const facts: ChapterFacts = { marks: eventsByChapter, sheetAt, testAt, doneAt };
+  return { states: foldStates(chapters, facts), lastWorkAt, facts };
 }

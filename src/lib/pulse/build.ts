@@ -20,6 +20,7 @@ import type { OwnWeekly } from "@/lib/goals/service";
 import { getOwnProfile } from "@/lib/profile/service";
 import { resolveExamDate } from "@/lib/exam/calendar";
 import type { Pulse } from "./cache";
+import { isPathExam, pathPulseState, type PathExam } from "@/lib/path/model";
 
 export async function buildPulse(
   db: SupabaseClient,
@@ -45,5 +46,19 @@ export async function buildPulse(
   // every chapter's count from the same pool, so the line's number is what
   // /drill?chapter= serves. One small object; no extra read.
   const chapterDue = dueByChapter(ladder.due);
-  return { due: ladder.due.length, week, exam, totals, weak, chapterDue };
+  // The board path (Phase 2): one indexed read, and only for a student with a
+  // Class 12 board among their exams. A failed read shows no path line.
+  const active = profile.targetExams.some(isPathExam) ? await activePathExam(db, userId) : undefined;
+  const path = active === undefined ? null : pathPulseState(profile.targetExams, active);
+  return { due: ladder.due.length, week, exam, totals, weak, chapterDue, path };
+}
+
+/** The active path's board, null with none, undefined when the read failed. */
+async function activePathExam(db: SupabaseClient, userId: string): Promise<PathExam | null | undefined> {
+  const { data, error } = await db.from("study_paths").select("exam_slug").eq("user_id", userId).is("ended_at", null).maybeSingle();
+  if (error) {
+    console.error("pulse path read failed", error.message);
+    return undefined;
+  }
+  return data && isPathExam(data.exam_slug) ? data.exam_slug : null;
 }
