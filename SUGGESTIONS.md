@@ -162,6 +162,17 @@ Standing list of **new learnings that may apply to EXISTING/shipped work** — s
 
 ## 2026-11-08
 
+### Every session shares one test database, and one run's cleanup deletes another run's test rows (owner picked option 2, not done)
+
+- **What happened (2026-11-08).** Four gate runs failed on causes outside the code under test, and each failing test passed when run alone (about 10 minutes lost per re-run, and a red gate stopped meaning anything):
+  - a push gate: 5 tests (`export-rate-limit`, `signup-country`) while another session's push gate ran;
+  - a 30 s timeout inserting a question in `question-delete`;
+  - 35 tests in one run (batches, branches, concept tags, V study plans), all foreign-key errors on rows the test had just created;
+  - a `vitest` run started beside a gate, whose teardown swept the gate's rows mid-run.
+- **Why.** Every worktree, every session and GitHub CI run `npm test` against the one test project (`rjwuwmrzkyergflmmfxq`). `tests/global-teardown.ts` deletes EVERY organization with a test-style name and EVERY `@test.local` user, so it also deletes a run still in progress. Rate-limit counters are shared too. No run can tell that another one is live.
+- **Options weighed.** (1) A machine-wide lock taken by the gate's first step (`testdb:require-env`), kept in `git rev-parse --git-common-dir` so all worktrees see it, cleared when its PID is dead: cheap, but local only, so CI can still collide. (2) **Owner's pick:** each run tags its fixtures with its own run id and its teardown sweeps only rows carrying that id, which also protects against CI. More work: every fixture-writing test file has to name its rows from the run id. (3) A second test project for CI.
+- **Also seen the same day:** `tests/client-bundle-notes-registry.test.ts` walks the whole import graph and took 58.9 s alone against its 30 s limit (it passes on its retry), so it fails whenever the machine is busy. It needs its own timeout or a cheaper walk.
+
 ### Learn kept only in the avatar menu; an idea for its lessons in V (owner, not decided)
 
 - **State.** From 28 Oct to 8 Nov, 3 students mastered a Learn concept and none came back on a second day (the keep rule was 25 and 10). Since 2026-11-08 the avatar menu is Learn's only way in; the footer link and the board-chapter link are gone. The pages, the sitemap entries, the tables and `learn:import` stay, so this can be revisited. The experiment's check is still 25 Nov.
