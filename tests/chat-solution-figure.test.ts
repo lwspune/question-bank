@@ -42,8 +42,10 @@ describe("explainedQuestionId", () => {
     }
   });
 
-  it("is null when the result names a different question than the input", () => {
-    expect(explainedQuestionId([{ name: "explain_question", input: { question_id: QID }, result: `Question ${QID2} from x` }])).toBeNull();
+  // 2026-11-08: an Ask V tap pins the question, so the model's id can differ from the one explained.
+  // The result names the question that was actually explained, and that is the one whose figure shows.
+  it("is the question the result names, even when the model passed another id", () => {
+    expect(explainedQuestionId([{ name: "explain_question", input: { question_id: QID }, result: `Question ${QID2} from x` }])).toBe(QID2);
   });
 });
 

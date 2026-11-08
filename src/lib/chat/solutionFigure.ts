@@ -11,6 +11,8 @@
 import type { ToolCallLog } from "./anthropic";
 import { publicImageUrl, storagePathOf } from "@/lib/storage/imageUrl";
 
+const EXPLAINED_RE = /^Question ([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}) from /i;
+
 /**
  * The bank question a reply actually explained: the last explain_question
  * call whose result is that question (questionTools explainView starts
@@ -21,8 +23,9 @@ export function explainedQuestionId(toolCalls: readonly ToolCallLog[] | null | u
   let found: string | null = null;
   for (const c of toolCalls ?? []) {
     if (c.name !== "explain_question") continue;
-    const id = (c.input as { question_id?: unknown } | null)?.question_id;
-    if (typeof id === "string" && (c.result ?? "").startsWith(`Question ${id} from`)) found = id;
+    // The id the RESULT names: an Ask V tap pins the question, so the model's input id can differ (2026-11-08).
+    const id = EXPLAINED_RE.exec(c.result ?? "")?.[1];
+    if (id) found = id;
   }
   return found;
 }
