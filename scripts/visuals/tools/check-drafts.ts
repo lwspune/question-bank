@@ -52,6 +52,17 @@ for (const f of files) {
       bad++;
       continue;
     }
+    // A line or item whose step no beat plays never appears (2026-11-09: 10 of 11,991 stored visuals had one).
+    const parts = ((d.params as { lines?: { step?: string }[]; items?: { step?: string }[] })?.lines ??
+      (d.params as { items?: { step?: string }[] })?.items ??
+      []) as { step?: string }[];
+    const played = new Set(((d as { steps?: { beats?: string[] }[] }).steps ?? []).flatMap((s) => s.beats ?? []));
+    const hidden = [...new Set(parts.map((l) => l.step).filter((s): s is string => !!s && !played.has(s)))];
+    if (hidden.length) {
+      console.log(`${tag}: no step plays ${hidden.join(", ")}, so those lines never appear; use the step ids the steps name`);
+      bad++;
+      continue;
+    }
     const p = scene.parse(d.params);
     if (p && typeof p === "object" && "error" in p) {
       console.log(`${tag}: ${(p as { error: string }).error}`);
