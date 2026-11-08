@@ -8,9 +8,10 @@
  * - papers: a board paper is done when every question on it was answered or
  *   marked on its page (the Top 10 rule), an OR choice by either half.
  * - revision: from three weeks before the board exam, chapters not done come
- *   first, smallest first; then a whole timed board paper on alternate study
- *   days, rotating subjects, newest first; between them the Review later
- *   questions and up to 10 mistakes to fix.
+ *   first, smallest first; then a whole timed board paper every day (owner,
+ *   2026-11-08, was alternate days), rotating subjects, newest first, with the
+ *   chapter most marked Review later reworked after it; once the papers run
+ *   out, rework and sheet re-reads; up to 10 mistakes to fix throughout.
  */
 import { describe, it, expect } from "vitest";
 import type { ChapterState, PathChapter, PathPaper } from "@/lib/path/model";
@@ -176,14 +177,14 @@ describe("revision: the last three weeks", () => {
     expect(tasks.some((t) => t.kind === "paper")).toBe(false);
   });
 
-  it("with every chapter done, gives a whole paper on alternate study days, newest first, rotating subjects", () => {
+  it("with every chapter done, gives a whole paper every day, newest first, rotating subjects", () => {
     const states = allDone(chapters);
     const d0 = pickRevisionDay({ ...base, states, today: "2027-01-21" });
     expect(d0).toEqual([{ kind: "paper", paperId: "phy-2025", minutes: 180 }]);
-    // Physics served: the next paper day goes to a subject with fewer.
+    // Physics served: the very next day goes to a subject with fewer.
     const served = new Map<string, PaperState>([["phy-2025", { served: true, worked: 3, of: 3, done: true }]]);
-    const d2 = pickRevisionDay({ ...base, states, paperStates: served, today: "2027-01-23" });
-    expect(d2).toEqual([{ kind: "paper", paperId: "che-2025", minutes: 180 }]);
+    const d1 = pickRevisionDay({ ...base, states, paperStates: served, today: "2027-01-22" });
+    expect(d1).toEqual([{ kind: "paper", paperId: "che-2025", minutes: 180 }]);
   });
 
   it("comes back to a paper started and not finished before a new one", () => {
@@ -196,13 +197,25 @@ describe("revision: the last three weeks", () => {
     });
   });
 
-  it("between paper days, reworks the chapters with the most Review later questions", () => {
+  const reviews = new Map([
+    ["p1", ["p1-q0"]],
+    ["c1", ["c1-q0", "c1-q1", "c1-q2"]],
+  ]);
+  const allServed = new Map(papers.map((p) => [p.id, { served: true, worked: 3, of: 3, done: true }]));
+
+  it("after the day's paper, reworks the one chapter most marked Review later", () => {
     const states = allDone(chapters);
-    const reviews = new Map([
-      ["p1", ["p1-q0"]],
-      ["c1", ["c1-q0", "c1-q1", "c1-q2"]],
-    ]);
     const tasks = pickRevisionDay({ ...base, states, reviews, fix: ["f1", "f2"], today: "2027-01-22" });
+    expect(tasks).toEqual([
+      { kind: "fix", questionIds: ["f1", "f2"], minutes: 3 },
+      { kind: "paper", paperId: "phy-2025", minutes: 180 },
+      { kind: "revise", chapterId: "c1", questionIds: ["c1-q0", "c1-q1", "c1-q2"], minutes: 9 },
+    ]);
+  });
+
+  it("once the papers run out, reworks the chapters most marked Review later", () => {
+    const states = allDone(chapters);
+    const tasks = pickRevisionDay({ ...base, states, reviews, paperStates: allServed, fix: ["f1", "f2"], today: "2027-01-22" });
     expect(tasks).toEqual([
       { kind: "fix", questionIds: ["f1", "f2"], minutes: 3 },
       { kind: "revise", chapterId: "c1", questionIds: ["c1-q0", "c1-q1", "c1-q2"], minutes: 9 },
@@ -210,7 +223,7 @@ describe("revision: the last three weeks", () => {
     ]);
   });
 
-  it("keeps papers to alternate days: with nothing marked Review later, re-reads the sheets read longest ago", () => {
+  it("once the papers run out and nothing is marked Review later, re-reads the sheets read longest ago", () => {
     const states = allDone(chapters);
     const sheetSeenAt = new Map([
       ["p1", "2026-12-01T10:00:00Z"],
@@ -218,15 +231,12 @@ describe("revision: the last three weeks", () => {
       ["c1", "2026-12-20T10:00:00Z"],
       ["m1", "2026-11-25T10:00:00Z"],
     ]);
-    const tasks = pickRevisionDay({ ...base, states, sheetSeenAt, today: "2027-01-22" });
-    expect(tasks.every((t) => t.kind === "reread")).toBe(true);
-    expect(tasks.map((t) => (t.kind === "reread" ? t.chapterId : ""))).toEqual(["p2", "m1", "p1", "c1"]);
-    expect(tasks.some((t) => t.kind === "paper")).toBe(false);
+    const tasks = pickRevisionDay({ ...base, states, paperStates: allServed, sheetSeenAt, today: "2027-01-22" });
+    expect(tasks.map((t) => (t.kind === "reread" ? t.chapterId : t.kind))).toEqual(["p2", "m1", "p1", "c1"]);
   });
 
-  it("re-reads sheets too when every paper is done", () => {
+  it("never leaves a revision day empty", () => {
     const states = allDone(chapters);
-    const allServed = new Map(papers.map((p) => [p.id, { served: true, worked: 3, of: 3, done: true }]));
     const tasks = pickRevisionDay({ ...base, states, paperStates: allServed, today: "2027-01-21" });
     expect(tasks.length).toBeGreaterThan(0);
     expect(tasks.every((t) => t.kind === "reread")).toBe(true);
@@ -331,23 +341,27 @@ describe("the week ahead in the revision weeks", () => {
       days: 3,
       revision: { buffer: "2027-01-21", papers, paperStates: new Map(), reviews },
     });
-    expect(days.map((d) => d.tasks.map((t) => t.kind))).toEqual([["paper"], ["revise"], ["paper"]]);
+    expect(days.map((d) => d.tasks.map((t) => t.kind))).toEqual([["paper"], ["paper", "revise"], ["reread", "reread"]]);
     const lines = weekText(days, chapters, papers);
     expect(lines[0]).toBe("Thu 21 Jan: Physics paper 2025 (Set 1)");
-    expect(lines[1]).toBe("Fri 22 Jan: Current Electricity: rework 2 Review later questions");
-    expect(lines[2]).toBe("Sat 23 Jan: Chemistry paper 2025 (Set 1)");
-    // No more Review later questions: the next in-between day re-reads sheets.
+    expect(lines[1]).toBe("Fri 22 Jan: Chemistry paper 2025 (Set 1); Current Electricity: rework 2 Review later questions");
+    // Two papers in all: the third day re-reads sheets.
+    expect(lines[2]).toBe("Sat 23 Jan: Current Electricity: revision sheet again; Solutions: revision sheet again");
+    // Sheets re-read on Saturday come round again last.
     const more = projectWeek({
       chapters,
       states: allDone(chapters),
       deferred: new Set(),
-      budget: 25,
+      budget: 15,
       today: "2027-01-21",
       todayTasks: [{ kind: "paper", paperId: "phy-2025", minutes: 180 }],
       days: 4,
       revision: { buffer: "2027-01-21", papers, paperStates: new Map(), reviews, sheetSeenAt: new Map() },
     });
-    expect(weekText(more, chapters, papers)[3]).toBe("Sun 24 Jan: Current Electricity: revision sheet again; Solutions: revision sheet again");
+    expect(weekText(more, chapters, papers).slice(2)).toEqual([
+      "Sat 23 Jan: Current Electricity: revision sheet again; Solutions: revision sheet again",
+      "Sun 24 Jan: Current Electricity: revision sheet again; Solutions: revision sheet again",
+    ]);
   });
 });
 
