@@ -85,6 +85,20 @@ is enforced in `facts.ts` or the tools; the date is when it was made.
   Test runs are NOT batched: tried 2026-10-23, a batch's requests did not read
   the cache and the find cases cost 2.5x as much. Cost per answer is on
   `/dashboard/chat` and in `npm run v:cost`.
+- **A student's own working may be checked (owner, 2026-11-08).** V says plainly
+  whether their answer is right or names the first wrong step (rule 7b). It
+  still never solves a bare numeric question for them: it gives the method and
+  asks for their working. A bank question is checked against its key.
+- **An Ask V tap pins its question in code (2026-11-08).** The tools read the
+  tapped question and pick, whatever id the model passes (`tappedFrom`): 12 of
+  426 tap explanations had named the previous question. V never takes back an
+  earlier reply unless the student says it was wrong.
+- **A language asked for every reply is saved** on the profile
+  (`set_language`, migration 0232) and named on every reply, buttons included
+  (owner, 2026-11-08: 8 students asked 17 times in 60 days).
+- **"One more like this"** under an explanation picks another question from the
+  same subtopic with no AI call (`/api/chat/similar`, owner 2026-11-08). V
+  cannot write questions and never promises one.
 - **Parked:** withdrawn UPSC questions (V says the pick "is marked wrong"; 10
   such questions; re-raise only when the owner does); the mock result page
   being wider than a phone.
