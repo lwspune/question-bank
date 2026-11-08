@@ -513,7 +513,7 @@ What shipped, and why each is shaped so:
 
 Owner picks (2026-11-08): Lighter / More in **steps of 10 minutes between 20
 and 120** a day; in the revision weeks a **whole timed past paper on
-alternate days**; a paper is **done when every printed question is answered
+alternate days** (changed the same day to **every day**, see below); a paper is **done when every printed question is answered
 or marked** on its page; **Fix up to 10 a day** in the revision weeks
 (migration 0229 lifts the stored list's cap from 5).
 
@@ -531,17 +531,18 @@ What shipped, and why each is shaped so:
   now on track.
 - **The revision weeks** (`revision.ts`), from three weeks before the board
   exam: chapters not done first, smallest first (with "Not taught yet"
-  still honoured); then a whole past paper on alternate study days (Set 1 of
-  each sitting, an unfinished one first, then the subject with fewest served,
-  newest year first); between papers the chapters with the most Review later
-  questions, worked again; with none, the revision sheets read longest ago,
-  read again (subjects mixed); the Fix task up to 10. The status line reads
-  "revision weeks" once every chapter is done.
-- **The re-read is not in the plan as agreed; `path:smoke` asked for it.**
-  With nothing marked Review later, the first build served a paper on every
-  in-between day (19 papers in 20 days for a student with every chapter
-  done). Papers now stay on alternate days (10 in 20 days, 3-4 a subject;
-  HSC's 4 Maths papers cover it).
+  still honoured); then a whole past paper EVERY day (Set 1 of each sitting,
+  an unfinished one first, then the subject with fewest served, newest year
+  first), with the chapter most marked Review later reworked after it; once
+  the papers run out, Review later rework, else the revision sheets read
+  longest ago, read again (subjects mixed), so no day is empty; the Fix task
+  up to 10. The status line reads "revision weeks" once every chapter is done.
+- **A paper every day is the owner's second call (2026-11-08).** The first
+  build had papers on alternate days and filled the days between with sheet
+  re-reads, after `path:smoke` showed the alternate-day rule serving a paper
+  on every empty day anyway; shown that, the owner chose a paper every day.
+  Measured: CBSE 20 papers in 20 days (26 sittings a subject), HSC all 18 of
+  its PCM papers (Maths runs out after 4), then rework and re-reads.
 - **A paper is done by the Top 10 rule** on its printed questions: an OR
   choice by either half, a case study by all its parts (`paperWorked`,
   `paperSlots` from `board_paper_items.part_of` / `alternative_to`). The
