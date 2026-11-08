@@ -6,7 +6,8 @@ import { toast } from "sonner";
 import { Route } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SUBJECT_LABEL, type PathExam, type PathSubject } from "@/lib/path/model";
-import { EXAM_LABEL } from "@/lib/path/view";
+import { PACE_MAX, PACE_MIN } from "@/lib/path/pace";
+import { EXAM_LABEL, dayLabel, type PathView } from "@/lib/path/view";
 import { invalidatePulse } from "@/lib/viewer/usePulse";
 
 /**
@@ -47,6 +48,28 @@ export default function PathSettingsCard({
     }
   }
 
+  /** Lighter / More (Phase 3): the toast says the new pace and the finish date it gives. */
+  async function pace(direction: "lighter" | "more") {
+    setSaving(true);
+    try {
+      const res = await fetch("/api/path", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "pace", direction }),
+      });
+      const data = (await res.json().catch(() => ({}))) as { today?: PathView | null; error?: string };
+      if (!res.ok || !data.today) throw new Error(data.error ?? "Couldn't change your pace. Try again.");
+      const today = data.today;
+      setCurrent((c) => (c ? { ...c, dailyMinutes: today.dailyMinutes } : c));
+      toast.success(`Now about ${today.dailyMinutes} min a day: you finish on ${dayLabel(today.pace.finish)}.`);
+      invalidatePulse();
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Couldn't change your pace. Try again.");
+    } finally {
+      setSaving(false);
+    }
+  }
+
   if (!current && !stopped && active === null) return null;
 
   return (
@@ -60,7 +83,27 @@ export default function PathSettingsCard({
           <p className="mt-2 text-sm">
             {EXAM_LABEL[current.exam]} · {subjectList(current.subjects)} · about {current.dailyMinutes} minutes a day.
           </p>
-          <p className="mt-1 text-sm text-muted-foreground">
+          <div className="mt-3 flex flex-wrap gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              disabled={saving || current.dailyMinutes <= PACE_MIN}
+              onClick={() => void pace("lighter")}
+              aria-label="Lighter: 10 minutes less a day"
+            >
+              Lighter
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              disabled={saving || current.dailyMinutes >= PACE_MAX}
+              onClick={() => void pace("more")}
+              aria-label="More: 10 minutes more a day"
+            >
+              More
+            </Button>
+          </div>
+          <p className="mt-3 text-sm text-muted-foreground">
             Chapters you finish stay done, even if you stop and start again.
           </p>
           {confirming ? (

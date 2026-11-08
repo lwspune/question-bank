@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { toast } from "sonner";
 import { ArrowRight, CheckCircle2, ChevronRight, Circle } from "lucide-react";
-import { dayLabel, type PathView, type TaskRow } from "@/lib/path/view";
+import type { PathView, TaskRow } from "@/lib/path/view";
 import type { PathOffer } from "@/lib/path/service";
 import type { Stream } from "@/lib/path/model";
 import { cn } from "@/lib/utils";
@@ -25,7 +25,7 @@ export default function PathCard({ initial, readOnly = false }: { initial: Card;
   const [card, setCard] = useState<Card>(initial);
   const [busy, setBusy] = useState(false);
 
-  async function post(body: Record<string, unknown>, done: string, reload = false): Promise<void> {
+  async function post(body: Record<string, unknown>, done: string | ((today: PathView | null) => string), reload = false): Promise<void> {
     setBusy(true);
     try {
       const res = await fetch("/api/path", {
@@ -36,7 +36,7 @@ export default function PathCard({ initial, readOnly = false }: { initial: Card;
       const data = (await res.json().catch(() => ({}))) as { today?: PathView | null; offer?: PathOffer | null; error?: string };
       if (!res.ok) throw new Error(data.error ?? "Couldn't save that. Try again.");
       setCard({ path: data.today ?? null, offer: data.offer ?? null });
-      toast.success(done);
+      toast.success(typeof done === "string" ? done : done(data.today ?? null));
       // The header's shared pulse carries the path state (V's button, the /board line).
       invalidatePulse();
       // A start reloads /me so the week ring below gives way to the path at
@@ -59,6 +59,11 @@ export default function PathCard({ initial, readOnly = false }: { initial: Card;
         readOnly={readOnly}
         busy={busy}
         onDefer={(t) => void post({ action: "defer", chapterId: t.chapterId }, "Moved later. Your card has the next one.")}
+          onPace={(direction) =>
+            void post({ action: "pace", direction }, (today) =>
+              today ? `Now about ${today.dailyMinutes} min a day. Today's card has changed to match.` : "Pace changed."
+            )
+          }
         />
       </>
     );
@@ -69,6 +74,9 @@ export default function PathCard({ initial, readOnly = false }: { initial: Card;
   return null;
 }
 
+const paceButton =
+  "inline-flex h-9 items-center rounded-lg border bg-card px-3 text-sm font-medium transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50";
+
 const linkCls =
   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2";
 
@@ -77,13 +85,17 @@ function PathToday({
   readOnly,
   busy,
   onDefer,
+  onPace,
 }: {
   view: PathView;
   readOnly: boolean;
   busy: boolean;
   onDefer: (t: TaskRow) => void;
+  onPace: (direction: "lighter" | "more") => void;
 }) {
   const lead = view.tasks.find((t) => !t.done);
+  // Lighter says the finish date it leads to before it is made (Phase 3).
+  const [confirmLighter, setConfirmLighter] = useState(false);
   return (
     <section aria-labelledby="path-heading" className="hero-soft rounded-2xl p-5 sm:p-6">
       <div className="flex items-baseline justify-between gap-3">
@@ -95,9 +107,7 @@ function PathToday({
         )}
       </div>
       <p className="mt-1 text-sm font-medium">{view.statusLine}</p>
-      {!view.pace.onTrack && (
-        <p className="mt-0.5 text-sm text-muted-foreground">At this pace you finish on {dayLabel(view.pace.finish)}.</p>
-      )}
+      {view.behind && <p className="mt-0.5 text-sm text-muted-foreground">{view.behind}</p>}
       {view.pickUp && (
         <p className="mt-3 text-sm">
           <span className="font-semibold">Welcome back.</span> Pick up here: {view.pickUp}
@@ -165,7 +175,57 @@ function PathToday({
         </ul>
       )}
 
-      <div className="mt-3 space-y-0.5 border-t border-brand/15 pt-3 text-xs text-muted-foreground">
+      <div className="mt-3 flex flex-wrap items-center gap-2 border-t border-brand/15 pt-3 text-sm">
+        <span className="text-muted-foreground">{view.dailyMinutes} min a day</span>
+        {!readOnly && (
+          <>
+            <button
+              type="button"
+              disabled={busy || !view.canLighter}
+              onClick={() => setConfirmLighter(true)}
+              aria-label="Lighter: 10 minutes less a day"
+              className={paceButton}
+            >
+              Lighter
+            </button>
+            <button
+              type="button"
+              disabled={busy || !view.canMore}
+              onClick={() => {
+                setConfirmLighter(false);
+                onPace("more");
+              }}
+              aria-label="More: 10 minutes more a day"
+              className={paceButton}
+            >
+              More
+            </button>
+          </>
+        )}
+      </div>
+      {confirmLighter && view.lighter && !readOnly && (
+        <div className="mt-2 rounded-xl border bg-card px-4 py-3 text-sm" role="group" aria-label="Make the path lighter">
+          <p>{view.lighter}</p>
+          <div className="mt-2 flex flex-wrap gap-2">
+            <button
+              type="button"
+              disabled={busy}
+              onClick={() => {
+                setConfirmLighter(false);
+                onPace("lighter");
+              }}
+              className={paceButton}
+            >
+              Make it lighter
+            </button>
+            <button type="button" disabled={busy} onClick={() => setConfirmLighter(false)} className={paceButton}>
+              Keep {view.dailyMinutes} min
+            </button>
+          </div>
+        </div>
+      )}
+
+      <div className="mt-3 space-y-0.5 text-xs text-muted-foreground">
         <p>{view.examLine}</p>
         {view.biologyNote && <p>Biology is not in the path yet.</p>}
       </div>

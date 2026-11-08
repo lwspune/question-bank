@@ -29,13 +29,17 @@ import { loadOwnPool } from "@/lib/drill/compose";
 import { istDayKey, istDayStartIso } from "@/lib/email/dueNudge";
 import { resolveExamDate } from "@/lib/exam/calendar";
 import { getOwnProfile } from "@/lib/profile/service";
-import { getPathContent } from "./content";
+import { getPathContent, getPathPapers } from "./content";
 import { readChapterStates } from "./stateRead";
 import type { ChapterFacts } from "./fold";
 import { ensureExemptions, readTodayRow, type TodayExemptions } from "./exemptions";
 import { buildWeekReview, istMidnight, reviewLines, reviewWindow } from "./review";
 import { projectWeek, weekText } from "./week";
 import { readAllPages } from "@/lib/supabase/readAllPages";
+import { readInChunks } from "@/lib/supabase/readInChunks";
+import type { ProgressEvent } from "@/lib/homework/progress";
+import { REVISION_FIX_MAX, isRevision, paperWorked, pickRevisionDay, reviewPending } from "./revision";
+import type { RevisionInput } from "./week";
 import { activeDeferrals, type Deferral } from "./deferrals";
 import {
   PATH_SUBJECTS,
@@ -47,12 +51,13 @@ import {
   type ChapterState,
   type PathChapter,
   type PathExam,
+  type PathPaper,
   type PathSubject,
   type Stream,
 } from "./model";
-import { bufferStart, startingDailyMinutes } from "./pace";
-import { fixQuestions, isChapterTask, pickToday, taskDone, todayExemptions, type PathTask } from "./today";
-import { buildPathView, chapterLine, examLineOf, pathRemainingMinutes, type ChapterLine, type PathView } from "./view";
+import { bufferStart, startingDailyMinutes, stepPace } from "./pace";
+import { FIX_MAX, fixQuestions, isChapterTask, pickToday, taskDone, todayExemptions, type PaperState, type PathTask } from "./today";
+import { buildPathView, chapterLine, examLineOf, pathRemainingMinutes, type ChapterLine, type PathMode, type PathView } from "./view";
 import type { PathForV } from "@/lib/chat/weekPlan";
 
 
@@ -120,10 +125,11 @@ async function writeDay(
   day: string,
   tasks: readonly PathTask[],
   chapters: readonly PathChapter[],
+  papers: readonly PathPaper[],
   replace: boolean
 ): Promise<void> {
   const admin = createSupabaseAdminClient();
-  const ex = todayExemptions(tasks, chapters);
+  const ex = todayExemptions(tasks, chapters, papers);
   const row = {
     user_id: userId,
     day,
@@ -250,7 +256,135 @@ export type PathToday = {
   states: Map<string, ChapterState>;
   tasks: PathTask[];
   deferred: Set<string>;
+  /** The revision weeks' inputs (Phase 3), for the coming days; null before them. */
+  revision: RevisionInput | null;
 };
+
+/** Everything a day's pick reads, in chapters mode or the revision weeks (Phase 3). */
+type DayInputs = {
+  day: string;
+  dayStart: string;
+  buffer: string;
+  mode: PathMode;
+  chapters: PathChapter[];
+  states: Map<string, ChapterState>;
+  lastWorkAt: Map<string, string>;
+  facts: ChapterFacts;
+  deferred: Set<string>;
+  stored: DayRow | null;
+  papers: PathPaper[];
+  reviews: Map<string, string[]>;
+  /** Each chapter's latest revision-sheet view, and the chapters opened today. */
+  sheetLastAt: Map<string, string>;
+  sheetsToday: Set<string>;
+};
+
+async function loadDayInputs(
+  db: SupabaseClient,
+  userId: string,
+  path: ActivePath,
+  board: { date: string },
+  now: Date
+): Promise<DayInputs> {
+  const day = istDayKey(now);
+  const mode: PathMode = isRevision(day, board.date) ? "revision" : "chapters";
+  const [chapters, papers] = await Promise.all([
+    getPathContent(path.exam, path.subjects),
+    mode === "revision" ? getPathPapers(path.exam, path.subjects) : Promise.resolve([] as PathPaper[]),
+  ]);
+  const [{ states, lastWorkAt, facts, sheetLastAt }, deferrals, stored] = await Promise.all([
+    readChapterStates(db, userId, chapters),
+    readDeferrals(db, path.id),
+    readDay(db, userId, day),
+  ]);
+  const dayStart = istDayStartIso(now);
+  return {
+    day,
+    dayStart,
+    sheetLastAt,
+    sheetsToday: new Set([...sheetLastAt.entries()].filter(([, at]) => Date.parse(at) >= Date.parse(dayStart)).map(([id]) => id)),
+    buffer: bufferStart(board.date),
+    mode,
+    chapters,
+    states,
+    lastWorkAt,
+    facts,
+    deferred: activeDeferrals(deferrals, lastWorkAt, now),
+    stored,
+    papers,
+    reviews: mode === "revision" ? reviewPending(chapters, facts) : new Map(),
+  };
+}
+
+/**
+ * The papers this path has served on any day's card, plus `extra` (today's
+ * new pick), each with its progress by the Top 10 rule (revision.ts).
+ */
+async function readPaperStates(
+  db: SupabaseClient,
+  userId: string,
+  pathId: string,
+  papers: readonly PathPaper[],
+  extra: readonly string[]
+): Promise<Map<string, PaperState>> {
+  if (papers.length === 0) return new Map();
+  const days = await readAllPages<{ tasks: PathTask[] | null }>((f, t) =>
+    db.from("study_path_days").select("tasks").eq("user_id", userId).eq("path_id", pathId).order("day").range(f, t)
+  );
+  const served = new Set([...extra, ...days.flatMap((d) => (d.tasks ?? []).flatMap((t) => (t.kind === "paper" ? [t.paperId] : [])))]);
+  const chosen = papers.filter((p) => served.has(p.id));
+  if (chosen.length === 0) return new Map();
+  const ids = [...new Set(chosen.flatMap((p) => p.slots.flat(2).map((q) => q.id)))];
+  const rows = await readInChunks<{ ref_id: string; kind: ProgressEvent["kind"]; created_at: string; mark: string | null }>(ids, (part, f, t) =>
+    db
+      .from("user_activity")
+      .select("ref_id, kind, created_at, mark:metadata->>mark")
+      .eq("user_id", userId)
+      .in("kind", ["self_mark", "question_practiced", "answer_wrong", "answer_correct"])
+      .in("ref_id", part)
+      .order("id")
+      .range(f, t)
+  );
+  const events: ProgressEvent[] = rows.map((r) => ({
+    questionId: r.ref_id,
+    kind: r.kind,
+    at: r.created_at,
+    ...(r.mark === "understood" || r.mark === "review" ? { mark: r.mark } : {}),
+  }));
+  return new Map(chosen.map((p) => [p.id, { served: true, ...paperWorked(p, events) }]));
+}
+
+/** The day's pick in its mode: chapters, or the revision weeks (Phase 3). */
+function pickFor(
+  inp: DayInputs,
+  budget: number,
+  fix: readonly string[],
+  paperStates: ReadonlyMap<string, PaperState>,
+  keep?: readonly PathTask[]
+): PathTask[] {
+  if (inp.mode === "revision") {
+    return pickRevisionDay({
+      chapters: inp.chapters,
+      states: inp.states,
+      deferred: inp.deferred,
+      budget,
+      fix,
+      papers: inp.papers,
+      paperStates,
+      reviews: inp.reviews,
+      today: inp.day,
+      buffer: inp.buffer,
+      keep,
+      sheetSeenAt: inp.sheetLastAt,
+    });
+  }
+  return pickToday({ chapters: inp.chapters, states: inp.states, deferred: inp.deferred, budget, fix, keep });
+}
+
+/** Ids a Fix or revise task asks to be worked today. */
+function workedTodayIds(tasks: readonly PathTask[]): string[] {
+  return tasks.flatMap((t) => (t.kind === "fix" || t.kind === "revise" ? t.questionIds : []));
+}
 
 /**
  * Today on the student's path, or null without an active path (or a board
@@ -271,37 +405,28 @@ export async function getPathToday(
   const board = boardDateFor(path.exam, opts.profile, now);
   if (!board) return null;
 
-  const day = istDayKey(now);
-  const dayStart = istDayStartIso(now);
-  const chapters = await getPathContent(path.exam, path.subjects);
-  const [{ states, lastWorkAt, facts }, deferrals, stored] = await Promise.all([
-    readChapterStates(db, userId, chapters),
-    readDeferrals(db, path.id),
-    readDay(db, userId, day),
-  ]);
+  const inp = await loadDayInputs(db, userId, path, board, now);
+  const { day, dayStart, chapters, states, lastWorkAt, facts } = inp;
   const newlyDone = opts.write ? await recordNewlyDone(db, userId, path.exam, chapters, states, now) : [];
-  const deferred = activeDeferrals(deferrals, lastWorkAt, now);
+  let paperStates = await readPaperStates(db, userId, path.id, inp.papers, []);
 
-  let tasks = stored?.tasks ?? null;
+  let tasks = inp.stored?.tasks ?? null;
   if (!tasks) {
     const pool = await loadOwnPool(db, userId, now);
-    const fix = fixQuestions(pool.drillable, new Set(chapters.map((c) => c.id)), dayStart);
-    tasks = pickToday({
-      chapters,
-      states,
-      deferred,
-      budget: path.dailyMinutes,
-      fix,
-    });
+    const fixMax = inp.mode === "revision" ? REVISION_FIX_MAX : FIX_MAX;
+    const fix = fixQuestions(pool.drillable, new Set(chapters.map((c) => c.id)), dayStart, fixMax);
+    tasks = pickFor(inp, path.dailyMinutes, fix, paperStates);
     if (opts.write) {
-      await writeDay(userId, path.id, day, tasks, chapters, false);
+      await writeDay(userId, path.id, day, tasks, chapters, inp.papers, false);
       // Two tabs can race on the first read of the day: read back the one kept.
       tasks = (await readDay(db, userId, day))?.tasks ?? tasks;
     }
   }
+  // A paper picked today for the first time is served now.
+  const todayPapers = tasks.flatMap((t) => (t.kind === "paper" ? [t.paperId] : []));
+  if (todayPapers.some((id) => !paperStates.has(id))) paperStates = await readPaperStates(db, userId, path.id, inp.papers, todayPapers);
 
-  const fixIds = tasks.flatMap((t) => (t.kind === "fix" ? t.questionIds : []));
-  const fixAnswered = await answeredSince(db, userId, fixIds, dayStart);
+  const fixAnswered = await answeredSince(db, userId, workedTodayIds(tasks), dayStart);
   const stream = (STREAMS as readonly string[]).includes(opts.profile.stream ?? "") ? (opts.profile.stream as Stream) : null;
   const startDay = istDayKey(new Date(path.startedAt));
   const lastWork = latest(lastWorkAt.values());
@@ -315,7 +440,11 @@ export async function getPathToday(
     chapters,
     states,
     tasks,
-    deferred,
+    deferred: inp.deferred,
+    revision:
+      inp.mode === "revision"
+        ? { buffer: inp.buffer, papers: inp.papers, paperStates, reviews: inp.reviews, sheetSeenAt: inp.sheetLastAt }
+        : null,
     view: buildPathView({
       exam: path.exam,
       subjects: path.subjects,
@@ -332,6 +461,9 @@ export async function getPathToday(
       lastWorkDay: lastWork ? istDayKey(new Date(lastWork)) : null,
       review,
       newlyDone,
+      papers: inp.papers,
+      paperStates,
+      sheetsToday: inp.sheetsToday,
     }),
   };
 }
@@ -445,6 +577,32 @@ export async function stopPath(db: SupabaseClient, userId: string, now: Date = n
 }
 
 /**
+ * Replan today's stored card, keeping the tasks `keep` says to (each with
+ * whether it is done) and filling after them in the day's mode. Nothing to do
+ * before today's first pick: the next read picks with the change applied.
+ */
+async function replanToday(
+  db: SupabaseClient,
+  userId: string,
+  path: ActivePath,
+  now: Date,
+  keep: (task: PathTask, done: boolean) => boolean
+): Promise<void> {
+  const profile = await getOwnProfile(db, userId);
+  const board = boardDateFor(path.exam, profile, now);
+  if (!board) return;
+  const inp = await loadDayInputs(db, userId, path, board, now);
+  if (!inp.stored) return;
+  const paperStates = await readPaperStates(db, userId, path.id, inp.papers, []);
+  const fixAnswered = await answeredSince(db, userId, workedTodayIds(inp.stored.tasks), inp.dayStart);
+  const kept = inp.stored.tasks.filter((t) =>
+    keep(t, taskDone(t, inp.chapters, inp.states, fixAnswered, paperStates, inp.sheetsToday))
+  );
+  const tasks = pickFor(inp, path.dailyMinutes, inp.stored.fix_question_ids ?? [], paperStates, kept);
+  await writeDay(userId, path.id, inp.day, tasks, inp.chapters, inp.papers, true);
+}
+
+/**
  * "Not taught yet": record the tap, then replan today keeping the card's other
  * tasks (and this chapter's tasks already done) and filling after them.
  */
@@ -464,27 +622,28 @@ export async function deferChapter(
     .insert({ path_id: path.id, user_id: userId, chapter_id: chapterId, deferred_at: now.toISOString() });
   if (error) throw new Error(`path defer: ${error.message}`);
 
-  const day = istDayKey(now);
-  const [{ states, lastWorkAt }, deferrals, stored] = await Promise.all([
-    readChapterStates(db, userId, chapters),
-    readDeferrals(db, path.id),
-    readDay(db, userId, day),
-  ]);
-  if (!stored) return; // Today is picked on the next read, without this chapter.
-  const fixIds = stored.tasks.flatMap((t) => (t.kind === "fix" ? t.questionIds : []));
-  const fixAnswered = await answeredSince(db, userId, fixIds, istDayStartIso(now));
-  const keep = stored.tasks.filter(
-    (t) => !(isChapterTask(t) && t.chapterId === chapterId && !taskDone(t, chapters, states, fixAnswered))
-  );
-  const tasks = pickToday({
-    chapters,
-    states,
-    deferred: activeDeferrals(deferrals, lastWorkAt, now),
-    budget: path.dailyMinutes,
-    fix: [],
-    keep,
-  });
-  await writeDay(userId, path.id, day, tasks, chapters, true);
+  await replanToday(db, userId, path, now, (t, done) => !(isChapterTask(t) && t.chapterId === chapterId && !done));
+}
+
+/**
+ * Lighter / More (Phase 3): the minutes a day move by 10 between 20 and 120,
+ * and today's card refills at once at the new pace, keeping what is done.
+ * Returns the new minutes.
+ */
+export async function setPace(
+  db: SupabaseClient,
+  userId: string,
+  direction: "lighter" | "more",
+  now: Date = new Date()
+): Promise<number> {
+  const path = await getActivePath(db, userId);
+  if (!path) throw new PathError("You have no path to change.", 409);
+  const next = stepPace(path.dailyMinutes, direction);
+  if (next === path.dailyMinutes) return next;
+  const { error } = await db.from("study_paths").update({ daily_minutes: next }).eq("id", path.id).is("ended_at", null);
+  if (error) throw new Error(`path pace: ${error.message}`);
+  await replanToday(db, userId, { ...path, dailyMinutes: next }, now, (_t, done) => done);
+  return next;
 }
 
 export type PathCard = { path: PathView | null; offer: PathOffer | null };
@@ -564,6 +723,7 @@ export async function getPathForV(db: SupabaseClient, userId: string, now: Date 
       budget: today.path.dailyMinutes,
       today: istDayKey(now),
       todayTasks: today.tasks,
+      revision: today.revision ?? undefined,
     });
     return {
       kind: "on",
@@ -571,7 +731,7 @@ export async function getPathForV(db: SupabaseClient, userId: string, now: Date 
       examLine: v.examLine,
       status: v.statusLine,
       today: v.tasks.map((t) => `${t.done ? "Done: " : ""}${t.title}${t.detail ? `: ${t.detail}` : ""}, about ${t.minutes} min, ${t.href}`),
-      week: weekText(week.slice(1), today.chapters),
+      week: weekText(week.slice(1), today.chapters, today.revision?.papers ?? []),
     };
   }
   const offer = await getPathOffer(profile, now);

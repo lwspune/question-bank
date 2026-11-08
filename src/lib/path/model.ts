@@ -9,6 +9,7 @@
  * Spec: tests/path-core.test.ts.
  */
 import type { TopSlot } from "./done";
+import type { QuestionFormat } from "@/lib/homework/progress";
 
 export const PATH_EXAMS = ["cbse-12", "mh-hsc-12"] as const;
 export type PathExam = (typeof PATH_EXAMS)[number];
@@ -140,3 +141,21 @@ export function pathPulseState(targetExams: readonly string[], activeExam: PathE
   if (activeExam) return targetExams.includes(activeExam) ? { state: "on", exam: activeExam } : null;
   return { state: "offer", exam: board };
 }
+
+/**
+ * One past board paper the revision weeks serve (Phase 3): Set 1 of a
+ * sitting, on its /question-papers page. Each slot is one printed question:
+ * its options (two for an OR choice), each option its parts (a case study).
+ */
+export type PaperSlot = readonly (readonly { id: string; format: QuestionFormat }[])[];
+
+export type PathPaper = {
+  id: string;
+  subject: PathSubject;
+  year: number;
+  /** "2025 (Set 1)". */
+  label: string;
+  minutes: number;
+  href: string;
+  slots: readonly PaperSlot[];
+};

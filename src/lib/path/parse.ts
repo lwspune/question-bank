@@ -1,6 +1,7 @@
 /**
  * POST /api/path's body (MENTOR_SPEC.md Phase 1), checked before any database
- * work: start (board + stream), stop, or "Not taught yet" on a chapter.
+ * work: start (board + stream), stop, "Not taught yet" on a chapter, or
+ * Lighter / More (Phase 3).
  *
  * Pure. Spec: tests/path-parse.test.ts.
  */
@@ -11,12 +12,14 @@ const schema = z.discriminatedUnion("action", [
   z.object({ action: z.literal("start"), exam: z.enum(PATH_EXAMS), stream: z.enum(STREAMS) }).strict(),
   z.object({ action: z.literal("stop") }).strict(),
   z.object({ action: z.literal("defer"), chapterId: z.string().uuid() }).strict(),
+  z.object({ action: z.literal("pace"), direction: z.enum(["lighter", "more"]) }).strict(),
 ]);
 
 export type PathAction =
   | { action: "start"; exam: PathExam; stream: Stream }
   | { action: "stop" }
-  | { action: "defer"; chapterId: string };
+  | { action: "defer"; chapterId: string }
+  | { action: "pace"; direction: "lighter" | "more" };
 
 export function parsePathAction(raw: unknown): { ok: true; value: PathAction } | { ok: false; error: string } {
   const r = schema.safeParse(raw);

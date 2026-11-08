@@ -15,12 +15,23 @@ import {
   type ChapterState,
   type PathChapter,
   type PathExam,
+  type PathPaper,
   type PathSubject,
   type Stream,
   NOTHING_DONE,
 } from "./model";
-import { bufferStart, daysBetween, paceStatus, type PaceStatus } from "./pace";
-import { taskDone, type PathTask } from "./today";
+import {
+  PACE_MAX,
+  PACE_MIN,
+  behindLine,
+  bufferStart,
+  dayLabel,
+  daysBetween,
+  lighterLine,
+  paceStatus,
+  type PaceStatus,
+} from "./pace";
+import { isChapterTask, taskDone, type PaperState, type PathTask } from "./today";
 
 /** Fix work still to come per chapter not done, in the pace (§5: ~6-7 mistakes at 1.5 min). */
 export const FIX_ALLOWANCE_PER_CHAPTER = 10;
@@ -30,13 +41,7 @@ export const EXAM_LABEL: Record<PathExam, string> = {
   "mh-hsc-12": "HSC boards",
 };
 
-const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-
-/** "2027-02-02" -> "2 Feb". */
-export function dayLabel(day: string): string {
-  const [, m, d] = day.split("-").map(Number);
-  return `${d} ${MONTHS[m - 1]}`;
-}
+export { dayLabel } from "./pace";
 
 /** Minutes left on a path: each unfinished chapter's work plus its Fix allowance. */
 export function pathRemainingMinutes(chapters: readonly PathChapter[], states: ReadonlyMap<string, ChapterState>): number {
@@ -48,21 +53,34 @@ export function pathRemainingMinutes(chapters: readonly PathChapter[], states: R
 
 export type SubjectProgress = { subject: PathSubject; label: string; done: number; of: number };
 
-export function statusLine(subjects: readonly SubjectProgress[], pace: Pick<PaceStatus, "onTrack" | "behindDays">): string {
+export function statusLine(
+  subjects: readonly SubjectProgress[],
+  pace: Pick<PaceStatus, "onTrack" | "behindDays">,
+  mode: PathMode = "chapters"
+): string {
   const parts = subjects.map((s) => `${s.label} ${s.done} of ${s.of}`).join(" · ");
-  const tail = pace.onTrack ? "on track" : `behind by ${pace.behindDays} ${pace.behindDays === 1 ? "day" : "days"}`;
+  const allDone = subjects.every((s) => s.done >= s.of);
+  const tail =
+    mode === "revision" && allDone
+      ? "revision weeks"
+      : pace.onTrack
+        ? "on track"
+        : `behind by ${pace.behindDays} ${pace.behindDays === 1 ? "day" : "days"}`;
   return `${parts}, ${tail}`;
 }
 
+/** Chapters, then from three weeks before the board exam, revision (Phase 3). */
+export type PathMode = "chapters" | "revision";
+
 export type TaskRow = {
   key: string;
-  kind: ChapterPart | "fix";
+  kind: PathTask["kind"];
   title: string;
   detail: string;
   href: string;
   minutes: number;
   done: boolean;
-  /** "4 of 10" on a Top 10 task. */
+  /** "4 of 10" on a Top 10 task, "12 of 33 checked" on a paper. */
   progress: string | null;
   chapterId: string | null;
   /** The chapter's name on a chapter task, for "Pick up here". */
@@ -90,6 +108,13 @@ export type PathView = {
   review: string[] | null;
   /** "Chapter done: ..." for each chapter newly done on this read, said once. */
   celebrate: string[];
+  mode: PathMode;
+  /** Behind, said honestly with what More would take (D3); null on track. */
+  behind: string | null;
+  /** What a Lighter tap leads to, said before it is made; null at the lightest. */
+  lighter: string | null;
+  canLighter: boolean;
+  canMore: boolean;
 };
 
 /** Days with no path work after which the card opens on "Pick up here". */
@@ -104,7 +129,7 @@ const PART_WORD: Record<ChapterPart, string> = { sheet: "revision sheet", top: "
  */
 export function pickUpLine(rows: readonly TaskRow[], lastWorkDay: string | null, startDay: string, today: string): string | null {
   if (daysBetween(lastWorkDay ?? startDay, today) < PICK_UP_GAP_DAYS) return null;
-  const next = rows.find((r) => !r.done && r.kind !== "fix" && r.chapter);
+  const next = rows.find((r) => !r.done && (r.kind === "sheet" || r.kind === "top" || r.kind === "test") && r.chapter);
   return next ? `${next.chapter}, ${PART_WORD[next.kind as ChapterPart]}` : null;
 }
 
@@ -137,11 +162,11 @@ export function chapterLine(c: PathChapter, s: ChapterState, todayTasks: readonl
     done: partDone(c, s, part),
     progress: part === "top" && !partDone(c, s, part) ? `${Math.min(s.topWorked, c.top.length)} of ${c.top.length}` : null,
   }));
-  const todayPart = todayTasks.find((t) => t.kind !== "fix" && t.chapterId === c.id && !partDone(c, s, t.kind));
+  const todayPart = todayTasks.filter(isChapterTask).find((t) => t.chapterId === c.id && !partDone(c, s, t.kind));
   return {
     parts,
     done: chapterDone(c, s),
-    today: todayPart && todayPart.kind !== "fix" ? TODAY_WORDS[todayPart.kind] : null,
+    today: todayPart ? TODAY_WORDS[todayPart.kind] : null,
   };
 }
 
@@ -177,6 +202,11 @@ export function buildPathView(p: {
   review?: string[] | null;
   /** Chapter ids newly done on this read. */
   newlyDone?: readonly string[];
+  /** The revision weeks' papers and their progress (Phase 3). */
+  papers?: readonly PathPaper[];
+  paperStates?: ReadonlyMap<string, PaperState>;
+  /** Chapters whose revision sheet was opened today (the revision weeks' re-reads). */
+  sheetsToday?: ReadonlySet<string>;
 }): PathView {
   const stateOf = (id: string) => p.states.get(id) ?? NOTHING_DONE;
   const byId = new Map(p.chapters.map((c) => [c.id, c]));
@@ -189,9 +219,62 @@ export function buildPathView(p: {
   const remaining = pathRemainingMinutes(p.chapters, p.states);
   const buffer = bufferStart(p.examDate);
   const pace = paceStatus({ remaining, daily: p.dailyMinutes, today: p.today, buffer });
+  const mode: PathMode = p.today >= buffer ? "revision" : "chapters";
+  const paperStates = p.paperStates ?? new Map<string, PaperState>();
+  const paperById = new Map((p.papers ?? []).map((x) => [x.id, x]));
 
   const tasks: TaskRow[] = p.tasks.map((t, i) => {
-    const done = taskDone(t, p.chapters, p.states, p.fixAnswered);
+    const done = taskDone(t, p.chapters, p.states, p.fixAnswered, paperStates, p.sheetsToday);
+    if (t.kind === "reread") {
+      const c = byId.get(t.chapterId);
+      return {
+        key: `reread-${t.chapterId}`,
+        kind: "reread",
+        title: "Read the revision sheet again",
+        detail: c ? `${SUBJECT_LABEL[c.subject]} · ${c.name}` : "",
+        href: `${c?.boardPath ?? "/board"}#revision`,
+        minutes: t.minutes,
+        done,
+        progress: null,
+        chapterId: t.chapterId,
+        chapter: c?.name ?? null,
+        canDefer: false,
+      };
+    }
+    if (t.kind === "paper") {
+      const paper = paperById.get(t.paperId);
+      const st = paperStates.get(t.paperId);
+      return {
+        key: `paper-${t.paperId}`,
+        kind: "paper",
+        title: "Write a board paper, timed",
+        detail: paper ? `${SUBJECT_LABEL[paper.subject]} · ${paper.label}, ${hoursLabel(paper.minutes)}` : "",
+        href: paper?.href ?? "/question-papers",
+        minutes: t.minutes,
+        done,
+        progress: st && st.worked > 0 && !done ? `${st.worked} of ${st.of} checked` : null,
+        chapterId: null,
+        chapter: null,
+        canDefer: false,
+      };
+    }
+    if (t.kind === "revise") {
+      const c = byId.get(t.chapterId);
+      const n = t.questionIds.length;
+      return {
+        key: `revise-${t.chapterId}`,
+        kind: "revise",
+        title: "Rework your Review later questions",
+        detail: c ? `${SUBJECT_LABEL[c.subject]} · ${c.name} · ${n} ${n === 1 ? "question" : "questions"}` : "",
+        href: `${c?.boardPath ?? "/board"}#top`,
+        minutes: t.minutes,
+        done,
+        progress: null,
+        chapterId: t.chapterId,
+        chapter: c?.name ?? null,
+        canDefer: false,
+      };
+    }
     if (t.kind === "fix") {
       const answered = t.questionIds.filter((id) => p.fixAnswered.has(id)).length;
       return {
@@ -232,7 +315,7 @@ export function buildPathView(p: {
     dailyMinutes: p.dailyMinutes,
     subjects,
     pace,
-    statusLine: statusLine(subjects, pace),
+    statusLine: statusLine(subjects, pace, mode),
     examLine: examLineOf(p.exam, p.examDate, p.examOfficial),
     tasks,
     todayMinutes: p.tasks.reduce((s, t) => s + t.minutes, 0),
@@ -245,5 +328,18 @@ export function buildPathView(p: {
       const subject = c && subjects.find((x) => x.subject === c.subject);
       return c && subject ? [chapterDoneMessage(c.name, subject)] : [];
     }),
+    mode,
+    behind: behindLine({ remaining, daily: p.dailyMinutes, today: p.today, buffer }),
+    lighter: lighterLine({ remaining, daily: p.dailyMinutes, today: p.today, buffer }),
+    canLighter: p.dailyMinutes > PACE_MIN,
+    canMore: p.dailyMinutes < PACE_MAX,
   };
+}
+
+/** "3 hours", "2 hours 30 min". */
+function hoursLabel(minutes: number): string {
+  const h = Math.floor(minutes / 60);
+  const m = minutes % 60;
+  if (h === 0) return `${m} min`;
+  return `${h} ${h === 1 ? "hour" : "hours"}${m ? ` ${m} min` : ""}`;
 }
