@@ -13,14 +13,27 @@ import { ME_TABS, type MeTab } from "./MeHeader";
  *
  * Same widths and spacing as each page, so nothing jumps when it arrives.
  */
-const MAIN: Record<MeTab, string> = {
+/** The page being loaded: each tab's page, plus /account, which has no tab
+ *  since 2026-11-08 (it lives in the avatar menu). */
+type LoadingPage = "home" | "review" | "performance" | "account";
+
+/** The tab each page sits under; /account sits under none, so no strip. */
+const TAB_OF: Record<LoadingPage, MeTab | null> = {
+  home: "home",
+  review: "review",
+  performance: "progress",
+  account: null,
+};
+
+const MAIN: Record<LoadingPage, string> = {
   home: "mx-auto max-w-4xl space-y-6 px-4 py-6 sm:space-y-8 sm:px-6 sm:py-8",
   review: "mx-auto max-w-4xl space-y-6 px-4 py-6 sm:px-6 sm:py-8",
   performance: "mx-auto max-w-5xl space-y-8 px-4 py-6 sm:px-6 sm:py-8",
   account: "mx-auto max-w-4xl space-y-6 px-4 py-6 sm:px-6 sm:py-8",
 };
 
-export default function MeLoading({ active }: { active: MeTab }) {
+export default function MeLoading({ active }: { active: LoadingPage }) {
+  const tab = TAB_OF[active];
   return (
     <main className={MAIN[active]} aria-busy="true">
       {/* Same children, in the same order, as the real header (MeHeader), so
@@ -42,7 +55,7 @@ export default function MeLoading({ active }: { active: MeTab }) {
             <Skeleton className="h-8 w-16 rounded-full" />
           </div>
         </div>
-        <TabStrip label="Your pages" tabs={ME_TABS} active={active} />
+        {tab && <TabStrip label="Your pages" tabs={ME_TABS} active={tab} />}
       </header>
 
       {active === "home" && (

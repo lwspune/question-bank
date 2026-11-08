@@ -19,8 +19,8 @@ import { DRILL_FROM } from "@/lib/drill/from";
 import SavedPage from "@/app/saved/page";
 
 describe("the Review tab", () => {
-  it("sits second: Home · Review · Performance · Account", () => {
-    expect(ME_TABS.map((t) => t.label)).toEqual(["Home", "Review", "Performance", "Account"]);
+  it("sits second: Home · Review · Progress", () => {
+    expect(ME_TABS.map((t) => t.label)).toEqual(["Home", "Review", "Progress"]);
     expect(ME_TABS.find((t) => t.key === "review")?.href).toBe("/review");
   });
 

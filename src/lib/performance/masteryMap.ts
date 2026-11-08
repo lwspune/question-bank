@@ -133,6 +133,12 @@ export function buildMasteryMap(lane: Lane): MasteryMap {
   return { exam: lane.exam, subject: lane.subject, tiles, totals, subtopics };
 }
 
+/** Subtopics mastered across every lane: the Progress tab's tile (2026-11-08),
+ *  the map's green dots summed over every exam and subject. */
+export function masteredCount(lanes: readonly Lane[]): number {
+  return lanes.reduce((n, lane) => n + buildMasteryMap(lane).totals.mastered, 0);
+}
+
 /**
  * Where a tile's answers came from, in plain words, or null when it has none
  * judged. Shown inside the opened tile, so a student who has only practised

@@ -1,6 +1,8 @@
 /**
- * Home · Performance · Account each show a loading screen the moment a tab is
- * tapped (2026-11-08). Before this none of the three had a loading.tsx, so a
+ * Each of the student's pages shows a loading screen the moment its tab is
+ * tapped (2026-11-08); since step 3 the tabs are Home · Review · Progress, and
+ * /performance (Papers) loads under Progress. Account has no tab now: its
+ * loading screen shows no strip. Before this none of the three had a loading.tsx, so a
  * tap left the old page on screen until the new one was fully built: 0.4-0.8 s
  * warm in production, 3.3 s on a cold start.
  *
@@ -16,11 +18,17 @@ import MeLoading from "@/components/me/MeLoading";
 
 const ROUTES = [
   { dir: "me", tab: "home", href: "/me" },
-  { dir: "performance", tab: "performance", href: "/performance" },
-  { dir: "account", tab: "account", href: "/account" },
+  { dir: "review", tab: "review", href: "/review" },
+  { dir: "performance", tab: "performance", href: "/progress" },
 ] as const;
 
 describe("MeLoading", () => {
+  it("shows no tab strip for Account, which lives in the avatar menu", () => {
+    const out = renderToStaticMarkup(createElement(MeLoading, { active: "account" }));
+    expect(out).not.toContain('aria-current="page"');
+    expect(out).toContain('aria-busy="true"');
+  });
+
   for (const r of ROUTES) {
     it(`marks ${r.tab} as the open tab`, () => {
       const out = renderToStaticMarkup(createElement(MeLoading, { active: r.tab }));
