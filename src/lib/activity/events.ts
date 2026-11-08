@@ -71,6 +71,10 @@ export const ACTIVITY_KINDS = [
   // cannot un-do it. A genuine learning achievement: sheet + Top 10 + test.
   // See lib/path.
   "path_chapter_done",
+  // Lighter / More on the board path (metadata: direction, from, to minutes a
+  // day) — 0230. One row per tap, no dedupe: two taps are two changes. The
+  // path itself keeps only the current minutes. See lib/path/funnel.
+  "path_paced",
 ] as const;
 
 export type ActivityKind = (typeof ACTIVITY_KINDS)[number];

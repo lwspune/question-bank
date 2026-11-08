@@ -187,6 +187,9 @@ export const TELEMETRY_KINDS: readonly string[] = [
   // beside the sheet view, Top 10 marks and chapter test that earned it, so
   // counting it as adoption would count that work twice.
   "path_chapter_done",
+  // Lighter / More on the board path (2026-11-08, migration 0230): a setting
+  // changed, not a feature used; the path's own use is its tasks.
+  "path_paced",
 ];
 
 export const FEATURE_LABELS: Partial<Record<ActivityKind, string>> = {
@@ -849,9 +852,9 @@ export const SURFACE_COVERAGE: SurfaceCoverage[] = [
   {
     surface: "Board path (/me Today card)",
     via: "study_paths + study_path_days (migration 0225); a chapter turning done writes user_activity path_chapter_done once; the work itself is the sheet view, Top 10 and test rows already counted on their own surfaces",
-    kinds: ["path_chapter_done"],
+    kinds: ["path_chapter_done", "path_paced"],
     tracked: "partial",
-    lost: "Shown tasks are stored per day (study_path_days), so task completion can be measured; a task opened but not finished leaves only the page view on its own surface. npm run path:readout is the readout.",
+    lost: "Shown tasks are stored per day (study_path_days), so task completion can be measured; a task opened but not finished leaves only the page view on its own surface. The start offer, the /board line, the weekly review, Pick up here and V's path card are surface_viewed rows (path_offer_me, path_offer_board, path_board_line, path_review, path_pickup, v_path, 2026-11-08) and Lighter / More is path_paced. npm run path:readout is the readout.",
   },
   {
     surface: "Blog (/blog)",

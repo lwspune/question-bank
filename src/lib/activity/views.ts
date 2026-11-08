@@ -12,6 +12,7 @@
  */
 import { istDayKey } from "@/lib/email/dueNudge";
 import type { ActivityEvent } from "./events";
+import { PATH_SURFACES } from "@/lib/path/funnel";
 
 export const SURFACES = [
   "site", // the header's pulse fetch — fires on any signed-in page, the heartbeat
@@ -69,6 +70,10 @@ export const SURFACES = [
   // (2026-11-07, lib/drill/chapterFix), with metadata.chapterId and
   // metadata.from (the page's drill tag): the denominator for its drill starts.
   "chapter_fix",
+  // The board path's readout funnel (2026-11-08, lib/path/funnel): the start
+  // offer seen on /me and /board, a path student's /board line seen, the
+  // weekly review and "Pick up here" seen, V's "My plan for today" opened.
+  ...PATH_SURFACES,
 ] as const;
 
 export type Surface = (typeof SURFACES)[number];

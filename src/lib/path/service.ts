@@ -25,6 +25,8 @@ import "server-only";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { buildActivityRow, type ActivityEvent } from "@/lib/activity/events";
+import { logActivity } from "@/lib/activity/service";
+import { pacedEvent } from "./funnel";
 import { loadOwnPool } from "@/lib/drill/compose";
 import { istDayKey, istDayStartIso } from "@/lib/email/dueNudge";
 import { resolveExamDate } from "@/lib/exam/calendar";
@@ -642,6 +644,10 @@ export async function setPace(
   if (next === path.dailyMinutes) return next;
   const { error } = await db.from("study_paths").update({ daily_minutes: next }).eq("id", path.id).is("ended_at", null);
   if (error) throw new Error(`path pace: ${error.message}`);
+  // The readout's history of pace changes (Phase 4): best effort, never blocks the change.
+  await logActivity(db, userId, pacedEvent(direction, path.dailyMinutes, next), now.getTime()).catch((e) =>
+    console.error("path pace event failed", e instanceof Error ? e.message : e)
+  );
   await replanToday(db, userId, { ...path, dailyMinutes: next }, now, (_t, done) => done);
   return next;
 }

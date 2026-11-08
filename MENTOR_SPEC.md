@@ -272,7 +272,7 @@ stores what the student chose, plus the server's pick of today.
 | 1 | Path + Today | Start tap and stream question · path computed from book order (HSC Maths as two queues) · Today card on /me replacing the weekly ring · done derived from work · "Not taught yet" with the 14-day return · Fix task · on-track line · free-limit exemption for today's tasks · `path_chapter_done` · stop / restart on /account | **Built 2026-11-07**, merged to main 2026-11-08; 0225 applied to production 2026-11-08 (owner OK) |
 | 2 | V as the voice | V reads and says the path; "plan my week" and "timetable" answered from it · weekly review · "Pick up here" after a gap · chapter-done celebration · a path line on /board chapter pages for Class 12 students (D8) | **Built and merged 2026-11-08** (§15); no migration; owner phone check after the push |
 | 3 | Pace and the last weeks | Lighter / More with the honest finish date · behind handling · switch to board papers and revision three weeks before the exam | **Built and merged 2026-11-08** (§16); 0229 applied to production 2026-11-08 (owner OK); owner phone check after the push |
-| 4 | Proof, then decide | Readout at 4 weeks and after the boards · ask results (`results:announce`) · decide pricing and the next subjects or exams from what students used | After the boards |
+| 4 | Proof, then decide | Readout at 4 weeks and after the boards · ask results (`results:announce`) · decide pricing and the next subjects or exams from what students used | Readout plan §17; its missing signals built 2026-11-08 (0230); readouts at day 14 and 28 after the push, then after the boards |
 
 Phase 1 is the whole bet; 2 and 3 make it hold. Phase 1 should ship by about
 2026-11-25 to keep the pace near an hour a day (~54 min CBSE, ~62 min HSC,
@@ -553,4 +553,42 @@ What shipped, and why each is shaped so:
   subject, HSC 7 / 7 / 4) and projects 21 revision days for every sampled
   student and for a student with every chapter done: no paper twice, every
   day's free questions within the stored caps.
+
+## 17. Phase 4: the readout (planned 2026-11-08)
+
+A readout, not a build. `npm run path:readout` already measured every §9
+target (STARTERS); three things it could not answer were recorded from
+2026-11-08 (owner "yes", migration 0230):
+
+- **The start offer seen**, on /me (`path_offer_me`) and on a /board chapter
+  page (`path_offer_board`): so a low start count splits into "nobody saw it"
+  and "saw it and said no". Starts, stops and "Not taught yet" were already
+  rows (`study_paths`, `study_path_deferrals`).
+- **Lighter / More**: one `path_paced` row per tap (direction, minutes before
+  and after); the path itself keeps only the current minutes.
+- **Seen**: the weekly review (`path_review`), "Pick up here"
+  (`path_pickup`), V's "My plan for today" (`v_path`), a path student's /board
+  line (`path_board_line`). Views are once per student per surface per day;
+  the staff view of /me records nothing.
+
+The readout's FUNNEL section prints them (`scripts/path/funnelReport.ts`, pure
+core `lib/path/funnel.ts`), staff left out.
+
+**When:**
+- **Day 14 after the push:** a health check. If almost nobody starts, the
+  offer is the problem, not the path, and is fixed then.
+- **Day 28:** the full readout against §9, starters compared with themselves
+  before they started as well as with everyone (starters are keener).
+- **After the boards (March):** every chapter done before the buffer? Then
+  their results, asked through `results:announce` ("Did you clear it?").
+
+**Read beyond the numbers:** which task kinds get skipped; real minutes per
+part against the estimates (10 min a sheet, 3 per Top 10 slot), from event
+timestamps; which chapters are deferred most (a school order unlike the
+book's); V conversations of path students (read in the database, never
+copied into git).
+
+**What it decides:** pricing, Biology or other subjects, pace and estimate
+corrections, other exams. The `board-path` experiment on /dashboard/growth
+gets the result.
 
