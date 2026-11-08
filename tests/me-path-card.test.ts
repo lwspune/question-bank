@@ -17,6 +17,7 @@ import type { PathTask } from "@/lib/path/today";
 import type { MeData } from "@/lib/me/load";
 import type { Pulse } from "@/lib/pulse/cache";
 import { summarizeUserMocks } from "@/lib/mocks/perf";
+import { resolveFocus } from "@/lib/me/focus";
 
 const slots = (p: string) => Array.from({ length: 10 }, (_, i) => [{ id: `${p}${i}`, format: "mcq" as const }]);
 const chapter = (id: string, subject: PathChapter["subject"], name: string): PathChapter => ({
@@ -131,6 +132,7 @@ describe("MeView, the path in the staff view", () => {
     name: "Riya",
     examLinks: [],
     suggestedExam: null,
+    focus: resolveFocus({ targets: ["nda"], saved: null, recent: null }),
     resultCheck: null,
     suggestedName: "",
     stage: null,

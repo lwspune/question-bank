@@ -82,6 +82,8 @@ describe("practiceContinue", () => {
       subtitle: "Mathematics · NDA",
       href: "/questions/nda/mathematics/probability",
       at: "2026-11-05T00:00:00Z",
+      // The chapter's exam, for the exam focus on Home (2026-11-08).
+      examSlug: "nda",
     });
   });
 

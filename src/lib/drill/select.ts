@@ -65,6 +65,8 @@ export type DueQuestion = {
   /** "Mathematics · NDA": the subject and exam a chapter name alone does not
    *  say ("Probability" is in NDA and in MHT-CET). */
   place?: string;
+  /** The question's exam by name, for the exam focus on /me (2026-11-08). */
+  exam?: string;
   subtopic: string;
   /** When they last got it wrong — the ranking key, oldest first. */
   lastWrongAt: string;
@@ -274,9 +276,27 @@ export function attachRefs(
   for (const q of due) {
     const ref = refs.get(q.questionId);
     if (!ref) continue;
-    out.push({ ...q, chapter: ref.chapter, chapterId: ref.chapterId ?? null, place: ref.place ?? "", subtopic: ref.subtopic });
+    out.push({
+      ...q,
+      chapter: ref.chapter,
+      chapterId: ref.chapterId ?? null,
+      place: ref.place ?? "",
+      exam: ref.exam,
+      subtopic: ref.subtopic,
+    });
   }
   return out;
+}
+
+/**
+ * Narrow the due pool to one exam: the exam focus a two-exam student picked
+ * on /me (lib/me/focus, 2026-11-08). Null is no focus, and the pool comes back
+ * as it was. A question whose exam is unknown is left out of a focused pool,
+ * since it cannot be said to belong to the focus. Spec: tests/drill-focus.test.ts.
+ */
+export function scopeToExam(due: DueQuestion[], examName: string | null): DueQuestion[] {
+  if (!examName) return due;
+  return due.filter((q) => q.exam === examName);
 }
 
 /**

@@ -19,9 +19,7 @@ import { getLastNpsAt } from "@/lib/feedback/service";
 import { needsNps } from "@/lib/feedback/nps";
 import { loadContinue } from "@/lib/me/continueServer";
 import type { ContinueItem } from "@/lib/me/continue";
-import { greetingFor, greetingName } from "@/lib/me/today";
-import { loadSuggestedExam } from "@/lib/profile/suggestExamServer";
-import { getExamBySlug } from "@/lib/exam/examContext";
+import { loadMeHeader, type MeHeaderData } from "@/lib/me/header";
 import type { OwnWeekly } from "@/lib/goals/service";
 import { listMyAssignments } from "@/lib/assignments/service";
 import type { StudentAssignmentView } from "@/lib/assignments/core";
@@ -32,15 +30,12 @@ import { getOnboardingState } from "@/lib/profile/service";
 import { isStage, needsStageNudge, sanitizeTargetExams, type Stage } from "@/lib/profile/onboarding";
 import { getExamIdMap } from "@/lib/exam/examIdMap";
 import { getNotesExamGroups } from "@/lib/notes/notesNav";
-import { firstMockHref, firstNotesHref, yourExamLinks, type ExamLink } from "@/lib/exam/examLinks";
+import { firstMockHref, firstNotesHref } from "@/lib/exam/examLinks";
 import { loadTutorPriceAsk } from "@/lib/tutor/priceAsk";
 import { loadPathCard, type PathCard } from "@/lib/path/service";
 
-export type MeData = {
-  greeting: string;
-  name: string | null;
-  examLinks: ExamLink[];
-  suggestedExam: { slug: string; displayName: string } | null;
+/** The header fields (greeting, exams, focus) plus the Home tab's own cards. */
+export type MeData = MeHeaderData & {
   resultCheck: OpenAnnouncement | null;
   suggestedName: string;
   stage: Stage | null;
@@ -71,7 +66,7 @@ export async function loadMe(
   /** The staff view reads the path without storing today's pick or grants. */
   opts: { staffView?: boolean } = {}
 ): Promise<MeData> {
-  const [attempts, notesRows, lastNpsAt, week, assigned, profile, examIds] = await Promise.all([
+  const [attempts, notesRows, lastNpsAt, week, assigned, profile, examIds, header] = await Promise.all([
     getUserAttempts(db, user.id),
     listOwnNotesProgress(db, user.id),
     getLastNpsAt(db, user.id),
@@ -83,21 +78,31 @@ export async function loadMe(
     }),
     getOnboardingState(db, user.id),
     getExamIdMap(),
+    // The header (greeting, exams, focus), shared with /performance and /account.
+    getExamIdMap().then((ids) => loadMeHeader(db, user, ids, { now })),
   ]);
 
-  const mocks = summarizeUserMocks(attempts);
+  const focusSlug = header.focus.filterExamName ? header.focus.selected : null;
+
+  // The open mock is resumed whatever the focus: a sitting on the clock is not
+  // something to hide. The feedback ask counts every mock too.
+  const allMocks = summarizeUserMocks(attempts);
+  // Focused (a two-exam student, 2026-11-08): the Home cards show that exam.
+  const shownAttempts = focusSlug ? attempts.filter((a) => a.examSlug === focusSlug) : attempts;
+  const mocks = focusSlug ? summarizeUserMocks(shownAttempts) : allMocks;
   const notes = summarizeNotesProgress(notesRows);
-  const showNps = needsNps({ completedMocks: mocks.completed, lastNpsAt, now: now.getTime() });
+  const showNps = needsNps({ completedMocks: allMocks.completed, lastNpsAt, now: now.getTime() });
 
   // Continue-where-you-left-off: an open mock beats a recently-read chapter.
-  const resumeAttempt = mocks.resumeAttempt;
+  const resumeAttempt = allMocks.resumeAttempt;
   // Where they were last working, across the bank, /board, notes and homework
   // (2026-11-06). Best effort: a failed read costs the card, never the page.
   const continueItems = await loadContinue(
     typed,
     user.id,
     notes.recent.map((r) => ({ ...r, ...notesTopicTitles(r) })),
-    examIds
+    examIds,
+    focusSlug
   ).catch((e) => {
     console.error("continue read failed", e instanceof Error ? e.message : e);
     return [] as ContinueItem[];
@@ -127,15 +132,11 @@ export async function loadMe(
     console.error("path read failed", e instanceof Error ? e.message : e);
     return { path: null, offer: null } as PathCard;
   });
-  // No exam chosen: offer the one their practice or first page points to.
-  const suggestedSlug = targets.length === 0 ? await loadSuggestedExam(db, user.id, examIds) : null;
-  const suggested = suggestedSlug ? getExamBySlug(suggestedSlug) : null;
+  // The focus exam first, so "Browse mocks" and notes links open on it.
+  const linkOrder = focusSlug ? [focusSlug, ...targets.filter((t) => t !== focusSlug)] : targets;
 
   return {
-    greeting: greetingFor(istHour(now)),
-    name: greetingName({ preferred_name: user.preferredName, full_name: user.name }),
-    examLinks: yourExamLinks(targets, examIds),
-    suggestedExam: suggested ? { slug: suggested.slug, displayName: suggested.displayName } : null,
+    ...header,
     resultCheck: resultCheck ?? null,
     suggestedName,
     stage,
@@ -148,22 +149,15 @@ export async function loadMe(
         }
       : undefined,
     cont: cont ? { title: cont.title, chapter: cont.subtitle, href: cont.href } : undefined,
-    mockHref: firstMockHref(targets),
-    notesHref: firstNotesHref(targets, notesSlugs),
+    mockHref: firstMockHref(linkOrder),
+    notesHref: firstNotesHref(linkOrder, notesSlugs),
     weekly: week,
     assigned,
-    attempts,
+    attempts: shownAttempts,
     mocks,
     continueItems,
     showNps,
     tutorPriceAsk,
     pathCard,
   };
-}
-
-/** The hour of the day in India (0-23), for the greeting. */
-function istHour(d: Date): number {
-  return Number(
-    new Intl.DateTimeFormat("en-IN", { timeZone: "Asia/Kolkata", hour: "numeric", hourCycle: "h23" }).format(d)
-  );
 }

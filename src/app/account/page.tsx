@@ -18,6 +18,9 @@ import ProfileForm from "./ProfileForm";
 import PushCard from "./PushCard";
 import PathSettingsCard from "./PathSettingsCard";
 import { getPathSettings } from "@/lib/path/service";
+import MeHeader from "@/components/me/MeHeader";
+import { loadMeHeader } from "@/lib/me/header";
+import { getExamIdMap } from "@/lib/exam/examIdMap";
 
 export const dynamic = "force-dynamic";
 
@@ -56,7 +59,7 @@ export default async function AccountPage() {
 
   const db = createSupabaseServerClient();
   const freeMocks = await readFreeMockLimit(db);
-  const [rows, profile, invites, myBatches, { data: books }, pathSettings] = await Promise.all([
+  const [rows, profile, invites, myBatches, { data: books }, pathSettings, header] = await Promise.all([
     loadEntitlements(db, user.id),
     getOwnProfile(db, user.id),
     // Resolved by VERIFIED email on read — there is no binding step at signup,
@@ -70,6 +73,8 @@ export default async function AccountPage() {
       console.error("path settings read failed", e instanceof Error ? e.message : e);
       return { active: null, stopped: false };
     }),
+    // The header above Home · Performance · Account (2026-11-08).
+    getExamIdMap().then((ids) => loadMeHeader(db, user, ids)),
   ]);
   const now = Date.now();
   // One line per pass held — a teacher who also bought the Mock Pass sees both.
@@ -79,131 +84,133 @@ export default async function AccountPage() {
   return (
     <>
       <AppHeader />
-      <main className="mx-auto max-w-2xl px-6 py-12">
-        <header className="mb-8">
-          <h1 className="text-2xl font-semibold tracking-tight">Your account</h1>
-          <p className="mt-1 text-sm text-muted-foreground">{user.email}</p>
-        </header>
+      <main className="mx-auto max-w-4xl px-4 py-6 sm:px-6 sm:py-8">
+        <MeHeader data={header} active="account" readOnly={false} />
+        {/* The tab names the page now (2026-11-08); the email stays. Settings
+            keep their narrow column under the wider header. */}
+        <div className="max-w-2xl">
+          <p className="mb-6 mt-6 text-sm text-muted-foreground">Signed in as {user.email}</p>
 
-        <div className="mb-6">
-          <ProfileForm profile={profile} />
-        </div>
+          <div className="mb-6">
+            <ProfileForm profile={profile} />
+          </div>
 
-        <PathSettingsCard
-          active={
-            pathSettings.active
-              ? { exam: pathSettings.active.exam, subjects: pathSettings.active.subjects, dailyMinutes: pathSettings.active.dailyMinutes }
-              : null
-          }
-          stopped={pathSettings.stopped}
-        />
-
-        {/* The public key only: nothing on Vercel sends, so the private key never lives there. */}
-        <PushCard vapidKey={process.env.VAPID_PUBLIC_KEY ?? ""} />
-
-        <div className="mb-6">
-          <BatchesCard
-            invites={invites.map((i) => ({
-              id: i.id,
-              batchName: i.batchName,
-              orgName: i.orgName,
-            }))}
-            batches={myBatches.map((b) => ({
-              batchId: b.batchId,
-              batchName: b.batchName,
-              orgName: b.orgName,
-            }))}
+          <PathSettingsCard
+            active={
+              pathSettings.active
+                ? { exam: pathSettings.active.exam, subjects: pathSettings.active.subjects, dailyMinutes: pathSettings.active.dailyMinutes }
+                : null
+            }
+            stopped={pathSettings.stopped}
           />
-        </div>
 
-        <div className="rounded-xl border bg-card p-6">
-          {hasAccess ? (
-            <div className="flex items-start gap-3">
-              <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
-                <ShieldCheck className="h-5 w-5" aria-hidden />
-              </span>
-              {member ? (
+          {/* The public key only: nothing on Vercel sends, so the private key never lives there. */}
+          <PushCard vapidKey={process.env.VAPID_PUBLIC_KEY ?? ""} />
+
+          <div className="mb-6">
+            <BatchesCard
+              invites={invites.map((i) => ({
+                id: i.id,
+                batchName: i.batchName,
+                orgName: i.orgName,
+              }))}
+              batches={myBatches.map((b) => ({
+                batchId: b.batchId,
+                batchName: b.batchName,
+                orgName: b.orgName,
+              }))}
+            />
+          </div>
+
+          <div className="rounded-xl border bg-card p-6">
+            {hasAccess ? (
+              <div className="flex items-start gap-3">
+                <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+                  <ShieldCheck className="h-5 w-5" aria-hidden />
+                </span>
+                {member ? (
+                  <div>
+                    <p className="font-semibold">Premium active</p>
+                    <p className="mt-1 text-sm text-muted-foreground">
+                      Included with your {member.orgName} staff account.
+                    </p>
+                    <Link
+                      href={DEFAULT_VIEW.href}
+                      className="mt-3 inline-block text-sm font-medium text-primary hover:underline"
+                    >
+                      {DEFAULT_VIEW.cta}
+                    </Link>
+                  </div>
+                ) : (
+                  <ul className="space-y-4">
+                    {passes.map((pass) => {
+                      const view = PASS_VIEW[pass.scope] ?? DEFAULT_VIEW;
+                      return (
+                        <li key={pass.scope}>
+                          <p className="font-semibold">{view.title}</p>
+                          <p className="mt-1 flex items-center gap-1.5 text-sm text-muted-foreground">
+                            <Clock className="h-3.5 w-3.5" aria-hidden />
+                            {pass.expiresAt
+                              ? `Active until ${formatDate(pass.expiresAt)}`
+                              : "Lifetime access"}
+                            {pass.source === "comp" && " · complimentary"}
+                          </p>
+                          <Link
+                            href={view.href}
+                            className="mt-2 inline-block text-sm font-medium text-primary hover:underline"
+                          >
+                            {view.cta}
+                          </Link>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                )}
+              </div>
+            ) : (
+              <div className="flex items-start gap-3">
+                <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-muted text-muted-foreground">
+                  <Sparkles className="h-5 w-5" aria-hidden />
+                </span>
                 <div>
-                  <p className="font-semibold">Premium active</p>
+                  <p className="font-semibold">No pass yet</p>
                   <p className="mt-1 text-sm text-muted-foreground">
-                    Included with your {member.orgName} staff account.
+                    The question bank, guides and notes are always free
+                    {freeMocks === null ? ", and so are mock tests" : `, and so are your first ${freeMocks} mock tests`}.
+                    A one-time pass unlocks unlimited mocks and PDF paper downloads.
                   </p>
                   <Link
-                    href={DEFAULT_VIEW.href}
-                    className="mt-3 inline-block text-sm font-medium text-primary hover:underline"
+                    href="/pricing"
+                    className="mt-3 inline-flex h-9 items-center justify-center rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
                   >
-                    {DEFAULT_VIEW.cta}
+                    See passes
                   </Link>
                 </div>
-              ) : (
-                <ul className="space-y-4">
-                  {passes.map((pass) => {
-                    const view = PASS_VIEW[pass.scope] ?? DEFAULT_VIEW;
-                    return (
-                      <li key={pass.scope}>
-                        <p className="font-semibold">{view.title}</p>
-                        <p className="mt-1 flex items-center gap-1.5 text-sm text-muted-foreground">
-                          <Clock className="h-3.5 w-3.5" aria-hidden />
-                          {pass.expiresAt
-                            ? `Active until ${formatDate(pass.expiresAt)}`
-                            : "Lifetime access"}
-                          {pass.source === "comp" && " · complimentary"}
-                        </p>
-                        <Link
-                          href={view.href}
-                          className="mt-2 inline-block text-sm font-medium text-primary hover:underline"
-                        >
-                          {view.cta}
-                        </Link>
-                      </li>
-                    );
-                  })}
-                </ul>
-              )}
-            </div>
-          ) : (
-            <div className="flex items-start gap-3">
-              <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-muted text-muted-foreground">
-                <Sparkles className="h-5 w-5" aria-hidden />
-              </span>
-              <div>
-                <p className="font-semibold">No pass yet</p>
-                <p className="mt-1 text-sm text-muted-foreground">
-                  The question bank, guides and notes are always free
-                  {freeMocks === null ? ", and so are mock tests" : `, and so are your first ${freeMocks} mock tests`}.
-                  A one-time pass unlocks unlimited mocks and PDF paper downloads.
-                </p>
-                <Link
-                  href="/pricing"
-                  className="mt-3 inline-flex h-9 items-center justify-center rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
-                >
-                  See passes
-                </Link>
               </div>
-            </div>
-          )}
-        </div>
+            )}
+          </div>
 
-        {books && books.length > 0 ? (
-          <section className="mt-6 rounded-xl border bg-card p-6" aria-labelledby="your-books">
-            <h2 id="your-books" className="flex items-center gap-2 font-semibold">
-              <BookOpen className="h-4 w-4 text-brand-accent" aria-hidden /> Your books
-            </h2>
-            <ul className="mt-3 space-y-2">
-              {books.map((b) => (
-                <li key={b.ebook_slug as string} className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1 text-sm">
-                  <span>
-                    <span className="font-medium">{ebookTitle(b.ebook, b.ebook_slug as string)}</span>
-                    <span className="text-muted-foreground"> · bought {formatDate(b.created_at as string)}</span>
-                  </span>
-                  <Link href={`/store/${b.ebook_slug as string}`} className="font-medium text-primary hover:underline">
-                    Open and download →
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </section>
-        ) : null}
+          {books && books.length > 0 ? (
+            <section className="mt-6 rounded-xl border bg-card p-6" aria-labelledby="your-books">
+              <h2 id="your-books" className="flex items-center gap-2 font-semibold">
+                <BookOpen className="h-4 w-4 text-brand-accent" aria-hidden /> Your books
+              </h2>
+              <ul className="mt-3 space-y-2">
+                {books.map((b) => (
+                  <li key={b.ebook_slug as string} className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1 text-sm">
+                    <span>
+                      <span className="font-medium">{ebookTitle(b.ebook, b.ebook_slug as string)}</span>
+                      <span className="text-muted-foreground"> · bought {formatDate(b.created_at as string)}</span>
+                    </span>
+                    <Link href={`/store/${b.ebook_slug as string}`} className="font-medium text-primary hover:underline">
+                      Open and download →
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ) : null}
+        </div>
       </main>
     </>
   );

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { cn } from "@/lib/utils";
+import TabStrip from "@/components/TabStrip";
 
 /**
  * The header shared by the per-student surfaces: identity, a back-link, and
@@ -40,30 +40,9 @@ export default function StudentTabs({
         ← All students
       </Link>
       <h1 className="mt-2 text-2xl font-semibold tracking-tight">{name}</h1>
-      <nav aria-label="Student views" className="mt-4 flex gap-1 border-b">
-        {tabs.map((t) => {
-          const current = t.key === active;
-          return (
-            <Link
-              prefetch={false}
-              key={t.key}
-              href={t.href}
-              // aria-current is what tells a screen reader which view is open;
-              // the underline alone conveys it only to sighted users.
-              aria-current={current ? "page" : undefined}
-              className={cn(
-                "-mb-px rounded-t border-b-2 px-3 py-2 text-sm font-medium transition-colors",
-                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
-                current
-                  ? "border-brand-accent text-brand-accent"
-                  : "border-transparent text-muted-foreground hover:text-foreground"
-              )}
-            >
-              {t.label}
-            </Link>
-          );
-        })}
-      </nav>
+      <div className="mt-4">
+        <TabStrip label="Student views" tabs={tabs} active={active} />
+      </div>
     </div>
   );
 }

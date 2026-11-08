@@ -22,6 +22,7 @@ import type { MeData } from "@/lib/me/load";
 import type { Pulse } from "@/lib/pulse/cache";
 import { summarizeUserMocks } from "@/lib/mocks/perf";
 import type { UserAttempt } from "@/lib/mocks/query";
+import { resolveFocus } from "@/lib/me/focus";
 
 const STUDENT = "11111111-2222-3333-4444-555555555555";
 
@@ -51,6 +52,7 @@ const data: MeData = {
   name: "Riya",
   examLinks: [{ slug: "nda", label: "NDA", href: "/nda" }] as MeData["examLinks"],
   suggestedExam: null,
+  focus: resolveFocus({ targets: ["nda"], saved: null, recent: null }),
   resultCheck: {
     id: "r1",
     examSlug: "nda",

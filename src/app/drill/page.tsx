@@ -132,6 +132,20 @@ export default async function DrillPage(
                     ? "Your mistakes first, then new ones from the same topics."
                     : "Questions you\u2019ve got wrong or saved for review, one at a time."}
             </p>
+            {drill.focusExam && (
+              // The exam focus on /me (2026-11-08): say which exam this is,
+              // and where to switch it.
+              <p className="mt-1 text-xs text-muted-foreground">
+                {drill.focusExam} only.{" "}
+                <Link
+                  href="/me"
+                  prefetch={false}
+                  className="font-medium text-brand-accent hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                >
+                  Switch exam on Home
+                </Link>
+              </p>
+            )}
           </div>
         </header>
 
