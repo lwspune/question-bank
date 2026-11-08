@@ -142,6 +142,14 @@ describe("performanceFocus", () => {
     });
   });
 
+  it("leaves a student with no marked paper at all to the page's own starter", () => {
+    expect(performanceFocus({ satExams: [], filterExamName: "CDS", urlExam: undefined })).toEqual({
+      exam: undefined,
+      showExamRow: true,
+      noPaperFor: null,
+    });
+  });
+
   it("lets a link that names an exam win, with the exam row back", () => {
     expect(performanceFocus({ satExams: sat, filterExamName: "JEE Mains", urlExam: "MHT-CET" })).toEqual({
       exam: "MHT-CET",

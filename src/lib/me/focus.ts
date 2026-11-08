@@ -99,7 +99,9 @@ export function performanceFocus(input: {
   filterExamName: string | null;
   urlExam: string | undefined;
 }): { exam: string | undefined; showExamRow: boolean; noPaperFor: string | null } {
-  if (input.urlExam || !input.filterExamName) {
+  // No marked paper in any exam: the page's own empty state (the starter card)
+  // says it better than "none in this exam".
+  if (input.urlExam || !input.filterExamName || input.satExams.length === 0) {
     return { exam: input.urlExam, showExamRow: true, noPaperFor: null };
   }
   if (input.satExams.includes(input.filterExamName)) {
