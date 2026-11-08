@@ -48,7 +48,7 @@ function attempt(id: string, ago: number, score: number): PerfAttempt {
   };
 }
 
-function fact(a: string, p: number, r: string | null): PerfFact {
+function fact(a: string, p: number, r: PerfFact["r"]): PerfFact {
   return {
     a, p, q: `${a}-q${p}`, s: 0, c: 0, t: 0,
     d: "MODERATE", f: "mcq",
