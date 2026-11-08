@@ -555,6 +555,8 @@ describe("buildSystemPrompt", () => {
     expect(p).toMatch(/by its number on the page/);
     expect(p).toMatch(/tap Ask V on that question/);
     expect(p).toMatch(/One more like this/);
+    // The full eval run: "REMIND OF DOING Q 44 RETRY" stopped saving the question. A save still uses recent_questions.
+    expect(p).toMatch(/To save or retry it, use recent_questions as above/);
   });
 
   it("tells V it cannot write new questions", () => {
