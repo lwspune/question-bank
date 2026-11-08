@@ -27,6 +27,7 @@ Found 2026-11-09 in the CBSE Class 12 run (the HSC 12 rows above it are all sett
 | `28ce7e70` | CBSE Class 12 · Maths · Probability (board MCQ) | **Defective as printed.** P(A∩B) = 4/7 > P(A) = 1/7. Solution notes it; key (D) is what the working gives. Same treatment. |
 | `59a83c5d` | CBSE Class 12 · Maths · Probability (board MCQ) | **Defective as printed.** P(M∩N) = 0.5 > P(N) = 0.2. Solution notes it; key (A) is what the working gives. Same treatment. |
 | `1dd23817` | CBSE Class 12 · Maths · Probability (board, written) | **Defective as printed.** The data force P(A∩B) = 3/4 > P(A) = 1/2. Solution notes it. Notice above the solution; not an MCQ, so no grace. |
+| `781a4d1d` | CBSE Class 12 · Maths · Differential Equations (board MCQ) | **Key wrong in CBSE's scheme.** dy/dx = (y+1)/(x−1) with y(1) = 2: the family y + 1 = C(x − 1) never passes through (1, 2), so the number of solutions is zero, option (A); CBSE keys (B) one. The solution already says so in a bracketed note. Policy: key to (A) with a notice; check whether it sits in a chapter test (regrace). |
 
 ## Settled
 
