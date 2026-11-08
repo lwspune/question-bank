@@ -2,6 +2,15 @@ import type { HealthDelta, HealthSnapshot, QueryDelta } from "./types";
 
 const MS_PER_HOUR = 3_600_000;
 
+/** Postgres block_size on this database (and Supabase generally). */
+export const BLOCK_BYTES = 8192;
+
+/** Bytes read between two buffer totals; null when either is missing or it went backwards. */
+function readBytes(before: number | null | undefined, after: number | null | undefined): number | null {
+  if (before == null || after == null || after < before) return null;
+  return (after - before) * BLOCK_BYTES;
+}
+
 /**
  * Shortest window we will extrapolate a daily rate from.
  *
@@ -78,6 +87,7 @@ export function computeDelta(prev: HealthSnapshot | null, curr: HealthSnapshot):
       tempFilesDelta: null,
       deadlocksDelta: null,
       rollbacksDelta: null,
+      readBytesDelta: null,
       queries: [],
     };
   }
@@ -118,6 +128,9 @@ export function computeDelta(prev: HealthSnapshot | null, curr: HealthSnapshot):
     tempFilesDelta: cumulative(prev.tempFiles, curr.tempFiles),
     deadlocksDelta: cumulative(prev.deadlocks, curr.deadlocks),
     rollbacksDelta: cumulative(prev.rollbacks, curr.rollbacks),
+    // pg_stat_database, not pg_stat_statements: a statements reset leaves it
+    // alone, and a server restart sends it backwards (readBytes refuses that).
+    readBytesDelta: readBytes(prev.blocksTotal, curr.blocksTotal),
     queries: diffQueries(prev, curr, elapsedHours, wasReset),
   };
 }
@@ -148,6 +161,8 @@ function diffQueries(
     const callsDelta = useAbsolute ? q.calls : q.calls - p!.calls;
     const tempBytesDelta = useAbsolute ? q.tempBytes : q.tempBytes - p!.tempBytes;
     const totalExecMsDelta = useAbsolute ? q.totalExecMs : q.totalExecMs - p!.totalExecMs;
+    // Only a known window: a first-seen or restarted row's buffers are lifetime.
+    const readBytesDelta = useAbsolute ? null : readBytes(p!.blocks, q.blocks);
 
     return {
       queryid: q.queryid,
@@ -158,6 +173,8 @@ function diffQueries(
       tempBytesPerCall: ratio(tempBytesDelta, callsDelta),
       meanMsPerCall: ratio(totalExecMsDelta, callsDelta),
       callsPerDay: perDay(callsDelta, elapsedHours),
+      readBytesDelta,
+      readBytesPerCall: readBytesDelta === null ? null : ratio(readBytesDelta, callsDelta),
       isNew,
       suspectedReset,
       windowKnown: !isNew && !suspectedReset,

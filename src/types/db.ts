@@ -1005,6 +1005,7 @@ export type Database = {
       }
       db_health_snapshots: {
         Row: {
+          blocks_total: number | null
           cache_hit_pct: number
           captured_at: string
           connections: number
@@ -1026,6 +1027,7 @@ export type Database = {
           work_mem_bytes: number | null
         }
         Insert: {
+          blocks_total?: number | null
           cache_hit_pct: number
           captured_at?: string
           connections: number
@@ -1047,6 +1049,7 @@ export type Database = {
           work_mem_bytes?: number | null
         }
         Update: {
+          blocks_total?: number | null
           cache_hit_pct?: number
           captured_at?: string
           connections?: number

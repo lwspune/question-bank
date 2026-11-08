@@ -19,6 +19,12 @@ export type QueryStat = {
   /** temp_blks_written * block_size — disk spill, the disk-IO budget killer. */
   tempBytes: number;
   rows: number;
+  /**
+   * shared_blks_hit + shared_blks_read: the data the statement read, in 8 kB
+   * buffers (migration 0240). Absent on snapshots taken before it, which is
+   * "not recorded", never zero.
+   */
+  blocks?: number;
 };
 
 /** One row of `pg_stat_user_tables`, narrowed. */
@@ -124,6 +130,8 @@ export type HealthSnapshot = {
   workMemBytes: number | null;
   tables: TableStat[];
   queries: QueryStat[];
+  /** pg_stat_database blks_hit + blks_read (migration 0240); absent before it. */
+  blocksTotal?: number | null;
 };
 
 export type QueryDelta = {
@@ -137,6 +145,10 @@ export type QueryDelta = {
   /** Mean execution time per call within the window. null when no calls. */
   meanMsPerCall: number | null;
   callsPerDay: number | null;
+  /** Bytes read in the window (buffers x 8 kB). null when either snapshot lacks buffers. */
+  readBytesDelta: number | null;
+  /** Bytes read per call in the window. null when unknown or no calls. */
+  readBytesPerCall: number | null;
   /** Not present in the previous snapshot at all. */
   isNew: boolean;
   /**
@@ -195,6 +207,8 @@ export type HealthDelta = {
   tempFilesDelta: number | null;
   deadlocksDelta: number | null;
   rollbacksDelta: number | null;
+  /** Everything the database read in the window, in bytes; null when unknown. */
+  readBytesDelta: number | null;
 
   /** Per-query, ranked by calls in the window (never by lifetime total). */
   queries: QueryDelta[];

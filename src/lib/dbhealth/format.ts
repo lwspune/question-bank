@@ -119,6 +119,30 @@ export function renderReport(delta: HealthDelta, flags: Flag[]): string {
     out.push("");
   }
 
+  if (delta.counters.available) {
+    // Ranked by data read in the window: the measure that found 516 GB read in
+    // 36 hours on 2026-11-08, which a ranking by time or calls did not show.
+    const readers = delta.queries
+      .filter((q) => q.windowKnown && q.readBytesDelta !== null && q.readBytesDelta > 0)
+      .sort((a, b) => (b.readBytesDelta ?? 0) - (a.readBytesDelta ?? 0))
+      .slice(0, 10);
+    if (readers.length === 0) {
+      out.push("BIGGEST READERS: not recorded for this window (needs buffers in both snapshots, migration 0240).");
+    } else {
+      const whole = delta.readBytesDelta;
+      out.push(`BIGGEST READERS (data read this window${whole === null ? "" : `; database total ${bytes(whole)}`})`);
+      for (const q of readers) {
+        const share = whole ? `${Math.round(((q.readBytesDelta ?? 0) / whole) * 100)}%`.padStart(4) : "   —";
+        out.push(
+          `  ${bytes(q.readBytesDelta).padStart(9)}  ${share}  ${num(q.callsDelta).padStart(7)} calls  ` +
+            `${bytes(q.readBytesPerCall).padStart(9)}/call  ${q.queryid}`
+        );
+        out.push(`            ${q.label.slice(0, 96)}`);
+      }
+    }
+    out.push("");
+  }
+
   if (flags.length === 0) {
     out.push("FINDINGS: none. Everything measured is within range.");
   } else {

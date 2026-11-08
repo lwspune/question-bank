@@ -50,6 +50,7 @@ export function rowToSnapshot(r: Row): HealthSnapshot {
     workMemBytes: nOrNull(r.work_mem_bytes),
     tables: (r.tables ?? []) as HealthSnapshot["tables"],
     queries: (r.queries ?? []) as HealthSnapshot["queries"],
+    blocksTotal: nOrNull(r.blocks_total),
   };
 }
 
