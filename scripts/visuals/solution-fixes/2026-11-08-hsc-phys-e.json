@@ -1,0 +1,98 @@
+[
+  {
+    "id": "09ac6d86-fe0a-485e-b7c7-f1d21dc9cd1f",
+    "before": "af6d55ca",
+    "solution": "Given: \\( C = 15.0\\ \\mu\\mathrm{F} = 15 \\times 10^{-6} \\) F, \\( e_{\\mathrm{rms}} = 220 \\) V, \\( f = 50 \\) Hz.\nCapacitive reactance:\n\\( X_C = \\frac{1}{2\\pi f C} = \\frac{1}{2 \\times 3.142 \\times 50 \\times 15 \\times 10^{-6}} = \\frac{1}{4.713 \\times 10^{-3}} \\)\n\\( \\therefore X_C = 212.2\\ \\Omega \\)\nrms current:\n\\( i_{\\mathrm{rms}} = \\frac{e_{\\mathrm{rms}}}{X_C} = \\frac{220}{212.2} = 1.037 \\) A\nPeak current:\n\\( i_0 = \\sqrt{2}\\, i_{\\mathrm{rms}} = 1.414 \\times 1.037 \\)\n\\( \\therefore i_0 = 1.466 \\) A\nIf the frequency is doubled: \\( X_C = \\frac{1}{2\\pi f C} \\) is inversely proportional to f, so the capacitive reactance is HALVED, to \\( 106.1\\ \\Omega \\). The applied voltage is unchanged, so the current \\( i_{\\mathrm{rms}} = \\frac{e_{\\mathrm{rms}}}{X_C} \\) is DOUBLED, to \\( 2.074 \\) A.",
+    "note": "1/4.713e-3 = 212.18 ohm (printed 212.1); i0 = 1.414 x 1.037 = 1.466 A (printed 1.465)."
+  },
+  {
+    "id": "13d41871-d593-4263-b195-67efdd567823",
+    "before": "5b65851c",
+    "solution": "Given: \\( R = 10\\ \\Omega \\) in series with a capacitor, power factor \\( \\cos\\phi = 0.5 \\), \\( f = 100 \\) Hz. (The 80 V supply is not needed to find C.)\nThe power factor of a series RC circuit is \\( \\cos\\phi = \\frac{R}{Z} \\), so\n\\( Z = \\frac{R}{\\cos\\phi} = \\frac{10}{0.5} = 20\\ \\Omega \\)\nSince \\( Z = \\sqrt{R^2 + X_C^2} \\),\n\\( X_C = \\sqrt{Z^2 - R^2} = \\sqrt{(20)^2 - (10)^2} = \\sqrt{400 - 100} = \\sqrt{300} \\)\n\\( \\therefore X_C = 17.32\\ \\Omega \\)\nNow \\( X_C = \\frac{1}{2\\pi f C} \\), so\n\\( C = \\frac{1}{2\\pi f X_C} = \\frac{1}{2 \\times 3.142 \\times 100 \\times 17.32} = \\frac{1}{10884} \\)\n\\( \\therefore C = 9.188 \\times 10^{-5} \\) F \\( = 91.88\\ \\mu\\mathrm{F} \\)",
+    "note": "1/10884 = 9.1878e-5 F, printed 9.187e-5."
+  },
+  {
+    "id": "2e14e9d2-c1f4-4532-a757-23d741e6facf",
+    "before": "1bdd208b",
+    "solution": "Given: \\( e = 220 \\sin 100\\pi t \\), so \\( e_0 = 220 \\) V and \\( \\omega = 100\\pi \\) rad/s; \\( L = \\frac{1}{\\pi} \\) H. The circuit contains inductance only.\nInductive reactance:\n\\( X_L = \\omega L = 100\\pi \\times \\frac{1}{\\pi} = 100\\ \\Omega \\)\nPeak current:\n\\( i_0 = \\frac{e_0}{X_L} = \\frac{220}{100} = 2.2 \\) A\nIn a purely inductive circuit the current LAGS the emf by \\( \\frac{\\pi}{2} \\), so the instantaneous current is\n\\( i = i_0 \\sin \\left( \\omega t - \\frac{\\pi}{2} \\right) \\)\n\\( \\therefore i = 2.2 \\sin \\left( 100\\pi t - \\frac{\\pi}{2} \\right) \\) A\nAn AC galvanometer (a hot-wire type meter) reads the rms value, not the peak value:\n\\( i_{\\mathrm{rms}} = \\frac{i_0}{\\sqrt{2}} = \\frac{2.2}{1.414} \\)\n\\( \\therefore i_{\\mathrm{rms}} = 1.556 \\) A",
+    "note": "2.2/1.414 = 1.5559 A, printed 1.555."
+  },
+  {
+    "id": "3abe37d6-c05e-4cfa-88ed-abbb4f0bf3e9",
+    "before": "fcad4f7b",
+    "solution": "**(B)** 0.7071\n\nThe power factor of an a.c. circuit is \\(\\cos\\phi\\), where \\(\\phi\\) is the phase difference between the voltage and the current.\n\nHere \\(\\phi = 45^{\\circ}\\), so\n\n\\(\\cos 45^{\\circ} = \\dfrac{1}{\\sqrt{2}}\\)\n\n\\(\\therefore\\) the power factor is \\(0.7071\\).\n\nA value of 1.0 would mean a purely resistive circuit with voltage and current in phase, which is not the case here.",
+    "note": "1/1.414 = 0.7072, not the 0.7071 the next line states; the intermediate dropped."
+  },
+  {
+    "id": "97cb68e6-5b64-461f-af97-78e6a1c3c971",
+    "before": "d7d7a90b",
+    "solution": "Given: \\( C = 100\\ \\mu\\mathrm{F} = 100 \\times 10^{-6} \\) F, \\( R = 50\\ \\Omega \\), \\( L = 0.5 \\) H, \\( e_{\\mathrm{rms}} = 110 \\) V, \\( f = 50 \\) Hz.\nReactances:\n\\( X_L = 2\\pi f L = 2 \\times 3.142 \\times 50 \\times 0.5 = 157.1\\ \\Omega \\)\n\\( X_C = \\frac{1}{2\\pi f C} = \\frac{1}{2 \\times 3.142 \\times 50 \\times 100 \\times 10^{-6}} = \\frac{1}{3.142 \\times 10^{-2}} = 31.83\\ \\Omega \\)\nNet reactance (inductance dominated, since \\( X_L > X_C \\)):\n\\( X_L - X_C = 157.1 - 31.83 = 125.3\\ \\Omega \\)\nImpedance:\n\\( Z = \\sqrt{R^2 + \\left( X_L - X_C \\right)^2} = \\sqrt{(50)^2 + (125.3)^2} = \\sqrt{2500 + 15700} = \\sqrt{18200} \\)\n\\( \\therefore Z = 134.9\\ \\Omega \\)\nrms current:\n\\( i_{\\mathrm{rms}} = \\frac{e_{\\mathrm{rms}}}{Z} = \\frac{110}{134.9} \\)\n\\( \\therefore i_{\\mathrm{rms}} = 0.8154 \\) A",
+    "note": "110/134.9 = 0.81542 A, printed 0.8153."
+  },
+  {
+    "id": "896fbfe6-3b31-4cba-8c48-385a703a9169",
+    "before": "332bcb35",
+    "solution": "Given \\( e = 8 \\sin (628.4\\, t) \\). Comparing this with the standard form \\( e = e_0 \\sin \\omega t \\):\n\n(i) Peak value of the e.m.f.\n\n\\( \\therefore e_0 = 8 \\) V\n\n(ii) \\( \\omega = 628.4 \\) rad/s, and \\( \\omega = 2\\pi f \\)\n\n\\( \\therefore f = \\frac{\\omega}{2\\pi} = \\frac{628.4}{2 \\times 3.142} = \\frac{628.4}{6.284} \\)\n\n\\( \\therefore f = 100 \\) Hz\n\n(iii) The period of the e.m.f. is\n\n\\( T = \\frac{1}{f} = \\frac{1}{100} = 0.01 \\) s \\( = 10 \\) ms\n\nso the instant \\( t = 10 \\) ms is exactly the end of one complete cycle. The instantaneous value there is\n\n\\( e = e_0 \\sin \\omega t = 8 \\sin \\left( 628.4 \\times 10 \\times 10^{-3} \\right) = 8 \\sin (6.284) \\)\n\nwhere the angle is in radian. Since \\( 6.284 \\) rad \\( = 2\\pi \\) rad and \\( \\sin 2\\pi = 0 \\),\n\n\\( \\therefore e \\approx 0 \\) V\n\nCheck: the e.m.f. starts from \\( e = 8 \\sin 0 = 0 \\) at \\( t = 0 \\), and after one whole period the waveform has returned to the value it started from, so a zero at \\( t = T \\) is consistent.",
+    "note": "6.284 rad is 2 pi only to the 3.142 used, so 8 sin(6.284) is about 0 (0.0065 V), not exactly 0."
+  },
+  {
+    "id": "ce37ef19-e9fb-4784-8249-ec1d9083eb19",
+    "before": "5c370c0c",
+    "solution": "Given\n\\( e = 140 \\sin 3142\\, t \\)\n\\( R = 50\\ \\Omega \\)\ni) On comparing with \\( e = e_0 \\sin \\omega t \\)\nWe get \\( \\omega = 3142 \\), \\( e_0 = 140 \\) V\n\\( \\omega = 2\\pi f \\quad \\therefore f = \\frac{\\omega}{2\\pi} = \\frac{3142}{2 \\times 3.142} = 500 \\) Hz\n(ii) \\( e_0 = 140 \\) V\n\\( e_{\\mathrm{rms}} = \\frac{e_0}{\\sqrt{2}} = \\frac{140}{\\sqrt{2}} = 98.99 \\) V\n\\( \\therefore i_{\\mathrm{rms}} = \\frac{e_{\\mathrm{rms}}}{R} = \\frac{98.99}{50} = 1.98 \\) A",
+    "note": "Divides 99.29 where the line before gives e_rms = 98.99 V."
+  },
+  {
+    "id": "f0a27e8b-2348-4b27-b566-3398b641df10",
+    "before": "a0fc3b08",
+    "solution": "Given\n\n\\( e = 140 \\sin (314.2\\, t) \\)\n\n\\( R = 50\\ \\Omega \\)\n\n(i) On comparing with \\( e = e_0 \\sin \\omega t \\) we get \\( e_0 = 140 \\) V and \\( \\omega = 314.2 \\) rad/s.\n\n\\( \\omega = 2\\pi f \\)\n\n\\( \\therefore f = \\frac{\\omega}{2\\pi} = \\frac{314.2}{2 \\times 3.142} = \\frac{314.2}{6.284} \\)\n\n\\( \\therefore f = 50 \\) Hz\n\n(ii) \\( e_{\\mathrm{rms}} = \\frac{e_0}{\\sqrt{2}} = \\frac{140}{1.414} = 99.01 \\) V\n\nThe resistor is pure, so the current through it is in phase with the voltage across it and Ohm's law applies directly to the rms values:\n\n\\( \\therefore i_{\\mathrm{rms}} = \\frac{e_{\\mathrm{rms}}}{R} = \\frac{99.01}{50} = 1.98 \\) A\n\nCheck: the peak current is \\( i_0 = \\frac{e_0}{R} = \\frac{140}{50} = 2.8 \\) A, and \\( \\frac{i_0}{\\sqrt{2}} = \\frac{2.8}{1.414} = 1.98 \\) A, the same value by the other route.",
+    "note": "140/1.414 = 99.01 V (98.99 is 140/sqrt 2 unrounded); i_rms = 1.98 A unchanged."
+  },
+  {
+    "id": "f0e977bc-c6c6-4143-ba68-d0d534f34e52",
+    "before": "853d537f",
+    "solution": "Given: \\( C = 25\\ \\mu\\mathrm{F} = 25 \\times 10^{-6} \\) F, \\( L = 0.10 \\) H, \\( R = 25\\ \\Omega \\), \\( e = 310 \\sin 314\\, t \\), so \\( e_0 = 310 \\) V and \\( \\omega = 314 \\) rad/s.\nFrequency:\n\\( f = \\frac{\\omega}{2\\pi} = \\frac{314}{2 \\times 3.142} = 50 \\) Hz\nReactances:\n\\( X_L = \\omega L = 314 \\times 0.10 = 31.4\\ \\Omega \\)\n\\( X_C = \\frac{1}{\\omega C} = \\frac{1}{314 \\times 25 \\times 10^{-6}} = \\frac{1}{7.85 \\times 10^{-3}} = 127.4\\ \\Omega \\)\nNet reactance (the circuit is capacitance dominated, since \\( X_C > X_L \\)):\n\\( X = X_C - X_L = 127.39 - 31.4 = 95.99\\ \\Omega \\)\nImpedance:\n\\( Z = \\sqrt{R^2 + X^2} = \\sqrt{(25)^2 + (95.99)^2} = \\sqrt{625 + 9214} = \\sqrt{9839} \\)\n\\( \\therefore Z = 99.19\\ \\Omega \\)\nCurrent:\n\\( e_{\\mathrm{rms}} = \\frac{e_0}{\\sqrt{2}} = \\frac{310}{1.414} = 219.2 \\) V\n\\( i_{\\mathrm{rms}} = \\frac{e_{\\mathrm{rms}}}{Z} = \\frac{219.2}{99.19} \\)\n\\( \\therefore i_{\\mathrm{rms}} = 2.210 \\) A\nPhase angle:\n\\( \\tan\\phi = \\frac{X}{R} = \\frac{95.99}{25} = 3.840 \\)\n\\( \\therefore \\phi = \\tan^{-1}(3.840) = 75.4^\\circ = 1.316 \\) rad\nSince \\( X_C > X_L \\), the current LEADS the applied emf by 1.316 rad.",
+    "note": "127.4 - 31.4 = 96.0 and unrounded 127.39 - 31.4 = 95.99, never 95.98; with 95.99: Z = 99.19, i = 2.210 A (printed 2.211), tan phi = 3.840."
+  },
+  {
+    "id": "07a7ee0f-d724-4f30-adac-de7f10a7935c",
+    "before": "5a5b6805",
+    "solution": "**Decay constant of \\(^{14}\\text{C}\\).** \\(T_{1/2} = 5730\\ \\text{years} = 5730 \\times 3.154 \\times 10^{7} = 1.807 \\times 10^{11}\\ \\text{s}\\)\n\n\\(\\lambda = \\dfrac{\\ln 2}{T_{1/2}} = \\dfrac{0.693}{1.807 \\times 10^{11}} = 3.835 \\times 10^{-12}\\ \\text{s}^{-1}\\)\n\n**(a) Fraction of carbon atoms that were \\(^{14}\\text{C}\\).** For one gram of carbon the activity is 0.255 Bq, so from \\(A = \\lambda N\\),\n\n\\(N(^{14}\\text{C}) = \\dfrac{0.255}{3.835 \\times 10^{-12}} = 6.65 \\times 10^{10}\\) atoms per gram\n\nThe total number of carbon atoms in one gram is \\(\\dfrac{6.022 \\times 10^{23}}{12} = 5.018 \\times 10^{22}\\).\n\n\\(\\text{fraction} = \\dfrac{6.65 \\times 10^{10}}{5.018 \\times 10^{22}} = 1.33 \\times 10^{-12}\\)\n\nThat is, **about four \\(^{14}\\text{C}\\) atoms in every \\(3 \\times 10^{12}\\) carbon atoms.**\n\n**(b) Age of the specimen.** The specimen gives 174 decays in one hour from 500 mg, so per gram\n\n\\(A = \\dfrac{174}{3600 \\times 0.5} = 0.0967\\ \\text{Bq g}^{-1}\\)\n\nWhen it died its activity per gram was the atmospheric value \\(A_0 = 0.255\\ \\text{Bq g}^{-1}\\). From \\(A = A_0 e^{-\\lambda t}\\),\n\n\\(\\lambda t = \\ln\\dfrac{0.255}{0.0967} = \\ln(2.637) = 0.9697\\)\n\n\\(t = \\dfrac{0.9697}{3.835 \\times 10^{-12}} = 2.529 \\times 10^{11}\\ \\text{s}\\)\n\n\\(t = \\dfrac{2.529 \\times 10^{11}}{3.154 \\times 10^{7}}\\)\n\n**The specimen is about 8020 years old.**",
+    "note": "0.693/1.807e11 = 3.8351e-12 (printed 3.836); fraction 1.3252e-12 (printed 1.32); ln(0.255/0.0967) = ln 2.637 = 0.9697 (printed ln 2.638 = 0.9700); t = 2.529e11 s unchanged."
+  },
+  {
+    "id": "383cdea8-ce67-4240-92b7-42a3d95614a6",
+    "before": "002f155e",
+    "solution": "The radius of a nucleus X with mass number \\(A\\) is given by \\(R_X = R_0 A^{\\frac{1}{3}}\\), where \\(R_0 = 1.2 \\times 10^{-15}\\ \\text{m}\\)\n\nThus, the radius of \\(^{70}\\text{Ge}\\) is\n\n\\(R_{Ge} = 1.2 \\times 10^{-15} \\times 70^{1/3} = 4.946 \\times 10^{-15}\\ \\text{m}\\).\n\nThe density is given by \\(\\rho = \\dfrac{3m_{Ge}}{4\\pi R_{Ge}^{3}}\\).\n\n\\(\\therefore \\rho = 3 \\times 69.924 \\times 1.66 \\times \\dfrac{10^{-27}}{4\\pi\\left(4.95 \\times 10^{-15}\\right)^{3}}\\)\n\n\\(= 2.285 \\times 10^{17}\\ \\text{kg m}^{-3}\\).",
+    "note": "1.2e-15 x 70^(1/3) = 4.9455e-15 (printed 4.945); the density with the line's own 4.95e-15 is 2.285e17 (printed 2.292)."
+  },
+  {
+    "id": "4a38d8d2-5d05-4c50-b070-dec330a4b4b8",
+    "before": "8578d014",
+    "solution": "**Required activity.** \\(1\\ \\text{Ci} = 3.7 \\times 10^{10}\\) decays per second, so\n\n\\(A = 10.0\\ \\text{mCi} = 10.0 \\times 10^{-3} \\times 3.7 \\times 10^{10} = 3.7 \\times 10^{8}\\ \\text{s}^{-1}\\)\n\n**Decay constant.** \\(T_{1/2} = 5.3\\ \\text{years} = 5.3 \\times 3.154 \\times 10^{7} = 1.6716 \\times 10^{8}\\ \\text{s}\\)\n\n\\(\\lambda = \\dfrac{0.693}{1.6716 \\times 10^{8}} = 4.146 \\times 10^{-9}\\ \\text{s}^{-1}\\)\n\n**Number of nuclei needed.** From \\(A = \\lambda N\\),\n\n\\(N = \\dfrac{A}{\\lambda} = \\dfrac{3.7 \\times 10^{8}}{4.146 \\times 10^{-9}} = 8.924 \\times 10^{16}\\) nuclei\n\n**Mass.** The gram atomic mass of \\(^{60}_{27}\\text{Co}\\) is 60 g, so\n\n\\(m = \\dfrac{N}{6.022 \\times 10^{23}} \\times 60 = \\dfrac{8.924 \\times 10^{16}}{6.022 \\times 10^{23}} \\times 60\\)\n\n**\\(m = 8.89 \\times 10^{-6}\\) g**, i.e. about 8.9 micrograms of \\(^{60}_{27}\\text{Co}\\).",
+    "note": "5.3 x 3.154e7 = 1.6716e8 s (printed 1.671e8); the later 4.146e-9 follows from 1.6716."
+  },
+  {
+    "id": "62a9a79a-ffd5-431c-9499-03515542036e",
+    "before": "4082f4c8",
+    "solution": "The disintegration rate is the activity \\(A = \\lambda N\\).\n\n**Decay constant.** \\(T_{1/2} = 28\\ \\text{years} = 28 \\times 3.154 \\times 10^{7} = 8.831 \\times 10^{8}\\ \\text{s}\\)\n\n\\(\\lambda = \\dfrac{0.693}{T_{1/2}} = \\dfrac{0.693}{8.831 \\times 10^{8}} = 7.847 \\times 10^{-10}\\ \\text{s}^{-1}\\)\n\n**Number of nuclei.** \\(^{90}_{38}\\text{Sr}\\) has a gram atomic mass of 90 g, so 5 mg contains\n\n\\(N = \\dfrac{5 \\times 10^{-3}}{90} \\times 6.022 \\times 10^{23} = 3.346 \\times 10^{19}\\) nuclei\n\n**Activity.**\n\n\\(A = \\lambda N = 7.847 \\times 10^{-10} \\times 3.346 \\times 10^{19}\\)\n\n**\\(A = 2.626 \\times 10^{10}\\) disintegrations per second** \\((\\text{i.e. } 2.626 \\times 10^{10}\\ \\text{Bq}\\), about 0.71 Ci).",
+    "note": "28 x 3.154e7 = 8.8312e8 s (printed 8.830); lambda = 7.847e-10 (printed 7.848); A = 2.626e10 unchanged."
+  },
+  {
+    "id": "453106a5-9d6d-47bb-8750-a8901f908624",
+    "before": "2f763ef9",
+    "solution": "Let the abundances of \\(^{25}_{12}\\text{Mg}\\) and \\(^{26}_{12}\\text{Mg}\\) be \\(x\\) and \\(y\\) (expressed as fractions). The three abundances must add up to 1, and the abundance of \\(^{24}_{12}\\text{Mg}\\) is given as 0.7899, so\n\n\\(x + y = 1 - 0.7899 = 0.2101\\)  ... (1)\n\nThe average atomic mass is the weighted mean of the three isotopic masses:\n\n\\(0.7899 \\times 23.98504 + 24.98584x + 25.98259y = 24.312\\)\n\n\\(18.94578 + 24.98584x + 25.98259y = 24.312\\)\n\n\\(24.98584x + 25.98259y = 5.36622\\)  ... (2)\n\nSubstituting \\(x = 0.2101 - y\\) from (1) into (2),\n\n\\(24.98584(0.2101 - y) + 25.98259y = 5.36622\\)\n\n\\(5.24953 + 0.99675y = 5.36622\\)\n\n\\(y = \\dfrac{0.11669}{0.99675} = 0.1171\\)\n\n\\(x = 0.2101 - 0.1171 = 0.0930\\)\n\n**The abundance of \\(^{25}_{12}\\text{Mg}\\) is 9.3% and that of \\(^{26}_{12}\\text{Mg}\\) is 11.7%.**\n\n(Check: \\(0.7899 \\times 23.98504 + 0.0930 \\times 24.98584 + 0.1171 \\times 25.98259 = 24.312\\) u, as given.)",
+    "note": "0.7899 x 23.98504 = 18.94578 (printed 18.94586), so 5.36622, y = 0.1171, x = 0.0930; the 9.3% and 11.7% stand."
+  },
+  {
+    "id": "5f88c591-830e-4e5b-b0b5-8c8c28f56305",
+    "before": "391d97bc",
+    "solution": "The number of revolutions is the frequency of revolution multiplied by the time, \\(N = f \\times t\\), where \\(f = \\dfrac{\\mathrm{v}_n}{2\\pi r_n}\\).\n\nFor hydrogen \\((Z = 1)\\) in the second orbit \\((n = 2)\\):\n\n\\(\\mathrm{v}_2 = \\dfrac{e^{2}}{2\\varepsilon_0 h n} = \\dfrac{(1.602 \\times 10^{-19})^{2}}{2 \\times 8.854 \\times 10^{-12} \\times 6.626 \\times 10^{-34} \\times 2} = 1.094 \\times 10^{6}\\ \\text{m s}^{-1}\\)\n\n\\(r_2 = \\dfrac{n^{2}h^{2}\\varepsilon_0}{\\pi m_e e^{2}} = 4 \\times 5.293 \\times 10^{-11} = 2.117 \\times 10^{-10}\\ \\text{m}\\)\n\n\\(\\therefore f = \\dfrac{1.094 \\times 10^{6}}{2\\pi \\times 2.117 \\times 10^{-10}} = 8.225 \\times 10^{14}\\ \\text{revolutions per second}\\)\n\n\\(\\therefore N = 8.225 \\times 10^{14} \\times 10^{-8}\\)\n\n**\\(N = 8.225 \\times 10^{6}\\) revolutions**",
+    "note": "1.094e6 / (2 pi x 2.117e-10) = 8.2246e14 (printed 8.221e14), so N = 8.225e6."
+  },
+  {
+    "id": "75ca818a-ec09-4778-a290-1a3dc20ddc6e",
+    "before": "00beb86f",
+    "solution": "**(a) Decay constant and mean lifetime.**\n\n\\(T_{1/2} = 272\\ \\text{d} = 272 \\times 24 \\times 3600 = 2.350 \\times 10^{7}\\ \\text{s}\\)\n\n\\(\\lambda = \\dfrac{0.693}{T_{1/2}} = \\dfrac{0.693}{2.350 \\times 10^{7}} = 2.95 \\times 10^{-8}\\ \\text{s}^{-1}\\)\n\n\\(\\tau = \\dfrac{1}{\\lambda} = 3.39 \\times 10^{7}\\ \\text{s}\\) (about 392 days)\n\n**(b) Number of nuclei in the source.**\n\n\\(A = 2.0\\ \\mu\\text{Ci} = 2.0 \\times 10^{-6} \\times 3.7 \\times 10^{10} = 7.4 \\times 10^{4}\\ \\text{s}^{-1}\\)\n\n\\(N = \\dfrac{A}{\\lambda} = \\dfrac{7.4 \\times 10^{4}}{2.95 \\times 10^{-8}} = 2.51 \\times 10^{12}\\) nuclei\n\n**(c) Activity after one year.**\n\n\\(t = 365\\ \\text{d}\\), so \\(\\lambda t = 0.693 \\times \\dfrac{365}{272} = 0.9299\\)\n\n\\(A(t) = A_0 e^{-\\lambda t} = 2.0 \\times e^{-0.9299} = 2.0 \\times 0.3946\\)\n\n\\(A(t) = 0.789\\ \\mu\\text{Ci}\\)\n\n**Mean lifetime \\(3.39 \\times 10^{7}\\) s, decay constant \\(2.95 \\times 10^{-8}\\ \\text{s}^{-1}\\), \\(2.51 \\times 10^{12}\\) nuclei, and the activity falls to \\(0.789\\ \\mu\\text{Ci}\\) after one year.**",
+    "note": "3.39e7 s / 86400 = 392.4 days, printed 393."
+  }
+]

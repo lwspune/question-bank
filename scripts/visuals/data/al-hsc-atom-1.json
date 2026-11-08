@@ -1,0 +1,4749 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "0365ae0e-b828-4a2b-bb3a-d6f92239397e",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "r_n = a_0 n^2,\\quad a_0 = 0.053\\ \\text{nm},\\quad n = 3",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "r_3 = a_0 \\cdot 3^2 = 9a_0 = 9 \\times 0.053 = {{1:0.477}}\\ \\text{nm}",
+              "f": "9*0.053",
+              "value": "0.477",
+              "step": "s2"
+            }
+          ],
+          "answer": "9*0.053"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "80eca8c3",
+        "answer": {
+          "value": 0.477,
+          "label": "0.477 nm"
+        }
+      }
+    },
+    {
+      "id": "06f7fb8b-aacf-4b76-84e4-66d729aaf73a",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "A_{32}(0) = 0.9,\\quad A_{33}(0) = 0.1",
+              "note": "90% and 10% of the decays",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\lambda_{32} = \\dfrac{0.693}{14.3} = 0.04846\\ \\text{d}^{-1}",
+              "f": "0.693/14.3",
+              "value": "0.04846",
+              "sf": 4,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\lambda_{33} = \\dfrac{0.693}{25.3} = 0.02739\\ \\text{d}^{-1}",
+              "f": "0.693/25.3",
+              "value": "0.02739",
+              "sf": 4,
+              "step": "s3"
+            },
+            {
+              "kind": "note",
+              "tex": "\\dfrac{0.9x}{0.9x + 0.1} = 0.15,\\quad x = e^{-(\\lambda_{32}-\\lambda_{33})t}",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "0.765x = 0.015 \\Rightarrow x = 0.019608",
+              "f": "0.015/0.765",
+              "value": "0.019608",
+              "sf": 5,
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "(\\lambda_{32}-\\lambda_{33})t = -\\ln(0.019608) = 3.9318",
+              "f": "-ln(0.019608)",
+              "value": "3.9318",
+              "sf": 5,
+              "step": "s6"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\lambda_{32}-\\lambda_{33} = 0.04846 - 0.02739 = 0.02107\\ \\text{d}^{-1}",
+              "f": "0.04846-0.02739",
+              "value": "0.02107",
+              "sf": 4,
+              "step": "s7"
+            },
+            {
+              "kind": "calc",
+              "tex": "t = \\dfrac{3.9318}{0.02107} = 186.6\\ \\text{days}",
+              "f": "3.9318/0.02107",
+              "value": "186.6",
+              "sf": 4,
+              "step": "s8"
+            }
+          ],
+          "answer": "3.9318/0.02107"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s6"
+            ]
+          },
+          {
+            "from": 10,
+            "beats": [
+              "s7"
+            ]
+          },
+          {
+            "from": 11,
+            "beats": [
+              "s8"
+            ]
+          }
+        ],
+        "fingerprint": "247716e7",
+        "answer": {
+          "value": 186.60654959658282,
+          "label": "186.6 days"
+        }
+      }
+    },
+    {
+      "id": "07a7ee0f-d724-4f30-adac-de7f10a7935c",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "T_{1/2} = 5730 \\times 3.154 \\times 10^{7} = 1.807 \\times 10^{11}\\ \\text{s}",
+              "f": "5730*3.154*10^7",
+              "value": "1.807*10^11",
+              "sf": 4,
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\lambda = \\dfrac{0.693}{1.807 \\times 10^{11}} = 3.835 \\times 10^{-12}\\ \\text{s}^{-1}",
+              "f": "0.693/(1.807*10^11)",
+              "value": "3.835*10^(-12)",
+              "sf": 4,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "N(^{14}\\text{C}) = \\dfrac{0.255}{3.835 \\times 10^{-12}} = 6.65 \\times 10^{10}\\ \\text{g}^{-1}",
+              "f": "0.255/(3.835*10^(-12))",
+              "value": "6.65*10^10",
+              "sf": 3,
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{6.65 \\times 10^{10}}{6.022 \\times 10^{23}/12} = \\dfrac{6.65 \\times 10^{10}}{5.018 \\times 10^{22}} = 1.33 \\times 10^{-12}",
+              "f": "6.65*10^10/(6.022*10^23/12)",
+              "value": "1.33*10^(-12)",
+              "sf": 3,
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "A = \\dfrac{174}{3600 \\times 0.5} = 0.0967\\ \\text{Bq g}^{-1}",
+              "f": "174/(3600*0.5)",
+              "value": "0.0967",
+              "sf": 3,
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\lambda t = \\ln\\dfrac{0.255}{0.0967} = 0.9697",
+              "f": "ln(0.255/0.0967)",
+              "value": "0.9697",
+              "sf": 4,
+              "step": "s6"
+            },
+            {
+              "kind": "calc",
+              "tex": "t = \\dfrac{0.9697}{3.835 \\times 10^{-12}} = 2.529 \\times 10^{11}\\ \\text{s}",
+              "f": "0.9697/(3.835*10^(-12))",
+              "value": "2.529*10^11",
+              "sf": 4,
+              "step": "s7"
+            },
+            {
+              "kind": "calc",
+              "tex": "t = \\dfrac{2.529 \\times 10^{11}}{3.154 \\times 10^{7}} \\approx 8020\\ \\text{years}",
+              "f": "2.529*10^11/(3.154*10^7)",
+              "value": "8020",
+              "sf": 3,
+              "step": "s8"
+            }
+          ],
+          "answer": "6.65*10^10/(6.022*10^23/12)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 11,
+            "beats": [
+              "s6"
+            ]
+          },
+          {
+            "from": 12,
+            "beats": [
+              "s7"
+            ]
+          },
+          {
+            "from": 13,
+            "beats": [
+              "s8"
+            ]
+          }
+        ],
+        "fingerprint": "9b6ec7d6",
+        "answer": {
+          "value": 1.3251411491198934e-12,
+          "label": "1.33e-12; 8020 years"
+        }
+      }
+    },
+    {
+      "id": "0a1ad367-5f2a-46e5-bc41-abf0c24dcc9c",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "r_n = a_0 n^2",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{r_8}{r_4} = \\dfrac{8^2}{4^2} = \\dfrac{64}{16} = {{1:4}}",
+              "f": "8^2/4^2",
+              "value": "4",
+              "step": "s2"
+            }
+          ],
+          "answer": "8^2/4^2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "89cbe3ab",
+        "answer": {
+          "value": 4,
+          "label": "4"
+        }
+      }
+    },
+    {
+      "id": "0ebb468a-1715-49a5-a501-fa8b87472744",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "r = 2.14 \\times 10^{-10}\\ \\text{m},\\quad v = 1.07 \\times 10^{6}\\ \\text{m/s}",
+              "note": "T = 2πr / v",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "2\\pi r = 2 \\times 3.142 \\times 2.14 \\times 10^{-10} = 1.3448 \\times 10^{-9}\\ \\text{m}",
+              "f": "2*3.142*2.14*10^(-10)",
+              "value": "1.3448*10^(-9)",
+              "sf": 5,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "T = \\dfrac{1.3448 \\times 10^{-9}}{1.07 \\times 10^{6}} = 1.2568 \\times 10^{-15}\\ \\text{s}",
+              "f": "1.3448*10^(-9)/(1.07*10^6)",
+              "value": "1.2568*10^(-15)",
+              "sf": 5,
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "N = \\dfrac{t}{T} = \\dfrac{10^{-8}}{1.2568 \\times 10^{-15}} = 7.96 \\times 10^{6}",
+              "f": "10^(-8)/(1.2568*10^(-15))",
+              "value": "7.96*10^6",
+              "sf": 3,
+              "step": "s4"
+            }
+          ],
+          "answer": "10^(-8)/(1.2568*10^(-15))"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "9415a03c",
+        "answer": {
+          "value": 7956715.46785487,
+          "label": "7.96 × 10⁶"
+        }
+      }
+    },
+    {
+      "id": "100f1048-6442-4f34-8dde-22c4dd17c6ab",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "N \\to \\dfrac{N}{2^n},\\quad n = 2",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{1}{2} \\times \\dfrac{N}{2} = \\dfrac{N}{4}\\quad\\left(N = 1\\ \\text{gives}\\ {{1:0.25}}\\right)",
+              "f": "1/2*(1/2)",
+              "value": "0.25",
+              "step": "s2"
+            }
+          ],
+          "answer": "1/2*(1/2)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "f47c130e",
+        "answer": {
+          "value": 0.25,
+          "label": "N/4"
+        }
+      }
+    },
+    {
+      "id": "1282d19f-f01b-484a-8620-9b32e28ae74a",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "Z = 2,\\ N = 2,\\ m_\\alpha = 4.00151\\ \\text{u}",
+              "note": "E_B = [Zm_p + Nm_n − m_α]c²",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "2m_p = 2 \\times 1.00728 = 2.01456\\ \\text{u}",
+              "f": "2*1.00728",
+              "value": "2.01456",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "2m_n = 2 \\times 1.00866 = 2.01732\\ \\text{u}",
+              "f": "2*1.00866",
+              "value": "2.01732",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "2.01456 + 2.01732 - 4.00151 = 0.03037\\ \\text{u}",
+              "f": "2.01456+2.01732-4.00151",
+              "value": "0.03037",
+              "sf": 4,
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "E_B = 0.03037 \\times 931.5 = 28.29\\ \\text{MeV}",
+              "f": "0.03037*931.5",
+              "value": "28.29",
+              "sf": 4,
+              "step": "s5"
+            }
+          ],
+          "answer": "0.03037*931.5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "35da488b",
+        "answer": {
+          "value": 28.289655,
+          "label": "28.29 MeV"
+        }
+      }
+    },
+    {
+      "id": "242ebb72-04b3-45bf-8fb4-0310fa6e2aca",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "\\lambda = \\dfrac{0.693}{T_{1/2}} = \\dfrac{0.693}{3.2} = 0.2166\\ \\text{d}^{-1}",
+              "f": "0.693/3.2",
+              "value": "0.2166",
+              "sf": 4,
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\lambda = \\dfrac{0.2166}{24 \\times 3600} = 2.507 \\times 10^{-6}\\ \\text{s}^{-1}",
+              "f": "0.2166/(24*3600)",
+              "value": "2.507*10^(-6)",
+              "sf": 4,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\tau = \\dfrac{1}{\\lambda} = \\dfrac{1}{0.2166} = 4.617\\ \\text{days}",
+              "f": "1/0.2166",
+              "value": "4.617",
+              "sf": 4,
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "N = \\dfrac{6.02 \\times 10^{23} \\times 1.5 \\times 10^{-3}}{Y} = \\dfrac{9.03 \\times 10^{20}}{Y}",
+              "f": "6.02*10^23*1.5*10^(-3)",
+              "value": "9.03*10^20",
+              "sf": 3,
+              "note": "Y = atomic mass in g per mol",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "A = \\dfrac{9.03 \\times 10^{20} \\times 2.5 \\times 10^{-6}}{Y} = \\dfrac{2.2575 \\times 10^{15}}{Y}",
+              "f": "9.03*10^20*2.5*10^(-6)",
+              "value": "2.2575*10^15",
+              "sf": 5,
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "A = \\dfrac{2.2575 \\times 10^{15}}{Y \\times 3.7 \\times 10^{10}} \\approx \\dfrac{6.1 \\times 10^{4}}{Y}\\ \\text{Ci}",
+              "f": "2.2575*10^15/(3.7*10^10)",
+              "value": "6.1*10^4",
+              "sf": 2,
+              "step": "s6"
+            }
+          ],
+          "answer": "0.693/3.2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 11,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 13,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 15,
+            "beats": [
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "0a6a7cdd",
+        "answer": {
+          "value": 0.21656249999999996,
+          "label": "0.2166/d; 4.617 d; 6.1e4/Y Ci"
+        }
+      }
+    },
+    {
+      "id": "297a8b56-b99a-469b-b025-0438746cfe34",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "L_n = \\dfrac{nh}{2\\pi},\\quad \\Delta L = L_3 - L_1 = \\dfrac{(3-1)h}{2\\pi} = \\dfrac{h}{\\pi}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\Delta L = \\dfrac{6.626 \\times 10^{-34}}{3.142} = 2.11 \\times 10^{-34}\\ \\text{Js}",
+              "f": "6.626*10^(-34)/3.142",
+              "value": "2.11*10^(-34)",
+              "sf": 3,
+              "step": "s2"
+            }
+          ],
+          "answer": "2.11*10^(-34)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "ea982625",
+        "answer": {
+          "value": 2.11e-34,
+          "label": "2.11 × 10⁻³⁴ Js"
+        }
+      }
+    },
+    {
+      "id": "2ae58dda-0fab-46e5-97c7-87c7869e8ba7",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "175 = 350\\,e^{-\\lambda \\cdot 3600}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "3600\\lambda = \\ln\\dfrac{350}{175} = \\ln 2 = 0.6931",
+              "f": "ln(350/175)",
+              "value": "0.6931",
+              "sf": 4,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\lambda = \\dfrac{0.6931}{3600} = 1.925 \\times 10^{-4}\\ \\text{s}^{-1}",
+              "f": "0.6931/3600",
+              "value": "1.925*10^(-4)",
+              "sf": 4,
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "T_{1/2} = \\dfrac{0.693}{1.925 \\times 10^{-4}} = 3.6 \\times 10^{3}\\ \\text{s}",
+              "f": "0.693/(1.925*10^(-4))",
+              "value": "3.6*10^3",
+              "sf": 2,
+              "step": "s4"
+            }
+          ],
+          "answer": "3.6*10^3"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "f21d65fd",
+        "answer": {
+          "value": 3600,
+          "label": "3.6 × 10³ s"
+        }
+      }
+    },
+    {
+      "id": "30778e68-2e64-4943-a459-8365c10a5aa6",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "-\\dfrac{dN}{dt} = \\lambda N \\Rightarrow \\dfrac{dN}{N} = -\\lambda\\,dt",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\ln N - \\ln N_0 = -\\lambda t",
+              "f": "ln(N)-ln(N0)",
+              "value": "-lam*t",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\ln\\dfrac{N}{N_0} = -\\lambda t",
+              "f": "ln(N/N0)",
+              "value": "-lam*t",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "N = N_0 e^{-\\lambda t}",
+              "f": "N",
+              "value": "N0*exp(-lam*t)",
+              "step": "s4"
+            }
+          ],
+          "answer": "N0*exp(-lam*t)",
+          "vars": {
+            "N0": "2",
+            "lam": "0.3",
+            "t": "1.5",
+            "N": "N0*exp(-lam*t)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 10,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 11,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "82a3b210",
+        "answer": {
+          "value": 1.2752563032435467,
+          "label": "N = N₀e^(−λt)"
+        }
+      }
+    },
+    {
+      "id": "366085a3-922e-4909-9fc1-66951ba23aab",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "E_B = (3m_H + 4m_n - m_{Li})c^2",
+              "note": "atomic masses of H and Li",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "3m_H = 3 \\times 1.007825 = 3.023475\\ \\text{u}",
+              "f": "3*1.007825",
+              "value": "3.023475",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "4m_n = 4 \\times 1.00866 = 4.03464\\ \\text{u}",
+              "f": "4*1.00866",
+              "value": "4.03464",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "3.023475 + 4.03464 - 7.016 = 0.042115\\ \\text{u}",
+              "f": "3.023475+4.03464-7.016",
+              "value": "0.042115",
+              "sf": 5,
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "E_B = 0.042115 \\times 931.5 = 39.23\\ \\text{MeV}",
+              "f": "0.042115*931.5",
+              "value": "39.23",
+              "sf": 4,
+              "step": "s5"
+            }
+          ],
+          "answer": "0.042115*931.5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "5e409b5e",
+        "answer": {
+          "value": 39.2301225,
+          "label": "39.23 MeV"
+        }
+      }
+    },
+    {
+      "id": "383cdea8-ce67-4240-92b7-42a3d95614a6",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "R = R_0 A^{1/3},\\quad R_0 = 1.2 \\times 10^{-15}\\ \\text{m},\\quad A = 70",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "R = 1.2 \\times 10^{-15} \\times 70^{1/3} = 4.946 \\times 10^{-15}\\ \\text{m}",
+              "f": "1.2*10^(-15)*70^(1/3)",
+              "value": "4.946*10^(-15)",
+              "sf": 4,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "m = 69.924 \\times 1.66 \\times 10^{-27} = 1.1607 \\times 10^{-25}\\ \\text{kg}",
+              "f": "69.924*1.66*10^(-27)",
+              "value": "1.1607*10^(-25)",
+              "sf": 5,
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\rho = \\dfrac{3m}{4\\pi R^3} = 2.285 \\times 10^{17}\\ \\text{kg m}^{-3}",
+              "f": "3*69.924*1.66*10^(-27)/(4*pi*(4.95*10^(-15))^3)",
+              "value": "2.285*10^17",
+              "sf": 4,
+              "note": "R = 4.95 × 10⁻¹⁵ m in the working",
+              "step": "s4"
+            }
+          ],
+          "answer": "1.2*10^(-15)*70^(1/3)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "fece886b",
+        "answer": {
+          "value": 4.945542359770267e-15,
+          "label": "4.946e-15 m; 2.285e17 kg/m³"
+        }
+      }
+    },
+    {
+      "id": "3abc5546-105c-44bd-bb06-b6837fea284f",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "L = mvr,\\quad m = 9.1 \\times 10^{-31}\\ \\text{kg}",
+              "step": "s1"
+            },
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "r = 5.3 \\times 10^{-11}\\ \\text{m},\\quad v = 3 \\times 10^{6}\\ \\text{m/s}"
+            },
+            {
+              "kind": "calc",
+              "tex": "mv = 9.1 \\times 10^{-31} \\times 3 \\times 10^{6} = 2.73 \\times 10^{-24}",
+              "f": "9.1*10^(-31)*3*10^6",
+              "value": "2.73*10^(-24)",
+              "sf": 3,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "L = 2.73 \\times 10^{-24} \\times 5.3 \\times 10^{-11} = 1.447 \\times 10^{-34}\\ \\text{kg m}^2\\text{/s}",
+              "f": "2.73*10^(-24)*5.3*10^(-11)",
+              "value": "1.447*10^(-34)",
+              "sf": 4,
+              "step": "s3"
+            }
+          ],
+          "answer": "2.73*10^(-24)*5.3*10^(-11)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "ef7b7e91",
+        "answer": {
+          "value": 1.4468999999999998e-34,
+          "label": "1.447 × 10⁻³⁴ kg m²/s"
+        }
+      }
+    },
+    {
+      "id": "3d40bb92-2e7c-4fbf-a702-973258e33bf0",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "E_n = -\\dfrac{13.6}{n^2}\\ \\text{eV},\\quad n = 2,\\ 3",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "E_2 = -\\dfrac{13.6}{2^2} = -3.4\\ \\text{eV}",
+              "f": "-13.6/4",
+              "value": "-3.4",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "E_3 = -\\dfrac{13.6}{3^2} = -1.51\\ \\text{eV}",
+              "f": "-13.6/9",
+              "value": "-1.51",
+              "sf": 3,
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "E_2 - E_1 = -3.4 + 13.6 = 10.2\\ \\text{eV}",
+              "f": "-3.4+13.6",
+              "value": "10.2",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "E_3 - E_1 = -1.51 + 13.6 = 12.09\\ \\text{eV}",
+              "f": "-1.51+13.6",
+              "value": "12.09",
+              "sf": 4,
+              "step": "s5"
+            }
+          ],
+          "answer": "-13.6/4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "1212afb1",
+        "answer": {
+          "value": -3.4,
+          "label": "-3.4, -1.51; 10.2, 12.09 eV"
+        }
+      }
+    },
+    {
+      "id": "3d8667ee-7795-450e-a5b3-84438554d14f",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\dfrac{1}{\\lambda} = R\\left(1 - \\dfrac{1}{m^2}\\right),\\quad R = 1.097 \\times 10^{7}\\ \\text{m}^{-1}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "m = 2:\\ \\lambda = \\dfrac{4}{3R} = \\dfrac{4}{3 \\times 1.097 \\times 10^{7}} = 1.215 \\times 10^{-7}\\ \\text{m}",
+              "f": "4/(3*1.097*10^7)",
+              "value": "1.215*10^(-7)",
+              "sf": 4,
+              "note": "longest wavelength: 1215 Å",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "m = \\infty:\\ \\lambda = \\dfrac{1}{R} = \\dfrac{1}{1.097 \\times 10^{7}} = 9.116 \\times 10^{-8}\\ \\text{m}",
+              "f": "1/(1.097*10^7)",
+              "value": "9.116*10^(-8)",
+              "sf": 4,
+              "note": "shortest wavelength: 911.6 Å",
+              "step": "s3"
+            }
+          ],
+          "answer": "4/(3*1.097*10^7)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "66fa184e",
+        "answer": {
+          "value": 1.215436037678517e-7,
+          "label": "1215 Å; 911.6 Å"
+        }
+      }
+    },
+    {
+      "id": "414c9a08-4a92-4d76-934f-e6e478e7adff",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "r_n = \\dfrac{n^2h^2\\varepsilon_0}{\\pi m_e e^2}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "m_e v_n^2 = \\dfrac{e^2}{4\\pi\\varepsilon_0 r_n}",
+              "f": "me*vn^2",
+              "value": "q^2/(4*pi*eps*rn)",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "v_n = \\dfrac{nh}{2\\pi m_e r_n}",
+              "f": "vn",
+              "value": "n*h/(2*pi*me*rn)",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "m_e\\left(\\dfrac{nh}{2\\pi m_e r_n}\\right)^2 = \\dfrac{e^2}{4\\pi\\varepsilon_0 r_n}",
+              "f": "me*(n*h/(2*pi*me*rn))^2",
+              "value": "q^2/(4*pi*eps*rn)",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{n^2h^2}{4\\pi^2 m_e r_n^2} = \\dfrac{e^2}{4\\pi\\varepsilon_0 r_n}",
+              "f": "n^2*h^2/(4*pi^2*me*rn^2)",
+              "value": "q^2/(4*pi*eps*rn)",
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "r_n = \\dfrac{n^2h^2\\varepsilon_0}{\\pi m_e e^2}",
+              "f": "rn",
+              "value": "n^2*h^2*eps/(pi*me*q^2)",
+              "step": "s6"
+            }
+          ],
+          "answer": "n^2*h^2*eps/(pi*me*q^2)",
+          "vars": {
+            "n": "2",
+            "h": "3",
+            "me": "2",
+            "q": "1.5",
+            "eps": "0.8",
+            "rn": "n^2*h^2*eps/(pi*me*q^2)",
+            "vn": "n*h/(2*pi*me*rn)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 11,
+            "beats": [
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "5114fbf2",
+        "answer": {
+          "value": 2.0371832715762603,
+          "label": "r = n²h²ε₀/(π m e²)"
+        }
+      }
+    },
+    {
+      "id": "43ce24ef-b56b-44a8-bf5f-548a3541e16c",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "Q = \\left[4m_p - m_\\alpha - 2m_e\\right]c^2",
+              "note": "energy of neutrinos neglected",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "4m_p = 4 \\times 1.00728 = 4.02912\\ \\text{u}",
+              "f": "4*1.00728",
+              "value": "4.02912",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "4.02912 - 4.001506 - 2 \\times 0.00055 = 0.026514\\ \\text{u}",
+              "f": "4.02912-4.001506-2*0.00055",
+              "value": "0.026514",
+              "sf": 5,
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "Q = 0.026514 \\times 931.5 = 24.70\\ \\text{MeV}",
+              "f": "0.026514*931.5",
+              "value": "24.70",
+              "sf": 4,
+              "step": "s4"
+            }
+          ],
+          "answer": "0.026514*931.5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "484a0a56",
+        "answer": {
+          "value": 24.697791,
+          "label": "24.70 MeV"
+        }
+      }
+    },
+    {
+      "id": "453106a5-9d6d-47bb-8750-a8901f908624",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "x + y = 1 - 0.7899 = 0.2101",
+              "f": "1-0.7899",
+              "value": "0.2101",
+              "dp": 4,
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "0.7899 \\times 23.98504 = 18.94578",
+              "f": "0.7899*23.98504",
+              "value": "18.94578",
+              "dp": 5,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "24.98584x + 25.98259y = 24.312 - 18.94578 = 5.36622",
+              "f": "24.312-18.94578",
+              "value": "5.36622",
+              "dp": 5,
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "24.98584 \\times 0.2101 = 5.24952",
+              "f": "24.98584*0.2101",
+              "value": "5.24952",
+              "dp": 5,
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "25.98259 - 24.98584 = 0.99675",
+              "f": "25.98259-24.98584",
+              "value": "0.99675",
+              "dp": 5,
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "y = \\dfrac{5.36622 - 5.24952}{0.99675} = 0.1171",
+              "f": "(5.36622-5.24952)/0.99675",
+              "value": "0.1171",
+              "dp": 4,
+              "step": "s6"
+            },
+            {
+              "kind": "calc",
+              "tex": "x = 0.2101 - 0.1171 = 0.0930",
+              "f": "0.2101-0.1171",
+              "value": "0.093",
+              "dp": 3,
+              "step": "s7"
+            }
+          ],
+          "answer": "0.2101-0.1171"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 10,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 11,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 12,
+            "beats": [
+              "s6"
+            ]
+          },
+          {
+            "from": 13,
+            "beats": [
+              "s7"
+            ]
+          }
+        ],
+        "fingerprint": "856a8d74",
+        "answer": {
+          "value": 0.09300000000000001,
+          "label": "9.3% (Mg-25); 11.7% (Mg-26)"
+        }
+      }
+    },
+    {
+      "id": "4a38d8d2-5d05-4c50-b070-dec330a4b4b8",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "A = 10.0 \\times 10^{-3} \\times 3.7 \\times 10^{10} = 3.7 \\times 10^{8}\\ \\text{s}^{-1}",
+              "f": "10.0*10^(-3)*3.7*10^10",
+              "value": "3.7*10^8",
+              "sf": 2,
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "T_{1/2} = 5.3 \\times 3.154 \\times 10^{7} = 1.6716 \\times 10^{8}\\ \\text{s}",
+              "f": "5.3*3.154*10^7",
+              "value": "1.6716*10^8",
+              "sf": 5,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\lambda = \\dfrac{0.693}{1.6716 \\times 10^{8}} = 4.146 \\times 10^{-9}\\ \\text{s}^{-1}",
+              "f": "0.693/(1.6716*10^8)",
+              "value": "4.146*10^(-9)",
+              "sf": 4,
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "N = \\dfrac{3.7 \\times 10^{8}}{4.146 \\times 10^{-9}} = 8.924 \\times 10^{16}",
+              "f": "3.7*10^8/(4.146*10^(-9))",
+              "value": "8.924*10^16",
+              "sf": 4,
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "m = \\dfrac{8.924 \\times 10^{16}}{6.022 \\times 10^{23}} \\times 60 = 8.89 \\times 10^{-6}\\ \\text{g}",
+              "f": "8.924*10^16/(6.022*10^23)*60",
+              "value": "8.89*10^(-6)",
+              "sf": 3,
+              "step": "s5"
+            }
+          ],
+          "answer": "8.924*10^16/(6.022*10^23)*60"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "4232a904",
+        "answer": {
+          "value": 0.000008891398206575888,
+          "label": "8.89 × 10⁻⁶ g"
+        }
+      }
+    },
+    {
+      "id": "4e11088b-676f-45b8-a813-6229f95f7932",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "E_n \\propto \\dfrac{1}{n^2},\\quad E_2 = -3.4\\ \\text{eV}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{E_3}{E_2} = \\dfrac{2^2}{3^2} = \\dfrac{4}{9}",
+              "f": "2^2/3^2",
+              "value": "4/9",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "E_3 = \\dfrac{4}{9} \\times (-3.4) = -1.51\\ \\text{eV}",
+              "f": "4/9*(-3.4)",
+              "value": "-1.51",
+              "sf": 3,
+              "step": "s3"
+            }
+          ],
+          "answer": "4/9*(-3.4)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "f21363f1",
+        "answer": {
+          "value": -1.511111111111111,
+          "label": "-1.51 eV"
+        }
+      }
+    },
+    {
+      "id": "596e6e2b-86d2-4544-9f9b-274c15f97bbc",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\dfrac{1}{\\lambda} \\propto \\dfrac{1}{n^2} - \\dfrac{1}{m^2}",
+              "note": "longest wavelength = smallest bracket",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "2 \\to 1:\\ \\dfrac{1}{1^2} - \\dfrac{1}{2^2} = 0.7500",
+              "f": "1-1/4",
+              "value": "0.75",
+              "sf": 4,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "5 \\to 4:\\ \\dfrac{1}{4^2} - \\dfrac{1}{5^2} = 0.02250",
+              "f": "1/16-1/25",
+              "value": "0.0225",
+              "sf": 4,
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "7 \\to 6:\\ \\dfrac{1}{6^2} - \\dfrac{1}{7^2} = 0.007370",
+              "f": "1/36-1/49",
+              "value": "0.00737",
+              "sf": 4,
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "8 \\to 7:\\ \\dfrac{1}{7^2} - \\dfrac{1}{8^2} = {{1:0.004783}}",
+              "f": "1/49-1/64",
+              "value": "0.004783",
+              "sf": 4,
+              "step": "s5"
+            }
+          ],
+          "answer": "1/49-1/64"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "3586066a",
+        "answer": {
+          "value": 0.004783163265306121,
+          "label": "n = 8 to n = 7 (D)"
+        }
+      }
+    },
+    {
+      "id": "5b28bf91-612e-4d49-9674-34abd39266e8",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "r_n = a_0 n^2,\\quad a_0 = 0.53 \\times 10^{-10}\\ \\text{m}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{r_8}{r_4} = \\dfrac{8^2}{4^2} = \\dfrac{64}{16} = {{1:4}}",
+              "f": "8^2/4^2",
+              "value": "4",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "r_4 = 16a_0 = 8.48 \\times 10^{-10}\\ \\text{m}",
+              "f": "16*0.53*10^(-10)",
+              "value": "8.48*10^(-10)",
+              "sf": 3,
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "r_8 = 64a_0 = 33.92 \\times 10^{-10}\\ \\text{m}",
+              "f": "64*0.53*10^(-10)",
+              "value": "33.92*10^(-10)",
+              "sf": 4,
+              "step": "s4"
+            }
+          ],
+          "answer": "8^2/4^2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "5967cee4",
+        "answer": {
+          "value": 4,
+          "label": "4"
+        }
+      }
+    },
+    {
+      "id": "5e932dd8-318e-4ccb-a35b-7b42898dedec",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\lambda_{\\text{limit}} = \\dfrac{n^2}{R_H} = n^2 \\times 911.6\\ \\text{\\AA}",
+              "note": "Lyman limit 911.6 Å, n = 1",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\text{Balmer}\\ (n = 2):\\ 4 \\times 911.6 = 3646\\ \\text{\\AA}",
+              "f": "4*911.6",
+              "value": "3646",
+              "dp": 0,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\text{Paschen}\\ (n = 3):\\ 9 \\times 911.6 = 8204\\ \\text{\\AA}",
+              "f": "9*911.6",
+              "value": "8204",
+              "dp": 0,
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\text{Brackett}\\ (n = 4):\\ 16 \\times 911.6 = 14586\\ \\text{\\AA}",
+              "f": "16*911.6",
+              "value": "14586",
+              "dp": 0,
+              "step": "s4"
+            }
+          ],
+          "answer": "4*911.6"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 10,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 11,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "6761a95d",
+        "answer": {
+          "value": 3646.4,
+          "label": "3646 Å, 8204 Å, 14586 Å"
+        }
+      }
+    },
+    {
+      "id": "5f88c591-830e-4e5b-b0b5-8c8c28f56305",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "N = f \\times t,\\quad f = \\dfrac{v_2}{2\\pi r_2}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "v_2 = \\dfrac{e^2}{2\\varepsilon_0 h n} = 1.094 \\times 10^{6}\\ \\text{m s}^{-1}",
+              "f": "(1.602*10^(-19))^2/(2*8.854*10^(-12)*6.626*10^(-34)*2)",
+              "value": "1.094*10^6",
+              "sf": 4,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "r_2 = 4 \\times 5.293 \\times 10^{-11} = 2.117 \\times 10^{-10}\\ \\text{m}",
+              "f": "4*5.293*10^(-11)",
+              "value": "2.117*10^(-10)",
+              "sf": 4,
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "f = \\dfrac{1.094 \\times 10^{6}}{2\\pi \\times 2.117 \\times 10^{-10}} = 8.225 \\times 10^{14}\\ \\text{s}^{-1}",
+              "f": "1.094*10^6/(2*pi*2.117*10^(-10))",
+              "value": "8.225*10^14",
+              "sf": 4,
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "N = 8.225 \\times 10^{14} \\times 10^{-8} = 8.225 \\times 10^{6}",
+              "f": "8.225*10^14*10^(-8)",
+              "value": "8.225*10^6",
+              "sf": 4,
+              "step": "s5"
+            }
+          ],
+          "answer": "8.225*10^14*10^(-8)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "cafd12a0",
+        "answer": {
+          "value": 8225000,
+          "label": "8.225 × 10⁶ revolutions"
+        }
+      }
+    },
+    {
+      "id": "62a9a79a-ffd5-431c-9499-03515542036e",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "T_{1/2} = 28 \\times 3.154 \\times 10^{7} = 8.831 \\times 10^{8}\\ \\text{s}",
+              "f": "28*3.154*10^7",
+              "value": "8.831*10^8",
+              "sf": 4,
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\lambda = \\dfrac{0.693}{8.831 \\times 10^{8}} = 7.847 \\times 10^{-10}\\ \\text{s}^{-1}",
+              "f": "0.693/(8.831*10^8)",
+              "value": "7.847*10^(-10)",
+              "sf": 4,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "N = \\dfrac{5 \\times 10^{-3}}{90} \\times 6.022 \\times 10^{23} = 3.346 \\times 10^{19}",
+              "f": "5*10^(-3)/90*6.022*10^23",
+              "value": "3.346*10^19",
+              "sf": 4,
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "A = \\lambda N = 7.847 \\times 10^{-10} \\times 3.346 \\times 10^{19} = 2.626 \\times 10^{10}\\ \\text{Bq}",
+              "f": "7.847*10^(-10)*3.346*10^19",
+              "value": "2.626*10^10",
+              "sf": 4,
+              "step": "s4"
+            }
+          ],
+          "answer": "7.847*10^(-10)*3.346*10^19"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "fcbcc85a",
+        "answer": {
+          "value": 26256062000.000004,
+          "label": "2.626 × 10¹⁰ Bq"
+        }
+      }
+    },
+    {
+      "id": "62d4a12d-ec38-4ecd-b1a6-1ad4f2b7d307",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "E_n = \\dfrac{E_1}{n^2},\\quad E_2 = -3.4\\ \\text{eV}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "E_1 = 4 \\times (-3.4) = -13.6\\ \\text{eV}",
+              "f": "4*(-3.4)",
+              "value": "-13.6",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "E_3 = \\dfrac{-13.6}{9} = -1.511\\ \\text{eV}",
+              "f": "-13.6/9",
+              "value": "-1.511",
+              "sf": 4,
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "KE = -E_3 = +1.511\\ \\text{eV}",
+              "f": "1.511",
+              "value": "1.511",
+              "sf": 4,
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "PE = 2E_3 = 2 \\times (-1.511) = -3.022\\ \\text{eV}",
+              "f": "2*(-1.511)",
+              "value": "-3.022",
+              "sf": 4,
+              "step": "s5"
+            }
+          ],
+          "answer": "1.511"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 10,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "4944cecb",
+        "answer": {
+          "value": 1.511,
+          "label": "KE 1.511 eV; PE -3.022 eV"
+        }
+      }
+    },
+    {
+      "id": "6a745d83-4bdc-44e7-97e2-490507d12637",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "-\\dfrac{dN}{dt} = \\lambda N \\Rightarrow \\dfrac{dN}{N} = -\\lambda\\,dt",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\ln N - \\ln N_0 = -\\lambda t",
+              "f": "ln(N)-ln(N0)",
+              "value": "-lam*t",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\ln\\left(\\dfrac{N}{N_0}\\right) = -\\lambda t",
+              "f": "ln(N/N0)",
+              "value": "-lam*t",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "N = N_0 e^{-\\lambda t}",
+              "f": "N",
+              "value": "N0*exp(-lam*t)",
+              "step": "s4"
+            }
+          ],
+          "answer": "N0*exp(-lam*t)",
+          "vars": {
+            "N0": "2",
+            "lam": "0.3",
+            "t": "1.5",
+            "N": "N0*exp(-lam*t)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 11,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 12,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 14,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "83e79821",
+        "answer": {
+          "value": 1.2752563032435467,
+          "label": "N = N₀e^(−λt)"
+        }
+      }
+    },
+    {
+      "id": "71647668-d24e-4598-a968-d697db26e568",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\dfrac{1}{\\lambda} = R\\left(\\dfrac{1}{n^2} - \\dfrac{1}{m^2}\\right),\\quad R = 1.097 \\times 10^{7}\\ \\text{m}^{-1}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\text{Paschen}\\ (n = 3,\\ m = \\infty):\\ \\lambda = \\dfrac{9}{R} = 8.204 \\times 10^{-7}\\ \\text{m}",
+              "f": "9/(1.097*10^7)",
+              "value": "8.204*10^(-7)",
+              "sf": 4,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\text{Balmer}\\ (n = 2,\\ m = 3):\\ \\lambda = \\dfrac{36}{5R} = 6.563 \\times 10^{-7}\\ \\text{m}",
+              "f": "36/(5*1.097*10^7)",
+              "value": "6.563*10^(-7)",
+              "sf": 4,
+              "step": "s3"
+            }
+          ],
+          "answer": "9/(1.097*10^7)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "48fe3d13",
+        "answer": {
+          "value": 8.204193254329991e-7,
+          "label": "8204 Å; 6563 Å"
+        }
+      }
+    },
+    {
+      "id": "75029ef8-84c0-429a-ae5d-25e426e792c4",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "E_n = -\\dfrac{K}{n^2},\\quad K = \\dfrac{m_e Z^2 e^4}{8\\varepsilon_0^2 h^2}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "h\\nu = \\dfrac{hc}{\\lambda} = E_m - E_n",
+              "f": "h*c/lam",
+              "value": "Emm-Enn",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "E_m - E_n = K\\left(\\dfrac{1}{n^2} - \\dfrac{1}{m^2}\\right)",
+              "f": "Emm-Enn",
+              "value": "K*(1/n^2-1/m^2)",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{1}{\\lambda} = \\dfrac{K}{hc}\\left(\\dfrac{1}{n^2} - \\dfrac{1}{m^2}\\right)",
+              "f": "1/lam",
+              "value": "K/(h*c)*(1/n^2-1/m^2)",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{K}{hc} = \\dfrac{m_e Z^2 e^4}{8c\\varepsilon_0^2 h^3} = R_H Z^2",
+              "f": "K/(h*c)",
+              "value": "Z^2*RH",
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\lambda_{\\min}\\ \\text{(Lyman)} = \\dfrac{1}{R_H} = 9.116 \\times 10^{-8}\\ \\text{m}",
+              "f": "1/(1.097*10^7)",
+              "value": "9.116*10^(-8)",
+              "sf": 4,
+              "step": "s6"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\lambda_{\\min}\\ \\text{(Balmer)} = \\dfrac{4}{R_H} = 3.646 \\times 10^{-7}\\ \\text{m}",
+              "f": "4/(1.097*10^7)",
+              "value": "3.646*10^(-7)",
+              "sf": 4,
+              "step": "s7"
+            }
+          ],
+          "answer": "1/(1.097*10^7)",
+          "vars": {
+            "n": "2",
+            "m": "3",
+            "Z": "2",
+            "me": "2",
+            "q": "1.5",
+            "eps": "0.8",
+            "h": "3",
+            "c": "5",
+            "K": "me*Z^2*q^4/(8*eps^2*h^2)",
+            "RH": "me*q^4/(8*c*eps^2*h^3)",
+            "Enn": "-K/n^2",
+            "Emm": "-K/m^2",
+            "lam": "1/(Z^2*RH*(1/n^2-1/m^2))"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s4",
+              "s5"
+            ]
+          },
+          {
+            "from": 13,
+            "beats": [
+              "s6"
+            ]
+          },
+          {
+            "from": 14,
+            "beats": [
+              "s7"
+            ]
+          }
+        ],
+        "fingerprint": "685f4ad7",
+        "answer": {
+          "value": 9.115770282588879e-8,
+          "label": "911.6 Å; 3646 Å"
+        }
+      }
+    },
+    {
+      "id": "75ca818a-ec09-4778-a290-1a3dc20ddc6e",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "T_{1/2} = 272 \\times 24 \\times 3600 = 2.350 \\times 10^{7}\\ \\text{s}",
+              "f": "272*24*3600",
+              "value": "2.350*10^7",
+              "sf": 4,
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\lambda = \\dfrac{0.693}{2.350 \\times 10^{7}} = 2.95 \\times 10^{-8}\\ \\text{s}^{-1}",
+              "f": "0.693/(2.350*10^7)",
+              "value": "2.95*10^(-8)",
+              "sf": 3,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\tau = \\dfrac{1}{\\lambda} = \\dfrac{1}{2.95 \\times 10^{-8}} = 3.39 \\times 10^{7}\\ \\text{s}",
+              "f": "1/(2.95*10^(-8))",
+              "value": "3.39*10^7",
+              "sf": 3,
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "A = 2.0 \\times 10^{-6} \\times 3.7 \\times 10^{10} = 7.4 \\times 10^{4}\\ \\text{s}^{-1}",
+              "f": "2.0*10^(-6)*3.7*10^10",
+              "value": "7.4*10^4",
+              "sf": 2,
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "N = \\dfrac{7.4 \\times 10^{4}}{2.95 \\times 10^{-8}} = 2.51 \\times 10^{12}",
+              "f": "7.4*10^4/(2.95*10^(-8))",
+              "value": "2.51*10^12",
+              "sf": 3,
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\lambda t = 0.693 \\times \\dfrac{365}{272} = 0.9299",
+              "f": "0.693*365/272",
+              "value": "0.9299",
+              "sf": 4,
+              "step": "s6"
+            },
+            {
+              "kind": "calc",
+              "tex": "A(t) = 2.0 \\times e^{-0.9299} = 2.0 \\times 0.3946 = 0.789\\ \\mu\\text{Ci}",
+              "f": "2.0*exp(-0.9299)",
+              "value": "0.789",
+              "sf": 3,
+              "step": "s7"
+            }
+          ],
+          "answer": "1/(2.95*10^(-8))"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s6"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s7"
+            ]
+          }
+        ],
+        "fingerprint": "c6c5ad08",
+        "answer": {
+          "value": 33898305.08474576,
+          "label": "3.39e7 s; 2.51e12; 0.789 µCi"
+        }
+      }
+    },
+    {
+      "id": "78d1c9d8-40d6-4a08-821a-b5c528f71644",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "Z = 95,\\ N = 244 - 95 = 149",
+              "note": "atomic mass, so E_B uses m_H",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "95 \\times 1.007825 = 95.743375\\ \\text{u}",
+              "f": "95*1.007825",
+              "value": "95.743375",
+              "dp": 6,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "149 \\times 1.00866 = 150.29034\\ \\text{u}",
+              "f": "149*1.00866",
+              "value": "150.29034",
+              "dp": 5,
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "95.743375 + 150.29034 - 244.06428 = 1.969435\\ \\text{u}",
+              "f": "95.743375+150.29034-244.06428",
+              "value": "1.969435",
+              "dp": 6,
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "E_B = 1.969435 \\times 931.5 = 1834.53\\ \\text{MeV}",
+              "f": "1.969435*931.5",
+              "value": "1834.53",
+              "dp": 2,
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{E_B}{A} = \\dfrac{1834.53}{244} = 7.52\\ \\text{MeV}",
+              "f": "1834.53/244",
+              "value": "7.52",
+              "dp": 2,
+              "step": "s6"
+            }
+          ],
+          "answer": "1834.53/244"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "97e48938",
+        "answer": {
+          "value": 7.518565573770491,
+          "label": "7.52 MeV per nucleon"
+        }
+      }
+    },
+    {
+      "id": "7ee40b96-117d-474e-bcee-2aa070532ce5",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\nu = cR_H\\left(\\dfrac{1}{n^2} - \\dfrac{1}{m^2}\\right)",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\nu_1 = cR_H\\left(\\dfrac{1}{1^2} - \\dfrac{1}{2^2}\\right) = \\dfrac{3}{4}cR_H",
+              "f": "nu1",
+              "value": "3/4*c*RH",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\nu_L = cR_H\\left(\\dfrac{1}{1^2} - 0\\right) = cR_H",
+              "f": "nuL",
+              "value": "c*RH",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\nu_B = cR_H\\left(\\dfrac{1}{2^2} - 0\\right) = \\dfrac{cR_H}{4}",
+              "f": "nuB",
+              "value": "c*RH/4",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\nu_L - \\nu_B = cR_H - \\dfrac{cR_H}{4} = \\dfrac{3}{4}cR_H = \\nu_1",
+              "f": "nuL-nuB",
+              "value": "nu1",
+              "step": "s5"
+            }
+          ],
+          "answer": "nu1",
+          "vars": {
+            "c": "3",
+            "RH": "2",
+            "nu1": "c*RH*(1-1/4)",
+            "nuL": "c*RH*(1-0)",
+            "nuB": "c*RH*(1/4-0)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "304116b9",
+        "answer": {
+          "value": 4.5,
+          "label": "nu1 = nuL - nuB = 3cR/4"
+        }
+      }
+    },
+    {
+      "id": "86b2410b-bcd0-4bba-8fa8-2652fa4767a0",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{1}{4\\pi\\varepsilon_0}\\dfrac{Ze^2}{r^2} = \\dfrac{mv^2}{r}",
+              "f": "Z*q^2/(4*pi*eps*rn^2)",
+              "value": "me*vn^2/rn",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "mv^2 = \\dfrac{1}{4\\pi\\varepsilon_0}\\dfrac{Ze^2}{r}",
+              "f": "me*vn^2",
+              "value": "Z*q^2/(4*pi*eps*rn)",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "v = \\dfrac{nh}{2\\pi mr}",
+              "f": "vn",
+              "value": "n*h/(2*pi*me*rn)",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "m\\left(\\dfrac{nh}{2\\pi mr}\\right)^2 = \\dfrac{Ze^2}{4\\pi\\varepsilon_0 r}",
+              "f": "me*(n*h/(2*pi*me*rn))^2",
+              "value": "Z*q^2/(4*pi*eps*rn)",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{n^2h^2}{4\\pi^2 mr^2} = \\dfrac{Ze^2}{4\\pi\\varepsilon_0 r}",
+              "f": "n^2*h^2/(4*pi^2*me*rn^2)",
+              "value": "Z*q^2/(4*pi*eps*rn)",
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "r_n = \\dfrac{\\varepsilon_0 n^2h^2}{\\pi m Z e^2}",
+              "f": "rn",
+              "value": "eps*n^2*h^2/(pi*me*Z*q^2)",
+              "step": "s6"
+            }
+          ],
+          "answer": "eps*n^2*h^2/(pi*me*Z*q^2)",
+          "vars": {
+            "n": "2",
+            "h": "3",
+            "me": "2",
+            "q": "1.5",
+            "eps": "0.8",
+            "Z": "2",
+            "rn": "n^2*h^2*eps/(pi*me*Z*q^2)",
+            "vn": "n*h/(2*pi*me*rn)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 10,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 12,
+            "beats": [
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "afa1f253",
+        "answer": {
+          "value": 1.0185916357881302,
+          "label": "r = ε₀n²h²/(π m Z e²)"
+        }
+      }
+    },
+    {
+      "id": "893d6df3-26e5-4071-83cf-b6046c014e8c",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\omega_{\\max}\\ (n = 1) = \\dfrac{\\pi m_e e^4}{2\\varepsilon_0^2 h^3}",
+              "note": "v/r varies as 1/n³",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\pi m_e e^4 = \\pi \\times 9.109 \\times 10^{-31} \\times (1.602 \\times 10^{-19})^4 = 1.885 \\times 10^{-105}",
+              "f": "pi*9.109*10^(-31)*(1.602*10^(-19))^4",
+              "value": "1.885*10^(-105)",
+              "sf": 4,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "2\\varepsilon_0^2 h^3 = 2 \\times (8.854 \\times 10^{-12})^2 \\times (6.626 \\times 10^{-34})^3 = 4.561 \\times 10^{-122}",
+              "f": "2*(8.854*10^(-12))^2*(6.626*10^(-34))^3",
+              "value": "4.561*10^(-122)",
+              "sf": 4,
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\omega_{\\max} = \\dfrac{1.885 \\times 10^{-105}}{4.561 \\times 10^{-122}} = 4.13 \\times 10^{16}\\ \\text{rad s}^{-1}",
+              "f": "1.885*10^(-105)/(4.561*10^(-122))",
+              "value": "4.13*10^16",
+              "sf": 3,
+              "step": "s4"
+            }
+          ],
+          "answer": "1.885*10^(-105)/(4.561*10^(-122))"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "4961dd77",
+        "answer": {
+          "value": 41328655996492000,
+          "label": "4.13 × 10¹⁶ rad/s"
+        }
+      }
+    },
+    {
+      "id": "8a71a3af-c458-40cd-91b3-74a2fa4535ad",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "Q = \\left[m_{Li} + m_H - 2m_{He}\\right]c^2",
+              "note": "proton entered as a hydrogen atom",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "7.016 + 1.007825 = 8.023825\\ \\text{u}",
+              "f": "7.016+1.007825",
+              "value": "8.023825",
+              "dp": 6,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "2 \\times 4.0026 = 8.0052\\ \\text{u}",
+              "f": "2*4.0026",
+              "value": "8.0052",
+              "dp": 4,
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "8.023825 - 8.0052 = 0.018625\\ \\text{u}",
+              "f": "8.023825-8.0052",
+              "value": "0.018625",
+              "dp": 6,
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "Q = 0.018625 \\times 931.5 = 17.35\\ \\text{MeV}",
+              "f": "0.018625*931.5",
+              "value": "17.35",
+              "dp": 2,
+              "step": "s5"
+            }
+          ],
+          "answer": "0.018625*931.5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 10,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 11,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 12,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "db84e408",
+        "answer": {
+          "value": 17.3491875,
+          "label": "17.35 MeV"
+        }
+      }
+    },
+    {
+      "id": "960ab823-53bb-4ab4-918d-b8fb6662fcb8",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "-\\dfrac{dN}{dt} = \\lambda N \\Rightarrow \\dfrac{dN}{N} = -\\lambda\\,dt",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\ln N - \\ln N_0 = -\\lambda t",
+              "f": "ln(N)-ln(N0)",
+              "value": "-lam*t",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\ln\\left(\\dfrac{N}{N_0}\\right) = -\\lambda t",
+              "f": "ln(N/N0)",
+              "value": "-lam*t",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "N = N_0 e^{-\\lambda t}",
+              "f": "N",
+              "value": "N0*exp(-lam*t)",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "N(T_{1/2}) = N_0 e^{-\\ln 2} = \\dfrac{N_0}{2}",
+              "f": "N0*exp(-lam*(ln(2)/lam))",
+              "value": "N0/2",
+              "note": "at t = T½ the curve has fallen to N₀/2",
+              "step": "s5"
+            }
+          ],
+          "answer": "N0*exp(-lam*t)",
+          "vars": {
+            "N0": "2",
+            "lam": "0.3",
+            "t": "1.5",
+            "N": "N0*exp(-lam*t)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 13,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 14,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 16,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 22,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "426a8a6d",
+        "answer": {
+          "value": 1.2752563032435467,
+          "label": "N = N₀e^(−λt)"
+        }
+      }
+    },
+    {
+      "id": "97d1ed04-693f-4ecb-baf4-0f67dacd8a2c",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "Q = \\left[m_{Pu} - m_U - m_{He}\\right]c^2",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "238.04955 - 234.04095 - 4.002603 = 0.005997\\ \\text{u}",
+              "f": "238.04955-234.04095-4.002603",
+              "value": "0.005997",
+              "dp": 6,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "Q = 0.005997 \\times 931.5 = 5.5862\\ \\text{MeV}",
+              "f": "0.005997*931.5",
+              "value": "5.5862",
+              "dp": 4,
+              "step": "s3"
+            }
+          ],
+          "answer": "0.005997*931.5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "be1ee6c1",
+        "answer": {
+          "value": 5.5862055,
+          "label": "5.5862 MeV"
+        }
+      }
+    },
+    {
+      "id": "99374de7-ba19-407c-b5f7-d0932ec9cc72",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "E_n = -\\dfrac{K}{n^2},\\quad K = \\dfrac{m_e Z^2 e^4}{8\\varepsilon_0^2 h^2}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "h\\nu = E_m - E_n",
+              "f": "h*nu",
+              "value": "Emm-Enn",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "E_m - E_n = K\\left(\\dfrac{1}{n^2} - \\dfrac{1}{m^2}\\right)",
+              "f": "Emm-Enn",
+              "value": "K*(1/n^2-1/m^2)",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\nu = \\dfrac{K}{h}\\left(\\dfrac{1}{n^2} - \\dfrac{1}{m^2}\\right)",
+              "f": "nu",
+              "value": "K/h*(1/n^2-1/m^2)",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{1}{\\lambda} = \\dfrac{\\nu}{c} = \\dfrac{K}{hc}\\left(\\dfrac{1}{n^2} - \\dfrac{1}{m^2}\\right)",
+              "f": "1/lam",
+              "value": "K/(h*c)*(1/n^2-1/m^2)",
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{K}{hc} = \\dfrac{m_e Z^2 e^4}{8c\\varepsilon_0^2 h^3} = R_H Z^2",
+              "f": "K/(h*c)",
+              "value": "Z^2*RH",
+              "step": "s6"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{1}{\\lambda} = R_H Z^2\\left(\\dfrac{1}{n^2} - \\dfrac{1}{m^2}\\right)",
+              "f": "1/lam",
+              "value": "Z^2*RH*(1/n^2-1/m^2)",
+              "step": "s7"
+            }
+          ],
+          "answer": "Z^2*RH*(1/n^2-1/m^2)",
+          "vars": {
+            "n": "2",
+            "m": "3",
+            "Z": "2",
+            "me": "2",
+            "q": "1.5",
+            "eps": "0.8",
+            "h": "3",
+            "c": "5",
+            "K": "me*Z^2*q^4/(8*eps^2*h^2)",
+            "RH": "me*q^4/(8*c*eps^2*h^3)",
+            "Enn": "-K/n^2",
+            "Emm": "-K/m^2",
+            "lam": "1/(Z^2*RH*(1/n^2-1/m^2))",
+            "nu": "c/lam"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 11,
+            "beats": [
+              "s6"
+            ]
+          },
+          {
+            "from": 13,
+            "beats": [
+              "s7"
+            ]
+          }
+        ],
+        "fingerprint": "e64127c6",
+        "answer": {
+          "value": 0.008138020833333332,
+          "label": "1/λ = R_H Z²(1/n² − 1/m²)"
+        }
+      }
+    },
+    {
+      "id": "9c0f7f8c-a7db-418d-89f5-88e114c405f0",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "f = \\dfrac{v}{2\\pi r},\\quad v = 1.09 \\times 10^{6}\\ \\text{m/s},\\ r = 2.14 \\times 10^{-10}\\ \\text{m},\\ \\pi = 3.142",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "2\\pi r = 2 \\times 3.142 \\times 2.14 \\times 10^{-10} = 1.345 \\times 10^{-9}\\ \\text{m}",
+              "f": "2*3.142*2.14*10^(-10)",
+              "value": "1.345*10^(-9)",
+              "sf": 4,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "f = \\dfrac{1.09 \\times 10^{6}}{2 \\times 3.142 \\times 2.14 \\times 10^{-10}} = 8.11 \\times 10^{14}\\ \\text{Hz}",
+              "f": "1.09*10^6/(2*3.142*2.14*10^(-10))",
+              "value": "8.11*10^14",
+              "sf": 3,
+              "step": "s3"
+            }
+          ],
+          "answer": "1.09*10^6/(2*3.142*2.14*10^(-10))"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "b6725e37",
+        "answer": {
+          "value": 810543912145963.2,
+          "label": "8.11 × 10¹⁴ Hz"
+        }
+      }
+    },
+    {
+      "id": "a4a5448f-693f-4d28-9333-15c47b1bcc2b",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "L_n = \\dfrac{nh}{2\\pi},\\quad \\Delta L = L_3 - L_1 = \\dfrac{(3-1)h}{2\\pi} = \\dfrac{h}{\\pi}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\Delta L = \\dfrac{6.626 \\times 10^{-34}}{3.142} = 2.109 \\times 10^{-34}\\ \\text{kg m}^2\\text{/s}",
+              "f": "6.626*10^(-34)/3.142",
+              "value": "2.109*10^(-34)",
+              "sf": 4,
+              "step": "s2"
+            }
+          ],
+          "answer": "6.626*10^(-34)/3.142"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "5e9271c2",
+        "answer": {
+          "value": 2.108847867600255e-34,
+          "label": "2.109 × 10⁻³⁴ kg m²/s"
+        }
+      }
+    },
+    {
+      "id": "a81734ba-87a3-48bb-aa21-8fceb7526ec6",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{A_2}{A_1} = \\dfrac{5 \\times 10^{9}}{10^{10}} = e^{-10\\lambda} = \\dfrac{1}{2}",
+              "f": "5*10^9/10^10",
+              "value": "1/2",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "10\\lambda = \\ln 2 = 0.693",
+              "f": "ln(2)",
+              "value": "0.693",
+              "dp": 3,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\lambda = \\dfrac{0.693}{10} = 0.0693\\ \\text{h}^{-1}",
+              "f": "0.693/10",
+              "value": "0.0693",
+              "dp": 4,
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\lambda = \\dfrac{0.0693}{3600} = 1.925 \\times 10^{-5}\\ \\text{s}^{-1}",
+              "f": "0.0693/3600",
+              "value": "1.925*10^(-5)",
+              "sf": 4,
+              "step": "s4"
+            }
+          ],
+          "answer": "0.693/10"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 10,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 13,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "884096d5",
+        "answer": {
+          "value": 0.0693,
+          "label": "0.0693 /h = 1.925e-5 /s"
+        }
+      }
+    },
+    {
+      "id": "aa9f851a-41c3-4e03-a6c4-7c1f6045b6dc",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "Q = \\left[\\sum m_{\\text{reactants}} - \\sum m_{\\text{products}}\\right]c^2,\\quad 1\\ \\text{u} = 931.5\\ \\text{MeV}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "(a)\\ 223.0185 - 208.9811 - 14.00324 = 0.03416\\ \\text{u}",
+              "f": "223.0185-208.9811-14.00324",
+              "value": "0.03416",
+              "dp": 5,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "Q_a = 0.03416 \\times 931.5 = 31.82\\ \\text{MeV}",
+              "f": "0.03416*931.5",
+              "value": "31.82",
+              "dp": 2,
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "(b)\\ 236.0456 - 139.9106 - 93.9341 = 2.2009\\ \\text{u}",
+              "f": "236.0456-139.9106-93.9341",
+              "value": "2.2009",
+              "dp": 4,
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "2.2009 - 2 \\times 1.00866 = 0.18358\\ \\text{u}",
+              "f": "2.2009-2*1.00866",
+              "value": "0.18358",
+              "dp": 5,
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "Q_b = 0.18358 \\times 931.5 = 171.0\\ \\text{MeV}",
+              "f": "0.18358*931.5",
+              "value": "171.0",
+              "dp": 1,
+              "step": "s6"
+            },
+            {
+              "kind": "calc",
+              "tex": "(c)\\ 11.01143 - 11.0093 - 2 \\times 0.00055 = 0.00103\\ \\text{u}",
+              "f": "11.01143-11.0093-2*0.00055",
+              "value": "0.00103",
+              "dp": 5,
+              "step": "s7"
+            },
+            {
+              "kind": "calc",
+              "tex": "Q_c = 0.00103 \\times 931.5 = 0.96\\ \\text{MeV}",
+              "f": "0.00103*931.5",
+              "value": "0.96",
+              "dp": 2,
+              "step": "s8"
+            }
+          ],
+          "answer": "0.03416*931.5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 12,
+            "beats": [
+              "s4",
+              "s5"
+            ]
+          },
+          {
+            "from": 13,
+            "beats": [
+              "s6"
+            ]
+          },
+          {
+            "from": 17,
+            "beats": [
+              "s7"
+            ]
+          },
+          {
+            "from": 18,
+            "beats": [
+              "s8"
+            ]
+          }
+        ],
+        "fingerprint": "31197d95",
+        "answer": {
+          "value": 31.820040000000002,
+          "label": "31.82; 171.0; 0.96 MeV"
+        }
+      }
+    },
+    {
+      "id": "ada3ff7b-dc07-4b49-a233-b122075fae0e",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\text{conserve } A\\text{ and } Z:\\quad \\alpha = {}^{4}_{2}\\text{He}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "(a)\\ A = 226 - 4 = 222",
+              "f": "226-4",
+              "value": "222",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "(a)\\ Z = 88 - 2 = 86\\ \\Rightarrow\\ \\text{Rn}",
+              "f": "88-2",
+              "value": "86",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "(b)\\ Z = 8 + 1 = 9\\ \\Rightarrow\\ \\text{F},\\ A = 19",
+              "f": "8+1",
+              "value": "9",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "(c)\\ A = 228 - 4 = 224",
+              "f": "228-4",
+              "value": "224",
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "(c)\\ Z = 90 - 2 = 88\\ \\Rightarrow\\ \\text{Ra}",
+              "f": "90-2",
+              "value": "88",
+              "step": "s6"
+            }
+          ],
+          "answer": "226-4"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s5",
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "b065583b",
+        "answer": {
+          "value": 222,
+          "label": "Rn-222; F-19; Ra-224; e⁺"
+        }
+      }
+    },
+    {
+      "id": "b0767250-e0ff-4a7f-8b04-f49a0964a53b",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "r_n = \\dfrac{n^2}{Z}\\,a_0,\\quad n = 1",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\text{H, deuteron, tritium}\\ (Z = 1):\\ r_1 = \\dfrac{1}{1}\\,a_0 = 1\\,a_0",
+              "f": "1/1",
+              "value": "1",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\text{He}^{+}\\ (Z = 2):\\ r_1 = \\dfrac{1}{2}\\,a_0 = {{1:0.5}}\\,a_0",
+              "f": "1/2",
+              "value": "0.5",
+              "step": "s3"
+            }
+          ],
+          "answer": "1/2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "aac98b29",
+        "answer": {
+          "value": 0.5,
+          "label": "He⁺: a₀/2 (B)"
+        }
+      }
+    },
+    {
+      "id": "b3663122-e2e5-4e9a-b731-4b0a69e6419d",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{A(30)}{A(20)} = \\dfrac{6.3 \\times 10^{9}}{10^{10}} = 0.63 = e^{-10\\lambda}",
+              "f": "6.3*10^9/10^10",
+              "value": "0.63",
+              "dp": 2,
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "10\\lambda = -\\ln(0.63) = 0.4620",
+              "f": "-ln(0.63)",
+              "value": "0.4620",
+              "dp": 4,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\lambda = 0.04620\\ \\text{h}^{-1}",
+              "f": "-ln(0.63)/10",
+              "value": "0.04620",
+              "dp": 5,
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "T_{1/2} = \\dfrac{0.693}{0.04620} = 15.0\\ \\text{hours}",
+              "f": "0.693/0.0462",
+              "value": "15.0",
+              "dp": 1,
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "A_0 = 10^{10} \\times e^{20\\lambda} = 2.5195 \\times 10^{10}\\ \\text{h}^{-1}",
+              "f": "10^10*0.63^(-2)",
+              "value": "2.5195*10^10",
+              "sf": 5,
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "N_0 = \\dfrac{2.5195 \\times 10^{10}}{0.04620} = 5.45 \\times 10^{11}",
+              "f": "2.5195*10^10/0.0462",
+              "value": "5.45*10^11",
+              "sf": 3,
+              "step": "s6"
+            }
+          ],
+          "answer": "0.693/0.0462"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "abf54ce4",
+        "answer": {
+          "value": 15,
+          "label": "15 h; 5.45 × 10¹¹ atoms"
+        }
+      }
+    },
+    {
+      "id": "b64a791b-ec18-47ab-b3c0-cf72cccea854",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "K = \\dfrac{1}{4\\pi\\varepsilon_0}\\dfrac{2Ze^2}{r_1 + r_2},\\quad Z = 79",
+              "note": "1 MeV = 1.6 × 10⁻¹³ J",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "r_1 + r_2 = (6.23 + 1.80) \\times 10^{-15} = 8.03 \\times 10^{-15}\\ \\text{m}",
+              "f": "(6.23+1.80)*10^(-15)",
+              "value": "8.03*10^(-15)",
+              "sf": 3,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "K = 9 \\times 10^{9}\\,\\dfrac{2 \\times 79 \\times (1.6 \\times 10^{-19})^2}{8.03 \\times 10^{-15}} = 4.533 \\times 10^{-12}\\ \\text{J}",
+              "f": "9*10^9*2*79*(1.6*10^(-19))^2/(8.03*10^(-15))",
+              "value": "4.533*10^(-12)",
+              "sf": 4,
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "K = \\dfrac{4.533 \\times 10^{-12}}{1.6 \\times 10^{-13}} = 28.33\\ \\text{MeV}",
+              "f": "4.533*10^(-12)/(1.6*10^(-13))",
+              "value": "28.33",
+              "sf": 4,
+              "step": "s4"
+            }
+          ],
+          "answer": "4.533*10^(-12)/(1.6*10^(-13))"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s3",
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "ca63caff",
+        "answer": {
+          "value": 28.331249999999997,
+          "label": "28.33 MeV"
+        }
+      }
+    },
+    {
+      "id": "c09562ad-f0c4-421d-94d9-525056a12f52",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\lambda_{\\min} = \\dfrac{n^2}{R_H},\\quad \\dfrac{1}{R_H} = 912\\ \\text{\\AA}\\ \\ (n = 1)",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\text{Balmer}\\ (n = 2):\\ 2^2 \\times 912 = 3648\\ \\text{\\AA}",
+              "f": "4*912",
+              "value": "3648",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\text{Paschen}\\ (n = 3):\\ 3^2 \\times 912 = 8208\\ \\text{\\AA}",
+              "f": "9*912",
+              "value": "8208",
+              "step": "s3"
+            }
+          ],
+          "answer": "4*912"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 11,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "4b3ad837",
+        "answer": {
+          "value": 3648,
+          "label": "3648 Å; 8208 Å"
+        }
+      }
+    },
+    {
+      "id": "c6a0b773-ec47-4dfa-9ea3-94935c3f44e5",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "Q = \\left[m_{Na} - m_{Ne} - 2m_e\\right]c^2",
+              "note": "two electron masses for beta plus",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "21.994437 - 21.991385 = 0.003052\\ \\text{u}",
+              "f": "21.994437-21.991385",
+              "value": "0.003052",
+              "dp": 6,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "0.003052 - 2 \\times 0.00055 = 0.001952\\ \\text{u}",
+              "f": "0.003052-2*0.00055",
+              "value": "0.001952",
+              "dp": 6,
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "Q = 0.001952 \\times 931.5 = 1.818\\ \\text{MeV}",
+              "f": "0.001952*931.5",
+              "value": "1.818",
+              "dp": 3,
+              "step": "s4"
+            }
+          ],
+          "answer": "0.001952*931.5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 11,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 12,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 13,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "8953b8ef",
+        "answer": {
+          "value": 1.818288,
+          "label": "1.818 MeV"
+        }
+      }
+    },
+    {
+      "id": "c8d93711-1729-4cfd-bbb7-2e4580618388",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\dfrac{1}{\\lambda} = 1.097 \\times 10^{7}\\left(\\dfrac{1}{3^2} - \\dfrac{1}{m^2}\\right),\\quad m = 4,\\ 5,\\ 6",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{1}{\\lambda_1} = 1.097 \\times 10^{7} \\times \\dfrac{7}{9 \\times 16} = 0.0533 \\times 10^{7}\\ \\text{m}^{-1}",
+              "f": "1.097*10^7*7/(9*16)",
+              "value": "0.0533*10^7",
+              "sf": 3,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\lambda_1 = \\dfrac{1}{0.0533 \\times 10^{7}} = 1.876 \\times 10^{-6}\\ \\text{m}",
+              "f": "1/(0.0533*10^7)",
+              "value": "1.876*10^(-6)",
+              "sf": 4,
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{1}{\\lambda_2} = 1.097 \\times 10^{7} \\times \\dfrac{16}{9 \\times 25} = 0.078 \\times 10^{7}\\ \\text{m}^{-1}",
+              "f": "1.097*10^7*16/(9*25)",
+              "value": "0.078*10^7",
+              "sf": 2,
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\lambda_2 = \\dfrac{1}{1.097 \\times 10^{7} \\times 16/(9 \\times 25)} = 1.282 \\times 10^{-6}\\ \\text{m}",
+              "f": "1/(1.097*10^7*16/(9*25))",
+              "value": "1.282*10^(-6)",
+              "sf": 4,
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{1}{\\lambda_3} = 1.097 \\times 10^{7} \\times \\dfrac{27}{9 \\times 36} = 0.09142 \\times 10^{7}\\ \\text{m}^{-1}",
+              "f": "1.097*10^7*27/(9*36)",
+              "value": "0.09142*10^7",
+              "sf": 4,
+              "step": "s6"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\lambda_3 = \\dfrac{1}{1.097 \\times 10^{7} \\times 27/(9 \\times 36)} = 1.094 \\times 10^{-6}\\ \\text{m}",
+              "f": "1/(1.097*10^7*27/(9*36))",
+              "value": "1.094*10^(-6)",
+              "sf": 4,
+              "step": "s7"
+            }
+          ],
+          "answer": "1/(1.097*10^7*7/(9*16))"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 11,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 13,
+            "beats": [
+              "s6"
+            ]
+          },
+          {
+            "from": 15,
+            "beats": [
+              "s7"
+            ]
+          }
+        ],
+        "fingerprint": "df50d42b",
+        "answer": {
+          "value": 0.0000018752441724182837,
+          "label": "1.875e-6, 1.282e-6, 1.094e-6 m"
+        }
+      }
+    },
+    {
+      "id": "d360b5d8-f593-4746-ba47-24db87db642c",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "T_{1/2} = \\dfrac{\\ln 2}{\\lambda} = \\dfrac{0.693}{\\lambda},\\quad \\lambda = 4.33 \\times 10^{-4}\\ \\text{y}^{-1}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "T_{1/2} = \\dfrac{0.693}{4.33 \\times 10^{-4}} = 1600\\ \\text{years}",
+              "f": "0.693/(4.33*10^(-4))",
+              "value": "1600",
+              "sf": 3,
+              "step": "s2"
+            }
+          ],
+          "answer": "0.693/(4.33*10^(-4))"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "09d7fe30",
+        "answer": {
+          "value": 1600.461893764434,
+          "label": "1600 years"
+        }
+      }
+    },
+    {
+      "id": "df7f7b78-e422-4139-8c44-7fe09f12bef7",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "Q = [m_U - m_I - m_Y - 2m_n]c^2,\\quad m_n = 1.00865\\ \\text{u}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "236.04557 - 136.91787 = 99.12770",
+              "f": "236.04557-136.91787",
+              "value": "99.1277",
+              "dp": 5,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "99.12770 - 96.91827 = 2.20943",
+              "f": "99.1277-96.91827",
+              "value": "2.20943",
+              "dp": 5,
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "2 \\times 1.00865 = 2.01730",
+              "f": "2*1.00865",
+              "value": "2.0173",
+              "dp": 5,
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "2.20943 - 2.01730 = 0.19213\\ \\text{u}",
+              "f": "2.20943-2.0173",
+              "value": "0.19213",
+              "dp": 5,
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "Q = 0.19213 \\times 931.5 = 178.97\\ \\text{MeV}",
+              "f": "0.19213*931.5",
+              "value": "178.97",
+              "dp": 2,
+              "step": "s6"
+            }
+          ],
+          "answer": "0.19213*931.5"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 10,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 11,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 12,
+            "beats": [
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "19b441ab",
+        "answer": {
+          "value": 178.96909499999998,
+          "label": "178.97 MeV"
+        }
+      }
+    },
+    {
+      "id": "e292c31e-58d1-4828-8e74-f7fb72aa54a2",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "A(t) = A_0 e^{-\\lambda t},\\quad A_0 = 15.3,\\ A(t) = 12.3,\\ \\lambda = 3.839 \\times 10^{-12}\\ \\text{s}^{-1}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "e^{\\lambda t} = \\dfrac{15.3}{12.3} = 1.2439",
+              "f": "15.3/12.3",
+              "value": "1.2439",
+              "sf": 5,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\lambda t = \\ln(1.2439) = 0.21825",
+              "f": "ln(1.2439)",
+              "value": "0.21825",
+              "sf": 5,
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "t = \\dfrac{0.21825}{3.839 \\times 10^{-12}} = 5.685 \\times 10^{10}\\ \\text{s}",
+              "f": "0.21825/(3.839*10^(-12))",
+              "value": "5.685*10^10",
+              "sf": 4,
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "t = \\dfrac{5.685 \\times 10^{10}}{3.154 \\times 10^{7}} \\approx 1803\\ \\text{years}",
+              "f": "ln(15.3/12.3)/(3.839*10^(-12))/(3.154*10^7)",
+              "value": "1803",
+              "dp": 0,
+              "step": "s5"
+            }
+          ],
+          "answer": "ln(15.3/12.3)/(3.839*10^(-12))/(3.154*10^7)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "ccc787ad",
+        "answer": {
+          "value": 1802.5260391177517,
+          "label": "1803 years"
+        }
+      }
+    },
+    {
+      "id": "e60a5353-4baa-4c00-bebb-93e465f2b693",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "T = \\dfrac{2\\pi r}{v},\\quad r = 0.53 \\times 10^{-10}\\ \\text{m},\\ v = 2.3 \\times 10^{6}\\ \\text{m/s},\\ \\pi = 3.142",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "2\\pi r = 2 \\times 3.142 \\times 0.53 \\times 10^{-10} = 3.331 \\times 10^{-10}\\ \\text{m}",
+              "f": "2*3.142*0.53*10^(-10)",
+              "value": "3.331*10^(-10)",
+              "sf": 4,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "T = \\dfrac{3.331 \\times 10^{-10}}{2.3 \\times 10^{6}} = 1.448 \\times 10^{-16}\\ \\text{s}",
+              "f": "3.331*10^(-10)/(2.3*10^6)",
+              "value": "1.448*10^(-16)",
+              "sf": 4,
+              "step": "s3"
+            }
+          ],
+          "answer": "3.331*10^(-10)/(2.3*10^6)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "e2603b7f",
+        "answer": {
+          "value": 1.4482608695652174e-16,
+          "label": "1.448 × 10⁻¹⁶ s"
+        }
+      }
+    },
+    {
+      "id": "edfeb113-8d94-4c38-8cc9-0507a88c5158",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "E = Pt = 3000 \\times 10^{6} \\times (24 \\times 3600) = 2.592 \\times 10^{14}\\ \\text{J}",
+              "f": "3000*10^6*24*3600",
+              "value": "2.592*10^14",
+              "sf": 4,
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "E_1 = 202.79 \\times 1.602 \\times 10^{-13} = 3.249 \\times 10^{-11}\\ \\text{J}",
+              "f": "202.79*1.602*10^(-13)",
+              "value": "3.249*10^(-11)",
+              "sf": 4,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "n = \\dfrac{E}{E_1} = \\dfrac{2.592 \\times 10^{14}}{3.249 \\times 10^{-11}} = 7.979 \\times 10^{24}",
+              "f": "2.592*10^14/(202.79*1.602*10^(-13))",
+              "value": "7.979*10^24",
+              "sf": 4,
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "m = \\dfrac{7.979 \\times 10^{24}}{6.022 \\times 10^{23}} \\times 235 = 3114\\ \\text{g}",
+              "f": "7.979*10^24/(6.022*10^23)*235",
+              "value": "3114",
+              "dp": 0,
+              "step": "s4"
+            }
+          ],
+          "answer": "7.979*10^24/(6.022*10^23)*235"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "81cd9f38",
+        "answer": {
+          "value": 3113.6914646296905,
+          "label": "3114 g (about 3.1 kg)"
+        }
+      }
+    },
+    {
+      "id": "f25390c0-848d-446c-a1f2-b802e6152d84",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "calc",
+              "tex": "m_e v_n r_n = \\dfrac{nh}{2\\pi}",
+              "f": "me*vn*rn",
+              "value": "n*h/(2*pi)",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{m_e v_n^2}{r_n} = \\dfrac{Ze^2}{4\\pi\\varepsilon_0 r_n^2}",
+              "f": "me*vn^2/rn",
+              "value": "Z*q^2/(4*pi*eps*rn^2)",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "r_n = \\dfrac{n^2h^2\\varepsilon_0}{\\pi m_e Z e^2}",
+              "f": "rn",
+              "value": "n^2*h^2*eps/(pi*me*Z*q^2)",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\text{K.E.} = \\dfrac{1}{2}m_e v_n^2 = \\dfrac{Ze^2}{8\\pi\\varepsilon_0 r_n}",
+              "f": "me*vn^2/2",
+              "value": "Z*q^2/(8*pi*eps*rn)",
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "E_n = \\dfrac{Ze^2}{8\\pi\\varepsilon_0 r_n} - \\dfrac{Ze^2}{4\\pi\\varepsilon_0 r_n} = -\\dfrac{Ze^2}{8\\pi\\varepsilon_0 r_n}",
+              "f": "Z*q^2/(8*pi*eps*rn)-Z*q^2/(4*pi*eps*rn)",
+              "value": "-Z*q^2/(8*pi*eps*rn)",
+              "step": "s5"
+            },
+            {
+              "kind": "calc",
+              "tex": "E_n = -\\dfrac{m_e Z^2 e^4}{8\\varepsilon_0^2 h^2 n^2}",
+              "f": "-Z*q^2/(8*pi*eps*rn)",
+              "value": "-me*Z^2*q^4/(8*eps^2*h^2*n^2)",
+              "step": "s6"
+            }
+          ],
+          "answer": "-me*Z^2*q^4/(8*eps^2*h^2*n^2)",
+          "vars": {
+            "n": "2",
+            "h": "3",
+            "me": "2",
+            "q": "1.5",
+            "eps": "0.8",
+            "Z": "2",
+            "rn": "n^2*h^2*eps/(pi*me*Z*q^2)",
+            "vn": "n*h/(2*pi*me*rn)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 18,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 21,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 25,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 26,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 28,
+            "beats": [
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "90343e62",
+        "answer": {
+          "value": -0.21972656249999994,
+          "label": "E = −m Z² e⁴/(8 ε₀² h² n²)"
+        }
+      }
+    },
+    {
+      "id": "f560cf21-8f0f-444e-829f-af84467914bc",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "E_n = -\\dfrac{K}{n^2},\\quad K = \\dfrac{m e^4}{8\\varepsilon_0^2 h^2}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "h\\nu = \\dfrac{hc}{\\lambda} = E_m - E_n",
+              "f": "h*c/lam",
+              "value": "Emm-Enn",
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "E_m - E_n = K\\left(\\dfrac{1}{n^2} - \\dfrac{1}{m^2}\\right)",
+              "f": "Emm-Enn",
+              "value": "K*(1/n^2-1/m^2)",
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{1}{\\lambda} = R\\left(\\dfrac{1}{n^2} - \\dfrac{1}{m^2}\\right),\\ R = \\dfrac{me^4}{8\\varepsilon_0^2 h^3 c}",
+              "f": "1/lam",
+              "value": "me*q^4/(8*eps^2*h^3*c)*(1/n^2-1/m^2)",
+              "step": "s4"
+            }
+          ],
+          "answer": "me*q^4/(8*eps^2*h^3*c)*(1/n^2-1/m^2)",
+          "vars": {
+            "n": "2",
+            "m": "3",
+            "me": "2",
+            "q": "1.5",
+            "eps": "0.8",
+            "h": "3",
+            "c": "5",
+            "K": "me*q^4/(8*eps^2*h^2)",
+            "Enn": "-K/n^2",
+            "Emm": "-K/m^2",
+            "lam": "1/(me*q^4/(8*eps^2*h^3*c)*(1/n^2-1/m^2))"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 11,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "dd87a7c3",
+        "answer": {
+          "value": 0.002034505208333333,
+          "label": "1/λ = R(1/n² − 1/m²)"
+        }
+      }
+    },
+    {
+      "id": "faa60aa4-e82a-4db2-b86c-ae59d61b97a1",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "\\dfrac{1}{\\lambda} = R_H\\left(\\dfrac{1}{2^2} - \\dfrac{1}{m^2}\\right),\\quad R_H = 1.097 \\times 10^{7}\\ \\text{m}^{-1},\\ m = 3,\\ 4",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{1}{\\lambda_1} = 1.097 \\times 10^{7} \\times \\dfrac{5}{36} = 1.524 \\times 10^{6}\\ \\text{m}^{-1}",
+              "f": "1.097*10^7*5/36",
+              "value": "1.524*10^6",
+              "sf": 4,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\lambda_1 = \\dfrac{1}{1.524 \\times 10^{6}} = 6.563 \\times 10^{-7}\\ \\text{m}",
+              "f": "1/(1.097*10^7*5/36)",
+              "value": "6.563*10^(-7)",
+              "sf": 4,
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\dfrac{1}{\\lambda_2} = 1.097 \\times 10^{7} \\times \\dfrac{3}{16} = 2.057 \\times 10^{6}\\ \\text{m}^{-1}",
+              "f": "1.097*10^7*3/16",
+              "value": "2.057*10^6",
+              "sf": 4,
+              "step": "s4"
+            },
+            {
+              "kind": "calc",
+              "tex": "\\lambda_2 = \\dfrac{1}{2.057 \\times 10^{6}} = 4.862 \\times 10^{-7}\\ \\text{m}",
+              "f": "1/(1.097*10^7*3/16)",
+              "value": "4.862*10^(-7)",
+              "sf": 4,
+              "step": "s5"
+            }
+          ],
+          "answer": "1/(1.097*10^7*5/36)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 11,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "25dac025",
+        "answer": {
+          "value": 6.563354603463993e-7,
+          "label": "6563 Å; 4862 Å"
+        }
+      }
+    },
+    {
+      "id": "ff282de0-e9be-4097-a24e-dc1dabef9225",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "kind": "note",
+              "tex": "N = f t,\\quad f = \\dfrac{v_2}{2\\pi r_2},\\quad r_2 = 0.53 \\times 10^{-10} \\times 2^2 = 2.12 \\times 10^{-10}\\ \\text{m}",
+              "step": "s1"
+            },
+            {
+              "kind": "calc",
+              "tex": "v_2 = 1.6 \\times 10^{-19}\\sqrt{\\dfrac{9 \\times 10^{9}}{9.1 \\times 10^{-31} \\times 2.12 \\times 10^{-10}}} = 1.093 \\times 10^{6}\\ \\text{m/s}",
+              "f": "1.6*10^(-19)*sqrt(9*10^9/(9.1*10^(-31)*2.12*10^(-10)))",
+              "value": "1.093*10^6",
+              "sf": 4,
+              "step": "s2"
+            },
+            {
+              "kind": "calc",
+              "tex": "f = \\dfrac{1.093 \\times 10^{6}}{2\\pi \\times 2.12 \\times 10^{-10}} = 8.20 \\times 10^{14}\\ \\text{s}^{-1}",
+              "f": "1.6*10^(-19)*sqrt(9*10^9/(9.1*10^(-31)*2.12*10^(-10)))/(2*pi*2.12*10^(-10))",
+              "value": "8.20*10^14",
+              "sf": 3,
+              "step": "s3"
+            },
+            {
+              "kind": "calc",
+              "tex": "N = 8.20 \\times 10^{14} \\times 10^{-8} = 8.20 \\times 10^{6}",
+              "f": "8.20*10^14*10^(-8)",
+              "value": "8.20*10^6",
+              "sf": 3,
+              "step": "s4"
+            }
+          ],
+          "answer": "8.20*10^14*10^(-8)"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 10,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 12,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "e3a4a7e8",
+        "answer": {
+          "value": 8199999.999999999,
+          "label": "8.20 × 10⁶ revolutions"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

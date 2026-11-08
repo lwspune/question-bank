@@ -69,6 +69,9 @@ Take the FIRST that fits:
 - A last-digit slip (truncated instead of rounded, a different value of pi
   than the line shows): draft the correct value and report it with the id,
   what it prints and what it should be. Do not change the method.
+- A line `note` is for the student. Never write about the checking there
+  ("sample values chosen, not shown", "checked at x = 2"): the vars of a
+  derivation stay invisible, and so does any mention of them.
 - `answer.value` must equal what the scene computes from `params.answer`
   to the last float digit (0.45999999999999996, not 0.46); check-drafts
   prints the exact value when they differ.
