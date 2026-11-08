@@ -11,6 +11,12 @@
  * pairs: "shown" = the first run started on screen, "finished" = a run reached
  * the last step, "still" = switched that solution to Still. Signed-out
  * visitors are never recorded, so every number is a floor.
+ *
+ * Second table per grouping, from 2026-11-08 (lib/visuals/progress): only
+ * pairs the NEW player showed. Its fin% counts a finish reached by tapping and
+ * leaves out phones with animations off, so it is the share to judge by; the
+ * first table's fin% is a floor for older rows. "stopped at 1/3: 4" = four
+ * unfinished pairs got no further than step 1 of 3.
  */
 import { join } from "node:path";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
@@ -21,6 +27,7 @@ import {
   VISUAL_SURFACES,
   type UsageGroupBy,
   type UsageRow,
+  type VisualDetail,
   type VisualAction,
   type VisualSurface,
 } from "../../src/lib/visuals/usage";
@@ -62,7 +69,12 @@ async function main() {
   const db = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!, { auth: { persistSession: false } });
 
   const staff = await staffIds(db);
-  type Raw = { user_id: string; ref_id: string; created_at: string; metadata: { surface?: string; action?: string; scene?: string } };
+  type Raw = {
+    user_id: string;
+    ref_id: string;
+    created_at: string;
+    metadata: { surface?: string; action?: string; scene?: string } & VisualDetail;
+  };
   const raw: Raw[] = [];
   for (let from = 0; ; from += PAGE) {
     let q = db.from("user_activity").select("user_id, ref_id, created_at, metadata").eq("kind", "solution_visual");
@@ -89,6 +101,10 @@ async function main() {
       scene: r.metadata.scene ?? "unknown",
       exam: exams.get(r.ref_id) ?? "?",
       day: istDayKey(new Date(r.created_at)),
+      motion: r.metadata.motion,
+      steps: r.metadata.steps,
+      step: r.metadata.step,
+      how: r.metadata.how,
     }));
 
   console.log(`Animated-solution events${since ? ` since ${since}` : ""}: ${rows.length} from students (${raw.length - students.length} staff rows left out)`);
@@ -97,10 +113,23 @@ async function main() {
   for (const g of by ? [by] : GROUPINGS) {
     console.log(`By ${g}`);
     console.log(`${"".padEnd(28)}${pad("students", 9)}${pad("shown", 7)}${pad("finished", 9)}${pad("fin%", 6)}${pad("replay", 7)}${pad("still", 6)}${pad("still%", 7)}${pad("back", 5)}${pad("opened in still", 16)}`);
-    for (const r of summarizeVisualUsage(rows, g)) {
+    const groups = summarizeVisualUsage(rows, g);
+    for (const r of groups) {
       console.log(
         `${r.key.slice(0, 27).padEnd(28)}${pad(r.students, 9)}${pad(r.shown, 7)}${pad(r.finished, 9)}${pad(r.finishedPct ?? "-", 6)}${pad(r.replayed, 7)}${pad(r.choseStill, 6)}${pad(r.stillPct ?? "-", 7)}${pad(r.choseAnimated, 5)}${pad(r.openedStill, 16)}`,
       );
+    }
+    if (groups.some((r) => r.tracked > 0)) {
+      console.log(`  new player only${"".padEnd(12)}${pad("shown", 7)}${pad("anim off", 9)}${pad("finished", 9)}${pad("fin%", 6)}${pad("tapped", 7)}  stopped at`);
+      for (const r of groups.filter((x) => x.tracked > 0)) {
+        const stops = Object.entries(r.stoppedAt)
+          .sort(([a], [b]) => a.localeCompare(b, undefined, { numeric: true }))
+          .map(([at, n]) => `${at}: ${n}`)
+          .join(" · ");
+        console.log(
+          `  ${r.key.slice(0, 25).padEnd(26)}${pad(r.tracked, 7)}${pad(r.animOff, 9)}${pad(r.trackedFinished, 9)}${pad(r.trackedFinishedPct ?? "-", 6)}${pad(r.tapped, 7)}  ${stops || "-"}`,
+        );
+      }
     }
     console.log("");
   }

@@ -10,7 +10,7 @@
  * page from sending the same one twice.
  */
 import { hasSupabaseAuthCookie } from "@/lib/auth-identity";
-import type { VisualAction, VisualSurface } from "./usage";
+import type { VisualAction, VisualDetail, VisualSurface } from "./usage";
 
 const ENDPOINT = "/api/activity/visual";
 const sent = new Set<string>();
@@ -26,15 +26,16 @@ function maybeSignedIn(): boolean {
   }
 }
 
-export function reportVisual(track: VisualTrack, scene: string, action: VisualAction): void {
-  const key = `${track.surface}:${track.questionId}:${action}`;
+export function reportVisual(track: VisualTrack, scene: string, action: VisualAction, detail?: VisualDetail): void {
+  // Each step reached is its own event, like the server's dedupe key.
+  const key = `${track.surface}:${track.questionId}:${action}${action === "reached" ? `:${detail?.step}` : ""}`;
   if (sent.has(key) || !maybeSignedIn()) return;
   sent.add(key);
   try {
     void fetch(ENDPOINT, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ questionId: track.questionId, surface: track.surface, action, scene }),
+      body: JSON.stringify({ questionId: track.questionId, surface: track.surface, action, scene, ...detail }),
       keepalive: true,
     }).catch(() => {
       /* not worth surfacing */

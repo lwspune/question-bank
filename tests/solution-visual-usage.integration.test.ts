@@ -118,4 +118,38 @@ describe.skipIf(!HAS_ENV)("animated-solution usage in the database", () => {
       { kind: "solution_visual", ref_id: id, metadata: { surface: "bank", action: "shown", scene: "functionGraph" } },
     ]);
   });
+
+  it("keeps the new player's details, and one row per step reached (2026-11-08)", async () => {
+    const id = await insertQuestion(4, { solution_visual: visual("eeeeeeee") });
+    const events = [
+      { action: "shown", motion: "reduced", steps: 3 },
+      { action: "reached", step: 2 },
+      { action: "reached", step: 3 },
+      { action: "reached", step: 3 },
+      { action: "finished", how: "tapped" },
+    ];
+    for (const e of events) {
+      const parsed = parseVisualEvent({ questionId: id, surface: "board", scene: "space3d", ...e }, userId, new Date());
+      if (!parsed.ok) throw new Error(parsed.error);
+      await logActivityOnce(client, userId, parsed.value);
+    }
+    const { data, error } = await admin
+      .from("user_activity")
+      .select("metadata")
+      .eq("user_id", userId)
+      .eq("ref_id", id)
+      .eq("kind", "solution_visual");
+    if (error) throw new Error(error.message);
+    const got = (data as { metadata: Record<string, unknown> }[]).map((r) => r.metadata);
+    const base = { surface: "board", scene: "space3d" };
+    expect(got).toHaveLength(4);
+    expect(got).toEqual(
+      expect.arrayContaining([
+        { ...base, action: "shown", motion: "reduced", steps: 3 },
+        { ...base, action: "reached", step: 2 },
+        { ...base, action: "reached", step: 3 },
+        { ...base, action: "finished", how: "tapped" },
+      ]),
+    );
+  });
 });

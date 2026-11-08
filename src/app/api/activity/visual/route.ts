@@ -1,6 +1,6 @@
 /**
  * POST /api/activity/visual — record what a signed-in student did with an
- * animated solution (kind `solution_visual`, migration 0208): shown, finished,
+ * animated solution (kind `solution_visual`, migration 0208): shown, reached, finished,
  * replayed, opened in Still, switched to Still or back. Rules and the reason it
  * exists: lib/visuals/usage.
  *
@@ -17,8 +17,9 @@ import { checkAndIncrement } from "@/lib/rate-limit";
 import { logActivityOnce } from "@/lib/activity/service";
 import { parseVisualEvent } from "@/lib/visuals/usage";
 
-/** Three events per solution over 100 animated solutions an hour. */
-const LIMIT_PER_HOUR = 300;
+/** About six events per solution (shown, a reached per step, finished) over
+ *  100 animated solutions an hour. Was 300 before steps were recorded (2026-11-08). */
+const LIMIT_PER_HOUR = 600;
 const HOUR_MS = 60 * 60 * 1000;
 
 export async function POST(request: NextRequest) {

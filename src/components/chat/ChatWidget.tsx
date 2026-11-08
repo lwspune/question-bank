@@ -892,7 +892,7 @@ export default function ChatWidget() {
                         solution={null}
                         onEvent={
                           t.visualQuestionId
-                            ? (e) => reportVisual({ questionId: t.visualQuestionId!, surface: "v" }, sceneOf(t.visual), e)
+                            ? (e, d) => reportVisual({ questionId: t.visualQuestionId!, surface: "v" }, sceneOf(t.visual), e, d)
                             : undefined
                         }
                       />
