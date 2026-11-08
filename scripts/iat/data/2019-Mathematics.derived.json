@@ -1,0 +1,126 @@
+{
+  "derivedBy": "Claude Opus (independent solve of IAT 2019 Mathematics, hand working checked by substitution)",
+  "answers": [
+    {
+      "ref": "1",
+      "label": "B",
+      "value": "\\(\\frac{1+n2^{n-1}-2^n}{2^n-1}\\).",
+      "working": "Let \\(P(x) = x^n - 1 = (x-1)(x-\\zeta_2)\\cdots(x-\\zeta_n)\\). Taking the logarithmic derivative gives \\(\\frac{P'(x)}{P(x)} = \\frac{1}{x-1} + \\frac{1}{x-\\zeta_2} + \\cdots + \\frac{1}{x-\\zeta_n}\\).\n\nPut \\(x = 2\\): \\(\\frac{P'(2)}{P(2)} = \\frac{n2^{n-1}}{2^n-1}\\), and the right side is \\(\\frac{1}{2-1}\\) plus the required sum.\n\nSo the required sum is \\(\\frac{n2^{n-1}}{2^n-1} - 1 = \\frac{n2^{n-1} - 2^n + 1}{2^n-1}\\).\n\nCheck with \\(n = 3\\): the formula gives \\(\\frac{12-8+1}{7} = \\frac{5}{7}\\), and directly \\(\\frac{1}{2-\\omega}+\\frac{1}{2-\\omega^2} = \\frac{4-(\\omega+\\omega^2)}{4-2(\\omega+\\omega^2)+1} = \\frac{5}{7}\\). So the answer is option (B).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "2",
+      "label": "A",
+      "value": "4.",
+      "working": "If \\(\\cos x = 0\\), the equation becomes \\(\\sin^2 x = 0\\), which is impossible since then \\(\\sin^2 x = 1\\). So \\(\\cos x \\ne 0\\) and we may divide by \\(\\cos^2 x\\):\n\n\\(\\tan^2 x - 15\\tan x + 50 = 0\\), that is \\((\\tan x - 5)(\\tan x - 10) = 0\\).\n\nSo \\(\\tan x = 5\\) or \\(\\tan x = 10\\). Since \\(\\tan x\\) has period \\(\\pi\\), each positive value is taken exactly twice in \\([0, 2\\pi]\\) (once in \\((0, \\frac{\\pi}{2})\\) and once in \\((\\pi, \\frac{3\\pi}{2})\\)). That gives \\(2 + 2 = 4\\) solutions. So the answer is option (A).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "3",
+      "label": "A",
+      "value": "\\(A^2 = 0\\).",
+      "working": "\\(K\\) is the set of vectors that \\(A\\) sends to zero, and \\(J\\) is the set of all vectors of the form \\(A\\vec{y}\\).\n\nTake any \\(\\vec{y}\\) in \\(\\mathbf{R}^4\\). Then \\(A\\vec{y}\\) lies in \\(J\\). Since \\(J = K\\), the vector \\(A\\vec{y}\\) lies in \\(K\\), so \\(A(A\\vec{y}) = \\vec{0}\\), that is \\(A^2\\vec{y} = \\vec{0}\\). This holds for every \\(\\vec{y}\\), so \\(A^2 = 0\\).\n\nThe other options need not hold. For example \\(A\\) with \\(a_{13} = a_{24} = 1\\) and all other entries 0 has \\(K = J\\) (both are the vectors with \\(x_3 = x_4 = 0\\)), but it is neither symmetric nor skew symmetric, and \\(A^2 = 0 \\ne A\\). So the answer is option (A).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "4",
+      "label": "C",
+      "value": "16.",
+      "working": "Add the lines one at a time. One line splits the plane into 2 regions. When the \\(k\\)-th line is added, it meets the earlier \\(k-1\\) lines in \\(k-1\\) different points (no two parallel, no three concurrent). These points cut the new line into \\(k\\) pieces, and each piece splits one old region into two, adding \\(k\\) regions.\n\nSo the number of regions with \\(n\\) lines is \\(1 + (1 + 2 + \\cdots + n) = 1 + \\frac{n(n+1)}{2}\\).\n\nFor \\(n = 5\\): \\(1 + 15 = 16\\). So the answer is option (C).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "5",
+      "label": "D",
+      "value": "\\(y = x + 1\\).",
+      "working": "Any circle through \\((1, 0)\\) and \\((0, 1)\\) has this segment as a chord, so its diameter is at least the chord length \\(\\sqrt{2}\\). The smallest circle has the segment as a **diameter**, so its centre is the midpoint \\(\\left(\\frac{1}{2}, \\frac{1}{2}\\right)\\).\n\nThe radius to \\((0, 1)\\) has slope \\(\\frac{1 - \\frac{1}{2}}{0 - \\frac{1}{2}} = -1\\). The tangent is perpendicular to it, so its slope is \\(1\\).\n\nThe tangent through \\((0, 1)\\) with slope 1 is \\(y = x + 1\\). So the answer is option (D).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "6",
+      "label": "C",
+      "value": "\\(f(x) = \\pi^x\\left(1 + \\left|\\tan \\frac{\\pi x}{10}\\right|\\right)\\).",
+      "working": "All four functions are \\(\\pi^x\\) times a factor, and \\(\\pi^x > 0\\). Compare the factors on \\([-1, 1]\\):\n\n- \\(|\\sin \\pi x| \\le 1\\) and \\(|\\cos \\pi x| \\le 1\\).\n- \\(\\frac{1}{|x| + 1} \\le 1\\).\n- \\(1 + \\left|\\tan \\frac{\\pi x}{10}\\right| \\ge 1\\) (and \\(\\tan\\) is finite here since \\(\\left|\\frac{\\pi x}{10}\\right| \\le \\frac{\\pi}{10}\\)).\n\nSo the function in (C) is at least \\(\\pi^x\\) at every point, while each of the others is at most \\(\\pi^x\\), with strict inequality on most of the interval. The area under (C) is therefore the largest. So the answer is option (C).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "7",
+      "label": "D",
+      "value": "\\(\\lim\\limits_{x \\to \\infty} f(x) = -\\infty\\) and \\(\\lim\\limits_{x \\to -\\infty} f(x) = \\infty\\).",
+      "working": "Take any real number \\(c\\). In option (D), since \\(f(x) \\to \\infty\\) as \\(x \\to -\\infty\\), there is a point \\(p\\) with \\(f(p) > c\\). Since \\(f(x) \\to -\\infty\\) as \\(x \\to \\infty\\), there is a point \\(q\\) with \\(f(q) < c\\). By the **intermediate value theorem**, the continuous function \\(f\\) takes the value \\(c\\) somewhere between \\(p\\) and \\(q\\). So \\(f\\) is onto \\(\\mathbf{R}\\).\n\nThe other options fail. In (A), \\(f(x) = x^2\\) fits but never takes negative values. In (B), \\(f(x) = e^{-x}\\) fits but is never negative. In (C), the function \\(f(x) = -e^{-x}\\) for \\(x \\le 0\\) and \\(f(x) = -\\frac{1}{1+x}\\) for \\(x > 0\\) is never positive. So the answer is option (D).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "8",
+      "label": "B",
+      "value": "is \\(\\frac{1}{2020}\\).",
+      "working": "Write the expression as a Riemann sum:\n\n\\(\\frac{1}{n^{2020}} \\sum_{k=1}^{n} k^{2019} = \\frac{1}{n} \\sum_{k=1}^{n} \\left(\\frac{k}{n}\\right)^{2019}\\).\n\nAs \\(n \\to \\infty\\) this tends to \\(\\int_0^1 x^{2019}\\,dx = \\frac{1}{2020}\\). So the answer is option (B).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "9",
+      "label": "B",
+      "value": "7.",
+      "working": "If the first term is \\(a\\) and the common difference is \\(d\\) (both integers), the sum of \\(n\\) terms is \\(\\frac{n}{2}\\left(2a + (n-1)d\\right) = 161\\), so \\(n\\left(2a + (n-1)d\\right) = 322 = 2 \\times 7 \\times 23\\).\n\nSince \\(2a + (n-1)d\\) is an integer, \\(n\\) must divide 322. Among the options, 5, 6 and 8 do not divide 322, but 7 does.\n\nFor \\(n = 7\\) we need \\(2a + 6d = 46\\), that is \\(a + 3d = 23\\). For example \\(a = 20, d = 1\\) gives \\(20 + 21 + \\cdots + 26 = 161\\). So the answer is option (B).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "10",
+      "label": "C",
+      "value": "\\(\\frac{\\alpha}{2}\\).",
+      "working": "Let \\(I = \\int_{-1}^{1} \\frac{f(x)}{1+e^x}\\,dx\\). Use \\(\\int_{-1}^{1} g(x)\\,dx = \\int_{-1}^{1} g(-x)\\,dx\\) and \\(f(-x) = f(x)\\):\n\n\\(I = \\int_{-1}^{1} \\frac{f(x)}{1+e^{-x}}\\,dx = \\int_{-1}^{1} \\frac{e^x f(x)}{e^x+1}\\,dx\\).\n\nAdding the two forms of \\(I\\): \\(2I = \\int_{-1}^{1} \\frac{(1+e^x) f(x)}{1+e^x}\\,dx = \\int_{-1}^{1} f(x)\\,dx = \\alpha\\).\n\nSo \\(I = \\frac{\\alpha}{2}\\), and the answer is option (C).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "11",
+      "label": "A",
+      "value": "\\(\\frac{4}{5}\\).",
+      "working": "Total frequency \\(N = 5 + 10 + 15 + 20 = 50\\), and \\(\\sum f_i x_i = 5 + 20 + 45 + 80 = 150\\). So the mean is \\(\\bar{x} = \\frac{150}{50} = 3\\).\n\nThe deviations \\(|x_i - 3|\\) are 2, 1, 0, 1, so \\(\\sum f_i |x_i - 3| = 5(2) + 10(1) + 15(0) + 20(1) = 40\\).\n\nMean deviation about the mean \\(= \\frac{40}{50} = \\frac{4}{5}\\). So the answer is option (A).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "12",
+      "label": "A",
+      "value": "5.",
+      "working": "If \\(S\\) has \\(n\\) elements, the subsets with at most two elements are the empty set, the \\(n\\) one-element subsets and the \\(\\binom{n}{2}\\) two-element subsets. So\n\n\\(1 + n + \\frac{n(n-1)}{2} = 16\\), which gives \\(n^2 + n - 30 = 0\\), that is \\((n+6)(n-5) = 0\\).\n\nSince \\(n > 0\\), \\(n = 5\\). Check: \\(1 + 5 + 10 = 16\\). So the answer is option (A).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "13",
+      "label": "C",
+      "value": "\\(\\frac{(n-1)a}{n+1}\\).",
+      "working": "Take \\(A\\) as the origin, \\(\\vec{AB} = \\vec{b}\\) and \\(\\vec{AD} = \\vec{d}\\). Then \\(C = \\vec{b} + \\vec{d}\\), \\(E = \\frac{1}{n}\\vec{b}\\) and, since \\(CF = \\frac{1}{n}CD\\), \\(F = \\vec{d} + \\left(1 - \\frac{1}{n}\\right)\\vec{b}\\).\n\n**Point X.** A point on \\(AC\\) is \\(t(\\vec{b} + \\vec{d})\\); a point on \\(DE\\) is \\(\\vec{d} + s\\left(\\frac{1}{n}\\vec{b} - \\vec{d}\\right) = \\frac{s}{n}\\vec{b} + (1-s)\\vec{d}\\). Comparing coefficients: \\(t = \\frac{s}{n}\\) and \\(t = 1 - s\\), so \\(s = \\frac{n}{n+1}\\) and \\(t = \\frac{1}{n+1}\\). Hence \\(AX = \\frac{a}{n+1}\\).\n\n**Point Y.** The figure is symmetric about the centre of the parallelogram (\\(B\\) matches \\(D\\), \\(F\\) matches \\(E\\)), so \\(CY = AX = \\frac{a}{n+1}\\).\n\nTherefore \\(XY = a - \\frac{2a}{n+1} = \\frac{(n-1)a}{n+1}\\). So the answer is option (C).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "14",
+      "label": "D",
+      "value": "48.",
+      "working": "A vector \\(a\\hat{i} + b\\hat{j} + c\\hat{k}\\) with \\(a, b, c \\in \\{-1, 0, 1\\}\\) has length \\(\\sqrt{a^2 + b^2 + c^2}\\), which is 1 only when exactly one of \\(a, b, c\\) is \\(\\pm 1\\). So the unit vectors in \\(X\\) are \\(\\pm\\hat{i}, \\pm\\hat{j}, \\pm\\hat{k}\\): 6 of them.\n\nThe elements of \\(Y\\) are ordered triples. \\(\\vec{v}_1\\) can be any of the 6. \\(\\vec{v}_2\\) must be perpendicular to \\(\\vec{v}_1\\), so it cannot be \\(\\pm\\vec{v}_1\\): 4 choices. \\(\\vec{v}_3\\) must be perpendicular to both, so it is \\(\\pm\\) the remaining axis vector: 2 choices.\n\nTotal \\(= 6 \\times 4 \\times 2 = 48\\). So the answer is option (D).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "15",
+      "label": "D",
+      "value": "\\(\\frac{3}{500}\\).",
+      "working": "Each of \\(x, y, z\\) is chosen from the 10 numbers (independently, repeats allowed), so there are \\(10^3 = 1000\\) equally likely ordered choices.\n\nThe ordered triples of positive integers with \\(x + y + z = 5\\) are the arrangements of \\(\\{1, 1, 3\\}\\) (3 of them) and of \\(\\{1, 2, 2\\}\\) (3 of them): 6 in all. (Equivalently \\(\\binom{4}{2} = 6\\).) All of these use numbers from 1 to 10.\n\nSo the probability is \\(\\frac{6}{1000} = \\frac{3}{500}\\). So the answer is option (D).\n\nNote: as printed, the question does not say whether the numbers may repeat. If they had to be different, no triple would work (the smallest sum of three different numbers is \\(1+2+3 = 6\\)) and the probability would be 0, which is not an option; so choices with repetition are intended.",
+      "difficulty": "Moderate",
+      "confidence": "HIGH",
+      "flag": "Wording does not say whether repeats are allowed. Only the with-replacement, ordered reading (6/1000) matches an option; without replacement the answer is 0, not offered."
+    }
+  ]
+}

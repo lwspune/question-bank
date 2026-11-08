@@ -10,16 +10,32 @@ Asked for in student feedback on 2026-11-06 ("cuet iat"); taken up 2026-11-08.
 **Pattern** (2026 brochure §19): 60 MCQs, 15 each of Biology, Chemistry,
 Mathematics, Physics; +4 / -1 / 0; 180 minutes; out of 240.
 
+**Status 2026-11-08:** all nine years committed PRIVATE, 539 questions (2025 has
+59), every one with a worked solution; 24 graced as defective as printed (notice
+above the solution, `src/lib/mocks/flawed.json`). Publishing (`publish.ts`), the
+registry flags and the mock build wait on the owner's OK.
+
 ## What each year can support
 
 | Year | File | Key | How answers are settled |
 |---|---|---|---|
-| 2017, 2019, 2021, 2022 | question paper (text layer) | none | two independent solvers; a person settles every split |
-| 2018 | scanned question paper | none | same, read from the page images |
-| 2023 | key-file layout | printed (a), **measured**: blind solve 58/60 | one solver, compared with the key |
-| 2024 | key-file layout | printed (a) appears correct; unconfirmed until measured | the blind solve measures it; `keyConfirmed` set only on a high rate |
-| 2025 | IISER final key | printed (a); blind solve 59/59 | one solver, compared with the key |
+| 2017, 2019 | real question paper (text layer) | none | two independent solvers (60/60 agree each); a person settles every split |
+| 2018 | real question paper, scanned | none | same (59/60; the split, Physics 6, has no correct option), read from the page images |
+| 2021 | posted as a question paper, but key-file order | printed (a), **measured**: shuffled blind solve 57/60 | one solver, compared with the key |
+| 2022 | same | printed (a), **measured**: 60/60 | same |
+| 2023 | key-file layout | printed (a), **measured**: 58/60 | same |
+| 2024 | key-file layout | printed (a), **measured**: 60/60 | same |
+| 2025 | IISER final key | printed (a); blind solve 59/59 | same |
 | 2026 | IISER final key ("option (a) is the correct answer") | printed (a); blind solve 60/60 | same |
+
+**How a year's file type was told apart:** solve a few questions by hand and look
+at where the answers fall. A real paper's answers spread over A-D; a key-ordered
+file's all sit on (a). 2021 was first dumped as a real paper; its first solver put
+14 of 15 on A and said so, the solves were stopped, and the year re-dumped
+shuffled. Check a new year by hand before choosing its `keyMode`.
+
+**Scans (2018):** `pages.py` whitens anything lighter than `SCAN_WHITE` and darkens
+the rest, which removes the back-of-sheet show-through and keeps thin lines legible.
 
 ## When the solver and IISER disagree
 

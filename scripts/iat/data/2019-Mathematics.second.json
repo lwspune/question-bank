@@ -1,0 +1,126 @@
+{
+  "derivedBy": "Independent second solver (Claude), worked from the question payload and figure only",
+  "answers": [
+    {
+      "ref": "1",
+      "label": "B",
+      "value": "\\(\\frac{1+n2^{n-1}-2^n}{2^n-1}\\).",
+      "working": "Let \\(P(x) = x^n - 1 = (x-1)(x-\\zeta_2)\\cdots(x-\\zeta_n)\\). Taking the logarithmic derivative, \\(\\frac{P'(x)}{P(x)} = \\frac{1}{x-1} + \\frac{1}{x-\\zeta_2} + \\cdots + \\frac{1}{x-\\zeta_n}\\).\n\nPut \\(x = 2\\): \\(\\frac{P'(2)}{P(2)} = \\frac{n2^{n-1}}{2^n - 1}\\). This is the sum over all \\(n\\) roots, including the root \\(1\\), whose term is \\(\\frac{1}{2-1} = 1\\).\n\nSo the required sum is \\(\\frac{n2^{n-1}}{2^n-1} - 1 = \\frac{n2^{n-1} - 2^n + 1}{2^n - 1} = \\frac{1 + n2^{n-1} - 2^n}{2^n-1}\\).\n\nSo the answer is option (B).",
+      "difficulty": "Hard",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "2",
+      "label": "A",
+      "value": "4.",
+      "working": "First, \\(\\cos x = 0\\) gives no solution: then \\(\\sin^2 x = 1\\) and the left side equals \\(1 \\neq 0\\). So we may divide by \\(\\cos^2 x\\) and write \\(t = \\tan x\\):\n\n\\(t^2 - 15t + 50 = 0\\), that is \\((t-5)(t-10) = 0\\), so \\(\\tan x = 5\\) or \\(\\tan x = 10\\).\n\nSince \\(\\tan x\\) has period \\(\\pi\\), each positive value is taken exactly twice in \\([0, 2\\pi]\\): once in \\((0, \\frac{\\pi}{2})\\) and once in \\((\\pi, \\frac{3\\pi}{2})\\). That gives \\(2 + 2 = 4\\) solutions.\n\nSo the answer is option (A).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "3",
+      "label": "A",
+      "value": "\\(A^2 = 0\\).",
+      "working": "\\(K\\) is the set of vectors that \\(A\\) sends to zero, and \\(J\\) is the set of all outputs \\(Ay\\).\n\nTake any \\(y \\in \\mathbf{R}^4\\). Then \\(Ay \\in J = K\\), so \\(A(Ay) = 0\\), that is \\(A^2 y = 0\\). Since this holds for every \\(y\\), \\(A^2 = 0\\).\n\nThe other options need not hold. For example, the matrix with a single 1 in row 1, column 3 and another in row 2, column 4 (all other entries 0) has \\(K = J\\) (both are the vectors with \\(x_3 = x_4 = 0\\)), yet it is neither symmetric nor skew symmetric, and \\(A^2 = 0 \\neq A\\).\n\nSo the answer is option (A).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "4",
+      "label": "C",
+      "value": "16.",
+      "working": "Add the lines one at a time. With no lines there is \\(1\\) region. When the \\(k\\)-th line is added, it meets the earlier \\(k-1\\) lines at \\(k-1\\) distinct points (no two parallel, no three concurrent), which cut it into \\(k\\) pieces, and each piece splits one region into two. So it adds \\(k\\) regions.\n\nNumber of regions \\(= 1 + (1 + 2 + 3 + 4 + 5) = 1 + 15 = 16\\).\n\nEquivalently, \\(1 + n + \\binom{n}{2} = 1 + 5 + 10 = 16\\).\n\nSo the answer is option (C).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "5",
+      "label": "D",
+      "value": "\\(y = x + 1\\).",
+      "working": "Any circle through \\((1, 0)\\) and \\((0, 1)\\) has this segment as a chord, so its diameter is at least the chord length. The smallest circle is the one with the segment as **diameter**: centre \\(\\left(\\frac{1}{2}, \\frac{1}{2}\\right)\\).\n\nThe radius to \\((0, 1)\\) has slope \\(\\frac{1 - \\frac{1}{2}}{0 - \\frac{1}{2}} = -1\\). The tangent is perpendicular to it, so its slope is \\(1\\).\n\nTangent at \\((0, 1)\\): \\(y - 1 = 1(x - 0)\\), that is \\(y = x + 1\\).\n\nSo the answer is option (D).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "6",
+      "label": "C",
+      "value": "\\(f(x) = \\pi^x\\left(1 + \\left|\\tan \\frac{\\pi x}{10}\\right|\\right)\\).",
+      "working": "All four functions are \\(\\pi^x\\) multiplied by a non-negative factor, so compare the factors on \\([-1, 1]\\).\n\nIn (A) and (B) the factor \\(|\\sin \\pi x|\\) or \\(|\\cos \\pi x|\\) is at most \\(1\\), and in (D) the factor \\(\\frac{1}{|x|+1}\\) is at most \\(1\\). In (C) the factor \\(1 + \\left|\\tan \\frac{\\pi x}{10}\\right|\\) is at least \\(1\\) (and \\(\\tan \\frac{\\pi x}{10}\\) is defined since \\(\\left|\\frac{\\pi x}{10}\\right| \\le \\frac{\\pi}{10}\\)).\n\nSo the function in (C) is at least \\(\\pi^x\\) everywhere, while the others are at most \\(\\pi^x\\), and each of them is strictly smaller on most of the interval. Hence the area under (C) is the largest.\n\nSo the answer is option (C).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "7",
+      "label": "D",
+      "value": "\\(\\lim\\limits_{x \\to \\infty} f(x) = -\\infty\\) and \\(\\lim\\limits_{x \\to -\\infty} f(x) = \\infty\\).",
+      "working": "To be onto \\(\\mathbf{R}\\), \\(f\\) must take arbitrarily large positive and arbitrarily large negative values.\n\nIn (D), for any real \\(c\\) we can find \\(p\\) with \\(f(p) > c\\) (take \\(p\\) very negative) and \\(q\\) with \\(f(q) < c\\) (take \\(q\\) very positive). By the **intermediate value theorem**, the continuous \\(f\\) takes the value \\(c\\) between \\(p\\) and \\(q\\). So \\(f\\) is surjective.\n\nIn (A) and (B), \\(f\\) is bounded below (a continuous function that tends to \\(\\infty\\) or \\(0\\) at both ends cannot take arbitrarily negative values), so very negative values are missed; for example \\(f(x) = x^2\\) in (A). In (C), \\(f\\) is bounded above, for example \\(f(x) = -e^{-x}\\).\n\nSo the answer is option (D).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "8",
+      "label": "B",
+      "value": "is \\(\\frac{1}{2020}\\).",
+      "working": "Write the expression as a Riemann sum:\n\n\\(\\frac{1}{n^{2020}} \\sum_{k=1}^{n} k^{2019} = \\frac{1}{n} \\sum_{k=1}^{n} \\left(\\frac{k}{n}\\right)^{2019}\\).\n\nAs \\(n \\to \\infty\\) this tends to \\(\\int_0^1 x^{2019}\\,dx = \\frac{1}{2020}\\).\n\nSo the answer is option (B).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "9",
+      "label": "B",
+      "value": "7.",
+      "working": "If the first term is \\(a\\) and the common difference is \\(d\\) (both integers), the sum of \\(n\\) terms is \\(\\frac{n}{2}\\big(2a + (n-1)d\\big) = 161\\), so \\(n\\big(2a + (n-1)d\\big) = 322 = 2 \\times 7 \\times 23\\).\n\nSince \\(2a + (n-1)d\\) is an integer, \\(n\\) must divide \\(322\\). Of \\(5, 6, 7, 8\\), only \\(7\\) divides \\(322\\).\n\nCheck \\(n = 7\\): \\(2a + 6d = 46\\), so \\(a + 3d = 23\\). For example \\(a = 23, d = 0\\), or \\(a = 20, d = 1\\) giving \\(20 + 21 + \\cdots + 26 = 161\\).\n\nSo the answer is option (B).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "10",
+      "label": "C",
+      "value": "\\(\\frac{\\alpha}{2}\\).",
+      "working": "Let \\(I = \\int_{-1}^{1} \\frac{f(x)}{1+e^x}dx\\). Substitute \\(x = -t\\) and use \\(f(-t) = f(t)\\):\n\n\\(I = \\int_{-1}^{1} \\frac{f(t)}{1+e^{-t}}dt = \\int_{-1}^{1} \\frac{e^t f(t)}{e^t + 1}dt\\).\n\nAdding the two forms of \\(I\\): \\(2I = \\int_{-1}^{1} \\frac{(1 + e^x) f(x)}{1 + e^x}dx = \\int_{-1}^{1} f(x)\\,dx = \\alpha\\).\n\nSo \\(I = \\frac{\\alpha}{2}\\), and the answer is option (C).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "11",
+      "label": "A",
+      "value": "\\(\\frac{4}{5}\\).",
+      "working": "Total frequency \\(N = 5 + 10 + 15 + 20 = 50\\).\n\nMean \\(= \\frac{1(5) + 2(10) + 3(15) + 4(20)}{50} = \\frac{5 + 20 + 45 + 80}{50} = \\frac{150}{50} = 3\\).\n\nDeviations \\(|x_i - 3|\\) are \\(2, 1, 0, 1\\), so \\(\\sum f_i |x_i - 3| = 5(2) + 10(1) + 15(0) + 20(1) = 40\\).\n\nMean deviation about the mean \\(= \\frac{40}{50} = \\frac{4}{5}\\).\n\nSo the answer is option (A).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "12",
+      "label": "A",
+      "value": "5.",
+      "working": "If \\(S\\) has \\(n\\) elements, the subsets with at most two elements are: the empty set (\\(1\\)), single-element subsets (\\(n\\)) and two-element subsets (\\(\\binom{n}{2}\\)).\n\nSo \\(1 + n + \\frac{n(n-1)}{2} = 16\\), giving \\(n^2 + n - 30 = 0\\), that is \\((n+6)(n-5) = 0\\). Since \\(n > 0\\), \\(n = 5\\).\n\nCheck: \\(1 + 5 + 10 = 16\\).\n\nSo the answer is option (A).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "13",
+      "label": "C",
+      "value": "\\(\\frac{(n-1)a}{n+1}\\).",
+      "working": "Take \\(A\\) as origin, \\(\\vec{AB} = \\vec{b}\\) and \\(\\vec{AD} = \\vec{d}\\), so \\(C = \\vec{b} + \\vec{d}\\). Then \\(E = \\frac{1}{n}\\vec{b}\\), and since \\(CF = \\frac{1}{n}CD\\), \\(F = \\vec{d} + \\left(1 - \\frac{1}{n}\\right)\\vec{b}\\).\n\nA point of \\(AC\\) is \\(t(\\vec{b} + \\vec{d})\\); a point of \\(DE\\) is \\(\\vec{d} + s\\left(\\frac{1}{n}\\vec{b} - \\vec{d}\\right)\\). Comparing coefficients: \\(t = \\frac{s}{n}\\) and \\(t = 1 - s\\), so \\(s = \\frac{n}{n+1}\\) and \\(t = \\frac{1}{n+1}\\). Thus \\(AX = \\frac{a}{n+1}\\).\n\n(Equivalently, triangles \\(AXE\\) and \\(CXD\\) are similar with ratio \\(AE : CD = 1 : n\\).)\n\nBy the same argument (or by symmetry about the centre of the parallelogram), \\(CY = \\frac{a}{n+1}\\). Hence \\(XY = a - \\frac{2a}{n+1} = \\frac{(n-1)a}{n+1}\\).\n\nSo the answer is option (C).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "14",
+      "label": "D",
+      "value": "48.",
+      "working": "A vector \\(a\\hat{i} + b\\hat{j} + c\\hat{k}\\) with \\(a, b, c \\in \\{-1, 0, 1\\}\\) has length \\(\\sqrt{a^2 + b^2 + c^2}\\), which equals \\(1\\) only when exactly one of \\(a, b, c\\) is \\(\\pm 1\\). So the unit vectors in \\(X\\) are \\(\\pm\\hat{i}, \\pm\\hat{j}, \\pm\\hat{k}\\): six of them.\n\nThe elements of \\(Y\\) are **ordered** triples. Choose \\(\\vec{v}_1\\) in \\(6\\) ways. \\(\\vec{v}_2\\) must be perpendicular to it, so it is one of the \\(4\\) vectors along the other two axes. \\(\\vec{v}_3\\) must lie along the remaining axis: \\(2\\) ways.\n\nTotal \\(= 6 \\times 4 \\times 2 = 48\\).\n\nSo the answer is option (D).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "15",
+      "label": "D",
+      "value": "\\(\\frac{3}{500}\\).",
+      "working": "Each of \\(x, y, z\\) is chosen from \\(\\{1, 2, \\ldots, 10\\}\\), independently and with repetition allowed, so there are \\(10^3 = 1000\\) equally likely ordered triples.\n\nFavourable triples are the positive integer solutions of \\(x + y + z = 5\\). By stars and bars there are \\(\\binom{4}{2} = 6\\) of them: the arrangements of \\((1, 1, 3)\\) (3 ways) and of \\((1, 2, 2)\\) (3 ways).\n\nProbability \\(= \\frac{6}{1000} = \\frac{3}{500}\\).\n\nSo the answer is option (D).\n\nNote: as printed, the question does not say whether repetition is allowed. If \\(x, y, z\\) had to be three different elements, no triple would work (the probability would be \\(0\\)), so the intended reading is choice with repetition.",
+      "difficulty": "Moderate",
+      "confidence": "HIGH",
+      "flag": "Wording does not say whether the three elements may repeat. Without repetition the probability is 0 (no option); only the with-replacement, ordered reading (6/1000) matches an option."
+    }
+  ]
+}
