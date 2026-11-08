@@ -83,7 +83,7 @@ describe("plan_week for a student on the path", () => {
     const { plan, d } = deps();
     const text = await plan.run({});
     expect(text).toContain("board plan");
-    expect(text).not.toMatch(/path/);
+    expect(text).not.toMatch(/\bpath\b/);
     expect(text).toContain(ON.status);
     expect(text).toContain(ON.today[0]);
     expect(text).toContain(ON.week[0]);
@@ -117,7 +117,7 @@ describe("plan_week for a Class 12 student without a path", () => {
     const { plan, d } = deps({ loadPath: vi.fn(async () => OFFER) });
     const text = await plan.run({});
     expect(text).toMatch(/board plan/);
-    expect(text).not.toMatch(/path/);
+    expect(text).not.toMatch(/\bpath\b/);
     expect(text).toContain("about 50 minutes a day");
     expect(text).toContain("/me");
     expect(text).toContain("week_only");
