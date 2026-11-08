@@ -11,6 +11,8 @@ import "server-only";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import type { Database } from "@/types/db";
 import { getUserAttempts, type UserAttempt } from "@/lib/mocks/query";
+import { startNextExam, type ChapterWeight } from "@/lib/me/startNext";
+import { loadStartNext } from "@/lib/me/startNextServer";
 import { summarizeUserMocks } from "@/lib/mocks/perf";
 import { listOwnNotesProgress } from "@/lib/notes/progressService";
 import { summarizeNotesProgress } from "@/lib/notes/progress";
@@ -55,6 +57,9 @@ export type MeData = MeHeaderData & {
   tutorPriceAsk: { price: number } | null;
   /** The board path (MENTOR_SPEC.md, migration 0225): today on it, or the start offer. */
   pathCard: PathCard;
+  /** "Start next" (2026-11-09, migration 0242): the highest-value chapters of
+   *  their exam not started yet. Optional so older fixtures stay small. */
+  startNext?: ChapterWeight[];
 };
 
 export async function loadMe(
@@ -112,7 +117,7 @@ export async function loadMe(
 
   // ROUND 2: the reads that need round 1 (the focus, the exams), at once.
   // Each is best effort: a failed read costs its card, never the page.
-  const [continueItems, resultChecked, pathCard] = await Promise.all([
+  const [continueItems, resultChecked, pathCard, startNext] = await Promise.all([
     // Where they were last working, across the bank, /board, notes and
     // homework (2026-11-06).
     loadContinue(
@@ -141,6 +146,11 @@ export async function loadMe(
     loadPathCard(db, user.id, targets, { write: !opts.staffView, now }).catch((e) => {
       console.error("path read failed", e instanceof Error ? e.message : e);
       return { path: null, offer: null } as PathCard;
+    }),
+    // "Start next" (2026-11-09): the exam in focus, else their first exam.
+    loadStartNext(db, user.id, startNextExam({ focusSlug, targets }), examIds).catch((e) => {
+      console.error("start next read failed", e instanceof Error ? e.message : e);
+      return [] as ChapterWeight[];
     }),
   ]);
   const cont = continueItems[0];
@@ -173,5 +183,6 @@ export async function loadMe(
     showNps,
     tutorPriceAsk,
     pathCard,
+    startNext,
   };
 }

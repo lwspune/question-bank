@@ -103,10 +103,13 @@ function bucketOf(m: MissRow | undefined): "wrong" | "reviewLater" | "vUnclear" 
 }
 
 export function buildFixList(
-  due: readonly DueQuestion[],
+  all: readonly DueQuestion[],
   misses: ReadonlyMap<string, MissRow>,
-  planIds: ReadonlySet<string>
+  planIds: ReadonlySet<string>,
+  /** A subject chip (2026-11-09): narrows the list, its total and plan count. */
+  subject: string | null = null
 ): FixList {
+  const due = subject ? all.filter((q) => q.subject === subject) : all;
   const groups = new Map<string, FixChapter & { last: string }>();
   let inPlan = 0;
   for (const q of due) {
@@ -155,12 +158,30 @@ export function chapterQuestions(
 
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
-export type ReviewParams = { list: "fix" | "saved"; chapterId: string | null };
+export type ReviewParams = { list: "fix" | "saved"; chapterId: string | null; subject: string | null };
 
-/** `/review`, `/review?list=saved`, `/review?chapter=<id>`. Anything else opens To fix. */
+/** The subjects the waiting questions span, most first: Review's chips. */
+export function fixSubjects(due: readonly DueQuestion[]): { subject: string; count: number }[] {
+  const counts = new Map<string, number>();
+  for (const q of due) if (q.subject) counts.set(q.subject, (counts.get(q.subject) ?? 0) + 1);
+  return [...counts.entries()]
+    .map(([subject, count]) => ({ subject, count }))
+    .sort((a, b) => b.count - a.count || a.subject.localeCompare(b.subject));
+}
+
+/** A subject name is short; anything longer is not one of ours. */
+const MAX_SUBJECT = 80;
+
+/** `/review`, `/review?list=saved`, `/review?chapter=<id>`, `/review?subject=<name>`.
+ *  Anything else opens To fix. */
 export function parseReviewParams(search: Record<string, string | string[] | undefined>): ReviewParams {
   const one = (v: string | string[] | undefined) => (typeof v === "string" ? v : null);
-  if (one(search.list) === "saved") return { list: "saved", chapterId: null };
+  if (one(search.list) === "saved") return { list: "saved", chapterId: null, subject: null };
   const chapter = one(search.chapter);
-  return { list: "fix", chapterId: chapter && UUID_RE.test(chapter) ? chapter.toLowerCase() : null };
+  const subject = one(search.subject)?.trim() ?? null;
+  return {
+    list: "fix",
+    chapterId: chapter && UUID_RE.test(chapter) ? chapter.toLowerCase() : null,
+    subject: subject && subject.length <= MAX_SUBJECT ? subject : null,
+  };
 }

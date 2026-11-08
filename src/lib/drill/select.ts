@@ -77,6 +77,8 @@ export type DueQuestion = {
   /** "Mathematics · NDA": the subject and exam a chapter name alone does not
    *  say ("Probability" is in NDA and in MHT-CET). */
   place?: string;
+  /** The question's subject by name, for Review's subject chips (2026-11-09). */
+  subject?: string;
   /** The question's exam by name, for the exam focus on /me (2026-11-08). */
   exam?: string;
   subtopic: string;
@@ -145,6 +147,7 @@ export type QuestionRef = {
   subtopicId?: string | null;
   chapterId?: string | null;
   place?: string;
+  subject?: string;
   /** The question's exam by name, which decides the site it is drilled on
    *  (lib/sites/siteScope, 2026-11-06). */
   exam?: string;
@@ -293,6 +296,7 @@ export function attachRefs(
       chapter: ref.chapter,
       chapterId: ref.chapterId ?? null,
       place: ref.place ?? "",
+      subject: ref.subject,
       exam: ref.exam,
       subtopic: ref.subtopic,
     });

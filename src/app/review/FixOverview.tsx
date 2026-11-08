@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight, CalendarCheck } from "lucide-react";
 import type { FixList, FixChapter } from "@/lib/review/fixList";
 import { drillChapterHref, drillHref } from "@/lib/drill/from";
+import { cn } from "@/lib/utils";
 
 /**
  * The To fix list: the total with one Fix button, then every chapter, most to
@@ -14,19 +15,46 @@ export default function FixOverview({
   list,
   focusExam,
   savedCount,
+  subjects = [],
+  subject = null,
+  allCount,
 }: {
   list: FixList;
   /** The header's exam focus: the list shows that exam's questions only. */
   focusExam: string | null;
   savedCount: number;
+  /** Subject chips (2026-11-09): every subject waiting, with its count. */
+  subjects?: { subject: string; count: number }[];
+  /** The chosen chip; null = All. */
+  subject?: string | null;
+  /** Everything waiting, all subjects: the All chip's count. */
+  allCount?: number;
 }) {
-  if (list.total === 0) return <Empty savedCount={savedCount} />;
+  const chips =
+    subjects.length > 1 ? <SubjectChips subjects={subjects} subject={subject} allCount={allCount ?? list.total} /> : null;
+  if (list.total === 0) {
+    return (
+      <div className="space-y-6">
+        {chips}
+        <Empty savedCount={savedCount} />
+      </div>
+    );
+  }
 
-  const planFirst = list.inPlan > 0;
-  const fixHref = planFirst ? "/drill?from=review_tab&scope=path" : drillHref("review_tab");
+  // One subject chosen: the drill narrows to a chapter, not a subject, so the
+  // lead button starts with that subject's biggest chapter.
+  const first = subject ? list.chapters[0] : null;
+  const planFirst = !first && list.inPlan > 0;
+  const fixHref = first
+    ? drillChapterHref("review_tab", first.chapterId)
+    : planFirst
+      ? "/drill?from=review_tab&scope=path"
+      : drillHref("review_tab");
+  const fixLabel = first ? `Start with ${first.name}` : planFirst ? `Fix today's ${list.inPlan} first` : "Start fixing";
 
   return (
     <div className="space-y-6">
+      {chips}
       <section aria-labelledby="fix-heading" className="hero-soft flex flex-col gap-4 rounded-2xl p-5 sm:flex-row sm:items-center sm:justify-between sm:p-6">
         <div className="min-w-0">
           <h2 id="fix-heading" className="text-xl font-semibold tracking-tight sm:text-2xl">
@@ -50,7 +78,7 @@ export default function FixOverview({
           prefetch={false}
           className="inline-flex h-11 shrink-0 items-center justify-center gap-2 rounded-xl bg-brand px-6 text-sm font-medium text-brand-foreground transition-colors hover:bg-brand/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
         >
-          {planFirst ? `Fix today's ${list.inPlan} first` : "Start fixing"}
+          {fixLabel}
           <ArrowRight className="h-4 w-4" aria-hidden />
         </Link>
       </section>
@@ -108,6 +136,39 @@ export function breakdown(c: Pick<FixChapter, "wrong" | "reviewLater" | "vUnclea
   if (c.vUnclear) parts.push(`${c.vUnclear} not clear after V`);
   if (c.inPlan) parts.push(`${c.inPlan} in today's plan`);
   return parts.join(" · ");
+}
+
+/** All · Mathematics 23 · Physics 9: links (each list is its own server render), never prefetched. */
+function SubjectChips({
+  subjects,
+  subject,
+  allCount,
+}: {
+  subjects: { subject: string; count: number }[];
+  subject: string | null;
+  allCount: number;
+}) {
+  const chip = (label: string, count: number, href: string, active: boolean) => (
+    <Link
+      key={href}
+      href={href}
+      prefetch={false}
+      aria-current={active ? "page" : undefined}
+      className={cn(
+        "inline-flex h-9 shrink-0 items-center gap-1.5 rounded-full border px-3 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+        active ? "border-brand-accent bg-brand/10 text-brand-accent" : "bg-card hover:bg-accent"
+      )}
+    >
+      {label}
+      <span className="tabular-nums opacity-80">{count.toLocaleString("en-IN")}</span>
+    </Link>
+  );
+  return (
+    <nav aria-label="Subject" className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1 [scrollbar-width:none] sm:mx-0 sm:flex-wrap sm:px-0 [&::-webkit-scrollbar]:hidden">
+      {chip("All", allCount, "/review", subject === null)}
+      {subjects.map((s) => chip(s.subject, s.count, `/review?subject=${encodeURIComponent(s.subject)}`, subject === s.subject))}
+    </nav>
+  );
 }
 
 function Empty({ savedCount }: { savedCount: number }) {

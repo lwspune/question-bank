@@ -24,6 +24,9 @@ import { getExamIdMap } from "@/lib/exam/examIdMap";
 import { loadMeHeader } from "@/lib/me/header";
 import { mapExamFor } from "@/lib/me/progress";
 import { masteredCount } from "@/lib/performance/masteryMap";
+import { EXAM_REGISTRY } from "@/lib/exam/examContext";
+import { loadNotStarted } from "@/lib/me/startNextServer";
+import StartNext from "@/app/me/StartNext";
 
 /**
  * `/me/map` — the mastery map. ENGAGEMENT_SPEC.md B1.
@@ -96,6 +99,18 @@ export default async function MasteryMapPage(props: { searchParams: Promise<Sear
   });
   const nav = buildLaneNav(lanes, latestEvidenceExam(perf, practice), { exam: mf.exam, subject: searchParams.subject });
   const map = nav.selected ? buildMasteryMap(nav.selected) : null;
+  // "Not started yet" (2026-11-09): the selected subject's highest-value
+  // chapters the student has not answered anything in, as Home's Start next
+  // counts them. www only (intl keeps its own page); a failed read shows none.
+  const selectedSlug = nav.selected ? EXAM_REGISTRY.find((e) => e.examName === nav.selected!.exam)?.slug : undefined;
+  const selectedExamId = header && selectedSlug ? (await getExamIdMap())[selectedSlug] : null;
+  const notStarted =
+    nav.selected && selectedExamId
+      ? await loadNotStarted(db, user.id, selectedExamId, nav.selected.subject).catch((e: unknown) => {
+          console.error("map not-started read failed", e instanceof Error ? e.message : e);
+          return [];
+        })
+      : [];
 
   return (
     <>
@@ -165,6 +180,12 @@ export default async function MasteryMapPage(props: { searchParams: Promise<Sear
                 </li>
               ))}
             </ul>
+
+            <StartNext
+              chapters={notStarted}
+              title="Not started yet"
+              note="The chapters of this subject worth the most that you haven't answered anything in."
+            />
 
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
               {map.tiles.map((t) => (
