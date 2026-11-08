@@ -16,9 +16,17 @@ import type { Pulse } from "@/lib/pulse/cache";
  * Renders nothing until the pulse arrives or when nothing is due: the Today
  * card already says so, and an empty section is noise.
  */
-export default function WeakSpots({ pulse: given }: { pulse?: Pulse } = {}) {
+export default function WeakSpots({
+  pulse: given,
+  initialPulse,
+}: {
+  pulse?: Pulse;
+  /** The student's own Home: the pulse /me built on the server, shown from
+   *  the first render and kept live (2026-11-08). */
+  initialPulse?: Pulse | null;
+} = {}) {
   // The staff view of a student's /me passes the STUDENT's pulse.
-  const fetched = usePulse(!given);
+  const fetched = usePulse(!given, initialPulse);
   const pulse = given ?? fetched;
   const weak = pulse?.weak ?? [];
   if (weak.length === 0) return null;

@@ -32,6 +32,7 @@ export default function TodayCard({
   initialDone,
   initialGoal,
   pulse: given,
+  initialPulse,
   readOnly = false,
 }: {
   resume?: { title: string; href: string };
@@ -42,10 +43,13 @@ export default function TodayCard({
   /** The staff view of a student's /me passes the STUDENT's pulse, built on
    *  the server; left to fetch, this card would show the viewer's own. */
   pulse?: Pulse;
+  /** The student's own Home: the pulse /me built on the server, shown from
+   *  the first render and kept live (2026-11-08). */
+  initialPulse?: Pulse | null;
   /** Staff view: nothing on the card may save as the student. */
   readOnly?: boolean;
 }) {
-  const live = usePulse(!given);
+  const live = usePulse(!given, initialPulse);
   const pulse = given ?? live;
   const [goal, setGoal] = useState<number | null>(initialGoal);
   const [saving, setSaving] = useState(false);
