@@ -191,4 +191,15 @@ describe.skipIf(!HAS_ENV)("study paths (migration 0225)", () => {
     });
     expect(error).toBeNull();
   });
+
+  it("takes a path_paced event, one per Lighter / More tap (0230)", async () => {
+    for (const to of ["50", "60"]) {
+      const { error } = await clients.sam.from("user_activity").insert({
+        user_id: ids.sam,
+        kind: "path_paced",
+        metadata: { direction: "more", from: String(Number(to) - 10), to },
+      });
+      expect(error).toBeNull();
+    }
+  });
 });
