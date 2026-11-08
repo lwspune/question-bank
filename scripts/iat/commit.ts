@@ -16,7 +16,7 @@
  * '<sourceFile(year)>'.
  */
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { uploadImage } from "../../src/lib/storage/images";
 import { commitStaged } from "../../src/lib/upload/commit";
@@ -113,6 +113,7 @@ async function main() {
   console.log(`IAT ${year.year}: ${payload.length} rows (${perSubject})  source_file="${src}"`);
   console.log(`  key: ${year.keyMode === "none" ? "none; two solvers, derived_model stamped" : "IISER's (printed (a))"}`);
   console.log(`  figure files: ${planned.reduce((n, p) => n + files(p).length, 0)}`);
+  console.log(`  grace in mocks: ${planned.filter((p) => p.row.grace).map((p) => `${p.subject} ${p.row.ref}`).join(", ") || "none"}`);
   console.log(`  answers by slot: ${["A", "B", "C", "D"].map((l) => `${l} ${planned.filter((p) => p.row.answer === l).length}`).join(", ")}`);
   if (issues.length) {
     console.error(`REFUSING: ${issues.length} issue(s):\n  ${issues.join("\n  ")}`);
@@ -139,7 +140,8 @@ async function main() {
   for (const e of res.errors) console.log(`  row ${e.sourceRow}: ${e.message}`);
   if (res.failed) process.exit(1);
 
-  await sync(client, examId, src, planned, payload);
+  const ids = await sync(client, examId, src, planned, payload);
+  recordGrace(year.year, planned, ids);
   if (year.keyMode === "none") {
     const { error, count } = await client
       .from("questions")
@@ -151,7 +153,10 @@ async function main() {
 }
 
 /** Solution, difficulty, question figure and option pictures onto THIS paper's rows, by content_hash. */
-async function sync(client: SupabaseClient, examId: string, src: string, planned: Planned[], payload: ParsedRowPayload[]) {
+async function sync(
+  client: SupabaseClient, examId: string, src: string, planned: Planned[], payload: ParsedRowPayload[]
+): Promise<Map<number, string>> {
+  const ids = new Map<number, string>();
   const { data, error } = await client
     .from("questions")
     .select("id, content_hash, image_url, options(id, label, image_url)")
@@ -167,6 +172,7 @@ async function sync(client: SupabaseClient, examId: string, src: string, planned
       console.log(`  ${p.stem} ${p.row.ref}: deduped into a row outside this paper; left as it is`);
       continue;
     }
+    ids.set(p.n, q.id as string);
     const update: Record<string, string> = { solution: payload[i].solution!, difficulty: payload[i].difficulty };
     if (p.row.figure && p.row.figure.required !== false && !q.image_url) {
       update.image_url = await put(join(figureDir(p.stem), stemFigureFile(p.row.ref)));
@@ -187,6 +193,26 @@ async function sync(client: SupabaseClient, examId: string, src: string, planned
     synced++;
   }
   console.log(`synced ${synced} row(s); ${uploaded} picture(s) uploaded; ${(data ?? []).length} row(s) under "${src}"`);
+  return ids;
+}
+
+/**
+ * A question defective as printed is grace in every mock (owner policy 2026-10-29): its id goes
+ * in src/lib/mocks/flawed.json, the one list the mock builders read. Idempotent; commit the file.
+ */
+function recordGrace(year: number, planned: Planned[], ids: Map<number, string>) {
+  const file = join(process.cwd(), "src", "lib", "mocks", "flawed.json");
+  const list: { id: string; reason: string }[] = JSON.parse(readFileSync(file, "utf8"));
+  const known = new Set(list.map((f) => f.id));
+  let added = 0;
+  for (const p of planned.filter((x) => x.row.grace)) {
+    const id = ids.get(p.n);
+    if (!id || known.has(id)) continue;
+    list.push({ id, reason: `IAT ${year} ${p.subject} Q${p.row.ref}: defective as printed (scripts/iat/data/${p.stem}.adjudication.json)` });
+    added++;
+  }
+  if (added) writeFileSync(file, JSON.stringify(list, null, 2) + "\n");
+  console.log(`grace: ${added} question(s) added to src/lib/mocks/flawed.json`);
 }
 
 main().catch((e) => {

@@ -74,6 +74,10 @@ export type Adjudication = {
   answer?: string;
   solution?: string;
   solutionNote?: string;
+  /** Shown to students above the solution as "**Note:** ...": a defective question, or a key a person doubts. */
+  notice?: string;
+  /** Defective as printed (two defensible answers, impossible data): everyone gets its marks in a mock. Needs a notice. */
+  grace?: true;
   hold?: string;
   why?: string;
 };
@@ -253,6 +257,8 @@ export type AssembledRow = {
   answer: Label;
   options: { label: Label; text: string; isCorrect: boolean; figureFile?: string; figureWatermark?: "none" }[];
   figure?: IatFigure;
+  /** Defective as printed: commit.ts records it in src/lib/mocks/flawed.json. */
+  grace?: true;
 };
 
 export function assemblePaper(input: {
@@ -320,8 +326,13 @@ export function assemblePaper(input: {
       issues.push(`${at}: answer "${answer ?? ""}" names no option`);
       continue;
     }
+    if (a?.grace && !a.notice?.trim()) {
+      issues.push(`${at}: grace needs a notice telling students why`);
+      continue;
+    }
     let solution = a?.solution ?? d.working;
     if (a?.solutionNote) solution = `${solution}\n\n${a.solutionNote}`;
+    if (a?.notice) solution = `**Note:** ${a.notice}\n\n${solution}`;
     const bad = textIssues(`${at} solution`, solution);
     if (!solution?.trim()) bad.push(`${at}: empty solution`);
     if (bad.length) {
@@ -346,6 +357,7 @@ export function assemblePaper(input: {
         ...(r.optionFigures?.[p]?.watermark ? { figureWatermark: r.optionFigures[p].watermark } : {}),
       })),
       ...(r.figure ? { figure: r.figure } : {}),
+      ...(a?.grace ? { grace: true as const } : {}),
     });
   }
   return { rows, issues };

@@ -238,6 +238,27 @@ describe("assemblePaper", () => {
     expect(res.issues.join()).toMatch(/cannot overrule/);
   });
 
+  it("puts a notice above the solution, and marks a defective question grace (owner policy 2026-10-29)", () => {
+    const r = row();
+    const k = keyLetter(rowOrder(KEYED, "Biology", r));
+    const other = "ABCD".replace(k, "")[0];
+    const res = assemblePaper({
+      paper: paper([r]), year: KEYED, derived: [derived("1", other)],
+      adjudications: [{ ref: "1", notice: "Two options are defensible.", grace: true, solution: "Both readings. So the key is the setter's option.", why: "x" }],
+    });
+    expect(res.issues).toEqual([]);
+    expect(res.rows[0].answer).toBe(k);
+    expect(res.rows[0].grace).toBe(true);
+    expect(res.rows[0].solution.startsWith("**Note:** Two options are defensible.\n\n")).toBe(true);
+  });
+
+  it("refuses grace without a notice telling students why", () => {
+    const r = row();
+    const k = keyLetter(rowOrder(KEYED, "Biology", r));
+    const res = assemblePaper({ paper: paper([r]), year: KEYED, derived: [derived("1", k)], adjudications: [{ ref: "1", grace: true }] });
+    expect(res.issues.join()).toMatch(/notice/);
+  });
+
   it("refuses a keyed year whose key format is not confirmed yet", () => {
     const res = assemblePaper({
       paper: paper([row()], { year: 2023 }),
