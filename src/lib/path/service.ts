@@ -536,7 +536,7 @@ export async function startPath(
   const existing = await getActivePath(db, userId);
   if (existing) {
     if (existing.exam === input.exam) return existing;
-    throw new PathError("You already have a path. Stop it on your account page first.", 409);
+    throw new PathError("You already have a plan. Stop it on your account page first.", 409);
   }
   const board = boardDateFor(input.exam, profile, now);
   if (!board) throw new PathError("No board date to plan to.", 409);
@@ -615,9 +615,9 @@ export async function deferChapter(
   now: Date = new Date()
 ): Promise<void> {
   const path = await getActivePath(db, userId);
-  if (!path) throw new PathError("You have no path to change.", 409);
+  if (!path) throw new PathError("You have no plan to change.", 409);
   const chapters = await getPathContent(path.exam, path.subjects);
-  if (!chapters.some((c) => c.id === chapterId)) throw new PathError("That chapter is not on your path.", 400);
+  if (!chapters.some((c) => c.id === chapterId)) throw new PathError("That chapter is not in your plan.", 400);
 
   const { error } = await db
     .from("study_path_deferrals")
@@ -639,7 +639,7 @@ export async function setPace(
   now: Date = new Date()
 ): Promise<number> {
   const path = await getActivePath(db, userId);
-  if (!path) throw new PathError("You have no path to change.", 409);
+  if (!path) throw new PathError("You have no plan to change.", 409);
   const next = stepPace(path.dailyMinutes, direction);
   if (next === path.dailyMinutes) return next;
   const { error } = await db.from("study_paths").update({ daily_minutes: next }).eq("id", path.id).is("ended_at", null);

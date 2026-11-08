@@ -70,7 +70,7 @@ export default function PathCard({ initial, readOnly = false }: { initial: Card;
     );
   }
   if (card.offer && !readOnly) {
-    return <PathStart offer={card.offer} busy={busy} onStart={(stream) => void post({ action: "start", exam: card.offer!.exam, stream }, "Your path has started", true)} />;
+    return <PathStart offer={card.offer} busy={busy} onStart={(stream) => void post({ action: "start", exam: card.offer!.exam, stream }, "Your plan has started", true)} />;
   }
   return null;
 }
@@ -109,7 +109,7 @@ function PathToday({
     <section aria-labelledby="path-heading" className="hero-soft rounded-2xl p-5 sm:p-6">
       <div className="flex items-baseline justify-between gap-3">
         <h2 id="path-heading" className="text-xs font-semibold uppercase tracking-wider text-brand-accent">
-          Today on your path
+          Today&apos;s plan
         </h2>
         {view.tasks.length > 0 && (
           <span className="shrink-0 text-xs tabular-nums text-muted-foreground">about {view.todayMinutes} min</span>
@@ -130,7 +130,7 @@ function PathToday({
           Today&apos;s tasks are done. Well done. Your next ones are here tomorrow.
         </p>
       ) : view.tasks.length === 0 ? (
-        <p className="mt-4 text-sm text-muted-foreground">Every chapter on your path is done.</p>
+        <p className="mt-4 text-sm text-muted-foreground">Every chapter in your plan is done.</p>
       ) : null}
 
       {view.tasks.length > 0 && (
@@ -213,7 +213,7 @@ function PathToday({
         )}
       </div>
       {confirmLighter && view.lighter && !readOnly && (
-        <div className="mt-2 rounded-xl border bg-card px-4 py-3 text-sm" role="group" aria-label="Make the path lighter">
+        <div className="mt-2 rounded-xl border bg-card px-4 py-3 text-sm" role="group" aria-label="Make the plan lighter">
           <p>{view.lighter}</p>
           <div className="mt-2 flex flex-wrap gap-2">
             <button
@@ -236,7 +236,7 @@ function PathToday({
 
       <div className="mt-3 space-y-0.5 text-xs text-muted-foreground">
         <p>{view.examLine}</p>
-        {view.biologyNote && <p>Biology is not in the path yet.</p>}
+        {view.biologyNote && <p>Biology is not in the plan yet.</p>}
       </div>
     </section>
   );
@@ -279,7 +279,7 @@ function PathStart({ offer, busy, onStart }: { offer: PathOffer; busy: boolean; 
         A few tasks each day, about {offer.minutes} minutes a day: each chapter&apos;s revision sheet, its Top 10 board
         questions, then its chapter test, in book order.
       </p>
-      {pcb && <p className="mt-1 text-sm text-muted-foreground">Biology is not in the path yet.</p>}
+      {pcb && <p className="mt-1 text-sm text-muted-foreground">Biology is not in the plan yet.</p>}
 
       {offer.stream ? (
         <button

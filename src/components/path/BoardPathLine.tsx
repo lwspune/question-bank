@@ -74,7 +74,7 @@ export function BoardPathLineView({ line, className = "" }: { line: ChapterLine;
       <Route className="mt-0.5 h-4 w-4 shrink-0 text-brand-accent" aria-hidden />
       <div className="min-w-0 flex-1 text-sm">
         <p className="font-medium">
-          On your path
+          In your plan
           {line.done && (
             <span className="ml-2 inline-flex items-center gap-1 font-normal text-emerald-700 dark:text-emerald-400">
               <CheckCircle2 className="h-3.5 w-3.5" aria-hidden />
@@ -117,7 +117,7 @@ export function BoardPathOffer({ className = "" }: { className?: string }) {
         prefetch={false}
         className="inline-flex h-9 shrink-0 items-center justify-center rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
       >
-        See the path
+        See the plan
       </Link>
     </div>
   );

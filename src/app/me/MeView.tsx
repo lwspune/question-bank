@@ -113,7 +113,7 @@ export default function MeView({
           {data.pathCard.offer &&
             (staff ? (
               <HiddenNote>
-                Here they see the board path offer: about {data.pathCard.offer.minutes} minutes a day, with a button to
+                Here they see the board plan offer: about {data.pathCard.offer.minutes} minutes a day, with a button to
                 start it.
               </HiddenNote>
             ) : (

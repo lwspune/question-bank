@@ -146,7 +146,7 @@ describe("review: what the week did", () => {
   });
   it("never shows a zero: a quiet week opens on the new week, not on what was missed", () => {
     const lines = reviewLines({ chaptersDone: [], sheets: 0, tops: 0, tests: 0, fixed: 0, next: "Atoms", finish: null });
-    expect(lines).toEqual(["A new week on your path.", "Next: Atoms."]);
+    expect(lines).toEqual(["A new week of your plan.", "Next: Atoms."]);
     expect(lines.join(" ")).not.toMatch(/\b0\b|missed|streak/i);
   });
   it("carries no em dash", () => {

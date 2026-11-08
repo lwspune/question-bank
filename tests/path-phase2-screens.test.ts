@@ -76,7 +76,7 @@ describe("/me: pick up here and the weekly review", () => {
 });
 
 describe("V: My plan for today", () => {
-  const html = renderToStaticMarkup(createElement(VPathCardBody, { view: view({ review: ["A new week on your path.", "Next: Nuclei."], lastWorkDay: "2026-11-20" }) }));
+  const html = renderToStaticMarkup(createElement(VPathCardBody, { view: view({ review: ["A new week of your plan.", "Next: Nuclei."], lastWorkDay: "2026-11-20" }) }));
   it("links each of today's tasks to its work", () => {
     expect(html).toContain('href="/board/cbse-12/physics/current-electricity#top"');
     expect(html).toContain('href="/mock/cbse-12-chapter-ce"');
@@ -96,7 +96,7 @@ describe("/board: the path line on a chapter page", () => {
   it("shows this chapter's parts, the Top 10's count and today's part", () => {
     const line = chapterLine(CE, { sheet: true, topWorked: 4, test: false, recordedDone: false }, [{ kind: "top", chapterId: "ce", minutes: 18 }]);
     const html = renderToStaticMarkup(createElement(BoardPathLineView, { line }));
-    expect(html).toContain("On your path");
+    expect(html).toContain("In your plan");
     expect(html).toContain("Revision sheet");
     expect(html).toContain("4 of 10");
     expect(html).toContain("Today: work the Top 10 PYQs");
