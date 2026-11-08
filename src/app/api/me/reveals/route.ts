@@ -64,8 +64,10 @@ export async function GET(request: NextRequest) {
       { headers: NO_STORE }
     );
   } catch (e) {
-    // No limit is the safe direction: a student is never walled by our error.
+    // An error, never "no limit": the meter asks once more, then fails open
+    // itself (lib/questions/dailyQuotaFetch). Answering "no limit" here left a
+    // page unlimited until reload whenever the count timed out (2026-11-07).
     console.error("reveal quota read failed", e);
-    return NextResponse.json({ limit: null, todayIds: [] }, { headers: NO_STORE });
+    return NextResponse.json({ error: "Could not read today's answers." }, { status: 503, headers: NO_STORE });
   }
 }

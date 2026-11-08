@@ -112,6 +112,23 @@ describe.skipIf(!HAS_ENV)("free exams (migration 0210)", () => {
     expect((await loadRevealedToday(student, studentId, since)).sort()).toEqual([freeQuestionIds[0], paidQuestionIds[0]].sort());
   });
 
+  it("still counts a revealed id that is no question id (0227 kept 0211's rule)", async () => {
+    const odd = `not-a-question-${RUN_ID}`;
+    const { error } = await admin.from("user_activity").insert({
+      user_id: studentId,
+      kind: "question_practiced",
+      ref_id: odd,
+      ref_kind: "question",
+      metadata: { surface: "board" },
+    });
+    expect(error).toBeNull();
+    const since = new Date(Date.now() - 3600_000).toISOString();
+    const ids = await loadPaidRevealedToday(student, since);
+    expect(ids).toContain(odd);
+    expect(ids).toContain(paidQuestionIds[0]);
+    expect(ids).not.toContain(freeQuestionIds[0]);
+  });
+
   it("refuses a 'free' scope on a pass", async () => {
     const { error } = await admin
       .from("entitlements")

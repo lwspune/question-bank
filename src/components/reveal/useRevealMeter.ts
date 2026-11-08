@@ -12,6 +12,7 @@ import type { PickLabel, PracticeSurface } from "@/lib/questions/practiceBatch";
 import type { PassCta } from "@/lib/billing/plans";
 import { intlExamOfPath } from "@/lib/sites/intl";
 import { isFreeExamName } from "@/lib/billing/passScope";
+import { fetchDailyQuota } from "@/lib/questions/dailyQuotaFetch";
 
 /**
  * A reveal that came from tapping an option. `correct` is the page's own
@@ -141,34 +142,33 @@ export function liftDailyLimit(): void {
 
 function ensureDailyQuota(): void {
   if (dailyFetch) return;
-  dailyFetch = (async () => {
-    try {
-      // An intl exam's page names its exam, so only that exam's pass lifts the
-      // limit (migration 0206); a www page names none and the site's pass counts.
-      const exam = intlExamOfPath(window.location.pathname);
-      const res = await fetch(`/api/me/reveals${exam ? `?exam=${exam}` : ""}`, { cache: "no-store" });
-      if (!res.ok) return;
-      const data = (await res.json()) as {
-        limit: number | null;
-        todayIds: string[];
-        exemptIds?: string[];
-        pass?: PassCta | null;
-      };
-      // null = no limit (off, or a pass): stay unlimited for this page load.
-      if (data.limit === null) return;
-      dailyQuota = {
-        limit: data.limit,
-        todayIds: data.todayIds,
-        // Today's board-path questions (migration 0225): never counted or walled.
-        exemptIds: data.exemptIds ?? [],
-        day: istDayKey(new Date()),
-        pass: data.pass ?? null,
-      };
-      notify();
-    } catch {
-      /* offline or blocked: no limit is the safe direction */
-    }
+  // Read only after an await, so it is set by then.
+  let fetchAt: Promise<void> | null = null;
+  fetchAt = (async () => {
+    // An intl exam's page names its exam, so only that exam's pass lifts the
+    // limit (migration 0206); a www page names none and the site's pass counts.
+    const exam = intlExamOfPath(window.location.pathname);
+    // A failed read is asked for once more (2026-11-08); two failures mean no
+    // limit for this page load, the safe direction.
+    const data = await fetchDailyQuota(
+      () => fetch(`/api/me/reveals${exam ? `?exam=${exam}` : ""}`, { cache: "no-store" }),
+      (ms) => new Promise((resolve) => setTimeout(resolve, ms))
+    );
+    // Signed out while the retry waited: drop the answer.
+    if (dailyFetch !== fetchAt) return;
+    // null = no limit (off, a pass, or both reads failed): stay unlimited.
+    if (!data || data.limit === null) return;
+    dailyQuota = {
+      limit: data.limit,
+      todayIds: data.todayIds,
+      // Today's board-path questions (migration 0225): never counted or walled.
+      exemptIds: data.exemptIds ?? [],
+      day: istDayKey(new Date()),
+      pass: data.pass ?? null,
+    };
+    notify();
   })();
+  dailyFetch = fetchAt;
 }
 
 function spendDaily(nextIds: string[]): void {
