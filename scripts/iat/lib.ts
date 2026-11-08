@@ -23,7 +23,14 @@ import { IAT_TAXONOMY } from "./taxonomy";
 import type { IatSubject, IatYear } from "./config";
 
 export type Region = [number, number, number, number];
-export type IatFigure = { page: string; region: Region; note?: string; required?: boolean };
+export type IatFigure = {
+  page: string;
+  region: Region;
+  note?: string;
+  required?: boolean;
+  /** "none": a person looked at a crop the watermark check flagged and saw no watermark. */
+  watermark?: "none";
+};
 
 export type IatRow = {
   /** The printed question number within its subject, "1".."15". */
@@ -212,6 +219,28 @@ export function crosscheck(
   };
 }
 
+/**
+ * A year is committed as ONE source file, numbered 1..N the way the paper runs:
+ * Biology, Chemistry, Mathematics, Physics, each by its printed number. So
+ * question_number is unique within the source file, and a mock's sections
+ * read in paper order.
+ */
+export function numberAcrossPaper<R extends { ref: string }>(
+  papers: readonly { subject: IatSubject; rows: readonly R[] }[]
+): { subject: IatSubject; row: R; n: number }[] {
+  const order = ["Biology", "Chemistry", "Mathematics", "Physics"];
+  for (const p of papers) if (!order.includes(p.subject)) throw new Error(`"${p.subject}" is not an IAT subject`);
+  const out: { subject: IatSubject; row: R; n: number }[] = [];
+  for (const subject of order) {
+    for (const p of papers.filter((x) => x.subject === subject)) {
+      for (const row of [...p.rows].sort((a, b) => Number(a.ref) - Number(b.ref))) {
+        out.push({ subject: p.subject, row, n: out.length + 1 });
+      }
+    }
+  }
+  return out;
+}
+
 export type AssembledRow = {
   ref: string;
   questionNumber: string;
@@ -222,7 +251,7 @@ export type AssembledRow = {
   context?: string;
   solution: string;
   answer: Label;
-  options: { label: Label; text: string; isCorrect: boolean; figureFile?: string }[];
+  options: { label: Label; text: string; isCorrect: boolean; figureFile?: string; figureWatermark?: "none" }[];
   figure?: IatFigure;
 };
 
@@ -314,6 +343,7 @@ export function assemblePaper(input: {
         text: r.options[p],
         isCorrect: LABELS[slot] === answer,
         ...(r.optionFigures ? { figureFile: optionFigureFile(r.ref, p) } : {}),
+        ...(r.optionFigures?.[p]?.watermark ? { figureWatermark: r.optionFigures[p].watermark } : {}),
       })),
       ...(r.figure ? { figure: r.figure } : {}),
     });

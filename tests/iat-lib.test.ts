@@ -7,6 +7,7 @@ import {
   blindPayload,
   crosscheck,
   assemblePaper,
+  numberAcrossPaper,
   type IatPaper,
   type IatRow,
   type DerivedEntry,
@@ -279,6 +280,22 @@ describe("assemblePaper", () => {
     const k = keyLetter(order);
     const { rows } = assemblePaper({ paper: paper([r]), year: KEYED, derived: [derived("1", k)] });
     expect(rows[0].options.map((o) => o.figureFile)).toEqual(order.map((p) => `1-opt${p + 1}.png`));
+  });
+});
+
+describe("numberAcrossPaper", () => {
+  it("numbers a year 1..N in subject order, by printed number within a subject", () => {
+    const sub = (refs: string[]) => refs.map((ref) => ({ ref }));
+    const out = numberAcrossPaper([
+      { subject: "Physics", rows: sub(["2", "1"]) },
+      { subject: "Biology", rows: sub(["1", "2", "3"]) },
+      { subject: "Chemistry", rows: sub(["1"]) },
+    ]);
+    expect(out.map((o) => `${o.subject[0]}${o.row.ref}:${o.n}`)).toEqual(["B1:1", "B2:2", "B3:3", "C1:4", "P1:5", "P2:6"]);
+  });
+
+  it("refuses a subject outside the paper", () => {
+    expect(() => numberAcrossPaper([{ subject: "Zoology" as never, rows: [{ ref: "1" }] }])).toThrow(/Zoology/);
   });
 });
 

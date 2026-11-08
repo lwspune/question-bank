@@ -29,6 +29,12 @@ import { join } from "node:path";
 
 export const EXAM_NAME = "IISER IAT";
 export const EXAM_SLUG = "iiser-iat";
+/** One source file per year, all four subjects in it. */
+export const sourceFile = (year: number) => `IAT ${year} (IISER)`;
+/** The public provenance bracket. */
+export const PYQ_NOTE = "IISER";
+/** Stamped on every row of a no-key year. */
+export const DERIVED_MODEL = "claude-opus-5-5 · two blind passes (IISER published no key for this year)";
 export const SUBJECTS = ["Biology", "Chemistry", "Mathematics", "Physics"] as const;
 export type IatSubject = (typeof SUBJECTS)[number];
 

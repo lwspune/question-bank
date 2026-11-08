@@ -13,9 +13,10 @@
  *   - Chapters CBSE marks "[Outdated]" are left out (their subtopics moved:
  *     "Responses to Abiotic Factors and Adaptations" sits in Organisms and
  *     Populations; Adsorption and Colloids sit in the legacy Surface Chemistry).
- *   - A few subtopics the IAT syllabus names and the CBSE list lacks
- *     (Trigonometric Equations, Quadratic Equations, Arithmetic Progression,
- *     Sums of Special Series, transistors and logic gates).
+ *   - A few subtopics the IAT syllabus or the older books name and the CBSE
+ *     list lacks (Trigonometric Equations, Quadratic Equations, Arithmetic
+ *     Progression, Sums of Special Series, transistors and logic gates, Animal
+ *     Tissues, Doppler Effect, heat engines).
  *   - `legacy: true` chapters: NCERT chapters cut in the 2023 rationalisation.
  *     The 2017-2022 papers were set on the older books and ask them. A chapter
  *     is seeded only once a question lands in it, so an unused one costs nothing.
@@ -32,7 +33,7 @@ export const IAT_TAXONOMY: Readonly<Record<IatSubject, readonly IatChapter[]>> =
     { name: "Animal Kingdom", subtopics: ["Basis of Classification", "Porifera, Coelenterata and Ctenophora", "Platyhelminthes, Aschelminthes and Annelida", "Arthropoda, Mollusca and Echinodermata", "Hemichordata and Chordata"] },
     { name: "Morphology of Flowering Plants", subtopics: ["The Leaf", "The Inflorescence", "The Flower", "The Fruit and Seed", "Description of a Flowering Plant and Its Families"] },
     { name: "Anatomy of Flowering Plants", subtopics: ["The Tissue Systems", "Anatomy of Roots", "Anatomy of Stems", "Anatomy of Leaves"] },
-    { name: "Structural Organisation in Animals", subtopics: ["Morphology and Anatomy of Frog"] },
+    { name: "Structural Organisation in Animals", subtopics: ["Animal Tissues", "Morphology and Anatomy of Frog"] },
     { name: "Cell: The Unit of Life", subtopics: ["Cell and Cell Theory", "An Overview of Cell", "Prokaryotic Cells", "Cell Membrane and Cell Wall", "Endomembrane System", "Mitochondria, Plastids and Ribosomes", "Cytoskeleton, Cilia, Flagella and Centrioles", "Nucleus and Microbodies"] },
     { name: "Biomolecules", subtopics: ["Chemical Composition of Living Tissue", "Proteins", "Polysaccharides", "Enzymes"] },
     { name: "Cell Cycle and Cell Division", subtopics: ["Cell Cycle", "M Phase (Mitosis)", "Meiosis", "Significance of Mitosis and Meiosis"] },
@@ -136,10 +137,10 @@ export const IAT_TAXONOMY: Readonly<Record<IatSubject, readonly IatChapter[]>> =
     { name: "Mechanical Properties of Solids", subtopics: ["Stress, Strain and Hooke's Law", "Young's Modulus", "Shear Modulus", "Bulk Modulus and Compressibility", "Applications of Elastic Behaviour"] },
     { name: "Mechanical Properties of Fluids", subtopics: ["Pressure in Fluids", "Streamline Flow", "Bernoulli's Principle", "Viscosity", "Surface Tension"] },
     { name: "Thermal Properties of Matter", subtopics: ["Temperature, Heat and Thermometry", "Thermal Expansion", "Specific Heat Capacity and Calorimetry", "Change of State and Latent Heat", "Heat Transfer", "Newton's Law of Cooling"] },
-    { name: "Thermodynamics", subtopics: ["Thermal Equilibrium and the Zeroth Law", "Heat, Internal Energy and Work", "First Law of Thermodynamics", "Specific Heat Capacity", "Thermodynamic Processes"] },
+    { name: "Thermodynamics", subtopics: ["Thermal Equilibrium and the Zeroth Law", "Heat, Internal Energy and Work", "First Law of Thermodynamics", "Specific Heat Capacity", "Thermodynamic Processes", "Second Law, Heat Engines and Refrigerators"] },
     { name: "Kinetic Theory", subtopics: ["Behaviour of Gases", "Kinetic Theory of an Ideal Gas", "Specific Heat Capacity", "Mean Free Path"] },
     { name: "Oscillations", subtopics: ["Periodic and Oscillatory Motion", "Simple Harmonic Motion", "SHM and Uniform Circular Motion", "Velocity, Acceleration and Force Law in SHM", "Energy in Simple Harmonic Motion", "The Simple Pendulum"] },
-    { name: "Waves", subtopics: ["Transverse and Longitudinal Waves", "Displacement Relation in a Progressive Wave", "The Speed of a Travelling Wave", "Superposition of Waves and Standing Waves", "Beats"] },
+    { name: "Waves", subtopics: ["Transverse and Longitudinal Waves", "Displacement Relation in a Progressive Wave", "The Speed of a Travelling Wave", "Superposition of Waves and Standing Waves", "Beats", "Doppler Effect"] },
     { name: "Electric Charges and Fields", subtopics: ["Electric Charge and its Basic Properties", "Coulomb's Law and Forces Between Multiple Charges", "Electric Field and Field Lines", "Electric Flux and Gauss's Law", "Electric Dipole and Dipole in a Uniform Field", "Applications of Gauss's Law"] },
     { name: "Electrostatic Potential and Capacitance", subtopics: ["Electrostatic Potential due to Charges and Dipoles", "Equipotential Surfaces", "Potential Energy of a System of Charges", "Electrostatics of Conductors and Dielectrics", "Capacitors, Capacitance and their Combinations", "Energy Stored in a Capacitor"] },
     { name: "Current Electricity", subtopics: ["Electric Current and Ohm's Law", "Drift of Electrons and Resistivity", "Temperature Dependence of Resistivity", "Electrical Energy and Power", "Combination of Resistors", "Cells, EMF and Internal Resistance", "Kirchhoff's Rules and Wheatstone Bridge"] },
