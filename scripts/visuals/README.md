@@ -421,6 +421,14 @@ picture shows the right shape.
 
 ## Gotchas (each one cost a batch)
 
+- **A check on the batch FILE is not a check on what the database returns.**
+  Postgres jsonb re-sorts an object's keys (shortest first), so `vars` written in
+  dependency order came back out of order and the scene refused them on read:
+  1,180 of 8,369 stored visuals (SSC CGL bar models 801, HSC 12 149) were
+  silently hidden from students while every sheet and every `visuals:run`
+  passed (found 2026-11-08). `parseVars` now works vars out in dependency order
+  (tests/visuals-named-vars.test.ts). To measure what students can see, parse
+  what the database returns, as `visuals:coverage` does (its "stale" count).
 - The picture font has no "∥": write "parallel to" in labels.
 - A label that sits on a line or tick is fixed by the scene's label placement;
   a label still too long for its spot gets the draft dropped, so keep labels short.
