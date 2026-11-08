@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import {
   isPulseFresh,
   parsePulseEntry,
@@ -92,6 +92,19 @@ export function fetchPulse(): Promise<Pulse | null> {
   return inFlight;
 }
 
+/**
+ * Load a pulse the SERVER built into the shared copy (2026-11-08): /me builds
+ * it alongside its other reads and hands it to its cards, so the header badge
+ * and every other subscriber use it rather than asking /api/me/pulse again.
+ * It is the newest value there is, so it replaces whatever was held. Live
+ * updates are untouched: `invalidatePulse()` still drops it and refetches.
+ */
+export function seedPulse(p: Pulse): void {
+  inFlight = Promise.resolve(p);
+  writeCache(p, Date.now());
+  publish(p);
+}
+
 /** Drop the cache and refetch; every mounted subscriber gets the new value. */
 export function invalidatePulse(): void {
   inFlight = null;
@@ -109,8 +122,18 @@ export function resetPulseCache(): void {
   current = null;
 }
 
-export function usePulse(enabled: boolean): Pulse | null {
-  const [pulse, setPulse] = useState<Pulse | null>(current);
+/**
+ * `initial` is a pulse the server built for this page (/me): the component
+ * shows it from its first render, so the numbers are in the page's HTML, and
+ * it is seeded into the shared copy before any component's effect asks for
+ * one (layout effects run before every passive effect on the page).
+ */
+export function usePulse(enabled: boolean, initial?: Pulse | null): Pulse | null {
+  const [pulse, setPulse] = useState<Pulse | null>(initial ?? current);
+
+  useIsomorphicLayoutEffect(() => {
+    if (enabled && initial) seedPulse(initial);
+  }, [enabled, initial]);
 
   useEffect(() => {
     if (!enabled) return;
@@ -125,3 +148,7 @@ export function usePulse(enabled: boolean): Pulse | null {
 
   return enabled ? pulse : null;
 }
+
+/** useLayoutEffect in the browser; on the server (which runs neither) the
+ *  plain effect, so React does not warn about a layout effect there. */
+const useIsomorphicLayoutEffect = typeof window === "undefined" ? useEffect : useLayoutEffect;

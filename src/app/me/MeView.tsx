@@ -43,12 +43,17 @@ export default function MeView({
   vapidKey,
   viewAs,
   tab = "home",
+  initialPulse,
 }: {
   data: MeData;
   vapidKey: string;
   viewAs?: ViewAs;
   /** The open tab in the header's strip; the staff view shows none. */
   tab?: MeTab;
+  /** The student's own Home: the pulse built with the page (2026-11-08), so
+   *  the cards' numbers are in its HTML. Null when that read failed: the
+   *  cards then fetch it, as before. */
+  initialPulse?: Pulse | null;
 }) {
   const staff = !!viewAs;
   const now = new Date();
@@ -121,6 +126,7 @@ export default function MeView({
             initialDone={data.weekly.done}
             initialGoal={data.weekly.goal}
             pulse={viewAs?.pulse}
+            initialPulse={initialPulse}
             readOnly={staff}
           />
         </>
@@ -133,7 +139,7 @@ export default function MeView({
           <HiddenNote>Here they see the ask to turn on reminders when mistakes are due.</HiddenNote>
         )
       ) : (
-        <HomeReminder vapidKey={vapidKey} pushPromptedAt={data.pushPromptedAt} />
+        <HomeReminder vapidKey={vapidKey} pushPromptedAt={data.pushPromptedAt} initialPulse={initialPulse} />
       )}
 
       {/* Papers a teacher has assigned to this student's batch, with the
@@ -144,11 +150,11 @@ export default function MeView({
       {/* Answered · % right · fixed, across every surface (2026-11-05). The
           row it replaced counted mocks, notes checkpoints and saves: 446 of
           745 students saw three zeros there while practising in the bank. */}
-      <ProgressTiles pulse={viewAs?.pulse} />
+      <ProgressTiles pulse={viewAs?.pulse} initialPulse={initialPulse} />
 
       {/* The chapters holding most waiting mistakes, each with its own Fix
           (2026-11-06): 448 of 745 /me visitors had misses waiting. */}
-      <WeakSpots pulse={viewAs?.pulse} />
+      <WeakSpots pulse={viewAs?.pulse} initialPulse={initialPulse} />
 
       {/* A card only when it has something in it: 363 of 745 students saw
           "No mocks yet." beside "Nothing read yet." (2026-11-05), 236 of

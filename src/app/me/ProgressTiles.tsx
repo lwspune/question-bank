@@ -15,12 +15,20 @@ import type { Pulse } from "@/lib/pulse/cache";
  * reads as "you did nothing", and a failed read is not a zero. `fetchPulse`
  * returns the request already in flight, so waiting on it costs no fetch.
  */
-export default function ProgressTiles({ pulse: given }: { pulse?: Pulse } = {}) {
+export default function ProgressTiles({
+  pulse: given,
+  initialPulse,
+}: {
+  pulse?: Pulse;
+  /** The student's own Home: the pulse /me built on the server, shown from
+   *  the first render and kept live (2026-11-08). */
+  initialPulse?: Pulse | null;
+} = {}) {
   // The staff view of a student's /me passes the STUDENT's pulse; fetching
   // here would show the viewer's own numbers.
-  const fetched = usePulse(!given);
+  const fetched = usePulse(!given, initialPulse);
   const pulse = given ?? fetched;
-  const [settled, setSettled] = useState(!!given);
+  const [settled, setSettled] = useState(!!given || !!initialPulse);
 
   useEffect(() => {
     if (given) return;
