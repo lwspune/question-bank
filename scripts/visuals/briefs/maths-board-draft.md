@@ -61,6 +61,9 @@ algebra-steps draft, a sketch draft, or a skip.
 - A solution that is only a relation (implicit general solution): check it
   by differentiating the relation by formula at one sample point, as for
   implicit differentiation above.
+- A character your console prints as � is usually an em dash (U+2014) the
+  console cannot show, not a damaged character: check its code point
+  before reporting it (four false reports on Definite Integration).
 
 ## Output, checks and report
 
