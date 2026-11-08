@@ -135,19 +135,31 @@ function sameRoot(w: string, nw: string): boolean {
   return nw.startsWith(w.slice(0, 6)) || w.startsWith(nw.slice(0, 6));
 }
 
-/** Concept cards whose name or subtopic title holds every word, the student's exams first, at most 2. */
+/**
+ * Concept cards whose name or subtopic title holds every word, or, with 3+ words, all but one (2026-11-08:
+ * "percentage error product quotient powers" missed "Percentage Errors Through Products and Powers" on the
+ * page the student was reading). Full matches first; within each, the notes chapter the student is reading
+ * (`pageKey`, "subjectRoute/chapterSlug"), then the student's exams. At most 2.
+ */
 export function rankNotesConcepts(
   words: readonly string[],
   index: readonly NotesConceptEntry[],
-  examNames: readonly string[] = []
+  examNames: readonly string[] = [],
+  pageKey: string | null = null
 ): NotesConceptEntry[] {
   if (words.length === 0) return [];
-  const hits = index.filter((e) => {
+  const need = words.length >= 3 ? words.length - 1 : words.length;
+  const scored = index.flatMap((e) => {
     const ws = [...nameWords(e.name), ...nameWords(e.subtopicTitle)];
-    return words.every((w) => ws.some((nw) => sameRoot(w, nw)));
+    const hit = words.filter((w) => ws.some((nw) => sameRoot(w, nw))).length;
+    return hit >= need ? [{ e, hit }] : [];
   });
-  const mine = hits.filter((e) => examNames.includes(e.examName));
-  return [...mine, ...hits.filter((e) => !examNames.includes(e.examName))].slice(0, MAX_NOTES);
+  const rank = (s: { e: NotesConceptEntry; hit: number }) =>
+    (s.hit === words.length ? 0 : 4) + (s.e.key === pageKey ? 0 : 2) + (examNames.includes(s.e.examName) ? 0 : 1);
+  return scored
+    .sort((a, b) => rank(a) - rank(b))
+    .slice(0, MAX_NOTES)
+    .map((s) => s.e);
 }
 
 /** A model answer from v_search_answers. */
@@ -168,7 +180,8 @@ function trimTo(s: string, n: number): string {
 export const NOTHING_FOUND =
   `Nothing in our question bank or notes matches this. If it is a concept, definition or derivation from the syllabus, ` +
   `give a short general explanation from what you know. ` +
-  `Never solve a new numeric problem this way, never give an answer to a question from a paper, and never use it for PYQ Vault, prices or exam dates.`;
+  `Never solve a new numeric problem this way, never give an answer to a question from a paper, and never use it for PYQ Vault, prices or exam dates. ` +
+  `If the student sent their own working or answer, you may still check it step by step and say whether it is right (rule 7b).`;
 
 const SEARCH_FAILED =
   "Could not search the question bank just now. Do not explain from your own knowledge: tell the student to ask again in a minute.";
@@ -206,6 +219,8 @@ export type ConceptToolDeps = {
   loadNotesConcept: (entry: NotesConceptEntry) => Promise<string | null>;
   /** The exam and subject of the page the student asked from. */
   page: { examName: string; subjectName?: string } | null;
+  /** The notes chapter the student is reading ("subjectRoute/chapterSlug"), ranked first; null off /notes. */
+  pageNotesKey?: string | null;
   onPaths: (paths: string[]) => void;
 };
 
@@ -251,7 +266,7 @@ export function conceptTool(d: ConceptToolDeps): VTool {
           console.error("V: notes concept index unavailable", err);
           return [] as NotesConceptEntry[];
         });
-        for (const e of rankNotesConcepts(words, index, examNames)) {
+        for (const e of rankNotesConcepts(words, index, examNames, d.pageNotesKey ?? null)) {
           const text = await d.loadNotesConcept(e);
           if (text) notes.push({ name: e.name, path: `/notes/${e.key}/${e.subtopic}`, text });
         }

@@ -6,7 +6,7 @@
  * question the conversation is about.
  */
 import { describe, it, expect } from "vitest";
-import { questionTools, type QuestionToolDeps } from "@/lib/chat/questionToolSet";
+import { questionTools, tappedFrom, type QuestionToolDeps } from "@/lib/chat/questionToolSet";
 import type { RevealCheck, VQuestion } from "@/lib/chat/questionTools";
 
 const ID = "11111111-1111-4111-8111-111111111111";
@@ -127,6 +127,46 @@ describe("explain_question", () => {
   });
 });
 
+// 2026-11-08: on an Ask V tap the model passed the PREVIOUS tapped question's id (12 of 426 explanations in 30
+// days, every one on a tap) and told a student "(B) is wrong, the answer is (A) 17%" about a question whose
+// answer was (C) 4%. On a tap the server knows the question, so the tools read it and ignore the model's id.
+describe("an Ask V tap pins the question", () => {
+  const tapped = { id: ID, chose: "A", entered: null, skipped: false };
+
+  it("explains the tapped question and the tapped pick, whatever id and pick the model passes", async () => {
+    const { tools, seen } = deps({ tapped });
+    const out = await tools.explain_question.run({ question_id: OTHER, chose: "B" });
+    expect(out).toContain("Correct answer: (B) 4");
+    expect(out).toContain("The student chose (A) 3, which is wrong.");
+    expect(seen.explained).toEqual([ID]);
+  });
+
+  it("gives the hint of the tapped question", async () => {
+    const out = await deps({ tapped }).tools.get_question.run({ question_id: OTHER });
+    expect(out).toContain("What is 2 + 2?");
+  });
+
+  it("tells V its earlier replies were about other questions, so it leaves them alone", async () => {
+    const out = await deps({ tapped }).tools.explain_question.run({ question_id: ID });
+    expect(out).toMatch(/earlier replies were about other questions/i);
+    expect(out).toMatch(/do not mention/i);
+  });
+
+  it("counts only the window's own tap messages as a tap", () => {
+    const asked = { id: ID, chose: "A", entered: null, skipped: false };
+    expect(tappedFrom(asked, "I picked (A). Explain this question.")).toEqual({ id: ID, chose: "A", entered: null });
+    expect(tappedFrom(asked, "Explain this question.")).toEqual({ id: ID, chose: "A", entered: null });
+    expect(tappedFrom(asked, "what about the one before?")).toBeNull();
+    expect(tappedFrom(null, "Explain this question.")).toBeNull();
+  });
+
+  it("leaves a typed follow-up alone: the student may mean an earlier question", async () => {
+    const { tools, seen } = deps({ loadQuestion: async (id) => ({ ...Q, id }) });
+    await tools.explain_question.run({ question_id: OTHER });
+    expect(seen.explained).toEqual([OTHER]);
+  });
+});
+
 describe("similar_question", () => {
   it("hands a similar question to the chat window as a card, without its answer", async () => {
     const { tools, seen } = deps();
@@ -159,6 +199,14 @@ describe("find_question (pasted text)", () => {
     const { tools, seen } = deps({ searchQuestions: async () => [] });
     expect(await tools.find_question.run({ text: "zzz" })).toMatch(/no question in the bank matched/i);
     expect(seen.matched).toEqual([]);
+  });
+
+  // 2026-11-08: "Ask them to open the question on the site" sent a student who had TYPED their own question
+  // away with nothing, overriding rule 7's fallback. A typed question is taught through its topic instead.
+  it("on no match, sends V to explain the topic, never to 'open the question on the site'", async () => {
+    const out = await deps({ searchQuestions: async () => [] }).tools.find_question.run({ text: "zzz" });
+    expect(out).toMatch(/explain_concept/);
+    expect(out).not.toMatch(/open the question on the site/i);
   });
 });
 

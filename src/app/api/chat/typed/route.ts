@@ -75,7 +75,8 @@ import { isExplanation } from "@/lib/chat/understood";
 import { fileVSolutionReport } from "@/lib/reports/fileVReport";
 import { loadNotesItemBrief } from "@/lib/chat/notesItemServer";
 import { buildMyQuestionDeps } from "@/lib/chat/myQuestionsServer";
-import type { QuestionToolDeps } from "@/lib/chat/questionToolSet";
+import { tappedFrom, type QuestionToolDeps } from "@/lib/chat/questionToolSet";
+import { parseVLanguage, type VLanguage } from "@/lib/chat/language";
 import { loadSimilarId, loadVQuestion, searchVQuestions } from "@/lib/chat/questionToolsServer";
 import { explainedQuestionId } from "@/lib/chat/solutionFigure";
 import { loadSolutionFigures, loadSolutionVisuals } from "@/lib/chat/solutionFigureServer";
@@ -116,10 +117,12 @@ function ownProgress(userId: string): Promise<Performance | null> {
  */
 function buildQuestionToolDeps(
   userId: string | null,
+  tapped: QuestionToolDeps["tapped"],
   out: { onSimilar: (id: string) => void; onMatch: (id: string) => void; onLimit: (limit: number) => void }
 ): QuestionToolDeps {
   const anon = createSupabaseAnonClient();
   return {
+    tapped,
     loadQuestion: (id) => loadVQuestion(anon, id),
     spendReveal: userId ? (id) => spendVReveal(createSupabaseServerClient(), userId, id) : null,
     loadSimilar: async (q) =>
@@ -169,15 +172,29 @@ function buildPlanDeps(
   };
 }
 
-/** The student's exams, read with their own login (RLS own row, migration 0045). A failed read is no exams. */
-async function readProfileExams(userId: string): Promise<string[]> {
+/**
+ * The student's exams and saved V language, read with their own login (RLS own row, migrations 0045,
+ * 0232). A failed read is no exams and no language.
+ */
+async function readProfileForV(userId: string): Promise<{ examSlugs: string[]; language: VLanguage | null }> {
   const { data, error } = await createSupabaseServerClient()
     .from("student_profiles")
-    .select("stage, target_exams")
+    .select("stage, target_exams, v_language")
     .eq("user_id", userId)
     .maybeSingle();
   if (error) console.error("V: profile read failed", error.message);
-  return profileFieldsFromRow(data).targetExams;
+  return { examSlugs: profileFieldsFromRow(data).targetExams, language: parseVLanguage(data?.v_language) };
+}
+
+/** set_language's write, on the student's own row. A failure is logged and V told it was not saved. */
+async function saveVLanguage(userId: string, lang: VLanguage): Promise<boolean> {
+  try {
+    await updateOwnProfile(createSupabaseServerClient(), userId, { vLanguage: lang });
+    return true;
+  } catch (err) {
+    console.error("V: language save failed", err);
+    return false;
+  }
 }
 
 export async function POST(request: NextRequest) {
@@ -328,15 +345,18 @@ export async function POST(request: NextRequest) {
           const history = modelHistory(session);
           const ownId = userId;
           const notesBrief = askedNotes ? await loadNotesItemBrief(pagePath, askedNotes) : null;
+          const profile = ownId ? await readProfileForV(ownId) : null;
           const context: VContextOptions = {
             page: pagePath,
             signedIn: ownId !== null,
-            profileExamSlugs: ownId ? await readProfileExams(ownId) : [],
+            profileExamSlugs: profile?.examSlugs ?? [],
+            language: profile?.language ?? null,
+            saveLanguage: ownId ? (lang) => saveVLanguage(ownId, lang) : null,
             question: asked,
             notesBrief,
             myQuestions: ownId ? buildMyQuestionDeps(createSupabaseServerClient(), createSupabaseAnonClient(), ownId) : null,
             questionTools: settings.explainEnabled
-              ? buildQuestionToolDeps(ownId, {
+              ? buildQuestionToolDeps(ownId, tappedFrom(asked, message), {
                   onSimilar: (id) => (similarQuestionId = id),
                   onMatch: (id) => (matchQuestionId = id),
                   onLimit: (limit) => (limitHit = limit),
@@ -439,6 +459,8 @@ export async function POST(request: NextRequest) {
             explained: isExplanation(recorded.toolCalls, message),
             ...(solutionFigure ? { solutionFigure } : {}),
             ...(solutionVisual ? { solutionVisual, solutionVisualQuestionId: explainedId } : {}),
+            // "One more like this" under the explanation picks from this question's subtopic (2026-11-08).
+            ...(explainedId ? { explainedQuestionId: explainedId } : {}),
             ...(passOffer ? { passOffer } : {}),
           }
         : {};

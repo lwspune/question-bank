@@ -11,7 +11,7 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { loadVContext } from "./context";
 import { askV, type AskVResult } from "./anthropic";
-import { allowedReplyLinks, plainLinks } from "./replyLinks";
+import { allowedReplyLinks, plainLinks, plainQuotes } from "./replyLinks";
 import type { ModelTurn } from "./conversation";
 
 export type VContextOptions = NonNullable<Parameters<typeof loadVContext>[1]>;
@@ -34,6 +34,6 @@ export async function answerWithV(input: {
     history: input.history,
   });
   if (!result.ok) return { ...result, links: [] };
-  const reply = plainLinks(result.reply);
+  const reply = plainLinks(plainQuotes(result.reply));
   return { ...result, reply, links: allowedReplyLinks(reply, ctx.allowedPaths) };
 }

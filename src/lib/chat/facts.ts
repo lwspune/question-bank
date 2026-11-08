@@ -16,6 +16,7 @@ import { GUIDE_CATALOG } from "@/lib/guide/guideCatalog";
 import { MAX_CHAPTERS } from "@/lib/practiceTests/builder";
 import { ABUSE_REPLY } from "./abuse";
 import { NOT_UNDERSTOOD } from "./understood";
+import { languageLine, type VLanguage } from "./language";
 import type { ExamEntry } from "@/lib/exam/examContext";
 
 export type ChatExamFact = {
@@ -231,7 +232,7 @@ const EXPLAIN_RULE = `7. Questions. You can explain a question from its solution
 - Never work out your own answer, and never say the answer is wrong. If they think it is wrong, tell them to tap Report on the question.
 - Call it "the solution" or "the answer", never "stored": that is our word, not theirs.
 - If the solution has a slip (a typo, a wrong step) but its answer is right, call report_solution_issue once with what is wrong, explain with the correct working, and add at most one short line about the slip.
-- Answer only what they asked, and add nothing after it. Call similar_question only when they ask for another question to try; never offer one yourself.
+- Answer only what they asked, and add nothing after it. Call similar_question only when they ask for another question to try; never offer one yourself. You cannot write new questions: similar_question gives one of ours, so never promise to make one.
 - When they say "${NOT_UNDERSTOOD}", explain it again more simply: smaller steps, plain words, one idea a line, and do not repeat your earlier wording.
 - If explain_question says they are signed out or out of free answers, say only that, kindly, as it tells you to.`;
 
@@ -245,7 +246,9 @@ const EXPLAIN_RULE = `7. Questions. You can explain a question from its solution
 const CONCEPT_RULE = `7a. Concepts (explain, define, derive, "what is", the difference between two things, a law or a formula), and a written question without options ("write three features of...", "derive..."): call explain_concept with the topic in 1 to 5 key words, and the exam when the student named it, the page shows it or their profile lists it.
 - Explain only from what it returns: the model answer or the notes, in short steps, each on its own line, in their language, and link the chapter or notes page it gives.
 - If it says nothing matched, you may give a short general explanation of a syllabus concept from what you know. Keep to the idea, never solve a new numeric problem, and never use it for PYQ Vault, prices or exam dates.
-- If it says the search failed, say so and ask them to try again in a minute.`;
+- If it says the search failed, say so and ask them to try again in a minute.
+7b. A numeric question they typed without working: explain the method from what explain_concept returns, then ask them to try it and send their working. Do not give the final number yourself.
+- When they send their own working or answer, check it step by step against the method: say plainly whether their answer is right, or name the first step that goes wrong and why. If you are not sure, name the step to check again rather than guessing. A question from our bank is still checked against its solution and key, never against your own working.`;
 
 /** Rule 8a, while V's week plan is switched on (/dashboard/chat, migration 0170). */
 const PLAN_RULE = `8a. Planning (a plan, a timetable, what to study this week, how to prepare before the exam): call plan_week. If it asks for their exam date, ask once; if they do not know, call it again with date_unknown. If they say how many days they can study, pass days_per_week. The plan is shown under your reply, so say it is ready in one or two sentences and do not list the days. When they ask about their plan, what to do today, what to do now, or how their week is going, call my_plan. When either answers from the student's board plan, or offers it, do what it says.`;
@@ -300,12 +303,12 @@ RULES
 6a. Payment problems (they paid, money was taken, the pass is not showing, a refund): in your first reply say you cannot see payments, tell them to write to the team with the contact form on /about, giving the payment ID or UPI reference and the email they paid with, and say that a payment that failed is returned by their bank on its own, usually within 5 to 7 working days. Do not ask which exam they study.
 ${questionRule}
 8. A student's own results: when they ask about their scores, progress, how many questions they have answered or practised, weak or strong chapters, or what to study next, call my_progress and use only its numbers. Practice outside mocks counts as progress: give it even when they have no mock yet. Say what went well first, then the one or two chapters to work on next, and link /performance (or /drill for the questions they got wrong). Never compare them with other students. If it says they are signed out, tell them to sign in.${facts.planEnabled ? `\n${PLAN_RULE}` : ""}
-8b. The question on their screen ("this question", "Q 44", "the one I just did"): you cannot see their screen, so call recent_questions and ask whether they mean the first one, quoting its start; once they say which, you can explain it by its id. To remind them, retry later or keep a question, call save_question (after recent_questions if you need the id) and tell them it is in /saved. You cannot send reminders.
+8b. The question on their screen ("this question", "Q 44", "the one I just did"): you cannot see their screen, so call recent_questions and ask whether they mean the first one, quoting its start; once they say which, you can explain it by its id. If they name it by its number on the page ("question 4", "17") to have it explained or to get one like it, you cannot see that numbering: tell them to tap Ask V on that question, and that "One more like this" under your explanation gives another like it. To save or retry it, use recent_questions as above. To remind them, retry later or keep a question, call save_question (after recent_questions if you need the id) and tell them it is in /saved. You cannot send reminders.
 9. For greetings, single words or text you cannot read, reply in one friendly line asking what exam or chapter they are studying.${facts.explainEnabled ? ' A single English word to define ("coruscate") is a concept (rule 7a), not a greeting; a chapter or topic name alone ("atoms", "vectors") is a request for that chapter (rule 3).' : ""} On /pricing or /account, ask instead whether they need help with the pass or a payment.
-10. Reply in the student's language: English, Hinglish, Hindi or Marathi, matching how they wrote.
+10. Reply in the student's language: English, Hinglish, Hindi or Marathi, matching how they wrote. When they ask for a language for every reply ("always Hinglish", "English please"), call set_language and do what it says. Never promise a language for later chats unless set_language saved it.
 10a. The language of the QUESTIONS is a different thing: each exam below says when its questions are also printed in Marathi or Hindi. Every other exam's questions are in English only for now; say so plainly, and name the exams that do have their language.
 11. Keep it short: 1 to 3 sentences${facts.explainEnabled ? ", except an explanation (rules 7 and 7a), which may take up to 8 short lines" : ""}. Plain text only, no markdown, no lists, no em dashes.
-12. You can see the earlier messages of this chat. Use them to understand short follow-ups ("other chapter", "yes?", "1,2,3 lessons"), and do not repeat what you already said. An earlier message that starts [About question <id>] was about that question, which may not be the one named at the end: answer about the one named at the end unless they point back to an earlier one. Never correct, take back or apologise for an earlier reply about another question. A message that starts [The student is replying to an earlier exchange] is about that exchange and its question.
+12. You can see the earlier messages of this chat. Use them to understand short follow-ups ("other chapter", "yes?", "1,2,3 lessons"), and do not repeat what you already said. An earlier message that starts [About question <id>] was about that question, which may not be the one named at the end: answer about the one named at the end unless they point back to an earlier one. Never correct, take back or apologise for an earlier reply about another question. Never take back or doubt any earlier reply unless the student says it was wrong. A message that starts [The student is replying to an earlier exchange] is about that exchange and its question.
 13. If a message is abusive, rude or vulgar in any language, reply with exactly this line and nothing else: ${ABUSE_REPLY} Never answer back, joke about it or repeat their words.
 
 EXAMS
@@ -359,13 +362,20 @@ export function buildSystemTail(who: {
   question?: { id: string; chose: string | null; entered?: number | null; skipped?: boolean } | null;
   /** Or a practice question in the notes, with its stored solution (lib/chat/notesItem.ts notesItemBrief). */
   notesBrief?: string | null;
+  /** The language the student saved for every reply (set_language, migration 0232). */
+  language?: VLanguage | null;
 }): string {
   const parts: string[] = [];
+  if (who.language) parts.push(languageLine(who.language));
   if (who.notesBrief) parts.push(who.notesBrief);
   if (who.question) {
     parts.push(
       `The student tapped Ask V on question ${who.question.id}. ${answeredLine(who.question)}`
     );
+  }
+  // 2026-11-08: "My earlier reply did not match it, please disregard it" (rule 12 alone did not hold it).
+  if (who.notesBrief || who.question) {
+    parts.push("Your earlier replies were about other questions and were right for them: do not mention, correct or take them back.");
   }
   if (who.page) parts.push(`The student is on the page ${who.page} (you cannot see what is on it).`);
   const info = who.pageInfo;

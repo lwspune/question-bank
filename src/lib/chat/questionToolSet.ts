@@ -16,7 +16,8 @@
  * Spec: tests/chat-question-toolset.test.ts.
  */
 import type { VTool } from "./anthropic";
-import { explainView, hintView, type RevealCheck, type VQuestion } from "./questionTools";
+import { isAskVMessage } from "./askVEvent";
+import { explainView, hintView, type AskedQuestion, type RevealCheck, type VQuestion } from "./questionTools";
 
 export type QuestionMatch = { id: string; snippet: string; where: string };
 
@@ -29,6 +30,12 @@ export type QuestionToolDeps = {
   searchQuestions: (text: string, chapterId: string | null) => Promise<QuestionMatch[]>;
   /** The chapter of the page the student asked from, set by loadVContext. */
   pageChapterId?: string | null;
+  /**
+   * The question an Ask V TAP was about (2026-11-08), or null for a typed message. On a tap every tool
+   * reads this question and its pick, whatever the model passes: 12 of 426 tap explanations in 30 days
+   * named the PREVIOUS tapped question. A typed follow-up is left alone, as it may mean an earlier one.
+   */
+  tapped?: { id: string; chose: string | null; entered: number | null } | null;
   /** The route collects these for the chat window. */
   onSimilar: (id: string) => void;
   /** A pasted question's best match, offered as a card to confirm. */
@@ -65,11 +72,23 @@ const ID_SCHEMA = {
   required: ["question_id"],
 };
 
+/** The question a message pins: only the window's own Ask V tap message (askVMessage), never typed text. */
+export function tappedFrom(asked: AskedQuestion | null, message: string): QuestionToolDeps["tapped"] {
+  if (!asked || !isAskVMessage(message)) return null;
+  return { id: asked.id, chose: asked.chose, entered: asked.entered };
+}
+
+/** Said on a tap, in the tool's answer because V weighs a tool's words above its rules (2026-11-08). */
+const TAP_NOTE =
+  "This is the question the student just tapped. Your earlier replies were about other questions and were right for them: do not mention, correct or take them back.";
+
 export function questionTools(d: QuestionToolDeps): VTool[] {
+  const tapped = d.tapped ?? null;
   async function load(input: unknown): Promise<VQuestion | null> {
-    const id = idOf(input);
+    const id = tapped ? tapped.id : idOf(input);
     return id ? d.loadQuestion(id) : null;
   }
+  const onTap = (out: string) => (tapped ? `${out}\n${TAP_NOTE}` : out);
 
   return [
     {
@@ -80,7 +99,7 @@ export function questionTools(d: QuestionToolDeps): VTool[] {
       input_schema: ID_SCHEMA,
       run: async (input) => {
         const q = await load(input);
-        return q ? hintView(q) : NOT_FOUND;
+        return q ? onTap(hintView(q)) : NOT_FOUND;
       },
     },
     {
@@ -110,6 +129,7 @@ export function questionTools(d: QuestionToolDeps): VTool[] {
           return `The student has used today's ${check.limit} free answers. Tell them kindly, give no answer or hint, and say the Premium Pass at /pricing gives unlimited answers.`;
         }
         d.onExplained(q.id);
+        if (tapped) return onTap(explainView(q, tapped.chose, tapped.entered));
         const raw = (input as { chose?: unknown }).chose;
         const chose = typeof raw === "string" && LETTERS.has(raw.toUpperCase()) ? raw.toUpperCase() : null;
         const typed = (input as { entered?: unknown }).entered;
@@ -145,7 +165,8 @@ export function questionTools(d: QuestionToolDeps): VTool[] {
         const text = (input as { text?: unknown } | null)?.text;
         const matches = typeof text === "string" && text.trim() ? await d.searchQuestions(text, d.pageChapterId ?? null) : [];
         if (matches.length === 0) {
-          return "No question in the bank matched. Ask them to open the question on the site and tap Ask V on it.";
+          // 2026-11-08: "open the question on the site" sent away a student who had typed their own question.
+          return "No question in the bank matched. Call explain_concept with the question's topic in a few key words, and follow what it returns.";
         }
         d.onMatch(matches[0].id);
         return `The closest match is shown to the student as a card asking whether it is their question; they tap it to have it explained. Do not explain it yet: ask them to check the card. It reads: ${matches[0].snippet} (${matches[0].where})`;

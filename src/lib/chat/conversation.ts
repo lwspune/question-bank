@@ -202,6 +202,8 @@ export type HistoryTurn =
       visual?: unknown;
       /** The question `visual` belongs to, to record use of it (lib/visuals/usage). */
       visualQuestionId?: string;
+      /** The bank question an explanation explained: "One more like this" picks from its subtopic (2026-11-08). */
+      explainedQuestionId?: string;
     };
 
 /**
@@ -225,7 +227,7 @@ export function historyTurns(
       ...(asked ? { asked } : {}),
     });
     if (r.replySource === "ai") {
-      const explainedId = figures || visuals ? explainedQuestionId(r.toolCalls) : null;
+      const explainedId = explainedQuestionId(r.toolCalls);
       const figure = explainedId ? figures?.get(explainedId) : undefined;
       const visual = explainedId ? visuals?.get(explainedId) : undefined;
       turns.push({
@@ -239,6 +241,7 @@ export function historyTurns(
         understood: r.understood ?? null,
         ...(figure ? { figure } : {}),
         ...(visual ? { visual, visualQuestionId: explainedId! } : {}),
+        ...(explainedId ? { explainedQuestionId: explainedId } : {}),
       });
     } else if (r.replySource === "followup") {
       turns.push({ role: "assistant", text: r.reply!, links: r.replyLinks ?? [], source: "followup" });

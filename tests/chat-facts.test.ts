@@ -537,6 +537,33 @@ describe("buildSystemPrompt", () => {
     expect(p).toMatch(/a chapter or topic name alone \("atoms", "vectors"\) is a request for that chapter \(rule 3\)/);
   });
 
+  // Owner, 2026-11-08: a student sent "2 x 1 + 1 x 2 + 3 x 1 = 7%" and V would not say it was right
+  // ("final sum khud check kar lijiye"). V may confirm a student's own working; it still never solves a
+  // bare numeric question for them, and a bank question is still checked against its solution and key.
+  it("has V check a student's own working step by step, and say plainly whether it is right", () => {
+    const p = buildSystemPrompt({ ...base, explainEnabled: true });
+    expect(p).toMatch(/their own working or answer/i);
+    expect(p).toMatch(/say plainly whether their answer is right, or name the first step that goes wrong/i);
+    expect(p).toMatch(/If you are not sure, name the step to check again/i);
+    expect(p).toMatch(/ask them to try it and send their working/i);
+    expect(p).toMatch(/A question from our bank is still checked against its solution and key/i);
+  });
+
+  // 2026-11-07: "one more like question 4", then "17": V cannot see the page's numbering, and guessed.
+  it("sends a question named by its number on the page to Ask V and One more like this", () => {
+    const p = buildSystemPrompt({ ...base, explainEnabled: true });
+    expect(p).toMatch(/by its number on the page/);
+    expect(p).toMatch(/tap Ask V on that question/);
+    expect(p).toMatch(/One more like this/);
+    // The full eval run: "REMIND OF DOING Q 44 RETRY" stopped saving the question. A save still uses recent_questions.
+    expect(p).toMatch(/To save or retry it, use recent_questions as above/);
+  });
+
+  it("tells V it cannot write new questions", () => {
+    const p = buildSystemPrompt({ ...base, explainEnabled: true });
+    expect(p).toMatch(/You cannot write new questions/);
+  });
+
   it("with explanations off, has no concept rule and no own-knowledge permission", () => {
     const p = buildSystemPrompt(base);
     expect(p).not.toMatch(/explain_concept/);
@@ -549,6 +576,8 @@ describe("buildSystemPrompt", () => {
     expect(p).toMatch(/\[About question <id>\]/);
     expect(p).toMatch(/answer about the one named at the end unless they point back/i);
     expect(p).toMatch(/Never correct, take back or apologise for an earlier reply about another question/);
+    // 2026-11-08 eval: unprompted, V told a student "the CDS link I gave was not checked, don't rely on it".
+    expect(p).toMatch(/Never take back or doubt any earlier reply unless the student says it was wrong/);
   });
 
   it("tells V a reply to an earlier message is about that message", () => {
@@ -605,6 +634,18 @@ describe("buildSystemPrompt", () => {
 });
 
 describe("buildSystemTail", () => {
+  // 2026-11-08: after a notes tap, V told the student "My earlier reply did not match it, please disregard it".
+  it("on a tapped question, tells V its earlier replies were about other questions and stay as they are", () => {
+    for (const t of [
+      buildSystemTail({ page: null, signedIn: true, notesBrief: "Notes question: 2 + 2?" }),
+      buildSystemTail({ page: null, signedIn: true, question: { id: "q1", chose: null } }),
+    ]) {
+      expect(t).toMatch(/earlier replies were about other questions/i);
+      expect(t).toMatch(/do not mention, correct or take them back/i);
+    }
+    expect(buildSystemTail({ page: null, signedIn: true })).not.toMatch(/earlier replies/i);
+  });
+
   it("tells V the page the student is on, when known", () => {
     expect(buildSystemTail({ page: "/questions/cbse-12/physics/atoms", signedIn: true })).toContain(
       "The student is on the page /questions/cbse-12/physics/atoms"

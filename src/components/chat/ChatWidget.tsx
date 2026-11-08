@@ -5,7 +5,7 @@ import { useIntlSite } from "@/lib/sites/useIntlSite";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
-import { CalendarCheck, Check, ListChecks, Reply, RotateCcw, SendHorizontal, ThumbsDown, ThumbsUp, TrendingUp, X } from "lucide-react";
+import { CalendarCheck, Check, ListChecks, Plus, Reply, RotateCcw, SendHorizontal, ThumbsDown, ThumbsUp, TrendingUp, X } from "lucide-react";
 import { toast } from "sonner";
 import { trackFunnel, trackFunnelOnce } from "@/lib/analytics/trackFunnel";
 import { useVFeatures } from "@/lib/chat/useVExplain";
@@ -120,6 +120,8 @@ type ChatTurn = HistoryTurn & {
   offer?: PassOffer;
   /** The Premium Pass under V's hourly-limit line (2026-11-07). On a transient turn, so never kept. */
   hourlyOffer?: { pass: NonNullable<HourlyLimitReply["pass"]>; premiumLimit: number | null };
+  /** "One more like this" was tapped under this explanation, so the button goes (2026-11-08). */
+  moreTaken?: boolean;
 };
 
 /** What the device keeps of a turn: no face, no errors. */
@@ -570,6 +572,40 @@ export default function ChatWidget() {
   }
 
   /**
+   * "One more like this" under explanation `index` (2026-11-08): another question from the
+   * explained question's subtopic as a card to try. No AI call, so it uses none of the hour's messages.
+   */
+  async function oneMoreLikeThis(index: number) {
+    const turn = turns[index];
+    if (sending || !turn || turn.role !== "assistant" || !turn.explainedQuestionId) return;
+    trackFunnel("v_more_like_this_tap");
+    setTurns((all) => all.map((t, i) => (i === index && t.role === "assistant" ? { ...t, moreTaken: true } : t)));
+    addTurn({ role: "user", text: "One more like this", transient: true });
+    setSending(true);
+    try {
+      const res = await fetch("/api/chat/similar", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ questionId: turn.explainedQuestionId }),
+      });
+      const data = (await res.json().catch(() => ({}))) as { ok?: boolean; questionId?: string | null; error?: string };
+      if (!res.ok || !data.ok) throw new Error(data.error || String(res.status));
+      addTurn(
+        typeof data.questionId === "string"
+          ? { role: "assistant", avatar: "laugh", text: "Here's one to try.", card: { id: data.questionId, kind: "try" }, transient: true }
+          : { role: "assistant", avatar: "idle", text: "There's no other question on this topic to try right now.", transient: true }
+      );
+    } catch {
+      const errorText = "Couldn't get another question. Please try again.";
+      addTurn({ role: "assistant", avatar: "idle", text: errorText, transient: true });
+      toast.error(errorText);
+      setTurns((all) => all.map((t, i) => (i === index && t.role === "assistant" ? { ...t, moreTaken: false } : t)));
+    } finally {
+      setSending(false);
+    }
+  }
+
+  /**
    * The pass was bought from the offer under reply `index`: the page's cards
    * open again, the offer goes, and the question that met the limit is asked
    * again, so the student gets their answer without leaving the chat.
@@ -655,6 +691,8 @@ export default function ChatWidget() {
         /** The explained question's animated solution, played under the reply (2026-10-25). */
         solutionVisual?: unknown;
         solutionVisualQuestionId?: string;
+        /** The bank question V explained, for "One more like this" (2026-11-08). */
+        explainedQuestionId?: string;
         /** The day's free answers stopped an explanation: the pass offer goes under the reply (2026-10-28). */
         passOffer?: unknown;
         /** Abuse after the calm line (lib/chat/abuse.ts): V says nothing. */
@@ -712,6 +750,7 @@ export default function ChatWidget() {
               ...(typeof data.solutionFigure === "string" ? { figure: data.solutionFigure } : {}),
               ...(data.solutionVisual && typeof data.solutionVisual === "object" ? { visual: data.solutionVisual } : {}),
               ...(typeof data.solutionVisualQuestionId === "string" ? { visualQuestionId: data.solutionVisualQuestionId } : {}),
+              ...(typeof data.explainedQuestionId === "string" ? { explainedQuestionId: data.explainedQuestionId } : {}),
             }
           : { role: "assistant", avatar: "laugh", text: data.reply as string, links, card, plan, path, reveal: true }
       );
@@ -923,6 +962,19 @@ export default function ChatWidget() {
                           <Reply className="h-3.5 w-3.5" aria-hidden />
                         </button>
                       )}
+                    </div>
+                  )}
+                  {rateable && t.explained && t.explainedQuestionId && !t.moreTaken && !signInNeeded && (
+                    <div className="ml-9 mt-1">
+                      <button
+                        type="button"
+                        disabled={sending}
+                        onClick={() => void oneMoreLikeThis(i)}
+                        className="inline-flex h-8 items-center gap-1.5 rounded-full border border-border bg-card px-3 text-xs font-medium text-foreground transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:opacity-50"
+                      >
+                        <Plus className="h-3.5 w-3.5" aria-hidden />
+                        One more like this
+                      </button>
                     </div>
                   )}
                   {t.offer && !t.reveal && (

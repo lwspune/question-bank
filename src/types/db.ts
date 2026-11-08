@@ -4032,6 +4032,7 @@ export type Database = {
           unsubscribe_token: string
           updated_at: string
           user_id: string
+          v_language: string | null
           weekly_goal: number | null
           whatsapp_opt_in: boolean
           whatsapp_prompted_at: string | null
@@ -4061,6 +4062,7 @@ export type Database = {
           unsubscribe_token?: string
           updated_at?: string
           user_id: string
+          v_language?: string | null
           weekly_goal?: number | null
           whatsapp_opt_in?: boolean
           whatsapp_prompted_at?: string | null
@@ -4090,6 +4092,7 @@ export type Database = {
           unsubscribe_token?: string
           updated_at?: string
           user_id?: string
+          v_language?: string | null
           weekly_goal?: number | null
           whatsapp_opt_in?: boolean
           whatsapp_prompted_at?: string | null

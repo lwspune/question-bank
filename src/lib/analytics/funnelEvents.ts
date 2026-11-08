@@ -159,6 +159,12 @@ export const FUNNEL_EVENTS = [
    */
   "v_path_tap",
   /**
+   * "One more like this" under an Ask V explanation (2026-11-08): another question from the
+   * same subtopic as a card, no AI call. Against explanations shown it says whether students
+   * want to keep practising from V.
+   */
+  "v_more_like_this_tap",
+  /**
    * A Learn lesson was begun (2026-10-28): the visitor's first move through its slides (Start,
    * Next, a swipe). Props: signedIn, chapter. Once per lesson per page. Lesson page views are its
    * scale; a signed-in student's is also a row (surface_viewed 'learn_start').
