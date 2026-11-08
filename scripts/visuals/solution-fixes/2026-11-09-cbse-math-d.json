@@ -1,0 +1,20 @@
+[
+  {
+    "id": "eb3aeec4-eb7f-4760-817b-8d28e6050ab9",
+    "before": "41eaf3c9",
+    "solution": "[CBSE marking scheme: the verdict is correct - the equation has no solution - but the closing line, \\(x = \\tan(\\sqrt{3})\\) which has no solution, contradicts itself: \\(\\tan(\\sqrt{3})\\) is a perfectly ordinary real number, about \\(-6.15\\). What actually fails is that \\(\\tan^{-1}x\\) can never equal \\(\\sqrt{3}\\). The scheme also applies the identity \\(\\sin^{-1}\\frac{2x}{1 + x^2} = 2\\tan^{-1}x\\) without noting that it holds only for \\(|x| \\le 1\\); the other branches are checked below and do not rescue the equation either.] For \\(|x| \\le 1\\) the identity \\(\\sin^{-1}\\frac{2x}{1 + x^2} = 2\\tan^{-1}x\\) applies, so the equation becomes \\(2\\tan^{-1}x + 2\\tan^{-1}x = 4\\sqrt{3}\\), that is \\(\\tan^{-1}x = \\sqrt{3} \\approx 1.732\\). But \\(\\tan^{-1}x\\) always lies in \\(\\left(-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right)\\) and \\(\\frac{\\pi}{2} \\approx 1.571\\), which is smaller than \\(\\sqrt{3}\\), so no such \\(x\\) exists. The remaining branches fare no better: for \\(x > 1\\) the identity reads \\(\\sin^{-1}\\frac{2x}{1 + x^2} = \\pi - 2\\tan^{-1}x\\), so the left-hand side collapses to \\(2\\tan^{-1}x + \\pi - 2\\tan^{-1}x = \\pi\\), and for \\(x < -1\\) it collapses to \\(-\\pi\\). So on every branch the left-hand side is confined to \\([-\\pi, \\pi]\\), while the right-hand side is \\(4\\sqrt{3} \\approx 6.93\\). Hence the equation has no solution.",
+    "note": "tan(sqrt 3) = -6.1475, printed -6.08."
+  },
+  {
+    "id": "fb6eb07d-40c8-4e6c-b32e-31f35f442257",
+    "before": "3c4a3819",
+    "solution": "We know that \\(\\sin^{-1}(\\sin x) = x\\) only for \\(x \\in \\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]\\). So \\(\\sin^{-1}\\left(\\sin\\frac{3\\pi}{5}\\right)\\) is not simply \\(\\frac{3\\pi}{5}\\).\n\nBut \\(\\frac{3\\pi}{5} \\notin \\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]\\), which is the principal branch of \\(\\sin^{-1} x\\).\n\nHowever \\(\\sin\\left(\\frac{3\\pi}{5}\\right) = \\sin\\left(\\pi - \\frac{3\\pi}{5}\\right) = \\sin\\frac{2\\pi}{5}\\) and \\(\\frac{2\\pi}{5} \\in \\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]\\).\n\nTherefore \\(\\sin^{-1}\\left(\\sin\\frac{3\\pi}{5}\\right) = \\sin^{-1}\\left(\\sin\\frac{2\\pi}{5}\\right) = \\frac{2\\pi}{5}\\).",
+    "note": "The opening claimed sin^-1(sin x) = x for every x and so sin^-1(sin 3pi/5) = 3pi/5, which the working then retracts."
+  },
+  {
+    "id": "a476af6e-811f-4528-90c1-6a31d6f10c36",
+    "before": "3b76a949",
+    "solution": "We write\n\n\\(\\tan^{-1}\\left(\\frac{\\cos x}{1-\\sin x}\\right) = \\tan^{-1}\\left[\\frac{\\cos^2\\frac{x}{2} - \\sin^2\\frac{x}{2}}{\\cos^2\\frac{x}{2} + \\sin^2\\frac{x}{2} - 2\\sin\\frac{x}{2}\\cos\\frac{x}{2}}\\right]\\)\n\n\\(= \\tan^{-1}\\left[\\frac{\\left(\\cos\\frac{x}{2} + \\sin\\frac{x}{2}\\right)\\left(\\cos\\frac{x}{2} - \\sin\\frac{x}{2}\\right)}{\\left(\\cos\\frac{x}{2} - \\sin\\frac{x}{2}\\right)^2}\\right]\\)\n\n\\(= \\tan^{-1}\\left[\\frac{\\cos\\frac{x}{2} + \\sin\\frac{x}{2}}{\\cos\\frac{x}{2} - \\sin\\frac{x}{2}}\\right] = \\tan^{-1}\\left[\\frac{1 + \\tan\\frac{x}{2}}{1 - \\tan\\frac{x}{2}}\\right]\\)\n\n\\(= \\tan^{-1}\\left[\\tan\\left(\\frac{\\pi}{4} + \\frac{x}{2}\\right)\\right] = \\frac{\\pi}{4} + \\frac{x}{2}\\), since for \\(-\\frac{3\\pi}{2} < x < \\frac{\\pi}{2}\\) the angle \\(\\frac{\\pi}{4} + \\frac{x}{2}\\) lies in \\(\\left(-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right)\\)",
+    "note": "tan^-1(tan u) = u needs u in (-pi/2, pi/2); the range was not stated."
+  }
+]
