@@ -269,8 +269,8 @@ stores what the student chose, plus the server's pick of today.
 | # | Phase | What ships | Status |
 |---|---|---|---|
 | 0 | Ready | Chapter tests for the 4 HSC chapters that have none (Physics: Magnetic Fields due to Electric Current, Magnetic Materials, Structure of Atoms and Nuclei; Chemistry: Green Chemistry and Nanochemistry). They hold only 7-9 MCQs each, under the builder's 10-question minimum, so how to cover them is an owner call · ~~check every PCM chapter's Top 10~~ **checked 2026-11-07: all 84 PCM chapters have 10+ slots** · `npm run path:readout` with today's baselines (§9), measured before anything is visible · V eval cases for path asks | **Done 2026-11-07**; the 4 short tests published with owner OK |
-| 1 | Path + Today | Start tap and stream question · path computed from book order (HSC Maths as two queues) · Today card on /me replacing the weekly ring · done derived from work · "Not taught yet" with the 14-day return · Fix task · on-track line · free-limit exemption for today's tasks · `path_chapter_done` · stop / restart on /account | **Built 2026-11-07** on `feat/mentor-path-phase1` (§14); 0225 on the test project only |
-| 2 | V as the voice | V reads and says the path; "plan my week" and "timetable" answered from it · weekly review · "Pick up here" after a gap · chapter-done celebration · a path line on /board chapter pages for Class 12 students (D8) | Not started |
+| 1 | Path + Today | Start tap and stream question · path computed from book order (HSC Maths as two queues) · Today card on /me replacing the weekly ring · done derived from work · "Not taught yet" with the 14-day return · Fix task · on-track line · free-limit exemption for today's tasks · `path_chapter_done` · stop / restart on /account | **Built 2026-11-07**, merged to main 2026-11-08; 0225 applied to production 2026-11-08 (owner OK) |
+| 2 | V as the voice | V reads and says the path; "plan my week" and "timetable" answered from it · weekly review · "Pick up here" after a gap · chapter-done celebration · a path line on /board chapter pages for Class 12 students (D8) | **Built 2026-11-08** on `feat/mentor-path-phase2` (§15); no migration |
 | 3 | Pace and the last weeks | Lighter / More with the honest finish date · behind handling · switch to board papers and revision three weeks before the exam | Not started; **must ship by ~2026-01-15** (HSC buffer starts 01-21) |
 | 4 | Proof, then decide | Readout at 4 weeks and after the boards · ask results (`results:announce`) · decide pricing and the next subjects or exams from what students used | After the boards |
 
@@ -456,6 +456,55 @@ built, test first. What changed from the plan, and why:
 - `npm run path:smoke` (read-only, real content and 8 students per board):
   every PCM chapter has its Top 10 and a published test; HSC Maths queues are
   7 and 8 chapters. `npm run path:readout` gains the STARTERS section.
-- **Still to do before it is live:** apply 0225 to production (owner OK), then
-  the golden path in a browser on a real account (start, a task, Not taught
-  yet, stop on /account) and the owner's phone check after the push.
+- **Live checks (2026-11-08):** 0225 applied to production with the owner's
+  OK. The Chrome extension cannot open localhost, so the golden path ran
+  through the real service code against production on the owner's account
+  (start, the stored day and its exemptions, Not taught yet, the staff view,
+  stop), rows deleted afterwards. The click-through is the owner's phone
+  check after the push.
+
+## 15. Phase 2: V as the voice (built 2026-11-08)
+
+Owner decisions on the plan (2026-11-08): V's path card is its own button,
+**"My plan for today"** (owner's words were "my today's plan"); the weekly
+review shows the **first 2 days** of each path week; V **offers the path** to a
+Class 12 board student who asks for a plan.
+
+What shipped, and why each is shaped so:
+- **V's card is built from numbers, not by the model** (`VPathCard`, the
+  pattern of "How's my progress", which replaced "Plan my week" on 10-27): no
+  message spent, nothing made up, the same view as /me. The button shows only
+  when the shared pulse says the student is on a path (`pulse.path`, one
+  indexed read, only for students with a Class 12 board among their exams).
+- **"Plan my week", "timetable" and "what now" are answered from the path**
+  (`plan_week` / `my_plan` read `getPathForV`): today's card plus the coming
+  days picked by the same rule as if each day is done (`week.ts`), and the
+  card under the reply. Another exam named, or `week_only` (a coaching test),
+  plans a week as before.
+- **The offer names the board date it paces to and says nothing was planned.**
+  The first eval run had V pace the path to a student's preboards and, on
+  another case, call the offer "your plan is ready". /me was not on V's list
+  of linkable pages, so it was dropped from replies; it is now (NAV_FACTS).
+  Eval: the 5 Class 12 plan cases read right (d78f5a9e asks which of three
+  exams first without a tool, as it did in the Phase 0 baseline); full run
+  188/198, one unrelated change each way.
+- **A chapter done is said where it finished**: on the chapter test's result
+  page (the usual last part), on the /board page, and on /me as a backstop.
+  Once, exactly: the `path_chapter_done` upsert returns only rows it inserted
+  (the milestone pattern), so two tabs cannot both celebrate.
+- **The weekly review compares the week's start with its end** from dated
+  records (`fold.ts`: a chapter's state as of any moment; Postgres writes
+  "+00:00" and JavaScript "Z", so moments compare as instants). Lines with
+  nothing are left out; a quiet week opens on "A new week on your path.", and
+  the finish date shows only when it moved (an honest later date included).
+- **"Pick up here"** after 3+ days with no path work: the next chapter task,
+  never what was missed.
+- **The /board line** (D8) is a browser island beside "Fix N mistakes", so
+  the page stays cached; it asks `/api/path/chapter` only for a path student
+  on their board's page, again when the tab returns to view.
+- **Phase 1's gap is closed**: the reveal and drill routes now pick today
+  first for a path student with no pick yet (`ensureTodayExemptions`), so a
+  /board page or the drill opened before /me gets today's free questions.
+- **Not built:** a line after Top 10 marks on the same /board page re-checks
+  only when the tab returns to view or the page reloads, so a chapter whose
+  LAST part was a Top 10 mark is celebrated on the next view or on /me.
