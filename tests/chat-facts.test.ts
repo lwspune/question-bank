@@ -574,6 +574,8 @@ describe("buildSystemPrompt", () => {
     expect(p).toMatch(/\[About question <id>\]/);
     expect(p).toMatch(/answer about the one named at the end unless they point back/i);
     expect(p).toMatch(/Never correct, take back or apologise for an earlier reply about another question/);
+    // 2026-11-08 eval: unprompted, V told a student "the CDS link I gave was not checked, don't rely on it".
+    expect(p).toMatch(/Never take back or doubt any earlier reply unless the student says it was wrong/);
   });
 
   it("tells V a reply to an earlier message is about that message", () => {
