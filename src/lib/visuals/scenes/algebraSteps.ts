@@ -153,6 +153,10 @@ export const algebraSteps: Scene<AlgebraParams> = {
         // A backslash lost on the way in: "\t" of "\text" read as a TAB, or "\frac" left as "frac".
         if (/[\x00-\x1f]/.test(l.tex)) throw new ParamError(`${f}: tex holds a control character (a lost backslash: write \\\\text, not \\text, inside a JSON string)`);
         if (/(^|[^\\a-zA-Z])(d?frac|tfrac|sqrt|cdot|times|Rightarrow|quad|text|left|right)(?![a-zA-Z])/.test(l.tex)) throw new ParamError(`${f}: tex has a TeX command without its backslash (frac, sqrt, text...)`);
+        // A matrix row break "\\" that reached us as one backslash draws the whole matrix as one row.
+        for (const mm of l.tex.matchAll(/\\begin\{([bvpBV]?matrix)\}([\s\S]*?)\\end\{\1\}/g))
+          if (/(^|[^\\])\\\s/.test(mm[2].replace(/\\\\/g, "")))
+            throw new ParamError(`${f}: a matrix row break lost a backslash (write \\\\\\\\ between rows inside a JSON string)`);
         const tex = marks(l.tex, f);
         const note = l.note === undefined ? undefined : plainLabel(l.note, `${f} note`, 44);
         if (l.kind === "deriv" || l.kind === "integral") {

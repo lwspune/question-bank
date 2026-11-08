@@ -93,6 +93,15 @@ describe("algebraSteps scene", () => {
     expect(parse({ ...id, lines: [id.lines[0], { ...id.lines[1], f: "x^2+x+1" }] })).toHaveProperty("error");
   });
 
+  // Matrices (2026-11-08): a row break written "\\" in TeX reached the database as
+  // a single backslash (one JSON escape too few), so every matrix drew as one row.
+  it("refuses a matrix whose row breaks lost a backslash, and keeps row vectors", () => {
+    const m = (tex: string) => ({ lines: [{ step: "s1", kind: "calc", tex, f: "1", value: "1" }, { step: "s2", kind: "note", tex: "x" }], answer: "1" });
+    expect(parse(m("A = \\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix}"))).not.toHaveProperty("error");
+    expect(parse(m("X = \\begin{bmatrix} 1 & 2 & 3 \\end{bmatrix}"))).not.toHaveProperty("error");
+    expect(parse(m("A = \\begin{bmatrix} 1 & 2 \\ 3 & 4 \\end{bmatrix}")).error).toMatch(/line 1.*row break/);
+  });
+
   // Calculus (2026-11-08): a derivative or an antiderivative is not equal to the
   // line before it, so a chain of expr lines cannot carry it.
   it("checks a derivative line against the expression before it", () => {

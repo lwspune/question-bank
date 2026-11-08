@@ -109,6 +109,10 @@ first step starts at 0, later ones later, each step name used once. `answer`
   question, input order). Run nothing that touches the database or git. You
   may run small Python checks. Keep tool output small.
 
+Matrices: a row break is `\\` in TeX, so in the JSON you write it is FOUR
+backslashes ("\\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix}"). One pair
+too few and the whole matrix draws as one row; the checker refuses it.
+
 ## Before you write the file: the checker refuses these
 
 - A first step that does not start at sentence 0; a step name used twice.
