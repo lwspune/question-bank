@@ -2,13 +2,16 @@
  * Reads for daily homework plans (migration 0143). RLS shows published plans
  * only, so every function here works with the anon client and a cached page.
  *
- * Items are paged with .range(): a plan holds one row per printed question,
- * and a CBSE subject runs past PostgREST's 1000-row cap.
+ * Items are paged after the last row read (lib/supabase/keyset.ts): a plan
+ * holds one row per printed question, and a CBSE subject runs past PostgREST's
+ * 1000-row cap. Never with .range(): its OFFSET runs the chapter lookup for
+ * every skipped row too (2026-11-08, 21% of all database reads).
  */
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { singleFlight } from "@/lib/cache/singleFlight";
 import { buildFailureMemoMs } from "@/lib/cache/buildPhase";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
+import { keysetAfter, readAllByKeyset } from "@/lib/supabase/keyset";
 import type { HomeworkDayItem } from "./dayExport";
 import type { HomeworkPlanLink } from "./links";
 import { TOP_PYQS, pickTopSlots, topSlotKeys, type PlanChapterRow } from "./topPyqs";
@@ -38,6 +41,10 @@ type PlanRow = {
   title: string;
   summary: string;
   per_day: number;
+  /** Kept by triggers on the plan's items (migration 0235). */
+  day_count: number;
+  question_count: number;
+  chapter_count: number;
   exam: { name: string } | null;
   subject: { name: string } | null;
 };
@@ -53,28 +60,30 @@ type ItemRow = {
   question: { chapter: { name: string } | null } | null;
 };
 
-const PLAN_COLS = "id, slug, title, summary, per_day, exam:exams(name), subject:subjects(name)";
+const COUNT_COLS = "day_count, question_count, chapter_count";
+const PLAN_COLS = `id, slug, title, summary, per_day, ${COUNT_COLS}, exam:exams(name), subject:subjects(name)`;
 const PAGE = 1000;
 
-async function loadItems(client: SupabaseClient, planId: string, day?: number): Promise<ItemRow[]> {
-  const out: ItemRow[] = [];
-  for (let from = 0; ; from += PAGE) {
+/** A plan's items in plan order, every page. Exported for its spec. */
+export async function loadPlanItems(
+  client: SupabaseClient,
+  planId: string,
+  opts: { day?: number; pageSize?: number } = {}
+): Promise<ItemRow[]> {
+  return readAllByKeyset<ItemRow>(async (last, limit) => {
     let q = client
       .from("homework_plan_items")
       .select("day, position, sub, part, note, question_id, group_n, question:questions(chapter:chapters(name))")
       .eq("plan_id", planId);
-    if (day !== undefined) q = q.eq("day", day);
-    const { data, error } = await q.order("day").order("position").order("sub").range(from, from + PAGE - 1);
+    if (opts.day !== undefined) q = q.eq("day", opts.day);
+    if (last) q = q.or(keysetAfter(["day", "position", "sub"], last));
+    const { data, error } = await q.order("day").order("position").order("sub").limit(limit);
     if (error) throw new Error(`homework items: ${error.message}`);
-    out.push(...((data ?? []) as unknown as ItemRow[]));
-    if (!data || data.length < PAGE) return out;
-  }
+    return (data ?? []) as unknown as ItemRow[];
+  }, opts.pageSize ?? PAGE);
 }
 
-function toSummary(
-  p: PlanRow,
-  items: { day: number; sub: number; question?: { chapter: { name: string } | null } | null }[]
-): HomeworkPlanSummary {
+function toSummary(p: PlanRow): HomeworkPlanSummary {
   return {
     id: p.id,
     slug: p.slug,
@@ -83,10 +92,10 @@ function toSummary(
     perDay: p.per_day,
     examName: p.exam?.name ?? "",
     subjectName: p.subject?.name ?? "",
-    days: items.reduce((m, it) => Math.max(m, it.day), 0),
-    // A case study is one question however many parts it has.
-    questions: items.filter((it) => it.sub === 1).length,
-    chapters: new Set(items.filter((it) => it.sub === 1 && it.question?.chapter?.name).map((it) => it.question!.chapter!.name)).size,
+    // The last day; slots, a case study counted once; chapters (0235).
+    days: p.day_count,
+    questions: p.question_count,
+    chapters: p.chapter_count,
   };
 }
 
@@ -109,9 +118,9 @@ function toDays(items: ItemRow[]): HomeworkDay[] {
 }
 
 /**
- * Published plans with their counts. `examName` (the DB exams.name) narrows the
- * list to one exam, for its homework page, so that page reads only that exam's
- * items: counting reads every item of every plan listed.
+ * Published plans with their counts, which live on the plan row (migration
+ * 0235): no item is read. `examName` (the DB exams.name) narrows the list to
+ * one exam, for its homework page.
  */
 export async function listPublishedPlans(
   client: SupabaseClient,
@@ -120,16 +129,19 @@ export async function listPublishedPlans(
   const query = opts.examName
     ? client
         .from("homework_plans")
-        .select("id, slug, title, summary, per_day, exam:exams!inner(name), subject:subjects(name)")
+        .select(`id, slug, title, summary, per_day, ${COUNT_COLS}, exam:exams!inner(name), subject:subjects(name)`)
         .eq("exam.name", opts.examName)
     : client.from("homework_plans").select(PLAN_COLS);
   const { data, error } = await query.order("title");
   if (error) throw new Error(`homework plans: ${error.message}`);
-  const plans = (data ?? []) as unknown as PlanRow[];
-  return Promise.all(plans.map(async (p) => toSummary(p, await loadItems(client, p.id))));
+  return ((data ?? []) as unknown as PlanRow[]).map(toSummary);
 }
 
-type PlanChapterItemRow = { question: { chapter: { id: string; name: string; order_index: number | null } | null } | null };
+type PlanChapterItemRow = {
+  day: number;
+  position: number;
+  question: { chapter: { id: string; name: string; order_index: number | null } | null } | null;
+};
 
 /**
  * A plan and the chapters its questions are filed under, in book order, for
@@ -145,20 +157,18 @@ export async function getPlanChapters(
   if (error) throw new Error(`homework plan ${slug}: ${error.message}`);
   if (!data) return null;
   const plan = data as unknown as PlanRow;
-  const rows: PlanChapterItemRow[] = [];
-  for (let from = 0; ; from += PAGE) {
-    const page = await client
+  // Only sub 1 is read, so (day, position) is unique and is the key.
+  const rows = await readAllByKeyset<PlanChapterItemRow>(async (last, limit) => {
+    let q = client
       .from("homework_plan_items")
-      .select("question:questions(chapter:chapters(id, name, order_index))")
+      .select("day, position, question:questions(chapter:chapters(id, name, order_index))")
       .eq("plan_id", plan.id)
-      .eq("sub", 1)
-      .order("day")
-      .order("position")
-      .range(from, from + PAGE - 1);
+      .eq("sub", 1);
+    if (last) q = q.or(keysetAfter(["day", "position"], last));
+    const page = await q.order("day").order("position").limit(limit);
     if (page.error) throw new Error(`homework plan ${slug} chapters: ${page.error.message}`);
-    rows.push(...((page.data ?? []) as unknown as PlanChapterItemRow[]));
-    if (!page.data || page.data.length < PAGE) break;
-  }
+    return (page.data ?? []) as unknown as PlanChapterItemRow[];
+  }, PAGE);
   const chapters = planChapters(
     rows.flatMap((r) => {
       const c = r.question?.chapter;
@@ -176,8 +186,8 @@ export async function getPlanBySlug(client: SupabaseClient, slug: string): Promi
   if (error) throw new Error(`homework plan ${slug}: ${error.message}`);
   if (!data) return null;
   const plan = data as unknown as PlanRow;
-  const items = await loadItems(client, plan.id);
-  return { ...toSummary(plan, items), dayList: toDays(items) };
+  const items = await loadPlanItems(client, plan.id);
+  return { ...toSummary(plan), dayList: toDays(items) };
 }
 
 type LinkRow = { slug: string; title: string; per_day: number; exam: { name: string } | null; subject: { name: string } | null };
@@ -216,7 +226,7 @@ export async function getPlanDay(
   const { data, error } = await client.from("homework_plans").select("id, title").eq("slug", slug).maybeSingle();
   if (error) throw new Error(`homework plan ${slug}: ${error.message}`);
   if (!data) return null;
-  const items = toDays(await loadItems(client, data.id as string, day))[0]?.items ?? [];
+  const items = toDays(await loadPlanItems(client, data.id as string, { day }))[0]?.items ?? [];
   return { planId: data.id as string, title: data.title as string, items };
 }
 
@@ -240,7 +250,7 @@ export async function getPlanDayPage(client: SupabaseClient, slug: string, day: 
   if (!data) return null;
   const plan = data as unknown as { id: string; slug: string; title: string } & Pick<PlanRow, "exam" | "subject">;
   const [items, last] = await Promise.all([
-    loadItems(client, plan.id, day),
+    loadPlanItems(client, plan.id, { day }),
     client.from("homework_plan_items").select("day").eq("plan_id", plan.id).order("day", { ascending: false }).limit(1),
   ]);
   if (last.error) throw new Error(`homework plan ${slug} days: ${last.error.message}`);

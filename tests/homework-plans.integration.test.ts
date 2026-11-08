@@ -9,7 +9,7 @@ import { describe, it, expect, beforeAll, afterAll } from "vitest";
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 import { randomUUID } from "node:crypto";
 import { recordExportEvent } from "@/lib/export/log";
-import { getPlanChapterTop, getPlanChapters, getPlanGroup, listPublishedPlans } from "@/lib/homework/query";
+import { getPlanChapterTop, getPlanChapters, getPlanGroup, listPublishedPlans, loadPlanItems } from "@/lib/homework/query";
 
 const HAS_ENV =
   !!process.env.NEXT_PUBLIC_SUPABASE_URL &&
@@ -35,6 +35,15 @@ describe.skipIf(!HAS_ENV)("homework plans", () => {
   });
   const replace = (items: unknown[]) =>
     admin.rpc("homework_replace_items", { p_plan_id: planId, p_items: items });
+  const counts = async () => {
+    const { data, error } = await admin
+      .from("homework_plans")
+      .select("day_count, question_count, chapter_count")
+      .eq("id", planId)
+      .single();
+    if (error) throw new Error(error.message);
+    return data;
+  };
 
   beforeAll(async () => {
     admin = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!, {
@@ -101,6 +110,22 @@ describe.skipIf(!HAS_ENV)("homework plans", () => {
     ]);
   });
 
+  it("keeps a plan's days, questions and chapters on the plan as its items change (0235)", async () => {
+    expect(await counts()).toEqual({ day_count: 2, question_count: 3, chapter_count: new Set(qs.map((q) => q.chapter_id)).size });
+  });
+
+  it("reads every item after the last one, page by page, in plan order", async () => {
+    const items = await loadPlanItems(anon, planId, { pageSize: 1 });
+    expect(items.map((it) => [it.day, it.position, it.sub])).toEqual([
+      [1, 1, 1],
+      [1, 2, 1],
+      [2, 1, 1],
+    ]);
+    expect(items.every((it) => (it.question?.chapter?.name ?? "").length > 0)).toBe(true);
+    const dayTwo = await loadPlanItems(anon, planId, { day: 2, pageSize: 1 });
+    expect(dayTwo.map((it) => it.question_id)).toEqual([qs[2].id]);
+  });
+
   it("refuses the public both writing and calling the replace function", async () => {
     const { error: rpcErr } = await anon.rpc("homework_replace_items", { p_plan_id: planId, p_items: [] });
     expect(rpcErr).not.toBeNull();
@@ -141,6 +166,10 @@ describe.skipIf(!HAS_ENV)("homework plans", () => {
       { position: 1, sub: 2 },
       { position: 1, sub: 3 },
     ]);
+    // Pages break between a slot's parts too, and a case study is one question.
+    const parts = await loadPlanItems(anon, planId, { pageSize: 2 });
+    expect(parts.map((it) => it.sub)).toEqual([1, 2, 3]);
+    expect(await counts()).toEqual({ day_count: 1, question_count: 1, chapter_count: 1 });
     // Back to the three single questions the next tests expect.
     await replace([item(1, 1, qs[0]), item(1, 2, qs[1]), item(2, 1, qs[2])]);
   });
@@ -148,6 +177,16 @@ describe.skipIf(!HAS_ENV)("homework plans", () => {
   it("leaves the plan as it was when a replace is refused", async () => {
     const { data } = await admin.from("homework_plan_items").select("question_id").eq("plan_id", planId);
     expect((data ?? []).length).toBe(3);
+    // The counts roll back with the refused write.
+    expect(await counts()).toEqual({ day_count: 2, question_count: 3, chapter_count: new Set(qs.map((q) => q.chapter_id)).size });
+  });
+
+  it("counts an emptied plan as zero, then counts it again when refilled", async () => {
+    const { error } = await replace([]);
+    expect(error).toBeNull();
+    expect(await counts()).toEqual({ day_count: 0, question_count: 0, chapter_count: 0 });
+    await replace([item(1, 1, qs[0]), item(1, 2, qs[1]), item(2, 1, qs[2])]);
+    expect((await counts()).question_count).toBe(3);
   });
 
   it("logs a homework download with its plan and day, and only on a homework row", async () => {

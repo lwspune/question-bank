@@ -9,7 +9,7 @@ import { describe, it, expect } from "vitest";
 import fs from "node:fs";
 import path from "node:path";
 
-const BASELINE = { pagingLoops: 30, idChunkLoops: 24 };
+const BASELINE = { pagingLoops: 29, idChunkLoops: 24 };
 
 function files(dir: string): string[] {
   return fs.readdirSync(dir, { withFileTypes: true }).flatMap((e) => {
