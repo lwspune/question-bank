@@ -58,8 +58,11 @@ export const IAT_YEARS: readonly IatYear[] = [
   { year: 2019, file: "2019_Eng_IAT.pdf", keyMode: "none", keyConfirmed: false, note: "question paper, no key" },
   { year: 2021, file: "2021_Eng_IAT.pdf", keyMode: "none", keyConfirmed: false, note: "question paper, no key" },
   { year: 2022, file: "2022-eng-IAT.pdf", keyMode: "none", keyConfirmed: false, note: "question paper, no key" },
-  { year: 2023, file: "2023-eng-IAT.pdf", keyMode: "first-option", keyConfirmed: false, note: "key-file layout; (a)-is-correct to be measured" },
-  { year: 2024, file: "2024_Eng_IAT.pdf", keyMode: "first-option", keyConfirmed: false, note: "key-file layout; (a)-is-correct to be measured" },
+  // Confirmed 2026-11-08: a blind solve of the shuffled paper agreed with printed (a) on
+  // 58 of 60 (chance: ~15); both splits were read and are defensible keys (adjudications).
+  { year: 2023, file: "2023-eng-IAT.pdf", keyMode: "first-option", keyConfirmed: true, note: "key-file layout; printed (a) measured 58/60" },
+  // Confirmed 2026-11-08: the blind solve agreed with printed (a) on 60 of 60.
+  { year: 2024, file: "2024_Eng_IAT.pdf", keyMode: "first-option", keyConfirmed: true, note: "key-file layout; printed (a) measured 60/60" },
   { year: 2025, file: "English-Key_IAT-2025.pdf", keyMode: "first-option", keyConfirmed: true, note: "IISER final answer key 2025" },
   { year: 2026, file: "English_Key_IAT 2026_final.pdf", keyMode: "first-option", keyConfirmed: true, note: "IISER final answer key 2026; header states option (a) is correct" },
 ];

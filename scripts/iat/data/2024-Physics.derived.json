@@ -1,0 +1,125 @@
+{
+  "derivedBy": "Claude (Opus), independent solve from the printed questions and figures",
+  "answers": [
+    {
+      "ref": "1",
+      "label": "C",
+      "value": "Abhijit travelled double the distance travelled by Vani.",
+      "working": "Let them meet after time \\(t\\), and let Abhijit's constant speed be \\(v\\). They meet with the **same speed**, so Vani's speed at that moment is also \\(v\\).\n\nAbhijit's distance is \\(s_A = vt\\). Vani starts from rest with constant acceleration, so her average speed is \\(\\frac{0 + v}{2} = \\frac{v}{2}\\) and her distance is \\(s_V = \\frac{vt}{2}\\).\n\nSo \\(s_A = 2 s_V\\): Abhijit covers double Vani's distance (the circular track does not matter, only the speeds along the path). So the answer is option (C).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "2",
+      "label": "C",
+      "value": "\\(A \\propto T^3\\)",
+      "working": "For a simple pendulum of length \\(l\\), \\(\\theta = \\theta_0 \\sin(\\omega t)\\) with \\(\\omega = \\frac{2\\pi}{T}\\). The bob moves on a circle about the point of suspension, so its angular momentum about that point is \\(L = m l^2 \\frac{d\\theta}{dt} = m l^2 \\theta_0 \\omega \\cos(\\omega t)\\).\n\nIts amplitude is \\(A = m l^2 \\theta_0 \\omega = m l^2 \\theta_0 \\frac{2\\pi}{T}\\).\n\nThe length is fixed by the period: \\(T = 2\\pi\\sqrt{\\frac{l}{g}}\\), so \\(l = \\frac{gT^2}{4\\pi^2}\\) and \\(l^2 \\propto T^4\\).\n\nWith \\(m\\) and \\(\\theta_0\\) fixed, \\(A \\propto \\frac{T^4}{T} = T^3\\). So the answer is option (C).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "3",
+      "label": "D",
+      "value": "\\(\\frac{g}{4R}\\)",
+      "working": "The heavier block \\(M\\) moves down and \\(M/2\\) moves up, both with acceleration \\(a\\). Let the tensions be \\(T_1\\) (on the side of \\(M\\)) and \\(T_2\\) (on the side of \\(M/2\\)).\n\nFor the blocks: \\(Mg - T_1 = Ma\\) and \\(T_2 - \\frac{M}{2}g = \\frac{M}{2}a\\).\n\nFor the disc, with moment of inertia \\(I = \\frac{1}{2}MR^2\\) and no slipping (\\(a = R\\alpha\\)): \\((T_1 - T_2)R = I\\alpha\\), so \\(T_1 - T_2 = \\frac{1}{2}Ma\\).\n\nAdding all three equations: \\(Mg - \\frac{M}{2}g = \\left(M + \\frac{M}{2} + \\frac{M}{2}\\right)a\\), so \\(\\frac{Mg}{2} = 2Ma\\) and \\(a = \\frac{g}{4}\\).\n\nThen \\(\\alpha = \\frac{a}{R} = \\frac{g}{4R}\\). So the answer is option (D).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "4",
+      "label": "C",
+      "value": "\\(\\sqrt{\\frac{5}{2}gL}\\)",
+      "working": "The bob's density is twice that of water, so the buoyant force is half its weight. The net downward force is \\(mg - \\frac{mg}{2} = \\frac{mg}{2}\\), which acts like gravity with an **effective value** \\(g' = \\frac{g}{2}\\).\n\nThe string just becomes slack at the top C, so there the tension is zero and the net downward force alone provides the centripetal force: \\(\\frac{m v_C^2}{L} = m g'\\), giving \\(v_C^2 = g'L\\).\n\nEnergy conservation from A to C (rise of \\(2L\\)) with \\(g'\\): \\(V_0^2 = v_C^2 + 4g'L = 5g'L = \\frac{5}{2}gL\\).\n\nSo \\(V_0 = \\sqrt{\\frac{5}{2}gL}\\). The tempting \\(\\sqrt{5gL}\\) is the answer in air, which ignores the buoyancy. So the answer is option (C).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "5",
+      "label": "B",
+      "value": "\\(2\\pi\\sqrt{\\frac{2R}{3g}}\\)",
+      "working": "Half the sphere is under water, so its mass equals the mass of water in half a sphere: \\(m = \\rho \\cdot \\frac{2}{3}\\pi R^3\\), where \\(\\rho\\) is the density of water.\n\nIf the sphere is pushed down by a small distance \\(x\\), the extra submerged volume is about \\(\\pi R^2 x\\) (the waterline is at the widest circle, of radius \\(R\\)). The extra buoyant force acts upward: \\(F = -\\rho g \\pi R^2 x\\).\n\nSo \\(m\\frac{d^2x}{dt^2} = -\\rho g \\pi R^2 x\\), and \\(\\omega^2 = \\frac{\\rho g \\pi R^2}{\\frac{2}{3}\\rho \\pi R^3} = \\frac{3g}{2R}\\).\n\nThe period is \\(T = \\frac{2\\pi}{\\omega} = 2\\pi\\sqrt{\\frac{2R}{3g}}\\). So the answer is option (B).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "6",
+      "label": "A",
+      "value": "\\(\\frac{RT}{2V}\\)",
+      "working": "The expansion is adiabatic (\\(Q = 0\\)) and the gas does no external work (\\(W = 0\\)). This is a **free expansion**. By the first law, \\(\\Delta U = Q - W = 0\\).\n\nFor an ideal gas the internal energy depends only on temperature, so the temperature stays \\(T\\).\n\nFor one mole at volume \\(2V\\): \\(P = \\frac{RT}{2V}\\). Using \\(PV^\\gamma = \\text{constant}\\) here would be wrong, because that holds only for a slow (quasi-static) adiabatic process. So the answer is option (A).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "7",
+      "label": "C",
+      "value": "\\(\\frac{2\\pi}{\\omega}\\)",
+      "working": "Both \\(\\sin(\\omega t)\\) and \\(\\cos(\\omega t)\\) repeat after \\(\\omega t\\) increases by \\(2\\pi\\), so \\(x(t)\\) certainly repeats after \\(\\frac{2\\pi}{\\omega}\\).\n\nCould it repeat sooner? Shifting \\(\\omega t\\) by \\(\\pi\\) changes \\(\\cos\\) to \\(-\\cos\\), so \\(\\cos^3\\) changes sign while \\(\\sin^2\\) does not: \\(x\\) becomes \\(-x\\), so \\(\\pi/\\omega\\) is not a period.\n\nAlso, \\(x = 0\\) only when \\(\\sin(\\omega t) = 0\\) or \\(\\cos(\\omega t) = 0\\), that is at \\(\\omega t = 0, \\frac{\\pi}{2}, \\pi, \\dots\\). A period must carry the zero at \\(t = 0\\) to another zero, so \\(\\omega T\\) must be a multiple of \\(\\frac{\\pi}{2}\\). The values \\(\\frac{2\\pi}{3}, \\frac{2\\pi}{5}, \\frac{2\\pi}{15}\\) are not, and \\(\\frac{\\pi}{2}\\) itself fails (for example \\(x\\) is positive just after \\(t = 0\\) but negative just after \\(\\omega t = \\frac{\\pi}{2}\\)).\n\nSo the smallest period is \\(\\frac{2\\pi}{\\omega}\\). So the answer is option (C).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "8",
+      "label": "C",
+      "value": "\\(\\lambda = \\frac{\\lambda_1\\lambda_2}{\\lambda_1 + \\lambda_2}, \\ T = \\frac{n_1T_1 + n_2T_2}{n_1 + n_2}\\)",
+      "working": "The boxes are identical (volume \\(V\\)), so after one is emptied into the other, all the molecules sit in volume \\(V\\) and the number density is \\(n = n_1 + n_2\\).\n\n**Mean free path:** for the same gas, \\(\\lambda = \\frac{1}{\\sqrt{2}\\pi d^2 n} \\propto \\frac{1}{n}\\). So \\(\\frac{1}{\\lambda} = \\frac{1}{\\lambda_1} + \\frac{1}{\\lambda_2}\\), giving \\(\\lambda = \\frac{\\lambda_1\\lambda_2}{\\lambda_1 + \\lambda_2}\\).\n\n**Temperature:** no heat or work is exchanged with the outside, so the total internal energy is conserved. For an ideal gas it is proportional to (number of molecules) \\(\\times\\) T, so \\(n_1V T_1 + n_2V T_2 = (n_1 + n_2)V T\\), giving \\(T = \\frac{n_1T_1 + n_2T_2}{n_1 + n_2}\\).\n\nSo the answer is option (C).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "9",
+      "label": "A",
+      "value": "\\(\\frac{q^2}{8\\pi\\epsilon_0 m\\ell^2}\\left(\\hat{\\mathbf{i}} - 3\\sqrt{3}\\,\\hat{\\mathbf{j}}\\right)\\)",
+      "working": "The charge \\(-q\\) at \\(P = (0, \\frac{\\sqrt{3}}{2}\\ell)\\) is at distance \\(\\sqrt{\\frac{\\ell^2}{4} + \\frac{3\\ell^2}{4}} = \\ell\\) from each fixed charge (the three charges form an equilateral triangle). Let \\(k = \\frac{1}{4\\pi\\epsilon_0}\\). Both forces are attractive.\n\nForce from \\(+q\\): magnitude \\(\\frac{kq^2}{\\ell^2}\\), along the unit vector from P towards \\((-\\ell/2, 0)\\), which is \\(\\left(-\\frac{1}{2}, -\\frac{\\sqrt{3}}{2}\\right)\\).\n\nForce from \\(+2q\\): magnitude \\(\\frac{2kq^2}{\\ell^2}\\), along \\(\\left(\\frac{1}{2}, -\\frac{\\sqrt{3}}{2}\\right)\\).\n\nAdding: \\(\\vec{F} = \\frac{kq^2}{\\ell^2}\\left[\\left(-\\frac{1}{2} + 1\\right)\\hat{\\mathbf{i}} + \\left(-\\frac{\\sqrt{3}}{2} - \\sqrt{3}\\right)\\hat{\\mathbf{j}}\\right] = \\frac{kq^2}{2\\ell^2}\\left(\\hat{\\mathbf{i}} - 3\\sqrt{3}\\,\\hat{\\mathbf{j}}\\right)\\).\n\nDividing by \\(m\\): \\(\\vec{a} = \\frac{q^2}{8\\pi\\epsilon_0 m\\ell^2}\\left(\\hat{\\mathbf{i}} - 3\\sqrt{3}\\,\\hat{\\mathbf{j}}\\right)\\). So the answer is option (A).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "10",
+      "label": "A",
+      "value": "\\(\\frac{1}{\\sqrt{2LC}}\\)",
+      "working": "Read the circuit by its nodes. Resistor A and capacitor C in series form one branch from the top-left corner to the bottom-right corner; resistor B joins the same two corners directly. So \\((A + C)\\) is in parallel with B, and this combination is in series with the inductor L across the source.\n\nUse complex impedances with \\(j^2 = -1\\): \\(Z_1 = R + \\frac{1}{j\\omega C}\\) (branch A), \\(Z_2 = R\\) (branch B). The source current is \\(I = \\frac{V}{j\\omega L + \\frac{Z_1Z_2}{Z_1 + Z_2}}\\), and the current divider gives \\(I_A = I\\frac{Z_2}{Z_1 + Z_2}\\). Together:\n\n\\(I_A = \\frac{VR}{j\\omega L(Z_1 + Z_2) + Z_1Z_2}\\).\n\nThe denominator is \\(j\\omega L\\left(2R + \\frac{1}{j\\omega C}\\right) + R\\left(R + \\frac{1}{j\\omega C}\\right) = \\left(R^2 + \\frac{L}{C}\\right) + jR\\left(2\\omega L - \\frac{1}{\\omega C}\\right)\\).\n\n\\(I_A\\) is in phase with \\(V\\) when this is real: \\(2\\omega L = \\frac{1}{\\omega C}\\), so \\(\\omega = \\frac{1}{\\sqrt{2LC}}\\). The initial charge on the capacitor only affects a transient, not this steady state. So the answer is option (A).",
+      "difficulty": "Hard",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "11",
+      "label": "C",
+      "value": "\\(Iab\\,(\\hat{\\mathbf{j}} + \\hat{\\mathbf{k}})\\)",
+      "working": "Add the shared bottom-back edge (length \\(b\\)) twice, once in each direction. This changes nothing, but splits the wire into two closed rectangles, each of area \\(ab\\). The magnetic moment is \\(\\vec{m} = I\\vec{A}\\) for each, with \\(\\vec{A}\\) given by the right-hand rule.\n\n**Flat rectangle** (in the horizontal x-z plane): the current goes right along the front edge (\\(+\\hat{\\mathbf{i}}\\)), then back along the right edge (\\(-\\hat{\\mathbf{k}}\\)). The area vector is along \\(\\hat{\\mathbf{i}} \\times (-\\hat{\\mathbf{k}}) = +\\hat{\\mathbf{j}}\\), so \\(\\vec{m}_1 = Iab\\,\\hat{\\mathbf{j}}\\).\n\n**Vertical rectangle** (in the x-y plane): the current goes right along the bottom edge (\\(+\\hat{\\mathbf{i}}\\)), then up the right edge (\\(+\\hat{\\mathbf{j}}\\)). The area vector is along \\(\\hat{\\mathbf{i}} \\times \\hat{\\mathbf{j}} = +\\hat{\\mathbf{k}}\\), so \\(\\vec{m}_2 = Iab\\,\\hat{\\mathbf{k}}\\).\n\nThe total is \\(\\vec{m} = Iab(\\hat{\\mathbf{j}} + \\hat{\\mathbf{k}})\\). Its size is \\(\\sqrt{2}Iab\\), but option (A) puts that factor in front of a vector that already has length \\(\\sqrt{2}\\), so it is too big. So the answer is option (C).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "12",
+      "label": "D",
+      "value": "\\(\\frac{4}{5}\\)",
+      "working": "With X joined to Y, the battery charges C1 to some charge \\(Q_0\\). With X joined to Z, the battery is cut off and C1 is connected across C2 (their bottom plates share the bottom wire). Charge flows until both are at the same voltage, and the total charge \\(Q_1 + Q_2 = Q_0\\) is conserved.\n\nSame voltage means \\(\\frac{Q_1}{C_1} = \\frac{Q_2}{C_2}\\), so the charge divides in proportion to capacitance:\n\n\\(\\frac{Q_2}{Q_1 + Q_2} = \\frac{C_2}{C_1 + C_2} = \\frac{8}{2 + 8} = \\frac{4}{5}\\).\n\nSo the answer is option (D).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "13",
+      "label": "D",
+      "value": "0.01307",
+      "working": "The binding energy of a nucleus is \\(B = (Zm_p + Nm_n - M_{\\text{nucleus}})c^2\\).\n\nBoth isotopes have \\(Z = 8\\); \\({}^{18}\\mathrm{O}\\) has \\(N = 10\\) and \\({}^{16}\\mathrm{O}\\) has \\(N = 8\\). Subtracting, the proton terms cancel, and so do the 8 electrons if we use atomic masses:\n\n\\(B_{18} - B_{16} = \\left[2m_n - (M_{18} - M_{16})\\right]c^2\\).\n\nNow \\(2m_n = 2.01732\\) u and \\(M_{18} - M_{16} = 17.99916 - 15.99491 = 2.00425\\) u.\n\nSo \\(B_{18} - B_{16} = (2.01732 - 2.00425)\\,\\mathrm{u}\\,c^2 = 0.01307\\,\\mathrm{u}\\,c^2\\). Option (B) is only the mass difference of the atoms, not the binding energy difference. So the answer is option (D).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "14",
+      "label": "C",
+      "value": "\\(1/\\sqrt{3}\\)",
+      "working": "Snell's law gives \\(n \\sin\\theta = \\sqrt{2}\\sin 45^\\circ = 1\\) in every layer.\n\nUpper slab: \\(2\\sin r_1 = 1\\), so \\(r_1 = 30^\\circ\\). Lower slab: \\(\\frac{2}{\\sqrt{3}}\\sin r_2 = 1\\), so \\(\\sin r_2 = \\frac{\\sqrt{3}}{2}\\) and \\(r_2 = 60^\\circ\\). The ray leaves at \\(45^\\circ\\), parallel to the incident ray.\n\nZero lateral shift means the outgoing ray lies on the straight-line extension of the incident ray. So the sideways distance covered inside the slabs must equal what a \\(45^\\circ\\) ray would cover through the same total thickness:\n\n\\(t_1\\tan 30^\\circ + t_2\\tan 60^\\circ = (t_1 + t_2)\\tan 45^\\circ\\).\n\nWith \\(t_1 = 1\\) cm: \\(\\frac{1}{\\sqrt{3}} + \\sqrt{3}\\,t_2 = 1 + t_2\\), so \\(t_2(\\sqrt{3} - 1) = 1 - \\frac{1}{\\sqrt{3}} = \\frac{\\sqrt{3} - 1}{\\sqrt{3}}\\), giving \\(t_2 = \\frac{1}{\\sqrt{3}}\\) cm. So the answer is option (C).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "15",
+      "label": "C",
+      "value": "1 eV",
+      "working": "Einstein's photoelectric equation: \\(\\frac{hc}{\\lambda} = \\phi + eV_s\\).\n\nFor wavelength \\(\\lambda\\): \\(\\frac{hc}{\\lambda} = \\phi + 1\\) eV. For \\(\\lambda/2\\) the photon energy doubles: \\(\\frac{2hc}{\\lambda} = \\phi + 3\\) eV.\n\nSubtracting the first from the second: \\(\\frac{hc}{\\lambda} = 2\\) eV. Then \\(\\phi = 2 - 1 = 1\\) eV. So the answer is option (C).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    }
+  ]
+}

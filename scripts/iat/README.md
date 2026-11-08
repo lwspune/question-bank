@@ -16,9 +16,22 @@ Mathematics, Physics; +4 / -1 / 0; 180 minutes; out of 240.
 |---|---|---|---|
 | 2017, 2019, 2021, 2022 | question paper (text layer) | none | two independent solvers; a person settles every split |
 | 2018 | scanned question paper | none | same, read from the page images |
-| 2023, 2024 | key-file layout | (a) appears to be correct; **unconfirmed** | the blind solve measures it; `keyConfirmed` set only on a high rate |
-| 2025 | IISER final key | printed (a) | one solver, compared with the key |
-| 2026 | IISER final key ("option (a) is the correct answer") | printed (a) | same |
+| 2023 | key-file layout | printed (a), **measured**: blind solve 58/60 | one solver, compared with the key |
+| 2024 | key-file layout | printed (a) appears correct; unconfirmed until measured | the blind solve measures it; `keyConfirmed` set only on a high rate |
+| 2025 | IISER final key | printed (a); blind solve 59/59 | one solver, compared with the key |
+| 2026 | IISER final key ("option (a) is the correct answer") | printed (a); blind solve 60/60 | same |
+
+## When the solver and IISER disagree
+
+Owner policy 2026-10-29, applied per row in `data/<stem>.adjudication.json`:
+
+- **IISER's answer is defensible** (2023 Biology 4, metaphase): the key stays and
+  the solution is rewritten to teach it (`solution`).
+- **Two answers are defensible, or the keyed one is impossible** (2023 Chemistry 14,
+  hexane + benzene; 2026 Chemistry 1, Co(II) spin; 2026 Physics 11, a root needing
+  v ≈ 2c): the key stays, a `notice` goes above the solution, and `grace` gives
+  everyone the marks in a mock (commit.ts writes `src/lib/mocks/flawed.json`).
+- A keyed year never takes a different `answer`: lib.ts refuses it.
 
 2025 Physics has 14 questions: IISER dropped one from its final key and the
 file leaves it out, so the 2025 paper has 59.
@@ -49,7 +62,16 @@ npx tsx scripts/iat/report.ts 2025                      # agreement + every non-
 #   adjudicate: data/<stem>.adjudication.json
 ```
 
-Commit, seed and mocks come after the pilot (2025) is measured.
+Then, once per year, immediately before the first write (`npm run db:backup` first):
+
+```sh
+npx tsx scripts/iat/seed.ts --apply               # exam row + four subjects (first year only)
+npx tsx scripts/iat/commit.ts 2025                # dry run: every check
+npx tsx scripts/iat/commit.ts 2025 --apply        # PRIVATE rows, figures, grace list
+npx tsx scripts/iat/seed.ts --order --apply       # chapter + subtopic order
+#   add the year to IAT_MOCK_YEARS (scripts/mocks/iatSittings.ts)
+npx tsx scripts/mocks/build.ts --paper=iat        # mock dry run; --apply --publish after the owner's OK
+```
 
 ## Files
 
