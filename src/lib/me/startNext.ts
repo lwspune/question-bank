@@ -33,13 +33,31 @@ export const MIN_QUESTIONS_PER_PAPER = 1;
 
 export const START_NEXT_LIMIT = 2;
 
-/** "about 10 questions a paper · 24 of 300 marks (8%)". */
-export function weightLine(w: Pick<ChapterWeight, "qPerPaper" | "marksPerPaper" | "paperMarks">): string {
+type Weight = Pick<ChapterWeight, "qPerPaper" | "marksPerPaper" | "paperMarks">;
+
+function parts(w: Weight) {
   const q = Math.max(1, Math.round(w.qPerPaper));
   const marks = Math.max(1, Math.round(w.marksPerPaper));
   const pct = w.paperMarks > 0 ? (100 * w.marksPerPaper) / w.paperMarks : 0;
   const share = pct < 1 ? "under 1%" : `${Math.round(pct)}%`;
-  return `about ${q} ${q === 1 ? "question" : "questions"} a paper · ${marks} of ${Math.round(w.paperMarks)} marks (${share})`;
+  return { q, questions: `about ${q} ${q === 1 ? "question" : "questions"}`, marks, of: Math.round(w.paperMarks), share };
+}
+
+/** One line: "about 10 questions a paper · 24 of 300 marks (8%)" (the smoke's report). */
+export function weightLine(w: Weight): string {
+  const p = parts(w);
+  return `${p.questions} a paper · ${p.marks} of ${p.of} marks (${p.share})`;
+}
+
+/** The card's bold line, the point of it: "24 of 300 marks a paper (8%)". */
+export function marksLine(w: Weight): string {
+  const p = parts(w);
+  return `${p.marks} of ${p.of} marks a paper (${p.share})`;
+}
+
+/** The card's small line: "about 10 questions". */
+export function questionsLine(w: Weight): string {
+  return parts(w).questions;
 }
 
 /** Not started, worth at least a question a paper, most marks first. */

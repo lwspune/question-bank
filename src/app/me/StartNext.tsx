@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Sparkles } from "lucide-react";
 import { goPracticeHref } from "@/lib/performance/links";
-import { weightLine, type ChapterWeight } from "@/lib/me/startNext";
+import { marksLine, questionsLine, type ChapterWeight } from "@/lib/me/startNext";
 
 /**
  * "Start next" on Home (2026-11-09): the highest-value chapters of the
@@ -30,12 +30,13 @@ export default function StartNext({
       <ul className="mt-2 divide-y">
         {chapters.map((c) => (
           <li key={c.chapterId} className="flex items-center gap-3 py-2.5">
+            {/* Wraps, never truncates: on a phone the chapter's name is the point of the line. */}
             <div className="min-w-0 flex-1">
-              <p className="truncate text-sm font-medium">
-                {c.chapter}
-                <span className="font-normal text-muted-foreground"> · {c.subject}</span>
+              <p className="text-sm font-medium">{c.chapter}</p>
+              <p className="mt-0.5 text-sm font-semibold tabular-nums text-brand-accent">{marksLine(c)}</p>
+              <p className="text-xs tabular-nums text-muted-foreground">
+                {questionsLine(c)} · {c.subject}
               </p>
-              <p className="mt-0.5 text-xs font-medium tabular-nums text-foreground">{weightLine(c)}</p>
             </div>
             <Link
               href={goPracticeHref(c.exam, c.subject, c.chapter)}

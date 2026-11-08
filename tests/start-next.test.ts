@@ -9,7 +9,7 @@
  * papers, out of the paper's total. Measured, never estimated.
  */
 import { describe, it, expect } from "vitest";
-import { pickStartNext, startNextExam, weightLine, type ChapterWeight } from "@/lib/me/startNext";
+import { marksLine, pickStartNext, questionsLine, startNextExam, weightLine, type ChapterWeight } from "@/lib/me/startNext";
 
 const w = (over: Partial<ChapterWeight>): ChapterWeight => ({
   chapterId: "c1",
@@ -35,6 +35,17 @@ describe("weightLine: what a chapter is worth in a paper", () => {
 
   it("never prints 0%: a small share says under 1%", () => {
     expect(weightLine(w({ qPerPaper: 1, marksPerPaper: 1, paperMarks: 600 }))).toBe("about 1 question a paper · 1 of 600 marks (under 1%)");
+  });
+});
+
+describe("the card's two lines: marks first, in bold, then the questions", () => {
+  it("marks a paper with the share", () => {
+    expect(marksLine(w({}))).toBe("24 of 300 marks a paper (8%)");
+    expect(marksLine(w({ marksPerPaper: 1, paperMarks: 600 }))).toBe("1 of 600 marks a paper (under 1%)");
+  });
+  it("questions a paper", () => {
+    expect(questionsLine(w({}))).toBe("about 10 questions");
+    expect(questionsLine(w({ qPerPaper: 1.2 }))).toBe("about 1 question");
   });
 });
 

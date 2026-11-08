@@ -99,7 +99,8 @@ describe("MeView, Start next", () => {
     const html = renderToStaticMarkup(createElement(MeView, { data: { ...data, startNext }, vapidKey: "", initialPulse: PULSE }));
     expect(html).toContain("Start next");
     expect(html).toContain("Matrices &amp; Determinants");
-    expect(html).toContain("about 10 questions a paper · 24 of 300 marks (8%)");
+    expect(html).toContain("24 of 300 marks a paper (8%)");
+    expect(html).toContain("about 10 questions");
     expect(html).toContain('href="/go/practice?exam=NDA&amp;subject=Mathematics&amp;chapter=Matrices+%26+Determinants"');
   });
 
