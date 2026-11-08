@@ -1,0 +1,11 @@
+{
+  "adjudications": [
+    {
+      "ref": "1",
+      "why": "Solver agreed with IISER's key (Cr, A) but flagged that the key needs Co(II) in [Co(NH3)4Cl2] to be low spin. Real Co(II) ammine complexes are high spin d7 (3 unpaired, 3.87 BM), which ties with Cr(III). Two defensible answers: owner policy 2026-10-29 case 3, key kept, notice, grace. Solution rewritten because the solver's version taught that NH3 makes Co(II) low spin.",
+      "notice": "IISER's key (option A) assumes the cobalt(II) complex is low spin. Real cobalt(II) ammine complexes are high spin, with three unpaired electrons, which would give option C the same moment as option A. In a PYQ Vault mock this question gives everyone its marks.",
+      "grace": true,
+      "solution": "Find the oxidation state, the d-electron count and the number of unpaired electrons \\(n\\) in each complex, then use \\(\\mu = \\sqrt{n(n+2)}\\) BM.\n\n| Complex | Metal ion | d count | Unpaired \\(n\\) |\n|---|---|---|---|\n| \\(\\mathrm{[Cr(H_2O)_4(OH)_2]}\\) | \\(\\mathrm{Cr^{3+}}\\) | \\(\\mathrm{d^3}\\) | 3 |\n| \\(\\mathrm{[V(H_2O)_4I_2]^+}\\) | \\(\\mathrm{V^{3+}}\\) | \\(\\mathrm{d^2}\\) | 2 |\n| \\(\\mathrm{[Co(NH_3)_4Cl_2]}\\) | \\(\\mathrm{Co^{2+}}\\) | \\(\\mathrm{d^7}\\) | 1 if low spin, 3 if high spin |\n| \\(\\mathrm{[Fe(NH_3)_4(CN)_2]^+}\\) | \\(\\mathrm{Fe^{3+}}\\) | \\(\\mathrm{d^5}\\) | 1 (low spin with \\(\\mathrm{CN^-}\\)) |\n\nA \\(\\mathrm{d^3}\\) ion in an octahedral field always has three unpaired electrons in the \\(t_{2g}\\) set, whatever the ligand, so \\(\\mathrm{Cr^{3+}}\\) gives \\(\\mu = \\sqrt{15} \\approx 3.87\\) BM.\n\nThe key treats the \\(\\mathrm{d^7}\\) cobalt(II) complex as low spin (one unpaired electron, 1.73 BM), which leaves the chromium complex with the highest moment. So IISER's answer is option (A)."
+    }
+  ]
+}

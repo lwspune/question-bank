@@ -23,6 +23,7 @@ export type ExamSlug =
   | "cbse-11"
   | "cbse-12"
   | "isc-12"
+  | "iiser-iat"
   | "icse-10"
   | "mh-sb-9"
   | "mh-sb-11"
@@ -709,6 +710,23 @@ export const EXAM_REGISTRY: readonly ExamEntry[] = [
     mixedFormats: true, // MCQ, MSQ and NAT
     noImageIndex: true,
     hasMocks: true, // 12 Part A mocks (2015-2026) published 2026-11-06, MOCKS.md
+  },
+  {
+    slug: "iiser-iat",
+    // IISER Aptitude Test, the entrance to the IISERs' BS-MS science programme,
+    // sat after Class 12: 60 MCQs, 15 each of Biology, Chemistry, Mathematics and
+    // Physics, +4/-1, 3 hours. IISER's own papers 2017-2026 (scripts/iat/); 2025
+    // and 2026 carry IISER's final key, earlier years are solved twice, blind.
+    // Asked for in student feedback, 2026-11-06.
+    tier: "senior",
+    displayName: "IISER IAT",
+    examName: "IISER IAT", // must match the `exams` DB row exactly
+    // PUBLIC since 2026-11-08: all nine years IISER posts, 539 q, every one with a
+    // worked solution. One timed mock per year (iat-2017 ... iat-2026), MOCKS.md.
+    hasMocks: true,
+    pastPaperSolutions: true,
+    guidesPath: null,
+    notesPath: null,
   },
   // ── MPSC ──────────────────────────────────────────────────────────────────
   // One family with a stage level: MPSC -> Prelims / Mains -> exam. Prelims

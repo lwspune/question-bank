@@ -1,0 +1,126 @@
+{
+  "derivedBy": "Claude (Opus), independent solve from the printed questions and figures, arithmetic checked by hand",
+  "answers": [
+    {
+      "ref": "1",
+      "label": "A",
+      "value": "\\(\\frac{u^2 + v^2}{2(u + v)}\\)",
+      "working": "**Average speed** is total distance divided by total time, so we need both.\n\nDistance: the ball rises \\(\\frac{u^2}{2g}\\) above the launch point, then falls \\(h + \\frac{u^2}{2g}\\) to the ground. Total distance \\(= \\frac{u^2}{g} + h\\). From energy conservation, \\(v^2 = u^2 + 2gh\\), so \\(h = \\frac{v^2 - u^2}{2g}\\). Then the distance is \\(\\frac{u^2}{g} + \\frac{v^2 - u^2}{2g} = \\frac{u^2 + v^2}{2g}\\).\n\nTime: going up takes \\(\\frac{u}{g}\\) (speed falls from \\(u\\) to 0). Coming down from the top, the speed grows from 0 to \\(v\\), which takes \\(\\frac{v}{g}\\). Total time \\(= \\frac{u + v}{g}\\).\n\nAverage speed \\(= \\frac{u^2 + v^2}{2g} \\cdot \\frac{g}{u + v} = \\frac{u^2 + v^2}{2(u + v)}\\). Option (D) is the average of the two speeds, which is not the definition of average speed here.\n\nSo the answer is option (A).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "2",
+      "label": "A",
+      "value": "\\((1 - \\eta)/\\eta\\)",
+      "working": "Let each cube have volume \\(V\\) and let water have density \\(\\rho_w\\).\n\nCube A alone floats with a fraction \\(\\eta\\) immersed, so its weight equals the buoyant force: \\(\\rho_\\mathrm{A} V g = \\eta V \\rho_w g\\), giving \\(\\rho_\\mathrm{A} = \\eta \\rho_w\\).\n\nWith B on top, A is just fully immersed and B is fully out of the water, so the displaced volume is \\(V\\): \\((\\rho_\\mathrm{A} + \\rho_\\mathrm{B}) V g = V \\rho_w g\\), giving \\(\\rho_\\mathrm{B} = \\rho_w - \\rho_\\mathrm{A} = (1 - \\eta)\\rho_w\\).\n\nTherefore \\(\\frac{\\rho_\\mathrm{B}}{\\rho_\\mathrm{A}} = \\frac{1 - \\eta}{\\eta}\\).\n\nSo the answer is option (A).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "3",
+      "label": "D",
+      "value": "\\(4\\)",
+      "working": "Use the lens formula \\(\\frac{1}{v} - \\frac{1}{u} = \\frac{1}{f}\\) with the usual sign convention.\n\nA real, inverted image of double size means magnification \\(-2\\). If the object is at distance \\(x\\), then \\(u = -x\\) and \\(v = 2x\\). So \\(\\frac{1}{2x} + \\frac{1}{x} = \\frac{1}{f}\\), giving \\(f = \\frac{2x}{3}\\).\n\nNow the object is at distance \\(x - d\\) and the image at \\(2x + 8d\\). Then \\(\\frac{1}{2x + 8d} + \\frac{1}{x - d} = \\frac{3}{2x}\\). Cross-multiplying: \\(2x(3x + 7d) = 3(2x + 8d)(x - d)\\), that is \\(6x^2 + 14xd = 6x^2 + 18xd - 24d^2\\). This gives \\(24d^2 = 4xd\\), so \\(d = \\frac{x}{6}\\).\n\nNew object distance \\(= x - \\frac{x}{6} = \\frac{5x}{6}\\); new image distance \\(= 2x + \\frac{8x}{6} = \\frac{10x}{3}\\). Magnitude of magnification \\(= \\frac{10x/3}{5x/6} = 4\\).\n\nSo the answer is option (D).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "4",
+      "label": "D",
+      "value": "\\(\\frac{\\nu_2 - \\nu_1}{\\nu_1}\\)",
+      "working": "Let the whistle have natural frequency \\(\\nu_0\\) and let the source train move with speed \\(u\\). For the stationary detector, the **Doppler effect** gives \\(\\nu_1 = \\nu_0 \\frac{v_{sound}}{v_{sound} - u}\\) (the source factor would have a plus sign if it were receding; it cancels either way).\n\nThe listener in the second train moves towards the source with speed \\(v\\), so the listener factor changes from \\(v_{sound}\\) to \\(v_{sound} + v\\), while the source factor stays the same: \\(\\nu_2 = \\nu_0 \\frac{v_{sound} + v}{v_{sound} - u}\\).\n\nDividing, \\(\\frac{\\nu_2}{\\nu_1} = \\frac{v_{sound} + v}{v_{sound}} = 1 + \\frac{v}{v_{sound}}\\). Hence \\(\\frac{v}{v_{sound}} = \\frac{\\nu_2}{\\nu_1} - 1 = \\frac{\\nu_2 - \\nu_1}{\\nu_1}\\).\n\nSo the answer is option (D).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH",
+      "flag": "Assumes the source train's motion relative to the platform detector and to the second train is the same (so the source factor cancels); this is the clear intent of the question."
+    },
+    {
+      "ref": "5",
+      "label": "C",
+      "value": "\\(P_2 = P_1/2\\)",
+      "working": "The resistance of the full cable is \\(R = \\frac{\\rho L}{A}\\), so \\(P_1 = I^2 R\\).\n\nEach half has length \\(\\frac{L}{2}\\) and the same area, so its resistance is \\(\\frac{R}{2}\\). With the same current \\(I\\) through it, the power is \\(P_2 = I^2 \\cdot \\frac{R}{2} = \\frac{P_1}{2}\\).\n\nSo the answer is option (C).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "6",
+      "label": "C",
+      "value": "\\(\\vec{F}_\\mathrm{AB} = -\\vec{F}_\\mathrm{BA}\\)",
+      "working": "By Coulomb's law the magnitude of the force on each particle is the same, \\(\\frac{1}{4\\pi\\epsilon_0}\\frac{Q \\cdot 2Q}{r^2}\\), because the product of the charges appears in both. The forces act along the line joining them in opposite directions. This is **Newton's third law**: the two forces are equal and opposite, even though the charges are different.\n\nSo \\(\\vec{F}_\\mathrm{AB} = -\\vec{F}_\\mathrm{BA}\\). The tempting option (D) wrongly lets the larger charge feel a larger force.\n\nSo the answer is option (C).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "7",
+      "label": "D",
+      "value": "\\(\\frac{\\pi}{2\\omega}\\)",
+      "working": "By **Faraday's law**, \\(\\varepsilon = -\\frac{d\\phi_B}{dt} = \\phi_0 \\omega \\sin\\omega t\\).\n\nIn the range \\(0 \\le \\omega t \\le \\pi\\), \\(\\sin\\omega t\\) is largest (equal to 1) at \\(\\omega t = \\frac{\\pi}{2}\\), that is \\(t = \\frac{\\pi}{2\\omega}\\). At \\(t = 0\\) and \\(t = \\frac{\\pi}{\\omega}\\) the flux is largest in magnitude but is not changing, so the emf is zero there.\n\nSo the answer is option (D).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "8",
+      "label": "B",
+      "value": "\\(n_h > n_h^{(0)}\\)",
+      "working": "Doping silicon with a trivalent impurity (such as boron) makes a **p-type** semiconductor. Each impurity atom accepts an electron, creating an extra hole, so the hole concentration rises: \\(n_h > n_h^{(0)}\\).\n\nAt equilibrium \\(n_e n_h = n_i^2\\), so when holes increase the electron concentration falls below its intrinsic value. This rules out options (A) and (C). Option (D) is false because intrinsic carrier concentration rises sharply with temperature.\n\nSo the answer is option (B).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "9",
+      "label": "D",
+      "value": "\\(\\frac{2\\alpha T^2}{9}\\)",
+      "working": "Displacement is the area under the velocity-time graph. The graph is a trapezium: it rises linearly to \\(\\frac{\\alpha T}{3}\\), stays flat, then falls linearly to zero.\n\nFrom 0 to \\(\\frac{T}{3}\\): triangle of area \\(\\frac{1}{2} \\cdot \\frac{T}{3} \\cdot \\frac{\\alpha T}{3} = \\frac{\\alpha T^2}{18}\\).\n\nFrom \\(\\frac{T}{3}\\) to \\(\\frac{2T}{3}\\): rectangle of area \\(\\frac{T}{3} \\cdot \\frac{\\alpha T}{3} = \\frac{\\alpha T^2}{9}\\).\n\nFrom \\(\\frac{2T}{3}\\) to \\(T\\): \\(v = \\alpha(T - t)\\) falls from \\(\\frac{\\alpha T}{3}\\) to 0, a triangle of area \\(\\frac{\\alpha T^2}{18}\\).\n\nTotal displacement \\(= \\frac{\\alpha T^2}{18} + \\frac{2\\alpha T^2}{18} + \\frac{\\alpha T^2}{18} = \\frac{4\\alpha T^2}{18} = \\frac{2\\alpha T^2}{9}\\).\n\nSo the answer is option (D).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "10",
+      "label": "D",
+      "value": "\\(\\epsilon_0^{1/2}L^{3/2}\\)",
+      "working": "From \\(T = 2\\pi^{3/2}\\alpha\\frac{\\sqrt{m}}{q}\\), the quantity \\(\\alpha\\) must have the dimensions of \\(\\frac{Tq}{\\sqrt{m}}\\).\n\nPhysically: if the middle charge moves a small distance \\(x\\) to the right, the net force is \\(\\frac{q^2}{4\\pi\\epsilon_0}\\left[\\frac{1}{(L + x)^2} - \\frac{1}{(L - x)^2}\\right] \\approx -\\frac{q^2}{4\\pi\\epsilon_0}\\cdot\\frac{4x}{L^3} = -\\frac{q^2}{\\pi\\epsilon_0 L^3}x\\). This is simple harmonic motion with \\(k = \\frac{q^2}{\\pi\\epsilon_0 L^3}\\), so \\(T = 2\\pi\\sqrt{\\frac{m}{k}} = 2\\pi\\sqrt{\\frac{\\pi\\epsilon_0 L^3 m}{q^2}} = 2\\pi^{3/2}\\sqrt{\\epsilon_0 L^3}\\,\\frac{\\sqrt{m}}{q}\\).\n\nSo \\(\\alpha = \\epsilon_0^{1/2}L^{3/2}\\). Dimension check: \\([\\epsilon_0] = \\mathrm{C^2\\,kg^{-1}\\,m^{-3}\\,s^2}\\), so \\(\\epsilon_0^{1/2}L^{3/2}\\) has units \\(\\mathrm{C\\,kg^{-1/2}\\,s}\\), and multiplying by \\(\\frac{\\sqrt{m}}{q}\\) gives seconds, as needed. The other options leave a leftover power of metres or of \\(\\epsilon_0\\).\n\nSo the answer is option (D).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "11",
+      "label": "A",
+      "value": "\\(\\frac{4R}{3}\\)",
+      "working": "Label the top, bottom and centre points. There are three paths from A to B: A to top to B, A to centre to B and A to bottom to B, and each has \\(R\\) followed by \\(3R\\).\n\nSince each path has the same resistances in the same order, the potential drops in the same proportion along each. So the top, centre and bottom points are all at the same potential (a quarter of the way down from A). No current flows through the two \\(2R\\) resistors, and they can be removed. This is the idea of a **balanced bridge**.\n\nWhat remains is three branches of \\(R + 3R = 4R\\) in parallel: \\(R_{AB} = \\frac{4R}{3}\\). (The answer is the same whether or not the vertical and horizontal wires are joined at the centre, since the \\(2R\\) resistors carry no current either way.)\n\nSo the answer is option (A).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "12",
+      "label": "B",
+      "value": "\\(v(x) = \\frac{2\\sqrt{2GMR}}{x^{1/2}(4R - x)^{1/2}}\\)",
+      "working": "At distance \\(x\\) from the centre of A (and \\(4R - x\\) from the centre of B), the potential energy of C is \\(U(x) = -GMm\\left(\\frac{1}{x} + \\frac{1}{4R - x}\\right)\\).\n\nThis is highest at the midpoint \\(x = 2R\\), where the two pulls balance. Once C passes the midpoint, B pulls it in, so the **minimum speed** only has to bring C to \\(x = 2R\\). Energy conservation from \\(x = R\\) to \\(x = 2R\\): \\(\\frac{1}{2}v_{min}^2 = GM\\left(\\frac{1}{R} + \\frac{1}{3R}\\right) - GM\\left(\\frac{1}{2R} + \\frac{1}{2R}\\right) = \\frac{GM}{3R}\\), so \\(v_{min}^2 = \\frac{2GM}{3R}\\).\n\nWith \\(v_0 = 2v_{min}\\), \\(v_0^2 = \\frac{8GM}{3R}\\). Energy conservation from \\(x = R\\) to any \\(x\\): \\(v^2 = v_0^2 - \\frac{8GM}{3R} + 2GM\\left(\\frac{1}{x} + \\frac{1}{4R - x}\\right) = \\frac{2GM \\cdot 4R}{x(4R - x)} = \\frac{8GMR}{x(4R - x)}\\).\n\nSo \\(v(x) = \\frac{2\\sqrt{2GMR}}{x^{1/2}(4R - x)^{1/2}}\\). Check: at \\(x = R\\) this gives \\(v^2 = \\frac{8GM}{3R} = v_0^2\\), as it should.\n\nSo the answer is option (B).",
+      "difficulty": "Hard",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "13",
+      "label": "B",
+      "value": "\\(r/2\\)",
+      "working": "In the Bohr model the angular momentum is \\(n\\hbar\\), so \\(2\\hbar\\) means \\(n = 2\\).\n\nFor a nucleus of charge \\(Ze\\), the orbit radius is \\(r_n = \\frac{n^2 h^2 \\epsilon_0}{\\pi m Z e^2}\\), so \\(r_n \\propto \\frac{n^2}{Z}\\). Keeping \\(n = 2\\) and changing \\(Z\\) from 1 to 2 halves the radius: the stronger attraction pulls the electron closer.\n\nSo the new radius is \\(\\frac{r}{2}\\), and the answer is option (B).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "14",
+      "label": "B",
+      "value": "\\(3\\)",
+      "working": "In 0.00230 the leading zeros (before the 2) only fix the position of the decimal point, so they are **not significant**. The digits 2 and 3 are significant, and the trailing zero after the decimal point is also significant because it shows the measurement was made to that precision.\n\nWritten in scientific notation, \\(2.30 \\times 10^{-3}\\), it clearly has 3 significant figures.\n\nSo the answer is option (B).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "15",
+      "label": "C",
+      "value": "2000 kJ",
+      "working": "**Carnot engine** (600 K to 300 K): efficiency \\(= 1 - \\frac{300}{600} = \\frac{1}{2}\\). From 1000 kJ taken in, the work is \\(W = 500\\) kJ and the heat rejected to the atmosphere is \\(1000 - 500 = 500\\) kJ.\n\n**Reversible refrigerator** (200 K to 300 K): its coefficient of performance is \\(\\frac{T_c}{T_h - T_c} = \\frac{200}{100} = 2\\). With \\(W = 500\\) kJ of work input, it removes \\(Q_c = 2 \\times 500 = 1000\\) kJ from the 200 K body and releases \\(Q_c + W = 1500\\) kJ to the atmosphere.\n\nTotal heat released to the atmosphere by the combined system \\(= 500 + 1500 = 2000\\) kJ. (Counting only the refrigerator's 1500 kJ is the common slip; it is not among the options.)\n\nSo the answer is option (C).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    }
+  ]
+}

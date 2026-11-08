@@ -1,0 +1,128 @@
+{
+  "derivedBy": "Claude Opus 5.5 subagent, independent solve from the question payload and figures only",
+  "answers": [
+    {
+      "ref": "1",
+      "label": "A",
+      "value": "\\(\\mathrm{d}_{F-F} < \\mathrm{d}_{Cl-Cl}\\) and \\(\\mathrm{BDE}_{F-F} < \\mathrm{BDE}_{Cl-Cl}\\)",
+      "working": "**Bond length:** fluorine is a much smaller atom than chlorine, so the F-F bond (about 142 pm) is shorter than the Cl-Cl bond (about 199 pm). So \\(\\mathrm{d}_{F-F} < \\mathrm{d}_{Cl-Cl}\\).\n\n**Bond dissociation enthalpy:** you might expect the shorter bond to be stronger, but \\(\\mathrm{F_2}\\) is an exception. Because the F atoms are so small and close together, the lone pairs on the two atoms repel each other strongly, which weakens the bond. So \\(\\mathrm{F_2}\\) has a lower bond dissociation enthalpy (about 158.8 kJ/mol) than \\(\\mathrm{Cl_2}\\) (about 242.6 kJ/mol). So \\(\\mathrm{BDE}_{F-F} < \\mathrm{BDE}_{Cl-Cl}\\).\n\nOption (C) is the tempting one if you assume a shorter bond is always stronger. So the answer is option (A).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "2",
+      "label": "A",
+      "value": "high-spin and green",
+      "working": "Find the oxidation state of cobalt first. Each of the six ligands carries a charge of \\(-1\\), and the complex has a charge of \\(-3\\), so \\(x + 6(-1) = -3\\), which gives \\(x = +3\\). So cobalt is \\(\\mathrm{Co^{3+}}\\), a \\(d^6\\) ion.\n\nSimple monoanionic monodentate ligands such as \\(\\mathrm{F^-}\\) and \\(\\mathrm{Cl^-}\\) are **weak-field ligands**. They give a small crystal field splitting \\(\\Delta_o\\), smaller than the pairing energy, so the electrons spread out as \\(t_{2g}^4 e_g^2\\): a **high-spin** complex (for example \\(\\mathrm{[CoF_6]^{3-}}\\)).\n\nA small \\(\\Delta_o\\) means the complex absorbs low-energy light (the red end of the spectrum), so it shows the complementary colour, in the green-blue region. A yellow colour would need absorption of high-energy (violet-blue) light, which goes with a large \\(\\Delta_o\\) and a low-spin complex, so option (D) is not consistent. Low-spin choices (B) and (C) do not fit a weak-field ligand.\n\nSo the answer is option (A).",
+      "difficulty": "Moderate",
+      "confidence": "MEDIUM",
+      "flag": "Ligand L is not named, so spin state rests on assuming a weak-field halide-type ligand (CN- would give low-spin yellow, which is not offered). [CoF6]3- is usually described as blue/blue-green; A is the only option pairing high-spin with a low-Delta colour."
+    },
+    {
+      "ref": "3",
+      "label": "B",
+      "value": "Yb and Ti",
+      "working": "**Interstitial (metallic) hydrides** are formed by many d-block and f-block elements: hydrogen atoms occupy the holes in the metal lattice, and these hydrides are often non-stoichiometric (for example \\(\\mathrm{TiH_{1.5\\text{-}1.8}}\\)).\n\nCheck each pair:\n\n- Na and Mg are s-block metals. They form **ionic (saline) hydrides** such as \\(\\mathrm{NaH}\\) and \\(\\mathrm{MgH_2}\\).\n- Fe and Mn belong to groups 8 and 7. The metals of groups 7, 8 and 9 do not form hydrides (the \"hydride gap\").\n- B and Al are p-block elements. Boron forms **covalent (molecular) hydrides** like \\(\\mathrm{B_2H_6}\\).\n- Yb is a lanthanide (f-block) and Ti is a d-block metal of group 4. Both form interstitial hydrides.\n\nSo the answer is option (B).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "4",
+      "label": "D",
+      "value": "3",
+      "working": "The complex \\(\\mathrm{[Pd(py)(Cl)(Br)(NH_3)]}\\) is square planar with four **different** ligands, a type written as \\(\\mathrm{[Mabcd]}\\).\n\nFix one ligand, say py. The ligand placed **trans** to py can be Cl, Br or \\(\\mathrm{NH_3}\\). Once the trans partner is chosen, the other two ligands must sit trans to each other, so each choice gives one distinct arrangement:\n\n- py trans to Cl (Br trans to \\(\\mathrm{NH_3}\\))\n- py trans to Br (Cl trans to \\(\\mathrm{NH_3}\\))\n- py trans to \\(\\mathrm{NH_3}\\) (Cl trans to Br)\n\nThat gives 3 geometrical isomers, the standard result for a square planar \\(\\mathrm{[Mabcd]}\\) complex. So the answer is option (D).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "5",
+      "label": "C",
+      "value": "CN = 4, V = 3 and OS = +3",
+      "working": "In the adduct \\(\\mathrm{F_3B{\\leftarrow}OEt_2}\\), the oxygen of diethyl ether donates a lone pair into the empty p orbital of boron (a Lewis acid-base adduct).\n\n**Coordination number:** boron is now bonded to three F atoms and one O atom, so CN = 4.\n\n**Valency:** valency is the combining capacity of boron, set by the electrons boron itself uses in bonding. Boron uses its three valence electrons to form three bonds with F; the B-O bond is a dative bond made from oxygen's lone pair. So the valency of boron stays 3.\n\n**Oxidation state:** each F counts as \\(-1\\) and the neutral ether adds no charge, so \\(x + 3(-1) + 0 = 0\\), giving \\(x = +3\\).\n\nSo CN = 4, V = 3 and OS = +3. So the answer is option (C).",
+      "difficulty": "Moderate",
+      "confidence": "MEDIUM",
+      "flag": "Depends on the convention for 'valency': if valency is counted as the number of bonds formed, B would be 4 and option A would follow. C taken as the intended answer because valency is boron's combining capacity (3) and the question contrasts CN, V and OS."
+    },
+    {
+      "ref": "6",
+      "label": "C",
+      "value": "denaturation",
+      "working": "Milk proteins (mainly casein) hold their natural shape through hydrogen bonds and other weak interactions. Adding an acid such as dilute acetic acid changes the pH, which disturbs these interactions. The protein loses its secondary and tertiary structure and coagulates, but its peptide bonds (the primary structure) stay intact.\n\nThis loss of the natural three-dimensional structure without breaking peptide bonds is called **denaturation**, the same change seen when milk curdles or an egg white is boiled. It is not degradation, because the protein chain is not broken down, and nothing is being polymerised or dissolved.\n\nSo the answer is option (C).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "7",
+      "label": "B",
+      "value": "\\(\\mathrm{C_6H_5C{\\equiv}CH}\\)",
+      "working": "The starting compound \\(\\mathrm{C_6H_5CHBrCH_2Br}\\) is a **vicinal dibromide** (two Br atoms on adjacent carbons).\n\n**Step (i): alcoholic KOH** removes one molecule of HBr (dehydrohalogenation) to give a vinyl bromide, \\(\\mathrm{C_6H_5CBr{=}CH_2}\\).\n\n**Step (ii): \\(\\mathrm{NaNH_2}\\)**, a much stronger base, removes the second HBr from the vinyl bromide. Alcoholic KOH alone is too weak for this second step, which is why sodamide is used.\n\nThe result is phenylacetylene (ethynylbenzene), \\(\\mathrm{C_6H_5C{\\equiv}CH}\\). Losing two HBr from a vicinal dihalide is the standard way to make an alkyne. So the answer is option (B).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "8",
+      "label": "A",
+      "value": "2,4,6-tribromoaniline",
+      "working": "**Step (i): Hofmann bromamide degradation.** An amide treated with \\(\\mathrm{Br_2}\\) and NaOH loses its carbonyl carbon and gives a primary amine with one carbon fewer:\n\n\\(\\mathrm{C_6H_5CONH_2 + Br_2 + 4NaOH \\rightarrow C_6H_5NH_2 + Na_2CO_3 + 2NaBr + 2H_2O}\\)\n\nSo benzamide becomes aniline.\n\n**Step (ii): bromine water (excess).** The \\(\\mathrm{-NH_2}\\) group strongly activates the ring towards electrophilic substitution and directs to the ortho and para positions. With bromine water, all three of these positions are substituted at once, giving a white precipitate of 2,4,6-tribromoaniline.\n\nSo the answer is option (A).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "9",
+      "label": "D",
+      "value": "\\(\\mathrm{CH_3CHO}\\)",
+      "working": "Warming a diazonium salt with ethanol replaces the \\(\\mathrm{-N_2^+}\\) group by H. Ethanol acts as a mild **reducing agent** and is itself oxidised to ethanal (acetaldehyde):\n\n\\(\\mathrm{C_6H_5N_2^+Cl^- + CH_3CH_2OH \\rightarrow C_6H_6 + CH_3CHO + N_2 + HCl}\\)\n\nCheck the atoms: ethanol gives one H to the ring and loses one more H (to form HCl), which turns \\(\\mathrm{CH_3CH_2OH}\\) into \\(\\mathrm{CH_3CHO}\\). Acetic acid would need a further oxidation, and the other two options do not balance.\n\nSo [X] is \\(\\mathrm{CH_3CHO}\\). So the answer is option (D).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "10",
+      "label": "C",
+      "value": "cycloheptatrienyl cation",
+      "working": "A compound is **aromatic** if it is cyclic, planar, fully conjugated (every ring atom has a p orbital) and has \\((4n+2)\\) \\(\\pi\\) electrons (Huckel's rule).\n\n- Cyclopenta-1,3-diene: has a \\(\\mathrm{CH_2}\\) (sp3) carbon, so the ring is not fully conjugated. Not aromatic.\n- Cyclopropene: also has an sp3 \\(\\mathrm{CH_2}\\) carbon. Not aromatic.\n- Cycloheptatrienyl (tropylium) cation: all seven carbons are sp2; the positive carbon carries an empty p orbital, so the ring is fully conjugated with 6 \\(\\pi\\) electrons (\\(n = 1\\)). Aromatic.\n- Cyclooctatetraene: has 8 \\(\\pi\\) electrons (a 4n number) and is tub-shaped, not planar. Not aromatic.\n\nSo the answer is option (C).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "11",
+      "label": "A",
+      "value": "\\(\\mathrm{A}\\)",
+      "working": "The Arrhenius equation is \\(k = A\\,e^{-E_a/RT}\\).\n\nAs \\(T \\to \\infty\\), the exponent \\(-E_a/RT \\to 0\\), so \\(e^{-E_a/RT} \\to e^{0} = 1\\). Therefore \\(k \\to A\\).\n\nIn words: at a very high temperature every collision has enough energy to react, so the rate constant reaches its upper limit, the **pre-exponential (frequency) factor** A. So the answer is option (A).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "12",
+      "label": "B",
+      "value": "Equilibrium attained during acid catalysed hydrolysis of ethyl acetate",
+      "working": "A **heterogeneous equilibrium** involves more than one phase; a homogeneous one has everything in a single phase.\n\n- Water vapour and liquid water: gas and liquid, two phases. Heterogeneous.\n- Acid catalysed hydrolysis of ethyl acetate: \\(\\mathrm{CH_3COOC_2H_5 + H_2O \\rightleftharpoons CH_3COOH + C_2H_5OH}\\). All four substances are in one liquid solution. Homogeneous.\n- Solid \\(\\mathrm{Ca(OH)_2}\\) and its saturated solution: solid and solution, two phases. Heterogeneous.\n- Heating \\(\\mathrm{CaCO_3(s) \\rightleftharpoons CaO(s) + CO_2(g)}\\): two solids and a gas. Heterogeneous.\n\nThe only one that is not heterogeneous is the ester hydrolysis. So the answer is option (B).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "13",
+      "label": "B",
+      "value": "\\(-790\\ \\mathrm{Jmol^{-1}}\\)",
+      "working": "For \\(\\mathrm{N_2O_4(g) \\rightleftharpoons 2NO_2(g)}\\), start with 1 mol of \\(\\mathrm{N_2O_4}\\). With 50% dissociation (\\(\\alpha = 0.5\\)), at equilibrium there are \\(1 - 0.5 = 0.5\\) mol of \\(\\mathrm{N_2O_4}\\) and \\(2 \\times 0.5 = 1\\) mol of \\(\\mathrm{NO_2}\\), a total of 1.5 mol.\n\nAt a total pressure of 1 atm, the partial pressures are \\(p_{\\mathrm{N_2O_4}} = \\frac{0.5}{1.5} = \\frac{1}{3}\\) atm and \\(p_{\\mathrm{NO_2}} = \\frac{1}{1.5} = \\frac{2}{3}\\) atm.\n\n\\(K_p = \\frac{(p_{\\mathrm{NO_2}})^2}{p_{\\mathrm{N_2O_4}}} = \\frac{(2/3)^2}{1/3} = \\frac{4}{3} \\approx 1.33\\)\n\nNow \\(\\Delta G^\\circ = -RT \\ln K_p\\) with \\(T = 333\\) K:\n\n\\(\\Delta G^\\circ = -(8.314)(333)(2.303 \\log 1.33) = -(8.314)(333)(2.303)(0.1239) \\approx -790\\ \\mathrm{J\\,mol^{-1}}\\)\n\nThe value is negative because \\(K_p > 1\\). Option (A) has the wrong sign. So the answer is option (B).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH",
+      "flag": "Exact working gives about -796 J/mol (with K = 4/3); -790 comes from log 1.33. The NCERT Class XI worked example of this problem prints -763.8 (an arithmetic slip; the product is 790), which may explain option A's 763, but A is positive and so cannot be right."
+    },
+    {
+      "ref": "14",
+      "label": "A",
+      "value": "\\(-22.2\\)",
+      "working": "Split the cell \\(\\mathrm{Ag|Ag^{+},Cl^{-}|AgCl(s)|Ag}\\) into its two half-reactions.\n\n**Anode (left, oxidation):** \\(\\mathrm{Ag \\rightarrow Ag^+ + e^-}\\)\n\n**Cathode (right, reduction):** \\(\\mathrm{AgCl(s) + e^- \\rightarrow Ag + Cl^-}\\)\n\nAdding them gives exactly \\(\\mathrm{AgCl(s) \\rightleftharpoons Ag^+ + Cl^-}\\), with \\(n = 1\\).\n\n\\(E^\\circ_{cell} = E^\\circ_{cathode} - E^\\circ_{anode} = 0.22 - 0.79 = -0.57\\) V\n\nUsing \\(\\Delta G^\\circ = -nFE^\\circ = -RT \\ln K\\):\n\n\\(\\ln K = \\frac{nFE^\\circ_{cell}}{RT} = \\frac{1 \\times 96485 \\times (-0.57)}{8.314 \\times 298} = \\frac{-54996}{2477.6} \\approx -22.2\\)\n\nThe large negative value matches the very small solubility product of AgCl. So the answer is option (A).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "15",
+      "label": "D",
+      "value": "i-3, ii-1, iii-4, iv-2",
+      "working": "- **i) Ge doped with In:** Ge is in group 14 and In is in group 13. Each In atom has one electron fewer than Ge, which creates an electron hole. Holes carry the current, so this is a **p-type semiconductor** (3).\n- **ii) Si doped with N:** N is in group 15, with one electron more than Si. The extra electron is free to conduct, so this is an **n-type semiconductor** (1).\n- **iii) ZnS:** the small \\(\\mathrm{Zn^{2+}}\\) ion can leave its normal site and sit in an interstitial site, so ZnS shows a **Frenkel defect** (4).\n- **iv) CsCl:** an ionic solid whose cation and anion are of similar size, so equal numbers of cations and anions go missing: a **Schottky defect** (2).\n\nThe match is i-3, ii-1, iii-4, iv-2. So the answer is option (D).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    }
+  ]
+}

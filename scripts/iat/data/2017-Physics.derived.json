@@ -1,0 +1,126 @@
+{
+  "derivedBy": "Claude Opus 5.5 subagent, independent solve from the question text and figures only",
+  "answers": [
+    {
+      "ref": "1",
+      "label": "C",
+      "value": "\\(\\mathrm{R}T\\ln\\frac{V_B}{V_C} - P_2(V_B - V_C)\\).",
+      "working": "The net work in a cycle is the sum of the work done on each of its three parts.\n\n**C to A** is vertical on the PV diagram, so the volume does not change and \\(W_{CA} = 0\\).\n\n**A to B** is an isothermal expansion of one mole from \\(V_A = V_C\\) to \\(V_B\\), so \\(W_{AB} = \\mathrm{R}T\\ln\\frac{V_B}{V_C}\\) (positive, the gas expands).\n\n**B to C** is at constant pressure \\(P_2\\) while the volume falls from \\(V_B\\) to \\(V_C\\), so \\(W_{BC} = P_2(V_C - V_B) = -P_2(V_B - V_C)\\) (negative, the gas is compressed).\n\nAdding: \\(W = \\mathrm{R}T\\ln\\frac{V_B}{V_C} - P_2(V_B - V_C)\\). This is also the area enclosed by the loop, which is clearly not zero. So the answer is option (C).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "2",
+      "label": "C",
+      "value": "\\(\\frac{\\pi d^2 Y_{\\mathrm{Cu}} Y_{\\mathrm{Al}} \\Delta L}{4 (Y_{\\mathrm{Cu}} L_{\\mathrm{Al}} + Y_{\\mathrm{Al}} L_{\\mathrm{Cu}})}\\).",
+      "working": "The two wires are joined end to end (in series), so the same tension, equal to the load \\(F\\), acts in both. Both have cross-section area \\(A = \\frac{\\pi d^2}{4}\\).\n\nFrom \\(Y = \\frac{F L}{A\\,\\Delta l}\\), each wire stretches by \\(\\Delta l = \\frac{F L}{A Y}\\), and the total elongation is the sum:\n\n\\(\\Delta L = \\frac{F}{A}\\left(\\frac{L_{\\mathrm{Cu}}}{Y_{\\mathrm{Cu}}} + \\frac{L_{\\mathrm{Al}}}{Y_{\\mathrm{Al}}}\\right) = \\frac{F}{A}\\cdot\\frac{Y_{\\mathrm{Al}} L_{\\mathrm{Cu}} + Y_{\\mathrm{Cu}} L_{\\mathrm{Al}}}{Y_{\\mathrm{Cu}} Y_{\\mathrm{Al}}}\\).\n\nSolving for \\(F\\): \\(F = \\frac{\\pi d^2 Y_{\\mathrm{Cu}} Y_{\\mathrm{Al}} \\Delta L}{4 (Y_{\\mathrm{Cu}} L_{\\mathrm{Al}} + Y_{\\mathrm{Al}} L_{\\mathrm{Cu}})}\\). A quick check: the wires act like springs in series, so the combined stiffness must be smaller than either one alone, which is why the lengths add in the denominator. Options (A) and (B) would make the load grow with the lengths, which is backwards. So the answer is option (C).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "3",
+      "label": "C",
+      "value": "\\(\\frac{3}{5}\\ln 2\\).",
+      "working": "The decay rate falls as \\(R = R_0 e^{-\\lambda t}\\), so \\(\\ln R = \\ln R_0 - \\lambda t\\). A plot of \\(\\ln R\\) against \\(t\\) is a straight line whose slope is \\(-\\lambda\\).\n\nFrom the graph the line goes from \\(\\ln R = 10\\) at \\(t = 0\\) to \\(\\ln R = 0\\) at \\(t = 6\\) h, so the slope is \\(-\\frac{10}{6} = -\\frac{5}{3}\\) per hour, and \\(\\lambda = \\frac{5}{3}\\ \\text{h}^{-1}\\).\n\nThe half life is \\(T_{1/2} = \\frac{\\ln 2}{\\lambda} = \\frac{3}{5}\\ln 2\\) hours (about 0.42 h). Option (D) is the tempting slip of writing \\(\\lambda \\ln 2\\) instead of \\(\\frac{\\ln 2}{\\lambda}\\). So the answer is option (C).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "4",
+      "label": "A",
+      "value": "\\(\\frac{1}{2} m_1 v_i^2 [1 - \\frac{m_1}{m_1 + m_2}]\\).",
+      "working": "The two particles move together after the collision, so it is a **perfectly inelastic** collision. Momentum is conserved:\n\n\\(m_1 v_i = (m_1 + m_2) v_f\\), so \\(v_f = \\frac{m_1 v_i}{m_1 + m_2}\\).\n\nEnergy lost = initial KE minus final KE:\n\n\\(\\frac{1}{2} m_1 v_i^2 - \\frac{1}{2}(m_1 + m_2)\\frac{m_1^2 v_i^2}{(m_1 + m_2)^2} = \\frac{1}{2} m_1 v_i^2\\left[1 - \\frac{m_1}{m_1 + m_2}\\right]\\).\n\nThis equals \\(\\frac{m_1 m_2 v_i^2}{2(m_1 + m_2)}\\). Option (D) simplifies to \\(\\frac{m_1^2 v_i^2}{2(m_1 + m_2)}\\), which is the final KE, not the loss. So the answer is option (A).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "5",
+      "label": "D",
+      "value": "0.",
+      "working": "Work in the frame of particle \\(m_1\\). Both particles start at the same point, so at time \\(t_0\\) the position of \\(m_2\\) relative to \\(m_1\\) is \\(\\vec{r} = (\\vec{v_2} - \\vec{v_1})t_0\\), and its velocity relative to \\(m_1\\) is \\(\\vec{v_2} - \\vec{v_1}\\).\n\nThe angular momentum about \\(m_1\\) is \\(\\vec{L} = \\vec{r} \\times m_2(\\vec{v_2} - \\vec{v_1}) = m_2 t_0 (\\vec{v_2} - \\vec{v_1}) \\times (\\vec{v_2} - \\vec{v_1})\\).\n\nThe cross product of a vector with itself is zero, so \\(\\vec{L} = 0\\). Physically, \\(m_2\\) simply moves along a straight line drawn out from \\(m_1\\), so it never goes round it. So the answer is option (D).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "6",
+      "label": "D",
+      "value": "\\(2\\cot^{-1}(2\\mu - \\sqrt{3})\\).",
+      "working": "At minimum deviation, \\(\\mu = \\frac{\\sin\\frac{A + \\delta_m}{2}}{\\sin\\frac{A}{2}}\\). With \\(\\delta_m = \\frac{\\pi}{3}\\), the numerator is \\(\\sin\\left(\\frac{A}{2} + \\frac{\\pi}{6}\\right) = \\frac{\\sqrt{3}}{2}\\sin\\frac{A}{2} + \\frac{1}{2}\\cos\\frac{A}{2}\\).\n\nDividing by \\(\\sin\\frac{A}{2}\\): \\(\\mu = \\frac{\\sqrt{3}}{2} + \\frac{1}{2}\\cot\\frac{A}{2}\\).\n\nSo \\(\\cot\\frac{A}{2} = 2\\mu - \\sqrt{3}\\), which gives \\(A = 2\\cot^{-1}(2\\mu - \\sqrt{3})\\). So the answer is option (D).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "7",
+      "label": "A",
+      "value": "2/5 A",
+      "working": "There is only one loop, so the same current flows through the 36 \\(\\Omega\\) resistor, both cells and the parallel group.\n\n**Resistance.** The 12 \\(\\Omega\\), 4 \\(\\Omega\\) and 3 \\(\\Omega\\) are in parallel: \\(\\frac{1}{R_p} = \\frac{1}{12} + \\frac{1}{4} + \\frac{1}{3} = \\frac{1 + 3 + 4}{12} = \\frac{8}{12}\\), so \\(R_p = 1.5\\ \\Omega\\). Total resistance \\(= 36 + 1.5 = 37.5\\ \\Omega\\).\n\n**EMF.** Going round the loop, the 25 V cell pushes current clockwise (out of its + terminal, up the left side and through the 36 \\(\\Omega\\)). That current then enters the 10 V cell at its + terminal, so the 10 V cell opposes it. Net EMF \\(= 25 - 10 = 15\\) V.\n\nCurrent \\(I = \\frac{15}{37.5} = \\frac{2}{5}\\) A. Option (D), \\(\\frac{70}{75} = \\frac{35}{37.5}\\), is what you get by wrongly adding the two cells. So the answer is option (A).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "8",
+      "label": "C",
+      "value": "Frequency.",
+      "working": "The product \\(RC\\) is the **time constant** of an RC circuit, so it has the dimension of time: \\(R = \\frac{V}{I}\\) and \\(C = \\frac{Q}{V}\\), so \\(RC = \\frac{Q}{I}\\), which is charge divided by charge per second, that is, seconds.\n\nTherefore \\(\\frac{1}{RC}\\) has the dimension of \\(\\frac{1}{\\text{time}}\\), which is the dimension of frequency, \\([T^{-1}]\\). So the answer is option (C).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "9",
+      "label": "A",
+      "value": "an AND Gate.",
+      "working": "Both diodes have their anode at the common output node and their cathode at an input. The node is pulled up to +10 V through the 100 \\(\\Omega\\) resistor.\n\n- If an input is at 0 V, its diode has anode (pulled towards 10 V) above cathode (0 V), so it is forward biased and acts as a short. The output is tied to that input: \\(V_0 = 0\\).\n- Only when both P and Q are at 10 V are both diodes without forward bias (no voltage across them), no current flows in the resistor and \\(V_0 = 10\\) V.\n\n| P | Q | \\(V_0\\) |\n|---|---|---|\n| 0 | 0 | 0 |\n| 0 | 10 V | 0 |\n| 10 V | 0 | 0 |\n| 10 V | 10 V | 10 V |\n\nThe output is high only when both inputs are high, which is the truth table of an AND gate. So the answer is option (A).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "10",
+      "label": "C",
+      "value": "6 km",
+      "working": "The escape speed from a body of mass \\(M\\) and radius \\(R\\) is \\(v_e = \\sqrt{\\frac{2GM}{R}}\\). Setting \\(v_e = c\\) gives \\(R = \\frac{2GM}{c^2}\\).\n\nHere \\(M = 2 \\times 2 \\times 10^{30} = 4 \\times 10^{30}\\) kg, so\n\n\\(R = \\frac{2 \\times 7 \\times 10^{-11} \\times 4 \\times 10^{30}}{(3 \\times 10^8)^2} = \\frac{56 \\times 10^{19}}{9 \\times 10^{16}} \\approx 6.2 \\times 10^{3}\\) m.\n\nThat is about 6 km. So the answer is option (C).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "11",
+      "label": "B",
+      "value": "\\(t_A = t_B > t_C\\)",
+      "working": "As a magnet falls towards and then through the copper loop, the magnetic flux through the loop changes, so a current is induced in it. By **Lenz's law** this current always opposes the change that causes it: it repels the magnet as it approaches and attracts it back as it leaves. Either way the force on the magnet acts upward, so the magnet falls with acceleration less than \\(g\\).\n\nMagnets A and B are identical except that they are turned upside down. Reversing the poles only reverses the direction of the induced current; the retarding force has the same size and is still upward. So A and B take the same time, \\(t_A = t_B\\).\n\nBar C is not magnetic, so no current is induced and it falls freely with acceleration \\(g\\), reaching the ground first. Hence \\(t_A = t_B > t_C\\). So the answer is option (B).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "12",
+      "label": "D",
+      "value": "2/3",
+      "working": "For a metal, \\(\\rho = \\frac{1}{n e \\mu_e}\\), where \\(\\mu_e\\) is the electron mobility. The number of free electrons per unit volume \\(n\\) hardly changes with temperature, so the mobility is inversely proportional to the resistivity: \\(\\mu_e \\propto \\frac{1}{\\rho}\\).\n\nUsing \\(\\rho_2 = \\rho_1[1 + \\alpha(T_2 - T_1)]\\): \\(\\frac{\\rho_2}{\\rho_1} = 1 + 5 \\times 10^{-4} \\times 1000 = 1.5 = \\frac{3}{2}\\).\n\nSo the mobility changes by the factor \\(\\frac{\\mu_2}{\\mu_1} = \\frac{\\rho_1}{\\rho_2} = \\frac{2}{3}\\) (it falls, because the ions vibrate more and scatter electrons more often). Option (A) is the factor for the resistivity, not the mobility. So the answer is option (D).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "13",
+      "label": "C",
+      "value": "\\(10^9\\) Hz",
+      "working": "The output is taken across \\(R\\) in a series RC circuit, so\n\n\\(\\frac{V_{out}}{V_{in}} = \\frac{R}{\\sqrt{R^2 + X_C^2}}\\), where \\(X_C = \\frac{1}{\\omega C}\\).\n\nThis equals \\(\\frac{1}{\\sqrt{2}}\\) when \\(X_C = R\\), that is \\(\\omega = \\frac{1}{RC}\\).\n\n\\(\\omega = \\frac{1}{1000 \\times \\frac{1}{6} \\times 10^{-12}} = 6 \\times 10^{9}\\) rad/s, so \\(f = \\frac{\\omega}{2\\pi} = \\frac{6 \\times 10^9}{6.28} \\approx 0.96 \\times 10^9\\) Hz, which is about \\(10^9\\) Hz. So the answer is option (C).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "14",
+      "label": "B",
+      "value": "Speed of wave propagation in the +ve \\(x\\)-direction is \\(4\\pi\\) cm/s.",
+      "working": "Compare \\(y = 3.0\\cos(\\pi x - 4\\pi t)\\) with \\(y = A\\cos(kx - \\omega t)\\): \\(A = 3\\) cm, \\(k = \\pi\\) cm\\(^{-1}\\), \\(\\omega = 4\\pi\\) rad/s. The minus sign between the terms means the wave moves in the +\\(x\\) direction.\n\n- Wave speed \\(v = \\frac{\\omega}{k} = \\frac{4\\pi}{\\pi} = 4\\) cm/s, not \\(4\\pi\\) cm/s. So statement (B) is wrong.\n- Transverse velocity \\(\\frac{\\partial y}{\\partial t} = 12\\pi\\sin(\\pi x - 4\\pi t)\\), so its maximum is \\(A\\omega = 12\\pi\\) cm/s. At \\(t = 0\\), \\(x = 0.25\\) cm it is \\(12\\pi\\sin\\frac{\\pi}{4} = 6\\sqrt{2}\\pi\\) cm/s, so (C) is correct.\n- Maximum transverse acceleration \\(A\\omega^2 = 3 \\times 16\\pi^2 = 48\\pi^2\\) cm/s\\(^2\\), so (D) is correct.\n- Wavelength \\(\\lambda = \\frac{2\\pi}{k} = 2\\) cm \\(= 0.02\\) m.\n\nSo the answer is option (B).\n\nNote: as printed, option (A) gives the wavelength as 0.2 m, but \\(\\lambda = 2\\) cm \\(= 0.02\\) m, so (A) is also a wrong statement. The question expects one answer; (B) is the intended wrong statement (the classic slip of forgetting to divide \\(\\omega\\) by \\(k\\)), and the 0.2 m in (A) looks like a misprint of 0.02 m.",
+      "difficulty": "Moderate",
+      "confidence": "LOW",
+      "flag": "Two wrong statements as printed: (A) says wavelength 0.2 m but k = pi per cm gives 2 cm = 0.02 m; (B) says wave speed 4 pi cm/s but omega/k = 4 cm/s. Chose (B) as the intended answer, assuming (A)'s 0.2 m is a misprint of 0.02 m; (A) is equally defensible as printed."
+    },
+    {
+      "ref": "15",
+      "label": "B",
+      "value": "Electron moves along trajectory C with a maximum horizontal displacement given by \\((m_e v^2 \\sin 2\\theta)/eE\\).",
+      "working": "The field \\(E\\) points down, and the electron is negatively charged, so the force on it is \\(eE\\) **upward**, towards the top plate. Its acceleration is \\(a = \\frac{eE}{m_e}\\) upward and there is no horizontal force.\n\nThe electron starts moving down with vertical speed \\(v\\sin\\theta\\), slows, stops and is pushed back up to the top plate, like a projectile thrown upside down. So it follows trajectory **C** (not A, which needs no force, and not B, which needs the vertical motion to stop for good).\n\nTime of flight: \\(t = \\frac{2v\\sin\\theta}{a} = \\frac{2m_e v\\sin\\theta}{eE}\\), so option (A)'s \\(\\sin^2\\theta\\) is wrong.\n\nHorizontal displacement: \\(x = v\\cos\\theta \\cdot t = \\frac{2m_e v^2\\sin\\theta\\cos\\theta}{eE} = \\frac{m_e v^2\\sin 2\\theta}{eE}\\). So the answer is option (B).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    }
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "derivedBy": "Claude Opus 5.5 subagent, independent hand solve with Python numeric checks",
+  "answers": [
+    {
+      "ref": "1",
+      "label": "B",
+      "value": "\\(8/13\\)",
+      "working": "We are told the card is black, so the sample space shrinks to the 26 black cards (13 Spades and 13 Clubs). This is a **conditional probability** question.\n\nCount the black cards that are a face card or a Spade. All 13 Spades count (this already includes the King, Queen and Jack of Spades). Among the Clubs, only the 3 face cards count. That gives \\(13 + 3 = 16\\) favourable cards.\n\nSo the probability is \\(\\frac{16}{26} = \\frac{8}{13}\\). A common slip is to add all 6 black face cards to the 13 Spades and get \\(\\frac{19}{26}\\), which counts the 3 Spade face cards twice.\n\nSo the answer is option (B).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "2",
+      "label": "C",
+      "value": "\\(-2^{33}\\)",
+      "working": "The roots of \\(x^2 + x + 1 = 0\\) are the complex cube roots of unity, so \\(\\omega^3 = 1\\) and \\(1 + \\omega + \\omega^2 = 0\\). Also \\(\\frac{1}{\\omega} = \\omega^2\\).\n\nLook at one factor \\(\\omega^k + \\omega^{-k}\\). If \\(k\\) is a multiple of 3, then \\(\\omega^k = 1\\) and the factor is \\(1 + 1 = 2\\). If \\(k\\) is not a multiple of 3, then \\(\\omega^k\\) and \\(\\omega^{-k}\\) are \\(\\omega\\) and \\(\\omega^2\\) in some order, so the factor is \\(\\omega + \\omega^2 = -1\\).\n\nFrom 1 to 100 there are 33 multiples of 3 and \\(100 - 33 = 67\\) other numbers. So the product is \\(2^{33} \\cdot (-1)^{67} = -2^{33}\\).\n\nSo the answer is option (C).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "3",
+      "label": "D",
+      "value": "55",
+      "working": "The condition \\(\\frac{d^3 f}{dx^3} = \\frac{d^5 f}{dx^5}\\) holds for every \\(x\\). Put \\(g = f'''\\), which is a polynomial. Then \\(g = g''\\).\n\nIf \\(g\\) were a nonzero polynomial of degree \\(m\\), then \\(g''\\) would have degree less than \\(m\\) (or be zero), so the two sides could not be equal. Hence \\(g = 0\\), that is \\(f''' = 0\\), and \\(f\\) has degree at most 2: \\(f(x) = a_2 x^2 + a_1 x + a_0\\).\n\nNow use the values at 0: \\(f(0) = a_0 = 0\\), \\(f'(0) = a_1 = 1\\), \\(f''(0) = 2a_2 = 4\\), so \\(a_2 = 2\\). Thus \\(f(x) = 2x^2 + x\\).\n\nThen \\(f(5) = 2 \\cdot 25 + 5 = 55\\).\n\nSo the answer is option (D).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "4",
+      "label": "C",
+      "value": "Infinitely many elements",
+      "working": "A **unit vector** in the \\(XY\\)-plane is any vector \\(x\\hat{i} + y\\hat{j}\\) with \\(x^2 + y^2 = 1\\). Every such vector can be written as \\(\\cos\\theta\\, \\hat{i} + \\sin\\theta\\, \\hat{j}\\) for some angle \\(\\theta\\) in \\([0, 2\\pi)\\), and different angles give different vectors.\n\nSince there are infinitely many angles, there are infinitely many unit vectors. The answer 4 is tempting because \\(\\pm\\hat{i}\\) and \\(\\pm\\hat{j}\\) are the obvious ones, but vectors such as \\(\\frac{1}{\\sqrt{2}}\\hat{i} + \\frac{1}{\\sqrt{2}}\\hat{j}\\) are unit vectors too.\n\nSo the answer is option (C).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "5",
+      "label": "A",
+      "value": "\\(17.298^\\circ\\mathrm{C}\\)",
+      "working": "An increase of 1% per year is **compound growth**: each year the temperature is multiplied by \\(1.01\\). From 2020 to 2035 is 15 years.\n\nSo the temperature in 2035 is \\(14.9 \\times (1.01)^{15}\\). Now \\((1.01)^{15} \\approx 1.16097\\), so the temperature is about \\(14.9 \\times 1.16097 \\approx 17.298^\\circ\\mathrm{C}\\).\n\nOption (D) is what you get with simple growth (\\(14.9 \\times 1.15 = 17.135\\)), which forgets that each year's 1% is taken on the new, larger value.\n\nSo the answer is option (A).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "6",
+      "label": "C",
+      "value": "\\(R\\) is reflexive and symmetric but not transitive",
+      "working": "**Reflexive:** every matrix commutes with itself, \\(AA = AA\\), so \\((A, A) \\in R\\).\n\n**Symmetric:** if \\(AB = BA\\) then of course \\(BA = AB\\), so \\((A, B) \\in R\\) gives \\((B, A) \\in R\\).\n\n**Not transitive:** the identity matrix \\(I\\) commutes with every matrix. Take \\(A = \\begin{bmatrix} 1 & 0 \\\\ 0 & 0 \\end{bmatrix}\\) and \\(C = \\begin{bmatrix} 0 & 1 \\\\ 0 & 0 \\end{bmatrix}\\). Then \\((A, I) \\in R\\) and \\((I, C) \\in R\\). But \\(AC = \\begin{bmatrix} 0 & 1 \\\\ 0 & 0 \\end{bmatrix}\\) while \\(CA = \\begin{bmatrix} 0 & 0 \\\\ 0 & 0 \\end{bmatrix}\\), so \\((A, C) \\notin R\\).\n\nSo the answer is option (C).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "7",
+      "label": "A",
+      "value": "\\(\\frac{1}{6}\\)",
+      "working": "On \\(0 \\le x \\le 1\\) we have \\(x^{n+1} \\le x^n\\), and the two curves meet only at \\(x = 0\\) and \\(x = 1\\). So the area between them is\n\n\\(A_n = \\int_0^1 (x^n - x^{n+1})\\, dx = \\frac{1}{n+1} - \\frac{1}{n+2} = \\frac{1}{(n+1)(n+2)}\\).\n\nThis decreases as \\(n\\) grows, so it is largest for the smallest natural number, \\(n = 1\\): \\(A_1 = \\frac{1}{2 \\cdot 3} = \\frac{1}{6}\\). (This is the area between \\(y = x\\) and \\(y = x^2\\).)\n\nSo the answer is option (A).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "8",
+      "label": "A",
+      "value": "2",
+      "working": "Since \\(F\\) is an antiderivative of the continuous function \\(f\\), the **Fundamental Theorem of Calculus** gives\n\n\\(\\int_0^1 f(x)\\, dx = F(1) - F(0)\\).\n\nSo \\(1 = F(1) - 1\\), which gives \\(F(1) = 2\\).\n\nSo the answer is option (A).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "9",
+      "label": "B",
+      "value": "Local maxima at \\(x = a\\) if \\(a > 0\\)",
+      "working": "Write \\(h(x) = 2a^2 x - a x^2\\), so \\(g(x) = f(h(x))\\). By the chain rule,\n\n\\(g'(x) = f'(h(x)) \\cdot h'(x) = f'(h(x)) \\cdot 2a(a - x)\\).\n\nBecause \\(f'\\) is always positive, \\(g'(x)\\) has the same sign as \\(2a(a - x)\\), and \\(g'(a) = 0\\).\n\nIf \\(a > 0\\): for \\(x < a\\), \\(2a(a - x) > 0\\), and for \\(x > a\\), \\(2a(a - x) < 0\\). So \\(g'\\) changes from positive to negative at \\(x = a\\): a **local maximum**.\n\nIf \\(a < 0\\): the factor \\(2a\\) is negative, so the signs flip and \\(x = a\\) is a local minimum. That rules out options (A) and (C), and since \\(g'\\) changes sign at \\(x = a\\), it is an extremum, not a point of inflection, which rules out (D).\n\nSo the answer is option (B).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "10",
+      "label": "C",
+      "value": "1",
+      "working": "First find \\(\\det A\\). Expand along the second column, whose only nonzero entry is the 1 in row 2, column 2 (cofactor sign \\(+\\)):\n\n\\(\\det A = 1 \\cdot \\begin{vmatrix} \\cos\\theta & -\\sin\\theta \\\\ \\sin\\theta & \\cos\\theta \\end{vmatrix} = \\cos^2\\theta + \\sin^2\\theta = 1\\).\n\nSince \\(\\det(A^k) = (\\det A)^k\\), we get \\(\\det(A^k) = 1^k = 1\\) for every natural number \\(k\\).\n\nSo the answer is option (C).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "11",
+      "label": "A",
+      "value": "0, 2",
+      "working": "A nonzero vector perpendicular to all three of \\(\\vec{a}, \\vec{b}, \\vec{c}\\) exists exactly when the three vectors lie in one plane, that is, when they are **coplanar**. This happens when their scalar triple product is zero:\n\n\\(\\begin{vmatrix} 1 & x & 2 \\\\ 1 & 2 & x \\\\ 2 & 1 & 3 \\end{vmatrix} = 0\\).\n\nExpanding along the first row: \\(1(6 - x) - x(3 - 2x) + 2(1 - 4) = 6 - x - 3x + 2x^2 - 6 = 2x^2 - 4x\\).\n\nSo \\(2x(x - 2) = 0\\), giving \\(x = 0\\) or \\(x = 2\\). (If the three vectors were not coplanar, they would span all of space and only the zero vector would be perpendicular to all of them.)\n\nSo the answer is option (A).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "12",
+      "label": "C",
+      "value": "\\(\\frac{3\\pi}{4}\\)",
+      "working": "The tangent at \\(P = (1, 0)\\) is \\(x = 1\\). The tangent at \\(Q = \\left(\\frac{1}{\\sqrt{2}}, \\frac{1}{\\sqrt{2}}\\right)\\) is \\(\\frac{x}{\\sqrt{2}} + \\frac{y}{\\sqrt{2}} = 1\\), that is \\(x + y = \\sqrt{2}\\). They meet at \\(R = (1, \\sqrt{2} - 1)\\).\n\nAn easy way to get the angle: in the quadrilateral \\(OPRQ\\) (\\(O\\) the centre), the angles at \\(P\\) and \\(Q\\) are right angles because a tangent is perpendicular to the radius. The angle at \\(O\\) is \\(\\angle POQ = \\frac{\\pi}{4}\\), since \\(OQ\\) makes \\(45^\\circ\\) with the \\(x\\)-axis. The angles of a quadrilateral add to \\(2\\pi\\), so\n\n\\(\\angle PRQ = 2\\pi - \\frac{\\pi}{2} - \\frac{\\pi}{2} - \\frac{\\pi}{4} = \\frac{3\\pi}{4}\\).\n\nThe tempting answer \\(\\frac{\\pi}{4}\\) is the acute angle between the two tangent lines, but \\(\\angle PRQ\\) is the angle of the triangle at \\(R\\) facing the circle, which is obtuse.\n\nSo the answer is option (C).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "13",
+      "label": "B",
+      "value": "Increasing on the interval \\((0, 2)\\)",
+      "working": "Differentiate: \\(f'(x) = 6x^2 - 30x + 36 = 6(x^2 - 5x + 6) = 6(x - 2)(x - 3)\\).\n\nSo \\(f'(x) > 0\\) for \\(x < 2\\) and for \\(x > 3\\), and \\(f'(x) < 0\\) for \\(2 < x < 3\\). Hence \\(f\\) is increasing on \\((-\\infty, 2)\\), decreasing on \\((2, 3)\\) and increasing on \\((3, \\infty)\\).\n\nCheck the options: on \\((-3, 0)\\) it is increasing, not decreasing; on \\((0, 2)\\) it is increasing (true); on \\((2, 3)\\) it is decreasing, not increasing; on \\((3, \\infty)\\) it is increasing, not decreasing.\n\nSo the answer is option (B).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "14",
+      "label": "C",
+      "value": "\\(\\log\\left(\\frac{100^{99}}{99!}\\right)\\)",
+      "working": "On each interval \\([k, k+1)\\), \\([x] = k\\). So split the integral at the integers from 1 to 100:\n\n\\(\\int_1^{100} \\frac{[x]}{x}\\, dx = \\sum_{k=1}^{99} k \\int_k^{k+1} \\frac{dx}{x} = \\sum_{k=1}^{99} k\\left(\\log(k+1) - \\log k\\right)\\).\n\nCollect the coefficient of each \\(\\log m\\). The term \\(\\log 100\\) appears only once, with coefficient 99. For \\(2 \\le m \\le 99\\), \\(\\log m\\) appears with \\(+(m-1)\\) from \\(k = m - 1\\) and \\(-m\\) from \\(k = m\\), so its coefficient is \\(-1\\). And \\(\\log 1 = 0\\).\n\nSo the sum is \\(99\\log 100 - (\\log 2 + \\log 3 + \\cdots + \\log 99) = 99\\log 100 - \\log(99!) = \\log\\left(\\frac{100^{99}}{99!}\\right)\\).\n\nSo the answer is option (C).",
+      "difficulty": "Hard",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "15",
+      "label": "B",
+      "value": "\\(y'' - 2y' + y = 0\\)",
+      "working": "We have two constants, so differentiate twice and eliminate them. Write \\(y e^{-x} = \\alpha x + \\beta\\).\n\nDifferentiate once: \\((y' - y)e^{-x} = \\alpha\\).\n\nDifferentiate again: the right side is constant, so its derivative is 0, and \\((y'' - y' - y' + y)e^{-x} = 0\\). Since \\(e^{-x} \\neq 0\\), this gives \\(y'' - 2y' + y = 0\\).\n\nCheck with \\(y = x e^x\\): \\(y' = (x + 1)e^x\\), \\(y'' = (x + 2)e^x\\), and \\((x + 2) - 2(x + 1) + x = 0\\). It works.\n\nSo the answer is option (B).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    }
+  ]
+}

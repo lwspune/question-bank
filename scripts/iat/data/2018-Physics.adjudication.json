@@ -1,0 +1,26 @@
+{
+  "adjudications": [
+    {
+      "ref": "5",
+      "why": "Both solvers: C. As drawn, the 6 V cell and R1 form a loop touching the rest only at the middle wire, so strictly the current in R3 is about 0.51 A, not an option; 0.84 A comes out if I1 = 0.75 A is taken to feed the junction. Defective as printed (no option right as drawn): notice, grace.",
+      "notice": "As drawn, the top loop meets the rest of the circuit at a single point, so strictly the current through \\(R_3\\) is about 0.51 A, which is not an option. Option (C), 0.84 A, is what the setter's junction rule \\(I_3 = I_1 + I_2 + I_4\\) gives, and is taken as the intended answer. IISER published no key for 2018. In a PYQ Vault mock this question gives everyone its marks.",
+      "grace": true,
+      "solution": "In all three lower branches the long (positive) plate of the cell faces up, towards the middle wire. Call the potential of the middle wire \\(V\\), taking the bottom wire as 0.\n\nThe top loop (6 V cell and \\(R_1\\)) is joined to the rest of the circuit only through the middle wire, so its own current is \\(I_1 = \\frac{6}{8} = 0.75\\ \\mathrm{A}\\). This current goes round the top loop and comes back into the same wire. So 0.75 A is not the current in \\(R_3\\).\n\nFor the lower branches: \\(I_2 = \\frac{10 - V}{10}\\) (up), \\(I_4 = \\frac{6 - V}{6}\\) (up) and \\(I_3 = \\frac{V - 3}{5}\\) (down).\n\nThe answer offered, 0.84 A, comes from writing the junction rule as \\(I_3 = I_1 + I_2 + I_4\\) with the arrows as drawn: \\(\\frac{V-3}{5} = 0.75 + \\frac{10-V}{10} + \\frac{6-V}{6}\\), which gives \\(V \\approx 7.18\\ \\mathrm{V}\\) and \\(I_3 = \\frac{7.18 - 3}{5} \\approx 0.84\\ \\mathrm{A}\\). So the answer is option (C)."
+    },
+    {
+      "ref": "6",
+      "answer": "D",
+      "why": "Solvers split D / B (both LOW), and both showed no option is correct: with E along x and travel along z, B must be along +/- y. Transcription checked against the scan (p09). Kept D (the transverse-wave reading); defective as printed: notice, grace.",
+      "notice": "As printed, no option is correct: with the wave travelling along \\(z\\) and \\(\\vec{E}\\) along \\(x\\), \\(\\vec{B}\\) must point along \\(\\pm\\hat{y}\\). Option (D) is perpendicular to the direction of travel but not to \\(\\vec{E}\\); option (B) is perpendicular to \\(\\vec{E}\\) but not to the direction of travel. Option (D) is shown as the answer. IISER published no key for 2018. In a PYQ Vault mock this question gives everyone its marks.",
+      "grace": true,
+      "solution": "An electromagnetic wave is **transverse**: the magnetic field has no component along the direction of travel. The wave travels along \\(z\\), so an acceptable \\(\\mathbf{B}\\) must have no \\(\\hat{z}\\) part.\n\nOptions (A), (B) and (C) all contain \\(\\hat{z}\\), so they are ruled out. Only \\(\\frac{1}{\\sqrt{2}}(\\hat{x} + \\hat{y})\\) lies in the \\(xy\\)-plane. So the answer is option (D)."
+    },
+    {
+      "ref": "12",
+      "why": "Both solvers: C. 'Second and fourth excited states' strictly means n = 3 and n = 5 (ratio 1.08, not an option); 1.25 is the ratio for n = 2 and n = 4. Defective as printed: notice, grace.",
+      "notice": "As printed, no option is correct: the second and fourth excited states are \\(n = 3\\) and \\(n = 5\\), which give a ratio of about 1.08. Option (C), 1.25, is the ratio for \\(n = 2\\) and \\(n = 4\\), which the setter evidently meant. IISER published no key for 2018. In a PYQ Vault mock this question gives everyone its marks.",
+      "grace": true,
+      "solution": "For hydrogen, the photon that takes the atom from \\(n = 1\\) to level \\(n\\) has \\(\\frac{1}{\\lambda} = R\\left(1 - \\frac{1}{n^2}\\right)\\).\n\nThe options are built on the levels \\(n = 2\\) and \\(n = 4\\):\n\n\\(\\frac{\\lambda_2}{\\lambda_4} = \\frac{1 - \\frac{1}{16}}{1 - \\frac{1}{4}} = \\frac{15/16}{3/4} = \\frac{5}{4} = 1.25\\).\n\nThe ratio is more than 1 because a smaller jump needs less energy, so a longer wavelength. So the answer is option (C)."
+    }
+  ]
+}

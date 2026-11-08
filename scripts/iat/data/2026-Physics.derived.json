@@ -1,0 +1,128 @@
+{
+  "derivedBy": "Claude Opus 5.5 subagent, independent solve of IAT 2026 Physics from the question text and figures only",
+  "answers": [
+    {
+      "ref": "1",
+      "label": "A",
+      "value": "If \\(\\ell\\) increases, \\(T\\) decreases.",
+      "working": "Let the spring-cube system have angular frequency \\(\\omega = \\sqrt{k/m}\\) and natural period \\(T_0 = 2\\pi/\\omega\\). Follow one full cycle.\n\n1. The cube is released from rest at compression \\(\\ell\\). It takes a quarter period, \\(T_0/4\\), to reach the equilibrium position, where its speed is \\(v = \\omega \\ell\\).\n\n2. There it hits the sphere. For an **elastic collision between equal masses** the velocities are exchanged: the cube stops and the sphere moves off to the right with speed \\(v\\).\n\n3. The sphere crosses the gap \\(D\\) to the right wall, bounces back elastically and returns to the cube. This takes \\(2D/v\\). The cube is still at rest at equilibrium (the spring is unstretched, so no force acts on it).\n\n4. The second collision again exchanges velocities: the sphere stops where it started and the cube moves left with speed \\(v\\). It takes another \\(T_0/4\\) to come to rest at compression \\(\\ell\\), which is exactly the starting configuration.\n\nSo \\(T = \\frac{T_0}{2} + \\frac{2D}{\\omega \\ell}\\). The first term does not depend on \\(\\ell\\), but the second term gets smaller as \\(\\ell\\) grows, because a larger compression gives the sphere a larger speed. Hence \\(T\\) decreases when \\(\\ell\\) increases (and the sphere clearly does move). So the answer is option (A).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "2",
+      "label": "A",
+      "value": "20 cm",
+      "working": "The lens receives light from the object in two ways: **directly**, and **after reflection from the mirror**. Each beam gives one image through the lens. For the two lens images to be at the same place, the two \"objects\" seen by the lens must be at the same place. So the mirror's image of the object must lie exactly where the object is.\n\nA concave mirror forms a real image at the object's own position only when the object is at the **centre of curvature**, \\(R = 2f = 2 \\times 10 = 20\\) cm from the mirror. That image is real, the same size and **inverted**, so the two lens images are also inverted with respect to each other, as required. The point 20 cm from the mirror lies between \\(F_1\\) (10 cm) and \\(F_2\\) (45 cm), as the question demands.\n\nCheck: the object is \\(50 - 20 = 30\\) cm from the lens. With \\(\\frac{1}{v} - \\frac{1}{u} = \\frac{1}{f}\\), \\(\\frac{1}{v} = \\frac{1}{5} - \\frac{1}{30} = \\frac{1}{6}\\), so both images form 6 cm behind the lens, and they are real. So the answer is option (A).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "3",
+      "label": "D",
+      "value": "\\(q\\) is positive and \\(\\hat{\\mathbf{n}} = \\hat{\\mathbf{z}}\\)",
+      "working": "In a uniform field the bob feels a constant extra force \\(q|E|\\hat{\\mathbf{n}}\\), so it behaves like a pendulum in an **effective gravity** \\(\\mathbf{g}_{\\text{eff}} = -g\\hat{\\mathbf{z}} + \\frac{q|E|}{m}\\hat{\\mathbf{n}}\\), with period \\(T = 2\\pi\\sqrt{L/|\\mathbf{g}_{\\text{eff}}|}\\). The period decreases only if \\(|\\mathbf{g}_{\\text{eff}}| > g\\). Write \\(a = |q||E|/m\\).\n\n(A) \\(q > 0\\), \\(\\hat{\\mathbf{n}} = -\\hat{\\mathbf{z}}\\): the force is downward, \\(|\\mathbf{g}_{\\text{eff}}| = g + a > g\\). Possible.\n\n(B) \\(q > 0\\), \\(\\hat{\\mathbf{n}} \\cdot \\hat{\\mathbf{z}} = -\\frac{1}{\\sqrt{2}}\\): \\(|\\mathbf{g}_{\\text{eff}}|^2 = g^2 + a^2 + \\sqrt{2}\\,g a > g^2\\). Possible.\n\n(C) \\(q < 0\\), \\(\\hat{\\mathbf{n}} = \\hat{\\mathbf{z}}\\): the force \\(q|E|\\hat{\\mathbf{z}}\\) points down, so again \\(|\\mathbf{g}_{\\text{eff}}| = g + a\\). Possible.\n\n(D) \\(q > 0\\), \\(\\hat{\\mathbf{n}} = \\hat{\\mathbf{z}}\\): the force points **up** and opposes gravity, \\(|\\mathbf{g}_{\\text{eff}}| = |g - a|\\). For an ordinary hanging pendulum this is smaller than \\(g\\), so the period would increase, not decrease. This is the statement that does not fit. So the answer is option (D).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH",
+      "flag": "Strictly, (D) could also shorten the period if \\(qE > 2mg\\) (the pendulum would then hang upside down); the intended reading is the ordinary hanging pendulum, where (D) is the only wrong statement."
+    },
+    {
+      "ref": "4",
+      "label": "B",
+      "value": "\\(\\sqrt{\\frac{m_1}{m_2}}\\)",
+      "working": "The force \\(qE\\) is the same for both masses, so the acceleration is \\(a = \\frac{qE}{m}\\).\n\nStarting from rest, \\(d = \\frac{1}{2} a t^2\\), so \\(t = \\sqrt{\\frac{2d}{a}} = \\sqrt{\\frac{2dm}{qE}}\\). The time is proportional to \\(\\sqrt{m}\\).\n\nHence \\(\\frac{t_1}{t_2} = \\sqrt{\\frac{m_1}{m_2}}\\). A heavier particle accelerates less and takes longer, as expected. So the answer is option (B).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "5",
+      "label": "D",
+      "value": "\\(\\left[1 - \\left(1 - \\frac{\\rho g d}{B}\\right)^{1/3}\\right]\\)",
+      "working": "At depth \\(d\\) the extra pressure on the jellyfish is \\(\\Delta P = \\rho g d\\). By the definition of **bulk modulus**, \\(B = -\\frac{\\Delta P}{\\Delta V / V}\\), so the fractional change in volume is \\(\\frac{\\Delta V}{V} = -\\frac{\\rho g d}{B}\\).\n\nThe new volume is therefore \\(V' = V\\left(1 - \\frac{\\rho g d}{B}\\right)\\). Since \\(V \\propto R^3\\), the new radius is \\(R' = R\\left(1 - \\frac{\\rho g d}{B}\\right)^{1/3}\\).\n\nThe reduction is \\(\\Delta R = R - R'\\), so \\(\\frac{\\Delta R}{R} = 1 - \\left(1 - \\frac{\\rho g d}{B}\\right)^{1/3}\\). This is positive, as it must be (for small \\(\\rho g d / B\\) it is about \\(\\frac{\\rho g d}{3B}\\)). Options (A) and (B) have a plus sign inside the bracket, which would describe expansion. So the answer is option (D).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "6",
+      "label": "B",
+      "value": "\\(T\\)",
+      "working": "For a circular orbit under gravity, Kepler's third law gives \\(T^2 = \\frac{4\\pi^2 r^3}{G M}\\), where \\(M\\) is the star's mass (more exactly the total mass \\(M + m\\)).\n\nWith the density unchanged, mass scales as the cube of the radius: halving the radii makes each mass \\(\\frac{1}{8}\\) of its old value. The orbital radius is also halved, so \\(r^3\\) becomes \\(\\frac{1}{8}\\) of its old value.\n\nThus \\(\\frac{r^3}{M}\\) is unchanged, and so is \\(T\\). So the answer is option (B).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "7",
+      "label": "A",
+      "value": "\\(\\frac{1}{\\sqrt{2}}(4t - 2t^2)\\)",
+      "working": "Velocity: \\(\\mathbf{v} = \\frac{d\\mathbf{r}}{dt} = \\hat{\\mathbf{i}} + 4t\\,\\hat{\\mathbf{k}}\\).\n\nAngular momentum \\(\\mathbf{L} = m\\,\\mathbf{r} \\times \\mathbf{v}\\) with \\(m = 1\\) kg, \\(\\mathbf{r} = (t, 1, 2t^2)\\), \\(\\mathbf{v} = (1, 0, 4t)\\):\n\n\\(L_x = (1)(4t) - (2t^2)(0) = 4t\\), \\(L_y = (2t^2)(1) - (t)(4t) = -2t^2\\), \\(L_z = (t)(0) - (1)(1) = -1\\).\n\nThe component along \\(\\hat{\\mathbf{i}} + \\hat{\\mathbf{j}}\\) uses the unit vector \\(\\frac{1}{\\sqrt{2}}(\\hat{\\mathbf{i}} + \\hat{\\mathbf{j}})\\): \\(\\mathbf{L} \\cdot \\frac{\\hat{\\mathbf{i}} + \\hat{\\mathbf{j}}}{\\sqrt{2}} = \\frac{1}{\\sqrt{2}}(4t - 2t^2)\\). Option (D) forgets to divide by the length \\(\\sqrt{2}\\) of the vector. So the answer is option (A).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "8",
+      "label": "D",
+      "value": "\\(B_{in}\\) decreases, \\(U_{in}\\) decreases.",
+      "working": "As the radius grows, the magnetic flux through the solenoid, \\(\\Phi = B_{in}\\,\\pi R^2\\), would increase. By **Lenz's law** a current is induced in the closed circuit that opposes this increase, so its field inside the solenoid points against \\(\\mathbf{B}\\). Treating the circuit as having negligible resistance, the induced current keeps the flux fixed at its starting value: \\(B_{in}\\,\\pi R^2 = B\\,\\pi R_0^2\\), so \\(B_{in} = B\\frac{R_0^2}{R^2}\\), which **decreases**.\n\nThe magnetic energy inside a length \\(\\ell\\) of the solenoid is \\(U_{in} = \\frac{B_{in}^2}{2\\mu_0}\\,\\pi R^2 \\ell = \\frac{\\Phi^2 \\ell}{2\\mu_0 \\pi R^2}\\). With \\(\\Phi\\) fixed and \\(R\\) growing, \\(U_{in}\\) also **decreases** (as \\(1/R^2\\)).\n\nSo the answer is option (D).",
+      "difficulty": "Moderate",
+      "confidence": "MEDIUM",
+      "flag": "The question does not state the circuit's resistance. The answer assumes it is negligible so the flux stays constant; with a large resistance the induced current would decay and the energy statement would not follow."
+    },
+    {
+      "ref": "9",
+      "label": "A",
+      "value": "\\([\\alpha] = [M^0 L^7 T^{-2}]\\), \\([\\beta] = [M^0 L^0 T^{-1}]\\)",
+      "working": "Every term in the equation must have the dimensions of acceleration, \\([L T^{-2}]\\).\n\nFirst term: \\(\\frac{\\mathbf{x}}{|\\mathbf{x}|^7}\\) has dimensions \\(\\frac{L}{L^7} = L^{-6}\\). So \\([\\alpha] L^{-6} = L T^{-2}\\), giving \\([\\alpha] = [M^0 L^7 T^{-2}]\\).\n\nSecond term: \\(\\frac{d\\mathbf{x}}{dt}\\) is a velocity, \\([L T^{-1}]\\). So \\([\\beta] L T^{-1} = L T^{-2}\\), giving \\([\\beta] = [M^0 L^0 T^{-1}]\\).\n\nSo the answer is option (A).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "10",
+      "label": "D",
+      "value": "\\(1.7\\frac{P}{c}\\)",
+      "working": "A beam of power \\(P\\) carries momentum \\(\\frac{P}{c}\\) per second. The force on the surface equals the momentum it takes from the beam each second.\n\n| Part of beam | Share | Momentum given to surface per second |\n|---|---|---|\n| Absorbed | 10% | \\(0.1\\frac{P}{c}\\) |\n| Reflected | 80% | \\(2 \\times 0.8\\frac{P}{c} = 1.6\\frac{P}{c}\\) |\n| Transmitted | 10% | \\(0\\) |\n\nReflected light reverses its momentum, so it gives twice its momentum to the surface; transmitted light passes through unchanged and gives nothing. Total force \\(= 0.1\\frac{P}{c} + 1.6\\frac{P}{c} = 1.7\\frac{P}{c}\\). So the answer is option (D).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "11",
+      "label": "D",
+      "value": "\\(\\frac{h}{mc}\\left(1 + \\sqrt{1 - \\frac{2\\phi_0}{mc^2}}\\right)^{-1}\\)",
+      "working": "Let the photon wavelength be \\(\\lambda\\). By **Einstein's photoelectric equation** the electron's kinetic energy is \\(K = \\frac{hc}{\\lambda} - \\phi_0\\).\n\nThe electron's de Broglie wavelength is \\(\\frac{h}{p}\\). For it to equal \\(\\lambda\\), the electron's momentum must be \\(p = \\frac{h}{\\lambda}\\), so \\(K = \\frac{p^2}{2m} = \\frac{h^2}{2m\\lambda^2}\\).\n\nEquate the two: \\(\\frac{hc}{\\lambda} - \\phi_0 = \\frac{h^2}{2m\\lambda^2}\\). Put \\(u = \\frac{h}{mc\\lambda}\\) and divide by \\(mc^2\\): \\(u - \\frac{\\phi_0}{mc^2} = \\frac{u^2}{2}\\), that is \\(u^2 - 2u + \\frac{2\\phi_0}{mc^2} = 0\\).\n\nSo \\(u = 1 \\pm \\sqrt{1 - \\frac{2\\phi_0}{mc^2}}\\) and \\(\\lambda = \\frac{h}{mc}\\,\\frac{1}{u}\\). The smallest wavelength comes from the larger root, \\(u = 1 + \\sqrt{1 - \\frac{2\\phi_0}{mc^2}}\\), giving \\(\\lambda = \\frac{h}{mc}\\left(1 + \\sqrt{1 - \\frac{2\\phi_0}{mc^2}}\\right)^{-1}\\). So the answer is option (D).\n\nNote: as printed, this larger root needs the electron to move at about \\(2c\\) (since \\(p = mcu \\approx 2mc\\) when \\(\\phi_0 \\ll mc^2\\)), which the formula \\(K = \\frac{p^2}{2m}\\) cannot describe. Only the other root, \\(\\lambda \\approx \\frac{hc}{\\phi_0}\\) (option A), is physically possible, and a relativistic treatment gives just that one wavelength.",
+      "difficulty": "Hard",
+      "confidence": "MEDIUM",
+      "flag": "Defective as printed. The non-relativistic algebra gives two roots and 'smallest' picks (D), but that root implies electron speed about 2c (p about 2mc), so it is unphysical; the only physical solution (and the only one a relativistic treatment gives) is the other root, option (A). Chose (D) because the question explicitly asks for the smallest wavelength."
+    },
+    {
+      "ref": "12",
+      "label": "C",
+      "value": "\\(\\frac{1}{2}\\)",
+      "working": "The radius of a nucleus depends on its **mass number** \\(A\\) (protons plus neutrons) as \\(R = R_0 A^{1/3}\\).\n\nFirst nucleus: \\(A_1 = 1 + 0 = 1\\). Second nucleus: \\(A_2 = 4 + 4 = 8\\).\n\nSo \\(\\frac{r_1}{r_2} = \\left(\\frac{A_1}{A_2}\\right)^{1/3} = \\left(\\frac{1}{8}\\right)^{1/3} = \\frac{1}{2}\\). So the answer is option (C).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "13",
+      "label": "C",
+      "value": "\\(1 + 2\\frac{M_B}{M_A}\\)",
+      "working": "For ideal gases in the same jar at the same temperature, each partial pressure is proportional to the number of moles (\\(p = \\frac{nRT}{V}\\)), and the total pressure is the sum (**Dalton's law**).\n\nLet the molar mass of \\(B\\) be \\(\\mu\\), so that of \\(A\\) is \\(2\\mu\\). Then \\(n_A = \\frac{M_A}{2\\mu}\\) and \\(n_B = \\frac{M_B}{\\mu}\\).\n\n\\(\\frac{p_{\\text{total}}}{p_A} = \\frac{n_A + n_B}{n_A} = 1 + \\frac{n_B}{n_A} = 1 + \\frac{M_B/\\mu}{M_A/(2\\mu)} = 1 + 2\\frac{M_B}{M_A}\\). So the answer is option (C).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "14",
+      "label": "A",
+      "value": "\\(\\Phi_L > \\Phi_R\\).",
+      "working": "Split the field inside the sphere into the parts due to each sheet. An infinite sheet gives a uniform field of size \\(\\frac{\\sigma}{2\\varepsilon_0}\\), pointing away from it if it is positive.\n\n**Middle sheet**: its field points away from it on both sides, so by symmetry it sends equal outward flux through each hemisphere, half of \\(\\frac{q_{\\text{enc}}}{\\varepsilon_0}\\) each.\n\n**Outer sheets**: inside the sphere the left sheet gives \\(\\frac{\\sigma}{2\\varepsilon_0}\\) to the right, and the right sheet gives \\(\\frac{2\\sigma}{2\\varepsilon_0} = \\frac{\\sigma}{\\varepsilon_0}\\) to the left. Net: a uniform field \\(\\frac{\\sigma}{2\\varepsilon_0}\\) pointing **left**. A uniform field gives zero total flux through a closed surface: it enters through the right hemisphere (negative flux there) and leaves through the left hemisphere (equal positive flux there).\n\nAdding up: \\(\\Phi_L = \\frac{q_{\\text{enc}}}{2\\varepsilon_0} + \\frac{\\sigma}{2\\varepsilon_0}\\pi\\left(\\frac{d}{2}\\right)^2\\) and \\(\\Phi_R = \\frac{q_{\\text{enc}}}{2\\varepsilon_0} - \\frac{\\sigma}{2\\varepsilon_0}\\pi\\left(\\frac{d}{2}\\right)^2\\). Hence \\(\\Phi_L > \\Phi_R\\). So the answer is option (A).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "15",
+      "label": "A",
+      "value": "\\(\\eta_1 + \\eta_2 - \\eta_1\\eta_2\\)",
+      "working": "For the first engine, \\(\\eta_1 = 1 - \\frac{Q_2}{Q_1}\\), so \\(\\frac{Q_2}{Q_1} = 1 - \\eta_1\\). For the second, \\(\\frac{Q_3}{Q_2} = 1 - \\eta_2\\).\n\nThe combination takes in \\(Q_1\\) and finally rejects \\(Q_3\\) (the heat \\(Q_2\\) passes straight through \\(B\\)), so its net work is \\(Q_1 - Q_3\\) and its efficiency is\n\n\\(\\eta = 1 - \\frac{Q_3}{Q_1} = 1 - \\frac{Q_3}{Q_2}\\cdot\\frac{Q_2}{Q_1} = 1 - (1 - \\eta_1)(1 - \\eta_2) = \\eta_1 + \\eta_2 - \\eta_1\\eta_2\\).\n\nSimply adding the efficiencies (option D) is wrong because the second engine works only on the heat the first one rejected, not on \\(Q_1\\). So the answer is option (A).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    }
+  ]
+}

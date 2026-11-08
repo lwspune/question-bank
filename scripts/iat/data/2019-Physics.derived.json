@@ -1,0 +1,128 @@
+{
+  "derivedBy": "Independent solver (Claude Opus 5.5), working from the printed questions and figures only",
+  "answers": [
+    {
+      "ref": "1",
+      "label": "B",
+      "value": "\\(r\\sqrt{-2Em}\\)",
+      "working": "For a circular orbit, gravity supplies the centripetal force: \\(\\dfrac{GMm}{r^2} = \\dfrac{mv^2}{r}\\), so \\(mv^2 = \\dfrac{GMm}{r}\\).\n\nThe kinetic energy is \\(K = \\dfrac{1}{2}mv^2 = \\dfrac{GMm}{2r}\\) and the potential energy is \\(U = -\\dfrac{GMm}{r}\\). So the total energy is \\(E = K + U = -\\dfrac{GMm}{2r} = -K\\). The total energy of a bound orbit is negative, and \\(K = -E\\).\n\nThen \\(\\dfrac{1}{2}mv^2 = -E\\) gives \\(v = \\sqrt{\\dfrac{-2E}{m}}\\), and the angular momentum is \\(L = mvr = mr\\sqrt{\\dfrac{-2E}{m}} = r\\sqrt{-2Em}\\).\n\nOption (A) has \\(\\sqrt{2Em}\\), which would be the square root of a negative number because \\(E < 0\\). So the answer is option (B).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "2",
+      "label": "D",
+      "value": "\\(\\dfrac{Q}{24\\epsilon_\\circ}\\)",
+      "working": "Imagine 8 identical cubes placed together so that the charge \\(Q\\) sits at the centre of the big cube they form. By Gauss's law the total flux out of the big cube is \\(\\dfrac{Q}{\\epsilon_\\circ}\\), and by symmetry each small cube gets one eighth of it: \\(\\dfrac{Q}{8\\epsilon_\\circ}\\).\n\nFor our cube, the three faces that meet at the charge's corner carry **no flux**, because the field lines run along these faces (the field is radial from the corner and lies in each of those planes). So all of \\(\\dfrac{Q}{8\\epsilon_\\circ}\\) leaves through the other three faces, and by symmetry each gets an equal share: \\(\\dfrac{Q}{8\\epsilon_\\circ} \\times \\dfrac{1}{3} = \\dfrac{Q}{24\\epsilon_\\circ}\\).\n\nThe charge is at the bottom corner below D, so the top face ABCD does not touch the charge. It is one of the three far faces, and its flux is \\(\\dfrac{Q}{24\\epsilon_\\circ}\\). So the answer is option (D).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "3",
+      "label": "C",
+      "value": "\\(\\lambda \\propto 1/\\sqrt{T}\\)",
+      "working": "The average kinetic energy of a gas molecule is \\(\\dfrac{3}{2}kT\\). With momentum \\(p\\), the kinetic energy is \\(\\dfrac{p^2}{2m}\\), so \\(\\dfrac{p^2}{2m} = \\dfrac{3}{2}kT\\) and \\(p = \\sqrt{3mkT}\\).\n\nThe de Broglie wavelength is \\(\\lambda = \\dfrac{h}{p} = \\dfrac{h}{\\sqrt{3mkT}}\\). For a fixed mass \\(m\\), this gives \\(\\lambda \\propto \\dfrac{1}{\\sqrt{T}}\\): hotter molecules move faster and have shorter wavelengths. So the answer is option (C).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "4",
+      "label": "B",
+      "value": "\\(\\frac{1}{2}gt^2v_\\circ\\cos\\phi\\)",
+      "working": "Take the point of projection as the origin, \\(x\\) horizontal and \\(y\\) vertical. At time \\(t\\) the position is \\(x = v_\\circ\\cos\\phi\\, t\\), \\(y = v_\\circ\\sin\\phi\\, t - \\dfrac{1}{2}gt^2\\), and the velocity is \\(v_x = v_\\circ\\cos\\phi\\), \\(v_y = v_\\circ\\sin\\phi - gt\\).\n\nFor unit mass, the angular momentum about the origin is \\(L = x v_y - y v_x\\).\n\n\\(L = v_\\circ\\cos\\phi\\, t\\,(v_\\circ\\sin\\phi - gt) - \\left(v_\\circ\\sin\\phi\\, t - \\dfrac{1}{2}gt^2\\right)v_\\circ\\cos\\phi\\)\n\nThe \\(v_\\circ^2\\sin\\phi\\cos\\phi\\, t\\) terms cancel, leaving \\(L = -gt^2v_\\circ\\cos\\phi + \\dfrac{1}{2}gt^2v_\\circ\\cos\\phi = -\\dfrac{1}{2}gt^2v_\\circ\\cos\\phi\\).\n\nA quicker check: the torque of gravity about the origin is \\(g \\times x = g v_\\circ\\cos\\phi\\, t\\), and integrating from 0 to \\(t\\) gives \\(\\dfrac{1}{2}gt^2v_\\circ\\cos\\phi\\). The magnitude is \\(\\dfrac{1}{2}gt^2v_\\circ\\cos\\phi\\). So the answer is option (B).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "5",
+      "label": "D",
+      "value": "\\(B\\) experiences a net clockwise torque.",
+      "working": "Wire A runs parallel to the \\(x\\)-axis, a distance \\(d\\) out along the \\(z\\)-axis, and the long wire B runs along the \\(y\\)-axis. The two wires do not touch: they are perpendicular and skew.\n\nTake a small piece of B at height \\(y\\). The field of A there is \\(\\vec{B} \\propto \\hat{x} \\times (0, y, -d) = (0, d, y)\\), and the force on the piece (current along \\(+\\hat{y}\\)) is \\(\\propto \\hat{y} \\times (0, d, y) = y\\,\\hat{x}\\). So a piece above the origin (\\(y > 0\\)) is pushed along \\(+x\\), and a piece the same distance below (\\(y < 0\\)) is pushed along \\(-x\\) by the same amount.\n\nBecause B is long and extends both ways, these forces cancel in pairs: the **net force is zero**, which rules out options (A) and (C). But the pairs form couples. The top of B is pushed to the right and the bottom to the left, so B turns from \\(+y\\) towards \\(+x\\): a **clockwise** torque as seen in the figure (the torque points along \\(-z\\)). This is the familiar result that two current-carrying wires tend to turn until their currents are parallel and in the same direction. So the answer is option (D).",
+      "difficulty": "Hard",
+      "confidence": "MEDIUM",
+      "flag": "Reads the figure as A lying along x through a point on the z-axis and B as an infinitely long wire along y (the dotted line below the origin taken as B's continuation). If B were only the half above the origin, B would also feel a net force along +x."
+    },
+    {
+      "ref": "6",
+      "label": "A",
+      "value": "\\(\\dfrac{3PV}{2N}\\)",
+      "working": "For an ideal gas, \\(PV = NkT\\), so \\(kT = \\dfrac{PV}{N}\\).\n\nThe average kinetic energy of a molecule is \\(\\dfrac{3}{2}kT = \\dfrac{3PV}{2N}\\). This depends only on the temperature of the gas, so molecules of this gas carry this average energy.\n\nOption (D), \\(\\dfrac{2PV}{3N}\\), is the inverted factor, a common slip. So the answer is option (A).\n\nNote: as printed, the question asks about molecules leaking out through the orifice. Strictly, faster molecules reach the hole more often, so the molecules that escape have a higher average kinetic energy, \\(2kT = \\dfrac{2PV}{N}\\), which is not among the options. The intended answer is the average kinetic energy of the gas, \\(\\dfrac{3PV}{2N}\\).",
+      "difficulty": "Easy",
+      "confidence": "MEDIUM",
+      "flag": "Strictly, molecules effusing through an orifice have mean KE 2kT = 2PV/N (flux-weighted), which is not offered. Answered with the gas's mean KE 3PV/(2N), clearly the intended option."
+    },
+    {
+      "ref": "7",
+      "label": "B",
+      "value": "\\(\\sqrt{\\dfrac{hc^5}{G}}\\)",
+      "working": "Write the dimensions: \\([h] = \\mathrm{ML^2T^{-1}}\\), \\([c] = \\mathrm{LT^{-1}}\\), \\([G] = \\mathrm{M^{-1}L^3T^{-2}}\\), and energy is \\(\\mathrm{ML^2T^{-2}}\\).\n\nCheck option (B): \\(\\dfrac{hc^5}{G}\\) has dimensions \\(\\dfrac{\\mathrm{ML^2T^{-1}} \\cdot \\mathrm{L^5T^{-5}}}{\\mathrm{M^{-1}L^3T^{-2}}} = \\mathrm{M^2L^4T^{-4}}\\). Its square root is \\(\\mathrm{ML^2T^{-2}}\\), which is energy (this is the Planck energy).\n\nOption (C) without the square root has dimensions of energy squared, and options (A) and (D) do not give energy either (option (A) is the Planck length). So the answer is option (B).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "8",
+      "label": "C",
+      "value": "\\(t_L = t_R\\)",
+      "working": "Both springs are attached to the block, so whichever way the block moves, both springs act on it. If the block moves a distance \\(x\\) to the right, the left spring (constant \\(k\\)) is stretched by \\(x\\) and pulls it left with force \\(kx\\), and the right spring (constant \\(4k\\)) is compressed by \\(x\\) and pushes it left with force \\(4kx\\). The restoring force is \\(5kx\\).\n\nIf the block moves left by \\(x\\), the left spring is compressed and the right one stretched, and both push it right: again \\(5kx\\).\n\nSo the restoring force is the same on both sides, the motion is simple harmonic with \\(\\omega = \\sqrt{\\dfrac{5k}{m}}\\), and the block spends half of each period on each side. So \\(t_L = t_R\\).\n\nThe tempting answer \\(t_L = 2t_R\\) assumes only one spring acts on each side, which would be true only if the block merely touched the springs. So the answer is option (C).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "9",
+      "label": "A",
+      "value": "\\(C_\\circ/2\\)",
+      "working": "For two concentric spheres of radii \\(a\\) (inner) and \\(b\\) (outer), the capacitance is \\(C_\\circ = \\dfrac{4\\pi\\epsilon_\\circ ab}{b - a}\\).\n\nHalving both radii: the product \\(ab\\) becomes \\(\\dfrac{ab}{4}\\) and the gap \\(b - a\\) becomes \\(\\dfrac{b - a}{2}\\). So the new capacitance is \\(\\dfrac{4\\pi\\epsilon_\\circ (ab/4)}{(b - a)/2} = \\dfrac{1}{2} \\cdot \\dfrac{4\\pi\\epsilon_\\circ ab}{b - a} = \\dfrac{C_\\circ}{2}\\).\n\nThis matches the general rule that capacitance scales with the size of the conductors: shrinking every length by half halves \\(C\\). So the answer is option (A).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "10",
+      "label": "A",
+      "value": "\\(t \\to \\infty\\)",
+      "working": "Call the corners T (top), L (left), R (right) and B (bottom). The capacitor is between T and B. Find the voltage that would appear across T and B with the capacitor removed.\n\nFrom the figure, the cell on side T-R has its positive (long) plate towards T, so \\(V_T - V_R = V\\). The cell on side L-B has its positive plate towards B, so \\(V_B - V_L = V\\).\n\nAround the outer loop T to L to B to R and back to T, the two cells add, so a current \\(I = \\dfrac{2V}{2R} = \\dfrac{V}{R}\\) flows, passing through the resistor on side T-L from T to L. Then \\(V_T - V_L = IR = V\\).\n\nSo \\(V_T - V_B = (V_T - V_L) - (V_B - V_L) = V - V = 0\\). The two ends of the capacitor are always at the same potential (the circuit is a balanced bridge for the capacitor), so no charge ever collects on it. It never reaches any fraction of a charge, so the time needed is infinite.\n\nSo the answer is option (A).\n\nNote: as printed, \"full capacity\" here is zero charge, so the question really tests whether you notice that the capacitor does not charge at all.",
+      "difficulty": "Hard",
+      "confidence": "MEDIUM",
+      "flag": "Cell polarities read from the plate lengths in the figure (long plate towards top on the top-right cell, towards bottom on the bottom-left cell); with these the Thevenin voltage across C is zero, so C never charges. With the other polarity the time would be (RC/2) ln(1/(1 - 1/sqrt(2 pi))) ~ 0.25RC, which matches no option, supporting this reading."
+    },
+    {
+      "ref": "11",
+      "label": "C",
+      "value": "\\(3.3 \\times 10^6\\) GHz",
+      "working": "The largest photon energy comes from the largest possible drop in energy: an electron falling from \\(n = \\infty\\) (energy 0) to \\(n = 1\\) (energy \\(-13.6\\) eV). The photon energy is 13.6 eV.\n\nIn joules: \\(13.6 \\times 1.6 \\times 10^{-19} = 2.18 \\times 10^{-18}\\) J.\n\nFrequency: \\(f = \\dfrac{E}{h} = \\dfrac{2.18 \\times 10^{-18}}{6.62 \\times 10^{-34}} \\approx 3.29 \\times 10^{15}\\) Hz.\n\nSince 1 GHz \\(= 10^9\\) Hz, this is \\(3.3 \\times 10^6\\) GHz. So the answer is option (C).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "12",
+      "label": "D",
+      "value": "An isotherm and an adiabat intersect at more than one point.",
+      "working": "An isotherm is \\(PV = c_1\\) and an adiabat is \\(PV^{\\gamma} = c_2\\), with \\(\\gamma > 1\\).\n\nWhere they meet, dividing gives \\(V^{\\gamma - 1} = \\dfrac{c_2}{c_1}\\), which has exactly one positive solution for \\(V\\). So an isotherm and an adiabat cross at **one** point only: statement (C) is correct and statement (D) is incorrect.\n\nTwo different isotherms \\(PV = c_1\\) and \\(PV = c_1'\\) can never share a point, and the same holds for two adiabats with different constants, so (A) and (B) are correct (if two such curves crossed, one state would have two temperatures or two entropies).\n\nThe question asks for the incorrect statement, so the answer is option (D).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "13",
+      "label": "C",
+      "value": "The cube.",
+      "working": "The three bodies have the same mass and material, so they have the same volume, the same heat capacity and the same starting temperature. The rate of heat loss to the water is proportional to the **surface area** in contact with it, so the shape with the largest surface area cools fastest.\n\nTake volume 1 in each case.\n\n| Shape | Surface area for volume 1 |\n|---|---|\n| Sphere | \\((36\\pi)^{1/3} \\approx 4.84\\) |\n| Cylinder (\\(h = 2r\\)) | \\(6\\pi r^2\\) with \\(2\\pi r^3 = 1\\), about 5.54 |\n| Cube | \\(6\\) |\n\nFor the cylinder, \\(r = (1/2\\pi)^{1/3} \\approx 0.542\\), so the area is \\(2\\pi r^2 + 2\\pi r(2r) = 6\\pi r^2 \\approx 5.54\\).\n\nThe sphere has the smallest area for its volume and cools slowest; the cube has the largest and cools fastest. So the answer is option (C).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "14",
+      "label": "B",
+      "value": "7.12 m",
+      "working": "100 pixels per \\(\\mathrm{cm^2}\\) means 10 pixels along each centimetre, so neighbouring pixels are \\(d = 1\\) mm \\(= 10^{-3}\\) m apart.\n\nThe smallest angle the eye can resolve is set by diffraction at the pupil (Rayleigh criterion): \\(\\theta = \\dfrac{1.22\\lambda}{D} = \\dfrac{1.22 \\times 575 \\times 10^{-9}}{5 \\times 10^{-3}} \\approx 1.40 \\times 10^{-4}\\) rad.\n\nAt a distance \\(L\\), two pixels subtend an angle \\(\\dfrac{d}{L}\\). The display stops looking pixelated when this angle is smaller than \\(\\theta\\), so the nearest such distance is \\(L = \\dfrac{d}{\\theta} = \\dfrac{10^{-3}}{1.40 \\times 10^{-4}} \\approx 7.13\\) m.\n\nThis matches 7.12 m (without the factor 1.22 you would get about 8.7 m, which is not offered). So the answer is option (B).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "15",
+      "label": "B",
+      "value": "\\(q' = +3\\sqrt{3}q\\)",
+      "working": "Put B at \\((-a/2, 0)\\), C at \\((a/2, 0)\\) and A at \\((0, h)\\) with \\(h = \\dfrac{3\\sqrt{3}a}{2}\\). By symmetry the zero-field point must lie on the axis, so it is P \\(= (0, h/3) = (0, \\dfrac{\\sqrt{3}a}{2})\\).\n\nDistance from B (or C) to P: \\(\\sqrt{\\dfrac{a^2}{4} + \\dfrac{3a^2}{4}} = a\\). Each of these charges gives a field \\(\\dfrac{kq}{a^2}\\) at P, pointing away from it. The horizontal parts cancel, and each vertical part is \\(\\dfrac{kq}{a^2} \\cdot \\dfrac{\\sqrt{3}a/2}{a} = \\dfrac{\\sqrt{3}kq}{2a^2}\\) upward. Together: \\(\\dfrac{\\sqrt{3}kq}{a^2}\\) upward.\n\nDistance from A to P: \\(h - \\dfrac{h}{3} = \\dfrac{2h}{3} = \\sqrt{3}a\\). To cancel, the field of \\(q'\\) at P must point **downward**, that is away from A, so \\(q'\\) is positive, with \\(\\dfrac{kq'}{3a^2} = \\dfrac{\\sqrt{3}kq}{a^2}\\).\n\nSo \\(q' = 3\\sqrt{3}q\\). A negative \\(q'\\) would pull the field upward at P and add to the field of B and C, so options (A) and (D) cannot work. So the answer is option (B).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    }
+  ]
+}

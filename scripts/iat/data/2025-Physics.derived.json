@@ -1,0 +1,121 @@
+{
+  "derivedBy": "Claude (Opus), independent solve from the printed questions and figures",
+  "answers": [
+    {
+      "ref": "1",
+      "label": "C",
+      "value": "x-t graph: solid A (steeper, from the origin) meets solid B (shallower, starting above the origin); after the meeting the steeper dotted line is B and the shallower dotted line is A. v-t graph: solid A above solid B before the collision; dotted B above dotted A after it",
+      "working": "In an **elastic collision between equal masses** moving along a line, the two particles simply exchange velocities. Momentum conservation gives \\(v_A + v_B = v_A' + v_B'\\) and the elastic condition (relative speed of separation equals relative speed of approach) gives \\(v_A - v_B = v_B' - v_A'\\). Solving, \\(v_A' = v_B\\) and \\(v_B' = v_A\\).\n\nFor A to catch up with B (which starts ahead), A must be faster before the collision, so on the v-t graph the solid line for A lies above the solid line for B. After the collision B carries A's old speed and A carries B's old speed, so the dotted line for B lies above the dotted line for A. This also matches the x-t graph: after the meeting the steeper dotted line (larger speed) is B.\n\nOptions (A) and (D) keep the same particle on top before and after, and option (B) puts B above A before the collision, which would mean A could never catch B. So the answer is option (C).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "2",
+      "label": "C",
+      "value": "\\(\\sqrt{\\frac{m^2 v^2}{k(M + m)}}\\)",
+      "working": "The bullet sticks to the block, so this is a **perfectly inelastic collision**: momentum is conserved but kinetic energy is not. The impact is very short, so the spring does not act during it.\n\nMomentum: \\(mv = (M + m)V\\), so the common speed just after impact is \\(V = \\frac{mv}{M + m}\\).\n\nAfter that, the surface is frictionless, so the kinetic energy of the block plus bullet turns fully into spring energy at maximum compression \\(x\\), when the block momentarily stops:\n\n\\(\\frac{1}{2}(M + m)V^2 = \\frac{1}{2}kx^2 \\Rightarrow \\frac{m^2 v^2}{M + m} = kx^2 \\Rightarrow x = \\sqrt{\\frac{m^2 v^2}{k(M + m)}}\\).\n\nUsing the bullet's original kinetic energy \\(\\frac{1}{2}mv^2\\) instead gives option (D), but that ignores the energy lost in the collision. So the answer is option (C).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "3",
+      "label": "B",
+      "value": "\\(M\\)",
+      "working": "The cart stays on the track at the top \\(B\\) of the loop if the track still pushes on it there, which needs \\(\\frac{Mv_B^2}{R} \\ge Mg\\), that is \\(v_B^2 \\ge gR\\).\n\nOn a frictionless track mechanical energy is conserved from \\(A\\) to \\(B\\): \\(Mgh_1 = Mgh_2 + \\frac{1}{2}Mv_B^2\\), so \\(v_B^2 = 2g(h_1 - h_2)\\).\n\nThe condition becomes \\(2g(h_1 - h_2) \\ge gR\\), or \\(h_1 - h_2 \\ge \\frac{R}{2}\\). The mass \\(M\\) cancels in both steps, while \\(h_1\\), \\(h_2\\) and \\(R\\) all appear. So the answer is option (B).",
+      "difficulty": "Easy",
+      "confidence": "HIGH",
+      "flag": "The figure draws the h2 arrow inside the loop (between the centre region and B) rather than from the ground, while the text says h2 is B's height from the ground. This does not change the answer: M cancels either way."
+    },
+    {
+      "ref": "4",
+      "label": "B",
+      "value": "\\(\\theta = \\frac{\\omega^2 M R^2}{4T}\\)",
+      "working": "The moment of inertia of a uniform disc about its central axis is \\(I = \\frac{1}{2}MR^2\\). The opposing torque gives a constant angular deceleration \\(\\alpha = \\frac{T}{I} = \\frac{2T}{MR^2}\\).\n\nThe disc keeps turning clockwise until its angular velocity becomes zero, and only then starts turning counterclockwise. Using \\(\\omega_f^2 = \\omega^2 - 2\\alpha\\theta\\) with \\(\\omega_f = 0\\):\n\n\\(\\theta = \\frac{\\omega^2}{2\\alpha} = \\frac{\\omega^2 MR^2}{4T}\\).\n\nThe disc is still moving clockwise during this time, so the displacement measured in the clockwise direction is positive. (The same result follows from the work-energy theorem: \\(T\\theta = \\frac{1}{2}I\\omega^2\\).) So the answer is option (B).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "5",
+      "label": "B",
+      "value": "\\(0.75\\%\\)",
+      "working": "By the **Stefan-Boltzmann law**, the power radiated is \\(P = \\sigma A T^4\\), where \\(A\\) is the surface area. When the cube is heated it also expands, so \\(A\\) changes too.\n\nFor small changes, \\(\\frac{\\Delta P}{P} = \\frac{\\Delta A}{A} + 4\\frac{\\Delta T}{T}\\). With \\(\\frac{\\Delta P}{P} = 4.5\\%\\) and \\(\\frac{\\Delta T}{T} = 1\\%\\): \\(4.5\\% = \\frac{\\Delta A}{A} + 4\\%\\), so \\(\\frac{\\Delta A}{A} = 0.5\\%\\).\n\nFor a cube of side \\(a\\), \\(A \\propto a^2\\) and \\(V \\propto a^3\\), so \\(\\frac{\\Delta a}{a} = 0.25\\%\\) and \\(\\frac{\\Delta V}{V} = 3 \\times 0.25\\% = 0.75\\%\\).\n\nThe tempting option (D), \\(0.50\\%\\), is the change in area, not volume. So the answer is option (B).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "6",
+      "label": "D",
+      "value": "\\(T_A = \\left(\\frac{4n_B^2}{n_A^2}\\right) T_B\\)",
+      "working": "Let each pipe have length \\(L\\). For a pipe closed at one end the harmonics are \\(f = \\frac{n_A v_A}{4L}\\) (with \\(n_A\\) odd), and for a pipe open at both ends they are \\(f = \\frac{n_B v_B}{2L}\\), where \\(v_A\\) and \\(v_B\\) are the speeds of sound in the two chambers.\n\nSetting the frequencies equal: \\(\\frac{n_A v_A}{4L} = \\frac{n_B v_B}{2L}\\), so \\(\\frac{v_A}{v_B} = \\frac{2n_B}{n_A}\\).\n\nIn an ideal gas the speed of sound is \\(v = \\sqrt{\\frac{\\gamma RT}{M}}\\), so \\(v \\propto \\sqrt{T}\\) for the same gas. Hence \\(\\frac{T_A}{T_B} = \\left(\\frac{v_A}{v_B}\\right)^2 = \\frac{4n_B^2}{n_A^2}\\).\n\nSo \\(T_A = \\left(\\frac{4n_B^2}{n_A^2}\\right)T_B\\), and the answer is option (D).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH",
+      "flag": "Assumes both chambers hold the same gas (the question only says 'ideal gas') and that the n-th harmonic of the closed pipe means frequency n times the fundamental (n odd)."
+    },
+    {
+      "ref": "7",
+      "label": "D",
+      "value": "\\(A_s = 2A\\) and \\(\\phi_s = \\frac{\\pi}{3}\\)",
+      "working": "Write \\(u = kx - \\omega t\\). The resultant is \\(y = A\\sin u + \\sqrt{3}A\\cos u\\).\n\nTake out the factor \\(\\sqrt{A^2 + 3A^2} = 2A\\): \\(y = 2A\\left(\\frac{1}{2}\\sin u + \\frac{\\sqrt{3}}{2}\\cos u\\right) = 2A\\left(\\cos\\frac{\\pi}{3}\\sin u + \\sin\\frac{\\pi}{3}\\cos u\\right) = 2A\\sin\\left(u + \\frac{\\pi}{3}\\right)\\).\n\nSo the amplitude is \\(A_s = 2A\\) and the resultant leads \\(y_1 = A\\sin u\\) by \\(\\phi_s = \\frac{\\pi}{3}\\). (A phase of \\(\\frac{\\pi}{6}\\) would need \\(\\tan\\phi = \\frac{1}{\\sqrt{3}}\\), but here \\(\\tan\\phi_s = \\frac{\\sqrt{3}A}{A} = \\sqrt{3}\\).) So the answer is option (D).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "8",
+      "label": "A",
+      "value": "\\(\\frac{l^2}{2d^2}\\)",
+      "working": "The field between the plates is uniform: \\(E = \\frac{V}{d} = \\frac{1}{d}\\) (in V/m), pointing from the 1 V plate to the 0 V plate. The positive charge \\(q = e\\) is pushed towards the lower plate with acceleration \\(a = \\frac{eE}{m}\\), while its horizontal speed \\(u\\) stays constant.\n\nTime inside the plates: \\(t = \\frac{l}{u}\\). Sideways deflection: \\(y = \\frac{1}{2}at^2 = \\frac{eEl^2}{2mu^2} = \\frac{eEl^2}{4K}\\), using \\(K = \\frac{1}{2}mu^2\\).\n\nThe particle enters midway, so it misses the plates if \\(y \\le \\frac{d}{2}\\): \\(\\frac{e l^2}{4Kd} \\le \\frac{d}{2}\\), which gives \\(K \\ge \\frac{e l^2}{2d^2}\\).\n\nIn electron-volts (energy divided by \\(e\\)), the minimum kinetic energy is \\(\\frac{l^2}{2d^2}\\) eV. So the answer is option (A).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "9",
+      "label": "C",
+      "value": "4 V",
+      "working": "Once charged, no current flows, so each side of the diamond is just two capacitors in series across the 12 V battery. Call the left corner \\(L\\) and take its potential as \\(V_L\\), with \\(V_L - V_R = 12\\) V.\n\nIn series, the voltage divides in inverse ratio of capacitance (same charge on each).\n\nUpper path \\(L \\to P \\to R\\): \\(4\\,\\mu\\mathrm{F}\\) then \\(2\\,\\mu\\mathrm{F}\\). The voltage across the \\(4\\,\\mu\\mathrm{F}\\) is \\(12 \\times \\frac{2}{4 + 2} = 4\\) V, so \\(V_P = V_L - 4\\).\n\nLower path \\(L \\to Q \\to R\\): \\(2\\,\\mu\\mathrm{F}\\) then \\(4\\,\\mu\\mathrm{F}\\). The voltage across the \\(2\\,\\mu\\mathrm{F}\\) is \\(12 \\times \\frac{4}{2 + 4} = 8\\) V, so \\(V_Q = V_L - 8\\).\n\nTherefore \\(V_P - V_Q = 8 - 4 = 4\\) V. So the answer is option (C).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "10",
+      "label": "C",
+      "value": "\\(r = \\frac{2\\sqrt{2} m v_0}{3qB_0}\\) and \\(p = \\frac{2\\pi m v_0}{3qB_0}\\)",
+      "working": "Split the velocity into parts along and across the field. Here \\(|\\vec{B}| = \\sqrt{3}B_0\\) and \\(\\vec{v} \\cdot \\vec{B} = v_0B_0(1 + 1 - 1) = v_0B_0\\).\n\nParallel part: \\(v_\\parallel = \\frac{\\vec{v}\\cdot\\vec{B}}{|\\vec{B}|} = \\frac{v_0}{\\sqrt{3}}\\). Since \\(|\\vec{v}|^2 = 3v_0^2\\), the perpendicular part is \\(v_\\perp = \\sqrt{3v_0^2 - \\frac{v_0^2}{3}} = \\sqrt{\\frac{8}{3}}\\,v_0 = \\frac{2\\sqrt{2}v_0}{\\sqrt{3}}\\).\n\nRadius: \\(r = \\frac{mv_\\perp}{q|\\vec{B}|} = \\frac{m}{q\\sqrt{3}B_0}\\cdot\\frac{2\\sqrt{2}v_0}{\\sqrt{3}} = \\frac{2\\sqrt{2}mv_0}{3qB_0}\\).\n\nPeriod: \\(T = \\frac{2\\pi m}{q|\\vec{B}|} = \\frac{2\\pi m}{\\sqrt{3}qB_0}\\). Pitch: \\(p = v_\\parallel T = \\frac{v_0}{\\sqrt{3}}\\cdot\\frac{2\\pi m}{\\sqrt{3}qB_0} = \\frac{2\\pi mv_0}{3qB_0}\\).\n\nSo the answer is option (C).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "11",
+      "label": "C",
+      "value": "The radius of the orbit will gradually decrease and the frequency will gradually increase.",
+      "working": "As the metallic frame shrinks, the magnetic flux through it decreases. By **Lenz's law**, a current is induced in the frame that tries to keep the flux up, so the current's own field inside the frame points the same way as the applied field. The field at the particle's orbit therefore gradually **increases**.\n\nThe orbital angular frequency of a charged particle in a magnetic field is \\(\\omega = \\frac{qB}{m}\\), so the frequency increases.\n\nThe rising field also induces an electric field along the orbit, which speeds the particle up, but only by about half of what would be needed to keep the radius fixed (for a nearly uniform field, \\(\\frac{dp}{dt} = \\frac{qr}{2}\\frac{dB}{dt}\\), while a fixed radius needs \\(\\frac{dp}{dt} = qr\\frac{dB}{dt}\\)). Since \\(r = \\frac{p}{qB}\\) and \\(B\\) rises faster than \\(p\\) in proportion, the orbit shrinks (the flux through the orbit, \\(B r^2\\), stays nearly constant).\n\nSo the radius gradually decreases and the frequency gradually increases: the answer is option (C).",
+      "difficulty": "Hard",
+      "confidence": "MEDIUM",
+      "flag": "Relies on the induced current in the shrinking frame strengthening the field at the orbit; the question gives no direction or size, so the reasoning is qualitative."
+    },
+    {
+      "ref": "12",
+      "label": "C",
+      "value": "\\(\\sin^{-1}(3/4)\\)",
+      "working": "A ray that travels parallel to the base of an equilateral prism passes at **minimum deviation**, so the angle of refraction at each face is \\(r = \\frac{A}{2} = 30^\\circ\\).\n\nAt the prism's second face, \\(1.5\\sin 30^\\circ = 1.0\\sin e\\), so the ray enters the air gap at \\(\\sin e = 0.75\\) to the normal.\n\nThe block's first face is parallel to this prism face, so the ray meets it with the same angle of incidence, \\(\\sin i = 0.75\\). Inside the block \\(2.0\\sin r' = 0.75\\). A parallelepiped has parallel opposite faces, so the ray meets the exit face at the same angle \\(r'\\), and on leaving \\(1.0\\sin\\theta = 2.0\\sin r' = 0.75\\).\n\nA slab with parallel faces only shifts the ray sideways, so \\(\\theta = \\sin^{-1}(3/4)\\), whatever the block's refractive index. So the answer is option (C).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "13",
+      "label": "D",
+      "value": "\\(60^\\circ\\)",
+      "working": "Use **Malus's law**, \\(I = I_0\\cos^2\\alpha\\), at each polaroid.\n\nThe light is polarized along \\(x\\), and P2's axis is at \\(\\theta\\) to \\(x\\), so after P2 the intensity is \\(I_0\\cos^2\\theta\\), polarized along P2's axis.\n\nP1's axis is along \\(y\\), at \\(90^\\circ - \\theta\\) to P2's axis, so after P1: \\(I = I_0\\cos^2\\theta\\sin^2\\theta = \\frac{I_0}{4}\\sin^2 2\\theta\\).\n\nSetting this equal to \\(\\frac{3I_0}{16}\\): \\(\\sin^2 2\\theta = \\frac{3}{4}\\), so \\(2\\theta = 60^\\circ\\) or \\(120^\\circ\\), giving \\(\\theta = 30^\\circ\\) or \\(60^\\circ\\).\n\nCheck the others: \\(45^\\circ\\) gives \\(\\frac{I_0}{4}\\), while \\(15^\\circ\\) and \\(75^\\circ\\) give \\(\\frac{I_0}{16}\\). So the answer is option (D).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "14",
+      "label": "C",
+      "value": "\\(\\sqrt{\\frac{E_1}{E_1 + E_a}}\\)",
+      "working": "In the hydrogen atom the energy of level \\(n\\) is \\(E_n = \\frac{E_1}{n^2}\\), where \\(E_1\\) is the ground-state energy (a negative number, \\(-13.6\\) eV).\n\nAbsorbing a photon of energy \\(E_a\\) raises the electron's energy: \\(E_1 + E_a = E_n = \\frac{E_1}{n^2}\\).\n\nSo \\(n^2 = \\frac{E_1}{E_1 + E_a}\\) and \\(n = \\sqrt{\\frac{E_1}{E_1 + E_a}}\\). Because both \\(E_1\\) and \\(E_1 + E_a\\) are negative and \\(|E_1 + E_a| < |E_1|\\), this gives \\(n > 1\\), as it must.\n\nOption (A), \\(\\sqrt{\\frac{E_1}{E_1 - E_a}}\\), would give \\(n < 1\\) with a negative \\(E_1\\); it is the right form only if \\(E_1\\) stood for the size of the ground-state energy. So the answer is option (C).",
+      "difficulty": "Easy",
+      "confidence": "MEDIUM",
+      "flag": "Sign convention: with E1 the actual (negative) ground-state energy the answer is C; if E1 were read as the magnitude 13.6 eV, option A would be right instead."
+    }
+  ]
+}

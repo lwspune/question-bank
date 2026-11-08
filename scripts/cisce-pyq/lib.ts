@@ -136,7 +136,7 @@ function delimitersBalanced(s: string): boolean {
 }
 
 
-function textIssues(where: string, s: string | undefined): string[] {
+export function textIssues(where: string, s: string | undefined): string[] {
   if (!s) return [];
   const out: string[] = [];
   if (!delimitersBalanced(s)) out.push(`${where}: unbalanced math delimiter`);

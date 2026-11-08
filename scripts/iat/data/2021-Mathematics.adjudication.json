@@ -1,0 +1,11 @@
+{
+  "adjudications": [
+    {
+      "ref": "8",
+      "why": "Transcription checked against the PDF text layer (A. 41, B. 25, C. 31, D. 120). The count of involutions on 5 elements is 26 (hand count 1 + 10 + 15, confirmed by enumerating all 3125 functions). No option is correct; IISER's key (printed (a)) is 41. Defective as printed: owner policy 2026-10-29 case 3, key kept, notice, grace.",
+      "notice": "As printed, none of the options is correct: the number of such functions is 26. IISER's key gives 41 (option C). In a PYQ Vault mock this question gives everyone its marks.",
+      "grace": true,
+      "solution": "If \\(f(f(n)) = n\\) for every \\(n\\), then applying \\(f\\) twice brings every element back. So each element is either **fixed** (\\(f(n) = n\\)) or **swapped** with exactly one other element (\\(f(a) = b\\) and \\(f(b) = a\\)). Such a function is called an involution. Count them by the number of swapped pairs:\n\n- **No pair swapped:** only the identity, \\(1\\) function.\n- **One pair swapped:** choose the pair in \\(\\binom{5}{2} = 10\\) ways; the other three are fixed. \\(10\\) functions.\n- **Two pairs swapped:** choose the fixed element in \\(5\\) ways, then split the other four into two pairs in \\(3\\) ways. \\(15\\) functions.\n\nThree pairs would need six elements, so that is all. The total is \\(1 + 10 + 15 = 26\\).\n\nThe number of such functions is 26, which is not among the options."
+    }
+  ]
+}

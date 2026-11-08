@@ -1,0 +1,11 @@
+{
+  "adjudications": [
+    {
+      "ref": "11",
+      "why": "Solver agreed with IISER (D, the larger root of the non-relativistic condition) and flagged that this root needs the electron at about 2c; the only physical root is option A. Two defensible answers: owner policy 2026-10-29 case 3, key kept, notice, grace. The solver's closing note moved up into the notice.",
+      "notice": "Option (D) is what the question's own equation gives for the smallest wavelength, and it is IISER's answer. But that root needs the electron to move at about twice the speed of light, which the formula \\(K = \\frac{p^2}{2m}\\) cannot describe; the only physically possible root is option (A). In a PYQ Vault mock this question gives everyone its marks.",
+      "grace": true,
+      "solution": "Let the photon wavelength be \\(\\lambda\\). By **Einstein's photoelectric equation** the electron's kinetic energy is \\(K = \\frac{hc}{\\lambda} - \\phi_0\\).\n\nThe electron's de Broglie wavelength is \\(\\frac{h}{p}\\). For it to equal \\(\\lambda\\), the electron's momentum must be \\(p = \\frac{h}{\\lambda}\\), so \\(K = \\frac{p^2}{2m} = \\frac{h^2}{2m\\lambda^2}\\).\n\nEquate the two: \\(\\frac{hc}{\\lambda} - \\phi_0 = \\frac{h^2}{2m\\lambda^2}\\). Put \\(u = \\frac{h}{mc\\lambda}\\) and divide by \\(mc^2\\): \\(u - \\frac{\\phi_0}{mc^2} = \\frac{u^2}{2}\\), that is \\(u^2 - 2u + \\frac{2\\phi_0}{mc^2} = 0\\).\n\nSo \\(u = 1 \\pm \\sqrt{1 - \\frac{2\\phi_0}{mc^2}}\\) and \\(\\lambda = \\frac{h}{mc}\\,\\frac{1}{u}\\). The smallest wavelength comes from the larger root, \\(u = 1 + \\sqrt{1 - \\frac{2\\phi_0}{mc^2}}\\), giving \\(\\lambda = \\frac{h}{mc}\\left(1 + \\sqrt{1 - \\frac{2\\phi_0}{mc^2}}\\right)^{-1}\\). So the answer is option (D)."
+    }
+  ]
+}

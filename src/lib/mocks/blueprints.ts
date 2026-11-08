@@ -828,6 +828,28 @@ export const SPI_PAPER: MockPaperBlueprint = {
   ],
 };
 
+const IAT_SUBJECTS = ["Biology", "Chemistry", "Mathematics", "Physics"] as const;
+
+/**
+ * IISER Aptitude Test, as IISER sets it (2026 brochure §19): 60 MCQs, 15 each of
+ * Biology, Chemistry, Mathematics and Physics in that order, +4 / -1, 180 minutes,
+ * out of 240. `counts` shortens a section where IISER dropped a question from its
+ * final key (2025 Physics: 14); the code stays the same for every year.
+ */
+export function iatPaper(counts: Partial<Record<(typeof IAT_SUBJECTS)[number], number>> = {}): MockPaperBlueprint {
+  return {
+    code: "paper",
+    examName: "IISER IAT",
+    examSlug: "iiser-iat",
+    paperLabel: "IISER Aptitude Test",
+    durationSecs: 180 * 60,
+    marking: { correct: 4, wrong: -1 },
+    sections: IAT_SUBJECTS.map((s) => ({ key: s.toLowerCase(), label: s, subjects: [s], count: counts[s] ?? 15 })),
+  };
+}
+
+export const IAT_PAPER: MockPaperBlueprint = iatPaper();
+
 /** Tier II Paper 1, Section III Module I: Computer Knowledge, 15 minutes, qualifying only. */
 export const SSC_CGL_T2_COMPUTER_PAPER: MockPaperBlueprint = {
   code: "tier-2-computer",
@@ -1046,6 +1068,7 @@ const ALL_BLUEPRINTS: readonly MockPaperBlueprint[] = [
   SSC_CGL_T2_COMPUTER_PAPER,
   SSC_CGL_T2_QUANT_PAPER,
   SPI_PAPER,
+  IAT_PAPER,
   IMAT_PAPER,
   CBSE_10_CHAPTER_MCQ_PAPER,
   CBSE_12_CHAPTER_MCQ_PAPER,

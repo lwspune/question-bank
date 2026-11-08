@@ -1,0 +1,11 @@
+{
+  "adjudications": [
+    {
+      "ref": "8",
+      "why": "Both solvers: B, both flagged that D ('does not pass through (2, -log 4)') is also true, since y(2) = log 4. Two correct options as printed: owner policy 2026-10-29 case 3, notice, grace.",
+      "notice": "As printed, two options are true: the curve passes through \\((2, \\log_e 4)\\), option (B), and so it also does not pass through \\((2, -\\log_e 4)\\), option (D). Option (B) is taken as the intended answer. IISER published no key for 2018. In a PYQ Vault mock this question gives everyone its marks.",
+      "grace": true,
+      "solution": "The slope is \\(\\frac{dy}{dx} = \\log_e x\\). Integrating by parts,\n\n\\(y = \\int \\log_e x\\, dx = x\\log_e x - x + C\\).\n\nThe curve passes through \\((1, 1)\\): \\(1 = 0 - 1 + C\\), so \\(C = 2\\) and \\(y = x\\log_e x - x + 2\\).\n\nAt \\(x = 2\\): \\(y = 2\\log_e 2 - 2 + 2 = 2\\log_e 2 = \\log_e 4\\). So the curve passes through \\((2, \\log_e 4)\\), not through \\((2, 3 + \\log_e 4)\\) or \\((2, 3 - \\log_e 4)\\).\n\nSo the answer is option (B)."
+    }
+  ]
+}

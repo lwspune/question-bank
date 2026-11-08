@@ -1,0 +1,125 @@
+{
+  "derivedBy": "Claude Opus 5.5 subagent, independent solve of IAT 2023 Mathematics",
+  "answers": [
+    {
+      "ref": "1",
+      "label": "C",
+      "value": "\\((0, 2f(0))\\)",
+      "working": "Since the GP has common ratio \\(\\frac{1}{5}\\), \\(f(k) = \\frac{f(0)}{5^k}\\) for \\(k = 0, 1, \\ldots, 10\\).\n\nBecause \\(f\\) is decreasing, on each interval \\([k, k+1]\\) we have \\(f(k+1) \\le f(x) \\le f(k)\\), so \\(f(k+1) < \\int_k^{k+1} f(x)\\,dx < f(k)\\) (strict, since a continuous decreasing function is not constant on the interval).\n\nAdding over \\(k = 0, 1, \\ldots, 9\\):\n\n\\(\\sum_{k=1}^{10} f(k) < \\int_0^{10} f(x)\\,dx < \\sum_{k=0}^{9} f(k).\\)\n\nThe upper sum is \\(f(0)\\left(1 + \\frac{1}{5} + \\cdots + \\frac{1}{5^9}\\right) = f(0)\\cdot\\frac{1 - 5^{-10}}{1 - \\frac{1}{5}} < \\frac{5}{4}f(0)\\). The lower sum is positive (about \\(\\frac{1}{4}f(0)\\)).\n\nSo the integral lies between \\(0\\) and \\(\\frac{5}{4}f(0)\\), which is inside \\((0, 2f(0))\\). None of the other intervals can hold it, since they all start at \\(4f(0)\\) or more.\n\nSo the answer is option (C).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "2",
+      "label": "C",
+      "value": "\\(0\\)",
+      "working": "The set of solutions of \\(MX = 0\\) is given by \\(x_1 + x_2 = 0\\) and \\(x_2 + x_3 = 0\\), that is \\(x_1 = -x_2\\) and \\(x_3 = -x_2\\).\n\nSo every vector of the form \\(t\\begin{bmatrix} -1 \\\\ 1 \\\\ -1 \\end{bmatrix}\\) is a solution. In particular, \\(MX = 0\\) has a **non-zero solution** (take \\(t = 1\\)).\n\nIf \\(\\det M \\ne 0\\), then \\(M\\) would be invertible and the only solution of \\(MX = 0\\) would be \\(X = 0\\). Since a non-zero solution exists, \\(\\det M = 0\\).\n\nSo the answer is option (C).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "3",
+      "label": "A",
+      "value": "Circle",
+      "working": "Let the fixed radius be \\(r\\) and let the centre of such a circle be \\((h, k)\\).\n\nThe circle passes through the origin, so the distance from the centre to the origin equals the radius: \\(\\sqrt{h^2 + k^2} = r\\), that is \\(h^2 + k^2 = r^2\\).\n\nReplacing \\((h, k)\\) by \\((x, y)\\), the locus is \\(x^2 + y^2 = r^2\\): a **circle** with centre at the origin and the same radius \\(r\\).\n\nSo the answer is option (A).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "4",
+      "label": "C",
+      "value": "Zero",
+      "working": "The pair of lines \\(y^2 = 1\\) is \\(y = 1\\) and \\(y = -1\\).\n\n**With \\(y = 1\\):** \\(x^2 + 4x\\sin\\alpha + 5 = 0\\). Its discriminant is \\(16\\sin^2\\alpha - 20 \\le 16 - 20 = -4 < 0\\), so there is no real \\(x\\).\n\n**With \\(y = -1\\):** \\(x^2 + 4x\\sin\\alpha + 7 = 0\\). Its discriminant is \\(16\\sin^2\\alpha - 28 \\le 16 - 28 = -12 < 0\\), so again no real \\(x\\).\n\nAnother way to see it: \\(y = (x + 2\\sin\\alpha)^2 + 6 - 4\\sin^2\\alpha \\ge 6 - 4 = 2\\), so the parabola always stays above \\(y = 2\\) and can never meet \\(y = \\pm 1\\).\n\nThere are no points of intersection, for every real \\(\\alpha\\). So the answer is option (C).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "5",
+      "label": "A",
+      "value": "\\(-1\\)",
+      "working": "The direction cosines of a line satisfy \\(\\cos^2\\alpha + \\cos^2\\beta + \\cos^2\\gamma = 1\\).\n\nUsing \\(\\cos 2\\theta = 2\\cos^2\\theta - 1\\):\n\n\\(\\cos 2\\alpha + \\cos 2\\beta + \\cos 2\\gamma = 2(\\cos^2\\alpha + \\cos^2\\beta + \\cos^2\\gamma) - 3 = 2(1) - 3 = -1.\\)\n\nSo the answer is option (A).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "6",
+      "label": "D",
+      "value": "\\(200\\)",
+      "working": "Every divisor of \\(2^9 \\times 3^{19}\\) has the form \\(2^a \\times 3^b\\), where \\(a\\) can be any of \\(0, 1, \\ldots, 9\\) (10 choices) and \\(b\\) can be any of \\(0, 1, \\ldots, 19\\) (20 choices).\n\nDifferent pairs \\((a, b)\\) give different divisors, so the number of divisors is \\((9 + 1)(19 + 1) = 10 \\times 20 = 200\\).\n\nA common slip is to multiply the exponents themselves or forget the \\(+1\\) for the power \\(0\\).\n\nSo the answer is option (D).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "7",
+      "label": "A",
+      "value": "\\(\\frac{3}{\\sqrt{10}}\\sigma\\)",
+      "working": "The mean of the first nine values is \\(\\mu\\), so \\(x_1 + \\cdots + x_9 = 9\\mu\\). For the mean of all ten to stay \\(\\mu\\), we need \\(9\\mu + x_{10} = 10\\mu\\), so \\(x_{10} = \\mu\\).\n\nFor the nine values, \\(\\sigma^2 = \\frac{1}{9}\\sum_{i=1}^{9}(x_i - \\mu)^2\\), so \\(\\sum_{i=1}^{9}(x_i - \\mu)^2 = 9\\sigma^2\\).\n\nThe new value adds \\((x_{10} - \\mu)^2 = 0\\) to this sum, and the mean is unchanged, so for ten values the new variance is \\(\\sigma_{new}^2 = \\frac{9\\sigma^2 + 0}{10} = \\frac{9}{10}\\sigma^2\\).\n\nTaking the square root, \\(\\sigma_{new} = \\frac{3}{\\sqrt{10}}\\sigma\\). (Option (B), \\(\\frac{9}{10}\\sigma\\), is the ratio of the variances, not of the standard deviations.)\n\nSo the answer is option (A).",
+      "difficulty": "Moderate",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "8",
+      "label": "D",
+      "value": "\\(\\frac{1}{9}\\)",
+      "working": "The tosses are independent. Given that the first coin shows tail, at least two heads can occur only if the second and third coins both show heads.\n\nSo \\(P(E \\mid F) = \\frac{1}{3} \\times \\frac{1}{3} = \\frac{1}{9}\\).\n\nChecking with the formula: \\(P(E \\cap F) = \\frac{2}{3} \\cdot \\frac{1}{3} \\cdot \\frac{1}{3} = \\frac{2}{27}\\) and \\(P(F) = \\frac{2}{3}\\), so \\(P(E \\mid F) = \\frac{2/27}{2/3} = \\frac{1}{9}\\).\n\nSo the answer is option (D).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "9",
+      "label": "D",
+      "value": "\\(y\\frac{d^2y}{dx^2} - e^x\\frac{dy}{dx} + y^2 = e^{2x}\\)",
+      "working": "For \\(y = e^x\\) we have \\(\\frac{dy}{dx} = e^x\\) and \\(\\frac{d^2y}{dx^2} = e^x\\). Then\n\n\\(y\\frac{d^2y}{dx^2} = e^{2x}\\), \\(e^x\\frac{dy}{dx} = e^{2x}\\), \\(y^2 = e^{2x}\\).\n\nWith a plus sign on the middle term, the left side is \\(e^{2x} + e^{2x} + e^{2x} = 3e^{2x}\\), which equals neither \\(e^x\\) nor \\(e^{2x}\\). So options (A) and (B) fail.\n\nWith a minus sign, the left side is \\(e^{2x} - e^{2x} + e^{2x} = e^{2x}\\). This matches the right side \\(e^{2x}\\), not \\(e^x\\).\n\nSo the answer is option (D).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "10",
+      "label": "C",
+      "value": "\\(\\frac{1}{2}(e - 1)\\)",
+      "working": "On \\([0, 1]\\) the curve \\(y = xe^{x^2}\\) is never negative, so the area is \\(\\int_0^1 xe^{x^2}\\,dx\\).\n\nPut \\(t = x^2\\), so \\(dt = 2x\\,dx\\). When \\(x = 0\\), \\(t = 0\\); when \\(x = 1\\), \\(t = 1\\). The integral becomes\n\n\\(\\int_0^1 \\frac{1}{2}e^{t}\\,dt = \\frac{1}{2}\\left[e^t\\right]_0^1 = \\frac{1}{2}(e - 1).\\)\n\nSo the answer is option (C).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "11",
+      "label": "A",
+      "value": "\\(-5\\)",
+      "working": "The feasible region lies in the first quadrant, below the line \\(x + 2y = 10\\) and on or above the line \\(x + y = 2\\). It is a bounded quadrilateral with corner points \\((2, 0)\\), \\((10, 0)\\), \\((0, 5)\\) and \\((0, 2)\\).\n\nEvaluate \\(Z = x - y\\) at each corner:\n\n| Corner | \\(Z = x - y\\) |\n|---|---|\n| \\((2, 0)\\) | \\(2\\) |\n| \\((10, 0)\\) | \\(10\\) |\n| \\((0, 5)\\) | \\(-5\\) |\n| \\((0, 2)\\) | \\(-2\\) |\n\nFor a bounded region the minimum occurs at a corner, so the minimum value is \\(-5\\), at \\((0, 5)\\). (Option (D), \\(-2\\), is the value at \\((0, 2)\\), which is not the smallest.)\n\nSo the answer is option (A).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "12",
+      "label": "C",
+      "value": "\\(3\\)",
+      "working": "From \\(p(1) = 5\\): \\(1 + b + c = 5\\), so \\(b + c = 4\\).\n\nFrom \\(p(-1) = 3\\): \\(1 - b + c = 3\\), so \\(c - b = 2\\).\n\nAdding the two equations gives \\(2c = 6\\), so \\(c = 3\\) (and \\(b = 1\\)).\n\nFor \\(x^2 + bx + c = 0\\), the product of the roots is \\(\\frac{c}{1} = 3\\). (Here \\(p(x) = x^2 + x + 3\\) has complex roots, but their product is still \\(3\\).)\n\nSo the answer is option (C).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "13",
+      "label": "B",
+      "value": "\\((-\\infty, 0)\\)",
+      "working": "For \\(x \\in (-1, 2)\\) we have \\(x^2 < 4 < 5\\), so \\(x^2 - 5 < 0\\) and hence \\(f'(x) = \\frac{2}{x^2 - 5} < 0\\). So \\(f\\) is strictly **decreasing** on \\((-1, 2)\\).\n\nSince \\(1 > 0\\), \\(f(1) < f(0) = 0\\).\n\nIn fact, \\(f(1) = \\int_0^1 \\frac{2}{x^2 - 5}\\,dx = \\frac{1}{\\sqrt{5}}\\ln\\frac{\\sqrt{5} - 1}{\\sqrt{5} + 1} \\approx -0.43\\), which is negative.\n\nSo \\(f(1)\\) lies in \\((-\\infty, 0)\\), and the answer is option (B).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "14",
+      "label": "A",
+      "value": "\\(f\\) is decreasing on \\(\\left(\\frac{\\pi}{4}, \\frac{\\pi}{2}\\right)\\).",
+      "working": "Here \\(f'(x) = 3\\cos(3x)\\).\n\nFor \\(x \\in \\left(\\frac{\\pi}{4}, \\frac{\\pi}{2}\\right)\\), the angle \\(3x\\) lies in \\(\\left(\\frac{3\\pi}{4}, \\frac{3\\pi}{2}\\right)\\). On this whole range the cosine is negative (it is the second and third quadrants), so \\(f'(x) < 0\\).\n\nHence \\(f\\) is decreasing on all of \\(\\left(\\frac{\\pi}{4}, \\frac{\\pi}{2}\\right)\\).\n\nThe point \\(x = \\frac{\\pi}{3}\\) (where \\(3x = \\pi\\)) is tempting, but there \\(f'\\) is \\(-3\\), not zero, so \\(f\\) does not turn around there. Its lowest value is at \\(x = \\frac{\\pi}{2}\\) on this interval, where \\(\\sin\\frac{3\\pi}{2} = -1\\). That rules out options (B), (C) and (D).\n\nSo the answer is option (A).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    },
+    {
+      "ref": "15",
+      "label": "D",
+      "value": "\\(\\cos|x|\\)",
+      "working": "Since cosine is an even function, \\(\\cos|x| = \\cos x\\) for every \\(x\\). So \\(\\cos|x|\\) is differentiable everywhere, including at \\(x = 0\\) (its derivative there is \\(-\\sin 0 = 0\\)).\n\nThe others fail at \\(0\\):\n\n- \\(\\sin|x|\\): the right-hand derivative is \\(\\lim_{h \\to 0^+}\\frac{\\sin h}{h} = 1\\) and the left-hand derivative is \\(\\lim_{h \\to 0^-}\\frac{\\sin(-h)}{h} = -1\\). They differ, so there is a corner.\n- \\(|x|\\): the one-sided derivatives are \\(1\\) and \\(-1\\), a corner.\n- \\(|x|^{\\frac{1}{2}}\\): \\(\\frac{|h|^{1/2}}{h}\\) has absolute value \\(\\frac{1}{\\sqrt{|h|}}\\), which grows without bound as \\(h \\to 0\\), so there is no derivative.\n\nSo the answer is option (D).",
+      "difficulty": "Easy",
+      "confidence": "HIGH"
+    }
+  ]
+}
