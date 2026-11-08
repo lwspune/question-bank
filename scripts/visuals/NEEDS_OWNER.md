@@ -18,7 +18,7 @@ the key the nearest one) and were animated; settled below.
 
 ## Open
 
-Nothing open. The 34 Maharashtra HSC Class 12 rows found 2026-11-08 were settled 2026-11-09 (see below).
+Nothing open. The 29 Maharashtra HSC Class 12 rows found 2026-11-08 were settled 2026-11-09 (see below).
 
 | Question | Exam · chapter | Problem |
 |---|---|---|
