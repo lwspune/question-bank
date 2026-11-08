@@ -1,0 +1,8 @@
+[
+  {
+    "id": "210147fc-ff90-4f26-a9b9-f7ab9e2206ea",
+    "before": "0e4459f9",
+    "solution": "[Textbook misprint: the printed solution writes \\(\\sin\\theta=\\frac{a}{\\sqrt{a^2-b^2}}\\), \\(\\cos\\theta=\\frac{b}{\\sqrt{a^2-b^2}}\\) (denominators should be \\(\\sqrt{a^2+b^2}\\)) and gives the final angle as \\(\\frac{x}{2}+\\frac{\\pi}{6}\\) where it should be \\(\\frac{x}{2}-\\frac{\\pi}{6}\\); the Alternative-method result below is correct.]\n\nAlternative method:\nFor any two positive numbers \\(a\\) and \\(b\\), we can find an angle \\(\\theta\\), such that\n\\(\\therefore \\sin\\theta = \\frac{a}{\\sqrt{a^2 + b^2}}\\) and \\(\\cos\\theta = \\frac{b}{\\sqrt{a^2 + b^2}}\\)\nUsing this we express \\(\\sin x - \\sqrt{3}\\cos x\\)\n\\(= \\sqrt{1 + 3}\\left(\\cos\\theta \\cdot \\sin x - \\sin\\theta \\cdot \\cos x\\right)\\)\n\\(= 2\\sin(x - \\theta)\\)\n\\(= 2\\sin\\left(x - \\frac{\\pi}{3}\\right)\\)\n\\(\\therefore I = \\int \\frac{1}{2 \\cdot \\sin\\left(x - \\frac{\\pi}{3}\\right)}\\, dx\\)\n\\(= \\frac{1}{2}\\int \\csc\\left(x - \\frac{\\pi}{3}\\right) dx\\)\n\\(= \\frac{1}{2}\\log\\left(\\csc\\left(x - \\frac{\\pi}{3}\\right) - \\cot\\left(x - \\frac{\\pi}{3}\\right)\\right) + c\\)\n\\(= \\frac{1}{2}\\log\\left(\\tan\\left(\\frac{x}{2} - \\frac{\\pi}{6}\\right)\\right) + c\\)",
+    "note": "The working still printed the book's misprints its own note names: sqrt(a^2 - b^2) for sqrt(a^2 + b^2), and the final angle x/2 + pi/6 for x/2 - pi/6 (csc u - cot u = tan(u/2), u = x - pi/3)."
+  }
+]
