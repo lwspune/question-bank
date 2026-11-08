@@ -1,0 +1,555 @@
+{
+  "//": "Assembled from agent drafts (sketch).",
+  "visuals": [
+    {
+      "id": "91b1b317-3de8-4089-87ad-cc53584e0344",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "a": 495,
+            "r": "sqrt(2)*a/4",
+            "dg": "sqrt(2)*a",
+            "ro": "floor(r+0.5)"
+          },
+          "view": {
+            "x": [
+              -300,
+              900
+            ],
+            "y": [
+              -330,
+              700
+            ]
+          },
+          "points": {
+            "O": [
+              0,
+              0
+            ],
+            "B": [
+              "a",
+              0
+            ],
+            "C": [
+              "a",
+              "a"
+            ],
+            "D2": [
+              0,
+              "a"
+            ],
+            "M": [
+              "a/2",
+              "a/2"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "points": [
+                "O",
+                "B",
+                "C",
+                "D2"
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "point",
+              "at": "O",
+              "step": "s1"
+            },
+            {
+              "kind": "point",
+              "at": "B",
+              "step": "s1"
+            },
+            {
+              "kind": "point",
+              "at": "C",
+              "step": "s1"
+            },
+            {
+              "kind": "point",
+              "at": "D2",
+              "step": "s1"
+            },
+            {
+              "kind": "point",
+              "at": "M",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                160,
+                -60
+              ],
+              "text": "a = 495 pm",
+              "step": "s1"
+            },
+            {
+              "kind": "segment",
+              "from": "O",
+              "to": "C",
+              "step": "s2",
+              "tone": "amber",
+              "label": "√2 a",
+              "labelAt": [
+                580,
+                300
+              ],
+              "pos": "e"
+            },
+            {
+              "kind": "circle",
+              "center": "O",
+              "r": "r",
+              "step": "s3",
+              "tone": "brand"
+            },
+            {
+              "kind": "circle",
+              "center": "M",
+              "r": "r",
+              "step": "s3",
+              "tone": "brand"
+            },
+            {
+              "kind": "circle",
+              "center": "C",
+              "r": "r",
+              "step": "s3",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                480,
+                -200
+              ],
+              "text": "4r = √2 a",
+              "step": "s4"
+            },
+            {
+              "kind": "label",
+              "at": [
+                480,
+                -290
+              ],
+              "text": "r = {ro} pm",
+              "step": "s5",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "4*r = sqrt(2)*a",
+            "dg = 4*r",
+            "r < a/2",
+            "sqrt(a^2+a^2) = dg"
+          ],
+          "answer": "ro"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "89f95d5f",
+        "answer": {
+          "value": 175,
+          "label": "175 pm"
+        }
+      }
+    },
+    {
+      "id": "e5fce742-a5d3-4008-a686-04768b96e59e",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "a": 495,
+            "r": "sqrt(2)*a/4",
+            "dg": "sqrt(2)*a",
+            "ro": "floor(r+0.5)"
+          },
+          "view": {
+            "x": [
+              -300,
+              900
+            ],
+            "y": [
+              -330,
+              700
+            ]
+          },
+          "points": {
+            "O": [
+              0,
+              0
+            ],
+            "B": [
+              "a",
+              0
+            ],
+            "C": [
+              "a",
+              "a"
+            ],
+            "D2": [
+              0,
+              "a"
+            ],
+            "M": [
+              "a/2",
+              "a/2"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "points": [
+                "O",
+                "B",
+                "C",
+                "D2"
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "point",
+              "at": "O",
+              "step": "s1"
+            },
+            {
+              "kind": "point",
+              "at": "B",
+              "step": "s1"
+            },
+            {
+              "kind": "point",
+              "at": "C",
+              "step": "s1"
+            },
+            {
+              "kind": "point",
+              "at": "D2",
+              "step": "s1"
+            },
+            {
+              "kind": "point",
+              "at": "M",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                160,
+                -60
+              ],
+              "text": "a = 495 pm",
+              "step": "s1"
+            },
+            {
+              "kind": "segment",
+              "from": "O",
+              "to": "C",
+              "step": "s2",
+              "tone": "amber",
+              "label": "√2 a",
+              "labelAt": [
+                580,
+                300
+              ],
+              "pos": "e"
+            },
+            {
+              "kind": "circle",
+              "center": "O",
+              "r": "r",
+              "step": "s3",
+              "tone": "brand"
+            },
+            {
+              "kind": "circle",
+              "center": "M",
+              "r": "r",
+              "step": "s3",
+              "tone": "brand"
+            },
+            {
+              "kind": "circle",
+              "center": "C",
+              "r": "r",
+              "step": "s3",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                480,
+                -200
+              ],
+              "text": "4r = √2 a",
+              "step": "s4"
+            },
+            {
+              "kind": "label",
+              "at": [
+                480,
+                -290
+              ],
+              "text": "r = {ro} pm",
+              "step": "s5",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "4*r = sqrt(2)*a",
+            "dg = 4*r",
+            "r < a/2",
+            "sqrt(a^2+a^2) = dg"
+          ],
+          "answer": "ro"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "45b94b79",
+        "answer": {
+          "value": 175,
+          "label": "175 pm"
+        }
+      }
+    },
+    {
+      "id": "eaca884a-56e6-45c2-b490-87935b0c1a78",
+      "option": "D",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "a": 495,
+            "r": "sqrt(2)*a/4",
+            "dg": "sqrt(2)*a",
+            "ro": "floor(r+0.5)"
+          },
+          "view": {
+            "x": [
+              -300,
+              900
+            ],
+            "y": [
+              -330,
+              700
+            ]
+          },
+          "points": {
+            "O": [
+              0,
+              0
+            ],
+            "B": [
+              "a",
+              0
+            ],
+            "C": [
+              "a",
+              "a"
+            ],
+            "D2": [
+              0,
+              "a"
+            ],
+            "M": [
+              "a/2",
+              "a/2"
+            ]
+          },
+          "items": [
+            {
+              "kind": "polygon",
+              "points": [
+                "O",
+                "B",
+                "C",
+                "D2"
+              ],
+              "step": "s1",
+              "tone": "muted"
+            },
+            {
+              "kind": "point",
+              "at": "O",
+              "step": "s1"
+            },
+            {
+              "kind": "point",
+              "at": "B",
+              "step": "s1"
+            },
+            {
+              "kind": "point",
+              "at": "C",
+              "step": "s1"
+            },
+            {
+              "kind": "point",
+              "at": "D2",
+              "step": "s1"
+            },
+            {
+              "kind": "point",
+              "at": "M",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                160,
+                -60
+              ],
+              "text": "a = 495 pm",
+              "step": "s1"
+            },
+            {
+              "kind": "segment",
+              "from": "O",
+              "to": "C",
+              "step": "s2",
+              "tone": "amber",
+              "label": "√2 a",
+              "labelAt": [
+                580,
+                300
+              ],
+              "pos": "e"
+            },
+            {
+              "kind": "circle",
+              "center": "O",
+              "r": "r",
+              "step": "s3",
+              "tone": "brand"
+            },
+            {
+              "kind": "circle",
+              "center": "M",
+              "r": "r",
+              "step": "s3",
+              "tone": "brand"
+            },
+            {
+              "kind": "circle",
+              "center": "C",
+              "r": "r",
+              "step": "s3",
+              "tone": "brand"
+            },
+            {
+              "kind": "label",
+              "at": [
+                480,
+                -200
+              ],
+              "text": "4r = √2 a",
+              "step": "s4"
+            },
+            {
+              "kind": "label",
+              "at": [
+                480,
+                -290
+              ],
+              "text": "r = {ro} pm",
+              "step": "s5",
+              "tone": "good"
+            }
+          ],
+          "assert": [
+            "4*r = sqrt(2)*a",
+            "dg = 4*r",
+            "r < a/2",
+            "sqrt(a^2+a^2) = dg"
+          ],
+          "answer": "ro"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2",
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "dc7a3376",
+        "answer": {
+          "value": 175,
+          "label": "175 pm"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

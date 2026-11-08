@@ -43,8 +43,10 @@ describe("sketch scene", () => {
   it("works out its answer from the named numbers, in order", () => {
     expect(scene.check(ok(tri))).toBe(5);
     expect(scene.checkText(ok(tri), 5)).toMatch(/5/);
-    // A var may only use the ones before it.
-    expect(parse({ ...tri, vars: { c: "sqrt(a^2+b^2)", a: "3", b: "4" } })).toHaveProperty("error");
+    // The order vars are written in does not matter (a jsonb round trip re-sorts
+    // them); a name no var defines is still refused.
+    expect(scene.check(ok({ ...tri, vars: { c: "sqrt(a^2+b^2)", a: "3", b: "4" } }))).toBe(5);
+    expect(parse({ ...tri, vars: { c: "sqrt(a^2+q^2)", a: "3", b: "4" } })).toHaveProperty("error");
   });
 
   it("refuses a picture whose stated facts do not hold", () => {

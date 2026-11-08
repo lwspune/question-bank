@@ -1,0 +1,38 @@
+[
+  {
+    "id": "25777a36-26cd-4a8b-8d5e-31e1e5e895d7",
+    "before": "9e1a54cc",
+    "solution": "The magnetic induction at the centre of a circular loop of radius \\(r\\) carrying current \\(I\\) is\n\n\\(B = \\dfrac{\\mu_0 I}{2r}\\)\n\nRearranging for the current,\n\n\\(I = \\dfrac{2rB}{\\mu_0}\\)\n\nHere \\(r = 12\\ \\text{cm} = 0.12\\ \\text{m}\\), \\(B = 6 \\times 10^{-6}\\ \\text{T}\\) and \\(\\mu_0 = 4\\pi \\times 10^{-7}\\ \\text{Wb/Am}\\).\n\n\\(I = \\dfrac{2 \\times 0.12 \\times 6 \\times 10^{-6}}{4 \\times 3.142 \\times 10^{-7}}\\)\n\n\\(I = \\dfrac{1.44 \\times 10^{-6}}{1.2568 \\times 10^{-6}}\\)\n\n\\(I = 1.1458\\ \\text{A}\\)\n\nThe magnetic moment of a single-turn loop is the product of the current and the area it encloses:\n\n\\(M = IA = I\\pi r^{2}\\)\n\n\\(M = 1.1458 \\times 3.142 \\times (0.12)^{2}\\)\n\n\\(M = 1.1458 \\times 3.142 \\times 0.0144\\)\n\n\\(M = 5.18 \\times 10^{-2}\\ \\text{A m}^{2}\\)\n\n\\(\\therefore\\) the magnetic moment of the loop is about \\(5.18 \\times 10^{-2}\\ \\text{A m}^{2}\\).",
+    "note": "1.44e-6 / 1.2568e-6 = 1.14577, printed 1.1457 (3 places); M unchanged."
+  },
+  {
+    "id": "8e8df734-7379-49ad-91db-672dca364cd8",
+    "before": "61d2871a",
+    "solution": "[Textbook misprint: the question supplies \"charge of electron \\(= 1.62\\times10^{-19}\\) C\". The accepted value is \\(1.60\\times10^{-19}\\) C, and the book's own printed answer of \\(6.643\\times10^{-27}\\) kg follows from 1.60 and not from 1.62; the latter would give \\(6.72\\times10^{-27}\\) kg. The working above therefore uses \\(1.60\\times10^{-19}\\) C, which also returns the accepted alpha-particle mass. The stem separately prints \"a transverse a uniform magnetic field\", with one article too many.]\n\nGiven: \\(K = 10.00\\) MeV, \\(B = 1.851\\) T, \\(r = 24.60\\) cm \\(= 0.2460\\) m, charge of the alpha particle \\(q = +2e\\).\n\nFor a charge moving perpendicular to a uniform field the magnetic force is centripetal, so\n\\(r = \\dfrac{mv}{qB}\\quad\\Rightarrow\\quad mv = qBr\\)\n\nThe kinetic energy \\(K = \\dfrac{1}{2}mv^{2} = \\dfrac{(mv)^{2}}{2m}\\), hence\n\\(m = \\dfrac{(mv)^{2}}{2K} = \\dfrac{(qBr)^{2}}{2K}\\)\n\nWith \\(e = 1.60\\times10^{-19}\\) C: \\(q = 2e = 3.2\\times10^{-19}\\) C and \\(K = 10.00\\times10^{6}\\times 1.6\\times10^{-19} = 1.6\\times10^{-12}\\) J.\n\\(qBr = 3.2\\times10^{-19}\\times 1.851 \\times 0.2460 = 1.457\\times10^{-19}\\) kg m/s\n\\(\\therefore m = \\dfrac{(1.457\\times10^{-19})^{2}}{2\\times 1.6\\times10^{-12}} = \\dfrac{2.123\\times10^{-38}}{3.2\\times10^{-12}}\\)\n\\(\\therefore m = 6.63\\times10^{-27}\\) kg\n\nThis is the accepted mass of the alpha particle (\\(6.645\\times10^{-27}\\) kg, about 4 atomic mass units), which is the check that the working is sound.",
+    "note": "2.123e-38 / 3.2e-12 = 6.634e-27, printed 6.64e-27."
+  },
+  {
+    "id": "8eab0b50-935f-421d-97b0-b5c023f14637",
+    "before": "5e9a6830",
+    "solution": "Given: \\(R = 12.3\\) cm \\(= 0.123\\) m, \\(B = 6.4\\times10^{-6}\\) T at the centre, single turn.\n\n**Step 1: find the current.** At the centre of a circular loop,\n\\(B = \\dfrac{\\mu_0 I}{2R}\\)\n\\(\\therefore I = \\dfrac{2RB}{\\mu_0} = \\dfrac{2\\times 0.123\\times 6.4\\times10^{-6}}{4\\pi\\times10^{-7}} = \\dfrac{1.574\\times10^{-6}}{1.2566\\times10^{-6}}\\)\n\\(\\therefore I = 1.253\\) A\n\n**Step 2: magnetic moment.** For a plane current loop \\(m = IA = I\\pi R^{2}\\):\n\\(m = 1.253 \\times \\pi \\times (0.123)^{2} = 1.253 \\times 0.04753\\)\n\\(\\therefore m = 5.955\\times10^{-2}\\) A m\\(^2\\)\n\nThe magnetic moment is directed along the axis of the loop, in the sense given by the right-hand rule applied to the circulating current.",
+    "note": "1.253 x pi x 0.123^2 = 0.059554, printed 5.954e-2."
+  },
+  {
+    "id": "c25a9543-f9af-4cf9-b0e6-2f8d3446bb5c",
+    "before": "a2383859",
+    "solution": "Given: \\(N = 300\\) turns, diameter \\(= 14\\) cm so radius \\(R = 7\\) cm \\(= 0.07\\) m, \\(I = 15\\) A.\n\nArea enclosed by one turn:\n\n\\(A = \\pi R^{2} = \\pi \\times (0.07)^{2} = \\pi \\times 4.9 \\times 10^{-3} = 1.5394 \\times 10^{-2}\\) m\\(^{2}\\)\n\nThe magnetic dipole moment of a coil of \\(N\\) turns is\n\n\\(m = NIA = 300 \\times 15 \\times 1.5394 \\times 10^{-2} = 4500 \\times 1.5394 \\times 10^{-2}\\)\n\n\\(\\therefore m = 69.27\\) A m\\(^{2}\\)\n\nCheck by a second route, using the diameter directly: \\(m = NI\\dfrac{\\pi D^{2}}{4} = 300 \\times 15 \\times \\dfrac{\\pi \\times (0.14)^{2}}{4} = 4500 \\times 1.5394 \\times 10^{-2} = 69.27\\) A m\\(^{2}\\), the same value.\n\nThe magnetic dipole moment is directed along the axis of the coil, in the sense given by the right-hand rule.",
+    "note": "4500 x 1.539e-2 = 69.255, not the printed 69.27; the area to 5 figures, 1.5394e-2, gives 69.27."
+  },
+  {
+    "id": "335ed084-c1bb-4094-a64d-b3f10d28c56a",
+    "before": "8c866979",
+    "solution": "From the figure at the end of this answer,\n\\(\\tan\\left(\\dfrac{\\delta}{2}\\right) \\cong \\left(\\dfrac{\\delta}{2}\\right)^{c} = \\dfrac{\\left(\\dfrac{d}{4}\\right)}{x_1}\\)\nand for a thin prism, \\(\\delta = A(\\mu - 1)\\)\n\\(\\therefore d = 2\\delta x_1 = 2A(\\mu - 1)x_1\\)\n\\(= 2\\left(0.5 \\times \\dfrac{\\pi}{180}\\right)(1.5 - 1)10\\)\n\\(= \\dfrac{\\pi}{36}\\) cm\n\\(\\lambda = 500\\) nm \\(= 5 \\times 10^{-7}\\) m,\n\\(L = 10\\) cm \\(+\\ 90\\) cm \\(= 1\\) m\nDistance of \\(20^{\\text{th}}\\) dark band from the central bright band, \\(X_{20\\text{D}} = \\left(20 - \\dfrac{1}{2}\\right)W\\)\n\\(\\therefore X_{20\\text{D}} = (19.5)\\dfrac{\\lambda L}{d}\\)\n\\(= \\dfrac{19.5 \\times \\left(5 \\times 10^{-7}\\right) \\times 1}{\\left(\\dfrac{\\pi \\times 10^{-2}}{36}\\right)}\\)\n\\(= \\dfrac{19.5 \\times 180 \\times 10^{-5}}{\\pi}\\)\n\\(= 0.01117\\) m \\(= 1.117\\) cm\n\nPath difference at this location: for the \\(n^{\\text{th}}\\) dark band it is \\(\\left(n - \\dfrac{1}{2}\\right)\\lambda\\), so\n\n\\(\\Delta = 19.5 \\times 5 \\times 10^{-7} = 9.75 \\times 10^{-6}\\) m",
+    "note": "19.5 x 180e-5 / pi = 0.01117 m (printed 0.1117 m); the asked path difference, 19.5 lambda = 9.75e-6 m, was never given."
+  },
+  {
+    "id": "344f313c-18fe-4608-aedc-ca6098741113",
+    "before": "fe2ff278",
+    "solution": "Given: fundamental frequency \\( n = 300 \\) Hz, speed of sound \\( v = 340\\ \\mathrm{m\\ s}^{-1} \\), tube OPEN at both ends.\n\nFor a pipe open at both ends an antinode forms at each end, so in the fundamental mode the air column holds half a wavelength:\n\\( L = \\dfrac{\\lambda}{2} \\qquad \\therefore \\lambda = 2L \\)\n\n\\( \\therefore n = \\dfrac{v}{\\lambda} = \\dfrac{v}{2L} \\)\n\n\\( \\therefore L = \\dfrac{v}{2n} = \\dfrac{340}{2 \\times 300} = \\dfrac{340}{600} \\)\n\n\\( \\therefore L = 0.5667\\ \\mathrm{m} \\)\n\n\\( \\therefore \\) the length of the tube in the fundamental mode is about \\( 0.5667 \\) m \\( \\approx 56.7 \\) cm.\n\n(The end correction has been neglected here; including it, this \\( L \\) would be the corrected length \\( l + 2e \\), so the actual pipe would be slightly shorter.)",
+    "note": "340/600 = 0.5667, printed 0.5666 in the last line."
+  }
+]

@@ -47,6 +47,24 @@ at most 140 characters) and `kind`, which says how the program checks it:
   every equation solves for the same unknown, or on the line itself when a
   line solves for something else (p first, then c). Use it for the lines of
   "solve ... = 0" working, with `roots` the solutions the working reaches.
+- `deriv`: a differentiation step. `f` must be the derivative of the
+  previous `expr` (or deriv/integral) line's f, checked by a numerical slope
+  at several x. The chain carries on from it, so the next `expr` lines
+  simplify the derivative. Use it for every "dy/dx = ..." line.
+- `integral`: an integration step. The derivative of `f` must be the previous
+  line's f (the integrand), so a constant of integration does not matter.
+  Write the integrand as an `expr` line first ("\\int x e^x\\,dx" with f
+  "x*exp(x)"), then the result as `integral`. A substitution changes the
+  variable: start a new chain (below) in the new variable, or keep the
+  steps in x.
+- `restart: true` on an `expr` line starts a new chain: a second part, or a
+  new function, that is not equal to the line before it.
+- `domain: [from, to]` on an `expr` line checks the chain at six points inside
+  that interval instead of the usual x = -1.7 ... 3.4, until the next restart.
+  Use it whenever a formula only exists on part of the line: sin⁻¹x and
+  1/√(1 − x²) on [-0.9, 0.9], sec⁻¹x on [1.1, 4], log x on [0.2, 4], or the
+  range the solution itself states ("valid for x > 1"). Never use a calc at a
+  single point when a domain would check the whole line.
 - `note`: nothing to check (the set-up line, "hence proved", the final
   statement of a root set). At least one line must be checked.
 
@@ -96,6 +114,10 @@ first step starts at 0, later ones later, each step name used once. `answer`
 - Read only your input, write only your output (a JSON array, one object per
   question, input order). Run nothing that touches the database or git. You
   may run small Python checks. Keep tool output small.
+
+Matrices: a row break is `\\` in TeX, so in the JSON you write it is FOUR
+backslashes ("\\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix}"). One pair
+too few and the whole matrix draws as one row; the checker refuses it.
 
 ## Before you write the file: the checker refuses these
 

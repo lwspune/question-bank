@@ -1,0 +1,74 @@
+[
+  {
+    "id": "1b6e6a8d-9ea0-41f4-89b6-e40ed72a5123",
+    "before": "7faf4943",
+    "solution": "**(a) Work done by the gas.** For an isothermal expansion of \\(n\\) moles from volume \\(V_1\\) to \\(V_2\\),\n\n\\(W = nRT\\ln\\left(\\dfrac{V_2}{V_1}\\right) = 2.303\\,nRT\\log_{10}\\left(\\dfrac{V_2}{V_1}\\right)\\)\n\nHere \\(n = 0.5\\), \\(R = 8.31\\ \\text{J mol}^{-1}\\text{K}^{-1}\\), \\(T = 300\\ \\text{K}\\), \\(V_1 = 2\\ \\text{L}\\) and \\(V_2 = 6\\ \\text{L}\\), so \\(\\dfrac{V_2}{V_1} = 3\\).\n\n\\(W = 2.303 \\times 0.5 \\times 8.31 \\times 300 \\times \\log_{10}3\\)\n\n\\(W = 2.303 \\times 1246.5 \\times 0.4771\\)\n\n\\(W = 1370\\ \\text{J}\\)\n\n**(b) Heat supplied to the gas.** The process is isothermal, so the temperature and hence the internal energy of the ideal gas do not change:\n\n\\(\\Delta U = 0\\)\n\nFrom the first law \\(Q = \\Delta U + W\\),\n\n\\(\\therefore Q = W = 1370\\ \\text{J}\\)\n\nAll the heat supplied is used in doing external work.",
+    "note": "2.303 x 1246.5 x 0.4771 = 1369.7, printed 1369."
+  },
+  {
+    "id": "3de1e292-e316-4531-99f4-9f64d9f0a3c5",
+    "before": "e4281f6f",
+    "solution": "(a) The work done in isothermal expansion is \\(W = nRT \\ln\\left(\\dfrac{V_{f}}{V_{i}}\\right)\\)\n\nWhere \\(n = 0.5\\), \\(V_{f} = 6\\)L, \\(V_{i} = 2\\)L\n\n\\(W = 0.5\\ \\text{mol} \\times \\dfrac{8.319}{\\text{mol}\\cdot\\text{K}} \\times 300\\,K \\cdot \\ln\\left(\\dfrac{6L}{2L}\\right)\\)\n\n\\(= 1.371\\) kJ.\n\n(b) From the first law of thermodynamics, the heat supplied in an isothermal process is spent to do work on a system. Therefore, \\(Q = W = 1.371\\) kJ.\n\nCan you explain the significance of positive sign of the work done and the heat?",
+    "note": "0.5 x 8.319 x 300 x ln 3 = 1370.9 J with the stem's R = 8.319; 1.369 came from R = 8.31."
+  },
+  {
+    "id": "7ede5038-035a-43d1-8f8e-5b81f1125f18",
+    "before": "ba32f315",
+    "solution": "Work done in isobaric process given by \\(W = P\\Delta V = (V_{f} - V_{i})\\).\n\n\\(V_{f} = 2V_{i}\\) \\(\\therefore\\) \\(W = pV_{i}\\).\n\n\\(V_{i}\\) can be found by using the ideal gas equation for initial state.\n\n\\(P_{i} V_{i} = nRT_{i}\\) for \\(n = 1\\) mol,\n\n\\(V_{i} = \\dfrac{RT_{i}}{P_{i}} = 8.314 \\times \\dfrac{300}{1.01 \\times 10^{6}} = 2.4695 \\times 10^{-3}\\ \\text{m}^{3}\\)\n\n\\(\\therefore W = 1.01 \\times 10^{6} \\times 2.4695 \\times 10^{-3}\\)\n\n\\(W = 2.494\\) kJ",
+    "note": "The stem's pressure is 1.01 MPa, not 1 MPa: V_i = 2.4695e-3 m^3; W = pV_i = 2494 J unchanged."
+  },
+  {
+    "id": "1158519d-b1ef-4b9d-b1c4-5d9fc57511aa",
+    "before": "7f981288",
+    "solution": "Given :\n\\( q_1 = -2\\,\\mu\\text{C} = -2 \\times 10^{-6} \\) C, \\( r_1 = 0.08 \\) m\n\\( q_2 = +4\\,\\mu\\text{C} = +4 \\times 10^{-6} \\) C, \\( r_2 = 0.08 \\) m\n\\( r = 16 \\) cm \\( = 0.16 \\) m\n\na) Electrostatic potential energy of the system of two charges is\n\n\\( V = \\dfrac{1}{4\\pi\\varepsilon_0}\\dfrac{q_1 q_2}{r} \\)\n\n\\( = \\dfrac{9 \\times 10^{9} \\times (-2) \\times 10^{-6} \\times 4 \\times 10^{-6}}{0.16} \\)\n\n\\( = -0.45 \\) J\n\nb) In the electric field, total potential energy\n\n\\( (\\text{PE}) = \\dfrac{q_1 q_2}{4\\pi\\varepsilon_0 r} + q_1 V(\\vec{r_1}) + q_2 V(\\vec{r_2}) \\)\n\n\\( E = \\dfrac{-dV}{dr} \\therefore V = \\int -E\\,dr = \\int \\dfrac{-A}{r^2}\\,dr,\\ V = \\dfrac{A}{r} \\)\n\n\\( \\therefore \\text{Total PE} = \\dfrac{q_1 q_2}{4\\pi\\varepsilon_0 r} + \\dfrac{A q_1}{r_1} + \\dfrac{A q_2}{r_2} \\)\n\n\\( = -0.45 + \\dfrac{8 \\times 10^{5} \\times (-2 \\times 10^{-6})}{0.08} + \\dfrac{8 \\times 10^{5} \\times (4 \\times 10^{-6})}{0.08} \\)\n\n\\( = -0.45 - 20 + 40 \\)\n\n\\( = 19.55 \\) J",
+    "note": "r1, r2 are 0.08 m (printed cm); U of the pair is -0.45 J (printed 0.45; the total 19.55 J already used -0.45)."
+  },
+  {
+    "id": "1d9b2920-d130-4a09-9b56-eec058c53d2b",
+    "before": "e145879d",
+    "solution": "Given :\n\\( p = q \\times 2l = 10^{-6} \\times 2 \\times 10^{-2} = 2 \\times 10^{-8} \\) C m\n\\( E = 10^{5} \\) NC\\( ^{-1} \\)\n\n(i) \\( \\tau_{\\max} = p\\,E \\sin 90^\\circ = 2 \\times 10^{-8} \\times 10^{5} \\times 1 \\)\n\\( = 2 \\times 10^{-3} \\) Nm\n\n(ii) \\( W = pE(\\cos\\theta_1 - \\cos\\theta_2) \\)\n\\( = 2 \\times 10^{-8} \\times 10^{5} \\times (\\cos 0 - \\cos 180^\\circ) \\)\n\\( = 2 \\times 10^{-3}(1 + 1) = 4 \\times 10^{-3} \\) J",
+    "note": "Dipole moment unit is C m, printed cm."
+  },
+  {
+    "id": "9e793108-81f3-4302-a175-e94bfaf4c02f",
+    "before": "22f0e003",
+    "solution": "Given :\n\\( C_1 = 8\\,\\mu\\text{F} \\), \\( C_2 = 4\\,\\mu\\text{F} \\), \\( C_3 = 1\\,\\mu\\text{F} \\), \\( C_4 = 4\\,\\mu\\text{F} \\), \\( C_5 = 4\\,\\mu\\text{F} \\)\n\nThe effective capacitance of \\( C_4 \\) and \\( C_5 \\) in parallel\n\\( = C_4 + C_5 = 4 + 4 = 8\\,\\mu\\text{F} \\)\n\nThe effective capacitance of \\( C_3 \\) and \\( 8\\,\\mu\\text{F} \\) in series\n\\( = \\dfrac{1 \\times 8}{1 + 8} = \\dfrac{8}{9}\\,\\mu\\text{F} \\)\n\nThe capacitance \\( 8\\,\\mu\\text{F} \\) is in parallel with the series combination of \\( C_1 \\) and \\( C_2 \\). Their effective combination is\n\n\\( \\dfrac{C_1 C_2}{C_1 + C_2} + \\dfrac{8}{9} \\Rightarrow \\dfrac{8 \\times 4}{12} + \\dfrac{8}{9} \\Rightarrow \\dfrac{32}{9}\\,\\mu\\text{F} \\)\n\nThis capacitance of \\( \\dfrac{32}{9}\\,\\mu\\text{F} \\) is in series with \\( C \\) and their effective capacitance is given to be \\( 1\\,\\mu\\text{F} \\)\n\n\\( \\dfrac{\\dfrac{32}{9} \\times C}{\\dfrac{32}{9} + C} = 1 \\)\n\n\\( \\therefore \\dfrac{32}{9} \\times C = \\dfrac{32}{9} + C \\)\n\n\\( = \\dfrac{32}{23} = 1.391\\,\\mu\\text{F} \\)",
+    "note": "32/23 = 1.3913, printed 1.392."
+  },
+  {
+    "id": "805fec4e-3c4e-4e75-95f9-85dc6324fb07",
+    "before": "7b0890d7",
+    "solution": "Energy stored in the capacitor with air\n\n\\( E_a = \\dfrac{1}{2}CV^2 = \\dfrac{1}{2} \\times 3 \\times 10^{-9} \\times (400)^2 \\)\n\\( = 24 \\times 10^{-5} \\) J\n\nwhen the slab of dielectric constant 3 is introduced between the plates of the capacitor, the capacitance of the capacitor increases to\n\\( C' = kC \\)\n\\( C' = 3 \\times 3 \\times 10^{-9} = 9 \\times 10^{-9} \\) F\n\nEnergy stored in the capacitor with the dielectric \\( (E_d) \\)\n\n\\( E_d = \\dfrac{1}{2}C'V^2 \\)\n\n\\( E_d = \\dfrac{1}{2} \\times 9 \\times 10^{-9} \\times (400)^2 \\)\n\\( = 72 \\times 10^{-5} \\) J\n\nOn removing the slab, change in energy \\( = E_a - E_d = (24 - 72) \\times 10^{-5} \\)\n\\( = -48 \\times 10^{-5} \\) J\n\nThere is, therefore, a decrease of \\( 48 \\times 10^{-5} \\) J in the energy when the slab is removed (and an increase by the same amount when it is introduced).",
+    "note": "The question asks for the change when the slab is REMOVED; the solution gave the change on inserting it. Now -48e-5 J (a decrease)."
+  },
+  {
+    "id": "e251745d-e6a3-487b-af0c-eef97c9e74ac",
+    "before": "b04aa7c3",
+    "solution": "As shown in the figures at the end of this answer, suppose the two point charges are placed on \\( x \\)-axis with the positive charge located at the origin O.\n\n\\( q_1 = 5 \\times 10^{-8} \\) C at O, \\( q_2 = -3 \\times 10^{-8} \\) C at A, with P between them; \\( \\text{OP} = x \\), \\( \\text{PA} = 0.16 - x \\), \\( \\text{OA} = 0.16 \\) m.\n\nLet the potential be zero at the point P and \\( \\text{OP} = x \\). For \\( x < 0 \\) (i.e. to the left of O), the potentials of the two charges cannot add up to zero. Clearly, \\( x \\) must be positive. If \\( x \\) lies between O and A, then \\( V_1 + V_2 = 0 \\), where \\( V_1 \\) and \\( V_2 \\) are the potentials at point P due to O and A, respectively. The other possibility is that \\( x \\) may also lie on extended OA.\n\n\\( q_1 = 5 \\times 10^{-8} \\) C at O, \\( q_2 = -3 \\times 10^{-8} \\) C at A, with P beyond A; \\( \\text{OA} = 0.16 \\) m, \\( \\text{AP} = (x - 0.16) \\) m.\n\n\\( \\dfrac{1}{4\\pi\\varepsilon_0}\\left[\\dfrac{q_1}{x} + \\dfrac{q_2}{0.16 - x}\\right] = 0 \\)\n\n\\( 9 \\times 10^{9}\\left[\\dfrac{5 \\times 10^{-8}}{x} - \\dfrac{3 \\times 10^{-8}}{0.16 - x}\\right] = 0 \\)\n\n\\( \\Rightarrow 9 \\times 10^{9} \\times 10^{-8}\\left[\\dfrac{5}{x} - \\dfrac{3}{0.16 - x}\\right] = 0 \\)\n\n\\( \\Rightarrow \\dfrac{5}{x} - \\dfrac{3}{0.16 - x} = 0 \\)\n\n\\( \\therefore x = 0.10 \\) m, between the charges.\n\nFor P beyond A, \\( \\text{AP} = x - 0.16 \\), so\n\n\\( \\dfrac{5}{x} - \\dfrac{3}{x - 0.16} = 0 \\Rightarrow 5x - 0.8 = 3x \\)\n\n\\( \\therefore x = 0.40 \\) m\n\nThe potential is zero at two points on the line: 10 cm and 40 cm from the positive charge.",
+    "note": "The question asks for point(s) and the solution set up the case beyond A but never solved it: x = 0.40 m added."
+  },
+  {
+    "id": "6edab665-3796-4404-943e-fa7dfb34162d",
+    "before": "78a679e8",
+    "solution": "**Data:** \\(\\dfrac{d^2x}{dt^2} = -36x\\) (SI units). **To find:** \\(n\\) and \\(T\\).\n\nThe differential equation of linear S.H.M. is\n\n\\(\\dfrac{d^2x}{dt^2} = -\\omega^2 x\\)\n\nComparing this with the given equation \\(\\dfrac{d^2x}{dt^2} = -36x\\),\n\n\\(\\omega^2 = 36\\ \\text{s}^{-2} \\Rightarrow \\omega = 6\\ \\text{rad/s}\\)\n\n**Frequency:**\n\n\\(n = \\dfrac{\\omega}{2\\pi} = \\dfrac{6}{2\\pi} = \\dfrac{3}{\\pi} = \\dfrac{3}{3.142} = 0.9548\\ \\text{Hz}\\)\n\n**Period:**\n\n\\(T = \\dfrac{1}{n} = \\dfrac{2\\pi}{\\omega} = \\dfrac{2\\pi}{6} = \\dfrac{\\pi}{3} = \\dfrac{3.142}{3} = 1.047\\ \\text{s}\\)\n\n**The frequency of the S.H.M. is \\(n = \\dfrac{3}{\\pi} \\approx 0.955\\ \\text{Hz}\\) and its period is \\(T = \\dfrac{\\pi}{3} \\approx 1.05\\ \\text{s}\\).**",
+    "note": "3/3.142 = 0.95480, printed 0.9549."
+  },
+  {
+    "id": "c3636eae-8490-420b-9ba7-1fba9e78b5dd",
+    "before": "f85f99ca",
+    "solution": "[Textbook answer-key error: the printed key says the length DECREASES by 5.07 mm. The magnitude is right and the direction is inverted. A second's pendulum keeps \\(T = 2\\ \\text{s}\\) at both places, so \\(L = gT^2/4\\pi^2 = g/\\pi^2\\) and \\(L\\) is directly proportional to \\(g\\); raising \\(g\\) from 9.75 to \\(9.80\\ \\text{m/s}^2\\) takes \\(L\\) from 0.98788 m to 0.99295 m, an INCREASE of 5.07 mm. The sign follows from the chapter's own equation for the period of a simple pendulum and depends on no assumed constant.]\n\n**Data:** second's pendulum, so \\(T = 2\\ \\text{s}\\); \\(g_1 = 9.75\\ \\text{m/s}^2\\), \\(g_2 = 9.80\\ \\text{m/s}^2\\). **To find:** change in length \\(\\Delta L\\).\n\nA second's pendulum takes one second for each swing between the extremes, so its period is \\(T = 2\\ \\text{s}\\) at **both** places.\n\nFrom \\(T = 2\\pi\\sqrt{\\dfrac{L}{g}}\\),\n\n\\(L = \\dfrac{gT^2}{4\\pi^2} = \\dfrac{g \\times 4}{4\\pi^2} = \\dfrac{g}{\\pi^2}\\)\n\nWith \\(\\pi^2 = 9.870\\):\n\n\\(L_1 = \\dfrac{9.75}{9.870} = 0.9878\\ \\text{m} = 98.78\\ \\text{cm}\\)\n\n\\(L_2 = \\dfrac{9.80}{9.870} = 0.9929\\ \\text{m} = 99.29\\ \\text{cm}\\)\n\nChange in length:\n\n\\(\\Delta L = L_2 - L_1 = \\dfrac{g_2 - g_1}{\\pi^2} = \\dfrac{9.80 - 9.75}{9.870} = \\dfrac{0.05}{9.870}\\)\n\n\\(\\Delta L = 5.066 \\times 10^{-3}\\ \\text{m} = 0.5066\\ \\text{cm}\\)\n\n**The length must be increased by \\(5.07 \\times 10^{-3}\\ \\text{m}\\), that is by about \\(0.507\\ \\text{cm}\\) (roughly \\(5.1\\ \\text{mm}\\)).** Since \\(L \\propto g\\) for a fixed period, the larger value of \\(g\\) needs the **longer** pendulum, so this is an **increase** in length.",
+    "note": "9.75/9.870 = 0.98784, printed 0.9879."
+  },
+  {
+    "id": "c99a641e-da6d-4b3c-a7c1-8e76c1b3ff81",
+    "before": "599a5475",
+    "solution": "[Textbook answer-key error: the printed key gives \\(6.324\\ \\text{cm/s}\\). The magnitude is right and the UNIT is wrong by a factor of \\(10^2\\): at the centre of the path the whole energy is kinetic, so \\(v = \\sqrt{2E/m} = \\sqrt{2 \\times 40 / 2} = 6.324\\ \\text{m/s}\\) (632.4 cm/s). A speed of 6.324 cm/s would imply a total energy of \\(0.004\\ \\text{J}\\), against the 40 J the question states.]\n\n**Data:** \\(m = 2\\ \\text{kg}\\), total energy \\(E = 40\\ \\text{J}\\). **To find:** speed at the centre of the path.\n\nThe centre of the path is the **mean position**. There the potential energy is zero, so the whole of the total energy is kinetic, and the speed there is the maximum speed \\(v_{\\max}\\).\n\n\\(E = \\dfrac{1}{2}m v_{\\max}^2\\)\n\n\\(40 = \\dfrac{1}{2} \\times 2 \\times v_{\\max}^2\\)\n\n\\(v_{\\max}^2 = 40\\ \\text{m}^2\\text{/s}^2\\)\n\n\\(v_{\\max} = \\sqrt{40} = 2\\sqrt{10} = 6.325\\ \\text{m/s}\\)\n\n**The speed of the body while crossing the centre of the path is \\(2\\sqrt{10} \\approx 6.32\\ \\text{m/s}\\).**",
+    "note": "2 x 3.162 = 6.324, while sqrt(40) = 6.3246; the 3.162 step dropped."
+  },
+  {
+    "id": "d4884e66-d916-4b93-b444-807768c25f49",
+    "before": "c9088160",
+    "solution": "**Data:** \\(B = 1.6 \\times 10^{-5}\\ \\text{Wb/m}^2\\), \\(I = 3 \\times 10^{-6}\\ \\text{kg m}^2\\), magnetic moment \\(\\mu = 3\\ \\text{A m}^2\\).\n\nA magnet vibrating in the plane of a uniform magnetic field performs angular S.H.M. with period\n\n\\(T = 2\\pi\\sqrt{\\dfrac{I}{\\mu B}}\\)\n\n**Step 1: the magnetic restoring couple per unit angular displacement.**\n\n\\(\\mu B = 3 \\times 1.6 \\times 10^{-5} = 4.8 \\times 10^{-5}\\ \\text{N m/rad}\\)\n\n**Step 2: period.**\n\n\\(\\dfrac{I}{\\mu B} = \\dfrac{3 \\times 10^{-6}}{4.8 \\times 10^{-5}} = 6.25 \\times 10^{-2}\\ \\text{s}^2\\)\n\n\\(\\sqrt{\\dfrac{I}{\\mu B}} = \\sqrt{6.25 \\times 10^{-2}} = 0.25\\ \\text{s}\\)\n\n\\(T = 2\\pi \\times 0.25 = \\dfrac{\\pi}{2} = 1.571\\ \\text{s}\\)\n\n**Step 3: frequency and number of oscillations per minute.**\n\n\\(n = \\dfrac{1}{T} = \\dfrac{1}{1.571} = 0.6366\\ \\text{Hz}\\)\n\nNumber of oscillations in one minute \\(= 60n = \\dfrac{60}{T} = \\dfrac{60}{\\pi/2} = \\dfrac{120}{\\pi}\\)\n\n\\(= \\dfrac{120}{\\pi} = 38.20\\)\n\n\\(\\therefore\\) the magnet performs about \\(38\\) oscillations per minute (period \\(1.571\\ \\text{s}\\), frequency \\(0.6366\\ \\text{Hz}\\)).",
+    "note": "120/3.142 = 38.19; 120/pi = 38.20."
+  }
+]

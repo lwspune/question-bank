@@ -23,7 +23,13 @@ export function value(src: unknown, vars: Readonly<Record<string, number>>, fiel
   return v;
 }
 
-/** Parse `vars`: in order, each from the ones before it. */
+/**
+ * Parse `vars`: each is a number or a formula of other vars, worked out once
+ * the vars it names are known. The written order does not matter, because a
+ * visual stored as Postgres jsonb comes back with its keys re-sorted (shortest
+ * first): reading in key order hid 1,180 stored visuals (2026-11-08). A name no
+ * var defines, or vars that name each other in a circle, is refused.
+ */
 export function parseVars(raw: unknown, limit: number): Record<string, number> {
   const vars: Record<string, number> = {};
   const src = raw === undefined ? {} : obj(raw);
@@ -31,7 +37,32 @@ export function parseVars(raw: unknown, limit: number): Record<string, number> {
   if (names.length > limit) throw new ParamError(`at most ${limit} vars`);
   for (const n of names) {
     if (!/^[A-Za-z][A-Za-z0-9]{0,11}$/.test(n) || RESERVED.has(n)) throw new ParamError(`"${n}" cannot be a var name (letters and digits, not x, pi, e or a function)`);
-    vars[n] = value(src[n], vars, `vars.${n}`);
+  }
+  // With every var's name known, a formula that still does not compile names
+  // something no var defines, or is not a formula at all: report it as written.
+  // (Compiled, not evaluated: a stand-in value could make sqrt or log fail.)
+  const allNames = Object.fromEntries(names.map((m) => [m, 1]));
+  for (const n of names) {
+    if (typeof src[n] === "number") continue;
+    const r = compileExpr(src[n], allNames);
+    if ("error" in r) throw new ParamError(`vars.${n}: ${r.error}`);
+  }
+
+  let left = names;
+  while (left.length) {
+    const waiting: string[] = [];
+    for (const n of left) {
+      try {
+        vars[n] = value(src[n], vars, `vars.${n}`);
+      } catch (e) {
+        // A var waiting on one not worked out yet tries again next round. Any other
+        // failure (not finite, divides by zero) is the var's own fault.
+        if (!(e instanceof ParamError) || !/unknown name/.test(e.message)) throw e;
+        waiting.push(n);
+      }
+    }
+    if (waiting.length === left.length) throw new ParamError(`vars ${waiting.join(", ")} name each other in a circle`);
+    left = waiting;
   }
   return vars;
 }

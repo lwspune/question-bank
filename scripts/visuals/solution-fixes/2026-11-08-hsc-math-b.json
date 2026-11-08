@@ -1,0 +1,8 @@
+[
+  {
+    "id": "ef8a383d-87f1-4d81-acac-799c4ca11d9b",
+    "before": "55baa975",
+    "solution": "The given equations can be written as \\(2x + 3y = 9\\) and \\(-x + y = -2\\). Hence the matrix equation is \\(\\begin{bmatrix} 2 & 3 \\\\ -1 & 1 \\end{bmatrix}\\begin{bmatrix} x \\\\ y \\end{bmatrix} = \\begin{bmatrix} 9 \\\\ -2 \\end{bmatrix}\\) (i.e. \\(AX = B\\)). Now use \\(R_2 \\to 2R_2 + R_1\\); we get \\(\\begin{bmatrix} 2 & 3 \\\\ 0 & 5 \\end{bmatrix}\\begin{bmatrix} x \\\\ y \\end{bmatrix} = \\begin{bmatrix} 9 \\\\ 5 \\end{bmatrix}\\). We rewrite the equations as \\(2x + 3y = 9\\) ... (i) and \\(5y = 5\\) ... (ii). From (ii) \\(y = 1\\) and using (i) we get \\(x = 3\\). Hence \\(x = 3,\\ y = 1\\) is the required solution.",
+    "note": "The second equation is -x + y = -2, so the right-hand side is (9, -2), printed (9, 5); x = 3, y = 1 unchanged."
+  }
+]

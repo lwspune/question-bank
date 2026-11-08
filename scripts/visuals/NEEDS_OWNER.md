@@ -14,7 +14,25 @@ Every row found up to 2026-10-29 is settled below. Of the 38 rows found on 2026-
 the SSC CGL Data Interpretation and Mensuration 3D animation run, 34 turned out to be
 settled already at ingestion (`flawed: yes` in the transcript, a notice above the
 solution, grace in mocks) and moved below on 2026-11-01. The 4 left were not defects either (rounded options,
-the key the nearest one) and were animated; settled below. Nothing is open.
+the key the nearest one) and were animated; settled below.
+
+## Open
+
+Found 2026-11-08 in the Maharashtra HSC Class 12 Physics run.
+
+| Question | Exam · chapter | Problem |
+|---|---|---|
+| `63fd9ed2` | Maharashtra HSC 12 · Thermodynamics (QSolved Ex.4.2) | **Stem incomplete.** "A gas enclosed in a cylinder is expanded to double its initial volume at a constant pressure of one atmosphere": no initial volume is given, yet the solution uses ΔV = 0.5 m³ and W = 5.05 × 10⁴ J. Check the Balbharati example for the volume it states. Not animated. |
+| `f2f7a399` | Maharashtra HSC 12 · Kinetic Theory of Gases (MCQ) | **Options in the wrong unit.** "Pressure rises 0.4% when heated by 1 °C; initial temperature?" The working gives 250 K (= −23 °C); every option is printed in °C and the key is B, "250 °C". The stored solution already explains it. Not animated. |
+| `c0121070` | Maharashtra HSC 12 · Magnetic Fields due to Electric Current (MCQ) | **No option right as printed.** A proton along +x in B into the page bends towards +y; keyed B prints "bending towards positive x axis" and C "negative y". The stored solution reads B as a misprint for +y and says so. Not animated. |
+| `833651ce` | Maharashtra HSC 12 · Magnetic Fields due to Electric Current | **Figure missing.** The stem shows v and B "as shown in the following figure, in three different situations" (panels a, b, c) but carries no image; the solution describes each panel in words. Needs the Balbharati figure cropped and attached. Not animated (direction-only question). |
+| `4c195900` | Maharashtra HSC 12 · Electromagnetic Induction | **Stem incomplete.** A 5 m east-west wire falls 15 m; the average emf needs the Earth's horizontal field B_H, which neither the stem nor the paper's constants give. The stored solution says so and leaves 43.3 B_H volt. Not animated. |
+| `be5b92b7` | Maharashtra HSC 12 · Chemistry · Solutions | **Stem misprinted.** "A 0.1 m K₂SO₄ solution freezes at −4.3 °C": that gives i = 23.1, impossible for K₂SO₄ (at most 3); −0.43 °C gives the admissible 2.31. The stored solution says so and works it as printed. Check the Balbharati print; if it is the book's, a notice is already there. Not animated. |
+| `caec54e0` | Maharashtra HSC 12 · Chemistry · Solid State | **Stem omits the density** (bcc, a = 288 pm, 200 g: how many cells and atoms?). The stored solution restores ρ = 7.2 g/cm³, which reproduces the book's printed answers, and says so in a notice. Animated on that reading; the stem itself should state the density (a stem edit changes content_hash, owner's call). |
+| `0dd998ff` | Maharashtra HSC 12 · Trigonometric Functions (MCQ) | **Key not what the working gives.** The complete solution set is θ = nπ/3; the key is B, nπ/6, and none of the four printed options is the full set. The stored solution already says "Textbook defect". Decide: defective as printed (notice + grace) or key change. Not animated. |
+| `3e6d15c1` | Maharashtra HSC 12 · Trigonometric Functions | **Stem false as printed.** With a², b², c² in A.P. the half-angle cotangents are not in A.P.; the stored solution says so and proves cot A, cot B, cot C in A.P. instead. Check the Balbharati print; a stem edit changes content_hash. Not animated. |
+| `f2000ab6` | Maharashtra HSC 12 · Differentiation (hint-basket activity) | **Stem and answer disagree.** The last blank asks for the value at x = π/3, where cot(π/3) = 1/√3, but the stored list gives √3, the value at π/6; the stored note says the point should read π/6. Check the Balbharati print. Not animated. |
+| `c2164fe5` | Maharashtra HSC 12 · Thermodynamics (MCQ) | **Keyed option misprinted.** Pressure falls 10% isothermally: the volume rises 11.11%, but option D (keyed) prints 11.4%; the solution says the board's paper (J-531) prints it so. Not animated. |
 
 ## Settled
 

@@ -1,0 +1,219 @@
+{
+  "//": "Assembled from agent drafts (sketch).",
+  "visuals": [
+    {
+      "id": "7c125655-0d34-4b22-a901-256e53b2e499",
+      "visual": {
+        "v": 1,
+        "scene": "sketch",
+        "params": {
+          "vars": {
+            "l": "1",
+            "xm": "l/2",
+            "xa": "l/3",
+            "xb": "2*l/3",
+            "y1": "0.6",
+            "y2": "0.2",
+            "y3": "-0.2",
+            "a": "0.12"
+          },
+          "view": {
+            "x": [
+              -0.2,
+              1.5
+            ],
+            "y": [
+              -0.5,
+              0.9
+            ]
+          },
+          "points": {
+            "E1": [
+              0,
+              "y1"
+            ],
+            "E2": [
+              "l",
+              "y1"
+            ],
+            "F1": [
+              0,
+              "y2"
+            ],
+            "F2": [
+              "l",
+              "y2"
+            ],
+            "G1": [
+              0,
+              "y3"
+            ],
+            "G2": [
+              "l",
+              "y3"
+            ],
+            "N1": [
+              "xm",
+              "y2"
+            ],
+            "N2": [
+              "xa",
+              "y3"
+            ],
+            "N3": [
+              "xb",
+              "y3"
+            ]
+          },
+          "items": [
+            {
+              "kind": "curve",
+              "f": "y1+a*sin(pi*x)",
+              "x": [
+                0,
+                1
+              ],
+              "step": "s1",
+              "tone": "brand"
+            },
+            {
+              "kind": "point",
+              "at": "E1",
+              "step": "s1"
+            },
+            {
+              "kind": "point",
+              "at": "E2",
+              "step": "s1"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0,
+                0.82
+              ],
+              "text": "fundamental: l = λ/2, no other node",
+              "step": "s1"
+            },
+            {
+              "kind": "curve",
+              "f": "y2+a*sin(2*pi*x)",
+              "x": [
+                0,
+                1
+              ],
+              "step": "s2",
+              "tone": "brand"
+            },
+            {
+              "kind": "point",
+              "at": "F1",
+              "step": "s2"
+            },
+            {
+              "kind": "point",
+              "at": "F2",
+              "step": "s2"
+            },
+            {
+              "kind": "point",
+              "at": "N1",
+              "step": "s2",
+              "label": "l/2",
+              "pos": "s",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0,
+                0.42
+              ],
+              "text": "first overtone: l = λ",
+              "step": "s2"
+            },
+            {
+              "kind": "curve",
+              "f": "y3+a*sin(3*pi*x)",
+              "x": [
+                0,
+                1
+              ],
+              "step": "s3",
+              "tone": "brand"
+            },
+            {
+              "kind": "point",
+              "at": "G1",
+              "step": "s3"
+            },
+            {
+              "kind": "point",
+              "at": "G2",
+              "step": "s3"
+            },
+            {
+              "kind": "point",
+              "at": "N2",
+              "step": "s3",
+              "label": "l/3",
+              "pos": "s",
+              "tone": "amber"
+            },
+            {
+              "kind": "point",
+              "at": "N3",
+              "step": "s3",
+              "label": "2l/3",
+              "pos": "s",
+              "tone": "amber"
+            },
+            {
+              "kind": "label",
+              "at": [
+                0,
+                -0.02
+              ],
+              "text": "second overtone: l = 3λ/2",
+              "step": "s3"
+            }
+          ],
+          "assert": [
+            "xm = l/2",
+            "xa = l/3",
+            "xa + xb = l",
+            "y1 > y2",
+            "y2 > y3"
+          ],
+          "answer": "xm"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "a382f81b",
+        "answer": {
+          "value": 0.5,
+          "label": "none; l/2; l/3, 2l/3"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

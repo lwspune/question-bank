@@ -93,6 +93,110 @@ describe("algebraSteps scene", () => {
     expect(parse({ ...id, lines: [id.lines[0], { ...id.lines[1], f: "x^2+x+1" }] })).toHaveProperty("error");
   });
 
+  // Matrices (2026-11-08): a row break written "\\" in TeX reached the database as
+  // a single backslash (one JSON escape too few), so every matrix drew as one row.
+  it("refuses a matrix whose row breaks lost a backslash, and keeps row vectors", () => {
+    const m = (tex: string) => ({ lines: [{ step: "s1", kind: "calc", tex, f: "1", value: "1" }, { step: "s2", kind: "note", tex: "x" }], answer: "1" });
+    expect(parse(m("A = \\begin{bmatrix} 1 & 2 \\\\ 3 & 4 \\end{bmatrix}"))).not.toHaveProperty("error");
+    expect(parse(m("X = \\begin{bmatrix} 1 & 2 & 3 \\end{bmatrix}"))).not.toHaveProperty("error");
+    expect(parse(m("A = \\begin{bmatrix} 1 & 2 \\ 3 & 4 \\end{bmatrix}")).error).toMatch(/line 1.*row break/);
+  });
+
+  // Calculus (2026-11-08): a derivative or an antiderivative is not equal to the
+  // line before it, so a chain of expr lines cannot carry it.
+  it("checks a derivative line against the expression before it", () => {
+    const d = (f: string) => ({
+      lines: [
+        { step: "s1", kind: "expr", tex: "y = \\sin(x^2)", f: "sin(x^2)" },
+        { step: "s2", kind: "deriv", tex: "\\dfrac{dy}{dx} = 2x\\cos(x^2)", f },
+        { step: "s3", kind: "expr", tex: "= 2x\\cos x^2", f: "2*x*cos(x^2)" },
+      ],
+      answer: "2",
+    });
+    expect(parse(d("cos(x^2)*2*x"))).not.toHaveProperty("error");
+    expect(parse(d("cos(x^2)*x")).error).toMatch(/line 2.*derivative/);
+  });
+
+  it("checks an antiderivative line by differentiating it back to the integrand", () => {
+    const i = (f: string) => ({
+      lines: [
+        { step: "s1", kind: "expr", tex: "\\int x e^{x}\\,dx", f: "x*exp(x)" },
+        { step: "s2", kind: "integral", tex: "= x e^x - e^x + c", f },
+      ],
+      answer: "1",
+    });
+    expect(parse(i("x*exp(x)-exp(x)"))).not.toHaveProperty("error");
+    // A constant of integration does not matter.
+    expect(parse(i("x*exp(x)-exp(x)+5"))).not.toHaveProperty("error");
+    expect(parse(i("x*exp(x)+exp(x)")).error).toMatch(/line 2.*integrand/);
+  });
+
+  it("checks a chain on a stated domain when the formulas only exist there", () => {
+    // ∫ 1/√(1 − x²) dx = sin⁻¹x: only x in (−1, 1) is real, which the fixed samples barely reach.
+    const asin = (f: string, domain?: unknown) => ({
+      lines: [
+        { step: "s1", kind: "expr", tex: "\\int \\frac{dx}{\\sqrt{1-x^2}}", f: "1/sqrt(1-x^2)", domain },
+        { step: "s2", kind: "integral", tex: "= \\sin^{-1}x + c", f },
+      ],
+      answer: "1",
+    });
+    expect(parse(asin("asin(x)")).error).toMatch(/too few points/);
+    expect(parse(asin("asin(x)", [-0.9, 0.9]))).not.toHaveProperty("error");
+    expect(parse(asin("acos(x)", [-0.9, 0.9])).error).toMatch(/line 2/);
+    // The domain carries on down the chain until a restart; it must be a real interval.
+    expect(parse(asin("asin(x)", [0.9, -0.9]))).toHaveProperty("error");
+    expect(parse(asin("asin(x)", [0, "a"]))).toHaveProperty("error");
+  });
+
+  it("starts a new chain on restart, so a second part is not compared with the first", () => {
+    const two = {
+      lines: [
+        { step: "s1", kind: "expr", tex: "(a)\\ x^2 - 1", f: "x^2-1" },
+        { step: "s2", kind: "expr", tex: "= (x-1)(x+1)", f: "(x-1)*(x+1)" },
+        { step: "s3", kind: "expr", tex: "(b)\\ x^3", f: "x^3", restart: true },
+      ],
+      answer: "1",
+    };
+    expect(parse(two)).not.toHaveProperty("error");
+    expect(parse({ ...two, lines: [two.lines[0], two.lines[1], { ...two.lines[2], restart: undefined }] }).error).toMatch(/line 3/);
+    // deriv and integral need an expr before them.
+    expect(parse({ lines: [{ step: "s1", kind: "deriv", tex: "y'", f: "1" }, { step: "s2", kind: "note", tex: "x" }], answer: "1" }).error).toMatch(/line 1/);
+  });
+
+  // Physics numbers (2026-11-08): 1.6 x 10^-19 C, 3.27 x 10^5 m/s. A fixed 1e-6
+  // window passes any tiny wrong value and refuses any big rounded one.
+  it("compares a tiny value by its own size, not to within 1e-6", () => {
+    const tiny = (value: string, sf?: number) => ({ lines: [{ step: "s1", kind: "calc", tex: "q = 1.6 \\times 10^{-19}", f: "1.6*10^(-19)", value, sf }, { step: "s2", kind: "note", tex: "x" }], answer: "1" });
+    expect(parse(tiny("1.6*10^(-19)", 2))).not.toHaveProperty("error");
+    expect(parse(tiny("1.7*10^(-19)", 2)).error).toMatch(/line 1/);
+    // Under 1e-14 a power of ten must say its sf, or a wrong value would pass the plain window.
+    expect(parse(tiny("1.7*10^(-19)")).error).toMatch(/line 1: .*needs sf/);
+    // Between 1e-14 and 1e-3 the value is compared by its own size.
+    const mid = (value: string) => ({ lines: [{ step: "s1", kind: "calc", tex: "r", f: "1.6*10^(-5)", value }, { step: "s2", kind: "note", tex: "x" }], answer: "1" });
+    expect(parse(mid("1.6*10^(-5)"))).not.toHaveProperty("error");
+    expect(parse(mid("1.7*10^(-5)")).error).toMatch(/line 1/);
+    // A worked value stated as exactly 0 keeps the old window (sin(pi) is 1.2e-16 in floating point).
+    expect(parse({ lines: [{ step: "s1", kind: "calc", tex: "\\sin\\pi = 0", f: "sin(pi)", value: "0" }, { step: "s2", kind: "note", tex: "x" }], answer: "0" })).not.toHaveProperty("error");
+    // Both sides floating-point zeros (a live HSC visual states cos 90° as cos(rad(90)) = 6e-17).
+    expect(parse({ lines: [{ step: "s1", kind: "calc", tex: "\\cos 90^\\circ = 0", f: "cos(rad(49))*cos(rad(41))-sin(rad(49))*sin(rad(41))", value: "cos(rad(90))" }, { step: "s2", kind: "note", tex: "x" }], answer: "0" })).not.toHaveProperty("error");
+    // A constant that small is checked with sf.
+    const h = (value: string) => ({ lines: [{ step: "s1", kind: "calc", tex: "h", f: "6.626*10^(-34)", value, sf: 3 }, { step: "s2", kind: "note", tex: "x" }], answer: "1" });
+    expect(parse(h("6.63*10^(-34)"))).not.toHaveProperty("error");
+    expect(parse(h("6.73*10^(-34)")).error).toMatch(/line 1/);
+  });
+
+  it("checks a value rounded to significant figures with sf", () => {
+    const line = (value: string, sf?: unknown) => ({ lines: [{ step: "s1", kind: "calc", tex: "v \\approx 3.27 \\times 10^5", f: "327045", value, sf }, { step: "s2", kind: "note", tex: "x" }], answer: "1" });
+    expect(parse(line("3.27*10^5", 3))).not.toHaveProperty("error");
+    expect(parse(line("3.28*10^5", 3)).error).toMatch(/line 1/);
+    expect(parse(line("3.27*10^5")).error).toMatch(/line 1/);
+    const small = { lines: [{ step: "s1", kind: "calc", tex: "\\lambda \\approx 1.23 \\times 10^{-10}", f: "1.2269*10^(-10)", value: "1.23*10^(-10)", sf: 3 }, { step: "s2", kind: "note", tex: "x" }], answer: "1" };
+    expect(parse(small)).not.toHaveProperty("error");
+    expect(parse(line("3.27*10^5", 0))).toHaveProperty("error");
+    expect(parse(line("3.27*10^5", 7))).toHaveProperty("error");
+    expect(parse({ lines: [{ ...line("3.27*10^5", 3).lines[0], dp: 0 }, line("1").lines[1]], answer: "1" }).error).toMatch(/dp or sf/);
+  });
+
   it("checks a calc line on its own: the formula must equal the value it states, to the shown decimals", () => {
     const calc = {
       lines: [

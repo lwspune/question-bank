@@ -1,0 +1,4440 @@
+{
+ "//": "Assembled from agent drafts (algebraSteps).",
+ "visuals": [
+  {
+   "id": "01785ad6-be13-45b1-8581-58f56012f30b",
+   "option": "C",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "K_H = 0.159\\ \\text{mol dm}^{-3}\\text{ atm}^{-1},\\quad P = 0.164\\ \\text{atm}",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "S = K_H P",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "S = {{1:0.159}} \\times {{2:0.164}} = 0.0261\\ \\text{mol dm}^{-3}",
+       "f": "0.159*0.164",
+       "value": "0.0261",
+       "dp": 4,
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "S \\approx 0.026\\ \\text{M}",
+       "f": "0.159*0.164",
+       "value": "0.026",
+       "dp": 3,
+       "step": "s3"
+      }
+     ],
+     "answer": "0.026"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "34b56e35",
+    "answer": {
+     "value": 0.026,
+     "label": "0.026 M"
+    }
+   }
+  },
+  {
+   "id": "12a01c58-168a-403e-a877-06976b654c72",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\text{urea: } W_2 = 1.02,\\ W_1 = 98.5,\\ \\Delta T_f = 0.211,\\ M_2 = 60",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "1000K_f = \\dfrac{M_2\\,\\Delta T_f\\,W_1}{W_2}",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{60 \\times 0.211 \\times 98.5}{1.02} = {{1:1222.56}}",
+       "f": "60*0.211*98.5/1.02",
+       "value": "1222.56",
+       "dp": 2,
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{0.34 \\times 86}{1.609} = {{2:18.173}}",
+       "f": "0.34*86/1.609",
+       "value": "18.173",
+       "dp": 3,
+       "step": "s4"
+      },
+      {
+       "kind": "calc",
+       "tex": "M_2' = \\dfrac{{{1:1222.56}}}{{{2:18.173}}} = 67.3\\ \\text{g mol}^{-1}",
+       "f": "1222.56/18.173",
+       "value": "67.3",
+       "dp": 1,
+       "step": "s5"
+      }
+     ],
+     "answer": "67.3"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 7,
+      "beats": [
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "d7343527",
+    "answer": {
+     "value": 67.3,
+     "label": "67.3 g/mol"
+    }
+   }
+  },
+  {
+   "id": "133e3a75-a45a-4eb3-ac15-0cbd0dd3519d",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "calc",
+       "tex": "K_H = \\dfrac{6.85 \\times 10^{-4}}{1} = 6.85 \\times 10^{-4}\\ \\text{mol L}^{-1}\\text{bar}^{-1}",
+       "f": "6.85*10^(-4)/1",
+       "value": "6.85*10^(-4)",
+       "sf": 3,
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "S = {{1:6.85 \\times 10^{-4}}} \\times {{2:0.75}} = 5.138 \\times 10^{-4}\\ \\text{mol L}^{-1}",
+       "f": "6.85*10^(-4)*0.75",
+       "value": "5.138*10^(-4)",
+       "sf": 4,
+       "step": "s2"
+      }
+     ],
+     "answer": "6.85*10^(-4)"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "748f9cf7",
+    "answer": {
+     "value": 0.000685,
+     "label": "6.85×10⁻⁴; 5.138×10⁻⁴"
+    }
+   }
+  },
+  {
+   "id": "148111cb-4257-4469-9221-0e3a64bc5d85",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\text{urea: } i = 1,\\quad K_f = 1.86,\\quad m = 0.1",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\Delta T_f = 1.86 \\times 0.1 = {{1:0.186}}\\ \\text{K}",
+       "f": "1.86*0.1",
+       "value": "0.186",
+       "dp": 3,
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "T_f = 0 - {{1:0.186}} = -0.186\\ {}^{\\circ}\\text{C}",
+       "f": "0-0.186",
+       "value": "-0.186",
+       "dp": 3,
+       "step": "s3"
+      }
+     ],
+     "answer": "-0.186"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "d9f0803d",
+    "answer": {
+     "value": -0.186,
+     "label": "−0.186 °C"
+    }
+   }
+  },
+  {
+   "id": "15c96920-065a-47d6-8b61-9fa9f7b25297",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "100\\ \\text{g}: \\ 30\\ \\text{g toluene},\\ 70\\ \\text{g benzene}",
+       "note": "M = 92 and 78 g/mol",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "n_{\\text{tol}} = \\dfrac{30}{92} = 0.3261\\ \\text{mol}",
+       "f": "30/92",
+       "value": "0.3261",
+       "dp": 4,
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "n_{\\text{ben}} = \\dfrac{70}{78} = 0.8974\\ \\text{mol}",
+       "f": "70/78",
+       "value": "0.8974",
+       "dp": 4,
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "x_{\\text{tol}} = \\dfrac{0.3261}{1.2235} = 0.2665",
+       "f": "0.3261/1.2235",
+       "value": "0.2665",
+       "dp": 4,
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "x_{\\text{ben}} = 1 - 0.2665 = 0.7335",
+       "f": "1-0.2665",
+       "value": "0.7335",
+       "dp": 4,
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "P_{\\text{tol}} = 36.7 \\times 0.2665 = 9.78\\ \\text{mm Hg}",
+       "f": "36.7*0.2665",
+       "value": "9.78",
+       "dp": 2,
+       "step": "s4"
+      },
+      {
+       "kind": "calc",
+       "tex": "P_{\\text{ben}} = 118.2 \\times 0.7335 = 86.70\\ \\text{mm Hg}",
+       "f": "118.2*0.7335",
+       "value": "86.70",
+       "dp": 2,
+       "step": "s4"
+      },
+      {
+       "kind": "calc",
+       "tex": "P = 9.78 + 86.70 = 96.5\\ \\text{mm Hg}",
+       "f": "9.78+86.70",
+       "value": "96.5",
+       "dp": 1,
+       "step": "s5"
+      }
+     ],
+     "answer": "96.5"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 6,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 9,
+      "beats": [
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "d27d9e81",
+    "answer": {
+     "value": 96.5,
+     "label": "96.5; 86.7; 9.78 mm Hg"
+    }
+   }
+  },
+  {
+   "id": "1637c0e1-4b75-4db6-925d-9b230b1bfb1b",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "5\\ \\text{g solute in } 95\\ \\text{g water} = 0.095\\ \\text{kg}",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "m_{\\text{sugar}} = \\dfrac{5/342}{0.095} = 0.15389",
+       "f": "(5/342)/0.095",
+       "value": "0.15389",
+       "dp": 5,
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "m_{\\text{glucose}} = \\dfrac{5/180}{0.095} = 0.29240",
+       "f": "(5/180)/0.095",
+       "value": "0.29240",
+       "dp": 5,
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\Delta T_f(\\text{sugar}) = 273.15 - 271 = 2.15\\ \\text{K}",
+       "f": "273.15-271",
+       "value": "2.15",
+       "dp": 2,
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\Delta T_f(\\text{glucose}) = 2.15 \\times \\dfrac{342}{180} = 4.085\\ \\text{K}",
+       "f": "2.15*342/180",
+       "value": "4.085",
+       "dp": 3,
+       "step": "s4"
+      },
+      {
+       "kind": "calc",
+       "tex": "T_f = 273.15 - 4.085 = 269.07\\ \\text{K}",
+       "f": "273.15-4.085",
+       "value": "269.07",
+       "dp": 2,
+       "step": "s5"
+      }
+     ],
+     "answer": "269.07"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 7,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 9,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 12,
+      "beats": [
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "d52e4d95",
+    "answer": {
+     "value": 269.07,
+     "label": "269.07 K"
+    }
+   }
+  },
+  {
+   "id": "1ae03247-5a6c-4d0e-a00e-d91726da0664",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "S = K_H P",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "K_H = 0.159\\ \\text{mol dm}^{-3}\\text{bar}^{-1},\\quad P = 0.164\\ \\text{bar}",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "S = {{1:0.159}} \\times {{2:0.164}} = 0.0261\\ \\text{mol dm}^{-3}",
+       "f": "0.159*0.164",
+       "value": "0.0261",
+       "dp": 4,
+       "step": "s3"
+      }
+     ],
+     "answer": "0.0261"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "e6e20158",
+    "answer": {
+     "value": 0.0261,
+     "label": "0.0261 mol/dm³"
+    }
+   }
+  },
+  {
+   "id": "1b459279-f48f-4431-924e-a0a7a746c293",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\text{urea: } W_2 = 10,\\ W_1 = 998,\\ \\Delta T_f = 0.21,\\ M_2 = 60",
+       "note": "second solute: 1.6 g in 86 g, 0.34 K",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "\\dfrac{M_2\\,\\Delta T_f\\,W_1}{W_2} = \\dfrac{M_2'\\,\\Delta T_f'\\,W_1'}{W_2'}",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{60 \\times 0.21 \\times 998}{10} = {{1:1257.48}}",
+       "f": "60*0.21*998/10",
+       "value": "1257.48",
+       "dp": 2,
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{0.34 \\times 86}{1.6} = {{2:18.275}}",
+       "f": "0.34*86/1.6",
+       "value": "18.275",
+       "dp": 3,
+       "step": "s4"
+      },
+      {
+       "kind": "calc",
+       "tex": "M_2' = \\dfrac{1257.48}{18.275} = 68.8\\ \\text{g mol}^{-1}",
+       "f": "1257.48/18.275",
+       "value": "68.8",
+       "dp": 1,
+       "step": "s5"
+      }
+     ],
+     "answer": "68.8"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 8,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 9,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 10,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 11,
+      "beats": [
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "90769bbc",
+    "answer": {
+     "value": 68.8,
+     "label": "68.8 g/mol"
+    }
+   }
+  },
+  {
+   "id": "1d02ee8c-cabe-42c0-958d-4221e66c1025",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "calc",
+       "tex": "\\Delta T_f(\\text{obs}) = 0 - (-0.021) = 0.021\\ \\text{K}",
+       "f": "0-(-0.021)",
+       "value": "0.021",
+       "dp": 3,
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\Delta T_f(\\text{calc}) = 1.86 \\times 0.01 = 0.0186\\ \\text{K}",
+       "f": "1.86*0.01",
+       "value": "0.0186",
+       "dp": 4,
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "i = \\dfrac{0.021}{0.0186} = 1.129",
+       "f": "0.021/0.0186",
+       "value": "1.129",
+       "dp": 3,
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\alpha = \\dfrac{i - 1}{n - 1} = \\dfrac{1.129 - 1}{2 - 1} = 0.129",
+       "f": "(1.129-1)/(2-1)",
+       "value": "0.129",
+       "dp": 3,
+       "step": "s4"
+      }
+     ],
+     "answer": "0.129"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 11,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "ad0b04fb",
+    "answer": {
+     "value": 0.129,
+     "label": "α = 0.129 (12.9%)"
+    }
+   }
+  },
+  {
+   "id": "2158c338-f4af-419d-9165-0eea98d1f484",
+   "option": "B",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "calc",
+       "tex": "\\pi_{\\text{in}} = 0.3 \\times 0.0821 \\times 310 = {{1:7.64}}\\ \\text{atm}",
+       "f": "0.3*0.0821*310",
+       "value": "7.64",
+       "dp": 2,
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\pi_{\\text{out}} = 2 \\times 0.1 \\times 0.0821 \\times 310 = {{2:5.09}}\\ \\text{atm}",
+       "f": "2*0.1*0.0821*310",
+       "value": "5.09",
+       "dp": 2,
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\pi = {{1:\\pi_{\\text{in}}}} - {{2:\\pi_{\\text{out}}}} = (0.3 - 0.2) \\times 0.0821 \\times 310 \\approx 2.545\\ \\text{atm}",
+       "f": "(0.3-0.2)*0.0821*310",
+       "value": "2.545",
+       "dp": 3,
+       "step": "s3"
+      }
+     ],
+     "answer": "2.54"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "5812a03c",
+    "answer": {
+     "value": 2.54,
+     "label": "2.54 atm"
+    }
+   }
+  },
+  {
+   "id": "21b071db-b31b-4463-afcc-c2a800d09d35",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\Delta T_f = K_f\\,m",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "m = \\dfrac{W_2/M_2}{W_1/1000} = \\dfrac{1000\\,W_2}{M_2 W_1}",
+       "f": "(W2/M2)/(W1/1000)",
+       "value": "1000*W2/(M2*W1)",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\Delta T_f = \\dfrac{1000\\,K_f W_2}{M_2 W_1}",
+       "f": "Kf*(W2/M2)/(W1/1000)",
+       "value": "1000*Kf*W2/(M2*W1)",
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "M_2 = \\dfrac{1000\\,K_f W_2}{\\Delta T_f\\,W_1}",
+       "f": "1000*Kf*W2/(dT*W1)",
+       "value": "M2",
+       "step": "s4"
+      }
+     ],
+     "answer": "M2",
+     "vars": {
+      "Kf": "1.86",
+      "W2": "2",
+      "W1": "100",
+      "M2": "60",
+      "dT": "Kf*1000*W2/(M2*W1)"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 7,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 8,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "86130bf6",
+    "answer": {
+     "value": 60,
+     "label": "M2 = 1000KfW2/(ΔTf W1)"
+    }
+   }
+  },
+  {
+   "id": "21b27d83-680e-48f3-9491-c77c11ed7614",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\Delta T_f = K_f\\,m",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "m = \\dfrac{w_2/M_2}{w_1/1000} = \\dfrac{1000\\,w_2}{M_2 w_1}",
+       "f": "(W2/M2)/(W1/1000)",
+       "value": "1000*W2/(M2*W1)",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\Delta T_f = \\dfrac{1000\\,K_f w_2}{M_2 w_1}",
+       "f": "Kf*(W2/M2)/(W1/1000)",
+       "value": "1000*Kf*W2/(M2*W1)",
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "M_2 = \\dfrac{1000\\,K_f w_2}{\\Delta T_f\\,w_1}",
+       "f": "1000*Kf*W2/(dT*W1)",
+       "value": "M2",
+       "step": "s4"
+      }
+     ],
+     "answer": "M2",
+     "vars": {
+      "Kf": "1.86",
+      "W2": "2",
+      "W1": "100",
+      "M2": "60",
+      "dT": "Kf*1000*W2/(M2*W1)"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 12,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 15,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 17,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "4cb9655e",
+    "answer": {
+     "value": 60,
+     "label": "M2 = 1000Kfw2/(ΔTf w1)"
+    }
+   }
+  },
+  {
+   "id": "2294b206-6b4e-41b8-b4d4-1ae1bba235f2",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\pi V = n_2 R T",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\pi V = \\dfrac{W_2}{M_2}\\,RT",
+       "f": "Pi*V",
+       "value": "(W2/M2)*R*T",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\pi = \\dfrac{W_2 RT}{M_2 V}",
+       "f": "Pi",
+       "value": "W2*R*T/(M2*V)",
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "M_2 = \\dfrac{W_2 RT}{\\pi V}",
+       "f": "W2*R*T/(Pi*V)",
+       "value": "M2",
+       "step": "s4"
+      }
+     ],
+     "answer": "M2",
+     "vars": {
+      "W2": "2",
+      "M2": "60",
+      "R": "0.0821",
+      "T": "300",
+      "V": "2",
+      "Pi": "W2*R*T/(M2*V)"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 6,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 7,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "a2e3c6f3",
+    "answer": {
+     "value": 60,
+     "label": "M2 = W2RT/(πV)"
+    }
+   }
+  },
+  {
+   "id": "2af8fa8b-186d-4f79-9507-ffbc0497de52",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\dfrac{P_1^0 - P_1}{P_1^0} = \\dfrac{W_2 M_1}{M_2 W_1}",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "P_1^0 = 640,\\ P_1 = 600,\\ W_1 = 49\\ \\text{g},\\ W_2 = 2.315\\ \\text{g},\\ M_1 = 78",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{640 - 600}{640} = \\dfrac{40}{640} = 0.0625",
+       "f": "40/640",
+       "value": "0.0625",
+       "dp": 4,
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "M_2 = \\dfrac{2.315 \\times 78 \\times 640}{40 \\times 49} = 58.96\\ \\text{g mol}^{-1}",
+       "f": "2.315*78*640/(40*49)",
+       "value": "58.96",
+       "dp": 2,
+       "step": "s4"
+      }
+     ],
+     "answer": "58.96"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 7,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 8,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "3470c567",
+    "answer": {
+     "value": 58.96,
+     "label": "58.96 g/mol"
+    }
+   }
+  },
+  {
+   "id": "318237ad-d777-4c96-bc30-5131e2749583",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\Delta T_f = K_f\\,m",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "m = \\dfrac{W_2/M_2}{W_1/1000} = \\dfrac{1000\\,W_2}{M_2 W_1}",
+       "f": "(W2/M2)/(W1/1000)",
+       "value": "1000*W2/(M2*W1)",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\Delta T_f = \\dfrac{1000\\,K_f W_2}{M_2 W_1}",
+       "f": "Kf*(W2/M2)/(W1/1000)",
+       "value": "1000*Kf*W2/(M2*W1)",
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "M_2 = \\dfrac{1000\\,K_f W_2}{\\Delta T_f\\,W_1}",
+       "f": "1000*Kf*W2/(dT*W1)",
+       "value": "M2",
+       "step": "s4"
+      }
+     ],
+     "answer": "M2",
+     "vars": {
+      "Kf": "1.86",
+      "W2": "2",
+      "W1": "100",
+      "M2": "60",
+      "dT": "Kf*1000*W2/(M2*W1)"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 7,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 9,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 11,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "727e393a",
+    "answer": {
+     "value": 60,
+     "label": "M2 = 1000KfW2/(ΔTf W1)"
+    }
+   }
+  },
+  {
+   "id": "327d3423-02df-4ed9-8819-c3f3e4bf2577",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "calc",
+       "tex": "i = \\dfrac{2}{1} = 2",
+       "f": "2/1",
+       "value": "2",
+       "dp": 0,
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\Delta T_f = 0 - (-3.72) = 3.72\\ \\text{K}",
+       "f": "0-(-3.72)",
+       "value": "3.72",
+       "dp": 2,
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "m = \\dfrac{3.72}{2 \\times 1.86} = 1.00\\ \\text{mol kg}^{-1}",
+       "f": "3.72/(2*1.86)",
+       "value": "1.00",
+       "dp": 2,
+       "step": "s3"
+      }
+     ],
+     "answer": "1.00"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 7,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "62115e9e",
+    "answer": {
+     "value": 1,
+     "label": "1.00 mol/kg"
+    }
+   }
+  },
+  {
+   "id": "3306a05a-03c4-4387-b3ab-f27e2ff37ebb",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "calc",
+       "tex": "S = \\dfrac{3.8 \\times 10^{-3}}{32} = 1.1875 \\times 10^{-4}\\ \\text{mol L}^{-1}",
+       "f": "3.8*10^(-3)/32",
+       "value": "1.1875*10^(-4)",
+       "sf": 5,
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "K_H = \\dfrac{2.2 \\times 10^{-3}}{1} = 2.2 \\times 10^{-3}\\ \\text{mol L}^{-1}\\text{atm}^{-1}",
+       "f": "2.2*10^(-3)/1",
+       "value": "2.2*10^(-3)",
+       "sf": 2,
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "P = \\dfrac{S}{K_H} = \\dfrac{1.1875 \\times 10^{-4}}{2.2 \\times 10^{-3}} = 0.054\\ \\text{atm}",
+       "f": "1.1875*10^(-4)/(2.2*10^(-3))",
+       "value": "0.054",
+       "dp": 3,
+       "step": "s3"
+      }
+     ],
+     "answer": "0.054"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 6,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "3e967ec7",
+    "answer": {
+     "value": 0.054,
+     "label": "0.054 atm"
+    }
+   }
+  },
+  {
+   "id": "362e237e-4519-4fd3-aaf4-d048b7d42bc9",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "P_1^0 = 450,\\ P_2^0 = 700,\\ P = 600\\ \\text{mm Hg}",
+       "step": "s1"
+      },
+      {
+       "kind": "eq",
+       "tex": "600 = 250x_2 + 450",
+       "lhs": "250*x+450",
+       "rhs": "600",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "x_2 = \\dfrac{150}{250} = 0.6",
+       "f": "150/250",
+       "value": "0.6",
+       "dp": 1,
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "x_1 = 1 - 0.6 = 0.4",
+       "f": "1-0.6",
+       "value": "0.4",
+       "dp": 1,
+       "step": "s4"
+      },
+      {
+       "kind": "calc",
+       "tex": "y_1 = \\dfrac{450 \\times 0.4}{600} = 0.3",
+       "f": "450*0.4/600",
+       "value": "0.3",
+       "dp": 1,
+       "step": "s5"
+      },
+      {
+       "kind": "calc",
+       "tex": "y_2 = 1 - 0.3 = 0.7",
+       "f": "1-0.3",
+       "value": "0.7",
+       "dp": 1,
+       "step": "s5"
+      }
+     ],
+     "answer": "0.4",
+     "roots": [
+      "0.6"
+     ]
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 6,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 10,
+      "beats": [
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "e7424eb1",
+    "answer": {
+     "value": 0.4,
+     "label": "x1=0.4,x2=0.6; y1=0.3,y2=0.7"
+    }
+   }
+  },
+  {
+   "id": "3b7fc184-c613-44aa-9649-8fa3fb5314aa",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "P_1^0 = 640,\\quad P_1 = 600",
+       "note": "x₂ = (P₁⁰ − P₁)/P₁⁰",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "x_2 = \\dfrac{640 - 600}{640} = \\dfrac{40}{640} = 0.0625",
+       "f": "(640-600)/640",
+       "value": "0.0625",
+       "dp": 4,
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "640 \\times (1 - 0.0625) = 600\\ \\text{mm Hg}",
+       "f": "640*(1-0.0625)",
+       "value": "600",
+       "dp": 0,
+       "note": "check: x₁ = 0.9375 gives P₁ = 600",
+       "step": "s3"
+      }
+     ],
+     "answer": "0.0625"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 7,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "9fe0481c",
+    "answer": {
+     "value": 0.0625,
+     "label": "x2 = 0.0625"
+    }
+   }
+  },
+  {
+   "id": "3bf36220-7ea9-4894-95ed-c8c3ce924a00",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\mathrm{A_xB_y} \\rightleftharpoons x\\mathrm{A} + y\\mathrm{B},\\quad \\alpha",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "(1-\\alpha) + x\\alpha + y\\alpha = 1 + \\alpha(n-1)",
+       "f": "(1-a)+nx*a+ny*a",
+       "value": "1+a*(n-1)",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "i = \\dfrac{1 + \\alpha(n-1)}{1}",
+       "f": "(1+a*(n-1))/1",
+       "value": "i",
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\alpha = \\dfrac{i - 1}{n - 1}",
+       "f": "(i-1)/(n-1)",
+       "value": "a",
+       "step": "s4"
+      }
+     ],
+     "answer": "a",
+     "vars": {
+      "a": "0.3",
+      "nx": "1",
+      "ny": "2",
+      "n": "nx+ny",
+      "i": "1+a*(n-1)"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 6,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 9,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 11,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "f2b9e22b",
+    "answer": {
+     "value": 0.3,
+     "label": "α = (i−1)/(n−1)"
+    }
+   }
+  },
+  {
+   "id": "52d35bd6-49e3-42e7-8589-9068697d6e0a",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\dfrac{P_1^0 - P_1}{P_1^0} = \\dfrac{W_2 M_1}{M_2 W_1}",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "W_2 = 394,\\ W_1 = 622,\\ M_1 = 18,\\ P_1 = 30.74,\\ P_1^0 = 31.8",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{31.8 - 30.74}{31.8} = 0.0333",
+       "f": "(31.8-30.74)/31.8",
+       "value": "0.0333",
+       "dp": 4,
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{394 \\times 18}{622} = 11.4",
+       "f": "394*18/622",
+       "value": "11.4",
+       "dp": 1,
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "M_2 = \\dfrac{11.4}{0.0333} = 342\\ \\text{g mol}^{-1}",
+       "f": "11.4/0.0333",
+       "value": "342",
+       "dp": 0,
+       "step": "s4"
+      }
+     ],
+     "answer": "342"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 6,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "1eba46e8",
+    "answer": {
+     "value": 342,
+     "label": "342 g/mol"
+    }
+   }
+  },
+  {
+   "id": "5441035c-68b8-4d69-9d8e-9cc1f45da18a",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\pi = \\dfrac{n_2 RT}{V}",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\pi = \\dfrac{(W_2/M_2)\\,RT}{V}",
+       "f": "Pi",
+       "value": "(W2/M2)*R*T/V",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\pi = \\dfrac{W_2 RT}{M_2 V}",
+       "f": "Pi",
+       "value": "W2*R*T/(M2*V)",
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "M_2 = \\dfrac{W_2 RT}{\\pi V}",
+       "f": "W2*R*T/(Pi*V)",
+       "value": "M2",
+       "step": "s3"
+      }
+     ],
+     "answer": "M2",
+     "vars": {
+      "W2": "2",
+      "M2": "60",
+      "R": "0.0821",
+      "T": "300",
+      "V": "2",
+      "Pi": "W2*R*T/(M2*V)"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "63ffe86b",
+    "answer": {
+     "value": 60,
+     "label": "M2 = W2RT/(πV)"
+    }
+   }
+  },
+  {
+   "id": "553b3284-a756-44dc-a3bf-bebcb49f46ce",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "calc",
+       "tex": "i = \\dfrac{2}{1} = 2",
+       "f": "2/1",
+       "value": "2",
+       "dp": 0,
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\Delta T_f = 0 - (-2.95) = 2.95\\ \\text{K}",
+       "f": "0-(-2.95)",
+       "value": "2.95",
+       "dp": 2,
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "m = \\dfrac{2.95}{2 \\times 1.86} = 0.793\\ \\text{mol kg}^{-1}",
+       "f": "2.95/(2*1.86)",
+       "value": "0.793",
+       "dp": 3,
+       "step": "s3"
+      }
+     ],
+     "answer": "0.793"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "dd3d1ca2",
+    "answer": {
+     "value": 0.793,
+     "label": "0.793 mol/kg"
+    }
+   }
+  },
+  {
+   "id": "568ea38b-1cd8-4344-99c2-f2e5dadedabd",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "100\\ \\text{g}: \\ 30\\ \\text{g toluene},\\ 70\\ \\text{g benzene}",
+       "note": "M = 92 and 78 g/mol",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "n_{\\text{tol}} = \\dfrac{30}{92} = 0.3261\\ \\text{mol}",
+       "f": "30/92",
+       "value": "0.3261",
+       "dp": 4,
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "n_{\\text{ben}} = \\dfrac{70}{78} = 0.8974\\ \\text{mol}",
+       "f": "70/78",
+       "value": "0.8974",
+       "dp": 4,
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\text{total} = 0.3261 + 0.8974 = 1.2235\\ \\text{mol}",
+       "f": "0.3261+0.8974",
+       "value": "1.2235",
+       "dp": 4,
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "x_{\\text{tol}} = \\dfrac{0.3261}{1.2235} = 0.2665",
+       "f": "0.3261/1.2235",
+       "value": "0.2665",
+       "dp": 4,
+       "step": "s4"
+      },
+      {
+       "kind": "calc",
+       "tex": "x_{\\text{ben}} = \\dfrac{0.8974}{1.2235} = 0.7335",
+       "f": "0.8974/1.2235",
+       "value": "0.7335",
+       "dp": 4,
+       "step": "s4"
+      },
+      {
+       "kind": "calc",
+       "tex": "p_{\\text{tol}} = 36.7 \\times 0.2665 = 9.78\\ \\text{mmHg}",
+       "f": "36.7*0.2665",
+       "value": "9.78",
+       "dp": 2,
+       "step": "s5"
+      },
+      {
+       "kind": "calc",
+       "tex": "p_{\\text{ben}} = 118.2 \\times 0.7335 = 86.70\\ \\text{mmHg}",
+       "f": "118.2*0.7335",
+       "value": "86.70",
+       "dp": 2,
+       "step": "s6"
+      },
+      {
+       "kind": "calc",
+       "tex": "9.78 + 86.70 = 96.48\\ \\text{mmHg}",
+       "f": "9.78+86.70",
+       "value": "96.48",
+       "dp": 2,
+       "step": "s7"
+      }
+     ],
+     "answer": "9.78"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 6,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 8,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 11,
+      "beats": [
+       "s5"
+      ]
+     },
+     {
+      "from": 13,
+      "beats": [
+       "s6"
+      ]
+     },
+     {
+      "from": 15,
+      "beats": [
+       "s7"
+      ]
+     }
+    ],
+    "fingerprint": "d2ef4e15",
+    "answer": {
+     "value": 9.78,
+     "label": "9.78; 86.70 mmHg"
+    }
+   }
+  },
+  {
+   "id": "56e8972b-4e83-47c5-ae55-617f5523dd6d",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\pi = 12.16\\ \\text{atm},\\ T = 298.15\\ \\text{K},\\ \\Delta T_f = 1.03\\ \\text{K}",
+       "note": "density 1.063 g/mL",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "M = \\dfrac{12.16}{0.0821 \\times 298.15} = 0.4968\\ \\text{mol dm}^{-3}",
+       "f": "12.16/(0.0821*298.15)",
+       "value": "0.4968",
+       "dp": 4,
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "m = \\dfrac{1.03}{1.86} = 0.5538\\ \\text{mol kg}^{-1}",
+       "f": "1.03/1.86",
+       "value": "0.5538",
+       "dp": 4,
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "W_1 = \\dfrac{0.4968}{0.5538} = 0.8971\\ \\text{kg} = 897.1\\ \\text{g}",
+       "f": "0.4968/0.5538",
+       "value": "0.8971",
+       "dp": 4,
+       "step": "s4"
+      },
+      {
+       "kind": "calc",
+       "tex": "W_2 = 1063 - 897.1 = 165.9\\ \\text{g}",
+       "f": "1063-897.1",
+       "value": "165.9",
+       "dp": 1,
+       "step": "s5"
+      },
+      {
+       "kind": "calc",
+       "tex": "M_2 = \\dfrac{165.9}{0.4968} = 334\\ \\text{g mol}^{-1}",
+       "f": "165.9/0.4968",
+       "value": "334",
+       "dp": 0,
+       "step": "s6"
+      }
+     ],
+     "answer": "334"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 6,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 8,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 10,
+      "beats": [
+       "s5"
+      ]
+     },
+     {
+      "from": 12,
+      "beats": [
+       "s6"
+      ]
+     }
+    ],
+    "fingerprint": "184c36be",
+    "answer": {
+     "value": 334,
+     "label": "334 g/mol"
+    }
+   }
+  },
+  {
+   "id": "60254f40-7b66-4cab-8241-e919494fcebf",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "W_2 = \\dfrac{\\pi V M_2}{iRT}",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\pi V M_2 = 0.75 \\times 2.5 \\times 111 = 208.125",
+       "f": "0.75*2.5*111",
+       "value": "208.125",
+       "dp": 3,
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "iRT = 2.47 \\times 0.0821 \\times 300 = 60.84",
+       "f": "2.47*0.0821*300",
+       "value": "60.84",
+       "dp": 2,
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "W_2 = \\dfrac{208.125}{60.84} = 3.42\\ \\text{g}",
+       "f": "208.125/60.84",
+       "value": "3.42",
+       "dp": 2,
+       "step": "s3"
+      }
+     ],
+     "answer": "3.42"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 7,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "98a7dd64",
+    "answer": {
+     "value": 3.42,
+     "label": "3.42 g"
+    }
+   }
+  },
+  {
+   "id": "602e9bc0-c726-49f5-953d-562b952854fc",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\mathrm{A_xB_y}\\ \\text{gives } n = x + y\\ \\text{ions, degree } \\alpha",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "(1-\\alpha) + x\\alpha + y\\alpha = 1 + \\alpha(n-1)",
+       "f": "(1-a)+nx*a+ny*a",
+       "value": "1+a*(n-1)",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "i = \\dfrac{1 + \\alpha(n-1)}{1}",
+       "f": "(1+a*(n-1))/1",
+       "value": "i",
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\alpha = \\dfrac{i - 1}{n - 1}",
+       "f": "(i-1)/(n-1)",
+       "value": "a",
+       "step": "s4"
+      }
+     ],
+     "answer": "a",
+     "vars": {
+      "a": "0.3",
+      "nx": "1",
+      "ny": "2",
+      "n": "nx+ny",
+      "i": "1+a*(n-1)"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "4d7c4cad",
+    "answer": {
+     "value": 0.3,
+     "label": "α = (i−1)/(n−1)"
+    }
+   }
+  },
+  {
+   "id": "6368d858-141e-4659-ab9d-b81e97bb7adb",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\Delta T_b = K_b\\,m",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "m = \\dfrac{W_2/M_2}{W_1/1000} = \\dfrac{1000\\,W_2}{M_2 W_1}",
+       "f": "(W2/M2)/(W1/1000)",
+       "value": "1000*W2/(M2*W1)",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\Delta T_b = \\dfrac{1000\\,K_b W_2}{M_2 W_1}",
+       "f": "Kf*(W2/M2)/(W1/1000)",
+       "value": "1000*Kf*W2/(M2*W1)",
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "M_2 = \\dfrac{1000\\,K_b W_2}{\\Delta T_b\\,W_1}",
+       "f": "1000*Kf*W2/(dT*W1)",
+       "value": "M2",
+       "step": "s4"
+      }
+     ],
+     "answer": "M2",
+     "vars": {
+      "Kf": "1.86",
+      "W2": "2",
+      "W1": "100",
+      "M2": "60",
+      "dT": "Kf*1000*W2/(M2*W1)"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 7,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 8,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "439e03e6",
+    "answer": {
+     "value": 60,
+     "label": "M2 = 1000KbW2/(ΔTb W1)"
+    }
+   }
+  },
+  {
+   "id": "72779b53-fb85-427a-a20d-278762d02c14",
+   "option": "D",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "n_1 = 2,\\quad n_2 = 2,\\quad P_1^0 = 24\\ \\text{mm Hg}",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "x_1 = \\dfrac{2}{2 + 2} = 0.5",
+       "f": "2/(2+2)",
+       "value": "0.5",
+       "dp": 1,
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "P_1 = 24 \\times 0.5 = 12\\ \\text{mm Hg}",
+       "f": "24*0.5",
+       "value": "12",
+       "dp": 0,
+       "step": "s3"
+      }
+     ],
+     "answer": "12"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "1eb86e8f",
+    "answer": {
+     "value": 12,
+     "label": "12 mm Hg"
+    }
+   }
+  },
+  {
+   "id": "74530464-941d-4afc-9541-5b9056f4e69e",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "P_1^0 = 640,\\ P_1 = 600,\\ W_2 = 2.175\\ \\text{g},\\ W_1 = 39\\ \\text{g}",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "M_1 = 6 \\times 12 + 6 \\times 1 = 78\\ \\text{g mol}^{-1}",
+       "f": "6*12+6*1",
+       "value": "78",
+       "dp": 0,
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{640 - 600}{640} = \\dfrac{40}{640} = 0.0625",
+       "f": "40/640",
+       "value": "0.0625",
+       "dp": 4,
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "M_2 = \\dfrac{2.175 \\times 78 \\times 640}{40 \\times 39} = 69.6\\ \\text{g mol}^{-1}",
+       "f": "2.175*78*640/(40*39)",
+       "value": "69.6",
+       "dp": 1,
+       "step": "s4"
+      }
+     ],
+     "answer": "69.6"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 7,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 10,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "e4f86927",
+    "answer": {
+     "value": 69.6,
+     "label": "69.6 g/mol"
+    }
+   }
+  },
+  {
+   "id": "763e4f1e-933b-48ff-bf41-8bc611050838",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "calc",
+       "tex": "\\Delta T_b = 82.60 - 77.06 = 5.54\\ {}^{\\circ}\\text{C}",
+       "f": "82.60-77.06",
+       "value": "5.54",
+       "dp": 2,
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "M_2 = \\dfrac{1000\\,K_b w_2}{\\Delta T_b\\,w_1}",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "1000 \\times 2.77 \\times 50 = 138500",
+       "f": "1000*2.77*50",
+       "value": "138500",
+       "dp": 0,
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "5.54 \\times 150 = 831",
+       "f": "5.54*150",
+       "value": "831",
+       "dp": 0,
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "M_2 = \\dfrac{138500}{831} = 166.7\\ \\text{g mol}^{-1}",
+       "f": "138500/831",
+       "value": "166.7",
+       "dp": 1,
+       "step": "s4"
+      }
+     ],
+     "answer": "166.7"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 7,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 8,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "2c75d209",
+    "answer": {
+     "value": 166.7,
+     "label": "166.7 g/mol"
+    }
+   }
+  },
+  {
+   "id": "79ab6b29-2dc0-4eb4-903f-89208f546276",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "P_1 = P_1^0 x_1",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "x_1 = 1 - x_2",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "P_1 = P_1^0(1 - x_2) = P_1^0 - P_1^0 x_2",
+       "f": "P0*(1-x2)",
+       "value": "P0-P0*x2",
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "P_1^0 - P_1 = P_1^0 x_2",
+       "f": "P0-P1",
+       "value": "P0*x2",
+       "step": "s4"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\Delta P = P_1^0 x_2",
+       "f": "dP",
+       "value": "P0*x2",
+       "step": "s5"
+      }
+     ],
+     "answer": "P0*x2",
+     "vars": {
+      "P0": "600",
+      "x2": "0.25",
+      "P1": "P0*(1-x2)",
+      "dP": "P0-P1"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 6,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 8,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 11,
+      "beats": [
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "da3bc551",
+    "answer": {
+     "value": 150,
+     "label": "ΔP = P₁⁰x₂"
+    }
+   }
+  },
+  {
+   "id": "81165d85-91ff-42de-9dc1-8f948cb412e0",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "calc",
+       "tex": "i = 1 + (n-1)\\alpha",
+       "f": "i",
+       "value": "1+(n-1)*a",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\alpha = \\dfrac{i - 1}{n - 1}",
+       "f": "(i-1)/(n-1)",
+       "value": "a",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "(1-\\alpha) + n\\alpha = 1 + (n-1)\\alpha",
+       "f": "(1-a)+n*a",
+       "value": "1+(n-1)*a",
+       "step": "s3"
+      }
+     ],
+     "answer": "a",
+     "vars": {
+      "a": "0.4",
+      "n": "3",
+      "i": "(1-a)+n*a"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 6,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "6abec067",
+    "answer": {
+     "value": 0.4,
+     "label": "α = (i−1)/(n−1)"
+    }
+   }
+  },
+  {
+   "id": "94f7e646-c888-4d3b-bd00-6f5ee1cd2dad",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "calc",
+       "tex": "\\Delta T_f = 0 - (-0.021) = 0.021\\ \\text{K}",
+       "f": "0-(-0.021)",
+       "value": "0.021",
+       "dp": 3,
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "i = \\dfrac{0.021}{1.86 \\times 0.01} = 1.13",
+       "f": "0.021/(1.86*0.01)",
+       "value": "1.13",
+       "dp": 2,
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\alpha = i - 1 = 1.13 - 1 = 0.13",
+       "f": "1.13-1",
+       "value": "0.13",
+       "dp": 2,
+       "step": "s3"
+      }
+     ],
+     "answer": "0.13"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 6,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "dc67e4f5",
+    "answer": {
+     "value": 0.13,
+     "label": "α = 0.13 (13%)"
+    }
+   }
+  },
+  {
+   "id": "9aedec34-6a9d-4bc9-9b9b-d9393be6fd7f",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "p = p^{\\circ} x_1",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "p^{\\circ} - p = p^{\\circ}(1 - x_1)",
+       "f": "p0-p",
+       "value": "p0*(1-x1)",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{p^{\\circ} - p}{p^{\\circ}} = x_2",
+       "f": "(p0-p)/p0",
+       "value": "x2",
+       "step": "s3"
+      },
+      {
+       "kind": "note",
+       "tex": "x_2 \\approx \\dfrac{w_2 M_1}{M_2 w_1}",
+       "note": "dilute solution, n₂ ≪ n₁",
+       "step": "s4"
+      },
+      {
+       "kind": "calc",
+       "tex": "M_2 = \\dfrac{w_2 M_1 p^{\\circ}}{w_1 (p^{\\circ} - p)}",
+       "f": "w2*M1*p0/(w1*(p0-p))",
+       "value": "M2",
+       "step": "s5"
+      }
+     ],
+     "answer": "M2",
+     "vars": {
+      "p0": "600",
+      "w1": "100",
+      "w2": "5",
+      "M1": "18",
+      "M2": "60",
+      "x2": "w2*M1/(M2*w1)",
+      "x1": "1-x2",
+      "p": "p0*x1"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 8,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 15,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 19,
+      "beats": [
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "31ddd150",
+    "answer": {
+     "value": 60,
+     "label": "M2 = w2M1p°/(w1(p°−p))"
+    }
+   }
+  },
+  {
+   "id": "a32c6805-69b1-41c7-ba51-f74acd257d41",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "calc",
+       "tex": "\\Delta T_f = 0 - (-0.510) = 0.510\\ \\text{K}",
+       "f": "0-(-0.510)",
+       "value": "0.510",
+       "dp": 3,
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "(\\Delta T_f)_0 = 1.86 \\times 0.15 = 0.279\\ \\text{K}",
+       "f": "1.86*0.15",
+       "value": "0.279",
+       "dp": 3,
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "i = \\dfrac{0.510}{0.279} = 1.83",
+       "f": "0.510/0.279",
+       "value": "1.83",
+       "dp": 2,
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\pi = 1.83 \\times 0.15 \\times 0.08205 \\times 273 = 6.15\\ \\text{atm}",
+       "f": "1.83*0.15*0.08205*273",
+       "value": "6.15",
+       "dp": 2,
+       "step": "s4"
+      }
+     ],
+     "answer": "1.83"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 7,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "113a0982",
+    "answer": {
+     "value": 1.83,
+     "label": "i = 1.83; π = 6.15 atm"
+    }
+   }
+  },
+  {
+   "id": "a8e1bc92-8615-4351-a5ec-2ad0ed064f48",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\Delta T_b = K_b\\,m",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "m = \\dfrac{W_2/M_2}{W_1/1000} = \\dfrac{1000\\,W_2}{M_2 W_1}",
+       "f": "(W2/M2)/(W1/1000)",
+       "value": "1000*W2/(M2*W1)",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\Delta T_b = \\dfrac{1000\\,K_b W_2}{M_2 W_1}",
+       "f": "Kf*(W2/M2)/(W1/1000)",
+       "value": "1000*Kf*W2/(M2*W1)",
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "M_2 = \\dfrac{1000\\,K_b W_2}{\\Delta T_b\\,W_1}",
+       "f": "1000*Kf*W2/(dT*W1)",
+       "value": "M2",
+       "step": "s4"
+      }
+     ],
+     "answer": "M2",
+     "vars": {
+      "Kf": "1.86",
+      "W2": "2",
+      "W1": "100",
+      "M2": "60",
+      "dT": "Kf*1000*W2/(M2*W1)"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 7,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 9,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 11,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "65642ad0",
+    "answer": {
+     "value": 60,
+     "label": "M2 = 1000KbW2/(ΔTb W1)"
+    }
+   }
+  },
+  {
+   "id": "af90479e-3779-4b7f-8fd8-dbf36b4d53d6",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\pi = \\dfrac{n_2 RT}{V}",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "n_2 = \\dfrac{0.822}{342} = 2.404 \\times 10^{-3}\\ \\text{mol}",
+       "f": "0.822/342",
+       "value": "2.404*10^(-3)",
+       "sf": 4,
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "V = 300\\ \\text{mL} = 0.300\\ \\text{dm}^3",
+       "f": "300/1000",
+       "value": "0.300",
+       "dp": 3,
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "RT = 0.08205 \\times 298 = 24.45",
+       "f": "0.08205*298",
+       "value": "24.45",
+       "dp": 2,
+       "step": "s4"
+      },
+      {
+       "kind": "calc",
+       "tex": "2.404 \\times 10^{-3} \\times 24.45 = 5.878 \\times 10^{-2}",
+       "f": "2.404*10^(-3)*24.45",
+       "value": "5.878*10^(-2)",
+       "sf": 4,
+       "step": "s5"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\pi = \\dfrac{5.878 \\times 10^{-2}}{0.300} = 0.196\\ \\text{atm}",
+       "f": "5.878*10^(-2)/0.3",
+       "value": "0.196",
+       "dp": 3,
+       "step": "s6"
+      }
+     ],
+     "answer": "0.196"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 6,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 9,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 10,
+      "beats": [
+       "s5"
+      ]
+     },
+     {
+      "from": 11,
+      "beats": [
+       "s6"
+      ]
+     }
+    ],
+    "fingerprint": "49ac1d2e",
+    "answer": {
+     "value": 0.196,
+     "label": "0.196 atm"
+    }
+   }
+  },
+  {
+   "id": "b5553ec6-7f7a-4c4e-b6c6-b3be82c9753e",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\Delta T_f = i K_f m",
+       "note": "compare i × m for the two solutions",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\text{NaCl: } i \\times m = 2 \\times 0.1 = 0.2",
+       "f": "2*0.1",
+       "value": "0.2",
+       "dp": 1,
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\mathrm{Al_2(SO_4)_3}\\text{: } i \\times m = 5 \\times 0.05 = 0.25",
+       "f": "5*0.05",
+       "value": "0.25",
+       "dp": 2,
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\Delta T_f(\\text{NaCl}) = 1.86 \\times 0.2 = 0.372\\ \\text{K}",
+       "f": "1.86*0.2",
+       "value": "0.372",
+       "dp": 3,
+       "step": "s4"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\Delta T_f(\\mathrm{Al_2(SO_4)_3}) = 1.86 \\times 0.25 = 0.465\\ \\text{K}",
+       "f": "1.86*0.25",
+       "value": "0.465",
+       "dp": 3,
+       "step": "s4"
+      }
+     ],
+     "answer": "0.465"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 6,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "6b484ef6",
+    "answer": {
+     "value": 0.465,
+     "label": "Al₂(SO₄)₃: 0.465 K > 0.372 K"
+    }
+   }
+  },
+  {
+   "id": "b8081eca-76cb-4d6f-a5a2-7247d39af067",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "M_2 = \\dfrac{1000\\,K_b W_2}{\\Delta T_b\\,W_1}",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "W_2 = 1.80\\ \\text{g},\\ W_1 = 90\\ \\text{g},\\ K_b = 2.53,\\ \\Delta T_b = 0.88\\ \\text{K}",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "M_2 = \\dfrac{1000 \\times 2.53 \\times 1.80}{0.88 \\times 90} = 57.5\\ \\text{g mol}^{-1}",
+       "f": "1000*2.53*1.80/(0.88*90)",
+       "value": "57.5",
+       "dp": 1,
+       "step": "s3"
+      }
+     ],
+     "answer": "57.5"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 13,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 15,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "7049f05d",
+    "answer": {
+     "value": 57.5,
+     "label": "57.5 g/mol"
+    }
+   }
+  },
+  {
+   "id": "ba50781b-de07-4f13-802e-9e71b2c1f870",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "M_2 = \\dfrac{W_2 RT}{\\pi V}",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\pi = 0.52 \\times 101325 = 5.269 \\times 10^{4}\\ \\text{Pa}",
+       "f": "0.52*101325",
+       "value": "5.269*10^4",
+       "sf": 4,
+       "step": "s2"
+      },
+      {
+       "kind": "note",
+       "tex": "V = 1 \\times 10^{-3}\\ \\text{m}^3,\\ W_2 = 1.8\\ \\text{g},\\ T = 286\\ \\text{K}",
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "W_2 RT = 1.8 \\times 8.314 \\times 286 = 4280",
+       "f": "1.8*8.314*286",
+       "value": "4280",
+       "dp": 0,
+       "step": "s4"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\pi V = 5.269 \\times 10^{4} \\times 10^{-3} = 52.69",
+       "f": "5.269*10^4*10^(-3)",
+       "value": "52.69",
+       "dp": 2,
+       "step": "s4"
+      },
+      {
+       "kind": "calc",
+       "tex": "M_2 = \\dfrac{4280}{52.69} = 81.2\\ \\text{g mol}^{-1}",
+       "f": "4280/52.69",
+       "value": "81.2",
+       "dp": 1,
+       "step": "s5"
+      }
+     ],
+     "answer": "81.2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 7,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 8,
+      "beats": [
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "2e5bbb0b",
+    "answer": {
+     "value": 81.2,
+     "label": "81.2 g/mol"
+    }
+   }
+  },
+  {
+   "id": "c1be7c92-6638-4604-a740-82895cf79a68",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "S = K_H P,\\quad K_H = 0.159\\ \\text{mol L}^{-1}\\text{bar}^{-1}",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "P = \\dfrac{130}{760} = 0.171\\ \\text{atm}",
+       "f": "130/760",
+       "value": "0.171",
+       "dp": 3,
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "P = 0.171 \\times 1.013 = 0.173\\ \\text{bar}",
+       "f": "0.171*1.013",
+       "value": "0.173",
+       "dp": 3,
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "S = 0.159 \\times 0.173 = 0.0275\\ \\text{M}",
+       "f": "0.159*0.173",
+       "value": "0.0275",
+       "dp": 4,
+       "step": "s4"
+      }
+     ],
+     "answer": "0.0275"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 6,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 7,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "4a3333d5",
+    "answer": {
+     "value": 0.0275,
+     "label": "0.0275 M"
+    }
+   }
+  },
+  {
+   "id": "c7ce969b-b4b2-4c03-914f-a45ea454962a",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "P_1 = P_1^0 x_1",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "x_1 = 1 - x_2",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "P_1 = P_1^0(1 - x_2) = P_1^0 - P_1^0 x_2",
+       "f": "P0*(1-x2)",
+       "value": "P0-P0*x2",
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "P_1^0 - P_1 = P_1^0 x_2",
+       "f": "P0-P1",
+       "value": "P0*x2",
+       "step": "s4"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\Delta P = P_1^0 x_2",
+       "f": "dP",
+       "value": "P0*x2",
+       "step": "s5"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{P_1^0 - P_1}{P_1^0} = x_2",
+       "f": "(P0-P1)/P0",
+       "value": "x2",
+       "step": "s5"
+      }
+     ],
+     "answer": "P0*x2",
+     "vars": {
+      "P0": "600",
+      "x2": "0.25",
+      "P1": "P0*(1-x2)",
+      "dP": "P0-P1"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 9,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 11,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 13,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 15,
+      "beats": [
+       "s5"
+      ]
+     }
+    ],
+    "fingerprint": "9fa48a54",
+    "answer": {
+     "value": 150,
+     "label": "ΔP = P₁⁰x₂"
+    }
+   }
+  },
+  {
+   "id": "c7e2ccf9-b068-448a-90fa-07c26a63dafd",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "calc",
+       "tex": "n_2 = \\dfrac{22.22}{60} = 0.3703\\ \\text{mol}",
+       "f": "22.22/60",
+       "value": "0.3703",
+       "dp": 4,
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "m = \\dfrac{0.3703}{0.300} = 1.234\\ \\text{mol kg}^{-1}",
+       "f": "0.3703/0.300",
+       "value": "1.234",
+       "dp": 3,
+       "step": "s2"
+      }
+     ],
+     "answer": "0.3703"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "8295d65b",
+    "answer": {
+     "value": 0.3703,
+     "label": "0.3703 mol; 1.234 mol/kg"
+    }
+   }
+  },
+  {
+   "id": "c921ce5e-776c-4812-9751-acb3fb8c917f",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "P_1 = P_1^0 x_1",
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "x_1 = 1 - x_2",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "P_1 = P_1^0(1 - x_2) = P_1^0 - P_1^0 x_2",
+       "f": "P0*(1-x2)",
+       "value": "P0-P0*x2",
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "P_1^0 - P_1 = P_1^0 x_2",
+       "f": "P0-P1",
+       "value": "P0*x2",
+       "step": "s4"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{P_1^0 - P_1}{P_1^0} = x_2",
+       "f": "(P0-P1)/P0",
+       "value": "x2",
+       "step": "s5"
+      },
+      {
+       "kind": "note",
+       "tex": "x_2 \\approx \\dfrac{W_2 M_1}{M_2 W_1}",
+       "note": "dilute solution, n₂ ≪ n₁",
+       "step": "s6"
+      },
+      {
+       "kind": "calc",
+       "tex": "M_2 = \\dfrac{W_2 M_1 P_1^0}{(P_1^0 - P_1)\\,W_1}",
+       "f": "w2*M1*P0/((P0-P1)*w1)",
+       "value": "M2",
+       "step": "s7"
+      }
+     ],
+     "answer": "M2",
+     "vars": {
+      "P0": "600",
+      "w1": "100",
+      "w2": "5",
+      "M1": "18",
+      "M2": "60",
+      "x2": "w2*M1/(M2*w1)",
+      "P1": "P0*(1-x2)"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 6,
+      "beats": [
+       "s4"
+      ]
+     },
+     {
+      "from": 8,
+      "beats": [
+       "s5"
+      ]
+     },
+     {
+      "from": 14,
+      "beats": [
+       "s6"
+      ]
+     },
+     {
+      "from": 17,
+      "beats": [
+       "s7"
+      ]
+     }
+    ],
+    "fingerprint": "6f28333b",
+    "answer": {
+     "value": 60,
+     "label": "M2 = W2M1P₁⁰/((P₁⁰−P₁)W1)"
+    }
+   }
+  },
+  {
+   "id": "c9fa19e9-61a2-4922-9f47-d249fd2b0b5b",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "i = 1,\\quad \\pi = MRT,\\quad \\pi = 7.65\\ \\text{atm},\\ T = 310\\ \\text{K}",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "M = \\dfrac{7.65}{0.0821 \\times 310} = 0.3006\\ \\text{mol dm}^{-3}",
+       "f": "7.65/(0.0821*310)",
+       "value": "0.3006",
+       "dp": 4,
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "0.3006 \\times 180 = 54.1\\ \\text{g per litre}",
+       "f": "0.3006*180",
+       "value": "54.1",
+       "dp": 1,
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{54.1}{10} = 5.41\\ \\text{g per 100 mL}",
+       "f": "54.1/10",
+       "value": "5.41",
+       "dp": 2,
+       "step": "s4"
+      }
+     ],
+     "answer": "5.41"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "56b0104c",
+    "answer": {
+     "value": 5.41,
+     "label": "5.41 %"
+    }
+   }
+  },
+  {
+   "id": "cafbf65e-7eb3-4774-aae8-76682e95a809",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "S = K_H P",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "S = 0.159 \\times 0.164 = 0.0261\\ \\text{mol dm}^{-3}",
+       "f": "0.159*0.164",
+       "value": "0.0261",
+       "dp": 4,
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "K_H = \\dfrac{S}{P} = \\dfrac{0.0261}{0.164} = 0.159",
+       "f": "0.0261/0.164",
+       "value": "0.159",
+       "dp": 3,
+       "note": "check: returns the constant given",
+       "step": "s3"
+      }
+     ],
+     "answer": "0.0261"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 6,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 8,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "c428e13c",
+    "answer": {
+     "value": 0.0261,
+     "label": "0.0261 M"
+    }
+   }
+  },
+  {
+   "id": "cfff06e8-7de4-4d74-ad94-6e934cac5146",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\Delta T_b = K_b m",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "m = \\dfrac{1.76}{3.07} = 0.573\\ \\text{mol kg}^{-1}",
+       "f": "1.76/3.07",
+       "value": "0.573",
+       "dp": 3,
+       "step": "s2"
+      }
+     ],
+     "answer": "0.573"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "ed8de327",
+    "answer": {
+     "value": 0.573,
+     "label": "0.573 mol/kg"
+    }
+   }
+  },
+  {
+   "id": "d1b6937d-21c6-4320-975b-9d98225ef3ea",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "M_2 = \\dfrac{1000\\,K_b W_2}{\\Delta T_b\\,W_1}",
+       "note": "W₂ = 3.795 g, W₁ = 100 g, K_b = 2.42",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\Delta T_b = 319.81 - 319.45 = 0.36\\ \\text{K}",
+       "f": "319.81-319.45",
+       "value": "0.36",
+       "dp": 2,
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "M_2 = \\dfrac{1000 \\times 2.42 \\times 3.795}{0.36 \\times 100} = 255.11\\ \\text{g mol}^{-1}",
+       "f": "1000*2.42*3.795/(0.36*100)",
+       "value": "255.11",
+       "dp": 2,
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{255.11}{32} = 7.97",
+       "f": "255.11/32",
+       "value": "7.97",
+       "dp": 2,
+       "step": "s4"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\dfrac{255.11}{32} \\approx 8 \\ \\Rightarrow\\ \\mathrm{S_8}",
+       "f": "255.11/32",
+       "value": "8",
+       "dp": 0,
+       "step": "s4"
+      }
+     ],
+     "answer": "8"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 6,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 9,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "fc77aac0",
+    "answer": {
+     "value": 8,
+     "label": "S₈ (8 atoms per molecule)"
+    }
+   }
+  },
+  {
+   "id": "d280a0fb-3b31-45bc-becb-3e1e0ff9646d",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "calc",
+       "tex": "\\Delta T_b = 84.27 - 77.06 = 7.21\\ \\text{K}",
+       "f": "84.27-77.06",
+       "value": "7.21",
+       "dp": 2,
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "M_2 = \\dfrac{1000 \\times 2.77 \\times 50}{7.21 \\times 150} = 128\\ \\text{g mol}^{-1}",
+       "f": "1000*2.77*50/(7.21*150)",
+       "value": "128",
+       "dp": 0,
+       "step": "s2"
+      }
+     ],
+     "answer": "128"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "c62ef396",
+    "answer": {
+     "value": 128,
+     "label": "128 g/mol"
+    }
+   }
+  },
+  {
+   "id": "db3b5522-a978-43a6-9499-d7d4bc4e4d26",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\pi V = n_2 RT",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\pi V = \\dfrac{w_2}{M_2}\\,RT",
+       "f": "Pi*V",
+       "value": "(W2/M2)*R*T",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "M_2 = \\dfrac{w_2 RT}{\\pi V}",
+       "f": "W2*R*T/(Pi*V)",
+       "value": "M2",
+       "step": "s3"
+      }
+     ],
+     "answer": "M2",
+     "vars": {
+      "W2": "2",
+      "M2": "60",
+      "R": "0.0821",
+      "T": "300",
+      "V": "2",
+      "Pi": "W2*R*T/(M2*V)"
+     }
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 11,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 13,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "3a2d4af3",
+    "answer": {
+     "value": 60,
+     "label": "M2 = w2RT/(πV)"
+    }
+   }
+  },
+  {
+   "id": "dc98eab1-f9b8-4172-9557-4c2c80fefada",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "calc",
+       "tex": "(\\Delta T_f)_0 = 1.86 \\times 0.2 = 0.372\\ \\text{K}",
+       "f": "1.86*0.2",
+       "value": "0.372",
+       "dp": 3,
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "i = \\dfrac{0.680}{0.372} = 1.83",
+       "f": "0.680/0.372",
+       "value": "1.83",
+       "dp": 2,
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\pi_0 = MRT = 0.2 \\times 0.08205 \\times 273 = 4.48\\ \\text{atm}",
+       "f": "0.2*0.08205*273",
+       "value": "4.48",
+       "dp": 2,
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\pi = 1.83 \\times 4.48 = 8.2\\ \\text{atm}",
+       "f": "1.83*4.48",
+       "value": "8.2",
+       "dp": 1,
+       "step": "s4"
+      }
+     ],
+     "answer": "1.83"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 8,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "84480ad0",
+    "answer": {
+     "value": 1.83,
+     "label": "i = 1.83; π = 8.2 atm"
+    }
+   }
+  },
+  {
+   "id": "de1c2933-3412-4132-9493-af5abf54656d",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "calc",
+       "tex": "n_2 = \\dfrac{2.8}{60} = 0.04667\\ \\text{mol}",
+       "f": "2.8/60",
+       "value": "0.04667",
+       "dp": 5,
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "n_1 = \\dfrac{50}{18} = 2.7778\\ \\text{mol}",
+       "f": "50/18",
+       "value": "2.7778",
+       "dp": 4,
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "x_1 = \\dfrac{2.7778}{2.7778 + 0.04667} = 0.9835",
+       "f": "2.7778/(2.7778+0.04667)",
+       "value": "0.9835",
+       "dp": 4,
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "P_1 = 17 \\times 0.9835 = 16.72\\ \\text{mm Hg}",
+       "f": "17*0.9835",
+       "value": "16.72",
+       "dp": 2,
+       "step": "s4"
+      }
+     ],
+     "answer": "16.72"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 7,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 9,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 11,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "83db31a0",
+    "answer": {
+     "value": 16.72,
+     "label": "16.72 mm Hg"
+    }
+   }
+  },
+  {
+   "id": "e0ae56a9-6a98-4487-b613-b784be5aa3f8",
+   "option": "A",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\pi = iMRT,\\quad M = 0.1,\\ T = 298\\ \\text{K}",
+       "note": "R = 0.0821",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\mathrm{Al_2(SO_4)_3}\\text{: } i = 5,\\ \\pi = 5 \\times 0.1 \\times 0.0821 \\times 298 = 12.2\\ \\text{atm}",
+       "f": "5*0.1*0.0821*298",
+       "value": "12.2",
+       "dp": 1,
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\mathrm{Na_2SO_4},\\ \\mathrm{MgCl_2}\\text{: } i = 3,\\ \\pi = 7.34\\ \\text{atm}",
+       "f": "3*0.1*0.0821*298",
+       "value": "7.34",
+       "dp": 2,
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\mathrm{KCl}\\text{: } i = 2,\\ \\pi = 4.89\\ \\text{atm}",
+       "f": "2*0.1*0.0821*298",
+       "value": "4.89",
+       "dp": 2,
+       "step": "s4"
+      }
+     ],
+     "answer": "12.2"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 7,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "74f885e6",
+    "answer": {
+     "value": 12.2,
+     "label": "Al₂(SO₄)₃: 12.2 atm"
+    }
+   }
+  },
+  {
+   "id": "e1bbbc59-9f70-4e53-affe-2b8b0ff2912f",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "calc",
+       "tex": "\\text{(a) KCl: } 0.1 + 0.1 = 0.2\\ \\text{mol}",
+       "f": "0.1+0.1",
+       "value": "0.2",
+       "dp": 1,
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\text{(b) NaCl: } 0.05 + 0.05 = 0.1\\ \\text{mol}",
+       "f": "0.05+0.05",
+       "value": "0.1",
+       "dp": 1,
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\text{(c) AlPO}_4\\text{: } 1 + 1 = 2.0\\ \\text{mol}",
+       "f": "1+1",
+       "value": "2.0",
+       "dp": 1,
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\text{(d) MgSO}_4\\text{: } 0.1 + 0.1 = 0.2\\ \\text{mol}",
+       "f": "0.1+0.1",
+       "value": "0.2",
+       "dp": 1,
+       "step": "s4"
+      }
+     ],
+     "answer": "2.0"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 3,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 5,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "e81210ed",
+    "answer": {
+     "value": 2,
+     "label": "max ΔTb: (c); min ΔTf: (b)"
+    }
+   }
+  },
+  {
+   "id": "e8feba40-dfe7-4780-b892-a4b4b9b248fd",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "calc",
+       "tex": "\\Delta T_b = 354.11 - 353.23 = 0.88\\ \\text{K}",
+       "f": "354.11-353.23",
+       "value": "0.88",
+       "dp": 2,
+       "step": "s1"
+      },
+      {
+       "kind": "note",
+       "tex": "K_b = 2.53,\\ W_2 = 1.80\\ \\text{g},\\ W_1 = 90\\ \\text{g},\\ \\Delta T_b = 0.88\\ \\text{K}",
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "1000 \\times 2.53 \\times 1.80 = 4554",
+       "f": "1000*2.53*1.80",
+       "value": "4554",
+       "dp": 0,
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "0.88 \\times 90 = 79.2",
+       "f": "0.88*90",
+       "value": "79.2",
+       "dp": 1,
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "M_2 = \\dfrac{4554}{79.2} = 57.5\\ \\text{g mol}^{-1}",
+       "f": "4554/79.2",
+       "value": "57.5",
+       "dp": 1,
+       "step": "s4"
+      }
+     ],
+     "answer": "57.5"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 6,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 7,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "8661c942",
+    "answer": {
+     "value": 57.5,
+     "label": "57.5 g/mol"
+    }
+   }
+  },
+  {
+   "id": "ed57a829-f802-4e13-b563-8879e94af41f",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "\\pi = i\\,\\dfrac{W_2 RT}{M_2 V}",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "M_2 = 40 + 71 = 111\\ \\text{g mol}^{-1}",
+       "f": "40+71",
+       "value": "111",
+       "dp": 0,
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\pi = 2.47 \\times \\dfrac{3.4 \\times 0.08206 \\times 300}{111 \\times 2.5} = 0.745\\ \\text{atm}",
+       "f": "2.47*3.4*0.08206*300/(111*2.5)",
+       "value": "0.745",
+       "dp": 3,
+       "step": "s3"
+      }
+     ],
+     "answer": "0.745"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 1,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s3"
+      ]
+     }
+    ],
+    "fingerprint": "45039af7",
+    "answer": {
+     "value": 0.745,
+     "label": "0.745 atm"
+    }
+   }
+  },
+  {
+   "id": "ef0f2a56-3f57-4b75-b149-f219719c06c1",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "calc",
+       "tex": "i = 1 + 0.0135 \\times (2 - 1) = 1.0135",
+       "f": "1+0.0135*(2-1)",
+       "value": "1.0135",
+       "dp": 4,
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\Delta T_f = 1.0135 \\times 1.86 \\times 0.1 = 0.1885\\ \\text{K}",
+       "f": "1.0135*1.86*0.1",
+       "value": "0.1885",
+       "dp": 4,
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "T_f = 0 - 0.1885 = -0.189\\ {}^{\\circ}\\text{C}",
+       "f": "0-1.0135*1.86*0.1",
+       "value": "-0.189",
+       "dp": 3,
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\pi = 1.0135 \\times 0.1 \\times 0.08205 \\times 298 = 2.48\\ \\text{atm}",
+       "f": "1.0135*0.1*0.08205*298",
+       "value": "2.48",
+       "dp": 2,
+       "step": "s4"
+      }
+     ],
+     "answer": "-0.189"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 4,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 6,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 8,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "fad9f385",
+    "answer": {
+     "value": -0.189,
+     "label": "−0.189 °C; 2.48 atm"
+    }
+   }
+  },
+  {
+   "id": "f93ef0b0-2be4-4b04-b74c-bc8a7a3fe0a5",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "i = \\dfrac{(\\pi)}{(\\pi)_0}",
+       "note": "urea gives (π)₀",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "i = \\dfrac{0.605}{0.245} = 2.47",
+       "f": "0.605/0.245",
+       "value": "2.47",
+       "dp": 2,
+       "step": "s2"
+      }
+     ],
+     "answer": "2.47"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 2,
+      "beats": [
+       "s2"
+      ]
+     }
+    ],
+    "fingerprint": "74a7bbd3",
+    "answer": {
+     "value": 2.47,
+     "label": "i = 2.47"
+    }
+   }
+  },
+  {
+   "id": "fe5afa32-e914-4f0d-9bc9-fbc8655a3aca",
+   "visual": {
+    "v": 1,
+    "scene": "algebraSteps",
+    "params": {
+     "lines": [
+      {
+       "kind": "note",
+       "tex": "M_2 = \\dfrac{W_2 RT}{\\pi V}",
+       "step": "s1"
+      },
+      {
+       "kind": "calc",
+       "tex": "\\pi = \\dfrac{149}{760} = 0.196\\ \\text{atm}",
+       "f": "149/760",
+       "value": "0.196",
+       "dp": 3,
+       "step": "s2"
+      },
+      {
+       "kind": "calc",
+       "tex": "V = 300\\ \\text{mL} = 0.3\\ \\text{dm}^3",
+       "f": "300/1000",
+       "value": "0.3",
+       "dp": 1,
+       "step": "s3"
+      },
+      {
+       "kind": "calc",
+       "tex": "M_2 = \\dfrac{0.822 \\times 0.08205 \\times 298}{0.196 \\times 0.3} = 342\\ \\text{g mol}^{-1}",
+       "f": "0.822*0.08205*298/(0.196*0.3)",
+       "value": "342",
+       "dp": 0,
+       "step": "s4"
+      }
+     ],
+     "answer": "342"
+    },
+    "steps": [
+     {
+      "from": 0,
+      "beats": [
+       "s1"
+      ]
+     },
+     {
+      "from": 6,
+      "beats": [
+       "s2"
+      ]
+     },
+     {
+      "from": 7,
+      "beats": [
+       "s3"
+      ]
+     },
+     {
+      "from": 8,
+      "beats": [
+       "s4"
+      ]
+     }
+    ],
+    "fingerprint": "aed4fbab",
+    "answer": {
+     "value": 342,
+     "label": "342 g/mol"
+    }
+   }
+  }
+ ],
+ "decided": []
+}
