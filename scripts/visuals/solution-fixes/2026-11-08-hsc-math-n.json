@@ -1,0 +1,26 @@
+[
+  {
+    "id": "2a44fb18-abbb-4c01-87da-7b020192f85a",
+    "before": "11f50899",
+    "solution": "The equations of the parabolas are\n\\(y^2 = 4ax\\) ... (I)\nand \\(x^2 = 4ay\\) ... (II)\nFrom (II) \\(y = \\dfrac{x^2}{4a}\\) substitute in (I)\n\\(\\left(\\dfrac{x^2}{4a}\\right)^2 = 4ax\\)\n\\(\\Rightarrow x^4 = 64a^3 x\\)\n\\(\\therefore x(x^3 - 64a^3) = 0\\)\n\\(\\therefore x[x^3 - (4a)^3] = 0\\)\n\\(\\therefore x = 0\\) and \\(x = 4a\\) \\(\\therefore y = 0\\) and \\(y = 4a\\)\nThe point of intersection of curves are \\(O(0, 0)\\), \\(P(4a, 4a)\\)\n\\(\\therefore\\) The required area is in the first quadrant and it is\nA \\(= \\) area under the parabola (\\(y^2 = 4ax\\)) \\(- \\) area under the parabola (\\(x^2 = 4ay\\))\n\\(A = \\int_{0}^{4a} \\sqrt{4ax}\\,dx - \\int_{0}^{4a} \\dfrac{x^2}{4a}\\,dx = \\sqrt{4a}\\int_{0}^{4a} x^{1/2}\\,dx - \\int_{0}^{4a} \\dfrac{x^2}{4a}\\,dx\\)\n\\(= 2\\sqrt{a} \\cdot \\left[\\dfrac{2}{3} \\cdot x^{3/2}\\right]_{0}^{4a} - \\dfrac{1}{4a} \\cdot \\left[\\dfrac{x^3}{3}\\right]_{0}^{4a}\\)\n\\(= \\dfrac{4}{3}\\sqrt{a} \\cdot \\left[4a\\sqrt{4a}\\right] - \\dfrac{1}{4a} \\cdot \\dfrac{64a^3}{3} = \\dfrac{32}{3}a^2 - \\dfrac{16}{3}a^2\\)\n\\(\\therefore A = \\dfrac{16}{3}a^2\\) sq. units.",
+    "note": "The /3 of [x^3/3] was dropped: (1/4a)(64a^3/3) = 16a^2/3."
+  },
+  {
+    "id": "f38108c1-139b-4d35-994e-0c90da635dbb",
+    "before": "ab0abf17",
+    "solution": "Required area \\(A = 2 \\times\\) area of OPQO\n\\(\\therefore A = 2\\int_{0}^{4} x \\cdot dy\\)\n\\(A = 2 \\cdot \\int_{0}^{4} \\sqrt{y} \\cdot dy = 2 \\cdot \\left[\\dfrac{2}{3} \\cdot y^{3/2}\\right]_{0}^{4} = \\left(\\dfrac{4}{3} \\times 4^{3/2}\\right) = \\dfrac{4}{3} \\times 8\\)\n\\(A = \\dfrac{32}{3}\\) sq. units.",
+    "note": "The factor 2 (two symmetric halves) was dropped from this line; the lines before and after carry it."
+  },
+  {
+    "id": "ac27641f-cb7d-4d47-9a70-7676b8b7e8fe",
+    "before": "6cedfe1a",
+    "solution": "[Textbook misprint: the printed sub-part (i) gives \\(x = 1,\\ x = 2\\), but the book's own worked solution and figure use \\(x = 1\\) to \\(x = 3\\) (area 26/3). Solved for the intended \\(x \\in [1, 3]\\).]\n\nLet A be the required area.\n(i) \\(A = \\int_{1}^{3} y\\,dx = \\int_{1}^{3} x^2\\,dx = \\dfrac{1}{3}\\left[x^3\\right]_{1}^{3} = \\dfrac{1}{3}[27 - 1]\\), \\(A = \\dfrac{26}{3}\\) sq. units.\n(ii) \\(A = \\int_{1}^{4} y\\,dx = \\int_{1}^{4} 2\\sqrt{x}\\,dx = 2\\int_{1}^{4} x^{1/2}\\,dx = 2 \\cdot \\dfrac{2}{3}\\left[x^{3/2}\\right]_{1}^{4} = \\dfrac{4}{3}\\left[4^{3/2} - 1\\right]\\), \\(A = \\dfrac{28}{3}\\) sq. units.\n(iii) \\(A = \\left|\\int_{-\\pi/2}^{0} \\sin x\\,dx\\right| + \\left|\\int_{0}^{\\pi/2} \\sin x\\,dx\\right| = \\left|\\left[-\\cos x\\right]_{-\\pi/2}^{0}\\right| + \\left|\\left[-\\cos x\\right]_{0}^{\\pi/2}\\right| = \\left|-\\left[\\cos 0 - \\cos\\left(\\dfrac{\\pi}{2}\\right)\\right]\\right| + \\left|\\left[-\\cos\\left(\\dfrac{\\pi}{2}\\right) + \\cos 0\\right]\\right| = |[-1 - 0]| + |[0 + 1]| = 1 + 1\\), \\(A = 2\\) sq. units.",
+    "note": "The signed integral of sin x over the interval is 0; the area is the sum of the two magnitudes, which is where the line now starts."
+  },
+  {
+    "id": "fdd3301e-734a-45c7-be16-c50963595a8f",
+    "before": "f92225ba",
+    "solution": "**Convention used.** The X-axis is named as one of the boundaries of the region, so the region is the part of the parabola's interior lying ABOVE the X-axis (the upper branch \\(y=+2\\sqrt{ax}\\)), between \\(x=0\\) and \\(x=a\\). So only the part with \\(y \\geq 0\\) is counted. (If instead both branches were intended, the region is symmetric about the X-axis and the area is twice the value below.)\n\nFor \\(y^{2}=4ax\\) with \\(a>0\\), the upper branch is \\(y=2\\sqrt{a}\\,\\sqrt{x}\\).\n\n\\(A=\\displaystyle\\int_{0}^{a}y\\,dx=\\displaystyle\\int_{0}^{a}2\\sqrt{a}\\,\\sqrt{x}\\,dx=2\\sqrt{a}\\displaystyle\\int_{0}^{a}x^{1/2}\\,dx\\)\n\n\\(=2\\sqrt{a}\\left[\\dfrac{2}{3}x^{3/2}\\right]_{0}^{a}=\\dfrac{4\\sqrt{a}}{3}\\left(a^{3/2}-0\\right)=\\dfrac{4}{3}\\sqrt{a}\\cdot a\\sqrt{a}\\)\n\n\\(\\therefore\\ A=\\dfrac{4a^{2}}{3}\\) sq. units.\n\nCheck by dimensions and by a special case: taking \\(a=4\\) gives the parabola \\(y^{2}=16x\\) between \\(x=0\\) and \\(x=4\\), whose upper half has area \\(\\int_{0}^{4}4\\sqrt{x}\\,dx=\\dfrac{64}{3}\\); the formula gives \\(\\dfrac{4(16)}{3}=\\dfrac{64}{3}\\) - the same value.",
+    "note": "Replaced an internal remark about how other questions are treated."
+  }
+]
