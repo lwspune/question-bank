@@ -7,6 +7,7 @@ import { Route } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SUBJECT_LABEL, type PathExam, type PathSubject } from "@/lib/path/model";
 import { EXAM_LABEL } from "@/lib/path/view";
+import { invalidatePulse } from "@/lib/viewer/usePulse";
 
 /**
  * Stop the board path, or find the way back to it (MENTOR_SPEC.md D7).
@@ -37,6 +38,8 @@ export default function PathSettingsCard({
       setCurrent(null);
       setConfirming(false);
       toast.success("Your path is stopped. Chapters you finished stay done.");
+      // V's button and the /board line read the path from the shared pulse.
+      invalidatePulse();
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Couldn't stop your path. Try again.");
     } finally {

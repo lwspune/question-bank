@@ -27,6 +27,8 @@ import { getTwinsForQuestions, type QuestionTwins } from "@/lib/crossExam/query"
 import { ExamTwinChapterLine, ExamTwinsProvider } from "@/components/crossExam/ExamTwins";
 import { HOT_BOARD_CHAPTERS } from "@/lib/seo/prerenderHotPaths";
 import ChapterFixLine from "@/components/drill/ChapterFixLine";
+import BoardPathLine from "@/components/path/BoardPathLine";
+import { SUBJECT_NAME, isPathExam } from "@/lib/path/model";
 import { CHAPTER_FIX_FROM } from "@/lib/drill/from";
 
 type Params = { examSlug: string; subjectRoute: string; chapterSlug: string };
@@ -209,6 +211,10 @@ export default async function BoardChapterPage(props: { params: Promise<Params> 
 
           {/* Signed in with mistakes waiting from this chapter (2026-11-07). Browser-only. */}
           <ChapterFixLine chapterId={data.chapterId} from={CHAPTER_FIX_FROM.board} className="mb-4" />
+          {/* The board path's line (MENTOR_SPEC.md D8): Class 12 PCM chapters only; drawn in the browser. */}
+          {isPathExam(params.examSlug) && (Object.values(SUBJECT_NAME) as string[]).includes(chapter.subjectName) && (
+            <BoardPathLine chapterId={data.chapterId} exam={params.examSlug} className="mb-4" />
+          )}
 
           <BoardReader
             groups={chapter.groups}
