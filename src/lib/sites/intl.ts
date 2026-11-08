@@ -114,6 +114,9 @@ const SHARED_EXACT = new Set([
   "/me/map",
   "/drill",
   "/go/practice",
+  // The Review tab (2026-11-08), where /saved now lands: its To fix list holds
+  // the international exams alone here, like the drill.
+  "/review",
 ]);
 const SHARED_PREFIXES = ["/account", "/mock/attempt", "/api", "/_next", "/intl"];
 

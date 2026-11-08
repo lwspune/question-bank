@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import AppHeader from "@/components/AppHeader";
 import MeHeader from "@/components/me/MeHeader";
@@ -13,6 +14,7 @@ import { queryQuestionsByIds, type QuestionRow } from "@/lib/questions/query";
 import { loadOwnPool } from "@/lib/drill/compose";
 import { scopeToExam } from "@/lib/drill/select";
 import { readTodayRow } from "@/lib/path/exemptions";
+import { isIntlHost } from "@/lib/sites/intl";
 import { buildFixList, chapterQuestions, latestMisses, parseReviewParams } from "@/lib/review/fixList";
 import { loadMissRows, loadMockTitles } from "@/lib/review/query";
 import ReviewSwitch from "./ReviewSwitch";
@@ -50,6 +52,8 @@ export default async function ReviewPage(props: { searchParams: Promise<Search> 
   const db = createSupabaseServerClient();
   const now = new Date();
   const saved = params.list === "saved";
+  // On intl.pyqvault.com To fix holds the international exams alone, as the drill does.
+  const intl = isIntlHost((await headers()).get("host"));
 
   // ROUND 1: everything that needs nothing else, at once.
   const [header, , savedIds, member, superadmin, pool, planRow] = await Promise.all([
@@ -58,7 +62,7 @@ export default async function ReviewPage(props: { searchParams: Promise<Search> 
     listBookmarkIds(db, user.id),
     getSessionMember(),
     getSessionSuperadmin(),
-    saved ? Promise.resolve(null) : loadOwnPool(db, user.id, now),
+    saved ? Promise.resolve(null) : loadOwnPool(db, user.id, now, intl),
     // Today's board-plan Fix questions, when the plan picked today already.
     // A failed read labels nothing: the list is right without it.
     saved

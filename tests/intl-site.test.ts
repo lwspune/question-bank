@@ -1,3 +1,5 @@
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { describe, it, expect } from "vitest";
 import {
   INTL_ORIGIN,
@@ -186,6 +188,18 @@ describe("intlHostDecision (the intl host)", () => {
     for (const p of ["/me/map", "/drill", "/go/practice"]) {
       expect(intlHostDecision(p, "?x=1"), p).toEqual({ kind: "next" });
     }
+  });
+
+  it("serves the Review tab, where /saved now lands (2026-11-08): sending it to www would sign the student out", () => {
+    for (const p of ["/review"]) {
+      expect(intlHostDecision(p, "?list=saved"), p).toEqual({ kind: "next" });
+    }
+  });
+
+  it("the Review page reads the host, so intl lists the international exams' mistakes alone", () => {
+    const page = readFileSync(join(process.cwd(), "src/app/review/page.tsx"), "utf8");
+    expect(page).toContain("isIntlHost(");
+    expect(page).toMatch(/loadOwnPool\(db, user\.id, now, intl\)/);
   });
 
   it("serves static files and Next's own assets", () => {
