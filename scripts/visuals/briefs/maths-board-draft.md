@@ -84,6 +84,9 @@ algebra-steps draft, a sketch draft, or a skip.
   (check-drafts refuses `\frac` there).
 - The last line is the answer the question asks for, never a comparison with
   a wrong option.
+- A product of two numbers is written `2 \cdot 3` (or `(-1) \cdot 5`), never
+  `23` or `(-1)5`: run together they read as one number (146 lines in one
+  Determinants run). check-drafts refuses it.
 - An inverse-trig simplification (sin⁻¹(sin u) = u and the like) holds only
   on the principal range: if the stored solution applies it without saying
   where, flag it (two CBSE solutions claimed it for all x).

@@ -62,6 +62,23 @@ for (const f of files) {
       bad++;
       continue;
     }
+    // A calc line whose tex lost its multiplication signs: "23 + (-1)1" for f "2*3+(-1)*1" reads as twenty-three
+    // (146 lines in one CBSE 12 Determinants run). Write \cdot (or brackets) between numbers that multiply.
+    const merged = ((d.params as { lines?: { kind?: string; tex?: string; f?: string }[] })?.lines ?? []).find((l) => {
+      if (l.kind !== "calc" || typeof l.f !== "string" || typeof l.tex !== "string" || !l.f.includes("*")) return false;
+      const i = l.tex.indexOf("="), k = l.tex.lastIndexOf("=");
+      if (i < 0 || k <= i) return false;
+      const mid = l.tex.slice(i + 1, k);
+      if (/\\cdot|\\times|frac/.test(mid)) return false;
+      const strip = (s: string) => s.replace(/\\left|\\right/g, "").replace(/[^0-9()+\-.]/g, "");
+      const nums = (s: string) => (s.replace(/\\left|\\right/g, "").match(/\d+(\.\d+)?/g) ?? []).join(",");
+      return strip(mid) === strip(l.f) && nums(mid) !== nums(l.f);
+    });
+    if (merged) {
+      console.log(`${tag}: numbers that multiply run together in the tex (write \\cdot between them): ${merged.tex}`);
+      bad++;
+      continue;
+    }
     // A line or item whose step no beat plays never appears (2026-11-09: 10 of 11,991 stored visuals had one).
     const parts = ((d.params as { lines?: { step?: string }[]; items?: { step?: string }[] })?.lines ??
       (d.params as { items?: { step?: string }[] })?.items ??
