@@ -143,6 +143,7 @@ export const algebraSteps: Scene<AlgebraParams> = {
       const rootValues = (roots ?? []).map((r, i) => value(r, vars, `roots[${i}]`));
       if (!Array.isArray(o.lines) || o.lines.length < 2 || o.lines.length > MAX_LINES) throw new ParamError(`lines must be a list of 2 to ${MAX_LINES}`);
       let prev: ((x: number) => number) | null = null;
+      let samples: readonly number[] = SAMPLES;
       let checked = 0;
       const lines = o.lines.map((raw2, i): Line => {
         const l = obj(raw2);
@@ -165,7 +166,7 @@ export const algebraSteps: Scene<AlgebraParams> = {
           if (!prev) throw new ParamError(`${f}: a ${l.kind} line needs an expr line before it`);
           const g = fn(l.f, vars, `${f} f`);
           const [given, want] = l.kind === "deriv" ? [g, slope(prev)] : [slope(g), prev];
-          const pts = SAMPLES.filter((x) => Number.isFinite(given(x)) && Number.isFinite(want(x)));
+          const pts = samples.filter((x) => Number.isFinite(given(x)) && Number.isFinite(want(x)));
           if (pts.length < 3) throw new ParamError(`${f}: too few points to compare with the line before`);
           if (!pts.every((x) => nearSlope(given(x), want(x))))
             throw new ParamError(l.kind === "deriv" ? `${f} is not the derivative of the line before it` : `${f}: its derivative is not the integrand on the line before it`);
@@ -176,10 +177,21 @@ export const algebraSteps: Scene<AlgebraParams> = {
         if (l.kind === "expr") {
           const g = fn(l.f, vars, `${f} f`);
           if (l.restart !== undefined && l.restart !== true) throw new ParamError(`${f}: restart must be true or left out`);
-          if (l.restart === true) prev = null;
+          if (l.restart === true) {
+            prev = null;
+            samples = SAMPLES;
+          }
+          // A chain whose formulas only exist on part of the line (sin⁻¹x on (−1, 1)) states that
+          // domain; it holds down the chain until a restart.
+          if (l.domain !== undefined) {
+            if (!Array.isArray(l.domain) || l.domain.length !== 2) throw new ParamError(`${f}: domain must be [from, to]`);
+            const [a, b] = [value(l.domain[0], vars, `${f} domain`), value(l.domain[1], vars, `${f} domain`)];
+            if (!(b > a)) throw new ParamError(`${f}: domain must run from a smaller value to a larger one`);
+            samples = Array.from({ length: SAMPLES.length }, (_, k) => a + ((b - a) * (k + 0.5)) / SAMPLES.length);
+          }
           if (prev) {
             const p0 = prev;
-            const pts = SAMPLES.filter((x) => Number.isFinite(p0(x)) && Number.isFinite(g(x)));
+            const pts = samples.filter((x) => Number.isFinite(p0(x)) && Number.isFinite(g(x)));
             if (pts.length < 3) throw new ParamError(`${f}: too few points to compare with the line before`);
             if (!pts.every((x) => near(p0(x), g(x)))) throw new ParamError(`${f} does not equal the line before it`);
           }

@@ -59,6 +59,12 @@ at most 140 characters) and `kind`, which says how the program checks it:
   steps in x.
 - `restart: true` on an `expr` line starts a new chain: a second part, or a
   new function, that is not equal to the line before it.
+- `domain: [from, to]` on an `expr` line checks the chain at six points inside
+  that interval instead of the usual x = -1.7 ... 3.4, until the next restart.
+  Use it whenever a formula only exists on part of the line: sin⁻¹x and
+  1/√(1 − x²) on [-0.9, 0.9], sec⁻¹x on [1.1, 4], log x on [0.2, 4], or the
+  range the solution itself states ("valid for x > 1"). Never use a calc at a
+  single point when a domain would check the whole line.
 - `note`: nothing to check (the set-up line, "hence proved", the final
   statement of a root set). At least one line must be checked.
 

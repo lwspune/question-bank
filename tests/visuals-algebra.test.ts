@@ -131,6 +131,23 @@ describe("algebraSteps scene", () => {
     expect(parse(i("x*exp(x)+exp(x)")).error).toMatch(/line 2.*integrand/);
   });
 
+  it("checks a chain on a stated domain when the formulas only exist there", () => {
+    // ∫ 1/√(1 − x²) dx = sin⁻¹x: only x in (−1, 1) is real, which the fixed samples barely reach.
+    const asin = (f: string, domain?: unknown) => ({
+      lines: [
+        { step: "s1", kind: "expr", tex: "\\int \\frac{dx}{\\sqrt{1-x^2}}", f: "1/sqrt(1-x^2)", domain },
+        { step: "s2", kind: "integral", tex: "= \\sin^{-1}x + c", f },
+      ],
+      answer: "1",
+    });
+    expect(parse(asin("asin(x)")).error).toMatch(/too few points/);
+    expect(parse(asin("asin(x)", [-0.9, 0.9]))).not.toHaveProperty("error");
+    expect(parse(asin("acos(x)", [-0.9, 0.9])).error).toMatch(/line 2/);
+    // The domain carries on down the chain until a restart; it must be a real interval.
+    expect(parse(asin("asin(x)", [0.9, -0.9]))).toHaveProperty("error");
+    expect(parse(asin("asin(x)", [0, "a"]))).toHaveProperty("error");
+  });
+
   it("starts a new chain on restart, so a second part is not compared with the first", () => {
     const two = {
       lines: [
