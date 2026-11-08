@@ -30,7 +30,7 @@
  */
 import type { ReactNode } from "react";
 import Link from "next/link";
-import { ArrowRight, BookOpen, Check, Crosshair, Dumbbell, TrendingUp } from "lucide-react";
+import { ArrowRight, BookOpen, Check, ChevronDown, Crosshair, Dumbbell, TrendingUp } from "lucide-react";
 import ChapterAccordion from "@/components/performance/ChapterAccordion";
 import AuditList from "@/components/performance/AuditList";
 import ProjectionList from "@/components/performance/ProjectionList";
@@ -199,7 +199,7 @@ function Hero({
         {headerAction}
       </div>
 
-      <div className="mt-4 grid gap-6 lg:grid-cols-2 lg:items-center lg:gap-10">
+      <div className="mt-4 space-y-4">
         <div>
           {projectionLocked ? (
             <>
@@ -259,36 +259,13 @@ function Hero({
           )}
         </div>
 
-        <div>
-          <p className="text-xs font-medium text-blue-100">All {viewer === "self" ? "your" : "their"} papers</p>
-          {/* Steadiness (the points between papers) was removed 2026-11-08:
-              it told a student nothing to do (owner). */}
-          <dl className="mt-2 grid grid-cols-2 gap-2 sm:gap-3">
-            <HeroFact
-              label="Last paper"
-              value={summary.latest ? `${summary.latest.pct}%` : DASH}
-              note={summary.latest?.title ?? ""}
-            />
-            <HeroFact
-              label="Answers right"
-              value={summary.attemptQuality === null ? DASH : `${summary.attemptQuality}%`}
-              note={`of the ones ${viewer === "self" ? "you" : "they"} tried`}
-            />
-          </dl>
-          <p className="mt-3 text-[11px] text-blue-100 sm:text-xs">{countingNote(summary, viewer)}</p>
-        </div>
+        {/* The band keeps no paper facts (2026-11-08): Steadiness told a student
+            nothing to do, Last paper is the first row of the papers list below,
+            and Answers right moved to the clock card, where it decides how much
+            to attempt. */}
+        <p className="text-[11px] text-blue-100 sm:text-xs">{countingNote(summary, viewer)}</p>
       </div>
     </section>
-  );
-}
-
-function HeroFact({ label, value, note }: { label: string; value: string; note: string }) {
-  return (
-    <div className="min-w-0 rounded-2xl bg-white/10 p-3 ring-1 ring-white/15 sm:p-4">
-      <dt className="text-xs text-blue-100">{label}</dt>
-      <dd className="mt-1 text-2xl font-bold tabular-nums sm:text-3xl">{value}</dd>
-      <dd className="mt-0.5 line-clamp-3 text-[11px] leading-snug text-blue-100 sm:text-xs">{note}</dd>
-    </div>
   );
 }
 
@@ -380,78 +357,94 @@ function LaneView({ lane, links, viewer }: { lane: Lane; links: TaxonomyLinks; v
 
       <ClockCard lane={lane} viewer={viewer} />
 
-      {focus && (focus.startHere.length > 0 || focus.readyToLearn.length > 0) && (
-        <Section
-          title="Where to start"
-          note="The weakest chapter that other weak chapters build on. Fix it first and the others get easier."
-        >
-          {focus.startHere.length > 0 && (
-            <ul className="space-y-2">
-              {focus.startHere.map((f) => (
-                <li key={f.chapter} className="rounded-2xl border bg-card p-4">
-                  <div className="flex flex-wrap items-center justify-between gap-2">
-                    <span className="font-medium">{f.chapter}</span>
-                    <span className="text-sm tabular-nums text-muted-foreground">
-                      {f.accuracy === null ? DASH : `${f.accuracy}% right`}
-                    </span>
-                  </div>
-                  {f.unlocks.length > 0 && (
-                    <p className="mt-1 text-xs text-muted-foreground">Also holding back: {f.unlocks.join(", ")}</p>
-                  )}
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    <Chip href={f.learnHref} icon={BookOpen}>
-                      Learn
-                    </Chip>
-                    <Chip href={f.practiceHref} icon={Dumbbell}>
-                      Practise
-                    </Chip>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          )}
-          {focus.readyToLearn.length > 0 && (
-            <p className="mt-3 text-xs text-muted-foreground">
-              <span className="font-medium text-foreground">Ready to learn next:</span>{" "}
-              {focus.readyToLearn.slice(0, 6).map((r) => r.chapter).join(" · ")}
-            </p>
-          )}
-        </Section>
-      )}
-
-      <Section title={`${viewer === "self" ? "Your" : "Their"} chapters`} note="Weakest first. Recent papers count more.">
-        <ChapterAccordion chapters={lane.chapters} />
-      </Section>
-
-      {(lane.wrongAudit.length > 0 || lane.skipAudit.length > 0) && (
-        <div className="grid gap-6 md:grid-cols-2">
-          {lane.wrongAudit.length > 0 && (
-            <Section title="Most mistakes" note={`Topics where ${viewer === "self" ? "you" : "they"} lose the most marks.`}>
-              <AuditList rows={lane.wrongAudit} kind="wrong" />
-            </Section>
-          )}
-          {lane.skipAudit.length > 0 && (
+      {/* Five ways of looking again at the same chapters, folded (2026-11-08):
+          what went well, Fix next, the missing marks and the clock each end in
+          something to do, and stay open. */}
+      <details className="group rounded-2xl border bg-card">
+        <summary className="flex cursor-pointer list-none items-center justify-between gap-3 rounded-2xl p-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:p-5 [&::-webkit-details-marker]:hidden">
+          <span className="min-w-0">
+            <span className="block font-semibold">More detail</span>
+            <span className="block text-xs text-muted-foreground">
+              Where to start · {viewer === "self" ? "Your" : "Their"} chapters · Most mistakes · Left blank · By difficulty
+            </span>
+          </span>
+          <ChevronDown className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-open:rotate-180" aria-hidden />
+        </summary>
+        <div className="space-y-8 border-t p-4 sm:p-5">
+          {focus && (focus.startHere.length > 0 || focus.readyToLearn.length > 0) && (
             <Section
-              title="Left blank"
-              note={`Questions ${viewer === "self" ? "you" : "they"} saw but skipped. Questions never reached are in the clock section.`}
+              title="Where to start"
+              note="The weakest chapter that other weak chapters build on. Fix it first and the others get easier."
             >
-              <AuditList rows={lane.skipAudit} kind="skipped" />
+              {focus.startHere.length > 0 && (
+                <ul className="space-y-2">
+                  {focus.startHere.map((f) => (
+                    <li key={f.chapter} className="rounded-2xl border bg-card p-4">
+                      <div className="flex flex-wrap items-center justify-between gap-2">
+                        <span className="font-medium">{f.chapter}</span>
+                        <span className="text-sm tabular-nums text-muted-foreground">
+                          {f.accuracy === null ? DASH : `${f.accuracy}% right`}
+                        </span>
+                      </div>
+                      {f.unlocks.length > 0 && (
+                        <p className="mt-1 text-xs text-muted-foreground">Also holding back: {f.unlocks.join(", ")}</p>
+                      )}
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        <Chip href={f.learnHref} icon={BookOpen}>
+                          Learn
+                        </Chip>
+                        <Chip href={f.practiceHref} icon={Dumbbell}>
+                          Practise
+                        </Chip>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              )}
+              {focus.readyToLearn.length > 0 && (
+                <p className="mt-3 text-xs text-muted-foreground">
+                  <span className="font-medium text-foreground">Ready to learn next:</span>{" "}
+                  {focus.readyToLearn.slice(0, 6).map((r) => r.chapter).join(" · ")}
+                </p>
+              )}
             </Section>
           )}
-        </div>
-      )}
 
-      <Section title="By difficulty">
-        <dl className="grid grid-cols-3 gap-3">
-          {lane.difficulty.map((d) => (
-            <div key={d.difficulty} className="rounded-2xl border bg-card p-4 text-center">
-              <dt className="text-xs capitalize text-muted-foreground">{d.difficulty.toLowerCase()}</dt>
-              <dd className="mt-1 text-2xl font-bold tabular-nums">{d.accuracy === null ? DASH : `${d.accuracy}%`}</dd>
-              <dd className="text-xs text-muted-foreground">{d.answered === 0 ? "none answered" : `${d.answered} answered`}</dd>
+          <Section title={`${viewer === "self" ? "Your" : "Their"} chapters`} note="Weakest first. Recent papers count more.">
+            <ChapterAccordion chapters={lane.chapters} />
+          </Section>
+
+          {(lane.wrongAudit.length > 0 || lane.skipAudit.length > 0) && (
+            <div className="grid gap-6 md:grid-cols-2">
+              {lane.wrongAudit.length > 0 && (
+                <Section title="Most mistakes" note={`Topics where ${viewer === "self" ? "you" : "they"} lose the most marks.`}>
+                  <AuditList rows={lane.wrongAudit} kind="wrong" />
+                </Section>
+              )}
+              {lane.skipAudit.length > 0 && (
+                <Section
+                  title="Left blank"
+                  note={`Questions ${viewer === "self" ? "you" : "they"} saw but skipped. Questions never reached are in the clock section.`}
+                >
+                  <AuditList rows={lane.skipAudit} kind="skipped" />
+                </Section>
+              )}
             </div>
-          ))}
-        </dl>
-      </Section>
+          )}
+
+          <Section title="By difficulty">
+            <dl className="grid grid-cols-3 gap-3">
+              {lane.difficulty.map((d) => (
+                <div key={d.difficulty} className="rounded-2xl border bg-card p-4 text-center">
+                  <dt className="text-xs capitalize text-muted-foreground">{d.difficulty.toLowerCase()}</dt>
+                  <dd className="mt-1 text-2xl font-bold tabular-nums">{d.accuracy === null ? DASH : `${d.accuracy}%`}</dd>
+                  <dd className="text-xs text-muted-foreground">{d.answered === 0 ? "none answered" : `${d.answered} answered`}</dd>
+                </div>
+              ))}
+            </dl>
+          </Section>
+        </div>
+      </details>
     </div>
   );
 }
@@ -553,6 +546,12 @@ function ClockCard({ lane, viewer }: { lane: Lane; viewer: Viewer }) {
             <span className="font-semibold text-amber-700 dark:text-amber-400">{cov.seenBlank} left blank</span>,{" "}
             <span className="font-semibold text-muted-foreground">{cov.neverReached} not reached</span>.
           </p>
+          {lane.accuracy !== null && (
+            <p className="mt-1 text-sm">
+              When {viewer === "self" ? "you" : "they"} answered, {viewer === "self" ? "you were" : "they were"} right{" "}
+              <span className="font-semibold tabular-nums">{lane.accuracy}%</span> of the time.
+            </p>
+          )}
           <div className="mt-2 flex h-2.5 overflow-hidden rounded-full bg-muted" aria-hidden>
             <Segment n={cov.answered} total={cov.inPaper} className="bg-emerald-500" />
             <Segment n={cov.seenBlank} total={cov.inPaper} className="bg-amber-500" />
