@@ -1,0 +1,893 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "0f59e4f9-7076-41e4-a94d-a4633bd246c6",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{A–D: } (-2)^2+(-2)^2+6^2+2^2 = 48",
+              "f": "(2-4)^2+(4-6)^2+(7-1)^2+(5-3)^2",
+              "value": "48",
+              "note": "d = rank x − rank y"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{E–H: } (-6)^2+(-2)^2+0^2+4^2 = 56",
+              "f": "(1-7)^2+(3-5)^2+(8-8)^2+(6-2)^2",
+              "value": "56"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\Sigma d^2 = 48 + 56 = {{1:104}}",
+              "f": "48+56",
+              "value": "104",
+              "note": "n = 8"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "6\\Sigma d^2 = 6 \\times {{1:104}} = {{2:624}}",
+              "f": "6*104",
+              "value": "624"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "n(n^2-1) = 8(64-1) = {{3:504}}",
+              "f": "8*(8^2-1)",
+              "value": "504"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\rho = 1 - \\dfrac{ {{2:624}} }{ {{3:504}} } \\approx -0.238",
+              "f": "1-624/504",
+              "value": "-0.238",
+              "dp": 3,
+              "note": "ρ = 1 − 6Σd² / n(n² − 1)"
+            }
+          ],
+          "answer": "1-624/504"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s4",
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "463fa4b4",
+        "answer": {
+          "value": -0.23809523809523814,
+          "label": "ρ ≈ −0.24, weak negative"
+        }
+      }
+    },
+    {
+      "id": "52c512ae-bc05-464e-bb88-6a50f9ebae6a",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{D, K} \\to 7.5;\\quad \\text{E, G} \\to 5.5",
+              "note": "tied ranks share the average"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{A–D: } 1+25+49+2.25 = 77.25",
+              "f": "(11-12)^2+(12-7)^2+(1-8)^2+(7.5-9)^2",
+              "value": "77.25",
+              "note": "d² for each region"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{E–H: } 2.25+1+0.25+1 = 4.5",
+              "f": "(5.5-4)^2+(9-10)^2+(5.5-6)^2+(4-5)^2",
+              "value": "4.5"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{I–L: } 4+1+30.25+1 = 36.25",
+              "f": "(3-1)^2+(2-3)^2+(7.5-2)^2+(10-11)^2",
+              "value": "36.25"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\Sigma d^2 = 77.25+4.5+36.25 = {{1:118}}",
+              "f": "77.25+4.5+36.25",
+              "value": "118",
+              "note": "n = 12"
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "\\text{each pair: } \\dfrac{2^3-2}{12} = 0.5",
+              "f": "(2^3-2)/12",
+              "value": "0.5",
+              "note": "(m³ − m)/12 for each tied group"
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "{{1:118}} + 0.5 + 0.5 = {{2:119}}",
+              "f": "118+0.5+0.5",
+              "value": "119"
+            },
+            {
+              "step": "s7",
+              "kind": "calc",
+              "tex": "\\rho = 1 - \\dfrac{6 \\times {{2:119}}}{12(144-1)} = 1 - \\dfrac{714}{1716}",
+              "f": "1-6*119/(12*(144-1))",
+              "value": "1-714/1716"
+            },
+            {
+              "step": "s7",
+              "kind": "calc",
+              "tex": "\\rho \\approx 0.584",
+              "f": "1-714/1716",
+              "value": "0.584",
+              "dp": 3
+            },
+            {
+              "step": "s8",
+              "kind": "calc",
+              "tex": "\\text{uncorrected: } 1 - \\dfrac{708}{1716} \\approx 0.587",
+              "f": "1-6*118/(12*(144-1))",
+              "value": "0.587",
+              "dp": 3
+            }
+          ],
+          "answer": "1-714/1716"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2",
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s6"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s7"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s8"
+            ]
+          }
+        ],
+        "fingerprint": "177417d8",
+        "answer": {
+          "value": 0.583916083916084,
+          "label": "ρ ≈ +0.58, moderate positive"
+        }
+      }
+    },
+    {
+      "id": "82a6f0dd-4a8d-49f0-9a50-51d3050d6d01",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{agricultural} = \\text{arable} + \\text{permanent crops}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{C: } 52.0 + 16.0 = {{1:68.0}}",
+              "f": "52.0+16.0",
+              "value": "68.0"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{F: } 57.8 + 0.6 = 58.4",
+              "f": "57.8+0.6",
+              "value": "58.4"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{I: } 50.1 + 4.1 = 54.2",
+              "f": "50.1+4.1",
+              "value": "54.2"
+            }
+          ],
+          "answer": "52.0+16.0"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "04b5b8ed",
+        "answer": {
+          "value": 68,
+          "label": "Region C, 68.0%"
+        }
+      }
+    },
+    {
+      "id": "58c66c71-0d6d-4817-827b-796f2153e718",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{N. Africa, W. Asia: } 85 - 74 = 11",
+              "f": "85-74",
+              "value": "11"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{S. Asia: } 80 - 63 = 17",
+              "f": "80-63",
+              "value": "17"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{Sub-Saharan Africa: } 72 - 57 = 15",
+              "f": "72-57",
+              "value": "15",
+              "note": "gap = male − female, in points"
+            }
+          ],
+          "answer": "85-74"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1",
+              "s2",
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "1b32bbee",
+        "answer": {
+          "value": 11,
+          "label": "gaps 11, 17 and 15 points"
+        }
+      }
+    },
+    {
+      "id": "a4b8e5c7-4317-4ab0-a20c-a264ab45824f",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{smaller share in primary} \\Rightarrow \\text{more developed}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{highest share} = 47.28\\ (\\text{Africa})",
+              "f": "max(max(max(7.91,24.49),max(14.93,14.94)),max(47.28,27.79))",
+              "value": "47.28",
+              "note": "least developed"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "\\text{Africa } 47.28 > \\text{Australia } 27.79"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "> \\text{Asia } 24.49 > \\text{S. America } 14.94"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "> \\text{N. America } 14.93 > \\text{Europe } 7.91"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{lowest share} = 7.91\\ (\\text{Europe})",
+              "f": "min(min(min(7.91,24.49),min(14.93,14.94)),min(47.28,27.79))",
+              "value": "7.91",
+              "note": "most developed"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "14.94 - 14.93 = 0.01",
+              "f": "14.94-14.93",
+              "value": "0.01",
+              "note": "the two Americas barely differ"
+            }
+          ],
+          "answer": "max(max(max(7.91,24.49),max(14.93,14.94)),max(47.28,27.79))"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2",
+              "s3",
+              "s4"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "996dc3d0",
+        "answer": {
+          "value": 47.28,
+          "label": "Africa first, Europe last"
+        }
+      }
+    },
+    {
+      "id": "583a1251-1ab2-42ef-bc07-dd7cecbf75dd",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{A: } \\dfrac{500}{200} = 2.5\\ \\text{t per labourer}",
+              "f": "500/200",
+              "value": "2.5"
+            },
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{B: } \\dfrac{1000}{300} \\approx 3.3\\ \\text{t per labourer}",
+              "f": "1000/300",
+              "value": "3.3",
+              "dp": 1
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "3.3 > 2.5:\\ \\text{B is more efficient}"
+            }
+          ],
+          "answer": "500/200"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "5ff77e5f",
+        "answer": {
+          "value": 2.5,
+          "label": "Yes; B 3.3 t, A 2.5 t each"
+        }
+      }
+    },
+    {
+      "id": "126709ee-cc0b-4865-b414-0099890be3fe",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{China: } \\dfrac{142.8}{96.0} \\times 100 \\approx 149",
+              "f": "142.8/96.0*100",
+              "value": "149",
+              "dp": 0,
+              "note": "crores ÷ lakh km², × 100 = per km²"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{India: } \\dfrac{135.3}{32.9} \\times 100 \\approx 411",
+              "f": "135.3/32.9*100",
+              "value": "411",
+              "dp": 0
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{USA: } \\dfrac{32.7}{95.3} \\times 100 \\approx 34",
+              "f": "32.7/95.3*100",
+              "value": "34",
+              "dp": 0
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{Indonesia: } \\dfrac{26.8}{19.1} \\times 100 \\approx 140",
+              "f": "26.8/19.1*100",
+              "value": "140",
+              "dp": 0
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{Pakistan: } \\dfrac{21.2}{8.9} \\times 100 \\approx 238",
+              "f": "21.2/8.9*100",
+              "value": "238",
+              "dp": 0
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{Brazil: } \\dfrac{20.9}{85.2} \\times 100 \\approx 25",
+              "f": "20.9/85.2*100",
+              "value": "25",
+              "dp": 0
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\text{Nigeria: } \\dfrac{19.6}{9.2} \\times 100 \\approx 213",
+              "f": "19.6/9.2*100",
+              "value": "213",
+              "dp": 0
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "\\text{Bangladesh: } \\dfrac{16.1}{1.5} \\times 100 \\approx 1073",
+              "f": "16.1/1.5*100",
+              "value": "1073",
+              "dp": 0
+            },
+            {
+              "step": "s7",
+              "kind": "calc",
+              "tex": "\\text{Russia: } \\dfrac{14.6}{171.0} \\times 100 \\approx 9",
+              "f": "14.6/171.0*100",
+              "value": "9",
+              "dp": 0
+            },
+            {
+              "step": "s8",
+              "kind": "calc",
+              "tex": "\\text{Mexico: } \\dfrac{12.6}{19.7} \\times 100 \\approx 64",
+              "f": "12.6/19.7*100",
+              "value": "64",
+              "dp": 0
+            }
+          ],
+          "answer": "142.8/96.0*100"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2",
+              "s3",
+              "s4",
+              "s5",
+              "s6",
+              "s7",
+              "s8"
+            ]
+          }
+        ],
+        "fingerprint": "ce981e69",
+        "answer": {
+          "value": 148.75,
+          "label": "China 149 … Bangladesh 1073"
+        }
+      }
+    },
+    {
+      "id": "59fa32c3-da21-42e9-8b08-4d0688df59b5",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "1200:\\ \\dfrac{360}{254} \\approx 1.42",
+              "f": "360/254",
+              "value": "1.42",
+              "dp": 2,
+              "note": "multiple = population ÷ 254"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "1400:\\ \\dfrac{350}{254} \\approx 1.38",
+              "f": "350/254",
+              "value": "1.38",
+              "dp": 2
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "1600:\\ \\dfrac{550}{254} \\approx 2.17",
+              "f": "550/254",
+              "value": "2.17",
+              "dp": 2
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "1800:\\ \\dfrac{813}{254} \\approx 3.20",
+              "f": "813/254",
+              "value": "3.20",
+              "dp": 2
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "1900:\\ \\dfrac{1550}{254} \\approx 6.10",
+              "f": "1550/254",
+              "value": "6.10",
+              "dp": 2
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "1950:\\ \\dfrac{2400}{254} \\approx 9.45",
+              "f": "2400/254",
+              "value": "9.45",
+              "dp": 2
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "1970:\\ \\dfrac{3700}{254} \\approx 14.57",
+              "f": "3700/254",
+              "value": "14.57",
+              "dp": 2
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "1990:\\ \\dfrac{5200}{254} \\approx 20.47",
+              "f": "5200/254",
+              "value": "20.47",
+              "dp": 2
+            },
+            {
+              "step": "s7",
+              "kind": "calc",
+              "tex": "2010:\\ \\dfrac{7000}{254} \\approx 27.56",
+              "f": "7000/254",
+              "value": "27.56",
+              "dp": 2
+            },
+            {
+              "step": "s8",
+              "kind": "calc",
+              "tex": "1800 \\to 2010:\\ \\dfrac{7000}{813} \\approx 8.6",
+              "f": "7000/813",
+              "value": "8.6",
+              "dp": 1,
+              "note": "growth after 1800"
+            }
+          ],
+          "answer": "7000/254"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2",
+              "s3",
+              "s4",
+              "s5",
+              "s6",
+              "s7"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s8"
+            ]
+          }
+        ],
+        "fingerprint": "8ce67643",
+        "answer": {
+          "value": 27.559055118110237,
+          "label": "about 27.56 times by 2010"
+        }
+      }
+    },
+    {
+      "id": "82bbb6cb-49bf-40cf-9a52-246e4fd8552f",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "calc",
+              "tex": "\\text{lowest birth rate} = 8.2\\ (\\text{Greece})",
+              "f": "min(min(min(11.5,18.1),min(8.2,12.4)),min(11.8,46.5))",
+              "value": "8.2"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\text{Greece } 8.2 < \\text{Sweden } 11.5 < \\text{USA } 11.8"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "< \\text{China } 12.4 < \\text{India } 18.1 < \\text{Niger } 46.5"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{lowest death rate} = 7.1\\ (\\text{China})",
+              "f": "min(min(min(9.1,7.2),min(11.6,7.1)),min(8.5,8.5))",
+              "value": "7.1"
+            },
+            {
+              "step": "s4",
+              "kind": "note",
+              "tex": "\\text{China } 7.1 < \\text{India } 7.2 < \\text{USA } 8.5"
+            },
+            {
+              "step": "s4",
+              "kind": "note",
+              "tex": "= \\text{Niger } 8.5 < \\text{Sweden } 9.1 < \\text{Greece } 11.6",
+              "note": "USA and Niger tie at 8.5"
+            }
+          ],
+          "answer": "min(min(min(11.5,18.1),min(8.2,12.4)),min(11.8,46.5))"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "d32b9e7f",
+        "answer": {
+          "value": 8.2,
+          "label": "BR: Greece 8.2 first"
+        }
+      }
+    },
+    {
+      "id": "b42abf70-82d2-4a13-a0ba-cb42642a7309",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{CDR} = \\dfrac{\\text{deaths}}{\\text{population}} \\times 1000"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{CDR} = \\dfrac{2{,}986}{2{,}23{,}000} \\times 1000 \\approx 13.39",
+              "f": "2986/223000*1000",
+              "value": "13.39",
+              "dp": 2
+            }
+          ],
+          "answer": "2986/223000*1000"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "b8d60cf1",
+        "answer": {
+          "value": 13.390134529147982,
+          "label": "13.39 per 1000"
+        }
+      }
+    },
+    {
+      "id": "b60572f9-2319-456a-afe2-cebda8ad6d6a",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{CBR} = 14.57,\\quad \\text{CDR} = 13.39"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "14.57 - 13.39 = 1.18\\ \\text{per 1000}",
+              "f": "14.57-13.39",
+              "value": "1.18"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "3{,}250 - 2{,}986 = 264\\ \\text{people}",
+              "f": "3250-2986",
+              "value": "264"
+            }
+          ],
+          "answer": "14.57-13.39"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "c2034ce1",
+        "answer": {
+          "value": 1.1799999999999997,
+          "label": "+1.18 per 1000; +264 people"
+        }
+      }
+    }
+  ],
+  "decided": []
+}
