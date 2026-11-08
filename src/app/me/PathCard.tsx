@@ -288,7 +288,7 @@ function PathStart({ offer, busy, onStart }: { offer: PathOffer; busy: boolean; 
           onClick={() => onStart(offer.stream!)}
           className={cn(button, "mt-4 bg-brand text-brand-foreground hover:bg-brand/90")}
         >
-          Start my path
+          Start my plan
           <ArrowRight className="h-4 w-4" aria-hidden />
         </button>
       ) : (
@@ -301,7 +301,7 @@ function PathStart({ offer, busy, onStart }: { offer: PathOffer; busy: boolean; 
                 type="button"
                 disabled={busy}
                 onClick={() => onStart(b.stream)}
-                aria-label={`${b.label}: start my path`}
+                aria-label={`${b.label}: start my plan`}
                 className={cn(button, "border bg-card hover:bg-accent")}
               >
                 {b.label}

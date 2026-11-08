@@ -110,12 +110,16 @@ describe("the /me start card", () => {
     const out = card({ path: null, offer: { exam: "cbse-12", minutes: 55, stream: null } });
     expect(out).toContain("Finish Physics, Chemistry and Maths before your boards");
     expect(out).toContain("about 55 minutes a day");
-    for (const s of ["PCM", "PCB", "PCMB"]) expect(out).toContain(`>${s}<`);
+    for (const s of ["PCM", "PCB", "PCMB"]) {
+      expect(out).toContain(`>${s}<`);
+      expect(out).toContain(`aria-label="${s}: start my plan"`);
+    }
   });
 
   it("has one Start button when the stream is known", () => {
     const out = card({ path: null, offer: { exam: "mh-hsc-12", minutes: 60, stream: "pcm" } });
-    expect(out).toContain("Start my path");
+    expect(out).toContain("Start my plan");
+    expect(out).not.toContain("Start my path");
     expect(out).not.toContain(">PCB<");
   });
 
