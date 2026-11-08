@@ -103,18 +103,22 @@ describe("ExamCatalogCachePayload — the unstable_cache serialisation contract"
         ["JEE Mains", { pyq: 10614, practice: 0 }],
       ],
       ids: [["nda", "id-nda"]],
+      allPublicTotal: 25_000,
     };
 
     const revived = JSON.parse(JSON.stringify(payload)) as ExamCatalogCachePayload;
-    const { exams, totalPublicQuestions } = shapeExamCatalog(
+    const { exams, totalPublicQuestions, allPublicQuestions } = shapeExamCatalog(
       new Map(revived.counts),
-      new Map(revived.ids)
+      new Map(revived.ids),
+      undefined,
+      revived.allPublicTotal
     );
 
     expect(exams.find((e) => e.examName === "NDA")!.totalPublicQuestions).toBe(9224);
     expect(exams.find((e) => e.examName === "NDA")!.counts).toEqual({ pyq: 5130, practice: 4094 });
     expect(exams.find((e) => e.examName === "JEE Mains")!.totalPublicQuestions).toBe(10614);
     expect(totalPublicQuestions).toBe(9224 + 10614);
+    expect(allPublicQuestions).toBe(25_000);
   });
 
   it("proves the failure mode this contract exists to prevent: a Map does NOT survive", () => {

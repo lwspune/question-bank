@@ -5234,6 +5234,14 @@ export type Database = {
           year: number
         }[]
       }
+      public_question_counts: {
+        Args: never
+        Returns: {
+          exam_id: string
+          question_kind: string
+          questions: number
+        }[]
+      }
       put_question_translation: {
         Args: {
           p_context: string

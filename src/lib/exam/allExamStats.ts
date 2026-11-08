@@ -9,6 +9,7 @@ import {
 import { examHomeHref } from "./examHome";
 import { createSupabaseAnonClient } from "@/lib/supabase/server";
 import type { KindCounts } from "./questionCounts";
+import { loadPublicQuestionCounts, tallyPublicCounts } from "./publicCounts";
 
 /**
  * Catalog stats for the site homepage (`/`) — one row per exam in the
@@ -43,6 +44,9 @@ export type ExamCatalog = {
   totalPublicQuestions: number;
   /** The grand total by kind (the homepage headline names both). */
   totals: KindCounts;
+  /** Every PUBLIC question in the bank, any exam, listed here or not (V's bank
+   *  figure). `totalPublicQuestions` counts only the listed exams. */
+  allPublicQuestions: number;
 };
 
 /**
@@ -74,7 +78,9 @@ export function shapeExamCatalog(
   idsBySlug: Map<string, string>,
   // www's exams by default: the homepage, /about, llms.txt and V list these.
   // /exams/[examSlug] passes the full registry so an intl exam finds itself.
-  registry: readonly ExamEntry[] = PYQVAULT_EXAMS
+  registry: readonly ExamEntry[] = PYQVAULT_EXAMS,
+  /** The whole bank's PUBLIC total; defaults to the listed exams' total. */
+  allPublicTotal?: number
 ): ExamCatalog {
   const exams: ExamCatalogItem[] = registry.map((exam) => {
     const counts = countsByExamName.get(exam.examName) ?? { pyq: 0, practice: 0 };
@@ -97,7 +103,8 @@ export function shapeExamCatalog(
     practice: exams.reduce((sum, e) => sum + e.counts.practice, 0),
   };
 
-  return { exams, totalPublicQuestions: totals.pyq + totals.practice, totals };
+  const listed = totals.pyq + totals.practice;
+  return { exams, totalPublicQuestions: listed, totals, allPublicQuestions: allPublicTotal ?? listed };
 }
 
 /**
@@ -113,12 +120,15 @@ export type ExamCatalogCachePayload = {
   counts: [string, KindCounts][];
   /** exam slug → DB UUID */
   ids: [string, string][];
+  /** Every PUBLIC question, any exam (ExamCatalog.allPublicQuestions). */
+  allPublicTotal: number;
 };
 
 /**
- * Load the DB half of the homepage catalog: one head-count per exam (safe
- * against the PostgREST 1000-row implicit-truncation trap — we never read row
- * payloads), plus the slug→UUID map for the bank-href fallback.
+ * Load the DB half of the homepage catalog: every exam's PUBLIC counts from
+ * one grouped read (public_question_counts, migration 0237; it was two head
+ * counts per exam, 50 at once), plus the slug→UUID map for the bank-href
+ * fallback.
  *
  * Client-injectable so it can be driven against a test project.
  *
@@ -151,32 +161,16 @@ export async function loadExamCatalogPayload(
     if (id) ids.push([exam.slug, id]);
   }
 
-  // Two exact head-counts per exam, one per kind, so every surface can say
-  // which it shows (UX_REVIEW_TRIAGE.md A1). Head counts: no row payload.
-  const headCount = async (examId: string, kind: "pyq" | "practice") => {
-    const { count, error } = await client
-      .from("questions")
-      .select("id", { count: "exact", head: true })
-      .eq("exam_id", examId)
-      .eq("visibility", "PUBLIC")
-      .eq("question_kind", kind);
-    if (error || count === null || count === undefined) {
-      throw new Error(
-        `exam catalog: ${kind} count failed for exam ${examId} (${error?.message ?? "no count"})`
-      );
-    }
-    return count;
-  };
-  const counts: [string, KindCounts][] = await Promise.all(
-    EXAM_REGISTRY.map(async (exam): Promise<[string, KindCounts]> => {
-      const id = idByName.get(exam.examName);
-      if (!id) return [exam.examName, { pyq: 0, practice: 0 }];
-      const [pyq, practice] = await Promise.all([headCount(id, "pyq"), headCount(id, "practice")]);
-      return [exam.examName, { pyq, practice }];
-    })
-  );
+  // Both kinds per exam, so every surface can say which it shows
+  // (UX_REVIEW_TRIAGE.md A1). Throws on a failed or empty read.
+  const { byExamId, total } = tallyPublicCounts(await loadPublicQuestionCounts(client));
+  const counts: [string, KindCounts][] = EXAM_REGISTRY.map((exam) => {
+    const id = idByName.get(exam.examName);
+    // No row: the exam has no PUBLIC question of that kind, a genuine 0.
+    return [exam.examName, (id && byExamId.get(id)) || { pyq: 0, practice: 0 }];
+  });
 
-  return { counts, ids };
+  return { counts, ids, allPublicTotal: total };
 }
 
 /**
@@ -211,6 +205,7 @@ const loadCachedExamCatalogPayload = () =>
  * v3 (2026-10-09): dropped the all-zero entry cached on 2026-10-08, before
  * loadExamCatalogPayload learned to throw on a failed read.
  * v4 (2026-10-21): SPI went live; an older entry carried no SPI count.
+ * v6 (2026-11-08): the payload gained allPublicTotal (V's bank figure).
  *
  * The DAY is there because `revalidate` alone did not keep the copy fresh: on
  * 2026-11-02 the homepage was still serving one that predated ISC and ICSE
@@ -223,7 +218,7 @@ const loadCachedExamCatalogPayload = () =>
  * Pure. Spec: tests/exam-catalog-cache-key.test.ts.
  */
 export function examCatalogCacheKey(now: Date): string[] {
-  return ["exam-catalog-payload-v5", now.toISOString().slice(0, 10)];
+  return ["exam-catalog-payload-v6", now.toISOString().slice(0, 10)];
 }
 
 /**
@@ -236,12 +231,8 @@ export function examCatalogCacheKey(now: Date): string[] {
 export async function getCachedExamCatalog(
   registry: readonly ExamEntry[] = PYQVAULT_EXAMS
 ): Promise<ExamCatalog> {
-  const { counts, ids } = await loadCachedExamCatalogPayload();
-  return shapeExamCatalog(
-    new Map(counts),
-    new Map(ids),
-    registry
-  );
+  const { counts, ids, allPublicTotal } = await loadCachedExamCatalogPayload();
+  return shapeExamCatalog(new Map(counts), new Map(ids), registry, allPublicTotal);
 }
 
 /**
