@@ -75,3 +75,36 @@ describe("MeView, the student's own Home with the server's pulse", () => {
     expect(out).toContain("Not you?");
   });
 });
+
+/**
+ * "Start next" (2026-11-09): the highest-value chapters not started, each with
+ * its weight in a real paper, the owner's format.
+ */
+describe("MeView, Start next", () => {
+  const startNext = [
+    {
+      chapterId: "c9",
+      chapter: "Matrices & Determinants",
+      subject: "Mathematics",
+      exam: "NDA",
+      paperCode: "maths",
+      papers: 19,
+      qPerPaper: 9.5,
+      marksPerPaper: 23.8,
+      paperMarks: 300,
+    },
+  ];
+
+  it("shows the chapter, its weight in a paper and a Start link", () => {
+    const html = renderToStaticMarkup(createElement(MeView, { data: { ...data, startNext }, vapidKey: "", initialPulse: PULSE }));
+    expect(html).toContain("Start next");
+    expect(html).toContain("Matrices &amp; Determinants");
+    expect(html).toContain("about 10 questions a paper · 24 of 300 marks (8%)");
+    expect(html).toContain('href="/go/practice?exam=NDA&amp;subject=Mathematics&amp;chapter=Matrices+%26+Determinants"');
+  });
+
+  it("is not there with nothing to start", () => {
+    const html = renderToStaticMarkup(createElement(MeView, { data: { ...data, startNext: [] }, vapidKey: "", initialPulse: PULSE }));
+    expect(html).not.toContain("Start next");
+  });
+});

@@ -4,6 +4,7 @@ import FeedbackCards from "./FeedbackCards";
 import TodayCard from "./TodayCard";
 import PathCard from "./PathCard";
 import WeakSpots from "./WeakSpots";
+import StartNext from "./StartNext";
 import ContinueCard from "./ContinueCard";
 import HomeReminder from "./HomeReminder";
 import StageNudge from "./StageNudge";
@@ -146,6 +147,10 @@ export default function MeView({
       {/* The chapters holding most waiting mistakes, each with its own Fix
           (2026-11-06): 448 of 745 /me visitors had misses waiting. */}
       <WeakSpots pulse={viewAs?.pulse} initialPulse={initialPulse} />
+
+      {/* The highest-value chapters not started (2026-11-09). A board-plan
+          student's plan already orders their chapters, so not for them. */}
+      {!data.pathCard.path && <StartNext chapters={data.startNext ?? []} />}
 
       {/* Home keeps things to DO (2026-11-08): the number tiles and Recent
           mocks moved to the Progress tab (OutcomeTiles, Papers you sat). */}
