@@ -1,0 +1,1092 @@
+{
+  "//": "Assembled from agent drafts (algebraSteps).",
+  "visuals": [
+    {
+      "id": "89887152-d6cf-42a5-aa3b-22f26ef81180",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{seeds} = 300",
+              "note": "one ovule and one pollen grain per seed"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{female meioses} = {{1:300}}",
+              "f": "300",
+              "value": "300",
+              "note": "one megaspore mother cell per seed"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{male meioses} = 300 \\div 4 = {{2:75}}",
+              "f": "300/4",
+              "value": "75",
+              "note": "one meiosis gives 4 pollen grains"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{total} = {{1:300}} + {{2:75}} = {{3:375}}",
+              "f": "300+75",
+              "value": "375"
+            }
+          ],
+          "answer": "375"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 5,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "e2daf19e",
+        "answer": {
+          "value": 375,
+          "label": "375 meiotic divisions"
+        }
+      }
+    },
+    {
+      "id": "df18df58-c5d5-4042-947c-487c5109adcd",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{male gametes} = 80",
+              "note": "2 male gametes per pollen grain"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{pollen grains} = \\dfrac{80}{2} = {{1:40}}",
+              "f": "80/2",
+              "value": "40"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{mother cells} = \\dfrac{{{1:40}}}{4} = {{2:10}}",
+              "f": "40/4",
+              "value": "10",
+              "note": "one meiosis gives 4 microspores"
+            },
+            {
+              "step": "s4",
+              "kind": "note",
+              "tex": "\\therefore\\ {{2:10}}\\ \\text{meiotic divisions}"
+            }
+          ],
+          "answer": "10"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "b35fe00e",
+        "answer": {
+          "value": 10,
+          "label": "10 meiotic divisions"
+        }
+      }
+    },
+    {
+      "id": "62c0bba1-925e-4215-b2cf-70502ac5b0c0",
+      "option": "B",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "RR,\\ Rr,\\ rr\\quad\\text{and}\\quad YY,\\ Yy,\\ yy",
+              "note": "3 genotypes for each gene in F₂"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{genotypes} = 3 \\times 3 = {{1:9}}",
+              "f": "3*3",
+              "value": "9",
+              "note": "16 boxes, but 9 distinct genotypes"
+            }
+          ],
+          "answer": "9"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          }
+        ],
+        "fingerprint": "adcd461e",
+        "answer": {
+          "value": 9,
+          "label": "nine (9)"
+        }
+      }
+    },
+    {
+      "id": "8cd35809-eb7e-46e4-b86d-6e0ba4186f33",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{Hb}^A\\text{Hb}^S \\times \\text{Hb}^A\\text{Hb}^S",
+              "note": "a marriage between two carriers"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{Hb}^A\\text{Hb}^A\\ \\text{normal} = {{1:1}}",
+              "f": "1",
+              "value": "1",
+              "note": "boxes out of 4"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{Hb}^A\\text{Hb}^S\\ \\text{carrier} = 1 + 1 = {{2:2}}",
+              "f": "1+1",
+              "value": "2"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{Hb}^S\\text{Hb}^S\\ \\text{anaemic} = {{3:1}}",
+              "f": "1",
+              "value": "1"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "{{1:1}} + {{2:2}} + {{3:1}} = 4",
+              "f": "1+2+1",
+              "value": "4",
+              "note": "normal : carrier : anaemic = 1 : 2 : 1"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{survivors} = 4 - {{3:1}} = 3",
+              "f": "4-1",
+              "value": "3",
+              "note": "the anaemics die"
+            },
+            {
+              "step": "s4",
+              "kind": "note",
+              "tex": "\\text{carrier} : \\text{normal} = {{2:2}} : {{1:1}}",
+              "note": "not the expected 3 : 1"
+            }
+          ],
+          "answer": "2"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "9c45ff4d",
+        "answer": {
+          "value": 2,
+          "label": "carriers : normals = 2 : 1"
+        }
+      }
+    },
+    {
+      "id": "8f78b8ad-b593-4345-9da8-a6acca2f9882",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "X^{h}Y\\ \\text{haemophilic},\\quad X^{H}X^{h}\\ \\text{carrier}"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "X^{h}Y \\times X^{H}X^{H}",
+              "note": "haemophilic male × normal female"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "X^{H}X^{h}\\ \\text{daughters} = \\tfrac{1}{2} = 50\\%",
+              "f": "100/2",
+              "value": "50",
+              "note": "1 of the 2 kinds of offspring"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "X^{H}Y\\ \\text{sons} = \\tfrac{1}{2} = 50\\%",
+              "f": "100/2",
+              "value": "50"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "X^{H}X^{h} \\times X^{H}Y",
+              "note": "carrier daughter × normal male"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{each of 4 boxes} = \\tfrac{1}{4} = 25\\%",
+              "f": "100/4",
+              "value": "25",
+              "note": "one haemophilic son in four"
+            },
+            {
+              "step": "s4",
+              "kind": "note",
+              "tex": "X^{h}:\\ \\text{grandfather} \\to \\text{daughter} \\to \\text{grandson}"
+            }
+          ],
+          "answer": "50"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 8,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 13,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "88a53e72",
+        "answer": {
+          "value": 50,
+          "label": "F1 50% : 50%; F2 25% each"
+        }
+      }
+    },
+    {
+      "id": "b252fe51-a334-4590-8197-68e37a8ca829",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{violet} \\times rr",
+              "note": "cross with the homozygous recessive"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "RR \\times rr"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "Rr\\ \\text{violet} = 2 \\times 2 = 4\\ \\text{boxes}",
+              "f": "2*2",
+              "value": "4",
+              "note": "all violet: homozygous"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "Rr \\times rr"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{violet} : \\text{white} = 2 : 2 = 1 : 1",
+              "f": "2/2",
+              "value": "1",
+              "note": "1 : 1 shows it is heterozygous"
+            }
+          ],
+          "answer": "1"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "391edbc7",
+        "answer": {
+          "value": 1,
+          "label": "all violet (RR); 1 : 1 (Rr)"
+        }
+      }
+    },
+    {
+      "id": "bdf943fb-840d-4534-a086-632428c0d4dc",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "RRYY \\times rryy",
+              "note": "round yellow × wrinkled green"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "F_1 = RrYy"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "RY,\\ Ry,\\ rY,\\ ry",
+              "note": "4 kinds of gametes in equal shares"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "4 \\times 4 = 16\\ \\text{boxes}",
+              "f": "4*4",
+              "value": "16"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "{{1:9}} + {{2:3}} + {{2:3}} + {{3:1}} = 16",
+              "f": "9+3+3+1",
+              "value": "16",
+              "note": "9 : 3 : 3 : 1"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\text{round} = {{1:9}} + {{2:3}} = 12",
+              "f": "9+3",
+              "value": "12"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\text{round} : \\text{wrinkled} = 12 : 4 = 3 : 1",
+              "f": "12/4",
+              "value": "3"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "\\text{yellow} : \\text{green} = 12 : 4 = 3 : 1",
+              "f": "(9+3)/(3+1)",
+              "value": "3",
+              "note": "the same as a monohybrid cross"
+            }
+          ],
+          "answer": "9"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 11,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 13,
+            "beats": [
+              "s5"
+            ]
+          }
+        ],
+        "fingerprint": "e3bb31f0",
+        "answer": {
+          "value": 9,
+          "label": "9 : 3 : 3 : 1"
+        }
+      }
+    },
+    {
+      "id": "c3ebffa8-d857-404a-9bc0-703d26ab772a",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "X^{C}\\ \\text{normal},\\quad X^{c}\\ \\text{colour blind}"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "X^{c}Y \\times X^{C}X^{C}",
+              "note": "colour blind male × normal female"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\text{sons}\\ X^{C}Y,\\quad \\text{daughters}\\ X^{C}X^{c}",
+              "note": "all sons normal, all daughters carriers"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "X^{C}X^{c} \\times X^{C}Y",
+              "note": "carrier daughter × normal male"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{each of 4 types} = \\tfrac{1}{4} = 25\\%",
+              "f": "100/4",
+              "value": "25",
+              "note": "one colour blind son in four"
+            },
+            {
+              "step": "s4",
+              "kind": "note",
+              "tex": "X^{c}:\\ \\text{grandfather} \\to \\text{daughter} \\to \\text{grandson}"
+            }
+          ],
+          "answer": "25"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 11,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "4075c85b",
+        "answer": {
+          "value": 25,
+          "label": "25% of each type in F2"
+        }
+      }
+    },
+    {
+      "id": "dc56769b-8d1d-4d54-8e5a-1032372eff9a",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "RRYY \\times rryy",
+              "note": "round yellow × wrinkled green"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "F_1:\\ RrYy \\times RrYy"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "4 \\times 4 = 16\\ \\text{boxes}",
+              "f": "4*4",
+              "value": "16",
+              "note": "gametes RY, Ry, rY, ry each way"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{round, yellow} = 1+2+2+4 = {{1:9}}",
+              "f": "1+2+2+4",
+              "value": "9"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{round, green} = 1+2 = {{2:3}}",
+              "f": "1+2",
+              "value": "3"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{wrinkled, yellow} = 1+2 = {{2:3}}",
+              "f": "1+2",
+              "value": "3"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\text{wrinkled, green} = {{3:1}}",
+              "f": "1",
+              "value": "1"
+            },
+            {
+              "step": "s5",
+              "kind": "calc",
+              "tex": "{{1:9}} + {{2:3}} + {{2:3}} + {{3:1}} = 16",
+              "f": "9+3+3+1",
+              "value": "16",
+              "note": "phenotypic ratio 9 : 3 : 3 : 1"
+            },
+            {
+              "step": "s6",
+              "kind": "calc",
+              "tex": "1{+}2{+}2{+}4{+}1{+}2{+}1{+}2{+}1 = 16",
+              "f": "1+2+2+4+1+2+1+2+1",
+              "value": "16",
+              "note": "nine genotypes, 1 : 2 : 2 : 4 : …"
+            }
+          ],
+          "answer": "9"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 7,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 10,
+            "beats": [
+              "s4"
+            ]
+          },
+          {
+            "from": 12,
+            "beats": [
+              "s5"
+            ]
+          },
+          {
+            "from": 13,
+            "beats": [
+              "s6"
+            ]
+          }
+        ],
+        "fingerprint": "bde5ed59",
+        "answer": {
+          "value": 9,
+          "label": "9 : 3 : 3 : 1"
+        }
+      }
+    },
+    {
+      "id": "3ae85651-e18a-436b-b6cc-1ce41485a307",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\mathrm{N_2} \\to 2\\,\\mathrm{NH_3}:\\ 16\\ \\text{ATP}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{ATP per}\\ \\mathrm{NH_3} = \\dfrac{16}{2} = {{1:8}}",
+              "f": "16/2",
+              "value": "8"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "1000 \\times {{1:8}} = {{2:8000}}\\ \\text{ATP}",
+              "f": "1000*8",
+              "value": "8000"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\mathrm{N_2} = 1000 \\div 2 = 500",
+              "f": "1000/2",
+              "value": "500",
+              "note": "check"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "500 \\times 16 = {{2:8000}}",
+              "f": "500*16",
+              "value": "8000"
+            }
+          ],
+          "answer": "8000"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "d3a89c97",
+        "answer": {
+          "value": 8000,
+          "label": "8000 ATP; heterocysts"
+        }
+      }
+    },
+    {
+      "id": "0c2ef0ee-5f99-496b-8bb6-fbbf4aa533b5",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{atrial systole} = {{1:0.1}}\\ \\text{s}"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\text{ventricular systole} = {{2:0.3}}\\ \\text{s}"
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "\\text{joint diastole} = {{3:0.4}}\\ \\text{s}"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "{{1:0.1}} + {{2:0.3}} + {{3:0.4}} = 0.8\\ \\text{s}",
+              "f": "0.1+0.3+0.4",
+              "value": "0.8",
+              "note": "one cardiac cycle"
+            }
+          ],
+          "answer": "0.8"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 6,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 9,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "9d870ebe",
+        "answer": {
+          "value": 0.8,
+          "label": "0.8 s per cardiac cycle"
+        }
+      }
+    },
+    {
+      "id": "99acc648-e6ec-42ab-a7bd-b5c545056a85",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{atrial systole} = {{1:0.1}}\\ \\text{s}"
+            },
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{ventricular systole} = {{2:0.3}}\\ \\text{s}"
+            },
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{joint diastole} = {{3:0.4}}\\ \\text{s}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{total} = {{1:0.1}} + {{2:0.3}} + {{3:0.4}} = 0.8\\ \\text{s}",
+              "f": "0.1+0.3+0.4",
+              "value": "0.8"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{atrial diastole} = {{2:0.3}} + {{3:0.4}} = 0.7\\ \\text{s}",
+              "f": "0.3+0.4",
+              "value": "0.7"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{ventricular diastole} = {{3:0.4}} + {{1:0.1}} = 0.5\\ \\text{s}",
+              "f": "0.4+0.1",
+              "value": "0.5",
+              "note": "each chamber: a systole and a diastole"
+            }
+          ],
+          "answer": "0.8"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "c8b55436",
+        "answer": {
+          "value": 0.8,
+          "label": "0.8 s per cardiac cycle"
+        }
+      }
+    },
+    {
+      "id": "d9a705b6-6335-45f7-a432-806eab403873",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{CO} = \\text{SV} \\times \\text{HR}",
+              "note": "pulse rate = heart rate"
+            },
+            {
+              "step": "s2",
+              "kind": "note",
+              "tex": "\\text{SV} = \\dfrac{\\text{CO}}{\\text{HR}} = \\dfrac{5500\\ \\text{cm}^3/\\text{min}}{68\\ /\\text{min}}"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{SV} \\approx {{1:80.9}}\\ \\text{cm}^3",
+              "f": "5500/68",
+              "value": "80.9",
+              "dp": 1
+            },
+            {
+              "step": "s3",
+              "kind": "note",
+              "tex": "{{1:80.9}}\\ \\text{cm}^3\\ \\text{per beat}"
+            }
+          ],
+          "answer": "80.9"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 1,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s3"
+            ]
+          }
+        ],
+        "fingerprint": "55c2f6c6",
+        "answer": {
+          "value": 80.9,
+          "label": "about 80.9 cm³ per beat"
+        }
+      }
+    },
+    {
+      "id": "e38145e3-8a9f-4b79-866b-7e9635407231",
+      "visual": {
+        "v": 1,
+        "scene": "algebraSteps",
+        "params": {
+          "lines": [
+            {
+              "step": "s1",
+              "kind": "note",
+              "tex": "\\text{producers} = {{1:5000}}\\ \\text{J}",
+              "note": "10% passes on to each next level"
+            },
+            {
+              "step": "s2",
+              "kind": "calc",
+              "tex": "\\text{herbivores} = \\dfrac{10}{100} \\times {{1:5000}} = {{2:500}}\\ \\text{J}",
+              "f": "10/100*5000",
+              "value": "500"
+            },
+            {
+              "step": "s3",
+              "kind": "calc",
+              "tex": "\\text{carnivores} = \\dfrac{10}{100} \\times {{2:500}} = {{3:50}}\\ \\text{J}",
+              "f": "10/100*500",
+              "value": "50"
+            },
+            {
+              "step": "s4",
+              "kind": "calc",
+              "tex": "\\dfrac{{{3:50}}}{5000} \\times 100 = 1\\%",
+              "f": "50/5000*100",
+              "value": "1",
+              "note": "check: 1% of the producers' energy"
+            }
+          ],
+          "answer": "50"
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "s1"
+            ]
+          },
+          {
+            "from": 2,
+            "beats": [
+              "s2"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "s3"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "s4"
+            ]
+          }
+        ],
+        "fingerprint": "f4f35e4b",
+        "answer": {
+          "value": 50,
+          "label": "50 J"
+        }
+      }
+    }
+  ],
+  "decided": []
+}

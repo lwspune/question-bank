@@ -1,0 +1,113 @@
+{
+  "//": "Assembled from agent drafts (truthTable).",
+  "visuals": [
+    {
+      "id": "3bd9c242-4ca3-4e0b-baae-c8f73512810c",
+      "visual": {
+        "v": 1,
+        "scene": "truthTable",
+        "params": {
+          "columns": [
+            {
+              "f": "~(p & q)",
+              "label": "a"
+            },
+            {
+              "f": "p | ~q",
+              "label": "b"
+            },
+            {
+              "f": "~(p & q) | (p | ~q)",
+              "label": "a ∨ b"
+            }
+          ],
+          "ask": {
+            "kind": "transform",
+            "of": "~(p & q) | (p | ~q)",
+            "op": "negation",
+            "equals": "(p & q) & (~p & q)",
+            "label": "∼(a ∨ b) = (p∧q)∧(∼p∧q)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "vars",
+              "columns"
+            ]
+          },
+          {
+            "from": 4,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "1e2a8419",
+        "answer": {
+          "value": 1,
+          "label": "(p ∧ q) ∧ (∼p ∧ q)"
+        }
+      }
+    },
+    {
+      "id": "ac0266ce-b1e2-46d8-a69e-de424656e867",
+      "visual": {
+        "v": 1,
+        "scene": "truthTable",
+        "params": {
+          "columns": [
+            {
+              "f": "p | q",
+              "label": "p ∨ q"
+            },
+            {
+              "f": "p | r",
+              "label": "p ∨ r"
+            },
+            {
+              "f": "q & r",
+              "label": "q ∧ r"
+            },
+            {
+              "f": "(p | q) & (p | r)",
+              "label": "(i)"
+            },
+            {
+              "f": "p | (q & r)",
+              "label": "(ii)"
+            }
+          ],
+          "ask": {
+            "kind": "equivalent",
+            "a": "(p | q) & (p | r)",
+            "b": "p | (q & r)",
+            "label": "S₁, S₂, S₃ as p, q, r: (i) ≡ (ii)"
+          }
+        },
+        "steps": [
+          {
+            "from": 0,
+            "beats": [
+              "vars",
+              "columns"
+            ]
+          },
+          {
+            "from": 3,
+            "beats": [
+              "answer"
+            ]
+          }
+        ],
+        "fingerprint": "f763a9c9",
+        "answer": {
+          "value": 1,
+          "label": "equivalent"
+        }
+      }
+    }
+  ],
+  "decided": []
+}
