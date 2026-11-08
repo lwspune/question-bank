@@ -10,6 +10,7 @@
  */
 import { readFileSync } from "node:fs";
 import { getScene } from "../../../src/lib/visuals/registry";
+import { parseSolutionVisual } from "../../../src/lib/visuals/visual";
 
 const sceneId = process.argv.find((a) => a.startsWith("--scene="))?.slice(8);
 const files = process.argv.slice(2).filter((a) => !a.startsWith("--"));
@@ -35,6 +36,13 @@ for (const f of files) {
     const p = scene.parse(d.params);
     if (p && typeof p === "object" && "error" in p) {
       console.log(`${tag}: ${(p as { error: string }).error}`);
+      bad++;
+      continue;
+    }
+    // The steps rules the assembler applies (first step at sentence 0, beats once each, ...); the fingerprint is the assembler's job.
+    const whole = parseSolutionVisual({ v: 1, scene: sceneId, params: d.params, steps: (d as { steps?: unknown }).steps, fingerprint: "00000000", answer: d.answer });
+    if (!whole.ok) {
+      console.log(`${tag}: ${whole.error}`);
       bad++;
       continue;
     }
